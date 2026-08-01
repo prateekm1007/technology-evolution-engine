@@ -387,3 +387,14 @@ Phase 5 — Audience specialization: researchers, corporations, investors, gover
 **Observed:** F-001 has been OPEN since the very first audit turn. The parser only handles claims-formatted trigger phrases ("comprising", "coupled to", etc.). Real patent text from Google Patents won't always match these patterns, so the parser will silently return empty extractions. This directly threatens Phase 3 Step 2 (ingest 3 real patents) — if the parser can't handle real patent formatting, the pipeline will produce empty results.
 **Severity:** P1 (upgraded from original) — F-001 is now a load-bearing prerequisite for Phase 3. The auditor's roadmap explicitly calls it "Step 0 — Fix F-001 before ingesting anything real."
 **Status:** OPEN — must be fixed BEFORE Phase 3 Step 2. Test against 2-3 real patent abstracts from Google Patents first.
+
+---
+
+### F-030 — Paper parser bugs on realistic text (L3)
+**Found:** external auditor (post-Phase 3 Step 3 verification).
+**Observed:** two bugs in PaperParser when run on realistic arXiv-style text:
+  1. Equation regex required the line to START with a variable name. Inline equations like "The cooling power is P_cool = P_rad - P_atm" were missed entirely.
+  2. Limitations section regex over-captured prose lines after bullet points. Lines like "The cooling power is..." were captured as limitations.
+**Root cause:** same pattern as F-001 — tested only on a friendly synthetic fixture with clean formatting. Real papers have inline equations and prose interleaved with bullets.
+**Severity:** P2 — the parser works on fixtures but fails on most real arXiv abstracts. This is the paper-parser equivalent of F-001.
+**Status:** RESOLVED — equation regex now detects inline equations by looking backwards from '=' for a variable-like token and extracting just the equation part. Limitations section regex now stops at the first non-bullet line after bullets begin. Both bugs verified fixed via the auditor's exact repro.

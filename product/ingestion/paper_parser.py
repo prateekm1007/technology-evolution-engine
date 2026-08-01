@@ -126,44 +126,94 @@ class PaperParser:
     def _extract_section_items(self, text: str,
                                 headers: List[str]) -> List[str]:
         """Extract list items under a section header (bullet points
-        or numbered items)."""
+        or numbered items).
+
+        F-030 fix: stop at the first non-bullet line after the section
+        header. Before the fix, the section regex captured everything
+        from the header to the end of text (or the next header),
+        including prose lines after the bullet points.
+        """
         section_text = self._extract_section(text, headers)
         if not section_text:
             return []
         items = []
+        in_bullets = False
         for line in section_text.split("\n"):
             line = line.strip()
             if not line:
                 continue
-            # Strip bullet markers (-, *, •, numbers).
-            line = re.sub(r"^[-*•]\s*", "", line)
-            line = re.sub(r"^\d+\.\s*", "", line)
-            if len(line) > 5:
+            # Check if this line starts with a bullet marker.
+            is_bullet = bool(re.match(r"^[-*•]\s*", line)) or \
+                        bool(re.match(r"^\d+\.\s*", line))
+            if is_bullet:
+                in_bullets = True
+                # Strip bullet markers.
+                line = re.sub(r"^[-*•]\s*", "", line)
+                line = re.sub(r"^\d+\.\s*", "", line)
+                if len(line) > 5:
+                    items.append(line)
+            elif in_bullets:
+                # F-030 fix: we were in bullets, and this line is NOT
+                # a bullet — it's prose after the bullet points. Stop.
+                break
+            elif len(line) > 5:
+                # Lines before any bullets — could be section intro text.
+                # Include them (they might be meaningful context).
                 items.append(line)
         return items
 
     def _extract_equations(self, text: str) -> List[str]:
-        """Extract lines that look like mathematical equations."""
+        """Extract lines that look like mathematical equations.
+
+        F-030 fix: handle inline equations (prose lead-in followed
+        by equation). Before the fix, lines containing prose indicators
+        like ' is ' were skipped entirely — missing equations like
+        'The cooling power is P_cool = P_rad - P_atm'.
+        """
         equations = []
         for line in text.split("\n"):
             line = line.strip()
             if not line or len(line) > 200:
                 continue
-            # Must contain '=' and look mathematical.
+            # Must contain '=' or '≈'.
             if "=" not in line and "≈" not in line:
-                continue
-            # Skip lines that are clearly prose (contain common English words
-            # immediately around the '=').
-            lower = line.lower()
-            prose_indicators = [" is ", " was ", " were ", " are ",
-                               " means ", " equals ", " represents "]
-            if any(ind in lower for ind in prose_indicators):
                 continue
             # Must have at least one mathematical-looking token.
             has_math = bool(re.search(
                 r"[A-Za-z_]\w*\s*[({]", line  # variable followed by ( or {
             )) or bool(re.search(r"[+\-*/^]", line))  # operators
-            if has_math:
+            if not has_math:
+                continue
+            # F-030 fix: if the line has a prose lead-in (contains
+            # ' is ', ' was ', etc. before the '='), extract just the
+            # equation part — the substring from the variable name
+            # before '=' to the end of the line.
+            lower = line.lower()
+            eq_pos = line.find("=")
+            if eq_pos < 0:
+                eq_pos = line.find("≈")
+            # Look backwards from '=' for a variable-like token.
+            before_eq = line[:eq_pos]
+            # Find the last variable-like token before '='.
+            var_match = re.search(
+                r"([A-Za-z_]\w*(?:\([^)]*\))?)\s*$", before_eq)
+            if var_match:
+                # Check if there's prose before the variable.
+                prose_before = before_eq[:var_match.start()].lower().strip()
+                prose_indicators = [" is ", " was ", " were ", " are ",
+                                   " means ", " equals ", " represents ",
+                                   "given by", "given as", "defined as",
+                                   "computed as", "calculated as"]
+                has_prose_lead = any(ind in prose_before
+                                     for ind in prose_indicators)
+                if has_prose_lead:
+                    # Extract just the equation part (variable = rest).
+                    equation = line[var_match.start():].strip()
+                    equations.append(equation)
+                else:
+                    # No prose lead — the whole line is the equation.
+                    equations.append(line)
+            else:
                 equations.append(line)
         return equations
 
