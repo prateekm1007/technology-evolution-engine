@@ -369,6 +369,105 @@ Operational rules:
 5. The first milestone that closes Loop 4 (experimentation) is
    worth more than any additional module, layer, or feature.
 
+### Scaffolding ≠ closure (CTO-mandated, review #6)
+
+Two distinct concepts must not be conflated:
+
+- **Scaffolding** — the infrastructure (classes, packages,
+  docstrings, spec files, ledger interfaces) exists. The system
+  CAN run a cycle in principle. No cycle has actually run.
+- **Closure** — at least one cycle has actually run, the
+  prediction was tested by an external observation, and the
+  outcome was recorded in the ledger. The system HAS LEARNED
+  something.
+
+A scaffolded loop is `open` or `partially_closed`. A closed loop
+requires a real-world outcome. Scaffolding is necessary but not
+sufficient for closure.
+
+The honest language rule: when reporting status, use "the
+infrastructure required for X now exists", NOT "the system is
+ready for X". Readiness is a stronger claim than infrastructure-
+existence. The CTO caught this in review #6:
+
+> "I would be very careful not to confuse scaffolding with closure."
+
+Layer status values are now 4 (was 3):
+
+| Layer status | Means |
+|---|---|
+| Not started | no infrastructure exists |
+| Scaffolded | infrastructure exists, no cycle run |
+| Partial | infrastructure exists + cycle run on historical data, no real-world confirmation |
+| Closed | infrastructure exists + real-world cycle confirmed a prediction |
+
+### Two classes of milestones (CTO-mandated, review #6)
+
+The CTO's criticism of milestone_001 (pH prediction):
+
+> "A pH measurement may validate the experimental loop, but it
+> may not validate the invention loop."
+
+Two classes of milestones are now mandated:
+
+| Class | Verifies | Can close |
+|---|---|---|
+| A — infrastructure | The machinery works (pH, conductivity, viscosity, resistance) | Loop 4 only |
+| B — invention | The system can generate useful blueprints (improved electrolyte, catalyst, material, manufacturing process) | Loops 4 AND contributes to 5 |
+
+The fifth criterion for any milestone:
+
+```text
+Does the experiment teach the system how to invent?
+```
+
+Class A milestones satisfy the first four criteria (inexpensive,
+measurable, reproducible, days) but not the fifth. Class B
+milestones satisfy all five.
+
+Operational rules:
+
+1. Every milestone spec MUST declare `class: "A"` or `class: "B"`.
+2. A Class A milestone may close Loop 4 but cannot contribute to
+   Loop 5 (creation).
+3. A Class B milestone must propose an IMPROVEMENT over an
+   existing baseline, not just a measurement. The improvement
+   claim is itself a Hypothesis.
+4. The first Class B milestone that closes is worth more than
+   any number of additional Class A milestones.
+
+### Belief is the emerging fifth entity (CTO-mandated, review #6)
+
+The system now has four entities:
+
+```text
+Agent → Hypothesis → Experiment → Observation
+```
+
+A fifth is emerging:
+
+```text
+Belief
+```
+
+A Belief is the system's current committed position on a
+hypothesis, given all observed evidence to date. It is updated
+by Bayes (or a similar rule) as observations accumulate. A
+Hypothesis without a Belief is just a stored assertion; a
+Hypothesis WITH a Belief is a live claim the system is
+committed to.
+
+The Belief layer is scaffolded at `belief/` (declared, not
+implemented). Its first concrete deliverable: a function that,
+given a Hypothesis and all related observations, returns a
+Belief (confidence updated by evidence).
+
+The honest framing: until the Belief layer is implemented, the
+system stores Hypotheses but does not have committed positions
+on them. Every Hypothesis is "pending" forever — there is no
+notion of "the system currently believes X with strength Y".
+Closing this gap is the substrate of a true learning system.
+
 ---
 
 ## How these rules interact with Law 8

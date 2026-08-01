@@ -1,4 +1,4 @@
-# TEE MASTER HANDOFF (v1.7)
+# TEE MASTER HANDOFF (v1.8)
 
 ## PRE-CODING READ LIST (MANDATORY)
 
@@ -55,6 +55,68 @@ those layers or modules.
 - Invention compiler vertical slice: implemented in
   `invention_compiler/` (commit `a3d167d`). 11 layers, 14 modules.
 - 47 tests passing.
+
+## CTO REVIEW #6 (commit `874ec10`) — SCAFFOLDING ≠ CLOSURE
+
+The CTO reviewed the partially_closed / extended-Hypothesis /
+agent-scaffold / milestone_001 commit (`874ec10`) and pushed back
+on one specific phrasing:
+
+> "The system is ready for that cycle."
+
+The CTO's correction:
+
+> "I would rewrite it as follows: 'The infrastructure required
+> for that cycle now exists.' Those are not the same thing."
+
+### Key directives
+
+1. **Scaffolding ≠ closure.** Two distinct concepts must not be
+   conflated. Scaffolding = infrastructure exists. Closure = a
+   cycle has actually run AND a real-world outcome confirmed a
+   prediction. Layer status values are now 4: Not started,
+   Scaffolded, Partial, Closed.
+
+2. **Honest layer status table.** The 7 layers are now honestly
+   assessed:
+   - Observation: Partial
+   - Knowledge: Partial
+   - Reasoning: Partial
+   - Blueprint: Partial
+   - Simulation: Partial
+   - Experimentation: Scaffolded
+   - Creation: Not started
+
+3. **Canonical Hypothesis schema finalized with `id`.** The
+   Hypothesis object now carries a stable `id` field (auto-
+   generated hash of claim+evidence+created_at) as the first
+   field, so dependencies can reference other Hypotheses
+   unambiguously.
+
+4. **Two classes of milestones.** Class A (infrastructure:
+   pH, conductivity, viscosity, resistance) verify machinery.
+   Class B (invention: improved electrolyte, catalyst, material,
+   manufacturing process) verify the system can generate useful
+   blueprints. The fifth criterion: "Does the experiment teach
+   the system how to invent?" Class A satisfies the first four
+   criteria but not the fifth. milestone_001 is reclassified
+   as Class A. milestone_002 (Class B) is added.
+
+5. **Belief as the emerging fifth entity.** Agent → Hypothesis
+   → Experiment → Observation → Belief. The system will need to
+   answer: Which hypotheses do we currently believe? How strongly?
+   What evidence would change our minds? The Belief layer is
+   scaffolded at `belief/`.
+
+## IMPLEMENTATION WORK THIS SESSION
+- Add `id` field to Hypothesis (auto-generated stable hash).
+- Create `layer_status/` module reporting the honest
+  Partial/Scaffolded/Not-started table per layer.
+- Reframe milestone_001 as Class A (infrastructure).
+- Add milestone_002 as Class B (invention) candidate: improved
+  electrolyte composition prediction.
+- Scaffold `belief/` package (declared, not implemented).
+- Tests-first for all of the above.
 
 ## CTO REVIEW #5 (commit `0029759`) — UNIT OF MEASUREMENT CHANGED
 

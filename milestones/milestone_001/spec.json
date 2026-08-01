@@ -1,17 +1,19 @@
 {
   "milestone_id": "milestone_001",
   "name": "pH prediction of a citric-acid + sodium-bicarbonate mixture",
-  "version": "1.0",
+  "version": "1.1",
   "status": "open",
+  "class": "A",
   "created_at": "2026-08-01T17:00:00+00:00",
 
-  "summary": "The system predicts the resulting pH of a citric-acid + sodium-bicarbonate (baking-soda) mixture at a specific ratio. A human constructs the mixture, measures the pH with pH strips, and the prediction error is computed and recorded in the ledger. This is the first closed experimentation loop on a small, real-world problem.",
+  "summary": "The system predicts the resulting pH of a citric-acid + sodium-bicarbonate (baking-soda) mixture at a specific ratio. A human constructs the mixture, measures the pH with pH strips, and the prediction error is computed and recorded in the ledger. This is a Class A (infrastructure) milestone — it verifies the experimentation loop works mechanically but does NOT teach the system how to invent. See milestones/milestone_002/ for a Class B (invention) candidate.",
 
   "cto_criteria": {
     "inexpensive": true,
     "measurable": true,
     "reproducible": true,
-    "executable_within_days": true
+    "executable_within_days": true,
+    "teaches_invention": false
   },
 
   "estimated_days": 1,

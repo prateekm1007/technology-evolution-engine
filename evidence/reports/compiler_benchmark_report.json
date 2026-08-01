@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-01T17:16:19.314709+00:00",
+  "generated_at": "2026-08-01T17:27:43.303386+00:00",
   "method": "Live end-to-end compile of reference problems through the 11-layer invention compiler. For each case, the composite feasibility score from Layer 5 (simulation) is mapped to a verdict bucket per INVENTION_COMPILER.md. expectations_satisfied = verdict matches expected OR is within one bucket; otherwise expectations_not_satisfied.",
   "verdict_buckets": {
     "feasible": ">=0.75",
@@ -26,7 +26,7 @@
       "actual_verdict": "potentially_feasible",
       "composite_feasibility": 0.6128,
       "bucket_distance_from_expected": 1,
-      "duration_s": 0.239,
+      "duration_s": 0.242,
       "expectations_satisfied": true,
       "rationale": "Reconstruction case. Portable MRI is a known-plausible invention (Hyperfine Swoop is FDA-cleared). Tests the compiler can recognize a feasible invention that already exists, rather than say 'impossible'.",
       "chain_summary": {
@@ -44,6 +44,7 @@
         "commercial_risk_count": 3,
         "verification_status": "integrated",
         "hypothesis": {
+          "id": "hyp_0db3ac32f54cd029",
           "claim": "The invention 'Build a portable MRI scanner suitable for rural clinics without cryogenic helium' is feasible in the medical_imaging domain within the stated time horizon.",
           "confidence": 0.6128,
           "evidence": [
@@ -61,9 +62,9 @@
           "status": "pending",
           "observation": null,
           "writer": "invention_compiler.orchestrator.InventionCompiler._chain_summary",
-          "created_at": "2026-08-01T17:16:18.109785+00:00",
-          "updated_at": "2026-08-01T17:16:18.109793+00:00",
-          "timestamp": "2026-08-01T17:16:18.109785+00:00"
+          "created_at": "2026-08-01T17:27:42.086046+00:00",
+          "updated_at": "2026-08-01T17:27:42.086057+00:00",
+          "timestamp": "2026-08-01T17:27:42.086046+00:00"
         }
       },
       "layer_0": {
@@ -282,7 +283,7 @@
       "actual_verdict": "partially_feasible",
       "composite_feasibility": 0.5428,
       "bucket_distance_from_expected": 1,
-      "duration_s": 0.241,
+      "duration_s": 0.242,
       "expectations_satisfied": true,
       "rationale": "Forecasting case. Haber-Bosch without high T/P is an open research problem. Tests the compiler can say 'uncertain' honestly rather than fabricate confidence.",
       "chain_summary": {
@@ -300,6 +301,7 @@
         "commercial_risk_count": 3,
         "verification_status": "integrated",
         "hypothesis": {
+          "id": "hyp_fe4906870104c99c",
           "claim": "The invention 'Synthesize ammonia from nitrogen and water at ambient temperature and pressure using electrochemistry' is feasible in the chemistry domain within the stated time horizon.",
           "confidence": 0.5428,
           "evidence": [
@@ -320,9 +322,9 @@
           "status": "pending",
           "observation": null,
           "writer": "invention_compiler.orchestrator.InventionCompiler._chain_summary",
-          "created_at": "2026-08-01T17:16:18.350656+00:00",
-          "updated_at": "2026-08-01T17:16:18.350671+00:00",
-          "timestamp": "2026-08-01T17:16:18.350656+00:00"
+          "created_at": "2026-08-01T17:27:42.328492+00:00",
+          "updated_at": "2026-08-01T17:27:42.328504+00:00",
+          "timestamp": "2026-08-01T17:27:42.328492+00:00"
         }
       },
       "layer_0": {
@@ -540,7 +542,7 @@
       "actual_verdict": "uncertain",
       "composite_feasibility": 0.3678,
       "bucket_distance_from_expected": 1,
-      "duration_s": 0.241,
+      "duration_s": 0.243,
       "expectations_satisfied": true,
       "rationale": "Forecasting case at the edge of physics. May be physically impossible. Recent LK-99 claims were retracted. Tests the compiler can say 'unknown' without claiming feasibility.",
       "chain_summary": {
@@ -558,6 +560,7 @@
         "commercial_risk_count": 3,
         "verification_status": "integrated",
         "hypothesis": {
+          "id": "hyp_996d1259d5984e63",
           "claim": "The invention 'Discover and engineer a material that superconducts at room temperature and ambient pressure' is feasible in the materials domain within the stated time horizon.",
           "confidence": 0.3678,
           "evidence": [
@@ -580,9 +583,9 @@
           "status": "pending",
           "observation": null,
           "writer": "invention_compiler.orchestrator.InventionCompiler._chain_summary",
-          "created_at": "2026-08-01T17:16:18.591207+00:00",
-          "updated_at": "2026-08-01T17:16:18.591222+00:00",
-          "timestamp": "2026-08-01T17:16:18.591207+00:00"
+          "created_at": "2026-08-01T17:27:42.571401+00:00",
+          "updated_at": "2026-08-01T17:27:42.571417+00:00",
+          "timestamp": "2026-08-01T17:27:42.571401+00:00"
         }
       },
       "layer_0": {
@@ -803,7 +806,7 @@
       "actual_verdict": "potentially_feasible",
       "composite_feasibility": 0.6477,
       "bucket_distance_from_expected": 0,
-      "duration_s": 0.241,
+      "duration_s": 0.244,
       "expectations_satisfied": true,
       "rationale": "Reconstruction case. Already exists in early commercial form (CarbonCure, Solidia, BioMason). Tests the compiler can distinguish 'potentially feasible' from 'feasible' \u2014 the tech works but has not yet captured the global cement market.",
       "chain_summary": {
@@ -821,6 +824,7 @@
         "commercial_risk_count": 3,
         "verification_status": "integrated",
         "hypothesis": {
+          "id": "hyp_1f14e9934ca2856f",
           "claim": "The invention 'Manufacture cement that absorbs more CO2 over its lifecycle than it emits during production' is feasible in the materials domain within the stated time horizon.",
           "confidence": 0.6477,
           "evidence": [
@@ -840,9 +844,9 @@
           "status": "pending",
           "observation": null,
           "writer": "invention_compiler.orchestrator.InventionCompiler._chain_summary",
-          "created_at": "2026-08-01T17:16:18.832312+00:00",
-          "updated_at": "2026-08-01T17:16:18.832321+00:00",
-          "timestamp": "2026-08-01T17:16:18.832312+00:00"
+          "created_at": "2026-08-01T17:27:42.815858+00:00",
+          "updated_at": "2026-08-01T17:27:42.815874+00:00",
+          "timestamp": "2026-08-01T17:27:42.815858+00:00"
         }
       },
       "layer_0": {
@@ -1066,7 +1070,7 @@
       "actual_verdict": "partially_feasible",
       "composite_feasibility": 0.5428,
       "bucket_distance_from_expected": 0,
-      "duration_s": 0.242,
+      "duration_s": 0.243,
       "expectations_satisfied": true,
       "rationale": "Forecasting case. Components work (PV electrolysis, photocatalytic water splitting) but a complete system that matches natural photosynthesis's efficiency does not yet exist. Tests the compiler can express 'partial feasibility' rather than binary pass/fail.",
       "chain_summary": {
@@ -1084,6 +1088,7 @@
         "commercial_risk_count": 3,
         "verification_status": "integrated",
         "hypothesis": {
+          "id": "hyp_174941c48b802ed3",
           "claim": "The invention 'Build a system that converts sunlight, CO2, and water into storable chemical fuel with efficiency exceeding natural photosynthesis' is feasible in the energy domain within the stated time horizon.",
           "confidence": 0.5428,
           "evidence": [
@@ -1106,9 +1111,9 @@
           "status": "pending",
           "observation": null,
           "writer": "invention_compiler.orchestrator.InventionCompiler._chain_summary",
-          "created_at": "2026-08-01T17:16:19.074003+00:00",
-          "updated_at": "2026-08-01T17:16:19.074014+00:00",
-          "timestamp": "2026-08-01T17:16:19.074003+00:00"
+          "created_at": "2026-08-01T17:27:43.059344+00:00",
+          "updated_at": "2026-08-01T17:27:43.059358+00:00",
+          "timestamp": "2026-08-01T17:27:43.059344+00:00"
         }
       },
       "layer_0": {
@@ -1341,7 +1346,7 @@
       "actual_verdict": "potentially_feasible",
       "composite_feasibility": 0.6177,
       "bucket_distance_from_expected": 1,
-      "duration_s": 0.241,
+      "duration_s": 0.244,
       "expectations_satisfied": true,
       "rationale": "Resurrection case. Airships failed as passenger transport (Hindenburg 1937, helium-unavailability). Tests the compiler can recognize that the original failure mode (hydrogen flammability) is now removable (helium + modern materials), and that the use case has shifted (cargo, not passengers). Expected verdict: partially_feasible \u2014 LTA Research and HAV Airlander are attempting this with mixed progress.",
       "chain_summary": {
@@ -1359,6 +1364,7 @@
         "commercial_risk_count": 3,
         "verification_status": "integrated",
         "hypothesis": {
+          "id": "hyp_0bcde25df49264c4",
           "claim": "The invention 'Resurrect rigid airships for heavy-lift cargo transport to remote areas without runways' is feasible in the transportation domain within the stated time horizon.",
           "confidence": 0.6177,
           "evidence": [
@@ -1376,9 +1382,9 @@
           "status": "pending",
           "observation": null,
           "writer": "invention_compiler.orchestrator.InventionCompiler._chain_summary",
-          "created_at": "2026-08-01T17:16:19.314637+00:00",
-          "updated_at": "2026-08-01T17:16:19.314648+00:00",
-          "timestamp": "2026-08-01T17:16:19.314637+00:00"
+          "created_at": "2026-08-01T17:27:43.303259+00:00",
+          "updated_at": "2026-08-01T17:27:43.303273+00:00",
+          "timestamp": "2026-08-01T17:27:43.303259+00:00"
         }
       },
       "layer_0": {

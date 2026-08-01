@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-08-01T17:16:16.193978+00:00",
+  "generated_at": "2026-08-01T17:27:40.054508+00:00",
   "method": "pytest tests/test_graph_engine.py tests/test_product.py tests/test_ledger_integrity.py tests/test_north_star_modules.py tests/test_invention_compiler.py tests/test_compiler_benchmarks.py -v, run live",
   "summary": {
-    "passed": 140,
+    "passed": 164,
     "failed": 0,
     "skipped": 0,
     "errors": 0,
-    "total": 140,
-    "collected": 140
+    "total": 164,
+    "collected": 164
   },
-  "duration_s": 4.572,
+  "duration_s": 4.719,
   "tests": [
     {
       "nodeid": "tests/test_graph_engine.py::test_empty_graph",
@@ -708,6 +708,126 @@
     },
     {
       "nodeid": "tests/test_cto_review_5.py::test_anti_entropy_md_documents_partially_closed_rule",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_cto_review_6.py::test_hypothesis_has_id_field",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_cto_review_6.py::test_hypothesis_id_is_deterministic",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_cto_review_6.py::test_hypothesis_id_differs_for_different_claims",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_cto_review_6.py::test_hypothesis_id_round_trips_through_to_dict",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_cto_review_6.py::test_hypothesis_dependencies_reference_ids",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_cto_review_6.py::test_layer_status_module_exists",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_cto_review_6.py::test_layer_status_reports_all_7_layers",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_cto_review_6.py::test_layer_status_uses_4_valid_values",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_cto_review_6.py::test_layer_status_matches_cto_review_6_table",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_cto_review_6.py::test_layer_status_carries_reason_per_layer",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_cto_review_6.py::test_milestone_001_declares_class_a",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_cto_review_6.py::test_milestone_002_exists_and_declares_class_b",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_cto_review_6.py::test_milestone_002_proposes_improvement_over_baseline",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_cto_review_6.py::test_milestone_002_satisfies_4_criteria_plus_teaches_invention",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_cto_review_6.py::test_milestone_001_does_not_teach_invention",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_cto_review_6.py::test_belief_package_exists",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_cto_review_6.py::test_belief_docstring_describes_5th_entity",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_cto_review_6.py::test_belief_docstring_answers_3_questions",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_cto_review_6.py::test_belief_declares_itself_as_scaffold",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_cto_review_6.py::test_invention_compiler_md_documents_scaffolding_vs_closure",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_cto_review_6.py::test_invention_compiler_md_documents_layer_status_table",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_cto_review_6.py::test_invention_compiler_md_documents_milestone_classes",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_cto_review_6.py::test_invention_compiler_md_documents_belief_entity",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_cto_review_6.py::test_anti_entropy_md_documents_scaffolding_rule",
       "outcome": "passed",
       "duration_s": 0.0
     }

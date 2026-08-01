@@ -4,21 +4,24 @@ Hypothesis — the atomic unit of a learning system.
 Per CTO review #4 (commit `0029759`), the Hypothesis is the new
 fundamental object of the system. Per CTO review #5, the schema is
 extended with counterevidence, assumptions, dependencies, created_at,
-updated_at.
+updated_at. Per CTO review #6, the canonical schema is finalized
+with `id` as the first field, so dependencies can reference other
+Hypotheses unambiguously.
 
-Extended schema (per ANTI_ENTROPY.md):
+Canonical schema (per ANTI_ENTROPY.md, finalized review #6):
 
+    id              : str             — stable identifier (hash of claim+evidence+created_at)
     claim           : str             — a falsifiable statement
     confidence      : float in [0,1] — system's prior belief, BEFORE observation
     evidence        : list[str]       — named inputs supporting the claim
-    counterevidence : list[str]       — named inputs that would weaken the claim (NEW)
-    assumptions     : list[str]       — preconditions the claim makes (NEW)
-    dependencies    : list[str]       — IDs of other Hypotheses this one depends on (NEW)
+    counterevidence : list[str]       — named inputs that would weaken the claim (review #5)
+    assumptions     : list[str]       — preconditions the claim makes (review #5)
+    dependencies    : list[str]       — IDs of other Hypotheses this one depends on (review #5)
     status          : "pending" | "pass" | "fail"
     observation     : str | None      — what was observed (None until reconciled)
     writer          : str             — module path that produced this hypothesis
-    created_at      : ISO8601 UTC str (renamed from `timestamp`)
-    updated_at      : ISO8601 UTC str, updated on reconcile() (NEW)
+    created_at      : ISO8601 UTC str
+    updated_at      : ISO8601 UTC str, updated on reconcile() (review #5)
 
 Invariants (enforced by the constructor):
   - claim must be a non-empty string.
@@ -26,6 +29,8 @@ Invariants (enforced by the constructor):
   - If evidence is empty, confidence is forced to 0.0.
   - status starts as "pending".
   - created_at and updated_at are equal at construction time.
+  - id is auto-generated as a deterministic hash of
+    (claim + evidence + created_at) so it is reproducible per Law 7.
 
 Reconciliation:
   - reconcile(outcome, observation) sets status, observation, and
@@ -39,14 +44,36 @@ Backwards compatibility:
     fields default to empty lists.
   - The `timestamp` field from review #4 is preserved as an alias
     for `created_at` (deprecated; new code should use `created_at`).
+  - The `id` field from review #6 is auto-generated if not provided;
+    it can also be passed explicitly (e.g., when reconstructing from
+    a ledger entry via from_dict).
 """
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from typing import List, Optional
+import hashlib
+import json
 
 
 def _now_iso() -> str:
     return datetime.now(timezone.utc).isoformat()
+
+
+def _stable_id(claim: str, evidence: list, created_at: str) -> str:
+    """Deterministic hash of (claim + evidence + created_at) per Law 7.
+
+    The id is reproducible: two Hypotheses with the same claim,
+    evidence, and created_at produce the same id. This is essential
+    for dependency references — a Hypothesis that depends on another
+    can reference it by id, and the id is stable across runs.
+    """
+    canonical = json.dumps({
+        "claim": claim,
+        "evidence": sorted(evidence),
+        "created_at": created_at,
+    }, sort_keys=True, default=str)
+    h = hashlib.sha256(canonical.encode("utf-8")).hexdigest()[:16]
+    return f"hyp_{h}"
 
 
 @dataclass
@@ -55,10 +82,14 @@ class Hypothesis:
 
     A claim with confidence and evidence, awaiting reconciliation
     with reality. Extended per CTO review #5 with counterevidence,
-    assumptions, dependencies, created_at, updated_at.
+    assumptions, dependencies, created_at, updated_at. Finalized
+    per CTO review #6 with `id` as the first field.
     """
-    claim: str
-    confidence: float
+    # `id` is the first field per the canonical schema (review #6).
+    # If not provided, it is auto-generated as a stable hash.
+    id: str = ""
+    claim: str = ""
+    confidence: float = 0.0
     evidence: List[str] = field(default_factory=list)
     counterevidence: List[str] = field(default_factory=list)
     assumptions: List[str] = field(default_factory=list)
@@ -112,6 +143,11 @@ class Hypothesis:
             self.created_at = _now_iso()
         if not self.updated_at:
             self.updated_at = self.created_at
+        # If id was not provided, auto-generate it as a stable hash.
+        # Per review #6, the id is the first field of the canonical
+        # schema and is required for dependency references.
+        if not self.id:
+            self.id = _stable_id(self.claim, self.evidence, self.created_at)
 
     def reconcile(self, outcome: str, observation: str) -> None:
         """Reconcile this hypothesis against an observation.
@@ -146,10 +182,13 @@ class Hypothesis:
     def to_dict(self) -> dict:
         """JSON-serializable representation for ledger storage.
 
-        Includes both `created_at` and the legacy `timestamp` alias
-        for backwards compatibility with review-#4 code.
+        Includes `id` as the first field per the canonical schema
+        (review #6). Includes both `created_at` and the legacy
+        `timestamp` alias for backwards compatibility with review-#4
+        code.
         """
         return {
+            "id": self.id,
             "claim": self.claim,
             "confidence": self.confidence,
             "evidence": self.evidence,
@@ -170,12 +209,13 @@ class Hypothesis:
         """Reconstruct a Hypothesis from a dict (e.g., from the ledger).
 
         Tolerates dicts written under the review-#4 schema (no
-        counterevidence/assumptions/dependencies) and the review-#5
-        extended schema.
+        counterevidence/assumptions/dependencies), the review-#5
+        extended schema, and the review-#6 canonical schema (with id).
         """
         # created_at falls back to legacy `timestamp` field for review-#4 dicts.
         created_at = d.get("created_at") or d.get("timestamp") or _now_iso()
         return cls(
+            id=d.get("id", ""),  # review #6: preserve id if provided
             claim=d["claim"],
             confidence=d["confidence"],
             evidence=d.get("evidence", []),
@@ -231,7 +271,8 @@ class Hypothesis:
         )
 
     # Backwards-compat property: code that read `h.timestamp` in
-    # review-#4 still works in review-#5.
+    # review-#4 still works in review-#5/#6.
     @property
     def timestamp(self) -> str:
         return self.created_at
+

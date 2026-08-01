@@ -1,6 +1,6 @@
 # INVENTION COMPILER — Master Specification
 
-**Status:** Active directive. Phase transition (CTO review #4 → #5).
+**Status:** Active directive. Phase transition (CTO review #4 → #5 → #6).
 **Supersedes:** the "idea generator" framing. The system is not an idea generator.
 **Read this file BEFORE writing any code in this repository.**
 
@@ -22,6 +22,163 @@ Invention engines organize possibilities.
 ```
 
 That is the precise description of what we are trying to build.
+
+---
+
+## CTO review #6 (commit `874ec10`) — scaffolding ≠ closure
+
+The CTO reviewed the partially_closed / extended-Hypothesis /
+agent-scaffold / milestone_001 commit (`874ec10`) and pushed back
+on one specific phrasing:
+
+> "The system is ready for that cycle."
+
+The CTO's correction:
+
+> "I would rewrite it as follows: 'The infrastructure required for
+> that cycle now exists.' Those are not the same thing."
+
+### Scaffolding vs closure rule (CTO-mandated)
+
+From this commit forward, two distinct concepts must not be
+conflated:
+
+- **Scaffolding** — the infrastructure (classes, packages, docstrings,
+  spec files, ledger interfaces) exists. The system CAN run a cycle
+  in principle. No cycle has actually run.
+- **Closure** — at least one cycle has actually run, the prediction
+  was tested by an external observation, and the outcome was
+  recorded in the ledger. The system HAS LEARNED something.
+
+A scaffolded loop is `open` or `partially_closed`. A closed loop
+requires a real-world outcome. Scaffolding is necessary but not
+sufficient for closure.
+
+The honest language rule: when reporting status, use "the
+infrastructure required for X now exists", NOT "the system is
+ready for X". Readiness is a stronger claim than infrastructure-
+existence.
+
+### Layer status (CTO-mandated, honest)
+
+| Layer | Status |
+|---|---|
+| Observation | Partial |
+| Knowledge | Partial |
+| Reasoning | Partial |
+| Blueprint | Partial |
+| Simulation | Partial |
+| Experimentation | Scaffolded |
+| Creation | Not started |
+
+The status values are:
+
+- **Not started** — no infrastructure exists for this layer.
+- **Scaffolded** — infrastructure exists (classes, packages,
+  docstrings) but no real-world cycle has run through it.
+- **Partial** — infrastructure exists AND at least one cycle has
+  run on historical/synthetic data, but no real-world outcome has
+  confirmed a prediction.
+- **Closed** — infrastructure exists AND at least one real-world
+  cycle has confirmed a prediction.
+
+The current state: Layers 1-5 are Partial (compiler runs, but
+no real-world confirmation); Layer 6 (Experimentation) is
+Scaffolded (infrastructure exists, no cycle run); Layer 7
+(Creation) is Not started.
+
+### Canonical Hypothesis schema (CTO-mandated, finalized)
+
+Per CTO review #5, the Hypothesis object was extended. Per CTO
+review #6, the canonical schema now includes `id` as the first
+field:
+
+```yaml
+id:               # stable identifier (NEW, review #6)
+claim:
+confidence:
+evidence:
+counterevidence:
+assumptions:
+dependencies:    # references other Hypotheses by id
+status:
+created_at:
+updated_at:
+```
+
+The `id` field is required so dependencies can reference other
+Hypotheses unambiguously. IDs are auto-generated stable hashes
+of (claim + evidence + created_at) so they are deterministic per
+Law 7 (reproducibility).
+
+### Two classes of milestones (CTO-mandated)
+
+The CTO's criticism of milestone_001 (pH prediction):
+
+> "A pH measurement may validate the experimental loop, but it
+> may not validate the invention loop."
+
+The CTO therefore defined two classes of milestones:
+
+| Class | Verifies | Examples |
+|---|---|---|
+| A — infrastructure milestones | The machinery works | pH prediction, thermal conductivity, viscosity, electrical resistance |
+| B — invention milestones | The system can generate useful blueprints | improved electrolyte compositions, improved catalyst combinations, new material combinations, modified manufacturing processes |
+
+The most important criterion for any milestone:
+
+```text
+Does the experiment teach the system how to invent?
+```
+
+Class A milestones do NOT teach the system how to invent — they
+verify that the experimentation loop works mechanically. Class B
+milestones DO teach the system how to invent — they test whether
+the system's blueprints would actually improve a real invention.
+
+The honest milestone framework rule: every milestone must declare
+its class (A or B). Class A milestones can close Loop 4
+(experimentation). Class B milestones can close BOTH Loop 4 AND
+contribute to Loop 5 (creation).
+
+milestone_001 (pH prediction) is now declared as Class A. A
+Class B candidate (milestone_002) is added at
+`milestones/milestone_002/` — an improved electrolyte
+composition prediction. Class B milestones have a higher bar:
+they must propose something the system claims is an IMPROVEMENT
+over an existing baseline, not just a measurement.
+
+### Belief as the emerging fifth entity (CTO observation)
+
+The CTO observed that the system now has four entities:
+
+```text
+Agent → Hypothesis → Experiment → Observation
+```
+
+And a fifth is emerging:
+
+```text
+Belief
+```
+
+Because the system will eventually need to answer:
+
+- Which hypotheses do we currently believe?
+- How strongly do we believe them?
+- What evidence would change our minds?
+
+That is a very different problem from storing documents. A Belief
+is the system's current committed position on a hypothesis,
+given all observed evidence to date. It is updated by Bayes (or a
+similar rule) as observations accumulate. A Hypothesis without a
+Belief is just a stored assertion; a Hypothesis WITH a Belief is a
+live claim the system is committed to.
+
+The Belief layer is scaffolded at `belief/` (declared, not
+implemented). Its first concrete deliverable: a function that,
+given a Hypothesis and all related observations, returns a Belief
+(confidence updated by evidence).
 
 ---
 
@@ -67,38 +224,39 @@ This introduces a third status value beyond `closed`/`open`:
 infrastructure exists and has been exercised, but no real-world
 outcome has confirmed the system's prediction.
 
-| Loop | Status (review #4) | Status (review #5) |
-|---|---|---|
-| 1. Reconstruction | closed | closed (real-world outcomes ARE in the ledger — historical failures are observed facts) |
-| 2. Resurrection | closed | **partially_closed** (counterfactuals are predictions, not observations; no real-world resurrection has been demonstrated by the system) |
-| 3. Forecasting | open | open |
-| 4. Experimentation | open | open |
-| 5. Creation | open | open |
+(Per CTO review #6 above, this is sharpened: `partially_closed`
+= scaffolded + cycles run on historical data; `closed` = real-
+world confirmation. Scaffolding ≠ closure.)
 
-### Extended Hypothesis schema (CTO-mandated)
+| Loop | Status (review #4) | Status (review #5) | Status (review #6) |
+|---|---|---|---|
+| 1. Reconstruction | closed | closed | closed |
+| 2. Resurrection | closed | partially_closed | partially_closed |
+| 3. Forecasting | open | open | open |
+| 4. Experimentation | open | open | open (scaffolded, no cycle run) |
+| 5. Creation | open | open | open (not started) |
+
+### Extended Hypothesis schema (CTO-mandated, finalized in review #6)
 
 The CTO observed that the Hypothesis object is the correct
 abstraction and will "almost certainly survive every future
-architectural revision." The schema is extended:
+architectural revision." The schema is extended (review #5) and
+finalized (review #6) with `id`:
 
 ```yaml
-claim:           # falsifiable statement (existing)
-confidence:      # scalar in [0,1] (existing)
-evidence:        # named inputs supporting the claim (existing)
-counterevidence: # named inputs that would weaken the claim (NEW)
-assumptions:     # what the claim assumes to be true (NEW)
-dependencies:    # other Hypotheses this one depends on (NEW)
-status:          # pending | pass | fail (existing)
-created_at:      # ISO8601 UTC (existing as `timestamp`)
-updated_at:      # ISO8601 UTC, updated on reconcile() (NEW)
+id:               # stable identifier (review #6)
+claim:           # falsifiable statement
+confidence:      # scalar in [0,1]
+evidence:        # named inputs supporting the claim
+counterevidence: # named inputs that would weaken the claim (review #5)
+assumptions:     # what the claim assumes to be true (review #5)
+dependencies:    # other Hypothesis IDs this one depends on (review #5)
+status:          # pending | pass | fail
+created_at:      # ISO8601 UTC
+updated_at:      # ISO8601 UTC, updated on reconcile() (review #5)
 ```
 
-The new fields make the hypothesis a richer object: counterevidence
-exposes what would weaken the claim (not just what supports it);
-assumptions make the claim's preconditions explicit; dependencies
-link hypotheses into a graph.
-
-### Hypotheses evolve — there's an agent underneath (CTO observation)
+### Hypotheses evolve — there's an agent underneath (CTO observation, refined in review #6)
 
 The CTO observed that the current model is:
 
@@ -112,16 +270,17 @@ But eventually it becomes:
 agent → hypothesis → experiment → observation → hypothesis
 ```
 
-Hypotheses are not static. They evolve. An agent proposes a
-hypothesis, an experiment tests it, an observation is recorded,
-the hypothesis is updated (or a new one is created per Law 7).
-That's a learning loop, not a static assertion.
+(Per review #6, this is further extended to:)
 
-The agent layer is scaffolded at `agent/`. It is currently empty
-(declared, not implemented). The first concrete agent will be the
-one that closes the first small milestone (see below).
+```text
+agent → hypothesis → experiment → observation → belief → hypothesis
+```
 
-### The next milestone must be small (CTO-mandated)
+Hypotheses are not static. They evolve. The agent layer is
+scaffolded at `agent/` (declared, not implemented). The Belief
+layer is scaffolded at `belief/` (declared, not implemented).
+
+### The next milestone must be small (CTO-mandated, refined in review #6)
 
 > Do not attempt to invent a room-temperature superconductor.
 > Instead, choose a problem that satisfies four conditions:
@@ -130,33 +289,13 @@ one that closes the first small milestone (see below).
 >   - reproducible
 >   - executable within days rather than months
 
-The CTO specified the milestone structure:
+(Per review #6, a fifth criterion is added:)
 
-```text
-System proposes a material combination.
-        ↓
-Human constructs it.
-        ↓
-Measurements are recorded.
-        ↓
-Prediction error is computed.
-        ↓
-Hypothesis is updated.
-        ↓
-Result enters the ledger.
-```
+>   - Does the experiment teach the system how to invent?
 
-The first successfully completed cycle is more valuable than
-another hundred modules. That is the point at which the repository
-stops merely describing the world and starts learning from it.
-
-The first milestone is recorded at `milestones/milestone_001/`.
-It must satisfy the four criteria above. The first concrete
-milestone candidate: a simple material-property prediction
-(e.g., "if material X is mixed in ratio Y, the resulting mixture's
-pH will be in range Z") — inexpensive to test (pH strips),
-measurable (numeric), reproducible (anyone with the materials
-can repeat), executable within days.
+Class A milestones satisfy the first four but not the fifth.
+Class B milestones satisfy all five. The first Class B milestone
+is worth more than any number of Class A milestones.
 
 ---
 

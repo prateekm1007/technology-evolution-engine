@@ -108,6 +108,7 @@ def make_unit_test_report():
         "tests/test_invention_compiler.py", "tests/test_compiler_benchmarks.py",
         "tests/test_module_depth_upgrades.py", "tests/test_cto_review_3.py",
         "tests/test_cto_review_4.py", "tests/test_cto_review_5.py",
+        "tests/test_cto_review_6.py",
         "-v", "--json-report",
         "--json-report-file=/tmp/tee_unit_test_report.json",
         "--json-report-indent=2",
