@@ -1,52 +1,25 @@
-# TECHNOLOGY EVOLUTION ENGINE (TEE) - MASTER HANDOFF DOCUMENT (v1.0)
-
-## PURPOSE
-
-This document is the canonical handoff document for all future chats.
-A new chat must read this document first before proposing architecture changes,
-writing code, creating files, expanding the graph, adding agents, or modifying the ontology.
+# TEE MASTER HANDOFF (v1.1)
 
 ## RULES
+Rule 0: No manual work. Rule 1: Architecture is frozen.
 
-### Rule 0: No manual work
-Everything must be performed through scripts, auto-commands, batch jobs,
-reproducible pipelines, migrations, validators, graph updates, automated tests.
+## SEVEN LAWS
+1. Transformation, not object. 2. Explicit constraint surface. 3. Nodes and edges.
+4. Decomposable. 5. Adversarial survival. 6. Expose assumptions. 7. Historical permanence.
 
-### Rule 1: Architecture is frozen
-No new agents permitted unless they improve predictive accuracy,
-resurrection accuracy, or blueprint quality.
+## BENCHMARK DISCIPLINES
+1. Immutability: never overwrite benchmarks. Use _review/_resolution suffixes.
+2. Provenance: every benchmark has source, domain, created_at, reviewer, version, assumptions, limitations.
+3. Drift Detection: benchmarks/drift/ monitors graph, assumptions, scores, calibration.
 
 ## SEARCH MODES
+Mode 1: New combinations. Mode 2: Almost ready. Mode 3: Resurrection. Mode 4: Constraint leverage.
 
-- Mode 1: What new combinations exist?
-- Mode 2: Which ideas are almost ready?
-- Mode 3: Which ideas deserve resurrection?
-- Mode 4: Which constraints should we deliberately move?
+## CANDIDATES
+0001 APRM: GATED. 0002 DAM: REVISE. 0003 ACWPS: REVISE.
 
-## CURRENT CANDIDATES
-
-- 0001 APRM: GATED (missing selective emitters, PCM, extrusion)
-- 0002 DAM: REVISE (missing event detection, tinyML, LoRa)
-- 0003 ACWPS: REVISE (missing anti-fouling, integrity sensing, membranes)
-
-## CEMETERY
-
-27 entries. Target: 250.
-
-## YEAR ONE ROADMAP
-
-- Q1: Expand memory
-- Q2: Improve resurrection accuracy
-- Q3: Improve prediction accuracy
-- Q4: Optimize constraint leverage
+## EVIDENCE PHASE
+Three products: Technology Intelligence, R&D Operating System, Consumer Discovery Engine.
 
 ## FINAL INSTRUCTION
-
-Do not redesign the institution.
-Do not create more agents.
-Do not increase complexity without evidence.
-Optimize for: truth, calibration, prediction, resurrection accuracy, constraint leverage.
-
-The purpose is to determine:
-> Given the present state of civilization, what should exist but does not,
-> why it does not, what must change, and how confidently we can predict its arrival.
+Do not redesign. Do not add agents. Optimize for truth, calibration, prediction, resurrection accuracy, constraint leverage.
