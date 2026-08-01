@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-08-01T15:32:21.023638+00:00",
+  "generated_at": "2026-08-01T16:07:39.101518+00:00",
   "method": "Live run of scripts/run_evidence_tests.py --all. The benchmark harness appends to data/ledger/predictions.jsonl, which is currently corrupted (F-005). To honor audit constraint #2 (do not overwrite the corrupted ledger), the harness was allowed to append, then the ledger was restored to its exact pre-run state. The appended entry is captured in this report as evidence that the benchmark harness runs and produces a well-formed entry; it is NOT committed to the ledger.",
-  "duration_s": 0.127,
+  "duration_s": 0.137,
   "returncode": 0,
   "original_ledger_sha256": "02c5be2670354984d3ae9978c320d235d923eb7cfb61635843e8a4a0589791a4",
-  "after_run_ledger_sha256": "46b283d1ff82ddb8e1a66e4b4439b196aa244baabcb37ef4f3fb653d8aac92bd",
+  "after_run_ledger_sha256": "3d189ddbbe1f45f4c5c4f1318a7f5eaf6376bed547a60b9cd841ee200be5f3af",
   "restored_ledger_sha256": "02c5be2670354984d3ae9978c320d235d923eb7cfb61635843e8a4a0589791a4",
   "ledger_head_intact_after_append": true,
   "ledger_restored_to_corrupted_state": true,
@@ -12,7 +12,7 @@
   "appended_entries": [
     {
       "type": "benchmark_run",
-      "timestamp": "2026-08-01T15:32:21.014910+00:00",
+      "timestamp": "2026-08-01T16:07:39.091363+00:00",
       "total_benchmarks": 26,
       "overall_composite_mean": 0.3677,
       "grade_distribution": {
@@ -28,7 +28,7 @@
     }
   ],
   "scoring_summary": {
-    "timestamp": "2026-08-01T15:32:21.014910+00:00",
+    "timestamp": "2026-08-01T16:07:39.091363+00:00",
     "total_benchmarks": 26,
     "patent_benchmarks": 20,
     "consumer_benchmarks": 6,
@@ -62,7 +62,7 @@
         "domain": "energy",
         "grade": "F",
         "composite": 0.37,
-        "duration": 0.009
+        "duration": 0.01
       },
       {
         "id": "benchmark_0002",
@@ -202,7 +202,7 @@
         "domain": "water",
         "grade": "F",
         "composite": 0.36,
-        "duration": 0.004
+        "duration": 0.005
       },
       {
         "id": "benchmark_c002",

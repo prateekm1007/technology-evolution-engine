@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-01T15:32:21.082219+00:00",
+  "generated_at": "2026-08-01T16:07:39.174911+00:00",
   "rule": "Law 8 (CONSTITUTION.md): No 'verified' label without a successful prediction, a failed prediction, and replayable evidence.",
   "ledger_state": {
     "ledger_exists": true,
@@ -172,8 +172,8 @@
     "parse_errors": [],
     "sha256": "02c5be2670354984d3ae9978c320d235d923eb7cfb61635843e8a4a0589791a4"
   },
-  "claims_found": 21,
-  "supported_claims": 21,
+  "claims_found": 24,
+  "supported_claims": 24,
   "unsupported_claims": 0,
   "global_verdict": "PASS",
   "claims": [
@@ -321,6 +321,27 @@
       "file": "FAILURES.md",
       "line": 165,
       "text": "**Status:** OPEN \u2014 the contract should either drop \"verified\" from the",
+      "verdict": "supported",
+      "reason": "ledger contains >=1 pass + >=1 fail + replayable evidence"
+    },
+    {
+      "file": "ANTI_ENTROPY.md",
+      "line": 9,
+      "text": "- F-011 (a \"verified\" stamp with no evidence)",
+      "verdict": "supported",
+      "reason": "ledger contains >=1 pass + >=1 fail + replayable evidence"
+    },
+    {
+      "file": "ANTI_ENTROPY.md",
+      "line": 85,
+      "text": "the specific class of \"verified\" drift. The general class \u2014 any",
+      "verdict": "supported",
+      "reason": "ledger contains >=1 pass + >=1 fail + replayable evidence"
+    },
+    {
+      "file": "ANTI_ENTROPY.md",
+      "line": 132,
+      "text": "> No \"verified\" label without a successful prediction, a failed",
       "verdict": "supported",
       "reason": "ledger contains >=1 pass + >=1 fail + replayable evidence"
     }

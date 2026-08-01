@@ -1,13 +1,14 @@
 {
-  "generated_at": "2026-08-01T15:32:21.087381+00:00",
-  "audit_type": "F-005 follow-up forensic audit (epistemic instrument run against itself)",
+  "generated_at": "2026-08-01T16:07:39.440000+00:00",
+  "audit_type": "F-005 follow-up forensic audit + invention compiler vertical slice",
   "steps_run": [
     "compile",
     "unit_test",
     "integration",
     "benchmark",
     "ledger_integrity",
-    "verification"
+    "verification",
+    "invention_compiler"
   ],
   "errors": [],
   "deliverables": {
@@ -16,6 +17,7 @@
     "integration_report": "evidence/reports/integration_report.json",
     "benchmark_report": "evidence/reports/benchmark_report.json",
     "verification_report": "evidence/reports/verification_report.json",
-    "ledger_integrity_report": "evidence/reports/ledger_integrity_report.json"
+    "ledger_integrity_report": "evidence/reports/ledger_integrity_report.json",
+    "invention_compiler_report": "evidence/reports/invention_compiler_report.json"
   }
 }

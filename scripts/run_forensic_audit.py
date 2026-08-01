@@ -64,7 +64,7 @@ def now_iso():
 # 1. compile_report.json
 # ----------------------------------------------------------------------
 def make_compile_report():
-    print("[1/6] compile report (py_compile on every .py file)...")
+    print("[1/7] compile report (py_compile on every .py file)...")
     files = sorted(p for p in ROOT.rglob("*.py")
                    if ".git" not in p.parts
                    and "__pycache__" not in p.parts
@@ -100,7 +100,7 @@ def make_compile_report():
 # 2. unit_test_report.json
 # ----------------------------------------------------------------------
 def make_unit_test_report():
-    print("[2/6] unit test report (pytest tests/test_graph_engine.py tests/test_product.py tests/test_ledger_integrity.py tests/test_north_star_modules.py)...")
+    print("[2/7] unit test report (pytest tests/test_graph_engine.py tests/test_product.py tests/test_ledger_integrity.py tests/test_north_star_modules.py)...")
     cmd = [
         PY, "-m", "pytest",
         "tests/test_graph_engine.py", "tests/test_product.py",
@@ -148,7 +148,7 @@ def make_unit_test_report():
 # 3. integration_report.json
 # ----------------------------------------------------------------------
 def make_integration_report():
-    print("[3/6] integration report (pytest tests/test_endpoints.py)...")
+    print("[3/7] integration report (pytest tests/test_endpoints.py)...")
     cmd = [
         PY, "-m", "pytest", "tests/test_endpoints.py",
         "-v", "--json-report",
@@ -192,7 +192,7 @@ def make_integration_report():
 # 4. benchmark_report.json
 # ----------------------------------------------------------------------
 def make_benchmark_report():
-    print("[4/6] benchmark report (run scripts/run_evidence_tests.py --all)...")
+    print("[4/7] benchmark report (run scripts/run_evidence_tests.py --all)...")
     # Run the actual benchmark harness. It writes benchmark outputs and
     # appends to the ledger — but we have a CORRUPTED ledger that we must
     # NOT overwrite (audit constraint #2). So we:
@@ -281,7 +281,7 @@ def make_benchmark_report():
 # 5. ledger_integrity_report.json
 # ----------------------------------------------------------------------
 def make_ledger_integrity_report():
-    print("[5/6] ledger integrity report (write graph + reproduction check)...")
+    print("[5/7] ledger integrity report (write graph + reproduction check)...")
     ledger_path = ROOT / "data" / "ledger" / "predictions.jsonl"
     preserved_path = ROOT / "evidence" / "corruption" / "predictions_corrupted.jsonl"
     reproduction_path = ROOT / "evidence" / "corruption" / "reproduction_byte_exact.jsonl"
@@ -493,7 +493,7 @@ def make_ledger_integrity_report():
 # 6. verification_report.json — produced by scripts/enforce_law8.py
 # ----------------------------------------------------------------------
 def make_verification_report():
-    print("[6/6] verification report (Law 8 enforcement via scripts/enforce_law8.py)...")
+    print("[6/7] verification report (Law 8 enforcement via scripts/enforce_law8.py)...")
     out = REPORT_DIR / "verification_report.json"
     r = subprocess.run(
         [PY, "scripts/enforce_law8.py", "--json", str(out)],
@@ -506,6 +506,127 @@ def make_verification_report():
     }
     verdict = report.get("global_verdict", "UNKNOWN") if isinstance(report, dict) else "UNKNOWN"
     print(f"      verdict: {verdict}")
+    return report
+
+
+# ----------------------------------------------------------------------
+# 7. invention_compiler_report.json — end-to-end compile of one
+# test invention, proving the 11-layer chain works.
+# ----------------------------------------------------------------------
+def make_invention_compiler_report():
+    print("[7/7] invention compiler report (compile one invention end-to-end)...")
+    sys.path.insert(0, str(ROOT))
+    from invention_compiler.orchestrator import InventionCompiler
+
+    # Load the graph.
+    graph_path = ROOT / "data" / "civilization_graph.json"
+    with open(graph_path) as f:
+        graph = json.load(f)
+
+    # The reference test problem. Per INVENTION_COMPILER.md, the system
+    # is an invention compiler; this report proves the chain compiles.
+    test_problem = {
+        "problem": "Build a portable MRI scanner suitable for rural "
+                   "clinics without cryogenic helium",
+        "domain": "medical_imaging",
+        "motivation": "Conventional MRI requires $100K+ helium and shielded "
+                      "rooms; rural clinics cannot afford either",
+        "market": "global_radiology",
+        "constraints": ["cost", "weight", "power", "regulation", "manufacturing"],
+        "time_horizon": "5-10 years",
+    }
+
+    start = time.time()
+    try:
+        compiler = InventionCompiler(graph=graph)
+        result = compiler.compile(test_problem)
+        duration = round(time.time() - start, 3)
+        # Check that every layer emitted its required keys.
+        required = {
+            0: {"problem", "domain", "motivation", "market", "constraints", "time_horizon"},
+            1: {"physics", "chemistry", "biology", "mathematics", "economics",
+                "information_theory", "thermodynamics", "control_theory"},
+            2: {"prerequisites", "adjacent_technologies", "required_materials",
+                "required_infrastructure", "missing_capabilities", "regulatory_constraints"},
+            3: {"governing_equations", "boundary_conditions", "assumptions",
+                "failure_modes", "optimization_targets"},
+            4: {"subsystems", "interfaces", "inputs", "outputs", "tolerances",
+                "energy_requirements", "computational_requirements"},
+            5: {"monte_carlo", "sensitivity_analysis", "stress_testing", "parameter_ranges"},
+            6: {"materials", "suppliers", "tooling", "assembly",
+                "quality_control", "scaling_constraints"},
+            7: {"capex", "opex", "cost_curve", "market_size", "adoption_model"},
+            8: {"hypothesis", "experiments", "measurements",
+                "success_criteria", "failure_criteria"},
+            9: {"prototype_v1", "prototype_v2", "prototype_v3", "timeline"},
+            10: {"blueprint", "patent_landscape", "technical_risks",
+                 "commercial_risks", "recommended_actions"},
+        }
+        missing_per_layer = {}
+        for layer_num, keys in required.items():
+            layer = result["layers"][layer_num]
+            missing = keys - set(layer.keys())
+            if missing:
+                missing_per_layer[layer_num] = sorted(missing)
+        # Check Law 8 honesty on scalar layers.
+        scalar_layers = {3, 5, 7, 10}
+        honesty_missing = {}
+        for layer_num in scalar_layers:
+            layer = result["layers"][layer_num]
+            block_ok = (
+                ("evidence" in layer and "assumptions" in layer
+                 and "falsification_criteria" in layer)
+                or any(isinstance(v, dict) and "evidence" in v
+                       and "assumptions" in v
+                       and "falsification_criteria" in v
+                       for v in layer.values())
+            )
+            if not block_ok:
+                honesty_missing[layer_num] = True
+        # Check the "no good idea" rule.
+        text = json.dumps(result, default=str).lower()
+        forbidden = ["good idea", "this is promising", "looks great",
+                      "highly recommended"]
+        forbidden_found = [p for p in forbidden if p in text]
+
+        verdict = "PASS" if (not missing_per_layer
+                              and not honesty_missing
+                              and not forbidden_found) else "FAIL"
+
+        report = {
+            "generated_at": now_iso(),
+            "method": (
+                "Live end-to-end compile of the reference test problem "
+                "(portable MRI) through all 11 layers of the invention "
+                "compiler. Verifies: (1) every layer emits its required "
+                "schema keys, (2) scalar layers carry the Law 8 honesty "
+                "block (evidence + assumptions + falsification_criteria), "
+                "(3) the forbidden phrases ('this is a good idea' etc.) "
+                "do not appear in the output."
+            ),
+            "test_problem": test_problem,
+            "problem_id": result["problem_id"],
+            "duration_s": duration,
+            "layer_count": len(result["layers"]),
+            "schema_missing_per_layer": missing_per_layer,
+            "law8_honesty_missing_layers": list(honesty_missing.keys()),
+            "forbidden_phrases_found": forbidden_found,
+            "chain_summary": result["chain_summary"],
+            "verdict": verdict,
+            "layers": result["layers"],
+        }
+    except Exception as e:
+        import traceback as tb
+        report = {
+            "generated_at": now_iso(),
+            "test_problem": test_problem,
+            "error": f"{type(e).__name__}: {e}",
+            "trace": tb.format_exc(),
+            "verdict": "FAIL",
+        }
+    _write(REPORT_DIR / "invention_compiler_report.json", report)
+    v = report.get("verdict", "FAIL")
+    print(f"      verdict: {v}, layers: {report.get('layer_count', 0)}, duration: {report.get('duration_s', 0)}s")
     return report
 
 
@@ -531,6 +652,7 @@ def main():
         ("benchmark", make_benchmark_report),
         ("ledger_integrity", make_ledger_integrity_report),
         ("verification", make_verification_report),
+        ("invention_compiler", make_invention_compiler_report),
     ]:
         try:
             results[name] = fn()
@@ -542,7 +664,7 @@ def main():
 
     summary = {
         "generated_at": now_iso(),
-        "audit_type": "F-005 follow-up forensic audit (epistemic instrument run against itself)",
+        "audit_type": "F-005 follow-up forensic audit + invention compiler vertical slice",
         "steps_run": list(results.keys()),
         "errors": errors,
         "deliverables": {
@@ -552,6 +674,7 @@ def main():
             "benchmark_report": "evidence/reports/benchmark_report.json",
             "verification_report": "evidence/reports/verification_report.json",
             "ledger_integrity_report": "evidence/reports/ledger_integrity_report.json",
+            "invention_compiler_report": "evidence/reports/invention_compiler_report.json",
         },
     }
     _write(REPORT_DIR / "_audit_summary.json", summary)
