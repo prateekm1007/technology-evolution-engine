@@ -9,8 +9,15 @@ Layer 7: produces capex/opex estimates, market size, adoption model.
 from typing import Dict, Any, List
 
 
-class EconomicsModule:
+class EconomicsKnowledgeModule:
     """Produces economic estimates for a candidate invention."""
+
+    # CTO review #3: this module is at the "encode" stage of the
+    # encode → reason → simulate → discover spectrum. It encodes
+    # market structure priors, capex/opex models, and adoption
+    # model heuristics. It does NOT reason over them, simulate
+    # them, or discover new ones.
+    STAGE = "encode"
 
     # Industry-node counts -> market-size multiplier (a coarse prior).
     # 0 industries in domain -> tiny market; >=5 -> large.

@@ -106,7 +106,7 @@ def make_unit_test_report():
         "tests/test_graph_engine.py", "tests/test_product.py",
         "tests/test_ledger_integrity.py", "tests/test_north_star_modules.py",
         "tests/test_invention_compiler.py", "tests/test_compiler_benchmarks.py",
-        "tests/test_module_depth_upgrades.py",
+        "tests/test_module_depth_upgrades.py", "tests/test_cto_review_3.py",
         "-v", "--json-report",
         "--json-report-file=/tmp/tee_unit_test_report.json",
         "--json-report-indent=2",
@@ -653,7 +653,7 @@ def make_compiler_benchmark_report():
     report = json.loads(out_path.read_text())
     summary = report.get("summary", {})
     print(f"      verdict: {summary.get('verdict','?')}, "
-          f"passed: {summary.get('passed','?')}/{summary.get('total','?')}")
+          f"expectations_satisfied: {summary.get('expectations_satisfied', summary.get('passed','?'))}/{summary.get('total','?')}")
     return report
 
 

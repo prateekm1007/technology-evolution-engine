@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-08-01T16:37:30.158190+00:00",
+  "generated_at": "2026-08-01T16:50:38.356217+00:00",
   "method": "pytest tests/test_graph_engine.py tests/test_product.py tests/test_ledger_integrity.py tests/test_north_star_modules.py tests/test_invention_compiler.py tests/test_compiler_benchmarks.py -v, run live",
   "summary": {
-    "passed": 77,
+    "passed": 95,
     "failed": 0,
     "skipped": 0,
     "errors": 0,
-    "total": 77,
-    "collected": 77
+    "total": 95,
+    "collected": 95
   },
-  "duration_s": 4.005,
+  "duration_s": 4.034,
   "tests": [
     {
       "nodeid": "tests/test_graph_engine.py::test_empty_graph",
@@ -382,7 +382,7 @@
       "duration_s": 0.0
     },
     {
-      "nodeid": "tests/test_module_depth_upgrades.py::test_benchmark_taxonomy_has_4_categories",
+      "nodeid": "tests/test_module_depth_upgrades.py::test_benchmark_taxonomy_has_5_categories",
       "outcome": "passed",
       "duration_s": 0.0
     },
@@ -393,6 +393,96 @@
     },
     {
       "nodeid": "tests/test_module_depth_upgrades.py::test_all_4_categories_are_covered",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_cto_review_3.py::test_5_domain_modules_renamed_to_knowledge_module",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_cto_review_3.py::test_old_domain_module_names_are_gone",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_cto_review_3.py::test_cross_cutting_modules_NOT_renamed",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_cto_review_3.py::test_each_domain_module_declares_its_stage",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_cto_review_3.py::test_no_module_pretends_to_be_higher_than_encode",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_cto_review_3.py::test_benchmark_categories_has_5_levels",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_cto_review_3.py::test_creation_category_has_correct_question",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_cto_review_3.py::test_benchmark_report_uses_expectations_satisfied_not_pass",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_cto_review_3.py::test_benchmark_report_carries_epistemic_caveat",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_cto_review_3.py::test_benchmark_report_per_case_uses_expectations_satisfied",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_cto_review_3.py::test_experimentation_layer_package_exists",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_cto_review_3.py::test_experimentation_layer_docstring_describes_loop",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_cto_review_3.py::test_experimentation_layer_declares_status_as_scaffold",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_cto_review_3.py::test_invention_compiler_md_documents_5_layer_architecture",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_cto_review_3.py::test_invention_compiler_md_documents_5_level_benchmark_hierarchy",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_cto_review_3.py::test_invention_compiler_md_documents_knowledge_spectrum",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_cto_review_3.py::test_invention_compiler_md_documents_epistemic_caveat",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_cto_review_3.py::test_compiler_orchestrator_uses_new_module_names",
       "outcome": "passed",
       "duration_s": 0.0
     }

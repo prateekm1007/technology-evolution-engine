@@ -34,8 +34,16 @@ applicability heuristics are priors, not calibrations.
 from typing import Dict, Any, List
 
 
-class PhysicsModule:
+class PhysicsKnowledgeModule:
     """Encodes physical laws and applies them to problems."""
+
+    # CTO review #3: every domain module declares its position on the
+    # encode → reason → simulate → discover spectrum. This module is at
+    # the "encode" stage — it stores laws as structured data but does
+    # not reason over them, simulate them, or discover new ones.
+    # Renaming to a higher stage requires pass+fail verification in the
+    # ledger for the new capability.
+    STAGE = "encode"
 
     # The canonical conservation laws + thermodynamics + EM + fluids.
     # Each law is a structured object: equation, variables (with units),

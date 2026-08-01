@@ -25,6 +25,142 @@ That is the precise description of what we are trying to build.
 
 ---
 
+## CTO review #3 (commit `b22cbc6`)
+
+The CTO reviewed the depth-over-breadth commit (`b22cbc6`) and
+approved the progress but pushed back on one critical point:
+
+> "You are very close to accidentally rewarding the system for
+> agreeing with your expectations rather than for predicting
+> reality. That's a dangerous distinction."
+
+### Epistemic caveat (CTO-mandated)
+
+The benchmark suite currently asks: "did the compiler produce the
+verdict we expected?" That is NOT the same as asking "did the
+compiler produce a verdict that matches reality?"
+
+If we repeatedly tune the scoring system until it produces the
+answers we expected all along, we risk building a machine that
+**reproduces our beliefs** rather than **discovers new truths**.
+
+This is especially dangerous because the north star is not
+classification — it is invention. A classifier that agrees with
+human experts is useless if the goal is to surface combinations
+human experts would not have considered.
+
+### New rule: expectations ≠ correctness
+
+From this commit forward, the benchmark report MUST use the language
+"expectations_satisfied" rather than "PASS". Those are different
+things:
+
+- "PASS" implies correctness.
+- "expectations_satisfied" is honest about what was actually tested:
+  did the system's output match what the benchmarker expected?
+
+The benchmark report must carry an `epistemic_caveat` block that
+makes this distinction explicit. Real correctness requires the
+Experimentation layer (see below) to close the loop: predict, build,
+observe, learn.
+
+### The 5-level benchmark hierarchy (CTO-mandated)
+
+The 4-category taxonomy from CTO review #2 is upgraded to 5 levels:
+
+| Level | Question |
+|---|---|
+| Reconstruction | Can we rediscover what humanity already knows? |
+| Resurrection | Can we rediscover abandoned possibilities? |
+| Forecasting | Can we identify what is becoming feasible? |
+| Synthesis | Can we discover combinations nobody has considered? |
+| Creation | Can we generate a blueprint that somebody can actually build? |
+
+Creation is the destination. The first four levels are classification
+problems — the system labels an invention as feasible/uncertain/unknown.
+Creation is a generation problem — the system emits a blueprint that
+an engineer could start building from. The system does not honestly
+claim to be an invention compiler until at least one Creation case
+has been verified by an actual build.
+
+### The knowledge spectrum (CTO-mandated rename)
+
+There is a large difference between:
+
+```text
+encoding laws;
+reasoning over laws;
+simulating laws;
+discovering laws.
+```
+
+The current domain modules (physics, chemistry, biology, mathematics,
+economics) are at the **encoding** stage. They are NOT reasoning,
+simulating, or discovering. The name "physics_module" did not make
+this explicit. Per the CTO directive, the 5 domain modules are
+renamed to `*_knowledge_module.py` to make the encoding stage
+explicit.
+
+The full spectrum:
+
+| Stage | What it does | Name pattern | Status |
+|---|---|---|---|
+| Encode | Store laws/equations as structured data | `*_knowledge_module.py` | Current |
+| Reason | Apply laws to derive conclusions | `*_reasoning_module.py` | Future |
+| Simulate | Numerically solve the laws | `*_simulation_module.py` | Future |
+| Discover | Find laws not previously known | `*_discovery_module.py` | Aspirational |
+
+A module may NOT be renamed up the spectrum (e.g., `physics_knowledge_module` → `physics_reasoning_module`) until the verification cycle has recorded at least one pass AND one fail for the new capability against real data.
+
+The cross-cutting modules (constraint, dependency, resurrection,
+analogy, simulation, architecture, blueprint, prototype) are NOT
+renamed — they are not knowledge-encoding modules, they are
+reasoning/synthesis modules. The spectrum applies only to the 5
+domain modules.
+
+### The 5-layer architecture (CTO observation + new target)
+
+The CTO observed that the architecture is converging toward four
+interacting layers:
+
+```text
+Observation layer       (knowledge acquisition: graph, evidence, failures)
+        ↓
+Knowledge layer         (encoded laws, equations, pathways)
+        ↓
+Reasoning layer         (causal analysis, counterfactuals, simulation)
+        ↓
+Blueprint layer         (composed 11-layer output)
+```
+
+Eventually a fifth layer is required:
+
+```text
+Experimentation layer  (the loop: predict -> build -> observe -> learn)
+```
+
+The loop is not complete until the system can ask:
+
+```text
+What should we build?
+How should we build it?
+What experiment should we run?
+What did we learn?
+How should the blueprint change?
+```
+
+That is the point at which the system stops being an invention
+catalog and starts becoming an invention laboratory. The
+experimentation layer is the destination toward which the entire
+repository should converge.
+
+The experimentation layer is currently scaffolded as
+`experimentation_layer/` (empty package, declared but not
+implemented). Its first concrete deliverable is a single closed
+loop: predict -> build -> observe -> learn, on one real invention.
+
+---
+
 ## CTO review #2 (commit `02d7658`)
 
 The CTO reviewed the post-rename state and described it as
@@ -81,22 +217,11 @@ scientific principles. Until a module encodes a real principle
 (not a keyword filter), it is still a keyword-matching module
 and must not be renamed to "engine."
 
-### 4-category benchmark taxonomy (CTO-mandated)
+### 4-category benchmark taxonomy (CTO-mandated, upgraded to 5 in review #3)
 
-The benchmark suite must eventually be divided into four categories:
-
-| Category | Question | Example cases |
-|---|---|---|
-| Reconstruction | Can we rediscover existing inventions? | Portable MRI (Hyperfine Swoop exists), Carbon-negative cement (CarbonCure exists) |
-| Resurrection | Can we rediscover abandoned inventions? | Airships (cargo variant), Iridium (relaunched) |
-| Forecasting | Can we anticipate future inventions? | Solid-state ammonia synthesis (active research), Artificial photosynthesis (active research) |
-| Synthesis | Can we discover entirely new combinations? | TBD — these are novel cross-domain pairs the system surfaces that no human has built yet |
-
-The current 5-benchmark suite covers Reconstruction (cases 1, 4) and
-Forecasting (cases 2, 5). Resurrection benchmarks require extending
-the suite with abandoned-invention cases. Synthesis benchmarks
-require the cross-domain synthesizer to surface a candidate the
-benchmarker can verify is novel.
+The benchmark suite was originally divided into four categories.
+Per CTO review #3 above, this is upgraded to 5 levels
+(Reconstruction, Resurrection, Forecasting, Synthesis, Creation).
 
 ---
 

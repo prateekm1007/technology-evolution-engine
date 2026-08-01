@@ -28,8 +28,15 @@ real data; they identify WHICH model would apply if data were available.
 from typing import Dict, Any, List
 
 
-class ChemistryModule:
+class ChemistryKnowledgeModule:
     """Encodes chemistry principles and applies them to problems."""
+
+    # CTO review #3: this module is at the "encode" stage of the
+    # encode → reason → simulate → discover spectrum. It stores
+    # reaction pathways, kinetics, equilibrium, and energy states as
+    # structured data. It does NOT reason over them, simulate them,
+    # or discover new ones.
+    STAGE = "encode"
 
     # Canonical reaction pathways. Each is a structured object.
     REACTION_PATHWAYS = {

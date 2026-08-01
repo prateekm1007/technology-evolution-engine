@@ -1,4 +1,4 @@
-# TEE MASTER HANDOFF (v1.4)
+# TEE MASTER HANDOFF (v1.5)
 
 ## PRE-CODING READ LIST (MANDATORY)
 
@@ -55,6 +55,59 @@ those layers or modules.
 - Invention compiler vertical slice: implemented in
   `invention_compiler/` (commit `a3d167d`). 11 layers, 14 modules.
 - 47 tests passing.
+
+## CTO REVIEW #3 (commit `b22cbc6`)
+
+The CTO reviewed the depth-over-breadth commit (`b22cbc6`) and
+approved the progress but pushed back on one critical point:
+
+> "You are very close to accidentally rewarding the system for
+> agreeing with your expectations rather than for predicting
+> reality."
+
+New CTO-mandated rules (encoded in INVENTION_COMPILER.md and
+ANTI_ENTROPY.md):
+
+1. **Expectations ≠ correctness.** The benchmark report must use
+   "expectations_satisfied", not "PASS". The report must carry an
+   `epistemic_caveat` block making the distinction explicit. Real
+   correctness requires the Experimentation layer to close the loop.
+
+2. **5-level benchmark hierarchy.** The 4-category taxonomy is
+   upgraded to 5: Reconstruction, Resurrection, Forecasting,
+   Synthesis, **Creation**. Creation is "can we generate a blueprint
+   somebody can actually build?" — the only level that tests
+   generation, not classification. The system does not honestly
+   claim to be an invention compiler until at least one Creation
+   case has been verified by an actual build.
+
+3. **Knowledge spectrum rename.** The 5 domain modules (physics,
+   chemistry, biology, mathematics, economics) are renamed from
+   `*_module.py` to `*_knowledge_module.py` to make their position
+   on the encode→reason→simulate→discover spectrum explicit. A
+   module may not be renamed up the spectrum (e.g., to
+   `*_reasoning_module`) until the verification cycle has recorded
+   pass+fail for the new capability.
+
+4. **5-layer architecture target.** Observation → Knowledge →
+   Reasoning → Blueprint → **Experimentation** (new). The
+   Experimentation layer closes the loop: predict → build → observe
+   → learn. Until that loop exists, the system is an invention
+   catalog, not an invention laboratory. Currently scaffolded as
+   `experimentation_layer/` (empty package).
+
+## IMPLEMENTATION WORK THIS SESSION
+- Rename 5 domain modules: `physics_module.py` →
+  `physics_knowledge_module.py`, etc.
+- Add `stage` field to each domain module declaring its position on
+  the spectrum (encode/reason/simulate/discover).
+- Add Creation as 5th benchmark category in
+  `benchmarks/compiler/BENCHMARK_CATEGORIES`.
+- Reframe benchmark report: `PASS` → `expectations_satisfied`; add
+  `epistemic_caveat` block.
+- Scaffold `experimentation_layer/` package (declared, empty) with
+  docstring describing the predict→build→observe→learn loop.
+- Tests-first for all of the above.
 
 ## CTO REVIEW #2 (commit `02d7658`)
 

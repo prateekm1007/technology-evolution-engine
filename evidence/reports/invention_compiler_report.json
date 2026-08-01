@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-01T16:37:31.821641+00:00",
+  "generated_at": "2026-08-01T16:50:40.030289+00:00",
   "method": "Live end-to-end compile of the reference test problem (portable MRI) through all 11 layers of the invention compiler. Verifies: (1) every layer emits its required schema keys, (2) scalar layers carry the Law 8 honesty block (evidence + assumptions + falsification_criteria), (3) the forbidden phrases ('this is a good idea' etc.) do not appear in the output.",
   "test_problem": {
     "problem": "Build a portable MRI scanner suitable for rural clinics without cryogenic helium",
@@ -16,7 +16,7 @@
     "time_horizon": "5-10 years"
   },
   "problem_id": "invention_060bc4edf436a6b5",
-  "duration_s": 0.239,
+  "duration_s": 0.24,
   "layer_count": 11,
   "schema_missing_per_layer": {},
   "law8_honesty_missing_layers": [],

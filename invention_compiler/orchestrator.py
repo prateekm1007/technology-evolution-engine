@@ -35,11 +35,11 @@ from datetime import datetime, timezone
 from typing import Dict, Any
 
 from .analogy_module import AnalogyModule
-from .physics_module import PhysicsModule
-from .chemistry_module import ChemistryModule
-from .biology_module import BiologyModule
-from .mathematics_module import MathematicsModule
-from .economics_module import EconomicsModule
+from .physics_knowledge_module import PhysicsKnowledgeModule
+from .chemistry_knowledge_module import ChemistryKnowledgeModule
+from .biology_knowledge_module import BiologyKnowledgeModule
+from .mathematics_knowledge_module import MathematicsKnowledgeModule
+from .economics_knowledge_module import EconomicsKnowledgeModule
 from .constraint_module import ConstraintModule
 from .architecture_module import ArchitectureModule
 from .simulation_module import SimulationModule
@@ -66,11 +66,11 @@ class InventionCompiler:
         # the "engine" name by satisfying: explicit model + empirical
         # validation + reproducible results.
         self.analogy = AnalogyModule(graph)
-        self.physics = PhysicsModule(graph)
-        self.chemistry = ChemistryModule(graph)
-        self.biology = BiologyModule(graph)
-        self.mathematics = MathematicsModule(graph)
-        self.economics = EconomicsModule(graph)
+        self.physics = PhysicsKnowledgeModule(graph)
+        self.chemistry = ChemistryKnowledgeModule(graph)
+        self.biology = BiologyKnowledgeModule(graph)
+        self.mathematics = MathematicsKnowledgeModule(graph)
+        self.economics = EconomicsKnowledgeModule(graph)
         self.constraint = ConstraintModule(graph)
         self.architecture = ArchitectureModule(graph)
         self.simulation = SimulationModule(graph)

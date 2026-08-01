@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-08-01T16:37:33.304648+00:00",
-  "method": "Live end-to-end compile of 5 reference problems through the 11-layer invention compiler. For each case, the composite feasibility score from Layer 5 (simulation) is mapped to a verdict bucket per INVENTION_COMPILER.md. PASS = verdict matches expected OR is within one bucket; FAIL = more than one bucket apart.",
+  "generated_at": "2026-08-01T16:50:41.524708+00:00",
+  "method": "Live end-to-end compile of reference problems through the 11-layer invention compiler. For each case, the composite feasibility score from Layer 5 (simulation) is mapped to a verdict bucket per INVENTION_COMPILER.md. expectations_satisfied = verdict matches expected OR is within one bucket; otherwise expectations_not_satisfied.",
   "verdict_buckets": {
     "feasible": ">=0.75",
     "potentially_feasible": "0.55-0.75",
@@ -10,20 +10,24 @@
   },
   "summary": {
     "total_cases": 6,
+    "expectations_satisfied": 6,
+    "expectations_not_satisfied": 0,
     "passed": 6,
-    "failed": 0,
-    "verdict": "PASS"
+    "verdict": "EXPECTATIONS_SATISFIED"
   },
+  "epistemic_caveat": "EXPECTATIONS SATISFIED IS NOT THE SAME AS CORRECTNESS. This benchmark suite tests whether the compiler produced the verdict the benchmarker expected. It does NOT test whether the compiler produced a verdict that matches reality. If we repeatedly tune the scoring system until it produces the answers we expected all along, we risk building a machine that reproduces our beliefs rather than discovers new truths. Real correctness requires the Experimentation layer to close the loop: predict -> build -> observe -> learn. Until that loop exists on at least one real invention, every 'expectations_satisfied' verdict here is provisional. Furthermore, the composite feasibility score is produced by knowledge modules at the 'encode' stage of the encode->reason->simulate->discover spectrum \u2014 they store laws and pathways as structured data but do NOT reason over them, simulate them, or discover new ones.",
+  "honesty_note": "A expectations_satisfied verdict means the compiler ran end-to-end and produced a defensible chain of reasoning, not that the compiler has determined whether the invention is feasible in the real world. See epistemic_caveat above.",
   "cases": [
     {
       "case_id": "case_001_portable_mri",
       "case_name": "Portable MRI",
+      "category": "reconstruction",
       "expected_verdict": "feasible",
       "actual_verdict": "potentially_feasible",
       "composite_feasibility": 0.6128,
       "bucket_distance_from_expected": 1,
-      "duration_s": 0.238,
-      "pass": true,
+      "duration_s": 0.239,
+      "expectations_satisfied": true,
       "rationale": "Reconstruction case. Portable MRI is a known-plausible invention (Hyperfine Swoop is FDA-cleared). Tests the compiler can recognize a feasible invention that already exists, rather than say 'impossible'.",
       "chain_summary": {
         "target_invention": "Build a portable MRI scanner suitable for rural clinics without cryogenic helium",
@@ -251,12 +255,13 @@
     {
       "case_id": "case_002_ammonia_synthesis",
       "case_name": "Solid-state ammonia synthesis",
+      "category": "forecasting",
       "expected_verdict": "uncertain",
       "actual_verdict": "partially_feasible",
       "composite_feasibility": 0.5428,
       "bucket_distance_from_expected": 1,
-      "duration_s": 0.24,
-      "pass": true,
+      "duration_s": 0.241,
+      "expectations_satisfied": true,
       "rationale": "Forecasting case. Haber-Bosch without high T/P is an open research problem. Tests the compiler can say 'uncertain' honestly rather than fabricate confidence.",
       "chain_summary": {
         "target_invention": "Synthesize ammonia from nitrogen and water at ambient temperature and pressure using electrochemistry",
@@ -483,12 +488,13 @@
     {
       "case_id": "case_003_rt_superconductors",
       "case_name": "Room-temperature superconductors",
+      "category": "forecasting",
       "expected_verdict": "unknown",
       "actual_verdict": "uncertain",
       "composite_feasibility": 0.3678,
       "bucket_distance_from_expected": 1,
-      "duration_s": 0.24,
-      "pass": true,
+      "duration_s": 0.242,
+      "expectations_satisfied": true,
       "rationale": "Forecasting case at the edge of physics. May be physically impossible. Recent LK-99 claims were retracted. Tests the compiler can say 'unknown' without claiming feasibility.",
       "chain_summary": {
         "target_invention": "Discover and engineer a material that superconducts at room temperature and ambient pressure",
@@ -718,12 +724,13 @@
     {
       "case_id": "case_004_carbon_negative_cement",
       "case_name": "Carbon-negative cement",
+      "category": "reconstruction",
       "expected_verdict": "potentially_feasible",
       "actual_verdict": "potentially_feasible",
       "composite_feasibility": 0.6477,
       "bucket_distance_from_expected": 0,
-      "duration_s": 0.241,
-      "pass": true,
+      "duration_s": 0.242,
+      "expectations_satisfied": true,
       "rationale": "Reconstruction case. Already exists in early commercial form (CarbonCure, Solidia, BioMason). Tests the compiler can distinguish 'potentially feasible' from 'feasible' \u2014 the tech works but has not yet captured the global cement market.",
       "chain_summary": {
         "target_invention": "Manufacture cement that absorbs more CO2 over its lifecycle than it emits during production",
@@ -956,12 +963,13 @@
     {
       "case_id": "case_005_artificial_photosynthesis",
       "case_name": "Artificial photosynthesis",
+      "category": "forecasting",
       "expected_verdict": "partially_feasible",
       "actual_verdict": "partially_feasible",
       "composite_feasibility": 0.5428,
       "bucket_distance_from_expected": 0,
-      "duration_s": 0.239,
-      "pass": true,
+      "duration_s": 0.242,
+      "expectations_satisfied": true,
       "rationale": "Forecasting case. Components work (PV electrolysis, photocatalytic water splitting) but a complete system that matches natural photosynthesis's efficiency does not yet exist. Tests the compiler can express 'partial feasibility' rather than binary pass/fail.",
       "chain_summary": {
         "target_invention": "Build a system that converts sunlight, CO2, and water into storable chemical fuel with efficiency exceeding natural photosynthesis",
@@ -1203,12 +1211,13 @@
     {
       "case_id": "case_006_cargo_airships",
       "case_name": "Cargo airships (resurrection)",
+      "category": "resurrection",
       "expected_verdict": "partially_feasible",
       "actual_verdict": "potentially_feasible",
       "composite_feasibility": 0.6177,
       "bucket_distance_from_expected": 1,
-      "duration_s": 0.239,
-      "pass": true,
+      "duration_s": 0.241,
+      "expectations_satisfied": true,
       "rationale": "Resurrection case. Airships failed as passenger transport (Hindenburg 1937, helium-unavailability). Tests the compiler can recognize that the original failure mode (hydrogen flammability) is now removable (helium + modern materials), and that the use case has shifted (cargo, not passengers). Expected verdict: partially_feasible \u2014 LTA Research and HAV Airlander are attempting this with mixed progress.",
       "chain_summary": {
         "target_invention": "Resurrect rigid airships for heavy-lift cargo transport to remote areas without runways",
@@ -1450,12 +1459,10 @@
       ]
     }
   ],
-  "honesty_note": "The composite feasibility score is produced by keyword-matching modules, NOT by scientific engines (per the CTO review of commit a3d167d). Until the domain modules are upgraded to true scientific engines with explicit models + empirical validation + reproducible results, these verdicts should be treated as architectural smoke tests, not as scientific assessments. A PASS means 'the compiler ran end-to-end and produced a defensible chain of reasoning', NOT 'the compiler has determined whether the invention is feasible in the real world.'",
   "next_actions": [
-    "Upgrade physics_module to a real physics_engine with conservation laws, thermodynamics, fluid mechanics, EM, optics, mechanics, materials science, differential equations, optimization, and dimensional analysis.",
-    "Upgrade chemistry_module to a real chemistry_engine with reaction pathways, molecular structure models, kinetics, thermodynamics, equilibrium models, electrochemistry, materials properties.",
-    "Upgrade biology_module, economics_module, mathematics_module to real engines.",
-    "Implement information_theory_module, thermodynamics_module, control_theory_module (currently stubbed in Layer 1).",
-    "After each upgrade, re-run this benchmark suite and verify the verdict for the affected cases moves CLOSER to the expected verdict, not further away."
+    "Move domain modules up the encode->reason->simulate->discover spectrum. Currently all at 'encode' \u2014 they store laws but do not reason over them.",
+    "Implement the Experimentation layer (predict -> build -> observe -> learn) on at least one real invention. Until that loop exists, every verdict is provisional.",
+    "Add a Creation-category benchmark case (a complete 11-layer blueprint verified by an actual build). The system does not honestly claim to be an invention compiler until at least one Creation case exists.",
+    "Resist the temptation to tune complexity penalties to flip failing cases to expectations_satisfied without a corresponding scientific justification (a real law encoded, a real pathway added, a real counterfactual documented)."
   ]
 }

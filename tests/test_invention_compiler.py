@@ -247,15 +247,15 @@ def test_modules_are_decoupled():
     """Per ANTI_ENTROPY.md rule 'Decouple modules': each module must
     accept the graph as a constructor argument, NOT read it from a
     global. This makes them testable in isolation."""
-    from invention_compiler.physics_module import PhysicsModule
-    from invention_compiler.chemistry_module import ChemistryModule
+    from invention_compiler.physics_knowledge_module import PhysicsKnowledgeModule
+    from invention_compiler.chemistry_knowledge_module import ChemistryKnowledgeModule
     from invention_compiler.dependency_module import DependencyModule
     from invention_compiler.blueprint_module import BlueprintModule
     graph_path = ROOT / "data" / "civilization_graph.json"
     with graph_path.open() as f:
         graph = json.load(f)
     # Each must construct from a graph argument.
-    for cls in (PhysicsModule, ChemistryModule, DependencyModule, BlueprintModule):
+    for cls in (PhysicsKnowledgeModule, ChemistryKnowledgeModule, DependencyModule, BlueprintModule):
         engine = cls(graph=graph)
         assert engine is not None
 

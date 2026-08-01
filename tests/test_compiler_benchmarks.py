@@ -109,9 +109,11 @@ def test_benchmark_runner_exists():
 
 def test_benchmark_report_honesty_note_present():
     """The benchmark report MUST carry the honesty_note that explains
-    the keyword-matching limitation. Per INVENTION_COMPILER.md, the
-    CTO has explicitly NOT approved the scientific claims — the report
-    must say so explicitly, not bury the caveat."""
+    the limitation. Per INVENTION_COMPILER.md, the CTO has explicitly
+    NOT approved the scientific claims — the report must say so
+    explicitly, not bury the caveat. Per CTO review #3, the report
+    must also carry an epistemic_caveat distinguishing
+    expectations_satisfied from correctness."""
     # Run the suite if the report doesn't exist.
     report_path = ROOT / "evidence" / "reports" / "compiler_benchmark_report.json"
     if not report_path.exists():
@@ -123,13 +125,14 @@ def test_benchmark_report_honesty_note_present():
     report = json.loads(report_path.read_text())
     assert "honesty_note" in report, \
         "benchmark report missing honesty_note — CTO review requires it"
-    note = report["honesty_note"].lower()
-    assert "keyword" in note or "module" in note, \
-        "honesty_note must explicitly say the modules are keyword-matching, " \
-        "not scientific engines"
-    assert "smoke test" in note or "not as scientific" in note, \
-        "honesty_note must explicitly say PASS means 'smoke test', not " \
-        "'scientific assessment'"
+    assert "epistemic_caveat" in report, \
+        "benchmark report missing epistemic_caveat — CTO review #3 requires it"
+    caveat = report["epistemic_caveat"].lower()
+    assert "expectations" in caveat and "correctness" in caveat, \
+        "epistemic_caveat must explicitly distinguish expectations from correctness"
+    assert "smoke test" in report["honesty_note"].lower() \
+           or "expectations_satisfied" in report["honesty_note"].lower(), \
+        "honesty_note must explicitly say what 'expectations_satisfied' means"
 
 
 def test_benchmark_report_carries_next_actions():

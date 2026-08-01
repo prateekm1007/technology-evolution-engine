@@ -33,7 +33,13 @@ REPORT_PATH = ROOT / "evidence" / "reports" / "compiler_benchmark_report.json"
 
 
 def run_one_case(compiler, case):
-    """Compile a single case and compare to expected verdict."""
+    """Compile a single case and compare to expected verdict.
+
+    Per CTO review #3: the result key is 'expectations_satisfied', NOT
+    'pass'. 'PASS' would imply correctness; 'expectations_satisfied'
+    is honest about what was actually tested (did the output match
+    what the benchmarker expected?).
+    """
     start = time.time()
     try:
         result = compiler.compile(case["problem"])
@@ -49,27 +55,29 @@ def run_one_case(compiler, case):
             return {
                 "case_id": case["id"],
                 "case_name": case["name"],
+                "category": case.get("category"),
                 "expected_verdict": case["expected_verdict"],
                 "actual_verdict": "unknown",
                 "composite_feasibility": None,
                 "duration_s": duration,
-                "pass": False,
+                "expectations_satisfied": False,
                 "reason": "composite_feasibility_baseline is None — "
                           "compiler did not produce a feasibility score",
                 "chain_summary": chain,
             }
         actual = verdict_from_composite(composite)
         dist = bucket_distance(actual, case["expected_verdict"])
-        passed = dist <= 1  # exact match OR adjacent bucket
+        satisfied = dist <= 1  # exact match OR adjacent bucket
         return {
             "case_id": case["id"],
             "case_name": case["name"],
+            "category": case.get("category"),
             "expected_verdict": case["expected_verdict"],
             "actual_verdict": actual,
             "composite_feasibility": round(composite, 4),
             "bucket_distance_from_expected": dist,
             "duration_s": duration,
-            "pass": passed,
+            "expectations_satisfied": satisfied,
             "rationale": case.get("rationale"),
             "chain_summary": chain,
             # Include the full layer 0 + layer 10 for inspection
@@ -83,11 +91,12 @@ def run_one_case(compiler, case):
         return {
             "case_id": case["id"],
             "case_name": case["name"],
+            "category": case.get("category"),
             "expected_verdict": case["expected_verdict"],
             "actual_verdict": "error",
             "composite_feasibility": None,
             "duration_s": duration,
-            "pass": False,
+            "expectations_satisfied": False,
             "reason": f"{type(e).__name__}: {e}",
             "trace": traceback.format_exc(),
         }
@@ -109,20 +118,20 @@ def main():
     print()
 
     results = []
-    passes = 0
-    fails = 0
+    satisfied = 0
+    not_satisfied = 0
     for case in CASES:
-        print(f"--- {case['name']} (expected: {case['expected_verdict']}) ---")
+        print(f"--- {case['name']} (category: {case.get('category','?')}, expected: {case['expected_verdict']}) ---")
         r = run_one_case(compiler, case)
         results.append(r)
-        if r["pass"]:
-            passes += 1
-            print(f"  PASS — actual: {r['actual_verdict']} "
+        if r["expectations_satisfied"]:
+            satisfied += 1
+            print(f"  EXPECTATIONS_SATISFIED — actual: {r['actual_verdict']} "
                   f"(composite={r.get('composite_feasibility')}, "
                   f"distance={r.get('bucket_distance_from_expected', '?')})")
         else:
-            fails += 1
-            print(f"  FAIL — actual: {r['actual_verdict']}, "
+            not_satisfied += 1
+            print(f"  EXPECTATIONS_NOT_SATISFIED — actual: {r['actual_verdict']}, "
                   f"expected: {r['expected_verdict']}, "
                   f"reason: {r.get('reason', 'bucket_distance > 1')}")
         print()
@@ -131,12 +140,12 @@ def main():
     report = {
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "method": (
-            "Live end-to-end compile of 5 reference problems through the "
+            "Live end-to-end compile of reference problems through the "
             "11-layer invention compiler. For each case, the composite "
             "feasibility score from Layer 5 (simulation) is mapped to a "
-            "verdict bucket per INVENTION_COMPILER.md. PASS = verdict "
-            "matches expected OR is within one bucket; FAIL = more than "
-            "one bucket apart."
+            "verdict bucket per INVENTION_COMPILER.md. "
+            "expectations_satisfied = verdict matches expected OR is within "
+            "one bucket; otherwise expectations_not_satisfied."
         ),
         "verdict_buckets": {
             "feasible": ">=0.75",
@@ -147,39 +156,55 @@ def main():
         },
         "summary": {
             "total_cases": len(results),
-            "passed": passes,
-            "failed": fails,
-            "verdict": "PASS" if fails == 0 else "FAIL",
+            "expectations_satisfied": satisfied,
+            "expectations_not_satisfied": not_satisfied,
+            # Keep 'passed' as an alias for backwards-compat with
+            # tests that read it, but the canonical field is
+            # expectations_satisfied.
+            "passed": satisfied,
+            "verdict": "EXPECTATIONS_SATISFIED" if not_satisfied == 0
+                       else "EXPECTATIONS_NOT_SATISFIED",
         },
-        "cases": results,
-        "honesty_note": (
-            "The composite feasibility score is produced by keyword-"
-            "matching modules, NOT by scientific engines (per the CTO "
-            "review of commit a3d167d). Until the domain modules are "
-            "upgraded to true scientific engines with explicit models "
-            "+ empirical validation + reproducible results, these "
-            "verdicts should be treated as architectural smoke tests, "
-            "not as scientific assessments. A PASS means 'the compiler "
-            "ran end-to-end and produced a defensible chain of "
-            "reasoning', NOT 'the compiler has determined whether the "
-            "invention is feasible in the real world.'"
+        "epistemic_caveat": (
+            "EXPECTATIONS SATISFIED IS NOT THE SAME AS CORRECTNESS. "
+            "This benchmark suite tests whether the compiler produced the "
+            "verdict the benchmarker expected. It does NOT test whether "
+            "the compiler produced a verdict that matches reality. If we "
+            "repeatedly tune the scoring system until it produces the "
+            "answers we expected all along, we risk building a machine "
+            "that reproduces our beliefs rather than discovers new truths. "
+            "Real correctness requires the Experimentation layer to close "
+            "the loop: predict -> build -> observe -> learn. Until that "
+            "loop exists on at least one real invention, every "
+            "'expectations_satisfied' verdict here is provisional. "
+            "Furthermore, the composite feasibility score is produced by "
+            "knowledge modules at the 'encode' stage of the "
+            "encode->reason->simulate->discover spectrum — they store "
+            "laws and pathways as structured data but do NOT reason over "
+            "them, simulate them, or discover new ones."
         ),
+        "honesty_note": (
+            "A expectations_satisfied verdict means the compiler ran "
+            "end-to-end and produced a defensible chain of reasoning, "
+            "not that the compiler has determined whether the invention "
+            "is feasible in the real world. See epistemic_caveat above."
+        ),
+        "cases": results,
         "next_actions": [
-            "Upgrade physics_module to a real physics_engine with "
-            "conservation laws, thermodynamics, fluid mechanics, EM, "
-            "optics, mechanics, materials science, differential "
-            "equations, optimization, and dimensional analysis.",
-            "Upgrade chemistry_module to a real chemistry_engine with "
-            "reaction pathways, molecular structure models, kinetics, "
-            "thermodynamics, equilibrium models, electrochemistry, "
-            "materials properties.",
-            "Upgrade biology_module, economics_module, mathematics_module "
-            "to real engines.",
-            "Implement information_theory_module, thermodynamics_module, "
-            "control_theory_module (currently stubbed in Layer 1).",
-            "After each upgrade, re-run this benchmark suite and verify "
-            "the verdict for the affected cases moves CLOSER to the "
-            "expected verdict, not further away.",
+            "Move domain modules up the encode->reason->simulate->discover "
+            "spectrum. Currently all at 'encode' — they store laws but "
+            "do not reason over them.",
+            "Implement the Experimentation layer (predict -> build -> "
+            "observe -> learn) on at least one real invention. Until "
+            "that loop exists, every verdict is provisional.",
+            "Add a Creation-category benchmark case (a complete 11-layer "
+            "blueprint verified by an actual build). The system does not "
+            "honestly claim to be an invention compiler until at least "
+            "one Creation case exists.",
+            "Resist the temptation to tune complexity penalties to flip "
+            "failing cases to expectations_satisfied without a "
+            "corresponding scientific justification (a real law encoded, "
+            "a real pathway added, a real counterfactual documented).",
         ],
     }
 
@@ -187,11 +212,12 @@ def main():
     REPORT_PATH.write_text(json.dumps(report, indent=2, default=str) + "\n",
                            encoding="utf-8")
     print("=" * 60)
-    print(f"BENCHMARK SUITE COMPLETE: {passes}/{len(results)} PASS, "
-          f"{fails} FAIL")
+    print(f"BENCHMARK SUITE COMPLETE: {satisfied}/{len(results)} expectations_satisfied, "
+          f"{not_satisfied} not_satisfied")
+    print(f"  (Note: expectations_satisfied ≠ correctness. See epistemic_caveat in report.)")
     print(f"Report: {REPORT_PATH}")
     print("=" * 60)
-    return 0 if fails == 0 else 1
+    return 0 if not_satisfied == 0 else 1
 
 
 if __name__ == "__main__":

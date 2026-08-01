@@ -22,8 +22,16 @@ Law 8 honesty: outputs carry evidence + assumptions + falsification_criteria.
 from typing import Dict, Any, List
 
 
-class MathematicsModule:
+class MathematicsKnowledgeModule:
     """Encodes mathematical structures and applies them to problems."""
+
+    # CTO review #3: this module is at the "encode" stage of the
+    # encode → reason → simulate → discover spectrum. It stores
+    # optimization formulations, probability models, graph theory
+    # concepts, differential equation types, and control theory
+    # concepts as structured data. It does NOT reason over them,
+    # simulate them, or discover new ones.
+    STAGE = "encode"
 
     # ------------------------------------------------------------------
     # Optimization formulations

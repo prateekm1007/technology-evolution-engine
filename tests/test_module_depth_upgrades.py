@@ -37,9 +37,9 @@ def test_physics_module_exposes_conservation_laws():
     """The upgraded physics module must expose the canonical
     conservation laws (mass, energy, momentum, charge) as a
     queryable data structure, not as a keyword filter."""
-    from invention_compiler.physics_module import PhysicsModule
+    from invention_compiler.physics_knowledge_module import PhysicsKnowledgeModule
     g = _load_graph()
-    m = PhysicsModule(graph=g)
+    m = PhysicsKnowledgeModule(graph=g)
     # The new API: laws() returns a dict of named laws.
     laws = m.laws()
     assert "mass_conservation" in laws
@@ -50,9 +50,9 @@ def test_physics_module_exposes_conservation_laws():
 
 def test_physics_module_exposes_thermodynamics_laws():
     """The upgraded module must expose the four laws of thermodynamics."""
-    from invention_compiler.physics_module import PhysicsModule
+    from invention_compiler.physics_knowledge_module import PhysicsKnowledgeModule
     g = _load_graph()
-    m = PhysicsModule(graph=g)
+    m = PhysicsKnowledgeModule(graph=g)
     laws = m.laws()
     assert "zeroth_law_thermodynamics" in laws
     assert "first_law_thermodynamics" in laws
@@ -63,9 +63,9 @@ def test_physics_module_exposes_thermodynamics_laws():
 def test_physics_module_carries_units_and_dimensional_analysis():
     """The upgraded module must expose SI base units and a
     dimensional-analysis check."""
-    from invention_compiler.physics_module import PhysicsModule
+    from invention_compiler.physics_knowledge_module import PhysicsKnowledgeModule
     g = _load_graph()
-    m = PhysicsModule(graph=g)
+    m = PhysicsKnowledgeModule(graph=g)
     units = m.units()
     # SI base units.
     for u in ("kg", "m", "s", "A", "K", "mol", "cd"):
@@ -81,9 +81,9 @@ def test_physics_module_carries_units_and_dimensional_analysis():
 def test_physics_module_laws_carry_equations():
     """Each conservation law must carry its governing equation as a
     structured object — not just a string label."""
-    from invention_compiler.physics_module import PhysicsModule
+    from invention_compiler.physics_knowledge_module import PhysicsKnowledgeModule
     g = _load_graph()
-    m = PhysicsModule(graph=g)
+    m = PhysicsKnowledgeModule(graph=g)
     laws = m.laws()
     energy = laws["energy_conservation"]
     assert "equation" in energy
@@ -100,9 +100,9 @@ def test_physics_module_differentiates_problems():
     Concretely: a problem involving superconductivity should surface
     different physics laws than a problem involving fluid dynamics.
     """
-    from invention_compiler.physics_module import PhysicsModule
+    from invention_compiler.physics_knowledge_module import PhysicsKnowledgeModule
     g = _load_graph()
-    m = PhysicsModule(graph=g)
+    m = PhysicsKnowledgeModule(graph=g)
     out_a = m.analyze({
         "problem": "Build a portable MRI scanner",
         "domain": "medical_imaging",
@@ -117,7 +117,7 @@ def test_physics_module_differentiates_problems():
     laws_a = set(out_a.get("applicable_laws", []))
     laws_b = set(out_b.get("applicable_laws", []))
     assert laws_a != laws_b, (
-        "physics_module produced identical applicable_laws for two "
+        "physics module produced identical applicable_laws for two "
         "different problems — the depth upgrade failed to differentiate."
     )
 
@@ -129,9 +129,9 @@ def test_physics_module_differentiates_problems():
 def test_chemistry_module_exposes_reaction_pathways():
     """The upgraded chemistry module must encode reaction pathways as
     structured objects, not as a keyword list."""
-    from invention_compiler.chemistry_module import ChemistryModule
+    from invention_compiler.chemistry_knowledge_module import ChemistryKnowledgeModule
     g = _load_graph()
-    m = ChemistryModule(graph=g)
+    m = ChemistryKnowledgeModule(graph=g)
     pathways = m.reaction_pathways()
     assert isinstance(pathways, list)
     assert len(pathways) > 0
@@ -146,9 +146,9 @@ def test_chemistry_module_exposes_reaction_pathways():
 def test_chemistry_module_exposes_kinetics_model():
     """The upgraded module must expose kinetic rate laws
     (Arrhenius, Michaelis-Menten) as structured models."""
-    from invention_compiler.chemistry_module import ChemistryModule
+    from invention_compiler.chemistry_knowledge_module import ChemistryKnowledgeModule
     g = _load_graph()
-    m = ChemistryModule(graph=g)
+    m = ChemistryKnowledgeModule(graph=g)
     kinetics = m.kinetics_models()
     assert "arrhenius" in kinetics
     # Arrhenius: k = A * exp(-Ea / (R*T))
@@ -163,21 +163,20 @@ def test_chemistry_module_exposes_kinetics_model():
 
 def test_chemistry_module_exposes_equilibrium_constants():
     """The upgraded module must expose equilibrium-constant formulas."""
-    from invention_compiler.chemistry_module import ChemistryModule
+    from invention_compiler.chemistry_knowledge_module import ChemistryKnowledgeModule
     g = _load_graph()
-    m = ChemistryModule(graph=g)
+    m = ChemistryKnowledgeModule(graph=g)
     eq = m.equilibrium_models()
     assert "K_eq" in eq
     assert "equation" in eq["K_eq"]
-    # K_eq = [products]^stoich / [reactants]^stoich
 
 
 def test_chemistry_module_exposes_energy_states():
     """The upgraded module must expose Gibbs free energy as the
     canonical energy-state model."""
-    from invention_compiler.chemistry_module import ChemistryModule
+    from invention_compiler.chemistry_knowledge_module import ChemistryKnowledgeModule
     g = _load_graph()
-    m = ChemistryModule(graph=g)
+    m = ChemistryKnowledgeModule(graph=g)
     states = m.energy_states()
     assert "gibbs_free_energy" in states
     gibbs = states["gibbs_free_energy"]
@@ -191,9 +190,9 @@ def test_chemistry_module_exposes_energy_states():
 def test_chemistry_module_differentiates_problems():
     """A problem involving electrochemistry should surface different
     pathways than one involving polymer synthesis."""
-    from invention_compiler.chemistry_module import ChemistryModule
+    from invention_compiler.chemistry_knowledge_module import ChemistryKnowledgeModule
     g = _load_graph()
-    m = ChemistryModule(graph=g)
+    m = ChemistryKnowledgeModule(graph=g)
     out_a = m.analyze({
         "problem": "Electrochemical ammonia synthesis",
         "domain": "chemistry",
@@ -207,7 +206,7 @@ def test_chemistry_module_differentiates_problems():
     pathways_a = set(out_a.get("applicable_pathways", []))
     pathways_b = set(out_b.get("applicable_pathways", []))
     assert pathways_a != pathways_b, (
-        "chemistry_module produced identical pathways for two different "
+        "chemistry module produced identical pathways for two different "
         "problems — the depth upgrade failed to differentiate."
     )
 
@@ -219,9 +218,9 @@ def test_chemistry_module_differentiates_problems():
 def test_mathematics_module_exposes_optimization_formulations():
     """The upgraded mathematics module must expose optimization
     formulations (LP, convex, etc.) as structured objects."""
-    from invention_compiler.mathematics_module import MathematicsModule
+    from invention_compiler.mathematics_knowledge_module import MathematicsKnowledgeModule
     g = _load_graph()
-    m = MathematicsModule(graph=g)
+    m = MathematicsKnowledgeModule(graph=g)
     opt = m.optimization_formulations()
     assert "linear_programming" in opt
     assert "convex_optimization" in opt
@@ -233,9 +232,9 @@ def test_mathematics_module_exposes_optimization_formulations():
 def test_mathematics_module_exposes_probability_distributions():
     """The upgraded module must expose common probability
     distributions as structured models."""
-    from invention_compiler.mathematics_module import MathematicsModule
+    from invention_compiler.mathematics_knowledge_module import MathematicsKnowledgeModule
     g = _load_graph()
-    m = MathematicsModule(graph=g)
+    m = MathematicsKnowledgeModule(graph=g)
     probs = m.probability_models()
     assert "normal" in probs
     assert "bernoulli" in probs
@@ -244,9 +243,9 @@ def test_mathematics_module_exposes_probability_distributions():
 
 def test_mathematics_module_exposes_graph_theory():
     """The upgraded module must expose graph-theory concepts."""
-    from invention_compiler.mathematics_module import MathematicsModule
+    from invention_compiler.mathematics_knowledge_module import MathematicsKnowledgeModule
     g = _load_graph()
-    m = MathematicsModule(graph=g)
+    m = MathematicsKnowledgeModule(graph=g)
     gt = m.graph_theory_concepts()
     assert "shortest_path" in gt
     assert "connectivity" in gt
@@ -255,9 +254,9 @@ def test_mathematics_module_exposes_graph_theory():
 
 def test_mathematics_module_exposes_differential_equation_types():
     """The upgraded module must expose ODE and PDE types."""
-    from invention_compiler.mathematics_module import MathematicsModule
+    from invention_compiler.mathematics_knowledge_module import MathematicsKnowledgeModule
     g = _load_graph()
-    m = MathematicsModule(graph=g)
+    m = MathematicsKnowledgeModule(graph=g)
     des = m.differential_equation_types()
     assert "ode_first_order" in des
     assert "ode_second_order" in des
@@ -267,9 +266,9 @@ def test_mathematics_module_exposes_differential_equation_types():
 
 def test_mathematics_module_exposes_control_theory():
     """The upgraded module must expose control-theory concepts."""
-    from invention_compiler.mathematics_module import MathematicsModule
+    from invention_compiler.mathematics_knowledge_module import MathematicsKnowledgeModule
     g = _load_graph()
-    m = MathematicsModule(graph=g)
+    m = MathematicsKnowledgeModule(graph=g)
     ct = m.control_theory_concepts()
     assert "pid" in ct
     assert "state_space" in ct
@@ -373,11 +372,12 @@ def test_resurrection_module_counterfactual_is_specific():
 # 4-category benchmark taxonomy
 # ----------------------------------------------------------------------
 
-def test_benchmark_taxonomy_has_4_categories():
-    """The benchmark suite must define the 4 CTO-mandated categories."""
+def test_benchmark_taxonomy_has_5_categories():
+    """Per CTO review #3, the benchmark suite must define 5 categories:
+    reconstruction, resurrection, forecasting, synthesis, creation."""
     from benchmarks.compiler import BENCHMARK_CATEGORIES
     assert set(BENCHMARK_CATEGORIES.keys()) == {
-        "reconstruction", "resurrection", "forecasting", "synthesis"
+        "reconstruction", "resurrection", "forecasting", "synthesis", "creation"
     }
 
 

@@ -7,7 +7,10 @@ processes, biomedical systems) from the civilization graph.
 from typing import Dict, Any, List
 
 
-class BiologyModule:
+class BiologyKnowledgeModule:
+    # CTO review #3: this module is at the "encode" stage of the
+    # encode → reason → simulate → discover spectrum.
+    STAGE = "encode"
     BIOLOGY_KEYWORDS = (
         "bio", "cell", "membrane", "enzyme", "protein", "genetic",
         "genomic", "neural", "tissue", "implant", "medical",

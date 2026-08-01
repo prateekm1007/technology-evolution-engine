@@ -35,20 +35,24 @@ Verdict buckets (composite feasibility → verdict):
 
 BENCHMARK_CATEGORIES = {
     "reconstruction": {
-        "question": "Can we rediscover existing inventions?",
+        "question": "Can we rediscover what humanity already knows?",
         "examples": "Portable MRI (Hyperfine Swoop exists), Carbon-negative cement (CarbonCure exists)",
     },
     "resurrection": {
-        "question": "Can we rediscover abandoned inventions?",
+        "question": "Can we rediscover abandoned possibilities?",
         "examples": "Airships (cargo variant), Iridium (relaunched)",
     },
     "forecasting": {
-        "question": "Can we anticipate future inventions?",
+        "question": "Can we identify what is becoming feasible?",
         "examples": "Solid-state ammonia synthesis (active research), Artificial photosynthesis (active research)",
     },
     "synthesis": {
-        "question": "Can we discover entirely new combinations?",
+        "question": "Can we discover combinations nobody has considered?",
         "examples": "TBD — novel cross-domain pairs the system surfaces that no human has built yet",
+    },
+    "creation": {
+        "question": "Can we generate a blueprint that somebody can actually build?",
+        "examples": "TBD — a complete 11-layer blueprint verified by an actual build. The system does not honestly claim to be an invention compiler until at least one Creation case has been verified.",
     },
 }
 

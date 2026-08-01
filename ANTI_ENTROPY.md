@@ -184,6 +184,67 @@ does keyword matching is lying — and per the "use the word 'engine'
 honestly" rule, lies compound. Encode the actual principle or admit
 you haven't.
 
+### Don't reward agreement with priors (CTO-mandated, review #3)
+
+The benchmark suite tests whether the compiler produces the verdict
+the benchmarker expected. That is NOT the same as testing whether
+the compiler produces a verdict that matches reality.
+
+If we repeatedly tune the scoring system until it produces the
+answers we expected all along, we risk building a machine that
+**reproduces our beliefs** rather than **discovers new truths**.
+
+Operational rules:
+
+1. The benchmark report must use the language
+   "expectations_satisfied", not "PASS". PASS implies correctness;
+   expectations_satisfied is honest about what was actually tested.
+
+2. The benchmark report must carry an `epistemic_caveat` block
+   explaining the distinction.
+
+3. No module may be tuned specifically to flip a benchmark case
+   from FAIL to expectations_satisfied without a corresponding
+   scientific justification (a real law encoded, a real pathway
+   added, a real counterfactual documented). Tuning complexity
+   penalties to "make the test pass" is exactly the failure mode
+   this rule exists to prevent.
+
+4. Real correctness requires the Experimentation layer (see
+   INVENTION_COMPILER.md) to close the loop: predict -> build ->
+   observe -> learn. Until that loop exists on at least one real
+   invention, every "expectations_satisfied" verdict is
+   provisional.
+
+5. The Creation benchmark level (the 5th level, added in CTO
+   review #3) is the only level that tests generation rather than
+   classification. The system does not honestly claim to be an
+   invention compiler until at least one Creation case has been
+   verified by an actual build.
+
+### Use the knowledge spectrum honestly (CTO-mandated, review #3)
+
+The 5 domain modules (physics, chemistry, biology, mathematics,
+economics) sit on a spectrum:
+
+| Stage | What it does | Name pattern |
+|---|---|---|
+| Encode | Store laws/equations as structured data | `*_knowledge_module.py` |
+| Reason | Apply laws to derive conclusions | `*_reasoning_module.py` |
+| Simulate | Numerically solve the laws | `*_simulation_module.py` |
+| Discover | Find laws not previously known | `*_discovery_module.py` |
+
+The current domain modules are at the **encode** stage. They are
+renamed `*_knowledge_module.py` to make this explicit. A module
+may NOT be renamed up the spectrum (e.g., to `*_reasoning_module`)
+until the verification cycle has recorded at least one pass AND
+one fail for the new capability against real data.
+
+This is the same honesty rule as "engine" vs "module", applied one
+level deeper. Calling something "physics_reasoning_module" when it
+only encodes laws (and doesn't reason over them) is the same kind
+of semantic inflation the CTO caught at the engine/module level.
+
 ---
 
 ## How these rules interact with Law 8

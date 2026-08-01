@@ -224,12 +224,12 @@ class SimulationModule:
         return math.sqrt(variance)
 
     def _count_applicable_laws(self, problem: Dict[str, Any]) -> int:
-        """Use the physics_module to count applicable laws for this problem.
+        """Use the physics_knowledge_module to count applicable laws for this problem.
         Returns 0 if the physics module isn't available (shouldn't happen
         in normal operation since the orchestrator instantiates it)."""
         try:
-            from .physics_module import PhysicsModule
-            physics = PhysicsModule(self.graph)
+            from .physics_knowledge_module import PhysicsKnowledgeModule
+            physics = PhysicsKnowledgeModule(self.graph)
             out = physics.analyze(problem)
             return len(out.get("applicable_laws", []))
         except Exception:
