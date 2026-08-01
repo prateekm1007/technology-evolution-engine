@@ -1,0 +1,152 @@
+{
+  "generated_at": "2026-08-01T19:14:04.623599+00:00",
+  "cycle": 1,
+  "verdict": "NEEDS_ATTENTION",
+  "claimed_fixes": [
+    {
+      "id": "F-AUD-001a",
+      "claim": "dependency_module walrus-operator bug fixed",
+      "claim_source": "audit/forensic-review branch (b7a3cab) + gap2+7 commit (a701d77) claims to fix causal classification",
+      "file": "invention_compiler/dependency_module.py",
+      "pattern": "target_id\\s+if\\s*\\(target_id\\s*:=\\s*p\\.get\\(\\\"id\\\"\\)\\)",
+      "should_exist": false,
+      "pattern_found": true,
+      "landed": false,
+      "status": "bug_still_present",
+      "severity": "P1",
+      "instruction": "Remove the walrus operator. Pass target_node_id directly as the target argument."
+    },
+    {
+      "id": "F-AUD-001b",
+      "claim": "dependency_module direction bug fixed (edges where target is SOURCE, not TARGET)",
+      "claim_source": "audit/forensic-review branch (b7a3cab)",
+      "file": "invention_compiler/dependency_module.py",
+      "pattern": "e\\.get\\(\"target\"\\)\\s*==\\s*target\\s*$",
+      "should_exist": false,
+      "pattern_found": true,
+      "landed": false,
+      "status": "bug_still_present",
+      "severity": "P1",
+      "instruction": "Change e.get('target') == target to e.get('source') == target. A node's prerequisites are edges where the node is the SOURCE (per LineageMapper convention: A --requires--> B means A requires B)."
+    },
+    {
+      "id": "F-AUD-002",
+      "claim": "CoreAdapter.read_evidence() shares _read_ledger_safely() helper",
+      "claim_source": "audit/forensic-review branch (b7a3cab); F-013 tracked as OPEN on main",
+      "file": "web/backend/adapters/core.py",
+      "pattern": "_read_ledger_safely",
+      "should_exist": true,
+      "pattern_found": false,
+      "landed": false,
+      "status": "not_landed",
+      "severity": "P1",
+      "instruction": "Add _read_ledger_safely() helper to core.py and have read_evidence() delegate to it. main.py::evidence() should also delegate. Closes F-013."
+    },
+    {
+      "id": "F-AUD-007",
+      "claim": "graph_retriever._cem() uses context manager (no bare open().read())",
+      "claim_source": "audit/forensic-review branch (b7a3cab)",
+      "file": "product/retrieval/graph_retriever.py",
+      "pattern": "open\\([^)]*\\)\\.read\\(\\)",
+      "should_exist": false,
+      "pattern_found": false,
+      "landed": true,
+      "status": "landed",
+      "severity": "P3",
+      "instruction": "Convert bare open(...).read() to 'with open(...) as f: content = f.read()'."
+    },
+    {
+      "id": "F-AUD-012",
+      "claim": "orchestrator._chain_summary() derives verification_status (not hardcoded)",
+      "claim_source": "audit/forensic-review branch (b7a3cab)",
+      "file": "invention_compiler/orchestrator.py",
+      "pattern": "\"verification_status\":\\s*\"integrated\"",
+      "should_exist": false,
+      "pattern_found": true,
+      "landed": false,
+      "status": "bug_still_present",
+      "severity": "P2",
+      "instruction": "Derive verification_status from layers[8].get('verification_status') instead of hardcoding 'integrated'."
+    }
+  ],
+  "versioned_duplicates": [
+    {
+      "file": "scripts/generate_delta_report_v2.py",
+      "pattern_matched": "_v\\d+\\.py$",
+      "base_file_exists": true,
+      "base_file": "scripts/generate_delta_report.py"
+    },
+    {
+      "file": "scripts/run_20_invention_experiment_v4.py",
+      "pattern_matched": "_v\\d+\\.py$",
+      "base_file_exists": true,
+      "base_file": "scripts/run_20_invention_experiment.py"
+    },
+    {
+      "file": "scripts/run_20_invention_experiment_v5.py",
+      "pattern_matched": "_v\\d+\\.py$",
+      "base_file_exists": true,
+      "base_file": "scripts/run_20_invention_experiment.py"
+    },
+    {
+      "file": "scripts/run_20_invention_experiment_v6.py",
+      "pattern_matched": "_v\\d+\\.py$",
+      "base_file_exists": true,
+      "base_file": "scripts/run_20_invention_experiment.py"
+    },
+    {
+      "file": "scripts/run_20_invention_experiment_v3.py",
+      "pattern_matched": "_v\\d+\\.py$",
+      "base_file_exists": true,
+      "base_file": "scripts/run_20_invention_experiment.py"
+    },
+    {
+      "file": "scripts/run_20_invention_experiment_v2.py",
+      "pattern_matched": "_v\\d+\\.py$",
+      "base_file_exists": true,
+      "base_file": "scripts/run_20_invention_experiment.py"
+    }
+  ],
+  "stale_failures": [
+    {
+      "finding": "F-005",
+      "current_status": "OPEN \u2014 evidence() no longer 500s on it (F-006 fix), but the",
+      "expected_status": "RESOLVED",
+      "reason": "ledger was regenerated (10 parseable entries); F-014 regression tests pass"
+    },
+    {
+      "finding": "F-013",
+      "current_status": "OPEN \u2014 `core.py` should reuse the same total-corruption-aware",
+      "expected_status": "RESOLVED",
+      "reason": "fix exists in audit/forensic-review branch (shared _read_ledger_safely helper); not merged to main"
+    },
+    {
+      "finding": "F-014",
+      "current_status": "OPEN \u2014 these tests will flip green when (and only when) the",
+      "expected_status": "RESOLVED",
+      "reason": "ledger was regenerated (10 parseable entries); F-014 regression tests pass"
+    },
+    {
+      "finding": "F-015",
+      "current_status": "OPEN.",
+      "expected_status": "RESOLVED",
+      "reason": "fix exists in audit/forensic-review branch (shared _read_ledger_safely helper); not merged to main"
+    }
+  ],
+  "copy_paste_bugs": {
+    "bug": "copy-paste: compares the same batch to itself",
+    "batches": [
+      "invention_batch_003",
+      "invention_batch_003"
+    ],
+    "file": "scripts/generate_delta_report_v2.py",
+    "severity": "P2",
+    "instruction": "Fix the second BATCH_003 assignment to point at a different batch, OR delete this duplicate script and parameterize generate_delta_report.py."
+  },
+  "summary": {
+    "fixes_not_landed": 4,
+    "versioned_duplicates": 6,
+    "stale_failures": 4,
+    "copy_paste_bugs": 1
+  }
+}
