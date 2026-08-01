@@ -287,6 +287,30 @@ class InventionCompiler:
         if capex is not None:
             evidence.append(f"capex_${capex}M")
 
+        # GAP 4 FIX: Build the counterevidence list for the headline
+        # hypothesis. Before this fix, counterevidence was always empty
+        # — the system was an optimism engine. Now we pull counterevidence
+        # from multiple layers that identify risks, failure modes, and
+        # stress scenarios.
+        counterevidence = []
+        # Layer 3: failure modes (e.g., cost_overrun, regulatory_rejection)
+        for fm in layers[3].get("failure_modes", []):
+            counterevidence.append(f"failure_mode: {fm}")
+        # Layer 5: stress testing (worst-case composites below 0.4)
+        for s in (layers[5].get("stress_testing") or [])[:3]:
+            comp = s.get("composite")
+            if comp is not None and comp < 0.40:
+                counterevidence.append(
+                    f"stress_scenario: composite={comp:.4f} (below 0.40)")
+        # Layer 10: technical risks (failure modes + stress composites)
+        for tr in layers[10].get("technical_risks", []):
+            if tr not in layers[3].get("failure_modes", []):
+                counterevidence.append(f"technical_risk: {tr}")
+        # Layer 10: commercial risks
+        for cr in layers[10].get("commercial_risks", []):
+            if cr != "no_structural_commercial_risks_identified":
+                counterevidence.append(f"commercial_risk: {cr}")
+
         # Build the headline Hypothesis. Per the CTO review #4 rule,
         # every assertion carries claim/confidence/evidence.
         target = layers[0].get("problem", "the candidate invention")
@@ -311,6 +335,7 @@ class InventionCompiler:
                 claim=claim,
                 confidence=confidence,
                 evidence=evidence,
+                counterevidence=counterevidence,
                 writer="invention_compiler.orchestrator.InventionCompiler._chain_summary",
             )
             hypothesis_block = headline_hypothesis.to_dict()
@@ -323,6 +348,7 @@ class InventionCompiler:
                 "claim": claim,
                 "confidence": confidence,
                 "evidence": evidence,
+                "counterevidence": counterevidence,
                 "status": "pending",
                 "writer": "invention_compiler.orchestrator.InventionCompiler._chain_summary",
             }

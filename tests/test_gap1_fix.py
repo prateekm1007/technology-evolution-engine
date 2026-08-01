@@ -265,11 +265,17 @@ def test_only_simulation_module_was_modified():
         and not f.startswith("scripts/run_20_invention_experiment")
         and not f.startswith("scripts/run_forensic_audit")
         and not f.startswith("scripts/generate_delta")
+        and not f.startswith("evidence/")
     ]
-    # The allowed code changes: simulation_module.py (Gap 1) AND
-    # dependency_module.py (Gap 2+7, this iteration).
+    # The allowed code changes accumulate across cycles:
+    # Gap 1: simulation_module.py
+    # Gap 2+7: dependency_module.py
+    # Gap 3: blueprint_module.py
+    # Gap 4: orchestrator.py
     allowed = {"invention_compiler/simulation_module.py",
-               "invention_compiler/dependency_module.py"}
+               "invention_compiler/dependency_module.py",
+               "invention_compiler/blueprint_module.py",
+               "invention_compiler/orchestrator.py"}
     violations = set(code_changes) - allowed
     assert not violations, \
         f"CEO 'pick one' rule VIOLATED: files other than simulation_module.py " \

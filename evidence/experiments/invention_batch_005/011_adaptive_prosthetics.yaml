@@ -1,0 +1,394 @@
+problem: "Build a myoelectric prosthetic hand with sensory feedback costing <$2000 and <500g weight"
+domain: "medical_devices"
+hypothesis:
+  id: "hyp_cda2feeb2493d2d6"
+  claim: "The invention 'Build a myoelectric prosthetic hand with sensory feedback costing <$2000 and <500g weight' is feasible in the medical_devices domain within the stated time horizon."
+  confidence: 0.4853
+  evidence:
+    - "energy_conservation"
+    - "mass_conservation"
+    - "momentum_conservation"
+    - "ampere law"
+    - "prerequisite_chain_depth_1"
+    - "capex_$25.73M"
+  counterevidence:
+    - "failure_mode: cost_overrun"
+    - "failure_mode: material_unavailable_or_too_expensive"
+    - "failure_mode: regulatory_rejection"
+    - "failure_mode: manufacturing_yield_too_low"
+    - "technical_risk: stress_scenario_composite=0.425"
+    - "technical_risk: stress_scenario_composite=0.4316"
+    - "commercial_risk: market_size_too_small_to_justify_capex"
+    - "commercial_risk: capex_exceeds_half_of_market_size"
+    - "commercial_risk: s_curve_adoption_extends_payback_period"
+  assumptions:
+
+  status: "pending"
+physical_laws:
+  - "energy_conservation"
+  - "mass_conservation"
+  - "momentum_conservation"
+chemical_principles:
+  pathways:
+
+  kinetics:
+
+  equilibrium:
+
+  energy_states:
+    - "gibbs_free_energy"
+mathematical_formulation:
+  structures:
+    - "optimization"
+  governing_equations:
+    -
+      name: "ampere law"
+      form: "B = mu_0 * I / (2*pi*r)"
+      variables:
+        - "B"
+        - "mu_0"
+        - "I"
+        - "r"
+constraints:
+  - "cost"
+  - "weight"
+  - "power"
+  - "material"
+  - "regulation"
+  - "manufacturing"
+dependencies:
+  prerequisites:
+    - "sub_biosensors"
+    - "sub_biomaterials"
+  missing_capabilities:
+
+  causal_classifications:
+    necessary: 0
+    sufficient: 0
+    contributing: 2
+    unknown: 0
+assumptions:
+  - "Failure modes are derived from constraint keywords via a small prior map. Real failure modes require FMEA."
+  - "Optimization targets are derived from the problem's stated constraints. Implicit targets (e.g., 'minimize complexity') are not captured."
+  - "The hypothesis is a prediction. It is NOT verified until the experiments are run and outcomes recorded in the ledger."
+  - "Failure-mode experiments are derived from Layer 3's failure modes. If Layer 3 is incomplete, this layer is incomplete."
+  - "Success/failure thresholds (0.70, 0.40) are priors. They should be recalibrated as the verification cycle accumulates outcomes."
+architecture:
+  subsystems:
+    - "subsystem_for_cost"
+    - "subsystem_for_material"
+    - "subsystem_for_regulation"
+    - "subsystem_for_manufacturing"
+  interfaces:
+    - "subsystem_for_cost <-> subsystem_for_material"
+    - "subsystem_for_cost <-> subsystem_for_regulation"
+    - "subsystem_for_cost <-> subsystem_for_manufacturing"
+    - "subsystem_for_material <-> subsystem_for_regulation"
+    - "subsystem_for_material <-> subsystem_for_manufacturing"
+  tolerances:
+    cost: "±15% of capex estimate"
+    material: "±5% of material property target"
+    regulation: "binary (pass/fail)"
+    manufacturing: "±3% yield"
+simulation:
+  monte_carlo:
+    n_samples: 200
+    composite:
+      mean: 0.4886
+      std: 0.0254
+      p5: 0.4457
+      p50: 0.4885
+      p95: 0.5301
+      min: 0.425
+      max: 0.5474
+    technical:
+      mean: 0.6255
+      std: 0.0577
+      p5: 0.5311
+      p50: 0.6369
+      p95: 0.7103
+      min: 0.5157
+      max: 0.715
+    economic:
+      mean: 0.478
+      std: 0.0575
+      p5: 0.3903
+      p50: 0.4797
+      p95: 0.5729
+      min: 0.3812
+      max: 0.5795
+    regulatory:
+      mean: 0.4272
+      std: 0.0551
+      p5: 0.3387
+      p50: 0.4293
+      p95: 0.5143
+      min: 0.3261
+      max: 0.5238
+    manufacturing:
+      mean: 0.4948
+      std: 0.0584
+      p5: 0.4093
+      p50: 0.4965
+      p95: 0.5844
+      min: 0.3953
+      max: 0.5949
+    adoption:
+      mean: 0.282
+      std: 0.0589
+      p5: 0.1894
+      p50: 0.2836
+      p95: 0.3714
+      min: 0.1801
+      max: 0.3797
+  sensitivity:
+    technical: 0.6815
+    economic: 0.4528
+    regulatory: 0.3254
+    manufacturing: 0.4598
+    adoption: 0.3478
+  stress_testing:
+    -
+      technical_feasibility: 0.5311
+      economic_feasibility: 0.388
+      regulatory_feasibility: 0.4114
+      manufacturing_feasibility: 0.4595
+      adoption_probability: 0.2301
+      composite: 0.425
+    -
+      technical_feasibility: 0.5591
+      economic_feasibility: 0.4239
+      regulatory_feasibility: 0.4122
+      manufacturing_feasibility: 0.4008
+      adoption_probability: 0.2472
+      composite: 0.4316
+    -
+      technical_feasibility: 0.5292
+      economic_feasibility: 0.4276
+      regulatory_feasibility: 0.4588
+      manufacturing_feasibility: 0.4378
+      adoption_probability: 0.2065
+      composite: 0.4316
+prototype_plan:
+  v1:
+    name: "prototype_v1_physics_validation"
+    goal: "prove the core mechanism works at lab scale"
+    scope: "single subsystem, no integration, no manufacturability"
+    success_threshold: "core mechanism reproduces predicted output within 30%"
+    estimated_duration_months: 6
+    estimated_cost_usd_m: 0.24
+  v2:
+    name: "prototype_v2_engineering_integration"
+    goal: "prove the subsystems integrate into a working system"
+    scope: "all subsystems, no manufacturing pathway, no regulatory submission"
+    success_threshold: "integrated prototype meets primary_output spec at 50% of target performance"
+    estimated_duration_months: 14
+    estimated_cost_usd_m: 0.97
+  v3:
+    name: "prototype_v3_production_readiness"
+    goal: "prove the manufacturing pathway and cost model hold"
+    scope: "production-intent prototype, pilot manufacturing run, regulatory pre-submission"
+    success_threshold: "unit cost within 2x of cost_curve target; regulatory pre-submission accepted"
+    estimated_duration_months: 22
+    estimated_cost_usd_m: 3.88
+  timeline_years: 3.5
+experimental_plan:
+  hypothesis: "The candidate invention will achieve technical feasibility >= 0.70 within 5-10 years, given the prerequisite chain is complete and no regulatory blocker materializes."
+  experiments:
+    -
+      id: "exp_cost_overrun"
+      purpose: "determine whether cost_overrun is a real risk"
+      method: "stress_test_against_cost_overrun"
+      expected_duration: "3-6 months per experiment"
+    -
+      id: "exp_material_unavailable_or_too_expensive"
+      purpose: "determine whether material_unavailable_or_too_expensive is a real risk"
+      method: "stress_test_against_material_unavailable_or_too_expensive"
+      expected_duration: "3-6 months per experiment"
+    -
+      id: "exp_regulatory_rejection"
+      purpose: "determine whether regulatory_rejection is a real risk"
+      method: "stress_test_against_regulatory_rejection"
+      expected_duration: "3-6 months per experiment"
+    -
+      id: "exp_manufacturing_yield_too_low"
+      purpose: "determine whether manufacturing_yield_too_low is a real risk"
+      method: "stress_test_against_manufacturing_yield_too_low"
+      expected_duration: "3-6 months per experiment"
+    -
+      id: "exp_prototype_v1"
+      purpose: "determine whether the candidate can be built at all"
+      method: "build_minimum_viable_prototype"
+      expected_duration: "6-12 months"
+  measurements:
+    -
+      metric: "technical_feasibility_observed"
+      target: ">= 0.70"
+      instrument: "expert_panel_review"
+    -
+      metric: "cost_per_unit_observed"
+      target: "<= capex_estimate / 1000"
+      instrument: "cost_accounting"
+    -
+      metric: "time_to_first_prototype_observed"
+      target: "<= 5-10 years"
+      instrument: "project_tracker"
+    -
+      metric: "regulatory_approval_status"
+      target: "approved_or_withdrawn"
+      instrument: "regulatory_filing_tracker"
+  success_criteria:
+    - "All failure-mode experiments return 'risk_acceptable'."
+    - "Prototype v1 builds successfully and meets primary_output spec."
+    - "Technical feasibility observed >= 0.70 within 5-10 years."
+    - "Composite feasibility from simulation's p50 >= 0.60."
+  failure_criteria:
+    - "Any failure-mode experiment returns 'risk_unacceptable' AND no mitigation is identified."
+    - "Prototype v1 cannot be built within 2x the estimated time."
+    - "Technical feasibility observed < 0.40 after 5-10 years."
+    - "Regulatory approval is denied with no appeal path."
+failure_modes:
+  - "cost_overrun"
+  - "material_unavailable_or_too_expensive"
+  - "regulatory_rejection"
+  - "manufacturing_yield_too_low"
+counterevidence:
+  - "failure_mode: cost_overrun"
+  - "failure_mode: material_unavailable_or_too_expensive"
+  - "failure_mode: regulatory_rejection"
+  - "failure_mode: manufacturing_yield_too_low"
+  - "technical_risk: stress_scenario_composite=0.425"
+  - "technical_risk: stress_scenario_composite=0.4316"
+  - "commercial_risk: market_size_too_small_to_justify_capex"
+  - "commercial_risk: capex_exceeds_half_of_market_size"
+  - "commercial_risk: s_curve_adoption_extends_payback_period"
+confidence: 0.4853
+final_blueprint:
+  parts_list:
+    -
+      id: "sub_biosensors"
+      label: "Biosensors"
+      type: "subdomain"
+      source_layer: "Layer 2 (prerequisite chain)"
+      note: "Graph node identifier — engineer must map to a real supplier part number or capability."
+    -
+      id: "sub_biomaterials"
+      label: "Biomaterials"
+      type: "subdomain"
+      source_layer: "Layer 2 (prerequisite chain)"
+      note: "Graph node identifier — engineer must map to a real supplier part number or capability."
+  materials_specification:
+    -
+      id: "sub_biosensors"
+      label: "Biosensors"
+      constraints:
+
+      source_layer: "Layer 2 (fallback — Layer 6 empty)"
+    -
+      id: "sub_biomaterials"
+      label: "Biomaterials"
+      constraints:
+
+      source_layer: "Layer 2 (fallback — Layer 6 empty)"
+  assembly_plan:
+    subsystems:
+      - "subsystem_for_cost"
+      - "subsystem_for_material"
+      - "subsystem_for_regulation"
+      - "subsystem_for_manufacturing"
+    interfaces:
+      - "subsystem_for_cost <-> subsystem_for_material"
+      - "subsystem_for_cost <-> subsystem_for_regulation"
+      - "subsystem_for_cost <-> subsystem_for_manufacturing"
+      - "subsystem_for_material <-> subsystem_for_regulation"
+      - "subsystem_for_material <-> subsystem_for_manufacturing"
+    inputs:
+      problem_constraints:
+        - "cost"
+        - "weight"
+        - "power"
+        - "material"
+        - "regulation"
+        - "manufacturing"
+      time_horizon: "5-10 years"
+      domain: "medical_devices"
+    outputs:
+      primary_output: "Build a myoelectric prosthetic hand with sensory feedback costing <$2000 and <500g weight"
+      evidence_quality: "replayable_per_law_8"
+    energy_requirements:
+      budget_tight: false
+      tolerance: "not specified"
+      estimated_watts: "depends_on_application"
+    computational_requirements:
+      class: "moderate"
+      note: "Real computational requirements depend on the governing equations from Layer 3 and the simulation approach from Layer 5."
+    source_layer: "Layer 4 (Engineering architecture)"
+  tolerances:
+    cost: "±15% of capex estimate"
+    material: "±5% of material property target"
+    regulation: "binary (pass/fail)"
+    manufacturing: "±3% yield"
+  prototype_specification:
+    v1:
+      name: "prototype_v1_physics_validation"
+      goal: "prove the core mechanism works at lab scale"
+      scope: "single subsystem, no integration, no manufacturability"
+      success_threshold: "core mechanism reproduces predicted output within 30%"
+      estimated_duration_months: 6
+      estimated_cost_usd_m: 0.24
+    v2:
+      name: "prototype_v2_engineering_integration"
+      goal: "prove the subsystems integrate into a working system"
+      scope: "all subsystems, no manufacturing pathway, no regulatory submission"
+      success_threshold: "integrated prototype meets primary_output spec at 50% of target performance"
+      estimated_duration_months: 14
+      estimated_cost_usd_m: 0.97
+    v3:
+      name: "prototype_v3_production_readiness"
+      goal: "prove the manufacturing pathway and cost model hold"
+      scope: "production-intent prototype, pilot manufacturing run, regulatory pre-submission"
+      success_threshold: "unit cost within 2x of cost_curve target; regulatory pre-submission accepted"
+      estimated_duration_months: 22
+      estimated_cost_usd_m: 3.88
+    timeline:
+      total_months: 42
+      total_years: 3.5
+      fits_within_horizon: true
+      phases:
+        -
+          phase: "v1"
+          start_month: 0
+          end_month: 6
+        -
+          phase: "v2"
+          start_month: 6
+          end_month: 20
+        -
+          phase: "v3"
+          start_month: 20
+          end_month: 42
+    source_layer: "Layer 9 (Prototype layer)"
+  problem: "Build a myoelectric prosthetic hand with sensory feedback costing <$2000 and <500g weight"
+  domain: "medical_devices"
+  target_invention: "Build a myoelectric prosthetic hand with sensory feedback costing <$2000 and <500g weight"
+  prerequisite_chain_depth: 1
+  governing_equations:
+    -
+      name: "ampere law"
+      form: "B = mu_0 * I / (2*pi*r)"
+      variables:
+        - "B"
+        - "mu_0"
+        - "I"
+        - "r"
+  subsystems:
+    - "subsystem_for_cost"
+    - "subsystem_for_material"
+    - "subsystem_for_regulation"
+    - "subsystem_for_manufacturing"
+  composite_feasibility: 25.73
+  prototype_stages:
+    - "prototype_v1_physics_validation"
+    - "prototype_v2_engineering_integration"
+    - "prototype_v3_production_readiness"
+  total_prototype_timeline_years: 3.5
