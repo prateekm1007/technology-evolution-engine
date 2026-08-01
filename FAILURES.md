@@ -374,13 +374,13 @@ Phase 5 — Audience specialization: researchers, corporations, investors, gover
 **Found:** external auditor (Phase 3.1 contract verification).
 **Observed:** the graph-integration tests (`test_extracted_info_can_be_written_to_graph`, `test_constraints_can_be_attached_to_nodes`, `test_provenance_preserved_in_graph`) verify that extracted items are the right TYPE (str/dict) — they do NOT exercise an actual write into civilization_graph.json. No `ingest_patent_to_graph.py`-equivalent exists yet.
 **Severity:** P2 — the tests give false confidence that the pipeline works end-to-end. A shape-check passing does not mean a real graph write would succeed.
-**Status:** OPEN — Step 1 of the Phase 3 execution roadmap requires converting these tests to actual writes against a scratch copy of civilization_graph.json.
+**Status:** RESOLVED — 3 tests in tests/test_f027_f028_fix.py now exercise actual writes: (1) extracted components are written as new nodes into a scratch graph copy with assertion on node count delta, (2) provenance is embedded in the node and JSON-serializable, (3) constraints are writable in Phase 2 dict format with ground-truth assertion on manufacturing presence.
 
 ### F-028 — No test for "historian can reconstruct the source"
 **Found:** external auditor (Phase 3.1 contract verification).
 **Observed:** the Phase 3 contract lists "Can the historian reconstruct the source?" as a required question. Zero test coverage exists for this — not even an XFAIL.
 **Severity:** P2 — provenance is recorded but never verified to be reconstructable. Without this test, a future change could break provenance without detection.
-**Status:** OPEN — Step 1 of the Phase 3 execution roadmap requires adding this test.
+**Status:** RESOLVED — 3 tests in tests/test_f027_f028_fix.py cover historian reconstruction: (1) given a node with provenance, historian reconstructs source (title, patent_number, authors, date), (2) provenance survives JSON round-trip, (3) nodes without provenance return None gracefully.
 
 ### F-029 — F-001 (patent parser brittleness) is still OPEN and threatens Phase 3
 **Found:** external auditor (Phase 3.1 contract verification — re-flagged).
