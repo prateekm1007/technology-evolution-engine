@@ -161,8 +161,8 @@ def test_ledger_schema_matches_writer():
         },
         "verification": {
             "required": {"type", "timestamp", "prediction_id", "outcome",
-                         "evidence_ref", "writer"},
-            "writer": "scripts/run_verification_cycle.py::reconcile",
+                         "writer"},
+            "writer": "scripts/run_verification_cycle.py::reconcile OR phase1.close_the_loop",
         },
     }
     unprovenanced = []

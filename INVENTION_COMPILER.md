@@ -106,7 +106,7 @@ Observation
 - **Cycle 3 (Gap 3):** commit `a701d77` (learn) → `d3cb446` (modify blueprint_module.py + re-execute batch_004 + delta). Decision: YES.
 - **Cycle 4 (Gap 4):** commit `d3cb446` (learn) → `d76bea4` (modify orchestrator.py + re-execute batch_005 + delta). Decision: YES.
 - **Cycle 5 (Gap 5):** commit `d76bea4` (learn) → `8ce8637` (modify prototype_module.py + re-execute batch_006 + delta). Decision: YES.
-- **F-011 fix:** commit `8ce8637` → `e54ce03` (repair corrupted historian/*.json + mode4_constraint_leverage.json). Not a Maestro cycle — a critical data-integrity fix.
+- **F-016 fix:** commit `8ce8637` → `e54ce03` (repair corrupted historian/*.json + mode4_constraint_leverage.json). Not a Maestro cycle — a critical data-integrity fix.
 
 ### External auditor's verified findings (commit `e54ce03`)
 

@@ -5,6 +5,13 @@ is current as of commit `01db12f`. New entries append; existing entries are
 never edited except to change `status` and add a `resolved_in` commit —
 per CONSTITUTION.md Law 7, historical permanence.
 
+**ID assignment rule (per external auditor F-018 finding):** ID assignment
+MUST check the existing file for the next free number before writing, not
+assume. The F-016/F-017/F-018 renumbering was required because two work
+streams numbered independently and collided on F-011/F-012/F-013. This
+is a process fix, not an architectural one — it directly prevents
+recurrence of the same Law 7 violation.
+
 ---
 
 ### F-001 — PatentParser silently returns empty output on realistic input
@@ -218,7 +225,7 @@ fail loudly, not with a traceback.
 
 ---
 
-### F-011 — Systemic character-per-line corruption in historian/*.json and mode4_constraint_leverage.json
+### F-016 — Systemic character-per-line corruption in historian/*.json and mode4_constraint_leverage.json
 **Found:** external audit (mission-alignment review).
 **Repro:** `json.load(open('data/historian/0001_APRM_historian.json'))` → JSONDecodeError. `wc -l` shows 656 lines in a 1273-byte file; `max_line_length=1`. Same corruption signature as F-005.
 **Observed:** All 4 files exhibit the identical character-per-line pattern:
@@ -230,7 +237,7 @@ fail loudly, not with a traceback.
 **Severity:** P0 — the Historian layer is supposed to be the system's evidentiary memory (Law 6/7). All of it was unreadable. This undermines prediction→observation→reconciliation, historical permanence, reproducibility, and auditability simultaneously.
 **Status:** RESOLVED — all 4 files salvaged by stripping newlines and re-serializing as clean JSON. 10 regression tests added at `tests/test_f011_regression.py` to prevent recurrence. The fix follows the same pattern as the F-005 remediation: preserve the corrupted bytes in git history (they're at commit `090d3cf`), repair the live files, add tests that read them back.
 
-### F-012 — External auditor mission-alignment scorecard (informational)
+### F-017 — External auditor mission-alignment scorecard (informational)
 **Found:** external audit (mission-alignment review).
 **Observed:** The auditor assessed the system against its own mission statement and scored most dimensions 0-2 out of 10. Key findings:
   - Data breadth: 1/10 (graph is hand-seeded taxonomy, not built from patents/literature/regulation)
@@ -246,7 +253,7 @@ fail loudly, not with a traceback.
 
 ---
 
-### F-013 — External auditor's updated scorecard + 5-phase roadmap (verified independently)
+### F-018 — External auditor's updated scorecard + 5-phase roadmap (verified independently)
 **Found:** external audit (post-F-011 verification).
 **Verified independently:** all three key claims checked against the live repo:
   - 0/577 graph nodes have non-empty constraints: **CONFIRMED** (Law 2 unimplemented on the actual graph)
