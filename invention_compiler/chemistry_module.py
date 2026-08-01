@@ -1,5 +1,5 @@
 """
-Chemistry Engine — feeds Layer 1 (First-principles analysis).
+Chemistry Module — feeds Layer 1 (First-principles analysis).
 
 Extracts chemistry-relevant nodes (materials, polymers, membranes,
 catalysts, electrodes, etc.) from the civilization graph.
@@ -10,7 +10,7 @@ Output contract: Layer 1 fragment, `chemistry` key.
 from typing import Dict, Any, List
 
 
-class ChemistryEngine:
+class ChemistryModule:
     """Extracts chemistry-relevant nodes for a problem."""
 
     CHEMISTRY_KEYWORDS = (

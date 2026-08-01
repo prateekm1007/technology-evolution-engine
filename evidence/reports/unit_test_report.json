@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-08-01T16:07:37.762818+00:00",
-  "method": "pytest tests/test_graph_engine.py tests/test_product.py tests/test_ledger_integrity.py -v, run live (includes the new F-005 regression tests)",
+  "generated_at": "2026-08-01T16:21:58.755117+00:00",
+  "method": "pytest tests/test_graph_engine.py tests/test_product.py tests/test_ledger_integrity.py tests/test_north_star_modules.py tests/test_invention_compiler.py tests/test_compiler_benchmarks.py -v, run live",
   "summary": {
-    "passed": 30,
+    "passed": 55,
     "failed": 0,
     "skipped": 0,
     "errors": 0,
-    "total": 30,
-    "collected": 30
+    "total": 55,
+    "collected": 55
   },
-  "duration_s": 1.891,
+  "duration_s": 3.913,
   "tests": [
     {
       "nodeid": "tests/test_graph_engine.py::test_empty_graph",
@@ -158,6 +158,131 @@
     },
     {
       "nodeid": "tests/test_north_star_modules.py::test_feasibility_score_operators_affect_dimensions",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_invention_compiler.py::test_compiler_imports",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_invention_compiler.py::test_compiler_runs_end_to_end",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_invention_compiler.py::test_every_layer_emits_required_keys",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_invention_compiler.py::test_no_layer_silently_skipped",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_invention_compiler.py::test_law8_honesty_contract_on_scalar_layers",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_invention_compiler.py::test_result_is_json_serializable",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_invention_compiler.py::test_compiler_does_not_say_this_is_a_good_idea",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_invention_compiler.py::test_compiler_carries_problem_id_and_timestamp",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_invention_compiler.py::test_compiler_handles_unknown_problem_gracefully",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_invention_compiler.py::test_modules_are_decoupled",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_invention_compiler.py::test_only_verification_engine_is_called_engine",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_invention_compiler.py::test_no_class_named_engine_outside_verification",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_compiler_benchmarks.py::test_suite_has_5_cases",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_compiler_benchmarks.py::test_each_case_has_required_fields",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_compiler_benchmarks.py::test_expected_verdicts_are_valid_buckets",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_compiler_benchmarks.py::test_each_expected_verdict_is_distinct",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_compiler_benchmarks.py::test_verdict_from_composite_buckets",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_compiler_benchmarks.py::test_bucket_distance_zero_for_same",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_compiler_benchmarks.py::test_bucket_distance_one_for_adjacent",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_compiler_benchmarks.py::test_bucket_distance_two_for_two_apart",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_compiler_benchmarks.py::test_bucket_distance_max_for_extremes",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_compiler_benchmarks.py::test_benchmark_runner_exists",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_compiler_benchmarks.py::test_benchmark_report_honesty_note_present",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_compiler_benchmarks.py::test_benchmark_report_carries_next_actions",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_compiler_benchmarks.py::test_benchmark_report_cases_match_suite",
       "outcome": "passed",
       "duration_s": 0.0
     }

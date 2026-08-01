@@ -1,5 +1,5 @@
 """
-Resurrection Engine — feeds Layer 2 (Dependency graph).
+Resurrection Module — feeds Layer 2 (Dependency graph).
 
 For each prerequisite in the dependency chain, checks if there's a
 historical failure (cemetery_entry node, or evidence/failures/*.json
@@ -27,7 +27,7 @@ _ROOT = pathlib.Path(__file__).resolve().parents[1]
 FAILURES_DIR = _ROOT / "evidence" / "failures"
 
 
-class ResurrectionEngine:
+class ResurrectionModule:
     """Surfaces resurrection opportunities from the failure record."""
 
     def __init__(self, graph: Dict[str, Any]):

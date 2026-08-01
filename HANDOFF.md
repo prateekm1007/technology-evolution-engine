@@ -1,4 +1,4 @@
-# TEE MASTER HANDOFF (v1.2)
+# TEE MASTER HANDOFF (v1.3)
 
 ## PRE-CODING READ LIST (MANDATORY)
 
@@ -46,17 +46,52 @@ The final output is a blueprint, not an idea score. See
 13 required modules. Every change must move us closer to one of
 those layers or modules.
 
-## CURRENT STATE (as of commit `e97c718`)
+## CURRENT STATE (as of commit `a3d167d`)
 - F-005 remediated. Ledger is clean, 10 entries (1 benchmark_run +
   9 verification). Law 8 verdict: PASS.
 - P2 prerequisite chain: implemented in `product/lineage/mapper.py`.
 - P3 cross-domain synthesizer: implemented in `product/discovery/synthesizer.py`.
 - P4 feasibility scoring: implemented in `product/scoring/feasibility.py`.
-- 37 tests passing.
-- 13 modules required by the invention-compiler directive: 0 fully
-  implemented as standalone modules, 5 partially implemented as
-  existing files, 1 fully implemented (verification_engine). The
-  remaining work is the bulk of the invention-compiler buildout.
+- Invention compiler vertical slice: implemented in
+  `invention_compiler/` (commit `a3d167d`). 11 layers, 14 modules.
+- 47 tests passing.
+
+## CTO REVIEW (commit `a3d167d`)
+
+The CTO approved the ARCHITECTURE but did NOT approve the SCIENTIFIC
+CLAIMS. Concretely:
+
+- Approved: layer architecture, orchestration pipeline, evidence
+  chain, audit integration, blueprint generation framework, dependency
+  graph framework, constraint propagation framework, simulation
+  framework, verification framework, test framework.
+- NOT approved: physics/chemistry/biology/economics/information_theory/
+  thermodynamics/control_theory "engines." The current implementations
+  are keyword-matching MODULES, not scientific ENGINES.
+
+New CTO-mandated rules (encoded in INVENTION_COMPILER.md and
+ANTI_ENTROPY.md):
+1. The word "engine" may only be used for modules with explicit model
+   + empirical validation + reproducible results. Otherwise the
+   module/adapter/framework/layer/stage terminology applies.
+2. The 5-benchmark suite (portable MRI, ammonia synthesis,
+   room-temp superconductors, carbon-negative cement, artificial
+   photosynthesis) must be run before any further scientific claims.
+3. Optimize for blueprints that scientists would respect, not for
+   producing ideas.
+
+## IMPLEMENTATION WORK THIS SESSION
+- Rename 12 `*_engine.py` files to `*_module.py` (verification_engine
+  stays — it meets the bar).
+- Add 5-benchmark suite at `benchmarks/compiler/`.
+- Add `scripts/run_compiler_benchmarks.py`.
+- Add `compiler_benchmark_report.json` as 8th audit deliverable.
+
+## 13 modules required by the invention-compiler directive
+After this session's rename:
+- 1 fully implemented as engine (verification_engine — meets the bar).
+- 12 implemented as modules (renamed from "engine" per CTO rule).
+- The next leap: turn the modules into actual scientific engines.
 
 ## FINAL INSTRUCTION
 Do not redesign. Do not add agents. Optimize for truth, calibration,

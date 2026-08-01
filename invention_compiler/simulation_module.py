@@ -1,5 +1,5 @@
 """
-Simulation Engine — feeds Layer 5 (Simulation layer).
+Simulation Module — feeds Layer 5 (Simulation layer).
 
 Runs Monte Carlo on the feasibility score's component inputs to produce
 distributional outputs (mean, std, percentiles) for each feasibility
@@ -23,7 +23,7 @@ if str(_ROOT) not in sys.path:
 from product.scoring.feasibility import FeasibilityScorer
 
 
-class SimulationEngine:
+class SimulationModule:
     """Monte Carlo + sensitivity analysis on the feasibility score."""
 
     def __init__(self, graph: Dict[str, Any]):

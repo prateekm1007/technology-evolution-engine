@@ -1,5 +1,5 @@
 """
-Biology Engine — feeds Layer 1 (First-principles analysis).
+Biology Module — feeds Layer 1 (First-principles analysis).
 
 Extracts biology-relevant nodes (biomaterials, biosensors, biological
 processes, biomedical systems) from the civilization graph.
@@ -7,7 +7,7 @@ processes, biomedical systems) from the civilization graph.
 from typing import Dict, Any, List
 
 
-class BiologyEngine:
+class BiologyModule:
     BIOLOGY_KEYWORDS = (
         "bio", "cell", "membrane", "enzyme", "protein", "genetic",
         "genomic", "neural", "tissue", "implant", "medical",

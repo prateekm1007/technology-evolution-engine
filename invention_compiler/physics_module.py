@@ -1,5 +1,5 @@
 """
-Physics Engine — feeds Layer 1 (First-principles analysis).
+Physics Module — feeds Layer 1 (First-principles analysis).
 
 Extracts physics principles from the civilization graph that are
 relevant to the problem's domain. Looks for `principle_*` nodes whose
@@ -21,7 +21,7 @@ Output contract (Layer 1 fragment, `physics` key):
 from typing import Dict, Any, List
 
 
-class PhysicsEngine:
+class PhysicsModule:
     """Extracts physics principles from the graph for a problem."""
 
     # Keyword -> graph node-type hint. Used to disambiguate when

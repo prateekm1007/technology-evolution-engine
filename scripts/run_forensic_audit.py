@@ -64,7 +64,7 @@ def now_iso():
 # 1. compile_report.json
 # ----------------------------------------------------------------------
 def make_compile_report():
-    print("[1/7] compile report (py_compile on every .py file)...")
+    print("[1/8] compile report (py_compile on every .py file)...")
     files = sorted(p for p in ROOT.rglob("*.py")
                    if ".git" not in p.parts
                    and "__pycache__" not in p.parts
@@ -100,11 +100,12 @@ def make_compile_report():
 # 2. unit_test_report.json
 # ----------------------------------------------------------------------
 def make_unit_test_report():
-    print("[2/7] unit test report (pytest tests/test_graph_engine.py tests/test_product.py tests/test_ledger_integrity.py tests/test_north_star_modules.py)...")
+    print("[2/8] unit test report (pytest all tests/ except integration)...")
     cmd = [
         PY, "-m", "pytest",
         "tests/test_graph_engine.py", "tests/test_product.py",
         "tests/test_ledger_integrity.py", "tests/test_north_star_modules.py",
+        "tests/test_invention_compiler.py", "tests/test_compiler_benchmarks.py",
         "-v", "--json-report",
         "--json-report-file=/tmp/tee_unit_test_report.json",
         "--json-report-indent=2",
@@ -132,7 +133,7 @@ def make_unit_test_report():
     }
     report = {
         "generated_at": now_iso(),
-        "method": "pytest tests/test_graph_engine.py tests/test_product.py tests/test_ledger_integrity.py -v, run live (includes the new F-005 regression tests)",
+        "method": "pytest tests/test_graph_engine.py tests/test_product.py tests/test_ledger_integrity.py tests/test_north_star_modules.py tests/test_invention_compiler.py tests/test_compiler_benchmarks.py -v, run live",
         "summary": summary,
         "duration_s": duration,
         "tests": tests,
@@ -148,7 +149,7 @@ def make_unit_test_report():
 # 3. integration_report.json
 # ----------------------------------------------------------------------
 def make_integration_report():
-    print("[3/7] integration report (pytest tests/test_endpoints.py)...")
+    print("[3/8] integration report (pytest tests/test_endpoints.py)...")
     cmd = [
         PY, "-m", "pytest", "tests/test_endpoints.py",
         "-v", "--json-report",
@@ -192,7 +193,7 @@ def make_integration_report():
 # 4. benchmark_report.json
 # ----------------------------------------------------------------------
 def make_benchmark_report():
-    print("[4/7] benchmark report (run scripts/run_evidence_tests.py --all)...")
+    print("[4/8] benchmark report (run scripts/run_evidence_tests.py --all)...")
     # Run the actual benchmark harness. It writes benchmark outputs and
     # appends to the ledger — but we have a CORRUPTED ledger that we must
     # NOT overwrite (audit constraint #2). So we:
@@ -281,7 +282,7 @@ def make_benchmark_report():
 # 5. ledger_integrity_report.json
 # ----------------------------------------------------------------------
 def make_ledger_integrity_report():
-    print("[5/7] ledger integrity report (write graph + reproduction check)...")
+    print("[5/8] ledger integrity report (write graph + reproduction check)...")
     ledger_path = ROOT / "data" / "ledger" / "predictions.jsonl"
     preserved_path = ROOT / "evidence" / "corruption" / "predictions_corrupted.jsonl"
     reproduction_path = ROOT / "evidence" / "corruption" / "reproduction_byte_exact.jsonl"
@@ -493,7 +494,7 @@ def make_ledger_integrity_report():
 # 6. verification_report.json — produced by scripts/enforce_law8.py
 # ----------------------------------------------------------------------
 def make_verification_report():
-    print("[6/7] verification report (Law 8 enforcement via scripts/enforce_law8.py)...")
+    print("[6/8] verification report (Law 8 enforcement via scripts/enforce_law8.py)...")
     out = REPORT_DIR / "verification_report.json"
     r = subprocess.run(
         [PY, "scripts/enforce_law8.py", "--json", str(out)],
@@ -514,7 +515,7 @@ def make_verification_report():
 # test invention, proving the 11-layer chain works.
 # ----------------------------------------------------------------------
 def make_invention_compiler_report():
-    print("[7/7] invention compiler report (compile one invention end-to-end)...")
+    print("[7/8] invention compiler report (compile one invention end-to-end)...")
     sys.path.insert(0, str(ROOT))
     from invention_compiler.orchestrator import InventionCompiler
 
@@ -630,6 +631,31 @@ def make_invention_compiler_report():
     return report
 
 
+# ----------------------------------------------------------------------
+# 8. compiler_benchmark_report.json — 5-benchmark suite (CTO-mandated)
+# ----------------------------------------------------------------------
+def make_compiler_benchmark_report():
+    print("[8/8] compiler benchmark report (5-benchmark CTO-mandated suite)...")
+    r = subprocess.run(
+        [PY, "scripts/run_compiler_benchmarks.py"],
+        capture_output=True, text=True, cwd=str(ROOT),
+    )
+    out_path = REPORT_DIR / "compiler_benchmark_report.json"
+    if not out_path.exists():
+        return {
+            "generated_at": now_iso(),
+            "error": "benchmark runner did not produce report",
+            "stdout": r.stdout[-2000:],
+            "stderr": r.stderr[-2000:],
+            "verdict": "FAIL",
+        }
+    report = json.loads(out_path.read_text())
+    summary = report.get("summary", {})
+    print(f"      verdict: {summary.get('verdict','?')}, "
+          f"passed: {summary.get('passed','?')}/{summary.get('total','?')}")
+    return report
+
+
 def _write(path, obj):
     path.write_text(json.dumps(obj, indent=2, default=str) + "\n", encoding="utf-8")
 
@@ -653,6 +679,7 @@ def main():
         ("ledger_integrity", make_ledger_integrity_report),
         ("verification", make_verification_report),
         ("invention_compiler", make_invention_compiler_report),
+        ("compiler_benchmark", make_compiler_benchmark_report),
     ]:
         try:
             results[name] = fn()
@@ -664,7 +691,7 @@ def main():
 
     summary = {
         "generated_at": now_iso(),
-        "audit_type": "F-005 follow-up forensic audit + invention compiler vertical slice",
+        "audit_type": "F-005 follow-up forensic audit + invention compiler + 5-benchmark suite",
         "steps_run": list(results.keys()),
         "errors": errors,
         "deliverables": {
@@ -675,6 +702,7 @@ def main():
             "verification_report": "evidence/reports/verification_report.json",
             "ledger_integrity_report": "evidence/reports/ledger_integrity_report.json",
             "invention_compiler_report": "evidence/reports/invention_compiler_report.json",
+            "compiler_benchmark_report": "evidence/reports/compiler_benchmark_report.json",
         },
     }
     _write(REPORT_DIR / "_audit_summary.json", summary)

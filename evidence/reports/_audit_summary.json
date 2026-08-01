@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-08-01T16:07:39.440000+00:00",
-  "audit_type": "F-005 follow-up forensic audit + invention compiler vertical slice",
+  "generated_at": "2026-08-01T16:22:01.620388+00:00",
+  "audit_type": "F-005 follow-up forensic audit + invention compiler + 5-benchmark suite",
   "steps_run": [
     "compile",
     "unit_test",
@@ -8,7 +8,8 @@
     "benchmark",
     "ledger_integrity",
     "verification",
-    "invention_compiler"
+    "invention_compiler",
+    "compiler_benchmark"
   ],
   "errors": [],
   "deliverables": {
@@ -18,6 +19,7 @@
     "benchmark_report": "evidence/reports/benchmark_report.json",
     "verification_report": "evidence/reports/verification_report.json",
     "ledger_integrity_report": "evidence/reports/ledger_integrity_report.json",
-    "invention_compiler_report": "evidence/reports/invention_compiler_report.json"
+    "invention_compiler_report": "evidence/reports/invention_compiler_report.json",
+    "compiler_benchmark_report": "evidence/reports/compiler_benchmark_report.json"
   }
 }

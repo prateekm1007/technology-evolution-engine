@@ -1,5 +1,5 @@
 """
-Mathematics Engine — feeds Layer 1 (mathematics) AND Layer 3 (governing
+Mathematics Module — feeds Layer 1 (mathematics) AND Layer 3 (governing
 equations).
 
 Layer 1: identifies the mathematical structure of the problem (linear
@@ -16,7 +16,7 @@ must hold. Solving is Layer 5 (simulation_engine) territory.
 from typing import Dict, Any, List
 
 
-class MathematicsEngine:
+class MathematicsModule:
     """Identifies mathematical structure and proposes governing
     equations for a problem."""
 

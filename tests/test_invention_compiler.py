@@ -244,17 +244,66 @@ def test_compiler_handles_unknown_problem_gracefully():
 
 
 def test_modules_are_decoupled():
-    """Per ANTI_ENTROPY.md rule 'Decouple modules': each engine must
+    """Per ANTI_ENTROPY.md rule 'Decouple modules': each module must
     accept the graph as a constructor argument, NOT read it from a
     global. This makes them testable in isolation."""
-    from invention_compiler.physics_engine import PhysicsEngine
-    from invention_compiler.chemistry_engine import ChemistryEngine
-    from invention_compiler.dependency_engine import DependencyEngine
-    from invention_compiler.blueprint_engine import BlueprintEngine
+    from invention_compiler.physics_module import PhysicsModule
+    from invention_compiler.chemistry_module import ChemistryModule
+    from invention_compiler.dependency_module import DependencyModule
+    from invention_compiler.blueprint_module import BlueprintModule
     graph_path = ROOT / "data" / "civilization_graph.json"
     with graph_path.open() as f:
         graph = json.load(f)
     # Each must construct from a graph argument.
-    for cls in (PhysicsEngine, ChemistryEngine, DependencyEngine, BlueprintEngine):
+    for cls in (PhysicsModule, ChemistryModule, DependencyModule, BlueprintModule):
         engine = cls(graph=graph)
         assert engine is not None
+
+
+def test_only_verification_engine_is_called_engine():
+    """CTO-mandated naming rule: the word 'engine' may only appear in
+    module names when the module satisfies: explicit model + empirical
+    validation + reproducible results. Currently only verification_engine
+    meets this bar.
+
+    This test scans the invention_compiler/ package directory for files
+    matching *_engine.py and asserts the only one is
+    verification_engine.py. If anyone adds a new *_engine.py without
+    satisfying the rule, this test fails loudly.
+    """
+    import os
+    pkg_dir = ROOT / "invention_compiler"
+    engine_files = [
+        f for f in os.listdir(pkg_dir)
+        if f.endswith("_engine.py") and not f.startswith("__")
+    ]
+    assert engine_files == ["verification_engine.py"], (
+        f"CTO naming rule violation: found *_engine.py files that are not "
+        f"verification_engine. The 'engine' name is reserved for modules "
+        f"with explicit model + empirical validation + reproducible results. "
+        f"Found: {engine_files}. Rename to *_module.py until the conditions "
+        f"in ANTI_ENTROPY.md are met."
+    )
+
+
+def test_no_class_named_engine_outside_verification():
+    """CTO naming rule applied to class names: no class in the
+    invention_compiler package may be named XxxEngine unless it lives
+    in verification_engine.py."""
+    import os
+    import re
+    pkg_dir = ROOT / "invention_compiler"
+    violations = []
+    for fname in os.listdir(pkg_dir):
+        if not fname.endswith(".py") or fname.startswith("__"):
+            continue
+        if fname == "verification_engine.py":
+            continue
+        text = (pkg_dir / fname).read_text()
+        # Find class definitions matching XxxEngine.
+        for m in re.finditer(r"class\s+(\w*Engine)\b", text):
+            violations.append({"file": fname, "class": m.group(1)})
+    assert not violations, (
+        f"CTO naming rule violation: classes named XxxEngine exist outside "
+        f"verification_engine.py. Rename to XxxModule. Violations: {violations}"
+    )

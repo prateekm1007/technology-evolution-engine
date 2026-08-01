@@ -1,5 +1,5 @@
 """
-Architecture Engine — feeds Layer 4 (Engineering architecture).
+Architecture Module — feeds Layer 4 (Engineering architecture).
 
 Composes subsystems, interfaces, inputs, outputs, tolerances, energy,
 and computational requirements into a single Layer 4 dict. Pulls from
@@ -9,7 +9,7 @@ prerequisite chain.
 from typing import Dict, Any, List
 
 
-class ArchitectureEngine:
+class ArchitectureModule:
     """Composes Layer 4 (Engineering architecture)."""
 
     def __init__(self, graph: Dict[str, Any]):

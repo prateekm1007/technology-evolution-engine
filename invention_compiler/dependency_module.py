@@ -1,5 +1,5 @@
 """
-Dependency Engine — feeds Layer 2 (Dependency graph).
+Dependency Module — feeds Layer 2 (Dependency graph).
 
 Wraps the existing LineageMapper (product/lineage/mapper.py) so the
 compiler gets the prerequisite chain without re-implementing it.
@@ -25,7 +25,7 @@ if str(_ROOT) not in sys.path:
 from product.lineage.mapper import LineageMapper
 
 
-class DependencyEngine:
+class DependencyModule:
     """Walks the prerequisite chain of an invention's target node."""
 
     def __init__(self, graph: Dict[str, Any]):

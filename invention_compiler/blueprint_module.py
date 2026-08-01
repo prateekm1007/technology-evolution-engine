@@ -1,5 +1,5 @@
 """
-Blueprint Engine — feeds Layer 10 (Final blueprint).
+Blueprint Module — feeds Layer 10 (Final blueprint).
 
 Composes the final blueprint from all 10 preceding layers. The blueprint
 is the system's deliverable: a complete chain of reasoning that an
@@ -12,7 +12,7 @@ that rule: its output is the chain itself, not a verdict.
 from typing import Dict, Any, List
 
 
-class BlueprintEngine:
+class BlueprintModule:
     """Composes the final Layer 10 blueprint."""
 
     def __init__(self, graph: Dict[str, Any]):

@@ -1,5 +1,5 @@
 """
-Constraint Engine — feeds Layer 3 (assumptions, failure_modes,
+Constraint Module — feeds Layer 3 (assumptions, failure_modes,
 optimization_targets) AND Layer 4 (tolerances) AND Layer 6 (materials,
 suppliers, tooling, quality_control).
 
@@ -10,7 +10,7 @@ is split into three methods, one per layer it feeds.
 from typing import Dict, Any, List
 
 
-class ConstraintEngine:
+class ConstraintModule:
     """Aggregates constraints from the prerequisite chain and proposes
     failure modes, tolerances, and manufacturing constraints."""
 

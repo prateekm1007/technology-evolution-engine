@@ -123,6 +123,40 @@ The reference patterns are:
 When in doubt, copy the shape of an existing module that does
 something similar. Consistency is cheaper than novelty.
 
+### Use the word "engine" honestly (CTO-mandated)
+
+The word `engine` is reserved for modules that satisfy ALL THREE
+of these conditions:
+
+```text
+1. Explicit model.        — a formal scientific/mathematical model
+                             is encoded in code, not a keyword map.
+2. Empirical validation.  — the model has been tested against real
+                             data and the test results are recorded
+                             in the verification ledger.
+3. Reproducible results.  — re-running the model with the same inputs
+                             produces the same outputs, byte-exact.
+```
+
+Until a module satisfies all three, it is a `module`, not an `engine`.
+
+This rule exists because the CTO caught us calling keyword-matching
+files "engines" (commit `a3d167d` review). That kind of overclaim
+is exactly the entropy this file is designed to prevent: a future
+engineer reads "physics_engine" and assumes there's a physics model
+inside. There isn't — there's a keyword filter. Calling it that
+is a lie, and lies compound.
+
+The single exception as of this writing is `verification_engine`,
+which meets all three conditions: explicit predict→observe→reconcile
+model, 9 historical-failure validations in the ledger (6 pass + 3
+fail), deterministic seeded RNG.
+
+If you implement an actual scientific model (e.g., a real physics
+engine that solves the heat equation), you may rename the module
+to "engine" — but only after the verification cycle has recorded
+at least one pass AND one fail against real-world data for it.
+
 ---
 
 ## How these rules interact with Law 8

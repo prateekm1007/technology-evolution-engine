@@ -1,5 +1,5 @@
 """
-Prototype Engine — feeds Layer 9 (Prototype layer).
+Prototype Module — feeds Layer 9 (Prototype layer).
 
 Proposes three prototype stages (v1, v2, v3) and a timeline. Each
 prototype has a purpose, a target capability, and an estimated duration.
@@ -11,7 +11,7 @@ v3: prove the manufacturing pathway is viable (production-readiness).
 from typing import Dict, Any, List
 
 
-class PrototypeEngine:
+class PrototypeModule:
     """Proposes a three-stage prototype plan."""
 
     def __init__(self, graph: Dict[str, Any]):

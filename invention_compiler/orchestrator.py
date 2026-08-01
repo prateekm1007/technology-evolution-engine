@@ -34,20 +34,20 @@ import time
 from datetime import datetime, timezone
 from typing import Dict, Any
 
-from .analogy_engine import AnalogyEngine
-from .physics_engine import PhysicsEngine
-from .chemistry_engine import ChemistryEngine
-from .biology_engine import BiologyEngine
-from .mathematics_engine import MathematicsEngine
-from .economics_engine import EconomicsEngine
-from .constraint_engine import ConstraintEngine
-from .architecture_engine import ArchitectureEngine
-from .simulation_engine import SimulationEngine
-from .dependency_engine import DependencyEngine
-from .resurrection_engine import ResurrectionEngine
+from .analogy_module import AnalogyModule
+from .physics_module import PhysicsModule
+from .chemistry_module import ChemistryModule
+from .biology_module import BiologyModule
+from .mathematics_module import MathematicsModule
+from .economics_module import EconomicsModule
+from .constraint_module import ConstraintModule
+from .architecture_module import ArchitectureModule
+from .simulation_module import SimulationModule
+from .dependency_module import DependencyModule
+from .resurrection_module import ResurrectionModule
 from .verification_engine import VerificationEngine
-from .prototype_engine import PrototypeEngine
-from .blueprint_engine import BlueprintEngine
+from .prototype_module import PrototypeModule
+from .blueprint_module import BlueprintModule
 
 
 class InventionCompiler:
@@ -60,21 +60,25 @@ class InventionCompiler:
 
     def __init__(self, graph: Dict[str, Any]):
         self.graph = graph
-        # Instantiate every engine once. Decoupled per anti-entropy rule.
-        self.analogy = AnalogyEngine(graph)
-        self.physics = PhysicsEngine(graph)
-        self.chemistry = ChemistryEngine(graph)
-        self.biology = BiologyEngine(graph)
-        self.mathematics = MathematicsEngine(graph)
-        self.economics = EconomicsEngine(graph)
-        self.constraint = ConstraintEngine(graph)
-        self.architecture = ArchitectureEngine(graph)
-        self.simulation = SimulationEngine(graph)
-        self.dependency = DependencyEngine(graph)
-        self.resurrection = ResurrectionEngine(graph)
+        # Instantiate every module once. Decoupled per anti-entropy rule.
+        # Per the CTO review, only verification_engine is a true "engine";
+        # the rest are modules doing keyword matching until they earn
+        # the "engine" name by satisfying: explicit model + empirical
+        # validation + reproducible results.
+        self.analogy = AnalogyModule(graph)
+        self.physics = PhysicsModule(graph)
+        self.chemistry = ChemistryModule(graph)
+        self.biology = BiologyModule(graph)
+        self.mathematics = MathematicsModule(graph)
+        self.economics = EconomicsModule(graph)
+        self.constraint = ConstraintModule(graph)
+        self.architecture = ArchitectureModule(graph)
+        self.simulation = SimulationModule(graph)
+        self.dependency = DependencyModule(graph)
+        self.resurrection = ResurrectionModule(graph)
         self.verification = VerificationEngine(graph)
-        self.prototype = PrototypeEngine(graph)
-        self.blueprint = BlueprintEngine(graph)
+        self.prototype = PrototypeModule(graph)
+        self.blueprint = BlueprintModule(graph)
 
     def compile(self, problem: Dict[str, Any]) -> Dict[str, Any]:
         """Compile a problem through all 11 layers.

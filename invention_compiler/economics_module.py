@@ -1,5 +1,5 @@
 """
-Economics Engine — feeds Layer 1 (economics) AND Layer 7 (Economic layer).
+Economics Module — feeds Layer 1 (economics) AND Layer 7 (Economic layer).
 
 Layer 1: identifies economic structure (cost curves, market shape,
 adoption dynamics) from the graph's industry nodes.
@@ -9,7 +9,7 @@ Layer 7: produces capex/opex estimates, market size, adoption model.
 from typing import Dict, Any, List
 
 
-class EconomicsEngine:
+class EconomicsModule:
     """Produces economic estimates for a candidate invention."""
 
     # Industry-node counts -> market-size multiplier (a coarse prior).

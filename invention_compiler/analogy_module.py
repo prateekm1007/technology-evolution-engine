@@ -1,5 +1,5 @@
 """
-Analogy Engine — feeds Layer 0 (Opportunity definition).
+Analogy Module — feeds Layer 0 (Opportunity definition).
 
 Discovers cross-domain analogies for a given problem. Wraps the
 existing CrossDomainSynthesizer (product/discovery/synthesizer.py)
@@ -37,7 +37,7 @@ if str(_ROOT) not in sys.path:
 from product.discovery.synthesizer import CrossDomainSynthesizer
 
 
-class AnalogyEngine:
+class AnalogyModule:
     """Finds cross-domain analogies for a problem."""
 
     def __init__(self, graph: Dict[str, Any]):
