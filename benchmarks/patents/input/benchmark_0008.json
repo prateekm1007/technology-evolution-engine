@@ -1,0 +1,67 @@
+{
+  "id": "benchmark_0008",
+  "type": "patent",
+  "source": "uspto",
+  "title": "Piezoelectric MEMS Accelerometer with Sub-Microgravity Resolution",
+  "domain": "sensors",
+  "abstract": "A MEMS accelerometer with AlN piezoelectric sensing on silicon proof mass achieving 25 ng/sqrt(Hz) noise floor in 2mm x 2mm die.",
+  "claims": [
+    "Silicon proof mass (500um x 500um x 50um) with folded-beam springs, k=0.5 N/m.",
+    "c-axis AlN sensing layer, 2um thick, by reactive sputtering.",
+    "Wafer-level vacuum packaging below 10 Pa for Q>1000."
+  ],
+  "components": [
+    "silicon proof mass",
+    "AlN piezoelectric layer",
+    "folded beam springs",
+    "ASIC readout",
+    "vacuum package"
+  ],
+  "materials": [
+    "silicon",
+    "aluminum nitride",
+    "aluminum",
+    "gold",
+    "glass frit"
+  ],
+  "methods": [
+    "DRIE etching",
+    "reactive sputtering",
+    "wafer bonding",
+    "wire bonding"
+  ],
+  "constraints": [
+    "sensitivity",
+    "bandwidth",
+    "power",
+    "cost",
+    "manufacturing",
+    "size"
+  ],
+  "problem_statement": "Capacitive MEMS suffer parasitic capacitance and stiction. Piezoelectric sensing enables self-powered operation.",
+  "expected_constraints": [
+    "energy",
+    "material",
+    "cost",
+    "manufacturing",
+    "information"
+  ],
+  "expected_prerequisites": [
+    "AlN thin film deposition",
+    "DRIE process control",
+    "wafer-level packaging",
+    "low-noise ASIC design"
+  ],
+  "expected_adjacent_domains": [
+    "semiconductor manufacturing",
+    "materials science",
+    "signal processing",
+    "aerospace"
+  ],
+  "expected_failure_modes": [
+    "AlN film cracking",
+    "stiction",
+    "drift",
+    "packaging leak"
+  ]
+}
