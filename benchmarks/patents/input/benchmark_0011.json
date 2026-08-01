@@ -1,0 +1,66 @@
+{
+  "id": "benchmark_0011",
+  "type": "patent",
+  "source": "uspto",
+  "title": "Spiking Neural Network Hardware with Memristive Synapses",
+  "domain": "computation",
+  "abstract": "A neuromorphic chip with 1M memristive synapses (HfO2 RRAM) and 10K integrate-and-fire neurons at 10 TOPS/W.",
+  "claims": [
+    "TiN/HfO2/Ti/TiN memristive synapse with 128 analog conductance states, retention >10 years.",
+    "Integrate-and-fire neuron consuming 50pJ per spike.",
+    "Crossbar array enabling O(1) matrix-vector multiplication."
+  ],
+  "components": [
+    "memristive crossbar",
+    "neuron circuits",
+    "address decoder",
+    "ADC/DAC",
+    "digital controller"
+  ],
+  "materials": [
+    "hafnium oxide",
+    "titanium nitride",
+    "titanium",
+    "silicon",
+    "copper"
+  ],
+  "methods": [
+    "CMOS fabrication",
+    "RRAM deposition",
+    "analog computing",
+    "spike encoding"
+  ],
+  "constraints": [
+    "energy",
+    "information",
+    "manufacturing",
+    "cost",
+    "reliability"
+  ],
+  "problem_statement": "Von Neumann architectures waste 90% energy on data movement.",
+  "expected_constraints": [
+    "energy",
+    "information",
+    "manufacturing",
+    "cost",
+    "material"
+  ],
+  "expected_prerequisites": [
+    "memristor uniformity",
+    "analog CMOS design",
+    "spike encoding algorithms",
+    "training methods for analog hardware"
+  ],
+  "expected_adjacent_domains": [
+    "neuroscience",
+    "materials science",
+    "VLSI design",
+    "machine learning"
+  ],
+  "expected_failure_modes": [
+    "conductance drift",
+    "device variability",
+    "endurance limitation",
+    "read disturb"
+  ]
+}
