@@ -212,6 +212,11 @@ def log_to_ledger(summary):
         "grade_distribution": summary.get("grade_distribution", {}),
         "assumptions": ["Rule-based scoring", "Seed graph only", "No external data"],
         "falsification_criteria": "Composite mean below 0.3 after 50 benchmarks indicates fundamental pipeline failure.",
+        # Law 8 replayability: every entry MUST name the writer that
+        # produced it. Without this field the entry is unprovenanced
+        # and the Law 8 enforcement script will refuse to support any
+        # "verified" claim that depends on it.
+        "writer": "scripts.run_evidence_tests.log_to_ledger",
     }
     with open(ledger_path, "a") as f:
         f.write(json.dumps(entry) + "\n")

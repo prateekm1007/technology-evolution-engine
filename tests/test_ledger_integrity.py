@@ -146,17 +146,23 @@ def test_ledger_schema_matches_writer():
             return  # leave the loud failure to regression #1
 
     # Once we get here, the file parses line-by-line. Now check
-    # that every parsed entry matches one of the two known writers.
+    # that every parsed entry matches one of the known writers.
     known_writers = {
         "oracle_prediction": {
-            "required": {"type", "constraint", "delta", "timestamp", "outcome"},
+            "required": {"type", "constraint", "delta", "timestamp", "outcome",
+                         "writer"},
             "writer": "web/backend/adapters/graph_model.py::GraphModel.append_ledger "
                       "(called by web/backend/adapters/oracle_deep.py::_log_to_ledger)",
         },
         "benchmark_run": {
             "required": {"type", "timestamp", "total_benchmarks",
-                         "overall_composite_mean", "grade_distribution"},
+                         "overall_composite_mean", "grade_distribution", "writer"},
             "writer": "scripts/run_evidence_tests.py::log_to_ledger",
+        },
+        "verification": {
+            "required": {"type", "timestamp", "prediction_id", "outcome",
+                         "evidence_ref", "writer"},
+            "writer": "scripts/run_verification_cycle.py::reconcile",
         },
     }
     unprovenanced = []

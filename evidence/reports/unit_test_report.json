@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-08-01T14:54:03.454120+00:00",
+  "generated_at": "2026-08-01T15:32:19.704705+00:00",
   "method": "pytest tests/test_graph_engine.py tests/test_product.py tests/test_ledger_integrity.py -v, run live (includes the new F-005 regression tests)",
   "summary": {
-    "passed": 12,
-    "failed": 2,
+    "passed": 30,
+    "failed": 0,
     "skipped": 0,
     "errors": 0,
-    "total": 14,
-    "collected": 14
+    "total": 30,
+    "collected": 30
   },
-  "duration_s": 0.63,
+  "duration_s": 1.896,
   "tests": [
     {
       "nodeid": "tests/test_graph_engine.py::test_empty_graph",
@@ -68,20 +68,100 @@
     },
     {
       "nodeid": "tests/test_ledger_integrity.py::test_every_committed_jsonl_line_parses",
-      "outcome": "failed",
+      "outcome": "passed",
       "duration_s": 0.0
     },
     {
       "nodeid": "tests/test_ledger_integrity.py::test_no_one_char_per_line_pattern",
-      "outcome": "failed",
+      "outcome": "passed",
       "duration_s": 0.0
     },
     {
       "nodeid": "tests/test_ledger_integrity.py::test_ledger_schema_matches_writer",
       "outcome": "passed",
       "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_north_star_modules.py::test_prerequisite_chain_returns_tree",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_north_star_modules.py::test_prerequisite_chain_classifies_relationships",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_north_star_modules.py::test_prerequisite_chain_handles_unknown_node",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_north_star_modules.py::test_commercial_viability_chain_tags_industry_target",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_north_star_modules.py::test_map_lineage_backwards_compatible",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_north_star_modules.py::test_synthesizer_returns_candidates",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_north_star_modules.py::test_synthesizer_candidates_are_cross_domain",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_north_star_modules.py::test_synthesizer_excludes_already_connected",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_north_star_modules.py::test_synthesizer_candidates_have_evidence",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_north_star_modules.py::test_synthesizer_respects_min_score",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_north_star_modules.py::test_feasibility_score_has_exact_schema",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_north_star_modules.py::test_feasibility_score_time_horizon_is_string",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_north_star_modules.py::test_feasibility_score_carries_evidence",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_north_star_modules.py::test_feasibility_score_includes_falsification_criteria",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_north_star_modules.py::test_feasibility_score_unknown_target_returns_zero",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_north_star_modules.py::test_feasibility_score_operators_affect_dimensions",
+      "outcome": "passed",
+      "duration_s": 0.0
     }
   ],
-  "stdout_tail": "tainly\n        a writer that iterated a string character-by-character and\n        wrote a newline after each character. The legitimate\n        one-line-per-record JSONL format cannot hit this signature:\n        any non-trivial JSON object is longer than 5 characters.\n    \n        On the corrupted state, predictions.jsonl hits this with\n        line_count=703 and max_line_length=1.\n        \"\"\"\n        files = _all_jsonl_files()\n        flagged = []\n        for f in files:\n            with open(f, \"r\", encoding=\"utf-8\") as fh:\n                lines = fh.read().splitlines()\n            non_empty = [ln for ln in lines if ln.strip()]\n            if len(non_empty) > 500 and all(len(ln) < 5 for ln in non_empty):\n                flagged.append({\n                    \"file\": str(f.relative_to(ROOT)),\n                    \"line_count\": len(lines),\n                    \"non_empty_count\": len(non_empty),\n                    \"max_line_length\": max((len(ln) for ln in non_empty), default=0),\n                })\n>       assert not flagged, (\n            \"F-005 regression: one-character-per-line corruption signature \"\n            f\"detected in: {flagged}\"\n        )\nE       AssertionError: F-005 regression: one-character-per-line corruption signature detected in: [{'file': 'data/ledger/predictions.jsonl', 'line_count': 704, 'non_empty_count': 609, 'max_line_length': 1}]\nE       assert not [{'file': 'data/ledger/predictions.jsonl', 'line_count': 704, 'non_empty_count': 609, 'max_line_length': 1}]\n\ntests/test_ledger_integrity.py:99: AssertionError\n--------------------------------- JSON report ----------------------------------\nreport saved to: /tmp/tee_unit_test_report.json\n=========================== short test summary info ============================\nFAILED tests/test_ledger_integrity.py::test_every_committed_jsonl_line_parses\nFAILED tests/test_ledger_integrity.py::test_no_one_char_per_line_pattern - As...\n========================= 2 failed, 12 passed in 0.17s =========================\n",
+  "stdout_tail": null,
   "stderr_tail": null
 }

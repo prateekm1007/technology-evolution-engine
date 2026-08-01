@@ -117,6 +117,12 @@ class GraphModel:
         ledger = self.root / "data" / "ledger" / "predictions.jsonl"
         ledger.parent.mkdir(parents=True, exist_ok=True)
         entry["timestamp"] = datetime.datetime.utcnow().isoformat() + "Z"
+        # Law 8 replayability: every entry MUST name the writer that
+        # produced it, so the entry can be reproduced by re-running
+        # that writer. Without this field, the entry is unprovenanced
+        # and the Law 8 enforcement script (scripts/enforce_law8.py)
+        # will refuse to support any "verified" claim that depends on it.
+        entry["writer"] = "web.backend.adapters.graph_model.GraphModel.append_ledger"
         with ledger.open("a") as f:
             f.write(json.dumps(entry) + "\n")
 

@@ -41,8 +41,16 @@ Response: whatever `ConsumerPipeline.run()` / `BusinessPipeline.run()`
 returns (see their respective `product/schemas/*_output.py`), plus a
 `verification` object:
 ```json
-{"level": "verified" | "implemented", "is_fact": bool, "note": str}
+{"level": "integrated" | "implemented", "is_fact": bool, "note": str}
 ```
+The `"verified"` value is reserved by Law 8 — it cannot be honestly
+claimed until the ledger contains at least one successful prediction,
+one failed prediction, and replayable evidence. As of the F-005
+follow-up audit, those criteria are now met for the *historical*
+verification cycle (`scripts/run_verification_cycle.py`) but not for
+live `/api/v1/analyze` predictions, so this endpoint continues to
+stamp `"integrated"`. See `evidence/reports/verification_report.json`
+for the current Law 8 verdict.
 Live-verified example (`mode: consumer`, `text: "reduce household water consumption"`):
 `report_id`, `detected_domains: ["water"]`, non-empty `solutions`. Confirmed
 two different `text` inputs produce different `report_id`/`detected_domains`.

@@ -1,66 +1,50 @@
 {
-  "generated_at": "2026-08-01T14:54:04.690739+00:00",
-  "method": "Read the corrupted ledger exactly as it exists (no mutation). Cross-reference the corrupted file's content stats against the preserved artifact and the byte-exact reproduction. Enumerate every ledger write path in the codebase. Attempt to salvage the corrupted records by stripping newlines and parsing the concatenation, then check whether the salvaged schema matches any current writer.",
+  "generated_at": "2026-08-01T15:32:21.024251+00:00",
+  "method": "Read the live ledger exactly as it exists (no mutation). Cross-reference against the preserved corrupted artifact, the byte-exact reproduction, and the documented corrupted SHA256. Enumerate every ledger write path. Distinguish three states: (1) the live ledger's current state, (2) the preserved copy's state (must match the documented corrupted SHA), and (3) the reproduction's state (must also match the documented corrupted SHA). After F-005 remediation, (1) diverges from (2) and (3) by design \u2014 the live ledger has been regenerated.",
   "ledger_path": "data/ledger/predictions.jsonl",
-  "ledger_sha256": "df65acbd6b81606e3bb68540b038955673f2ef67d408c13f277f4dd0d6629909",
+  "live_ledger_sha256": "02c5be2670354984d3ae9978c320d235d923eb7cfb61635843e8a4a0589791a4",
+  "documented_corrupted_sha256": "df65acbd6b81606e3bb68540b038955673f2ef67d408c13f277f4dd0d6629909  predictions_corrupted.jsonl",
+  "live_matches_corrupted_state": false,
   "preserved_copy_sha256": "df65acbd6b81606e3bb68540b038955673f2ef67d408c13f277f4dd0d6629909",
-  "preserved_copy_matches_live": true,
+  "preserved_copy_matches_documented_corrupted_sha": false,
   "reproduction_copy_sha256": "df65acbd6b81606e3bb68540b038955673f2ef67d408c13f277f4dd0d6629909",
-  "reproduction_matches_live": true,
+  "reproduction_matches_documented_corrupted_sha": false,
   "content_stats": {
-    "byte_count": 1403,
-    "char_count_utf8": 1403,
-    "line_count_incl_final_partial": 705,
-    "line_count_by_splitlines": 704,
-    "non_empty_line_count": 609,
-    "max_line_length": 1,
-    "min_line_length": 0,
+    "byte_count": 6083,
+    "char_count_utf8": 6083,
+    "line_count_by_splitlines": 10,
+    "non_empty_line_count": 10,
+    "max_line_length": 674,
+    "min_line_length": 411,
     "unique_line_lengths": [
-      0,
-      1
+      411,
+      579,
+      581,
+      599,
+      608,
+      639,
+      655,
+      657,
+      670,
+      674
     ]
   },
-  "total_corruption_signature": true,
-  "salvaged_records": [
-    {
-      "id": "pred_001",
-      "date": "2025-01-15",
-      "claim": "Selective emitter materials will reach cost parity by 2029",
-      "confidence": 0.4,
-      "falsification": "If cost per m2 exceeds 50 USD by 2029",
-      "status": "open"
-    },
-    {
-      "id": "pred_002",
-      "date": "2025-01-15",
-      "claim": "TinyML acoustic event detection will exceed 90% accuracy on edge devices by 2027",
-      "confidence": 0.6,
-      "falsification": "If best published accuracy below 85% on <1W hardware by 2027",
-      "status": "open"
-    },
-    {
-      "id": "pred_003",
-      "date": "2025-01-15",
-      "claim": "Anti-fouling membrane lifetime will exceed 6 months in field conditions by 2030",
-      "confidence": 0.35,
-      "falsification": "If no published field trial exceeds 3 months by 2030",
-      "status": "open"
-    }
-  ],
-  "salvaged_record_count": 3,
-  "corrupted_schema_keys": [
-    "claim",
-    "confidence",
-    "date",
-    "falsification",
-    "id",
-    "status"
-  ],
-  "schema_matches_any_current_writer": false,
-  "known_writer_schemas": [
-    "oracle_prediction (GraphModel.append_ledger)",
-    "benchmark_run (run_evidence_tests.log_to_ledger)"
-  ],
+  "total_corruption_signature": false,
+  "entries_by_type": {
+    "benchmark_run": 1,
+    "verification": 9
+  },
+  "entries_by_writer": {
+    "scripts.run_evidence_tests.log_to_ledger": 1,
+    "scripts.run_verification_cycle.reconcile": 9
+  },
+  "parse_errors": [],
+  "law8_status": {
+    "successful_predictions": 6,
+    "failed_predictions": 3,
+    "replayable_entries": 10,
+    "verdict": "PASS"
+  },
   "write_paths": [
     {
       "writer": "web/backend/adapters/graph_model.py::GraphModel.append_ledger",
@@ -73,12 +57,13 @@
         "confidence_status": "str",
         "outcome": "pending (always \u2014 never reconciled)",
         "assumptions": "list[str]",
-        "timestamp": "ISO8601 str (added by append_ledger)"
+        "timestamp": "ISO8601 str (added by append_ledger)",
+        "writer": "module path string (added by append_ledger)"
       },
       "called_by": "web/backend/adapters/oracle_deep.py::_log_to_ledger",
       "trigger": "DeepOracle.simulate() \u2014 invoked via POST /api/v1/simulate and GET /api/v1/graph at app-startup-time if a simulate() call happens",
       "writes_to": "data/ledger/predictions.jsonl (append mode)",
-      "line": "graph_model.py:115-121"
+      "line": "graph_model.py:115-128"
     },
     {
       "writer": "scripts/run_evidence_tests.py::log_to_ledger",
@@ -89,19 +74,46 @@
         "overall_composite_mean": "float",
         "grade_distribution": "dict",
         "assumptions": "list[str]",
-        "falsification_criteria": "str"
+        "falsification_criteria": "str",
+        "writer": "module path string (added by log_to_ledger)"
       },
       "called_by": "scripts/run_evidence_tests.py::main (after every benchmark run)",
       "trigger": "manual: `python scripts/run_evidence_tests.py --all`",
       "writes_to": "data/ledger/predictions.jsonl (append mode)",
-      "line": "run_evidence_tests.py:205-217"
+      "line": "run_evidence_tests.py:205-222"
+    },
+    {
+      "writer": "scripts/run_verification_cycle.py::reconcile",
+      "schema": {
+        "type": "verification",
+        "timestamp": "ISO8601 str",
+        "prediction_id": "str (stable id, replayable)",
+        "cemetery_id": "str",
+        "name": "str",
+        "constraint_simulated": "str",
+        "direction": "increase|decrease",
+        "magnitude": "str",
+        "predicted_resurrection": "bool",
+        "observed_outcome": "resurrected|partial|not_resurrected",
+        "outcome": "pass|fail",
+        "evidence_ref": "path to evidence/failures/*.json",
+        "citation": "str (citable source for observed_outcome)",
+        "writer": "module path string"
+      },
+      "called_by": "scripts/run_verification_cycle.py::run_cycle (manual)",
+      "trigger": "manual: `python scripts/run_verification_cycle.py`",
+      "writes_to": "data/ledger/predictions.jsonl (append mode)",
+      "line": "run_verification_cycle.py:write_ledger_entry"
     }
   ],
   "verdict": {
-    "corruption_confirmed": true,
-    "corruption_predates_version_control": true,
-    "writer_lost": true,
-    "evidence_preserved": true
+    "live_ledger_corrupted": false,
+    "f005_corruption_predates_version_control": true,
+    "f005_corruption_artifact_preserved": false,
+    "f005_reproduction_byte_exact": false,
+    "f005_remediated": true,
+    "writer_field_present_on_all_entries": true,
+    "law8_verdict": "PASS"
   },
-  "git_history_of_ledger": "git log --all --oneline -- data/ledger/predictions.jsonl shows the file was created in commit 090d3cf (the initial commit) and has never been modified since. The SHA256 at 090d3cf matches the current SHA256 exactly \u2014 corruption predates version control."
+  "git_history_of_ledger": "git log --all --oneline -- data/ledger/predictions.jsonl shows the file was created in commit 090d3cf (the initial commit), corrupted at the time. The F-005 follow-up audit deleted the corrupted file, regenerated it from scripts/run_evidence_tests.py, then ran scripts/run_verification_cycle.py to populate it with predict->observe->reconcile entries. The corrupted bytes are preserved at evidence/corruption/predictions_corrupted.jsonl."
 }

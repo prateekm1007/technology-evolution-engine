@@ -100,11 +100,11 @@ def make_compile_report():
 # 2. unit_test_report.json
 # ----------------------------------------------------------------------
 def make_unit_test_report():
-    print("[2/6] unit test report (pytest tests/test_graph_engine.py tests/test_product.py tests/test_ledger_integrity.py)...")
+    print("[2/6] unit test report (pytest tests/test_graph_engine.py tests/test_product.py tests/test_ledger_integrity.py tests/test_north_star_modules.py)...")
     cmd = [
         PY, "-m", "pytest",
         "tests/test_graph_engine.py", "tests/test_product.py",
-        "tests/test_ledger_integrity.py",
+        "tests/test_ledger_integrity.py", "tests/test_north_star_modules.py",
         "-v", "--json-report",
         "--json-report-file=/tmp/tee_unit_test_report.json",
         "--json-report-indent=2",
@@ -285,39 +285,56 @@ def make_ledger_integrity_report():
     ledger_path = ROOT / "data" / "ledger" / "predictions.jsonl"
     preserved_path = ROOT / "evidence" / "corruption" / "predictions_corrupted.jsonl"
     reproduction_path = ROOT / "evidence" / "corruption" / "reproduction_byte_exact.jsonl"
+    preserved_sha_path = ROOT / "evidence" / "corruption" / "sha256.txt"
 
-    # Read the corrupted file's stats.
+    # The canonical SHA of the original corrupted file (F-005).
+    # This is the value the preserved copy and reproduction should
+    # BOTH match — it's documented in evidence/corruption/sha256.txt
+    # and metadata.json. After F-005 remediation, the LIVE ledger
+    # will NOT match this SHA (because it's been regenerated clean),
+    # but the preserved copy and reproduction MUST still match it.
+    documented_corrupted_sha = None
+    if preserved_sha_path.exists():
+        documented_corrupted_sha = preserved_sha_path.read_text().strip()
+
+    # Read the live file's stats.
     raw = ledger_path.read_bytes()
     text = raw.decode("utf-8")
     lines = text.splitlines()
     non_empty = [ln for ln in lines if ln.strip()]
     unique_lengths = sorted({len(ln) for ln in lines})
 
-    # Reproduce the corruption byte-exactly using the recipe from
-    # the F-005 postmortem. The recipe is documented as:
-    #
-    #   buf = []
-    #   for i, entry in enumerate(predictions):
-    #       if i > 0:
-    #           buf.append("\n\n")
-    #       for ch in json.dumps(entry):
-    #           buf.append(ch + "\n")
-    #   text = "".join(buf)[:-1]
-    #
-    # We don't have the original 3 predictions (they're lost), but we
-    # CAN verify the existing reproduction file matches by SHA256.
-    # And we can verify the reproduction pattern matches the corrupted
-    # file by SHA256.
+    # The corruption signature: >500 non-empty lines AND all <5 chars.
+    corruption_signature = (
+        len(non_empty) > 500 and all(len(ln) < 5 for ln in non_empty)
+    )
 
-    reproduction_matches = False
-    if reproduction_path.exists():
-        reproduction_matches = sha256(reproduction_path) == sha256(ledger_path)
+    # Reproduction check.
+    reproduction_matches_documented = False
+    if reproduction_path.exists() and documented_corrupted_sha:
+        reproduction_matches_documented = (
+            sha256(reproduction_path) == documented_corrupted_sha
+        )
 
-    preserved_matches = False
-    if preserved_path.exists():
-        preserved_matches = sha256(preserved_path) == sha256(ledger_path)
+    # Preserved-copy check: the preserved copy must still match the
+    # documented corrupted SHA, regardless of what the live ledger
+    # currently looks like. This is the honest test of "evidence
+    # preserved": we preserved the corrupted bytes; whether the live
+    # file has since been remediated is a separate question.
+    preserved_matches_documented = False
+    if preserved_path.exists() and documented_corrupted_sha:
+        preserved_matches_documented = (
+            sha256(preserved_path) == documented_corrupted_sha
+        )
 
-    # Also: locate every ledger write path in the repo by code scan.
+    # Live-vs-corrupted check: does the live ledger still match the
+    # corrupted state? After remediation, this should be False.
+    live_matches_corrupted = (
+        documented_corrupted_sha is not None
+        and sha256(ledger_path) == documented_corrupted_sha
+    )
+
+    # Locate every ledger write path in the repo by code scan.
     write_paths = [
         {
             "writer": "web/backend/adapters/graph_model.py::GraphModel.append_ledger",
@@ -331,11 +348,12 @@ def make_ledger_integrity_report():
                 "outcome": "pending (always — never reconciled)",
                 "assumptions": "list[str]",
                 "timestamp": "ISO8601 str (added by append_ledger)",
+                "writer": "module path string (added by append_ledger)",
             },
             "called_by": "web/backend/adapters/oracle_deep.py::_log_to_ledger",
             "trigger": "DeepOracle.simulate() — invoked via POST /api/v1/simulate and GET /api/v1/graph at app-startup-time if a simulate() call happens",
             "writes_to": "data/ledger/predictions.jsonl (append mode)",
-            "line": "graph_model.py:115-121",
+            "line": "graph_model.py:115-128",
         },
         {
             "writer": "scripts/run_evidence_tests.py::log_to_ledger",
@@ -347,129 +365,127 @@ def make_ledger_integrity_report():
                 "grade_distribution": "dict",
                 "assumptions": "list[str]",
                 "falsification_criteria": "str",
+                "writer": "module path string (added by log_to_ledger)",
             },
             "called_by": "scripts/run_evidence_tests.py::main (after every benchmark run)",
             "trigger": "manual: `python scripts/run_evidence_tests.py --all`",
             "writes_to": "data/ledger/predictions.jsonl (append mode)",
-            "line": "run_evidence_tests.py:205-217",
+            "line": "run_evidence_tests.py:205-222",
+        },
+        {
+            "writer": "scripts/run_verification_cycle.py::reconcile",
+            "schema": {
+                "type": "verification",
+                "timestamp": "ISO8601 str",
+                "prediction_id": "str (stable id, replayable)",
+                "cemetery_id": "str",
+                "name": "str",
+                "constraint_simulated": "str",
+                "direction": "increase|decrease",
+                "magnitude": "str",
+                "predicted_resurrection": "bool",
+                "observed_outcome": "resurrected|partial|not_resurrected",
+                "outcome": "pass|fail",
+                "evidence_ref": "path to evidence/failures/*.json",
+                "citation": "str (citable source for observed_outcome)",
+                "writer": "module path string",
+            },
+            "called_by": "scripts/run_verification_cycle.py::run_cycle (manual)",
+            "trigger": "manual: `python scripts/run_verification_cycle.py`",
+            "writes_to": "data/ledger/predictions.jsonl (append mode)",
+            "line": "run_verification_cycle.py:write_ledger_entry",
         },
     ]
 
-    # The corrupted file's records (once newlines are stripped) use a
-    # THIRD schema that matches no current writer.
-    salvaged_text = text.replace("\n", "").replace("\r", "")
-    salvaged_records = []
-    # Naive scan: try to parse JSON objects back-to-back.
-    idx = 0
-    while idx < len(salvaged_text):
-        if salvaged_text[idx] != "{":
-            idx += 1
+    # Count entries by type and writer.
+    entries_by_type = {}
+    entries_by_writer = {}
+    parse_errors = []
+    parsed_entries = []
+    for i, line in enumerate(text.splitlines(), start=1):
+        s = line.strip()
+        if not s:
             continue
-        # find the matching close brace, no nested arrays/objects for safety
-        depth = 0
-        end = idx
-        in_str = False
-        esc = False
-        for j in range(idx, len(salvaged_text)):
-            c = salvaged_text[j]
-            if in_str:
-                if esc:
-                    esc = False
-                elif c == "\\":
-                    esc = True
-                elif c == '"':
-                    in_str = False
-            else:
-                if c == '"':
-                    in_str = True
-                elif c == "{":
-                    depth += 1
-                elif c == "}":
-                    depth -= 1
-                    if depth == 0:
-                        end = j
-                        break
         try:
-            rec = json.loads(salvaged_text[idx:end+1])
-            salvaged_records.append(rec)
-        except json.JSONDecodeError:
-            pass
-        idx = end + 1
+            e = json.loads(s)
+            parsed_entries.append(e)
+            t = e.get("type", "<missing>")
+            entries_by_type[t] = entries_by_type.get(t, 0) + 1
+            w = e.get("writer", "<missing>")
+            entries_by_writer[w] = entries_by_writer.get(w, 0) + 1
+        except json.JSONDecodeError as ex:
+            parse_errors.append({"line": i, "error": str(ex)})
 
-    corrupted_schema_keys = sorted(salvaged_records[0].keys()) if salvaged_records else []
-    known_writer_schemas = [
-        "oracle_prediction (GraphModel.append_ledger)",
-        "benchmark_run (run_evidence_tests.log_to_ledger)",
-    ]
-    schema_matches_any_writer = False
-    if salvaged_records:
-        for rec in salvaged_records:
-            keys = set(rec.keys())
-            # Both current writers stamp `type` and `timestamp`.
-            if "type" in keys and "timestamp" in keys:
-                schema_matches_any_writer = True
-                break
+    # Law 8 status: pass / fail counts from the verification cycle entries.
+    verification_entries = [e for e in parsed_entries if e.get("type") == "verification"]
+    passes = sum(1 for e in verification_entries if e.get("outcome") == "pass")
+    fails = sum(1 for e in verification_entries if e.get("outcome") == "fail")
 
     report = {
         "generated_at": now_iso(),
         "method": (
-            "Read the corrupted ledger exactly as it exists (no mutation). "
-            "Cross-reference the corrupted file's content stats against the "
-            "preserved artifact and the byte-exact reproduction. Enumerate "
-            "every ledger write path in the codebase. Attempt to salvage "
-            "the corrupted records by stripping newlines and parsing the "
-            "concatenation, then check whether the salvaged schema matches "
-            "any current writer."
+            "Read the live ledger exactly as it exists (no mutation). Cross-"
+            "reference against the preserved corrupted artifact, the byte-"
+            "exact reproduction, and the documented corrupted SHA256. "
+            "Enumerate every ledger write path. Distinguish three states: "
+            "(1) the live ledger's current state, (2) the preserved copy's "
+            "state (must match the documented corrupted SHA), and (3) the "
+            "reproduction's state (must also match the documented corrupted "
+            "SHA). After F-005 remediation, (1) diverges from (2) and (3) "
+            "by design — the live ledger has been regenerated."
         ),
         "ledger_path": str(ledger_path.relative_to(ROOT)),
-        "ledger_sha256": sha256(ledger_path),
+        "live_ledger_sha256": sha256(ledger_path),
+        "documented_corrupted_sha256": documented_corrupted_sha,
+        "live_matches_corrupted_state": live_matches_corrupted,
         "preserved_copy_sha256": sha256(preserved_path) if preserved_path.exists() else None,
-        "preserved_copy_matches_live": preserved_matches,
+        "preserved_copy_matches_documented_corrupted_sha": preserved_matches_documented,
         "reproduction_copy_sha256": sha256(reproduction_path) if reproduction_path.exists() else None,
-        "reproduction_matches_live": reproduction_matches,
+        "reproduction_matches_documented_corrupted_sha": reproduction_matches_documented,
         "content_stats": {
             "byte_count": len(raw),
             "char_count_utf8": len(text),
-            "line_count_incl_final_partial": len(lines) + (0 if text.endswith("\n") or text == "" else 1),
             "line_count_by_splitlines": len(lines),
             "non_empty_line_count": len(non_empty),
             "max_line_length": max((len(ln) for ln in lines), default=0),
             "min_line_length": min((len(ln) for ln in lines), default=0),
             "unique_line_lengths": unique_lengths,
         },
-        "total_corruption_signature": (
-            len(non_empty) > 500 and all(len(ln) < 5 for ln in non_empty)
-        ),
-        "salvaged_records": salvaged_records,
-        "salvaged_record_count": len(salvaged_records),
-        "corrupted_schema_keys": corrupted_schema_keys,
-        "schema_matches_any_current_writer": schema_matches_any_writer,
-        "known_writer_schemas": known_writer_schemas,
+        "total_corruption_signature": corruption_signature,
+        "entries_by_type": entries_by_type,
+        "entries_by_writer": entries_by_writer,
+        "parse_errors": parse_errors[:5],
+        "law8_status": {
+            "successful_predictions": passes,
+            "failed_predictions": fails,
+            "replayable_entries": sum(1 for e in parsed_entries if "writer" in e),
+            "verdict": "PASS" if (passes >= 1 and fails >= 1
+                                  and sum(1 for e in parsed_entries if "writer" in e) >= 1) else "FAIL",
+        },
         "write_paths": write_paths,
         "verdict": {
-            "corruption_confirmed": (
-                len(non_empty) > 500
-                and max((len(ln) for ln in lines), default=0) < 5
-            ),
-            "corruption_predates_version_control": (
-                # Verified at audit time via
-                # `git cat-file -p 090d3cf:data/ledger/predictions.jsonl | sha256sum`
-                # matches the current SHA256. See git log:
-                # 090d3cf Initial commit — only commit that ever touched this file.
-                True
-            ),
-            "writer_lost": not schema_matches_any_writer,
-            "evidence_preserved": preserved_matches and reproduction_matches,
+            "live_ledger_corrupted": corruption_signature,
+            "f005_corruption_predates_version_control": True,
+            "f005_corruption_artifact_preserved": preserved_matches_documented,
+            "f005_reproduction_byte_exact": reproduction_matches_documented,
+            "f005_remediated": not live_matches_corrupted,
+            "writer_field_present_on_all_entries": all(
+                "writer" in e for e in parsed_entries),
+            "law8_verdict": "PASS" if (passes >= 1 and fails >= 1
+                                       and sum(1 for e in parsed_entries if "writer" in e) >= 1) else "FAIL",
         },
         "git_history_of_ledger": (
             "git log --all --oneline -- data/ledger/predictions.jsonl shows "
-            "the file was created in commit 090d3cf (the initial commit) and "
-            "has never been modified since. The SHA256 at 090d3cf matches the "
-            "current SHA256 exactly — corruption predates version control."
+            "the file was created in commit 090d3cf (the initial commit), "
+            "corrupted at the time. The F-005 follow-up audit deleted the "
+            "corrupted file, regenerated it from scripts/run_evidence_tests.py, "
+            "then ran scripts/run_verification_cycle.py to populate it with "
+            "predict->observe->reconcile entries. The corrupted bytes are "
+            "preserved at evidence/corruption/predictions_corrupted.jsonl."
         ),
     }
     _write(REPORT_DIR / "ledger_integrity_report.json", report)
-    print(f"      corruption signature: {report['verdict']['corruption_confirmed']}, writer lost: {report['verdict']['writer_lost']}, evidence preserved: {report['verdict']['evidence_preserved']}")
+    print(f"      live corrupted: {corruption_signature}, F-005 remediated: {not live_matches_corrupted}, Law 8: {report['law8_status']['verdict']}")
     return report
 
 
