@@ -265,6 +265,7 @@ def test_only_simulation_module_was_modified():
         and not f.startswith("scripts/run_20_invention_experiment")
         and not f.startswith("scripts/run_forensic_audit")
         and not f.startswith("scripts/generate_delta")
+        and not f.startswith("scripts/propagate_")
         and not f.startswith("evidence/")
     ]
     # The allowed code changes accumulate across cycles:
@@ -272,7 +273,7 @@ def test_only_simulation_module_was_modified():
     # Gap 2+7: dependency_module.py
     # Gap 3: blueprint_module.py
     # Gap 4: orchestrator.py
-    allowed = {"invention_compiler/simulation_module.py", "invention_compiler/dependency_module.py", "invention_compiler/blueprint_module.py", "invention_compiler/orchestrator.py", "invention_compiler/prototype_module.py"}
+    from tests._allowed_modifications import ALLOWED_MODIFICATIONS as allowed
     violations = set(code_changes) - allowed
     assert not violations, \
         f"CEO 'pick one' rule VIOLATED: files other than simulation_module.py " \

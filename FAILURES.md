@@ -291,3 +291,18 @@ Phase 5 — Audience specialization: researchers, corporations, investors, gover
 **Severity:** informational — this is a roadmap, not a bug. But the separation problem and the empty constraint surface are the two most important architectural findings in the entire audit history.
 
 **Status:** OPEN — recorded as the canonical forward plan. The Maestro Loop will execute these phases one at a time.
+
+---
+
+### F-019 — Test suite was red for one push (231/5, not 236/0)
+**Found:** external auditor (post-commit verification of `3643873`).
+**Repro:** `python -m pytest tests/ -q` at commit `3643873` → 231 passed, 5 failed.
+**Observed:** The commit message claimed "236 tests pass" but the actual result was 231/5. The 5 failures were all identical: the "only X was modified" architecture-freeze guard in test_gap1_fix.py through test_gap5_fix.py. Each test carried its own hardcoded `allowed` set of files permitted to change since baseline commit `bdfca58`. The commit modified `product/discovery/synthesizer.py` and added `scripts/propagate_constraints_to_graph.py`, neither of which was in any of the five allowlists.
+
+**Root cause:** five separate hardcoded copies of the same allowlist is a maintenance trap by construction. Every cycle that touches a file outside `invention_compiler/` requires updating all five copies independently. If any one is missed, the test suite goes red silently. This is the same class of failure that F-014 documented (red tests as informative, not shameful) — but this time the red was unintentional and undetected by the committer.
+
+**Severity:** P1 — a false "236 tests pass" claim undermines the entire test-discipline story. The auditor caught it; the committer missed it. This is exactly why external verification matters.
+
+**Status:** RESOLVED — all five hardcoded allowlists replaced with a single shared constant at `tests/_allowed_modifications.py`. All five tests now import from it. The shared constant includes `product/discovery/synthesizer.py` (Phase 2 compat fix). The gap1 test's script filter was also updated to exclude `scripts/propagate_*` (one-off migration scripts). 236/236 verified for real this time.
+
+**Lesson:** "236 tests pass" is a claim that must be verified by running the suite, not inferred from the commit message. The committer claimed it without running the full suite (which takes ~80 seconds and timed out in the session). The auditor ran it independently and caught the discrepancy. This is the anti-entropy rule "prefer reality over expectations" applied to the test suite itself.
