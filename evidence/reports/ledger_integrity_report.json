@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-01T16:50:39.679166+00:00",
+  "generated_at": "2026-08-01T17:00:41.975001+00:00",
   "method": "Read the live ledger exactly as it exists (no mutation). Cross-reference against the preserved corrupted artifact, the byte-exact reproduction, and the documented corrupted SHA256. Enumerate every ledger write path. Distinguish three states: (1) the live ledger's current state, (2) the preserved copy's state (must match the documented corrupted SHA), and (3) the reproduction's state (must also match the documented corrupted SHA). After F-005 remediation, (1) diverges from (2) and (3) by design \u2014 the live ledger has been regenerated.",
   "ledger_path": "data/ledger/predictions.jsonl",
   "live_ledger_sha256": "02c5be2670354984d3ae9978c320d235d923eb7cfb61635843e8a4a0589791a4",

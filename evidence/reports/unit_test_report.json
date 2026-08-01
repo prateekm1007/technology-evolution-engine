@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-08-01T16:50:38.356217+00:00",
+  "generated_at": "2026-08-01T17:00:40.606006+00:00",
   "method": "pytest tests/test_graph_engine.py tests/test_product.py tests/test_ledger_integrity.py tests/test_north_star_modules.py tests/test_invention_compiler.py tests/test_compiler_benchmarks.py -v, run live",
   "summary": {
-    "passed": 95,
+    "passed": 117,
     "failed": 0,
     "skipped": 0,
     "errors": 0,
-    "total": 95,
-    "collected": 95
+    "total": 117,
+    "collected": 117
   },
-  "duration_s": 4.034,
+  "duration_s": 4.624,
   "tests": [
     {
       "nodeid": "tests/test_graph_engine.py::test_empty_graph",
@@ -483,6 +483,116 @@
     },
     {
       "nodeid": "tests/test_cto_review_3.py::test_compiler_orchestrator_uses_new_module_names",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_cto_review_4.py::test_hypothesis_package_exists",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_cto_review_4.py::test_hypothesis_class_importable",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_cto_review_4.py::test_hypothesis_carries_claim_confidence_evidence",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_cto_review_4.py::test_hypothesis_has_status_pending_by_default",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_cto_review_4.py::test_hypothesis_can_be_reconciled_pass_or_fail",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_cto_review_4.py::test_hypothesis_with_empty_evidence_has_zero_confidence",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_cto_review_4.py::test_hypothesis_to_dict_round_trips",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_cto_review_4.py::test_loops_package_exists",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_cto_review_4.py::test_loops_module_declares_5_loops",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_cto_review_4.py::test_loop1_reconstruction_closed",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_cto_review_4.py::test_loop2_resurrection_closed",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_cto_review_4.py::test_loop3_forecasting_open",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_cto_review_4.py::test_loop4_experimentation_open",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_cto_review_4.py::test_loop5_creation_open",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_cto_review_4.py::test_compiler_chain_summary_carries_hypothesis_block",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_cto_review_4.py::test_compiler_no_bare_composite_without_hypothesis",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_cto_review_4.py::test_invention_compiler_md_documents_5_loops",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_cto_review_4.py::test_invention_compiler_md_documents_7_step_sequence",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_cto_review_4.py::test_invention_compiler_md_documents_creation_as_outcome",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_cto_review_4.py::test_invention_compiler_md_documents_claim_confidence_evidence",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_cto_review_4.py::test_invention_compiler_md_documents_hypothesis_as_fundamental_object",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_cto_review_4.py::test_anti_entropy_md_documents_close_loops_rule",
       "outcome": "passed",
       "duration_s": 0.0
     }

@@ -1,6 +1,6 @@
 # INVENTION COMPILER — Master Specification
 
-**Status:** Active directive.
+**Status:** Active directive. Phase transition (CTO review #4).
 **Supersedes:** the "idea generator" framing. The system is not an idea generator.
 **Read this file BEFORE writing any code in this repository.**
 
@@ -22,6 +22,162 @@ Invention engines organize possibilities.
 ```
 
 That is the precise description of what we are trying to build.
+
+---
+
+## CTO review #4 (commit `f590661`) — phase transition
+
+The CTO reviewed the expectations_satisfied reframe (commit `f590661`)
+and approved the language change as "fundamentally chang[ing] the
+philosophy of the system." The repository is now entering a new phase.
+
+### Phase transition directive
+
+The objective is no longer to add modules.
+The objective is to **close loops**.
+
+Every loop below has three stages: propose, observe, reconcile. A
+loop is "closed" when at least one cycle has completed and the
+reconciliation has been recorded in the verification ledger.
+
+### The 7-step sequence (CTO-mandated, replaces the 5-layer architecture)
+
+```text
+Observation
+        ↓
+Knowledge
+        ↓
+Reasoning
+        ↓
+Blueprint
+        ↓
+Simulation
+        ↓
+Experimentation
+        ↓
+Creation
+```
+
+Creation is NOT a process. Creation is an OUTCOME. The first 6
+steps are processes; the 7th is the result of those processes
+succeeding in the real world. Conflating them is the same class
+of error as conflating "expectations_satisfied" with "correctness".
+
+### The 5 loops (CTO-mandated)
+
+```text
+Loop 1 — reconstruction
+    humanity discovers X
+            ↓
+    system reconstructs X
+            ↓
+    compare results
+
+Loop 2 — resurrection
+    humanity abandons X
+            ↓
+    system identifies missing prerequisites
+            ↓
+    system predicts renewed feasibility
+            ↓
+    compare results
+
+Loop 3 — forecasting
+    system predicts X
+            ↓
+    time passes
+            ↓
+    compare prediction against reality
+
+Loop 4 — experimentation
+    system proposes blueprint
+            ↓
+    experiment is executed
+            ↓
+    measurements are recorded
+            ↓
+    system updates model
+
+Loop 5 — creation
+    system proposes blueprint
+            ↓
+    prototype is built
+            ↓
+    prototype succeeds
+            ↓
+    knowledge enters the ledger
+```
+
+Each loop is implemented as a module in `loops/`. The first three
+loops (1, 2, 3) can be partially closed using existing infrastructure
+(verification cycle, resurrection counterfactuals, benchmark suite).
+Loops 4 and 5 require external collaboration (someone must run an
+experiment or build a prototype) and are honestly declared as OPEN
+until that happens.
+
+### The claim/confidence/evidence rule (CTO-mandated)
+
+From this point forward, every assertion the system emits must
+carry three labels:
+
+```yaml
+claim: "Portable MRI is feasible."
+confidence: 0.62
+evidence:
+  - Ampere_law
+  - Maxwell_equations
+  - battery_energy_density
+  - superconducting_materials
+```
+
+- `claim` is a falsifiable statement.
+- `confidence` is a scalar in [0, 1] representing the system's
+  belief in the claim, prior to observation.
+- `evidence` is a list of named inputs that produced the claim.
+  Empty evidence means the claim is unsupported; confidence should
+  be 0 in that case.
+
+No layer's output may emit a bare scalar ("feasibility: 0.82") —
+that scalar must be the `confidence` of an explicit `claim`, with
+explicit `evidence`. This is the same honesty rule as before
+(scalars must carry evidence), now formalized as the
+`claim/confidence/evidence` triple.
+
+### The fundamental object is changing (CTO observation)
+
+Originally the system's fundamental object was:
+
+```text
+document
+```
+
+Then it became:
+
+```text
+graph
+```
+
+Then:
+
+```text
+blueprint
+```
+
+The CTO suspects it will eventually become:
+
+```text
+hypothesis
+```
+
+A hypothesis is a claim with confidence and evidence, awaiting
+reconciliation with reality. The Hypothesis object is now
+scaffolded at `hypothesis/`. It is the atomic unit of the system
+going forward — every layer output is (or composes) a Hypothesis.
+
+This may be the most important shift of all. The system is no
+longer a static repository; it is becoming a learning system.
+The fundamental object of a learning system is not a document
+or a graph or a blueprint — it is a hypothesis.
 
 ---
 
@@ -64,7 +220,7 @@ makes this distinction explicit. Real correctness requires the
 Experimentation layer (see below) to close the loop: predict, build,
 observe, learn.
 
-### The 5-level benchmark hierarchy (CTO-mandated)
+### The 5-level benchmark hierarchy (CTO-mandated, upgraded to 7-step sequence in review #4)
 
 The 4-category taxonomy from CTO review #2 is upgraded to 5 levels:
 
@@ -82,6 +238,12 @@ Creation is a generation problem — the system emits a blueprint that
 an engineer could start building from. The system does not honestly
 claim to be an invention compiler until at least one Creation case
 has been verified by an actual build.
+
+NOTE (per CTO review #4): the 5 levels above are benchmark LEVELS.
+The 7-step sequence (Observation→Knowledge→Reasoning→Blueprint→
+Simulation→Experimentation→Creation) is the PROCESS sequence.
+Creation appears in both — it is the destination of the sequence
+AND the highest benchmark level.
 
 ### The knowledge spectrum (CTO-mandated rename)
 
@@ -118,10 +280,10 @@ renamed — they are not knowledge-encoding modules, they are
 reasoning/synthesis modules. The spectrum applies only to the 5
 domain modules.
 
-### The 5-layer architecture (CTO observation + new target)
+### The 5-layer architecture (now upgraded to 7-step sequence in CTO review #4)
 
-The CTO observed that the architecture is converging toward four
-interacting layers:
+The CTO observed in review #3 that the architecture was converging
+toward four interacting layers:
 
 ```text
 Observation layer       (knowledge acquisition: graph, evidence, failures)
@@ -133,31 +295,17 @@ Reasoning layer         (causal analysis, counterfactuals, simulation)
 Blueprint layer         (composed 11-layer output)
 ```
 
-Eventually a fifth layer is required:
+Plus a fifth:
 
 ```text
 Experimentation layer  (the loop: predict -> build -> observe -> learn)
 ```
 
-The loop is not complete until the system can ask:
-
-```text
-What should we build?
-How should we build it?
-What experiment should we run?
-What did we learn?
-How should the blueprint change?
-```
-
-That is the point at which the system stops being an invention
-catalog and starts becoming an invention laboratory. The
-experimentation layer is the destination toward which the entire
-repository should converge.
-
-The experimentation layer is currently scaffolded as
-`experimentation_layer/` (empty package, declared but not
-implemented). Its first concrete deliverable is a single closed
-loop: predict -> build -> observe -> learn, on one real invention.
+Per CTO review #4 above, this is now expanded to a 7-step sequence
+(Observation → Knowledge → Reasoning → Blueprint → Simulation →
+Experimentation → Creation). The experimentation_layer/ scaffold
+from review #3 is preserved; the loops/ package (review #4)
+implements the closing of the loops that pass through it.
 
 ---
 
@@ -217,11 +365,14 @@ scientific principles. Until a module encodes a real principle
 (not a keyword filter), it is still a keyword-matching module
 and must not be renamed to "engine."
 
-### 4-category benchmark taxonomy (CTO-mandated, upgraded to 5 in review #3)
+### 4-category benchmark taxonomy (CTO-mandated, upgraded to 5 in review #3, then 7-step sequence in review #4)
 
 The benchmark suite was originally divided into four categories.
 Per CTO review #3 above, this is upgraded to 5 levels
 (Reconstruction, Resurrection, Forecasting, Synthesis, Creation).
+Per CTO review #4 above, the 5 levels are benchmark levels; the
+7-step sequence (Observation → Knowledge → Reasoning → Blueprint →
+Simulation → Experimentation → Creation) is the process sequence.
 
 ---
 

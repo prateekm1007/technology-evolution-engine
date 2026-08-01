@@ -1,4 +1,4 @@
-# TEE MASTER HANDOFF (v1.5)
+# TEE MASTER HANDOFF (v1.6)
 
 ## PRE-CODING READ LIST (MANDATORY)
 
@@ -55,6 +55,69 @@ those layers or modules.
 - Invention compiler vertical slice: implemented in
   `invention_compiler/` (commit `a3d167d`). 11 layers, 14 modules.
 - 47 tests passing.
+
+## CTO REVIEW #4 (commit `f590661`) — PHASE TRANSITION
+
+The CTO reviewed the expectations_satisfied reframe (commit `f590661`)
+and approved the language change as "fundamentally chang[ing] the
+philosophy of the system." The repository is now entering a new
+phase.
+
+> The objective is no longer to add modules.
+> The objective is to **close loops**.
+
+### 5 loops mandated
+
+1. **Reconstruction** — humanity discovers X → system reconstructs X → compare.
+   Status: partial — closed via the existing verification cycle (6 pass + 3 fail on historical failures).
+2. **Resurrection** — humanity abandons X → system predicts renewed feasibility → compare.
+   Status: partial — closed via the resurrection_module's per-failure counterfactuals.
+3. **Forecasting** — system predicts X → time passes → compare to reality.
+   Status: OPEN — requires time. Predictions can be recorded as hypotheses today.
+4. **Experimentation** — system proposes blueprint → experiment runs → measurements recorded → system updates model.
+   Status: OPEN — requires external collaborator to run an experiment.
+5. **Creation** — system proposes blueprint → prototype built → prototype succeeds → knowledge enters ledger.
+   Status: OPEN — this is the destination, not a process. The system does not honestly claim to be an invention compiler until at least one Creation loop is closed.
+
+### 7-step sequence mandated
+
+```text
+Observation → Knowledge → Reasoning → Blueprint → Simulation → Experimentation → Creation
+```
+
+Creation is NOT a process; Creation is an OUTCOME. Conflating them
+is the same error as conflating "expectations_satisfied" with
+"correctness".
+
+### claim/confidence/evidence rule
+
+Every assertion must carry three labels:
+```yaml
+claim: "Portable MRI is feasible."
+confidence: 0.62
+evidence: [Ampere_law, Maxwell_equations, battery_energy_density, superconducting_materials]
+```
+No bare scalars. The scalar must be the `confidence` of an explicit
+`claim`, with explicit `evidence`. This formalizes the existing
+"scalars must carry evidence" rule from CTO review #1.
+
+### Fundamental object is changing
+
+```text
+document → graph → blueprint → hypothesis
+```
+
+The Hypothesis object (a claim+confidence+evidence triple awaiting
+reconciliation with reality) is the new atomic unit of the system.
+Scaffolded at `hypothesis/`. Every layer output composes Hypotheses.
+
+## IMPLEMENTATION WORK THIS SESSION
+- Create `hypothesis/` package with Hypothesis class (claim/confidence/evidence + status: pending|pass|fail).
+- Create `loops/` package with 5 loop contracts (reconstruction, resurrection, forecasting, experimentation, creation).
+- Close Loops 1 and 2 using existing verification infrastructure (record loop closures in ledger).
+- Honestly declare Loops 3, 4, 5 as OPEN with explicit next-action to close them.
+- Add claim/confidence/evidence block to the chain_summary of every compiler output.
+- Tests-first for all of the above.
 
 ## CTO REVIEW #3 (commit `b22cbc6`)
 

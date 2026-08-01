@@ -255,7 +255,78 @@ class InventionCompiler:
 
     def _chain_summary(self, layers: Dict[int, Dict[str, Any]]) -> Dict[str, Any]:
         """A flat summary suitable for the directive's 'ultimate question'
-        output: the chain of reasoning required to build the invention."""
+        output: the chain of reasoning required to build the invention.
+
+        Per CTO review #4, the summary must carry a claim/confidence/
+        evidence triple (a Hypothesis), not a bare composite scalar.
+        The composite_feasibility_baseline becomes the `confidence`
+        of an explicit `claim` about the invention's feasibility.
+        """
+        # Compute the composite feasibility from Layer 5's evidence.
+        composite = layers[5].get("evidence", {}).get(
+            "baseline_composite")
+        # Build the evidence list for the headline hypothesis.
+        # It draws from multiple layers — each layer's output contributes
+        # named evidence to the headline claim.
+        evidence = []
+        # Layer 1 physics laws
+        evidence.extend(layers[1].get("physics", {}).get("applicable_laws", []))
+        # Layer 1 chemistry pathways
+        evidence.extend(layers[1].get("chemistry", {}).get(
+            "applicable_pathways", []))
+        # Layer 3 governing equations
+        for eq in layers[3].get("governing_equations", []):
+            if isinstance(eq, dict) and "name" in eq:
+                evidence.append(eq["name"])
+        # Layer 2 prerequisite count (as a named piece of evidence)
+        prereq_count = layers[2].get("evidence", {}).get("prerequisite_count", 0)
+        if prereq_count > 0:
+            evidence.append(f"prerequisite_chain_depth_{layers[2].get('evidence', {}).get('chain_depth', 0)}")
+        # Layer 7 capex (as a named piece of evidence)
+        capex = layers[7].get("capex", {}).get("value_usd_m")
+        if capex is not None:
+            evidence.append(f"capex_${capex}M")
+
+        # Build the headline Hypothesis. Per the CTO review #4 rule,
+        # every assertion carries claim/confidence/evidence.
+        target = layers[0].get("problem", "the candidate invention")
+        domain = layers[0].get("domain", "unknown")
+        if composite is not None:
+            claim = (
+                f"The invention '{target}' is feasible in the {domain} domain "
+                f"within the stated time horizon."
+            )
+            confidence = round(float(composite), 4)
+        else:
+            claim = (
+                f"The invention '{target}' has indeterminate feasibility — "
+                f"the compiler did not produce a composite score."
+            )
+            confidence = 0.0
+
+        # Use the Hypothesis class for the structured representation.
+        try:
+            from hypothesis.hypothesis import Hypothesis
+            headline_hypothesis = Hypothesis(
+                claim=claim,
+                confidence=confidence,
+                evidence=evidence,
+                writer="invention_compiler.orchestrator.InventionCompiler._chain_summary",
+            )
+            hypothesis_block = headline_hypothesis.to_dict()
+        except Exception:
+            # If the hypothesis package is unavailable for any reason,
+            # fall back to a dict. This should not happen in normal
+            # operation, but we don't want a hypothesis-package bug
+            # to break the entire compiler.
+            hypothesis_block = {
+                "claim": claim,
+                "confidence": confidence,
+                "evidence": evidence,
+                "status": "pending",
+                "writer": "invention_compiler.orchestrator.InventionCompiler._chain_summary",
+            }
+
         return {
             "target_invention": layers[0].get("problem"),
             "domain": layers[0].get("domain"),
@@ -265,13 +336,16 @@ class InventionCompiler:
             "governing_equations_count": len(layers[3].get(
                 "governing_equations", [])),
             "subsystem_count": len(layers[4].get("subsystems", [])),
-            "composite_feasibility_baseline": layers[5].get("evidence", {}).get(
-                "baseline_composite"),
-            "capex_usd_m": layers[7].get("capex", {}).get("value_usd_m"),
+            "composite_feasibility_baseline": composite,
+            "capex_usd_m": capex,
             "market_size_usd_m": layers[7].get("market_size", {}).get("value_usd_m"),
             "total_prototype_timeline_years": layers[9].get("timeline", {}).get(
                 "total_years"),
             "technical_risk_count": len(layers[10].get("technical_risks", [])),
             "commercial_risk_count": len(layers[10].get("commercial_risks", [])),
             "verification_status": "integrated",  # NEVER "verified" until Law 8 cycle
+            # CTO review #4: the headline hypothesis. Every chain_summary
+            # carries this — no bare composite scalar without an
+            # explicit claim and evidence.
+            "hypothesis": hypothesis_block,
         }

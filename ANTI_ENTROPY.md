@@ -245,6 +245,69 @@ level deeper. Calling something "physics_reasoning_module" when it
 only encodes laws (and doesn't reason over them) is the same kind
 of semantic inflation the CTO caught at the engine/module level.
 
+### Every assertion carries claim/confidence/evidence (CTO-mandated, review #4)
+
+From CTO review #4 onward, every assertion the system emits must
+carry three labels:
+
+```yaml
+claim: "Portable MRI is feasible."
+confidence: 0.62
+evidence:
+  - Ampere_law
+  - Maxwell_equations
+  - battery_energy_density
+  - superconducting_materials
+```
+
+Operational rules:
+
+1. `claim` is a falsifiable statement, not a number. "feasibility: 0.82"
+   is NOT a claim — it's a scalar. "Portable MRI is feasible" IS a claim.
+
+2. `confidence` is a scalar in [0, 1] representing the system's prior
+   belief in the claim, BEFORE observation. After observation, it
+   should be updated per Bayes (or replaced with `outcome: pass|fail`).
+
+3. `evidence` is a list of named inputs that produced the claim.
+   Empty evidence means the claim is unsupported; confidence MUST be
+   0 in that case.
+
+4. No layer's output may emit a bare scalar. The scalar must be the
+   `confidence` of an explicit `claim`, with explicit `evidence`.
+
+5. The triple is the atomic unit of the system going forward. It
+   composes into Hypotheses (see `hypothesis/`), which compose into
+   layer outputs, which compose into blueprints. The fundamental
+   object of the system is no longer a document/graph/blueprint — it
+   is a hypothesis, and a hypothesis is a claim+confidence+evidence
+   awaiting reconciliation with reality.
+
+### Close loops, don't add modules (CTO-mandated, review #4)
+
+Per CTO review #4, the repository is in phase transition. The
+objective is no longer to add modules. The objective is to close
+loops.
+
+Five loops are mandated (see INVENTION_COMPILER.md "The 5 loops"):
+
+| Loop | What it closes | Status |
+|---|---|---|
+| 1. Reconstruction | system reconstructs X; compare to humanity's X | partial — via verification cycle |
+| 2. Resurrection | system predicts renewed feasibility; compare to actual resurrection | partial — via resurrection counterfactuals |
+| 3. Forecasting | system predicts X; time passes; compare to reality | OPEN — requires time |
+| 4. Experimentation | system proposes blueprint; experiment runs; system updates | OPEN — requires external collaborator |
+| 5. Creation | system proposes blueprint; prototype built; prototype succeeds | OPEN — destination, not a process |
+
+A loop is "closed" when at least one cycle has completed AND the
+reconciliation has been recorded in the verification ledger. A loop
+that has only the "propose" stage is OPEN, not closed.
+
+Adding new modules without closing loops is entropy per the
+"depth over breadth" rule. The phase transition makes this stricter:
+no new module may be added unless it directly closes one of the 5
+loops.
+
 ---
 
 ## How these rules interact with Law 8
