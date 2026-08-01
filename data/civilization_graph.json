@@ -1,9 +1,34 @@
 {
   "nodes": {
-    "passive_radiative_cooling": {
+    "APRM": {
       "type": "technology",
       "domain": "thermal_management",
-      "maturity": "emerging"
+      "status": "GATED",
+      "prerequisites": [
+        "selective_emitters",
+        "phase_change_materials",
+        "extrusion_processes"
+      ]
+    },
+    "DAM": {
+      "type": "technology",
+      "domain": "sensing_acoustics",
+      "status": "REVISE",
+      "prerequisites": [
+        "event_detection",
+        "tinyML",
+        "lora_communications"
+      ]
+    },
+    "ACWPS": {
+      "type": "technology",
+      "domain": "water_purification",
+      "status": "REVISE",
+      "prerequisites": [
+        "anti_fouling_materials",
+        "integrity_sensing",
+        "membrane_advances"
+      ]
     },
     "selective_emitters": {
       "type": "prerequisite",
@@ -11,104 +36,147 @@
     },
     "phase_change_materials": {
       "type": "prerequisite",
-      "pcs_score": 0.5
+      "pcs_score": 0.55
     },
     "extrusion_processes": {
       "type": "prerequisite",
-      "pcs_score": 0.6
-    },
-    "distributed_acoustic_mesh": {
-      "type": "technology",
-      "domain": "sensing",
-      "maturity": "experimental"
+      "pcs_score": 0.8
     },
     "event_detection": {
       "type": "prerequisite",
-      "pcs_score": 0.3
+      "pcs_score": 0.7
     },
     "tinyML": {
       "type": "prerequisite",
-      "pcs_score": 0.8
+      "pcs_score": 0.85
     },
-    "lora_comms": {
+    "lora_communications": {
       "type": "prerequisite",
       "pcs_score": 0.9
     },
-    "adaptive_capillary_water_purification": {
-      "type": "technology",
-      "domain": "water",
-      "maturity": "experimental"
-    },
     "anti_fouling_materials": {
-      "type": "prerequisite",
-      "pcs_score": 0.4
-    },
-    "integrity_sensing": {
       "type": "prerequisite",
       "pcs_score": 0.5
     },
-    "membrane_advances": {
+    "integrity_sensing": {
       "type": "prerequisite",
       "pcs_score": 0.6
     },
+    "membrane_advances": {
+      "type": "prerequisite",
+      "pcs_score": 0.65
+    },
     "early_electric_vehicles": {
       "type": "cemetery",
-      "resurrection_probability": 0.8
+      "era": "1900s",
+      "cause_of_death": "energy_density_infrastructure"
     },
-    "neural_networks": {
+    "neural_networks_1970s": {
       "type": "cemetery",
-      "resurrection_probability": 1.0
+      "era": "1970s",
+      "cause_of_death": "compute_data_constraints"
     },
     "airships": {
       "type": "cemetery",
-      "resurrection_probability": 0.6
+      "era": "1930s",
+      "cause_of_death": "safety_material_constraints"
+    },
+    "ceramic_water_filters": {
+      "type": "cemetery",
+      "era": "antiquity",
+      "cause_of_death": "manufacturing_scaling"
+    },
+    "passive_radiative_cooling": {
+      "type": "cemetery",
+      "era": "historical",
+      "cause_of_death": "material_emissivity_limits"
+    },
+    "wireless_sensor_networks_2000s": {
+      "type": "cemetery",
+      "era": "2000s",
+      "cause_of_death": "power_management"
+    },
+    "telemedicine_1990s": {
+      "type": "cemetery",
+      "era": "1990s",
+      "cause_of_death": "bandwidth_regulation"
+    },
+    "flywheel_storage": {
+      "type": "cemetery",
+      "era": "1990s",
+      "cause_of_death": "material_strength_cost"
+    },
+    "additive_manufacturing_early": {
+      "type": "cemetery",
+      "era": "1990s",
+      "cause_of_death": "material_speed_limits"
+    },
+    "drip_irrigation_early": {
+      "type": "cemetery",
+      "era": "1960s",
+      "cause_of_death": "clogging_material_constraints"
     }
   },
   "edges": [
     {
-      "source": "passive_radiative_cooling",
+      "source": "APRM",
       "target": "selective_emitters",
       "relation": "requires"
     },
     {
-      "source": "passive_radiative_cooling",
+      "source": "APRM",
       "target": "phase_change_materials",
       "relation": "requires"
     },
     {
-      "source": "passive_radiative_cooling",
+      "source": "APRM",
       "target": "extrusion_processes",
       "relation": "requires"
     },
     {
-      "source": "distributed_acoustic_mesh",
+      "source": "APRM",
+      "target": "passive_radiative_cooling",
+      "relation": "lineage"
+    },
+    {
+      "source": "DAM",
       "target": "event_detection",
       "relation": "requires"
     },
     {
-      "source": "distributed_acoustic_mesh",
+      "source": "DAM",
       "target": "tinyML",
       "relation": "requires"
     },
     {
-      "source": "distributed_acoustic_mesh",
-      "target": "lora_comms",
+      "source": "DAM",
+      "target": "lora_communications",
       "relation": "requires"
     },
     {
-      "source": "adaptive_capillary_water_purification",
+      "source": "DAM",
+      "target": "wireless_sensor_networks_2000s",
+      "relation": "lineage"
+    },
+    {
+      "source": "ACWPS",
       "target": "anti_fouling_materials",
       "relation": "requires"
     },
     {
-      "source": "adaptive_capillary_water_purification",
+      "source": "ACWPS",
       "target": "integrity_sensing",
       "relation": "requires"
     },
     {
-      "source": "adaptive_capillary_water_purification",
+      "source": "ACWPS",
       "target": "membrane_advances",
       "relation": "requires"
+    },
+    {
+      "source": "ACWPS",
+      "target": "ceramic_water_filters",
+      "relation": "lineage"
     }
   ]
 }
