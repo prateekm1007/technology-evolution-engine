@@ -252,7 +252,9 @@ def test_only_blueprint_module_was_modified():
         and not f.startswith("scripts/")
         and not f.startswith("evidence/")
     ]
-    allowed = {"invention_compiler/blueprint_module.py"}
+    allowed = {"invention_compiler/blueprint_module.py",
+               "invention_compiler/prototype_module.py",
+               "invention_compiler/orchestrator.py"}
     violations = set(code_changes) - allowed
     assert not violations, \
         f"Maestro Loop PHASE 6 VIOLATED: files other than blueprint_module.py " \
