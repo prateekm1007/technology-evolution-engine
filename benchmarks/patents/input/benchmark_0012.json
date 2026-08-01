@@ -1,0 +1,66 @@
+{
+  "id": "benchmark_0012",
+  "type": "patent",
+  "source": "uspto",
+  "title": "Chiplet-Based GPU Architecture with Optical Interconnect",
+  "domain": "computation",
+  "abstract": "A GPU with 8 compute chiplets (5nm) connected via silicon photonic interconnect providing 10 Tbps bandwidth, achieving 2 PFLOPS FP16 at 300W.",
+  "claims": [
+    "8 compute dies connected by silicon photonic interposer with 128 wavelength channels at 80 Gbps.",
+    "Micro-ring resonator modulator at 50 Gbps with insertion loss <3 dB.",
+    "Chiplet protocol achieving 95% bandwidth utilization, latency <10ns."
+  ],
+  "components": [
+    "compute chiplets",
+    "silicon photonic interposer",
+    "micro-ring modulators",
+    "HBM3 stacks",
+    "package substrate"
+  ],
+  "materials": [
+    "silicon",
+    "silicon nitride",
+    "copper",
+    "indium phosphide",
+    "organic substrate"
+  ],
+  "methods": [
+    "5nm CMOS",
+    "silicon photonics",
+    "wafer bonding",
+    "2.5D packaging"
+  ],
+  "constraints": [
+    "performance",
+    "power",
+    "manufacturing",
+    "cost",
+    "thermal"
+  ],
+  "problem_statement": "Monolithic GPUs reaching reticle limits. Optical interconnects offer 100x bandwidth density.",
+  "expected_constraints": [
+    "energy",
+    "information",
+    "manufacturing",
+    "cost",
+    "material"
+  ],
+  "expected_prerequisites": [
+    "silicon photonics manufacturing",
+    "chiplet packaging",
+    "optical I/O design",
+    "thermal management"
+  ],
+  "expected_adjacent_domains": [
+    "photonics",
+    "semiconductor manufacturing",
+    "packaging",
+    "thermal engineering"
+  ],
+  "expected_failure_modes": [
+    "optical coupling loss",
+    "thermal crosstalk",
+    "laser aging",
+    "packaging warpage"
+  ]
+}
