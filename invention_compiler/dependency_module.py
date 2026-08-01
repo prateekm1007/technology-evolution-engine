@@ -65,9 +65,15 @@ class DependencyModule:
           - Otherwise UNKNOWN.
         """
         # Count the target's prerequisites.
+        # A1 FIX (per external auditor): was e.get("target") == target,
+        # which counts edges WHERE target IS THE TARGET of the edge.
+        # But prerequisite edges go FROM target TO its prereqs:
+        #   source=target_node, target=prereq_node
+        # So we should count the target's OUTGOING prereq edges:
+        #   e.get("source") == target
         prereqs_of_target = [
             e for e in self.edges
-            if e.get("target") == target
+            if e.get("source") == target
             and (e.get("relationship") in ("requires", "depends_on"))
         ]
         source_node = self.by_id.get(source, {})
@@ -160,10 +166,15 @@ class DependencyModule:
         prereqs = [p for p in flat if p.get("depth", 0) > 0]
 
         # Add causal classification to each prereq.
+        # A1 FIX (per external auditor): the walrus operator was
+        # setting target to the PREREQUISITE's id, not the TARGET
+        # node's id. This caused _classify_edge_causally to count
+        # the prereq's incoming edges instead of the target's
+        # outgoing prerequisite edges.
         for p in prereqs:
             p["causal_classification"] = self._classify_edge_causally(
                 source=p["id"],
-                target=target_id if (target_id := p.get("id")) else target_node_id,
+                target=target_node_id,  # FIXED: was target_id if (target_id := p.get("id")) else target_node_id
                 rel=p.get("relationship") or "depends_on",
             )
 

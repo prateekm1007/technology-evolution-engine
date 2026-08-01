@@ -139,7 +139,17 @@ class FeasibilityScorer:
         )
 
         # 2. Constraints binding: count constraint types on the node.
-        constraints = _as_list(node.get("constraints", []))
+        # C2 FIX: constraints is now a dict (Phase 2 migration).
+        # _as_list on a dict returns [dict] — a one-element list
+        # containing the dict itself. The keyword matching then
+        # accidentally works because str(dict) contains all keys.
+        # Fix: extract constraint names from the dict's keys with
+        # value > 0, or fall back to the list format.
+        raw_constraints = node.get("constraints", [])
+        if isinstance(raw_constraints, dict):
+            constraints = [k for k, v in raw_constraints.items() if v and v > 0]
+        else:
+            constraints = _as_list(raw_constraints)
         constraint_adjustments = {
             "technical": 0.0, "economic": 0.0,
             "regulatory": 0.0, "manufacturing": 0.0, "adoption": 0.0,

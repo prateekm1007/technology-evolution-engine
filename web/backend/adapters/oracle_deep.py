@@ -24,7 +24,18 @@ class DeepOracle:
     def _stage_binding(self, constraint, delta):
         bound = []
         for n in self.gm.binding_nodes(constraint):
-            load = max(len(n.get("constraints", [constraint])), 1)
+            # C2 FIX: constraints is now a dict (Phase 2 migration).
+            # len(dict) returns the number of keys (always 10 for all
+            # nodes), not the number of binding constraints. We need
+            # to count only the constraints with value > 0, or fall
+            # back to 1 if the constraints field is a dict.
+            c = n.get("constraints", [constraint])
+            if isinstance(c, dict):
+                load = max(sum(1 for v in c.values() if v and v > 0), 1)
+            elif isinstance(c, list):
+                load = max(len(c), 1)
+            else:
+                load = 1
             share = 1.0 / load
             bound.append({"id": n["id"], "label": n["label"], "type": n["type"],
                           "domain": n.get("domain"), "is_cemetery": n.get("is_cemetery", False),
@@ -52,7 +63,14 @@ class DeepOracle:
         
         def viability(nid):
             n = by_id[nid]
-            load = max(len(n.get("constraints", [1])), 1)
+            # C2 FIX: handle dict constraints (Phase 2 migration)
+            c = n.get("constraints", [1])
+            if isinstance(c, dict):
+                load = max(sum(1 for v in c.values() if v and v > 0), 1)
+            elif isinstance(c, list):
+                load = max(len(c), 1)
+            else:
+                load = 1
             return (1.0 - load * 0.15) + state[nid] * gain
         
         trajectory, converged = [], False
@@ -74,7 +92,15 @@ class DeepOracle:
         crossings, resurrections = [], []
         for nid in ids:
             n = by_id[nid]
-            base = 1.0 - max(len(n.get("constraints", [1])), 1) * 0.15
+            # C2 FIX: handle dict constraints (Phase 2 migration)
+            c = n.get("constraints", [1])
+            if isinstance(c, dict):
+                load = max(sum(1 for v in c.values() if v and v > 0), 1)
+            elif isinstance(c, list):
+                load = max(len(c), 1)
+            else:
+                load = 1
+            base = 1.0 - load * 0.15
             new_v = viability(nid)
             up = base < thr <= new_v
             if n.get("is_cemetery") and up:

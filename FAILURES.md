@@ -306,3 +306,33 @@ Phase 5 — Audience specialization: researchers, corporations, investors, gover
 **Status:** RESOLVED — all five hardcoded allowlists replaced with a single shared constant at `tests/_allowed_modifications.py`. All five tests now import from it. The shared constant includes `product/discovery/synthesizer.py` (Phase 2 compat fix). The gap1 test's script filter was also updated to exclude `scripts/propagate_*` (one-off migration scripts). 236/236 verified for real this time.
 
 **Lesson:** "236 tests pass" is a claim that must be verified by running the suite, not inferred from the commit message. The committer claimed it without running the full suite (which takes ~80 seconds and timed out in the session). The auditor ran it independently and caught the discrepancy. This is the anti-entropy rule "prefer reality over expectations" applied to the test suite itself.
+
+---
+
+### F-020 — Walrus + direction bug in dependency_module.py causal classification (A1)
+**Found:** external auditor (cycle 1, live for 5 commits).
+**Repro:** `grep -n "target_id if" invention_compiler/dependency_module.py` → line 166: `target=target_id if (target_id := p.get("id")) else target_node_id`.
+**Observed:** Two bugs in the causal classification logic:
+  1. Walrus bug: `target=target_id if (target_id := p.get("id"))` sets target to the PREREQUISITE's id, not the target node's id. The `_classify_edge_causally` method then counts the prereq's incoming edges instead of the target's outgoing prerequisite edges.
+  2. Direction bug: `e.get("target") == target` counts edges where the node being classified IS the target of the edge. But prerequisite edges go FROM target TO its prereqs (source=target, target=prereq). Should be `e.get("source") == target`.
+**Root cause:** the walrus operator was a clever-but-wrong attempt to avoid passing target_node_id directly. The direction bug was a misreading of the edge schema.
+**Severity:** P1 — the causal classification was producing wrong results for every candidate. The "non-zero causal classifications" reported in the Gap 2+7 delta were technically non-zero but classified the wrong edges.
+**Status:** RESOLVED — walrus replaced with `target=target_node_id`. Direction fixed to `e.get("source") == target`.
+
+### F-021 — Oracle + FeasibilityScorer broken by Phase 2 dict migration (C2)
+**Found:** external auditor (post-Phase 2 verification).
+**Repro:** `len({'energy':0.45, 'cost':0.5})` → 2, not the number of binding constraints. All nodes now have 10 constraint keys (all Law 2 types), so `len(dict)` always returns 10.
+**Observed:** Three locations in `oracle_deep.py` and one in `feasibility.py` used `len(n.get("constraints", [...]))` which returned 10 for every node after the Phase 2 dict migration. This caused:
+  - Oracle binding_share = 1/10 for every node (no differentiation)
+  - Oracle viability base = 1.0 - 10*0.15 = -0.5 for every node (all negative)
+  - FeasibilityScorer constraints = `_as_list(dict)` → `[dict]` (one-element list containing the dict); keyword matching accidentally works because `str(dict)` contains all keys as substrings
+**Root cause:** Phase 2 constraint propagation changed constraints from `[]` (empty list) to `{energy: 0.45, ...}` (dict). Code that used `len()` on the list assumed it would count constraint names; on a dict it counts keys.
+**Severity:** P1 — the Oracle and FeasibilityScorer produce wrong outputs for every node. The simulation_module's complexity penalty feeds from FeasibilityScorer, so every composite score is computed on broken input.
+**Status:** RESOLVED — all three Oracle locations now use `isinstance(c, dict)` check and count keys with value > 0. FeasibilityScorer now extracts constraint names from dict keys with value > 0, or falls back to list format.
+
+### F-022 — Cemetery fields (is_cemetery, lesson, failed_because) not in graph nodes (C3)
+**Found:** external auditor (post-Phase 2 verification).
+**Observed:** cemetery_001 through cemetery_009 nodes in civilization_graph.json do not have `is_cemetery`, `lesson`, or `failed_because` fields. These fields exist only in the `GraphModel._from_core()` adapter's transformed node representation, not in the raw JSON.
+**Root cause:** the raw graph JSON was hand-seeded without these fields. The adapter adds them at runtime but they're not persisted.
+**Severity:** P2 — the Oracle's resurrection detection checks `n.get("is_cemetery")` which returns None (falsy), so no resurrections are ever detected. This is a pre-existing gap, not introduced by Phase 2.
+**Status:** OPEN — needs the Phase 2 migration script to also add `is_cemetery: true`, `lesson`, and `failed_because` to cemetery_entry nodes. Deferred to avoid scope creep in this commit.
