@@ -1,5 +1,32 @@
 # GOVERNANCE
 
+## Pre-coding read list (MANDATORY)
+
+Before writing or modifying any code in this repository, read these
+files in order. They are the anti-entropy layer — the active resistance
+against the drift this codebase has a documented history of.
+
+1. **`CONSTITUTION.md`** — the immutable laws (Law 1 through Law 8).
+   These never change. Law 8 (verification standard) is the one most
+   often violated; re-read it every time.
+2. **`INVENTION_COMPILER.md`** — the master specification. The system
+   is an invention compiler, not an idea generator. Every change must
+   move us toward one of the 11 layers or 13 modules.
+3. **`ANTI_ENTROPY.md`** — the operational rules. Tests first, single
+   responsibility, refactor constantly, lock dependencies, document
+   assumptions, decouple modules, clear dead code, maintain patterns.
+4. **`FAILURES.md`** — the failure taxonomy. Read this to know what
+   classes of bug have already been seen. Do not re-introduce them.
+5. **`HANDOFF.md`** — the current state of the system and what's next.
+
+If you skip this read list, you will reproduce a bug that has already
+been fixed. The postmortem at `evidence/corruption/POSTMORTEM_F005.md`
+documents exactly this pattern: every commit since the initial commit
+shipped a corrupted ledger, every test passed, every endpoint
+returned 200, and only an external audit caught it. The anti-entropy
+layer exists so the next F-005 is caught at commit time, not at audit
+time.
+
 ## Objective, Month 1
 
 Not: build more.
