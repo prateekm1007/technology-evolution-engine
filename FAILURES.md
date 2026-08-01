@@ -26,7 +26,7 @@ extracts nothing.
 **Severity:** P1 — a business user uploading a real patent in non-claims
 prose gets a confident-looking empty report with no indication anything
 went wrong.
-**Status:** OPEN.
+**Status:** PARTIALLY RESOLVED — the .parse() method (commit 5c59c34) added a COMPONENT_KEYWORDS fallback that catches 16 common component names (pump, sensor, coating, etc.) when they appear in the text. This helps for patents that happen to use those words. But the underlying brittleness is unchanged: regex/keyword matching, no NLP, no semantic extraction. The auditor's exact short-prose repro still extracts zero components and zero materials — only a single constraint key (temperature) is detected via keyword match. Real patents with novel component names will still extract empty. The real test is Phase 3 Step 2: ingest 3 real patents from Google Patents.
 
 ### F-002 — Two disconnected FastAPI apps, no canonical surface
 **Found:** forensic audit, this session.
