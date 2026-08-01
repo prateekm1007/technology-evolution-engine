@@ -158,25 +158,57 @@ Per the CTO directive:
   `civilization_graph.json`, `historian/*`, `ledger/*`, `tests/*`.
 - Everything else frozen.
 
-Phase 3 sub-phases:
-- **3.1 — Write tests first** for patent/literature ingestion contracts
-  (can the system ingest one patent? extract claims? components? materials?
-  constraints? attach provenance?).
-- **3.2 — Minimal scope** (10-20 patents, 10-20 papers). Examples:
-  passive radiative cooling, atmospheric water harvesting, solid-state
-  batteries, desalination, carbon capture.
-- **3.3 — Provenance requirements**: every extracted item must carry
-  source, source_type, title, authors, publication_date, doi/patent_number,
-  confidence, extracted_by, timestamp.
-- **3.4 — Constraint propagation with real data**: the target is movement
-  from uniform priors to real differentiated constraints (some nodes with
-  `energy=0.0`, others with `energy=0.9`). Target: 50-100/577 with real
-  constraints, not 577/577 with uniform priors.
-- **3.5 — Success criteria**: real patent ingested, real paper ingested,
-  real constraints extracted, real provenance preserved, real graph
-  updated. NOT "new module added."
-- **3.6 — Reporting format**: WHAT WAS MODIFIED / WHAT WAS OBSERVED /
-  WHAT CHANGED / WHAT FAILED / WHAT REMAINS UNKNOWN.
+**Auditor's Phase 3 execution roadmap (verified, canonical):**
+
+Step 0 — Fix F-001 before ingesting anything real. The parser only
+handles claims-formatted trigger phrases; real patent text won't always
+match. Test against 2-3 real patent abstracts from Google Patents before
+picking the full 10-20 list. This is the load-bearing prerequisite.
+
+Step 1 — Close the two contract gaps the current tests don't cover:
+  (a) Add a "historian reconstruct source" test (currently zero coverage).
+  (b) Convert graph-write tests from shape-checks into actual writes
+      against a scratch copy of civilization_graph.json with assertion
+      on resulting node/edge count and provenance fields.
+
+Step 2 — Ingest 3 real patents first, not 10-20. Prove the pipeline
+end-to-end (real patent text → parser → graph write → provenance in
+node → historian can point back to source) on a small number before
+scaling. Failures must be cheap to diagnose.
+
+Step 3 — Build paper_parser.py against one real paper. One arXiv
+abstract, prove equations/assumptions/limitations extraction works
+(even shallowly) before committing to 10-20.
+
+Step 4 — Scale to 10-20 patents / 10-20 papers once Steps 2-3 are
+proven. Let constraint counts move 0→20→50→100/577 as a byproduct
+of real ingestion, not a separate migration script. F-024 is explicit
+that priors don't count as this metric moving.
+
+Step 5 — Close F-022 (cemetery fields missing) while touching the
+graph-write path, since it's the same code region.
+
+**Phase 3 success criteria (concrete):**
+
+Success is NOT "new module added." Success is:
+- Real patent ingested (at least 3, target 10-20)
+- Real paper ingested (at least 1, target 10-20)
+- Real constraints extracted (target: ≥20/577 with real, not prior,
+  constraint values traceable to a source)
+- Real provenance preserved (every extracted item carries source,
+  source_type, title, authors, publication_date, doi/patent_number,
+  confidence, extracted_by, timestamp)
+- Real graph updated (nodes/edges added, not just shape-checked)
+- Historian can reconstruct the source (test coverage)
+
+**Phase 3 reporting format:**
+```
+WHAT WAS MODIFIED
+WHAT WAS OBSERVED
+WHAT CHANGED
+WHAT FAILED
+WHAT REMAINS UNKNOWN
+```
 
 **Phase 4 — Define convergence mathematically.** Only after the
 definition exists should implementation begin.

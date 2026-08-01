@@ -367,3 +367,23 @@ Phase 5 — Audience specialization: researchers, corporations, investors, gover
 **Observed:** remember_governance.py is documented as "Not a gate — a reminder." No .pre-commit-config.yaml or CI config calls it. A coder who skips running it will not be caught.
 **Severity:** P3 — the loop is structurally present but not enforced.
 **Status:** RESOLVED — added .pre-commit-config.yaml that runs remember_governance.py as a pre-commit hook. When pre-commit is installed (`pip install pre-commit && pre-commit install`), every `git commit` will first run the script and fail if any governor file is missing.
+
+---
+
+### F-027 — Phase 3 graph-write tests are shape-checks, not actual writes
+**Found:** external auditor (Phase 3.1 contract verification).
+**Observed:** the graph-integration tests (`test_extracted_info_can_be_written_to_graph`, `test_constraints_can_be_attached_to_nodes`, `test_provenance_preserved_in_graph`) verify that extracted items are the right TYPE (str/dict) — they do NOT exercise an actual write into civilization_graph.json. No `ingest_patent_to_graph.py`-equivalent exists yet.
+**Severity:** P2 — the tests give false confidence that the pipeline works end-to-end. A shape-check passing does not mean a real graph write would succeed.
+**Status:** OPEN — Step 1 of the Phase 3 execution roadmap requires converting these tests to actual writes against a scratch copy of civilization_graph.json.
+
+### F-028 — No test for "historian can reconstruct the source"
+**Found:** external auditor (Phase 3.1 contract verification).
+**Observed:** the Phase 3 contract lists "Can the historian reconstruct the source?" as a required question. Zero test coverage exists for this — not even an XFAIL.
+**Severity:** P2 — provenance is recorded but never verified to be reconstructable. Without this test, a future change could break provenance without detection.
+**Status:** OPEN — Step 1 of the Phase 3 execution roadmap requires adding this test.
+
+### F-029 — F-001 (patent parser brittleness) is still OPEN and threatens Phase 3
+**Found:** external auditor (Phase 3.1 contract verification — re-flagged).
+**Observed:** F-001 has been OPEN since the very first audit turn. The parser only handles claims-formatted trigger phrases ("comprising", "coupled to", etc.). Real patent text from Google Patents won't always match these patterns, so the parser will silently return empty extractions. This directly threatens Phase 3 Step 2 (ingest 3 real patents) — if the parser can't handle real patent formatting, the pipeline will produce empty results.
+**Severity:** P1 (upgraded from original) — F-001 is now a load-bearing prerequisite for Phase 3. The auditor's roadmap explicitly calls it "Step 0 — Fix F-001 before ingesting anything real."
+**Status:** OPEN — must be fixed BEFORE Phase 3 Step 2. Test against 2-3 real patent abstracts from Google Patents first.
