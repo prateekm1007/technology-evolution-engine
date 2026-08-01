@@ -1,6 +1,6 @@
 # CONSTITUTION
 
-## Seven Constitutional Laws
+## Eight Constitutional Laws
 
 ### Law 1: Transformation, not object.
 ### Law 2: Explicit constraint surface.
@@ -13,6 +13,13 @@ Operators: eliminate, substitute, miniaturize, distribute, modularize, software_
 ### Law 7: Historical permanence.
 No benchmark, prediction, assumption, failure, or outcome may be silently altered.
 Enforcement: append-only ledgers, immutable benchmark inputs/outputs, versioned graph migrations, reproducible replay, review/resolution via suffixed files.
+### Law 8: Verification Standard.
+No "verified" label without a successful prediction, a failed prediction,
+and replayable evidence. A system can fail for arbitrary reasons — absence
+of an error is not verification. Positive and negative evidence are both
+required before any claim may be labeled "verified" rather than
+"integrated" or "implemented." See `evidence/reports/verification_report.json`
+for the current audit against this standard.
 
 ## Agent Roster (FROZEN)
 Historian, Naturalist, Oracle, Ecologist, Inventor, Destroyer, Cemetery, Prerequisite Engine, Resurrection Engine, Blueprint Generator, Ledger
@@ -27,3 +34,7 @@ Never modify an existing benchmark. Use _review/_resolution suffixes.
 Every benchmark carries: source, domain, created_at, reviewer, version, assumptions, limitations.
 ### Discipline 3: Drift Detection
 Dedicated monitoring for graph expansion, altered assumptions, score changes, calibration shifts.
+
+## Governing Principle
+
+The system shall prefer an uncomfortable truth to an elegant theory.

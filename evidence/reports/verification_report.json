@@ -1,0 +1,26 @@
+{
+  "generated_at": "2026-08-01T13:59:21.650718+00:00",
+  "rule_applied": "No 'verified' label without successful prediction, failed prediction, and replayable evidence (amended CONSTITUTION.md rule).",
+  "audit_of_current_verification_claims": [
+    {
+      "endpoint": "POST /api/v1/analyze (success path)",
+      "current_label": "verified",
+      "assessment": "MISLABELED under the amended rule. The label is applied whenever CoreAdapter.run_pipeline() returns without raising \u2014 that is absence-of-crash, not verification. There is no recorded successful prediction, no recorded failed prediction, and no replay mechanism behind this label. Recommend downgrading to 'integrated' until a real predict -> observe -> reconcile cycle exists and is logged to a working ledger.",
+      "action": "downgrade_to_integrated"
+    },
+    {
+      "endpoint": "GET /api/v1/simulate, GET /api/v1/graph, GET /api/v1/evidence",
+      "current_label": "integrated | implemented (source-dependent)",
+      "assessment": "Correctly labeled. Neither claims 'verified' or 'is_fact'. No change needed.",
+      "action": "none"
+    },
+    {
+      "endpoint": "POST /api/v1/analyze (fallback path), GET /api/v1/benchmarks",
+      "current_label": "implemented",
+      "assessment": "Correctly labeled \u2014 both are explicitly static/stub data (SPECIMEN) and do not overclaim.",
+      "action": "none"
+    }
+  ],
+  "structural_gap": "The 'verified' tier as amended cannot be honestly claimed by anything in this repo right now, because data/ledger/predictions.jsonl -- the only mechanism for recording prediction outcomes -- is corrupted (see FAILURES.md, item F-005) and no code path currently reads a prediction, waits for an outcome, and reconciles pass/fail. Until that loop exists and is replayable, every 'verified' stamp in this system is aspirational, not evidenced, regardless of which endpoint it's attached to.",
+  "recommendation": "Do not use the 'verified' label anywhere in the codebase until: (1) predictions.jsonl is regenerated and readable, (2) at least one prediction has a recorded outcome (pass or fail), (3) that outcome is replayable from the ledger alone. Until then, cap all labels at 'integrated'."
+}

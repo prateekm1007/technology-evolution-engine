@@ -1,0 +1,32 @@
+{
+  "generated_at": "2026-08-01T13:58:47.574622+00:00",
+  "method": "pytest tests/test_endpoints.py -v, run live \u2014 exercises FastAPI app + real product pipelines together via TestClient, not mocks",
+  "summary": {
+    "passed": 4,
+    "total": 4,
+    "collected": 4
+  },
+  "duration_s": 1.362,
+  "tests": [
+    {
+      "nodeid": "tests/test_endpoints.py::test_analyze_responds_to_payload",
+      "outcome": "passed",
+      "duration_s": 0.1795
+    },
+    {
+      "nodeid": "tests/test_endpoints.py::test_analyze_actually_consumes_input_text",
+      "outcome": "passed",
+      "duration_s": 0.0227
+    },
+    {
+      "nodeid": "tests/test_endpoints.py::test_evidence_does_not_500",
+      "outcome": "passed",
+      "duration_s": 0.0074
+    },
+    {
+      "nodeid": "tests/test_endpoints.py::test_graph_returns_nodes",
+      "outcome": "passed",
+      "duration_s": 0.0161
+    }
+  ]
+}

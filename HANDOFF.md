@@ -3,9 +3,11 @@
 ## RULES
 Rule 0: No manual work. Rule 1: Architecture is frozen.
 
-## SEVEN LAWS
+## EIGHT LAWS
 1. Transformation, not object. 2. Explicit constraint surface. 3. Nodes and edges.
 4. Decomposable. 5. Adversarial survival. 6. Expose assumptions. 7. Historical permanence.
+8. Verification standard: no "verified" without a successful prediction, a failed
+prediction, and replayable evidence.
 
 ## BENCHMARK DISCIPLINES
 1. Immutability: never overwrite benchmarks. Use _review/_resolution suffixes.

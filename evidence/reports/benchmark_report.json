@@ -1,0 +1,11 @@
+{
+  "generated_at": "2026-08-01T13:58:59.215888+00:00",
+  "method": "Checked benchmarks/outputs/ and benchmarks/reports/ for recorded runs.",
+  "runs_recorded": 0,
+  "note": "Both directories contain only .gitkeep \u2014 no benchmark has ever actually been executed and recorded in this repo, despite benchmarks/scoring/scorer.py and benchmarks/drift/detector.py existing as code. This is a gap, not a zero-score result: there is no data here to report on yet. Workstream A (100 patents, 3 reviewers) and Workstream B (500 prompts, 50 users) targets from workstreams/README.md have not been started.",
+  "prerequisites_before_first_real_run": [
+    "Decide adjudication protocol for 'usefulness'/'novelty' scoring (who scores, blind or not)",
+    "Fix PatentParser silent-empty-output bug so business benchmark inputs don't fail invisibly",
+    "Fix scoring collapse in permutation/engine.py so consumer results aren't near-duplicate across distinct inputs (flagged in prior audit turn)"
+  ]
+}

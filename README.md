@@ -16,7 +16,7 @@ It does not generate ideas. It determines:
 
 ## Architecture
 
-See CONSTITUTION.md for the frozen architecture and six constitutional laws.
+See CONSTITUTION.md for the frozen architecture and eight constitutional laws.
 See HANDOFF.md for the master handoff document.
 
 ## Metrics

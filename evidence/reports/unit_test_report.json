@@ -1,0 +1,67 @@
+{
+  "generated_at": "2026-08-01T13:58:47.574478+00:00",
+  "method": "pytest tests/test_graph_engine.py tests/test_product.py -v, run live",
+  "summary": {
+    "passed": 11,
+    "total": 11,
+    "collected": 11
+  },
+  "duration_s": 0.131,
+  "tests": [
+    {
+      "nodeid": "tests/test_graph_engine.py::test_empty_graph",
+      "outcome": "passed",
+      "duration_s": 0.0002
+    },
+    {
+      "nodeid": "tests/test_graph_engine.py::test_add_node",
+      "outcome": "passed",
+      "duration_s": 0.0001
+    },
+    {
+      "nodeid": "tests/test_graph_engine.py::test_add_edge",
+      "outcome": "passed",
+      "duration_s": 0.0001
+    },
+    {
+      "nodeid": "tests/test_graph_engine.py::test_pcs_computation",
+      "outcome": "passed",
+      "duration_s": 0.0001
+    },
+    {
+      "nodeid": "tests/test_product.py::test_patent_parser",
+      "outcome": "passed",
+      "duration_s": 0.0033
+    },
+    {
+      "nodeid": "tests/test_product.py::test_text_normalizer",
+      "outcome": "passed",
+      "duration_s": 0.0006
+    },
+    {
+      "nodeid": "tests/test_product.py::test_permutation_engine",
+      "outcome": "passed",
+      "duration_s": 0.0012
+    },
+    {
+      "nodeid": "tests/test_product.py::test_blueprint_composer",
+      "outcome": "passed",
+      "duration_s": 0.0001
+    },
+    {
+      "nodeid": "tests/test_product.py::test_business_pipeline",
+      "outcome": "passed",
+      "duration_s": 0.0261
+    },
+    {
+      "nodeid": "tests/test_product.py::test_consumer_pipeline",
+      "outcome": "passed",
+      "duration_s": 0.0057
+    },
+    {
+      "nodeid": "tests/test_product.py::test_orchestrator",
+      "outcome": "passed",
+      "duration_s": 0.0588
+    }
+  ]
+}
