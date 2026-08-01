@@ -1,0 +1,66 @@
+{
+  "id": "benchmark_0004",
+  "type": "patent",
+  "source": "uspto",
+  "title": "Asymmetric Supercapacitor with MXene Electrodes",
+  "domain": "energy",
+  "abstract": "An electrochemical storage device with Ti3C2Tx MXene positive electrode and N-doped carbon negative electrode achieving 50 Wh/kg at 10 kW/kg with 100,000 cycle life.",
+  "claims": [
+    "MXene electrode with interlayer spacing 1.2-1.5 nm by DMSO intercalation.",
+    "Asymmetric cell with MXene positive and N-doped carbon negative in 1M H2SO4.",
+    "MXene synthesis by selective etching of Al from Ti3AlC2 using LiF/HCl at 35C for 24h."
+  ],
+  "components": [
+    "MXene electrode",
+    "N-doped carbon electrode",
+    "separator",
+    "aqueous electrolyte",
+    "current collector"
+  ],
+  "materials": [
+    "titanium carbide MXene",
+    "nitrogen-doped carbon",
+    "sulfuric acid",
+    "titanium aluminum carbide",
+    "aluminum"
+  ],
+  "methods": [
+    "chemical etching",
+    "intercalation",
+    "electrode casting",
+    "electrochemical testing"
+  ],
+  "constraints": [
+    "energy density",
+    "power density",
+    "cycle life",
+    "cost",
+    "safety"
+  ],
+  "problem_statement": "Batteries offer high energy but low power. Supercapacitors offer high power but low energy. MXenes may bridge this gap.",
+  "expected_constraints": [
+    "energy",
+    "material",
+    "cost",
+    "manufacturing",
+    "safety"
+  ],
+  "expected_prerequisites": [
+    "MAX phase synthesis",
+    "controlled etching",
+    "electrode fabrication at scale",
+    "electrolyte optimization"
+  ],
+  "expected_adjacent_domains": [
+    "materials science",
+    "electrochemistry",
+    "nanotechnology",
+    "chemical engineering"
+  ],
+  "expected_failure_modes": [
+    "MXene oxidation",
+    "electrode delamination",
+    "electrolyte decomposition",
+    "self-discharge"
+  ]
+}
