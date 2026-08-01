@@ -1,0 +1,72 @@
+{
+  "id": "benchmark_0015",
+  "type": "patent",
+  "source": "uspto",
+  "title": "Hybrid Airship with Solar-Electric Propulsion and Vectored Thrust",
+  "domain": "transportation",
+  "abstract": "A 150m hybrid airship with 200kW solar cells, four vectored electric propulsors, enabling 50-tonne payload at 120 km/h zero emissions.",
+  "claims": [
+    "Multi-layer envelope (Tedlar/Mylar/Kevlar) with CIGS solar cells on 60% upper surface.",
+    "Four 200kW vectored electric propulsors with 120-degree thrust vectoring.",
+    "Lifting body hull with L/D ratio 8:1 at 120 km/h cruise."
+  ],
+  "components": [
+    "helium envelope",
+    "solar cells",
+    "electric motors",
+    "propellers",
+    "gondola",
+    "ballonet",
+    "avionics"
+  ],
+  "materials": [
+    "tedlar",
+    "mylar",
+    "kevlar",
+    "CIGS",
+    "helium",
+    "carbon fiber",
+    "lithium"
+  ],
+  "methods": [
+    "envelope fabrication",
+    "solar cell lamination",
+    "electric propulsion",
+    "aerodynamic design"
+  ],
+  "constraints": [
+    "energy",
+    "safety",
+    "regulation",
+    "cost",
+    "weather",
+    "supply chain"
+  ],
+  "problem_statement": "Cargo transport is 8% of global CO2. Airships offer 10x lower energy per tonne-km.",
+  "expected_constraints": [
+    "energy",
+    "safety",
+    "regulation",
+    "cost",
+    "material",
+    "supply chain"
+  ],
+  "expected_prerequisites": [
+    "lightweight solar cells",
+    "high-power electric motors",
+    "helium supply",
+    "airship certification"
+  ],
+  "expected_adjacent_domains": [
+    "aerospace",
+    "solar energy",
+    "materials science",
+    "logistics"
+  ],
+  "expected_failure_modes": [
+    "envelope rupture",
+    "helium leakage",
+    "weather vulnerability",
+    "solar cell degradation"
+  ]
+}
