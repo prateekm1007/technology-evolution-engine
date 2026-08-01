@@ -366,7 +366,7 @@ Phase 5 — Audience specialization: researchers, corporations, investors, gover
 **Found:** external auditor (post-10-principles landing).
 **Observed:** remember_governance.py is documented as "Not a gate — a reminder." No .pre-commit-config.yaml or CI config calls it. A coder who skips running it will not be caught.
 **Severity:** P3 — the loop is structurally present but not enforced.
-**Status:** RESOLVED — added .pre-commit-config.yaml that runs remember_governance.py as a pre-commit hook. When pre-commit is installed (`pip install pre-commit && pre-commit install`), every `git commit` will first run the script and fail if any governor file is missing.
+**Status:** PARTIALLY RESOLVED — .pre-commit-config.yaml added (config present, enforcement not wired). Pre-commit is not installed and no CI step runs it. A coder who clones the repo and starts committing will not trigger the hook. To fully resolve: (a) add pre-commit install to setup instructions, (b) add pre-commit to requirements.txt, (c) optionally add a CI step that runs pre-commit run --all-files. The config file is the right first step; the enforcement is the remaining gap. that runs remember_governance.py as a pre-commit hook. When pre-commit is installed (`pip install pre-commit && pre-commit install`), every `git commit` will first run the script and fail if any governor file is missing.
 
 ---
 

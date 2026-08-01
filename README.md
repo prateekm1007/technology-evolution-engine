@@ -33,6 +33,23 @@ See HANDOFF.md for the master handoff document.
 - The graph is canonical. Documents are representations.
 - Every candidate must survive adversarial attack.
 
+## Setup
+
+```bash
+pip install -r requirements.txt
+pre-commit install   # wires the governance loop as a git hook
+```
+
+The `pre-commit install` step is mandatory. It wires
+`scripts/remember_governance.py` as a pre-commit hook that checks
+all 6 governor files (CONSTITUTION.md, INVENTION_COMPILER.md,
+ANTI_ENTROPY.md, CONTRIBUTING.md, FAILURES.md, HANDOFF.md) are
+present before every commit. Without this step, the governance loop
+is configured but not enforced.
+
+See CONTRIBUTING.md for the pre-commit checklist (10 session-hardened
+principles distilled from actual failures).
+
 ## License
 
 Private. All rights reserved.
