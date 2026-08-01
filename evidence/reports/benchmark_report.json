@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-08-01T17:27:41.422298+00:00",
+  "generated_at": "2026-08-01T17:51:56.190435+00:00",
   "method": "Live run of scripts/run_evidence_tests.py --all. The benchmark harness appends to data/ledger/predictions.jsonl, which is currently corrupted (F-005). To honor audit constraint #2 (do not overwrite the corrupted ledger), the harness was allowed to append, then the ledger was restored to its exact pre-run state. The appended entry is captured in this report as evidence that the benchmark harness runs and produces a well-formed entry; it is NOT committed to the ledger.",
-  "duration_s": 0.139,
+  "duration_s": 0.135,
   "returncode": 0,
   "original_ledger_sha256": "02c5be2670354984d3ae9978c320d235d923eb7cfb61635843e8a4a0589791a4",
-  "after_run_ledger_sha256": "245ee03127fe020dc791f5755f3a17b26be18a11ec6a1b563485c603fb9fcdc5",
+  "after_run_ledger_sha256": "a35ebddd1c058c53d34c826cc51d07f162c4994d05c099d383be2ecd78e814b9",
   "restored_ledger_sha256": "02c5be2670354984d3ae9978c320d235d923eb7cfb61635843e8a4a0589791a4",
   "ledger_head_intact_after_append": true,
   "ledger_restored_to_corrupted_state": true,
@@ -12,7 +12,7 @@
   "appended_entries": [
     {
       "type": "benchmark_run",
-      "timestamp": "2026-08-01T17:27:41.412250+00:00",
+      "timestamp": "2026-08-01T17:51:56.180384+00:00",
       "total_benchmarks": 26,
       "overall_composite_mean": 0.3677,
       "grade_distribution": {
@@ -28,7 +28,7 @@
     }
   ],
   "scoring_summary": {
-    "timestamp": "2026-08-01T17:27:41.412250+00:00",
+    "timestamp": "2026-08-01T17:51:56.180384+00:00",
     "total_benchmarks": 26,
     "patent_benchmarks": 20,
     "consumer_benchmarks": 6,

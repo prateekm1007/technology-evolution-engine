@@ -1,4 +1,4 @@
-# TEE MASTER HANDOFF (v1.9 — ARCHITECTURE FROZEN)
+# TEE MASTER HANDOFF (v2.0 — Gap 1 fix in progress)
 
 ## PRE-CODING READ LIST (MANDATORY)
 
@@ -55,6 +55,34 @@ those layers or modules.
 - Invention compiler vertical slice: implemented in
   `invention_compiler/` (commit `a3d167d`). 11 layers, 14 modules.
 - 47 tests passing.
+
+## LEARN + MODIFY step (commits `bdfca58` → next)
+
+The 20-invention experiment (commit `bdfca58`) revealed 7 gaps.
+The CEO/CTO classified them by severity/frequency/impact. Per the
+CEO directive: "Pick one. Fix it. Run all twenty inventions again.
+Observe what changes. Only then move to the next one."
+
+**Gap selected: Gap 1 (identical scoring).** Critical, 11/20 affected,
+localized to one module (simulation_module.py).
+
+The fix: replace the keyword-only complexity penalty with a multi-
+signal complexity score (governing_equations + failure_modes +
+missing_capabilities + prerequisite_chain_depth + domain priors
++ existing keyword signals).
+
+What the fix does NOT touch: dependency_module (Gap 2, 7),
+blueprint_module (Gap 3), orchestrator (Gap 4), prototype_module
+(Gap 5), chemistry_knowledge_module (Gap 6). The "pick one" rule
+is enforced strictly.
+
+## IMPLEMENTATION WORK THIS SESSION
+- Fix Gap 1 ONLY in simulation_module.py.
+- Add test asserting differentiation (>=10 unique composites
+  across the 20 candidates, was 4 unique before).
+- Re-run all 20 inventions → invention_batch_002/.
+- Produce DELTA.md comparing batch_001 vs batch_002.
+- Confirm only simulation_module.py was modified.
 
 ## CEO DIRECTIVE — FREEZE ARCHITECTURE (commit `0c6d5d7`)
 

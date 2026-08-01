@@ -1,0 +1,301 @@
+problem: "Build a device that harvests >10L of potable water per day from desert air at <20% RH"
+domain: "water"
+hypothesis:
+  id: "hyp_f09c5ab2187f8d10"
+  claim: "The invention 'Build a device that harvests >10L of potable water per day from desert air at <20% RH' is feasible in the water domain within the stated time horizon."
+  confidence: 0.4798
+  evidence:
+    - "bernoulli_principle"
+    - "energy_conservation"
+    - "first_law_thermodynamics"
+    - "mass_conservation"
+    - "navier_stokes"
+    - "second_law_thermodynamics"
+    - "ampere law"
+    - "bernoulli equation"
+    - "capex_$26.01M"
+  counterevidence:
+
+  assumptions:
+
+  status: "pending"
+physical_laws:
+  - "bernoulli_principle"
+  - "energy_conservation"
+  - "first_law_thermodynamics"
+  - "mass_conservation"
+  - "navier_stokes"
+  - "second_law_thermodynamics"
+chemical_principles:
+  pathways:
+
+  kinetics:
+
+  equilibrium:
+
+  energy_states:
+    - "activation_energy"
+    - "gibbs_free_energy"
+mathematical_formulation:
+  structures:
+    - "fluid_dynamics"
+    - "mass_transport"
+    - "optimization"
+    - "differential_equations"
+  governing_equations:
+    -
+      name: "ampere law"
+      form: "B = mu_0 * I / (2*pi*r)"
+      variables:
+        - "B"
+        - "mu_0"
+        - "I"
+        - "r"
+    -
+      name: "bernoulli equation"
+      form: "P + 0.5*rho*v^2 + rho*g*h = const"
+      variables:
+        - "P"
+        - "rho"
+        - "v"
+        - "g"
+        - "h"
+constraints:
+  - "cost"
+  - "energy"
+  - "material"
+  - "manufacturing"
+dependencies:
+  prerequisites:
+
+  missing_capabilities:
+
+  causal_classifications:
+    necessary: 0
+    sufficient: 0
+    contributing: 0
+    unknown: 0
+assumptions:
+  - "Failure modes are derived from constraint keywords via a small prior map. Real failure modes require FMEA."
+  - "Optimization targets are derived from the problem's stated constraints. Implicit targets (e.g., 'minimize complexity') are not captured."
+  - "The hypothesis is a prediction. It is NOT verified until the experiments are run and outcomes recorded in the ledger."
+  - "Failure-mode experiments are derived from Layer 3's failure modes. If Layer 3 is incomplete, this layer is incomplete."
+  - "Success/failure thresholds (0.70, 0.40) are priors. They should be recalibrated as the verification cycle accumulates outcomes."
+architecture:
+  subsystems:
+    - "subsystem_for_cost"
+    - "subsystem_for_energy"
+    - "subsystem_for_material"
+    - "subsystem_for_manufacturing"
+  interfaces:
+    - "subsystem_for_cost <-> subsystem_for_energy"
+    - "subsystem_for_cost <-> subsystem_for_material"
+    - "subsystem_for_cost <-> subsystem_for_manufacturing"
+    - "subsystem_for_energy <-> subsystem_for_material"
+    - "subsystem_for_energy <-> subsystem_for_manufacturing"
+  tolerances:
+    cost: "±15% of capex estimate"
+    energy: "±10% of energy budget"
+    material: "±5% of material property target"
+    manufacturing: "±3% yield"
+simulation:
+  monte_carlo:
+    n_samples: 200
+    composite:
+      mean: 0.4831
+      std: 0.0254
+      p5: 0.4402
+      p50: 0.483
+      p95: 0.5246
+      min: 0.4195
+      max: 0.5419
+    technical:
+      mean: 0.5975
+      std: 0.0577
+      p5: 0.5031
+      p50: 0.6089
+      p95: 0.6823
+      min: 0.4877
+      max: 0.687
+    economic:
+      mean: 0.45
+      std: 0.0575
+      p5: 0.3623
+      p50: 0.4517
+      p95: 0.5449
+      min: 0.3532
+      max: 0.5515
+    regulatory:
+      mean: 0.3992
+      std: 0.0551
+      p5: 0.3107
+      p50: 0.4013
+      p95: 0.4863
+      min: 0.2981
+      max: 0.4958
+    manufacturing:
+      mean: 0.4668
+      std: 0.0584
+      p5: 0.3813
+      p50: 0.4685
+      p95: 0.5564
+      min: 0.3673
+      max: 0.5669
+    adoption:
+      mean: 0.404
+      std: 0.0589
+      p5: 0.3114
+      p50: 0.4056
+      p95: 0.4934
+      min: 0.3021
+      max: 0.5017
+  sensitivity:
+    technical: 0.6815
+    economic: 0.4528
+    regulatory: 0.3254
+    manufacturing: 0.4598
+    adoption: 0.3478
+  stress_testing:
+    -
+      technical_feasibility: 0.5031
+      economic_feasibility: 0.36
+      regulatory_feasibility: 0.3834
+      manufacturing_feasibility: 0.4315
+      adoption_probability: 0.3521
+      composite: 0.4195
+    -
+      technical_feasibility: 0.5311
+      economic_feasibility: 0.3959
+      regulatory_feasibility: 0.3842
+      manufacturing_feasibility: 0.3728
+      adoption_probability: 0.3692
+      composite: 0.4261
+    -
+      technical_feasibility: 0.5012
+      economic_feasibility: 0.3996
+      regulatory_feasibility: 0.4308
+      manufacturing_feasibility: 0.4098
+      adoption_probability: 0.3285
+      composite: 0.4261
+prototype_plan:
+  v1:
+    name: "prototype_v1_physics_validation"
+    goal: "prove the core mechanism works at lab scale"
+    scope: "single subsystem, no integration, no manufacturability"
+    success_threshold: "core mechanism reproduces predicted output within 30%"
+    estimated_duration_months: 6
+    estimated_cost_usd_m: 0.24
+  v2:
+    name: "prototype_v2_engineering_integration"
+    goal: "prove the subsystems integrate into a working system"
+    scope: "all subsystems, no manufacturing pathway, no regulatory submission"
+    success_threshold: "integrated prototype meets primary_output spec at 50% of target performance"
+    estimated_duration_months: 12
+    estimated_cost_usd_m: 0.96
+  v3:
+    name: "prototype_v3_production_readiness"
+    goal: "prove the manufacturing pathway and cost model hold"
+    scope: "production-intent prototype, pilot manufacturing run, regulatory pre-submission"
+    success_threshold: "unit cost within 2x of cost_curve target; regulatory pre-submission accepted"
+    estimated_duration_months: 18
+    estimated_cost_usd_m: 3.84
+  timeline_years: 3.0
+experimental_plan:
+  hypothesis: "The candidate invention will achieve technical feasibility >= 0.70 within 5-10 years, given the prerequisite chain is complete and no regulatory blocker materializes."
+  experiments:
+    -
+      id: "exp_cost_overrun"
+      purpose: "determine whether cost_overrun is a real risk"
+      method: "stress_test_against_cost_overrun"
+      expected_duration: "3-6 months per experiment"
+    -
+      id: "exp_energy_budget_exceeded"
+      purpose: "determine whether energy_budget_exceeded is a real risk"
+      method: "stress_test_against_energy_budget_exceeded"
+      expected_duration: "3-6 months per experiment"
+    -
+      id: "exp_material_unavailable_or_too_expensive"
+      purpose: "determine whether material_unavailable_or_too_expensive is a real risk"
+      method: "stress_test_against_material_unavailable_or_too_expensive"
+      expected_duration: "3-6 months per experiment"
+    -
+      id: "exp_manufacturing_yield_too_low"
+      purpose: "determine whether manufacturing_yield_too_low is a real risk"
+      method: "stress_test_against_manufacturing_yield_too_low"
+      expected_duration: "3-6 months per experiment"
+    -
+      id: "exp_prototype_v1"
+      purpose: "determine whether the candidate can be built at all"
+      method: "build_minimum_viable_prototype"
+      expected_duration: "6-12 months"
+  measurements:
+    -
+      metric: "technical_feasibility_observed"
+      target: ">= 0.70"
+      instrument: "expert_panel_review"
+    -
+      metric: "cost_per_unit_observed"
+      target: "<= capex_estimate / 1000"
+      instrument: "cost_accounting"
+    -
+      metric: "time_to_first_prototype_observed"
+      target: "<= 5-10 years"
+      instrument: "project_tracker"
+    -
+      metric: "regulatory_approval_status"
+      target: "approved_or_withdrawn"
+      instrument: "regulatory_filing_tracker"
+  success_criteria:
+    - "All failure-mode experiments return 'risk_acceptable'."
+    - "Prototype v1 builds successfully and meets primary_output spec."
+    - "Technical feasibility observed >= 0.70 within 5-10 years."
+    - "Composite feasibility from simulation's p50 >= 0.60."
+  failure_criteria:
+    - "Any failure-mode experiment returns 'risk_unacceptable' AND no mitigation is identified."
+    - "Prototype v1 cannot be built within 2x the estimated time."
+    - "Technical feasibility observed < 0.40 after 5-10 years."
+    - "Regulatory approval is denied with no appeal path."
+failure_modes:
+  - "cost_overrun"
+  - "energy_budget_exceeded"
+  - "material_unavailable_or_too_expensive"
+  - "manufacturing_yield_too_low"
+  - "stress_scenario_composite=0.4195"
+  - "stress_scenario_composite=0.4261"
+counterevidence:
+
+confidence: 0.4798
+final_blueprint:
+  problem: "Build a device that harvests >10L of potable water per day from desert air at <20% RH"
+  domain: "water"
+  target_invention: "Build a device that harvests >10L of potable water per day from desert air at <20% RH"
+  prerequisite_chain_depth: 0
+  governing_equations:
+    -
+      name: "ampere law"
+      form: "B = mu_0 * I / (2*pi*r)"
+      variables:
+        - "B"
+        - "mu_0"
+        - "I"
+        - "r"
+    -
+      name: "bernoulli equation"
+      form: "P + 0.5*rho*v^2 + rho*g*h = const"
+      variables:
+        - "P"
+        - "rho"
+        - "v"
+        - "g"
+        - "h"
+  subsystems:
+    - "subsystem_for_cost"
+    - "subsystem_for_energy"
+    - "subsystem_for_material"
+    - "subsystem_for_manufacturing"
+  composite_feasibility: 26.01
+  prototype_stages:
+    - "prototype_v1_physics_validation"
+    - "prototype_v2_engineering_integration"
+    - "prototype_v3_production_readiness"
+  total_prototype_timeline_years: 3.0

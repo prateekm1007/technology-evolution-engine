@@ -23,41 +23,70 @@ Effective immediately:
 
 Use only what already exists.
 
-### Why the freeze
+### LEARN step (post-experiment gap analysis, commit `bdfca58`)
 
-The repository is approaching the point where adding more
-abstractions produces the illusion of progress. The most valuable
-thing now is to STOP building infrastructure and FORCE the system
-to produce inventions.
+After running the 20-invention experiment (commit `bdfca58`), 7
+gaps were observed. The CEO/CTO classified them:
 
-The compiler must be treated as a black box:
+| Gap | Severity | Frequency | Impact |
+|---|---|---|---|
+| Identical scoring (Gap 1) | Critical | High (11/20) | High |
+| Arbitrary dependencies (Gap 2) | Critical | High | High |
+| Non-buildable blueprints (Gap 3) | Critical | High | High |
+| Missing counterevidence (Gap 4) | High | High (20/20) | High |
+| Template plans (Gap 5) | Medium | High | Medium |
+| Chemical differentiation (Gap 6) | Medium | Medium | Medium |
+| Weak causal graph (Gap 7) | Critical | High | High |
 
-```text
-Problem → Observation → Knowledge → Reasoning → Blueprint →
-    Simulation → Hypothesis → Output
-```
+### MODIFY step — pick ONE gap (commit `bdfca58` → next)
 
-### New output contract
+Per the CEO: "Do not solve all seven problems simultaneously.
+Pick one. Fix it. Run all twenty inventions again. Observe what
+changes. Only then move to the next one."
 
-The output of the next iteration must NOT be:
+**Gap selected: Gap 1 (identical scoring).**
 
-```text
-module added
-layer added
-class added
-benchmark added
-package added
-```
+Why Gap 1 first:
+- Critical severity (highest priority).
+- Highest frequency among critical gaps (11/20 candidates affected).
+- Localized to ONE module (`simulation_module.py`) — does not
+  require touching the dependency_module, blueprint_module, or
+  any other module. This honors the "pick one" rule strictly.
+- Most measurable impact across all 20 candidates — the delta
+  report will show which composites changed and by how much.
+- Does not require deep architectural changes; the existing
+  complexity-penalty mechanism in simulation_module can be
+  extended with additional problem-specific signals.
 
-The output MUST be:
+**The fix (Gap 1 only):**
 
-```text
-invention produced
-blueprint generated
-assumptions identified
-constraints discovered
-failure modes discovered
-```
+The simulation_module currently uses keyword-based complexity
+penalties. 11/20 candidates produce composite=0.5777 because they
+all have 5 applicable_laws and none of the special keywords
+(superconduct/ambient/ammonia/photosynth/etc.). The fix: use
+MULTIPLE problem-specific signals, not just keyword presence:
+
+- applicable_law_count (existing)
+- governing_equations_count (NEW — more equations = harder)
+- failure_modes_count (NEW — more failure modes = harder)
+- missing_capabilities_count (NEW — more missing = harder)
+- prerequisite_chain_depth (NEW — deeper chain = harder)
+- domain complexity multiplier (NEW — e.g., superconductivity
+  domain gets extra penalty)
+
+Combining these signals produces different composites for
+different problems, even when the keyword signatures are similar.
+
+**What the fix does NOT touch:**
+
+- dependency_module (Gap 2, Gap 7) — unchanged
+- blueprint_module (Gap 3) — unchanged
+- orchestrator (Gap 4) — unchanged
+- prototype_module (Gap 5) — unchanged
+- chemistry_knowledge_module (Gap 6) — unchanged
+
+Only `simulation_module.py` is modified. This is the strict
+"pick one" rule.
 
 ### Build → Observe → Learn → Modify (NOT Build → Modify → Modify → Modify)
 
@@ -66,11 +95,17 @@ The sequence is now:
 ```text
 Build
    ↓
-Observe
+Observe (20-invention experiment, commit bdfca58)
    ↓
-Learn
+Learn (gap analysis, this section)
    ↓
-Modify
+Modify (Gap 1 fix ONLY, next commit)
+   ↓
+Observe (re-run 20 inventions, batch_002)
+   ↓
+Learn (delta analysis)
+   ↓
+Modify (Gap 2 OR another, ONLY after delta review)
 ```
 
 NOT:

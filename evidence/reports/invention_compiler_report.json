@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-01T17:27:41.797215+00:00",
+  "generated_at": "2026-08-01T17:51:56.567517+00:00",
   "method": "Live end-to-end compile of the reference test problem (portable MRI) through all 11 layers of the invention compiler. Verifies: (1) every layer emits its required schema keys, (2) scalar layers carry the Law 8 honesty block (evidence + assumptions + falsification_criteria), (3) the forbidden phrases ('this is a good idea' etc.) do not appear in the output.",
   "test_problem": {
     "problem": "Build a portable MRI scanner suitable for rural clinics without cryogenic helium",
@@ -16,7 +16,7 @@
     "time_horizon": "5-10 years"
   },
   "problem_id": "invention_060bc4edf436a6b5",
-  "duration_s": 0.247,
+  "duration_s": 0.243,
   "layer_count": 11,
   "schema_missing_per_layer": {},
   "law8_honesty_missing_layers": [],
@@ -28,17 +28,17 @@
     "prerequisite_chain_depth": 0,
     "governing_equations_count": 1,
     "subsystem_count": 3,
-    "composite_feasibility_baseline": 0.6128,
-    "capex_usd_m": 19.36,
+    "composite_feasibility_baseline": 0.5497,
+    "capex_usd_m": 22.52,
     "market_size_usd_m": 1.0,
     "total_prototype_timeline_years": 3.0,
     "technical_risk_count": 5,
     "commercial_risk_count": 3,
     "verification_status": "integrated",
     "hypothesis": {
-      "id": "hyp_5da7b8c530b3215f",
+      "id": "hyp_37d4e73363534851",
       "claim": "The invention 'Build a portable MRI scanner suitable for rural clinics without cryogenic helium' is feasible in the medical_imaging domain within the stated time horizon.",
-      "confidence": 0.6128,
+      "confidence": 0.5497,
       "evidence": [
         "ampere_law",
         "charge_conservation",
@@ -46,7 +46,7 @@
         "maxwell_equations",
         "meissner_effect",
         "ampere law",
-        "capex_$19.36M"
+        "capex_$22.52M"
       ],
       "counterevidence": [],
       "assumptions": [],
@@ -54,9 +54,9 @@
       "status": "pending",
       "observation": null,
       "writer": "invention_compiler.orchestrator.InventionCompiler._chain_summary",
-      "created_at": "2026-08-01T17:27:41.796701+00:00",
-      "updated_at": "2026-08-01T17:27:41.796715+00:00",
-      "timestamp": "2026-08-01T17:27:41.796701+00:00"
+      "created_at": "2026-08-01T17:51:56.566994+00:00",
+      "updated_at": "2026-08-01T17:51:56.567006+00:00",
+      "timestamp": "2026-08-01T17:51:56.566994+00:00"
     }
   },
   "verdict": "PASS",
@@ -1316,8 +1316,8 @@
         "cost_overrun",
         "regulatory_rejection",
         "manufacturing_yield_too_low",
-        "stress_scenario_composite=0.5525",
-        "stress_scenario_composite=0.5591"
+        "stress_scenario_composite=0.4895",
+        "stress_scenario_composite=0.4961"
       ],
       "optimization_targets": [
         "minimize_cost",
@@ -1408,58 +1408,58 @@
       "monte_carlo": {
         "n_samples": 200,
         "composite": {
-          "mean": 0.6161,
+          "mean": 0.5531,
           "std": 0.0254,
-          "p5": 0.5732,
-          "p50": 0.616,
-          "p95": 0.6576,
-          "min": 0.5525,
-          "max": 0.6749
+          "p5": 0.5102,
+          "p50": 0.553,
+          "p95": 0.5946,
+          "min": 0.4895,
+          "max": 0.6119
         },
         "technical": {
-          "mean": 0.7305,
+          "mean": 0.6675,
           "std": 0.0577,
-          "p5": 0.6361,
-          "p50": 0.7419,
-          "p95": 0.8153,
-          "min": 0.6207,
-          "max": 0.82
+          "p5": 0.5731,
+          "p50": 0.6789,
+          "p95": 0.7523,
+          "min": 0.5577,
+          "max": 0.757
         },
         "economic": {
-          "mean": 0.583,
+          "mean": 0.52,
           "std": 0.0575,
-          "p5": 0.4953,
-          "p50": 0.5847,
-          "p95": 0.6779,
-          "min": 0.4862,
-          "max": 0.6845
+          "p5": 0.4323,
+          "p50": 0.5217,
+          "p95": 0.6149,
+          "min": 0.4232,
+          "max": 0.6215
         },
         "regulatory": {
-          "mean": 0.5322,
+          "mean": 0.4692,
           "std": 0.0551,
-          "p5": 0.4437,
-          "p50": 0.5343,
-          "p95": 0.6193,
-          "min": 0.4311,
-          "max": 0.6288
+          "p5": 0.3807,
+          "p50": 0.4713,
+          "p95": 0.5563,
+          "min": 0.3681,
+          "max": 0.5658
         },
         "manufacturing": {
-          "mean": 0.5998,
+          "mean": 0.5368,
           "std": 0.0584,
-          "p5": 0.5143,
-          "p50": 0.6015,
-          "p95": 0.6894,
-          "min": 0.5003,
-          "max": 0.6999
+          "p5": 0.4513,
+          "p50": 0.5385,
+          "p95": 0.6264,
+          "min": 0.4373,
+          "max": 0.6369
         },
         "adoption": {
-          "mean": 0.537,
+          "mean": 0.474,
           "std": 0.0589,
-          "p5": 0.4444,
-          "p50": 0.5386,
-          "p95": 0.6264,
-          "min": 0.4351,
-          "max": 0.6347
+          "p5": 0.3814,
+          "p50": 0.4756,
+          "p95": 0.5634,
+          "min": 0.3721,
+          "max": 0.5717
         }
       },
       "sensitivity_analysis": {
@@ -1471,28 +1471,28 @@
       },
       "stress_testing": [
         {
-          "technical_feasibility": 0.6361,
-          "economic_feasibility": 0.493,
-          "regulatory_feasibility": 0.5164,
-          "manufacturing_feasibility": 0.5645,
-          "adoption_probability": 0.4851,
-          "composite": 0.5525
+          "technical_feasibility": 0.5731,
+          "economic_feasibility": 0.43,
+          "regulatory_feasibility": 0.4534,
+          "manufacturing_feasibility": 0.5015,
+          "adoption_probability": 0.4221,
+          "composite": 0.4895
         },
         {
-          "technical_feasibility": 0.6641,
-          "economic_feasibility": 0.5289,
-          "regulatory_feasibility": 0.5172,
-          "manufacturing_feasibility": 0.5058,
-          "adoption_probability": 0.5022,
-          "composite": 0.5591
+          "technical_feasibility": 0.6011,
+          "economic_feasibility": 0.4659,
+          "regulatory_feasibility": 0.4542,
+          "manufacturing_feasibility": 0.4428,
+          "adoption_probability": 0.4392,
+          "composite": 0.4961
         },
         {
-          "technical_feasibility": 0.6342,
-          "economic_feasibility": 0.5326,
-          "regulatory_feasibility": 0.5638,
-          "manufacturing_feasibility": 0.5428,
-          "adoption_probability": 0.4615,
-          "composite": 0.5591
+          "technical_feasibility": 0.5712,
+          "economic_feasibility": 0.4696,
+          "regulatory_feasibility": 0.5008,
+          "manufacturing_feasibility": 0.4798,
+          "adoption_probability": 0.3985,
+          "composite": 0.4961
         }
       ],
       "parameter_ranges": {
@@ -1501,15 +1501,29 @@
         "rng_seed": 42
       },
       "evidence": {
-        "baseline_composite": 0.6128,
+        "baseline_composite": 0.5497,
         "baseline_composite_before_penalty": 0.6827,
-        "baseline_technical": 0.7200000000000001,
+        "baseline_technical": 0.657,
         "target_node_id": "system_hvac_system",
         "rng_seed": 42,
         "n_samples": 200,
         "applicable_law_count": 5,
-        "complexity_penalty_applied": 0.1,
-        "penalty_basis": "per applicable_law_count above 3 (0.05 each) + 0.15 if superconductivity + 0.10 if scientific_unknown + 0.05 if ambient synthesis"
+        "complexity_penalty_applied": 0.19,
+        "governing_equations_count": 1,
+        "failure_modes_count": 3,
+        "missing_capabilities_count": 0,
+        "prerequisite_chain_depth": 0,
+        "domain_complexity": 0.04,
+        "penalty_breakdown": {
+          "applicable_laws": 0.08,
+          "governing_equations": 0.025,
+          "failure_modes": 0.045,
+          "missing_capabilities": 0.0,
+          "prerequisite_chain_depth": 0.0,
+          "domain_complexity": 0.04,
+          "keyword_signals": 0.0
+        },
+        "penalty_basis": "GAP 1 FIX: multi-signal complexity. Per-signal: applicable_laws (0.04 each above 3) + governing_equations (0.025 each) + failure_modes (0.015 each) + missing_capabilities (0.02 each) + prerequisite_chain_depth (0.015 each) + domain_complexity (per-domain prior) + keyword_signals (per-keyword prior). Cap: 0.65."
       },
       "assumptions": [
         "Perturbations are uniform +/-10% on each feasibility dimension. Real input distributions are not uniform; this is a coarse sensitivity probe, not a calibrated uncertainty model.",
@@ -1540,11 +1554,11 @@
     },
     "7": {
       "capex": {
-        "value_usd_m": 19.36,
+        "value_usd_m": 22.52,
         "model": "linear_in_(1-composite_feasibility)"
       },
       "opex": {
-        "value_usd_m_per_y": 3.87,
+        "value_usd_m_per_y": 4.5,
         "model": "20%_of_capex"
       },
       "cost_curve": {
@@ -1559,7 +1573,7 @@
       "adoption_model": "s_curve",
       "evidence": {
         "industry_count": 0,
-        "feasibility_composite_used": 0.6128,
+        "feasibility_composite_used": 0.5497,
         "market_size_bucket_source": "industry_node_count",
         "capex_model": "linear_in_(1-composite_feasibility)",
         "opex_model": "20%_of_capex"
@@ -1635,9 +1649,9 @@
         "Regulatory approval is denied with no appeal path."
       ],
       "evidence": {
-        "feasibility_composite_used": 0.6128,
+        "feasibility_composite_used": 0.5497,
         "failure_modes_addressed": 3,
-        "simulation_p50_composite": 0.616
+        "simulation_p50_composite": 0.553
       },
       "assumptions": [
         "The hypothesis is a prediction. It is NOT verified until the experiments are run and outcomes recorded in the ledger.",
@@ -1653,7 +1667,7 @@
         "scope": "single subsystem, no integration, no manufacturability",
         "success_threshold": "core mechanism reproduces predicted output within 30%",
         "estimated_duration_months": 6,
-        "estimated_cost_usd_m": 0.31
+        "estimated_cost_usd_m": 0.27
       },
       "prototype_v2": {
         "name": "prototype_v2_engineering_integration",
@@ -1661,7 +1675,7 @@
         "scope": "all subsystems, no manufacturing pathway, no regulatory submission",
         "success_threshold": "integrated prototype meets primary_output spec at 50% of target performance",
         "estimated_duration_months": 12,
-        "estimated_cost_usd_m": 1.23
+        "estimated_cost_usd_m": 1.1
       },
       "prototype_v3": {
         "name": "prototype_v3_production_readiness",
@@ -1669,7 +1683,7 @@
         "scope": "production-intent prototype, pilot manufacturing run, regulatory pre-submission",
         "success_threshold": "unit cost within 2x of cost_curve target; regulatory pre-submission accepted",
         "estimated_duration_months": 18,
-        "estimated_cost_usd_m": 4.9
+        "estimated_cost_usd_m": 4.4
       },
       "timeline": {
         "total_months": 36,
@@ -1694,7 +1708,7 @@
         ]
       },
       "evidence": {
-        "feasibility_composite_used": 0.6128,
+        "feasibility_composite_used": 0.5497,
         "prerequisite_count": 0,
         "horizon": "5-10 years"
       },
@@ -1728,7 +1742,7 @@
           "subsystem_for_regulation",
           "subsystem_for_manufacturing"
         ],
-        "composite_feasibility": 19.36,
+        "composite_feasibility": 22.52,
         "prototype_stages": [
           "prototype_v1_physics_validation",
           "prototype_v2_engineering_integration",
@@ -1767,8 +1781,8 @@
         "cost_overrun",
         "regulatory_rejection",
         "manufacturing_yield_too_low",
-        "stress_scenario_composite=0.5525",
-        "stress_scenario_composite=0.5591"
+        "stress_scenario_composite=0.4895",
+        "stress_scenario_composite=0.4961"
       ],
       "commercial_risks": [
         "market_size_too_small_to_justify_capex",
