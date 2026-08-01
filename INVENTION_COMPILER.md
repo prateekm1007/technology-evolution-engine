@@ -88,24 +88,136 @@ different problems, even when the keyword signatures are similar.
 Only `simulation_module.py` is modified. This is the strict
 "pick one" rule.
 
+### LEARN step (Gap 1 delta analysis, commit `194089d`)
+
+The Gap 1 fix succeeded:
+
+| Metric | Before (batch_001) | After (batch_002) |
+|---|---|---|
+| Unique scores | 9 | 18 |
+| Maximum collisions | 8 | 2 |
+| Minimum score | 0.3678 | 0.2592 |
+| Maximum score | 0.6827 | 0.5777 |
+
+The portable MRI benchmark case moved from `potentially_feasible` to
+`partially_feasible`. Per the CEO/CTO: this is a SUCCESS, not a
+regression. The system changed its opinion because new evidence
+entered the computation (multi-signal complexity). Tuning the
+penalty to make the case pass would be the "rewarding agreement
+with priors" anti-pattern.
+
+### CTO observation on Gap 1 (commit `194089d`)
+
+The CTO noted that the fix is still aggregation (w₁x₁ + w₂x₂ + ...),
+not causation. Eventually the relationships should look like:
+
+```text
+physics constraints → dependency graph → failure modes →
+    manufacturing constraints → economic constraints → feasibility
+```
+
+That is causality, not aggregation. This is recorded for a future
+iteration. The Gap 1 fix did not move to causality — it added more
+signals to the aggregation, which is a strictly-better aggregation
+but not yet causation.
+
+### MODIFY step — pick ONE (combined) gap (commit `194089d` → next)
+
+Per the CEO: "Pick one. Fix it. Run all twenty inventions again.
+Observe what changes. Only then move to the next one."
+
+Per the CTO recommendation (commit `194089d`): "Pick Gap 2 and Gap 7
+together, because they are really the same problem."
+
+**Gap selected: Gap 2 + Gap 7 (arbitrary dependency selection + weak causal graph).**
+
+Why Gap 2 + Gap 7 next:
+- Critical priority (highest).
+- Same problem, not two problems: the dependency_module picks an
+  arbitrary target_node_id when the invention is not in the graph,
+  which produces all-zero causal classifications. Fixing the target
+  selection fixes both gaps simultaneously.
+- "Without causal structure, you cannot have: prerequisites, counter-
+  facts, resurrection, forecasting, blueprints, experimentation.
+  Everything depends upon it." (CTO)
+- Localized to ONE module (`dependency_module.py`) — the "pick one"
+  rule is honored (Gap 2 + Gap 7 are one problem in one module).
+
+**The fix (Gap 2 + Gap 7 only):**
+
+The dependency_module's `_pick_target` method currently picks the
+first system node in the matching domain, or the first system node
+period. This is arbitrary for novel inventions. The fix replaces
+arbitrary selection with **problem-aware relevance matching**:
+
+1. Score every node in the graph by relevance to the problem:
+   - domain match (highest weight)
+   - constraint keyword overlap (medium weight)
+   - problem-text keyword overlap (low weight)
+2. Pick the highest-scoring node as the target.
+3. If the highest score is below a threshold, declare the invention
+   "novel relative to the graph" — this is informative, not a failure.
+4. The causal classification (necessary/sufficient/contributing) then
+   operates on the relevance-matched target, producing non-zero
+   classifications when relevant prerequisites exist.
+
+What the fix does NOT do:
+- It does NOT add nodes to the graph (that would be modifying the
+  observation layer, which is frozen).
+- It does NOT change the causal classification heuristic itself
+  (Gap 7's "weak causal graph" is fixed by giving the heuristic a
+  real target to work with, not by changing the heuristic).
+- It does NOT touch any other module.
+
+**What the fix does NOT touch:**
+
+- simulation_module.py (Gap 1 — just fixed, leave alone)
+- blueprint_module.py (Gap 3)
+- orchestrator (Gap 4)
+- prototype_module.py (Gap 5)
+- chemistry_knowledge_module.py (Gap 6)
+- physics/mathematics/economics/constraint/resurrection/etc.
+
+Only `dependency_module.py` is modified. Gap 2 + Gap 7 are one
+problem in one module.
+
+### Updated priority table (per CTO review, commit `194089d`)
+
+| Gap | Priority |
+|---|---|
+| Gap 2 + Gap 7 (this iteration) | Critical |
+| Gap 3 (next) | Critical |
+| Gap 4 | High |
+| Gap 6 | Medium |
+| Gap 5 | Medium |
+
+Gap 1 is closed (delta reviewed). The remaining gaps are addressed
+one at a time, each with its own modify → observe → learn cycle.
+
 ### Build → Observe → Learn → Modify (NOT Build → Modify → Modify → Modify)
 
 The sequence is now:
 
 ```text
-Build
+Build (commits up to bdfca58)
    ↓
 Observe (20-invention experiment, commit bdfca58)
    ↓
-Learn (gap analysis, this section)
+Learn (gap analysis, commit 194089d governor files)
    ↓
-Modify (Gap 1 fix ONLY, next commit)
+Modify (Gap 1 fix in simulation_module.py, commit 194089d)
    ↓
-Observe (re-run 20 inventions, batch_002)
+Observe (batch_002 re-run + DELTA.md, commit 194089d)
    ↓
-Learn (delta analysis)
+Learn (Gap 1 delta analysis — THIS section)
    ↓
-Modify (Gap 2 OR another, ONLY after delta review)
+Modify (Gap 2+7 fix in dependency_module.py — NEXT commit)
+   ↓
+Observe (batch_003 re-run + DELTA.md)
+   ↓
+Learn (Gap 2+7 delta analysis)
+   ↓
+Modify (Gap 3 OR another, ONLY after delta review)
 ```
 
 NOT:

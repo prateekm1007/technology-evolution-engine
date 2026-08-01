@@ -1,0 +1,291 @@
+problem: "Discover and engineer a material superconducting at room temperature and ambient pressure"
+domain: "materials"
+hypothesis:
+  id: "hyp_52fac4dca8f7263c"
+  claim: "The invention 'Discover and engineer a material superconducting at room temperature and ambient pressure' is feasible in the materials domain within the stated time horizon."
+  confidence: 0.2488
+  evidence:
+    - "energy_conservation"
+    - "first_law_thermodynamics"
+    - "maxwell_equations"
+    - "meissner_effect"
+    - "schrodinger_equation"
+    - "second_law_thermodynamics"
+    - "third_law_thermodynamics"
+    - "calcination_cement"
+    - "carbonation_cure"
+    - "polymerization"
+    - "ampere law"
+    - "prerequisite_chain_depth_1"
+    - "capex_$37.56M"
+  counterevidence:
+
+  assumptions:
+
+  status: "pending"
+physical_laws:
+  - "energy_conservation"
+  - "first_law_thermodynamics"
+  - "maxwell_equations"
+  - "meissner_effect"
+  - "schrodinger_equation"
+  - "second_law_thermodynamics"
+  - "third_law_thermodynamics"
+chemical_principles:
+  pathways:
+    - "calcination_cement"
+    - "carbonation_cure"
+    - "polymerization"
+  kinetics:
+
+  equilibrium:
+
+  energy_states:
+    - "activation_energy"
+    - "gibbs_free_energy"
+mathematical_formulation:
+  structures:
+    - "optimization"
+    - "differential_equations"
+    - "linear_algebra"
+    - "quantum_mechanics"
+  governing_equations:
+    -
+      name: "ampere law"
+      form: "B = mu_0 * I / (2*pi*r)"
+      variables:
+        - "B"
+        - "mu_0"
+        - "I"
+        - "r"
+constraints:
+  - "material"
+  - "energy"
+  - "manufacturing"
+  - "regulation"
+  - "superconductivity"
+dependencies:
+  prerequisites:
+    - "sub_supercapacitors"
+  missing_capabilities:
+
+  causal_classifications:
+    necessary: 0
+    sufficient: 0
+    contributing: 1
+    unknown: 0
+assumptions:
+  - "Failure modes are derived from constraint keywords via a small prior map. Real failure modes require FMEA."
+  - "Optimization targets are derived from the problem's stated constraints. Implicit targets (e.g., 'minimize complexity') are not captured."
+  - "The hypothesis is a prediction. It is NOT verified until the experiments are run and outcomes recorded in the ledger."
+  - "Failure-mode experiments are derived from Layer 3's failure modes. If Layer 3 is incomplete, this layer is incomplete."
+  - "Success/failure thresholds (0.70, 0.40) are priors. They should be recalibrated as the verification cycle accumulates outcomes."
+architecture:
+  subsystems:
+    - "subsystem_for_material"
+    - "subsystem_for_energy"
+    - "subsystem_for_manufacturing"
+    - "subsystem_for_regulation"
+  interfaces:
+    - "subsystem_for_material <-> subsystem_for_energy"
+    - "subsystem_for_material <-> subsystem_for_manufacturing"
+    - "subsystem_for_material <-> subsystem_for_regulation"
+    - "subsystem_for_energy <-> subsystem_for_manufacturing"
+    - "subsystem_for_energy <-> subsystem_for_regulation"
+  tolerances:
+    material: "±5% of material property target"
+    energy: "±10% of energy budget"
+    manufacturing: "±3% yield"
+    regulation: "binary (pass/fail)"
+simulation:
+  monte_carlo:
+    n_samples: 200
+    composite:
+      mean: 0.2521
+      std: 0.0254
+      p5: 0.2092
+      p50: 0.252
+      p95: 0.2936
+      min: 0.1885
+      max: 0.3109
+    technical:
+      mean: 0.3665
+      std: 0.0577
+      p5: 0.2721
+      p50: 0.3779
+      p95: 0.4513
+      min: 0.2567
+      max: 0.456
+    economic:
+      mean: 0.219
+      std: 0.0575
+      p5: 0.1313
+      p50: 0.2207
+      p95: 0.3139
+      min: 0.1222
+      max: 0.3205
+    regulatory:
+      mean: 0.1682
+      std: 0.0551
+      p5: 0.0797
+      p50: 0.1703
+      p95: 0.2553
+      min: 0.0671
+      max: 0.2648
+    manufacturing:
+      mean: 0.2358
+      std: 0.0584
+      p5: 0.1503
+      p50: 0.2375
+      p95: 0.3254
+      min: 0.1363
+      max: 0.3359
+    adoption:
+      mean: 0.173
+      std: 0.0589
+      p5: 0.0804
+      p50: 0.1746
+      p95: 0.2624
+      min: 0.0711
+      max: 0.2707
+  sensitivity:
+    technical: 0.6815
+    economic: 0.4528
+    regulatory: 0.3254
+    manufacturing: 0.4598
+    adoption: 0.3478
+  stress_testing:
+    -
+      technical_feasibility: 0.2721
+      economic_feasibility: 0.129
+      regulatory_feasibility: 0.1524
+      manufacturing_feasibility: 0.2005
+      adoption_probability: 0.1211
+      composite: 0.1885
+    -
+      technical_feasibility: 0.3001
+      economic_feasibility: 0.1649
+      regulatory_feasibility: 0.1532
+      manufacturing_feasibility: 0.1418
+      adoption_probability: 0.1382
+      composite: 0.1951
+    -
+      technical_feasibility: 0.2702
+      economic_feasibility: 0.1686
+      regulatory_feasibility: 0.1998
+      manufacturing_feasibility: 0.1788
+      adoption_probability: 0.0975
+      composite: 0.1951
+prototype_plan:
+  v1:
+    name: "prototype_v1_physics_validation"
+    goal: "prove the core mechanism works at lab scale"
+    scope: "single subsystem, no integration, no manufacturability"
+    success_threshold: "core mechanism reproduces predicted output within 30%"
+    estimated_duration_months: 6
+    estimated_cost_usd_m: 0.12
+  v2:
+    name: "prototype_v2_engineering_integration"
+    goal: "prove the subsystems integrate into a working system"
+    scope: "all subsystems, no manufacturing pathway, no regulatory submission"
+    success_threshold: "integrated prototype meets primary_output spec at 50% of target performance"
+    estimated_duration_months: 13
+    estimated_cost_usd_m: 0.5
+  v3:
+    name: "prototype_v3_production_readiness"
+    goal: "prove the manufacturing pathway and cost model hold"
+    scope: "production-intent prototype, pilot manufacturing run, regulatory pre-submission"
+    success_threshold: "unit cost within 2x of cost_curve target; regulatory pre-submission accepted"
+    estimated_duration_months: 20
+    estimated_cost_usd_m: 1.99
+  timeline_years: 3.2
+experimental_plan:
+  hypothesis: "The candidate invention will achieve technical feasibility >= 0.70 within 15+ years, given the prerequisite chain is complete and no regulatory blocker materializes."
+  experiments:
+    -
+      id: "exp_material_unavailable_or_too_expensive"
+      purpose: "determine whether material_unavailable_or_too_expensive is a real risk"
+      method: "stress_test_against_material_unavailable_or_too_expensive"
+      expected_duration: "3-6 months per experiment"
+    -
+      id: "exp_energy_budget_exceeded"
+      purpose: "determine whether energy_budget_exceeded is a real risk"
+      method: "stress_test_against_energy_budget_exceeded"
+      expected_duration: "3-6 months per experiment"
+    -
+      id: "exp_manufacturing_yield_too_low"
+      purpose: "determine whether manufacturing_yield_too_low is a real risk"
+      method: "stress_test_against_manufacturing_yield_too_low"
+      expected_duration: "3-6 months per experiment"
+    -
+      id: "exp_regulatory_rejection"
+      purpose: "determine whether regulatory_rejection is a real risk"
+      method: "stress_test_against_regulatory_rejection"
+      expected_duration: "3-6 months per experiment"
+    -
+      id: "exp_prototype_v1"
+      purpose: "determine whether the candidate can be built at all"
+      method: "build_minimum_viable_prototype"
+      expected_duration: "6-12 months"
+  measurements:
+    -
+      metric: "technical_feasibility_observed"
+      target: ">= 0.70"
+      instrument: "expert_panel_review"
+    -
+      metric: "cost_per_unit_observed"
+      target: "<= capex_estimate / 1000"
+      instrument: "cost_accounting"
+    -
+      metric: "time_to_first_prototype_observed"
+      target: "<= 15+ years"
+      instrument: "project_tracker"
+    -
+      metric: "regulatory_approval_status"
+      target: "approved_or_withdrawn"
+      instrument: "regulatory_filing_tracker"
+  success_criteria:
+    - "All failure-mode experiments return 'risk_acceptable'."
+    - "Prototype v1 builds successfully and meets primary_output spec."
+    - "Technical feasibility observed >= 0.70 within 15+ years."
+    - "Composite feasibility from simulation's p50 >= 0.60."
+  failure_criteria:
+    - "Any failure-mode experiment returns 'risk_unacceptable' AND no mitigation is identified."
+    - "Prototype v1 cannot be built within 2x the estimated time."
+    - "Technical feasibility observed < 0.40 after 15+ years."
+    - "Regulatory approval is denied with no appeal path."
+failure_modes:
+  - "material_unavailable_or_too_expensive"
+  - "energy_budget_exceeded"
+  - "manufacturing_yield_too_low"
+  - "regulatory_rejection"
+  - "stress_scenario_composite=0.1885"
+  - "stress_scenario_composite=0.1951"
+counterevidence:
+
+confidence: 0.2488
+final_blueprint:
+  problem: "Discover and engineer a material superconducting at room temperature and ambient pressure"
+  domain: "materials"
+  target_invention: "Discover and engineer a material superconducting at room temperature and ambient pressure"
+  prerequisite_chain_depth: 1
+  governing_equations:
+    -
+      name: "ampere law"
+      form: "B = mu_0 * I / (2*pi*r)"
+      variables:
+        - "B"
+        - "mu_0"
+        - "I"
+        - "r"
+  subsystems:
+    - "subsystem_for_material"
+    - "subsystem_for_energy"
+    - "subsystem_for_manufacturing"
+    - "subsystem_for_regulation"
+  composite_feasibility: 37.56
+  prototype_stages:
+    - "prototype_v1_physics_validation"
+    - "prototype_v2_engineering_integration"
+    - "prototype_v3_production_readiness"
+  total_prototype_timeline_years: 3.2

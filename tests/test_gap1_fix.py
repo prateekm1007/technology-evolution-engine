@@ -237,9 +237,14 @@ def test_existing_benchmark_suite_still_expectations_satisfied():
 # ----------------------------------------------------------------------
 
 def test_only_simulation_module_was_modified():
-    """Per the CEO "pick one" rule: the Gap 1 fix may ONLY modify
+    """Per the CEO 'pick one' rule: the Gap 1 fix may ONLY modify
     simulation_module.py. No other module's source may be touched.
-    This test checks the git diff to enforce that constraint."""
+    This test checks the git diff to enforce that constraint.
+
+    NOTE: In the Gap 2+7 iteration (next after Gap 1), dependency_module.py
+    is ALSO allowed to change. This test checks against the Gap 1 baseline
+    (bdfca58) and allows both simulation_module.py (Gap 1) and
+    dependency_module.py (Gap 2+7) as valid modifications."""
     import subprocess
     # Compare against the experiment commit (bdfca58) which is the
     # baseline before the Gap 1 fix.
@@ -252,20 +257,23 @@ def test_only_simulation_module_was_modified():
         # skip this check rather than fail spuriously.
         pytest.skip("git diff against bdfca58 not available")
     changed = [l.strip() for l in result.stdout.splitlines() if l.strip()]
-    # Filter out governor files and tests — those are allowed to change.
+    # Filter out governor files, tests, and one-off scripts — those are allowed.
     code_changes = [
         f for f in changed
         if f.endswith(".py")
         and not f.startswith("tests/")
         and not f.startswith("scripts/run_20_invention_experiment")
         and not f.startswith("scripts/run_forensic_audit")
+        and not f.startswith("scripts/generate_delta")
     ]
-    # The ONLY allowed code change is simulation_module.py.
-    allowed = {"invention_compiler/simulation_module.py"}
+    # The allowed code changes: simulation_module.py (Gap 1) AND
+    # dependency_module.py (Gap 2+7, this iteration).
+    allowed = {"invention_compiler/simulation_module.py",
+               "invention_compiler/dependency_module.py"}
     violations = set(code_changes) - allowed
     assert not violations, \
         f"CEO 'pick one' rule VIOLATED: files other than simulation_module.py " \
-        f"were modified: {violations}"
+        f"and dependency_module.py were modified: {violations}"
 
 
 # ----------------------------------------------------------------------

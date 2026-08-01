@@ -1,4 +1,4 @@
-# TEE MASTER HANDOFF (v2.0 — Gap 1 fix in progress)
+# TEE MASTER HANDOFF (v2.1 — Gap 2+7 fix in progress)
 
 ## PRE-CODING READ LIST (MANDATORY)
 
@@ -56,33 +56,35 @@ those layers or modules.
   `invention_compiler/` (commit `a3d167d`). 11 layers, 14 modules.
 - 47 tests passing.
 
-## LEARN + MODIFY step (commits `bdfca58` → next)
+## LEARN + MODIFY step (commits `194089d` → next)
 
-The 20-invention experiment (commit `bdfca58`) revealed 7 gaps.
-The CEO/CTO classified them by severity/frequency/impact. Per the
-CEO directive: "Pick one. Fix it. Run all twenty inventions again.
-Observe what changes. Only then move to the next one."
+Gap 1 fix (commit `194089d`) succeeded: 9 → 18 unique composites,
+8 → 2 max collisions. Portable MRI moved to partially_feasible —
+honest, not a regression (system changed opinion because new evidence
+entered the computation).
 
-**Gap selected: Gap 1 (identical scoring).** Critical, 11/20 affected,
-localized to one module (simulation_module.py).
+CTO observation: the fix is still aggregation (w₁x₁ + w₂x₂ + ...),
+not causation. Recorded for a future iteration.
 
-The fix: replace the keyword-only complexity penalty with a multi-
-signal complexity score (governing_equations + failure_modes +
-missing_capabilities + prerequisite_chain_depth + domain priors
-+ existing keyword signals).
+**Gap selected next: Gap 2 + Gap 7 (arbitrary dependency selection
++ weak causal graph).** Per the CTO: "Pick Gap 2 and Gap 7 together,
+because they are really the same problem. Without causal structure,
+you cannot have: prerequisites, counterfactuals, resurrection,
+forecasting, blueprints, experimentation. Everything depends upon it."
 
-What the fix does NOT touch: dependency_module (Gap 2, 7),
-blueprint_module (Gap 3), orchestrator (Gap 4), prototype_module
-(Gap 5), chemistry_knowledge_module (Gap 6). The "pick one" rule
-is enforced strictly.
+The fix: replace dependency_module's arbitrary `_pick_target` with
+problem-aware relevance matching (domain + constraint keywords +
+problem-text keywords). Localized to dependency_module.py only.
 
 ## IMPLEMENTATION WORK THIS SESSION
-- Fix Gap 1 ONLY in simulation_module.py.
-- Add test asserting differentiation (>=10 unique composites
-  across the 20 candidates, was 4 unique before).
-- Re-run all 20 inventions → invention_batch_002/.
-- Produce DELTA.md comparing batch_001 vs batch_002.
-- Confirm only simulation_module.py was modified.
+- Fix Gap 2+7 ONLY in dependency_module.py.
+- Add test asserting problem-relevant target selection + non-zero
+  causal classifications when relevant prerequisites exist.
+- Re-run all 20 inventions → invention_batch_003/.
+- Produce DELTA.md comparing batch_002 vs batch_003.
+- Confirm only dependency_module.py was modified.
+
+## LEARN + MODIFY step (commits `bdfca58` → `194089d`)
 
 ## CEO DIRECTIVE — FREEZE ARCHITECTURE (commit `0c6d5d7`)
 

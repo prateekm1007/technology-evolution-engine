@@ -38,6 +38,12 @@ class DependencyModule:
         self.nodes = graph.get("nodes", [])
         self.edges = graph.get("edges", [])
         self.by_id = {n["id"]: n for n in self.nodes if "id" in n}
+        # GAP 2+7 FIX: track target selection metadata for the evidence block.
+        self._last_target_selection = {
+            "method": "not_run",
+            "relevance_score": 0.0,
+            "novel_relative_to_graph": False,
+        }
 
     # ------------------------------------------------------------------
     # Causal classification
@@ -208,6 +214,11 @@ class DependencyModule:
                     "unknown": sum(1 for p in prereqs
                                    if p["causal_classification"] == "unknown"),
                 },
+                # GAP 2+7 FIX: expose target selection metadata so the
+                # relevance-scored selection is auditable.
+                "target_selection": self._last_target_selection,
+                "novel_relative_to_graph": self._last_target_selection.get(
+                    "novel_relative_to_graph", False),
             },
             "assumptions": [
                 "Causal classification is heuristic: principle/process prereqs "
@@ -228,17 +239,121 @@ class DependencyModule:
         }
 
     def _pick_target(self, problem: Dict[str, Any]) -> str:
-        domain = problem.get("domain")
-        for n in self.graph.get("nodes", []):
-            if n.get("type") == "system" and n.get("domain") == domain:
-                return n["id"]
-        for n in self.graph.get("nodes", []):
-            if n.get("type") == "system":
-                return n["id"]
-        for n in self.graph.get("nodes", []):
-            if n.get("domain") == domain:
-                return n["id"]
-        return None
+        """GAP 2+7 FIX: problem-aware relevance-scored target selection.
+
+        Before the fix, this method picked the first system node in the
+        matching domain, or the first system node period. This was
+        arbitrary for novel inventions not in the civilization_graph.
+        Worse, system nodes in this graph have NO prerequisites, so the
+        causal classifications were always all-zero (Gap 7).
+
+        The fix scores every node in the graph by relevance to the
+        problem AND by whether the node has prerequisites:
+          - domain match (highest weight: 3 points)
+          - constraint keyword overlap (medium weight: 1 point per match)
+          - problem-text keyword overlap (low weight: 0.5 points per match)
+          - node type preference (system > industry > component: 2/1/0.5)
+          - HAS PREREQUISITES bonus (NEW: +2.0 if the node has prereqs)
+            This is the key Gap 7 fix: prefer nodes with prereqs so the
+            causal classification has something to classify.
+
+        Returns the highest-scoring node id. If the highest score is
+        below a threshold (1.0), the invention is "novel relative to
+        the graph" — this is informative, not a failure.
+        """
+        domain = problem.get("domain", "")
+        problem_text = (problem.get("problem") or "").lower()
+        constraints = [str(c).lower() for c in problem.get("constraints", [])]
+
+        # Pre-compute which nodes have prerequisites (Gap 7 fix).
+        # A node "has prerequisites" if it is the SOURCE of a
+        # requires/depends_on edge (i.e., the node depends on something
+        # else). The LineageMapper walks these outgoing edges.
+        nodes_with_prereqs = set()
+        for e in self.edges:
+            if e.get("relationship") in ("requires", "depends_on"):
+                nodes_with_prereqs.add(e.get("source"))
+
+        # Keyword sets for matching against node labels.
+        problem_keywords = set(
+            w for w in problem_text.replace(",", " ").replace(".", " ").split()
+            if len(w) > 3
+        )
+        constraint_keywords = set()
+        for c in constraints:
+            constraint_keywords.update(
+                w for w in c.replace("_", " ").split() if len(w) > 2
+            )
+
+        best_id = None
+        best_score = 0.0
+        for n in self.nodes:
+            score = 0.0
+            n_domain = n.get("domain", "")
+            n_label = (n.get("label") or "").lower()
+            n_type = n.get("type", "")
+            n_id = n.get("id", "").lower()
+
+            # Domain match (highest weight).
+            if domain and n_domain == domain:
+                score += 3.0
+
+            # Constraint keyword overlap (medium weight).
+            for kw in constraint_keywords:
+                if kw in n_label or kw in n_id:
+                    score += 1.0
+
+            # Problem-text keyword overlap (low weight).
+            for kw in problem_keywords:
+                if kw in n_label or kw in n_id:
+                    score += 0.5
+
+            # Node type preference: prefer nodes that are specific
+            # enough to have prerequisites. System nodes get a type
+            # bonus but DON'T have prerequisites in this graph, so the
+            # has-prereqs bonus (below) is what differentiates.
+            type_bonus = {"system": 2.0, "industry": 1.5,
+                          "subdomain": 1.5, "component": 1.0,
+                          "process": 1.0, "principle": 0.5}.get(n_type, 0.0)
+            score += type_bonus
+
+            # GAP 7 FIX: prefer nodes that HAVE prerequisites. This is
+            # the key fix: without this bonus, the system picks nodes
+            # with no prereqs, and the causal classification is all-zero.
+            if n.get("id") in nodes_with_prereqs:
+                score += 2.0
+
+            if score > best_score:
+                best_score = score
+                best_id = n.get("id")
+
+        # Determine selection method and novelty.
+        if best_score >= 5.0:
+            method = "relevance_scored_domain_match_with_prereqs"
+            novel = False
+        elif best_score >= 3.0:
+            method = "relevance_scored_domain_match"
+            novel = False
+        elif best_score >= 1.0:
+            method = "relevance_scored_keyword_match"
+            novel = False
+        elif best_id is not None:
+            method = "relevance_scored_low_confidence"
+            novel = True
+        else:
+            method = "no_target_found"
+            novel = True
+
+        self._last_target_selection = {
+            "method": method,
+            "relevance_score": round(best_score, 4),
+            "novel_relative_to_graph": novel,
+            "threshold_for_confident_match": 5.0,
+            "threshold_for_domain_match": 3.0,
+            "threshold_for_any_match": 1.0,
+            "has_prerequisites_bonus": 2.0,
+        }
+        return best_id
 
     def _adjacent_nodes(self, target_id: str) -> List[Dict[str, Any]]:
         by_id = {n["id"]: n for n in self.graph.get("nodes", [])}
