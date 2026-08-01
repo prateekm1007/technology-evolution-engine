@@ -1,0 +1,67 @@
+{
+  "id": "benchmark_0005",
+  "type": "patent",
+  "source": "uspto",
+  "title": "Graphene Oxide Membrane for Solar-Driven Desalination",
+  "domain": "water",
+  "abstract": "A desalination system with stacked GO membrane (0.9nm spacing) integrated with solar thermal collector achieving 99.5% salt rejection at 50 L/m2/hour.",
+  "claims": [
+    "GO membrane with 50-200 layers, interlayer spacing 0.9 +/- 0.05 nm by Ca2+ crosslinking.",
+    "Solar thermal pre-heating achieving feed temperatures 60-80C.",
+    "Fabrication by vacuum filtration followed by Ca2+ crosslinking bath."
+  ],
+  "components": [
+    "graphene oxide membrane",
+    "solar thermal collector",
+    "feed pump",
+    "permeate collector",
+    "brine discharge"
+  ],
+  "materials": [
+    "graphene oxide",
+    "calcium chloride",
+    "polysulfone support",
+    "glass",
+    "stainless steel"
+  ],
+  "methods": [
+    "vacuum filtration",
+    "ion crosslinking",
+    "solar thermal heating",
+    "cross-flow filtration"
+  ],
+  "constraints": [
+    "energy",
+    "water quality",
+    "membrane fouling",
+    "cost",
+    "maintenance"
+  ],
+  "problem_statement": "RO requires 3-10 kWh/m3. Combining membrane selectivity with solar heat may reduce energy to <1 kWh/m3.",
+  "expected_constraints": [
+    "energy",
+    "material",
+    "cost",
+    "maintenance",
+    "supply chain",
+    "regulation"
+  ],
+  "expected_prerequisites": [
+    "graphene oxide production at scale",
+    "membrane module engineering",
+    "fouling resistance",
+    "solar thermal integration"
+  ],
+  "expected_adjacent_domains": [
+    "materials science",
+    "solar energy",
+    "chemical engineering",
+    "environmental engineering"
+  ],
+  "expected_failure_modes": [
+    "membrane fouling",
+    "GO layer delamination",
+    "scaling",
+    "biofouling"
+  ]
+}
