@@ -85,40 +85,17 @@ def graph():
 def evidence():
     """Append-only ledger read. Skips malformed lines instead of 500ing.
 
-    F-002: Detect total file corruption (e.g. one character per line from
-    a botched writer). Without this branch, the per-line parser happily
-    'parses' single digits as JSON numbers and returns spurious entries —
-    silently lying about the ledger state. Total-corruption is detected
-    by the heuristic 'many lines, all very short', then we salvage the
-    raw text by stripping newlines and report it as a single malformed
-    entry for investigation.
+    F-AUD-002 / F-013 refactor: the corruption-aware read logic now
+    lives in ``adapters.core._read_ledger_safely`` so this endpoint
+    and ``CoreAdapter.read_evidence()`` share a single implementation.
+    Previously the same logic was duplicated in two places and the
+    F-006 fix landed in only one of them (the F-013/F-015 class of
+    bug documented in FAILURES.md). See the helper's docstring for
+    the total-corruption heuristic.
     """
+    from adapters.core import _read_ledger_safely
     ledger_path = gm.root / "data" / "ledger" / "predictions.jsonl"
-    entries, malformed = [], []
-    if ledger_path.exists():
-        raw_text = ledger_path.read_text(encoding="utf-8")
-        lines = raw_text.splitlines()
-        # Heuristic: >500 non-empty lines AND every non-empty line is <5 chars
-        # => the file was almost certainly written one-char-per-line.
-        non_empty = [ln for ln in lines if ln.strip()]
-        if len(non_empty) > 500 and all(len(ln) < 5 for ln in non_empty):
-            salvage = raw_text.replace("\n", "").replace("\r", "")
-            malformed.append({
-                "line": 1,
-                "error": "Total file corruption detected: file appears to be written one character per line. Salvaged raw text below.",
-                "preview": salvage[:200],
-                "salvaged_length": len(salvage),
-            })
-        else:
-            for i, line in enumerate(lines, start=1):
-                line = line.strip()
-                if not line:
-                    continue
-                try:
-                    entries.append(json.loads(line))
-                except json.JSONDecodeError as e:
-                    malformed.append({"line": i, "error": str(e), "preview": line[:120]})
-    data = {"ledger": entries, "malformed_lines": malformed, "entry_count": len(entries)}
+    data = _read_ledger_safely(ledger_path)
     return stamp(data, "integrated" if gm.source == "core" else "implemented")
 
 

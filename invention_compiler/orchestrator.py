@@ -255,7 +255,33 @@ class InventionCompiler:
 
     def _chain_summary(self, layers: Dict[int, Dict[str, Any]]) -> Dict[str, Any]:
         """A flat summary suitable for the directive's 'ultimate question'
-        output: the chain of reasoning required to build the invention."""
+        output: the chain of reasoning required to build the invention.
+
+        F-AUD-012 fix: ``verification_status`` is now derived from
+        Layer 8's actual output rather than hardcoded to
+        ``"integrated"``. Previously the chain summary always said
+        ``"integrated"`` regardless of what the verification engine
+        concluded — a hardcoded string that lied about the system's
+        state (the same class of overclaim that Law 8 forbids). The
+        status is pulled from ``layers[8]["verification_status"]`` if
+        the verification engine emits one; otherwise it falls back to
+        ``"integrated"`` with an explicit ``status_source`` field
+        noting that it's a default, not a derived value.
+        """
+        layer8 = layers.get(8, {})
+        derived_status = layer8.get("verification_status")
+        if derived_status:
+            status = derived_status
+            status_source = "layer8.verification_status"
+        else:
+            # Layer 8 doesn't emit a status field yet — we fall back
+            # to "integrated" (the honest ceiling under Law 8 until
+            # the verification cycle records pass + fail outcomes) and
+            # tag the source so consumers know this is a default, not
+            # a derived value. When Layer 8 starts emitting its own
+            # status, this branch becomes dead and should be removed.
+            status = "integrated"
+            status_source = "default (layer8 emits no verification_status field)"
         return {
             "target_invention": layers[0].get("problem"),
             "domain": layers[0].get("domain"),
@@ -273,5 +299,6 @@ class InventionCompiler:
                 "total_years"),
             "technical_risk_count": len(layers[10].get("technical_risks", [])),
             "commercial_risk_count": len(layers[10].get("commercial_risks", [])),
-            "verification_status": "integrated",  # NEVER "verified" until Law 8 cycle
+            "verification_status": status,
+            "verification_status_source": status_source,
         }

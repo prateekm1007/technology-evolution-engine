@@ -36,6 +36,12 @@ class GraphRetriever:
             if t in ids: adj.setdefault(t,[]).append({'target':s,'relationship':e.get('relationship','related'),'weight':e.get('weight',1.0)})
         return adj
     def _cem(self, terms):
+        """F-AUD-007 fix: previously used ``open(path).read()`` without
+        a context manager — a file-descriptor leak when read() raised
+        (e.g., on a binary file or a permissions error). Now uses
+        ``with open(...) as f:`` per Python resource-management
+        convention. No behavior change on the happy path.
+        """
         matches = []
         base = os.path.dirname(DATA_DIR)
         for sub in ['cemetery', os.path.join('data','historian')]:
@@ -44,7 +50,8 @@ class GraphRetriever:
             for fn in os.listdir(d):
                 if not fn.endswith(('.yaml','.json')): continue
                 try:
-                    content = open(os.path.join(d,fn)).read().lower()
+                    with open(os.path.join(d,fn)) as f:
+                        content = f.read().lower()
                     for t in terms:
                         if t.lower() in content: matches.append({'file':os.path.join(sub,fn),'matched_term':t}); break
                 except Exception: pass

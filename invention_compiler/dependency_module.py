@@ -57,11 +57,24 @@ class DependencyModule:
           - If `relationship` is `requires` (strong), lean necessary.
           - If `relationship` is `depends_on` (weaker), lean contributing.
           - Otherwise UNKNOWN.
+
+        F-AUD-001b fix: the previous implementation counted edges where
+        ``e.target == target``. Per the LineageMapper convention
+        (``A --requires--> B`` means "A requires B", i.e., B is A's
+        prerequisite — see ``product/lineage/mapper.py::_walk_prereqs``
+        which walks ``self.out[node_id]``), a node's prerequisites are
+        edges where the node is the SOURCE, not the TARGET. The previous
+        filter counted edges pointing INTO the target (i.e., things that
+        depend ON the target), which is the reverse of what the heuristic
+        intended. Combined with the F-AUD-001 walrus bug, the entire
+        causal-classification feature was structurally broken since
+        commit ``02d7658``.
         """
-        # Count the target's prerequisites.
+        # Count the target's prerequisites: edges where target is the
+        # SOURCE and the relationship is a prerequisite type.
         prereqs_of_target = [
             e for e in self.edges
-            if e.get("target") == target
+            if e.get("source") == target
             and (e.get("relationship") in ("requires", "depends_on"))
         ]
         source_node = self.by_id.get(source, {})
@@ -154,10 +167,19 @@ class DependencyModule:
         prereqs = [p for p in flat if p.get("depth", 0) > 0]
 
         # Add causal classification to each prereq.
+        # F-AUD-001 fix: the previous implementation used a walrus operator
+        # `target_id if (target_id := p.get("id")) else target_node_id` which
+        # always assigned p["id"] to target_id (since prereqs always have
+        # ids), then passed that as the `target` argument. The result was
+        # _classify_edge_causally being called with source == target, so
+        # the function classified edges pointing INTO the prereq rather
+        # than edges pointing INTO the target. The 'necessary'/'contributing'
+        # counts were computed against the prereq's own prereqs, not the
+        # target's. The fix is to pass target_node_id directly.
         for p in prereqs:
             p["causal_classification"] = self._classify_edge_causally(
                 source=p["id"],
-                target=target_id if (target_id := p.get("id")) else target_node_id,
+                target=target_node_id,
                 rel=p.get("relationship") or "depends_on",
             )
 
