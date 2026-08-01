@@ -137,17 +137,18 @@ def test_loop1_reconstruction_closed():
 
 
 def test_loop2_resurrection_closed():
-    """Loop 2 (resurrection) must be closed via the resurrection
-    module's per-failure counterfactuals, reconciled against observed
-    resurrections in the verification ledger."""
+    """Per CTO review #5, Loop 2 (resurrection) is now
+    partially_closed, NOT closed. This test was updated in
+    review #5 to reflect the reclassification. See
+    tests/test_cto_review_5.py for the partially_closed assertion."""
     from loops.resurrection_loop import ResurrectionLoop
     loop = ResurrectionLoop()
     status = loop.status()
-    # Loop 2 is "partial" — counterfactuals are encoded but not all
-    # have been reconciled. We accept closed=True if at least one
-    # counterfactual has been reconciled.
-    assert status["closed"] is True, \
-        f"Loop 2 (resurrection) not closed: {status}"
+    # Per review #5: not closed, but partially_closed.
+    assert status["closed"] is False, \
+        f"Loop 2 should NOT be closed per CTO review #5"
+    assert status.get("partially_closed") is True, \
+        f"Loop 2 should be partially_closed per CTO review #5"
 
 
 def test_loop3_forecasting_open():

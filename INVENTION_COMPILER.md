@@ -1,6 +1,6 @@
 # INVENTION COMPILER — Master Specification
 
-**Status:** Active directive. Phase transition (CTO review #4).
+**Status:** Active directive. Phase transition (CTO review #4 → #5).
 **Supersedes:** the "idea generator" framing. The system is not an idea generator.
 **Read this file BEFORE writing any code in this repository.**
 
@@ -25,6 +25,141 @@ That is the precise description of what we are trying to build.
 
 ---
 
+## CTO review #5 (commit `0029759`) — the unit of measurement has changed
+
+The CTO reviewed the phase-transition commit (`0029759`) and
+described it as "the strongest transition so far because you've
+changed the unit of measurement."
+
+Previously, success meant:
+
+```text
+more code
+more modules
+more features
+```
+
+Now success means:
+
+```text
+more evidence
+more closed loops
+more validated hypotheses
+```
+
+### Loop 2 is partially_closed, not closed (CTO correction)
+
+The CTO pushed back on Loop 2 (resurrection) being marked
+`closed=True`. The argument that it's closed — system identifies
+historical failures, generates counterfactuals, writes to ledger —
+is sound *as infrastructure*. But the system has NOT demonstrated
+that one of those resurrected ideas actually became feasible in the
+real world.
+
+Per the CTO directive, Loop 2 is reclassified:
+
+```text
+status = partially_closed
+```
+
+This introduces a third status value beyond `closed`/`open`:
+`partially_closed`. A loop is `partially_closed` when the
+infrastructure exists and has been exercised, but no real-world
+outcome has confirmed the system's prediction.
+
+| Loop | Status (review #4) | Status (review #5) |
+|---|---|---|
+| 1. Reconstruction | closed | closed (real-world outcomes ARE in the ledger — historical failures are observed facts) |
+| 2. Resurrection | closed | **partially_closed** (counterfactuals are predictions, not observations; no real-world resurrection has been demonstrated by the system) |
+| 3. Forecasting | open | open |
+| 4. Experimentation | open | open |
+| 5. Creation | open | open |
+
+### Extended Hypothesis schema (CTO-mandated)
+
+The CTO observed that the Hypothesis object is the correct
+abstraction and will "almost certainly survive every future
+architectural revision." The schema is extended:
+
+```yaml
+claim:           # falsifiable statement (existing)
+confidence:      # scalar in [0,1] (existing)
+evidence:        # named inputs supporting the claim (existing)
+counterevidence: # named inputs that would weaken the claim (NEW)
+assumptions:     # what the claim assumes to be true (NEW)
+dependencies:    # other Hypotheses this one depends on (NEW)
+status:          # pending | pass | fail (existing)
+created_at:      # ISO8601 UTC (existing as `timestamp`)
+updated_at:      # ISO8601 UTC, updated on reconcile() (NEW)
+```
+
+The new fields make the hypothesis a richer object: counterevidence
+exposes what would weaken the claim (not just what supports it);
+assumptions make the claim's preconditions explicit; dependencies
+link hypotheses into a graph.
+
+### Hypotheses evolve — there's an agent underneath (CTO observation)
+
+The CTO observed that the current model is:
+
+```text
+hypothesis → loop → ledger
+```
+
+But eventually it becomes:
+
+```text
+agent → hypothesis → experiment → observation → hypothesis
+```
+
+Hypotheses are not static. They evolve. An agent proposes a
+hypothesis, an experiment tests it, an observation is recorded,
+the hypothesis is updated (or a new one is created per Law 7).
+That's a learning loop, not a static assertion.
+
+The agent layer is scaffolded at `agent/`. It is currently empty
+(declared, not implemented). The first concrete agent will be the
+one that closes the first small milestone (see below).
+
+### The next milestone must be small (CTO-mandated)
+
+> Do not attempt to invent a room-temperature superconductor.
+> Instead, choose a problem that satisfies four conditions:
+>   - inexpensive
+>   - measurable
+>   - reproducible
+>   - executable within days rather than months
+
+The CTO specified the milestone structure:
+
+```text
+System proposes a material combination.
+        ↓
+Human constructs it.
+        ↓
+Measurements are recorded.
+        ↓
+Prediction error is computed.
+        ↓
+Hypothesis is updated.
+        ↓
+Result enters the ledger.
+```
+
+The first successfully completed cycle is more valuable than
+another hundred modules. That is the point at which the repository
+stops merely describing the world and starts learning from it.
+
+The first milestone is recorded at `milestones/milestone_001/`.
+It must satisfy the four criteria above. The first concrete
+milestone candidate: a simple material-property prediction
+(e.g., "if material X is mixed in ratio Y, the resulting mixture's
+pH will be in range Z") — inexpensive to test (pH strips),
+measurable (numeric), reproducible (anyone with the materials
+can repeat), executable within days.
+
+---
+
 ## CTO review #4 (commit `f590661`) — phase transition
 
 The CTO reviewed the expectations_satisfied reframe (commit `f590661`)
@@ -39,6 +174,11 @@ The objective is to **close loops**.
 Every loop below has three stages: propose, observe, reconcile. A
 loop is "closed" when at least one cycle has completed and the
 reconciliation has been recorded in the verification ledger.
+
+(Per CTO review #5 above, "closed" is sharpened: a loop is
+`partially_closed` when infrastructure exists but no real-world
+outcome confirms the prediction; `closed` requires a real-world
+outcome.)
 
 ### The 7-step sequence (CTO-mandated, replaces the 5-layer architecture)
 
@@ -115,10 +255,10 @@ Loops 4 and 5 require external collaboration (someone must run an
 experiment or build a prototype) and are honestly declared as OPEN
 until that happens.
 
-### The claim/confidence/evidence rule (CTO-mandated)
+### The claim/confidence/evidence rule (extended in CTO review #5)
 
 From this point forward, every assertion the system emits must
-carry three labels:
+carry the extended Hypothesis schema:
 
 ```yaml
 claim: "Portable MRI is feasible."
@@ -127,7 +267,16 @@ evidence:
   - Ampere_law
   - Maxwell_equations
   - battery_energy_density
-  - superconducting_materials
+counterevidence:        # NEW (review #5)
+  - superconducting_materials_shortage
+assumptions:            # NEW (review #5)
+  - "regulatory pathway is FDA 510(k)"
+  - "permanent magnet field strength sufficient"
+dependencies:           # NEW (review #5) — other Hypotheses this one depends on
+  - hypothesis_battery_density_001
+status: pending
+created_at: 2026-08-01T...
+updated_at: 2026-08-01T...
 ```
 
 - `claim` is a falsifiable statement.
@@ -136,14 +285,21 @@ evidence:
 - `evidence` is a list of named inputs that produced the claim.
   Empty evidence means the claim is unsupported; confidence should
   be 0 in that case.
+- `counterevidence` is a list of named inputs that would weaken
+  the claim. Empty counterevidence is allowed (the claim has no
+  known counter-signals).
+- `assumptions` is a list of preconditions the claim makes.
+- `dependencies` is a list of Hypothesis IDs this Hypothesis
+  depends on. If a dependency is reconciled to `fail`, this
+  Hypothesis should be re-examined.
+- `status` is `pending` (default), `pass`, or `fail`.
+- `created_at` and `updated_at` are ISO8601 UTC timestamps.
 
 No layer's output may emit a bare scalar ("feasibility: 0.82") —
 that scalar must be the `confidence` of an explicit `claim`, with
-explicit `evidence`. This is the same honesty rule as before
-(scalars must carry evidence), now formalized as the
-`claim/confidence/evidence` triple.
+explicit `evidence`.
 
-### The fundamental object is changing (CTO observation)
+### The fundamental object is changing (CTO observation, refined in review #5)
 
 Originally the system's fundamental object was:
 
@@ -169,15 +325,16 @@ The CTO suspects it will eventually become:
 hypothesis
 ```
 
-A hypothesis is a claim with confidence and evidence, awaiting
-reconciliation with reality. The Hypothesis object is now
-scaffolded at `hypothesis/`. It is the atomic unit of the system
-going forward — every layer output is (or composes) a Hypothesis.
+(Implemented in commit `0029759`.) Per review #5, the hypothesis
+itself is not the terminal object — it is one stage in an
+agent-driven evolution loop:
 
-This may be the most important shift of all. The system is no
-longer a static repository; it is becoming a learning system.
-The fundamental object of a learning system is not a document
-or a graph or a blueprint — it is a hypothesis.
+```text
+agent → hypothesis → experiment → observation → hypothesis
+```
+
+Hypotheses are not static. They evolve. The agent layer
+(scaffolded at `agent/`) is the next substrate.
 
 ---
 

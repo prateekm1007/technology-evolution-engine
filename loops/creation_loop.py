@@ -47,6 +47,7 @@ class CreationLoop:
             "loop_name": self.LOOP_NAME,
             "loop_number": self.LOOP_NUMBER,
             "closed": False,
+            "partially_closed": False,  # destination, not a process
             "cycles_completed": 0,
             "reason": (
                 "OPEN — Creation is the DESTINATION, not a process. The "

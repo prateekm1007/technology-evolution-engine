@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-08-01T17:00:41.974378+00:00",
+  "generated_at": "2026-08-01T17:16:17.463685+00:00",
   "method": "Live run of scripts/run_evidence_tests.py --all. The benchmark harness appends to data/ledger/predictions.jsonl, which is currently corrupted (F-005). To honor audit constraint #2 (do not overwrite the corrupted ledger), the harness was allowed to append, then the ledger was restored to its exact pre-run state. The appended entry is captured in this report as evidence that the benchmark harness runs and produces a well-formed entry; it is NOT committed to the ledger.",
-  "duration_s": 0.139,
+  "duration_s": 0.138,
   "returncode": 0,
   "original_ledger_sha256": "02c5be2670354984d3ae9978c320d235d923eb7cfb61635843e8a4a0589791a4",
-  "after_run_ledger_sha256": "bc17021c62cb5281e4d953cac6bd8e1f3047c6a18df8f6d9143e666b3839faa4",
+  "after_run_ledger_sha256": "9b692a57eb7359b7413e9b8fae701f4e11aa183426cc765fa37bed21f0e4631f",
   "restored_ledger_sha256": "02c5be2670354984d3ae9978c320d235d923eb7cfb61635843e8a4a0589791a4",
   "ledger_head_intact_after_append": true,
   "ledger_restored_to_corrupted_state": true,
@@ -12,7 +12,7 @@
   "appended_entries": [
     {
       "type": "benchmark_run",
-      "timestamp": "2026-08-01T17:00:41.963967+00:00",
+      "timestamp": "2026-08-01T17:16:17.454270+00:00",
       "total_benchmarks": 26,
       "overall_composite_mean": 0.3677,
       "grade_distribution": {
@@ -28,7 +28,7 @@
     }
   ],
   "scoring_summary": {
-    "timestamp": "2026-08-01T17:00:41.963967+00:00",
+    "timestamp": "2026-08-01T17:16:17.454270+00:00",
     "total_benchmarks": 26,
     "patent_benchmarks": 20,
     "consumer_benchmarks": 6,
@@ -62,7 +62,7 @@
         "domain": "energy",
         "grade": "F",
         "composite": 0.37,
-        "duration": 0.01
+        "duration": 0.009
       },
       {
         "id": "benchmark_0002",
@@ -90,14 +90,14 @@
         "domain": "water",
         "grade": "F",
         "composite": 0.37,
-        "duration": 0.002
+        "duration": 0.003
       },
       {
         "id": "benchmark_0006",
         "domain": "water",
         "grade": "F",
         "composite": 0.37,
-        "duration": 0.002
+        "duration": 0.003
       },
       {
         "id": "benchmark_0007",
@@ -202,7 +202,7 @@
         "domain": "water",
         "grade": "F",
         "composite": 0.36,
-        "duration": 0.005
+        "duration": 0.004
       },
       {
         "id": "benchmark_c002",

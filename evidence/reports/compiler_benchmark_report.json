@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-01T17:00:43.821919+00:00",
+  "generated_at": "2026-08-01T17:16:19.314709+00:00",
   "method": "Live end-to-end compile of reference problems through the 11-layer invention compiler. For each case, the composite feasibility score from Layer 5 (simulation) is mapped to a verdict bucket per INVENTION_COMPILER.md. expectations_satisfied = verdict matches expected OR is within one bucket; otherwise expectations_not_satisfied.",
   "verdict_buckets": {
     "feasible": ">=0.75",
@@ -26,7 +26,7 @@
       "actual_verdict": "potentially_feasible",
       "composite_feasibility": 0.6128,
       "bucket_distance_from_expected": 1,
-      "duration_s": 0.238,
+      "duration_s": 0.239,
       "expectations_satisfied": true,
       "rationale": "Reconstruction case. Portable MRI is a known-plausible invention (Hyperfine Swoop is FDA-cleared). Tests the compiler can recognize a feasible invention that already exists, rather than say 'impossible'.",
       "chain_summary": {
@@ -55,10 +55,15 @@
             "ampere law",
             "capex_$19.36M"
           ],
+          "counterevidence": [],
+          "assumptions": [],
+          "dependencies": [],
           "status": "pending",
           "observation": null,
           "writer": "invention_compiler.orchestrator.InventionCompiler._chain_summary",
-          "timestamp": "2026-08-01T17:00:42.621234+00:00"
+          "created_at": "2026-08-01T17:16:18.109785+00:00",
+          "updated_at": "2026-08-01T17:16:18.109793+00:00",
+          "timestamp": "2026-08-01T17:16:18.109785+00:00"
         }
       },
       "layer_0": {
@@ -277,7 +282,7 @@
       "actual_verdict": "partially_feasible",
       "composite_feasibility": 0.5428,
       "bucket_distance_from_expected": 1,
-      "duration_s": 0.24,
+      "duration_s": 0.241,
       "expectations_satisfied": true,
       "rationale": "Forecasting case. Haber-Bosch without high T/P is an open research problem. Tests the compiler can say 'uncertain' honestly rather than fabricate confidence.",
       "chain_summary": {
@@ -309,10 +314,15 @@
             "ampere law",
             "capex_$22.86M"
           ],
+          "counterevidence": [],
+          "assumptions": [],
+          "dependencies": [],
           "status": "pending",
           "observation": null,
           "writer": "invention_compiler.orchestrator.InventionCompiler._chain_summary",
-          "timestamp": "2026-08-01T17:00:42.860948+00:00"
+          "created_at": "2026-08-01T17:16:18.350656+00:00",
+          "updated_at": "2026-08-01T17:16:18.350671+00:00",
+          "timestamp": "2026-08-01T17:16:18.350656+00:00"
         }
       },
       "layer_0": {
@@ -530,7 +540,7 @@
       "actual_verdict": "uncertain",
       "composite_feasibility": 0.3678,
       "bucket_distance_from_expected": 1,
-      "duration_s": 0.24,
+      "duration_s": 0.241,
       "expectations_satisfied": true,
       "rationale": "Forecasting case at the edge of physics. May be physically impossible. Recent LK-99 claims were retracted. Tests the compiler can say 'unknown' without claiming feasibility.",
       "chain_summary": {
@@ -564,10 +574,15 @@
             "ampere law",
             "capex_$31.61M"
           ],
+          "counterevidence": [],
+          "assumptions": [],
+          "dependencies": [],
           "status": "pending",
           "observation": null,
           "writer": "invention_compiler.orchestrator.InventionCompiler._chain_summary",
-          "timestamp": "2026-08-01T17:00:43.101000+00:00"
+          "created_at": "2026-08-01T17:16:18.591207+00:00",
+          "updated_at": "2026-08-01T17:16:18.591222+00:00",
+          "timestamp": "2026-08-01T17:16:18.591207+00:00"
         }
       },
       "layer_0": {
@@ -788,7 +803,7 @@
       "actual_verdict": "potentially_feasible",
       "composite_feasibility": 0.6477,
       "bucket_distance_from_expected": 0,
-      "duration_s": 0.24,
+      "duration_s": 0.241,
       "expectations_satisfied": true,
       "rationale": "Reconstruction case. Already exists in early commercial form (CarbonCure, Solidia, BioMason). Tests the compiler can distinguish 'potentially feasible' from 'feasible' \u2014 the tech works but has not yet captured the global cement market.",
       "chain_summary": {
@@ -819,10 +834,15 @@
             "ampere law",
             "capex_$17.61M"
           ],
+          "counterevidence": [],
+          "assumptions": [],
+          "dependencies": [],
           "status": "pending",
           "observation": null,
           "writer": "invention_compiler.orchestrator.InventionCompiler._chain_summary",
-          "timestamp": "2026-08-01T17:00:43.340801+00:00"
+          "created_at": "2026-08-01T17:16:18.832312+00:00",
+          "updated_at": "2026-08-01T17:16:18.832321+00:00",
+          "timestamp": "2026-08-01T17:16:18.832312+00:00"
         }
       },
       "layer_0": {
@@ -1046,7 +1066,7 @@
       "actual_verdict": "partially_feasible",
       "composite_feasibility": 0.5428,
       "bucket_distance_from_expected": 0,
-      "duration_s": 0.241,
+      "duration_s": 0.242,
       "expectations_satisfied": true,
       "rationale": "Forecasting case. Components work (PV electrolysis, photocatalytic water splitting) but a complete system that matches natural photosynthesis's efficiency does not yet exist. Tests the compiler can express 'partial feasibility' rather than binary pass/fail.",
       "chain_summary": {
@@ -1080,10 +1100,15 @@
             "bernoulli equation",
             "capex_$22.86M"
           ],
+          "counterevidence": [],
+          "assumptions": [],
+          "dependencies": [],
           "status": "pending",
           "observation": null,
           "writer": "invention_compiler.orchestrator.InventionCompiler._chain_summary",
-          "timestamp": "2026-08-01T17:00:43.581806+00:00"
+          "created_at": "2026-08-01T17:16:19.074003+00:00",
+          "updated_at": "2026-08-01T17:16:19.074014+00:00",
+          "timestamp": "2026-08-01T17:16:19.074003+00:00"
         }
       },
       "layer_0": {
@@ -1316,7 +1341,7 @@
       "actual_verdict": "potentially_feasible",
       "composite_feasibility": 0.6177,
       "bucket_distance_from_expected": 1,
-      "duration_s": 0.24,
+      "duration_s": 0.241,
       "expectations_satisfied": true,
       "rationale": "Resurrection case. Airships failed as passenger transport (Hindenburg 1937, helium-unavailability). Tests the compiler can recognize that the original failure mode (hydrogen flammability) is now removable (helium + modern materials), and that the use case has shifted (cargo, not passengers). Expected verdict: partially_feasible \u2014 LTA Research and HAV Airlander are attempting this with mixed progress.",
       "chain_summary": {
@@ -1345,10 +1370,15 @@
             "bernoulli equation",
             "capex_$19.11M"
           ],
+          "counterevidence": [],
+          "assumptions": [],
+          "dependencies": [],
           "status": "pending",
           "observation": null,
           "writer": "invention_compiler.orchestrator.InventionCompiler._chain_summary",
-          "timestamp": "2026-08-01T17:00:43.821827+00:00"
+          "created_at": "2026-08-01T17:16:19.314637+00:00",
+          "updated_at": "2026-08-01T17:16:19.314648+00:00",
+          "timestamp": "2026-08-01T17:16:19.314637+00:00"
         }
       },
       "layer_0": {

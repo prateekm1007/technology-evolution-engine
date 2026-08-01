@@ -46,6 +46,7 @@ class ExperimentationLoop:
             "loop_name": self.LOOP_NAME,
             "loop_number": self.LOOP_NUMBER,
             "closed": False,
+            "partially_closed": False,  # no cycles run yet
             "cycles_completed": 0,
             "reason": (
                 "OPEN — experimentation requires an external collaborator "

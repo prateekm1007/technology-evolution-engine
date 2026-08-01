@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-08-01T17:00:40.606006+00:00",
+  "generated_at": "2026-08-01T17:16:16.193978+00:00",
   "method": "pytest tests/test_graph_engine.py tests/test_product.py tests/test_ledger_integrity.py tests/test_north_star_modules.py tests/test_invention_compiler.py tests/test_compiler_benchmarks.py -v, run live",
   "summary": {
-    "passed": 117,
+    "passed": 140,
     "failed": 0,
     "skipped": 0,
     "errors": 0,
-    "total": 117,
-    "collected": 117
+    "total": 140,
+    "collected": 140
   },
-  "duration_s": 4.624,
+  "duration_s": 4.572,
   "tests": [
     {
       "nodeid": "tests/test_graph_engine.py::test_empty_graph",
@@ -593,6 +593,121 @@
     },
     {
       "nodeid": "tests/test_cto_review_4.py::test_anti_entropy_md_documents_close_loops_rule",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_cto_review_5.py::test_loop2_resurrection_is_partially_closed",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_cto_review_5.py::test_loop1_reconstruction_still_closed",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_cto_review_5.py::test_loop_status_can_be_partially_closed",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_cto_review_5.py::test_hypothesis_carries_counterevidence_field",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_cto_review_5.py::test_hypothesis_counterevidence_defaults_to_empty_list",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_cto_review_5.py::test_hypothesis_carries_assumptions_field",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_cto_review_5.py::test_hypothesis_carries_dependencies_field",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_cto_review_5.py::test_hypothesis_carries_created_at_and_updated_at",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_cto_review_5.py::test_hypothesis_extended_schema_round_trips",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_cto_review_5.py::test_hypothesis_backwards_compat_with_old_schema",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_cto_review_5.py::test_agent_package_exists",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_cto_review_5.py::test_agent_docstring_describes_evolution_loop",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_cto_review_5.py::test_agent_declares_itself_as_scaffold",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_cto_review_5.py::test_milestones_package_exists",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_cto_review_5.py::test_milestone_001_satisfies_4_criteria",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_cto_review_5.py::test_milestone_001_has_prediction_and_measurement_plan",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_cto_review_5.py::test_milestone_001_under_30_days_and_1000_dollars",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_cto_review_5.py::test_milestone_001_status_is_open",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_cto_review_5.py::test_invention_compiler_md_documents_partially_closed",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_cto_review_5.py::test_invention_compiler_md_documents_extended_hypothesis_schema",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_cto_review_5.py::test_invention_compiler_md_documents_agent_loop",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_cto_review_5.py::test_invention_compiler_md_documents_small_milestone_rule",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_cto_review_5.py::test_anti_entropy_md_documents_partially_closed_rule",
       "outcome": "passed",
       "duration_s": 0.0
     }

@@ -38,23 +38,35 @@ class ReconstructionLoop:
     LOOP_NUMBER = 1
 
     def status(self) -> dict:
-        """Return the closure status of this loop."""
+        """Return the closure status of this loop.
+
+        Per CTO review #5, three states exist: open, partially_closed,
+        closed. Loop 1 is `closed` because historical failures ARE
+        observed facts — the system's reconstructions are compared
+        against real-world outcomes (the historical record), not
+        against the system's own predictions.
+        """
         passes, fails = self._count_verification_entries()
         closed = (passes >= 1 and fails >= 1)
         return {
             "loop_name": self.LOOP_NAME,
             "loop_number": self.LOOP_NUMBER,
             "closed": closed,
+            "partially_closed": False,  # closed implies not partially_closed
             "cycles_completed": passes + fails,
             "passes": passes,
             "fails": fails,
             "reason": (
                 "CLOSED via verification cycle (scripts/run_verification_cycle.py). "
-                f"{passes} pass + {fails} fail entries in ledger."
+                f"{passes} pass + {fails} fail entries in ledger. "
+                "Real-world confirmation: historical failures are observed "
+                "facts, not predictions — the system's reconstructions are "
+                "compared against the historical record."
                 if closed else
                 "OPEN — verification cycle has not recorded >=1 pass AND >=1 fail."
             ),
             "infrastructure": "scripts/run_verification_cycle.py",
+            "real_world_confirmation": closed,
         }
 
     def run_one_cycle(self) -> dict:

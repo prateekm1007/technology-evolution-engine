@@ -1,4 +1,4 @@
-# TEE MASTER HANDOFF (v1.6)
+# TEE MASTER HANDOFF (v1.7)
 
 ## PRE-CODING READ LIST (MANDATORY)
 
@@ -55,6 +55,57 @@ those layers or modules.
 - Invention compiler vertical slice: implemented in
   `invention_compiler/` (commit `a3d167d`). 11 layers, 14 modules.
 - 47 tests passing.
+
+## CTO REVIEW #5 (commit `0029759`) — UNIT OF MEASUREMENT CHANGED
+
+The CTO reviewed the phase-transition commit (`0029759`) and
+described it as "the strongest transition so far because you've
+changed the unit of measurement."
+
+Previously, success meant: more code, more modules, more features.
+Now success means: more evidence, more closed loops, more validated
+hypotheses.
+
+### Key corrections
+
+1. **Loop 2 (resurrection) is `partially_closed`, not `closed`.**
+   The system can produce counterfactuals but has not demonstrated
+   a real-world resurrection. Three loop states now exist:
+   `open`, `partially_closed`, `closed`.
+
+2. **Extended Hypothesis schema.** The Hypothesis object gains:
+   `counterevidence`, `assumptions`, `dependencies`, `created_at`,
+   `updated_at`. Existing fields preserved.
+
+3. **Agent layer scaffolded.** Hypotheses evolve:
+   `agent → hypothesis → experiment → observation → hypothesis`.
+   The `agent/` package is declared, not implemented.
+
+4. **Next milestone must be small.** Per CTO: inexpensive,
+   measurable, reproducible, executable within days. The first
+   closed experimentation loop on a small problem is worth more
+   than a hundred additional modules.
+
+### Loop status (review #5)
+
+| Loop | Status | Cycles | Real-world confirmation |
+|---|---|---|---|
+| 1. Reconstruction | closed | 9 | Yes — historical failures are observed facts |
+| 2. Resurrection | **partially_closed** | 9 | No — counterfactuals are predictions, not observations |
+| 3. Forecasting | open | 0 | No — requires time |
+| 4. Experimentation | open | 0 | No — requires external collaborator |
+| 5. Creation | open | 0 | No — destination, not a process |
+
+## IMPLEMENTATION WORK THIS SESSION
+- Extend Hypothesis class with counterevidence, assumptions,
+  dependencies, created_at, updated_at. Preserve backwards compat.
+- Reclassify Loop 2 (resurrection) as partially_closed.
+- Add `partially_closed` to allowed loop states across all loop
+  modules.
+- Scaffold `agent/` package (declared, not implemented).
+- Scaffold `milestones/milestone_001/` with the first small
+  milestone candidate (pH prediction of a simple mixture).
+- Tests-first for all of the above.
 
 ## CTO REVIEW #4 (commit `f590661`) — PHASE TRANSITION
 

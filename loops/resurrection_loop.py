@@ -41,31 +41,60 @@ _LEDGER = _ROOT / "data" / "ledger" / "predictions.jsonl"
 
 
 class ResurrectionLoop:
-    """Loop 2: predict renewed feasibility for abandoned inventions."""
+    """Loop 2: predict renewed feasibility for abandoned inventions.
+
+    Per CTO review #5 (commit `0029759`): this loop is
+    `partially_closed`, NOT `closed`. The system can produce
+    counterfactuals but has NOT demonstrated a real-world
+    resurrection. The distinction:
+
+      partially_closed = infrastructure exists + cycles have run
+                         + predictions recorded, BUT no real-world
+                         outcome has confirmed a prediction.
+      closed           = all of the above + a real-world outcome
+                         confirmed a prediction.
+
+    The system's counterfactuals for Iridium, Airships, etc. ARE
+    predictions that match observed reality — but the system did
+    not make those predictions BEFORE the resurrections happened;
+    it documented them after. A true `closed` status requires the
+    system to predict a resurrection BEFORE it happens, then have
+    reality confirm it.
+    """
 
     LOOP_NAME = "resurrection"
     LOOP_NUMBER = 2
 
     def status(self) -> dict:
-        # The loop is closed if at least one resurrection-category
-        # verification entry exists in the ledger.
+        # The loop is partially_closed if at least one resurrection-category
+        # verification entry exists in the ledger (infrastructure exercised),
+        # but no real-world resurrection has been demonstrated BY THE SYSTEM
+        # (only documented after the fact).
         count = self._count_resurrection_verifications()
-        closed = count >= 1
+        partially_closed = count >= 1
+        closed = False  # Per CTO review #5: never closed until system predicts BEFORE
         return {
             "loop_name": self.LOOP_NAME,
             "loop_number": self.LOOP_NUMBER,
             "closed": closed,
+            "partially_closed": partially_closed,
             "cycles_completed": count,
             "reason": (
-                "CLOSED via resurrection_module counterfactuals + verification "
-                f"cycle. {count} resurrection-related verification entries in ledger."
-                if closed else
+                "PARTIALLY_CLOSED via resurrection_module counterfactuals + "
+                f"verification cycle. {count} resurrection-related "
+                "verification entries in ledger. NOT closed because the "
+                "system's counterfactuals were documented AFTER the "
+                "observed resurrections, not predicted BEFORE. A true "
+                "closure requires the system to predict a resurrection "
+                "before it happens, then have reality confirm it."
+                if partially_closed else
                 "OPEN — no resurrection-related verification entries in ledger."
             ),
             "infrastructure": (
                 "invention_compiler/resurrection_module.py + "
                 "scripts/run_verification_cycle.py"
             ),
+            "real_world_confirmation": False,
         }
 
     def run_one_cycle(self) -> dict:

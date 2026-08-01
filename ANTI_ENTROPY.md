@@ -308,6 +308,67 @@ Adding new modules without closing loops is entropy per the
 no new module may be added unless it directly closes one of the 5
 loops.
 
+### partially_closed ≠ closed (CTO-mandated, review #5)
+
+A loop has three possible states, not two:
+
+  - `open` — infrastructure does not yet exist, OR no cycle has
+    been run.
+  - `partially_closed` — infrastructure exists AND has been
+    exercised (cycles have run), BUT no real-world outcome has
+    confirmed the system's prediction.
+  - `closed` — infrastructure exists AND at least one cycle has
+    completed AND the prediction was confirmed by a real-world
+    observation recorded in the ledger.
+
+The distinction matters: `partially_closed` means "the system can
+produce predictions"; `closed` means "the system's predictions
+have been confirmed by reality." Marking a `partially_closed` loop
+as `closed` is the same kind of overclaim as marking an
+`expectations_satisfied` benchmark as `PASS` — it confuses
+agreement with the benchmarker's priors with correspondence to
+reality.
+
+The honest rule:
+
+| Loop state | Means | Can claim |
+|---|---|---|
+| open | infrastructure missing or unrun | nothing |
+| partially_closed | infrastructure exists, cycles run, predictions recorded | "the system can produce predictions in this loop" |
+| closed | infrastructure exists, cycles run, AND a real-world outcome confirmed a prediction | "the system has learned something in this loop" |
+
+### The next milestone must be small (CTO-mandated, review #5)
+
+> Do not attempt to invent a room-temperature superconductor.
+> Choose a problem that satisfies four conditions:
+>   - inexpensive
+>   - measurable
+>   - reproducible
+>   - executable within days rather than months
+
+The first successfully completed cycle is more valuable than
+another hundred modules. The point at which the repository stops
+describing the world and starts learning from it is the first
+closed experimentation loop on a small problem.
+
+Operational rules:
+
+1. No milestone may be added that requires more than 30 days to
+   complete end-to-end (propose → build → measure → record).
+
+2. No milestone may be added that requires more than $1000 of
+   materials to execute.
+
+3. Every milestone must produce a numeric measurement (not a
+   pass/fail) so prediction error can be computed.
+
+4. Every milestone must be reproducible — anyone with the
+   materials and the milestone spec must be able to repeat the
+   experiment and check the recorded outcome.
+
+5. The first milestone that closes Loop 4 (experimentation) is
+   worth more than any additional module, layer, or feature.
+
 ---
 
 ## How these rules interact with Law 8
