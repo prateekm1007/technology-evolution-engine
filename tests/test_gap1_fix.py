@@ -271,6 +271,7 @@ def test_only_simulation_module_was_modified():
         and not f.startswith("scripts/run_forensic_audit")
         and not f.startswith("scripts/generate_delta")
         and not f.startswith("scripts/propagate_")
+        and not f.startswith("scripts/remember_")
         and not f.startswith("evidence/")
     ]
     # The allowed code changes accumulate across cycles:

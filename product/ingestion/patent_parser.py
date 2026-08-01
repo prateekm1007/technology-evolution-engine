@@ -2,6 +2,37 @@ import re, hashlib
 class PatentParser:
     CLAIM_PAT = re.compile(r'\d+\.\s+(.*?)(?=\d+\.\s+|$)', re.DOTALL)
     HEADERS = ['FIELD OF THE INVENTION','BACKGROUND','SUMMARY OF THE INVENTION','DETAILED DESCRIPTION','CLAIMS','ABSTRACT']
+    # Component keywords for extraction when "comprising" doesn't capture them.
+    COMPONENT_KEYWORDS = ['pump','sensor','coating','membrane','exchanger','substrate',
+                          'valve','motor','circuit','electrode','battery','panel',
+                          'filter','chamber','nozzle','actuator','controller']
+    def parse(self, d):
+        """Phase 3 ingestion interface. Accepts a dict with 'text' and
+        optional 'provenance', returns structured extraction with
+        components, materials, constraints, and provenance attached."""
+        t = d.get('text', d.get('raw_text', ''))
+        pid = d.get('id', d.get('patent_id')) or 'PAT-'+hashlib.sha256(t.encode()).hexdigest()[:12].upper()
+        # Run the existing extraction logic.
+        base = self.run({'raw_text': t, 'patent_id': pid})
+        # Add components from keyword scan (supplements "comprising" extraction).
+        existing_comps = set(str(c).lower() for c in base.get('components', []))
+        extra_comps = []
+        for kw in self.COMPONENT_KEYWORDS:
+            if kw in t.lower() and kw not in existing_comps:
+                extra_comps.append(kw)
+                existing_comps.add(kw)
+        base['components'] = list(base.get('components', [])) + extra_comps
+        # Attach provenance if provided.
+        if 'provenance' in d:
+            base['provenance'] = d['provenance']
+        else:
+            base['provenance'] = {
+                'source': pid, 'source_type': 'patent',
+                'title': d.get('title', base.get('title', '')),
+                'extracted_by': 'product.ingestion.patent_parser',
+                'confidence': base.get('parse_confidence', 0.0),
+            }
+        return base
     def run(self, d):
         t = d.get('raw_text','')
         pid = d.get('patent_id') or 'PAT-'+hashlib.sha256(t.encode()).hexdigest()[:12].upper()

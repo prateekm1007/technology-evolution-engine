@@ -78,7 +78,16 @@ class DeepOracle:
         for step in range(max_iter):
             inflow = {nid: 0.0 for nid in ids}
             for src, targets in out_edges.items():
-                for tgt, w in targets: inflow[tgt] += beta * w * state[src]
+                # E3 FIX: guard against dangling edge sources — edges
+                # that reference a source node not in gm.nodes.
+                # This happens when the graph has data inconsistencies
+                # (e.g., domain_industrial_automation exists as an edge
+                # source but not as a node). Skip those edges.
+                if src not in state:
+                    continue
+                for tgt, w in targets:
+                    if tgt in inflow:
+                        inflow[tgt] += beta * w * state[src]
             state = {nid: _clamp(state[nid] + damp * inflow[nid], -1.0, 1.0) for nid in ids}
             now_viable = {nid for nid in ids if viability(nid) >= thr}
             crossed = [by_id[n]["label"] for n in (now_viable - prev_viable)]

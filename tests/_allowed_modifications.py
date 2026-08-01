@@ -39,6 +39,8 @@ ALLOWED_MODIFICATIONS = frozenset({
     "invention_compiler/orchestrator.py",
     "invention_compiler/prototype_module.py",
     "product/discovery/synthesizer.py",  # Phase 2 compat fix
-    "web/backend/adapters/oracle_deep.py",  # C2 fix: dict constraint handling
+    "web/backend/adapters/oracle_deep.py",  # C2 fix + E3 fix
     "product/scoring/feasibility.py",  # C2 fix: dict constraint handling
+    "product/ingestion/patent_parser.py",  # Phase 3: patent ingestion
+    "product/ingestion/text_normalizer.py",  # Phase 3: ingestion support
 })

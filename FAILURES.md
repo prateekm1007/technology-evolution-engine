@@ -328,7 +328,7 @@ Phase 5 — Audience specialization: researchers, corporations, investors, gover
   - FeasibilityScorer constraints = `_as_list(dict)` → `[dict]` (one-element list containing the dict); keyword matching accidentally works because `str(dict)` contains all keys as substrings
 **Root cause:** Phase 2 constraint propagation changed constraints from `[]` (empty list) to `{energy: 0.45, ...}` (dict). Code that used `len()` on the list assumed it would count constraint names; on a dict it counts keys.
 **Severity:** P1 — the Oracle and FeasibilityScorer produce wrong outputs for every node. The simulation_module's complexity penalty feeds from FeasibilityScorer, so every composite score is computed on broken input.
-**Status:** RESOLVED — all three Oracle locations now use `isinstance(c, dict)` check and count keys with value > 0. FeasibilityScorer now extracts constraint names from dict keys with value > 0, or falls back to list format.
+**Status:** PARTIALLY RESOLVED — all three Oracle locations now use `isinstance(c, dict)` check and count keys with value > 0. FeasibilityScorer now extracts constraint names from dict keys with value > 0, or falls back to list format.
 
 ### F-022 — Cemetery fields (is_cemetery, lesson, failed_because) not in graph nodes (C3)
 **Found:** external auditor (post-Phase 2 verification).
@@ -336,3 +336,20 @@ Phase 5 — Audience specialization: researchers, corporations, investors, gover
 **Root cause:** the raw graph JSON was hand-seeded without these fields. The adapter adds them at runtime but they're not persisted.
 **Severity:** P2 — the Oracle's resurrection detection checks `n.get("is_cemetery")` which returns None (falsy), so no resurrections are ever detected. This is a pre-existing gap, not introduced by Phase 2.
 **Status:** OPEN — needs the Phase 2 migration script to also add `is_cemetery: true`, `lesson`, and `failed_because` to cemetery_entry nodes. Deferred to avoid scope creep in this commit.
+
+---
+
+### F-023 — Oracle _stage_equilibrium crashes with KeyError on simulate() (E3)
+**Found:** external auditor (post-A1+C2 fix verification).
+**Repro:** `python -c "import sys; sys.path.insert(0,'web/backend'); from adapters.graph_model import GraphModel; from adapters.oracle_deep import DeepOracle; gm=GraphModel(repo_root='.'); DeepOracle(gm).simulate('energy','decrease','2x')"` → KeyError: 'domain_industrial_automation'
+**Observed:** The equilibrium loop builds `out_edges` from `self.gm.edges` and iterates `for tgt, w in targets`, then indexes `inflow[tgt]` and `state[src]`. But `inflow` and `state` are keyed by `ids = [n["id"] for n in self.gm.nodes]`. If an edge references a source or target that isn't in `gm.nodes` (e.g., `domain_industrial_automation` exists as an edge source but not as a node — a graph data inconsistency), `state[src]` raises `KeyError`.
+**Root cause:** graph data inconsistency — 1 edge source (`domain_industrial_automation`) exists in the edges list but not in the nodes list. The Oracle didn't guard against this.
+**Severity:** P1 — live runtime crash on the Oracle's primary code path. `/api/v1/simulate` returns 500 on a real request. The 236 tests did not exercise this path (tests mock or skip the equilibrium stage).
+**Status:** RESOLVED — the equilibrium loop now guards against dangling edge sources (`if src not in state: continue`) and dangling edge targets (`if tgt in inflow`). Verified: `oracle.simulate('energy', 'decrease', '2x')` now completes without crashing.
+
+### F-024 — Phase 2 constraint data has no zero-valued constraints (E2 correction)
+**Found:** external auditor (post-C2 fix verification).
+**Observed:** The Phase 2 migration populated every node with all 10 Law 2 constraint types at non-zero values. The minimum constraint value across all nodes is 0.1, never zero. This means the C2 fix's `sum(1 for v in c.values() if v and v > 0)` is still 10 for every node, so `binding_share = 1/10 = 0.1` uniformly. The Oracle's binding output is undifferentiated despite the code being correct.
+**Root cause:** Phase 2's constraint derivation (type priors + domain modifiers + edge complexity) never produces a zero value — every constraint gets at least the base prior (0.1-0.3) plus modifiers. No constraint is ever "not applicable" to a node.
+**Severity:** P2 — the Oracle runs without error but produces uniform binding_share. This is a data problem, not a code problem. The C2 code fix (F-021) is structurally correct; the symptom persists because the data has no signal.
+**Status:** OPEN — requires Phase 3 (real ingestion) to produce constraint values with real variation (some constraints genuinely absent for some nodes). The Phase 2 priors are a starting point, not a calibration.

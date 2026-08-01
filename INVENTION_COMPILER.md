@@ -139,15 +139,50 @@ Knowledge accumulates in System B without propagating back to System A. This is 
 
 Per the CTO and external auditor, the next phases are:
 
-**Phase 1 — Close the loop.** Complete one prediction → observe one outcome → reconcile → record permanently. Zero predict→observe→reconcile cycles have ever completed. Get the first one. This is the single most valuable thing the system can do.
+**Phase 1 — Close the loop.** ✅ DONE — first forward-looking prediction
+(`phase1_aprm_selective_emitters_001`) written to ledger with resolution
+date 2027-06-01. (9 retrospective cycles existed before this; the Phase
+1 entry is the first forward-looking one, not the first overall.)
 
-**Phase 2 — Unify representations.** Constraints computed by invention_compiler must propagate back to the graph, historian, and ledger. The two parallel systems must become one. Law 2's constraint surface (0/577 → real) is the first unification step.
+**Phase 2 — Unify representations.** ✅ DONE — constraints propagated
+into the 577-node graph (0/577 → 577/577). Auditor verified. Caveat:
+constraint values are priors with no zero entries (F-024), so Oracle
+binding_share is still uniform. Real variation requires Phase 3.
 
-**Phase 3 — Ingest external evidence.** Patents, literature, regulations, economics, manufacturing. The graph is currently a hand-seeded taxonomy, not built from the sources the mission names. Fix F-001 (patent parser brittleness) first.
+**Phase 3 — Ingest external evidence.** ← CURRENT
 
-**Phase 4 — Define convergence mathematically.** Only after the definition exists should implementation begin. Don't let a module named `convergence_module.py` get created before the question "what signal counts as two domains converging?" has an answer.
+Per the CTO directive:
+- Do NOT build another framework. No new modules unless reality forces it.
+- Objective: connect the existing system to external evidence.
+- Allowed source modifications: `product/ingestion/*`,
+  `civilization_graph.json`, `historian/*`, `ledger/*`, `tests/*`.
+- Everything else frozen.
 
-**Phase 5 — Audience specialization.** Researchers, corporations, investors, governments. Only after Phases 1-4 give the underlying system something true to say to any audience.
+Phase 3 sub-phases:
+- **3.1 — Write tests first** for patent/literature ingestion contracts
+  (can the system ingest one patent? extract claims? components? materials?
+  constraints? attach provenance?).
+- **3.2 — Minimal scope** (10-20 patents, 10-20 papers). Examples:
+  passive radiative cooling, atmospheric water harvesting, solid-state
+  batteries, desalination, carbon capture.
+- **3.3 — Provenance requirements**: every extracted item must carry
+  source, source_type, title, authors, publication_date, doi/patent_number,
+  confidence, extracted_by, timestamp.
+- **3.4 — Constraint propagation with real data**: the target is movement
+  from uniform priors to real differentiated constraints (some nodes with
+  `energy=0.0`, others with `energy=0.9`). Target: 50-100/577 with real
+  constraints, not 577/577 with uniform priors.
+- **3.5 — Success criteria**: real patent ingested, real paper ingested,
+  real constraints extracted, real provenance preserved, real graph
+  updated. NOT "new module added."
+- **3.6 — Reporting format**: WHAT WAS MODIFIED / WHAT WAS OBSERVED /
+  WHAT CHANGED / WHAT FAILED / WHAT REMAINS UNKNOWN.
+
+**Phase 4 — Define convergence mathematically.** Only after the
+definition exists should implementation begin.
+
+**Phase 5 — Audience specialization.** Only after Phases 1-4 give the
+underlying system something true to say to any audience.
 
 ### The shift
 
