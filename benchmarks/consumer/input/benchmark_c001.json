@@ -1,0 +1,38 @@
+{
+  "id": "benchmark_c001",
+  "type": "consumer",
+  "source": "user_prompt",
+  "prompt": "I need inexpensive clean water for my rural household. We have a shallow well with turbid water. Budget under $50. No electricity available.",
+  "domain": "water",
+  "budget_usd": 50,
+  "environment": "rural, no electricity, shallow well",
+  "constraints": [
+    "no electricity",
+    "budget under $50",
+    "turbid source water",
+    "household scale"
+  ],
+  "skill_level": "non-technical",
+  "timeline_days": 30,
+  "expected_constraints": [
+    "energy",
+    "cost",
+    "material",
+    "maintenance"
+  ],
+  "expected_prerequisites": [
+    "filtration media",
+    "local materials",
+    "gravity-fed design"
+  ],
+  "expected_adjacent_domains": [
+    "water treatment",
+    "materials science",
+    "public health"
+  ],
+  "expected_failure_modes": [
+    "filter clogging",
+    "bacterial breakthrough",
+    "flow rate decline"
+  ]
+}
