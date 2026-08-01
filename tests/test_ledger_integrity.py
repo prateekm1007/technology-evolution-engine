@@ -162,6 +162,10 @@ def test_ledger_schema_matches_writer():
         "verification": {
             "required": {"type", "timestamp", "prediction_id", "outcome",
                          "writer"},
+            # Per auditor: require EITHER evidence_ref OR inline
+            # evidence list. Don't drop the requirement entirely —
+            # that creates a gap where future writers can omit both.
+            "requires_evidence": True,  # evidence_ref OR evidence
             "writer": "scripts/run_verification_cycle.py::reconcile OR phase1.close_the_loop",
         },
     }
@@ -185,6 +189,21 @@ def test_ledger_schema_matches_writer():
                 "missing_required_keys": sorted(missing),
                 "writer": known_writers[etype]["writer"],
             })
+            continue
+        # Per auditor: verification entries must carry EITHER evidence_ref
+        # OR an inline evidence list. Don't allow both to be absent.
+        if known_writers[etype].get("requires_evidence"):
+            has_ref = "evidence_ref" in entry and entry["evidence_ref"]
+            has_inline = "evidence" in entry and entry["evidence"]
+            if not has_ref and not has_inline:
+                unprovenanced.append({
+                    "line": i,
+                    "type": etype,
+                    "missing_required_keys": ["evidence_ref OR evidence"],
+                    "reason": "verification entry must carry evidence_ref "
+                              "OR an inline evidence list — neither is present",
+                    "writer": known_writers[etype]["writer"],
+                })
     assert not unprovenanced, (
         "F-005 regression: ledger entries exist whose schema matches no current "
         "writer. This is the 'unprovenanced data' failure mode — entries that "

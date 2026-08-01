@@ -63,8 +63,19 @@ class CrossDomainSynthesizer:
         # capped at depth 3 to keep it cheap).
         self._prereq_cache: Dict[str, Set[str]] = {}
         # Pre-compute per-node constraint sets.
+        # Handle both old format (list of strings) and new format
+        # (dict of constraint_name -> value, per Phase 2 migration).
+        def _constraints_to_set(c):
+            if c is None:
+                return set()
+            if isinstance(c, dict):
+                return set(k for k, v in c.items() if v and v > 0)
+            if isinstance(c, list):
+                return set(str(x) for x in c)
+            return set()
+        
         self._constraint_cache: Dict[str, Set[str]] = {
-            n["id"]: set(_as_list(n.get("constraints", [])))
+            n["id"]: _constraints_to_set(n.get("constraints", []))
             for n in self.nodes
         }
 
