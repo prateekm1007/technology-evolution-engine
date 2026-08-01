@@ -1,0 +1,68 @@
+{
+  "id": "benchmark_0002",
+  "type": "patent",
+  "source": "uspto",
+  "title": "High-Speed Flywheel Energy Storage with Magnetic Bearing Suspension",
+  "domain": "energy",
+  "abstract": "A kinetic energy storage system comprising a carbon-fiber composite rotor at 50,000 RPM in vacuum, supported by active magnetic bearings.",
+  "claims": [
+    "A flywheel rotor comprising carbon-fiber reinforced polymer with tensile strength exceeding 3 GPa.",
+    "Active magnetic bearing system with 5-axis control maintaining rotor position within 10 micrometers.",
+    "A vacuum enclosure maintaining pressure below 0.01 Pa."
+  ],
+  "components": [
+    "carbon fiber rotor",
+    "magnetic bearings",
+    "vacuum enclosure",
+    "motor-generator",
+    "power electronics",
+    "control system"
+  ],
+  "materials": [
+    "carbon fiber",
+    "epoxy resin",
+    "neodymium magnets",
+    "silicon steel",
+    "aluminum"
+  ],
+  "methods": [
+    "filament winding",
+    "vacuum pumping",
+    "electromagnetic suspension",
+    "variable frequency drive"
+  ],
+  "constraints": [
+    "energy density",
+    "safety",
+    "maintenance",
+    "cost",
+    "regulation"
+  ],
+  "problem_statement": "Electrochemical storage degrades over cycles. Flywheels offer unlimited cycle life but face bearing friction and containment challenges.",
+  "expected_constraints": [
+    "energy",
+    "safety",
+    "maintenance",
+    "cost",
+    "material",
+    "regulation"
+  ],
+  "expected_prerequisites": [
+    "high-strength carbon fiber",
+    "precision magnetic bearings",
+    "vacuum technology",
+    "high-speed power electronics"
+  ],
+  "expected_adjacent_domains": [
+    "aerospace",
+    "materials science",
+    "power electronics",
+    "control systems"
+  ],
+  "expected_failure_modes": [
+    "rotor burst",
+    "bearing failure",
+    "vacuum loss",
+    "gyroscopic precession"
+  ]
+}
