@@ -1,7 +1,6 @@
 # INVENTION COMPILER — Master Specification
 
-**Status:** Active directive. Phase transition (CTO review #4 → #5 → #6).
-**Supersedes:** the "idea generator" framing. The system is not an idea generator.
+**Status:** ARCHITECTURE FROZEN (CEO directive, commit `0c6d5d7`).
 **Read this file BEFORE writing any code in this repository.**
 
 > The objective of the system is not to generate ideas.
@@ -9,6 +8,148 @@
 >
 > An idea is worthless if an engineer cannot build it.
 > A blueprint is valuable because it transforms possibility into execution.
+
+---
+
+## CEO DIRECTIVE — FREEZE ARCHITECTURE (commit `0c6d5d7`)
+
+Effective immediately:
+
+- No new layers.
+- No new modules.
+- No new packages.
+- No new frameworks.
+- No new abstractions.
+
+Use only what already exists.
+
+### Why the freeze
+
+The repository is approaching the point where adding more
+abstractions produces the illusion of progress. The most valuable
+thing now is to STOP building infrastructure and FORCE the system
+to produce inventions.
+
+The compiler must be treated as a black box:
+
+```text
+Problem → Observation → Knowledge → Reasoning → Blueprint →
+    Simulation → Hypothesis → Output
+```
+
+### New output contract
+
+The output of the next iteration must NOT be:
+
+```text
+module added
+layer added
+class added
+benchmark added
+package added
+```
+
+The output MUST be:
+
+```text
+invention produced
+blueprint generated
+assumptions identified
+constraints discovered
+failure modes discovered
+```
+
+### Build → Observe → Learn → Modify (NOT Build → Modify → Modify → Modify)
+
+The sequence is now:
+
+```text
+Build
+   ↓
+Observe
+   ↓
+Learn
+   ↓
+Modify
+```
+
+NOT:
+
+```text
+Build
+   ↓
+Modify
+   ↓
+Modify
+   ↓
+Modify
+   ↓
+Modify
+```
+
+The architecture may only be modified AFTER reviewing observed
+failures from running the compiler against real problems. Modifying
+the architecture in the absence of observed failures is entropy.
+
+### Required experiment: 20 candidate inventions
+
+Run the compiler against 20 candidate inventions:
+
+1. solid-state batteries
+2. carbon-negative concrete
+3. atmospheric water harvesting
+4. portable MRI systems
+5. desalination systems
+6. autonomous greenhouses
+7. modular nuclear reactors
+8. artificial photosynthesis
+9. protein engineering systems
+10. biodegradable polymers
+11. adaptive prosthetics
+12. vertical farming systems
+13. thermoelectric materials
+14. carbon capture materials
+15. superconducting materials
+16. precision fermentation
+17. agricultural robotics
+18. synthetic fuels
+19. smart textiles
+20. distributed manufacturing
+
+### Required output format (per invention)
+
+```yaml
+problem:
+domain:
+hypothesis:
+
+physical_laws:
+chemical_principles:
+mathematical_formulation:
+
+constraints:
+dependencies:
+assumptions:
+
+architecture:
+simulation:
+
+prototype_plan:
+experimental_plan:
+
+failure_modes:
+counterevidence:
+
+confidence:
+
+final_blueprint:
+```
+
+### Most important rule
+
+Do not modify the system while running these experiments.
+Record every failure.
+Only after reviewing the failures should the architecture change.
 
 ---
 

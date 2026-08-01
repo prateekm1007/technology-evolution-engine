@@ -468,6 +468,54 @@ on them. Every Hypothesis is "pending" forever — there is no
 notion of "the system currently believes X with strength Y".
 Closing this gap is the substrate of a true learning system.
 
+### ARCHITECTURE FREEZE (CEO-mandated, commit `0c6d5d7`)
+
+Effective immediately, until the 20-invention experiment is
+complete and the failures are reviewed:
+
+- No new layers.
+- No new modules.
+- No new packages.
+- No new frameworks.
+- No new abstractions.
+
+Use only what already exists.
+
+Operational rules:
+
+1. The architecture may only be modified AFTER reviewing observed
+   failures from running the compiler against real problems.
+   Modifying the architecture in the absence of observed failures
+   is entropy.
+
+2. The sequence is Build → Observe → Learn → Modify. NOT Build →
+   Modify → Modify → Modify. If you find yourself modifying the
+   architecture before running experiments, you are doing it wrong.
+
+3. The output of the next iteration must NOT be "module added /
+   layer added / class added / benchmark added / package added".
+   The output MUST be "invention produced / blueprint generated /
+   assumptions identified / constraints discovered / failure modes
+   discovered".
+
+4. Every failure observed during the 20-invention experiment must
+   be recorded in `evidence/experiments/invention_batch_001/
+   FAILURES.md`. The architecture is modified only after reviewing
+   those failures.
+
+5. This freeze overrides the "Close loops, don't add modules"
+   rule from review #4: even loop-closing infrastructure is
+   frozen until the experiment is reviewed. The ONLY exception is
+   the close_milestone_001.py / close_milestone_002.py scripts
+   that record experimental outcomes from external collaborators
+   — those are required to close Loops 4 and 5, and they don't
+   modify the architecture, they record observations.
+
+The honest framing: the repository has been adding abstractions
+for six CTO reviews. The architecture is sufficient. The question
+now is whether it produces valuable inventions. That question is
+empirical, not architectural.
+
 ---
 
 ## How these rules interact with Law 8

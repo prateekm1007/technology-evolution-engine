@@ -1,4 +1,4 @@
-# TEE MASTER HANDOFF (v1.8)
+# TEE MASTER HANDOFF (v1.9 — ARCHITECTURE FROZEN)
 
 ## PRE-CODING READ LIST (MANDATORY)
 
@@ -55,6 +55,57 @@ those layers or modules.
 - Invention compiler vertical slice: implemented in
   `invention_compiler/` (commit `a3d167d`). 11 layers, 14 modules.
 - 47 tests passing.
+
+## CEO DIRECTIVE — FREEZE ARCHITECTURE (commit `0c6d5d7`)
+
+Effective immediately: NO new layers, modules, packages, frameworks,
+or abstractions. Use only what already exists.
+
+The CEO and CTO agreed the repository is approaching the point
+where adding more abstractions produces the illusion of progress.
+The most valuable thing now is to STOP building infrastructure
+and FORCE the system to produce inventions.
+
+### Required: 20-invention experiment
+
+Run the compiler against 20 candidate inventions (solid-state
+batteries, carbon-negative concrete, atmospheric water harvesting,
+portable MRI, desalination, autonomous greenhouses, modular nuclear
+reactors, artificial photosynthesis, protein engineering, biodegradable
+polymers, adaptive prosthetics, vertical farming, thermoelectric
+materials, carbon capture materials, superconducting materials,
+precision fermentation, agricultural robotics, synthetic fuels,
+smart textiles, distributed manufacturing).
+
+Required output per invention: see INVENTION_COMPILER.md
+"Required output format".
+
+Outputs go to `evidence/experiments/invention_batch_001/`:
+- one YAML file per invention
+- FAILURES.md recording every compiler failure, ambiguity, gap
+- SUMMARY.md counting inventions produced, blueprints generated,
+  failures identified
+
+### The sequence is Build → Observe → Learn → Modify
+
+NOT Build → Modify → Modify → Modify. The architecture is modified
+only AFTER reviewing observed failures from the experiment.
+
+### What this overrides
+
+This freeze overrides the "Close loops, don't add modules" rule
+from review #4: even loop-closing infrastructure is frozen until
+the experiment is reviewed. The ONLY exception is the
+close_milestone_001.py / close_milestone_002.py scripts that
+record experimental outcomes from external collaborators.
+
+## IMPLEMENTATION WORK THIS SESSION
+- Run the 20-invention experiment. DO NOT modify the architecture.
+- Record every output in `evidence/experiments/invention_batch_001/`.
+- Record every failure in `evidence/experiments/invention_batch_001/FAILURES.md`.
+- Produce SUMMARY.md counting inventions produced, blueprints
+  generated, failures identified.
+- The architecture is NOT modified in this session.
 
 ## CTO REVIEW #6 (commit `874ec10`) — SCAFFOLDING ≠ CLOSURE
 
