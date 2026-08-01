@@ -1,0 +1,19 @@
+# Destroyer Protocol v0.1
+# Law 5: Every candidate must survive adversarial attack
+version: 0.1
+
+attack_vectors:
+  - thermodynamic_impossibility
+  - economic_nonviability
+  - manufacturing_impossibility
+  - regulatory_barrier
+  - supply_chain_fragility
+  - maintenance_burden
+  - safety_failure_mode
+  - incumbent_lock_in
+
+verdicts:
+  SURVIVES: Candidate passes all attack vectors
+  GATED: Candidate blocked by specific missing prerequisites
+  REVISE: Candidate has fixable weaknesses
+  KILLED: Candidate has fatal flaws - send to cemetery
