@@ -353,3 +353,17 @@ Phase 5 — Audience specialization: researchers, corporations, investors, gover
 **Root cause:** Phase 2's constraint derivation (type priors + domain modifiers + edge complexity) never produces a zero value — every constraint gets at least the base prior (0.1-0.3) plus modifiers. No constraint is ever "not applicable" to a node.
 **Severity:** P2 — the Oracle runs without error but produces uniform binding_share. This is a data problem, not a code problem. The C2 code fix (F-021) is structurally correct; the symptom persists because the data has no signal.
 **Status:** OPEN — requires Phase 3 (real ingestion) to produce constraint values with real variation (some constraints genuinely absent for some nodes). The Phase 2 priors are a starting point, not a calibration.
+
+---
+
+### F-025 — Phase 3 tests assert contract, not correctness (the A1 pattern)
+**Found:** external auditor (post-Phase 3.1 verification).
+**Observed:** the 8 patent ingestion tests asserted that keys exist (`components`, `materials`, `constraints`) but did NOT assert that the extracted values were correct against the known test fixture. This is the exact failure mode that let A1 (the walrus bug) survive 5 commits: the test asserted the key existed, not that the value was correct.
+**Severity:** P2 — a future change that breaks the parser's extraction logic but keeps returning the right keys would stay green.
+**Status:** RESOLVED — tightened to assert specific ground-truth values from TEST_PATENT_TEXT (pump, sensor, coating, exchanger for components; polymer, ceramic for materials; manufacturing, temperature for constraints).
+
+### F-026 — Governance loop not enforced (remember_governance.py is a reminder, not a gate)
+**Found:** external auditor (post-10-principles landing).
+**Observed:** remember_governance.py is documented as "Not a gate — a reminder." No .pre-commit-config.yaml or CI config calls it. A coder who skips running it will not be caught.
+**Severity:** P3 — the loop is structurally present but not enforced.
+**Status:** RESOLVED — added .pre-commit-config.yaml that runs remember_governance.py as a pre-commit hook. When pre-commit is installed (`pip install pre-commit && pre-commit install`), every `git commit` will first run the script and fail if any governor file is missing.

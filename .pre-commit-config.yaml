@@ -1,0 +1,34 @@
+# Pre-commit hook configuration for TEE.
+#
+# This file wires the governance loop structurally — the
+# remember_governance.py script is now a gate, not just a reminder.
+#
+# Per the external auditor's F1 finding: "The loop is structurally
+# present but not enforced. A coder who skips running
+# remember_governance.py will not be caught."
+#
+# This .pre-commit-config.yaml closes that gap. When pre-commit is
+# installed, it runs remember_governance.py before every commit and
+# fails if any governor file is missing.
+#
+# Installation:
+#   pip install pre-commit
+#   pre-commit install
+#
+# After installation, every `git commit` will first run:
+#   python scripts/remember_governance.py
+#
+# If any of the 6 governor files (CONSTITUTION.md, INVENTION_COMPILER.md,
+# ANTI_ENTROPY.md, CONTRIBUTING.md, FAILURES.md, HANDOFF.md) is missing,
+# the commit is blocked.
+
+repos:
+  - repo: local
+    hooks:
+      - id: remember-governance
+        name: "Governance read list check"
+        entry: python scripts/remember_governance.py
+        language: system
+        pass_filenames: false
+        always_run: true
+        stages: [commit]

@@ -143,7 +143,8 @@ def test_patent_parser_ingests_patent_text():
 
 
 def test_patent_parser_extracts_components():
-    """Can the system extract components?"""
+    """Can the system extract components? Asserts CORRECTNESS, not
+    just key existence (F-025 fix: the A1 pattern)."""
     from product.ingestion.patent_parser import PatentParser
     parser = PatentParser()
     result = parser.parse({
@@ -153,16 +154,22 @@ def test_patent_parser_extracts_components():
     })
     components = result.get("components", [])
     assert len(components) > 0, "No components extracted"
-    # Should find at least pump, membrane/coating, sensor
+    # GROUND-TRUTH assertions: the test fixture contains specific
+    # components that MUST be extracted. Not just "key exists" —
+    # the specific values must be present.
     component_labels = [str(c).lower() for c in components]
     assert any("pump" in c for c in component_labels), \
-        f"Expected to find 'pump' in components: {components}"
+        f"Expected 'pump' in components: {components}"
     assert any("sensor" in c for c in component_labels), \
-        f"Expected to find 'sensor' in components: {components}"
+        f"Expected 'sensor' in components: {components}"
+    assert any("coating" in c for c in component_labels), \
+        f"Expected 'coating' in components: {components}"
+    assert any("exchanger" in c for c in component_labels), \
+        f"Expected 'exchanger' (heat exchanger) in components: {components}"
 
 
 def test_patent_parser_extracts_materials():
-    """Can the system extract materials?"""
+    """Can the system extract materials? Asserts CORRECTNESS."""
     from product.ingestion.patent_parser import PatentParser
     parser = PatentParser()
     result = parser.parse({
@@ -172,13 +179,16 @@ def test_patent_parser_extracts_materials():
     })
     materials = result.get("materials", [])
     assert len(materials) > 0, "No materials extracted"
+    # GROUND-TRUTH: the fixture mentions polymer and ceramic.
     material_labels = [str(m).lower() for m in materials]
-    assert any("polymer" in m or "pet" in m for m in material_labels), \
-        f"Expected to find polymer/PET in materials: {materials}"
+    assert any("polymer" in m for m in material_labels), \
+        f"Expected 'polymer' in materials: {materials}"
+    assert any("ceramic" in m for m in material_labels), \
+        f"Expected 'ceramic' in materials: {materials}"
 
 
 def test_patent_parser_extracts_constraints():
-    """Can the system extract constraints?"""
+    """Can the system extract constraints? Asserts CORRECTNESS."""
     from product.ingestion.patent_parser import PatentParser
     parser = PatentParser()
     result = parser.parse({
@@ -188,6 +198,15 @@ def test_patent_parser_extracts_constraints():
     })
     constraints = result.get("constraints", [])
     assert len(constraints) > 0, "No constraints extracted"
+    # GROUND-TRUTH: the fixture mentions manufacturing and temperature/thermal.
+    # The parser maps: temperature→['temperature','thermal','heat','cooling'],
+    # manufacturing→['manufactur','fabricat','production'].
+    # The fixture text contains 'manufacturing', 'thermal', 'cooling', 'temperature'.
+    constraint_text = json.dumps(constraints).lower()
+    assert "manufactur" in constraint_text, \
+        f"Expected 'manufacturing' in constraints: {constraints}"
+    assert "temperature" in constraint_text or "thermal" in constraint_text, \
+        f"Expected 'temperature' or 'thermal' in constraints: {constraints}"
 
 
 def test_patent_parser_attaches_provenance():
