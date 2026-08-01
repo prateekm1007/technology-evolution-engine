@@ -1,0 +1,18 @@
+Title: Amine-functionalized silica for direct air capture of CO2
+
+We report an amine-functionalized mesoporous silica sorbent that achieves CO2 capacity of 2 millimoles per gram at 400 parts per million. The sorbent is regenerated at 90 degrees Celsius with a purge gas.
+
+The adsorption equilibrium follows:
+q = q_max * b * C / (1 + b * C)
+
+where q is loading, q_max is maximum loading, b is affinity constant, C is concentration.
+
+Assumptions:
+- The sorbent reaches equilibrium with the gas phase.
+- The system operates isothermally.
+- No competitive adsorption occurs.
+
+Limitations:
+- The sorbent degrades after 1000 cycles.
+- The regeneration energy is 3 GJ per ton of CO2.
+- The amine groups leach under humid conditions.

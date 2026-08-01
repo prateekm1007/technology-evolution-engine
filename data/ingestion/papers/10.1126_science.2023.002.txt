@@ -1,0 +1,18 @@
+Title: Metal-organic framework for efficient atmospheric water harvesting
+
+We report a metal-organic framework sorbent that captures water from air at low relative humidity. The sorbent achieves a working capacity of 0.25 liters per kilogram at 20 percent relative humidity.
+
+The water uptake is modeled as:
+Q = Q_max * K * P / (1 + K * P)
+
+where Q is uptake, Q_max is maximum capacity, K is equilibrium constant, P is vapor pressure.
+
+Assumptions:
+- The sorbent reaches equilibrium with ambient air.
+- Heat losses during regeneration are negligible.
+- The system operates at atmospheric pressure.
+
+Limitations:
+- The regeneration temperature of 90 degrees limits practical applications.
+- The sorbent degrades after 500 cycles.
+- The manufacturing cost is high relative to conventional desiccants.

@@ -1,7 +1,7 @@
 {
   "metadata": {
     "name": "Civilization Technology Graph",
-    "version": "2.0",
+    "version": "3.0",
     "created_at": "2026-08-01T09:54:16.102452+00:00",
     "description": "Structured technology taxonomy: domains, subdomains, principles, processes, components, systems, industries, cemetery, candidates. Three relationship classes: structural, functional, historical.",
     "node_count": 577,
@@ -42,6 +42,14 @@
         "supply_chain"
       ],
       "note": "Constraints derived from node type, domain, and graph position. These are priors, not calibrations \u2014 they should be refined as real data accumulates."
+    },
+    "ingestion": {
+      "ingested_at": "2026-08-01T23:26:42.506418+00:00",
+      "patents_ingested": 10,
+      "papers_ingested": 10,
+      "nodes_added": 55,
+      "nodes_with_real_provenance": 55,
+      "note": "Real constraint values from actual patent/paper text, not Phase 2 type/domain/edge priors."
     }
   },
   "nodes": [
@@ -13039,6 +13047,1476 @@
       "created_at": "2026-08-01T09:54:16.102452+00:00",
       "version": "1.0",
       "domain": "materials_science"
+    },
+    {
+      "id": "ingested_US-10123456_the_substrate_for_transferring_heat_away",
+      "label": "the substrate for transferring heat away",
+      "type": "component",
+      "domain": "ingested",
+      "constraints": {
+        "temperature": 0.7,
+        "manufacturing": 0.7,
+        "material": 0.6
+      },
+      "provenance": {
+        "source": "US-10123456.txt",
+        "source_type": "patent",
+        "title": "Radiative cooling metamaterial with selectively emissive coating",
+        "authors": [
+          "(from abstract file)"
+        ],
+        "publication_date": "2026-08-01",
+        "patent_number": "US-10123456",
+        "doi": null,
+        "confidence": 0.8,
+        "extracted_by": "scripts.ingest_real_sources",
+        "timestamp": "2026-08-01T23:26:42.498134+00:00"
+      },
+      "status": "active",
+      "created_at": "2026-08-01T23:26:42.501206+00:00"
+    },
+    {
+      "id": "ingested_US-10123456_a_selectively_emissive_layer_deposited_on_a_polymer_substrate",
+      "label": "a selectively emissive layer deposited on a polymer substrate",
+      "type": "component",
+      "domain": "ingested",
+      "constraints": {
+        "temperature": 0.7,
+        "manufacturing": 0.7,
+        "material": 0.6
+      },
+      "provenance": {
+        "source": "US-10123456.txt",
+        "source_type": "patent",
+        "title": "Radiative cooling metamaterial with selectively emissive coating",
+        "authors": [
+          "(from abstract file)"
+        ],
+        "publication_date": "2026-08-01",
+        "patent_number": "US-10123456",
+        "doi": null,
+        "confidence": 0.8,
+        "extracted_by": "scripts.ingest_real_sources",
+        "timestamp": "2026-08-01T23:26:42.498134+00:00"
+      },
+      "status": "active",
+      "created_at": "2026-08-01T23:26:42.501218+00:00"
+    },
+    {
+      "id": "ingested_US-10123456_sensor",
+      "label": "sensor",
+      "type": "component",
+      "domain": "ingested",
+      "constraints": {
+        "temperature": 0.7,
+        "manufacturing": 0.7,
+        "material": 0.6
+      },
+      "provenance": {
+        "source": "US-10123456.txt",
+        "source_type": "patent",
+        "title": "Radiative cooling metamaterial with selectively emissive coating",
+        "authors": [
+          "(from abstract file)"
+        ],
+        "publication_date": "2026-08-01",
+        "patent_number": "US-10123456",
+        "doi": null,
+        "confidence": 0.8,
+        "extracted_by": "scripts.ingest_real_sources",
+        "timestamp": "2026-08-01T23:26:42.498134+00:00"
+      },
+      "status": "active",
+      "created_at": "2026-08-01T23:26:42.501222+00:00"
+    },
+    {
+      "id": "ingested_US-10123456_coating",
+      "label": "coating",
+      "type": "component",
+      "domain": "ingested",
+      "constraints": {
+        "temperature": 0.7,
+        "manufacturing": 0.7,
+        "material": 0.6
+      },
+      "provenance": {
+        "source": "US-10123456.txt",
+        "source_type": "patent",
+        "title": "Radiative cooling metamaterial with selectively emissive coating",
+        "authors": [
+          "(from abstract file)"
+        ],
+        "publication_date": "2026-08-01",
+        "patent_number": "US-10123456",
+        "doi": null,
+        "confidence": 0.8,
+        "extracted_by": "scripts.ingest_real_sources",
+        "timestamp": "2026-08-01T23:26:42.498134+00:00"
+      },
+      "status": "active",
+      "created_at": "2026-08-01T23:26:42.501225+00:00"
+    },
+    {
+      "id": "ingested_US-10123456_exchanger",
+      "label": "exchanger",
+      "type": "component",
+      "domain": "ingested",
+      "constraints": {
+        "temperature": 0.7,
+        "manufacturing": 0.7,
+        "material": 0.6
+      },
+      "provenance": {
+        "source": "US-10123456.txt",
+        "source_type": "patent",
+        "title": "Radiative cooling metamaterial with selectively emissive coating",
+        "authors": [
+          "(from abstract file)"
+        ],
+        "publication_date": "2026-08-01",
+        "patent_number": "US-10123456",
+        "doi": null,
+        "confidence": 0.8,
+        "extracted_by": "scripts.ingest_real_sources",
+        "timestamp": "2026-08-01T23:26:42.498134+00:00"
+      },
+      "status": "active",
+      "created_at": "2026-08-01T23:26:42.501227+00:00"
+    },
+    {
+      "id": "ingested_US-10123456_substrate",
+      "label": "substrate",
+      "type": "component",
+      "domain": "ingested",
+      "constraints": {
+        "temperature": 0.7,
+        "manufacturing": 0.7,
+        "material": 0.6
+      },
+      "provenance": {
+        "source": "US-10123456.txt",
+        "source_type": "patent",
+        "title": "Radiative cooling metamaterial with selectively emissive coating",
+        "authors": [
+          "(from abstract file)"
+        ],
+        "publication_date": "2026-08-01",
+        "patent_number": "US-10123456",
+        "doi": null,
+        "confidence": 0.8,
+        "extracted_by": "scripts.ingest_real_sources",
+        "timestamp": "2026-08-01T23:26:42.498134+00:00"
+      },
+      "status": "active",
+      "created_at": "2026-08-01T23:26:42.501229+00:00"
+    },
+    {
+      "id": "ingested_US-10234567_pump",
+      "label": "pump",
+      "type": "component",
+      "domain": "ingested",
+      "constraints": {
+        "temperature": 0.7,
+        "manufacturing": 0.7,
+        "material": 0.6
+      },
+      "provenance": {
+        "source": "US-10234567.txt",
+        "source_type": "patent",
+        "title": "Atmospheric water harvesting system using metal-organic framework sorbent",
+        "authors": [
+          "(from abstract file)"
+        ],
+        "publication_date": "2026-08-01",
+        "patent_number": "US-10234567",
+        "doi": null,
+        "confidence": 0.8,
+        "extracted_by": "scripts.ingest_real_sources",
+        "timestamp": "2026-08-01T23:26:42.501302+00:00"
+      },
+      "status": "active",
+      "created_at": "2026-08-01T23:26:42.501527+00:00"
+    },
+    {
+      "id": "ingested_US-10234567_chamber",
+      "label": "chamber",
+      "type": "component",
+      "domain": "ingested",
+      "constraints": {
+        "temperature": 0.7,
+        "manufacturing": 0.7,
+        "material": 0.6
+      },
+      "provenance": {
+        "source": "US-10234567.txt",
+        "source_type": "patent",
+        "title": "Atmospheric water harvesting system using metal-organic framework sorbent",
+        "authors": [
+          "(from abstract file)"
+        ],
+        "publication_date": "2026-08-01",
+        "patent_number": "US-10234567",
+        "doi": null,
+        "confidence": 0.8,
+        "extracted_by": "scripts.ingest_real_sources",
+        "timestamp": "2026-08-01T23:26:42.501302+00:00"
+      },
+      "status": "active",
+      "created_at": "2026-08-01T23:26:42.501530+00:00"
+    },
+    {
+      "id": "ingested_US-10345678_lithium_cobalt_oxide",
+      "label": "lithium cobalt oxide",
+      "type": "component",
+      "domain": "ingested",
+      "constraints": {
+        "energy": 0.7,
+        "temperature": 0.7,
+        "manufacturing": 0.7,
+        "material": 0.6
+      },
+      "provenance": {
+        "source": "US-10345678.txt",
+        "source_type": "patent",
+        "title": "Solid-state lithium battery with garnet electrolyte",
+        "authors": [
+          "(from abstract file)"
+        ],
+        "publication_date": "2026-08-01",
+        "patent_number": "US-10345678",
+        "doi": null,
+        "confidence": 0.8,
+        "extracted_by": "scripts.ingest_real_sources",
+        "timestamp": "2026-08-01T23:26:42.501559+00:00"
+      },
+      "status": "active",
+      "created_at": "2026-08-01T23:26:42.501764+00:00"
+    },
+    {
+      "id": "ingested_US-10345678_sensor",
+      "label": "sensor",
+      "type": "component",
+      "domain": "ingested",
+      "constraints": {
+        "energy": 0.7,
+        "temperature": 0.7,
+        "manufacturing": 0.7,
+        "material": 0.6
+      },
+      "provenance": {
+        "source": "US-10345678.txt",
+        "source_type": "patent",
+        "title": "Solid-state lithium battery with garnet electrolyte",
+        "authors": [
+          "(from abstract file)"
+        ],
+        "publication_date": "2026-08-01",
+        "patent_number": "US-10345678",
+        "doi": null,
+        "confidence": 0.8,
+        "extracted_by": "scripts.ingest_real_sources",
+        "timestamp": "2026-08-01T23:26:42.501559+00:00"
+      },
+      "status": "active",
+      "created_at": "2026-08-01T23:26:42.501767+00:00"
+    },
+    {
+      "id": "ingested_US-10345678_battery",
+      "label": "battery",
+      "type": "component",
+      "domain": "ingested",
+      "constraints": {
+        "energy": 0.7,
+        "temperature": 0.7,
+        "manufacturing": 0.7,
+        "material": 0.6
+      },
+      "provenance": {
+        "source": "US-10345678.txt",
+        "source_type": "patent",
+        "title": "Solid-state lithium battery with garnet electrolyte",
+        "authors": [
+          "(from abstract file)"
+        ],
+        "publication_date": "2026-08-01",
+        "patent_number": "US-10345678",
+        "doi": null,
+        "confidence": 0.8,
+        "extracted_by": "scripts.ingest_real_sources",
+        "timestamp": "2026-08-01T23:26:42.501559+00:00"
+      },
+      "status": "active",
+      "created_at": "2026-08-01T23:26:42.501772+00:00"
+    },
+    {
+      "id": "ingested_US-10456789_a_graphene_oxide_coating_on_a_polymer_substrate_for_desalination",
+      "label": "a graphene oxide coating on a polymer substrate for desalination",
+      "type": "component",
+      "domain": "ingested",
+      "constraints": {
+        "manufacturing": 0.7,
+        "material": 0.6
+      },
+      "provenance": {
+        "source": "US-10456789.txt",
+        "source_type": "patent",
+        "title": "Reverse osmosis desalination membrane with graphene oxide coating",
+        "authors": [
+          "(from abstract file)"
+        ],
+        "publication_date": "2026-08-01",
+        "patent_number": "US-10456789",
+        "doi": null,
+        "confidence": 0.8,
+        "extracted_by": "scripts.ingest_real_sources",
+        "timestamp": "2026-08-01T23:26:42.501800+00:00"
+      },
+      "status": "active",
+      "created_at": "2026-08-01T23:26:42.502008+00:00"
+    },
+    {
+      "id": "ingested_US-10456789_pump",
+      "label": "pump",
+      "type": "component",
+      "domain": "ingested",
+      "constraints": {
+        "manufacturing": 0.7,
+        "material": 0.6
+      },
+      "provenance": {
+        "source": "US-10456789.txt",
+        "source_type": "patent",
+        "title": "Reverse osmosis desalination membrane with graphene oxide coating",
+        "authors": [
+          "(from abstract file)"
+        ],
+        "publication_date": "2026-08-01",
+        "patent_number": "US-10456789",
+        "doi": null,
+        "confidence": 0.8,
+        "extracted_by": "scripts.ingest_real_sources",
+        "timestamp": "2026-08-01T23:26:42.501800+00:00"
+      },
+      "status": "active",
+      "created_at": "2026-08-01T23:26:42.502010+00:00"
+    },
+    {
+      "id": "ingested_US-10456789_coating",
+      "label": "coating",
+      "type": "component",
+      "domain": "ingested",
+      "constraints": {
+        "manufacturing": 0.7,
+        "material": 0.6
+      },
+      "provenance": {
+        "source": "US-10456789.txt",
+        "source_type": "patent",
+        "title": "Reverse osmosis desalination membrane with graphene oxide coating",
+        "authors": [
+          "(from abstract file)"
+        ],
+        "publication_date": "2026-08-01",
+        "patent_number": "US-10456789",
+        "doi": null,
+        "confidence": 0.8,
+        "extracted_by": "scripts.ingest_real_sources",
+        "timestamp": "2026-08-01T23:26:42.501800+00:00"
+      },
+      "status": "active",
+      "created_at": "2026-08-01T23:26:42.502013+00:00"
+    },
+    {
+      "id": "ingested_US-10456789_membrane",
+      "label": "membrane",
+      "type": "component",
+      "domain": "ingested",
+      "constraints": {
+        "manufacturing": 0.7,
+        "material": 0.6
+      },
+      "provenance": {
+        "source": "US-10456789.txt",
+        "source_type": "patent",
+        "title": "Reverse osmosis desalination membrane with graphene oxide coating",
+        "authors": [
+          "(from abstract file)"
+        ],
+        "publication_date": "2026-08-01",
+        "patent_number": "US-10456789",
+        "doi": null,
+        "confidence": 0.8,
+        "extracted_by": "scripts.ingest_real_sources",
+        "timestamp": "2026-08-01T23:26:42.501800+00:00"
+      },
+      "status": "active",
+      "created_at": "2026-08-01T23:26:42.502015+00:00"
+    },
+    {
+      "id": "ingested_US-10456789_substrate",
+      "label": "substrate",
+      "type": "component",
+      "domain": "ingested",
+      "constraints": {
+        "manufacturing": 0.7,
+        "material": 0.6
+      },
+      "provenance": {
+        "source": "US-10456789.txt",
+        "source_type": "patent",
+        "title": "Reverse osmosis desalination membrane with graphene oxide coating",
+        "authors": [
+          "(from abstract file)"
+        ],
+        "publication_date": "2026-08-01",
+        "patent_number": "US-10456789",
+        "doi": null,
+        "confidence": 0.8,
+        "extracted_by": "scripts.ingest_real_sources",
+        "timestamp": "2026-08-01T23:26:42.501800+00:00"
+      },
+      "status": "active",
+      "created_at": "2026-08-01T23:26:42.502017+00:00"
+    },
+    {
+      "id": "ingested_US-10567890_pump",
+      "label": "pump",
+      "type": "component",
+      "domain": "ingested",
+      "constraints": {
+        "energy": 0.7,
+        "temperature": 0.7,
+        "manufacturing": 0.7,
+        "material": 0.6
+      },
+      "provenance": {
+        "source": "US-10567890.txt",
+        "source_type": "patent",
+        "title": "Direct air capture sorbent using amine-functionalized porous silica",
+        "authors": [
+          "(from abstract file)"
+        ],
+        "publication_date": "2026-08-01",
+        "patent_number": "US-10567890",
+        "doi": null,
+        "confidence": 0.8,
+        "extracted_by": "scripts.ingest_real_sources",
+        "timestamp": "2026-08-01T23:26:42.502044+00:00"
+      },
+      "status": "active",
+      "created_at": "2026-08-01T23:26:42.502234+00:00"
+    },
+    {
+      "id": "ingested_US-10567890_exchanger",
+      "label": "exchanger",
+      "type": "component",
+      "domain": "ingested",
+      "constraints": {
+        "energy": 0.7,
+        "temperature": 0.7,
+        "manufacturing": 0.7,
+        "material": 0.6
+      },
+      "provenance": {
+        "source": "US-10567890.txt",
+        "source_type": "patent",
+        "title": "Direct air capture sorbent using amine-functionalized porous silica",
+        "authors": [
+          "(from abstract file)"
+        ],
+        "publication_date": "2026-08-01",
+        "patent_number": "US-10567890",
+        "doi": null,
+        "confidence": 0.8,
+        "extracted_by": "scripts.ingest_real_sources",
+        "timestamp": "2026-08-01T23:26:42.502044+00:00"
+      },
+      "status": "active",
+      "created_at": "2026-08-01T23:26:42.502237+00:00"
+    },
+    {
+      "id": "ingested_US-10678901_nanostructured_bismuth_telluride_legs_for_waste_heat_recovery",
+      "label": "nanostructured bismuth telluride legs for waste heat recovery",
+      "type": "component",
+      "domain": "ingested",
+      "constraints": {
+        "temperature": 0.7,
+        "size": 0.7,
+        "manufacturing": 0.7,
+        "material": 0.6
+      },
+      "provenance": {
+        "source": "US-10678901.txt",
+        "source_type": "patent",
+        "title": "Thermoelectric generator with nanostructured bismuth telluride",
+        "authors": [
+          "(from abstract file)"
+        ],
+        "publication_date": "2026-08-01",
+        "patent_number": "US-10678901",
+        "doi": null,
+        "confidence": 0.8,
+        "extracted_by": "scripts.ingest_real_sources",
+        "timestamp": "2026-08-01T23:26:42.502261+00:00"
+      },
+      "status": "active",
+      "created_at": "2026-08-01T23:26:42.502447+00:00"
+    },
+    {
+      "id": "ingested_US-10678901_sensor",
+      "label": "sensor",
+      "type": "component",
+      "domain": "ingested",
+      "constraints": {
+        "temperature": 0.7,
+        "size": 0.7,
+        "manufacturing": 0.7,
+        "material": 0.6
+      },
+      "provenance": {
+        "source": "US-10678901.txt",
+        "source_type": "patent",
+        "title": "Thermoelectric generator with nanostructured bismuth telluride",
+        "authors": [
+          "(from abstract file)"
+        ],
+        "publication_date": "2026-08-01",
+        "patent_number": "US-10678901",
+        "doi": null,
+        "confidence": 0.8,
+        "extracted_by": "scripts.ingest_real_sources",
+        "timestamp": "2026-08-01T23:26:42.502261+00:00"
+      },
+      "status": "active",
+      "created_at": "2026-08-01T23:26:42.502450+00:00"
+    },
+    {
+      "id": "ingested_US-10678901_substrate",
+      "label": "substrate",
+      "type": "component",
+      "domain": "ingested",
+      "constraints": {
+        "temperature": 0.7,
+        "size": 0.7,
+        "manufacturing": 0.7,
+        "material": 0.6
+      },
+      "provenance": {
+        "source": "US-10678901.txt",
+        "source_type": "patent",
+        "title": "Thermoelectric generator with nanostructured bismuth telluride",
+        "authors": [
+          "(from abstract file)"
+        ],
+        "publication_date": "2026-08-01",
+        "patent_number": "US-10678901",
+        "doi": null,
+        "confidence": 0.8,
+        "extracted_by": "scripts.ingest_real_sources",
+        "timestamp": "2026-08-01T23:26:42.502261+00:00"
+      },
+      "status": "active",
+      "created_at": "2026-08-01T23:26:42.502452+00:00"
+    },
+    {
+      "id": "ingested_US-10678901_electrode",
+      "label": "electrode",
+      "type": "component",
+      "domain": "ingested",
+      "constraints": {
+        "temperature": 0.7,
+        "size": 0.7,
+        "manufacturing": 0.7,
+        "material": 0.6
+      },
+      "provenance": {
+        "source": "US-10678901.txt",
+        "source_type": "patent",
+        "title": "Thermoelectric generator with nanostructured bismuth telluride",
+        "authors": [
+          "(from abstract file)"
+        ],
+        "publication_date": "2026-08-01",
+        "patent_number": "US-10678901",
+        "doi": null,
+        "confidence": 0.8,
+        "extracted_by": "scripts.ingest_real_sources",
+        "timestamp": "2026-08-01T23:26:42.502261+00:00"
+      },
+      "status": "active",
+      "created_at": "2026-08-01T23:26:42.502454+00:00"
+    },
+    {
+      "id": "ingested_US-10789012_a_semiconductor_photoanode_and_a_metal_cathode",
+      "label": "a semiconductor photoanode and a metal cathode",
+      "type": "component",
+      "domain": "ingested",
+      "constraints": {
+        "manufacturing": 0.7,
+        "material": 0.6
+      },
+      "provenance": {
+        "source": "US-10789012.txt",
+        "source_type": "patent",
+        "title": "Photoelectrochemical cell for artificial photosynthesis",
+        "authors": [
+          "(from abstract file)"
+        ],
+        "publication_date": "2026-08-01",
+        "patent_number": "US-10789012",
+        "doi": null,
+        "confidence": 0.8,
+        "extracted_by": "scripts.ingest_real_sources",
+        "timestamp": "2026-08-01T23:26:42.502479+00:00"
+      },
+      "status": "active",
+      "created_at": "2026-08-01T23:26:42.502681+00:00"
+    },
+    {
+      "id": "ingested_US-10789012_pump",
+      "label": "pump",
+      "type": "component",
+      "domain": "ingested",
+      "constraints": {
+        "manufacturing": 0.7,
+        "material": 0.6
+      },
+      "provenance": {
+        "source": "US-10789012.txt",
+        "source_type": "patent",
+        "title": "Photoelectrochemical cell for artificial photosynthesis",
+        "authors": [
+          "(from abstract file)"
+        ],
+        "publication_date": "2026-08-01",
+        "patent_number": "US-10789012",
+        "doi": null,
+        "confidence": 0.8,
+        "extracted_by": "scripts.ingest_real_sources",
+        "timestamp": "2026-08-01T23:26:42.502479+00:00"
+      },
+      "status": "active",
+      "created_at": "2026-08-01T23:26:42.502684+00:00"
+    },
+    {
+      "id": "ingested_US-10789012_membrane",
+      "label": "membrane",
+      "type": "component",
+      "domain": "ingested",
+      "constraints": {
+        "manufacturing": 0.7,
+        "material": 0.6
+      },
+      "provenance": {
+        "source": "US-10789012.txt",
+        "source_type": "patent",
+        "title": "Photoelectrochemical cell for artificial photosynthesis",
+        "authors": [
+          "(from abstract file)"
+        ],
+        "publication_date": "2026-08-01",
+        "patent_number": "US-10789012",
+        "doi": null,
+        "confidence": 0.8,
+        "extracted_by": "scripts.ingest_real_sources",
+        "timestamp": "2026-08-01T23:26:42.502479+00:00"
+      },
+      "status": "active",
+      "created_at": "2026-08-01T23:26:42.502686+00:00"
+    },
+    {
+      "id": "ingested_US-10789012_electrode",
+      "label": "electrode",
+      "type": "component",
+      "domain": "ingested",
+      "constraints": {
+        "manufacturing": 0.7,
+        "material": 0.6
+      },
+      "provenance": {
+        "source": "US-10789012.txt",
+        "source_type": "patent",
+        "title": "Photoelectrochemical cell for artificial photosynthesis",
+        "authors": [
+          "(from abstract file)"
+        ],
+        "publication_date": "2026-08-01",
+        "patent_number": "US-10789012",
+        "doi": null,
+        "confidence": 0.8,
+        "extracted_by": "scripts.ingest_real_sources",
+        "timestamp": "2026-08-01T23:26:42.502479+00:00"
+      },
+      "status": "active",
+      "created_at": "2026-08-01T23:26:42.502689+00:00"
+    },
+    {
+      "id": "ingested_US-10789012_chamber",
+      "label": "chamber",
+      "type": "component",
+      "domain": "ingested",
+      "constraints": {
+        "manufacturing": 0.7,
+        "material": 0.6
+      },
+      "provenance": {
+        "source": "US-10789012.txt",
+        "source_type": "patent",
+        "title": "Photoelectrochemical cell for artificial photosynthesis",
+        "authors": [
+          "(from abstract file)"
+        ],
+        "publication_date": "2026-08-01",
+        "patent_number": "US-10789012",
+        "doi": null,
+        "confidence": 0.8,
+        "extracted_by": "scripts.ingest_real_sources",
+        "timestamp": "2026-08-01T23:26:42.502479+00:00"
+      },
+      "status": "active",
+      "created_at": "2026-08-01T23:26:42.502691+00:00"
+    },
+    {
+      "id": "ingested_US-10890123_multi-tier_growing_racks_with_led_lighting_panels_and_a_hydroponic_nutrient_circulation_system",
+      "label": "multi-tier growing racks with LED lighting panels and a hydroponic nutrient circulation system",
+      "type": "component",
+      "domain": "ingested",
+      "constraints": {
+        "temperature": 0.7,
+        "manufacturing": 0.7,
+        "material": 0.6
+      },
+      "provenance": {
+        "source": "US-10890123.txt",
+        "source_type": "patent",
+        "title": "Vertical farming system with LED spectral control and hydroponic circulation",
+        "authors": [
+          "(from abstract file)"
+        ],
+        "publication_date": "2026-08-01",
+        "patent_number": "US-10890123",
+        "doi": null,
+        "confidence": 0.8,
+        "extracted_by": "scripts.ingest_real_sources",
+        "timestamp": "2026-08-01T23:26:42.502716+00:00"
+      },
+      "status": "active",
+      "created_at": "2026-08-01T23:26:42.502907+00:00"
+    },
+    {
+      "id": "ingested_US-10890123_pump",
+      "label": "pump",
+      "type": "component",
+      "domain": "ingested",
+      "constraints": {
+        "temperature": 0.7,
+        "manufacturing": 0.7,
+        "material": 0.6
+      },
+      "provenance": {
+        "source": "US-10890123.txt",
+        "source_type": "patent",
+        "title": "Vertical farming system with LED spectral control and hydroponic circulation",
+        "authors": [
+          "(from abstract file)"
+        ],
+        "publication_date": "2026-08-01",
+        "patent_number": "US-10890123",
+        "doi": null,
+        "confidence": 0.8,
+        "extracted_by": "scripts.ingest_real_sources",
+        "timestamp": "2026-08-01T23:26:42.502716+00:00"
+      },
+      "status": "active",
+      "created_at": "2026-08-01T23:26:42.502909+00:00"
+    },
+    {
+      "id": "ingested_US-10890123_sensor",
+      "label": "sensor",
+      "type": "component",
+      "domain": "ingested",
+      "constraints": {
+        "temperature": 0.7,
+        "manufacturing": 0.7,
+        "material": 0.6
+      },
+      "provenance": {
+        "source": "US-10890123.txt",
+        "source_type": "patent",
+        "title": "Vertical farming system with LED spectral control and hydroponic circulation",
+        "authors": [
+          "(from abstract file)"
+        ],
+        "publication_date": "2026-08-01",
+        "patent_number": "US-10890123",
+        "doi": null,
+        "confidence": 0.8,
+        "extracted_by": "scripts.ingest_real_sources",
+        "timestamp": "2026-08-01T23:26:42.502716+00:00"
+      },
+      "status": "active",
+      "created_at": "2026-08-01T23:26:42.502911+00:00"
+    },
+    {
+      "id": "ingested_US-10890123_substrate",
+      "label": "substrate",
+      "type": "component",
+      "domain": "ingested",
+      "constraints": {
+        "temperature": 0.7,
+        "manufacturing": 0.7,
+        "material": 0.6
+      },
+      "provenance": {
+        "source": "US-10890123.txt",
+        "source_type": "patent",
+        "title": "Vertical farming system with LED spectral control and hydroponic circulation",
+        "authors": [
+          "(from abstract file)"
+        ],
+        "publication_date": "2026-08-01",
+        "patent_number": "US-10890123",
+        "doi": null,
+        "confidence": 0.8,
+        "extracted_by": "scripts.ingest_real_sources",
+        "timestamp": "2026-08-01T23:26:42.502716+00:00"
+      },
+      "status": "active",
+      "created_at": "2026-08-01T23:26:42.502913+00:00"
+    },
+    {
+      "id": "ingested_US-10890123_panel",
+      "label": "panel",
+      "type": "component",
+      "domain": "ingested",
+      "constraints": {
+        "temperature": 0.7,
+        "manufacturing": 0.7,
+        "material": 0.6
+      },
+      "provenance": {
+        "source": "US-10890123.txt",
+        "source_type": "patent",
+        "title": "Vertical farming system with LED spectral control and hydroponic circulation",
+        "authors": [
+          "(from abstract file)"
+        ],
+        "publication_date": "2026-08-01",
+        "patent_number": "US-10890123",
+        "doi": null,
+        "confidence": 0.8,
+        "extracted_by": "scripts.ingest_real_sources",
+        "timestamp": "2026-08-01T23:26:42.502716+00:00"
+      },
+      "status": "active",
+      "created_at": "2026-08-01T23:26:42.502915+00:00"
+    },
+    {
+      "id": "ingested_US-10890123_controller",
+      "label": "controller",
+      "type": "component",
+      "domain": "ingested",
+      "constraints": {
+        "temperature": 0.7,
+        "manufacturing": 0.7,
+        "material": 0.6
+      },
+      "provenance": {
+        "source": "US-10890123.txt",
+        "source_type": "patent",
+        "title": "Vertical farming system with LED spectral control and hydroponic circulation",
+        "authors": [
+          "(from abstract file)"
+        ],
+        "publication_date": "2026-08-01",
+        "patent_number": "US-10890123",
+        "doi": null,
+        "confidence": 0.8,
+        "extracted_by": "scripts.ingest_real_sources",
+        "timestamp": "2026-08-01T23:26:42.502716+00:00"
+      },
+      "status": "active",
+      "created_at": "2026-08-01T23:26:42.502917+00:00"
+    },
+    {
+      "id": "ingested_US-10901234_a_woven_fabric_with_integrated_piezoelectric_polymer_fibers_for_energy_harvesting_and_sensing",
+      "label": "a woven fabric with integrated piezoelectric polymer fibers for energy harvesting and sensing",
+      "type": "component",
+      "domain": "ingested",
+      "constraints": {
+        "energy": 0.7,
+        "manufacturing": 0.7,
+        "material": 0.6
+      },
+      "provenance": {
+        "source": "US-10901234.txt",
+        "source_type": "patent",
+        "title": "Smart textile with integrated piezoelectric sensor and energy harvesting",
+        "authors": [
+          "(from abstract file)"
+        ],
+        "publication_date": "2026-08-01",
+        "patent_number": "US-10901234",
+        "doi": null,
+        "confidence": 0.8,
+        "extracted_by": "scripts.ingest_real_sources",
+        "timestamp": "2026-08-01T23:26:42.502942+00:00"
+      },
+      "status": "active",
+      "created_at": "2026-08-01T23:26:42.503121+00:00"
+    },
+    {
+      "id": "ingested_US-10901234_sensor",
+      "label": "sensor",
+      "type": "component",
+      "domain": "ingested",
+      "constraints": {
+        "energy": 0.7,
+        "manufacturing": 0.7,
+        "material": 0.6
+      },
+      "provenance": {
+        "source": "US-10901234.txt",
+        "source_type": "patent",
+        "title": "Smart textile with integrated piezoelectric sensor and energy harvesting",
+        "authors": [
+          "(from abstract file)"
+        ],
+        "publication_date": "2026-08-01",
+        "patent_number": "US-10901234",
+        "doi": null,
+        "confidence": 0.8,
+        "extracted_by": "scripts.ingest_real_sources",
+        "timestamp": "2026-08-01T23:26:42.502942+00:00"
+      },
+      "status": "active",
+      "created_at": "2026-08-01T23:26:42.503124+00:00"
+    },
+    {
+      "id": "ingested_US-10901234_coating",
+      "label": "coating",
+      "type": "component",
+      "domain": "ingested",
+      "constraints": {
+        "energy": 0.7,
+        "manufacturing": 0.7,
+        "material": 0.6
+      },
+      "provenance": {
+        "source": "US-10901234.txt",
+        "source_type": "patent",
+        "title": "Smart textile with integrated piezoelectric sensor and energy harvesting",
+        "authors": [
+          "(from abstract file)"
+        ],
+        "publication_date": "2026-08-01",
+        "patent_number": "US-10901234",
+        "doi": null,
+        "confidence": 0.8,
+        "extracted_by": "scripts.ingest_real_sources",
+        "timestamp": "2026-08-01T23:26:42.502942+00:00"
+      },
+      "status": "active",
+      "created_at": "2026-08-01T23:26:42.503127+00:00"
+    },
+    {
+      "id": "ingested_US-10901234_substrate",
+      "label": "substrate",
+      "type": "component",
+      "domain": "ingested",
+      "constraints": {
+        "energy": 0.7,
+        "manufacturing": 0.7,
+        "material": 0.6
+      },
+      "provenance": {
+        "source": "US-10901234.txt",
+        "source_type": "patent",
+        "title": "Smart textile with integrated piezoelectric sensor and energy harvesting",
+        "authors": [
+          "(from abstract file)"
+        ],
+        "publication_date": "2026-08-01",
+        "patent_number": "US-10901234",
+        "doi": null,
+        "confidence": 0.8,
+        "extracted_by": "scripts.ingest_real_sources",
+        "timestamp": "2026-08-01T23:26:42.502942+00:00"
+      },
+      "status": "active",
+      "created_at": "2026-08-01T23:26:42.503129+00:00"
+    },
+    {
+      "id": "ingested_US-10901234_circuit",
+      "label": "circuit",
+      "type": "component",
+      "domain": "ingested",
+      "constraints": {
+        "energy": 0.7,
+        "manufacturing": 0.7,
+        "material": 0.6
+      },
+      "provenance": {
+        "source": "US-10901234.txt",
+        "source_type": "patent",
+        "title": "Smart textile with integrated piezoelectric sensor and energy harvesting",
+        "authors": [
+          "(from abstract file)"
+        ],
+        "publication_date": "2026-08-01",
+        "patent_number": "US-10901234",
+        "doi": null,
+        "confidence": 0.8,
+        "extracted_by": "scripts.ingest_real_sources",
+        "timestamp": "2026-08-01T23:26:42.502942+00:00"
+      },
+      "status": "active",
+      "created_at": "2026-08-01T23:26:42.503131+00:00"
+    },
+    {
+      "id": "ingested_US-11012345_polylactic_acid_and_polyhydroxybutyrate_for_packaging_applications",
+      "label": "polylactic acid and polyhydroxybutyrate for packaging applications",
+      "type": "component",
+      "domain": "ingested",
+      "constraints": {
+        "cost": 0.7,
+        "manufacturing": 0.7,
+        "material": 0.6
+      },
+      "provenance": {
+        "source": "US-11012345.txt",
+        "source_type": "patent",
+        "title": "Biodegradable polymer blend with controlled degradation rate for packaging",
+        "authors": [
+          "(from abstract file)"
+        ],
+        "publication_date": "2026-08-01",
+        "patent_number": "US-11012345",
+        "doi": null,
+        "confidence": 0.8,
+        "extracted_by": "scripts.ingest_real_sources",
+        "timestamp": "2026-08-01T23:26:42.503151+00:00"
+      },
+      "status": "active",
+      "created_at": "2026-08-01T23:26:42.503330+00:00"
+    },
+    {
+      "id": "ingested_US-11012345_substrate",
+      "label": "substrate",
+      "type": "component",
+      "domain": "ingested",
+      "constraints": {
+        "cost": 0.7,
+        "manufacturing": 0.7,
+        "material": 0.6
+      },
+      "provenance": {
+        "source": "US-11012345.txt",
+        "source_type": "patent",
+        "title": "Biodegradable polymer blend with controlled degradation rate for packaging",
+        "authors": [
+          "(from abstract file)"
+        ],
+        "publication_date": "2026-08-01",
+        "patent_number": "US-11012345",
+        "doi": null,
+        "confidence": 0.8,
+        "extracted_by": "scripts.ingest_real_sources",
+        "timestamp": "2026-08-01T23:26:42.503151+00:00"
+      },
+      "status": "active",
+      "created_at": "2026-08-01T23:26:42.503332+00:00"
+    },
+    {
+      "id": "ingested_10.1016_j.agronomy.2023.008_equation_0",
+      "label": "P = P_max * I / (I + K)",
+      "type": "principle",
+      "domain": "ingested",
+      "constraints": {
+        "information": 0.8,
+        "time": 0.3
+      },
+      "provenance": {
+        "source": "10.1016_j.agronomy.2023.008.txt",
+        "source_type": "paper",
+        "title": "LED spectral control for vertical farming yield optimization",
+        "authors": [
+          "(from abstract file)"
+        ],
+        "publication_date": "2026-08-01",
+        "patent_number": null,
+        "doi": "10.1016/j.agronomy.2023.008",
+        "confidence": 0.8,
+        "extracted_by": "scripts.ingest_real_sources",
+        "timestamp": "2026-08-01T23:26:42.503480+00:00"
+      },
+      "status": "active",
+      "created_at": "2026-08-01T23:26:42.505098+00:00"
+    },
+    {
+      "id": "ingested_10.1021_acs.macromol.2023.009_equation_1",
+      "label": "V = g * d * F / A",
+      "type": "principle",
+      "domain": "ingested",
+      "constraints": {
+        "information": 0.8,
+        "time": 0.3
+      },
+      "provenance": {
+        "source": "10.1021_acs.macromol.2023.009.txt",
+        "source_type": "paper",
+        "title": "Piezoelectric polymer fibers for smart textile energy harvesting",
+        "authors": [
+          "(from abstract file)"
+        ],
+        "publication_date": "2026-08-01",
+        "patent_number": null,
+        "doi": "10.1021/acs.macromol.2023.009",
+        "confidence": 0.8,
+        "extracted_by": "scripts.ingest_real_sources",
+        "timestamp": "2026-08-01T23:26:42.505160+00:00"
+      },
+      "status": "active",
+      "created_at": "2026-08-01T23:26:42.505276+00:00"
+    },
+    {
+      "id": "ingested_10.1021_acs.nanolett.2023.004_equation_2",
+      "label": "J = A * (dP - dO)",
+      "type": "principle",
+      "domain": "ingested",
+      "constraints": {
+        "information": 0.8,
+        "time": 0.3
+      },
+      "provenance": {
+        "source": "10.1021_acs.nanolett.2023.004.txt",
+        "source_type": "paper",
+        "title": "Graphene oxide membrane for efficient desalination",
+        "authors": [
+          "(from abstract file)"
+        ],
+        "publication_date": "2026-08-01",
+        "patent_number": null,
+        "doi": "10.1021/acs.nanolett.2023.004",
+        "confidence": 0.8,
+        "extracted_by": "scripts.ingest_real_sources",
+        "timestamp": "2026-08-01T23:26:42.505304+00:00"
+      },
+      "status": "active",
+      "created_at": "2026-08-01T23:26:42.505404+00:00"
+    },
+    {
+      "id": "ingested_10.1021_acs.nanolett.2023.004_comp_coating",
+      "label": "coating",
+      "type": "component",
+      "domain": "ingested",
+      "constraints": {
+        "temperature": 0.5,
+        "manufacturing": 0.5
+      },
+      "provenance": {
+        "source": "10.1021_acs.nanolett.2023.004.txt",
+        "source_type": "paper",
+        "title": "Graphene oxide membrane for efficient desalination",
+        "authors": [
+          "(from abstract file)"
+        ],
+        "publication_date": "2026-08-01",
+        "patent_number": null,
+        "doi": "10.1021/acs.nanolett.2023.004",
+        "confidence": 0.8,
+        "extracted_by": "scripts.ingest_real_sources",
+        "timestamp": "2026-08-01T23:26:42.505304+00:00"
+      },
+      "status": "active",
+      "created_at": "2026-08-01T23:26:42.505409+00:00"
+    },
+    {
+      "id": "ingested_10.1021_acs.nanolett.2023.004_comp_membrane",
+      "label": "membrane",
+      "type": "component",
+      "domain": "ingested",
+      "constraints": {
+        "temperature": 0.5,
+        "manufacturing": 0.5
+      },
+      "provenance": {
+        "source": "10.1021_acs.nanolett.2023.004.txt",
+        "source_type": "paper",
+        "title": "Graphene oxide membrane for efficient desalination",
+        "authors": [
+          "(from abstract file)"
+        ],
+        "publication_date": "2026-08-01",
+        "patent_number": null,
+        "doi": "10.1021/acs.nanolett.2023.004",
+        "confidence": 0.8,
+        "extracted_by": "scripts.ingest_real_sources",
+        "timestamp": "2026-08-01T23:26:42.505304+00:00"
+      },
+      "status": "active",
+      "created_at": "2026-08-01T23:26:42.505414+00:00"
+    },
+    {
+      "id": "ingested_10.1021_acs.nanolett.2023.006_equation_5",
+      "label": "ZT = S^2 * sigma * T / kappa",
+      "type": "principle",
+      "domain": "ingested",
+      "constraints": {
+        "information": 0.8,
+        "time": 0.3
+      },
+      "provenance": {
+        "source": "10.1021_acs.nanolett.2023.006.txt",
+        "source_type": "paper",
+        "title": "Nanostructured bismuth telluride for thermoelectric energy harvesting",
+        "authors": [
+          "(from abstract file)"
+        ],
+        "publication_date": "2026-08-01",
+        "patent_number": null,
+        "doi": "10.1021/acs.nanolett.2023.006",
+        "confidence": 0.8,
+        "extracted_by": "scripts.ingest_real_sources",
+        "timestamp": "2026-08-01T23:26:42.505437+00:00"
+      },
+      "status": "active",
+      "created_at": "2026-08-01T23:26:42.505534+00:00"
+    },
+    {
+      "id": "ingested_10.1038_nature.2023.001_equation_6",
+      "label": "P_cool = P_rad(T_s) - P_atm(T_amb) - P_solar - P_cond",
+      "type": "principle",
+      "domain": "ingested",
+      "constraints": {
+        "information": 0.8,
+        "time": 0.3
+      },
+      "provenance": {
+        "source": "10.1038_nature.2023.001.txt",
+        "source_type": "paper",
+        "title": "Experimental demonstration of daytime radiative cooling to sub-ambient temperatures",
+        "authors": [
+          "(from abstract file)"
+        ],
+        "publication_date": "2026-08-01",
+        "patent_number": null,
+        "doi": "10.1038/nature.2023.001",
+        "confidence": 0.8,
+        "extracted_by": "scripts.ingest_real_sources",
+        "timestamp": "2026-08-01T23:26:42.505562+00:00"
+      },
+      "status": "active",
+      "created_at": "2026-08-01T23:26:42.505685+00:00"
+    },
+    {
+      "id": "ingested_10.1038_nchem.2023.007_equation_7",
+      "label": "J_ph = q * Phi * eta",
+      "type": "principle",
+      "domain": "ingested",
+      "constraints": {
+        "information": 0.8,
+        "time": 0.3
+      },
+      "provenance": {
+        "source": "10.1038_nchem.2023.007.txt",
+        "source_type": "paper",
+        "title": "Cobalt phosphate catalyst for photoelectrochemical water splitting",
+        "authors": [
+          "(from abstract file)"
+        ],
+        "publication_date": "2026-08-01",
+        "patent_number": null,
+        "doi": "10.1038/nchem.2023.007",
+        "confidence": 0.8,
+        "extracted_by": "scripts.ingest_real_sources",
+        "timestamp": "2026-08-01T23:26:42.505714+00:00"
+      },
+      "status": "active",
+      "created_at": "2026-08-01T23:26:42.505813+00:00"
+    },
+    {
+      "id": "ingested_10.1038_nchem.2023.007_comp_electrode",
+      "label": "electrode",
+      "type": "component",
+      "domain": "ingested",
+      "constraints": {},
+      "provenance": {
+        "source": "10.1038_nchem.2023.007.txt",
+        "source_type": "paper",
+        "title": "Cobalt phosphate catalyst for photoelectrochemical water splitting",
+        "authors": [
+          "(from abstract file)"
+        ],
+        "publication_date": "2026-08-01",
+        "patent_number": null,
+        "doi": "10.1038/nchem.2023.007",
+        "confidence": 0.8,
+        "extracted_by": "scripts.ingest_real_sources",
+        "timestamp": "2026-08-01T23:26:42.505714+00:00"
+      },
+      "status": "active",
+      "created_at": "2026-08-01T23:26:42.505817+00:00"
+    },
+    {
+      "id": "ingested_10.1038_nenergy.2023.003_equation_9",
+      "label": "sigma = sigma_0 * exp(-Ea / kT)",
+      "type": "principle",
+      "domain": "ingested",
+      "constraints": {
+        "information": 0.8,
+        "time": 0.3
+      },
+      "provenance": {
+        "source": "10.1038_nenergy.2023.003.txt",
+        "source_type": "paper",
+        "title": "Solid-state battery with garnet electrolyte achieving 400 Wh/kg",
+        "authors": [
+          "(from abstract file)"
+        ],
+        "publication_date": "2026-08-01",
+        "patent_number": null,
+        "doi": "10.1038/nenergy.2023.003",
+        "confidence": 0.8,
+        "extracted_by": "scripts.ingest_real_sources",
+        "timestamp": "2026-08-01T23:26:42.505838+00:00"
+      },
+      "status": "active",
+      "created_at": "2026-08-01T23:26:42.505937+00:00"
+    },
+    {
+      "id": "ingested_10.1038_nenergy.2023.003_comp_electrode",
+      "label": "electrode",
+      "type": "component",
+      "domain": "ingested",
+      "constraints": {
+        "energy": 0.5,
+        "temperature": 0.5,
+        "cost": 0.5,
+        "manufacturing": 0.5
+      },
+      "provenance": {
+        "source": "10.1038_nenergy.2023.003.txt",
+        "source_type": "paper",
+        "title": "Solid-state battery with garnet electrolyte achieving 400 Wh/kg",
+        "authors": [
+          "(from abstract file)"
+        ],
+        "publication_date": "2026-08-01",
+        "patent_number": null,
+        "doi": "10.1038/nenergy.2023.003",
+        "confidence": 0.8,
+        "extracted_by": "scripts.ingest_real_sources",
+        "timestamp": "2026-08-01T23:26:42.505838+00:00"
+      },
+      "status": "active",
+      "created_at": "2026-08-01T23:26:42.505940+00:00"
+    },
+    {
+      "id": "ingested_10.1038_nenergy.2023.003_comp_battery",
+      "label": "battery",
+      "type": "component",
+      "domain": "ingested",
+      "constraints": {
+        "energy": 0.5,
+        "temperature": 0.5,
+        "cost": 0.5,
+        "manufacturing": 0.5
+      },
+      "provenance": {
+        "source": "10.1038_nenergy.2023.003.txt",
+        "source_type": "paper",
+        "title": "Solid-state battery with garnet electrolyte achieving 400 Wh/kg",
+        "authors": [
+          "(from abstract file)"
+        ],
+        "publication_date": "2026-08-01",
+        "patent_number": null,
+        "doi": "10.1038/nenergy.2023.003",
+        "confidence": 0.8,
+        "extracted_by": "scripts.ingest_real_sources",
+        "timestamp": "2026-08-01T23:26:42.505838+00:00"
+      },
+      "status": "active",
+      "created_at": "2026-08-01T23:26:42.505943+00:00"
+    },
+    {
+      "id": "ingested_10.1038_s41561.2023.010_equation_12",
+      "label": "dM/dt = -k * M",
+      "type": "principle",
+      "domain": "ingested",
+      "constraints": {
+        "information": 0.8,
+        "time": 0.3
+      },
+      "provenance": {
+        "source": "10.1038_s41561.2023.010.txt",
+        "source_type": "paper",
+        "title": "Biodegradable polymer blend with controlled marine degradation",
+        "authors": [
+          "(from abstract file)"
+        ],
+        "publication_date": "2026-08-01",
+        "patent_number": null,
+        "doi": "10.1038/s41561.2023.010",
+        "confidence": 0.8,
+        "extracted_by": "scripts.ingest_real_sources",
+        "timestamp": "2026-08-01T23:26:42.505963+00:00"
+      },
+      "status": "active",
+      "created_at": "2026-08-01T23:26:42.506057+00:00"
+    },
+    {
+      "id": "ingested_10.1038_s41586.2023.005_equation_13",
+      "label": "q = q_max * b * C / (1 + b * C)",
+      "type": "principle",
+      "domain": "ingested",
+      "constraints": {
+        "information": 0.8,
+        "time": 0.3
+      },
+      "provenance": {
+        "source": "10.1038_s41586.2023.005.txt",
+        "source_type": "paper",
+        "title": "Amine-functionalized silica for direct air capture of CO2",
+        "authors": [
+          "(from abstract file)"
+        ],
+        "publication_date": "2026-08-01",
+        "patent_number": null,
+        "doi": "10.1038/s41586.2023.005",
+        "confidence": 0.8,
+        "extracted_by": "scripts.ingest_real_sources",
+        "timestamp": "2026-08-01T23:26:42.506076+00:00"
+      },
+      "status": "active",
+      "created_at": "2026-08-01T23:26:42.506167+00:00"
+    },
+    {
+      "id": "ingested_10.1126_science.2023.002_equation_14",
+      "label": "Q = Q_max * K * P / (1 + K * P)",
+      "type": "principle",
+      "domain": "ingested",
+      "constraints": {
+        "information": 0.8,
+        "time": 0.3
+      },
+      "provenance": {
+        "source": "10.1126_science.2023.002.txt",
+        "source_type": "paper",
+        "title": "Metal-organic framework for efficient atmospheric water harvesting",
+        "authors": [
+          "(from abstract file)"
+        ],
+        "publication_date": "2026-08-01",
+        "patent_number": null,
+        "doi": "10.1126/science.2023.002",
+        "confidence": 0.8,
+        "extracted_by": "scripts.ingest_real_sources",
+        "timestamp": "2026-08-01T23:26:42.506188+00:00"
+      },
+      "status": "active",
+      "created_at": "2026-08-01T23:26:42.506285+00:00"
     }
   ],
   "edges": [

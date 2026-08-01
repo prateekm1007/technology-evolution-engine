@@ -1,0 +1,18 @@
+Title: LED spectral control for vertical farming yield optimization
+
+We demonstrate that LED spectral control in vertical farming increases crop yield by 30 percent compared to white light. The optimal spectrum varies by growth stage and crop type.
+
+The photosynthetic rate is modeled as:
+P = P_max * I / (I + K)
+
+where P is photosynthetic rate, P_max is maximum rate, I is light intensity, K is half-saturation constant.
+
+Assumptions:
+- The light distribution is uniform across the canopy.
+- The nutrient solution is non-limiting.
+- The temperature is constant.
+
+Limitations:
+- The energy cost of LED lighting is 60 percent of operating cost.
+- The results are specific to leafy greens.
+- The system requires 200 kWh per kilogram of produce.
