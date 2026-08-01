@@ -243,3 +243,44 @@ fail loudly, not with a traceback.
 **Root cause:** the mission statement describes capabilities the system does not yet have. Named components exist as stubs that match the mission's vocabulary without the substance the words imply.
 **Severity:** informational — this is not a bug, it's a gap between mission and reality. The scorecard is recorded for calibration.
 **Status:** OPEN — recorded for future planning. No code change needed; the finding is about capability gaps, not data corruption.
+
+---
+
+### F-013 — External auditor's updated scorecard + 5-phase roadmap (verified independently)
+**Found:** external audit (post-F-011 verification).
+**Verified independently:** all three key claims checked against the live repo:
+  - 0/577 graph nodes have non-empty constraints: **CONFIRMED** (Law 2 unimplemented on the actual graph)
+  - Convergence detection doesn't exist: **CONFIRMED** (all "converge" mentions are docstrings saying "does not yet do that")
+  - invention_compiler is a parallel vertical slice: **CONFIRMED** (reads graph, never writes back; constraints computed for test problem not propagated)
+
+**Updated scorecard:**
+
+| Dimension | Last | Now | Why |
+|---|---|---|---|
+| Software correctness | 6 | 7 | 236 tests, real regression coverage for F-005/F-011 class |
+| Historical permanence (Law 7) | 1 | 4 | Both F-005 and F-011 fixed with regression tests |
+| Prediction→verification loop (Law 8) | 0 | 1 | Ledger readable now, but zero completed cycles |
+| Data breadth | 1 | 1 | Unchanged — no real patent/literature ingestion |
+| Constraint surface (Law 2) | 0 | 0 | Unchanged on the artifact that matters — the seed graph |
+| Convergence detection | 0 | 0 | Unchanged, now self-documented as not-yet-done |
+| Feasible vs. premature | 2 | 2 | Scoring still templated/non-discriminative |
+| Multi-audience surface | 1 | 1 | Unchanged |
+| Continuously evolving map | 1 | 1 | Unchanged — still one seed batch |
+| Track record | 1 | 1 | Unchanged — 3 candidates, 0 approved |
+
+**The separation problem:** two parallel systems exist:
+  - System A: graph, historian, ledger, agents (the original architecture)
+  - System B: invention_compiler, benchmarks, loops, hypotheses (the new vertical slice)
+  Knowledge accumulates in System B without propagating back to System A.
+
+**CTO's 5-phase roadmap (canonical forward plan):**
+
+Phase 1 — Close the loop: complete one prediction → observe one outcome → reconcile → record permanently.
+Phase 2 — Unify representations: constraints computed by invention_compiler must propagate back to the graph, historian, ledger.
+Phase 3 — Ingest external evidence: patents, literature, regulations, economics, manufacturing.
+Phase 4 — Define convergence mathematically: only after the definition exists should implementation begin.
+Phase 5 — Audience specialization: researchers, corporations, investors, governments.
+
+**Severity:** informational — this is a roadmap, not a bug. But the separation problem and the empty constraint surface are the two most important architectural findings in the entire audit history.
+
+**Status:** OPEN — recorded as the canonical forward plan. The Maestro Loop will execute these phases one at a time.

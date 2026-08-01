@@ -103,7 +103,57 @@ Observation
 
 - **Cycle 1 (Gap 1):** commit `bdfca58` (observe) → `194089d` (modify simulation_module.py + re-execute batch_002 + delta). Decision: YES.
 - **Cycle 2 (Gap 2+7):** commit `194089d` (learn) → `a701d77` (modify dependency_module.py + re-execute batch_003 + delta). Decision: YES.
-- **Cycle 3 (Gap 3):** next. Currently at PHASE 3 (gap analysis complete) → PHASE 4 (selection: Gap 3) → PHASE 5 (hypothesis: not yet written).
+- **Cycle 3 (Gap 3):** commit `a701d77` (learn) → `d3cb446` (modify blueprint_module.py + re-execute batch_004 + delta). Decision: YES.
+- **Cycle 4 (Gap 4):** commit `d3cb446` (learn) → `d76bea4` (modify orchestrator.py + re-execute batch_005 + delta). Decision: YES.
+- **Cycle 5 (Gap 5):** commit `d76bea4` (learn) → `8ce8637` (modify prototype_module.py + re-execute batch_006 + delta). Decision: YES.
+- **F-011 fix:** commit `8ce8637` → `e54ce03` (repair corrupted historian/*.json + mode4_constraint_leverage.json). Not a Maestro cycle — a critical data-integrity fix.
+
+### External auditor's verified findings (commit `e54ce03`)
+
+An external auditor independently verified three key claims:
+
+1. **0/577 graph nodes have constraints** — Law 2's constraint surface is unimplemented on the actual seed graph. The invention_compiler computes constraints for its test problem but never writes them back.
+2. **Convergence detection doesn't exist** — every "converge" mention is a docstring honestly saying "does not yet do that."
+3. **invention_compiler is a parallel vertical slice** — it reads the graph but never writes back. Knowledge accumulates in System B without propagating to System A.
+
+### The separation problem
+
+```text
+System A (original architecture)
+    ├── civilization_graph.json (577 nodes, 0 constraints)
+    ├── historian/*.json (was corrupted, now repaired)
+    ├── ledger/predictions.jsonl (was corrupted, now clean)
+    └── engine/*.py (stubs: Historian 17 lines, Resurrection 18 lines)
+
+System B (invention compiler)
+    ├── invention_compiler/ (15 modules, 4000+ lines)
+    ├── benchmarks/compiler/ (6 cases)
+    ├── loops/ (5 loops, 2 closed)
+    └── hypothesis/ (the Hypothesis class)
+```
+
+Knowledge accumulates in System B without propagating back to System A. This is the most important architectural finding in the audit history.
+
+### CTO's 5-phase roadmap (canonical forward plan)
+
+Per the CTO and external auditor, the next phases are:
+
+**Phase 1 — Close the loop.** Complete one prediction → observe one outcome → reconcile → record permanently. Zero predict→observe→reconcile cycles have ever completed. Get the first one. This is the single most valuable thing the system can do.
+
+**Phase 2 — Unify representations.** Constraints computed by invention_compiler must propagate back to the graph, historian, and ledger. The two parallel systems must become one. Law 2's constraint surface (0/577 → real) is the first unification step.
+
+**Phase 3 — Ingest external evidence.** Patents, literature, regulations, economics, manufacturing. The graph is currently a hand-seeded taxonomy, not built from the sources the mission names. Fix F-001 (patent parser brittleness) first.
+
+**Phase 4 — Define convergence mathematically.** Only after the definition exists should implementation begin. Don't let a module named `convergence_module.py` get created before the question "what signal counts as two domains converging?" has an answer.
+
+**Phase 5 — Audience specialization.** Researchers, corporations, investors, governments. Only after Phases 1-4 give the underlying system something true to say to any audience.
+
+### The shift
+
+Early in the project, success meant building modules.
+Now success means closing loops.
+
+That is a much harder objective, but it is also much closer to the mission.
 
 ---
 
