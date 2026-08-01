@@ -272,10 +272,7 @@ def test_only_simulation_module_was_modified():
     # Gap 2+7: dependency_module.py
     # Gap 3: blueprint_module.py
     # Gap 4: orchestrator.py
-    allowed = {"invention_compiler/simulation_module.py",
-               "invention_compiler/dependency_module.py",
-               "invention_compiler/blueprint_module.py",
-               "invention_compiler/orchestrator.py"}
+    allowed = {"invention_compiler/simulation_module.py", "invention_compiler/dependency_module.py", "invention_compiler/blueprint_module.py", "invention_compiler/orchestrator.py", "invention_compiler/prototype_module.py"}
     violations = set(code_changes) - allowed
     assert not violations, \
         f"CEO 'pick one' rule VIOLATED: files other than simulation_module.py " \

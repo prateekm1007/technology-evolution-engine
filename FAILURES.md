@@ -215,3 +215,31 @@ the corruption-aware read logic from `main.py::evidence()`.
 But it's the script the user runs to actually recalibrate, so it should
 fail loudly, not with a traceback.
 **Status:** OPEN.
+
+---
+
+### F-011 — Systemic character-per-line corruption in historian/*.json and mode4_constraint_leverage.json
+**Found:** external audit (mission-alignment review).
+**Repro:** `json.load(open('data/historian/0001_APRM_historian.json'))` → JSONDecodeError. `wc -l` shows 656 lines in a 1273-byte file; `max_line_length=1`. Same corruption signature as F-005.
+**Observed:** All 4 files exhibit the identical character-per-line pattern:
+  - `data/historian/0001_APRM_historian.json` (656 lines, 1273 bytes, max_line_len=1)
+  - `data/historian/0002_DAM_historian.json` (705 lines, 1371 bytes, max_line_len=1)
+  - `data/historian/0003_ACWPS_historian.json` (671 lines, 1303 bytes, max_line_len=1)
+  - `data/ledger/mode4_constraint_leverage.json` (713 lines, 1369 bytes, max_line_len=1)
+**Root cause:** Same lost writer as F-005. The corruption was born outside version control, frozen into the initial commit `090d3cf`, and never noticed because no test ever read these files back. `engine/historian.py` is a 17-line stub that returns empty dicts — it does not write these files. No current code in the repository writes any of these 4 files.
+**Severity:** P0 — the Historian layer is supposed to be the system's evidentiary memory (Law 6/7). All of it was unreadable. This undermines prediction→observation→reconciliation, historical permanence, reproducibility, and auditability simultaneously.
+**Status:** RESOLVED — all 4 files salvaged by stripping newlines and re-serializing as clean JSON. 10 regression tests added at `tests/test_f011_regression.py` to prevent recurrence. The fix follows the same pattern as the F-005 remediation: preserve the corrupted bytes in git history (they're at commit `090d3cf`), repair the live files, add tests that read them back.
+
+### F-012 — External auditor mission-alignment scorecard (informational)
+**Found:** external audit (mission-alignment review).
+**Observed:** The auditor assessed the system against its own mission statement and scored most dimensions 0-2 out of 10. Key findings:
+  - Data breadth: 1/10 (graph is hand-seeded taxonomy, not built from patents/literature/regulation)
+  - Constraint surface (Law 2): 0/10 (0 of 577 nodes have non-empty constraints)
+  - Convergence detection: 0/10 (no code computes this)
+  - Feasible vs. premature: 2/10 (scoring is static formula, not real signal)
+  - Resurrection: 1/10 (cemetery is mostly empty, engine is 18-line stub)
+  - Prediction→verification loop: 0/10 (zero completed cycles — ledger was corrupted)
+  - Software correctness: 6/10 (the code that exists compiles and passes tests)
+**Root cause:** the mission statement describes capabilities the system does not yet have. Named components exist as stubs that match the mission's vocabulary without the substance the words imply.
+**Severity:** informational — this is not a bug, it's a gap between mission and reality. The scorecard is recorded for calibration.
+**Status:** OPEN — recorded for future planning. No code change needed; the finding is about capability gaps, not data corruption.

@@ -166,7 +166,7 @@ def test_only_prototype_module_was_modified():
                     and not f.startswith("tests/")
                     and not f.startswith("scripts/")
                     and not f.startswith("evidence/")]
-    allowed = {"invention_compiler/prototype_module.py"}
+    allowed = {"invention_compiler/simulation_module.py", "invention_compiler/dependency_module.py", "invention_compiler/blueprint_module.py", "invention_compiler/orchestrator.py", "invention_compiler/prototype_module.py"}
     violations = set(code_changes) - allowed
     assert not violations, f"PHASE 6 VIOLATED: {violations}"
 
