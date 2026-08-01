@@ -1,6 +1,6 @@
 # INVENTION COMPILER — Master Specification
 
-**Status:** ARCHITECTURE FROZEN (CEO directive, commit `0c6d5d7`).
+**Status:** ARCHITECTURE FROZEN. Operating under the Maestro Modification Loop (v1.0).
 **Read this file BEFORE writing any code in this repository.**
 
 > The objective of the system is not to generate ideas.
@@ -8,6 +8,102 @@
 >
 > An idea is worthless if an engineer cannot build it.
 > A blueprint is valuable because it transforms possibility into execution.
+
+---
+
+## MAESTRO MODIFICATION LOOP (v1.0)
+
+This is **not** a software-development loop.
+It is an **epistemic loop**.
+
+The question is no longer:
+
+> What should we build?
+
+The question is:
+
+> What did reality teach us, and how should the system change because of it?
+
+### The 10 phases
+
+```text
+PHASE 0 — FREEZE
+    No architecture changes. No new modules. No new abstractions.
+    No new layers. Only observation.
+
+PHASE 1 — EXECUTION
+    Run N inventions through the compiler.
+
+PHASE 2 — OBSERVATION
+    Record: outputs, failures, scores, assumptions, counterevidence,
+    collisions, blueprint quality. DO NOT FIX ANYTHING.
+
+PHASE 3 — GAP ANALYSIS
+    Rank every failure by: severity, frequency, impact, locality,
+    measurability.
+
+PHASE 4 — SELECTION
+    Select ONE gap. Never select two unrelated gaps. Never modify
+    the entire system. (Two gaps may be selected together ONLY if
+    they describe the same failure — e.g., Gap 2 + Gap 7.)
+
+PHASE 5 — HYPOTHESIS
+    Write a Hypothesis (claim/confidence/evidence/counterevidence/
+    assumptions/dependencies) predicting what the modification will
+    achieve.
+
+PHASE 6 — MODIFICATION
+    Modify ONE component. Everything else remains frozen.
+
+PHASE 7 — RE-EXECUTION
+    Run exactly the same inventions. No substitutions. No removals.
+    No additions.
+
+PHASE 8 — DELTA ANALYSIS
+    Measure: before, after, difference.
+
+PHASE 9 — LEDGER UPDATE
+    Record: modification, evidence, observations, failures,
+    consequences.
+
+PHASE 10 — DECISION
+    Did reality support the hypothesis?
+    YES → preserve the modification.
+    NO → revert the modification.
+    PARTIALLY → investigate further.
+
+REPEAT
+```
+
+### Canonical objects
+
+```text
+Observation
+      ↓
+Knowledge
+      ↓
+Hypothesis
+      ↓
+Blueprint
+      ↓
+Experiment
+      ↓
+Observation
+```
+
+### Current loop state
+
+| Gap | Phase | Status |
+|---|---|---|
+| Gap 1 (identical scoring) | 10 — DECISION | YES — preserved. 9→18 unique scores, 8→2 max collisions. |
+| Gap 2+7 (arbitrary deps + weak causal graph) | 10 — DECISION | YES — preserved. 0→most non-zero causal classifications. |
+| Gap 3 (non-buildable blueprints) | 3 — GAP ANALYSIS → 4 | Identified as Critical/next. Not yet selected for modification. |
+
+### Loop history
+
+- **Cycle 1 (Gap 1):** commit `bdfca58` (observe) → `194089d` (modify simulation_module.py + re-execute batch_002 + delta). Decision: YES.
+- **Cycle 2 (Gap 2+7):** commit `194089d` (learn) → `a701d77` (modify dependency_module.py + re-execute batch_003 + delta). Decision: YES.
+- **Cycle 3 (Gap 3):** next. Currently at PHASE 3 (gap analysis complete) → PHASE 4 (selection: Gap 3) → PHASE 5 (hypothesis: not yet written).
 
 ---
 

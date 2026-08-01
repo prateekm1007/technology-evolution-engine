@@ -1,6 +1,6 @@
 # ANTI-ENTROPY & DRIFT CONTROL
 
-**Status:** Active rule set.
+**Status:** Active rule set. Operating under the Maestro Modification Loop (v1.0).
 **Read this file BEFORE writing any code in this repository.**
 
 This repository has a documented history of entropy:
@@ -15,7 +15,66 @@ resistance.
 
 ---
 
-## Anti-Entropy & Drift Control
+## Epistemic anti-entropy rules (Maestro Loop, v1.0)
+
+These are the **epistemic meta-rules** that govern how the system
+evolves. They sit above the operational rules (tests first, single
+responsibility, etc.) and define the modification discipline.
+
+```text
+1.  Freeze architecture.
+2.  Change one thing.
+3.  Measure everything.
+4.  Record every failure.
+5.  Reward evidence.
+6.  Punish complexity.
+7.  Prefer causality over correlation.
+8.  Prefer experiments over arguments.
+9.  Prefer reality over expectations.
+10. Prefer loops over modules.
+```
+
+### Canonical objects
+
+```text
+Observation
+      ↓
+Knowledge
+      ↓
+Hypothesis
+      ↓
+Blueprint
+      ↓
+Experiment
+      ↓
+Observation
+```
+
+### Canonical question
+
+The question is no longer:
+
+> What should we build?
+
+The question is:
+
+> What did reality teach us, and how should the system change because of it?
+
+### How the epistemic rules relate to the operational rules
+
+The **epistemic rules** (1-10 above) govern HOW the system evolves:
+freeze, pick one gap, measure the delta, let reality decide.
+
+The **operational rules** (below: tests first, single responsibility,
+etc.) govern HOW code is written within each modification: clean,
+tested, decoupled, documented.
+
+Both layers are active simultaneously. A modification that violates
+either layer is entropy.
+
+---
+
+## Operational anti-entropy rules
 
 ### Write tests first
 Create test cases before writing features to lock expected behavior.

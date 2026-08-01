@@ -1,4 +1,4 @@
-# TEE MASTER HANDOFF (v2.1 — Gap 2+7 fix in progress)
+# TEE MASTER HANDOFF (v2.2 — Maestro Loop formalized)
 
 ## PRE-CODING READ LIST (MANDATORY)
 
@@ -56,7 +56,44 @@ those layers or modules.
   `invention_compiler/` (commit `a3d167d`). 11 layers, 14 modules.
 - 47 tests passing.
 
-## LEARN + MODIFY step (commits `194089d` → next)
+## MAESTRO MODIFICATION LOOP (v1.0) — formalized
+
+The modification process is now formalized as the Maestro Modification
+Loop: a 10-phase epistemic loop (not a software-development loop).
+
+```text
+PHASE 0 FREEZE → PHASE 1 EXECUTION → PHASE 2 OBSERVATION →
+PHASE 3 GAP ANALYSIS → PHASE 4 SELECTION → PHASE 5 HYPOTHESIS →
+PHASE 6 MODIFICATION → PHASE 7 RE-EXECUTION → PHASE 8 DELTA →
+PHASE 9 LEDGER → PHASE 10 DECISION → REPEAT
+```
+
+### Canonical question
+
+> What did reality teach us, and how should the system change because of it?
+
+### Canonical objects
+
+```text
+Observation → Knowledge → Hypothesis → Blueprint → Experiment → Observation
+```
+
+### Loop state
+
+| Gap | Phase | Decision |
+|---|---|---|
+| Gap 1 (identical scoring) | 10 — DECISION | YES — preserved |
+| Gap 2+7 (arbitrary deps + causal graph) | 10 — DECISION | YES — preserved |
+| Gap 3 (non-buildable blueprints) | 3 → 4 | Next. Critical. Not yet modified. |
+
+### 10 epistemic anti-entropy rules
+
+1. Freeze architecture. 2. Change one thing. 3. Measure everything.
+4. Record every failure. 5. Reward evidence. 6. Punish complexity.
+7. Prefer causality over correlation. 8. Prefer experiments over arguments.
+9. Prefer reality over expectations. 10. Prefer loops over modules.
+
+## LEARN + MODIFY step (commits `194089d` → `a701d77`)
 
 Gap 1 fix (commit `194089d`) succeeded: 9 → 18 unique composites,
 8 → 2 max collisions. Portable MRI moved to partially_feasible —
