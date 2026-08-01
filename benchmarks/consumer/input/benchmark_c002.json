@@ -1,0 +1,38 @@
+{
+  "id": "benchmark_c002",
+  "type": "consumer",
+  "source": "user_prompt",
+  "prompt": "I want to reduce my household electricity bill by 40%. I live in a 3-bedroom apartment, cannot modify the building structure, and have a budget of $500.",
+  "domain": "energy",
+  "budget_usd": 500,
+  "environment": "apartment, no structural modification allowed",
+  "constraints": [
+    "no structural changes",
+    "budget $500",
+    "apartment dwelling",
+    "renter restrictions"
+  ],
+  "skill_level": "moderate",
+  "timeline_days": 60,
+  "expected_constraints": [
+    "energy",
+    "cost",
+    "regulation",
+    "time"
+  ],
+  "expected_prerequisites": [
+    "energy monitoring",
+    "efficient appliances",
+    "behavioral change"
+  ],
+  "expected_adjacent_domains": [
+    "power electronics",
+    "IoT",
+    "building science"
+  ],
+  "expected_failure_modes": [
+    "insufficient savings",
+    "device incompatibility",
+    "behavioral reversion"
+  ]
+}
