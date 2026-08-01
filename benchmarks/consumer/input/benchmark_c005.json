@@ -1,0 +1,41 @@
+{
+  "id": "benchmark_c005",
+  "type": "consumer",
+  "source": "user_prompt",
+  "prompt": "I want to build inexpensive air-quality sensors for my neighborhood. We have 15 households interested. Need PM2.5, NO2, and ozone readings. Budget $30 per node. Data should be publicly accessible.",
+  "domain": "sensors",
+  "budget_usd": 450,
+  "environment": "urban neighborhood, 15 nodes",
+  "constraints": [
+    "$30 per node",
+    "15 nodes",
+    "outdoor deployment",
+    "public data access"
+  ],
+  "skill_level": "moderate",
+  "timeline_days": 60,
+  "expected_constraints": [
+    "cost",
+    "energy",
+    "information",
+    "maintenance"
+  ],
+  "expected_prerequisites": [
+    "low-cost gas sensors",
+    "microcontroller",
+    "wireless connectivity",
+    "cloud platform"
+  ],
+  "expected_adjacent_domains": [
+    "environmental science",
+    "IoT",
+    "embedded systems",
+    "data visualization"
+  ],
+  "expected_failure_modes": [
+    "sensor drift",
+    "calibration loss",
+    "connectivity failure",
+    "vandalism"
+  ]
+}
