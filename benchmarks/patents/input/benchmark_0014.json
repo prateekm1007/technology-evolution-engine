@@ -1,0 +1,70 @@
+{
+  "id": "benchmark_0014",
+  "type": "patent",
+  "source": "uspto",
+  "title": "Superconducting Quantum Processor with 1000 Logical Qubits",
+  "domain": "computation",
+  "abstract": "A quantum system with 10K physical transmon qubits implementing surface code error correction for 1000 logical qubits at 15 mK.",
+  "claims": [
+    "Transmon qubits with T1>300us, T2>200us using tantalum Josephson junctions.",
+    "Surface code decoder with <1us latency per syndrome cycle.",
+    "Cryogenic control with frequency multiplexing reducing 10K lines to 100."
+  ],
+  "components": [
+    "transmon qubits",
+    "Josephson junctions",
+    "dilution refrigerator",
+    "cryogenic electronics",
+    "control software",
+    "decoder"
+  ],
+  "materials": [
+    "tantalum",
+    "silicon",
+    "niobium",
+    "aluminum oxide",
+    "copper"
+  ],
+  "methods": [
+    "thin film deposition",
+    "e-beam lithography",
+    "dilution refrigeration",
+    "microwave control",
+    "error correction"
+  ],
+  "constraints": [
+    "coherence",
+    "error rate",
+    "scalability",
+    "cost",
+    "manufacturing",
+    "energy"
+  ],
+  "problem_statement": "Current processors have 50-1000 noisy qubits. Fault-tolerant QC requires millions.",
+  "expected_constraints": [
+    "energy",
+    "information",
+    "material",
+    "cost",
+    "manufacturing",
+    "time"
+  ],
+  "expected_prerequisites": [
+    "qubit coherence improvement",
+    "cryogenic scaling",
+    "real-time decoding",
+    "fabrication yield"
+  ],
+  "expected_adjacent_domains": [
+    "cryogenics",
+    "materials science",
+    "control theory",
+    "computer architecture"
+  ],
+  "expected_failure_modes": [
+    "qubit decoherence",
+    "crosstalk",
+    "thermal noise",
+    "fabrication defects"
+  ]
+}
