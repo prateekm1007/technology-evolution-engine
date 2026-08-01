@@ -21,8 +21,8 @@ class CoreAdapter:
 
     def run_pipeline(self, mode, input_type, payload):
         if mode == "consumer":
-            return self.consumer.ConsumerPipeline().solve(payload)
-        return self.business.BusinessPipeline().analyze(payload)
+            return self.consumer.ConsumerPipeline().run(payload)
+        return self.business.BusinessPipeline().run(payload)
 
     def read_evidence(self):
         ledger = self.root / "data" / "ledger" / "predictions.jsonl"

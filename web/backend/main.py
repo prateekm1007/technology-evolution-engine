@@ -65,9 +65,19 @@ def graph():
 
 @app.get("/api/v1/evidence")
 def evidence():
-    ledger = gm.root / "data" / "ledger" / "predictions.jsonl"
-    data = {"ledger": [json.loads(l) for l in ledger.read_text().splitlines() if l.strip()]
-                       if ledger.exists() else []}
+    """Append-only ledger read. Skips malformed lines instead of 500ing."""
+    ledger_path = gm.root / "data" / "ledger" / "predictions.jsonl"
+    entries, malformed = [], []
+    if ledger_path.exists():
+        for i, line in enumerate(ledger_path.read_text().splitlines(), start=1):
+            line = line.strip()
+            if not line:
+                continue
+            try:
+                entries.append(json.loads(line))
+            except json.JSONDecodeError as e:
+                malformed.append({"line": i, "error": str(e), "preview": line[:120]})
+    data = {"ledger": entries, "malformed_lines": malformed, "entry_count": len(entries)}
     return stamp(data, "integrated" if gm.source == "core" else "implemented")
 
 
@@ -78,7 +88,33 @@ def benchmarks():
 
 @app.post("/api/v1/analyze")
 def analyze(req: AnalyzeRequest):
-    return stamp(SPECIMEN["analysis"], "implemented")
+    """
+    Real wiring. Falls back to SPECIMEN with an explicit stamp
+    if the product-layer pipelines are not importable or raise.
+    """
+    try:
+        from adapters.core import CoreAdapter, CoreUnavailable
+        core = CoreAdapter(repo_root=ROOT.parents[1])
+        # NOTE: the product-layer pipelines read 'raw_text' / 'problem_statement' /
+        # 'patent_id' — not 'text' / 'title'. Map explicitly so content isn't
+        # silently dropped at this boundary (see PatentParser._comps,
+        # TextNormalizer.run for the keys each pipeline actually reads).
+        payload = {
+            "raw_text": req.text or "",
+            "problem_statement": req.text or "",
+            "patent_id": None,
+            "title": req.title,
+        }
+        result = core.run_pipeline(
+            mode=req.mode,
+            input_type=req.input_type,
+            payload=payload,
+        )
+        return stamp(result, "verified")
+    except Exception as e:
+        out = dict(SPECIMEN["analysis"])
+        out["fallback_reason"] = f"{type(e).__name__}: {e}"
+        return stamp(out, "implemented")
 
 
 app.mount("/static", StaticFiles(directory=FRONTEND), name="static")
