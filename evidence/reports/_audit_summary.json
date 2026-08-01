@@ -1,0 +1,21 @@
+{
+  "generated_at": "2026-08-01T14:54:04.745564+00:00",
+  "audit_type": "F-005 follow-up forensic audit (epistemic instrument run against itself)",
+  "steps_run": [
+    "compile",
+    "unit_test",
+    "integration",
+    "benchmark",
+    "ledger_integrity",
+    "verification"
+  ],
+  "errors": [],
+  "deliverables": {
+    "compile_report": "evidence/reports/compile_report.json",
+    "unit_test_report": "evidence/reports/unit_test_report.json",
+    "integration_report": "evidence/reports/integration_report.json",
+    "benchmark_report": "evidence/reports/benchmark_report.json",
+    "verification_report": "evidence/reports/verification_report.json",
+    "ledger_integrity_report": "evidence/reports/ledger_integrity_report.json"
+  }
+}

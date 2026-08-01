@@ -1,26 +1,119 @@
 {
-  "generated_at": "2026-08-01T13:59:21.650718+00:00",
-  "rule_applied": "No 'verified' label without successful prediction, failed prediction, and replayable evidence (amended CONSTITUTION.md rule).",
-  "audit_of_current_verification_claims": [
+  "generated_at": "2026-08-01T14:54:04.740685+00:00",
+  "rule": "Law 8 (CONSTITUTION.md): No 'verified' label without a successful prediction, a failed prediction, and replayable evidence.",
+  "ledger_state": {
+    "ledger_exists": true,
+    "parseable": false,
+    "entries": [],
+    "successful_predictions": 0,
+    "failed_predictions": 0,
+    "replayable_entries": 0,
+    "parse_error": "Total file corruption: file appears to be written one character per line (F-005). Ledger is unusable as evidence.",
+    "sha256": "df65acbd6b81606e3bb68540b038955673f2ef67d408c13f277f4dd0d6629909"
+  },
+  "claims_found": 14,
+  "supported_claims": 0,
+  "unsupported_claims": 14,
+  "global_verdict": "FAIL",
+  "claims": [
     {
-      "endpoint": "POST /api/v1/analyze (success path)",
-      "current_label": "verified",
-      "assessment": "MISLABELED under the amended rule. The label is applied whenever CoreAdapter.run_pipeline() returns without raising \u2014 that is absence-of-crash, not verification. There is no recorded successful prediction, no recorded failed prediction, and no replay mechanism behind this label. Recommend downgrading to 'integrated' until a real predict -> observe -> reconcile cycle exists and is logged to a working ledger.",
-      "action": "downgrade_to_integrated"
+      "file": "tests/test_endpoints.py",
+      "line": 61,
+      "text": "'verified'. We don't have adversarial tests + replay + failure logging",
+      "verdict": "unsupported",
+      "reason": "Law 8 not satisfied: ledger is not parseable"
     },
     {
-      "endpoint": "GET /api/v1/simulate, GET /api/v1/graph, GET /api/v1/evidence",
-      "current_label": "integrated | implemented (source-dependent)",
-      "assessment": "Correctly labeled. Neither claims 'verified' or 'is_fact'. No change needed.",
-      "action": "none"
+      "file": "scripts/verify_stack.py",
+      "line": 15,
+      "text": "\"oracle\": \"verified\" if gm.source == \"core\" else \"implemented\"},",
+      "verdict": "unsupported",
+      "reason": "Law 8 not satisfied: ledger is not parseable"
     },
     {
-      "endpoint": "POST /api/v1/analyze (fallback path), GET /api/v1/benchmarks",
-      "current_label": "implemented",
-      "assessment": "Correctly labeled \u2014 both are explicitly static/stub data (SPECIMEN) and do not overclaim.",
-      "action": "none"
+      "file": "scripts/enforce_law8.py",
+      "line": 7,
+      "text": "No \"verified\" label without a successful prediction, a failed",
+      "verdict": "unsupported",
+      "reason": "Law 8 not satisfied: ledger is not parseable"
+    },
+    {
+      "file": "scripts/enforce_law8.py",
+      "line": 12,
+      "text": "\"verified\" label, and for each one it requires:",
+      "verdict": "unsupported",
+      "reason": "Law 8 not satisfied: ledger is not parseable"
+    },
+    {
+      "file": "scripts/enforce_law8.py",
+      "line": 24,
+      "text": "If any of those conditions fail, every \"verified\" stamp in the",
+      "verdict": "unsupported",
+      "reason": "Law 8 not satisfied: ledger is not parseable"
+    },
+    {
+      "file": "scripts/enforce_law8.py",
+      "line": 243,
+      "text": "\"replayable. Until all three are true, every 'verified' label in the repo is \"",
+      "verdict": "unsupported",
+      "reason": "Law 8 not satisfied: ledger is not parseable"
+    },
+    {
+      "file": "scripts/enforce_law8.py",
+      "line": 273,
+      "text": "print(f\"'verified' claims found: {report['claims_found']}\")",
+      "verdict": "unsupported",
+      "reason": "Law 8 not satisfied: ledger is not parseable"
+    },
+    {
+      "file": "web/backend/main.py",
+      "line": 47,
+      "text": "\"level\": verification, \"is_fact\": verification == \"verified\",",
+      "verdict": "unsupported",
+      "reason": "Law 8 not satisfied: ledger is not parseable"
+    },
+    {
+      "file": "web/backend/main.py",
+      "line": 49,
+      "text": "if verification == \"verified\"",
+      "verdict": "unsupported",
+      "reason": "Law 8 not satisfied: ledger is not parseable"
+    },
+    {
+      "file": "web/backend/main.py",
+      "line": 138,
+      "text": "cannot stamp 'verified' until adversarial tests, replay capability,",
+      "verdict": "unsupported",
+      "reason": "Law 8 not satisfied: ledger is not parseable"
+    },
+    {
+      "file": "CONSTITUTION.md",
+      "line": 17,
+      "text": "No \"verified\" label without a successful prediction, a failed prediction,",
+      "verdict": "unsupported",
+      "reason": "Law 8 not satisfied: ledger is not parseable"
+    },
+    {
+      "file": "CONSTITUTION.md",
+      "line": 20,
+      "text": "required before any claim may be labeled \"verified\" rather than",
+      "verdict": "unsupported",
+      "reason": "Law 8 not satisfied: ledger is not parseable"
+    },
+    {
+      "file": "FAILURES.md",
+      "line": 70,
+      "text": "**Severity:** P0 for the \"verified\" label specifically \u2014 this file is the",
+      "verdict": "unsupported",
+      "reason": "Law 8 not satisfied: ledger is not parseable"
+    },
+    {
+      "file": "INTERFACES.md",
+      "line": 44,
+      "text": "{\"level\": \"verified\" | \"implemented\", \"is_fact\": bool, \"note\": str}",
+      "verdict": "unsupported",
+      "reason": "Law 8 not satisfied: ledger is not parseable"
     }
   ],
-  "structural_gap": "The 'verified' tier as amended cannot be honestly claimed by anything in this repo right now, because data/ledger/predictions.jsonl -- the only mechanism for recording prediction outcomes -- is corrupted (see FAILURES.md, item F-005) and no code path currently reads a prediction, waits for an outcome, and reconciles pass/fail. Until that loop exists and is replayable, every 'verified' stamp in this system is aspirational, not evidenced, regardless of which endpoint it's attached to.",
-  "recommendation": "Do not use the 'verified' label anywhere in the codebase until: (1) predictions.jsonl is regenerated and readable, (2) at least one prediction has a recorded outcome (pass or fail), (3) that outcome is replayable from the ledger alone. Until then, cap all labels at 'integrated'."
+  "required_to_pass": "To flip this verdict to PASS: (1) regenerate data/ledger/predictions.jsonl with a known writer, (2) record at least one prediction with outcome=pass AND at least one with outcome=fail, (3) stamp every ledger entry with a `writer` field naming the script/module that produced it so the entry is replayable. Until all three are true, every 'verified' label in the repo is aspirational, not evidenced."
 }

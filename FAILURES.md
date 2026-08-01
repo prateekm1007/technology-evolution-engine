@@ -126,3 +126,92 @@ production, so no live repro — traced by reading).
 `cache.write_text()` raises `IsADirectoryError`.
 **Severity:** P2 — file is unwired into any route, so currently inert.
 **Status:** RESOLVED in `01db12f`. Still unwired — see F-002.
+
+---
+
+### F-011 — `scripts/verify_stack.py` stamps `oracle: "verified"` without any ledger backing
+**Found:** F-005 follow-up forensic audit (this session).
+**Repro:** `python scripts/verify_stack.py` (with `data/civilization_graph.json`
+present, which is the default).
+**Observed:** report prints `"oracle": "verified"` because `gm.source == "core"`.
+The condition for the "verified" stamp is "the civilization graph file
+parses" — which is presence-of-data, not verification. There is no successful
+prediction, no failed prediction, and no replayable evidence in the ledger
+behind this label. This is exactly the Law 8 violation F-005 warned about.
+**Root cause:** `scripts/verify_stack.py:15` uses `gm.source == "core"` as a
+proxy for "verified", but `source == "core"` only means "the static graph
+file loaded successfully". That is an integration check, not a verification.
+**Severity:** P1 — the script's output is consumed by humans as a verification
+report, and the script lies.
+**Status:** OPEN — label should be downgraded to "integrated" until a real
+prediction → observe → reconcile loop exists and is logged to a working
+ledger. The Law 8 enforcement script (`scripts/enforce_law8.py`) now flags
+this automatically.
+
+### F-012 — `INTERFACES.md` documents `"verified"` as a possible `level` value, but no endpoint actually produces it honestly
+**Found:** F-005 follow-up forensic audit (this session).
+**Observed:** `INTERFACES.md:44` declares the response contract
+`{"level": "verified" | "implemented", ...}`, listing "verified" as if it
+were a value the system could honestly produce. In reality, the only code
+path that ever assigned "verified" (`/api/v1/analyze` in `web/backend/main.py`)
+was downgraded to "integrated" in commit `01db12f` for exactly this reason
+(see F-001 follow-up in `tests/test_endpoints.py`). The contract is now
+aspirational: it advertises a label the system cannot honestly produce.
+**Root cause:** documentation drift. The interface spec was written when
+"verified" was still being claimed; it was not updated when the claim was
+retracted.
+**Severity:** P2 — does not affect runtime behavior, but misleads anyone
+reading the spec to plan an integration.
+**Status:** OPEN — the contract should either drop "verified" from the
+allowed-values list, or be reworded as "verified (not currently achievable
+under Law 8; see evidence/reports/verification_report.json)".
+
+### F-013 — `web/backend/adapters/core.py::evidence()` reads the ledger without total-corruption detection
+**Found:** F-005 follow-up forensic audit (this session).
+**Repro:** with the corrupted ledger in place, call
+`CoreAdapter(repo_root=...).run_pipeline(...)` (or any path that touches
+`web/backend/adapters/core.py:28-30`).
+**Observed:** `JSONDecodeError` unhandled — `core.py` does
+`[json.loads(l) for l in ledger.read_text().splitlines() if l.strip()]`
+with no try/except, no total-corruption heuristic. The same crash that
+F-006 fixed in `web/backend/main.py::evidence()` is still live in
+`core.py`. The fix landed in only one of the two readers.
+**Root cause:** parallel development. Two readers, one fix.
+**Severity:** P1 — any caller of `CoreAdapter` that hits the ledger path
+gets a 500 (or worse, a CLI crash). The route `/api/v1/analyze` does fall
+through to this code on the success path.
+**Status:** OPEN — `core.py` should reuse the same total-corruption-aware
+read logic that `main.py::evidence()` uses, or the two readers should be
+consolidated.
+
+### F-014 — F-005 regression tests confirmed failing on the corrupted state
+**Found:** F-005 follow-up forensic audit (this session).
+**Repro:** `pytest tests/test_ledger_integrity.py -v` with the corrupted
+ledger at `data/ledger/predictions.jsonl` in place.
+**Observed:**
+- `test_every_committed_jsonl_line_parses` FAILS — 703 non-empty lines, 0 parse as JSON.
+- `test_no_one_char_per_line_pattern` FAILS — 609 non-empty lines, max length 1.
+- `test_ledger_schema_matches_writer` PASSES (vacuously) — the file does not parse, so the schema check is skipped and regression #1 is the single loud failure.
+**Root cause:** this is the F-005 corruption itself, observed through the
+regression tests added by this audit. The tests are working as designed:
+they catch the corruption at commit time, on every commit, going forward.
+**Severity:** informational — the tests are red because the underlying bug
+is real, not because the tests are wrong.
+**Status:** OPEN — these tests will flip green when (and only when) the
+corrupted ledger is regenerated from a known writer (per the corrective
+action in `evidence/corruption/POSTMORTEM_F005.md`). Until then, they
+remain red on every commit — which is correct: the system has a known
+unfixed bug, and the test suite should say so loudly.
+
+### F-015 — `scripts/calibrate.py` reads the ledger without total-corruption detection
+**Found:** F-005 follow-up forensic audit (this session).
+**Repro:** `python scripts/calibrate.py` with the corrupted ledger in place.
+**Observed:** `JSONDecodeError` — `calibrate.py:8` does
+`[json.loads(l) for l in lp.read_text().splitlines() if l.strip()]`
+with no error handling. Same crash class as F-013.
+**Root cause:** same as F-013 — parallel ledger readers, none share
+the corruption-aware read logic from `main.py::evidence()`.
+**Severity:** P2 — `calibrate.py` is a manual CLI tool, not a runtime path.
+But it's the script the user runs to actually recalibrate, so it should
+fail loudly, not with a traceback.
+**Status:** OPEN.

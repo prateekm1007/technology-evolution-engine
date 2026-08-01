@@ -1,32 +1,52 @@
 {
-  "generated_at": "2026-08-01T13:58:47.574622+00:00",
+  "generated_at": "2026-08-01T14:54:04.562785+00:00",
   "method": "pytest tests/test_endpoints.py -v, run live \u2014 exercises FastAPI app + real product pipelines together via TestClient, not mocks",
   "summary": {
-    "passed": 4,
-    "total": 4,
-    "collected": 4
+    "passed": 7,
+    "failed": 0,
+    "skipped": 0,
+    "errors": 0,
+    "total": 7,
+    "collected": 7
   },
-  "duration_s": 1.362,
+  "duration_s": 1.108,
   "tests": [
     {
       "nodeid": "tests/test_endpoints.py::test_analyze_responds_to_payload",
       "outcome": "passed",
-      "duration_s": 0.1795
+      "duration_s": 0.0
     },
     {
       "nodeid": "tests/test_endpoints.py::test_analyze_actually_consumes_input_text",
       "outcome": "passed",
-      "duration_s": 0.0227
+      "duration_s": 0.0
     },
     {
       "nodeid": "tests/test_endpoints.py::test_evidence_does_not_500",
       "outcome": "passed",
-      "duration_s": 0.0074
+      "duration_s": 0.0
     },
     {
       "nodeid": "tests/test_endpoints.py::test_graph_returns_nodes",
       "outcome": "passed",
-      "duration_s": 0.0161
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_endpoints.py::test_analyze_does_not_lie_about_verification",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_endpoints.py::test_analyze_accepts_problem_statement_field",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_endpoints.py::test_evidence_detects_total_corruption",
+      "outcome": "passed",
+      "duration_s": 0.0
     }
-  ]
+  ],
+  "stdout_tail": null,
+  "stderr_tail": null
 }

@@ -1,11 +1,245 @@
 {
-  "generated_at": "2026-08-01T13:58:59.215888+00:00",
-  "method": "Checked benchmarks/outputs/ and benchmarks/reports/ for recorded runs.",
-  "runs_recorded": 0,
-  "note": "Both directories contain only .gitkeep \u2014 no benchmark has ever actually been executed and recorded in this repo, despite benchmarks/scoring/scorer.py and benchmarks/drift/detector.py existing as code. This is a gap, not a zero-score result: there is no data here to report on yet. Workstream A (100 patents, 3 reviewers) and Workstream B (500 prompts, 50 users) targets from workstreams/README.md have not been started.",
-  "prerequisites_before_first_real_run": [
-    "Decide adjudication protocol for 'usefulness'/'novelty' scoring (who scores, blind or not)",
-    "Fix PatentParser silent-empty-output bug so business benchmark inputs don't fail invisibly",
-    "Fix scoring collapse in permutation/engine.py so consumer results aren't near-duplicate across distinct inputs (flagged in prior audit turn)"
-  ]
+  "generated_at": "2026-08-01T14:54:04.690082+00:00",
+  "method": "Live run of scripts/run_evidence_tests.py --all. The benchmark harness appends to data/ledger/predictions.jsonl, which is currently corrupted (F-005). To honor audit constraint #2 (do not overwrite the corrupted ledger), the harness was allowed to append, then the ledger was restored to its exact pre-run state. The appended entry is captured in this report as evidence that the benchmark harness runs and produces a well-formed entry; it is NOT committed to the ledger.",
+  "duration_s": 0.127,
+  "returncode": 0,
+  "original_ledger_sha256": "df65acbd6b81606e3bb68540b038955673f2ef67d408c13f277f4dd0d6629909",
+  "after_run_ledger_sha256": "321a065557f355e2a955916283b118041d6107aba6fbcfc931675e9d66f7033e",
+  "restored_ledger_sha256": "df65acbd6b81606e3bb68540b038955673f2ef67d408c13f277f4dd0d6629909",
+  "ledger_head_intact_after_append": true,
+  "ledger_restored_to_corrupted_state": true,
+  "appended_entry_count": 1,
+  "appended_entries": [
+    {
+      "type": "benchmark_run",
+      "timestamp": "2026-08-01T14:54:04.681000+00:00",
+      "total_benchmarks": 26,
+      "overall_composite_mean": 0.3677,
+      "grade_distribution": {
+        "F": 26
+      },
+      "assumptions": [
+        "Rule-based scoring",
+        "Seed graph only",
+        "No external data"
+      ],
+      "falsification_criteria": "Composite mean below 0.3 after 50 benchmarks indicates fundamental pipeline failure."
+    }
+  ],
+  "scoring_summary": {
+    "timestamp": "2026-08-01T14:54:04.681000+00:00",
+    "total_benchmarks": 26,
+    "patent_benchmarks": 20,
+    "consumer_benchmarks": 6,
+    "overall_composite_mean": 0.3677,
+    "overall_composite_min": 0.36,
+    "overall_composite_max": 0.37,
+    "grade_distribution": {
+      "F": 26
+    },
+    "domain_averages": {
+      "energy": 0.368,
+      "water": 0.3675,
+      "sensors": 0.365,
+      "computation": 0.37,
+      "transportation": 0.37,
+      "medicine": 0.37,
+      "agriculture": 0.36
+    },
+    "weights": {
+      "feasibility": 0.2,
+      "novelty": 0.15,
+      "usefulness": 0.2,
+      "clarity": 0.1,
+      "historical_accuracy": 0.1,
+      "prerequisite_accuracy": 0.15,
+      "blueprint_quality": 0.1
+    },
+    "results": [
+      {
+        "id": "benchmark_0001",
+        "domain": "energy",
+        "grade": "F",
+        "composite": 0.37,
+        "duration": 0.009
+      },
+      {
+        "id": "benchmark_0002",
+        "domain": "energy",
+        "grade": "F",
+        "composite": 0.37,
+        "duration": 0.002
+      },
+      {
+        "id": "benchmark_0003",
+        "domain": "energy",
+        "grade": "F",
+        "composite": 0.37,
+        "duration": 0.002
+      },
+      {
+        "id": "benchmark_0004",
+        "domain": "energy",
+        "grade": "F",
+        "composite": 0.37,
+        "duration": 0.002
+      },
+      {
+        "id": "benchmark_0005",
+        "domain": "water",
+        "grade": "F",
+        "composite": 0.37,
+        "duration": 0.002
+      },
+      {
+        "id": "benchmark_0006",
+        "domain": "water",
+        "grade": "F",
+        "composite": 0.37,
+        "duration": 0.002
+      },
+      {
+        "id": "benchmark_0007",
+        "domain": "water",
+        "grade": "F",
+        "composite": 0.37,
+        "duration": 0.002
+      },
+      {
+        "id": "benchmark_0008",
+        "domain": "sensors",
+        "grade": "F",
+        "composite": 0.37,
+        "duration": 0.002
+      },
+      {
+        "id": "benchmark_0009",
+        "domain": "sensors",
+        "grade": "F",
+        "composite": 0.37,
+        "duration": 0.002
+      },
+      {
+        "id": "benchmark_0010",
+        "domain": "sensors",
+        "grade": "F",
+        "composite": 0.37,
+        "duration": 0.002
+      },
+      {
+        "id": "benchmark_0011",
+        "domain": "computation",
+        "grade": "F",
+        "composite": 0.37,
+        "duration": 0.002
+      },
+      {
+        "id": "benchmark_0012",
+        "domain": "computation",
+        "grade": "F",
+        "composite": 0.37,
+        "duration": 0.002
+      },
+      {
+        "id": "benchmark_0013",
+        "domain": "computation",
+        "grade": "F",
+        "composite": 0.37,
+        "duration": 0.002
+      },
+      {
+        "id": "benchmark_0014",
+        "domain": "computation",
+        "grade": "F",
+        "composite": 0.37,
+        "duration": 0.002
+      },
+      {
+        "id": "benchmark_0015",
+        "domain": "transportation",
+        "grade": "F",
+        "composite": 0.37,
+        "duration": 0.002
+      },
+      {
+        "id": "benchmark_0016",
+        "domain": "transportation",
+        "grade": "F",
+        "composite": 0.37,
+        "duration": 0.002
+      },
+      {
+        "id": "benchmark_0017",
+        "domain": "transportation",
+        "grade": "F",
+        "composite": 0.37,
+        "duration": 0.002
+      },
+      {
+        "id": "benchmark_0018",
+        "domain": "medicine",
+        "grade": "F",
+        "composite": 0.37,
+        "duration": 0.002
+      },
+      {
+        "id": "benchmark_0019",
+        "domain": "medicine",
+        "grade": "F",
+        "composite": 0.37,
+        "duration": 0.002
+      },
+      {
+        "id": "benchmark_0020",
+        "domain": "medicine",
+        "grade": "F",
+        "composite": 0.37,
+        "duration": 0.002
+      },
+      {
+        "id": "benchmark_c001",
+        "domain": "water",
+        "grade": "F",
+        "composite": 0.36,
+        "duration": 0.004
+      },
+      {
+        "id": "benchmark_c002",
+        "domain": "energy",
+        "grade": "F",
+        "composite": 0.36,
+        "duration": 0.004
+      },
+      {
+        "id": "benchmark_c003",
+        "domain": "sensors",
+        "grade": "F",
+        "composite": 0.36,
+        "duration": 0.004
+      },
+      {
+        "id": "benchmark_c004",
+        "domain": "sensors",
+        "grade": "F",
+        "composite": 0.36,
+        "duration": 0.004
+      },
+      {
+        "id": "benchmark_c005",
+        "domain": "sensors",
+        "grade": "F",
+        "composite": 0.36,
+        "duration": 0.004
+      },
+      {
+        "id": "benchmark_c006",
+        "domain": "agriculture",
+        "grade": "F",
+        "composite": 0.36,
+        "duration": 0.004
+      }
+    ]
+  },
+  "stdout_tail": ". Grade=F Score=0.370\n  [18/20] benchmark_0018... Grade=F Score=0.370\n  [19/20] benchmark_0019... Grade=F Score=0.370\n  [20/20] benchmark_0020... Grade=F Score=0.370\n\n============================================================\nCONSUMER BENCHMARKS: 6 inputs\n============================================================\n  [1/6] benchmark_c001... Grade=F Score=0.360\n  [2/6] benchmark_c002... Grade=F Score=0.360\n  [3/6] benchmark_c003... Grade=F Score=0.360\n  [4/6] benchmark_c004... Grade=F Score=0.360\n  [5/6] benchmark_c005... Grade=F Score=0.360\n  [6/6] benchmark_c006... Grade=F Score=0.360\n\n============================================================\nSUMMARY\n============================================================\nTotal benchmarks:     26\nPatent benchmarks:    20\nConsumer benchmarks:  6\nOverall composite:    0.3677\nGrade distribution:   {'F': 26}\n\nDomain averages:\n  agriculture          0.3600\n  computation          0.3700\n  energy               0.3680\n  medicine             0.3700\n  sensors              0.3650\n  transportation       0.3700\n  water                0.3675\n\nOutputs:   /home/z/my-project/audit/repo/benchmarks/outputs\nReports:   /home/z/my-project/audit/repo/benchmarks/reports\nScoring:   /home/z/my-project/audit/repo/benchmarks/scoring/summary.json\nLedger:    /home/z/my-project/audit/repo/data/ledger/predictions.jsonl\n\n============================================================\nBENCHMARK RUN COMPLETE\n============================================================\n",
+  "stderr_tail": null
 }

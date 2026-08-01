@@ -1,0 +1,107 @@
+{
+  "generated_at": "2026-08-01T14:54:04.690739+00:00",
+  "method": "Read the corrupted ledger exactly as it exists (no mutation). Cross-reference the corrupted file's content stats against the preserved artifact and the byte-exact reproduction. Enumerate every ledger write path in the codebase. Attempt to salvage the corrupted records by stripping newlines and parsing the concatenation, then check whether the salvaged schema matches any current writer.",
+  "ledger_path": "data/ledger/predictions.jsonl",
+  "ledger_sha256": "df65acbd6b81606e3bb68540b038955673f2ef67d408c13f277f4dd0d6629909",
+  "preserved_copy_sha256": "df65acbd6b81606e3bb68540b038955673f2ef67d408c13f277f4dd0d6629909",
+  "preserved_copy_matches_live": true,
+  "reproduction_copy_sha256": "df65acbd6b81606e3bb68540b038955673f2ef67d408c13f277f4dd0d6629909",
+  "reproduction_matches_live": true,
+  "content_stats": {
+    "byte_count": 1403,
+    "char_count_utf8": 1403,
+    "line_count_incl_final_partial": 705,
+    "line_count_by_splitlines": 704,
+    "non_empty_line_count": 609,
+    "max_line_length": 1,
+    "min_line_length": 0,
+    "unique_line_lengths": [
+      0,
+      1
+    ]
+  },
+  "total_corruption_signature": true,
+  "salvaged_records": [
+    {
+      "id": "pred_001",
+      "date": "2025-01-15",
+      "claim": "Selective emitter materials will reach cost parity by 2029",
+      "confidence": 0.4,
+      "falsification": "If cost per m2 exceeds 50 USD by 2029",
+      "status": "open"
+    },
+    {
+      "id": "pred_002",
+      "date": "2025-01-15",
+      "claim": "TinyML acoustic event detection will exceed 90% accuracy on edge devices by 2027",
+      "confidence": 0.6,
+      "falsification": "If best published accuracy below 85% on <1W hardware by 2027",
+      "status": "open"
+    },
+    {
+      "id": "pred_003",
+      "date": "2025-01-15",
+      "claim": "Anti-fouling membrane lifetime will exceed 6 months in field conditions by 2030",
+      "confidence": 0.35,
+      "falsification": "If no published field trial exceeds 3 months by 2030",
+      "status": "open"
+    }
+  ],
+  "salvaged_record_count": 3,
+  "corrupted_schema_keys": [
+    "claim",
+    "confidence",
+    "date",
+    "falsification",
+    "id",
+    "status"
+  ],
+  "schema_matches_any_current_writer": false,
+  "known_writer_schemas": [
+    "oracle_prediction (GraphModel.append_ledger)",
+    "benchmark_run (run_evidence_tests.log_to_ledger)"
+  ],
+  "write_paths": [
+    {
+      "writer": "web/backend/adapters/graph_model.py::GraphModel.append_ledger",
+      "schema": {
+        "type": "oracle_prediction",
+        "constraint": "str",
+        "delta": "float",
+        "net_possibility_space": "float",
+        "confidence": "float",
+        "confidence_status": "str",
+        "outcome": "pending (always \u2014 never reconciled)",
+        "assumptions": "list[str]",
+        "timestamp": "ISO8601 str (added by append_ledger)"
+      },
+      "called_by": "web/backend/adapters/oracle_deep.py::_log_to_ledger",
+      "trigger": "DeepOracle.simulate() \u2014 invoked via POST /api/v1/simulate and GET /api/v1/graph at app-startup-time if a simulate() call happens",
+      "writes_to": "data/ledger/predictions.jsonl (append mode)",
+      "line": "graph_model.py:115-121"
+    },
+    {
+      "writer": "scripts/run_evidence_tests.py::log_to_ledger",
+      "schema": {
+        "type": "benchmark_run",
+        "timestamp": "ISO8601 str",
+        "total_benchmarks": "int",
+        "overall_composite_mean": "float",
+        "grade_distribution": "dict",
+        "assumptions": "list[str]",
+        "falsification_criteria": "str"
+      },
+      "called_by": "scripts/run_evidence_tests.py::main (after every benchmark run)",
+      "trigger": "manual: `python scripts/run_evidence_tests.py --all`",
+      "writes_to": "data/ledger/predictions.jsonl (append mode)",
+      "line": "run_evidence_tests.py:205-217"
+    }
+  ],
+  "verdict": {
+    "corruption_confirmed": true,
+    "corruption_predates_version_control": true,
+    "writer_lost": true,
+    "evidence_preserved": true
+  },
+  "git_history_of_ledger": "git log --all --oneline -- data/ledger/predictions.jsonl shows the file was created in commit 090d3cf (the initial commit) and has never been modified since. The SHA256 at 090d3cf matches the current SHA256 exactly \u2014 corruption predates version control."
+}

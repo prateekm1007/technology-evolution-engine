@@ -1,67 +1,87 @@
 {
-  "generated_at": "2026-08-01T13:58:47.574478+00:00",
-  "method": "pytest tests/test_graph_engine.py tests/test_product.py -v, run live",
+  "generated_at": "2026-08-01T14:54:03.454120+00:00",
+  "method": "pytest tests/test_graph_engine.py tests/test_product.py tests/test_ledger_integrity.py -v, run live (includes the new F-005 regression tests)",
   "summary": {
-    "passed": 11,
-    "total": 11,
-    "collected": 11
+    "passed": 12,
+    "failed": 2,
+    "skipped": 0,
+    "errors": 0,
+    "total": 14,
+    "collected": 14
   },
-  "duration_s": 0.131,
+  "duration_s": 0.63,
   "tests": [
     {
       "nodeid": "tests/test_graph_engine.py::test_empty_graph",
       "outcome": "passed",
-      "duration_s": 0.0002
+      "duration_s": 0.0
     },
     {
       "nodeid": "tests/test_graph_engine.py::test_add_node",
       "outcome": "passed",
-      "duration_s": 0.0001
+      "duration_s": 0.0
     },
     {
       "nodeid": "tests/test_graph_engine.py::test_add_edge",
       "outcome": "passed",
-      "duration_s": 0.0001
+      "duration_s": 0.0
     },
     {
       "nodeid": "tests/test_graph_engine.py::test_pcs_computation",
       "outcome": "passed",
-      "duration_s": 0.0001
+      "duration_s": 0.0
     },
     {
       "nodeid": "tests/test_product.py::test_patent_parser",
       "outcome": "passed",
-      "duration_s": 0.0033
+      "duration_s": 0.0
     },
     {
       "nodeid": "tests/test_product.py::test_text_normalizer",
       "outcome": "passed",
-      "duration_s": 0.0006
+      "duration_s": 0.0
     },
     {
       "nodeid": "tests/test_product.py::test_permutation_engine",
       "outcome": "passed",
-      "duration_s": 0.0012
+      "duration_s": 0.0
     },
     {
       "nodeid": "tests/test_product.py::test_blueprint_composer",
       "outcome": "passed",
-      "duration_s": 0.0001
+      "duration_s": 0.0
     },
     {
       "nodeid": "tests/test_product.py::test_business_pipeline",
       "outcome": "passed",
-      "duration_s": 0.0261
+      "duration_s": 0.0
     },
     {
       "nodeid": "tests/test_product.py::test_consumer_pipeline",
       "outcome": "passed",
-      "duration_s": 0.0057
+      "duration_s": 0.0
     },
     {
       "nodeid": "tests/test_product.py::test_orchestrator",
       "outcome": "passed",
-      "duration_s": 0.0588
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_ledger_integrity.py::test_every_committed_jsonl_line_parses",
+      "outcome": "failed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_ledger_integrity.py::test_no_one_char_per_line_pattern",
+      "outcome": "failed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_ledger_integrity.py::test_ledger_schema_matches_writer",
+      "outcome": "passed",
+      "duration_s": 0.0
     }
-  ]
+  ],
+  "stdout_tail": "tainly\n        a writer that iterated a string character-by-character and\n        wrote a newline after each character. The legitimate\n        one-line-per-record JSONL format cannot hit this signature:\n        any non-trivial JSON object is longer than 5 characters.\n    \n        On the corrupted state, predictions.jsonl hits this with\n        line_count=703 and max_line_length=1.\n        \"\"\"\n        files = _all_jsonl_files()\n        flagged = []\n        for f in files:\n            with open(f, \"r\", encoding=\"utf-8\") as fh:\n                lines = fh.read().splitlines()\n            non_empty = [ln for ln in lines if ln.strip()]\n            if len(non_empty) > 500 and all(len(ln) < 5 for ln in non_empty):\n                flagged.append({\n                    \"file\": str(f.relative_to(ROOT)),\n                    \"line_count\": len(lines),\n                    \"non_empty_count\": len(non_empty),\n                    \"max_line_length\": max((len(ln) for ln in non_empty), default=0),\n                })\n>       assert not flagged, (\n            \"F-005 regression: one-character-per-line corruption signature \"\n            f\"detected in: {flagged}\"\n        )\nE       AssertionError: F-005 regression: one-character-per-line corruption signature detected in: [{'file': 'data/ledger/predictions.jsonl', 'line_count': 704, 'non_empty_count': 609, 'max_line_length': 1}]\nE       assert not [{'file': 'data/ledger/predictions.jsonl', 'line_count': 704, 'non_empty_count': 609, 'max_line_length': 1}]\n\ntests/test_ledger_integrity.py:99: AssertionError\n--------------------------------- JSON report ----------------------------------\nreport saved to: /tmp/tee_unit_test_report.json\n=========================== short test summary info ============================\nFAILED tests/test_ledger_integrity.py::test_every_committed_jsonl_line_parses\nFAILED tests/test_ledger_integrity.py::test_no_one_char_per_line_pattern - As...\n========================= 2 failed, 12 passed in 0.17s =========================\n",
+  "stderr_tail": null
 }
