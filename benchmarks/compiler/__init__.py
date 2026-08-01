@@ -14,12 +14,52 @@ Verdict buckets (composite feasibility → verdict):
     c < 0.25              -> unknown
 """
 
+# ----------------------------------------------------------------------
+# 4-category benchmark taxonomy (CTO review #2)
+# ----------------------------------------------------------------------
+# Per INVENTION_COMPILER.md, the suite must eventually be divided
+# into four categories. Each case below declares which category it
+# belongs to.
+#
+#   reconstruction  — can we rediscover existing inventions?
+#   resurrection    — can we rediscover abandoned inventions?
+#   forecasting     — can we anticipate future inventions?
+#   synthesis       — can we discover entirely new combinations?
+#
+# Reconstruction and Forecasting are covered by the current 5 cases.
+# Resurrection requires adding abandoned-invention cases (e.g., a
+# case that asks the compiler to "rediscover" Iridium or Airships
+# given the modern context). Synthesis requires the cross-domain
+# synthesizer to surface a candidate the benchmarker can verify is
+# novel — that's a follow-up.
+
+BENCHMARK_CATEGORIES = {
+    "reconstruction": {
+        "question": "Can we rediscover existing inventions?",
+        "examples": "Portable MRI (Hyperfine Swoop exists), Carbon-negative cement (CarbonCure exists)",
+    },
+    "resurrection": {
+        "question": "Can we rediscover abandoned inventions?",
+        "examples": "Airships (cargo variant), Iridium (relaunched)",
+    },
+    "forecasting": {
+        "question": "Can we anticipate future inventions?",
+        "examples": "Solid-state ammonia synthesis (active research), Artificial photosynthesis (active research)",
+    },
+    "synthesis": {
+        "question": "Can we discover entirely new combinations?",
+        "examples": "TBD — novel cross-domain pairs the system surfaces that no human has built yet",
+    },
+}
+
+
 # The 5 cases. Per INVENTION_COMPILER.md, these probe different
 # regions of the feasibility space — from "known feasible" (portable
 # MRI) to "may be physically impossible" (room-temp superconductors).
 #
 # Each case carries:
 #   - expected_verdict: the verdict the CTO expects the compiler to produce
+#   - category: which of the 4 CTO-mandated categories this case belongs to
 #   - problem: the Layer 0 input dict
 #   - rationale: why this case is in the suite
 
@@ -28,10 +68,12 @@ CASES = [
         "id": "case_001_portable_mri",
         "name": "Portable MRI",
         "expected_verdict": "feasible",
+        "category": "reconstruction",
         "rationale": (
-            "Control case. Portable MRI is a known-plausible invention "
-            "(Hyperfine Swoop is FDA-cleared). Tests the compiler does "
-            "not say 'impossible' on a real invention."
+            "Reconstruction case. Portable MRI is a known-plausible "
+            "invention (Hyperfine Swoop is FDA-cleared). Tests the "
+            "compiler can recognize a feasible invention that already "
+            "exists, rather than say 'impossible'."
         ),
         "problem": {
             "problem": "Build a portable MRI scanner suitable for rural "
@@ -48,11 +90,11 @@ CASES = [
         "id": "case_002_ammonia_synthesis",
         "name": "Solid-state ammonia synthesis",
         "expected_verdict": "uncertain",
+        "category": "forecasting",
         "rationale": (
-            "Active research area. Haber-Bosch without high T/P is an "
-            "open problem — the honest answer is 'we don't know yet.' "
-            "Tests the compiler can say 'uncertain' honestly rather than "
-            "fabricate confidence."
+            "Forecasting case. Haber-Bosch without high T/P is an open "
+            "research problem. Tests the compiler can say 'uncertain' "
+            "honestly rather than fabricate confidence."
         ),
         "problem": {
             "problem": "Synthesize ammonia from nitrogen and water at "
@@ -69,11 +111,11 @@ CASES = [
         "id": "case_003_rt_superconductors",
         "name": "Room-temperature superconductors",
         "expected_verdict": "unknown",
+        "category": "forecasting",
         "rationale": (
-            "May be physically impossible. Recent LK-99 claims were "
-            "retracted; no known material superconducts above ~250K at "
-            "ambient pressure. Tests the compiler can say 'unknown' "
-            "without claiming feasibility."
+            "Forecasting case at the edge of physics. May be physically "
+            "impossible. Recent LK-99 claims were retracted. Tests the "
+            "compiler can say 'unknown' without claiming feasibility."
         ),
         "problem": {
             "problem": "Discover and engineer a material that "
@@ -83,7 +125,7 @@ CASES = [
                           "transport, compact MRI",
             "market": "multiple_global_industries",
             "constraints": ["material", "energy", "manufacturing", "regulation",
-                            "scientific_unknown"],
+                            "superconductivity"],
             "time_horizon": "15+ years",
         },
     },
@@ -91,11 +133,12 @@ CASES = [
         "id": "case_004_carbon_negative_cement",
         "name": "Carbon-negative cement",
         "expected_verdict": "potentially_feasible",
+        "category": "reconstruction",
         "rationale": (
-            "Already exists in early commercial form (CarbonCure, "
-            "Solidia, BioMason). Tests the compiler can distinguish "
-            "'potentially feasible' from 'feasible' — the tech works "
-            "but has not yet captured the global cement market."
+            "Reconstruction case. Already exists in early commercial form "
+            "(CarbonCure, Solidia, BioMason). Tests the compiler can "
+            "distinguish 'potentially feasible' from 'feasible' — the "
+            "tech works but has not yet captured the global cement market."
         ),
         "problem": {
             "problem": "Manufacture cement that absorbs more CO2 over "
@@ -104,7 +147,7 @@ CASES = [
             "motivation": "Cement is ~8% of global CO2 emissions",
             "market": "global_construction",
             "constraints": ["cost", "material", "regulation", "manufacturing",
-                            "supply_chain"],
+                            "supply_chain", "carbon_negative"],
             "time_horizon": "5-10 years",
         },
     },
@@ -112,12 +155,13 @@ CASES = [
         "id": "case_005_artificial_photosynthesis",
         "name": "Artificial photosynthesis",
         "expected_verdict": "partially_feasible",
+        "category": "forecasting",
         "rationale": (
-            "Components work (PV electrolysis, photocatalytic water "
-            "splitting) but a complete system that matches natural "
-            "photosynthesis's efficiency does not yet exist. Tests "
-            "the compiler can express 'partial feasibility' rather than "
-            "binary pass/fail."
+            "Forecasting case. Components work (PV electrolysis, "
+            "photocatalytic water splitting) but a complete system that "
+            "matches natural photosynthesis's efficiency does not yet "
+            "exist. Tests the compiler can express 'partial feasibility' "
+            "rather than binary pass/fail."
         ),
         "problem": {
             "problem": "Build a system that converts sunlight, CO2, and "
@@ -128,20 +172,42 @@ CASES = [
                           "sectors (aviation, shipping)",
             "market": "global_energy",
             "constraints": ["energy", "material", "catalyst", "manufacturing",
-                            "regulation", "scientific_unknown"],
+                            "regulation", "photosynthesis"],
             "time_horizon": "10-15 years",
+        },
+    },
+    {
+        "id": "case_006_cargo_airships",
+        "name": "Cargo airships (resurrection)",
+        "expected_verdict": "partially_feasible",
+        "category": "resurrection",
+        "rationale": (
+            "Resurrection case. Airships failed as passenger transport "
+            "(Hindenburg 1937, helium-unavailability). Tests the compiler "
+            "can recognize that the original failure mode (hydrogen "
+            "flammability) is now removable (helium + modern materials), "
+            "and that the use case has shifted (cargo, not passengers). "
+            "Expected verdict: partially_feasible — LTA Research and HAV "
+            "Airlander are attempting this with mixed progress."
+        ),
+        "problem": {
+            "problem": "Resurrect rigid airships for heavy-lift cargo "
+                       "transport to remote areas without runways",
+            "domain": "transportation",
+            "motivation": "Remote-area logistics (mining, disaster relief) "
+                          "where runway construction is infeasible; "
+                          "carbon-neutral aviation pressure",
+            "market": "remote_logistics",
+            "constraints": ["cost", "material", "regulation", "manufacturing",
+                            "supply_chain", "helium_availability"],
+            "time_horizon": "5-10 years",
         },
     },
 ]
 
 
 def verdict_from_composite(composite: float) -> str:
-    """Map a composite feasibility score to a verdict bucket.
-
-    Per INVENTION_COMPILER.md, the buckets are priors, not
-    calibrations. They should be recalibrated as the verification
-    cycle accumulates outcomes.
-    """
+    """Map a composite feasibility score to a verdict bucket."""
     if composite >= 0.75:
         return "feasible"
     if composite >= 0.55:
@@ -153,7 +219,6 @@ def verdict_from_composite(composite: float) -> str:
     return "unknown"
 
 
-# Ordered list of buckets, from most to least feasible.
 BUCKET_ORDER = [
     "feasible",
     "potentially_feasible",
@@ -164,12 +229,10 @@ BUCKET_ORDER = [
 
 
 def bucket_distance(verdict_a: str, verdict_b: str) -> int:
-    """How many buckets apart are two verdicts? 0 = same bucket,
-    1 = adjacent bucket, etc. Used to decide PASS (within 1) vs
-    FAIL (more than 1 apart)."""
+    """How many buckets apart are two verdicts?"""
     try:
         ia = BUCKET_ORDER.index(verdict_a)
         ib = BUCKET_ORDER.index(verdict_b)
         return abs(ia - ib)
     except ValueError:
-        return 99  # unknown verdict -> large distance
+        return 99

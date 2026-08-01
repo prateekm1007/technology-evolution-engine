@@ -106,6 +106,7 @@ def make_unit_test_report():
         "tests/test_graph_engine.py", "tests/test_product.py",
         "tests/test_ledger_integrity.py", "tests/test_north_star_modules.py",
         "tests/test_invention_compiler.py", "tests/test_compiler_benchmarks.py",
+        "tests/test_module_depth_upgrades.py",
         "-v", "--json-report",
         "--json-report-file=/tmp/tee_unit_test_report.json",
         "--json-report-indent=2",

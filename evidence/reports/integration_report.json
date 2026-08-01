@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-01T16:21:59.906474+00:00",
+  "generated_at": "2026-08-01T16:37:31.339589+00:00",
   "method": "pytest tests/test_endpoints.py -v, run live \u2014 exercises FastAPI app + real product pipelines together via TestClient, not mocks",
   "summary": {
     "passed": 7,
@@ -9,7 +9,7 @@
     "total": 7,
     "collected": 7
   },
-  "duration_s": 1.151,
+  "duration_s": 1.181,
   "tests": [
     {
       "nodeid": "tests/test_endpoints.py::test_analyze_responds_to_payload",

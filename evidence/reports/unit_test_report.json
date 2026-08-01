@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-08-01T16:21:58.755117+00:00",
+  "generated_at": "2026-08-01T16:37:30.158190+00:00",
   "method": "pytest tests/test_graph_engine.py tests/test_product.py tests/test_ledger_integrity.py tests/test_north_star_modules.py tests/test_invention_compiler.py tests/test_compiler_benchmarks.py -v, run live",
   "summary": {
-    "passed": 55,
+    "passed": 77,
     "failed": 0,
     "skipped": 0,
     "errors": 0,
-    "total": 55,
-    "collected": 55
+    "total": 77,
+    "collected": 77
   },
-  "duration_s": 3.913,
+  "duration_s": 4.005,
   "tests": [
     {
       "nodeid": "tests/test_graph_engine.py::test_empty_graph",
@@ -222,7 +222,7 @@
       "duration_s": 0.0
     },
     {
-      "nodeid": "tests/test_compiler_benchmarks.py::test_suite_has_5_cases",
+      "nodeid": "tests/test_compiler_benchmarks.py::test_suite_has_at_least_5_cases",
       "outcome": "passed",
       "duration_s": 0.0
     },
@@ -283,6 +283,116 @@
     },
     {
       "nodeid": "tests/test_compiler_benchmarks.py::test_benchmark_report_cases_match_suite",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_module_depth_upgrades.py::test_physics_module_exposes_conservation_laws",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_module_depth_upgrades.py::test_physics_module_exposes_thermodynamics_laws",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_module_depth_upgrades.py::test_physics_module_carries_units_and_dimensional_analysis",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_module_depth_upgrades.py::test_physics_module_laws_carry_equations",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_module_depth_upgrades.py::test_physics_module_differentiates_problems",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_module_depth_upgrades.py::test_chemistry_module_exposes_reaction_pathways",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_module_depth_upgrades.py::test_chemistry_module_exposes_kinetics_model",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_module_depth_upgrades.py::test_chemistry_module_exposes_equilibrium_constants",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_module_depth_upgrades.py::test_chemistry_module_exposes_energy_states",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_module_depth_upgrades.py::test_chemistry_module_differentiates_problems",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_module_depth_upgrades.py::test_mathematics_module_exposes_optimization_formulations",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_module_depth_upgrades.py::test_mathematics_module_exposes_probability_distributions",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_module_depth_upgrades.py::test_mathematics_module_exposes_graph_theory",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_module_depth_upgrades.py::test_mathematics_module_exposes_differential_equation_types",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_module_depth_upgrades.py::test_mathematics_module_exposes_control_theory",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_module_depth_upgrades.py::test_dependency_module_exposes_causal_edges",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_module_depth_upgrades.py::test_dependency_module_supports_counterfactual",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_module_depth_upgrades.py::test_resurrection_module_exposes_counterfactual_analysis",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_module_depth_upgrades.py::test_resurrection_module_counterfactual_is_specific",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_module_depth_upgrades.py::test_benchmark_taxonomy_has_4_categories",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_module_depth_upgrades.py::test_each_benchmark_case_is_categorized",
+      "outcome": "passed",
+      "duration_s": 0.0
+    },
+    {
+      "nodeid": "tests/test_module_depth_upgrades.py::test_all_4_categories_are_covered",
       "outcome": "passed",
       "duration_s": 0.0
     }

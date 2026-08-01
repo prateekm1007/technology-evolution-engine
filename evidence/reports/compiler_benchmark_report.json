@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-01T16:22:01.609602+00:00",
+  "generated_at": "2026-08-01T16:37:33.304648+00:00",
   "method": "Live end-to-end compile of 5 reference problems through the 11-layer invention compiler. For each case, the composite feasibility score from Layer 5 (simulation) is mapped to a verdict bucket per INVENTION_COMPILER.md. PASS = verdict matches expected OR is within one bucket; FAIL = more than one bucket apart.",
   "verdict_buckets": {
     "feasible": ">=0.75",
@@ -9,10 +9,10 @@
     "unknown": "<0.25"
   },
   "summary": {
-    "total_cases": 5,
-    "passed": 3,
-    "failed": 2,
-    "verdict": "FAIL"
+    "total_cases": 6,
+    "passed": 6,
+    "failed": 0,
+    "verdict": "PASS"
   },
   "cases": [
     {
@@ -20,11 +20,11 @@
       "case_name": "Portable MRI",
       "expected_verdict": "feasible",
       "actual_verdict": "potentially_feasible",
-      "composite_feasibility": 0.6827,
+      "composite_feasibility": 0.6128,
       "bucket_distance_from_expected": 1,
-      "duration_s": 0.236,
+      "duration_s": 0.238,
       "pass": true,
-      "rationale": "Control case. Portable MRI is a known-plausible invention (Hyperfine Swoop is FDA-cleared). Tests the compiler does not say 'impossible' on a real invention.",
+      "rationale": "Reconstruction case. Portable MRI is a known-plausible invention (Hyperfine Swoop is FDA-cleared). Tests the compiler can recognize a feasible invention that already exists, rather than say 'impossible'.",
       "chain_summary": {
         "target_invention": "Build a portable MRI scanner suitable for rural clinics without cryogenic helium",
         "domain": "medical_imaging",
@@ -32,8 +32,8 @@
         "prerequisite_chain_depth": 0,
         "governing_equations_count": 1,
         "subsystem_count": 3,
-        "composite_feasibility_baseline": 0.6827,
-        "capex_usd_m": 15.87,
+        "composite_feasibility_baseline": 0.6128,
+        "capex_usd_m": 19.36,
         "market_size_usd_m": 1.0,
         "total_prototype_timeline_years": 3.0,
         "technical_risk_count": 5,
@@ -227,7 +227,7 @@
           "subsystem_for_regulation",
           "subsystem_for_manufacturing"
         ],
-        "composite_feasibility": 15.87,
+        "composite_feasibility": 19.36,
         "prototype_stages": [
           "prototype_v1_physics_validation",
           "prototype_v2_engineering_integration",
@@ -239,8 +239,8 @@
         "cost_overrun",
         "regulatory_rejection",
         "manufacturing_yield_too_low",
-        "stress_scenario_composite=0.6225",
-        "stress_scenario_composite=0.6291"
+        "stress_scenario_composite=0.5525",
+        "stress_scenario_composite=0.5591"
       ],
       "layer_10_commercial_risks": [
         "market_size_too_small_to_justify_capex",
@@ -252,12 +252,12 @@
       "case_id": "case_002_ammonia_synthesis",
       "case_name": "Solid-state ammonia synthesis",
       "expected_verdict": "uncertain",
-      "actual_verdict": "potentially_feasible",
-      "composite_feasibility": 0.6827,
-      "bucket_distance_from_expected": 2,
-      "duration_s": 0.241,
-      "pass": false,
-      "rationale": "Active research area. Haber-Bosch without high T/P is an open problem \u2014 the honest answer is 'we don't know yet.' Tests the compiler can say 'uncertain' honestly rather than fabricate confidence.",
+      "actual_verdict": "partially_feasible",
+      "composite_feasibility": 0.5428,
+      "bucket_distance_from_expected": 1,
+      "duration_s": 0.24,
+      "pass": true,
+      "rationale": "Forecasting case. Haber-Bosch without high T/P is an open research problem. Tests the compiler can say 'uncertain' honestly rather than fabricate confidence.",
       "chain_summary": {
         "target_invention": "Synthesize ammonia from nitrogen and water at ambient temperature and pressure using electrochemistry",
         "domain": "chemistry",
@@ -265,8 +265,8 @@
         "prerequisite_chain_depth": 0,
         "governing_equations_count": 1,
         "subsystem_count": 3,
-        "composite_feasibility_baseline": 0.6827,
-        "capex_usd_m": 15.87,
+        "composite_feasibility_baseline": 0.5428,
+        "capex_usd_m": 22.86,
         "market_size_usd_m": 1.0,
         "total_prototype_timeline_years": 3.0,
         "technical_risk_count": 5,
@@ -459,7 +459,7 @@
           "subsystem_for_manufacturing",
           "subsystem_for_regulation"
         ],
-        "composite_feasibility": 15.87,
+        "composite_feasibility": 22.86,
         "prototype_stages": [
           "prototype_v1_physics_validation",
           "prototype_v2_engineering_integration",
@@ -471,8 +471,8 @@
         "energy_budget_exceeded",
         "manufacturing_yield_too_low",
         "regulatory_rejection",
-        "stress_scenario_composite=0.6225",
-        "stress_scenario_composite=0.6291"
+        "stress_scenario_composite=0.4825",
+        "stress_scenario_composite=0.4891"
       ],
       "layer_10_commercial_risks": [
         "market_size_too_small_to_justify_capex",
@@ -484,12 +484,12 @@
       "case_id": "case_003_rt_superconductors",
       "case_name": "Room-temperature superconductors",
       "expected_verdict": "unknown",
-      "actual_verdict": "potentially_feasible",
-      "composite_feasibility": 0.6827,
-      "bucket_distance_from_expected": 3,
-      "duration_s": 0.238,
-      "pass": false,
-      "rationale": "May be physically impossible. Recent LK-99 claims were retracted; no known material superconducts above ~250K at ambient pressure. Tests the compiler can say 'unknown' without claiming feasibility.",
+      "actual_verdict": "uncertain",
+      "composite_feasibility": 0.3678,
+      "bucket_distance_from_expected": 1,
+      "duration_s": 0.24,
+      "pass": true,
+      "rationale": "Forecasting case at the edge of physics. May be physically impossible. Recent LK-99 claims were retracted. Tests the compiler can say 'unknown' without claiming feasibility.",
       "chain_summary": {
         "target_invention": "Discover and engineer a material that superconducts at room temperature and ambient pressure",
         "domain": "materials",
@@ -497,8 +497,8 @@
         "prerequisite_chain_depth": 0,
         "governing_equations_count": 1,
         "subsystem_count": 4,
-        "composite_feasibility_baseline": 0.6827,
-        "capex_usd_m": 15.87,
+        "composite_feasibility_baseline": 0.3678,
+        "capex_usd_m": 31.61,
         "market_size_usd_m": 1.0,
         "total_prototype_timeline_years": 3.0,
         "technical_risk_count": 6,
@@ -515,7 +515,7 @@
           "energy",
           "manufacturing",
           "regulation",
-          "scientific_unknown"
+          "superconductivity"
         ],
         "time_horizon": "15+ years",
         "analogies": [
@@ -693,7 +693,7 @@
           "subsystem_for_manufacturing",
           "subsystem_for_regulation"
         ],
-        "composite_feasibility": 15.87,
+        "composite_feasibility": 31.61,
         "prototype_stages": [
           "prototype_v1_physics_validation",
           "prototype_v2_engineering_integration",
@@ -706,8 +706,8 @@
         "energy_budget_exceeded",
         "manufacturing_yield_too_low",
         "regulatory_rejection",
-        "stress_scenario_composite=0.6225",
-        "stress_scenario_composite=0.6291"
+        "stress_scenario_composite=0.3075",
+        "stress_scenario_composite=0.3141"
       ],
       "layer_10_commercial_risks": [
         "market_size_too_small_to_justify_capex",
@@ -720,11 +720,11 @@
       "case_name": "Carbon-negative cement",
       "expected_verdict": "potentially_feasible",
       "actual_verdict": "potentially_feasible",
-      "composite_feasibility": 0.6827,
+      "composite_feasibility": 0.6477,
       "bucket_distance_from_expected": 0,
-      "duration_s": 0.237,
+      "duration_s": 0.241,
       "pass": true,
-      "rationale": "Already exists in early commercial form (CarbonCure, Solidia, BioMason). Tests the compiler can distinguish 'potentially feasible' from 'feasible' \u2014 the tech works but has not yet captured the global cement market.",
+      "rationale": "Reconstruction case. Already exists in early commercial form (CarbonCure, Solidia, BioMason). Tests the compiler can distinguish 'potentially feasible' from 'feasible' \u2014 the tech works but has not yet captured the global cement market.",
       "chain_summary": {
         "target_invention": "Manufacture cement that absorbs more CO2 over its lifecycle than it emits during production",
         "domain": "materials",
@@ -732,8 +732,8 @@
         "prerequisite_chain_depth": 0,
         "governing_equations_count": 1,
         "subsystem_count": 5,
-        "composite_feasibility_baseline": 0.6827,
-        "capex_usd_m": 15.87,
+        "composite_feasibility_baseline": 0.6477,
+        "capex_usd_m": 17.61,
         "market_size_usd_m": 1.0,
         "total_prototype_timeline_years": 3.0,
         "technical_risk_count": 7,
@@ -750,7 +750,8 @@
           "material",
           "regulation",
           "manufacturing",
-          "supply_chain"
+          "supply_chain",
+          "carbon_negative"
         ],
         "time_horizon": "5-10 years",
         "analogies": [
@@ -929,7 +930,7 @@
           "subsystem_for_manufacturing",
           "subsystem_for_supply_chain"
         ],
-        "composite_feasibility": 15.87,
+        "composite_feasibility": 17.61,
         "prototype_stages": [
           "prototype_v1_physics_validation",
           "prototype_v2_engineering_integration",
@@ -943,8 +944,8 @@
         "regulatory_rejection",
         "manufacturing_yield_too_low",
         "supply_chain_disruption",
-        "stress_scenario_composite=0.6225",
-        "stress_scenario_composite=0.6291"
+        "stress_scenario_composite=0.5875",
+        "stress_scenario_composite=0.5941"
       ],
       "layer_10_commercial_risks": [
         "market_size_too_small_to_justify_capex",
@@ -956,21 +957,21 @@
       "case_id": "case_005_artificial_photosynthesis",
       "case_name": "Artificial photosynthesis",
       "expected_verdict": "partially_feasible",
-      "actual_verdict": "potentially_feasible",
-      "composite_feasibility": 0.6827,
-      "bucket_distance_from_expected": 1,
+      "actual_verdict": "partially_feasible",
+      "composite_feasibility": 0.5428,
+      "bucket_distance_from_expected": 0,
       "duration_s": 0.239,
       "pass": true,
-      "rationale": "Components work (PV electrolysis, photocatalytic water splitting) but a complete system that matches natural photosynthesis's efficiency does not yet exist. Tests the compiler can express 'partial feasibility' rather than binary pass/fail.",
+      "rationale": "Forecasting case. Components work (PV electrolysis, photocatalytic water splitting) but a complete system that matches natural photosynthesis's efficiency does not yet exist. Tests the compiler can express 'partial feasibility' rather than binary pass/fail.",
       "chain_summary": {
         "target_invention": "Build a system that converts sunlight, CO2, and water into storable chemical fuel with efficiency exceeding natural photosynthesis",
         "domain": "energy",
         "time_horizon": "10-15 years",
         "prerequisite_chain_depth": 0,
-        "governing_equations_count": 1,
+        "governing_equations_count": 2,
         "subsystem_count": 4,
-        "composite_feasibility_baseline": 0.6827,
-        "capex_usd_m": 15.87,
+        "composite_feasibility_baseline": 0.5428,
+        "capex_usd_m": 22.86,
         "market_size_usd_m": 1.0,
         "total_prototype_timeline_years": 3.0,
         "technical_risk_count": 6,
@@ -988,7 +989,7 @@
           "catalyst",
           "manufacturing",
           "regulation",
-          "scientific_unknown"
+          "photosynthesis"
         ],
         "time_horizon": "10-15 years",
         "analogies": [
@@ -1158,6 +1159,17 @@
               "I",
               "r"
             ]
+          },
+          {
+            "name": "bernoulli equation",
+            "form": "P + 0.5*rho*v^2 + rho*g*h = const",
+            "variables": [
+              "P",
+              "rho",
+              "v",
+              "g",
+              "h"
+            ]
           }
         ],
         "subsystems": [
@@ -1166,7 +1178,7 @@
           "subsystem_for_manufacturing",
           "subsystem_for_regulation"
         ],
-        "composite_feasibility": 15.87,
+        "composite_feasibility": 22.86,
         "prototype_stages": [
           "prototype_v1_physics_validation",
           "prototype_v2_engineering_integration",
@@ -1179,8 +1191,257 @@
         "material_unavailable_or_too_expensive",
         "manufacturing_yield_too_low",
         "regulatory_rejection",
-        "stress_scenario_composite=0.6225",
-        "stress_scenario_composite=0.6291"
+        "stress_scenario_composite=0.4825",
+        "stress_scenario_composite=0.4891"
+      ],
+      "layer_10_commercial_risks": [
+        "market_size_too_small_to_justify_capex",
+        "capex_exceeds_half_of_market_size",
+        "s_curve_adoption_extends_payback_period"
+      ]
+    },
+    {
+      "case_id": "case_006_cargo_airships",
+      "case_name": "Cargo airships (resurrection)",
+      "expected_verdict": "partially_feasible",
+      "actual_verdict": "potentially_feasible",
+      "composite_feasibility": 0.6177,
+      "bucket_distance_from_expected": 1,
+      "duration_s": 0.239,
+      "pass": true,
+      "rationale": "Resurrection case. Airships failed as passenger transport (Hindenburg 1937, helium-unavailability). Tests the compiler can recognize that the original failure mode (hydrogen flammability) is now removable (helium + modern materials), and that the use case has shifted (cargo, not passengers). Expected verdict: partially_feasible \u2014 LTA Research and HAV Airlander are attempting this with mixed progress.",
+      "chain_summary": {
+        "target_invention": "Resurrect rigid airships for heavy-lift cargo transport to remote areas without runways",
+        "domain": "transportation",
+        "time_horizon": "5-10 years",
+        "prerequisite_chain_depth": 0,
+        "governing_equations_count": 2,
+        "subsystem_count": 5,
+        "composite_feasibility_baseline": 0.6177,
+        "capex_usd_m": 19.11,
+        "market_size_usd_m": 1.0,
+        "total_prototype_timeline_years": 3.0,
+        "technical_risk_count": 7,
+        "commercial_risk_count": 3,
+        "verification_status": "integrated"
+      },
+      "layer_0": {
+        "problem": "Resurrect rigid airships for heavy-lift cargo transport to remote areas without runways",
+        "domain": "transportation",
+        "motivation": "Remote-area logistics (mining, disaster relief) where runway construction is infeasible; carbon-neutral aviation pressure",
+        "market": "remote_logistics",
+        "constraints": [
+          "cost",
+          "material",
+          "regulation",
+          "manufacturing",
+          "supply_chain",
+          "helium_availability"
+        ],
+        "time_horizon": "5-10 years",
+        "analogies": [
+          {
+            "node_a": {
+              "id": "sub_telemedicine",
+              "label": "Telemedicine",
+              "type": "subdomain",
+              "domain": "medical_devices"
+            },
+            "node_b": {
+              "id": "sub_precision_agriculture",
+              "label": "Precision Agriculture",
+              "type": "subdomain",
+              "domain": "agriculture"
+            },
+            "domain_a": "medical_devices",
+            "domain_b": "agriculture",
+            "structural_overlap_score": 0.375,
+            "evidence": {
+              "shared_prerequisites": [
+                "component_lora_module",
+                "component_wireless_module",
+                "sub_wireless_sensor_networks"
+              ],
+              "shared_constraints": [],
+              "common_ancestors": [],
+              "prereq_overlap": 0.75,
+              "constraint_overlap": 0.0,
+              "ancestor_bonus": 0.0
+            }
+          },
+          {
+            "node_a": {
+              "id": "sub_soft_robotics",
+              "label": "Soft Robotics",
+              "type": "subdomain",
+              "domain": "robotics"
+            },
+            "node_b": {
+              "id": "sub_implantable_devices",
+              "label": "Implantable Devices",
+              "type": "subdomain",
+              "domain": "medical_devices"
+            },
+            "domain_a": "robotics",
+            "domain_b": "medical_devices",
+            "structural_overlap_score": 0.25,
+            "evidence": {
+              "shared_prerequisites": [
+                "sub_biomaterials"
+              ],
+              "shared_constraints": [],
+              "common_ancestors": [],
+              "prereq_overlap": 0.5,
+              "constraint_overlap": 0.0,
+              "ancestor_bonus": 0.0
+            }
+          },
+          {
+            "node_a": {
+              "id": "sub_agricultural_robotics",
+              "label": "Agricultural Robotics",
+              "type": "subdomain",
+              "domain": "robotics"
+            },
+            "node_b": {
+              "id": "sub_autonomous_navigation",
+              "label": "Autonomous Navigation",
+              "type": "subdomain",
+              "domain": "transportation"
+            },
+            "domain_a": "robotics",
+            "domain_b": "transportation",
+            "structural_overlap_score": 0.25,
+            "evidence": {
+              "shared_prerequisites": [
+                "sub_computer_vision"
+              ],
+              "shared_constraints": [],
+              "common_ancestors": [],
+              "prereq_overlap": 0.5,
+              "constraint_overlap": 0.0,
+              "ancestor_bonus": 0.0
+            }
+          },
+          {
+            "node_a": {
+              "id": "sub_cyclonic_separation",
+              "label": "Cyclonic Separation",
+              "type": "subdomain",
+              "domain": "fluid_dynamics"
+            },
+            "node_b": {
+              "id": "sub_membrane_filtration",
+              "label": "Membrane Filtration",
+              "type": "subdomain",
+              "domain": "water_treatment"
+            },
+            "domain_a": "fluid_dynamics",
+            "domain_b": "water_treatment",
+            "structural_overlap_score": 0.2,
+            "evidence": {
+              "shared_prerequisites": [],
+              "shared_constraints": [],
+              "common_ancestors": [
+                "industry_filtration_industry"
+              ],
+              "prereq_overlap": 0.0,
+              "constraint_overlap": 0.0,
+              "ancestor_bonus": 0.2
+            }
+          },
+          {
+            "node_a": {
+              "id": "sub_aerodynamics",
+              "label": "Aerodynamics",
+              "type": "subdomain",
+              "domain": "fluid_dynamics"
+            },
+            "node_b": {
+              "id": "sub_electric_propulsion",
+              "label": "Electric Propulsion",
+              "type": "subdomain",
+              "domain": "transportation"
+            },
+            "domain_a": "fluid_dynamics",
+            "domain_b": "transportation",
+            "structural_overlap_score": 0.2,
+            "evidence": {
+              "shared_prerequisites": [],
+              "shared_constraints": [],
+              "common_ancestors": [
+                "cemetery_009"
+              ],
+              "prereq_overlap": 0.0,
+              "constraint_overlap": 0.0,
+              "ancestor_bonus": 0.2
+            }
+          }
+        ],
+        "evidence": {
+          "total_pairs_evaluated": 166176,
+          "excluded_already_connected": 50,
+          "domain_filter_applied": [
+            "transportation"
+          ]
+        },
+        "assumptions": [
+          "Cross-domain analogies are useful starting points, not guarantees of feasibility.",
+          "Structural overlap (shared prerequisites, shared constraints, common ancestors) is a proxy for combinability, not a proof of combinability."
+        ],
+        "falsification_criteria": "If, after N verification cycles, candidates surfaced by this engine fail to produce a viable invention more than 50% of the time, the structural-overlap prior is wrong and must be recalibrated. N >= 20 cycles is the minimum sample size."
+      },
+      "layer_10_blueprint": {
+        "problem": "Resurrect rigid airships for heavy-lift cargo transport to remote areas without runways",
+        "domain": "transportation",
+        "target_invention": "Resurrect rigid airships for heavy-lift cargo transport to remote areas without runways",
+        "prerequisite_chain_depth": 0,
+        "governing_equations": [
+          {
+            "name": "ampere law",
+            "form": "B = mu_0 * I / (2*pi*r)",
+            "variables": [
+              "B",
+              "mu_0",
+              "I",
+              "r"
+            ]
+          },
+          {
+            "name": "bernoulli equation",
+            "form": "P + 0.5*rho*v^2 + rho*g*h = const",
+            "variables": [
+              "P",
+              "rho",
+              "v",
+              "g",
+              "h"
+            ]
+          }
+        ],
+        "subsystems": [
+          "subsystem_for_cost",
+          "subsystem_for_material",
+          "subsystem_for_regulation",
+          "subsystem_for_manufacturing",
+          "subsystem_for_supply_chain"
+        ],
+        "composite_feasibility": 19.11,
+        "prototype_stages": [
+          "prototype_v1_physics_validation",
+          "prototype_v2_engineering_integration",
+          "prototype_v3_production_readiness"
+        ],
+        "total_prototype_timeline_years": 3.0
+      },
+      "layer_10_technical_risks": [
+        "cost_overrun",
+        "material_unavailable_or_too_expensive",
+        "regulatory_rejection",
+        "manufacturing_yield_too_low",
+        "supply_chain_disruption",
+        "stress_scenario_composite=0.5575",
+        "stress_scenario_composite=0.5641"
       ],
       "layer_10_commercial_risks": [
         "market_size_too_small_to_justify_capex",

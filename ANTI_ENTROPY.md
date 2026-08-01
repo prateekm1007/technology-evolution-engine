@@ -157,6 +157,33 @@ engine that solves the heat equation), you may rename the module
 to "engine" — but only after the verification cycle has recorded
 at least one pass AND one fail against real-world data for it.
 
+### Depth over breadth (CTO-mandated, review #2)
+
+The next objective is NOT to build additional modules.
+The next objective is to increase the explanatory power of EXISTING
+modules.
+
+Concretely: a new module is entropy unless every existing module
+has been upgraded from keyword-matching to encoding a real scientific
+principle. The CTO review #2 (commit `02d7658`) explicitly forbids
+adding modules until the five named ones
+(physics/chemistry/mathematics/dependency/resurrection) have been
+deepened.
+
+| Module | From | To |
+|---|---|---|
+| physics_module | keyword matching | laws, equations, constraints, units, conservation principles |
+| chemistry_module | keywords | reaction pathways, kinetics, equilibrium, energy states |
+| mathematics_module | templates | optimization, probability, graph theory, differential equations, control theory |
+| dependency_module | connections | causal relationships |
+| resurrection_module | historical similarity | historical counterfactual analysis |
+
+These upgrades are NOT renames. A module that calls itself "laws,
+equations, constraints, units, conservation principles" but actually
+does keyword matching is lying — and per the "use the word 'engine'
+honestly" rule, lies compound. Encode the actual principle or admit
+you haven't.
+
 ---
 
 ## How these rules interact with Law 8

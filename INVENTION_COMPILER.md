@@ -12,7 +12,95 @@
 
 ---
 
-## CTO review (commit `a3d167d`)
+## North star (refined per CTO review #2)
+
+```text
+Search engines organize information.
+Recommendation engines organize preferences.
+Prediction engines organize probabilities.
+Invention engines organize possibilities.
+```
+
+That is the precise description of what we are trying to build.
+
+---
+
+## CTO review #2 (commit `02d7658`)
+
+The CTO reviewed the post-rename state and described it as
+"a genuine increase in maturity rather than an increase in
+complexity." Three things were specifically approved:
+
+1. **Terminology correction.** Renaming `*_engine` to `*_module`
+   reduced semantic inflation. Calling something a "physics engine"
+   creates an obligation to satisfy a high standard. Calling something
+   a "physics module" simply describes what it is.
+
+2. **Honest benchmarks.** 3/5 PASS, 2/5 FAIL. "The most valuable
+   result here is not the three passes. It is the two failures."
+
+3. **Explicit honesty contracts.** The sentence "A PASS means the
+   compiler ran end-to-end and produced a defensible chain of
+   reasoning, not that the compiler has determined whether the
+   invention is feasible in the real world" was called out. The CTO
+   said: "That sentence should probably be printed everywhere in the
+   repository." It is now in the benchmark report's `honesty_note`
+   field and in this file.
+
+### Architectural observation (CTO)
+
+The system now has three distinct layers:
+
+```text
+Layer A — Knowledge acquisition
+Layer B — Reasoning and synthesis
+Layer C — Blueprint generation
+```
+
+That separation is important because it allows each layer to evolve
+independently.
+
+### New directive: depth over breadth (CTO-mandated)
+
+The next objective is NOT to build additional modules.
+The next objective is to increase the explanatory power of EXISTING
+modules.
+
+Concrete upgrades required:
+
+| Module | From | To |
+|---|---|---|
+| physics_module | keyword matching | laws, equations, constraints, units, conservation principles |
+| chemistry_module | keywords | reaction pathways, kinetics, equilibrium, energy states |
+| mathematics_module | templates | optimization, probability, graph theory, differential equations, control theory |
+| dependency_module | connections | causal relationships |
+| resurrection_module | historical similarity | historical counterfactual analysis |
+
+These upgrades are NOT renames. They are encodings of actual
+scientific principles. Until a module encodes a real principle
+(not a keyword filter), it is still a keyword-matching module
+and must not be renamed to "engine."
+
+### 4-category benchmark taxonomy (CTO-mandated)
+
+The benchmark suite must eventually be divided into four categories:
+
+| Category | Question | Example cases |
+|---|---|---|
+| Reconstruction | Can we rediscover existing inventions? | Portable MRI (Hyperfine Swoop exists), Carbon-negative cement (CarbonCure exists) |
+| Resurrection | Can we rediscover abandoned inventions? | Airships (cargo variant), Iridium (relaunched) |
+| Forecasting | Can we anticipate future inventions? | Solid-state ammonia synthesis (active research), Artificial photosynthesis (active research) |
+| Synthesis | Can we discover entirely new combinations? | TBD — these are novel cross-domain pairs the system surfaces that no human has built yet |
+
+The current 5-benchmark suite covers Reconstruction (cases 1, 4) and
+Forecasting (cases 2, 5). Resurrection benchmarks require extending
+the suite with abandoned-invention cases. Synthesis benchmarks
+require the cross-domain synthesizer to surface a candidate the
+benchmarker can verify is novel.
+
+---
+
+## CTO review #1 (commit `a3d167d`)
 
 The CTO reviewed the first vertical slice (commit `a3d167d`) and
 approved the architecture but did NOT approve the scientific claims.

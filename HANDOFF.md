@@ -1,4 +1,4 @@
-# TEE MASTER HANDOFF (v1.3)
+# TEE MASTER HANDOFF (v1.4)
 
 ## PRE-CODING READ LIST (MANDATORY)
 
@@ -56,36 +56,47 @@ those layers or modules.
   `invention_compiler/` (commit `a3d167d`). 11 layers, 14 modules.
 - 47 tests passing.
 
-## CTO REVIEW (commit `a3d167d`)
+## CTO REVIEW #2 (commit `02d7658`)
 
-The CTO approved the ARCHITECTURE but did NOT approve the SCIENTIFIC
-CLAIMS. Concretely:
+The CTO described the post-rename state as "a genuine increase in
+maturity rather than an increase in complexity" and approved:
+1. Terminology correction (engine -> module).
+2. Honest benchmarks (3/5 PASS, 2/5 FAIL — the failures being the
+   valuable result).
+3. Explicit honesty contracts in the benchmark report.
 
-- Approved: layer architecture, orchestration pipeline, evidence
-  chain, audit integration, blueprint generation framework, dependency
-  graph framework, constraint propagation framework, simulation
-  framework, verification framework, test framework.
-- NOT approved: physics/chemistry/biology/economics/information_theory/
-  thermodynamics/control_theory "engines." The current implementations
-  are keyword-matching MODULES, not scientific ENGINES.
+The CTO also issued a NEW DIRECTIVE: depth over breadth. The next
+objective is NOT to build additional modules. The next objective is
+to increase the explanatory power of EXISTING modules:
 
-New CTO-mandated rules (encoded in INVENTION_COMPILER.md and
-ANTI_ENTROPY.md):
-1. The word "engine" may only be used for modules with explicit model
-   + empirical validation + reproducible results. Otherwise the
-   module/adapter/framework/layer/stage terminology applies.
-2. The 5-benchmark suite (portable MRI, ammonia synthesis,
-   room-temp superconductors, carbon-negative cement, artificial
-   photosynthesis) must be run before any further scientific claims.
-3. Optimize for blueprints that scientists would respect, not for
-   producing ideas.
+- physics_module: keyword matching -> laws, equations, constraints,
+  units, conservation principles
+- chemistry_module: keywords -> reaction pathways, kinetics,
+  equilibrium, energy states
+- mathematics_module: templates -> optimization, probability, graph
+  theory, differential equations, control theory
+- dependency_module: connections -> causal relationships
+- resurrection_module: historical similarity -> historical
+  counterfactual analysis
+
+The 4-category benchmark taxonomy was also mandated:
+Reconstruction / Resurrection / Forecasting / Synthesis.
 
 ## IMPLEMENTATION WORK THIS SESSION
-- Rename 12 `*_engine.py` files to `*_module.py` (verification_engine
-  stays — it meets the bar).
-- Add 5-benchmark suite at `benchmarks/compiler/`.
-- Add `scripts/run_compiler_benchmarks.py`.
-- Add `compiler_benchmark_report.json` as 8th audit deliverable.
+- Upgrade physics_module to encode conservation laws, units,
+  dimensional analysis, thermodynamics laws, EM laws, fluid mechanics.
+- Upgrade chemistry_module to encode reaction pathways, kinetics
+  (Arrhenius), equilibrium constants, Gibbs energy states.
+- Upgrade mathematics_module to encode optimization, probability,
+  graph theory, ODE/PDE types, control theory.
+- Upgrade dependency_module to encode causal edges
+  (necessary/sufficient/strength) and counterfactual analysis.
+- Upgrade resurrection_module to encode historical counterfactual
+  analysis.
+- Add 4-category benchmark taxonomy (Reconstruction/Resurrection/
+  Forecasting/Synthesis) to benchmarks/compiler/.
+- Re-run benchmark suite — verify the 2 FAIL cases (ammonia synthesis,
+  RT superconductors) move closer to their expected verdicts.
 
 ## 13 modules required by the invention-compiler directive
 After this session's rename:

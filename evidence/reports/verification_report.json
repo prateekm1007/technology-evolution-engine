@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-01T16:22:00.112461+00:00",
+  "generated_at": "2026-08-01T16:37:31.560083+00:00",
   "rule": "Law 8 (CONSTITUTION.md): No 'verified' label without a successful prediction, a failed prediction, and replayable evidence.",
   "ledger_state": {
     "ledger_exists": true,
@@ -340,7 +340,7 @@
     },
     {
       "file": "ANTI_ENTROPY.md",
-      "line": 166,
+      "line": 193,
       "text": "> No \"verified\" label without a successful prediction, a failed",
       "verdict": "supported",
       "reason": "ledger contains >=1 pass + >=1 fail + replayable evidence"
