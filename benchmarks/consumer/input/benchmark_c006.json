@@ -1,0 +1,41 @@
+{
+  "id": "benchmark_c006",
+  "type": "consumer",
+  "source": "user_prompt",
+  "prompt": "I want inexpensive indoor food production for my family of four. We have a 3m x 2m balcony, 6 hours of sunlight, and a budget of $300. We want to grow vegetables year-round.",
+  "domain": "agriculture",
+  "budget_usd": 300,
+  "environment": "3m x 2m balcony, 6 hours sunlight, temperate climate",
+  "constraints": [
+    "limited space",
+    "budget $300",
+    "6 hours sunlight",
+    "year-round production"
+  ],
+  "skill_level": "beginner",
+  "timeline_days": 90,
+  "expected_constraints": [
+    "energy",
+    "cost",
+    "time",
+    "material"
+  ],
+  "expected_prerequisites": [
+    "grow lights",
+    "hydroponic system",
+    "nutrient management",
+    "climate control"
+  ],
+  "expected_adjacent_domains": [
+    "agriculture",
+    "LED technology",
+    "hydroponics",
+    "IoT"
+  ],
+  "expected_failure_modes": [
+    "nutrient imbalance",
+    "pest infestation",
+    "light insufficiency",
+    "system clogging"
+  ]
+}
