@@ -2,16 +2,41 @@
 
 **Status:** Active rule set. Operating under the Maestro Modification Loop (v1.0).
 **Read this file BEFORE writing any code in this repository.**
+**Also read CONTRIBUTING.md before every commit.**
 
 This repository has a documented history of entropy:
 - F-005 (ledger corruption predating version control)
 - F-006 (silent degradation instead of loud failure)
 - F-011 (a "verified" stamp with no evidence)
 - F-013/F-015 (the same fix landed in 1 of 3 readers)
+- F-019 (236 tests claimed, 231/5 actual)
+- F-020 (walrus + direction bug live for 5 commits)
+- F-021 (dict migration broke Oracle + FeasibilityScorer silently)
 
 Entropy is not a one-time event. It is the default state of a codebase
 that doesn't actively resist it. The rules below are the active
 resistance.
+
+---
+
+## Session-hardened principles (distilled from actual failures)
+
+These rules are NOT abstract best practices. Each one was produced
+by a specific failure this session. See CONTRIBUTING.md for the
+full pre-commit checklist and cited failures.
+
+```text
+1.  Run it, don't reason about it.
+2.  Fix the thing, don't loosen the check around it.
+3.  One source of truth per fact, checked before writing.
+4.  A capability isn't shipped until it writes to the system of record.
+5.  Match the label to the evidence, not to the intent.
+6.  New work gets checked against history before being called "first."
+7.  Named things need substance, not just the right vocabulary.
+8.  No data, say no data — never a placeholder number.
+9.  Downstream blast radius gets checked, not assumed.
+10. Never commit a live credential, no matter who asks.
+```
 
 ---
 

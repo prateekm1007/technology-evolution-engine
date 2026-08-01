@@ -1,4 +1,4 @@
-# TEE MASTER HANDOFF (v2.2 — Maestro Loop formalized)
+# TEE MASTER HANDOFF (v2.3 — session-hardened principles encoded)
 
 ## PRE-CODING READ LIST (MANDATORY)
 
@@ -55,6 +55,29 @@ those layers or modules.
 - Invention compiler vertical slice: implemented in
   `invention_compiler/` (commit `a3d167d`). 11 layers, 14 modules.
 - 47 tests passing.
+
+## SESSION-HARDENED PRINCIPLES (v1.0)
+
+10 principles distilled from actual session failures, encoded as
+CONTRIBUTING.md (pre-commit checklist) + ANTI_ENTROPY.md (operational
+rules). Each principle cites the specific failure that produced it.
+
+```text
+1.  Run it, don't reason about it. (F-008, F-009, F-019)
+2.  Fix the thing, don't loosen the check. (F-019 evidence_ref drop)
+3.  One source of truth per fact. (F-016/F-017/F-018, F-019 allowlists)
+4.  A capability isn't shipped until it writes to the system of record. (F-018)
+5.  Match the label to the evidence. (F-011, F-012, Phase 1 "first")
+6.  Check history before claiming "first." (Phase 1)
+7.  Named things need substance. (F-018 auditor)
+8.  No data, say no data. (benchmark_report.json)
+9.  Downstream blast radius gets checked. (F-019, F-021)
+10. Never commit a credential. (PAT handling)
+```
+
+CONTRIBUTING.md is the structural enforcement: a pre-commit checklist
+that must be verified before every commit. The remember_governance.py
+script now includes it in the pre-coding read list.
 
 ## MAESTRO MODIFICATION LOOP (v1.0) — formalized
 

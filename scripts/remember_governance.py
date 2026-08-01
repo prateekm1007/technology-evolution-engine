@@ -18,6 +18,7 @@ READ_LIST = [
     ("CONSTITUTION.md", "the eight immutable laws. Law 8 is the one most often violated."),
     ("INVENTION_COMPILER.md", "the master spec. The system is an invention compiler, not an idea generator."),
     ("ANTI_ENTROPY.md", "operational rules: tests first, single responsibility, refactor constantly, lock deps, document assumptions, decouple, clear dead code, maintain patterns."),
+    ("CONTRIBUTING.md", "session-hardened principles + pre-commit checklist. Read BEFORE every commit."),
     ("FAILURES.md", "the failure taxonomy. Do not re-introduce."),
     ("HANDOFF.md", "current state and what's next."),
 ]

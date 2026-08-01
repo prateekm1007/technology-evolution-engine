@@ -2,6 +2,7 @@
 
 **Status:** ARCHITECTURE FROZEN. Operating under the Maestro Modification Loop (v1.0).
 **Read this file BEFORE writing any code in this repository.**
+**Also read CONTRIBUTING.md before every commit — it's the pre-commit checklist.**
 
 > The objective of the system is not to generate ideas.
 > The objective is to generate **blueprints**.
