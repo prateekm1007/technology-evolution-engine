@@ -226,10 +226,9 @@ def test_patent_parser_attaches_provenance():
 
 
 # ----------------------------------------------------------------------
-# Paper ingestion contract (future — marked as expected-fail for now)
+# Paper ingestion contract (Phase 3 Step 3 — implemented)
 # ----------------------------------------------------------------------
 
-@pytest.mark.xfail(reason="Paper ingestion not yet implemented (Phase 3.2)")
 def test_paper_parser_ingests_paper_text():
     """Can the system ingest one paper?"""
     from product.ingestion.paper_parser import PaperParser
@@ -240,11 +239,12 @@ def test_paper_parser_ingests_paper_text():
         "text": TEST_PAPER_TEXT,
     })
     assert result is not None
+    assert isinstance(result, dict)
 
 
-@pytest.mark.xfail(reason="Paper ingestion not yet implemented (Phase 3.2)")
 def test_paper_parser_identifies_equations():
-    """Can the system identify equations?"""
+    """Can the system identify equations? GROUND-TRUTH: the test
+    fixture contains 'P_cool = P_rad(T_s) - P_atm(T_amb) - P_solar - P_cond'."""
     from product.ingestion.paper_parser import PaperParser
     parser = PaperParser()
     result = parser.parse({
@@ -252,12 +252,16 @@ def test_paper_parser_identifies_equations():
         "text": TEST_PAPER_TEXT,
     })
     equations = result.get("equations", [])
-    assert len(equations) > 0
+    assert len(equations) > 0, "No equations extracted"
+    # GROUND-TRUTH: the equation contains P_cool and P_rad.
+    eq_text = " ".join(str(e) for e in equations).lower()
+    assert "p_cool" in eq_text or "p_rad" in eq_text, \
+        f"Expected P_cool or P_rad in equations: {equations}"
 
 
-@pytest.mark.xfail(reason="Paper ingestion not yet implemented (Phase 3.2)")
 def test_paper_parser_identifies_assumptions():
-    """Can the system identify assumptions?"""
+    """Can the system identify assumptions? GROUND-TRUTH: the test
+    fixture has 3 assumptions under 'Assumptions:' header."""
     from product.ingestion.paper_parser import PaperParser
     parser = PaperParser()
     result = parser.parse({
@@ -265,12 +269,16 @@ def test_paper_parser_identifies_assumptions():
         "text": TEST_PAPER_TEXT,
     })
     assumptions = result.get("assumptions", [])
-    assert len(assumptions) > 0
+    assert len(assumptions) > 0, "No assumptions extracted"
+    # GROUND-TRUTH: one assumption mentions "thermal equilibrium" or "solar absorptivity".
+    assumption_text = " ".join(str(a) for a in assumptions).lower()
+    assert "equilibrium" in assumption_text or "absorptivity" in assumption_text, \
+        f"Expected equilibrium/absorptivity in assumptions: {assumptions}"
 
 
-@pytest.mark.xfail(reason="Paper ingestion not yet implemented (Phase 3.2)")
 def test_paper_parser_identifies_limitations():
-    """Can the system identify limitations?"""
+    """Can the system identify limitations? GROUND-TRUTH: the test
+    fixture has 3 limitations under 'Limitations:' header."""
     from product.ingestion.paper_parser import PaperParser
     parser = PaperParser()
     result = parser.parse({
@@ -278,7 +286,11 @@ def test_paper_parser_identifies_limitations():
         "text": TEST_PAPER_TEXT,
     })
     limitations = result.get("limitations", [])
-    assert len(limitations) > 0
+    assert len(limitations) > 0, "No limitations extracted"
+    # GROUND-TRUTH: one limitation mentions "humidity" or "scalability".
+    limitation_text = " ".join(str(l) for l in limitations).lower()
+    assert "humidity" in limitation_text or "scalability" in limitation_text, \
+        f"Expected humidity/scalability in limitations: {limitations}"
 
 
 # ----------------------------------------------------------------------

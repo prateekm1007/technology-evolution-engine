@@ -42,5 +42,6 @@ ALLOWED_MODIFICATIONS = frozenset({
     "web/backend/adapters/oracle_deep.py",  # C2 fix + E3 fix
     "product/scoring/feasibility.py",  # C2 fix: dict constraint handling
     "product/ingestion/patent_parser.py",  # Phase 3: patent ingestion + F-001 fix
+    "product/ingestion/paper_parser.py",  # Phase 3 Step 3: paper ingestion
     "product/ingestion/text_normalizer.py",  # Phase 3: ingestion support
 })
