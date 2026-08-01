@@ -1,0 +1,69 @@
+{
+  "id": "benchmark_0020",
+  "type": "patent",
+  "source": "uspto",
+  "title": "Point-of-Care CRISPR Diagnostic with Paper Microfluidics",
+  "domain": "medicine",
+  "abstract": "A low-cost diagnostic combining CRISPR-Cas12a with paper microfluidics detecting pathogen nucleic acids at 10 copies/uL in 30 minutes.",
+  "claims": [
+    "Paper microfluidic device with zones for lysis, extraction, RPA, CRISPR detection.",
+    "Cas12a-crRNA targeting conserved sequences with FAM-ssDNA-BHQ1 reporter.",
+    "Smartphone-readable colorimetric lateral flow with 10 copies/uL detection limit."
+  ],
+  "components": [
+    "paper microfluidic chip",
+    "CRISPR-Cas12a",
+    "crRNA",
+    "RPA reagents",
+    "fluorescent reporter",
+    "lateral flow strip"
+  ],
+  "materials": [
+    "cellulose paper",
+    "gold nanoparticles",
+    "enzymes",
+    "nucleic acids",
+    "plastic housing"
+  ],
+  "methods": [
+    "paper microfluidics",
+    "isothermal amplification",
+    "CRISPR detection",
+    "lateral flow"
+  ],
+  "constraints": [
+    "sensitivity",
+    "specificity",
+    "cost",
+    "shelf life",
+    "regulation",
+    "manufacturing"
+  ],
+  "problem_statement": "PCR requires $50K equipment. Paper-based CRISPR could enable $1 tests.",
+  "expected_constraints": [
+    "cost",
+    "material",
+    "regulation",
+    "manufacturing",
+    "safety",
+    "time"
+  ],
+  "expected_prerequisites": [
+    "reagent lyophilization",
+    "paper fluidic control",
+    "CRISPR specificity",
+    "smartphone app"
+  ],
+  "expected_adjacent_domains": [
+    "molecular biology",
+    "microfluidics",
+    "materials science",
+    "mobile computing"
+  ],
+  "expected_failure_modes": [
+    "reagent degradation",
+    "paper wicking variability",
+    "false positives",
+    "contamination"
+  ]
+}
