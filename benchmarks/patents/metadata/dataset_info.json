@@ -1,0 +1,23 @@
+{
+  "description": "Patent benchmark inputs for business pipeline evaluation",
+  "count": 20,
+  "domains": [
+    "energy",
+    "water",
+    "sensors",
+    "computation",
+    "transportation",
+    "medicine"
+  ],
+  "domain_distribution": {
+    "energy": 4,
+    "water": 3,
+    "sensors": 3,
+    "computation": 4,
+    "transportation": 3,
+    "medicine": 3
+  },
+  "source": "Synthetic patents modeled on real USPTO filings",
+  "schema_version": "1.0",
+  "created": "2026-08-01"
+}
