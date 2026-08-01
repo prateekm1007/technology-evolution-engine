@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>TEE — Technology Evolution Engine</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/static/css/tee.css" />
+</head>
+<body>
+<div class="grid-field" aria-hidden="true"></div>
+<div class="scanline" aria-hidden="true"></div>
+<header class="rail">
+  <a class="mark" href="#/"><span class="mark-glyph">&#9676;</span><span class="mark-word">TEE</span>
+    <span class="mark-sub">Technology Evolution Engine</span></a>
+  <nav class="rail-nav">
+    <a href="#/" data-route="">Workbench</a><a href="#/graph" data-route="graph">Graph</a>
+    <a href="#/blueprint" data-route="blueprint">Blueprint</a><a href="#/evidence" data-route="evidence">Evidence</a>
+    <a href="#/simulate" data-route="simulate">Simulate</a><a href="#/benchmarks" data-route="benchmarks">Benchmarks</a>
+  </nav>
+  <div class="mode-switch"><button id="mode-consumer" class="mode-btn">Consumer</button>
+    <button id="mode-business" class="mode-btn is-on">Business</button></div>
+  <div class="rail-status"><span class="dot" id="core-dot"></span><span id="core-label" class="mono">core: —</span></div>
+</header>
+<main id="view"></main>
+<footer class="foot"><span class="mono">An institution that studies technological evolution.</span>
+  <span class="mono">Explain your reasoning. Remember your mistakes.</span></footer>
+<script src="/static/js/graph-explorer.js"></script>
+<script src="/static/js/app.js"></script>
+</body>
+</html>
