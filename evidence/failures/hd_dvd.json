@@ -1,0 +1,37 @@
+{
+  "id": "failure_008",
+  "name": "HD-DVD",
+  "domain": "computation",
+  "year_launched": 2006,
+  "year_effective_end": 2008,
+  "category": "commercial_failure",
+  "what_failed": "Toshiba's high-definition optical disc format lost to Blu-ray in a 2-year format war.",
+  "why_it_failed": [
+    "Blu-ray had Sony's manufacturing scale and PlayStation 3 bundling",
+    "Major studios (Disney, Fox) backed Blu-ray exclusively",
+    "HD-DVD's cost advantage was insufficient",
+    "Streaming was already emerging, making both formats transitional",
+    "Network effects in content availability"
+  ],
+  "assumptions_that_broke": [
+    "Physical media would remain dominant",
+    "Format wars still matter in the streaming era",
+    "Cost advantage overcomes ecosystem advantage",
+    "Consumers would wait for format resolution"
+  ],
+  "constraints_that_moved": [
+    "Streaming bandwidth increased",
+    "Digital distribution eliminated format wars",
+    "Console bundling became decisive",
+    "Content exclusivity trumped hardware specs"
+  ],
+  "resurrection_conditions": [
+    "Not applicable - physical media declining",
+    "Lesson applies to any transitional technology",
+    "Don't fight the last war"
+  ],
+  "lesson": "Fighting a format war is futile when the underlying constraint (physical distribution) is about to be eliminated entirely. Both HD-DVD and Blu-ray lost to streaming.",
+  "created_at": "2026-08-01T09:17:21.875471+00:00",
+  "source": "workstream_D",
+  "version": "1.0"
+}

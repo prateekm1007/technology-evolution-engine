@@ -1,0 +1,40 @@
+{
+  "id": "failure_009",
+  "name": "Airships",
+  "domain": "transportation",
+  "year_launched": 1900,
+  "year_effective_end": 1937,
+  "category": "historical_dead_end",
+  "what_failed": "Rigid airships were the dominant long-distance air transport until Hindenburg disaster and airplane advancement made them obsolete.",
+  "why_it_failed": [
+    "Hindenburg disaster (1937) destroyed public confidence",
+    "Hydrogen flammability (helium was US-restricted)",
+    "Airplanes became faster, cheaper, more reliable",
+    "Weather vulnerability",
+    "Enormous infrastructure requirements (mooring masts, hangars)",
+    "Slow speed relative to emerging alternatives"
+  ],
+  "assumptions_that_broke": [
+    "Lighter-than-air would dominate heavier-than-air",
+    "Hydrogen could be made safe enough",
+    "Speed was less important than capacity",
+    "Public confidence would survive disasters"
+  ],
+  "constraints_that_moved": [
+    "Airplane speed and range improved exponentially",
+    "Jet engines eliminated propeller limitations",
+    "Helium supply remained constrained",
+    "Airport infrastructure favored fixed-wing aircraft"
+  ],
+  "resurrection_conditions": [
+    "Heavy-lift cargo (not passenger) applications",
+    "Hybrid airship designs (Lockheed LMH-1, LTA Research)",
+    "Carbon-neutral aviation pressure",
+    "Remote area logistics (no runway needed)",
+    "Modern materials (carbon fiber, advanced envelopes)"
+  ],
+  "lesson": "A technology killed by a single catastrophic event can be resurrected when the original constraints change and the use case shifts. Airships failed as passenger transport but may succeed as heavy cargo. The cemetery is not permanent.",
+  "created_at": "2026-08-01T09:17:21.875471+00:00",
+  "source": "workstream_D",
+  "version": "1.0"
+}

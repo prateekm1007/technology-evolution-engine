@@ -1,0 +1,69 @@
+{
+  "total_entries": 9,
+  "last_updated": "2026-08-01T09:17:21.875471+00:00",
+  "entries": [
+    {
+      "id": "failure_001",
+      "name": "Segway",
+      "domain": "transportation",
+      "category": "commercial_failure",
+      "file": "evidence/failures/segway.json"
+    },
+    {
+      "id": "failure_002",
+      "name": "Google Glass",
+      "domain": "computation",
+      "category": "commercial_failure",
+      "file": "evidence/failures/google_glass.json"
+    },
+    {
+      "id": "failure_003",
+      "name": "Concorde",
+      "domain": "transportation",
+      "category": "commercial_failure",
+      "file": "evidence/failures/concorde.json"
+    },
+    {
+      "id": "failure_004",
+      "name": "Theranos",
+      "domain": "medicine",
+      "category": "fraud",
+      "file": "evidence/failures/theranos.json"
+    },
+    {
+      "id": "failure_005",
+      "name": "Quibi",
+      "domain": "computation",
+      "category": "commercial_failure",
+      "file": "evidence/failures/quibi.json"
+    },
+    {
+      "id": "failure_006",
+      "name": "Iridium",
+      "domain": "sensors",
+      "category": "commercial_failure",
+      "file": "evidence/failures/iridium.json"
+    },
+    {
+      "id": "failure_007",
+      "name": "Betamax",
+      "domain": "computation",
+      "category": "commercial_failure",
+      "file": "evidence/failures/betamax.json"
+    },
+    {
+      "id": "failure_008",
+      "name": "HD-DVD",
+      "domain": "computation",
+      "category": "commercial_failure",
+      "file": "evidence/failures/hd_dvd.json"
+    },
+    {
+      "id": "failure_009",
+      "name": "Airships",
+      "domain": "transportation",
+      "category": "historical_dead_end",
+      "file": "evidence/failures/airships.json"
+    }
+  ]
+}

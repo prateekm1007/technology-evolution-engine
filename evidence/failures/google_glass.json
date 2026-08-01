@@ -1,0 +1,39 @@
+{
+  "id": "failure_002",
+  "name": "Google Glass",
+  "domain": "computation",
+  "year_launched": 2013,
+  "year_effective_end": 2015,
+  "category": "commercial_failure",
+  "what_failed": "Consumer augmented reality headset that became a cultural punchline despite genuine technical achievement.",
+  "why_it_failed": [
+    "Social unacceptability ('Glasshole' stigma)",
+    "Privacy concerns (always-on camera)",
+    "Limited use cases for $1,500",
+    "Poor battery life",
+    "No killer app",
+    "Premature market timing"
+  ],
+  "assumptions_that_broke": [
+    "People want a screen in front of their face all day",
+    "Early adopters will tolerate social stigma",
+    "Technology enthusiasts represent the mass market",
+    "AR is wanted by consumers before enterprise"
+  ],
+  "constraints_that_moved": [
+    "AR found enterprise niche (manufacturing, surgery, logistics)",
+    "Social norms around wearables shifted (AirPods precedent)",
+    "Display technology improved (waveguide, micro-LED)",
+    "AI assistants became more capable"
+  ],
+  "resurrection_conditions": [
+    "Indistinguishable from normal glasses",
+    "Enterprise-first deployment",
+    "Clear ROI for specific workflows",
+    "Privacy-by-design architecture"
+  ],
+  "lesson": "Consumer AR failed because it was sold as a lifestyle product when it was actually a productivity tool. Enterprise-first, consumer-later.",
+  "created_at": "2026-08-01T09:17:21.875471+00:00",
+  "source": "workstream_D",
+  "version": "1.0"
+}

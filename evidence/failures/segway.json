@@ -1,0 +1,38 @@
+{
+  "id": "failure_001",
+  "name": "Segway",
+  "domain": "transportation",
+  "year_launched": 2001,
+  "year_effective_end": 2020,
+  "category": "commercial_failure",
+  "what_failed": "Personal transportation device that never achieved mass adoption despite massive hype and $100M+ investment.",
+  "why_it_failed": [
+    "Price point ($5,000+) excluded target market",
+    "No infrastructure (sidewalks too narrow, roads too dangerous)",
+    "Social stigma (perceived as lazy, geeky)",
+    "Regulatory ambiguity (sidewalk vs road)",
+    "Solved a problem most people didn't have",
+    "Range anxiety and theft vulnerability"
+  ],
+  "assumptions_that_broke": [
+    "People want to stand while commuting",
+    "Urban infrastructure would adapt to personal vehicles",
+    "Hype translates to adoption",
+    "Technology novelty equals market demand"
+  ],
+  "constraints_that_moved": [
+    "Battery cost decreased (but too late for Segway)",
+    "E-scooter sharing eliminated ownership burden",
+    "Urban micro-mobility regulations evolved"
+  ],
+  "resurrection_conditions": [
+    "Autonomous balance and navigation",
+    "Sub-$500 price point",
+    "Integrated with public transit",
+    "Foldable and portable"
+  ],
+  "lesson": "A technically brilliant solution to a problem most people don't have will fail against a mediocre solution to a problem everyone has.",
+  "created_at": "2026-08-01T09:17:21.875471+00:00",
+  "source": "workstream_D",
+  "version": "1.0"
+}
