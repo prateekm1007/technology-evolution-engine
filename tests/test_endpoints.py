@@ -53,3 +53,65 @@ def test_graph_returns_nodes():
     body = r.json()
     assert body["node_count"] > 0
     assert len(body["nodes"]) == body["node_count"]
+
+
+def test_analyze_does_not_lie_about_verification():
+    """F-001 follow-up: per Law 8 and the handoff rule 'No verified label
+    without failure cases', a successful analyze() call must NOT be stamped
+    'verified'. We don't have adversarial tests + replay + failure logging
+    yet, so 'integrated' is the honest ceiling."""
+    r = client.post("/api/v1/analyze", json={
+        "mode": "consumer", "input_type": "idea",
+        "text": "reduce household water consumption"})
+    assert r.status_code == 200
+    body = r.json()
+    level = body.get("verification", {}).get("level")
+    assert level != "verified", \
+        f"analyze() stamped 'verified' without adversarial tests — lying about verification (got {level!r})"
+    assert level == "integrated", \
+        f"expected 'integrated', got {level!r}"
+
+
+def test_analyze_accepts_problem_statement_field():
+    """F-001 follow-up: a caller sending only 'problem_statement' (no 'text')
+    must not have their input silently dropped at the schema boundary."""
+    r = client.post("/api/v1/analyze", json={
+        "mode": "consumer", "input_type": "idea",
+        "problem_statement": "grow food indoors with minimal energy and water"})
+    assert r.status_code == 200
+    body = r.json()
+    assert body.get("problem_summary"), \
+        "problem_summary empty — problem_statement field was dropped at schema boundary"
+
+
+def test_evidence_detects_total_corruption(tmp_path, monkeypatch):
+    """F-002: when the ledger is written one-char-per-line (the real failure
+    mode on main right now), the endpoint must NOT report spurious 'valid'
+    entries (single digits parsing as JSON numbers). It must flag the file
+    as totally corrupted and return entry_count=0."""
+    import main as main_module
+    import json as _json
+    # Build a totally-corrupted ledger: real JSON, but written one char per line.
+    # Make the payload large enough that the >500-line heuristic trips —
+    # mirroring the actual failure mode on main (703 lines from a 1403-byte file).
+    entries = [{"id": str(i), "prediction": f"p{i}", "outcome": "pending",
+                "rationale": "x" * 40} for i in range(50)]
+    real = "\n".join(_json.dumps(e) for e in entries)
+    corrupted = "\n".join(list(real)) + "\n"
+    # evidence() looks at <gm.root>/data/ledger/predictions.jsonl
+    ledger_dir = tmp_path / "data" / "ledger"
+    ledger_dir.mkdir(parents=True)
+    fake_ledger = ledger_dir / "predictions.jsonl"
+    fake_ledger.write_text(corrupted, encoding="utf-8")
+
+    # Point the evidence() endpoint at our fake ledger root.
+    monkeypatch.setattr(main_module.gm, "root", tmp_path)
+
+    r = client.get("/api/v1/evidence")
+    assert r.status_code == 200, f"evidence 500'd: {r.text[:200]}"
+    body = r.json()
+    assert body["entry_count"] == 0, \
+        f"total-corruption should yield 0 entries, got {body['entry_count']}"
+    assert any("Total file corruption" in m.get("error", "") for m in body["malformed_lines"]), \
+        "expected a 'Total file corruption' malformed entry"
+
