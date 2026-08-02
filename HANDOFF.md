@@ -1,4 +1,4 @@
-# TEE MASTER HANDOFF (v6.2 — architecture frozen; epistemology IS the architecture)
+# TEE MASTER HANDOFF (v7.0 — Phase 8: validation framework; mission changed to 'determine whether an invention engine is possible')
 
 ## PRE-CODING READ LIST (MANDATORY)
 
