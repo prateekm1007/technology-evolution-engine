@@ -351,3 +351,32 @@ has considered. This is the north star — unproven, aspirational.
 
 The progression is: each era builds on the previous. You cannot
 discover (Era 3) without first organizing (Era 1) and optimizing (Era 2).
+
+---
+
+## LAW 26 — The Blueprint shall never confuse possibility, plausibility, simulation, measurement, and reality.
+
+```text
+possibility \u2260 plausibility
+plausibility \u2260 simulation
+simulation \u2260 measurement
+measurement \u2260 reality
+```
+
+Every statement in a blueprint must declare its epistemic level:
+
+| Level | Meaning | Example |
+|---|---|---|
+| POSSIBILITY | Physically allowed by known laws | "LFP cells can reach 200 Wh/kg (theoretical)" |
+| PLAUSIBILITY | Engineering estimate based on analogous systems | "Pack energy density of 160 Wh/kg is plausible given CTP architecture" |
+| SIMULATION | Numerical model output (not validated by experiment) | "Thermal CFD predicts 4.8\u00b0C differential" |
+| MEASUREMENT | Experimental data from physical testing | "Prototype cell measured 172 Wh/kg" |
+| REALITY | Verified at production scale | "BYD Blade pack achieves 150 Wh/kg in production" |
+
+A blueprint that labels a plausibility as a measurement violates Law 26.
+A blueprint that labels a simulation as reality violates Law 26.
+This single law would have prevented the internal contradictions
+the auditor found (400V vs 307V, 75 kWh vs 350 kg vs 160 Wh/kg).
+
+Per Rule 7: never pretend uncertainty is certainty.
+Per Law 26: never confuse epistemic levels.
