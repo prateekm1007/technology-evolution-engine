@@ -1,4 +1,4 @@
-# TEE MASTER HANDOFF (v9.0 — backtest run: M2 achieved; CAPABILITY_MODEL beats NULL_MODEL; precision 0.23% — filtering needed)
+# TEE MASTER HANDOFF (v9.1 — scored backtest: scoring FAILED to improve precision; M3 not yet achieved)
 
 ## PRE-CODING READ LIST (MANDATORY)
 
