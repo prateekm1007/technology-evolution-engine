@@ -69,4 +69,5 @@ ALLOWED_MODIFICATIONS = frozenset({
     "scripts/build_capability_graph.py",  # Phase 7B/7C: capability graph builder (one-off)
     "scripts/build_trusted_graph.py",  # Phase 7C.1: trusted graph v2.0 (one-off)
     "scripts/build_trusted_graph_v21.py",  # Phase 7C.2: trusted graph v2.1 (one-off)
+    "scripts/run_backtest.py",  # Phase 9: frozen-time backtest (one-off)
 })

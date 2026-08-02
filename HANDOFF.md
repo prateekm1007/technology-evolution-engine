@@ -1,4 +1,4 @@
-# TEE MASTER HANDOFF (v8.1 — scope narrowed to Li-ion intercalation; maturity M1; doctrine of humility)
+# TEE MASTER HANDOFF (v9.0 — backtest run: M2 achieved; CAPABILITY_MODEL beats NULL_MODEL; precision 0.23% — filtering needed)
 
 ## PRE-CODING READ LIST (MANDATORY)
 
