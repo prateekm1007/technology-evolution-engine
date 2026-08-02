@@ -1,4 +1,4 @@
-# TEE MASTER HANDOFF (v9.1 — scored backtest: scoring FAILED to improve precision; M3 not yet achieved)
+# TEE MASTER HANDOFF (v9.2 — calibrated backtest also failed; M3 blocked; scoring formula is the bottleneck)
 
 ## PRE-CODING READ LIST (MANDATORY)
 
