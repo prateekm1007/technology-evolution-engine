@@ -1,4 +1,4 @@
-# TEE MASTER HANDOFF (v3.4 — H0 added; analytical phase FROZEN; Phase 6 = governance decision)
+# TEE MASTER HANDOFF (v4.0 — Phase 6 architectural investigation authorized; H0-architectural defeated)
 
 ## PRE-CODING READ LIST (MANDATORY)
 
@@ -598,6 +598,89 @@ the present system is sufficient, and no intervention is justified.
 document delivered (revised per CEO v3.4 with H0). No code written.
 No parser changes. No formula changes. No governance changes. Phase
 6 (decision) has not begun. Awaiting explicit CEO authorization.
+
+## PHASE 6 — ARCHITECTURAL INVESTIGATION (H0-architectural defeated)
+
+Per the CEO's Phase 6 directive (post-external-review):
+
+> Status: Approved for architectural investigation.
+> Objective: Replace the document/component/co-occurrence architecture
+> with a capability/constraint architecture.
+> Important: This is not a refactor. This is a change in the underlying
+> scientific model.
+
+The external review provided the evidence that defeated H0-architectural:
+the saturation signature is consistent with "wrong primitive," not
+"insufficient data." Co-occurrence (shared labels) ≠ enablement (one
+capability unlocking another). Normalization would move the plateau
+slightly higher and then it would reappear, because the plateau is
+structural.
+
+**The new scientific model:**
+
+```
+capabilities + constraints + institutions + economics + time
+  = reachable possibilities
+```
+
+This replaces the old model (documents → components → shared labels →
+convergence → invention). The old model becomes an **experimental
+baseline only** — preserved for replay, auditing, comparison,
+backtesting, and failure analysis. NOT deleted.
+
+**Key architectural changes (spec, not implementation):**
+- Documents become **evidence**, not nodes. (patent → evidence → capability)
+- "Component" is demoted; replaced with a **type system** (CAPABILITY, CONSTRAINT, MATERIAL, PROCESS, PRODUCT, MARKET, ORGANIZATION, INSTITUTION, REGULATION, INFRASTRUCTURE).
+- Edges become **typed and directional** (REQUIRES, ENABLES, SUBSTITUTES_FOR, BLOCKS, CONSTRAINS, DEPENDS_ON, EMBODIED_IN, REGULATED_BY, REDUCES_COST_OF). Every edge carries evidence + confidence.
+- **CPC/IPC** classifications become the foundational taxonomy layer (instead of building an ontology from scratch).
+- The single convergence score is **deprecated**. Replaced with three independent scores: Readiness (can it exist?), Novelty (has this combination been tried?), Feasibility (would reality allow it?).
+- **Embeddings forbidden as truth generators.** Permitted only for candidate generation, with a downstream constraint evaluation + human review before edge creation.
+- **Time becomes first-class infrastructure.** Every object carries validFrom/validTo/confidence.
+- **Frozen-time backtesting is mandatory.** Precision, not just recall.
+
+**The brutal constraint (one vertical):**
+- Domain: electrochemical energy storage
+- Caps: 50 patents, 50 papers, 10 products, 20 capabilities, 10 constraints, 6 edge types.
+- Nothing else. No ontology explosion.
+
+**Mandatory prior art (before Phase 7 implementation):**
+1. Youn et al. — Invention as a Combinatorial Process
+2. Fleming — Recombinant Uncertainty in Technological Search
+3. Arthur — The Nature of Technology
+4. Kauffman — The Adjacent Possible
+5. Weitzman — Recombinant Growth
+6. Hidalgo & Hausmann — Economic Complexity
+
+**Investigation sequence (Phase 6, no implementation):**
+1. Read prior art → prior_art_notes.md
+2. Evaluate CPC backbone → cpc_backbone_evaluation.md
+3. Scope one vertical → vertical_scope_electrochemical.md
+4. Define migration path → migration_path.md
+5. Produce Phase 7 authorization request → phase7_authorization_request.md
+6. Stand down — CEO decides whether to authorize Phase 7
+
+**Phase 6 deliverable (this cycle):**
+- `evidence/observations/ARCHITECTURE_PIVOT_SPEC.md` — captures the
+  CEO's directive as a reviewable spec, sequences the investigation,
+  applies the one-vertical constraint, preserves the Phase 5 baseline.
+
+**Phase 6 implementation status:** INVESTIGATION AUTHORIZED. Spec
+document delivered. No code written for the new architecture. No
+parser changes. No formula changes. No graph changes. Phase 5
+baseline preserved. Constitutional layer unchanged (7 mandatory
+reads). The next step is Step 1: read the mandatory prior art.
+
+**Discipline carried from Phase 5:**
+- measurement ≠ explanation ≠ intervention (the new architecture is
+  currently an explanation; investigation produces measurements;
+  Phase 7 is intervention, requiring explicit authorization)
+- observation ≠ governance (this spec is in evidence/observations/,
+  NOT constitutional; it gets promoted only if Phase 7 is authorized)
+- H0 as default (H0-architectural is defeated; H0-implementation is
+  a separate question, addressed in Step 5)
+- the brutal constraint (one vertical; scope caps; no ontology explosion)
+- no premature implementation (no code until Phase 7 authorized)
+- baseline preservation (Phase 5 architecture NOT deleted)
 
 ## SESSION-HARDENED PRINCIPLES (v1.0)
 
