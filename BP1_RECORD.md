@@ -93,3 +93,38 @@ Next.js web application.
 2. Second vertical slice (test architecture generalization — CEO's decision)
 3. Knowledge Pyramid deeper data collection (partially done via Evidence Engine)
 4. Address 3 failed simulations (extended overcast mitigation, processor shortage mitigation, competitor entry strategy)
+
+---
+
+## BP-2: Production-Ready (26 missing engineering items closed)
+
+**Status:** All 26 missing engineering items now have concrete specifications.
+
+| Metric | Value |
+|---|---|
+| Total specs | 26 |
+| Fully specified | 22 (85%) |
+| Requires testing | 4 (15%) |
+| Production readiness | 85% |
+
+The 4 items requiring physical testing (FEA, PID tuning, safety certification) have complete specifications including methodology, pass criteria, and evidence — but cannot be "completed" without hardware. Per Law 20: "Reality always wins."
+
+### By category
+
+| Category | Total | Fully specified | Requires testing |
+|---|---|---|---|
+| MECHANICAL | 4 | 2 | 2 (FEA stress, FEA vibration) |
+| ELECTRICAL | 6 | 6 | 0 |
+| SOFTWARE | 10 | 8 | 2 (PID tuning, safety cert) |
+| HYDRAULIC | 3 | 3 | 0 |
+| MAINTENANCE | 3 | 3 | 0 |
+
+### The CC6 gap is now closed
+
+The auditor's CC6 finding identified 4 critical missing items:
+1. Wiring harness diagram → PS-005: FULLY SPECIFIED (complete pinout, wire gauges, connectors)
+2. ROS2 software architecture → PS-011: FULLY SPECIFIED (10 nodes, 15 topics, complete node graph)
+3. Irrigation valve specifications → PS-021: FULLY SPECIFIED (Rain Bird DV-100, complete specs)
+4. MCU firmware → PS-016: FULLY SPECIFIED (1kHz loop, PID, CAN, safety interlocks)
+
+All 4 CC6 items are now fully specified. A manufacturer can begin implementation.
