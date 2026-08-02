@@ -22,7 +22,6 @@ READ_LIST = [
     ("FAILURES.md", "the failure taxonomy. Do not re-introduce."),
     ("HANDOFF.md", "current state and what's next."),
     ("CONVERGENCE.md", "Phase 4 convergence definition. Read BEFORE any convergence-related work. Implementation is FORBIDDEN until the prerequisite chain (snapshot_1 -> ingestion -> snapshot_2 -> delta -> temporal signal -> validation -> implementation) executes."),
-    ("NORMALIZATION_GAP.md", "Phase 5.D normalization gap measurement. Read BEFORE any future parser or ingestion work. Documents the 4 failed bridges and the saturation point (d(shared)/d(total) = 0.00 for 2 consecutive cycles). Per the CEO's most important instruction: this is a measurement, NOT authorization for semantic matching."),
 ]
 
 

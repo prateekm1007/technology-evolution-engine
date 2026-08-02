@@ -1,15 +1,20 @@
-# NORMALIZATION_GAP — Phase 5.D Measurement
+# NORMALIZATION_GAP — Phase 5.D + 5.E Measurement
 
-**Status:** measurement document. No parser changes. No semantic matching.
-**Phase:** 5.D (per CEO directive, post-Phase 5.C audit).
-**Read this file BEFORE any future parser or ingestion work.**
+**Status:** measurement document (evidence, not governance). No parser changes. No semantic matching.
+**Location:** `evidence/observations/` (demoted from mandatory read list per CEO v3.1 directive).
+**Phase:** 5.D (initial measurement) + 5.E (classification exercise).
 
 > Do not solve these problems yet. Measure them.
 > — CEO directive, Phase 5.D
 
+> The point of this exercise is not to solve the bottleneck. It is to
+> determine whether the bottleneck is large enough to justify solving
+> it at all. That distinction is extremely important.
+> — CEO directive, Phase 5.E
+
 This document measures the normalization gap between component labels
-in the civilization graph. It does NOT propose solutions. Per the
-CEO's most important instruction:
+in the civilization graph. It does NOT propose solutions. Per the CEO's
+most important instruction:
 
 > Do not interpret this as permission to build semantic matching.
 > The evidence currently supports only this statement:
@@ -193,7 +198,8 @@ matching labels grows the denominator without growing the numerator.
    rows 5-8) are concrete examples of labels that COULD share a
    node but currently don't because the parser uses exact matching.
 
-2. **The system has saturated.** The derivative d(shared)/d(total)
+2. **The system has saturated under the current ingestion strategy and
+   current matching assumptions.** The derivative d(shared)/d(total)
    has been 0.00 for two consecutive cycles. Further ingestion
    cycles that don't address normalization will continue to
    produce 0.00 derivatives and decrease the score.
@@ -247,7 +253,188 @@ matching labels grows the denominator without growing the numerator.
 d(shared_components) / d(total_components) = 0.00
 ```
 
-for two consecutive cycles. The system has saturated. The score
+for two consecutive cycles. The system has saturated under the current
+ingestion strategy and matching assumptions. The score
 will not increase via more ingestion alone until the normalization
 gap is addressed — but the CEO has NOT authorized addressing it.
 This document measures the gap. It does not close it.
+
+---
+
+# Phase 5.E — Classification Exercise (per CEO v3.1 directive)
+
+Per the CEO's challenge to the Phase 5.D interpretation:
+
+> I would not yet say: "The system has saturated."
+> I would instead say: "The system has saturated under the current
+> ingestion strategy and current matching assumptions."
+> Those are very different claims.
+
+And the CEO's directive to perform a classification exercise:
+
+> The point of this exercise is not to solve the bottleneck. It is
+> to determine whether the bottleneck is large enough to justify
+> solving it at all. That distinction is extremely important.
+
+## Work package A — Classification of 140 component labels
+
+| Category | Count | Notes |
+|---|---:|---|
+| Exact matches (shared by 2+ sources) | 10 | Already merged; signal realized |
+| Abbreviations | 2 | metal-organic framework/MOF, battery management system/BMS (both abbreviations are extraction gaps — not in graph) |
+| Singular/plural variants | 0 | No singular/plural pairs both present in graph (pluralization gaps exist in source text but weren't extracted) |
+| Hypernyms | 1 | sorbent/adsorbent (near-synonyms in AWH/DAC literature) |
+| Compound labels | 3 | Long patent-claims labels containing shorter labels as words (e.g., "a semiconductor photoanode and a metal cathode" contains "cathode") |
+| Truly unique labels | 123 | No bridge, no potential bridge identified |
+| **TOTAL** | **140** | Matches distinct label count ✓ |
+
+### The 10 exact matches (current signal ceiling)
+
+| Label | Sources sharing it |
+|---|---|
+| substrate | 6 sources |
+| electrode | 5 sources |
+| sensor | 5 sources |
+| coating | 5 sources |
+| pump | 5 sources |
+| membrane | 4 sources |
+| battery | 3 sources |
+| chamber | 3 sources |
+| exchanger | 2 sources |
+| panel | 2 sources |
+
+### The 3 compound labels (containing shorter labels as words)
+
+| Compound label | Contains |
+|---|---|
+| "a plurality of metamaterial nanostructures configured to dissipate heat by generating radiant energy..." | metamaterial |
+| "a semiconductor photoanode and a metal cathode" | cathode |
+| "an array of said metamaterial nanostructures arranged in an ultra-black metamaterial-based pattern..." | metamaterial |
+
+### Measurement note
+
+The compound-label detection initially had a false positive: "maximum
+power point tracker" was flagged as containing "imu" (a substring of
+"maximum"). Fixed by switching to word-boundary regex matching. This
+is the same F-001 pattern (substring matching brittleness) recurring
+in the measurement script itself — a reminder that exact-label issues
+propagate into any tool that uses substring matching.
+
+## Work package B — maximum_possible_bridges
+
+Under perfect normalization, how many bridges COULD exist?
+
+| Bridge type | Count |
+|---|---:|
+| Exact realized (already shared) | 10 |
+| Abbreviation potential | 2 |
+| Singular/plural potential | 0 |
+| Hypernym potential | 1 |
+| Compound potential | 3 |
+| **MAXIMUM POSSIBLE** | **16** |
+
+The system currently realizes 10/16 = 62.5% of its theoretical
+maximum bridges. The 6 unrealized bridges (2 abbreviation + 0
+plural + 1 hypernym + 3 compound) represent the normalization gap.
+
+## Work package C — signal_loss
+
+```
+signal_loss = potential_matches / (exact_matches + potential_matches)
+            = 6 / (10 + 6)
+            = 0.375
+```
+
+**37.5% of the bridgeable signal is currently lost** to normalization
+gaps. Under perfect normalization, the system could recover this
+37.5% — but the CEO has NOT authorized implementing normalization.
+
+### What "signal loss" means here
+
+- "Bridgeable signal" = labels that COULD share a node under some
+  normalization rule (exact + potential = 16).
+- "Signal lost" = potential matches not realized = 6.
+- "Signal loss ratio" = 6/16 = 37.5%.
+
+This is a measurement of unrealized potential, not a recommendation
+to realize it.
+
+## Work package D — ceiling estimate
+
+| State | Score (battery × EV) | Gain over current |
+|---|---:|---:|
+| **Current** (snapshot_4) | 1.2182 | — |
+| **Perfect normalization** (all 6 potential bridges resolved) | 1.3273 | +0.1091 |
+| **Upper bound** (all components shared, overlap=1.0) | 1.4000 | +0.1818 |
+
+### Assumptions
+
+- **Perfect normalization:** shared_components goes from 1 to 7
+  (1 current + 6 potential). total_components stays at 11
+  (conservative — assumes merging duplicates doesn't reduce the
+  total, which is unrealistic; the actual total would decrease,
+  making the overlap ratio even higher). overlap_ratio = 7/11 = 0.6364.
+  Score = 1.0 (direct_dep) + 0.2 * 0.6364 (component_overlap) + 0.2 * 1.0 (path) = 1.3273.
+
+- **Upper bound:** overlap_ratio = 1.0 (every component is shared).
+  Score = 1.0 + 0.2 * 1.0 + 0.2 * 1.0 = 1.4000. This is the
+  theoretical maximum the formula can produce for a pair with
+  direct_dependency=1 and shortest_path=1.
+
+### What the ceiling estimate shows
+
+The perfect-normalization gain (+0.1091) is **2.2x the magnitude of
+Phase 5.A's actual gain** (+0.0500). This means the normalization
+bottleneck is not a marginal effect — it's the dominant factor
+limiting the convergence score's growth.
+
+However, per the CEO's directive: this is a measurement of whether
+the bottleneck JUSTIFIES solving, NOT authorization to solve it.
+The CEO explicitly stated:
+
+> Do not interpret this as permission to build semantic matching.
+> The evidence currently supports only this statement:
+>   Exact-label matching is the limiting factor.
+> It does not support the statement:
+>   Semantic matching is the correct solution.
+
+The ceiling estimate shows the bottleneck is large enough to justify
+*considering* a solution. It does NOT identify the correct solution,
+and it does NOT authorize implementation.
+
+## Tightened interpretation (per CEO v3.1 challenge)
+
+The Phase 5.D document originally said:
+
+> The system has saturated.
+
+The tightened, defensible claim is:
+
+> The system has saturated **under the current ingestion strategy
+> and current matching assumptions.**
+
+Those are different claims. The Phase 5.D derivative data (0.00 for
+two consecutive cycles) supports the narrower claim. It does NOT
+support the broader claim that the system is fundamentally saturated
+regardless of strategy.
+
+A different ingestion strategy (e.g., targeting sources that use
+the same vocabulary as existing graph nodes) or a different matching
+assumption (e.g., plural normalization, abbreviation expansion)
+could produce a non-zero derivative. The measurement shows the
+CURRENT strategy has saturated, not that the system CANNOT produce
+growth.
+
+## Summary: Is the bottleneck large enough to justify solving?
+
+| Question | Answer |
+|---|---|
+| Is exact-label matching the limiting factor? | **Yes** — 37.5% of bridgeable signal is lost |
+| Is the potential gain significant? | **Yes** — +0.1091 under perfect normalization (2.2x Phase 5.A's actual gain) |
+| Does this authorize solving the bottleneck? | **No** — per CEO's most important instruction |
+| Does this identify the correct solution? | **No** — semantic matching is NOT proven to be the right answer |
+| What does the CEO need to decide next? | Whether the +0.1091 potential gain justifies the cost/risk of ANY normalization approach (not just semantic matching) |
+
+This document measures the gap. It does not close it. It does not
+prescribe a solution. It provides the data the CEO needs to decide
+whether the bottleneck is worth addressing at all.

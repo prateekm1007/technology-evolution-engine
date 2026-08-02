@@ -64,4 +64,6 @@ ALLOWED_MODIFICATIONS = frozenset({
     "scripts/extract_arxiv_text.py",  # Phase 5.B: arXiv extraction (one-off)
     "scripts/ingest_real_arxiv_phase5b.py",  # Phase 5.B: arXiv ingestion (one-off)
     "scripts/ingest_real_arxiv_phase5c.py",  # Phase 5.C: re-ingestion with expanded parser (one-off)
+    "scripts/measure_normalization_gap.py",  # Phase 5.D: normalization gap measurement (one-off)
+    "scripts/classify_labels.py",  # Phase 5.E: classification exercise (one-off)
 })

@@ -1,4 +1,4 @@
-# TEE MASTER HANDOFF (v3.0 — Phase 5.D normalization gap measured, parser frozen, system saturated)
+# TEE MASTER HANDOFF (v3.1 — NORMALIZATION_GAP.md demoted to evidence, classification exercise)
 
 ## PRE-CODING READ LIST (MANDATORY)
 
@@ -22,15 +22,19 @@ files in order:
    the prerequisite chain (snapshot_1 -> ingestion -> snapshot_2 ->
    delta -> temporal signal -> validation -> implementation)
    executes.
-8. `NORMALIZATION_GAP.md` — Phase 5.D normalization gap measurement.
-   Read BEFORE any future parser or ingestion work. Documents the 4
-   failed bridges and the saturation point (d(shared)/d(total) = 0.00
-   for 2 consecutive cycles). Per the CEO's most important instruction:
-   this is a measurement, NOT authorization for semantic matching.
 
 This read list is enforced structurally by `scripts/remember_governance.py`,
 which is wired as a pre-commit hook via `.pre-commit-config.yaml`. If
-any of these 8 files is missing, the commit is blocked.
+any of these 7 files is missing, the commit is blocked.
+
+**Note on evidence vs. governance (per CEO v3.1 directive):**
+Observation logs and measurement documents (e.g.,
+`evidence/observations/NORMALIZATION_GAP.md`) are NOT in the
+mandatory read list. They are evidence, not constitutional rules.
+The 7 files above are constitutional: rules, constraints, failure
+history, governance, handoff, convergence definition, master spec.
+Mixing observations into the constitutional layer risks gradually
+converting measurements into dogma.
 
 Skipping this read list will reproduce a bug that has already been
 fixed. F-005 is the canonical example.
