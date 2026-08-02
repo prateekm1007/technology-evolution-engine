@@ -1,4 +1,4 @@
-# TEE MASTER HANDOFF (v6.1 — epistemic layer complete: observations/principles/assumptions separated)
+# TEE MASTER HANDOFF (v6.2 — architecture frozen; epistemology IS the architecture)
 
 ## PRE-CODING READ LIST (MANDATORY)
 

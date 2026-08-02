@@ -2,19 +2,93 @@
 
 **Status:** the "why" layer. Separates observations, principles, and assumptions.
 **Location:** `evidence/epistemic/`
-**Phase:** 7C.2+ (per CEO correction 4 + final separation directive).
+**Phase:** 7C.3 (frozen per CEO directive: stop implementation, document carefully).
 
 > The graph is not the asset.
 > Trust in the graph is the asset.
 > — CEO final directive
 
+> Epistemology is part of the architecture.
+> — CEO realization, Phase 7C.3
+
 This layer exists so that when someone asks "Why does this edge
 exist?", the answer breaks into three parts:
 
-1. **What did we observe?** (observations/)
-2. **Which principle was invoked?** (principles/)
-3. **Which assumptions were introduced?** (assumptions/)
+1. **What did we observe?** (observations/) — with falsification criteria
+2. **Which principle was invoked?** (principles/) — with scope and exceptions
+3. **Which assumptions were introduced?** (assumptions/) — with falsification criteria
 4. **Which reviewer approved it?** (in the EdgeJustification)
+
+## The direction of dependency (correct)
+
+```text
+observation
+      ↓
+principle
+      ↓
+assumption
+      ↓
+evidence
+      ↓
+edge
+      ↓
+graph
+      ↓
+prediction
+```
+
+NOT this (the old, wrong direction):
+
+```text
+prediction
+      ↓
+graph
+      ↓
+edge
+      ↓
+justification
+```
+
+The dependency flows from observation upward. You observe first,
+then invoke principles, then state assumptions, then create edges,
+then build the graph, then make predictions. Predictions come LAST,
+not first.
+
+## The complete provenance chain
+
+```text
+EDGE-025
+     │
+     ▼
+Observation(s)     — what did we observe? (N/A for structural edges)
+     │
+     ▼
+Principle(s)       — which principle? (P-001: charge conservation)
+     │
+     ▼
+Assumption(s)      — which assumptions? (A-003: stable across time)
+     │
+     ▼
+Reviewer           — who approved? (coder_agent_001 / 2026-08-02)
+     │
+     ▼
+Confidence         — how sure? (STRUCTURAL)
+```
+
+## The two rules (per CEO 7C.3)
+
+### Rule 1 — Every assumption must be falsifiable
+
+Each assumption (A-001 through A-005) has a `falsificationCriterion`
+field stating what would prove it wrong. An assumption without a
+falsification criterion is dogma, not a modeling choice.
+
+### Rule 2 — Every principle must have a scope
+
+Each principle (P-001 through P-011) has a `scope` field stating
+where it applies, and an `exceptions` field for known cases where
+it doesn't hold. A principle without a scope is universal, which
+is almost always too strong.
 
 ## Structure
 
@@ -22,79 +96,21 @@ exist?", the answer breaks into three parts:
 evidence/
     epistemic/
         observations/   — Type A: what did we observe? (document facts)
-        principles/     — Type B: what do we believe is true? (physical laws)
-        assumptions/     — Type C: what are we taking for granted? (modeling choices)
+        principles/     — Type B: what do we believe is true? (physical laws, with scope)
+        assumptions/     — Type C: what are we taking for granted? (with falsification criteria)
 ```
 
-## The three statement types (NEVER mixed)
+## The realization
 
-### Type A — Observations
+Phase 5 was primarily about discovering that the original primitive
+(co-occurrence) was insufficient.
 
-```typescript
-interface Observation {
-    source: string;        // document ID
-    statement: string;     // what was observed
-    evidence: string[];    // citations
-}
-```
+Phase 7 has been about discovering that **epistemology is part of
+the architecture**. The graph cannot be trusted unless every edge
+traces back to observations, principles, and assumptions — each
+explicitly recorded, each falsifiable, each scoped.
 
-Example: "Patent US20240194939A1 contains CPC code H01M 10/0562."
-
-These are facts about documents. They are externally verifiable.
-They do NOT interpret — they record.
-
-### Type B — Principles
-
-```typescript
-interface Principle {
-    name: string;            // e.g., "charge conservation"
-    description: string;     // what the principle states
-    references: string[];   // where it is established
-}
-```
-
-Example: "Charge conservation requires ion transport between electrodes."
-
-These are named physical/economic laws. They are grounded in
-established science. They do NOT observe — they explain.
-
-### Type C — Assumptions
-
-```typescript
-interface Assumption {
-    statement: string;    // the assumption
-    rationale: string;    // why it seems reasonable
-    reviewer: string;     // who made it
-}
-```
-
-Example: "Capability maturity can be approximated from CPC evidence."
-
-These are modeling choices that the system depends on but cannot
-prove. They are the most vulnerable to being wrong. Recording
-them explicitly is what makes the graph auditable rather than
-assertive.
-
-## Why this separation matters
-
-If, six months from now, someone asks:
-
-> "Why does EDGE-025 exist (ELECTROCHEMICAL_ENERGY_STORAGE REQUIRES ION_TRANSPORT)?"
-
-The answer is:
-
-1. **Observation:** No observation needed — this is a structural edge,
-   not an evidence edge. (If it were an evidence edge, we'd cite the
-   patent + CPC code.)
-2. **Principle:** "charge conservation" — electrochemical storage
-   requires ions to move between electrodes to balance electron flow.
-3. **Assumption:** A-003 ("structural invariants are stable across time")
-   — we're assuming this physical necessity held in 1990 and still
-   holds in 2026.
-4. **Reviewer:** coder_agent_001 / 2026-08-02, confidence STRUCTURAL.
-
-That four-part answer is what turns a graph into an auditable body
-of knowledge.
+That realization is probably more valuable than the graph itself.
 
 ## The four-layer architecture (complete)
 
@@ -103,12 +119,12 @@ of knowledge.
 | Constitutional | What are we allowed to do? | Rules | repo root (10 files) |
 | Experimental | How should we measure it? | Formulas | evidence/experiments/ |
 | Observation | What did we observe? | Evidence | evidence/observations/ |
-| **Epistemic** | **Why does this edge exist?** | **Justifications** | **evidence/epistemic/** |
+| **Epistemic** | **Why do we believe it?** | **Justifications** | **evidence/epistemic/** |
 
 The epistemic layer is further divided into:
 
-| Sub-layer | Question | Schema |
-|---|---|---|
-| observations/ | What did we observe? | Observation |
-| principles/ | What do we believe is true? | Principle |
-| assumptions/ | What are we taking for granted? | Assumption |
+| Sub-layer | Question | Schema | Rules |
+|---|---|---|---|
+| observations/ | What did we observe? | Observation | Must cite source |
+| principles/ | What do we believe is true? | Principle | Must have scope + exceptions |
+| assumptions/ | What are we taking for granted? | Assumption | Must have falsification criterion |
