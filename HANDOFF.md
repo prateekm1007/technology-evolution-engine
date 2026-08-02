@@ -1,4 +1,4 @@
-# TEE MASTER HANDOFF (v6.0 — CEO Phase 7C.1 ruling: scope reduced, causality policy, 5-patent trust test)
+# TEE MASTER HANDOFF (v6.1 — epistemic layer complete: observations/principles/assumptions separated)
 
 ## PRE-CODING READ LIST (MANDATORY)
 
