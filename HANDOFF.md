@@ -1,4 +1,4 @@
-# TEE MASTER HANDOFF (v11.0 — Phase 11: Formula B frozen, expanded timeline, registries, generalization pending)
+# TEE MASTER HANDOFF (v11.1 — M3 ACHIEVED (3.57% > NULL 0.71%); M4 ACHIEVED (PV transfers at 3.33%); approaching M5)
 
 ## PRE-CODING READ LIST (MANDATORY)
 

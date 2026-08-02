@@ -74,4 +74,5 @@ ALLOWED_MODIFICATIONS = frozenset({
     "scripts/run_calibrated_backtest.py",  # Phase 9: calibrated backtest (one-off)
     "scripts/run_rival_formulas_backtest.py",  # Phase 10: rival formulas backtest (one-off)
     "scripts/run_inevitability_backtest.py",  # Phase 10: inevitability backtest (one-off)
+    "scripts/run_expanded_and_generalization.py",  # Phase 11: expanded + generalization (one-off)
 })
