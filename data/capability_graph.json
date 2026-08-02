@@ -1,62 +1,34 @@
 {
   "metadata": {
-    "name": "Capability Graph (CAPABILITY_MODEL)",
-    "version": "1.0",
-    "created_at": "2026-08-02T09:58:54.030782+00:00",
+    "name": "Capability Graph (CAPABILITY_MODEL) \u2014 Trusted v2.0",
+    "version": "2.0",
+    "created_at": "2026-08-02T10:18:54.872532+00:00",
     "model": "CAPABILITY_MODEL",
     "vertical": "electrochemical energy storage",
-    "phase": "7B/7C",
-    "ontology_freeze_respected": true,
-    "node_type_count": 10,
-    "edge_type_count": 6,
-    "node_count": 45,
-    "edge_count": 147,
-    "evidence_count": 43,
-    "patents_processed": 15,
-    "capabilities_used": 20,
-    "constraints_used": 10
+    "phase": "7C.1",
+    "scope": {
+      "patents": 5,
+      "capabilities": 10,
+      "constraints": 5,
+      "edge_types_authorized": [
+        "EMBODIED_IN",
+        "REQUIRES",
+        "CONSTRAINS",
+        "REGULATED_BY"
+      ],
+      "edge_types_suspended": [
+        "ENABLES",
+        "SUBSTITUTES_FOR"
+      ]
+    },
+    "ontology_freeze": "RESPECTED (reduced caps per CEO 7C.1)",
+    "trust_framework": "CAUSALITY_POLICY.md"
   },
   "nodes": [
     {
       "id": "CAP_ELECTROCHEMICAL_ENERGY_STORAGE",
       "type": "CAPABILITY",
       "label": "ELECTROCHEMICAL_ENERGY_STORAGE",
-      "domain": "electrochemical_storage",
-      "validFrom": "1990-01-01",
-      "validTo": null,
-      "confidence": 1.0
-    },
-    {
-      "id": "CAP_HIGH_POWER_DISCHARGE",
-      "type": "CAPABILITY",
-      "label": "HIGH_POWER_DISCHARGE",
-      "domain": "electrochemical_storage",
-      "validFrom": "1990-01-01",
-      "validTo": null,
-      "confidence": 1.0
-    },
-    {
-      "id": "CAP_HIGH_ENERGY_DENSITY_STORAGE",
-      "type": "CAPABILITY",
-      "label": "HIGH_ENERGY_DENSITY_STORAGE",
-      "domain": "electrochemical_storage",
-      "validFrom": "1990-01-01",
-      "validTo": null,
-      "confidence": 1.0
-    },
-    {
-      "id": "CAP_LONG_CYCLE_LIFE_STORAGE",
-      "type": "CAPABILITY",
-      "label": "LONG_CYCLE_LIFE_STORAGE",
-      "domain": "electrochemical_storage",
-      "validFrom": "1990-01-01",
-      "validTo": null,
-      "confidence": 1.0
-    },
-    {
-      "id": "CAP_FAST_CHARGING",
-      "type": "CAPABILITY",
-      "label": "FAST_CHARGING",
       "domain": "electrochemical_storage",
       "validFrom": "1990-01-01",
       "validTo": null,
@@ -72,27 +44,9 @@
       "confidence": 1.0
     },
     {
-      "id": "CAP_SELECTIVE_ION_TRANSPORT",
-      "type": "CAPABILITY",
-      "label": "SELECTIVE_ION_TRANSPORT",
-      "domain": "electrochemical_storage",
-      "validFrom": "1990-01-01",
-      "validTo": null,
-      "confidence": 1.0
-    },
-    {
       "id": "CAP_INTERCALATION",
       "type": "CAPABILITY",
       "label": "INTERCALATION",
-      "domain": "electrochemical_storage",
-      "validFrom": "1990-01-01",
-      "validTo": null,
-      "confidence": 1.0
-    },
-    {
-      "id": "CAP_CONVERSION_REACTION",
-      "type": "CAPABILITY",
-      "label": "CONVERSION_REACTION",
       "domain": "electrochemical_storage",
       "validFrom": "1990-01-01",
       "validTo": null,
@@ -108,6 +62,15 @@
       "confidence": 1.0
     },
     {
+      "id": "CAP_FAST_CHARGING",
+      "type": "CAPABILITY",
+      "label": "FAST_CHARGING",
+      "domain": "electrochemical_storage",
+      "validFrom": "1990-01-01",
+      "validTo": null,
+      "confidence": 1.0
+    },
+    {
       "id": "CAP_THERMAL_MANAGEMENT",
       "type": "CAPABILITY",
       "label": "THERMAL_MANAGEMENT",
@@ -117,27 +80,9 @@
       "confidence": 1.0
     },
     {
-      "id": "CAP_RADIATIVE_COOLING",
-      "type": "CAPABILITY",
-      "label": "RADIATIVE_COOLING",
-      "domain": "electrochemical_storage",
-      "validFrom": "1990-01-01",
-      "validTo": null,
-      "confidence": 1.0
-    },
-    {
       "id": "CAP_STATE_OF_CHARGE_MONITORING",
       "type": "CAPABILITY",
       "label": "STATE_OF_CHARGE_MONITORING",
-      "domain": "electrochemical_storage",
-      "validFrom": "1990-01-01",
-      "validTo": null,
-      "confidence": 1.0
-    },
-    {
-      "id": "CAP_CELL_BALANCING",
-      "type": "CAPABILITY",
-      "label": "CELL_BALANCING",
       "domain": "electrochemical_storage",
       "validFrom": "1990-01-01",
       "validTo": null,
@@ -171,45 +116,9 @@
       "confidence": 1.0
     },
     {
-      "id": "CAP_SOLID_ELECTROLYTE_SINTERING",
-      "type": "CAPABILITY",
-      "label": "SOLID_ELECTROLYTE_SINTERING",
-      "domain": "electrochemical_storage",
-      "validFrom": "1990-01-01",
-      "validTo": null,
-      "confidence": 1.0
-    },
-    {
-      "id": "CAP_GRID_INTERCONNECTION",
-      "type": "CAPABILITY",
-      "label": "GRID_INTERCONNECTION",
-      "domain": "electrochemical_storage",
-      "validFrom": "1990-01-01",
-      "validTo": null,
-      "confidence": 1.0
-    },
-    {
-      "id": "CAP_RECYCLING",
-      "type": "CAPABILITY",
-      "label": "RECYCLING",
-      "domain": "electrochemical_storage",
-      "validFrom": "1990-01-01",
-      "validTo": null,
-      "confidence": 1.0
-    },
-    {
       "id": "CON_THEORETICAL_ENERGY_DENSITY_LIMIT",
       "type": "CONSTRAINT",
       "label": "THEORETICAL_ENERGY_DENSITY_LIMIT",
-      "domain": "electrochemical_storage",
-      "validFrom": "1990-01-01",
-      "validTo": null,
-      "confidence": 1.0
-    },
-    {
-      "id": "CON_ION_TRANSPORT_RESISTANCE",
-      "type": "CONSTRAINT",
-      "label": "ION_TRANSPORT_RESISTANCE",
       "domain": "electrochemical_storage",
       "validFrom": "1990-01-01",
       "validTo": null,
@@ -225,36 +134,9 @@
       "confidence": 1.0
     },
     {
-      "id": "CON_SOLID_ELECTROLYTE_DENSIFICATION",
-      "type": "CONSTRAINT",
-      "label": "SOLID_ELECTROLYTE_DENSIFICATION",
-      "domain": "electrochemical_storage",
-      "validFrom": "1990-01-01",
-      "validTo": null,
-      "confidence": 1.0
-    },
-    {
-      "id": "CON_DRY_ELECTRODE_YIELD",
-      "type": "CONSTRAINT",
-      "label": "DRY_ELECTRODE_YIELD",
-      "domain": "electrochemical_storage",
-      "validFrom": "1990-01-01",
-      "validTo": null,
-      "confidence": 1.0
-    },
-    {
       "id": "CON_COST_PER_KWH_THRESHOLD",
       "type": "CONSTRAINT",
       "label": "COST_PER_KWH_THRESHOLD",
-      "domain": "electrochemical_storage",
-      "validFrom": "1990-01-01",
-      "validTo": null,
-      "confidence": 1.0
-    },
-    {
-      "id": "CON_MATERIAL_SCARCITY",
-      "type": "CONSTRAINT",
-      "label": "MATERIAL_SCARCITY",
       "domain": "electrochemical_storage",
       "validFrom": "1990-01-01",
       "validTo": null,
@@ -279,2614 +161,744 @@
       "confidence": 1.0
     },
     {
-      "id": "CON_GRID_CAPACITY_LIMIT",
-      "type": "CONSTRAINT",
-      "label": "GRID_CAPACITY_LIMIT",
-      "domain": "electrochemical_storage",
-      "validFrom": "1990-01-01",
-      "validTo": null,
-      "confidence": 1.0
-    },
-    {
-      "id": "PAT_US10686186B2",
+      "id": "PAT_US20240194939A1",
       "type": "PRODUCT",
-      "label": "Solid-state battery positive electrode material, production method for solid-sta",
+      "label": "All-solid-state battery",
       "domain": "electrochemical_storage",
-      "validFrom": "1990-01-01",
+      "validFrom": "2026-08-02",
       "validTo": null,
-      "confidence": 1.0
+      "confidence": 1.0,
+      "cpcCodes": [
+        "H01M 10/0562",
+        "H01M 10/0525",
+        "H01M 4/00",
+        "H01M 50/00"
+      ]
     },
     {
       "id": "PAT_US12489120B2",
       "type": "PRODUCT",
       "label": "Redox flow battery",
       "domain": "electrochemical_storage",
-      "validFrom": "1990-01-01",
+      "validFrom": "2026-08-02",
       "validTo": null,
-      "confidence": 1.0
-    },
-    {
-      "id": "PAT_US20100273062A1",
-      "type": "PRODUCT",
-      "label": "All-solid-state battery",
-      "domain": "electrochemical_storage",
-      "validFrom": "1990-01-01",
-      "validTo": null,
-      "confidence": 1.0
-    },
-    {
-      "id": "PAT_US20160204466A1",
-      "type": "PRODUCT",
-      "label": "Solid-state battery and method for manufacturing electrode active material",
-      "domain": "electrochemical_storage",
-      "validFrom": "1990-01-01",
-      "validTo": null,
-      "confidence": 1.0
-    },
-    {
-      "id": "PAT_US20160329594A1",
-      "type": "PRODUCT",
-      "label": "Solid state battery",
-      "domain": "electrochemical_storage",
-      "validFrom": "1990-01-01",
-      "validTo": null,
-      "confidence": 1.0
-    },
-    {
-      "id": "PAT_US20190051907A1",
-      "type": "PRODUCT",
-      "label": "Metal-hydrogen batteries for large-scale energy storage",
-      "domain": "electrochemical_storage",
-      "validFrom": "1990-01-01",
-      "validTo": null,
-      "confidence": 1.0
-    },
-    {
-      "id": "PAT_US20230011919A1",
-      "type": "PRODUCT",
-      "label": "All solid state battery",
-      "domain": "electrochemical_storage",
-      "validFrom": "1990-01-01",
-      "validTo": null,
-      "confidence": 1.0
+      "confidence": 1.0,
+      "cpcCodes": [
+        "H01M 4/86",
+        "H01M 2300/00",
+        "H01M 10/00"
+      ]
     },
     {
       "id": "PAT_US20240021793A1",
       "type": "PRODUCT",
       "label": "Lithium ion battery and powered vehicle",
       "domain": "electrochemical_storage",
-      "validFrom": "1990-01-01",
+      "validFrom": "2026-08-02",
       "validTo": null,
-      "confidence": 1.0
-    },
-    {
-      "id": "PAT_US20240194939A1",
-      "type": "PRODUCT",
-      "label": "All-solid-state battery",
-      "domain": "electrochemical_storage",
-      "validFrom": "1990-01-01",
-      "validTo": null,
-      "confidence": 1.0
-    },
-    {
-      "id": "PAT_US6514640B1",
-      "type": "PRODUCT",
-      "label": "Cathode materials for secondary (rechargeable) lithium batteries",
-      "domain": "electrochemical_storage",
-      "validFrom": "1990-01-01",
-      "validTo": null,
-      "confidence": 1.0
+      "confidence": 1.0,
+      "cpcCodes": [
+        "H01M 10/0525",
+        "H01M 10/44",
+        "H01M 50/00"
+      ]
     },
     {
       "id": "PAT_WO2012068732A1",
       "type": "PRODUCT",
-      "label": "A battery pack assembly",
+      "label": "Battery pack assembly",
       "domain": "electrochemical_storage",
-      "validFrom": "1990-01-01",
+      "validFrom": "2026-08-02",
       "validTo": null,
-      "confidence": 1.0
-    },
-    {
-      "id": "PAT_WO2015051309A1",
-      "type": "PRODUCT",
-      "label": "Large-volume-change lithium battery electrodes",
-      "domain": "electrochemical_storage",
-      "validFrom": "1990-01-01",
-      "validTo": null,
-      "confidence": 1.0
+      "confidence": 1.0,
+      "cpcCodes": [
+        "H01M 50/00",
+        "H01M 10/42",
+        "H01M 10/48"
+      ]
     },
     {
       "id": "PAT_WO2015119843A1",
       "type": "PRODUCT",
       "label": "High performance lithium battery electrodes by self-assembly processing",
       "domain": "electrochemical_storage",
-      "validFrom": "1990-01-01",
+      "validFrom": "2026-08-02",
       "validTo": null,
-      "confidence": 1.0
-    },
-    {
-      "id": "PAT_WO2019055696A1",
-      "type": "PRODUCT",
-      "label": "Silicon-based anode material for lithium ion battery",
-      "domain": "electrochemical_storage",
-      "validFrom": "1990-01-01",
-      "validTo": null,
-      "confidence": 1.0
-    },
-    {
-      "id": "PAT_WO2022081545A1",
-      "type": "PRODUCT",
-      "label": "Solid state battery containing continuous glass-ceramic electrolyte separator an",
-      "domain": "electrochemical_storage",
-      "validFrom": "1990-01-01",
-      "validTo": null,
-      "confidence": 1.0
+      "confidence": 1.0,
+      "cpcCodes": [
+        "H01M 4/00",
+        "H01M 10/0525"
+      ]
     }
   ],
   "edges": [
     {
-      "source": "CAP_ELECTROCHEMICAL_ENERGY_STORAGE",
-      "type": "REQUIRES",
-      "target": "CAP_ION_TRANSPORT",
-      "confidence": 0.5,
-      "evidence": [
-        "E-0001"
-      ]
-    },
-    {
-      "source": "CAP_ELECTROCHEMICAL_ENERGY_STORAGE",
-      "type": "REQUIRES",
-      "target": "CAP_INTERCALATION",
-      "confidence": 0.5,
-      "evidence": [
-        "E-0002"
-      ]
-    },
-    {
-      "source": "CAP_FAST_CHARGING",
-      "type": "REQUIRES",
-      "target": "CAP_THERMAL_MANAGEMENT",
-      "confidence": 0.5,
-      "evidence": [
-        "E-0003"
-      ]
-    },
-    {
-      "source": "CAP_FAST_CHARGING",
-      "type": "REQUIRES",
-      "target": "CAP_ION_TRANSPORT",
-      "confidence": 0.5,
-      "evidence": [
-        "E-0004"
-      ]
-    },
-    {
-      "source": "CAP_HIGH_POWER_DISCHARGE",
-      "type": "REQUIRES",
-      "target": "CAP_ION_TRANSPORT",
-      "confidence": 0.5,
-      "evidence": [
-        "E-0005"
-      ]
-    },
-    {
-      "source": "CAP_HIGH_POWER_DISCHARGE",
-      "type": "REQUIRES",
-      "target": "CAP_ELECTRON_COLLECTION",
-      "confidence": 0.5,
-      "evidence": [
-        "E-0006"
-      ]
-    },
-    {
-      "source": "CAP_SELECTIVE_ION_TRANSPORT",
-      "type": "REQUIRES",
-      "target": "CAP_ION_TRANSPORT",
-      "confidence": 0.5,
-      "evidence": [
-        "E-0007"
-      ]
-    },
-    {
-      "source": "CAP_CELL_BALANCING",
-      "type": "REQUIRES",
-      "target": "CAP_STATE_OF_CHARGE_MONITORING",
-      "confidence": 0.5,
-      "evidence": [
-        "E-0008"
-      ]
-    },
-    {
-      "source": "CAP_SAFETY_PROTECTION",
-      "type": "REQUIRES",
-      "target": "CAP_STATE_OF_CHARGE_MONITORING",
-      "confidence": 0.5,
-      "evidence": [
-        "E-0009"
-      ]
-    },
-    {
-      "source": "CAP_SOLID_ELECTROLYTE_SINTERING",
-      "type": "ENABLES",
-      "target": "CAP_ION_TRANSPORT",
-      "confidence": 0.5,
-      "evidence": [
-        "E-0010"
-      ]
-    },
-    {
-      "source": "CAP_ELECTRODE_COATING",
-      "type": "ENABLES",
-      "target": "CAP_INTERCALATION",
-      "confidence": 0.5,
-      "evidence": [
-        "E-0011"
-      ]
-    },
-    {
-      "source": "CAP_CELL_ASSEMBLY",
-      "type": "REQUIRES",
-      "target": "CAP_ELECTRODE_COATING",
-      "confidence": 0.5,
-      "evidence": [
-        "E-0012"
-      ]
-    },
-    {
-      "source": "CAP_CELL_ASSEMBLY",
-      "type": "REQUIRES",
-      "target": "CAP_SELECTIVE_ION_TRANSPORT",
-      "confidence": 0.5,
-      "evidence": [
-        "E-0013"
-      ]
-    },
-    {
-      "source": "CAP_RECYCLING",
-      "type": "ENABLES",
-      "target": "CAP_ELECTROCHEMICAL_ENERGY_STORAGE",
-      "confidence": 0.5,
-      "evidence": [
-        "E-0014"
-      ]
-    },
-    {
-      "source": "CAP_GRID_INTERCONNECTION",
-      "type": "ENABLES",
-      "target": "CAP_ELECTROCHEMICAL_ENERGY_STORAGE",
-      "confidence": 0.5,
-      "evidence": [
-        "E-0015"
-      ]
-    },
-    {
-      "source": "CAP_THERMAL_MANAGEMENT",
-      "type": "CONSTRAINS",
-      "target": "CAP_HIGH_POWER_DISCHARGE",
-      "confidence": 0.5,
-      "evidence": [
-        "E-0016"
-      ]
-    },
-    {
-      "source": "CAP_CONVERSION_REACTION",
-      "type": "SUBSTITUTES_FOR",
-      "target": "CAP_INTERCALATION",
-      "confidence": 0.5,
-      "evidence": [
-        "E-0017"
-      ]
-    },
-    {
-      "source": "PAT_US10686186B2",
+      "id": "EDGE-001",
+      "source": "PAT_US20240194939A1",
       "type": "EMBODIED_IN",
       "target": "CAP_CELL_ASSEMBLY",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0018"
-      ]
+      "confidence": 1.0
     },
     {
-      "source": "PAT_US10686186B2",
-      "type": "EMBODIED_IN",
-      "target": "CAP_CONVERSION_REACTION",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0018"
-      ]
-    },
-    {
-      "source": "PAT_US10686186B2",
+      "id": "EDGE-002",
+      "source": "PAT_US20240194939A1",
       "type": "EMBODIED_IN",
       "target": "CAP_ELECTROCHEMICAL_ENERGY_STORAGE",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0018"
-      ]
+      "confidence": 1.0
     },
     {
-      "source": "PAT_US10686186B2",
+      "id": "EDGE-003",
+      "source": "PAT_US20240194939A1",
       "type": "EMBODIED_IN",
       "target": "CAP_ELECTRODE_COATING",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0018"
-      ]
+      "confidence": 1.0
     },
     {
-      "source": "PAT_US10686186B2",
+      "id": "EDGE-004",
+      "source": "PAT_US20240194939A1",
       "type": "EMBODIED_IN",
       "target": "CAP_ELECTRON_COLLECTION",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0018"
-      ]
+      "confidence": 1.0
     },
     {
-      "source": "PAT_US10686186B2",
+      "id": "EDGE-005",
+      "source": "PAT_US20240194939A1",
       "type": "EMBODIED_IN",
       "target": "CAP_INTERCALATION",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0018"
-      ]
+      "confidence": 1.0
     },
     {
-      "source": "PAT_US10686186B2",
+      "id": "EDGE-006",
+      "source": "PAT_US20240194939A1",
       "type": "EMBODIED_IN",
       "target": "CAP_ION_TRANSPORT",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0018"
-      ]
+      "confidence": 1.0
     },
     {
-      "source": "PAT_US10686186B2",
-      "type": "EMBODIED_IN",
-      "target": "CAP_LONG_CYCLE_LIFE_STORAGE",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0018"
-      ]
-    },
-    {
-      "source": "PAT_US10686186B2",
-      "type": "EMBODIED_IN",
-      "target": "CAP_RECYCLING",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0018"
-      ]
-    },
-    {
-      "source": "PAT_US10686186B2",
-      "type": "EMBODIED_IN",
-      "target": "CAP_SOLID_ELECTROLYTE_SINTERING",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0018"
-      ]
-    },
-    {
-      "source": "PAT_US12489120B2",
-      "type": "EMBODIED_IN",
-      "target": "CAP_CONVERSION_REACTION",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0019"
-      ]
-    },
-    {
-      "source": "PAT_US12489120B2",
-      "type": "EMBODIED_IN",
-      "target": "CAP_ELECTROCHEMICAL_ENERGY_STORAGE",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0019"
-      ]
-    },
-    {
-      "source": "PAT_US12489120B2",
-      "type": "EMBODIED_IN",
-      "target": "CAP_ELECTRON_COLLECTION",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0019"
-      ]
-    },
-    {
-      "source": "PAT_US12489120B2",
-      "type": "EMBODIED_IN",
-      "target": "CAP_INTERCALATION",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0019"
-      ]
-    },
-    {
-      "source": "PAT_US12489120B2",
-      "type": "EMBODIED_IN",
-      "target": "CAP_RECYCLING",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0019"
-      ]
-    },
-    {
-      "source": "PAT_US20100273062A1",
-      "type": "EMBODIED_IN",
-      "target": "CAP_CONVERSION_REACTION",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0020"
-      ]
-    },
-    {
-      "source": "PAT_US20100273062A1",
-      "type": "EMBODIED_IN",
-      "target": "CAP_ELECTROCHEMICAL_ENERGY_STORAGE",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0020"
-      ]
-    },
-    {
-      "source": "PAT_US20100273062A1",
-      "type": "EMBODIED_IN",
-      "target": "CAP_ELECTRON_COLLECTION",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0020"
-      ]
-    },
-    {
-      "source": "PAT_US20100273062A1",
-      "type": "EMBODIED_IN",
-      "target": "CAP_INTERCALATION",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0020"
-      ]
-    },
-    {
-      "source": "PAT_US20100273062A1",
-      "type": "EMBODIED_IN",
-      "target": "CAP_ION_TRANSPORT",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0020"
-      ]
-    },
-    {
-      "source": "PAT_US20100273062A1",
-      "type": "EMBODIED_IN",
-      "target": "CAP_LONG_CYCLE_LIFE_STORAGE",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0020"
-      ]
-    },
-    {
-      "source": "PAT_US20100273062A1",
-      "type": "EMBODIED_IN",
-      "target": "CAP_RECYCLING",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0020"
-      ]
-    },
-    {
-      "source": "PAT_US20100273062A1",
-      "type": "EMBODIED_IN",
-      "target": "CAP_SOLID_ELECTROLYTE_SINTERING",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0020"
-      ]
-    },
-    {
-      "source": "PAT_US20160204466A1",
-      "type": "EMBODIED_IN",
-      "target": "CAP_CONVERSION_REACTION",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0021"
-      ]
-    },
-    {
-      "source": "PAT_US20160204466A1",
-      "type": "EMBODIED_IN",
-      "target": "CAP_ELECTROCHEMICAL_ENERGY_STORAGE",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0021"
-      ]
-    },
-    {
-      "source": "PAT_US20160204466A1",
-      "type": "EMBODIED_IN",
-      "target": "CAP_ELECTRODE_COATING",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0021"
-      ]
-    },
-    {
-      "source": "PAT_US20160204466A1",
-      "type": "EMBODIED_IN",
-      "target": "CAP_ELECTRON_COLLECTION",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0021"
-      ]
-    },
-    {
-      "source": "PAT_US20160204466A1",
-      "type": "EMBODIED_IN",
-      "target": "CAP_INTERCALATION",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0021"
-      ]
-    },
-    {
-      "source": "PAT_US20160204466A1",
-      "type": "EMBODIED_IN",
-      "target": "CAP_ION_TRANSPORT",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0021"
-      ]
-    },
-    {
-      "source": "PAT_US20160204466A1",
-      "type": "EMBODIED_IN",
-      "target": "CAP_LONG_CYCLE_LIFE_STORAGE",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0021"
-      ]
-    },
-    {
-      "source": "PAT_US20160204466A1",
-      "type": "EMBODIED_IN",
-      "target": "CAP_RECYCLING",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0021"
-      ]
-    },
-    {
-      "source": "PAT_US20160204466A1",
-      "type": "EMBODIED_IN",
-      "target": "CAP_SOLID_ELECTROLYTE_SINTERING",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0021"
-      ]
-    },
-    {
-      "source": "PAT_US20160329594A1",
-      "type": "EMBODIED_IN",
-      "target": "CAP_CELL_ASSEMBLY",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0022"
-      ]
-    },
-    {
-      "source": "PAT_US20160329594A1",
-      "type": "EMBODIED_IN",
-      "target": "CAP_CONVERSION_REACTION",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0022"
-      ]
-    },
-    {
-      "source": "PAT_US20160329594A1",
-      "type": "EMBODIED_IN",
-      "target": "CAP_ELECTROCHEMICAL_ENERGY_STORAGE",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0022"
-      ]
-    },
-    {
-      "source": "PAT_US20160329594A1",
-      "type": "EMBODIED_IN",
-      "target": "CAP_ELECTRON_COLLECTION",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0022"
-      ]
-    },
-    {
-      "source": "PAT_US20160329594A1",
-      "type": "EMBODIED_IN",
-      "target": "CAP_INTERCALATION",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0022"
-      ]
-    },
-    {
-      "source": "PAT_US20160329594A1",
-      "type": "EMBODIED_IN",
-      "target": "CAP_ION_TRANSPORT",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0022"
-      ]
-    },
-    {
-      "source": "PAT_US20160329594A1",
-      "type": "EMBODIED_IN",
-      "target": "CAP_LONG_CYCLE_LIFE_STORAGE",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0022"
-      ]
-    },
-    {
-      "source": "PAT_US20160329594A1",
-      "type": "EMBODIED_IN",
-      "target": "CAP_SOLID_ELECTROLYTE_SINTERING",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0022"
-      ]
-    },
-    {
-      "source": "PAT_US20190051907A1",
-      "type": "EMBODIED_IN",
-      "target": "CAP_CONVERSION_REACTION",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0023"
-      ]
-    },
-    {
-      "source": "PAT_US20190051907A1",
-      "type": "EMBODIED_IN",
-      "target": "CAP_ELECTROCHEMICAL_ENERGY_STORAGE",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0023"
-      ]
-    },
-    {
-      "source": "PAT_US20190051907A1",
-      "type": "EMBODIED_IN",
-      "target": "CAP_ELECTRON_COLLECTION",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0023"
-      ]
-    },
-    {
-      "source": "PAT_US20190051907A1",
-      "type": "EMBODIED_IN",
-      "target": "CAP_INTERCALATION",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0023"
-      ]
-    },
-    {
-      "source": "PAT_US20190051907A1",
-      "type": "EMBODIED_IN",
-      "target": "CAP_RECYCLING",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0023"
-      ]
-    },
-    {
-      "source": "PAT_US20230011919A1",
-      "type": "EMBODIED_IN",
-      "target": "CAP_CELL_ASSEMBLY",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0024"
-      ]
-    },
-    {
-      "source": "PAT_US20230011919A1",
-      "type": "EMBODIED_IN",
-      "target": "CAP_CONVERSION_REACTION",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0024"
-      ]
-    },
-    {
-      "source": "PAT_US20230011919A1",
-      "type": "EMBODIED_IN",
-      "target": "CAP_ELECTROCHEMICAL_ENERGY_STORAGE",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0024"
-      ]
-    },
-    {
-      "source": "PAT_US20230011919A1",
-      "type": "EMBODIED_IN",
-      "target": "CAP_ELECTRON_COLLECTION",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0024"
-      ]
-    },
-    {
-      "source": "PAT_US20230011919A1",
-      "type": "EMBODIED_IN",
-      "target": "CAP_INTERCALATION",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0024"
-      ]
-    },
-    {
-      "source": "PAT_US20230011919A1",
-      "type": "EMBODIED_IN",
-      "target": "CAP_ION_TRANSPORT",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0024"
-      ]
-    },
-    {
-      "source": "PAT_US20230011919A1",
-      "type": "EMBODIED_IN",
-      "target": "CAP_LONG_CYCLE_LIFE_STORAGE",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0024"
-      ]
-    },
-    {
-      "source": "PAT_US20230011919A1",
-      "type": "EMBODIED_IN",
-      "target": "CAP_RECYCLING",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0024"
-      ]
-    },
-    {
-      "source": "PAT_US20230011919A1",
-      "type": "EMBODIED_IN",
-      "target": "CAP_SELECTIVE_ION_TRANSPORT",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0024"
-      ]
-    },
-    {
-      "source": "PAT_US20230011919A1",
-      "type": "EMBODIED_IN",
-      "target": "CAP_SOLID_ELECTROLYTE_SINTERING",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0024"
-      ]
-    },
-    {
-      "source": "PAT_US20230011919A1",
+      "id": "EDGE-007",
+      "source": "PAT_US20240194939A1",
       "type": "EMBODIED_IN",
       "target": "CAP_THERMAL_MANAGEMENT",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0024"
-      ]
+      "confidence": 1.0
     },
     {
+      "id": "EDGE-008",
+      "source": "PAT_US12489120B2",
+      "type": "EMBODIED_IN",
+      "target": "CAP_ELECTROCHEMICAL_ENERGY_STORAGE",
+      "confidence": 1.0
+    },
+    {
+      "id": "EDGE-009",
+      "source": "PAT_US12489120B2",
+      "type": "EMBODIED_IN",
+      "target": "CAP_ELECTRON_COLLECTION",
+      "confidence": 1.0
+    },
+    {
+      "id": "EDGE-010",
       "source": "PAT_US20240021793A1",
       "type": "EMBODIED_IN",
       "target": "CAP_CELL_ASSEMBLY",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0025"
-      ]
+      "confidence": 1.0
     },
     {
-      "source": "PAT_US20240021793A1",
-      "type": "EMBODIED_IN",
-      "target": "CAP_CONVERSION_REACTION",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0025"
-      ]
-    },
-    {
+      "id": "EDGE-011",
       "source": "PAT_US20240021793A1",
       "type": "EMBODIED_IN",
       "target": "CAP_ELECTROCHEMICAL_ENERGY_STORAGE",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0025"
-      ]
+      "confidence": 1.0
     },
     {
-      "source": "PAT_US20240021793A1",
-      "type": "EMBODIED_IN",
-      "target": "CAP_ELECTRON_COLLECTION",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0025"
-      ]
-    },
-    {
+      "id": "EDGE-012",
       "source": "PAT_US20240021793A1",
       "type": "EMBODIED_IN",
       "target": "CAP_FAST_CHARGING",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0025"
-      ]
+      "confidence": 1.0
     },
     {
-      "source": "PAT_US20240021793A1",
-      "type": "EMBODIED_IN",
-      "target": "CAP_INTERCALATION",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0025"
-      ]
-    },
-    {
+      "id": "EDGE-013",
       "source": "PAT_US20240021793A1",
       "type": "EMBODIED_IN",
       "target": "CAP_ION_TRANSPORT",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0025"
-      ]
+      "confidence": 1.0
     },
     {
+      "id": "EDGE-014",
       "source": "PAT_US20240021793A1",
       "type": "EMBODIED_IN",
-      "target": "CAP_LONG_CYCLE_LIFE_STORAGE",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0025"
-      ]
-    },
-    {
-      "source": "PAT_US20240194939A1",
-      "type": "EMBODIED_IN",
-      "target": "CAP_CELL_ASSEMBLY",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0026"
-      ]
-    },
-    {
-      "source": "PAT_US20240194939A1",
-      "type": "EMBODIED_IN",
-      "target": "CAP_CONVERSION_REACTION",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0026"
-      ]
-    },
-    {
-      "source": "PAT_US20240194939A1",
-      "type": "EMBODIED_IN",
-      "target": "CAP_ELECTROCHEMICAL_ENERGY_STORAGE",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0026"
-      ]
-    },
-    {
-      "source": "PAT_US20240194939A1",
-      "type": "EMBODIED_IN",
-      "target": "CAP_ELECTRON_COLLECTION",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0026"
-      ]
-    },
-    {
-      "source": "PAT_US20240194939A1",
-      "type": "EMBODIED_IN",
-      "target": "CAP_INTERCALATION",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0026"
-      ]
-    },
-    {
-      "source": "PAT_US20240194939A1",
-      "type": "EMBODIED_IN",
-      "target": "CAP_ION_TRANSPORT",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0026"
-      ]
-    },
-    {
-      "source": "PAT_US20240194939A1",
-      "type": "EMBODIED_IN",
-      "target": "CAP_LONG_CYCLE_LIFE_STORAGE",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0026"
-      ]
-    },
-    {
-      "source": "PAT_US20240194939A1",
-      "type": "EMBODIED_IN",
-      "target": "CAP_RECYCLING",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0026"
-      ]
-    },
-    {
-      "source": "PAT_US20240194939A1",
-      "type": "EMBODIED_IN",
-      "target": "CAP_SOLID_ELECTROLYTE_SINTERING",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0026"
-      ]
-    },
-    {
-      "source": "PAT_US20240194939A1",
-      "type": "EMBODIED_IN",
       "target": "CAP_THERMAL_MANAGEMENT",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0026"
-      ]
+      "confidence": 1.0
     },
     {
-      "source": "PAT_US6514640B1",
-      "type": "EMBODIED_IN",
-      "target": "CAP_CONVERSION_REACTION",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0027"
-      ]
-    },
-    {
-      "source": "PAT_US6514640B1",
-      "type": "EMBODIED_IN",
-      "target": "CAP_ELECTROCHEMICAL_ENERGY_STORAGE",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0027"
-      ]
-    },
-    {
-      "source": "PAT_US6514640B1",
-      "type": "EMBODIED_IN",
-      "target": "CAP_ELECTRODE_COATING",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0027"
-      ]
-    },
-    {
-      "source": "PAT_US6514640B1",
-      "type": "EMBODIED_IN",
-      "target": "CAP_ELECTRON_COLLECTION",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0027"
-      ]
-    },
-    {
-      "source": "PAT_US6514640B1",
-      "type": "EMBODIED_IN",
-      "target": "CAP_INTERCALATION",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0027"
-      ]
-    },
-    {
-      "source": "PAT_US6514640B1",
-      "type": "EMBODIED_IN",
-      "target": "CAP_ION_TRANSPORT",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0027"
-      ]
-    },
-    {
-      "source": "PAT_US6514640B1",
-      "type": "EMBODIED_IN",
-      "target": "CAP_LONG_CYCLE_LIFE_STORAGE",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0027"
-      ]
-    },
-    {
-      "source": "PAT_US6514640B1",
-      "type": "EMBODIED_IN",
-      "target": "CAP_RECYCLING",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0027"
-      ]
-    },
-    {
+      "id": "EDGE-015",
       "source": "PAT_WO2012068732A1",
       "type": "EMBODIED_IN",
       "target": "CAP_CELL_ASSEMBLY",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0028"
-      ]
+      "confidence": 1.0
     },
     {
-      "source": "PAT_WO2012068732A1",
-      "type": "EMBODIED_IN",
-      "target": "CAP_CELL_BALANCING",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0028"
-      ]
-    },
-    {
+      "id": "EDGE-016",
       "source": "PAT_WO2012068732A1",
       "type": "EMBODIED_IN",
       "target": "CAP_ELECTROCHEMICAL_ENERGY_STORAGE",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0028"
-      ]
+      "confidence": 1.0
     },
     {
+      "id": "EDGE-017",
       "source": "PAT_WO2012068732A1",
       "type": "EMBODIED_IN",
-      "target": "CAP_LONG_CYCLE_LIFE_STORAGE",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0028"
-      ]
+      "target": "CAP_SAFETY_PROTECTION",
+      "confidence": 1.0
     },
     {
+      "id": "EDGE-018",
       "source": "PAT_WO2012068732A1",
       "type": "EMBODIED_IN",
-      "target": "CAP_SELECTIVE_ION_TRANSPORT",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0028"
-      ]
+      "target": "CAP_STATE_OF_CHARGE_MONITORING",
+      "confidence": 1.0
     },
     {
+      "id": "EDGE-019",
       "source": "PAT_WO2012068732A1",
       "type": "EMBODIED_IN",
       "target": "CAP_THERMAL_MANAGEMENT",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0028"
-      ]
+      "confidence": 1.0
     },
     {
-      "source": "PAT_WO2015051309A1",
-      "type": "EMBODIED_IN",
-      "target": "CAP_CONVERSION_REACTION",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0029"
-      ]
-    },
-    {
-      "source": "PAT_WO2015051309A1",
-      "type": "EMBODIED_IN",
-      "target": "CAP_ELECTROCHEMICAL_ENERGY_STORAGE",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0029"
-      ]
-    },
-    {
-      "source": "PAT_WO2015051309A1",
-      "type": "EMBODIED_IN",
-      "target": "CAP_ELECTRON_COLLECTION",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0029"
-      ]
-    },
-    {
-      "source": "PAT_WO2015051309A1",
-      "type": "EMBODIED_IN",
-      "target": "CAP_INTERCALATION",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0029"
-      ]
-    },
-    {
-      "source": "PAT_WO2015051309A1",
-      "type": "EMBODIED_IN",
-      "target": "CAP_ION_TRANSPORT",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0029"
-      ]
-    },
-    {
-      "source": "PAT_WO2015051309A1",
-      "type": "EMBODIED_IN",
-      "target": "CAP_LONG_CYCLE_LIFE_STORAGE",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0029"
-      ]
-    },
-    {
-      "source": "PAT_WO2015119843A1",
-      "type": "EMBODIED_IN",
-      "target": "CAP_CONVERSION_REACTION",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0030"
-      ]
-    },
-    {
+      "id": "EDGE-020",
       "source": "PAT_WO2015119843A1",
       "type": "EMBODIED_IN",
       "target": "CAP_ELECTROCHEMICAL_ENERGY_STORAGE",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0030"
-      ]
+      "confidence": 1.0
     },
     {
+      "id": "EDGE-021",
       "source": "PAT_WO2015119843A1",
       "type": "EMBODIED_IN",
       "target": "CAP_ELECTRODE_COATING",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0030"
-      ]
+      "confidence": 1.0
     },
     {
+      "id": "EDGE-022",
       "source": "PAT_WO2015119843A1",
       "type": "EMBODIED_IN",
       "target": "CAP_ELECTRON_COLLECTION",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0030"
-      ]
+      "confidence": 1.0
     },
     {
+      "id": "EDGE-023",
       "source": "PAT_WO2015119843A1",
       "type": "EMBODIED_IN",
       "target": "CAP_INTERCALATION",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0030"
-      ]
+      "confidence": 1.0
     },
     {
+      "id": "EDGE-024",
       "source": "PAT_WO2015119843A1",
       "type": "EMBODIED_IN",
       "target": "CAP_ION_TRANSPORT",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0030"
-      ]
+      "confidence": 1.0
     },
     {
-      "source": "PAT_WO2015119843A1",
-      "type": "EMBODIED_IN",
-      "target": "CAP_LONG_CYCLE_LIFE_STORAGE",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0030"
-      ]
-    },
-    {
-      "source": "PAT_WO2019055696A1",
-      "type": "EMBODIED_IN",
-      "target": "CAP_CONVERSION_REACTION",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0031"
-      ]
-    },
-    {
-      "source": "PAT_WO2019055696A1",
-      "type": "EMBODIED_IN",
-      "target": "CAP_ELECTROCHEMICAL_ENERGY_STORAGE",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0031"
-      ]
-    },
-    {
-      "source": "PAT_WO2019055696A1",
-      "type": "EMBODIED_IN",
-      "target": "CAP_ELECTRON_COLLECTION",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0031"
-      ]
-    },
-    {
-      "source": "PAT_WO2019055696A1",
-      "type": "EMBODIED_IN",
-      "target": "CAP_INTERCALATION",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0031"
-      ]
-    },
-    {
-      "source": "PAT_WO2019055696A1",
-      "type": "EMBODIED_IN",
+      "id": "EDGE-025",
+      "source": "CAP_ELECTROCHEMICAL_ENERGY_STORAGE",
+      "type": "REQUIRES",
       "target": "CAP_ION_TRANSPORT",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0031"
-      ]
+      "confidence": 0.5
     },
     {
-      "source": "PAT_WO2019055696A1",
-      "type": "EMBODIED_IN",
-      "target": "CAP_LONG_CYCLE_LIFE_STORAGE",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0031"
-      ]
-    },
-    {
-      "source": "PAT_WO2022081545A1",
-      "type": "EMBODIED_IN",
-      "target": "CAP_CELL_ASSEMBLY",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0032"
-      ]
-    },
-    {
-      "source": "PAT_WO2022081545A1",
-      "type": "EMBODIED_IN",
-      "target": "CAP_CONVERSION_REACTION",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0032"
-      ]
-    },
-    {
-      "source": "PAT_WO2022081545A1",
-      "type": "EMBODIED_IN",
-      "target": "CAP_ELECTROCHEMICAL_ENERGY_STORAGE",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0032"
-      ]
-    },
-    {
-      "source": "PAT_WO2022081545A1",
-      "type": "EMBODIED_IN",
-      "target": "CAP_ELECTRODE_COATING",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0032"
-      ]
-    },
-    {
-      "source": "PAT_WO2022081545A1",
-      "type": "EMBODIED_IN",
-      "target": "CAP_ELECTRON_COLLECTION",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0032"
-      ]
-    },
-    {
-      "source": "PAT_WO2022081545A1",
-      "type": "EMBODIED_IN",
+      "id": "EDGE-026",
+      "source": "CAP_ELECTROCHEMICAL_ENERGY_STORAGE",
+      "type": "REQUIRES",
       "target": "CAP_INTERCALATION",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0032"
-      ]
+      "confidence": 0.5
     },
     {
-      "source": "PAT_WO2022081545A1",
-      "type": "EMBODIED_IN",
+      "id": "EDGE-027",
+      "source": "CAP_FAST_CHARGING",
+      "type": "REQUIRES",
       "target": "CAP_ION_TRANSPORT",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0032"
-      ]
+      "confidence": 0.5
     },
     {
-      "source": "PAT_WO2022081545A1",
-      "type": "EMBODIED_IN",
-      "target": "CAP_LONG_CYCLE_LIFE_STORAGE",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0032"
-      ]
-    },
-    {
-      "source": "PAT_WO2022081545A1",
-      "type": "EMBODIED_IN",
-      "target": "CAP_RECYCLING",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0032"
-      ]
-    },
-    {
-      "source": "PAT_WO2022081545A1",
-      "type": "EMBODIED_IN",
-      "target": "CAP_SELECTIVE_ION_TRANSPORT",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0032"
-      ]
-    },
-    {
-      "source": "PAT_WO2022081545A1",
-      "type": "EMBODIED_IN",
-      "target": "CAP_SOLID_ELECTROLYTE_SINTERING",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0032"
-      ]
-    },
-    {
-      "source": "PAT_WO2022081545A1",
-      "type": "EMBODIED_IN",
+      "id": "EDGE-028",
+      "source": "CAP_FAST_CHARGING",
+      "type": "REQUIRES",
       "target": "CAP_THERMAL_MANAGEMENT",
-      "confidence": 1.0,
-      "evidence": [
-        "E-0032"
-      ]
+      "confidence": 0.5
     },
     {
+      "id": "EDGE-029",
+      "source": "CAP_CELL_ASSEMBLY",
+      "type": "REQUIRES",
+      "target": "CAP_ELECTRODE_COATING",
+      "confidence": 0.5
+    },
+    {
+      "id": "EDGE-030",
+      "source": "CAP_SAFETY_PROTECTION",
+      "type": "REQUIRES",
+      "target": "CAP_STATE_OF_CHARGE_MONITORING",
+      "confidence": 0.5
+    },
+    {
+      "id": "EDGE-031",
       "source": "CON_THEORETICAL_ENERGY_DENSITY_LIMIT",
       "type": "CONSTRAINS",
-      "target": "CAP_HIGH_ENERGY_DENSITY_STORAGE",
-      "confidence": 0.5,
-      "evidence": [
-        "E-0033"
-      ]
+      "target": "CAP_ELECTROCHEMICAL_ENERGY_STORAGE",
+      "confidence": 0.5
     },
     {
-      "source": "CON_ION_TRANSPORT_RESISTANCE",
-      "type": "CONSTRAINS",
-      "target": "CAP_ION_TRANSPORT",
-      "confidence": 0.5,
-      "evidence": [
-        "E-0034"
-      ]
-    },
-    {
-      "source": "CON_ION_TRANSPORT_RESISTANCE",
-      "type": "CONSTRAINS",
-      "target": "CAP_HIGH_POWER_DISCHARGE",
-      "confidence": 0.5,
-      "evidence": [
-        "E-0035"
-      ]
-    },
-    {
+      "id": "EDGE-032",
       "source": "CON_THERMAL_RUNAWAY_THRESHOLD",
       "type": "CONSTRAINS",
       "target": "CAP_ELECTROCHEMICAL_ENERGY_STORAGE",
-      "confidence": 0.5,
-      "evidence": [
-        "E-0036"
-      ]
+      "confidence": 0.5
     },
     {
-      "source": "CON_SOLID_ELECTROLYTE_DENSIFICATION",
-      "type": "CONSTRAINS",
-      "target": "CAP_SOLID_ELECTROLYTE_SINTERING",
-      "confidence": 0.5,
-      "evidence": [
-        "E-0037"
-      ]
-    },
-    {
-      "source": "CON_DRY_ELECTRODE_YIELD",
-      "type": "CONSTRAINS",
-      "target": "CAP_ELECTRODE_COATING",
-      "confidence": 0.5,
-      "evidence": [
-        "E-0038"
-      ]
-    },
-    {
+      "id": "EDGE-033",
       "source": "CON_COST_PER_KWH_THRESHOLD",
       "type": "CONSTRAINS",
       "target": "CAP_ELECTROCHEMICAL_ENERGY_STORAGE",
-      "confidence": 0.5,
-      "evidence": [
-        "E-0039"
-      ]
+      "confidence": 0.5
     },
     {
-      "source": "CON_MATERIAL_SCARCITY",
-      "type": "CONSTRAINS",
-      "target": "CAP_INTERCALATION",
-      "confidence": 0.5,
-      "evidence": [
-        "E-0040"
-      ]
-    },
-    {
+      "id": "EDGE-034",
       "source": "CON_UN38_3_SHIPPING_SAFETY",
-      "type": "REGULATED_BY",
-      "target": "CAP_ELECTROCHEMICAL_ENERGY_STORAGE",
-      "confidence": 0.5,
-      "evidence": [
-        "E-0041"
-      ]
-    },
-    {
-      "source": "CON_IEC_62133_SAFETY_STANDARD",
-      "type": "REGULATED_BY",
-      "target": "CAP_SAFETY_PROTECTION",
-      "confidence": 0.5,
-      "evidence": [
-        "E-0042"
-      ]
-    },
-    {
-      "source": "CON_GRID_CAPACITY_LIMIT",
       "type": "CONSTRAINS",
-      "target": "CAP_GRID_INTERCONNECTION",
-      "confidence": 0.5,
-      "evidence": [
-        "E-0043"
-      ]
+      "target": "CAP_ELECTROCHEMICAL_ENERGY_STORAGE",
+      "confidence": 0.5
+    },
+    {
+      "id": "EDGE-035",
+      "source": "CON_IEC_62133_SAFETY_STANDARD",
+      "type": "CONSTRAINS",
+      "target": "CAP_SAFETY_PROTECTION",
+      "confidence": 0.5
+    },
+    {
+      "id": "EDGE-036",
+      "source": "CAP_ELECTROCHEMICAL_ENERGY_STORAGE",
+      "type": "REGULATED_BY",
+      "target": "CON_UN38_3_SHIPPING_SAFETY",
+      "confidence": 1.0
+    },
+    {
+      "id": "EDGE-037",
+      "source": "CAP_SAFETY_PROTECTION",
+      "type": "REGULATED_BY",
+      "target": "CON_IEC_62133_SAFETY_STANDARD",
+      "confidence": 1.0
     }
   ],
-  "evidence": [
+  "edge_justifications": [
     {
-      "id": "E-0001",
-      "sourceType": "REGULATION",
-      "sourceId": "structural_invariant",
-      "publicationDate": "2026-08-02",
-      "confidence": 0.5,
-      "claims": "electrochemical storage requires ion transport between electrodes",
-      "supports": [
-        "CAP_ELECTROCHEMICAL_ENERGY_STORAGE -> REQUIRES -> CAP_ION_TRANSPORT"
-      ]
+      "edgeId": "EDGE-001",
+      "sourcePatent": "US20240194939A1",
+      "cpcCode": "H01M 50/00",
+      "sourceNode": "PAT_US20240194939A1",
+      "targetNode": "CAP_CELL_ASSEMBLY",
+      "relationship": "EMBODIED_IN",
+      "justification": "Patent US20240194939A1 has CPC code H01M 50/00, which maps to CELL_ASSEMBLY per CPC_MAPPING.md. CPC codes are assigned by USPTO patent examiners and are externally validated.",
+      "reviewer": "coder_agent_001 / 2026-08-02",
+      "confidence": 1.0
     },
     {
-      "id": "E-0002",
-      "sourceType": "REGULATION",
-      "sourceId": "structural_invariant",
-      "publicationDate": "2026-08-02",
-      "confidence": 0.5,
-      "claims": "most Li-ion storage uses intercalation",
-      "supports": [
-        "CAP_ELECTROCHEMICAL_ENERGY_STORAGE -> REQUIRES -> CAP_INTERCALATION"
-      ]
+      "edgeId": "EDGE-002",
+      "sourcePatent": "US20240194939A1",
+      "cpcCode": "H01M 10/0525",
+      "sourceNode": "PAT_US20240194939A1",
+      "targetNode": "CAP_ELECTROCHEMICAL_ENERGY_STORAGE",
+      "relationship": "EMBODIED_IN",
+      "justification": "Patent US20240194939A1 has CPC code H01M 10/0525, which maps to ELECTROCHEMICAL_ENERGY_STORAGE per CPC_MAPPING.md. CPC codes are assigned by USPTO patent examiners and are externally validated.",
+      "reviewer": "coder_agent_001 / 2026-08-02",
+      "confidence": 1.0
     },
     {
-      "id": "E-0003",
-      "sourceType": "REGULATION",
-      "sourceId": "structural_invariant",
-      "publicationDate": "2026-08-02",
-      "confidence": 0.5,
-      "claims": "fast charging generates heat that must be managed",
-      "supports": [
-        "CAP_FAST_CHARGING -> REQUIRES -> CAP_THERMAL_MANAGEMENT"
-      ]
+      "edgeId": "EDGE-003",
+      "sourcePatent": "US20240194939A1",
+      "cpcCode": "H01M 4/00",
+      "sourceNode": "PAT_US20240194939A1",
+      "targetNode": "CAP_ELECTRODE_COATING",
+      "relationship": "EMBODIED_IN",
+      "justification": "Patent US20240194939A1 has CPC code H01M 4/00, which maps to ELECTRODE_COATING per CPC_MAPPING.md. CPC codes are assigned by USPTO patent examiners and are externally validated.",
+      "reviewer": "coder_agent_001 / 2026-08-02",
+      "confidence": 1.0
     },
     {
-      "id": "E-0004",
-      "sourceType": "REGULATION",
-      "sourceId": "structural_invariant",
-      "publicationDate": "2026-08-02",
-      "confidence": 0.5,
-      "claims": "fast charging requires fast ion transport",
-      "supports": [
-        "CAP_FAST_CHARGING -> REQUIRES -> CAP_ION_TRANSPORT"
-      ]
+      "edgeId": "EDGE-004",
+      "sourcePatent": "US20240194939A1",
+      "cpcCode": "H01M 4/00",
+      "sourceNode": "PAT_US20240194939A1",
+      "targetNode": "CAP_ELECTRON_COLLECTION",
+      "relationship": "EMBODIED_IN",
+      "justification": "Patent US20240194939A1 has CPC code H01M 4/00, which maps to ELECTRON_COLLECTION per CPC_MAPPING.md. CPC codes are assigned by USPTO patent examiners and are externally validated.",
+      "reviewer": "coder_agent_001 / 2026-08-02",
+      "confidence": 1.0
     },
     {
-      "id": "E-0005",
-      "sourceType": "REGULATION",
-      "sourceId": "structural_invariant",
-      "publicationDate": "2026-08-02",
-      "confidence": 0.5,
-      "claims": "high power requires fast ion transport",
-      "supports": [
-        "CAP_HIGH_POWER_DISCHARGE -> REQUIRES -> CAP_ION_TRANSPORT"
-      ]
+      "edgeId": "EDGE-005",
+      "sourcePatent": "US20240194939A1",
+      "cpcCode": "H01M 4/00",
+      "sourceNode": "PAT_US20240194939A1",
+      "targetNode": "CAP_INTERCALATION",
+      "relationship": "EMBODIED_IN",
+      "justification": "Patent US20240194939A1 has CPC code H01M 4/00, which maps to INTERCALATION per CPC_MAPPING.md. CPC codes are assigned by USPTO patent examiners and are externally validated.",
+      "reviewer": "coder_agent_001 / 2026-08-02",
+      "confidence": 1.0
     },
     {
-      "id": "E-0006",
-      "sourceType": "REGULATION",
-      "sourceId": "structural_invariant",
-      "publicationDate": "2026-08-02",
-      "confidence": 0.5,
-      "claims": "high power requires efficient electron collection",
-      "supports": [
-        "CAP_HIGH_POWER_DISCHARGE -> REQUIRES -> CAP_ELECTRON_COLLECTION"
-      ]
+      "edgeId": "EDGE-006",
+      "sourcePatent": "US20240194939A1",
+      "cpcCode": "H01M 10/0562",
+      "sourceNode": "PAT_US20240194939A1",
+      "targetNode": "CAP_ION_TRANSPORT",
+      "relationship": "EMBODIED_IN",
+      "justification": "Patent US20240194939A1 has CPC code H01M 10/0562, which maps to ION_TRANSPORT per CPC_MAPPING.md. CPC codes are assigned by USPTO patent examiners and are externally validated.",
+      "reviewer": "coder_agent_001 / 2026-08-02",
+      "confidence": 1.0
     },
     {
-      "id": "E-0007",
-      "sourceType": "REGULATION",
-      "sourceId": "structural_invariant",
-      "publicationDate": "2026-08-02",
-      "confidence": 0.5,
-      "claims": "selective transport is a specialization of ion transport",
-      "supports": [
-        "CAP_SELECTIVE_ION_TRANSPORT -> REQUIRES -> CAP_ION_TRANSPORT"
-      ]
+      "edgeId": "EDGE-007",
+      "sourcePatent": "US20240194939A1",
+      "cpcCode": "H01M 50/00",
+      "sourceNode": "PAT_US20240194939A1",
+      "targetNode": "CAP_THERMAL_MANAGEMENT",
+      "relationship": "EMBODIED_IN",
+      "justification": "Patent US20240194939A1 has CPC code H01M 50/00, which maps to THERMAL_MANAGEMENT per CPC_MAPPING.md. CPC codes are assigned by USPTO patent examiners and are externally validated.",
+      "reviewer": "coder_agent_001 / 2026-08-02",
+      "confidence": 1.0
     },
     {
-      "id": "E-0008",
-      "sourceType": "REGULATION",
-      "sourceId": "structural_invariant",
-      "publicationDate": "2026-08-02",
-      "confidence": 0.5,
-      "claims": "balancing requires knowing the state of each cell",
-      "supports": [
-        "CAP_CELL_BALANCING -> REQUIRES -> CAP_STATE_OF_CHARGE_MONITORING"
-      ]
+      "edgeId": "EDGE-008",
+      "sourcePatent": "US12489120B2",
+      "cpcCode": "H01M 2300/00",
+      "sourceNode": "PAT_US12489120B2",
+      "targetNode": "CAP_ELECTROCHEMICAL_ENERGY_STORAGE",
+      "relationship": "EMBODIED_IN",
+      "justification": "Patent US12489120B2 has CPC code H01M 2300/00, which maps to ELECTROCHEMICAL_ENERGY_STORAGE per CPC_MAPPING.md. CPC codes are assigned by USPTO patent examiners and are externally validated.",
+      "reviewer": "coder_agent_001 / 2026-08-02",
+      "confidence": 1.0
     },
     {
-      "id": "E-0009",
-      "sourceType": "REGULATION",
-      "sourceId": "structural_invariant",
-      "publicationDate": "2026-08-02",
-      "confidence": 0.5,
-      "claims": "safety cutoffs require monitoring",
-      "supports": [
-        "CAP_SAFETY_PROTECTION -> REQUIRES -> CAP_STATE_OF_CHARGE_MONITORING"
-      ]
+      "edgeId": "EDGE-009",
+      "sourcePatent": "US12489120B2",
+      "cpcCode": "H01M 4/86",
+      "sourceNode": "PAT_US12489120B2",
+      "targetNode": "CAP_ELECTRON_COLLECTION",
+      "relationship": "EMBODIED_IN",
+      "justification": "Patent US12489120B2 has CPC code H01M 4/86, which maps to ELECTRON_COLLECTION per CPC_MAPPING.md. CPC codes are assigned by USPTO patent examiners and are externally validated.",
+      "reviewer": "coder_agent_001 / 2026-08-02",
+      "confidence": 1.0
     },
     {
-      "id": "E-0010",
-      "sourceType": "REGULATION",
-      "sourceId": "structural_invariant",
-      "publicationDate": "2026-08-02",
-      "confidence": 0.5,
-      "claims": "sintering enables solid electrolyte ion transport",
-      "supports": [
-        "CAP_SOLID_ELECTROLYTE_SINTERING -> ENABLES -> CAP_ION_TRANSPORT"
-      ]
+      "edgeId": "EDGE-010",
+      "sourcePatent": "US20240021793A1",
+      "cpcCode": "H01M 50/00",
+      "sourceNode": "PAT_US20240021793A1",
+      "targetNode": "CAP_CELL_ASSEMBLY",
+      "relationship": "EMBODIED_IN",
+      "justification": "Patent US20240021793A1 has CPC code H01M 50/00, which maps to CELL_ASSEMBLY per CPC_MAPPING.md. CPC codes are assigned by USPTO patent examiners and are externally validated.",
+      "reviewer": "coder_agent_001 / 2026-08-02",
+      "confidence": 1.0
     },
     {
-      "id": "E-0011",
-      "sourceType": "REGULATION",
-      "sourceId": "structural_invariant",
-      "publicationDate": "2026-08-02",
-      "confidence": 0.5,
-      "claims": "coating enables intercalation electrodes",
-      "supports": [
-        "CAP_ELECTRODE_COATING -> ENABLES -> CAP_INTERCALATION"
-      ]
+      "edgeId": "EDGE-011",
+      "sourcePatent": "US20240021793A1",
+      "cpcCode": "H01M 10/0525",
+      "sourceNode": "PAT_US20240021793A1",
+      "targetNode": "CAP_ELECTROCHEMICAL_ENERGY_STORAGE",
+      "relationship": "EMBODIED_IN",
+      "justification": "Patent US20240021793A1 has CPC code H01M 10/0525, which maps to ELECTROCHEMICAL_ENERGY_STORAGE per CPC_MAPPING.md. CPC codes are assigned by USPTO patent examiners and are externally validated.",
+      "reviewer": "coder_agent_001 / 2026-08-02",
+      "confidence": 1.0
     },
     {
-      "id": "E-0012",
-      "sourceType": "REGULATION",
-      "sourceId": "structural_invariant",
-      "publicationDate": "2026-08-02",
-      "confidence": 0.5,
-      "claims": "assembly requires coated electrodes",
-      "supports": [
-        "CAP_CELL_ASSEMBLY -> REQUIRES -> CAP_ELECTRODE_COATING"
-      ]
+      "edgeId": "EDGE-012",
+      "sourcePatent": "US20240021793A1",
+      "cpcCode": "H01M 10/44",
+      "sourceNode": "PAT_US20240021793A1",
+      "targetNode": "CAP_FAST_CHARGING",
+      "relationship": "EMBODIED_IN",
+      "justification": "Patent US20240021793A1 has CPC code H01M 10/44, which maps to FAST_CHARGING per CPC_MAPPING.md. CPC codes are assigned by USPTO patent examiners and are externally validated.",
+      "reviewer": "coder_agent_001 / 2026-08-02",
+      "confidence": 1.0
     },
     {
-      "id": "E-0013",
-      "sourceType": "REGULATION",
-      "sourceId": "structural_invariant",
-      "publicationDate": "2026-08-02",
-      "confidence": 0.5,
-      "claims": "assembly requires separator",
-      "supports": [
-        "CAP_CELL_ASSEMBLY -> REQUIRES -> CAP_SELECTIVE_ION_TRANSPORT"
-      ]
+      "edgeId": "EDGE-013",
+      "sourcePatent": "US20240021793A1",
+      "cpcCode": "H01M 10/0525",
+      "sourceNode": "PAT_US20240021793A1",
+      "targetNode": "CAP_ION_TRANSPORT",
+      "relationship": "EMBODIED_IN",
+      "justification": "Patent US20240021793A1 has CPC code H01M 10/0525, which maps to ION_TRANSPORT per CPC_MAPPING.md. CPC codes are assigned by USPTO patent examiners and are externally validated.",
+      "reviewer": "coder_agent_001 / 2026-08-02",
+      "confidence": 1.0
     },
     {
-      "id": "E-0014",
-      "sourceType": "REGULATION",
-      "sourceId": "structural_invariant",
-      "publicationDate": "2026-08-02",
-      "confidence": 0.5,
-      "claims": "recycling enables sustainable storage",
-      "supports": [
-        "CAP_RECYCLING -> ENABLES -> CAP_ELECTROCHEMICAL_ENERGY_STORAGE"
-      ]
+      "edgeId": "EDGE-014",
+      "sourcePatent": "US20240021793A1",
+      "cpcCode": "H01M 50/00",
+      "sourceNode": "PAT_US20240021793A1",
+      "targetNode": "CAP_THERMAL_MANAGEMENT",
+      "relationship": "EMBODIED_IN",
+      "justification": "Patent US20240021793A1 has CPC code H01M 50/00, which maps to THERMAL_MANAGEMENT per CPC_MAPPING.md. CPC codes are assigned by USPTO patent examiners and are externally validated.",
+      "reviewer": "coder_agent_001 / 2026-08-02",
+      "confidence": 1.0
     },
     {
-      "id": "E-0015",
-      "sourceType": "REGULATION",
-      "sourceId": "structural_invariant",
-      "publicationDate": "2026-08-02",
-      "confidence": 0.5,
-      "claims": "grid connection enables grid-scale storage",
-      "supports": [
-        "CAP_GRID_INTERCONNECTION -> ENABLES -> CAP_ELECTROCHEMICAL_ENERGY_STORAGE"
-      ]
+      "edgeId": "EDGE-015",
+      "sourcePatent": "WO2012068732A1",
+      "cpcCode": "H01M 50/00",
+      "sourceNode": "PAT_WO2012068732A1",
+      "targetNode": "CAP_CELL_ASSEMBLY",
+      "relationship": "EMBODIED_IN",
+      "justification": "Patent WO2012068732A1 has CPC code H01M 50/00, which maps to CELL_ASSEMBLY per CPC_MAPPING.md. CPC codes are assigned by USPTO patent examiners and are externally validated.",
+      "reviewer": "coder_agent_001 / 2026-08-02",
+      "confidence": 1.0
     },
     {
-      "id": "E-0016",
-      "sourceType": "REGULATION",
-      "sourceId": "structural_invariant",
-      "publicationDate": "2026-08-02",
-      "confidence": 0.5,
-      "claims": "thermal limits power discharge rate",
-      "supports": [
-        "CAP_THERMAL_MANAGEMENT -> CONSTRAINS -> CAP_HIGH_POWER_DISCHARGE"
-      ]
+      "edgeId": "EDGE-016",
+      "sourcePatent": "WO2012068732A1",
+      "cpcCode": "H01M 10/42",
+      "sourceNode": "PAT_WO2012068732A1",
+      "targetNode": "CAP_ELECTROCHEMICAL_ENERGY_STORAGE",
+      "relationship": "EMBODIED_IN",
+      "justification": "Patent WO2012068732A1 has CPC code H01M 10/42, which maps to ELECTROCHEMICAL_ENERGY_STORAGE per CPC_MAPPING.md. CPC codes are assigned by USPTO patent examiners and are externally validated.",
+      "reviewer": "coder_agent_001 / 2026-08-02",
+      "confidence": 1.0
     },
     {
-      "id": "E-0017",
-      "sourceType": "REGULATION",
-      "sourceId": "structural_invariant",
-      "publicationDate": "2026-08-02",
-      "confidence": 0.5,
-      "claims": "conversion can replace intercalation in some chemistries",
-      "supports": [
-        "CAP_CONVERSION_REACTION -> SUBSTITUTES_FOR -> CAP_INTERCALATION"
-      ]
+      "edgeId": "EDGE-017",
+      "sourcePatent": "WO2012068732A1",
+      "cpcCode": "H01M 10/48",
+      "sourceNode": "PAT_WO2012068732A1",
+      "targetNode": "CAP_SAFETY_PROTECTION",
+      "relationship": "EMBODIED_IN",
+      "justification": "Patent WO2012068732A1 has CPC code H01M 10/48, which maps to SAFETY_PROTECTION per CPC_MAPPING.md. CPC codes are assigned by USPTO patent examiners and are externally validated.",
+      "reviewer": "coder_agent_001 / 2026-08-02",
+      "confidence": 1.0
     },
     {
-      "id": "E-0018",
-      "sourceType": "PATENT",
-      "sourceId": "US10686186B2",
-      "publicationDate": "2026-08-02",
-      "confidence": 1.0,
-      "claims": "Claims ( 6 ) The invention claimed is: 1. A solid-state lithium-sulfur battery positive electrode material comprising sulfur, a conductive material, a binder, and an ionic liquid or a solvated ionic liquid, wherein a percentage of each component in the positive electrode material is 45 to 60% by mass, 20 to 35% by mass, 0.1 to 10% by mass, and 10 to 20% by mass for the sulfur, the conductive material, the binder, and the ionic liquid or the solvated ionic liquid, respectively. 2. The solid-state",
-      "supports": [
-        "CAP_CELL_ASSEMBLY",
-        "CAP_CONVERSION_REACTION",
-        "CAP_ELECTROCHEMICAL_ENERGY_STORAGE",
-        "CAP_ELECTRODE_COATING",
-        "CAP_ELECTRON_COLLECTION",
-        "CAP_INTERCALATION",
-        "CAP_ION_TRANSPORT",
-        "CAP_LONG_CYCLE_LIFE_STORAGE",
-        "CAP_RECYCLING",
-        "CAP_SOLID_ELECTROLYTE_SINTERING",
-        "CPC:H01G 11/00",
-        "CPC:H01G 11/54",
-        "CPC:H01G 11/56",
-        "CPC:H01M 10/00",
-        "CPC:H01M 10/05",
-        "CPC:H01M 10/052",
-        "CPC:H01M 10/056",
-        "CPC:H01M 10/0561",
-        "CPC:H01M 10/0562",
-        "CPC:H01M 10/058",
-        "CPC:H01M 10/0585",
-        "CPC:H01M 2004/026",
-        "CPC:H01M 2004/028",
-        "CPC:H01M 2220/00",
-        "CPC:H01M 2220/20",
-        "CPC:H01M 2300/00",
-        "CPC:H01M 2300/0017",
-        "CPC:H01M 2300/0025",
-        "CPC:H01M 2300/0045",
-        "CPC:H01M 2300/0065",
-        "CPC:H01M 2300/0068",
-        "CPC:H01M 2300/0071",
-        "CPC:H01M 4/00",
-        "CPC:H01M 4/02",
-        "CPC:H01M 4/04",
-        "CPC:H01M 4/0402",
-        "CPC:H01M 4/0407",
-        "CPC:H01M 4/13",
-        "CPC:H01M 4/139",
-        "CPC:H01M 4/36",
-        "CPC:H01M 4/362",
-        "CPC:H01M 4/38",
-        "CPC:H01M 4/381",
-        "CPC:H01M 4/382",
-        "CPC:H01M 4/62",
-        "CPC:H01M 4/621",
-        "CPC:H01M 4/622",
-        "CPC:H01M 4/623",
-        "CPC:H01M 4/624",
-        "CPC:H01M 4/625",
-        "CPC:Y02E 60/00",
-        "CPC:Y02E 60/10",
-        "CPC:Y02P 70/00",
-        "CPC:Y02P 70/50"
-      ]
+      "edgeId": "EDGE-018",
+      "sourcePatent": "WO2012068732A1",
+      "cpcCode": "H01M 10/48",
+      "sourceNode": "PAT_WO2012068732A1",
+      "targetNode": "CAP_STATE_OF_CHARGE_MONITORING",
+      "relationship": "EMBODIED_IN",
+      "justification": "Patent WO2012068732A1 has CPC code H01M 10/48, which maps to STATE_OF_CHARGE_MONITORING per CPC_MAPPING.md. CPC codes are assigned by USPTO patent examiners and are externally validated.",
+      "reviewer": "coder_agent_001 / 2026-08-02",
+      "confidence": 1.0
     },
     {
-      "id": "E-0019",
-      "sourceType": "PATENT",
-      "sourceId": "US12489120B2",
-      "publicationDate": "2026-08-02",
-      "confidence": 1.0,
-      "claims": "Claims ( 10 ) The invention claimed is: 1 . A redox flow battery, comprising: a first electrolyte storage, a second electrolyte storage, and an electrochemical cell connected to said first and second electrolyte storages, wherein said electrochemical cell comprises a first half-cell and a second half-cell, wherein said first half-cell comprises a cathode, wherein said second half-cell comprises an anode, wherein said first and second half-cells are separated from each other by an ion exchange me",
-      "supports": [
-        "CAP_CONVERSION_REACTION",
-        "CAP_ELECTROCHEMICAL_ENERGY_STORAGE",
-        "CAP_ELECTRON_COLLECTION",
-        "CAP_INTERCALATION",
-        "CAP_RECYCLING",
-        "CPC:H01M 2300/00",
-        "CPC:H01M 2300/0002",
-        "CPC:H01M 2300/0014",
-        "CPC:H01M 4/00",
-        "CPC:H01M 4/86",
-        "CPC:H01M 4/90",
-        "CPC:H01M 4/9008",
-        "CPC:H01M 4/96",
-        "CPC:H01M 8/00",
-        "CPC:H01M 8/18",
-        "CPC:H01M 8/184",
-        "CPC:H01M 8/188",
-        "CPC:Y02E 60/00",
-        "CPC:Y02E 60/30",
-        "CPC:Y02E 60/50"
-      ]
+      "edgeId": "EDGE-019",
+      "sourcePatent": "WO2012068732A1",
+      "cpcCode": "H01M 50/00",
+      "sourceNode": "PAT_WO2012068732A1",
+      "targetNode": "CAP_THERMAL_MANAGEMENT",
+      "relationship": "EMBODIED_IN",
+      "justification": "Patent WO2012068732A1 has CPC code H01M 50/00, which maps to THERMAL_MANAGEMENT per CPC_MAPPING.md. CPC codes are assigned by USPTO patent examiners and are externally validated.",
+      "reviewer": "coder_agent_001 / 2026-08-02",
+      "confidence": 1.0
     },
     {
-      "id": "E-0020",
-      "sourceType": "PATENT",
-      "sourceId": "US20100273062A1",
-      "publicationDate": "2026-08-02",
-      "confidence": 1.0,
-      "claims": "claims abstract description 149 239000000463 material Substances 0.000 claims abstract description 145 239000007774 positive electrode material Substances 0.000 claims abstract description 116 238000004132 cross linking Methods 0.000 claims abstract description 85 229910052798 chalcogen Inorganic materials 0.000 claims abstract description 38 150000001787 chalcogens Chemical class 0.000 claims abstract description 38 239000007773 negative electrode material Substances 0.000 claims abstract descr",
-      "supports": [
-        "CAP_CONVERSION_REACTION",
-        "CAP_ELECTROCHEMICAL_ENERGY_STORAGE",
-        "CAP_ELECTRON_COLLECTION",
-        "CAP_INTERCALATION",
-        "CAP_ION_TRANSPORT",
-        "CAP_LONG_CYCLE_LIFE_STORAGE",
-        "CAP_RECYCLING",
-        "CAP_SOLID_ELECTROLYTE_SINTERING",
-        "CPC:H01M 10/00",
-        "CPC:H01M 10/05",
-        "CPC:H01M 10/052",
-        "CPC:H01M 10/056",
-        "CPC:H01M 10/0561",
-        "CPC:H01M 10/0562",
-        "CPC:H01M 2300/00",
-        "CPC:H01M 2300/0017",
-        "CPC:H01M 2300/0065",
-        "CPC:H01M 2300/0068",
-        "CPC:H01M 4/00",
-        "CPC:H01M 4/02",
-        "CPC:H01M 4/13",
-        "CPC:H01M 4/131",
-        "CPC:H01M 4/133",
-        "CPC:H01M 4/134",
-        "CPC:H01M 4/36",
-        "CPC:H01M 4/362",
-        "CPC:H01M 4/366",
-        "CPC:H01M 6/00",
-        "CPC:H01M 6/14",
-        "CPC:H01M 6/18",
-        "CPC:Y02E 60/00",
-        "CPC:Y02E 60/10"
-      ]
+      "edgeId": "EDGE-020",
+      "sourcePatent": "WO2015119843A1",
+      "cpcCode": "H01M 10/0525",
+      "sourceNode": "PAT_WO2015119843A1",
+      "targetNode": "CAP_ELECTROCHEMICAL_ENERGY_STORAGE",
+      "relationship": "EMBODIED_IN",
+      "justification": "Patent WO2015119843A1 has CPC code H01M 10/0525, which maps to ELECTROCHEMICAL_ENERGY_STORAGE per CPC_MAPPING.md. CPC codes are assigned by USPTO patent examiners and are externally validated.",
+      "reviewer": "coder_agent_001 / 2026-08-02",
+      "confidence": 1.0
     },
     {
-      "id": "E-0021",
-      "sourceType": "PATENT",
-      "sourceId": "US20160204466A1",
-      "publicationDate": "2026-08-02",
-      "confidence": 1.0,
-      "claims": "Claims ( 16 ) 1 . A solid-state battery comprising: a positive-electrode layer; a negative-electrode layer; and a lithium-ion-conducting solid electrolyte layer disposed between the positive-electrode layer and the negative-electrode layer, wherein the positive-electrode layer contains a positive-electrode active material and a complex hydride solid electrolyte, the positive-electrode active material is a sulfur-based electrode active material, and the solid electrolyte layer contains a complex",
-      "supports": [
-        "CAP_CONVERSION_REACTION",
-        "CAP_ELECTROCHEMICAL_ENERGY_STORAGE",
-        "CAP_ELECTRODE_COATING",
-        "CAP_ELECTRON_COLLECTION",
-        "CAP_INTERCALATION",
-        "CAP_ION_TRANSPORT",
-        "CAP_LONG_CYCLE_LIFE_STORAGE",
-        "CAP_RECYCLING",
-        "CAP_SOLID_ELECTROLYTE_SINTERING",
-        "CPC:H01M 10/00",
-        "CPC:H01M 10/05",
-        "CPC:H01M 10/052",
-        "CPC:H01M 10/0525",
-        "CPC:H01M 10/056",
-        "CPC:H01M 10/0561",
-        "CPC:H01M 10/0562",
-        "CPC:H01M 2220/00",
-        "CPC:H01M 2220/20",
-        "CPC:H01M 2220/30",
-        "CPC:H01M 2300/00",
-        "CPC:H01M 2300/0017",
-        "CPC:H01M 2300/0065",
-        "CPC:H01M 2300/0068",
-        "CPC:H01M 4/00",
-        "CPC:H01M 4/02",
-        "CPC:H01M 4/04",
-        "CPC:H01M 4/0402",
-        "CPC:H01M 4/0404",
-        "CPC:H01M 4/0471",
-        "CPC:H01M 4/13",
-        "CPC:H01M 4/136",
-        "CPC:H01M 4/137",
-        "CPC:H01M 4/139",
-        "CPC:H01M 4/1397",
-        "CPC:H01M 4/1399",
-        "CPC:H01M 4/36",
-        "CPC:H01M 4/362",
-        "CPC:H01M 4/364",
-        "CPC:H01M 4/38",
-        "CPC:H01M 4/58",
-        "CPC:H01M 4/581",
-        "CPC:H01M 4/5815",
-        "CPC:H01M 4/583",
-        "CPC:H01M 4/587",
-        "CPC:H01M 4/60",
-        "CPC:H01M 4/602",
-        "CPC:H01M 4/604",
-        "CPC:H01M 4/62",
-        "CPC:Y02E 60/00",
-        "CPC:Y02E 60/10",
-        "CPC:Y02T 10/00",
-        "CPC:Y02T 10/60",
-        "CPC:Y02T 10/70"
-      ]
+      "edgeId": "EDGE-021",
+      "sourcePatent": "WO2015119843A1",
+      "cpcCode": "H01M 4/00",
+      "sourceNode": "PAT_WO2015119843A1",
+      "targetNode": "CAP_ELECTRODE_COATING",
+      "relationship": "EMBODIED_IN",
+      "justification": "Patent WO2015119843A1 has CPC code H01M 4/00, which maps to ELECTRODE_COATING per CPC_MAPPING.md. CPC codes are assigned by USPTO patent examiners and are externally validated.",
+      "reviewer": "coder_agent_001 / 2026-08-02",
+      "confidence": 1.0
     },
     {
-      "id": "E-0022",
-      "sourceType": "PATENT",
-      "sourceId": "US20160329594A1",
-      "publicationDate": "2026-08-02",
-      "confidence": 1.0,
-      "claims": "Claims ( 33 ) What is claimed is: 1 . A solid state battery comprising: an extruded, interconnected network of a first electrochemically active material forming a plurality of channels; an electrolyte coated onto surfaces of each of the plurality of channels and forming a plurality of coated channels; and a second electrochemically active material situated within each coated channel. 2 . The battery of claim 1 , wherein the first electrochemically active material is one of a cathode or anode and",
-      "supports": [
-        "CAP_CELL_ASSEMBLY",
-        "CAP_CONVERSION_REACTION",
-        "CAP_ELECTROCHEMICAL_ENERGY_STORAGE",
-        "CAP_ELECTRON_COLLECTION",
-        "CAP_INTERCALATION",
-        "CAP_ION_TRANSPORT",
-        "CAP_LONG_CYCLE_LIFE_STORAGE",
-        "CAP_SOLID_ELECTROLYTE_SINTERING",
-        "CPC:H01M 10/00",
-        "CPC:H01M 10/04",
-        "CPC:H01M 10/05",
-        "CPC:H01M 10/052",
-        "CPC:H01M 10/056",
-        "CPC:H01M 10/0561",
-        "CPC:H01M 10/0562",
-        "CPC:H01M 10/058",
-        "CPC:H01M 10/60",
-        "CPC:H01M 10/61",
-        "CPC:H01M 10/613",
-        "CPC:H01M 10/65",
-        "CPC:H01M 10/654",
-        "CPC:H01M 10/655",
-        "CPC:H01M 10/6556",
-        "CPC:H01M 10/6557",
-        "CPC:H01M 10/656",
-        "CPC:H01M 10/6561",
-        "CPC:H01M 2004/025",
-        "CPC:H01M 4/00",
-        "CPC:H01M 4/02",
-        "CPC:H01M 4/64",
-        "CPC:H01M 4/66",
-        "CPC:H01M 4/661",
-        "CPC:H01M 4/70",
-        "CPC:H01M 4/75",
-        "CPC:Y02E 60/00",
-        "CPC:Y02E 60/10",
-        "CPC:Y02P 70/00",
-        "CPC:Y02P 70/50"
-      ]
+      "edgeId": "EDGE-022",
+      "sourcePatent": "WO2015119843A1",
+      "cpcCode": "H01M 4/00",
+      "sourceNode": "PAT_WO2015119843A1",
+      "targetNode": "CAP_ELECTRON_COLLECTION",
+      "relationship": "EMBODIED_IN",
+      "justification": "Patent WO2015119843A1 has CPC code H01M 4/00, which maps to ELECTRON_COLLECTION per CPC_MAPPING.md. CPC codes are assigned by USPTO patent examiners and are externally validated.",
+      "reviewer": "coder_agent_001 / 2026-08-02",
+      "confidence": 1.0
     },
     {
-      "id": "E-0023",
-      "sourceType": "PATENT",
-      "sourceId": "US20190051907A1",
-      "publicationDate": "2026-08-02",
-      "confidence": 1.0,
-      "claims": "claims the benefit of U.S. Provisional Application No. 62/544,508, filed Aug. 11, 2017, the contents of which are incorporated herein by reference in their entirety. BACKGROUND For renewable energy resources such as wind and solar to be competitive with traditional fossil fuels, large-scale energy storage systems should be developed to mitigate their intrinsic intermittency. The cost (US dollar per kilowatt-hour ($ kWh \u22121 )) and long-term lifetime are the utmost figures of merit for large-scale",
-      "supports": [
-        "CAP_CONVERSION_REACTION",
-        "CAP_ELECTROCHEMICAL_ENERGY_STORAGE",
-        "CAP_ELECTRON_COLLECTION",
-        "CAP_INTERCALATION",
-        "CAP_RECYCLING",
-        "CPC:H01M 12/00",
-        "CPC:H01M 12/08",
-        "CPC:H01M 2004/026",
-        "CPC:H01M 2004/028",
-        "CPC:H01M 2004/8678",
-        "CPC:H01M 2004/8684",
-        "CPC:H01M 2300/00",
-        "CPC:H01M 2300/0002",
-        "CPC:H01M 2300/0014",
-        "CPC:H01M 4/00",
-        "CPC:H01M 4/02",
-        "CPC:H01M 4/13",
-        "CPC:H01M 4/134",
-        "CPC:H01M 4/36",
-        "CPC:H01M 4/38",
-        "CPC:H01M 4/64",
-        "CPC:H01M 4/70",
-        "CPC:H01M 4/80",
-        "CPC:H01M 4/808",
-        "CPC:H01M 4/86",
-        "CPC:H01M 4/8605",
-        "CPC:H01M 4/8615",
-        "CPC:H01M 4/8621",
-        "CPC:H01M 4/88",
-        "CPC:H01M 4/8803",
-        "CPC:H01M 4/8807",
-        "CPC:H01M 4/8825",
-        "CPC:H01M 4/8853",
-        "CPC:H01M 4/90",
-        "CPC:H01M 4/9041",
-        "CPC:H01M 4/98",
-        "CPC:H01M 8/00",
-        "CPC:H01M 8/04",
-        "CPC:H01M 8/04082",
-        "CPC:H01M 8/04089",
-        "CPC:H01M 8/04201"
-      ]
+      "edgeId": "EDGE-023",
+      "sourcePatent": "WO2015119843A1",
+      "cpcCode": "H01M 4/00",
+      "sourceNode": "PAT_WO2015119843A1",
+      "targetNode": "CAP_INTERCALATION",
+      "relationship": "EMBODIED_IN",
+      "justification": "Patent WO2015119843A1 has CPC code H01M 4/00, which maps to INTERCALATION per CPC_MAPPING.md. CPC codes are assigned by USPTO patent examiners and are externally validated.",
+      "reviewer": "coder_agent_001 / 2026-08-02",
+      "confidence": 1.0
     },
     {
-      "id": "E-0024",
-      "sourceType": "PATENT",
-      "sourceId": "US20230011919A1",
-      "publicationDate": "2026-08-02",
-      "confidence": 1.0,
-      "claims": "claims of the present disclosure and have similar operation and effect thereto. Li 2 S, P 2 S 5 and LiI were prepared. Li 2 S and P 2 S 5 were weighed so as to be 75Li 2 S.25P 2 S 5 in the molar ratio (Li 3 PS 4 , ortho composition). LiI was weighed so that the ratio of LiI became 15 mol %. This container was installed to a planetary ball milling machine (P7 from Fritsch), and mechanical milling (revolution speed: 500 rpm) was conducted for 40 hours. After that, the product was dried at 100\u00b0 C.",
-      "supports": [
-        "CAP_CELL_ASSEMBLY",
-        "CAP_CONVERSION_REACTION",
-        "CAP_ELECTROCHEMICAL_ENERGY_STORAGE",
-        "CAP_ELECTRON_COLLECTION",
-        "CAP_INTERCALATION",
-        "CAP_ION_TRANSPORT",
-        "CAP_LONG_CYCLE_LIFE_STORAGE",
-        "CAP_RECYCLING",
-        "CAP_SELECTIVE_ION_TRANSPORT",
-        "CAP_SOLID_ELECTROLYTE_SINTERING",
-        "CAP_THERMAL_MANAGEMENT",
-        "CPC:H01M 10/00",
-        "CPC:H01M 10/05",
-        "CPC:H01M 10/052",
-        "CPC:H01M 10/056",
-        "CPC:H01M 10/0561",
-        "CPC:H01M 10/0562",
-        "CPC:H01M 10/0564",
-        "CPC:H01M 10/0565",
-        "CPC:H01M 10/058",
-        "CPC:H01M 10/0585",
-        "CPC:H01M 10/42",
-        "CPC:H01M 10/4235",
-        "CPC:H01M 2300/00",
-        "CPC:H01M 2300/0017",
-        "CPC:H01M 2300/0065",
-        "CPC:H01M 2300/0068",
-        "CPC:H01M 2300/0082",
-        "CPC:H01M 4/00",
-        "CPC:H01M 4/02",
-        "CPC:H01M 4/13",
-        "CPC:H01M 4/62",
-        "CPC:H01M 4/624",
-        "CPC:H01M 50/00",
-        "CPC:H01M 50/50",
-        "CPC:H01M 50/572",
-        "CPC:Y02E 60/00",
-        "CPC:Y02E 60/10",
-        "CPC:Y02P 70/00",
-        "CPC:Y02P 70/50"
-      ]
+      "edgeId": "EDGE-024",
+      "sourcePatent": "WO2015119843A1",
+      "cpcCode": "H01M 10/0525",
+      "sourceNode": "PAT_WO2015119843A1",
+      "targetNode": "CAP_ION_TRANSPORT",
+      "relationship": "EMBODIED_IN",
+      "justification": "Patent WO2015119843A1 has CPC code H01M 10/0525, which maps to ION_TRANSPORT per CPC_MAPPING.md. CPC codes are assigned by USPTO patent examiners and are externally validated.",
+      "reviewer": "coder_agent_001 / 2026-08-02",
+      "confidence": 1.0
     },
     {
-      "id": "E-0025",
-      "sourceType": "PATENT",
-      "sourceId": "US20240021793A1",
-      "publicationDate": "2026-08-02",
-      "confidence": 1.0,
-      "claims": "claims priority to Chinese Patent Application No. 202110320984.1, entitled \u201cLithium ion battery and powered vehicle\u201d filed with China National Intellectual Property Administration on Mar. 25, 2021, the entire contents of which are incorporated herein by reference. FIELD [0002] The present disclosure relates to the technical field of batteries, and specifically to a lithium ion battery and a powered vehicle. BACKGROUND [0003] Lithium ion batteries are a new generation of green high-energy batteri",
-      "supports": [
-        "CAP_CELL_ASSEMBLY",
-        "CAP_CONVERSION_REACTION",
-        "CAP_ELECTROCHEMICAL_ENERGY_STORAGE",
-        "CAP_ELECTRON_COLLECTION",
-        "CAP_FAST_CHARGING",
-        "CAP_INTERCALATION",
-        "CAP_ION_TRANSPORT",
-        "CAP_LONG_CYCLE_LIFE_STORAGE",
-        "CPC:H01M 10/00",
-        "CPC:H01M 10/05",
-        "CPC:H01M 10/052",
-        "CPC:H01M 10/0525",
-        "CPC:H01M 10/058",
-        "CPC:H01M 10/42",
-        "CPC:H01M 10/44",
-        "CPC:H01M 10/446",
-        "CPC:H01M 2004/021",
-        "CPC:H01M 2004/026",
-        "CPC:H01M 2004/028",
-        "CPC:H01M 2010/4292",
-        "CPC:H01M 2220/00",
-        "CPC:H01M 2220/20",
-        "CPC:H01M 4/00",
-        "CPC:H01M 4/02",
-        "CPC:H01M 4/13",
-        "CPC:H01M 4/131",
-        "CPC:H01M 4/133",
-        "CPC:H01M 4/136",
-        "CPC:H01M 4/36",
-        "CPC:H01M 4/362",
-        "CPC:H01M 4/364",
-        "CPC:H01M 4/48",
-        "CPC:H01M 4/485",
-        "CPC:H01M 4/50",
-        "CPC:H01M 4/505",
-        "CPC:H01M 4/52",
-        "CPC:H01M 4/525",
-        "CPC:H01M 4/58",
-        "CPC:H01M 4/5825",
-        "CPC:H01M 4/583",
-        "CPC:H01M 4/587",
-        "CPC:Y02E 60/00",
-        "CPC:Y02E 60/10"
-      ]
+      "edgeId": "EDGE-025",
+      "sourcePatent": "structural_invariant",
+      "cpcCode": "N/A (structural)",
+      "sourceNode": "CAP_ELECTROCHEMICAL_ENERGY_STORAGE",
+      "targetNode": "CAP_ION_TRANSPORT",
+      "relationship": "REQUIRES",
+      "justification": "Electrochemical storage requires ions to move between electrodes; without ion transport, the electrochemical reaction cannot occur. This is a physical necessity, not a convention.",
+      "reviewer": "coder_agent_001 / 2026-08-02",
+      "confidence": 0.5
     },
     {
-      "id": "E-0026",
-      "sourceType": "PATENT",
-      "sourceId": "US20240194939A1",
-      "publicationDate": "2026-08-02",
-      "confidence": 1.0,
-      "claims": "Claims ( 11 ) 1 . A method for manufacturing a bipolar-type all-solid-state battery, wherein the bipolar-type all-solid-state battery comprises an all-solid-state battery laminate and a resin layer covering a side surface of the all-solid-state battery laminate, wherein the all-solid-state battery laminate comprises at least one all-solid-state unit cell in which a positive electrode current collector layer, a positive electrode active material layer, a solid electrolyte layer, a negative electr",
-      "supports": [
-        "CAP_CELL_ASSEMBLY",
-        "CAP_CONVERSION_REACTION",
-        "CAP_ELECTROCHEMICAL_ENERGY_STORAGE",
-        "CAP_ELECTRON_COLLECTION",
-        "CAP_INTERCALATION",
-        "CAP_ION_TRANSPORT",
-        "CAP_LONG_CYCLE_LIFE_STORAGE",
-        "CAP_RECYCLING",
-        "CAP_SOLID_ELECTROLYTE_SINTERING",
-        "CAP_THERMAL_MANAGEMENT",
-        "CPC:B32B 11/00",
-        "CPC:B32B 15/00",
-        "CPC:B32B 15/16",
-        "CPC:B32B 15/18",
-        "CPC:B32B 15/20",
-        "CPC:B32B 2260/00",
-        "CPC:B32B 2260/02",
-        "CPC:B32B 2260/025",
-        "CPC:B32B 2260/04",
-        "CPC:B32B 2260/046",
-        "CPC:B32B 2260/048",
-        "CPC:B32B 2262/00",
-        "CPC:B32B 2262/10",
-        "CPC:B32B 2262/106",
-        "CPC:B32B 2264/00",
-        "CPC:B32B 2264/10",
-        "CPC:B32B 2264/102",
-        "CPC:B32B 2307/00",
-        "CPC:B32B 2307/50",
-        "CPC:B32B 2307/538",
-        "CPC:B32B 2457/00",
-        "CPC:B32B 2457/10",
-        "CPC:B32B 27/00",
-        "CPC:B32B 27/06",
-        "CPC:B32B 27/08",
-        "CPC:B32B 27/14",
-        "CPC:B32B 27/28",
-        "CPC:B32B 27/30",
-        "CPC:B32B 27/42",
-        "CPC:B32B 29/00",
-        "CPC:B32B 3/00",
-        "CPC:B32B 3/02",
-        "CPC:B32B 3/08",
-        "CPC:B32B 5/00",
-        "CPC:B32B 5/02",
-        "CPC:B32B 5/028",
-        "CPC:B32B 5/14",
-        "CPC:B32B 5/16",
-        "CPC:B32B 9/00",
-        "CPC:B32B 9/005",
-        "CPC:B32B 9/007",
-        "CPC:B32B 9/04",
-        "CPC:B32B 9/048",
-        "CPC:H01M 10/00",
-        "CPC:H01M 10/04",
-        "CPC:H01M 10/0413",
-        "CPC:H01M 10/0486",
-        "CPC:H01M 10/05",
-        "CPC:H01M 10/052",
-        "CPC:H01M 10/0525",
-        "CPC:H01M 10/056",
-        "CPC:H01M 10/0561",
-        "CPC:H01M 10/0562",
-        "CPC:H01M 10/058",
-        "CPC:H01M 10/0585",
-        "CPC:H01M 2004/021",
-        "CPC:H01M 2004/026",
-        "CPC:H01M 2004/027",
-        "CPC:H01M 2004/028",
-        "CPC:H01M 2220/00",
-        "CPC:H01M 2220/20",
-        "CPC:H01M 2300/00",
-        "CPC:H01M 2300/0017",
-        "CPC:H01M 2300/0065",
-        "CPC:H01M 4/00",
-        "CPC:H01M 4/02",
-        "CPC:H01M 4/13",
-        "CPC:H01M 4/131",
-        "CPC:H01M 4/134",
-        "CPC:H01M 4/36",
-        "CPC:H01M 4/38",
-        "CPC:H01M 4/386",
-        "CPC:H01M 4/387",
-        "CPC:H01M 4/48",
-        "CPC:H01M 4/50",
-        "CPC:H01M 4/505",
-        "CPC:H01M 4/62",
-        "CPC:H01M 4/621",
-        "CPC:H01M 4/64",
-        "CPC:H01M 4/66",
-        "CPC:H01M 4/661",
-        "CPC:H01M 50/00",
-        "CPC:H01M 50/10",
-        "CPC:H01M 50/116",
-        "CPC:H01M 50/121",
-        "CPC:H01M 50/183",
-        "CPC:H01M 50/186",
-        "CPC:H01M 50/19",
-        "CPC:H01M 50/193",
-        "CPC:Y02E 60/00",
-        "CPC:Y02E 60/10",
-        "CPC:Y02P 70/00",
-        "CPC:Y02P 70/50"
-      ]
+      "edgeId": "EDGE-026",
+      "sourcePatent": "structural_invariant",
+      "cpcCode": "N/A (structural)",
+      "sourceNode": "CAP_ELECTROCHEMICAL_ENERGY_STORAGE",
+      "targetNode": "CAP_INTERCALATION",
+      "relationship": "REQUIRES",
+      "justification": "Li-ion electrochemical storage (the dominant chemistry in this corpus) requires intercalation \u2014 ions must insert into and remove from electrode lattices. NOTE: this is specific to intercalation-based chemistries, not universal (conversion reactions exist). Confidence reduced to 0.5 accordingly.",
+      "reviewer": "coder_agent_001 / 2026-08-02",
+      "confidence": 0.5
     },
     {
-      "id": "E-0027",
-      "sourceType": "PATENT",
-      "sourceId": "US6514640B1",
-      "publicationDate": "2026-08-02",
-      "confidence": 1.0,
-      "claims": "claims. Landscapes Chemical Material Sciences ( AREA ) General Chemical Material Sciences ( AREA ) Chemical Kinetics Catalysis ( AREA ) Electrochemistry ( AREA ) Inorganic Chemistry ( AREA ) Engineering Computer Science ( AREA ) Materials Engineering ( AREA ) Manufacturing Machinery ( AREA ) Organic Chemistry ( AREA ) Physics Mathematics ( AREA ) Crystallography Structural Chemistry ( AREA ) Nonlinear Science ( AREA ) General Physics Mathematics ( AREA ) Optics Photonics ( AREA ) Battery Electro",
-      "supports": [
-        "CAP_CONVERSION_REACTION",
-        "CAP_ELECTROCHEMICAL_ENERGY_STORAGE",
-        "CAP_ELECTRODE_COATING",
-        "CAP_ELECTRON_COLLECTION",
-        "CAP_INTERCALATION",
-        "CAP_ION_TRANSPORT",
-        "CAP_LONG_CYCLE_LIFE_STORAGE",
-        "CAP_RECYCLING",
-        "CPC:C01B 25/00",
-        "CPC:C01B 25/16",
-        "CPC:C01B 25/26",
-        "CPC:C01B 25/45",
-        "CPC:G02F 1/00",
-        "CPC:G02F 1/01",
-        "CPC:G02F 1/15",
-        "CPC:G02F 1/153",
-        "CPC:G02F 1/155",
-        "CPC:H01M 10/00",
-        "CPC:H01M 10/05",
-        "CPC:H01M 10/052",
-        "CPC:H01M 10/0525",
-        "CPC:H01M 2004/026",
-        "CPC:H01M 2004/028",
-        "CPC:H01M 2300/00",
-        "CPC:H01M 2300/0017",
-        "CPC:H01M 2300/0065",
-        "CPC:H01M 2300/0068",
-        "CPC:H01M 4/00",
-        "CPC:H01M 4/02",
-        "CPC:H01M 4/04",
-        "CPC:H01M 4/049",
-        "CPC:H01M 4/13",
-        "CPC:H01M 4/136",
-        "CPC:H01M 4/139",
-        "CPC:H01M 4/1397",
-        "CPC:H01M 4/36",
-        "CPC:H01M 4/48",
-        "CPC:H01M 4/485",
-        "CPC:H01M 4/50",
-        "CPC:H01M 4/505",
-        "CPC:H01M 4/52",
-        "CPC:H01M 4/525",
-        "CPC:H01M 4/58",
-        "CPC:H01M 4/5825",
-        "CPC:H01M 4/583",
-        "CPC:H01M 4/62",
-        "CPC:H01M 4/621",
-        "CPC:H01M 4/622",
-        "CPC:H01M 4/624",
-        "CPC:H01M 4/625",
-        "CPC:Y02E 60/00",
-        "CPC:Y02E 60/10",
-        "CPC:Y10T 29/00",
-        "CPC:Y10T 29/49",
-        "CPC:Y10T 29/49002",
-        "CPC:Y10T 29/49108"
-      ]
+      "edgeId": "EDGE-027",
+      "sourcePatent": "structural_invariant",
+      "cpcCode": "N/A (structural)",
+      "sourceNode": "CAP_FAST_CHARGING",
+      "targetNode": "CAP_ION_TRANSPORT",
+      "relationship": "REQUIRES",
+      "justification": "Fast charging requires ions to move rapidly between electrodes; the C-rate is limited by ion transport kinetics. This is a physical necessity of the charge process.",
+      "reviewer": "coder_agent_001 / 2026-08-02",
+      "confidence": 0.5
     },
     {
-      "id": "E-0028",
-      "sourceType": "PATENT",
-      "sourceId": "WO2012068732A1",
-      "publicationDate": "2026-08-02",
-      "confidence": 1.0,
-      "claims": "claims. [0034] Figure 1 is a schematic view of an embodiment of a plurality of battery cells retained in a caddy according to the present invention. A plurality of battery cells 20 are retained in a caddy 10 for both shipment and assembly. [0035] Figure 2 illustrates a perspective exploded view of a first embodiment of a battery pack assembly according to the present invention. The battery pack assembly comprises: the caddy 10, the battery cells 20 (not shown in Figure 2), a soft and malleable p",
-      "supports": [
-        "CAP_CELL_ASSEMBLY",
-        "CAP_CELL_BALANCING",
-        "CAP_ELECTROCHEMICAL_ENERGY_STORAGE",
-        "CAP_LONG_CYCLE_LIFE_STORAGE",
-        "CAP_SELECTIVE_ION_TRANSPORT",
-        "CAP_THERMAL_MANAGEMENT",
-        "CPC:H01M 10/00",
-        "CPC:H01M 10/42",
-        "CPC:H01M 10/425",
-        "CPC:H01M 10/60",
-        "CPC:H01M 10/61",
-        "CPC:H01M 10/613",
-        "CPC:H01M 10/617",
-        "CPC:H01M 10/65",
-        "CPC:H01M 10/655",
-        "CPC:H01M 10/6554",
-        "CPC:H01M 10/6555",
-        "CPC:H01M 10/659",
-        "CPC:H01M 50/00",
-        "CPC:H01M 50/20",
-        "CPC:H01M 50/204",
-        "CPC:H01M 50/207",
-        "CPC:H01M 50/213",
-        "CPC:H01M 50/271",
-        "CPC:H01M 50/50",
-        "CPC:H01M 50/502",
-        "CPC:H01M 50/514",
-        "CPC:H01M 50/516",
-        "CPC:H01M 50/519",
-        "CPC:Y02E 60/00",
-        "CPC:Y02E 60/10"
-      ]
+      "edgeId": "EDGE-028",
+      "sourcePatent": "structural_invariant",
+      "cpcCode": "N/A (structural)",
+      "sourceNode": "CAP_FAST_CHARGING",
+      "targetNode": "CAP_THERMAL_MANAGEMENT",
+      "relationship": "REQUIRES",
+      "justification": "Fast charging generates heat due to internal resistance (Joule heating). Without thermal management, the cell temperature rises beyond safe limits. This is a physical necessity at high C-rates, though not at low C-rates.",
+      "reviewer": "coder_agent_001 / 2026-08-02",
+      "confidence": 0.5
     },
     {
-      "id": "E-0029",
-      "sourceType": "PATENT",
-      "sourceId": "WO2015051309A1",
-      "publicationDate": "2026-08-02",
-      "confidence": 1.0,
-      "claims": "claims the benefit of U.S. Provisional Application No. 61/887,011, filed on October 4, 2013, the disclosure of which is incorporated herein by reference in its entirety. STATEMENT REGARDING FEDERALLY SPONSORED RESEARCH OR DEVELOPMENT [0002] This invention was made with Government support under contract no. DE- AC02-05 CHI 1231 awarded by the Department of Energy. The Government has certain rights in the invention. FIELD OF THE INVENTION [0003] The invention generally relates to lithium battery e",
-      "supports": [
-        "CAP_CONVERSION_REACTION",
-        "CAP_ELECTROCHEMICAL_ENERGY_STORAGE",
-        "CAP_ELECTRON_COLLECTION",
-        "CAP_INTERCALATION",
-        "CAP_ION_TRANSPORT",
-        "CAP_LONG_CYCLE_LIFE_STORAGE",
-        "CPC:H01M 10/00",
-        "CPC:H01M 10/05",
-        "CPC:H01M 10/052",
-        "CPC:H01M 4/00",
-        "CPC:H01M 4/02",
-        "CPC:H01M 4/13",
-        "CPC:H01M 4/134",
-        "CPC:H01M 4/36",
-        "CPC:H01M 4/362",
-        "CPC:H01M 4/364",
-        "CPC:H01M 4/366",
-        "CPC:H01M 4/38",
-        "CPC:H01M 4/386",
-        "CPC:H01M 4/62",
-        "CPC:H01M 4/624",
-        "CPC:H01M 4/625",
-        "CPC:H01M 4/626",
-        "CPC:Y02E 60/00",
-        "CPC:Y02E 60/10"
-      ]
+      "edgeId": "EDGE-029",
+      "sourcePatent": "structural_invariant",
+      "cpcCode": "N/A (structural)",
+      "sourceNode": "CAP_CELL_ASSEMBLY",
+      "targetNode": "CAP_ELECTRODE_COATING",
+      "relationship": "REQUIRES",
+      "justification": "Cell assembly requires coated electrodes; the electrode coating process produces the functional electrode that is then assembled into a cell. This is a manufacturing necessity, not a convention.",
+      "reviewer": "coder_agent_001 / 2026-08-02",
+      "confidence": 0.5
     },
     {
-      "id": "E-0030",
-      "sourceType": "PATENT",
-      "sourceId": "WO2015119843A1",
-      "publicationDate": "2026-08-02",
-      "confidence": 1.0,
-      "claims": "claims priority to U.S. Patent Application No. 61/935,526, filed February 4, 2014, which is incorporated herein by reference for all purposes. STATEMENT REGARDING FEDERALLY SPONSORED RESEARCH [0002] This invention was made with government support under CMMI-0700048 awarded by the National Science Foundation. The government has certain rights in the invention. BACKGROUND OF THE INVENTION 1 . Field of the Invention [0003] This invention relates to electrochemical devices, such as lithium ion elect",
-      "supports": [
-        "CAP_CONVERSION_REACTION",
-        "CAP_ELECTROCHEMICAL_ENERGY_STORAGE",
-        "CAP_ELECTRODE_COATING",
-        "CAP_ELECTRON_COLLECTION",
-        "CAP_INTERCALATION",
-        "CAP_ION_TRANSPORT",
-        "CAP_LONG_CYCLE_LIFE_STORAGE",
-        "CPC:H01M 10/00",
-        "CPC:H01M 10/05",
-        "CPC:H01M 10/052",
-        "CPC:H01M 4/00",
-        "CPC:H01M 4/02",
-        "CPC:H01M 4/04",
-        "CPC:H01M 4/0402",
-        "CPC:H01M 4/0404",
-        "CPC:H01M 4/13",
-        "CPC:H01M 4/131",
-        "CPC:H01M 4/139",
-        "CPC:H01M 4/1391",
-        "CPC:H01M 4/36",
-        "CPC:H01M 4/362",
-        "CPC:H01M 4/364",
-        "CPC:H01M 4/366",
-        "CPC:H01M 4/62",
-        "CPC:H01M 4/624",
-        "CPC:Y02E 60/00",
-        "CPC:Y02E 60/10",
-        "CPC:Y10T 428/00",
-        "CPC:Y10T 428/249921"
-      ]
+      "edgeId": "EDGE-030",
+      "sourcePatent": "structural_invariant",
+      "cpcCode": "N/A (structural)",
+      "sourceNode": "CAP_SAFETY_PROTECTION",
+      "targetNode": "CAP_STATE_OF_CHARGE_MONITORING",
+      "relationship": "REQUIRES",
+      "justification": "Safety protection systems (e.g., overcharge cutoff) require knowing the cell's state of charge; without monitoring, the safety system cannot determine when to intervene. This is a functional necessity.",
+      "reviewer": "coder_agent_001 / 2026-08-02",
+      "confidence": 0.5
     },
     {
-      "id": "E-0031",
-      "sourceType": "PATENT",
-      "sourceId": "WO2019055696A1",
-      "publicationDate": "2026-08-02",
-      "confidence": 1.0,
-      "claims": "claims priority to U.S. Provisional Application No. 62/558107 filed September 13, 2017, entitled \"Battery Electrode Materials,\" the disclosure of which is hereby incorporated by reference in its entirety. Background [0002] The present disclosure relates generally to high capacity negative electrode (anode) active materials based on silicon for lithium ion batteries. In particular, the present disclosure describes a silicon-based fibrous material that demonstrates improved cycle life over standar",
-      "supports": [
-        "CAP_CONVERSION_REACTION",
-        "CAP_ELECTROCHEMICAL_ENERGY_STORAGE",
-        "CAP_ELECTRON_COLLECTION",
-        "CAP_INTERCALATION",
-        "CAP_ION_TRANSPORT",
-        "CAP_LONG_CYCLE_LIFE_STORAGE",
-        "CPC:C01B 33/00",
-        "CPC:C01B 33/113",
-        "CPC:C01P 2004/00",
-        "CPC:C01P 2004/10",
-        "CPC:C01P 2004/60",
-        "CPC:C01P 2004/61",
-        "CPC:C01P 2004/62",
-        "CPC:C01P 2006/00",
-        "CPC:C01P 2006/12",
-        "CPC:C01P 2006/16",
-        "CPC:H01M 10/00",
-        "CPC:H01M 10/05",
-        "CPC:H01M 10/052",
-        "CPC:H01M 10/0525",
-        "CPC:H01M 2004/021",
-        "CPC:H01M 2004/8678",
-        "CPC:H01M 2004/8684",
-        "CPC:H01M 4/00",
-        "CPC:H01M 4/02",
-        "CPC:H01M 4/13",
-        "CPC:H01M 4/131",
-        "CPC:H01M 4/36",
-        "CPC:H01M 4/362",
-        "CPC:H01M 4/364",
-        "CPC:H01M 4/48",
-        "CPC:H01M 4/483",
-        "CPC:H01M 4/485",
-        "CPC:H01M 4/50",
-        "CPC:H01M 4/505",
-        "CPC:H01M 4/52",
-        "CPC:H01M 4/525",
-        "CPC:H01M 4/58",
-        "CPC:H01M 4/5825",
-        "CPC:H01M 4/62",
-        "CPC:H01M 4/621",
-        "CPC:H01M 4/622",
-        "CPC:H01M 4/624",
-        "CPC:H01M 4/625",
-        "CPC:H01M 4/86",
-        "CPC:Y02E 60/00",
-        "CPC:Y02E 60/10",
-        "CPC:Y02E 60/30",
-        "CPC:Y02E 60/50"
-      ]
+      "edgeId": "EDGE-031",
+      "sourcePatent": "structural_constraint",
+      "cpcCode": "N/A (structural)",
+      "sourceNode": "CON_THEORETICAL_ENERGY_DENSITY_LIMIT",
+      "targetNode": "CAP_ELECTROCHEMICAL_ENERGY_STORAGE",
+      "relationship": "CONSTRAINS",
+      "justification": "The theoretical energy density of electrochemical chemistries (e.g., ~400 Wh/kg for Li-ion) limits the maximum energy a cell can store. This is a physics limit, not an engineering limit.",
+      "reviewer": "coder_agent_001 / 2026-08-02",
+      "confidence": 0.5
     },
     {
-      "id": "E-0032",
-      "sourceType": "PATENT",
-      "sourceId": "WO2022081545A1",
-      "publicationDate": "2026-08-02",
-      "confidence": 1.0,
-      "claims": "claims priority to U.S. Provisional Patent Application No. 63/090,968 filed October 13, 2020, the entire disclosure of which is herein incorporated by reference. BACKGROUND OF THE INVENTION [0003] Solid-state batteries are the focus of a great deal of attention because of the potential for attractive performance properties, including long shelf life, long term stable power capability, no gassing, broad operating temperature range (-40\u00b0C to 170\u00b0C for pure lithium anodes and up to and beyond 300\u00b0C",
-      "supports": [
-        "CAP_CELL_ASSEMBLY",
-        "CAP_CONVERSION_REACTION",
-        "CAP_ELECTROCHEMICAL_ENERGY_STORAGE",
-        "CAP_ELECTRODE_COATING",
-        "CAP_ELECTRON_COLLECTION",
-        "CAP_INTERCALATION",
-        "CAP_ION_TRANSPORT",
-        "CAP_LONG_CYCLE_LIFE_STORAGE",
-        "CAP_RECYCLING",
-        "CAP_SELECTIVE_ION_TRANSPORT",
-        "CAP_SOLID_ELECTROLYTE_SINTERING",
-        "CAP_THERMAL_MANAGEMENT",
-        "CPC:H01M 10/00",
-        "CPC:H01M 10/05",
-        "CPC:H01M 10/052",
-        "CPC:H01M 10/0525",
-        "CPC:H01M 10/056",
-        "CPC:H01M 10/0561",
-        "CPC:H01M 10/0562",
-        "CPC:H01M 10/058",
-        "CPC:H01M 10/0585",
-        "CPC:H01M 2004/021",
-        "CPC:H01M 2004/026",
-        "CPC:H01M 2004/027",
-        "CPC:H01M 2004/028",
-        "CPC:H01M 2300/00",
-        "CPC:H01M 2300/0017",
-        "CPC:H01M 2300/0065",
-        "CPC:H01M 2300/0068",
-        "CPC:H01M 2300/0071",
-        "CPC:H01M 4/00",
-        "CPC:H01M 4/02",
-        "CPC:H01M 4/04",
-        "CPC:H01M 4/0402",
-        "CPC:H01M 4/0409",
-        "CPC:H01M 4/0421",
-        "CPC:H01M 4/0423",
-        "CPC:H01M 4/043",
-        "CPC:H01M 4/0433",
-        "CPC:H01M 4/0471",
-        "CPC:H01M 4/13",
-        "CPC:H01M 4/131",
-        "CPC:H01M 4/134",
-        "CPC:H01M 4/139",
-        "CPC:H01M 4/1391",
-        "CPC:H01M 4/1395",
-        "CPC:H01M 4/36",
-        "CPC:H01M 4/38",
-        "CPC:H01M 4/381",
-        "CPC:H01M 4/382",
-        "CPC:H01M 4/48",
-        "CPC:H01M 4/50",
-        "CPC:H01M 4/505",
-        "CPC:H01M 4/52",
-        "CPC:H01M 4/525",
-        "CPC:H01M 4/62",
-        "CPC:H01M 50/00",
-        "CPC:H01M 50/40",
-        "CPC:H01M 50/403",
-        "CPC:H01M 50/409",
-        "CPC:H01M 50/431",
-        "CPC:H01M 50/434",
-        "CPC:H01M 50/437",
-        "CPC:Y02E 60/00",
-        "CPC:Y02E 60/10",
-        "CPC:Y02P 70/00",
-        "CPC:Y02P 70/50"
-      ]
+      "edgeId": "EDGE-032",
+      "sourcePatent": "structural_constraint",
+      "cpcCode": "N/A (structural)",
+      "sourceNode": "CON_THERMAL_RUNAWAY_THRESHOLD",
+      "targetNode": "CAP_ELECTROCHEMICAL_ENERGY_STORAGE",
+      "relationship": "CONSTRAINS",
+      "justification": "If cell temperature exceeds ~150\u00b0C, thermal runaway occurs \u2014 an uncontrollable exothermic reaction. This constrains the operating envelope of electrochemical storage.",
+      "reviewer": "coder_agent_001 / 2026-08-02",
+      "confidence": 0.5
     },
     {
-      "id": "E-0033",
-      "sourceType": "REGULATION",
-      "sourceId": "structural_constraint",
-      "publicationDate": "2026-08-02",
-      "confidence": 0.5,
-      "claims": "Constraint CON_THEORETICAL_ENERGY_DENSITY_LIMIT CONSTRAINS CAP_HIGH_ENERGY_DENSITY_STORAGE",
-      "supports": [
-        "CON_THEORETICAL_ENERGY_DENSITY_LIMIT -> CONSTRAINS -> CAP_HIGH_ENERGY_DENSITY_STORAGE"
-      ]
+      "edgeId": "EDGE-033",
+      "sourcePatent": "structural_constraint",
+      "cpcCode": "N/A (structural)",
+      "sourceNode": "CON_COST_PER_KWH_THRESHOLD",
+      "targetNode": "CAP_ELECTROCHEMICAL_ENERGY_STORAGE",
+      "relationship": "CONSTRAINS",
+      "justification": "The cost per kWh must be below the market threshold (~$100/kWh for EVs) for the storage to be economically viable. This constrains which chemistries and manufacturing processes are deployable.",
+      "reviewer": "coder_agent_001 / 2026-08-02",
+      "confidence": 0.5
     },
     {
-      "id": "E-0034",
-      "sourceType": "REGULATION",
-      "sourceId": "structural_constraint",
-      "publicationDate": "2026-08-02",
-      "confidence": 0.5,
-      "claims": "Constraint CON_ION_TRANSPORT_RESISTANCE CONSTRAINS CAP_ION_TRANSPORT",
-      "supports": [
-        "CON_ION_TRANSPORT_RESISTANCE -> CONSTRAINS -> CAP_ION_TRANSPORT"
-      ]
+      "edgeId": "EDGE-034",
+      "sourcePatent": "structural_constraint",
+      "cpcCode": "N/A (structural)",
+      "sourceNode": "CON_UN38_3_SHIPPING_SAFETY",
+      "targetNode": "CAP_ELECTROCHEMICAL_ENERGY_STORAGE",
+      "relationship": "CONSTRAINS",
+      "justification": "UN38.3 requires batteries to pass specific safety tests before transport. Batteries that fail cannot be shipped commercially. This regulation constrains the deployment of electrochemical storage.",
+      "reviewer": "coder_agent_001 / 2026-08-02",
+      "confidence": 0.5
     },
     {
-      "id": "E-0035",
-      "sourceType": "REGULATION",
-      "sourceId": "structural_constraint",
-      "publicationDate": "2026-08-02",
-      "confidence": 0.5,
-      "claims": "Constraint CON_ION_TRANSPORT_RESISTANCE CONSTRAINS CAP_HIGH_POWER_DISCHARGE",
-      "supports": [
-        "CON_ION_TRANSPORT_RESISTANCE -> CONSTRAINS -> CAP_HIGH_POWER_DISCHARGE"
-      ]
+      "edgeId": "EDGE-035",
+      "sourcePatent": "structural_constraint",
+      "cpcCode": "N/A (structural)",
+      "sourceNode": "CON_IEC_62133_SAFETY_STANDARD",
+      "targetNode": "CAP_SAFETY_PROTECTION",
+      "relationship": "CONSTRAINS",
+      "justification": "IEC 62133 specifies safety requirements for secondary cells. Safety protection systems must comply with this standard for consumer products. This regulation governs safety protection capabilities.",
+      "reviewer": "coder_agent_001 / 2026-08-02",
+      "confidence": 0.5
     },
     {
-      "id": "E-0036",
-      "sourceType": "REGULATION",
-      "sourceId": "structural_constraint",
-      "publicationDate": "2026-08-02",
-      "confidence": 0.5,
-      "claims": "Constraint CON_THERMAL_RUNAWAY_THRESHOLD CONSTRAINS CAP_ELECTROCHEMICAL_ENERGY_STORAGE",
-      "supports": [
-        "CON_THERMAL_RUNAWAY_THRESHOLD -> CONSTRAINS -> CAP_ELECTROCHEMICAL_ENERGY_STORAGE"
-      ]
+      "edgeId": "EDGE-036",
+      "sourcePatent": "regulation",
+      "cpcCode": "N/A (regulation)",
+      "sourceNode": "CAP_ELECTROCHEMICAL_ENERGY_STORAGE",
+      "targetNode": "CON_UN38_3_SHIPPING_SAFETY",
+      "relationship": "REGULATED_BY",
+      "justification": "UN38.3 is a UN standard that explicitly regulates the transport of lithium batteries. Patent US20240021793A1 and US20240194939A1 both fall under this regulation. The regulation is explicit and externally validated.",
+      "reviewer": "coder_agent_001 / 2026-08-02",
+      "confidence": 1.0
     },
     {
-      "id": "E-0037",
-      "sourceType": "REGULATION",
-      "sourceId": "structural_constraint",
-      "publicationDate": "2026-08-02",
-      "confidence": 0.5,
-      "claims": "Constraint CON_SOLID_ELECTROLYTE_DENSIFICATION CONSTRAINS CAP_SOLID_ELECTROLYTE_SINTERING",
-      "supports": [
-        "CON_SOLID_ELECTROLYTE_DENSIFICATION -> CONSTRAINS -> CAP_SOLID_ELECTROLYTE_SINTERING"
-      ]
-    },
-    {
-      "id": "E-0038",
-      "sourceType": "REGULATION",
-      "sourceId": "structural_constraint",
-      "publicationDate": "2026-08-02",
-      "confidence": 0.5,
-      "claims": "Constraint CON_DRY_ELECTRODE_YIELD CONSTRAINS CAP_ELECTRODE_COATING",
-      "supports": [
-        "CON_DRY_ELECTRODE_YIELD -> CONSTRAINS -> CAP_ELECTRODE_COATING"
-      ]
-    },
-    {
-      "id": "E-0039",
-      "sourceType": "REGULATION",
-      "sourceId": "structural_constraint",
-      "publicationDate": "2026-08-02",
-      "confidence": 0.5,
-      "claims": "Constraint CON_COST_PER_KWH_THRESHOLD CONSTRAINS CAP_ELECTROCHEMICAL_ENERGY_STORAGE",
-      "supports": [
-        "CON_COST_PER_KWH_THRESHOLD -> CONSTRAINS -> CAP_ELECTROCHEMICAL_ENERGY_STORAGE"
-      ]
-    },
-    {
-      "id": "E-0040",
-      "sourceType": "REGULATION",
-      "sourceId": "structural_constraint",
-      "publicationDate": "2026-08-02",
-      "confidence": 0.5,
-      "claims": "Constraint CON_MATERIAL_SCARCITY CONSTRAINS CAP_INTERCALATION",
-      "supports": [
-        "CON_MATERIAL_SCARCITY -> CONSTRAINS -> CAP_INTERCALATION"
-      ]
-    },
-    {
-      "id": "E-0041",
-      "sourceType": "REGULATION",
-      "sourceId": "structural_constraint",
-      "publicationDate": "2026-08-02",
-      "confidence": 0.5,
-      "claims": "Constraint CON_UN38_3_SHIPPING_SAFETY REGULATED_BY CAP_ELECTROCHEMICAL_ENERGY_STORAGE",
-      "supports": [
-        "CON_UN38_3_SHIPPING_SAFETY -> REGULATED_BY -> CAP_ELECTROCHEMICAL_ENERGY_STORAGE"
-      ]
-    },
-    {
-      "id": "E-0042",
-      "sourceType": "REGULATION",
-      "sourceId": "structural_constraint",
-      "publicationDate": "2026-08-02",
-      "confidence": 0.5,
-      "claims": "Constraint CON_IEC_62133_SAFETY_STANDARD REGULATED_BY CAP_SAFETY_PROTECTION",
-      "supports": [
-        "CON_IEC_62133_SAFETY_STANDARD -> REGULATED_BY -> CAP_SAFETY_PROTECTION"
-      ]
-    },
-    {
-      "id": "E-0043",
-      "sourceType": "REGULATION",
-      "sourceId": "structural_constraint",
-      "publicationDate": "2026-08-02",
-      "confidence": 0.5,
-      "claims": "Constraint CON_GRID_CAPACITY_LIMIT CONSTRAINS CAP_GRID_INTERCONNECTION",
-      "supports": [
-        "CON_GRID_CAPACITY_LIMIT -> CONSTRAINS -> CAP_GRID_INTERCONNECTION"
-      ]
+      "edgeId": "EDGE-037",
+      "sourcePatent": "regulation",
+      "cpcCode": "N/A (regulation)",
+      "sourceNode": "CAP_SAFETY_PROTECTION",
+      "targetNode": "CON_IEC_62133_SAFETY_STANDARD",
+      "relationship": "REGULATED_BY",
+      "justification": "IEC 62133 is an international standard that explicitly governs safety requirements for secondary cells containing alkaline or other non-acid electrolytes. Safety protection systems must comply.",
+      "reviewer": "coder_agent_001 / 2026-08-02",
+      "confidence": 1.0
     }
   ]
 }
