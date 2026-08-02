@@ -1,4 +1,4 @@
-# TEE MASTER HANDOFF (v10.0 — Phase 10: destroy the formula; trajectories, adjacency, tension, bottlenecks, rival formulas, inevitability)
+# TEE MASTER HANDOFF (v10.1 — rival formulas B/C/D all failed; no formula beats NULL; objective function still undiscovered)
 
 ## PRE-CODING READ LIST (MANDATORY)
 

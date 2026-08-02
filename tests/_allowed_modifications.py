@@ -72,4 +72,5 @@ ALLOWED_MODIFICATIONS = frozenset({
     "scripts/run_backtest.py",  # Phase 9: frozen-time backtest (one-off)
     "scripts/run_scored_backtest.py",  # Phase 9: scored backtest (one-off)
     "scripts/run_calibrated_backtest.py",  # Phase 9: calibrated backtest (one-off)
+    "scripts/run_rival_formulas_backtest.py",  # Phase 10: rival formulas backtest (one-off)
 })
