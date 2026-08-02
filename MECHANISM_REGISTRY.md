@@ -1,6 +1,6 @@
 # MECHANISM_REGISTRY — Phase 13A
 
-**Status:** constitutional document (mechanism registry).
+**Status:** SELF-AUTHORED EXPLANATIONS. NOT INDEPENDENTLY GRADED.
 **Location:** repo root.
 **Phase:** 13A.
 
@@ -11,6 +11,36 @@
 
 > Measure success by explanatory depth, not precision.
 > — CEO directive, Phase 13 (final instruction to the coder)
+
+---
+
+## Self-grading disclosure (added post-Phase-13, F-041, EP-5)
+
+The 7 mechanism records (MECH-001 through MECH-007) in this
+document were written by the same author and same session that
+then graded them as "DEEP" / "PARTIAL" / "NONE" in
+`PHASE_13_SYNTHESIS.md`. There was no blind grading, no
+independent rubric, no second reviewer.
+
+Per EP-5 (no self-grading), the explanatory-depth audit in
+`PHASE_13_SYNTHESIS.md` that produced the "87% DEEP across 15
+cases" figure is retired. The figure is removed from any
+synthesis going forward. The mechanism records themselves are
+retained (per Law 7, historical permanence) as narrative
+explanations of why each TP was predicted — they may be useful
+as input to an independent grading process, but they cannot
+stand as evidence of explanatory depth on their own.
+
+**What would convert this to evidence:** an independent grader
+(either the human reviewer with a pre-agreed rubric, or a
+subagent blind to which records are TPs vs counterexamples vs
+impossibilities) re-grades the 7 mechanisms against a rubric
+committed before the grading runs. The rubric and grader identity
+must be recorded in `EVIDENCE_FALSIFIERS.md` as a new FEC entry
+before grading begins.
+
+The original content below is retained unchanged per
+CONSTITUTION.md Law 7. Read it as narrative, not as evidence.
 
 ---
 

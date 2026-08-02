@@ -1,12 +1,45 @@
 # CROSS_DOMAIN_STRESS_TEST — Phase 13F
 
-**Status:** constitutional document (cross-domain stress test plan).
+**Status:** THRESHOLD NOT PRE-REGISTERED. TREAT AS PROPOSAL.
 **Location:** repo root.
 **Phase:** 13F.
 
 > Photovoltaics are encouraging.
 > Now deliberately choose difficult domains.
 > — CEO directive, Phase 13F
+
+---
+
+## Threshold pre-registration disclosure (added post-Phase-13, F-041, EP-6)
+
+The decision rule in this document
+("SURVIVES 2 of 4 → LOCAL with FUNDAMENTAL ASPIRATIONS") was
+written in the same commit (`4879274`) as `PHASE_13_SYNTHESIS.md`,
+which uses the threshold to classify the model's current status.
+
+Per EP-6, a threshold written in the same commit as the document
+evaluating against it is not pre-registration — it is a number
+chosen with the answer already visible. The 2-of-4 threshold is
+therefore reclassified from BINDING CRITERION to PROPOSAL.
+
+**What would convert this to binding:** the threshold is
+re-committed as a standalone artifact (its own commit, dated
+before any Phase 14 stress test runs). The re-commit must
+either keep 2-of-4 (with explicit justification for why 2 is
+the right number) or adjust it (per the auditor's note: a
+more honest threshold would be 3 of 4 for LOCAL and 4 of 4
+for FUNDAMENTAL; 2 of 4 should be "M4 not yet transferred to
+structurally different domains").
+
+The 4 domain selections (aviation, semiconductors, telecom,
+pharma) and the structural-violation rationale for each are
+retained — those do not depend on the threshold. The candidate
+events, capability lists, and falsification criteria for each
+domain are retained as planning material.
+
+The original content below is retained unchanged per
+CONSTITUTION.md Law 7. Read the 2-of-4 threshold as a
+proposal, not as a binding criterion.
 
 ---
 

@@ -1,6 +1,6 @@
 # TIME_REVERSAL_PROTOCOL — Phase 13E
 
-**Status:** constitutional document (time-reversed analysis).
+**Status:** RETROSPECTIVE CONSISTENCY CHECK. NOT EVIDENCE.
 **Location:** repo root.
 **Phase:** 13E.
 
@@ -8,6 +8,46 @@
 > Instead of asking "What will happen?" ask "Given what happened,
 > what had to be true beforehand?"
 > — CEO directive, Phase 13E
+
+---
+
+## Retrospective consistency check disclosure (added post-Phase-13, F-041, EP-3)
+
+The 16 time-reversal records (TR-001 through TR-016) in this
+document were constructed as follows: the author read each event
+in `EVENT_REGISTRY.md` (which lists the event year, combination,
+and significance), then wrote down the preconditions the combination
+would have required, then checked those preconditions against
+`TRAJECTORY_REGISTRY.md`.
+
+The check is real — the TRL values cited are in the registry. But
+the *selection of which preconditions to check* was conditioned on
+already knowing the event occurred. This is the leakage pattern
+forbidden by EP-3.
+
+**What this document is:** a retrospective consistency check. It
+shows that for each event in the registry, the modeled
+preconditions were satisfied in the prior 5-year window. This is
+necessary (the model would be falsified if any event's
+preconditions were not satisfied) but not sufficient as evidence
+(the preconditions were selected with outcome knowledge).
+
+**What this document is NOT:** independent evidence that the model
+has backward explanatory power. The "100% backward explanatory
+power; 0 of 16 events UNEXPLAINED" claim in the original
+synthesis is retired per FEC-003 in `EVIDENCE_FALSIFIERS.md`.
+
+**What would convert this to evidence:** a forward-only protocol
+that freezes the graph at year `Y-k`, generates predictions for
+the window `[Y-k+1, Y]`, then checks whether the realized event is
+in the predicted set. This is the forward-prediction test that
+the backtest (Phase 11A) already does; the "time reversal" framing
+in this document added no epistemic weight beyond what the
+backtest already provides.
+
+The original content below is retained unchanged per CONSTITUTION.md
+Law 7 (historical permanence). Read it as a consistency check,
+not as evidence.
 
 ---
 

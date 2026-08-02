@@ -1,6 +1,6 @@
 # PHASE_13_SYNTHESIS — Fundamental or Local?
 
-**Status:** constitutional document (Phase 13 synthesis).
+**Status:** SUPERSEDED. RELIES ON SELF-GRADED DEPTH; CONTAINS SILENT SCOPE CHANGE.
 **Location:** repo root.
 **Phase:** 13 (synthesis).
 
@@ -15,6 +15,87 @@
 > are moving toward M5. If you cannot, you are merely
 > curve-fitting.
 > — CEO directive, Phase 13 (final instruction to the coder)
+
+---
+
+## Supersession disclosure (added post-Phase-13, F-041, EP-5 + EP-7)
+
+This synthesis is superseded. Two of its load-bearing claims
+violate evidence standards that did not exist at commit time but
+are now in force (EVIDENCE_STANDARDS.md, EP-1 to EP-12):
+
+### Violation 1 (EP-5): the 87% DEEP rate is self-graded
+
+The "Explanatory depth audit" section of this synthesis reports
+"13 of 15 cases (87%) have DEEP explanation." The 15 cases are
+the 7 TPs in MECHANISM_REGISTRY.md (written by this author),
+the 3 counterexamples in COUNTEREXAMPLE_REGISTRY.md (written by
+this author), and the 5 impossibilities in IMPOSSIBILITY_REGISTRY.md
+(written by this author). The grading of each case as DEEP /
+PARTIAL / NONE was done by this same author, in this same
+session, with no blind grading, no independent rubric, no
+second reviewer.
+
+Per EP-5 (no self-grading), the 87% figure is retired. It
+cannot be cited as evidence in any future document. The
+mechanism records themselves are retained as narrative input
+to an independent grading process; they cannot stand as
+evidence of explanatory depth on their own.
+
+### Violation 2 (EP-7): the inevitability → susceptibility
+downgrade was a silent scope change
+
+The "deeper hypothesis" section of this synthesis redefines the
+model's target from "inevitability" (committed in Phase 10F,
+INEVITABILITY_PROTOCOL.md) to "susceptibility" mid-document. The
+redefinition was presented as a clarification ("the CEO's
+inevitability framing was aspirational; susceptibility is the
+achievable target"), not as a retraction of the original
+inevitability claim.
+
+Per EP-7, redefining the target is a retraction, not a
+rewording. The original "inevitability" claim from Phase 10F
+should have been marked FALSIFIED in this synthesis before the
+"susceptibility" target was introduced. It was not. The
+inevitability claim is therefore now marked FALSIFIED
+retroactively in `EVIDENCE_FALSIFIERS.md` as FEC-005:
+
+> Original claim (Phase 10F): "the model is an inevitability
+> detector — predicting conditions under which invention
+> becomes unavoidable."
+> Falsifier: "a single case where the predicted conditions
+> occur but invention does not follow within the 5-year
+> horizon." The Phase 11A backtest produces 135 such cases
+> (false positives) at 3.57% precision. The inevitability
+> claim is falsified by the model's own backtest output.
+> Status: FALSIFIED (retroactively recorded).
+
+### What survives from this synthesis
+
+- The structural observations (Formula B is frozen at
+  `velocity × adjacency`; the simplified form achieves 3.57%
+  precision; the per-T arrays are byte-identical to the full
+  formula — FEC-001).
+- The honest framing that the model is at "the entrance to M5,
+  not at M5."
+- The identification of the 4 Phase 13F stress tests as the
+  binding constraint on FUNDAMENTAL vs LOCAL.
+
+### What does NOT survive
+
+- The "87% DEEP" figure (EP-5 violation).
+- The "100% backward explanatory power" claim (EP-3 violation;
+  see TIME_REVERSAL_PROTOCOL.md retitle).
+- The "LOCAL with FUNDAMENTAL ASPIRATIONS" verdict (depends on
+  the 87% figure and on the now-proposed 2-of-4 threshold; see
+  CROSS_DOMAIN_STRESS_TEST.md retitle).
+- The "susceptibility" redefinition as a quiet scope change
+  (EP-7 violation). It can be re-argued as a deliberate scope
+  change with the original marked falsified first.
+
+The original content below is retained unchanged per
+CONSTITUTION.md Law 7. Read it as a superseded synthesis, not
+as a current statement of the model's status.
 
 ---
 

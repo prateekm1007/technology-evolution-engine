@@ -75,3 +75,15 @@ with a commit hash that pre-dates the test commit.
 
 If a claim has no FEC entry, it ships as a hypothesis with the
 label "HYPOTHESIS" in the document. It does not ship as a finding.
+
+### FEC-005: inevitability claim (Phase 10F) — RETROACTIVELY FALSIFIED
+
+| Field | Value |
+|---|---|
+| claimId | FEC-005 |
+| claimText | "The model is an inevitability detector — predicting conditions under which invention becomes unavoidable." (Phase 10F, INEVITABILITY_PROTOCOL.md, commit cc387cd.) |
+| falsifierText | "A single case where the model's predicted conditions occur (high score) but invention does not follow within the 5-year horizon." |
+| statedAt | 2026-08-02 (Commit C of this governance pass) — retroactive. The original Phase 10F inevitability framing did not pre-state this falsifier. |
+| testedAt | 2026-08-02 (Phase 11A backtest, commit 75ef7e1) — retroactively recognized. |
+| testResult | FALSIFIED. The Phase 11A backtest produces 135 false positives at 3.57% precision — 135 cases where the model's predicted conditions occurred but no event followed within the 5-year horizon. The inevitability claim is falsified by the model's own backtest output. |
+| caveat | This falsification should have been recorded in PHASE_13_SYNTHESIS.md before the target was redefined to "susceptibility." It was not (EP-7 violation). The redefinition slid past the reader as a clarification. The retroactive recording here closes the EP-7 violation: the inevitability claim is now marked FALSIFIED, and the susceptibility redefinition (if it is to be retained) must be re-argued as a deliberate scope change with explicit justification. |

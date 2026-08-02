@@ -1,12 +1,60 @@
 # NECESSITY_SUFFICIENCY — Phase 13D
 
-**Status:** constitutional document (necessity / sufficiency analysis).
+**Status:** HYPOTHESIS. NECESSITY CLAIM HAS NO PRE-STATED FALSIFIER.
 **Location:** repo root.
 **Phase:** 13D.
 
 > Velocity may be necessary.
 > Velocity may not be sufficient.
 > — CEO directive, Phase 13D
+
+---
+
+## Falsifier disclosure (added post-Phase-13, F-041, EP-4)
+
+The factor-by-factor table in this document ("ALL FOUR FACTORS ARE
+NECESSARY. NONE ARE SUFFICIENT.") was written without a pre-stated
+falsifier. Per EP-4, an explanatory claim using the words
+"necessary" or "sufficient" must have a falsification condition
+written before the analysis that tests it.
+
+The original analysis ran in Phase 13D (commit `4879274`) without
+pre-stating what observation would prove the necessity claim
+false. The falsifier is recorded retroactively in
+`EVIDENCE_FALSIFIERS.md` as FEC-002:
+
+> Falsifier: "A single TP in any future backtest whose
+> rising-capability velocity at T-1 is below 0.20 TRL/year."
+
+Because the falsifier was not pre-stated, the "necessary" finding
+in this document is reclassified from FINDING to HYPOTHESIS. The
+existing 7 TPs in MECHANISM_REGISTRY.md are consistent with the
+hypothesis (all 7 have velocity > 0.20), but consistency with
+existing data is a retrospective check, not a forward test. The
+next Phase 14 stress test will be the first forward test.
+
+The "necessary but not sufficient" framing is also unfalsifiable
+as written: any failed prediction can be rescued by claiming the
+other necessary factors did not align. The falsifier for the
+sufficiency *negation* (i.e., "not sufficient") is recorded as
+FEC-002-extension in `EVIDENCE_FALSIFIERS.md`:
+
+> Falsifier of "not sufficient": "A single combination with all
+> four factors present (velocity > 0.20, adjacency > 0.5,
+> bottleneck resolved, cost declining) that produces an event
+> within the 5-year horizon. If this occurs, the conjunction is
+> sufficient for at least one case, contradicting 'none are
+> sufficient.'"
+
+The counterexamples CE-001 to CE-003 in COUNTEREXAMPLE_REGISTRY.md
+are partial candidates for the sufficiency falsifier; under the
+simplified formula (velocity × adjacency, no cost_bonus) they
+should now score low. That re-run has not been done and is a
+prerequisite for any future use of this document's claims.
+
+The original content below is retained unchanged per
+CONSTITUTION.md Law 7. Read "necessary" and "sufficient" as
+hypothesis labels, not findings.
 
 ---
 
