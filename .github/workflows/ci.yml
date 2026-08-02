@@ -17,7 +17,9 @@ jobs:
           python-version: '3.12'
 
       - name: Install dependencies
-        run: pip install pytest
+        run: |
+          pip install -r requirements.txt
+          pip install pytest
 
       - name: Gate 1 — Governance read list check (11 files)
         run: python scripts/remember_governance.py

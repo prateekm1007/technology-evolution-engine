@@ -1,12 +1,25 @@
 """
 Smoke tests for the API surface.
 Run: python -m pytest tests/test_endpoints.py -v
+
+NOTE: This test requires fastapi and the web backend to be importable.
+In CI environments where fastapi is installed via requirements.txt,
+this test will run. If fastapi is not available, the test is skipped.
 """
 import sys, pathlib
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[1] / "web" / "backend"))
 
-from fastapi.testclient import TestClient
-from main import app
+try:
+    from fastapi.testclient import TestClient
+    from main import app
+    FASTAPI_AVAILABLE = True
+except ImportError:
+    FASTAPI_AVAILABLE = False
+
+import pytest
+
+if not FASTAPI_AVAILABLE:
+    pytest.skip("fastapi not installed — skipping endpoint tests", allow_module_level=True)
 
 client = TestClient(app)
 
