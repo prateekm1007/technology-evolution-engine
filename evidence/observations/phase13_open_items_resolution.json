@@ -1,0 +1,6399 @@
+{
+  "phase": "13 open items resolution (EP-10 gate)",
+  "items_resolved": [
+    "1. paired-outcomes significance test (McNemar + paired t)",
+    "2. per-candidate score dump for FEC-001 'exactly equal' claim",
+    "3. counterexample re-run under simplified formula (CE-001 to CE-003)"
+  ],
+  "significance_tests": {
+    "mcnemar_Formula B_vs_NULL_MODEL": {
+      "test": "mcnemar",
+      "label_a": "Formula B",
+      "label_b": "NULL_MODEL",
+      "b_discordant": 5,
+      "c_discordant": 1,
+      "n_discordant": 6,
+      "exact_p_two_sided": 0.21875,
+      "chi2_with_cc": 1.5,
+      "interpretation": "Of 6 discordant TP pairs, 5 favored Formula B and 1 favored NULL_MODEL. Exact two-sided p = 0.2188. FAIL TO REJECT H0 (no significant difference)."
+    },
+    "mcnemar_Formula B_vs_velocity_only": {
+      "test": "mcnemar",
+      "label_a": "Formula B",
+      "label_b": "velocity_only",
+      "b_discordant": 5,
+      "c_discordant": 1,
+      "n_discordant": 6,
+      "exact_p_two_sided": 0.21875,
+      "chi2_with_cc": 1.5,
+      "interpretation": "Of 6 discordant TP pairs, 5 favored Formula B and 1 favored velocity_only. Exact two-sided p = 0.2188. FAIL TO REJECT H0 (no significant difference)."
+    },
+    "mcnemar_Formula B_vs_velocity+adjacency": {
+      "test": "mcnemar",
+      "label_a": "Formula B",
+      "label_b": "velocity+adjacency",
+      "b_discordant": 0,
+      "c_discordant": 0,
+      "n_discordant": 0,
+      "exact_p_two_sided": 1.0,
+      "chi2_with_cc": 0.0,
+      "interpretation": "no discordant pairs (models produce identical TP sets across all T-points)"
+    },
+    "mcnemar_velocity+adjacency_vs_NULL_MODEL": {
+      "test": "mcnemar",
+      "label_a": "velocity+adjacency",
+      "label_b": "NULL_MODEL",
+      "b_discordant": 5,
+      "c_discordant": 1,
+      "n_discordant": 6,
+      "exact_p_two_sided": 0.21875,
+      "chi2_with_cc": 1.5,
+      "interpretation": "Of 6 discordant TP pairs, 5 favored velocity+adjacency and 1 favored NULL_MODEL. Exact two-sided p = 0.2188. FAIL TO REJECT H0 (no significant difference)."
+    },
+    "mcnemar_velocity+adjacency_vs_velocity_only": {
+      "test": "mcnemar",
+      "label_a": "velocity+adjacency",
+      "label_b": "velocity_only",
+      "b_discordant": 5,
+      "c_discordant": 1,
+      "n_discordant": 6,
+      "exact_p_two_sided": 0.21875,
+      "chi2_with_cc": 1.5,
+      "interpretation": "Of 6 discordant TP pairs, 5 favored velocity+adjacency and 1 favored velocity_only. Exact two-sided p = 0.2188. FAIL TO REJECT H0 (no significant difference)."
+    },
+    "paired_t_Formula B_vs_NULL_MODEL": {
+      "test": "paired_t_on_per_T_precision",
+      "label_a": "Formula B",
+      "label_b": "NULL_MODEL",
+      "n_pairs": 14,
+      "mean_diff_a_minus_b": 0.028571,
+      "se_diff": 0.01941,
+      "t_statistic": 1.472,
+      "df": 13,
+      "p_value_normal_approx": 0.141032,
+      "significant_at_0.05_df13": false,
+      "significant_at_0.10_df13": false,
+      "per_T_diffs": [
+        0.0,
+        0.0,
+        0.1,
+        0.0,
+        0.0,
+        0.0,
+        0.1,
+        0.0,
+        0.0,
+        0.0,
+        0.1,
+        0.2,
+        -0.1,
+        0.0
+      ],
+      "interpretation": "Mean per-T precision difference (Formula B - NULL_MODEL) = 0.0286. t(13) = 1.4720. Not significant at p<0.10."
+    },
+    "paired_t_Formula B_vs_velocity_only": {
+      "test": "paired_t_on_per_T_precision",
+      "label_a": "Formula B",
+      "label_b": "velocity_only",
+      "n_pairs": 14,
+      "mean_diff_a_minus_b": 0.028571,
+      "se_diff": 0.01941,
+      "t_statistic": 1.472,
+      "df": 13,
+      "p_value_normal_approx": 0.141032,
+      "significant_at_0.05_df13": false,
+      "significant_at_0.10_df13": false,
+      "per_T_diffs": [
+        0.0,
+        0.0,
+        0.1,
+        0.0,
+        0.0,
+        0.0,
+        0.1,
+        0.0,
+        -0.1,
+        0.0,
+        0.1,
+        0.2,
+        0.0,
+        0.0
+      ],
+      "interpretation": "Mean per-T precision difference (Formula B - velocity_only) = 0.0286. t(13) = 1.4720. Not significant at p<0.10."
+    },
+    "paired_t_Formula B_vs_velocity+adjacency": {
+      "test": "paired_t_on_per_T_precision",
+      "label_a": "Formula B",
+      "label_b": "velocity+adjacency",
+      "n_pairs": 14,
+      "mean_diff_a_minus_b": 0.0,
+      "se_diff": 0.0,
+      "t_statistic": 0,
+      "df": 13,
+      "p_value_normal_approx": 1.0,
+      "significant_at_0.05_df13": false,
+      "significant_at_0.10_df13": false,
+      "per_T_diffs": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "interpretation": "Mean per-T precision difference (Formula B - velocity+adjacency) = 0.0000. t(13) = 0.0000. Not significant at p<0.10."
+    },
+    "paired_t_velocity+adjacency_vs_NULL_MODEL": {
+      "test": "paired_t_on_per_T_precision",
+      "label_a": "velocity+adjacency",
+      "label_b": "NULL_MODEL",
+      "n_pairs": 14,
+      "mean_diff_a_minus_b": 0.028571,
+      "se_diff": 0.01941,
+      "t_statistic": 1.472,
+      "df": 13,
+      "p_value_normal_approx": 0.141032,
+      "significant_at_0.05_df13": false,
+      "significant_at_0.10_df13": false,
+      "per_T_diffs": [
+        0.0,
+        0.0,
+        0.1,
+        0.0,
+        0.0,
+        0.0,
+        0.1,
+        0.0,
+        0.0,
+        0.0,
+        0.1,
+        0.2,
+        -0.1,
+        0.0
+      ],
+      "interpretation": "Mean per-T precision difference (velocity+adjacency - NULL_MODEL) = 0.0286. t(13) = 1.4720. Not significant at p<0.10."
+    }
+  },
+  "per_candidate_dump": {
+    "formula_b": {
+      "formula": "Formula B (frozen)",
+      "per_T": [
+        {
+          "T": 1991,
+          "all_candidates_count": 154,
+          "actual_events": [
+            [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "ELECTRODE_COATING",
+              "INTERCALATION"
+            ],
+            [
+              "CELL_ASSEMBLY",
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "INTERCALATION"
+            ]
+          ],
+          "top10": [
+            {
+              "rank": 1,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "ELECTROCHEMICAL_ENERGY_STORAGE"
+              ],
+              "score": 0.8576,
+              "outcome": "FP"
+            },
+            {
+              "rank": 2,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "ELECTRODE_COATING"
+              ],
+              "score": 0.8576,
+              "outcome": "FP"
+            },
+            {
+              "rank": 3,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "ELECTRON_COLLECTION"
+              ],
+              "score": 0.8576,
+              "outcome": "FP"
+            },
+            {
+              "rank": 4,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "INTERCALATION"
+              ],
+              "score": 0.8576,
+              "outcome": "FP"
+            },
+            {
+              "rank": 5,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "ION_TRANSPORT"
+              ],
+              "score": 0.8576,
+              "outcome": "FP"
+            },
+            {
+              "rank": 6,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "SAFETY_PROTECTION"
+              ],
+              "score": 0.8576,
+              "outcome": "FP"
+            },
+            {
+              "rank": 7,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "STATE_OF_CHARGE_MONITORING"
+              ],
+              "score": 0.8576,
+              "outcome": "FP"
+            },
+            {
+              "rank": 8,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "ELECTRODE_COATING"
+              ],
+              "score": 0.8576,
+              "outcome": "FP"
+            },
+            {
+              "rank": 9,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "ELECTRON_COLLECTION"
+              ],
+              "score": 0.8576,
+              "outcome": "FP"
+            },
+            {
+              "rank": 10,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "INTERCALATION"
+              ],
+              "score": 0.8576,
+              "outcome": "FP"
+            }
+          ]
+        },
+        {
+          "T": 1993,
+          "all_candidates_count": 154,
+          "actual_events": [
+            [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "ELECTRODE_COATING",
+              "INTERCALATION"
+            ],
+            [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "INTERCALATION",
+              "STATE_OF_CHARGE_MONITORING"
+            ]
+          ],
+          "top10": [
+            {
+              "rank": 1,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "INTERCALATION"
+              ],
+              "score": 0.8579,
+              "outcome": "FP"
+            },
+            {
+              "rank": 2,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "ELECTROCHEMICAL_ENERGY_STORAGE"
+              ],
+              "score": 0.42895,
+              "outcome": "FP"
+            },
+            {
+              "rank": 3,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "INTERCALATION"
+              ],
+              "score": 0.42895,
+              "outcome": "FP"
+            },
+            {
+              "rank": 4,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "INTERCALATION"
+              ],
+              "score": 0.42895,
+              "outcome": "FP"
+            },
+            {
+              "rank": 5,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "ELECTRODE_COATING",
+                "INTERCALATION"
+              ],
+              "score": 0.42895,
+              "outcome": "FP"
+            },
+            {
+              "rank": 6,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "ELECTRON_COLLECTION",
+                "INTERCALATION"
+              ],
+              "score": 0.42895,
+              "outcome": "FP"
+            },
+            {
+              "rank": 7,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "INTERCALATION",
+                "ION_TRANSPORT"
+              ],
+              "score": 0.42895,
+              "outcome": "FP"
+            },
+            {
+              "rank": 8,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "INTERCALATION",
+                "SAFETY_PROTECTION"
+              ],
+              "score": 0.42895,
+              "outcome": "FP"
+            },
+            {
+              "rank": 9,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "INTERCALATION",
+                "STATE_OF_CHARGE_MONITORING"
+              ],
+              "score": 0.42895,
+              "outcome": "FP"
+            },
+            {
+              "rank": 10,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "ELECTRODE_COATING"
+              ],
+              "score": 0.285967,
+              "outcome": "FP"
+            }
+          ]
+        },
+        {
+          "T": 1995,
+          "all_candidates_count": 246,
+          "actual_events": [
+            [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "ELECTRODE_COATING",
+              "INTERCALATION"
+            ],
+            [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "INTERCALATION",
+              "STATE_OF_CHARGE_MONITORING"
+            ]
+          ],
+          "top10": [
+            {
+              "rank": 1,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "INTERCALATION"
+              ],
+              "score": 0.324,
+              "outcome": "FP"
+            },
+            {
+              "rank": 2,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "INTERCALATION",
+                "STATE_OF_CHARGE_MONITORING"
+              ],
+              "score": 0.262,
+              "outcome": "FP"
+            },
+            {
+              "rank": 3,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "STATE_OF_CHARGE_MONITORING"
+              ],
+              "score": 0.174667,
+              "outcome": "FP"
+            },
+            {
+              "rank": 4,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "INTERCALATION",
+                "STATE_OF_CHARGE_MONITORING"
+              ],
+              "score": 0.174667,
+              "outcome": "FP"
+            },
+            {
+              "rank": 5,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "INTERCALATION",
+                "STATE_OF_CHARGE_MONITORING"
+              ],
+              "score": 0.174667,
+              "outcome": "TP"
+            },
+            {
+              "rank": 6,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "ELECTROCHEMICAL_ENERGY_STORAGE"
+              ],
+              "score": 0.162,
+              "outcome": "FP"
+            },
+            {
+              "rank": 7,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "INTERCALATION"
+              ],
+              "score": 0.162,
+              "outcome": "FP"
+            },
+            {
+              "rank": 8,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "ELECTRODE_COATING",
+                "INTERCALATION"
+              ],
+              "score": 0.162,
+              "outcome": "FP"
+            },
+            {
+              "rank": 9,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "ELECTRON_COLLECTION",
+                "INTERCALATION"
+              ],
+              "score": 0.162,
+              "outcome": "FP"
+            },
+            {
+              "rank": 10,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "INTERCALATION",
+                "ION_TRANSPORT"
+              ],
+              "score": 0.162,
+              "outcome": "FP"
+            }
+          ]
+        },
+        {
+          "T": 1997,
+          "all_candidates_count": 246,
+          "actual_events": [
+            [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "ELECTRON_COLLECTION",
+              "INTERCALATION"
+            ]
+          ],
+          "top10": [
+            {
+              "rank": 1,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "INTERCALATION",
+                "STATE_OF_CHARGE_MONITORING"
+              ],
+              "score": 0.21125,
+              "outcome": "FP"
+            },
+            {
+              "rank": 2,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "ELECTRODE_COATING",
+                "INTERCALATION",
+                "STATE_OF_CHARGE_MONITORING"
+              ],
+              "score": 0.21125,
+              "outcome": "FP"
+            },
+            {
+              "rank": 3,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "INTERCALATION",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.16125,
+              "outcome": "FP"
+            },
+            {
+              "rank": 4,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "ELECTRODE_COATING",
+                "INTERCALATION",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.16125,
+              "outcome": "FP"
+            },
+            {
+              "rank": 5,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "STATE_OF_CHARGE_MONITORING"
+              ],
+              "score": 0.140833,
+              "outcome": "FP"
+            },
+            {
+              "rank": 6,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "INTERCALATION",
+                "STATE_OF_CHARGE_MONITORING"
+              ],
+              "score": 0.140833,
+              "outcome": "FP"
+            },
+            {
+              "rank": 7,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "ELECTRODE_COATING",
+                "STATE_OF_CHARGE_MONITORING"
+              ],
+              "score": 0.140833,
+              "outcome": "FP"
+            },
+            {
+              "rank": 8,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "INTERCALATION",
+                "STATE_OF_CHARGE_MONITORING"
+              ],
+              "score": 0.140833,
+              "outcome": "FP"
+            },
+            {
+              "rank": 9,
+              "combo": [
+                "ELECTRODE_COATING",
+                "INTERCALATION",
+                "STATE_OF_CHARGE_MONITORING"
+              ],
+              "score": 0.140833,
+              "outcome": "FP"
+            },
+            {
+              "rank": 10,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "INTERCALATION",
+                "SAFETY_PROTECTION"
+              ],
+              "score": 0.11125,
+              "outcome": "FP"
+            }
+          ]
+        },
+        {
+          "T": 2000,
+          "all_candidates_count": 246,
+          "actual_events": [
+            [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "SAFETY_PROTECTION",
+              "THERMAL_MANAGEMENT"
+            ],
+            [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "ELECTRON_COLLECTION",
+              "INTERCALATION"
+            ]
+          ],
+          "top10": [
+            {
+              "rank": 1,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "INTERCALATION",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.07,
+              "outcome": "FP"
+            },
+            {
+              "rank": 2,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "ELECTRODE_COATING",
+                "INTERCALATION",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.07,
+              "outcome": "FP"
+            },
+            {
+              "rank": 3,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "INTERCALATION",
+                "STATE_OF_CHARGE_MONITORING",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.07,
+              "outcome": "FP"
+            },
+            {
+              "rank": 4,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.046667,
+              "outcome": "FP"
+            },
+            {
+              "rank": 5,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "INTERCALATION",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.046667,
+              "outcome": "FP"
+            },
+            {
+              "rank": 6,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "ELECTRODE_COATING",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.046667,
+              "outcome": "FP"
+            },
+            {
+              "rank": 7,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "INTERCALATION",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.046667,
+              "outcome": "FP"
+            },
+            {
+              "rank": 8,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "STATE_OF_CHARGE_MONITORING",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.046667,
+              "outcome": "FP"
+            },
+            {
+              "rank": 9,
+              "combo": [
+                "ELECTRODE_COATING",
+                "INTERCALATION",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.046667,
+              "outcome": "FP"
+            },
+            {
+              "rank": 10,
+              "combo": [
+                "INTERCALATION",
+                "STATE_OF_CHARGE_MONITORING",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.046667,
+              "outcome": "FP"
+            }
+          ]
+        },
+        {
+          "T": 2003,
+          "all_candidates_count": 375,
+          "actual_events": [
+            [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "ELECTRON_COLLECTION",
+              "INTERCALATION"
+            ],
+            [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "STATE_OF_CHARGE_MONITORING",
+              "THERMAL_MANAGEMENT"
+            ]
+          ],
+          "top10": [
+            {
+              "rank": 1,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "INTERCALATION",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.1716,
+              "outcome": "FP"
+            },
+            {
+              "rank": 2,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "ELECTRODE_COATING",
+                "INTERCALATION",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.1716,
+              "outcome": "FP"
+            },
+            {
+              "rank": 3,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "ELECTRON_COLLECTION",
+                "INTERCALATION",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.1716,
+              "outcome": "FP"
+            },
+            {
+              "rank": 4,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "INTERCALATION",
+                "STATE_OF_CHARGE_MONITORING",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.1716,
+              "outcome": "FP"
+            },
+            {
+              "rank": 5,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "FAST_CHARGING",
+                "INTERCALATION"
+              ],
+              "score": 0.1216,
+              "outcome": "FP"
+            },
+            {
+              "rank": 6,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "ELECTRODE_COATING",
+                "FAST_CHARGING",
+                "INTERCALATION"
+              ],
+              "score": 0.1216,
+              "outcome": "FP"
+            },
+            {
+              "rank": 7,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "ELECTRON_COLLECTION",
+                "FAST_CHARGING",
+                "INTERCALATION"
+              ],
+              "score": 0.1216,
+              "outcome": "FP"
+            },
+            {
+              "rank": 8,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "FAST_CHARGING",
+                "INTERCALATION",
+                "STATE_OF_CHARGE_MONITORING"
+              ],
+              "score": 0.1216,
+              "outcome": "FP"
+            },
+            {
+              "rank": 9,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.1144,
+              "outcome": "FP"
+            },
+            {
+              "rank": 10,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "INTERCALATION",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.1144,
+              "outcome": "FP"
+            }
+          ]
+        },
+        {
+          "T": 2005,
+          "all_candidates_count": 375,
+          "actual_events": [
+            [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "FAST_CHARGING",
+              "SAFETY_PROTECTION",
+              "THERMAL_MANAGEMENT"
+            ],
+            [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "STATE_OF_CHARGE_MONITORING",
+              "THERMAL_MANAGEMENT"
+            ]
+          ],
+          "top10": [
+            {
+              "rank": 1,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "SAFETY_PROTECTION",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.33,
+              "outcome": "FP"
+            },
+            {
+              "rank": 2,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.165,
+              "outcome": "FP"
+            },
+            {
+              "rank": 3,
+              "combo": [
+                "SAFETY_PROTECTION",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.165,
+              "outcome": "FP"
+            },
+            {
+              "rank": 4,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "INTERCALATION",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.165,
+              "outcome": "FP"
+            },
+            {
+              "rank": 5,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "SAFETY_PROTECTION",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.165,
+              "outcome": "FP"
+            },
+            {
+              "rank": 6,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "ELECTRODE_COATING",
+                "INTERCALATION",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.165,
+              "outcome": "FP"
+            },
+            {
+              "rank": 7,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "ELECTRODE_COATING",
+                "SAFETY_PROTECTION",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.165,
+              "outcome": "FP"
+            },
+            {
+              "rank": 8,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "ELECTRON_COLLECTION",
+                "INTERCALATION",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.165,
+              "outcome": "FP"
+            },
+            {
+              "rank": 9,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "ELECTRON_COLLECTION",
+                "SAFETY_PROTECTION",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.165,
+              "outcome": "FP"
+            },
+            {
+              "rank": 10,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "FAST_CHARGING",
+                "SAFETY_PROTECTION",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.165,
+              "outcome": "TP"
+            }
+          ]
+        },
+        {
+          "T": 2008,
+          "all_candidates_count": 375,
+          "actual_events": [
+            [
+              "FAST_CHARGING",
+              "THERMAL_MANAGEMENT"
+            ],
+            [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "FAST_CHARGING",
+              "SAFETY_PROTECTION",
+              "THERMAL_MANAGEMENT"
+            ]
+          ],
+          "top10": [
+            {
+              "rank": 1,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "SAFETY_PROTECTION",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.125714,
+              "outcome": "FP"
+            },
+            {
+              "rank": 2,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.062857,
+              "outcome": "FP"
+            },
+            {
+              "rank": 3,
+              "combo": [
+                "SAFETY_PROTECTION",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.062857,
+              "outcome": "FP"
+            },
+            {
+              "rank": 4,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "FAST_CHARGING",
+                "INTERCALATION"
+              ],
+              "score": 0.062857,
+              "outcome": "FP"
+            },
+            {
+              "rank": 5,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "INTERCALATION",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.062857,
+              "outcome": "FP"
+            },
+            {
+              "rank": 6,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "SAFETY_PROTECTION",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.062857,
+              "outcome": "FP"
+            },
+            {
+              "rank": 7,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "ELECTRODE_COATING",
+                "FAST_CHARGING",
+                "INTERCALATION"
+              ],
+              "score": 0.062857,
+              "outcome": "FP"
+            },
+            {
+              "rank": 8,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "ELECTRODE_COATING",
+                "INTERCALATION",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.062857,
+              "outcome": "FP"
+            },
+            {
+              "rank": 9,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "ELECTRODE_COATING",
+                "SAFETY_PROTECTION",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.062857,
+              "outcome": "FP"
+            },
+            {
+              "rank": 10,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "ELECTRON_COLLECTION",
+                "FAST_CHARGING",
+                "INTERCALATION"
+              ],
+              "score": 0.062857,
+              "outcome": "FP"
+            }
+          ]
+        },
+        {
+          "T": 2010,
+          "all_candidates_count": 375,
+          "actual_events": [
+            [
+              "FAST_CHARGING",
+              "THERMAL_MANAGEMENT"
+            ]
+          ],
+          "top10": [
+            {
+              "rank": 1,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "FAST_CHARGING",
+                "INTERCALATION"
+              ],
+              "score": 0.112,
+              "outcome": "FP"
+            },
+            {
+              "rank": 2,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "ELECTRODE_COATING",
+                "FAST_CHARGING",
+                "INTERCALATION"
+              ],
+              "score": 0.112,
+              "outcome": "FP"
+            },
+            {
+              "rank": 3,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "ELECTRON_COLLECTION",
+                "FAST_CHARGING",
+                "INTERCALATION"
+              ],
+              "score": 0.112,
+              "outcome": "FP"
+            },
+            {
+              "rank": 4,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "FAST_CHARGING",
+                "INTERCALATION",
+                "STATE_OF_CHARGE_MONITORING"
+              ],
+              "score": 0.112,
+              "outcome": "FP"
+            },
+            {
+              "rank": 5,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "FAST_CHARGING",
+                "SAFETY_PROTECTION",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.112,
+              "outcome": "FP"
+            },
+            {
+              "rank": 6,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "FAST_CHARGING",
+                "STATE_OF_CHARGE_MONITORING",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.112,
+              "outcome": "FP"
+            },
+            {
+              "rank": 7,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "FAST_CHARGING"
+              ],
+              "score": 0.074667,
+              "outcome": "FP"
+            },
+            {
+              "rank": 8,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "FAST_CHARGING",
+                "INTERCALATION"
+              ],
+              "score": 0.074667,
+              "outcome": "FP"
+            },
+            {
+              "rank": 9,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "ELECTRODE_COATING",
+                "FAST_CHARGING"
+              ],
+              "score": 0.074667,
+              "outcome": "FP"
+            },
+            {
+              "rank": 10,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "ELECTRON_COLLECTION",
+                "FAST_CHARGING"
+              ],
+              "score": 0.074667,
+              "outcome": "FP"
+            }
+          ]
+        },
+        {
+          "T": 2012,
+          "all_candidates_count": 375,
+          "actual_events": [
+            [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "ELECTRON_COLLECTION",
+              "INTERCALATION"
+            ],
+            [
+              "CELL_ASSEMBLY",
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "ELECTRODE_COATING"
+            ]
+          ],
+          "top10": [
+            {
+              "rank": 1,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "FAST_CHARGING",
+                "SAFETY_PROTECTION",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.33,
+              "outcome": "FP"
+            },
+            {
+              "rank": 2,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "FAST_CHARGING",
+                "SAFETY_PROTECTION"
+              ],
+              "score": 0.165,
+              "outcome": "FP"
+            },
+            {
+              "rank": 3,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "FAST_CHARGING",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.165,
+              "outcome": "FP"
+            },
+            {
+              "rank": 4,
+              "combo": [
+                "FAST_CHARGING",
+                "SAFETY_PROTECTION",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.165,
+              "outcome": "FP"
+            },
+            {
+              "rank": 5,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "FAST_CHARGING",
+                "INTERCALATION"
+              ],
+              "score": 0.165,
+              "outcome": "FP"
+            },
+            {
+              "rank": 6,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "ELECTRODE_COATING",
+                "FAST_CHARGING",
+                "INTERCALATION"
+              ],
+              "score": 0.165,
+              "outcome": "FP"
+            },
+            {
+              "rank": 7,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "ELECTRON_COLLECTION",
+                "FAST_CHARGING",
+                "INTERCALATION"
+              ],
+              "score": 0.165,
+              "outcome": "FP"
+            },
+            {
+              "rank": 8,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "FAST_CHARGING",
+                "INTERCALATION",
+                "STATE_OF_CHARGE_MONITORING"
+              ],
+              "score": 0.165,
+              "outcome": "FP"
+            },
+            {
+              "rank": 9,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "FAST_CHARGING",
+                "STATE_OF_CHARGE_MONITORING",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.165,
+              "outcome": "FP"
+            },
+            {
+              "rank": 10,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "FAST_CHARGING"
+              ],
+              "score": 0.11,
+              "outcome": "FP"
+            }
+          ]
+        },
+        {
+          "T": 2015,
+          "all_candidates_count": 375,
+          "actual_events": [
+            [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "ELECTRON_COLLECTION",
+              "INTERCALATION"
+            ],
+            [
+              "FAST_CHARGING",
+              "SAFETY_PROTECTION",
+              "THERMAL_MANAGEMENT"
+            ],
+            [
+              "CELL_ASSEMBLY",
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "ELECTRODE_COATING"
+            ]
+          ],
+          "top10": [
+            {
+              "rank": 1,
+              "combo": [
+                "FAST_CHARGING",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.22,
+              "outcome": "FP"
+            },
+            {
+              "rank": 2,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "FAST_CHARGING",
+                "SAFETY_PROTECTION",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.22,
+              "outcome": "FP"
+            },
+            {
+              "rank": 3,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "FAST_CHARGING",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.11,
+              "outcome": "FP"
+            },
+            {
+              "rank": 4,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "FAST_CHARGING",
+                "SAFETY_PROTECTION"
+              ],
+              "score": 0.11,
+              "outcome": "FP"
+            },
+            {
+              "rank": 5,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "FAST_CHARGING",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.11,
+              "outcome": "FP"
+            },
+            {
+              "rank": 6,
+              "combo": [
+                "ELECTRODE_COATING",
+                "FAST_CHARGING",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.11,
+              "outcome": "FP"
+            },
+            {
+              "rank": 7,
+              "combo": [
+                "ELECTRON_COLLECTION",
+                "FAST_CHARGING",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.11,
+              "outcome": "FP"
+            },
+            {
+              "rank": 8,
+              "combo": [
+                "FAST_CHARGING",
+                "INTERCALATION",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.11,
+              "outcome": "FP"
+            },
+            {
+              "rank": 9,
+              "combo": [
+                "FAST_CHARGING",
+                "ION_TRANSPORT",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.11,
+              "outcome": "FP"
+            },
+            {
+              "rank": 10,
+              "combo": [
+                "FAST_CHARGING",
+                "SAFETY_PROTECTION",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.11,
+              "outcome": "TP"
+            }
+          ]
+        },
+        {
+          "T": 2018,
+          "all_candidates_count": 375,
+          "actual_events": [
+            [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "FAST_CHARGING",
+              "THERMAL_MANAGEMENT"
+            ],
+            [
+              "FAST_CHARGING",
+              "SAFETY_PROTECTION",
+              "THERMAL_MANAGEMENT"
+            ],
+            [
+              "CELL_ASSEMBLY",
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "ELECTRODE_COATING"
+            ]
+          ],
+          "top10": [
+            {
+              "rank": 1,
+              "combo": [
+                "FAST_CHARGING",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.1192,
+              "outcome": "FP"
+            },
+            {
+              "rank": 2,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "FAST_CHARGING",
+                "SAFETY_PROTECTION",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.1192,
+              "outcome": "FP"
+            },
+            {
+              "rank": 3,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "FAST_CHARGING",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.0596,
+              "outcome": "FP"
+            },
+            {
+              "rank": 4,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "FAST_CHARGING",
+                "SAFETY_PROTECTION"
+              ],
+              "score": 0.0596,
+              "outcome": "FP"
+            },
+            {
+              "rank": 5,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "FAST_CHARGING",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.0596,
+              "outcome": "TP"
+            },
+            {
+              "rank": 6,
+              "combo": [
+                "ELECTRODE_COATING",
+                "FAST_CHARGING",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.0596,
+              "outcome": "FP"
+            },
+            {
+              "rank": 7,
+              "combo": [
+                "ELECTRON_COLLECTION",
+                "FAST_CHARGING",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.0596,
+              "outcome": "FP"
+            },
+            {
+              "rank": 8,
+              "combo": [
+                "FAST_CHARGING",
+                "INTERCALATION",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.0596,
+              "outcome": "FP"
+            },
+            {
+              "rank": 9,
+              "combo": [
+                "FAST_CHARGING",
+                "ION_TRANSPORT",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.0596,
+              "outcome": "FP"
+            },
+            {
+              "rank": 10,
+              "combo": [
+                "FAST_CHARGING",
+                "SAFETY_PROTECTION",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.0596,
+              "outcome": "TP"
+            }
+          ]
+        },
+        {
+          "T": 2020,
+          "all_candidates_count": 375,
+          "actual_events": [
+            [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "FAST_CHARGING",
+              "THERMAL_MANAGEMENT"
+            ]
+          ],
+          "top10": [
+            {
+              "rank": 1,
+              "combo": [
+                "FAST_CHARGING",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.015,
+              "outcome": "FP"
+            },
+            {
+              "rank": 2,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "ELECTRODE_COATING"
+              ],
+              "score": 0.015,
+              "outcome": "FP"
+            },
+            {
+              "rank": 3,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "INTERCALATION"
+              ],
+              "score": 0.015,
+              "outcome": "FP"
+            },
+            {
+              "rank": 4,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "ELECTRODE_COATING",
+                "INTERCALATION"
+              ],
+              "score": 0.015,
+              "outcome": "FP"
+            },
+            {
+              "rank": 5,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "ELECTRON_COLLECTION",
+                "INTERCALATION"
+              ],
+              "score": 0.015,
+              "outcome": "FP"
+            },
+            {
+              "rank": 6,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "INTERCALATION",
+                "STATE_OF_CHARGE_MONITORING"
+              ],
+              "score": 0.015,
+              "outcome": "FP"
+            },
+            {
+              "rank": 7,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "SAFETY_PROTECTION",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.015,
+              "outcome": "FP"
+            },
+            {
+              "rank": 8,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "STATE_OF_CHARGE_MONITORING",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.015,
+              "outcome": "FP"
+            },
+            {
+              "rank": 9,
+              "combo": [
+                "FAST_CHARGING",
+                "SAFETY_PROTECTION",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.015,
+              "outcome": "FP"
+            },
+            {
+              "rank": 10,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "FAST_CHARGING",
+                "SAFETY_PROTECTION",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.015,
+              "outcome": "FP"
+            }
+          ]
+        },
+        {
+          "T": 2023,
+          "all_candidates_count": 375,
+          "actual_events": [],
+          "top10": [
+            {
+              "rank": 1,
+              "combo": [
+                "FAST_CHARGING",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.017647,
+              "outcome": "FP"
+            },
+            {
+              "rank": 2,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "ELECTRODE_COATING"
+              ],
+              "score": 0.017647,
+              "outcome": "FP"
+            },
+            {
+              "rank": 3,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "INTERCALATION"
+              ],
+              "score": 0.017647,
+              "outcome": "FP"
+            },
+            {
+              "rank": 4,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "ELECTRODE_COATING",
+                "INTERCALATION"
+              ],
+              "score": 0.017647,
+              "outcome": "FP"
+            },
+            {
+              "rank": 5,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "ELECTRON_COLLECTION",
+                "INTERCALATION"
+              ],
+              "score": 0.017647,
+              "outcome": "FP"
+            },
+            {
+              "rank": 6,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "INTERCALATION",
+                "STATE_OF_CHARGE_MONITORING"
+              ],
+              "score": 0.017647,
+              "outcome": "FP"
+            },
+            {
+              "rank": 7,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "SAFETY_PROTECTION",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.017647,
+              "outcome": "FP"
+            },
+            {
+              "rank": 8,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "STATE_OF_CHARGE_MONITORING",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.017647,
+              "outcome": "FP"
+            },
+            {
+              "rank": 9,
+              "combo": [
+                "FAST_CHARGING",
+                "SAFETY_PROTECTION",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.017647,
+              "outcome": "FP"
+            },
+            {
+              "rank": 10,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "FAST_CHARGING",
+                "SAFETY_PROTECTION",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.017647,
+              "outcome": "FP"
+            }
+          ]
+        }
+      ]
+    },
+    "velocity_adjacency": {
+      "formula": "velocity+adjacency (no cost_bonus)",
+      "per_T": [
+        {
+          "T": 1991,
+          "all_candidates_count": 154,
+          "actual_events": [
+            [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "ELECTRODE_COATING",
+              "INTERCALATION"
+            ],
+            [
+              "CELL_ASSEMBLY",
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "INTERCALATION"
+            ]
+          ],
+          "top10": [
+            {
+              "rank": 1,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "ELECTROCHEMICAL_ENERGY_STORAGE"
+              ],
+              "score": 0.8,
+              "outcome": "FP"
+            },
+            {
+              "rank": 2,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "ELECTRODE_COATING"
+              ],
+              "score": 0.8,
+              "outcome": "FP"
+            },
+            {
+              "rank": 3,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "ELECTRON_COLLECTION"
+              ],
+              "score": 0.8,
+              "outcome": "FP"
+            },
+            {
+              "rank": 4,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "INTERCALATION"
+              ],
+              "score": 0.8,
+              "outcome": "FP"
+            },
+            {
+              "rank": 5,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "ION_TRANSPORT"
+              ],
+              "score": 0.8,
+              "outcome": "FP"
+            },
+            {
+              "rank": 6,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "SAFETY_PROTECTION"
+              ],
+              "score": 0.8,
+              "outcome": "FP"
+            },
+            {
+              "rank": 7,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "STATE_OF_CHARGE_MONITORING"
+              ],
+              "score": 0.8,
+              "outcome": "FP"
+            },
+            {
+              "rank": 8,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "ELECTRODE_COATING"
+              ],
+              "score": 0.8,
+              "outcome": "FP"
+            },
+            {
+              "rank": 9,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "ELECTRON_COLLECTION"
+              ],
+              "score": 0.8,
+              "outcome": "FP"
+            },
+            {
+              "rank": 10,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "INTERCALATION"
+              ],
+              "score": 0.8,
+              "outcome": "FP"
+            }
+          ]
+        },
+        {
+          "T": 1993,
+          "all_candidates_count": 154,
+          "actual_events": [
+            [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "ELECTRODE_COATING",
+              "INTERCALATION"
+            ],
+            [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "INTERCALATION",
+              "STATE_OF_CHARGE_MONITORING"
+            ]
+          ],
+          "top10": [
+            {
+              "rank": 1,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "ELECTROCHEMICAL_ENERGY_STORAGE"
+              ],
+              "score": 0.4,
+              "outcome": "FP"
+            },
+            {
+              "rank": 2,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "INTERCALATION"
+              ],
+              "score": 0.4,
+              "outcome": "FP"
+            },
+            {
+              "rank": 3,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "INTERCALATION"
+              ],
+              "score": 0.4,
+              "outcome": "FP"
+            },
+            {
+              "rank": 4,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "ELECTRODE_COATING",
+                "INTERCALATION"
+              ],
+              "score": 0.4,
+              "outcome": "FP"
+            },
+            {
+              "rank": 5,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "ELECTRON_COLLECTION",
+                "INTERCALATION"
+              ],
+              "score": 0.4,
+              "outcome": "FP"
+            },
+            {
+              "rank": 6,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "INTERCALATION",
+                "ION_TRANSPORT"
+              ],
+              "score": 0.4,
+              "outcome": "FP"
+            },
+            {
+              "rank": 7,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "INTERCALATION",
+                "SAFETY_PROTECTION"
+              ],
+              "score": 0.4,
+              "outcome": "FP"
+            },
+            {
+              "rank": 8,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "INTERCALATION",
+                "STATE_OF_CHARGE_MONITORING"
+              ],
+              "score": 0.4,
+              "outcome": "FP"
+            },
+            {
+              "rank": 9,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "ELECTRODE_COATING"
+              ],
+              "score": 0.266667,
+              "outcome": "FP"
+            },
+            {
+              "rank": 10,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "ELECTRON_COLLECTION"
+              ],
+              "score": 0.266667,
+              "outcome": "FP"
+            }
+          ]
+        },
+        {
+          "T": 1995,
+          "all_candidates_count": 246,
+          "actual_events": [
+            [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "ELECTRODE_COATING",
+              "INTERCALATION"
+            ],
+            [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "INTERCALATION",
+              "STATE_OF_CHARGE_MONITORING"
+            ]
+          ],
+          "top10": [
+            {
+              "rank": 1,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "INTERCALATION",
+                "STATE_OF_CHARGE_MONITORING"
+              ],
+              "score": 0.25,
+              "outcome": "FP"
+            },
+            {
+              "rank": 2,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "STATE_OF_CHARGE_MONITORING"
+              ],
+              "score": 0.166667,
+              "outcome": "FP"
+            },
+            {
+              "rank": 3,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "INTERCALATION",
+                "STATE_OF_CHARGE_MONITORING"
+              ],
+              "score": 0.166667,
+              "outcome": "FP"
+            },
+            {
+              "rank": 4,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "INTERCALATION",
+                "STATE_OF_CHARGE_MONITORING"
+              ],
+              "score": 0.166667,
+              "outcome": "TP"
+            },
+            {
+              "rank": 5,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "ELECTROCHEMICAL_ENERGY_STORAGE"
+              ],
+              "score": 0.15,
+              "outcome": "FP"
+            },
+            {
+              "rank": 6,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "INTERCALATION"
+              ],
+              "score": 0.15,
+              "outcome": "FP"
+            },
+            {
+              "rank": 7,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "ELECTRODE_COATING",
+                "INTERCALATION"
+              ],
+              "score": 0.15,
+              "outcome": "FP"
+            },
+            {
+              "rank": 8,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "ELECTRON_COLLECTION",
+                "INTERCALATION"
+              ],
+              "score": 0.15,
+              "outcome": "FP"
+            },
+            {
+              "rank": 9,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "INTERCALATION",
+                "ION_TRANSPORT"
+              ],
+              "score": 0.15,
+              "outcome": "FP"
+            },
+            {
+              "rank": 10,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "INTERCALATION",
+                "SAFETY_PROTECTION"
+              ],
+              "score": 0.15,
+              "outcome": "FP"
+            }
+          ]
+        },
+        {
+          "T": 1997,
+          "all_candidates_count": 246,
+          "actual_events": [
+            [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "ELECTRON_COLLECTION",
+              "INTERCALATION"
+            ]
+          ],
+          "top10": [
+            {
+              "rank": 1,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "INTERCALATION",
+                "STATE_OF_CHARGE_MONITORING"
+              ],
+              "score": 0.2,
+              "outcome": "FP"
+            },
+            {
+              "rank": 2,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "ELECTRODE_COATING",
+                "INTERCALATION",
+                "STATE_OF_CHARGE_MONITORING"
+              ],
+              "score": 0.2,
+              "outcome": "FP"
+            },
+            {
+              "rank": 3,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "INTERCALATION",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.15,
+              "outcome": "FP"
+            },
+            {
+              "rank": 4,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "ELECTRODE_COATING",
+                "INTERCALATION",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.15,
+              "outcome": "FP"
+            },
+            {
+              "rank": 5,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "STATE_OF_CHARGE_MONITORING"
+              ],
+              "score": 0.133333,
+              "outcome": "FP"
+            },
+            {
+              "rank": 6,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "INTERCALATION",
+                "STATE_OF_CHARGE_MONITORING"
+              ],
+              "score": 0.133333,
+              "outcome": "FP"
+            },
+            {
+              "rank": 7,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "ELECTRODE_COATING",
+                "STATE_OF_CHARGE_MONITORING"
+              ],
+              "score": 0.133333,
+              "outcome": "FP"
+            },
+            {
+              "rank": 8,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "INTERCALATION",
+                "STATE_OF_CHARGE_MONITORING"
+              ],
+              "score": 0.133333,
+              "outcome": "FP"
+            },
+            {
+              "rank": 9,
+              "combo": [
+                "ELECTRODE_COATING",
+                "INTERCALATION",
+                "STATE_OF_CHARGE_MONITORING"
+              ],
+              "score": 0.133333,
+              "outcome": "FP"
+            },
+            {
+              "rank": 10,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "STATE_OF_CHARGE_MONITORING"
+              ],
+              "score": 0.1,
+              "outcome": "FP"
+            }
+          ]
+        },
+        {
+          "T": 2000,
+          "all_candidates_count": 246,
+          "actual_events": [
+            [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "SAFETY_PROTECTION",
+              "THERMAL_MANAGEMENT"
+            ],
+            [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "ELECTRON_COLLECTION",
+              "INTERCALATION"
+            ]
+          ],
+          "top10": [
+            {
+              "rank": 1,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "INTERCALATION",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.05,
+              "outcome": "FP"
+            },
+            {
+              "rank": 2,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "ELECTRODE_COATING",
+                "INTERCALATION",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.05,
+              "outcome": "FP"
+            },
+            {
+              "rank": 3,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "INTERCALATION",
+                "STATE_OF_CHARGE_MONITORING",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.05,
+              "outcome": "FP"
+            },
+            {
+              "rank": 4,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.033333,
+              "outcome": "FP"
+            },
+            {
+              "rank": 5,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "INTERCALATION",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.033333,
+              "outcome": "FP"
+            },
+            {
+              "rank": 6,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "ELECTRODE_COATING",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.033333,
+              "outcome": "FP"
+            },
+            {
+              "rank": 7,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "INTERCALATION",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.033333,
+              "outcome": "FP"
+            },
+            {
+              "rank": 8,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "STATE_OF_CHARGE_MONITORING",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.033333,
+              "outcome": "FP"
+            },
+            {
+              "rank": 9,
+              "combo": [
+                "ELECTRODE_COATING",
+                "INTERCALATION",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.033333,
+              "outcome": "FP"
+            },
+            {
+              "rank": 10,
+              "combo": [
+                "INTERCALATION",
+                "STATE_OF_CHARGE_MONITORING",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.033333,
+              "outcome": "FP"
+            }
+          ]
+        },
+        {
+          "T": 2003,
+          "all_candidates_count": 375,
+          "actual_events": [
+            [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "ELECTRON_COLLECTION",
+              "INTERCALATION"
+            ],
+            [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "STATE_OF_CHARGE_MONITORING",
+              "THERMAL_MANAGEMENT"
+            ]
+          ],
+          "top10": [
+            {
+              "rank": 1,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "INTERCALATION",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.15,
+              "outcome": "FP"
+            },
+            {
+              "rank": 2,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "ELECTRODE_COATING",
+                "INTERCALATION",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.15,
+              "outcome": "FP"
+            },
+            {
+              "rank": 3,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "ELECTRON_COLLECTION",
+                "INTERCALATION",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.15,
+              "outcome": "FP"
+            },
+            {
+              "rank": 4,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "INTERCALATION",
+                "STATE_OF_CHARGE_MONITORING",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.15,
+              "outcome": "FP"
+            },
+            {
+              "rank": 5,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "FAST_CHARGING",
+                "INTERCALATION"
+              ],
+              "score": 0.1,
+              "outcome": "FP"
+            },
+            {
+              "rank": 6,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "ELECTRODE_COATING",
+                "FAST_CHARGING",
+                "INTERCALATION"
+              ],
+              "score": 0.1,
+              "outcome": "FP"
+            },
+            {
+              "rank": 7,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "ELECTRON_COLLECTION",
+                "FAST_CHARGING",
+                "INTERCALATION"
+              ],
+              "score": 0.1,
+              "outcome": "FP"
+            },
+            {
+              "rank": 8,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "FAST_CHARGING",
+                "INTERCALATION",
+                "STATE_OF_CHARGE_MONITORING"
+              ],
+              "score": 0.1,
+              "outcome": "FP"
+            },
+            {
+              "rank": 9,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.1,
+              "outcome": "FP"
+            },
+            {
+              "rank": 10,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "INTERCALATION",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.1,
+              "outcome": "FP"
+            }
+          ]
+        },
+        {
+          "T": 2005,
+          "all_candidates_count": 375,
+          "actual_events": [
+            [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "FAST_CHARGING",
+              "SAFETY_PROTECTION",
+              "THERMAL_MANAGEMENT"
+            ],
+            [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "STATE_OF_CHARGE_MONITORING",
+              "THERMAL_MANAGEMENT"
+            ]
+          ],
+          "top10": [
+            {
+              "rank": 1,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.15,
+              "outcome": "FP"
+            },
+            {
+              "rank": 2,
+              "combo": [
+                "SAFETY_PROTECTION",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.15,
+              "outcome": "FP"
+            },
+            {
+              "rank": 3,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "INTERCALATION",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.15,
+              "outcome": "FP"
+            },
+            {
+              "rank": 4,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "SAFETY_PROTECTION",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.15,
+              "outcome": "FP"
+            },
+            {
+              "rank": 5,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "ELECTRODE_COATING",
+                "INTERCALATION",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.15,
+              "outcome": "FP"
+            },
+            {
+              "rank": 6,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "ELECTRODE_COATING",
+                "SAFETY_PROTECTION",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.15,
+              "outcome": "FP"
+            },
+            {
+              "rank": 7,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "ELECTRON_COLLECTION",
+                "INTERCALATION",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.15,
+              "outcome": "FP"
+            },
+            {
+              "rank": 8,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "ELECTRON_COLLECTION",
+                "SAFETY_PROTECTION",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.15,
+              "outcome": "FP"
+            },
+            {
+              "rank": 9,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "FAST_CHARGING",
+                "SAFETY_PROTECTION",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.15,
+              "outcome": "TP"
+            },
+            {
+              "rank": 10,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "INTERCALATION",
+                "SAFETY_PROTECTION",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.15,
+              "outcome": "FP"
+            }
+          ]
+        },
+        {
+          "T": 2008,
+          "all_candidates_count": 375,
+          "actual_events": [
+            [
+              "FAST_CHARGING",
+              "THERMAL_MANAGEMENT"
+            ],
+            [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "FAST_CHARGING",
+              "SAFETY_PROTECTION",
+              "THERMAL_MANAGEMENT"
+            ]
+          ],
+          "top10": [
+            {
+              "rank": 1,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.05,
+              "outcome": "FP"
+            },
+            {
+              "rank": 2,
+              "combo": [
+                "SAFETY_PROTECTION",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.05,
+              "outcome": "FP"
+            },
+            {
+              "rank": 3,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "FAST_CHARGING",
+                "INTERCALATION"
+              ],
+              "score": 0.05,
+              "outcome": "FP"
+            },
+            {
+              "rank": 4,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "INTERCALATION",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.05,
+              "outcome": "FP"
+            },
+            {
+              "rank": 5,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "SAFETY_PROTECTION",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.05,
+              "outcome": "FP"
+            },
+            {
+              "rank": 6,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "ELECTRODE_COATING",
+                "FAST_CHARGING",
+                "INTERCALATION"
+              ],
+              "score": 0.05,
+              "outcome": "FP"
+            },
+            {
+              "rank": 7,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "ELECTRODE_COATING",
+                "INTERCALATION",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.05,
+              "outcome": "FP"
+            },
+            {
+              "rank": 8,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "ELECTRODE_COATING",
+                "SAFETY_PROTECTION",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.05,
+              "outcome": "FP"
+            },
+            {
+              "rank": 9,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "ELECTRON_COLLECTION",
+                "FAST_CHARGING",
+                "INTERCALATION"
+              ],
+              "score": 0.05,
+              "outcome": "FP"
+            },
+            {
+              "rank": 10,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "ELECTRON_COLLECTION",
+                "INTERCALATION",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.05,
+              "outcome": "FP"
+            }
+          ]
+        },
+        {
+          "T": 2010,
+          "all_candidates_count": 375,
+          "actual_events": [
+            [
+              "FAST_CHARGING",
+              "THERMAL_MANAGEMENT"
+            ]
+          ],
+          "top10": [
+            {
+              "rank": 1,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "FAST_CHARGING",
+                "INTERCALATION"
+              ],
+              "score": 0.1,
+              "outcome": "FP"
+            },
+            {
+              "rank": 2,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "ELECTRODE_COATING",
+                "FAST_CHARGING",
+                "INTERCALATION"
+              ],
+              "score": 0.1,
+              "outcome": "FP"
+            },
+            {
+              "rank": 3,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "ELECTRON_COLLECTION",
+                "FAST_CHARGING",
+                "INTERCALATION"
+              ],
+              "score": 0.1,
+              "outcome": "FP"
+            },
+            {
+              "rank": 4,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "FAST_CHARGING",
+                "INTERCALATION",
+                "STATE_OF_CHARGE_MONITORING"
+              ],
+              "score": 0.1,
+              "outcome": "FP"
+            },
+            {
+              "rank": 5,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "FAST_CHARGING",
+                "SAFETY_PROTECTION",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.1,
+              "outcome": "FP"
+            },
+            {
+              "rank": 6,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "FAST_CHARGING",
+                "STATE_OF_CHARGE_MONITORING",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.1,
+              "outcome": "FP"
+            },
+            {
+              "rank": 7,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "FAST_CHARGING"
+              ],
+              "score": 0.066667,
+              "outcome": "FP"
+            },
+            {
+              "rank": 8,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "FAST_CHARGING",
+                "INTERCALATION"
+              ],
+              "score": 0.066667,
+              "outcome": "FP"
+            },
+            {
+              "rank": 9,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "ELECTRODE_COATING",
+                "FAST_CHARGING"
+              ],
+              "score": 0.066667,
+              "outcome": "FP"
+            },
+            {
+              "rank": 10,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "ELECTRON_COLLECTION",
+                "FAST_CHARGING"
+              ],
+              "score": 0.066667,
+              "outcome": "FP"
+            }
+          ]
+        },
+        {
+          "T": 2012,
+          "all_candidates_count": 375,
+          "actual_events": [
+            [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "ELECTRON_COLLECTION",
+              "INTERCALATION"
+            ],
+            [
+              "CELL_ASSEMBLY",
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "ELECTRODE_COATING"
+            ]
+          ],
+          "top10": [
+            {
+              "rank": 1,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "FAST_CHARGING",
+                "SAFETY_PROTECTION"
+              ],
+              "score": 0.15,
+              "outcome": "FP"
+            },
+            {
+              "rank": 2,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "FAST_CHARGING",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.15,
+              "outcome": "FP"
+            },
+            {
+              "rank": 3,
+              "combo": [
+                "FAST_CHARGING",
+                "SAFETY_PROTECTION",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.15,
+              "outcome": "FP"
+            },
+            {
+              "rank": 4,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "FAST_CHARGING",
+                "INTERCALATION"
+              ],
+              "score": 0.15,
+              "outcome": "FP"
+            },
+            {
+              "rank": 5,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "ELECTRODE_COATING",
+                "FAST_CHARGING",
+                "INTERCALATION"
+              ],
+              "score": 0.15,
+              "outcome": "FP"
+            },
+            {
+              "rank": 6,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "ELECTRON_COLLECTION",
+                "FAST_CHARGING",
+                "INTERCALATION"
+              ],
+              "score": 0.15,
+              "outcome": "FP"
+            },
+            {
+              "rank": 7,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "FAST_CHARGING",
+                "INTERCALATION",
+                "STATE_OF_CHARGE_MONITORING"
+              ],
+              "score": 0.15,
+              "outcome": "FP"
+            },
+            {
+              "rank": 8,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "FAST_CHARGING",
+                "STATE_OF_CHARGE_MONITORING",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.15,
+              "outcome": "FP"
+            },
+            {
+              "rank": 9,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "FAST_CHARGING"
+              ],
+              "score": 0.1,
+              "outcome": "FP"
+            },
+            {
+              "rank": 10,
+              "combo": [
+                "FAST_CHARGING",
+                "SAFETY_PROTECTION"
+              ],
+              "score": 0.1,
+              "outcome": "FP"
+            }
+          ]
+        },
+        {
+          "T": 2015,
+          "all_candidates_count": 375,
+          "actual_events": [
+            [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "ELECTRON_COLLECTION",
+              "INTERCALATION"
+            ],
+            [
+              "FAST_CHARGING",
+              "SAFETY_PROTECTION",
+              "THERMAL_MANAGEMENT"
+            ],
+            [
+              "CELL_ASSEMBLY",
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "ELECTRODE_COATING"
+            ]
+          ],
+          "top10": [
+            {
+              "rank": 1,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "FAST_CHARGING",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.1,
+              "outcome": "FP"
+            },
+            {
+              "rank": 2,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "FAST_CHARGING",
+                "SAFETY_PROTECTION"
+              ],
+              "score": 0.1,
+              "outcome": "FP"
+            },
+            {
+              "rank": 3,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "FAST_CHARGING",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.1,
+              "outcome": "FP"
+            },
+            {
+              "rank": 4,
+              "combo": [
+                "ELECTRODE_COATING",
+                "FAST_CHARGING",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.1,
+              "outcome": "FP"
+            },
+            {
+              "rank": 5,
+              "combo": [
+                "ELECTRON_COLLECTION",
+                "FAST_CHARGING",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.1,
+              "outcome": "FP"
+            },
+            {
+              "rank": 6,
+              "combo": [
+                "FAST_CHARGING",
+                "INTERCALATION",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.1,
+              "outcome": "FP"
+            },
+            {
+              "rank": 7,
+              "combo": [
+                "FAST_CHARGING",
+                "ION_TRANSPORT",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.1,
+              "outcome": "FP"
+            },
+            {
+              "rank": 8,
+              "combo": [
+                "FAST_CHARGING",
+                "SAFETY_PROTECTION",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.1,
+              "outcome": "TP"
+            },
+            {
+              "rank": 9,
+              "combo": [
+                "FAST_CHARGING",
+                "STATE_OF_CHARGE_MONITORING",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.1,
+              "outcome": "FP"
+            },
+            {
+              "rank": 10,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "FAST_CHARGING",
+                "INTERCALATION"
+              ],
+              "score": 0.1,
+              "outcome": "FP"
+            }
+          ]
+        },
+        {
+          "T": 2018,
+          "all_candidates_count": 375,
+          "actual_events": [
+            [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "FAST_CHARGING",
+              "THERMAL_MANAGEMENT"
+            ],
+            [
+              "FAST_CHARGING",
+              "SAFETY_PROTECTION",
+              "THERMAL_MANAGEMENT"
+            ],
+            [
+              "CELL_ASSEMBLY",
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "ELECTRODE_COATING"
+            ]
+          ],
+          "top10": [
+            {
+              "rank": 1,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "FAST_CHARGING",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.05,
+              "outcome": "FP"
+            },
+            {
+              "rank": 2,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "FAST_CHARGING",
+                "SAFETY_PROTECTION"
+              ],
+              "score": 0.05,
+              "outcome": "FP"
+            },
+            {
+              "rank": 3,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "FAST_CHARGING",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.05,
+              "outcome": "TP"
+            },
+            {
+              "rank": 4,
+              "combo": [
+                "ELECTRODE_COATING",
+                "FAST_CHARGING",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.05,
+              "outcome": "FP"
+            },
+            {
+              "rank": 5,
+              "combo": [
+                "ELECTRON_COLLECTION",
+                "FAST_CHARGING",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.05,
+              "outcome": "FP"
+            },
+            {
+              "rank": 6,
+              "combo": [
+                "FAST_CHARGING",
+                "INTERCALATION",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.05,
+              "outcome": "FP"
+            },
+            {
+              "rank": 7,
+              "combo": [
+                "FAST_CHARGING",
+                "ION_TRANSPORT",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.05,
+              "outcome": "FP"
+            },
+            {
+              "rank": 8,
+              "combo": [
+                "FAST_CHARGING",
+                "SAFETY_PROTECTION",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.05,
+              "outcome": "TP"
+            },
+            {
+              "rank": 9,
+              "combo": [
+                "FAST_CHARGING",
+                "STATE_OF_CHARGE_MONITORING",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.05,
+              "outcome": "FP"
+            },
+            {
+              "rank": 10,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "ELECTRODE_COATING",
+                "FAST_CHARGING"
+              ],
+              "score": 0.05,
+              "outcome": "FP"
+            }
+          ]
+        },
+        {
+          "T": 2020,
+          "all_candidates_count": 375,
+          "actual_events": [
+            [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "FAST_CHARGING",
+              "THERMAL_MANAGEMENT"
+            ]
+          ],
+          "top10": [
+            {
+              "rank": 1,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "ELECTROCHEMICAL_ENERGY_STORAGE"
+              ],
+              "score": 0.0,
+              "outcome": "FP"
+            },
+            {
+              "rank": 2,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "ELECTRODE_COATING"
+              ],
+              "score": 0.0,
+              "outcome": "FP"
+            },
+            {
+              "rank": 3,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "ELECTRON_COLLECTION"
+              ],
+              "score": 0.0,
+              "outcome": "FP"
+            },
+            {
+              "rank": 4,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "FAST_CHARGING"
+              ],
+              "score": 0.0,
+              "outcome": "FP"
+            },
+            {
+              "rank": 5,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "INTERCALATION"
+              ],
+              "score": 0.0,
+              "outcome": "FP"
+            },
+            {
+              "rank": 6,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "ION_TRANSPORT"
+              ],
+              "score": 0.0,
+              "outcome": "FP"
+            },
+            {
+              "rank": 7,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "SAFETY_PROTECTION"
+              ],
+              "score": 0.0,
+              "outcome": "FP"
+            },
+            {
+              "rank": 8,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "STATE_OF_CHARGE_MONITORING"
+              ],
+              "score": 0.0,
+              "outcome": "FP"
+            },
+            {
+              "rank": 9,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.0,
+              "outcome": "FP"
+            },
+            {
+              "rank": 10,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "ELECTRODE_COATING"
+              ],
+              "score": 0.0,
+              "outcome": "FP"
+            }
+          ]
+        },
+        {
+          "T": 2023,
+          "all_candidates_count": 375,
+          "actual_events": [],
+          "top10": [
+            {
+              "rank": 1,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "ELECTROCHEMICAL_ENERGY_STORAGE"
+              ],
+              "score": 0.0,
+              "outcome": "FP"
+            },
+            {
+              "rank": 2,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "ELECTRODE_COATING"
+              ],
+              "score": 0.0,
+              "outcome": "FP"
+            },
+            {
+              "rank": 3,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "ELECTRON_COLLECTION"
+              ],
+              "score": 0.0,
+              "outcome": "FP"
+            },
+            {
+              "rank": 4,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "FAST_CHARGING"
+              ],
+              "score": 0.0,
+              "outcome": "FP"
+            },
+            {
+              "rank": 5,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "INTERCALATION"
+              ],
+              "score": 0.0,
+              "outcome": "FP"
+            },
+            {
+              "rank": 6,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "ION_TRANSPORT"
+              ],
+              "score": 0.0,
+              "outcome": "FP"
+            },
+            {
+              "rank": 7,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "SAFETY_PROTECTION"
+              ],
+              "score": 0.0,
+              "outcome": "FP"
+            },
+            {
+              "rank": 8,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "STATE_OF_CHARGE_MONITORING"
+              ],
+              "score": 0.0,
+              "outcome": "FP"
+            },
+            {
+              "rank": 9,
+              "combo": [
+                "CELL_ASSEMBLY",
+                "THERMAL_MANAGEMENT"
+              ],
+              "score": 0.0,
+              "outcome": "FP"
+            },
+            {
+              "rank": 10,
+              "combo": [
+                "ELECTROCHEMICAL_ENERGY_STORAGE",
+                "ELECTRODE_COATING"
+              ],
+              "score": 0.0,
+              "outcome": "FP"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "byte_equality_verification": [
+    {
+      "T": 1991,
+      "identical": false,
+      "divergences": [
+        {
+          "rank": 1,
+          "formula_b": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "ELECTROCHEMICAL_ENERGY_STORAGE"
+            ],
+            "score": 0.8576
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "ELECTROCHEMICAL_ENERGY_STORAGE"
+            ],
+            "score": 0.8
+          }
+        },
+        {
+          "rank": 2,
+          "formula_b": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "ELECTRODE_COATING"
+            ],
+            "score": 0.8576
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "ELECTRODE_COATING"
+            ],
+            "score": 0.8
+          }
+        },
+        {
+          "rank": 3,
+          "formula_b": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "ELECTRON_COLLECTION"
+            ],
+            "score": 0.8576
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "ELECTRON_COLLECTION"
+            ],
+            "score": 0.8
+          }
+        },
+        {
+          "rank": 4,
+          "formula_b": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "INTERCALATION"
+            ],
+            "score": 0.8576
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "INTERCALATION"
+            ],
+            "score": 0.8
+          }
+        },
+        {
+          "rank": 5,
+          "formula_b": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "ION_TRANSPORT"
+            ],
+            "score": 0.8576
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "ION_TRANSPORT"
+            ],
+            "score": 0.8
+          }
+        },
+        {
+          "rank": 6,
+          "formula_b": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "SAFETY_PROTECTION"
+            ],
+            "score": 0.8576
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "SAFETY_PROTECTION"
+            ],
+            "score": 0.8
+          }
+        },
+        {
+          "rank": 7,
+          "formula_b": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "STATE_OF_CHARGE_MONITORING"
+            ],
+            "score": 0.8576
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "STATE_OF_CHARGE_MONITORING"
+            ],
+            "score": 0.8
+          }
+        },
+        {
+          "rank": 8,
+          "formula_b": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "ELECTRODE_COATING"
+            ],
+            "score": 0.8576
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "ELECTRODE_COATING"
+            ],
+            "score": 0.8
+          }
+        },
+        {
+          "rank": 9,
+          "formula_b": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "ELECTRON_COLLECTION"
+            ],
+            "score": 0.8576
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "ELECTRON_COLLECTION"
+            ],
+            "score": 0.8
+          }
+        },
+        {
+          "rank": 10,
+          "formula_b": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "INTERCALATION"
+            ],
+            "score": 0.8576
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "INTERCALATION"
+            ],
+            "score": 0.8
+          }
+        }
+      ],
+      "fb_tp_count": 0,
+      "va_tp_count": 0
+    },
+    {
+      "T": 1993,
+      "identical": false,
+      "divergences": [
+        {
+          "rank": 1,
+          "formula_b": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "INTERCALATION"
+            ],
+            "score": 0.8579
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "ELECTROCHEMICAL_ENERGY_STORAGE"
+            ],
+            "score": 0.4
+          }
+        },
+        {
+          "rank": 2,
+          "formula_b": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "ELECTROCHEMICAL_ENERGY_STORAGE"
+            ],
+            "score": 0.42895
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "INTERCALATION"
+            ],
+            "score": 0.4
+          }
+        },
+        {
+          "rank": 3,
+          "formula_b": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "INTERCALATION"
+            ],
+            "score": 0.42895
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "INTERCALATION"
+            ],
+            "score": 0.4
+          }
+        },
+        {
+          "rank": 4,
+          "formula_b": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "INTERCALATION"
+            ],
+            "score": 0.42895
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "ELECTRODE_COATING",
+              "INTERCALATION"
+            ],
+            "score": 0.4
+          }
+        },
+        {
+          "rank": 5,
+          "formula_b": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "ELECTRODE_COATING",
+              "INTERCALATION"
+            ],
+            "score": 0.42895
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "ELECTRON_COLLECTION",
+              "INTERCALATION"
+            ],
+            "score": 0.4
+          }
+        },
+        {
+          "rank": 6,
+          "formula_b": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "ELECTRON_COLLECTION",
+              "INTERCALATION"
+            ],
+            "score": 0.42895
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "INTERCALATION",
+              "ION_TRANSPORT"
+            ],
+            "score": 0.4
+          }
+        },
+        {
+          "rank": 7,
+          "formula_b": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "INTERCALATION",
+              "ION_TRANSPORT"
+            ],
+            "score": 0.42895
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "INTERCALATION",
+              "SAFETY_PROTECTION"
+            ],
+            "score": 0.4
+          }
+        },
+        {
+          "rank": 8,
+          "formula_b": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "INTERCALATION",
+              "SAFETY_PROTECTION"
+            ],
+            "score": 0.42895
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "INTERCALATION",
+              "STATE_OF_CHARGE_MONITORING"
+            ],
+            "score": 0.4
+          }
+        },
+        {
+          "rank": 9,
+          "formula_b": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "INTERCALATION",
+              "STATE_OF_CHARGE_MONITORING"
+            ],
+            "score": 0.42895
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "ELECTRODE_COATING"
+            ],
+            "score": 0.266667
+          }
+        },
+        {
+          "rank": 10,
+          "formula_b": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "ELECTRODE_COATING"
+            ],
+            "score": 0.285967
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "ELECTRON_COLLECTION"
+            ],
+            "score": 0.266667
+          }
+        }
+      ],
+      "fb_tp_count": 0,
+      "va_tp_count": 0
+    },
+    {
+      "T": 1995,
+      "identical": false,
+      "divergences": [
+        {
+          "rank": 1,
+          "formula_b": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "INTERCALATION"
+            ],
+            "score": 0.324
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "INTERCALATION",
+              "STATE_OF_CHARGE_MONITORING"
+            ],
+            "score": 0.25
+          }
+        },
+        {
+          "rank": 2,
+          "formula_b": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "INTERCALATION",
+              "STATE_OF_CHARGE_MONITORING"
+            ],
+            "score": 0.262
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "STATE_OF_CHARGE_MONITORING"
+            ],
+            "score": 0.166667
+          }
+        },
+        {
+          "rank": 3,
+          "formula_b": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "STATE_OF_CHARGE_MONITORING"
+            ],
+            "score": 0.174667
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "INTERCALATION",
+              "STATE_OF_CHARGE_MONITORING"
+            ],
+            "score": 0.166667
+          }
+        },
+        {
+          "rank": 4,
+          "formula_b": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "INTERCALATION",
+              "STATE_OF_CHARGE_MONITORING"
+            ],
+            "score": 0.174667
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "INTERCALATION",
+              "STATE_OF_CHARGE_MONITORING"
+            ],
+            "score": 0.166667
+          }
+        },
+        {
+          "rank": 5,
+          "formula_b": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "INTERCALATION",
+              "STATE_OF_CHARGE_MONITORING"
+            ],
+            "score": 0.174667
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "ELECTROCHEMICAL_ENERGY_STORAGE"
+            ],
+            "score": 0.15
+          }
+        },
+        {
+          "rank": 6,
+          "formula_b": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "ELECTROCHEMICAL_ENERGY_STORAGE"
+            ],
+            "score": 0.162
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "INTERCALATION"
+            ],
+            "score": 0.15
+          }
+        },
+        {
+          "rank": 7,
+          "formula_b": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "INTERCALATION"
+            ],
+            "score": 0.162
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "ELECTRODE_COATING",
+              "INTERCALATION"
+            ],
+            "score": 0.15
+          }
+        },
+        {
+          "rank": 8,
+          "formula_b": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "ELECTRODE_COATING",
+              "INTERCALATION"
+            ],
+            "score": 0.162
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "ELECTRON_COLLECTION",
+              "INTERCALATION"
+            ],
+            "score": 0.15
+          }
+        },
+        {
+          "rank": 9,
+          "formula_b": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "ELECTRON_COLLECTION",
+              "INTERCALATION"
+            ],
+            "score": 0.162
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "INTERCALATION",
+              "ION_TRANSPORT"
+            ],
+            "score": 0.15
+          }
+        },
+        {
+          "rank": 10,
+          "formula_b": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "INTERCALATION",
+              "ION_TRANSPORT"
+            ],
+            "score": 0.162
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "INTERCALATION",
+              "SAFETY_PROTECTION"
+            ],
+            "score": 0.15
+          }
+        }
+      ],
+      "fb_tp_count": 1,
+      "va_tp_count": 1
+    },
+    {
+      "T": 1997,
+      "identical": false,
+      "divergences": [
+        {
+          "rank": 1,
+          "formula_b": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "INTERCALATION",
+              "STATE_OF_CHARGE_MONITORING"
+            ],
+            "score": 0.21125
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "INTERCALATION",
+              "STATE_OF_CHARGE_MONITORING"
+            ],
+            "score": 0.2
+          }
+        },
+        {
+          "rank": 2,
+          "formula_b": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "ELECTRODE_COATING",
+              "INTERCALATION",
+              "STATE_OF_CHARGE_MONITORING"
+            ],
+            "score": 0.21125
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "ELECTRODE_COATING",
+              "INTERCALATION",
+              "STATE_OF_CHARGE_MONITORING"
+            ],
+            "score": 0.2
+          }
+        },
+        {
+          "rank": 3,
+          "formula_b": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "INTERCALATION",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.16125
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "INTERCALATION",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.15
+          }
+        },
+        {
+          "rank": 4,
+          "formula_b": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "ELECTRODE_COATING",
+              "INTERCALATION",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.16125
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "ELECTRODE_COATING",
+              "INTERCALATION",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.15
+          }
+        },
+        {
+          "rank": 5,
+          "formula_b": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "STATE_OF_CHARGE_MONITORING"
+            ],
+            "score": 0.140833
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "STATE_OF_CHARGE_MONITORING"
+            ],
+            "score": 0.133333
+          }
+        },
+        {
+          "rank": 6,
+          "formula_b": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "INTERCALATION",
+              "STATE_OF_CHARGE_MONITORING"
+            ],
+            "score": 0.140833
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "INTERCALATION",
+              "STATE_OF_CHARGE_MONITORING"
+            ],
+            "score": 0.133333
+          }
+        },
+        {
+          "rank": 7,
+          "formula_b": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "ELECTRODE_COATING",
+              "STATE_OF_CHARGE_MONITORING"
+            ],
+            "score": 0.140833
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "ELECTRODE_COATING",
+              "STATE_OF_CHARGE_MONITORING"
+            ],
+            "score": 0.133333
+          }
+        },
+        {
+          "rank": 8,
+          "formula_b": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "INTERCALATION",
+              "STATE_OF_CHARGE_MONITORING"
+            ],
+            "score": 0.140833
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "INTERCALATION",
+              "STATE_OF_CHARGE_MONITORING"
+            ],
+            "score": 0.133333
+          }
+        },
+        {
+          "rank": 9,
+          "formula_b": {
+            "combo": [
+              "ELECTRODE_COATING",
+              "INTERCALATION",
+              "STATE_OF_CHARGE_MONITORING"
+            ],
+            "score": 0.140833
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "ELECTRODE_COATING",
+              "INTERCALATION",
+              "STATE_OF_CHARGE_MONITORING"
+            ],
+            "score": 0.133333
+          }
+        },
+        {
+          "rank": 10,
+          "formula_b": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "INTERCALATION",
+              "SAFETY_PROTECTION"
+            ],
+            "score": 0.11125
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "STATE_OF_CHARGE_MONITORING"
+            ],
+            "score": 0.1
+          }
+        }
+      ],
+      "fb_tp_count": 0,
+      "va_tp_count": 0
+    },
+    {
+      "T": 2000,
+      "identical": false,
+      "divergences": [
+        {
+          "rank": 1,
+          "formula_b": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "INTERCALATION",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.07
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "INTERCALATION",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.05
+          }
+        },
+        {
+          "rank": 2,
+          "formula_b": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "ELECTRODE_COATING",
+              "INTERCALATION",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.07
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "ELECTRODE_COATING",
+              "INTERCALATION",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.05
+          }
+        },
+        {
+          "rank": 3,
+          "formula_b": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "INTERCALATION",
+              "STATE_OF_CHARGE_MONITORING",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.07
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "INTERCALATION",
+              "STATE_OF_CHARGE_MONITORING",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.05
+          }
+        },
+        {
+          "rank": 4,
+          "formula_b": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.046667
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.033333
+          }
+        },
+        {
+          "rank": 5,
+          "formula_b": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "INTERCALATION",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.046667
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "INTERCALATION",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.033333
+          }
+        },
+        {
+          "rank": 6,
+          "formula_b": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "ELECTRODE_COATING",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.046667
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "ELECTRODE_COATING",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.033333
+          }
+        },
+        {
+          "rank": 7,
+          "formula_b": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "INTERCALATION",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.046667
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "INTERCALATION",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.033333
+          }
+        },
+        {
+          "rank": 8,
+          "formula_b": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "STATE_OF_CHARGE_MONITORING",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.046667
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "STATE_OF_CHARGE_MONITORING",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.033333
+          }
+        },
+        {
+          "rank": 9,
+          "formula_b": {
+            "combo": [
+              "ELECTRODE_COATING",
+              "INTERCALATION",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.046667
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "ELECTRODE_COATING",
+              "INTERCALATION",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.033333
+          }
+        },
+        {
+          "rank": 10,
+          "formula_b": {
+            "combo": [
+              "INTERCALATION",
+              "STATE_OF_CHARGE_MONITORING",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.046667
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "INTERCALATION",
+              "STATE_OF_CHARGE_MONITORING",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.033333
+          }
+        }
+      ],
+      "fb_tp_count": 0,
+      "va_tp_count": 0
+    },
+    {
+      "T": 2003,
+      "identical": false,
+      "divergences": [
+        {
+          "rank": 1,
+          "formula_b": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "INTERCALATION",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.1716
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "INTERCALATION",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.15
+          }
+        },
+        {
+          "rank": 2,
+          "formula_b": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "ELECTRODE_COATING",
+              "INTERCALATION",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.1716
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "ELECTRODE_COATING",
+              "INTERCALATION",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.15
+          }
+        },
+        {
+          "rank": 3,
+          "formula_b": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "ELECTRON_COLLECTION",
+              "INTERCALATION",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.1716
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "ELECTRON_COLLECTION",
+              "INTERCALATION",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.15
+          }
+        },
+        {
+          "rank": 4,
+          "formula_b": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "INTERCALATION",
+              "STATE_OF_CHARGE_MONITORING",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.1716
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "INTERCALATION",
+              "STATE_OF_CHARGE_MONITORING",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.15
+          }
+        },
+        {
+          "rank": 5,
+          "formula_b": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "FAST_CHARGING",
+              "INTERCALATION"
+            ],
+            "score": 0.1216
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "FAST_CHARGING",
+              "INTERCALATION"
+            ],
+            "score": 0.1
+          }
+        },
+        {
+          "rank": 6,
+          "formula_b": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "ELECTRODE_COATING",
+              "FAST_CHARGING",
+              "INTERCALATION"
+            ],
+            "score": 0.1216
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "ELECTRODE_COATING",
+              "FAST_CHARGING",
+              "INTERCALATION"
+            ],
+            "score": 0.1
+          }
+        },
+        {
+          "rank": 7,
+          "formula_b": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "ELECTRON_COLLECTION",
+              "FAST_CHARGING",
+              "INTERCALATION"
+            ],
+            "score": 0.1216
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "ELECTRON_COLLECTION",
+              "FAST_CHARGING",
+              "INTERCALATION"
+            ],
+            "score": 0.1
+          }
+        },
+        {
+          "rank": 8,
+          "formula_b": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "FAST_CHARGING",
+              "INTERCALATION",
+              "STATE_OF_CHARGE_MONITORING"
+            ],
+            "score": 0.1216
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "FAST_CHARGING",
+              "INTERCALATION",
+              "STATE_OF_CHARGE_MONITORING"
+            ],
+            "score": 0.1
+          }
+        },
+        {
+          "rank": 9,
+          "formula_b": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.1144
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.1
+          }
+        },
+        {
+          "rank": 10,
+          "formula_b": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "INTERCALATION",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.1144
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "INTERCALATION",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.1
+          }
+        }
+      ],
+      "fb_tp_count": 0,
+      "va_tp_count": 0
+    },
+    {
+      "T": 2005,
+      "identical": false,
+      "divergences": [
+        {
+          "rank": 1,
+          "formula_b": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "SAFETY_PROTECTION",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.33
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.15
+          }
+        },
+        {
+          "rank": 2,
+          "formula_b": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.165
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "SAFETY_PROTECTION",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.15
+          }
+        },
+        {
+          "rank": 3,
+          "formula_b": {
+            "combo": [
+              "SAFETY_PROTECTION",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.165
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "INTERCALATION",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.15
+          }
+        },
+        {
+          "rank": 4,
+          "formula_b": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "INTERCALATION",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.165
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "SAFETY_PROTECTION",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.15
+          }
+        },
+        {
+          "rank": 5,
+          "formula_b": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "SAFETY_PROTECTION",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.165
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "ELECTRODE_COATING",
+              "INTERCALATION",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.15
+          }
+        },
+        {
+          "rank": 6,
+          "formula_b": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "ELECTRODE_COATING",
+              "INTERCALATION",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.165
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "ELECTRODE_COATING",
+              "SAFETY_PROTECTION",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.15
+          }
+        },
+        {
+          "rank": 7,
+          "formula_b": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "ELECTRODE_COATING",
+              "SAFETY_PROTECTION",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.165
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "ELECTRON_COLLECTION",
+              "INTERCALATION",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.15
+          }
+        },
+        {
+          "rank": 8,
+          "formula_b": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "ELECTRON_COLLECTION",
+              "INTERCALATION",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.165
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "ELECTRON_COLLECTION",
+              "SAFETY_PROTECTION",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.15
+          }
+        },
+        {
+          "rank": 9,
+          "formula_b": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "ELECTRON_COLLECTION",
+              "SAFETY_PROTECTION",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.165
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "FAST_CHARGING",
+              "SAFETY_PROTECTION",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.15
+          }
+        },
+        {
+          "rank": 10,
+          "formula_b": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "FAST_CHARGING",
+              "SAFETY_PROTECTION",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.165
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "INTERCALATION",
+              "SAFETY_PROTECTION",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.15
+          }
+        }
+      ],
+      "fb_tp_count": 1,
+      "va_tp_count": 1
+    },
+    {
+      "T": 2008,
+      "identical": false,
+      "divergences": [
+        {
+          "rank": 1,
+          "formula_b": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "SAFETY_PROTECTION",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.125714
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.05
+          }
+        },
+        {
+          "rank": 2,
+          "formula_b": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.062857
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "SAFETY_PROTECTION",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.05
+          }
+        },
+        {
+          "rank": 3,
+          "formula_b": {
+            "combo": [
+              "SAFETY_PROTECTION",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.062857
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "FAST_CHARGING",
+              "INTERCALATION"
+            ],
+            "score": 0.05
+          }
+        },
+        {
+          "rank": 4,
+          "formula_b": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "FAST_CHARGING",
+              "INTERCALATION"
+            ],
+            "score": 0.062857
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "INTERCALATION",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.05
+          }
+        },
+        {
+          "rank": 5,
+          "formula_b": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "INTERCALATION",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.062857
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "SAFETY_PROTECTION",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.05
+          }
+        },
+        {
+          "rank": 6,
+          "formula_b": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "SAFETY_PROTECTION",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.062857
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "ELECTRODE_COATING",
+              "FAST_CHARGING",
+              "INTERCALATION"
+            ],
+            "score": 0.05
+          }
+        },
+        {
+          "rank": 7,
+          "formula_b": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "ELECTRODE_COATING",
+              "FAST_CHARGING",
+              "INTERCALATION"
+            ],
+            "score": 0.062857
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "ELECTRODE_COATING",
+              "INTERCALATION",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.05
+          }
+        },
+        {
+          "rank": 8,
+          "formula_b": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "ELECTRODE_COATING",
+              "INTERCALATION",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.062857
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "ELECTRODE_COATING",
+              "SAFETY_PROTECTION",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.05
+          }
+        },
+        {
+          "rank": 9,
+          "formula_b": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "ELECTRODE_COATING",
+              "SAFETY_PROTECTION",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.062857
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "ELECTRON_COLLECTION",
+              "FAST_CHARGING",
+              "INTERCALATION"
+            ],
+            "score": 0.05
+          }
+        },
+        {
+          "rank": 10,
+          "formula_b": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "ELECTRON_COLLECTION",
+              "FAST_CHARGING",
+              "INTERCALATION"
+            ],
+            "score": 0.062857
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "ELECTRON_COLLECTION",
+              "INTERCALATION",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.05
+          }
+        }
+      ],
+      "fb_tp_count": 0,
+      "va_tp_count": 0
+    },
+    {
+      "T": 2010,
+      "identical": false,
+      "divergences": [
+        {
+          "rank": 1,
+          "formula_b": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "FAST_CHARGING",
+              "INTERCALATION"
+            ],
+            "score": 0.112
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "FAST_CHARGING",
+              "INTERCALATION"
+            ],
+            "score": 0.1
+          }
+        },
+        {
+          "rank": 2,
+          "formula_b": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "ELECTRODE_COATING",
+              "FAST_CHARGING",
+              "INTERCALATION"
+            ],
+            "score": 0.112
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "ELECTRODE_COATING",
+              "FAST_CHARGING",
+              "INTERCALATION"
+            ],
+            "score": 0.1
+          }
+        },
+        {
+          "rank": 3,
+          "formula_b": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "ELECTRON_COLLECTION",
+              "FAST_CHARGING",
+              "INTERCALATION"
+            ],
+            "score": 0.112
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "ELECTRON_COLLECTION",
+              "FAST_CHARGING",
+              "INTERCALATION"
+            ],
+            "score": 0.1
+          }
+        },
+        {
+          "rank": 4,
+          "formula_b": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "FAST_CHARGING",
+              "INTERCALATION",
+              "STATE_OF_CHARGE_MONITORING"
+            ],
+            "score": 0.112
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "FAST_CHARGING",
+              "INTERCALATION",
+              "STATE_OF_CHARGE_MONITORING"
+            ],
+            "score": 0.1
+          }
+        },
+        {
+          "rank": 5,
+          "formula_b": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "FAST_CHARGING",
+              "SAFETY_PROTECTION",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.112
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "FAST_CHARGING",
+              "SAFETY_PROTECTION",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.1
+          }
+        },
+        {
+          "rank": 6,
+          "formula_b": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "FAST_CHARGING",
+              "STATE_OF_CHARGE_MONITORING",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.112
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "FAST_CHARGING",
+              "STATE_OF_CHARGE_MONITORING",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.1
+          }
+        },
+        {
+          "rank": 7,
+          "formula_b": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "FAST_CHARGING"
+            ],
+            "score": 0.074667
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "FAST_CHARGING"
+            ],
+            "score": 0.066667
+          }
+        },
+        {
+          "rank": 8,
+          "formula_b": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "FAST_CHARGING",
+              "INTERCALATION"
+            ],
+            "score": 0.074667
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "FAST_CHARGING",
+              "INTERCALATION"
+            ],
+            "score": 0.066667
+          }
+        },
+        {
+          "rank": 9,
+          "formula_b": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "ELECTRODE_COATING",
+              "FAST_CHARGING"
+            ],
+            "score": 0.074667
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "ELECTRODE_COATING",
+              "FAST_CHARGING"
+            ],
+            "score": 0.066667
+          }
+        },
+        {
+          "rank": 10,
+          "formula_b": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "ELECTRON_COLLECTION",
+              "FAST_CHARGING"
+            ],
+            "score": 0.074667
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "ELECTRON_COLLECTION",
+              "FAST_CHARGING"
+            ],
+            "score": 0.066667
+          }
+        }
+      ],
+      "fb_tp_count": 0,
+      "va_tp_count": 0
+    },
+    {
+      "T": 2012,
+      "identical": false,
+      "divergences": [
+        {
+          "rank": 1,
+          "formula_b": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "FAST_CHARGING",
+              "SAFETY_PROTECTION",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.33
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "FAST_CHARGING",
+              "SAFETY_PROTECTION"
+            ],
+            "score": 0.15
+          }
+        },
+        {
+          "rank": 2,
+          "formula_b": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "FAST_CHARGING",
+              "SAFETY_PROTECTION"
+            ],
+            "score": 0.165
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "FAST_CHARGING",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.15
+          }
+        },
+        {
+          "rank": 3,
+          "formula_b": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "FAST_CHARGING",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.165
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "FAST_CHARGING",
+              "SAFETY_PROTECTION",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.15
+          }
+        },
+        {
+          "rank": 4,
+          "formula_b": {
+            "combo": [
+              "FAST_CHARGING",
+              "SAFETY_PROTECTION",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.165
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "FAST_CHARGING",
+              "INTERCALATION"
+            ],
+            "score": 0.15
+          }
+        },
+        {
+          "rank": 5,
+          "formula_b": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "FAST_CHARGING",
+              "INTERCALATION"
+            ],
+            "score": 0.165
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "ELECTRODE_COATING",
+              "FAST_CHARGING",
+              "INTERCALATION"
+            ],
+            "score": 0.15
+          }
+        },
+        {
+          "rank": 6,
+          "formula_b": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "ELECTRODE_COATING",
+              "FAST_CHARGING",
+              "INTERCALATION"
+            ],
+            "score": 0.165
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "ELECTRON_COLLECTION",
+              "FAST_CHARGING",
+              "INTERCALATION"
+            ],
+            "score": 0.15
+          }
+        },
+        {
+          "rank": 7,
+          "formula_b": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "ELECTRON_COLLECTION",
+              "FAST_CHARGING",
+              "INTERCALATION"
+            ],
+            "score": 0.165
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "FAST_CHARGING",
+              "INTERCALATION",
+              "STATE_OF_CHARGE_MONITORING"
+            ],
+            "score": 0.15
+          }
+        },
+        {
+          "rank": 8,
+          "formula_b": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "FAST_CHARGING",
+              "INTERCALATION",
+              "STATE_OF_CHARGE_MONITORING"
+            ],
+            "score": 0.165
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "FAST_CHARGING",
+              "STATE_OF_CHARGE_MONITORING",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.15
+          }
+        },
+        {
+          "rank": 9,
+          "formula_b": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "FAST_CHARGING",
+              "STATE_OF_CHARGE_MONITORING",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.165
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "FAST_CHARGING"
+            ],
+            "score": 0.1
+          }
+        },
+        {
+          "rank": 10,
+          "formula_b": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "FAST_CHARGING"
+            ],
+            "score": 0.11
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "FAST_CHARGING",
+              "SAFETY_PROTECTION"
+            ],
+            "score": 0.1
+          }
+        }
+      ],
+      "fb_tp_count": 0,
+      "va_tp_count": 0
+    },
+    {
+      "T": 2015,
+      "identical": false,
+      "divergences": [
+        {
+          "rank": 1,
+          "formula_b": {
+            "combo": [
+              "FAST_CHARGING",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.22
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "FAST_CHARGING",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.1
+          }
+        },
+        {
+          "rank": 2,
+          "formula_b": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "FAST_CHARGING",
+              "SAFETY_PROTECTION",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.22
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "FAST_CHARGING",
+              "SAFETY_PROTECTION"
+            ],
+            "score": 0.1
+          }
+        },
+        {
+          "rank": 3,
+          "formula_b": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "FAST_CHARGING",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.11
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "FAST_CHARGING",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.1
+          }
+        },
+        {
+          "rank": 4,
+          "formula_b": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "FAST_CHARGING",
+              "SAFETY_PROTECTION"
+            ],
+            "score": 0.11
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "ELECTRODE_COATING",
+              "FAST_CHARGING",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.1
+          }
+        },
+        {
+          "rank": 5,
+          "formula_b": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "FAST_CHARGING",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.11
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "ELECTRON_COLLECTION",
+              "FAST_CHARGING",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.1
+          }
+        },
+        {
+          "rank": 6,
+          "formula_b": {
+            "combo": [
+              "ELECTRODE_COATING",
+              "FAST_CHARGING",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.11
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "FAST_CHARGING",
+              "INTERCALATION",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.1
+          }
+        },
+        {
+          "rank": 7,
+          "formula_b": {
+            "combo": [
+              "ELECTRON_COLLECTION",
+              "FAST_CHARGING",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.11
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "FAST_CHARGING",
+              "ION_TRANSPORT",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.1
+          }
+        },
+        {
+          "rank": 8,
+          "formula_b": {
+            "combo": [
+              "FAST_CHARGING",
+              "INTERCALATION",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.11
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "FAST_CHARGING",
+              "SAFETY_PROTECTION",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.1
+          }
+        },
+        {
+          "rank": 9,
+          "formula_b": {
+            "combo": [
+              "FAST_CHARGING",
+              "ION_TRANSPORT",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.11
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "FAST_CHARGING",
+              "STATE_OF_CHARGE_MONITORING",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.1
+          }
+        },
+        {
+          "rank": 10,
+          "formula_b": {
+            "combo": [
+              "FAST_CHARGING",
+              "SAFETY_PROTECTION",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.11
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "FAST_CHARGING",
+              "INTERCALATION"
+            ],
+            "score": 0.1
+          }
+        }
+      ],
+      "fb_tp_count": 1,
+      "va_tp_count": 1
+    },
+    {
+      "T": 2018,
+      "identical": false,
+      "divergences": [
+        {
+          "rank": 1,
+          "formula_b": {
+            "combo": [
+              "FAST_CHARGING",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.1192
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "FAST_CHARGING",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.05
+          }
+        },
+        {
+          "rank": 2,
+          "formula_b": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "FAST_CHARGING",
+              "SAFETY_PROTECTION",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.1192
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "FAST_CHARGING",
+              "SAFETY_PROTECTION"
+            ],
+            "score": 0.05
+          }
+        },
+        {
+          "rank": 3,
+          "formula_b": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "FAST_CHARGING",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.0596
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "FAST_CHARGING",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.05
+          }
+        },
+        {
+          "rank": 4,
+          "formula_b": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "FAST_CHARGING",
+              "SAFETY_PROTECTION"
+            ],
+            "score": 0.0596
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "ELECTRODE_COATING",
+              "FAST_CHARGING",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.05
+          }
+        },
+        {
+          "rank": 5,
+          "formula_b": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "FAST_CHARGING",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.0596
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "ELECTRON_COLLECTION",
+              "FAST_CHARGING",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.05
+          }
+        },
+        {
+          "rank": 6,
+          "formula_b": {
+            "combo": [
+              "ELECTRODE_COATING",
+              "FAST_CHARGING",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.0596
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "FAST_CHARGING",
+              "INTERCALATION",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.05
+          }
+        },
+        {
+          "rank": 7,
+          "formula_b": {
+            "combo": [
+              "ELECTRON_COLLECTION",
+              "FAST_CHARGING",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.0596
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "FAST_CHARGING",
+              "ION_TRANSPORT",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.05
+          }
+        },
+        {
+          "rank": 8,
+          "formula_b": {
+            "combo": [
+              "FAST_CHARGING",
+              "INTERCALATION",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.0596
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "FAST_CHARGING",
+              "SAFETY_PROTECTION",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.05
+          }
+        },
+        {
+          "rank": 9,
+          "formula_b": {
+            "combo": [
+              "FAST_CHARGING",
+              "ION_TRANSPORT",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.0596
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "FAST_CHARGING",
+              "STATE_OF_CHARGE_MONITORING",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.05
+          }
+        },
+        {
+          "rank": 10,
+          "formula_b": {
+            "combo": [
+              "FAST_CHARGING",
+              "SAFETY_PROTECTION",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.0596
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "ELECTRODE_COATING",
+              "FAST_CHARGING"
+            ],
+            "score": 0.05
+          }
+        }
+      ],
+      "fb_tp_count": 2,
+      "va_tp_count": 2
+    },
+    {
+      "T": 2020,
+      "identical": false,
+      "divergences": [
+        {
+          "rank": 1,
+          "formula_b": {
+            "combo": [
+              "FAST_CHARGING",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.015
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "ELECTROCHEMICAL_ENERGY_STORAGE"
+            ],
+            "score": 0.0
+          }
+        },
+        {
+          "rank": 2,
+          "formula_b": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "ELECTRODE_COATING"
+            ],
+            "score": 0.015
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "ELECTRODE_COATING"
+            ],
+            "score": 0.0
+          }
+        },
+        {
+          "rank": 3,
+          "formula_b": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "INTERCALATION"
+            ],
+            "score": 0.015
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "ELECTRON_COLLECTION"
+            ],
+            "score": 0.0
+          }
+        },
+        {
+          "rank": 4,
+          "formula_b": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "ELECTRODE_COATING",
+              "INTERCALATION"
+            ],
+            "score": 0.015
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "FAST_CHARGING"
+            ],
+            "score": 0.0
+          }
+        },
+        {
+          "rank": 5,
+          "formula_b": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "ELECTRON_COLLECTION",
+              "INTERCALATION"
+            ],
+            "score": 0.015
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "INTERCALATION"
+            ],
+            "score": 0.0
+          }
+        },
+        {
+          "rank": 6,
+          "formula_b": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "INTERCALATION",
+              "STATE_OF_CHARGE_MONITORING"
+            ],
+            "score": 0.015
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "ION_TRANSPORT"
+            ],
+            "score": 0.0
+          }
+        },
+        {
+          "rank": 7,
+          "formula_b": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "SAFETY_PROTECTION",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.015
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "SAFETY_PROTECTION"
+            ],
+            "score": 0.0
+          }
+        },
+        {
+          "rank": 8,
+          "formula_b": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "STATE_OF_CHARGE_MONITORING",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.015
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "STATE_OF_CHARGE_MONITORING"
+            ],
+            "score": 0.0
+          }
+        },
+        {
+          "rank": 9,
+          "formula_b": {
+            "combo": [
+              "FAST_CHARGING",
+              "SAFETY_PROTECTION",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.015
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.0
+          }
+        },
+        {
+          "rank": 10,
+          "formula_b": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "FAST_CHARGING",
+              "SAFETY_PROTECTION",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.015
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "ELECTRODE_COATING"
+            ],
+            "score": 0.0
+          }
+        }
+      ],
+      "fb_tp_count": 0,
+      "va_tp_count": 0
+    },
+    {
+      "T": 2023,
+      "identical": false,
+      "divergences": [
+        {
+          "rank": 1,
+          "formula_b": {
+            "combo": [
+              "FAST_CHARGING",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.017647
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "ELECTROCHEMICAL_ENERGY_STORAGE"
+            ],
+            "score": 0.0
+          }
+        },
+        {
+          "rank": 2,
+          "formula_b": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "ELECTRODE_COATING"
+            ],
+            "score": 0.017647
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "ELECTRODE_COATING"
+            ],
+            "score": 0.0
+          }
+        },
+        {
+          "rank": 3,
+          "formula_b": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "INTERCALATION"
+            ],
+            "score": 0.017647
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "ELECTRON_COLLECTION"
+            ],
+            "score": 0.0
+          }
+        },
+        {
+          "rank": 4,
+          "formula_b": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "ELECTRODE_COATING",
+              "INTERCALATION"
+            ],
+            "score": 0.017647
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "FAST_CHARGING"
+            ],
+            "score": 0.0
+          }
+        },
+        {
+          "rank": 5,
+          "formula_b": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "ELECTRON_COLLECTION",
+              "INTERCALATION"
+            ],
+            "score": 0.017647
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "INTERCALATION"
+            ],
+            "score": 0.0
+          }
+        },
+        {
+          "rank": 6,
+          "formula_b": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "INTERCALATION",
+              "STATE_OF_CHARGE_MONITORING"
+            ],
+            "score": 0.017647
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "ION_TRANSPORT"
+            ],
+            "score": 0.0
+          }
+        },
+        {
+          "rank": 7,
+          "formula_b": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "SAFETY_PROTECTION",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.017647
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "SAFETY_PROTECTION"
+            ],
+            "score": 0.0
+          }
+        },
+        {
+          "rank": 8,
+          "formula_b": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "STATE_OF_CHARGE_MONITORING",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.017647
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "STATE_OF_CHARGE_MONITORING"
+            ],
+            "score": 0.0
+          }
+        },
+        {
+          "rank": 9,
+          "formula_b": {
+            "combo": [
+              "FAST_CHARGING",
+              "SAFETY_PROTECTION",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.017647
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "CELL_ASSEMBLY",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.0
+          }
+        },
+        {
+          "rank": 10,
+          "formula_b": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "FAST_CHARGING",
+              "SAFETY_PROTECTION",
+              "THERMAL_MANAGEMENT"
+            ],
+            "score": 0.017647
+          },
+          "velocity_adjacency": {
+            "combo": [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "ELECTRODE_COATING"
+            ],
+            "score": 0.0
+          }
+        }
+      ],
+      "fb_tp_count": 0,
+      "va_tp_count": 0
+    }
+  ],
+  "byte_equality_verdict": "DIVERGENCE FOUND",
+  "counterexample_rerun": [
+    {
+      "ce_id": "CE-001",
+      "T": 1991,
+      "combo": [
+        "ELECTRODE_COATING",
+        "ELECTRON_COLLECTION"
+      ],
+      "formula_b": {
+        "rank_in_top10": null,
+        "score": null,
+        "in_top10": false,
+        "note": "not in Top-10 under this formula (may or may not be in candidate set)"
+      },
+      "velocity_adjacency": {
+        "rank_in_top10": null,
+        "score": null,
+        "in_top10": false,
+        "note": "not in Top-10 under this formula (may or may not be in candidate set)"
+      },
+      "verdict": "CE scored LOW under both formulas. Neither formula flags this combination. The counterexample record may need updating \u2014 the CE was originally reported under a different formula version."
+    },
+    {
+      "ce_id": "CE-002",
+      "T": 2005,
+      "combo": [
+        "CELL_ASSEMBLY",
+        "ELECTRODE_COATING",
+        "ION_TRANSPORT",
+        "SAFETY_PROTECTION"
+      ],
+      "formula_b": {
+        "rank_in_top10": null,
+        "score": null,
+        "in_top10": false,
+        "note": "not in Top-10 under this formula (may or may not be in candidate set)"
+      },
+      "velocity_adjacency": {
+        "rank_in_top10": null,
+        "score": null,
+        "in_top10": false,
+        "note": "not in Top-10 under this formula (may or may not be in candidate set)"
+      },
+      "verdict": "CE scored LOW under both formulas. Neither formula flags this combination. The counterexample record may need updating \u2014 the CE was originally reported under a different formula version."
+    },
+    {
+      "ce_id": "CE-003",
+      "T": 2015,
+      "combo": [
+        "CELL_ASSEMBLY",
+        "ELECTRODE_COATING",
+        "ELECTRON_COLLECTION",
+        "ION_TRANSPORT"
+      ],
+      "formula_b": {
+        "rank_in_top10": null,
+        "score": null,
+        "in_top10": false,
+        "note": "not in Top-10 under this formula (may or may not be in candidate set)"
+      },
+      "velocity_adjacency": {
+        "rank_in_top10": null,
+        "score": null,
+        "in_top10": false,
+        "note": "not in Top-10 under this formula (may or may not be in candidate set)"
+      },
+      "verdict": "CE scored LOW under both formulas. Neither formula flags this combination. The counterexample record may need updating \u2014 the CE was originally reported under a different formula version."
+    }
+  ]
+}
