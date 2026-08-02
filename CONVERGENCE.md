@@ -57,6 +57,115 @@ The formula discriminates. The definition is operationally meaningful.
 
 ---
 
+## 1a. Conceptual model — the 5 levels of convergence
+
+Per the CEO's post-definition review, "convergence" is not a single
+concept. It is a **5-level hierarchy** of increasingly strong claims,
+each requiring more evidence than the last. The current definition
+completes only Level 0.
+
+```text
+Level 0  Structural connectedness     [COMPLETE — this document]
+Level 1  Dependency convergence       [PARTIAL — Signal A' measures this]
+Level 2  Constraint convergence       [BLOCKED — F-024 contaminates Signal B]
+Level 3  Temporal convergence          [BLOCKED — no graph snapshots exist]
+Level 4  Predictive convergence        [BLOCKED — requires Level 3 + outcomes]
+```
+
+### Level 0 — Structural connectedness
+
+**What it claims:** two nodes are connected in the graph (directly or
+via short paths).
+
+**Evidence required:** a single graph snapshot with edges between the
+nodes.
+
+**Current status:** COMPLETE. The formula in Section 3 computes this.
+The two test pairs (battery×EV = 1.2000, battery×desal = 0.0286)
+discriminate correctly.
+
+**What it does NOT claim:** that the connection is becoming stronger,
+that the fields are getting closer, or that the connection will
+produce real-world convergence outcomes.
+
+### Level 1 — Dependency convergence
+
+**What it claims:** one field directly depends on the other
+(`A --depends_on--> B`), so progress in B unlocks progress in A.
+
+**Evidence required:** a `depends_on` or `requires` edge between the
+two nodes in the graph.
+
+**Current status:** PARTIAL. Signal A' (direct_dependency) measures
+this and is the dominant term in the formula (weight 1.0). The
+battery×EV pair has this edge; the battery×desal pair does not.
+
+**What it does NOT claim:** that the dependency is becoming tighter,
+or that the dependency is symmetric (the formula treats it as
+symmetric — see Failure Mode 5).
+
+### Level 2 — Constraint convergence
+
+**What it claims:** two fields are bound by the same engineering
+constraints (energy, cost, manufacturing, etc.), creating pressure
+to share solutions.
+
+**Evidence required:** constraint values on each node that genuinely
+differ across nodes (so the overlap ratio is informative).
+
+**Current status:** BLOCKED. F-024 (Phase 2 priors fill all 10
+constraint slots uniformly across all nodes) makes Signal B return
+1.0 for every pair. The signal carries no discriminative information.
+Excluded from the score (weight 0.0) until F-024 is fully resolved.
+
+### Level 3 — Temporal convergence
+
+**What it claims:** two fields are getting closer over time — the
+structural connectedness is increasing.
+
+**Evidence required:** at least two graph snapshots at different
+times, so the convergence score can be measured at t1 and t2 and
+the delta can be computed.
+
+**Current status:** BLOCKED. The graph has only one snapshot (every
+node shares one `created_at` timestamp). Signal E is not computable.
+Excluded from the score (weight 0.0).
+
+**This is the single most important prerequisite for Phase 4 to
+advance.** Without a second snapshot, the definition cannot move
+beyond Level 0/1.
+
+### Level 4 — Predictive convergence
+
+**What it claims:** structural + temporal convergence PREDICTS a
+real-world outcome (e.g., a new joint product, a technology transfer,
+a research collaboration).
+
+**Evidence required:** a calibration set of (pair, real-world-outcome)
+tuples, where the convergence score at t1 predicts the outcome at
+t2 > t1.
+
+**Current status:** BLOCKED. Requires Level 3 (temporal data) AND
+time to pass for outcomes to materialize. The validation plan in
+Section 5 names 2028-01-01 as the earliest resolution date for the
+two test pairs.
+
+### Why the level framing matters
+
+The 5-level framing prevents vocabulary-without-substance. Without
+it, a future engineer might call the current formula a "convergence
+engine" — when in fact it only measures Level 0 (structural
+connectedness) and Level 1 (dependency). The level framing makes
+the gap between the claim ("convergence") and the implementation
+("structural proximity + direct dependency") explicit.
+
+The honest framing per the CEO: the present work measures Level 0 +
+Level 1. Calling it "convergence" is forward-promissory naming. The
+spec retains the word because the CEO's directive uses it, but every
+consumer of the score MUST be told which level the score reflects.
+
+---
+
 ## 2. Signals
 
 Five candidate signals were considered (per the CEO directive).
@@ -277,6 +386,49 @@ Per Law 6 (CONSTITUTION.md: "The engine may not explain the future
 without exposing the assumptions that produced it"), the failure modes
 of this measurement are:
 
+### Explicit limitations (L1-L5, per CEO post-definition review)
+
+The CEO's review of the initial definition identified five explicit
+limitations. They are recorded here as canonical labels (L1-L5) so
+future work can reference them concisely. Each limitation maps to one
+or more Failure Modes documented in the subsections below.
+
+```text
+L1. Constraint overlap is contaminated by F-024 priors.
+L2. Temporal convergence cannot be measured from a single snapshot.
+L3. Component reuse remains sparse.
+L4. Shared-prerequisite overlap is weaker than expected.
+L5. The current score is descriptive rather than predictive.
+```
+
+| Label | Limitation | Maps to | Status |
+|---|---|---|---|
+| L1 | Constraint overlap contaminated by F-024 priors | Failure Mode 2 | EXCLUDED from score (weight 0.0) |
+| L2 | Temporal convergence not measurable from single snapshot | Failure Mode 3 | EXCLUDED from score (weight 0.0) |
+| L3 | Component reuse remains sparse | (new, see below) | Retained (weight 0.2) but contributes 0 on current graph |
+| L4 | Shared-prerequisite overlap weaker than expected | Failure Mode 4 | Retained (weight 0.4) but contributes 0 on current graph |
+| L5 | Current score is descriptive, not predictive | Failure Mode 1 + 6 | Acknowledged; cannot be remedied without Level 3+4 (see Section 1a) |
+
+### L3 — Component reuse remains sparse (new, explicit)
+
+**Description:** Signal C (component reuse) measures the Jaccard
+similarity of component subtrees reachable via `contains` edges. On
+the current graph, both test pairs return 0.0 — neither battery nor
+EV nor desalination has populated component subtrees that overlap
+with the others.
+
+**Impact:** the signal contributes 0 to the score for both test
+pairs. While this is not currently causing discrimination failures
+(Signal A' and Signal D carry the discrimination), it means the
+formula's component-reuse term is dead weight until ingestion
+populates component relationships. Future work should explicitly
+verify that component subtrees grow with ingestion.
+
+**Mitigation:** retained in the formula (weight 0.2) because future
+ingestion is expected to add component relationships. When Signal C
+becomes non-zero, the formula does not need to be re-derived —
+only re-validated against the success criterion pairs.
+
 ### Failure Mode 1 — "Similar" misread as "converging"
 
 **Description:** the formula measures STRUCTURAL connectedness, not
@@ -428,6 +580,30 @@ snapshot, the validation can only test the STRUCTURAL claim (are
 the pairs connected differently?), not the TEMPORAL claim (are they
 getting closer?).
 
+### Prerequisite chain — implementation gating (per CEO review)
+
+The CEO's review of the initial definition specified an explicit
+gating sequence. Implementation of any permanent convergence
+subsystem is FORBIDDEN until the full chain has executed:
+
+```text
+snapshot_1            (DONE — current graph, 632 nodes, 1 timestamp)
+      ↓
+ingestion             (NEXT — real USPTO/arXiv ingestion, not synthetic)
+      ↓
+snapshot_2            (creates the second point in time)
+      ↓
+delta analysis        (compute convergence score at t1 and t2)
+      ↓
+temporal signal       (Signal E becomes computable; L2 unblocked)
+      ↓
+validation            (test the two validation pairs against real-world
+                       outcomes; resolution dates 2028-01-01)
+      ↓
+implementation        (ONLY THEN may a permanent convergence subsystem
+                       be introduced)
+```
+
 **Action item (blocking):** before the validation plan can be
 executed, the system must produce at least one more Phase 3 ingestion
 cycle. The new ingestion will:
@@ -439,6 +615,11 @@ cycle. The new ingestion will:
 Without this, the validation plan can only confirm structural
 discrimination (which is already done — Section 3), not temporal
 convergence (which is the actual scientific claim).
+
+**Until the chain completes:** `CONVERGENCE.md` remains the
+authoritative artifact, and `scripts/measure_convergence.py` remains
+exactly what it currently is — an experiment, not a framework. No
+`convergence_*.py` module may be created.
 
 ### What this definition does NOT yet validate
 
@@ -505,14 +686,32 @@ pre-validation prerequisite).
 
 ## Implementation status
 
-- **Definition:** COMPLETE (this document).
-- **Measurement script:** COMPLETE (`scripts/measure_convergence.py`,
-  one-off, not imported by anything).
-- **Discrimination against success-criterion pairs:** VERIFIED
-  (1.2000 vs 0.0286, delta 1.1714).
-- **Validation against real-world outcomes:** NOT STARTED. Requires
-  (a) a second graph snapshot and (b) time to pass (resolution dates
-  2028-01-01 for both pairs).
-- **Convergence module:** FORBIDDEN. Not created.
-- **Phase 4 status:** definition complete. Implementation forbidden
-  until validation plan executes.
+**Per the CEO's post-definition review:** implementation is NOT
+authorized. `CONVERGENCE.md` remains the authoritative artifact.
+`scripts/measure_convergence.py` remains an experiment, not a
+framework. The prerequisite chain in Section 5 must complete before
+any permanent convergence subsystem is introduced.
+
+| Item | Status |
+|---|---|
+| Definition | COMPLETE (this document) |
+| Measurement script | COMPLETE (`scripts/measure_convergence.py`, one-off, not imported by anything) |
+| Discrimination against success-criterion pairs | VERIFIED (1.2000 vs 0.0286, delta 1.1714) |
+| Level 0 (structural connectedness) | COMPLETE |
+| Level 1 (dependency convergence) | PARTIAL — Signal A' measures this |
+| Level 2 (constraint convergence) | BLOCKED by F-024 (L1) |
+| Level 3 (temporal convergence) | BLOCKED — no graph snapshots exist (L2) |
+| Level 4 (predictive convergence) | BLOCKED — requires Level 3 + outcomes (L5) |
+| Component reuse (Signal C) | SPARSE — contributes 0 on current graph (L3) |
+| Shared-prerequisite overlap (Signal A) | WEAKER THAN EXPECTED — contributes 0 on current graph (L4) |
+| Validation against real-world outcomes | NOT STARTED — requires the full prerequisite chain (Section 5) |
+| Convergence module | FORBIDDEN per CEO directive. Not created. |
+| Phase 4 status | Definition complete (Levels 0-1). Implementation forbidden until the prerequisite chain in Section 5 executes. |
+
+**The single most important next action** (per the CEO's review and
+the spec's own analysis in Section 1a + Section 5): the system must
+produce a second graph snapshot via another Phase 3 ingestion cycle
+using real USPTO/arXiv sources (not synthetic abstracts). Until that
+snapshot exists, the formula cannot move beyond Level 0/1, and the
+word "convergence" remains forward-promissory naming for what is
+actually a structural-connectedness measurement.
