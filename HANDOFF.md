@@ -1,4 +1,4 @@
-# TEE MASTER HANDOFF (v10.1 — rival formulas B/C/D all failed; no formula beats NULL; objective function still undiscovered)
+# TEE MASTER HANDOFF (v10.2 — inevitability backtest: 4% precision, 2 TPs; Formula B 6%, 3 TPs; both beat NULL at 0%)
 
 ## PRE-CODING READ LIST (MANDATORY)
 
