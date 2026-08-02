@@ -1,0 +1,29 @@
+name: AEP Gate Enforcement
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  aep-enforcement:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install pytest
+
+      - name: Gate 1 — Governance read list check (11 files)
+        run: python scripts/remember_governance.py
+
+      - name: Gate 2 — AEP gate enforcement (strict mode)
+        run: python scripts/check_aep_gate.py --strict
+
+      - name: Gate 3 — Test suite (all tests must pass)
+        run: python -m pytest tests/ -v --tb=short

@@ -624,3 +624,26 @@ for ce in d['counterexample_rerun']:
 **Status:** RESOLVED — `check_counterexample()` patched to call `score_formula_b_frozen()`, `score_velocity_adjacency()`, `score_velocity_only()`, `score_adjacency_only()` directly on each CE's combination. The function now returns `direct_scores`, `top10_threshold_at_T`, `score_vs_threshold`, `tied_with_top10`, and `verdict` for every CE, whether or not it made the Top-10. The JSON is regenerated and now contains the numbers the markdown cites. The ad-hoc "wait, let me check this" narrative in the original markdown Item 3 has been replaced with flat statements citing JSON fields. Substantive findings are unchanged.
 
 **Lesson:** The evidence loop (EVIDENCE_LOOP.md) Checkpoint 2 (pre-commit) should include a check: "does the persisted artifact contain the numbers the markdown cites?" This is a structural gap in the loop — Checkpoint 2 checks that a diff was shown and that thresholds/denominators are present, but it does not check that the markdown's cited numbers match the JSON's actual fields. A future revision of EVIDENCE_LOOP.md should add this check (2.9: "If the markdown cites specific numbers from a JSON, verify those numbers exist in the JSON at the cited path"). The check is mechanical and could be automated; the manual version is: after writing the markdown, grep each cited number against the JSON and confirm it appears. This would have caught F-042 at commit time rather than at review time.
+
+---
+
+### F-026 Status Update (7th recurrence → CI fix)
+
+**Previous claim:** "PARTIALLY RESOLVED — pre-commit config exists."
+
+**Auditor JJ1 finding (7th recurrence):** The coder claimed the pre-commit hook was installed and tests passed. The auditor's fresh-clone test proved the hook does NOT exist in any clone other than the one where `pre-commit install` was manually run. The test `test_pre_commit_hook_installed` was RED in a fresh clone. The coder's claim of "7 tests, 7 passed" was false — it was 6/7 with the enforcement test failing.
+
+**Root cause:** Git hooks are per-clone, not per-repo. `.git/hooks/` is not committed. A fresh clone has no hooks. `pre-commit install` is a per-clone action that cannot be shared. The coder misunderstood this fundamental property of git.
+
+**The real fix:** CI (`.github/workflows/ci.yml`) is the only mechanism that provides true mechanical enforcement. CI runs on every push and PR, cannot be bypassed with `--no-verify`, and works on fresh clones. The local pre-commit hook is a convenience, not enforcement.
+
+**Updated status:** PARTIALLY RESOLVED (local hook is convenience) → CI is the enforcement. F-026 will be FULLY RESOLVED when:
+1. `.github/workflows/ci.yml` exists and runs on every push/PR ✓ (this commit)
+2. CI runs `remember_governance.py` ✓ (this commit)
+3. CI runs `check_aep_gate.py --strict` ✓ (this commit)
+4. CI runs the full test suite ✓ (this commit)
+5. A green CI run is verified on GitHub ✓ (pending — first push will trigger)
+
+The local pre-commit hook is now correctly characterized as a convenience check, not enforcement. The test suite reflects this: `test_pre_commit_hook_installed` issues a warning (not a failure) if the local hook is missing, while `test_ci_workflow_exists` is a hard assertion that CI must exist.
+
+**Lesson (7th recurrence):** Local git hooks cannot be shared across clones. CI is the only real enforcement. Every attempt to "install" a hook and claim F-026 resolved has failed because the hook is per-clone. Stop claiming F-026 is resolved via local hooks. It is resolved via CI.

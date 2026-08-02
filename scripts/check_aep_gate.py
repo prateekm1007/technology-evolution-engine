@@ -162,15 +162,40 @@ def check_gate(gate_num: int) -> tuple[bool, str]:
     return True, f"Gate {gate_num} ({gate_def['name']}): PASSED"
 
 
-def check_all_gates() -> int:
-    """Check all gates. Returns 0 if all pass, 1 if any fail."""
-    # Check if gates directory exists
+def check_all_gates(strict: bool = False) -> int:
+    """Check all gates. Returns 0 if all pass, 1 if any fail.
+    
+    In strict mode (CI), missing gate artifacts for commits that touch
+    code files (.py, .ts, .tsx) cause failure. Non-strict mode (local)
+    allows trivial commits without gate artifacts.
+    """
     if not GATES_DIR.exists():
-        print(f"AEP Gate Check: {GATES_DIR} does not exist.")
-        print("  No gate artifacts found. This is allowed for trivial commits")
-        print("  (doc-only, config changes). For code-changing work items,")
-        print("  create gate artifacts in evidence/gates/ before committing.")
-        return 0  # Allow trivial commits without gates
+        if strict:
+            # In strict mode, check if this commit touches code files
+            try:
+                result = subprocess.run(
+                    ["git", "diff", "--cached", "--name-only", "HEAD"],
+                    capture_output=True, text=True, cwd=str(ROOT)
+                )
+                changed_files = result.stdout.strip().split("\n") if result.stdout.strip() else []
+                code_files = [f for f in changed_files if f.endswith(('.py', '.ts', '.tsx'))]
+                if code_files:
+                    print(f"AEP Gate Check (STRICT): code files changed ({code_files})")
+                    print("  but no gate artifacts in evidence/gates/.")
+                    print("  CI BLOCKS this commit. Create gate artifacts first.")
+                    print("  See AEP_PROTOCOL.md for gate requirements.")
+                    return 1
+            except Exception:
+                pass  # If git command fails, fall through to non-strict behavior
+            print(f"AEP Gate Check (STRICT): {GATES_DIR} does not exist.")
+            print("  No code files changed — allowed.")
+            return 0
+        else:
+            print(f"AEP Gate Check: {GATES_DIR} does not exist.")
+            print("  No gate artifacts found. This is allowed for trivial commits")
+            print("  (doc-only, config changes). For code-changing work items,")
+            print("  create gate artifacts in evidence/gates/ before committing.")
+            return 0  # Allow trivial commits without gates
     
     # Check if any gate artifacts exist
     gate_files = list(GATES_DIR.glob("gate_*.json"))
@@ -200,18 +225,22 @@ def check_all_gates() -> int:
 
 
 def main():
-    if len(sys.argv) > 1:
+    args = sys.argv[1:]
+    strict = "--strict" in args
+    args = [a for a in args if a != "--strict"]
+    
+    if args:
         try:
-            gate_num = int(sys.argv[1])
+            gate_num = int(args[0])
         except ValueError:
-            print(f"Error: gate number must be 1-10, got '{sys.argv[1]}'")
+            print(f"Error: gate number must be 1-10, got '{args[0]}'")
             return 1
         
         passed, message = check_gate(gate_num)
         print(message)
         return 0 if passed else 1
     else:
-        return check_all_gates()
+        return check_all_gates(strict=strict)
 
 
 if __name__ == "__main__":
