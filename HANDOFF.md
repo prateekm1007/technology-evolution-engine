@@ -1,4 +1,4 @@
-# TEE MASTER HANDOFF (v8.0 — Phase 9: attempt to destroy the model; 4/5 assumptions failed; model scope honestly bounded)
+# TEE MASTER HANDOFF (v8.1 — scope narrowed to Li-ion intercalation; maturity M1; doctrine of humility)
 
 ## PRE-CODING READ LIST (MANDATORY)
 
