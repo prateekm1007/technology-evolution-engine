@@ -1,4 +1,4 @@
-# TEE MASTER HANDOFF (v10.2 — inevitability backtest: 4% precision, 2 TPs; Formula B 6%, 3 TPs; both beat NULL at 0%)
+# TEE MASTER HANDOFF (v11.0 — Phase 11: Formula B frozen, expanded timeline, registries, generalization pending)
 
 ## PRE-CODING READ LIST (MANDATORY)
 
