@@ -1,11 +1,11 @@
 {
   "metadata": {
-    "name": "Capability Graph (CAPABILITY_MODEL) \u2014 Trusted v2.0",
-    "version": "2.0",
-    "created_at": "2026-08-02T10:18:54.872532+00:00",
+    "name": "Capability Graph (CAPABILITY_MODEL) \u2014 Trusted v2.1",
+    "version": "2.1",
+    "created_at": "2026-08-02T10:25:04.777113+00:00",
     "model": "CAPABILITY_MODEL",
     "vertical": "electrochemical energy storage",
-    "phase": "7C.1",
+    "phase": "7C.2",
     "scope": {
       "patents": 5,
       "capabilities": 10,
@@ -21,8 +21,13 @@
         "SUBSTITUTES_FOR"
       ]
     },
-    "ontology_freeze": "RESPECTED (reduced caps per CEO 7C.1)",
-    "trust_framework": "CAUSALITY_POLICY.md"
+    "confidence_scale": "ordinal (EXPLICIT / IMPLIED / STRUCTURAL / SPECULATIVE)",
+    "corrections_applied": [
+      "1. EvidenceEdge vs StructuralEdge separation",
+      "2. Ordinal confidence labels (not numeric)",
+      "3. Structural edges carry 'principle' field",
+      "4. Epistemic layer created"
+    ]
   },
   "nodes": [
     {
@@ -32,7 +37,7 @@
       "domain": "electrochemical_storage",
       "validFrom": "1990-01-01",
       "validTo": null,
-      "confidence": 1.0
+      "confidence": "EXPLICIT"
     },
     {
       "id": "CAP_ION_TRANSPORT",
@@ -41,7 +46,7 @@
       "domain": "electrochemical_storage",
       "validFrom": "1990-01-01",
       "validTo": null,
-      "confidence": 1.0
+      "confidence": "EXPLICIT"
     },
     {
       "id": "CAP_INTERCALATION",
@@ -50,7 +55,7 @@
       "domain": "electrochemical_storage",
       "validFrom": "1990-01-01",
       "validTo": null,
-      "confidence": 1.0
+      "confidence": "EXPLICIT"
     },
     {
       "id": "CAP_ELECTRON_COLLECTION",
@@ -59,7 +64,7 @@
       "domain": "electrochemical_storage",
       "validFrom": "1990-01-01",
       "validTo": null,
-      "confidence": 1.0
+      "confidence": "EXPLICIT"
     },
     {
       "id": "CAP_FAST_CHARGING",
@@ -68,7 +73,7 @@
       "domain": "electrochemical_storage",
       "validFrom": "1990-01-01",
       "validTo": null,
-      "confidence": 1.0
+      "confidence": "EXPLICIT"
     },
     {
       "id": "CAP_THERMAL_MANAGEMENT",
@@ -77,7 +82,7 @@
       "domain": "electrochemical_storage",
       "validFrom": "1990-01-01",
       "validTo": null,
-      "confidence": 1.0
+      "confidence": "EXPLICIT"
     },
     {
       "id": "CAP_STATE_OF_CHARGE_MONITORING",
@@ -86,7 +91,7 @@
       "domain": "electrochemical_storage",
       "validFrom": "1990-01-01",
       "validTo": null,
-      "confidence": 1.0
+      "confidence": "EXPLICIT"
     },
     {
       "id": "CAP_SAFETY_PROTECTION",
@@ -95,7 +100,7 @@
       "domain": "electrochemical_storage",
       "validFrom": "1990-01-01",
       "validTo": null,
-      "confidence": 1.0
+      "confidence": "EXPLICIT"
     },
     {
       "id": "CAP_ELECTRODE_COATING",
@@ -104,7 +109,7 @@
       "domain": "electrochemical_storage",
       "validFrom": "1990-01-01",
       "validTo": null,
-      "confidence": 1.0
+      "confidence": "EXPLICIT"
     },
     {
       "id": "CAP_CELL_ASSEMBLY",
@@ -113,7 +118,7 @@
       "domain": "electrochemical_storage",
       "validFrom": "1990-01-01",
       "validTo": null,
-      "confidence": 1.0
+      "confidence": "EXPLICIT"
     },
     {
       "id": "CON_THEORETICAL_ENERGY_DENSITY_LIMIT",
@@ -122,7 +127,7 @@
       "domain": "electrochemical_storage",
       "validFrom": "1990-01-01",
       "validTo": null,
-      "confidence": 1.0
+      "confidence": "EXPLICIT"
     },
     {
       "id": "CON_THERMAL_RUNAWAY_THRESHOLD",
@@ -131,7 +136,7 @@
       "domain": "electrochemical_storage",
       "validFrom": "1990-01-01",
       "validTo": null,
-      "confidence": 1.0
+      "confidence": "EXPLICIT"
     },
     {
       "id": "CON_COST_PER_KWH_THRESHOLD",
@@ -140,7 +145,7 @@
       "domain": "electrochemical_storage",
       "validFrom": "1990-01-01",
       "validTo": null,
-      "confidence": 1.0
+      "confidence": "EXPLICIT"
     },
     {
       "id": "CON_UN38_3_SHIPPING_SAFETY",
@@ -149,7 +154,7 @@
       "domain": "electrochemical_storage",
       "validFrom": "1990-01-01",
       "validTo": null,
-      "confidence": 1.0
+      "confidence": "EXPLICIT"
     },
     {
       "id": "CON_IEC_62133_SAFETY_STANDARD",
@@ -158,7 +163,7 @@
       "domain": "electrochemical_storage",
       "validFrom": "1990-01-01",
       "validTo": null,
-      "confidence": 1.0
+      "confidence": "EXPLICIT"
     },
     {
       "id": "PAT_US20240194939A1",
@@ -167,7 +172,7 @@
       "domain": "electrochemical_storage",
       "validFrom": "2026-08-02",
       "validTo": null,
-      "confidence": 1.0,
+      "confidence": "EXPLICIT",
       "cpcCodes": [
         "H01M 10/0562",
         "H01M 10/0525",
@@ -182,7 +187,7 @@
       "domain": "electrochemical_storage",
       "validFrom": "2026-08-02",
       "validTo": null,
-      "confidence": 1.0,
+      "confidence": "EXPLICIT",
       "cpcCodes": [
         "H01M 4/86",
         "H01M 2300/00",
@@ -196,7 +201,7 @@
       "domain": "electrochemical_storage",
       "validFrom": "2026-08-02",
       "validTo": null,
-      "confidence": 1.0,
+      "confidence": "EXPLICIT",
       "cpcCodes": [
         "H01M 10/0525",
         "H01M 10/44",
@@ -210,7 +215,7 @@
       "domain": "electrochemical_storage",
       "validFrom": "2026-08-02",
       "validTo": null,
-      "confidence": 1.0,
+      "confidence": "EXPLICIT",
       "cpcCodes": [
         "H01M 50/00",
         "H01M 10/42",
@@ -224,272 +229,398 @@
       "domain": "electrochemical_storage",
       "validFrom": "2026-08-02",
       "validTo": null,
-      "confidence": 1.0,
+      "confidence": "EXPLICIT",
       "cpcCodes": [
         "H01M 4/00",
         "H01M 10/0525"
       ]
     }
   ],
-  "edges": [
+  "evidence_edges": [
     {
       "id": "EDGE-001",
       "source": "PAT_US20240194939A1",
-      "type": "EMBODIED_IN",
       "target": "CAP_CELL_ASSEMBLY",
-      "confidence": 1.0
+      "type": "EMBODIED_IN",
+      "evidence": [
+        "CPC:H01M 50/00",
+        "patent:US20240194939A1"
+      ],
+      "confidence": "EXPLICIT"
     },
     {
       "id": "EDGE-002",
       "source": "PAT_US20240194939A1",
-      "type": "EMBODIED_IN",
       "target": "CAP_ELECTROCHEMICAL_ENERGY_STORAGE",
-      "confidence": 1.0
+      "type": "EMBODIED_IN",
+      "evidence": [
+        "CPC:H01M 10/0525",
+        "patent:US20240194939A1"
+      ],
+      "confidence": "EXPLICIT"
     },
     {
       "id": "EDGE-003",
       "source": "PAT_US20240194939A1",
-      "type": "EMBODIED_IN",
       "target": "CAP_ELECTRODE_COATING",
-      "confidence": 1.0
+      "type": "EMBODIED_IN",
+      "evidence": [
+        "CPC:H01M 4/00",
+        "patent:US20240194939A1"
+      ],
+      "confidence": "EXPLICIT"
     },
     {
       "id": "EDGE-004",
       "source": "PAT_US20240194939A1",
-      "type": "EMBODIED_IN",
       "target": "CAP_ELECTRON_COLLECTION",
-      "confidence": 1.0
+      "type": "EMBODIED_IN",
+      "evidence": [
+        "CPC:H01M 4/00",
+        "patent:US20240194939A1"
+      ],
+      "confidence": "EXPLICIT"
     },
     {
       "id": "EDGE-005",
       "source": "PAT_US20240194939A1",
-      "type": "EMBODIED_IN",
       "target": "CAP_INTERCALATION",
-      "confidence": 1.0
+      "type": "EMBODIED_IN",
+      "evidence": [
+        "CPC:H01M 4/00",
+        "patent:US20240194939A1"
+      ],
+      "confidence": "EXPLICIT"
     },
     {
       "id": "EDGE-006",
       "source": "PAT_US20240194939A1",
-      "type": "EMBODIED_IN",
       "target": "CAP_ION_TRANSPORT",
-      "confidence": 1.0
+      "type": "EMBODIED_IN",
+      "evidence": [
+        "CPC:H01M 10/0562",
+        "patent:US20240194939A1"
+      ],
+      "confidence": "EXPLICIT"
     },
     {
       "id": "EDGE-007",
       "source": "PAT_US20240194939A1",
-      "type": "EMBODIED_IN",
       "target": "CAP_THERMAL_MANAGEMENT",
-      "confidence": 1.0
+      "type": "EMBODIED_IN",
+      "evidence": [
+        "CPC:H01M 50/00",
+        "patent:US20240194939A1"
+      ],
+      "confidence": "EXPLICIT"
     },
     {
       "id": "EDGE-008",
       "source": "PAT_US12489120B2",
-      "type": "EMBODIED_IN",
       "target": "CAP_ELECTROCHEMICAL_ENERGY_STORAGE",
-      "confidence": 1.0
+      "type": "EMBODIED_IN",
+      "evidence": [
+        "CPC:H01M 2300/00",
+        "patent:US12489120B2"
+      ],
+      "confidence": "EXPLICIT"
     },
     {
       "id": "EDGE-009",
       "source": "PAT_US12489120B2",
-      "type": "EMBODIED_IN",
       "target": "CAP_ELECTRON_COLLECTION",
-      "confidence": 1.0
+      "type": "EMBODIED_IN",
+      "evidence": [
+        "CPC:H01M 4/86",
+        "patent:US12489120B2"
+      ],
+      "confidence": "EXPLICIT"
     },
     {
       "id": "EDGE-010",
       "source": "PAT_US20240021793A1",
-      "type": "EMBODIED_IN",
       "target": "CAP_CELL_ASSEMBLY",
-      "confidence": 1.0
+      "type": "EMBODIED_IN",
+      "evidence": [
+        "CPC:H01M 50/00",
+        "patent:US20240021793A1"
+      ],
+      "confidence": "EXPLICIT"
     },
     {
       "id": "EDGE-011",
       "source": "PAT_US20240021793A1",
-      "type": "EMBODIED_IN",
       "target": "CAP_ELECTROCHEMICAL_ENERGY_STORAGE",
-      "confidence": 1.0
+      "type": "EMBODIED_IN",
+      "evidence": [
+        "CPC:H01M 10/0525",
+        "patent:US20240021793A1"
+      ],
+      "confidence": "EXPLICIT"
     },
     {
       "id": "EDGE-012",
       "source": "PAT_US20240021793A1",
-      "type": "EMBODIED_IN",
       "target": "CAP_FAST_CHARGING",
-      "confidence": 1.0
+      "type": "EMBODIED_IN",
+      "evidence": [
+        "CPC:H01M 10/44",
+        "patent:US20240021793A1"
+      ],
+      "confidence": "EXPLICIT"
     },
     {
       "id": "EDGE-013",
       "source": "PAT_US20240021793A1",
-      "type": "EMBODIED_IN",
       "target": "CAP_ION_TRANSPORT",
-      "confidence": 1.0
+      "type": "EMBODIED_IN",
+      "evidence": [
+        "CPC:H01M 10/0525",
+        "patent:US20240021793A1"
+      ],
+      "confidence": "EXPLICIT"
     },
     {
       "id": "EDGE-014",
       "source": "PAT_US20240021793A1",
-      "type": "EMBODIED_IN",
       "target": "CAP_THERMAL_MANAGEMENT",
-      "confidence": 1.0
+      "type": "EMBODIED_IN",
+      "evidence": [
+        "CPC:H01M 50/00",
+        "patent:US20240021793A1"
+      ],
+      "confidence": "EXPLICIT"
     },
     {
       "id": "EDGE-015",
       "source": "PAT_WO2012068732A1",
-      "type": "EMBODIED_IN",
       "target": "CAP_CELL_ASSEMBLY",
-      "confidence": 1.0
+      "type": "EMBODIED_IN",
+      "evidence": [
+        "CPC:H01M 50/00",
+        "patent:WO2012068732A1"
+      ],
+      "confidence": "EXPLICIT"
     },
     {
       "id": "EDGE-016",
       "source": "PAT_WO2012068732A1",
-      "type": "EMBODIED_IN",
       "target": "CAP_ELECTROCHEMICAL_ENERGY_STORAGE",
-      "confidence": 1.0
+      "type": "EMBODIED_IN",
+      "evidence": [
+        "CPC:H01M 10/42",
+        "patent:WO2012068732A1"
+      ],
+      "confidence": "EXPLICIT"
     },
     {
       "id": "EDGE-017",
       "source": "PAT_WO2012068732A1",
-      "type": "EMBODIED_IN",
       "target": "CAP_SAFETY_PROTECTION",
-      "confidence": 1.0
+      "type": "EMBODIED_IN",
+      "evidence": [
+        "CPC:H01M 10/48",
+        "patent:WO2012068732A1"
+      ],
+      "confidence": "EXPLICIT"
     },
     {
       "id": "EDGE-018",
       "source": "PAT_WO2012068732A1",
-      "type": "EMBODIED_IN",
       "target": "CAP_STATE_OF_CHARGE_MONITORING",
-      "confidence": 1.0
+      "type": "EMBODIED_IN",
+      "evidence": [
+        "CPC:H01M 10/48",
+        "patent:WO2012068732A1"
+      ],
+      "confidence": "EXPLICIT"
     },
     {
       "id": "EDGE-019",
       "source": "PAT_WO2012068732A1",
-      "type": "EMBODIED_IN",
       "target": "CAP_THERMAL_MANAGEMENT",
-      "confidence": 1.0
+      "type": "EMBODIED_IN",
+      "evidence": [
+        "CPC:H01M 50/00",
+        "patent:WO2012068732A1"
+      ],
+      "confidence": "EXPLICIT"
     },
     {
       "id": "EDGE-020",
       "source": "PAT_WO2015119843A1",
-      "type": "EMBODIED_IN",
       "target": "CAP_ELECTROCHEMICAL_ENERGY_STORAGE",
-      "confidence": 1.0
+      "type": "EMBODIED_IN",
+      "evidence": [
+        "CPC:H01M 10/0525",
+        "patent:WO2015119843A1"
+      ],
+      "confidence": "EXPLICIT"
     },
     {
       "id": "EDGE-021",
       "source": "PAT_WO2015119843A1",
-      "type": "EMBODIED_IN",
       "target": "CAP_ELECTRODE_COATING",
-      "confidence": 1.0
+      "type": "EMBODIED_IN",
+      "evidence": [
+        "CPC:H01M 4/00",
+        "patent:WO2015119843A1"
+      ],
+      "confidence": "EXPLICIT"
     },
     {
       "id": "EDGE-022",
       "source": "PAT_WO2015119843A1",
-      "type": "EMBODIED_IN",
       "target": "CAP_ELECTRON_COLLECTION",
-      "confidence": 1.0
+      "type": "EMBODIED_IN",
+      "evidence": [
+        "CPC:H01M 4/00",
+        "patent:WO2015119843A1"
+      ],
+      "confidence": "EXPLICIT"
     },
     {
       "id": "EDGE-023",
       "source": "PAT_WO2015119843A1",
-      "type": "EMBODIED_IN",
       "target": "CAP_INTERCALATION",
-      "confidence": 1.0
+      "type": "EMBODIED_IN",
+      "evidence": [
+        "CPC:H01M 4/00",
+        "patent:WO2015119843A1"
+      ],
+      "confidence": "EXPLICIT"
     },
     {
       "id": "EDGE-024",
       "source": "PAT_WO2015119843A1",
+      "target": "CAP_ION_TRANSPORT",
       "type": "EMBODIED_IN",
-      "target": "CAP_ION_TRANSPORT",
-      "confidence": 1.0
-    },
-    {
-      "id": "EDGE-025",
-      "source": "CAP_ELECTROCHEMICAL_ENERGY_STORAGE",
-      "type": "REQUIRES",
-      "target": "CAP_ION_TRANSPORT",
-      "confidence": 0.5
-    },
-    {
-      "id": "EDGE-026",
-      "source": "CAP_ELECTROCHEMICAL_ENERGY_STORAGE",
-      "type": "REQUIRES",
-      "target": "CAP_INTERCALATION",
-      "confidence": 0.5
-    },
-    {
-      "id": "EDGE-027",
-      "source": "CAP_FAST_CHARGING",
-      "type": "REQUIRES",
-      "target": "CAP_ION_TRANSPORT",
-      "confidence": 0.5
-    },
-    {
-      "id": "EDGE-028",
-      "source": "CAP_FAST_CHARGING",
-      "type": "REQUIRES",
-      "target": "CAP_THERMAL_MANAGEMENT",
-      "confidence": 0.5
-    },
-    {
-      "id": "EDGE-029",
-      "source": "CAP_CELL_ASSEMBLY",
-      "type": "REQUIRES",
-      "target": "CAP_ELECTRODE_COATING",
-      "confidence": 0.5
-    },
-    {
-      "id": "EDGE-030",
-      "source": "CAP_SAFETY_PROTECTION",
-      "type": "REQUIRES",
-      "target": "CAP_STATE_OF_CHARGE_MONITORING",
-      "confidence": 0.5
-    },
-    {
-      "id": "EDGE-031",
-      "source": "CON_THEORETICAL_ENERGY_DENSITY_LIMIT",
-      "type": "CONSTRAINS",
-      "target": "CAP_ELECTROCHEMICAL_ENERGY_STORAGE",
-      "confidence": 0.5
-    },
-    {
-      "id": "EDGE-032",
-      "source": "CON_THERMAL_RUNAWAY_THRESHOLD",
-      "type": "CONSTRAINS",
-      "target": "CAP_ELECTROCHEMICAL_ENERGY_STORAGE",
-      "confidence": 0.5
-    },
-    {
-      "id": "EDGE-033",
-      "source": "CON_COST_PER_KWH_THRESHOLD",
-      "type": "CONSTRAINS",
-      "target": "CAP_ELECTROCHEMICAL_ENERGY_STORAGE",
-      "confidence": 0.5
-    },
-    {
-      "id": "EDGE-034",
-      "source": "CON_UN38_3_SHIPPING_SAFETY",
-      "type": "CONSTRAINS",
-      "target": "CAP_ELECTROCHEMICAL_ENERGY_STORAGE",
-      "confidence": 0.5
-    },
-    {
-      "id": "EDGE-035",
-      "source": "CON_IEC_62133_SAFETY_STANDARD",
-      "type": "CONSTRAINS",
-      "target": "CAP_SAFETY_PROTECTION",
-      "confidence": 0.5
+      "evidence": [
+        "CPC:H01M 10/0525",
+        "patent:WO2015119843A1"
+      ],
+      "confidence": "EXPLICIT"
     },
     {
       "id": "EDGE-036",
       "source": "CAP_ELECTROCHEMICAL_ENERGY_STORAGE",
-      "type": "REGULATED_BY",
       "target": "CON_UN38_3_SHIPPING_SAFETY",
-      "confidence": 1.0
+      "type": "REGULATED_BY",
+      "evidence": [
+        "regulation:UN38_3_SHIPPING_SAFETY"
+      ],
+      "confidence": "EXPLICIT"
     },
     {
       "id": "EDGE-037",
       "source": "CAP_SAFETY_PROTECTION",
-      "type": "REGULATED_BY",
       "target": "CON_IEC_62133_SAFETY_STANDARD",
-      "confidence": 1.0
+      "type": "REGULATED_BY",
+      "evidence": [
+        "regulation:IEC_62133_SAFETY_STANDARD"
+      ],
+      "confidence": "EXPLICIT"
+    }
+  ],
+  "structural_edges": [
+    {
+      "id": "EDGE-025",
+      "source": "CAP_ELECTROCHEMICAL_ENERGY_STORAGE",
+      "target": "CAP_ION_TRANSPORT",
+      "type": "REQUIRES",
+      "principle": "charge conservation",
+      "reviewer": "coder_agent_001 / 2026-08-02",
+      "confidence": "STRUCTURAL"
+    },
+    {
+      "id": "EDGE-026",
+      "source": "CAP_ELECTROCHEMICAL_ENERGY_STORAGE",
+      "target": "CAP_INTERCALATION",
+      "type": "REQUIRES",
+      "principle": "lattice insertion chemistry (Li-ion specifically)",
+      "reviewer": "coder_agent_001 / 2026-08-02",
+      "confidence": "STRUCTURAL"
+    },
+    {
+      "id": "EDGE-027",
+      "source": "CAP_FAST_CHARGING",
+      "target": "CAP_ION_TRANSPORT",
+      "type": "REQUIRES",
+      "principle": "transport kinetics",
+      "reviewer": "coder_agent_001 / 2026-08-02",
+      "confidence": "STRUCTURAL"
+    },
+    {
+      "id": "EDGE-028",
+      "source": "CAP_FAST_CHARGING",
+      "target": "CAP_THERMAL_MANAGEMENT",
+      "type": "REQUIRES",
+      "principle": "Joule heating (I\u00b2R losses)",
+      "reviewer": "coder_agent_001 / 2026-08-02",
+      "confidence": "STRUCTURAL"
+    },
+    {
+      "id": "EDGE-029",
+      "source": "CAP_CELL_ASSEMBLY",
+      "target": "CAP_ELECTRODE_COATING",
+      "type": "REQUIRES",
+      "principle": "manufacturing process dependency",
+      "reviewer": "coder_agent_001 / 2026-08-02",
+      "confidence": "STRUCTURAL"
+    },
+    {
+      "id": "EDGE-030",
+      "source": "CAP_SAFETY_PROTECTION",
+      "target": "CAP_STATE_OF_CHARGE_MONITORING",
+      "type": "REQUIRES",
+      "principle": "feedback control",
+      "reviewer": "coder_agent_001 / 2026-08-02",
+      "confidence": "STRUCTURAL"
+    },
+    {
+      "id": "EDGE-031",
+      "source": "CON_THEORETICAL_ENERGY_DENSITY_LIMIT",
+      "target": "CAP_ELECTROCHEMICAL_ENERGY_STORAGE",
+      "type": "CONSTRAINS",
+      "principle": "thermodynamic energy density ceiling of electrochemical chemistry",
+      "reviewer": "coder_agent_001 / 2026-08-02",
+      "confidence": "STRUCTURAL"
+    },
+    {
+      "id": "EDGE-032",
+      "source": "CON_THERMAL_RUNAWAY_THRESHOLD",
+      "target": "CAP_ELECTROCHEMICAL_ENERGY_STORAGE",
+      "type": "CONSTRAINS",
+      "principle": "exothermic decomposition threshold",
+      "reviewer": "coder_agent_001 / 2026-08-02",
+      "confidence": "STRUCTURAL"
+    },
+    {
+      "id": "EDGE-033",
+      "source": "CON_COST_PER_KWH_THRESHOLD",
+      "target": "CAP_ELECTROCHEMICAL_ENERGY_STORAGE",
+      "type": "CONSTRAINS",
+      "principle": "market price elasticity",
+      "reviewer": "coder_agent_001 / 2026-08-02",
+      "confidence": "STRUCTURAL"
+    },
+    {
+      "id": "EDGE-034",
+      "source": "CON_UN38_3_SHIPPING_SAFETY",
+      "target": "CAP_ELECTROCHEMICAL_ENERGY_STORAGE",
+      "type": "CONSTRAINS",
+      "principle": "transport safety regulation (UN Model Regulations)",
+      "reviewer": "coder_agent_001 / 2026-08-02",
+      "confidence": "STRUCTURAL"
+    },
+    {
+      "id": "EDGE-035",
+      "source": "CON_IEC_62133_SAFETY_STANDARD",
+      "target": "CAP_SAFETY_PROTECTION",
+      "type": "CONSTRAINS",
+      "principle": "product safety standard (IEC 62133)",
+      "reviewer": "coder_agent_001 / 2026-08-02",
+      "confidence": "STRUCTURAL"
     }
   ],
   "edge_justifications": [
@@ -502,7 +633,8 @@
       "relationship": "EMBODIED_IN",
       "justification": "Patent US20240194939A1 has CPC code H01M 50/00, which maps to CELL_ASSEMBLY per CPC_MAPPING.md. CPC codes are assigned by USPTO patent examiners and are externally validated.",
       "reviewer": "coder_agent_001 / 2026-08-02",
-      "confidence": 1.0
+      "confidence": "EXPLICIT",
+      "edge_category": "evidence"
     },
     {
       "edgeId": "EDGE-002",
@@ -513,7 +645,8 @@
       "relationship": "EMBODIED_IN",
       "justification": "Patent US20240194939A1 has CPC code H01M 10/0525, which maps to ELECTROCHEMICAL_ENERGY_STORAGE per CPC_MAPPING.md. CPC codes are assigned by USPTO patent examiners and are externally validated.",
       "reviewer": "coder_agent_001 / 2026-08-02",
-      "confidence": 1.0
+      "confidence": "EXPLICIT",
+      "edge_category": "evidence"
     },
     {
       "edgeId": "EDGE-003",
@@ -524,7 +657,8 @@
       "relationship": "EMBODIED_IN",
       "justification": "Patent US20240194939A1 has CPC code H01M 4/00, which maps to ELECTRODE_COATING per CPC_MAPPING.md. CPC codes are assigned by USPTO patent examiners and are externally validated.",
       "reviewer": "coder_agent_001 / 2026-08-02",
-      "confidence": 1.0
+      "confidence": "EXPLICIT",
+      "edge_category": "evidence"
     },
     {
       "edgeId": "EDGE-004",
@@ -535,7 +669,8 @@
       "relationship": "EMBODIED_IN",
       "justification": "Patent US20240194939A1 has CPC code H01M 4/00, which maps to ELECTRON_COLLECTION per CPC_MAPPING.md. CPC codes are assigned by USPTO patent examiners and are externally validated.",
       "reviewer": "coder_agent_001 / 2026-08-02",
-      "confidence": 1.0
+      "confidence": "EXPLICIT",
+      "edge_category": "evidence"
     },
     {
       "edgeId": "EDGE-005",
@@ -546,7 +681,8 @@
       "relationship": "EMBODIED_IN",
       "justification": "Patent US20240194939A1 has CPC code H01M 4/00, which maps to INTERCALATION per CPC_MAPPING.md. CPC codes are assigned by USPTO patent examiners and are externally validated.",
       "reviewer": "coder_agent_001 / 2026-08-02",
-      "confidence": 1.0
+      "confidence": "EXPLICIT",
+      "edge_category": "evidence"
     },
     {
       "edgeId": "EDGE-006",
@@ -557,7 +693,8 @@
       "relationship": "EMBODIED_IN",
       "justification": "Patent US20240194939A1 has CPC code H01M 10/0562, which maps to ION_TRANSPORT per CPC_MAPPING.md. CPC codes are assigned by USPTO patent examiners and are externally validated.",
       "reviewer": "coder_agent_001 / 2026-08-02",
-      "confidence": 1.0
+      "confidence": "EXPLICIT",
+      "edge_category": "evidence"
     },
     {
       "edgeId": "EDGE-007",
@@ -568,7 +705,8 @@
       "relationship": "EMBODIED_IN",
       "justification": "Patent US20240194939A1 has CPC code H01M 50/00, which maps to THERMAL_MANAGEMENT per CPC_MAPPING.md. CPC codes are assigned by USPTO patent examiners and are externally validated.",
       "reviewer": "coder_agent_001 / 2026-08-02",
-      "confidence": 1.0
+      "confidence": "EXPLICIT",
+      "edge_category": "evidence"
     },
     {
       "edgeId": "EDGE-008",
@@ -579,7 +717,8 @@
       "relationship": "EMBODIED_IN",
       "justification": "Patent US12489120B2 has CPC code H01M 2300/00, which maps to ELECTROCHEMICAL_ENERGY_STORAGE per CPC_MAPPING.md. CPC codes are assigned by USPTO patent examiners and are externally validated.",
       "reviewer": "coder_agent_001 / 2026-08-02",
-      "confidence": 1.0
+      "confidence": "EXPLICIT",
+      "edge_category": "evidence"
     },
     {
       "edgeId": "EDGE-009",
@@ -590,7 +729,8 @@
       "relationship": "EMBODIED_IN",
       "justification": "Patent US12489120B2 has CPC code H01M 4/86, which maps to ELECTRON_COLLECTION per CPC_MAPPING.md. CPC codes are assigned by USPTO patent examiners and are externally validated.",
       "reviewer": "coder_agent_001 / 2026-08-02",
-      "confidence": 1.0
+      "confidence": "EXPLICIT",
+      "edge_category": "evidence"
     },
     {
       "edgeId": "EDGE-010",
@@ -601,7 +741,8 @@
       "relationship": "EMBODIED_IN",
       "justification": "Patent US20240021793A1 has CPC code H01M 50/00, which maps to CELL_ASSEMBLY per CPC_MAPPING.md. CPC codes are assigned by USPTO patent examiners and are externally validated.",
       "reviewer": "coder_agent_001 / 2026-08-02",
-      "confidence": 1.0
+      "confidence": "EXPLICIT",
+      "edge_category": "evidence"
     },
     {
       "edgeId": "EDGE-011",
@@ -612,7 +753,8 @@
       "relationship": "EMBODIED_IN",
       "justification": "Patent US20240021793A1 has CPC code H01M 10/0525, which maps to ELECTROCHEMICAL_ENERGY_STORAGE per CPC_MAPPING.md. CPC codes are assigned by USPTO patent examiners and are externally validated.",
       "reviewer": "coder_agent_001 / 2026-08-02",
-      "confidence": 1.0
+      "confidence": "EXPLICIT",
+      "edge_category": "evidence"
     },
     {
       "edgeId": "EDGE-012",
@@ -623,7 +765,8 @@
       "relationship": "EMBODIED_IN",
       "justification": "Patent US20240021793A1 has CPC code H01M 10/44, which maps to FAST_CHARGING per CPC_MAPPING.md. CPC codes are assigned by USPTO patent examiners and are externally validated.",
       "reviewer": "coder_agent_001 / 2026-08-02",
-      "confidence": 1.0
+      "confidence": "EXPLICIT",
+      "edge_category": "evidence"
     },
     {
       "edgeId": "EDGE-013",
@@ -634,7 +777,8 @@
       "relationship": "EMBODIED_IN",
       "justification": "Patent US20240021793A1 has CPC code H01M 10/0525, which maps to ION_TRANSPORT per CPC_MAPPING.md. CPC codes are assigned by USPTO patent examiners and are externally validated.",
       "reviewer": "coder_agent_001 / 2026-08-02",
-      "confidence": 1.0
+      "confidence": "EXPLICIT",
+      "edge_category": "evidence"
     },
     {
       "edgeId": "EDGE-014",
@@ -645,7 +789,8 @@
       "relationship": "EMBODIED_IN",
       "justification": "Patent US20240021793A1 has CPC code H01M 50/00, which maps to THERMAL_MANAGEMENT per CPC_MAPPING.md. CPC codes are assigned by USPTO patent examiners and are externally validated.",
       "reviewer": "coder_agent_001 / 2026-08-02",
-      "confidence": 1.0
+      "confidence": "EXPLICIT",
+      "edge_category": "evidence"
     },
     {
       "edgeId": "EDGE-015",
@@ -656,7 +801,8 @@
       "relationship": "EMBODIED_IN",
       "justification": "Patent WO2012068732A1 has CPC code H01M 50/00, which maps to CELL_ASSEMBLY per CPC_MAPPING.md. CPC codes are assigned by USPTO patent examiners and are externally validated.",
       "reviewer": "coder_agent_001 / 2026-08-02",
-      "confidence": 1.0
+      "confidence": "EXPLICIT",
+      "edge_category": "evidence"
     },
     {
       "edgeId": "EDGE-016",
@@ -667,7 +813,8 @@
       "relationship": "EMBODIED_IN",
       "justification": "Patent WO2012068732A1 has CPC code H01M 10/42, which maps to ELECTROCHEMICAL_ENERGY_STORAGE per CPC_MAPPING.md. CPC codes are assigned by USPTO patent examiners and are externally validated.",
       "reviewer": "coder_agent_001 / 2026-08-02",
-      "confidence": 1.0
+      "confidence": "EXPLICIT",
+      "edge_category": "evidence"
     },
     {
       "edgeId": "EDGE-017",
@@ -678,7 +825,8 @@
       "relationship": "EMBODIED_IN",
       "justification": "Patent WO2012068732A1 has CPC code H01M 10/48, which maps to SAFETY_PROTECTION per CPC_MAPPING.md. CPC codes are assigned by USPTO patent examiners and are externally validated.",
       "reviewer": "coder_agent_001 / 2026-08-02",
-      "confidence": 1.0
+      "confidence": "EXPLICIT",
+      "edge_category": "evidence"
     },
     {
       "edgeId": "EDGE-018",
@@ -689,7 +837,8 @@
       "relationship": "EMBODIED_IN",
       "justification": "Patent WO2012068732A1 has CPC code H01M 10/48, which maps to STATE_OF_CHARGE_MONITORING per CPC_MAPPING.md. CPC codes are assigned by USPTO patent examiners and are externally validated.",
       "reviewer": "coder_agent_001 / 2026-08-02",
-      "confidence": 1.0
+      "confidence": "EXPLICIT",
+      "edge_category": "evidence"
     },
     {
       "edgeId": "EDGE-019",
@@ -700,7 +849,8 @@
       "relationship": "EMBODIED_IN",
       "justification": "Patent WO2012068732A1 has CPC code H01M 50/00, which maps to THERMAL_MANAGEMENT per CPC_MAPPING.md. CPC codes are assigned by USPTO patent examiners and are externally validated.",
       "reviewer": "coder_agent_001 / 2026-08-02",
-      "confidence": 1.0
+      "confidence": "EXPLICIT",
+      "edge_category": "evidence"
     },
     {
       "edgeId": "EDGE-020",
@@ -711,7 +861,8 @@
       "relationship": "EMBODIED_IN",
       "justification": "Patent WO2015119843A1 has CPC code H01M 10/0525, which maps to ELECTROCHEMICAL_ENERGY_STORAGE per CPC_MAPPING.md. CPC codes are assigned by USPTO patent examiners and are externally validated.",
       "reviewer": "coder_agent_001 / 2026-08-02",
-      "confidence": 1.0
+      "confidence": "EXPLICIT",
+      "edge_category": "evidence"
     },
     {
       "edgeId": "EDGE-021",
@@ -722,7 +873,8 @@
       "relationship": "EMBODIED_IN",
       "justification": "Patent WO2015119843A1 has CPC code H01M 4/00, which maps to ELECTRODE_COATING per CPC_MAPPING.md. CPC codes are assigned by USPTO patent examiners and are externally validated.",
       "reviewer": "coder_agent_001 / 2026-08-02",
-      "confidence": 1.0
+      "confidence": "EXPLICIT",
+      "edge_category": "evidence"
     },
     {
       "edgeId": "EDGE-022",
@@ -733,7 +885,8 @@
       "relationship": "EMBODIED_IN",
       "justification": "Patent WO2015119843A1 has CPC code H01M 4/00, which maps to ELECTRON_COLLECTION per CPC_MAPPING.md. CPC codes are assigned by USPTO patent examiners and are externally validated.",
       "reviewer": "coder_agent_001 / 2026-08-02",
-      "confidence": 1.0
+      "confidence": "EXPLICIT",
+      "edge_category": "evidence"
     },
     {
       "edgeId": "EDGE-023",
@@ -744,7 +897,8 @@
       "relationship": "EMBODIED_IN",
       "justification": "Patent WO2015119843A1 has CPC code H01M 4/00, which maps to INTERCALATION per CPC_MAPPING.md. CPC codes are assigned by USPTO patent examiners and are externally validated.",
       "reviewer": "coder_agent_001 / 2026-08-02",
-      "confidence": 1.0
+      "confidence": "EXPLICIT",
+      "edge_category": "evidence"
     },
     {
       "edgeId": "EDGE-024",
@@ -755,7 +909,8 @@
       "relationship": "EMBODIED_IN",
       "justification": "Patent WO2015119843A1 has CPC code H01M 10/0525, which maps to ION_TRANSPORT per CPC_MAPPING.md. CPC codes are assigned by USPTO patent examiners and are externally validated.",
       "reviewer": "coder_agent_001 / 2026-08-02",
-      "confidence": 1.0
+      "confidence": "EXPLICIT",
+      "edge_category": "evidence"
     },
     {
       "edgeId": "EDGE-025",
@@ -764,9 +919,11 @@
       "sourceNode": "CAP_ELECTROCHEMICAL_ENERGY_STORAGE",
       "targetNode": "CAP_ION_TRANSPORT",
       "relationship": "REQUIRES",
-      "justification": "Electrochemical storage requires ions to move between electrodes; without ion transport, the electrochemical reaction cannot occur. This is a physical necessity, not a convention.",
+      "principle": "charge conservation",
+      "justification": "Electrochemical storage requires ions to move between electrodes to balance the electron flow in the external circuit. Without ion transport, charge accumulation prevents further reaction.",
       "reviewer": "coder_agent_001 / 2026-08-02",
-      "confidence": 0.5
+      "confidence": "STRUCTURAL",
+      "edge_category": "structural"
     },
     {
       "edgeId": "EDGE-026",
@@ -775,9 +932,11 @@
       "sourceNode": "CAP_ELECTROCHEMICAL_ENERGY_STORAGE",
       "targetNode": "CAP_INTERCALATION",
       "relationship": "REQUIRES",
-      "justification": "Li-ion electrochemical storage (the dominant chemistry in this corpus) requires intercalation \u2014 ions must insert into and remove from electrode lattices. NOTE: this is specific to intercalation-based chemistries, not universal (conversion reactions exist). Confidence reduced to 0.5 accordingly.",
+      "principle": "lattice insertion chemistry (Li-ion specifically)",
+      "justification": "Li-ion electrochemical storage (the dominant chemistry in this corpus) requires intercalation \u2014 ions insert into and remove from electrode lattices. NOTE: specific to intercalation-based chemistries, not universal.",
       "reviewer": "coder_agent_001 / 2026-08-02",
-      "confidence": 0.5
+      "confidence": "STRUCTURAL",
+      "edge_category": "structural"
     },
     {
       "edgeId": "EDGE-027",
@@ -786,9 +945,11 @@
       "sourceNode": "CAP_FAST_CHARGING",
       "targetNode": "CAP_ION_TRANSPORT",
       "relationship": "REQUIRES",
-      "justification": "Fast charging requires ions to move rapidly between electrodes; the C-rate is limited by ion transport kinetics. This is a physical necessity of the charge process.",
+      "principle": "transport kinetics",
+      "justification": "Fast charging requires ions to move rapidly between electrodes. The C-rate is limited by ion transport kinetics in the electrolyte and across interfaces.",
       "reviewer": "coder_agent_001 / 2026-08-02",
-      "confidence": 0.5
+      "confidence": "STRUCTURAL",
+      "edge_category": "structural"
     },
     {
       "edgeId": "EDGE-028",
@@ -797,9 +958,11 @@
       "sourceNode": "CAP_FAST_CHARGING",
       "targetNode": "CAP_THERMAL_MANAGEMENT",
       "relationship": "REQUIRES",
-      "justification": "Fast charging generates heat due to internal resistance (Joule heating). Without thermal management, the cell temperature rises beyond safe limits. This is a physical necessity at high C-rates, though not at low C-rates.",
+      "principle": "Joule heating (I\u00b2R losses)",
+      "justification": "Fast charging drives high current, generating heat via internal resistance (Joule heating). Without thermal management, cell temperature exceeds safe limits at high C-rates.",
       "reviewer": "coder_agent_001 / 2026-08-02",
-      "confidence": 0.5
+      "confidence": "STRUCTURAL",
+      "edge_category": "structural"
     },
     {
       "edgeId": "EDGE-029",
@@ -808,9 +971,11 @@
       "sourceNode": "CAP_CELL_ASSEMBLY",
       "targetNode": "CAP_ELECTRODE_COATING",
       "relationship": "REQUIRES",
-      "justification": "Cell assembly requires coated electrodes; the electrode coating process produces the functional electrode that is then assembled into a cell. This is a manufacturing necessity, not a convention.",
+      "principle": "manufacturing process dependency",
+      "justification": "Cell assembly requires coated electrodes. The electrode coating process produces the functional electrode that is then assembled into a cell. This is a manufacturing necessity.",
       "reviewer": "coder_agent_001 / 2026-08-02",
-      "confidence": 0.5
+      "confidence": "STRUCTURAL",
+      "edge_category": "structural"
     },
     {
       "edgeId": "EDGE-030",
@@ -819,9 +984,11 @@
       "sourceNode": "CAP_SAFETY_PROTECTION",
       "targetNode": "CAP_STATE_OF_CHARGE_MONITORING",
       "relationship": "REQUIRES",
-      "justification": "Safety protection systems (e.g., overcharge cutoff) require knowing the cell's state of charge; without monitoring, the safety system cannot determine when to intervene. This is a functional necessity.",
+      "principle": "feedback control",
+      "justification": "Safety protection systems (e.g., overcharge cutoff) require knowing the cell's state of charge. Without monitoring, the safety system cannot determine when to intervene.",
       "reviewer": "coder_agent_001 / 2026-08-02",
-      "confidence": 0.5
+      "confidence": "STRUCTURAL",
+      "edge_category": "structural"
     },
     {
       "edgeId": "EDGE-031",
@@ -830,9 +997,11 @@
       "sourceNode": "CON_THEORETICAL_ENERGY_DENSITY_LIMIT",
       "targetNode": "CAP_ELECTROCHEMICAL_ENERGY_STORAGE",
       "relationship": "CONSTRAINS",
-      "justification": "The theoretical energy density of electrochemical chemistries (e.g., ~400 Wh/kg for Li-ion) limits the maximum energy a cell can store. This is a physics limit, not an engineering limit.",
+      "principle": "thermodynamic energy density ceiling of electrochemical chemistry",
+      "justification": "The theoretical energy density of electrochemical chemistries (e.g., ~400 Wh/kg for Li-ion) limits the maximum energy a cell can store. This is a thermodynamic limit, not an engineering limit.",
       "reviewer": "coder_agent_001 / 2026-08-02",
-      "confidence": 0.5
+      "confidence": "STRUCTURAL",
+      "edge_category": "structural"
     },
     {
       "edgeId": "EDGE-032",
@@ -841,9 +1010,11 @@
       "sourceNode": "CON_THERMAL_RUNAWAY_THRESHOLD",
       "targetNode": "CAP_ELECTROCHEMICAL_ENERGY_STORAGE",
       "relationship": "CONSTRAINS",
-      "justification": "If cell temperature exceeds ~150\u00b0C, thermal runaway occurs \u2014 an uncontrollable exothermic reaction. This constrains the operating envelope of electrochemical storage.",
+      "principle": "exothermic decomposition threshold",
+      "justification": "If cell temperature exceeds ~150\u00b0C, thermal runaway occurs \u2014 an uncontrollable exothermic decomposition reaction. This constrains the operating envelope.",
       "reviewer": "coder_agent_001 / 2026-08-02",
-      "confidence": 0.5
+      "confidence": "STRUCTURAL",
+      "edge_category": "structural"
     },
     {
       "edgeId": "EDGE-033",
@@ -852,9 +1023,11 @@
       "sourceNode": "CON_COST_PER_KWH_THRESHOLD",
       "targetNode": "CAP_ELECTROCHEMICAL_ENERGY_STORAGE",
       "relationship": "CONSTRAINS",
-      "justification": "The cost per kWh must be below the market threshold (~$100/kWh for EVs) for the storage to be economically viable. This constrains which chemistries and manufacturing processes are deployable.",
+      "principle": "market price elasticity",
+      "justification": "The cost per kWh must be below the market threshold (~$100/kWh for EVs) for the storage to be economically viable. This constrains which chemistries and processes are deployable.",
       "reviewer": "coder_agent_001 / 2026-08-02",
-      "confidence": 0.5
+      "confidence": "STRUCTURAL",
+      "edge_category": "structural"
     },
     {
       "edgeId": "EDGE-034",
@@ -863,9 +1036,11 @@
       "sourceNode": "CON_UN38_3_SHIPPING_SAFETY",
       "targetNode": "CAP_ELECTROCHEMICAL_ENERGY_STORAGE",
       "relationship": "CONSTRAINS",
-      "justification": "UN38.3 requires batteries to pass specific safety tests before transport. Batteries that fail cannot be shipped commercially. This regulation constrains the deployment of electrochemical storage.",
+      "principle": "transport safety regulation (UN Model Regulations)",
+      "justification": "UN38.3 requires batteries to pass specific safety tests before transport. Batteries that fail cannot be shipped commercially. This regulation constrains deployment.",
       "reviewer": "coder_agent_001 / 2026-08-02",
-      "confidence": 0.5
+      "confidence": "STRUCTURAL",
+      "edge_category": "structural"
     },
     {
       "edgeId": "EDGE-035",
@@ -874,9 +1049,11 @@
       "sourceNode": "CON_IEC_62133_SAFETY_STANDARD",
       "targetNode": "CAP_SAFETY_PROTECTION",
       "relationship": "CONSTRAINS",
-      "justification": "IEC 62133 specifies safety requirements for secondary cells. Safety protection systems must comply with this standard for consumer products. This regulation governs safety protection capabilities.",
+      "principle": "product safety standard (IEC 62133)",
+      "justification": "IEC 62133 specifies safety requirements for secondary cells. Safety protection systems must comply with this standard for consumer products.",
       "reviewer": "coder_agent_001 / 2026-08-02",
-      "confidence": 0.5
+      "confidence": "STRUCTURAL",
+      "edge_category": "structural"
     },
     {
       "edgeId": "EDGE-036",
@@ -885,9 +1062,11 @@
       "sourceNode": "CAP_ELECTROCHEMICAL_ENERGY_STORAGE",
       "targetNode": "CON_UN38_3_SHIPPING_SAFETY",
       "relationship": "REGULATED_BY",
-      "justification": "UN38.3 is a UN standard that explicitly regulates the transport of lithium batteries. Patent US20240021793A1 and US20240194939A1 both fall under this regulation. The regulation is explicit and externally validated.",
+      "principle": "UN Model Regulations on the Transport of Dangerous Goods",
+      "justification": "UN38.3 is a UN standard that explicitly regulates the transport of lithium batteries. The regulation is explicit and externally validated.",
       "reviewer": "coder_agent_001 / 2026-08-02",
-      "confidence": 1.0
+      "confidence": "EXPLICIT",
+      "edge_category": "evidence"
     },
     {
       "edgeId": "EDGE-037",
@@ -896,9 +1075,11 @@
       "sourceNode": "CAP_SAFETY_PROTECTION",
       "targetNode": "CON_IEC_62133_SAFETY_STANDARD",
       "relationship": "REGULATED_BY",
-      "justification": "IEC 62133 is an international standard that explicitly governs safety requirements for secondary cells containing alkaline or other non-acid electrolytes. Safety protection systems must comply.",
+      "principle": "IEC 62133 international safety standard",
+      "justification": "IEC 62133 is an international standard that explicitly governs safety requirements for secondary cells containing alkaline or other non-acid electrolytes.",
       "reviewer": "coder_agent_001 / 2026-08-02",
-      "confidence": 1.0
+      "confidence": "EXPLICIT",
+      "edge_category": "evidence"
     }
   ]
 }

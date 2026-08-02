@@ -67,4 +67,6 @@ ALLOWED_MODIFICATIONS = frozenset({
     "scripts/measure_normalization_gap.py",  # Phase 5.D: normalization gap measurement (one-off)
     "scripts/classify_labels.py",  # Phase 5.E: classification exercise (one-off)
     "scripts/build_capability_graph.py",  # Phase 7B/7C: capability graph builder (one-off)
+    "scripts/build_trusted_graph.py",  # Phase 7C.1: trusted graph v2.0 (one-off)
+    "scripts/build_trusted_graph_v21.py",  # Phase 7C.2: trusted graph v2.1 (one-off)
 })
