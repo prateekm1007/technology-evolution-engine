@@ -1,4 +1,4 @@
-# TEE MASTER HANDOFF (v7.0 — Phase 8: validation framework; mission changed to 'determine whether an invention engine is possible')
+# TEE MASTER HANDOFF (v8.0 — Phase 9: attempt to destroy the model; 4/5 assumptions failed; model scope honestly bounded)
 
 ## PRE-CODING READ LIST (MANDATORY)
 
