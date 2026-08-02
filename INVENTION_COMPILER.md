@@ -239,8 +239,17 @@ WHAT FAILED
 WHAT REMAINS UNKNOWN
 ```
 
-**Phase 4 — Define convergence mathematically.** Only after the
-definition exists should implementation begin.
+**Phase 4 — Convergence definition complete** (see CONVERGENCE.md).
+The definition produces different convergence scores for the CEO's
+success-criterion pairs: Convergence(battery, EV) = 1.2000 vs
+Convergence(battery, desalination) = 0.0286 (delta 1.1714). The
+formula discriminates. Implementation forbidden until the validation
+plan in CONVERGENCE.md Section 5 executes — which requires a second
+graph snapshot (the graph currently has only one) and time to pass
+(validation pair resolution dates: 2028-01-01). The one-off measurement
+script at scripts/measure_convergence.py is committed for
+reproducibility (Law 7) but is not imported by anything; it is a
+measurement, not a module.
 
 **Phase 5 — Audience specialization.** Only after Phases 1-4 give the
 underlying system something true to say to any audience.

@@ -1,4 +1,4 @@
-# TEE MASTER HANDOFF (v2.4 — Phase 3 Step 5 closed, Maestro Loop Cycle 6 complete)
+# TEE MASTER HANDOFF (v2.5 — Phase 4 convergence definition complete)
 
 ## PRE-CODING READ LIST (MANDATORY)
 
@@ -61,8 +61,12 @@ those layers or modules.
   have Phase 2 priors (load=10, base_viability=-0.5, well below 0.5).
 - 284 tests collected (275 + 9 new from Cycle 6: 4 metadata drift +
   5 cemetery fields). All targeted tests pass.
-- Phase 3 COMPLETE (Steps 0-5). Phase 4 (convergence mathematically)
-  is next on the roadmap.
+- Phase 3 COMPLETE (Steps 0-5). Phase 4 convergence definition
+  COMPLETE (CONVERGENCE.md committed, formula discriminates:
+  battery×EV=1.2000 vs battery×desal=0.0286). Phase 4 implementation
+  FORBIDDEN until validation plan executes (requires a second graph
+  snapshot + time). Phase 5 (audience specialization) is next after
+  Phase 4 validation.
 
 ## MAESTRO LOOP CYCLE 6 (N3 + F-022 fix)
 
@@ -118,6 +122,76 @@ Phase 10 DECISION: YES — preserve the modification. The auditor's
 two required pre-Step-5 fixes are closed: N3 metadata drift (P2) and
 F-022 cemetery fields (P2). The synthetic-abstracts honesty note (N4)
 is recorded as F-034 (informational). Phase 3 is complete.
+
+## PHASE 4 — CONVERGENCE DEFINITION (post-Cycle 6)
+
+Per the CEO's Phase 4 directive and the external auditor's verification
+(Q1-Q4), Phase 4's deliverable is a **definition document**, not code.
+The directive explicitly forbids `convergence_module.py`,
+`convergence_engine.py`, `convergence_layer.py`, `convergence_agent.py`
+until the definition is validated.
+
+**Deliverable:** `CONVERGENCE.md` at repo root, with 5 sections
+(Definition, Signals, Formula, Failure modes, Validation plan),
+grounded in the live graph state at commit `b573b33`.
+
+**Success criterion (from CEO directive):** the formula must produce
+different convergence scores for:
+- `(sub_battery_technology, sub_electric_propulsion)` — should converge
+- `(sub_battery_technology, sub_desalination)` — should NOT converge
+
+**Actual numbers** (computed by `scripts/measure_convergence.py` —
+one-off measurement script, NOT a module, not imported by anything):
+
+```
+Convergence(battery, EV)           = 1.2000
+Convergence(battery, desalination) = 0.0286
+Delta: 1.1714   (discriminates — success criterion MET)
+```
+
+**Formula:**
+```
+Convergence(A, B) =
+    1.0 * direct_dependency(A, B)
+  + 0.4 * shared_prereq_overlap_ratio(A, B)
+  + 0.2 * component_overlap_ratio(A, B)
+  + 0.2 * (1 / shortest_path(A, B))
+  + 0.0 * constraint_overlap_ratio(A, B)   # EXCLUDED — F-024
+  + 0.0 * temporal_convergence(A, B)      # EXCLUDED — no snapshots
+```
+
+**Key findings encoded in the spec:**
+1. The discriminating signal is **direct dependency** (Signal A'):
+   `sub_electric_propulsion --depends_on--> sub_battery_technology`
+   is a direct edge in the graph. No direct edge exists between
+   battery and desalination.
+2. Signal B (constraint overlap) is 1.0 for ALL pairs (F-024 — Phase 2
+   priors fill all 10 constraint slots uniformly). Excluded from the
+   score; carries no information.
+3. Signal E (temporal convergence) is NOT COMPUTABLE. The graph has
+   only one snapshot — every node shares one `created_at` timestamp.
+   This is the single most important prerequisite for Phase 4's
+   evolution from structural to temporal: another Phase 3 ingestion
+   cycle is needed before temporal convergence can be measured.
+4. The formula measures STRUCTURAL CONNECTEDNESS, not TEMPORAL
+   CONVERGENCE. The spec is explicit about this distinction. Calling
+   it "convergence" is forward-promissory naming; the temporal
+   dimension will be added when the data exists.
+
+**Validation plan (CONVERGENCE.md Section 5):**
+- Pair 1 (battery, EV): predicted converging. Real-world falsification:
+  by 2028-01-01, if EV industry has NOT increased its dependence on
+  battery R&D, the structural score was misleading.
+- Pair 2 (battery, desalination): predicted NOT converging.
+  Falsification: by 2028-01-01, if >20% of new desalination capacity
+  uses battery-based storage as a CORE component, the score missed a
+  real convergence.
+- Pre-validation prerequisite: a second graph snapshot (another
+  Phase 3 ingestion cycle) is required before temporal convergence
+  can be tested.
+
+**Phase 4 implementation status:** DEFINITION COMPLETE. Implementation
+FORBIDDEN until validation plan executes.
 
 ## SESSION-HARDENED PRINCIPLES (v1.0)
 
