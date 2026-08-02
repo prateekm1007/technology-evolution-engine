@@ -141,40 +141,49 @@ Novelty score and the Exploitation score are consistent.
 
 ---
 
-## 3. Formula
+## 3. Formula (experimental — NOT constitutional)
 
-```text
-Novelty(combination) =
-    0.40 * combinatorial_distance(N1)
-  + 0.30 * exploration_score(N2)
-  + 0.30 * historical_rarity(N3)
+**Per CEO v3.5 correction:** constitutional documents encode
+invariants, not fitted equations. The dimensions (N1-N4) are
+invariant — they are the signals Novelty must measure. The
+mathematics (weights, normalization, combination rule) are
+experimental — they are candidate scoring functions that must be
+tested against real data before being elevated.
+
+The candidate formula, weights, and cross-check rules are recorded
+in:
+
+```
+evidence/experiments/novelty_formula_v1.md
 ```
 
-Where:
-- N1 (combinatorial distance): normalized to [0, 1]
-- N2 (exploration score): 1.0 if exploration, 0.0 if exploitation,
-  fractional for partial exploration
-- N3 (historical rarity): normalized to [0, 1]
+That file is in the **experimental layer**, not the constitutional
+layer. It will be revised as the formula is tested against the one
+vertical's real data. The constitutional layer (this document) does
+not commit to a specific formula.
 
-**Score range:** [0, 1]. A score of 1.0 means the combination is
-fully novel (never attempted, fully exploratory, historically rare).
-A score of 0.0 means the combination is fully familiar (frequently
-attempted, exploitation, historically common).
+**What IS invariant (constitutional):**
+- Novelty is a combinatorial measurement (not per-capability, not
+  pairwise in the convergence sense).
+- The 4 signals (N1-N4) are the required dimensions.
+- Novelty measures uncertainty, NOT value (per Fleming). A high-
+  Novelty combination is uncertain, not necessarily good.
+- N4 (exploitation) is the inverse cross-check: N4 should equal
+  1 - Novelty. This invariant holds regardless of the specific
+  formula.
 
-**N4 (exploitation score) is NOT in the formula** — it is a cross-check:
-N4 should equal 1 - Novelty. If it doesn't, the formula has a bug.
-
-**Weights are priors, not fitted constants.** Combinatorial distance
-(N1) dominates (0.40) because it is the most direct operationalization
-of Fleming's "unfamiliar components." Exploration (N2) and historical
-rarity (N3) are equal (0.30 each) because they capture different
-aspects of novelty (structural vs historical).
+**What is NOT invariant (experimental):**
+- The weights of each signal.
+- The normalization scheme.
+- Whether N4 enters the formula or remains a cross-check.
+- The thresholds for "novel" vs. "familiar."
 
 **Important: Novelty does NOT predict success.** A high-Novelty
 combination is uncertain — it might be a breakthrough or a failure.
 Novelty is a signal of uncertainty, not of value. The system should
 use Novelty to identify combinations worth investigating, not to
-rank combinations by predicted success.
+rank combinations by predicted success. This is an invariant —
+it holds regardless of the specific formula.
 
 ---
 

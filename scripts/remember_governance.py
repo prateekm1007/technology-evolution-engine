@@ -21,8 +21,9 @@ READ_LIST = [
     ("CONTRIBUTING.md", "session-hardened principles + pre-commit checklist. Read BEFORE every commit."),
     ("FAILURES.md", "the failure taxonomy. Do not re-introduce."),
     ("HANDOFF.md", "current state and what's next."),
-    ("CONVERGENCE.md", "Phase 4 convergence definition (BASELINE architecture). Read BEFORE any convergence-related work. The capability-centric architecture (Phase 6) is the primary investigation; CONVERGENCE.md is the experimental baseline."),
-    ("CAPABILITY_ONTOLOGY.md", "Phase 6 capability-centric architecture (PRIMARY investigation). Defines the new node types, edge types, evidence schema, temporal state, scope restriction (one vertical), embedding policy, and three independent scores. Implementation (Phase 7) NOT yet authorized."),
+    ("CONVERGENCE.md", "Phase 4 convergence definition (CO_OCCURRENCE_MODEL architecture). Read BEFORE any convergence-related work. The CAPABILITY_MODEL (Phase 6) is under investigation; CONVERGENCE.md is the CO_OCCURRENCE_MODEL, preserved for comparison/backtest."),
+    ("CAPABILITY_ONTOLOGY.md", "Phase 6 capability-centric architecture (CAPABILITY_MODEL, under investigation). Defines the new node types, edge types, evidence schema, temporal state, scope restriction (one vertical), embedding policy, and three independent scores. Implementation (Phase 7) NOT yet authorized."),
+    ("ONTOLOGY_FREEZE.md", "Phase 6 ontology freeze guardrail. Hard caps: 10 node types, 9 edge types, 1 vertical, 20 capabilities, 10 constraints. Any addition requires explicit CEO authorization + recorded justification. Prevents ontology explosion → collapse."),
 ]
 
 

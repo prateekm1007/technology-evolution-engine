@@ -137,45 +137,44 @@ ceilings).
 
 ---
 
-## 3. Formula
+## 3. Formula (experimental — NOT constitutional)
 
-```text
-Feasibility(combination) =
-    F1_regulatory AND
-    F2_economic AND
-    F3_manufacturing AND
-    F4_infrastructure AND
-    F5_physical
+**Per CEO v3.5 correction:** constitutional documents encode
+invariants, not fitted equations. The dimensions (F1-F5) are
+invariant — they are the gates Feasibility must check. The specific
+thresholds and gate-interaction rules are experimental.
+
+The candidate formula, thresholds, and gate definitions are recorded
+in:
+
+```
+evidence/experiments/feasibility_formula_v1.md
 ```
 
-**Score:** boolean (FEASIBLE / INFEASIBLE). There is no continuous
-score. A combination either passes all gates or it doesn't.
+**What IS invariant (constitutional):**
+- Feasibility is a boolean gate-based measurement (NOT continuous).
+- The 5 gates (F1-F5) are the required dimensions.
+- A combination is FEASIBLE only if ALL gates pass (AND logic).
+- A combination that fails ANY gate is INFEASIBLE — there is no
+  "partially feasible." This is the critical invariant that
+  distinguishes Feasibility from Readiness and Novelty.
 
-**Why boolean, not continuous:** per the external review, blending
-threshold gates into a continuous number is what made the Phase 5
-system conflate "premature" and "impossible." A combination that
-fails the regulatory gate is not "80% feasible" — it is infeasible.
-The Feasibility score preserves this distinction.
+**What is NOT invariant (experimental):**
+- The specific thresholds for each gate (e.g., what cost-per-unit
+  counts as "economically viable").
+- Whether gates interact (e.g., does failing F1 regulatory change
+  the F2 economic threshold?).
+- How gate failures are reported (which diagnostic information
+  accompanies the INFEASIBLE verdict).
+- The specific regulations, cost thresholds, manufacturing capacity
+  values, infrastructure requirements, and physical limits
+  populating each gate.
 
-**Partial Feasibility (informational, not scored):** for diagnostic
-purposes, the system can report which gates failed. E.g., "combination
-X is INFEASIBLE because F1 (regulatory) and F3 (manufacturing) failed."
-This is informational — it helps the user understand WHY the
-combination is infeasible, but it does not change the score.
-
-### Why this is different from Readiness and Novelty
-
-- Readiness is continuous: a capability can be "70% ready" (TRL 6,
-  pilot manufacturing). This is meaningful because readiness is
-  about maturity, which is a spectrum.
-
-- Novelty is continuous: a combination can be "70% novel" (some
-  pairs familiar, some unfamiliar). This is meaningful because
-  novelty is about degree, not kind.
-
-- Feasibility is boolean: a combination is feasible OR infeasible.
-  There is no "70% feasible" because feasibility is about gates,
-  not spectra. A gate is open or closed.
+**The boolean-AND structure IS invariant.** Per the external review,
+blending threshold gates into a continuous number is what made the
+CO_OCCURRENCE_MODEL conflate "premature" and "impossible." The
+boolean structure prevents this. The specific thresholds within each
+gate are experimental — they must be calibrated against real data.
 
 ---
 

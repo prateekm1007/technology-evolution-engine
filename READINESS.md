@@ -140,44 +140,39 @@ or production-volume data.
 
 ---
 
-## 3. Formula
+## 3. Formula (experimental — NOT constitutional)
 
-```text
-Readiness(capability) =
-    0.30 * TRL_normalized(R1)
-  + 0.25 * manufacturing_maturity(R2)
-  + 0.20 * infrastructure_maturity(R3)
-  + 0.15 * scientific_maturity(R4)
-  + 0.10 * cost_curve_viability(R5)
+**Per CEO v3.5 correction:** constitutional documents encode
+invariants, not fitted equations. The dimensions (R1-R5) are
+invariant — they are the signals Readiness must measure. The
+mathematics (weights, normalization, combination rule) are
+experimental — they are candidate scoring functions that must be
+tested against real data before being elevated.
+
+The candidate formula, weights, thresholds, and combination rules
+are recorded in:
+
+```
+evidence/experiments/readiness_formula_v1.md
 ```
 
-Where each signal is normalized to [0, 1]:
-- TRL_normalized = TRL / 9
-- manufacturing_maturity: lab=0.2, pilot=0.4, production=0.7, mass=1.0
-- infrastructure_maturity: none=0, partial=0.3, sufficient=0.7, mature=1.0
-- scientific_maturity: normalized paper/citation count
-- cost_curve_viability: 1.0 if cost is below threshold, scaled otherwise
+That file is in the **experimental layer**, not the constitutional
+layer. It will be revised as the formula is tested against the one
+vertical's real data. The constitutional layer (this document) does
+not commit to a specific formula.
 
-**Score range:** [0, 1]. A score of 1.0 means the capability is fully
-ready (TRL 9, mass-manufactured, sufficient infrastructure, deep
-science, viable cost). A score of 0.0 means nothing is in place.
+**What IS invariant (constitutional):**
+- Readiness is per-capability (not pairwise).
+- The 5 signals (R1-R5) are the required dimensions.
+- A combination's Readiness is limited by its least-ready capability
+  (the weakest-link principle is an invariant, but the specific
+  function — min(), weighted-min, etc. — is experimental).
 
-**Weights are priors, not fitted constants.** TRL dominates (0.30)
-because it is the most externally-validated signal. Manufacturing
-(0.25) and infrastructure (0.20) follow because they represent the
-gap between lab and deployment. Scientific maturity (0.15) and cost
-curve (0.10) are lower because they are more speculative signals.
-
-**For a combination of capabilities:**
-
-```text
-Readiness(combination) = min(Readiness(c) for c in combination)
-```
-
-A combination's Readiness is limited by its LEAST-ready capability.
-This is the "weakest link" principle — a chain is only as strong as
-its weakest link. If one capability is at TRL 3 (lab), the
-combination is not ready, regardless of how mature the others are.
+**What is NOT invariant (experimental):**
+- The weights of each signal.
+- The normalization scheme.
+- The specific combination function (min vs. weighted-min vs. other).
+- The thresholds for "ready" vs. "not ready."
 
 ---
 

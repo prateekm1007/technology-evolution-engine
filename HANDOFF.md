@@ -1,4 +1,4 @@
-# TEE MASTER HANDOFF (v4.1 — Phase 6 constitutional documents written; no implementation)
+# TEE MASTER HANDOFF (v4.2 — CEO v3.5 corrections applied: formulas demoted, naming neutralized, ontology frozen)
 
 ## PRE-CODING READ LIST (MANDATORY)
 
@@ -17,19 +17,23 @@ files in order:
    checklist. Read BEFORE every commit.
 5. `FAILURES.md` — the failure taxonomy. Do not re-introduce.
 6. `HANDOFF.md` — this file. Current state of the system.
-7. `CONVERGENCE.md` — Phase 4 convergence definition (BASELINE
-   architecture). The capability-centric architecture (Phase 6) is
-   the primary investigation; CONVERGENCE.md is the experimental
-   baseline, preserved for replay/audit/backtest.
+7. `CONVERGENCE.md` — Phase 4 convergence definition
+   (CO_OCCURRENCE_MODEL architecture). The CAPABILITY_MODEL
+   (Phase 6) is under investigation; CONVERGENCE.md is the
+   CO_OCCURRENCE_MODEL, preserved for comparison/backtest.
 8. `CAPABILITY_ONTOLOGY.md` — Phase 6 capability-centric architecture
-   (PRIMARY investigation). Defines the new node types, edge types,
-   evidence schema, temporal state, scope restriction (one vertical),
-   embedding policy, and three independent scores. Implementation
-   (Phase 7) NOT yet authorized.
+   (CAPABILITY_MODEL, under investigation). Defines the new node
+   types, edge types, evidence schema, temporal state, scope
+   restriction (one vertical), embedding policy, and three independent
+   scores. Implementation (Phase 7) NOT yet authorized.
+9. `ONTOLOGY_FREEZE.md` — Phase 6 ontology freeze guardrail. Hard
+   caps: 10 node types, 9 edge types, 1 vertical, 20 capabilities,
+   10 constraints. Any addition requires explicit CEO authorization
+   + recorded justification.
 
 This read list is enforced structurally by `scripts/remember_governance.py`,
 which is wired as a pre-commit hook via `.pre-commit-config.yaml`. If
-any of these 8 files is missing, the commit is blocked.
+any of these 9 files is missing, the commit is blocked.
 
 **Note on evidence vs. governance (per CEO v3.1 directive, reaffirmed v4.1):**
 Observation logs and measurement documents (e.g.,
