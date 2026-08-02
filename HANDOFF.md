@@ -1,4 +1,4 @@
-# TEE MASTER HANDOFF (v3.3 — Phase 5.F revised: hypotheses not solutions; Phase 6 = Decision phase)
+# TEE MASTER HANDOFF (v3.4 — H0 added; analytical phase FROZEN; Phase 6 = governance decision)
 
 ## PRE-CODING READ LIST (MANDATORY)
 
@@ -554,40 +554,50 @@ approaches. Do NOT build anything.
 
 **Phase 5.F (comparative analysis — see
 `evidence/observations/NORMALIZATION_APPROACHES.md`):**
-Per CEO v3.3, reframed as three HYPOTHESES (not solutions), with the
-gain for embeddings corrected to "Unknown" (not "high" — the gain
-has not been measured):
+Per CEO v3.4, the framework now includes FOUR hypotheses (H0 through
+H3), with H0 as the null hypothesis (no intervention). H0 is the
+DEFAULT — every proposal must defeat it.
 
-| Hypothesis | Claim | Complexity | Reproducibility | Expected gain | False-positive risk | Constitutional risk |
-|---|---|---|---|---|---|---|
-| H1 | Deterministic normalization captures most lost signal | Low | High | Moderate (+0.0363) | Low | Low |
-| H2 | Ontology mapping captures additional signal beyond H1 | Medium | Medium–High | Moderate–High (+0.07 to +0.11) | Medium | Medium |
-| H3 | Semantic methods capture additional signal beyond H2 | High | Low | **Unknown** (not measured) | High | High (violates Laws 7, 8 + CEO warning) |
+| Hypothesis | Claim | Complexity | Reproducibility | Expected gain | False-positive risk | Constitutional risk | Status |
+|---|---|---|---|---|---|---|---|
+| **H0** | **No intervention is justified** | **None** | **High** | **0** | **None** | **None** | **DEFAULT — must be defeated** |
+| H1 | Deterministic normalization captures most lost signal | Low | High | Moderate (+0.0363) | Low | Low | Candidate |
+| H2 | Ontology mapping captures additional signal beyond H1 | Medium | Medium–High | Moderate–High (+0.07 to +0.11) | Medium | Medium | Candidate |
+| H3 | Semantic methods capture additional signal beyond H2 | High | Low | **Unknown** (not measured) | High | High (violates Laws 7, 8 + CEO warning) | Forbidden by CEO directive |
 
-Key finding: H1 is the safest hypothesis to test (33% of perfect-
-normalization gain at LOW risk across all dimensions). H2 has higher
-estimated gain but requires governance. H3 has UNKNOWN gain and
-DIRECTLY violates the CEO's "do not build semantic matching"
-instruction (Phase 5.D, still in force).
+Key finding: H0 is the default. H1 is the safest candidate to test
+against H0. H2 has higher estimated gain but requires governance. H3
+has UNKNOWN gain and DIRECTLY violates the CEO's "do not build
+semantic matching" instruction (Phase 5.D, still in force).
 
-**The measurement/explanation/intervention separation (per CEO v3.3):**
+**The measurement/explanation/intervention separation (per CEO v3.3 + v3.4):**
 - Measurement: HAVE it (Phase 5.D + 5.E quantified the gap).
-- Explanation: HAVE candidate explanations (H1, H2, H3 are hypotheses).
-- Intervention: do NOT have sufficient evidence. No hypothesis tested.
-  No approach authorized. Decision belongs to CEO.
+- Explanation: HAVE candidate explanations (H0, H1, H2, H3 are hypotheses).
+- Intervention: do NOT have sufficient evidence. H0 holds as the
+  default. No hypothesis tested. No approach authorized. Decision
+  belongs to CEO.
 
-**Phase structure (per CEO v3.3):**
+**Phase structure (per CEO v3.4 — FROZEN):**
 ```
-Phase 5.A-F: measurement + classification + ceiling + comparative analysis
-Phase 6:     Decision phase — begins only when CEO explicitly decides
-             the expected gain is worth the constitutional risk.
+Phase 5.A  Measurement
+Phase 5.B  Measurement
+Phase 5.C  Measurement
+Phase 5.D  Classification
+Phase 5.E  Ceiling analysis
+Phase 5.F  Comparative analysis (FROZEN — this document)
+Phase 6    Decision phase (governance, not engineering)
 ```
 
-**Phase 5.F implementation status:** COMPLETE. Decision document
-delivered (revised per CEO v3.3). No code written. No parser changes.
-No formula changes. No governance changes. Phase 5 stands as the
-endpoint of the analytical phase. Phase 6 (decision) has not begun.
-Awaiting CEO directive.
+**THE ANALYTICAL PHASE IS FROZEN.** No further measurement,
+classification, ceiling analysis, or comparative analysis is
+authorized without a new CEO directive. The decision to intervene
+(or not) belongs to the CEO. Until that decision is made, H0 holds:
+the present system is sufficient, and no intervention is justified.
+
+**Phase 5.F implementation status:** COMPLETE + FROZEN. Decision
+document delivered (revised per CEO v3.4 with H0). No code written.
+No parser changes. No formula changes. No governance changes. Phase
+6 (decision) has not begun. Awaiting explicit CEO authorization.
 
 ## SESSION-HARDENED PRINCIPLES (v1.0)
 

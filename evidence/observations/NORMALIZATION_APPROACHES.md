@@ -1,8 +1,8 @@
-# NORMALIZATION_APPROACHES — Phase 5.F Decision Document (revised per CEO v3.3)
+# NORMALIZATION_APPROACHES — Phase 5.F Decision Document (frozen per CEO v3.4)
 
-**Status:** decision document (analysis, not governance, not code).
+**Status:** decision document (analysis, not governance, not code). FROZEN.
 **Location:** `evidence/observations/` (per CEO v3.1: observation layer, not constitutional layer).
-**Phase:** 5.F (per CEO directive, post-Phase 5.E classification exercise; revised per CEO v3.3).
+**Phase:** 5.F (per CEO directive, post-Phase 5.E classification exercise; revised per CEO v3.3; frozen per CEO v3.4).
 
 > The next cycle should be purely comparative. Do not build anything.
 > Instead, evaluate three hypothetical approaches.
@@ -29,24 +29,47 @@
 > yet have sufficient evidence to justify intervention.
 > — CEO directive, Phase 5.F (v3.3)
 
-This document evaluates three **hypotheses** (not solutions) about
+> I would add a fourth: H0 — no intervention. Its claim would be
+> simple: "The present system is already sufficient, and the
+> expected gain does not justify the constitutional risk."
+> Without an H0, the entire framework implicitly assumes that
+> intervention is inevitable. The existence of an explicit null
+> hypothesis forces every future proposal to defeat the alternative
+> of doing nothing.
+>
+> At that point, I would freeze the analytical phase completely
+> and wait for an explicit Phase 6 authorization. The next step is
+> no longer engineering. It is governance.
+> — CEO directive, Phase 5.F (v3.4)
+
+This document evaluates four **hypotheses** (H0 through H3) about
 the normalization bottleneck identified in Phase 5.D and quantified
 in Phase 5.E. It does NOT recommend a hypothesis. It does NOT
 authorize implementation. It provides the comparative analysis the
-CEO needs to decide whether ANY hypothesis is worth testing further.
+CEO needs to decide whether ANY hypothesis (including H0, the null)
+is worth pursuing.
 
-### The three hypotheses
+### The four hypotheses (complete decision set)
 
 | Hypothesis | Claim |
 |---|---|
+| **H0** | **No intervention is justified. The present system is sufficient; the expected gain does not justify the constitutional risk.** |
 | H1 | Deterministic normalization captures most lost signal. |
 | H2 | Ontology mapping captures additional signal beyond H1. |
 | H3 | Semantic methods capture additional signal beyond H2. |
 
+**H0 is the null hypothesis.** It is the default position unless a
+future proposal defeats it. Without H0, the framework implicitly
+assumes intervention is inevitable. With H0, every proposal must
+prove it is better than doing nothing — not just better than the
+status quo on the gain axis, but better when gain, risk, complexity,
+maintenance, false-positive rate, and constitutional impact are all
+weighed together.
+
 The framing as hypotheses (not solutions) is deliberate. A solution
 is something you build; a hypothesis is something you test. Until a
-hypothesis is tested against real data, it remains a candidate
-explanation, not an intervention.
+hypothesis is tested against real data AND defeats H0, it remains a
+candidate explanation, not an intervention.
 
 ---
 
@@ -435,36 +458,62 @@ separate, reducing the discrimination delta).
 
 ## Comparative summary
 
-Per CEO v3.3, the table is reframed in terms of hypotheses (H1/H2/H3)
-and includes a False-positive risk column. The embeddings' expected
-gain is "Unknown" (not "High") because the gain has not been measured.
+Per CEO v3.4, H0 (the null hypothesis: no intervention) is added to
+the table. H0 is the DEFAULT — it is the position the system holds
+unless a future proposal defeats it. The table now includes the
+complete decision set: H0, H1, H2, H3.
 
-| Dimension | H1: Exact normalization | H2: Controlled ontology | H3: Semantic embeddings |
-|---|---|---|---|
-| Implementation complexity | Low | Medium | High |
-| Maintenance burden | Low | Medium | High |
-| Reproducibility | High (deterministic) | Medium–High (versioned file) | Low (model versions drift) |
-| Expected gain | Moderate (+0.0363, measured) | Moderate–High (+0.07 to +0.11, estimated) | **Unknown** (not measured; could be negative) |
-| False-positive risk | Low (rules are explicit) | Medium (subjective mapping decisions) | High (cosine similarity threshold is opaque) |
-| Constitutional risk | Low | Medium | High (violates Laws 7, 8 + CEO warning) |
-| **CEO's "semantic matching" warning** | Not applicable | Not applicable | **DIRECTLY VIOLATES** |
+| Dimension | **H0: No intervention** | H1: Exact normalization | H2: Controlled ontology | H3: Semantic embeddings |
+|---|---|---|---|---|
+| Implementation complexity | **None** (do nothing) | Low | Medium | High |
+| Maintenance burden | **None** | Low | Medium | High |
+| Reproducibility | **High** (no change) | High (deterministic) | Medium–High (versioned file) | Low (model versions drift) |
+| Expected gain | **0** (current score stays at 1.2182) | Moderate (+0.0363, measured) | Moderate–High (+0.07 to +0.11, estimated) | **Unknown** (not measured; could be negative) |
+| False-positive risk | **None** (no matching changes) | Low (rules are explicit) | Medium (subjective mapping decisions) | High (cosine similarity threshold is opaque) |
+| Constitutional risk | **None** (no constitutional changes) | Low | Medium | High (violates Laws 7, 8 + CEO warning) |
+| **CEO's "semantic matching" warning** | **Not applicable** (no intervention) | Not applicable | Not applicable | **DIRECTLY VIOLATES** |
+| **Status** | **DEFAULT — the null hypothesis. Must be defeated by any proposal.** | Candidate — must defeat H0 | Candidate — must defeat H0 AND H1's gain | Candidate — must defeat H0 AND H1 AND H2 AND the CEO's explicit warning |
+
+### What H0 means in practice
+
+H0 is not "give up." H0 is "the present system is sufficient until a
+proposal proves otherwise." Under H0:
+
+- The parser stays frozen.
+- The convergence formula stays unchanged.
+- The CONVERGENCE.md prerequisite chain continues at step 5 of 7.
+- The 2028 validation dates remain the path to real-world confirmation.
+- The cumulative Phase 5 delta (+0.0182 for battery×EV) stands as
+  a structural measurement, not a real-world convergence claim.
+
+H0 is the honest default because the Phase 5.E ceiling analysis
+showed the potential gain is +0.1091 — meaningful, but NOT yet proven
+to justify the cost, risk, and constitutional impact of any specific
+intervention. Until a proposal is tested AND defeats H0 on the full
+axis (gain + risk + complexity + maintenance + false-positives +
+constitutional impact), H0 holds.
 
 ### Key observations
 
-1. **H1 (exact normalization) is the safest hypothesis to test.** Low
-   complexity, low maintenance, high reproducibility, low false-
-   positive risk, low constitutional risk. Its gain is modest
-   (+0.0363) but real and verifiable. It would resolve the 2
-   abbreviation gaps and prevent future plural gaps.
+1. **H0 is the default.** Every proposal (H1, H2, H3) must defeat it.
+   "Defeating H0" means proving the proposal is better than doing
+   nothing when ALL dimensions are weighed — not just the gain axis.
 
-2. **H2 (ontology mapping) has higher estimated gain but higher
+2. **H1 (exact normalization) is the safest candidate to test against
+   H0.** Low complexity, low maintenance, high reproducibility, low
+   false-positive risk, low constitutional risk. Its gain is modest
+   (+0.0363) but real and verifiable. Whether +0.0363 defeats H0
+   depends on whether the CEO judges the gain worth the (low)
+   implementation cost and (low) constitutional risk.
+
+3. **H2 (ontology mapping) has higher estimated gain but higher
    governance cost.** It could resolve 4-6 of the 6 potential
    matches (+0.07 to +0.11), but requires a curated mapping file
    with a governance process. The risk of "dogma" (the CEO's
    Phase 5.E warning) is real — mappings added without evidence
    become constitutional.
 
-3. **H3 (semantic embeddings) has UNKNOWN gain and HIGH risk.** The
+4. **H3 (semantic embeddings) has UNKNOWN gain and HIGH risk.** The
    gain has not been measured — it could be high, moderate, or
    negative (if false positives merge labels that should stay
    separate, reducing the discrimination delta). Per CEO v3.3:
@@ -473,18 +522,18 @@ gain is "Unknown" (not "High") because the gain has not been measured.
    Law 8 (verification), and the CEO's explicit warning against
    semantic matching.
 
-4. **The gain gap between hypotheses is not proportional to the
+5. **The gain gap between hypotheses is not proportional to the
    risk gap.** H1 gives 33% of the perfect-normalization gain at
    LOW risk. H2 gives 65-100% at MEDIUM risk. H3 gives an UNKNOWN
    amount at HIGH risk. The marginal gain from H1 → H2 is +0.04 to
    +0.07. The marginal gain from H2 → H3 is unknown and carries
    the highest risk.
 
-5. **The CEO's "semantic matching" warning applies specifically
-   to Approach 3.** Approaches 1 and 2 are deterministic string
-   transformations — they are NOT semantic matching in the
-   probabilistic sense. Approach 3 IS semantic matching. The CEO's
-   directive does NOT authorize Approach 3 regardless of the gain.
+6. **The CEO's "semantic matching" warning applies specifically
+   to H3.** H1 and H2 are deterministic string transformations — they
+   are NOT semantic matching in the probabilistic sense. H3 IS
+   semantic matching. The CEO's directive does NOT authorize H3
+   regardless of the gain.
 
 ---
 
@@ -560,8 +609,7 @@ Per CEO v3.2 (still in force):
 >   The bottleneck is large enough to justify implementing any
 >   specific solution.
 
-Per CEO v3.3 (this cycle's refinement), the separation is now
-explicit:
+Per CEO v3.3 (still in force), the separation is explicit:
 
 ```text
 measurement      ≠ explanation      ≠ intervention
@@ -571,17 +619,20 @@ measurement      ≠ explanation      ≠ intervention
   (37.5% signal loss, +0.1091 potential gain). Phase 5.E classified
   the 140 labels. These are facts about the current state.
 
-- **Explanation:** we HAVE candidate explanations. H1, H2, H3 are
-  three hypotheses about WHY the gap exists and HOW it might be
-  closed. They are candidate explanations, not verified theories.
+- **Explanation:** we HAVE candidate explanations. H0, H1, H2, H3
+  are four hypotheses about whether and how the gap might be closed.
+  H0 is the null — no intervention. H1, H2, H3 are candidate
+  interventions. All four are candidate explanations, not verified
+  theories.
 
 - **Intervention:** we do NOT have sufficient evidence to justify
   intervention. No hypothesis has been tested against real data.
-  No approach has been authorized. The CEO's "do not build semantic
-  matching" instruction (Phase 5.D) is still in force. The decision
-  to intervene belongs to the CEO, not the coder.
+  No approach has been authorized. H0 holds as the default. The
+  CEO's "do not build semantic matching" instruction (Phase 5.D)
+  is still in force. The decision to intervene belongs to the CEO,
+  not the coder.
 
-### The phase structure (per CEO v3.3)
+### The phase structure (per CEO v3.4 — FROZEN)
 
 ```text
 Phase 5.A  Measurement
@@ -589,15 +640,21 @@ Phase 5.B  Measurement
 Phase 5.C  Measurement
 Phase 5.D  Classification
 Phase 5.E  Ceiling analysis
-Phase 5.F  Comparative analysis (this document)
-Phase 6    Decision phase
+Phase 5.F  Comparative analysis (this document — FROZEN)
+Phase 6    Decision phase (governance, not engineering)
 ```
 
-Phase 6 is the **decision phase**. It begins only when someone
-(the CEO) explicitly decides that the expected gain is worth the
-constitutional risk. Until that decision is made, Phase 5.F stands
-as the endpoint of the analytical phase. No implementation work is
-authorized.
+Phase 6 is the **decision phase**. Per CEO v3.4: "At that point, I
+would freeze the analytical phase completely and wait for an explicit
+Phase 6 authorization. The next step is no longer engineering. It is
+governance."
+
+**The analytical phase is now FROZEN.** This document is the endpoint
+of Phase 5. No further measurement, classification, ceiling analysis,
+or comparative analysis is authorized without a new CEO directive.
+The decision to intervene (or not) belongs to the CEO. Until that
+decision is made, H0 holds as the default: the present system is
+sufficient, and no intervention is justified.
 
 ---
 
