@@ -66,4 +66,5 @@ ALLOWED_MODIFICATIONS = frozenset({
     "scripts/ingest_real_arxiv_phase5c.py",  # Phase 5.C: re-ingestion with expanded parser (one-off)
     "scripts/measure_normalization_gap.py",  # Phase 5.D: normalization gap measurement (one-off)
     "scripts/classify_labels.py",  # Phase 5.E: classification exercise (one-off)
+    "scripts/build_capability_graph.py",  # Phase 7B/7C: capability graph builder (one-off)
 })

@@ -1,4 +1,4 @@
-# TEE MASTER HANDOFF (v5.1 — first capability graph built from 15 real patents with CPC codes + evidence)
+# TEE MASTER HANDOFF (v5.2 — auditor correction: edge justification audit + scope reduction proposed)
 
 ## PRE-CODING READ LIST (MANDATORY)
 
