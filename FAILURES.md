@@ -446,3 +446,26 @@ Both tests will catch future drift of this class.
 **Root cause:** the Phase 3 Step 4 success criterion ("Real patent ingested, at least 3, target 10-20") was met by ingesting 10 synthetic patent-format abstracts, not 10 real USPTO patents. The pipeline doesn't care whether they're from USPTO or written by hand — the constraint extraction is the same. But the framing in the commit message ("10 patents + 10 papers ingested into ACTUAL graph") and in the Step 4 success criteria table could be read as "10 actual patents from the USPTO," which overstates.
 **Severity:** P3 — not a code bug. The pipeline works, the constraints are real extractions from realistic text, and the graph genuinely has new nodes with provenance. But principle #5 (Match the label to the evidence) and principle #8 (No data, say no data) suggest the framing should distinguish "10 synthetic patent-format abstracts (modeled on real USPTO structure)" from "10 real patents."
 **Status:** INFORMATIONAL — no code fix needed. The honest framing is recorded here. The next step (if real-patent ingestion matters) is to swap the synthetic files for actual USPTO/Google Patents abstracts. The pipeline is proven; the swap is mechanical.
+
+---
+
+### F-035 — `scripts/measure_convergence.py` hardcoded absolute path (R3, P2)
+**Found:** external auditor (post-`f989b41` verification).
+**Repro:**
+```bash
+# Clone the repo to any directory other than /home/z/my-project/audit/repo
+git clone <repo> /tmp/tee-copy
+cd /tmp/tee-copy
+python scripts/measure_convergence.py
+# FileNotFoundError: [Errno 2] No such file or directory:
+#   '/home/z/my-project/audit/repo/data/civilization_graph.json'
+```
+**Observed:** `scripts/measure_convergence.py:24` was committed with:
+```python
+ROOT = pathlib.Path("/home/z/my-project/audit/repo")
+```
+This is a hardcoded absolute path to the original coder's working directory. The auditor noted the script crashed when run from any other location. (The auditor's specific repro path `/home/z/my-project/audit/technology-evolution-engine` does not exist on the original coder's machine — the actual repo IS at `/home/z/my-project/audit/repo`, which is why the original coder missed the bug. But the deeper finding is correct: the path is environment-specific and violates the repo's own convention.)
+**Root cause:** the original coder (me) wrote the script with `ROOT = pathlib.Path("/home/z/my-project/audit/repo")` instead of using the repo's standard pattern `ROOT = pathlib.Path(__file__).resolve().parents[1]` that every other script in `scripts/` uses (run_forensic_audit.py, enforce_law8.py, calibrate.py, etc.). I then ran the working-tree version (which worked because the hardcoded path happened to resolve in my environment), pasted the numbers into CONVERGENCE.md, and committed the script — without ever running the committed version from a different working directory. This is exactly the principle #1 ("Run it, don't reason about it") violation the auditor flagged: I reasoned that the script worked because my environment matched; I did not run the committed artifact from a neutral location.
+**Severity:** P2. The script is a one-off measurement tool, not a production module, but it's committed as the reproducible artifact behind every claim in CONVERGENCE.md. If it can't run from any directory other than the original coder's, the claims aren't independently verifiable from the committed state — which is the entire point of committing it (Law 7: historical permanence / reproducibility).
+**Status:** RESOLVED — line 24 changed to `ROOT = pathlib.Path(__file__).resolve().parents[1]`, matching the pattern used by every other script in `scripts/`. Verified by running the fixed script from `/tmp` (a different working directory): the script finds the graph via `__file__`, produces identical numbers (Convergence(battery, EV) = 1.2, Convergence(battery, desalination) = 0.0286, delta = 1.1714). The auditor's one-line fix was correct.
+**Lesson:** principle #1 ("Run it, don't reason about it") applies to the committed artifact, not just the working-tree version. The discipline going forward: after committing a script, re-run it from a different working directory to verify it actually works as committed. The cost is one command; the cost of committing a broken script and having the auditor catch it is one extra cycle.

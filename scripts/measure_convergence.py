@@ -21,7 +21,7 @@ import json
 import pathlib
 from collections import deque
 
-ROOT = pathlib.Path("/home/z/my-project/audit/repo")
+ROOT = pathlib.Path(__file__).resolve().parents[1]
 GRAPH_PATH = ROOT / "data" / "civilization_graph.json"
 
 # The two pairs the success criterion names.
