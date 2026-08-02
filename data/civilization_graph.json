@@ -1,11 +1,11 @@
 {
   "metadata": {
     "name": "Civilization Technology Graph",
-    "version": "3.1",
+    "version": "4.0",
     "created_at": "2026-08-01T09:54:16.102452+00:00",
     "description": "Structured technology taxonomy: domains, subdomains, principles, processes, components, systems, industries, cemetery, candidates. Three relationship classes: structural, functional, historical.",
-    "node_count": 632,
-    "edge_count": 530,
+    "node_count": 651,
+    "edge_count": 550,
     "relationship_types": {
       "structural": [
         "requires",
@@ -60,6 +60,25 @@
       "node_count_now_accurate": true,
       "cemetery_nodes_now_classifiable": true,
       "note": "One-line fixes to the canonical graph. N3 closes the metadata drift the auditor flagged in commit 53320bc. F-022 closes Phase 3 Step 5 (cemetery fields) by promoting metadata.lesson/why_it_failed to top-level fields the GraphModel adapter actually reads."
+    },
+    "phase_5_ingestion": {
+      "ingested_at": "2026-08-02T02:02:26.262178+00:00",
+      "patents_ingested": 9,
+      "nodes_added": 0,
+      "edges_added": 0,
+      "nodes_with_real_provenance_before": 19,
+      "nodes_with_real_provenance_after": 19,
+      "domain_distribution": {
+        "carbon_capture": 1,
+        "atmospheric_water_harvesting": 2,
+        "radiative_cooling": 2,
+        "battery": 1,
+        "desalination": 2,
+        "ev_charging": 1
+      },
+      "source": "REAL USPTO patents fetched via web-search + web-reader",
+      "distinguishes_from_phase_3": "Phase 3 used synthetic abstracts (F-034). Phase 5 uses real USPTO patent text.",
+      "structural_change": "Added `contains` edges from each domain's subdomain node to the newly-ingested component nodes. This is what enables Signal C (component reuse) to be non-zero on snapshot_2."
     }
   },
   "nodes": [
@@ -14554,6 +14573,580 @@
       },
       "status": "active",
       "created_at": "2026-08-01T23:26:42.506285+00:00"
+    },
+    {
+      "id": "real_US20160363396A1_an_array_of_said_metamaterial_nanostructures_arranged_in_an",
+      "label": "an array of said metamaterial nanostructures arranged in an ultra-black metamaterial-based pattern that is configured to generate said portion of said radiant energy with wavelengths corresponding to said one or more atmospheric transparency windows",
+      "type": "component",
+      "domain": "radiative_cooling",
+      "constraints": {
+        "energy": 0.8,
+        "temperature": 0.8,
+        "cost": 0.8,
+        "material": 0.7
+      },
+      "provenance": {
+        "source": "US20160363396A1.txt",
+        "source_type": "patent",
+        "title": "Metamaterials-Enhanced Passive Radiative Cooling Panel",
+        "authors": [
+          "(real USPTO patent)"
+        ],
+        "publication_date": "2026-08-02",
+        "patent_number": "US20160363396A1",
+        "doi": null,
+        "confidence": 0.9,
+        "extracted_by": "scripts.ingest_real_patents_phase5",
+        "timestamp": "2026-08-02T02:00:23.298983+00:00",
+        "is_real_source": true,
+        "domain": "radiative_cooling"
+      },
+      "status": "active",
+      "shared_label": "an array of said metamaterial nanostructures arranged in an ultra-black metamaterial-based pattern that is configured to generate said portion of said radiant energy with wavelengths corresponding to said one or more atmospheric transparency windows",
+      "created_at": "2026-08-02T02:00:23.300075+00:00"
+    },
+    {
+      "id": "real_US20160363396A1_reflect_at_least_94%_of_incident_solar_light_while_passing_",
+      "label": "reflect at least 94% of incident solar light while passing the emitted radiant energy",
+      "type": "component",
+      "domain": "radiative_cooling",
+      "constraints": {
+        "energy": 0.8,
+        "temperature": 0.8,
+        "cost": 0.8,
+        "material": 0.7
+      },
+      "provenance": {
+        "source": "US20160363396A1.txt",
+        "source_type": "patent",
+        "title": "Metamaterials-Enhanced Passive Radiative Cooling Panel",
+        "authors": [
+          "(real USPTO patent)"
+        ],
+        "publication_date": "2026-08-02",
+        "patent_number": "US20160363396A1",
+        "doi": null,
+        "confidence": 0.9,
+        "extracted_by": "scripts.ingest_real_patents_phase5",
+        "timestamp": "2026-08-02T02:00:23.298983+00:00",
+        "is_real_source": true,
+        "domain": "radiative_cooling"
+      },
+      "status": "active",
+      "shared_label": "reflect at least 94% of incident solar light while passing the emitted radiant energy",
+      "created_at": "2026-08-02T02:00:23.300086+00:00"
+    },
+    {
+      "id": "real_US20160363396A1_generate_broadband_radiant_energy_including_both_said_porti",
+      "label": "generate broadband radiant energy including both said portion of said radiant energy with wavelengths corresponding to said one or more atmospheric transparency windows",
+      "type": "component",
+      "domain": "radiative_cooling",
+      "constraints": {
+        "energy": 0.8,
+        "temperature": 0.8,
+        "cost": 0.8,
+        "material": 0.7
+      },
+      "provenance": {
+        "source": "US20160363396A1.txt",
+        "source_type": "patent",
+        "title": "Metamaterials-Enhanced Passive Radiative Cooling Panel",
+        "authors": [
+          "(real USPTO patent)"
+        ],
+        "publication_date": "2026-08-02",
+        "patent_number": "US20160363396A1",
+        "doi": null,
+        "confidence": 0.9,
+        "extracted_by": "scripts.ingest_real_patents_phase5",
+        "timestamp": "2026-08-02T02:00:23.298983+00:00",
+        "is_real_source": true,
+        "domain": "radiative_cooling"
+      },
+      "status": "active",
+      "shared_label": "generate broadband radiant energy including both said portion of said radiant energy with wavelengths corresponding to said one or more atmospheric transparency windows",
+      "created_at": "2026-08-02T02:00:23.300096+00:00"
+    },
+    {
+      "id": "real_US20160363396A1_transmit_at_least_said_portion_of_said_radiant_energy_emitt",
+      "label": "transmit at least said portion of said radiant energy emitted from the emitter layer",
+      "type": "component",
+      "domain": "radiative_cooling",
+      "constraints": {
+        "energy": 0.8,
+        "temperature": 0.8,
+        "cost": 0.8,
+        "material": 0.7
+      },
+      "provenance": {
+        "source": "US20160363396A1.txt",
+        "source_type": "patent",
+        "title": "Metamaterials-Enhanced Passive Radiative Cooling Panel",
+        "authors": [
+          "(real USPTO patent)"
+        ],
+        "publication_date": "2026-08-02",
+        "patent_number": "US20160363396A1",
+        "doi": null,
+        "confidence": 0.9,
+        "extracted_by": "scripts.ingest_real_patents_phase5",
+        "timestamp": "2026-08-02T02:00:23.298983+00:00",
+        "is_real_source": true,
+        "domain": "radiative_cooling"
+      },
+      "status": "active",
+      "shared_label": "transmit at least said portion of said radiant energy emitted from the emitter layer",
+      "created_at": "2026-08-02T02:00:23.300102+00:00"
+    },
+    {
+      "id": "real_US20160363396A1_dissipate_heat_in_the_form_of_radiant_energy_that_is_transm",
+      "label": "dissipate heat in the form of radiant energy that is transmitted through the reflective layer into cold near-space",
+      "type": "component",
+      "domain": "radiative_cooling",
+      "constraints": {
+        "energy": 0.8,
+        "temperature": 0.8,
+        "cost": 0.8,
+        "material": 0.7
+      },
+      "provenance": {
+        "source": "US20160363396A1.txt",
+        "source_type": "patent",
+        "title": "Metamaterials-Enhanced Passive Radiative Cooling Panel",
+        "authors": [
+          "(real USPTO patent)"
+        ],
+        "publication_date": "2026-08-02",
+        "patent_number": "US20160363396A1",
+        "doi": null,
+        "confidence": 0.9,
+        "extracted_by": "scripts.ingest_real_patents_phase5",
+        "timestamp": "2026-08-02T02:00:23.298983+00:00",
+        "is_real_source": true,
+        "domain": "radiative_cooling"
+      },
+      "status": "active",
+      "shared_label": "dissipate heat in the form of radiant energy that is transmitted through the reflective layer into cold near-space",
+      "created_at": "2026-08-02T02:00:23.300107+00:00"
+    },
+    {
+      "id": "real_US20160363396A1_reflect_incident_solar_radiation_directed_onto_the_upward-f",
+      "label": "reflect incident solar radiation directed onto the upward-facing surface",
+      "type": "component",
+      "domain": "radiative_cooling",
+      "constraints": {
+        "energy": 0.8,
+        "temperature": 0.8,
+        "cost": 0.8,
+        "material": 0.7
+      },
+      "provenance": {
+        "source": "US20160363396A1.txt",
+        "source_type": "patent",
+        "title": "Metamaterials-Enhanced Passive Radiative Cooling Panel",
+        "authors": [
+          "(real USPTO patent)"
+        ],
+        "publication_date": "2026-08-02",
+        "patent_number": "US20160363396A1",
+        "doi": null,
+        "confidence": 0.9,
+        "extracted_by": "scripts.ingest_real_patents_phase5",
+        "timestamp": "2026-08-02T02:00:23.298983+00:00",
+        "is_real_source": true,
+        "domain": "radiative_cooling"
+      },
+      "status": "active",
+      "shared_label": "reflect incident solar radiation directed onto the upward-facing surface",
+      "created_at": "2026-08-02T02:00:23.300111+00:00"
+    },
+    {
+      "id": "real_US20160363396A1_a_plurality_of_metamaterial_nanostructures_configured_to_di",
+      "label": "a plurality of metamaterial nanostructures configured to dissipate heat by generating radiant energy that is emitted from a surface of the emitter layer",
+      "type": "component",
+      "domain": "radiative_cooling",
+      "constraints": {
+        "energy": 0.8,
+        "temperature": 0.8,
+        "cost": 0.8,
+        "material": 0.7
+      },
+      "provenance": {
+        "source": "US20160363396A1.txt",
+        "source_type": "patent",
+        "title": "Metamaterials-Enhanced Passive Radiative Cooling Panel",
+        "authors": [
+          "(real USPTO patent)"
+        ],
+        "publication_date": "2026-08-02",
+        "patent_number": "US20160363396A1",
+        "doi": null,
+        "confidence": 0.9,
+        "extracted_by": "scripts.ingest_real_patents_phase5",
+        "timestamp": "2026-08-02T02:00:23.298983+00:00",
+        "is_real_source": true,
+        "domain": "radiative_cooling"
+      },
+      "status": "active",
+      "shared_label": "a plurality of metamaterial nanostructures configured to dissipate heat by generating radiant energy that is emitted from a surface of the emitter layer",
+      "created_at": "2026-08-02T02:00:23.300116+00:00"
+    },
+    {
+      "id": "real_US20160363396A1_8_\u03bcm_to_13_\u03bcm_and_16_\u03bcm_to_28_\u03bcm",
+      "label": "8 \u03bcm to 13 \u03bcm and 16 \u03bcm to 28 \u03bcm",
+      "type": "component",
+      "domain": "radiative_cooling",
+      "constraints": {
+        "energy": 0.8,
+        "temperature": 0.8,
+        "cost": 0.8,
+        "material": 0.7
+      },
+      "provenance": {
+        "source": "US20160363396A1.txt",
+        "source_type": "patent",
+        "title": "Metamaterials-Enhanced Passive Radiative Cooling Panel",
+        "authors": [
+          "(real USPTO patent)"
+        ],
+        "publication_date": "2026-08-02",
+        "patent_number": "US20160363396A1",
+        "doi": null,
+        "confidence": 0.9,
+        "extracted_by": "scripts.ingest_real_patents_phase5",
+        "timestamp": "2026-08-02T02:00:23.298983+00:00",
+        "is_real_source": true,
+        "domain": "radiative_cooling"
+      },
+      "status": "active",
+      "shared_label": "8 \u03bcm to 13 \u03bcm and 16 \u03bcm to 28 \u03bcm",
+      "created_at": "2026-08-02T02:00:23.300121+00:00"
+    },
+    {
+      "id": "real_US20160363396A1_both_said_portion_of_said_radiant_energy_with_wavelengths_c",
+      "label": "both said portion of said radiant energy with wavelengths corresponding to said one or more atmospheric transparency windows",
+      "type": "component",
+      "domain": "radiative_cooling",
+      "constraints": {
+        "energy": 0.8,
+        "temperature": 0.8,
+        "cost": 0.8,
+        "material": 0.7
+      },
+      "provenance": {
+        "source": "US20160363396A1.txt",
+        "source_type": "patent",
+        "title": "Metamaterials-Enhanced Passive Radiative Cooling Panel",
+        "authors": [
+          "(real USPTO patent)"
+        ],
+        "publication_date": "2026-08-02",
+        "patent_number": "US20160363396A1",
+        "doi": null,
+        "confidence": 0.9,
+        "extracted_by": "scripts.ingest_real_patents_phase5",
+        "timestamp": "2026-08-02T02:00:23.298983+00:00",
+        "is_real_source": true,
+        "domain": "radiative_cooling"
+      },
+      "status": "active",
+      "shared_label": "both said portion of said radiant energy with wavelengths corresponding to said one or more atmospheric transparency windows",
+      "created_at": "2026-08-02T02:00:23.300126+00:00"
+    },
+    {
+      "id": "real_US20160363396A1_generate_said_portion_of_said_radiant_energy_with_wavelengt",
+      "label": "generate said portion of said radiant energy with wavelengths in the ranges including 8 \u03bcm to 13 \u03bcm and 16 \u03bcm to 28 \u03bcm",
+      "type": "component",
+      "domain": "radiative_cooling",
+      "constraints": {
+        "energy": 0.8,
+        "temperature": 0.8,
+        "cost": 0.8,
+        "material": 0.7
+      },
+      "provenance": {
+        "source": "US20160363396A1.txt",
+        "source_type": "patent",
+        "title": "Metamaterials-Enhanced Passive Radiative Cooling Panel",
+        "authors": [
+          "(real USPTO patent)"
+        ],
+        "publication_date": "2026-08-02",
+        "patent_number": "US20160363396A1",
+        "doi": null,
+        "confidence": 0.9,
+        "extracted_by": "scripts.ingest_real_patents_phase5",
+        "timestamp": "2026-08-02T02:00:23.298983+00:00",
+        "is_real_source": true,
+        "domain": "radiative_cooling"
+      },
+      "status": "active",
+      "shared_label": "generate said portion of said radiant energy with wavelengths in the ranges including 8 \u03bcm to 13 \u03bcm and 16 \u03bcm to 28 \u03bcm",
+      "created_at": "2026-08-02T02:00:23.300136+00:00"
+    },
+    {
+      "id": "real_US20160363396A1_dissipate_heat_by_generating_radiant_energy_that_is_emitted",
+      "label": "dissipate heat by generating radiant energy that is emitted from a surface of the emitter layer",
+      "type": "component",
+      "domain": "radiative_cooling",
+      "constraints": {
+        "energy": 0.8,
+        "temperature": 0.8,
+        "cost": 0.8,
+        "material": 0.7
+      },
+      "provenance": {
+        "source": "US20160363396A1.txt",
+        "source_type": "patent",
+        "title": "Metamaterials-Enhanced Passive Radiative Cooling Panel",
+        "authors": [
+          "(real USPTO patent)"
+        ],
+        "publication_date": "2026-08-02",
+        "patent_number": "US20160363396A1",
+        "doi": null,
+        "confidence": 0.9,
+        "extracted_by": "scripts.ingest_real_patents_phase5",
+        "timestamp": "2026-08-02T02:00:23.298983+00:00",
+        "is_real_source": true,
+        "domain": "radiative_cooling"
+      },
+      "status": "active",
+      "shared_label": "dissipate heat by generating radiant energy that is emitted from a surface of the emitter layer",
+      "created_at": "2026-08-02T02:00:23.300140+00:00"
+    },
+    {
+      "id": "real_US20160363396A1_panel",
+      "label": "panel",
+      "type": "component",
+      "domain": "radiative_cooling",
+      "constraints": {
+        "energy": 0.8,
+        "temperature": 0.8,
+        "cost": 0.8,
+        "material": 0.7
+      },
+      "provenance": {
+        "source": "US20160363396A1.txt",
+        "source_type": "patent",
+        "title": "Metamaterials-Enhanced Passive Radiative Cooling Panel",
+        "authors": [
+          "(real USPTO patent)"
+        ],
+        "publication_date": "2026-08-02",
+        "patent_number": "US20160363396A1",
+        "doi": null,
+        "confidence": 0.9,
+        "extracted_by": "scripts.ingest_real_patents_phase5",
+        "timestamp": "2026-08-02T02:00:23.298983+00:00",
+        "is_real_source": true,
+        "domain": "radiative_cooling"
+      },
+      "status": "active",
+      "shared_label": "panel",
+      "created_at": "2026-08-02T02:00:23.300146+00:00"
+    },
+    {
+      "id": "real_US20240194939A1_an_all-solid-state_battery_laminate_including_at_least_one_",
+      "label": "an all-solid-state battery laminate including at least one all-solid-state unit cell in which a positive electrode current collector layer",
+      "type": "component",
+      "domain": "battery",
+      "constraints": {
+        "manufacturing": 0.8,
+        "material": 0.7
+      },
+      "provenance": {
+        "source": "US20240194939A1.txt",
+        "source_type": "patent",
+        "title": "All-solid-state battery",
+        "authors": [
+          "(real USPTO patent)"
+        ],
+        "publication_date": "2026-08-02",
+        "patent_number": "US20240194939A1",
+        "doi": null,
+        "confidence": 0.9,
+        "extracted_by": "scripts.ingest_real_patents_phase5",
+        "timestamp": "2026-08-02T02:00:23.300180+00:00",
+        "is_real_source": true,
+        "domain": "battery"
+      },
+      "status": "active",
+      "shared_label": "an all-solid-state battery laminate including at least one all-solid-state unit cell in which a positive electrode current collector layer",
+      "created_at": "2026-08-02T02:00:23.300807+00:00"
+    },
+    {
+      "id": "real_US20240194939A1_electrode",
+      "label": "electrode",
+      "type": "component",
+      "domain": "battery",
+      "constraints": {
+        "manufacturing": 0.8,
+        "material": 0.7
+      },
+      "provenance": {
+        "source": "US20240194939A1.txt",
+        "source_type": "patent",
+        "title": "All-solid-state battery",
+        "authors": [
+          "(real USPTO patent)"
+        ],
+        "publication_date": "2026-08-02",
+        "patent_number": "US20240194939A1",
+        "doi": null,
+        "confidence": 0.9,
+        "extracted_by": "scripts.ingest_real_patents_phase5",
+        "timestamp": "2026-08-02T02:00:23.300180+00:00",
+        "is_real_source": true,
+        "domain": "battery"
+      },
+      "status": "active",
+      "shared_label": "electrode",
+      "created_at": "2026-08-02T02:00:23.300813+00:00"
+    },
+    {
+      "id": "real_US20240194939A1_battery",
+      "label": "battery",
+      "type": "component",
+      "domain": "battery",
+      "constraints": {
+        "manufacturing": 0.8,
+        "material": 0.7
+      },
+      "provenance": {
+        "source": "US20240194939A1.txt",
+        "source_type": "patent",
+        "title": "All-solid-state battery",
+        "authors": [
+          "(real USPTO patent)"
+        ],
+        "publication_date": "2026-08-02",
+        "patent_number": "US20240194939A1",
+        "doi": null,
+        "confidence": 0.9,
+        "extracted_by": "scripts.ingest_real_patents_phase5",
+        "timestamp": "2026-08-02T02:00:23.300180+00:00",
+        "is_real_source": true,
+        "domain": "battery"
+      },
+      "status": "active",
+      "shared_label": "battery",
+      "created_at": "2026-08-02T02:00:23.300817+00:00"
+    },
+    {
+      "id": "real_US4039440A_membrane",
+      "label": "membrane",
+      "type": "component",
+      "domain": "desalination",
+      "constraints": {
+        "material": 0.7
+      },
+      "provenance": {
+        "source": "US4039440A.txt",
+        "source_type": "patent",
+        "title": "Reverse osmosis membrane",
+        "authors": [
+          "(real USPTO patent)"
+        ],
+        "publication_date": "2026-08-02",
+        "patent_number": "US4039440A",
+        "doi": null,
+        "confidence": 0.9,
+        "extracted_by": "scripts.ingest_real_patents_phase5",
+        "timestamp": "2026-08-02T02:00:23.300843+00:00",
+        "is_real_source": true,
+        "domain": "desalination"
+      },
+      "status": "active",
+      "shared_label": "membrane",
+      "created_at": "2026-08-02T02:00:23.300937+00:00"
+    },
+    {
+      "id": "real_US7768229B2_the_electric_car_charging_equipment",
+      "label": "the electric car charging equipment",
+      "type": "component",
+      "domain": "ev_charging",
+      "constraints": {
+        "energy": 0.8
+      },
+      "provenance": {
+        "source": "US7768229B2.txt",
+        "source_type": "patent",
+        "title": "Electric car charging systems",
+        "authors": [
+          "(real USPTO patent)"
+        ],
+        "publication_date": "2026-08-02",
+        "patent_number": "US7768229B2",
+        "doi": null,
+        "confidence": 0.9,
+        "extracted_by": "scripts.ingest_real_patents_phase5",
+        "timestamp": "2026-08-02T02:00:23.300971+00:00",
+        "is_real_source": true,
+        "domain": "ev_charging"
+      },
+      "status": "active",
+      "shared_label": "the electric car charging equipment",
+      "created_at": "2026-08-02T02:00:23.301275+00:00"
+    },
+    {
+      "id": "real_WO2017151514A1_coating",
+      "label": "coating",
+      "type": "component",
+      "domain": "radiative_cooling",
+      "constraints": {
+        "temperature": 0.8,
+        "material": 0.7
+      },
+      "provenance": {
+        "source": "WO2017151514A1.txt",
+        "source_type": "patent",
+        "title": "Radiative cooling structures and systems",
+        "authors": [
+          "(real USPTO patent)"
+        ],
+        "publication_date": "2026-08-02",
+        "patent_number": "WO2017151514A1",
+        "doi": null,
+        "confidence": 0.9,
+        "extracted_by": "scripts.ingest_real_patents_phase5",
+        "timestamp": "2026-08-02T02:00:23.301301+00:00",
+        "is_real_source": true,
+        "domain": "radiative_cooling"
+      },
+      "status": "active",
+      "shared_label": "coating",
+      "created_at": "2026-08-02T02:00:23.301459+00:00"
+    },
+    {
+      "id": "real_WO2017210800A1_chamber",
+      "label": "chamber",
+      "type": "component",
+      "domain": "desalination",
+      "constraints": {
+        "energy": 0.8,
+        "size": 0.8,
+        "material": 0.7
+      },
+      "provenance": {
+        "source": "WO2017210800A1.txt",
+        "source_type": "patent",
+        "title": "System and method for desalination of water by reverse osmosis",
+        "authors": [
+          "(real USPTO patent)"
+        ],
+        "publication_date": "2026-08-02",
+        "patent_number": "WO2017210800A1",
+        "doi": null,
+        "confidence": 0.9,
+        "extracted_by": "scripts.ingest_real_patents_phase5",
+        "timestamp": "2026-08-02T02:00:23.301480+00:00",
+        "is_real_source": true,
+        "domain": "desalination"
+      },
+      "status": "active",
+      "shared_label": "chamber",
+      "created_at": "2026-08-02T02:00:23.301732+00:00"
     }
   ],
   "edges": [
@@ -18796,6 +19389,166 @@
       "weight": 0.7,
       "description": "",
       "created_at": "2026-08-01T09:54:16.102452+00:00"
+    },
+    {
+      "source": "sub_radiative_cooling",
+      "target": "real_US20160363396A1_an_array_of_said_metamaterial_nanostructures_arranged_in_an",
+      "relationship": "contains",
+      "weight": 1.0,
+      "description": "Phase 5 ingestion: US20160363396A1 (radiative_cooling) linked to sub_radiative_cooling",
+      "created_at": "2026-08-02T02:00:23.300081+00:00"
+    },
+    {
+      "source": "sub_radiative_cooling",
+      "target": "real_US20160363396A1_reflect_at_least_94%_of_incident_solar_light_while_passing_",
+      "relationship": "contains",
+      "weight": 1.0,
+      "description": "Phase 5 ingestion: US20160363396A1 (radiative_cooling) linked to sub_radiative_cooling",
+      "created_at": "2026-08-02T02:00:23.300089+00:00"
+    },
+    {
+      "source": "sub_radiative_cooling",
+      "target": "real_US20160363396A1_generate_broadband_radiant_energy_including_both_said_porti",
+      "relationship": "contains",
+      "weight": 1.0,
+      "description": "Phase 5 ingestion: US20160363396A1 (radiative_cooling) linked to sub_radiative_cooling",
+      "created_at": "2026-08-02T02:00:23.300099+00:00"
+    },
+    {
+      "source": "sub_radiative_cooling",
+      "target": "real_US20160363396A1_transmit_at_least_said_portion_of_said_radiant_energy_emitt",
+      "relationship": "contains",
+      "weight": 1.0,
+      "description": "Phase 5 ingestion: US20160363396A1 (radiative_cooling) linked to sub_radiative_cooling",
+      "created_at": "2026-08-02T02:00:23.300104+00:00"
+    },
+    {
+      "source": "sub_radiative_cooling",
+      "target": "real_US20160363396A1_dissipate_heat_in_the_form_of_radiant_energy_that_is_transm",
+      "relationship": "contains",
+      "weight": 1.0,
+      "description": "Phase 5 ingestion: US20160363396A1 (radiative_cooling) linked to sub_radiative_cooling",
+      "created_at": "2026-08-02T02:00:23.300108+00:00"
+    },
+    {
+      "source": "sub_radiative_cooling",
+      "target": "real_US20160363396A1_reflect_incident_solar_radiation_directed_onto_the_upward-f",
+      "relationship": "contains",
+      "weight": 1.0,
+      "description": "Phase 5 ingestion: US20160363396A1 (radiative_cooling) linked to sub_radiative_cooling",
+      "created_at": "2026-08-02T02:00:23.300113+00:00"
+    },
+    {
+      "source": "sub_radiative_cooling",
+      "target": "real_US20160363396A1_a_plurality_of_metamaterial_nanostructures_configured_to_di",
+      "relationship": "contains",
+      "weight": 1.0,
+      "description": "Phase 5 ingestion: US20160363396A1 (radiative_cooling) linked to sub_radiative_cooling",
+      "created_at": "2026-08-02T02:00:23.300117+00:00"
+    },
+    {
+      "source": "sub_radiative_cooling",
+      "target": "real_US20160363396A1_8_\u03bcm_to_13_\u03bcm_and_16_\u03bcm_to_28_\u03bcm",
+      "relationship": "contains",
+      "weight": 1.0,
+      "description": "Phase 5 ingestion: US20160363396A1 (radiative_cooling) linked to sub_radiative_cooling",
+      "created_at": "2026-08-02T02:00:23.300123+00:00"
+    },
+    {
+      "source": "sub_radiative_cooling",
+      "target": "real_US20160363396A1_both_said_portion_of_said_radiant_energy_with_wavelengths_c",
+      "relationship": "contains",
+      "weight": 1.0,
+      "description": "Phase 5 ingestion: US20160363396A1 (radiative_cooling) linked to sub_radiative_cooling",
+      "created_at": "2026-08-02T02:00:23.300128+00:00"
+    },
+    {
+      "source": "sub_radiative_cooling",
+      "target": "real_US20160363396A1_generate_said_portion_of_said_radiant_energy_with_wavelengt",
+      "relationship": "contains",
+      "weight": 1.0,
+      "description": "Phase 5 ingestion: US20160363396A1 (radiative_cooling) linked to sub_radiative_cooling",
+      "created_at": "2026-08-02T02:00:23.300137+00:00"
+    },
+    {
+      "source": "sub_radiative_cooling",
+      "target": "real_US20160363396A1_dissipate_heat_by_generating_radiant_energy_that_is_emitted",
+      "relationship": "contains",
+      "weight": 1.0,
+      "description": "Phase 5 ingestion: US20160363396A1 (radiative_cooling) linked to sub_radiative_cooling",
+      "created_at": "2026-08-02T02:00:23.300142+00:00"
+    },
+    {
+      "source": "sub_radiative_cooling",
+      "target": "real_US20160363396A1_panel",
+      "relationship": "contains",
+      "weight": 1.0,
+      "description": "Phase 5 ingestion: US20160363396A1 (radiative_cooling) linked to sub_radiative_cooling",
+      "created_at": "2026-08-02T02:00:23.300148+00:00"
+    },
+    {
+      "source": "sub_battery_technology",
+      "target": "real_US20240194939A1_an_all-solid-state_battery_laminate_including_at_least_one_",
+      "relationship": "contains",
+      "weight": 1.0,
+      "description": "Phase 5 ingestion: US20240194939A1 (battery) linked to sub_battery_technology",
+      "created_at": "2026-08-02T02:00:23.300810+00:00"
+    },
+    {
+      "source": "sub_battery_technology",
+      "target": "real_US20240194939A1_electrode",
+      "relationship": "contains",
+      "weight": 1.0,
+      "description": "Phase 5 ingestion: US20240194939A1 (battery) linked to sub_battery_technology",
+      "created_at": "2026-08-02T02:00:23.300814+00:00"
+    },
+    {
+      "source": "sub_battery_technology",
+      "target": "real_US20240194939A1_battery",
+      "relationship": "contains",
+      "weight": 1.0,
+      "description": "Phase 5 ingestion: US20240194939A1 (battery) linked to sub_battery_technology",
+      "created_at": "2026-08-02T02:00:23.300819+00:00"
+    },
+    {
+      "source": "sub_desalination",
+      "target": "real_US4039440A_membrane",
+      "relationship": "contains",
+      "weight": 1.0,
+      "description": "Phase 5 ingestion: US4039440A (desalination) linked to sub_desalination",
+      "created_at": "2026-08-02T02:00:23.300940+00:00"
+    },
+    {
+      "source": "sub_electric_propulsion",
+      "target": "real_US7768229B2_the_electric_car_charging_equipment",
+      "relationship": "contains",
+      "weight": 1.0,
+      "description": "Phase 5 ingestion: US7768229B2 (ev_charging) linked to sub_electric_propulsion",
+      "created_at": "2026-08-02T02:00:23.301277+00:00"
+    },
+    {
+      "source": "sub_electric_propulsion",
+      "target": "real_US20240194939A1_battery",
+      "relationship": "contains",
+      "weight": 1.0,
+      "description": "Phase 5 ingestion: US7768229B2 (ev_charging) linked to sub_electric_propulsion",
+      "created_at": "2026-08-02T02:00:23.301279+00:00"
+    },
+    {
+      "source": "sub_radiative_cooling",
+      "target": "real_WO2017151514A1_coating",
+      "relationship": "contains",
+      "weight": 1.0,
+      "description": "Phase 5 ingestion: WO2017151514A1 (radiative_cooling) linked to sub_radiative_cooling",
+      "created_at": "2026-08-02T02:00:23.301461+00:00"
+    },
+    {
+      "source": "sub_desalination",
+      "target": "real_WO2017210800A1_chamber",
+      "relationship": "contains",
+      "weight": 1.0,
+      "description": "Phase 5 ingestion: WO2017210800A1 (desalination) linked to sub_desalination",
+      "created_at": "2026-08-02T02:00:23.301734+00:00"
     }
   ]
 }

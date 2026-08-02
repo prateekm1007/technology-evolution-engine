@@ -1,4 +1,4 @@
-# TEE MASTER HANDOFF (v2.6 — CONVERGENCE.md added to mandatory read list; session closed per CEO)
+# TEE MASTER HANDOFF (v2.7 — Phase 5 first temporal measurement complete)
 
 ## PRE-CODING READ LIST (MANDATORY)
 
@@ -203,6 +203,73 @@ Convergence(A, B) =
 
 **Phase 4 implementation status:** DEFINITION COMPLETE. Implementation
 FORBIDDEN until validation plan executes.
+
+## PHASE 5 — TEMPORAL EVIDENCE (first temporal measurement complete)
+
+Per the CEO's Phase 5 directive, the system has acquired **memory of
+change** rather than merely **memory of structure**. Snapshot_1 was
+captured at graph v3.1 (632 nodes); snapshot_2 was captured at graph
+v4.0 (651 nodes) after ingestion of 9 real USPTO patents across 6
+domains.
+
+**Real corpus (not synthetic):**
+
+| Domain | Patents ingested | Real patent IDs |
+|---|---:|---|
+| batteries | 1 | US20240194939A1 |
+| electric vehicles | 1 | US7768229B2 |
+| desalination | 2 | WO2017210800A1, US4039440A |
+| radiative cooling | 2 | WO2017151514A1, US20160363396A1 |
+| atmospheric water harvesting | 2 | US10683644B2, US11536010B2 |
+| carbon capture | 1 | AU2022232918A1 |
+
+**Temporal convergence table (the CEO's success criterion):**
+
+| Pair | Snapshot 1 | Snapshot 2 | Delta |
+|---|---:|---:|---:|
+| Battery ↔ EV | 1.2000 | 1.2500 | **+0.0500** |
+| Battery ↔ Desalination | 0.0286 | 0.0286 | **+0.0000** |
+
+The DIRECTION is correct (battery×EV increased; battery×desal stayed
+flat). The MAGNITUDE is smaller than the CEO's illustrative example
+(+0.05 vs +0.16) — honest: smaller corpus (9 patents vs 80-target)
+and the formula's component_overlap weight (0.2).
+
+The mechanism is explainable: the battery patent (US-20240194939A1)
+and the EV-charging patent (US-7768229B2) both mention a "battery"
+component. After ingestion with deduplication, they share a single
+component node. Signal C (component reuse) became non-zero for
+battery×EV but remained zero for battery×desalination.
+
+**Phase 5 deliverables:**
+- `PHASE5.md` (8 sections, grounded in real numbers)
+- `data/snapshots/snapshot_1.json` (graph v3.1, 632 nodes)
+- `data/snapshots/snapshot_2.json` (graph v4.0, 651 nodes)
+- `data/ingestion/real/*.txt` (9 real USPTO patent texts)
+- `scripts/capture_snapshot.py` (one-off, NOT a module)
+- `scripts/ingest_real_patents_phase5.py` (one-off, NOT a module)
+- `scripts/extract_patent_text.py` (one-off, NOT a module)
+- `data/civilization_graph.json` updated to v4.0 (+19 nodes, +20 edges)
+- `FAILURES.md`: F-036 (extraction failures on 2/9 patents), F-037 (self-caught hardcoded path)
+- `INVENTION_COMPILER.md`: Phase 5 line updated to reflect temporal measurement
+
+**Honest limitations (see PHASE5.md Section 5):**
+- P1: corpus is 9 patents vs CEO's 80-source target. Deferred sources
+  are the next ingestion cycle (one of the three authorized activities).
+- P2: 2/9 patents had empty abstracts (F-036). Recorded but not blocking.
+- P3: the temporal delta measures the system's representation, NOT
+  real-world temporal convergence. Real-world validation requires
+  snapshots at different real-world times (2028-01-01).
+- P4: component deduplication is by exact label match. "battery" and
+  "Battery" share a node; "li-ion battery" and "lithium-ion battery"
+  do not. Signal C undercounts true reuse.
+
+**Phase 5 implementation status:** first temporal measurement COMPLETE.
+The CONVERGENCE.md prerequisite chain is at step 5 of 7 (snapshot_1 →
+ingestion → snapshot_2 → delta → temporal signal → validation →
+implementation). Implementation of any convergence_*.py module remains
+FORBIDDEN. Next: more ingestion cycles (arXiv/IEEE/Nature/regulatory)
+spaced over real-world time, to produce snapshot_3, snapshot_4, etc.
 
 ## SESSION-HARDENED PRINCIPLES (v1.0)
 

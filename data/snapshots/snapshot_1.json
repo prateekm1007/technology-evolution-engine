@@ -1,0 +1,68 @@
+{
+  "snapshot_id": "snapshot_1",
+  "timestamp": "2026-08-02T02:00:18.865131+00:00",
+  "graph_version": "3.1",
+  "nodes": 632,
+  "edges": 530,
+  "constraints": {
+    "total_non_zero": 5921,
+    "by_type": {
+      "energy": 589,
+      "information": 587,
+      "time": 587,
+      "material": 617,
+      "cost": 581,
+      "safety": 577,
+      "maintenance": 577,
+      "regulation": 577,
+      "manufacturing": 621,
+      "supply_chain": 577,
+      "temperature": 27,
+      "size": 4
+    }
+  },
+  "provenance": {
+    "patent": 40,
+    "paper": 15,
+    "total_without_provenance": 577
+  },
+  "metrics": {
+    "convergence_scores": {
+      "battery_ev": {
+        "pair": [
+          "sub_battery_technology",
+          "sub_electric_propulsion"
+        ],
+        "score": 1.2,
+        "breakdown": {
+          "direct_dependency": 1,
+          "prereq_overlap_ratio": 0.0,
+          "component_overlap_ratio": 0.0,
+          "component_subtree_a_size": 0,
+          "component_subtree_b_size": 0,
+          "shared_components_count": 0,
+          "1_over_shortest_path": 1.0,
+          "shortest_path": 1
+        }
+      },
+      "battery_desalination": {
+        "pair": [
+          "sub_battery_technology",
+          "sub_desalination"
+        ],
+        "score": 0.0286,
+        "breakdown": {
+          "direct_dependency": 0,
+          "prereq_overlap_ratio": 0.0,
+          "component_overlap_ratio": 0.0,
+          "component_subtree_a_size": 0,
+          "component_subtree_b_size": 0,
+          "shared_components_count": 0,
+          "1_over_shortest_path": 0.1429,
+          "shortest_path": 7
+        }
+      }
+    },
+    "discrimination_delta": 1.1714
+  }
+}
