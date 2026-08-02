@@ -265,3 +265,89 @@ The organization exists to slow that decay.
 
 This is how the coder fights entropy. Not with intelligence.
 With discipline.
+
+---
+
+## Rule 7 — The Blueprint shall never pretend that uncertainty is certainty.
+
+> Every output must contain:
+> - assumptions
+> - confidence intervals
+> - missing information
+> - unknowns
+> - failure modes
+> - alternative paths
+>
+> If you follow this rule rigorously, you preserve the intellectual
+> discipline that carried you from Phases 1 through 17.
+>
+> Otherwise, The Blueprint risks becoming a beautifully formatted
+> hallucination.
+> — CEO directive, BP-1
+
+This rule supersedes all other rules when they conflict. A blueprint
+that hides uncertainty to appear more confident violates Rule 7,
+even if it satisfies every other law. A blueprint that exposes its
+gaps as first-class data satisfies Rule 7, even if its confidence
+is 50%.
+
+---
+
+## Architectural Rule — The Blueprint is a compiler.
+
+The Blueprint is prohibited from becoming:
+- a chatbot
+- a search engine
+- a report generator
+- a slide deck generator
+- a CAD package
+- an LLM wrapper
+
+The Blueprint is a compiler. It takes an idea as input and produces
+a complete, executable blueprint as output. The blueprint is not
+a conversation; it is a compiled artifact.
+
+---
+
+## Engineering Review Questions
+
+Every blueprint review must answer these questions:
+
+**Physics:** Can this work?
+**Economics:** Can somebody pay for this?
+**Manufacturing:** Can somebody build this?
+**Regulation:** Can somebody sell this?
+**Maintenance:** Can somebody repair this?
+**Scaling:** Can millions of units exist?
+**Human factors:** Can ordinary people use this?
+
+A blueprint that cannot answer all 7 questions is incomplete.
+
+---
+
+## Era Progression
+
+| Era | Objective | Proof |
+|---|---|---|
+| 1 | Knowledge organization | "I can build this." |
+| 2 | Optimization | "I can build this more efficiently." |
+| 3 | Discovery | "I never considered building this." |
+| 4 | Invention | "Nobody considered building this." |
+
+BP-0/BP-1/BP-2 place the project at Era 1 (knowledge organization).
+The proof for Era 1 is: "I can build this" — the blueprint is
+concrete enough for a manufacturer to evaluate.
+
+Era 2 requires optimization: the system compares multiple designs
+and selects the best based on evidence.
+
+Era 3 requires discovery: the system proposes combinations a human
+expert did not consider. The frozen formula from Phases 1-14 was
+an attempt at Era 3 (velocity × adjacency predicting inventions),
+but it failed cross-domain stress tests (0/4 survived).
+
+Era 4 requires invention: the system proposes designs that no human
+has considered. This is the north star — unproven, aspirational.
+
+The progression is: each era builds on the previous. You cannot
+discover (Era 3) without first organizing (Era 1) and optimizing (Era 2).
