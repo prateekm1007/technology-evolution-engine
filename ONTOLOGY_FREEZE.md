@@ -1,33 +1,32 @@
-# ONTOLOGY_FREEZE — Phase 6 Constitutional Guardrail
+# ONTOLOGY_FREEZE — Phase 6 Constitutional Guardrail (updated Phase 7C.1)
 
-**Status:** constitutional guardrail (frozen ontology caps).
-**Location:** repo root (enforced alongside CAPABILITY_ONTOLOGY.md).
-**Phase:** 6 (frozen per CEO v3.5 correction 3).
+**Status:** constitutional guardrail (frozen ontology caps, REDUCED per CEO ruling).
+**Location:** repo root.
+**Phase:** 7C.1 (caps reduced per CEO ruling, commit `3922a3d`).
 
 > Right now you have ten node types and nine edge types. That's
-> already dangerous. The most common failure mode in projects like
-> this is: interesting concept → new node type → new edge type →
-> exception → ontology explosion → collapse.
->
-> Therefore I would immediately create [a freeze table]. Any addition
-> beyond those limits should require explicit justification.
+> already dangerous.
 > — CEO directive, Phase 6, correction 3
 
-This document freezes the ontology at its current size. Any addition
-beyond these caps requires explicit CEO authorization + a recorded
-justification citing the specific failure mode the addition addresses.
+> The scope reduction is approved. ENABLES and SUBSTITUTES_FOR are
+> temporarily suspended.
+> — CEO ruling, Phase 7C.1, Decisions 1-3
+
+This document freezes the ontology at its reduced size (per CEO
+Phase 7C.1 ruling). Any addition requires explicit CEO authorization.
 
 ---
 
-## Frozen caps
+## Frozen caps (REDUCED per CEO Phase 7C.1)
 
-| Object       | Maximum | Current count | Status |
-|---|---:|---:|---|
-| Node types   | 10 | 10 | FROZEN (at cap) |
-| Edge types   | 9 | 9 | FROZEN (at cap) |
-| Verticals    | 1 | 1 | FROZEN (at cap) |
-| Capabilities | 20 | 0 (not yet ingested) | Available |
-| Constraints  | 10 | 0 (not yet ingested) | Available |
+| Object       | Previous cap | NEW cap (CEO 7C.1) | Current count | Status |
+|---|---:|---:|---:|---|
+| Node types   | 10 | 10 | 3 (CAPABILITY, CONSTRAINT, PRODUCT) | FROZEN |
+| Edge types   | 9 | **4** (ENABLES + SUBSTITUTES_FOR SUSPENDED) | 4 | FROZEN |
+| Verticals    | 1 | 1 | 1 | FROZEN |
+| Capabilities | 20 | **10** | 0 (rebuild pending) | Available |
+| Constraints  | 10 | **5** | 0 (rebuild pending) | Available |
+| Patents      | 50 | **5** | 0 (rebuild pending) | Available |
 
 ### Node types (frozen at 10)
 
@@ -52,26 +51,32 @@ Any proposal to add an 11th node type requires:
    CONSTRAINT" rather than a new type).
 3. Explicit CEO authorization.
 
-### Edge types (frozen at 9)
+### Edge types (4 AUTHORIZED, 2 SUSPENDED per CEO 7C.1)
 
+**Authorized (4):**
 ```text
-REQUIRES
-ENABLES
-SUBSTITUTES_FOR
-BLOCKS
-CONSTRAINS
-DEPENDS_ON
 EMBODIED_IN
+REQUIRES
+CONSTRAINS
 REGULATED_BY
+```
+
+**Suspended (per CEO Decision 2, Phase 7C.1):**
+```text
+ENABLES          — requires historical counterfactual evidence (not yet available)
+SUBSTITUTES_FOR  — notoriously difficult to establish (not yet available)
+```
+
+**Not used in this vertical (3 of original 9):**
+```text
+BLOCKS
+DEPENDS_ON
 REDUCES_COST_OF
 ```
 
-Any proposal to add a 10th edge type requires:
-1. A recorded justification citing the specific relationship that
-   the current 9 types cannot express.
-2. An attempt to model the relationship using an existing edge type
-   (e.g., "this is a REQUIRES edge with a confidence < 1.0" rather
-   than a new type).
+Any proposal to re-enable ENABLES or SUBSTITUTES_FOR requires:
+1. A recorded justification citing the specific evidence available.
+2. A human reviewer's assessment per CAUSALITY_POLICY.md.
 3. Explicit CEO authorization.
 
 ### Verticals (frozen at 1)

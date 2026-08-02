@@ -23,7 +23,8 @@ READ_LIST = [
     ("HANDOFF.md", "current state and what's next."),
     ("CONVERGENCE.md", "Phase 4 convergence definition (CO_OCCURRENCE_MODEL architecture). Read BEFORE any convergence-related work. The CAPABILITY_MODEL (Phase 6) is under investigation; CONVERGENCE.md is the CO_OCCURRENCE_MODEL, preserved for comparison/backtest."),
     ("CAPABILITY_ONTOLOGY.md", "Phase 6 capability-centric architecture (CAPABILITY_MODEL, under investigation). Defines the new node types, edge types, evidence schema, temporal state, scope restriction (one vertical), embedding policy, and three independent scores. Implementation (Phase 7) NOT yet authorized."),
-    ("ONTOLOGY_FREEZE.md", "Phase 6 ontology freeze guardrail. Hard caps: 10 node types, 9 edge types, 1 vertical, 20 capabilities, 10 constraints. Any addition requires explicit CEO authorization + recorded justification. Prevents ontology explosion → collapse."),
+    ("ONTOLOGY_FREEZE.md", "Phase 6 ontology freeze guardrail (REDUCED per CEO 7C.1). Caps: 5 patents, 10 capabilities, 5 constraints, 4 edge types (ENABLES + SUBSTITUTES_FOR SUSPENDED). Any addition requires explicit CEO authorization."),
+    ("CAUSALITY_POLICY.md", "Phase 7C.1 causality policy. Defines causality, enablement, substitutability, admissible/inadmissible evidence, confidence scale (1.0/0.8/0.5/0.2), reviewer responsibilities. Constitutional rules: no edge without evidence, no capability without evidence, no prediction without explanation."),
 ]
 
 

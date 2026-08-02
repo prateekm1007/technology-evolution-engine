@@ -1,4 +1,4 @@
-# TEE MASTER HANDOFF (v5.2 — auditor correction: edge justification audit + scope reduction proposed)
+# TEE MASTER HANDOFF (v6.0 — CEO Phase 7C.1 ruling: scope reduced, causality policy, 5-patent trust test)
 
 ## PRE-CODING READ LIST (MANDATORY)
 
