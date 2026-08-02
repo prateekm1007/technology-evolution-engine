@@ -21,6 +21,7 @@ READ_LIST = [
     ("CONTRIBUTING.md", "session-hardened principles + pre-commit checklist. Read BEFORE every commit."),
     ("FAILURES.md", "the failure taxonomy. Do not re-introduce."),
     ("HANDOFF.md", "current state and what's next."),
+    ("CONVERGENCE.md", "Phase 4 convergence definition. Read BEFORE any convergence-related work. Implementation is FORBIDDEN until the prerequisite chain (snapshot_1 -> ingestion -> snapshot_2 -> delta -> temporal signal -> validation -> implementation) executes."),
 ]
 
 

@@ -1,4 +1,4 @@
-# TEE MASTER HANDOFF (v2.5 — Phase 4 convergence definition complete)
+# TEE MASTER HANDOFF (v2.6 — CONVERGENCE.md added to mandatory read list; session closed per CEO)
 
 ## PRE-CODING READ LIST (MANDATORY)
 
@@ -13,8 +13,19 @@ files in order:
    responsibility, refactor constantly, lock dependencies,
    document assumptions, decouple modules, clear dead code,
    maintain patterns.
-4. `FAILURES.md` — the failure taxonomy. Do not re-introduce.
-5. `HANDOFF.md` — this file. Current state of the system.
+4. `CONTRIBUTING.md` — session-hardened principles + pre-commit
+   checklist. Read BEFORE every commit.
+5. `FAILURES.md` — the failure taxonomy. Do not re-introduce.
+6. `HANDOFF.md` — this file. Current state of the system.
+7. `CONVERGENCE.md` — Phase 4 convergence definition. Read BEFORE
+   any convergence-related work. Implementation is FORBIDDEN until
+   the prerequisite chain (snapshot_1 -> ingestion -> snapshot_2 ->
+   delta -> temporal signal -> validation -> implementation)
+   executes.
+
+This read list is enforced structurally by `scripts/remember_governance.py`,
+which is wired as a pre-commit hook via `.pre-commit-config.yaml`. If
+any of these 7 files is missing, the commit is blocked.
 
 Skipping this read list will reproduce a bug that has already been
 fixed. F-005 is the canonical example.
