@@ -1,4 +1,4 @@
-# TEE MASTER HANDOFF (v12.0 — Phase 12: falsification attempt — hidden variables, ablation, counterexamples, impossibility, compression)
+# TEE MASTER HANDOFF (v12.1 — ablation complete: velocity+adjacency = Formula B; cost_bonus+feasibility redundant; theory simplifies)
 
 ## PRE-CODING READ LIST (MANDATORY)
 
