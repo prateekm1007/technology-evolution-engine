@@ -1,0 +1,59 @@
+{
+  "manifest_id": "corpus_phase7a",
+  "vertical": "electrochemical energy storage",
+  "created_at": "2026-08-02",
+  "status": "defined (not yet ingested)",
+  "scope_caps": {
+    "patents": 50,
+    "papers": 50,
+    "products": 10,
+    "capabilities": 20,
+    "constraints": 10,
+    "edge_types": 6,
+    "node_types": 10,
+    "verticals": 1
+  },
+  "patents": {
+    "count_target": 50,
+    "source": "USPTO via Google Patents",
+    "cpc_code": "H01M",
+    "date_range": "1990-2026",
+    "selection_criteria": "most-cited in H01M, sampled across date range",
+    "status": "not yet ingested"
+  },
+  "papers": {
+    "count_target": 50,
+    "sources": ["arXiv", "Nature", "Science", "Journal of the Electrochemical Society"],
+    "date_range": "1990-2026",
+    "selection_criteria": "highly-cited + recent reviews",
+    "status": "not yet ingested"
+  },
+  "products": {
+    "count_target": 10,
+    "sources": "public product specs, industry reports",
+    "examples": [
+      "Tesla 4680",
+      "Panasonic NCR18650B",
+      "A123 LFP",
+      "Samsung SDI",
+      "LG Chem",
+      "CATL blade",
+      "Toyota solid-state prototype"
+    ],
+    "selection_criteria": "products representing distinct capability combinations",
+    "status": "not yet ingested"
+  },
+  "capabilities": {
+    "count": 20,
+    "catalog_file": "CAPABILITY_CATALOG.md",
+    "status": "frozen"
+  },
+  "constraints": {
+    "count": 10,
+    "catalog_file": "CONSTRAINT_CATALOG.md",
+    "status": "frozen"
+  },
+  "backtest_points": [1995, 2000, 2005, 2010, 2015, 2020],
+  "backtest_horizon": "T+5 to T+10 years",
+  "note": "This manifest defines WHAT will be ingested. Ingestion itself is Phase 7B/7C work. The manifest is frozen — any change requires explicit CEO authorization per ONTOLOGY_FREEZE.md."
+}

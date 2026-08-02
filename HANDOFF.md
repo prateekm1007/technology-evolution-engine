@@ -1,4 +1,4 @@
-# TEE MASTER HANDOFF (v4.2 — CEO v3.5 corrections applied: formulas demoted, naming neutralized, ontology frozen)
+# TEE MASTER HANDOFF (v5.0 — Phase 7 protocols written; smallest machine defined)
 
 ## PRE-CODING READ LIST (MANDATORY)
 
