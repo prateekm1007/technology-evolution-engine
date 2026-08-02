@@ -1,4 +1,4 @@
-# TEE MASTER HANDOFF (v2.8 — Phase 5.B second ingestion cycle complete with surprising finding)
+# TEE MASTER HANDOFF (v2.9 — Phase 5.C parser expansion, 4th snapshot captured, second hypothesis rejection)
 
 ## PRE-CODING READ LIST (MANDATORY)
 
@@ -332,6 +332,102 @@ larger temporal deltas. The actual Phase 5.B delta was -0.0214
 finding recorded honestly. Implementation still FORBIDDEN. The
 single most important next action: target sources with richer
 component vocabulary in the next ingestion cycle.
+
+## PHASE 5.C — PARSER KEYWORD EXPANSION (second hypothesis rejection)
+
+Per the auditor's V4 finding on F-038 (Phase 5.B audit) and the CEO's
+authorized action:
+
+> F-038's recommended fix (expand COMPONENT_KEYWORDS to include
+> scientific vocabulary: sorbent, metamaterial, electrolyte, anode,
+> cathode) is allowed as a data modification, not architecture —
+> but should be done carefully to avoid the F-001 pattern (keyword
+> matching that works on fixtures but not real text).
+
+Phase 5.C expanded PaperParser's `_extract_components` keyword list
+with 8 new terms grounded in actual arXiv abstracts (anode, cathode,
+electrolyte, sorbent, metamaterial, adsorbent, charger, metal-organic
+framework). The original 17 patent-oriented keywords are unchanged.
+
+**Per-cycle delta (battery × EV):**
+
+| Cycle | Before | After | Delta | Hypothesis |
+|---|---:|---:|---:|---|
+| Phase 5.A (USPTO patents) | 1.2000 | 1.2500 | +0.0500 | ACCEPTED |
+| Phase 5.B (arXiv, original parser) | 1.2500 | 1.2286 | -0.0214 | REJECTED |
+| Phase 5.C (arXiv, expanded parser) | 1.2286 | 1.2182 | -0.0104 | REJECTED |
+
+**Cumulative temporal table:**
+
+| Pair | Snap 1 | Snap 2 | Snap 3 | Snap 4 | Total Δ |
+|---|---:|---:|---:|---:|---:|
+| Battery ↔ EV | 1.2000 | 1.2500 | 1.2286 | 1.2182 | **+0.0182** |
+| Battery ↔ Desalination | 0.0286 | 0.0286 | 0.0286 | 0.0286 | **+0.0000** |
+
+**The honest finding:** Phase 5.C's hypothesis was REJECTED — again.
+
+The expanded parser DID extract components from 9 of 10 arXiv papers
+(was 1 of 10 before expansion). 8 new component nodes added. But
+NONE of the new component labels matched existing graph component
+labels in a way that created new shared-component bridges:
+- Battery paper → anode, cathode, electrolyte (NEW labels, not
+  matching existing "battery" component)
+- EV paper → charger (NEW, not matching "battery")
+- Radiative cooling papers → metamaterial (NEW, not matching any
+  battery or EV component)
+- AWH + DAC papers → sorbent, adsorbent, metal-organic framework
+  (NEW, not matching any battery or EV component)
+
+So shared_components stayed at 1, while total grew from 7 (snapshot_3)
+to 11 (snapshot_4). overlap_ratio shrank further: 0.143 → 0.091.
+Score: 1.2286 → 1.2182 (-0.0104).
+
+**The deeper finding (P8 in PHASE5.md): exact-label matching is the
+structural bottleneck.** The convergence formula's Signal C requires
+exact (lowercased, stripped) label matches. Sources using different
+vocabulary for the same concept ("battery" vs "batteries";
+"electrode" vs "anode"; "metal-organic framework" vs "MOF") don't
+share nodes. For Signal C to actually grow, EITHER:
+1. Sources must use the SAME vocabulary as existing graph nodes (rare
+   across diverse sources), OR
+2. Label normalization (singular/plural, synonyms) — implementation,
+   forbidden, OR
+3. Semantic matching (embeddings, ontology) — implementation, forbidden.
+
+**What this proves:**
+1. The parser expansion works (9/10 arXiv papers now extract components,
+   was 1/10). F-038's extraction failure is mitigated.
+2. F-038's downstream consequence (Signal C not growing) is NOT
+   mitigated — the structural bottleneck (P8) remains.
+3. The Maestro Loop catches its own hypotheses failing — two
+   consecutive cycles (5.B, 5.C) had hypotheses that predicted score
+   increases; both were rejected honestly. The system is producing
+   real measurements, not narratives.
+
+**What this does NOT authorize:**
+- Formula modification (the formula is behaving correctly)
+- Semantic matching (implementation, forbidden)
+- Anything beyond the three authorized activities
+
+**Phase 5.C deliverables:**
+- `PHASE5.md` Phase 5.C section (appended, 6 new sections)
+- `data/snapshots/snapshot_4.json` (graph v4.2, 669 nodes, 562 edges)
+- `scripts/ingest_real_arxiv_phase5c.py` (one-off, NOT a module)
+- `product/ingestion/paper_parser.py` modified (`_extract_components`
+  expanded with 8 scientific vocabulary terms)
+- `data/civilization_graph.json` updated to v4.2 (+8 nodes, +5 edges)
+- `FAILURES.md`: F-038 status updated to PARTIALLY MITIGATED with
+  full root-cause analysis
+- `INVENTION_COMPILER.md`: Phase 5 line reflects 4 snapshots + 2
+  hypothesis rejections
+- `HANDOFF.md`: this section (v2.8 → v2.9)
+
+**Phase 5.C implementation status:** COMPLETE. Two consecutive
+hypothesis rejections. Honest finding: exact-label matching is the
+structural bottleneck (P8). Implementation still FORBIDDEN. The
+single most important next action: target sources that use the SAME
+component vocabulary as existing graph nodes, OR wait for the 2028
+validation dates.
 
 ## SESSION-HARDENED PRINCIPLES (v1.0)
 

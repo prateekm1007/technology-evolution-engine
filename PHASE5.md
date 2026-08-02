@@ -688,3 +688,308 @@ either:
 
 All three are authorized (more ingestion cycles, more snapshots,
 more measurement). Implementation remains forbidden.
+
+---
+
+# Phase 5.C — Parser keyword expansion (second hypothesis rejection)
+
+Per the auditor's V4 finding on F-038 (Phase 5.B audit) and the
+CEO's authorized action:
+
+> F-038's recommended fix (expand COMPONENT_KEYWORDS to include
+> scientific vocabulary: sorbent, metamaterial, electrolyte, anode,
+> cathode) is allowed as a data modification, not architecture —
+> but should be done carefully to avoid the F-001 pattern (keyword
+> matching that works on fixtures but not real text).
+
+Phase 5.C expanded PaperParser's `_extract_components` keyword list
+with 8 new terms grounded in the actual arXiv abstracts ingested in
+Phase 5.B. The hypothesis was that this would let the parser extract
+components from the existing arXiv papers, growing the shared-component
+numerator and reversing Phase 5.B's negative delta.
+
+**The hypothesis was REJECTED — again.** The expanded parser DID
+extract more components (8 new component nodes added), but NONE of
+them matched existing component labels in a way that created new
+shared-component bridges. The denominator grew further, the numerator
+stayed flat, and the convergence score DECREASED again (1.2286 → 1.2182).
+
+## What was done
+
+### Step 1 — Vocabulary selection (grounded in real text)
+
+Scanned all 10 Phase 5.B arXiv abstracts for candidate component
+vocabulary. Found 15 candidate terms; filtered to 8 that:
+- appear in 1+ papers
+- are actually components (not materials, principles, or generic words)
+- have low false-positive risk (excluded "mof" because it would
+  substring-match "monolithic"; excluded "cell" because it would
+  match "cellular"; excluded "ion" because it's a particle, not a
+  component)
+
+### Step 2 — PaperParser expansion (data modification, not architecture)
+
+Modified `product/ingestion/paper_parser.py::_extract_components` to
+add 8 new keywords:
+
+```python
+'anode',           # battery papers — anode component
+'cathode',         # battery papers — cathode component
+'electrolyte',    # battery papers — electrolyte component
+'sorbent',         # AWH + DAC papers — sorbent material/component
+'metamaterial',   # radiative cooling papers — structural component
+'adsorbent',      # AWH + DAC papers — adsorbent material
+'charger',         # EV-charging papers — charging component
+'metal-organic framework',  # multi-word, no false-positive risk
+```
+
+The original 17 patent-oriented keywords are unchanged. This is a
+purely additive data modification, not architectural — explicitly
+authorized by the auditor's instruction.
+
+### Step 3 — Re-ingestion
+
+Wrote `scripts/ingest_real_arxiv_phase5c.py` (one-off, NOT a module).
+Re-ran the EXISTING 10 arXiv abstracts through the updated parser.
+This is a measurement cycle on data already in the repo, NOT a new
+ingestion cycle. The corpus is unchanged; only the parser changed.
+
+**Extraction results after expansion:**
+
+| arXiv ID | Domain | Components extracted (before → after) |
+|---|---|---|
+| 2003.10495 | radiative_cooling | [] → [metamaterial] |
+| 2105.02905 | ev_charging | [] → [charger] |
+| 2301.04523 | radiative_cooling | [] → [metamaterial] |
+| 2301.10338 | radiative_cooling | [] → [metamaterial] |
+| 2301.13160 | desalination | [membrane] → [membrane] (unchanged) |
+| 2307.03620 | battery | [] → [anode, cathode, electrolyte] |
+| 2311.00341 | carbon_capture | [] → [sorbent, adsorbent, metal-organic framework] |
+| 2311.08656 | ev_charging | [] → [] (no keywords match) |
+| 2407.00470 | atmospheric_water_harvesting | [] → [metal-organic framework] |
+| 2501.04825 | carbon_capture | [] → [sorbent, metal-organic framework] |
+
+The expanded parser now extracts components from 9 of 10 papers
+(was 1 of 10 before expansion). The 1 paper that still extracts 0
+(2311.08656) is a cyber-security paper that doesn't mention
+hardware components.
+
+**Graph changes:**
+- nodes: 661 → 669 (+8 new component nodes, all deduplicated by label)
+- edges: 557 → 562 (+5 new `contains` edges; 3 papers share the
+  same "metamaterial" node, so only 1 node was created)
+- graph_version: 4.1 → 4.2
+
+### Step 4 — Snapshot_4 captured
+
+`data/snapshots/snapshot_4.json`:
+- timestamp: 2026-08-02T(same session)
+- graph_version: 4.2
+- nodes: 669
+- edges: 562
+- Convergence(battery, EV) = 1.2182
+- Convergence(battery, desalination) = 0.0286
+
+## Cumulative temporal table (Phase 5)
+
+| Pair | Snap 1 | Snap 2 | Snap 3 | Snap 4 | Total Δ |
+|---|---:|---:|---:|---:|---:|
+| Battery ↔ EV | 1.2000 | 1.2500 | 1.2286 | 1.2182 | **+0.0182** |
+| Battery ↔ Desalination | 0.0286 | 0.0286 | 0.0286 | 0.0286 | **+0.0000** |
+| Discrimination delta | 1.1714 | 1.2214 | 1.2000 | 1.1896 | +0.0182 |
+
+## Per-cycle delta (battery × EV)
+
+| Cycle | Before | After | Delta | Hypothesis |
+|---|---:|---:|---:|---|
+| Phase 5.A (USPTO patents) | 1.2000 | 1.2500 | +0.0500 | ACCEPTED |
+| Phase 5.B (arXiv, original parser) | 1.2500 | 1.2286 | -0.0214 | REJECTED |
+| Phase 5.C (arXiv, expanded parser) | 1.2286 | 1.2182 | -0.0104 | REJECTED |
+
+## Why the hypothesis was wrong (again)
+
+**Hypothesis:** expanding the parser's keyword list would let it
+extract more components, growing the shared-component numerator and
+reversing Phase 5.B's negative delta.
+
+**Actual:** the expanded parser DID extract 8 new component nodes
+(anode, cathode, electrolyte, sorbent, adsorbent, metamaterial,
+charger, metal-organic framework). But NONE of them matched existing
+component labels in a way that created new shared-component bridges:
+
+- The battery paper extracted anode/cathode/electrolyte — NEW labels,
+  not matching the existing "battery" component from Phase 5.A patent
+  US20240194939A1.
+- The EV paper extracted "charger" — NEW, not matching "battery".
+- The radiative cooling papers extracted "metamaterial" — NEW, not
+  matching any battery or EV component.
+- The AWH + DAC papers extracted sorbent/adsorbent/metal-organic
+  framework — NEW, not matching any battery or EV component.
+
+So shared_components stayed at 1 (the original "battery" node from
+Phase 5.A), while the total grew from 7 (snapshot_3) to 11 (snapshot_4).
+overlap_ratio shrank further: 0.143 → 0.091. The convergence score
+DECREASED by 0.0104.
+
+## The deeper finding: exact-label matching is the bottleneck
+
+Phase 5.B and Phase 5.C together reveal the actual bottleneck: **the
+convergence formula's Signal C requires EXACT label matches to detect
+shared components.** The current ingestion pipeline extracts labels
+as-is from source text (no normalization, no semantic matching), so:
+
+- "battery" (singular) and "batteries" (plural) are different labels
+  → don't share a node (F-001 substring-matching variant, recurring)
+- "anode" and "electrode" refer to related things but are different
+  labels → don't share a node
+- "metal-organic framework" and "MOF" refer to the same thing but are
+  different labels → don't share a node
+
+For the convergence score to actually GROW via Signal C, the system
+would need either:
+1. **Sources that happen to use the same component vocabulary** —
+   rare across diverse sources (patents vs papers, different domains).
+2. **Label normalization** (singular/plural, synonyms) — this is
+   implementation work, FORBIDDEN per CONVERGENCE.md.
+3. **Semantic matching** (embeddings, ontology) — also implementation,
+   FORBIDDEN.
+
+The honest conclusion: **under the current formula and the current
+parser, ingestion cycles that add components without matching
+existing labels will CONTINUE to decrease the convergence score.**
+This is structurally correct behavior — the formula measures RATIO
+of overlap, and adding non-overlapping nodes dilutes the ratio.
+
+## What this proves, and what it does NOT prove
+
+### What it proves
+
+1. **The parser expansion works as intended.** PaperParser now
+   extracts 9/10 arXiv papers' components (was 1/10). The 8 new
+   keywords are grounded in real arXiv text and don't break the
+   existing fixtures (52 tests pass).
+
+2. **F-038 is mitigated** at the extraction level — the parser now
+   extracts scientific vocabulary. But F-038's downstream
+   consequence (Signal C staying at 0 for non-matching labels) is
+   NOT mitigated, because the new labels don't match existing ones.
+
+3. **The Maestro Loop catches its own hypotheses failing.** Two
+   consecutive cycles (5.B, 5.C) had hypotheses that predicted
+   score increases; both were rejected honestly. The system is
+   producing real measurements, not narratives.
+
+### What it does NOT prove
+
+1. **It does NOT prove the parser expansion was wasted.** The 8 new
+   component nodes are real extractions from real sources. They carry
+   real provenance. They contribute to the graph's structural
+   richness. They just don't happen to match existing component labels
+   in a way that grows Signal C.
+
+2. **It does NOT authorize formula modification.** The formula is
+   behaving correctly. The fact that 2 consecutive cycles decreased
+   the score is a measurement, not a defect. Modifying the formula to
+   "make the score go up" would be principle #2 violated.
+
+3. **It does NOT authorize semantic matching.** That would be
+   implementation work, forbidden per CONVERGENCE.md until validation
+   executes.
+
+4. **It does NOT mean the convergence score will keep decreasing
+   forever.** The score is bounded below by direct_dependency (1.0)
+   plus 1/shortest_path (0.2) = 1.2 for battery×EV. Phase 5.A
+   pushed it to 1.25 via Signal C; Phases 5.B and 5.C have eroded
+   that gain to 1.2182. The cumulative Phase 5 delta is still
+   positive (+0.0182). Further ingestion cycles that add components
+   without matching labels will continue eroding, but the floor is
+   1.2 (Signal A' + Signal D).
+
+## Updated limitations (additions to P1-P7)
+
+### Limitation P8 — Exact-label matching is the structural bottleneck
+
+The convergence formula's Signal C requires exact (lowercased, stripped)
+label matches to detect shared components. Sources using different
+vocabulary for the same concept (battery vs batteries; electrode vs
+anode; metal-organic framework vs MOF) don't share nodes. This
+limits Signal C's ability to grow via ingestion alone.
+
+**Impact:** Phases 5.B and 5.C both decreased the score because the
+new sources extracted components with labels that didn't match
+existing graph nodes. The shared_components count has been stuck at
+1 ("battery" from Phase 5.A patent) across snapshots 2, 3, and 4.
+
+**Mitigation options (all currently forbidden as implementation):**
+- Label normalization (singular/plural, synonym maps)
+- Semantic matching (embeddings, ontology lookup)
+- Adding an absolute-overlap signal (shared_components_count with
+  non-zero weight) alongside the ratio signal
+
+All three would be formula or architecture changes, forbidden until
+validation executes per CONVERGENCE.md.
+
+### Limitation P9 — Substring matching causes plural-form misses
+
+The existing parser uses `if c in text.lower()` for substring
+matching. This means 'battery' doesn't match 'batteries' (the
+trailing 'y' vs 'ies'). The battery arXiv paper (2307.03620) uses
+"batteries" throughout, so the keyword 'battery' doesn't fire —
+but the new keywords 'anode', 'cathode', 'electrolyte' do fire.
+
+**Impact:** the existing 'battery' keyword undercounts. This is the
+F-001 pattern (keyword matching brittleness) recurring in a
+different form — substring matching doesn't handle morphology.
+
+**Mitigation:** word-boundary regex matching (e.g.,
+`re.search(r'\b' + re.escape(c) + r'\b', text.lower())`) would
+fix this. But that's a parser implementation change. Allowed
+under the auditor's "data modification" framing? Arguably yes —
+it's still keyword matching, just with better boundary handling.
+But it's a deeper change than adding keywords, and the auditor's
+instruction said "done carefully to avoid the F-001 pattern." A
+word-boundary fix is the kind of careful improvement that might
+be authorized in a future cycle, but it's beyond this cycle's
+scope.
+
+## Implementation status (Phase 5.C)
+
+| Item | Status |
+|---|---|
+| PaperParser keyword expansion | COMPLETE (8 new keywords, grounded in real arXiv text) |
+| Re-ingestion of existing arXiv papers with updated parser | COMPLETE (+8 component nodes, +5 edges) |
+| Snapshot_4 captured | COMPLETE (graph v4.2, 669 nodes, 562 edges) |
+| Delta analysis (snapshot_3 → snapshot_4) | COMPLETE (Convergence(battery, EV): 1.2286 → 1.2182, -0.0104) |
+| Hypothesis outcome | REJECTED — score decreased again. The parser expansion did not reverse the negative delta because new component labels don't match existing graph nodes. |
+| Convergence module | FORBIDDEN per CONVERGENCE.md. Not created. |
+| Phase 5.C status | COMPLETE. Two consecutive hypothesis rejections. Honest finding: exact-label matching is the structural bottleneck. |
+
+## The single most important next action
+
+Two cycles of negative deltas suggest the system has reached a
+local maximum on Signal C under the current formula + parser
+combination. The next authorized actions, in order of leverage:
+
+1. **Target sources that use the SAME component vocabulary as
+   existing graph nodes.** If a future ingestion cycle adds
+   sources that mention "battery", "membrane", "electrode",
+   "coating", "chamber", or any of the existing 25 real-component
+   labels, the shared_components numerator will grow.
+
+2. **Or: accept that Signal C is plateaued and look for convergence
+   growth via a different signal pathway.** Signal A (prereq
+   overlap) and Signal E (temporal) are both currently 0. Adding
+   `requires` or `depends_on` edges between subdomains would grow
+   Signal A. But that requires either semantic relationship
+   extraction (implementation, forbidden) or manual edge addition
+   (which would be subjective, not measurement).
+
+3. **Or: wait for the validation plan in CONVERGENCE.md Section 5
+   to execute.** The 2028-01-01 resolution dates will provide real-
+   world outcomes to validate the formula against. Until then, the
+   formula's weights remain priors, and the cumulative Phase 5
+   delta (+0.0182 for battery×EV) is a structural measurement, not
+   a real-world convergence claim.
+
+All three are authorized (more ingestion, more measurement, time
+passing). Implementation remains forbidden.

@@ -53,8 +53,15 @@ ALLOWED_MODIFICATIONS = frozenset({
     "web/backend/adapters/oracle_deep.py",  # C2 fix + E3 fix
     "product/scoring/feasibility.py",  # C2 fix: dict constraint handling
     "product/ingestion/patent_parser.py",  # Phase 3: patent ingestion + F-001 fix
-    "product/ingestion/paper_parser.py",  # Phase 3 Step 3: paper ingestion
+    "product/ingestion/paper_parser.py",  # Phase 3 Step 3: paper ingestion; Phase 5.C keyword expansion
     "product/ingestion/text_normalizer.py",  # Phase 3: ingestion support
     "scripts/ingest_real_sources.py",  # Phase 3 Step 4: real ingestion
     "scripts/generate_ingestion_data.py",  # Phase 3 Step 4: synthetic abstracts
+    "scripts/measure_convergence.py",  # Phase 4: convergence measurement (one-off)
+    "scripts/capture_snapshot.py",  # Phase 5: snapshot capture (one-off)
+    "scripts/extract_patent_text.py",  # Phase 5.A: patent text extraction (one-off)
+    "scripts/ingest_real_patents_phase5.py",  # Phase 5.A: USPTO ingestion (one-off)
+    "scripts/extract_arxiv_text.py",  # Phase 5.B: arXiv extraction (one-off)
+    "scripts/ingest_real_arxiv_phase5b.py",  # Phase 5.B: arXiv ingestion (one-off)
+    "scripts/ingest_real_arxiv_phase5c.py",  # Phase 5.C: re-ingestion with expanded parser (one-off)
 })
