@@ -245,3 +245,36 @@ An ugly truth is success.
 ```
 
 Read everything. Then build. Then verify. Then iterate.
+
+---
+
+## Stage Progression (refined by CEO, post-WCP-1)
+
+> Do not ask the machine to invent yet.
+> Ask it to surprise you first.
+> — CEO directive, post-WCP-1
+
+| Stage | Objective | Success criterion | Status |
+|---|---|---|---|
+| 1 (BP-1) | Build something that exists | "Could an expert build it?" | **DONE** (solar irrigation robot) |
+| 2 (BP-2) | Build something that exists, improved | "Is it objectively better?" | Not started |
+| 3 (BP-3) | Combine mature technologies | "Why didn't people build this earlier?" | Not started |
+| 4 (BP-4) | Explore the edge of the possible | "Is this reachable?" | Not started |
+| 5 (BP-5) | Attempt invention | "Can the machine discover something genuinely new?" | Aspirational |
+
+**The test case for Stage 3 (boundary between recombination and invention):**
+
+Adaptive micro-irrigation mesh — a modular, solar-powered irrigation
+network for small farms. The question is not "can the system imagine
+something extraordinary?" but "can the system identify a better
+configuration than a human would have selected?"
+
+**Do NOT skip stages.** The sequence that makes The Blueprint
+different from an LLM wrapper is:
+
+```text
+failure → boundary → classification → mechanism → constraint →
+reachability → construction
+```
+
+If you skip those steps, you lose the moat.
