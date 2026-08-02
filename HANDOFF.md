@@ -1,4 +1,4 @@
-# TEE MASTER HANDOFF (v4.0 — Phase 6 architectural investigation authorized; H0-architectural defeated)
+# TEE MASTER HANDOFF (v4.1 — Phase 6 constitutional documents written; no implementation)
 
 ## PRE-CODING READ LIST (MANDATORY)
 
@@ -17,24 +17,29 @@ files in order:
    checklist. Read BEFORE every commit.
 5. `FAILURES.md` — the failure taxonomy. Do not re-introduce.
 6. `HANDOFF.md` — this file. Current state of the system.
-7. `CONVERGENCE.md` — Phase 4 convergence definition. Read BEFORE
-   any convergence-related work. Implementation is FORBIDDEN until
-   the prerequisite chain (snapshot_1 -> ingestion -> snapshot_2 ->
-   delta -> temporal signal -> validation -> implementation)
-   executes.
+7. `CONVERGENCE.md` — Phase 4 convergence definition (BASELINE
+   architecture). The capability-centric architecture (Phase 6) is
+   the primary investigation; CONVERGENCE.md is the experimental
+   baseline, preserved for replay/audit/backtest.
+8. `CAPABILITY_ONTOLOGY.md` — Phase 6 capability-centric architecture
+   (PRIMARY investigation). Defines the new node types, edge types,
+   evidence schema, temporal state, scope restriction (one vertical),
+   embedding policy, and three independent scores. Implementation
+   (Phase 7) NOT yet authorized.
 
 This read list is enforced structurally by `scripts/remember_governance.py`,
 which is wired as a pre-commit hook via `.pre-commit-config.yaml`. If
-any of these 7 files is missing, the commit is blocked.
+any of these 8 files is missing, the commit is blocked.
 
-**Note on evidence vs. governance (per CEO v3.1 directive):**
+**Note on evidence vs. governance (per CEO v3.1 directive, reaffirmed v4.1):**
 Observation logs and measurement documents (e.g.,
-`evidence/observations/NORMALIZATION_GAP.md`) are NOT in the
-mandatory read list. They are evidence, not constitutional rules.
-The 7 files above are constitutional: rules, constraints, failure
-history, governance, handoff, convergence definition, master spec.
-Mixing observations into the constitutional layer risks gradually
-converting measurements into dogma.
+`evidence/observations/NORMALIZATION_GAP.md`,
+`evidence/observations/NORMALIZATION_APPROACHES.md`,
+`evidence/observations/ARCHITECTURE_PIVOT_SPEC.md`,
+`evidence/reading_log.md`) are NOT in the mandatory read list. They
+are evidence, not constitutional rules. The 8 files above are
+constitutional. Mixing observations into the constitutional layer
+risks gradually converting measurements into dogma.
 
 Skipping this read list will reproduce a bug that has already been
 fixed. F-005 is the canonical example.

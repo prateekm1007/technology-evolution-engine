@@ -21,7 +21,8 @@ READ_LIST = [
     ("CONTRIBUTING.md", "session-hardened principles + pre-commit checklist. Read BEFORE every commit."),
     ("FAILURES.md", "the failure taxonomy. Do not re-introduce."),
     ("HANDOFF.md", "current state and what's next."),
-    ("CONVERGENCE.md", "Phase 4 convergence definition. Read BEFORE any convergence-related work. Implementation is FORBIDDEN until the prerequisite chain (snapshot_1 -> ingestion -> snapshot_2 -> delta -> temporal signal -> validation -> implementation) executes."),
+    ("CONVERGENCE.md", "Phase 4 convergence definition (BASELINE architecture). Read BEFORE any convergence-related work. The capability-centric architecture (Phase 6) is the primary investigation; CONVERGENCE.md is the experimental baseline."),
+    ("CAPABILITY_ONTOLOGY.md", "Phase 6 capability-centric architecture (PRIMARY investigation). Defines the new node types, edge types, evidence schema, temporal state, scope restriction (one vertical), embedding policy, and three independent scores. Implementation (Phase 7) NOT yet authorized."),
 ]
 
 
