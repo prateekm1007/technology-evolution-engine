@@ -91,3 +91,74 @@ needs adjectives to be convincing, it isn't convincing yet.
 Show the file change and let it be reviewed before committing. Narrating a
 completed action and demonstrating one are different acts — only the
 second counts as done.
+
+---
+
+## EP-13: Every assertion must carry evidence with a ranked source.
+
+No assertion in any blueprint, report, or explanation may be
+made without an attached `Evidence` object:
+
+```typescript
+interface Evidence {
+    id: string
+    source: string
+    sourceType: "paper" | "patent" | "regulation" | "supplier" | "market"
+    rank: "A" | "B" | "C" | "D" | "E" | "F" | "G" | "H" | "I"
+    confidence: number  // [0, 1]
+    retrievedAt: string  // ISO timestamp
+}
+```
+
+The rank determines the weight (per CONSTITUTION.md Evidence
+Hierarchy). Assertions with rank I (LLM inference) must be
+labeled "unverified — inference only" and carry weight 0.20.
+
+## EP-14: Every blueprint must expose its assumptions.
+
+Assumptions are not implicit. Every blueprint must include an
+`Assumption[]` array:
+
+```typescript
+interface Assumption {
+    statement: string
+    impact: "LOW" | "MEDIUM" | "HIGH"
+    confidence: number
+    falsifier: string
+}
+```
+
+If an assumption is violated, the blueprint may be wrong. The
+falsifier states what observation would prove the assumption false.
+
+## EP-15: Every blueprint must expose its unknowns.
+
+The system must declare what it does not know:
+
+```typescript
+interface Unknown {
+    description: string
+    reason: string
+    consequence: string
+}
+```
+
+A blueprint without an `Unknown[]` array is claiming omniscience,
+which is always false.
+
+## EP-16: No false certainty.
+
+Confidence must be propagated honestly:
+
+```typescript
+interface Confidence {
+    value: number
+    contributors: string[]
+    penalties: string[]
+}
+```
+
+Base confidence is reduced by penalties (supplier uncertainty,
+regulatory uncertainty, manufacturing risk). The final confidence
+is never higher than the base, and never higher than 0.95 (no
+assertion is certain).

@@ -684,3 +684,53 @@ by any reviewer before accepting a claim. This is the same trade-off
 the project already makes for CONSTITUTION.md Law 8: the rule is
 stated, the discipline is enforced socially, the violation is
 recorded in `FAILURES.md` when it occurs.
+
+---
+
+## BP-1 refinement discipline (added post-BP-0, per CEO directive)
+
+> No new layers. Everything from this point onward is refinement,
+> evidence, completeness, simulation, and execution.
+> — CEO directive, BP-1
+
+The Phase 15-17 architecture (classification → instruments →
+blueprint engines) is COMPLETE. BP-1 does not add new abstraction
+layers. It REFINES the existing architecture with:
+
+1. **Evidence** — every assertion traceable (EP-13)
+2. **Assumptions** — explicit, with falsifiers (EP-14)
+3. **Unknowns** — what the system doesn't know (EP-15)
+4. **Alternatives** — never a single path
+5. **Constraint graph** — DAG, not list
+6. **Confidence propagation** — no false certainty (EP-16)
+7. **Versioning** — immutable blueprint artifacts
+8. **Simulation** — stress test before claiming feasible
+9. **Engineering completeness** — close all gaps (wiring, firmware, etc.)
+10. **Explainability** — every recommendation answers why
+11. **UX** — builder's interface, not engineer's
+
+The knowledge pyramid (Rule 8) requires the system to LEARN
+from reality before creating reality:
+
+```text
+MARKET_INTELLIGENCE_ENGINE  → study existing products
+PATENT_ENGINE               → study patents (expired + active)
+FAILURE_ENGINE              → study failures (recalls, bankruptcies)
+RESEARCH_ENGINE             → study academic literature
+SUPPLY_CHAIN_ENGINE         → study suppliers, costs, lead times
+REGULATORY_ENGINE           → study standards, certifications
+SIMULATION_ENGINE           → stress test the design
+EVIDENCE_ENGINE             → rank and weight all assertions
+```
+
+The FAILURE_ENGINE is the most important. Every product accumulates
+a "negative knowledge graph": what has failed, why, and what to
+avoid. A blueprint that ignores failures is a hallucination.
+
+### Anti-entropy rule for BP-1
+
+The compression test (COMPRESSION_TEST.md) applies: complexity
+must grow slower than explanatory power. BP-1 adds 8 engines, but
+each engine must justify its existence by producing evidence
+that improves blueprint quality. An engine that produces no
+evidence is complexity without value and must be removed.
