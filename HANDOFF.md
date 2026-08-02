@@ -1,4 +1,4 @@
-# TEE MASTER HANDOFF (v2.9 — Phase 5.C parser expansion, 4th snapshot captured, second hypothesis rejection)
+# TEE MASTER HANDOFF (v3.0 — Phase 5.D normalization gap measured, parser frozen, system saturated)
 
 ## PRE-CODING READ LIST (MANDATORY)
 
@@ -22,10 +22,15 @@ files in order:
    the prerequisite chain (snapshot_1 -> ingestion -> snapshot_2 ->
    delta -> temporal signal -> validation -> implementation)
    executes.
+8. `NORMALIZATION_GAP.md` — Phase 5.D normalization gap measurement.
+   Read BEFORE any future parser or ingestion work. Documents the 4
+   failed bridges and the saturation point (d(shared)/d(total) = 0.00
+   for 2 consecutive cycles). Per the CEO's most important instruction:
+   this is a measurement, NOT authorization for semantic matching.
 
 This read list is enforced structurally by `scripts/remember_governance.py`,
 which is wired as a pre-commit hook via `.pre-commit-config.yaml`. If
-any of these 7 files is missing, the commit is blocked.
+any of these 8 files is missing, the commit is blocked.
 
 Skipping this read list will reproduce a bug that has already been
 fixed. F-005 is the canonical example.
@@ -428,6 +433,102 @@ structural bottleneck (P8). Implementation still FORBIDDEN. The
 single most important next action: target sources that use the SAME
 component vocabulary as existing graph nodes, OR wait for the 2028
 validation dates.
+
+## PHASE 5.D — NORMALIZATION GAP MEASUREMENT (parser frozen, system saturated)
+
+Per the CEO's directive (post-Phase 5.C audit):
+
+> The bottleneck is no longer ingestion. Now the bottleneck is:
+> insufficient normalization.
+>
+> Do not solve these problems yet. Measure them.
+>
+> Do not interpret this as permission to build semantic matching.
+> The evidence currently supports only this statement:
+>   Exact-label matching is the limiting factor.
+> It does not support the statement:
+>   Semantic matching is the correct solution.
+
+Phase 5.D is a **measurement-only** cycle. No parser changes. No
+formula changes. No semantic matching. Four tasks executed:
+
+### Task 1 — Parser frozen
+
+No modifications to PatentParser or PaperParser. The keyword lists
+are frozen at their Phase 5.C state. No heuristics, no stemming, no
+embeddings, no synonym engines.
+
+### Task 2 — NORMALIZATION_GAP.md created
+
+Documents every failed bridge between semantically-related component
+labels. 4 failed bridges identified:
+
+| # | Source A | Source B | Why |
+|---|---|---|---|
+| 1 | metal-organic framework | MOF / MOFs | abbreviation (MOF excluded from keyword list for false-positive risk) |
+| 2 | sorbent | adsorbent | terminology drift (near-synonyms in AWH/DAC literature) |
+| 3 | electrode | anode / cathode | hypernym/subtype (anode + cathode are subtypes of electrode) |
+| 4 | battery | "an all-solid-state battery laminate..." | compound vs simple (different extraction pathways in same patent) |
+
+Plus 4 expected-but-not-yet-observed bridges (pluralization gaps:
+battery/batteries, electrode/electrodes, membrane/membranes,
+metamaterial/metamaterials).
+
+### Task 3 — bridgeable_shared_components metric computed
+
+| Metric | Count |
+|---|---:|
+| Total distinct component labels | 140 |
+| **Exact matches** (labels shared by 2+ sources) | **10** |
+| **Potential matches** (normalization gaps) | **4** |
+| **Unmatched labels** (no bridge, no potential) | **126** |
+
+The 10 exact matches are the current signal ceiling. The 4 potential
+matches represent signal that COULD be recovered IF normalization
+rules were applied — but the CEO has NOT authorized applying them.
+
+### Task 4 — Saturation analysis
+
+| Snapshot | Graph v | Nodes | Shared | Total | Score | d(shared) | d(total) | **d(shared)/d(total)** |
+|---|---|---:|---:|---:|---:|---:|---:|---:|
+| snapshot_1 | 3.1 | 632 | 0 | 0 | 1.2000 | — | — | — |
+| snapshot_2 | 4.0 | 651 | 1 | 4 | 1.2500 | +1 | +4 | **+0.2500** |
+| snapshot_3 | 4.1 | 661 | 1 | 7 | 1.2286 | +0 | +3 | **+0.0000** |
+| snapshot_4 | 4.2 | 669 | 1 | 11 | 1.2182 | +0 | +4 | **+0.0000** |
+
+**The derivative has been 0.00 for two consecutive cycles.** The
+system has saturated. The bottleneck shifted from "insufficient
+data" (Phase 5.A) to "insufficient normalization" (Phase 5.D).
+
+### What this proves
+
+1. **Exact-label matching is the limiting factor.** The 4 potential
+   matches and the pluralization gaps are concrete examples.
+2. **The system has saturated.** d(shared)/d(total) = 0.00 for two
+   consecutive cycles. Further ingestion without normalization will
+   continue to produce 0.00 derivatives.
+3. **The 10 exact matches are the current signal ceiling.**
+
+### What this does NOT prove (per CEO's most important instruction)
+
+1. It does NOT prove semantic matching is the correct solution.
+2. It does NOT authorize any parser or formula change.
+3. It does NOT authorize building synonym engines or embeddings.
+
+### Phase 5.D deliverables
+
+- `NORMALIZATION_GAP.md` (new, 7 sections, grounded in real measurements)
+- `scripts/measure_normalization_gap.py` (one-off, NOT a module, NOT a parser change)
+- `FAILURES.md`: F-039 (saturation identified, d(shared)/d(total)=0.00)
+- `INVENTION_COMPILER.md`: Phase 5 line reflects 5.D measurement
+- `HANDOFF.md`: v2.9 → v3.0, Phase 5.D narrative + 8-file read list
+- `scripts/remember_governance.py`: NORMALIZATION_GAP.md added as 8th mandatory read
+
+**Phase 5.D implementation status:** COMPLETE. Measurement-only. No
+parser change. No formula change. No semantic matching. The parser
+is FROZEN. The system has saturated. The next authorized action
+requires a new CEO directive — current evidence supports measuring
+the gap (done), not solving it.
 
 ## SESSION-HARDENED PRINCIPLES (v1.0)
 
