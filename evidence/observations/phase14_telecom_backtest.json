@@ -1,0 +1,1905 @@
+{
+  "phase": "14A telecom backtest",
+  "formula": "score = max(dTRL/dt) \u00d7 adjacency (FROZEN, no modifications)",
+  "timeline": [
+    1980,
+    1985,
+    1990,
+    1995,
+    2000,
+    2005,
+    2010,
+    2015,
+    2020,
+    2025
+  ],
+  "horizon": 5,
+  "capabilities": [
+    "WIRELESS_PROTOCOL",
+    "SPECTRUM_UTILIZATION",
+    "PACKET_SWITCHING",
+    "SMART_DEVICE_INTEGRATION",
+    "NETWORK_VIRTUALIZATION",
+    "RADIO_TRANSMISSION",
+    "ANTENNA_HARDWARE",
+    "INFRASTRUCTURE_DEPLOYMENT"
+  ],
+  "events": [
+    {
+      "year": 1995,
+      "combination": [
+        "WIRELESS_PROTOCOL",
+        "RADIO_TRANSMISSION"
+      ],
+      "event": "IS-95 CDMA",
+      "group": "A"
+    },
+    {
+      "year": 2003,
+      "combination": [
+        "WIRELESS_PROTOCOL",
+        "PACKET_SWITCHING"
+      ],
+      "event": "CDMA2000 EV-DO",
+      "group": "A"
+    },
+    {
+      "year": 2010,
+      "combination": [
+        "SMART_DEVICE_INTEGRATION",
+        "WIRELESS_PROTOCOL"
+      ],
+      "event": "Samsung Galaxy S",
+      "group": "A"
+    },
+    {
+      "year": 2014,
+      "combination": [
+        "WIRELESS_PROTOCOL",
+        "PACKET_SWITCHING"
+      ],
+      "event": "LTE Advanced",
+      "group": "A"
+    },
+    {
+      "year": 2017,
+      "combination": [
+        "WIRELESS_PROTOCOL",
+        "SPECTRUM_UTILIZATION"
+      ],
+      "event": "Gigabit LTE",
+      "group": "A"
+    },
+    {
+      "year": 2022,
+      "combination": [
+        "WIRELESS_PROTOCOL",
+        "NETWORK_VIRTUALIZATION"
+      ],
+      "event": "5G Standalone",
+      "group": "A"
+    },
+    {
+      "year": 2023,
+      "combination": [
+        "WIRELESS_PROTOCOL",
+        "SPECTRUM_UTILIZATION"
+      ],
+      "event": "5G Advanced",
+      "group": "A"
+    },
+    {
+      "year": 1983,
+      "combination": [
+        "WIRELESS_PROTOCOL",
+        "RADIO_TRANSMISSION",
+        "INFRASTRUCTURE_DEPLOYMENT"
+      ],
+      "event": "AMPS 1G",
+      "group": "B"
+    },
+    {
+      "year": 1991,
+      "combination": [
+        "WIRELESS_PROTOCOL",
+        "RADIO_TRANSMISSION"
+      ],
+      "event": "GSM 2G",
+      "group": "B"
+    },
+    {
+      "year": 2001,
+      "combination": [
+        "WIRELESS_PROTOCOL",
+        "PACKET_SWITCHING"
+      ],
+      "event": "WCDMA 3G",
+      "group": "B"
+    },
+    {
+      "year": 2007,
+      "combination": [
+        "SMART_DEVICE_INTEGRATION",
+        "WIRELESS_PROTOCOL"
+      ],
+      "event": "iPhone",
+      "group": "B"
+    },
+    {
+      "year": 2009,
+      "combination": [
+        "WIRELESS_PROTOCOL",
+        "PACKET_SWITCHING",
+        "SMART_DEVICE_INTEGRATION"
+      ],
+      "event": "LTE 4G",
+      "group": "B"
+    },
+    {
+      "year": 2016,
+      "combination": [
+        "SMART_DEVICE_INTEGRATION",
+        "WIRELESS_PROTOCOL"
+      ],
+      "event": "NB-IoT",
+      "group": "B"
+    },
+    {
+      "year": 2019,
+      "combination": [
+        "WIRELESS_PROTOCOL",
+        "SPECTRUM_UTILIZATION",
+        "NETWORK_VIRTUALIZATION"
+      ],
+      "event": "5G NR sub-6",
+      "group": "B"
+    },
+    {
+      "year": 2020,
+      "combination": [
+        "SPECTRUM_UTILIZATION",
+        "WIRELESS_PROTOCOL"
+      ],
+      "event": "5G mmWave",
+      "group": "B"
+    }
+  ],
+  "frozen_formula": {
+    "total_tp": 0,
+    "total_fp": 100,
+    "total_actual": 11,
+    "precision": 0.0,
+    "recall": 0.0,
+    "per_T": [
+      {
+        "T": 1980,
+        "candidates": 91,
+        "actuals": 1,
+        "tp": 0,
+        "fp": 10,
+        "precision": 0.0,
+        "recall": 0.0,
+        "ranked_top10": [
+          [
+            [
+              "ANTENNA_HARDWARE",
+              "WIRELESS_PROTOCOL"
+            ],
+            0.2
+          ],
+          [
+            [
+              "INFRASTRUCTURE_DEPLOYMENT",
+              "WIRELESS_PROTOCOL"
+            ],
+            0.2
+          ],
+          [
+            [
+              "PACKET_SWITCHING",
+              "WIRELESS_PROTOCOL"
+            ],
+            0.2
+          ],
+          [
+            [
+              "RADIO_TRANSMISSION",
+              "WIRELESS_PROTOCOL"
+            ],
+            0.2
+          ],
+          [
+            [
+              "SMART_DEVICE_INTEGRATION",
+              "WIRELESS_PROTOCOL"
+            ],
+            0.2
+          ],
+          [
+            [
+              "SPECTRUM_UTILIZATION",
+              "WIRELESS_PROTOCOL"
+            ],
+            0.2
+          ],
+          [
+            [
+              "ANTENNA_HARDWARE",
+              "INFRASTRUCTURE_DEPLOYMENT",
+              "WIRELESS_PROTOCOL"
+            ],
+            0.2
+          ],
+          [
+            [
+              "ANTENNA_HARDWARE",
+              "PACKET_SWITCHING",
+              "WIRELESS_PROTOCOL"
+            ],
+            0.2
+          ],
+          [
+            [
+              "ANTENNA_HARDWARE",
+              "RADIO_TRANSMISSION",
+              "WIRELESS_PROTOCOL"
+            ],
+            0.2
+          ],
+          [
+            [
+              "ANTENNA_HARDWARE",
+              "SMART_DEVICE_INTEGRATION",
+              "WIRELESS_PROTOCOL"
+            ],
+            0.2
+          ]
+        ],
+        "actual_events": [
+          [
+            "INFRASTRUCTURE_DEPLOYMENT",
+            "RADIO_TRANSMISSION",
+            "WIRELESS_PROTOCOL"
+          ]
+        ]
+      },
+      {
+        "T": 1985,
+        "candidates": 91,
+        "actuals": 0,
+        "tp": 0,
+        "fp": 10,
+        "precision": 0.0,
+        "recall": 0.0,
+        "ranked_top10": [
+          [
+            [
+              "INFRASTRUCTURE_DEPLOYMENT",
+              "WIRELESS_PROTOCOL"
+            ],
+            0.2
+          ],
+          [
+            [
+              "RADIO_TRANSMISSION",
+              "WIRELESS_PROTOCOL"
+            ],
+            0.2
+          ],
+          [
+            [
+              "ANTENNA_HARDWARE",
+              "INFRASTRUCTURE_DEPLOYMENT",
+              "RADIO_TRANSMISSION",
+              "WIRELESS_PROTOCOL"
+            ],
+            0.2
+          ],
+          [
+            [
+              "INFRASTRUCTURE_DEPLOYMENT",
+              "PACKET_SWITCHING",
+              "RADIO_TRANSMISSION",
+              "WIRELESS_PROTOCOL"
+            ],
+            0.2
+          ],
+          [
+            [
+              "INFRASTRUCTURE_DEPLOYMENT",
+              "RADIO_TRANSMISSION",
+              "SMART_DEVICE_INTEGRATION",
+              "WIRELESS_PROTOCOL"
+            ],
+            0.2
+          ],
+          [
+            [
+              "INFRASTRUCTURE_DEPLOYMENT",
+              "RADIO_TRANSMISSION",
+              "SPECTRUM_UTILIZATION",
+              "WIRELESS_PROTOCOL"
+            ],
+            0.2
+          ],
+          [
+            [
+              "ANTENNA_HARDWARE",
+              "INFRASTRUCTURE_DEPLOYMENT",
+              "WIRELESS_PROTOCOL"
+            ],
+            0.133333
+          ],
+          [
+            [
+              "ANTENNA_HARDWARE",
+              "RADIO_TRANSMISSION",
+              "WIRELESS_PROTOCOL"
+            ],
+            0.133333
+          ],
+          [
+            [
+              "INFRASTRUCTURE_DEPLOYMENT",
+              "PACKET_SWITCHING",
+              "WIRELESS_PROTOCOL"
+            ],
+            0.133333
+          ],
+          [
+            [
+              "INFRASTRUCTURE_DEPLOYMENT",
+              "SMART_DEVICE_INTEGRATION",
+              "WIRELESS_PROTOCOL"
+            ],
+            0.133333
+          ]
+        ],
+        "actual_events": []
+      },
+      {
+        "T": 1990,
+        "candidates": 91,
+        "actuals": 1,
+        "tp": 0,
+        "fp": 10,
+        "precision": 0.0,
+        "recall": 0.0,
+        "ranked_top10": [
+          [
+            [
+              "INFRASTRUCTURE_DEPLOYMENT",
+              "PACKET_SWITCHING",
+              "RADIO_TRANSMISSION",
+              "WIRELESS_PROTOCOL"
+            ],
+            0.1
+          ],
+          [
+            [
+              "INFRASTRUCTURE_DEPLOYMENT",
+              "PACKET_SWITCHING",
+              "RADIO_TRANSMISSION"
+            ],
+            0.066667
+          ],
+          [
+            [
+              "INFRASTRUCTURE_DEPLOYMENT",
+              "PACKET_SWITCHING",
+              "WIRELESS_PROTOCOL"
+            ],
+            0.066667
+          ],
+          [
+            [
+              "PACKET_SWITCHING",
+              "RADIO_TRANSMISSION",
+              "WIRELESS_PROTOCOL"
+            ],
+            0.066667
+          ],
+          [
+            [
+              "INFRASTRUCTURE_DEPLOYMENT",
+              "PACKET_SWITCHING"
+            ],
+            0.05
+          ],
+          [
+            [
+              "PACKET_SWITCHING",
+              "RADIO_TRANSMISSION"
+            ],
+            0.05
+          ],
+          [
+            [
+              "PACKET_SWITCHING",
+              "WIRELESS_PROTOCOL"
+            ],
+            0.05
+          ],
+          [
+            [
+              "ANTENNA_HARDWARE",
+              "INFRASTRUCTURE_DEPLOYMENT",
+              "PACKET_SWITCHING",
+              "RADIO_TRANSMISSION"
+            ],
+            0.05
+          ],
+          [
+            [
+              "ANTENNA_HARDWARE",
+              "INFRASTRUCTURE_DEPLOYMENT",
+              "PACKET_SWITCHING",
+              "WIRELESS_PROTOCOL"
+            ],
+            0.05
+          ],
+          [
+            [
+              "ANTENNA_HARDWARE",
+              "PACKET_SWITCHING",
+              "RADIO_TRANSMISSION",
+              "WIRELESS_PROTOCOL"
+            ],
+            0.05
+          ]
+        ],
+        "actual_events": [
+          [
+            "RADIO_TRANSMISSION",
+            "WIRELESS_PROTOCOL"
+          ]
+        ]
+      },
+      {
+        "T": 1995,
+        "candidates": 91,
+        "actuals": 0,
+        "tp": 0,
+        "fp": 10,
+        "precision": 0.0,
+        "recall": 0.0,
+        "ranked_top10": [
+          [
+            [
+              "PACKET_SWITCHING",
+              "RADIO_TRANSMISSION",
+              "WIRELESS_PROTOCOL"
+            ],
+            0.1
+          ],
+          [
+            [
+              "INFRASTRUCTURE_DEPLOYMENT",
+              "PACKET_SWITCHING",
+              "RADIO_TRANSMISSION",
+              "WIRELESS_PROTOCOL"
+            ],
+            0.1
+          ],
+          [
+            [
+              "PACKET_SWITCHING",
+              "RADIO_TRANSMISSION"
+            ],
+            0.066667
+          ],
+          [
+            [
+              "PACKET_SWITCHING",
+              "WIRELESS_PROTOCOL"
+            ],
+            0.066667
+          ],
+          [
+            [
+              "INFRASTRUCTURE_DEPLOYMENT",
+              "PACKET_SWITCHING",
+              "RADIO_TRANSMISSION"
+            ],
+            0.066667
+          ],
+          [
+            [
+              "INFRASTRUCTURE_DEPLOYMENT",
+              "PACKET_SWITCHING",
+              "WIRELESS_PROTOCOL"
+            ],
+            0.066667
+          ],
+          [
+            [
+              "ANTENNA_HARDWARE",
+              "PACKET_SWITCHING",
+              "RADIO_TRANSMISSION",
+              "WIRELESS_PROTOCOL"
+            ],
+            0.066667
+          ],
+          [
+            [
+              "PACKET_SWITCHING",
+              "RADIO_TRANSMISSION",
+              "SMART_DEVICE_INTEGRATION",
+              "WIRELESS_PROTOCOL"
+            ],
+            0.066667
+          ],
+          [
+            [
+              "PACKET_SWITCHING",
+              "RADIO_TRANSMISSION",
+              "SPECTRUM_UTILIZATION",
+              "WIRELESS_PROTOCOL"
+            ],
+            0.066667
+          ],
+          [
+            [
+              "INFRASTRUCTURE_DEPLOYMENT",
+              "PACKET_SWITCHING"
+            ],
+            0.05
+          ]
+        ],
+        "actual_events": []
+      },
+      {
+        "T": 2000,
+        "candidates": 91,
+        "actuals": 1,
+        "tp": 0,
+        "fp": 10,
+        "precision": 0.0,
+        "recall": 0.0,
+        "ranked_top10": [
+          [
+            [
+              "ANTENNA_HARDWARE",
+              "INFRASTRUCTURE_DEPLOYMENT"
+            ],
+            0.0
+          ],
+          [
+            [
+              "ANTENNA_HARDWARE",
+              "PACKET_SWITCHING"
+            ],
+            0.0
+          ],
+          [
+            [
+              "ANTENNA_HARDWARE",
+              "RADIO_TRANSMISSION"
+            ],
+            0.0
+          ],
+          [
+            [
+              "ANTENNA_HARDWARE",
+              "SMART_DEVICE_INTEGRATION"
+            ],
+            0.0
+          ],
+          [
+            [
+              "ANTENNA_HARDWARE",
+              "SPECTRUM_UTILIZATION"
+            ],
+            0.0
+          ],
+          [
+            [
+              "ANTENNA_HARDWARE",
+              "WIRELESS_PROTOCOL"
+            ],
+            0.0
+          ],
+          [
+            [
+              "INFRASTRUCTURE_DEPLOYMENT",
+              "PACKET_SWITCHING"
+            ],
+            0.0
+          ],
+          [
+            [
+              "INFRASTRUCTURE_DEPLOYMENT",
+              "RADIO_TRANSMISSION"
+            ],
+            0.0
+          ],
+          [
+            [
+              "INFRASTRUCTURE_DEPLOYMENT",
+              "SMART_DEVICE_INTEGRATION"
+            ],
+            0.0
+          ],
+          [
+            [
+              "INFRASTRUCTURE_DEPLOYMENT",
+              "SPECTRUM_UTILIZATION"
+            ],
+            0.0
+          ]
+        ],
+        "actual_events": [
+          [
+            "PACKET_SWITCHING",
+            "WIRELESS_PROTOCOL"
+          ]
+        ]
+      },
+      {
+        "T": 2005,
+        "candidates": 91,
+        "actuals": 2,
+        "tp": 0,
+        "fp": 10,
+        "precision": 0.0,
+        "recall": 0.0,
+        "ranked_top10": [
+          [
+            [
+              "ANTENNA_HARDWARE",
+              "INFRASTRUCTURE_DEPLOYMENT"
+            ],
+            0.0
+          ],
+          [
+            [
+              "ANTENNA_HARDWARE",
+              "PACKET_SWITCHING"
+            ],
+            0.0
+          ],
+          [
+            [
+              "ANTENNA_HARDWARE",
+              "RADIO_TRANSMISSION"
+            ],
+            0.0
+          ],
+          [
+            [
+              "ANTENNA_HARDWARE",
+              "SMART_DEVICE_INTEGRATION"
+            ],
+            0.0
+          ],
+          [
+            [
+              "ANTENNA_HARDWARE",
+              "SPECTRUM_UTILIZATION"
+            ],
+            0.0
+          ],
+          [
+            [
+              "ANTENNA_HARDWARE",
+              "WIRELESS_PROTOCOL"
+            ],
+            0.0
+          ],
+          [
+            [
+              "INFRASTRUCTURE_DEPLOYMENT",
+              "PACKET_SWITCHING"
+            ],
+            0.0
+          ],
+          [
+            [
+              "INFRASTRUCTURE_DEPLOYMENT",
+              "RADIO_TRANSMISSION"
+            ],
+            0.0
+          ],
+          [
+            [
+              "INFRASTRUCTURE_DEPLOYMENT",
+              "SMART_DEVICE_INTEGRATION"
+            ],
+            0.0
+          ],
+          [
+            [
+              "INFRASTRUCTURE_DEPLOYMENT",
+              "SPECTRUM_UTILIZATION"
+            ],
+            0.0
+          ]
+        ],
+        "actual_events": [
+          [
+            "SMART_DEVICE_INTEGRATION",
+            "WIRELESS_PROTOCOL"
+          ],
+          [
+            "PACKET_SWITCHING",
+            "SMART_DEVICE_INTEGRATION",
+            "WIRELESS_PROTOCOL"
+          ]
+        ]
+      },
+      {
+        "T": 2010,
+        "candidates": 154,
+        "actuals": 1,
+        "tp": 0,
+        "fp": 10,
+        "precision": 0.0,
+        "recall": 0.0,
+        "ranked_top10": [
+          [
+            [
+              "PACKET_SWITCHING",
+              "SMART_DEVICE_INTEGRATION"
+            ],
+            0.2
+          ],
+          [
+            [
+              "ANTENNA_HARDWARE",
+              "SMART_DEVICE_INTEGRATION",
+              "WIRELESS_PROTOCOL"
+            ],
+            0.2
+          ],
+          [
+            [
+              "INFRASTRUCTURE_DEPLOYMENT",
+              "SMART_DEVICE_INTEGRATION",
+              "WIRELESS_PROTOCOL"
+            ],
+            0.2
+          ],
+          [
+            [
+              "NETWORK_VIRTUALIZATION",
+              "SMART_DEVICE_INTEGRATION",
+              "WIRELESS_PROTOCOL"
+            ],
+            0.2
+          ],
+          [
+            [
+              "RADIO_TRANSMISSION",
+              "SMART_DEVICE_INTEGRATION",
+              "WIRELESS_PROTOCOL"
+            ],
+            0.2
+          ],
+          [
+            [
+              "SMART_DEVICE_INTEGRATION",
+              "SPECTRUM_UTILIZATION",
+              "WIRELESS_PROTOCOL"
+            ],
+            0.2
+          ],
+          [
+            [
+              "ANTENNA_HARDWARE",
+              "PACKET_SWITCHING",
+              "SMART_DEVICE_INTEGRATION",
+              "WIRELESS_PROTOCOL"
+            ],
+            0.2
+          ],
+          [
+            [
+              "INFRASTRUCTURE_DEPLOYMENT",
+              "PACKET_SWITCHING",
+              "SMART_DEVICE_INTEGRATION",
+              "WIRELESS_PROTOCOL"
+            ],
+            0.2
+          ],
+          [
+            [
+              "INFRASTRUCTURE_DEPLOYMENT",
+              "RADIO_TRANSMISSION",
+              "SMART_DEVICE_INTEGRATION",
+              "WIRELESS_PROTOCOL"
+            ],
+            0.2
+          ],
+          [
+            [
+              "NETWORK_VIRTUALIZATION",
+              "PACKET_SWITCHING",
+              "SMART_DEVICE_INTEGRATION",
+              "WIRELESS_PROTOCOL"
+            ],
+            0.2
+          ]
+        ],
+        "actual_events": [
+          [
+            "PACKET_SWITCHING",
+            "WIRELESS_PROTOCOL"
+          ]
+        ]
+      },
+      {
+        "T": 2015,
+        "candidates": 154,
+        "actuals": 3,
+        "tp": 0,
+        "fp": 10,
+        "precision": 0.0,
+        "recall": 0.0,
+        "ranked_top10": [
+          [
+            [
+              "NETWORK_VIRTUALIZATION",
+              "PACKET_SWITCHING",
+              "WIRELESS_PROTOCOL"
+            ],
+            0.05
+          ],
+          [
+            [
+              "NETWORK_VIRTUALIZATION",
+              "RADIO_TRANSMISSION",
+              "WIRELESS_PROTOCOL"
+            ],
+            0.05
+          ],
+          [
+            [
+              "NETWORK_VIRTUALIZATION",
+              "SMART_DEVICE_INTEGRATION",
+              "WIRELESS_PROTOCOL"
+            ],
+            0.05
+          ],
+          [
+            [
+              "INFRASTRUCTURE_DEPLOYMENT",
+              "NETWORK_VIRTUALIZATION",
+              "RADIO_TRANSMISSION",
+              "WIRELESS_PROTOCOL"
+            ],
+            0.05
+          ],
+          [
+            [
+              "NETWORK_VIRTUALIZATION",
+              "PACKET_SWITCHING",
+              "SMART_DEVICE_INTEGRATION",
+              "WIRELESS_PROTOCOL"
+            ],
+            0.05
+          ],
+          [
+            [
+              "NETWORK_VIRTUALIZATION",
+              "PACKET_SWITCHING"
+            ],
+            0.033333
+          ],
+          [
+            [
+              "NETWORK_VIRTUALIZATION",
+              "RADIO_TRANSMISSION"
+            ],
+            0.033333
+          ],
+          [
+            [
+              "NETWORK_VIRTUALIZATION",
+              "SMART_DEVICE_INTEGRATION"
+            ],
+            0.033333
+          ],
+          [
+            [
+              "NETWORK_VIRTUALIZATION",
+              "WIRELESS_PROTOCOL"
+            ],
+            0.033333
+          ],
+          [
+            [
+              "INFRASTRUCTURE_DEPLOYMENT",
+              "NETWORK_VIRTUALIZATION",
+              "RADIO_TRANSMISSION"
+            ],
+            0.033333
+          ]
+        ],
+        "actual_events": [
+          [
+            "SMART_DEVICE_INTEGRATION",
+            "WIRELESS_PROTOCOL"
+          ],
+          [
+            "SPECTRUM_UTILIZATION",
+            "WIRELESS_PROTOCOL"
+          ],
+          [
+            "NETWORK_VIRTUALIZATION",
+            "SPECTRUM_UTILIZATION",
+            "WIRELESS_PROTOCOL"
+          ]
+        ]
+      },
+      {
+        "T": 2020,
+        "candidates": 154,
+        "actuals": 2,
+        "tp": 0,
+        "fp": 10,
+        "precision": 0.0,
+        "recall": 0.0,
+        "ranked_top10": [
+          [
+            [
+              "NETWORK_VIRTUALIZATION",
+              "SPECTRUM_UTILIZATION"
+            ],
+            0.2
+          ],
+          [
+            [
+              "PACKET_SWITCHING",
+              "SMART_DEVICE_INTEGRATION"
+            ],
+            0.2
+          ],
+          [
+            [
+              "ANTENNA_HARDWARE",
+              "SMART_DEVICE_INTEGRATION",
+              "WIRELESS_PROTOCOL"
+            ],
+            0.2
+          ],
+          [
+            [
+              "ANTENNA_HARDWARE",
+              "SPECTRUM_UTILIZATION",
+              "WIRELESS_PROTOCOL"
+            ],
+            0.2
+          ],
+          [
+            [
+              "INFRASTRUCTURE_DEPLOYMENT",
+              "SMART_DEVICE_INTEGRATION",
+              "WIRELESS_PROTOCOL"
+            ],
+            0.2
+          ],
+          [
+            [
+              "INFRASTRUCTURE_DEPLOYMENT",
+              "SPECTRUM_UTILIZATION",
+              "WIRELESS_PROTOCOL"
+            ],
+            0.2
+          ],
+          [
+            [
+              "NETWORK_VIRTUALIZATION",
+              "SMART_DEVICE_INTEGRATION",
+              "WIRELESS_PROTOCOL"
+            ],
+            0.2
+          ],
+          [
+            [
+              "PACKET_SWITCHING",
+              "SPECTRUM_UTILIZATION",
+              "WIRELESS_PROTOCOL"
+            ],
+            0.2
+          ],
+          [
+            [
+              "RADIO_TRANSMISSION",
+              "SMART_DEVICE_INTEGRATION",
+              "WIRELESS_PROTOCOL"
+            ],
+            0.2
+          ],
+          [
+            [
+              "RADIO_TRANSMISSION",
+              "SPECTRUM_UTILIZATION",
+              "WIRELESS_PROTOCOL"
+            ],
+            0.2
+          ]
+        ],
+        "actual_events": [
+          [
+            "SPECTRUM_UTILIZATION",
+            "WIRELESS_PROTOCOL"
+          ],
+          [
+            "NETWORK_VIRTUALIZATION",
+            "WIRELESS_PROTOCOL"
+          ]
+        ]
+      },
+      {
+        "T": 2025,
+        "candidates": 154,
+        "actuals": 0,
+        "tp": 0,
+        "fp": 10,
+        "precision": 0.0,
+        "recall": 0.0,
+        "ranked_top10": [
+          [
+            [
+              "NETWORK_VIRTUALIZATION",
+              "SPECTRUM_UTILIZATION"
+            ],
+            0.05
+          ],
+          [
+            [
+              "ANTENNA_HARDWARE",
+              "NETWORK_VIRTUALIZATION",
+              "WIRELESS_PROTOCOL"
+            ],
+            0.05
+          ],
+          [
+            [
+              "INFRASTRUCTURE_DEPLOYMENT",
+              "NETWORK_VIRTUALIZATION",
+              "WIRELESS_PROTOCOL"
+            ],
+            0.05
+          ],
+          [
+            [
+              "NETWORK_VIRTUALIZATION",
+              "PACKET_SWITCHING",
+              "WIRELESS_PROTOCOL"
+            ],
+            0.05
+          ],
+          [
+            [
+              "NETWORK_VIRTUALIZATION",
+              "RADIO_TRANSMISSION",
+              "WIRELESS_PROTOCOL"
+            ],
+            0.05
+          ],
+          [
+            [
+              "NETWORK_VIRTUALIZATION",
+              "SMART_DEVICE_INTEGRATION",
+              "WIRELESS_PROTOCOL"
+            ],
+            0.05
+          ],
+          [
+            [
+              "ANTENNA_HARDWARE",
+              "NETWORK_VIRTUALIZATION",
+              "SPECTRUM_UTILIZATION",
+              "WIRELESS_PROTOCOL"
+            ],
+            0.05
+          ],
+          [
+            [
+              "INFRASTRUCTURE_DEPLOYMENT",
+              "NETWORK_VIRTUALIZATION",
+              "RADIO_TRANSMISSION",
+              "WIRELESS_PROTOCOL"
+            ],
+            0.05
+          ],
+          [
+            [
+              "INFRASTRUCTURE_DEPLOYMENT",
+              "NETWORK_VIRTUALIZATION",
+              "SPECTRUM_UTILIZATION",
+              "WIRELESS_PROTOCOL"
+            ],
+            0.05
+          ],
+          [
+            [
+              "NETWORK_VIRTUALIZATION",
+              "PACKET_SWITCHING",
+              "SMART_DEVICE_INTEGRATION",
+              "WIRELESS_PROTOCOL"
+            ],
+            0.05
+          ]
+        ],
+        "actual_events": []
+      }
+    ]
+  },
+  "null_model": {
+    "total_tp": 2,
+    "total_fp": 98,
+    "precision": 0.02,
+    "recall": 0.181818,
+    "per_T": [
+      {
+        "T": 1980,
+        "tp": 1,
+        "fp": 9,
+        "precision": 0.1,
+        "recall": 1.0
+      },
+      {
+        "T": 1985,
+        "tp": 0,
+        "fp": 10,
+        "precision": 0.0,
+        "recall": 0.0
+      },
+      {
+        "T": 1990,
+        "tp": 0,
+        "fp": 10,
+        "precision": 0.0,
+        "recall": 0.0
+      },
+      {
+        "T": 1995,
+        "tp": 0,
+        "fp": 10,
+        "precision": 0.0,
+        "recall": 0.0
+      },
+      {
+        "T": 2000,
+        "tp": 0,
+        "fp": 10,
+        "precision": 0.0,
+        "recall": 0.0
+      },
+      {
+        "T": 2005,
+        "tp": 1,
+        "fp": 9,
+        "precision": 0.1,
+        "recall": 0.5
+      },
+      {
+        "T": 2010,
+        "tp": 0,
+        "fp": 10,
+        "precision": 0.0,
+        "recall": 0.0
+      },
+      {
+        "T": 2015,
+        "tp": 0,
+        "fp": 10,
+        "precision": 0.0,
+        "recall": 0.0
+      },
+      {
+        "T": 2020,
+        "tp": 0,
+        "fp": 10,
+        "precision": 0.0,
+        "recall": 0.0
+      },
+      {
+        "T": 2025,
+        "tp": 0,
+        "fp": 10,
+        "precision": 0.0,
+        "recall": 0.0
+      }
+    ]
+  },
+  "significance_tests": {
+    "mcnemar": {
+      "test": "mcnemar",
+      "label_a": "frozen_formula",
+      "label_b": "NULL_MODEL",
+      "b_discordant": 0,
+      "c_discordant": 2,
+      "n_discordant": 2,
+      "exact_p_two_sided": 0.5,
+      "interpretation": "Of 2 discordant TP pairs, 0 favored frozen_formula and 2 favored NULL_MODEL. Exact two-sided p = 0.5000. FAIL TO REJECT H0 (no significant difference)."
+    },
+    "paired_t": {
+      "test": "paired_t",
+      "label_a": "frozen_formula",
+      "label_b": "NULL_MODEL",
+      "n_pairs": 10,
+      "mean_diff": -0.02,
+      "se": 0.013333,
+      "t_statistic": -1.5,
+      "df": 9,
+      "p_normal_approx": 0.133614,
+      "per_T_diffs": [
+        -0.1,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -0.1,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    }
+  },
+  "destruction_test_d4": {
+    "description": "Invention without velocity",
+    "events_checked": 15,
+    "d4_triggered_count": 12,
+    "d4_triggered": [
+      {
+        "year": 1995,
+        "event": "IS-95 CDMA",
+        "combination": [
+          "WIRELESS_PROTOCOL",
+          "RADIO_TRANSMISSION"
+        ],
+        "group": "A",
+        "T_check": 1994,
+        "velocities_at_T": [
+          [
+            "WIRELESS_PROTOCOL",
+            0.0
+          ],
+          [
+            "RADIO_TRANSMISSION",
+            0.0
+          ]
+        ],
+        "max_velocity": 0.0,
+        "rising_capabilities": [],
+        "d4_triggered": true
+      },
+      {
+        "year": 2003,
+        "event": "CDMA2000 EV-DO",
+        "combination": [
+          "WIRELESS_PROTOCOL",
+          "PACKET_SWITCHING"
+        ],
+        "group": "A",
+        "T_check": 2002,
+        "velocities_at_T": [
+          [
+            "WIRELESS_PROTOCOL",
+            0.0
+          ],
+          [
+            "PACKET_SWITCHING",
+            0.0
+          ]
+        ],
+        "max_velocity": 0.0,
+        "rising_capabilities": [],
+        "d4_triggered": true
+      },
+      {
+        "year": 2010,
+        "event": "Samsung Galaxy S",
+        "combination": [
+          "SMART_DEVICE_INTEGRATION",
+          "WIRELESS_PROTOCOL"
+        ],
+        "group": "A",
+        "T_check": 2009,
+        "velocities_at_T": [
+          [
+            "SMART_DEVICE_INTEGRATION",
+            -0.8
+          ],
+          [
+            "WIRELESS_PROTOCOL",
+            0.0
+          ]
+        ],
+        "max_velocity": 0.0,
+        "rising_capabilities": [],
+        "d4_triggered": true
+      },
+      {
+        "year": 2014,
+        "event": "LTE Advanced",
+        "combination": [
+          "WIRELESS_PROTOCOL",
+          "PACKET_SWITCHING"
+        ],
+        "group": "A",
+        "T_check": 2013,
+        "velocities_at_T": [
+          [
+            "WIRELESS_PROTOCOL",
+            0.0
+          ],
+          [
+            "PACKET_SWITCHING",
+            0.0
+          ]
+        ],
+        "max_velocity": 0.0,
+        "rising_capabilities": [],
+        "d4_triggered": true
+      },
+      {
+        "year": 2017,
+        "event": "Gigabit LTE",
+        "combination": [
+          "WIRELESS_PROTOCOL",
+          "SPECTRUM_UTILIZATION"
+        ],
+        "group": "A",
+        "T_check": 2016,
+        "velocities_at_T": [
+          [
+            "WIRELESS_PROTOCOL",
+            0.0
+          ],
+          [
+            "SPECTRUM_UTILIZATION",
+            -0.8
+          ]
+        ],
+        "max_velocity": 0.0,
+        "rising_capabilities": [],
+        "d4_triggered": true
+      },
+      {
+        "year": 1991,
+        "event": "GSM 2G",
+        "combination": [
+          "WIRELESS_PROTOCOL",
+          "RADIO_TRANSMISSION"
+        ],
+        "group": "B",
+        "T_check": 1990,
+        "velocities_at_T": [
+          [
+            "WIRELESS_PROTOCOL",
+            0.0
+          ],
+          [
+            "RADIO_TRANSMISSION",
+            0.0
+          ]
+        ],
+        "max_velocity": 0.0,
+        "rising_capabilities": [],
+        "d4_triggered": true
+      },
+      {
+        "year": 2001,
+        "event": "WCDMA 3G",
+        "combination": [
+          "WIRELESS_PROTOCOL",
+          "PACKET_SWITCHING"
+        ],
+        "group": "B",
+        "T_check": 2000,
+        "velocities_at_T": [
+          [
+            "WIRELESS_PROTOCOL",
+            0.0
+          ],
+          [
+            "PACKET_SWITCHING",
+            0.0
+          ]
+        ],
+        "max_velocity": 0.0,
+        "rising_capabilities": [],
+        "d4_triggered": true
+      },
+      {
+        "year": 2007,
+        "event": "iPhone",
+        "combination": [
+          "SMART_DEVICE_INTEGRATION",
+          "WIRELESS_PROTOCOL"
+        ],
+        "group": "B",
+        "T_check": 2006,
+        "velocities_at_T": [
+          [
+            "SMART_DEVICE_INTEGRATION",
+            -0.8
+          ],
+          [
+            "WIRELESS_PROTOCOL",
+            0.0
+          ]
+        ],
+        "max_velocity": 0.0,
+        "rising_capabilities": [],
+        "d4_triggered": true
+      },
+      {
+        "year": 2009,
+        "event": "LTE 4G",
+        "combination": [
+          "WIRELESS_PROTOCOL",
+          "PACKET_SWITCHING",
+          "SMART_DEVICE_INTEGRATION"
+        ],
+        "group": "B",
+        "T_check": 2008,
+        "velocities_at_T": [
+          [
+            "WIRELESS_PROTOCOL",
+            0.0
+          ],
+          [
+            "PACKET_SWITCHING",
+            0.0
+          ],
+          [
+            "SMART_DEVICE_INTEGRATION",
+            -0.8
+          ]
+        ],
+        "max_velocity": 0.0,
+        "rising_capabilities": [],
+        "d4_triggered": true
+      },
+      {
+        "year": 2016,
+        "event": "NB-IoT",
+        "combination": [
+          "SMART_DEVICE_INTEGRATION",
+          "WIRELESS_PROTOCOL"
+        ],
+        "group": "B",
+        "T_check": 2015,
+        "velocities_at_T": [
+          [
+            "SMART_DEVICE_INTEGRATION",
+            -0.8
+          ],
+          [
+            "WIRELESS_PROTOCOL",
+            0.0
+          ]
+        ],
+        "max_velocity": 0.0,
+        "rising_capabilities": [],
+        "d4_triggered": true
+      },
+      {
+        "year": 2019,
+        "event": "5G NR sub-6",
+        "combination": [
+          "WIRELESS_PROTOCOL",
+          "SPECTRUM_UTILIZATION",
+          "NETWORK_VIRTUALIZATION"
+        ],
+        "group": "B",
+        "T_check": 2018,
+        "velocities_at_T": [
+          [
+            "WIRELESS_PROTOCOL",
+            0.0
+          ],
+          [
+            "SPECTRUM_UTILIZATION",
+            -0.8
+          ],
+          [
+            "NETWORK_VIRTUALIZATION",
+            0.2
+          ]
+        ],
+        "max_velocity": 0.2,
+        "rising_capabilities": [],
+        "d4_triggered": true
+      },
+      {
+        "year": 2020,
+        "event": "5G mmWave",
+        "combination": [
+          "SPECTRUM_UTILIZATION",
+          "WIRELESS_PROTOCOL"
+        ],
+        "group": "B",
+        "T_check": 2019,
+        "velocities_at_T": [
+          [
+            "SPECTRUM_UTILIZATION",
+            -0.8
+          ],
+          [
+            "WIRELESS_PROTOCOL",
+            0.0
+          ]
+        ],
+        "max_velocity": 0.0,
+        "rising_capabilities": [],
+        "d4_triggered": true
+      }
+    ],
+    "all_events": [
+      {
+        "year": 1995,
+        "event": "IS-95 CDMA",
+        "combination": [
+          "WIRELESS_PROTOCOL",
+          "RADIO_TRANSMISSION"
+        ],
+        "group": "A",
+        "T_check": 1994,
+        "velocities_at_T": [
+          [
+            "WIRELESS_PROTOCOL",
+            0.0
+          ],
+          [
+            "RADIO_TRANSMISSION",
+            0.0
+          ]
+        ],
+        "max_velocity": 0.0,
+        "rising_capabilities": [],
+        "d4_triggered": true
+      },
+      {
+        "year": 2003,
+        "event": "CDMA2000 EV-DO",
+        "combination": [
+          "WIRELESS_PROTOCOL",
+          "PACKET_SWITCHING"
+        ],
+        "group": "A",
+        "T_check": 2002,
+        "velocities_at_T": [
+          [
+            "WIRELESS_PROTOCOL",
+            0.0
+          ],
+          [
+            "PACKET_SWITCHING",
+            0.0
+          ]
+        ],
+        "max_velocity": 0.0,
+        "rising_capabilities": [],
+        "d4_triggered": true
+      },
+      {
+        "year": 2010,
+        "event": "Samsung Galaxy S",
+        "combination": [
+          "SMART_DEVICE_INTEGRATION",
+          "WIRELESS_PROTOCOL"
+        ],
+        "group": "A",
+        "T_check": 2009,
+        "velocities_at_T": [
+          [
+            "SMART_DEVICE_INTEGRATION",
+            -0.8
+          ],
+          [
+            "WIRELESS_PROTOCOL",
+            0.0
+          ]
+        ],
+        "max_velocity": 0.0,
+        "rising_capabilities": [],
+        "d4_triggered": true
+      },
+      {
+        "year": 2014,
+        "event": "LTE Advanced",
+        "combination": [
+          "WIRELESS_PROTOCOL",
+          "PACKET_SWITCHING"
+        ],
+        "group": "A",
+        "T_check": 2013,
+        "velocities_at_T": [
+          [
+            "WIRELESS_PROTOCOL",
+            0.0
+          ],
+          [
+            "PACKET_SWITCHING",
+            0.0
+          ]
+        ],
+        "max_velocity": 0.0,
+        "rising_capabilities": [],
+        "d4_triggered": true
+      },
+      {
+        "year": 2017,
+        "event": "Gigabit LTE",
+        "combination": [
+          "WIRELESS_PROTOCOL",
+          "SPECTRUM_UTILIZATION"
+        ],
+        "group": "A",
+        "T_check": 2016,
+        "velocities_at_T": [
+          [
+            "WIRELESS_PROTOCOL",
+            0.0
+          ],
+          [
+            "SPECTRUM_UTILIZATION",
+            -0.8
+          ]
+        ],
+        "max_velocity": 0.0,
+        "rising_capabilities": [],
+        "d4_triggered": true
+      },
+      {
+        "year": 2022,
+        "event": "5G Standalone",
+        "combination": [
+          "WIRELESS_PROTOCOL",
+          "NETWORK_VIRTUALIZATION"
+        ],
+        "group": "A",
+        "T_check": 2021,
+        "velocities_at_T": [
+          [
+            "WIRELESS_PROTOCOL",
+            0.0
+          ],
+          [
+            "NETWORK_VIRTUALIZATION",
+            0.4
+          ]
+        ],
+        "max_velocity": 0.4,
+        "rising_capabilities": [
+          "NETWORK_VIRTUALIZATION"
+        ],
+        "d4_triggered": false
+      },
+      {
+        "year": 2023,
+        "event": "5G Advanced",
+        "combination": [
+          "WIRELESS_PROTOCOL",
+          "SPECTRUM_UTILIZATION"
+        ],
+        "group": "A",
+        "T_check": 2022,
+        "velocities_at_T": [
+          [
+            "WIRELESS_PROTOCOL",
+            0.0
+          ],
+          [
+            "SPECTRUM_UTILIZATION",
+            0.8
+          ]
+        ],
+        "max_velocity": 0.8,
+        "rising_capabilities": [
+          "SPECTRUM_UTILIZATION"
+        ],
+        "d4_triggered": false
+      },
+      {
+        "year": 1983,
+        "event": "AMPS 1G",
+        "combination": [
+          "WIRELESS_PROTOCOL",
+          "RADIO_TRANSMISSION",
+          "INFRASTRUCTURE_DEPLOYMENT"
+        ],
+        "group": "B",
+        "T_check": 1982,
+        "velocities_at_T": [
+          [
+            "WIRELESS_PROTOCOL",
+            0.4
+          ],
+          [
+            "RADIO_TRANSMISSION",
+            0.0
+          ],
+          [
+            "INFRASTRUCTURE_DEPLOYMENT",
+            0.0
+          ]
+        ],
+        "max_velocity": 0.4,
+        "rising_capabilities": [
+          "WIRELESS_PROTOCOL"
+        ],
+        "d4_triggered": false
+      },
+      {
+        "year": 1991,
+        "event": "GSM 2G",
+        "combination": [
+          "WIRELESS_PROTOCOL",
+          "RADIO_TRANSMISSION"
+        ],
+        "group": "B",
+        "T_check": 1990,
+        "velocities_at_T": [
+          [
+            "WIRELESS_PROTOCOL",
+            0.0
+          ],
+          [
+            "RADIO_TRANSMISSION",
+            0.0
+          ]
+        ],
+        "max_velocity": 0.0,
+        "rising_capabilities": [],
+        "d4_triggered": true
+      },
+      {
+        "year": 2001,
+        "event": "WCDMA 3G",
+        "combination": [
+          "WIRELESS_PROTOCOL",
+          "PACKET_SWITCHING"
+        ],
+        "group": "B",
+        "T_check": 2000,
+        "velocities_at_T": [
+          [
+            "WIRELESS_PROTOCOL",
+            0.0
+          ],
+          [
+            "PACKET_SWITCHING",
+            0.0
+          ]
+        ],
+        "max_velocity": 0.0,
+        "rising_capabilities": [],
+        "d4_triggered": true
+      },
+      {
+        "year": 2007,
+        "event": "iPhone",
+        "combination": [
+          "SMART_DEVICE_INTEGRATION",
+          "WIRELESS_PROTOCOL"
+        ],
+        "group": "B",
+        "T_check": 2006,
+        "velocities_at_T": [
+          [
+            "SMART_DEVICE_INTEGRATION",
+            -0.8
+          ],
+          [
+            "WIRELESS_PROTOCOL",
+            0.0
+          ]
+        ],
+        "max_velocity": 0.0,
+        "rising_capabilities": [],
+        "d4_triggered": true
+      },
+      {
+        "year": 2009,
+        "event": "LTE 4G",
+        "combination": [
+          "WIRELESS_PROTOCOL",
+          "PACKET_SWITCHING",
+          "SMART_DEVICE_INTEGRATION"
+        ],
+        "group": "B",
+        "T_check": 2008,
+        "velocities_at_T": [
+          [
+            "WIRELESS_PROTOCOL",
+            0.0
+          ],
+          [
+            "PACKET_SWITCHING",
+            0.0
+          ],
+          [
+            "SMART_DEVICE_INTEGRATION",
+            -0.8
+          ]
+        ],
+        "max_velocity": 0.0,
+        "rising_capabilities": [],
+        "d4_triggered": true
+      },
+      {
+        "year": 2016,
+        "event": "NB-IoT",
+        "combination": [
+          "SMART_DEVICE_INTEGRATION",
+          "WIRELESS_PROTOCOL"
+        ],
+        "group": "B",
+        "T_check": 2015,
+        "velocities_at_T": [
+          [
+            "SMART_DEVICE_INTEGRATION",
+            -0.8
+          ],
+          [
+            "WIRELESS_PROTOCOL",
+            0.0
+          ]
+        ],
+        "max_velocity": 0.0,
+        "rising_capabilities": [],
+        "d4_triggered": true
+      },
+      {
+        "year": 2019,
+        "event": "5G NR sub-6",
+        "combination": [
+          "WIRELESS_PROTOCOL",
+          "SPECTRUM_UTILIZATION",
+          "NETWORK_VIRTUALIZATION"
+        ],
+        "group": "B",
+        "T_check": 2018,
+        "velocities_at_T": [
+          [
+            "WIRELESS_PROTOCOL",
+            0.0
+          ],
+          [
+            "SPECTRUM_UTILIZATION",
+            -0.8
+          ],
+          [
+            "NETWORK_VIRTUALIZATION",
+            0.2
+          ]
+        ],
+        "max_velocity": 0.2,
+        "rising_capabilities": [],
+        "d4_triggered": true
+      },
+      {
+        "year": 2020,
+        "event": "5G mmWave",
+        "combination": [
+          "SPECTRUM_UTILIZATION",
+          "WIRELESS_PROTOCOL"
+        ],
+        "group": "B",
+        "T_check": 2019,
+        "velocities_at_T": [
+          [
+            "SPECTRUM_UTILIZATION",
+            -0.8
+          ],
+          [
+            "WIRELESS_PROTOCOL",
+            0.0
+          ]
+        ],
+        "max_velocity": 0.0,
+        "rising_capabilities": [],
+        "d4_triggered": true
+      }
+    ],
+    "verdict": "FALSIFIED"
+  }
+}
