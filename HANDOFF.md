@@ -1,4 +1,4 @@
-# TEE MASTER HANDOFF (v11.1 — M3 ACHIEVED (3.57% > NULL 0.71%); M4 ACHIEVED (PV transfers at 3.33%); approaching M5)
+# TEE MASTER HANDOFF (v12.0 — Phase 12: falsification attempt — hidden variables, ablation, counterexamples, impossibility, compression)
 
 ## PRE-CODING READ LIST (MANDATORY)
 
