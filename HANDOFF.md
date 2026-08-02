@@ -1,4 +1,4 @@
-# TEE MASTER HANDOFF (v3.1 — NORMALIZATION_GAP.md demoted to evidence, classification exercise)
+# TEE MASTER HANDOFF (v3.2 — Phase 5.F comparative analysis of normalization approaches)
 
 ## PRE-CODING READ LIST (MANDATORY)
 
@@ -530,9 +530,48 @@ data" (Phase 5.A) to "insufficient normalization" (Phase 5.D).
 
 **Phase 5.D implementation status:** COMPLETE. Measurement-only. No
 parser change. No formula change. No semantic matching. The parser
-is FROZEN. The system has saturated. The next authorized action
+is FROZEN. The system has saturated under the current ingestion
+strategy and matching assumptions. The next authorized action
 requires a new CEO directive — current evidence supports measuring
 the gap (done), not solving it.
+
+## PHASE 5.E + 5.F — CLASSIFICATION + COMPARATIVE ANALYSIS
+
+Per the CEO's v3.1 and v3.2 directives: tighten the interpretation,
+demote NORMALIZATION_GAP.md from governance to evidence, perform a
+classification exercise, then a comparative analysis of candidate
+approaches. Do NOT build anything.
+
+**Phase 5.E (classification exercise):**
+- 140 component labels classified: 10 exact / 2 abbrev / 0 plural /
+  1 hypernym / 3 compound / 123 truly unique.
+- maximum_possible_bridges = 16 (10 realized + 6 potential).
+- signal_loss = 37.5% (6 potential / 16 total bridgeable).
+- Ceiling estimate: current 1.2182, perfect normalization 1.3273
+  (+0.1091), upper bound 1.4000 (+0.1818).
+- The bottleneck is large enough to justify investigating candidate
+  solutions (per CEO's softened framing — NOT "justify solving").
+
+**Phase 5.F (comparative analysis — see
+`evidence/observations/NORMALIZATION_APPROACHES.md`):**
+Three hypothetical approaches evaluated across 5 dimensions:
+
+| Approach | Complexity | Maintenance | Reproducibility | Expected gain | Constitutional risk |
+|---|---|---|---|---|---|
+| 1. Exact normalization rules | LOW | LOW | LOW | +0.0363 | LOW |
+| 2. Controlled ontology mapping | MEDIUM | MEDIUM | LOW-MEDIUM | +0.07 to +0.11 | MEDIUM |
+| 3. Semantic embeddings | HIGH | HIGH | HIGH (violates Law 7, 8) | speculative | HIGH (violates CEO warning) |
+
+Key finding: Approach 1 is lowest-risk (33% of perfect-normalization
+gain at LOW risk). Approach 2 is viable but requires governance
+process. Approach 3 is forbidden by the CEO's explicit "do not
+build semantic matching" instruction (Phase 5.D, still in force).
+
+**Phase 5.F implementation status:** COMPLETE. Decision document
+delivered. No code written. No parser changes. No formula changes.
+No governance changes. Awaiting CEO directive on whether to
+authorize investigating a specific approach further, or to accept
+the current saturation and wait for validation.
 
 ## SESSION-HARDENED PRINCIPLES (v1.0)
 
