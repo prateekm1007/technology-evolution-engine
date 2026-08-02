@@ -335,7 +335,7 @@ Phase 5 — Audience specialization: researchers, corporations, investors, gover
 **Observed:** cemetery_001 through cemetery_009 nodes in civilization_graph.json do not have `is_cemetery`, `lesson`, or `failed_because` fields. These fields exist only in the `GraphModel._from_core()` adapter's transformed node representation, not in the raw JSON.
 **Root cause:** the raw graph JSON was hand-seeded without these fields. The adapter adds them at runtime but they're not persisted.
 **Severity:** P2 — the Oracle's resurrection detection checks `n.get("is_cemetery")` which returns None (falsy), so no resurrections are ever detected. This is a pre-existing gap, not introduced by Phase 2.
-**Status:** OPEN — needs the Phase 2 migration script to also add `is_cemetery: true`, `lesson`, and `failed_because` to cemetery_entry nodes. Deferred to avoid scope creep in this commit.
+**Status:** RESOLVED in Maestro Loop Cycle 6 — see F-032 for the full resolution. The 9 cemetery_entry nodes now carry top-level `is_cemetery=true`, `lesson`, and `failed_because`. The GraphModel adapter classifies them as `type="cemetery"`, and the Oracle's resurrection check now fires when a cemetery node crosses the viability threshold (verified by the forced end-to-end test in `tests/test_f022_cemetery_fields.py`). Graph version bumped to 3.1.
 
 ---
 
@@ -352,7 +352,7 @@ Phase 5 — Audience specialization: researchers, corporations, investors, gover
 **Observed:** The Phase 2 migration populated every node with all 10 Law 2 constraint types at non-zero values. The minimum constraint value across all nodes is 0.1, never zero. This means the C2 fix's `sum(1 for v in c.values() if v and v > 0)` is still 10 for every node, so `binding_share = 1/10 = 0.1` uniformly. The Oracle's binding output is undifferentiated despite the code being correct.
 **Root cause:** Phase 2's constraint derivation (type priors + domain modifiers + edge complexity) never produces a zero value — every constraint gets at least the base prior (0.1-0.3) plus modifiers. No constraint is ever "not applicable" to a node.
 **Severity:** P2 — the Oracle runs without error but produces uniform binding_share. This is a data problem, not a code problem. The C2 code fix (F-021) is structurally correct; the symptom persists because the data has no signal.
-**Status:** OPEN — requires Phase 3 (real ingestion) to produce constraint values with real variation (some constraints genuinely absent for some nodes). The Phase 2 priors are a starting point, not a calibration.
+**Status:** PARTIALLY RESOLVED — Phase 3 Step 4 ingested 10 synthetic patent-format abstracts + 10 synthetic paper-format abstracts into the ACTUAL graph (commit `53320bc`, 55 new nodes with real provenance). The 12 ingested nodes that landed in the binding set have 3 or 4 non-zero constraints (vs. 10 for the 577 prior nodes), producing 3 distinct binding_share values: 0.1 (577 prior nodes), 0.25 (7 ingested with 4 non-zero), 0.333 (5 ingested with 3 non-zero). The Oracle now differentiates for the first time. Full resolution requires more ingestion (the 577 prior nodes still have uniform priors filling all 10 constraint slots) or a re-derivation that zeros out constraints not mentioned in a node's source. The 9 cemetery_entry nodes still have Phase 2 priors (load=10, base_viability=-0.5, well below the 0.5 threshold), so the Oracle's resurrection check still produces 0 resurrections on the unforced live graph — even though F-022 is closed and the detection path is verified working via the forced test in `tests/test_f022_cemetery_fields.py`.
 
 ---
 
@@ -398,3 +398,51 @@ Phase 5 — Audience specialization: researchers, corporations, investors, gover
 **Root cause:** same pattern as F-001 — tested only on a friendly synthetic fixture with clean formatting. Real papers have inline equations and prose interleaved with bullets.
 **Severity:** P2 — the parser works on fixtures but fails on most real arXiv abstracts. This is the paper-parser equivalent of F-001.
 **Status:** RESOLVED — equation regex now detects inline equations by looking backwards from '=' for a variable-like token and extracting just the equation part. Limitations section regex now stops at the first non-bullet line after bullets begin. Both bugs verified fixed via the auditor's exact repro.
+
+---
+
+### F-031 — `metadata.node_count` stale after Phase 3 Step 4 ingestion (N3, P2)
+**Found:** external auditor (post-commit verification of `53320bc`).
+**Repro:**
+```python
+import json
+g = json.load(open('data/civilization_graph.json'))
+assert g['metadata']['node_count'] == len(g['nodes']), \
+    f"metadata.node_count={g['metadata']['node_count']} but actual={len(g['nodes'])}"
+# FAILED: metadata says 577, actual is 632.
+```
+**Observed:** the Step 4 ingestion script (`scripts/ingest_real_sources.py`) appended 55 nodes to `data["nodes"]` and bumped `metadata.version` to `3.0`, but never updated `metadata.node_count`. The metadata field was left at `577` (its pre-Step-4 value) while the actual node count became `632` — a drift of 55. No test caught it because no test asserted `metadata.node_count == len(graph["nodes"])`.
+**Root cause:** the ingestion script wrote to `graph["metadata"]["version"]` and `graph["metadata"]["ingestion"]` but missed `graph["metadata"]["node_count"]`. This is the same class of "stale record" issue as F-004 (FAILURES.md stale entries) and A5 (stale findings) — Law 7 (historical permanence) requires the record to track reality.
+**Severity:** P2 — no runtime impact (consumers count `len(nodes)` via `GraphModel.to_explorer()` which returns the live count, not the metadata field), but a data-integrity issue in the canonical graph. Any future consumer that trusts the metadata field rather than counting `len(nodes)` would get the wrong number.
+**Status:** RESOLVED in Maestro Loop Cycle 6 — `scripts/ingest_real_sources.py` now sets `graph["metadata"]["node_count"] = len(graph["nodes"])` and `graph["metadata"]["edge_count"] = len(graph["edges"])` after ingestion, with a comment explaining the N3 history. The live graph was repaired by `scripts/fix_n3_f022.py` (graph version bumped to 3.1). Two regression tests added in `tests/test_metadata_drift.py`:
+  - `test_metadata_node_count_matches_actual` — asserts `metadata.node_count == len(nodes)`
+  - `test_metadata_edge_count_matches_actual` — same for edges
+Both tests will catch future drift of this class.
+
+### F-032 — F-022 closed: cemetery_entry nodes now carry top-level is_cemetery / lesson / failed_because
+**Found:** external auditor (post-Phase 2 verification, originally recorded as F-022).
+**Original observation:** the 9 cemetery_entry nodes in `civilization_graph.json` carried `metadata.lesson`, `metadata.why_it_failed`, and `metadata.failure_category` but NOT the top-level `is_cemetery` / `lesson` / `failed_because` fields the `GraphModel` adapter reads at `web/backend/adapters/graph_model.py:54-63`. Without `is_cemetery=True` at top level, the adapter's classification at line 54 (`ntype = "cemetery" if (n.get("is_cemetery") or ntype == "failure") else "component"`) fell through to `"component"` for every cemetery node. The Oracle's resurrection check at `oracle_deep.py:115` (`if n.get("is_cemetery") and up:`) then never fired — every cemetery node had `is_cemetery=False` in the adapter output, regardless of whether it crossed the viability threshold.
+**Resolution:** Maestro Loop Cycle 6 (`scripts/fix_n3_f022.py`) promoted `metadata.lesson` → `lesson` and `metadata.why_it_failed` → `failed_because` and added `is_cemetery=true` to all 9 cemetery_entry nodes. The graph version was bumped to 3.1. The GraphModel adapter now correctly classifies all 9 as `type="cemetery"` with `is_cemetery=True`. The Oracle's resurrection check now fires when a cemetery node crosses the viability threshold — verified by the forced test `test_oracle_resurrection_detection_can_fire` in `tests/test_f022_cemetery_fields.py` (which forces `load=4` and a 10x energy decrease to push a cemetery node from `base_viability=0.4` to `new_viability=0.5125`, crossing the 0.5 threshold).
+**Severity:** was P2. Now closed.
+**Status:** RESOLVED. Five regression tests added in `tests/test_f022_cemetery_fields.py`:
+  - `test_every_cemetery_node_has_is_cemetery_true`
+  - `test_every_cemetery_node_has_nonempty_lesson`
+  - `test_every_cemetery_node_has_nonempty_failed_because`
+  - `test_graph_model_adapter_classifies_cemetery_nodes_correctly`
+  - `test_oracle_resurrection_detection_can_fire` (the forced end-to-end test)
+**Honest caveat:** the forced test confirms the detection path is no longer structurally inert. It does NOT confirm the Oracle naturally produces resurrections on the live graph — cemetery nodes still have Phase 2 priors (load=10, base_viability=-0.5, far below the 0.5 threshold), so the unforced Oracle still returns 0 resurrections. Full resurrection detection requires either (a) more ingestion that produces constraint values with real variation on cemetery nodes, or (b) a re-derivation that zeros out constraints not mentioned in a cemetery node's source. This is the same caveat as F-024.
+
+### F-033 — `ALLOWED_MODIFICATIONS` allowlist not updated when Phase 3 Step 4 added new scripts (F-019 recurring)
+**Found:** Maestro Loop Cycle 6, while running the gap1 allowlist test after the N3 + F-022 patch.
+**Repro:** `pytest tests/test_gap1_fix.py::test_only_simulation_module_was_modified` at commit `53320bc`.
+**Observed:** the test fails with `AssertionError: CEO 'pick one' rule VIOLATED: files other than simulation_module.py and dependency_module.py were modified: {'scripts/generate_ingestion_data.py', 'scripts/ingest_real_sources.py'}`. The Phase 3 Step 4 commit (`53320bc`) added `scripts/ingest_real_sources.py` and `scripts/generate_ingestion_data.py` to the repo without updating `tests/_allowed_modifications.py`. The gap1 allowlist test was therefore red at commit `53320bc` — but the auditor's "275 collected" report was the collection count, not the passing count, and the full suite was not run.
+**Root cause:** F-019 was supposed to fix this class of bug by factoring five hardcoded allowlists into one shared constant. The factoring succeeded, but the shared constant still needs to be updated when new files are added. The Step 4 commit added new files but did not update the shared constant. This is the exact F-019 pattern recurring.
+**Severity:** P3 — no production impact (the allowlist test is a development-time guard, not a runtime check), but it means the gap1 allowlist test was silently red for one commit. The auditor's verification at `53320bc` missed it because they only ran the Step 4 tests, not the full suite. This is itself a principle #1 (Run it, don't reason about it) violation — the auditor reasoned that the tests passed without running them all.
+**Status:** RESOLVED in Maestro Loop Cycle 6 — `tests/_allowed_modifications.py` now includes `scripts/ingest_real_sources.py` and `scripts/generate_ingestion_data.py` with comments citing Phase 3 Step 4 as the source. The gap1 allowlist test now passes. The auditor's process fix: future audit reports must distinguish "tests collected" from "tests passed" and must run the full suite, not just the new tests.
+
+### F-034 — Synthetic abstracts vs real patents/papers (N4, P3 honesty note)
+**Found:** external auditor (post-`53320bc` verification).
+**Observed:** the 10 patent abstracts and 10 paper abstracts in `data/ingestion/` are realistic in structure (claims format, prose, equations, assumptions, limitations) but they are SYNTHETIC — written by the coder to exercise the parsers, not pulled from actual USPTO/Google Patents or arXiv. The patent numbers (`US-10123456` through `US-11012345`) and DOIs (`10.1038/nature.2023.001` etc.) are plausible-looking but fabricated.
+**Root cause:** the Phase 3 Step 4 success criterion ("Real patent ingested, at least 3, target 10-20") was met by ingesting 10 synthetic patent-format abstracts, not 10 real USPTO patents. The pipeline doesn't care whether they're from USPTO or written by hand — the constraint extraction is the same. But the framing in the commit message ("10 patents + 10 papers ingested into ACTUAL graph") and in the Step 4 success criteria table could be read as "10 actual patents from the USPTO," which overstates.
+**Severity:** P3 — not a code bug. The pipeline works, the constraints are real extractions from realistic text, and the graph genuinely has new nodes with provenance. But principle #5 (Match the label to the evidence) and principle #8 (No data, say no data) suggest the framing should distinguish "10 synthetic patent-format abstracts (modeled on real USPTO structure)" from "10 real patents."
+**Status:** INFORMATIONAL — no code fix needed. The honest framing is recorded here. The next step (if real-patent ingestion matters) is to swap the synthetic files for actual USPTO/Google Patents abstracts. The pipeline is proven; the swap is mechanical.

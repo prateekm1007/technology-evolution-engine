@@ -67,12 +67,26 @@ def test_constraint_values_have_variation():
 
 def test_graph_still_parses_after_ingestion():
     """The real graph file must still parse as valid JSON after
-    ingestion (principle #9: downstream blast radius)."""
+    ingestion (principle #9: downstream blast radius).
+
+    Version assertion was tightened from == "3.0" to >= (3, 0) after
+    Maestro Loop Cycle 6 bumped the graph to 3.1 (N3 + F-022 patch).
+    The original intent of this assertion was "Step 4 ingestion landed
+    (version >= 3.0)", not "no subsequent patch has bumped the version."
+    Cycle 6's 3.1 is a legitimate successor — same major version, the
+    graph is still valid. Tightening the assertion to a tuple >= check
+    preserves the original intent without coupling to the exact patch
+    number.
+    """
     graph = _load_graph()
     assert "nodes" in graph
     assert "edges" in graph
     assert "metadata" in graph
-    assert graph["metadata"]["version"] == "3.0"
+    version_str = graph["metadata"]["version"]
+    major, minor = (int(x) for x in version_str.split("."))
+    assert (major, minor) >= (3, 0), (
+        f"graph version {version_str} < 3.0 — Step 4 ingestion appears reverted"
+    )
 
 
 def test_ingested_nodes_have_complete_provenance():

@@ -1,10 +1,10 @@
 {
   "metadata": {
     "name": "Civilization Technology Graph",
-    "version": "3.0",
+    "version": "3.1",
     "created_at": "2026-08-01T09:54:16.102452+00:00",
     "description": "Structured technology taxonomy: domains, subdomains, principles, processes, components, systems, industries, cemetery, candidates. Three relationship classes: structural, functional, historical.",
-    "node_count": 577,
+    "node_count": 632,
     "edge_count": 530,
     "relationship_types": {
       "structural": [
@@ -50,6 +50,16 @@
       "nodes_added": 55,
       "nodes_with_real_provenance": 55,
       "note": "Real constraint values from actual patent/paper text, not Phase 2 type/domain/edge priors."
+    },
+    "cycle_6_patch": {
+      "patched_at": "2026-08-01T23:43:05.745962+00:00",
+      "fixes": [
+        "N3-metadata-drift",
+        "F-022-cemetery-fields"
+      ],
+      "node_count_now_accurate": true,
+      "cemetery_nodes_now_classifiable": true,
+      "note": "One-line fixes to the canonical graph. N3 closes the metadata drift the auditor flagged in commit 53320bc. F-022 closes Phase 3 Step 5 (cemetery fields) by promoting metadata.lesson/why_it_failed to top-level fields the GraphModel adapter actually reads."
     }
   },
   "nodes": [
@@ -12423,7 +12433,10 @@
           "Regulatory clarity"
         ],
         "lesson": "Technology alone cannot overcome infrastructure and social constraints"
-      }
+      },
+      "is_cemetery": true,
+      "lesson": "Technology alone cannot overcome infrastructure and social constraints",
+      "failed_because": "Price too high, infrastructure not ready, regulatory uncertainty, social stigma"
     },
     {
       "id": "cemetery_002",
@@ -12467,7 +12480,10 @@
           "Privacy-respecting design"
         ],
         "lesson": "Consumer AR requires social acceptance before technical capability"
-      }
+      },
+      "is_cemetery": true,
+      "lesson": "Consumer AR requires social acceptance before technical capability",
+      "failed_because": "Social rejection, privacy concerns, limited use case, high price"
     },
     {
       "id": "cemetery_003",
@@ -12511,7 +12527,10 @@
           "Regulatory change on overland supersonic"
         ],
         "lesson": "Economic and environmental constraints can ground technically brilliant designs"
-      }
+      },
+      "is_cemetery": true,
+      "lesson": "Economic and environmental constraints can ground technically brilliant designs",
+      "failed_because": "Fuel costs, noise restrictions, limited routes, high prices, 2000 crash"
     },
     {
       "id": "cemetery_004",
@@ -12553,7 +12572,10 @@
           "Transparent engineering"
         ],
         "lesson": "Fraud poisons legitimate technology lines. The underlying idea is valid."
-      }
+      },
+      "is_cemetery": true,
+      "lesson": "Fraud poisons legitimate technology lines. The underlying idea is valid.",
+      "failed_because": "Technology never worked as claimed. Fraud, not engineering failure."
     },
     {
       "id": "cemetery_005",
@@ -12597,7 +12619,10 @@
           "Social sharing built in"
         ],
         "lesson": "Content format innovation requires matching distribution and business model innovation"
-      }
+      },
+      "is_cemetery": true,
+      "lesson": "Content format innovation requires matching distribution and business model innovation",
+      "failed_because": "Wrong timing, no social sharing, unclear value vs free alternatives"
     },
     {
       "id": "cemetery_006",
@@ -12641,7 +12666,10 @@
           "Maritime/aviation/remote demand"
         ],
         "lesson": "Infrastructure bets can be right but early. Iridium satellites now serve IoT and military."
-      }
+      },
+      "is_cemetery": true,
+      "lesson": "Infrastructure bets can be right but early. Iridium satellites now serve IoT and military.",
+      "failed_because": "Handsets too large/expensive, terrestrial cellular expanded faster, bankruptcy"
     },
     {
       "id": "cemetery_007",
@@ -12682,7 +12710,10 @@
           "N/A - superseded by digital"
         ],
         "lesson": "Ecosystem and openness beat technical superiority in format competition"
-      }
+      },
+      "is_cemetery": true,
+      "lesson": "Ecosystem and openness beat technical superiority in format competition",
+      "failed_because": "Lost format war to VHS. Shorter recording time, less licensing, smaller ecosystem."
     },
     {
       "id": "cemetery_008",
@@ -12723,7 +12754,10 @@
           "N/A - superseded by streaming"
         ],
         "lesson": "Platform bundling and content partnerships outweigh technical specifications"
-      }
+      },
+      "is_cemetery": true,
+      "lesson": "Platform bundling and content partnerships outweigh technical specifications",
+      "failed_because": "Lost format war to Blu-ray. Studio support, PS3 bundling, retail decisions."
     },
     {
       "id": "cemetery_009",
@@ -12767,7 +12801,10 @@
           "Heavy-lift cargo demand to remote areas"
         ],
         "lesson": "Catastrophic failure can end a technology line for decades, but constraint changes can reopen it"
-      }
+      },
+      "is_cemetery": true,
+      "lesson": "Catastrophic failure can end a technology line for decades, but constraint changes can reopen it",
+      "failed_because": "Hindenburg disaster, helium shortage, airplane speed advantage, weather vulnerability"
     },
     {
       "id": "candidate_0001",

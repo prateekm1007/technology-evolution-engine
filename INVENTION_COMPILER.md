@@ -188,6 +188,35 @@ that priors don't count as this metric moving.
 Step 5 — Close F-022 (cemetery fields missing) while touching the
 graph-write path, since it's the same code region.
 
+**Phase 3 status (post-Cycle 6):**
+- Step 0 (F-001): PARTIALLY RESOLVED (synthetic abstracts exercise the
+  keyword fallback; real USPTO text at scale remains untested).
+- Step 1 (contract gaps): F-027 RESOLVED, F-028 RESOLVED.
+- Step 2 (3 real patents): done (synthetic abstracts).
+- Step 3 (paper_parser.py): done, F-030 fixed.
+- Step 4 (scale to 10-20): done — 55 nodes, real constraints, Oracle
+  differentiates (3 distinct binding_share values, was 1). F-024 →
+  PARTIALLY RESOLVED.
+- Step 5 (close F-022): DONE — 9 cemetery_entry nodes now carry
+  top-level `is_cemetery`, `lesson`, `failed_because`. GraphModel
+  adapter classifies them as `type="cemetery"`. Oracle's resurrection
+  check verified working via forced end-to-end test. F-022 → RESOLVED.
+  F-031 (N3 metadata drift) → RESOLVED. F-033 (allowlist oversight)
+  → RESOLVED. F-034 (synthetic-abstracts honesty) → INFORMATIONAL.
+  Graph version bumped to 3.1.
+
+**Phase 3 closing summary:** the canonical graph now has 632 nodes
+(577 prior + 55 ingested), 55 with real provenance, 9 cemetery nodes
+with complete top-level fields, accurate metadata.node_count=632, and
+an Oracle that differentiates 3 distinct binding_share values. The
+resurrection detection path is verified working. Phase 3's core
+objective — "connect the existing system to external evidence" — is
+achieved at the contract level. The remaining gap is data, not code:
+ingest real USPTO patents and arXiv papers (replacing the synthetic
+abstracts), and either ingest enough to differentiate the 577 prior
+nodes or re-derive their constraints with zero values for constraints
+not mentioned in their source.
+
 **Phase 3 success criteria (concrete):**
 
 Success is NOT "new module added." Success is:

@@ -171,6 +171,17 @@ def main():
 
     # Write to the REAL graph file.
     graph["metadata"]["version"] = "3.0"
+    # N3 FIX (auditor's finding on commit 53320bc): the previous run
+    # appended 55 nodes but never updated metadata.node_count, leaving
+    # it stale at 577 while the actual node count became 632. Any
+    # consumer that trusts metadata.node_count (rather than counting
+    # len(nodes) live) would get the wrong number. This is the same
+    # class of "stale record" issue as F-004 (FAILURES.md stale
+    # entries) and A5 (stale findings). Per principle #3 (one source
+    # of truth per fact, checked before writing), the metadata field
+    # MUST track the live count after every modification.
+    graph["metadata"]["node_count"] = len(graph["nodes"])
+    graph["metadata"]["edge_count"] = len(graph["edges"])
     graph["metadata"]["ingestion"] = {
         "ingested_at": datetime.now(timezone.utc).isoformat(),
         "patents_ingested": len(list(PATENTS_DIR.glob("*.txt"))),

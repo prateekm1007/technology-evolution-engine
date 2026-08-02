@@ -26,11 +26,22 @@ Usage in tests:
 # Gap 4 (missing counterevidence):   orchestrator.py
 # Gap 5 (templated plans):           prototype_module.py
 # Phase 2 (constraint propagation):  synthesizer.py (compat fix)
+# Phase 3 Step 4 (real ingestion):  scripts/ingest_real_sources.py,
+#                                    scripts/generate_ingestion_data.py
 #
 # NOTE: scripts/propagate_constraints_to_graph.py is a one-off
 # migration script, NOT a module — it's excluded from this allowlist
 # because the "only X was modified" tests already filter out
 # scripts/ via their path-prefix checks.
+#
+# AUDITOR FINDING (Cycle 6, post-53320bc): the Phase 3 Step 4 commit
+# added scripts/ingest_real_sources.py and scripts/generate_ingestion_data.py
+# without updating this allowlist. The gap1 allowlist test was red at
+# commit 53320bc — the auditor's "275 collected" report was the
+# collection count, not the passing count, and the full suite was
+# not run. This is the F-019 pattern (allowlist not updated when new
+# files are added) recurring. The fix is to add the two scripts here
+# and to re-verify by running the full suite, not just the Step 4 tests.
 
 ALLOWED_MODIFICATIONS = frozenset({
     "invention_compiler/simulation_module.py",
@@ -44,4 +55,6 @@ ALLOWED_MODIFICATIONS = frozenset({
     "product/ingestion/patent_parser.py",  # Phase 3: patent ingestion + F-001 fix
     "product/ingestion/paper_parser.py",  # Phase 3 Step 3: paper ingestion
     "product/ingestion/text_normalizer.py",  # Phase 3: ingestion support
+    "scripts/ingest_real_sources.py",  # Phase 3 Step 4: real ingestion
+    "scripts/generate_ingestion_data.py",  # Phase 3 Step 4: synthetic abstracts
 })
