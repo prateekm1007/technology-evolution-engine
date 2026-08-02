@@ -252,22 +252,25 @@ reproducibility (Law 7) but is not imported by anything; it is a
 measurement, not a module.
 
 **Phase 5 — Temporal Evidence (Phase 5.A: first temporal measurement
-COMPLETE; see PHASE5.md).** The CEO's re-scoped Phase 5 from
+COMPLETE; Phase 5.B: second ingestion cycle COMPLETE with surprising
+finding; see PHASE5.md).** The CEO's re-scoped Phase 5 from
 "audience specialization" to "temporal evidence" — acquiring memory
 of change rather than merely memory of structure. Snapshot_1 captured
 at graph v3.1 (632 nodes); snapshot_2 captured at graph v4.0 (651 nodes)
-after ingestion of 9 real USPTO patents across 6 domains. Temporal
-delta measured: Convergence(battery, EV) 1.20 → 1.25 (+0.05);
-Convergence(battery, desalination) 0.0286 → 0.0286 (+0.00). The
-discrimination is preserved and the mechanism is explainable (Signal C
-component_overlap became non-zero due to a shared "battery" component
-between the battery patent and the EV-charging patent). Implementation
-of any convergence_*.py module remains FORBIDDEN per CONVERGENCE.md
-— the prerequisite chain (snapshot_1 → ingestion → snapshot_2 →
-delta → temporal signal → validation → implementation) is now at
-step 5 of 7. Remaining: validation against real-world outcomes
-(resolution dates 2028-01-01). Original "audience specialization"
-objective is deferred to Phase 6.
+after ingestion of 9 real USPTO patents across 6 domains; snapshot_3
+captured at graph v4.1 (661 nodes) after ingestion of 10 real arXiv
+papers. Cumulative temporal delta (snapshot_1 -> snapshot_3):
+Convergence(battery, EV) 1.20 → 1.2286 (+0.0286);
+Convergence(battery, desalination) 0.0286 → 0.0286 (+0.00).
+Phase 5.A added +0.05 (shared "battery" component); Phase 5.B
+SUBTRACTED 0.0214 (arXiv papers grew the denominator of Signal C
+without growing the numerator — F-038). Cumulative delta is still
+positive, and discrimination is preserved (1.2286 vs 0.0286).
+Implementation of any convergence_*.py module remains FORBIDDEN per
+CONVERGENCE.md — the prerequisite chain is now at step 5 of 7.
+Remaining: validation against real-world outcomes (resolution dates
+2028-01-01). Original "audience specialization" objective is deferred
+to Phase 6.
 
 **Phase 6 — Audience specialization.** Only after Phases 1-5 give the
 underlying system something true to say to any audience.

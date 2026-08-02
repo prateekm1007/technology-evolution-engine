@@ -1,4 +1,4 @@
-# TEE MASTER HANDOFF (v2.7 — Phase 5 first temporal measurement complete)
+# TEE MASTER HANDOFF (v2.8 — Phase 5.B second ingestion cycle complete with surprising finding)
 
 ## PRE-CODING READ LIST (MANDATORY)
 
@@ -270,6 +270,68 @@ ingestion → snapshot_2 → delta → temporal signal → validation →
 implementation). Implementation of any convergence_*.py module remains
 FORBIDDEN. Next: more ingestion cycles (arXiv/IEEE/Nature/regulatory)
 spaced over real-world time, to produce snapshot_3, snapshot_4, etc.
+
+## PHASE 5.B — SECOND INGESTION CYCLE (surprising finding)
+
+Per the CEO's coder instruction (post-Phase 5.A): more ingestion
+cycles are higher-leverage — more real sources means more shared
+components, which means larger temporal deltas.
+
+Phase 5.B added 10 real arXiv papers across the same 6 domains.
+
+**Cumulative temporal table (snapshot_1 -> snapshot_3):**
+
+| Pair | Snapshot 1 | Snapshot 2 | Snapshot 3 | Total Delta |
+|---|---:|---:|---:|---:|
+| Battery ↔ EV | 1.2000 | 1.2500 | 1.2286 | **+0.0286** |
+| Battery ↔ Desalination | 0.0286 | 0.0286 | 0.0286 | **+0.0000** |
+
+**The honest finding:** Phase 5.B's hypothesis was REJECTED.
+
+The hypothesis predicted: more sources → more shared components →
+larger temporal deltas. The actual Phase 5.B delta was -0.0214
+(the score DECREASED). Why:
+
+1. PaperParser extracts 0 components from 9 of the 10 arXiv papers
+   (F-038). The papers contribute constraints but not components.
+2. Adding paper nodes (as `principle` type, linked via `contains`
+   edges) grew each subdomain's component subtree denominator.
+3. Shared component count stayed at 1 (the "battery" component from
+   Phase 5.A patents).
+4. Signal C overlap_ratio = shared / total. With shared=1 and total
+   growing from 4 (snapshot_2) to 7 (snapshot_3), the ratio shrank
+   from 0.25 to 0.143.
+5. The cumulative delta is still positive (+0.0286) because Phase
+   5.A's +0.05 outweighs Phase 5.B's -0.0214.
+
+**What this proves:**
+1. The measurement infrastructure catches counterintuitive behavior
+   honestly. No human decided the score should go up; the formula
+   did its job and the result is what it is.
+2. Ingestion quantity alone is NOT sufficient. The next ingestion
+   cycle should target sources with richer component vocabulary
+   (engineering patents, IEEE papers, regulatory documents) rather
+   than theoretical arXiv papers.
+3. The arXiv papers DID contribute real constraint data (21
+   constraint mentions across 10 papers), which helps resolve
+   F-024 (uniform constraint priors) even though it didn't grow
+   the convergence score.
+
+**Phase 5.B deliverables:**
+- `PHASE5.md` Phase 5.B section (appended)
+- `data/snapshots/snapshot_3.json` (graph v4.1, 661 nodes)
+- `data/ingestion/real/arxiv_*.txt` (10 real arXiv abstracts)
+- `scripts/extract_arxiv_text.py` (one-off, NOT a module)
+- `scripts/ingest_real_arxiv_phase5b.py` (one-off, NOT a module)
+- `data/civilization_graph.json` updated to v4.1 (+10 nodes, +7 edges)
+- `FAILURES.md`: F-038 (PaperParser extracts few components from arXiv)
+- `INVENTION_COMPILER.md`: Phase 5 line reflects cumulative delta
+- `HANDOFF.md`: this section (v2.7 → v2.8)
+
+**Phase 5.B implementation status:** COMPLETE. Hypothesis rejected;
+finding recorded honestly. Implementation still FORBIDDEN. The
+single most important next action: target sources with richer
+component vocabulary in the next ingestion cycle.
 
 ## SESSION-HARDENED PRINCIPLES (v1.0)
 

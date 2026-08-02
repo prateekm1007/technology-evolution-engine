@@ -492,3 +492,22 @@ python3 scripts/extract_patent_text.py
 **Severity:** P3 — caught and fixed before commit, no auditor cycle wasted.
 **Status:** RESOLVED — the script now uses the portable pattern. Verified by running from inside the repo (the intended usage).
 **Lesson:** the F-035 lesson ("after committing a script, re-run it from a different working directory") was applied proactively here. The discipline is starting to internalize.
+
+---
+
+### F-038 — PaperParser extracts few components from arXiv papers (P3, structural)
+**Found:** Phase 5.B ingestion (real arXiv papers).
+**Repro:**
+```python
+import sys; sys.path.insert(0, '.')
+from product.ingestion.paper_parser import PaperParser
+p = PaperParser()
+text = open('data/ingestion/real/arxiv_2307.03620.txt').read()
+r = p.parse({'id': '2307.03620', 'text': text, 'provenance': {}})
+print(r.get('components'))  # []
+```
+**Observed:** PaperParser extracted 0 components from 9 of the 10 arXiv papers ingested in Phase 5.B. Only the desalination paper (arXiv:2301.13160) extracted 1 component ("membrane") — and that label happened to match an existing component node from the Phase 5.A patent US4039440A. The other 9 papers extracted constraints (energy, temperature, safety, etc.) but no components.
+**Root cause:** PaperParser's COMPONENT_KEYWORDS list (Phase 3 Step 3) matches engineering-component vocabulary (pump, sensor, coating, membrane, etc.). Theoretical arXiv papers tend to use scientific vocabulary (sorbent, metamaterial, electrolyte) that overlaps partially with the keyword list. This is the same brittleness class as F-001 (patent parser) and F-030 (paper parser inline equations) — keyword-based extraction undercounts on text that uses different terminology than the keyword list.
+**Severity:** P3 — not a code bug. The parser works correctly for the vocabulary it knows. But the limitation has a measurable consequence: Phase 5.B's ingestion of 10 arXiv papers added 0 new shared components to the graph, which caused the convergence score for battery×EV to DECREASE (because the new paper nodes grew the denominator of Signal C's overlap ratio without growing the numerator).
+**Status:** OPEN — this is a structural limitation of keyword-based parsing. Resolving it would require either (a) semantic component extraction (NLP/embeddings), which is implementation work forbidden until validation executes, or (b) expanding the COMPONENT_KEYWORDS list to include scientific vocabulary (sorbent, metamaterial, electrolyte, etc.). Option (b) is allowed (it's data, not architecture) and could be done in a future Phase 5 cycle.
+**Lesson:** Phase 5.B's hypothesis predicted that more sources → more shared components → larger temporal deltas. The hypothesis was REJECTED — Phase 5.B's actual delta was -0.0214 (the score decreased). The root cause is F-038: arXiv papers extract constraints but not components, so they grow the graph's denominator without growing the convergence numerator. The honest finding: ingestion quantity is not sufficient; ingestion must contribute components that match existing labels to grow the convergence score.

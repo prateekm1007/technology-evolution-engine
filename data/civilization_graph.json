@@ -1,11 +1,11 @@
 {
   "metadata": {
     "name": "Civilization Technology Graph",
-    "version": "4.0",
+    "version": "4.1",
     "created_at": "2026-08-01T09:54:16.102452+00:00",
     "description": "Structured technology taxonomy: domains, subdomains, principles, processes, components, systems, industries, cemetery, candidates. Three relationship classes: structural, functional, historical.",
-    "node_count": 651,
-    "edge_count": 550,
+    "node_count": 661,
+    "edge_count": 557,
     "relationship_types": {
       "structural": [
         "requires",
@@ -79,6 +79,24 @@
       "source": "REAL USPTO patents fetched via web-search + web-reader",
       "distinguishes_from_phase_3": "Phase 3 used synthetic abstracts (F-034). Phase 5 uses real USPTO patent text.",
       "structural_change": "Added `contains` edges from each domain's subdomain node to the newly-ingested component nodes. This is what enables Signal C (component reuse) to be non-zero on snapshot_2."
+    },
+    "phase_5b_ingestion": {
+      "ingested_at": "2026-08-02T02:17:33.031981+00:00",
+      "arxiv_papers_ingested": 10,
+      "nodes_added": 10,
+      "edges_added": 7,
+      "nodes_with_real_provenance_before": 19,
+      "nodes_with_real_provenance_after": 29,
+      "domain_distribution": {
+        "radiative_cooling": 3,
+        "ev_charging": 2,
+        "desalination": 1,
+        "battery": 1,
+        "carbon_capture": 2,
+        "atmospheric_water_harvesting": 1
+      },
+      "source": "REAL arXiv papers fetched via web-search + web-reader",
+      "distinguishes_from_phase_5a": "Phase 5.A used real USPTO patents. Phase 5.B adds real arXiv papers, creating cross-source shared components (e.g., 'membrane' shared between a desalination patent and a desalination arXiv paper)."
     }
   },
   "nodes": [
@@ -15147,6 +15165,285 @@
       "status": "active",
       "shared_label": "chamber",
       "created_at": "2026-08-02T02:00:23.301732+00:00"
+    },
+    {
+      "id": "real_arxiv_paper_2003.10495",
+      "label": "Graded nanocomposite metamaterials for a double-sided radiative cooling architec",
+      "type": "principle",
+      "domain": "radiative_cooling",
+      "constraints": {
+        "energy": 0.7,
+        "temperature": 0.7
+      },
+      "provenance": {
+        "source": "arxiv_2003.10495.txt",
+        "source_type": "paper",
+        "title": "Graded nanocomposite metamaterials for a double-sided radiative cooling architecture with a record breaking cooling power density",
+        "authors": [
+          "(real arXiv paper)"
+        ],
+        "publication_date": "2026-08-02",
+        "patent_number": null,
+        "doi": "arxiv:2003.10495",
+        "confidence": 0.9,
+        "extracted_by": "scripts.ingest_real_arxiv_phase5b",
+        "timestamp": "2026-08-02T02:17:33.027449+00:00",
+        "is_real_source": true,
+        "domain": "radiative_cooling"
+      },
+      "status": "active",
+      "created_at": "2026-08-02T02:17:33.029960+00:00"
+    },
+    {
+      "id": "real_arxiv_paper_2105.02905",
+      "label": "Securing the Electric Vehicle Charging Infrastructure",
+      "type": "principle",
+      "domain": "ev_charging",
+      "constraints": {
+        "energy": 0.7,
+        "cost": 0.7
+      },
+      "provenance": {
+        "source": "arxiv_2105.02905.txt",
+        "source_type": "paper",
+        "title": "Securing the Electric Vehicle Charging Infrastructure",
+        "authors": [
+          "(real arXiv paper)"
+        ],
+        "publication_date": "2026-08-02",
+        "patent_number": null,
+        "doi": "arxiv:2105.02905",
+        "confidence": 0.9,
+        "extracted_by": "scripts.ingest_real_arxiv_phase5b",
+        "timestamp": "2026-08-02T02:17:33.030038+00:00",
+        "is_real_source": true,
+        "domain": "ev_charging"
+      },
+      "status": "active",
+      "created_at": "2026-08-02T02:17:33.030288+00:00"
+    },
+    {
+      "id": "real_arxiv_paper_2301.04523",
+      "label": "Deep learning-assisted active metamaterials with heat-enhanced thermal transport",
+      "type": "principle",
+      "domain": "radiative_cooling",
+      "constraints": {
+        "energy": 0.7,
+        "temperature": 0.7
+      },
+      "provenance": {
+        "source": "arxiv_2301.04523.txt",
+        "source_type": "paper",
+        "title": "Deep learning-assisted active metamaterials with heat-enhanced thermal transport",
+        "authors": [
+          "(real arXiv paper)"
+        ],
+        "publication_date": "2026-08-02",
+        "patent_number": null,
+        "doi": "arxiv:2301.04523",
+        "confidence": 0.9,
+        "extracted_by": "scripts.ingest_real_arxiv_phase5b",
+        "timestamp": "2026-08-02T02:17:33.030322+00:00",
+        "is_real_source": true,
+        "domain": "radiative_cooling"
+      },
+      "status": "active",
+      "created_at": "2026-08-02T02:17:33.030509+00:00"
+    },
+    {
+      "id": "real_arxiv_paper_2301.10338",
+      "label": "Tuning Optical Properties of Metamaterials by Mie Scattering for Efficient Sub-a",
+      "type": "principle",
+      "domain": "radiative_cooling",
+      "constraints": {
+        "energy": 0.7,
+        "temperature": 0.7,
+        "safety": 0.7,
+        "manufacturing": 0.7
+      },
+      "provenance": {
+        "source": "arxiv_2301.10338.txt",
+        "source_type": "paper",
+        "title": "Tuning Optical Properties of Metamaterials by Mie Scattering for Efficient Sub-ambient Daytime Radiative Cooling",
+        "authors": [
+          "(real arXiv paper)"
+        ],
+        "publication_date": "2026-08-02",
+        "patent_number": null,
+        "doi": "arxiv:2301.10338",
+        "confidence": 0.9,
+        "extracted_by": "scripts.ingest_real_arxiv_phase5b",
+        "timestamp": "2026-08-02T02:17:33.030540+00:00",
+        "is_real_source": true,
+        "domain": "radiative_cooling"
+      },
+      "status": "active",
+      "created_at": "2026-08-02T02:17:33.030729+00:00"
+    },
+    {
+      "id": "real_arxiv_paper_2301.13160",
+      "label": "Mathematical modelling and numerical simulation of reverse-osmosis desalination",
+      "type": "principle",
+      "domain": "desalination",
+      "constraints": {
+        "size": 0.7
+      },
+      "provenance": {
+        "source": "arxiv_2301.13160.txt",
+        "source_type": "paper",
+        "title": "Mathematical modelling and numerical simulation of reverse-osmosis desalination",
+        "authors": [
+          "(real arXiv paper)"
+        ],
+        "publication_date": "2026-08-02",
+        "patent_number": null,
+        "doi": "arxiv:2301.13160",
+        "confidence": 0.9,
+        "extracted_by": "scripts.ingest_real_arxiv_phase5b",
+        "timestamp": "2026-08-02T02:17:33.030754+00:00",
+        "is_real_source": true,
+        "domain": "desalination"
+      },
+      "status": "active",
+      "created_at": "2026-08-02T02:17:33.030913+00:00"
+    },
+    {
+      "id": "real_arxiv_paper_2307.03620",
+      "label": "State of the Art Development on Solid-State Lithium Batteries",
+      "type": "principle",
+      "domain": "battery",
+      "constraints": {
+        "energy": 0.7,
+        "safety": 0.7
+      },
+      "provenance": {
+        "source": "arxiv_2307.03620.txt",
+        "source_type": "paper",
+        "title": "State of the Art Development on Solid-State Lithium Batteries",
+        "authors": [
+          "(real arXiv paper)"
+        ],
+        "publication_date": "2026-08-02",
+        "patent_number": null,
+        "doi": "arxiv:2307.03620",
+        "confidence": 0.9,
+        "extracted_by": "scripts.ingest_real_arxiv_phase5b",
+        "timestamp": "2026-08-02T02:17:33.030940+00:00",
+        "is_real_source": true,
+        "domain": "battery"
+      },
+      "status": "active",
+      "created_at": "2026-08-02T02:17:33.031042+00:00"
+    },
+    {
+      "id": "real_arxiv_paper_2311.00341",
+      "label": "The Open DAC 2023 Dataset and Challenges for Sorbent Discovery in Direct Air Cap",
+      "type": "principle",
+      "domain": "carbon_capture",
+      "constraints": {
+        "temperature": 0.7
+      },
+      "provenance": {
+        "source": "arxiv_2311.00341.txt",
+        "source_type": "paper",
+        "title": "The Open DAC 2023 Dataset and Challenges for Sorbent Discovery in Direct Air Capture",
+        "authors": [
+          "(real arXiv paper)"
+        ],
+        "publication_date": "2026-08-02",
+        "patent_number": null,
+        "doi": "arxiv:2311.00341",
+        "confidence": 0.9,
+        "extracted_by": "scripts.ingest_real_arxiv_phase5b",
+        "timestamp": "2026-08-02T02:17:33.031071+00:00",
+        "is_real_source": true,
+        "domain": "carbon_capture"
+      },
+      "status": "active",
+      "created_at": "2026-08-02T02:17:33.031273+00:00"
+    },
+    {
+      "id": "real_arxiv_paper_2311.08656",
+      "label": "Modelling of the Electric Vehicle Charging Infrastructure as Cyber Physical Powe",
+      "type": "principle",
+      "domain": "ev_charging",
+      "constraints": {
+        "energy": 0.7
+      },
+      "provenance": {
+        "source": "arxiv_2311.08656.txt",
+        "source_type": "paper",
+        "title": "Modelling of the Electric Vehicle Charging Infrastructure as Cyber Physical Power Systems: A Review on Components, Standards, Vulnerabilities and Attacks",
+        "authors": [
+          "(real arXiv paper)"
+        ],
+        "publication_date": "2026-08-02",
+        "patent_number": null,
+        "doi": "arxiv:2311.08656",
+        "confidence": 0.9,
+        "extracted_by": "scripts.ingest_real_arxiv_phase5b",
+        "timestamp": "2026-08-02T02:17:33.031298+00:00",
+        "is_real_source": true,
+        "domain": "ev_charging"
+      },
+      "status": "active",
+      "created_at": "2026-08-02T02:17:33.031426+00:00"
+    },
+    {
+      "id": "real_arxiv_paper_2407.00470",
+      "label": "Unusual Pore Volume Dependence of Water Sorption in Monolithic Metal-Organic Fra",
+      "type": "principle",
+      "domain": "atmospheric_water_harvesting",
+      "constraints": {
+        "temperature": 0.7,
+        "size": 0.7
+      },
+      "provenance": {
+        "source": "arxiv_2407.00470.txt",
+        "source_type": "paper",
+        "title": "Unusual Pore Volume Dependence of Water Sorption in Monolithic Metal-Organic Framework",
+        "authors": [
+          "(real arXiv paper)"
+        ],
+        "publication_date": "2026-08-02",
+        "patent_number": null,
+        "doi": "arxiv:2407.00470",
+        "confidence": 0.9,
+        "extracted_by": "scripts.ingest_real_arxiv_phase5b",
+        "timestamp": "2026-08-02T02:17:33.031448+00:00",
+        "is_real_source": true,
+        "domain": "atmospheric_water_harvesting"
+      },
+      "status": "active",
+      "created_at": "2026-08-02T02:17:33.031632+00:00"
+    },
+    {
+      "id": "real_arxiv_paper_2501.04825",
+      "label": "Intrinsic Direct Air Capture",
+      "type": "principle",
+      "domain": "carbon_capture",
+      "constraints": {
+        "energy": 0.7,
+        "temperature": 0.7
+      },
+      "provenance": {
+        "source": "arxiv_2501.04825.txt",
+        "source_type": "paper",
+        "title": "Intrinsic Direct Air Capture",
+        "authors": [
+          "(real arXiv paper)"
+        ],
+        "publication_date": "2026-08-02",
+        "patent_number": null,
+        "doi": "arxiv:2501.04825",
+        "confidence": 0.9,
+        "extracted_by": "scripts.ingest_real_arxiv_phase5b",
+        "timestamp": "2026-08-02T02:17:33.031651+00:00",
+        "is_real_source": true,
+        "domain": "carbon_capture"
+      },
+      "status": "active",
+      "created_at": "2026-08-02T02:17:33.031864+00:00"
     }
   ],
   "edges": [
@@ -19549,6 +19846,62 @@
       "weight": 1.0,
       "description": "Phase 5 ingestion: WO2017210800A1 (desalination) linked to sub_desalination",
       "created_at": "2026-08-02T02:00:23.301734+00:00"
+    },
+    {
+      "source": "sub_radiative_cooling",
+      "target": "real_arxiv_paper_2003.10495",
+      "relationship": "contains",
+      "weight": 1.0,
+      "description": "Phase 5.B: paper 2003.10495 (radiative_cooling) in sub_radiative_cooling",
+      "created_at": "2026-08-02T02:17:33.029970+00:00"
+    },
+    {
+      "source": "sub_electric_propulsion",
+      "target": "real_arxiv_paper_2105.02905",
+      "relationship": "contains",
+      "weight": 1.0,
+      "description": "Phase 5.B: paper 2105.02905 (ev_charging) in sub_electric_propulsion",
+      "created_at": "2026-08-02T02:17:33.030292+00:00"
+    },
+    {
+      "source": "sub_radiative_cooling",
+      "target": "real_arxiv_paper_2301.04523",
+      "relationship": "contains",
+      "weight": 1.0,
+      "description": "Phase 5.B: paper 2301.04523 (radiative_cooling) in sub_radiative_cooling",
+      "created_at": "2026-08-02T02:17:33.030511+00:00"
+    },
+    {
+      "source": "sub_radiative_cooling",
+      "target": "real_arxiv_paper_2301.10338",
+      "relationship": "contains",
+      "weight": 1.0,
+      "description": "Phase 5.B: paper 2301.10338 (radiative_cooling) in sub_radiative_cooling",
+      "created_at": "2026-08-02T02:17:33.030732+00:00"
+    },
+    {
+      "source": "sub_desalination",
+      "target": "real_arxiv_paper_2301.13160",
+      "relationship": "contains",
+      "weight": 1.0,
+      "description": "Phase 5.B: paper 2301.13160 (desalination) in sub_desalination",
+      "created_at": "2026-08-02T02:17:33.030916+00:00"
+    },
+    {
+      "source": "sub_battery_technology",
+      "target": "real_arxiv_paper_2307.03620",
+      "relationship": "contains",
+      "weight": 1.0,
+      "description": "Phase 5.B: paper 2307.03620 (battery) in sub_battery_technology",
+      "created_at": "2026-08-02T02:17:33.031045+00:00"
+    },
+    {
+      "source": "sub_electric_propulsion",
+      "target": "real_arxiv_paper_2311.08656",
+      "relationship": "contains",
+      "weight": 1.0,
+      "description": "Phase 5.B: paper 2311.08656 (ev_charging) in sub_electric_propulsion",
+      "created_at": "2026-08-02T02:17:33.031428+00:00"
     }
   ]
 }

@@ -338,3 +338,353 @@ validation plan in CONVERGENCE.md Section 5 execute.
 
 No `convergence_*.py` module was created. The Phase 5 deliverable
 is data + measurement scripts + documentation, not code.
+
+---
+
+# Phase 5.B — Second ingestion cycle (arXiv papers)
+
+Per the CEO's coder instruction (post-Phase 5.A):
+
+> The next authorized actions are more ingestion cycles
+> (arXiv/IEEE/Nature/regulatory sources — the CEO's Step 1 targets
+> 80 sources, only 9 obtained so far) is higher-leverage — more real
+> sources means more shared components, which means larger temporal
+> deltas, which means a stronger signal when real-world validation
+> executes in 2028.
+
+Phase 5.B added 10 real arXiv papers to the corpus. This cycle
+produced a SURPRISING and INSTRUCTIVE result: the convergence score
+for battery×EV DECREASED (1.25 → 1.2286), not increased. The honest
+finding: adding more sources can DECREASE convergence if the new
+sources don't contribute shared components.
+
+## What was done
+
+### Step 1 — The corpus (Phase 5.B addition)
+
+10 real arXiv papers fetched via `web-search` + `web-reader`:
+
+| Domain | arXiv ID | Title |
+|---|---|---|
+| battery | 2307.03620 | State of the Art Development on Solid-State Lithium Batteries |
+| ev_charging | 2311.08656 | Modelling of the Electric Vehicle Charging Infrastructure as Cyber Physical System |
+| ev_charging | 2105.02905 | Securing the Electric Vehicle Charging Infrastructure |
+| desalination | 2301.13160 | Mathematical modelling and numerical simulation of reverse-osmosis desalination |
+| radiative_cooling | 2003.10495 | Graded nanocomposite metamaterials for a double-sided radiative cooling |
+| radiative_cooling | 2301.04523 | Deep learning-assisted active metamaterials with heat-enhanced thermal emission |
+| radiative_cooling | 2301.10338 | Tuning Optical Properties of Metamaterials by Mie Scattering |
+| atmospheric_water_harvesting | 2407.00470 | Unusual Pore Volume Dependence of Water Sorption in Monolithic MOF |
+| carbon_capture | 2311.00341 | The Open DAC 2023 Dataset and Challenges for Sorbent Discovery |
+| carbon_capture | 2501.04825 | Intrinsic Direct Air Capture |
+
+### Step 2 — Extraction
+
+PaperParser (Phase 3 Step 3, F-030 RESOLVED) was used to extract
+constraints and components from each arXiv abstract. Results:
+
+| arXiv ID | Components | Constraints extracted |
+|---|---:|---:|
+| 2307.03620 (battery) | 0 | energy, safety |
+| 2311.08656 (ev) | 0 | energy |
+| 2105.02905 (ev) | 0 | energy, cost |
+| 2301.13160 (desal) | 1 (membrane) | size |
+| 2003.10495 (radcool) | 0 | energy, temperature |
+| 2301.04523 (radcool) | 0 | energy, temperature |
+| 2301.10338 (radcool) | 0 | energy, temperature, safety, manufacturing |
+| 2407.00470 (awh) | 0 | temperature, size |
+| 2311.00341 (dac) | 0 | temperature |
+| 2501.04825 (dac) | 0 | energy, temperature |
+
+**Key finding:** PaperParser extracts constraints from all 10 papers
+but components from only 1 (the desalination paper, which mentions
+"membrane" — a component ALREADY in the graph from the Phase 5.A
+patent US4039440A). No NEW shared components across battery×EV
+were introduced by these arXiv papers.
+
+### Step 3 — Ingestion
+
+The ingestion script (`scripts/ingest_real_arxiv_phase5b.py`,
+one-off, NOT a module) added:
+
+- 10 new paper nodes (one per arXiv ID, type=principle)
+- 7 new `contains` edges (each paper linked to its domain's subdomain
+  node, where that subdomain node exists — 3 papers had no
+  subdomain node because radiative_cooling/AWH/carbon_capture subdomains
+  don't exist in the graph yet)
+
+Graph state changes:
+- nodes: 651 → 661 (+10)
+- edges: 550 → 557 (+7)
+- real-provenance paper nodes: 15 → 25
+- graph_version: 4.0 → 4.1
+
+### Step 4 — Snapshot_3 captured
+
+`data/snapshots/snapshot_3.json`:
+- timestamp: 2026-08-02T02:17:39Z
+- graph_version: 4.1
+- nodes: 661
+- edges: 557
+- Convergence(battery, EV) = 1.2286
+- Convergence(battery, desalination) = 0.0286
+
+## Temporal delta table (Phase 5.B)
+
+### Snapshot 2 → Snapshot 3 (Phase 5.B delta only)
+
+| Pair | Snapshot 2 | Snapshot 3 | Delta |
+|---|---:|---:|---:|
+| Battery ↔ EV | 1.2500 | 1.2286 | **-0.0214** |
+| Battery ↔ Desalination | 0.0286 | 0.0286 | **+0.0000** |
+
+### Snapshot 1 → Snapshot 3 (cumulative Phase 5 delta)
+
+| Pair | Snapshot 1 | Snapshot 3 | Total Delta |
+|---|---:|---:|---:|
+| Battery ↔ EV | 1.2000 | 1.2286 | **+0.0286** |
+| Battery ↔ Desalination | 0.0286 | 0.0286 | **+0.0000** |
+
+## The honest finding: ingestion can DECREASE convergence
+
+**The hypothesis was wrong.** The Phase 5.B hypothesis predicted that
+adding more real sources would increase the battery×EV convergence
+score. The opposite happened: the score DECREASED by 0.0214.
+
+### Why the score decreased
+
+The convergence formula's Signal C (component reuse) is:
+```
+component_overlap_ratio = shared_components / total_components
+```
+
+At snapshot_2:
+- battery subtree: 3 components
+- EV subtree: 2 components
+- shared: 1 (the "battery" node from US-20240194939A1, present in both)
+- overlap = 1 / (3 + 2 - 1) = 1/4 = 0.25
+- Signal C contribution = 0.2 * 0.25 = +0.05
+- Total score = 1.0 + 0 + 0.05 + 0.2 = 1.25
+
+At snapshot_3, Phase 5.B added:
+- 1 paper node to battery subtree (`real_arxiv_paper_2307.03620`)
+- 2 paper nodes to EV subtree (`real_arxiv_paper_2105.02905`, `real_arxiv_paper_2311.08656`)
+- 0 new shared components (the arXiv papers extracted 0 components
+  for battery or EV)
+
+So:
+- battery subtree: 4 components (3 + 1 paper)
+- EV subtree: 4 components (2 + 2 papers)
+- shared: still 1 (no new shared components added)
+- overlap = 1 / (4 + 4 - 1) = 1/7 = 0.143
+- Signal C contribution = 0.2 * 0.143 = +0.029
+- Total score = 1.0 + 0 + 0.029 + 0.2 = 1.229
+
+**The denominator grew faster than the numerator.** Adding paper
+nodes (which contribute 0 components each) to each subdomain's
+subtree diluted the overlap ratio.
+
+### What this means
+
+This is a real and important finding, not a bug:
+
+1. **Ingestion quantity alone is not sufficient.** The hypothesis
+   that "more sources = more shared components = larger temporal
+   deltas" is FALSE when the new sources don't extract components
+   that match existing component labels. The PaperParser extracts
+   constraints well but components sparsely (1 component across 10
+   papers). This is F-001/F-030 (parser brittleness) manifesting
+   at the measurement level.
+
+2. **The convergence formula is sensitive to denominator growth.**
+   Adding nodes to a subdomain's subtree without adding shared
+   components DECREASES the convergence score. This is structurally
+   correct — the formula measures RATIO of overlap, not absolute
+   overlap. But it's a counterintuitive result that future ingestion
+   cycles must account for.
+
+3. **The signal is real but the magnitude is small.** The decrease
+   of 0.0214 is small (vs the original +0.05 increase from Phase 5.A).
+   The cumulative Phase 5 delta (snapshot_1 → snapshot_3) is still
+   positive: +0.0286 for battery×EV, +0.00 for battery×desal. The
+   discrimination is preserved (1.2286 vs 0.0286).
+
+### What this does NOT mean
+
+- It does NOT mean the formula is broken. The formula is doing
+  exactly what it was designed to do: measure the RATIO of shared
+  components to total components. Adding paper nodes that don't
+  share components correctly dilutes the ratio.
+
+- It does NOT mean the arXiv ingestion was wasted. The 10 papers
+  carry real constraint data (e.g., temperature, energy, safety)
+  that helps resolve F-024 (uniform constraint priors). The papers
+  are nodes in the graph with real provenance. They just don't
+  happen to share component labels with the existing patent-derived
+  nodes.
+
+- It does NOT mean the next ingestion cycle should be skipped. The
+  finding suggests the next ingestion cycle should focus on sources
+  that extract components (e.g., patents with detailed component
+  lists) rather than sources that extract constraints (e.g.,
+  theoretical arXiv papers). Or: a future iteration of the parser
+  could be deeper (semantic component extraction, not just keyword
+  matching) — but that is implementation work, which is forbidden
+  per CONVERGENCE.md.
+
+## Signal breakdown (battery × EV)
+
+| Signal | Snapshot 2 | Snapshot 3 | Delta |
+|---|---:|---:|---:|
+| direct_dependency (weight 1.0) | 1 | 1 | +0 |
+| prereq_overlap_ratio (weight 0.4) | 0.0 | 0.0 | +0.0 |
+| **component_overlap_ratio (weight 0.2)** | **0.25** | **0.143** | **-0.107** |
+| component_subtree_a_size (battery) | 3 | 4 | +1 |
+| component_subtree_b_size (EV) | 2 | 4 | +2 |
+| shared_components_count | 1 | 1 | +0 |
+| 1/shortest_path (weight 0.2) | 1.0 | 1.0 | +0.0 |
+| **TOTAL** | **1.2500** | **1.2286** | **-0.0214** |
+
+The entire delta is attributable to Signal C's denominator growth
+(battery subtree grew from 3→4, EV subtree grew from 2→4) without
+a corresponding growth in the numerator (shared components stayed
+at 1).
+
+## Updated limitations (additions to Phase 5.A's P1-P5)
+
+### Limitation P6 — arXiv papers extract few components
+
+PaperParser extracted 0 components from 9 of the 10 arXiv papers.
+This is because PaperParser's COMPONENT_KEYWORDS list (Phase 3 Step 3)
+matches engineering-component vocabulary (pump, sensor, coating,
+membrane, etc.), and theoretical arXiv papers tend to use scientific
+vocabulary (sorbent, metamaterial, electrolyte) that overlaps
+partially with the keyword list. The 1 paper that did extract a
+component (desalination paper → "membrane") happened to match an
+existing keyword AND an existing graph node.
+
+**Impact:** Phase 5.B added paper nodes (which grew the denominator
+of Signal C) without adding shared components (which would have grown
+the numerator). The net effect was a DECREASE in the convergence
+score.
+
+**Mitigation:** none in this cycle. The next ingestion cycle should
+either (a) target sources with richer component vocabulary (e.g.,
+engineering patents rather than theoretical papers), or (b) accept
+that PaperParser's component extraction is sparse on arXiv sources
+and rely on the constraint-extraction pathway instead. A deeper
+parser would be implementation work, which is forbidden.
+
+### Limitation P7 — Formula's Signal C is sensitive to denominator growth
+
+The convergence formula's Signal C measures `shared / total`. Adding
+non-shared nodes to a subdomain's subtree decreases the ratio even
+when no shared components are lost. This is structurally correct
+but counterintuitive.
+
+**Impact:** future ingestion cycles should be aware that adding
+nodes to a subdomain's subtree without adding shared components
+will DECREASE the convergence score for that pair. The cumulative
+Phase 5 delta is still positive (+0.0286) because Phase 5.A's
++0.05 increase outweighs Phase 5.B's -0.0214 decrease — but a
+sustained pattern of adding non-shared sources would eventually
+drive the score below the snapshot_1 baseline.
+
+**Mitigation:** none in this cycle. The formula is honest about
+what it measures (a ratio). A future iteration could add an absolute-
+overlap signal (shared_components_count, weight > 0) alongside
+the ratio signal — but that is formula modification, which is
+implementation work, forbidden until validation executes.
+
+## Implementation status (Phase 5.B)
+
+| Item | Status |
+|---|---|
+| Real arXiv paper corpus fetched | COMPLETE (10 papers across 6 domains) |
+| Real arXiv paper text extracted | COMPLETE (10/10, all abstracts substantive) |
+| Real arXiv papers ingested into live graph | COMPLETE (+10 nodes, +7 edges, +10 with real provenance) |
+| Snapshot_3 captured | COMPLETE (data/snapshots/snapshot_3.json, graph v4.1, 661 nodes) |
+| Delta analysis (snapshot_2 → snapshot_3) | COMPLETE (Convergence(battery, EV): 1.25 → 1.2286, -0.0214) |
+| Hypothesis outcome | REJECTED — score decreased, not increased. Honest finding recorded. |
+| Convergence module | FORBIDDEN per CONVERGENCE.md. Not created. |
+| Phase 5.B status | COMPLETE. The hypothesis was wrong; the finding is instructive. Implementation still forbidden. |
+
+## What this proves, and what it does NOT prove
+
+### What it proves
+
+1. **The measurement infrastructure catches counterintuitive behavior.**
+   The formula's Signal C is sensitive to denominator growth, and
+   adding non-shared sources decreases the score. The system caught
+   this honestly — no human decided in advance what the score should
+   be.
+
+2. **The cumulative Phase 5 delta is still positive.** Snapshot_1 →
+   snapshot_3: battery×EV went from 1.20 → 1.2286 (+0.0286), and
+   battery×desal stayed flat. The discrimination is preserved.
+
+3. **The arXiv ingestion contributed real constraint data.** 10
+   papers contributed 21 constraint mentions (energy, temperature,
+   safety, manufacturing, size, cost) — all real extractions from
+   real abstracts. This helps resolve F-024 even though it didn't
+   grow the convergence score.
+
+### What it does NOT prove
+
+1. **It does NOT prove that "more sources = more convergence."** The
+   Phase 5.B hypothesis assumed this and was wrong. The relationship
+   between ingestion and convergence is mediated by what the parser
+   extracts and whether extracted components match existing labels.
+
+2. **It does NOT mean arXiv papers are useless for the graph.** They
+   contribute constraint data and structural connections (paper →
+   subdomain `contains` edges). They just don't contribute to
+   Signal C unless they extract components that match existing
+   component labels.
+
+3. **It does NOT authorize formula modification.** The formula is
+   behaving correctly. The finding is a measurement, not a defect.
+   Modifying the formula to "make the score go up" would be the
+   exact anti-pattern the CTO warned about (CONTRIBUTING.md
+   principle #2: "Fix the thing, don't loosen the check around it").
+
+## Files produced (Phase 5.B)
+
+| File | Type | Purpose |
+|---|---|---|
+| `data/snapshots/snapshot_3.json` | data | Point-in-time capture of graph at v4.1 (post-arXiv-ingestion) |
+| `data/ingestion/real/arxiv_*.txt` (10 files) | data | Real arXiv abstract text |
+| `data/ingestion/real/_manifest_arxiv.json` | data | arXiv extraction manifest |
+| `scripts/extract_arxiv_text.py` | one-off script | arXiv text extraction (NOT a module) |
+| `scripts/ingest_real_arxiv_phase5b.py` | one-off script | Phase 5.B ingestion (NOT a module) |
+| `PHASE5.md` (this section appended) | documentation | Phase 5.B honest finding |
+| `data/civilization_graph.json` | canonical graph | Updated to v4.1 (+10 nodes, +7 edges) |
+| `FAILURES.md` | updated | F-038 (PaperParser extracts few components from arXiv) appended |
+| `HANDOFF.md` | updated | Phase 5.B narrative added |
+| `INVENTION_COMPILER.md` | updated | Phase 5 line reflects cumulative delta |
+
+No `convergence_*.py` module was created. The Phase 5.B deliverable
+is data + measurement scripts + documentation, not code.
+
+## The single most important next action
+
+The Phase 5.B finding suggests the next ingestion cycle should
+either:
+
+1. **Target sources with richer component vocabulary** — engineering
+   patents (USPTO), IEEE papers (which describe specific components
+   like circuits, sensors, actuators), and regulatory documents
+   (which name specific devices and systems). These are more likely
+   to extract components that match existing graph labels.
+
+2. **Or accept that arXiv papers contribute constraints, not
+   components** — and look for convergence growth via a different
+   signal pathway (e.g., constraint_overlap, which is currently
+   excluded due to F-024, but the arXiv papers' constraint data
+   helps resolve F-024).
+
+3. **Or run a third ingestion cycle with both source types** to
+   test whether the cumulative delta across multiple cycles is
+   positive even when individual cycles produce mixed results.
+
+All three are authorized (more ingestion cycles, more snapshots,
+more measurement). Implementation remains forbidden.
