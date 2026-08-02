@@ -658,13 +658,13 @@
           "actual_events": [
             [
               "ELECTROCHEMICAL_ENERGY_STORAGE",
-              "SAFETY_PROTECTION",
-              "THERMAL_MANAGEMENT"
+              "ELECTRON_COLLECTION",
+              "INTERCALATION"
             ],
             [
               "ELECTROCHEMICAL_ENERGY_STORAGE",
-              "ELECTRON_COLLECTION",
-              "INTERCALATION"
+              "SAFETY_PROTECTION",
+              "THERMAL_MANAGEMENT"
             ]
           ],
           "top10": [
@@ -1392,14 +1392,14 @@
           "all_candidates_count": 375,
           "actual_events": [
             [
-              "ELECTROCHEMICAL_ENERGY_STORAGE",
-              "ELECTRON_COLLECTION",
-              "INTERCALATION"
-            ],
-            [
               "FAST_CHARGING",
               "SAFETY_PROTECTION",
               "THERMAL_MANAGEMENT"
+            ],
+            [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "ELECTRON_COLLECTION",
+              "INTERCALATION"
             ],
             [
               "CELL_ASSEMBLY",
@@ -1515,11 +1515,6 @@
           "all_candidates_count": 375,
           "actual_events": [
             [
-              "ELECTROCHEMICAL_ENERGY_STORAGE",
-              "FAST_CHARGING",
-              "THERMAL_MANAGEMENT"
-            ],
-            [
               "FAST_CHARGING",
               "SAFETY_PROTECTION",
               "THERMAL_MANAGEMENT"
@@ -1528,6 +1523,11 @@
               "CELL_ASSEMBLY",
               "ELECTROCHEMICAL_ENERGY_STORAGE",
               "ELECTRODE_COATING"
+            ],
+            [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "FAST_CHARGING",
+              "THERMAL_MANAGEMENT"
             ]
           ],
           "top10": [
@@ -2329,13 +2329,13 @@
           "actual_events": [
             [
               "ELECTROCHEMICAL_ENERGY_STORAGE",
-              "SAFETY_PROTECTION",
-              "THERMAL_MANAGEMENT"
+              "ELECTRON_COLLECTION",
+              "INTERCALATION"
             ],
             [
               "ELECTROCHEMICAL_ENERGY_STORAGE",
-              "ELECTRON_COLLECTION",
-              "INTERCALATION"
+              "SAFETY_PROTECTION",
+              "THERMAL_MANAGEMENT"
             ]
           ],
           "top10": [
@@ -3063,14 +3063,14 @@
           "all_candidates_count": 375,
           "actual_events": [
             [
-              "ELECTROCHEMICAL_ENERGY_STORAGE",
-              "ELECTRON_COLLECTION",
-              "INTERCALATION"
-            ],
-            [
               "FAST_CHARGING",
               "SAFETY_PROTECTION",
               "THERMAL_MANAGEMENT"
+            ],
+            [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "ELECTRON_COLLECTION",
+              "INTERCALATION"
             ],
             [
               "CELL_ASSEMBLY",
@@ -3187,11 +3187,6 @@
           "all_candidates_count": 375,
           "actual_events": [
             [
-              "ELECTROCHEMICAL_ENERGY_STORAGE",
-              "FAST_CHARGING",
-              "THERMAL_MANAGEMENT"
-            ],
-            [
               "FAST_CHARGING",
               "SAFETY_PROTECTION",
               "THERMAL_MANAGEMENT"
@@ -3200,6 +3195,11 @@
               "CELL_ASSEMBLY",
               "ELECTROCHEMICAL_ENERGY_STORAGE",
               "ELECTRODE_COATING"
+            ],
+            [
+              "ELECTROCHEMICAL_ENERGY_STORAGE",
+              "FAST_CHARGING",
+              "THERMAL_MANAGEMENT"
             ]
           ],
           "top10": [
@@ -6335,19 +6335,38 @@
         "ELECTRODE_COATING",
         "ELECTRON_COLLECTION"
       ],
+      "in_candidate_set": true,
+      "top10_threshold_at_T": {
+        "formula_b": 0.8576,
+        "velocity_adjacency": 0.8
+      },
+      "direct_scores": {
+        "formula_b": 0.8576,
+        "velocity_adjacency": 0.8,
+        "velocity_only": 0.8,
+        "adjacency_only": 1.0
+      },
       "formula_b": {
         "rank_in_top10": null,
-        "score": null,
-        "in_top10": false,
-        "note": "not in Top-10 under this formula (may or may not be in candidate set)"
+        "score_from_top10": null,
+        "direct_score": 0.8576,
+        "top10_threshold": 0.8576,
+        "score_vs_threshold": 0.0,
+        "tied_with_top10": true,
+        "score_matches_top10": null,
+        "in_top10": false
       },
       "velocity_adjacency": {
         "rank_in_top10": null,
-        "score": null,
-        "in_top10": false,
-        "note": "not in Top-10 under this formula (may or may not be in candidate set)"
+        "score_from_top10": null,
+        "direct_score": 0.8,
+        "top10_threshold": 0.8,
+        "score_vs_threshold": 0.0,
+        "tied_with_top10": true,
+        "score_matches_top10": null,
+        "in_top10": false
       },
-      "verdict": "CE scored LOW under both formulas. Neither formula flags this combination. The counterexample record may need updating \u2014 the CE was originally reported under a different formula version."
+      "verdict": "CE direct score TIES the Top-10 threshold under Formula B (0.857600 = threshold 0.857600), but the combo is not in the Top-10 list because other combos came first in the sort order (stable sort on equal scores). This is 'tied but not ranked,' distinct from 'below threshold.' The COUNTEREXAMPLE_REGISTRY.md claimed score still cannot be reproduced."
     },
     {
       "ce_id": "CE-002",
@@ -6358,19 +6377,38 @@
         "ION_TRANSPORT",
         "SAFETY_PROTECTION"
       ],
+      "in_candidate_set": true,
+      "top10_threshold_at_T": {
+        "formula_b": 0.165,
+        "velocity_adjacency": 0.15
+      },
+      "direct_scores": {
+        "formula_b": 0.005,
+        "velocity_adjacency": 0.0,
+        "velocity_only": 0.0,
+        "adjacency_only": 0.166667
+      },
       "formula_b": {
         "rank_in_top10": null,
-        "score": null,
-        "in_top10": false,
-        "note": "not in Top-10 under this formula (may or may not be in candidate set)"
+        "score_from_top10": null,
+        "direct_score": 0.005,
+        "top10_threshold": 0.165,
+        "score_vs_threshold": -0.16,
+        "tied_with_top10": false,
+        "score_matches_top10": null,
+        "in_top10": false
       },
       "velocity_adjacency": {
         "rank_in_top10": null,
-        "score": null,
-        "in_top10": false,
-        "note": "not in Top-10 under this formula (may or may not be in candidate set)"
+        "score_from_top10": null,
+        "direct_score": 0.0,
+        "top10_threshold": 0.15,
+        "score_vs_threshold": -0.15,
+        "tied_with_top10": false,
+        "score_matches_top10": null,
+        "in_top10": false
       },
-      "verdict": "CE scored LOW under both formulas. Neither formula flags this combination. The counterexample record may need updating \u2014 the CE was originally reported under a different formula version."
+      "verdict": "CE scored LOW under both formulas (FB direct score 0.005000 vs threshold 0.165000; v+a direct score 0.000000 vs threshold 0.150000). Neither formula flags this combination. The COUNTEREXAMPLE_REGISTRY.md claimed score cannot be reproduced by the current script \u2014 the CE record was likely written under a different formula version."
     },
     {
       "ce_id": "CE-003",
@@ -6381,19 +6419,38 @@
         "ELECTRON_COLLECTION",
         "ION_TRANSPORT"
       ],
+      "in_candidate_set": true,
+      "top10_threshold_at_T": {
+        "formula_b": 0.11,
+        "velocity_adjacency": 0.1
+      },
+      "direct_scores": {
+        "formula_b": 0.003333,
+        "velocity_adjacency": 0.0,
+        "velocity_only": 0.0,
+        "adjacency_only": 0.166667
+      },
       "formula_b": {
         "rank_in_top10": null,
-        "score": null,
-        "in_top10": false,
-        "note": "not in Top-10 under this formula (may or may not be in candidate set)"
+        "score_from_top10": null,
+        "direct_score": 0.003333,
+        "top10_threshold": 0.11,
+        "score_vs_threshold": -0.106667,
+        "tied_with_top10": false,
+        "score_matches_top10": null,
+        "in_top10": false
       },
       "velocity_adjacency": {
         "rank_in_top10": null,
-        "score": null,
-        "in_top10": false,
-        "note": "not in Top-10 under this formula (may or may not be in candidate set)"
+        "score_from_top10": null,
+        "direct_score": 0.0,
+        "top10_threshold": 0.1,
+        "score_vs_threshold": -0.1,
+        "tied_with_top10": false,
+        "score_matches_top10": null,
+        "in_top10": false
       },
-      "verdict": "CE scored LOW under both formulas. Neither formula flags this combination. The counterexample record may need updating \u2014 the CE was originally reported under a different formula version."
+      "verdict": "CE scored LOW under both formulas (FB direct score 0.003333 vs threshold 0.110000; v+a direct score 0.000000 vs threshold 0.100000). Neither formula flags this combination. The COUNTEREXAMPLE_REGISTRY.md claimed score cannot be reproduced by the current script \u2014 the CE record was likely written under a different formula version."
     }
   ]
 }

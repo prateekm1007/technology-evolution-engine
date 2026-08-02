@@ -377,82 +377,164 @@ def verify_byte_equality_of_rankings(fb_results, va_results):
 # ─────────────────────────────────────────────────────────────────────────────
 
 def check_counterexample(ce_id, T, combo, fb_results, va_results):
-    """Look up the specified combination in the per-T results.
+    """Score the specified combination directly under each formula variant.
 
-    Returns: rank and score under Formula B vs velocity+adjacency,
-    and whether the combo was even in the candidate set at T.
+    This function calls the scoring functions directly on the combo
+    (imported from run_ablation.py), rather than only looking it up
+    in the pre-computed Top-10. This ensures the persisted JSON
+    contains the actual scores for every CE, whether or not it made
+    the Top-10 — closing the EP-1/EP-12 artifact-trail gap flagged
+    in the external review of commit 829ac26.
+
+    Returns: direct scores under all four scoring variants, plus
+    Top-10 rank (if applicable), candidate-set membership, and the
+    Top-10 score threshold at T (so the reader can see whether the
+    CE score is above or below the cutoff).
     """
-    # Find the T entry
+    # Find the T entry in the pre-computed Top-10 results
     fb_T = next((r for r in fb_results if r["T"] == T), None)
     va_T = next((r for r in va_results if r["T"] == T), None)
+
+    combo_set = frozenset(combo)
+    combo_list = sorted(combo)
+
+    # Compute priors and candidate set at T (needed for direct scoring
+    # and for candidate-set membership check)
+    priors = get_priors(T)
+    mature = get_mature(T)
+    combos_at_T = get_combos(mature, T)
+    in_candidate_set = combo_set in combos_at_T
+
+    # Compute Top-10 score threshold at T (min score in Top-10)
+    fb_threshold = None
+    va_threshold = None
+    if fb_T and fb_T["ranked_top10"]:
+        fb_threshold = min(s for _, s in fb_T["ranked_top10"])
+    if va_T and va_T["ranked_top10"]:
+        va_threshold = min(s for _, s in va_T["ranked_top10"])
+
+    # Direct scores under all four scoring variants
+    direct_scores = {
+        "formula_b": score_formula_b_frozen(combo_list, T, priors),
+        "velocity_adjacency": score_velocity_adjacency(combo_list, T, priors),
+        "velocity_only": score_velocity_only(combo_list, T, priors),
+        "adjacency_only": score_adjacency_only(combo_list, T, priors),
+    }
+
+    # Round for readability
+    direct_scores = {k: round(v, 6) for k, v in direct_scores.items()}
 
     result = {
         "ce_id": ce_id,
         "T": T,
         "combo": combo,
+        "in_candidate_set": in_candidate_set,
+        "top10_threshold_at_T": {
+            "formula_b": fb_threshold,
+            "velocity_adjacency": va_threshold,
+        },
+        "direct_scores": direct_scores,
         "formula_b": None,
         "velocity_adjacency": None,
         "verdict": None,
     }
 
-    combo_set = frozenset(combo)
-
+    # Look up Top-10 rank under each formula (for the in_top10 verdict)
     for label, r_T in [("formula_b", fb_T), ("velocity_adjacency", va_T)]:
         if r_T is None:
             result[label] = {"error": f"T={T} not in TIMELINE"}
             continue
 
-        # Check if combo is in the Top-10
         rank = None
-        score = None
+        score_from_top10 = None
         for i, (c, s) in enumerate(r_T["ranked_top10"]):
             if frozenset(c) == combo_set:
                 rank = i + 1
-                score = s
+                score_from_top10 = s
                 break
 
-        if rank is not None:
-            result[label] = {
-                "rank_in_top10": rank,
-                "score": score,
-                "in_top10": True,
-            }
-        else:
-            # Check if it's in the candidate set at all (we'd need to
-            # re-score it; the ablation script doesn't preserve all
-            # candidates). For now, report "not in top 10".
-            result[label] = {
-                "rank_in_top10": None,
-                "score": None,
-                "in_top10": False,
-                "note": "not in Top-10 under this formula (may or may not be in candidate set)",
-            }
+        threshold = fb_threshold if label == "formula_b" else va_threshold
+        direct = direct_scores[label]
+        score_vs_threshold = (
+            round(direct - threshold, 6) if threshold is not None else None
+        )
+        # "tied_with_top10" = score equals the Top-10 threshold but
+        # combo isn't in the Top-10 list (because the sort is stable
+        # and other combos came first). This is distinct from "below
+        # threshold" (genuinely low score).
+        tied_with_top10 = (
+            rank is None and threshold is not None and abs(direct - threshold) < 1e-9
+        )
 
-    # Verdict
+        result[label] = {
+            "rank_in_top10": rank,
+            "score_from_top10": score_from_top10,
+            "direct_score": direct,
+            "top10_threshold": threshold,
+            "score_vs_threshold": score_vs_threshold,
+            "tied_with_top10": tied_with_top10,
+            "score_matches_top10": (
+                abs(score_from_top10 - direct) < 1e-9
+                if score_from_top10 is not None else None
+            ),
+            "in_top10": rank is not None,
+        }
+
+    # Verdict based on Top-10 membership AND score-vs-threshold
     fb_in = result["formula_b"].get("in_top10", False) if isinstance(result["formula_b"], dict) else False
     va_in = result["velocity_adjacency"].get("in_top10", False) if isinstance(result["velocity_adjacency"], dict) else False
+    fb_tied = result["formula_b"].get("tied_with_top10", False) if isinstance(result["formula_b"], dict) else False
+    va_tied = result["velocity_adjacency"].get("tied_with_top10", False) if isinstance(result["velocity_adjacency"], dict) else False
+
+    fb_score = direct_scores["formula_b"]
+    va_score = direct_scores["velocity_adjacency"]
 
     if fb_in and not va_in:
         result["verdict"] = (
-            f"CE scored HIGH under Formula B (in Top-10) but LOW under "
-            f"velocity+adjacency (not in Top-10). Consistent with the "
-            f"necessity hypothesis (FEC-002): cost_bonus was the term "
-            f"responsible for the false positive."
+            f"CE scored HIGH under Formula B (in Top-10 at rank "
+            f"{result['formula_b']['rank_in_top10']}, direct score "
+            f"{fb_score:.6f}) but LOW under velocity+adjacency (direct "
+            f"score {va_score:.6f}, below Top-10 threshold "
+            f"{va_threshold:.6f}). Consistent with the necessity "
+            f"hypothesis (FEC-002): cost_bonus was the term responsible "
+            f"for the false positive."
         )
     elif fb_in and va_in:
         result["verdict"] = (
-            f"CE scored HIGH under BOTH formulas. The simplified formula "
-            f"does NOT eliminate the false positive. The necessity "
-            f"hypothesis (FEC-002) is NOT supported for this CE — there "
-            f"is another factor keeping this combo in the Top-10."
+            f"CE scored HIGH under BOTH formulas (FB rank "
+            f"{result['formula_b']['rank_in_top10']}, v+a rank "
+            f"{result['velocity_adjacency']['rank_in_top10']}). The "
+            f"simplified formula does NOT eliminate the false positive. "
+            f"The necessity hypothesis (FEC-002) is NOT supported for "
+            f"this CE — there is another factor keeping this combo in "
+            f"the Top-10."
         )
     elif not fb_in and not va_in:
-        result["verdict"] = (
-            f"CE scored LOW under both formulas. Neither formula flags "
-            f"this combination. The counterexample record may need "
-            f"updating — the CE was originally reported under a different "
-            f"formula version."
-        )
+        # Distinguish "tied with threshold" from "below threshold"
+        if fb_tied or va_tied:
+            tied_label = "Formula B" if fb_tied else "velocity+adjacency"
+            tied_threshold = fb_threshold if fb_tied else va_threshold
+            tied_score = fb_score if fb_tied else va_score
+            result["verdict"] = (
+                f"CE direct score TIES the Top-10 threshold under "
+                f"{tied_label} ({tied_score:.6f} = threshold "
+                f"{tied_threshold:.6f}), but the combo is not in the "
+                f"Top-10 list because other combos came first in the "
+                f"sort order (stable sort on equal scores). This is "
+                f"'tied but not ranked,' distinct from 'below "
+                f"threshold.' The COUNTEREXAMPLE_REGISTRY.md claimed "
+                f"score still cannot be reproduced."
+            )
+        else:
+            result["verdict"] = (
+                f"CE scored LOW under both formulas (FB direct score "
+                f"{fb_score:.6f} vs threshold {fb_threshold:.6f}; v+a direct "
+                f"score {va_score:.6f} vs threshold {va_threshold:.6f}). "
+                f"Neither formula flags this combination. The "
+                f"COUNTEREXAMPLE_REGISTRY.md claimed score cannot be "
+                f"reproduced by the current script — the CE record was "
+                f"likely written under a different formula version."
+            )
     else:
         result["verdict"] = (
             f"CE scored LOW under Formula B but HIGH under velocity+adjacency. "

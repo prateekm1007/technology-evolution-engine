@@ -50,6 +50,7 @@ the sentence until all checks pass, or removes the sentence.
 | 2.6 | If the commit ships a precision number, is the denominator present in the same commit? | (EP-8) |
 | 2.7 | If the commit ships an equivalence claim, are per-unit arrays present in the same commit or referenced in a prior artifact? | (EP-9) |
 | 2.8 | Does the previous phase have open items? If yes, are they resolved or explicitly deferred with a stated reason in the commit message? | (EP-10) |
+| 2.9 | If the markdown cites specific numbers from a JSON or other persisted artifact, do those numbers exist in the artifact at the cited path? | Grep each cited number against the artifact's actual fields. If the artifact has `null` or is missing the field the markdown cites, the commit fails. (EP-1, EP-12 — added per F-042) |
 
 If any check fails, the commit is not made. The coder resolves the
 failure and re-runs the checklist.

@@ -594,3 +594,33 @@ evidence standards that did not yet exist at commit time:
 - Updates CONSTITUTION.md, GOVERNANCE.md, ANTI_ENTROPY.md to cross-reference EVIDENCE_STANDARDS.md.
 Commit C of this governance pass retitles the five violating Phase 13 documents with headers stating the violation, per the FAILURES.md convention (P66, account-deletion, F-035 through F-040) that failure records are retained, not deleted. The original Phase 13 content is unchanged (per CONSTITUTION.md Law 7, historical permanence).
 **Lesson:** The project's evidence discipline was previously enforced at the code layer (tests, benchmarks, replay) and at the formula layer (FORMULA_B_FROZEN.md, ablation). It was NOT enforced at the documentation layer — Phase 13 was the first major documentation-only phase, and the absence of an evidence standard for prose claims produced exactly the violations EP-1 through EP-12 now forbid. The fix is not to delete Phase 13 (the failure record has value) but to add the loop (EVIDENCE_LOOP.md) and the falsifier tracker (EVIDENCE_FALSIFIERS.md) so the next documentation phase cannot repeat the pattern. Per the auditor's framing: the project was holding every other part of the stack to a standard it was not applying to its own narrative summaries. That asymmetry is now closed.
+
+---
+
+### F-042 — check_counterexample() returned null scores; markdown table was ad-hoc (P2, artifact-trail)
+
+**Found:** external review of commit `829ac26` (Phase 13 open items resolution).
+**Repro:**
+```bash
+cd /home/z/my-project/audit/repo
+python3 -c "
+import json
+with open('evidence/observations/phase13_open_items_resolution.json') as f:
+    d = json.load(f)
+for ce in d['counterexample_rerun']:
+    print(ce['ce_id'], ce['formula_b'])
+"
+# Output (before fix):
+# CE-001 {'rank_in_top10': None, 'score': None, 'in_top10': False, 'note': 'not in Top-10 under this formula (may or may not be in candidate set)'}
+# CE-002 {'rank_in_top10': None, 'score': None, 'in_top10': False, 'note': 'not in Top-10 under this formula (may or may not be in candidate set)'}
+# CE-003 {'rank_in_top10': None, 'score': None, 'in_top10': False, 'note': 'not in Top-10 under this formula (may or may not be in candidate set)'}
+```
+**Observed:** The `PHASE_13_OPEN_ITEMS_RESOLUTION.md` Item 3 table reported direct scores (Formula B=0.8576 for CE-001, 0.005 for CE-002, 0.003 for CE-003) and labeled them "computed by `scripts/run_phase13_open_items.py`." But the persisted JSON had `"score": null` for all three CEs. The script's `check_counterexample()` function only looked up combos in the pre-computed Top-10 list; if a combo wasn't in the Top-10, it returned `null` instead of calling the scoring functions directly. The numbers in the markdown table were correct (independently verified by the reviewer) but were populated by an ad-hoc interactive check, not from the persisted artifact.
+
+**Root cause:** `check_counterexample()` in `scripts/run_phase13_open_items.py` was written to look up combos in the pre-computed `fb_results` and `va_results` Top-10 lists, not to call the scoring functions directly. The function had a comment: "Check if it's in the candidate set at all (we'd need to re-score it; the ablation script doesn't preserve all candidates). For now, report 'not in top 10'." The "for now" was never followed up before commit. The markdown table was then written from a separate interactive Python session that called the scoring functions directly — producing correct numbers that were never persisted in the JSON the markdown claimed to cite.
+
+**Severity:** P2 — the numbers were correct and independently reproducible, so no substantive finding was wrong. But the artifact trail was broken: the markdown cited a JSON that did not contain the numbers it claimed to source from. This is exactly the EP-1/EP-12 violation ("no claim without an artifact in the same message"; "diff before commit, always") happening inside the deliverable built to enforce those rules. The reviewer correctly flagged this on principle: "it's happening inside the exact deliverable built to prevent it."
+
+**Status:** RESOLVED — `check_counterexample()` patched to call `score_formula_b_frozen()`, `score_velocity_adjacency()`, `score_velocity_only()`, `score_adjacency_only()` directly on each CE's combination. The function now returns `direct_scores`, `top10_threshold_at_T`, `score_vs_threshold`, `tied_with_top10`, and `verdict` for every CE, whether or not it made the Top-10. The JSON is regenerated and now contains the numbers the markdown cites. The ad-hoc "wait, let me check this" narrative in the original markdown Item 3 has been replaced with flat statements citing JSON fields. Substantive findings are unchanged.
+
+**Lesson:** The evidence loop (EVIDENCE_LOOP.md) Checkpoint 2 (pre-commit) should include a check: "does the persisted artifact contain the numbers the markdown cites?" This is a structural gap in the loop — Checkpoint 2 checks that a diff was shown and that thresholds/denominators are present, but it does not check that the markdown's cited numbers match the JSON's actual fields. A future revision of EVIDENCE_LOOP.md should add this check (2.9: "If the markdown cites specific numbers from a JSON, verify those numbers exist in the JSON at the cited path"). The check is mechanical and could be automated; the manual version is: after writing the markdown, grep each cited number against the JSON and confirm it appears. This would have caught F-042 at commit time rather than at review time.

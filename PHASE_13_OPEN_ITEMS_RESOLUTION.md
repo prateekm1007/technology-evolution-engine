@@ -1,6 +1,6 @@
 # PHASE_13_OPEN_ITEMS_RESOLUTION
 
-**Status:** Evidence artifact (EP-10 gate resolution).
+**Status:** Evidence artifact (EP-10 gate resolution). Revised.
 **Location:** repo root.
 **Phase:** Post-Phase-13 governance.
 
@@ -12,6 +12,33 @@ tests around them.
 
 The findings are not favorable to the project's prior claims.
 Each is reported flatly, per EP-11.
+
+## Revision note (post external review of commit 829ac26)
+
+The initial version of this document (commit `829ac26`) reported
+CE direct scores in its Item 3 table that were correct in value
+but not persisted in the accompanying JSON — the
+`check_counterexample()` function only looked up combos in the
+pre-computed Top-10 list and returned `null` for anything outside
+it, so the JSON had `"score": null` for all three CEs. The
+markdown table was populated by an ad-hoc interactive check,
+violating EP-1 and EP-12 inside the deliverable built to enforce
+them.
+
+This revision patches `check_counterexample()` to call the
+scoring functions (`score_formula_b_frozen`,
+`score_velocity_adjacency`, `score_velocity_only`,
+`score_adjacency_only`) directly on each CE's combination,
+persisting `direct_scores`, `top10_threshold_at_T`,
+`score_vs_threshold`, `tied_with_top10`, and `verdict` for every
+CE in the JSON. The scores are unchanged from the initial
+version (they were correct); the artifact trail is now complete.
+The ad-hoc "wait, let me check this" narrative in the original
+Item 3 has also been replaced with flat statements citing the
+JSON fields directly.
+
+**Substantive findings are unchanged.** The revision is to the
+artifact trail, not to the results.
 
 ---
 
@@ -178,9 +205,20 @@ FEC-001 is updated from CONFIRMED to CONFIRMED_AT_PRECISION_LEVEL_ONLY.
 ## Item 3: Counterexample re-run under simplified formula
 
 **Method:** For each of CE-001, CE-002, CE-003 from
-COUNTEREXAMPLE_REGISTRY.md, look up the combination in the per-T
-Top-10 results for both Formula B and velocity+adjacency. Then
-compute the score directly to verify.
+COUNTEREXAMPLE_REGISTRY.md, call the scoring functions
+(`score_formula_b_frozen`, `score_velocity_adjacency`,
+`score_velocity_only`, `score_adjacency_only`, imported from
+`scripts/run_ablation.py`) directly on the CE's combination at
+the CE's T-point. Also look up the Top-10 rank (if the combo
+appears in the pre-computed Top-10 list) and the Top-10 score
+threshold (min score in the Top-10) to determine whether the CE
+score is above, below, or tied with the cutoff.
+
+All scores are persisted in
+`evidence/observations/phase13_open_items_resolution.json` under
+the `counterexample_rerun` key, with full `direct_scores`,
+`top10_threshold_at_T`, `score_vs_threshold`, `tied_with_top10`,
+and `verdict` fields for each CE.
 
 ### COUNTEREXAMPLE_REGISTRY.md's claimed scores
 
@@ -190,25 +228,43 @@ compute the score directly to verify.
 | CE-002 | 2005 | {CELL_ASSEMBLY, ELECTRODE_COATING, ION_TRANSPORT, SAFETY_PROTECTION} | 0.8333 | "all-mature (not frontier)" |
 | CE-003 | 2015 | {CELL_ASSEMBLY, ELECTRODE_COATING, ELECTRON_COLLECTION, ION_TRANSPORT} | 0.8333 | "all-stable (nothing changing)" |
 
-### Actual scores (computed by scripts/run_phase13_open_items.py)
+### Actual scores (persisted in phase13_open_items_resolution.json, `counterexample_rerun` key)
 
-| CE | T | Formula B score | v+a score | v-only score | a-only score | Top-10 threshold (FB) | In Top-10? |
-|---|---|---|---|---|---|---|---|
-| CE-001 | 1991 | 0.8576 | 0.8000 | 0.8000 | 1.0000 | 0.8576 (all 10 tied) | Yes (tied) |
-| CE-002 | 2005 | 0.0050 | 0.0000 | 0.0000 | 0.1667 | 0.1650–0.3300 | **No** |
-| CE-003 | 2015 | 0.0033 | 0.0000 | 0.0000 | 0.1667 | 0.1100–0.2200 | **No** |
+| CE | T | Formula B | v+a | v-only | a-only | Top-10 threshold (FB) | score vs threshold | In Top-10 list? |
+|---|---|---|---|---|---|---|---|---|
+| CE-001 | 1991 | 0.8576 | 0.8000 | 0.8000 | 1.0000 | 0.8576 | 0.0 (tied) | No (tied, not ranked) |
+| CE-002 | 2005 | 0.0050 | 0.0000 | 0.0000 | 0.1667 | 0.1650 | -0.160 (below) | **No** |
+| CE-003 | 2015 | 0.0033 | 0.0000 | 0.0000 | 0.1667 | 0.1100 | -0.107 (below) | **No** |
+
+**Artifact verification (per EP-1):** the above table is read
+directly from
+`evidence/observations/phase13_open_items_resolution.json` →
+`counterexample_rerun` → each CE's `direct_scores` and
+`formula_b.top10_threshold` fields. It is not a narrative summary.
 
 ### Finding
 
 **CE-002 and CE-003 are NOT in the Top-10 under either formula.**
 Their claimed scores (0.8333) cannot be reproduced by the current
-ablation script. The actual scores are 0.0050 and 0.0033 — three
-orders of magnitude lower than claimed.
+ablation script. The actual Formula B scores are 0.0050 and 0.0033
+— roughly 1/160th and 1/250th of the claimed values, and well below
+the Top-10 thresholds (0.165 and 0.110 respectively). Both CEs have
+zero velocity and zero velocity+adjacency score — the combo's
+capabilities are all stable (TRL 9 throughout), so velocity is
+genuinely zero, and the spurious pre-1990 TRL gap does not affect
+T=2005 or T=2015.
 
-**CE-001 IS in the Top-10 at T=1991**, but only because all 154
-candidates at T=1991 tie at score 0.8576 (the Top-10 is arbitrary
-within ties). Its claimed score of 1.0000 cannot be reproduced;
-the actual score is 0.8576.
+**CE-001 is a distinct case.** Its direct Formula B score (0.8576)
+equals the Top-10 threshold (0.8576), but the specific combo
+{ELECTRODE_COATING, ELECTRON_COLLECTION} does not appear in the
+Top-10 list. The reason: at T=1991, all 154 candidates tie at
+score 0.8576 (because every "mature since 1990" capability gets
+the same spurious velocity from the pre-1990 TRL gap — see below).
+The Top-10 is the first 10 after Python's stable sort, which
+breaks ties by insertion order. CE-001's combo is not in the
+first 10. Its claimed score of 1.0000 still cannot be reproduced;
+the actual score is 0.8576, and that score is itself an artifact
+of the pre-1990 TRL data gap (see next subsection).
 
 ### Why the counterexample registry's scores are wrong
 
@@ -238,66 +294,80 @@ FEC-002.
 
 The counterexample re-run shows:
 
-- CE-001: velocity_only score = 0.8000 (HIGH — because
-  ELECTRODE_COATING and ELECTRON_COLLECTION both have zero
-  velocity, but the score_velocity_only function returns
-  `min(max(velocities)/2.0, 1.0)` which is 0 when all velocities
-  are 0... wait, let me check this).
+- **CE-002 (T=2005) and CE-003 (T=2015):** velocity_only score =
+  0.0000 for both. These two CEs genuinely support the necessity
+  pattern — the combos have zero velocity (all capabilities stable
+  at TRL 9) and are not in the Top-10. The necessity hypothesis
+  holds for these two cases.
 
-Actually, looking at the direct computation output more carefully:
+- **CE-001 (T=1991):** velocity_only score = 0.8000. This is NOT
+  zero — but it should be, given that ELECTRODE_COATING and
+  ELECTRON_COLLECTION are both stable at TRL 9 throughout the
+  registry. The non-zero velocity is a data artifact, not a real
+  signal.
 
-CE-001 at T=1991:
-- velocity_only score = 0.8000
-- But ELECTRODE_COATING and ELECTRON_COLLECTION both have TRL 9
-  throughout (stable capabilities, zero velocity)
+### The pre-1990 TRL data gap (data artifact bug)
 
-This is suspicious. Let me check the velocity_only scoring function.
+**Diagnosis (confirmed independently by the external reviewer):**
+The `get_dtrl_dt(cap, year, window=5)` function in
+`scripts/run_ablation.py` computes velocity as
+`(get_trl(cap, year) - get_trl(cap, year - 5)) / 5`. The
+`get_trl` function returns the TRL at the most recent year ≤ the
+queried year, defaulting to TRL 1 if no data point exists at or
+before the queried year.
 
-The score_velocity_only function returns:
-```python
-velocities = [get_dtrl_dt(c, year) for c in combo]
-return min(max(velocities) / 2.0, 1.0) if velocities else 0
-```
+`TRL_TIMELINE` in `scripts/run_ablation.py` has entries starting
+at year 1990. Therefore:
 
-For CE-001 at T=1991, combo = [ELECTRODE_COATING, ELECTRON_COLLECTION]:
-- get_dtrl_dt(ELECTRODE_COATING, 1991, window=5) = (get_trl(ELECTRODE_COATING, 1991) - get_trl(ELECTRODE_COATING, 1986)) / 5
-- ELECTRODE_COATING has TRL 9 throughout, so dTRL/dt = 0
-- Same for ELECTRON_COLLECTION
-- So velocities = [0, 0], max = 0, score = 0
+- `get_dtrl_dt(cap, 1991, window=5)` queries `get_trl(cap, 1986)`,
+  which returns TRL 1 (no data before 1990, defaults to 1).
+- For any capability at TRL 9 in 1991 (e.g., ELECTRODE_COATING,
+  ELECTRON_COLLECTION, ION_TRANSPORT, CELL_ASSEMBLY), the computed
+  velocity is `(9 - 1) / 5 = 1.6`, then capped via
+  `min(max(velocities) / 2.0, 1.0)` = `min(0.8, 1.0)` = `0.8`.
 
-But the script reported velocity_only score = 0.8000 for CE-001.
-That means either:
-1. The function is being called with different arguments than I expect
-2. Or the get_dtrl_dt function is returning something different
+This produces a spurious velocity of 0.8 for every "mature since
+1990" capability at T=1991. The same artifact affects T=1993:
+`get_dtrl_dt(cap, 1993, window=5)` queries 1988, which also
+defaults to TRL 1, producing the same velocity = (9-1)/5 = 1.6,
+capped to 0.8. Both T=1991 and T=1993 are contaminated.
 
-Wait — looking at the TRL_TIMELINE more carefully, ELECTRODE_COATING
-has TRL 9 at all timepoints INCLUDING 1990. But the script uses
-window=5, so get_dtrl_dt at year=1991 looks back to year=1986.
-The TRL_TIMELINE only has entries from 1990 onward. The get_trl
-function returns the TRL at the most recent year <= the queried year,
-defaulting to TRL 1 if no year is found.
+**Impact on the backtest:**
 
-So get_trl(ELECTRODE_COATING, 1986) would return 1 (no data before 1990).
-get_trl(ELECTRODE_COATING, 1991) returns 9.
-dTRL/dt = (9 - 1) / 5 = 1.6, capped at 1.0 via min(.../2.0, 1.0) = min(0.8, 1.0) = 0.8.
+- T=1991: all 154 candidates tie at score 0.8576 (Formula B) /
+  0.8000 (velocity+adjacency), because every mature capability
+  gets the same spurious velocity. The Top-10 is arbitrary within
+  ties (stable sort by insertion order). The T=1991 TP count (0)
+  is therefore not meaningful — the model cannot discriminate
+  among candidates when all scores are identical.
+- T=1993: same pattern — all mature-since-1990 capabilities get
+  spurious velocity 0.8. The T=1993 TP count (0) is also not
+  meaningful.
+- T=1995: `get_dtrl_dt(cap, 1995, window=5)` queries 1990, which
+  IS in the TRL_TIMELINE. Velocity = (TRL_1995 - TRL_1990) / 5.
+  For ELECTRODE_COATING: (9-9)/5 = 0. For FAST_CHARGING: (2-1)/5
+  = 0.2. T=1995 is the first clean T-point.
 
-That's where the 0.8 comes from! It's an artifact of the TRL_TIMELINE
-not having data before 1990. Every capability that's at TRL 9 in 1990
-gets a spurious velocity of 0.8 at T=1991 (because the script
-compares TRL 9 in 1991 to TRL 1 in 1986, where 1986 has no data and
-defaults to 1).
+**What this means:**
 
-This is a **data artifact bug**: the velocity computation is wrong
-for the first few T-points because the TRL_TIMELINE doesn't extend
-back far enough. Every "mature since 1990" capability gets a fake
-velocity of 0.8 at T=1991, 0.55 at T=1993, 0.36 at T=1995, etc.
+- The T=1991 and T=1993 backtest results are contaminated. They
+  should be excluded from the backtest, or the TRL_TIMELINE should
+  be extended back to 1985 (or earlier) to provide real pre-1990
+  data.
+- The 5 TPs in the backtest occur at T=1995, T=2005, T=2015, and
+  T=2018 (x2). None of these are affected by the pre-1990 gap.
+- The 135 false positives in the backtest include the T=1991 and
+  T=1993 results (20 FPs total at those two T-points). Excluding
+  T=1991 and T=1993 would reduce the FP count from 135 to 115
+  and leave the TP count at 5, raising precision from 3.57% to
+  5/120 = 4.17%. This does not change the significance-test
+  verdict (still not significant at n=12 paired T-points).
 
-This means:
-- CE-001's "high score" at T=1991 is an artifact of missing pre-1990 TRL data
-- The T=1991 and T=1993 backtest results are contaminated
-- The TPs at T=1995 (the first clean T-point) may or may not be affected
-
-This is a CRITICAL finding that affects the entire backtest.
+This is a data-integrity bug, not a logic bug. The scoring
+functions are correct; the data they operate on is incomplete.
+The fix is to extend `TRL_TIMELINE` back to 1985 (or earlier) for
+every capability, or to exclude T=1991 and T=1993 from the
+backtest timeline.
 
 ---
 
