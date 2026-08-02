@@ -1,4 +1,4 @@
-# TEE MASTER HANDOFF (v5.0 — Phase 7 protocols written; smallest machine defined)
+# TEE MASTER HANDOFF (v5.1 — first capability graph built from 15 real patents with CPC codes + evidence)
 
 ## PRE-CODING READ LIST (MANDATORY)
 
