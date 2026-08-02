@@ -1,4 +1,4 @@
-# TEE MASTER HANDOFF (v3.2 — Phase 5.F comparative analysis of normalization approaches)
+# TEE MASTER HANDOFF (v3.3 — Phase 5.F revised: hypotheses not solutions; Phase 6 = Decision phase)
 
 ## PRE-CODING READ LIST (MANDATORY)
 
@@ -554,24 +554,40 @@ approaches. Do NOT build anything.
 
 **Phase 5.F (comparative analysis — see
 `evidence/observations/NORMALIZATION_APPROACHES.md`):**
-Three hypothetical approaches evaluated across 5 dimensions:
+Per CEO v3.3, reframed as three HYPOTHESES (not solutions), with the
+gain for embeddings corrected to "Unknown" (not "high" — the gain
+has not been measured):
 
-| Approach | Complexity | Maintenance | Reproducibility | Expected gain | Constitutional risk |
-|---|---|---|---|---|---|
-| 1. Exact normalization rules | LOW | LOW | LOW | +0.0363 | LOW |
-| 2. Controlled ontology mapping | MEDIUM | MEDIUM | LOW-MEDIUM | +0.07 to +0.11 | MEDIUM |
-| 3. Semantic embeddings | HIGH | HIGH | HIGH (violates Law 7, 8) | speculative | HIGH (violates CEO warning) |
+| Hypothesis | Claim | Complexity | Reproducibility | Expected gain | False-positive risk | Constitutional risk |
+|---|---|---|---|---|---|---|
+| H1 | Deterministic normalization captures most lost signal | Low | High | Moderate (+0.0363) | Low | Low |
+| H2 | Ontology mapping captures additional signal beyond H1 | Medium | Medium–High | Moderate–High (+0.07 to +0.11) | Medium | Medium |
+| H3 | Semantic methods capture additional signal beyond H2 | High | Low | **Unknown** (not measured) | High | High (violates Laws 7, 8 + CEO warning) |
 
-Key finding: Approach 1 is lowest-risk (33% of perfect-normalization
-gain at LOW risk). Approach 2 is viable but requires governance
-process. Approach 3 is forbidden by the CEO's explicit "do not
-build semantic matching" instruction (Phase 5.D, still in force).
+Key finding: H1 is the safest hypothesis to test (33% of perfect-
+normalization gain at LOW risk across all dimensions). H2 has higher
+estimated gain but requires governance. H3 has UNKNOWN gain and
+DIRECTLY violates the CEO's "do not build semantic matching"
+instruction (Phase 5.D, still in force).
+
+**The measurement/explanation/intervention separation (per CEO v3.3):**
+- Measurement: HAVE it (Phase 5.D + 5.E quantified the gap).
+- Explanation: HAVE candidate explanations (H1, H2, H3 are hypotheses).
+- Intervention: do NOT have sufficient evidence. No hypothesis tested.
+  No approach authorized. Decision belongs to CEO.
+
+**Phase structure (per CEO v3.3):**
+```
+Phase 5.A-F: measurement + classification + ceiling + comparative analysis
+Phase 6:     Decision phase — begins only when CEO explicitly decides
+             the expected gain is worth the constitutional risk.
+```
 
 **Phase 5.F implementation status:** COMPLETE. Decision document
-delivered. No code written. No parser changes. No formula changes.
-No governance changes. Awaiting CEO directive on whether to
-authorize investigating a specific approach further, or to accept
-the current saturation and wait for validation.
+delivered (revised per CEO v3.3). No code written. No parser changes.
+No formula changes. No governance changes. Phase 5 stands as the
+endpoint of the analytical phase. Phase 6 (decision) has not begun.
+Awaiting CEO directive.
 
 ## SESSION-HARDENED PRINCIPLES (v1.0)
 

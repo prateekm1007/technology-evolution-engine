@@ -1,26 +1,52 @@
-# NORMALIZATION_APPROACHES — Phase 5.F Decision Document
+# NORMALIZATION_APPROACHES — Phase 5.F Decision Document (revised per CEO v3.3)
 
 **Status:** decision document (analysis, not governance, not code).
 **Location:** `evidence/observations/` (per CEO v3.1: observation layer, not constitutional layer).
-**Phase:** 5.F (per CEO directive, post-Phase 5.E classification exercise).
+**Phase:** 5.F (per CEO directive, post-Phase 5.E classification exercise; revised per CEO v3.3).
 
 > The next cycle should be purely comparative. Do not build anything.
 > Instead, evaluate three hypothetical approaches.
 > The output should be a decision document, not code.
-> — CEO directive, Phase 5.F
+> — CEO directive, Phase 5.F (v3.2)
 
 > I would soften one additional conclusion.
 > You wrote: "The bottleneck is large enough to justify solving."
 > I would instead write: "The bottleneck is large enough to justify
 > investigating candidate solutions."
 > That's a smaller claim, but a safer one.
-> — CEO directive, Phase 5.F
+> — CEO directive, Phase 5.F (v3.2)
 
-This document evaluates three hypothetical approaches to the
-normalization bottleneck identified in Phase 5.D and quantified in
-Phase 5.E. It does NOT recommend an approach. It does NOT authorize
-implementation. It provides the comparative analysis the CEO needs to
-decide whether ANY approach is worth pursuing, and if so, which.
+> Instead of thinking in terms of three solutions, I would think
+> in terms of three hypotheses. That subtle shift is important
+> because it prevents the organization from treating an approach
+> as inevitable.
+>
+> The word "unknown" is more accurate than "high" [for embeddings'
+> expected gain] because the gain has not yet been measured.
+>
+> measurement ≠ explanation ≠ intervention. Right now you have
+> measurements. You have some candidate explanations. You do not
+> yet have sufficient evidence to justify intervention.
+> — CEO directive, Phase 5.F (v3.3)
+
+This document evaluates three **hypotheses** (not solutions) about
+the normalization bottleneck identified in Phase 5.D and quantified
+in Phase 5.E. It does NOT recommend a hypothesis. It does NOT
+authorize implementation. It provides the comparative analysis the
+CEO needs to decide whether ANY hypothesis is worth testing further.
+
+### The three hypotheses
+
+| Hypothesis | Claim |
+|---|---|
+| H1 | Deterministic normalization captures most lost signal. |
+| H2 | Ontology mapping captures additional signal beyond H1. |
+| H3 | Semantic methods capture additional signal beyond H2. |
+
+The framing as hypotheses (not solutions) is deliberate. A solution
+is something you build; a hypothesis is something you test. Until a
+hypothesis is tested against real data, it remains a candidate
+explanation, not an intervention.
 
 ---
 
@@ -337,7 +363,11 @@ Example: `battery` and `batteries` would have cosine similarity
   behavior is opaque — you can't inspect WHY two labels are
   matched, only that their cosine similarity is high.
 
-### Expected gain: POTENTIALLY HIGH (but speculative)
+### Expected gain: UNKNOWN (not measured)
+
+Per CEO v3.3: "The word 'unknown' is more accurate than 'high' because
+the gain has not yet been measured." The gain for H3 has NOT been
+measured. Calling it "potentially high" overstated the evidence.
 
 Based on Phase 5.E classification:
 
@@ -346,7 +376,7 @@ Based on Phase 5.E classification:
 - BUT: the 123 truly unique labels include many that are GENUINELY
   unique (e.g., "8 μm to 13 μm and 16 μm to 28 μm" — a wavelength
   range, not a component).
-- The potential gain is high but UNVERIFIED. The +0.1091 perfect-
+- The potential gain is UNVERIFIED. The +0.1091 perfect-
   normalization gain from Phase 5.E assumes ALL 6 potential matches
   are resolved — embeddings might resolve more, but might also
   introduce false positives that DECREASE the score.
@@ -397,51 +427,58 @@ separate, reducing the discrimination delta).
 | Implementation complexity | HIGH | Model dependency, threshold tuning, storage |
 | Maintenance burden | HIGH | Model versions, threshold drift, vocabulary gaps |
 | Reproducibility risk | HIGH | Violates Law 7; probabilistic, not deterministic |
-| Expected gain | POTENTIALLY HIGH (speculative) | Could be +0.05 to +0.15+; could be negative |
+| Expected gain | UNKNOWN (not measured) | Could be +0.05 to +0.15+; could be negative. Per CEO v3.3: "unknown" is more accurate than "high" |
+| False-positive risk | HIGH | Cosine similarity threshold is opaque; no way to audit why a match was made |
 | Constitutional risk | HIGH | Violates Laws 7, 8; violates CEO's explicit warning |
 
 ---
 
 ## Comparative summary
 
-| Dimension | Approach 1 (Exact rules) | Approach 2 (Ontology) | Approach 3 (Embeddings) |
+Per CEO v3.3, the table is reframed in terms of hypotheses (H1/H2/H3)
+and includes a False-positive risk column. The embeddings' expected
+gain is "Unknown" (not "High") because the gain has not been measured.
+
+| Dimension | H1: Exact normalization | H2: Controlled ontology | H3: Semantic embeddings |
 |---|---|---|---|
-| Implementation complexity | LOW | MEDIUM | HIGH |
-| Maintenance burden | LOW | MEDIUM | HIGH |
-| Reproducibility risk | LOW | LOW-MEDIUM | HIGH |
-| Expected gain | MEDIUM (+0.0363) | MEDIUM (+0.07 to +0.11) | POTENTIALLY HIGH (speculative) |
-| Constitutional risk | LOW | MEDIUM | HIGH |
+| Implementation complexity | Low | Medium | High |
+| Maintenance burden | Low | Medium | High |
+| Reproducibility | High (deterministic) | Medium–High (versioned file) | Low (model versions drift) |
+| Expected gain | Moderate (+0.0363, measured) | Moderate–High (+0.07 to +0.11, estimated) | **Unknown** (not measured; could be negative) |
+| False-positive risk | Low (rules are explicit) | Medium (subjective mapping decisions) | High (cosine similarity threshold is opaque) |
+| Constitutional risk | Low | Medium | High (violates Laws 7, 8 + CEO warning) |
 | **CEO's "semantic matching" warning** | Not applicable | Not applicable | **DIRECTLY VIOLATES** |
 
 ### Key observations
 
-1. **Approach 1 (exact rules) is the safest.** It has low complexity,
-   low maintenance, low reproducibility risk, and low constitutional
-   risk. Its gain is modest (+0.0363) but real and verifiable. It
-   would resolve the 2 abbreviation gaps and prevent future plural
-   gaps.
+1. **H1 (exact normalization) is the safest hypothesis to test.** Low
+   complexity, low maintenance, high reproducibility, low false-
+   positive risk, low constitutional risk. Its gain is modest
+   (+0.0363) but real and verifiable. It would resolve the 2
+   abbreviation gaps and prevent future plural gaps.
 
-2. **Approach 2 (ontology mapping) has higher gain but higher
+2. **H2 (ontology mapping) has higher estimated gain but higher
    governance cost.** It could resolve 4-6 of the 6 potential
    matches (+0.07 to +0.11), but requires a curated mapping file
    with a governance process. The risk of "dogma" (the CEO's
    Phase 5.E warning) is real — mappings added without evidence
    become constitutional.
 
-3. **Approach 3 (embeddings) is the most powerful but the most
-   dangerous.** It could potentially resolve semantic relationships
-   humans didn't identify, but it violates Law 7 (reproducibility),
+3. **H3 (semantic embeddings) has UNKNOWN gain and HIGH risk.** The
+   gain has not been measured — it could be high, moderate, or
+   negative (if false positives merge labels that should stay
+   separate, reducing the discrimination delta). Per CEO v3.3:
+   "unknown" is more accurate than "high" because the gain has
+   not yet been measured. H3 also violates Law 7 (reproducibility),
    Law 8 (verification), and the CEO's explicit warning against
-   semantic matching. Its gain is speculative — it could be high,
-   but it could also be negative (false positives).
+   semantic matching.
 
-4. **The gain gap between approaches is not proportional to the
-   risk gap.** Approach 1 gives 33% of the perfect-normalization
-   gain at LOW risk. Approach 2 gives 65-100% at MEDIUM risk.
-   Approach 3 gives an unknown amount at HIGH risk. The marginal
-   gain from Approach 1 → Approach 2 is +0.04 to +0.07. The
-   marginal gain from Approach 2 → Approach 3 is unknown but
-   carries the highest risk.
+4. **The gain gap between hypotheses is not proportional to the
+   risk gap.** H1 gives 33% of the perfect-normalization gain at
+   LOW risk. H2 gives 65-100% at MEDIUM risk. H3 gives an UNKNOWN
+   amount at HIGH risk. The marginal gain from H1 → H2 is +0.04 to
+   +0.07. The marginal gain from H2 → H3 is unknown and carries
+   the highest risk.
 
 5. **The CEO's "semantic matching" warning applies specifically
    to Approach 3.** Approaches 1 and 2 are deterministic string
@@ -514,7 +551,7 @@ Per the CEO's Phase 5.D instruction (still in force):
 > It does not support the statement:
 >   Semantic matching is the correct solution.
 
-This document adds:
+Per CEO v3.2 (still in force):
 
 > The evidence also supports this statement:
 >   The bottleneck is large enough to justify investigating
@@ -523,8 +560,44 @@ This document adds:
 >   The bottleneck is large enough to justify implementing any
 >   specific solution.
 
-The distinction between "investigating" and "implementing" is the
-distinction the CEO drew in Phase 5.F. This document respects it.
+Per CEO v3.3 (this cycle's refinement), the separation is now
+explicit:
+
+```text
+measurement      ≠ explanation      ≠ intervention
+```
+
+- **Measurement:** we HAVE this. Phase 5.D + 5.E quantified the gap
+  (37.5% signal loss, +0.1091 potential gain). Phase 5.E classified
+  the 140 labels. These are facts about the current state.
+
+- **Explanation:** we HAVE candidate explanations. H1, H2, H3 are
+  three hypotheses about WHY the gap exists and HOW it might be
+  closed. They are candidate explanations, not verified theories.
+
+- **Intervention:** we do NOT have sufficient evidence to justify
+  intervention. No hypothesis has been tested against real data.
+  No approach has been authorized. The CEO's "do not build semantic
+  matching" instruction (Phase 5.D) is still in force. The decision
+  to intervene belongs to the CEO, not the coder.
+
+### The phase structure (per CEO v3.3)
+
+```text
+Phase 5.A  Measurement
+Phase 5.B  Measurement
+Phase 5.C  Measurement
+Phase 5.D  Classification
+Phase 5.E  Ceiling analysis
+Phase 5.F  Comparative analysis (this document)
+Phase 6    Decision phase
+```
+
+Phase 6 is the **decision phase**. It begins only when someone
+(the CEO) explicitly decides that the expected gain is worth the
+constitutional risk. Until that decision is made, Phase 5.F stands
+as the endpoint of the analytical phase. No implementation work is
+authorized.
 
 ---
 
