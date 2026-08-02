@@ -25,6 +25,7 @@ READ_LIST = [
     ("CAPABILITY_ONTOLOGY.md", "Phase 6 capability-centric architecture (CAPABILITY_MODEL, under investigation). Defines the new node types, edge types, evidence schema, temporal state, scope restriction (one vertical), embedding policy, and three independent scores. Implementation (Phase 7) NOT yet authorized."),
     ("ONTOLOGY_FREEZE.md", "Phase 6 ontology freeze guardrail (REDUCED per CEO 7C.1). Caps: 5 patents, 10 capabilities, 5 constraints, 4 edge types (ENABLES + SUBSTITUTES_FOR SUSPENDED). Any addition requires explicit CEO authorization."),
     ("CAUSALITY_POLICY.md", "Phase 7C.1 causality policy. Defines causality, enablement, substitutability, admissible/inadmissible evidence, confidence scale (1.0/0.8/0.5/0.2), reviewer responsibilities. Constitutional rules: no edge without evidence, no capability without evidence, no prediction without explanation."),
+    ("AEP_PROTOCOL.md", "Autonomous Excellence Protocol. 10 mandatory gates that every work item must pass before implementation. Gate enforcement: scripts/check_aep_gate.py. Gate artifacts: evidence/gates/. Per CEO AEP-1: 'The system itself should force excellence as the default outcome.'"),
 ]
 
 
