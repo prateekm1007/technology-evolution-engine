@@ -1,4 +1,4 @@
-# TEE MASTER HANDOFF (v9.2 — calibrated backtest also failed; M3 blocked; scoring formula is the bottleneck)
+# TEE MASTER HANDOFF (v10.0 — Phase 10: destroy the formula; trajectories, adjacency, tension, bottlenecks, rival formulas, inevitability)
 
 ## PRE-CODING READ LIST (MANDATORY)
 
