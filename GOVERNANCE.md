@@ -6,18 +6,30 @@ Before writing or modifying any code in this repository, read these
 files in order. They are the anti-entropy layer — the active resistance
 against the drift this codebase has a documented history of.
 
-1. **`CONSTITUTION.md`** — the immutable laws (Law 1 through Law 8).
-   These never change. Law 8 (verification standard) is the one most
-   often violated; re-read it every time.
-2. **`INVENTION_COMPILER.md`** — the master specification. The system
+1. **`CONSTITUTION.md`** — the immutable laws (Law 1 through Law 8),
+   plus the Evidence Standards Addendum (EP-1 to EP-12) extending
+   Laws 7 and 8 to the documentation layer. These never change.
+   Law 8 (verification standard) and EP-1 (no claim without an
+   artifact) are the ones most often violated; re-read both every
+   time.
+2. **`EVIDENCE_STANDARDS.md`** — EP-1 to EP-12. The documentation
+   layer's evidence discipline. Triggered by F-041 (Phase 13
+   retrospective leakage, self-graded depth, post-hoc threshold,
+   silent scope change).
+3. **`EVIDENCE_LOOP.md`** — three checkpoints (pre-claim,
+   pre-commit, pre-phase) that enforce EP-1 to EP-12. Run before
+   every claim, every commit, every phase.
+4. **`INVENTION_COMPILER.md`** — the master specification. The system
    is an invention compiler, not an idea generator. Every change must
    move us toward one of the 11 layers or 13 modules.
-3. **`ANTI_ENTROPY.md`** — the operational rules. Tests first, single
+5. **`ANTI_ENTROPY.md`** — the operational rules. Tests first, single
    responsibility, refactor constantly, lock dependencies, document
    assumptions, decouple modules, clear dead code, maintain patterns.
-4. **`FAILURES.md`** — the failure taxonomy. Read this to know what
+6. **`FAILURES.md`** — the failure taxonomy. Read this to know what
    classes of bug have already been seen. Do not re-introduce them.
-5. **`HANDOFF.md`** — the current state of the system and what's next.
+   F-041 is the most recent entry; it documents the Phase 13
+   violations that triggered EVIDENCE_STANDARDS.md.
+7. **`HANDOFF.md`** — the current state of the system and what's next.
 
 If you skip this read list, you will reproduce a bug that has already
 been fixed. The postmortem at `evidence/corruption/POSTMORTEM_F005.md`

@@ -541,3 +541,56 @@ python3 scripts/measure_normalization_gap.py
 **Severity:** P3 — governance discipline issue. The pre-commit hook would have blocked future commits if NORMALIZATION_GAP.md were deleted or renamed, treating an observation log as if it were a constitutional document.
 **Status:** RESOLVED — NORMALIZATION_GAP.md moved to `evidence/observations/NORMALIZATION_GAP.md`. `scripts/remember_governance.py` READ_LIST reverted to 7 entries (the constitutional documents). HANDOFF.md updated to clarify the distinction: constitutional documents are mandatory reads; evidence/observation logs are reference material, not pre-commit gates.
 **Lesson:** The distinction between constitutional documents (rules) and observation logs (measurements) matters. Measurements can be superseded by new measurements; rules should not change without explicit governance action. Mixing the two risks converting measurements into dogma — the CEO's exact warning. The discipline going forward: before adding any file to the mandatory READ_LIST, ask "is this a rule, or is this a measurement?" If it's a measurement, it belongs in evidence/, not in the constitutional layer.
+
+---
+
+### F-041 — Phase 13 retrospective leakage, self-graded depth, post-hoc threshold, silent scope change (P1, governance)
+
+**Found:** external review of Phase 13 deliverables, post-commit `4879274`.
+**Repro:**
+```
+Commit 4879274 (Phase 13) shipped 7 documents. Four of them violated
+evidence standards that did not yet exist at commit time:
+
+1. TIME_REVERSAL_PROTOCOL.md (13E):
+   - Claimed "100% backward explanatory power; 0 of 16 events UNEXPLAINED."
+   - The preconditions for each of the 16 events were selected by reading
+     EVENT_REGISTRY.md (which lists the event year and combination) and
+     then checking TRAJECTORY_REGISTRY.md against those preconditions.
+   - The selection was conditioned on knowing the event occurred.
+   - This is exactly the leakage pattern the auditor flagged earlier.
+
+2. MECHANISM_REGISTRY.md (13A) and PHASE_13_SYNTHESIS.md:
+   - Claimed "13 of 15 cases (87%) have DEEP explanation."
+   - The explanations in MECHANISM_REGISTRY.md were written by the
+     same author and same session that then graded them DEEP/PARTIAL/NONE
+     in PHASE_13_SYNTHESIS.md.
+   - No blind grading, no independent rubric, no second reviewer.
+
+3. CROSS_DOMAIN_STRESS_TEST.md (13F):
+   - Set a 2-of-4 threshold: "SURVIVES 2 of 4 → LOCAL with FUNDAMENTAL
+     ASPIRATIONS."
+   - This threshold was written in the same commit as PHASE_13_SYNTHESIS.md,
+     which uses it to classify the model's current status.
+   - The threshold and the classification were authored together.
+
+4. PHASE_13_SYNTHESIS.md:
+   - Redefined the model's target from "inevitability" (Phase 10F) to
+     "susceptibility" mid-document, without marking the original
+     "inevitability" claim FALSIFIED.
+   - The scope change was presented as a clarification, not a retraction.
+```
+**Root cause:** Phase 13 was built on top of the ablation result (Task 37, commit `e4de100`) — a methodologically clean per-T precision comparison showing Formula B and velocity+adjacency produce byte-identical arrays. The four violating documents were layered on top of that one clean result. The layering process did not apply the same evidence discipline as the underlying analysis. Specifically:
+- TIME_REVERSAL_PROTOCOL.md treated backward-fit as forward-evidence — the standard leakage pattern.
+- MECHANISM_REGISTRY.md graded its own work.
+- CROSS_DOMAIN_STRESS_TEST.md conflated criterion-setting with criterion-using.
+- PHASE_13_SYNTHESIS.md slipped a target redefinition past the reader.
+**Severity:** P1 — these violations are the exact patterns the project's anti-entropy layer (ANTI_ENTROPY.md, FAILURES.md, CONSTITUTION.md Law 8) exists to catch elsewhere in the stack. Phase 13 introduced them at the documentation layer, which is harder to detect than code-layer violations but just as damaging to the project's epistemic integrity. The 3.57% precision result (the actual clean finding) is now wrapped in narrative claims that the auditor cannot verify without re-deriving the entire Phase 13.
+**Status:** PARTIALLY RESOLVED — Commit B of this governance pass:
+- Adds EVIDENCE_STANDARDS.md (EP-1 to EP-12) as a constitutional addendum.
+- Adds EVIDENCE_LOOP.md (three checkpoints: pre-claim, pre-commit, pre-phase).
+- Adds EVIDENCE_FALSIFIERS.md (FEC-001 through FEC-004) to make the violating claims' falsifiers explicit, retroactively.
+- Adds this F-041 entry to FAILURES.md.
+- Updates CONSTITUTION.md, GOVERNANCE.md, ANTI_ENTROPY.md to cross-reference EVIDENCE_STANDARDS.md.
+Commit C of this governance pass retitles the five violating Phase 13 documents with headers stating the violation, per the FAILURES.md convention (P66, account-deletion, F-035 through F-040) that failure records are retained, not deleted. The original Phase 13 content is unchanged (per CONSTITUTION.md Law 7, historical permanence).
+**Lesson:** The project's evidence discipline was previously enforced at the code layer (tests, benchmarks, replay) and at the formula layer (FORMULA_B_FROZEN.md, ablation). It was NOT enforced at the documentation layer — Phase 13 was the first major documentation-only phase, and the absence of an evidence standard for prose claims produced exactly the violations EP-1 through EP-12 now forbid. The fix is not to delete Phase 13 (the failure record has value) but to add the loop (EVIDENCE_LOOP.md) and the falsifier tracker (EVIDENCE_FALSIFIERS.md) so the next documentation phase cannot repeat the pattern. Per the auditor's framing: the project was holding every other part of the stack to a standard it was not applying to its own narrative summaries. That asymmetry is now closed.

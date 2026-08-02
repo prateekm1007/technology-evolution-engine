@@ -642,3 +642,45 @@ broken.
 4. The `verification_engine/` (currently at `scripts/run_verification_cycle.py`
    and `scripts/enforce_law8.py`) is the loop that closes the system.
    Treat its verdict (PASS / FAIL) as the canonical health check.
+
+---
+
+## Documentation-layer anti-entropy (added post-Phase-13, F-041)
+
+The 10 session-hardened principles above were derived from code-layer
+failures. Phase 13 (commit `4879274`) introduced a new failure class:
+documentation-layer entropy. The four violations documented in F-041
+(retrospective leakage in TIME_REVERSAL_PROTOCOL.md, self-graded depth
+in MECHANISM_REGISTRY.md, post-hoc threshold in
+CROSS_DOMAIN_STRESS_TEST.md, silent scope change in
+PHASE_13_SYNTHESIS.md) are the prose equivalent of the code-layer
+failures the original 10 principles address:
+
+| Code-layer principle | Documentation-layer equivalent (EP) |
+|---|---|
+| 1. Run it, don't reason about it. | EP-1: No claim without an artifact. |
+| 3. One source of truth per fact. | EP-2: A check is scoped to exactly what it checked. |
+| 5. Match the label to the evidence. | EP-3: Precondition selected before outcome known, or labeled "consistency check." |
+| 6. New work gets checked against history. | EP-4: Pre-stated falsifier before the analysis that tests it. |
+| — (no code-layer equivalent) | EP-5: No self-grading. |
+| 2. Fix the thing, don't loosen the check. | EP-6: Thresholds committed before the test. |
+| — (no code-layer equivalent) | EP-7: Redefining target = retraction, not rewording. |
+| 8. No data, say no data. | EP-8: Precision ships with denominator. |
+| 9. Downstream blast radius gets checked. | EP-9: Equivalence claims need per-unit data. |
+
+The documentation layer was previously exempt from the discipline the
+code layer follows. That exemption is closed. `EVIDENCE_STANDARDS.md`
+extends CONSTITUTION.md Laws 7 and 8 to prose claims.
+`EVIDENCE_LOOP.md` defines three checkpoints (pre-claim, pre-commit,
+pre-phase) that enforce the standards. `EVIDENCE_FALSIFIERS.md`
+tracks every explanatory claim's falsifier.
+
+The pre-commit hook (`scripts/remember_governance.py`) is NOT
+extended to enforce EP-1 to EP-12 automatically — most violations
+are semantic (was the precondition selected before the outcome was
+known? was the threshold pre-registered?) and cannot be detected by
+regex. The loop is manual, run by the coder before each commit and
+by any reviewer before accepting a claim. This is the same trade-off
+the project already makes for CONSTITUTION.md Law 8: the rule is
+stated, the discipline is enforced socially, the violation is
+recorded in `FAILURES.md` when it occurs.
