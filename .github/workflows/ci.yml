@@ -1,4 +1,4 @@
-name: AEP Gate Enforcement
+name: AEP Gate Enforcement + Honesty Loop
 
 on:
   push:
@@ -21,11 +21,14 @@ jobs:
           pip install -r requirements.txt
           pip install pytest
 
-      - name: Gate 1 — Governance read list check (11 files)
+      - name: Gate 1 — Governance read list check (12 files)
         run: python scripts/remember_governance.py
 
       - name: Gate 2 — AEP gate enforcement (strict mode)
         run: python scripts/check_aep_gate.py --strict
 
-      - name: Gate 3 — Test suite (all tests must pass)
+      - name: Gate 3 — Honesty Loop forbidden-language scan (Law 27/28/29)
+        run: python scripts/enforce_law27.py
+
+      - name: Gate 4 — Test suite (all tests must pass)
         run: python -m pytest tests/ -v --tb=short

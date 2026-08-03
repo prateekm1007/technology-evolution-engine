@@ -60,17 +60,60 @@ battery density → vehicle weight → motor size → cost
 A constraint that is modeled in isolation will produce
 optimizations that fail globally.
 
-## Principle 4 — Confidence is never 1.0.
+## Principle 4 — Numerical certainty is never assigned to claims without repeated experimental validation.
 
-No assertion is certain. The maximum confidence is 0.95 (per
-EP-16). Every assertion carries:
-- Evidence (ranked A through I)
-- Assumptions (with falsifiers)
-- Penalties (for uncertainty, risk, and gaps)
+> A weather forecast can legitimately say "58% probability of
+> rain" because it has decades of data, repeated observations,
+> calibration curves, and millions of validation samples.
+> The Blueprint has none of those things. Therefore "confidence
+> = 58%" is forbidden.
+> — Consolidated review, post-BP-2 (Law 27)
 
-A confidence of 0.95 means "strongly supported by evidence but
-not proven." A confidence of 0.50 means "supported but uncertain."
-A confidence of 0.20 means "LLM inference only — unverified."
+Per Law 27 (BLUEPRINT_CONSTITUTION.md), no claim in a Blueprint
+may carry a numerical confidence, probability, certainty, or
+reliability value unless the claim has been validated by
+repeated physical experiment with a calibration curve.
+
+### What is forbidden
+
+```text
+confidence: 0.58
+confidence: 58%
+probability = 0.83
+certainty = 70%
+reliability = 92%
+```
+
+### What is required instead
+
+Every claim must declare its epistemic status as a typed object:
+
+```text
+validation_level: L2          // L0 hypothesis → L9 production deployment
+status: PLAUSIBLE              // PASS / PASS_WITH_CONDITIONS / MARGINAL / BLOCKED / REJECTED
+evidence_strength: MODERATE    // ABSENT / WEAK / MODERATE / STRONG / VERY_STRONG
+experimental_validation: ABSENT  // ABSENT / BENCH / SUBSYSTEM / PROTOTYPE / PILOT / PRODUCTION
+```
+
+### The single exception
+
+Monte Carlo simulations may report numerical probabilities
+internal to the simulation (e.g., "thermal runaway probability
+under Monte Carlo: 0.12"). Such numbers must be labeled
+`SIMULATION_INTERNAL` and may not be promoted to a claim
+confidence — they describe the model, not the world.
+
+### Relationship to the original Principle 4
+
+The original Principle 4 stated: "Confidence is never 1.0.
+The maximum confidence is 0.95 (per EP-16)." This permitted
+a continuous scale of false precision — 0.95, 0.85, 0.61,
+0.50 — none of which had calibration behind them.
+
+The amended Principle 4 forbids the numerical form entirely
+for claims without experimental validation. The typed status
+block is the only permitted vocabulary. This is stronger than
+"never 1.0" — it is "never a number, without validation."
 
 ## Principle 5 — Failures are cataloged, not hidden.
 

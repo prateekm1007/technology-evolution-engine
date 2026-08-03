@@ -76,4 +76,14 @@ ALLOWED_MODIFICATIONS = frozenset({
     "scripts/run_inevitability_backtest.py",  # Phase 10: inevitability backtest (one-off)
     "scripts/run_expanded_and_generalization.py",  # Phase 11: expanded + generalization (one-off)
     "scripts/run_ablation.py",  # Phase 12B: ablation study (one-off)
+    # Phase 13/14 cross-domain stress tests — added to close F-033
+    # recurrence (allowlist drift detected post-BP-2 audit).
+    "scripts/run_semiconductor_backtest.py",  # Phase 13: semiconductor cross-domain test
+    "scripts/run_telecom_backtest.py",  # Phase 14: telecom cross-domain test
+    "scripts/run_phase13_open_items.py",  # Phase 13: open-items resolution script
+    # Honesty Loop (post-BP-2 consolidated review) — added to close
+    # F-033 recurrence. The Honesty Loop adds Law 27/28/29 and the
+    # 10 priority engines. See HONESTY_LOOP.md.
+    "scripts/enforce_law27.py",  # Honesty Loop: forbidden-language scanner (CI Gate 3)
+    "scripts/check_aep_gate.py",  # AEP Gate 4.5 + 10.5 enforcement (added commit b7d8690, F-033 drift)
 })

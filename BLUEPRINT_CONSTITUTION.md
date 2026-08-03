@@ -380,3 +380,228 @@ the auditor found (400V vs 307V, 75 kWh vs 350 kg vs 160 Wh/kg).
 
 Per Rule 7: never pretend uncertainty is certainty.
 Per Law 26: never confuse epistemic levels.
+
+---
+
+## LAW 27 — The Blueprint shall not assign numerical certainty to claims that lack repeated experimental validation.
+
+```text
+A weather forecast may legitimately say "58% probability of rain"
+because it has decades of data, repeated observations, calibration
+curves, and millions of validation samples.
+
+The Blueprint has none of those things.
+
+Therefore "confidence = 58%" is forbidden.
+```
+
+### What is forbidden
+
+Any of the following forms attached to a claim that has not been
+validated by repeated physical experiment:
+
+```text
+confidence = 58%
+confidence: 0.61
+probability = 0.83
+certainty = 70%
+reliability = 92%
+```
+
+### What is required instead
+
+Every claim must declare its epistemic status as a typed object —
+not as a number. The required replacement is:
+
+```text
+validation_level: L2
+status: PLAUSIBLE
+evidence_strength: MODERATE
+experimental_validation: ABSENT
+```
+
+### Why this law exists
+
+A gate score is not engineering truth. A confidence percentage
+attached to an un-validated claim is false precision — it implies
+a calibration that does not exist. The Blueprint is not a weather
+service. It does not have millions of samples. The honest unit
+of belief in this system is a typed epistemic status, not a
+number.
+
+### Relationship to existing rules
+
+- Strengthens Rule 7 ("never pretend uncertainty is certainty")
+  by forbidding the most common disguise: numerical certainty.
+- Strengthens Law 26 (epistemic separation) by requiring that
+  each level carry a typed status, not a number.
+- Strengthens EP-16 (no false certainty) by replacing the
+  `Confidence.value` numeric field with a typed status block.
+- Replaces Principle 4 ("Confidence is never 1.0") with the
+  stronger form: "Numerical certainty is never assigned to
+  claims without repeated experimental validation."
+
+### The single exception
+
+Monte Carlo simulations may report numerical probabilities
+*internal to the simulation* (e.g., "thermal runaway probability
+under Monte Carlo: 0.12"). Such numbers must be labeled
+`SIMULATION_INTERNAL` and may not be promoted to a claim
+confidence — they describe the model, not the world.
+
+---
+
+## LAW 28 — Forbidden language in Blueprint outputs.
+
+The following phrases are forbidden in any artifact labeled as a
+Blueprint, blueprint section, blueprint summary, or blueprint
+review. Each has a precise required replacement.
+
+### 28a — "complete blueprint" is forbidden.
+
+```text
+Bad:  "complete engineering blueprint"
+Bad:  "complete blueprint"
+Bad:  "fully complete blueprint"
+
+Good: "engineering concept package"
+Good: "decision package"
+Good: "evaluation package"
+Good: "prototype package"
+Good: "production package"
+```
+
+A Blueprint is never "complete" until it has been deployed at
+production scale and measured against reality (Law 20). Until
+then it is a *package* at a specific maturity level (see Law 29).
+Calling an un-deployed artifact "complete" violates Rule 7.
+
+### 28b — PASS / FAIL percentages are forbidden.
+
+```text
+Bad:  "85.7% PASS"
+Bad:  "score: 85.5% PASS"
+Bad:  "readiness: 85%"
+
+Good:  STATUS: PASS
+Good:  STATUS: PASS_WITH_CONDITIONS
+Good:  STATUS: MARGINAL
+Good:  STATUS: BLOCKED
+Good:  STATUS: REJECTED
+```
+
+A percentage attached to a verdict implies a continuous truth
+scale that does not exist. Engineering verdicts are categorical.
+The five-status enum (Law 29) is the only permitted vocabulary.
+
+### 28c — Confidence percentages are forbidden.
+
+```text
+Bad:  "confidence: 58%"
+Bad:  "confidence: 0.58"
+Bad:  "overall confidence: 50%"
+
+Good:  validation_level: L2
+Good:  status: PLAUSIBLE
+Good:  evidence_strength: MODERATE
+Good:  experimental_validation: ABSENT
+```
+
+Per Law 27. Numerical certainty is forbidden without repeated
+experimental validation.
+
+### 28d — "simulation" mislabeling is forbidden.
+
+```text
+Bad:  "simulation: 18 tests, 28% pass"
+       (when the "tests" are analytical estimates, not numerical
+        models solving governing equations)
+
+Good:  "analytical estimates: 18 checks, STATUS: PASS_WITH_CONDITIONS"
+Good:  "numerical simulations: 4 tests (FEA + CFD), STATUS: MARGINAL"
+Good:  "physical validations: 0 tests, STATUS: BLOCKED"
+```
+
+An analytical estimate is not a simulation. A simulation solves
+governing equations numerically. A measurement comes from a
+physical prototype. Conflating them violates Law 26.
+
+---
+
+## LAW 29 — Required epistemic status enums.
+
+Every claim, verdict, and package in the Blueprint must carry a
+typed status from one of the following enums. Untyped claims are
+forbidden.
+
+### 29a — Verdict enum (replaces PASS/FAIL percentages)
+
+```text
+STATUS =
+    PASS                  // meets all requirements, no conditions
+  | PASS_WITH_CONDITIONS  // meets requirements if listed conditions hold
+  | MARGINAL              // partially meets requirements, risks remain
+  | BLOCKED               // cannot proceed, missing prerequisite
+  | REJECTED             // fundamentally flawed, do not proceed
+```
+
+### 29b — Validation level enum (replaces confidence percentages)
+
+```text
+VALIDATION_LEVEL =
+    L0  // hypothesis — no evidence beyond the claim itself
+  | L1  // literature support — published sources exist
+  | L2  // analytical estimate — derived from first principles
+  | L3  // numerical model — governing equations solved
+  | L4  // bench validation — physical test on a sub-scale unit
+  | L5  // subsystem validation — physical test on a full subsystem
+  | L6  // prototype — full prototype tested in lab
+  | L7  // pilot deployment — tested in real environment
+  | L8  // production candidate — pre-production units built and tested
+  | L9  // production deployment — at scale, measured against reality
+```
+
+### 29c — Evidence strength enum (replaces numeric evidence weights in user-facing summary)
+
+```text
+EVIDENCE_STRENGTH =
+    ABSENT      // no supporting evidence
+  | WEAK        // rank H-I (general web, LLM inference)
+  | MODERATE    // rank F-G (industry/user reports)
+  | STRONG      // rank D-E (academic literature, manufacturer specs)
+  | VERY_STRONG // rank A-C (physics/regulatory/patents)
+```
+
+### 29d — Package maturity enum (replaces "complete blueprint")
+
+```text
+PACKAGE_MATURITY =
+    CONCEPT          // idea + classification + state vector
+  | DECISION         // + alternatives + constraints + economics
+  | EVALUATION       // + simulations + benchmarks + adversarial review
+  | PROTOTYPE        // + manufacturing plan + CAD + validation plan
+  | PRODUCTION       // + production specs + supplier traceability + field data
+```
+
+A Blueprint may be a CONCEPT package, a DECISION package, an
+EVALUATION package, a PROTOTYPE package, or a PRODUCTION
+package. It is never a "complete blueprint." The maturity is
+declared on the package, not implied.
+
+### 29e — Required claim wrapper
+
+Every claim in a Blueprint must be wrapped:
+
+```typescript
+interface Claim {
+    statement: string
+    validationLevel: VALIDATION_LEVEL
+    evidenceStrength: EVIDENCE_STRENGTH
+    experimentalValidation: "ABSENT" | "BENCH" | "SUBSYSTEM" | "PROTOTYPE" | "PILOT" | "PRODUCTION"
+    status: STATUS
+    evidenceIds: string[]  // lineage to EvidenceLineage engine (P1)
+    retractionId?: string  // if this claim retracts an earlier claim (P7)
+}
+```
+
+A claim without its typed wrapper is forbidden.

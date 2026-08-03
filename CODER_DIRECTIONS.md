@@ -48,22 +48,52 @@ discipline accumulated across Phases 1-17 and BP-0/BP-1/BP-2.
 
 ---
 
-## The 8 required engines
+## The 18 required engines
 
-Every blueprint MUST include output from all 8 engines:
+Every blueprint MUST include output from all 18 engines — the
+8 original engines (BP-1) plus the 10 Honesty Loop priority
+engines (BP-2, post-consolidated-review).
+
+### Original 8 engines (BP-1)
 
 | Engine | File | Priority | What it produces |
 |---|---|---|---|
-| Evidence | evidence-engine.ts | P0 | Ranked sources (A-I) with weights and confidence |
+| Evidence | evidence-engine.ts | P0 | Ranked sources (A-I); evidence DAG delegated to Evidence Lineage (P1 Honesty Loop) |
 | Assumption | assumptions-engine.ts | P1 | Explicit assumptions with impact and falsifiers |
 | Unknowns | unknowns-engine.ts | P2 | What the system does not know |
 | Alternatives | alternatives-engine.ts | P3 | PRIMARY + A + B + C for every component |
 | Constraint Graph | constraint-graph.ts | P4 | DAG of constraint propagation |
-| Confidence | evidence-engine.ts (computeConfidence) | P5 | Weighted evidence minus penalties, capped at 0.95 |
-| Simulation | simulation-engine.ts | P7 | Stress tests with PASS/MARGINAL/FAIL results |
+| Validation Level | (P5 Honesty Loop, supersedes Confidence) | P5 | L0-L9 maturity assignment per claim (Law 29b) — REPLACES the BP-1 confidence-engine |
+| Simulation | simulation-engine.ts | P7 | Stress tests with STATUS enum (Law 29a), registered in Test Registry (P8) |
 | Failure | blueprint-data.ts + FAILURE_LIBRARY.md | P4(E) | Failure modes with scenarios, probability, mitigation |
 
-**A blueprint missing any of these 8 is incomplete.**
+### Honesty Loop 10 priority engines (post-BP-2)
+
+| Engine | File | Priority | What it produces |
+|---|---|---|---|
+| Evidence Lineage | EVIDENCE_LINEAGE_ENGINE.md | P1 | Evidence DAG with `dependencies[]` — ancestry, not just citation |
+| Mass Stack-up | MASS_STACKUP_ENGINE.md | P2 | Per-component mass table that sums to total, with margin |
+| Interface Control | INTERFACE_CONTROL_ENGINE.md | P3 | 6 interface types per component pair (electrical/thermal/mechanical/comms/manufacturing/service) |
+| Procurement | PROCUREMENT_ENGINE.md | P4 | Supplier + part number + lead time + MOQ + quotation date + landed cost per BOM line |
+| Validation Level | VALIDATION_LEVEL_ENGINE.md | P5 | L0-L9 maturity per claim, with promotion path and evidence gates |
+| Requirement Reconciliation | REQUIREMENT_RECONCILIATION_ENGINE.md | P6 | MANDATORY/DESIRABLE/ASPIRATIONAL/EXPERIMENTAL classification with conflict detection |
+| Retraction Registry | RETRACTION_REGISTRY_ENGINE.md | P7 | Append-only ledger of retracted claims, with reason and replacement |
+| Test Registry | TEST_REGISTRY_ENGINE.md | P8 | Every test (analytical/numerical/physical) with type, method, result, evidence |
+| Economic Reality | ECONOMIC_REALITY_ENGINE.md | P9 | Quote-backed prices with staleness tracking; estimates labeled, not disguised |
+| Thermal Envelope | THERMAL_ENVELOPE_ENGINE.md | P10 | Operating range + heat generation + rejection + failure thresholds |
+
+**A blueprint missing any of these 18 engines is incomplete
+and cannot close the Honesty Loop (Gate 11).**
+
+### Forbidden BP-1 patterns (per Law 27, 28)
+
+- `confidence: 0.58` or `confidence = 58%` — forbidden. Use `validation_level: L2` (Law 29b) instead.
+- `85.7% PASS` — forbidden. Use `STATUS: PASS_WITH_CONDITIONS` (Law 29a) instead.
+- `complete engineering blueprint` — forbidden. Use `evaluation package` or `prototype package` (Law 29d) instead.
+- `simulation: 18 tests` when tests are analytical estimates — forbidden. Use `analytical_estimates: 18 checks` (Law 28d) instead.
+
+See `HONESTY_LOOP.md` and `scripts/enforce_law27.py` for the full
+forbidden-language scanner.
 
 ---
 
@@ -160,9 +190,9 @@ executable blueprint as output.
 
 ---
 
-## Current state (as of BP-2)
+## Current state (as of Honesty Loop v1.0, post-BP-2)
 
-### Blueprint output: 22 sections
+### Package output: 22 sections
 
 1. Executive Summary (verdict, capital, break-even, risk, unit cost)
 2. Classification
@@ -176,28 +206,30 @@ executable blueprint as output.
 10. Regulatory Pathway (India, US, EU)
 11. Deployment Plan (3 phases, 36 months)
 12. Failure Analysis (7 modes, risk 0.4)
-13. Confidence Assessment (50%, with contributors and penalties)
+13. Validation Level Assessment (per claim, L0-L9; replaces confidence percentage per Law 27)
 14. Evidence (20 sources, ranks A-H, weights)
 15. Assumptions (10 with falsifiers)
 16. Unknowns (10 explicit, including CC6 gaps)
 17. Alternatives (5 components × 4 options)
 18. Engineering Completeness (8 subsystems, 66% avg, 26 missing → now specified)
-19. Simulation (18 tests, 28% pass, 3 FAILs)
+19. Analytical Estimates + Simulations (18 entries in Test Registry, P8: 3 FAIL, 15 PASS/PASS_WITH_CONDITIONS — STATUS: MARGINAL for the package)
 20. Constraint Graph (20 nodes, 19 edges, 4 critical paths)
 21. Explainability (5 recommendations with Why/WhyNot/WhatChanged/WhatFailed/Alternatives)
-22. Production Specifications (26 items, 85% readiness)
+22. Production Specifications (26 items, STATUS: PASS_WITH_CONDITIONS; 4 require physical testing)
 
-### Honest metrics
+### Honest metrics (per Law 27, 28 — no numerical certainty)
 
-- Confidence: 50% (no false certainty)
-- Simulation: 28% pass rate (3 FAILs honestly reported)
-- Production readiness: 85% (22/26 fully specified, 4 require testing)
-- Engineering completeness: 66% avg (tracked, gaps closing)
-- Evidence: 20 sources, average weight 0.78
-- Assumptions: 10 with falsifiers
-- Unknowns: 10 explicit
-- Alternatives: 20 total paths
-- Version: immutable, SHA-256 verified
+- **Validation level**: most claims at L1-L2; L4+ for cell chemistry (single-cell test); L0 for serviceability claim
+- **Status (overall package)**: PASS_WITH_CONDITIONS — 2 FATAL consistency violations (now retracted via P7), 3 simulation FAILs (now retracted via P7)
+- **Test registry**: 18 entries (3 FAIL, 15 PASS or PASS_WITH_CONDITIONS) — `STATUS: MARGINAL` for the package
+- **Production readiness**: 22 of 26 items fully specified, 4 REQUIRES_TESTING — `STATUS: PASS_WITH_CONDITIONS`
+- **Engineering completeness**: 8 subsystems tracked, gaps closing — `STATUS: MARGINAL`
+- **Evidence**: 20 sources, rank distribution: A×2, B×1, C×4, D×8, E×3, F×2 — `EVIDENCE_STRENGTH: STRONG`
+- **Assumptions**: 10 with falsifiers (each linked to a kill-test)
+- **Unknowns**: 10 explicit (including 4 REQUIRES_TESTING items)
+- **Alternatives**: 20 total paths (5 components × 4 options)
+- **Package maturity**: EVALUATION (per Law 29d — not PRODUCTION; physical validation absent)
+- **Version**: immutable, SHA-256 verified
 
 ### Domain restriction
 

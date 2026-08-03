@@ -34,12 +34,18 @@ This is the 6th governance layer:
 ## The 10-Gate Pipeline
 
 ```
-REQUEST → Gate 1 → Gate 2 → Gate 3 → Gate 4 → Gate 5 →
-Gate 6 → Gate 7 → Gate 8 → Gate 9 → Gate 10 → SHIPPED
+REQUEST → Gate 1 → Gate 2 → Gate 3 → Gate 4 → Gate 4.5 → Gate 5 →
+Gate 6 → Gate 7 → Gate 8 → Gate 9 → Gate 10 → Gate 10.5 → Gate 11 → SHIPPED
 ```
 
 No gate may be skipped. No gate may be passed conditionally.
 Each gate produces an artifact that becomes part of the work record.
+
+The pipeline now includes three sub-gates that sit between the
+canonical gates:
+- **Gate 4.5 (Consistency)** — physics/dimensional consistency (existing).
+- **Gate 10.5 (Kill-Test)** — every assumption has a kill test, none failed unmitigated (existing).
+- **Gate 11 (Loop Closure)** — Honesty Loop closure; no forbidden language, all 10 priority engines PASS (NEW, see HONESTY_LOOP.md).
 
 ---
 
@@ -274,6 +280,59 @@ is written. No exceptions.
 
 ---
 
+### Gate 11 — Loop Closure Gate
+
+**Question:** Has the artifact closed the Honesty Loop?
+
+**Context:** Gate 11 is the 7th governance layer (HONESTY_LOOP.md)
+applied as the final AEP gate. It sits AFTER Gate 10 (Postmortem)
+and AFTER Gate 10.5 (Kill-Test). An artifact cannot ship until
+Gate 11 closes the Honesty Loop.
+
+**Required checks:**
+
+1. **Forbidden language scan** — `scripts/enforce_law27.py` must
+   exit 0 on the artifact. This means:
+   - No `complete blueprint` phrasing (Law 28a)
+   - No numerical confidence like `confidence: 58%` or
+     `confidence: 0.58` (Law 27, 28c)
+   - No `X% PASS` or `score: X%` verdicts (Law 28b)
+   - No `simulation: N tests` mislabeling when the tests are
+     analytical estimates (Law 28d)
+   - No uncalibrated `probability`, `certainty`, or
+     `reliability` percentages (Law 27)
+
+2. **Typed claim wrappers** — Every claim in the artifact must
+   carry the Law 29e wrapper: `validationLevel`,
+   `evidenceStrength`, `experimentalValidation`, `status`,
+   `evidenceIds[]`. Bare claims without wrappers are forbidden.
+
+3. **Package maturity declared** — The artifact must declare
+   its `package_maturity` (Law 29d): CONCEPT, DECISION,
+   EVALUATION, PROTOTYPE, or PRODUCTION.
+
+4. **10 priority engines pass** — Each of the 10 Honesty Loop
+   priority engines (P1-P10, see HONESTY_LOOP.md) must produce
+   output for the artifact with `STATUS: PASS` or
+   `STATUS: PASS_WITH_CONDITIONS`. A `STATUS: BLOCKED` or
+   `STATUS: REJECTED` from any engine blocks Gate 11.
+
+5. **No unresolved retractions** — The Retraction Registry
+   (P7) must contain no unresolved retractions for this
+   artifact. All retractions must have either a replacement
+   claim or an explicit `WITHDRAWN` status with rationale.
+
+**Pass criteria:** All 5 checks pass. STATUS: PASS.
+
+**Failure:** Work is rejected. The artifact remains in the
+Honesty Loop at Stage 3 (REPLACE) or Stage 3a (RETRACT) until
+closure. The artifact cannot ship.
+
+**Artifact:** HONESTY_LOOP_CLOSURE_RECORD (JSON, stored in
+`evidence/gates/gate_11_honesty_loop.json`).
+
+---
+
 ## Knowledge Object Schema
 
 Every object in the system carries its full knowledge context:
@@ -336,10 +395,10 @@ excellence = knowledge × discipline × repetition × feedback × truthfulness
 There is no box labelled "genius." That is intentional.
 
 - **knowledge**: evidence base (20+ sources per blueprint)
-- **discipline**: gate compliance (10/10 gates passed)
+- **discipline**: gate compliance (11/11 gates passed, including Gate 11 Loop Closure)
 - **repetition**: consistent application (every work cycle)
 - **feedback**: adversarial review + postmortem
-- **truthfulness**: Rule 7 (never pretend uncertainty is certainty)
+- **truthfulness**: Rule 7 (never pretend uncertainty is certainty) + Law 27 (no numerical certainty without experimental validation)
 
 If any factor is 0, excellence is 0. A system with knowledge but
 no discipline produces hallucinations. A system with discipline
@@ -366,13 +425,25 @@ through 10 sequential gates.
 
 ## Status
 
-The AEP is documented but NOT yet automated. The 10 gates are
-manual — the coder (or reviewer) checks each gate before
-proceeding. Future work: automate gate checking where possible
-(e.g., Gate 2 research count, Gate 4 alternatives count, Gate 6
-benchmark count can be checked programmatically).
+The AEP is documented and partially automated. The 10 canonical
+gates plus 3 sub-gates (Gate 4.5 Consistency, Gate 10.5 Kill-Test,
+Gate 11 Loop Closure) form the 13-checkpoint pipeline.
 
-**Immediate application:** The AEP applies to all future work
-starting from the next development cycle. Stage 2 (improve an
-existing design) will be the first work to pass through all
-10 gates.
+Mechanical enforcement:
+- Gate 2 (Research): `scripts/check_aep_gate.py 2` checks source count.
+- Gate 4 (Alternatives): `scripts/check_aep_gate.py 4` checks alternatives per decision.
+- Gate 7 (Adversarial): `scripts/check_aep_gate.py 7` checks reviewer count.
+- Gate 11 (Loop Closure): `scripts/enforce_law27.py` checks forbidden language; `tests/test_honesty_loop.py` verifies the loop's mechanical enforcement.
+- All gates: `scripts/check_aep_gate.py --strict` runs the full check in CI.
+
+Gate 11 was added in this commit (Honesty Loop v1.0) per the
+consolidated review. The 10 priority engines (P1-P10) are
+specified in their own `.md` files; code implementation of
+each engine awaits its own AEP Gate 1 (Comprehension) work
+item. The loop's enforcement scanner and tests ARE implemented
+in this commit.
+
+**Immediate application:** Gate 11 applies to all future work
+starting from the next development cycle. Every artifact that
+ships must close the Honesty Loop before it leaves the
+repository.
