@@ -13,6 +13,7 @@ import time, pathlib, json
 from adapters.graph_model import GraphModel
 from adapters.oracle_deep import DeepOracle
 from adapters.specimen import SPECIMEN
+from adapters.retraction_registry import RetractionRegistry
 
 ROOT = pathlib.Path(__file__).resolve().parent
 FRONTEND = ROOT.parent / "frontend"
@@ -21,6 +22,7 @@ app = FastAPI(title="Technology Evolution Engine", version="1.0.0")
 
 gm = GraphModel(repo_root=ROOT.parents[1])
 oracle = DeepOracle(gm)
+retractions = RetractionRegistry()
 BACKEND_STATUS = "integrated" if gm.source == "core" else "implemented"
 
 
@@ -125,6 +127,35 @@ def evidence():
 @app.get("/api/v1/benchmarks")
 def benchmarks():
     return stamp(SPECIMEN["benchmarks"], "implemented")
+
+
+@app.get("/api/v1/retractions")
+def get_retractions():
+    """Retraction Registry — Honesty Loop Priority 7 engine.
+
+    Per RETRACTION_REGISTRY_ENGINE.md: append-only ledger of retracted
+    claims. Per CONSTITUTION.md Law 7 (Historical Permanence): records
+    cannot be edited once written.
+
+    Per HONESTY_LOOP.md Gate 11 check 5: 'The Retraction Registry must
+    contain no unresolved retractions.' This endpoint exposes the
+    unresolved count so Gate 11 can check it mechanically.
+
+    Per Law 27: each retraction record carries a typed `epistemic_status`
+    block, not a numerical confidence. The records are facts about the
+    system's history, not claims about the world.
+    """
+    records = retractions.list_retractions()
+    unresolved = retractions.unresolved()
+    data = {
+        "retractions": records,
+        "count": len(records),
+        "unresolved_count": len(unresolved),
+        "unresolved_ids": [r["id"] for r in unresolved],
+        "gate_11_check_5_pass": len(unresolved) == 0,
+        "registry_path": str(retractions.path.relative_to(ROOT.parents[1])),
+    }
+    return stamp(data, "integrated" if gm.source == "core" else "implemented")
 
 
 @app.post("/api/v1/analyze")

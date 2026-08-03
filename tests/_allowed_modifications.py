@@ -86,4 +86,10 @@ ALLOWED_MODIFICATIONS = frozenset({
     # 10 priority engines. See HONESTY_LOOP.md.
     "scripts/enforce_law27.py",  # Honesty Loop: forbidden-language scanner (CI Gate 3)
     "scripts/check_aep_gate.py",  # AEP Gate 4.5 + 10.5 enforcement (added commit b7d8690, F-033 drift)
+    # Honesty Loop code implementations (post-RR2):
+    # - oracle_deep.py migrated from confidence to typed epistemic_status (closes RR2)
+    # - retraction_registry.py: P7 Retraction Registry (first of 10 engines implemented in code)
+    "web/backend/adapters/oracle_deep.py",  # RR2: confidence → epistemic_status (Law 27/28/29)
+    "web/backend/adapters/retraction_registry.py",  # P7: Retraction Registry adapter
+    "web/backend/main.py",  # P7: /api/v1/retractions endpoint
 })
