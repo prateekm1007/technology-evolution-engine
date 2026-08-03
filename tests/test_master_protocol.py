@@ -966,6 +966,22 @@ class TestAuditorPrinciples:
             "CI does not run verify_arithmetic.py — Law 13 is not mechanically enforced."
         )
 
+    def test_phase_4_adversarial_recomputation(self):
+        """Phase 4: adversarial reviewers must re-derive numbers."""
+        content = (ROOT / "MASTER_PROTOCOL.md").read_text()
+        assert "Mandatory recomputation" in content or "mandatory recomputation" in content.lower()
+        assert "re-derive" in content.lower() or "recompute" in content.lower()
+        assert "cannot" in content.lower() and "PASS" in content
+        # Each reviewer domain must be listed with a recomputation duty
+        for reviewer in ["Chief Engineer", "Manufacturing", "Economist", "Customer"]:
+            assert reviewer in content
+
+    def test_phase_2_structural_rules(self):
+        """Phase 2: provenance counts must be computed, not hand-typed."""
+        content = (ROOT / "MASTER_PROTOCOL.md").read_text()
+        assert "computed" in content.lower() and "hand-typed" in content.lower()
+        assert "machine-checkable" in content.lower() or "verifiable" in content.lower()
+
 
 class TestPresentationRules:
     """Verify all 12 Presentation Rules (PR-1 through PR-12) are in

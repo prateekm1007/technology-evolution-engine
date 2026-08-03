@@ -328,6 +328,17 @@ stack-up (Law 2). Energy budget (Law 2). Thermal budget (Law 2).
 Arithmetic closure (Law 2). Units. Dimensions. Requirement conflicts.
 All numbers reconcile. No unresolved contradictions.
 
+**Structural rules (Phase 2):**
+- Provenance counts (QUOTED/ESTIMATED/CATALOG) must be computed
+  fields, not hand-typed assertions. If a human or LLM types the count
+  without deriving it from the actual BOM rows, it will drift.
+- Every derived figure must carry its computation inline and
+  machine-checkable — not a caption describing a formula, but the
+  formula actually executed against the value shown. If the document
+  says "$5,050/7yr/365 = $1.98/day," the math must be verifiable.
+- The independent recomputation verifier (Law 13) is the mechanical
+  enforcement for both of these rules.
+
 ### 6. TRADEOFFS
 For every decision: gain, cost, sacrifice. A decision without a stated
 sacrifice is a preference.
@@ -335,6 +346,20 @@ sacrifice is a preference.
 ### 7. ADVERSARIAL REVIEW
 4 reviewers attack: Chief Engineer, Manufacturing, Economist, Customer.
 Each attempts to destroy the proposal. Fatal flaw = REJECTED.
+
+**Mandatory recomputation (Phase 4):** Each reviewer must independently
+re-derive at least one headline number relevant to their domain before
+rendering a verdict. A reviewer that has not recomputed anything cannot
+say PASS.
+
+- Chief Engineer: re-checks mass stack-up + energy/thermal budget
+- Manufacturing Expert: re-checks BOM line items + assembly time
+- Economist: re-sums the BOM + recomputes cost-per-m³ (or per-kWh)
+- Customer: re-checks output/capacity vs stated serving size
+
+The recomputation is shown inline in the review (not just referenced).
+If a reviewer's independent number differs from the package's claim,
+the package is REJECTED.
 
 ### 8. IMPLEMENTATION
 BOM (Law 6). Manufacturing plan (Law 9). Assembly sequence. Tooling.

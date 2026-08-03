@@ -70,6 +70,8 @@ ALLOWED_MODIFICATIONS = frozenset({
     "scripts/pdf_template.css",
     # Phase 2: thermal model (simulation gap closure, 5/10 → target 10/10)
     "scripts/thermal_model_1d.py",
+    # Phase 1: independent recomputation verifier (Law 13)
+    "scripts/verify_arithmetic.py",
     # Self-audit fixes: product enforcement tests + CI updates
     "tests/test_product_enforcement.py",
     "product/PRODUCT.md",  # canonical source for the customer-facing PDF
