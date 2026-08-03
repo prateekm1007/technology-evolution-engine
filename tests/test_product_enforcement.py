@@ -11,11 +11,16 @@ Gap 3: product/PRODUCT.md contains all 12 sections.
 Gap 4: product/PRODUCT.md contains the Next Money Page.
 Gap 5: the 1D thermal model runs without error.
 
+Per AP-10 (overclaim prevention): the original version used 'python3'
+in subprocess calls, which may not be on PATH in all environments.
+Fixed to use sys.executable (the Python that's actually running pytest).
+
 If any of these fail, CI blocks the commit — the system cannot ship
 a stale, incomplete, or broken package.
 """
 import pathlib
 import subprocess
+import sys
 import pytest
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
@@ -123,7 +128,7 @@ class TestThermalModelRuns:
     def test_thermal_model_runs_without_error(self):
         """The model must execute and produce output without crashing."""
         result = subprocess.run(
-            ["python3", str(ROOT / "scripts" / "thermal_model_1d.py")],
+            [sys.executable, str(ROOT / "scripts" / "thermal_model_1d.py")],
             capture_output=True, text=True, cwd=str(ROOT),
             timeout=30,
         )
@@ -138,7 +143,7 @@ class TestThermalModelRuns:
     def test_thermal_model_produces_numbers(self):
         """The model must produce actual temperature numbers, not narrative."""
         result = subprocess.run(
-            ["python3", str(ROOT / "scripts" / "thermal_model_1d.py")],
+            [sys.executable, str(ROOT / "scripts" / "thermal_model_1d.py")],
             capture_output=True, text=True, cwd=str(ROOT),
             timeout=30,
         )
@@ -159,7 +164,7 @@ class TestProductPassesScanner:
         if not PRODUCT_MD.exists():
             pytest.skip("product/PRODUCT.md does not exist")
         result = subprocess.run(
-            ["python3", str(ROOT / "scripts" / "enforce_law27.py"),
+            [sys.executable, str(ROOT / "scripts" / "enforce_law27.py"),
              str(PRODUCT_MD)],
             capture_output=True, text=True, cwd=str(ROOT),
         )
@@ -179,7 +184,7 @@ class TestProductPdfMatchesSource:
             pytest.skip("product/PRODUCT.md does not exist")
         regenerated = tmp_path / "PRODUCT_test.pdf"
         result = subprocess.run(
-            ["python3", str(ROOT / "scripts" / "generate_pdf.py"),
+            [sys.executable, str(ROOT / "scripts" / "generate_pdf.py"),
              str(PRODUCT_MD), str(regenerated)],
             capture_output=True, text=True, cwd=str(ROOT),
             timeout=60,

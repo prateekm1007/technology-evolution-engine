@@ -155,6 +155,27 @@ better formatted.
 
 ---
 
+## The Auditor's Principles (market feedback, 2026-08-03)
+
+> A coder who violates the Auditor's Principles is producing entropy.
+> — External auditor
+
+The 10 Auditor's Principles (AP-1 through AP-10) are codified in
+MASTER_PROTOCOL.md. They are constitutional law. The principles govern
+how the system verifies its own work — not just what it produces.
+
+The key anti-entropy principles:
+- AP-1 (run it, don't reason about it): claims without evidence are entropy.
+- AP-2 (paste actual output): summaries without pasted output are entropy.
+- AP-5 (phantom-work detection): described work not on disk is entropy.
+- AP-10 (overclaim pattern): "all X pass" without pasted evidence is entropy.
+
+These principles are mechanically enforced by tests in
+tests/test_master_protocol.py::TestAuditorPrinciples. If any principle
+is removed from MASTER_PROTOCOL.md, CI blocks the commit.
+
+---
+
 ## Session-hardened principles (distilled from actual failures)
 
 These rules are NOT abstract best practices. Each one was produced

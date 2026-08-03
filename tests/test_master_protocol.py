@@ -782,3 +782,137 @@ class TestFivePhaseRoadmap:
                         "interface definition", "validation",
                         "quotations", "manufacturing"]:
             assert failure in content.lower(), f"Failure list missing: {failure}"
+
+
+class TestAuditorPrinciples:
+    """Verify all 10 Auditor's Principles (AP-1 through AP-10) are in
+    MASTER_PROTOCOL.md and that the 5 governance files exist.
+
+    Per external auditor: these principles codify the audit discipline
+    that has governed this project since cycle 1. They are constitutional
+    law — a coder who violates them is producing entropy.
+    """
+
+    def test_ap_1_run_it(self):
+        """AP-1: Run it, don't reason about it."""
+        content = (ROOT / "MASTER_PROTOCOL.md").read_text()
+        assert "AP-1" in content
+        assert "Run it" in content and "don't reason about it" in content
+
+    def test_ap_1_has_content(self):
+        content = (ROOT / "MASTER_PROTOCOL.md").read_text()
+        assert "Never claim a test passes without running it" in content
+
+    def test_ap_2_paste_output(self):
+        """AP-2: Paste actual output, not summaries."""
+        content = (ROOT / "MASTER_PROTOCOL.md").read_text()
+        assert "AP-2" in content
+        assert "actual output" in content.lower()
+        assert "not summaries" in content.lower()
+
+    def test_ap_2_has_content(self):
+        content = (ROOT / "MASTER_PROTOCOL.md").read_text()
+        assert "68 tests pass" in content  # the example of a summary
+
+    def test_ap_3_fresh_clone(self):
+        """AP-3: Fresh-clone verification."""
+        content = (ROOT / "MASTER_PROTOCOL.md").read_text()
+        assert "AP-3" in content
+        assert "Fresh-clone" in content or "fresh clone" in content.lower()
+
+    def test_ap_3_has_content(self):
+        content = (ROOT / "MASTER_PROTOCOL.md").read_text()
+        assert "environment-dependent" in content.lower()
+
+    def test_ap_4_resolved_vs_partial(self):
+        """AP-4: Distinguish RESOLVED from PARTIALLY RESOLVED."""
+        content = (ROOT / "MASTER_PROTOCOL.md").read_text()
+        assert "AP-4" in content
+        assert "RESOLVED" in content and "PARTIALLY RESOLVED" in content
+
+    def test_ap_4_has_content(self):
+        content = (ROOT / "MASTER_PROTOCOL.md").read_text()
+        assert "I fixed it" in content  # the example of not-resolved
+
+    def test_ap_5_phantom_work(self):
+        """AP-5: Phantom-work detection."""
+        content = (ROOT / "MASTER_PROTOCOL.md").read_text()
+        assert "AP-5" in content
+        assert "Phantom-work" in content or "phantom work" in content.lower()
+
+    def test_ap_5_has_content(self):
+        content = (ROOT / "MASTER_PROTOCOL.md").read_text()
+        assert "JJ1" in content or "phantom" in content.lower()
+        assert "git log" in content.lower()
+
+    def test_ap_6_enforcement_chain(self):
+        """AP-6: The enforcement chain (sensor → actuator → blocker → verified)."""
+        content = (ROOT / "MASTER_PROTOCOL.md").read_text()
+        assert "AP-6" in content
+        assert "enforcement chain" in content.lower()
+        for link in ["sensor", "actuator", "blocker", "verified"]:
+            assert link in content.lower()
+
+    def test_ap_6_has_content(self):
+        content = (ROOT / "MASTER_PROTOCOL.md").read_text()
+        assert "warning, not enforcement" in content.lower()
+
+    def test_ap_7_no_false_precision(self):
+        """AP-7: No false precision (Law 27)."""
+        content = (ROOT / "MASTER_PROTOCOL.md").read_text()
+        assert "AP-7" in content
+        assert "false precision" in content.lower()
+
+    def test_ap_7_has_content(self):
+        content = (ROOT / "MASTER_PROTOCOL.md").read_text()
+        assert "validation_level" in content or "evidence_strength" in content
+
+    def test_ap_8_one_at_a_time(self):
+        """AP-8: The one-at-a-time discipline."""
+        content = (ROOT / "MASTER_PROTOCOL.md").read_text()
+        assert "AP-8" in content
+        assert "one-at-a-time" in content.lower() or "one at a time" in content.lower()
+
+    def test_ap_8_has_content(self):
+        content = (ROOT / "MASTER_PROTOCOL.md").read_text()
+        assert "Build ONE engine" in content or "ONE" in content
+
+    def test_ap_9_accountability_loop(self):
+        """AP-9: The accountability loop (git log, ls, pytest)."""
+        content = (ROOT / "MASTER_PROTOCOL.md").read_text()
+        assert "AP-9" in content
+        assert "accountability loop" in content.lower()
+
+    def test_ap_9_has_content(self):
+        content = (ROOT / "MASTER_PROTOCOL.md").read_text()
+        assert "git log --oneline -1" in content
+        assert "ls -la" in content
+        assert "pytest" in content.lower()
+
+    def test_ap_10_overclaim(self):
+        """AP-10: The overclaim pattern."""
+        content = (ROOT / "MASTER_PROTOCOL.md").read_text()
+        assert "AP-10" in content
+        assert "overclaim" in content.lower()
+
+    def test_ap_10_has_content(self):
+        content = (ROOT / "MASTER_PROTOCOL.md").read_text()
+        assert "all tests pass" in content.lower() or "all X pass" in content
+
+    def test_all_5_governance_files_exist(self):
+        """All 5 governance files in the read list must exist on disk."""
+        for f in ["MASTER_PROTOCOL.md", "FAILURES.md", "CONSTITUTION.md",
+                  "ANTI_ENTROPY.md", "CONTRIBUTING.md"]:
+            assert (ROOT / f).exists(), f"Governance file missing: {f}"
+
+    def test_anti_entropy_references_ap_principles(self):
+        """ANTI_ENTROPY.md must reference the Auditor's Principles."""
+        content = (ROOT / "ANTI_ENTROPY.md").read_text()
+        assert "Auditor's Principles" in content or "AP-1" in content
+        assert "entropy" in content.lower()
+
+    def test_all_10_principles_present(self):
+        """All 10 AP principles (AP-1 through AP-10) must be present."""
+        content = (ROOT / "MASTER_PROTOCOL.md").read_text()
+        for i in range(1, 11):
+            assert f"AP-{i}" in content, f"Missing AP-{i}"

@@ -689,3 +689,68 @@ package in these specific dimensions:
 If the next package is not better in these dimensions, the system has
 not progressed. A package that is "more polished" but equally shallow
 in simulation and scientific reasoning is entropy.
+
+---
+
+## Auditor's Principles (AP-1 through AP-10)
+
+These principles codify the audit discipline that has governed this
+project since cycle 1. They are constitutional law — a coder who
+violates them is producing entropy.
+
+### AP-1: Run it, don't reason about it.
+Never claim a test passes without running it. Never claim a file
+exists without checking. Never claim a push landed without fetching.
+The output is the evidence; the claim is not.
+
+### AP-2: Paste actual output, not summaries.
+"68 tests pass" is a summary. Pasting the pytest output with individual
+test names is evidence. The auditor verifies against the output, not
+the summary.
+
+### AP-3: Fresh-clone verification.
+If the repo were cloned fresh, would the tests pass? Would the PDF
+generate? Would the scanner find 0 violations? If not, the claim is
+environment-dependent, not mechanically enforced.
+
+### AP-4: Distinguish RESOLVED from PARTIALLY RESOLVED.
+A finding is RESOLVED only when the mechanical enforcement is in place
+AND verified. "I fixed it" is not RESOLVED. "The test passes" is
+RESOLVED. "7 of 8 gaps closed" is PARTIALLY RESOLVED, not RESOLVED.
+
+### AP-5: Phantom-work detection.
+If the coder describes work in detail but the work is not on disk or
+on origin/main, it is phantom work. Verify every claim against git log
++ ls + pytest. The pattern has recurred 5 times (JJ1, OO6, fake ls,
+DDD8, self-audit overclaim). The test is: does the file exist? Does
+the commit exist? Does the test actually pass?
+
+### AP-6: The enforcement chain.
+Every enforcement must be a complete chain:
+sensor (detects violation) → actuator (reports it) → blocker (CI
+fails) → verified (test passes). A sensor without a blocker is a
+warning, not enforcement. A blocker without a sensor is blind.
+
+### AP-7: No false precision (Law 27).
+No numerical confidence without experimental validation. No "58%
+confidence." Use typed status: validation_level, evidence_strength,
+experimental_validation, status. The scanner mechanically enforces this.
+
+### AP-8: The one-at-a-time discipline.
+Build ONE engine. Verify it. Commit. Push. Then build the next.
+Bulk claims without per-step verification are the phantom-work pattern.
+This discipline has held for 12+ consecutive cycles.
+
+### AP-9: The accountability loop.
+Every claim of "done" must be accompanied by:
+- git log --oneline -1 (proves the commit exists)
+- ls -la <file> (proves the file exists)
+- pytest -v <test> (proves the test passes with individual names)
+If the coder cannot paste these, the work is not done.
+
+### AP-10: The overclaim pattern.
+The coder has claimed "all tests pass" when tests were failing, "all
+gaps closed" when 7 of 8 were closed, and "pushed" when work was
+uncommitted. This is the overclaim pattern. The fix is AP-2 (paste
+actual output) and AP-9 (accountability loop). Every "all X pass"
+claim must be backed by pasted pytest output showing 0 failures.
