@@ -14,6 +14,7 @@ from adapters.graph_model import GraphModel
 from adapters.oracle_deep import DeepOracle
 from adapters.specimen import SPECIMEN
 from adapters.retraction_registry import RetractionRegistry
+from adapters.test_registry import TestRegistry
 
 ROOT = pathlib.Path(__file__).resolve().parent
 FRONTEND = ROOT.parent / "frontend"
@@ -23,6 +24,7 @@ app = FastAPI(title="Technology Evolution Engine", version="1.0.0")
 gm = GraphModel(repo_root=ROOT.parents[1])
 oracle = DeepOracle(gm)
 retractions = RetractionRegistry()
+tests = TestRegistry()
 BACKEND_STATUS = "integrated" if gm.source == "core" else "implemented"
 
 
@@ -154,6 +156,40 @@ def get_retractions():
         "unresolved_ids": [r["id"] for r in unresolved],
         "gate_11_check_5_pass": len(unresolved) == 0,
         "registry_path": str(retractions.path.relative_to(ROOT.parents[1])),
+    }
+    return stamp(data, "integrated" if gm.source == "core" else "implemented")
+
+
+@app.get("/api/v1/tests")
+def get_tests():
+    """Test Registry — Honesty Loop Priority 8 engine.
+
+    Per TEST_REGISTRY_ENGINE.md: append-only ledger of every test run
+    against a Blueprint claim. Three test types (Law 28d — cannot be
+    conflated):
+      - ANALYTICAL_ESTIMATE (L2): derivation from first principles
+      - NUMERICAL_SIMULATION (L3): governing equations solved numerically
+      - PHYSICAL_VALIDATION (L4-L9): physical test on a real unit
+
+    Per Law 4 (failure is an asset): FAIL is a valid result, not hidden.
+    The failed_count field exposes how many tests have FAILED — the
+    affected claims should be retracted via P7 Retraction Registry.
+
+    Per EP-6: every test has pre-stated pass_criteria (committed before
+    the test runs, not alongside the results).
+
+    Per Law 27: each test record carries a typed epistemic_status block.
+    """
+    summary = tests.summary()
+    data = {
+        "tests": tests.list_tests(),
+        "summary": summary,
+        "count": summary["total"],
+        "failed_count": summary["failed_count"],
+        "not_run_count": summary["not_run_count"],
+        "by_type": summary["by_type"],
+        "by_result": summary["by_result"],
+        "registry_path": str(tests.path.relative_to(ROOT.parents[1])),
     }
     return stamp(data, "integrated" if gm.source == "core" else "implemented")
 

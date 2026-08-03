@@ -101,4 +101,8 @@ ALLOWED_MODIFICATIONS = frozenset({
     "product/blueprint/composer.py",  # TT2: confidence → epistemic_status (blueprints)
     "product/scoring/feasibility.py",  # TT2: FeasibilityScore dataclass migration
     "product/scoring/epistemic_status.py",  # TT2: shared typed-status helper
+    # Honesty Loop — P8 Test Registry (second of 10 engines in code):
+    # - test_registry.py: append-only JSONL, 3 test types (analytical/numerical/physical)
+    # - main.py: /api/v1/tests endpoint (added alongside /api/v1/retractions)
+    "web/backend/adapters/test_registry.py",  # P8: Test Registry adapter
 })
