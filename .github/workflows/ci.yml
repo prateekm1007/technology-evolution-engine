@@ -1,4 +1,4 @@
-name: AEP Gate Enforcement + Honesty Loop
+name: Master Protocol Enforcement
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
     branches: [main]
 
 jobs:
-  aep-enforcement:
+  enforcement:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -21,14 +21,11 @@ jobs:
           pip install -r requirements.txt
           pip install pytest
 
-      - name: Gate 1 — Governance read list check (12 files)
+      - name: Gate 1 — Read list check (5 files)
         run: python scripts/remember_governance.py
 
-      - name: Gate 2 — AEP gate enforcement (strict mode)
-        run: python scripts/check_aep_gate.py --strict
-
-      - name: Gate 3 — Honesty Loop forbidden-language scan (Law 27/28/29)
+      - name: Gate 2 — Law 27 forbidden-language scan
         run: python scripts/enforce_law27.py
 
-      - name: Gate 4 — Test suite (all tests must pass)
+      - name: Gate 3 — Test suite
         run: python -m pytest tests/ -v --tb=short

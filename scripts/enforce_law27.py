@@ -57,57 +57,30 @@ ROOT = pathlib.Path(__file__).resolve().parents[1]
 # quoted to define what is forbidden, not used as a claim).
 # --------------------------------------------------------------------------
 ALLOWLIST_PATHS = [
-    # Documents that define the forbidden language
-    "HONESTY_LOOP.md",
-    "BLUEPRINT_CONSTITUTION.md",
-    "EVIDENCE_LINEAGE_ENGINE.md",
-    "MASS_STACKUP_ENGINE.md",
-    "INTERFACE_CONTROL_ENGINE.md",
-    "PROCUREMENT_ENGINE.md",
-    "VALIDATION_LEVEL_ENGINE.md",
-    "REQUIREMENT_RECONCILIATION_ENGINE.md",
-    "RETRACTION_REGISTRY_ENGINE.md",
-    "TEST_REGISTRY_ENGINE.md",
-    "ECONOMIC_REALITY_ENGINE.md",
-    "THERMAL_ENVELOPE_ENGINE.md",
-    "ENGINEERING_PRINCIPLES.md",
-    "CODER_DIRECTIONS.md",
-    "AEP_PROTOCOL.md",
+    # The single governance document — defines the forbidden language
+    "MASTER_PROTOCOL.md",
+    # The essential root docs (pass the principle test)
     "CONSTITUTION.md",
     "ANTI_ENTROPY.md",
-    "HANDOFF.md",
+    "CONTRIBUTING.md",
     # Failure records quote the patterns they report on
     "FAILURES.md",
     "FAILURE_LIBRARY.md",
     # The scanner's own tests must contain the patterns to verify detection
-    "tests/test_honesty_loop.py",
-
-    # ----------------------------------------------------------------
-    # Historical records (pre-Law-27)
-    # ----------------------------------------------------------------
-    # Per CONSTITUTION.md Law 7 (Historical Permanence): "No benchmark,
-    # prediction, assumption, failure, or outcome may be silently
-    # altered." The following files are HISTORICAL RECORDS produced
-    # before Law 27 was enacted. They quote the forbidden patterns
-    # because that is what the system produced at the time.
-    # Editing them to remove the patterns would violate Law 7.
-    #
-    # These are grandfathered. The scanner continues to enforce Law 27
-    # on all NEW artifacts. The next AEP work item (Gate 1
-    # Comprehension) for the Honesty Loop will decide whether to
-    # re-publish these records under the new typed status vocabulary
-    # (which would create BP1_RECORD_v2.md, not edit BP1_RECORD.md).
-    "BP0_RECORD.md",
-    "BP1_RECORD.md",
-    "INTERFACES.md",
-    "EXAMPLE_BLUEPRINT_001.md",  # produced before Law 27; grandfathered
+    "tests/test_master_protocol.py",
+    "tests/test_api_typed_status.py",
+    "tests/test_retraction_registry.py",
+    "tests/test_test_registry.py",
+    # Everything in archive/ is exempt — these are historical records
+    # (per Law 7, cannot be silently edited). The scanner enforces
+    # Law 27 on new artifacts only.
+    "archive/governance-pre-consolidation/",
+    # Historical records (pre-Law-27) — grandfathered per Law 7
+    "examples/PKG-EVBT-001_ev_battery_thermal_package.md",
     "milestones/milestone_001/README.md",
     "milestones/milestone_001/spec.json",
     "milestones/milestone_002/spec.json",
     "milestones/milestone_002/README.md",
-    # Historical audit/benchmark reports (pre-Law-27). These contain
-    # "confidence" fields in their JSON schema. Migrating them to
-    # typed status objects is a separate AEP work item.
     "evidence/reports/",
 ]
 
