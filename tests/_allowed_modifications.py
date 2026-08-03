@@ -68,4 +68,6 @@ ALLOWED_MODIFICATIONS = frozenset({
     # PDF generation (CEO directive: world-class PDF non-negotiable)
     "scripts/generate_pdf.py",
     "scripts/pdf_template.css",
+    # Phase 2: thermal model (simulation gap closure, 5/10 → target 10/10)
+    "scripts/thermal_model_1d.py",
 })
