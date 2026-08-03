@@ -105,4 +105,8 @@ ALLOWED_MODIFICATIONS = frozenset({
     # - test_registry.py: append-only JSONL, 3 test types (analytical/numerical/physical)
     # - main.py: /api/v1/tests endpoint (added alongside /api/v1/retractions)
     "web/backend/adapters/test_registry.py",  # P8: Test Registry adapter
+    # Honesty Loop — EV battery package (PKG-EVBT-001):
+    # - register_ev_battery_artifacts.py: script that registers RT-001 + TR-001..TR-008
+    #   in the actual P7/P8 registries. First use of the system's own engines.
+    "scripts/register_ev_battery_artifacts.py",  # PKG-EVBT-001: register retraction + tests
 })
