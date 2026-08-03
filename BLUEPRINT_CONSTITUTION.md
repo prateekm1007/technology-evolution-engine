@@ -357,10 +357,10 @@ discover (Era 3) without first organizing (Era 1) and optimizing (Era 2).
 ## LAW 26 — The Blueprint shall never confuse possibility, plausibility, simulation, measurement, and reality.
 
 ```text
-possibility \u2260 plausibility
-plausibility \u2260 simulation
-simulation \u2260 measurement
-measurement \u2260 reality
+possibility ≠ plausibility
+plausibility ≠ simulation
+simulation ≠ measurement
+measurement ≠ reality
 ```
 
 Every statement in a blueprint must declare its epistemic level:
