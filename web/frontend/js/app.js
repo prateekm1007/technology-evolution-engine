@@ -102,8 +102,13 @@ async function evidence(){
     '<div style="display:flex;justify-content:space-between;align-items:flex-start"><div><p class="eyebrow">Evidence · the moat</p><h1 class="disp">Institutional memory</h1>'+
     '<p class="lede">Predictions, analogues, failures, constraint movements, and resurrections — the accumulated record that cannot be replicated.</p></div>'+stampHtml(r.verification)+'</div>'+
     '<div class="rule"><span class="lbl">Prediction ledger</span></div><section class="panel reveal"><table class="spec">'+
-    '<thead><tr><th>Type</th><th>Detail</th><th>Confidence</th><th>Status</th></tr></thead><tbody>'+
-    (e.ledger.map(x=>'<tr><td>'+(x.type||'prediction')+'</td><td style="color:var(--muted)">'+(x.constraint?('constraint '+x.constraint+' &#916;'+x.delta):(x.prediction||''))+'</td><td>'+(x.confidence!=null?x.confidence:'—')+'</td><td>'+(x.outcome||'pending')+'</td></tr>').join('')||'<tr><td colspan="4">empty</td></tr>')+
+    '<thead><tr><th>Type</th><th>Detail</th><th>Validation</th><th>Status</th></tr></thead><tbody>'+
+    (e.ledger.map(function(x){
+      var es = x.epistemic_status || {};
+      var vl = es.validation_level || '—';
+      var st = es.status || (x.outcome || 'pending');
+      return '<tr><td>'+(x.type||'prediction')+'</td><td style="color:var(--muted)">'+(x.constraint?('constraint '+x.constraint+' &#916;'+x.delta):(x.prediction||''))+'</td><td>'+vl+'</td><td>'+st+'</td></tr>';
+    }).join('')||'<tr><td colspan="4">empty</td></tr>')+
     '</tbody></table></section>';
   requestAnimationFrame(observeReveals);
 }
@@ -197,7 +202,9 @@ function renderCascade(r){
       '<svg width="'+W+'" height="'+H+'" style="background:rgba(255,255,255,.03)"><polyline points="'+pts+'" fill="none" stroke="var(--cyan)" stroke-width="2"/></svg>'+
       '<div class="mono" style="font-size:10px;color:var(--dim);letter-spacing:.14em">VIABLE COUNT · '+eq.iterations+' iterations · '+(eq.converged?'converged':'capped')+'</div></div>'+
       '<div style="flex:1;min-width:240px">'+
-      readout('Confidence',eq.confidence+' <span class="stamp hypothesis" style="margin-left:8px">uncalibrated</span>','hi')+
+      readout('Validation level', (r.epistemic_status ? r.epistemic_status.validation_level : '—')+' <span class="stamp gated" style="margin-left:8px">'+(r.epistemic_status ? r.epistemic_status.status : 'unknown')+'</span>','hi')+
+      readout('Evidence strength', r.epistemic_status ? r.epistemic_status.evidence_strength : '—')+
+      readout('Experimental validation', r.epistemic_status ? r.epistemic_status.experimental_validation : '—')+
       readout('Net possibility-space',eq.net_possibility_space,eq.net_possibility_space>=0?'ok':'risk')+'</div></div>'+
       (eq.resurrections.length?'<div class="rule"><span class="lbl">Resurrections</span></div>'+eq.resurrections.map(x=>'<p><span class="stamp rejected">&#10013; '+x.label+'</span><span class="mono" style="font-size:12px;color:var(--sage);margin-left:10px">viability '+x.new_viability+(x.lesson?' — '+x.lesson:'')+'</span></p>').join(''):'')+
       (eq.crossings.length?'<div class="rule"><span class="lbl">Viability crossings</span></div>'+eq.crossings.map(x=>'<p><span class="stamp '+(x.direction==='viable'?'verified':'rejected')+'">'+x.direction+'</span><span class="mono" style="font-size:12px;margin-left:10px">'+x.label+' &#8594; '+x.new_viability+'</span></p>').join(''):'')+
