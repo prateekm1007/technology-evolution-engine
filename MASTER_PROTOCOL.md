@@ -1,15 +1,30 @@
 # MASTER_PROTOCOL
 
-> If a document does not directly increase truth, reduce risk, increase
-> reproducibility, or improve execution, it shall not exist.
-> — CEO directive, Master Protocol consolidation
+> The purpose of a package is not to describe an idea.
+> The purpose of a package is to remove the next expensive risk.
+> — CEO directive, market feedback integration
 
 This is the single document that governs how the system produces
-engineering packages. Everything else — the code, the tests, the
-data — implements what this document defines. The coder reads this
-document and nothing else before producing a package.
+engineering packages. The coder reads this document and nothing else
+before producing a package. The protocol decides. The coder executes.
 
-The protocol decides. The coder executes.
+---
+
+## The commercial specification
+
+You are not writing reports. You are reducing uncertainty.
+
+You are not producing documents. You are producing decisions.
+
+You are not rewarded for complexity. You are rewarded for eliminating
+the next risk.
+
+Every page must answer: "Would someone spend money because this page
+exists?"
+
+A customer does not buy a PDF. A customer buys the elimination of
+uncertainty. The package exists to remove the next expensive risk so
+the customer can spend the next dollar intelligently.
 
 ---
 
@@ -17,174 +32,313 @@ The protocol decides. The coder executes.
 
 ```
 INPUT:  A problem statement (e.g., "Build an EV battery pack")
-OUTPUT: MASTER_PACKAGE.md — a single document with 11 sections
+OUTPUT: MASTER_PACKAGE.md → product/PRODUCT.pdf
+        A single document with 12 sections + a Next Money Page
 ```
 
 The coder does not decide what to produce. The protocol defines the
-11 sections. The coder fills each section honestly.
+structure. The coder fills each section honestly.
 
 ---
 
-## The 11 sections
+## The 12 Laws
 
-Every package MUST contain all 11 sections, in order. A section that
+These laws are constitutional. A package that violates any law is
+REJECTED. No exceptions.
+
+### LAW 1 — Product identity
+
+Every package shall declare exactly one maturity level:
+
+```
+DISCOVERY
+CONCEPT
+EVALUATION
+DETAILED DESIGN
+PRE-PROTOTYPE
+PROTOTYPE
+VALIDATED DESIGN
+PRODUCTION
+```
+
+A package may never claim a higher level than its evidence permits.
+A package with no physical validation cannot claim PROTOTYPE or above.
+A package with no prototype cannot claim VALIDATED DESIGN or above.
+
+### LAW 2 — Arithmetic closure
+
+Every package shall contain:
+- energy budget
+- mass budget
+- cost budget
+- thermal budget
+- manufacturing budget
+
+All numbers must reconcile. The mass stack-up must sum to the total.
+The cost BOM must sum to the total. The energy budget must balance
+(generation vs rejection). No unresolved contradictions are permitted.
+A contradiction blocks the package (§Consistency).
+
+### LAW 3 — Epistemic closure
+
+Every claim shall possess:
+- claim (the statement)
+- source (where it came from)
+- method (how it was derived)
+- validation level (L0-L9)
+- status (PASS / PASS_WITH_CONDITIONS / MARGINAL / BLOCKED / REJECTED)
+- blocking condition (what prevents promotion)
+
+No numerical confidence is permitted (per Law 27 of the prior
+constitution, now subsumed). The typed status block is the only
+sanctioned epistemic representation.
+
+### LAW 4 — Retractions
+
+Retractions are permanent. Retractions are never deleted. Retractions
+are never hidden. A retracted claim is marked RETRACTED with a reason,
+a date, and a replacement (or explicit WITHDRAWN status). The Retraction
+Registry (P7) is append-only.
+
+### LAW 5 — Thermal truth
+
+Narrative reasoning is prohibited for thermal claims. Acceptable
+methods:
+- measurements (from physical tests)
+- analytical models (first-principles derivation)
+- 1D models (lumped-parameter)
+- CFD (computational fluid dynamics)
+- FEA (finite element analysis)
+- physical experiments
+
+The method must be recorded. "We believe it will be fine" is not
+thermal truth.
+
+### LAW 6 — Cost truth
+
+Every cost line shall declare one of:
+- QUOTED (supplier quotation with date + expiry)
+- CATALOG (published list price)
+- ESTIMATED (engineering estimate, labeled as such)
+
+A PRODUCTION package requires all lines QUOTED. An EVALUATION package
+permits ESTIMATED lines but they must be labeled and counted.
+
+### LAW 7 — Interface control
+
+Every package shall include:
+- mechanical interfaces
+- electrical interfaces
+- software interfaces (if applicable)
+- thermal interfaces
+- communication interfaces
+
+Each interface has a type, a status, and evidence. An undeclared
+interface is a future field failure.
+
+### LAW 8 — Safety
+
+Every package shall contain:
+- standards (ISO, IEC, SAE, UN, etc.)
+- abuse cases (what happens when it's misused)
+- propagation cases (thermal runaway propagation analysis)
+- failure analysis (FMEA or equivalent)
+- certification paths (regulatory approval roadmap)
+
+### LAW 9 — Manufacturing
+
+Every package shall contain:
+- process sequence (step-by-step assembly)
+- tooling (what equipment is required)
+- yield (expected pass rate)
+- failure modes (what can go wrong in production)
+- quality gates (inspection points)
+
+### LAW 10 — Kill tests
+
+The system does not ask "Can we build it?" The system asks "How do we
+kill it?"
+
+Every package must contain kill tests. Each kill test has:
+- KT-ID (KT-01, KT-02, ...)
+- claim (the assumption being tested)
+- test (the method)
+- measurement (what is measured)
+- failure threshold (the pass/fail boundary)
+- consequence (what happens if it fails)
+
+Example:
+```
+KT-01
+Claim: 1.5C charging supported
+Test: physical cell cycle test
+Measurement: cell temperature
+Failure threshold: 55°C
+Consequence: charge rate reduced to 1.2C
+```
+
+A kill test that FAILS triggers a retraction (Law 4) and a revision
+of the affected claim.
+
+### LAW 11 — Intellectual-property posture
+
+Every package shall contain:
+- relevant patents (active + expired)
+- known claim families (who owns what)
+- known litigation history (has this been sued over)
+- restricted zones (where can this not be sold)
+- lawyer review requirements (what needs legal sign-off)
+
+### LAW 12 — Next-spend protocol
+
+Every package shall answer:
+- What should we do next?
+- What will it cost?
+- What will we learn?
+- What decision becomes possible?
+- What could kill the project?
+
+This is the Next Money Page (see §The Next Money Page below). The
+package does not end at a verdict. It ends at a decision.
+
+---
+
+## The package structure (12 sections + Next Money Page)
+
+Every package MUST contain all sections, in order. A section that
 cannot be filled is marked BLOCKED with a stated reason — it is never
 skipped.
 
 ### 0. PURPOSE
-
-What are we building and why?
-
-One paragraph. State the primary objective. State the success metric.
-State the package maturity level (see §Maturity below).
+What are we building and why? Primary objective. Success metric =
+"a customer can spend the next dollar intelligently." Maturity level
+(Law 1).
 
 ### 1. REQUIREMENTS
-
-List every requirement. Classify each:
-
-- MANDATORY — failure makes the design fail in its primary purpose
-- DESIRABLE — improves the design, may be traded with justification
-- ASPIRATIONAL — a goal, not a commitment
-- EXPERIMENTAL — being tested for future inclusion
-
-Two MANDATORY requirements that directly conflict block the package
-(see §Consistency). A conflict between MANDATORY and DESIRABLE is
-resolved by the MANDATORY winning, recorded as a tradeoff (§6).
+List every requirement. Classify: MANDATORY / DESIRABLE / ASPIRATIONAL
+/ EXPERIMENTAL. Two MANDATORY conflicts block the package.
 
 ### 2. EVIDENCE
-
-What has humanity already learned about building this?
-
-Study reality before creating reality. Minimum: existing products,
-failed products, patents, academic literature, standards, supplier
-data. Every source carries a rank (A-I) determining its weight.
-
-Every claim in the package MUST cite at least one evidence ID from
-this section. A claim without evidence is a hallucination.
+Existing products, failed products, patents, academic literature,
+standards, supplier data. Every source carries a rank (A-I).
 
 ### 3. DECOMPOSITION
-
-Break the design into subsystems, components, interfaces, dependencies.
-
-Every component has: name, function, mass, cost, supplier, alternatives.
-Every interface has: type (electrical, thermal, mechanical, communications,
-manufacturing, service), and a status (PASS / PASS_WITH_CONDITIONS /
-MARGINAL / BLOCKED / REJECTED).
-
-Mass stack-up: every component's mass must be listed. The total MUST
-equal the sum of the parts plus an explicitly justified margin. A bare
-mass total is forbidden — the stack-up is the only permitted form.
+Subsystems, components, interfaces (Law 7), dependencies. Mass
+stack-up (Law 2). Energy budget (Law 2). Thermal budget (Law 2).
 
 ### 4. ALTERNATIVES
-
-For every major design decision, at least 3 alternatives (primary + A + B).
-
-Each alternative has: description, tradeoff, evidence. A single-path
-recommendation is a single point of failure and is forbidden.
+3+ alternatives per major decision. Each with tradeoff + evidence.
 
 ### 5. CONSISTENCY
-
-Are the numbers physically possible? Are the requirements compatible?
-
-Checks:
-- Arithmetic: mass stack-up sums to total. Cost BOM sums to total.
-- Units: energy density = energy / mass. Verify the arithmetic.
-- Dimensions: torque = force × distance. Verify the units.
-- Requirements: two MANDATORY requirements cannot directly conflict.
-  If they do, the package is REJECTED until one is demoted or the
-  design changes.
-
-If any check fails, the affected claim is retracted (§10).
+Arithmetic closure (Law 2). Units. Dimensions. Requirement conflicts.
+All numbers reconcile. No unresolved contradictions.
 
 ### 6. TRADEOFFS
-
-For every decision: what did you gain? What did it cost? What did you sacrifice?
-
-A decision without a stated sacrifice is not a decision — it is a preference.
+For every decision: gain, cost, sacrifice. A decision without a stated
+sacrifice is a preference.
 
 ### 7. ADVERSARIAL REVIEW
-
-Why will this fail? Who disagrees? What is missing?
-
-Four reviewers attack the design:
-1. Chief Engineer — physics, tolerances, manufacturing
-2. Manufacturing Expert — yield, assembly, supply chain
-3. Economist — unit economics, margins, break-even
-4. Customer — usability, maintenance, value proposition
-
-Each reviewer attempts to destroy the proposal. If any finds a fatal
-flaw, the package is REJECTED. Minor issues are recorded as conditions.
+4 reviewers attack: Chief Engineer, Manufacturing, Economist, Customer.
+Each attempts to destroy the proposal. Fatal flaw = REJECTED.
 
 ### 8. IMPLEMENTATION
-
-BOM, manufacturing plan, assembly sequence, procurement.
-
-Every BOM line has: supplier, part number, unit price, quantity, lead
-time, quotation date, quotation expiry, landed cost. A line without a
-quotation date is ESTIMATED and must be labeled as such. PRODUCTION
-packages require all lines QUOTED.
+BOM (Law 6). Manufacturing plan (Law 9). Assembly sequence. Tooling.
+Yield. Quality gates.
 
 ### 9. VALIDATION
-
-What has been tested? What hasn't? What failed?
-
-Every test is one of three types (these cannot be conflated):
-- ANALYTICAL_ESTIMATE (L2): derivation from first principles
-- NUMERICAL_SIMULATION (L3): governing equations solved numerically
-- PHYSICAL_VALIDATION (L4-L9): physical test on a real unit
-
-Every test has pre-stated pass criteria (committed before the test
-runs, not alongside the results). FAIL is a valid result — it is not
-hidden. A FAIL triggers a retraction (§10).
-
-Validation levels:
-- L0: hypothesis (no evidence beyond the claim)
-- L1: literature support (published sources exist)
-- L2: analytical estimate (derived from first principles)
-- L3: numerical model (governing equations solved)
-- L4: bench validation (physical test, sub-scale)
-- L5: subsystem validation (physical test, full subsystem)
-- L6: prototype (full prototype tested in lab)
-- L7: pilot deployment (tested in real environment)
-- L8: production candidate (pre-production units built and tested)
-- L9: production deployment (at scale, measured against reality)
+L0-L9 maturity (Law 1). Test types (Law 5): ANALYTICAL_ESTIMATE,
+NUMERICAL_SIMULATION, PHYSICAL_VALIDATION. Pre-stated pass criteria
+(EP-6). FAIL is not hidden.
 
 ### 10. RETRACTIONS
 
-What claims were retracted? Why? What replaces them?
+Retracted claims (Law 4). Reason. Replacement. Registered in P7
+Retraction Registry (append-only). A retracted claim is marked
+RETRACTED with a reason, a date, and a replacement (or explicit
+WITHDRAWN status if no replacement exists). Retractions are permanent,
+never deleted, never hidden.
 
-A retracted claim is not deleted — it is marked RETRACTED with a
-reason, a date, and a replacement (or explicit WITHDRAWN status).
-The Retraction Registry is append-only. No claim may be silently
-edited.
+### 11. KILL TESTS (Law 10)
+Every assumption has a kill test. Each with KT-ID, claim, test,
+measurement, failure threshold, consequence. FAIL triggers retraction.
 
-Reason categories: NUMERICAL_CONTRADICTION, SEMANTIC_CONTRADICTION,
-EVIDENCE_INVALIDATED, MEASUREMENT_SUPERSEDED, ASSUMPTION_FALSIFIED,
-KILL_TEST_FAILED, DESIGN_CHANGE, EXTERNAL_AUDIT.
+### 12. SAFETY + IP (Laws 8 + 11)
+Standards. Abuse cases. Propagation analysis. FMEA. Certification
+paths. Patents. Claim families. Litigation history. Restricted zones.
+Lawyer review.
 
-A package with unresolved retractions (RETRACTED with no replacement)
-is BLOCKED.
-
-### 11. FINAL VERDICT
-
+### FINAL VERDICT
 APPROVED | APPROVED_WITH_CONDITIONS | REJECTED | BLOCKED
 
-The verdict is determined by the preceding sections, not by the coder's
-judgment. If any MANDATORY requirement is unmet: REJECTED. If any
-consistency check fails: REJECTED. If any kill test FAILS unmitigated:
-REJECTED. If any test is NOT_RUN: APPROVED_WITH_CONDITIONS (at best).
-If all tests PASS and all retractions are resolved: APPROVED.
+### NEXT MONEY PAGE (Law 12)
+The package does not end at the verdict. It ends at a decision.
+See §The Next Money Page below.
+
+---
+
+## The Next Money Page
+
+This is the single most important page. It converts the document into
+an investment instrument. The customer reads this page to decide
+whether to spend the next dollar.
+
+```
+NEXT MONEY PAGE
+===============
+
+Current maturity
+EVALUATION
+
+------------------------------------------------
+
+Remaining risks
+R1: [risk description]
+R2: [risk description]
+R3: [risk description]
+R4: [risk description]
+
+------------------------------------------------
+
+Next expenditure
+$25,000
+
+------------------------------------------------
+
+This buys
+- CFD analysis of thermal envelope
+- Single-cell physical cycle test
+- Supplier RFQs (3 suppliers)
+- Fixture design for prototype
+
+------------------------------------------------
+
+Decision unlocked
+PRE-PROTOTYPE
+
+------------------------------------------------
+
+Possible outcomes
+PASS             → proceed to PROTOTYPE build
+PASS_WITH_CONDITIONS → proceed with documented mitigations
+FAIL             → re-design (retract affected claims)
+RETRACT          → withdraw the package, restart
+
+------------------------------------------------
+
+What could kill the project
+- If the thermal test shows cell temp > 55°C at 1.5C, the
+  charge rate claim must be retracted and the business case
+  weakens (slower charging = lower customer value).
+```
+
+Every package MUST end with this page. No exceptions.
 
 ---
 
 ## Typed status (replaces numerical confidence)
 
-No claim in any package may carry a numerical confidence, probability,
-certainty, or reliability value. The system has no calibration data,
-no decades of observations, no millions of validation samples. A
-number like "58% confidence" is false precision.
-
-Every claim carries a typed status block:
+No claim may carry a numerical confidence, probability, certainty, or
+reliability value. Every claim carries:
 
 ```
 validation_level: L0-L9
@@ -193,74 +347,26 @@ experimental_validation: ABSENT | BENCH | SUBSYSTEM | PROTOTYPE | PILOT | PRODUC
 status: PASS | PASS_WITH_CONDITIONS | MARGINAL | BLOCKED | REJECTED | PLAUSIBLE
 ```
 
-The single exception: Monte Carlo simulations may report numerical
-probabilities internal to the simulation, labeled SIMULATION_INTERNAL.
-These may not be promoted to claim confidence.
-
----
-
-## Maturity levels
-
-A package declares its maturity:
-
-- CONCEPT: idea + classification + state vector
-- DECISION: + alternatives + constraints + economics
-- EVALUATION: + simulations + benchmarks + adversarial review
-- PROTOTYPE: + manufacturing plan + CAD + validation plan
-- PRODUCTION: + production specs + supplier traceability + field data
-
-No package is "complete." No package is a "blueprint." The maturity
-level is declared on the package, not implied.
-
 ---
 
 ## Forbidden language
 
-The following are forbidden in any package:
-
 1. Numerical confidence (e.g., "confidence: 58%"). Use typed status.
-2. PASS/FAIL percentages (e.g., "85.7% PASS"). Use STATUS enum.
+2. PASS/FAIL percentages. Use STATUS enum.
 3. "Complete blueprint" or "complete engineering blueprint." Use the
-   maturity level.
-4. Simulation mislabeling (e.g., calling analytical estimates
-   "simulations"). Use the correct test type.
+   maturity level (Law 1).
+4. Simulation mislabeling (calling analytical estimates "simulations").
 5. Uncalibrated probability, certainty, or reliability percentages.
 
 The scanner (scripts/enforce_law27.py) mechanically enforces this.
 
 ---
 
-## The principle
+## PDF (non-negotiable — ONE product PDF per query)
 
-> If a document does not directly increase truth, reduce risk,
-> increase reproducibility, or improve execution, it shall not exist.
-
-Apply this to every document in the repository. If it doesn't pass,
-archive it. The code that implements the rules stays. The tests that
-verify the code stay. The data that records the history stays. The
-documents that describe documents — those go.
-
----
-
-## What lives in this repository
-
-| What | Why it exists | Principle test |
-|---|---|---|
-| MASTER_PROTOCOL.md (this file) | The factory | Increases reproducibility |
-| FAILURES.md | Institutional memory of failures | Increases truth |
-| CONSTITUTION.md | Research-process laws (8 laws) | Increases truth (Law 7, Law 8) |
-| ANTI_ENTROPY.md | Operational anti-entropy rules | Reduces risk |
-| web/backend/ (code) | The engines (Oracle, Retraction, Test) | Improves execution |
-| product/ (code) | The analyzer pipeline | Improves execution |
-| scripts/ (code) | Scanners, registration, audit | Improves execution |
-| tests/ (code) | Verifies the code works | Increases reproducibility |
-| data/ (JSON) | The graph, ledger, registries | Increases truth |
-| examples/ | Produced packages | Increases reproducibility |
-| archive/ | Consolidated/retired documents | History (Law 7) |
-
-Everything not in this table should be archived. The coder does not
-read archived documents. The coder reads MASTER_PROTOCOL.md and
-FAILURES.md. That is enough.
+Every query produces exactly ONE world-class, customer-facing PDF at
+`product/PRODUCT.pdf`. This is the product. One PDF. One product. One
+decision. See the prior §PDF rules (unchanged).
 
 ---
 
@@ -269,98 +375,11 @@ FAILURES.md. That is enough.
 1. Read MASTER_PROTOCOL.md (this document).
 2. Read FAILURES.md (do not re-introduce past failures).
 3. Receive the INPUT.
-4. Produce MASTER_PACKAGE.md with all 11 sections.
-5. **Produce ONE world-class PDF** of the package (see §PDF below). This is the product. Non-negotiable.
-6. Register retractions in the Retraction Registry (P7, in code).
-7. Register tests in the Test Registry (P8, in code).
-8. Run the scanner on the package. If it fails, fix and re-run.
-9. Commit the .md + the single PDF to the repository. Push to GitHub.
-10. Paste git log --oneline -1.
+4. Produce MASTER_PACKAGE.md with all 12 sections + Next Money Page.
+5. Produce ONE world-class PDF at product/PRODUCT.pdf. Non-negotiable.
+6. Register retractions in P7. Register tests in P8.
+7. Run the scanner. If it fails, fix and re-run.
+8. Commit + push. Paste git log --oneline -1.
 
-The protocol decides what gets produced. The coder executes.
-
----
-
-## PDF (non-negotiable — ONE product PDF per query)
-
-Every query produces **exactly ONE world-class, customer-facing PDF**. This
-PDF is the product. It is what customers, auditors, and investors see.
-People will decide to pay for the services based on the quality of this
-single PDF, after they submit their query.
-
-### The one-PDF rule
-
-1. **One PDF per query.** Not two. Not four. One.
-2. **The PDF is the product.** Markdown is the work-in-progress; the PDF
-   is the finished good that ships to the customer.
-3. **Side documents are allowed** (markdown source, test fixtures, registry
-   data) but they are NOT customer-facing. The customer sees only the PDF.
-4. **The PDF lives at `product/PRODUCT.pdf`.** This is the canonical path.
-   There is no other PDF path for customer-facing output.
-5. **Old product PDFs are replaced, not accumulated.** When a new query
-   produces a new PDF, the previous `product/PRODUCT.pdf` is moved to
-   `archive/products/` (per Law 7 — historical permanence) and the new
-   PDF takes the canonical path.
-
-### Why only one
-
-- **Customers do not comparison-shop our internal iterations.** They
-  submitted one query; they receive one answer.
-- **Multiple PDFs dilute quality.** A factory that ships 4 PDFs per
-  query is not a factory — it is a brainstorming session.
-- **Investors invest based on one document.** The pitch deck is one
-  deck. The product PDF is one PDF.
-- **The protocol decides, the coder executes.** The protocol says one.
-  The coder produces one.
-
-### PDF requirements (world-class)
-
-1. **Cover page.** Package ID, title, package maturity, date, status
-   badge (APPROVED / APPROVED_WITH_CONDITIONS / REJECTED / BLOCKED).
-2. **Table of contents** with page numbers.
-3. **Page headers** showing the package ID on every page.
-4. **Page footers** with page numbers (Page X of Y).
-5. **Professional typography.** Sans-serif body (Inter or Helvetica),
-   serif headings optional. 11pt body, 1.4 line-height. Justified
-   paragraphs (left-aligned for tables and lists per Rule 1).
-6. **Tables** with zebra striping, header row in accent color, proper
-   cell padding.
-7. **Code blocks** with monospace font (Sarasa Mono or Menlo), light
-   background, syntax-aware if applicable.
-8. **Status badges** rendered as colored pills (green=PASS, amber=
-   PASS_WITH_CONDITIONS, red=REJECTED, gray=BLOCKED).
-9. **Retraction callouts** in a red-bordered box.
-10. **No forbidden language** (per §Forbidden language). The PDF must
-    pass the Law 27 scanner.
-
-### Generation
-
-The PDF is generated from the markdown source using weasyprint with
-a custom CSS template at `scripts/pdf_template.css`. The generation
-script is `scripts/generate_pdf.py`.
-
-```
-python scripts/generate_pdf.py <package.md> product/PRODUCT.pdf
-  → produces the single canonical product PDF at product/PRODUCT.pdf
-```
-
-The PDF at `product/PRODUCT.pdf` is the only customer-facing PDF.
-Markdown sources and other side documents live in `examples/` and
-are NOT customer-facing.
-
-### Enforcement
-
-`tests/test_pdf_generation.py` enforces the one-PDF rule:
-- `product/PRODUCT.pdf` must exist.
-- `examples/` must NOT contain any `.pdf` files (they are side documents,
-  not products).
-- The canonical PDF must be valid (non-zero, PDF header).
-
-### Why this is non-negotiable
-
-A factory produces one finished good per order, not a shelf of variants.
-The customer submitted one query; they receive one PDF. The CEO's
-directive: "As a rule produce one, only 1 world class pdf. The one we
-will show our customers. People will invest based on the quality of
-the pdf, after they submitted the query." One PDF. One product. One
-decision.
+The protocol decides what gets produced. The coder executes. The
+purpose is to remove the next expensive risk — not to describe an idea.

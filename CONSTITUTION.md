@@ -1,5 +1,16 @@
 # CONSTITUTION
 
+## The Supreme Law (market feedback, 2026-08-03)
+
+> The purpose of a package is not to describe an idea.
+> The purpose of a package is to remove the next expensive risk.
+
+This law supersedes all others when they conflict. A package, a rule,
+a document, or a line of code that does not reduce the next expensive
+risk is entropy — regardless of how well-formed it is. The success
+metric is not "interesting"; it is "a customer can spend the next
+dollar intelligently."
+
 ## Eight Constitutional Laws
 
 ### Law 1: Transformation, not object.

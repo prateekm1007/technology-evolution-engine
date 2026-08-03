@@ -1,21 +1,33 @@
 # ANTI-ENTROPY & DRIFT CONTROL
 
-**Status:** Active rule set. Operating under the Maestro Modification Loop (v1.0).
+**Status:** Active rule set. Operating under MASTER_PROTOCOL.md.
 **Read this file BEFORE writing any code in this repository.**
 **Also read CONTRIBUTING.md before every commit.**
 
-This repository has a documented history of entropy:
-- F-005 (ledger corruption predating version control)
-- F-006 (silent degradation instead of loud failure)
-- F-011 (a "verified" stamp with no evidence)
-- F-013/F-015 (the same fix landed in 1 of 3 readers)
-- F-019 (236 tests claimed, 231/5 actual)
-- F-020 (walrus + direction bug live for 5 commits)
-- F-021 (dict migration broke Oracle + FeasibilityScorer silently)
+---
 
-Entropy is not a one-time event. It is the default state of a codebase
-that doesn't actively resist it. The rules below are the active
-resistance.
+## The supreme anti-entropy principle (market feedback, 2026-08-03)
+
+> The purpose of a package is not to describe an idea.
+> The purpose of a package is to remove the next expensive risk.
+>
+> You are not writing reports. You are reducing uncertainty.
+> You are not producing documents. You are producing decisions.
+> You are not rewarded for complexity. You are rewarded for
+> eliminating the next risk.
+>
+> Every page must answer: "Would someone spend money because
+> this page exists?"
+
+Entropy is not just code decay. Entropy is also **document decay** —
+producing pages that do not reduce risk, that do not enable a decision,
+that exist to make the author feel productive. A 50-page package that
+does not answer "what should we spend next?" is entropy.
+
+The anti-entropy rules below are the active resistance. They exist
+because each one was produced by a specific failure. But the supreme
+principle above governs them all: if a rule does not serve risk
+reduction, it is itself entropy.
 
 ---
 
