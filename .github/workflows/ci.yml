@@ -20,12 +20,29 @@ jobs:
         run: |
           pip install -r requirements.txt
           pip install pytest
+          pip install weasyprint markdown
 
       - name: Gate 1 — Read list check (5 files)
         run: python scripts/remember_governance.py
 
-      - name: Gate 2 — Law 27 forbidden-language scan
+      - name: Gate 2 — Law 27 forbidden-language scan (repo)
         run: python scripts/enforce_law27.py
 
-      - name: Gate 3 — Test suite
+      - name: Gate 2.5 — Law 27 scan on the product source (Gap 7)
+        run: python scripts/enforce_law27.py product/PRODUCT.md
+
+      - name: Gate 3 — 1D thermal model runs (Gap 5)
+        run: python scripts/thermal_model_1d.py
+
+      - name: Gate 4 — Regenerate PDF from source and verify match (Gap 1, 8)
+        run: |
+          python scripts/generate_pdf.py product/PRODUCT.md /tmp/PRODUCT_regenerated.pdf
+          if ! cmp -s product/PRODUCT.pdf /tmp/PRODUCT_regenerated.pdf; then
+            echo "FAIL: product/PRODUCT.pdf does not match regenerated PDF from product/PRODUCT.md"
+            echo "The committed PDF is stale. Run: python scripts/generate_pdf.py product/PRODUCT.md product/PRODUCT.pdf"
+            exit 1
+          fi
+          echo "PASS: product/PRODUCT.pdf matches regenerated PDF from source"
+
+      - name: Gate 5 — Test suite
         run: python -m pytest tests/ -v --tb=short

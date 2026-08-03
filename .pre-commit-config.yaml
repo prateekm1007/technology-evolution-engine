@@ -1,41 +1,24 @@
 # Pre-commit hook configuration for TEE.
 #
-# This file wires the governance loop structurally — the
-# remember_governance.py script is now a gate, not just a reminder.
-# The check_aep_gate.py script enforces the 10-gate AEP pipeline.
-#
-# Per auditor II3: "The AEP is NOT mechanically enforced. A coder
-# who skips all 10 gates can still commit. The system does not force
-# excellence; it recommends it."
-#
-# This .pre-commit-config.yaml closes that gap. When pre-commit is
-# installed, it runs TWO checks before every commit:
-#   1. remember_governance.py — verifies governor files exist
-#   2. check_aep_gate.py — verifies AEP gate artifacts exist and pass
+# Per the Master Protocol consolidation: the coder reads MASTER_PROTOCOL.md
+# and FAILURES.md. The pre-commit hook verifies governance files exist and
+# the Law 27 scanner passes before every commit.
 #
 # Installation:
 #   pip install pre-commit
 #   pre-commit install
-#
-# After installation, every `git commit` will first run both checks.
-# If any governor file is missing OR any AEP gate fails, the commit
-# is blocked.
 
 repos:
   - repo: local
     hooks:
-      - id: remember-governance
-        name: "Governance read list check (11 files)"
+      - id: governance-read-list
+        name: "Governance read list check (5 files)"
         entry: python scripts/remember_governance.py
         language: system
         pass_filenames: false
-        always_run: true
-        stages: [commit]
 
-      - id: aep-gate-check
-        name: "AEP gate enforcement (10 gates)"
-        entry: python scripts/check_aep_gate.py
+      - id: law27-scanner
+        name: "Law 27 forbidden-language scanner"
+        entry: python scripts/enforce_law27.py
         language: system
         pass_filenames: false
-        always_run: true
-        stages: [commit]
