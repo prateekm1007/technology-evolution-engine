@@ -60,6 +60,10 @@ def extract_bom_rows(md_text: str) -> list[dict]:
 
             # End of table (empty line or non-table line)
             if not line.strip().startswith("|"):
+                # Don't reset if this is a section header within the BOM
+                # (e.g., "**TIER 1: EMERGENCY**")
+                if line.strip().startswith("**") and ":" in line:
+                    continue  # Section header, stay in BOM table
                 in_bom_table = False
                 bom_headers = None
                 continue
@@ -72,17 +76,20 @@ def extract_bom_rows(md_text: str) -> list[dict]:
             if "Unit" in cells[0] or "Component" in cells[0]:
                 continue
 
-            # Skip total rows
-            if "Total" in cells[0] or "total" in cells[0].lower():
-                # Extract the claimed total
-                for c in cells:
-                    m = re.search(r'\$?([\d,]+\.?\d*)', c.replace(',', ''))
-                    if m:
-                        rows.append({
-                            "type": "total_claim",
-                            "value": float(m.group(1)),
-                            "line_num": i + 1,
-                        })
+            # Skip total/subtotal rows (including "GRAND TOTAL", "Tier 1 subtotal", etc.)
+            if "Total" in cells[0] or "total" in cells[0].lower() or "subtotal" in cells[0].lower():
+                # Extract the claimed total (only for GRAND TOTAL, not tier subtotals)
+                if "GRAND" in cells[0].upper() or "Grand" in cells[0]:
+                    for c in cells:
+                        clean = c.replace("**", "").strip()
+                        m = re.search(r'\$([\d,]+\.?\d*)', clean)
+                        if m:
+                            val = float(m.group(1).replace(",", ""))
+                            rows.append({
+                                "type": "total_claim",
+                                "value": val,
+                                "line_num": i + 1,
+                            })
                 continue
 
             # Parse line item
@@ -101,12 +108,14 @@ def extract_bom_rows(md_text: str) -> list[dict]:
                     if m:
                         val = float(m.group(1).replace(',', ''))
                         # Heuristic: unit cost is typically < $1000
-                        if val < 10000:
+                        if val < 1000000 and qty is None:
                             unit_cost = val
 
-                # Qty: pure number
-                if qty is None and cell.isdigit():
-                    qty = int(cell)
+                # Qty: pure number (may have commas)
+                if qty is None:
+                    clean_cell = cell.replace(",", "")
+                    if clean_cell.isdigit():
+                        qty = int(clean_cell)
 
                 # Subtotal: $X.XX (larger number)
                 if "$" in cell:
