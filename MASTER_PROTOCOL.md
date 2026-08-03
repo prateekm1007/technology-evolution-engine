@@ -900,3 +900,81 @@ regulator. It must remain understandable in all cases.
 "Should we spend the next dollar?"
 YES/NO. Spend: $X. Reason: [one sentence]. Risk: [one sentence].
 Decision unlocked: [one sentence].
+
+---
+
+## Extended Presentation Rules (PR-13 through PR-18)
+
+Per CEO directive: "These review principles have to be added to create
+a first class product and are not entropy inducing." AP-11 test passed:
+the CEO has confirmed these rules eliminate more entropy than they create.
+
+### PR-13: Decision dashboard on page 1.
+
+The first page must contain a decision dashboard table that answers
+every question a reader would ask before opening the document:
+
+| Question | Answer |
+|---|---|
+| Selected technology | [one line] |
+| Production | [number + unit] |
+| Capital cost | [number] |
+| Operating cost | [number + unit] |
+| Major risk | [one line] |
+| Next step | [one line] |
+| Recommendation | [one line] |
+
+No reader should discover the central conclusion on page 15.
+
+### PR-14: Every page must answer one question.
+
+Every page must have a clear question it answers. If a page does not
+answer a question the reader would ask, it should not exist. This is
+stricter than PR-2 (every section ends with a verdict) — it governs
+page-level purpose, not just section endings.
+
+### PR-15: Dual readability.
+
+An executive must be able to read the document in 5 minutes.
+An engineer must be able to spend 5 hours inside it.
+Both requirements must be simultaneously true.
+
+The 5-minute path: cover page + decision dashboard + executive summary
++ risk dashboard + final page. These 5 pages must be self-contained.
+
+The 5-hour path: the full 12 sections + appendices + calculations +
+supplier data + kill-test details. These must be complete enough that
+an engineer can reproduce the design.
+
+### PR-16: Every major section must contain at least one figure.
+
+Major sections (Requirements, Evidence, Decomposition, Alternatives,
+Consistency, Tradeoffs, Adversarial Review, Implementation, Validation,
+Kill Tests) must each contain at least one visual element:
+architecture diagram, process flow, decision tree, cost waterfall,
+risk matrix, interface diagram, supply-chain map, thermal-flow diagram,
+deployment timeline, or equivalent.
+
+Text-only sections are entropy — the reader processes diagrams faster
+than paragraphs.
+
+### PR-17: Deployment economics page.
+
+A single page consolidating operational economics:
+- How many people are served?
+- What is the daily operating cost?
+- What is the replacement schedule?
+- What skills are required?
+- How long does installation take?
+- What happens during monsoon / cyclone / off-season?
+- What is the maintenance visit frequency?
+
+### PR-18: Typography standards.
+
+- Maximum paragraph width: 80 characters.
+- No more than 3 font sizes (body, heading, caption).
+- Consistent grid spacing.
+- Page numbers on every page.
+- Running headers on every page.
+- Footnotes for source citations.
+- The PDF is a product, not an export.

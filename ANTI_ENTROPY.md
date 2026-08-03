@@ -200,6 +200,22 @@ MASTER_PROTOCOL.md. Key anti-entropy principles:
   answer "should I spend the next dollar?" from the last page alone,
   the package has not removed the next expensive risk.
 
+### Extended presentation anti-entropy (CEO-approved, 2026-08-03)
+
+> The PDF is a product, not an export. — External auditor
+
+Per CEO directive: "These review principles have to be added to create
+a first class product and are not entropy inducing." AP-11 test passed.
+
+Entropy includes:
+- A 15-page package where the central conclusion is on page 15 (PR-13:
+  decision dashboard on page 1 eliminates this entropy).
+- A package an executive cannot read in 5 minutes (PR-15: dual readability).
+- A major section with no figure — only walls of text (PR-16: every major
+  section must contain at least one figure).
+- Operational questions scattered across the document instead of
+  consolidated (PR-17: deployment economics page).
+
 ---
 
 ## Session-hardened principles (distilled from actual failures)

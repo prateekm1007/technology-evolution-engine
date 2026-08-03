@@ -1029,3 +1029,58 @@ class TestPresentationRules:
         css = (ROOT / "scripts" / "pdf_template.css").read_text()
         assert "@page" in css
         assert "page-break" in css or "page-break-inside" in css
+
+
+class TestExtendedPresentationRules:
+    """Verify PR-13 through PR-18 (CEO-approved extensions).
+
+    Per CEO: 'These review principles have to be added to create a first
+    class product and are not entropy inducing.' AP-11 test passed.
+    """
+
+    def test_pr_13_decision_dashboard(self):
+        content = (ROOT / "MASTER_PROTOCOL.md").read_text()
+        assert "PR-13" in content
+        assert "decision dashboard" in content.lower()
+
+    def test_pr_14_every_page_answers_question(self):
+        content = (ROOT / "MASTER_PROTOCOL.md").read_text()
+        assert "PR-14" in content
+        assert "one question" in content.lower() or "page" in content.lower()
+
+    def test_pr_15_dual_readability(self):
+        content = (ROOT / "MASTER_PROTOCOL.md").read_text()
+        assert "PR-15" in content
+        assert "5 minutes" in content or "five minutes" in content.lower()
+        assert "5 hours" in content or "five hours" in content.lower()
+
+    def test_pr_16_every_section_has_figure(self):
+        content = (ROOT / "MASTER_PROTOCOL.md").read_text()
+        assert "PR-16" in content
+        assert "figure" in content.lower() or "diagram" in content.lower()
+
+    def test_pr_17_deployment_economics(self):
+        content = (ROOT / "MASTER_PROTOCOL.md").read_text()
+        assert "PR-17" in content
+        assert "deployment economics" in content.lower()
+        assert "monsoon" in content.lower() or "cyclone" in content.lower()
+
+    def test_pr_18_typography_standards(self):
+        content = (ROOT / "MASTER_PROTOCOL.md").read_text()
+        assert "PR-18" in content
+        assert "80 characters" in content
+        assert "font sizes" in content.lower() or "3 font" in content
+
+    def test_all_18_pr_present(self):
+        content = (ROOT / "MASTER_PROTOCOL.md").read_text()
+        for i in range(1, 19):
+            assert f"PR-{i}" in content, f"Missing PR-{i}"
+
+    def test_pdf_is_product_not_export(self):
+        content = (ROOT / "MASTER_PROTOCOL.md").read_text()
+        assert "product, not an export" in content.lower()
+
+    def test_extended_rules_in_anti_entropy(self):
+        ae = (ROOT / "ANTI_ENTROPY.md").read_text()
+        assert "PR-13" in ae or "PR-15" in ae or "PR-16" in ae or "PR-17" in ae
+        assert "product, not an export" in ae.lower() or "not an export" in ae.lower()
