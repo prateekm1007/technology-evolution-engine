@@ -31,6 +31,9 @@ jobs:
       - name: Gate 2.5 — Law 27 scan on the product source (Gap 7)
         run: python scripts/enforce_law27.py product/PRODUCT.md
 
+      - name: Gate 2.75 — Independent recomputation verifier (Phase 1)
+        run: python scripts/verify_arithmetic.py product/PRODUCT.md
+
       - name: Gate 3 — 1D thermal model runs (Gap 5)
         run: python scripts/thermal_model_1d.py
 

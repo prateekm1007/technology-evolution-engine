@@ -932,6 +932,40 @@ class TestAuditorPrinciples:
         assert "immutable" in content.lower()
         assert "Stop adding rules" in content or "stop adding rules" in content.lower()
 
+    def test_law_13_independent_recomputation(self):
+        """Law 13: Independent recomputation — every headline number
+        verified by a separate verifier, not self-checked."""
+        content = (ROOT / "MASTER_PROTOCOL.md").read_text()
+        assert "LAW 13" in content
+        assert "independent recomputation" in content.lower()
+        assert "verify_arithmetic" in content
+        assert "diff" in content.lower()
+        assert "blocks" in content.lower()
+
+    def test_verifier_script_exists(self):
+        """scripts/verify_arithmetic.py must exist."""
+        path = ROOT / "scripts" / "verify_arithmetic.py"
+        assert path.exists(), "scripts/verify_arithmetic.py does not exist."
+
+    def test_verifier_passes_on_current_product(self):
+        """The verifier must PASS on product/PRODUCT.md."""
+        import subprocess, sys
+        result = subprocess.run(
+            [sys.executable, str(ROOT / "scripts" / "verify_arithmetic.py"),
+             str(ROOT / "product" / "PRODUCT.md")],
+            capture_output=True, text=True, cwd=str(ROOT), timeout=30,
+        )
+        assert result.returncode == 0, (
+            f"Independent recomputation verifier FAILED:\n{result.stdout}\n{result.stderr}"
+        )
+
+    def test_ci_has_verifier_gate(self):
+        """CI must include the independent recomputation verifier."""
+        ci = (ROOT / ".github" / "workflows" / "ci.yml").read_text()
+        assert "verify_arithmetic" in ci, (
+            "CI does not run verify_arithmetic.py — Law 13 is not mechanically enforced."
+        )
+
 
 class TestPresentationRules:
     """Verify all 12 Presentation Rules (PR-1 through PR-12) are in

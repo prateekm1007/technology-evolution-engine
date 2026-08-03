@@ -201,6 +201,28 @@ Every package shall answer:
 This is the Next Money Page (see §The Next Money Page below). The
 package does not end at a verdict. It ends at a decision.
 
+### LAW 13 — Independent recomputation
+
+Every headline number in a package shall be independently recomputed
+from raw line items by a verifier that is architecturally separate
+from the generation path. The verifier never sees the document's
+stated totals — it reads only the raw inputs (BOM unit costs ×
+quantities, mass unit weights × counts, energy inputs) and recomputes.
+
+Any diff > 0 blocks the PASS verdict. Not "flags for review" — blocks.
+
+The verifier is `scripts/verify_arithmetic.py`. It runs in CI as
+Gate 2.75, between the Law 27 scan and the thermal model check.
+
+**Definition of done:** the verifier must independently surface
+arithmetic errors without being told they exist. If the verifier
+passes, the numbers reconcile. If it fails, the package cannot ship
+regardless of how polished the presentation is.
+
+This law addresses the root cause of every arithmetic error found
+in the audit: the system was checking its own arithmetic against
+itself, not against an independent recomputation.
+
 ---
 
 ## The pay bar (market feedback, 2026-08-03)

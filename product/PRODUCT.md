@@ -22,8 +22,8 @@
 | Metric | Value | Validation Level | Status |
 |---|---|---|---|
 | Daily output | 1,008 L/day | L2 (membrane spec × solar hours) | PASS (marginal: 0.8%) |
-| Capital cost | $4,650 | L2 (10 QUOTED + 6 ESTIMATED) | PASS_WITH_CONDITIONS |
-| Water cost (amortized) | $2.99/m³ (7yr) | L2 (cost model) | PASS_WITH_CONDITIONS (revised from <$1/m³, RT-006) |
+| Capital cost | $5,050 | L2 (6 QUOTED + 3 CATALOG + 7 ESTIMATED) | PASS_WITH_CONDITIONS |
+| Water cost (amortized) | $3.16/m³ (7yr) | L2 (cost model) | PASS_WITH_CONDITIONS (revised from <$1/m³, RT-006) |
 | Output quality | <50 ppm TDS | L2 (membrane spec) | PASS (WHO target: <500 ppm) |
 | Energy | 2.4 kWp solar, no fuel | L2 (NREL solar data) | PASS |
 | Membrane fouling risk | Unknown | L0 (no data) | BLOCKED — KT-01 |
@@ -36,7 +36,7 @@
 | Risk | Severity | Probability | Status |
 |---|---|---|---|
 | Membrane fouling (>15% decline in 90 days) | High | Medium | Open — KT-01 |
-| Cost per m³ exceeds revised target (<$5/m³) | Medium | Low | Open — RT-006 resolved to $2.99 |
+| Cost per m³ exceeds revised target (<$5/m³) | Medium | Low | Open — RT-006 resolved to $3.16 |
 | Cyclone destroys PV array | High | Medium | Open — KT-05 |
 | Brine discharge blocked by EPA | Medium | Medium | Open — environmental assessment |
 | Output marginal (1,008 vs 1,000 L/day) | Medium | Medium | Open — no degradation headroom |
@@ -46,7 +46,7 @@
 
 ## 0. PURPOSE
 
-Take the desalination system from EVALUATION (PKG-DESAL-001, cost target retracted) through to PRE-PROTOTYPE. The prior package caught its own mistakes (1 membrane → 4 membranes; $12,400 → $4,650; <$1/m³ retracted to $2.99/m³). This package closes the gaps: complete ICD, kill tests with metrics, manufacturing plan with CTQs, deployment economics page, and pay-bar assessment.
+Take the desalination system from EVALUATION (PKG-DESAL-001, cost target retracted) through to PRE-PROTOTYPE. The prior package caught its own mistakes (1 membrane → 4 membranes; $12,400 → $5,050; <$1/m³ retracted to $3.16/m³). This package closes the gaps: complete ICD, kill tests with metrics, manufacturing plan with CTQs, deployment economics page, and pay-bar assessment.
 
 ---
 
@@ -55,8 +55,8 @@ Take the desalination system from EVALUATION (PKG-DESAL-001, cost target retract
 | ID | Requirement | Class | Status |
 |---|---|---|---|
 | R-001 | Produce ≥1,000 L/day potable water | MANDATORY | PASS (1,008 L/day, 0.8% margin) |
-| R-002 | Cost per m³ <$5/m³ (revised from <$1/m³, RT-006) | MANDATORY | PASS ($2.99/m³) |
-| R-003 | Total system cost <$15,000 | MANDATORY | PASS ($4,650) |
+| R-002 | Cost per m³ <$5/m³ (revised from <$1/m³, RT-006) | MANDATORY | PASS ($3.16/m³) |
+| R-003 | Total system cost <$15,000 | MANDATORY | PASS ($5,050) |
 | R-004 | Operate with seawater (35,000 ppm TDS) | MANDATORY | PASS (SWRO design) |
 | R-005 | Output TDS <500 ppm | MANDATORY | PASS (<50 ppm, membrane spec) |
 | R-006 | Maintenance interval ≥30 days | DESIRABLE | MARGINAL (2-4 weeks for pre-filter) |
@@ -134,9 +134,11 @@ Solar panels power a DC high-pressure pump directly. When the sun shines, the pu
 | MPPT controller + wiring | 1 | 3.0 | 3.0 | SPEC_SHEET (Victron) | DV-109 |
 | Seawater intake pump | 1 | 3.5 | 3.5 | SPEC_SHEET (Shurflo) | DV-110 |
 | Margin | — | 2.3 | 2.3 | 0.8% | DV-111 |
-| **Total** | | | **280.0** | | |
+| **Total** | | | **283.0** | | |
 
-**Arithmetic check:** 135 + 18 + 8.2 + 24 + 7 + 22 + 45 + 15 + 3 + 3.5 + 2.3 = 280.0 kg. **PASS.**
+**Arithmetic check:** 135 + 18 + 8.2 + 24 + 7 + 22 + 45 + 15 + 3 + 3.5 + 2.3 = 283.0 kg. **PASS.**
+
+**Note:** The prior version claimed 280.0 kg. Independent recomputation found the sum is 283.0 kg — a 3.0 kg error. The corrected mass is 283.0 kg.
 
 ### Energy + water budget
 
@@ -191,7 +193,7 @@ Solar panels power a DC high-pressure pump directly. When the sun shines, the pu
 
 | Option | Output (L/day) | Cost | $/m³ | Complexity | Decision |
 |---|---|---|---|---|---|
-| Solar PV + SWRO (selected) | 1,008 | $4,650 | $2.99 | Medium | SELECTED |
+| Solar PV + SWRO (selected) | 1,008 | $5,050 | $3.16 | Medium | SELECTED |
 | Solar thermal MED | 500-1,000 | $25,000 | $1.50 | High | Rejected: 2× budget |
 | Solar still (basin) | 50-200 | $500 | $2.50 | Low | Rejected: 5× too low output |
 | Electrodialysis | 1,000 | $15,000 | $1.10 | Medium | Rejected: brackish only, not seawater |
@@ -205,13 +207,13 @@ Solar panels power a DC high-pressure pump directly. When the sun shines, the pu
 
 | Budget | Calculated | Headline | Reconciles? |
 |---|---|---|---|
-| Mass | 280.0 kg | 280.0 kg | PASS |
+| Mass | 283.0 kg | 283.0 kg | PASS |
 | Energy | 2.4 kWp × 5.5h = 13.2 kWh | 13.2 kWh | PASS |
 | Water output | 4 × 1.1 × (5.5/24) = 1.008 m³ | 1,008 L/day | PASS |
 | Feed water | 1,008 / 0.15 = 6,720 L | 6,720 L/day | PASS |
 | Brine | 6,720 - 1,008 = 5,712 L | 5,712 L/day (85%) | PASS |
-| Cost | $4,650 (BOM sum) | $4,650 | PASS |
-| Cost per m³ | ($4,650/7 + $440 O&M) / 367.9 = $2.99/m³ | $2.99/m³ | PASS |
+| Cost | $5,050 (BOM sum, independently verified) | $5,050 | PASS |
+| Cost per m³ | ($5,050/7 + $440 O&M) / 367.9 = $3.16/m³ | $3.16/m³ | PASS |
 
 **VERDICT: PASS** — all 7 budgets reconcile.
 
@@ -221,10 +223,10 @@ Solar panels power a DC high-pressure pump directly. When the sun shines, the pu
 
 | Decision | Gain | Cost | Sacrifice |
 |---|---|---|---|
-| SWRO over thermal desal | lower capital ($4,650 vs $25,000) | membrane fouling risk | no continuous production (solar-only) |
+| SWRO over thermal desal | lower capital ($5,050 vs $25,000) | membrane fouling risk | no continuous production (solar-only) |
 | 4 membranes over 1 | meets 1,000 L/day target | +$720 membranes + vessels | marginal output (0.8% margin) |
 | No batteries (solar-direct) | no battery maintenance/replacement | production only when sun shines | no overnight production; 1,000L tank buffers |
-| $2.99/m³ over $1/m³ target | competitive with trucking ($5-15/m³) | 3× original target | revised target (RT-006) |
+| $3.16/m³ over $1/m³ target | competitive with trucking ($5-15/m³) | 3× original target | revised target (RT-006) |
 | Pre-filter 5µ+1µ over UF | simpler, cheaper ($80 vs $300) | shorter membrane life if fouling high | maintenance interval 2-4 weeks (marginal) |
 
 **VERDICT: PASS** — every decision has gain, cost, sacrifice.
@@ -243,7 +245,7 @@ Solar panels power a DC high-pressure pump directly. When the sun shines, the pu
 
 ### Economist
 **Verdict:** PASS
-**Challenges:** (1) At $2.99/m³, the system is competitive with trucking ($5-15/m³) but 3× the original <$1/m³ target. The revised target is realistic for village scale. (2) At 10,000 L/day scale (10× membranes), cost drops to $1.57/m³ — the $1/m³ target is achievable at scale. (3) 6 ESTIMATE lines (manifold, frame, piping, wiring, installation, shipping) — need to convert to QUOTED.
+**Challenges:** (1) At $3.16/m³, the system is competitive with trucking ($5-15/m³) but 3× the original <$1/m³ target. The revised target is realistic for village scale. (2) At 10,000 L/day scale (10× membranes), cost drops to ~$1.57/m³ — the $1/m³ target is achievable at scale. (3) 7 ESTIMATE lines (manifold, frame, piping, wiring, installation, shipping, flush kit) — need to convert to QUOTED.
 
 ### Customer (village operator)
 **Verdict:** MARGINAL
@@ -275,9 +277,11 @@ Solar panels power a DC high-pressure pump directly. When the sun shines, the pu
 | BL-014 | Installation + commissioning | Local | $500 | 1 | $500 | ESTIMATED |
 | BL-015 | Shipping + import duty | — | $380 | 1 | $380 | ESTIMATED |
 | BL-016 | Membrane flush kit (manual) | Local | $50 | 1 | $50 | ESTIMATED |
-| **Total** | | | | | **$4,650** | |
+| **Total** | | | | | **$5,050** | |
 
-**ESTIMATE count:** 6 (BL-008 through BL-016, excluding BL-011/013). This exceeds the ≤1 ESTIMATE target. However, 5 of the 6 are local fabrication items that will be QUOTED once a fabricator is selected.
+**ESTIMATE count:** 7 (BL-008, BL-009, BL-010, BL-012, BL-014, BL-015, BL-016). This exceeds the ≤1 ESTIMATE target. 6 of 7 are local fabrication items that will be QUOTED once a fabricator is selected.
+
+**Note:** The prior version of this package claimed $4,650. Independent recomputation (scripts/verify_arithmetic.py) found the BOM sums to $5,050 — a $400 error. The corrected total is $5,050. The cost-per-m³ is recalculated below.
 
 ### Manufacturing plan
 
@@ -301,7 +305,7 @@ Solar panels power a DC high-pressure pump directly. When the sun shines, the pu
 | Question | Answer |
 |---|---|
 | How many people are served? | 134 (at 7.5 L/person/day WHO minimum) |
-| Daily operating cost? | $0 (solar, no fuel) + $1.20/day amortized (capital/7yr/365) = $1.20/day |
+| Daily operating cost? | $0 (solar, no fuel) + $1.98/day amortized ($5,050/7yr/365 = $1.98/day) |
 | Replacement schedule? | Membranes: every 3 years ($480). Pre-filters: every 2-4 weeks ($40). Pump: every 5 years ($420). PV: 25-year warranty. |
 | Skills required? | 15-min training: check TDS meter, replace pre-filter cartridge, flush membranes. No technician needed for daily operation. |
 | Installation time? | 5 days (2-person team) |
@@ -397,7 +401,7 @@ See §9 above. KT-01 (membrane fouling at 90 days) is the highest-risk kill test
 | 3 | Epistemic honesty: every claim has level | PASS |
 | 4 | Retraction discipline: RT-006 with replacement | PASS |
 | 5 | Thermal truth: energy/water budget with method | PASS |
-| 6 | Quoted cost: 10 QUOTED + 6 ESTIMATED | PASS_WITH_CONDITIONS |
+| 6 | Quoted cost: 6 QUOTED + 3 CATALOG + 7 ESTIMATED | PASS_WITH_CONDITIONS |
 | 7 | Interfaces: 10-interface ICD complete | PASS |
 | 8 | Safety path: 4 standards, 2 BLOCKED | PASS_WITH_CONDITIONS |
 | 9 | Manufacturing: 10-step plan with CTQs, yield 95% | PASS |
@@ -437,7 +441,7 @@ $25,000
 ------------------------------------------------
 
 This buys
-- 2 prototype systems ($4,650 each = $9,300)
+- 2 prototype systems ($5,050 each = $10,100)
 - 90-day field test at 2 coastal villages (installation + monitoring)
 - TDS + flow logging (5 months of data)
 - Membrane autopsy after 90 days (fouling analysis, $2,000)
@@ -481,7 +485,7 @@ YES
 Why?
 • Lowest complexity (solar-direct-drive, no batteries, no grid).
 • Mature technology (RO proven at village scale by GivePower).
-• Competitive with trucking ($2.99/m³ vs $5-15/m³).
+• Competitive with trucking ($3.16/m³ vs $5-15/m³).
 • All 12 pay-bar criteria met.
 
 Biggest risk?
