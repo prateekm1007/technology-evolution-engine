@@ -688,3 +688,97 @@ class TestEraProgression:
             assert cap in content, f"Capability scores missing: {cap}"
         # Invention score must be low (honest)
         assert "3/10" in content or "Invention" in content
+
+
+class TestAntiPerfectionRule:
+    """Verify the anti-perfection principle is in governance.
+
+    Per auditor: 'The goal is not perfection. The goal is systematic
+    excellence. Aiming for 10/10 in everything destroys the project.'
+    """
+
+    def test_anti_perfection_in_master_protocol(self):
+        content = (ROOT / "MASTER_PROTOCOL.md").read_text()
+        assert "anti-perfection" in content.lower()
+        assert "systematic excellence" in content.lower()
+        assert "not perfection" in content.lower()
+
+    def test_anti_perfection_in_anti_entropy(self):
+        content = (ROOT / "ANTI_ENTROPY.md").read_text()
+        assert "anti-perfection" in content.lower()
+        assert "systematic excellence" in content.lower()
+
+    def test_failure_driven_rule_present(self):
+        """The 'what caused the last package to fail' rule must be present."""
+        content = (ROOT / "MASTER_PROTOCOL.md").read_text()
+        assert "What caused the last package to fail" in content or \
+               "what caused the last package to fail" in content.lower()
+        assert "failure-driven" in content.lower() or "failure driven" in content.lower()
+
+    def test_truth_first_discovery_later(self):
+        """The 'truth first, discovery later' directive must be present."""
+        content = (ROOT / "MASTER_PROTOCOL.md").read_text()
+        assert "Truth first" in content
+        assert "Discovery later" in content
+        # Also in ANTI_ENTROPY
+        ae = (ROOT / "ANTI_ENTROPY.md").read_text()
+        assert "truth first" in ae.lower()
+        assert "discovery later" in ae.lower()
+
+    def test_capability_targets_with_priorities(self):
+        """Capabilities must have targets + priorities (not all 10/10 now)."""
+        content = (ROOT / "MASTER_PROTOCOL.md").read_text()
+        assert "Sustain" in content
+        assert "Phase I" in content
+        # Invention must be Phase V, not Phase I
+        assert "Phase V" in content
+
+
+class TestFivePhaseRoadmap:
+    """Verify the P1-P24 roadmap is present in MASTER_PROTOCOL.md."""
+
+    def test_phase_i_present(self):
+        content = (ROOT / "MASTER_PROTOCOL.md").read_text()
+        assert "Phase I" in content
+        assert "Finish Era 1" in content or "blueprint compiler" in content.lower()
+
+    def test_phase_ii_present(self):
+        content = (ROOT / "MASTER_PROTOCOL.md").read_text()
+        assert "Phase II" in content
+        assert "optimization engine" in content.lower()
+
+    def test_phase_iii_present(self):
+        content = (ROOT / "MASTER_PROTOCOL.md").read_text()
+        assert "Phase III" in content
+        assert "surprise" in content.lower()
+
+    def test_phase_iv_present(self):
+        content = (ROOT / "MASTER_PROTOCOL.md").read_text()
+        assert "Phase IV" in content
+        assert "Discovery" in content
+
+    def test_phase_v_present(self):
+        content = (ROOT / "MASTER_PROTOCOL.md").read_text()
+        assert "Phase V" in content
+        assert "Invention" in content
+
+    def test_phase_i_engines(self):
+        """Phase I must list P1-P5 engines."""
+        content = (ROOT / "MASTER_PROTOCOL.md").read_text()
+        for engine in ["P1 Evidence lineage", "P2 Requirement engine",
+                       "P3 Interface engine", "P4 Closure engine",
+                       "P5 Decision engine"]:
+            assert engine in content, f"Phase I missing: {engine}"
+
+    def test_phase_i_exit_criterion(self):
+        content = (ROOT / "MASTER_PROTOCOL.md").read_text()
+        assert "$25,000" in content or "$25k" in content
+        assert "domain expert" in content.lower()
+
+    def test_six_failures_listed(self):
+        """The 6 failures that drive the next 6 months must be listed."""
+        content = (ROOT / "MASTER_PROTOCOL.md").read_text()
+        for failure in ["simulation", "physical modeling",
+                        "interface definition", "validation",
+                        "quotations", "manufacturing"]:
+            assert failure in content.lower(), f"Failure list missing: {failure}"

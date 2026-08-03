@@ -537,47 +537,155 @@ executes.
 
 ---
 
-## Era progression (market feedback, 2026-08-03)
+## Era progression + roadmap (market feedback, 2026-08-03)
 
 The system's capability is measured against a 5-era progression.
 Each era builds on the previous. The current state is honestly tracked.
 
+### The anti-perfection principle
+
+> NASA isn't 10/10 at everything. SpaceX isn't 10/10 at everything.
+> Toyota isn't 10/10 at everything. The goal is not perfection.
+> The goal is systematic excellence. — External auditor
+
+Aiming for 10/10 in everything destroys the project. The goal is
+systematic excellence: each capability improves deliberately, one at
+a time, driven by what caused the last package to fail — not by an
+abstract desire to be perfect.
+
+### Current scores + targets
+
+| Capability | Current | Target | Priority |
+|---|---|---|---|
+| Constraint discovery | 9/10 | 10/10 | Sustain |
+| Contradiction detection | 9/10 | 10/10 | Sustain |
+| Economic reasoning | 9/10 | 10/10 | Sustain |
+| Adversarial review | 9/10 | 10/10 | Sustain |
+| Requirement discovery | 8/10 | 10/10 | Phase I |
+| Architecture selection | 8/10 | 10/10 | Phase I |
+| Simulation | 5/10 | 10/10 | **Phase I (highest gap)** |
+| Scientific reasoning | 6/10 | 10/10 | **Phase I (second gap)** |
+| Invention | 3/10 | 10/10 | Phase V (not now) |
+
+### Era status
+
 | Era | Objective | Proof | Current status |
 |---|---|---|---|
-| 0 | Knowledge organization | "I can build this." | **ACHIEVED** — 7 root docs, 12 Laws, factory model |
-| 1 | Blueprint compilation | "I can compile a package that an engineer can evaluate." | **ACHIEVED** — 6 packages produced, 5 retractions, 30 tests |
-| 2 | Optimization | "I can compare designs and select the best based on evidence." | **EARLY** — alternatives considered, but no multi-design optimization |
-| 3 | Discovery | "I can propose combinations a human expert did not consider." | **NOT YET** — the system stays within the frame |
-| 4 | Invention | "I can propose designs that no human has considered." | **NOT YET** — requires Era 3 first |
+| 0 | Knowledge organization | "I can build this." | **ACHIEVED** |
+| 1 | Blueprint compilation | "I can compile a package that an engineer can evaluate." | **ACHIEVED → finishing** |
+| 2 | Optimization | "I can compare designs and select the best based on evidence." | **EARLY** |
+| 3 | Discovery | "I can propose combinations a human expert did not consider." | **NOT YET** |
+| 4 | Invention | "I can propose designs that no human has considered." | **NOT YET** |
 
-### Current scores (auditor assessment, 2026-08-03)
+---
 
-| Capability | Score | Note |
+## The 5-phase roadmap (P1–P24)
+
+### What to build next — the failure-driven rule
+
+> You should not ask: "What engine should we build next?"
+> You should ask: "What caused the last package to fail?"
+> Then you build exactly one thing. — External auditor
+
+The last packages failed on:
+1. Deep simulation (thermal truth was narrative, not CFD)
+2. Physical modeling (no link budgets, no orbital mechanics)
+3. Interface definition (ICD was incomplete)
+4. Validation (physical tests were NOT_RUN)
+5. Quotations (cost was ESTIMATED, not QUOTED)
+6. Manufacturing (sequence was high-level, not process-level)
+
+**Those are the next six months of work. Not invention. Truth first.
+Discovery later.**
+
+### Phase I — Finish Era 1 (2–3 months)
+
+**Objective:** Become the world's best blueprint compiler.
+
+| Engine | What it does | Closes which failure |
 |---|---|---|
-| Constraint discovery | 9/10 | Infers hidden constraints from vague inputs |
-| Contradiction detection | 9/10 | Catches arithmetic + requirement conflicts |
-| Economic reasoning | 9/10 | Payback analysis, capital closure, unit economics |
-| Adversarial review | 9/10 | 4 reviewers, fatal-flaw detection |
-| Requirement discovery | 8/10 | MANDATORY/DESIRABLE/ASPIRATIONAL/EXPERIMENTAL |
-| Architecture selection | 8/10 | Considers 3+ alternatives per decision |
-| Simulation | 5/10 | Conceptual, not quantitative (no link budgets, no CFD runs) |
-| Scientific reasoning | 6/10 | First-principles chains, but shallow quantitative modeling |
-| Invention | 3/10 | Stays inside the frame; does not break the problem |
+| P1 Evidence lineage | Every claim traces to source + method + date + owner | Validation gaps |
+| P2 Requirement engine | Infer explicit + implicit + hidden + conflicting + missing constraints | Requirement discovery (8→10) |
+| P3 Interface engine | Mechanical, electrical, thermal, software, manufacturing, organizational interfaces | Interface definition |
+| P4 Closure engine | Automatically reconcile energy, mass, time, cost, bandwidth, reliability | Arithmetic closure gaps |
+| P5 Decision engine | Replace "this is interesting" with "spend money / don't / differently" | Next-spend plan |
 
-### What each era requires (the gap to close)
+**Exit criterion:** A domain expert willingly spends the next $25,000.
 
-**Era 2 (Optimization) — the next milestone:**
-- Multi-design comparison with quantitative scoring (not just 3 alternatives listed)
-- Sensitivity analysis (what happens if cell price +10%, if ambient is 45°C not 25°C)
-- Pareto frontier (mass vs cost vs performance tradeoff curve)
+### Phase II — Early Era 2 (3–6 months)
 
-**Era 3 (Discovery) — requires Era 2:**
-- The system proposes combinations the customer did not ask about
-- Cross-domain analogies (e.g., "this battery problem resembles a
-  thermal storage problem solved in concentrated solar")
-- The frame-breaking mandate (above) is the first step toward Era 3
+**Objective:** Become an optimization engine.
 
-**Era 4 (Invention) — requires Era 3:**
-- The system proposes designs that no human has considered
-- This requires genuine novelty detection, not just recombination
-- Aspirational; not claimed
+| Engine | What it does |
+|---|---|
+| P6 Search engine | Generate Design A, B, C, ... N |
+| P7 Constraint solver | Navigate trade-offs automatically |
+| P8 Monte Carlo engine | Failure modes, distribution, sensitivity, dependencies |
+| P9 Sensitivity engine | "Which variable matters most?" |
+| P10 Scenario engine | Best case, base case, worst case |
+
+**Exit criterion:** The system consistently produces solutions superior
+to human baseline solutions.
+
+### Phase III — Late Era 2 (6–12 months)
+
+**Objective:** Learn to surprise people.
+
+| Engine | What it does |
+|---|---|
+| P11 Analogy engine | Biology → architecture; aviation → medicine; finance → manufacturing |
+| P12 Mechanism engine | Learn mechanisms, not memorize solutions |
+| P13 Morphological search engine | Material × power source × geometry × architecture × controller × manufacturing |
+| P14 Combination engine | Where genuine novelty begins |
+
+**Exit criterion:** Experts say: "I hadn't thought of that."
+
+### Phase IV — Era 3 (1–2 years)
+
+**Objective:** Discovery.
+
+| Engine | What it does |
+|---|---|
+| P15 Physics engine | Conservation laws, fluid mechanics, thermodynamics, EM, information theory, control theory |
+| P16 Symbolic reasoning engine | Formal mathematical reasoning |
+| P17 Causal reasoning engine | Cause and effect, not just correlation |
+| P18 World model engine | Model the system's environment |
+
+**Exit criterion:** The system discovers new approaches.
+
+### Phase V — Era 4 (2–5 years)
+
+**Objective:** Invention.
+
+| Engine | What it does |
+|---|---|
+| P19 Autonomous experimentation | Hypothesis → experiment → measurement → revision |
+| P20 Active learning engine | Choose the next experiment that maximally reduces uncertainty |
+| P21 Discovery engine | Find new approaches no human has considered |
+| P22 Scientific engine | Formulate and test scientific hypotheses |
+| P23 Recursive improvement engine | The system improves its own processes |
+| P24 Collective intelligence engine | Combine human + machine intelligence |
+
+**Exit criterion:** The system proposes designs that no human has considered.
+
+---
+
+## Truth first, discovery later
+
+> Not invention. Truth first. Discovery later. — External auditor
+
+The system does not jump to Phase V. The system does not claim Era 4.
+The system builds Phase I first — because that is where the failures are.
+
+The next package the system produces must be better than the last
+package in these specific dimensions:
+- Simulation (5/10 → closer to 10)
+- Scientific reasoning (6/10 → closer to 10)
+- Interface definition (complete ICD)
+- Validation (fewer NOT_RUN tests)
+- Quotations (fewer ESTIMATED lines)
+- Manufacturing (process-level, not high-level)
+
+If the next package is not better in these dimensions, the system has
+not progressed. A package that is "more polished" but equally shallow
+in simulation and scientific reasoning is entropy.

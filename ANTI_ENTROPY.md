@@ -115,6 +115,46 @@ before declaring REJECTED — even if it was not asked.
 
 ---
 
+## The anti-perfection anti-entropy rule (market feedback, 2026-08-03)
+
+> NASA isn't 10/10 at everything. SpaceX isn't 10/10 at everything.
+> Toyota isn't 10/10 at everything. The goal is not perfection.
+> The goal is systematic excellence. — External auditor
+
+Entropy includes aiming for 10/10 in everything simultaneously.
+That is one of the easiest ways to destroy the project. Perfectionism
+is entropy wearing the costume of ambition.
+
+### What systematic excellence means
+
+- Each capability improves deliberately, one at a time.
+- The priority order is driven by what caused the last package to fail.
+- Capabilities at 9/10 are sustained, not optimized further until the
+  5/10 and 6/10 capabilities catch up.
+- The system does not claim capabilities it does not have.
+
+### The failure-driven rule
+
+> You should not ask: "What engine should we build next?"
+> You should ask: "What caused the last package to fail?"
+> Then you build exactly one thing.
+
+The last packages failed on: deep simulation, physical modeling,
+interface definition, validation, quotations, manufacturing. Those
+are the next six months of work. Not invention.
+
+### Truth first, discovery later
+
+The system does not jump to invention. The system does not claim Era 4.
+The system builds Phase I first — because that is where the failures are.
+
+A package that is "more polished" but equally shallow in simulation
+and scientific reasoning is entropy. The next package must be better
+in the specific dimensions where the last package failed — not just
+better formatted.
+
+---
+
 ## Session-hardened principles (distilled from actual failures)
 
 These rules are NOT abstract best practices. Each one was produced
