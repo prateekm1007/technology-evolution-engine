@@ -65,4 +65,7 @@ ALLOWED_MODIFICATIONS = frozenset({
     # Archived tests (moved during Master Protocol consolidation)
     "archive/governance-pre-consolidation/test_aep_enforcement.py",
     "archive/governance-pre-consolidation/test_honesty_loop.py",
+    # PDF generation (CEO directive: world-class PDF non-negotiable)
+    "scripts/generate_pdf.py",
+    "scripts/pdf_template.css",
 })

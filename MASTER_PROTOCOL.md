@@ -270,9 +270,60 @@ FAILURES.md. That is enough.
 2. Read FAILURES.md (do not re-introduce past failures).
 3. Receive the INPUT.
 4. Produce MASTER_PACKAGE.md with all 11 sections.
-5. Register retractions in the Retraction Registry (P7, in code).
-6. Register tests in the Test Registry (P8, in code).
-7. Run the scanner on the package. If it fails, fix and re-run.
-8. Commit, push, paste git log --oneline -1.
+5. **Produce a world-class PDF** of the package (see §PDF below). This is non-negotiable.
+6. Register retractions in the Retraction Registry (P7, in code).
+7. Register tests in the Test Registry (P8, in code).
+8. Run the scanner on the package. If it fails, fix and re-run.
+9. Commit the .md + .pdf to the repository. Push to GitHub.
+10. Paste git log --oneline -1.
 
 The protocol decides what gets produced. The coder executes.
+
+---
+
+## PDF (non-negotiable)
+
+Every package MUST ship as a world-class, professionally formatted PDF
+in addition to the markdown source. A markdown file alone is not a
+deliverable — it is a draft. The PDF is the artifact.
+
+### Requirements
+
+1. **Cover page.** Package ID, title, package maturity, date, status
+   badge (APPROVED / APPROVED_WITH_CONDITIONS / REJECTED / BLOCKED).
+2. **Table of contents** with page numbers.
+3. **Page headers** showing the package ID on every page.
+4. **Page footers** with page numbers (Page X of Y).
+5. **Professional typography.** Sans-serif body (Inter or Helvetica),
+   serif headings optional. 11pt body, 1.4 line-height. Justified
+   paragraphs (left-aligned for tables and lists per Rule 1).
+6. **Tables** with zebra striping, header row in accent color, proper
+   cell padding.
+7. **Code blocks** with monospace font (Sarasa Mono or Menlo), light
+   background, syntax-aware if applicable.
+8. **Status badges** rendered as colored pills (green=PASS, amber=
+   PASS_WITH_CONDITIONS, red=REJECTED, gray=BLOCKED).
+9. **Retraction callouts** in a red-bordered box.
+10. **No forbidden language** (per §Forbidden language). The PDF must
+    pass the Law 27 scanner.
+
+### Generation
+
+The PDF is generated from the markdown source using weasyprint with
+a custom CSS template at `scripts/pdf_template.css`. The generation
+script is `scripts/generate_pdf.py`.
+
+```
+python scripts/generate_pdf.py examples/PKG-XXX_master_package.md
+  → produces examples/PKG-XXX_master_package.pdf
+```
+
+The PDF MUST be committed to the repository alongside the markdown.
+A markdown file without its PDF is an incomplete deliverable.
+
+### Why this is non-negotiable
+
+A factory produces finished goods, not work-in-progress. The markdown
+is the work-in-progress; the PDF is the finished good. The CEO's
+directive: "A world-class edited PDF is non-negotiable. It SHOULD BE
+PUSHED TO THE GITHUB." A package without a PDF does not ship.
