@@ -982,6 +982,22 @@ class TestAuditorPrinciples:
         assert "computed" in content.lower() and "hand-typed" in content.lower()
         assert "machine-checkable" in content.lower() or "verifiable" in content.lower()
 
+    def test_phase_3_citation_discipline(self):
+        """Phase 3: evidence rows must carry specific source URLs + retrieval dates."""
+        content = (ROOT / "MASTER_PROTOCOL.md").read_text()
+        assert "Phase 3" in content
+        assert "source URL" in content.lower() or "retrieval date" in content.lower()
+        assert "forbidden" in content.lower()  # the forbidden example
+        assert "hallucination" in content.lower()
+
+    def test_phase_5_confidence_calibrated_formatting(self):
+        """Phase 5: unverified numbers must render differently from verified ones."""
+        content = (ROOT / "MASTER_PROTOCOL.md").read_text()
+        assert "Phase 5" in content
+        assert "confidence-calibrated" in content.lower() or "calibrated formatting" in content.lower()
+        assert "unverified" in content.lower()
+        assert "reduced precision" in content.lower() or "full precision" in content.lower()
+
 
 class TestPresentationRules:
     """Verify all 12 Presentation Rules (PR-1 through PR-12) are in

@@ -317,6 +317,26 @@ List every requirement. Classify: MANDATORY / DESIRABLE / ASPIRATIONAL
 Existing products, failed products, patents, academic literature,
 standards, supplier data. Every source carries a rank (A-I).
 
+**Citation discipline (Phase 3):** Every external evidence row must
+carry a specific source URL + retrieval date — not a company name.
+If numbers vary across sources for the same claim, state the range
+and cite which specific installation/source is being used. Do not
+quietly pick the most convenient number. A claim without a traceable
+source is a hallucination.
+
+Example (correct):
+```
+| GivePower Solar Water Farm | givepower.org/projects/kiunga | Retrieved 2024-07-15 | 35,000 L/day | $500,000 |
+```
+
+Example (forbidden):
+```
+| GivePower (Kenya) | Solar PV + RO | 35,000 | $500,000 | $0.50 |
+```
+
+The forbidden form blends numbers from different sources without
+citing which specific installation produced each number.
+
 ### 3. DECOMPOSITION
 Subsystems, components, interfaces (Law 7), dependencies. Mass
 stack-up (Law 2). Energy budget (Law 2). Thermal budget (Law 2).
@@ -466,6 +486,19 @@ evidence_strength: ABSENT | WEAK | MODERATE | STRONG | VERY_STRONG
 experimental_validation: ABSENT | BENCH | SUBSYSTEM | PROTOTYPE | PILOT | PRODUCTION
 status: PASS | PASS_WITH_CONDITIONS | MARGINAL | BLOCKED | REJECTED | PLAUSIBLE
 ```
+
+**Confidence-calibrated formatting (Phase 5):** Two-decimal precision is
+earned, not defaulted. Any figure that has not passed the Law 13
+independent recomputation verifier must render with a visible "unverified"
+flag or reduced precision (e.g., "~$5,000" not "$5,050.00"). A number
+that looks precisely verified but isn't is worse than a rough estimate
+clearly labeled as rough — because the reader trusts the precise number.
+
+Rule:
+- Law 13 verifier PASS + physical test PASS → full precision ($5,050.00)
+- Law 13 verifier PASS + physical test ABSENT → reduced precision (~$5,050)
+- Law 13 verifier FAIL → BLOCKED (cannot ship)
+- Law 13 not run → "unverified" flag visible
 
 ---
 
