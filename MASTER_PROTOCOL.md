@@ -270,24 +270,50 @@ FAILURES.md. That is enough.
 2. Read FAILURES.md (do not re-introduce past failures).
 3. Receive the INPUT.
 4. Produce MASTER_PACKAGE.md with all 11 sections.
-5. **Produce a world-class PDF** of the package (see §PDF below). This is non-negotiable.
+5. **Produce ONE world-class PDF** of the package (see §PDF below). This is the product. Non-negotiable.
 6. Register retractions in the Retraction Registry (P7, in code).
 7. Register tests in the Test Registry (P8, in code).
 8. Run the scanner on the package. If it fails, fix and re-run.
-9. Commit the .md + .pdf to the repository. Push to GitHub.
+9. Commit the .md + the single PDF to the repository. Push to GitHub.
 10. Paste git log --oneline -1.
 
 The protocol decides what gets produced. The coder executes.
 
 ---
 
-## PDF (non-negotiable)
+## PDF (non-negotiable — ONE product PDF per query)
 
-Every package MUST ship as a world-class, professionally formatted PDF
-in addition to the markdown source. A markdown file alone is not a
-deliverable — it is a draft. The PDF is the artifact.
+Every query produces **exactly ONE world-class, customer-facing PDF**. This
+PDF is the product. It is what customers, auditors, and investors see.
+People will decide to pay for the services based on the quality of this
+single PDF, after they submit their query.
 
-### Requirements
+### The one-PDF rule
+
+1. **One PDF per query.** Not two. Not four. One.
+2. **The PDF is the product.** Markdown is the work-in-progress; the PDF
+   is the finished good that ships to the customer.
+3. **Side documents are allowed** (markdown source, test fixtures, registry
+   data) but they are NOT customer-facing. The customer sees only the PDF.
+4. **The PDF lives at `product/PRODUCT.pdf`.** This is the canonical path.
+   There is no other PDF path for customer-facing output.
+5. **Old product PDFs are replaced, not accumulated.** When a new query
+   produces a new PDF, the previous `product/PRODUCT.pdf` is moved to
+   `archive/products/` (per Law 7 — historical permanence) and the new
+   PDF takes the canonical path.
+
+### Why only one
+
+- **Customers do not comparison-shop our internal iterations.** They
+  submitted one query; they receive one answer.
+- **Multiple PDFs dilute quality.** A factory that ships 4 PDFs per
+  query is not a factory — it is a brainstorming session.
+- **Investors invest based on one document.** The pitch deck is one
+  deck. The product PDF is one PDF.
+- **The protocol decides, the coder executes.** The protocol says one.
+  The coder produces one.
+
+### PDF requirements (world-class)
 
 1. **Cover page.** Package ID, title, package maturity, date, status
    badge (APPROVED / APPROVED_WITH_CONDITIONS / REJECTED / BLOCKED).
@@ -314,16 +340,27 @@ a custom CSS template at `scripts/pdf_template.css`. The generation
 script is `scripts/generate_pdf.py`.
 
 ```
-python scripts/generate_pdf.py examples/PKG-XXX_master_package.md
-  → produces examples/PKG-XXX_master_package.pdf
+python scripts/generate_pdf.py <package.md> product/PRODUCT.pdf
+  → produces the single canonical product PDF at product/PRODUCT.pdf
 ```
 
-The PDF MUST be committed to the repository alongside the markdown.
-A markdown file without its PDF is an incomplete deliverable.
+The PDF at `product/PRODUCT.pdf` is the only customer-facing PDF.
+Markdown sources and other side documents live in `examples/` and
+are NOT customer-facing.
+
+### Enforcement
+
+`tests/test_pdf_generation.py` enforces the one-PDF rule:
+- `product/PRODUCT.pdf` must exist.
+- `examples/` must NOT contain any `.pdf` files (they are side documents,
+  not products).
+- The canonical PDF must be valid (non-zero, PDF header).
 
 ### Why this is non-negotiable
 
-A factory produces finished goods, not work-in-progress. The markdown
-is the work-in-progress; the PDF is the finished good. The CEO's
-directive: "A world-class edited PDF is non-negotiable. It SHOULD BE
-PUSHED TO THE GITHUB." A package without a PDF does not ship.
+A factory produces one finished good per order, not a shelf of variants.
+The customer submitted one query; they receive one PDF. The CEO's
+directive: "As a rule produce one, only 1 world class pdf. The one we
+will show our customers. People will invest based on the quality of
+the pdf, after they submitted the query." One PDF. One product. One
+decision.
