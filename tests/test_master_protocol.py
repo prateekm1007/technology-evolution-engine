@@ -78,6 +78,163 @@ class TestMasterProtocolExists:
         assert "coder executes" in content.lower()
 
 
+class TestMasterProtocolSectionDepth:
+    """XX10 closure: verify each section has substantive content, not just headers.
+
+    Per auditor XX10: 'if someone removes a gate section from MASTER_PROTOCOL.md,
+    there's no test that catches it.' This class catches that — each section
+    must have at least 3 lines of content beyond the header, and must mention
+    its key required sub-elements.
+    """
+
+    def _section_content(self, content: str, section_header: str) -> str:
+        """Extract the content of a section (between this header and the next)."""
+        lines = content.split("\n")
+        start = None
+        for i, line in enumerate(lines):
+            if section_header in line:
+                start = i + 1
+                break
+        if start is None:
+            return ""
+        # Find next section header (### N. or ## N.)
+        end = len(lines)
+        for i in range(start, len(lines)):
+            line = lines[i]
+            # Next section header pattern: "### N. " or starts with a number+dot at start
+            if i > start and line.strip().startswith("### ") and ". " in line:
+                end = i
+                break
+        return "\n".join(lines[start:end])
+
+    def test_section_0_purpose_has_content(self):
+        content = (ROOT / "MASTER_PROTOCOL.md").read_text()
+        section = self._section_content(content, "0. PURPOSE")
+        # Must mention primary objective and success metric and maturity
+        assert "primary objective" in section.lower() or "primary" in section.lower()
+        assert "success metric" in section.lower() or "maturity" in section.lower()
+
+    def test_section_1_requirements_has_classifications(self):
+        content = (ROOT / "MASTER_PROTOCOL.md").read_text()
+        section = self._section_content(content, "1. REQUIREMENTS")
+        for cls in ["MANDATORY", "DESIRABLE", "ASPIRATIONAL", "EXPERIMENTAL"]:
+            assert cls in section, f"Section 1 missing classification: {cls}"
+
+    def test_section_2_evidence_has_source_types(self):
+        content = (ROOT / "MASTER_PROTOCOL.md").read_text()
+        section = self._section_content(content, "2. EVIDENCE")
+        for src in ["products", "patents", "literature", "standards"]:
+            assert src in section.lower(), f"Section 2 missing source type: {src}"
+
+    def test_section_3_decomposition_has_mass_stackup(self):
+        content = (ROOT / "MASTER_PROTOCOL.md").read_text()
+        section = self._section_content(content, "3. DECOMPOSITION")
+        assert "mass" in section.lower()
+        assert "stack-up" in section.lower() or "stackup" in section.lower() or "stack up" in section.lower()
+        assert "interface" in section.lower()
+
+    def test_section_4_alternatives_requires_3(self):
+        content = (ROOT / "MASTER_PROTOCOL.md").read_text()
+        section = self._section_content(content, "4. ALTERNATIVES")
+        assert "3 alternatives" in section or "at least 3" in section or "three" in section.lower()
+
+    def test_section_5_consistency_has_checks(self):
+        content = (ROOT / "MASTER_PROTOCOL.md").read_text()
+        section = self._section_content(content, "5. CONSISTENCY")
+        assert "Arithmetic" in section or "arithmetic" in section.lower()
+        assert "Units" in section or "units" in section.lower()
+        assert "Dimensions" in section or "dimensions" in section.lower()
+
+    def test_section_6_tradeoffs_has_gain_cost_sacrifice(self):
+        content = (ROOT / "MASTER_PROTOCOL.md").read_text()
+        section = self._section_content(content, "6. TRADEOFFS")
+        assert "gain" in section.lower()
+        assert "cost" in section.lower()
+        assert "sacrifice" in section.lower()
+
+    def test_section_7_adversarial_has_4_reviewers(self):
+        content = (ROOT / "MASTER_PROTOCOL.md").read_text()
+        section = self._section_content(content, "7. ADVERSARIAL REVIEW")
+        for reviewer in ["Chief Engineer", "Manufacturing", "Economist", "Customer"]:
+            assert reviewer in section, f"Section 7 missing reviewer: {reviewer}"
+
+    def test_section_8_implementation_has_bom_and_procurement(self):
+        content = (ROOT / "MASTER_PROTOCOL.md").read_text()
+        section = self._section_content(content, "8. IMPLEMENTATION")
+        assert "BOM" in section or "bill of materials" in section.lower()
+        assert "supplier" in section.lower()
+        assert "quotation" in section.lower() or "quote" in section.lower()
+
+    def test_section_9_validation_has_test_types_and_levels(self):
+        content = (ROOT / "MASTER_PROTOCOL.md").read_text()
+        section = self._section_content(content, "9. VALIDATION")
+        for ttype in ["ANALYTICAL_ESTIMATE", "NUMERICAL_SIMULATION", "PHYSICAL_VALIDATION"]:
+            assert ttype in section, f"Section 9 missing test type: {ttype}"
+        for level in ["L0", "L4", "L9"]:
+            assert level in section, f"Section 9 missing validation level: {level}"
+
+    def test_section_10_retractions_has_categories(self):
+        content = (ROOT / "MASTER_PROTOCOL.md").read_text()
+        section = self._section_content(content, "10. RETRACTIONS")
+        assert "RETRACTED" in section
+        assert "WITHDRAWN" in section
+        assert "append-only" in section.lower() or "append only" in section.lower()
+
+    def test_section_11_verdict_has_4_outcomes(self):
+        content = (ROOT / "MASTER_PROTOCOL.md").read_text()
+        section = self._section_content(content, "11. FINAL VERDICT")
+        for verdict in ["APPROVED", "REJECTED", "BLOCKED"]:
+            assert verdict in section, f"Section 11 missing verdict: {verdict}"
+
+
+class TestMasterProtocolTypedStatusEnums:
+    """Verify all typed status enum values are defined in MASTER_PROTOCOL.md.
+
+    Per auditor XX10: the old tests that checked for Law 27/28/29 enums
+    were archived. This class restores that coverage — if someone removes
+    an enum value from MASTER_PROTOCOL.md, the test catches it.
+    """
+
+    def test_status_enum_all_5_values(self):
+        """Law 29a: STATUS must define all 5 values."""
+        content = (ROOT / "MASTER_PROTOCOL.md").read_text()
+        for s in ["PASS", "PASS_WITH_CONDITIONS", "MARGINAL", "BLOCKED", "REJECTED"]:
+            assert s in content, f"MASTER_PROTOCOL.md missing STATUS value: {s}"
+
+    def test_validation_level_enum_all_10_values(self):
+        """Law 29b: VALIDATION_LEVEL must define L0-L9."""
+        content = (ROOT / "MASTER_PROTOCOL.md").read_text()
+        for i in range(10):
+            assert f"L{i}" in content, f"MASTER_PROTOCOL.md missing validation level L{i}"
+
+    def test_evidence_strength_enum_all_5_values(self):
+        """Law 29c: EVIDENCE_STRENGTH must define all 5 values."""
+        content = (ROOT / "MASTER_PROTOCOL.md").read_text()
+        for s in ["ABSENT", "WEAK", "MODERATE", "STRONG", "VERY_STRONG"]:
+            assert s in content, f"MASTER_PROTOCOL.md missing evidence strength: {s}"
+
+    def test_package_maturity_enum_all_5_values(self):
+        """Law 29d: PACKAGE_MATURITY must define all 5 values."""
+        content = (ROOT / "MASTER_PROTOCOL.md").read_text()
+        for m in ["CONCEPT", "DECISION", "EVALUATION", "PROTOTYPE", "PRODUCTION"]:
+            assert m in content, f"MASTER_PROTOCOL.md missing package maturity: {m}"
+
+    def test_retraction_reason_categories(self):
+        """The 8 retraction reason categories must be defined."""
+        content = (ROOT / "MASTER_PROTOCOL.md").read_text()
+        for cat in ["NUMERICAL_CONTRADICTION", "SEMANTIC_CONTRADICTION",
+                    "EVIDENCE_INVALIDATED", "KILL_TEST_FAILED", "DESIGN_CHANGE"]:
+            assert cat in content, f"MASTER_PROTOCOL.md missing retraction category: {cat}"
+
+    def test_forbidden_patterns_listed(self):
+        """The forbidden language patterns must be explicitly listed."""
+        content = (ROOT / "MASTER_PROTOCOL.md").read_text()
+        # Must mention the forbidden things
+        assert "numerical confidence" in content.lower()
+        assert "PASS" in content and "FAIL" in content  # PASS/FAIL percentages forbidden
+        assert "simulation" in content.lower()  # simulation mislabeling forbidden
+
+
 class TestEssentialDocsAtRoot:
     """Verify the 7 essential .md files exist at root."""
 

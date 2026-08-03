@@ -58,4 +58,9 @@ ALLOWED_MODIFICATIONS = frozenset({
     "scripts/register_ev_battery_artifacts.py",
     # Master Protocol consolidation
     "scripts/remember_governance.py",
+    # PKG-AWG-001 (factory production test)
+    "scripts/register_awg_artifacts.py",
+    # Archived tests (moved during Master Protocol consolidation)
+    "archive/governance-pre-consolidation/test_aep_enforcement.py",
+    "archive/governance-pre-consolidation/test_honesty_loop.py",
 })
