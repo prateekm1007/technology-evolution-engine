@@ -21,14 +21,28 @@ of the output, so the score is auditable.
 Law 8 honesty: feasibility scores are PREDICTIONS about future
 feasibility. They are not "verified" until the verification cycle
 has recorded at least one pass and one fail for the relevant
-prediction class. The score itself carries a `confidence` field
-that starts low and rises as the verification cycle accumulates
-evidence for this score class.
+prediction class.
+
+Honesty Loop (Law 27/28/29): the `confidence` field is forbidden as
+a numerical certainty on claims without experimental validation. The
+FeasibilityScore dataclass now carries:
+  - `epistemic_status`: the typed status block (Law 29e) — this is
+    the sanctioned output.
+  - `legacy_confidence_deprecated`: the old numerical confidence,
+    retained for one release cycle for backward compat with existing
+    consumers. Marked DEPRECATED. Will be removed in the next cycle.
+
+Per Law 7 (Historical Permanence): the dataclass field rename is a
+breaking change, but the migration is documented here and in the
+HONESTY_LOOP.md gate. Existing consumers must read `epistemic_status`
+instead of `confidence`.
 """
 
 from typing import Dict, Any, List, Optional, Set
-from dataclasses import dataclass, asdict
+from dataclasses import dataclass, asdict, field
 import json
+
+from product.scoring.epistemic_status import ANALYZER_EPISTEMIC_STATUS
 
 
 # Time-horizon buckets, matching the directive's "5-10 years" example.
@@ -43,7 +57,13 @@ def _horizon_from_score(s: float) -> str:
 
 @dataclass
 class FeasibilityScore:
-    """The exact schema demanded by the directive."""
+    """The exact schema demanded by the directive.
+
+    Honesty Loop (Law 27/28/29): the `confidence` field is forbidden
+    as a numerical certainty. It is retained as
+    `legacy_confidence_deprecated` for one release cycle. The
+    sanctioned output is `epistemic_status` (typed block per Law 29e).
+    """
     technical_feasibility: float
     economic_feasibility: float
     regulatory_feasibility: float
@@ -51,7 +71,11 @@ class FeasibilityScore:
     adoption_probability: float
     estimated_time_horizon: str
     composite_feasibility: float
-    confidence: float
+    # Honesty Loop (Law 27): the legacy `confidence` field is renamed
+    # to `legacy_confidence_deprecated`. The typed `epistemic_status`
+    # block is the sanctioned output.
+    legacy_confidence_deprecated: float
+    epistemic_status: Dict[str, Any]
     evidence: Dict[str, Any]
     assumptions: List[str]
     falsification_criteria: str
@@ -267,7 +291,11 @@ class FeasibilityScorer:
             adoption_probability=round(adoption, 4),
             estimated_time_horizon=horizon,
             composite_feasibility=round(composite, 4),
-            confidence=round(confidence, 4),
+            # Honesty Loop (Law 27): legacy `confidence` is retained
+            # as `legacy_confidence_deprecated` (one release cycle).
+            legacy_confidence_deprecated=round(confidence, 4),
+            # The sanctioned output is the typed epistemic_status block.
+            epistemic_status=dict(ANALYZER_EPISTEMIC_STATUS),
             evidence=evidence,
             assumptions=assumptions,
             falsification_criteria=falsification,
@@ -367,7 +395,10 @@ class FeasibilityScorer:
             adoption_probability=0.0,
             estimated_time_horizon="unknown",
             composite_feasibility=0.0,
-            confidence=0.0,
+            # Honesty Loop (Law 27): legacy `confidence` is retained
+            # as `legacy_confidence_deprecated` (one release cycle).
+            legacy_confidence_deprecated=0.0,
+            epistemic_status=dict(ANALYZER_EPISTEMIC_STATUS),
             evidence={"target_id": target_id, "reason": reason},
             assumptions=[],
             falsification_criteria="N/A — score not computed.",

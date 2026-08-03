@@ -1,4 +1,6 @@
 import hashlib, datetime
+from product.scoring.epistemic_status import migrate_confidence_to_typed
+
 class ReportGenerator:
     def run(self, d):
         mode=d.get('mode','business')
@@ -17,7 +19,14 @@ class ReportGenerator:
         for c in cs:
             for a in c.get('assumptions',[]): asmp.add(a)
         n=max(len(cs),1); ap=sum(c.get('pcs',0) for c in cs)/n; ac=sum(c.get('cis',0) for c in cs)/n; af=sum(c.get('feasibility',0) for c in cs)/n
-        return {'report_id':rid,'report_type':'business','generated_at':datetime.datetime.now().isoformat(),'input_summary':{'patent_id':parsed.get('patent_id'),'title':parsed.get('title'),'components_count':len(parsed.get('components',[])),'materials_count':len(parsed.get('materials',[])),'claims_count':len(parsed.get('claims',[]))},'adjacency_map':ret.get('adjacency_map',{}),'permutation_summary':{'total_generated':perm.get('total_generated',0),'total_scored':perm.get('total_scored',0),'total_survived':perm.get('total_survived',0)},'top_candidates':top,'prerequisite_gaps':ret.get('prerequisite_gaps',[]),'cemetery_analogues':ret.get('cemetery_matches',[]),'risk_register':risks,'blueprints':bp.get('blueprints',[]),'prototype_priority':prio,'assumptions':list(asmp),'confidence':round(af*0.5+ap*0.3+ac*0.2,3),'metrics':{'avg_pcs':round(ap,3),'avg_cis':round(ac,3),'avg_feasibility':round(af,3),'total_blueprints':len(bp.get('blueprints',[]))}}
+        # Honesty Loop (Law 27/28/29): the legacy `confidence` number
+        # is computed and retained as `legacy_confidence_deprecated`
+        # for one release cycle. The typed `epistemic_status` block is
+        # the sanctioned output. The bare `confidence` key is forbidden
+        # per Law 27 — the scanner would reject the API response.
+        legacy_conf = round(af*0.5+ap*0.3+ac*0.2, 3)
+        typed = migrate_confidence_to_typed(legacy_conf)
+        return {'report_id':rid,'report_type':'business','generated_at':datetime.datetime.now().isoformat(),'input_summary':{'patent_id':parsed.get('patent_id'),'title':parsed.get('title'),'components_count':len(parsed.get('components',[])),'materials_count':len(parsed.get('materials',[])),'claims_count':len(parsed.get('claims',[]))},'adjacency_map':ret.get('adjacency_map',{}),'permutation_summary':{'total_generated':perm.get('total_generated',0),'total_scored':perm.get('total_scored',0),'total_survived':perm.get('total_survived',0)},'top_candidates':top,'prerequisite_gaps':ret.get('prerequisite_gaps',[]),'cemetery_analogues':ret.get('cemetery_matches',[]),'risk_register':risks,'blueprints':bp.get('blueprints',[]),'prototype_priority':prio,'assumptions':list(asmp),'epistemic_status':typed['epistemic_status'],'legacy_confidence_deprecated':typed['legacy_confidence_deprecated'],'metrics':{'avg_pcs':round(ap,3),'avg_cis':round(ac,3),'avg_feasibility':round(af,3),'total_blueprints':len(bp.get('blueprints',[]))}}
     def _con(self,d):
         parsed=d.get('parsed',{}); ret=d.get('retrieval',{}); perm=d.get('permutation',{}); bp=d.get('blueprint',{})
         rid='RPT-CON-'+hashlib.sha256(datetime.datetime.now().isoformat().encode()).hexdigest()[:10].upper()
@@ -32,4 +41,6 @@ class ReportGenerator:
         for c in cs:
             for a in c.get('assumptions',[]): asmp.add(a)
         conf=sum(c.get('feasibility',0) for c in top)/max(len(top),1)
-        return {'report_id':rid,'report_type':'consumer','generated_at':datetime.datetime.now().isoformat(),'problem_summary':parsed.get('original_text','')[:200],'detected_domains':parsed.get('detected_domains',[]),'solutions':sols,'build_paths':paths,'cost_tiers':costs,'resurrection_suggestions':res,'nearby_alternatives':[],'next_step':ns,'assumptions':list(asmp),'confidence':round(conf,3)}
+        # Honesty Loop (Law 27/28/29): same migration as business report.
+        typed = migrate_confidence_to_typed(round(conf, 3))
+        return {'report_id':rid,'report_type':'consumer','generated_at':datetime.datetime.now().isoformat(),'problem_summary':parsed.get('original_text','')[:200],'detected_domains':parsed.get('detected_domains',[]),'solutions':sols,'build_paths':paths,'cost_tiers':costs,'resurrection_suggestions':res,'nearby_alternatives':[],'next_step':ns,'assumptions':list(asmp),'epistemic_status':typed['epistemic_status'],'legacy_confidence_deprecated':typed['legacy_confidence_deprecated']}

@@ -58,15 +58,18 @@ async function runAnalysis(){
   state.data.analysis=res;renderBenchOut(res);
 }
 function renderBenchOut(r){
-  const s=r.scores,p=r.parsing;
+  const s=r.scores||{},p=r.parsing||{};
+  var es = r.epistemic_status || {};
+  var esLine = es.validation_level ? (es.validation_level + ' · ' + es.status) : '—';
   $('#bench-out').innerHTML=
     '<div style="display:flex;justify-content:space-between;align-items:flex-start"><h2 class="disp">Analysis</h2>'+stampHtml(r.verification)+'</div>'+
     '<div style="display:flex;gap:34px;align-items:center;margin:18px 0 6px">'+
-    '<div class="gauge" style="--p:'+s.opportunity_score+'"><span id="g1">0</span></div><div>'+
-    readout(t('opportunity'),'<b style="color:var(--amber)">'+s.opportunity_score+'</b> / 100')+
-    readout(t('dd'),s.discovery_delta.toFixed(2),'hi')+readout(t('conf'),s.confidence,'ok')+'</div></div>'+
-    readout('Claims parsed',p.claims)+readout('Components parsed',p.components)+
-    readout('Constraints detected',p.constraints)+readout('Domains identified',p.domains)+
+    '<div class="gauge" style="--p:'+(s.opportunity_score||0)+'"><span id="g1">0</span></div><div>'+
+    readout(t('opportunity'),'<b style="color:var(--amber)">'+(s.opportunity_score||'—')+'</b> / 100')+
+    readout(t('dd'),(s.discovery_delta!=null?s.discovery_delta.toFixed(2):'—'),'hi')+
+    readout('Validation', esLine, 'ok')+'</div></div>'+
+    readout('Claims parsed',p.claims||0)+readout('Components parsed',p.components||0)+
+    readout('Constraints detected',p.constraints||0)+readout('Domains identified',p.domains||0)+
     '<div class="rule"><span class="lbl">Lineage</span></div><div class="lineage">'+
     r.lineage.map((n,i)=>'<div class="lin-node"><span class="idx">'+String(i+1).padStart(2,'0')+'</span><span class="tag">'+n+'</span></div>'+
       (i<r.lineage.length-1?'<div class="lin-edge"></div>':'')).join('')+'</div>'+
@@ -76,13 +79,16 @@ function renderBenchOut(r){
 function blueprint(){
   const r=state.data.analysis;
   if(!r){$('#view').innerHTML='<p class="eyebrow">Blueprint</p><h1 class="disp">No analysis yet</h1><p class="lede">Run an analysis in the Workbench first.</p><button class="btn" onclick="location.hash=\'#/\'">Go to Workbench &#9656;</button>';return;}
-  const s=r.scores;
+  const s=r.scores||{};
+  var es = r.epistemic_status || {};
+  var esLine = es.validation_level ? (es.validation_level + ' · ' + es.status) : '—';
   $('#view').innerHTML=
     '<div style="display:flex;justify-content:space-between;align-items:flex-start"><div><p class="eyebrow">Blueprint · '+r.input.title+'</p><h1 class="disp">Build dossier</h1></div>'+stampHtml(r.verification)+'</div>'+
     '<section class="panel reveal" style="margin-top:26px"><div style="display:flex;gap:48px;flex-wrap:wrap;align-items:center">'+
-    '<div class="gauge" style="--p:'+s.opportunity_score+'"><span id="g2">0</span></div><div style="flex:1;min-width:260px">'+
-    readout(t('opportunity'),'<b style="color:var(--amber)">'+s.opportunity_score+'</b> / 100')+
-    readout(t('dd'),s.discovery_delta.toFixed(2),'hi')+readout(t('conf'),s.confidence,'ok')+'</div></div></section>'+
+    '<div class="gauge" style="--p:'+(s.opportunity_score||0)+'"><span id="g2">0</span></div><div style="flex:1;min-width:260px">'+
+    readout(t('opportunity'),'<b style="color:var(--amber)">'+(s.opportunity_score||'—')+'</b> / 100')+
+    readout(t('dd'),(s.discovery_delta!=null?s.discovery_delta.toFixed(2):'—'),'hi')+
+    readout('Validation', esLine, 'ok')+'</div></div></section>'+
     '<div class="rule"><span class="lbl">'+t('why')+'</span></div><section class="panel reveal"><p style="line-height:1.7">'+r.why_exists+'</p></section>'+
     '<div class="rule"><span class="lbl">'+t('prereq')+'</span></div><section class="panel reveal"><table class="spec"><tbody>'+
     r.prerequisites.map(p=>'<tr><td style="color:var(--cyan)">&#9671;</td><td>'+p+'</td><td><span class="stamp gated">must become true</span></td></tr>').join('')+'</tbody></table></section>'+

@@ -92,4 +92,13 @@ ALLOWED_MODIFICATIONS = frozenset({
     "web/backend/adapters/oracle_deep.py",  # RR2: confidence → epistemic_status (Law 27/28/29)
     "web/backend/adapters/retraction_registry.py",  # P7: Retraction Registry adapter
     "web/backend/main.py",  # P7: /api/v1/retractions endpoint
+    # Honesty Loop — analyze endpoint migration (closes TT2/RR2 fully):
+    # - generator.py: business + consumer reports migrated from confidence to typed epistemic_status
+    # - composer.py: blueprints migrated from confidence to typed epistemic_status
+    # - feasibility.py: FeasibilityScore dataclass field rename (confidence → legacy_confidence_deprecated + epistemic_status)
+    # - epistemic_status.py: shared helper for the typed status block
+    "product/reporting/generator.py",  # TT2: confidence → epistemic_status (business + consumer reports)
+    "product/blueprint/composer.py",  # TT2: confidence → epistemic_status (blueprints)
+    "product/scoring/feasibility.py",  # TT2: FeasibilityScore dataclass migration
+    "product/scoring/epistemic_status.py",  # TT2: shared typed-status helper
 })

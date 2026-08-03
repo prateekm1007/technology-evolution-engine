@@ -261,3 +261,218 @@ class TestHonestyLoopScannerAcceptsApi:
             f"{result.stdout}\n"
             f"The API response contains forbidden language (Law 27/28/29)."
         )
+
+
+# --------------------------------------------------------------------------
+# Analyze endpoint tests (RR2 — full closure)
+# --------------------------------------------------------------------------
+
+class TestAnalyzeEndpointTypedStatus:
+    """Verify /api/v1/analyze emits typed epistemic_status, not confidence.
+
+    Per auditor TT2: 'the analyze endpoint (core.run_pipeline()) still
+    returns confidence: 0.62. This is the remaining 2 frontend
+    references the coder honestly flagged.'
+
+    This test class closes TT2/RR2 for the analyze endpoint.
+    """
+
+    def test_analyze_consumer_has_epistemic_status(self):
+        """The /api/v1/analyze (consumer mode) response must include
+        the `epistemic_status` block."""
+        r = client.post("/api/v1/analyze", json={
+            "mode": "consumer", "input_type": "idea",
+            "text": "reduce household water consumption"})
+        assert r.status_code == 200
+        body = r.json()
+        assert "epistemic_status" in body, (
+            "/api/v1/analyze (consumer) missing `epistemic_status` block. "
+            "Per Law 27/28/29 + HONESTY_LOOP.md, the typed status block "
+            "is the required replacement for the forbidden `confidence` field."
+        )
+
+    def test_analyze_consumer_has_no_confidence(self):
+        """The /api/v1/analyze (consumer) response must NOT have a
+        top-level `confidence` field."""
+        r = client.post("/api/v1/analyze", json={
+            "mode": "consumer", "input_type": "idea",
+            "text": "reduce household water consumption"})
+        body = r.json()
+        assert "confidence" not in body, (
+            "/api/v1/analyze (consumer) still emits top-level `confidence`. "
+            "Per Law 27, this is forbidden. Use `epistemic_status` instead. "
+            f"Found keys: {sorted(body.keys())}"
+        )
+
+    def test_analyze_consumer_has_legacy_confidence_deprecated(self):
+        """The legacy number must be retained as
+        `legacy_confidence_deprecated` for backward compat."""
+        r = client.post("/api/v1/analyze", json={
+            "mode": "consumer", "input_type": "idea",
+            "text": "reduce household water consumption"})
+        body = r.json()
+        assert "legacy_confidence_deprecated" in body, (
+            "/api/v1/analyze (consumer) missing `legacy_confidence_deprecated`. "
+            "Required for backward compat for one release cycle."
+        )
+
+    def test_analyze_business_has_epistemic_status(self):
+        """The /api/v1/analyze (business mode) response must include
+        the `epistemic_status` block."""
+        r = client.post("/api/v1/analyze", json={
+            "mode": "business", "input_type": "patent",
+            "text": "A solar-powered irrigation system for small farms"})
+        assert r.status_code == 200
+        body = r.json()
+        assert "epistemic_status" in body, (
+            "/api/v1/analyze (business) missing `epistemic_status` block."
+        )
+
+    def test_analyze_business_has_no_confidence(self):
+        """The /api/v1/analyze (business) response must NOT have a
+        top-level `confidence` field."""
+        r = client.post("/api/v1/analyze", json={
+            "mode": "business", "input_type": "patent",
+            "text": "A solar-powered irrigation system for small farms"})
+        body = r.json()
+        assert "confidence" not in body, (
+            "/api/v1/analyze (business) still emits top-level `confidence`. "
+            f"Found keys: {sorted(body.keys())}"
+        )
+
+    def test_analyze_epistemic_status_has_required_fields(self):
+        """The epistemic_status block must have all 4 typed fields
+        per Law 29e."""
+        r = client.post("/api/v1/analyze", json={
+            "mode": "consumer", "input_type": "idea",
+            "text": "reduce household water consumption"})
+        es = r.json()["epistemic_status"]
+        for field in ["validation_level", "evidence_strength",
+                      "experimental_validation", "status"]:
+            assert field in es, (
+                f"epistemic_status missing `{field}` (Law 29e). "
+                f"Found: {sorted(es.keys())}"
+            )
+
+    def test_analyze_predictions_are_l2_plausible(self):
+        """Analyzer predictions are analytical estimates (L2) with no
+        experimental validation — same honest status as the Oracle."""
+        r = client.post("/api/v1/analyze", json={
+            "mode": "consumer", "input_type": "idea",
+            "text": "reduce household water consumption"})
+        es = r.json()["epistemic_status"]
+        assert es["validation_level"] == "L2", (
+            f"Analyzer predictions should be L2 (analytical estimate), got "
+            f"`{es['validation_level']}`."
+        )
+        assert es["experimental_validation"] == "ABSENT", (
+            f"Analyzer predictions should have experimental_validation=ABSENT, "
+            f"got `{es['experimental_validation']}`."
+        )
+
+    def test_analyze_response_passes_scanner(self, tmp_path):
+        """The /api/v1/analyze response must pass the Law 27 scanner."""
+        import subprocess
+        import json
+
+        r = client.post("/api/v1/analyze", json={
+            "mode": "business", "input_type": "patent",
+            "text": "A solar-powered irrigation system for small farms"})
+        body = r.json()
+
+        fixture = tmp_path / "analyze_response.json"
+        fixture.write_text(json.dumps(body, indent=2))
+
+        repo_root = pathlib.Path(__file__).resolve().parents[1]
+        result = subprocess.run(
+            ["python3", str(repo_root / "scripts" / "enforce_law27.py"),
+             str(fixture)],
+            capture_output=True, text=True, cwd=str(repo_root)
+        )
+        assert result.returncode == 0, (
+            f"Law 27 scanner REJECTED the /api/v1/analyze response:\n"
+            f"{result.stdout}\n"
+            f"The API response contains forbidden language (Law 27/28/29)."
+        )
+
+
+class TestBlueprintComposerTypedStatus:
+    """Verify the BlueprintComposer (used by /api/v1/analyze) emits
+    typed epistemic_status in each blueprint, not confidence."""
+
+    def test_blueprint_has_epistemic_status(self):
+        """Each blueprint produced by BlueprintComposer must have
+        the epistemic_status block."""
+        from product.blueprint.composer import BlueprintComposer
+        # Fake a viable candidate
+        c = {
+            "candidate_id": "C1", "elements": ["solar panel", "pump", "sensor"],
+            "operator_applied": "modularize", "composite_score": 0.75,
+            "pcs": 0.8, "cis": 0.6, "cemetery_risk": 0, "feasibility": 0.7,
+            "assumptions": ["a"],
+        }
+        result = BlueprintComposer().run({
+            "candidates": [c], "mode": "business", "max_blueprints": 5,
+        })
+        assert len(result["blueprints"]) == 1
+        bp = result["blueprints"][0]
+        assert "epistemic_status" in bp, (
+            "Blueprint missing `epistemic_status` (Law 27/28/29)."
+        )
+        assert "confidence" not in bp, (
+            "Blueprint still emits forbidden `confidence` field. "
+            f"Keys: {sorted(bp.keys())}"
+        )
+        assert "legacy_confidence_deprecated" in bp, (
+            "Blueprint missing `legacy_confidence_deprecated` for backward compat."
+        )
+
+    def test_blueprint_epistemic_status_valid(self):
+        """The blueprint's epistemic_status must use valid enum values."""
+        from product.blueprint.composer import BlueprintComposer
+        c = {
+            "candidate_id": "C1", "elements": ["a", "b"],
+            "operator_applied": "modularize", "composite_score": 0.5,
+            "pcs": 0.7, "cis": 0.5, "cemetery_risk": 0, "feasibility": 0.5,
+            "assumptions": [],
+        }
+        bp = BlueprintComposer().run({
+            "candidates": [c], "mode": "consumer", "max_blueprints": 1,
+        })["blueprints"][0]
+        es = bp["epistemic_status"]
+        assert es["validation_level"] in {f"L{i}" for i in range(10)}
+        assert es["evidence_strength"] in {
+            "ABSENT", "WEAK", "MODERATE", "STRONG", "VERY_STRONG"}
+        assert es["experimental_validation"] in {
+            "ABSENT", "BENCH", "SUBSYSTEM", "PROTOTYPE", "PILOT", "PRODUCTION"}
+        assert es["status"] in {
+            "PASS", "PASS_WITH_CONDITIONS", "MARGINAL", "BLOCKED",
+            "REJECTED", "PLAUSIBLE"}
+
+
+class TestFeasibilityScoreTypedStatus:
+    """Verify FeasibilityScore (the dataclass) carries the typed block."""
+
+    def test_feasibility_score_has_epistemic_status(self):
+        """FeasibilityScore must have epistemic_status, not confidence."""
+        from product.scoring.feasibility import FeasibilityScorer
+        import json as _json
+        graph_path = pathlib.Path(__file__).resolve().parents[1] / "data" / "civilization_graph.json"
+        if not graph_path.exists():
+            pytest.skip("civilization_graph.json not available")
+        g = _json.loads(graph_path.read_text())
+        scorer = FeasibilityScorer(g)
+        target = next((n["id"] for n in g["nodes"] if n["type"] == "system"), None)
+        if not target:
+            pytest.skip("no system node in graph")
+        score = scorer.score(target)
+        d = score.to_dict()
+        assert "epistemic_status" in d, (
+            "FeasibilityScore missing `epistemic_status`."
+        )
+        assert "confidence" not in d, (
+            "FeasibilityScore still has forbidden `confidence` field."
+        )
+        assert "legacy_confidence_deprecated" in d, (
+            "FeasibilityScore missing `legacy_confidence_deprecated`."
+        )

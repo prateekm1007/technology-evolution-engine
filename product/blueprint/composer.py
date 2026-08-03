@@ -1,4 +1,5 @@
 import hashlib
+from product.scoring.epistemic_status import migrate_confidence_to_typed
 class BlueprintComposer:
     def run(self, d):
         cs=d.get('candidates',[]); mode=d.get('mode','business'); mx=d.get('max_blueprints',5)
@@ -9,7 +10,13 @@ class BlueprintComposer:
         bpid='BP-'+hashlib.sha256(cid.encode()).hexdigest()[:10].upper()
         opn=op.replace('_',' ').title() if op!='none' else 'Combination'
         title=opn+': '+' + '.join(str(e)[:30] for e in el[:3])
-        bp={'blueprint_id':bpid,'candidate_id':cid,'title':title,'summary':self._sum(el,op,c),'build_concept':self._concept(el,op),'subsystem_architecture':self._subs(el),'bom':self._bom(el,mode),'prototype_plan':self._plan(el,mode),'risks':self._risks(c),'patent_differentiation':self._diff(el,op) if mode=='business' else [],'next_experiments':self._exps(el,c),'cost_estimate_usd':len(el)*500.0*(10.0 if mode=='business' else 1.0),'timeline_estimate_days':(30+len(el)*10)*(3 if mode=='business' else 1),'skill_required':self._skill(el,op),'assumptions':c.get('assumptions',[]),'confidence':c.get('composite_score',0.0),'mode':mode}
+        # Honesty Loop (Law 27/28/29): the blueprint's `confidence`
+        # field is migrated to the typed `epistemic_status` block.
+        # The legacy number (composite_score) is retained as
+        # `legacy_confidence_deprecated` for one release cycle.
+        legacy_conf = c.get('composite_score', 0.0)
+        typed = migrate_confidence_to_typed(legacy_conf)
+        bp={'blueprint_id':bpid,'candidate_id':cid,'title':title,'summary':self._sum(el,op,c),'build_concept':self._concept(el,op),'subsystem_architecture':self._subs(el),'bom':self._bom(el,mode),'prototype_plan':self._plan(el,mode),'risks':self._risks(c),'patent_differentiation':self._diff(el,op) if mode=='business' else [],'next_experiments':self._exps(el,c),'cost_estimate_usd':len(el)*500.0*(10.0 if mode=='business' else 1.0),'timeline_estimate_days':(30+len(el)*10)*(3 if mode=='business' else 1),'skill_required':self._skill(el,op),'assumptions':c.get('assumptions',[]),'epistemic_status':typed['epistemic_status'],'legacy_confidence_deprecated':typed['legacy_confidence_deprecated'],'mode':mode}
         if mode=='consumer': bp['subsystem_architecture']=bp['subsystem_architecture'][:3]; bp['bom']=bp['bom'][:5]; bp['prototype_plan']=bp['prototype_plan'][:3]
         return bp
     def _sum(self,el,op,c):
