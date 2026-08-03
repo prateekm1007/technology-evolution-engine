@@ -601,3 +601,90 @@ class TestPayBarAntiEntropy:
         content = (ROOT / "ANTI_ENTROPY.md").read_text()
         assert "rejected" in content.lower() or "does not meet" in content.lower()
         assert "deal-breaker" in content.lower() or "deal breaker" in content.lower()
+
+
+class TestCustomerFacingSeparation:
+    """Verify MASTER_PROTOCOL.md defines the customer-facing separation rule.
+
+    Per market feedback: 'The customer should never see Law 27, Law 10,
+    P7 registry, P8 registry, MASTER_PROTOCOL, package identifiers.'
+    """
+
+    def test_customer_facing_section_present(self):
+        content = (ROOT / "MASTER_PROTOCOL.md").read_text()
+        assert "Customer-facing separation" in content
+
+    def test_forbidden_internal_references_listed(self):
+        content = (ROOT / "MASTER_PROTOCOL.md").read_text()
+        for ref in ["Law 1", "Law 10", "P7", "P8", "MASTER_PROTOCOL",
+                     "enforce_law27"]:
+            assert ref in content, (
+                f"Customer-facing separation must list forbidden reference: {ref}"
+            )
+
+    def test_self_reference_rule_in_anti_entropy(self):
+        """ANTI_ENTROPY.md must contain the self-reference anti-entropy rule."""
+        content = (ROOT / "ANTI_ENTROPY.md").read_text()
+        assert "self-reference anti-entropy rule" in content.lower()
+        assert "implementation details" in content.lower()
+
+
+class TestFrameBreakingMandate:
+    """Verify MASTER_PROTOCOL.md defines the frame-breaking mandate.
+
+    Per market feedback: 'An Era 4 system would ask: Why must satellites
+    exist at all?'
+    """
+
+    def test_frame_breaking_mandate_present(self):
+        content = (ROOT / "MASTER_PROTOCOL.md").read_text()
+        assert "Frame-breaking mandate" in content
+
+    def test_frame_breaking_alternatives_listed(self):
+        content = (ROOT / "MASTER_PROTOCOL.md").read_text()
+        assert "Balloon" in content or "balloon" in content.lower()
+        assert "mesh" in content.lower() or "terrestrial" in content.lower()
+
+    def test_frame_breaking_when_to_break(self):
+        content = (ROOT / "MASTER_PROTOCOL.md").read_text()
+        assert "MANDATORY" in content and "frame" in content.lower()
+        assert "REJECTED" in content
+
+    def test_frame_breaking_in_anti_entropy(self):
+        """ANTI_ENTROPY.md must contain the frame-breaking anti-entropy rule."""
+        content = (ROOT / "ANTI_ENTROPY.md").read_text()
+        assert "frame-breaking" in content.lower()
+        assert "out-of-frame" in content.lower() or "out of frame" in content.lower()
+
+
+class TestEraProgression:
+    """Verify MASTER_PROTOCOL.md defines the era progression honestly."""
+
+    def test_era_progression_present(self):
+        content = (ROOT / "MASTER_PROTOCOL.md").read_text()
+        assert "Era progression" in content
+
+    def test_5_eras_defined(self):
+        content = (ROOT / "MASTER_PROTOCOL.md").read_text()
+        # The table uses "| 0 |" etc; the prose uses "Era 2", "Era 3", "Era 4"
+        for era_num in ["0", "1", "2", "3", "4"]:
+            assert f"Era {era_num}" in content or f"| {era_num} |" in content, (
+                f"Era progression missing era: {era_num}"
+            )
+
+    def test_current_era_status_honest(self):
+        """The current status must be honestly stated (not all ACHIEVED)."""
+        content = (ROOT / "MASTER_PROTOCOL.md").read_text()
+        assert "ACHIEVED" in content
+        assert "NOT YET" in content or "EARLY" in content
+        # Era 4 must NOT be claimed as achieved
+        assert "Era 4" in content and "NOT YET" in content
+
+    def test_capability_scores_present(self):
+        """The auditor's capability scores must be recorded."""
+        content = (ROOT / "MASTER_PROTOCOL.md").read_text()
+        for cap in ["Constraint discovery", "Contradiction detection",
+                    "Economic reasoning", "Invention"]:
+            assert cap in content, f"Capability scores missing: {cap}"
+        # Invention score must be low (honest)
+        assert "3/10" in content or "Invention" in content

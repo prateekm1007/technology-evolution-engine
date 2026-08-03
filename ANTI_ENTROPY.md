@@ -67,6 +67,54 @@ before it reaches the customer.
 
 ---
 
+## The self-reference anti-entropy rule (market feedback, 2026-08-03)
+
+> The customer should never see: Law 27, Law 10, P7 registry, P8
+> registry, MASTER_PROTOCOL, package identifiers. Those are
+> implementation details. — External auditor
+
+Entropy includes leaking internal implementation details into
+customer-facing output. The customer buys the elimination of
+uncertainty, not a tour of the factory's plumbing.
+
+### What is forbidden in customer-facing output
+
+- Internal law references (Law 1, Law 10, Law 27, etc.)
+- Internal engine references (P7, P8, P2, P10, etc.)
+- Internal protocol names (MASTER_PROTOCOL, AEP, HONESTY_LOOP, etc.)
+- Internal gate references (Gate 1, Gate 5, etc.)
+- Scanner references (enforce_law27.py, etc.)
+- Registry paths (data/retractions/, data/tests/, etc.)
+
+Package IDs (PKG-XXX) are allowed in headers/metadata. Test IDs
+(TR-XXX, KT-XX) are allowed in test/kill-test tables. Neither is
+allowed in the prose.
+
+### Why this is anti-entropy
+
+A customer-facing PDF that says "per Law 10, the kill test KT-011
+FAILS as registered in P7 Retraction Registry at
+data/retractions/retractions.jsonl" is entropy. It is the factory
+showing its work instead of doing its work. The customer wants to
+know: "What failed? What does it cost? What should I do next?" — not
+"which internal registry stores the retraction."
+
+### The frame-breaking anti-entropy rule
+
+> An Era 4 system would ask: "Why must satellites exist at all?"
+> — External auditor
+
+Entropy includes staying inside the frame of the question. If the
+INPUT assumes a technology (satellite, battery, AWG) and that
+technology is the source of the expensive risk, the system must
+ask: "Is there a different frame that removes the risk more cheaply?"
+
+Staying inside the frame when the frame itself is the problem is
+entropy. The system must present at least one out-of-frame alternative
+before declaring REJECTED — even if it was not asked.
+
+---
+
 ## Session-hardened principles (distilled from actual failures)
 
 These rules are NOT abstract best practices. Each one was produced

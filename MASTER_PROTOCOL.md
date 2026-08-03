@@ -456,3 +456,128 @@ decision. See the prior §PDF rules (unchanged).
 
 The protocol decides what gets produced. The coder executes. The
 purpose is to remove the next expensive risk — not to describe an idea.
+
+---
+
+## Customer-facing separation (market feedback, 2026-08-03)
+
+The customer should never see implementation details. The PDF is the
+product; the governance is the factory. These are different audiences.
+
+### Forbidden in customer-facing output
+
+The following must NOT appear in product/PRODUCT.pdf or any output
+the customer sees:
+
+- Internal law references (Law 1, Law 10, Law 27, etc.)
+- Internal engine references (P7, P8, P2, P10, etc.)
+- Internal protocol names (MASTER_PROTOCOL, AEP, HONESTY_LOOP, etc.)
+- Internal package identifiers in the body text (PKG-XXX IDs are
+  allowed in the header/metadata, not in the prose)
+- Internal test IDs in the body text (TR-XXX, KT-XX are allowed in
+  the test/kill-test tables, not in the prose)
+- Internal gate references (Gate 1, Gate 5, etc.)
+- Scanner references (enforce_law27.py, etc.)
+- Registry paths (data/retractions/, data/tests/, etc.)
+
+### What the customer sees instead
+
+- Clear section headings: "Requirements", "Evidence", "Alternatives",
+  "Consistency", "Tradeoffs", "Adversarial Review", "Implementation",
+  "Validation", "Retractions", "Kill Tests", "Safety & IP",
+  "Next Money Page"
+- Engineering language, not governance language
+- The verdict and the Next Money Page — that is what the customer pays for
+
+### Enforcement
+
+The PDF generator (scripts/generate_pdf.py) shall strip internal
+references from the customer-facing output. The markdown source may
+contain internal references (for traceability), but the PDF must not.
+
+---
+
+## Frame-breaking mandate (market feedback, 2026-08-03)
+
+> An Era 4 system would ask: "Why must satellites exist at all?"
+> — External auditor, satellite internet review
+
+The system must not remain inside the frame of the question. Before
+designing within the frame, the system must ask: "Is there a different
+frame that removes the risk more cheaply?"
+
+### The frame-breaking test
+
+For every INPUT, the system must consider at least one alternative
+frame that does not use the technology the INPUT assumes:
+
+| INPUT assumes | Frame-breaking alternative |
+|---|---|
+| Satellite | Balloon network, stratospheric platform, terrestrial mesh, microwave relay, community-owned infrastructure |
+| Battery pack | Supercapacitor, flywheel, hydrogen fuel cell, grid-tied no-storage |
+| AWG | Water trucking, desalination, rainwater harvesting, atmospheric condensation (passive) |
+
+If a frame-breaking alternative removes the next expensive risk more
+cheaply than the in-frame design, the system must present it — even
+if it was not asked.
+
+### When to break the frame
+
+- The in-frame design fails a MANDATORY requirement (e.g., capital
+  exceeds limit) → the system must present at least one out-of-frame
+  alternative before declaring REJECTED.
+- The in-frame design passes but the cost is > 2× the frame-breaking
+  alternative → the system must present the alternative as a tradeoff.
+
+### What this does NOT require
+
+The system is not required to adopt the frame-breaking alternative.
+It is required to present it. The customer decides. The system
+executes.
+
+---
+
+## Era progression (market feedback, 2026-08-03)
+
+The system's capability is measured against a 5-era progression.
+Each era builds on the previous. The current state is honestly tracked.
+
+| Era | Objective | Proof | Current status |
+|---|---|---|---|
+| 0 | Knowledge organization | "I can build this." | **ACHIEVED** — 7 root docs, 12 Laws, factory model |
+| 1 | Blueprint compilation | "I can compile a package that an engineer can evaluate." | **ACHIEVED** — 6 packages produced, 5 retractions, 30 tests |
+| 2 | Optimization | "I can compare designs and select the best based on evidence." | **EARLY** — alternatives considered, but no multi-design optimization |
+| 3 | Discovery | "I can propose combinations a human expert did not consider." | **NOT YET** — the system stays within the frame |
+| 4 | Invention | "I can propose designs that no human has considered." | **NOT YET** — requires Era 3 first |
+
+### Current scores (auditor assessment, 2026-08-03)
+
+| Capability | Score | Note |
+|---|---|---|
+| Constraint discovery | 9/10 | Infers hidden constraints from vague inputs |
+| Contradiction detection | 9/10 | Catches arithmetic + requirement conflicts |
+| Economic reasoning | 9/10 | Payback analysis, capital closure, unit economics |
+| Adversarial review | 9/10 | 4 reviewers, fatal-flaw detection |
+| Requirement discovery | 8/10 | MANDATORY/DESIRABLE/ASPIRATIONAL/EXPERIMENTAL |
+| Architecture selection | 8/10 | Considers 3+ alternatives per decision |
+| Simulation | 5/10 | Conceptual, not quantitative (no link budgets, no CFD runs) |
+| Scientific reasoning | 6/10 | First-principles chains, but shallow quantitative modeling |
+| Invention | 3/10 | Stays inside the frame; does not break the problem |
+
+### What each era requires (the gap to close)
+
+**Era 2 (Optimization) — the next milestone:**
+- Multi-design comparison with quantitative scoring (not just 3 alternatives listed)
+- Sensitivity analysis (what happens if cell price +10%, if ambient is 45°C not 25°C)
+- Pareto frontier (mass vs cost vs performance tradeoff curve)
+
+**Era 3 (Discovery) — requires Era 2:**
+- The system proposes combinations the customer did not ask about
+- Cross-domain analogies (e.g., "this battery problem resembles a
+  thermal storage problem solved in concentrated solar")
+- The frame-breaking mandate (above) is the first step toward Era 3
+
+**Era 4 (Invention) — requires Era 3:**
+- The system proposes designs that no human has considered
+- This requires genuine novelty detection, not just recombination
+- Aspirational; not claimed
