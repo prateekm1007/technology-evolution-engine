@@ -933,3 +933,136 @@ must grow slower than explanatory power. BP-1 adds 8 engines, but
 each engine must justify its existence by producing evidence
 that improves blueprint quality. An engine that produces no
 evidence is complexity without value and must be removed.
+
+---
+
+## Audit-discipline anti-entropy (added post-Phase-14 external audit, 2026-08-04)
+
+Per CEO directive: "These review principles have to be added to create
+a first-class product and are not entropy-inducing." The external audit
+of 2026-08-04 (mapped onto the ERA-IV 9-layer framework) found four
+recurring meta-bugs that this section codifies. Each principle below
+maps to a Presentation Rule (PR-19 through PR-26) in MASTER_PROTOCOL.md
+and a failure record (F-043 through F-046) in FAILURES.md.
+
+### Anti-entropy rule: real-data over synthetic (PR-20)
+
+The single most consequential entropy in the audit was the patent corpus:
+10 files named `US-10123456.txt` through `US-11012345.txt`, with IDs
+incrementing by exactly 111,111 (a tell-tale signature of fabrication).
+The files contained templated abstracts with no claims, no filing dates,
+no assignees, no citation graphs. The system's most consequential
+capability claim — patent-grounded novelty — rested on these fabricated
+files.
+
+This is entropy in the same sense as the desal BOM error: a number
+that looks real but isn't, sitting upstream of every downstream claim.
+The fix is the same: **input quality gates downstream claims.** A
+capability claim built on synthetic inputs is entropy regardless of how
+polished the upstream code is.
+
+The rule (codified in PR-20): synthetic data is forbidden for any
+capability claim. The Law 13 verifier SHALL be extended to detect
+templated-abstract signatures and arithmetic-sequence IDs. Until that
+extension is built, any new patent/paper/product file MUST be human-
+verified to contain real retrieved text (with claims, dates, assignees,
+citation graph) before the file is committed.
+
+### Anti-entropy rule: independent re-scoring (PR-22)
+
+The benchmark ledger's one full run (26/26 grade F, composite 0.3677)
+was honestly graded — but self-graded. The same module that generated
+the predictions also scored them. This is the desal Section III pattern
+applied to the benchmark layer: self-consistent numbers that were never
+independently re-derived.
+
+The rule (codified in PR-22): a benchmark score computed by the
+generation path is forbidden from being the headline score. The
+headline score MUST come from an architecturally separate verifier
+that reads only raw inputs, never the generation path's self-reported
+score. This is Law 13 (independent recomputation) extended from the
+package layer to the benchmark layer.
+
+The structural fix is identical to the Law 13 verifier: a separate
+script (`scripts/verify_benchmarks.py`, to be built) that re-derives
+every benchmark score from raw inputs and emits a diff. Any diff > 0
+blocks the benchmark entry from entering the ledger.
+
+### Anti-entropy rule: evidence-derived constraints (PR-21)
+
+`constraint_module.py`'s own docstrings admit: "Tolerances are derived
+from a constraint-keyword prior map. Real tolerances require detailed
+engineering analysis." This caps Layer 4 (Hypothesis generation) at
+4/10 no matter how good the counterfactual logic downstream is —
+because the hypotheses are structurally generated from priors, not
+fit to evidence.
+
+This is the same root-cause pattern as the desal audit's Section III:
+self-consistent numbers that were never independently re-derived. The
+fix is the same: **evidence-derived tolerances, not prior-map
+tolerances.** A tolerance used in a package's headline numbers MUST
+trace to a measurement, a citation, or a first-principles derivation.
+A prior-map value is permitted only as a flagged placeholder with a
+paired kill test (KT-XX) that closes the placeholder before commercial
+deployment.
+
+### Anti-entropy rule: closed-loop learning (PR-23)
+
+The ledger exists; the retraction discipline exists; the
+`predictions.jsonl` file has 377 lines of real backtest entries. But
+no recorded disagreement has ever provably changed a module's future
+output. The system is a recording system, not a learning system —
+and the difference matters.
+
+A recording system that logs failures but does not revise its modules
+based on those failures is entropy: it accumulates history without
+converting it into capability. The fix (codified in PR-23): a learning
+claim requires a closed loop with 5 specific steps — prediction →
+observation → root-cause identification → module revision → second
+prediction measurably closer to observation. Without all 5 steps, the
+system does not learn, regardless of how many ledger entries it has.
+
+### Anti-entropy rule: the single-highest-leverage-fix rule (PR-25)
+
+When multiple failures are open, working on any failure other than
+the one that blocks the most downstream claims is entropy. This is
+the anti-perfection principle (already in §The anti-perfection
+anti-entropy rule) extended to failure prioritization: **the next
+sprint is the failure with the highest downstream-claim count, not
+the failure that is easiest, most visible, or most novel.**
+
+For the current audit cycle: the patent corpus fabrication is the
+single highest-leverage fix. It blocks Layers 1, 2, 7, 8 of the
+9-layer framework — no other open failure blocks more than 2 layers.
+Working on anything else before closing F-043 is entropy.
+
+### Anti-entropy rule: reality-cooperation acknowledgment (PR-26)
+
+A capability that requires external reality to cooperate (an
+experiment run by a human collaborator, a prototype built and
+measured, a prediction surviving contact with the world) is forbidden
+from being "closed" by code work alone. The `layer_status` transition
+rule (already in `layer_status/__init__.py`) is now anti-entropy law:
+`partial → closed` requires a ledger entry with an external observer.
+No amount of additional code can substitute for reality.
+
+This principle prevents the most expensive form of entropy: claiming
+a capability is closed when reality has not confirmed it. The 1970s
+village ammonia plants failed not because the chemistry was wrong but
+because the code claimed "deployable" without reality's confirmation.
+The same pattern applies here: code cannot close what reality must.
+
+### AP-11 test for these rules
+
+Per AP-11 (bureaucracy prevention), each new rule must eliminate more
+entropy than the complexity of having one more rule. The CEO has
+confirmed these rules pass the test. The complexity cost: 8 new
+Presentation Rules + 4 new failure records. The entropy eliminated:
+- Fabricated inputs that block 4 of 9 capability layers (PR-20)
+- Self-graded benchmarks that mask true Layer 3 status (PR-22)
+- Prior-map tolerances that cap Layer 4 at 4/10 (PR-21)
+- Recording-without-learning that caps Layer 9 at 3/10 (PR-23)
+- Misprioritized sprints that prolong the highest-leverage fix (PR-25)
+- Capability-overclaim that violates Law 1 (PR-26)
+
+Net entropy reduction: positive. Rules approved.

@@ -1058,3 +1058,271 @@ A single page consolidating operational economics:
 - Running headers on every page.
 - Footnotes for source citations.
 - The PDF is a product, not an export.
+
+---
+
+## Audit-Discipline Principles (PR-19 through PR-26)
+
+Per CEO directive: "These review principles have to be added to create
+a first-class product and are not entropy-inducing." AP-11 test passed:
+each principle below eliminates a specific recurring failure pattern
+documented in the external audit dated 2026-08-04. These are
+constitutional — a package or governance update that violates them is
+not ready to ship.
+
+### PR-19: Fresh-clone verification (auditor's standard).
+
+> "Cloned the repo fresh and read the code rather than trust the docs
+> about the code — same standard as the desal audit." — External auditor
+
+Every claim about repository state ("X exists", "X passes", "X is
+resolved") must be verifiable against a fresh clone, not just against
+the working tree of the agent making the claim. The fresh-clone test
+exposes three recurring failure modes that working-tree checks miss:
+
+1. **Phantom work** — files described in commit messages but never
+   committed (F-026's "lost push" pattern recurred 5+ times).
+2. **Per-clone state** — git hooks, virtualenvs, local config that
+   works in one clone but not another.
+3. **Environment-dependent tests** — tests that pass only because a
+   local dependency or env var is set, not because the code is correct.
+
+**Enforcement:**
+- The agent making a claim about repo state MUST fetch from origin
+  without using local state, then verify the claim against the fetched
+  HEAD.
+- CI MUST run on a fresh clone (not on a cached workspace) for every
+  push. The CI workflow MUST NOT use `actions/cache` for source files.
+- A claim of "RESOLVED" in FAILURES.md requires: `git fetch origin main
+  && git log --oneline origin/main -1 && git ls-tree origin/main
+  <file>` showing the file exists at the claimed commit.
+
+### PR-20: Real-data audit (auditor's standard).
+
+> "The patent audit capability the mandate calls 'extremely important'
+> is currently a target with a real-looking but fabricated 10-file
+> placeholder set underneath it." — External auditor
+
+Synthetic data is forbidden for any capability claim. This includes:
+
+1. **Patent files** — files named `US-XXXXXXXX.txt` must contain
+   actual retrieved patent text (with claims, filing date, assignee,
+   citation graph), not templated abstracts. A file whose only content
+   is a templated abstract with no claims is synthetic.
+2. **Patent numbers** — IDs that form an arithmetic sequence
+   (e.g., 10123456, 10234567, 10345678 — incrementing by 111,111) are
+   a tell-tale signature of fabrication. Real USPTO grant numbers do
+   not form arithmetic sequences.
+3. **Benchmark inputs** — benchmark cases must be drawn from real
+   engineering problems (with sources cited), not generated from a
+   templating script.
+4. **Cost quotes** — prices must trace to a specific supplier quote
+   (with date + URL), a published catalog, or an explicitly labeled
+   engineering estimate. Catalog fiction is forbidden (per the pay-bar
+   non-negotiable 5).
+
+**Enforcement:**
+- A new data file with structured IDs (patent numbers, product SKUs,
+  paper DOIs) MUST pass a sequence-detection test: the file is
+  REJECTED if any subset of IDs forms an arithmetic sequence with
+  common difference divisible by 111, 1000, or 10000.
+- The Law 13 verifier SHALL be extended to scan evidence/patent files
+  for templated-abstract signatures (text starting with "A [device]
+  comprising [component]" with no claims section).
+- Every evidence row in a package MUST carry a working URL retrievable
+  by `curl -I` (per Phase 3 citation discipline, PR-2 in §The package
+  structure). A 404 or a redirect to a generic landing page fails the
+  audit.
+
+### PR-21: Evidence-derivation for constraints (auditor's standard).
+
+> "Tolerances are derived from a constraint-keyword prior map. Real
+> tolerances require detailed engineering analysis." — Internal
+> docstring in `constraint_module.py`
+
+A constraint tolerance is forbidden from being a prior-map value if
+the constraint is used in a package's headline numbers (cost, mass,
+energy, thermal, N delivery, etc.). Such tolerances must be derived
+from one of:
+
+1. A direct measurement (with date, instrument, conditions).
+2. A citation from the patent or paper corpus (with DOI/URL +
+   retrieval date + the specific table/figure the value came from).
+3. A first-principles derivation (with the equation, the inputs, and
+   the units check).
+
+A prior-map value may be used ONLY as an initial placeholder when
+no evidence-derived value is available — and the placeholder MUST
+be flagged in the package with a `prior_map: true` field plus a
+kill test (KT-XX) that closes the placeholder before commercial
+deployment.
+
+**Enforcement:**
+- The Law 13 verifier SHALL be extended to scan the constraint_module
+  for `prior_map: true` flags and emit a warning for each. A package
+  with any unclosed `prior_map` flag cannot claim VALIDATED DESIGN
+  (Law 1).
+- Every constraint with `prior_map: true` MUST appear in the
+  package's risk dashboard with severity ≥ MEDIUM.
+
+### PR-22: Independent re-scoring (auditor's standard).
+
+> "The one full benchmark run logged is honestly graded (26/26 = grade
+> F, composite 0.3677) but self-graded, not independent-of-generation
+> grading — same gap as the desal package's Section III." — External
+> auditor
+
+A benchmark score computed by the generation path is forbidden from
+being the headline score. The headline score MUST be computed by a
+separate verifier that:
+
+1. Reads only raw benchmark inputs (never the generation path's
+   self-reported score).
+2. Re-derives the score from scratch using a published scoring
+   function.
+3. Emits a diff between the self-reported score and the
+   independently-derived score. Any diff > 0 blocks the benchmark
+   run from entering the ledger.
+
+This is Law 13 (independent recomputation) extended from the
+package layer to the benchmark layer. The same fix that closes
+the desal BOM error closes the benchmark self-grading bias:
+mechanical enforcement by an architecturally separate verifier.
+
+**Enforcement:**
+- The benchmark ledger (`data/ledger/predictions.jsonl`) SHALL NOT
+  accept a new entry without a paired `independent_score` field
+  populated by the separate verifier.
+- The `independent_score` field MUST be ≥ the self-reported score
+  (a stricter standard: a self-reported score cannot exceed an
+  independent re-derivation). Any diff < 0 (independent < self)
+  blocks the entry.
+
+### PR-23: Closed-loop learning requirement (auditor's standard).
+
+> "No closed loop where a recorded disagreement provably changed a
+> module's future output." — External auditor
+
+A learning system is forbidden from claiming "learning" as a
+capability unless at least one closed loop is recorded in the
+ledger:
+
+1. The system makes a prediction (with timestamp T1).
+2. An external observation records a pass/fail (with timestamp T2 > T1).
+3. The system identifies which module's input was wrong (with root
+   cause + evidence).
+4. The module is revised (with diff + commit hash).
+5. A second prediction (with timestamp T3 > T2) is made by the
+   revised module, and the second prediction is measurably closer
+   to the observation than the first.
+
+Without all 5 steps, the system is a recording system, not a
+learning system. `layer_status.LAYER_STATUS["creation"]` cannot
+move from `not_started` to `scaffolded` without a closed loop;
+cannot move from `scaffolded` to `partial` without two closed
+loops on different cases.
+
+**Enforcement:**
+- The ledger SHALL include a `closed_loops` count, computed from
+  entries matching all 5 criteria. The count is the only
+  machine-readable signal of "learning."
+- A claim of "the system learns" in any governance doc MUST cite
+  the specific ledger entries that close the loop. A claim
+  without a citation is forbidden language (per the typed-status
+  rule, no numerical confidence — same principle extended to
+  capability claims).
+
+### PR-24: Architecture freeze for input quality (auditor's standard).
+
+> "Bell Labs, DeepMind, DARPA, SpaceX, Toyota, and NASA would all
+> build the same thing next: a real patent corpus and one closed
+> experimentation cycle, before touching anything else." — External
+> auditor
+
+No new module, package, or capability SHALL be added while any
+of the following are open:
+
+1. The patent corpus contains synthetic or templated files.
+2. The benchmark verifier is self-graded (no independent re-scoring).
+3. No closed learning loop is recorded in the ledger.
+4. A "scaffolded" layer has remained scaffolded for > 6 months
+   without a partial-transition attempt.
+
+This is the architecture freeze (already in ANTI_ENTROPY.md §ARCHITECTURE
+FREEZE) extended to input quality. The principle: **input quality
+gates capability expansion.** A new engine built on fabricated inputs
+is entropy — it expands the surface area of the failure.
+
+**Enforcement:**
+- The `remember_governance.py` pre-commit check SHALL be extended to
+  block any commit that adds a new module to `invention_compiler/`
+  or `experimentation_layer/` while the patent corpus contains
+  templated files.
+- A freeze exception requires a CEO-level sign-off recorded in the
+  commit message with the `freeze-exception:` prefix.
+
+### PR-25: The single-highest-leverage-fix rule (auditor's standard).
+
+> "Right now the system's most consequential capability claim —
+> patent-grounded novelty — rests on ten fabricated files with
+> sequential IDs." — External auditor
+
+When multiple failures are open, the system MUST prioritize the
+single fix that closes the most downstream claims — not the fix
+that is easiest, most visible, or most novel. The prioritization
+rule:
+
+1. List every open failure.
+2. For each, count the downstream capability claims that depend on it.
+3. Pick the failure with the highest downstream-claim count.
+4. Fix it first. Do not work on anything else until it is closed.
+
+For the current audit cycle: the patent corpus fabrication (F-043
+in FAILURES.md) is the single highest-leverage fix. It blocks
+Layers 1, 2, 7, 8 of the 9-layer framework. No other open failure
+blocks more than 2 layers.
+
+**Enforcement:**
+- FAILURES.md SHALL include a `downstream_claims_blocked` field
+  on each open failure, computed at audit time.
+- The next sprint SHALL be the failure with the highest
+  `downstream_claims_blocked` count. Sprints that do not address
+  this failure require an AP-11 test (does the alternative
+  eliminate more entropy?).
+
+### PR-26: The reality-cooperation acknowledgment (auditor's standard).
+
+> "Five of these nine layers can be fixed with engineering work. Four
+> of them require reality to cooperate — an external collaborator
+> running an experiment, a prototype getting built, a prediction
+> surviving contact with the world. No amount of code closes those."
+> — External auditor
+
+A capability that requires external reality to cooperate (an
+experiment run by a human collaborator, a prototype built and
+measured, a prediction surviving contact with the world) is
+forbidden from being "closed" by code work alone. The
+`layer_status` transition rule (already in `layer_status/__init__.py`)
+is now constitutional:
+
+- `not_started → scaffolded`: code work alone. Permitted.
+- `scaffolded → partial`: code work + historical/synthetic data
+  cycle. Permitted.
+- `partial → closed`: code work + a real-world observation
+  recorded in the ledger. **External reality is required.**
+  No amount of additional code can substitute.
+
+A package that claims a layer is "closed" without a ledger entry
+matching the closed-loop criteria (PR-23) is in violation of
+Law 1 (product identity — claiming a higher maturity than evidence
+permits).
+
+**Enforcement:**
+- The `layer_status.LAYER_STATUS` table is the canonical source.
+  Any claim in a package or governance doc that contradicts the
+  table (e.g., "Layer 5 is closed" when the table says "scaffolded")
+  is forbidden language.
+- A layer transition from `partial → closed` requires a paired
+  ledger entry with `outcome: pass` or `outcome: fail` and an
+  `external_observer` field naming the human or instrument that
+  recorded the observation.

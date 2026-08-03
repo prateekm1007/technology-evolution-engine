@@ -647,3 +647,291 @@ for ce in d['counterexample_rerun']:
 The local pre-commit hook is now correctly characterized as a convenience check, not enforcement. The test suite reflects this: `test_pre_commit_hook_installed` issues a warning (not a failure) if the local hook is missing, while `test_ci_workflow_exists` is a hard assertion that CI must exist.
 
 **Lesson (7th recurrence):** Local git hooks cannot be shared across clones. CI is the only real enforcement. Every attempt to "install" a hook and claim F-026 resolved has failed because the hook is per-clone. Stop claiming F-026 is resolved via local hooks. It is resolved via CI.
+
+---
+
+### F-043 — Fabricated patent corpus (10 files with sequential IDs and templated abstracts) (P1, audit)
+
+**Found:** external audit dated 2026-08-04 (auditor's "headline finding").
+**Repro:**
+```bash
+cd /home/z/my-project/audit/repo
+ls data/ingestion/patents/
+# Output: US-10123456.txt US-10234567.txt US-10345678.txt US-10456789.txt
+#         US-10567890.txt US-10678901.txt US-10789012.txt US-10890123.txt
+#         US-10901234.txt US-11012345.txt
+
+# Compute the differences between consecutive IDs:
+python3 -c "
+ids = [10123456, 10234567, 10345678, 10456789, 10567890,
+       10678901, 10789012, 10890123, 10901234, 11012345]
+diffs = [ids[i+1] - ids[i] for i in range(len(ids)-1)]
+print('IDs:', ids)
+print('Diffs:', diffs)
+print('All diffs equal to 111111:', all(d == 111111 for d in diffs))
+"
+# Output:
+# IDs: [10123456, 10234567, 10345678, 10456789, 10567890, 10678901, 10789012, 10890123, 10901234, 11012345]
+# Diffs: [111111, 111111, 111111, 111111, 111111, 111111, 111111, 111111, 111111]
+# All diffs equal to 111111: True
+
+# Inspect one file:
+head -5 data/ingestion/patents/US-10123456.txt
+# Output:
+# TITLE: Radiative cooling metamaterial with selectively emissive coating
+# ABSTRACT:
+# [templated abstract — no claims, no filing date, no assignee, no citation graph]
+```
+
+**Observed:** The patent audit capability — flagged by the system's own
+mandate as "extremely important... you have already noticed the gap" —
+is currently a target ("100 patents, 10 domains, 3 reviewers" in
+`workstreams/A_patents/tracker.json`) with `completed: 0` and an empty
+`entries` list. Underneath the target sits a 10-file placeholder set
+whose IDs increment by exactly 111,111 (a tell-tale signature of
+fabrication, not retrieval). The files contain templated abstracts
+("A [device] comprising [component]...") with no claims, no filing
+dates, no assignees, no citation graphs — the shape of synthetic
+placeholder text, not retrieved documents.
+
+This is the system's single highest-leverage failure: it blocks Layers
+1 (Retrieval), 2 (Synthesis), 7 (Invention), and 8 (Scientific
+Discovery) of the 9-layer framework. Every novelty claim, prior-art
+collision check, and white-space identification downstream is currently
+running on data that looks real and isn't.
+
+**Root cause:** Same root-cause pattern as the desal BOM error and the
+PKS-DESAL-002 cost fictions: a number that looks real but is fake
+underneath, sitting upstream of every downstream claim. The patent
+files were created as scaffolding to test the ingestion pipeline, then
+never replaced with real retrieved patents. The `CORPUS_MANIFEST.json`
+(Phase 7a, H01M vertical) explicitly says `"status": "not yet
+ingested"` — the manifest was specified but never executed.
+
+**Severity:** P1 — blocks 4 of 9 capability layers. The single
+highest-leverage fix in the whole repo per the external auditor's
+prioritization rule (PR-25).
+
+**Status:** OPEN. Definition of done per PR-25: `workstreams/A_patents/
+tracker.json` shows `completed > 0` with real patent numbers (not
+forming an arithmetic sequence), each with a working URL retrievable
+by `curl -I` returning HTTP 200. The first concrete step: execute
+the already-specified H01M manifest (50 patents via USPTO/Google
+Patents, CPC code H01M, date range 1990-2026, most-cited sampling).
+
+**Downstream claims blocked:** 4 layers (1, 2, 7, 8) — highest of any
+open failure.
+
+**Lesson:** Synthetic data is forbidden for any capability claim (PR-20).
+A new data file with structured IDs MUST pass a sequence-detection
+test: the file is REJECTED if any subset of IDs forms an arithmetic
+sequence with common difference divisible by 111, 1000, or 10000. The
+Law 13 verifier SHALL be extended to enforce this mechanically.
+
+### F-044 — Self-graded benchmark (composite 0.3677, 26/26 grade F) with no independent re-scorer (P1, audit)
+
+**Found:** external audit dated 2026-08-04.
+**Repro:**
+```bash
+cd /home/z/my-project/audit/repo
+wc -l data/ledger/predictions.jsonl
+# Output: 377 lines (multiple backtest entries, including Airships + Iridium resurrection predictions checked against public record)
+
+# Look for the benchmark run with composite score:
+grep -l "composite" data/ledger/predictions.jsonl
+# Output: data/ledger/predictions.jsonl (the run is logged honestly)
+
+# Check for any independent re-scorer:
+ls scripts/verify_benchmarks.py 2>&1
+# Output: ls: cannot access 'scripts/verify_benchmarks.py': No such file or directory
+```
+
+**Observed:** The one full benchmark run in `predictions.jsonl` is
+honestly graded — 26/26 = grade F, composite 0.3677, tagged "rule-based
+scoring, seed graph only, no external data." Credit for not hiding the
+F. But the score is self-graded: the same module that generated the
+predictions also scored them. There is no architecturally separate
+verifier that re-derives the score from raw inputs without seeing the
+self-reported number.
+
+This is the desal Section III pattern applied to the benchmark layer:
+self-consistent numbers that were never independently re-derived. The
+fix is structurally identical to the Law 13 verifier (`scripts/verify_arithmetic.py`)
+that closes the desal BOM error — a separate script that reads only
+raw inputs and recomputes.
+
+**Root cause:** Law 13 (independent recomputation) was applied to the
+package layer (BOM, mass, basis counts) but never extended to the
+benchmark layer. The benchmark ledger accepted self-reported scores
+without an independent re-derivation gate.
+
+**Severity:** P1 — caps Layer 3 (Verification) at 5/10 no matter how
+many benchmarks are logged. The "honest F" is honest about the score
+but dishonest about the verification depth: a self-graded F is not the
+same evidence as an independently-graded F.
+
+**Status:** OPEN. Definition of done per PR-22: a `scripts/verify_benchmarks.py`
+exists, reads only raw benchmark inputs, re-derives every benchmark
+score from scratch, emits a diff between self-reported and independent
+scores, and any diff > 0 blocks the benchmark entry from entering the
+ledger. Re-run the 26-benchmark suite through it; if the independent
+score disagrees with 0.3677, that disagreement — not the original
+number — is the real Layer 3 baseline.
+
+**Downstream claims blocked:** 1 layer (3) but high-leverage because
+Layer 3 verification depth gates every other layer's confidence claim.
+
+**Lesson:** A self-graded benchmark is not verification (PR-22). Law 13
+must be extended from the package layer to the benchmark layer. The
+fix is mechanical enforcement by an architecturally separate verifier —
+the same fix that closes the desal BOM error.
+
+### F-045 — constraint_module.py admits tolerances come from keyword prior map, not measurement (P2, audit)
+
+**Found:** external audit dated 2026-08-04.
+**Repro:**
+```bash
+cd /home/z/my-project/audit/repo
+grep -n "prior map\|keyword" invention_compiler/constraint_module.py | head -10
+# Output (line numbers approximate):
+# 17: # Map: constraint keyword -> likely failure mode if violated.
+# 31: # Map: constraint keyword -> typical tolerance range.
+# 88: "Failure modes are derived from constraint keywords via a "
+# 89: "small prior map. Real failure modes require FMEA.",
+# 133: "Tolerances are derived from a constraint-keyword prior map. "
+# 141: "by more than 2x, the prior map is wrong."
+```
+
+**Observed:** `constraint_module.py`'s own docstrings admit:
+"Tolerances are derived from a constraint-keyword prior map. Real
+tolerances require detailed engineering analysis." The constraint
+tolerances used in the system's reasoning are not derived from
+measurements, citations, or first-principles derivations — they are
+looked up from a keyword-based prior map.
+
+This caps Layer 4 (Hypothesis generation) at 4/10 no matter how good
+the counterfactual logic downstream is — because the hypotheses are
+structurally generated from priors, not fit to evidence. This is the
+same root-cause pattern as the desal audit's Section III: self-
+consistent numbers that were never independently re-derived.
+
+**Root cause:** When `constraint_module.py` was written, no real patent
+or paper corpus existed to derive tolerances from (see F-043). The
+prior map was a placeholder. The placeholder was never replaced because
+the corpus was never ingested. F-045 is downstream of F-043: closing
+F-043 (real corpus) unblocks F-045 (evidence-derived tolerances).
+
+**Severity:** P2 — caps Layer 4 at 4/10 but does not block downstream
+layers directly. Lower severity than F-043 and F-044 because the
+constraint module's outputs are not headline numbers in customer-
+facing packages (they feed into reasoning, not into BOM totals).
+
+**Status:** OPEN. Definition of done per PR-21: pick the highest-traffic
+constraint type in the graph and replace its prior-map value with one
+derived from the (now-real) patent/paper corpus from F-043 closure —
+actual reported tolerances from actual documents. Log the before/after
+delta in `FAILURES.md`. Repeat for the next 2-3 highest-traffic
+constraint types. Do not try to convert all at once — one verified
+conversion is worth more than ten unverified ones.
+
+**Downstream claims blocked:** 1 layer (4) — but unblocked by F-043
+closure.
+
+**Lesson:** A prior-map tolerance is a placeholder, not a measurement
+(PR-21). A tolerance used in a package's headline numbers MUST trace
+to a measurement, a citation, or a first-principles derivation. A
+prior-map value is permitted only as a flagged placeholder with a
+paired kill test that closes the placeholder before commercial
+deployment.
+
+### F-046 — Experimentation layer has never executed a single predict→build→observe→learn cycle (P1, audit)
+
+**Found:** external audit dated 2026-08-04.
+**Repro:**
+```bash
+cd /home/z/my-project/audit/repo
+cat experimentation_layer/__init__.py | head -10
+# Output:
+# """
+# Experimentation Layer — the loop that closes the invention compiler.
+# STATUS: SCAFFOLD. Declared but NOT implemented. Per CTO review #3
+# (commit b22cbc6), this package exists as a documented target
+# toward which the entire repository should converge. It does not
+# yet do anything.
+
+ls milestones/
+# Output: milestone_001 milestone_002
+# Both milestones are fully specified (pH prediction, electrolyte improvement)
+# but neither has ever been run through to a real external observation.
+```
+
+**Observed:** `experimentation_layer/__init__.py` is the most honest
+file in the repo: "STATUS: SCAFFOLD. Declared but NOT implemented...
+It does not yet do anything." Two milestones (`milestone_001` pH
+prediction, `milestone_002` electrolyte improvement) are fully
+specified but unrun. No experiment has ever been proposed by the
+system AND executed by an external collaborator AND recorded in the
+ledger with a pass/fail outcome.
+
+This is the actual bottleneck for Layers 6-9. Layers 6 (Search), 7
+(Invention), 8 (Scientific discovery), and 9 (Learning) cannot close
+without at least one real predict→build→observe→learn cycle. Code
+cannot close them — reality must (PR-26).
+
+**Root cause:** The experimentation layer was scaffolded (CTO review
+#3) but the predict→build→observe→learn cycle requires an external
+collaborator to actually build/run the experiment. The "build" step
+is outside the system by design (per `experimentation_layer/__init__.py`'s
+own docstring). No external collaborator has ever been engaged.
+
+**Severity:** P1 — caps Layers 5, 6, 7, 8, 9 (5 of 9 layers). The
+second-highest-leverage fix after F-043.
+
+**Status:** OPEN. Definition of done per PR-23 and PR-26: pick one
+of `milestone_001` or `milestone_002` and run it through to a real
+external observation. Record the outcome in `data/ledger/predictions.jsonl`
+as a real `outcome: pass/fail` entry with an `external_observer` field
+naming the human or instrument that recorded the observation. Run the
+`learn` step: identify which module was wrong and actually revise it.
+A second prediction by the revised module must be measurably closer
+to the observation than the first. That closes one learning loop
+(PR-23) and moves Layer 5 from `scaffolded` to `partial`.
+
+**Downstream claims blocked:** 5 layers (5, 6, 7, 8, 9) — second-
+highest of any open failure. But this fix requires reality to
+cooperate (an external collaborator must run the experiment); it
+cannot be closed by code work alone (PR-26).
+
+**Lesson:** Scaffolding is not closure (already in ANTI_ENTROPY.md
+§Scaffolding ≠ closure). A layer that has never run a real cycle
+is `scaffolded`, not `partial`. The transition from `partial` to
+`closed` requires external reality — no amount of additional code
+can substitute (PR-26). The 1970s village ammonia plants failed not
+because the chemistry was wrong but because the code claimed
+"deployable" without reality's confirmation. Same pattern.
+
+---
+
+## Failure prioritization (per PR-25 — single-highest-leverage-fix rule)
+
+As of 2026-08-04, the open failures ranked by `downstream_claims_blocked`:
+
+| Failure | Severity | Layers blocked | Status | Priority |
+|---|---|---|---|---|
+| F-043 (fabricated patent corpus) | P1 | 4 (1, 2, 7, 8) | OPEN | **1 — fix first** |
+| F-046 (experimentation never executed) | P1 | 5 (5, 6, 7, 8, 9) | OPEN | 2 — requires reality cooperation |
+| F-044 (self-graded benchmark) | P1 | 1 (3) but high-leverage | OPEN | 3 — unblocks Layer 3 confidence |
+| F-045 (prior-map tolerances) | P2 | 1 (4) | OPEN | 4 — unblocked by F-043 |
+
+**Note on F-046's higher layer count but lower priority:** F-046
+blocks more layers (5) than F-043 (4), but F-046 requires external
+reality to cooperate (an external collaborator must run the
+experiment). F-043 is pure engineering work — fetch real patents
+through a working parser, replace the fabricated files. Per PR-25's
+prioritization rule, the fix that is pure engineering work AND
+high-leverage goes first. F-046 follows once F-043 is closed (the
+real patent corpus unblocks the prior-map tolerances in F-045,
+which unblocks the hypothesis generation needed for a real
+experimentation cycle).
+
+**The next sprint is F-043.** Any other work is entropy.
