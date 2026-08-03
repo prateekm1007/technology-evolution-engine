@@ -755,6 +755,69 @@ uncommitted. This is the overclaim pattern. The fix is AP-2 (paste
 actual output) and AP-9 (accountability loop). Every "all X pass"
 claim must be backed by pasted pytest output showing 0 failures.
 
+### AP-11: Bureaucracy prevention.
+A rule must eliminate more entropy than it creates. Otherwise it shall
+not exist. Not everything should become law. The system currently has
+34 constitutional rules (12 Laws + 10 APs + 12 PRs). Before adding a
+35th, ask: does this rule eliminate more entropy than the complexity
+of having one more rule? If not, do not add it. This principle will
+probably save months of future work.
+
+---
+
+## The 3-level hierarchy
+
+Not every rule is constitutional. The 34 existing rules are classified
+into 3 levels to prevent every new rule from becoming immutable law.
+
+### Level 1 — Laws (immutable, require constitutional amendment to change)
+
+These are the foundational rules. They do not change between packages.
+Changing a Law requires a formal retraction of the old rule + a
+replacement rule + a test update.
+
+| Rule set | Count | Examples |
+|---|---|---|
+| 12 Laws | 12 | Law 1 (Product identity), Law 2 (Arithmetic closure), Law 10 (Kill tests) |
+| Supreme Law | 1 | "Remove the next expensive risk" (CONSTITUTION.md) |
+
+### Level 2 — Protocols (change occasionally, govern the process)
+
+These govern how the system works. They change when the process changes
+— but not for every package.
+
+| Rule set | Count | Examples |
+|---|---|---|
+| Auditor's Principles (AP-1 through AP-11) | 11 | AP-1 (run it), AP-9 (accountability loop), AP-11 (bureaucracy prevention) |
+| Pay bar (12 criteria, 6 non-negotiables) | 18 | Criterion 2 (arithmetic closure), Non-negotiable 1 (internally inconsistent) |
+| Presentation Rules (PR-1 through PR-12) | 12 | PR-1 (cover sells decision), PR-12 (final page one question) |
+| Frame-breaking mandate | 1 | "Why must satellites exist at all?" |
+| 5-phase roadmap | 1 | Phase I (P1-P5) through Phase V (P19-P24) |
+| Era progression | 1 | Era 0 → Era 4 |
+
+### Level 3 — Implementation (change constantly, govern the execution)
+
+These are the current state — what is built, what is tested, what
+numbers are in the current package. They change every cycle.
+
+| Rule set | Count | Examples |
+|---|---|---|
+| Forbidden language patterns | 5 | No numerical confidence, no PASS/FAIL %, no "complete blueprint" |
+| Typed status enums | 4 | STATUS, VALIDATION_LEVEL, EVIDENCE_STRENGTH, PACKAGE_MATURITY |
+| Retraction categories | 8 | NUMERICAL_CONTRADICTION, KILL_TEST_FAILED, etc. |
+| Maturity levels | 8 | DISCOVERY through PRODUCTION |
+| Current capability scores | 9 | Constraint discovery 9/10, Invention 3/10 |
+
+### How to use the hierarchy
+
+- Adding a Level 1 rule: requires AP-11 test (does it eliminate more
+  entropy than it creates?) + a test + a commit with rationale.
+- Adding a Level 2 rule: requires a test + a commit. No constitutional
+  amendment needed, but the rationale must be stated.
+- Adding a Level 3 rule: just do it. No test needed. These are the
+  working state, not the constitution.
+- **Stop adding rules.** The governance is sufficient. Build the product.
+
 ---
 
 ## Presentation Rules (PR-1 through PR-12)

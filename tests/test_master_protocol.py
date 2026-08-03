@@ -912,10 +912,25 @@ class TestAuditorPrinciples:
         assert "entropy" in content.lower()
 
     def test_all_10_principles_present(self):
-        """All 10 AP principles (AP-1 through AP-10) must be present."""
+        """All AP principles (AP-1 through AP-11) must be present."""
         content = (ROOT / "MASTER_PROTOCOL.md").read_text()
-        for i in range(1, 11):
+        for i in range(1, 12):
             assert f"AP-{i}" in content, f"Missing AP-{i}"
+
+    def test_ap_11_bureaucracy_prevention(self):
+        """AP-11: Bureaucracy prevention — a rule must eliminate more
+        entropy than it creates."""
+        content = (ROOT / "MASTER_PROTOCOL.md").read_text()
+        assert "AP-11" in content
+        assert "bureaucracy" in content.lower() or "entropy than it creates" in content.lower()
+
+    def test_3_level_hierarchy_present(self):
+        """The 3-level hierarchy (Laws/Protocols/Implementation) must exist."""
+        content = (ROOT / "MASTER_PROTOCOL.md").read_text()
+        assert "3-level hierarchy" in content.lower() or "Level 1" in content
+        assert "Level 2" in content and "Level 3" in content
+        assert "immutable" in content.lower()
+        assert "Stop adding rules" in content or "stop adding rules" in content.lower()
 
 
 class TestPresentationRules:
