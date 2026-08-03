@@ -123,6 +123,24 @@ evidence.
 
 ---
 
+### Gate 4.5 — Consistency Gate
+
+**Question:** Are the numbers physically possible?
+
+**Required checks:**
+- The consistency engine must report 0 FATAL violations.
+- The dimensional analysis engine must report 0 CONTRADICTION results.
+
+**Pass criteria:** `consistencyViolations.fatal == 0` AND `dimensionalAnalysis.failed == 0`.
+
+**Failure:** Work is rejected. Return to Gate 4 (Decomposition) and fix
+the numerical contradictions. A blueprint with physically impossible
+quantities cannot proceed to alternatives analysis.
+
+**Artifact:** CONSISTENCY_RECORD (consistencyViolations + dimensionalAnalysis output).
+
+---
+
 ### Gate 5 — Contradiction Gate
 
 **Question:** Why is this wrong?
@@ -236,6 +254,23 @@ applicable. Assumptions updated if falsified.
 is written. No exceptions.
 
 **Artifact:** POSTMORTEM_RECORD (failures, lessons, assumption updates).
+
+---
+
+### Gate 10.5 — Kill-Test Gate
+
+**Question:** Does every assumption have a kill test, and have any kill tests already failed?
+
+**Required checks:**
+- Every assumption must have a kill test with a concrete, observable failure condition.
+- Kill tests with status FAILED must be mitigated before the gate passes.
+- Kill tests with status UNTESTED must be listed in the "Unknowns" section of the final output.
+
+**Pass criteria:** `killTests.failed == 0` OR (all FAILED kill tests are mitigated AND listed in unknowns with confidence penalty).
+
+**Failure:** Work is rejected. Return to Gate 7 (Adversarial) and either mitigate the failed kill test or explicitly accept it with a confidence penalty (minimum -0.05 per failed kill test).
+
+**Artifact:** KILLTEST_RECORD (all kill tests with status, testedAt, mitigation).
 
 ---
 
