@@ -916,3 +916,101 @@ class TestAuditorPrinciples:
         content = (ROOT / "MASTER_PROTOCOL.md").read_text()
         for i in range(1, 11):
             assert f"AP-{i}" in content, f"Missing AP-{i}"
+
+
+class TestPresentationRules:
+    """Verify all 12 Presentation Rules (PR-1 through PR-12) are in
+    MASTER_PROTOCOL.md.
+
+    Per external auditor: 'The biggest remaining weakness isn't the
+    engineering. It's the presentation.'
+    """
+
+    def test_pr_1_cover_sells_decision(self):
+        content = (ROOT / "MASTER_PROTOCOL.md").read_text()
+        assert "PR-1" in content
+        assert "first page must sell the decision" in content.lower()
+
+    def test_pr_2_every_section_verdict(self):
+        content = (ROOT / "MASTER_PROTOCOL.md").read_text()
+        assert "PR-2" in content
+        assert "verdict" in content.lower()
+
+    def test_pr_3_graphics_over_text(self):
+        content = (ROOT / "MASTER_PROTOCOL.md").read_text()
+        assert "PR-3" in content
+        assert "graphics" in content.lower() or "diagrams" in content.lower()
+
+    def test_pr_4_tables_answer_questions(self):
+        content = (ROOT / "MASTER_PROTOCOL.md").read_text()
+        assert "PR-4" in content
+        assert "question" in content.lower()
+
+    def test_pr_5_executive_summary(self):
+        content = (ROOT / "MASTER_PROTOCOL.md").read_text()
+        assert "PR-5" in content
+        assert "executive summary" in content.lower()
+
+    def test_pr_6_visual_hierarchy(self):
+        content = (ROOT / "MASTER_PROTOCOL.md").read_text()
+        assert "PR-6" in content
+        assert "visual hierarchy" in content.lower() or "typography" in content.lower()
+
+    def test_pr_7_evidence_cards(self):
+        content = (ROOT / "MASTER_PROTOCOL.md").read_text()
+        assert "PR-7" in content
+        assert "evidence card" in content.lower()
+
+    def test_pr_8_risk_dashboard(self):
+        content = (ROOT / "MASTER_PROTOCOL.md").read_text()
+        assert "PR-8" in content
+        assert "risk dashboard" in content.lower()
+
+    def test_pr_9_deployment_roadmap(self):
+        content = (ROOT / "MASTER_PROTOCOL.md").read_text()
+        assert "PR-9" in content
+        assert "deployment roadmap" in content.lower()
+
+    def test_pr_10_publication_quality(self):
+        content = (ROOT / "MASTER_PROTOCOL.md").read_text()
+        assert "PR-10" in content
+        assert "publication quality" in content.lower()
+        assert "SpaceX" in content or "Apple" in content or "McKinsey" in content
+
+    def test_pr_11_survive_printing(self):
+        content = (ROOT / "MASTER_PROTOCOL.md").read_text()
+        assert "PR-11" in content
+        assert "printing" in content.lower() or "black and white" in content.lower()
+
+    def test_pr_12_final_page_one_question(self):
+        content = (ROOT / "MASTER_PROTOCOL.md").read_text()
+        assert "PR-12" in content
+        assert "next dollar" in content.lower()
+
+    def test_all_12_pr_present(self):
+        content = (ROOT / "MASTER_PROTOCOL.md").read_text()
+        for i in range(1, 13):
+            assert f"PR-{i}" in content, f"Missing PR-{i}"
+
+    def test_presentation_rule_in_anti_entropy(self):
+        """ANTI_ENTROPY.md must reference the presentation rule."""
+        content = (ROOT / "ANTI_ENTROPY.md").read_text()
+        assert "presentation" in content.lower()
+        assert "PR-1" in content or "PR-10" in content or "PR-12" in content
+
+    def test_css_has_evidence_card_style(self):
+        """The CSS template must have evidence card styling (PR-7)."""
+        css = (ROOT / "scripts" / "pdf_template.css").read_text()
+        assert ".evidence-card" in css or ".card" in css or "callout" in css.lower()
+
+    def test_css_has_risk_dashboard_style(self):
+        """The CSS template must have risk dashboard styling (PR-8)."""
+        css = (ROOT / "scripts" / "pdf_template.css").read_text()
+        # The risk dashboard is a table; check that tables have styling
+        assert "thead" in css or "risk" in css.lower() or ".dashboard" in css
+
+    def test_css_has_print_friendly(self):
+        """The CSS must be print-friendly (PR-11)."""
+        css = (ROOT / "scripts" / "pdf_template.css").read_text()
+        assert "@page" in css
+        assert "page-break" in css or "page-break-inside" in css

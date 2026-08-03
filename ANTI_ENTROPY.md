@@ -176,6 +176,32 @@ is removed from MASTER_PROTOCOL.md, CI blocks the commit.
 
 ---
 
+## The presentation anti-entropy rule (market feedback, 2026-08-03)
+
+> The biggest remaining weakness isn't the engineering. It's the
+> presentation. The PDF still looks like a generated report rather
+> than an executive engineering package. — External auditor
+
+Entropy includes shipping a technically correct package that looks
+like a console log exported into a PDF. The customer's first impression
+is visual. If the package is not visually excellent, the customer
+does not trust the engineering — regardless of how correct it is.
+
+The 12 Presentation Rules (PR-1 through PR-12) are codified in
+MASTER_PROTOCOL.md. Key anti-entropy principles:
+- PR-1 (cover sells the decision): if the customer must read to page
+  18 to understand the decision, the cover is entropy.
+- PR-3 (graphics over walls of text): dense paragraphs are entropy.
+  Tables, diagrams, and cards are information. Walls of text are noise.
+- PR-10 (publication quality): a package that resembles a console log
+  is entropy. A package that resembles a SpaceX technical report is
+  signal.
+- PR-12 (final page answers one question): if the customer cannot
+  answer "should I spend the next dollar?" from the last page alone,
+  the package has not removed the next expensive risk.
+
+---
+
 ## Session-hardened principles (distilled from actual failures)
 
 These rules are NOT abstract best practices. Each one was produced

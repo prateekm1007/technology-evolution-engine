@@ -754,3 +754,86 @@ gaps closed" when 7 of 8 were closed, and "pushed" when work was
 uncommitted. This is the overclaim pattern. The fix is AP-2 (paste
 actual output) and AP-9 (accountability loop). Every "all X pass"
 claim must be backed by pasted pytest output showing 0 failures.
+
+---
+
+## Presentation Rules (PR-1 through PR-12)
+
+Per external auditor: "The biggest remaining weakness isn't the
+engineering. It's the presentation. The PDF still looks like a
+generated report rather than an executive engineering package."
+
+The engineering is approaching professional standard. The presentation
+layer must catch up. These 12 rules are constitutional — a package that
+violates them is not ready for a customer.
+
+### PR-1: The first page must sell the decision.
+
+The cover page must immediately answer five questions:
+- What problem are we solving?
+- What solution was selected?
+- Why was it selected?
+- What remains uncertain?
+- What should happen next?
+
+No reader should have to reach page 18 to discover this.
+
+### PR-2: Every section must end with a verdict.
+
+Every section ends with a one-line verdict:
+PASS | PASS WITH CONDITIONS | FAIL | BLOCKED | RETRACTED
+
+### PR-3: Replace walls of text with graphics.
+
+Add architecture diagrams, timelines, decision trees, cost waterfalls,
+risk matrices, requirement traceability matrices, interface diagrams,
+supply-chain maps, thermal-flow diagrams, deployment diagrams.
+
+### PR-4: Every table must answer a question.
+
+Tables are not data dumps. Each table has a title that is a question:
+"Why was this component selected?" not "Component table."
+
+### PR-5: Create a one-page executive summary.
+
+Must include: Decision, Cost, Risks, Next expenditure, Recommendation.
+
+### PR-6: Introduce visual hierarchy.
+
+Consistent typography, spacing, callout boxes, section dividers, icons,
+diagrams, footnotes, references, colour standards.
+Avoid: monospaced text, dense paragraphs, repetitive tables, empty
+space, excessively large margins.
+
+### PR-7: Use evidence cards.
+
+Instead of "PASS (3.8× margin)" use a structured card:
+Requirement, Prediction, Method, Validation, Risk.
+
+### PR-8: Add a risk dashboard.
+
+A table with Risk, Severity, Probability, Status — visible on the
+executive summary page, not buried on page 18.
+
+### PR-9: Add a deployment roadmap.
+
+Stage 1 → Stage 2 → ... → Stage N, with what each stage costs and
+what decision it unlocks.
+
+### PR-10: Every figure must be publication quality.
+
+The PDF should resemble a SpaceX technical report, an Apple design
+review, a McKinsey board presentation, a WHO engineering document.
+It should never resemble a console log exported into a PDF.
+
+### PR-11: The package must survive printing.
+
+Assume the document will be: printed in black and white, read on a
+mobile phone, read by an engineer, read by an investor, read by a
+regulator. It must remain understandable in all cases.
+
+### PR-12: The final page must answer one question.
+
+"Should we spend the next dollar?"
+YES/NO. Spend: $X. Reason: [one sentence]. Risk: [one sentence].
+Decision unlocked: [one sentence].
