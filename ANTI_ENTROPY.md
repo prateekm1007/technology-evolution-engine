@@ -31,6 +31,42 @@ reduction, it is itself entropy.
 
 ---
 
+## The pay-bar anti-entropy principle (market feedback, 2026-08-03)
+
+> A customer pays for an engineering design package when the document
+> removes the next expensive risk, not when it narrates a good idea.
+
+Entropy includes any of the following deal-breakers. If ANY is true,
+the package does not meet the pay bar and the customer will not pay
+for hardware design:
+
+1. **Mass/energy/cost internally inconsistent** — the numbers don't
+   reconcile. This is the most fundamental entropy: arithmetic that
+   doesn't close.
+2. **A retracted claim reappears without new evidence** — entropy in
+   the epistemic record. A retracted claim (e.g. "2C fast charge")
+   that resurfaces without new test data is a lie wearing old clothes.
+3. **Serviceability is MANDATORY while architecture is non-serviceable
+   CTP** — entropy in the requirements. Two MANDATORY requirements
+   that directly contradict block the package (Law 2 of MASTER_PROTOCOL).
+4. **"Simulation" means narrative scenarios with no equations/method**
+   — entropy in the thermal truth (Law 5). "We believe it will be fine"
+   is not thermal truth. Equations, models, or measurements — nothing
+   else.
+5. **Cost is catalog fiction with no quote trail** — entropy in the
+   cost truth (Law 6). A catalog price with no date, no supplier, no
+   quotation document is a guess wearing a price tag.
+6. **Package claims PRODUCTION / complete blueprint without physical
+   validation** — entropy in the product identity (Law 1). A package
+   with no prototype cannot claim PRODUCTION. A package with no
+   physical validation cannot claim VALIDATED DESIGN.
+
+These six are the deal-breakers the customer named. They are now
+anti-entropy rules. A package that violates any of them is rejected
+before it reaches the customer.
+
+---
+
 ## Session-hardened principles (distilled from actual failures)
 
 These rules are NOT abstract best practices. Each one was produced

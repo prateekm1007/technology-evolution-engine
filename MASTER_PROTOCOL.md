@@ -203,6 +203,79 @@ package does not end at a verdict. It ends at a decision.
 
 ---
 
+## The pay bar (market feedback, 2026-08-03)
+
+> If I committed the next $25k–$100k (quotes, CFD, fixture, or prototype
+> cells), this package would tell me exactly what to build, what to
+> measure, what would kill the design, and what the residual risks are —
+> with every critical number either measured, quoted, or explicitly
+> marked as blocking.
+
+A customer pays for an engineering design package when the document
+**removes the next expensive risk**, not when it narrates a good idea.
+The 12 criteria below define the minimum excellence bar. All 12 are
+required. Miss any of criteria 2, 5, 6, 7, or 10 → the customer does
+not pay for hardware design (at most a small fee for process/template).
+
+### The 12 excellence criteria (all required)
+
+| # | Criterion | What "excellent" looks like |
+|---|-----------|------------------------------|
+| 1 | **Identity** | Labeled DETAILED DESIGN / pre-prototype, not "concept" or "complete blueprint" |
+| 2 | **Arithmetic closure** | Energy, mass, voltage, $/kWh, C-rate one coherent set; mass stack-up sums to stated pack mass |
+| 3 | **Epistemic honesty** | Every critical claim has level (L1–L4 or equivalent); no silent upgrades |
+| 4 | **Retraction discipline** | Failed claims in a registry with replacement specs |
+| 5 | **Thermal truth** | Charge/discharge envelope backed by model + method (1D network minimum; CFD preferred) or cell/fixture data |
+| 6 | **Quoted cost** | Cell + cold plate + contactors + major HV parts: dated supplier quotes (or 3-bid range); labor not a pure guess |
+| 7 | **Interfaces** | ICD: mechanical, HV, LV, coolant, CAN/BMS signals, mounting loads |
+| 8 | **Safety path** | Abuse/propagation/IP/transport mapped to named tests and pass/fail limits |
+| 9 | **Manufacturing path** | Sequence, critical processes (e.g. laser weld), QC gates, yield drivers — not only "≤8 h" |
+| 10 | **Kill tests** | 5–10 tests that can fail the package; each with metric, method, and consequence |
+| 11 | **IP posture** | Not full FTO opinion, but high-risk claim families + "do not ship without counsel" list |
+| 12 | **Next-spend plan** | Ordered budget: what $X buys next and what decision it unlocks |
+
+**Pass rule:** Meet all 12 at least at "good." Miss any of 2, 5, 6, 7, 10 → no hardware-design payment.
+
+### Non-negotiables (deal breakers)
+
+The customer will NOT pay for hardware design if ANY of these are true:
+
+1. Mass/energy/cost still internally inconsistent
+2. A retracted claim (e.g. 2C) reappears without new evidence
+3. Serviceability is MANDATORY while architecture is non-serviceable CTP
+4. "Simulation" means narrative scenarios with no equations/method
+5. Cost is catalog fiction with no quote trail
+6. Package claims PRODUCTION / complete blueprint without physical validation
+
+### The 5-phase roadmap (concept → paying package)
+
+| Phase | Goal | Duration | Exit criterion |
+|-------|------|----------|----------------|
+| 0 | Freeze the product identity | 3–5 days | Single requirements table everyone uses |
+| 1 | Close the numbers (mass, energy, cost) | 1–2 weeks | No internal arithmetic contradictions; cost has ≤1 ESTIMATE |
+| 2 | Thermal & electrical integrity | 2–4 weeks | Kill-test KT-thermal can be run by a third party from the description alone |
+| 3 | Interfaces, safety, manufacturing | 2–3 weeks | Another engineer can see how it mounts, cools, communicates, gets certified |
+| 4 | Kill-test suite & validation plan | 1–2 weeks | "Next $X" buys KT-01/02 or RFQ closure — explicit |
+| 5 | Package hardening | 1 week | Meets the 12-criterion bar → customer would pay at detailed-design rate |
+
+### What the customer pays at each stage
+
+| Stage | Product | Pays? |
+|-------|---------|-------|
+| Now (EVALUATION concept) | Protocol exemplar | Small fee or free (method demo) |
+| After Phase 1–2 | Numbers-closed concept + thermal model | Modest professional fee |
+| After Phase 3–4 | Pre-prototype design package | **Yes — hardware design package rate** |
+| After prototype + test data | Validated design | Higher (data-backed) |
+| Full CAD + certified path | OEM-style program | Program pricing, not a PDF SKU |
+
+### The highest-ROI stretch
+
+Phase 1 (mass + quotes) + Phase 2 (thermal envelope) — that pair moves
+the package from "impressive process" to "something an engineer would
+buy before spending on hardware."
+
+---
+
 ## The package structure (12 sections + Next Money Page)
 
 Every package MUST contain all sections, in order. A section that

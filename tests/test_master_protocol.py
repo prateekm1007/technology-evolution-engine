@@ -500,3 +500,104 @@ class TestCommercialSpecification:
         content = (ROOT / "ANTI_ENTROPY.md").read_text()
         assert "supreme anti-entropy principle" in content.lower()
         assert "next expensive risk" in content.lower()
+
+
+class TestPayBar:
+    """Verify MASTER_PROTOCOL.md contains the 12-criterion pay bar.
+
+    Per market feedback (2026-08-03): 'I pay for an engineering design
+    package for hardware when the document removes the next expensive
+    risk, not when it narrates a good idea.'
+    """
+
+    def test_pay_bar_defined(self):
+        content = (ROOT / "MASTER_PROTOCOL.md").read_text()
+        assert "pay bar" in content.lower(), (
+            "MASTER_PROTOCOL.md does not define the pay bar."
+        )
+
+    def test_pay_bar_one_sentence(self):
+        """The one-sentence bar must be present."""
+        content = (ROOT / "MASTER_PROTOCOL.md").read_text()
+        assert "$25k" in content or "$25,000" in content
+        assert "next expensive risk" in content.lower()
+
+    def test_12_excellence_criteria(self):
+        """All 12 excellence criteria must be listed."""
+        content = (ROOT / "MASTER_PROTOCOL.md").read_text()
+        for criterion in ["Identity", "Arithmetic closure", "Epistemic honesty",
+                          "Retraction discipline", "Thermal truth", "Quoted cost",
+                          "Interfaces", "Safety path", "Manufacturing path",
+                          "Kill tests", "IP posture", "Next-spend plan"]:
+            assert criterion in content, f"Pay bar missing criterion: {criterion}"
+
+    def test_pass_rule_stated(self):
+        """The pass rule must be stated (miss 2,5,6,7,10 → no pay)."""
+        content = (ROOT / "MASTER_PROTOCOL.md").read_text()
+        assert "Pass rule" in content or "pass rule" in content.lower()
+        # Must mention the 5 deal-breaking criteria numbers
+        for num in ["2", "5", "6", "7", "10"]:
+            assert num in content
+
+    def test_6_non_negotiables(self):
+        """All 6 deal-breakers must be listed."""
+        content = (ROOT / "MASTER_PROTOCOL.md").read_text()
+        assert "Non-negotiable" in content or "non-negotiable" in content.lower()
+        for dealbreaker in ["internally inconsistent", "retracted claim",
+                            "MANDATORY", "narrative", "catalog fiction",
+                            "PRODUCTION"]:
+            assert dealbreaker in content, (
+                f"Non-negotiables missing: {dealbreaker}"
+            )
+
+    def test_5_phase_roadmap(self):
+        """All 5 phases of the roadmap must be present."""
+        content = (ROOT / "MASTER_PROTOCOL.md").read_text()
+        # The roadmap table uses "Phase 0" through "Phase 5" in the
+        # narrative, and "| 0 |" through "| 5 |" in the table. Check both.
+        for phase_num in ["0", "1", "2", "3", "4", "5"]:
+            assert f"Phase {phase_num}" in content or f"| {phase_num} |" in content, (
+                f"Roadmap missing phase: {phase_num}"
+            )
+        # Exit criteria
+        assert "Freeze the product identity" in content
+        assert "Close the numbers" in content
+        assert "Thermal" in content and "electrical" in content.lower()
+        assert "Interfaces" in content and "safety" in content.lower()
+        assert "Kill-test suite" in content or "Kill-test" in content
+        assert "Package hardening" in content
+
+    def test_pays_at_each_stage(self):
+        """The stage-to-payment table must be present."""
+        content = (ROOT / "MASTER_PROTOCOL.md").read_text()
+        assert "hardware design package rate" in content.lower()
+        assert "EVALUATION concept" in content or "concept" in content
+        assert "Pre-prototype" in content or "pre-prototype" in content.lower()
+
+    def test_highest_roi_stretch(self):
+        """The highest-ROI stretch (Phase 1 + 2) must be stated."""
+        content = (ROOT / "MASTER_PROTOCOL.md").read_text()
+        assert "highest-ROI" in content or "highest ROI" in content
+        assert "Phase 1" in content and "Phase 2" in content
+
+
+class TestPayBarAntiEntropy:
+    """Verify ANTI_ENTROPY.md contains the 6 deal-breakers."""
+
+    def test_pay_bar_anti_entropy_principle(self):
+        content = (ROOT / "ANTI_ENTROPY.md").read_text()
+        assert "pay-bar anti-entropy principle" in content.lower()
+
+    def test_6_deal_breakers_listed(self):
+        content = (ROOT / "ANTI_ENTROPY.md").read_text()
+        for item in ["internally inconsistent", "retracted claim",
+                     "MANDATORY", "narrative", "catalog fiction",
+                     "PRODUCTION"]:
+            assert item in content, (
+                f"ANTI_ENTROPY.md missing deal-breaker: {item}"
+            )
+
+    def test_deal_breakers_reject_package(self):
+        content = (ROOT / "ANTI_ENTROPY.md").read_text()
+        assert "rejected" in content.lower() or "does not meet" in content.lower()
+        assert "deal-breaker" in content.lower() or "deal breaker" in content.lower()
