@@ -193,11 +193,34 @@ class EdgeExtractor:
     ]
 
     # Direction patterns: INCREASES/DECREASES for Altshuller contradiction search
+    # Expanded cycle 48: more patterns to catch contradictions
     DIRECTION_PATTERNS = [
-        (r'(?:increases?|enhances?|improves?|boosts?|raises?|elevates?)\s+(\w+)', 'increases'),
-        (r'(?:decreases?|reduces?|lowers?|diminishes?|degrades?|drops?)\s+(\w+)', 'decreases'),
-        (r'(\w+)\s+(?:increases?|enhances?|improves?)', 'increases'),
-        (r'(\w+)\s+(?:decreases?|reduces?|lowers?)', 'decreases'),
+        # "increases/enhances/improves X"
+        (r'(?:increases?|enhances?|improves?|boosts?|raises?|elevates?|amplifies?|strengthens?)\s+(\w+)', 'increases'),
+        # "decreases/reduces/lowers X"
+        (r'(?:decreases?|reduces?|lowers?|diminishes?|degrades?|drops?|weakens?|suppresses?)\s+(\w+)', 'decreases'),
+        # "X increases/enhances" (target before verb)
+        (r'(\w+)\s+(?:increases?|enhances?|improves?|boosts?)', 'increases'),
+        # "X decreases/reduces" (target before verb)
+        (r'(\w+)\s+(?:decreases?|reduces?|lowers?|degrades?)', 'decreases'),
+        # "higher X leads to higher Y" → X increases Y
+        (r'higher\s+(\w+)\s+(?:leads? to|results? in|causes?)\s+higher\s+(\w+)', 'increases'),
+        # "higher X leads to lower Y" → X decreases Y
+        (r'higher\s+(\w+)\s+(?:leads? to|results? in|causes?)\s+lower\s+(\w+)', 'decreases'),
+        # "X is enhanced by Y" → Y increases X
+        (r'(\w+)\s+is\s+(?:enhanced|improved|increased)\s+by\s+(\w+)', 'increases'),
+        # "X is reduced by Y" → Y decreases X
+        (r'(\w+)\s+is\s+(?:reduced|degraded|decreased)\s+by\s+(\w+)', 'decreases'),
+        # "achieves higher X" → increases X
+        (r'achieves?\s+higher\s+(\w+)', 'increases'),
+        # "achieves lower X" → decreases X
+        (r'achieves?\s+lower\s+(\w+)', 'decreases'),
+        # "limits/constrains X" → decreases X
+        (r'(?:limits?|constrains?|restricts?|caps?)\s+(\w+)', 'decreases'),
+        # "enables/allows X" → increases X (enabling = positive direction)
+        (r'(?:enables?|allows?|permits?|facilitates?)\s+(?:higher\s+|increased\s+)?(\w+)', 'increases'),
+        # "prevents/blocks X" → decreases X
+        (r'(?:prevents?|blocks?|inhibits?|hinders?)\s+(\w+)', 'decreases'),
     ]
 
 

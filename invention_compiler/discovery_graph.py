@@ -779,10 +779,13 @@ class AltshullerContradictionSearch:
     def find_contradictions(graph: DiscoveryGraph) -> List[Contradiction]:
         """Find contradictions in the graph.
         
-        A contradiction exists when:
-          - Edge A→B says "increases"
-          - Edge A→C says "decreases"
-          - B and C are both desirable
+        Two types of contradictions (TRIZ):
+        Type 1 (same-source): Edge A→B "increases" AND Edge A→C "decreases"
+          — changing one parameter improves one thing but worsens another
+        Type 2 (cross-source): Edge A→C "increases" AND Edge B→C "decreases"
+          — two different materials have opposite effects on the same property
+          — this is a materials tradeoff: use A for improvement, but B (already
+            in the system) causes degradation
         """
         contradictions = []
         # Look for nodes with both "increases" and "decreases" outgoing edges
@@ -795,6 +798,10 @@ class AltshullerContradictionSearch:
                 # Check direction field first (populated by edge extractor)
                 if hasattr(edge, 'direction') and edge.direction:
                     direction = edge.direction
+                    # Liberal interpretation for contradiction detection:
+                    # causes/enables/produces = increases (A→B means increasing A increases B)
+                    if direction in ("causes", "enables", "produces"):
+                        direction = "increases"
                 # Also check metadata for "increases"/"decreases"
                 elif "increases" in str(edge.metadata).lower():
                     direction = "increases"
@@ -802,16 +809,39 @@ class AltshullerContradictionSearch:
                     direction = "decreases"
                 node_effects[edge.source][edge.target] = direction
         
+        # Type 1: Same-source contradictions (changing X improves Y but worsens Z)
         for source, effects in node_effects.items():
             increases = [t for t, d in effects.items() if d == "increases"]
             decreases = [t for t, d in effects.items() if d == "decreases"]
             for inc in increases:
                 for dec in decreases:
                     contradictions.append(Contradiction(
-                        contradiction_id=f"CONTR-{source}-{inc}-{dec}",
+                        contradiction_id=f"CONTR-T1-{source}-{inc}-{dec}",
                         improve=inc,
                         worsen=dec,
                         mechanism=f"Changing {source} improves {inc} but worsens {dec}",
+                        resolution=None,
+                    ))
+        
+        # Type 2: Cross-source contradictions (A increases C, B decreases C)
+        # Build reverse map: target → {source → direction}
+        target_effects = {}  # target → {source → direction}
+        for source, effects in node_effects.items():
+            for target, direction in effects.items():
+                if target not in target_effects:
+                    target_effects[target] = {}
+                target_effects[target][source] = direction
+        
+        for target, sources in target_effects.items():
+            increasers = [s for s, d in sources.items() if d == "increases"]
+            decreasers = [s for s, d in sources.items() if d == "decreases"]
+            for inc_src in increasers:
+                for dec_src in decreasers:
+                    contradictions.append(Contradiction(
+                        contradiction_id=f"CONTR-T2-{inc_src}-{dec_src}-{target}",
+                        improve=f"{target} (via {inc_src})",
+                        worsen=f"{target} (via {dec_src})",
+                        mechanism=f"{inc_src} increases {target} but {dec_src} decreases it — materials tradeoff",
                         resolution=None,
                     ))
         
