@@ -1326,3 +1326,335 @@ permits).
   ledger entry with `outcome: pass` or `outcome: fail` and an
   `external_observer` field naming the human or instrument that
   recorded the observation.
+
+---
+
+## Discovery-Discipline Rules (DR-1 through DR-6)
+
+Per CEO directive: "These review principles have to be added to create
+a first-class product and are not entropy-inducing." The external audit
+of 2026-08-04 (cycle 25) delivered a profound verdict: the system is a
+disciplined **theory-of-discovery machine**, not a **discovery machine**.
+The distinction matters — honesty about gaps is not the same as closing
+them. These 6 rules codify the auditor's mandate: **stop building more
+intelligence, start building more contact with reality.**
+
+These rules are constitutional — a package, module, or governance update
+that violates them is not ready to ship. They sit alongside the Laws
+(Level 1) and the Presentation Rules (Level 2) as the discovery-layer
+enforcement of the supreme law ("remove the next expensive risk").
+
+### DR-1: Never add capabilities upstream of unresolved bottlenecks.
+
+> "Never add capabilities upstream of unresolved bottlenecks." — External auditor
+
+A new module, engine, or capability SHALL NOT be added while any
+bottleneck it depends on is unresolved. The dependency chain must be
+traced: if a new module feeds from (or is fed by) an unresolved
+bottleneck, the new module is entropy — it expands the surface area of
+the failure.
+
+**The current bottleneck hierarchy (auditor's framework):**
+1. Simulation layer perturbs scores, not mechanisms (F-048) — blocks Layers 6, 7, 8, 9
+2. Patent parser identifies words, not mechanisms (F-049) — blocks Layer 7
+3. Predictions are retrospective, not prospective (F-050) — caps Layer 8 at 1/10
+4. Experimentation never executed (F-046) — blocks Layers 5, 6, 7, 8, 9
+
+Until these 4 bottlenecks are closed, no new capability may be added
+upstream. The only permitted work is closing the bottlenecks themselves.
+
+**Enforcement:**
+- The `remember_governance.py` pre-commit check SHALL be extended to
+  block any commit that adds a new module to `invention_compiler/`,
+  `experimentation_layer/`, or `product/` while any of F-046, F-048,
+  F-049, F-050 is OPEN.
+- A freeze exception requires CEO-level sign-off recorded in the
+  commit message with the `freeze-exception:` prefix AND an AP-11 test
+  (does the new capability eliminate more entropy than the bottleneck
+  it distracts from?).
+
+### DR-2: Never add modules when data quality is poor.
+
+> "Never add modules when data quality is poor." — External auditor
+
+A new module SHALL NOT be added while the data it would consume is
+fabricated, templated, or self-graded. The pattern (closed by F-043,
+F-044, F-047) is: fabricated inputs upstream → polished modules
+downstream → entropy. The fix is always the same: fix the inputs
+first, then build the module.
+
+**Current data quality state:**
+- Patent corpus: REAL (F-043 closed, 10 real USPTO patents)
+- Paper corpus: REAL (F-047 closed, 10 real arXiv papers)
+- Benchmark scores: INDEPENDENTLY VERIFIED (F-044 closed)
+- Constraint tolerances: CORPUS-DERIVED (F-045 closed, 10/10)
+- Simulation layer: SCORE-PERTURBATION, NOT MECHANISM (F-048 OPEN)
+- Patent parser: WORD-LEVEL, NOT MECHANISM-LEVEL (F-049 OPEN)
+
+The simulation layer (F-048) and patent parser (F-049) are the
+remaining data-quality bottlenecks. No new module that consumes
+simulation outputs or patent-parse outputs may be added until those
+bottlenecks are closed.
+
+**Enforcement:**
+- A new module MUST declare its input dependencies in a module-level
+  docstring. If any dependency is an OPEN failure (F-046, F-048, F-049,
+  F-050), the module is blocked from merge.
+
+### DR-3: No benchmark may grade itself.
+
+> "No benchmark may grade itself." — External auditor
+
+This rule is already mechanically enforced by F-044 closure
+(`scripts/verify_benchmarks.py`). DR-3 codifies it as constitutional
+law so it cannot be regressed. A benchmark score computed by the
+generation path is forbidden from being the headline score. The
+headline score MUST come from an architecturally separate verifier
+that reads only raw inputs.
+
+**Enforcement:**
+- `scripts/verify_benchmarks.py` SHALL run as a required CI gate
+  before any `benchmark_run` entry is written to the ledger.
+- The `independent_score` field MUST be present in every ledger
+  benchmark entry. Any entry without it is rejected.
+
+### DR-4: No invention may be declared novel without prior-art search.
+
+> "No invention may be declared novel without prior-art search." — External auditor
+
+A novelty claim SHALL NOT be made without a documented prior-art search
+against the real patent/paper corpus. The search must:
+1. Query the corpus (now real per F-043 + F-047) for the invention's
+   key mechanism, not just its keyword surface.
+2. Return the top-N most-similar patents/papers with similarity scores.
+3. Document why the invention is NOT covered by any returned prior art.
+4. Cite the specific claims/abstracts that distinguish the invention.
+
+A novelty claim without this search is forbidden language (per the
+typed-status rule — no unsupported claims).
+
+**Current state:** the patent parser (F-049) is word-level, not
+mechanism-level. A true prior-art search requires mechanism-level
+parsing (identifying the actual physical/chemical/biological mechanism
+an invention uses, not just its component keywords). Until F-049 is
+closed, novelty claims are PROVISIONAL — they must carry a
+`prior_art_search: PROVISIONAL (parser is word-level, F-049 OPEN)`
+flag.
+
+**Enforcement:**
+- A package that claims novelty MUST include a `prior_art_search`
+  block in its Validation section.
+- The block MUST cite the search method, the corpus queried, the
+  top-N results, and the distinguishing claims.
+- If the parser is word-level (F-049 OPEN), the block MUST carry
+  the PROVISIONAL flag.
+
+### DR-5: No simulation may perturb a score. It must simulate a mechanism.
+
+> "No simulation may perturb a score. It must simulate a mechanism." — External auditor
+
+This is the auditor's "most important discovery of the entire audit."
+The current simulation layer (`simulation_module.py`) perturbs the
+feasibility score via Monte Carlo — it does NOT simulate a physical,
+chemical, biological, or economic mechanism. This is score-perturbation,
+not simulation.
+
+**The current (wrong) architecture:**
+```
+score → perturbation → distribution
+```
+
+**The required (right) architecture:**
+```
+physics / chemistry / biology / economics / manufacturing
+  → state variables → simulation → distribution
+```
+
+A simulation that perturbs a score is forbidden from being labeled
+"simulation" — it must be labeled "sensitivity probe" (which is what
+it actually is). The word "simulation" is reserved for mechanistic
+models that solve actual governing equations (thermodynamics, fluid
+dynamics, electrochemistry, reaction kinetics, FEA, agent-based,
+network dynamics).
+
+**Enforcement:**
+- `simulation_module.py` SHALL be renamed `sensitivity_probe_module.py`
+  to honestly describe what it does.
+- A new `mechanistic_simulation_module.py` SHALL be built (Phase III)
+  that implements actual physics/chemistry/biology/economics engines.
+- Until the mechanistic simulation exists, no package may claim
+  "simulation-validated" status — the claim is forbidden language.
+
+### DR-6: Reality is the only benchmark.
+
+> "Reality is the only benchmark." — External auditor
+
+No claim of correctness, validity, or discovery SHALL be made on the
+basis of internal consistency alone. Internal consistency is necessary
+but not sufficient. The sufficient condition is: a prediction made by
+the system was confirmed by an external observation recorded in the
+ledger with an `external_observer` field.
+
+This rule is already enforced by PR-26 (reality-cooperation
+acknowledgment) and Law 8 (verification standard). DR-6 codifies it
+as the supreme discovery-layer principle: **the system does not learn
+until reality has confirmed a prediction.** Everything else is theory.
+
+**Enforcement:**
+- The `closed_loops` count in the ledger is the only machine-readable
+  signal of "learning." A `closed_loops` count of 0 means the system
+  has not learned — regardless of how many predictions it has made.
+- A claim of "the system learns" MUST cite the specific ledger entries
+  that close the loop (per PR-23). A claim without a citation is
+  forbidden language.
+
+---
+
+## The 6-Phase Discovery Roadmap (Phase I through VI)
+
+Per the external audit of 2026-08-04 (cycle 25): the system must
+transform from a symbolic engine into an empirical engine, then into a
+discovery engine, then into a civilization-scale memory. This roadmap
+replaces the prior 5-phase roadmap (which was about finishing Era 1
+blueprint compilation) with the auditor's 10-year plan (which is about
+crossing from theory-of-discovery into actual discovery).
+
+The roadmap is strict: each phase has a "Do not build" list and a
+"Build only" list. The "Do not build" list is constitutional —
+violating it is entropy per DR-1.
+
+### Phase I (0–6 months) — Transform from symbolic to empirical
+
+**Objective:** Transform the system from a symbolic engine into an
+empirical engine.
+
+**Do NOT build:**
+- agents
+- interfaces
+- dashboards
+- new laws
+- new architectures
+
+**Build ONLY:**
+- real patent ingestion (mechanism-level, not keyword-level — closes F-049)
+- arXiv ingestion (already real per F-047; extend to mechanism-level)
+- PubMed ingestion (new)
+- Semantic Scholar ingestion (new)
+- independent scoring (already real per F-044; extend to all layers)
+- anomaly detection (new — flag predictions that disagree with corpus)
+
+**Exit criterion:** every input to the system is real, mechanism-level
+parsed, and independently scored. No fabricated data, no keyword-level
+parsing, no self-graded scores.
+
+### Phase II (6–18 months) — Replace priors with measurements
+
+**Objective:** Every object becomes a measurement, not a prior.
+
+**Required object schema:**
+```
+mean
+variance
+distribution
+confidence (typed, not numerical — per Law 27)
+provenance (source patent/paper/experiment URL + retrieval date)
+kill_test (the test that would falsify this measurement)
+```
+
+Nothing else is allowed. A prior-map value (even with `prior_map: true`
+flag) is forbidden in this phase — all objects must trace to a
+measurement, citation, or first-principles derivation.
+
+**Exit criterion:** the constraint module, the simulation module, and
+every other module that currently uses priors has been converted to
+measurement-derived values. The `prior_map: true` flag is dead code.
+
+### Phase III (18–30 months) — Replace score perturbation with mechanistic simulation
+
+**Objective:** Build the mechanistic simulation engines that F-048
+demands.
+
+**Required engines:**
+- thermodynamics (closes the thermal-model gap — already partially
+  built in `scripts/thermal_model_1d.py`)
+- fluid dynamics (new — for desalination, AWG, heat exchanger packages)
+- electrochemistry (new — for battery, electrolysis packages)
+- reaction kinetics (new — for chemistry packages)
+- finite-element methods (new — for structural, thermal packages)
+- agent-based models (new — for supply-chain, market packages)
+- network dynamics (new — for grid, communication packages)
+
+**Exit criterion:** every package's "simulation" section cites an
+actual mechanistic model (not a sensitivity probe). The
+`sensitivity_probe_module.py` is retained for sensitivity analysis
+but is no longer the headline "simulation."
+
+### Phase IV (30–48 months) — Construct a planetary-scale search engine
+
+**Objective:** Build the search engine that discovers combinations a
+human expert did not consider.
+
+**Required search methods:**
+- Monte Carlo tree search
+- Bayesian optimization
+- evolutionary algorithms
+- morphological analysis
+- symbolic regression
+- graph search
+
+**Exit criterion:** the system proposes at least 3 designs per query
+that a human expert confirms are non-obvious (the Layer 3 "Discovery"
+exit criterion from the original 5-era roadmap).
+
+### Phase V (48–72 months) — Construct the laboratory
+
+**Objective:** Close the experimentation loop (F-046) at scale.
+
+**Required for every invention:**
+```
+prediction → prototype → measurement → retraction → learning → revision
+```
+
+**Exit criterion:** at least 10 closed learning loops recorded in the
+ledger (per PR-23). The system has made 10 predictions, 10 external
+observations confirmed/denied them, 10 module revisions occurred, and
+10 second-predictions were measurably closer. The `closed_loops` count
+is ≥ 10.
+
+### Phase VI (72–120 months) — Create a civilization-scale memory system
+
+**Objective:** Every experiment, failure, contradiction, and retraction
+becomes part of the graph — permanently.
+
+**Required:**
+- Every experiment enters the graph as a node with provenance.
+- Every failure enters the graph as a cemetery node with lesson.
+- Every contradiction enters the graph as an edge between conflicting
+  claims.
+- Every retraction enters the graph as a retraction edge (already
+  enforced by Law 7 + P7 registry).
+
+**Exit criterion:** the graph is the canonical memory of the system's
+entire discovery history. A new query can traverse every past
+experiment, failure, and retraction to inform the next prediction.
+The system has a "track record" — not just a ledger, but a graph of
+what it has learned from reality.
+
+---
+
+## The supreme discovery principle
+
+> Stop building more intelligence, and start building more contact
+> with reality. — External auditor, cycle 25
+
+This is the shortest path from 6/10 to 9/10. Every rule, every phase,
+and every failure record in this section exists to enforce this
+principle. The system's current scores (Layer 8: Discovery = 1/10;
+Layer 5: Experimentation = 2/10; Layer 9: Learning = 3/10) are the
+scores of a theory-of-discovery machine. The only way to raise them
+is reality contact — predictions confirmed by external observation,
+experiments that change the graph, failures that become training data.
+
+The governance is now sufficient. The code is now sufficiently honest.
+The remaining work is not more governance, not more code, not more
+intelligence. The remaining work is contact with reality.

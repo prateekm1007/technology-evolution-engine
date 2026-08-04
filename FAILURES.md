@@ -1179,3 +1179,273 @@ The fabricated files are preserved in git history (per Law 7 — historical perm
 
 **Lesson:** Same lesson as F-043. Synthetic data is forbidden for any capability claim (PR-20). A new data file with structured IDs MUST pass a sequence-detection test. The pattern established by F-043 closure (fetch real documents via web-search + web-reader, verify URLs return HTTP 200, verify IDs don't form arithmetic sequences) applies identically to papers. The remediation script (`scripts/fetch_real_papers.py`) follows the same structure as `scripts/fetch_real_patents.py` — search arXiv via web-search, fetch each paper via web-reader, capture ACTUAL metadata from the fetched page, delete fabricated files, verify PR-20 + PR-19.
 
+
+---
+
+### F-048 — Simulation layer perturbs scores, not mechanisms (P1, audit — "most important discovery of the entire audit")
+
+**Found:** external audit dated 2026-08-04 (cycle 25).
+**Repro:**
+```bash
+cd /home/z/my-project/audit/repo
+head -30 invention_compiler/simulation_module.py
+# The module's own docstring admits:
+# "The Monte Carlo is a sensitivity probe on the feasibility score,
+#  not a physics simulation."
+
+grep -n "Monte Carlo\|sensitivity\|perturbation\|score" invention_compiler/simulation_module.py | head -10
+# Output: multiple references to perturbing the feasibility score,
+# zero references to physics/chemistry/biology/economics governing equations.
+```
+
+**Observed:** The simulation layer (`simulation_module.py`) does NOT
+simulate reality. It perturbs the feasibility score via Monte Carlo.
+The module's own status entry explicitly says this is "not a physics
+simulation." This is the auditor's "most important discovery of the
+entire audit."
+
+**The current (wrong) architecture:**
+```
+score → perturbation → distribution
+```
+
+**The required (right) architecture:**
+```
+physics / chemistry / biology / economics / manufacturing
+  → state variables → simulation → distribution
+```
+
+These are completely different things. A score-perturbation produces
+a distribution of scores. A mechanistic simulation produces a
+distribution of physical/chemical/biological states. The former is a
+sensitivity analysis; the latter is a simulation. The system currently
+does the former but labels it the latter.
+
+**Root cause:** When the simulation module was built, no actual
+physics/chemistry/biology engines existed. The Monte Carlo was a
+placeholder — a way to produce a distribution without doing the hard
+work of solving governing equations. The placeholder was never replaced
+because the hard work (Phase III of the discovery roadmap) was never
+done.
+
+**Severity:** P1 — blocks Layers 6 (Search), 7 (Invention), 8 (Discovery),
+9 (Learning). The simulation layer is the bottleneck for everything
+above it. A system that perturbs scores cannot discover anything — it
+can only re-shuffle its own priors.
+
+**Status:** OPEN. Definition of done per DR-5:
+1. `simulation_module.py` is renamed `sensitivity_probe_module.py` to
+   honestly describe what it does.
+2. A new `mechanistic_simulation_module.py` is built that implements
+   actual physics/chemistry/biology/economics engines (thermodynamics,
+   fluid dynamics, electrochemistry, reaction kinetics, FEA, agent-based,
+   network dynamics).
+3. Every package's "simulation" section cites an actual mechanistic
+   model, not a sensitivity probe.
+4. The "simulation-validated" claim is forbidden language until the
+   mechanistic simulation exists.
+
+This is Phase III of the discovery roadmap (18–30 months). It is the
+largest single piece of engineering work in the roadmap.
+
+**Downstream claims blocked:** 4 layers (6, 7, 8, 9) — the simulation
+layer is the bottleneck for Search, Invention, Discovery, and Learning.
+
+**Lesson:** A simulation that perturbs a score is not a simulation
+(DR-5). It is a sensitivity probe. The word "simulation" is reserved
+for mechanistic models that solve actual governing equations. The
+current module's honesty (it admits it is "not a physics simulation")
+is commendable; the dishonesty is in how downstream packages label
+its outputs. The fix is to rename the module, build the real
+simulation, and forbid the "simulation-validated" claim until the
+real simulation exists.
+
+### F-049 — Patent parser identifies words, not mechanisms (P1, audit)
+
+**Found:** external audit dated 2026-08-04 (cycle 25).
+**Repro:**
+```bash
+cd /home/z/my-project/audit/repo
+grep -n "COMPONENT_KEYWORDS\|trigger\|regex\|keyword" product/ingestion/patent_parser.py | head -10
+# Output: multiple references to keyword matching, trigger phrases,
+# regex patterns. Zero references to mechanism identification.
+
+grep -n "confidence" product/ingestion/patent_parser.py | head -5
+# Output: heuristic confidence estimates based on keyword match count.
+```
+
+**Observed:** The patent parser (`product/ingestion/patent_parser.py`)
+is still dominated by:
+- regular expressions
+- trigger phrases ("comprising", "coupled to")
+- keyword extraction (COMPONENT_KEYWORDS fallback list)
+- heuristic confidence estimates (based on keyword match count, not
+  mechanism understanding)
+
+This is acceptable for ingestion (identifying what a patent is about).
+It is completely unacceptable for invention (identifying what a patent
+DOES — the physical/chemical/biological mechanism it implements).
+
+**The distinction:** You are not trying to identify words. You are
+trying to identify mechanisms. A parser that extracts "comprising"
+and "coupled to" is not parsing; it is keyword matching. True parsing
+identifies the mechanism: "evaporative cooling via porous membrane"
+not just "membrane + cooling"; "electrochemical Li+ intercalation in
+garnet electrolyte" not just "battery + electrolyte".
+
+**Root cause:** When the parser was built, no NLP/semantic-extraction
+capability existed. The regex/keyword approach was a placeholder — a
+way to extract structured data from unstructured patent text without
+doing the hard work of mechanism-level understanding. The placeholder
+was never replaced (F-001, the original brittleness finding, has been
+OPEN since the first audit and is now PARTIALLY RESOLVED but still
+word-level).
+
+**Severity:** P1 — blocks Layer 7 (Invention). A system that cannot
+identify mechanisms cannot invent — it can only recombine keywords.
+Novelty claims based on keyword-level parsing are PROVISIONAL (per DR-4).
+
+**Status:** OPEN. Definition of done per DR-4:
+1. The parser identifies the physical/chemical/biological mechanism
+   an invention uses, not just its component keywords.
+2. Mechanism identification is validated against a held-out test set
+   of patents with known mechanisms.
+3. Novelty claims cite the mechanism-level prior-art search, not just
+   keyword-level matching.
+4. The `prior_art_search: PROVISIONAL` flag is removed once the
+   parser is mechanism-level.
+
+This is Phase I of the discovery roadmap (0–6 months). It is the
+first bottleneck to close because it unblocks DR-4 (novelty claims
+require mechanism-level prior-art search).
+
+**Downstream claims blocked:** 1 layer (7 — Invention) directly, but
+cascades to Layer 8 (Discovery) because discovery requires invention.
+
+**Lesson:** A parser that identifies words is not a parser (DR-4, F-049).
+It is a keyword matcher. True parsing identifies mechanisms. The
+current parser's honesty (F-001 admits it is brittle) is commendable;
+the dishonesty is in how downstream novelty claims rely on it. The
+fix is to build mechanism-level parsing (Phase I) and flag all
+novelty claims as PROVISIONAL until it exists.
+
+### F-050 — Most predictions are retrospective, not prospective (P1, audit)
+
+**Found:** external audit dated 2026-08-04 (cycle 25).
+**Repro:**
+```bash
+cd /home/z/my-project/audit/repo
+# Count predictions by type
+python3 -c "
+import json
+retrospective = 0
+prospective = 0
+experimental = 0
+with open('data/ledger/predictions.jsonl') as f:
+    for line in f:
+        d = json.loads(line)
+        t = d.get('type', '')
+        if t == 'verification':
+            # verification entries are retrospective (historical reconstruction)
+            retrospective += 1
+        elif t == 'oracle_prediction':
+            # oracle predictions are prospective but unverified
+            prospective += 1
+        elif t == 'benchmark_run':
+            retrospective += 1  # benchmarks are retrospective
+        elif t in ('experiment_result', 'closed_loop'):
+            experimental += 1
+print(f'Retrospective (historical reconstruction): {retrospective}')
+print(f'Prospective (unverified forecasts): {prospective}')
+print(f'Experimental (closed-loop verified): {experimental}')
+"
+# Output (approximate):
+# Retrospective (historical reconstruction): ~370
+# Prospective (unverified forecasts): ~7
+# Experimental (closed-loop verified): 0
+```
+
+**Observed:** The ledger is much healthier than before (F-044 closed),
+but most predictions are retrospective. The system predicts what
+already happened (Airships, Iridium resurrection) — historical
+reconstruction, not discovery. Very few predictions are prospective
+(unverified forecasts), and ZERO are experimental (closed-loop verified
+by external observation).
+
+**The distinction:**
+- **Retrospective** (reconstruction): the system predicts what already
+  happened. Valuable (validates the prediction machinery) but not
+  discovery.
+- **Prospective** (forecast): the system predicts what WILL happen.
+  Valuable (the precondition for discovery) but not yet discovery.
+- **Experimental** (closed-loop): the system predicts, reality
+  confirms/denies, the system learns. THIS is discovery.
+
+The system currently does the first (well), does the second (poorly),
+and does not do the third at all (F-046 OPEN).
+
+**Root cause:** Historical reconstruction is easy — the answer is
+already known, so the system can be tuned to produce it. Prospective
+prediction is hard — the answer is unknown, so the system might be
+wrong. Experimental verification is hardest — it requires a human to
+run an experiment and report the result (per PR-26). The system has
+avoided the hard work because the easy work produced impressive-looking
+ledger entries.
+
+**Severity:** P1 — caps Layer 8 (Discovery) at 1/10. A system that
+only predicts the past cannot discover the future. The `closed_loops`
+count is 0 — the system has not learned anything from reality.
+
+**Status:** OPEN. Definition of done per DR-6:
+1. The ledger contains at least 10 prospective predictions (forecasts
+   with timestamp T1, awaiting external observation at T2 > T1).
+2. At least 1 of those prospective predictions has been confirmed or
+   denied by an external observation (closed loop per PR-23).
+3. The `closed_loops` count in the ledger is ≥ 1 (currently 0).
+4. The system has revised at least 1 module based on a disagreement
+   between prediction and observation (the `learn` step of PR-23).
+
+This depends on F-046 (experimentation scoping is complete; execution
+requires reality cooperation). The first closed loop is EXP-001
+(pH prediction, $20, kitchen-accessible). Once a human runs EXP-001
+and reports the pH, F-050 can move from OPEN to PARTIALLY RESOLVED.
+
+**Downstream claims blocked:** 1 layer (8 — Discovery) directly, but
+cascades to Layer 9 (Learning) because learning requires closed loops.
+
+**Lesson:** A prediction that predicts the past is not discovery
+(DR-6, F-050). It is reconstruction. Discovery requires prospective
+prediction confirmed by external observation. The system's current
+ledger is honest about what it contains (mostly retrospective), but
+the honesty must extend to claims: the system has not discovered
+anything until `closed_loops ≥ 1`. The fix is reality contact —
+execute EXP-001, record the observation, close the loop.
+
+---
+
+## Updated failure prioritization (per PR-25 — single-highest-leverage-fix rule, post-cycle 25)
+
+As of 2026-08-04 (post-cycle 25), the failures ranked by `downstream_claims_blocked`:
+
+| Failure | Severity | Layers blocked | Status | Priority |
+|---|---|---|---|---|
+| F-048 (simulation perturbs scores) | P1 | 4 (6, 7, 8, 9) | **OPEN** (cycle 25) | **1 — highest leverage** (auditor's "most important discovery") |
+| F-049 (parser identifies words, not mechanisms) | P1 | 1 (7) but cascades to 8 | **OPEN** (cycle 25) | 2 — unblocks DR-4 (novelty claims) |
+| F-050 (predictions retrospective, not prospective) | P1 | 1 (8) but cascades to 9 | **OPEN** (cycle 25) | 3 — unblocks discovery + learning |
+| F-046 (experimentation never executed) | P1 | 5 (5, 6, 7, 8, 9) | **PARTIALLY RESOLVED** (scoping complete, cycle 23) | 4 — execution requires reality (PR-26) |
+| F-043 (fabricated patents) | P1 | 4 (1, 2, 7, 8) | **RESOLVED** (cycle 22) | closed |
+| F-044 (self-graded benchmark) | P1 | 1 (3) | **RESOLVED** (cycle 22) | closed |
+| F-045 (prior-map tolerances) | P2 | 1 (4) | **RESOLVED** (cycle 24, 10/10) | closed |
+| F-047 (fabricated papers) | P2 | 4 (1, 2, 7, 8) | **RESOLVED** (cycle 22) | closed |
+
+**Current state:** F-043, F-044, F-045, F-047 fully RESOLVED. F-046 PARTIALLY RESOLVED (scoping complete; execution requires reality). F-048, F-049, F-050 are NEW (cycle 25) — the auditor's discovery-layer findings.
+
+**The next sprint per PR-25:** F-048 is the single highest-leverage fix (auditor's "most important discovery of the entire audit"). However, F-048 is Phase III work (18–30 months) — it requires building mechanistic simulation engines. The highest-leverage *code-able* work is F-049 (Phase I, 0–6 months — build mechanism-level parsing). The highest-leverage *total* work is F-046 execution (reality cooperation, $20, 1 day).
+
+**The supreme discovery principle (per the auditor):**
+> Stop building more intelligence, and start building more contact with reality.
+
+The shortest path from 6/10 to 9/10 is not more code. It is a human
+mixing citric acid and baking soda, measuring the pH, and reporting
+the reading. That closes F-046, F-050, and the first closed learning
+loop (PR-23) — all in one $20 experiment.

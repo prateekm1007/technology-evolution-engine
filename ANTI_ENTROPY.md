@@ -1066,3 +1066,111 @@ Presentation Rules + 4 new failure records. The entropy eliminated:
 - Capability-overclaim that violates Law 1 (PR-26)
 
 Net entropy reduction: positive. Rules approved.
+
+---
+
+## Discovery vs theory-of-discovery (added post-Phase-15 external audit, 2026-08-04, cycle 25)
+
+Per CEO directive: "These review principles have to be added to create
+a first-class product and are not entropy-inducing." The external audit
+of cycle 25 delivered a profound distinction that this section codifies:
+
+> You have built a remarkably disciplined **theory-of-discovery
+> machine**. You have not yet built a **discovery machine**.
+
+That distinction matters. Honesty about gaps is not the same as closing
+them. Independent verification is not the same as external validation.
+A clean ledger is not the same as a learned lesson. The system's current
+scores (Layer 8: Discovery = 1/10; Layer 5: Experimentation = 2/10;
+Layer 9: Learning = 3/10) are the scores of a theory-of-discovery
+machine. The only way to raise them is reality contact.
+
+### Anti-entropy rule: reality contact gates discovery claims
+
+A discovery claim (Layer 8) is forbidden from being made on the basis
+of internal consistency alone. The claim MUST trace to:
+1. A prediction made by the system (with timestamp T1).
+2. An external observation recorded in the ledger (with timestamp T2 > T1).
+3. The observation confirmed or denied the prediction.
+4. The system revised a module based on the disagreement.
+5. A second prediction (T3 > T2) was measurably closer.
+
+Without all 5 steps (per PR-23), the system has not discovered
+anything — it has theorized. Theory is valuable, but it is not
+discovery. The distinction must be honored in every claim.
+
+### Anti-entropy rule: simulation must be mechanistic, not score-perturbation
+
+The auditor's "most important discovery of the entire audit": the
+simulation layer perturbs scores, not mechanisms. This is entropy in
+the same sense as fabricated data — it produces outputs that look like
+simulation results but are not grounded in physics/chemistry/biology.
+A score-perturbation that calls itself "simulation" is forbidden
+language (per DR-5).
+
+The current `simulation_module.py` is a sensitivity probe, not a
+simulation. It must be honestly labeled as such until the mechanistic
+simulation engines are built (Phase III). Until then, no package may
+claim "simulation-validated" status.
+
+### Anti-entropy rule: parsing must identify mechanisms, not words
+
+The patent parser (F-049) identifies words via regular expressions and
+trigger phrases. This is acceptable for ingestion but completely
+unacceptable for invention. You are not trying to identify words —
+you are trying to identify mechanisms. A parser that extracts
+"comprising" and "coupled to" is not parsing; it is keyword matching.
+True parsing identifies the physical/chemical/biological mechanism an
+invention uses (e.g., "evaporative cooling via porous membrane" not
+just "membrane + cooling").
+
+Until F-049 is closed, novelty claims are PROVISIONAL (per DR-4).
+The parser's word-level limitation must be flagged in every package
+that relies on it.
+
+### Anti-entropy rule: predictions must be prospective, not just retrospective
+
+The ledger contains mostly retrospective predictions — the system
+predicts what already happened (Airships, Iridium resurrection). This
+is historical reconstruction, not discovery. A discovery engine makes
+prospective predictions: it predicts what WILL happen, then waits for
+reality to confirm or deny.
+
+Until the ledger contains prospective predictions that have been
+confirmed by external observation (per PR-23), the system is doing
+historical reconstruction. This is valuable (it validates the
+prediction machinery) but it is not discovery. The distinction must
+be honored: retrospective predictions are labeled "reconstruction";
+prospective predictions are labeled "forecast."
+
+### AP-11 test for these rules
+
+Per AP-11 (bureaucracy prevention), each new rule must eliminate more
+entropy than the complexity of having one more rule. The CEO has
+confirmed these rules pass the test. The complexity cost: 6 new
+Discovery-Discipline Rules (DR-1 through DR-6) + 6-phase Discovery
+Roadmap + 3 new failure records (F-048, F-049, F-050). The entropy
+eliminated:
+- Score-perturbation disguised as simulation (DR-5, F-048) — the
+  auditor's "most important discovery"
+- Word-level parsing disguised as mechanism understanding (DR-4, F-049)
+- Retrospective predictions disguised as discovery (DR-6, F-050)
+- Capabilities added upstream of unresolved bottlenecks (DR-1)
+- Modules added when data quality is poor (DR-2)
+- Novelty claims without prior-art search (DR-4)
+
+Net entropy reduction: positive. Rules approved.
+
+### The supreme anti-entropy principle
+
+> Stop building more intelligence, and start building more contact
+> with reality. — External auditor, cycle 25
+
+Every other anti-entropy rule in this file exists to serve this
+principle. The system's 24 consecutive clean cycles, 638 tests, 50
+constitutional rules, and 6 defense-in-depth layers are the
+machinery of a theory-of-discovery machine. The machinery is now
+honest. The remaining work is not more machinery — it is reality
+contact. The shortest path from 6/10 to 9/10 is not more code; it is
+a human mixing citric acid and baking soda, measuring the pH, and
+reporting the reading (EXP-001, $20, 1 day, kitchen-accessible).
