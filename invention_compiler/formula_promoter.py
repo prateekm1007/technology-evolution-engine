@@ -103,13 +103,16 @@ def promote_edges_from_formula_results(
                         "reason": f"Formula '{edge.formula}' executed for inputs {edge.formula_inputs} and matched expected output within tolerance",
                     })
                 else:
+                    # GAP-002: formula FAILED for these inputs — mark CONTRADICTED
+                    edge.tier = EdgeTier.CONTRADICTED
+                    edge.mechanism_status = MechanismStatus.CONTRADICTED
                     not_promotable += 1
                     details.append({
                         "edge": f"{edge.source} → {edge.target}",
                         "formula": edge.formula,
                         "inputs": edge.formula_inputs,
-                        "promotion": "NOT PROMOTED",
-                        "reason": f"Formula '{edge.formula}' failed for inputs {edge.formula_inputs} — computed output does not match stated output",
+                        "promotion": "ASSERTED → CONTRADICTED",
+                        "reason": f"Formula '{edge.formula}' executed for inputs {edge.formula_inputs} and FAILED — computed output does not match stated expected output. This edge is actively wrong, not merely unverified.",
                     })
             else:
                 # The formula exists but wasn't tested with these specific inputs.
@@ -143,13 +146,16 @@ def promote_edges_from_formula_results(
                             "reason": f"Formula executed on-demand: {msg}",
                         })
                     else:
+                        # GAP-002: on-demand execution FAILED — mark CONTRADICTED
+                        edge.tier = EdgeTier.CONTRADICTED
+                        edge.mechanism_status = MechanismStatus.CONTRADICTED
                         not_promotable += 1
                         details.append({
                             "edge": f"{edge.source} → {edge.target}",
                             "formula": edge.formula,
                             "inputs": edge.formula_inputs,
-                            "promotion": "NOT PROMOTED",
-                            "reason": f"Formula executed on-demand but FAILED: {msg}",
+                            "promotion": "ASSERTED → CONTRADICTED",
+                            "reason": f"Formula executed on-demand and FAILED: {msg}",
                         })
                 except Exception as e:
                     not_promotable += 1

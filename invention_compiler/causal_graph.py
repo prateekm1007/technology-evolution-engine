@@ -27,20 +27,23 @@ from enum import Enum
 
 
 class EdgeTier(str, Enum):
-    """The three tiers of causal edge verification (DR-15 prior).
+    """The tiers of causal edge verification (DR-15, revised cycle 32).
 
-    NOTE: DR-15 (CEO revision, cycle 30) replaces the three-tier
-    schema with a four-state mechanism schema. See MechanismStatus
-    below. EdgeTier is retained for backwards compatibility but
-    the canonical tier is now derived from mechanism_status.
+    Four tiers: VERIFIED, ASSERTED, ASSOCIATIVE, CONTRADICTED.
+    The CONTRADICTED tier (GAP-002, cycle 32 audit) distinguishes
+    edges whose formula was executed and FAILED from edges that
+    simply haven't been tested yet (ASSERTED). A CONTRADICTED edge
+    is actively wrong — its stated expected_output does not match
+    the formula's computed output.
     """
-    VERIFIED = "verified"       # Formula evaluated, matches evidence
-    ASSERTED = "asserted"       # Mechanism present, not evaluated
-    ASSOCIATIVE = "associative"  # No mechanism (keyword match)
+    VERIFIED = "verified"         # Formula evaluated, matches evidence
+    ASSERTED = "asserted"         # Mechanism present, not yet evaluated
+    ASSOCIATIVE = "associative"   # No mechanism (keyword match)
+    CONTRADICTED = "contradicted"  # Formula evaluated, does NOT match (GAP-002)
 
 
 class MechanismStatus(str, Enum):
-    """The four states of mechanism validity (DR-15 revised, CEO cycle 30).
+    """The five states of mechanism validity (DR-15 revised, cycle 32).
 
     A mechanism is not valid merely because it is described. It is
     valid only if it satisfies one of:
@@ -48,14 +51,16 @@ class MechanismStatus(str, Enum):
       - simulated: numerically simulated
       - derived: derived from first principles
       - asserted: described but not verified (weakest state)
+      - contradicted: formula executed, does NOT match stated output (GAP-002)
 
-    Any mechanism lacking one of these four states is automatically
+    Any mechanism lacking one of these five states is automatically
     downgraded to "asserted."
     """
-    OBSERVED = "observed"     # reproduced experimentally
-    SIMULATED = "simulated"   # numerically simulated
-    DERIVED = "derived"       # derived from first principles
-    ASSERTED = "asserted"     # described but not verified
+    OBSERVED = "observed"       # reproduced experimentally
+    SIMULATED = "simulated"     # numerically simulated
+    DERIVED = "derived"         # derived from first principles
+    ASSERTED = "asserted"       # described but not verified
+    CONTRADICTED = "contradicted"  # formula executed, output does NOT match (GAP-002)
 
 
 @dataclass
@@ -157,10 +162,11 @@ class CausalEdge:
 
         Per DR-15: only edges with a mechanism (any status) may be used.
         Associative edges (no mechanism) are excluded from discovery.
+        CONTRADICTED edges (GAP-002) are excluded — they are actively wrong.
         Per DR-16: only edges with an intervention may be used for
         causal reasoning.
         """
-        if self.tier == EdgeTier.ASSOCIATIVE:
+        if self.tier in (EdgeTier.ASSOCIATIVE, EdgeTier.CONTRADICTED):
             return False
         # DR-16: causal reasoning requires intervention
         # But asserted-tier edges without intervention can still be
@@ -172,13 +178,18 @@ class CausalEdge:
 
         Per DR-15 (revised): only observed/simulated/derived mechanisms
         may be used in simulation. "asserted" mechanisms cannot be
-        simulated (not verified).
+        simulated (not verified). "contradicted" mechanisms (GAP-002)
+        are actively wrong and must never be simulated.
         """
+        if self.tier in (EdgeTier.CONTRADICTED, EdgeTier.ASSOCIATIVE, EdgeTier.ASSERTED):
+            return False
         if self.tier != EdgeTier.VERIFIED:
             return False
         # DR-15 revised: VERIFIED means observed/simulated/derived
         # (not just "asserted with a formula")
         if self.mechanism_status == MechanismStatus.ASSERTED:
+            return False
+        if self.mechanism_status == MechanismStatus.CONTRADICTED:
             return False
         return self.mechanism_status in (
             MechanismStatus.OBSERVED,
@@ -290,10 +301,13 @@ class CausalGraph:
         return verified / len(self.edges)
 
     def tier_counts(self) -> Dict[str, int]:
-        """Count edges by tier."""
-        counts = {"verified": 0, "asserted": 0, "associative": 0}
+        """Count edges by tier (including CONTRADICTED per GAP-002)."""
+        counts = {"verified": 0, "asserted": 0, "associative": 0, "contradicted": 0}
         for e in self.edges:
-            counts[e.tier.value] += 1
+            if e.tier.value in counts:
+                counts[e.tier.value] += 1
+            else:
+                counts[e.tier.value] = 1
         return counts
 
     def adjacency_search(self, source_node_id: str, target_node_type: str) -> List[str]:

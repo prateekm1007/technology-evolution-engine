@@ -113,17 +113,31 @@ class TestFormulaPromotion:
             f"Details: {result['promotion_details']}"
         )
 
-    def test_failing_formula_edge_stays_asserted(self, test_graph):
-        """An edge with a failing formula should stay ASSERTED."""
+    def test_failing_formula_edge_marked_contradicted(self, test_graph):
+        """GAP-002: An edge with a failing formula should be marked CONTRADICTED, not left ASSERTED.
+
+        A CONTRADICTED edge is actively wrong — its stated expected_output
+        does not match the formula's computed output. This is different
+        from ASSERTED (untested) and from ASSOCIATIVE (no mechanism).
+        """
         result = promote_edges_from_formula_results(test_graph)
-        # The edge with formula_output=19.0 (wrong) should NOT be promoted
-        wrong_edges = [
+        contradicted_edges = [
             d for d in result["promotion_details"]
-            if d.get("promotion") == "NOT PROMOTED" and "stull_wet_bulb" in d.get("formula", "")
+            if d.get("promotion") == "ASSERTED → CONTRADICTED"
         ]
-        assert len(wrong_edges) >= 1, (
-            "Expected at least 1 NOT PROMOTED edge (the one with wrong expected output)"
+        assert len(contradicted_edges) >= 1, (
+            "Expected at least 1 CONTRADICTED edge (the one with wrong expected output). "
+            f"Details: {result['promotion_details']}"
         )
+        # The CONTRADICTED edge should not be discovery-capable
+        for edge in test_graph.edges:
+            if edge.tier == EdgeTier.CONTRADICTED:
+                assert not edge.is_discovery_capable(), (
+                    "CONTRADICTED edges should not be discovery-capable"
+                )
+                assert not edge.is_simulation_capable(), (
+                    "CONTRADICTED edges should not be simulation-capable"
+                )
 
     def test_associative_edge_never_promoted(self, test_graph):
         """ASSOCIATIVE edges should never be promoted."""
@@ -166,4 +180,150 @@ class TestFormulaPromotion:
         # After promotion, the graph should have VERIFIED edges
         assert result["tier_counts"]["verified"] >= 1, (
             f"Expected at least 1 VERIFIED edge after promotion, got {result['tier_counts']}"
+        )
+
+
+# ----------------------------------------------------------------------
+# GAP-003: On-demand formula execution (inputs not in FORMULA_REGISTRY)
+# ----------------------------------------------------------------------
+
+class TestOnDemandExecution:
+    """GAP-003: The promoter should execute formulas on-demand for edges
+    whose specific input/output combination isn't in the FORMULA_REGISTRY's
+    test cases."""
+
+    def test_on_demand_execution_promotes_matching_edge(self):
+        """An edge with inputs NOT in the registry but that match the formula
+        should be promoted via on-demand execution."""
+        graph = CausalGraph()
+        graph.add_node(CausalNode(
+            node_id="T", node_type="property", label="Temperature",
+            properties={}, what_does_this_change=["Twb"],
+            what_changes_this=[], inputs=[], constraints=[], outputs=[],
+            evidence=["test"], provenance={},
+        ))
+        graph.add_node(CausalNode(
+            node_id="Twb", node_type="property", label="Wet-bulb",
+            properties={}, what_does_this_change=["cooling"],
+            what_changes_this=[], inputs=[], constraints=[], outputs=[],
+            evidence=["test"], provenance={},
+        ))
+
+        # Edge with inputs (T=25, RH=60) — NOT in the FORMULA_REGISTRY
+        # The actual Stull value for T=25, RH=60 is ~17.6°C
+        from scripts.formulas.stull_wet_bulb import stull_wet_bulb
+        actual_twb = stull_wet_bulb(25, 60)
+
+        graph.add_edge(CausalEdge(
+            source="T", target="Twb", direction="causes",
+            mechanism="Stull wet-bulb formula",
+            mechanism_status=MechanismStatus.ASSERTED,
+            evidence=["test"], tier=EdgeTier.ASSERTED,
+            formula="stull_wet_bulb",
+            formula_inputs={"T": 25, "RH": 60},
+            formula_output=actual_twb,  # correct value
+            expected_output=actual_twb,
+            tolerance=0.5,
+            falsifiable_by="Execute Stull formula",
+            what_does_this_change="Twb",
+            intervention=None, counterfactual=None,
+            created_at="", provenance={},
+        ))
+
+        result = promote_edges_from_formula_results(graph)
+        assert result["promoted"] >= 1, (
+            f"Expected on-demand promotion for edge with inputs not in registry. "
+            f"Details: {result['promotion_details']}"
+        )
+
+    def test_on_demand_execution_contradicts_failing_edge(self):
+        """An edge with inputs NOT in the registry and WRONG expected output
+        should be marked CONTRADICTED via on-demand execution."""
+        graph = CausalGraph()
+        graph.add_node(CausalNode(
+            node_id="T", node_type="property", label="Temperature",
+            properties={}, what_does_this_change=["Twb"],
+            what_changes_this=[], inputs=[], constraints=[], outputs=[],
+            evidence=["test"], provenance={},
+        ))
+        graph.add_node(CausalNode(
+            node_id="Twb", node_type="property", label="Wet-bulb",
+            properties={}, what_does_this_change=["cooling"],
+            what_changes_this=[], inputs=[], constraints=[], outputs=[],
+            evidence=["test"], provenance={},
+        ))
+
+        # Edge with inputs (T=25, RH=60) — NOT in the FORMULA_REGISTRY
+        # But expected_output is WRONG (10.0 instead of ~17.6)
+        graph.add_edge(CausalEdge(
+            source="T", target="Twb", direction="causes",
+            mechanism="Stull wet-bulb formula (wrong value)",
+            mechanism_status=MechanismStatus.ASSERTED,
+            evidence=["test"], tier=EdgeTier.ASSERTED,
+            formula="stull_wet_bulb",
+            formula_inputs={"T": 25, "RH": 60},
+            formula_output=10.0,  # WRONG — actual is ~17.6
+            expected_output=10.0,
+            tolerance=0.5,
+            falsifiable_by="Execute Stull formula",
+            what_does_this_change="Twb",
+            intervention=None, counterfactual=None,
+            created_at="", provenance={},
+        ))
+
+        result = promote_edges_from_formula_results(graph)
+        contradicted = [
+            d for d in result["promotion_details"]
+            if d.get("promotion") == "ASSERTED → CONTRADICTED"
+        ]
+        assert len(contradicted) >= 1, (
+            f"Expected on-demand CONTRADICTED for wrong edge. "
+            f"Details: {result['promotion_details']}"
+        )
+
+
+# ----------------------------------------------------------------------
+# GAP-004: Idempotency (running promoter twice should be safe)
+# ----------------------------------------------------------------------
+
+class TestIdempotency:
+    """GAP-004: If the promoter runs twice on the same graph, it should
+    skip already-VERIFIED edges and not re-process them."""
+
+    def test_idempotent_on_second_run(self, test_graph):
+        """Running promote_edges_from_formula_results twice should produce
+        the same graph state — no double-promotion, no errors."""
+        # First run
+        result1 = promote_edges_from_formula_results(test_graph)
+        promoted1 = result1["promoted"]
+        verified1 = test_graph.tier_counts()["verified"]
+
+        # Second run on the same graph
+        result2 = promote_edges_from_formula_results(test_graph)
+        promoted2 = result2["promoted"]
+        verified2 = test_graph.tier_counts()["verified"]
+
+        # Second run should NOT promote any new edges
+        assert promoted2 == 0, (
+            f"Second run promoted {promoted2} edges — should be 0 (idempotent). "
+            f"First run promoted {promoted1}."
+        )
+        # Verified count should not change
+        assert verified1 == verified2, (
+            f"Verified count changed: {verified1} → {verified2}. Should be the same."
+        )
+
+    def test_idempotent_contradicted_edges(self, test_graph):
+        """CONTRADICTED edges should not be re-processed on second run."""
+        # First run — marks some edges CONTRADICTED
+        promote_edges_from_formula_results(test_graph)
+        contradicted1 = test_graph.tier_counts().get("contradicted", 0)
+
+        # Second run
+        promote_edges_from_formula_results(test_graph)
+        contradicted2 = test_graph.tier_counts().get("contradicted", 0)
+
+        assert contradicted1 == contradicted2, (
+            f"Contradicted count changed: {contradicted1} → {contradicted2}. "
+            f"Should be the same (idempotent)."
         )

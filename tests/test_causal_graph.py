@@ -240,7 +240,7 @@ def test_tier_counts():
             mechanism_status=None, intervention=None, counterfactual=None, created_at="", provenance={},
         ))
     counts = graph.tier_counts()
-    assert counts == {"verified": 2, "asserted": 1, "associative": 2}
+    assert counts == {"verified": 2, "asserted": 1, "associative": 2, "contradicted": 0}
 
 
 # ----------------------------------------------------------------------
