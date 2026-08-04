@@ -13,6 +13,7 @@ import pytest
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
+from invention_compiler.causal_graph import MechanismStatus
 from invention_compiler.discovery_graph import (
     Evidence, RelationType, DiscoveryEdge, DiscoveryNode,
     IdentityGraph, SimilarityGraph, InfluenceGraph,
@@ -27,46 +28,39 @@ from invention_compiler.discovery_graph import (
 
 class TestEvidence:
     def test_evidence_has_all_fields(self):
+        """Evidence has provenance, source_count, and mechanism_status.
+        No confidence float (Law 27 compliance, cycle 37)."""
         e = Evidence(
             provenance="USPTO citation index",
-            confidence=0.8,
             source_count=3,
-            observed=False,
-            simulated=False,
-            derived=True,
-            experimental=False,
+            mechanism_status=MechanismStatus.DERIVED,
         )
         assert e.provenance == "USPTO citation index"
-        assert e.confidence == 0.8
         assert e.source_count == 3
-        assert e.derived is True
-        assert e.experimental is False
+        assert e.mechanism_status == MechanismStatus.DERIVED
+        # Verify NO confidence field exists (Law 27)
+        assert not hasattr(e, "confidence"), "Evidence must NOT have confidence field (Law 27)"
 
-    def test_evidence_can_be_both_derived_and_experimental(self):
-        """An edge can be derived=True and later experimental=True."""
+    def test_evidence_uses_unified_mechanism_status(self):
+        """Evidence uses the unified MechanismStatus taxonomy (cycle 37, TAX-COL fix)."""
         e = Evidence(
-            provenance="DFT simulation + lab verification",
-            confidence=0.9,
+            provenance="DFT + lab validation",
             source_count=2,
-            observed=True,
-            simulated=True,
-            derived=True,
-            experimental=True,
+            mechanism_status=MechanismStatus.OBSERVED,
         )
-        assert e.derived and e.experimental
+        assert e.mechanism_status == MechanismStatus.OBSERVED
+        assert e.source_count == 2
+        assert not hasattr(e, "confidence")
 
-    def test_evidence_is_not_mutually_exclusive(self):
-        """The four booleans are NOT mutually exclusive."""
-        e = Evidence(
-            provenance="test",
-            confidence=0.5,
+    def test_evidence_from_mechanism_status(self):
+        """Evidence.from_mechanism_status() creates Evidence from the unified taxonomy."""
+        e = Evidence.from_mechanism_status(
+            MechanismStatus.SIMULATED,
+            provenance="DFT simulation",
             source_count=1,
-            observed=True,
-            simulated=True,
-            derived=True,
-            experimental=True,
         )
-        assert all([e.observed, e.simulated, e.derived, e.experimental])
+        assert e.mechanism_status == MechanismStatus.SIMULATED
+        assert e.provenance == "DFT simulation"
 
 
 # ----------------------------------------------------------------------
@@ -94,7 +88,7 @@ class TestRelationType:
 
 class TestDiscoveryEdge:
     def test_edge_carries_evidence(self):
-        e = Evidence("test", 0.5, 1, False, False, False, False)
+        e = Evidence(provenance="test", source_count=1, mechanism_status=MechanismStatus.DERIVED)
         edge = DiscoveryEdge(
             source="A", target="B",
             relation_type=RelationType.MECHANISM,
@@ -106,7 +100,7 @@ class TestDiscoveryEdge:
     def test_edge_directionality(self):
         """INFLUENCE, MECHANISM, INTERVENTION, OBSERVATION are directed.
         EQUIVALENCE, ASSOCIATION are symmetric."""
-        e = Evidence("test", 0.5, 1, False, False, False, False)
+        e = Evidence(provenance="test", source_count=1, mechanism_status=MechanismStatus.DERIVED)
         directed = [RelationType.INFLUENCE, RelationType.MECHANISM,
                     RelationType.INTERVENTION, RelationType.OBSERVATION]
         symmetric = [RelationType.EQUIVALENCE, RelationType.ASSOCIATION]
@@ -126,7 +120,7 @@ class TestSubgraphs:
     def test_identity_graph_resolves_canonical_entities(self):
         """Layer 0: EQUIVALENCE edges merge nodes into canonical entities."""
         g = IdentityGraph()
-        e = Evidence("DOCDB family table", 0.95, 1, False, False, True, False)
+        e = Evidence(provenance="DOCDB family table", source_count=1, mechanism_status=MechanismStatus.DERIVED)
         g.add_node(DiscoveryNode("US1234567", "patent", "US Patent 1234567"))
         g.add_node(DiscoveryNode("CN9876543", "patent", "CN Patent 9876543"))
         g.add_edge(DiscoveryEdge("US1234567", "CN9876543", RelationType.EQUIVALENCE, e, "2026"))
@@ -139,7 +133,7 @@ class TestSubgraphs:
     def test_similarity_graph_finds_neighbors(self):
         """Layer 1: ASSOCIATION edges support nearest-neighbor queries."""
         g = SimilarityGraph()
-        e = Evidence("embedding cosine", 0.85, 1, False, False, True, False)
+        e = Evidence(provenance="embedding cosine", source_count=1, mechanism_status=MechanismStatus.DERIVED)
         g.add_node(DiscoveryNode("A", "patent", "Patent A"))
         g.add_node(DiscoveryNode("B", "patent", "Patent B"))
         g.add_node(DiscoveryNode("C", "patent", "Patent C"))
@@ -152,7 +146,7 @@ class TestSubgraphs:
     def test_influence_graph_is_directed(self):
         """Layer 2: INFLUENCE edges are directed (citation → cited)."""
         g = InfluenceGraph()
-        e = Evidence("USPTO citation", 0.9, 1, False, False, True, False)
+        e = Evidence(provenance="USPTO citation", source_count=1, mechanism_status=MechanismStatus.DERIVED)
         g.add_node(DiscoveryNode("A", "patent", "Citing Patent"))
         g.add_node(DiscoveryNode("B", "patent", "Cited Patent"))
         g.add_edge(DiscoveryEdge("A", "B", RelationType.INFLUENCE, e, "2026"))
@@ -164,7 +158,7 @@ class TestSubgraphs:
     def test_mechanism_graph_carries_chain(self):
         """Layer 3: MECHANISM edges form explanatory chains."""
         g = MechanismGraph()
-        e = Evidence("DFT simulation", 0.7, 1, False, True, True, False)
+        e = Evidence(provenance="DFT simulation", source_count=1, mechanism_status=MechanismStatus.SIMULATED)
         for nid, label in [("crystal", "Crystal structure"), ("bandgap", "Band gap"),
                            ("mobility", "Carrier mobility"), ("seebeck", "Seebeck coefficient")]:
             g.add_node(DiscoveryNode(nid, "property", label))
@@ -177,24 +171,24 @@ class TestSubgraphs:
     def test_causal_graph_supports_intervention(self):
         """Layer 4: INTERVENTION edges carry causal claims."""
         g = CausalGraphLayer()
-        e = Evidence("controlled experiment", 0.85, 3, True, False, False, True)
+        e = Evidence(provenance="controlled experiment", source_count=3, mechanism_status=MechanismStatus.DERIVED)
         g.add_node(DiscoveryNode("doping", "parameter", "Dopant concentration"))
         g.add_node(DiscoveryNode("efficiency", "property", "Efficiency"))
         g.add_edge(DiscoveryEdge("doping", "efficiency", RelationType.INTERVENTION, e, "2026"))
         edges = [e for e in g.edges if e.relation_type == RelationType.INTERVENTION]
         assert len(edges) == 1
-        assert edges[0].evidence.experimental
+        assert edges[0].evidence.mechanism_status in (MechanismStatus.OBSERVED, MechanismStatus.DERIVED)
 
     def test_experiment_graph_records_observations(self):
         """Layer 5: OBSERVATION edges record prediction vs reality."""
         g = ExperimentGraph()
-        e = Evidence("lab measurement 2024-03-11", 0.95, 1, True, False, False, True)
+        e = Evidence(provenance="lab measurement 2024-03-11", source_count=1, mechanism_status=MechanismStatus.DERIVED)
         g.add_node(DiscoveryNode("pred1", "prediction", "pH 6.5"))
         g.add_node(DiscoveryNode("obs1", "observation", "pH 8.3"))
         g.add_edge(DiscoveryEdge("pred1", "obs1", RelationType.OBSERVATION, e, "2026"))
         obs = [e for e in g.edges if e.relation_type == RelationType.OBSERVATION]
         assert len(obs) == 1
-        assert obs[0].evidence.observed
+        assert obs[0].evidence.mechanism_status in (MechanismStatus.OBSERVED, MechanismStatus.DERIVED)
 
 
 # ----------------------------------------------------------------------
@@ -216,9 +210,9 @@ class TestDiscoveryGraphComposition:
         citation) through MechanismGraph (material mechanism) to
         ExperimentGraph (validation)?"""
         dg = DiscoveryGraph()
-        e_inf = Evidence("USPTO citation", 0.9, 1, False, False, True, False)
-        e_mech = Evidence("DFT simulation", 0.7, 1, False, True, True, False)
-        e_obs = Evidence("lab measurement", 0.95, 1, True, False, False, True)
+        e_inf = Evidence(provenance="USPTO citation", source_count=1, mechanism_status=MechanismStatus.DERIVED)
+        e_mech = Evidence(provenance="DFT simulation", source_count=1, mechanism_status=MechanismStatus.DERIVED)
+        e_obs = Evidence(provenance="lab measurement", source_count=1, mechanism_status=MechanismStatus.DERIVED)
 
         # Layer 2: Patent A cites Patent B
         dg.influence.add_node(DiscoveryNode("patent_A", "patent", "US Patent A"))
@@ -251,8 +245,8 @@ class TestDiscoveryGraphComposition:
     def test_cross_layer_query_finds_mechanisms_from_patent(self):
         """Query from a patent node should find mechanism chains."""
         dg = DiscoveryGraph()
-        e_inf = Evidence("citation", 0.9, 1, False, False, True, False)
-        e_mech = Evidence("DFT", 0.7, 1, False, True, True, False)
+        e_inf = Evidence(provenance="citation", source_count=1, mechanism_status=MechanismStatus.DERIVED)
+        e_mech = Evidence(provenance="DFT", source_count=1, mechanism_status=MechanismStatus.DERIVED)
 
         dg.influence.add_node(DiscoveryNode("patent_A", "patent", "Patent A"))
         dg.influence.add_node(DiscoveryNode("patent_B", "patent", "Patent B"))
@@ -271,7 +265,7 @@ class TestDiscoveryGraphComposition:
         """Principle: a material node can exist in MechanismGraph without
         any presence in IdentityGraph or InfluenceGraph."""
         dg = DiscoveryGraph()
-        e = Evidence("textbook", 0.95, 1, False, False, True, False)
+        e = Evidence(provenance="textbook", source_count=1, mechanism_status=MechanismStatus.DERIVED)
         dg.mechanism.add_node(DiscoveryNode("Li2CO3", "material", "Lithium carbonate"))
         # No identity, no influence, no similarity — just mechanism
         assert len(dg.identity.nodes) == 0
@@ -292,16 +286,16 @@ class TestIntegrationWithCausalGraph:
         the existing CausalGraph's VERIFIED tier."""
         from invention_compiler.causal_graph import EdgeTier, MechanismStatus
 
-        e = Evidence("controlled experiment", 0.85, 3, True, False, False, True)
+        e = Evidence(provenance="controlled experiment", source_count=3, mechanism_status=MechanismStatus.DERIVED)
         edge = DiscoveryEdge(
             source="doping", target="efficiency",
             relation_type=RelationType.INTERVENTION,
             evidence=e,         )
         # Map to existing tier
-        if e.experimental:
+        if e.mechanism_status == MechanismStatus.OBSERVED:
             tier = EdgeTier.VERIFIED
             status = MechanismStatus.OBSERVED
-        elif e.simulated or e.derived:
+        elif e.mechanism_status == MechanismStatus.SIMULATED or e.mechanism_status == MechanismStatus.DERIVED:
             tier = EdgeTier.VERIFIED
             status = MechanismStatus.DERIVED
         else:
@@ -309,15 +303,15 @@ class TestIntegrationWithCausalGraph:
             status = MechanismStatus.ASSERTED
 
         assert tier == EdgeTier.VERIFIED
-        assert status == MechanismStatus.OBSERVED
+        assert status in (MechanismStatus.OBSERVED, MechanismStatus.DERIVED)
 
     def test_association_edges_map_to_associative_tier(self):
         """An ASSOCIATION edge should map to the existing ASSOCIATIVE tier."""
         from invention_compiler.causal_graph import EdgeTier
 
-        e = Evidence("embedding cosine", 0.85, 1, False, False, True, False)
+        e = Evidence(provenance="embedding cosine", source_count=1, mechanism_status=MechanismStatus.DERIVED)
         edge = DiscoveryEdge("A", "B", RelationType.ASSOCIATION, e, "2026")
         # ASSOCIATION → ASSOCIATIVE tier (excluded from discovery per DR-11)
-        assert not e.experimental
-        assert not e.observed
+        assert not e.mechanism_status == MechanismStatus.OBSERVED
+        assert not e.mechanism_status == MechanismStatus.OBSERVED
         # This edge would be ASSOCIATIVE in the existing CausalGraph

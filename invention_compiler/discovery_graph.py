@@ -27,6 +27,9 @@ from dataclasses import dataclass, field, asdict
 from typing import Dict, Any, List, Optional, Set, Tuple
 from enum import Enum
 
+# Import MechanismStatus at module level (needed for Evidence default value)
+from invention_compiler.causal_graph import MechanismStatus
+
 
 # ----------------------------------------------------------------------
 # RelationType: the 6-layer edge schema
@@ -55,54 +58,37 @@ class RelationType(Enum):
 class Evidence:
     """Evidence object — every edge carries one instead of a scalar weight.
 
-    A single float weight cannot represent why an edge exists, how strong
-    the support is, or whether it came from a citation parser, a simulation,
-    or a wet-lab measurement.
+    Per Law 27 (forbidden language): NO numerical confidence. The old
+    `confidence: float` field was a Law 27 violation (cycle 37 audit,
+    L27-VIO). It has been removed.
 
-    The four booleans (observed, simulated, derived, experimental) are NOT
-    mutually exclusive. An edge can be derived=True and later become
-    experimental=True once tested — this is how the OBSERVATION layer
-    promotes an INTERVENTION edge from hypothesis to validated causal claim.
+    Per cycle 37 audit (TAX-COL): the 4 booleans (observed/simulated/
+    derived/experimental) collided with MechanismStatus's 5 values.
+    They have been replaced with a single `mechanism_status` field
+    that uses the unified taxonomy.
+
+    Ranking is derived from source_count + mechanism_status, not from
+    a fabricated float. An edge with mechanism_status=OBSERVED and
+    source_count=5 ranks higher than one with ASSERTED and source_count=1.
     """
-    provenance: str        # e.g. "USPTO citation", "DFT simulation", "lab measurement"
-    confidence: float       # normalized 0.0–1.0 estimate of reliability
-    source_count: int       # number of independent supporting sources
-    observed: bool = False  # from direct observation?
-    simulated: bool = False  # from computational simulation?
-    derived: bool = False   # inferred/computed from other edges?
-    experimental: bool = False  # validated by physical experiment?
+    provenance: str                              # "USPTO citation", "DFT simulation", "lab measurement"
+    source_count: int = 1                        # number of independent supporting sources
+    mechanism_status: MechanismStatus = MechanismStatus.ASSERTED  # unified taxonomy
 
     def to_dict(self) -> Dict[str, Any]:
-        return asdict(self)
+        d = asdict(self)
+        d["mechanism_status"] = self.mechanism_status.value
+        return d
 
     @classmethod
-    def from_mechanism_status(cls, status_str: str, provenance: str = "",
-                               confidence: float = 0.5) -> "Evidence":
-        """Create Evidence from the existing MechanismStatus taxonomy.
-
-        Maps the 5-state mechanism schema (observed/simulated/derived/
-        asserted/contradicted) to the Evidence booleans.
-        """
-        observed = status_str == "observed"
-        simulated = status_str == "simulated"
-        derived = status_str == "derived"
-        experimental = status_str == "observed"  # observed = experimental
-
-        if status_str == "contradicted":
-            confidence = 0.0  # contradicted = zero confidence
-        elif status_str == "asserted":
-            confidence = 0.3  # asserted = low confidence
-        elif status_str in ("observed", "simulated", "derived"):
-            confidence = 0.8  # verified = high confidence
-
+    def from_mechanism_status(cls, status: MechanismStatus,
+                               provenance: str = "",
+                               source_count: int = 1) -> "Evidence":
+        """Create Evidence from the unified MechanismStatus taxonomy."""
         return cls(
             provenance=provenance,
-            confidence=confidence,
-            source_count=1,
-            observed=observed,
-            simulated=simulated,
-            derived=derived,
-            experimental=experimental,
+            source_count=source_count,
+            mechanism_status=status,
         )
 
 
@@ -441,9 +427,10 @@ class DiscoveryGraph:
         """Import edges from an existing CausalGraph (causal_graph.py).
 
         Maps:
-        - CausalEdge with tier=VERIFIED → INTERVENTION + Evidence(experimental=True)
-        - CausalEdge with tier=ASSERTED → MECHANISM + Evidence(derived=False)
-        - CausalEdge with tier=ASSOCIATIVE → ASSOCIATION + Evidence(confidence=0.2)
+        - CausalEdge with tier=VERIFIED → INTERVENTION + Evidence(mechanism_status=DERIVED)
+        - CausalEdge with tier=ASSERTED → MECHANISM + Evidence(mechanism_status=ASSERTED)
+        - CausalEdge with tier=ASSOCIATIVE → ASSOCIATION + Evidence(mechanism_status=ASSERTED)
+        - CausalEdge with tier=CONTRADICTED → excluded
         - CausalEdge with tier=CONTRADICTED → excluded
         """
         from invention_compiler.causal_graph import EdgeTier, MechanismStatus
@@ -475,7 +462,7 @@ class DiscoveryGraph:
                 rt = RelationType.ASSOCIATION
                 ev = Evidence(
                     provenance="keyword_match",
-                    confidence=0.2,
+                    mechanism_status=MechanismStatus.ASSERTED,
                     source_count=1,
                 )
             else:
@@ -495,7 +482,7 @@ class DiscoveryGraph:
         Maps the ClosedLoopTracker's 5-step record to an OBSERVATION edge:
         - source: the prediction node
         - target: the observation node
-        - evidence: experimental=True (validated by experiment)
+        - evidence: mechanism_status=OBSERVED (validated by experiment)
         """
         from experimentation_layer.scoping import ClosedLoopTracker
 
