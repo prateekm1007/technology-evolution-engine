@@ -27,10 +27,91 @@ from enum import Enum
 
 
 class EdgeTier(str, Enum):
-    """The three tiers of causal edge verification (DR-15)."""
+    """The three tiers of causal edge verification (DR-15 prior).
+
+    NOTE: DR-15 (CEO revision, cycle 30) replaces the three-tier
+    schema with a four-state mechanism schema. See MechanismStatus
+    below. EdgeTier is retained for backwards compatibility but
+    the canonical tier is now derived from mechanism_status.
+    """
     VERIFIED = "verified"       # Formula evaluated, matches evidence
     ASSERTED = "asserted"       # Mechanism present, not evaluated
     ASSOCIATIVE = "associative"  # No mechanism (keyword match)
+
+
+class MechanismStatus(str, Enum):
+    """The four states of mechanism validity (DR-15 revised, CEO cycle 30).
+
+    A mechanism is not valid merely because it is described. It is
+    valid only if it satisfies one of:
+      - observed: reproduced experimentally
+      - simulated: numerically simulated
+      - derived: derived from first principles
+      - asserted: described but not verified (weakest state)
+
+    Any mechanism lacking one of these four states is automatically
+    downgraded to "asserted."
+    """
+    OBSERVED = "observed"     # reproduced experimentally
+    SIMULATED = "simulated"   # numerically simulated
+    DERIVED = "derived"       # derived from first principles
+    ASSERTED = "asserted"     # described but not verified
+
+
+@dataclass
+class Intervention:
+    """An intervention specification (DR-16).
+
+    A causal edge is valid only if an intervention can be specified.
+    The fundamental question: "What happens if I change this?"
+    """
+    node: str                         # the node to intervene on
+    intervention: str                 # what to change (e.g., "increase_5_percent")
+    predicted_effect: str             # what the system predicts will happen
+    expected_magnitude: Optional[str] # quantitative prediction (e.g., "2.5% increase in S")
+    uncertainty: Optional[str]        # uncertainty band (e.g., "±0.5%")
+
+    def to_dict(self) -> Dict[str, Any]:
+        return asdict(self)
+
+
+@dataclass
+class Counterfactual:
+    """A counterfactual specification (DR-17).
+
+    Every causal statement must have a counterfactual:
+      If X changes: Y changes.
+      If X does not change: Y does not change.
+
+    Without counterfactuals, the graph remains descriptive.
+    """
+    positive_case: str    # "If X changes: Y changes"
+    negative_case: str    # "If X does not change: Y does not change"
+
+    def to_dict(self) -> Dict[str, Any]:
+        return asdict(self)
+
+
+@dataclass
+class ExperimentProposal:
+    """The system's primary output: the next experiment (DR-18).
+
+    The system's ultimate function is to answer: "What experiment
+    should I perform tomorrow morning?" Every other output exists
+    to serve this question.
+    """
+    prediction: str             # what the system predicts will happen
+    intervention: Intervention  # what to change (DR-16)
+    measurement: str            # what to measure and how
+    falsification: str          # what result would falsify the prediction
+    cost_usd: float             # what the experiment costs
+    timeline_days: int          # how long it takes
+    learning_if_pass: str       # what the system learns if prediction confirmed
+    learning_if_fail: str       # what the system learns if prediction falsified
+
+    def to_dict(self) -> Dict[str, Any]:
+        d = asdict(self)
+        return d
 
 
 @dataclass
@@ -40,8 +121,10 @@ class CausalEdge:
     Per DR-11: every edge carries a direction and a mechanism.
     Per DR-12: two nodes are connected ONLY if the edge carries a
     stated mechanism. Edges without a mechanism are ASSOCIATIVE.
-    Per DR-15: the tier (verified/asserted/associative) determines
-    which downstream operations may use the edge.
+    Per DR-15 (revised): the mechanism_status (observed/simulated/
+    derived/asserted) determines validity.
+    Per DR-16: a causal edge includes an intervention specification.
+    Per DR-17: a causal edge includes a counterfactual.
 
     Reused from Phase 15 MECHANISM_REGISTRY_V2.md:
     - inputs: the state variables that must be present for the
@@ -54,33 +137,64 @@ class CausalEdge:
     target: str                     # target node ID
     direction: str                  # "causes", "enables", "constrains", "prevents"
     mechanism: Optional[str]        # the physical/chemical/biological process
+    mechanism_status: Optional[MechanismStatus]  # DR-15 revised: observed/simulated/derived/asserted
     evidence: List[str]            # cited sources (URLs, DOIs, patent IDs)
-    tier: EdgeTier                 # verified, asserted, or associative
-    formula: Optional[str]         # callable function reference (for verified tier)
+    tier: EdgeTier                 # backwards-compat tier (derived from mechanism_status)
+    formula: Optional[str]         # callable function reference (for derived/simulated)
     formula_inputs: Optional[Dict[str, Any]]  # inputs to the formula
     formula_output: Optional[float]           # computed output
     expected_output: Optional[float]          # source's stated output
     tolerance: Optional[float]                # acceptable diff
     falsifiable_by: Optional[str]             # how to falsify this edge
     what_does_this_change: Optional[str]      # DR-13: what this edge changes
+    intervention: Optional[Intervention]      # DR-16: what happens if I change this
+    counterfactual: Optional[Counterfactual]  # DR-17: what happens if I don't change this
     created_at: str                # ISO timestamp
     provenance: Dict[str, Any]     # source URL, retrieval date, etc.
 
     def is_discovery_capable(self) -> bool:
         """Can this edge be used in discovery queries?
 
-        Per DR-15: only verified and asserted edges may be used.
-        Associative edges are excluded from discovery per DR-11.
+        Per DR-15: only edges with a mechanism (any status) may be used.
+        Associative edges (no mechanism) are excluded from discovery.
+        Per DR-16: only edges with an intervention may be used for
+        causal reasoning.
         """
+        if self.tier == EdgeTier.ASSOCIATIVE:
+            return False
+        # DR-16: causal reasoning requires intervention
+        # But asserted-tier edges without intervention can still be
+        # used for hypothesis generation (flagged)
         return self.tier in (EdgeTier.VERIFIED, EdgeTier.ASSERTED)
 
     def is_simulation_capable(self) -> bool:
         """Can this edge be used in causal simulation?
 
-        Per DR-15: only verified edges may be used in simulation.
-        Asserted edges cannot be simulated (mechanism not evaluated).
+        Per DR-15 (revised): only observed/simulated/derived mechanisms
+        may be used in simulation. "asserted" mechanisms cannot be
+        simulated (not verified).
         """
-        return self.tier == EdgeTier.VERIFIED
+        if self.tier != EdgeTier.VERIFIED:
+            return False
+        # DR-15 revised: VERIFIED means observed/simulated/derived
+        # (not just "asserted with a formula")
+        if self.mechanism_status == MechanismStatus.ASSERTED:
+            return False
+        return self.mechanism_status in (
+            MechanismStatus.OBSERVED,
+            MechanismStatus.SIMULATED,
+            MechanismStatus.DERIVED,
+        )
+
+    def is_causal(self) -> bool:
+        """Is this edge truly causal (not just a mechanism)?
+
+        Per DR-16 + DR-17: a causal edge has BOTH an intervention
+        specification AND a counterfactual. Without both, it is a
+        mechanism (how it's connected) but not causality (what changes
+        when you intervene).
+        """
+        return self.intervention is not None and self.counterfactual is not None
 
     def is_verified(self) -> bool:
         """Has this edge's mechanism been evaluated against evidence?"""
@@ -89,6 +203,7 @@ class CausalEdge:
     def to_dict(self) -> Dict[str, Any]:
         d = asdict(self)
         d["tier"] = self.tier.value
+        d["mechanism_status"] = self.mechanism_status.value if self.mechanism_status else None
         return d
 
 

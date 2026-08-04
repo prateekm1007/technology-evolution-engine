@@ -1452,3 +1452,103 @@ Complexity cost: 1 new DR (DR-15) + 1 new failure record (F-061).
 Entropy eliminated: the software-architect failure mode (good sentences
 wearing physicist vocabulary) that would have made DR-11 through DR-14
 produce a graph that looks causal but isn't. Net positive. Approved.
+
+---
+
+## Discovery anti-entropy (AE-11 through AE-14 — CEO cycle 30)
+
+Per CEO directive: "These review principles have to be added to create
+a first-class product and are not entropy-inducing." The CEO identified
+four failure modes that arise when relationships, mechanisms, and
+causality are collapsed together.
+
+### AE-11: Semantic inflation
+
+Pattern:
+```
+relationship → mechanism → causality
+```
+
+Failure: correlation becomes explanation.
+
+A relationship ("Bi₂Te₃ is connected to thermoelectrics") is
+inflated into a mechanism ("carrier mobility affects Seebeck
+coefficient") which is inflated into causality ("Bi₂Te₃ causes
+thermoelectric power"). Each step adds vocabulary without adding
+verification. The fix (DR-15): a mechanism is valid only if it is
+observed, simulated, derived, or asserted — and "asserted" is the
+weakest state, excluded from simulation and prediction.
+
+### AE-12: Vocabulary mirage
+
+Pattern:
+```
+domain A vocabulary ≠ domain B vocabulary
+```
+
+Failure: shared mechanism appears absent.
+
+The Bi₂Te₃ paper uses thermoelectric vocabulary ("Seebeck," "ZT,"
+"carrier mobility"). The NRR literature uses catalysis vocabulary
+("back-donation," "N≡N bond cleavage," "Faradaic efficiency"). The
+shared mechanism (Bi 6p orbital interaction with N₂) is invisible
+because the two domains don't share words. The fix (DR-12):
+mechanism-gated connections — connect nodes via stated mechanism,
+not via shared vocabulary.
+
+### AE-13: Schema worship
+
+Pattern:
+```
+field exists → validation passes → truth assumed
+```
+
+Failure: compliance mistaken for reality.
+
+A mechanism field that exists and passes schema validation is not
+truth. It is compliance. The same failure pattern as F-043
+(fabricated corpus that passed schema), F-044 (self-graded benchmark
+that passed format), F-052 (mass stack-up that passed arithmetic),
+F-053 (count that passed grammar). The fix (DR-15): mechanisms must
+be observed/simulated/derived — not merely present in a field.
+
+### AE-14: Narrative closure
+
+Pattern:
+```
+relationship → hypothesis → conclusion
+```
+
+Failure: missing experiment.
+
+A relationship is observed. A hypothesis is formed. A conclusion is
+drawn. The experiment is never run. The loop is never closed. The
+system produces a narrative that feels like discovery but is actually
+sophisticated storytelling. The fix (DR-18): the primary output is
+the next experiment, not the next report. The `closed_loops` count
+measures whether the narrative was ever tested against reality.
+
+### The loop (CEO formulation)
+
+```
+observation → measurement → mechanism → constraint → causal graph
+    → prediction → intervention → experiment → observation
+```
+
+Every arrow must be auditable.
+Every node must have provenance.
+Every prediction must be falsifiable.
+Every failure must modify the graph.
+
+That last line is the most important. A system that does not change
+when reality disagrees with it is not learning. It is merely keeping
+records.
+
+### AP-11 test
+
+Complexity cost: 4 new DRs (DR-15 revised, DR-16, DR-17, DR-18) + 4
+new AEs (AE-11 through AE-14). Entropy eliminated: semantic inflation
+(correlation wearing causality's vocabulary), vocabulary mirage
+(shared mechanism invisible across domains), schema worship (compliance
+mistaken for truth), narrative closure (hypothesis without experiment).
+Net positive. Approved.

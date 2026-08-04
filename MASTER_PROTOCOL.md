@@ -2188,3 +2188,178 @@ general. The Phase 15 types may be added as sub-types in future work.
   associative count. The ratio (verified / total) is the "causal
   density" of the graph — the metric that measures how much of the
   graph is actually causal vs. how much is asserted or associative.
+
+---
+
+## Discovery Architecture Rules (DR-15 through DR-18 — CEO revision)
+
+Per CEO directive: these rules replace the prior DR-15 (cycle 29) with
+the CEO's revised formulation. The CEO's correction is foundational:
+
+> Do not confuse relationships, mechanisms, and causality. They are
+> three different things.
+
+| Level | Question | Example |
+|---|---|---|
+| Relationship | What is connected? | Bi₂Te₃ ↔ thermoelectrics |
+| Mechanism | How is it connected? | Carrier mobility affects the Seebeck coefficient |
+| Causality | What changes when I intervene? | Doping concentration changes ammonia yield |
+
+If you collapse these together, the repository will become another
+extraordinarily sophisticated ontology engine rather than a discovery
+engine. These 4 rules keep them distinct.
+
+### DR-15 (revised): Executable mechanisms
+
+> A mechanism is not valid merely because it is described. A
+> mechanism is valid only if it satisfies one of: derived from first
+> principles, reproduced experimentally, numerically simulated, or
+> independently verified from source material. — CEO, cycle 30
+
+Every mechanism receives one of four states:
+
+```json
+{
+  "mechanism_status": "observed | simulated | derived | asserted"
+}
+```
+
+- **observed**: the mechanism was reproduced experimentally (a real
+  measurement confirmed it).
+- **simulated**: the mechanism was numerically simulated (a physics/
+  chemistry model computed it).
+- **derived**: the mechanism was derived from first principles (a
+  governing equation was solved analytically).
+- **asserted**: the mechanism is described but not verified by any
+  of the above three methods. This is the weakest state.
+
+Any mechanism lacking one of these four states is automatically
+downgraded to "asserted." An "asserted" mechanism cannot be used in
+simulation or prediction — only in hypothesis generation (flagged).
+
+This replaces the prior DR-15's three-tier schema (verified/asserted/
+associative) with a four-state mechanism schema. The prior three tiers
+are subsumed:
+- "verified" → split into observed/simulated/derived (depending on
+  how the formula was validated)
+- "asserted" → retained as "asserted"
+- "associative" → remains as the absence of a mechanism (no status)
+
+### DR-16: Intervention principle
+
+> A causal edge is valid only if an intervention can be specified.
+> The fundamental question becomes: "What happens if I change this?"
+> — CEO, cycle 30
+
+Every causal edge SHALL include an intervention specification:
+
+```json
+{
+  "node": "carrier_density",
+  "intervention": "increase_5_percent",
+  "predicted_effect": "increase_seebeck",
+  "expected_magnitude": "2.5% increase in S",
+  "uncertainty": "±0.5%"
+}
+```
+
+An edge without an intervention specification is a **relationship**,
+not a **causal edge**. Relationships may exist in the graph (they
+connect things) but cannot be used for causal reasoning (they don't
+tell you what changes when you intervene).
+
+The distinction:
+- Relationship: "Bi₂Te₃ is connected to thermoelectrics." (No
+  intervention specified — what would you change?)
+- Mechanism: "Carrier mobility affects the Seebeck coefficient." (How
+  it's connected — but still no intervention.)
+- Causality: "If I increase carrier density by 5%, Seebeck
+  coefficient increases by 2.5% ± 0.5%." (What changes when you
+  intervene — this is causality.)
+
+### DR-17: Counterfactual requirement
+
+> Every causal statement must have a counterfactual. Without
+> counterfactuals, the graph remains descriptive. — CEO, cycle 30
+
+Every causal statement SHALL include both:
+
+```text
+If X changes: Y changes.
+If X does not change: Y does not change.
+```
+
+The counterfactual is what distinguishes causality from correlation.
+"Bi₂Te₃ causes thermoelectric power" is not causal unless you can
+state: "If Bi₂Te₃ were not present, thermoelectric power would not
+be generated (in this device)." The counterfactual forces the system
+to specify what would happen in the absence of the cause — which is
+the definition of causality (per the Phase 15 CAUSALITY_POLICY.md
+test: "If A did not exist, would B be impossible or significantly
+harder?").
+
+A causal statement without a counterfactual is downgraded to a
+mechanism (it explains how, but not what changes under intervention).
+
+### DR-18: Experiment selection
+
+> The system's primary output is not a report, a score, a document,
+> or a hypothesis. The primary output is: the next experiment. — CEO,
+> cycle 30
+
+The system's ultimate function is to answer the question:
+
+> What experiment should I perform tomorrow morning?
+
+Every other output (packages, PDFs, governance, graphs) exists to
+serve this question. A system that produces excellent packages but
+cannot answer this question is a knowledge system, not a discovery
+system.
+
+The "next experiment" output SHALL include:
+- **prediction**: what the system predicts will happen
+- **intervention**: what to change (per DR-16)
+- **measurement**: what to measure and how
+- **falsification**: what result would falsify the prediction
+- **cost**: what the experiment costs
+- **timeline**: how long it takes
+- **learning**: what the system will learn from each possible outcome
+  (pass AND fail)
+
+If the system cannot produce this output, it has not yet become a
+discovery system. The `closed_loops` count is the metric: count = 0
+means the system has never proposed an experiment that was then
+executed and recorded.
+
+---
+
+## The loop (CEO formulation)
+
+```text
+observation
+      ↓
+measurement
+      ↓
+mechanism
+      ↓
+constraint
+      ↓
+causal graph
+      ↓
+prediction
+      ↓
+intervention
+      ↓
+experiment
+      ↓
+observation
+```
+
+Every arrow must be auditable.
+Every node must have provenance.
+Every prediction must be falsifiable.
+Every failure must modify the graph.
+
+That last line is probably the most important one. Because a system
+that does not change when reality disagrees with it is not learning.
+It is merely keeping records.
