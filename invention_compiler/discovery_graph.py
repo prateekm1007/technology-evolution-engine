@@ -380,7 +380,7 @@ class DiscoveryGraph:
         """Add an edge to the appropriate subgraph based on its relation_type."""
         subgraph = self._subgraphs[edge.relation_type]
         subgraph.add_edge(edge)
-        # Ensure nodes exist
+        # Ensure nodes exist (preserve node_type if a typed node was already added)
         for nid in (edge.source, edge.target):
             if nid not in self.nodes:
                 self.nodes[nid] = DiscoveryNode(
@@ -436,9 +436,49 @@ class DiscoveryGraph:
         - CausalEdge with tier=ASSOCIATIVE → ASSOCIATION + Evidence(mechanism_status=ASSERTED)
         - CausalEdge with tier=CONTRADICTED → excluded
         - CausalEdge with tier=CONTRADICTED → excluded
+
+        Per cycle 48 (Swanson meaningful): nodes are imported BEFORE edges so
+        that node_type is preserved from the source CausalNode. Previously
+        add_edge auto-created nodes with node_type="unknown", which made
+        SwansonBridgeSearch's cross-type meaningfulness check always return 0.
         """
         from invention_compiler.causal_graph import EdgeTier, MechanismStatus
 
+        # 1. Import NODES first, preserving node_type from CausalNode
+        for nid, cnode in causal_graph.nodes.items():
+            if nid not in self.nodes:
+                # Determine which layer(s) this node participates in by scanning
+                # edges in the causal graph. A node with no edges is still added
+                # to the MECHANISM layer by default (DR-19 universal node model).
+                participating_layers = set()
+                for e in causal_graph.edges:
+                    if e.source == nid or e.target == nid:
+                        if e.tier == EdgeTier.VERIFIED:
+                            participating_layers.add(RelationType.INTERVENTION)
+                        elif e.tier == EdgeTier.ASSERTED:
+                            participating_layers.add(RelationType.MECHANISM)
+                        elif e.tier == EdgeTier.ASSOCIATIVE:
+                            participating_layers.add(RelationType.ASSOCIATION)
+                if not participating_layers:
+                    participating_layers = {RelationType.MECHANISM}
+
+                dnode = DiscoveryNode(
+                    node_id=nid,
+                    node_type=cnode.node_type,  # PRESERVE — was 'unknown' before
+                    label=cnode.label,
+                    properties=dict(cnode.properties) if hasattr(cnode, 'properties') else {},
+                    layers=participating_layers,
+                )
+                self.add_node(dnode)
+            else:
+                # Node already exists — merge layers but preserve node_type
+                self.nodes[nid].layers |= {RelationType.MECHANISM}
+                if self.nodes[nid].node_type == "unknown" and cnode.node_type != "unknown":
+                    self.nodes[nid].node_type = cnode.node_type
+                if not self.nodes[nid].label or self.nodes[nid].label == nid:
+                    self.nodes[nid].label = cnode.label
+
+        # 2. Import EDGES
         for edge in causal_graph.edges:
             if edge.tier == EdgeTier.CONTRADICTED:
                 continue  # excluded from discovery graph

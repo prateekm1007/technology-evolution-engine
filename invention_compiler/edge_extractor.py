@@ -73,6 +73,18 @@ class EdgeExtractor:
         (r'biomass.*carbon|biomass.*hard.carbon', 'biomass_carbon', 'Biomass-derived hard carbon'),
         (r'Janus.*aminobenzene|aminobenzene.*anode', 'janus_aminobenzene', 'Janus aminobenzene anode'),
         (r'sodium|Na.ion', 'sodium', 'Sodium'),
+        # Radiative cooling materials (Cycle 48 cross-domain corpus)
+        (r'TiO2|TiO₂|titanium dioxide|titanium.?dioxide', 'TiO2', 'Titanium dioxide'),
+        (r'PDMS|polydimethylsiloxane', 'PDMS', 'Polydimethylsiloxane'),
+        (r'PVA|polyvinyl alcohol', 'PVA', 'Polyvinyl alcohol'),
+        (r'PMMA|polymethyl methacrylate|acrylic', 'PMMA', 'Polymethyl methacrylate (acrylic)'),
+        (r'calcium pyrophosphate|CPP ceramic', 'CPP_ceramic', 'Calcium pyrophosphate ceramic'),
+        (r'calcium phosphate|Ca3.*PO4.*2|hydroxyapatite', 'calcium_phosphate', 'Calcium phosphate'),
+        (r'silica microsphere|SiO2 microsphere|silica nanoparticle', 'silica_microsphere', 'Silica microsphere'),
+        (r'alpha.quartz|α.quartz|α.SiO2', 'alpha_quartz', 'Alpha quartz (SiO2)'),
+        (r'Li4Ti5O12|Li₄Ti₅O₁₂|lithium titanate', 'Li4Ti5O12', 'Lithium titanate (Li4Ti5O12)'),
+        (r'β.SiC|beta.SiC|silicon carbide', 'SiC', 'Silicon carbide'),
+        (r'glass.*polymer|polymer.*film.*cooling', 'glass_polymer_rc', 'Glass-polymer radiative cooling film'),
     ]
 
     # Property patterns: measured quantities
@@ -86,6 +98,22 @@ class EdgeExtractor:
         (r'(\d+)\s*K\b.*temperature', 'temperature', 'Temperature', 'K'),
         (r'Seebeck', 'seebeck_coefficient', 'Seebeck coefficient', 'V/K'),
         (r'ZT\b|figure of merit', 'figure_of_merit', 'Figure of merit (ZT)', 'dimensionless'),
+        # Radiative cooling properties (cycle 48 cross-domain corpus)
+        (r'cooling power.*?(\d+\.?\d*)\s*W/m2|cooling power.*?(\d+\.?\d*)\s*W.?m.?2',
+         'cooling_power_density', 'Cooling power density', 'W/m2'),
+        (r'(\d+\.?\d*)\s*W/m2.*cooling|cooling.*?(\d+\.?\d*)\s*W/m2',
+         'cooling_power_density', 'Cooling power density', 'W/m2'),
+        (r'(\d+\.?\d*)\s*W\s*/\s*m2', 'cooling_power_density', 'Cooling power density', 'W/m2'),
+        (r'solar reflectance.*?(\d+\.?\d*)\s*%|(\d+\.?\d*)\s*%\s*solar reflect',
+         'solar_reflectance', 'Solar reflectance', '%'),
+        (r'emissivity.*?(\d+\.?\d*)|emittance.*?(\d+\.?\d*)',
+         'infrared_emissivity', 'Infrared emissivity in sky window', 'dimensionless'),
+        (r'sub.?ambient.*?(\d+\.?\d*)\s*(?:°|degrees?|C)|(\d+\.?\d*)\s*°?\s*C.*sub.?ambient',
+         'subambient_temperature_drop', 'Sub-ambient temperature drop', 'C'),
+        (r'(?:refractive index|index of refraction).*?(\d+\.?\d*)|(\d+\.?\d*)\s*refractive index',
+         'refractive_index', 'Refractive index', 'dimensionless'),
+        (r'band.?gap.*?(\d+\.?\d*)\s*eV|(\d+\.?\d*)\s*eV.*band.?gap',
+         'bandgap', 'Electronic bandgap', 'eV'),
     ]
 
     # Mechanism patterns: cause-effect relationships
@@ -139,6 +167,25 @@ class EdgeExtractor:
         (r'electrochemical.*insertion|alkali.*metal.*insertion',
          'na_insertion', 'sodium_ions', 'intercalated_material',
          'Electrochemical insertion of sodium ions into electrode material'),
+        # Radiative cooling mechanisms (cycle 48 cross-domain corpus)
+        (r'atmospheric.*window|sky.*window.*(?:8|8-13|8 to 13).*(?:μm|um|micron)',
+         'sky_window_emission', 'thermal_radiation', 'subambient_temperature',
+         'Surface emits thermal radiation through 8-13 μm atmospheric window to cold sky'),
+        (r'Restrahlen.*band|Reststrahlen.*band',
+         'reststrahlen_emission', 'phonon_resonance', 'infrared_emissivity',
+         'Phonon resonance in Reststrahlen bands produces high mid-IR emissivity'),
+        (r'phonon resonance.*(?:9|8-13).*(?:μm|um|micron)|phonon.*mode.*infrared',
+         'phonon_resonance_emission', 'phonon_resonance', 'infrared_emissivity',
+         'Phonon resonance modes produce infrared emissivity in sky window'),
+        (r'solar.*reflectance.*emissivity|reflect.*solar.*emit.*infrared',
+         'pdrc_mechanism', 'solar_reflection', 'subambient_temperature',
+         'PDRC reflects solar spectrum and emits thermal radiation through sky window'),
+        (r'scattering.*solar|nanoparticle.*scattering.*reflect',
+         'solar_scattering', 'nanoparticle', 'solar_reflection',
+         'Nanoparticle scattering reflects solar spectrum'),
+        (r'thermal.*radiation.*cold.*sky|emits.*heat.*sky',
+         'sky_radiation_heat_sink', 'thermal_radiation', 'cold_sky',
+         'Surface radiates heat to cold sky (3K space) as heat sink'),
     ]
 
     # Manufacturing method patterns
@@ -159,6 +206,16 @@ class EdgeExtractor:
          'biomass_pyrolysis', 'Biomass pyrolysis (hard carbon synthesis)'),
         (r'ball.*milling.*sodium|milling.*Na',
          'na_ball_milling', 'Ball milling (Na-ion)'),
+        # Radiative cooling manufacturing (cycle 48 cross-domain corpus)
+        (r'spin.?coat|spin coating', 'spin_coating', 'Spin coating'),
+        (r'dip.?coat|dip coating', 'dip_coating', 'Dip coating'),
+        (r'spray.?coat|spray coating', 'spray_coating', 'Spray coating'),
+        (r'roll.?to.?roll|roll to roll', 'roll_to_roll', 'Roll-to-roll coating'),
+        (r'nano.*particle.*synth|nanoparticle.*preparation|co.?precipitation',
+         'nanoparticle_synthesis', 'Nanoparticle synthesis (co-precipitation)'),
+        (r'electrospinning|electro.?spin', 'electrospinning', 'Electrospinning'),
+        (r'magnetron sputter.*multilayer|multilayer.*deposition',
+         'multilayer_deposition', 'Multilayer deposition'),
     ]
 
     # Application patterns
@@ -190,6 +247,21 @@ class EdgeExtractor:
          'grid_storage', 'Grid-scale energy storage'),
         (r'low.cost.*battery|cheap.*battery|abundant.*sodium',
          'low_cost_battery', 'Low-cost battery (Na abundance)'),
+        # Radiative cooling applications (cycle 48 cross-domain corpus)
+        (r'passive daytime radiative cooling|PDRC',
+         'pdrc_application', 'Passive daytime radiative cooling (PDRC)'),
+        (r'building cooling|building.*thermal.*management|roof.*cooling',
+         'building_cooling', 'Building cooling'),
+        (r'solar cell cooling|photovoltaic.*cooling|PV.*cooling',
+         'solar_cell_cooling', 'Solar cell / photovoltaic cooling'),
+        (r'wearable cooling|wearable.*thermal',
+         'wearable_cooling', 'Wearable cooling'),
+        (r'automotive.*cooling|vehicle.*thermal.*management',
+         'automotive_cooling', 'Automotive cooling'),
+        (r'electronics cooling|electronics.*thermal.*management|chip.*cooling',
+         'electronics_cooling', 'Electronics cooling'),
+        (r'cold.*chain|refrigeration.*cold.*chain|vaccine.*cold.*chain',
+         'cold_chain', 'Cold chain logistics'),
     ]
 
     # Direction patterns: INCREASES/DECREASES for Altshuller contradiction search
@@ -298,7 +370,15 @@ class EdgeExtractor:
         for pattern, prop_id, prop_label, unit in self.compiled_properties:
             m = pattern.search(text)
             if m:
-                value = m.group(1) if m.lastindex else "present"
+                # Use the first non-None capture group; fall back to "present"
+                value = None
+                if m.groups():
+                    for g in m.groups():
+                        if g is not None:
+                            value = g
+                            break
+                if value is None:
+                    value = "present"
                 node = CausalNode(
                     node_id=prop_id, node_type="property", label=prop_label,
                     properties={"value": value, "unit": unit, "source": source_id},

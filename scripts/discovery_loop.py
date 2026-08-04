@@ -57,9 +57,14 @@ class DiscoveryLoop:
     exists but corpus insufficient), or NOT IMPLEMENTED (engine missing).
     """
     
-    def __init__(self, papers_dir: str = None, patents_dir: str = None):
+    def __init__(self, papers_dir: str = None, patents_dir: str = None,
+                 radiative_cooling_dir: str = None):
         self.papers_dir = papers_dir or str(ROOT / "data" / "ingestion" / "papers")
         self.patents_dir = patents_dir or str(ROOT / "data" / "ingestion" / "patents")
+        # Cycle 48 cross-domain corpus: radiative cooling (24 arxiv papers)
+        self.radiative_cooling_dir = radiative_cooling_dir or str(
+            ROOT / "data" / "ingestion" / "radiative_cooling"
+        )
         self.results: List[Dict[str, Any]] = []
         self.discovery_graph: Optional[DiscoveryGraph] = None
         self.causal_graph: Optional[CausalGraph] = None
@@ -93,37 +98,42 @@ class DiscoveryLoop:
         print("=" * 70)
         print(f"Papers: {self.papers_dir}")
         print(f"Patents: {self.patents_dir}")
+        print(f"Radiative cooling corpus: {self.radiative_cooling_dir}")
         print()
         
         # Step 1: Document ingestion
         extractor = EdgeExtractor()
         papers = extractor.extract_from_corpus(self.papers_dir, use_discovery_graph=False)
         patents = extractor.extract_from_corpus(self.patents_dir, use_discovery_graph=False)
+        # Cycle 48: cross-domain radiative cooling corpus
+        rc = extractor.extract_from_corpus(self.radiative_cooling_dir, use_discovery_graph=False)
         
         # Merge
         self.causal_graph = CausalGraph()
-        for nid, node in papers.nodes.items():
-            self.causal_graph.add_node(node)
-        for nid, node in patents.nodes.items():
-            if nid not in self.causal_graph.nodes:
-                self.causal_graph.add_node(node)
-            else:
-                existing = self.causal_graph.nodes[nid]
-                existing.what_does_this_change = list(
-                    set(existing.what_does_this_change + node.what_does_this_change)
+        for src in (papers, patents, rc):
+            for nid, node in src.nodes.items():
+                if nid not in self.causal_graph.nodes:
+                    self.causal_graph.add_node(node)
+                else:
+                    existing = self.causal_graph.nodes[nid]
+                    existing.what_does_this_change = list(
+                        set(existing.what_does_this_change + node.what_does_this_change)
+                    )
+                    existing.evidence = list(set(existing.evidence + node.evidence))
+            for edge in src.edges:
+                exists = any(
+                    e.source == edge.source and e.target == edge.target and e.mechanism == edge.mechanism
+                    for e in self.causal_graph.edges
                 )
-                existing.evidence = list(set(existing.evidence + node.evidence))
-        for edge in papers.edges + patents.edges:
-            exists = any(
-                e.source == edge.source and e.target == edge.target and e.mechanism == edge.mechanism
-                for e in self.causal_graph.edges
-            )
-            if not exists:
-                self.causal_graph.add_edge(edge)
+                if not exists:
+                    self.causal_graph.add_edge(edge)
         
-        doc_count = len(papers.nodes) + len(patents.nodes)
+        doc_count = len(papers.nodes) + len(patents.nodes) + len(rc.nodes)
+        edge_count = len(papers.edges) + len(patents.edges) + len(rc.edges)
         self._log(1, "Document ingestion", "PASS",
-                  f"{doc_count} nodes from {len(papers.edges) + len(patents.edges)} edges")
+                  f"{doc_count} nodes from {edge_count} edges "
+                  f"(papers={len(papers.nodes)}, patents={len(patents.nodes)}, "
+                  f"radiative_cooling={len(rc.nodes)})")
         
         # Step 2: Entity extraction
         entities = [n for n in self.causal_graph.nodes.values() if n.node_type == "material"]
