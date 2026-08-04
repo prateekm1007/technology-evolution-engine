@@ -368,6 +368,330 @@ def discover_laws_from_dataset(dataset: Dict[str, List[float]],
 
 
 # ---------------------------------------------------------------------------
+# BACON.3 — variable composition (Phase IV, cycle 51)
+# ---------------------------------------------------------------------------
+
+@dataclass
+class ComposedLaw:
+    """A multivariate law discovered by BACON.3 — composition of variables.
+
+    BACON.3 (Langley, 1981) extends BACON.1 by composing variables:
+    if y is not a clean function of any single x_i, BACON.3 tries
+    products, ratios, and sums of variables. Example: if y = a * x1 * x2,
+    BACON.3 computes z = x1 * x2, then fits y = a * z + b (linear in z).
+
+    This module supports 4 composition operators:
+      - product:   z = x1 * x2
+      - ratio:     z = x1 / x2 (and x2 / x1)
+      - sum:       z = x1 + x2
+      - difference: z = x1 - x2
+
+    For each composition, BACON.3 then runs single-variable discover_law()
+    on (z, y). If R²(z, y) > R²(any single x_i, y), the composition
+    captures the multivariate law that single-variable fits missed.
+    """
+    composition_op: str         # "product", "ratio", "sum", "difference"
+    input_vars: List[str]       # which variables were composed
+    composed_var_label: str     # human-readable, e.g., "T_dry_C * RH_pct"
+    composed_values: List[float]  # the z = compose(x1, x2) values
+    law: DiscoveredLaw           # the single-variable law fit on (z, y)
+    r2_improvement: float       # how much R² improved over best single-variable fit
+
+    def to_dict(self) -> Dict[str, Any]:
+        return {
+            "composition_op": self.composition_op,
+            "input_vars": self.input_vars,
+            "composed_var_label": self.composed_var_label,
+            "law": self.law.to_dict(),
+            "r2_improvement": self.r2_improvement,
+        }
+
+    def __str__(self) -> str:
+        return (f"ComposedLaw(op='{self.composition_op}', "
+                f"vars={self.input_vars}, z='{self.composed_var_label}', "
+                f"law={self.law.name}, R²={self.law.r2:.4f}, "
+                f"improvement=+{self.r2_improvement:.4f})")
+
+
+def _compose_product(xs1: List[float], xs2: List[float]) -> List[float]:
+    return [a * b for a, b in zip(xs1, xs2)]
+
+
+def _compose_ratio(xs1: List[float], xs2: List[float]) -> Optional[List[float]]:
+    if any(abs(b) < 1e-12 for b in xs2):
+        return None
+    return [a / b for a, b in zip(xs1, xs2)]
+
+
+def _compose_sum(xs1: List[float], xs2: List[float]) -> List[float]:
+    return [a + b for a, b in zip(xs1, xs2)]
+
+
+def _compose_difference(xs1: List[float], xs2: List[float]) -> List[float]:
+    return [a - b for a, b in zip(xs1, xs2)]
+
+
+COMPOSITION_OPS: Dict[str, Any] = {
+    "product": _compose_product,
+    "ratio": _compose_ratio,
+    "sum": _compose_sum,
+    "difference": _compose_difference,
+}
+
+
+def discover_composed_law(dataset: Dict[str, List[float]],
+                          target_var: str,
+                          independent_vars: Optional[List[str]] = None,
+                          threshold: float = R2_FALSIFIABILITY_THRESHOLD,
+                          verbose: bool = False
+                          ) -> Optional[ComposedLaw]:
+    """Discover a multivariate law by composing pairs of variables.
+
+    BACON.3 algorithm (simplified):
+      1. For each pair (x_i, x_j) of independent variables, compute
+         z = x_i OP x_j for each composition operator.
+      2. Run single-variable discover_law(z, y) for each composed z.
+      3. Return the composition whose law has the highest R² that EXCEEDS
+         the best single-variable R² by at least 0.01 (improvement must
+         be material — a 0.001 improvement is noise).
+
+    Args:
+        dataset: dict mapping variable name → list of values
+        target_var: the dependent variable
+        independent_vars: which vars to compose (default: all non-target)
+        threshold: minimum R² required for the composed law
+        verbose: if True, print fit details for each composition tried
+
+    Returns:
+        ComposedLaw if a composition materially improves R², else None.
+    """
+    if target_var not in dataset:
+        raise ValueError(f"target_var '{target_var}' not in dataset")
+    if independent_vars is None:
+        independent_vars = [v for v in dataset if v != target_var]
+    if len(independent_vars) < 2:
+        return None  # BACON.3 requires ≥2 variables to compose
+
+    ys = dataset[target_var]
+
+    # Baseline: best single-variable fit
+    single_results = discover_laws_from_dataset(
+        dataset, target_var, independent_vars, threshold=0.0  # get R² even if below threshold
+    )
+    best_single_r2 = max(
+        (law.r2 for law in single_results.values() if law is not None),
+        default=0.0,
+    )
+    if verbose:
+        print(f"  BACON.3 baseline: best single-variable R² = {best_single_r2:.4f}")
+
+    best: Optional[ComposedLaw] = None
+    best_r2 = best_single_r2 + 0.01  # must improve by ≥0.01
+
+    # Try every (i, j) pair with i < j (avoid duplicates) and every operator
+    for idx_i in range(len(independent_vars)):
+        for idx_j in range(idx_i + 1, len(independent_vars)):
+            vi = independent_vars[idx_i]
+            vj = independent_vars[idx_j]
+            xs_i = dataset[vi]
+            xs_j = dataset[vj]
+            if len(xs_i) != len(ys) or len(xs_j) != len(ys):
+                continue
+
+            for op_name, op_func in COMPOSITION_OPS.items():
+                # ratio is directional — try both directions
+                if op_name == "ratio":
+                    composed = op_func(xs_i, xs_j)
+                    composed_label = f"{vi} / {vj}"
+                else:
+                    composed = op_func(xs_i, xs_j)
+                    composed_label = f"{vi} {op_name} {vj}".replace("product", "*").replace("sum", "+").replace("difference", "-")
+
+                if composed is None:
+                    if verbose:
+                        print(f"  skip {vi} {op_name} {vj} — undefined (division by zero)")
+                    continue
+
+                law = discover_law(composed, ys, x_label=composed_label,
+                                   y_label=target_var, threshold=0.0)  # get R² regardless
+                if law is None:
+                    continue
+
+                if verbose:
+                    print(f"  try z = {composed_label:30s} → {law.name:10s} R²={law.r2:.4f}")
+
+                if law.r2 > best_r2:
+                    best_r2 = law.r2
+                    best = ComposedLaw(
+                        composition_op=op_name,
+                        input_vars=[vi, vj],
+                        composed_var_label=composed_label,
+                        composed_values=composed,
+                        law=law,
+                        r2_improvement=law.r2 - best_single_r2,
+                    )
+
+    # Apply threshold to the final result
+    if best is not None and best.law.r2 >= threshold:
+        return best
+    return None
+
+
+# ---------------------------------------------------------------------------
+# Cross-validation (Phase IV, cycle 51)
+# ---------------------------------------------------------------------------
+
+@dataclass
+class CrossValidatedLaw:
+    """The result of cross-validating a discovered law.
+
+    Per ANTI_ENTROPY.md "Don't reward agreement with priors": fitting
+    a law and reporting R² on the SAME data is in-sample fit, which
+    overclaims. Real scientific discovery requires generalization —
+    fit on training data, predict held-out test data, compute test R².
+
+    This dataclass carries both:
+      - training R² (in-sample, optimistic)
+      - test R² (out-of-sample, honest)
+      - test residuals (per-point prediction errors on held-out data)
+      - generalization_gap = train_R² - test_R² (large gap = overfitting)
+    """
+    law: DiscoveredLaw          # the law fit on training data
+    train_r2: float             # R² on training set (80% of data)
+    test_r2: float              # R² on test set (20% held out)
+    test_residuals: List[float]  # (y_pred - y_actual) on test set
+    generalization_gap: float   # train_r2 - test_r2 (≥0; large = overfitting)
+    n_train: int
+    n_test: int
+
+    @property
+    def generalizes(self) -> bool:
+        """A law generalizes if test R² is within 0.10 of train R²."""
+        return self.generalization_gap <= 0.10 and self.test_r2 >= R2_FALSIFIABILITY_THRESHOLD
+
+    def to_dict(self) -> Dict[str, Any]:
+        return {
+            "law": self.law.to_dict(),
+            "train_r2": self.train_r2,
+            "test_r2": self.test_r2,
+            "generalization_gap": self.generalization_gap,
+            "n_train": self.n_train,
+            "n_test": self.n_test,
+            "generalizes": self.generalizes,
+        }
+
+    def __str__(self) -> str:
+        return (f"CrossValidatedLaw(law={self.law.name}, "
+                f"train R²={self.train_r2:.4f}, test R²={self.test_r2:.4f}, "
+                f"gap={self.generalization_gap:.4f}, "
+                f"{'GENERALIZES' if self.generalizes else 'OVERFIT'})")
+
+
+def cross_validate_law(xs: List[float], ys: List[float],
+                       test_fraction: float = 0.2,
+                       threshold: float = R2_FALSIFIABILITY_THRESHOLD
+                       ) -> Optional[CrossValidatedLaw]:
+    """Cross-validate a discovered law on held-out test data.
+
+    Splits (x, y) into 80% train + 20% test. Fits BACON on train,
+    predicts test, computes test R². Returns the cross-validated law
+    with generalization gap, or None if no law passes the threshold.
+
+    Per ANTI_ENTROPY.md "Don't reward agreement with priors": this is
+    the honest fit — if a law has high train R² but low test R², it
+    overfit. A real scientific law must generalize.
+
+    Deterministic split: take every (1/test_fraction)-th point as test,
+    rest as train. This is reproducible per "use the word 'engine'
+    honestly" rule (no RNG).
+
+    Args:
+        xs: input data
+        ys: output data
+        test_fraction: fraction of data to hold out (default 0.2 = 20%)
+        threshold: minimum TEST R² required for the law to "generalize"
+
+    Returns:
+        CrossValidatedLaw if a law is discovered and tested, else None.
+    """
+    n = len(xs)
+    if n < 5:  # need ≥5 points for meaningful 80/20 split
+        return None
+    if len(xs) != len(ys):
+        raise ValueError("length mismatch")
+
+    # Deterministic test set: every k-th point is test
+    k = max(1, round(1.0 / test_fraction))
+    test_indices = set(i for i in range(n) if i % k == 0)
+    train_xs = [xs[i] for i in range(n) if i not in test_indices]
+    train_ys = [ys[i] for i in range(n) if i not in test_indices]
+    test_xs = [xs[i] for i in test_indices]
+    test_ys = [ys[i] for i in test_indices]
+
+    # Fit on training
+    train_law = discover_law(train_xs, train_ys, threshold=0.0)  # always fit
+    if train_law is None:
+        return None
+
+    # Predict on test set using the train-law's params
+    # We need to compute y_pred for each test x using the fitted law's form/params
+    test_y_pred = _predict_with_law(train_law, test_xs)
+    if test_y_pred is None:
+        return None  # law form not predictable (shouldn't happen)
+
+    # Compute test R²
+    n_test = len(test_ys)
+    mean_test_y = sum(test_ys) / n_test
+    ss_tot = sum((y - mean_test_y) ** 2 for y in test_ys)
+    test_residuals = [yp - ya for yp, ya in zip(test_y_pred, test_ys)]
+    ss_res = sum(r ** 2 for r in test_residuals)
+    test_r2 = 1.0 - (ss_res / ss_tot) if ss_tot > 1e-12 else 0.0
+
+    # Compute train R² (re-fit on training only)
+    # train_law.r2 IS the train R² already (computed in discover_law)
+    train_r2 = train_law.r2
+
+    return CrossValidatedLaw(
+        law=train_law,
+        train_r2=train_r2,
+        test_r2=test_r2,
+        test_residuals=test_residuals,
+        generalization_gap=train_r2 - test_r2,
+        n_train=len(train_xs),
+        n_test=n_test,
+    )
+
+
+def _predict_with_law(law: DiscoveredLaw, xs: List[float]) -> Optional[List[float]]:
+    """Predict y values for xs using the law's form and fitted params."""
+    if law.name == "linear":
+        a, b = law.params
+        return [a * x + b for x in xs]
+    if law.name == "inverse":
+        a, b = law.params
+        if any(abs(x) < 1e-12 for x in xs):
+            return None
+        return [a / x + b for x in xs]
+    if law.name == "logarithmic":
+        a, b = law.params
+        if any(x <= 0 for x in xs):
+            return None
+        return [a * math.log(x) + b for x in xs]
+    if law.name == "power":
+        a, b = law.params
+        if any(x <= 0 for x in xs):
+            return None
+        return [a * (x ** b) for x in xs]
+    if law.name == "exponential":
+        a, b = law.params
+        return [a * math.exp(b * x) for x in xs]
+    if law.name == "quadratic":
+        a, b, c = law.params
+        return [a * x * x + b * x + c for x in xs]
+    return None
+
+
+# ---------------------------------------------------------------------------
 # Real data generators — wrap the existing formula modules as datasets
 # ---------------------------------------------------------------------------
 

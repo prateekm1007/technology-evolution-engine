@@ -245,6 +245,68 @@ def run_acid_test() -> Dict[str, Any]:
     except Exception:
         pass  # remain NOT IMPLEMENTED
 
+    # Phase IV (cycle 51): three additional capabilities
+    # 1. BACON.3 — multivariate composition (discover_composed_law)
+    # 2. Cross-validation — honest fit (cross_validate_law with gap ≤ 0.10)
+    # 3. Ross King autonomous — system generates hypotheses
+    phase_iv_status = {
+        "BACON.3 multivariate": "NOT IMPLEMENTED",
+        "BACON cross-validation": "NOT IMPLEMENTED",
+        "Ross King autonomous": "NOT IMPLEMENTED",
+    }
+    try:
+        from invention_compiler.bacon_engine import (
+            discover_composed_law, cross_validate_law,
+            stull_wet_bulb_dataset, pcm_latent_heat_dataset,
+        )
+        # 1. BACON.3: discover a composed law on synthetic multivariate data
+        #    where y = a * x1 * x2 (no single variable explains it)
+        x1 = [1.0, 2.0, 3.0, 4.0, 5.0, 1.0, 2.0, 3.0, 4.0, 5.0]
+        x2 = [1.0, 1.0, 1.0, 1.0, 1.0, 2.0, 2.0, 2.0, 2.0, 2.0]
+        y = [2.5 * a * b for a, b in zip(x1, x2)]
+        composed = discover_composed_law(
+            {"x1": x1, "x2": x2, "y": y}, "y"
+        )
+        if composed is not None and composed.law.r2 >= 0.99 \
+                and composed.composition_op == "product":
+            phase_iv_status["BACON.3 multivariate"] = "PASS"
+
+        # 2. Cross-validation: PCM data must generalize with gap ≤ 0.10
+        pcm = pcm_latent_heat_dataset(n_points=10)
+        cv = cross_validate_law(pcm["Q_daily_W"], pcm["m_pcm_kg"])
+        if cv is not None and cv.generalizes and cv.generalization_gap <= 0.10:
+            phase_iv_status["BACON cross-validation"] = "PASS"
+    except ImportError:
+        pass
+    except Exception:
+        pass
+
+    # 3. Ross King autonomous: design_autonomous_competing_experiment produces
+    #    a proposal with ≥2 autonomously-generated hypotheses
+    try:
+        from invention_compiler.causal_simulator import CausalSimulator
+        if hasattr(CausalSimulator, "design_autonomous_competing_experiment"):
+            sim = CausalSimulator(combined)
+            proposal = sim.design_autonomous_competing_experiment(
+                start_node_id="Bi2Te3",
+                target_node_id="te_power_generation",
+                intervention_node="temperature_difference",
+                discriminating_value=500.0,
+                discriminating_unit="K",
+            )
+            if proposal is not None and "H1:" in proposal.prediction \
+                    and "H2:" in proposal.prediction:
+                phase_iv_status["Ross King autonomous"] = "PASS"
+    except Exception:
+        pass
+
+    # Aggregate Phase IV: PASS if all 3 capabilities PASS
+    phase_iv_pass_count = sum(1 for v in phase_iv_status.values() if v == "PASS")
+    phase_iv_status_overall = (
+        "PASS" if phase_iv_pass_count == 3
+        else f"{phase_iv_pass_count}/3 PASS"
+    )
+
     return {
         "Swanson":    {"status": "PASS" if swanson_meaningful >= 5 else "INCOMPLETE",
                        "count": swanson_meaningful, "threshold": 5,
@@ -276,6 +338,8 @@ def run_acid_test() -> Dict[str, Any]:
             "total_bridges": len(bridges),
             "total_analogies": len(analogies),
             "total_contradictions": len(contradictions),
+            "phase_iv": phase_iv_status,
+            "phase_iv_overall": phase_iv_status_overall,
         },
     }
 
@@ -579,6 +643,30 @@ def write_cycle_report(cycle_n: int, discovery_summary: Dict[str, Any],
         f"**Summary:** {pass_count} PASS, {incomplete_count} INCOMPLETE, "
         f"{not_impl} NOT IMPLEMENTED, {merged} MERGED",
         f"**Hardening criterion (≥4 PASS):** {'MET' if hardens else 'NOT MET'}",
+        "",
+    ])
+
+    # Phase IV capabilities section (cycle 51+)
+    phase_iv = acid_test_results.get("_meta", {}).get("phase_iv", {})
+    phase_iv_overall = acid_test_results.get("_meta", {}).get("phase_iv_overall", "")
+    if phase_iv:
+        lines.extend([
+            "### Phase IV Capabilities (cycle 51+)",
+            "",
+            "| Capability | Status |",
+            "|---|---|",
+        ])
+        for cap, status in phase_iv.items():
+            lines.append(f"| {cap} | {status} |")
+        lines.extend([
+            "",
+            f"**Phase IV overall:** {phase_iv_overall}",
+            "",
+        ])
+    else:
+        lines.append("(Phase IV capabilities not yet implemented)")
+
+    lines.extend([
         "",
         "## Stage 3: Cycle Recorded",
         "",
