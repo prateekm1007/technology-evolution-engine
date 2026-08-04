@@ -77,6 +77,12 @@ ALLOWED_MODIFICATIONS = frozenset({
     "scripts/formulas/pcm_latent_heat.py",
     "scripts/verify_formulas.py",
     "tests/test_verify_formulas.py",
+    # DR-19: Discovery Graph Architecture (6-layer model)
+    "invention_compiler/discovery_graph.py",
+    "tests/test_discovery_graph.py",
+    # EXP-001: first closed learning loop
+    "scripts/close_exp_001.py",
+    "tests/test_exp_001_closed_loop.py",
     # Self-audit fixes: product enforcement tests + CI updates
     "tests/test_product_enforcement.py",
     "product/PRODUCT.md",  # canonical source for the customer-facing PDF
