@@ -245,3 +245,38 @@ class CausalSimulator:
             learning_if_pass=learning_pass,
             learning_if_fail=learning_fail,
         )
+
+    def design_and_track_experiment(self, start_node_id: str, target_node_id: str,
+                                     intervention_node: str, intervention_desc: str,
+                                     measurement_desc: str, falsification_desc: str,
+                                     cost_usd: float, timeline_days: int,
+                                     learning_pass: str, learning_fail: str
+                                     ) -> Tuple[Optional[ExperimentProposal], Optional[Any]]:
+        """Design an experiment AND wire it into the ClosedLoopTracker.
+
+        Per Deliverable 2 (cycle 34): design_experiment() output feeds
+        into ClosedLoopTracker.log_design(). This connects Layer 4
+        (experiment designer) to Layer 5 (closed-loop tracker).
+
+        Returns:
+            (experiment_proposal, closed_loop_tracker) or (None, None) if
+            target is not reachable.
+        """
+        from experimentation_layer.scoping import ClosedLoopTracker
+
+        proposal = self.design_experiment(
+            start_node_id, target_node_id, intervention_node,
+            intervention_desc, measurement_desc, falsification_desc,
+            cost_usd, timeline_days, learning_pass, learning_fail,
+        )
+        if proposal is None:
+            return None, None
+
+        # Wire into ClosedLoopTracker (Layer 5)
+        experiment_id = f"EXP-{start_node_id}-{target_node_id}"
+        tracker = ClosedLoopTracker(experiment_id=experiment_id)
+
+        # Step 1: record the prediction (T1)
+        tracker.record_prediction()
+
+        return proposal, tracker

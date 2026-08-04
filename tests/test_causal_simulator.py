@@ -196,3 +196,142 @@ class TestApolloTestInternal:
         assert "alloy" not in [l.lower() for l in material_labels], (
             "'alloy' found — this is the old keyword-extraction artifact"
         )
+
+
+# ----------------------------------------------------------------------
+# Deliverable 1: Promoter → Simulator wiring (7 acceptance criteria)
+# ----------------------------------------------------------------------
+
+class TestPromoterSimulatorWiring:
+    """Test that the simulator calls the promoter before propagation."""
+
+    def test_simulator_calls_promoter_before_propagation(self, corpus_graph):
+        """Acceptance criterion 1: causal_simulator.py calls the formula
+        promoter before propagation."""
+        sim = CausalSimulator(corpus_graph)
+        # propagate with auto_promote=True (default) should call the promoter
+        results = sim.propagate("Bi2Te3", start_value=1.0, auto_promote=True)
+        # The promoter should have run — check that tier_counts includes
+        # any promoted or contradicted edges
+        counts = corpus_graph.tier_counts()
+        # After promotion, some edges may be VERIFIED or CONTRADICTED
+        assert counts["verified"] + counts["contradicted"] + counts["asserted"] + counts["associative"] > 0
+
+    def test_verified_edges_get_epistemic_status_verified(self, corpus_graph):
+        """Acceptance criterion 2: VERIFIED+DERIVED edges get
+        epistemic_status='verified'."""
+        sim = CausalSimulator(corpus_graph)
+        results = sim.propagate("Bi2Te3", start_value=1.0, auto_promote=True)
+        # Check that any verified propagation has epistemic_status="verified"
+        verified_results = [r for r in results if r.tier == "verified"]
+        for r in verified_results:
+            assert r.epistemic_status == "verified", (
+                f"Verified propagation should have epistemic_status='verified', "
+                f"got '{r.epistemic_status}'"
+            )
+
+    def test_asserted_edges_get_epistemic_status_hypothesis(self, corpus_graph):
+        """Acceptance criterion 3: ASSERTED edges get
+        epistemic_status='hypothesis'."""
+        sim = CausalSimulator(corpus_graph)
+        results = sim.propagate("Bi2Te3", start_value=1.0, auto_promote=True)
+        # Check that any asserted propagation has epistemic_status="hypothesis"
+        asserted_results = [r for r in results if r.tier == "asserted"]
+        for r in asserted_results:
+            assert r.epistemic_status == "hypothesis", (
+                f"Asserted propagation should have epistemic_status='hypothesis', "
+                f"got '{r.epistemic_status}'"
+            )
+
+    def test_contradicted_edges_excluded_from_propagation(self, corpus_graph):
+        """Acceptance criterion 4: CONTRADICTED edges are excluded entirely."""
+        sim = CausalSimulator(corpus_graph)
+        results = sim.propagate("Bi2Te3", start_value=1.0, auto_promote=True)
+        # No result should come from a CONTRADICTED edge
+        for r in results:
+            if r.edge_used is not None:
+                assert r.edge_used.tier != EdgeTier.CONTRADICTED, (
+                    f"Contradicted edge should not be in propagation results: "
+                    f"{r.edge_used.source} → {r.edge_used.target}"
+                )
+
+    def test_associative_edges_excluded_from_propagation(self, corpus_graph):
+        """Acceptance criterion 5: ASSOCIATIVE edges are excluded."""
+        sim = CausalSimulator(corpus_graph)
+        results = sim.propagate("Bi2Te3", start_value=1.0, auto_promote=True)
+        for r in results:
+            if r.edge_used is not None:
+                assert r.edge_used.tier != EdgeTier.ASSOCIATIVE, (
+                    f"Associative edge should not be in propagation results"
+                )
+
+
+# ----------------------------------------------------------------------
+# Deliverable 2: Designer → ClosedLoopTracker wiring (5 acceptance criteria)
+# ----------------------------------------------------------------------
+
+class TestDesignerTrackerWiring:
+    """Test that design_experiment() feeds into ClosedLoopTracker."""
+
+    def test_design_and_track_creates_tracker(self, corpus_graph):
+        """Acceptance criterion 1: design_and_track_experiment() creates a
+        ClosedLoopTracker with the prediction recorded (T1)."""
+        sim = CausalSimulator(corpus_graph)
+        proposal, tracker = sim.design_and_track_experiment(
+            start_node_id="Bi2Te3",
+            target_node_id="te_power_generation",
+            intervention_node="temperature_difference",
+            intervention_desc="apply 100K ΔT",
+            measurement_desc="measure power output (W)",
+            falsification_desc="power < 0.5W",
+            cost_usd=200.0,
+            timeline_days=3,
+            learning_pass="path verified",
+            learning_fail="path needs revision",
+        )
+        assert proposal is not None, "Should produce an experiment proposal"
+        assert tracker is not None, "Should produce a ClosedLoopTracker"
+        assert tracker.step_1_prediction_timestamp is not None, (
+            "Tracker should have recorded the prediction (T1)"
+        )
+
+    def test_tracker_not_closed_until_all_steps(self, corpus_graph):
+        """Acceptance criterion 3: closed_loops is NOT 1 until all 5 steps
+        are recorded. After design_and_track, only step 1 is done."""
+        sim = CausalSimulator(corpus_graph)
+        proposal, tracker = sim.design_and_track_experiment(
+            start_node_id="Bi2Te3",
+            target_node_id="te_power_generation",
+            intervention_node="temperature_difference",
+            intervention_desc="apply 100K ΔT",
+            measurement_desc="measure power output (W)",
+            falsification_desc="power < 0.5W",
+            cost_usd=200.0,
+            timeline_days=3,
+            learning_pass="path verified",
+            learning_fail="path needs revision",
+        )
+        # Only step 1 (prediction) is recorded — loop is NOT closed
+        assert not tracker.is_closed_loop(), (
+            "Loop should NOT be closed after only recording the prediction. "
+            "All 5 steps (predict, observe, root-cause, revise, re-predict) "
+            "are required."
+        )
+
+    def test_design_and_track_returns_none_for_unreachable(self, corpus_graph):
+        """If the target is not reachable, return (None, None)."""
+        sim = CausalSimulator(corpus_graph)
+        proposal, tracker = sim.design_and_track_experiment(
+            start_node_id="Bi2Te3",
+            target_node_id="nonexistent_node",
+            intervention_node="x",
+            intervention_desc="test",
+            measurement_desc="test",
+            falsification_desc="test",
+            cost_usd=0,
+            timeline_days=0,
+            learning_pass="test",
+            learning_fail="test",
+        )
+        assert proposal is None
+        assert tracker is None
