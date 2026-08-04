@@ -899,7 +899,8 @@ class AltshullerContradictionSearch:
     """
     
     @staticmethod
-    def find_contradictions(graph: DiscoveryGraph) -> List[Contradiction]:
+    def find_contradictions(graph: DiscoveryGraph,
+                             causal_graph: Optional[Any] = None) -> List[Contradiction]:
         """Find contradictions in the graph.
         
         Two types of contradictions (TRIZ):
@@ -909,12 +910,27 @@ class AltshullerContradictionSearch:
           — two different materials have opposite effects on the same property
           — this is a materials tradeoff: use A for improvement, but B (already
             in the system) causes degradation
+
+        Per cycle 55 (DR-25, F-061 closure): if causal_graph is provided,
+        exclude CONTRADICTED and ASSOCIATIVE edges from contradiction detection.
+        Only VERIFIED + ASSERTED edges participate — this stops keyword-match
+        edges from being counted as contradictions.
         """
         contradictions = []
+        # Build a set of (source, target) pairs to exclude (CONTRADICTED/ASSOCIATIVE)
+        excluded_pairs = set()
+        if causal_graph is not None:
+            from invention_compiler.causal_graph import EdgeTier
+            for edge in causal_graph.edges:
+                if edge.tier in (EdgeTier.CONTRADICTED, EdgeTier.ASSOCIATIVE):
+                    excluded_pairs.add((edge.source, edge.target))
         # Look for nodes with both "increases" and "decreases" outgoing edges
         node_effects = {}  # node → {target → direction}
         for subgraph in graph._subgraphs.values():
             for edge in subgraph.edges:
+                # Skip excluded edges (CONTRADICTED/ASSOCIATIVE) per DR-25
+                if (edge.source, edge.target) in excluded_pairs:
+                    continue
                 if edge.source not in node_effects:
                     node_effects[edge.source] = {}
                 direction = "unknown"

@@ -157,18 +157,31 @@ def check_phase_2() -> Dict[str, Any]:
     checks = {
         "verify_mechanisms_script_exists": (ROOT / "scripts" / "verify_mechanisms.py").exists(),
     }
-    # Check causal_density > 0 from latest baseline
-    today = datetime.now(timezone.utc).strftime("%Y%m%d")
-    baseline_path = REPORTS_DIR / f"baseline_{today}.json"
-    if baseline_path.exists():
-        baseline = json.loads(baseline_path.read_text())
-        cd = baseline.get("graph", {}).get("causal_density", 0)
+    # Check causal_density > 0 from latest verify_mechanisms report
+    reports_dir = ROOT / "benchmarks" / "reports"
+    verify_reports = sorted(reports_dir.glob("verify_mechanisms_*.json")) if reports_dir.exists() else []
+    if verify_reports:
+        latest = json.loads(verify_reports[-1].read_text())
+        cd = latest.get("after", {}).get("causal_density", 0)
         checks["causal_density_measured"] = True
         checks["causal_density_nonzero"] = cd > 0
         checks["causal_density_value"] = cd
+        checks["verified_edges"] = latest.get("after", {}).get("tier_counts", {}).get("verified", 0)
+        checks["contradicted_edges"] = latest.get("after", {}).get("tier_counts", {}).get("contradicted", 0)
     else:
         checks["causal_density_measured"] = False
-    all_met = all(checks.values())
+        checks["causal_density_nonzero"] = False
+    # Check Altshuller accepts causal_graph parameter (tier filtering)
+    try:
+        import inspect
+        from invention_compiler.discovery_graph import AltshullerContradictionSearch
+        sig = inspect.signature(AltshullerContradictionSearch.find_contradictions)
+        checks["altshuller_tier_filter"] = "causal_graph" in sig.parameters
+    except Exception:
+        checks["altshuller_tier_filter"] = False
+    all_met = all(checks.values()) if "causal_density_value" not in checks else all(
+        v for k, v in checks.items() if k != "causal_density_value"
+    )
     return {"met": all_met, "details": checks}
 
 
