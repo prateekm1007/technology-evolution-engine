@@ -161,14 +161,16 @@ class TestCorpusExtraction:
 
         # Extract from papers
         papers_graph = extractor.extract_from_corpus(
-            str(ROOT / "data" / "ingestion" / "papers")
+            str(ROOT / "data" / "ingestion" / "papers"),
+            use_discovery_graph=False
         )
         assert len(papers_graph.nodes) > 0, "Paper corpus extraction produced no nodes"
         assert len(papers_graph.edges) > 0, "Paper corpus extraction produced no edges"
 
         # Extract from patents
         patents_graph = extractor.extract_from_corpus(
-            str(ROOT / "data" / "ingestion" / "patents")
+            str(ROOT / "data" / "ingestion" / "patents"),
+            use_discovery_graph=False
         )
         assert len(patents_graph.nodes) > 0, "Patent corpus extraction produced no nodes"
         assert len(patents_graph.edges) > 0, "Patent corpus extraction produced no edges"
@@ -177,7 +179,8 @@ class TestCorpusExtraction:
         """All edges in the extracted graph should have a mechanism (ASSERTED+)."""
         extractor = EdgeExtractor()
         graph = extractor.extract_from_corpus(
-            str(ROOT / "data" / "ingestion" / "papers")
+            str(ROOT / "data" / "ingestion" / "papers"),
+            use_discovery_graph=False
         )
         counts = graph.tier_counts()
         assert counts["associative"] == 0, (
@@ -188,7 +191,8 @@ class TestCorpusExtraction:
         """The corpus extraction should find real materials (not just keywords)."""
         extractor = EdgeExtractor()
         graph = extractor.extract_from_corpus(
-            str(ROOT / "data" / "ingestion" / "papers")
+            str(ROOT / "data" / "ingestion" / "papers"),
+            use_discovery_graph=False
         )
         material_nodes = [
             n for n in graph.nodes.values() if n.node_type == "material"

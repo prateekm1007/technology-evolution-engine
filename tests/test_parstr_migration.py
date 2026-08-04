@@ -60,10 +60,10 @@ def sample_causal_graph():
 class TestPARSTRMigration:
     """Test the PAR-STR migration from CausalGraph to DiscoveryGraph."""
 
-    def test_causal_graph_is_deprecated(self):
-        """CausalGraph docstring must mention DEPRECATED."""
-        assert "DEPRECATED" in CausalGraph.__doc__, (
-            "CausalGraph must be marked DEPRECATED per Law 28 (cycle 39)"
+    def test_causal_graph_is_thin_wrapper(self):
+        """CausalGraph docstring must mention THIN WRAPPER (Law 28 cycle 40)."""
+        assert "THIN WRAPPER" in CausalGraph.__doc__, (
+            "CausalGraph must be marked as THIN WRAPPER per Law 28 (cycle 40)"
         )
 
     def test_causal_graph_has_to_discovery_graph(self, sample_causal_graph):
@@ -117,12 +117,15 @@ class TestPARSTRMigration:
             "extract_from_corpus(use_discovery_graph=True) should return DiscoveryGraph"
         )
 
-    def test_edge_extractor_default_produces_causal_graph(self):
-        """EdgeExtractor.extract_from_corpus() default still produces CausalGraph."""
+    def test_edge_extractor_default_produces_discovery_graph(self):
+        """EdgeExtractor.extract_from_corpus() default now produces DiscoveryGraph (Law 28 canonical)."""
         extractor = EdgeExtractor()
-        graph = extractor.extract_from_corpus(
+        dg = extractor.extract_from_corpus(
             str(ROOT / "data" / "ingestion" / "papers"),
         )
-        assert isinstance(graph, CausalGraph), (
-            "Default extract_from_corpus should return CausalGraph (backward compatible)"
+        # Default is now DiscoveryGraph (canonical per Law 28 cycle 40)
+        # CausalGraph is still accessible via use_discovery_graph=False
+        from invention_compiler.discovery_graph import DiscoveryGraph
+        assert isinstance(dg, DiscoveryGraph), (
+            f"Default should return DiscoveryGraph (canonical). Got {type(dg)}"
         )

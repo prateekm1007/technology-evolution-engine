@@ -360,14 +360,14 @@ class EdgeExtractor:
 
         return graph
 
-    def extract_from_corpus(self, corpus_dir: str, use_discovery_graph: bool = False):
+    def extract_from_corpus(self, corpus_dir: str, use_discovery_graph: bool = True):
         """Extract from all files in a corpus directory (patents or papers).
 
         Merges all individual graphs into one combined graph.
 
-        Per Law 28 (cycle 39): set use_discovery_graph=True to get a
-        DiscoveryGraph directly (canonical). Default returns CausalGraph
-        (deprecated, backward compatible).
+        Per Law 28 (cycle 40): default is now use_discovery_graph=True
+        (DiscoveryGraph is canonical). Set use_discovery_graph=False for
+        backward compatibility with CausalGraph (thin wrapper).
         """
         import pathlib
         graph = CausalGraph()

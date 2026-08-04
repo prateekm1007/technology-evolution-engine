@@ -52,29 +52,46 @@ class CausalSimulator:
     Per DR-5: this simulates MECHANISMS, not scores.
     Per DR-15: only observed/simulated/derived edges are simulation-capable.
     Per F-048: this replaces the score-perturbation approach.
-    Per Law 28 (cycle 39): accepts either CausalGraph (deprecated) or
-    DiscoveryGraph (canonical). If DiscoveryGraph, operates on its
-    CausalGraphLayer subgraph.
+    Per Law 28 (cycle 40): operates on DiscoveryGraph directly. Accepts
+    CausalGraph (which is now a thin wrapper that delegates to DiscoveryGraph)
+    for backward compatibility.
     """
 
     def __init__(self, graph):
         """Initialize the simulator.
 
         Args:
-            graph: A CausalGraph (deprecated) or DiscoveryGraph (canonical).
-                   If DiscoveryGraph, uses the causal subgraph.
+            graph: A DiscoveryGraph (canonical) or CausalGraph (thin wrapper
+                   that delegates to DiscoveryGraph). Since CausalGraph is now
+                   a thin wrapper, the underlying data structure is always
+                   DiscoveryGraph — there is ONE structure, not two.
         """
-        # Check if this is a DiscoveryGraph
+        # CausalGraph is now a thin wrapper — its _dg property returns
+        # the underlying DiscoveryGraph. Both CausalGraph and DiscoveryGraph
+        # share the same underlying data (Law 28: ONE structure).
+        # If a DiscoveryGraph is passed directly, we need to access its
+        # causal layer's edges. If a CausalGraph (thin wrapper) is passed,
+        # its .edges property already delegates.
+        self.graph = graph
+        # For DiscoveryGraph, we need a helper to get the causal edges
         if hasattr(graph, 'causal') and hasattr(graph, 'import_causal_graph'):
-            # DiscoveryGraph — use the causal layer
-            self.graph = graph.causal  # The CausalGraphLayer subgraph
             self._is_discovery = True
-            self._discovery_graph = graph
         else:
-            # CausalGraph (deprecated) — use directly
-            self.graph = graph
             self._is_discovery = False
-            self._discovery_graph = None
+
+    @property
+    def _edges(self):
+        """Get the edge list from either CausalGraph or DiscoveryGraph."""
+        if self._is_discovery:
+            # DiscoveryGraph — use the causal layer's edges plus the
+            # _causal_edges that CausalGraph.add_edge writes to
+            edges = list(self.graph.causal.edges)
+            if hasattr(self.graph.causal, '_causal_edges'):
+                edges.extend(self.graph.causal._causal_edges)
+            return edges
+        else:
+            # CausalGraph (thin wrapper) — .edges property delegates
+            return self.graph.edges
 
     def promote_before_propagation(self) -> Dict[str, Any]:
         """Call the formula promoter before propagation.
@@ -136,7 +153,7 @@ class CausalSimulator:
             next_queue = []
             for current_id, current_value, current_uncertainty in queue:
                 # Find all edges from this node
-                for edge in self.graph.edges:
+                for edge in self._edges:
                     if edge.source != current_id:
                         continue
                     if edge.target in visited:
@@ -223,7 +240,7 @@ class CausalSimulator:
             if current == target_node_id:
                 return True, path
 
-            for edge in self.graph.discovery_capable_edges():
+            for edge in self.graph.discovery_capable_edges() if not self._is_discovery else [e for e in self._edges if e.is_discovery_capable()]:
                 if edge.source == current and edge.target not in visited:
                     queue.append(edge.target)
 

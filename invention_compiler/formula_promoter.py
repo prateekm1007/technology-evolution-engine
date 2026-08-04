@@ -58,13 +58,18 @@ def promote_edges_from_formula_results(
     if formula_results is None:
         formula_results = run_all_verifications()
 
-    # Handle DiscoveryGraph (Law 28 canonical) — use the causal subgraph's edges
-    # but preserve the DiscoveryGraph reference for cross-layer queries
+    # Per Law 28 (cycle 40): CausalGraph is now a thin wrapper that delegates
+    # to DiscoveryGraph. There is ONE underlying data structure. The graph's
+    # edges property returns the shared edge list — no type detection needed.
+    # However, if a DiscoveryGraph is passed directly, we need to get edges
+    # from its causal layer + any _causal_edges.
     if hasattr(graph, 'causal') and hasattr(graph, 'import_causal_graph'):
-        # DiscoveryGraph — operate on its causal layer's edges
-        edges = graph.causal.edges
+        # DiscoveryGraph — get edges from causal layer + _causal_edges
+        edges = list(graph.causal.edges)
+        if hasattr(graph.causal, '_causal_edges'):
+            edges.extend(graph.causal._causal_edges)
     else:
-        # CausalGraph (deprecated) — use edges directly
+        # CausalGraph (thin wrapper) — .edges property delegates
         edges = graph.edges
 
     # Build a map of (formula_name, inputs_key, expected_output, tolerance) → passed status

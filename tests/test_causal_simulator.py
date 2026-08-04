@@ -23,10 +23,15 @@ from invention_compiler.edge_extractor import EdgeExtractor
 
 @pytest.fixture
 def corpus_graph():
-    """Build a causal graph from the 20-document corpus."""
+    """Build a causal graph from the 20-document corpus.
+
+    Per Law 28 (cycle 40): uses use_discovery_graph=False to get
+    CausalGraph (thin wrapper) for backward compatibility with tests
+    that use CausalGraph API (add_node, add_edge, adjacency_search).
+    """
     extractor = EdgeExtractor()
-    papers_graph = extractor.extract_from_corpus(str(ROOT / "data" / "ingestion" / "papers"))
-    patents_graph = extractor.extract_from_corpus(str(ROOT / "data" / "ingestion" / "patents"))
+    papers_graph = extractor.extract_from_corpus(str(ROOT / "data" / "ingestion" / "papers"), use_discovery_graph=False)
+    patents_graph = extractor.extract_from_corpus(str(ROOT / "data" / "ingestion" / "patents"), use_discovery_graph=False)
     combined = CausalGraph()
     for nid, node in papers_graph.nodes.items():
         combined.add_node(node)
