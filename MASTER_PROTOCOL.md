@@ -2216,34 +2216,53 @@ engine. These 4 rules keep them distinct.
 > principles, reproduced experimentally, numerically simulated, or
 > independently verified from source material. — CEO, cycle 30
 
-Every mechanism receives one of four states:
+Every mechanism receives one of five states:
 
 ```json
 {
-  "mechanism_status": "observed | simulated | derived | asserted"
+  "mechanism_status": "observed | simulated | derived | asserted | contradicted"
 }
 ```
 
-- **observed**: the mechanism was reproduced experimentally (a real
-  measurement confirmed it).
-- **simulated**: the mechanism was numerically simulated (a physics/
-  chemistry model computed it).
-- **derived**: the mechanism was derived from first principles (a
-  governing equation was solved analytically).
-- **asserted**: the mechanism is described but not verified by any
-  of the above three methods. This is the weakest state.
+**Full taxonomy (DOC-001, documented cycle 33):**
 
-Any mechanism lacking one of these four states is automatically
+| State | Meaning | Discovery? | Simulation? | Source |
+|---|---|---|---|---|
+| **observed** | Reproduced experimentally (a real measurement confirmed it) | ✅ | ✅ | External reality |
+| **simulated** | Numerically simulated (a physics/chemistry model computed it) | ✅ | ✅ | Computation |
+| **derived** | Derived from first principles (a governing equation was solved analytically) | ✅ | ✅ | Analytical |
+| **asserted** | Described but not verified by any of the above three methods | ✅ (flagged) | ❌ | Text only |
+| **contradicted** | Formula was executed, but the computed output does NOT match the stated expected output (GAP-002, cycle 33) | ❌ | ❌ | Actively wrong |
+
+Any mechanism lacking one of these five states is automatically
 downgraded to "asserted." An "asserted" mechanism cannot be used in
 simulation or prediction — only in hypothesis generation (flagged).
+A "contradicted" mechanism is excluded from everything — it is
+actively wrong, not merely unverified.
 
-This replaces the prior DR-15's three-tier schema (verified/asserted/
-associative) with a four-state mechanism schema. The prior three tiers
-are subsumed:
-- "verified" → split into observed/simulated/derived (depending on
-  how the formula was validated)
-- "asserted" → retained as "asserted"
-- "associative" → remains as the absence of a mechanism (no status)
+**Edge tier mapping (DOC-002, documented cycle 33):**
+
+The edge tier is derived from the mechanism status:
+
+| Mechanism Status | Edge Tier | Description |
+|---|---|---|
+| observed / simulated / derived | VERIFIED | Formula executed, matches evidence |
+| asserted | ASSERTED | Mechanism present, not yet evaluated |
+| (no mechanism) | ASSOCIATIVE | Keyword match, co-occurrence |
+| contradicted | CONTRADICTED | Formula executed, does NOT match (GAP-002) |
+
+**Default tolerances per formula (GAP-001, documented cycle 33):**
+
+| Formula | Default Tolerance | Unit |
+|---|---|---|
+| stull_wet_bulb | 0.5 | °C |
+| stefan_boltzmann | 10.0 | W |
+| pcm_latent_heat | 0.1 | kg |
+
+Each formula's `verify()` function accepts a configurable `tolerance`
+parameter. The formula promoter reads the edge's `tolerance` field and
+passes it to the verify function. If the edge's tolerance is None, the
+formula's default is used.
 
 ### DR-16: Intervention principle
 
