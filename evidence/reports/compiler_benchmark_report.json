@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-01T17:52:07.781473+00:00",
+  "generated_at": "2026-08-04T00:42:43.163685+00:00",
   "method": "Live end-to-end compile of reference problems through the 11-layer invention compiler. For each case, the composite feasibility score from Layer 5 (simulation) is mapped to a verdict bucket per INVENTION_COMPILER.md. expectations_satisfied = verdict matches expected OR is within one bucket; otherwise expectations_not_satisfied.",
   "verdict_buckets": {
     "feasible": ">=0.75",
@@ -10,9 +10,14 @@
   },
   "summary": {
     "total_cases": 6,
-    "expectations_satisfied": 5,
-    "expectations_not_satisfied": 1,
-    "passed": 5,
+    "expectations_satisfied": 2,
+    "expectations_not_satisfied": 4,
+    "passed": 2,
+    "overall_composite_mean": 0.2047,
+    "grade_distribution": {
+      "uncertain": 2,
+      "unknown": 4
+    },
     "verdict": "EXPECTATIONS_NOT_SATISFIED"
   },
   "epistemic_caveat": "EXPECTATIONS SATISFIED IS NOT THE SAME AS CORRECTNESS. This benchmark suite tests whether the compiler produced the verdict the benchmarker expected. It does NOT test whether the compiler produced a verdict that matches reality. If we repeatedly tune the scoring system until it produces the answers we expected all along, we risk building a machine that reproduces our beliefs rather than discovers new truths. Real correctness requires the Experimentation layer to close the loop: predict -> build -> observe -> learn. Until that loop exists on at least one real invention, every 'expectations_satisfied' verdict here is provisional. Furthermore, the composite feasibility score is produced by knowledge modules at the 'encode' stage of the encode->reason->simulate->discover spectrum \u2014 they store laws and pathways as structured data but do NOT reason over them, simulate them, or discover new ones.",
@@ -23,30 +28,30 @@
       "case_name": "Portable MRI",
       "category": "reconstruction",
       "expected_verdict": "feasible",
-      "actual_verdict": "partially_feasible",
-      "composite_feasibility": 0.5497,
-      "bucket_distance_from_expected": 2,
-      "duration_s": 0.238,
+      "actual_verdict": "uncertain",
+      "composite_feasibility": 0.2893,
+      "bucket_distance_from_expected": 3,
+      "duration_s": 0.764,
       "expectations_satisfied": false,
       "rationale": "Reconstruction case. Portable MRI is a known-plausible invention (Hyperfine Swoop is FDA-cleared). Tests the compiler can recognize a feasible invention that already exists, rather than say 'impossible'.",
       "chain_summary": {
         "target_invention": "Build a portable MRI scanner suitable for rural clinics without cryogenic helium",
         "domain": "medical_imaging",
         "time_horizon": "5-10 years",
-        "prerequisite_chain_depth": 0,
+        "prerequisite_chain_depth": 1,
         "governing_equations_count": 1,
         "subsystem_count": 3,
-        "composite_feasibility_baseline": 0.5497,
-        "capex_usd_m": 22.52,
+        "composite_feasibility_baseline": 0.2893,
+        "capex_usd_m": 35.53,
         "market_size_usd_m": 1.0,
-        "total_prototype_timeline_years": 3.0,
+        "total_prototype_timeline_years": 4.8,
         "technical_risk_count": 5,
         "commercial_risk_count": 3,
         "verification_status": "integrated",
         "hypothesis": {
-          "id": "hyp_94499f24e6317c7e",
+          "id": "hyp_c802c82ba5c732d2",
           "claim": "The invention 'Build a portable MRI scanner suitable for rural clinics without cryogenic helium' is feasible in the medical_imaging domain within the stated time horizon.",
-          "confidence": 0.5497,
+          "confidence": 0.2893,
           "evidence": [
             "ampere_law",
             "charge_conservation",
@@ -54,17 +59,30 @@
             "maxwell_equations",
             "meissner_effect",
             "ampere law",
-            "capex_$22.52M"
+            "prerequisite_chain_depth_1",
+            "capex_$35.53M"
           ],
-          "counterevidence": [],
+          "counterevidence": [
+            "failure_mode: cost_overrun",
+            "failure_mode: regulatory_rejection",
+            "failure_mode: manufacturing_yield_too_low",
+            "stress_scenario: composite=0.2290 (below 0.40)",
+            "stress_scenario: composite=0.2356 (below 0.40)",
+            "stress_scenario: composite=0.2356 (below 0.40)",
+            "technical_risk: stress_scenario_composite=0.229",
+            "technical_risk: stress_scenario_composite=0.2356",
+            "commercial_risk: market_size_too_small_to_justify_capex",
+            "commercial_risk: capex_exceeds_half_of_market_size",
+            "commercial_risk: s_curve_adoption_extends_payback_period"
+          ],
           "assumptions": [],
           "dependencies": [],
           "status": "pending",
           "observation": null,
           "writer": "invention_compiler.orchestrator.InventionCompiler._chain_summary",
-          "created_at": "2026-08-01T17:52:06.577847+00:00",
-          "updated_at": "2026-08-01T17:52:06.577858+00:00",
-          "timestamp": "2026-08-01T17:52:06.577847+00:00"
+          "created_at": "2026-08-04T00:42:39.426465+00:00",
+          "updated_at": "2026-08-04T00:42:39.426478+00:00",
+          "timestamp": "2026-08-04T00:42:39.426465+00:00"
         }
       },
       "layer_0": {
@@ -96,17 +114,28 @@
             },
             "domain_a": "medical_devices",
             "domain_b": "agriculture",
-            "structural_overlap_score": 0.375,
+            "structural_overlap_score": 0.675,
             "evidence": {
               "shared_prerequisites": [
                 "component_lora_module",
                 "component_wireless_module",
                 "sub_wireless_sensor_networks"
               ],
-              "shared_constraints": [],
+              "shared_constraints": [
+                "cost",
+                "energy",
+                "information",
+                "maintenance",
+                "manufacturing",
+                "material",
+                "regulation",
+                "safety",
+                "supply_chain",
+                "time"
+              ],
               "common_ancestors": [],
               "prereq_overlap": 0.75,
-              "constraint_overlap": 0.0,
+              "constraint_overlap": 1.0,
               "ancestor_bonus": 0.0
             }
           },
@@ -125,15 +154,26 @@
             },
             "domain_a": "robotics",
             "domain_b": "medical_devices",
-            "structural_overlap_score": 0.25,
+            "structural_overlap_score": 0.55,
             "evidence": {
               "shared_prerequisites": [
                 "sub_biomaterials"
               ],
-              "shared_constraints": [],
+              "shared_constraints": [
+                "cost",
+                "energy",
+                "information",
+                "maintenance",
+                "manufacturing",
+                "material",
+                "regulation",
+                "safety",
+                "supply_chain",
+                "time"
+              ],
               "common_ancestors": [],
               "prereq_overlap": 0.5,
-              "constraint_overlap": 0.0,
+              "constraint_overlap": 1.0,
               "ancestor_bonus": 0.0
             }
           },
@@ -152,15 +192,26 @@
             },
             "domain_a": "robotics",
             "domain_b": "transportation",
-            "structural_overlap_score": 0.25,
+            "structural_overlap_score": 0.55,
             "evidence": {
               "shared_prerequisites": [
                 "sub_computer_vision"
               ],
-              "shared_constraints": [],
+              "shared_constraints": [
+                "cost",
+                "energy",
+                "information",
+                "maintenance",
+                "manufacturing",
+                "material",
+                "regulation",
+                "safety",
+                "supply_chain",
+                "time"
+              ],
               "common_ancestors": [],
               "prereq_overlap": 0.5,
-              "constraint_overlap": 0.0,
+              "constraint_overlap": 1.0,
               "ancestor_bonus": 0.0
             }
           },
@@ -179,15 +230,26 @@
             },
             "domain_a": "fluid_dynamics",
             "domain_b": "water_treatment",
-            "structural_overlap_score": 0.2,
+            "structural_overlap_score": 0.5,
             "evidence": {
               "shared_prerequisites": [],
-              "shared_constraints": [],
+              "shared_constraints": [
+                "cost",
+                "energy",
+                "information",
+                "maintenance",
+                "manufacturing",
+                "material",
+                "regulation",
+                "safety",
+                "supply_chain",
+                "time"
+              ],
               "common_ancestors": [
                 "industry_filtration_industry"
               ],
               "prereq_overlap": 0.0,
-              "constraint_overlap": 0.0,
+              "constraint_overlap": 1.0,
               "ancestor_bonus": 0.2
             }
           },
@@ -206,22 +268,33 @@
             },
             "domain_a": "fluid_dynamics",
             "domain_b": "transportation",
-            "structural_overlap_score": 0.2,
+            "structural_overlap_score": 0.5,
             "evidence": {
               "shared_prerequisites": [],
-              "shared_constraints": [],
+              "shared_constraints": [
+                "cost",
+                "energy",
+                "information",
+                "maintenance",
+                "manufacturing",
+                "material",
+                "regulation",
+                "safety",
+                "supply_chain",
+                "time"
+              ],
               "common_ancestors": [
                 "cemetery_009"
               ],
               "prereq_overlap": 0.0,
-              "constraint_overlap": 0.0,
+              "constraint_overlap": 1.0,
               "ancestor_bonus": 0.2
             }
           }
         ],
         "evidence": {
-          "total_pairs_evaluated": 166176,
-          "excluded_already_connected": 50,
+          "total_pairs_evaluated": 223446,
+          "excluded_already_connected": 82,
           "domain_filter_applied": [
             "medical_imaging"
           ]
@@ -233,10 +306,118 @@
         "falsification_criteria": "If, after N verification cycles, candidates surfaced by this engine fail to produce a viable invention more than 50% of the time, the structural-overlap prior is wrong and must be recalibrated. N >= 20 cycles is the minimum sample size."
       },
       "layer_10_blueprint": {
+        "parts_list": [
+          {
+            "id": "sub_composite_materials",
+            "label": "Composite Materials",
+            "type": "subdomain",
+            "source_layer": "Layer 2 (prerequisite chain)",
+            "note": "Graph node identifier \u2014 engineer must map to a real supplier part number or capability."
+          }
+        ],
+        "materials_specification": [
+          {
+            "id": "sub_composite_materials",
+            "label": "Composite Materials",
+            "constraints": [],
+            "source_layer": "Layer 2 (fallback \u2014 Layer 6 empty)"
+          }
+        ],
+        "assembly_plan": {
+          "subsystems": [
+            "subsystem_for_cost",
+            "subsystem_for_regulation",
+            "subsystem_for_manufacturing"
+          ],
+          "interfaces": [
+            "subsystem_for_cost <-> subsystem_for_regulation",
+            "subsystem_for_cost <-> subsystem_for_manufacturing",
+            "subsystem_for_regulation <-> subsystem_for_manufacturing"
+          ],
+          "inputs": {
+            "problem_constraints": [
+              "cost",
+              "weight",
+              "power",
+              "regulation",
+              "manufacturing"
+            ],
+            "time_horizon": "5-10 years",
+            "domain": "medical_imaging"
+          },
+          "outputs": {
+            "primary_output": "Build a portable MRI scanner suitable for rural clinics without cryogenic helium",
+            "evidence_quality": "replayable_per_law_8"
+          },
+          "energy_requirements": {
+            "budget_tight": false,
+            "tolerance": "not specified",
+            "estimated_watts": "depends_on_application"
+          },
+          "computational_requirements": {
+            "class": "moderate",
+            "note": "Real computational requirements depend on the governing equations from Layer 3 and the simulation approach from Layer 5."
+          },
+          "source_layer": "Layer 4 (Engineering architecture)"
+        },
+        "tolerances": {
+          "cost": "\u00b115% of capex estimate",
+          "regulation": "binary (pass/fail)",
+          "manufacturing": "\u00b13% yield"
+        },
+        "prototype_specification": {
+          "v1": {
+            "name": "prototype_v1_medical_imaging_physics_validation",
+            "goal": "prove the imaging mechanism (imaging_signal) produces diagnostic-quality signal for build portable scanner suitable",
+            "scope": "single medical_imaging subsystem, no integration, no manufacturability",
+            "success_threshold": "imaging_signal mechanism reproduces predicted output within 30% for build portable scanner suitable",
+            "estimated_duration_months": 9,
+            "estimated_cost_usd_m": 0.14
+          },
+          "v2": {
+            "name": "prototype_v2_medical_imaging_engineering_integration",
+            "goal": "integrate the imager into a portable build portable scanner suitable system with shielding and power",
+            "scope": "all medical_imaging subsystems, no manufacturing pathway, no regulatory submission",
+            "success_threshold": "integrated build portable scanner suitable prototype meets primary spec at 50% target performance",
+            "estimated_duration_months": 19,
+            "estimated_cost_usd_m": 0.58
+          },
+          "v3": {
+            "name": "prototype_v3_medical_imaging_production_readiness",
+            "goal": "submit build portable scanner suitable for FDA 510(k) pre-submission and build 5 clinical units",
+            "scope": "production-intent medical_imaging prototype, pilot manufacturing run, regulatory pre-submission",
+            "success_threshold": "unit cost within 2x of target; regulatory pre-submission accepted for build portable scanner suitable",
+            "estimated_duration_months": 30,
+            "estimated_cost_usd_m": 2.31
+          },
+          "timeline": {
+            "total_months": 58,
+            "total_years": 4.8,
+            "fits_within_horizon": true,
+            "phases": [
+              {
+                "phase": "v1",
+                "start_month": 0,
+                "end_month": 9
+              },
+              {
+                "phase": "v2",
+                "start_month": 9,
+                "end_month": 28
+              },
+              {
+                "phase": "v3",
+                "start_month": 28,
+                "end_month": 58
+              }
+            ]
+          },
+          "source_layer": "Layer 9 (Prototype layer)"
+        },
         "problem": "Build a portable MRI scanner suitable for rural clinics without cryogenic helium",
         "domain": "medical_imaging",
         "target_invention": "Build a portable MRI scanner suitable for rural clinics without cryogenic helium",
-        "prerequisite_chain_depth": 0,
+        "prerequisite_chain_depth": 1,
         "governing_equations": [
           {
             "name": "ampere law",
@@ -254,20 +435,20 @@
           "subsystem_for_regulation",
           "subsystem_for_manufacturing"
         ],
-        "composite_feasibility": 22.52,
+        "composite_feasibility": 35.53,
         "prototype_stages": [
-          "prototype_v1_physics_validation",
-          "prototype_v2_engineering_integration",
-          "prototype_v3_production_readiness"
+          "prototype_v1_medical_imaging_physics_validation",
+          "prototype_v2_medical_imaging_engineering_integration",
+          "prototype_v3_medical_imaging_production_readiness"
         ],
-        "total_prototype_timeline_years": 3.0
+        "total_prototype_timeline_years": 4.8
       },
       "layer_10_technical_risks": [
         "cost_overrun",
         "regulatory_rejection",
         "manufacturing_yield_too_low",
-        "stress_scenario_composite=0.4895",
-        "stress_scenario_composite=0.4961"
+        "stress_scenario_composite=0.229",
+        "stress_scenario_composite=0.2356"
       ],
       "layer_10_commercial_risks": [
         "market_size_too_small_to_justify_capex",
@@ -280,30 +461,30 @@
       "case_name": "Solid-state ammonia synthesis",
       "category": "forecasting",
       "expected_verdict": "uncertain",
-      "actual_verdict": "partially_feasible",
-      "composite_feasibility": 0.4587,
+      "actual_verdict": "unknown",
+      "composite_feasibility": 0.1982,
       "bucket_distance_from_expected": 1,
-      "duration_s": 0.239,
+      "duration_s": 0.77,
       "expectations_satisfied": true,
       "rationale": "Forecasting case. Haber-Bosch without high T/P is an open research problem. Tests the compiler can say 'uncertain' honestly rather than fabricate confidence.",
       "chain_summary": {
         "target_invention": "Synthesize ammonia from nitrogen and water at ambient temperature and pressure using electrochemistry",
         "domain": "chemistry",
         "time_horizon": "10-15 years",
-        "prerequisite_chain_depth": 0,
+        "prerequisite_chain_depth": 1,
         "governing_equations_count": 1,
         "subsystem_count": 3,
-        "composite_feasibility_baseline": 0.4587,
-        "capex_usd_m": 27.07,
+        "composite_feasibility_baseline": 0.1982,
+        "capex_usd_m": 40.09,
         "market_size_usd_m": 1.0,
-        "total_prototype_timeline_years": 3.0,
+        "total_prototype_timeline_years": 3.8,
         "technical_risk_count": 5,
         "commercial_risk_count": 3,
         "verification_status": "integrated",
         "hypothesis": {
-          "id": "hyp_65e7580bac8e2a90",
+          "id": "hyp_43ca6ab750e09b54",
           "claim": "The invention 'Synthesize ammonia from nitrogen and water at ambient temperature and pressure using electrochemistry' is feasible in the chemistry domain within the stated time horizon.",
-          "confidence": 0.4587,
+          "confidence": 0.1982,
           "evidence": [
             "charge_conservation",
             "energy_conservation",
@@ -314,17 +495,30 @@
             "electrolysis_water",
             "haber_bosch",
             "ampere law",
-            "capex_$27.07M"
+            "prerequisite_chain_depth_1",
+            "capex_$40.09M"
           ],
-          "counterevidence": [],
+          "counterevidence": [
+            "failure_mode: energy_budget_exceeded",
+            "failure_mode: manufacturing_yield_too_low",
+            "failure_mode: regulatory_rejection",
+            "stress_scenario: composite=0.1383 (below 0.40)",
+            "stress_scenario: composite=0.1446 (below 0.40)",
+            "stress_scenario: composite=0.1446 (below 0.40)",
+            "technical_risk: stress_scenario_composite=0.1383",
+            "technical_risk: stress_scenario_composite=0.1446",
+            "commercial_risk: market_size_too_small_to_justify_capex",
+            "commercial_risk: capex_exceeds_half_of_market_size",
+            "commercial_risk: s_curve_adoption_extends_payback_period"
+          ],
           "assumptions": [],
           "dependencies": [],
           "status": "pending",
           "observation": null,
           "writer": "invention_compiler.orchestrator.InventionCompiler._chain_summary",
-          "created_at": "2026-08-01T17:52:06.817004+00:00",
-          "updated_at": "2026-08-01T17:52:06.817015+00:00",
-          "timestamp": "2026-08-01T17:52:06.817004+00:00"
+          "created_at": "2026-08-04T00:42:40.196311+00:00",
+          "updated_at": "2026-08-04T00:42:40.196325+00:00",
+          "timestamp": "2026-08-04T00:42:40.196311+00:00"
         }
       },
       "layer_0": {
@@ -355,17 +549,28 @@
             },
             "domain_a": "medical_devices",
             "domain_b": "agriculture",
-            "structural_overlap_score": 0.375,
+            "structural_overlap_score": 0.675,
             "evidence": {
               "shared_prerequisites": [
                 "component_lora_module",
                 "component_wireless_module",
                 "sub_wireless_sensor_networks"
               ],
-              "shared_constraints": [],
+              "shared_constraints": [
+                "cost",
+                "energy",
+                "information",
+                "maintenance",
+                "manufacturing",
+                "material",
+                "regulation",
+                "safety",
+                "supply_chain",
+                "time"
+              ],
               "common_ancestors": [],
               "prereq_overlap": 0.75,
-              "constraint_overlap": 0.0,
+              "constraint_overlap": 1.0,
               "ancestor_bonus": 0.0
             }
           },
@@ -384,15 +589,26 @@
             },
             "domain_a": "robotics",
             "domain_b": "medical_devices",
-            "structural_overlap_score": 0.25,
+            "structural_overlap_score": 0.55,
             "evidence": {
               "shared_prerequisites": [
                 "sub_biomaterials"
               ],
-              "shared_constraints": [],
+              "shared_constraints": [
+                "cost",
+                "energy",
+                "information",
+                "maintenance",
+                "manufacturing",
+                "material",
+                "regulation",
+                "safety",
+                "supply_chain",
+                "time"
+              ],
               "common_ancestors": [],
               "prereq_overlap": 0.5,
-              "constraint_overlap": 0.0,
+              "constraint_overlap": 1.0,
               "ancestor_bonus": 0.0
             }
           },
@@ -411,15 +627,26 @@
             },
             "domain_a": "robotics",
             "domain_b": "transportation",
-            "structural_overlap_score": 0.25,
+            "structural_overlap_score": 0.55,
             "evidence": {
               "shared_prerequisites": [
                 "sub_computer_vision"
               ],
-              "shared_constraints": [],
+              "shared_constraints": [
+                "cost",
+                "energy",
+                "information",
+                "maintenance",
+                "manufacturing",
+                "material",
+                "regulation",
+                "safety",
+                "supply_chain",
+                "time"
+              ],
               "common_ancestors": [],
               "prereq_overlap": 0.5,
-              "constraint_overlap": 0.0,
+              "constraint_overlap": 1.0,
               "ancestor_bonus": 0.0
             }
           },
@@ -438,15 +665,26 @@
             },
             "domain_a": "fluid_dynamics",
             "domain_b": "water_treatment",
-            "structural_overlap_score": 0.2,
+            "structural_overlap_score": 0.5,
             "evidence": {
               "shared_prerequisites": [],
-              "shared_constraints": [],
+              "shared_constraints": [
+                "cost",
+                "energy",
+                "information",
+                "maintenance",
+                "manufacturing",
+                "material",
+                "regulation",
+                "safety",
+                "supply_chain",
+                "time"
+              ],
               "common_ancestors": [
                 "industry_filtration_industry"
               ],
               "prereq_overlap": 0.0,
-              "constraint_overlap": 0.0,
+              "constraint_overlap": 1.0,
               "ancestor_bonus": 0.2
             }
           },
@@ -465,22 +703,33 @@
             },
             "domain_a": "fluid_dynamics",
             "domain_b": "transportation",
-            "structural_overlap_score": 0.2,
+            "structural_overlap_score": 0.5,
             "evidence": {
               "shared_prerequisites": [],
-              "shared_constraints": [],
+              "shared_constraints": [
+                "cost",
+                "energy",
+                "information",
+                "maintenance",
+                "manufacturing",
+                "material",
+                "regulation",
+                "safety",
+                "supply_chain",
+                "time"
+              ],
               "common_ancestors": [
                 "cemetery_009"
               ],
               "prereq_overlap": 0.0,
-              "constraint_overlap": 0.0,
+              "constraint_overlap": 1.0,
               "ancestor_bonus": 0.2
             }
           }
         ],
         "evidence": {
-          "total_pairs_evaluated": 166176,
-          "excluded_already_connected": 50,
+          "total_pairs_evaluated": 223446,
+          "excluded_already_connected": 82,
           "domain_filter_applied": [
             "chemistry"
           ]
@@ -492,10 +741,117 @@
         "falsification_criteria": "If, after N verification cycles, candidates surfaced by this engine fail to produce a viable invention more than 50% of the time, the structural-overlap prior is wrong and must be recalibrated. N >= 20 cycles is the minimum sample size."
       },
       "layer_10_blueprint": {
+        "parts_list": [
+          {
+            "id": "sub_supercapacitors",
+            "label": "Supercapacitors",
+            "type": "subdomain",
+            "source_layer": "Layer 2 (prerequisite chain)",
+            "note": "Graph node identifier \u2014 engineer must map to a real supplier part number or capability."
+          }
+        ],
+        "materials_specification": [
+          {
+            "id": "sub_supercapacitors",
+            "label": "Supercapacitors",
+            "constraints": [],
+            "source_layer": "Layer 2 (fallback \u2014 Layer 6 empty)"
+          }
+        ],
+        "assembly_plan": {
+          "subsystems": [
+            "subsystem_for_energy",
+            "subsystem_for_manufacturing",
+            "subsystem_for_regulation"
+          ],
+          "interfaces": [
+            "subsystem_for_energy <-> subsystem_for_manufacturing",
+            "subsystem_for_energy <-> subsystem_for_regulation",
+            "subsystem_for_manufacturing <-> subsystem_for_regulation"
+          ],
+          "inputs": {
+            "problem_constraints": [
+              "energy",
+              "catalyst",
+              "manufacturing",
+              "regulation"
+            ],
+            "time_horizon": "10-15 years",
+            "domain": "chemistry"
+          },
+          "outputs": {
+            "primary_output": "Synthesize ammonia from nitrogen and water at ambient temperature and pressure using electrochemistry",
+            "evidence_quality": "replayable_per_law_8"
+          },
+          "energy_requirements": {
+            "budget_tight": true,
+            "tolerance": "\u00b110% of energy budget",
+            "estimated_watts": "depends_on_application"
+          },
+          "computational_requirements": {
+            "class": "moderate",
+            "note": "Real computational requirements depend on the governing equations from Layer 3 and the simulation approach from Layer 5."
+          },
+          "source_layer": "Layer 4 (Engineering architecture)"
+        },
+        "tolerances": {
+          "energy": "\u00b110% of energy budget",
+          "manufacturing": "\u00b13% yield",
+          "regulation": "binary (pass/fail)"
+        },
+        "prototype_specification": {
+          "v1": {
+            "name": "prototype_v1_chemistry_physics_validation",
+            "goal": "prove the key reaction pathway (catalytic_activity) proceeds at viable rate for synthesize ammonia from nitrogen",
+            "scope": "single chemistry subsystem, no integration, no manufacturability",
+            "success_threshold": "catalytic_activity mechanism reproduces predicted output within 30% for synthesize ammonia from nitrogen",
+            "estimated_duration_months": 7,
+            "estimated_cost_usd_m": 0.1
+          },
+          "v2": {
+            "name": "prototype_v2_chemistry_engineering_integration",
+            "goal": "integrate the reaction into a continuous-flow synthesize ammonia from nitrogen system",
+            "scope": "all chemistry subsystems, no manufacturing pathway, no regulatory submission",
+            "success_threshold": "integrated synthesize ammonia from nitrogen prototype meets primary spec at 50% target performance",
+            "estimated_duration_months": 15,
+            "estimated_cost_usd_m": 0.4
+          },
+          "v3": {
+            "name": "prototype_v3_chemistry_production_readiness",
+            "goal": "pilot the synthesize ammonia from nitrogen process at 100x lab scale with yield >80% and cost within 2x target",
+            "scope": "production-intent chemistry prototype, pilot manufacturing run, regulatory pre-submission",
+            "success_threshold": "unit cost within 2x of target; regulatory pre-submission accepted for synthesize ammonia from nitrogen",
+            "estimated_duration_months": 24,
+            "estimated_cost_usd_m": 1.59
+          },
+          "timeline": {
+            "total_months": 46,
+            "total_years": 3.8,
+            "fits_within_horizon": true,
+            "phases": [
+              {
+                "phase": "v1",
+                "start_month": 0,
+                "end_month": 7
+              },
+              {
+                "phase": "v2",
+                "start_month": 7,
+                "end_month": 22
+              },
+              {
+                "phase": "v3",
+                "start_month": 22,
+                "end_month": 46
+              }
+            ]
+          },
+          "source_layer": "Layer 9 (Prototype layer)"
+        },
         "problem": "Synthesize ammonia from nitrogen and water at ambient temperature and pressure using electrochemistry",
         "domain": "chemistry",
         "target_invention": "Synthesize ammonia from nitrogen and water at ambient temperature and pressure using electrochemistry",
-        "prerequisite_chain_depth": 0,
+        "prerequisite_chain_depth": 1,
         "governing_equations": [
           {
             "name": "ampere law",
@@ -513,20 +869,20 @@
           "subsystem_for_manufacturing",
           "subsystem_for_regulation"
         ],
-        "composite_feasibility": 27.07,
+        "composite_feasibility": 40.09,
         "prototype_stages": [
-          "prototype_v1_physics_validation",
-          "prototype_v2_engineering_integration",
-          "prototype_v3_production_readiness"
+          "prototype_v1_chemistry_physics_validation",
+          "prototype_v2_chemistry_engineering_integration",
+          "prototype_v3_chemistry_production_readiness"
         ],
-        "total_prototype_timeline_years": 3.0
+        "total_prototype_timeline_years": 3.8
       },
       "layer_10_technical_risks": [
         "energy_budget_exceeded",
         "manufacturing_yield_too_low",
         "regulatory_rejection",
-        "stress_scenario_composite=0.3985",
-        "stress_scenario_composite=0.4051"
+        "stress_scenario_composite=0.1383",
+        "stress_scenario_composite=0.1446"
       ],
       "layer_10_commercial_risks": [
         "market_size_too_small_to_justify_capex",
@@ -539,30 +895,30 @@
       "case_name": "Room-temperature superconductors",
       "category": "forecasting",
       "expected_verdict": "unknown",
-      "actual_verdict": "uncertain",
-      "composite_feasibility": 0.2592,
-      "bucket_distance_from_expected": 1,
-      "duration_s": 0.241,
+      "actual_verdict": "unknown",
+      "composite_feasibility": 0.0498,
+      "bucket_distance_from_expected": 0,
+      "duration_s": 0.735,
       "expectations_satisfied": true,
       "rationale": "Forecasting case at the edge of physics. May be physically impossible. Recent LK-99 claims were retracted. Tests the compiler can say 'unknown' without claiming feasibility.",
       "chain_summary": {
         "target_invention": "Discover and engineer a material that superconducts at room temperature and ambient pressure",
         "domain": "materials",
         "time_horizon": "15+ years",
-        "prerequisite_chain_depth": 0,
+        "prerequisite_chain_depth": 1,
         "governing_equations_count": 1,
         "subsystem_count": 4,
-        "composite_feasibility_baseline": 0.2592,
-        "capex_usd_m": 37.04,
+        "composite_feasibility_baseline": 0.0498,
+        "capex_usd_m": 47.51,
         "market_size_usd_m": 1.0,
-        "total_prototype_timeline_years": 3.0,
+        "total_prototype_timeline_years": 3.2,
         "technical_risk_count": 6,
         "commercial_risk_count": 3,
         "verification_status": "integrated",
         "hypothesis": {
-          "id": "hyp_82f9409aa9d32072",
+          "id": "hyp_577ca09cc476a1c9",
           "claim": "The invention 'Discover and engineer a material that superconducts at room temperature and ambient pressure' is feasible in the materials domain within the stated time horizon.",
-          "confidence": 0.2592,
+          "confidence": 0.0498,
           "evidence": [
             "energy_conservation",
             "first_law_thermodynamics",
@@ -575,17 +931,31 @@
             "carbonation_cure",
             "polymerization",
             "ampere law",
-            "capex_$37.04M"
+            "prerequisite_chain_depth_1",
+            "capex_$47.51M"
           ],
-          "counterevidence": [],
+          "counterevidence": [
+            "failure_mode: material_unavailable_or_too_expensive",
+            "failure_mode: energy_budget_exceeded",
+            "failure_mode: manufacturing_yield_too_low",
+            "failure_mode: regulatory_rejection",
+            "stress_scenario: composite=0.0246 (below 0.40)",
+            "stress_scenario: composite=0.0257 (below 0.40)",
+            "stress_scenario: composite=0.0291 (below 0.40)",
+            "technical_risk: stress_scenario_composite=0.0246",
+            "technical_risk: stress_scenario_composite=0.0257",
+            "commercial_risk: market_size_too_small_to_justify_capex",
+            "commercial_risk: capex_exceeds_half_of_market_size",
+            "commercial_risk: s_curve_adoption_extends_payback_period"
+          ],
           "assumptions": [],
           "dependencies": [],
           "status": "pending",
           "observation": null,
           "writer": "invention_compiler.orchestrator.InventionCompiler._chain_summary",
-          "created_at": "2026-08-01T17:52:07.057832+00:00",
-          "updated_at": "2026-08-01T17:52:07.057844+00:00",
-          "timestamp": "2026-08-01T17:52:07.057832+00:00"
+          "created_at": "2026-08-04T00:42:40.931796+00:00",
+          "updated_at": "2026-08-04T00:42:40.931811+00:00",
+          "timestamp": "2026-08-04T00:42:40.931796+00:00"
         }
       },
       "layer_0": {
@@ -617,17 +987,28 @@
             },
             "domain_a": "medical_devices",
             "domain_b": "agriculture",
-            "structural_overlap_score": 0.375,
+            "structural_overlap_score": 0.675,
             "evidence": {
               "shared_prerequisites": [
                 "component_lora_module",
                 "component_wireless_module",
                 "sub_wireless_sensor_networks"
               ],
-              "shared_constraints": [],
+              "shared_constraints": [
+                "cost",
+                "energy",
+                "information",
+                "maintenance",
+                "manufacturing",
+                "material",
+                "regulation",
+                "safety",
+                "supply_chain",
+                "time"
+              ],
               "common_ancestors": [],
               "prereq_overlap": 0.75,
-              "constraint_overlap": 0.0,
+              "constraint_overlap": 1.0,
               "ancestor_bonus": 0.0
             }
           },
@@ -646,15 +1027,26 @@
             },
             "domain_a": "robotics",
             "domain_b": "medical_devices",
-            "structural_overlap_score": 0.25,
+            "structural_overlap_score": 0.55,
             "evidence": {
               "shared_prerequisites": [
                 "sub_biomaterials"
               ],
-              "shared_constraints": [],
+              "shared_constraints": [
+                "cost",
+                "energy",
+                "information",
+                "maintenance",
+                "manufacturing",
+                "material",
+                "regulation",
+                "safety",
+                "supply_chain",
+                "time"
+              ],
               "common_ancestors": [],
               "prereq_overlap": 0.5,
-              "constraint_overlap": 0.0,
+              "constraint_overlap": 1.0,
               "ancestor_bonus": 0.0
             }
           },
@@ -673,15 +1065,26 @@
             },
             "domain_a": "robotics",
             "domain_b": "transportation",
-            "structural_overlap_score": 0.25,
+            "structural_overlap_score": 0.55,
             "evidence": {
               "shared_prerequisites": [
                 "sub_computer_vision"
               ],
-              "shared_constraints": [],
+              "shared_constraints": [
+                "cost",
+                "energy",
+                "information",
+                "maintenance",
+                "manufacturing",
+                "material",
+                "regulation",
+                "safety",
+                "supply_chain",
+                "time"
+              ],
               "common_ancestors": [],
               "prereq_overlap": 0.5,
-              "constraint_overlap": 0.0,
+              "constraint_overlap": 1.0,
               "ancestor_bonus": 0.0
             }
           },
@@ -700,15 +1103,26 @@
             },
             "domain_a": "fluid_dynamics",
             "domain_b": "water_treatment",
-            "structural_overlap_score": 0.2,
+            "structural_overlap_score": 0.5,
             "evidence": {
               "shared_prerequisites": [],
-              "shared_constraints": [],
+              "shared_constraints": [
+                "cost",
+                "energy",
+                "information",
+                "maintenance",
+                "manufacturing",
+                "material",
+                "regulation",
+                "safety",
+                "supply_chain",
+                "time"
+              ],
               "common_ancestors": [
                 "industry_filtration_industry"
               ],
               "prereq_overlap": 0.0,
-              "constraint_overlap": 0.0,
+              "constraint_overlap": 1.0,
               "ancestor_bonus": 0.2
             }
           },
@@ -727,22 +1141,33 @@
             },
             "domain_a": "fluid_dynamics",
             "domain_b": "transportation",
-            "structural_overlap_score": 0.2,
+            "structural_overlap_score": 0.5,
             "evidence": {
               "shared_prerequisites": [],
-              "shared_constraints": [],
+              "shared_constraints": [
+                "cost",
+                "energy",
+                "information",
+                "maintenance",
+                "manufacturing",
+                "material",
+                "regulation",
+                "safety",
+                "supply_chain",
+                "time"
+              ],
               "common_ancestors": [
                 "cemetery_009"
               ],
               "prereq_overlap": 0.0,
-              "constraint_overlap": 0.0,
+              "constraint_overlap": 1.0,
               "ancestor_bonus": 0.2
             }
           }
         ],
         "evidence": {
-          "total_pairs_evaluated": 166176,
-          "excluded_already_connected": 50,
+          "total_pairs_evaluated": 223446,
+          "excluded_already_connected": 82,
           "domain_filter_applied": [
             "materials"
           ]
@@ -754,10 +1179,122 @@
         "falsification_criteria": "If, after N verification cycles, candidates surfaced by this engine fail to produce a viable invention more than 50% of the time, the structural-overlap prior is wrong and must be recalibrated. N >= 20 cycles is the minimum sample size."
       },
       "layer_10_blueprint": {
+        "parts_list": [
+          {
+            "id": "sub_supercapacitors",
+            "label": "Supercapacitors",
+            "type": "subdomain",
+            "source_layer": "Layer 2 (prerequisite chain)",
+            "note": "Graph node identifier \u2014 engineer must map to a real supplier part number or capability."
+          }
+        ],
+        "materials_specification": [
+          {
+            "id": "sub_supercapacitors",
+            "label": "Supercapacitors",
+            "constraints": [],
+            "source_layer": "Layer 2 (fallback \u2014 Layer 6 empty)"
+          }
+        ],
+        "assembly_plan": {
+          "subsystems": [
+            "subsystem_for_material",
+            "subsystem_for_energy",
+            "subsystem_for_manufacturing",
+            "subsystem_for_regulation"
+          ],
+          "interfaces": [
+            "subsystem_for_material <-> subsystem_for_energy",
+            "subsystem_for_material <-> subsystem_for_manufacturing",
+            "subsystem_for_material <-> subsystem_for_regulation",
+            "subsystem_for_energy <-> subsystem_for_manufacturing",
+            "subsystem_for_energy <-> subsystem_for_regulation"
+          ],
+          "inputs": {
+            "problem_constraints": [
+              "material",
+              "energy",
+              "manufacturing",
+              "regulation",
+              "superconductivity"
+            ],
+            "time_horizon": "15+ years",
+            "domain": "materials"
+          },
+          "outputs": {
+            "primary_output": "Discover and engineer a material that superconducts at room temperature and ambient pressure",
+            "evidence_quality": "replayable_per_law_8"
+          },
+          "energy_requirements": {
+            "budget_tight": true,
+            "tolerance": "\u00b110% of energy budget",
+            "estimated_watts": "depends_on_application"
+          },
+          "computational_requirements": {
+            "class": "moderate",
+            "note": "Real computational requirements depend on the governing equations from Layer 3 and the simulation approach from Layer 5."
+          },
+          "source_layer": "Layer 4 (Engineering architecture)"
+        },
+        "tolerances": {
+          "material": "\u00b15% of material property target",
+          "energy": "\u00b110% of energy budget",
+          "manufacturing": "\u00b13% yield",
+          "regulation": "binary (pass/fail)"
+        },
+        "prototype_specification": {
+          "v1": {
+            "name": "prototype_v1_materials_physics_validation",
+            "goal": "prove the core material property (superconductivity) holds at lab scale for discover engineer material that",
+            "scope": "single materials subsystem, no integration, no manufacturability",
+            "success_threshold": "superconductivity mechanism reproduces predicted output within 30% for discover engineer material that",
+            "estimated_duration_months": 6,
+            "estimated_cost_usd_m": 0.02
+          },
+          "v2": {
+            "name": "prototype_v2_materials_engineering_integration",
+            "goal": "integrate the material into a working discover engineer material that prototype with all subsystems",
+            "scope": "all materials subsystems, no manufacturing pathway, no regulatory submission",
+            "success_threshold": "integrated discover engineer material that prototype meets primary spec at 50% target performance",
+            "estimated_duration_months": 13,
+            "estimated_cost_usd_m": 0.1
+          },
+          "v3": {
+            "name": "prototype_v3_materials_production_readiness",
+            "goal": "pilot-manufacture discover engineer material that at 100x lab scale with cost within 2x target",
+            "scope": "production-intent materials prototype, pilot manufacturing run, regulatory pre-submission",
+            "success_threshold": "unit cost within 2x of target; regulatory pre-submission accepted for discover engineer material that",
+            "estimated_duration_months": 20,
+            "estimated_cost_usd_m": 0.4
+          },
+          "timeline": {
+            "total_months": 39,
+            "total_years": 3.2,
+            "fits_within_horizon": true,
+            "phases": [
+              {
+                "phase": "v1",
+                "start_month": 0,
+                "end_month": 6
+              },
+              {
+                "phase": "v2",
+                "start_month": 6,
+                "end_month": 19
+              },
+              {
+                "phase": "v3",
+                "start_month": 19,
+                "end_month": 39
+              }
+            ]
+          },
+          "source_layer": "Layer 9 (Prototype layer)"
+        },
         "problem": "Discover and engineer a material that superconducts at room temperature and ambient pressure",
         "domain": "materials",
         "target_invention": "Discover and engineer a material that superconducts at room temperature and ambient pressure",
-        "prerequisite_chain_depth": 0,
+        "prerequisite_chain_depth": 1,
         "governing_equations": [
           {
             "name": "ampere law",
@@ -776,21 +1313,21 @@
           "subsystem_for_manufacturing",
           "subsystem_for_regulation"
         ],
-        "composite_feasibility": 37.04,
+        "composite_feasibility": 47.51,
         "prototype_stages": [
-          "prototype_v1_physics_validation",
-          "prototype_v2_engineering_integration",
-          "prototype_v3_production_readiness"
+          "prototype_v1_materials_physics_validation",
+          "prototype_v2_materials_engineering_integration",
+          "prototype_v3_materials_production_readiness"
         ],
-        "total_prototype_timeline_years": 3.0
+        "total_prototype_timeline_years": 3.2
       },
       "layer_10_technical_risks": [
         "material_unavailable_or_too_expensive",
         "energy_budget_exceeded",
         "manufacturing_yield_too_low",
         "regulatory_rejection",
-        "stress_scenario_composite=0.199",
-        "stress_scenario_composite=0.2056"
+        "stress_scenario_composite=0.0246",
+        "stress_scenario_composite=0.0257"
       ],
       "layer_10_commercial_risks": [
         "market_size_too_small_to_justify_capex",
@@ -803,30 +1340,30 @@
       "case_name": "Carbon-negative cement",
       "category": "reconstruction",
       "expected_verdict": "potentially_feasible",
-      "actual_verdict": "partially_feasible",
-      "composite_feasibility": 0.5358,
-      "bucket_distance_from_expected": 1,
-      "duration_s": 0.238,
-      "expectations_satisfied": true,
+      "actual_verdict": "uncertain",
+      "composite_feasibility": 0.2752,
+      "bucket_distance_from_expected": 2,
+      "duration_s": 0.739,
+      "expectations_satisfied": false,
       "rationale": "Reconstruction case. Already exists in early commercial form (CarbonCure, Solidia, BioMason). Tests the compiler can distinguish 'potentially feasible' from 'feasible' \u2014 the tech works but has not yet captured the global cement market.",
       "chain_summary": {
         "target_invention": "Manufacture cement that absorbs more CO2 over its lifecycle than it emits during production",
         "domain": "materials",
         "time_horizon": "5-10 years",
-        "prerequisite_chain_depth": 0,
+        "prerequisite_chain_depth": 1,
         "governing_equations_count": 1,
         "subsystem_count": 5,
-        "composite_feasibility_baseline": 0.5358,
-        "capex_usd_m": 23.21,
+        "composite_feasibility_baseline": 0.2752,
+        "capex_usd_m": 36.24,
         "market_size_usd_m": 1.0,
-        "total_prototype_timeline_years": 3.0,
+        "total_prototype_timeline_years": 3.2,
         "technical_risk_count": 7,
         "commercial_risk_count": 3,
         "verification_status": "integrated",
         "hypothesis": {
-          "id": "hyp_7e3ec8ad88233450",
+          "id": "hyp_da8f7cd0f11bcf9d",
           "claim": "The invention 'Manufacture cement that absorbs more CO2 over its lifecycle than it emits during production' is feasible in the materials domain within the stated time horizon.",
-          "confidence": 0.5358,
+          "confidence": 0.2752,
           "evidence": [
             "energy_conservation",
             "meissner_effect",
@@ -836,17 +1373,32 @@
             "carbonation_cure",
             "polymerization",
             "ampere law",
-            "capex_$23.21M"
+            "prerequisite_chain_depth_1",
+            "capex_$36.24M"
           ],
-          "counterevidence": [],
+          "counterevidence": [
+            "failure_mode: cost_overrun",
+            "failure_mode: material_unavailable_or_too_expensive",
+            "failure_mode: regulatory_rejection",
+            "failure_mode: manufacturing_yield_too_low",
+            "failure_mode: supply_chain_disruption",
+            "stress_scenario: composite=0.2150 (below 0.40)",
+            "stress_scenario: composite=0.2216 (below 0.40)",
+            "stress_scenario: composite=0.2216 (below 0.40)",
+            "technical_risk: stress_scenario_composite=0.215",
+            "technical_risk: stress_scenario_composite=0.2216",
+            "commercial_risk: market_size_too_small_to_justify_capex",
+            "commercial_risk: capex_exceeds_half_of_market_size",
+            "commercial_risk: s_curve_adoption_extends_payback_period"
+          ],
           "assumptions": [],
           "dependencies": [],
           "status": "pending",
           "observation": null,
           "writer": "invention_compiler.orchestrator.InventionCompiler._chain_summary",
-          "created_at": "2026-08-01T17:52:07.296297+00:00",
-          "updated_at": "2026-08-01T17:52:07.296311+00:00",
-          "timestamp": "2026-08-01T17:52:07.296297+00:00"
+          "created_at": "2026-08-04T00:42:41.670751+00:00",
+          "updated_at": "2026-08-04T00:42:41.670765+00:00",
+          "timestamp": "2026-08-04T00:42:41.670751+00:00"
         }
       },
       "layer_0": {
@@ -879,17 +1431,28 @@
             },
             "domain_a": "medical_devices",
             "domain_b": "agriculture",
-            "structural_overlap_score": 0.375,
+            "structural_overlap_score": 0.675,
             "evidence": {
               "shared_prerequisites": [
                 "component_lora_module",
                 "component_wireless_module",
                 "sub_wireless_sensor_networks"
               ],
-              "shared_constraints": [],
+              "shared_constraints": [
+                "cost",
+                "energy",
+                "information",
+                "maintenance",
+                "manufacturing",
+                "material",
+                "regulation",
+                "safety",
+                "supply_chain",
+                "time"
+              ],
               "common_ancestors": [],
               "prereq_overlap": 0.75,
-              "constraint_overlap": 0.0,
+              "constraint_overlap": 1.0,
               "ancestor_bonus": 0.0
             }
           },
@@ -908,15 +1471,26 @@
             },
             "domain_a": "robotics",
             "domain_b": "medical_devices",
-            "structural_overlap_score": 0.25,
+            "structural_overlap_score": 0.55,
             "evidence": {
               "shared_prerequisites": [
                 "sub_biomaterials"
               ],
-              "shared_constraints": [],
+              "shared_constraints": [
+                "cost",
+                "energy",
+                "information",
+                "maintenance",
+                "manufacturing",
+                "material",
+                "regulation",
+                "safety",
+                "supply_chain",
+                "time"
+              ],
               "common_ancestors": [],
               "prereq_overlap": 0.5,
-              "constraint_overlap": 0.0,
+              "constraint_overlap": 1.0,
               "ancestor_bonus": 0.0
             }
           },
@@ -935,15 +1509,26 @@
             },
             "domain_a": "robotics",
             "domain_b": "transportation",
-            "structural_overlap_score": 0.25,
+            "structural_overlap_score": 0.55,
             "evidence": {
               "shared_prerequisites": [
                 "sub_computer_vision"
               ],
-              "shared_constraints": [],
+              "shared_constraints": [
+                "cost",
+                "energy",
+                "information",
+                "maintenance",
+                "manufacturing",
+                "material",
+                "regulation",
+                "safety",
+                "supply_chain",
+                "time"
+              ],
               "common_ancestors": [],
               "prereq_overlap": 0.5,
-              "constraint_overlap": 0.0,
+              "constraint_overlap": 1.0,
               "ancestor_bonus": 0.0
             }
           },
@@ -962,15 +1547,26 @@
             },
             "domain_a": "fluid_dynamics",
             "domain_b": "water_treatment",
-            "structural_overlap_score": 0.2,
+            "structural_overlap_score": 0.5,
             "evidence": {
               "shared_prerequisites": [],
-              "shared_constraints": [],
+              "shared_constraints": [
+                "cost",
+                "energy",
+                "information",
+                "maintenance",
+                "manufacturing",
+                "material",
+                "regulation",
+                "safety",
+                "supply_chain",
+                "time"
+              ],
               "common_ancestors": [
                 "industry_filtration_industry"
               ],
               "prereq_overlap": 0.0,
-              "constraint_overlap": 0.0,
+              "constraint_overlap": 1.0,
               "ancestor_bonus": 0.2
             }
           },
@@ -989,22 +1585,33 @@
             },
             "domain_a": "fluid_dynamics",
             "domain_b": "transportation",
-            "structural_overlap_score": 0.2,
+            "structural_overlap_score": 0.5,
             "evidence": {
               "shared_prerequisites": [],
-              "shared_constraints": [],
+              "shared_constraints": [
+                "cost",
+                "energy",
+                "information",
+                "maintenance",
+                "manufacturing",
+                "material",
+                "regulation",
+                "safety",
+                "supply_chain",
+                "time"
+              ],
               "common_ancestors": [
                 "cemetery_009"
               ],
               "prereq_overlap": 0.0,
-              "constraint_overlap": 0.0,
+              "constraint_overlap": 1.0,
               "ancestor_bonus": 0.2
             }
           }
         ],
         "evidence": {
-          "total_pairs_evaluated": 166176,
-          "excluded_already_connected": 50,
+          "total_pairs_evaluated": 223446,
+          "excluded_already_connected": 82,
           "domain_filter_applied": [
             "materials"
           ]
@@ -1016,10 +1623,125 @@
         "falsification_criteria": "If, after N verification cycles, candidates surfaced by this engine fail to produce a viable invention more than 50% of the time, the structural-overlap prior is wrong and must be recalibrated. N >= 20 cycles is the minimum sample size."
       },
       "layer_10_blueprint": {
+        "parts_list": [
+          {
+            "id": "sub_supercapacitors",
+            "label": "Supercapacitors",
+            "type": "subdomain",
+            "source_layer": "Layer 2 (prerequisite chain)",
+            "note": "Graph node identifier \u2014 engineer must map to a real supplier part number or capability."
+          }
+        ],
+        "materials_specification": [
+          {
+            "id": "sub_supercapacitors",
+            "label": "Supercapacitors",
+            "constraints": [],
+            "source_layer": "Layer 2 (fallback \u2014 Layer 6 empty)"
+          }
+        ],
+        "assembly_plan": {
+          "subsystems": [
+            "subsystem_for_cost",
+            "subsystem_for_material",
+            "subsystem_for_regulation",
+            "subsystem_for_manufacturing",
+            "subsystem_for_supply_chain"
+          ],
+          "interfaces": [
+            "subsystem_for_cost <-> subsystem_for_material",
+            "subsystem_for_cost <-> subsystem_for_regulation",
+            "subsystem_for_cost <-> subsystem_for_manufacturing",
+            "subsystem_for_cost <-> subsystem_for_supply_chain",
+            "subsystem_for_material <-> subsystem_for_regulation"
+          ],
+          "inputs": {
+            "problem_constraints": [
+              "cost",
+              "material",
+              "regulation",
+              "manufacturing",
+              "supply_chain",
+              "carbon_negative"
+            ],
+            "time_horizon": "5-10 years",
+            "domain": "materials"
+          },
+          "outputs": {
+            "primary_output": "Manufacture cement that absorbs more CO2 over its lifecycle than it emits during production",
+            "evidence_quality": "replayable_per_law_8"
+          },
+          "energy_requirements": {
+            "budget_tight": false,
+            "tolerance": "not specified",
+            "estimated_watts": "depends_on_application"
+          },
+          "computational_requirements": {
+            "class": "moderate",
+            "note": "Real computational requirements depend on the governing equations from Layer 3 and the simulation approach from Layer 5."
+          },
+          "source_layer": "Layer 4 (Engineering architecture)"
+        },
+        "tolerances": {
+          "cost": "\u00b115% of capex estimate",
+          "material": "\u00b15% of material property target",
+          "regulation": "binary (pass/fail)",
+          "manufacturing": "\u00b13% yield",
+          "supply_chain": "\u00b130% lead time"
+        },
+        "prototype_specification": {
+          "v1": {
+            "name": "prototype_v1_materials_physics_validation",
+            "goal": "prove the core material property (carbon_sequestration) holds at lab scale for manufacture cement that absorbs",
+            "scope": "single materials subsystem, no integration, no manufacturability",
+            "success_threshold": "carbon_sequestration mechanism reproduces predicted output within 30% for manufacture cement that absorbs",
+            "estimated_duration_months": 6,
+            "estimated_cost_usd_m": 0.14
+          },
+          "v2": {
+            "name": "prototype_v2_materials_engineering_integration",
+            "goal": "integrate the material into a working manufacture cement that absorbs prototype with all subsystems",
+            "scope": "all materials subsystems, no manufacturing pathway, no regulatory submission",
+            "success_threshold": "integrated manufacture cement that absorbs prototype meets primary spec at 50% target performance",
+            "estimated_duration_months": 13,
+            "estimated_cost_usd_m": 0.55
+          },
+          "v3": {
+            "name": "prototype_v3_materials_production_readiness",
+            "goal": "pilot-manufacture manufacture cement that absorbs at 100x lab scale with cost within 2x target",
+            "scope": "production-intent materials prototype, pilot manufacturing run, regulatory pre-submission",
+            "success_threshold": "unit cost within 2x of target; regulatory pre-submission accepted for manufacture cement that absorbs",
+            "estimated_duration_months": 20,
+            "estimated_cost_usd_m": 2.2
+          },
+          "timeline": {
+            "total_months": 39,
+            "total_years": 3.2,
+            "fits_within_horizon": true,
+            "phases": [
+              {
+                "phase": "v1",
+                "start_month": 0,
+                "end_month": 6
+              },
+              {
+                "phase": "v2",
+                "start_month": 6,
+                "end_month": 19
+              },
+              {
+                "phase": "v3",
+                "start_month": 19,
+                "end_month": 39
+              }
+            ]
+          },
+          "source_layer": "Layer 9 (Prototype layer)"
+        },
         "problem": "Manufacture cement that absorbs more CO2 over its lifecycle than it emits during production",
         "domain": "materials",
         "target_invention": "Manufacture cement that absorbs more CO2 over its lifecycle than it emits during production",
-        "prerequisite_chain_depth": 0,
+        "prerequisite_chain_depth": 1,
         "governing_equations": [
           {
             "name": "ampere law",
@@ -1039,13 +1761,13 @@
           "subsystem_for_manufacturing",
           "subsystem_for_supply_chain"
         ],
-        "composite_feasibility": 23.21,
+        "composite_feasibility": 36.24,
         "prototype_stages": [
-          "prototype_v1_physics_validation",
-          "prototype_v2_engineering_integration",
-          "prototype_v3_production_readiness"
+          "prototype_v1_materials_physics_validation",
+          "prototype_v2_materials_engineering_integration",
+          "prototype_v3_materials_production_readiness"
         ],
-        "total_prototype_timeline_years": 3.0
+        "total_prototype_timeline_years": 3.2
       },
       "layer_10_technical_risks": [
         "cost_overrun",
@@ -1053,8 +1775,8 @@
         "regulatory_rejection",
         "manufacturing_yield_too_low",
         "supply_chain_disruption",
-        "stress_scenario_composite=0.4755",
-        "stress_scenario_composite=0.4821"
+        "stress_scenario_composite=0.215",
+        "stress_scenario_composite=0.2216"
       ],
       "layer_10_commercial_risks": [
         "market_size_too_small_to_justify_capex",
@@ -1067,30 +1789,30 @@
       "case_name": "Artificial photosynthesis",
       "category": "forecasting",
       "expected_verdict": "partially_feasible",
-      "actual_verdict": "partially_feasible",
-      "composite_feasibility": 0.4308,
-      "bucket_distance_from_expected": 0,
-      "duration_s": 0.246,
-      "expectations_satisfied": true,
+      "actual_verdict": "unknown",
+      "composite_feasibility": 0.1703,
+      "bucket_distance_from_expected": 2,
+      "duration_s": 0.74,
+      "expectations_satisfied": false,
       "rationale": "Forecasting case. Components work (PV electrolysis, photocatalytic water splitting) but a complete system that matches natural photosynthesis's efficiency does not yet exist. Tests the compiler can express 'partial feasibility' rather than binary pass/fail.",
       "chain_summary": {
         "target_invention": "Build a system that converts sunlight, CO2, and water into storable chemical fuel with efficiency exceeding natural photosynthesis",
         "domain": "energy",
         "time_horizon": "10-15 years",
-        "prerequisite_chain_depth": 0,
+        "prerequisite_chain_depth": 1,
         "governing_equations_count": 2,
         "subsystem_count": 4,
-        "composite_feasibility_baseline": 0.4308,
-        "capex_usd_m": 28.46,
+        "composite_feasibility_baseline": 0.1703,
+        "capex_usd_m": 41.48,
         "market_size_usd_m": 1.0,
-        "total_prototype_timeline_years": 3.0,
+        "total_prototype_timeline_years": 4.1,
         "technical_risk_count": 6,
         "commercial_risk_count": 3,
         "verification_status": "integrated",
         "hypothesis": {
-          "id": "hyp_7ce739fafa99d21f",
+          "id": "hyp_38be95a4a97b8ca4",
           "claim": "The invention 'Build a system that converts sunlight, CO2, and water into storable chemical fuel with efficiency exceeding natural photosynthesis' is feasible in the energy domain within the stated time horizon.",
-          "confidence": 0.4308,
+          "confidence": 0.1703,
           "evidence": [
             "bernoulli_principle",
             "energy_conservation",
@@ -1103,17 +1825,31 @@
             "photocatalysis_water_splitting",
             "ampere law",
             "bernoulli equation",
-            "capex_$28.46M"
+            "prerequisite_chain_depth_1",
+            "capex_$41.48M"
           ],
-          "counterevidence": [],
+          "counterevidence": [
+            "failure_mode: energy_budget_exceeded",
+            "failure_mode: material_unavailable_or_too_expensive",
+            "failure_mode: manufacturing_yield_too_low",
+            "failure_mode: regulatory_rejection",
+            "stress_scenario: composite=0.1159 (below 0.40)",
+            "stress_scenario: composite=0.1166 (below 0.40)",
+            "stress_scenario: composite=0.1179 (below 0.40)",
+            "technical_risk: stress_scenario_composite=0.1159",
+            "technical_risk: stress_scenario_composite=0.1166",
+            "commercial_risk: market_size_too_small_to_justify_capex",
+            "commercial_risk: capex_exceeds_half_of_market_size",
+            "commercial_risk: s_curve_adoption_extends_payback_period"
+          ],
           "assumptions": [],
           "dependencies": [],
           "status": "pending",
           "observation": null,
           "writer": "invention_compiler.orchestrator.InventionCompiler._chain_summary",
-          "created_at": "2026-08-01T17:52:07.541977+00:00",
-          "updated_at": "2026-08-01T17:52:07.541989+00:00",
-          "timestamp": "2026-08-01T17:52:07.541977+00:00"
+          "created_at": "2026-08-04T00:42:42.411083+00:00",
+          "updated_at": "2026-08-04T00:42:42.411099+00:00",
+          "timestamp": "2026-08-04T00:42:42.411083+00:00"
         }
       },
       "layer_0": {
@@ -1146,17 +1882,28 @@
             },
             "domain_a": "medical_devices",
             "domain_b": "agriculture",
-            "structural_overlap_score": 0.375,
+            "structural_overlap_score": 0.675,
             "evidence": {
               "shared_prerequisites": [
                 "component_lora_module",
                 "component_wireless_module",
                 "sub_wireless_sensor_networks"
               ],
-              "shared_constraints": [],
+              "shared_constraints": [
+                "cost",
+                "energy",
+                "information",
+                "maintenance",
+                "manufacturing",
+                "material",
+                "regulation",
+                "safety",
+                "supply_chain",
+                "time"
+              ],
               "common_ancestors": [],
               "prereq_overlap": 0.75,
-              "constraint_overlap": 0.0,
+              "constraint_overlap": 1.0,
               "ancestor_bonus": 0.0
             }
           },
@@ -1175,15 +1922,26 @@
             },
             "domain_a": "robotics",
             "domain_b": "medical_devices",
-            "structural_overlap_score": 0.25,
+            "structural_overlap_score": 0.55,
             "evidence": {
               "shared_prerequisites": [
                 "sub_biomaterials"
               ],
-              "shared_constraints": [],
+              "shared_constraints": [
+                "cost",
+                "energy",
+                "information",
+                "maintenance",
+                "manufacturing",
+                "material",
+                "regulation",
+                "safety",
+                "supply_chain",
+                "time"
+              ],
               "common_ancestors": [],
               "prereq_overlap": 0.5,
-              "constraint_overlap": 0.0,
+              "constraint_overlap": 1.0,
               "ancestor_bonus": 0.0
             }
           },
@@ -1202,15 +1960,26 @@
             },
             "domain_a": "robotics",
             "domain_b": "transportation",
-            "structural_overlap_score": 0.25,
+            "structural_overlap_score": 0.55,
             "evidence": {
               "shared_prerequisites": [
                 "sub_computer_vision"
               ],
-              "shared_constraints": [],
+              "shared_constraints": [
+                "cost",
+                "energy",
+                "information",
+                "maintenance",
+                "manufacturing",
+                "material",
+                "regulation",
+                "safety",
+                "supply_chain",
+                "time"
+              ],
               "common_ancestors": [],
               "prereq_overlap": 0.5,
-              "constraint_overlap": 0.0,
+              "constraint_overlap": 1.0,
               "ancestor_bonus": 0.0
             }
           },
@@ -1229,15 +1998,26 @@
             },
             "domain_a": "fluid_dynamics",
             "domain_b": "water_treatment",
-            "structural_overlap_score": 0.2,
+            "structural_overlap_score": 0.5,
             "evidence": {
               "shared_prerequisites": [],
-              "shared_constraints": [],
+              "shared_constraints": [
+                "cost",
+                "energy",
+                "information",
+                "maintenance",
+                "manufacturing",
+                "material",
+                "regulation",
+                "safety",
+                "supply_chain",
+                "time"
+              ],
               "common_ancestors": [
                 "industry_filtration_industry"
               ],
               "prereq_overlap": 0.0,
-              "constraint_overlap": 0.0,
+              "constraint_overlap": 1.0,
               "ancestor_bonus": 0.2
             }
           },
@@ -1256,22 +2036,33 @@
             },
             "domain_a": "fluid_dynamics",
             "domain_b": "transportation",
-            "structural_overlap_score": 0.2,
+            "structural_overlap_score": 0.5,
             "evidence": {
               "shared_prerequisites": [],
-              "shared_constraints": [],
+              "shared_constraints": [
+                "cost",
+                "energy",
+                "information",
+                "maintenance",
+                "manufacturing",
+                "material",
+                "regulation",
+                "safety",
+                "supply_chain",
+                "time"
+              ],
               "common_ancestors": [
                 "cemetery_009"
               ],
               "prereq_overlap": 0.0,
-              "constraint_overlap": 0.0,
+              "constraint_overlap": 1.0,
               "ancestor_bonus": 0.2
             }
           }
         ],
         "evidence": {
-          "total_pairs_evaluated": 166176,
-          "excluded_already_connected": 50,
+          "total_pairs_evaluated": 223446,
+          "excluded_already_connected": 82,
           "domain_filter_applied": [
             "energy"
           ]
@@ -1283,10 +2074,123 @@
         "falsification_criteria": "If, after N verification cycles, candidates surfaced by this engine fail to produce a viable invention more than 50% of the time, the structural-overlap prior is wrong and must be recalibrated. N >= 20 cycles is the minimum sample size."
       },
       "layer_10_blueprint": {
+        "parts_list": [
+          {
+            "id": "sub_supercapacitors",
+            "label": "Supercapacitors",
+            "type": "subdomain",
+            "source_layer": "Layer 2 (prerequisite chain)",
+            "note": "Graph node identifier \u2014 engineer must map to a real supplier part number or capability."
+          }
+        ],
+        "materials_specification": [
+          {
+            "id": "sub_supercapacitors",
+            "label": "Supercapacitors",
+            "constraints": [],
+            "source_layer": "Layer 2 (fallback \u2014 Layer 6 empty)"
+          }
+        ],
+        "assembly_plan": {
+          "subsystems": [
+            "subsystem_for_energy",
+            "subsystem_for_material",
+            "subsystem_for_manufacturing",
+            "subsystem_for_regulation"
+          ],
+          "interfaces": [
+            "subsystem_for_energy <-> subsystem_for_material",
+            "subsystem_for_energy <-> subsystem_for_manufacturing",
+            "subsystem_for_energy <-> subsystem_for_regulation",
+            "subsystem_for_material <-> subsystem_for_manufacturing",
+            "subsystem_for_material <-> subsystem_for_regulation"
+          ],
+          "inputs": {
+            "problem_constraints": [
+              "energy",
+              "material",
+              "catalyst",
+              "manufacturing",
+              "regulation",
+              "photosynthesis"
+            ],
+            "time_horizon": "10-15 years",
+            "domain": "energy"
+          },
+          "outputs": {
+            "primary_output": "Build a system that converts sunlight, CO2, and water into storable chemical fuel with efficiency exceeding natural photosynthesis",
+            "evidence_quality": "replayable_per_law_8"
+          },
+          "energy_requirements": {
+            "budget_tight": true,
+            "tolerance": "\u00b110% of energy budget",
+            "estimated_watts": "depends_on_application"
+          },
+          "computational_requirements": {
+            "class": "moderate",
+            "note": "Real computational requirements depend on the governing equations from Layer 3 and the simulation approach from Layer 5."
+          },
+          "source_layer": "Layer 4 (Engineering architecture)"
+        },
+        "tolerances": {
+          "energy": "\u00b110% of energy budget",
+          "material": "\u00b15% of material property target",
+          "manufacturing": "\u00b13% yield",
+          "regulation": "binary (pass/fail)"
+        },
+        "prototype_specification": {
+          "v1": {
+            "name": "prototype_v1_energy_physics_validation",
+            "goal": "prove the energy conversion mechanism (catalytic_activity) works at lab scale for build system that converts",
+            "scope": "single energy subsystem, no integration, no manufacturability",
+            "success_threshold": "catalytic_activity mechanism reproduces predicted output within 30% for build system that converts",
+            "estimated_duration_months": 7,
+            "estimated_cost_usd_m": 0.09
+          },
+          "v2": {
+            "name": "prototype_v2_energy_engineering_integration",
+            "goal": "integrate the energy converter into a build system that converts system with power conditioning",
+            "scope": "all energy subsystems, no manufacturing pathway, no regulatory submission",
+            "success_threshold": "integrated build system that converts prototype meets primary spec at 50% target performance",
+            "estimated_duration_months": 16,
+            "estimated_cost_usd_m": 0.34
+          },
+          "v3": {
+            "name": "prototype_v3_energy_production_readiness",
+            "goal": "pilot the build system that converts system at 100kW scale with cost within 2x target",
+            "scope": "production-intent energy prototype, pilot manufacturing run, regulatory pre-submission",
+            "success_threshold": "unit cost within 2x of target; regulatory pre-submission accepted for build system that converts",
+            "estimated_duration_months": 26,
+            "estimated_cost_usd_m": 1.36
+          },
+          "timeline": {
+            "total_months": 49,
+            "total_years": 4.1,
+            "fits_within_horizon": true,
+            "phases": [
+              {
+                "phase": "v1",
+                "start_month": 0,
+                "end_month": 7
+              },
+              {
+                "phase": "v2",
+                "start_month": 7,
+                "end_month": 23
+              },
+              {
+                "phase": "v3",
+                "start_month": 23,
+                "end_month": 49
+              }
+            ]
+          },
+          "source_layer": "Layer 9 (Prototype layer)"
+        },
         "problem": "Build a system that converts sunlight, CO2, and water into storable chemical fuel with efficiency exceeding natural photosynthesis",
         "domain": "energy",
         "target_invention": "Build a system that converts sunlight, CO2, and water into storable chemical fuel with efficiency exceeding natural photosynthesis",
-        "prerequisite_chain_depth": 0,
+        "prerequisite_chain_depth": 1,
         "governing_equations": [
           {
             "name": "ampere law",
@@ -1316,21 +2220,21 @@
           "subsystem_for_manufacturing",
           "subsystem_for_regulation"
         ],
-        "composite_feasibility": 28.46,
+        "composite_feasibility": 41.48,
         "prototype_stages": [
-          "prototype_v1_physics_validation",
-          "prototype_v2_engineering_integration",
-          "prototype_v3_production_readiness"
+          "prototype_v1_energy_physics_validation",
+          "prototype_v2_energy_engineering_integration",
+          "prototype_v3_energy_production_readiness"
         ],
-        "total_prototype_timeline_years": 3.0
+        "total_prototype_timeline_years": 4.1
       },
       "layer_10_technical_risks": [
         "energy_budget_exceeded",
         "material_unavailable_or_too_expensive",
         "manufacturing_yield_too_low",
         "regulatory_rejection",
-        "stress_scenario_composite=0.3705",
-        "stress_scenario_composite=0.3771"
+        "stress_scenario_composite=0.1159",
+        "stress_scenario_composite=0.1166"
       ],
       "layer_10_commercial_risks": [
         "market_size_too_small_to_justify_capex",
@@ -1343,30 +2247,30 @@
       "case_name": "Cargo airships (resurrection)",
       "category": "resurrection",
       "expected_verdict": "partially_feasible",
-      "actual_verdict": "partially_feasible",
-      "composite_feasibility": 0.5163,
-      "bucket_distance_from_expected": 0,
-      "duration_s": 0.239,
-      "expectations_satisfied": true,
+      "actual_verdict": "unknown",
+      "composite_feasibility": 0.2453,
+      "bucket_distance_from_expected": 2,
+      "duration_s": 0.752,
+      "expectations_satisfied": false,
       "rationale": "Resurrection case. Airships failed as passenger transport (Hindenburg 1937, helium-unavailability). Tests the compiler can recognize that the original failure mode (hydrogen flammability) is now removable (helium + modern materials), and that the use case has shifted (cargo, not passengers). Expected verdict: partially_feasible \u2014 LTA Research and HAV Airlander are attempting this with mixed progress.",
       "chain_summary": {
         "target_invention": "Resurrect rigid airships for heavy-lift cargo transport to remote areas without runways",
         "domain": "transportation",
         "time_horizon": "5-10 years",
-        "prerequisite_chain_depth": 0,
+        "prerequisite_chain_depth": 2,
         "governing_equations_count": 2,
         "subsystem_count": 5,
-        "composite_feasibility_baseline": 0.5163,
-        "capex_usd_m": 24.19,
+        "composite_feasibility_baseline": 0.2453,
+        "capex_usd_m": 37.73,
         "market_size_usd_m": 1.0,
-        "total_prototype_timeline_years": 3.0,
+        "total_prototype_timeline_years": 4.5,
         "technical_risk_count": 7,
         "commercial_risk_count": 3,
         "verification_status": "integrated",
         "hypothesis": {
-          "id": "hyp_dc0625f678320bfa",
+          "id": "hyp_3b2716e58e60863c",
           "claim": "The invention 'Resurrect rigid airships for heavy-lift cargo transport to remote areas without runways' is feasible in the transportation domain within the stated time horizon.",
-          "confidence": 0.5163,
+          "confidence": 0.2453,
           "evidence": [
             "bernoulli_principle",
             "energy_conservation",
@@ -1374,17 +2278,32 @@
             "navier_stokes",
             "ampere law",
             "bernoulli equation",
-            "capex_$24.19M"
+            "prerequisite_chain_depth_2",
+            "capex_$37.73M"
           ],
-          "counterevidence": [],
+          "counterevidence": [
+            "failure_mode: cost_overrun",
+            "failure_mode: material_unavailable_or_too_expensive",
+            "failure_mode: regulatory_rejection",
+            "failure_mode: manufacturing_yield_too_low",
+            "failure_mode: supply_chain_disruption",
+            "stress_scenario: composite=0.1884 (below 0.40)",
+            "stress_scenario: composite=0.1918 (below 0.40)",
+            "stress_scenario: composite=0.1924 (below 0.40)",
+            "technical_risk: stress_scenario_composite=0.1884",
+            "technical_risk: stress_scenario_composite=0.1918",
+            "commercial_risk: market_size_too_small_to_justify_capex",
+            "commercial_risk: capex_exceeds_half_of_market_size",
+            "commercial_risk: s_curve_adoption_extends_payback_period"
+          ],
           "assumptions": [],
           "dependencies": [],
           "status": "pending",
           "observation": null,
           "writer": "invention_compiler.orchestrator.InventionCompiler._chain_summary",
-          "created_at": "2026-08-01T17:52:07.781349+00:00",
-          "updated_at": "2026-08-01T17:52:07.781365+00:00",
-          "timestamp": "2026-08-01T17:52:07.781349+00:00"
+          "created_at": "2026-08-04T00:42:43.163547+00:00",
+          "updated_at": "2026-08-04T00:42:43.163562+00:00",
+          "timestamp": "2026-08-04T00:42:43.163547+00:00"
         }
       },
       "layer_0": {
@@ -1417,17 +2336,28 @@
             },
             "domain_a": "medical_devices",
             "domain_b": "agriculture",
-            "structural_overlap_score": 0.375,
+            "structural_overlap_score": 0.675,
             "evidence": {
               "shared_prerequisites": [
                 "component_lora_module",
                 "component_wireless_module",
                 "sub_wireless_sensor_networks"
               ],
-              "shared_constraints": [],
+              "shared_constraints": [
+                "cost",
+                "energy",
+                "information",
+                "maintenance",
+                "manufacturing",
+                "material",
+                "regulation",
+                "safety",
+                "supply_chain",
+                "time"
+              ],
               "common_ancestors": [],
               "prereq_overlap": 0.75,
-              "constraint_overlap": 0.0,
+              "constraint_overlap": 1.0,
               "ancestor_bonus": 0.0
             }
           },
@@ -1446,15 +2376,26 @@
             },
             "domain_a": "robotics",
             "domain_b": "medical_devices",
-            "structural_overlap_score": 0.25,
+            "structural_overlap_score": 0.55,
             "evidence": {
               "shared_prerequisites": [
                 "sub_biomaterials"
               ],
-              "shared_constraints": [],
+              "shared_constraints": [
+                "cost",
+                "energy",
+                "information",
+                "maintenance",
+                "manufacturing",
+                "material",
+                "regulation",
+                "safety",
+                "supply_chain",
+                "time"
+              ],
               "common_ancestors": [],
               "prereq_overlap": 0.5,
-              "constraint_overlap": 0.0,
+              "constraint_overlap": 1.0,
               "ancestor_bonus": 0.0
             }
           },
@@ -1473,15 +2414,26 @@
             },
             "domain_a": "robotics",
             "domain_b": "transportation",
-            "structural_overlap_score": 0.25,
+            "structural_overlap_score": 0.55,
             "evidence": {
               "shared_prerequisites": [
                 "sub_computer_vision"
               ],
-              "shared_constraints": [],
+              "shared_constraints": [
+                "cost",
+                "energy",
+                "information",
+                "maintenance",
+                "manufacturing",
+                "material",
+                "regulation",
+                "safety",
+                "supply_chain",
+                "time"
+              ],
               "common_ancestors": [],
               "prereq_overlap": 0.5,
-              "constraint_overlap": 0.0,
+              "constraint_overlap": 1.0,
               "ancestor_bonus": 0.0
             }
           },
@@ -1500,15 +2452,26 @@
             },
             "domain_a": "fluid_dynamics",
             "domain_b": "water_treatment",
-            "structural_overlap_score": 0.2,
+            "structural_overlap_score": 0.5,
             "evidence": {
               "shared_prerequisites": [],
-              "shared_constraints": [],
+              "shared_constraints": [
+                "cost",
+                "energy",
+                "information",
+                "maintenance",
+                "manufacturing",
+                "material",
+                "regulation",
+                "safety",
+                "supply_chain",
+                "time"
+              ],
               "common_ancestors": [
                 "industry_filtration_industry"
               ],
               "prereq_overlap": 0.0,
-              "constraint_overlap": 0.0,
+              "constraint_overlap": 1.0,
               "ancestor_bonus": 0.2
             }
           },
@@ -1527,22 +2490,33 @@
             },
             "domain_a": "fluid_dynamics",
             "domain_b": "transportation",
-            "structural_overlap_score": 0.2,
+            "structural_overlap_score": 0.5,
             "evidence": {
               "shared_prerequisites": [],
-              "shared_constraints": [],
+              "shared_constraints": [
+                "cost",
+                "energy",
+                "information",
+                "maintenance",
+                "manufacturing",
+                "material",
+                "regulation",
+                "safety",
+                "supply_chain",
+                "time"
+              ],
               "common_ancestors": [
                 "cemetery_009"
               ],
               "prereq_overlap": 0.0,
-              "constraint_overlap": 0.0,
+              "constraint_overlap": 1.0,
               "ancestor_bonus": 0.2
             }
           }
         ],
         "evidence": {
-          "total_pairs_evaluated": 166176,
-          "excluded_already_connected": 50,
+          "total_pairs_evaluated": 223446,
+          "excluded_already_connected": 82,
           "domain_filter_applied": [
             "transportation"
           ]
@@ -1554,10 +2528,165 @@
         "falsification_criteria": "If, after N verification cycles, candidates surfaced by this engine fail to produce a viable invention more than 50% of the time, the structural-overlap prior is wrong and must be recalibrated. N >= 20 cycles is the minimum sample size."
       },
       "layer_10_blueprint": {
+        "parts_list": [
+          {
+            "id": "component_lithium_ion_cell",
+            "label": "Lithium Ion Cell",
+            "type": "component",
+            "source_layer": "Layer 2 (required_materials)",
+            "note": "Graph node identifier \u2014 engineer must map to a real supplier part number or capability."
+          },
+          {
+            "id": "component_battery_management_system",
+            "label": "Battery Management System",
+            "type": "component",
+            "source_layer": "Layer 2 (required_materials)",
+            "note": "Graph node identifier \u2014 engineer must map to a real supplier part number or capability."
+          },
+          {
+            "id": "component_brushless_dc_motor",
+            "label": "Brushless Dc Motor",
+            "type": "component",
+            "source_layer": "Layer 2 (required_materials)",
+            "note": "Graph node identifier \u2014 engineer must map to a real supplier part number or capability."
+          },
+          {
+            "id": "sub_battery_technology",
+            "label": "Battery Technology",
+            "type": "subdomain",
+            "source_layer": "Layer 2 (prerequisite chain)",
+            "note": "Graph node identifier \u2014 engineer must map to a real supplier part number or capability."
+          },
+          {
+            "id": "principle_electrochemical_potential",
+            "label": "Electrochemical Potential",
+            "type": "principle",
+            "source_layer": "Layer 2 (prerequisite chain)",
+            "note": "Graph node identifier \u2014 engineer must map to a real supplier part number or capability."
+          }
+        ],
+        "materials_specification": [
+          {
+            "id": "component_lithium_ion_cell",
+            "label": "Lithium Ion Cell",
+            "constraints": [],
+            "source_layer": "Layer 6 (Manufacturing layer)"
+          },
+          {
+            "id": "component_battery_management_system",
+            "label": "Battery Management System",
+            "constraints": [],
+            "source_layer": "Layer 6 (Manufacturing layer)"
+          },
+          {
+            "id": "component_brushless_dc_motor",
+            "label": "Brushless Dc Motor",
+            "constraints": [],
+            "source_layer": "Layer 6 (Manufacturing layer)"
+          }
+        ],
+        "assembly_plan": {
+          "subsystems": [
+            "subsystem_for_cost",
+            "subsystem_for_material",
+            "subsystem_for_regulation",
+            "subsystem_for_manufacturing",
+            "subsystem_for_supply_chain"
+          ],
+          "interfaces": [
+            "subsystem_for_cost <-> subsystem_for_material",
+            "subsystem_for_cost <-> subsystem_for_regulation",
+            "subsystem_for_cost <-> subsystem_for_manufacturing",
+            "subsystem_for_cost <-> subsystem_for_supply_chain",
+            "subsystem_for_material <-> subsystem_for_regulation"
+          ],
+          "inputs": {
+            "problem_constraints": [
+              "cost",
+              "material",
+              "regulation",
+              "manufacturing",
+              "supply_chain",
+              "helium_availability"
+            ],
+            "time_horizon": "5-10 years",
+            "domain": "transportation"
+          },
+          "outputs": {
+            "primary_output": "Resurrect rigid airships for heavy-lift cargo transport to remote areas without runways",
+            "evidence_quality": "replayable_per_law_8"
+          },
+          "energy_requirements": {
+            "budget_tight": false,
+            "tolerance": "not specified",
+            "estimated_watts": "depends_on_application"
+          },
+          "computational_requirements": {
+            "class": "moderate",
+            "note": "Real computational requirements depend on the governing equations from Layer 3 and the simulation approach from Layer 5."
+          },
+          "source_layer": "Layer 4 (Engineering architecture)"
+        },
+        "tolerances": {
+          "cost": "\u00b115% of capex estimate",
+          "material": "\u00b15% of material property target",
+          "regulation": "binary (pass/fail)",
+          "manufacturing": "\u00b13% yield",
+          "supply_chain": "\u00b130% lead time"
+        },
+        "prototype_specification": {
+          "v1": {
+            "name": "prototype_v1_transportation_physics_validation",
+            "goal": "prove the propulsion/control mechanism (propulsion) works at lab scale for resurrect rigid airships heavy-lift",
+            "scope": "single transportation subsystem, no integration, no manufacturability",
+            "success_threshold": "propulsion mechanism reproduces predicted output within 30% for resurrect rigid airships heavy-lift",
+            "estimated_duration_months": 6,
+            "estimated_cost_usd_m": 0.12
+          },
+          "v2": {
+            "name": "prototype_v2_transportation_engineering_integration",
+            "goal": "integrate the vehicle into a resurrect rigid airships heavy-lift system with power and control",
+            "scope": "all transportation subsystems, no manufacturing pathway, no regulatory submission",
+            "success_threshold": "integrated resurrect rigid airships heavy-lift prototype meets primary spec at 50% target performance",
+            "estimated_duration_months": 18,
+            "estimated_cost_usd_m": 0.49
+          },
+          "v3": {
+            "name": "prototype_v3_transportation_production_readiness",
+            "goal": "pilot the resurrect rigid airships heavy-lift system with regulatory pre-submission and 1000km field test",
+            "scope": "production-intent transportation prototype, pilot manufacturing run, regulatory pre-submission",
+            "success_threshold": "unit cost within 2x of target; regulatory pre-submission accepted for resurrect rigid airships heavy-lift",
+            "estimated_duration_months": 30,
+            "estimated_cost_usd_m": 1.96
+          },
+          "timeline": {
+            "total_months": 54,
+            "total_years": 4.5,
+            "fits_within_horizon": true,
+            "phases": [
+              {
+                "phase": "v1",
+                "start_month": 0,
+                "end_month": 6
+              },
+              {
+                "phase": "v2",
+                "start_month": 6,
+                "end_month": 24
+              },
+              {
+                "phase": "v3",
+                "start_month": 24,
+                "end_month": 54
+              }
+            ]
+          },
+          "source_layer": "Layer 9 (Prototype layer)"
+        },
         "problem": "Resurrect rigid airships for heavy-lift cargo transport to remote areas without runways",
         "domain": "transportation",
         "target_invention": "Resurrect rigid airships for heavy-lift cargo transport to remote areas without runways",
-        "prerequisite_chain_depth": 0,
+        "prerequisite_chain_depth": 2,
         "governing_equations": [
           {
             "name": "ampere law",
@@ -1588,13 +2717,13 @@
           "subsystem_for_manufacturing",
           "subsystem_for_supply_chain"
         ],
-        "composite_feasibility": 24.19,
+        "composite_feasibility": 37.73,
         "prototype_stages": [
-          "prototype_v1_physics_validation",
-          "prototype_v2_engineering_integration",
-          "prototype_v3_production_readiness"
+          "prototype_v1_transportation_physics_validation",
+          "prototype_v2_transportation_engineering_integration",
+          "prototype_v3_transportation_production_readiness"
         ],
-        "total_prototype_timeline_years": 3.0
+        "total_prototype_timeline_years": 4.5
       },
       "layer_10_technical_risks": [
         "cost_overrun",
@@ -1602,8 +2731,8 @@
         "regulatory_rejection",
         "manufacturing_yield_too_low",
         "supply_chain_disruption",
-        "stress_scenario_composite=0.456",
-        "stress_scenario_composite=0.4626"
+        "stress_scenario_composite=0.1884",
+        "stress_scenario_composite=0.1918"
       ],
       "layer_10_commercial_risks": [
         "market_size_too_small_to_justify_capex",

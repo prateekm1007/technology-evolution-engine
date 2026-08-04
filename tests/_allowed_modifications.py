@@ -72,6 +72,12 @@ ALLOWED_MODIFICATIONS = frozenset({
     "scripts/thermal_model_1d.py",
     # Phase 1: independent recomputation verifier (Law 13)
     "scripts/verify_arithmetic.py",
+    # F-044 / PR-22: independent benchmark recomputation verifier
+    # (Law 13 extended from package layer to benchmark layer)
+    "scripts/verify_benchmarks.py",
+    "scripts/run_compiler_benchmarks.py",
+    # F-044 tests
+    "tests/test_verify_benchmarks.py",
     # Self-audit fixes: product enforcement tests + CI updates
     "tests/test_product_enforcement.py",
     "product/PRODUCT.md",  # canonical source for the customer-facing PDF

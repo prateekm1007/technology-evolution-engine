@@ -19,6 +19,8 @@ import json
 import sys
 import time
 import traceback
+import statistics
+from collections import Counter
 from datetime import datetime, timezone
 import pathlib
 
@@ -162,6 +164,22 @@ def main():
             # tests that read it, but the canonical field is
             # expectations_satisfied.
             "passed": satisfied,
+            # Per F-044 / PR-22: include the self-reported overall_composite_mean
+            # in the summary so that scripts/verify_benchmarks.py (the
+            # independent recomputation verifier) can compare it against
+            # the independently-derived mean. Without this field, the
+            # verifier cannot detect a self-reported mean that disagrees
+            # with the recomputed mean.
+            "overall_composite_mean": round(
+                statistics.mean([r["composite_feasibility"] for r in results
+                                  if r.get("composite_feasibility") is not None]),
+                4
+            ) if any(r.get("composite_feasibility") is not None for r in results) else 0.0,
+            "grade_distribution": dict(Counter(
+                verdict_from_composite(r["composite_feasibility"])
+                for r in results
+                if r.get("composite_feasibility") is not None
+            )),
             "verdict": "EXPECTATIONS_SATISFIED" if not_satisfied == 0
                        else "EXPECTATIONS_NOT_SATISFIED",
         },
