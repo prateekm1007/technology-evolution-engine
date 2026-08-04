@@ -1634,3 +1634,50 @@ the architecture is incomplete:
   Altshuller test: Can the system resolve a contradiction?
   Arthur test: Can the system move into the adjacent possible?
 
+
+## Test debt expiry rule (cycle 54, per External Auditor Phase 1)
+
+> Any test that pins a specific historic commit hash or a since-archived
+> filename gets a 90-day expiry, checked in CI, so this class of debt
+> can't silently reaccumulate.
+
+### The rule
+
+A test that references:
+- A specific git commit hash (e.g., `test_only_dependency_module_was_modified`
+  pinning `194089d`)
+- A since-archived filename (e.g., `INVENTION_COMPILER.md`, `HANDOFF.md`)
+- A frozen scope-lock from a prior cycle
+
+...must declare an expiry date in a comment at the top of the test:
+```python
+# EXPIRY: 2026-11-05 (90 days from 2026-08-05)
+def test_something_pinned_to_old_commit():
+    ...
+```
+
+### Enforcement
+
+A CI check (to be wired) scans `tests/` for `EXPIRY:` comments and fails
+if any expiry date is in the past. This prevents the specific failure
+mode the Auditor identified: tests that pin historic state silently
+reaccumulating as the project evolves.
+
+### Why this rule exists
+
+The Auditor found:
+- `test_only_dependency_module_was_modified` pinning commit `194089d`
+- `test_cto_review_4/5/6.py` referencing `INVENTION_COMPILER.md` and `HANDOFF.md`
+- README references to archived files
+
+These are process debt: tests that verified a constraint at a point in
+time but now serve only to pin the project to that point. The 90-day
+expiry forces them to be either:
+1. Updated to reference current files/commits, OR
+2. Deleted if the constraint is no longer relevant, OR
+3. Re-justified with a fresh expiry date
+
+This is the same discipline as the `evidence/` directory's retention
+policy: old evidence is not deleted silently, but it must be re-justified
+or it expires.
+

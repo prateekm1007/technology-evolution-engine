@@ -1,6 +1,15 @@
 """
 Verification Engine — feeds Layer 8 (Experimental layer).
 
+Per ANTI_ENTROPY.md "Use the word 'engine' honestly", this module
+qualifies as an engine because it satisfies all three conditions:
+  1. Explicit model: predict → observe → reconcile loop with a
+     formal model of how predictions map to outcomes.
+  2. Empirical validation: 9 historical-failure validations in the
+     ledger (6 pass + 3 fail) — recorded in evidence/reports/.
+  3. Reproducible results: deterministic seeded RNG, byte-exact
+     replays with the same inputs.
+
 This is the loop that closes the invention compiler. Per
 INVENTION_COMPILER.md, it must be promoted to a first-class module.
 It currently exists as scripts/run_verification_cycle.py and

@@ -737,15 +737,76 @@ class SwansonBridgeSearch:
                             break
                     
                     if not a_to_c_exists:
+                        # Score (cycle 54 fix, per Auditor Phase 1):
+                        # The old code was `score: 1.0` (hardcoded constant).
+                        # Now: score by relation_type (layer) of the two hops.
+                        # A bridge built from two MECHANISM edges should outrank
+                        # one built from two ASSOCIATION edges.
+                        # Layer weights (causal strength increases with layer):
+                        #   equivalence=0.1, association=0.2, influence=0.4,
+                        #   mechanism=0.6, intervention=0.8, observation=1.0
+                        layer_weights = {
+                            "equivalence": 0.1, "association": 0.2, "influence": 0.4,
+                            "mechanism": 0.6, "intervention": 0.8, "observation": 1.0,
+                        }
+                        a_to_b_weight = 0.2  # default if edge not found
+                        b_to_c_weight = 0.2
+                        for subgraph2 in graph._subgraphs.values():
+                            for edge2 in subgraph2.edges:
+                                if edge2.source == a and edge2.target == b:
+                                    rt = edge2.relation_type
+                                    rt_str = rt.value if hasattr(rt, 'value') else str(rt)
+                                    a_to_b_weight = layer_weights.get(rt_str, 0.2)
+                                if edge2.source == b and edge2.target == c:
+                                    rt = edge2.relation_type
+                                    rt_str = rt.value if hasattr(rt, 'value') else str(rt)
+                                    b_to_c_weight = layer_weights.get(rt_str, 0.2)
+                        bridge_score = (a_to_b_weight + b_to_c_weight) / 2.0
                         bridges.append({
                             "a": a,
                             "b": b,
                             "c": c,
-                            "score": 1.0,  # simple score: exists = 1.0
+                            "score": bridge_score,
+                            "a_to_b_layer": a_to_b_weight,
+                            "b_to_c_layer": b_to_c_weight,
                             "description": f"Undiscovered bridge: {a} → {b} → {c} (but {a} → {c} not connected)"
                         })
         
         return bridges
+
+
+def _edge_type_sequence(graph: DiscoveryGraph, chain: List[str]) -> List[str]:
+    """Get the sequence of edge relation_types along a chain.
+
+    Per cycle 54 Gentner fix (Auditor Phase 1): Gentner's systematicity
+    is about RELATIONAL structure, not just chain length. Two chains with
+    the same edge-type sequence (e.g., [MECHANISM, MECHANISM, INTERVENTION])
+    are structurally analogous; two with different sequences are not.
+
+    Returns a list of relation_type values (as strings) for each consecutive
+    pair in the chain. If no edge exists between two consecutive nodes,
+    returns an empty list (the chain is invalid).
+    """
+    if len(chain) < 2:
+        return []
+    sequence = []
+    for i in range(len(chain) - 1):
+        src, tgt = chain[i], chain[i + 1]
+        found = False
+        for subgraph in graph._subgraphs.values():
+            for edge in subgraph.edges:
+                if edge.source == src and edge.target == tgt:
+                    sequence.append(edge.relation_type.value
+                                   if hasattr(edge.relation_type, 'value')
+                                   else str(edge.relation_type))
+                    found = True
+                    break
+            if found:
+                break
+        if not found:
+            # No edge between consecutive nodes — invalid chain
+            return []
+    return sequence
 
 
 class GentnerStructureMapping:
@@ -767,9 +828,13 @@ class GentnerStructureMapping:
         different entities.
         """
         # Extract all chains of length >= min_chain_length
+        # Per cycle 54 (Auditor Phase 1): search ALL subgraphs, not just
+        # MECHANISM. This allows chains with different edge-type sequences
+        # to be found and compared — which is what makes systematicity
+        # non-constant (the bug the Auditor caught).
         chains = []
         for subgraph in graph._subgraphs.values():
-            if not isinstance(subgraph, MechanismGraph):
+            if not hasattr(subgraph, 'edges'):
                 continue
             # BFS from each node
             for start_node in subgraph.nodes:
@@ -797,10 +862,28 @@ class GentnerStructureMapping:
                     # Check no shared nodes (different domains)
                     shared = set(chain_a) & set(chain_b)
                     if len(shared) == 0:
+                        # Systematicity (cycle 54 fix, per Auditor Phase 1):
+                        # Gentner's real criterion is RELATIONAL structure, not
+                        # just chain length. Compare the sequence of edge
+                        # relation_types along each chain — two chains with
+                        # the same edge-type sequence are structurally analogous;
+                        # two chains with different sequences are not.
+                        # The old code was `len(chain_a)/max(len(chain_a),1)`
+                        # which is always 1.0 (the bug the Auditor caught).
+                        edge_types_a = _edge_type_sequence(graph, chain_a)
+                        edge_types_b = _edge_type_sequence(graph, chain_b)
+                        if edge_types_a and edge_types_b and len(edge_types_a) == len(edge_types_b):
+                            matches = sum(1 for ta, tb in zip(edge_types_a, edge_types_b) if ta == tb)
+                            systematicity = matches / len(edge_types_a)
+                        else:
+                            # No edge-type info available — fall back to length match (0.5, not 1.0)
+                            systematicity = 0.5
                         analogies.append({
                             "chain_a": chain_a,
                             "chain_b": chain_b,
-                            "systematicity": len(chain_a) / max(len(chain_a), 1),
+                            "systematicity": systematicity,
+                            "edge_types_a": edge_types_a,
+                            "edge_types_b": edge_types_b,
                             "description": f"Structural analogy: {' → '.join(chain_a)} vs {' → '.join(chain_b)}"
                         })
         
