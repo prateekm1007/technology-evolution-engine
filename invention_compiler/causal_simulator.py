@@ -616,6 +616,196 @@ class CausalSimulator:
             timeline_days=timeline_days,
         )
 
+    # -----------------------------------------------------------------
+    # Cycle 52 (Phase V): hypothesis ranking by expected information gain
+    # -----------------------------------------------------------------
+
+    def rank_hypotheses_by_information_gain(
+        self,
+        hypotheses: List[str],
+        edge: Optional[CausalEdge] = None,
+    ) -> List[Tuple[str, float, str]]:
+        """Rank hypotheses by expected information gain.
+
+        Per cycle 52 (Phase V): previously, design_autonomous_competing_experiment
+        returned the first N hypotheses from the perturbation templates. This
+        method RANKS them so the most informative hypothesis is designed first.
+
+        Information gain heuristic (per MacKay 2003, Information Theory):
+          IG(hypothesis) = entropy(prior) - entropy(posterior)
+          ≈ discriminating_power * prior_plausibility
+
+        For computational tractability (no full Bayesian update), we use
+        a heuristic based on TWO signals:
+          1. DISCRIMINATING POWER: how different is the hypothesis from
+             the OTHER hypotheses? A unique prediction (no overlap with
+             others) has high discriminating power.
+          2. PRIOR PLAUSIBILITY: how consistent is the hypothesis with
+             the edge's existing mechanism? A hypothesis that mentions
+             concepts already in the edge's mechanism is more plausible
+             than one that introduces new concepts.
+
+        The ranking is a heuristic — not a full Bayesian calculation.
+        It is honest about being a heuristic (returns floats, not probabilities).
+
+        Args:
+            hypotheses: list of hypothesis strings (≥2)
+            edge: the edge whose mechanism is being perturbed (used for
+                prior plausibility). If None, only discriminating_power
+                is used (uniform prior).
+
+        Returns:
+            List of (hypothesis, score, reason) tuples sorted by score descending.
+            Score is in [0, 1] — higher = more informative.
+        """
+        if len(hypotheses) < 2:
+            return [(h, 0.0, "fewer than 2 hypotheses — no ranking") for h in hypotheses]
+
+        # 1. DISCRIMINATING POWER — how unique is each hypothesis?
+        # Tokenize each hypothesis into a set of meaningful words
+        STOP_WORDS = {"the", "is", "are", "a", "an", "with", "and", "or",
+                      "of", "in", "to", "above", "below", "at", "by", "for",
+                      "with", "y", "var", "α"}
+        def _tokenize(h: str) -> set:
+            # Split on non-alphanumeric
+            import re
+            tokens = re.findall(r"[a-zA-Z_][a-zA-Z0-9_]*", h.lower())
+            return {t for t in tokens if t not in STOP_WORDS and len(t) > 1}
+
+        hypothesis_tokens = [_tokenize(h) for h in hypotheses]
+        # Discriminating power = 1 - (overlap with union of others)
+        discriminating_scores: List[float] = []
+        for i, tokens_i in enumerate(hypothesis_tokens):
+            other_tokens = set()
+            for j, tokens_j in enumerate(hypothesis_tokens):
+                if i != j:
+                    other_tokens |= tokens_j
+            if not tokens_i:
+                discriminating_scores.append(0.0)
+                continue
+            unique = tokens_i - other_tokens
+            discriminating_scores.append(len(unique) / len(tokens_i))
+
+        # 2. PRIOR PLAUSIBILITY — consistency with the edge's mechanism
+        plausibility_scores: List[float] = []
+        if edge is not None and edge.mechanism:
+            edge_tokens = _tokenize(edge.mechanism)
+            for tokens_i in hypothesis_tokens:
+                if not tokens_i or not edge_tokens:
+                    plausibility_scores.append(0.5)  # neutral
+                    continue
+                overlap = len(tokens_i & edge_tokens)
+                # Normalize: more overlap = more plausible (but cap at 1.0)
+                plausibility = min(1.0, 0.3 + 0.7 * overlap / max(len(tokens_i), 1))
+                plausibility_scores.append(plausibility)
+        else:
+            # No edge → uniform prior
+            plausibility_scores = [0.5] * len(hypotheses)
+
+        # 3. Combined information gain = discriminating_power * plausibility
+        # Both factors in [0, 1], so product in [0, 1]
+        results: List[Tuple[str, float, str]] = []
+        for i, h in enumerate(hypotheses):
+            score = discriminating_scores[i] * plausibility_scores[i]
+            reason = (
+                f"discriminating={discriminating_scores[i]:.2f} "
+                f"(unique tokens), plausibility={plausibility_scores[i]:.2f} "
+                f"(overlap with edge mechanism)"
+            )
+            results.append((h, score, reason))
+
+        # Sort by score descending (highest information gain first)
+        results.sort(key=lambda t: -t[1])
+        return results
+
+    def design_ranked_competing_experiment(
+        self,
+        start_node_id: str,
+        target_node_id: str,
+        intervention_node: str,
+        discriminating_value: float,
+        discriminating_unit: str,
+        n_hypotheses: int = 3,
+        cost_usd: float = 300.0,
+        timeline_days: int = 5,
+    ) -> Optional[ExperimentProposal]:
+        """Design a competing-hypothesis experiment with RANKED hypotheses.
+
+        Per cycle 52 (Phase V): combines:
+          - generate_competing_hypotheses (autonomous generation)
+          - rank_hypotheses_by_information_gain (Phase V ranking)
+          - design_competing_experiment (the cycle 50 method)
+
+        The hypotheses are sorted by expected information gain before being
+        passed to design_competing_experiment. The most informative
+        hypothesis appears first in the prediction.
+
+        Args:
+            start_node_id: source node
+            target_node_id: target node
+            intervention_node: variable to change
+            discriminating_value: where hypotheses diverge
+            discriminating_unit: unit of discriminating value
+            n_hypotheses: how many hypotheses to generate+rank (default 3)
+            cost_usd: experiment cost
+            timeline_days: experiment duration
+
+        Returns:
+            ExperimentProposal with ranked hypotheses, or None if no edge exists.
+        """
+        # Find the edge
+        edge: Optional[CausalEdge] = None
+        for e in self.graph.edges:
+            if e.source == start_node_id and e.target == target_node_id:
+                edge = e
+                break
+        if edge is None:
+            reachable, path = self.can_reach(start_node_id, target_node_id)
+            if not reachable:
+                return None
+            class _VirtualEdge:
+                pass
+            ve = _VirtualEdge()
+            ve.source = start_node_id
+            ve.target = target_node_id
+            ve.direction = "causes"
+            ve.mechanism = f"path: {' → '.join(path)}"
+            ve.expected_output = None
+            edge = ve  # type: ignore
+
+        # Generate hypotheses
+        hypotheses = self.generate_competing_hypotheses(
+            edge, n_hypotheses=n_hypotheses, intervention_var=intervention_node
+        )
+        if len(hypotheses) < 2:
+            return None
+
+        # Rank by information gain
+        ranked = self.rank_hypotheses_by_information_gain(hypotheses, edge)
+        ranked_hypotheses = [h for h, _, _ in ranked]
+
+        measurement_desc = (
+            f"measure {target_node_id} at {intervention_node} = "
+            f"{discriminating_value} {discriminating_unit} "
+            f"(hypotheses ranked by information gain)"
+        )
+        intervention_desc = (
+            f"set {intervention_node} = {discriminating_value} {discriminating_unit}"
+        )
+
+        return self.design_competing_experiment(
+            start_node_id=start_node_id,
+            target_node_id=target_node_id,
+            intervention_node=intervention_node,
+            intervention_desc=intervention_desc,
+            measurement_desc=measurement_desc,
+            competing_hypotheses=ranked_hypotheses,
+            discriminating_value=discriminating_value,
+            discriminating_unit=discriminating_unit,
+            cost_usd=cost_usd,
+            timeline_days=timeline_days,
+        )
+
     def design_and_track_experiment(self, start_node_id: str, target_node_id: str,
                                      intervention_node: str, intervention_desc: str,
                                      measurement_desc: str, falsification_desc: str,

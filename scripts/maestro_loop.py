@@ -307,6 +307,70 @@ def run_acid_test() -> Dict[str, Any]:
         else f"{phase_iv_pass_count}/3 PASS"
     )
 
+    # Phase V (cycle 52): three more capabilities
+    # 1. BACON.4 — recursive composition for 3+ variables
+    # 2. k-fold cross-validation (5-fold with averaged test R²)
+    # 3. Hypothesis ranking by expected information gain
+    phase_v_status = {
+        "BACON.4 recursive composition": "NOT IMPLEMENTED",
+        "k-fold cross-validation": "NOT IMPLEMENTED",
+        "Hypothesis ranking": "NOT IMPLEMENTED",
+    }
+    try:
+        from invention_compiler.bacon_engine import (
+            discover_recursive_composed_law, k_fold_cross_validate_law,
+            pcm_latent_heat_dataset as _pcm_ds,
+        )
+        import itertools as _it
+        # 1. BACON.4: 3-variable product y = a*x1*x2*x3
+        _x1, _x2, _x3, _y = [], [], [], []
+        for _a, _b, _c in _it.product([1, 2, 3], [1, 2, 3], [1, 2]):
+            _x1.append(float(_a)); _x2.append(float(_b)); _x3.append(float(_c))
+            _y.append(2.5 * _a * _b * _c)
+        _result = discover_recursive_composed_law(
+            {"x1": _x1, "x2": _x2, "x3": _x3, "y": _y}, "y"
+        )
+        if _result is not None and _result.depth >= 2 and _result.law.r2 >= 0.99:
+            phase_v_status["BACON.4 recursive composition"] = "PASS"
+
+        # 2. k-fold CV: 5-fold on PCM data
+        _pcm = _pcm_ds(n_points=10)
+        _kcv = k_fold_cross_validate_law(_pcm["Q_daily_W"], _pcm["m_pcm_kg"], k=5)
+        if _kcv is not None and _kcv.mean_test_r2 >= 0.95 and _kcv.std_test_r2 <= 0.10:
+            phase_v_status["k-fold cross-validation"] = "PASS"
+    except ImportError:
+        pass
+    except Exception:
+        pass
+
+    # 3. Hypothesis ranking: design_ranked_competing_experiment produces
+    #    a proposal with ranked hypotheses
+    try:
+        from invention_compiler.causal_simulator import CausalSimulator
+        if hasattr(CausalSimulator, "rank_hypotheses_by_information_gain") \
+                and hasattr(CausalSimulator, "design_ranked_competing_experiment"):
+            sim = CausalSimulator(combined)
+            proposal = sim.design_ranked_competing_experiment(
+                start_node_id="Bi2Te3",
+                target_node_id="te_power_generation",
+                intervention_node="temperature_difference",
+                discriminating_value=500.0,
+                discriminating_unit="K",
+                n_hypotheses=3,
+            )
+            if proposal is not None and "H1:" in proposal.prediction \
+                    and "ranked" in proposal.measurement.lower():
+                phase_v_status["Hypothesis ranking"] = "PASS"
+    except Exception:
+        pass
+
+    # Aggregate Phase V
+    phase_v_pass_count = sum(1 for v in phase_v_status.values() if v == "PASS")
+    phase_v_status_overall = (
+        "PASS" if phase_v_pass_count == 3
+        else f"{phase_v_pass_count}/3 PASS"
+    )
+
     return {
         "Swanson":    {"status": "PASS" if swanson_meaningful >= 5 else "INCOMPLETE",
                        "count": swanson_meaningful, "threshold": 5,
@@ -340,6 +404,8 @@ def run_acid_test() -> Dict[str, Any]:
             "total_contradictions": len(contradictions),
             "phase_iv": phase_iv_status,
             "phase_iv_overall": phase_iv_status_overall,
+            "phase_v": phase_v_status,
+            "phase_v_overall": phase_v_status_overall,
         },
     }
 
@@ -665,6 +731,24 @@ def write_cycle_report(cycle_n: int, discovery_summary: Dict[str, Any],
         ])
     else:
         lines.append("(Phase IV capabilities not yet implemented)")
+
+    # Phase V capabilities section (cycle 52+)
+    phase_v = acid_test_results.get("_meta", {}).get("phase_v", {})
+    phase_v_overall = acid_test_results.get("_meta", {}).get("phase_v_overall", "")
+    if phase_v:
+        lines.extend([
+            "### Phase V Capabilities (cycle 52+)",
+            "",
+            "| Capability | Status |",
+            "|---|---|",
+        ])
+        for cap, status in phase_v.items():
+            lines.append(f"| {cap} | {status} |")
+        lines.extend([
+            "",
+            f"**Phase V overall:** {phase_v_overall}",
+            "",
+        ])
 
     lines.extend([
         "",

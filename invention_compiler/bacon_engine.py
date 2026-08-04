@@ -692,6 +692,326 @@ def _predict_with_law(law: DiscoveredLaw, xs: List[float]) -> Optional[List[floa
 
 
 # ---------------------------------------------------------------------------
+# BACON.4 — recursive composition (Phase V, cycle 52)
+# ---------------------------------------------------------------------------
+
+@dataclass
+class RecursiveComposedLaw:
+    """A multivariate law discovered by BACON.4 — recursive composition.
+
+    BACON.4 extends BACON.3 by composing 3+ variables recursively. If
+    y = a * x1 * x2 * x3, BACON.3 can find y = a * (x1 * x2) but only if
+    x3 happens to be constant or correlates with x1*x2. BACON.4 takes
+    the composed variable z = x1 * x2 from BACON.3 and tries z * x3, z / x3,
+    etc., discovering the 3-variable product.
+
+    This dataclass carries the full composition chain so the discovered
+    law can be unwound into a human-readable multivariate expression.
+    """
+    # The final single-variable law (fit on the fully-composed variable)
+    law: DiscoveredLaw
+    # The full composition chain, e.g., ["x1 * x2", "(x1 * x2) * x3"]
+    composition_chain: List[str]
+    # The variables involved (e.g., ["x1", "x2", "x3"])
+    input_vars: List[str]
+    # The final composed values (z = ((x1 * x2) * x3))
+    composed_values: List[float]
+    # R² improvement over best single-variable fit
+    r2_improvement: float
+    # Depth of recursion (2 = BACON.3 equivalent, 3 = first true BACON.4 level)
+    depth: int
+
+    def to_dict(self) -> Dict[str, Any]:
+        return {
+            "law": self.law.to_dict(),
+            "composition_chain": self.composition_chain,
+            "input_vars": self.input_vars,
+            "r2_improvement": self.r2_improvement,
+            "depth": self.depth,
+        }
+
+    def __str__(self) -> str:
+        chain_str = " → ".join(self.composition_chain)
+        return (f"RecursiveComposedLaw(depth={self.depth}, "
+                f"vars={self.input_vars}, chain=[{chain_str}], "
+                f"law={self.law.name}, R²={self.law.r2:.4f}, "
+                f"improvement=+{self.r2_improvement:.4f})")
+
+
+def discover_recursive_composed_law(dataset: Dict[str, List[float]],
+                                      target_var: str,
+                                      independent_vars: Optional[List[str]] = None,
+                                      max_depth: int = 3,
+                                      threshold: float = R2_FALSIFIABILITY_THRESHOLD,
+                                      verbose: bool = False
+                                      ) -> Optional[RecursiveComposedLaw]:
+    """Discover a multivariate law by recursively composing variables.
+
+    BACON.4 algorithm:
+      1. Run BACON.3 (discover_composed_law) on the dataset to get z = x_i OP x_j.
+      2. Replace x_i and x_j in the dataset with the composed variable z.
+      3. Recursively run BACON.3 on the reduced dataset (z, remaining vars).
+      4. Stop when no composition materially improves R², OR max_depth reached.
+
+    This discovers laws like y = a * x1 * x2 * x3 (depth 3), which BACON.3
+    cannot find unless x3 happens to be constant.
+
+    Args:
+        dataset: dict mapping variable name → list of values
+        target_var: the dependent variable
+        independent_vars: which vars to compose (default: all non-target)
+        max_depth: maximum recursion depth (default 3 — products of 3 vars)
+        threshold: minimum R² required for the final composed law
+        verbose: if True, print fit details for each composition tried
+
+    Returns:
+        RecursiveComposedLaw if recursion discovers a deeper law, else None.
+    """
+    if target_var not in dataset:
+        raise ValueError(f"target_var '{target_var}' not in dataset")
+    if independent_vars is None:
+        independent_vars = [v for v in dataset if v != target_var]
+    if len(independent_vars) < 2:
+        return None
+
+    ys = list(dataset[target_var])
+
+    # Baseline: best single-variable fit
+    single_results = discover_laws_from_dataset(
+        dataset, target_var, independent_vars, threshold=0.0
+    )
+    best_single_r2 = max(
+        (law.r2 for law in single_results.values() if law is not None),
+        default=0.0,
+    )
+    if verbose:
+        print(f"  BACON.4 baseline: best single-variable R² = {best_single_r2:.4f}")
+
+    # Start with the original dataset
+    current_dataset = dict(dataset)
+    current_vars = list(independent_vars)
+    composition_chain: List[str] = []
+    composed_var_label = None
+    composed_values = None
+    depth = 0
+
+    # Recursively compose
+    for d in range(1, max_depth + 1):
+        if len(current_vars) < 2:
+            break
+        # Try BACON.3 at this depth
+        composed = discover_composed_law(
+            current_dataset, target_var, current_vars, threshold=0.0, verbose=verbose
+        )
+        if composed is None:
+            if verbose:
+                print(f"  depth {d}: no composition improves R² — stop")
+            break
+        if composed.law.r2 <= best_single_r2 + 0.01:
+            if verbose:
+                print(f"  depth {d}: improvement < 0.01 — stop")
+            break
+        if verbose:
+            print(f"  depth {d}: z = {composed.composed_var_label} → R²={composed.law.r2:.4f}")
+
+        # Record this composition step
+        composition_chain.append(composed.composed_var_label)
+        composed_var_label = composed.composed_var_label
+        composed_values = composed.composed_values
+        depth = d
+
+        # Reduce dataset: remove the two input vars, add the composed var
+        new_dataset = {target_var: ys, composed_var_label: composed_values}
+        for v in current_vars:
+            if v not in composed.input_vars:
+                new_dataset[v] = current_dataset[v]
+        current_dataset = new_dataset
+        current_vars = [composed_var_label] + [
+            v for v in current_vars if v not in composed.input_vars
+        ]
+        # Continue to next depth
+
+    if depth < 2:
+        # depth=1 is just BACON.3; BACON.4 requires depth ≥2
+        if verbose:
+            print(f"  BACON.4 final depth {depth} < 2 — not BACON.4, return None")
+        return None
+
+    # Re-fit on the final composed values
+    final_law = discover_law(composed_values, ys, threshold=0.0)
+    if final_law is None:
+        return None
+    if final_law.r2 < threshold:
+        if verbose:
+            print(f"  BACON.4 final R²={final_law.r2:.4f} < threshold {threshold}")
+        return None
+
+    # Collect all original input vars from the chain
+    # Parse the chain to recover variable names (handles "(x1 * x2) * x3" etc.)
+    all_vars: List[str] = []
+    for step in composition_chain:
+        for token in step.replace("(", " ").replace(")", " ").split():
+            # Strip operator characters
+            cleaned = token.strip("*/+-")
+            if cleaned and cleaned not in all_vars and not cleaned.startswith("'"):
+                all_vars.append(cleaned)
+
+    return RecursiveComposedLaw(
+        law=final_law,
+        composition_chain=composition_chain,
+        input_vars=all_vars,
+        composed_values=composed_values,
+        r2_improvement=final_law.r2 - best_single_r2,
+        depth=depth,
+    )
+
+
+# ---------------------------------------------------------------------------
+# k-fold cross-validation (Phase V, cycle 52)
+# ---------------------------------------------------------------------------
+
+@dataclass
+class KFoldCrossValidatedLaw:
+    """The result of k-fold cross-validation.
+
+    Per ANTI_ENTROPY.md "Don't reward agreement with priors": single 80/20
+    split can miss fold-to-fold variance. If the law's R² varies wildly
+    across folds, it's unstable — even if the average is high.
+
+    This dataclass carries:
+      - per-fold train/test R²
+      - mean test R² (the honest quality metric)
+      - test R² std deviation (stability metric)
+      - the law fit on the FULL dataset (final, deployed law)
+    """
+    law: DiscoveredLaw            # the law fit on ALL data (final deployment)
+    fold_train_r2: List[float]    # per-fold train R² (length k)
+    fold_test_r2: List[float]    # per-fold test R² (length k)
+    mean_test_r2: float          # mean of fold_test_r2 (the honest metric)
+    std_test_r2: float           # std dev of fold_test_r2 (stability)
+    k: int                        # number of folds
+    generalizes: bool             # True if mean_test_r2 ≥ threshold AND std ≤ 0.10
+
+    def to_dict(self) -> Dict[str, Any]:
+        return {
+            "law": self.law.to_dict(),
+            "fold_train_r2": self.fold_train_r2,
+            "fold_test_r2": self.fold_test_r2,
+            "mean_test_r2": self.mean_test_r2,
+            "std_test_r2": self.std_test_r2,
+            "k": self.k,
+            "generalizes": self.generalizes,
+        }
+
+    def __str__(self) -> str:
+        return (f"KFoldCrossValidatedLaw(law={self.law.name}, k={self.k}, "
+                f"mean_test_R²={self.mean_test_r2:.4f}, "
+                f"std={self.std_test_r2:.4f}, "
+                f"{'GENERALIZES' if self.generalizes else 'UNSTABLE'})")
+
+
+def k_fold_cross_validate_law(xs: List[float], ys: List[float],
+                              k: int = 5,
+                              threshold: float = R2_FALSIFIABILITY_THRESHOLD
+                              ) -> Optional[KFoldCrossValidatedLaw]:
+    """k-fold cross-validation of a discovered law.
+
+    Splits (x, y) into k contiguous folds. For each fold i:
+      - train = all other folds (k-1 folds)
+      - test = fold i
+      - fit BACON on train, predict test, compute test R²
+
+    Returns the law (fit on ALL data) with per-fold R², mean test R²,
+    and std test R². A law "generalizes" if mean_test_r2 ≥ threshold
+    AND std_test_r2 ≤ 0.10 (stable across folds).
+
+    Deterministic: contiguous folds, no shuffling, no RNG. Reproducible
+    per "use the word 'engine' honestly" rule.
+
+    Args:
+        xs: input data
+        ys: output data
+        k: number of folds (default 5)
+        threshold: minimum mean test R² required to "generalize"
+
+    Returns:
+        KFoldCrossValidatedLaw if a law is discovered, else None.
+    """
+    n = len(xs)
+    if n < k * 2:  # need ≥2 points per fold for meaningful train/test
+        return None
+    if len(xs) != len(ys):
+        raise ValueError("length mismatch")
+    if k < 2:
+        raise ValueError(f"k must be ≥2, got {k}")
+
+    # Compute fold boundaries (contiguous)
+    fold_size = n // k
+    remainder = n % k
+    folds: List[List[int]] = []
+    start = 0
+    for i in range(k):
+        size = fold_size + (1 if i < remainder else 0)
+        folds.append(list(range(start, start + size)))
+        start += size
+
+    fold_train_r2: List[float] = []
+    fold_test_r2: List[float] = []
+
+    for i in range(k):
+        test_idx = set(folds[i])
+        train_xs = [xs[j] for j in range(n) if j not in test_idx]
+        train_ys = [ys[j] for j in range(n) if j not in test_idx]
+        test_xs = [xs[j] for j in test_idx]
+        test_ys = [ys[j] for j in test_idx]
+
+        # Fit on train
+        train_law = discover_law(train_xs, train_ys, threshold=0.0)
+        if train_law is None:
+            return None  # no law fits the train set
+
+        fold_train_r2.append(train_law.r2)
+
+        # Predict test
+        test_y_pred = _predict_with_law(train_law, test_xs)
+        if test_y_pred is None:
+            return None
+        n_test = len(test_ys)
+        if n_test == 0:
+            continue
+        mean_test_y = sum(test_ys) / n_test
+        ss_tot = sum((y - mean_test_y) ** 2 for y in test_ys)
+        test_residuals = [yp - ya for yp, ya in zip(test_y_pred, test_ys)]
+        ss_res = sum(r ** 2 for r in test_residuals)
+        test_r2 = 1.0 - (ss_res / ss_tot) if ss_tot > 1e-12 else 0.0
+        fold_test_r2.append(test_r2)
+
+    # Final law fit on ALL data
+    final_law = discover_law(xs, ys, threshold=0.0)
+    if final_law is None:
+        return None
+
+    mean_test = sum(fold_test_r2) / len(fold_test_r2)
+    if len(fold_test_r2) > 1:
+        variance = sum((r - mean_test) ** 2 for r in fold_test_r2) / len(fold_test_r2)
+        std_test = math.sqrt(variance)
+    else:
+        std_test = 0.0
+
+    generalizes = (mean_test >= threshold) and (std_test <= 0.10)
+
+    return KFoldCrossValidatedLaw(
+        law=final_law,
+        fold_train_r2=fold_train_r2,
+        fold_test_r2=fold_test_r2,
+        mean_test_r2=mean_test,
+        std_test_r2=std_test,
+        k=k,
+        generalizes=generalizes,
+    )
+
+
+# ---------------------------------------------------------------------------
 # Real data generators — wrap the existing formula modules as datasets
 # ---------------------------------------------------------------------------
 
