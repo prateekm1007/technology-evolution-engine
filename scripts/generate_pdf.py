@@ -95,8 +95,14 @@ def build_cover_html(meta: dict) -> str:
 
 
 def build_toc_html(md_text: str) -> str:
-    """Build a table of contents from H1/H2 headings."""
+    """Build a table of contents from H1/H2 headings.
+
+    F-057 fix: TOC entries are now anchored links (<a href="#section-N">)
+    so CSS target-counter() can resolve page numbers. Each heading in the
+    body gets a matching id attribute via enhance_markdown_html().
+    """
     toc_items = []
+    section_num = 0
     for line in md_text.split("\n"):
         m = re.match(r"^(#{1,2})\s+(.+)$", line)
         if m:
@@ -105,17 +111,19 @@ def build_toc_html(md_text: str) -> str:
             # Skip the document title (H1 at the very top)
             if level == 1 and not toc_items:
                 continue
-            toc_items.append((level, title))
+            section_num += 1
+            anchor = f"section-{section_num}"
+            toc_items.append((level, title, anchor))
 
     if not toc_items:
         return ""
 
     items_html = ""
-    for level, title in toc_items:
+    for level, title, anchor in toc_items:
         indent = "" if level == 1 else "&nbsp;&nbsp;&nbsp;&nbsp;"
         # Sanitize title for display
         clean_title = re.sub(r"[`*]", "", title)
-        items_html += f'<li>{indent}{clean_title}</li>\n'
+        items_html += f'<li>{indent}<a href="#{anchor}">{clean_title}</a></li>\n'
 
     return f"""
     <div class="toc">
@@ -128,7 +136,22 @@ def build_toc_html(md_text: str) -> str:
 
 
 def enhance_markdown_html(html: str) -> str:
-    """Post-process the markdown HTML to add status badges and callouts."""
+    """Post-process the markdown HTML to add status badges and callouts.
+
+    F-057 fix: also adds id attributes to H1/H2 headings so the TOC
+    anchored links resolve via CSS target-counter().
+    """
+    # Add id attributes to headings for TOC anchor resolution
+    section_num = 0
+    def add_heading_id(match):
+        nonlocal section_num
+        tag = match.group(1)  # h1 or h2
+        content = match.group(2)
+        section_num += 1
+        return f'<{tag} id="section-{section_num}">{content}</{tag}>'
+
+    html = re.sub(r'<(h[12])>([^<]*)</\1>', add_heading_id, html)
+
     # Convert status text to badges
     for status in ["PASS_WITH_CONDITIONS", "PASS", "MARGINAL", "REJECTED",
                     "BLOCKED", "NOT_RUN", "RETRACTED", "WITHDRAWN"]:
@@ -149,14 +172,87 @@ def enhance_markdown_html(html: str) -> str:
     return html
 
 
+def check_table_prose_consistency(md_text: str) -> list:
+    """F-059: detect when a table value is immediately overridden by prose.
+
+    Catches the pattern where a table shows one value (e.g., GRAND TOTAL
+    $100.50) and the prose immediately below says a different value
+    (e.g., "the corrected total is $98.10"). This is draft self-correction
+    shipped as final document text.
+
+    Returns a list of error strings (empty if consistent).
+    """
+    errors = []
+    lines = md_text.split("\n")
+
+    # Pattern: a table row containing a dollar amount, followed within
+    # 5 lines by prose that mentions a DIFFERENT dollar amount with
+    # correction language ("wait", "corrected", "exceeds", "instead")
+    for i, line in enumerate(lines):
+        # Look for GRAND TOTAL or TOTAL rows with dollar values
+        if ("GRAND TOTAL" in line.upper() or "TOTAL" in line.upper()) and "$" in line:
+            # Extract the dollar value from the table row
+            import re
+            table_values = re.findall(r'\$([\d,]+\.?\d*)', line)
+            if not table_values:
+                continue
+
+            # Check the next 5 lines for correction prose
+            for j in range(i + 1, min(i + 6, len(lines))):
+                prose_line = lines[j]
+                # Skip empty lines and other table rows
+                if not prose_line.strip() or prose_line.strip().startswith("|"):
+                    continue
+
+                # Check for correction language
+                correction_words = ["wait", "corrected", "exceeds", "instead",
+                                    "resolution", "override", "actually"]
+                has_correction = any(w in prose_line.lower() for w in correction_words)
+
+                # Check for different dollar values in the prose
+                prose_values = re.findall(r'\$([\d,]+\.?\d*)', prose_line)
+                if prose_values and has_correction:
+                    for pv in prose_values:
+                        for tv in table_values:
+                            try:
+                                if abs(float(pv.replace(",", "")) - float(tv.replace(",", ""))) > 0.01:
+                                    errors.append(
+                                        f"Line {i+1}: table shows ${tv} but line {j+1} "
+                                        f"prose says ${pv} with correction language. "
+                                        f"The table should be regenerated with the "
+                                        f"corrected value before PDF rendering."
+                                    )
+                            except ValueError:
+                                pass
+                break  # only check first prose line after table
+
+    return errors
+
+
 def generate_pdf(md_path: pathlib.Path, output_path: pathlib.Path = None):
-    """Generate a world-class PDF from a markdown package file."""
+    """Generate a world-class PDF from a markdown package file.
+
+    F-059 fix: includes a render-time consistency check that detects
+    when a table GRAND TOTAL or dashboard value is immediately overridden
+    by prose in the same section (e.g., "Wait — the total is $100.50,
+    which exceeds $100"). This catches the draft-self-correction pattern
+    shipped as final-document body text.
+    """
     md_path = pathlib.Path(md_path)
     if not md_path.exists():
         print(f"Error: {md_path} does not exist", file=sys.stderr)
         return 1
 
     md_text = md_path.read_text(encoding="utf-8")
+
+    # F-059: render-time consistency check
+    consistency_errors = check_table_prose_consistency(md_text)
+    if consistency_errors:
+        print("F-059 WARNING: table/prose consistency issues detected:", file=sys.stderr)
+        for err in consistency_errors:
+            print(f"  - {err}", file=sys.stderr)
+        print("  (PDF will still generate, but these should be fixed)", file=sys.stderr)
+
     meta = extract_metadata(md_text)
 
     # Convert markdown to HTML

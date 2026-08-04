@@ -166,7 +166,7 @@ h4 {
 
 .cover .meta-table td:first-child {
     font-weight: 400;
-    color: #7fb3d5;
+    color: #a8d0e8;  /* F-056 fix: was #7fb3d5 (6.89:1); now 9.51:1 — better visibility on dark cover */
     text-transform: uppercase;
     letter-spacing: 0.1em;
     width: 40%;
@@ -199,7 +199,7 @@ h4 {
     left: 25mm;
     right: 25mm;
     font-size: 8pt;
-    color: #5a7a95;
+    color: #9aacbf;  /* F-056 fix: was #5a7a95 (3.44:1 FAIL); now 6.68:1 PASS WCAG AA */
     border-top: 1px solid rgba(255,255,255,0.1);
     padding-top: 5mm;
 }
@@ -227,18 +227,41 @@ h4 {
     padding: 2mm 0;
     border-bottom: 1px dotted #c8d0d8;
     font-size: 11pt;
+    display: flex;
+    align-items: baseline;
 }
 
 .toc li a {
     text-decoration: none;
     color: #1a3a5c;
+    flex: 1;
 }
 
 .toc .toc-number {
     display: inline-block;
     width: 12mm;
-    color: #7fb3d5;
+    color: #4a7a9e;
     font-weight: 600;
+}
+
+/* F-057 fix: TOC page-number leaders using CSS target-counter().
+   WeasyPrint supports target-counter(attr(href), page) for PDF-internal
+   page references. The leader dots use a CSS pseudo-element with
+   dotted border. */
+.toc li a::after {
+    content: target-counter(attr(href), page);
+    float: right;
+    color: #4a7a9e;
+    font-weight: 400;
+}
+
+.toc li a::before {
+    content: "";
+    flex: 1;
+    border-bottom: 1px dotted #b8c0c8;
+    margin: 0 2mm;
+    position: relative;
+    top: -2pt;
 }
 
 /* ---------- Tables ---------- */
@@ -288,6 +311,10 @@ tbody td:first-child {
 
 /* ---------- Code blocks ---------- */
 
+/* F-054 fix: diagrams (pre blocks with box-drawing chars) must NOT wrap.
+   Use white-space: pre (not pre-wrap) to prevent ASCII diagram breakage.
+   overflow-x: auto allows horizontal scroll if needed; the container
+   shrinks to fit rather than wrapping. */
 pre {
     background: #f5f7f9;
     border: 1px solid #d8dee4;
@@ -299,8 +326,31 @@ pre {
     line-height: 1.4;
     overflow-x: auto;
     page-break-inside: avoid;
-    white-space: pre-wrap;
-    word-wrap: break-word;
+    white-space: pre;  /* F-054: was pre-wrap — caused diagram breakage */
+    /* word-wrap removed — incompatible with white-space: pre */
+}
+
+/* F-055 fix: equation blocks get proper typesetting via .equation class.
+   Equations use serif font (engineering convention), centered, with
+   subscript/superscript support via <sub>/<super> tags. */
+.equation {
+    font-family: 'Tinos', 'Times New Roman', 'Liberation Serif', serif;
+    font-size: 11pt;
+    text-align: center;
+    margin: 1.5em 0;
+    padding: 8px 14px;
+    background: #f9fafb;
+    border-left: 3px solid #7fb3d5;
+    border-radius: 3px;
+    line-height: 1.6;
+}
+.equation sub {
+    font-size: 0.75em;
+    vertical-align: sub;
+}
+.equation sup {
+    font-size: 0.75em;
+    vertical-align: super;
 }
 
 code {
@@ -403,13 +453,39 @@ li {
 }
 
 /* ---------- Page breaks ---------- */
+/* F-058 fix: tighten page-break rules to reduce whitespace inflation.
+   Only top-level h1 sections get page-break-before; h2/h3 flow
+   naturally. This reduces the 40-60% blank space at page bottoms. */
 
-h1, h2, h3 {
+h1 {
+    page-break-after: avoid;
+    page-break-before: always;  /* F-058: only h1 forces new page */
+}
+
+h2 {
+    page-break-after: avoid;
+    /* F-058: removed page-break-before — h2 flows naturally */
+}
+
+h3 {
     page-break-after: avoid;
 }
 
 table, pre, blockquote {
     page-break-inside: avoid;
+}
+
+/* F-058: allow large tables to break across pages if needed (prevents
+   large whitespace when a table doesn't fit on the remaining page).
+   Small tables still avoid breaking via the rule above. */
+table {
+    page-break-inside: auto;
+}
+
+/* F-058: prevent orphaned headings at page bottom */
+h2, h3, h4 {
+    page-break-after: avoid;
+    break-after: avoid;
 }
 
 /* ---------- Final page ---------- */

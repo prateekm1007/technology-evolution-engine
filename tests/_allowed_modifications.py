@@ -89,6 +89,10 @@ ALLOWED_MODIFICATIONS = frozenset({
     # F-053 / DR-9: prose-consistency linter (catches count contradictions)
     "scripts/verify_prose_consistency.py",
     "tests/test_verify_prose_consistency.py",
+    # F-054..F-059: PDF rendering template fixes
+    "scripts/pdf_template.css",
+    "scripts/generate_pdf.py",
+    "tests/test_pdf_template_fixes.py",
     # Self-audit fixes: product enforcement tests + CI updates
     "tests/test_product_enforcement.py",
     "product/PRODUCT.md",  # canonical source for the customer-facing PDF
