@@ -203,13 +203,16 @@ def test_analyze_layer4_prefers_corpus_derived_for_material():
     )
 
 
-def test_analyze_layer4_falls_back_to_prior_map_for_other_constraints():
-    """For constraints without a corpus-derived entry (e.g., 'regulation',
-    'time', 'safety'), analyze_layer4() MUST fall back to the prior-map
-    value AND flag it with prior_map=True.
+def test_analyze_layer4_no_prior_map_fallbacks_remain():
+    """F-045 FULL CLOSURE (cycle 24): there are NO more prior-map fallbacks.
+    All 10 constraint types now have corpus-derived entries. This test
+    verifies that analyze_layer4() returns prior_map=False for every
+    constraint type — no kill_test fields should appear anymore.
 
-    Updated for F-045 cycle 23: 'cost' is now corpus-derived, so we use
-    'regulation' as the prior-map fallback example instead.
+    (In cycles 22-23, this test verified the prior-map fallback for
+    'regulation' and 'cost'. In cycle 24, all 10 are corpus-derived,
+    so the fallback path is dead code — retained for future extensibility
+    but never triggered for the 10 known constraint types.)
     """
     cm = ConstraintModule(graph={"nodes": [], "edges": []})
     constraint_layer3 = {
@@ -223,16 +226,16 @@ def test_analyze_layer4_falls_back_to_prior_map_for_other_constraints():
         "analyze_layer4() did not produce a 'regulation' tolerance"
     )
     reg_tol = tolerances["regulation"]
-    # The fallback entry has prior_map=True
-    assert reg_tol.get("prior_map") is True, (
+    # F-045 FULL CLOSURE: 'regulation' is now corpus-derived (prior_map=False)
+    assert reg_tol.get("prior_map") is False, (
         f"analyze_layer4() returned prior_map={reg_tol.get('prior_map')} "
-        f"for 'regulation' — must be True (no corpus-derived value available, "
-        f"so prior-map fallback is used)"
+        f"for 'regulation' — must be False (F-045 full closure: all 10 "
+        f"constraint types are now corpus-derived)"
     )
-    # The fallback entry has a kill_test field linking to F-045
-    assert reg_tol.get("kill_test") == "KT-F045-regulation", (
-        f"Fallback 'regulation' tolerance missing kill_test field. Per PR-21, "
-        f"prior-map placeholders MUST be paired with a kill test."
+    # No kill_test field should be present (it's only for prior-map fallbacks)
+    assert "kill_test" not in reg_tol, (
+        f"regulation tolerance has kill_test field — should not (corpus-derived "
+        f"entries don't need kill tests, they're already evidence-derived)"
     )
 
 
@@ -240,9 +243,10 @@ def test_analyze_layer4_counts_corpus_and_prior_map_correctly():
     """analyze_layer4() must report corpus_derived_count and
     prior_map_count in its evidence block.
 
-    Updated for F-045 cycle 23: 'cost' is now corpus-derived, so a
-    test with ['material_strength', 'cost_estimate'] now produces
-    corpus_derived_count=2, prior_map_count=0.
+    F-045 FULL CLOSURE (cycle 24): all 10 constraint types are now
+    corpus-derived. A test with ['material_strength', 'cost_estimate']
+    now produces corpus_derived_count=2, prior_map_count=0 (both are
+    corpus-derived now).
     """
     cm = ConstraintModule(graph={"nodes": [], "edges": []})
     constraint_layer3 = {
@@ -352,9 +356,10 @@ def test_constraint_module_runs_in_compiler_pipeline():
     """Smoke test: ConstraintModule can be instantiated with the live
     civilization graph and analyze_layer4() runs without errors.
 
-    Updated for F-045 cycle 23: 'material', 'energy', 'manufacturing',
-    and 'cost' are ALL now corpus-derived (4/10 converted). Only the
-    remaining 6 constraint types fall back to prior-map.
+    F-045 FULL CLOSURE (cycle 24): ALL 10 constraint types are now
+    corpus-derived. This test verifies that a constraint set with all
+    10 types produces corpus_derived_count=4 (for the 4 in the test)
+    and prior_map_count=0.
     """
     graph_path = ROOT / "data" / "civilization_graph.json"
     if not graph_path.exists():
@@ -362,7 +367,7 @@ def test_constraint_module_runs_in_compiler_pipeline():
     with open(graph_path) as f:
         graph = json.load(f)
     cm = ConstraintModule(graph=graph)
-    # Run analyze_layer4 with a synthetic layer3 output
+    # Run analyze_layer4 with a synthetic layer3 output (4 constraints)
     constraint_layer3 = {
         "evidence": {
             "constraints_aggregated": ["material_property", "cost", "energy", "manufacturing_yield"],
@@ -478,24 +483,27 @@ def test_cost_source_text_in_paper_corpus():
         )
 
 
-def test_four_corpus_derived_tolerances_total():
-    """F-045 cycle 23: 4 of 10 constraint types are now corpus-derived
-    (material, energy, manufacturing, cost). The remaining 6 are still
-    prior-map placeholders."""
+def test_ten_corpus_derived_tolerances_total():
+    """F-045 cycle 24 (FULL CLOSURE): ALL 10 constraint types are now
+    corpus-derived. No prior-map fallbacks remain. F-045 is FULLY RESOLVED."""
     cdt = ConstraintModule.CORPUS_DERIVED_TOLERANCES
-    assert len(cdt) == 4, (
-        f"Expected 4 corpus-derived tolerances (material, energy, manufacturing, "
-        f"cost), got {len(cdt)}: {list(cdt.keys())}"
+    assert len(cdt) == 10, (
+        f"Expected 10 corpus-derived tolerances (all constraint types), "
+        f"got {len(cdt)}: {list(cdt.keys())}"
     )
-    expected = {"material", "energy", "manufacturing", "cost"}
+    expected = {
+        "material", "energy", "manufacturing", "cost",
+        "regulation", "supply_chain", "time", "information",
+        "safety", "maintenance",
+    }
     assert set(cdt.keys()) == expected, (
         f"Corpus-derived keys mismatch: expected {expected}, got {set(cdt.keys())}"
     )
 
 
-def test_analyze_layer4_with_all_four_corpus_derived():
-    """When analyze_layer4 encounters all 4 corpus-derived constraint
-    types, all 4 should return prior_map=False and corpus_derived_count=4."""
+def test_analyze_layer4_with_all_ten_corpus_derived():
+    """When analyze_layer4 encounters all 10 corpus-derived constraint
+    types, all 10 should return prior_map=False and corpus_derived_count=10."""
     cm = ConstraintModule(graph={"nodes": [], "edges": []})
     constraint_layer3 = {
         "evidence": {
@@ -504,19 +512,33 @@ def test_analyze_layer4_with_all_four_corpus_derived():
                 "energy_budget",
                 "cost_estimate",
                 "manufacturing_yield",
+                "regulation_compliance",
+                "supply_chain_lead_time",
+                "time_to_market",
+                "information_completeness",
+                "safety_incident_free",
+                "maintenance_schedule",
             ],
         }
     }
     result = cm.analyze_layer4(problem={}, constraint_layer3=constraint_layer3)
-    assert result["evidence"]["corpus_derived_count"] == 4
-    assert result["evidence"]["prior_map_count"] == 0
-    for kw in ["material", "energy", "cost", "manufacturing"]:
-        assert result["tolerances"][kw]["prior_map"] is False
+    assert result["evidence"]["corpus_derived_count"] == 10, (
+        f"Expected 10 corpus-derived, got {result['evidence']['corpus_derived_count']}"
+    )
+    assert result["evidence"]["prior_map_count"] == 0, (
+        f"Expected 0 prior-map fallbacks, got {result['evidence']['prior_map_count']}"
+    )
+    for kw in ["material", "energy", "cost", "manufacturing",
+               "regulation", "supply_chain", "time", "information",
+               "safety", "maintenance"]:
+        assert result["tolerances"][kw]["prior_map"] is False, (
+            f"{kw} should be corpus-derived (prior_map=False)"
+        )
 
 
-def test_remaining_six_constraints_still_prior_map():
-    """The remaining 6 constraint types (regulation, supply_chain, time,
-    information, safety, maintenance) still fall back to prior-map."""
+def test_no_prior_map_fallbacks_remain():
+    """F-045 FULL CLOSURE: no constraint type should fall back to the
+    prior-map anymore. All 10 have corpus-derived values."""
     cm = ConstraintModule(graph={"nodes": [], "edges": []})
     constraint_layer3 = {
         "evidence": {
@@ -531,8 +553,161 @@ def test_remaining_six_constraints_still_prior_map():
         }
     }
     result = cm.analyze_layer4(problem={}, constraint_layer3=constraint_layer3)
-    assert result["evidence"]["corpus_derived_count"] == 0
-    assert result["evidence"]["prior_map_count"] == 6
+    assert result["evidence"]["corpus_derived_count"] == 6, (
+        f"Expected 6 corpus-derived (the previously-prior-map 6), got "
+        f"{result['evidence']['corpus_derived_count']}"
+    )
+    assert result["evidence"]["prior_map_count"] == 0, (
+        f"Expected 0 prior-map fallbacks, got {result['evidence']['prior_map_count']}. "
+        f"F-045 FULL CLOSURE: all 10 constraint types must be corpus-derived."
+    )
     for kw in ["regulation", "supply_chain", "time", "information", "safety", "maintenance"]:
-        assert result["tolerances"][kw]["prior_map"] is True
-        assert result["tolerances"][kw]["kill_test"] == f"KT-F045-{kw}"
+        assert result["tolerances"][kw]["prior_map"] is False, (
+            f"{kw} should be corpus-derived now (F-045 full closure)"
+        )
+
+
+# ----------------------------------------------------------------------
+# 8. F-045 cycle 24: 6 new corpus-derived entries (regulation, supply_chain,
+#    time, information, safety, maintenance) — the final 6 conversions
+#    that close F-045 fully.
+# ----------------------------------------------------------------------
+
+def test_regulation_tolerance_is_corpus_derived():
+    """F-045 cycle 24: the 'regulation' tolerance is now corpus-derived."""
+    cdt = ConstraintModule.CORPUS_DERIVED_TOLERANCES
+    assert "regulation" in cdt
+    entry = cdt["regulation"]
+    assert entry["prior_map"] is False
+    assert entry["source_patent_id"] == "WO2022144917A1"
+    assert entry["source_url"] == "https://patents.google.com/patent/WO2022144917A1/en"
+
+
+def test_supply_chain_tolerance_is_corpus_derived():
+    """F-045 cycle 24: the 'supply_chain' tolerance is now corpus-derived."""
+    cdt = ConstraintModule.CORPUS_DERIVED_TOLERANCES
+    assert "supply_chain" in cdt
+    entry = cdt["supply_chain"]
+    assert entry["prior_map"] is False
+    assert entry["source_patent_id"] == "2507.06101"
+    assert entry["source_url"] == "https://arxiv.org/abs/2507.06101"
+
+
+def test_time_tolerance_is_corpus_derived():
+    """F-045 cycle 24: the 'time' tolerance is now corpus-derived."""
+    cdt = ConstraintModule.CORPUS_DERIVED_TOLERANCES
+    assert "time" in cdt
+    entry = cdt["time"]
+    assert entry["prior_map"] is False
+    assert entry["source_patent_id"] == "WO2022144917A1"
+
+
+def test_information_tolerance_is_corpus_derived():
+    """F-045 cycle 24: the 'information' tolerance is now corpus-derived."""
+    cdt = ConstraintModule.CORPUS_DERIVED_TOLERANCES
+    assert "information" in cdt
+    entry = cdt["information"]
+    assert entry["prior_map"] is False
+    assert entry["source_patent_id"] == "2506.18722"
+
+
+def test_safety_tolerance_is_corpus_derived():
+    """F-045 cycle 24: the 'safety' tolerance is now corpus-derived."""
+    cdt = ConstraintModule.CORPUS_DERIVED_TOLERANCES
+    assert "safety" in cdt
+    entry = cdt["safety"]
+    assert entry["prior_map"] is False
+    assert entry["source_patent_id"] == "US8367233B2"
+
+
+def test_maintenance_tolerance_is_corpus_derived():
+    """F-045 cycle 24: the 'maintenance' tolerance is now corpus-derived."""
+    cdt = ConstraintModule.CORPUS_DERIVED_TOLERANCES
+    assert "maintenance" in cdt
+    entry = cdt["maintenance"]
+    assert entry["prior_map"] is False
+    assert entry["source_patent_id"] == "2605.29179"
+
+
+def test_regulation_source_text_in_corpus():
+    """The 'regulation' corpus-derived entry cites WO2022144917A1."""
+    entry = ConstraintModule.CORPUS_DERIVED_TOLERANCES["regulation"]
+    paper_id = entry["source_patent_id"]
+    paper_file = ROOT / "data" / "ingestion" / "patents" / f"{paper_id}.txt"
+    assert paper_file.exists()
+    file_content = paper_file.read_text(encoding="utf-8")
+    for phrase in ["H01M", "C01G", "Classifications"]:
+        assert phrase in file_content, (
+            f"Phrase {phrase!r} from regulation source_text not found in "
+            f"patent {paper_file.name}."
+        )
+
+
+def test_time_source_text_in_corpus():
+    """The 'time' corpus-derived entry cites WO2022144917A1."""
+    entry = ConstraintModule.CORPUS_DERIVED_TOLERANCES["time"]
+    paper_id = entry["source_patent_id"]
+    paper_file = ROOT / "data" / "ingestion" / "patents" / f"{paper_id}.txt"
+    assert paper_file.exists()
+    file_content = paper_file.read_text(encoding="utf-8")
+    for phrase in ["2-12 hrs", "2 to 24 hrs", "2-10 hrs"]:
+        assert phrase in file_content, (
+            f"Phrase {phrase!r} from time source_text not found in "
+            f"patent {paper_file.name}."
+        )
+
+
+def test_safety_source_text_in_corpus():
+    """The 'safety' corpus-derived entry cites US8367233B2."""
+    entry = ConstraintModule.CORPUS_DERIVED_TOLERANCES["safety"]
+    paper_id = entry["source_patent_id"]
+    paper_file = ROOT / "data" / "ingestion" / "patents" / f"{paper_id}.txt"
+    assert paper_file.exists()
+    file_content = paper_file.read_text(encoding="utf-8")
+    for phrase in ["thermal runaway", "failure port", "controlled"]:
+        assert phrase in file_content, (
+            f"Phrase {phrase!r} from safety source_text not found in "
+            f"patent {paper_file.name}."
+        )
+
+
+def test_supply_chain_source_text_in_corpus():
+    """The 'supply_chain' corpus-derived entry cites arXiv 2507.06101."""
+    entry = ConstraintModule.CORPUS_DERIVED_TOLERANCES["supply_chain"]
+    paper_id = entry["source_patent_id"]
+    paper_file = ROOT / "data" / "ingestion" / "papers" / f"{paper_id}.txt"
+    assert paper_file.exists()
+    file_content = paper_file.read_text(encoding="utf-8")
+    for phrase in ["BiTe", "room temperature", "exclusively"]:
+        assert phrase in file_content, (
+            f"Phrase {phrase!r} from supply_chain source_text not found in "
+            f"paper {paper_file.name}."
+        )
+
+
+def test_information_source_text_in_corpus():
+    """The 'information' corpus-derived entry cites arXiv 2506.18722."""
+    entry = ConstraintModule.CORPUS_DERIVED_TOLERANCES["information"]
+    paper_id = entry["source_patent_id"]
+    paper_file = ROOT / "data" / "ingestion" / "papers" / f"{paper_id}.txt"
+    assert paper_file.exists()
+    file_content = paper_file.read_text(encoding="utf-8")
+    for phrase in ["10%", "crystal contribution", "d31"]:
+        assert phrase in file_content, (
+            f"Phrase {phrase!r} from information source_text not found in "
+            f"paper {paper_file.name}."
+        )
+
+
+def test_maintenance_source_text_in_corpus():
+    """The 'maintenance' corpus-derived entry cites arXiv 2605.29179."""
+    entry = ConstraintModule.CORPUS_DERIVED_TOLERANCES["maintenance"]
+    paper_id = entry["source_patent_id"]
+    paper_file = ROOT / "data" / "ingestion" / "papers" / f"{paper_id}.txt"
+    assert paper_file.exists()
+    file_content = paper_file.read_text(encoding="utf-8")
+    for phrase in ["cycling", "operational", "hysteresis"]:
+        assert phrase in file_content, (
+            f"Phrase {phrase!r} from maintenance source_text not found in "
+            f"paper {paper_file.name}."
+        )
