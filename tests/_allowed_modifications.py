@@ -81,6 +81,8 @@ ALLOWED_MODIFICATIONS = frozenset({
     # F-045 / PR-21: corpus-derived tolerances replacing prior-map
     "invention_compiler/constraint_module.py",
     "tests/test_f045_corpus_derived_tolerances.py",
+    # F-047: paper corpus remediation (same pattern as F-043)
+    "tests/test_f047_paper_corpus.py",
     # Self-audit fixes: product enforcement tests + CI updates
     "tests/test_product_enforcement.py",
     "product/PRODUCT.md",  # canonical source for the customer-facing PDF
