@@ -1248,8 +1248,7 @@ of the following are open:
 4. A "scaffolded" layer has remained scaffolded for > 6 months
    without a partial-transition attempt.
 
-This is the architecture freeze (already in ANTI_ENTROPY.md §ARCHITECTURE
-FREEZE) extended to input quality. The principle: **input quality
+This is the input-quality gate. The principle: **input quality
 gates capability expansion.** A new engine built on fabricated inputs
 is entropy — it expands the surface area of the failure.
 
