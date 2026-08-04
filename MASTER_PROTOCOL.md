@@ -2423,3 +2423,125 @@ comparison must report honestly: edges discovered, connections surfaced,
 cross-layer paths found. If the new architecture discovers nothing the
 old one didn't, it is not an improvement — regardless of how elegant
 the schema is.
+
+---
+
+## DR-20: The Discovery Loop (7-stage observation→revision)
+
+Per CEO directive: the system's execution loop is not "documents → graphs
+→ queries." It is:
+
+```
+Stage 1 — Observation:      What happened?
+Stage 2 — Mechanism:        Why did it happen?
+Stage 3 — Constraint:       What limits it?
+Stage 4 — Intervention:     What can we change?
+Stage 5 — Prediction:       What do we expect?
+Stage 6 — Experiment:       What actually happened?
+Stage 7 — Revision:         What must we change?
+```
+
+This loop replaces the prior 12-step pipeline. Every stage feeds the next.
+Stage 7 feeds back to Stage 1 — this is what makes it a loop, not a pipeline.
+
+The loop is grounded in four ideas from the discovery literature:
+- Swanson's **missing knowledge**: the system must find undiscovered
+  connections (A→B established, B→C established, A→C undiscovered).
+- BACON's **law discovery**: the system must derive governing equations
+  from data, not just store them.
+- Ross King's **closed experimental loop**: the system must design
+  experiments, execute them, and revise based on results.
+- Arthur/Youn's **state-space exploration**: the system must explore
+  the combinatorial space of existing technologies/materials/methods.
+
+## DR-21: Object-centric data model
+
+The architecture moves from document-centric to object-centric. Every
+object in the system is one of:
+
+| Object | Purpose | Key fields |
+|---|---|---|
+| **Entity** | A canonical thing (material, device, method) | entity_id, entity_type, canonical_name, aliases, provenance |
+| **Mechanism** | How entities produce change | mechanism_id, entities, activities, transitions, constraints, equations, assumptions, evidence |
+| **Constraint** | What limits a mechanism | variable_a, variable_b, relationship, evidence |
+| **Law** | A governing equation | equation, domain, assumptions, evidence |
+| **Contradiction** | Two mechanisms that improve/worsen the same variable | improve, worsen, mechanism, resolution |
+| **Intervention** | A deliberate change to a variable | variable, change, expected_effect, evidence |
+| **Experiment** | A test of an intervention | protocol, prediction, measurement, outcome |
+
+Per Law 29: no `confidence: float` in any object. Ranking from
+provenance + source_count + mechanism_status.
+
+## DR-22: Forbidden architectures
+
+Per CEO directive: five architecture patterns are FORBIDDEN.
+
+1. **papers → embeddings → LLM → hypothesis** — this is semantic
+   autocomplete, not discovery. Swanson, Pearl, BACON, and Altshuller
+   all rejected this approach.
+
+2. **graph → agents → more agents → more agents** — architectural
+   inflation. Every paper in the reading list is remarkably parsimonious.
+
+3. **citation → causation** — Pearl would immediately reject this.
+   Citations are correlational, not causal.
+
+4. **similarity → mechanism** — Gentner would reject this. Surface
+   feature matching is "mere appearance," not structural analogy.
+
+5. **prediction → publication** — Ross King and Popper would reject
+   this. A prediction without an experiment is a hypothesis, not a
+   discovery.
+
+## DR-23: The 8-test acid test
+
+Every pull request must answer these 8 questions. If any answer is "no,"
+the architecture is incomplete.
+
+| Test | Question | Source |
+|---|---|---|
+| **Swanson** | Can the system discover an unconnected bridge? | Swanson 1986 |
+| **Pearl** | Can the system propose an intervention? | Pearl 2009 |
+| **Popper** | Can the intervention fail? | Popper 1959 |
+| **Ross King** | Can the system design an experiment? | King 2009 |
+| **BACON** | Can the system derive a law? | Langley 1987 |
+| **Gentner** | Can the system transfer a mechanism? | Gentner 1983 |
+| **Altshuller** | Can the system resolve a contradiction? | Altshuller 1997 |
+| **Arthur** | Can the system move into the adjacent possible? | Arthur 2009 |
+
+## The 3 core algorithms
+
+### Algorithm 1 — Swanson bridge search
+
+```python
+for a in nodes:
+    for b in successors(a):
+        for c in successors(b):
+            if not exists(a, c):
+                score(a, b, c)
+```
+
+Finds undiscovered A→C connections where A→B and B→C are established
+but A→C is not. This is what the Apollo Test did manually (Bi₂Te₃ →
+thermoelectric + Bi₂Te₃ → NRR = undiscovered Bi₂Te₃ dual-function bridge).
+
+### Algorithm 2 — Gentner structure mapping
+
+Instead of comparing nodes (A ↔ X), compare causal chains:
+```
+A → B → C → D  against  X → Y → Z → W
+```
+Scores analogies by relational structure depth, not surface features.
+Shallow analogies (single-edge match) are "mere appearance." Deep
+analogies (multi-edge causal chain match) are structural.
+
+### Algorithm 3 — Altshuller contradiction search
+
+```python
+for contradiction in contradictions:
+    analogous_resolutions = search(contradiction)
+    generate_candidates(analogous_resolutions)
+```
+
+Finds contradictions (mechanisms that improve one variable while worsening
+another) and searches for analogous resolutions from other domains.

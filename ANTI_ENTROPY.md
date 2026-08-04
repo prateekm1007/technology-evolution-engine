@@ -1552,3 +1552,85 @@ new AEs (AE-11 through AE-14). Entropy eliminated: semantic inflation
 (shared mechanism invisible across domains), schema worship (compliance
 mistaken for truth), narrative closure (hypothesis without experiment).
 Net positive. Approved.
+
+---
+
+## Forbidden architectures (CEO directive, cycle 40)
+
+> "Just as important as what they should build."
+
+Per CEO directive: these 5 architectures are FORBIDDEN. They are
+entropy — they look like discovery but are not.
+
+### Forbidden #1: Semantic autocomplete
+```
+papers → embeddings → LLM → hypothesis
+```
+This is not Swanson. This is not Pearl. This is not BACON. This is
+not Altshuller. This is semantic autocomplete.
+
+### Forbidden #2: Agent inflation
+```
+graph → agents → more agents → more agents
+```
+Every paper in the reading list is remarkably parsimonious.
+
+### Forbidden #3: Citation = causation
+```
+citation → causation
+```
+Pearl would immediately reject this.
+
+### Forbidden #4: Similarity = mechanism
+```
+similarity → mechanism
+```
+Gentner would reject this.
+
+### Forbidden #5: Prediction = publication
+```
+prediction → publication
+```
+Ross King and Popper would reject this.
+
+### Object-centric model mandate
+
+Per CEO directive: the architecture is moving from document-centric
+to object-centric. The canonical objects are:
+
+  Entity — things with identity and provenance
+  Mechanism — entities + activities + transitions producing change
+  Constraint — limits on variables and their relationships
+  Law — equations derived from data, domain-specific
+  Contradiction — what improves X worsens Y, and the resolution
+  Intervention — what to change, expected effect, confidence
+  Experiment — protocol, prediction, measurement, outcome
+
+Documents (patents, papers) are SOURCES of these objects, not the
+objects themselves. The graph stores objects, not documents.
+
+### The 7-stage execution loop (DR-20)
+
+```
+observation → mechanism → constraint → intervention → prediction
+    → experiment → revision
+```
+
+This replaces the old 3-stage "documents → graphs → queries" model.
+Every arrow is auditable. Every node has provenance. Every prediction
+is falsifiable. Every failure modifies the graph.
+
+### The 8-test acid test (DR-23)
+
+Every PR must answer these 8 questions. If any answer is "no,"
+the architecture is incomplete:
+
+  Swanson test: Can the system discover an unconnected bridge?
+  Pearl test: Can the system propose an intervention?
+  Popper test: Can the intervention fail?
+  Ross King test: Can the system design an experiment?
+  BACON test: Can the system derive a law?
+  Gentner test: Can the system transfer a mechanism?
+  Altshuller test: Can the system resolve a contradiction?
+  Arthur test: Can the system move into the adjacent possible?
+

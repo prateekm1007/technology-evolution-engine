@@ -523,3 +523,286 @@ class DiscoveryGraph:
                 for rt, sg in self._subgraphs.items()
             },
         }
+
+
+# ----------------------------------------------------------------------
+# DR-21: Object-centric data model (Entity, Mechanism, Constraint, Law,
+# Contradiction, Intervention, Experiment)
+# ----------------------------------------------------------------------
+
+@dataclass
+class Entity:
+    """An entity in the object-centric model (DR-21).
+    
+    Per the CEO's directive: move from document-centric to object-centric.
+    An Entity is a canonical object (material, device, method) with
+    aliases and provenance — not tied to a single document.
+    """
+    entity_id: str
+    entity_type: str  # "material", "device", "method", "property", "application"
+    canonical_name: str
+    aliases: List[str] = field(default_factory=list)
+    provenance: List[Evidence] = field(default_factory=list)
+
+
+@dataclass
+class MechanismObject:
+    """A mechanism in the object-centric model (DR-21).
+    
+    Per Machamer/Darden/Craver (2000): a mechanism is entities and
+    activities organized such that they produce a regular change from
+    start to finish conditions.
+    """
+    mechanism_id: str
+    entities: List[str] = field(default_factory=list)  # Entity IDs
+    activities: List[str] = field(default_factory=list)
+    transitions: List[str] = field(default_factory=list)  # start→finish states
+    constraints: List[str] = field(default_factory=list)
+    equations: List[str] = field(default_factory=list)
+    assumptions: List[str] = field(default_factory=list)
+    evidence: List[Evidence] = field(default_factory=list)
+
+
+@dataclass
+class Constraint:
+    """A constraint in the object-centric model (DR-21).
+    
+    Per BACON (Langley et al. 1987): constraints are relationships
+    between variables that limit the solution space.
+    """
+    variable_a: str
+    variable_b: str
+    relationship: str  # "increases", "decreases", "limits", "enables"
+    mechanism_status: MechanismStatus = MechanismStatus.ASSERTED
+
+
+@dataclass
+class Law:
+    """A law in the object-centric model (DR-21).
+    
+    Per BACON: a law is a functional relationship between variables,
+    derived from data or first principles.
+    """
+    law_id: str
+    equation: str
+    domain: str  # "thermodynamics", "electrochemistry", etc.
+    assumptions: List[str] = field(default_factory=list)
+    mechanism_status: MechanismStatus = MechanismStatus.ASSERTED
+
+
+@dataclass
+class Contradiction:
+    """A contradiction in the object-centric model (DR-21).
+    
+    Per Altshuller/TRIZ: a contradiction exists when improving one
+    parameter worsens another. Resolution is the core of invention.
+    """
+    contradiction_id: str
+    improve: str  # parameter that improves
+    worsen: str   # parameter that worsens
+    mechanism: str  # what causes the contradiction
+    resolution: Optional[str] = None  # how it was/would be resolved
+
+
+@dataclass
+class InterventionObject:
+    """An intervention in the object-centric model (DR-21).
+    
+    Per Pearl: an intervention is a deliberate change to a variable
+    to observe its causal effect.
+    """
+    intervention_id: str
+    variable: str  # what to change
+    change: str     # how to change it (e.g., "increase 5%")
+    expected_effect: str  # what we predict will happen
+    mechanism_status: MechanismStatus = MechanismStatus.ASSERTED
+
+
+@dataclass
+class ExperimentObject:
+    """An experiment in the object-centric model (DR-21).
+    
+    Per Ross King (Robot Scientist Adam, 2009): a complete experiment
+    has protocol, prediction, measurement, and outcome.
+    """
+    experiment_id: str
+    protocol: str       # how to run it
+    prediction: str     # what we expect
+    measurement: str    # what to measure
+    outcome: Optional[str] = None  # what actually happened (None = not yet run)
+
+
+# ----------------------------------------------------------------------
+# DR-20: The 3 core discovery algorithms
+# ----------------------------------------------------------------------
+
+class SwansonBridgeSearch:
+    """Algorithm 1: Swanson bridge search (DR-20).
+    
+    Per Don R. Swanson (1986): if A→B is established in one literature
+    and B→C in another, and the two never cite each other, A→C is a
+    discoverable-but-undiscovered connection.
+    
+    This is the algorithmic version of what the Apollo Test did by hand
+    with Bi₂Te₃ (thermoelectric literature) and NRR catalysis.
+    """
+    
+    @staticmethod
+    def search(graph: DiscoveryGraph, max_depth: int = 3) -> List[Dict[str, Any]]:
+        """Search for undiscovered bridges in the graph.
+        
+        Returns a list of {a, b, c, score} where a→b and b→c exist
+        but a→c does not.
+        """
+        bridges = []
+        # Get all nodes that have outgoing edges
+        nodes_with_outgoing = set()
+        for subgraph in graph._subgraphs.values():
+            for edge in subgraph.edges:
+                nodes_with_outgoing.add(edge.source)
+        
+        for a in nodes_with_outgoing:
+            # Get successors of a
+            b_candidates = set()
+            for subgraph in graph._subgraphs.values():
+                for edge in subgraph.edges:
+                    if edge.source == a:
+                        b_candidates.add(edge.target)
+            
+            for b in b_candidates:
+                # Get successors of b
+                c_candidates = set()
+                for subgraph in graph._subgraphs.values():
+                    for edge in subgraph.edges:
+                        if edge.source == b:
+                            c_candidates.add(edge.target)
+                
+                for c in c_candidates:
+                    if c == a:
+                        continue
+                    # Check if a→c already exists
+                    a_to_c_exists = False
+                    for subgraph in graph._subgraphs.values():
+                        for edge in subgraph.edges:
+                            if edge.source == a and edge.target == c:
+                                a_to_c_exists = True
+                                break
+                        if a_to_c_exists:
+                            break
+                    
+                    if not a_to_c_exists:
+                        bridges.append({
+                            "a": a,
+                            "b": b,
+                            "c": c,
+                            "score": 1.0,  # simple score: exists = 1.0
+                            "description": f"Undiscovered bridge: {a} → {b} → {c} (but {a} → {c} not connected)"
+                        })
+        
+        return bridges
+
+
+class GentnerStructureMapping:
+    """Algorithm 2: Gentner structure mapping (DR-20).
+    
+    Per Dedre Gentner (1983): good analogies transfer relational
+    structure (causal chains), not surface features (shared attributes).
+    
+    Instead of comparing A ↔ X (surface), compare:
+        A → B → C → D against X → Y → Z → W
+    and score by structural overlap (systematicity).
+    """
+    
+    @staticmethod
+    def find_analogous_chains(graph: DiscoveryGraph, min_chain_length: int = 2) -> List[Dict[str, Any]]:
+        """Find structurally analogous chains in the graph.
+        
+        Returns chains that share relational structure but connect
+        different entities.
+        """
+        # Extract all chains of length >= min_chain_length
+        chains = []
+        for subgraph in graph._subgraphs.values():
+            if not isinstance(subgraph, MechanismGraph):
+                continue
+            # BFS from each node
+            for start_node in subgraph.nodes:
+                visited = set()
+                queue = [(start_node, [start_node])]
+                while queue:
+                    current, path = queue.pop(0)
+                    if len(path) >= min_chain_length:
+                        chains.append(path)
+                    if current in visited:
+                        continue
+                    visited.add(current)
+                    for edge in subgraph.edges:
+                        if edge.source == current and edge.target not in visited:
+                            queue.append((edge.target, path + [edge.target]))
+        
+        # Compare chains for structural similarity
+        analogies = []
+        for i, chain_a in enumerate(chains):
+            for j, chain_b in enumerate(chains):
+                if i >= j:
+                    continue
+                # Same length = structural match candidate
+                if len(chain_a) == len(chain_b):
+                    # Check no shared nodes (different domains)
+                    shared = set(chain_a) & set(chain_b)
+                    if len(shared) == 0:
+                        analogies.append({
+                            "chain_a": chain_a,
+                            "chain_b": chain_b,
+                            "systematicity": len(chain_a) / max(len(chain_a), 1),
+                            "description": f"Structural analogy: {' → '.join(chain_a)} vs {' → '.join(chain_b)}"
+                        })
+        
+        return analogies
+
+
+class AltshullerContradictionSearch:
+    """Algorithm 3: Altshuller contradiction search (DR-20).
+    
+    Per Genrich Altshuller (TRIZ): contradictions exist when improving
+    one parameter worsens another. Resolution is the core of invention.
+    Search the graph for contradictions and find analogous resolutions.
+    """
+    
+    @staticmethod
+    def find_contradictions(graph: DiscoveryGraph) -> List[Contradiction]:
+        """Find contradictions in the graph.
+        
+        A contradiction exists when:
+          - Edge A→B says "increases"
+          - Edge A→C says "decreases"
+          - B and C are both desirable
+        """
+        contradictions = []
+        # Look for nodes with both "increases" and "decreases" outgoing edges
+        node_effects = {}  # node → {target → direction}
+        for subgraph in graph._subgraphs.values():
+            for edge in subgraph.edges:
+                if edge.source not in node_effects:
+                    node_effects[edge.source] = {}
+                direction = "unknown"
+                if "increases" in str(edge.metadata).lower():
+                    direction = "increases"
+                elif "decreases" in str(edge.metadata).lower():
+                    direction = "decreases"
+                node_effects[edge.source][edge.target] = direction
+        
+        for source, effects in node_effects.items():
+            increases = [t for t, d in effects.items() if d == "increases"]
+            decreases = [t for t, d in effects.items() if d == "decreases"]
+            for inc in increases:
+                for dec in decreases:
+                    contradictions.append(Contradiction(
+                        contradiction_id=f"CONTR-{source}-{inc}-{dec}",
+                        improve=inc,
+                        worsen=dec,
+                        mechanism=f"Changing {source} improves {inc} but worsens {dec}",
+                        resolution=None,
+                    ))
+        
+        return contradictions
