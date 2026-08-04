@@ -282,6 +282,126 @@ class CausalSimulator:
             learning_if_fail=learning_fail,
         )
 
+    def design_competing_experiment(
+        self,
+        start_node_id: str,
+        target_node_id: str,
+        intervention_node: str,
+        intervention_desc: str,
+        measurement_desc: str,
+        competing_hypotheses: List[str],
+        discriminating_value: float,
+        discriminating_unit: str,
+        cost_usd: float,
+        timeline_days: int,
+    ) -> Optional[ExperimentProposal]:
+        """Design an experiment that DISTINGUISHES between competing hypotheses.
+
+        Per cycle 50 Ross King fix: Ross King's Adam robot (King et al. 2004)
+        contributed by hypothesizing NEW mechanisms, not by verifying known
+        ones. The previous design_experiment() confirms a known causal edge
+        (e.g., "Bi2Te3 + ΔT → power via Seebeck"). That's verification, not
+        discovery.
+
+        This method takes a list of competing hypotheses — predictions that
+        DIFFER at a specific discriminating value of the intervention variable.
+        The experiment is designed to be performed at that value, where the
+        hypotheses' predictions diverge. The outcome distinguishes between
+        them. This is the Adam-test.
+
+        Example:
+            H1: "Seebeck coefficient is linear in ΔT: S(ΔT) = α·ΔT"
+            H2: "Seebeck coefficient saturates above ΔT=400K: S(ΔT) = α·ΔT/(1+ΔT/400)"
+            discriminating_value = 500 K (above the saturation threshold)
+            → at ΔT=500K, H1 predicts S = α·500, H2 predicts S ≈ α·222
+              The measured value distinguishes the hypotheses.
+
+        Args:
+            start_node_id: the source node in the causal graph
+            target_node_id: the target node whose behavior is being predicted
+            intervention_node: the variable to change
+            intervention_desc: human-readable description of the intervention
+            measurement_desc: what to measure and how
+            competing_hypotheses: list of ≥2 falsifiable predictions that
+                DIFFER at the discriminating value
+            discriminating_value: the value of the intervention variable at
+                which the hypotheses' predictions diverge
+            discriminating_unit: the unit of the discriminating value (e.g., "K")
+            cost_usd: experiment cost
+            timeline_days: experiment duration
+
+        Returns:
+            ExperimentProposal whose prediction lists all competing hypotheses
+            and whose falsification describes the discriminating outcome, OR
+            None if start_node → target_node is unreachable.
+
+        Raises:
+            ValueError: if fewer than 2 competing hypotheses are provided.
+        """
+        if len(competing_hypotheses) < 2:
+            raise ValueError(
+                f"competing_hypotheses must contain ≥2 predictions "
+                f"to distinguish; got {len(competing_hypotheses)}"
+            )
+
+        reachable, path = self.can_reach(start_node_id, target_node_id)
+        if not reachable:
+            return None
+
+        path_desc = " → ".join(path)
+        # The prediction lists all hypotheses — the experiment doesn't pick one
+        # in advance; the measurement determines which is supported.
+        hypothesis_lines = "\n  ".join(
+            f"H{i+1}: {h}" for i, h in enumerate(competing_hypotheses)
+        )
+        prediction = (
+            f"At {intervention_node} = {discriminating_value} {discriminating_unit}, "
+            f"the competing hypotheses diverge:\n  {hypothesis_lines}\n"
+            f"Measured {target_node_id} (path: {path_desc}) will support "
+            f"exactly one hypothesis and falsify the others."
+        )
+
+        # The falsification is the discriminating outcome — if the measurement
+        # falls between the predictions, ALL hypotheses are partially falsified
+        # (which is itself a discovery: the truth is more complex than either).
+        falsification = (
+            f"If the measured {target_node_id} at {intervention_node}="
+            f"{discriminating_value} {discriminating_unit} does not match "
+            f"ANY of the {len(competing_hypotheses)} competing hypotheses within "
+            f"tolerance, ALL are falsified — the true law is more complex."
+        )
+
+        # Learning: pass = one hypothesis supported, others falsified (real
+        # discovery). Fail = no hypothesis supported (also discovery — the
+        # space of hypotheses was incomplete).
+        learning_pass = (
+            f"One of the {len(competing_hypotheses)} hypotheses is supported; "
+            f"the others are falsified. The supported hypothesis becomes the "
+            f"current best explanation for {start_node_id} → {target_node_id}."
+        )
+        learning_fail = (
+            f"None of the {len(competing_hypotheses)} hypotheses is supported. "
+            f"This is a discovery: the true mechanism is more complex than any "
+            f"candidate. Generate new hypotheses."
+        )
+
+        return ExperimentProposal(
+            prediction=prediction,
+            intervention=Intervention(
+                node=intervention_node,
+                intervention=intervention_desc,
+                predicted_effect=f"discriminate between {len(competing_hypotheses)} hypotheses",
+                expected_magnitude=f"at {discriminating_value} {discriminating_unit}",
+                uncertainty="distinguishing — magnitude not predicted, hypothesis is",
+            ),
+            measurement=measurement_desc,
+            falsification=falsification,
+            cost_usd=cost_usd,
+            timeline_days=timeline_days,
+            learning_if_pass=learning_pass,
+            learning_if_fail=learning_fail,
+        )
+
     def design_and_track_experiment(self, start_node_id: str, target_node_id: str,
                                      intervention_node: str, intervention_desc: str,
                                      measurement_desc: str, falsification_desc: str,
