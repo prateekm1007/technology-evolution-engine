@@ -2382,3 +2382,33 @@ Every failure must modify the graph.
 That last line is probably the most important one. Because a system
 that does not change when reality disagrees with it is not learning.
 It is merely keeping records.
+
+---
+
+## Law 28: Canonical Graph Structure
+
+DiscoveryGraph is the canonical graph structure. No parallel graph
+implementations may coexist without an explicit deprecation path. If
+a second graph structure exists, it must either (a) be a thin wrapper
+around DiscoveryGraph, or (b) have a documented deprecation date
+within one cycle. Duplicated state — the same edges in two graphs
+without update propagation — is forbidden.
+
+## Law 29: Evidence Without Numbers
+
+Extends Law 27 from prose to data structures. No data structure in
+the system may carry a `confidence: float` or equivalent numerical
+certainty field. Evidence objects use `provenance + source_count +
+mechanism_status` — never a fabricated number. Ranking is derived
+from countable, auditable fields (source_count) + typed status
+(MechanismStatus), not from a float that looks precise but isn't.
+
+## DR-12: Discovery Improvement Test
+
+Before declaring any architecture canonical, the system must demonstrate
+that it improves discovery. The Apollo benchmark (Bi₂Te₃ → thermoelectric,
+Bi₂Te₃ → NRR) must be run on BOTH the old and new architecture. The
+comparison must report honestly: edges discovered, connections surfaced,
+cross-layer paths found. If the new architecture discovers nothing the
+old one didn't, it is not an improvement — regardless of how elegant
+the schema is.
