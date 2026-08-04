@@ -62,6 +62,17 @@ class EdgeExtractor:
         (r'garnet.*electrolyte|Li7La3Zr2O12|LLZO', 'LLZO', 'Garnet electrolyte (Li7La3Zr2O12)'),
         (r'tellurium|Te\b(?!st)', 'Te', 'Tellurium'),
         (r'bismuth|Bi\b', 'Bi', 'Bismuth'),
+        # Sodium-ion battery materials (Apollo-II)
+        (r'hard carbon|hard.carbon', 'hard_carbon', 'Hard carbon (Na-ion anode)'),
+        (r'NaVPO4F|NaVPO₄F|sodium vanadium fluorophosphate', 'NaVPO4F', 'Sodium vanadium fluorophosphate'),
+        (r'KVOPO4|KVOPO₄|potassium vanadium phosphate', 'KVOPO4', 'Potassium vanadium phosphate'),
+        (r'Prussian blue|sodium.*hexacyanoferrate', 'prussian_blue', 'Prussian blue (Na cathode)'),
+        (r'layered.*oxide.*sodium|Na.*layered.*oxide|P2.*type|O3.*type', 'layered_oxide_Na', 'Layered sodium oxide (P2/O3)'),
+        (r'Na3V2.*PO4.*3|Na₃V₂.*PO₄.*₃|NVP', 'NVP', 'Sodium vanadium phosphate (Na3V2(PO4)3)'),
+        (r'NaCrO2|NaCrO₂|sodium chromium oxide', 'NaCrO2', 'Sodium chromium oxide'),
+        (r'biomass.*carbon|biomass.*hard.carbon', 'biomass_carbon', 'Biomass-derived hard carbon'),
+        (r'Janus.*aminobenzene|aminobenzene.*anode', 'janus_aminobenzene', 'Janus aminobenzene anode'),
+        (r'sodium|Na.ion', 'sodium', 'Sodium'),
     ]
 
     # Property patterns: measured quantities
@@ -115,6 +126,19 @@ class EdgeExtractor:
         (r'(?:biodegradable|biodegrad).*(?:polymer|plastic)',
          'biodegradation', 'biodegradable_polymer', 'decomposed_material',
          'Microbial/enzymatic breakdown of polymer chains'),
+        # Sodium-ion battery mechanisms (Apollo-II)
+        (r'sodium.*storage|Na.*storage.*mechanism|Na.ion.*intercalation',
+         'na_storage', 'sodium_ions', 'stored_sodium',
+         'Sodium ions intercalate into hard carbon structure during charging'),
+        (r'sodium.*ion.*battery|Na.*ion.*battery|SIB',
+         'sib_battery', 'sodium_ions', 'electrical_energy',
+         'Sodium ions shuttle between cathode and anode, storing/releasing energy'),
+        (r'layered.*oxide.*cathode|P2.*O3.*transition|phase.*transition.*cathode',
+         'layered_oxide_transition', 'layered_oxide_Na', 'phase_transition',
+         'Layered oxide cathode undergoes P2-O3 phase transition during cycling'),
+        (r'electrochemical.*insertion|alkali.*metal.*insertion',
+         'na_insertion', 'sodium_ions', 'intercalated_material',
+         'Electrochemical insertion of sodium ions into electrode material'),
     ]
 
     # Manufacturing method patterns
@@ -130,6 +154,11 @@ class EdgeExtractor:
          'electrodeposition', 'Electrodeposition'),
         (r'magnetron sputtering', 'magnetron_sputering', 'Magnetron sputtering'),
         (r'thermal evaporation', 'thermal_evaporation', 'Thermal evaporation'),
+        # Sodium-ion battery manufacturing (Apollo-II)
+        (r'biomass.*pyrolysis|pyrolysis.*biomass|carbonization.*biomass',
+         'biomass_pyrolysis', 'Biomass pyrolysis (hard carbon synthesis)'),
+        (r'ball.*milling.*sodium|milling.*Na',
+         'na_ball_milling', 'Ball milling (Na-ion)'),
     ]
 
     # Application patterns
@@ -154,6 +183,13 @@ class EdgeExtractor:
          'piezo_energy', 'Piezoelectric energy harvesting'),
         (r'biodegradable.*packaging|bioplastic',
          'biodegradable_packaging', 'Biodegradable packaging'),
+        # Sodium-ion battery applications (Apollo-II)
+        (r'sodium.*ion.*battery|Na.*ion.*battery|SIB',
+         'sib_battery_app', 'Sodium-ion battery'),
+        (r'grid.*storage|stationary.*storage|large.scale.*storage',
+         'grid_storage', 'Grid-scale energy storage'),
+        (r'low.cost.*battery|cheap.*battery|abundant.*sodium',
+         'low_cost_battery', 'Low-cost battery (Na abundance)'),
     ]
 
     # Direction patterns: INCREASES/DECREASES for Altshuller contradiction search
