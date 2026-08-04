@@ -93,6 +93,9 @@ ALLOWED_MODIFICATIONS = frozenset({
     "scripts/pdf_template.css",
     "scripts/generate_pdf.py",
     "tests/test_pdf_template_fixes.py",
+    # DR-15 / F-061: three-tier causal edge schema
+    "invention_compiler/causal_graph.py",
+    "tests/test_causal_graph.py",
     # Self-audit fixes: product enforcement tests + CI updates
     "tests/test_product_enforcement.py",
     "product/PRODUCT.md",  # canonical source for the customer-facing PDF

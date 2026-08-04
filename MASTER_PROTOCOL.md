@@ -2080,3 +2080,111 @@ The system must shift from descriptive ("what is this?") to causal
 The day the system can answer the question "What experiment should I
 perform tomorrow morning?" — repeatedly, accurately, and economically —
 is the day it becomes a discovery system rather than a knowledge system.
+
+---
+
+## DR-15: Three-tier edge schema — verified, asserted, associative
+
+> "Don't let 'every edge has a mechanism field' become the next
+> self-graded PASS. A mechanism field that can be filled in by a
+> good sentence generator is not yet causality." — External auditor,
+> cycle 29
+
+DR-11 requires every causal edge to carry a `mechanism` field. But
+a mechanism field that can be filled by a plausible-sounding sentence
+— without that sentence being physically true — is the software-
+architect failure mode wearing a physicist's vocabulary. The fix is
+not a fifth rule about prose quality. The fix is making mechanism
+claims **checkable against the same quantitative machinery already in
+the repo.**
+
+### The three tiers
+
+Every edge in the graph SHALL be tagged at one of three tiers:
+
+| Tier | Label | What it means | Allowed in discovery? |
+|---|---|---|---|
+| **VERIFIED** | `verified` | The mechanism field references a formula that exists (or was added) in the domain-knowledge modules. The formula was evaluated against the edge's cited evidence numbers. The computed result matches the source's stated output within tolerance. | YES — full causal reasoning, simulation, adjacency search |
+| **ASSERTED** | `asserted` | The mechanism field is present and states a physical process, but no evaluable formula was attached or the formula's output does not match the evidence. The edge is a hypothesis, not a fact. | YES — but flagged. Cannot be used in simulation. Can be used in adjacency search with a visible ASSERTED flag. |
+| **ASSOCIATIVE** | `associative` | No mechanism stated. The edge is a keyword match, co-occurrence, or classification — not a causal link. | NO — excluded from discovery per DR-11 |
+
+### The verification process (Instruction 1)
+
+For an edge to be promoted from ASSERTED to VERIFIED:
+
+1. The edge's `mechanism` field MUST reference a formula that exists
+   in `scripts/formulas/` or `invention_compiler/*_knowledge_module.py`.
+2. The verifier (`scripts/verify_mechanisms.py`, to be built) SHALL
+   evaluate that formula using the edge's cited evidence numbers as
+   inputs.
+3. The computed result SHALL be compared against the source's stated
+   output. If they match within the stated tolerance, the edge is
+   promoted to VERIFIED.
+4. If no evaluable formula is attached, or the formula's output does
+   not match, the edge remains ASSERTED.
+5. An edge without a `mechanism` field is ASSOCIATIVE and excluded
+   from discovery traversal.
+
+### Example (the Bi₂Te₃ case)
+
+For the edge `carrier_mobility → Seebeck_coefficient`:
+
+- **VERIFIED** requires: the Mott relation `S = (π²/3)(k_B/e)T(d(ln σ)/dE)`
+  is implemented as a callable function, evaluated against Bi₂Te₃'s
+  reported carrier density and effective mass, and the computed Seebeck
+  coefficient matches the paper's reported value within tolerance.
+
+- **ASSERTED** means: the mechanism field says "anisotropic carrier
+  transport in trigonal crystal structure produces Seebeck effect" —
+  a correct physical statement — but no formula was evaluated to verify
+  it. The edge is a hypothesis.
+
+- **ASSOCIATIVE** means: Bi₂Te₃ → "alloy" because the word "alloy"
+  appears in the text. No mechanism. Excluded from discovery.
+
+### What this closes
+
+This is the direct fix for the gap the auditor named: "a system can
+satisfy 'has a mechanism field' by writing a plausible-sounding
+sentence, without that sentence being physically true." The three-tier
+schema makes the difference between "I said the mechanism" (ASSERTED)
+and "I computed the mechanism and it matches reality" (VERIFIED)
+mechanically enforceable.
+
+### Reused schema from Phase 15 (per Instruction 0)
+
+The archived `CAUSALITY_POLICY.md` (Phase 7C.1) defined:
+- The causality test: "If A did not exist, would B be impossible or
+  significantly harder?" — REUSED as the DR-11 causal-edge definition.
+- The evidence tiers: "Explicitly stated" (1.0), "Directly implied"
+  (0.8), "Structurally inferred" (0.5), "Speculative" (0.2) — REUSED
+  as the basis for the three-tier schema, collapsed to verified/
+  asserted/associative.
+- The inadmissible evidence list: embedding similarity, co-occurrence,
+  keyword overlap, LLM-generated edges, temporal precedence alone —
+  REUSED as the definition of ASSOCIATIVE tier.
+- The `Mechanism` interface from `MECHANISM_REGISTRY_V2.md`
+  (mechanismId, class, inputs, constraints, outputs, evidence) — REUSED
+  as the node schema for the causal graph.
+
+What is NOT reused: the Phase 15 edge types (REQUIRES, ENABLES,
+SUBSTITUTES_FOR, EMBODIED_IN, REGULATED_BY) were scoped to technology-
+reachability classification, not material causality. The new schema
+uses directional causal edges (A → B with mechanism) that are more
+general. The Phase 15 types may be added as sub-types in future work.
+
+### Enforcement
+
+- `scripts/verify_mechanisms.py` SHALL be a required CI gate
+  (alongside `verify_arithmetic.py`, `verify_benchmarks.py`,
+  `verify_prose_consistency.py`).
+- Edges are tagged at ingestion time. The tag determines which
+  downstream operations (simulation, adjacency search, discovery
+  queries) may use the edge.
+- An ASSERTED edge that is used in a discovery query MUST carry a
+  visible ASSERTED flag in the result. A VERIFIED edge carries no
+  flag (it is the default for trusted reasoning).
+- The verifier SHALL log: total edges, verified count, asserted count,
+  associative count. The ratio (verified / total) is the "causal
+  density" of the graph — the metric that measures how much of the
+  graph is actually causal vs. how much is asserted or associative.

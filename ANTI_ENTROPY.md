@@ -1388,3 +1388,67 @@ question: "What experiment should I perform tomorrow morning?"
 That question is the ultimate test. The day it can be answered —
 repeatedly, accurately, and economically — is the day the system
 becomes a discovery system.
+
+---
+
+## Three-tier causality anti-entropy (added post-cycle 29 external audit, 2026-08-04)
+
+Per CEO directive: "These review principles have to be added to create
+a first-class product and are not entropy-inducing." The auditor's
+cycle-29 sharpening identified the gap between DR-11 (mechanism
+presence) and actual causality (mechanism verification).
+
+### Anti-entropy rule: mechanism claims must be executable, not just present (DR-15)
+
+A mechanism field that can be filled by a plausible-sounding sentence
+— without that sentence being physically true — is the software-
+architect failure mode wearing a physicist's vocabulary. The fix is
+not a rule about prose quality. The fix is making mechanism claims
+checkable against the same quantitative machinery already in the repo.
+
+This is the same principle as Law 13 (independent recomputation)
+extended from arithmetic to physics to causality:
+- Law 13: BOM totals must be independently recomputed from raw line items.
+- F-044: benchmark scores must be independently recomputed from raw cases.
+- DR-7: physics formulas must be executed as callable functions, not hand-typed.
+- DR-15: mechanism claims must be evaluated against evidence numbers, not just stated.
+
+Each extension closes the same failure pattern: schema compliance
+mistaken for truth. A well-formatted total is not arithmetic. A
+well-formatted score is not verification. A well-formatted formula
+is not simulation. A well-written mechanism sentence is not causality.
+
+### The three-tier schema
+
+| Tier | What it means | Allowed in discovery? |
+|---|---|---|
+| VERIFIED | Formula evaluated, matches evidence | YES — full causal reasoning |
+| ASSERTED | Mechanism present, not evaluated | YES — but flagged, no simulation |
+| ASSOCIATIVE | No mechanism (keyword match) | NO — excluded |
+
+### Reused from Phase 15
+
+The archived `CAUSALITY_POLICY.md` (Phase 7C.1) and
+`MECHANISM_REGISTRY_V2.md` (Phase 15) contain prior work on causality
+schemas. Per Instruction 0, these were mined before designing fresh:
+- The causality test ("If A did not exist, would B be impossible?")
+  is reused as DR-11's edge definition.
+- The evidence tiers (explicitly stated, directly implied, structurally
+  inferred, speculative) are reused as the basis for verified/asserted/
+  associative.
+- The inadmissible evidence list (embedding similarity, co-occurrence,
+  keyword overlap) is reused as the definition of associative tier.
+- The Mechanism interface (inputs, constraints, outputs, evidence) is
+  reused as the node schema.
+
+What is NOT reused: the Phase 15 edge types (REQUIRES, ENABLES,
+SUBSTITUTES_FOR) were scoped to technology-reachability classification.
+The new schema uses directional causal edges (A → B with mechanism)
+that are more general.
+
+### AP-11 test
+
+Complexity cost: 1 new DR (DR-15) + 1 new failure record (F-061).
+Entropy eliminated: the software-architect failure mode (good sentences
+wearing physicist vocabulary) that would have made DR-11 through DR-14
+produce a graph that looks causal but isn't. Net positive. Approved.
