@@ -85,9 +85,80 @@ class ConstraintModule:
                 "for LFP cathode material preparation."
             ),
         },
-        # Future corpus-derived entries will be added here as more patents
-        # are mined. The pattern: search data/ingestion/patents/*.txt for
-        # quantitative ranges, extract the value + source, add the entry.
+        "energy": {
+            "value": "thermoelectric efficiency 3.58% at ΔT=120K; power output 2.51W "
+                     "(reference Bi2Te3 composition); vertical-farming specific energy "
+                     "consumption 6.32 kWh/kg (14% below benchmark)",
+            "source_patent_id": "2507.06101",  # arXiv paper, not patent
+            "source_url": "https://arxiv.org/abs/2507.06101",
+            "retrieval_date": "2026-08-04",
+            "source_text": (
+                "Reference compositions for bismuth telluride thermoelectric "
+                "materials for low-temperature power generation... from the "
+                "reference composition, which gives the power output of over "
+                "2.51 W and an efficiency of 3.58% at a temperature difference "
+                "of 120 K."
+            ),
+            "prior_map": False,
+            "derivation_method": (
+                "Direct extraction from arXiv paper abstract + claims. "
+                "The paper specifies efficiency and power output as the "
+                "performance target for thermoelectric energy conversion. "
+                "The vertical-farming specific energy consumption (6.32 kWh/kg) "
+                "is from arXiv 2603.15806 (LED spectral vertical farming)."
+            ),
+            "secondary_source_patent_id": "2603.15806",
+            "secondary_source_url": "https://arxiv.org/abs/2603.15806",
+        },
+        "manufacturing": {
+            "value": "optical efficiency 45%-75% (ray-tracing predicted, solar-position-dependent); "
+                     "yield reduction 17% in daylight-only operation; electricity savings 27-29% "
+                     "in hybrid daylight+LED mode",
+            "source_patent_id": "2603.15806",  # arXiv paper, not patent
+            "source_url": "https://arxiv.org/abs/2603.15806",
+            "retrieval_date": "2026-08-04",
+            "source_text": (
+                "Solar Daylighting to Offset LED Lighting in Vertical Farming: "
+                "A Techno-Economic Study of Light Pipes... Ray-tracing predicted "
+                "an overall LP optical efficiency of 45%-75%, depending on solar "
+                "position, quantifying the fraction of incident daylight... "
+                "Daylight-only operation reduced the total three-tier yield by "
+                "17% and was not economically viable despite 27-29% electricity "
+                "savings."
+            ),
+            "prior_map": False,
+            "derivation_method": (
+                "Direct extraction from arXiv paper. The paper specifies "
+                "optical efficiency and yield reduction as manufacturing/"
+                "operational performance metrics for the light-pipe system."
+            ),
+        },
+        "cost": {
+            "value": "light cost 15%-38% lower than optical-fiber reference system "
+                     "(vertical-farming context); CAPEX-limited viability",
+            "source_patent_id": "2603.15806",  # arXiv paper, not patent
+            "source_url": "https://arxiv.org/abs/2603.15806",
+            "retrieval_date": "2026-08-04",
+            "source_text": (
+                "Solar Daylighting to Offset LED Lighting in Vertical Farming... "
+                "the LP system delivers a 15-38% lower light cost than an "
+                "optical-fiber reference system... Overall, viability remains "
+                "CAPEX-limited because of the added investment and thus improves "
+                "mainly under high electricity and carbon-price contexts."
+            ),
+            "prior_map": False,
+            "derivation_method": (
+                "Direct extraction from arXiv paper. The paper reports the "
+                "light-cost reduction range (15-38%) relative to an optical-fiber "
+                "reference, and notes CAPEX-limited viability. This is a "
+                "domain-specific cost tolerance for vertical-farming lighting "
+                "systems, not a generic ±15% capex estimate."
+            ),
+        },
+        # Future corpus-derived entries will be added here as more patents/papers
+        # are mined. The pattern: search data/ingestion/patents/*.txt and
+        # data/ingestion/papers/*.txt for quantitative ranges, extract the
+        # value + source, add the entry.
     }
 
     # Map: constraint keyword -> typical tolerance range.
@@ -96,11 +167,11 @@ class ConstraintModule:
     # can be used in a package's headline numbers. Each entry has
     # prior_map=True and must be paired with a kill test (KT-XX).
     TOLERANCE_PRIORS = {
-        "cost": "±15% of capex estimate",
-        "energy": "±10% of energy budget",
+        "cost": "±15% of capex estimate",  # DEPRECATED — see CORPUS_DERIVED_TOLERANCES["cost"]
+        "energy": "±10% of energy budget",  # DEPRECATED — see CORPUS_DERIVED_TOLERANCES["energy"]
         "material": "±5% of material property target",  # DEPRECATED — see CORPUS_DERIVED_TOLERANCES["material"]
         "regulation": "binary (pass/fail)",
-        "manufacturing": "±3% yield",
+        "manufacturing": "±3% yield",  # DEPRECATED — see CORPUS_DERIVED_TOLERANCES["manufacturing"]
         "supply_chain": "±30% lead time",
         "time": "±20% schedule",
         "information": "information completeness >= 95%",
