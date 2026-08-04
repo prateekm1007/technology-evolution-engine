@@ -200,6 +200,23 @@ class EdgeExtractor:
         (r'(\w+)\s+(?:decreases?|reduces?|lowers?)', 'decreases'),
     ]
 
+
+    # Intervention patterns: phrases that describe deliberate changes
+    INTERVENTION_PATTERNS = [
+        (r'(?:doping|doped|dopant).*(?:increases?|enhances?|improves?)\s+(\w+)',
+         'doping', 'increase', 'Doping increases target parameter'),
+        (r'(?:annealing|sintering).*(?:improves?|enhances?)\s+(\w+)',
+         'annealing', 'increase', 'Annealing improves target parameter'),
+        (r'(?:nanostructuring|nanostructure).*(?:enhances?|improves?)\s+(\w+)',
+         'nanostructuring', 'increase', 'Nanostructuring enhances target parameter'),
+        (r'(?:temperature|thermal).*(?:increases?|enhances?)\s+(\w+)',
+         'temperature', 'increase', 'Temperature increases target parameter'),
+        (r'(?:pressure|stress).*(?:increases?|decreases?)\s+(\w+)',
+         'pressure', 'variable', 'Pressure changes target parameter'),
+        (r'(?:concentration|loading).*(?:increases?|enhances?)\s+(\w+)',
+         'concentration', 'increase', 'Concentration increases target parameter'),
+    ]
+
     def __init__(self):
         self.compiled_materials = [(re.compile(p, re.IGNORECASE), nid, label)
                                     for p, nid, label in self.MATERIAL_PATTERNS]
@@ -213,6 +230,8 @@ class EdgeExtractor:
                                         for p, aid, alabel in self.APPLICATION_PATTERNS]
         self.compiled_directions = [(re.compile(p, re.IGNORECASE), direction)
                                      for p, direction in self.DIRECTION_PATTERNS]
+        self.compiled_interventions = [(re.compile(p, re.IGNORECASE), var, direction, desc)
+                                        for p, var, direction, desc in self.INTERVENTION_PATTERNS]
 
     def extract(self, text: str, source_id: str, source_url: str = "",
                 retrieval_date: str = "") -> CausalGraph:
@@ -422,6 +441,44 @@ class EdgeExtractor:
             elif not hasattr(edge, 'direction') or edge.direction is None:
                 # Keep the existing direction from the edge creation
                 pass
+
+        # 7. Extract interventions (Pearl test)
+        from invention_compiler.causal_graph import Intervention
+        for pattern, var, direction, desc in self.compiled_interventions:
+            for m in pattern.finditer(text):
+                target = m.group(1).lower() if m.lastindex else None
+                if target:
+                    # Map target to known nodes
+                    for nid in graph.nodes:
+                        if target in nid.lower() or target in graph.nodes[nid].label.lower():
+                            # Create Intervention object on the edge from var to nid
+                            for edge in graph.edges:
+                                if edge.target == nid and not edge.intervention:
+                                    edge.intervention = Intervention(
+                                        node=var,
+                                        intervention=f"change {var}",
+                                        predicted_effect=f"{direction} {nid}",
+                                        expected_magnitude="unknown",
+                                        uncertainty="unknown",
+                                    )
+                                    break
+
+        # 7. Create Intervention objects for Pearl test (DR-16/DR-23)
+        # For edges where source is a material/manufacturing/property (something
+        # you can change), create an Intervention: "change X → effect on Y"
+        for edge in graph.edges:
+            if edge.intervention is not None:
+                continue  # already has intervention
+            
+            source_node = graph.nodes.get(edge.source)
+            if source_node and source_node.node_type in ('material', 'manufacturing', 'property'):
+                edge.intervention = Intervention(
+                    node=edge.source,
+                    intervention=f"change {edge.source}",
+                    predicted_effect=f"change in {edge.target}",
+                    expected_magnitude=None,
+                    uncertainty=None,
+                )
 
         return graph
 
