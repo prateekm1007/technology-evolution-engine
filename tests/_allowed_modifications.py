@@ -70,37 +70,13 @@ ALLOWED_MODIFICATIONS = frozenset({
     "scripts/pdf_template.css",
     # Phase 2: thermal model (simulation gap closure, 5/10 → target 10/10)
     "scripts/thermal_model_1d.py",
-    # Phase 1: independent recomputation verifier (Law 13)
-    "scripts/verify_arithmetic.py",
-    # F-044 / PR-22: independent benchmark recomputation verifier
-    # (Law 13 extended from package layer to benchmark layer)
-    "scripts/verify_benchmarks.py",
-    "scripts/run_compiler_benchmarks.py",
-    # F-044 tests
-    "tests/test_verify_benchmarks.py",
-    # F-045 / PR-21: corpus-derived tolerances replacing prior-map
-    "invention_compiler/constraint_module.py",
-    "tests/test_f045_corpus_derived_tolerances.py",
-    # F-046: experimentation scoping (PARTIALLY RESOLVED — execution requires reality)
-    "experimentation_layer/scoping.py",
-    "tests/test_f046_experimentation_scoping.py",
-    # F-047: paper corpus remediation (same pattern as F-043)
-    "tests/test_f047_paper_corpus.py",
-    # F-053 / DR-9: prose-consistency linter (catches count contradictions)
-    "scripts/verify_prose_consistency.py",
-    "tests/test_verify_prose_consistency.py",
-    # F-054..F-059: PDF rendering template fixes
-    "scripts/pdf_template.css",
-    "scripts/generate_pdf.py",
-    "tests/test_pdf_template_fixes.py",
-    # DR-15 / F-061: three-tier causal edge schema
-    "invention_compiler/causal_graph.py",
-    "tests/test_causal_graph.py",
-    # Phase I-V: edge extractor, causal simulator, Tellurium regression
-    "invention_compiler/edge_extractor.py",
-    "invention_compiler/causal_simulator.py",
-    "tests/test_tellurium_regression.py",
-    "tests/test_causal_simulator.py",
+    # DR-7 / Layer 2: formula execution verifier
+    "scripts/formulas/__init__.py",
+    "scripts/formulas/stull_wet_bulb.py",
+    "scripts/formulas/stefan_boltzmann.py",
+    "scripts/formulas/pcm_latent_heat.py",
+    "scripts/verify_formulas.py",
+    "tests/test_verify_formulas.py",
     # Self-audit fixes: product enforcement tests + CI updates
     "tests/test_product_enforcement.py",
     "product/PRODUCT.md",  # canonical source for the customer-facing PDF
