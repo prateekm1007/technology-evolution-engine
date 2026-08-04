@@ -96,6 +96,11 @@ ALLOWED_MODIFICATIONS = frozenset({
     # DR-15 / F-061: three-tier causal edge schema
     "invention_compiler/causal_graph.py",
     "tests/test_causal_graph.py",
+    # Phase I-V: edge extractor, causal simulator, Tellurium regression
+    "invention_compiler/edge_extractor.py",
+    "invention_compiler/causal_simulator.py",
+    "tests/test_tellurium_regression.py",
+    "tests/test_causal_simulator.py",
     # Self-audit fixes: product enforcement tests + CI updates
     "tests/test_product_enforcement.py",
     "product/PRODUCT.md",  # canonical source for the customer-facing PDF
