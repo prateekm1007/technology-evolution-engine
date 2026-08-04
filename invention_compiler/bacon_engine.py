@@ -1089,3 +1089,169 @@ def pcm_latent_heat_dataset(n_points: int = 10) -> Dict[str, List[float]]:
         Qs.append(Q_daily)
         ms.append(m)
     return {"Q_daily_W": Qs, "m_pcm_kg": ms}
+
+
+# ---------------------------------------------------------------------------
+# Autonomous hidden variable discovery (Phase VI, cycle 53)
+# ---------------------------------------------------------------------------
+
+@dataclass
+class HiddenVariableDiscovery:
+    """The result of autonomous hidden variable discovery.
+
+    The system:
+      1. Fits the best single-variable law for each candidate variable.
+      2. Picks the best one (highest R²).
+      3. Computes residuals.
+      4. Searches over ALL OTHER variables — which one explains the residual?
+      5. Reports the hidden variable + the combined law.
+
+    NO HUMAN tells the system which variable to check. The system
+    discovers the hidden variable autonomously.
+    """
+    primary_var: str
+    primary_law: DiscoveredLaw
+    hidden_var: str
+    hidden_law: DiscoveredLaw
+    single_r2: float
+    combined_r2: float
+    improvement: float
+
+    @property
+    def is_discovery(self) -> bool:
+        """A discovery is genuine if the hidden variable explains ≥50% of the residual.
+
+        The improvement (combined_r2 - single_r2) can be small even when the
+        hidden variable perfectly explains the residual — this happens when
+        the primary variable already captures most of the variance. The right
+        metric is: does the hidden variable explain the RESIDUAL, not the total?
+        """
+        return self.hidden_law.r2 >= 0.50
+
+    def to_dict(self) -> Dict[str, Any]:
+        return {
+            "primary_var": self.primary_var,
+            "primary_law": self.primary_law.to_dict(),
+            "hidden_var": self.hidden_var,
+            "hidden_law": self.hidden_law.to_dict(),
+            "single_r2": self.single_r2,
+            "combined_r2": self.combined_r2,
+            "improvement": self.improvement,
+            "is_discovery": self.is_discovery,
+        }
+
+    def __str__(self) -> str:
+        return (f"HiddenVariableDiscovery("
+                f"primary={self.primary_var} ({self.primary_law.name}, R²={self.single_r2:.4f}), "
+                f"hidden={self.hidden_var} ({self.hidden_law.name}, R²={self.hidden_law.r2:.4f}), "
+                f"combined R²={self.combined_r2:.4f}, improvement=+{self.improvement:.4f}, "
+                f"{'DISCOVERY' if self.is_discovery else 'marginal'})")
+
+
+def discover_hidden_variable(dataset: Dict[str, List[float]],
+                              target_var: str,
+                              candidate_vars: Optional[List[str]] = None,
+                              verbose: bool = False
+                              ) -> Optional[HiddenVariableDiscovery]:
+    """Autonomously discover which variable explains the residual.
+
+    Per cycle 53 (Phase VI): the system searches over ALL candidate
+    variables to find which one explains the residual after the best
+    single-variable fit. NO HUMAN tells the system which variable to check.
+
+    Algorithm:
+      1. Fit best single-variable law for each candidate.
+      2. Pick the best one (highest R²).
+      3. Compute residuals.
+      4. Search over ALL OTHER variables.
+      5. Report the hidden variable + the combined law.
+
+    Args:
+        dataset: dict mapping variable name → list of values
+        target_var: the dependent variable
+        candidate_vars: which vars to search (default: all non-target)
+        verbose: if True, print fit details
+
+    Returns:
+        HiddenVariableDiscovery if a hidden variable is found, else None.
+    """
+    if target_var not in dataset:
+        raise ValueError(f"target_var '{target_var}' not in dataset")
+    if candidate_vars is None:
+        candidate_vars = [v for v in dataset if v != target_var]
+    if len(candidate_vars) < 2:
+        return None  # need ≥2 candidates to find a hidden variable
+
+    ys = dataset[target_var]
+
+    # Step 1-2: find best single-variable fit
+    best_var = None
+    best_law = None
+    best_r2 = -1.0
+    for var in candidate_vars:
+        xs = dataset[var]
+        if len(xs) != len(ys):
+            continue
+        law = discover_law(xs, ys, x_label=var, y_label=target_var, threshold=0.0)
+        if law and law.r2 > best_r2:
+            best_r2 = law.r2
+            best_var = var
+            best_law = law
+        if verbose and law:
+            print(f"  {var:15s} → {law.name:12s} R²={law.r2:.4f}")
+
+    if best_law is None:
+        return None
+    if verbose:
+        print(f"  Best primary: {best_var} (R²={best_r2:.4f})")
+
+    # Step 3: compute residuals
+    predictions = _predict_with_law(best_law, dataset[best_var])
+    if predictions is None:
+        return None
+    residuals = [a - p for a, p in zip(ys, predictions)]
+
+    # Step 4: search over OTHER variables
+    hidden_var = None
+    hidden_law = None
+    hidden_r2 = -1.0
+    for var in candidate_vars:
+        if var == best_var:
+            continue
+        xs = dataset[var]
+        if len(xs) != len(ys):
+            continue
+        law = discover_law(xs, residuals, x_label=var, y_label='residual', threshold=0.0)
+        if law:
+            if verbose:
+                print(f"  residual vs {var:15s} → {law.name:12s} R²={law.r2:.4f}")
+            if law.r2 > hidden_r2:
+                hidden_r2 = law.r2
+                hidden_var = var
+                hidden_law = law
+
+    if hidden_var is None or hidden_r2 < 0.05:
+        return None
+    if verbose:
+        print(f"  Hidden variable: {hidden_var} (R²={hidden_r2:.4f})")
+
+    # Step 5: compute combined R²
+    hidden_preds = _predict_with_law(hidden_law, dataset[hidden_var])
+    if hidden_preds is None:
+        return None
+    combined = [p + h for p, h in zip(predictions, hidden_preds)]
+    combined_resid = [a - c for a, c in zip(ys, combined)]
+    mean_y = sum(ys) / len(ys)
+    ss_tot = sum((y - mean_y) ** 2 for y in ys)
+    ss_res = sum(r ** 2 for r in combined_resid)
+    combined_r2 = 1.0 - (ss_res / ss_tot) if ss_tot > 1e-12 else 0.0
+
+    return HiddenVariableDiscovery(
+        primary_var=best_var,
+        primary_law=best_law,
+        hidden_var=hidden_var,
+        hidden_law=hidden_law,
+        single_r2=best_r2,
+        combined_r2=combined_r2,
+        improvement=combined_r2 - best_r2,
+    )
