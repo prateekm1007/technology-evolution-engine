@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-04T00:42:43.163685+00:00",
+  "generated_at": "2026-08-04T01:02:43.028353+00:00",
   "method": "Live end-to-end compile of reference problems through the 11-layer invention compiler. For each case, the composite feasibility score from Layer 5 (simulation) is mapped to a verdict bucket per INVENTION_COMPILER.md. expectations_satisfied = verdict matches expected OR is within one bucket; otherwise expectations_not_satisfied.",
   "verdict_buckets": {
     "feasible": ">=0.75",
@@ -31,7 +31,7 @@
       "actual_verdict": "uncertain",
       "composite_feasibility": 0.2893,
       "bucket_distance_from_expected": 3,
-      "duration_s": 0.764,
+      "duration_s": 0.773,
       "expectations_satisfied": false,
       "rationale": "Reconstruction case. Portable MRI is a known-plausible invention (Hyperfine Swoop is FDA-cleared). Tests the compiler can recognize a feasible invention that already exists, rather than say 'impossible'.",
       "chain_summary": {
@@ -49,7 +49,7 @@
         "commercial_risk_count": 3,
         "verification_status": "integrated",
         "hypothesis": {
-          "id": "hyp_c802c82ba5c732d2",
+          "id": "hyp_377a89dcf4a69aa7",
           "claim": "The invention 'Build a portable MRI scanner suitable for rural clinics without cryogenic helium' is feasible in the medical_imaging domain within the stated time horizon.",
           "confidence": 0.2893,
           "evidence": [
@@ -80,9 +80,9 @@
           "status": "pending",
           "observation": null,
           "writer": "invention_compiler.orchestrator.InventionCompiler._chain_summary",
-          "created_at": "2026-08-04T00:42:39.426465+00:00",
-          "updated_at": "2026-08-04T00:42:39.426478+00:00",
-          "timestamp": "2026-08-04T00:42:39.426465+00:00"
+          "created_at": "2026-08-04T01:02:39.266936+00:00",
+          "updated_at": "2026-08-04T01:02:39.266950+00:00",
+          "timestamp": "2026-08-04T01:02:39.266936+00:00"
         }
       },
       "layer_0": {
@@ -361,9 +361,36 @@
           "source_layer": "Layer 4 (Engineering architecture)"
         },
         "tolerances": {
-          "cost": "\u00b115% of capex estimate",
-          "regulation": "binary (pass/fail)",
-          "manufacturing": "\u00b13% yield"
+          "cost": {
+            "value": "\u00b115% of capex estimate",
+            "prior_map": true,
+            "source_patent_id": null,
+            "source_url": null,
+            "retrieval_date": null,
+            "source_text": null,
+            "derivation_method": "constraint-keyword prior map (F-045 OPEN \u2014 this tolerance must be replaced with a corpus-derived value before commercial deployment per PR-21)",
+            "kill_test": "KT-F045-cost"
+          },
+          "regulation": {
+            "value": "binary (pass/fail)",
+            "prior_map": true,
+            "source_patent_id": null,
+            "source_url": null,
+            "retrieval_date": null,
+            "source_text": null,
+            "derivation_method": "constraint-keyword prior map (F-045 OPEN \u2014 this tolerance must be replaced with a corpus-derived value before commercial deployment per PR-21)",
+            "kill_test": "KT-F045-regulation"
+          },
+          "manufacturing": {
+            "value": "\u00b13% yield",
+            "prior_map": true,
+            "source_patent_id": null,
+            "source_url": null,
+            "retrieval_date": null,
+            "source_text": null,
+            "derivation_method": "constraint-keyword prior map (F-045 OPEN \u2014 this tolerance must be replaced with a corpus-derived value before commercial deployment per PR-21)",
+            "kill_test": "KT-F045-manufacturing"
+          }
         },
         "prototype_specification": {
           "v1": {
@@ -464,7 +491,7 @@
       "actual_verdict": "unknown",
       "composite_feasibility": 0.1982,
       "bucket_distance_from_expected": 1,
-      "duration_s": 0.77,
+      "duration_s": 0.774,
       "expectations_satisfied": true,
       "rationale": "Forecasting case. Haber-Bosch without high T/P is an open research problem. Tests the compiler can say 'uncertain' honestly rather than fabricate confidence.",
       "chain_summary": {
@@ -482,7 +509,7 @@
         "commercial_risk_count": 3,
         "verification_status": "integrated",
         "hypothesis": {
-          "id": "hyp_43ca6ab750e09b54",
+          "id": "hyp_3a9c992b82a21a89",
           "claim": "The invention 'Synthesize ammonia from nitrogen and water at ambient temperature and pressure using electrochemistry' is feasible in the chemistry domain within the stated time horizon.",
           "confidence": 0.1982,
           "evidence": [
@@ -516,9 +543,9 @@
           "status": "pending",
           "observation": null,
           "writer": "invention_compiler.orchestrator.InventionCompiler._chain_summary",
-          "created_at": "2026-08-04T00:42:40.196311+00:00",
-          "updated_at": "2026-08-04T00:42:40.196325+00:00",
-          "timestamp": "2026-08-04T00:42:40.196311+00:00"
+          "created_at": "2026-08-04T01:02:40.040776+00:00",
+          "updated_at": "2026-08-04T01:02:40.040790+00:00",
+          "timestamp": "2026-08-04T01:02:40.040776+00:00"
         }
       },
       "layer_0": {
@@ -785,7 +812,16 @@
           },
           "energy_requirements": {
             "budget_tight": true,
-            "tolerance": "\u00b110% of energy budget",
+            "tolerance": {
+              "value": "\u00b110% of energy budget",
+              "prior_map": true,
+              "source_patent_id": null,
+              "source_url": null,
+              "retrieval_date": null,
+              "source_text": null,
+              "derivation_method": "constraint-keyword prior map (F-045 OPEN \u2014 this tolerance must be replaced with a corpus-derived value before commercial deployment per PR-21)",
+              "kill_test": "KT-F045-energy"
+            },
             "estimated_watts": "depends_on_application"
           },
           "computational_requirements": {
@@ -795,9 +831,36 @@
           "source_layer": "Layer 4 (Engineering architecture)"
         },
         "tolerances": {
-          "energy": "\u00b110% of energy budget",
-          "manufacturing": "\u00b13% yield",
-          "regulation": "binary (pass/fail)"
+          "energy": {
+            "value": "\u00b110% of energy budget",
+            "prior_map": true,
+            "source_patent_id": null,
+            "source_url": null,
+            "retrieval_date": null,
+            "source_text": null,
+            "derivation_method": "constraint-keyword prior map (F-045 OPEN \u2014 this tolerance must be replaced with a corpus-derived value before commercial deployment per PR-21)",
+            "kill_test": "KT-F045-energy"
+          },
+          "manufacturing": {
+            "value": "\u00b13% yield",
+            "prior_map": true,
+            "source_patent_id": null,
+            "source_url": null,
+            "retrieval_date": null,
+            "source_text": null,
+            "derivation_method": "constraint-keyword prior map (F-045 OPEN \u2014 this tolerance must be replaced with a corpus-derived value before commercial deployment per PR-21)",
+            "kill_test": "KT-F045-manufacturing"
+          },
+          "regulation": {
+            "value": "binary (pass/fail)",
+            "prior_map": true,
+            "source_patent_id": null,
+            "source_url": null,
+            "retrieval_date": null,
+            "source_text": null,
+            "derivation_method": "constraint-keyword prior map (F-045 OPEN \u2014 this tolerance must be replaced with a corpus-derived value before commercial deployment per PR-21)",
+            "kill_test": "KT-F045-regulation"
+          }
         },
         "prototype_specification": {
           "v1": {
@@ -898,7 +961,7 @@
       "actual_verdict": "unknown",
       "composite_feasibility": 0.0498,
       "bucket_distance_from_expected": 0,
-      "duration_s": 0.735,
+      "duration_s": 0.736,
       "expectations_satisfied": true,
       "rationale": "Forecasting case at the edge of physics. May be physically impossible. Recent LK-99 claims were retracted. Tests the compiler can say 'unknown' without claiming feasibility.",
       "chain_summary": {
@@ -916,7 +979,7 @@
         "commercial_risk_count": 3,
         "verification_status": "integrated",
         "hypothesis": {
-          "id": "hyp_577ca09cc476a1c9",
+          "id": "hyp_0775f0a749ca8b81",
           "claim": "The invention 'Discover and engineer a material that superconducts at room temperature and ambient pressure' is feasible in the materials domain within the stated time horizon.",
           "confidence": 0.0498,
           "evidence": [
@@ -953,9 +1016,9 @@
           "status": "pending",
           "observation": null,
           "writer": "invention_compiler.orchestrator.InventionCompiler._chain_summary",
-          "created_at": "2026-08-04T00:42:40.931796+00:00",
-          "updated_at": "2026-08-04T00:42:40.931811+00:00",
-          "timestamp": "2026-08-04T00:42:40.931796+00:00"
+          "created_at": "2026-08-04T01:02:40.777161+00:00",
+          "updated_at": "2026-08-04T01:02:40.777176+00:00",
+          "timestamp": "2026-08-04T01:02:40.777161+00:00"
         }
       },
       "layer_0": {
@@ -1227,7 +1290,16 @@
           },
           "energy_requirements": {
             "budget_tight": true,
-            "tolerance": "\u00b110% of energy budget",
+            "tolerance": {
+              "value": "\u00b110% of energy budget",
+              "prior_map": true,
+              "source_patent_id": null,
+              "source_url": null,
+              "retrieval_date": null,
+              "source_text": null,
+              "derivation_method": "constraint-keyword prior map (F-045 OPEN \u2014 this tolerance must be replaced with a corpus-derived value before commercial deployment per PR-21)",
+              "kill_test": "KT-F045-energy"
+            },
             "estimated_watts": "depends_on_application"
           },
           "computational_requirements": {
@@ -1237,10 +1309,45 @@
           "source_layer": "Layer 4 (Engineering architecture)"
         },
         "tolerances": {
-          "material": "\u00b15% of material property target",
-          "energy": "\u00b110% of energy budget",
-          "manufacturing": "\u00b13% yield",
-          "regulation": "binary (pass/fail)"
+          "material": {
+            "value": "concentration range 3-10% (citric acid), 2-5% (stearic acid); temperature range 650-700\u00b0C (annealing); ball-to-powder ratio 10:1-12:1; milling speed 250-550 rpm",
+            "source_patent_id": "WO2022144917A1",
+            "source_url": "https://patents.google.com/patent/WO2022144917A1/en",
+            "retrieval_date": "2026-08-04",
+            "source_text": "A method of producing high performance carbon coated LiFePO4 powders for making the battery grade cathode for lithium ion battery, comprising the steps of: a) mixing of Li2CO3, FeC2O4, and NH4H2PO4 precursors with different concentrations (3-10%) of citric acid in a stoichiometric ratio of 1.05:1:1; b) adding 2 to 5 % stearic acid; c) milling in a attrition milling unit maintained with the ball to powder ratio of 10:1-12:1 at 250-550 rpm for 2-12 hrs; ... g) annealing of them under argon atmosphere in large scale furnace at a temperature of 650 - 700 \u00b0C with a heating rate of 2-5 \u00b0C /min for 2-10 hrs",
+            "prior_map": false,
+            "derivation_method": "Direct extraction from patent claims. The patent specifies concentration, temperature, and milling parameter ranges as invention parameters \u2014 these ARE the production tolerances for LFP cathode material preparation."
+          },
+          "energy": {
+            "value": "\u00b110% of energy budget",
+            "prior_map": true,
+            "source_patent_id": null,
+            "source_url": null,
+            "retrieval_date": null,
+            "source_text": null,
+            "derivation_method": "constraint-keyword prior map (F-045 OPEN \u2014 this tolerance must be replaced with a corpus-derived value before commercial deployment per PR-21)",
+            "kill_test": "KT-F045-energy"
+          },
+          "manufacturing": {
+            "value": "\u00b13% yield",
+            "prior_map": true,
+            "source_patent_id": null,
+            "source_url": null,
+            "retrieval_date": null,
+            "source_text": null,
+            "derivation_method": "constraint-keyword prior map (F-045 OPEN \u2014 this tolerance must be replaced with a corpus-derived value before commercial deployment per PR-21)",
+            "kill_test": "KT-F045-manufacturing"
+          },
+          "regulation": {
+            "value": "binary (pass/fail)",
+            "prior_map": true,
+            "source_patent_id": null,
+            "source_url": null,
+            "retrieval_date": null,
+            "source_text": null,
+            "derivation_method": "constraint-keyword prior map (F-045 OPEN \u2014 this tolerance must be replaced with a corpus-derived value before commercial deployment per PR-21)",
+            "kill_test": "KT-F045-regulation"
+          }
         },
         "prototype_specification": {
           "v1": {
@@ -1343,7 +1450,7 @@
       "actual_verdict": "uncertain",
       "composite_feasibility": 0.2752,
       "bucket_distance_from_expected": 2,
-      "duration_s": 0.739,
+      "duration_s": 0.748,
       "expectations_satisfied": false,
       "rationale": "Reconstruction case. Already exists in early commercial form (CarbonCure, Solidia, BioMason). Tests the compiler can distinguish 'potentially feasible' from 'feasible' \u2014 the tech works but has not yet captured the global cement market.",
       "chain_summary": {
@@ -1361,7 +1468,7 @@
         "commercial_risk_count": 3,
         "verification_status": "integrated",
         "hypothesis": {
-          "id": "hyp_da8f7cd0f11bcf9d",
+          "id": "hyp_86aa8d8a90d2e081",
           "claim": "The invention 'Manufacture cement that absorbs more CO2 over its lifecycle than it emits during production' is feasible in the materials domain within the stated time horizon.",
           "confidence": 0.2752,
           "evidence": [
@@ -1396,9 +1503,9 @@
           "status": "pending",
           "observation": null,
           "writer": "invention_compiler.orchestrator.InventionCompiler._chain_summary",
-          "created_at": "2026-08-04T00:42:41.670751+00:00",
-          "updated_at": "2026-08-04T00:42:41.670765+00:00",
-          "timestamp": "2026-08-04T00:42:41.670751+00:00"
+          "created_at": "2026-08-04T01:02:41.524772+00:00",
+          "updated_at": "2026-08-04T01:02:41.524787+00:00",
+          "timestamp": "2026-08-04T01:02:41.524772+00:00"
         }
       },
       "layer_0": {
@@ -1683,11 +1790,55 @@
           "source_layer": "Layer 4 (Engineering architecture)"
         },
         "tolerances": {
-          "cost": "\u00b115% of capex estimate",
-          "material": "\u00b15% of material property target",
-          "regulation": "binary (pass/fail)",
-          "manufacturing": "\u00b13% yield",
-          "supply_chain": "\u00b130% lead time"
+          "cost": {
+            "value": "\u00b115% of capex estimate",
+            "prior_map": true,
+            "source_patent_id": null,
+            "source_url": null,
+            "retrieval_date": null,
+            "source_text": null,
+            "derivation_method": "constraint-keyword prior map (F-045 OPEN \u2014 this tolerance must be replaced with a corpus-derived value before commercial deployment per PR-21)",
+            "kill_test": "KT-F045-cost"
+          },
+          "material": {
+            "value": "concentration range 3-10% (citric acid), 2-5% (stearic acid); temperature range 650-700\u00b0C (annealing); ball-to-powder ratio 10:1-12:1; milling speed 250-550 rpm",
+            "source_patent_id": "WO2022144917A1",
+            "source_url": "https://patents.google.com/patent/WO2022144917A1/en",
+            "retrieval_date": "2026-08-04",
+            "source_text": "A method of producing high performance carbon coated LiFePO4 powders for making the battery grade cathode for lithium ion battery, comprising the steps of: a) mixing of Li2CO3, FeC2O4, and NH4H2PO4 precursors with different concentrations (3-10%) of citric acid in a stoichiometric ratio of 1.05:1:1; b) adding 2 to 5 % stearic acid; c) milling in a attrition milling unit maintained with the ball to powder ratio of 10:1-12:1 at 250-550 rpm for 2-12 hrs; ... g) annealing of them under argon atmosphere in large scale furnace at a temperature of 650 - 700 \u00b0C with a heating rate of 2-5 \u00b0C /min for 2-10 hrs",
+            "prior_map": false,
+            "derivation_method": "Direct extraction from patent claims. The patent specifies concentration, temperature, and milling parameter ranges as invention parameters \u2014 these ARE the production tolerances for LFP cathode material preparation."
+          },
+          "regulation": {
+            "value": "binary (pass/fail)",
+            "prior_map": true,
+            "source_patent_id": null,
+            "source_url": null,
+            "retrieval_date": null,
+            "source_text": null,
+            "derivation_method": "constraint-keyword prior map (F-045 OPEN \u2014 this tolerance must be replaced with a corpus-derived value before commercial deployment per PR-21)",
+            "kill_test": "KT-F045-regulation"
+          },
+          "manufacturing": {
+            "value": "\u00b13% yield",
+            "prior_map": true,
+            "source_patent_id": null,
+            "source_url": null,
+            "retrieval_date": null,
+            "source_text": null,
+            "derivation_method": "constraint-keyword prior map (F-045 OPEN \u2014 this tolerance must be replaced with a corpus-derived value before commercial deployment per PR-21)",
+            "kill_test": "KT-F045-manufacturing"
+          },
+          "supply_chain": {
+            "value": "\u00b130% lead time",
+            "prior_map": true,
+            "source_patent_id": null,
+            "source_url": null,
+            "retrieval_date": null,
+            "source_text": null,
+            "derivation_method": "constraint-keyword prior map (F-045 OPEN \u2014 this tolerance must be replaced with a corpus-derived value before commercial deployment per PR-21)",
+            "kill_test": "KT-F045-supply_chain"
+          }
         },
         "prototype_specification": {
           "v1": {
@@ -1792,7 +1943,7 @@
       "actual_verdict": "unknown",
       "composite_feasibility": 0.1703,
       "bucket_distance_from_expected": 2,
-      "duration_s": 0.74,
+      "duration_s": 0.751,
       "expectations_satisfied": false,
       "rationale": "Forecasting case. Components work (PV electrolysis, photocatalytic water splitting) but a complete system that matches natural photosynthesis's efficiency does not yet exist. Tests the compiler can express 'partial feasibility' rather than binary pass/fail.",
       "chain_summary": {
@@ -1810,7 +1961,7 @@
         "commercial_risk_count": 3,
         "verification_status": "integrated",
         "hypothesis": {
-          "id": "hyp_38be95a4a97b8ca4",
+          "id": "hyp_12086d2b46878097",
           "claim": "The invention 'Build a system that converts sunlight, CO2, and water into storable chemical fuel with efficiency exceeding natural photosynthesis' is feasible in the energy domain within the stated time horizon.",
           "confidence": 0.1703,
           "evidence": [
@@ -1847,9 +1998,9 @@
           "status": "pending",
           "observation": null,
           "writer": "invention_compiler.orchestrator.InventionCompiler._chain_summary",
-          "created_at": "2026-08-04T00:42:42.411083+00:00",
-          "updated_at": "2026-08-04T00:42:42.411099+00:00",
-          "timestamp": "2026-08-04T00:42:42.411083+00:00"
+          "created_at": "2026-08-04T01:02:42.275558+00:00",
+          "updated_at": "2026-08-04T01:02:42.275573+00:00",
+          "timestamp": "2026-08-04T01:02:42.275558+00:00"
         }
       },
       "layer_0": {
@@ -2123,7 +2274,16 @@
           },
           "energy_requirements": {
             "budget_tight": true,
-            "tolerance": "\u00b110% of energy budget",
+            "tolerance": {
+              "value": "\u00b110% of energy budget",
+              "prior_map": true,
+              "source_patent_id": null,
+              "source_url": null,
+              "retrieval_date": null,
+              "source_text": null,
+              "derivation_method": "constraint-keyword prior map (F-045 OPEN \u2014 this tolerance must be replaced with a corpus-derived value before commercial deployment per PR-21)",
+              "kill_test": "KT-F045-energy"
+            },
             "estimated_watts": "depends_on_application"
           },
           "computational_requirements": {
@@ -2133,10 +2293,45 @@
           "source_layer": "Layer 4 (Engineering architecture)"
         },
         "tolerances": {
-          "energy": "\u00b110% of energy budget",
-          "material": "\u00b15% of material property target",
-          "manufacturing": "\u00b13% yield",
-          "regulation": "binary (pass/fail)"
+          "energy": {
+            "value": "\u00b110% of energy budget",
+            "prior_map": true,
+            "source_patent_id": null,
+            "source_url": null,
+            "retrieval_date": null,
+            "source_text": null,
+            "derivation_method": "constraint-keyword prior map (F-045 OPEN \u2014 this tolerance must be replaced with a corpus-derived value before commercial deployment per PR-21)",
+            "kill_test": "KT-F045-energy"
+          },
+          "material": {
+            "value": "concentration range 3-10% (citric acid), 2-5% (stearic acid); temperature range 650-700\u00b0C (annealing); ball-to-powder ratio 10:1-12:1; milling speed 250-550 rpm",
+            "source_patent_id": "WO2022144917A1",
+            "source_url": "https://patents.google.com/patent/WO2022144917A1/en",
+            "retrieval_date": "2026-08-04",
+            "source_text": "A method of producing high performance carbon coated LiFePO4 powders for making the battery grade cathode for lithium ion battery, comprising the steps of: a) mixing of Li2CO3, FeC2O4, and NH4H2PO4 precursors with different concentrations (3-10%) of citric acid in a stoichiometric ratio of 1.05:1:1; b) adding 2 to 5 % stearic acid; c) milling in a attrition milling unit maintained with the ball to powder ratio of 10:1-12:1 at 250-550 rpm for 2-12 hrs; ... g) annealing of them under argon atmosphere in large scale furnace at a temperature of 650 - 700 \u00b0C with a heating rate of 2-5 \u00b0C /min for 2-10 hrs",
+            "prior_map": false,
+            "derivation_method": "Direct extraction from patent claims. The patent specifies concentration, temperature, and milling parameter ranges as invention parameters \u2014 these ARE the production tolerances for LFP cathode material preparation."
+          },
+          "manufacturing": {
+            "value": "\u00b13% yield",
+            "prior_map": true,
+            "source_patent_id": null,
+            "source_url": null,
+            "retrieval_date": null,
+            "source_text": null,
+            "derivation_method": "constraint-keyword prior map (F-045 OPEN \u2014 this tolerance must be replaced with a corpus-derived value before commercial deployment per PR-21)",
+            "kill_test": "KT-F045-manufacturing"
+          },
+          "regulation": {
+            "value": "binary (pass/fail)",
+            "prior_map": true,
+            "source_patent_id": null,
+            "source_url": null,
+            "retrieval_date": null,
+            "source_text": null,
+            "derivation_method": "constraint-keyword prior map (F-045 OPEN \u2014 this tolerance must be replaced with a corpus-derived value before commercial deployment per PR-21)",
+            "kill_test": "KT-F045-regulation"
+          }
         },
         "prototype_specification": {
           "v1": {
@@ -2250,7 +2445,7 @@
       "actual_verdict": "unknown",
       "composite_feasibility": 0.2453,
       "bucket_distance_from_expected": 2,
-      "duration_s": 0.752,
+      "duration_s": 0.753,
       "expectations_satisfied": false,
       "rationale": "Resurrection case. Airships failed as passenger transport (Hindenburg 1937, helium-unavailability). Tests the compiler can recognize that the original failure mode (hydrogen flammability) is now removable (helium + modern materials), and that the use case has shifted (cargo, not passengers). Expected verdict: partially_feasible \u2014 LTA Research and HAV Airlander are attempting this with mixed progress.",
       "chain_summary": {
@@ -2268,7 +2463,7 @@
         "commercial_risk_count": 3,
         "verification_status": "integrated",
         "hypothesis": {
-          "id": "hyp_3b2716e58e60863c",
+          "id": "hyp_aedb473ad85c72ef",
           "claim": "The invention 'Resurrect rigid airships for heavy-lift cargo transport to remote areas without runways' is feasible in the transportation domain within the stated time horizon.",
           "confidence": 0.2453,
           "evidence": [
@@ -2301,9 +2496,9 @@
           "status": "pending",
           "observation": null,
           "writer": "invention_compiler.orchestrator.InventionCompiler._chain_summary",
-          "created_at": "2026-08-04T00:42:43.163547+00:00",
-          "updated_at": "2026-08-04T00:42:43.163562+00:00",
-          "timestamp": "2026-08-04T00:42:43.163547+00:00"
+          "created_at": "2026-08-04T01:02:43.028208+00:00",
+          "updated_at": "2026-08-04T01:02:43.028228+00:00",
+          "timestamp": "2026-08-04T01:02:43.028208+00:00"
         }
       },
       "layer_0": {
@@ -2628,11 +2823,55 @@
           "source_layer": "Layer 4 (Engineering architecture)"
         },
         "tolerances": {
-          "cost": "\u00b115% of capex estimate",
-          "material": "\u00b15% of material property target",
-          "regulation": "binary (pass/fail)",
-          "manufacturing": "\u00b13% yield",
-          "supply_chain": "\u00b130% lead time"
+          "cost": {
+            "value": "\u00b115% of capex estimate",
+            "prior_map": true,
+            "source_patent_id": null,
+            "source_url": null,
+            "retrieval_date": null,
+            "source_text": null,
+            "derivation_method": "constraint-keyword prior map (F-045 OPEN \u2014 this tolerance must be replaced with a corpus-derived value before commercial deployment per PR-21)",
+            "kill_test": "KT-F045-cost"
+          },
+          "material": {
+            "value": "concentration range 3-10% (citric acid), 2-5% (stearic acid); temperature range 650-700\u00b0C (annealing); ball-to-powder ratio 10:1-12:1; milling speed 250-550 rpm",
+            "source_patent_id": "WO2022144917A1",
+            "source_url": "https://patents.google.com/patent/WO2022144917A1/en",
+            "retrieval_date": "2026-08-04",
+            "source_text": "A method of producing high performance carbon coated LiFePO4 powders for making the battery grade cathode for lithium ion battery, comprising the steps of: a) mixing of Li2CO3, FeC2O4, and NH4H2PO4 precursors with different concentrations (3-10%) of citric acid in a stoichiometric ratio of 1.05:1:1; b) adding 2 to 5 % stearic acid; c) milling in a attrition milling unit maintained with the ball to powder ratio of 10:1-12:1 at 250-550 rpm for 2-12 hrs; ... g) annealing of them under argon atmosphere in large scale furnace at a temperature of 650 - 700 \u00b0C with a heating rate of 2-5 \u00b0C /min for 2-10 hrs",
+            "prior_map": false,
+            "derivation_method": "Direct extraction from patent claims. The patent specifies concentration, temperature, and milling parameter ranges as invention parameters \u2014 these ARE the production tolerances for LFP cathode material preparation."
+          },
+          "regulation": {
+            "value": "binary (pass/fail)",
+            "prior_map": true,
+            "source_patent_id": null,
+            "source_url": null,
+            "retrieval_date": null,
+            "source_text": null,
+            "derivation_method": "constraint-keyword prior map (F-045 OPEN \u2014 this tolerance must be replaced with a corpus-derived value before commercial deployment per PR-21)",
+            "kill_test": "KT-F045-regulation"
+          },
+          "manufacturing": {
+            "value": "\u00b13% yield",
+            "prior_map": true,
+            "source_patent_id": null,
+            "source_url": null,
+            "retrieval_date": null,
+            "source_text": null,
+            "derivation_method": "constraint-keyword prior map (F-045 OPEN \u2014 this tolerance must be replaced with a corpus-derived value before commercial deployment per PR-21)",
+            "kill_test": "KT-F045-manufacturing"
+          },
+          "supply_chain": {
+            "value": "\u00b130% lead time",
+            "prior_map": true,
+            "source_patent_id": null,
+            "source_url": null,
+            "retrieval_date": null,
+            "source_text": null,
+            "derivation_method": "constraint-keyword prior map (F-045 OPEN \u2014 this tolerance must be replaced with a corpus-derived value before commercial deployment per PR-21)",
+            "kill_test": "KT-F045-supply_chain"
+          }
         },
         "prototype_specification": {
           "v1": {
