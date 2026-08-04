@@ -2394,6 +2394,17 @@ around DiscoveryGraph, or (b) have a documented deprecation date
 within one cycle. Duplicated state — the same edges in two graphs
 without update propagation — is forbidden.
 
+**Status (cycle 39): IN FORCE.** CausalGraph is deprecated (cycle 39)
+with `to_discovery_graph()` migration method. The simulator and promoter
+accept both types. CausalGraph will be removed after one cycle of
+verified DiscoveryGraph operation.
+
+**AUDIT-PROC-002: Compliance deadlines.** Governance rules declared "in
+force" must specify a compliance deadline. Rules that miss their deadline
+are downgraded to "aspirational" until compliance is verified. Law 28's
+deadline was cycle 38 (missed, downgraded). Law 28 returned to "in force"
+in cycle 39 when CausalGraph was deprecated and the migration path landed.
+
 ## Law 29: Evidence Without Numbers
 
 Extends Law 27 from prose to data structures. No data structure in

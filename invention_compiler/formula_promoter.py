@@ -26,10 +26,14 @@ from scripts.verify_formulas import run_all_verifications
 
 
 def promote_edges_from_formula_results(
-    graph: CausalGraph,
+    graph,
     formula_results: List[Dict[str, Any]] = None,
 ) -> Dict[str, Any]:
     """Promote ASSERTED edges to VERIFIED based on formula verification.
+
+    Per Law 28 (cycle 39): accepts either CausalGraph (deprecated) or
+    DiscoveryGraph (canonical). If DiscoveryGraph, promotes edges in the
+    CausalGraphLayer subgraph.
 
     For each formula that PASSES (computed output matches expected within
     tolerance), find the corresponding edge in the causal graph and promote
@@ -43,7 +47,7 @@ def promote_edges_from_formula_results(
     matching edge gets promoted.
 
     Args:
-        graph: the causal graph to promote edges in
+        graph: a CausalGraph (deprecated) or DiscoveryGraph (canonical)
         formula_results: results from verify_formulas.run_all_verifications().
                          If None, runs the verification fresh.
 
@@ -53,6 +57,15 @@ def promote_edges_from_formula_results(
     """
     if formula_results is None:
         formula_results = run_all_verifications()
+
+    # Handle DiscoveryGraph (Law 28 canonical) — use the causal subgraph's edges
+    # but preserve the DiscoveryGraph reference for cross-layer queries
+    if hasattr(graph, 'causal') and hasattr(graph, 'import_causal_graph'):
+        # DiscoveryGraph — operate on its causal layer's edges
+        edges = graph.causal.edges
+    else:
+        # CausalGraph (deprecated) — use edges directly
+        edges = graph.edges
 
     # Build a map of (formula_name, inputs_key, expected_output, tolerance) → passed status
     # This allows per-edge promotion: only edges whose specific inputs AND
@@ -73,7 +86,7 @@ def promote_edges_from_formula_results(
     not_promotable = 0
     details = []
 
-    for edge in graph.edges:
+    for edge in edges:
         if edge.tier == EdgeTier.VERIFIED:
             already_verified += 1
             continue
@@ -170,17 +183,17 @@ def promote_edges_from_formula_results(
             not_promotable += 1
 
     return {
-        "total_edges": len(graph.edges),
+        "total_edges": len(edges),
         "promoted": promoted,
         "already_verified": already_verified,
         "not_promotable": not_promotable,
         "promotion_details": details,
-        "causal_density_after": graph.causal_density(),
-        "tier_counts_after": graph.tier_counts(),
+        "causal_density_after": graph.causal_density() if hasattr(graph, 'causal_density') else 0.0,
+        "tier_counts_after": graph.tier_counts() if hasattr(graph, 'tier_counts') else {},
     }
 
 
-def verify_and_promote(graph: CausalGraph) -> Dict[str, Any]:
+def verify_and_promote(graph) -> Dict[str, Any]:
     """Run formula verification and promote matching edges.
 
     This is the full Layer 2 → Layer 3 integration:

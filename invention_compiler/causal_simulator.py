@@ -52,10 +52,29 @@ class CausalSimulator:
     Per DR-5: this simulates MECHANISMS, not scores.
     Per DR-15: only observed/simulated/derived edges are simulation-capable.
     Per F-048: this replaces the score-perturbation approach.
+    Per Law 28 (cycle 39): accepts either CausalGraph (deprecated) or
+    DiscoveryGraph (canonical). If DiscoveryGraph, operates on its
+    CausalGraphLayer subgraph.
     """
 
-    def __init__(self, graph: CausalGraph):
-        self.graph = graph
+    def __init__(self, graph):
+        """Initialize the simulator.
+
+        Args:
+            graph: A CausalGraph (deprecated) or DiscoveryGraph (canonical).
+                   If DiscoveryGraph, uses the causal subgraph.
+        """
+        # Check if this is a DiscoveryGraph
+        if hasattr(graph, 'causal') and hasattr(graph, 'import_causal_graph'):
+            # DiscoveryGraph — use the causal layer
+            self.graph = graph.causal  # The CausalGraphLayer subgraph
+            self._is_discovery = True
+            self._discovery_graph = graph
+        else:
+            # CausalGraph (deprecated) — use directly
+            self.graph = graph
+            self._is_discovery = False
+            self._discovery_graph = None
 
     def promote_before_propagation(self) -> Dict[str, Any]:
         """Call the formula promoter before propagation.

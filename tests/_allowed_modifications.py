@@ -83,6 +83,11 @@ ALLOWED_MODIFICATIONS = frozenset({
     # EXP-001: first closed learning loop
     "scripts/close_exp_001.py",
     "tests/test_exp_001_closed_loop.py",
+    # DR-11: phantom-work regression detection
+    "scripts/check_phantom_work.py",
+    "tests/test_dr11_phantom_work.py",
+    # PAR-STR migration (Law 28 compliance)
+    "tests/test_parstr_migration.py",
     # Self-audit fixes: product enforcement tests + CI updates
     "tests/test_product_enforcement.py",
     "product/PRODUCT.md",  # canonical source for the customer-facing PDF

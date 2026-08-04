@@ -260,6 +260,13 @@ class CausalNode:
 class CausalGraph:
     """The causal discovery graph.
 
+    DEPRECATED (Law 28, cycle 39): This class is deprecated. DiscoveryGraph
+    (invention_compiler/discovery_graph.py) is the canonical graph structure.
+    CausalGraph is retained as a backward-compatible wrapper. All new code
+    should use DiscoveryGraph directly. The to_discovery_graph() method
+    provides migration. This class will be removed after one cycle of
+    verified DiscoveryGraph operation.
+
     A collection of CausalNode and CausalEdge objects with tier-based
     filtering. Discovery queries traverse only discovery-capable nodes
     and edges. Simulation propagates only along verified-tier edges.
@@ -350,3 +357,18 @@ class CausalGraph:
             "tier_counts": self.tier_counts(),
             "causal_density": self.causal_density(),
         }
+
+    def to_discovery_graph(self):
+        """Migrate this CausalGraph to a DiscoveryGraph (Law 28 canonical).
+
+        This is the migration path from the deprecated CausalGraph to the
+        canonical DiscoveryGraph. All edges and nodes are imported into the
+        appropriate DiscoveryGraph layers.
+
+        Per Law 28: DiscoveryGraph is canonical. This method provides the
+        bridge for existing code that produces CausalGraph objects.
+        """
+        from invention_compiler.discovery_graph import DiscoveryGraph
+        dg = DiscoveryGraph()
+        dg.import_causal_graph(self)
+        return dg
