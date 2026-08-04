@@ -2215,40 +2215,54 @@ engine. These 4 rules keep them distinct.
 > principles, reproduced experimentally, numerically simulated, or
 > independently verified from source material. — CEO, cycle 30
 
-Every mechanism receives one of five states:
+Every mechanism receives one of six states (cycle 56, per TAX-CONSISTENCY-2):
 
 ```json
 {
-  "mechanism_status": "observed | simulated | derived | asserted | contradicted"
+  "mechanism_status": "observed | simulated | derived | plausibility_checked | asserted | contradicted"
 }
 ```
 
-**Full taxonomy (DOC-001, documented cycle 33):**
+**Full taxonomy (DOC-001, documented cycle 33, revised cycle 56 per TAX-CONSISTENCY-2):**
 
 | State | Meaning | Discovery? | Simulation? | Source |
 |---|---|---|---|---|
 | **observed** | Reproduced experimentally (a real measurement confirmed it) | ✅ | ✅ | External reality |
 | **simulated** | Numerically simulated (a physics/chemistry model computed it) | ✅ | ✅ | Computation |
 | **derived** | Derived from first principles (a governing equation was solved analytically) | ✅ | ✅ | Analytical |
-| **asserted** | Described but not verified by any of the above three methods | ✅ (flagged) | ❌ | Text only |
+| **plausibility_checked** | Checked against a physical plausibility range (value falls in published range, but not computed from a formula). Weaker than derived. | ✅ | ❌ | Range check |
+| **asserted** | Described but not verified by any of the above methods | ✅ (flagged) | ❌ | Text only |
 | **contradicted** | Formula was executed, but the computed output does NOT match the stated expected output (GAP-002, cycle 33) | ❌ | ❌ | Actively wrong |
 
-Any mechanism lacking one of these five states is automatically
+Any mechanism lacking one of these six states is automatically
 downgraded to "asserted." An "asserted" mechanism cannot be used in
 simulation or prediction — only in hypothesis generation (flagged).
 A "contradicted" mechanism is excluded from everything — it is
-actively wrong, not merely unverified.
+actively wrong, not merely unverified. A "plausibility_checked"
+mechanism (cycle 56) is verified (passed a range check) but NOT
+simulation-capable (not derived from a formula) — it may be used in
+discovery and adjacency search, but not in causal simulation.
 
-**Edge tier mapping (DOC-002, documented cycle 33):**
+**Edge tier mapping (DOC-002, documented cycle 33, revised cycle 56):**
 
 The edge tier is derived from the mechanism status:
 
 | Mechanism Status | Edge Tier | Description |
 |---|---|---|
 | observed / simulated / derived | VERIFIED | Formula executed, matches evidence |
+| plausibility_checked | VERIFIED | Value checked against physical range (cycle 56) |
 | asserted | ASSERTED | Mechanism present, not yet evaluated |
 | (no mechanism) | ASSOCIATIVE | Keyword match, co-occurrence |
 | contradicted | CONTRADICTED | Formula executed, does NOT match (GAP-002) |
+
+**Simulation capability (cycle 56 clarification):**
+
+Only `observed`, `simulated`, and `derived` mechanisms may be used in
+causal simulation. `plausibility_checked` is VERIFIED tier (passed a
+check) but NOT simulation-capable (not computed from a formula). This
+distinguishes "checked against physical reality" from "computed from
+a formula" — both are stronger than `asserted`, but only the latter
+can be used for numerical propagation.
 
 **Default tolerances per formula (GAP-001, documented cycle 33):**
 

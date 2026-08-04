@@ -43,22 +43,32 @@ class EdgeTier(str, Enum):
 
 
 class MechanismStatus(str, Enum):
-    """The five states of mechanism validity (DR-15 revised, cycle 32).
+    """The six states of mechanism validity (DR-15 revised, cycle 56).
 
     A mechanism is not valid merely because it is described. It is
     valid only if it satisfies one of:
       - observed: reproduced experimentally
       - simulated: numerically simulated
       - derived: derived from first principles
+      - plausibility_checked: checked against a physical plausibility range
+        (weaker than derived — the value falls in a published physical range,
+        but was not computed from a formula). Added cycle 56 per TAX-CONSISTENCY-2.
       - asserted: described but not verified (weakest state)
       - contradicted: formula executed, does NOT match stated output (GAP-002)
 
-    Any mechanism lacking one of these five states is automatically
+    Any mechanism lacking one of these six states is automatically
     downgraded to "asserted."
+
+    Tier mapping (per MASTER_PROTOCOL.md DOC-002, revised cycle 56):
+      observed/simulated/derived/plausibility_checked → VERIFIED
+      asserted → ASSERTED
+      contradicted → CONTRADICTED
+      (no mechanism) → ASSOCIATIVE
     """
     OBSERVED = "observed"       # reproduced experimentally
     SIMULATED = "simulated"     # numerically simulated
     DERIVED = "derived"         # derived from first principles
+    PLAUSIBILITY_CHECKED = "plausibility_checked"  # checked against physical range (cycle 56, TAX-CONSISTENCY-2)
     ASSERTED = "asserted"       # described but not verified
     CONTRADICTED = "contradicted"  # formula executed, output does NOT match (GAP-002)
 

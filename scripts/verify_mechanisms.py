@@ -161,10 +161,14 @@ def verify_mechanisms_batch() -> dict:
 
     # Step 3: Apply plausibility verification to remaining ASSERTED edges
     # that have an expected_output but no formula reference.
-    # Per F-061: this is plausibility checking, not derivation.
-    # Edges that pass plausibility are promoted to VERIFIED with
-    # mechanism_status=ASSERTED (honest — we checked it's plausible,
-    # not that it's derived from a formula).
+    # Per F-061 + TAX-CONSISTENCY-2 (cycle 56): plausibility checking is
+    # weaker than formula derivation. Edges that pass plausibility are
+    # promoted to VERIFIED tier with mechanism_status=PLAUSIBILITY_CHECKED
+    # (NOT DERIVED — honest distinction: "checked against physical range"
+    # vs "computed from a formula").
+    # PLAUSIBILITY_CHECKED edges are VERIFIED (passed a check) but NOT
+    # simulation-capable (not derived from a formula). See MASTER_PROTOCOL.md
+    # DR-15 revised taxonomy (cycle 56).
     plausibility_promoted = 0
     plausibility_demoted = 0
     plausibility_details = []
@@ -178,13 +182,13 @@ def verify_mechanisms_batch() -> dict:
         plausible = verify_edge_plausibility(edge)
         if plausible:
             edge.tier = EdgeTier.VERIFIED
-            # mechanism_status stays ASSERTED (not DERIVED) — honest
+            edge.mechanism_status = MechanismStatus.PLAUSIBILITY_CHECKED  # cycle 56: honest status
             plausibility_promoted += 1
             plausibility_details.append({
                 "edge": f"{edge.source} → {edge.target}",
                 "expected_output": edge.expected_output,
                 "verification": "plausibility range check",
-                "promotion": "ASSERTED → VERIFIED (mechanism_status=ASSERTED)",
+                "promotion": "ASSERTED → VERIFIED (mechanism_status=PLAUSIBILITY_CHECKED)",
                 "reason": f"Value {edge.expected_output} for {edge.target} falls within plausible physical range",
             })
         else:

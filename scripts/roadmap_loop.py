@@ -187,14 +187,36 @@ def check_phase_2() -> Dict[str, Any]:
 
 def check_phase_3() -> Dict[str, Any]:
     """Phase 3: constraint discovery."""
-    # Not yet started
-    constraint_module = ROOT / "invention_compiler" / "constraint_module.py"
     checks = {
-        "constraint_module_exists": constraint_module.exists(),
-        "constraint_provenance_field": False,  # not yet implemented
-        "thirty_pct_derived": False,  # not yet implemented
+        "constraint_module_exists": (ROOT / "invention_compiler" / "constraint_module.py").exists(),
+        "constraint_provenance_field": False,
+        "thirty_pct_derived_or_measured": False,
     }
-    return {"met": False, "details": checks}
+    # Check if constraint_provenance field exists in constraint_module.py
+    try:
+        cm_code = (ROOT / "invention_compiler" / "constraint_module.py").read_text()
+        checks["constraint_provenance_field"] = "constraint_provenance" in cm_code
+        checks["_compute_provenance_exists"] = "_compute_provenance" in cm_code
+    except Exception:
+        pass
+    # Check if ≥30% of constraints are derived/measured (Phase 3 exit criterion)
+    # Run a quick test to compute provenance percentages
+    try:
+        from invention_compiler.constraint_module import ConstraintModule
+        cm = ConstraintModule({})
+        # Run analyze_layer4 with a test problem that exercises all constraint types
+        test_problem = {"constraints": list(cm.TOLERANCE_PRIORS.keys())}
+        test_layer3 = {"evidence": {"constraints_aggregated": list(cm.TOLERANCE_PRIORS.keys())}}
+        result = cm.analyze_layer4(test_problem, test_layer3)
+        pct = result.get("evidence", {}).get("provenance_pct", {})
+        derived_or_measured = pct.get("derived", 0) + pct.get("measured", 0)
+        checks["provenance_pct"] = pct
+        checks["thirty_pct_derived_or_measured"] = derived_or_measured >= 30.0
+    except Exception as e:
+        checks["provenance_error"] = str(e)
+    all_met = (checks["constraint_provenance_field"]
+               and checks["thirty_pct_derived_or_measured"])
+    return {"met": all_met, "details": checks}
 
 
 def check_phase_4() -> Dict[str, Any]:

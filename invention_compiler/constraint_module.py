@@ -448,24 +448,39 @@ class ConstraintModule:
         prior-map is used only as a fallback when no corpus-derived
         value exists. Each tolerance entry carries a `prior_map` flag
         indicating its derivation source.
+
+        Per cycle 56 (Phase 3, DR-26): each tolerance entry also carries
+        a `constraint_provenance` field (prior / derived / measured)
+        mirroring the EdgeTier pattern. This makes constraint provenance
+        machine-checkable — a future CI gate can fail if the percentage
+        of `prior`-provenance constraints exceeds a threshold.
         """
         constraints = constraint_layer3.get("evidence", {}).get(
             "constraints_aggregated", [])
         tolerances = {}
         corpus_derived_count = 0
         prior_map_count = 0
+        provenance_counts = {"prior": 0, "derived": 0, "measured": 0}
         for c in constraints:
             for kw in self.TOLERANCE_PRIORS.keys():
                 if kw in c and kw not in tolerances:
                     # Prefer corpus-derived tolerance if available
                     if kw in self.CORPUS_DERIVED_TOLERANCES:
-                        tolerances[kw] = self.CORPUS_DERIVED_TOLERANCES[kw]
+                        entry = dict(self.CORPUS_DERIVED_TOLERANCES[kw])
+                        # Per cycle 56: add constraint_provenance field
+                        # Corpus-derived = "measured" if it has a numeric value
+                        # from a real measurement, else "derived" if it has a
+                        # derivation_method, else "prior"
+                        entry["constraint_provenance"] = self._compute_provenance(entry)
+                        tolerances[kw] = entry
                         corpus_derived_count += 1
+                        provenance_counts[entry["constraint_provenance"]] += 1
                     else:
                         # Fallback to prior-map (flagged as placeholder)
                         tolerances[kw] = {
                             "value": self.TOLERANCE_PRIORS[kw],
                             "prior_map": True,
+                            "constraint_provenance": "prior",  # cycle 56
                             "source_patent_id": None,
                             "source_url": None,
                             "retrieval_date": None,
@@ -479,8 +494,13 @@ class ConstraintModule:
                             "kill_test": f"KT-F045-{kw}",
                         }
                         prior_map_count += 1
+                        provenance_counts["prior"] += 1
         # Subsystems: derived from the prerequisite chain's component
         # nodes — each component is a candidate subsystem.
+        total = max(1, len(tolerances))
+        provenance_pct = {
+            k: round(v / total * 100, 1) for k, v in provenance_counts.items()
+        }
         return {
             "tolerances": tolerances,
             "subsystems_provisional": [
@@ -491,12 +511,19 @@ class ConstraintModule:
                 "tolerance_count": len(tolerances),
                 "corpus_derived_count": corpus_derived_count,
                 "prior_map_count": prior_map_count,
+                "provenance_counts": provenance_counts,
+                "provenance_pct": provenance_pct,
             },
             "assumptions": [
                 f"{corpus_derived_count} tolerance(s) are corpus-derived "
                 f"from real USPTO/PCT patents (per F-045 / PR-21). "
                 f"{prior_map_count} tolerance(s) remain on the prior-map "
                 f"and must be replaced before commercial deployment.",
+                f"Constraint provenance (cycle 56): "
+                f"{provenance_pct['derived']}% derived, "
+                f"{provenance_pct['measured']}% measured, "
+                f"{provenance_pct['prior']}% prior. "
+                f"Phase 3 exit criterion: ≥30% derived or measured.",
                 "Subsystems are provisionally named after the constraints "
                 "they manage. This is a placeholder for a real "
                 "architecture decomposition.",
@@ -509,6 +536,33 @@ class ConstraintModule:
                 "prior-map values are placeholders)."
             ),
         }
+
+    @staticmethod
+    def _compute_provenance(entry: Dict[str, Any]) -> str:
+        """Compute constraint_provenance from an entry's fields.
+
+        Per cycle 56 (Phase 3, DR-26):
+          - "measured": entry has source_text with a numeric value
+            (the value was measured and reported in a real document)
+          - "derived": entry has derivation_method but no numeric value
+            (the value was derived from first principles or formulas)
+          - "prior": entry has prior_map=True or no source info
+            (the value is a keyword prior-map placeholder)
+
+        This mirrors the EdgeTier pattern: measured/derived are trustworthy,
+        prior is a flagged placeholder.
+        """
+        if entry.get("prior_map", False):
+            return "prior"
+        source_text = entry.get("source_text", "") or ""
+        # Check if the source_text contains a numeric value (measurement)
+        import re
+        has_number = bool(re.search(r'\d+\.?\d*', source_text))
+        if has_number:
+            return "measured"
+        if entry.get("derivation_method"):
+            return "derived"
+        return "prior"  # default: no source info → prior
 
     def analyze_layer6(self, problem: Dict[str, Any],
                         dependency_output: Dict[str, Any]) -> Dict[str, Any]:
