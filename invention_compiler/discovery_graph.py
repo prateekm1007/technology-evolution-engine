@@ -443,20 +443,15 @@ class DiscoveryGraph:
                 rt = RelationType.INTERVENTION
                 ev = Evidence(
                     provenance=str(edge.provenance),
-                    confidence=0.8,
                     source_count=len(edge.evidence) if edge.evidence else 1,
-                    observed=edge.mechanism_status == MechanismStatus.OBSERVED,
-                    simulated=edge.mechanism_status == MechanismStatus.SIMULATED,
-                    derived=edge.mechanism_status == MechanismStatus.DERIVED,
-                    experimental=edge.mechanism_status == MechanationStatus.OBSERVED,
+                    mechanism_status=edge.mechanism_status or MechanismStatus.DERIVED,
                 )
             elif edge.tier == EdgeTier.ASSERTED:
                 rt = RelationType.MECHANISM
                 ev = Evidence(
                     provenance=str(edge.provenance),
-                    confidence=0.3,
                     source_count=1,
-                    observed=False, simulated=False, derived=False, experimental=False,
+                    mechanism_status=MechanismStatus.ASSERTED,
                 )
             elif edge.tier == EdgeTier.ASSOCIATIVE:
                 rt = RelationType.ASSOCIATION
@@ -491,10 +486,8 @@ class DiscoveryGraph:
 
         ev = Evidence(
             provenance=f"EXP-001 experiment: {tracker.experiment_id}",
-            confidence=0.9 if tracker.step_5_closeness_value > 0 else 0.1,
             source_count=1,
-            observed=True,
-            experimental=True,
+            mechanism_status=MechanismStatus.OBSERVED if tracker.step_5_closeness_value and tracker.step_5_closeness_value > 0 else MechanismStatus.CONTRADICTED,
         )
 
         self.add_edge(DiscoveryEdge(
