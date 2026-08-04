@@ -49,3 +49,15 @@ jobs:
 
       - name: Gate 5 — Test suite
         run: python -m pytest tests/ -v --tb=short
+
+      - name: Gate 6 — Law 14: Foundation Continuity check
+        run: python scripts/check_continuity.py
+
+      - name: Gate 7 — DR-11: Phantom-Work detection
+        run: python scripts/check_phantom_work.py
+
+      - name: Gate 8 — DR-7: Formula execution verifier
+        run: python scripts/verify_formulas.py --json || true  # warnings OK, failures should be fixed
+
+      - name: Gate 9 — Prose consistency linter (DR-9)
+        run: python scripts/verify_prose_consistency.py product/PRODUCT.md || true  # warnings OK
