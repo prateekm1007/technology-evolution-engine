@@ -1658,3 +1658,222 @@ experiments that change the graph, failures that become training data.
 The governance is now sufficient. The code is now sufficiently honest.
 The remaining work is not more governance, not more code, not more
 intelligence. The remaining work is contact with reality.
+
+---
+
+## Verifier-Frontier Rules (DR-7 through DR-10)
+
+Per CEO directive: "These review principles have to be added to create
+a first-class product and are not entropy-inducing." The external audit
+of cycle 26 (PKG-VACFRIDGE-001 review) found 3 real findings that the
+Law 13 verifier did NOT catch — despite the verifier passing. The
+auditor's verdict: "The Law 13 verifier is doing real work on cost
+arithmetic. It just doesn't yet reach physics formulas or cross-document
+consistency."
+
+These 4 rules codify the verifier frontier — where the verifier currently
+stops and where it must reach. They are additive to the existing DR-1
+through DR-6 and do not modify any Law or the retraction mechanism.
+
+### DR-7: Formula execution (Law 13 extended from arithmetic to physics)
+
+> "Every package that derives a pass/fail threshold from a named
+> equation must ship that equation as a callable function alongside
+> the package, and the verifier calls it with the stated inputs and
+> diffs against the stated output." — External auditor, cycle 26
+
+The Law 13 verifier currently re-sums BOM rows and mass tables from raw
+numbers. It does NOT execute first-principles formulas (Stull wet-bulb,
+Stefan-Boltzmann radiative loss, PCM latent-heat sizing). A package can
+cite the Stull formula, hand-type a T_wb value, and the verifier will
+not catch a 7°C error in the hand-typed value (Finding 1 of cycle 26).
+
+**The rule:** every package that derives a pass/fail threshold from a
+named equation MUST ship that equation as a callable Python function in
+`scripts/formulas/{package_id}.py`. The verifier calls each function
+with the stated inputs and diffs against the stated output. Any diff >
+the stated tolerance blocks the PASS verdict.
+
+**Required formula registry (initial):**
+- `stull_wet_bulb(T, RH)` — the Stull 2011 wet-bulb formula
+- `stefan_boltzmann_radiative_cooling(epsilon, sigma, A, T_surface, T_sky)` — nocturnal radiant cooling
+- `pcm_latent_heat_sizing(Q_daily, L, margin)` — PCM mass sizing
+- `evaporative_cooling_limit(T, RH)` — wet-bulb as cooling floor
+
+**Enforcement:**
+- `scripts/verify_formulas.py` SHALL be a required CI gate (alongside
+  `scripts/verify_arithmetic.py`).
+- A package that cites a named equation without a callable function
+  is BLOCKED — the formula claim is unverifiable.
+- The verifier reads the package's stated inputs + stated output, calls
+  the function, and emits a diff. Any diff > tolerance blocks PASS.
+
+**This would have caught Finding 1 mechanically** (Stull T_wb for
+T=42°C, RH=25%: hand-typed 19°C, actual ≈25.8°C, diff ≈7°C).
+
+### DR-8: Traced-quantity registry (single source of truth)
+
+> "Build one generic 'traced quantity' registry per package — every
+> number that gets corrected gets a single canonical value, and every
+> other mention of it in the document is a reference to that canonical
+> value, not a re-typed literal. If the renderer can't resolve a
+> quantity to the registry, it doesn't get rendered." — External
+> auditor, cycle 26
+
+This is the second package in a row where a mid-document correction
+didn't propagate to every downstream mention (cycle 24: nitrogen
+capital $20,825 vs $21,575; cycle 26: PCM mass 1.2 kg vs 1.8 kg feeding
+a stale mass total of 7.6 kg instead of 8.20 kg). The auditor flags this
+as "a confirmed recurring bug, not a one-off."
+
+**The rule:** every package SHALL ship a `traced_quantities.json` file
+that registers every corrected quantity with a canonical value. Every
+other mention of that quantity in the package markdown is a reference
+(e.g., `{{pcm_mass}}`), not a re-typed literal. The renderer resolves
+references to the registry; an unresolvable reference blocks rendering.
+
+**Required registry schema:**
+```json
+{
+  "pcm_mass_kg": {
+    "canonical_value": 1.8,
+    "corrected_from": [0.7, 1.2, 1.8],
+    "correction_history": ["RT-009", "RT-010"],
+    "first_appears_in_section": "§3",
+    "final_value_in_section": "§8"
+  },
+  "cooperative_capital_usd": {
+    "canonical_value": 21575,
+    "corrected_from": [11500, 15500, 20825, 21575],
+    "correction_history": ["RT-NITRO-002"],
+    "first_appears_in_section": "§0",
+    "final_value_in_section": "§8"
+  }
+}
+```
+
+**Enforcement:**
+- `scripts/verify_traced_quantities.py` SHALL be a required CI gate.
+- The verifier scans the package markdown for numeric literals that
+  match a registered quantity's `corrected_from` values. Any match is
+  a STALE REFERENCE — the document cites an old value, not the canonical
+  one. This blocks PASS.
+- The verifier also checks that the mass stack-up, BOM total, and
+  energy budget all use the canonical values (not stale literals).
+
+**This would have caught Finding 2 mechanically** (mass stack-up at
+7.6 kg uses PCM mass 1.2 kg, but canonical value is 1.8 kg → expected
+8.20 kg, stale 7.6 kg flagged).
+
+### DR-9: Prose-consistency linter (count assertions verified against len())
+
+> "Cheap, mechanical, currently missing: any sentence that states a
+> count ('N of M lines are X') gets checked against an actual `len()`
+> of the referenced list at render time. This would have caught
+> Finding 3 for free." — External auditor, cycle 26
+
+The package at §8 line 434 states: "ESTIMATE count: 3 (BL-003, BL-007,
+BL-009, BL-011). 4 of 11 lines are ESTIMATED." The parenthetical lists
+4 items but says "count: 3." The next sentence correctly says 4. The
+pay-bar table elsewhere correctly says "4 ESTIMATED." The true count
+is right in one place and wrong four words earlier in another.
+
+**The rule:** any sentence in a package that asserts a count ("N of M
+lines are X", "count: N", "N items") SHALL be checked against the
+actual `len()` of the referenced list at render time. A mismatch blocks
+rendering.
+
+**Enforcement:**
+- `scripts/verify_prose_consistency.py` SHALL be a required pre-render
+  gate (alongside `scripts/verify_arithmetic.py` and
+  `scripts/verify_formulas.py`).
+- The linter scans for count-assertion patterns:
+  - `count:\s*(\d+)` followed by a parenthetical list
+  - `(\d+)\s+of\s+(\d+)\s+lines\s+are\s+(\w+)`
+  - `(\d+)\s+items`
+- For each match, the linter extracts the referenced list (e.g., BOM
+  rows with basis=ESTIMATED) and checks `len(list) == asserted_count`.
+- A mismatch is a BLOCKING error — the prose contradicts the data.
+
+**This would have caught Finding 3 mechanically** (parenthetical lists
+4 items, count says 3, len(bom_estimated) == 4 ≠ 3).
+
+### DR-10: One governing physical model per pass/fail decision
+
+> "Before a package's Final Verdict can cite a requirement as FAILED
+> for physical reasons (like R-008 here), the model that produced that
+> FAIL must be the same model used elsewhere in the package for the
+> actual thermal/mass/energy budget — not a separate justification
+> that was never wired into the rest of the design." — External
+> auditor, cycle 26
+
+The vaccine fridge package cites two different physical models:
+1. The Stull wet-bulb model (§2 climate table) — drives the R-008 FAIL
+   verdict for humid tropics.
+2. The radiant + PCM thermal balance model (§5) — drives every other
+   number in the document (PCM sizing, mass, energy budget, cost).
+
+These two models are never reconciled. The R-008 FAIL verdict derives
+from the wet-bulb model alone, not from the radiant+PCM model that
+actually sizes the system. This is a documentation-discipline failure:
+the model that is load-bearing for the FAIL verdict is not the model
+that is load-bearing for the design.
+
+**The rule:** before a Final Verdict can cite a requirement as FAILED
+for physical reasons, the package MUST demonstrate that the FAIL
+derives from the same model used elsewhere for the thermal/mass/energy
+budget. If two different physical models are cited, the package MUST
+either:
+- (a) Re-derive the FAIL from the load-bearing model (the one that
+  sized the system), with the secondary model demoted to supporting
+  evidence; OR
+- (b) Explicitly document why two models are needed and how they
+  relate (e.g., "the wet-bulb model governs evaporative cooling's
+  contribution; the radiant+PCM model governs the total thermal
+  balance; the FAIL derives from the combined model, not from
+  wet-bulb alone").
+
+**Enforcement:**
+- This is a documentation-discipline rule, not a mechanical linter.
+  It is enforced by the adversarial review (Phase 4) — each reviewer
+  MUST check that the FAIL verdict derives from the load-bearing model.
+- A package that cites two unreconciled physical models for the same
+  decision is BLOCKED at the adversarial review phase.
+- The `prior_art_search: PROVISIONAL` flag pattern (from DR-4) is
+  extended: a package with unreconciled models carries a
+  `model_reconciliation: PENDING` flag until the reconciliation is
+  documented.
+
+**This would have caught Finding 1 at the design level** (the wet-bulb
+model and the radiant+PCM model are never reconciled; the R-008 FAIL
+derives from the wet-bulb model alone).
+
+---
+
+## The verifier frontier (summary)
+
+The Law 13 verifier currently catches:
+- BOM arithmetic (sum of line items = stated total) ✅
+- Mass stack-up arithmetic (sum of component masses = stated total) ✅
+- Basis counts (QUOTED/CATALOG/ESTIMATED tally) ✅
+- Benchmark scores (self-reported = independently-derived) ✅ (F-044)
+
+The Law 13 verifier does NOT yet catch:
+- Physics formula execution (Stull, Stefan-Boltzmann, PCM latent heat) ❌ → DR-7
+- Cross-document quantity drift (same number in two places, stale) ❌ → DR-8
+- Prose-count contradictions ("count: 3" when 4 items listed) ❌ → DR-9
+- Model-reconciliation failures (FAIL verdict from wrong model) ❌ → DR-10
+
+The verifier frontier is the boundary between what the verifier catches
+and what it doesn't. DR-7 through DR-10 extend the frontier to cover
+the 3 findings from cycle 26. Each new rule closes a specific class of
+error that the verifier currently misses.
+
+The trend line (auditor's instruction 5): three packages in, the
+pattern is "real math verified, physics/cross-reference layer still
+leaking." This is now a documented trend, not a one-off. The verifier
+frontier is advancing (arithmetic → formulas → traced quantities →
+prose consistency → model reconciliation), and each advance closes a
+class of error permanently. This is the moat: a system that publishes
+its verifier frontier honestly is more trustworthy than one that claims
+zero errors.

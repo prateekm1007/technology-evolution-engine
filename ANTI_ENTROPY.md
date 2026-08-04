@@ -1174,3 +1174,113 @@ honest. The remaining work is not more machinery — it is reality
 contact. The shortest path from 6/10 to 9/10 is not more code; it is
 a human mixing citric acid and baking soda, measuring the pH, and
 reporting the reading (EXP-001, $20, 1 day, kitchen-accessible).
+
+---
+
+## Verifier-frontier anti-entropy (added post-Phase-16 external audit, 2026-08-04, cycle 26)
+
+Per CEO directive: "These review principles have to be added to create
+a first-class product and are not entropy-inducing." The external audit
+of cycle 26 (PKG-VACFRIDGE-001 review) found 3 real findings that the
+Law 13 verifier did NOT catch — despite the verifier passing. The
+auditor's verdict: "The Law 13 verifier is doing real work on cost
+arithmetic. It just doesn't yet reach physics formulas or cross-document
+consistency."
+
+This section codifies 4 anti-entropy rules that extend the verifier
+frontier. Each closes a specific class of error the verifier currently
+misses.
+
+### Anti-entropy rule: formula execution, not hand-typed algebra (DR-7)
+
+A package that cites a named physics formula (Stull wet-bulb, Stefan-
+Boltzmann, PCM latent heat) and hand-types the output is entropy —
+the hand-typed value can be wrong by 7°C (Finding 1 of cycle 26) and
+the verifier will not catch it. The fix: ship every formula as a callable
+function; the verifier calls it and diffs against the stated output.
+
+This is the same principle as Law 13 (independent recomputation) extended
+from arithmetic to physics. A hand-typed formula output is the physics
+equivalent of a hand-typed BOM total — both can be wrong, both must be
+independently recomputed by a separate code path.
+
+### Anti-entropy rule: traced quantities, not re-typed literals (DR-8)
+
+A number that appears in two places in a document and drifts between
+them is entropy — the same quantity has two values, and the reader
+cannot tell which is correct. The cycle-24 nitrogen package had capital
+$20,825 vs $21,575 (stale). The cycle-26 vaccine fridge package had
+PCM mass 1.2 kg vs 1.8 kg feeding a stale mass total of 7.6 kg instead
+of 8.20 kg. This is "a confirmed recurring bug, not a one-off" (auditor).
+
+The fix: a traced-quantity registry per package. Every corrected number
+gets a canonical value; every other mention is a reference
+(`{{pcm_mass}}`), not a re-typed literal. The renderer resolves
+references; an unresolvable reference blocks rendering. This closes both
+instances at once instead of patching them per package.
+
+### Anti-entropy rule: prose-count consistency (DR-9)
+
+A sentence that asserts a count ("N of M lines are X") and contradicts
+the actual `len()` of the referenced list is entropy — the prose lies
+about the data. The cycle-26 package said "ESTIMATE count: 3" but listed
+4 items in the parenthetical, then correctly said "4 of 11" in the next
+sentence. The true count was right in one place and wrong four words
+earlier in another.
+
+The fix: a prose-consistency linter that checks every count assertion
+against the actual `len()` of the referenced list. This is "cheap,
+mechanical, currently missing" (auditor). It would have caught Finding
+3 for free.
+
+### Anti-entropy rule: one governing model per decision (DR-10)
+
+A package that cites two different physical models for the same
+pass/fail decision, with only one of them driving the verdict, is
+entropy — the reader cannot tell which model is load-bearing. The
+cycle-26 vaccine fridge package cited the Stull wet-bulb model for
+R-008's FAIL verdict, but the radiant+PCM thermal balance model (which
+sized every other number in the document) was never connected to the
+FAIL. The wet-bulb model was a separate justification, never wired
+into the rest of the design.
+
+The fix: before a Final Verdict can cite a requirement as FAILED for
+physical reasons, the FAIL must derive from the same model used
+elsewhere for the thermal/mass/energy budget. If two models are cited,
+they must be reconciled. This is a documentation-discipline rule enforced
+by the adversarial review (Phase 4).
+
+### AP-11 test for these rules
+
+Per AP-11 (bureaucracy prevention), each new rule must eliminate more
+entropy than the complexity of having one more rule. The CEO has
+confirmed these rules pass the test. The complexity cost: 4 new DRs
+(DR-7 through DR-10) + 3 new failure records (F-051, F-052, F-053) +
+1 new verifier script (`scripts/verify_prose_consistency.py`). The
+entropy eliminated:
+- Hand-typed physics formula outputs that can be wrong by 7°C (DR-7)
+- Cross-document quantity drift — a confirmed recurring bug across 2
+  packages (DR-8)
+- Prose-count contradictions — "count: 3" when 4 items listed (DR-9)
+- Unreconciled physical models driving FAIL verdicts (DR-10)
+
+Net entropy reduction: positive. Rules approved.
+
+### The moat: publishing the verifier frontier
+
+The auditor's instruction 5: "Three packages in, the pattern of 'real
+math verified, physics/cross-reference layer still leaking' is now a
+documented trend, not a one-off. That's exactly the kind of finding
+worth publishing as part of the public layer-status/retraction dashboard
+— a public trend line showing arithmetic-error rate declining across
+package generations while flagging where the frontier of the remaining
+gap actually sits."
+
+This is the moat. A system that publishes its verifier frontier honestly
+— "we catch arithmetic, we don't yet catch physics formulas" — is more
+trustworthy than one that claims zero errors. The verifier frontier
+section in MASTER_PROTOCOL.md (§"The verifier frontier (summary)") is
+the internal version of this dashboard. The public version (when built)
+will show the trend line: arithmetic errors declining (F-043, F-044
+closed), physics/cross-reference errors still open (F-048 through F-053),
+and the frontier advancing with each new DR rule.

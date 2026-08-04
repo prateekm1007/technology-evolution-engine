@@ -1449,3 +1449,220 @@ The shortest path from 6/10 to 9/10 is not more code. It is a human
 mixing citric acid and baking soda, measuring the pH, and reporting
 the reading. That closes F-046, F-050, and the first closed learning
 loop (PR-23) — all in one $20 experiment.
+
+---
+
+### F-051 — Wet-bulb table disconnected from governing thermal model (P1, audit — PKG-VACFRIDGE-001)
+
+**Found:** external audit dated 2026-08-04 (cycle 26, PKG-VACFRIDGE-001 review).
+**Repro:**
+```bash
+cd /home/z/my-project/audit/repo
+git show 95a1673:product/PRODUCT.md > /tmp/vacfridge.md
+# Finding 1: the wet-bulb table (§2) drives R-008's FAIL verdict,
+# but the radiant+PCM thermal balance (§5) sizes every other number.
+# The two models are never reconciled.
+
+grep -n "T_wb\|wet.bulb\|Stull" /tmp/vacfridge.md | head -5
+# Line 94: "The minimum temperature achievable by evaporation is the wet-bulb temperature (T_wb):"
+# Line 97-99: Stull formula (hand-typed, not executed as code)
+# Line 109-115: climate table with hand-typed T_wb values
+# Line 344: "In humid tropical climates (T=32°C, RH=85%, T_wb=29°C)... R-008 FAILS."
+
+grep -n "radiant\|PCM.*mass\|thermal balance\|Q_cooling\|Q_heat" /tmp/vacfridge.md | head -10
+# Line 155: "PCM thermal storage:"
+# Line 183: "m_pcm = 529,200 / 180,000 = 2.94 kg → 3 kg PCM needed"
+# The radiant+PCM model sizes the PCM, mass, energy budget — but is
+# never connected to the R-008 FAIL verdict.
+```
+
+**Observed:** The package cites two different physical models:
+1. The Stull wet-bulb model (§2 climate table) — drives the R-008 FAIL
+   verdict for humid tropics.
+2. The radiant + PCM thermal balance model (§5) — drives every other
+   number in the document (PCM sizing, mass, energy budget, cost).
+
+These two models are never reconciled. The R-008 FAIL verdict derives
+from the wet-bulb model alone, not from the radiant+PCM model that
+actually sizes the system.
+
+**Independent recomputation (auditor):** the auditor hand-recomputed
+the Stull formula for the Arid case (T=42°C, RH=25%) and got T_wb ≈
+25.8°C, not the stated 19°C — a 7°C gap. The auditor flags this "with
+real but limited confidence (hand trig carries error), but the gap is
+large enough, and the reasoning-model disconnect underneath it is clear
+enough regardless of the exact number."
+
+**Root cause:** The wet-bulb table was written early (§2) as a
+justification for why evaporative cooling alone is insufficient. The
+radiant+PCM model was developed later (§5) as the actual system design.
+The two were never reconciled — the wet-bulb table remained the sole
+gate for R-008, even though the radiant+PCM model is the one that
+sizes every other number.
+
+**Severity:** P1 — the R-008 FAIL verdict (which gates the package's
+humid-tropics deployment) derives from a model that is not load-bearing
+for the design. If the radiant+PCM model were used to re-derive R-008,
+the FAIL might still hold (humid tropics likely still fail), but it
+needs to fail for the right reason — on the model that actually governs
+the system.
+
+**Status:** OPEN. Definition of done per DR-10:
+1. The R-008 FAIL verdict is re-derived from the radiant+PCM thermal
+   balance model (the one that sizes the PCM, mass, energy budget).
+2. The wet-bulb model is demoted to supporting evidence for why
+   evaporative cooling's contribution shrinks in humidity — not the
+   sole gate.
+3. The reconciliation is documented in the package (either the FAIL
+   derives from the combined model, or two models are explicitly
+   related).
+
+**Downstream claims blocked:** 1 layer (7 — Invention) — a package
+that cites unreconciled physical models cannot honestly claim its
+verdict is physically grounded.
+
+**Lesson:** A package that cites two different physical models for the
+same pass/fail decision, with only one driving the verdict, is entropy
+(DR-10). The model that is load-bearing for the FAIL must be the model
+that is load-bearing for the design. The fix is reconciliation, not
+redesign — the engineering conclusion may survive, but it must survive
+on the right model.
+
+### F-052 — Mass stack-up drift (PCM mass corrected 0.7→1.2→1.8 kg, mass total not recomputed) (P2, audit — PKG-VACFRIDGE-001)
+
+**Found:** external audit dated 2026-08-04 (cycle 26, PKG-VACFRIDGE-001 review).
+**Repro:**
+```bash
+cd /home/z/my-project/audit/repo
+git show 95a1673:product/PRODUCT.md > /tmp/vacfridge.md
+# Finding 2: PCM mass corrected twice (0.7→1.2→1.8 kg), but mass stack-up
+# only recomputed once (using 1.2 kg → 7.6 kg). Final BOM uses 1.8 kg.
+
+grep -n "0.7 kg\|1.2 kg\|1.8 kg\|7.6 kg\|8.20\|mass stack" /tmp/vacfridge.md
+# Line 188: "m_pcm = 120,960 / 180,000 = 0.67 kg → 0.7 kg PCM needed" (§3/§5 initial)
+# Line 285: "Corrected PCM mass: 1.2 kg" (§5 correction)
+# Line 327: "Mass | 3.5+0.90+0.80+1.2+0.30+0.15+0.25+0.10+0.30+0.02+0.08 = 7.6 kg" (uses 1.2 kg)
+# Line 430: "Use 1.8 kg PCM instead of 2.0 kg" (§8 final BOM)
+# Line 476: "Replacement: 1.8 kg PCM" (§9 retraction)
+# The mass stack-up at line 327 is NEVER recomputed with 1.8 kg.
+```
+
+**Observed:** PCM mass gets corrected twice:
+- 0.7 kg (§3/§5 initial)
+- 1.2 kg (§5 correction, line 285)
+- 1.8 kg (§8 final BOM, line 430)
+
+The mass stack-up is recomputed once, to 7.6 kg, using the *middle*
+value (1.2 kg, line 327). It's never recomputed against the final 1.8 kg.
+
+**Independent recomputation (auditor):** with 1.8 kg PCM (not 1.2 kg),
+the mass stack-up should be 7.6 kg + (1.8 - 1.2) = 7.6 + 0.6 = **8.20 kg**,
+not 7.6 kg. The Typed Status block at the end never reports a final mass
+at all.
+
+**Root cause:** Same failure mode as the nitrogen package's capital drift
+(F-043's sibling): a downstream figure gets corrected (PCM mass 1.2 →
+1.8 kg), and the correction doesn't propagate to every place that number
+appears (the mass stack-up at line 327 still uses 1.2 kg). The Law 13
+verifier catches arithmetic errors but not cross-document consistency —
+the mass stack-up at 7.6 kg is arithmetically correct for 1.2 kg PCM,
+but 1.2 kg is no longer the canonical value.
+
+**Severity:** P2 — the mass total is wrong by 0.6 kg (8%), but mass is
+not a headline number for this package (cost is). Still, it's a
+truthfulness miss: the package claims "all budgets reconcile" (line 660)
+but the mass budget does NOT reconcile with the final PCM mass.
+
+**Status:** OPEN. Definition of done per DR-8:
+1. The package ships a `traced_quantities.json` with `pcm_mass_kg`
+   canonical value = 1.8.
+2. The mass stack-up at line 327 is recomputed: 7.6 kg + 0.6 kg = 8.20 kg.
+3. The Typed Status block reports the final mass (8.20 kg).
+4. The verifier `scripts/verify_traced_quantities.py` catches the stale
+   1.2 kg reference in the mass stack-up.
+
+**Downstream claims blocked:** none directly (mass is not a headline
+number), but the pattern (cross-document quantity drift) is a
+confirmed recurring bug (2nd package in a row).
+
+**Lesson:** A number that appears in two places in a document and drifts
+between them is entropy (DR-8). The fix is a traced-quantity registry:
+every corrected number gets a canonical value; every other mention is
+a reference. This closes the recurring bug at the root, not per package.
+
+### F-053 — Count self-contradiction in §8 ("count: 3" but 4 items listed) (P3, audit — PKG-VACFRIDGE-001)
+
+**Found:** external audit dated 2026-08-04 (cycle 26, PKG-VACFRIDGE-001 review).
+**Repro:**
+```bash
+cd /home/z/my-project/audit/repo
+git show 95a1673:product/PRODUCT.md > /tmp/vacfridge.md
+grep -n "ESTIMATE count\|4 of 11" /tmp/vacfridge.md
+# Line 434: "**ESTIMATE count:** 3 (BL-003, BL-007, BL-009, BL-011). 4 of 11 lines are ESTIMATED."
+# The parenthetical lists FOUR items (BL-003, BL-007, BL-009, BL-011)
+# but says "count: 3." The next sentence correctly says "4 of 11."
+```
+
+**Observed:** §8 line 434 states:
+> "ESTIMATE count: 3 (BL-003, BL-007, BL-009, BL-011). 4 of 11 lines are ESTIMATED."
+
+The parenthetical lists 4 items (BL-003, BL-007, BL-009, BL-011) but
+says "count: 3." The next sentence correctly says "4 of 11." The
+pay-bar table elsewhere (#6) correctly says "4 ESTIMATED." So the true
+count (4) is right in one place and wrong four words earlier in another.
+
+**Root cause:** The sentence was likely written when there were 3
+ESTIMATED items, then a 4th was added (BL-011 Assembly labor) without
+updating the "count: 3" prefix. The next sentence ("4 of 11") was
+updated; the prefix was not. This is the cheapest possible thing to
+catch mechanically and it wasn't.
+
+**Severity:** P3 — small, but it's a truthfulness miss. The package
+contradicts itself within the same sentence. A reader who notices this
+loses trust in the document's internal consistency.
+
+**Status:** OPEN. Definition of done per DR-9:
+1. The prose-consistency linter (`scripts/verify_prose_consistency.py`)
+   checks every count assertion against the actual `len()` of the
+   referenced list.
+2. The linter catches "count: 3" when `len(bom_estimated) == 4`.
+3. The package is corrected: "ESTIMATE count: 4 (BL-003, BL-007,
+   BL-009, BL-011). 4 of 11 lines are ESTIMATED."
+
+**Downstream claims blocked:** none — this is a prose-consistency
+issue, not a physics or arithmetic issue.
+
+**Lesson:** A sentence that asserts a count and contradicts the actual
+`len()` of the referenced list is entropy (DR-9). The fix is cheap and
+mechanical: a prose-consistency linter that checks count assertions
+against the data. This would have caught Finding 3 for free.
+
+---
+
+## Updated failure prioritization (per PR-25 — single-highest-leverage-fix rule, post-cycle 26)
+
+As of 2026-08-04 (post-cycle 26), the failures ranked by `downstream_claims_blocked`:
+
+| Failure | Severity | Layers blocked | Status | Priority |
+|---|---|---|---|---|
+| F-048 (simulation perturbs scores) | P1 | 4 (6, 7, 8, 9) | OPEN | 1 — highest leverage (auditor's "most important discovery") |
+| F-049 (parser = words, not mechanisms) | P1 | 1 (7) → 8 | OPEN | 2 — unblocks DR-4 novelty claims |
+| F-050 (predictions retrospective) | P1 | 1 (8) → 9 | OPEN | 3 — unblocks discovery + learning |
+| F-051 (wet-bulb table disconnected from governing model) | P1 | 1 (7) | **OPEN** (cycle 26) | 4 — unblocks DR-10 model reconciliation |
+| F-052 (mass stack-up drift — recurring bug) | P2 | 0 (truthfulness) | **OPEN** (cycle 26) | 5 — unblocks DR-8 traced quantities |
+| F-053 (count self-contradiction) | P3 | 0 (truthfulness) | **OPEN** (cycle 26) | 6 — unblocks DR-9 prose linter |
+| F-046 (experimentation never executed) | P1 | 5 (5, 6, 7, 8, 9) | PARTIALLY RESOLVED (scoping complete) | 7 — execution requires reality (PR-26) |
+| F-043 (fabricated patents) | P1 | 4 (1, 2, 7, 8) | RESOLVED | closed |
+| F-044 (self-graded benchmark) | P1 | 1 (3) | RESOLVED | closed |
+| F-045 (prior-map tolerances) | P2 | 1 (4) | RESOLVED (10/10) | closed |
+| F-047 (fabricated papers) | P2 | 4 (1, 2, 7, 8) | RESOLVED | closed |
+
+**Current state:** F-043, F-044, F-045, F-047 fully RESOLVED. F-046 PARTIALLY RESOLVED (scoping complete; execution requires reality). F-048, F-049, F-050, F-051, F-052, F-053 are OPEN (the verifier-frontier findings from cycles 25-26).
+
+**The verifier frontier trend (auditor's instruction 5):**
+- Cycle 22: arithmetic errors declining (F-043, F-044, F-047 closed)
+- Cycle 24: prior-map tolerances closed (F-045, 10/10)
+- Cycle 25: discovery-layer findings (F-048 simulation, F-049 parser, F-050 predictions)
+- Cycle 26: verifier-frontier findings (F-051 model reconciliation, F-052 quantity drift, F-053 prose count)
+
+The frontier is advancing: arithmetic → formulas → traced quantities → prose consistency → model reconciliation. Each advance closes a class of error permanently. The remaining gap (physics-formula execution, cross-document reconciliation) is where the verifier needs to reach next.

@@ -86,6 +86,9 @@ ALLOWED_MODIFICATIONS = frozenset({
     "tests/test_f046_experimentation_scoping.py",
     # F-047: paper corpus remediation (same pattern as F-043)
     "tests/test_f047_paper_corpus.py",
+    # F-053 / DR-9: prose-consistency linter (catches count contradictions)
+    "scripts/verify_prose_consistency.py",
+    "tests/test_verify_prose_consistency.py",
     # Self-audit fixes: product enforcement tests + CI updates
     "tests/test_product_enforcement.py",
     "product/PRODUCT.md",  # canonical source for the customer-facing PDF
