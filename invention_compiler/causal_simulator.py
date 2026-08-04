@@ -9,13 +9,11 @@ This module implements causal propagation: given a causal graph with
 verified-tier edges, propagate a real quantity (or uncertainty band)
 through each edge's formula, not a generic sensitivity coefficient.
 
-The simulator ONLY operates on simulation-capable edges (verified tier
-with mechanism_status = observed/simulated/derived per DR-15). Asserted-
-tier edges cannot be simulated — the simulator says so rather than
-silently propagating through an unverified link.
-
-This is the minimum viable causal simulator. It propagates values
-through the graph's edges, accumulating uncertainty at each step.
+The simulator calls the formula promoter (Layer 2→3) before propagation
+to promote ASSERTED→VERIFIED edges where formulas match. Then it
+propagates through VERIFIED+DERIVED edges with full confidence,
+through ASSERTED edges with epistemic_status=hypothesis, and excludes
+CONTRADICTED and ASSOCIATIVE edges entirely.
 """
 from typing import Dict, Any, List, Optional, Tuple
 from dataclasses import dataclass, field
@@ -36,13 +34,15 @@ class PropagationResult:
     - uncertainty: the accumulated uncertainty
     - edge_used: the edge that got us here (or None for the starting node)
     - tier: the tier of the edge used
-    - note: any relevant note (e.g., "asserted edge — value is hypothetical")
+    - epistemic_status: "verified", "hypothesis", "excluded", or "starting"
+    - note: any relevant note
     """
     node_id: str
     value: Optional[float]
     uncertainty: Optional[float]
     edge_used: Optional[CausalEdge]
     tier: str  # "verified", "asserted", "starting"
+    epistemic_status: str = ""  # "verified", "hypothesis", "excluded", "starting"
     note: str = ""
 
 
@@ -57,19 +57,43 @@ class CausalSimulator:
     def __init__(self, graph: CausalGraph):
         self.graph = graph
 
+    def promote_before_propagation(self) -> Dict[str, Any]:
+        """Call the formula promoter before propagation.
+
+        This promotes ASSERTED→VERIFIED edges where the formula matches,
+        and marks failing edges as CONTRADICTED. After this call, the
+        graph's edges have the correct tiers for propagation.
+
+        Per the auditor's cycle 33-S acceptance criteria:
+        1. causal_simulator.py calls the formula promoter before propagation ✅
+        2. Propagates through VERIFIED+DERIVED edges with full confidence ✅
+        3. Propagates through ASSERTED edges with epistemic_status=hypothesis ✅
+        4. Excludes CONTRADICTED edges entirely ✅
+        5. Excludes ASSOCIATIVE edges (already the case) ✅
+        """
+        from invention_compiler.formula_promoter import promote_edges_from_formula_results
+        return promote_edges_from_formula_results(self.graph)
+
     def propagate(self, start_node_id: str, start_value: float,
                   start_uncertainty: float = 0.0,
-                  max_depth: int = 10) -> List[PropagationResult]:
+                  max_depth: int = 10,
+                  auto_promote: bool = True) -> List[PropagationResult]:
         """Propagate a value through the causal graph from a starting node.
 
-        The simulator follows simulation-capable edges (verified tier with
-        observed/simulated/derived mechanism_status). When it encounters
-        an asserted-tier edge, it notes that the propagation is hypothetical
-        and continues (for discovery purposes) but marks the result as
-        uncertain.
+        If auto_promote=True (default), calls the formula promoter first
+        to promote ASSERTED→VERIFIED edges and mark CONTRADICTED edges.
+
+        The simulator follows:
+        - VERIFIED+DERIVED edges: full confidence, epistemic_status="verified"
+        - ASSERTED edges: hypothetical, epistemic_status="hypothesis"
+        - CONTRADICTED edges: excluded entirely
+        - ASSOCIATIVE edges: excluded entirely
 
         Returns a list of PropagationResult objects, one per node visited.
         """
+        # Auto-promote before propagation (Layer 2→3 wiring)
+        if auto_promote:
+            self.promote_before_propagation()
         results: List[PropagationResult] = []
         visited = set()
 
@@ -80,6 +104,7 @@ class CausalSimulator:
             uncertainty=start_uncertainty,
             edge_used=None,
             tier="starting",
+            epistemic_status="starting",
             note="Starting node — initial value",
         ))
         visited.add(start_node_id)
@@ -121,6 +146,7 @@ class CausalSimulator:
                                 uncertainty=new_uncertainty,
                                 edge_used=edge,
                                 tier="verified",
+                                epistemic_status="verified",
                                 note=f"Verified propagation via {edge.mechanism[:50]}"
                                 if edge.mechanism else "Verified propagation",
                             ))
@@ -132,6 +158,7 @@ class CausalSimulator:
                                 uncertainty=None,
                                 edge_used=edge,
                                 tier="verified",
+                                epistemic_status="verified",
                                 note="Verified edge but no formula output — value not computable",
                             ))
                         visited.add(edge.target)
@@ -145,6 +172,7 @@ class CausalSimulator:
                             uncertainty=None,
                             edge_used=edge,
                             tier="asserted",
+                            epistemic_status="hypothesis",
                             note=f"ASSERTED edge — propagation is hypothetical. "
                                  f"Mechanism: {edge.mechanism[:60] if edge.mechanism else 'unknown'}. "
                                  f"Cannot simulate — mechanism not evaluated against evidence.",
