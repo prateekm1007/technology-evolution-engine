@@ -106,12 +106,16 @@ class DiscoveryEdge:
     - relation_type: which of the 6 layers this edge belongs to
     - evidence: Evidence object (replaces scalar weight)
     - metadata: layer-specific data (e.g., mechanism string, intervention spec)
+    - falsifiable_by: how to falsify this edge (Popper test, DR-23)
+    - direction: INCREASES/DECREASES/CAUSES/ENABLES (Altshuller, DR-23)
     """
     source: str
     target: str
     relation_type: RelationType
     evidence: Evidence
     metadata: Dict[str, Any] = field(default_factory=dict)
+    falsifiable_by: Optional[str] = None
+    direction: Optional[str] = None  # "increases", "decreases", "causes", "enables"
 
     def to_dict(self) -> Dict[str, Any]:
         d = asdict(self)
@@ -469,6 +473,8 @@ class DiscoveryGraph:
                 relation_type=rt,
                 evidence=ev,
                 metadata={"mechanism": edge.mechanism} if edge.mechanism else {},
+                falsifiable_by=getattr(edge, 'falsifiable_by', None),
+                direction=edge.direction if hasattr(edge, 'direction') else None,
             ))
 
     def import_experiment_result(self, tracker):
@@ -786,7 +792,11 @@ class AltshullerContradictionSearch:
                 if edge.source not in node_effects:
                     node_effects[edge.source] = {}
                 direction = "unknown"
-                if "increases" in str(edge.metadata).lower():
+                # Check direction field first (populated by edge extractor)
+                if hasattr(edge, 'direction') and edge.direction:
+                    direction = edge.direction
+                # Also check metadata for "increases"/"decreases"
+                elif "increases" in str(edge.metadata).lower():
                     direction = "increases"
                 elif "decreases" in str(edge.metadata).lower():
                     direction = "decreases"

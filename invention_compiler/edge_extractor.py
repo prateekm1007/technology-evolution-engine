@@ -156,6 +156,14 @@ class EdgeExtractor:
          'biodegradable_packaging', 'Biodegradable packaging'),
     ]
 
+    # Direction patterns: INCREASES/DECREASES for Altshuller contradiction search
+    DIRECTION_PATTERNS = [
+        (r'(?:increases?|enhances?|improves?|boosts?|raises?|elevates?)\s+(\w+)', 'increases'),
+        (r'(?:decreases?|reduces?|lowers?|diminishes?|degrades?|drops?)\s+(\w+)', 'decreases'),
+        (r'(\w+)\s+(?:increases?|enhances?|improves?)', 'increases'),
+        (r'(\w+)\s+(?:decreases?|reduces?|lowers?)', 'decreases'),
+    ]
+
     def __init__(self):
         self.compiled_materials = [(re.compile(p, re.IGNORECASE), nid, label)
                                     for p, nid, label in self.MATERIAL_PATTERNS]
@@ -167,6 +175,8 @@ class EdgeExtractor:
                                         for p, mid, mlabel in self.MANUFACTURING_PATTERNS]
         self.compiled_applications = [(re.compile(p, re.IGNORECASE), aid, alabel)
                                         for p, aid, alabel in self.APPLICATION_PATTERNS]
+        self.compiled_directions = [(re.compile(p, re.IGNORECASE), direction)
+                                     for p, direction in self.DIRECTION_PATTERNS]
 
     def extract(self, text: str, source_id: str, source_url: str = "",
                 retrieval_date: str = "") -> CausalGraph:
@@ -357,6 +367,25 @@ class EdgeExtractor:
                         if edge.what_does_this_change:
                             changes.add(edge.what_does_this_change)
                 node.what_does_this_change = list(changes)
+
+        # 6. Extract direction metadata (INCREASES/DECREASES) for Altshuller
+        direction_map = {}  # target_node → direction
+        for pattern, direction in self.compiled_directions:
+            for m in pattern.finditer(text):
+                target = m.group(1).lower() if m.lastindex else None
+                if target:
+                    # Map the word to a known node ID
+                    for nid in graph.nodes:
+                        if target in nid.lower() or target in graph.nodes[nid].label.lower():
+                            direction_map[nid] = direction
+
+        # Annotate edges with direction
+        for edge in graph.edges:
+            if edge.target in direction_map:
+                edge.direction = direction_map[edge.target]
+            elif not hasattr(edge, 'direction') or edge.direction is None:
+                # Keep the existing direction from the edge creation
+                pass
 
         return graph
 

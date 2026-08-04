@@ -171,13 +171,25 @@ class TestRevisedAcidTestDemonstration:
         assert True
 
     def test_8_arthur_merged_with_swanson(self, corpus_graph):
-        """Arthur: Same algorithm as Swanson — not a separate test."""
+        """Arthur: MERGED with Swanson (cycle 43 audit acknowledged they are the same).
+        
+        Per cycle 42 audit: 'If Arthur and Swanson return the same results,
+        they are not separate tests — they are the same test with different names.'
+        Per cycle 43 audit: honestly merge.
+        
+        Arthur's adjacent-possible IS Swanson's bridge detection.
+        The difference (combinatorial reachability vs literature disconnect)
+        is a distinction that requires a different algorithm, not the same
+        algorithm with a different name.
+        """
         bridges = SwansonBridgeSearch.search(corpus_graph)
-        print(f"\n  ARTHUR: INCOMPLETE — same algorithm as Swanson ({len(bridges)} results), not separate")
-        assert True
+        print(f"\n  ARTHUR: MERGED with Swanson ({len(bridges)} results)")
+        print("  Arthur and Swanson are the SAME test. Arthur is not separate.")
+        print("  DR-23 should be updated to reflect 7 tests, not 8.")
+        assert True  # honest merge
 
     def test_summary_revised(self, corpus_graph):
-        """Report the revised honest summary."""
+        """Report the revised honest summary — 7 tests (Arthur merged with Swanson)."""
         results = {
             "Swanson": "INCOMPLETE",
             "Pearl": "INCOMPLETE",
@@ -186,22 +198,26 @@ class TestRevisedAcidTestDemonstration:
             "BACON": "NOT IMPLEMENTED",
             "Gentner": "INCOMPLETE",
             "Altshuller": "INCOMPLETE",
-            "Arthur": "INCOMPLETE",
+            "Arthur": "MERGED with Swanson",
         }
         pass_count = sum(1 for r in results.values() if r == "PASS")
         incomplete_count = sum(1 for r in results.values() if r == "INCOMPLETE")
         not_impl = sum(1 for r in results.values() if r == "NOT IMPLEMENTED")
+        merged = sum(1 for r in results.values() if r == "MERGED with Swanson")
 
         print(f"\n{'='*60}")
-        print(f"REVISED ACID TEST SUMMARY (cycle 43)")
+        print(f"REVISED ACID TEST SUMMARY (cycle 44)")
         print(f"{'='*60}")
         for name, result in results.items():
             print(f"  {name:15s}: {result}")
-        print(f"\n  {pass_count} PASS, {incomplete_count} INCOMPLETE, {not_impl} NOT IMPLEMENTED")
+        print(f"\n  {pass_count} PASS, {incomplete_count} INCOMPLETE, {not_impl} NOT IMPLEMENTED, {merged} MERGED")
         print(f"\n  Hardening criterion: ≥4 PASS required")
         print(f"  Current: {pass_count} PASS — NOT READY TO HARDEN")
+        print(f"  Note: Arthur merged with Swanson (same algorithm, same results)")
+        print(f"  Effective tests: 7 (not 8)")
         print(f"{'='*60}")
 
         assert pass_count == 0, "Expected 0 PASS after honest assessment"
-        assert incomplete_count == 7
+        assert incomplete_count == 6
         assert not_impl == 1
+        assert merged == 1
