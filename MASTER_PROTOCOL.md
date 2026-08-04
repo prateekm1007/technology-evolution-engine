@@ -1877,3 +1877,206 @@ prose consistency → model reconciliation), and each advance closes a
 class of error permanently. This is the moat: a system that publishes
 its verifier frontier honestly is more trustworthy than one that claims
 zero errors.
+
+---
+
+## Causality Rules (DR-11 through DR-14)
+
+Per CEO directive: "These review principles have to be added to create
+a first-class product and are not entropy-inducing." The Tellurium Test
+(cycle 28) and Apollo Test (cycle 28) exposed the deepest limitation:
+the repository is blind not because it lacks information, and not
+merely because it lacks relationships — but because it lacks **causality**.
+
+A relationship graph says "these things are connected." A causal graph
+says "this thing causes that thing." Discovery lives in the causal graph.
+These 4 rules codify the shift from descriptive to causal, from
+knowledge system to discovery system.
+
+### DR-11: Causal graph, not relationship graph
+
+> "The repository is blind because it lacks causality." — External auditor, cycle 28
+
+A relationship graph (Bi₂Te₃ → thermoelectric, Bi₂Te₃ → catalyst,
+Bi₂Te₃ → telluride) says these things are connected but says nothing
+about why. A causal graph (crystal structure → electronic structure →
+carrier mobility → Seebeck coefficient → thermoelectric efficiency →
+available power → nitrogen reduction rate → ammonia yield → economic
+viability) says this causes that. Discovery requires the second.
+
+**The rule:** every node in the graph SHALL carry causal edges, not
+just associative edges. A causal edge has a direction (A → B means
+"A causes B" or "A enables B" or "A constrains B") and a mechanism
+(the physical/chemical/biological process that links A to B).
+An associative edge ("A is related to B") without a stated mechanism
+is forbidden — it is a relationship, not a causal link.
+
+**Required causal edge schema:**
+```json
+{
+  "source": "crystal_structure",
+  "target": "electronic_structure",
+  "direction": "causes",
+  "mechanism": "lattice periodicity determines band structure",
+  "evidence": "arXiv:2507.06101, §3.2",
+  "confidence_typed": "MODERATE",
+  "falsifiable_by": "DFT calculation of band structure from known crystal parameters"
+}
+```
+
+**Enforcement:**
+- The graph schema SHALL be extended (Phase I) to require `mechanism`
+  on every edge. Edges without mechanism are downgraded to "associative"
+  and flagged — they cannot be used for causal reasoning.
+- A discovery query (e.g., "What material could catalyze NRR?") SHALL
+  traverse causal edges only, not associative edges. A material connected
+  only by associative edges cannot appear in a discovery result.
+
+### DR-12: Mechanism-gated connections
+
+> "Never connect two nodes merely because they share words. Connect
+> them only if you can state the mechanism that links them." — External
+> auditor, cycle 28
+
+The current parser (F-049) connects "alloy" to a paper because the word
+"alloy" appears in the text. This is an associative connection — it
+says nothing about mechanism. The Bi₂Te₃ paper is connected to
+"thermoelectric" by the word "thermoelectric" appearing in the abstract,
+but the parser cannot state the mechanism (Seebeck effect from anisotropic
+carrier transport in the trigonal crystal structure) that links the
+material to the property.
+
+**The rule:** two nodes MAY be connected by an edge ONLY if the edge
+carries a stated mechanism. The mechanism is a short phrase describing
+the physical/chemical/biological process that links source to target.
+A connection without a mechanism is forbidden — it is a keyword match,
+not a causal link.
+
+**Examples:**
+- ✅ ALLOWED: Bi₂Te₃ → thermoelectric, mechanism: "anisotropic carrier
+  transport in trigonal crystal structure produces Seebeck effect"
+- ❌ FORBIDDEN: Bi₂Te₃ → alloy (no mechanism — just a word match)
+- ✅ ALLOWED: Bi₂Te₃ → NRR catalyst, mechanism: "Bi sites adsorb N₂
+  and facilitate N≡N bond cleavage via back-donation from Bi 6p orbitals"
+- ❌ FORBIDDEN: Bi₂Te₃ → catalyst (no mechanism — just a word match)
+
+**Enforcement:**
+- The parser (F-049, Phase I) SHALL extract mechanisms, not just
+  keywords. Each extracted edge MUST carry a `mechanism` field.
+- Edges without a mechanism are rejected at ingestion time.
+- The graph SHALL contain zero mechanism-less edges after Phase I
+  migration.
+
+### DR-13: "What does this change?" — the causal question
+
+> "Never ask 'What is this?' Always ask 'What does this change?'"
+> — External auditor, cycle 28
+
+The question "What is this?" produces a descriptive label (Bi₂Te₃ is
+a thermoelectric material). The question "What does this change?"
+produces a causal chain (Bi₂Te₃ changes carrier mobility → which
+changes Seebeck coefficient → which changes thermoelectric efficiency →
+which changes available power → which could change nitrogen reduction
+rate → which would change ammonia yield → which would change economic
+viability of decentralized fixation).
+
+**The rule:** every fact in the graph SHALL be annotated with what it
+changes. A fact that changes nothing is dead information — it may be
+true but it is not useful for discovery. The "what does this change"
+field is required on every node, not optional.
+
+**Required node schema extension:**
+```json
+{
+  "id": "Bi2Te3",
+  "type": "material",
+  "label": "Bismuth telluride",
+  "properties": {"formula": "Bi2Te3", "crystal": "trigonal", ...},
+  "what_does_this_change": [
+    "carrier mobility (via anisotropic transport)",
+    "Seebeck coefficient (via band structure)",
+    "thermoelectric efficiency (via ZT = S²σT/κ)",
+    "NRR catalytic activity (via Bi 6p back-donation to N₂)"
+  ],
+  "what_changes_this": [
+    "doping (Sb substitution → Bi₀.₄₆Sb₁.₅₄Te₃)",
+    "nanostructuring (reduces κ, increases ZT)",
+    "processing method (hot pressing vs spark-plasma sintering)"
+  ]
+}
+```
+
+**Enforcement:**
+- A node without `what_does_this_change` is flagged as "descriptive only"
+  — it cannot participate in causal reasoning or discovery queries.
+- Discovery queries SHALL traverse `what_does_this_change` edges, not
+  just keyword matches.
+
+### DR-14: The observation-prediction-experiment loop is the real architecture
+
+> "Bell Labs was not Bell Labs because of its graph structure. Bell Labs
+> was Bell Labs because thousands of scientists, engineers, prototypes,
+> experiments, failures, and measurements were continuously feeding the
+> graph." — External auditor, cycle 28
+
+The observation-prediction-experiment loop is the real architecture:
+
+```
+observation → abstraction → model → prediction → experiment → observation
+```
+
+This loop is not optional. Without it, the graph is static — a snapshot
+of what is known, not a living system that learns. The graph must be
+continuously fed by real experiments, real measurements, real failures.
+Without that feed, the graph is a library, not a laboratory.
+
+**The rule:** the system's architecture SHALL be organized around the
+observation-prediction-experiment loop, not around document storage.
+Every module SHALL have a role in this loop:
+
+| Module | Role in the loop |
+|---|---|
+| Ingestion (parser) | observation → abstraction (extract mechanisms from papers/patents) |
+| Constraint module | abstraction → model (derive constraints from mechanisms) |
+| Simulation module | model → prediction (simulate the model to produce predictions) |
+| Experimentation layer | prediction → experiment (design experiments from predictions) |
+| Ledger | experiment → observation (record results) |
+| Learning module | observation → abstraction (revise models based on results) |
+
+A module that does not participate in this loop is entropy — it exists
+but does not contribute to discovery.
+
+**Enforcement:**
+- The `closed_loops` count (PR-23) is the single metric that measures
+  whether the loop is alive. A count of 0 means the system is a
+  knowledge system, not a discovery system.
+- The system's architecture review (annual) SHALL assess whether each
+  module advances the loop or merely stores data. Modules that only
+  store data are candidates for removal (AP-11).
+
+---
+
+## The three limitations (recorded for posterity)
+
+The Tellurium Test (cycle 28) exposed three limitations, in order of depth:
+
+**Limitation 1 (Tellurium Test):** The repository cannot discover
+because its parser extracts words, not mechanisms (F-049). The system
+produced `['alloy', 'carbon']` from a Bi₂Te₃ paper. This is a parser
+limitation — Phase I of the Discovery Roadmap addresses it.
+
+**Limitation 2 (Apollo Test):** The repository is blind because it lacks
+relationships. The Bi₂Te₃-NRR connection exists in the external literature
+but the repository's internal corpus did not connect the two domains.
+This is a search/graph limitation — Phase III-IV of the Discovery Roadmap
+addresses it.
+
+**Limitation 3 (Auditor's sharpening):** The repository is blind because
+it lacks causality. A relationship graph says "these things are connected";
+a causal graph says "this causes that." Discovery lives in the causal graph.
+The system must shift from descriptive ("what is this?") to causal
+("what does this change?"). DR-11 through DR-14 codify this shift.
+
+The day the system can answer the question "What experiment should I
+perform tomorrow morning?" — repeatedly, accurately, and economically —
+is the day it becomes a discovery system rather than a knowledge system.

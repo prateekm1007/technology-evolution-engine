@@ -1666,3 +1666,111 @@ As of 2026-08-04 (post-cycle 26), the failures ranked by `downstream_claims_bloc
 - Cycle 26: verifier-frontier findings (F-051 model reconciliation, F-052 quantity drift, F-053 prose count)
 
 The frontier is advancing: arithmetic → formulas → traced quantities → prose consistency → model reconciliation. Each advance closes a class of error permanently. The remaining gap (physics-formula execution, cross-document reconciliation) is where the verifier needs to reach next.
+
+---
+
+### F-060 — Repository lacks causality (the deepest diagnosis — Tellurium Test + Apollo Test, cycle 28) (P1, audit)
+
+**Found:** external audit dated 2026-08-04 (cycle 28, Tellurium Test + Apollo Test).
+**Repro:**
+```bash
+cd /home/z/my-project/audit/repo
+# The Tellurium Test: run the mandatory discovery workflow on tellurium.
+# Result: the pipeline terminated at Phase 2 (mechanism extraction) because
+# the parser extracted ['alloy', 'carbon'] from a Bi2Te3 paper — missing
+# the material, mechanism, equations, and manufacturing methods entirely.
+
+# The Apollo Test: transcend the repository using external search.
+# Result: found that Bi2Te3 (in the corpus as a thermoelectric) is ALSO an
+# NRR catalyst — a non-obvious relationship the repository could not find
+# because its parser is word-level (F-049) and its search perturbs scores
+# (F-048), not mechanism-property combinations.
+
+# The auditor's sharpening: the repository is blind not because it lacks
+# relationships, but because it lacks CAUSALITY. A relationship graph says
+# "these things are connected." A causal graph says "this causes that."
+# Discovery lives in the causal graph.
+```
+
+**Observed:** The Tellurium Test exposed three limitations in order of depth:
+
+1. **Limitation 1 (parser):** The system produced `['alloy', 'carbon']`
+   from a Bi₂Te₃ thermoelectric paper. It missed "bismuth telluride,"
+   "Bi₂Te₃," "thermoelectric," "Seebeck," "ZT," "hot pressing,"
+   "spark-plasma sintering," "2.51 W," "3.58%," and every mechanism-
+   relevant term. The parser is word-level (F-049).
+
+2. **Limitation 2 (relationships):** The Bi₂Te₃-NRR connection exists
+   in the external literature (Liu 2021, Nan 2023, Han 2020) but the
+   repository's internal corpus did not connect the two domains. The
+   nitrogen package dismissed electrochemical NRR without knowing that
+   the material in its own corpus (Bi₂Te₃, filed under thermoelectrics)
+   is also an NRR catalyst. The repository is blind because it lacks
+   relationships — the two papers don't share a vocabulary.
+
+3. **Limitation 3 (causality):** Even if relationships existed, the
+   repository would still be blind because it lacks causality. A
+   relationship graph says "Bi₂Te₃ is connected to thermoelectric and
+   to catalyst." A causal graph says "crystal structure causes electronic
+   structure causes carrier mobility causes Seebeck coefficient causes
+   thermoelectric efficiency causes available power causes nitrogen
+   reduction rate causes ammonia yield causes economic viability."
+   Discovery lives in the causal graph. The repository has neither.
+
+**The auditor's three rules (codified as DR-11 through DR-14):**
+
+Rule 1 (DR-11): Never store a fact by itself. Store provenance,
+mechanism, constraints, dependencies, observations, uncertainties.
+
+Rule 2 (DR-12): Never connect two nodes merely because they share
+words. Connect them only if you can state the mechanism that links them.
+
+Rule 3 (DR-13): Never ask "What is this?" Always ask "What does this
+change?" That single question forces the entire graph to become causal
+instead of descriptive.
+
+Rule 4 (DR-14): The observation-prediction-experiment loop is the real
+architecture. Without it, the graph is static. Bell Labs was not Bell
+Labs because of its graph structure — it was Bell Labs because thousands
+of experiments continuously fed the graph.
+
+**Root cause:** The repository was built as a knowledge system (store
+documents, extract keywords, verify arithmetic). It was never built as
+a discovery system (extract mechanisms, build causal graphs, traverse
+adjacency, generate hypotheses, test predictions). The governance now
+codifies the difference (DR-11 through DR-14). The code does not yet
+implement it.
+
+**Severity:** P1 — this is the deepest diagnosis. It subsumes F-048
+(simulation perturbs scores because it has no causal model), F-049
+(parser extracts words because it has no mechanism concept), F-050
+(predictions are retrospective because there is no causal chain to
+project forward), and F-046 (experimentation never executed because
+there is no causal model to test). All four are symptoms of the same
+root cause: the repository lacks causality.
+
+**Status:** OPEN. Definition of done per DR-11 through DR-14:
+1. Every node in the graph carries causal edges (not just associative
+   edges) with a stated mechanism (Phase I).
+2. Two nodes are connected ONLY if the edge carries a mechanism (Phase I).
+3. Every node carries a `what_does_this_change` field (Phase I).
+4. The observation-prediction-experiment loop is alive — `closed_loops`
+   ≥ 1 (Phase V, requires F-046 execution).
+5. The system can answer the question: "What experiment should I perform
+   tomorrow morning?" — repeatedly, accurately, and economically.
+
+This is the 6-phase Discovery Roadmap in its entirety (Phase I through
+Phase VI). It is the largest piece of work in the system's future.
+
+**Downstream claims blocked:** ALL layers (1-9). Causality is the
+foundation of discovery. Without it, the system is a knowledge system
+that aspires to be a discovery system but cannot cross the gap.
+
+**Lesson:** The repository is not blind because it lacks information.
+It is not blind because it lacks relationships. It is blind because it
+lacks causality. The day the system can answer "What experiment should
+I perform tomorrow morning?" is the day it becomes a discovery system
+rather than a knowledge system. That day requires causal graphs (Phase I),
+mechanistic simulation (Phase III), and the observation loop (Phase V).
+Until then, the governance codifies the gap honestly.
+

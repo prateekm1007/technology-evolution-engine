@@ -1284,3 +1284,107 @@ the internal version of this dashboard. The public version (when built)
 will show the trend line: arithmetic errors declining (F-043, F-044
 closed), physics/cross-reference errors still open (F-048 through F-053),
 and the frontier advancing with each new DR rule.
+
+---
+
+## Causality anti-entropy (added post-Apollo Test, 2026-08-04, cycle 28)
+
+Per CEO directive: "These review principles have to be added to create
+a first-class product and are not entropy-inducing." The Tellurium Test
+and Apollo Test (cycle 28) exposed the deepest diagnosis: the repository
+is blind because it lacks causality, not merely because it lacks
+relationships.
+
+### The distinction: relationships vs causality
+
+A relationship graph says "Bi₂Te₃ is connected to thermoelectric and
+to catalyst." This is true but useless for discovery — it tells you
+what IS, not what CAUSES what. A causal graph says "crystal structure
+causes electronic structure causes carrier mobility causes Seebeck
+coefficient causes thermoelectric efficiency causes available power
+causes nitrogen reduction rate causes ammonia yield causes economic
+viability." This chain tells you what to test, what to measure, and
+what to change.
+
+**Relationships are necessary but not sufficient. Causality is the
+architecture of discovery.** The system must shift from storing
+relationships ("these things are connected") to storing causal chains
+("this causes that, via this mechanism, falsifiable by this test").
+
+### Anti-entropy rule: never store a fact by itself (DR-11)
+
+A fact stored by itself — "Bi₂Te₃ is a thermoelectric material" — is
+dead information. It may be true, but it cannot participate in discovery
+because it has no causal context. Every fact SHALL be stored with:
+- provenance (where it came from)
+- mechanism (the physical process that makes it true)
+- constraints (the conditions under which it holds)
+- dependencies (what it depends on)
+- observations (what was measured to establish it)
+- uncertainties (what is not yet known)
+
+A fact without this context is entropy — it occupies space in the graph
+without contributing to discovery.
+
+### Anti-entropy rule: mechanism-gated connections (DR-12)
+
+Two nodes connected merely because they share words (Bi₂Te₃ → "alloy"
+because "alloy" appears in the text) is the core entropy of the current
+system. Every edge SHALL carry a mechanism — the physical/chemical/
+biological process that links source to target. An edge without a
+mechanism is a keyword match, not a causal link. It cannot be used for
+discovery reasoning.
+
+### Anti-entropy rule: "What does this change?" (DR-13)
+
+The question "What is this?" produces descriptive labels. The question
+"What does this change?" produces causal chains. Every node in the graph
+SHALL carry a `what_does_this_change` field. A node that changes nothing
+is dead information. This single question forces the entire graph to
+become causal instead of descriptive.
+
+### Anti-entropy rule: the observation loop is the real architecture (DR-14)
+
+The graph is not the architecture. The loop is the architecture:
+
+```
+observation → abstraction → model → prediction → experiment → observation
+```
+
+Without this loop continuously feeding the graph with real measurements,
+the graph is static — a snapshot of what is known, not a living system
+that learns. Bell Labs was not Bell Labs because of its graph structure.
+It was Bell Labs because thousands of experiments continuously fed the
+graph. The `closed_loops` count (PR-23) is the metric that measures
+whether the loop is alive. Count = 0 means the system is a knowledge
+system, not a discovery system.
+
+### AP-11 test for these rules
+
+Per AP-11 (bureaucracy prevention), each new rule must eliminate more
+entropy than the complexity of having one more rule. The CEO has
+confirmed these rules pass the test. The complexity cost: 4 new DRs
+(DR-11 through DR-14). The entropy eliminated:
+- Descriptive edges disguised as causal edges (DR-11)
+- Keyword matches disguised as mechanism connections (DR-12)
+- Dead facts that change nothing (DR-13)
+- Static graphs disguised as living discovery systems (DR-14)
+
+Net entropy reduction: positive. Rules approved.
+
+### The third limitation
+
+The Tellurium Test exposed limitation 1 (parser = words, not mechanisms).
+The Apollo Test exposed limitation 2 (repository lacks relationships).
+The auditor's sharpening exposed limitation 3 (repository lacks causality).
+
+The system now knows what it is: a knowledge system that aspires to be
+a discovery system. The gap between the two is causality + the observation
+loop. The governance now codifies this. The remaining work is Phase I
+(mechanism-level ingestion with causal edges) + Phase V (the laboratory
+that feeds the loop). Until both are built, the system cannot answer the
+question: "What experiment should I perform tomorrow morning?"
+
+That question is the ultimate test. The day it can be answered —
+repeatedly, accurately, and economically — is the day the system
+becomes a discovery system.
