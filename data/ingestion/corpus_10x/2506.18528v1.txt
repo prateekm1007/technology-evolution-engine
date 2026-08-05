@@ -1,0 +1,12 @@
+TITLE: A detailed simulation model for fifth generation district heating and cooling networks with seasonal latent storage evaluated on field data
+ARXIV ID: 2506.18528v1
+URL: http://arxiv.org/abs/2506.18528v1
+RETRIEVAL DATE: 2026-08-05
+RETRIEVAL METHOD: arxiv.org API
+SOURCE VERIFICATION: arxiv API XML
+DOMAIN HINT: pcm_2
+AUTHORS: Manuel Kollmar; Adrian Bürger; Markus Bohlayer; Angelika Altmann-Dieses; Marco Braun
+PUBLISHED: 2025-06-23T11:29:31Z
+
+ABSTRACT:
+Fifth generation district heating and cooling (5GDHC) networks accelerate the use of renewable energies in the heating sector and enable flexible, efficient and future-proof heating and cooling supply via a single network. Due to their low temperature level and high integration of renewables, 5GDHC systems pose new challenges for the modeling of these networks in order to simulate and test operational strategies. A particular feature is the use of uninsulated pipes, which allow energy exchange with the surrounding ground. Accurate modeling of this interaction is essential for reliable simulation and optimization. This paper presents a thermp-physical model of the pip connections, the surrounding soil, a latent heat storage in the form of an ice storage as a seasonal heat storage and the house transfer stations. The model is derived from mass and energy balances leading to ordinary differential equations (ODEs). Validation is performed using field date from the 5GDHC network in Gutach-Bleibach, Germany, which supplies heating and cooling to 30 modern buildings. With an average model deviation of 4.5 % in the normalized mean bias error (NMBE) and 15.9 % in the coefficient of the variation of the root mean square error (CVRMSE), the model's accuracy is validated against the available temperature measurements. The realistic representation of the thermal-hydraulic interactions between soil and pipes, as well as the heat flow within the network, confirms the accuracy of the model and its applicability for the simulation of 5GDHC systems. The model is made openly accessible under an open-source license.

@@ -1,0 +1,12 @@
+TITLE: Deep Learning for Waveform Estimation and Imaging in Passive Radar
+ARXIV ID: 1809.04768v3
+URL: http://arxiv.org/abs/1809.04768v3
+RETRIEVAL DATE: 2026-08-05
+RETRIEVAL METHOD: arxiv.org API
+SOURCE VERIFICATION: arxiv API XML
+DOMAIN HINT: radiative_cooling_2
+AUTHORS: Bariscan Yonel; Eric Mason; Birsen Yazici
+PUBLISHED: 2018-09-13T04:42:37Z
+
+ABSTRACT:
+We consider a bistatic configuration with a stationary transmitter transmitting unknown waveforms of opportunity and a moving receiver, and present a Deep Learning (DL) framework for passive synthetic aperture radar (SAR) imaging. Existing passive radar methods require two or more antennas which are either spatially separated or colocated with sufficient directivity to estimate the underlying waveform prior to imaging. Our approach to passive radar only requires a single receiver, hence reduces cost and increases versatility. We approach DL from an optimization perspective and formulate image reconstruction as a machine learning task. By unfolding the iterations of a proximal gradient descent algorithm, we construct a deep recurrent neural network (RNN) that is parameterized by transmitted waveforms. We cascade the RNN structure with a decoder stage to form a recurrent-auto encoder architecture. We then utilize backpropagation to learn transmitted waveforms by training the network in an unsupervised manner using SAR measurements. The highly non-convex problem of backpropagation is guided to a feasible solution over the parameter space by initializing the network with the known components of the SAR forward model. Moreover, prior information regarding the waveform structure is incorporated during initialization and backpropagation. We demonstrate the effectiveness of the DL-based approach through extensive numerical simulations that show focused, high contrast imagery using a single receiver antenna at realistic SNR levels.

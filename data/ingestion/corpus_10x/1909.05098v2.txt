@@ -1,0 +1,12 @@
+TITLE: Real-time computation of bio-heat transfer in the fast explicit dynamics finite element algorithm (FED-FEM) framework
+ARXIV ID: 1909.05098v2
+URL: http://arxiv.org/abs/1909.05098v2
+RETRIEVAL DATE: 2026-08-05
+RETRIEVAL METHOD: arxiv.org API
+SOURCE VERIFICATION: arxiv API XML
+DOMAIN HINT: pcm_2
+AUTHORS: Jinao Zhang; Sunita Chauhan
+PUBLISHED: 2019-09-08T01:13:51Z
+
+ABSTRACT:
+Real-time analysis of bio-heat transfer is very beneficial in improving clinical outcomes of hyperthermia and thermal ablative treatments but challenging to achieve due to large computational costs. This paper presents a fast numerical algorithm well suited for real-time solutions of bio-heat transfer, and it achieves real-time computation via the (i) computationally efficient explicit dynamics in the temporal domain, (ii) element-level thermal load computation, (iii) computationally efficient finite elements, (iv) explicit formulation for unknown nodal temperature, and (v) pre-computation of constant simulation matrices and parameters, all of which lead to a significant reduction in computation time for fast run-time computation. The proposed methodology considers temperature-dependent thermal properties for nonlinear characteristics of bio-heat transfer in soft tissue. Utilising a parallel execution, the proposed method achieves computation time reduction of 107.71 and 274.57 times compared to those of with and without parallelisation of the commercial finite element codes if temperature-dependent thermal properties are considered, and 303.07 and 772.58 times if temperature-independent thermal properties are considered, far exceeding the computational performance of the commercial finite element codes, presenting great potential in real-time predictive analysis of tissue temperature for planning, optimisation and evaluation of thermo-therapeutic treatments. The source code is available at https://github.com/jinaojakezhang/FEDFEMBioheat.

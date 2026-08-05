@@ -1,0 +1,12 @@
+TITLE: Latent Space Subdivision: Stable and Controllable Time Predictions for Fluid Flow
+ARXIV ID: 2003.08723v1
+URL: http://arxiv.org/abs/2003.08723v1
+RETRIEVAL DATE: 2026-08-05
+RETRIEVAL METHOD: arxiv.org API
+SOURCE VERIFICATION: arxiv API XML
+DOMAIN HINT: pcm_2
+AUTHORS: Steffen Wiewel; Byungsoo Kim; Vinicius C. Azevedo; Barbara Solenthaler; Nils Thuerey
+PUBLISHED: 2020-03-12T12:38:52Z
+
+ABSTRACT:
+We propose an end-to-end trained neural networkarchitecture to robustly predict the complex dynamics of fluid flows with high temporal stability. We focus on single-phase smoke simulations in 2D and 3D based on the incompressible Navier-Stokes (NS) equations, which are relevant for a wide range of practical problems. To achieve stable predictions for long-term flow sequences, a convolutional neural network (CNN) is trained for spatial compression in combination with a temporal prediction network that consists of stacked Long Short-Term Memory (LSTM) layers. Our core contribution is a novel latent space subdivision (LSS) to separate the respective input quantities into individual parts of the encoded latent space domain. This allows to distinctively alter the encoded quantities without interfering with the remaining latent space values and hence maximizes external control. By selectively overwriting parts of the predicted latent space points, our proposed method is capable to robustly predict long-term sequences of complex physics problems. In addition, we highlight the benefits of a recurrent training on the latent space creation, which is performed by the spatial compression network.

@@ -1,0 +1,12 @@
+TITLE: Energy Harvesting Communications Using Dual Alternating Batteries
+ARXIV ID: 1801.03813v3
+URL: http://arxiv.org/abs/1801.03813v3
+RETRIEVAL DATE: 2026-08-05
+RETRIEVAL METHOD: arxiv.org API
+SOURCE VERIFICATION: arxiv API XML
+DOMAIN HINT: sodium_battery
+AUTHORS: Rajshekhar Vishweshwar Bhat; Mehul Motani; Chandra R Murthy; Rahul Vaze
+PUBLISHED: 2018-01-11T15:25:16Z
+
+ABSTRACT:
+Practical energy harvesting (EH) based communication systems typically use a battery to temporarily store the harvested energy prior to its use for communication. The batteries can be damaged when they are repeatedly charged (discharged) after being partially discharged (charged), overcharged or deeply discharged. This motivates the cycle constraint which says that a battery must be charged (discharged) only after it is sufficiently discharged (charged). We also assume Bernoulli energy arrivals, and a half-duplex constraint due to which the batteries are not charged and discharged simultaneously. In this context, we study EH communication systems with: (a) a single-battery with capacity 2B units and (b) dual-batteries, each having capacity of B units. The aim is to obtain the best possible long-term average throughputs and throughput regions in point-to-point (P2P) channels and multiple access channels (MAC), respectively. For the P2P channel, we obtain an analytical optimal solution in the single-battery case, and propose optimal and sub-optimal power allocation policies for the dual-battery case. We extend these policies to obtain achievable throughput regions in MACs by jointly allocating rates and powers. From numerical simulations, we find that the optimal throughput in the dual-battery case is significantly higher than that in the single-battery case, although the total storage capacity in both cases is 2B units. Further, in the proposed policies, the largest throughput region in the single-battery case is contained within that of the dual-battery case.

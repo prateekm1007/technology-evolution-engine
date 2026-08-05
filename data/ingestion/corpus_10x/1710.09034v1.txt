@@ -1,0 +1,12 @@
+TITLE: Energy Management for Energy Harvesting Wireless Sensors with Adaptive Retransmission
+ARXIV ID: 1710.09034v1
+URL: http://arxiv.org/abs/1710.09034v1
+RETRIEVAL DATE: 2026-08-05
+RETRIEVAL METHOD: arxiv.org API
+SOURCE VERIFICATION: arxiv API XML
+DOMAIN HINT: piezoelectric
+AUTHORS: Animesh Yadav; Mathew Goonewardena; Wessam Ajib; Octavia A. Dobre; Halima Elbiaze
+PUBLISHED: 2017-10-25T01:08:52Z
+
+ABSTRACT:
+This paper analyzes the communication between two energy harvesting wireless sensor nodes. The nodes use automatic repeat request and forward error correction mechanism for the error control. The random nature of available energy and arrivals of harvested energy may induce interruption to the signal sampling and decoding operations. We propose a selective sampling scheme where the length of the transmitted packet to be sampled depends on the available energy at the receiver. The receiver performs the decoding when complete samples of the packet are available. The selective sampling information bits are piggybacked on the automatic repeat request messages for the transmitter use. This way, the receiver node manages more efficiently its energy use. Besides, we present the partially observable Markov decision process formulation, which minimizes the long-term average pairwise error probability and optimizes the transmit power. Optimal and suboptimal power assignment strategies are introduced for retransmissions, which are adapted to the selective sampling and channel state information. With finite battery size and fixed power assignment policy, an analytical expression for the average packet drop probability is derived. Numerical simulations show the performance gain of the proposed scheme with power assignment strategy over the conventional scheme.

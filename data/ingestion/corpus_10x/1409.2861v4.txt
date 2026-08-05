@@ -1,0 +1,12 @@
+TITLE: A Low Mach Number Model for Moist Atmospheric Flows
+ARXIV ID: 1409.2861v4
+URL: http://arxiv.org/abs/1409.2861v4
+RETRIEVAL DATE: 2026-08-05
+RETRIEVAL METHOD: arxiv.org API
+SOURCE VERIFICATION: arxiv API XML
+DOMAIN HINT: water_harvesting
+AUTHORS: Max Duarte; Ann Almgren; John Bell
+PUBLISHED: 2014-08-28T09:00:55Z
+
+ABSTRACT:
+We introduce a low Mach number model for moist atmospheric flows that accurately incorporates reversible moist processes in flows whose features of interest occur on advective rather than acoustic time scales. Total water is used as a prognostic variable, so that water vapor and liquid water are diagnostically recovered as needed from an exact Clausius--Clapeyron formula for moist thermodynamics. Low Mach number models can be computationally more efficient than a fully compressible model, but the low Mach number formulation introduces additional mathematical and computational complexity because of the divergence constraint imposed on the velocity field. Here, latent heat release is accounted for in the source term of the constraint by estimating the rate of phase change based on the time variation of saturated water vapor subject to the thermodynamic equilibrium constraint. We numerically assess the validity of the low Mach number approximation for moist atmospheric flows by contrasting the low Mach number solution to reference solutions computed with a fully compressible formulation for a variety of test problems.

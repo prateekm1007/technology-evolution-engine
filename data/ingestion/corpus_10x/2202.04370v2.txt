@@ -1,0 +1,12 @@
+TITLE: Simultaneous Transmit Diversity and Passive Beamforming with Large-Scale Intelligent Reflecting Surface: Far-Field or Near-Field?
+ARXIV ID: 2202.04370v2
+URL: http://arxiv.org/abs/2202.04370v2
+RETRIEVAL DATE: 2026-08-05
+RETRIEVAL METHOD: arxiv.org API
+SOURCE VERIFICATION: arxiv API XML
+DOMAIN HINT: radiative_cooling_2
+AUTHORS: Beixiong Zheng; Rui Zhang
+PUBLISHED: 2022-02-09T10:14:48Z
+
+ABSTRACT:
+Intelligent reflecting surface (IRS) has emerged as a cost-effective solution to enhance wireless communication performance via passive signal reflection. Existing works on IRS have mainly focused on investigating IRS's passive beamforming/reflection design to boost the communication rate for users assuming that their channel state information (CSI) is fully or partially known. However, how to exploit IRS to improve the wireless transmission reliability without any CSI, which is typical in high-mobility/delay-sensitive communication scenarios, remains largely open. In this paper, we study a new IRS-aided communication system with the IRS integrated to its aided access point (AP) to achieve both functions of transmit diversity and passive beamforming simultaneously. Specifically, we first show an interesting result that the IRS's passive beamforming gain in any direction is invariant to the common phase-shift applied to all of its reflecting elements. Accordingly, we design the common phase-shift of IRS elements to achieve transmit diversity at the AP side without the need of any CSI of the users. In addition, we propose a practical method for the users to estimate the CSI at the receiver side for information decoding. Meanwhile, we show that the conventional passive beamforming gain of IRS can be retained for the other users with their CSI known at the AP. Furthermore, we derive the asymptotic performance of both IRS-aided transmit diversity and passive beamforming in closed-form, by considering the large-scale IRS with an infinite number of elements. Numerical results validate our analysis and show the performance gains of the proposed IRS-aided simultaneous transmit diversity and passive beamforming scheme over other benchmark schemes.

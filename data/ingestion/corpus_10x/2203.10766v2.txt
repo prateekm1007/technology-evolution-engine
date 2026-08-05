@@ -1,0 +1,12 @@
+TITLE: An In-Depth Comparative Analysis of Cloud Block Storage Workloads: Findings and Implications
+ARXIV ID: 2203.10766v2
+URL: http://arxiv.org/abs/2203.10766v2
+RETRIEVAL DATE: 2026-08-05
+RETRIEVAL METHOD: arxiv.org API
+SOURCE VERIFICATION: arxiv API XML
+DOMAIN HINT: pcm_2
+AUTHORS: Jinhong Li; Qiuping Wang; Patrick P. C. Lee; Chao Shi
+PUBLISHED: 2022-03-21T07:14:07Z
+
+ABSTRACT:
+Cloud block storage systems support diverse types of applications in modern cloud services. Characterizing their I/O activities is critical for guiding better system designs and optimizations. In this paper, we present an in-depth comparative analysis of production cloud block storage workloads through the block-level I/O traces of billions of I/O requests collected from two production systems, Alibaba Cloud and Tencent Cloud Block Storage. We study their characteristics of load intensities, spatial patterns, and temporal patterns. We also compare the cloud block storage workloads with the notable public block-level I/O workloads from the enterprise data centers at Microsoft Research Cambridge, and identify the commonalities and differences of the three sources of traces. To this end, we provide 6 findings through the high-level analysis and 16 findings through the detailed analysis on load intensity, spatial patterns, and temporal patterns. We discuss the implications of our findings on load balancing, cache efficiency, and storage cluster management in cloud block storage systems.

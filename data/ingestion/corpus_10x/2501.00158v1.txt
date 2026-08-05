@@ -1,0 +1,12 @@
+TITLE: Urban Water Consumption Forecasting Using Deep Learning and Correlated District Metered Areas
+ARXIV ID: 2501.00158v1
+URL: http://arxiv.org/abs/2501.00158v1
+RETRIEVAL DATE: 2026-08-05
+RETRIEVAL METHOD: arxiv.org API
+SOURCE VERIFICATION: arxiv API XML
+DOMAIN HINT: water_harvesting_2
+AUTHORS: Kleanthis Malialis; Nefeli Mavri; Stelios G. Vrachimis; Marios S. Kyriakou; Demetrios G. Eliades
+PUBLISHED: 2024-12-30T22:03:54Z
+
+ABSTRACT:
+Accurate water consumption forecasting is a crucial tool for water utilities and policymakers, as it helps ensure a reliable supply, optimize operations, and support infrastructure planning. Urban Water Distribution Networks (WDNs) are divided into District Metered Areas (DMAs), where water flow is monitored to efficiently manage resources. This work focuses on short-term forecasting of DMA consumption using deep learning and aims to address two key challenging issues. First, forecasting based solely on a DMA's historical data may lack broader context and provide limited insights. Second, DMAs may experience sensor malfunctions providing incorrect data, or some DMAs may not be monitored at all due to computational costs, complicating accurate forecasting. We propose a novel method that first identifies DMAs with correlated consumption patterns and then uses these patterns, along with the DMA's local data, as input to a deep learning model for forecasting. In a real-world study with data from five DMAs, we show that: i) the deep learning model outperforms a classical statistical model; ii) accurate forecasting can be carried out using only correlated DMAs' consumption patterns; and iii) even when a DMA's local data is available, including correlated DMAs' data improves accuracy.

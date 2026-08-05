@@ -1,0 +1,74 @@
+{
+  "timestamp": "2026-08-05T00:55:33.277813+00:00",
+  "scale": "1x",
+  "corpus": {
+    "papers": 10,
+    "patents": 10,
+    "radiative_cooling": 24,
+    "sib_corpus": 20,
+    "real": 19,
+    "total": 83
+  },
+  "steps": {
+    "extraction": {
+      "wall_clock_s": 1.855,
+      "memory_mb": 3.94,
+      "docs_processed": 83
+    },
+    "graph_build": {
+      "wall_clock_s": 0.013,
+      "memory_mb": 3.94
+    },
+    "swanson": {
+      "wall_clock_s": 0.051,
+      "memory_mb": 3.94,
+      "bridges_found": 923,
+      "edges_in_graph": 259
+    },
+    "gentner": {
+      "wall_clock_s": 24.646,
+      "memory_mb": 283.18,
+      "analogies_found": 367213
+    },
+    "altshuller": {
+      "wall_clock_s": 0.004,
+      "memory_mb": 283.25,
+      "contradictions_found": 135
+    },
+    "bacon": {
+      "wall_clock_s": 0.034,
+      "memory_mb": 285.96,
+      "law_found": true,
+      "r2": 0.9999568911598812
+    }
+  },
+  "estimates": {
+    "10x": {
+      "est_edges": 2590,
+      "est_swanson_s": 51.0,
+      "est_swanson_min": 0.8,
+      "est_gentner_s": 2464.6,
+      "est_gentner_min": 41.1,
+      "swanson_unreasonable": false,
+      "gentner_unreasonable": false
+    },
+    "50x": {
+      "est_edges": 12950,
+      "est_swanson_s": 6375.0,
+      "est_swanson_min": 106.2,
+      "est_gentner_s": 61615.0,
+      "est_gentner_min": 1026.9,
+      "swanson_unreasonable": true,
+      "gentner_unreasonable": true
+    }
+  },
+  "graph": {
+    "nodes": 82,
+    "edges": 259
+  },
+  "total_wall_clock_s": 26.603,
+  "needs_rewrite": [
+    "Swanson at 50x (est. 106.2 min)",
+    "Gentner at 50x (est. 1026.9 min)"
+  ]
+}

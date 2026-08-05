@@ -1,0 +1,12 @@
+TITLE: Seebeck coefficient of ionic conductors from Bayesian regression analysis
+ARXIV ID: 2402.04873v2
+URL: http://arxiv.org/abs/2402.04873v2
+RETRIEVAL DATE: 2026-08-05
+RETRIEVAL METHOD: arxiv.org API
+SOURCE VERIFICATION: arxiv API XML
+DOMAIN HINT: thermoelectric_2
+AUTHORS: Enrico Drigo; Stefano Baroni; Paolo Pegolo
+PUBLISHED: 2024-02-07T14:12:44Z
+
+ABSTRACT:
+We propose a novel approach to evaluating the ionic Seebeck coefficient in electrolytes from relatively short equilibrium molecular dynamics simulations, based on the Green-Kubo theory of linear response and Bayesian regression analysis. By exploiting the probability distribution of the off-diagonal elements of a Wishart matrix, we develop a consistent and unbiased estimator for the Seebeck coefficient whose statistical uncertainty can be arbitrarily reduced in the long-time limit. To validate the effectiveness of our method, we benchmark it against extensive equilibrium molecular dynamics simulations conducted on molten $\mathrm{CsF}$ using empirical force fields. We then employ this procedure to calculate the Seebeck coefficient of molten $\mathrm{NaCl}$, $\mathrm{KCl}$ and $\mathrm{LiCl}$ using neural-network force fields trained on ab initio data over a range of pressure-temperature conditions.

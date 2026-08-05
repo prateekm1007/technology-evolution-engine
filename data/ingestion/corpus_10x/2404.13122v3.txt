@@ -1,0 +1,12 @@
+TITLE: Exploration of Quantum Computing in Materials Discovery for Direct Air Capture Applications
+ARXIV ID: 2404.13122v3
+URL: http://arxiv.org/abs/2404.13122v3
+RETRIEVAL DATE: 2026-08-05
+RETRIEVAL METHOD: arxiv.org API
+SOURCE VERIFICATION: arxiv API XML
+DOMAIN HINT: CO2_capture
+AUTHORS: Marco Antonio Barroca; Rodrigo Neumann Barros Ferreira; Mathias Steiner
+PUBLISHED: 2024-04-19T18:11:38Z
+
+ABSTRACT:
+Direct air capture (DAC) of carbon dioxide is a promising method for mitigating climate change. Solid sorbents, such as metal-organic frameworks, are currently being tested for DAC application. However, their potential for deployment at scale has not been fully realized. The computational discovery of solid sorbents is challenging, given the vast chemical search space and the DAC requirements for molecular selectivity. Quantum computing can potentially accelerate the discovery of solid sorbents for DAC by predicting molecular binding energies. In this work, we explore simulation methods and algorithms for predicting gas adsorption in metal-organic frameworks using a quantum computer. Specifically, we simulate the potential energy surfaces of CO2, N2, and H2O molecules at the Mg+2 metal center that represents the binding sites of typical metal-organic frameworks. We apply the qubit-ADAPT-VQE technique to run simulations on both classical computing and quantum computing hardware, and achieve reasonable accuracy while maintaining hardware efficiency.

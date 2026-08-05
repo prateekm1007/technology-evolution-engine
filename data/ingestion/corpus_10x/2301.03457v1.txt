@@ -1,0 +1,12 @@
+TITLE: Non-intrusive Water Usage Classification Considering Limited Training Data
+ARXIV ID: 2301.03457v1
+URL: http://arxiv.org/abs/2301.03457v1
+RETRIEVAL DATE: 2026-08-05
+RETRIEVAL METHOD: arxiv.org API
+SOURCE VERIFICATION: arxiv API XML
+DOMAIN HINT: water_harvesting_2
+AUTHORS: Pavlos Pavlou; Stelios Vrachimis; Demetrios G. Eliades; Marios M. Polycarpou
+PUBLISHED: 2023-01-02T11:57:36Z
+
+ABSTRACT:
+Smart metering of domestic water consumption to continuously monitor the usage of different appliances has been shown to have an impact on people's behavior towards water conservation. However, the installation of multiple sensors to monitor each appliance currently has a high initial cost and as a result, monitoring consumption from different appliances using sensors is not cost-effective. To address this challenge, studies have focused on analyzing measurements of the total domestic consumption using Machine Learning (ML) methods, to disaggregate water usage into each appliance. Identifying which appliances are in use through ML is challenging since their operation may be overlapping, while specific appliances may operate with intermittent flow, making individual consumption events hard to distinguish. Moreover, ML approaches require large amounts of labeled input data to train their models, which are typically not available for a single household, while usage characteristics may vary in different regions. In this work, we initially propose a data model that generates synthetic time series based on regional water usage characteristics and resolution to overcome the need for a large training dataset with real labeled data. The method requires a small number of real labeled data from the studied region. Following this, we propose a new algorithm for classifying single and overlapping household water usage events, using the total domestic consumption measurements.

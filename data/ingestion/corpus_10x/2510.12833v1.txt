@@ -1,0 +1,12 @@
+TITLE: Data-Augmented Machine Learning for Predicting Biomass-Derived Hard Carbon Anode Performance in Sodium-Ion Batteries
+ARXIV ID: 2510.12833v1
+URL: http://arxiv.org/abs/2510.12833v1
+RETRIEVAL DATE: 2026-08-05
+RETRIEVAL METHOD: arxiv.org API
+SOURCE VERIFICATION: arxiv API XML
+DOMAIN HINT: sodium_battery_2
+AUTHORS: Gang Chen; Zihan Yang; Peng Sun; Chenglong Wang; Jinliang Li
+PUBLISHED: 2025-10-13T09:24:26Z
+
+ABSTRACT:
+Biomass-derived hard carbon has become the most promising anode material for sodium-ion batteries (SIBs) due to its high capacity and excellent cycling stability. However, the effects of synthesis parameters and structural features on hard carbon's (HC) electrochemical performance are still unclear, requiring time-consuming and resource-intensive experimental investigations. Machine learning (ML) offers a promising solution by training on large datasets to predict hard carbon performance more efficiently, saving time and resources. In this study, four ML models were used to predict the capacity and initial Coulombic efficiency (ICE) of HC. Data augmentation based on the TabPFN technique was employed to improve model robustness under limited data conditions, and the relationships between features and electrochemical performance were examined. Notably, the XGBoost model achieved an R2 of 0.854 and an RMSE of 23.290 mAh g-1 for capacity prediction, and an R2 of 0.868 and an RMSE of 3.813% for ICE prediction. Shapley Additive Explanations (SHAP) and Partial Dependence Plot (PDP) analyses identified carbonization temperature (Temperature_2) as the most important factor influencing both capacity and ICE. Furthermore, we used bamboo as the precursor to synthesize four hard carbons based on the predictive approach. The electrochemical performance of these samples closely matched our predictions. By leveraging machine-learning approach, this study provides an efficient framework for accelerating the screening process of biomass-derived hard carbon candidates.

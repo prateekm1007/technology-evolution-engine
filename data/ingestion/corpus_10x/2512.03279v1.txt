@@ -1,0 +1,12 @@
+TITLE: Getting the MOST out of your Storage Hierarchy with Mirror-Optimized Storage Tiering
+ARXIV ID: 2512.03279v1
+URL: http://arxiv.org/abs/2512.03279v1
+RETRIEVAL DATE: 2026-08-05
+RETRIEVAL METHOD: arxiv.org API
+SOURCE VERIFICATION: arxiv API XML
+DOMAIN HINT: pcm_2
+AUTHORS: Kaiwei Tu; Kan Wu; Andrea C. Arpaci-Dusseau; Remzi H. Arpaci-Dusseau
+PUBLISHED: 2025-12-02T22:38:44Z
+
+ABSTRACT:
+We present Mirror-Optimized Storage Tiering (MOST), a novel tiering-based approach optimized for modern storage hierarchies. The key idea of MOST is to combine the load balancing advantages of mirroring with the space-efficiency advantages of tiering. Specifically, MOST dynamically mirrors a small amount of hot data across storage tiers to efficiently balance load, avoiding costly migrations. As a result, MOST is as space-efficient as classic tiering while achieving better bandwidth utilization under I/O-intensive workloads. We implement MOST in Cerberus, a user-level storage management layer based on CacheLib. We show the efficacy of Cerberus through a comprehensive empirical study: across a range of static and dynamic workloads, Cerberus achieves better throughput than competing approaches on modern storage hierarchies especially under I/O-intensive and dynamic workloads.
