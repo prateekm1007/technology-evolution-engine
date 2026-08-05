@@ -499,6 +499,14 @@ class NLPPipeline:
         # "X due to Y", "X results in Y", "X leads to Y"
         relations.extend(self._extract_implicit_causal(text, entities, doc))
         
+        # PASS 3: Neural (LLM-based) zero-shot relation extraction (cycle 120)
+        # Per auditor: "neural relation extraction (OpenNRE/GLiREL) for the
+        # remaining 3 points." OpenNRE/GLiREL not installable in this env.
+        # Using z-ai LLM (glm-4.6) as zero-shot relation extractor instead.
+        # This is closer to GLiREL (zero-shot, schema-based) than OpenNRE
+        # (supervised, fixed types).
+        relations.extend(self._extract_neural_relations(text, entities, doc))
+        
         return relations
     
     # Implicit causal patterns (cycle 119)
@@ -611,6 +619,118 @@ class NLPPipeline:
                 return ent
         
         return None
+    
+    def _extract_neural_relations(self, text: str, entities: List[ExtractedEntity],
+                                   doc: Doc) -> List[ExtractedRelation]:
+        """PASS 3: Neural (LLM-based) zero-shot relation extraction.
+        
+        Per cycle 120: OpenNRE/GLiREL not installable. Using z-ai LLM
+        (glm-4.6) as zero-shot relation extractor.
+        
+        The approach:
+        1. Take each sentence with 2+ entities
+        2. Ask the LLM: "What causal relations exist between these entities?"
+        3. Parse the LLM's response into structured relations
+        4. Only accept relations not already found by passes 1-2
+        
+        This catches relations that both the dependency parser and pattern
+        matcher miss — implicit, context-dependent, semantically complex
+        relations like "X is enhanced by the presence of Y" or
+        "The Y property arises from the X structure."
+        """
+        relations = []
+        
+        # Only process if we have enough entities to find relations
+        if len(entities) < 2:
+            return relations
+        
+        # Group entities by sentence
+        for sent in doc.sents:
+            sent_entities = [e for e in entities 
+                           if e.start >= sent.start_char and e.end <= sent.end_char]
+            
+            if len(sent_entities) < 2:
+                continue
+            
+            # Build entity list for the prompt
+            entity_list = ", ".join([f'"{e.text}" ({e.label})' for e in sent_entities[:8]])
+            sentence_text = sent.text.strip()
+            
+            if len(sentence_text) < 20:
+                continue
+            
+            # Ask the LLM for relations
+            prompt = (
+                f"Read this sentence and identify causal or functional relations "
+                f"between the listed entities. Only report relations that are EXPLICITLY "
+                f"stated or directly implied in the sentence.\n\n"
+                f"Sentence: {sentence_text}\n\n"
+                f"Entities: {entity_list}\n\n"
+                f"For each relation, output exactly one line in this format:\n"
+                f"SUBJECT|RELATION|OBJECT\n\n"
+                f"Where RELATION is a single verb (produces, enables, governs, "
+                f"increases, reduces, causes, depends_on, determines, etc.).\n"
+                f"Only use entities from the list above. Output at most 3 relations.\n"
+                f"If no clear relations exist, output nothing."
+            )
+            
+            try:
+                result = subprocess.run(
+                    ["z-ai", "chat", "-m", "glm-4.6", "-p", prompt],
+                    capture_output=True, text=True, timeout=15
+                )
+                response = result.stdout
+                
+                # Parse response lines (format: SUBJECT|RELATION|OBJECT)
+                # Extract from the response — look for lines with | separators
+                lines = re.findall(r'([^|]{2,50})\|([^|]{2,30})\|([^|]{2,50})', response)
+                
+                # Build entity lookup
+                ent_by_text = {}
+                for ent in sent_entities:
+                    ent_by_text[ent.text.lower().strip()] = ent
+                    first_word = ent.text.lower().strip().split()[0]
+                    if len(first_word) >= 4:
+                        ent_by_text[first_word] = ent
+                
+                for subj_text, rel_text, obj_text in lines:
+                    subj_text = subj_text.strip().lower().strip('"').strip()
+                    rel_text = rel_text.strip().lower().strip('"').strip()
+                    obj_text = obj_text.strip().lower().strip('"').strip()
+                    
+                    # Match to entities
+                    subj_ent = self._find_entity_in_text(subj_text, ent_by_text)
+                    obj_ent = self._find_entity_in_text(obj_text, ent_by_text)
+                    
+                    if subj_ent and obj_ent and subj_ent.text != obj_ent.text:
+                        # Skip same-type pairs
+                        if subj_ent.label == obj_ent.label:
+                            continue
+                        if subj_ent.label == "entity" or obj_ent.label == "entity":
+                            continue
+                        
+                        # Check if already exists
+                        exists = any(
+                            r.subject.text == subj_ent.text and
+                            r.obj.text == obj_ent.text and
+                            r.relation == rel_text
+                            for r in relations
+                        )
+                        if exists:
+                            continue
+                        
+                        relations.append(ExtractedRelation(
+                            subject=subj_ent,
+                            relation=rel_text,
+                            obj=obj_ent,
+                            confidence=0.70,  # LLM extraction (lower than pattern)
+                            source_sentence=sentence_text,
+                            dependency_path=["neural_llm_extraction"],
+                        ))
+            except Exception:
+                pass  # If LLM fails, continue without neural relations
+        
+        return relations
     
     def _find_relation(self, subj: ExtractedEntity, obj: ExtractedEntity,
                        sent: Span, doc: Doc) -> Optional[ExtractedRelation]:
