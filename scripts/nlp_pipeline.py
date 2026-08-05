@@ -133,12 +133,95 @@ class NLPPipeline:
     
     This replaces the regex-based EdgeExtractor with a dependency-graph-
     based approach that scales to arbitrary text.
+    
+    Per cycle 103: upgraded with:
+    1. SciSpacy for scientific NER (filters ORG/PERSON/GPE)
+    2. String-matching coreference resolution (connects per-sentence relations)
     """
     
-    def __init__(self, model_name: str = "en_core_web_sm"):
-        """Initialize the spaCy NLP pipeline."""
-        self.nlp = spacy.load(model_name)
+    def __init__(self, model_name: str = "en_core_sci_sm"):
+        """Initialize the spaCy NLP pipeline.
+        
+        Per cycle 103: uses SciSpacy (en_core_sci_sm) by default for
+        scientific domain NER. Falls back to en_core_web_sm if unavailable.
+        """
+        try:
+            self.nlp = spacy.load(model_name)
+        except OSError:
+            # Fallback to general model if SciSpacy not available
+            self.nlp = spacy.load("en_core_web_sm")
         self._compile_patterns()
+        self._entity_aliases = {}  # coreference: canonical name → aliases
+    
+    def _resolve_coreference(self, doc: Doc, entities: List[ExtractedEntity]) -> List[ExtractedEntity]:
+        """Resolve coreference using string matching (cycle 103).
+        
+        Per auditor cycle 102: the Gen 4 gap is coreference resolution.
+        Per-sentence relations are isolated pairs; the chain builder can't
+        connect "nanofibers" in sentence 1 with "nanofibers" in sentence 2
+        without knowing they're the same entity.
+        
+        This implementation uses string matching: if two entities have the
+        same text (or one is a substring of the other), they are the same
+        entity. This is simpler than neural coref but effective for
+        scientific text where entity names are consistent.
+        
+        The key output: merged entities with aliases, so the chain builder
+        can connect relations across sentences.
+        """
+        # Group entities by normalized text (lowercase, no articles)
+        by_normalized = {}
+        for ent in entities:
+            normalized = ent.text.lower().strip()
+            # Remove common articles/prepositions
+            normalized = re.sub(r'^(the|a|an)\s+', '', normalized)
+            
+            if normalized in by_normalized:
+                # Merge: keep the one with highest confidence, add alias
+                existing = by_normalized[normalized]
+                if ent.confidence > existing.confidence:
+                    by_normalized[normalized] = ent
+                    ent.aliases = existing.aliases + [existing.text]
+                else:
+                    existing.aliases.append(ent.text)
+            else:
+                by_normalized[normalized] = ent
+        
+        # Also check for substring matches (e.g., "nanofiber" matches "nanofiber membrane")
+        merged = list(by_normalized.values())
+        final = []
+        used = set()
+        
+        for i, ent in enumerate(merged):
+            if i in used:
+                continue
+            ent_normalized = ent.text.lower().strip()
+            
+            for j, other in enumerate(merged[i+1:], i+1):
+                if j in used:
+                    continue
+                other_normalized = other.text.lower().strip()
+                
+                # Check if one is a substring of the other (and both are >3 chars)
+                if (len(ent_normalized) > 3 and len(other_normalized) > 3 and
+                    (ent_normalized in other_normalized or other_normalized in ent_normalized)):
+                    # Merge: keep the longer one (more specific), add shorter as alias
+                    if len(other.text) > len(ent.text):
+                        other.aliases.append(ent.text)
+                        final.append(other)
+                        used.add(j)
+                        used.add(i)
+                    else:
+                        ent.aliases.append(other.text)
+                        final.append(ent)
+                        used.add(i)
+                        used.add(j)
+                    break
+            else:
+                final.append(ent)
+                used.add(i)
+        
+        return final
     
     def _compile_patterns(self):
         """Compile scientific entity patterns for supplementary NER."""
@@ -152,6 +235,7 @@ class NLPPipeline:
         """Extract entities from text using spaCy NER + scientific patterns.
         
         Gen 2 target: move from strings to objects.
+        Per cycle 103: uses SciSpacy + coreference resolution.
         """
         doc = self.nlp(text)
         entities = []
@@ -159,7 +243,28 @@ class NLPPipeline:
         
         # 1. spaCy NER (general entities)
         for ent in doc.ents:
+            # With SciSpacy, entities are labeled "ENTITY" (scientific)
+            # With en_core_web_sm, they're labeled ORG/PERSON/GPE/etc.
+            # Map both to canonical types
             canonical_type = ENTITY_TYPE_MAP.get(ent.label_, "entity")
+            # Per cycle 103: with SciSpacy, all entities are scientific.
+            # Classify them by pattern matching.
+            if ent.label_ == "ENTITY":
+                # Try to classify using scientific patterns
+                ent_text_lower = ent.text.lower()
+                classified = False
+                for entity_type, patterns in self.compiled_patterns.items():
+                    for pattern in patterns:
+                        if pattern.search(ent_text_lower):
+                            canonical_type = entity_type
+                            classified = True
+                            break
+                    if classified:
+                        break
+                if not classified:
+                    # Default SciSpacy entities to "material" (most common in science)
+                    canonical_type = "material"
+            
             entity = ExtractedEntity(
                 text=ent.text,
                 label=canonical_type,
@@ -194,14 +299,11 @@ class NLPPipeline:
                     entities.append(entity)
                     seen_spans.add((start, end))
         
-        # Deduplicate by text (keep highest confidence)
-        by_text = {}
-        for ent in entities:
-            key = ent.text.lower()
-            if key not in by_text or ent.confidence > by_text[key].confidence:
-                by_text[key] = ent
+        # 3. Coreference resolution (cycle 103)
+        # Merge entities that refer to the same thing across sentences
+        entities = self._resolve_coreference(doc, entities)
         
-        return list(by_text.values())
+        return entities
     
     def extract_relations(self, text: str, entities: List[ExtractedEntity]) -> List[ExtractedRelation]:
         """Extract relations using dependency parsing.
@@ -296,6 +398,23 @@ class NLPPipeline:
         
         # Skip trivial relations
         if relation_text in ("be", "have", "do", "make", "use", "show"):
+            return None
+        
+        # Per cycle 103: skip citation/metadata relations
+        # These come from "X Wang · 2016 · Cited by 347" being parsed as entities
+        citation_patterns = {"cite", "cited", "wang", "author", "year", "et", "al"}
+        if relation_text in citation_patterns:
+            return None
+        # Skip if either entity text contains citation metadata
+        citation_indicators = ["·", "cited by", "et al", "wang", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026"]
+        for indicator in citation_indicators:
+            if indicator in subj.text.lower() or indicator in obj.text.lower():
+                return None
+        # Skip entities that are just numbers or years
+        if re.match(r'^\d{4}$', subj.text) or re.match(r'^\d{4}$', obj.text):
+            return None
+        # Skip very long entities (usually parsed metadata, not real entities)
+        if len(subj.text) > 50 or len(obj.text) > 50:
             return None
         
         # Build the dependency path
