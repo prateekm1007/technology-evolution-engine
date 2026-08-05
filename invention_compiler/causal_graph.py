@@ -130,6 +130,53 @@ class ExperimentProposal:
 
 
 @dataclass
+class Observation:
+    """A measured observation from an experiment or published source.
+
+    Per Phase I (Scientific Memory, cycle 70): the system must store
+    facts as replayable observations — not just mechanism descriptions.
+    An Observation captures what was measured, under what conditions,
+    with what uncertainty.
+
+    This is the foundation of replayability: every claim in the graph
+    should trace back to an Observation with a source, measurement,
+    and uncertainty.
+    """
+    source: str                    # paper/patent/dataset ID
+    variables: Dict[str, float]     # measured variables (name → value)
+    units: Dict[str, str]          # unit per variable (e.g., {"T": "K", "Q": "W"})
+    measurement: float              # the primary measured value
+    uncertainty: Optional[float]    # uncertainty band (±value)
+    conditions: Dict[str, Any]      # experimental conditions (T, P, etc.)
+
+    def to_dict(self) -> Dict[str, Any]:
+        return asdict(self)
+
+
+@dataclass
+class Theory:
+    """A scientific theory: assumptions + laws + domain + failures.
+
+    Per Phase I (Scientific Memory, cycle 70): the system must store
+    theories — coherent frameworks that explain observations. A Theory
+    is not just a collection of laws; it includes the assumptions under
+    which the laws hold and the known failures where they don't.
+
+    The theory_revision loop (Phase VI) will update theories based on
+    new observations: if an observation contradicts a theory's prediction,
+    the theory's failures list grows, and eventually the theory is revised.
+    """
+    name: str                       # e.g., "Stefan-Boltzmann radiative cooling"
+    assumptions: List[str]          # conditions under which the theory holds
+    laws: List[str]                 # mathematical laws (formula references)
+    domain: str                     # applicability domain (e.g., "thermal radiation")
+    failures: List[str]             # known cases where the theory fails
+
+    def to_dict(self) -> Dict[str, Any]:
+        return asdict(self)
+
+
+@dataclass
 class CausalEdge:
     """A causal edge in the discovery graph.
 

@@ -27,9 +27,9 @@ class TestCIGatesExist:
         assert hasattr(scripts.ci_gates, "GATES")
 
     def test_all_7_gates_exist(self):
-        """All 7 CI gates must be defined."""
+        """All CI gates must be defined (8 as of cycle 68: +PDF gate)."""
         from scripts.ci_gates import GATES
-        expected_gates = {"P27", "P77", "P1", "FA2", "GOV", "P70", "TAX"}
+        expected_gates = {"P27", "P77", "P1", "FA2", "GOV", "P70", "TAX", "PDF"}
         assert set(GATES.keys()) == expected_gates, (
             f"expected {expected_gates}, got {set(GATES.keys())}"
         )
@@ -103,4 +103,4 @@ class TestCIGatesRunner:
     def test_list_gates_works(self):
         """--list flag must show all gates."""
         from scripts.ci_gates import GATES
-        assert len(GATES) == 7
+        assert len(GATES) == 8
