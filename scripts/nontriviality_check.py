@@ -59,6 +59,21 @@ PREDICTIONS = ROOT / "data" / "ledger" / "predictions.jsonl"
 
 # Generic physics/chemistry principles that produce trivial bridges.
 # A bridge whose shared mechanism is one of these is likely trivial.
+#
+# REFINEMENT (cycle 87): The original list used substring matching, which
+# meant "permeability" matched both "permeability" (generic) AND
+# "selective_permeability" (specific). This was wrong. "Selective
+# permeability" is a specific mechanism (BBB tight junctions, nanofiber
+# membranes), not a generic principle.
+#
+# The fix: use word-boundary matching. A generic principle matches only
+# when it appears as a standalone concept, NOT when it is part of a
+# compound term with a specific qualifier.
+#
+# SPECIFIC_QUALIFIERS: prefixes/adjectives that, when combined with a
+# generic principle, make it specific. E.g., "permeability" is generic,
+# but "selective permeability" is specific because "selective" narrows
+# it to a size/property-gated mechanism.
 GENERIC_PRINCIPLES = [
     "contact_angle", "surface_tension", "wettability", "porosity",
     "permeability", "diffusion", "viscosity", "thermal_conductivity",
@@ -68,26 +83,192 @@ GENERIC_PRINCIPLES = [
     "condensation", "crystallization", "melting_point", "boiling_point",
 ]
 
+# Qualifiers that, when prefixed to a generic principle, make it specific.
+# A mechanism containing "<qualifier> <generic>" is NOT trivial.
+# E.g., "selective permeability" is specific (size-gated), "permeability"
+# alone is generic.
+SPECIFIC_QUALIFIERS = [
+    "selective", "size_selective", "ion_selective", "voltage_gated",
+    "ligand_gated", "temperature_dependent", "ph_dependent",
+    "pressure_driven", "light_activated", "magnetically_guided",
+    "bioinspired", "biomimetic", "hierarchical", "anisotropic",
+    "asymmetric", "stimuli_responsive", "self_healing", "self_cleaning",
+    "controlled_release", "targeted", "tunable",
+]
+
+
+def is_generic_match(mechanism: str, generic_principle: str) -> bool:
+    """Check if a mechanism matches a generic principle.
+
+    A match is generic ONLY if the principle appears as a standalone
+    concept, NOT as part of a compound term with a specific qualifier.
+
+    Examples:
+      - mechanism="contact_angle", gp="contact_angle" -> True (generic)
+      - mechanism="selective_permeability", gp="permeability" -> False
+        (specific: "selective" qualifies it)
+      - mechanism="permeability", gp="permeability" -> True (generic)
+      - mechanism="surface_wettability_control", gp="wettability" -> True
+        (wettability is the core concept, "surface" and "control" are
+        generic context words, not specific qualifiers)
+
+    The logic:
+      1. The generic principle must be present in the mechanism.
+      2. The principle must NOT be immediately preceded by a specific
+         qualifier (e.g., "selective permeability" does not match
+         generic "permeability").
+    """
+    mech_lower = mechanism.lower().replace(" ", "_")
+    gp = generic_principle.lower().replace(" ", "_")
+
+    # The principle must be present
+    if gp not in mech_lower:
+        return False
+
+    # Check if any specific qualifier immediately precedes the principle
+    for qualifier in SPECIFIC_QUALIFIERS:
+        qual = qualifier.lower().replace(" ", "_")
+        # If the mechanism contains "<qualifier>_<gp>", it's specific
+        if f"{qual}_{gp}" in mech_lower:
+            return False
+        # Also check "<qualifier> <gp>" with space (before normalization)
+        if f"{qual} {generic_principle}" in mechanism.lower():
+            return False
+
+    # Check if the mechanism IS exactly the generic principle (standalone)
+    if mech_lower == gp:
+        return True
+
+    # Check if the principle is the core concept with only generic context
+    # words around it (e.g., "surface_wettability_control" -> wettability
+    # is the core, "surface" and "control" are generic context)
+    generic_context_words = {
+        "surface", "control", "property", "mechanism", "effect",
+        "phenomenon", "behavior", "characteristic", "parameter",
+        "measurement", "value", "rate", "coefficient", "factor",
+        "high", "low", "increased", "decreased", "enhanced", "reduced",
+    }
+    parts = mech_lower.split("_")
+    non_gp_parts = [p for p in parts if p != gp and p]
+    # If all non-principle parts are generic context words, it's still generic
+    if all(p in generic_context_words for p in non_gp_parts):
+        return True
+
+    # If there are non-generic, non-context parts, check if they're specific
+    specific_parts = [p for p in non_gp_parts if p not in generic_context_words]
+    # If any specific qualifier is present, it's NOT a generic match
+    for qual in SPECIFIC_QUALIFIERS:
+        qual_word = qual.split("_")[0]
+        if qual_word in specific_parts:
+            return False
+
+    # Default: if the principle is present and no specific qualifier found,
+    # treat as generic (conservative — favors calling bridges trivial)
+    return True
+
+
+def search_citation_bridge_semantic_scholar(lit_a_terms: List[str],
+                                              lit_b_terms: List[str]) -> Dict:
+    """Search Semantic Scholar for papers that cite both literatures.
+
+    This is a TRUE citation network analysis (vs the web_search keyword
+    fallback). Queries the Semantic Scholar Graph API for papers matching
+    literature A terms, then checks if any also mention literature B terms.
+
+    Falls back gracefully on rate limit (429) or API errors.
+    """
+    import urllib.parse
+
+    a_term = lit_a_terms[0] if lit_a_terms else ""
+    b_term = lit_b_terms[0] if lit_b_terms else ""
+    combined = f"{a_term} {b_term}"
+
+    # Semantic Scholar search endpoint
+    query = urllib.parse.quote(combined)
+    url = f"https://api.semanticscholar.org/graph/v1/paper/search?query={query}&limit=5&fields=title,year,citationCount,abstract"
+
+    try:
+        result = subprocess.run(
+            ["curl", "-sL", "--max-time", "15",
+             "-H", "User-Agent: TEE-research/1.0",
+             url],
+            capture_output=True, text=True, timeout=20
+        )
+        data = json.loads(result.stdout)
+        if "error" in data or data.get("code") == 429:
+            return {
+                "api": "semantic_scholar",
+                "available": False,
+                "error": data.get("message", "rate limited"),
+                "papers": [],
+            }
+        papers = data.get("data", [])
+        # Check which papers mention BOTH literatures in abstract
+        bridge_papers = []
+        for p in papers:
+            abstract = (p.get("abstract") or "").lower()
+            title = (p.get("title") or "").lower()
+            text = abstract + " " + title
+            has_a = any(t.lower() in text for t in lit_a_terms)
+            has_b = any(t.lower() in text for t in lit_b_terms)
+            if has_a and has_b:
+                bridge_papers.append({
+                    "title": p.get("title", "")[:80],
+                    "year": p.get("year"),
+                    "citations": p.get("citationCount", 0),
+                })
+        return {
+            "api": "semantic_scholar",
+            "available": True,
+            "papers_found": len(papers),
+            "bridge_papers_found": len(bridge_papers),
+            "bridge_papers": bridge_papers[:5],
+            "citation_bridge_exists": len(bridge_papers) > 0,
+        }
+    except Exception as e:
+        return {
+            "api": "semantic_scholar",
+            "available": False,
+            "error": str(e),
+            "papers": [],
+        }
+
 
 def search_citation_bridge(lit_a_terms: List[str], lit_b_terms: List[str]) -> Dict:
     """Search for papers that mention BOTH literature A and literature B terms.
 
-    Uses z-ai web_search with combined queries. If papers are found that
-    explicitly discuss both literatures together, the bridge is already known.
+    Per cycle 87: tries Semantic Scholar API first (true citation network),
+    falls back to z-ai web_search (keyword matching) on rate limit or error.
 
     Returns: {
+        'api_used': 'semantic_scholar' | 'web_search_fallback',
         'combined_query': str,
         'papers_found': int,
-        'papers': list of {title, url, snippet},
+        'bridge_papers_found': int,
+        'bridge_papers': list,
         'citation_bridge_exists': bool,
     }
     """
-    # Build a combined query that would find papers mentioning both literatures
+    # Try Semantic Scholar first
+    ss_result = search_citation_bridge_semantic_scholar(lit_a_terms, lit_b_terms)
+
+    if ss_result.get("available"):
+        return {
+            "api_used": "semantic_scholar",
+            "combined_query": f"{lit_a_terms[0] if lit_a_terms else ''} {lit_b_terms[0] if lit_b_terms else ''}",
+            "papers_found": ss_result["papers_found"],
+            "bridge_papers_found": ss_result["bridge_papers_found"],
+            "bridge_papers": ss_result["bridge_papers"],
+            "citation_bridge_exists": ss_result["citation_bridge_exists"],
+        }
+
+    # Fallback: z-ai web_search (keyword matching, less precise)
     a_term = lit_a_terms[0] if lit_a_terms else ""
     b_term = lit_b_terms[0] if lit_b_terms else ""
     combined_query = f"{a_term} {b_term}"
 
-    print(f"  Searching for citation bridge: '{combined_query}'")
+    print(f"  [fallback] Semantic Scholar unavailable ({ss_result.get('error','')}), using web_search")
+
     result = subprocess.run(
         ["z-ai", "function", "-n", "web_search",
          "-a", json.dumps({"query": combined_query, "num": 8})],
@@ -106,6 +287,8 @@ def search_citation_bridge(lit_a_terms: List[str], lit_b_terms: List[str]) -> Di
             bridge_papers.append(p)
 
     return {
+        "api_used": "web_search_fallback",
+        "semantic_scholar_error": ss_result.get("error", "unavailable"),
         "combined_query": combined_query,
         "papers_found": len(papers),
         "bridge_papers_found": len(bridge_papers),
@@ -135,11 +318,13 @@ def check_mechanism_specificity(shared_mechanism: str,
     """
     mech_lower = shared_mechanism.lower().replace(" ", "_")
 
-    # Check against generic principles list
+    # Check against generic principles list using refined matching (cycle 87)
+    # is_generic_match distinguishes "permeability" (generic) from
+    # "selective_permeability" (specific) via SPECIFIC_QUALIFIERS.
     is_generic = False
     generic_match = None
     for gp in GENERIC_PRINCIPLES:
-        if gp in mech_lower or mech_lower in gp:
+        if is_generic_match(shared_mechanism, gp):
             is_generic = True
             generic_match = gp
             break

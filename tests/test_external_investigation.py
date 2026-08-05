@@ -255,3 +255,56 @@ class TestModuleContract:
         assert hasattr(nontriviality_check, "search_citation_bridge")
         assert hasattr(nontriviality_check, "check_mechanism_specificity")
         assert hasattr(nontriviality_check, "check_domain_specific_knowledge")
+
+
+class TestIsGenericMatch:
+    """Test the refined is_generic_match function (cycle 87).
+
+    Per P28: test with 3+ inputs — exact, variation, edge case.
+    The key distinction: "permeability" is generic, but
+    "selective_permeability" is specific because "selective" is a
+    SPECIFIC_QUALIFIER.
+    """
+
+    def test_standalone_generic_matches(self):
+        """Exact case: mechanism IS the generic principle."""
+        from scripts.nontriviality_check import is_generic_match
+        assert is_generic_match("contact_angle", "contact_angle") is True
+        assert is_generic_match("permeability", "permeability") is True
+        assert is_generic_match("porosity", "porosity") is True
+
+    def test_specific_qualifier_prevents_match(self):
+        """Variation: specific qualifier makes a generic term specific."""
+        from scripts.nontriviality_check import is_generic_match
+        # "selective permeability" should NOT match generic "permeability"
+        assert is_generic_match("selective_permeability", "permeability") is False
+        assert is_generic_match("selective permeability", "permeability") is False
+        # "bioinspired wettability" should NOT match generic "wettability"
+        assert is_generic_match("bioinspired_wettability", "wettability") is False
+
+    def test_generic_context_words_still_match(self):
+        """Edge case: generic context words don't prevent match.
+
+        "surface_wettability_control" should still match generic
+        "wettability" because "surface" and "control" are generic
+        context words, not specific qualifiers.
+        """
+        from scripts.nontriviality_check import is_generic_match
+        assert is_generic_match("surface_wettability_control", "wettability") is True
+        assert is_generic_match("high_porosity", "porosity") is True
+
+    def test_no_match_when_principle_absent(self):
+        """Edge case: principle not in mechanism returns False."""
+        from scripts.nontriviality_check import is_generic_match
+        assert is_generic_match("biomineralization", "permeability") is False
+        assert is_generic_match("photosynthesis", "contact_angle") is False
+
+    def test_specific_qualifiers_list_exists(self):
+        """The SPECIFIC_QUALIFIERS list exists and has entries."""
+        from scripts.nontriviality_check import SPECIFIC_QUALIFIERS
+        assert isinstance(SPECIFIC_QUALIFIERS, list)
+        assert len(SPECIFIC_QUALIFIERS) >= 15
+        # "selective" must be in the list (it's the BBB/nanofiber qualifier)
+        assert "selective" in SPECIFIC_QUALIFIERS
+        # "bioinspired" must be in the list
+        assert "bioinspired" in SPECIFIC_QUALIFIERS
