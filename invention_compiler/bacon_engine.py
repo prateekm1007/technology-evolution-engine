@@ -97,9 +97,11 @@ def _fit_power(xs: List[float], ys: List[float]) -> Tuple[List[float], float, Li
     if any(x <= 0 for x in xs) or any(y <= 0 for y in ys):
         return ([0.0, 0.0], 0.0, [0.0] * len(xs))
     # Linearize: log(y) = log(a) + b*log(x)
+    # _fit_linear returns ([slope, intercept], r2, residuals)
+    # so slope = b (the power exponent) and intercept = log(a)
     log_xs = [math.log(x) for x in xs]
     log_ys = [math.log(y) for y in ys]
-    ([log_a, b], r2_log, _) = _fit_linear(log_xs, log_ys)
+    ([b, log_a], r2_log, _) = _fit_linear(log_xs, log_ys)
     a = math.exp(log_a)
     y_pred = [a * (x ** b) for x in xs]
     residuals = [yp - ya for yp, ya in zip(y_pred, ys)]
@@ -117,7 +119,7 @@ def _fit_exponential(xs: List[float], ys: List[float]) -> Tuple[List[float], flo
     if any(y <= 0 for y in ys):
         return ([0.0, 0.0], 0.0, [0.0] * len(xs))
     log_ys = [math.log(y) for y in ys]
-    ([log_a, b], r2_log, _) = _fit_linear(xs, log_ys)
+    ([b, log_a], r2_log, _) = _fit_linear(xs, log_ys)
     a = math.exp(log_a)
     y_pred = [a * math.exp(b * x) for x in xs]
     residuals = [yp - ya for yp, ya in zip(y_pred, ys)]
@@ -263,7 +265,9 @@ R2_FALSIFIABILITY_THRESHOLD = 0.5
 def discover_law(xs: List[float], ys: List[float],
                  x_label: str = "x", y_label: str = "y",
                  threshold: float = R2_FALSIFIABILITY_THRESHOLD,
-                 verbose: bool = False
+                 verbose: bool = False,
+                 x_dimension: Optional[Any] = None,
+                 y_dimension: Optional[Any] = None,
                  ) -> Optional[DiscoveredLaw]:
     """Discover the best-fitting law from (x, y) data.
 
@@ -272,6 +276,12 @@ def discover_law(xs: List[float], ys: List[float],
     the threshold. If no candidate meets the threshold, returns None
     (no law preferred over a weak fit — per "no data, say no data").
 
+    Per Phase II (cycle 72): if x_dimension and y_dimension are provided,
+    the candidate forms are filtered by dimensional consistency BEFORE
+    fitting. Impossible laws (e.g., P = a*T + b where T≠P) are pruned
+    automatically. This reduces the search space and prevents BACON
+    from fitting physically impossible equations.
+
     Args:
         xs: input data (independent variable)
         ys: output data (dependent variable)
@@ -279,6 +289,8 @@ def discover_law(xs: List[float], ys: List[float],
         y_label: name of the y variable (for falsification description)
         threshold: minimum R² required for a law to be accepted
         verbose: if True, print fit results for every candidate
+        x_dimension: Dimension object for the x variable (optional, enables pruning)
+        y_dimension: Dimension object for the y variable (optional, enables pruning)
 
     Returns:
         DiscoveredLaw if a candidate exceeds the threshold, else None.
@@ -289,10 +301,25 @@ def discover_law(xs: List[float], ys: List[float],
         # Cannot meaningfully fit a 2-parameter law with fewer than 3 points
         return None
 
+    # Phase II (cycle 72): filter candidates by dimensional consistency
+    candidates_to_try = CANDIDATE_LAWS
+    pruned_forms: List[str] = []
+    if x_dimension is not None and y_dimension is not None:
+        from invention_compiler.dimensional_reasoning import filter_laws_by_dimension
+        form_names = [c.name for c in CANDIDATE_LAWS]
+        valid_forms, rejected = filter_laws_by_dimension(
+            form_names, {x_label: x_dimension}, y_dimension
+        )
+        candidates_to_try = [c for c in CANDIDATE_LAWS if c.name in valid_forms]
+        pruned_forms = [r[0] for r in rejected]
+        if verbose and pruned_forms:
+            print(f"  [Phase II] Dimensional pruning: removed {pruned_forms} (impossible)")
+            print(f"  [Phase II] Testing {len(candidates_to_try)}/{len(CANDIDATE_LAWS)} forms")
+
     best: Optional[DiscoveredLaw] = None
     best_r2: float = threshold  # must EXCEED the threshold to be accepted
 
-    for candidate in CANDIDATE_LAWS:
+    for candidate in candidates_to_try:
         try:
             params, r2, residuals = candidate.fit_func(xs, ys)
         except (ValueError, OverflowError, ZeroDivisionError):
@@ -321,6 +348,10 @@ def discover_law(xs: List[float], ys: List[float],
                     f"{max(abs(r) for r in residuals):.4g}, the law is falsified."
                 ),
             )
+
+    # If dimensional pruning was active and no law was found, note it
+    if best is None and pruned_forms and verbose:
+        print(f"  [Phase II] No law found. Pruned forms: {pruned_forms}")
 
     return best
 

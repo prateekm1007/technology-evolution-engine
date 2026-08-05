@@ -216,7 +216,8 @@ def check_dimensional_consistency(
     """
     if law_form == "linear":
         # y = a*x + b: x and y must have the same dimension
-        # (a and b absorb the unit conversion)
+        # (a and b absorb the unit conversion, but x and y must be
+        # the same physical quantity for the addition to make sense)
         for var, dim in input_dims.items():
             if dim != output_dim:
                 return False, f"Linear law: {var} has dimension {dim}, output has {output_dim} — must match"
@@ -266,6 +267,8 @@ def check_dimensional_consistency(
 
     elif law_form == "quadratic":
         # y = a*x² + b*x + c: x and y must have the same dimension
+        # (a, b, c absorb unit conversion, but x² and x must have same
+        # dimension as y for the polynomial to be physically consistent)
         for var, dim in input_dims.items():
             if dim != output_dim:
                 return False, f"Quadratic law: {var} has dimension {dim}, output has {output_dim} — must match"
