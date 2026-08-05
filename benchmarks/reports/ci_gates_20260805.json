@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-08-05T11:54:41.924419+00:00",
+  "timestamp": "2026-08-05T12:33:55.471909+00:00",
   "gates": [
     {
       "gate": "P27",
@@ -24,7 +24,7 @@
     {
       "gate": "GOV",
       "passed": true,
-      "details": "GOV WARNING: commit message lacks read receipt (soft gate). Message: test(cycle 82): 3 blind tests (total 19) \u2014 1 retrieval, 2 nu..."
+      "details": "GOV PASS: commit message references governance"
     },
     {
       "gate": "P70",

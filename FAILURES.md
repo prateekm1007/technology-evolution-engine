@@ -1899,3 +1899,207 @@ The system's "discovery" capability is limited to finding combinatorial
 connections between pre-programmed entities. True discovery requires
 the ability to extract NEW entities from NEW domains — which the current
 extractor cannot do.
+
+
+### F-063 — Discovery 01 misclassified as NOVEL HIT (should be RETRIEVAL) — double standard in novelty grading (P1, cycle 83)
+
+**Found:** External auditor cycle 83 review (2026-08-05).
+**Repro:**
+```bash
+cd /home/z/my-project/audit/repo
+# Read data/ledger/predictions.jsonl line for EXP-BLIND-001 (cycle 67).
+# Original outcome: "NOVEL HIT".
+# Independently web-search "fungal induced calcium carbonate precipitation
+# self-healing concrete review".
+# Result: the bridge is a named subfield (FICP) with a 174-citation primary
+# study (Menon 2019), a review paper (2025 Civil Engineering review), and
+# multiple active 2025-2026 papers (Bao 2026, Tuyishime 2025).
+# The T2 "independent verification" sources (Van Wylick 2023, Zhao 2022)
+# are themselves the connecting literature, not independent confirmations.
+```
+
+**Observed:** Discovery 01 (mycelium -> biomineralization -> CaCO3, cycle 67)
+was labeled NOVEL HIT. Discovery 02 (eddy current heating -> nanoparticle
+hyperthermia, cycle 68) was labeled RETRIEVAL on weaker prior-literature
+evidence (1 source, "emerging") than Discovery 01 (5 sources including a
+174-citation review). Same team, same protocol, two different bars applied
+four cycles apart. "Novel" is not yet being graded by a stable rule.
+
+The auditor's key insight: "Confirming a prediction with the literature that
+already contains the prediction isn't verification, it's discovering you'd
+built the corpus around a gap that wasn't really there."
+
+**Root cause:** Three compounding failures:
+1. T2 "independent verification" was not independent. The system searched
+   the web after locking T1 and surfaced the exact subfield that should
+   have been Literature C in Step 1. It then counted those papers as
+   confirmations rather than recognizing them as the pre-existing bridge.
+2. Step 1 corpus selection used narrow search terms ("mycelium composites"
+   + "bacterial CaCO3 precipitation") that routed around the FICP subfield.
+   Zero-overlap was declared without checking whether the bridging field
+   already existed.
+3. No stable rule for the NOVEL vs RETRIEVAL boundary. Discovery 02 set
+   the bar at "1 source mentioning the concept = RETRIEVAL." Discovery 01
+   had 5 sources including a review and was still labeled NOVEL. The
+   boundary was applied per-report, not by a rule.
+
+**Severity:** P1. This is the most consequential misclassification in the
+repository. The CEO's cycle-50 question ("show me one thing the system
+discovered that none of us explicitly programmed into it") was answered
+with a claim that is not true. The system's headline discovery
+achievement is a retrieval. Every downstream claim that cites "2 novel
+hits" is now incorrect (correct count: 1).
+
+**Status:** OPEN for the root-cause fix (stable novelty rule + corpus
+selection protocol). The ledger correction is DONE (appended, not
+overwritten, per Law 7). The corrected Apollo metric is: novel hits = 1
+(was 2), retrievals = 5 (was 4).
+
+**Downstream claims blocked:** Any claim of "N novel discoveries" until
+a stable novelty-grading rule is codified and applied retroactively to
+all blind tests. The single remaining novel hit (EXP-BLIND-003, nanofiber
+-> BBB tight junctions, cycle 76) must also be independently re-verified
+with the same rule, because the double standard means it was graded under
+the lax bar too.
+
+**Lesson:** A discovery claim graded by the system that made the prediction
+is self-graded (same failure as F-044 self-graded benchmarks). The blind
+protocol's T2 step was designed for independent verification but was
+executed as "search the web for confirmations" rather than "search the web
+for whether this bridge already exists." Those are different searches.
+The former finds the connecting literature and counts it as confirmation;
+the latter finds the connecting literature and counts it as disconfirmation
+of novelty. The system did the former. The auditor did the latter.
+"Novel" means "not already published." A subfield with its own review
+paper and acronym is not novel by any definition.
+
+---
+
+### F-064 — Blind test corpus selection did not check for pre-existing bridging literature before declaring zero overlap (P1, cycle 83)
+
+**Found:** External auditor cycle 83 review (2026-08-05), as root cause #2 of F-063.
+**Repro:**
+```bash
+cd /home/z/my-project/audit/repo
+# EXP-BLIND-001 Step 1: Literature A = "mycelium-based composite materials"
+# Literature B = "self-healing concrete (bacterial crack repair)"
+# Search terms were narrow enough to route around the FICP subfield that
+# already sits between them. Nobody searched "fungal calcium carbonate
+# concrete" before declaring the two literatures had zero overlap.
+```
+
+**Observed:** The blind test protocol's Step 1 (corpus selection) declares
+"zero-overlap literature selection" based on narrow search terms for
+Literature A and Literature B. It does not require a broad-term or
+citation-network search across the shared vocabulary of BOTH literatures
+to check whether a bridging subfield already exists. This means the
+system can declare "zero overlap" simply by not sampling the connecting
+field — which is what happened with FICP.
+
+**Root cause:** Step 1 of the blind test protocol (in
+scripts/blind_test_runner.py) has no pre-registration gate for "does a
+bridging literature already exist?" The coder picks two literatures,
+fetches papers for each with narrow queries, and declares them
+non-overlapping based on the fetched samples. A broad-term search
+(e.g., combining key entities from both: "mycelium" + "concrete" +
+"calcium carbonate") would have immediately surfaced the FICP subfield.
+
+**Severity:** P1. This is the structural defect that produced F-063.
+Without fixing it, any future blind test can repeat the same error: pick
+two narrow literatures, fail to sample the bridge, "discover" a
+connection that is already a named subfield.
+
+**Status:** OPEN. The fix is a protocol change: Step 1 must require a
+broad-term search combining key entities from both candidate literatures
+before pre-registration. If the broad-term search returns a named
+subfield, review, or primary study, the test is downgraded from
+"blind discovery" to "retrieval test" BEFORE T1 is locked. This is a
+code change to scripts/blind_test_runner.py (or a new pre-registration
+script) and requires its own commit + test.
+
+**Downstream claims blocked:** All future blind tests until the Step 1
+gate exists. The 22 blind tests already run (EXP-BLIND-001 through
+EXP-BLIND-021) must be re-audited with the broad-term search to check
+whether any other "NULL" or "POTENTIAL_HIT" results are actually
+pre-existing bridges that were missed.
+
+**Lesson:** "Zero overlap" is a claim that requires positive evidence
+(a search for the bridge that returns nothing), not just the absence of
+overlap in two narrow samples. Selecting literatures with narrow search
+terms and declaring them non-overlapping is selection bias wearing a
+protocol's vocabulary. The blind test is only blind if the coder is
+also blind to whether the bridge already exists — and the coder cannot
+be blind to that without checking.
+
+---
+
+### F-065 — LLM-guided extraction fallback reintroduces F-061 (mechanism edges unverified against source text) (P1, cycle 83)
+
+**Found:** External auditor cycle 83 review (2026-08-05), as a separate finding from F-063.
+**Repro:**
+```bash
+cd /home/z/my-project/audit/repo
+# Read EXP-BLIND-001 extraction log. The regex extractor (F-062) could not
+# process mycelium or self-healing concrete domains. The coder switched to
+# "LLM-guided extraction": the LLM reads snippets and extracts entities,
+# mechanisms, and properties. The extracted edges are then fed to
+# SwansonBridgeSearch as if they were parsed from source text.
+# No step verifies that the LLM's extracted mechanism edges are actually
+# present in the source papers.
+```
+
+**Observed:** F-062 (cycle 66) logged that the regex extractor cannot
+process domains outside its pattern library. The Discovery Imperative
+(cycle 67) mandated an alternative extraction method. The coder
+implemented "LLM-guided extraction" — the LLM reads search snippets and
+extracts entities/mechanisms/properties manually. This produced the graph
+that found the mycelium -> biomineralization -> CaCO3 bridge.
+
+The auditor's finding: this fallback reintroduces F-061. F-061 is
+"mechanism fields can be filled by good sentences without being
+physically true." The LLM-guided extraction is exactly this failure mode
+at the extraction layer: a mechanism edge is only as good as the LLM's
+reading comprehension, and nothing verifies the extraction against the
+source text. The LLM can extract a plausible-sounding mechanism that
+isn't actually in the paper, or miss the mechanism that is. The
+extracted graph then looks causal but is only as reliable as a single
+LLM reading of a snippet.
+
+**Root cause:** The LLM-guided extraction has no verification step
+between "LLM reads snippet" and "edge enters the graph." The regex
+extractor at least had the honesty of being a known limitation (F-062).
+The LLM-guided extraction has the same limitation but presents as
+open-domain capability. This is the same pattern as F-061: schema
+compliance (an edge with a mechanism field) mistaken for truth (the
+mechanism is actually in the source and is physically correct).
+
+**Severity:** P1. Every blind test result since cycle 67 (when LLM-guided
+extraction was introduced) depends on extraction quality that is
+unverified. The 2 novel hits and 4 retrievals all flow through this
+extraction path. If the extraction is unreliable, the bridges found may
+be artifacts of LLM reading comprehension rather than genuine
+cross-literature connections.
+
+**Status:** OPEN. The fix requires a verification step: for each
+extracted mechanism edge, the source text (not just the snippet) must be
+retrieved and the mechanism claim must be checkable against the actual
+paper. This is the same principle as DR-15 (mechanism claims must be
+executable) extended to the extraction layer: an extracted mechanism
+must be traceable to a specific sentence in the source, not just
+plausibly inferred from a snippet.
+
+**Downstream claims blocked:** All discovery claims that depend on
+LLM-guided extraction (EXP-BLIND-001 through EXP-BLIND-021) are
+PROVISIONAL until the extraction is verified against source text. The
+single remaining novel hit (EXP-BLIND-003, nanofiber -> BBB) is
+PROVISIONAL for this reason — its extraction was LLM-guided.
+
+**Lesson:** A fallback extraction method that is less reliable than the
+original is not a fix; it is a regression wearing the vocabulary of
+progress. F-062 (regex can't process open domains) was honest about its
+limitation. The LLM-guided extraction that replaced it is less honest:
+it presents as open-domain capability but has the same core defect
+(mechanism edges unverified against source text) plus a new one (LLM
+reading comprehension is not auditable). The honest path is to label
+LLM-guided extraction as ASSERTED-tier (per DR-15) and forbid it from
+NOVEL HIT claims until verified against source text.

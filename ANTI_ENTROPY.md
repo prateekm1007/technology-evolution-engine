@@ -1943,12 +1943,20 @@ OBSERVE → EXTRACT → REPRESENT → EXPLAIN → DISCOVER → INTERVENE
 
 ### The Apollo Metrics (every PR improves one)
 
+**Note (cycle 83):** Discovery 01 (EXP-BLIND-001, mycelium→CaCO3) was
+reclassified from NOVEL HIT to RETRIEVAL per external auditor finding
+F-063. The FICP subfield is a named, actively published field with its
+own review papers. The single remaining novel hit (EXP-BLIND-003,
+nanofiber→BBB) is PROVISIONAL pending re-verification with a stable
+novelty rule (F-063) and extraction verification against source text
+(F-065). See FAILURES.md F-063, F-064, F-065.
+
 | Metric | Current | Target |
 |---|---|---|
-| Blind tests | 2 | 100 |
-| Novel hits | 1 | 25 |
-| Retrievals | 1 | 25 |
-| Null results | 0 | 50 |
+| Blind tests | 22 | 100 |
+| Novel hits | 1 (PROVISIONAL) | 25 |
+| Retrievals | 5 | 25 |
+| Null results | 16 | 50 |
 | Closed loops | 10 | 1000 |
 | Verified mechanisms | 14% | 75% |
 | Human intervention | High | Low |
