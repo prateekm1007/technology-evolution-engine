@@ -70,3 +70,39 @@
 {"timestamp": "2026-08-05T11:25:37.932093+00:00", "step": "ADD_SHARED", "shared_entities": ["circadian_clock", "gene_expression", "light_dark_cycle"], "note": "shared intermediates added AFTER both literatures extracted separately"}
 {"timestamp": "2026-08-05T11:25:37.932143+00:00", "step": "COMBINE_AND_RUN", "total_nodes": 17, "total_edges": 19, "algorithms": ["SwansonBridgeSearch", "GentnerStructureMapping", "AltshullerContradictionSearch"]}
 {"timestamp": "2026-08-05T11:25:37.933548+00:00", "step": "RESULTS", "total_bridges": 20, "cross_literature_bridges": 0, "gentner_analogies": 316, "contradictions": 0, "cross_bridge_details": []}
+{"timestamp": "2026-08-05T11:32:24.953342+00:00", "step": "PRE_REGISTER", "test_id": "EXP-BLIND-013", "literature_A": "fungal melanin production and UV resistance", "literature_B": "UV protection coatings for polymers", "expected": "POTENTIAL_HIT"}
+{"timestamp": "2026-08-05T11:32:24.953485+00:00", "step": "FETCH_A_START", "query": "fungal melanin production and UV resistance"}
+{"timestamp": "2026-08-05T11:32:28.183008+00:00", "step": "FETCH_A_DONE", "query": "fungal melanin production and UV resistance", "papers_fetched": 10, "titles": ["The Enigmatic World of Fungal Melanin - PMC - NIH", "Regulation of melanin production in fungi", "Fungal melanins and their potential applications: A Review"]}
+{"timestamp": "2026-08-05T11:32:28.183190+00:00", "step": "EXTRACT_A_START", "literature": "fungal melanin production and UV resistance", "note": "extracting SEPARATELY \u2014 no knowledge of Literature B"}
+{"timestamp": "2026-08-05T11:32:28.183422+00:00", "step": "EXTRACT_A_DONE", "nodes": 9, "edges": 9, "literature": "fungal melanin production and UV resistance"}
+{"timestamp": "2026-08-05T11:32:28.183482+00:00", "step": "FETCH_B_START", "query": "UV protection coatings for polymers"}
+{"timestamp": "2026-08-05T11:32:32.440499+00:00", "step": "FETCH_B_DONE", "query": "UV protection coatings for polymers", "papers_fetched": 10, "titles": ["UV Protective Coatings", "Recent advances in polymer-based coatings for UV", "UV coating"]}
+{"timestamp": "2026-08-05T11:32:32.440682+00:00", "step": "EXTRACT_B_START", "literature": "UV protection coatings for polymers", "note": "extracting SEPARATELY \u2014 no knowledge of Literature A"}
+{"timestamp": "2026-08-05T11:32:32.440850+00:00", "step": "EXTRACT_B_DONE", "nodes": 18, "edges": 21, "literature": "UV protection coatings for polymers"}
+{"timestamp": "2026-08-05T11:32:32.440906+00:00", "step": "ADD_SHARED", "shared_entities": ["UV_absorption"], "note": "shared intermediates added AFTER both literatures extracted separately"}
+{"timestamp": "2026-08-05T11:32:32.440972+00:00", "step": "COMBINE_AND_RUN", "total_nodes": 19, "total_edges": 21, "algorithms": ["SwansonBridgeSearch", "GentnerStructureMapping", "AltshullerContradictionSearch"]}
+{"timestamp": "2026-08-05T11:32:32.442714+00:00", "step": "RESULTS", "total_bridges": 24, "cross_literature_bridges": 0, "gentner_analogies": 367, "contradictions": 0, "cross_bridge_details": []}
+{"timestamp": "2026-08-05T11:32:32.442960+00:00", "step": "PRE_REGISTER", "test_id": "EXP-BLIND-014", "literature_A": "silk fibroin biomaterial scaffolds", "literature_B": "hydrogel drug delivery systems", "expected": "POTENTIAL_HIT"}
+{"timestamp": "2026-08-05T11:32:32.443021+00:00", "step": "FETCH_A_START", "query": "silk fibroin biomaterial scaffolds"}
+{"timestamp": "2026-08-05T11:32:36.929058+00:00", "step": "FETCH_A_DONE", "query": "silk fibroin biomaterial scaffolds", "papers_fetched": 10, "titles": ["Silk Fibroin as a Functional Biomaterial for Tissue Engineer", "Silk fibroin-based scaffolds for tissue engineering", "Silk Fibroin\u2013Based Biomaterial Scaffold in Tissue Engineerin"]}
+{"timestamp": "2026-08-05T11:32:36.929277+00:00", "step": "EXTRACT_A_START", "literature": "silk fibroin biomaterial scaffolds", "note": "extracting SEPARATELY \u2014 no knowledge of Literature B"}
+{"timestamp": "2026-08-05T11:32:36.929437+00:00", "step": "EXTRACT_A_DONE", "nodes": 9, "edges": 10, "literature": "silk fibroin biomaterial scaffolds"}
+{"timestamp": "2026-08-05T11:32:36.929482+00:00", "step": "FETCH_B_START", "query": "hydrogel drug delivery systems"}
+{"timestamp": "2026-08-05T11:32:39.765074+00:00", "step": "FETCH_B_DONE", "query": "hydrogel drug delivery systems", "papers_fetched": 10, "titles": ["Hydrogels and Their Applications in Targeted Drug Delivery", "Advances in Hydrogel-Based Drug Delivery Systems", "Hydrogels as Drug Delivery Systems: A Review of Current"]}
+{"timestamp": "2026-08-05T11:32:39.765277+00:00", "step": "EXTRACT_B_START", "literature": "hydrogel drug delivery systems", "note": "extracting SEPARATELY \u2014 no knowledge of Literature A"}
+{"timestamp": "2026-08-05T11:32:39.765427+00:00", "step": "EXTRACT_B_DONE", "nodes": 19, "edges": 21, "literature": "hydrogel drug delivery systems"}
+{"timestamp": "2026-08-05T11:32:39.765475+00:00", "step": "ADD_SHARED", "shared_entities": ["controlled_release", "biocompatibility"], "note": "shared intermediates added AFTER both literatures extracted separately"}
+{"timestamp": "2026-08-05T11:32:39.765522+00:00", "step": "COMBINE_AND_RUN", "total_nodes": 20, "total_edges": 21, "algorithms": ["SwansonBridgeSearch", "GentnerStructureMapping", "AltshullerContradictionSearch"]}
+{"timestamp": "2026-08-05T11:32:39.766935+00:00", "step": "RESULTS", "total_bridges": 21, "cross_literature_bridges": 0, "gentner_analogies": 338, "contradictions": 0, "cross_bridge_details": []}
+{"timestamp": "2026-08-05T11:32:39.767094+00:00", "step": "PRE_REGISTER", "test_id": "EXP-BLIND-015", "literature_A": "plant root exudate chemistry", "literature_B": "soil heavy metal remediation by plants", "expected": "NULL"}
+{"timestamp": "2026-08-05T11:32:39.767143+00:00", "step": "FETCH_A_START", "query": "plant root exudate chemistry"}
+{"timestamp": "2026-08-05T11:32:41.003113+00:00", "step": "FETCH_A_DONE", "query": "plant root exudate chemistry", "papers_fetched": 10, "titles": ["Researchers discover root exudates have surprising and", "Root exudates contribute to belowground ecosystem hotspots -", "Root Exudate - an overview | ScienceDirect Topics"]}
+{"timestamp": "2026-08-05T11:32:41.003286+00:00", "step": "EXTRACT_A_START", "literature": "plant root exudate chemistry", "note": "extracting SEPARATELY \u2014 no knowledge of Literature B"}
+{"timestamp": "2026-08-05T11:32:41.003436+00:00", "step": "EXTRACT_A_DONE", "nodes": 7, "edges": 7, "literature": "plant root exudate chemistry"}
+{"timestamp": "2026-08-05T11:32:41.003484+00:00", "step": "FETCH_B_START", "query": "soil heavy metal remediation by plants"}
+{"timestamp": "2026-08-05T11:32:43.491457+00:00", "step": "FETCH_B_DONE", "query": "soil heavy metal remediation by plants", "papers_fetched": 10, "titles": ["Phytoremediation of heavy metals in soil and water", "Phytoremediation technologies and their mechanism for", "Using Common Plants to Remove Heavy Metals from"]}
+{"timestamp": "2026-08-05T11:32:43.491622+00:00", "step": "EXTRACT_B_START", "literature": "soil heavy metal remediation by plants", "note": "extracting SEPARATELY \u2014 no knowledge of Literature A"}
+{"timestamp": "2026-08-05T11:32:43.491742+00:00", "step": "EXTRACT_B_DONE", "nodes": 14, "edges": 14, "literature": "soil heavy metal remediation by plants"}
+{"timestamp": "2026-08-05T11:32:43.491791+00:00", "step": "ADD_SHARED", "shared_entities": [], "note": "shared intermediates added AFTER both literatures extracted separately"}
+{"timestamp": "2026-08-05T11:32:43.491848+00:00", "step": "COMBINE_AND_RUN", "total_nodes": 14, "total_edges": 14, "algorithms": ["SwansonBridgeSearch", "GentnerStructureMapping", "AltshullerContradictionSearch"]}
+{"timestamp": "2026-08-05T11:32:43.492590+00:00", "step": "RESULTS", "total_bridges": 14, "cross_literature_bridges": 0, "gentner_analogies": 115, "contradictions": 0, "cross_bridge_details": []}
