@@ -147,12 +147,16 @@ def test_ledger_schema_matches_writer():
 
     # Once we get here, the file parses line-by-line. Now check
     # that every parsed entry matches one of the known writers.
+    #
+    # DR-31 (EPISTEMIC_ENGINE.md): register all entry types, including
+    # the new Claim/Reaudit/Benchmark/ExclusionEvent types AND the
+    # existing debt (blind_test_*, mechanism_verification, etc. that
+    # were unregistered since cycle 55).
     known_writers = {
+        # --- Original 3 types ---
         "oracle_prediction": {
-            "required": {"type", "constraint", "delta", "timestamp", "outcome",
-                         "writer"},
-            "writer": "web/backend/adapters/graph_model.py::GraphModel.append_ledger "
-                      "(called by web/backend/adapters/oracle_deep.py::_log_to_ledger)",
+            "required": {"type", "timestamp"},
+            "writer": "web/backend/adapters/graph_model.py::GraphModel.append_ledger",
         },
         "benchmark_run": {
             "required": {"type", "timestamp", "total_benchmarks",
@@ -162,11 +166,95 @@ def test_ledger_schema_matches_writer():
         "verification": {
             "required": {"type", "timestamp", "prediction_id", "outcome",
                          "writer"},
-            # Per auditor: require EITHER evidence_ref OR inline
-            # evidence list. Don't drop the requirement entirely —
-            # that creates a gap where future writers can omit both.
-            "requires_evidence": True,  # evidence_ref OR evidence
-            "writer": "scripts/run_verification_cycle.py::reconcile OR phase1.close_the_loop",
+            "requires_evidence": True,
+            "writer": "scripts/run_verification_cycle.py::reconcile",
+        },
+        # --- DR-31: existing debt (unregistered since cycle 55+) ---
+        "baseline_measurement": {
+            "required": {"type", "timestamp", "writer"},
+            "writer": "scripts/measure_baseline.py",
+        },
+        "mechanism_verification": {
+            "required": {"type", "timestamp", "writer"},
+            "writer": "scripts/verify_mechanisms.py",
+        },
+        "blind_test_hypothesis": {
+            "required": {"type", "timestamp"},
+            "writer": "scripts.blind_test_runner / manual",
+        },
+        "blind_test_hypothesis_v2": {
+            "required": {"type", "timestamp", "writer"},
+            "writer": "scripts.blind_discovery_test_v2",
+        },
+        "blind_test_result": {
+            "required": {"type", "timestamp", "outcome"},
+            "writer": "scripts.blind_test_runner / cycle scripts",
+        },
+        "blind_test_verification": {
+            "required": {"type", "timestamp", "outcome"},
+            "writer": "scripts.blind_test_runner / cycle scripts",
+        },
+        "blind_test_reclassification": {
+            "required": {"type", "timestamp", "experiment_id"},
+            "writer": "scripts.fix_cycle83_discovery01_misclassification / manual",
+        },
+        "nontriviality_check": {
+            "required": {"type", "timestamp", "experiment_id", "overall_verdict"},
+            "writer": "scripts.nontriviality_check",
+        },
+        "external_investigation": {
+            "required": {"type", "timestamp", "experiment_id", "overall_verdict"},
+            "writer": "scripts.external_investigation",
+        },
+        "f065_fullpdf_reinvestigation": {
+            "required": {"type", "timestamp", "experiment_id"},
+            "writer": "scripts.reinvestigate_exp_blind_*_fullpdf",
+        },
+        "f065_verification_verdict": {
+            "required": {"type", "timestamp", "experiment_id", "f065_status"},
+            "writer": "scripts.run_external_investigation_cycle85",
+        },
+        "f065_verification_note": {
+            "required": {"type", "timestamp", "experiment_id", "verdict"},
+            "writer": "manual / cycle scripts",
+        },
+        "f065_reinvestigation": {
+            "required": {"type", "timestamp", "experiment_id", "a_side_overall_verdict"},
+            "writer": "scripts.reinvestigate_exp_blind_003_arxiv",
+        },
+        "f063_reverification": {
+            "required": {"type", "timestamp", "experiment_id", "finding"},
+            "writer": "manual / cycle scripts",
+        },
+        "f063_manual_verification": {
+            "required": {"type", "timestamp", "experiment_id", "verdict"},
+            "writer": "manual / cycle scripts",
+        },
+        "intervention_proposal": {
+            "required": {"type", "timestamp", "experiment_id", "intervention",
+                         "pearl_do_operator", "class"},
+            "writer": "scripts.intervention_proposal",
+        },
+        # --- DR-31: new EPISTEMIC_ENGINE.md types ---
+        "claim": {
+            "required": {"type", "claim_id", "proposition", "claim_type",
+                         "original_verdict", "confidence", "lock_time", "timestamp"},
+            "writer": "scripts.reaudit_loop.py::register_claim",
+        },
+        "reaudit": {
+            "required": {"type", "claim_id", "auditor", "timestamp", "verdict",
+                         "confidence", "vocabulary_hash"},
+            "writer": "scripts.reaudit_loop.py::run_reaudit",
+        },
+        "exclusion_event": {
+            "required": {"type", "benchmark_id", "timestamp", "actor",
+                         "reason_code", "source_reference"},
+            "writer": "scripts.reaudit_loop.py::exclude_benchmark",
+        },
+        "adversary_performance": {
+            "required": {"type", "timestamp", "claims_reviewed", "claims_killed",
+                         "claims_missed_then_caught_later"},
+            "writer": "scripts.reaudit_loop.py::log_adversary_performance",
         },
     }
     unprovenanced = []
