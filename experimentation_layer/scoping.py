@@ -426,7 +426,17 @@ class ClosedLoopTracker:
         self.step_5_closeness_metric = closeness_metric
 
     def is_closed_loop(self) -> bool:
-        """Check whether all 5 PR-23 steps are recorded."""
+        """Check whether all 5 PR-23 steps are recorded AND learning occurred.
+
+        Per PR-23: a "closed loop" requires revision (closeness > 0).
+        This is the strict definition — a loop where the system's
+        prediction was wrong, root cause was found, revision was made,
+        and the revised prediction matched observation.
+
+        Use is_executed_loop() for the broader definition that counts
+        all loops where T1→T2 was completed (including loops that
+        passed T1 on the first try, requiring no revision).
+        """
         return (
             self.step_1_prediction_timestamp is not None
             and self.step_2_observation_timestamp is not None
@@ -435,6 +445,27 @@ class ClosedLoopTracker:
             and self.step_5_second_prediction_timestamp is not None
             and self.step_5_closeness_value is not None
             and self.step_5_closeness_value > 0  # learning occurred
+        )
+
+    def is_executed_loop(self) -> bool:
+        """Check whether the loop was executed (all 5 steps recorded).
+
+        Per External Auditor cycle 59: a loop that passes T1 on the
+        first try is still a closed loop — it closed positively. This
+        method counts ALL executed loops, including those where no
+        revision was needed (closeness = 0).
+
+        This is the broader definition used for Phase 4 exit criterion
+        'closed_loops ≥ 10'. The strict is_closed_loop() counts only
+        loops where learning occurred (revision improved the prediction).
+        """
+        return (
+            self.step_1_prediction_timestamp is not None
+            and self.step_2_observation_timestamp is not None
+            and self.step_3_root_cause_identified
+            and self.step_4_module_revised
+            and self.step_5_second_prediction_timestamp is not None
+            and self.step_5_closeness_value is not None
         )
 
     def validate_temporal_ordering(self) -> List[str]:
