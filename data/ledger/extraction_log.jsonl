@@ -430,3 +430,39 @@
 {"timestamp": "2026-08-05T15:57:21.825281+00:00", "step": "ADD_SHARED", "shared_entities": [], "note": "shared intermediates added AFTER both literatures extracted separately"}
 {"timestamp": "2026-08-05T15:57:21.825325+00:00", "step": "COMBINE_AND_RUN", "total_nodes": 6, "total_edges": 4, "algorithms": ["SwansonBridgeSearch", "GentnerStructureMapping", "AltshullerContradictionSearch"]}
 {"timestamp": "2026-08-05T15:57:21.825577+00:00", "step": "RESULTS", "total_bridges": 2, "cross_literature_bridges": 0, "gentner_analogies": 5, "contradictions": 0, "cross_bridge_details": []}
+{"timestamp": "2026-08-05T16:27:45.051087+00:00", "step": "PRE_REGISTER", "test_id": "EXP-BLIND-043", "literature_A": "turtle shell scute hexagonal modular growth", "literature_B": "satellite solar panel modular tile deployable", "expected": "POTENTIAL_HIT"}
+{"timestamp": "2026-08-05T16:27:45.051216+00:00", "step": "FETCH_A_START", "query": "turtle shell scute hexagonal modular growth"}
+{"timestamp": "2026-08-05T16:27:47.489346+00:00", "step": "FETCH_A_DONE", "query": "turtle shell scute hexagonal modular growth", "papers_fetched": 10, "titles": ["Turtle Scute-Shedding Process and Shell Growth", "The macroevolutionary and developmental evolution of the", "Turtle Shell Hexagon"]}
+{"timestamp": "2026-08-05T16:27:47.489539+00:00", "step": "EXTRACT_A_START", "literature": "turtle shell scute hexagonal modular growth", "note": "extracting SEPARATELY \u2014 no knowledge of Literature B"}
+{"timestamp": "2026-08-05T16:27:47.489723+00:00", "step": "EXTRACT_A_DONE", "nodes": 4, "edges": 4, "literature": "turtle shell scute hexagonal modular growth"}
+{"timestamp": "2026-08-05T16:27:47.489773+00:00", "step": "FETCH_B_START", "query": "satellite solar panel modular tile deployable"}
+{"timestamp": "2026-08-05T16:27:50.133601+00:00", "step": "FETCH_B_DONE", "query": "satellite solar panel modular tile deployable", "papers_fetched": 10, "titles": ["An innovative deployable solar panel system for Cubesats", "Haven Demo Satellite in Low-Earth Orbit: Solar Panel", "Solar Array"]}
+{"timestamp": "2026-08-05T16:27:50.133769+00:00", "step": "EXTRACT_B_START", "literature": "satellite solar panel modular tile deployable", "note": "extracting SEPARATELY \u2014 no knowledge of Literature A"}
+{"timestamp": "2026-08-05T16:27:50.133904+00:00", "step": "EXTRACT_B_DONE", "nodes": 8, "edges": 8, "literature": "satellite solar panel modular tile deployable"}
+{"timestamp": "2026-08-05T16:27:50.133959+00:00", "step": "ADD_SHARED", "shared_entities": ["modular_panel_system"], "note": "shared intermediates added AFTER both literatures extracted separately"}
+{"timestamp": "2026-08-05T16:27:50.134009+00:00", "step": "COMBINE_AND_RUN", "total_nodes": 9, "total_edges": 8, "algorithms": ["SwansonBridgeSearch", "GentnerStructureMapping", "AltshullerContradictionSearch"]}
+{"timestamp": "2026-08-05T16:27:50.134481+00:00", "step": "RESULTS", "total_bridges": 6, "cross_literature_bridges": 1, "gentner_analogies": 25, "contradictions": 0, "cross_bridge_details": [{"a": "modular_growth", "b": "modular_panel_system", "c": "modular_tile", "score": 0.6}]}
+{"timestamp": "2026-08-05T16:27:50.134660+00:00", "step": "PRE_REGISTER", "test_id": "EXP-BLIND-044", "literature_A": "Viking longship clinker overlapping plank", "literature_B": "compiler parser token recursive descent", "expected": "NULL"}
+{"timestamp": "2026-08-05T16:27:50.134703+00:00", "step": "FETCH_A_START", "query": "Viking longship clinker overlapping plank"}
+{"timestamp": "2026-08-05T16:27:53.027558+00:00", "step": "FETCH_A_DONE", "query": "Viking longship clinker overlapping plank", "papers_fetched": 10, "titles": ["Clinker (boat building)", "Clinker boats \u2013 the Viking era", "Viking longship construction: planking first, frames later"]}
+{"timestamp": "2026-08-05T16:27:53.027730+00:00", "step": "EXTRACT_A_START", "literature": "Viking longship clinker overlapping plank", "note": "extracting SEPARATELY \u2014 no knowledge of Literature B"}
+{"timestamp": "2026-08-05T16:27:53.027879+00:00", "step": "EXTRACT_A_DONE", "nodes": 3, "edges": 2, "literature": "Viking longship clinker overlapping plank"}
+{"timestamp": "2026-08-05T16:27:53.027935+00:00", "step": "FETCH_B_START", "query": "compiler parser token recursive descent"}
+{"timestamp": "2026-08-05T16:27:56.134567+00:00", "step": "FETCH_B_DONE", "query": "compiler parser token recursive descent", "papers_fetched": 10, "titles": ["Recursive descent parser", "Recursive Descent Parser", "A few questions about recursive descent parsing"]}
+{"timestamp": "2026-08-05T16:27:56.134796+00:00", "step": "EXTRACT_B_START", "literature": "compiler parser token recursive descent", "note": "extracting SEPARATELY \u2014 no knowledge of Literature A"}
+{"timestamp": "2026-08-05T16:27:56.134917+00:00", "step": "EXTRACT_B_DONE", "nodes": 6, "edges": 4, "literature": "compiler parser token recursive descent"}
+{"timestamp": "2026-08-05T16:27:56.134975+00:00", "step": "ADD_SHARED", "shared_entities": [], "note": "shared intermediates added AFTER both literatures extracted separately"}
+{"timestamp": "2026-08-05T16:27:56.135032+00:00", "step": "COMBINE_AND_RUN", "total_nodes": 6, "total_edges": 4, "algorithms": ["SwansonBridgeSearch", "GentnerStructureMapping", "AltshullerContradictionSearch"]}
+{"timestamp": "2026-08-05T16:27:56.135312+00:00", "step": "RESULTS", "total_bridges": 2, "cross_literature_bridges": 0, "gentner_analogies": 5, "contradictions": 0, "cross_bridge_details": []}
+{"timestamp": "2026-08-05T16:27:56.135472+00:00", "step": "PRE_REGISTER", "test_id": "EXP-BLIND-045", "literature_A": "Greek fire combustion naphtha incendiary", "literature_B": "lithium battery electrolyte ion transport", "expected": "NULL"}
+{"timestamp": "2026-08-05T16:27:56.135520+00:00", "step": "FETCH_A_START", "query": "Greek fire combustion naphtha incendiary"}
+{"timestamp": "2026-08-05T16:27:58.586264+00:00", "step": "FETCH_A_DONE", "query": "Greek fire combustion naphtha incendiary", "papers_fetched": 10, "titles": ["Greek fire", "Greek fire was a devastating incendiary weapon used by", "Long before the internal combustion engine, oil was used"]}
+{"timestamp": "2026-08-05T16:27:58.586428+00:00", "step": "EXTRACT_A_START", "literature": "Greek fire combustion naphtha incendiary", "note": "extracting SEPARATELY \u2014 no knowledge of Literature B"}
+{"timestamp": "2026-08-05T16:27:58.586655+00:00", "step": "EXTRACT_A_DONE", "nodes": 3, "edges": 2, "literature": "Greek fire combustion naphtha incendiary"}
+{"timestamp": "2026-08-05T16:27:58.586714+00:00", "step": "FETCH_B_START", "query": "lithium battery electrolyte ion transport"}
+{"timestamp": "2026-08-05T16:28:01.032063+00:00", "step": "FETCH_B_DONE", "query": "lithium battery electrolyte ion transport", "papers_fetched": 10, "titles": ["Understanding multi-scale ion-transport in solid-state", "Lithium-Ion Transport and Exchange between Phases in a", "Microscopic Insight into Transport Properties of Li-battery"]}
+{"timestamp": "2026-08-05T16:28:01.032222+00:00", "step": "EXTRACT_B_START", "literature": "lithium battery electrolyte ion transport", "note": "extracting SEPARATELY \u2014 no knowledge of Literature A"}
+{"timestamp": "2026-08-05T16:28:01.032349+00:00", "step": "EXTRACT_B_DONE", "nodes": 6, "edges": 4, "literature": "lithium battery electrolyte ion transport"}
+{"timestamp": "2026-08-05T16:28:01.032401+00:00", "step": "ADD_SHARED", "shared_entities": [], "note": "shared intermediates added AFTER both literatures extracted separately"}
+{"timestamp": "2026-08-05T16:28:01.032441+00:00", "step": "COMBINE_AND_RUN", "total_nodes": 6, "total_edges": 4, "algorithms": ["SwansonBridgeSearch", "GentnerStructureMapping", "AltshullerContradictionSearch"]}
+{"timestamp": "2026-08-05T16:28:01.032683+00:00", "step": "RESULTS", "total_bridges": 2, "cross_literature_bridges": 0, "gentner_analogies": 5, "contradictions": 0, "cross_bridge_details": []}
