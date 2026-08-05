@@ -573,27 +573,78 @@ class NLPPipeline:
         This is the interface to the existing CausalGraph system.
         Per cycle 104: entity names are cleaned (whitespace → underscores)
         to ensure the chain builder can match entities across sentences.
+        Per cycle 110: entity linking via canonical forms — entities with
+        shared core terms are linked (e.g., "permeability" and
+        "membrane_permeability" both canonicalize to "permeability").
         """
         doc = self.process_document(text)
         
+        # Build entity linking map: raw entity ID → canonical ID
+        # Canonical form: the shortest entity that contains the core term.
+        # E.g., "membrane_permeability" → "permeability" (core term)
+        #       "permeability_values" → "permeability" (core term)
+        #       "lower_permeability" → "permeability" (core term)
+        entity_link_map = {}
+        all_entity_ids = []
+        
+        for ent in doc.entities:
+            clean_id = re.sub(r'\s+', '_', ent.text.strip()).lower()
+            all_entity_ids.append(clean_id)
+        
+        # Build canonical forms: for each entity, find its canonical form
+        # by stripping common prefixes/suffixes to get the core term.
+        # Per cycle 110: this is cross-paper entity linking. The canonical
+        # form is the core term, even if it doesn't exist as a standalone
+        # entity in this paper. E.g., "membrane_permeability" → "permeability"
+        # even if "permeability" alone wasn't extracted.
+        for eid in all_entity_ids:
+            canonical = eid
+            # Remove common modifiers (strip prefixes)
+            for prefix in ["lower_", "higher_", "zero_", "physical_", "membrane_",
+                          "water_", "surface_", "thermal_", "electrical_",
+                          "ionic_", "bulk_", "intrinsic_", "apparent_"]:
+                if eid.startswith(prefix):
+                    remainder = eid[len(prefix):]
+                    if len(remainder) >= 4:
+                        canonical = remainder
+                        break
+            # Remove common suffixes
+            for suffix in ["_values", "_p", "_size", "_sizes", "_spaces", "_with",
+                          "_measurements", "_measurement", "_constant", "_level",
+                          "_levels", "_ratio", "_index"]:
+                if eid.endswith(suffix) and canonical.endswith(suffix):
+                    remainder = canonical[:-len(suffix)]
+                    if len(remainder) >= 4:
+                        canonical = remainder
+                        break
+            entity_link_map[eid] = canonical
+        
+        # Build nodes using canonical IDs (deduplicate)
+        seen_canonical = set()
         nodes = []
         for ent in doc.entities:
-            # Clean entity name: strip, collapse whitespace to underscores
             clean_id = re.sub(r'\s+', '_', ent.text.strip()).lower()
+            canonical = entity_link_map.get(clean_id, clean_id)
+            if canonical in seen_canonical:
+                continue
+            seen_canonical.add(canonical)
             nodes.append({
-                "node_id": clean_id,
+                "node_id": canonical,
                 "node_type": ent.label,
                 "label": ent.text,
                 "confidence": ent.confidence,
             })
         
+        # Build edges using canonical IDs
         edges = []
         for rel in doc.relations:
             clean_source = re.sub(r'\s+', '_', rel.subject.text.strip()).lower()
             clean_target = re.sub(r'\s+', '_', rel.obj.text.strip()).lower()
+            canonical_source = entity_link_map.get(clean_source, clean_source)
+            canonical_target = entity_link_map.get(clean_target, clean_target)
             edges.append({
-                "source": clean_source,
-                "target": clean_target,
+                "source": canonical_source,
+                "target": canonical_target,
                 "direction": "causes",
                 "mechanism": rel.relation,
                 "confidence": rel.confidence,
@@ -606,6 +657,7 @@ class NLPPipeline:
             "entity_count": len(nodes),
             "relation_count": len(edges),
             "pipeline": "nlp_v2_spaCy",
+            "entity_linking_applied": True,
         }
 
 
