@@ -143,6 +143,41 @@ ENTITY_STOPWORDS = {
     "purchased",  # verb form tagged as noun
     "diameters",  # generic property, not a specific material
     "nanoparticles",  # too generic without qualifier
+    # Cycle 109: lab methodology terms shared across all wet-lab papers.
+    # These are NOT domain-specific mechanisms — they're experimental
+    # vocabulary that any lab paper uses. Removing them ensures shared
+    # entities are domain-specific scientific concepts, not lab protocols.
+    "room_temperature", "supernatant", "surfaces", "treatment",
+    "preparation", "statistical_analysis", "parameters", "hour",
+    "influence", "investigation", "kept", "locations", "non",
+    "our", "per", "see", "situ", "turn", "uniformity", "usa",
+    "version", "volume", "rpm", "pure", "rpm",
+    # Lab equipment and supplies (shared across all labs)
+    "sigma-aldrich", "sigma_aldrich", "merck", "fisher",
+    "corning", "vwr", "beckman", "eppendorf",
+    # Lab procedures (shared across all wet-lab papers)
+    "centrifugation", "centrifuge", "sonication", "sonicator",
+    "incubation", "incubator", "washing", "rinsing",
+    "sterilization", "autoclaving", "filtering", "drying",
+    "mixing", "stirring", "heating", "cooling",
+    "characterization", "characterized", "analyzed", "measured",
+    "calculated", "estimated", "determined", "evaluated",
+    "assessed", "examined", "investigated", "studied",
+    # Statistical terms (shared across all quantitative papers)
+    "mean", "average", "median", "standard_deviation",
+    "standard_error", "confidence_interval", "p-value", "p_value",
+    "correlation", "regression", "anova", "t-test", "t_test",
+    "significance", "significant_difference",
+    # Measurement units (shared across all papers)
+    "nm", "μm", "mm", "cm", "ml", "μl", "l", "mg", "μg", "g",
+    "kg", "hz", "khz", "mhz", "ghz", "pa", "kpa", "mpa", "gpa",
+    "v", "mv", "w", "mw", "j", "kj", "mol", "mmol", "μm",
+    # Paper structure words
+    "scheme", "schemes", "step", "steps", "procedure", "procedures",
+    "protocol", "protocols", "setup", "setup", "configuration",
+    "framework", "model", "models", "simulation", "simulations",
+    # Cycle 109: remaining generic terms
+    "temperature", "pressure", "concentration", "weight",
 }
 
 
@@ -297,7 +332,10 @@ class NLPPipeline:
         for ent in doc.ents:
             # Per cycle 107: filter generic English words from SciSpacy output.
             ent_text_lower = ent.text.lower().strip()
-            if ent_text_lower in ENTITY_STOPWORDS:
+            # Per cycle 109: also check underscore version (entity IDs use
+            # underscores, but entity text uses spaces). Check both formats.
+            ent_text_underscore = ent_text_lower.replace(" ", "_")
+            if ent_text_lower in ENTITY_STOPWORDS or ent_text_underscore in ENTITY_STOPWORDS:
                 continue
             # Skip single words that are too short (< 4 chars) and not chemical formulas
             if len(ent_text_lower) < 4 and not re.match(r'^[A-Z][a-z]?[0-9]', ent.text):
