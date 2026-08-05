@@ -34,3 +34,39 @@
 {"timestamp": "2026-08-05T07:44:07.761760+00:00", "step": "ADD_SHARED", "shared_entities": ["folding_mechanism"], "note": "shared intermediates added AFTER both literatures extracted separately"}
 {"timestamp": "2026-08-05T07:44:07.761834+00:00", "step": "COMBINE_AND_RUN", "total_nodes": 15, "total_edges": 13, "algorithms": ["SwansonBridgeSearch", "GentnerStructureMapping", "AltshullerContradictionSearch"]}
 {"timestamp": "2026-08-05T07:44:07.762601+00:00", "step": "RESULTS", "total_bridges": 14, "cross_literature_bridges": 0, "gentner_analogies": 101, "contradictions": 0, "cross_bridge_details": []}
+{"timestamp": "2026-08-05T11:25:23.001127+00:00", "step": "PRE_REGISTER", "test_id": "EXP-BLIND-010", "literature_A": "fungal decomposition of lignocellulose", "literature_B": "soil carbon sequestration by biochar", "expected": "POTENTIAL_HIT"}
+{"timestamp": "2026-08-05T11:25:23.001348+00:00", "step": "FETCH_A_START", "query": "fungal decomposition of lignocellulose"}
+{"timestamp": "2026-08-05T11:25:25.349469+00:00", "step": "FETCH_A_DONE", "query": "fungal decomposition of lignocellulose", "papers_fetched": 10, "titles": ["Lignocellulose degradation: An overview of fungi and fungal", "Lignocellulose degradation in bacteria and fungi", "Fungal biodegradation of lignocelluloses | US Forest Service"]}
+{"timestamp": "2026-08-05T11:25:25.349641+00:00", "step": "EXTRACT_A_START", "literature": "fungal decomposition of lignocellulose", "note": "extracting SEPARATELY \u2014 no knowledge of Literature B"}
+{"timestamp": "2026-08-05T11:25:25.349862+00:00", "step": "EXTRACT_A_DONE", "nodes": 10, "edges": 12, "literature": "fungal decomposition of lignocellulose"}
+{"timestamp": "2026-08-05T11:25:25.349921+00:00", "step": "FETCH_B_START", "query": "soil carbon sequestration by biochar"}
+{"timestamp": "2026-08-05T11:25:27.791318+00:00", "step": "FETCH_B_DONE", "query": "soil carbon sequestration by biochar", "papers_fetched": 10, "titles": ["Biochar-amended soil can further sorb atmospheric CO2", "Biochar as a Tool for Carbon Sequestration", "Land Carbon Sequestration (Biochar)"]}
+{"timestamp": "2026-08-05T11:25:27.791485+00:00", "step": "EXTRACT_B_START", "literature": "soil carbon sequestration by biochar", "note": "extracting SEPARATELY \u2014 no knowledge of Literature A"}
+{"timestamp": "2026-08-05T11:25:27.791631+00:00", "step": "EXTRACT_B_DONE", "nodes": 19, "edges": 22, "literature": "soil carbon sequestration by biochar"}
+{"timestamp": "2026-08-05T11:25:27.791678+00:00", "step": "ADD_SHARED", "shared_entities": ["organic_carbon", "CO2_release", "carbon_cycling"], "note": "shared intermediates added AFTER both literatures extracted separately"}
+{"timestamp": "2026-08-05T11:25:27.791725+00:00", "step": "COMBINE_AND_RUN", "total_nodes": 19, "total_edges": 22, "algorithms": ["SwansonBridgeSearch", "GentnerStructureMapping", "AltshullerContradictionSearch"]}
+{"timestamp": "2026-08-05T11:25:27.793211+00:00", "step": "RESULTS", "total_bridges": 16, "cross_literature_bridges": 0, "gentner_analogies": 300, "contradictions": 0, "cross_bridge_details": []}
+{"timestamp": "2026-08-05T11:25:27.793428+00:00", "step": "PRE_REGISTER", "test_id": "EXP-BLIND-011", "literature_A": "gecko adhesion mechanism", "literature_B": "surgical adhesive tape development", "expected": "POTENTIAL_HIT"}
+{"timestamp": "2026-08-05T11:25:27.793489+00:00", "step": "FETCH_A_START", "query": "gecko adhesion mechanism"}
+{"timestamp": "2026-08-05T11:25:30.177971+00:00", "step": "FETCH_A_DONE", "query": "gecko adhesion mechanism", "papers_fetched": 10, "titles": ["Evidence for van der Waals adhesion in gecko setae", "Synthetic setae", "(PDF) Mechanisms of Adhesion in Geckos"]}
+{"timestamp": "2026-08-05T11:25:30.178152+00:00", "step": "EXTRACT_A_START", "literature": "gecko adhesion mechanism", "note": "extracting SEPARATELY \u2014 no knowledge of Literature B"}
+{"timestamp": "2026-08-05T11:25:30.178341+00:00", "step": "EXTRACT_A_DONE", "nodes": 9, "edges": 10, "literature": "gecko adhesion mechanism"}
+{"timestamp": "2026-08-05T11:25:30.178393+00:00", "step": "FETCH_B_START", "query": "surgical adhesive tape development"}
+{"timestamp": "2026-08-05T11:25:32.535630+00:00", "step": "FETCH_B_DONE", "query": "surgical adhesive tape development", "papers_fetched": 10, "titles": ["Engineers develop surgical \u201cduct tape\u201d as an alternative to", "A new surgical tape with a mesh designed to prevent skin", "Exploring the Medical Adhesive Tapes Market"]}
+{"timestamp": "2026-08-05T11:25:32.535817+00:00", "step": "EXTRACT_B_START", "literature": "surgical adhesive tape development", "note": "extracting SEPARATELY \u2014 no knowledge of Literature A"}
+{"timestamp": "2026-08-05T11:25:32.535961+00:00", "step": "EXTRACT_B_DONE", "nodes": 18, "edges": 20, "literature": "surgical adhesive tape development"}
+{"timestamp": "2026-08-05T11:25:32.536009+00:00", "step": "ADD_SHARED", "shared_entities": ["adhesion_force", "surface_contact", "contact_area"], "note": "shared intermediates added AFTER both literatures extracted separately"}
+{"timestamp": "2026-08-05T11:25:32.536054+00:00", "step": "COMBINE_AND_RUN", "total_nodes": 18, "total_edges": 20, "algorithms": ["SwansonBridgeSearch", "GentnerStructureMapping", "AltshullerContradictionSearch"]}
+{"timestamp": "2026-08-05T11:25:32.537101+00:00", "step": "RESULTS", "total_bridges": 12, "cross_literature_bridges": 0, "gentner_analogies": 203, "contradictions": 0, "cross_bridge_details": []}
+{"timestamp": "2026-08-05T11:25:32.537314+00:00", "step": "PRE_REGISTER", "test_id": "EXP-BLIND-012", "literature_A": "plant circadian rhythm regulation", "literature_B": "jet lag treatment and circadian disruption", "expected": "POTENTIAL_HIT"}
+{"timestamp": "2026-08-05T11:25:32.537377+00:00", "step": "FETCH_A_START", "query": "plant circadian rhythm regulation"}
+{"timestamp": "2026-08-05T11:25:35.299050+00:00", "step": "FETCH_A_DONE", "query": "plant circadian rhythm regulation", "papers_fetched": 10, "titles": ["Plant Circadian Rhythms - PMC - NIH", "Role of Circadian Rhythms in Major Plant Metabolic and", "Circadian Rhythms (Botany) | Anatomy and Physiology"]}
+{"timestamp": "2026-08-05T11:25:35.299259+00:00", "step": "EXTRACT_A_START", "literature": "plant circadian rhythm regulation", "note": "extracting SEPARATELY \u2014 no knowledge of Literature B"}
+{"timestamp": "2026-08-05T11:25:35.299428+00:00", "step": "EXTRACT_A_DONE", "nodes": 8, "edges": 9, "literature": "plant circadian rhythm regulation"}
+{"timestamp": "2026-08-05T11:25:35.299481+00:00", "step": "FETCH_B_START", "query": "jet lag treatment and circadian disruption"}
+{"timestamp": "2026-08-05T11:25:37.931723+00:00", "step": "FETCH_B_DONE", "query": "jet lag treatment and circadian disruption", "papers_fetched": 10, "titles": ["Jet lag disorder - Symptoms and causes", "Jet lag syndrome: circadian organization, pathophysiology", "Jet Lag Disorder | CDC Yellow Book\u2122"]}
+{"timestamp": "2026-08-05T11:25:37.931904+00:00", "step": "EXTRACT_B_START", "literature": "jet lag treatment and circadian disruption", "note": "extracting SEPARATELY \u2014 no knowledge of Literature A"}
+{"timestamp": "2026-08-05T11:25:37.932044+00:00", "step": "EXTRACT_B_DONE", "nodes": 17, "edges": 19, "literature": "jet lag treatment and circadian disruption"}
+{"timestamp": "2026-08-05T11:25:37.932093+00:00", "step": "ADD_SHARED", "shared_entities": ["circadian_clock", "gene_expression", "light_dark_cycle"], "note": "shared intermediates added AFTER both literatures extracted separately"}
+{"timestamp": "2026-08-05T11:25:37.932143+00:00", "step": "COMBINE_AND_RUN", "total_nodes": 17, "total_edges": 19, "algorithms": ["SwansonBridgeSearch", "GentnerStructureMapping", "AltshullerContradictionSearch"]}
+{"timestamp": "2026-08-05T11:25:37.933548+00:00", "step": "RESULTS", "total_bridges": 20, "cross_literature_bridges": 0, "gentner_analogies": 316, "contradictions": 0, "cross_bridge_details": []}
