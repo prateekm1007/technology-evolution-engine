@@ -38,12 +38,23 @@ from collections import defaultdict
 
 @dataclass
 class CausalStep:
-    """A single step in a causal chain."""
+    """A single step in a causal chain.
+    
+    Per DR-42: every step has a mechanism status.
+    Per DR-43: every step has provenance.
+    """
     cause: str  # entity or mechanism
     effect: str  # entity or mechanism
     relation: str  # "causes", "enables", "inhibits", "produces"
     confidence: float
     evidence: str = ""  # source sentence
+    # DR-42: mechanism status
+    status: str = "associative"  # associative | asserted | plausibility-checked | verified | contradicted
+    # DR-43: provenance
+    source_id: str = ""  # paper arxiv_id or URL
+    source_section: str = ""  # methods, results, discussion
+    char_offset: tuple = ()  # (start, end) in source text
+    retrieval_timestamp: str = ""  # ISO timestamp
 
 
 @dataclass
@@ -91,9 +102,21 @@ class MechanismExtractor:
     
     This is the Gen 4 module — the hardest jump in the 6-generation plan.
     
+    Per DR-42: every edge has a mechanism status.
+    Per DR-43: every edge has provenance.
+    
     Input: list of relations (subject, relation, object, confidence)
     Output: causal chains, mechanisms, contradictions
     """
+    
+    # DR-42: mechanism status levels (weakest to strongest)
+    STATUS_LEVELS = {
+        "associative": 0,        # co-occurrence, no causal claim
+        "asserted": 1,           # causal claim made, not verified
+        "plausibility-checked": 2,  # checked against physics/chemistry
+        "verified": 3,           # confirmed by independent observation
+        "contradicted": -1,      # refuted by evidence
+    }
     
     # Relations that indicate causation (vs. correlation or description)
     # Per cycle 104: expanded to include scientific verbs that indicate
@@ -161,12 +184,31 @@ class MechanismExtractor:
             relation_verb = rel.get("relation", rel.get("mechanism", "")).lower()
             relation_type = self.CAUSAL_RELATIONS.get(relation_verb)
             if relation_type:
+                # DR-42: assign mechanism status based on relation type
+                if relation_type == "causal":
+                    status = "asserted"  # explicit causal claim
+                elif relation_type in ("enabling", "productive", "governing"):
+                    status = "asserted"  # functional claim
+                elif relation_type in ("enhancing", "inhibiting"):
+                    status = "asserted"  # directional claim
+                else:
+                    status = "associative"  # weak claim
+                
+                # DR-43: capture provenance from relation data
+                source_id = rel.get("source_id", "")
+                source_section = rel.get("source_section", "")
+                retrieval_timestamp = rel.get("retrieval_timestamp", "")
+                
                 step = CausalStep(
                     cause=rel["source"],
                     effect=rel["target"],
                     relation=relation_verb,
                     confidence=rel.get("confidence", 0.5),
                     evidence=rel.get("source_sentence", ""),
+                    status=status,
+                    source_id=source_id,
+                    source_section=source_section,
+                    retrieval_timestamp=retrieval_timestamp,
                 )
                 graph[rel["source"]].append(step)
         
@@ -373,9 +415,18 @@ class MechanismExtractor:
                     "final_effect": c.final_effect,
                     "mechanism_label": c.mechanism_label,
                     "confidence": c.confidence,
+                    # DR-42: chain-level status (weakest step determines chain status)
+                    "chain_status": min(
+                        (s.status for s in c.steps),
+                        key=lambda x: self.STATUS_LEVELS.get(x, 0)
+                    ) if c.steps else "associative",
                     "steps": [
                         {"cause": s.cause, "effect": s.effect, "relation": s.relation,
-                         "confidence": s.confidence}
+                         "confidence": s.confidence,
+                         "status": s.status,
+                         "source_id": s.source_id,
+                         "source_section": s.source_section,
+                        }
                         for s in c.steps
                     ],
                 }
