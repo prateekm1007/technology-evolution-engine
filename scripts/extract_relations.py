@@ -82,6 +82,12 @@ CAUSAL_RELATIONS = {
     "separate": "productive", "measure": "productive",
     "detect": "productive", "record": "productive",
     "reflect": "productive",
+    # Cycle 125: additional scientific causal verbs
+    "affects": "causal", "influences": "causal", "impacts": "causal",
+    "requires": "enabling", "depends_on": "enabling",
+    "correlates_with": "causal", "inversely_correlates": "inhibiting",
+    "contains": "productive", "transforms": "productive",
+    "applied_to": "enabling",
 }
 
 
