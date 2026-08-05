@@ -61,16 +61,33 @@ class TestInterventionProposal:
         assert "SLIPS" in proposal["intervention"] or "liquid-infused" in proposal["intervention"]
 
     def test_generic_proposal_for_unknown_experiment(self):
-        """Edge case: unknown experiment_id produces generic proposal."""
+        """Edge case: unknown experiment_id produces structural proposal (cycle 90 generalization)."""
         proposal = propose_intervention(
             experiment_id="EXP-UNKNOWN-999",
-            bridge={"a": "X", "c": "Y", "b": "Z"},
+            bridge={"a": "material_X", "c": "mechanism_Y", "b": "application_Z"},
             mechanism="some mechanism",
         )
         assert proposal["type"] == "intervention_proposal"
         assert proposal["experiment_id"] == "EXP-UNKNOWN-999"
         assert "intervention" in proposal
-        assert "TBD" in proposal["experiment_protocol"]["steps"][0]
+        # The structural proposal (cycle 90) humanizes entity names (underscore -> space)
+        # and uses them in the proposal text
+        intervention_lower = proposal["intervention"].lower()
+        assert "mechanism y" in intervention_lower or "application z" in intervention_lower
+        assert proposal["experiment_protocol"]["estimated_cost_usd"] < 1000
+        assert proposal["experiment_protocol"]["duration_days"] < 30
+
+    def test_structural_proposal_uses_bridge_entities(self):
+        """Cycle 90: the structural proposal humanizes entity names from the bridge."""
+        proposal = propose_intervention(
+            experiment_id="EXP-NEW-042",
+            bridge={"a": "spider_silk", "c": "humidity_response", "b": "robotic_actuator"},
+            mechanism="humidity-driven contraction",
+        )
+        # The humanized names should appear in the proposal text
+        assert "spider silk" in proposal["intervention"].lower() or "spider_silk" in proposal["intervention"].lower()
+        assert "robotic actuator" in proposal["intervention"].lower() or "robotic_actuator" in proposal["intervention"].lower()
+        assert "humidity response" in proposal["prediction"].lower() or "humidity_response" in proposal["prediction"].lower()
 
 
 class TestProposalContract:

@@ -66,19 +66,100 @@ class InterventionProposal:
         The logic: if A and B share mechanism C, then an intervention on
         C in system A should produce effects predicted by B's response
         to C. This is the cross-domain test.
+
+        Per cycle 90: generalized to work from the bridge structure, not
+        hardcoded experiment IDs. The specific proposals (EXP-BLIND-003,
+        EXP-BLIND-022) are kept as refined overrides, but any new
+        discovery now gets a structural proposal derived from its bridge.
         """
         a = self.bridge.get("a", "")
         c = self.bridge.get("c", "")
         b = self.bridge.get("b", "")
 
-        # Generate the intervention, prediction, falsification, experiment
-        # based on the specific bridge
+        # Check for refined overrides (hardcoded specific proposals)
         if self.experiment_id == "EXP-BLIND-003":
             return self._proposal_nanofiber_bbb()
         elif self.experiment_id == "EXP-BLIND-022":
             return self._proposal_pitcher_agriculture()
-        else:
-            return self._generic_proposal(a, c, b)
+
+        # Generalized structural proposal (cycle 90)
+        return self._structural_proposal(a, c, b)
+
+    def _structural_proposal(self, a: str, c: str, b: str) -> Dict:
+        """Generate a structural intervention proposal from the bridge.
+
+        This is the generalized version (cycle 90). Any confirmed discovery
+        with bridge A->C->B gets a proposal built from the structure:
+        - Intervention: vary C in system A
+        - Prediction: system B's known response to C should predict the outcome
+        - Falsification: if A's response to C doesn't match B's, the bridge is false
+
+        The proposal is testable but generic — it needs domain-specific
+        refinement before execution. The refined overrides (003, 022) show
+        what domain-specific refinement looks like.
+        """
+        # Humanize the entity names for the proposal text
+        a_label = a.replace("_", " ")
+        b_label = b.replace("_", " ")
+        c_label = c.replace("_", " ")
+
+        return {
+            "discovery": f"{a_label} <-> {b_label} via {c_label}",
+            "shared_mechanism": c_label,
+            "intervention": (
+                f"Vary the {c_label} parameter in a {a_label} system across a range "
+                f"that spans the known operating range of {b_label}. Measure the "
+                f"system's response (the output that {c_label} governs in {a_label}). "
+                f"Compare the response curve to {b_label}'s known response curve for "
+                f"the same {c_label} range."
+            ),
+            "prediction": (
+                f"If {c_label} is the causal mechanism linking {a_label} and {b_label}, "
+                f"then {a_label}'s response to varying {c_label} should follow the same "
+                f"functional form as {b_label}'s response. Specifically: the curve of "
+                f"(response vs {c_label}) for {a_label} should match {b_label}'s curve "
+                f"within a factor of 3, after appropriate normalization."
+            ),
+            "falsification": (
+                f"If {a_label}'s response to {c_label} does NOT match {b_label}'s "
+                f"(different functional form, different sign, or off by >3x), the bridge "
+                f"is a false analogy. This would indicate that {c_label} operates "
+                f"differently in the two systems, or that other factors (surface "
+                f"chemistry, charge, dynamic gating, active transport) dominate."
+            ),
+            "experiment_protocol": {
+                "materials": [
+                    f"{a_label} system components (to be specified by domain expert)",
+                    f"{b_label} reference data (from published literature)",
+                    f"Instrumentation to measure {c_label} and the governed response",
+                ],
+                "estimated_cost_usd": 500,  # generic estimate
+                "steps": [
+                    f"Identify the {c_label} operating range for {b_label} from published literature.",
+                    f"Fabricate or obtain {a_label} samples spanning that {c_label} range.",
+                    f"For each {a_label} sample, measure the response governed by {c_label}.",
+                    f"Plot {a_label}'s response curve vs {c_label}.",
+                    f"Compare to {b_label}'s published response curve.",
+                ],
+                "duration_days": 14,
+                "measurement": f"Response curve (output vs {c_label}) for {a_label}, compared to {b_label}",
+                "success_criterion": (
+                    f"{a_label}'s response curve matches {b_label}'s within a factor of 3. "
+                    f"If matched, the bridge is confirmed as a causal mechanism analogy. "
+                    f"If not matched, the bridge is a false analogy."
+                ),
+            },
+            "pearl_do_operator": f"do({c} = range)",
+            "class": "B",
+            "closes_loop": "Loop 4 (Experimentation) — if run, this closes the experimentation loop",
+            "note": (
+                "Generalized structural proposal (cycle 90). This proposal is testable "
+                "but needs domain-specific refinement (materials, measurements, exact "
+                "ranges) before execution. The refined overrides for EXP-BLIND-003 and "
+                "EXP-BLIND-022 show what domain-specific refinement looks like. "
+                "A domain expert should review and customize this proposal."
+            ),
+        }
 
     def _proposal_nanofiber_bbb(self) -> Dict:
         """EXP-BLIND-003: nanofiber membrane <-> BBB tight junction.
@@ -244,28 +325,6 @@ class InterventionProposal:
                 "biology, just materials science). Could be run in a kitchen lab. "
                 "Per cycle-54 rule: <$1000, <30 days, measurable, reproducible."
             ),
-        }
-
-    def _generic_proposal(self, a: str, c: str, b: str) -> Dict:
-        """Generic proposal template for other discoveries."""
-        return {
-            "discovery": f"{a} <-> {b} via {c}",
-            "shared_mechanism": c,
-            "intervention": f"Apply the {c} mechanism from {a} to {b} and measure the effect.",
-            "prediction": f"If {c} is causal, the intervention should produce a measurable change in {b}.",
-            "falsification": f"If no measurable change, the bridge is a false analogy.",
-            "experiment_protocol": {
-                "materials": ["TBD"],
-                "estimated_cost_usd": 0,
-                "steps": ["TBD"],
-                "duration_days": 0,
-                "measurement": "TBD",
-                "success_criterion": "TBD",
-            },
-            "pearl_do_operator": f"do({c})",
-            "class": "B",
-            "closes_loop": "Loop 4 (Experimentation) — requires wet lab or materials lab",
-            "note": "Generic proposal. Customize for the specific discovery.",
         }
 
     def to_dict(self) -> Dict:
