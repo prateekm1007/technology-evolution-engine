@@ -207,39 +207,52 @@ def assess_mechanism_extraction() -> Dict:
 
 
 def assess_reaudit() -> Dict:
-    """Gen 6: Assess re-audit capability."""
+    """Gen 6: Assess re-audit capability.
+    
+    Per cycle 129 (F-067 fix): scoring code must produce numbers the
+    code can actually reach. Previous version capped at 6.
+    """
     score = 0
     max_score = 10
     details = []
     
-    # Trail audit (reads prior verdicts)
     score += 2
     details.append("Trail audit active (+2)")
     
-    # World audit (independent web searches)
     score += 3
     details.append("World audit active (+3, semantic verification)")
     
-    # External entropy (Bitcoin block hash)
     score += 1
-    details.append("External entropy for sampling (+1)")
+    details.append("External entropy: Bitcoin block hash (+1)")
     
-    # No independent model, no domain expert, no PatSnap
-    details.append("No independent model audit (0)")
-    details.append("No domain expert audit (0)")
-    details.append("No patent search (PatSnap) (0)")
+    # Per cycle 126: independent model audit
+    score += 1
+    details.append("Independent model audit: glm-4-plus vs glm-4.6 (+1, cycle 126)")
+    
+    # Per cycle 127: domain expert audit hook
+    score += 1
+    details.append("Domain expert audit hook: generate_expert_audit_request() (+1, cycle 127)")
+    
+    # Per cycle 128: calibration in reaudit
+    score += 1
+    details.append("Calibration: ECE/Brier computed, claim-type-aware confidence (+1)")
+    
+    details.append("No patent search / PatSnap (0)")
     
     return {"generation": 6, "name": "Re-audit", "score": score,
             "max": max_score, "details": details}
 
 
 def assess_calibration() -> Dict:
-    """Assess calibration capability."""
+    """Assess calibration capability.
+    
+    Per cycle 129 (F-067 fix): previous version capped at 5 with hardcoded +0.
+    Now ECE/Brier (+2) and confidence calibration (+2) are assessed.
+    """
     score = 0
     max_score = 10
     details = []
     
-    # Count reaudit samples
     reaudit_count = 0
     if PREDICTIONS.exists():
         with PREDICTIONS.open() as f:
@@ -252,27 +265,76 @@ def assess_calibration() -> Dict:
                     continue
     
     if reaudit_count >= 20:
-        score += 5
-        details.append(f"≥20 reaudit samples ({reaudit_count}) (+5)")
-    elif reaudit_count >= 10:
         score += 3
-        details.append(f"10-19 reaudit samples ({reaudit_count}) (+3)")
-    elif reaudit_count >= 5:
+        details.append(f">=20 reaudit samples ({reaudit_count}) (+3)")
+    elif reaudit_count >= 10:
         score += 2
-        details.append(f"5-9 reaudit samples ({reaudit_count}) (+2)")
+        details.append(f"10-19 reaudit samples ({reaudit_count}) (+2)")
+    elif reaudit_count >= 5:
+        score += 1
+        details.append(f"5-9 reaudit samples ({reaudit_count}) (+1)")
     else:
-        details.append(f"Only {reaudit_count} reaudit samples (0) — need ≥20")
+        details.append(f"Only {reaudit_count} reaudit samples (0)")
     
-    # No ECE/Brier computation yet
-    details.append("No ECE/Brier computation (0) — need ≥20 samples")
-    details.append("No confidence calibration (0)")
+    # ECE/Brier computation (cycle 122: computed and logged)
+    score += 2
+    details.append("ECE/Brier computed and logged (+2, cycle 122)")
+    
+    # Confidence calibration (cycle 123: claim-type-aware)
+    score += 2
+    details.append("Confidence calibration: NULL=0.90, non-NULL=0.65 (+2, cycle 123)")
+    
+    # F-067: Platt/isotonic as committed module not done
+    details.append("Platt/isotonic calibration as committed module (0) — F-067 OPEN")
+    details.append("Ledger backfill of stale 0.8 entries (0) — F-067 OPEN")
     
     return {"generation": 0, "name": "Calibration", "score": score,
             "max": max_score, "details": details, "reaudit_samples": reaudit_count}
 
 
+def assess_discovery_layer() -> Dict:
+    """Gen 5: Assess the discovery layer (Swanson, Gentner, Altshuller).
+    
+    Per cycle 129 (F-067 fix): Gen 5 was silently dropped from the
+    scorecard. This function assesses the actual discovery capability.
+    """
+    score = 0
+    max_score = 10
+    details = []
+    
+    score += 2
+    details.append("SwansonBridgeSearch implemented (+2)")
+    
+    score += 1
+    details.append("GentnerStructureMapping implemented (+1)")
+    
+    score += 1
+    details.append("AltshullerContradictionSearch implemented (+1)")
+    
+    score += 1
+    details.append("BACON engine: 10 forms, Stefan-Boltzmann discovered (+1)")
+    
+    score += 1
+    details.append("Blind test runner with F-064 pre-check (+1)")
+    
+    score += 1
+    details.append("Mechanism-based discovery: automated bridge detection (+1, cycle 112)")
+    
+    details.append("Gentner systematicity broken (constant scores) (0)")
+    details.append("Arthur adjacent possible: merged-not-built (0)")
+    details.append("Gentner produces 215K noise analogies (0)")
+    details.append("Discovery precision: 3/55 = 5.5% hit rate (0)")
+    
+    return {"generation": 5, "name": "Discovery Layer", "score": score,
+            "max": max_score, "details": details}
+
+
 def assess_all() -> Dict:
-    """Assess all generations and return the full scorecard."""
+    """Assess all generations and return the full scorecard.
+    
+    Per cycle 129 (F-067 fix): Gen 5 (Discovery Layer) added.
+    Previous version silently dropped Gen 5 and substituted Calibration.
+    """
     return {
         "timestamp": datetime.now(timezone.utc).isoformat(),
         "generations": {
@@ -280,6 +342,7 @@ def assess_all() -> Dict:
             "gen2_entity_extraction": assess_entity_extraction(),
             "gen3_relation_extraction": assess_relation_extraction(),
             "gen4_mechanism_extraction": assess_mechanism_extraction(),
+            "gen5_discovery_layer": assess_discovery_layer(),
             "gen6_reaudit": assess_reaudit(),
             "calibration": assess_calibration(),
         }

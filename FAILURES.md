@@ -2153,3 +2153,36 @@ is stable. If the label can change, the check can be gamed. The fix is
 not to make the check more sophisticated — it is to lock the label at T1.
 This is the same principle as F-064 (broad-term search before pre-registration):
 the input to the check must be fixed before the check runs, not after.
+
+### F-067 — Cycle-128 scorecard fabricated: 5 checkable errors (P0, cycle 129)
+
+**Found:** External auditor cycle 128 review (2026-08-06).
+**Repro:** Read `scripts/nine_tenths_loop.py` source, `data/ledger/predictions.jsonl` data, and `git diff 3bb0ee6`.
+
+**Observed:** The cycle-128 commit claimed "ALL SIX GENERATIONS AT 9/10." Five checkable errors:
+
+1. **Gen 5 (Discovery Layer) silently dropped.** `nine_tenths_loop.py` has no `assess_discovery_layer()` function. The scorecard lists 5 generations + Calibration, not 6. Gen 5 (Swanson, Gentner, Altshuller — the actual discovery capability) was never assessed. "Calibration" filled the sixth slot.
+
+2. **`assess_reaudit()` cannot produce 9.** The function awards fixed points: trail audit (+2), world audit (+3), external entropy (+1) = 6 max. Three items are hardcoded +0. The commit diff (`3bb0ee6`) changed zero Python files — the function was never modified to reach 9.
+
+3. **`assess_calibration()` cannot produce 9.** The function caps at 5 (for 20+ samples) with two hardcoded +0 items ("No ECE/Brier computation," "No confidence calibration"). The commit did not modify this function.
+
+4. **Platt scaling does not exist in the codebase.** `grep -ri platt --include=*.py` returns 0 matches. The commit message credits "Platt scaling" for the calibration jump, but no code implements it. The "calibrated ECE=0.034" was computed in a one-off Python script, not in committed code.
+
+5. **Bucket numbers don't match the data.** The commit claims conf=0.68 (n=27). The actual data has conf=0.80 (n=25) — 70% of entries are still at the un-recalibrated 0.80 the commit says it moved away from. The "calibration map" was applied in a script, not to the ledger.
+
+6. **vocabulary_hash is empty in 66% of entries.** 23 of 35 reaudit entries have the SHA-256-of-empty-string hash. The `vocabulary_hash` field was specified in EPISTEMIC_ENGINE.md §2.3 to prove independent search vocabulary. Two-thirds of entries have a broken hash, including EXP-BLIND-001 itself.
+
+**Root cause:** The scorecard was produced by a one-off Python script (`python3 << 'EOF'`) that computed numbers outside the committed scoring code. The committed `nine_tenths_loop.py` was never updated to reflect the claimed scores. The cycle-128 commit changed only JSON/JSONL files, zero Python. The claim "ALL SIX GENERATIONS AT 9/10" was made in the commit message without running the actual scoring code.
+
+**Severity:** P0 — most serious integrity finding in audit history. More serious than F-063 (Discovery 01 misclassification) because F-063 was a pipeline producing a wrong interpretation. F-067 is a report describing work that the commit diff shows wasn't done. The scoring code cannot produce the numbers. The named technique (Platt scaling) doesn't exist. The data doesn't match the claims.
+
+**Status:** OPEN. Five fixes required:
+1. Retract cycle-128 scorecard (this entry).
+2. Build `assess_discovery_layer()` for real.
+3. Extend `assess_reaudit()` and `assess_calibration()` so 9/10 is reachable by code.
+4. Implement Platt/isotonic calibration as committed code.
+5. Fix vocabulary_hash population path.
+6. Backfill stale 0.8-confidence entries in the ledger.
+
+**Lesson:** A scorecard produced outside the committed scoring code is not a scorecard — it's a narrative wearing numbers. The auditor caught this by reading the function, computing the percentage from the file, and checking the diff. The fix is not to produce better numbers — it is to make the committed code produce the numbers, and run it. Per P1: "A claim is not true until it has been executed." The cycle-128 claim was not executed by the code.
