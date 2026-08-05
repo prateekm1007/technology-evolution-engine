@@ -404,9 +404,12 @@ def semantic_verify_bridge(snippet: str, lit_a_terms: List[str], lit_b_terms: Li
             return False
         # If ambiguous, be conservative: treat as false positive
         return False
-    except Exception:
-        # If LLM unavailable, fall back to keyword-only (accept the bridge)
-        # but flag that semantic verification was not applied
+    except Exception as e:
+        # Per P6: fail closed and broken, not open and silent.
+        # Log the error so it's visible, then fall back to keyword-only.
+        import sys
+        print(f"  [semantic_verify_bridge] WARNING: LLM unavailable ({e}), "
+              f"falling back to keyword-only (less reliable)", file=sys.stderr)
         return True
 
 

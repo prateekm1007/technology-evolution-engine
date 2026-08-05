@@ -124,8 +124,11 @@ def get_external_entropy() -> str:
         block_hash = data.get("hash", "")
         if block_hash and len(block_hash) >= 32:
             return f"bitcoin_block:{block_hash}"
-    except Exception:
-        pass
+    except Exception as e:
+        # Per P6: log the error, don't silently swallow.
+        import sys as _sys
+        print(f"  [get_external_entropy] Bitcoin API unavailable ({e}), "
+              f"using fallback", file=_sys.stderr)
 
     # Fallback: use the current time at second resolution + a documented warning
     # This is NOT external enough per §5.2, but it's the best we can do without
@@ -285,8 +288,13 @@ def run_world_audit(claim: Dict, all_entries: List[Dict]) -> Dict:
                         "title": p.get("name", "")[:80],
                         "snippet": p.get("snippet", "")[:150],
                     })
-            except Exception:
-                # If semantic verification unavailable, be conservative: count it
+            except Exception as e:
+                # Per P6: log the error. Conservative: count the paper as a bridge
+                # (keyword match found both terms) but flag that semantic verification
+                # was not applied.
+                import sys as _sys
+                print(f"  [world_audit] semantic verification failed ({e}), "
+                      f"counting as bridge (conservative)", file=_sys.stderr)
                 bridge_papers.append({
                     "title": p.get("name", "")[:80],
                     "snippet": p.get("snippet", "")[:150],
