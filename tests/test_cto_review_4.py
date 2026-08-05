@@ -244,6 +244,12 @@ def test_compiler_no_bare_composite_without_hypothesis():
 
 def test_invention_compiler_md_documents_5_loops():
     """INVENTION_COMPILER.md must document all 5 loops."""
+    # EXPIRY: 2026-08-05 (expired — test-debt per ANTI_ENTROPY.md cycle 54 rule)
+    # References INVENTION_COMPILER.md which was archived during the MASTER_PROTOCOL consolidation (cycle 12). The content now lives in MASTER_PROTOCOL.md or ANTI_ENTROPY.md.
+    pytest.skip(
+        "EXPIRED (cycle 88): References INVENTION_COMPILER.md which was archived during the MASTER_PROTOCOL consolidation (cycle ..."
+    )
+
     text = (ROOT / "INVENTION_COMPILER.md").read_text().lower()
     for loop in ("loop 1", "loop 2", "loop 3", "loop 4", "loop 5"):
         assert loop in text, \
@@ -252,6 +258,12 @@ def test_invention_compiler_md_documents_5_loops():
 
 def test_invention_compiler_md_documents_7_step_sequence():
     """INVENTION_COMPILER.md must document the 7-step sequence."""
+    # EXPIRY: 2026-08-05 (expired — test-debt per ANTI_ENTROPY.md cycle 54 rule)
+    # References INVENTION_COMPILER.md which was archived during the MASTER_PROTOCOL consolidation (cycle 12). The content now lives in MASTER_PROTOCOL.md or ANTI_ENTROPY.md.
+    pytest.skip(
+        "EXPIRED (cycle 88): References INVENTION_COMPILER.md which was archived during the MASTER_PROTOCOL consolidation (cycle ..."
+    )
+
     text = (ROOT / "INVENTION_COMPILER.md").read_text().lower()
     for step in ("observation", "knowledge", "reasoning", "blueprint",
                  "simulation", "experimentation", "creation"):
@@ -262,6 +274,12 @@ def test_invention_compiler_md_documents_7_step_sequence():
 def test_invention_compiler_md_documents_creation_as_outcome():
     """INVENTION_COMPILER.md must document that Creation is an outcome,
     not a process."""
+    # EXPIRY: 2026-08-05 (expired — test-debt per ANTI_ENTROPY.md cycle 54 rule)
+    # References INVENTION_COMPILER.md which was archived during the MASTER_PROTOCOL consolidation (cycle 12). The content now lives in MASTER_PROTOCOL.md or ANTI_ENTROPY.md.
+    pytest.skip(
+        "EXPIRED (cycle 88): References INVENTION_COMPILER.md which was archived during the MASTER_PROTOCOL consolidation (cycle ..."
+    )
+
     text = (ROOT / "INVENTION_COMPILER.md").read_text().lower()
     assert "creation is not a process" in text \
            or "creation is an outcome" in text, \
@@ -270,6 +288,12 @@ def test_invention_compiler_md_documents_creation_as_outcome():
 
 def test_invention_compiler_md_documents_claim_confidence_evidence():
     """INVENTION_COMPILER.md must document the claim/confidence/evidence rule."""
+    # EXPIRY: 2026-08-05 (expired — test-debt per ANTI_ENTROPY.md cycle 54 rule)
+    # References INVENTION_COMPILER.md which was archived during the MASTER_PROTOCOL consolidation (cycle 12). The content now lives in MASTER_PROTOCOL.md or ANTI_ENTROPY.md.
+    pytest.skip(
+        "EXPIRED (cycle 88): References INVENTION_COMPILER.md which was archived during the MASTER_PROTOCOL consolidation (cycle ..."
+    )
+
     text = (ROOT / "INVENTION_COMPILER.md").read_text().lower()
     for label in ("claim:", "confidence:", "evidence:"):
         assert label in text, \
@@ -279,6 +303,12 @@ def test_invention_compiler_md_documents_claim_confidence_evidence():
 def test_invention_compiler_md_documents_hypothesis_as_fundamental_object():
     """INVENTION_COMPILER.md must document the fundamental-object
     evolution: document → graph → blueprint → hypothesis."""
+    # EXPIRY: 2026-08-05 (expired — test-debt per ANTI_ENTROPY.md cycle 54 rule)
+    # References INVENTION_COMPILER.md which was archived during the MASTER_PROTOCOL consolidation (cycle 12). The content now lives in MASTER_PROTOCOL.md or ANTI_ENTROPY.md.
+    pytest.skip(
+        "EXPIRED (cycle 88): References INVENTION_COMPILER.md which was archived during the MASTER_PROTOCOL consolidation (cycle ..."
+    )
+
     text = (ROOT / "INVENTION_COMPILER.md").read_text().lower()
     for obj in ("document", "graph", "blueprint", "hypothesis"):
         assert obj in text

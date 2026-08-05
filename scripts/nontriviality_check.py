@@ -175,63 +175,94 @@ def search_citation_bridge_semantic_scholar(lit_a_terms: List[str],
     fallback). Queries the Semantic Scholar Graph API for papers matching
     literature A terms, then checks if any also mention literature B terms.
 
-    Falls back gracefully on rate limit (429) or API errors.
+    Per cycle 88: automated retry with exponential backoff (no manual API
+    key required). The Semantic Scholar API allows low-volume anonymous
+    access; the 429 errors in cycle 87 were transient rate limits that
+    backoff resolves.
+
+    Falls back to web_search only if all retries fail.
     """
     import urllib.parse
+    import time
 
     a_term = lit_a_terms[0] if lit_a_terms else ""
     b_term = lit_b_terms[0] if lit_b_terms else ""
-    combined = f"{a_term} {b_term}"
 
-    # Semantic Scholar search endpoint
-    query = urllib.parse.quote(combined)
-    url = f"https://api.semanticscholar.org/graph/v1/paper/search?query={query}&limit=5&fields=title,year,citationCount,abstract"
+    # Try multiple query strategies:
+    # 1. Combined query (most specific — finds papers mentioning both)
+    # 2. Literature A query, then filter for B terms in results
+    queries = [
+        f"{a_term} {b_term}",  # combined
+        a_term,  # A only, then check abstracts for B
+    ]
 
-    try:
-        result = subprocess.run(
-            ["curl", "-sL", "--max-time", "15",
-             "-H", "User-Agent: TEE-research/1.0",
-             url],
-            capture_output=True, text=True, timeout=20
-        )
-        data = json.loads(result.stdout)
-        if "error" in data or data.get("code") == 429:
-            return {
-                "api": "semantic_scholar",
-                "available": False,
-                "error": data.get("message", "rate limited"),
-                "papers": [],
-            }
-        papers = data.get("data", [])
-        # Check which papers mention BOTH literatures in abstract
-        bridge_papers = []
-        for p in papers:
-            abstract = (p.get("abstract") or "").lower()
-            title = (p.get("title") or "").lower()
-            text = abstract + " " + title
-            has_a = any(t.lower() in text for t in lit_a_terms)
-            has_b = any(t.lower() in text for t in lit_b_terms)
-            if has_a and has_b:
-                bridge_papers.append({
-                    "title": p.get("title", "")[:80],
-                    "year": p.get("year"),
-                    "citations": p.get("citationCount", 0),
-                })
-        return {
-            "api": "semantic_scholar",
-            "available": True,
-            "papers_found": len(papers),
-            "bridge_papers_found": len(bridge_papers),
-            "bridge_papers": bridge_papers[:5],
-            "citation_bridge_exists": len(bridge_papers) > 0,
-        }
-    except Exception as e:
+    max_retries = 3
+    all_papers = []
+
+    for query in queries:
+        encoded = urllib.parse.quote(query)
+        url = f"https://api.semanticscholar.org/graph/v1/paper/search?query={encoded}&limit=10&fields=title,year,citationCount,abstract"
+
+        for attempt in range(max_retries):
+            try:
+                result = subprocess.run(
+                    ["curl", "-sL", "--max-time", "15",
+                     "-H", "User-Agent: TEE-research/1.0 (mailto:research@tee.example)",
+                     url],
+                    capture_output=True, text=True, timeout=20
+                )
+                data = json.loads(result.stdout)
+
+                if data.get("code") == 429 or "error" in data:
+                    wait = 2 ** attempt  # 1, 2, 4 seconds
+                    time.sleep(wait)
+                    continue
+
+                papers = data.get("data", [])
+                for p in papers:
+                    # Deduplicate by paper ID
+                    pid = p.get("paperId", p.get("title", ""))
+                    if pid and pid not in [x.get("paperId", x.get("title","")) for x in all_papers]:
+                        all_papers.append(p)
+                break  # success, move to next query
+
+            except (json.JSONDecodeError, subprocess.TimeoutExpired):
+                time.sleep(2 ** attempt)
+                continue
+
+        time.sleep(1)  # polite delay between queries
+
+    if not all_papers:
         return {
             "api": "semantic_scholar",
             "available": False,
-            "error": str(e),
+            "error": "no results after retries",
             "papers": [],
         }
+
+    # Check which papers mention BOTH literatures in abstract/title
+    bridge_papers = []
+    for p in all_papers:
+        abstract = (p.get("abstract") or "").lower()
+        title = (p.get("title") or "").lower()
+        text = abstract + " " + title
+        has_a = any(t.lower() in text for t in lit_a_terms)
+        has_b = any(t.lower() in text for t in lit_b_terms)
+        if has_a and has_b:
+            bridge_papers.append({
+                "title": p.get("title", "")[:80],
+                "year": p.get("year"),
+                "citations": p.get("citationCount", 0),
+            })
+
+    return {
+        "api": "semantic_scholar",
+        "available": True,
+        "papers_found": len(all_papers),
+        "bridge_papers_found": len(bridge_papers),
+        "bridge_papers": bridge_papers[:5],
+        "citation_bridge_exists": len(bridge_papers) > 0,
+    }
 
 
 def search_citation_bridge(lit_a_terms: List[str], lit_b_terms: List[str]) -> Dict:
