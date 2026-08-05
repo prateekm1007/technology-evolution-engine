@@ -1907,3 +1907,80 @@ before the cycle is considered complete. No exceptions. No "I'll do it later."
 alternative (allowing the coder to skip the PDF) produces the exact failure
 mode the CEO identified: the coder builds infrastructure but never produces
 the actual product. The PDF mandate makes the product non-optional.
+
+---
+
+## The 9-Phase Discovery Maturity Model (cycle 69, per CEO directive)
+
+> "You are no longer at 'graph toy' stage. You are also not yet at
+> 'world-class discovery engine' stage. You are somewhere in between."
+> — CEO, cycle 68
+
+The system's maturity is measured on a 9-phase scale. Each phase
+has a success criterion. The loop drives the system from one phase
+to the next.
+
+### The 9 Phases
+
+| Phase | Name | Success Criterion | Current Status |
+|---|---|---|---|
+| I | Scientific Memory | Everything becomes replayable | 🟡 70% |
+| II | Dimensional Reasoning | Impossible laws disappear automatically | 🔴 5% |
+| III | Symbolic Discovery | Discover equations you never programmed | 🟡 20% |
+| IV | Mechanism Induction | The system explains | 🟡 25% |
+| V | Intervention Search | The engine proposes experiments | 🟡 30% |
+| VI | Laboratory Closure | The engine learns from reality | 🔴 10% |
+| VII | Adjacent Possible Exploration | The system explores what does not yet exist | 🟡 15% |
+| VIII | Discovery Economics | maximize(expected_information_gain) | 🔴 0% |
+| IX | Apollo Benchmark | Blind tests → 100, novel hits → 25, closed loops → 1000 | 🟡 2/100 |
+
+### The Final Architecture
+
+```
+OBSERVE → EXTRACT → REPRESENT → EXPLAIN → DISCOVER → INTERVENE
+→ PREDICT → EXPERIMENT → MEASURE → LEARN → REVISE
+```
+
+### The Apollo Metrics (every PR improves one)
+
+| Metric | Current | Target |
+|---|---|---|
+| Blind tests | 2 | 100 |
+| Novel hits | 1 | 25 |
+| Retrievals | 1 | 25 |
+| Null results | 0 | 50 |
+| Closed loops | 10 | 1000 |
+| Verified mechanisms | 14% | 75% |
+| Human intervention | High | Low |
+| Domains | 7 | 100 |
+
+### Required New Data Structures
+
+Per CEO directive, the following classes must be added:
+
+```python
+class Observation:
+    source, variables, units, measurement, uncertainty, conditions
+
+class Intervention:
+    variable, perturbation, expectation, outcome
+
+class Theory:
+    assumptions, laws, domain, failures
+
+class Dimension:
+    mass, length, time, current, temperature, amount
+
+class Mechanism:
+    entities, activities, organization, constraints, transitions
+```
+
+### Required New Algorithms
+
+- Buckingham π theorem (dimensional consistency)
+- PySR-style symbolic regression (open law search)
+- Machamer–Darden–Craver mechanism induction
+- Pearl intervention calculus (do-calculus)
+- Bayesian optimization for experiment selection
+- NK models for adjacent possible exploration
+- Expected information gain maximization

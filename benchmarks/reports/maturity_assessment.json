@@ -1,0 +1,109 @@
+{
+  "timestamp": "2026-08-05T03:16:52.546036+00:00",
+  "phases": {
+    "I": {
+      "name": "Scientific Memory",
+      "success_criterion": "Everything becomes replayable",
+      "current_status": "70%",
+      "current_assessment": "IdentityGraph, SimilarityGraph, MechanismGraph, CausalGraph, ExperimentGraph exist. Missing: Observation, Intervention, Theory classes. CausalEdge has mechanism_status but no Observation with measurement/uncertainty.",
+      "next_work": "Add Observation, Intervention, Theory dataclasses to invention_compiler/. Wire them into the DiscoveryGraph as new node types.",
+      "required_classes": [
+        {
+          "class": "Observation",
+          "exists": false
+        },
+        {
+          "class": "Intervention",
+          "exists": true
+        },
+        {
+          "class": "Theory",
+          "exists": false
+        }
+      ]
+    },
+    "II": {
+      "name": "Dimensional Reasoning",
+      "success_criterion": "Impossible laws disappear automatically",
+      "current_status": "5%",
+      "current_assessment": "The system treats all numbers as dimensionless. Stefan-Boltzmann's T\u2074 (K\u2074) and PCM's linear (kg/W) are fit identically. No unit consistency check exists.",
+      "next_work": "Add Dimension dataclass (mass, length, time, current, temperature, amount). Implement Buckingham \u03c0 theorem. Add dimensional consistency check to BACON's candidate law forms.",
+      "required_classes": [
+        {
+          "class": "Dimension",
+          "exists": false
+        }
+      ]
+    },
+    "III": {
+      "name": "Symbolic Discovery",
+      "success_criterion": "Discover equations you never programmed",
+      "current_status": "20%",
+      "current_assessment": "BACON has 6 candidate forms (linear, inverse, log, power, exponential, quadratic). BACON.3 does recursive composition. BACON.4 does 3+ variable products. Missing: open search (PySR-style), trigonometric functions, piecewise laws.",
+      "next_work": "Add sin/cos/log/sqrt/atan to candidate forms. Implement PySR-style genetic programming search. Add Monte Carlo tree search for law form exploration.",
+      "required_classes": []
+    },
+    "IV": {
+      "name": "Mechanism Induction",
+      "success_criterion": "The system explains",
+      "current_status": "25%",
+      "current_assessment": "CausalEdge has mechanism field (text description). Missing: structured mechanism representation (entities, activities, organization, constraints, transitions). The system describes but does not explain.",
+      "next_work": "Expand Mechanism class to include entities, activities, organization, constraints, transitions. Implement Machamer-Darden-Craver framework.",
+      "required_classes": [
+        {
+          "class": "Mechanism (expanded)",
+          "exists": false
+        }
+      ]
+    },
+    "V": {
+      "name": "Intervention Search",
+      "success_criterion": "The engine proposes experiments",
+      "current_status": "30%",
+      "current_assessment": "design_competing_experiment exists (accepts hypotheses). design_autonomous_competing_experiment generates hypotheses. Missing: Pearl do-calculus, counterfactual search, Bayesian optimization for experiment selection.",
+      "next_work": "Implement Pearl do-calculus (do(x) vs observe(x)). Add counterfactual search. Add Bayesian optimization for experiment selection.",
+      "required_classes": []
+    },
+    "VI": {
+      "name": "Laboratory Closure",
+      "success_criterion": "The engine learns from reality",
+      "current_status": "10%",
+      "current_assessment": "10 closed loops exist (EXP-001 through EXP-010). All use external verification (paper lookup, not physical experiment). Missing: experiment compiler, protocol generator, simulator, measurement ingestion, automatic revision.",
+      "next_work": "Build experiment compiler (generates executable protocol from prediction). Build measurement ingestion (accepts external measurement, compares to prediction). Build belief revision (updates graph based on measurement outcome).",
+      "required_classes": []
+    },
+    "VII": {
+      "name": "Adjacent Possible Exploration",
+      "success_criterion": "The system explores what does not yet exist",
+      "current_status": "15%",
+      "current_assessment": "SwansonBridgeSearch finds undiscovered A\u2192B\u2192C paths. GentnerStructureMapping finds structural analogies. Missing: state-space exploration, NK models, combinatorial innovation search.",
+      "next_work": "Implement NK model for fitness landscape exploration. Add combinatorial innovation search (combine existing mechanisms in novel ways).",
+      "required_classes": []
+    },
+    "VIII": {
+      "name": "Discovery Economics",
+      "success_criterion": "maximize(expected_information_gain)",
+      "current_status": "0%",
+      "current_assessment": "Not started. The system does not prioritize which discovery to pursue next. No cost/benefit analysis of experiments.",
+      "next_work": "Add expected_information_gain calculation for each candidate bridge/experiment. Add cost model (financial, time, risk). Implement ranking by expected_value / cost.",
+      "required_classes": []
+    },
+    "IX": {
+      "name": "Apollo Benchmark",
+      "success_criterion": "Blind tests \u2192 100, novel hits \u2192 25, closed loops \u2192 1000",
+      "current_status": "2/100 blind tests",
+      "current_assessment": "2 blind tests completed (1 NOVEL HIT, 1 RETRIEVAL). 10 closed loops. 7 domains. 14% verified mechanisms. Need: more blind tests, more domains, more closed loops, higher verification rate.",
+      "next_work": "Run more blind discovery tests (target 10 by end of Phase I). Expand to more domains (target 20 by end of Phase III). Increase closed loops to 50 by end of Phase VI.",
+      "required_classes": []
+    }
+  },
+  "current_phase": "I",
+  "apollo_metrics": {
+    "blind_tests": 3,
+    "novel_hits": 1,
+    "retrievals": 1,
+    "null_results": 1,
+    "target_blind_tests": 100,
+    "target_novel_hits": 25
+  }
+}

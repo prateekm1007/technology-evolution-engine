@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-08-05T02:57:18.775594+00:00",
+  "timestamp": "2026-08-05T03:17:10.286565+00:00",
   "gates": [
     {
       "gate": "P27",
@@ -24,7 +24,7 @@
     {
       "gate": "GOV",
       "passed": true,
-      "details": "GOV WARNING: commit message lacks read receipt (soft gate). Message: product(cycle 67): DISCOVERY_REPORT.pdf \u2014 mycelium biominera..."
+      "details": "GOV PASS: commit message references governance"
     },
     {
       "gate": "P70",
