@@ -1881,3 +1881,29 @@ but the re-run is the actual deliverable.
 **AP-11 check:** This principle eliminates more entropy than it creates.
 The alternative (accepting NULL) would mean the system never discovers
 anything — which is the entropy it was designed to prevent.
+
+---
+
+## The PDF Mandate (cycle 68, per CEO directive)
+
+> "Make the PDF creation with all parameters above of discovery/invention/insight
+> mechanically impossible for you to escape. Excellence is not a choice." — CEO, cycle 67
+
+**Principle:** Every blind discovery test, every novel prediction, and every
+significant finding MUST produce a PDF deliverable committed to the repository
+before the cycle is considered complete. No exceptions. No "I'll do it later."
+
+**Mechanical enforcement:**
+1. A blind discovery test is NOT complete until `product/DISCOVERY_REPORT_N.pdf`
+   exists and is committed to the repository.
+2. The CI gate (Gate 10) SHALL be extended to check: if a `blind_test_hypothesis`
+   entry exists in the ledger for this cycle, a corresponding
+   `product/DISCOVERY_REPORT_*.pdf` MUST exist in the repository.
+3. If no PDF exists, the CI gate FAILS and the commit is rejected.
+4. The PDF must be generated via `scripts/generate_pdf.py` from a markdown source.
+5. The PDF must pass the Law 27 scanner (no forbidden language).
+
+**AP-11 check:** This principle eliminates more entropy than it creates. The
+alternative (allowing the coder to skip the PDF) produces the exact failure
+mode the CEO identified: the coder builds infrastructure but never produces
+the actual product. The PDF mandate makes the product non-optional.

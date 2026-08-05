@@ -494,3 +494,54 @@ def main():
 
 if __name__ == "__main__":
     sys.exit(main())
+
+
+# ---------------------------------------------------------------------------
+# Gate PDF — PDF mandate: blind test must have PDF deliverable
+# ---------------------------------------------------------------------------
+
+def gate_pdf_mandate() -> Tuple[bool, str]:
+    """PDF Mandate: every blind_test_hypothesis in the ledger must have
+    a corresponding product/DISCOVERY_REPORT_*.pdf in the repository.
+
+    Per CEO cycle 67: "Make the PDF creation mechanically impossible
+    for you to escape."
+    """
+    import json
+    ledger_path = ROOT / "data" / "ledger" / "predictions.jsonl"
+    if not ledger_path.exists():
+        return True, "PDF: no ledger — skipped"
+
+    # Check for blind_test_hypothesis entries
+    blind_tests = []
+    for line in ledger_path.read_text(encoding="utf-8").splitlines():
+        if not line.strip():
+            continue
+        try:
+            entry = json.loads(line)
+            if entry.get("type") in ("blind_test_hypothesis", "blind_test_hypothesis_v2"):
+                blind_tests.append(entry)
+        except json.JSONDecodeError:
+            continue
+
+    if not blind_tests:
+        return True, "PDF: no blind test hypotheses in ledger — skipped"
+
+    # Check for PDF files
+    pdf_dir = ROOT / "product"
+    pdfs = list(pdf_dir.glob("DISCOVERY_REPORT*.pdf")) if pdf_dir.exists() else []
+
+    if len(blind_tests) > len(pdfs):
+        missing = len(blind_tests) - len(pdfs)
+        return False, (
+            f"PDF MANDATE FAIL: {len(blind_tests)} blind test hypotheses in ledger "
+            f"but only {len(pdfs)} DISCOVERY_REPORT PDFs found. "
+            f"Missing {missing} PDF(s). Generate via: "
+            f"python scripts/generate_pdf.py product/DISCOVERY_REPORT.md product/DISCOVERY_REPORT.pdf"
+        )
+
+    return True, f"PDF MANDATE PASS: {len(pdfs)} PDF(s) found for {len(blind_tests)} blind test(s)"
+
+
+# Register the new gate
+GATES["PDF"] = gate_pdf_mandate
