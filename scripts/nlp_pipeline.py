@@ -457,13 +457,17 @@ class NLPPipeline:
         """Process text and return a graph-compatible structure.
         
         This is the interface to the existing CausalGraph system.
+        Per cycle 104: entity names are cleaned (whitespace → underscores)
+        to ensure the chain builder can match entities across sentences.
         """
         doc = self.process_document(text)
         
         nodes = []
         for ent in doc.entities:
+            # Clean entity name: strip, collapse whitespace to underscores
+            clean_id = re.sub(r'\s+', '_', ent.text.strip()).lower()
             nodes.append({
-                "node_id": ent.text.lower().replace(" ", "_"),
+                "node_id": clean_id,
                 "node_type": ent.label,
                 "label": ent.text,
                 "confidence": ent.confidence,
@@ -471,9 +475,11 @@ class NLPPipeline:
         
         edges = []
         for rel in doc.relations:
+            clean_source = re.sub(r'\s+', '_', rel.subject.text.strip()).lower()
+            clean_target = re.sub(r'\s+', '_', rel.obj.text.strip()).lower()
             edges.append({
-                "source": rel.subject.text.lower().replace(" ", "_"),
-                "target": rel.obj.text.lower().replace(" ", "_"),
+                "source": clean_source,
+                "target": clean_target,
                 "direction": "causes",
                 "mechanism": rel.relation,
                 "confidence": rel.confidence,

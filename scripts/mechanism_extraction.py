@@ -96,28 +96,37 @@ class MechanismExtractor:
     """
     
     # Relations that indicate causation (vs. correlation or description)
+    # Per cycle 104: expanded to include scientific verbs that indicate
+    # productive/enabling relationships in experimental text.
     CAUSAL_RELATIONS = {
-        "cause": "causal",
-        "causes": "causal",
-        "enable": "enabling",
-        "enables": "enabling",
-        "produce": "productive",
-        "produces": "productive",
-        "govern": "governing",
-        "governs": "governing",
-        "control": "governing",
-        "controls": "governing",
-        "increase": "enhancing",
-        "increases": "enhancing",
-        "improve": "enhancing",
-        "improves": "enhancing",
-        "enhance": "enhancing",
-        "reduces": "inhibiting",
-        "degrade": "inhibiting",
-        "inhibit": "inhibiting",
-        "prevents": "inhibiting",
-        "block": "inhibiting",
-        "blocks": "inhibiting",
+        "cause": "causal", "causes": "causal",
+        "enable": "enabling", "enables": "enabling",
+        "produce": "productive", "produces": "productive",
+        "govern": "governing", "governs": "governing",
+        "control": "governing", "controls": "governing",
+        "increase": "enhancing", "increases": "enhancing",
+        "improve": "enhancing", "improves": "enhancing",
+        "enhance": "enhancing", "reduces": "inhibiting",
+        "degrade": "inhibiting", "inhibit": "inhibiting",
+        "prevent": "inhibiting", "block": "inhibiting",
+        # Cycle 104 additions: scientific process verbs
+        "perform": "productive",
+        "disperse": "productive",
+        "fibrillate": "productive",
+        "record": "productive",
+        "reflect": "productive",
+        "expect": "causal",
+        "divide": "productive",
+        "separate": "productive",
+        "measure": "productive",
+        "detect": "productive",
+        "exhibit": "causal",
+        "demonstrate": "causal",
+        "show": "causal",
+        "reveal": "causal",
+        "indicate": "causal",
+        "suggest": "causal",
+        "confirm": "causal",
     }
     
     # Opposing relations (for contradiction detection)
