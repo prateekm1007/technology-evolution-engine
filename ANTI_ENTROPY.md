@@ -1943,24 +1943,29 @@ OBSERVE → EXTRACT → REPRESENT → EXPLAIN → DISCOVER → INTERVENE
 
 ### The Apollo Metrics (every PR improves one)
 
+**Note (cycle 98):** DR-34 "Confirmed on re-audit" column added. A novel hit
+not confirmed on reaudit is not a confirmed novel hit. The reaudit loop
+(DR-33) caught EXP-BLIND-001 (OVERTURNED to RETRIEVAL) — the same error
+the CEO caught manually in cycle 83. Now the system catches it structurally.
+
 **Note (cycle 91):** EXP-BLIND-023 was reverted from NON_TRIVIAL to
 LIKELY_TRIVIAL. Cycle 90 reframed its mechanism label post-hoc to flip the
 verdict — the same F-063 pattern. F-066 logged: mechanism labels must be
-locked at T1. The honest count is 2 confirmed non-trivial discoveries
-(EXP-BLIND-003, EXP-BLIND-022), not 3.
+locked at T1.
 
 **Note (cycle 83):** Discovery 01 (EXP-BLIND-001, mycelium→CaCO3) was
 reclassified from NOVEL HIT to RETRIEVAL per external auditor finding
-F-063. The FICP subfield is a named, actively published field with its
-own review papers. See FAILURES.md F-063, F-064, F-065, F-066.
+F-063. See FAILURES.md F-063, F-064, F-065, F-066.
 
 | Metric | Current | Target |
 |---|---|---|
-| Blind tests | 28 | 100 |
+| Blind tests | 46 | 100 |
 | Novel hits (confirmed non-trivial) | 2 | 25 |
 | Novel hits (likely trivial) | 1 (EXP-BLIND-023) | — |
-| Retrievals | 6 | 25 |
-| Null results | 19 | 50 |
+| **Confirmed on re-audit** | **3 (003, 022, 037)** | 25 |
+| **Overturned on re-audit** | **1 (001 → RETRIEVAL)** | — |
+| Retrievals | 7 | 25 |
+| Null results | 32 | 50 |
 | Closed loops | 10 | 1000 |
 | Verified mechanisms | 14% | 75% |
 | Human intervention | High | Low |

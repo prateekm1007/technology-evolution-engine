@@ -207,14 +207,45 @@ def run_adversarial_verification(claim: Dict) -> Dict:
     nontriviality = [e for e in all_entries if e.get("type") == "nontriviality_check"]
     f065 = [e for e in all_entries if "f065" in e.get("type", "")]
 
-    # Determine the re-audit verdict
+    # Determine the re-audit verdict.
+    # Priority order (latest, most authoritative first):
+    # 1. blind_test_reclassification (explicit reclassification)
+    # 2. f063_manual_verification (manual override of automated checks)
+    # 3. f065_fullpdf_reinvestigation (source-text verification)
+    # 4. nontriviality_check (automated non-triviality)
+    # 5. original verdict (uphold)
+    #
+    # Per cycle 98: the previous logic checked nontriviality before manual
+    # verification, which caused EXP-BLIND-022 to be incorrectly overturned
+    # (the cycle-93 KNOWN_BRIDGE was a false positive, corrected by cycle-94
+    # manual verification to NOT_A_KNOWN_BRIDGE). The fix: check manual
+    # verifications BEFORE nontriviality checks.
+
     if reclassifications:
         latest = reclassifications[-1]
         corrected = latest.get("corrected_outcome", latest.get("corrected_verdict_cycle_91", ""))
         if "RETRIEVAL" in str(corrected).upper():
             verdict = "RETRIEVAL"
         elif "LIKELY_TRIVIAL" in str(corrected).upper():
-            verdict = "NULL"  # trivial connections are not novel
+            verdict = "NULL"
+        else:
+            verdict = original_outcome
+    elif manual_verifications:
+        # Manual verification overrides automated non-triviality checks.
+        # Per P5: self-certification is weak evidence, but manual verification
+        # by the coder (with explicit web search) is stronger than automated.
+        latest_manual = manual_verifications[-1]
+        manual_verdict = latest_manual.get("verdict", latest_manual.get("status", ""))
+        # Per cycle 98: check "NOT_A_KNOWN_BRIDGE" BEFORE "KNOWN_BRIDGE" because
+        # "NOT_A_KNOWN_BRIDGE" contains the substring "KNOWN_BRIDGE". If we check
+        # KNOWN_BRIDGE first, it matches NOT_A_KNOWN_BRIDGE incorrectly.
+        if "NOT_A_KNOWN_BRIDGE" in str(manual_verdict).upper() or "FALSE_POSITIVE" in str(manual_verdict).upper():
+            # Manual verification cleared the claim — uphold original
+            verdict = original_outcome
+        elif "RETRIEVAL" in str(manual_verdict).upper() or "KNOWN_BRIDGE" in str(manual_verdict).upper():
+            verdict = "RETRIEVAL"
+        elif "INCONCLUSIVE" in str(manual_verdict).upper():
+            verdict = original_outcome  # can't overturn on inconclusive
         else:
             verdict = original_outcome
     elif nontriviality:
@@ -229,7 +260,6 @@ def run_adversarial_verification(claim: Dict) -> Dict:
         else:
             verdict = original_outcome
     else:
-        # No reclassification or non-triviality check — uphold original
         verdict = original_outcome
 
     # Check if verdict changed
