@@ -134,6 +134,15 @@ ENTITY_STOPWORDS = {
     "range", "ranges", "point", "points", "line", "lines", "side",
     "sides", "end", "ends", "top", "bottom", "middle", "center",
     "left", "right", "front", "back", "inside", "outside",
+    # Cycle 108: additional noise words that pass POS filter but aren't scientific
+    "does", "due", "even", "find", "full", "give", "had", "hand",
+    "has", "hours", "details", "contract", "development", "dry",
+    "experiments", "experimental_conditions", "homogenization",
+    "gold", "air",  # too generic without context
+    "materials",  # section header, not an entity
+    "purchased",  # verb form tagged as noun
+    "diameters",  # generic property, not a specific material
+    "nanoparticles",  # too generic without qualifier
 }
 
 
@@ -287,13 +296,28 @@ class NLPPipeline:
         # 1. spaCy NER (general entities)
         for ent in doc.ents:
             # Per cycle 107: filter generic English words from SciSpacy output.
-            # SciSpacy labels common words as ENTITY. Filter them here.
             ent_text_lower = ent.text.lower().strip()
             if ent_text_lower in ENTITY_STOPWORDS:
                 continue
             # Skip single words that are too short (< 4 chars) and not chemical formulas
             if len(ent_text_lower) < 4 and not re.match(r'^[A-Z][a-z]?[0-9]', ent.text):
                 continue
+            
+            # Per cycle 108: POS-tag filtering. Only accept entities whose
+            # root token is a noun (NOUN) or proper noun (PROPN). Reject
+            # verbs (VERB), adjectives (ADJ), adverbs (ADV), etc.
+            # This removes "does", "due", "acknowledge", "charged" etc.
+            # that passed the stopword filter but are not nouns.
+            root_token = ent.root
+            if root_token.pos_ not in ("NOUN", "PROPN", "X"):
+                # "X" allows unknown POS (some scientific terms)
+                continue
+            # Also check: if the entity is multi-word, at least one token
+            # should be a noun (e.g., "spherical gold" — "gold" is a noun)
+            if len(ent) > 1:
+                has_noun = any(t.pos_ in ("NOUN", "PROPN") for t in ent)
+                if not has_noun:
+                    continue
             
             # With SciSpacy, entities are labeled "ENTITY" (scientific)
             # With en_core_web_sm, they're labeled ORG/PERSON/GPE/etc.
