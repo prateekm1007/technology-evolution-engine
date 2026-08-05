@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-08-05T01:29:57.514924+00:00",
+  "timestamp": "2026-08-05T01:41:09.026520+00:00",
   "gates": [
     {
       "gate": "P27",
@@ -8,8 +8,8 @@
     },
     {
       "gate": "P77",
-      "passed": true,
-      "details": "P77 PASS: Swanson 2 unique scores, Gentner 2 unique systematicity values"
+      "passed": false,
+      "details": "P77 violations:\n  Gentner systematicity is constant (1 unique value) \u2014 P77 violation"
     },
     {
       "gate": "P1",
@@ -37,5 +37,5 @@
       "details": "TAX-CONSISTENCY PASS: 0 inconsistent edges (VERIFIED+ASSERTED forbidden)"
     }
   ],
-  "all_passed": true
+  "all_passed": false
 }

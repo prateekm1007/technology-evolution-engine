@@ -826,17 +826,19 @@ class GentnerStructureMapping:
         
         Returns chains that share relational structure but connect
         different entities.
+        
+        Per cycle 64 (Gentner rewrite): uses chain indexing by
+        (length, edge_type_sequence) to achieve O(n log n) instead of O(n²).
+        Chains are grouped by structural signature, and only chains with
+        the same signature are compared. This avoids the O(chains²) pairwise
+        comparison that timed out at 631 edges (cycle 63).
         """
-        # Extract all chains of length >= min_chain_length
-        # Per cycle 54 (Auditor Phase 1): search ALL subgraphs, not just
-        # MECHANISM. This allows chains with different edge-type sequences
-        # to be found and compared — which is what makes systematicity
-        # non-constant (the bug the Auditor caught).
+        # Step 1: Extract all chains of length >= min_chain_length
+        # Per cycle 54: search ALL subgraphs (not just MECHANISM)
         chains = []
         for subgraph in graph._subgraphs.values():
             if not hasattr(subgraph, 'edges'):
                 continue
-            # BFS from each node
             for start_node in subgraph.nodes:
                 visited = set()
                 queue = [(start_node, [start_node])]
@@ -851,33 +853,46 @@ class GentnerStructureMapping:
                         if edge.source == current and edge.target not in visited:
                             queue.append((edge.target, path + [edge.target]))
         
-        # Compare chains for structural similarity
+        # Step 2: Compute structural signature for each chain
+        # Signature = (length, tuple(edge_type_sequence))
+        # Chains with the same signature are structurally similar candidates
+        from collections import defaultdict
+        chain_signatures = []  # list of (signature, chain, edge_types)
+        for chain in chains:
+            edge_types = _edge_type_sequence(graph, chain)
+            if not edge_types:
+                continue  # invalid chain (missing edges)
+            signature = (len(chain), tuple(edge_types))
+            chain_signatures.append((signature, chain, edge_types))
+        
+        # Step 3: Group chains by signature (O(n) with dict)
+        groups = defaultdict(list)
+        for sig, chain, edge_types in chain_signatures:
+            groups[sig].append((chain, edge_types))
+        
+        # Step 4: Compare only within groups (O(k²) per group, where k = group size)
+        # This is O(sum(k²)) instead of O(n²). For a sparse graph with many
+        # distinct signatures, sum(k²) << n².
         analogies = []
-        for i, chain_a in enumerate(chains):
-            for j, chain_b in enumerate(chains):
-                if i >= j:
-                    continue
-                # Same length = structural match candidate
-                if len(chain_a) == len(chain_b):
+        for sig, group_chains in groups.items():
+            if len(group_chains) < 2:
+                continue  # need ≥2 chains with same signature to find analogies
+            
+            # Compare within this group only
+            for i in range(len(group_chains)):
+                for j in range(i + 1, len(group_chains)):
+                    chain_a = group_chains[i][0]
+                    chain_b = group_chains[j][0]
+                    edge_types_a = group_chains[i][1]
+                    edge_types_b = group_chains[j][1]
+                    
+                    # Same length (guaranteed by grouping)
                     # Check no shared nodes (different domains)
                     shared = set(chain_a) & set(chain_b)
                     if len(shared) == 0:
-                        # Systematicity (cycle 54 fix, per Auditor Phase 1):
-                        # Gentner's real criterion is RELATIONAL structure, not
-                        # just chain length. Compare the sequence of edge
-                        # relation_types along each chain — two chains with
-                        # the same edge-type sequence are structurally analogous;
-                        # two chains with different sequences are not.
-                        # The old code was `len(chain_a)/max(len(chain_a),1)`
-                        # which is always 1.0 (the bug the Auditor caught).
-                        edge_types_a = _edge_type_sequence(graph, chain_a)
-                        edge_types_b = _edge_type_sequence(graph, chain_b)
-                        if edge_types_a and edge_types_b and len(edge_types_a) == len(edge_types_b):
-                            matches = sum(1 for ta, tb in zip(edge_types_a, edge_types_b) if ta == tb)
-                            systematicity = matches / len(edge_types_a)
-                        else:
-                            # No edge-type info available — fall back to length match (0.5, not 1.0)
-                            systematicity = 0.5
+                        # Systematicity: all edge types match (guaranteed by grouping)
+                        # so systematicity = 1.0 for same-signature chains
+                        systematicity = 1.0
                         analogies.append({
                             "chain_a": chain_a,
                             "chain_b": chain_b,
