@@ -1857,3 +1857,27 @@ A one-line confirmation is sufficient. Scale the protocol up if the team grows.
 ## The Short Version (if it must fit on a wall)
 
 > *Fix the data the user sees. Report the served truth, not the requested wish. One source of truth, derived at read time. Classify by structure with the rules holding a veto, and re-classify the corpus when the classifier changes. Never fail silently, never fake readiness, never relabel. A fix isn't done until it's wired live, green in CI on the push, and proven on the journey — not the component, not the probe, not the local run.*
+
+---
+
+## The Discovery Imperative (cycle 67, per CEO directive)
+
+> "I don't care how you do it, but find a way to ingest hundreds or maybe
+> thousands of papers till you make a world class discovery. Excellence
+> is not a choice." — CEO, cycle 66
+
+**Principle:** When the system's extraction pipeline cannot process a domain,
+the coder MUST find an alternative extraction method — LLM-guided extraction,
+NER, manual annotation, or any other approach that produces a real graph.
+A NULL result due to extractor limitations is not acceptable. The system
+must be made to work, not declared broken.
+
+**Enforcement:** If a blind discovery test produces NULL because the extractor
+cannot match domain-specific patterns, the coder MUST implement an
+alternative extraction method in the same cycle, re-run the test, and
+report the new result. The original NULL stands in the ledger (honest),
+but the re-run is the actual deliverable.
+
+**AP-11 check:** This principle eliminates more entropy than it creates.
+The alternative (accepting NULL) would mean the system never discovers
+anything — which is the entropy it was designed to prevent.
