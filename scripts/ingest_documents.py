@@ -50,6 +50,16 @@ class Citation:
 
 
 @dataclass
+class Equation:
+    """An equation extracted from text (DR-39, cycle 124)."""
+    raw_text: str
+    char_start: int
+    char_end: int
+    section: str = ""
+    equation_type: str = "unknown"  # formula, inline, display
+
+
+@dataclass
 class Table:
     """A table detected in the text."""
     raw_text: str
@@ -87,6 +97,7 @@ class CanonicalDocument:
     paragraphs: Dict[str, List[Paragraph]] = field(default_factory=dict)
     citations: List[Citation] = field(default_factory=dict)
     tables: List[Table] = field(default_factory=list)
+    equations: List[Equation] = field(default_factory=list)  # cycle 124
     
     # Provenance (DR-43)
     retrieval_timestamp: str = ""
@@ -114,6 +125,7 @@ class CanonicalDocument:
             "paragraph_count": sum(len(p) for p in self.paragraphs.values()),
             "citation_count": len(self.citations),
             "table_count": len(self.tables),
+            "equation_count": len(self.equations),
             "retrieval_timestamp": self.retrieval_timestamp,
             "provenance_hash": self.provenance_hash[:16],
         }
@@ -212,6 +224,78 @@ def detect_tables(text: str) -> List[Table]:
     return tables
 
 
+def extract_equations(text: str) -> List[Equation]:
+    """Extract equations from text (DR-39, cycle 124).
+    
+    Detects:
+    1. Display equations: lines that are mostly math (contain = and math symbols)
+    2. Inline equations: short formula snippets within sentences
+    3. Numbered equations: (1), (2), etc. at end of equation lines
+    
+    Target benchmark: 95% equation extraction accuracy.
+    """
+    equations = []
+    lines = text.split('\n')
+    char_offset = 0
+    
+    # Math symbols that indicate equation content
+    math_symbols = set('=±×÷≤≥≠≈∑∏∫∂∇√αβγδεζηθλμνξπρσφψωΔΣΠΩ∞')
+    
+    for i, line in enumerate(lines):
+        line_stripped = line.strip()
+        if not line_stripped:
+            char_offset += len(line) + 1
+            continue
+        
+        # Check if this line is a display equation
+        # Heuristics:
+        # 1. Contains '=' 
+        # 2. Has math symbols or variables
+        # 3. Is relatively short (< 200 chars)
+        # 4. Doesn't start with a capital letter + space (prose)
+        
+        has_equals = '=' in line_stripped
+        has_math = any(c in math_symbols for c in line_stripped)
+        is_short = len(line_stripped) < 200
+        starts_prose = bool(re.match(r'^[A-Z][a-z]+\s', line_stripped))
+        has_equation_number = bool(re.search(r'\(\d+\)\s*$', line_stripped))
+        
+        # Display equation: has =, is short, doesn't look like prose
+        if has_equals and is_short and not starts_prose:
+            # Check it's not just a simple assignment like "x = 5"
+            # (which might be inline, not display)
+            eq_type = "display" if has_equation_number or has_math else "inline"
+            
+            # Filter out lines that are just URLs or file paths
+            if 'http' in line_stripped or '.py' in line_stripped:
+                char_offset += len(line) + 1
+                continue
+            
+            equations.append(Equation(
+                raw_text=line_stripped[:200],
+                char_start=char_offset,
+                char_end=char_offset + len(line_stripped),
+                equation_type=eq_type,
+            ))
+        
+        # Also catch inline equations: short math expressions in parentheses
+        # e.g., "(y = mx + b)" or "(E = mc²)"
+        inline_matches = re.finditer(r'\(([^)]{3,80}=[^)]{3,80})\)', line_stripped)
+        for match in inline_matches:
+            eq_text = match.group(1).strip()
+            if any(c in math_symbols or c.isdigit() for c in eq_text):
+                equations.append(Equation(
+                    raw_text=eq_text[:200],
+                    char_start=char_offset + match.start(),
+                    char_end=char_offset + match.end(),
+                    equation_type="inline",
+                ))
+        
+        char_offset += len(line) + 1
+    
+    return equations
+
+
 def compute_provenance_hash(text: str) -> str:
     """Compute a hash of the source content for provenance."""
     return hashlib.sha256(text.encode()).hexdigest()
@@ -257,6 +341,9 @@ def ingest_pdf(pdf_path: str, source_id: str = "") -> CanonicalDocument:
     # Detect tables
     doc.tables = detect_tables(doc.full_text)
     
+    # Extract equations (cycle 124)
+    doc.equations = extract_equations(doc.full_text)
+    
     return doc
 
 
@@ -285,6 +372,7 @@ def ingest_text(text: str, source_id: str = "text_input") -> CanonicalDocument:
         doc.paragraphs[section_name] = extract_paragraphs(doc.sections[section_name])
     doc.citations = extract_citations(doc.full_text)
     doc.tables = detect_tables(doc.full_text)
+    doc.equations = extract_equations(doc.full_text)
     
     return doc
 
