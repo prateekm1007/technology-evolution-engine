@@ -395,8 +395,19 @@ def check_mechanism_specificity(shared_mechanism: str,
 
     domain_count = len(domains)
 
-    if is_generic or domain_count >= 5:
+    # Per cycle 93: the domain_count >= 5 rule is only a GENERIC signal when
+    # the mechanism is ALSO in GENERIC_PRINCIPLES. A specific mechanism
+    # (e.g., "selective_permeability") that appears in many fields is a
+    # "broadly applicable specific mechanism," not a trivial generic principle.
+    # The old rule (domain_count >= 5 -> GENERIC regardless) was too strict:
+    # it flagged "phosphate_crystal_structure" as GENERIC even though phosphate
+    # crystal structure is a specific materials concept, not a generic principle.
+    if is_generic:
         verdict = "GENERIC"
+    elif domain_count >= 5:
+        # Specific mechanism but broadly applicable — borderline.
+        # Flag as MODERATELY_SPECIFIC (was GENERIC before cycle 93).
+        verdict = "MODERATELY_SPECIFIC"
     elif domain_count >= 3:
         verdict = "MODERATELY_SPECIFIC"
     else:
