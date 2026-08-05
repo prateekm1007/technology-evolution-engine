@@ -453,16 +453,20 @@ class NLPPipeline:
         return entities
     
     def extract_relations(self, text: str, entities: List[ExtractedEntity]) -> List[ExtractedRelation]:
-        """Extract relations using dependency parsing.
+        """Extract relations using dependency parsing + implicit causal patterns.
         
         Gen 3 target: move from regex to dependency-graph-based extraction.
+        Per cycle 119: add implicit causal pattern extraction (second pass)
+        to capture relations the dependency parser misses:
+        - "due to", "results in", "leads to", "caused by"
+        - "as a result of", "owing to", "attributed to"
+        - "is responsible for", "contributes to"
         
         The approach:
-        1. Parse the text with spaCy dependency parser
-        2. For each sentence, find entity pairs
-        3. Find the dependency path connecting them
-        4. Extract the relation verb from the path
-        5. Assign confidence based on path length and verb specificity
+        1. Parse the text with spaCy dependency parser (primary)
+        2. For each sentence, find entity pairs via dependency paths
+        3. SECOND PASS: scan for implicit causal patterns between entities
+        4. Assign confidence based on extraction method
         """
         doc = self.nlp(text)
         relations = []
@@ -473,30 +477,140 @@ class NLPPipeline:
             for pos in range(ent.start, ent.end):
                 ent_by_pos[pos] = ent
         
+        # PASS 1: Dependency-path extraction (existing)
         for sent in doc.sents:
-            # Find entities in this sentence
             sent_entities = []
             for ent in entities:
                 if ent.start >= sent.start_char and ent.end <= sent.end_char:
                     sent_entities.append(ent)
             
-            # For each pair of entities in the sentence, find the relation.
-            # Per cycle 101: only extract relations between entities of
-            # different types (material→mechanism, mechanism→property, etc.)
-            # to reduce false positives. Same-type pairs are usually noise.
             for i, subj in enumerate(sent_entities):
                 for obj in sent_entities[i+1:]:
-                    # Skip same-type pairs (material→material is usually noise)
                     if subj.label == obj.label:
                         continue
-                    # Skip if either entity is generic "entity" type
                     if subj.label == "entity" or obj.label == "entity":
                         continue
                     relation = self._find_relation(subj, obj, sent, doc)
                     if relation:
                         relations.append(relation)
         
+        # PASS 2: Implicit causal pattern extraction (cycle 119)
+        # This captures relations the dependency parser misses:
+        # "X due to Y", "X results in Y", "X leads to Y"
+        relations.extend(self._extract_implicit_causal(text, entities, doc))
+        
         return relations
+    
+    # Implicit causal patterns (cycle 119)
+    # These are linguistic patterns, NOT regex entity patterns.
+    # They capture causal relations between already-extracted entities.
+    IMPLICIT_CAUSAL_PATTERNS = [
+        # (pattern, relation_verb, direction)
+        # direction: "forward" means subj→obj, "reverse" means obj→subj
+        (r'(\w[\w\s]{2,40})\s+(?:due to|owing to|attributed to|caused by|as a result of)\s+(\w[\w\s]{2,40})',
+         "causes", "reverse"),  # "X due to Y" → Y causes X
+        (r'(\w[\w\s]{2,40})\s+(?:results in|leads to|causes|produces|generates|creates|induces|triggers)\s+(\w[\w\s]{2,40})',
+         "produces", "forward"),  # "X results in Y" → X produces Y
+        (r'(\w[\w\s]{2,40})\s+(?:is responsible for|contributes to|enables|facilitates|promotes)\s+(\w[\w\s]{2,40})',
+         "enables", "forward"),  # "X enables Y"
+        (r'(\w[\w\s]{2,40})\s+(?:depends on|requires|relies on)\s+(\w[\w\s]{2,40})',
+         "requires", "forward"),  # "X depends on Y"
+        (r'(\w[\w\s]{2,40})\s+(?:governs|controls|determines|regulates|modulates)\s+(\w[\w\s]{2,40})',
+         "governs", "forward"),  # "X governs Y"
+        (r'(\w[\w\s]{2,40})\s+(?:increases|enhances|improves|boosts)\s+(\w[\w\s]{2,40})',
+         "increases", "forward"),  # "X increases Y"
+        (r'(\w[\w\s]{2,40})\s+(?:decreases|reduces|inhibits|suppresses|prevents)\s+(\w[\w\s]{2,40})',
+         "reduces", "forward"),  # "X reduces Y"
+        (r'(?:the|a|an)\s+(\w[\w\s]{2,40})\s+(?:of|in|on)\s+(\w[\w\s]{2,40})',
+         "relates_to", "forward"),  # "the X of Y" → X relates_to Y
+    ]
+    
+    def _extract_implicit_causal(self, text: str, entities: List[ExtractedEntity],
+                                  doc: Doc) -> List[ExtractedRelation]:
+        """Extract implicit causal relations using linguistic patterns.
+        
+        Per cycle 119: this is the second pass that captures relations
+        the dependency parser misses. It scans for causal phrases
+        between already-extracted entities.
+        """
+        relations = []
+        
+        # Build entity lookup by text
+        ent_by_text = {}
+        for ent in entities:
+            key = ent.text.lower().strip()
+            ent_by_text[key] = ent
+            # Also add partial matches (first word)
+            first_word = key.split()[0] if key else ""
+            if first_word and len(first_word) >= 4 and first_word not in ent_by_text:
+                ent_by_text[first_word] = ent
+        
+        for pattern, relation_verb, direction in self.IMPLICIT_CAUSAL_PATTERNS:
+            compiled = re.compile(pattern, re.IGNORECASE)
+            
+            for match in compiled.finditer(text):
+                group1 = match.group(1).strip().lower()
+                group2 = match.group(2).strip().lower()
+                
+                # Try to match groups to extracted entities
+                subj_ent = self._find_entity_in_text(group1, ent_by_text)
+                obj_ent = self._find_entity_in_text(group2, ent_by_text)
+                
+                if subj_ent and obj_ent and subj_ent.text != obj_ent.text:
+                    # Skip same-type pairs
+                    if subj_ent.label == obj_ent.label:
+                        continue
+                    if subj_ent.label == "entity" or obj_ent.label == "entity":
+                        continue
+                    
+                    # Determine direction
+                    if direction == "reverse":
+                        # "X due to Y" → Y causes X
+                        actual_subj, actual_obj = obj_ent, subj_ent
+                    else:
+                        actual_subj, actual_obj = subj_ent, obj_ent
+                    
+                    # Check if this relation already exists
+                    exists = any(
+                        r.subject.text == actual_subj.text and
+                        r.obj.text == actual_obj.text and
+                        r.relation == relation_verb
+                        for r in relations
+                    )
+                    if exists:
+                        continue
+                    
+                    sent_text = ""
+                    for sent in doc.sents:
+                        if match.start() >= sent.start_char and match.end() <= sent.end_char:
+                            sent_text = sent.text
+                            break
+                    
+                    relations.append(ExtractedRelation(
+                        subject=actual_subj,
+                        relation=relation_verb,
+                        obj=actual_obj,
+                        confidence=0.75,  # pattern match (higher than random dep parse)
+                        source_sentence=sent_text or match.group(),
+                        dependency_path=["implicit_causal_pattern"],
+                    ))
+        
+        return relations
+    
+    def _find_entity_in_text(self, text_fragment: str, ent_by_text: Dict) -> Optional[ExtractedEntity]:
+        """Find an extracted entity that matches a text fragment."""
+        text_fragment = text_fragment.lower().strip()
+        
+        # Exact match
+        if text_fragment in ent_by_text:
+            return ent_by_text[text_fragment]
+        
+        # Partial match: entity text is a substring of the fragment
+        for key, ent in ent_by_text.items():
+            if len(key) >= 4 and (key in text_fragment or text_fragment in key):
+                return ent
+        
+        return None
     
     def _find_relation(self, subj: ExtractedEntity, obj: ExtractedEntity,
                        sent: Span, doc: Doc) -> Optional[ExtractedRelation]:
