@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-08-05T00:56:19.201609+00:00",
+  "timestamp": "2026-08-05T01:14:25.634855+00:00",
   "gates": [
     {
       "gate": "P27",
@@ -24,7 +24,7 @@
     {
       "gate": "GOV",
       "passed": true,
-      "details": "GOV PASS: commit message contains read receipt"
+      "details": "GOV PASS: commit message references governance"
     },
     {
       "gate": "P70",
