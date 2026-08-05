@@ -178,6 +178,39 @@ ENTITY_STOPWORDS = {
     "framework", "model", "models", "simulation", "simulations",
     # Cycle 109: remaining generic terms
     "temperature", "pressure", "concentration", "weight",
+    # Cycle 112: generic scientific words that pass all filters but are
+    # not domain-specific mechanisms. These appear in EVERY scientific paper
+    # regardless of domain — they're scientific vocabulary, not discoveries.
+    "efficacy", "channels", "comparison", "factors", "calculations",
+    "size", "relationship", "best", "performances", "observations",
+    "detection", "intensity", "minutes", "vivo", "red", "bit", "six",
+    "efficiency", "performance", "quality", "stability", "capacity",
+    "capability", "function", "functions", "feature", "features",
+    "component", "components", "element", "elements", "factor",
+    "condition", "conditions", "state", "states", "phase", "phases",
+    "structure", "structures",  # too generic — "nanostructure" is OK
+    "property", "properties",  # too generic — "thermal_property" is OK
+    "mechanism", "mechanisms",  # too generic — the specific mechanism name is OK
+    "material",  # too generic — the specific material name is OK
+    "application", "applications",
+    "device", "devices", "system", "method", "approach",
+    "result", "outcome", "output", "input",
+    "test", "tests", "trial", "trials",
+    "error", "errors", "uncertainty", "limitation", "limitations",
+    "advantage", "advantages", "disadvantage", "disadvantages",
+    "improvement", "improvements", "enhancement", "enhancements",
+    "reduction", "increase", "decrease",  # already in list but double-check
+    "response", "responses", "behavior", "behaviour",
+    "interaction", "interactions", "connection", "connections",
+    "effect", "effects",  # already in list
+    "impact", "impacts", "influence",  # already in list
+    "role", "roles", "purpose", "goal", "goals",
+    "challenge", "challenges", "problem", "problems",
+    "solution", "solutions", "answer", "answers",
+    "question", "questions", "hypothesis", "hypotheses",
+    "theory", "theories", "law", "laws",
+    "principle", "principles", "concept", "concepts",
+    "idea", "ideas", "notion", "notions",
 }
 
 
