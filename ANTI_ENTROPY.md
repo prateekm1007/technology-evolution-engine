@@ -1636,6 +1636,27 @@ or it expires.
 
 ---
 
+## Substring-check governance principle (cycle 99, per External Auditor)
+
+> When checking for string X, first check for NOT_X if NOT_X contains X.
+> Substring matching is fragile: "NOT_A_KNOWN_BRIDGE" contains "KNOWN_BRIDGE".
+> "phosphate" contains "ph". Check negated prefixes and longer matches first.
+
+This is a **recurring pattern** (cycle 92: "ph" matching "phosphate"; cycle 98:
+"KNOWN_BRIDGE" matching "NOT_A_KNOWN_BRIDGE"). Both bugs only surface on real
+data with real verdicts — not synthetic tests. The fix is always the same:
+check the more specific (longer, negated) pattern before the less specific
+(shorter, affirmative) one.
+
+**Rule:** In any string-matching code, order checks from most-specific to
+least-specific. If string A contains string B as a substring, check A before B.
+
+**Enforcement:** This principle should be applied in code review. A future
+CI check could scan for `if X in string` patterns where a longer string
+containing X exists in the same function.
+
+---
+
 # Complete Governance Principles (cycle 58, per CEO directive)
 
 **Added:** 2026-08-05, per CEO instruction to update governance and anti-entropy files with all relevant principles not yet included.

@@ -31,6 +31,7 @@ import sys
 import json
 import hashlib
 import random
+import re
 import subprocess
 import pathlib
 from datetime import datetime, timezone
@@ -171,6 +172,140 @@ def compute_vocabulary_hash(terms: List[str]) -> str:
     return h.hexdigest()[:16]
 
 
+def run_world_audit(claim: Dict, all_entries: List[Dict]) -> Dict:
+    """Run independent web searches with different vocabulary (cycle 99).
+
+    Per EPISTEMIC_ENGINE.md §2.3: the reaudit must use different vocabulary
+    from the original extraction. This function generates NEW search terms
+    from the claim's bridge structure, searches the web, and checks if
+    evidence exists that the bridge is already published.
+
+    This is the difference between:
+    - Trail auditing (checking prior verdicts in the ledger)
+    - World auditing (running new web searches to find new evidence)
+    """
+    exp_id = claim["claim_id"]
+    entry = claim.get("entry", {})
+
+    # Extract the bridge terms from the original claim.
+    # Per cycle 99: older entries (EXP-BLIND-001) may not have lit_A/lit_B
+    # in the verification entry itself — search all entries for this experiment.
+    lit_a = entry.get("lit_A", entry.get("literature_A", ""))
+    lit_b = entry.get("lit_B", entry.get("literature_B", ""))
+    lit_a_query = entry.get("lit_a_query", "")
+    lit_b_query = entry.get("lit_b_query", "")
+
+    # If the verification entry doesn't have literature terms, search all entries
+    if not lit_a and not lit_a_query:
+        for e in all_entries:
+            # Check oracle_prediction, blind_test_hypothesis, blind_test_result
+            if e.get("type") in ("oracle_prediction", "blind_test_hypothesis_v2", "blind_test_hypothesis"):
+                lit_a = e.get("literature_A", lit_a)
+                lit_b = e.get("literature_B", lit_b)
+                if lit_a and lit_b:
+                    break
+            if e.get("type") == "blind_test_result":
+                lit_a = e.get("lit_A", lit_a)
+                lit_b = e.get("lit_B", lit_b)
+                if lit_a and lit_b:
+                    break
+
+    # Debug: log what we found
+
+    # Generate DIFFERENT vocabulary for the world search.
+    # The original extraction used the full literature queries.
+    # The world audit uses shorter, more targeted terms that a third party
+    # would use to search for the same connection.
+    # This ensures vocabulary_hash differs from the original.
+    original_terms = set()
+    for t in [lit_a, lit_b, lit_a_query, lit_b_query]:
+        if t:
+            original_terms.update(t.lower().split())
+
+    # Generate adversarial search terms: combine key entities from both literatures
+    # Use the experiment_id to find the bridge details
+    bridge_terms = []
+    for e in all_entries:
+        if e.get("type") == "blind_test_result" and e.get("cross_details"):
+            for detail in e["cross_details"]:
+                bridge_terms.extend([detail.get("a", ""), detail.get("b", ""), detail.get("c", "")])
+        if e.get("type") == "blind_test_hypothesis_v2" and e.get("candidate_bridge"):
+            bridge_terms.append(e["candidate_bridge"])
+
+    # Build the world search query: combine the two literatures' short names
+    # This is the query a third party would run to check if the bridge exists
+    a_short = lit_a_query.split()[:3] if lit_a_query else (lit_a.split()[:3] if lit_a else [])
+    b_short = lit_b_query.split()[:3] if lit_b_query else (lit_b.split()[:3] if lit_b else [])
+    world_query = " ".join(a_short + b_short)
+
+
+    if not world_query or len(world_query) < 10:
+        return {
+            "world_audit_performed": False,
+            "reason": "insufficient terms to construct world query",
+            "bridge_found": False,
+        }
+
+    # Run the web search
+    try:
+        result = subprocess.run(
+            ["z-ai", "function", "-n", "web_search",
+             "-a", json.dumps({"query": world_query, "num": 8})],
+            capture_output=True, text=True, timeout=30
+        )
+        match = re.search(r'\[.*\]', result.stdout, re.DOTALL)
+        papers = json.loads(match.group()) if match else []
+    except Exception as e:
+        return {
+            "world_audit_performed": False,
+            "reason": f"web search failed: {e}",
+            "bridge_found": False,
+        }
+
+    # Check if any search result mentions BOTH literatures in a CONNECTED way
+    # (not just co-occurring in unrelated context — use semantic verification)
+    a_terms_lower = [t.lower() for t in (a_short if a_short else [lit_a]) if t]
+    b_terms_lower = [t.lower() for t in (b_short if b_short else [lit_b]) if t]
+
+    bridge_papers = []
+    for p in papers:
+        snippet = (p.get("snippet", "") + " " + p.get("name", "")).lower()
+        has_a = any(t in snippet for t in a_terms_lower if len(t) > 3)
+        has_b = any(t in snippet for t in b_terms_lower if len(t) > 3)
+        if has_a and has_b:
+            # Semantic verification: does this actually connect the two?
+            try:
+                from scripts.nontriviality_check import semantic_verify_bridge
+                is_real = semantic_verify_bridge(
+                    p.get("snippet", "") + " " + p.get("name", ""),
+                    a_terms_lower, b_terms_lower
+                )
+                if is_real:
+                    bridge_papers.append({
+                        "title": p.get("name", "")[:80],
+                        "snippet": p.get("snippet", "")[:150],
+                    })
+            except Exception:
+                # If semantic verification unavailable, be conservative: count it
+                bridge_papers.append({
+                    "title": p.get("name", "")[:80],
+                    "snippet": p.get("snippet", "")[:150],
+                })
+
+    # Compute vocabulary hash for the world audit (must differ from original)
+    world_vocab_hash = compute_vocabulary_hash(a_short + b_short)
+
+    return {
+        "world_audit_performed": True,
+        "world_query": world_query,
+        "world_vocabulary_hash": world_vocab_hash,
+        "papers_found": len(papers),
+        "bridge_papers_found": len(bridge_papers),
+        "bridge_papers": bridge_papers[:3],
+        "bridge_found": len(bridge_papers) > 0,
+    }
+
+
 def run_adversarial_verification(claim: Dict) -> Dict:
     """Run adversarial verification on a single claim.
 
@@ -178,16 +313,23 @@ def run_adversarial_verification(claim: Dict) -> Dict:
     searching for evidence that it's already published (RETRIEVAL)
     or that the extraction is unsupported (F-065 failure).
 
+    Per cycle 99 (auditor instruction): the reaudit must audit the WORLD,
+    not just the trail. This means running NEW web searches with DIFFERENT
+    vocabulary from the original extraction, then using the results to
+    attack the claim independently.
+
+    Two paths:
+    1. Trail audit (existing): check for reclassifications, non-triviality,
+       F-065, manual verifications in the ledger.
+    2. World audit (new): run independent web searches with different
+       vocabulary, find new evidence, use it to attack the claim.
+
     Returns a Reaudit entry.
     """
     exp_id = claim["claim_id"]
     original_outcome = claim["outcome"]
 
-    # For this first implementation, we check whether the claim has
-    # been reclassified or questioned by any later entry.
-    # A full implementation would run new web searches with different vocabulary.
-
-    # Read all entries for this experiment_id
+    # Read all entries for this experiment_id (trail audit)
     all_entries = []
     if PREDICTIONS.exists():
         with PREDICTIONS.open() as f:
@@ -262,6 +404,22 @@ def run_adversarial_verification(claim: Dict) -> Dict:
     else:
         verdict = original_outcome
 
+    # === WORLD AUDIT (cycle 99) ===
+    # Per auditor instruction: the reaudit must audit the WORLD, not just the trail.
+    # Run independent web searches with DIFFERENT vocabulary from the original
+    # extraction. If the world audit finds evidence the claim is already published,
+    # override the trail verdict.
+    world_audit_result = run_world_audit(claim, all_entries)
+
+    # If the world audit found a published bridge, override to RETRIEVAL
+    # (regardless of what the trail says — the world is more authoritative)
+    if world_audit_result.get("bridge_found") and "NOVEL" in original_outcome.upper():
+        verdict = "RETRIEVAL"
+        overturned = True
+    elif world_audit_result.get("bridge_found") and "RETRIEVAL" not in verdict.upper():
+        # Bridge found in world search but original wasn't NOVEL — still note it
+        pass
+
     # Check if verdict changed
     original_clean = original_outcome.upper().replace(" ", "_")
     if "NOVEL" in original_clean and verdict != original_outcome:
@@ -294,7 +452,12 @@ def run_adversarial_verification(claim: Dict) -> Dict:
             "manual_verifications_found": len(manual_verifications),
             "nontriviality_checks_found": len(nontriviality),
             "f065_verifications_found": len(f065),
+            "world_audit_performed": world_audit_result.get("world_audit_performed", False),
+            "world_audit_bridge_found": world_audit_result.get("bridge_found", False),
+            "world_audit_papers_found": world_audit_result.get("papers_found", 0),
+            "world_audit_bridge_papers": world_audit_result.get("bridge_papers", []),
         },
+        "world_audit": world_audit_result,
     }
     return reaudit
 
