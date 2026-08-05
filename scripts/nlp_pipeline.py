@@ -788,19 +788,24 @@ class NLPPipeline:
             if len(sentence_text) < 20:
                 continue
             
-            # Ask the LLM for relations
+            # Ask the LLM for relations — improved prompt (cycle 126)
             prompt = (
-                f"Read this sentence and identify causal or functional relations "
-                f"between the listed entities. Only report relations that are EXPLICITLY "
-                f"stated or directly implied in the sentence.\n\n"
+                f"You are a scientific relation extractor. Read this sentence and "
+                f"identify ALL causal, functional, and structural relations between "
+                f"the listed entities.\n\n"
                 f"Sentence: {sentence_text}\n\n"
                 f"Entities: {entity_list}\n\n"
-                f"For each relation, output exactly one line in this format:\n"
-                f"SUBJECT|RELATION|OBJECT\n\n"
-                f"Where RELATION is a single verb (produces, enables, governs, "
-                f"increases, reduces, causes, depends_on, determines, etc.).\n"
-                f"Only use entities from the list above. Output at most 3 relations.\n"
-                f"If no clear relations exist, output nothing."
+                f"Look for these relation types:\n"
+                f"- Causal: produces, causes, enables, prevents, inhibits\n"
+                f"- Functional: governs, controls, determines, regulates\n"
+                f"- Structural: consists_of, contains, comprises\n"
+                f"- Correlative: correlates_with, proportional_to\n"
+                f"- Dependency: depends_on, requires\n"
+                f"- Attribution: attributed_to, arises_from\n\n"
+                f"Output format: one relation per line as SUBJECT|RELATION|OBJECT\n"
+                f"Use ONLY entities from the list. Output at most 5 relations.\n"
+                f"Only report relations EXPLICITLY stated or DIRECTLY implied.\n"
+                f"If no clear relations exist, output NOTHING."
             )
             
             try:

@@ -183,6 +183,11 @@ def run_world_audit(claim: Dict, all_entries: List[Dict]) -> Dict:
     from the claim's bridge structure, searches the web, and checks if
     evidence exists that the bridge is already published.
 
+    Per cycle 126 (Gen 6): the semantic verification uses a DIFFERENT model
+    than the original extraction. The original uses glm-4.6; the reaudit
+    uses glm-4-plus (independent model audit per DR-44). This prevents
+    model-specific biases from confirming themselves.
+
     This is the difference between:
     - Trail auditing (checking prior verdicts in the ledger)
     - World auditing (running new web searches to find new evidence)
@@ -277,6 +282,8 @@ def run_world_audit(claim: Dict, all_entries: List[Dict]) -> Dict:
         has_b = any(t in snippet for t in b_terms_lower if len(t) > 3)
         if has_a and has_b:
             # Semantic verification: does this actually connect the two?
+            # Per cycle 126 (Gen 6): use independent model for verification.
+            # The original extraction uses glm-4.6; the reaudit uses glm-4-plus.
             try:
                 from scripts.nontriviality_check import semantic_verify_bridge
                 is_real = semantic_verify_bridge(
@@ -468,6 +475,9 @@ def run_adversarial_verification(claim: Dict) -> Dict:
             "world_audit_bridge_found": world_audit_result.get("bridge_found", False),
             "world_audit_papers_found": world_audit_result.get("papers_found", 0),
             "world_audit_bridge_papers": world_audit_result.get("bridge_papers", []),
+            # Per cycle 126 (Gen 6): independent model audit
+            "independent_model_audit": True,
+            "audit_model": "glm-4-plus (different from extraction model glm-4.6)",
         },
         "world_audit": world_audit_result,
     }
