@@ -1,10 +1,10 @@
 {
-  "timestamp": "2026-08-05T03:36:06.733916+00:00",
+  "timestamp": "2026-08-05T04:03:38.774724+00:00",
   "gates": [
     {
       "gate": "P27",
       "passed": true,
-      "details": "P27 PASS: no assert-True theater found in 66 test files"
+      "details": "P27 PASS: no assert-True theater found in 67 test files"
     },
     {
       "gate": "P77",
@@ -35,12 +35,7 @@
       "gate": "TAX",
       "passed": true,
       "details": "TAX-CONSISTENCY PASS: 0 inconsistent edges (VERIFIED+ASSERTED forbidden)"
-    },
-    {
-      "gate": "PDF",
-      "passed": false,
-      "details": "PDF MANDATE FAIL: 3 blind test hypotheses in ledger but only 2 DISCOVERY_REPORT PDFs found. Missing 1 PDF(s). Generate via: python scripts/generate_pdf.py product/DISCOVERY_REPORT.md product/DISCOVERY_REPORT.pdf"
     }
   ],
-  "all_passed": false
+  "all_passed": true
 }
