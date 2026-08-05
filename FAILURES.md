@@ -1848,3 +1848,54 @@ physics formulas to mechanism evaluation. Schema compliance is not truth.
 A well-written mechanism sentence is not causality. Only a computed
 mechanism that matches reality is causality.
 
+
+### F-062 — Blind discovery test: extractor cannot process domains outside its pattern library (P1, cycle 66)
+
+**Found:** CEO blind discovery test, cycle 66 (2026-08-05).
+**Repro:**
+```bash
+cd /home/z/my-project/audit/repo
+# Fetch 17 papers from two literatures with zero corpus overlap:
+#   A: sonocrystallization (pharmaceutical ultrasound crystallization)
+#   B: acoustic levitation cell culture (biological)
+# Run the extraction pipeline.
+# Result: 5 nodes, 4 edges — all from existing corpus patterns (Te, Bi, sib_battery)
+# No edge specific to sonocrystallization or acoustic levitation was extracted.
+# The 2 "bridges" found are artifacts (Te→sib_battery→sib_battery_app),
+# not genuine cross-literature discoveries.
+```
+
+**Observed:** The blind discovery test (the CEO's "show me one thing the system discovered
+that none of us explicitly programmed into it") produced a NULL result. The system
+could not extract meaningful entities from two literatures outside its existing
+pattern library. The extractor matched "sodium" in an acoustic levitation paper
+and extracted the SIB battery pattern — a false positive from the existing corpus,
+not a genuine discovery.
+
+**Root cause:** The EdgeExtractor uses domain-specific regex patterns
+(MATERIAL_PATTERNS, MECHANISM_PATTERNS, PROPERTY_PATTERNS). These patterns
+are tuned for the existing corpus domains (thermoelectric, radiative cooling,
+battery, PCM). They cannot extract from acoustic crystallization or cell
+culture literature because those domains use different vocabulary
+(acoustic cavitation, nucleation rate, cell proliferation, standing wave).
+
+The extractor is a closed-system keyword matcher, not an open-domain
+entity recognizer. It can only find what it was programmed to find.
+This is the same finding as the Apollo Test (cycle 52): the system
+is a classification machine, not a discovery machine.
+
+**Severity:** P1 — the blind discovery test is the ultimate test of the
+system's discovery capability. A NULL result means the system cannot
+discover anything outside its pre-programmed patterns. This is the
+honest truth: the system has not discovered anything genuinely novel.
+
+**Status:** OPEN. The fix requires an open-domain entity extractor (NER-based
+or LLM-guided) that can recognize materials, mechanisms, and properties
+from arbitrary text without pre-programmed patterns. This is Phase III work.
+
+**Lesson:** A pattern-based extractor is a lookup table wearing a parser's
+vocabulary. It can verify known patterns but cannot discover unknown ones.
+The system's "discovery" capability is limited to finding combinatorial
+connections between pre-programmed entities. True discovery requires
+the ability to extract NEW entities from NEW domains — which the current
+extractor cannot do.
