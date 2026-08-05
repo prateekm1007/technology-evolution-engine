@@ -256,6 +256,10 @@ def test_ledger_schema_matches_writer():
                          "claims_missed_then_caught_later"},
             "writer": "scripts.reaudit_loop.py::log_adversary_performance",
         },
+        "nine_tenths_scorecard": {
+            "required": {"type", "timestamp", "scorecard", "highest_leverage"},
+            "writer": "scripts.nine_tenths_loop",
+        },
     }
     unprovenanced = []
     for i, entry in enumerate(parsed, start=1):
