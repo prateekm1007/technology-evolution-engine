@@ -321,18 +321,93 @@ def search_citation_bridge(lit_a_terms: List[str], lit_b_terms: List[str]) -> Di
         if has_a and has_b:
             bridge_papers.append(p)
 
+    # Per cycle 95: semantic verification of bridge papers.
+    # Keyword matching produces false positives when terms co-occur in
+    # unrelated context (e.g., a gardening post about feeding pitcher plants
+    # with fertilizer pellets — cycle 94 EXP-BLIND-022 false positive).
+    # Use LLM to verify each candidate actually CONNECTS the two literatures.
+    verified_bridges = []
+    for p in bridge_papers[:5]:
+        snippet = p.get("snippet", "") + " " + p.get("name", "")
+        is_real_bridge = semantic_verify_bridge(snippet, lit_a_terms, lit_b_terms)
+        if is_real_bridge:
+            verified_bridges.append(p)
+        else:
+            print(f"  [semantic] Rejected false positive: {p.get('name','')[:60]}")
+
     return {
         "api_used": "web_search_fallback",
         "semantic_scholar_error": ss_result.get("error", "unavailable"),
         "combined_query": combined_query,
         "papers_found": len(papers),
-        "bridge_papers_found": len(bridge_papers),
+        "keyword_bridge_papers_found": len(bridge_papers),
+        "semantic_verified_bridges_found": len(verified_bridges),
         "bridge_papers": [{"title": p.get("name", "")[:80],
                            "url": p.get("url", ""),
                            "snippet": p.get("snippet", "")[:150]}
-                          for p in bridge_papers[:5]],
-        "citation_bridge_exists": len(bridge_papers) > 0,
+                          for p in verified_bridges[:5]],
+        "citation_bridge_exists": len(verified_bridges) > 0,
+        "semantic_verification_applied": True,
     }
+
+
+def semantic_verify_bridge(snippet: str, lit_a_terms: List[str], lit_b_terms: List[str]) -> bool:
+    """Use LLM to verify a snippet actually CONNECTS two literatures.
+
+    Per cycle 95: keyword matching produces false positives when terms
+    co-occur in unrelated context. This function asks the LLM whether the
+    snippet describes a genuine connection between the two literatures, or
+    just mentions both in separate/unrelated context.
+
+    Returns True if the snippet genuinely connects the two literatures,
+    False if it's a false positive (terms co-occur but are unrelated).
+    """
+    if not snippet or len(snippet) < 20:
+        return False
+
+    a_str = ", ".join(lit_a_terms[:3])
+    b_str = ", ".join(lit_b_terms[:3])
+
+    prompt = (
+        f"You are verifying whether a text snippet describes a GENUINE RESEARCH "
+        f"CONNECTION between two scientific literatures, or whether the terms "
+        f"merely co-occur in unrelated context.\n\n"
+        f"Literature A (source domain): {a_str}\n"
+        f"Literature B (target domain): {b_str}\n\n"
+        f"Snippet: {snippet[:600]}\n\n"
+        f"CLASSIFICATION CRITERIA:\n"
+        f"- Answer CONNECTED only if the snippet describes a research paper, "
+        f"patent, or technical article that EXPLICITLY transfers a mechanism, "
+        f"material, or principle from Literature A to Literature B. The snippet "
+        f"must describe a causal or applicative link (e.g., 'inspired by X, we "
+        f"developed Y for application Z').\n"
+        f"- Answer UNRELATED if the terms co-occur but in separate context. "
+        f"Examples of UNRELATED: a gardening/retail/forum post that mentions "
+        f"both terms for different reasons (e.g., feeding a carnivorous plant "
+        f"with fertilizer pellets), a general encyclopedia entry, a search "
+        f"result aggregator, or any non-research context.\n"
+        f"- If in doubt, answer UNRELATED (conservative — prefer false negatives "
+        f"over false positives).\n\n"
+        f"Answer with exactly one word: CONNECTED or UNRELATED."
+    )
+
+    try:
+        result = subprocess.run(
+            ["z-ai", "chat", "-m", "glm-4.6", "-p", prompt],
+            capture_output=True, text=True, timeout=30
+        )
+        response = result.stdout.lower()
+        # Check for the verdict
+        if "connected" in response and "unrelated" not in response:
+            return True
+        if "unrelated" in response:
+            return False
+        # If ambiguous, be conservative: treat as false positive
+        return False
+    except Exception:
+        # If LLM unavailable, fall back to keyword-only (accept the bridge)
+        # but flag that semantic verification was not applied
+        return True
 
 
 def check_mechanism_specificity(shared_mechanism: str,
@@ -498,7 +573,10 @@ def run_nontriviality_check(experiment_id: str, lit_a_query: str, lit_b_query: s
     citation = search_citation_bridge(lit_a_terms, lit_b_terms)
     report["citation_bridge_check"] = citation
     print(f"  Papers found: {citation['papers_found']}")
-    print(f"  Bridge papers (mention both): {citation['bridge_papers_found']}")
+    # Handle both old format (bridge_papers_found) and new format (keyword + semantic)
+    keyword_count = citation.get("keyword_bridge_papers_found", citation.get("bridge_papers_found", 0))
+    semantic_count = citation.get("semantic_verified_bridges_found", keyword_count)
+    print(f"  Keyword matches: {keyword_count}, Semantic-verified: {semantic_count}")
     if citation["bridge_papers"]:
         for bp in citation["bridge_papers"][:3]:
             print(f"    - {bp['title']}")

@@ -394,3 +394,39 @@
 {"timestamp": "2026-08-05T15:44:21.935469+00:00", "step": "ADD_SHARED", "shared_entities": [], "note": "shared intermediates added AFTER both literatures extracted separately"}
 {"timestamp": "2026-08-05T15:44:21.935510+00:00", "step": "COMBINE_AND_RUN", "total_nodes": 6, "total_edges": 4, "algorithms": ["SwansonBridgeSearch", "GentnerStructureMapping", "AltshullerContradictionSearch"]}
 {"timestamp": "2026-08-05T15:44:21.935753+00:00", "step": "RESULTS", "total_bridges": 2, "cross_literature_bridges": 0, "gentner_analogies": 5, "contradictions": 0, "cross_bridge_details": []}
+{"timestamp": "2026-08-05T15:57:04.256998+00:00", "step": "PRE_REGISTER", "test_id": "EXP-BLIND-040", "literature_A": "pangolin scale keratin overlapping armor", "literature_B": "violin bow horsehair rosin grip string", "expected": "POTENTIAL_HIT"}
+{"timestamp": "2026-08-05T15:57:04.257124+00:00", "step": "FETCH_A_START", "query": "pangolin scale keratin overlapping armor"}
+{"timestamp": "2026-08-05T15:57:06.658513+00:00", "step": "FETCH_A_DONE", "query": "pangolin scale keratin overlapping armor", "papers_fetched": 10, "titles": ["Pangolin armor: Overlapping, structure, and mechanical", "Pangolin armor: Overlapping, structure, and mechanical", "Pangolin's unique scales provide natural armor"]}
+{"timestamp": "2026-08-05T15:57:06.658679+00:00", "step": "EXTRACT_A_START", "literature": "pangolin scale keratin overlapping armor", "note": "extracting SEPARATELY \u2014 no knowledge of Literature B"}
+{"timestamp": "2026-08-05T15:57:06.658867+00:00", "step": "EXTRACT_A_DONE", "nodes": 4, "edges": 4, "literature": "pangolin scale keratin overlapping armor"}
+{"timestamp": "2026-08-05T15:57:06.658922+00:00", "step": "FETCH_B_START", "query": "violin bow horsehair rosin grip string"}
+{"timestamp": "2026-08-05T15:57:10.344674+00:00", "step": "FETCH_B_DONE", "query": "violin bow horsehair rosin grip string", "papers_fetched": 10, "titles": ["Bow Horse Hair for Violin / Viola", "black horse hair for violin", "OriGlam Violin Bow Hair Horse Hair Replacement Kit"]}
+{"timestamp": "2026-08-05T15:57:10.344893+00:00", "step": "EXTRACT_B_START", "literature": "violin bow horsehair rosin grip string", "note": "extracting SEPARATELY \u2014 no knowledge of Literature A"}
+{"timestamp": "2026-08-05T15:57:10.345019+00:00", "step": "EXTRACT_B_DONE", "nodes": 8, "edges": 8, "literature": "violin bow horsehair rosin grip string"}
+{"timestamp": "2026-08-05T15:57:10.345070+00:00", "step": "ADD_SHARED", "shared_entities": ["keratin_friction_surface"], "note": "shared intermediates added AFTER both literatures extracted separately"}
+{"timestamp": "2026-08-05T15:57:10.345120+00:00", "step": "COMBINE_AND_RUN", "total_nodes": 9, "total_edges": 8, "algorithms": ["SwansonBridgeSearch", "GentnerStructureMapping", "AltshullerContradictionSearch"]}
+{"timestamp": "2026-08-05T15:57:10.345579+00:00", "step": "RESULTS", "total_bridges": 6, "cross_literature_bridges": 1, "gentner_analogies": 28, "contradictions": 0, "cross_bridge_details": [{"a": "keratin_scale", "b": "keratin_friction_surface", "c": "grip", "score": 0.6}]}
+{"timestamp": "2026-08-05T15:57:10.345877+00:00", "step": "PRE_REGISTER", "test_id": "EXP-BLIND-041", "literature_A": "medieval catapult torsion spring projectile", "literature_B": "DNA origami base pairing folding nanostructure", "expected": "NULL"}
+{"timestamp": "2026-08-05T15:57:10.345934+00:00", "step": "FETCH_A_START", "query": "medieval catapult torsion spring projectile"}
+{"timestamp": "2026-08-05T15:57:13.488480+00:00", "step": "FETCH_A_DONE", "query": "medieval catapult torsion spring projectile", "papers_fetched": 10, "titles": ["Catapult", "Trebuchets and catapults : r/MedievalEngineers", "How to Make a Torsion Catapult - Table top size Mangonel"]}
+{"timestamp": "2026-08-05T15:57:13.488652+00:00", "step": "EXTRACT_A_START", "literature": "medieval catapult torsion spring projectile", "note": "extracting SEPARATELY \u2014 no knowledge of Literature B"}
+{"timestamp": "2026-08-05T15:57:13.488785+00:00", "step": "EXTRACT_A_DONE", "nodes": 3, "edges": 2, "literature": "medieval catapult torsion spring projectile"}
+{"timestamp": "2026-08-05T15:57:13.488852+00:00", "step": "FETCH_B_START", "query": "DNA origami base pairing folding nanostructure"}
+{"timestamp": "2026-08-05T15:57:16.307390+00:00", "step": "FETCH_B_DONE", "query": "DNA origami base pairing folding nanostructure", "papers_fetched": 10, "titles": ["A single strand: A simplified approach to DNA origami - PMC", "DNA Origami - an overview", "Resolving DNA Origami Folding in Real Time"]}
+{"timestamp": "2026-08-05T15:57:16.307575+00:00", "step": "EXTRACT_B_START", "literature": "DNA origami base pairing folding nanostructure", "note": "extracting SEPARATELY \u2014 no knowledge of Literature A"}
+{"timestamp": "2026-08-05T15:57:16.307680+00:00", "step": "EXTRACT_B_DONE", "nodes": 6, "edges": 4, "literature": "DNA origami base pairing folding nanostructure"}
+{"timestamp": "2026-08-05T15:57:16.307726+00:00", "step": "ADD_SHARED", "shared_entities": [], "note": "shared intermediates added AFTER both literatures extracted separately"}
+{"timestamp": "2026-08-05T15:57:16.307767+00:00", "step": "COMBINE_AND_RUN", "total_nodes": 6, "total_edges": 4, "algorithms": ["SwansonBridgeSearch", "GentnerStructureMapping", "AltshullerContradictionSearch"]}
+{"timestamp": "2026-08-05T15:57:16.308016+00:00", "step": "RESULTS", "total_bridges": 2, "cross_literature_bridges": 0, "gentner_analogies": 5, "contradictions": 0, "cross_bridge_details": []}
+{"timestamp": "2026-08-05T15:57:16.308183+00:00", "step": "PRE_REGISTER", "test_id": "EXP-BLIND-042", "literature_A": "Inca quipu knot numeric recording", "literature_B": "neural network weight learning", "expected": "NULL"}
+{"timestamp": "2026-08-05T15:57:16.308232+00:00", "step": "FETCH_A_START", "query": "Inca quipu knot numeric recording"}
+{"timestamp": "2026-08-05T15:57:18.820778+00:00", "step": "FETCH_A_DONE", "query": "Inca quipu knot numeric recording", "papers_fetched": 10, "titles": ["Quipu: The Ancient Computer of the Inca Civilization", "Quipu - Wikipedia", "An Inca quipu \u2014 a knotted-string device used to record"]}
+{"timestamp": "2026-08-05T15:57:18.820970+00:00", "step": "EXTRACT_A_START", "literature": "Inca quipu knot numeric recording", "note": "extracting SEPARATELY \u2014 no knowledge of Literature B"}
+{"timestamp": "2026-08-05T15:57:18.821094+00:00", "step": "EXTRACT_A_DONE", "nodes": 3, "edges": 2, "literature": "Inca quipu knot numeric recording"}
+{"timestamp": "2026-08-05T15:57:18.821142+00:00", "step": "FETCH_B_START", "query": "neural network weight learning"}
+{"timestamp": "2026-08-05T15:57:21.824966+00:00", "step": "FETCH_B_DONE", "query": "neural network weight learning", "papers_fetched": 10, "titles": ["Weights and Bias in Neural Networks", "Neural Network Weights: A Comprehensive Guide", "Neural network (machine learning)"]}
+{"timestamp": "2026-08-05T15:57:21.825127+00:00", "step": "EXTRACT_B_START", "literature": "neural network weight learning", "note": "extracting SEPARATELY \u2014 no knowledge of Literature A"}
+{"timestamp": "2026-08-05T15:57:21.825219+00:00", "step": "EXTRACT_B_DONE", "nodes": 6, "edges": 4, "literature": "neural network weight learning"}
+{"timestamp": "2026-08-05T15:57:21.825281+00:00", "step": "ADD_SHARED", "shared_entities": [], "note": "shared intermediates added AFTER both literatures extracted separately"}
+{"timestamp": "2026-08-05T15:57:21.825325+00:00", "step": "COMBINE_AND_RUN", "total_nodes": 6, "total_edges": 4, "algorithms": ["SwansonBridgeSearch", "GentnerStructureMapping", "AltshullerContradictionSearch"]}
+{"timestamp": "2026-08-05T15:57:21.825577+00:00", "step": "RESULTS", "total_bridges": 2, "cross_literature_bridges": 0, "gentner_analogies": 5, "contradictions": 0, "cross_bridge_details": []}
