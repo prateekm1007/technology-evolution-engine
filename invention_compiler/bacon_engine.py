@@ -197,6 +197,137 @@ def _fit_quadratic(xs: List[float], ys: List[float]) -> Tuple[List[float], float
     return ([a, b, c], r2, residuals)
 
 
+# ---------------------------------------------------------------------------
+# Phase III (cycle 74): transcendental fit functions
+# ---------------------------------------------------------------------------
+
+def _fit_sqrt(xs: List[float], ys: List[float]) -> Tuple[List[float], float, List[float]]:
+    """Fit y = a*sqrt(x) + b. Returns ([a, b], r2, residuals).
+
+    Linearize: y = a*x^0.5 + b → linear in sqrt(x).
+    sqrt(x) requires x > 0.
+    """
+    if any(x <= 0 for x in xs):
+        return ([0.0, 0.0], 0.0, [0.0] * len(xs))
+    sqrt_xs = [math.sqrt(x) for x in xs]
+    return _fit_linear(sqrt_xs, ys)
+
+
+def _fit_atan(xs: List[float], ys: List[float]) -> Tuple[List[float], float, List[float]]:
+    """Fit y = a*atan(b*x) + c. Returns ([a, b, c], r2, residuals).
+
+    Uses grid search over b (atan is nonlinear in b), then linear fit for a, c.
+    atan(x) requires all x (dimensionless input expected).
+    """
+    if len(xs) < 4:
+        return ([0.0, 0.0, 0.0], 0.0, [0.0] * len(xs))
+
+    best_r2 = -1e9
+    best_params = [0.0, 0.0, 0.0]
+    best_residuals = [0.0] * len(xs)
+
+    # Grid search over b (the nonlinear parameter)
+    for b_exp in range(-5, 6):
+        b = 10.0 ** b_exp
+        try:
+            atan_xs = [math.atan(b * x) for x in xs]
+            ([a, c], r2, _) = _fit_linear(atan_xs, ys)
+            if r2 > best_r2:
+                y_pred = [a * math.atan(b * x) + c for x in xs]
+                residuals = [yp - ya for yp, ya in zip(y_pred, ys)]
+                n = len(ys)
+                mean_y = sum(ys) / n
+                ss_tot = sum((y - mean_y) ** 2 for y in ys)
+                ss_res = sum(r ** 2 for r in residuals)
+                r2_orig = 1.0 - (ss_res / ss_tot) if ss_tot > 1e-12 else 0.0
+                if r2_orig > best_r2:
+                    best_r2 = r2_orig
+                    best_params = [a, b, c]
+                    best_residuals = residuals
+        except (ValueError, OverflowError):
+            continue
+
+    if best_r2 < 0:
+        best_r2 = 0.0
+    return (best_params, best_r2, best_residuals)
+
+
+def _fit_sin(xs: List[float], ys: List[float]) -> Tuple[List[float], float, List[float]]:
+    """Fit y = a*sin(b*x) + c. Returns ([a, b, c], r2, residuals).
+
+    Uses grid search over b, then linear fit for a, c.
+    sin(x) requires dimensionless x.
+    """
+    if len(xs) < 4:
+        return ([0.0, 0.0, 0.0], 0.0, [0.0] * len(xs))
+
+    best_r2 = -1e9
+    best_params = [0.0, 0.0, 0.0]
+    best_residuals = [0.0] * len(xs)
+
+    for b_exp in range(-3, 4):
+        for b_mult in [1, 2, 5]:
+            b = b_mult * (10.0 ** b_exp)
+            try:
+                sin_xs = [math.sin(b * x) for x in xs]
+                ([a, c], r2_log, _) = _fit_linear(sin_xs, ys)
+                y_pred = [a * math.sin(b * x) + c for x in xs]
+                residuals = [yp - ya for yp, ya in zip(y_pred, ys)]
+                n = len(ys)
+                mean_y = sum(ys) / n
+                ss_tot = sum((y - mean_y) ** 2 for y in ys)
+                ss_res = sum(r ** 2 for r in residuals)
+                r2_orig = 1.0 - (ss_res / ss_tot) if ss_tot > 1e-12 else 0.0
+                if r2_orig > best_r2:
+                    best_r2 = r2_orig
+                    best_params = [a, b, c]
+                    best_residuals = residuals
+            except (ValueError, OverflowError):
+                continue
+
+    if best_r2 < 0:
+        best_r2 = 0.0
+    return (best_params, best_r2, best_residuals)
+
+
+def _fit_cos(xs: List[float], ys: List[float]) -> Tuple[List[float], float, List[float]]:
+    """Fit y = a*cos(b*x) + c. Returns ([a, b, c], r2, residuals).
+
+    Uses grid search over b, then linear fit for a, c.
+    cos(x) requires dimensionless x.
+    """
+    if len(xs) < 4:
+        return ([0.0, 0.0, 0.0], 0.0, [0.0] * len(xs))
+
+    best_r2 = -1e9
+    best_params = [0.0, 0.0, 0.0]
+    best_residuals = [0.0] * len(xs)
+
+    for b_exp in range(-3, 4):
+        for b_mult in [1, 2, 5]:
+            b = b_mult * (10.0 ** b_exp)
+            try:
+                cos_xs = [math.cos(b * x) for x in xs]
+                ([a, c], r2_log, _) = _fit_linear(cos_xs, ys)
+                y_pred = [a * math.cos(b * x) + c for x in xs]
+                residuals = [yp - ya for yp, ya in zip(y_pred, ys)]
+                n = len(ys)
+                mean_y = sum(ys) / n
+                ss_tot = sum((y - mean_y) ** 2 for y in ys)
+                ss_res = sum(r ** 2 for r in residuals)
+                r2_orig = 1.0 - (ss_res / ss_tot) if ss_tot > 1e-12 else 0.0
+                if r2_orig > best_r2:
+                    best_r2 = r2_orig
+                    best_params = [a, b, c]
+                    best_residuals = residuals
+            except (ValueError, OverflowError):
+                continue
+
+    if best_r2 < 0:
+        best_r2 = 0.0
+    return (best_params, best_r2, best_residuals)
+
+
 # Library of candidate law forms (ordered by Occam's razor: simpler first)
 CANDIDATE_LAWS: List[LawCandidate] = [
     LawCandidate(name="linear",       form="y = a*x + b",
@@ -211,6 +342,15 @@ CANDIDATE_LAWS: List[LawCandidate] = [
                 fit_func=_fit_exponential,  param_names=["a", "b"]),
     LawCandidate(name="quadratic",    form="y = a*x^2 + b*x + c",
                 fit_func=_fit_quadratic,    param_names=["a", "b", "c"]),
+    # Phase III (cycle 74): transcendental forms
+    LawCandidate(name="sqrt",        form="y = a*sqrt(x) + b",
+                fit_func=_fit_sqrt,         param_names=["a", "b"]),
+    LawCandidate(name="atan",        form="y = a*atan(b*x) + c",
+                fit_func=_fit_atan,         param_names=["a", "b", "c"]),
+    LawCandidate(name="sin",         form="y = a*sin(b*x) + c",
+                fit_func=_fit_sin,          param_names=["a", "b", "c"]),
+    LawCandidate(name="cos",         form="y = a*cos(b*x) + c",
+                fit_func=_fit_cos,          param_names=["a", "b", "c"]),
 ]
 
 
@@ -719,6 +859,20 @@ def _predict_with_law(law: DiscoveredLaw, xs: List[float]) -> Optional[List[floa
     if law.name == "quadratic":
         a, b, c = law.params
         return [a * x * x + b * x + c for x in xs]
+    if law.name == "sqrt":
+        a, b = law.params
+        if any(x <= 0 for x in xs):
+            return None
+        return [a * math.sqrt(x) + b for x in xs]
+    if law.name == "atan":
+        a, b, c = law.params
+        return [a * math.atan(b * x) + c for x in xs]
+    if law.name == "sin":
+        a, b, c = law.params
+        return [a * math.sin(b * x) + c for x in xs]
+    if law.name == "cos":
+        a, b, c = law.params
+        return [a * math.cos(b * x) + c for x in xs]
     return None
 
 

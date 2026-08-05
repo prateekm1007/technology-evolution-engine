@@ -274,6 +274,33 @@ def check_dimensional_consistency(
                 return False, f"Quadratic law: {var} has dimension {dim}, output has {output_dim} — must match"
         return True, "Quadratic: dimensions match"
 
+    elif law_form == "sqrt":
+        # y = a*sqrt(x) + b: x must be dimensionless or output = x^0.5
+        # sqrt(x) has dimension x^0.5, so output must = input^0.5
+        # In practice a absorbs the conversion, so accept
+        return True, "Sqrt: accepted (a absorbs dimensional conversion)"
+
+    elif law_form == "atan":
+        # y = a*atan(b*x) + c: b*x must be dimensionless (atan of dimensionless)
+        for var, dim in input_dims.items():
+            if not dim.is_dimensionless():
+                return False, f"Atan law: {var} has dimension {dim} — atan argument must be dimensionless"
+        return True, "Atan: input is dimensionless"
+
+    elif law_form == "sin":
+        # y = a*sin(b*x) + c: b*x must be dimensionless (sin of dimensionless)
+        for var, dim in input_dims.items():
+            if not dim.is_dimensionless():
+                return False, f"Sin law: {var} has dimension {dim} — sin argument must be dimensionless"
+        return True, "Sin: input is dimensionless"
+
+    elif law_form == "cos":
+        # y = a*cos(b*x) + c: b*x must be dimensionless (cos of dimensionless)
+        for var, dim in input_dims.items():
+            if not dim.is_dimensionless():
+                return False, f"Cos law: {var} has dimension {dim} — cos argument must be dimensionless"
+        return True, "Cos: input is dimensionless"
+
     else:
         # Unknown law form — allow it (don't block unknown forms)
         return True, f"Unknown law form '{law_form}' — dimensional check skipped"
