@@ -227,8 +227,12 @@ def _fit_atan(xs: List[float], ys: List[float]) -> Tuple[List[float], float, Lis
     best_residuals = [0.0] * len(xs)
 
     # Grid search over b (the nonlinear parameter)
+    # Try powers of 10 AND intermediate values (0.1, 0.2, 0.5, 1, 2, 5, 10...)
+    b_candidates = []
     for b_exp in range(-5, 6):
-        b = 10.0 ** b_exp
+        for b_mult in [1, 2, 3, 5, 7]:
+            b_candidates.append(b_mult * (10.0 ** b_exp))
+    for b in b_candidates:
         try:
             atan_xs = [math.atan(b * x) for x in xs]
             ([a, c], r2, _) = _fit_linear(atan_xs, ys)
@@ -265,9 +269,11 @@ def _fit_sin(xs: List[float], ys: List[float]) -> Tuple[List[float], float, List
     best_params = [0.0, 0.0, 0.0]
     best_residuals = [0.0] * len(xs)
 
+    b_candidates = []
     for b_exp in range(-3, 4):
-        for b_mult in [1, 2, 5]:
-            b = b_mult * (10.0 ** b_exp)
+        for b_mult in [1, 2, 3, 5, 7]:
+            b_candidates.append(b_mult * (10.0 ** b_exp))
+    for b in b_candidates:
             try:
                 sin_xs = [math.sin(b * x) for x in xs]
                 ([a, c], r2_log, _) = _fit_linear(sin_xs, ys)
@@ -303,9 +309,11 @@ def _fit_cos(xs: List[float], ys: List[float]) -> Tuple[List[float], float, List
     best_params = [0.0, 0.0, 0.0]
     best_residuals = [0.0] * len(xs)
 
+    b_candidates = []
     for b_exp in range(-3, 4):
-        for b_mult in [1, 2, 5]:
-            b = b_mult * (10.0 ** b_exp)
+        for b_mult in [1, 2, 3, 5, 7]:
+            b_candidates.append(b_mult * (10.0 ** b_exp))
+    for b in b_candidates:
             try:
                 cos_xs = [math.cos(b * x) for x in xs]
                 ([a, c], r2_log, _) = _fit_linear(cos_xs, ys)

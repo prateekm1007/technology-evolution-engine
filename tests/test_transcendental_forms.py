@@ -43,6 +43,24 @@ class TestTranscendentalForms:
         assert law.name == "sin"
         assert law.r2 >= 0.999
 
+    def test_atan_discovers_from_data(self):
+        """y = 3*atan(0.5*x) + 1 → discovers atan form (P28 gap closed)."""
+        xs = [0.1*i for i in range(1, 30)]
+        ys = [3.0 * math.atan(0.5*x) + 1.0 for x in xs]
+        law = discover_law(xs, ys, x_dimension=DIMENSIONLESS, y_dimension=DIMENSIONLESS)
+        assert law is not None
+        assert law.name == "atan"
+        assert law.r2 >= 0.999
+
+    def test_cos_discovers_from_data(self):
+        """y = 4*cos(0.3*x) + 2 → discovers cos form (P28 gap closed)."""
+        xs = [0.2*i for i in range(1, 50)]
+        ys = [4.0 * math.cos(0.3*x) + 2.0 for x in xs]
+        law = discover_law(xs, ys, x_dimension=DIMENSIONLESS, y_dimension=DIMENSIONLESS)
+        assert law is not None
+        assert law.name == "cos"
+        assert law.r2 >= 0.999
+
     def test_stull_uses_new_forms(self):
         """Stull wet-bulb now fits with transcendental forms (was only power before)."""
         from scripts.formulas.stull_wet_bulb import stull_wet_bulb
