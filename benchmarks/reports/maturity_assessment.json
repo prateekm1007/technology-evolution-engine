@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-08-05T03:16:52.546036+00:00",
+  "timestamp": "2026-08-05T06:22:14.233745+00:00",
   "phases": {
     "I": {
       "name": "Scientific Memory",
@@ -10,7 +10,7 @@
       "required_classes": [
         {
           "class": "Observation",
-          "exists": false
+          "exists": true
         },
         {
           "class": "Intervention",
@@ -18,7 +18,7 @@
         },
         {
           "class": "Theory",
-          "exists": false
+          "exists": true
         }
       ]
     },
@@ -31,7 +31,7 @@
       "required_classes": [
         {
           "class": "Dimension",
-          "exists": false
+          "exists": true
         }
       ]
     },
