@@ -91,6 +91,49 @@ ENTITY_STOPWORDS = {
     "how", "why", "from", "by", "as", "into", "through", "during",
     "before", "after", "above", "below", "up", "down", "out", "off",
     "over", "under", "again", "further", "then", "once",
+    # Cycle 107: extended with common English words that SciSpacy extracts
+    # as entities but are not scientific concepts.
+    "all", "can", "more", "such", "some", "main", "area", "low", "high",
+    "well", "set", "few", "not", "no", "yes", "only", "very", "just",
+    "also", "than", "too", "most", "other", "many", "much", "any",
+    "each", "both", "same", "different", "new", "old", "first", "last",
+    "next", "previous", "one", "two", "three", "four", "five",
+    "samples", "sample", "study", "studies", "research", "work",
+    "results", "result", "data", "method", "methods", "approach",
+    "system", "systems", "process", "processes", "effect", "effects",
+    "change", "changes", "increase", "decrease", "reduction", "reducing",
+    "addition", "removal", "presence", "absence", "formation",
+    "determine", "determined", "obtained", "observed", "measured",
+    "recorded", "detected", "reported", "shown", "found", "given",
+    "based", "using", "used", "use", "uses", "allow", "allows",
+    "enable", "enables", "enabled", "leading", "lead", "leads",
+    "provide", "provides", "provided", "require", "requires",
+    "include", "includes", "included", "involving", "involve",
+    "involved", "consisting", "consist", "consists",
+    "project", "prevent", "prevents", "prevented",
+    "however", "therefore", "moreover", "furthermore", "nevertheless",
+    "accordingly", "consequently", "thus", "hence", "whereas",
+    "although", "though", "despite", "regardless",
+    "figure", "fig", "table", "equation", "eq", "section",
+    "abstract", "introduction", "conclusion", "references",
+    "author", "authors", "et", "al",
+    # Common verbs that are not mechanisms
+    "show", "shown", "showed", "demonstrate", "demonstrated",
+    "reveal", "revealed", "indicate", "indicated", "suggest",
+    "suggested", "confirm", "confirmed", "support", "supported",
+    "exhibit", "exhibited", "display", "displayed",
+    # Common adjectives that are not properties
+    "significant", "significantly", "remarkable", "remarkably",
+    "excellent", "good", "bad", "poor", "great", "small", "large",
+    "big", "tiny", "huge", "wide", "narrow", "thin", "thick",
+    "fast", "slow", "rapid", "quick", "stable", "unstable",
+    # Common nouns that are not scientific entities
+    "time", "times", "way", "ways", "case", "cases", "part", "parts",
+    "type", "types", "kind", "kinds", "form", "forms", "number",
+    "numbers", "value", "values", "level", "levels", "rate", "rates",
+    "range", "ranges", "point", "points", "line", "lines", "side",
+    "sides", "end", "ends", "top", "bottom", "middle", "center",
+    "left", "right", "front", "back", "inside", "outside",
 }
 
 
@@ -243,6 +286,15 @@ class NLPPipeline:
         
         # 1. spaCy NER (general entities)
         for ent in doc.ents:
+            # Per cycle 107: filter generic English words from SciSpacy output.
+            # SciSpacy labels common words as ENTITY. Filter them here.
+            ent_text_lower = ent.text.lower().strip()
+            if ent_text_lower in ENTITY_STOPWORDS:
+                continue
+            # Skip single words that are too short (< 4 chars) and not chemical formulas
+            if len(ent_text_lower) < 4 and not re.match(r'^[A-Z][a-z]?[0-9]', ent.text):
+                continue
+            
             # With SciSpacy, entities are labeled "ENTITY" (scientific)
             # With en_core_web_sm, they're labeled ORG/PERSON/GPE/etc.
             # Map both to canonical types
