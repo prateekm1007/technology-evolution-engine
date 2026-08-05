@@ -1,0 +1,36 @@
+{"timestamp": "2026-08-05T07:43:50.531857+00:00", "step": "PRE_REGISTER", "test_id": "EXP-BLIND-007", "literature_A": "bioluminescence in marine organisms", "literature_B": "LED lighting efficiency", "expected": "POTENTIAL_HIT"}
+{"timestamp": "2026-08-05T07:43:50.532108+00:00", "step": "FETCH_A_START", "query": "bioluminescence in marine organisms"}
+{"timestamp": "2026-08-05T07:43:54.358238+00:00", "step": "FETCH_A_DONE", "query": "bioluminescence in marine organisms", "papers_fetched": 10, "titles": ["Bioluminescence - Smithsonian Ocean Portal", "What is bioluminescence?", "Systematic Distribution of Bioluminescence in Marine Animals"]}
+{"timestamp": "2026-08-05T07:43:54.358472+00:00", "step": "EXTRACT_A_START", "literature": "bioluminescence in marine organisms", "note": "extracting SEPARATELY \u2014 no knowledge of Literature B"}
+{"timestamp": "2026-08-05T07:43:54.358668+00:00", "step": "EXTRACT_A_DONE", "nodes": 10, "edges": 9, "literature": "bioluminescence in marine organisms"}
+{"timestamp": "2026-08-05T07:43:54.358722+00:00", "step": "FETCH_B_START", "query": "LED lighting efficiency"}
+{"timestamp": "2026-08-05T07:43:57.101455+00:00", "step": "FETCH_B_DONE", "query": "LED lighting efficiency", "papers_fetched": 10, "titles": ["How efficient are LEDs?", "LED Lighting Benefits - Energy Management", "What is Light Efficiency vs Light Efficacy?"]}
+{"timestamp": "2026-08-05T07:43:57.101628+00:00", "step": "EXTRACT_B_START", "literature": "LED lighting efficiency", "note": "extracting SEPARATELY \u2014 no knowledge of Literature A"}
+{"timestamp": "2026-08-05T07:43:57.101764+00:00", "step": "EXTRACT_B_DONE", "nodes": 19, "edges": 17, "literature": "LED lighting efficiency"}
+{"timestamp": "2026-08-05T07:43:57.101842+00:00", "step": "ADD_SHARED", "shared_entities": ["photon_emission", "light_output", "wavelength"], "note": "shared intermediates added AFTER both literatures extracted separately"}
+{"timestamp": "2026-08-05T07:43:57.101893+00:00", "step": "COMBINE_AND_RUN", "total_nodes": 19, "total_edges": 17, "algorithms": ["SwansonBridgeSearch", "GentnerStructureMapping", "AltshullerContradictionSearch"]}
+{"timestamp": "2026-08-05T07:43:57.103173+00:00", "step": "RESULTS", "total_bridges": 20, "cross_literature_bridges": 0, "gentner_analogies": 225, "contradictions": 0, "cross_bridge_details": []}
+{"timestamp": "2026-08-05T07:43:57.103324+00:00", "step": "PRE_REGISTER", "test_id": "EXP-BLIND-008", "literature_A": "seaweed cultivation for biomass", "literature_B": "direct air capture of CO2", "expected": "POTENTIAL_HIT"}
+{"timestamp": "2026-08-05T07:43:57.103375+00:00", "step": "FETCH_A_START", "query": "seaweed cultivation for biomass"}
+{"timestamp": "2026-08-05T07:43:59.605285+00:00", "step": "FETCH_A_DONE", "query": "seaweed cultivation for biomass", "papers_fetched": 10, "titles": ["Harnessing marine biomass for sustainable fuel production", "Seaweed Farming and Biomass Sinking", "Seaweed Aquaculture"]}
+{"timestamp": "2026-08-05T07:43:59.605465+00:00", "step": "EXTRACT_A_START", "literature": "seaweed cultivation for biomass", "note": "extracting SEPARATELY \u2014 no knowledge of Literature B"}
+{"timestamp": "2026-08-05T07:43:59.605631+00:00", "step": "EXTRACT_A_DONE", "nodes": 8, "edges": 8, "literature": "seaweed cultivation for biomass"}
+{"timestamp": "2026-08-05T07:43:59.605683+00:00", "step": "FETCH_B_START", "query": "direct air capture of CO2"}
+{"timestamp": "2026-08-05T07:44:02.574098+00:00", "step": "FETCH_B_DONE", "query": "direct air capture of CO2", "papers_fetched": 10, "titles": ["DOE ExplainsDirect Air Capture - Department of Energy", "Direct air capture of CO2: an industrial perspective - Scien", "Direct air capture technology: innovations in CO\u2082 removal"]}
+{"timestamp": "2026-08-05T07:44:02.574357+00:00", "step": "EXTRACT_B_START", "literature": "direct air capture of CO2", "note": "extracting SEPARATELY \u2014 no knowledge of Literature A"}
+{"timestamp": "2026-08-05T07:44:02.574540+00:00", "step": "EXTRACT_B_DONE", "nodes": 17, "edges": 16, "literature": "direct air capture of CO2"}
+{"timestamp": "2026-08-05T07:44:02.574602+00:00", "step": "ADD_SHARED", "shared_entities": ["CO2_absorption", "carbon_sequestration"], "note": "shared intermediates added AFTER both literatures extracted separately"}
+{"timestamp": "2026-08-05T07:44:02.574665+00:00", "step": "COMBINE_AND_RUN", "total_nodes": 17, "total_edges": 16, "algorithms": ["SwansonBridgeSearch", "GentnerStructureMapping", "AltshullerContradictionSearch"]}
+{"timestamp": "2026-08-05T07:44:02.575692+00:00", "step": "RESULTS", "total_bridges": 17, "cross_literature_bridges": 0, "gentner_analogies": 198, "contradictions": 0, "cross_bridge_details": []}
+{"timestamp": "2026-08-05T07:44:02.575930+00:00", "step": "PRE_REGISTER", "test_id": "EXP-BLIND-009", "literature_A": "origami engineering for deployable structures", "literature_B": "protein folding prediction", "expected": "POTENTIAL_HIT"}
+{"timestamp": "2026-08-05T07:44:02.575984+00:00", "step": "FETCH_A_START", "query": "origami engineering for deployable structures"}
+{"timestamp": "2026-08-05T07:44:05.031899+00:00", "step": "FETCH_A_DONE", "query": "origami engineering for deployable structures", "papers_fetched": 10, "titles": ["A Review of Origami-Based Deployable Structures in", "A Review of Origami-Based Deployable Structures in", "Origami-inspired deployable structures for space exploration"]}
+{"timestamp": "2026-08-05T07:44:05.032076+00:00", "step": "EXTRACT_A_START", "literature": "origami engineering for deployable structures", "note": "extracting SEPARATELY \u2014 no knowledge of Literature B"}
+{"timestamp": "2026-08-05T07:44:05.032224+00:00", "step": "EXTRACT_A_DONE", "nodes": 7, "edges": 6, "literature": "origami engineering for deployable structures"}
+{"timestamp": "2026-08-05T07:44:05.032271+00:00", "step": "FETCH_B_START", "query": "protein folding prediction"}
+{"timestamp": "2026-08-05T07:44:07.761373+00:00", "step": "FETCH_B_DONE", "query": "protein folding prediction", "papers_fetched": 10, "titles": ["AlphaFold Protein Structure Database", "AlphaFold Server", "Structure Prediction"]}
+{"timestamp": "2026-08-05T07:44:07.761562+00:00", "step": "EXTRACT_B_START", "literature": "protein folding prediction", "note": "extracting SEPARATELY \u2014 no knowledge of Literature A"}
+{"timestamp": "2026-08-05T07:44:07.761710+00:00", "step": "EXTRACT_B_DONE", "nodes": 15, "edges": 13, "literature": "protein folding prediction"}
+{"timestamp": "2026-08-05T07:44:07.761760+00:00", "step": "ADD_SHARED", "shared_entities": ["folding_mechanism"], "note": "shared intermediates added AFTER both literatures extracted separately"}
+{"timestamp": "2026-08-05T07:44:07.761834+00:00", "step": "COMBINE_AND_RUN", "total_nodes": 15, "total_edges": 13, "algorithms": ["SwansonBridgeSearch", "GentnerStructureMapping", "AltshullerContradictionSearch"]}
+{"timestamp": "2026-08-05T07:44:07.762601+00:00", "step": "RESULTS", "total_bridges": 14, "cross_literature_bridges": 0, "gentner_analogies": 101, "contradictions": 0, "cross_bridge_details": []}
