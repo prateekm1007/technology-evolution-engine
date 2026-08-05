@@ -61,3 +61,6 @@ jobs:
 
       - name: Gate 9 — Prose consistency linter (DR-9)
         run: python scripts/verify_prose_consistency.py product/PRODUCT.md || true  # warnings OK
+
+      - name: Gate 10 — Governance CI gates (P1, P27, P70, P77, FA2, GOV, TAX)
+        run: python scripts/ci_gates.py

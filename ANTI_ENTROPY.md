@@ -1837,6 +1837,8 @@ or it expires.
 
 ## The Forbidden Actions (FA1–FA34)
 
+**FA2** — Claiming "live" without a fresh fetch (Live-Claim Rule violation).
+
 1. Lowering a gate threshold to silence a red
 2. Claiming "live" without a fresh fetch
 3. Seeding synthetic data and presenting it as real
