@@ -1,0 +1,11 @@
+TITLE: Machine Learning Relationships between Nanoporous Structures and Electrochemical Performance in MOF Supercapacitors
+ARXIV ID: 2501.09287v1
+URL: http://arxiv.org/abs/2501.09287v1
+RETRIEVAL DATE: 2026-08-05
+RETRIEVAL METHOD: arxiv.org API
+SOURCE VERIFICATION: arxiv API XML
+DOMAIN HINT: supercapacitor
+PUBLISHED: 2025-01-16T04:27:06Z
+
+ABSTRACT:
+The development of supercapacitors is impeded by the unclear relationships between nanoporous electrode structures and electrochemical performance, primarily due to challenges in decoupling the complex interdependencies of various structural descriptors. While machine learning (ML) techniques offer a promising solution, their application is hindered by the lack of large, unified databases. Herein, we use constant-potential molecular simulation to construct a unified supercapacitor database with hundreds of metal-organic framework (MOF) electrodes. Leveraging this database, well-trained decision-tree-based ML models achieve fast, accurate, and interpretable predictions of capacitance and charging rate, experimentally validated by a representative case. SHAP analyses reveal that specific surface area (SSA) governs gravimetric capacitance while pore size effects are minimal, attributed to the strong dependence of electrode-ion coordination on SSA rather than pore size. SSA and porosity, respectively, dominate volumetric capacitance in 1D-pore and 3D-pore MOFs, pinnacling the indispensable effects of pore dimensionality. Meanwhile, porosity is found to be the most decisive factor in the charging rate for both 1D-pore and 3D-pore MOFs. Especially for 3D-pore MOFs, an exponential increase with porosity is observed in both ionic conductance and in-pore ion diffusion coefficient, ascribed to loosened ion packing. These findings provide profound insights for the design of high-performance supercapacitor electrodes.

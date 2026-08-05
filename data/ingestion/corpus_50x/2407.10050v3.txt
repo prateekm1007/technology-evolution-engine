@@ -1,0 +1,11 @@
+TITLE: Entropy Increasing Numerical Methods for Prediction of Reversible and Irreversible Heating in Supercapacitors
+ARXIV ID: 2407.10050v3
+URL: http://arxiv.org/abs/2407.10050v3
+RETRIEVAL DATE: 2026-08-05
+RETRIEVAL METHOD: arxiv.org API
+SOURCE VERIFICATION: arxiv API XML
+DOMAIN HINT: supercapacitor
+PUBLISHED: 2024-07-14T02:26:35Z
+
+ABSTRACT:
+Accurate characterization of entropy plays a pivotal role in capturing reversible and irreversible heating in supercapacitors during charging/discharging cycles. However, numerical methods that can faithfully capture entropy variation in supercapacitors are still in lack. This work develops first-order and second-order finite-volume schemes for the prediction of non-isothermal electrokinetics in supercapacitors. Semi-implicit discretization that decouples temperature from ionic concentrations and electric potential results in an efficient first-order accurate scheme. Its numerical analysis theoretically establishes the unique solvability of the nonlinear scheme with the existence of positive ionic concentrations and temperature at discrete level. To obtain an entropy-increasing second-order scheme, a modified Crank-Nicolson approach is proposed for discretization of the logarithm of both temperature and ionic concentrations, which is employed to enforce numerical positivity. Moreover, numerical analysis rigorously demonstrates that both first-order and second-order schemes are able to unconditionally preserve ionic mass conservation and original entropy increase for a closed, thermally insulated supercapacitor. Extensive numerical simulations show that the proposed schemes have expected accuracy and robust performance in preserving the desired properties. Temperature oscillation in the charging/discharging processes is successfully predicted, unraveling a quadratic scaling law of temperature rising slope against voltage scanning rate. It is also demonstrated that the variation of ionic entropy contribution, which is the underlying mechanism responsible for reversible heating, is faithfully captured. Our work provides a promising tool in predicting reversible and irreversible heating in supercapacitors.

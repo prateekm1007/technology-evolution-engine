@@ -1,0 +1,11 @@
+TITLE: Maximization of Supercapacitor Storage via Topology Optimization of Electrode Structures
+ARXIV ID: 2511.20969v1
+URL: http://arxiv.org/abs/2511.20969v1
+RETRIEVAL DATE: 2026-08-05
+RETRIEVAL METHOD: arxiv.org API
+SOURCE VERIFICATION: arxiv API XML
+DOMAIN HINT: supercapacitor
+PUBLISHED: 2025-11-26T01:44:55Z
+
+ABSTRACT:
+As widely used electrochemical storage devices, supercapacitors deliver higher power density than batteries, but suffer from significantly lower energy density. In this work, we propose a topology optimization model for electrode structure to maximize energy storage in supercapacitors. The existence of minimizers to the resulting optimal control problem, which is constrained by a modified steady-state Poisson--Nernst--Planck system describing ionic electrodiffusion, has been theoretically established by using the direct method in the calculus of variation. Sensitivity analysis of the topology optimization model is performed to derive variational derivatives and corresponding adjoint equations. A gradient flow formulation discretized by a stabilized semi-implicit scheme is developed to solve the resulting topology optimization problem. Extensive numerical experiments present various porous electrode structures that own large area of electrode-electrolyte interface, demonstrating the effectiveness and robustness of the proposed topology optimization model and corresponding algorithm.

@@ -1,0 +1,11 @@
+TITLE: An Approach to Implement Photovoltaic Self-Consumption and Ramp-Rate Control Algorithm with a Vanadium Redox Flow Battery Day-to-Day Forecast Charging
+ARXIV ID: 2012.11955v4
+URL: http://arxiv.org/abs/2012.11955v4
+RETRIEVAL DATE: 2026-08-05
+RETRIEVAL METHOD: arxiv.org API
+SOURCE VERIFICATION: arxiv API XML
+DOMAIN HINT: photovoltaic
+PUBLISHED: 2020-12-22T12:20:45Z
+
+ABSTRACT:
+The variability of the solar resource is mainly caused by cloud passing, causing rapid power fluctuations on the output of photovoltaic (PV) systems. The fluctuations can negatively impact the electric grid, and smoothing techniques can be used as attempts to correct it. However, the integration of a PV+VRFB to deal with the extreme power ramps at a building scale is underexplored in the literature, as well as its effectiveness in combination with other energy management strategies (EMSs). This work is focused on using a VRFB to control the power output of the PV installation, maintaining the ramp rate within a non-violation limit and within a battery state of charge (SOC) range, appropriate to perform the ramp rate management. Based on the model simulation, energy key-performance indicators (KPI) are studied, and validation in real-time is carried. Three EMSs are simulated: a self-consumption maximization (SCM), and SCM with ramp rate control (SCM+RR), and this last strategy includes a night battery charging based on a day ahead weather forecast (SCM+RR+WF). Results show a battery SOC management control is essential to apply these EMSs on VRFB, and the online weather forecast proves to be efficient in real-time application. SCM+RR+WF is a robust approach to manage PV+VRFB systems in wintertime (studied application), and high PV penetration building areas make it a feasible approach. Over the studied week, the strategy successfully controlled 100% of the violating power ramps, also obtaining a self-consumption ratio (SCR) of 59% and a grid-relief factor (GRF) of 61%.

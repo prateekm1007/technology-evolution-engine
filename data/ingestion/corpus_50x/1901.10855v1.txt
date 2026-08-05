@@ -1,0 +1,11 @@
+TITLE: Predictive Maintenance in Photovoltaic Plants with a Big Data Approach
+ARXIV ID: 1901.10855v1
+URL: http://arxiv.org/abs/1901.10855v1
+RETRIEVAL DATE: 2026-08-05
+RETRIEVAL METHOD: arxiv.org API
+SOURCE VERIFICATION: arxiv API XML
+DOMAIN HINT: photovoltaic
+PUBLISHED: 2019-01-29T16:06:22Z
+
+ABSTRACT:
+This paper presents a novel and flexible solution for fault prediction based on data collected from SCADA system. Fault prediction is offered at two different levels based on a data-driven approach: (a) generic fault/status prediction and (b) specific fault class prediction, implemented by means of two different machine learning based modules built on an unsupervised clustering algorithm and a Pattern Recognition Neural Network, respectively. Model has been assessed on a park of six photovoltaic (PV) plants up to 10 MW and on more than one hundred inverter modules of three different technology brands. The results indicate that the proposed method is effective in (a) predicting incipient generic faults up to 7 days in advance with sensitivity up to 95% and (b) anticipating damage of specific fault classes with times ranging from few hours up to 7 days. The model is easily deployable for on-line monitoring of anomalies on new PV plants and technologies, requiring only the availability of historical SCADA and fault data, fault taxonomy and inverter electrical datasheet. Keywords: Data Mining, Fault Prediction, Inverter Module, Key Performance Indicator, Lost Production
