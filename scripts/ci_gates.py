@@ -328,10 +328,13 @@ def gate_p70_principles_grepable() -> Tuple[bool, str]:
         return False, "P70 FAIL: ANTI_ENTROPY.md does not exist"
 
     content = anti_entropy.read_text(encoding="utf-8")
-    required_principles = ["P1", "P27", "P70", "P77", "FA2", "S0", "S1",
+    # Per cycle 64 governance cleanup: only check for principles that remain
+    # after removing [NOT-APPLICABLE] rules. Removed: FA2 (was added specifically),
+    # P77 (was in removed Part Seventeen), S0/S1 (kept but check still works).
+    required_principles = ["P1", "P27", "P70", "S0", "S1",
                            "Prime Directive", "Live-Claim", "No-Gaming",
                            "Trace-Before-Fix", "Honest-Boundary",
-                           "GOVERNANCE_LOOP"]
+                           "GOVERNANCE_LOOP", "P88", "PLAUSIBILITY_CHECKED"]
     missing = [p for p in required_principles if p not in content]
 
     if missing:

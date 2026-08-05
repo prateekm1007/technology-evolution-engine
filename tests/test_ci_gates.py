@@ -73,7 +73,7 @@ class TestCIGatesPass:
     """Verify the gates pass on the current repository state."""
 
     def test_p70_principles_are_grepable(self):
-        """P70: all required principles must be in ANTI_ENTROPY.md."""
+        """P70: required principles must be in ANTI_ENTROPY.md (cycle 64: reduced set)."""
         from scripts.ci_gates import gate_p70_principles_grepable
         passed, details = gate_p70_principles_grepable()
         assert passed, f"P70 gate failed: {details}"

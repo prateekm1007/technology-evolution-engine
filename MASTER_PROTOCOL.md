@@ -1216,6 +1216,14 @@ ledger:
    revised module, and the second prediction is measurably closer
    to the observation than the first.
 
+**Two definitions of "closed" (cycle 60 counting fix):**
+- **Executed loop** (`is_executed_loop()`): all 5 steps recorded.
+  A loop that passes T1 on the first try is still closed — it closed
+  positively. Used for the Phase 4 exit criterion (closed_loops ≥ 10).
+- **Revised loop** (`is_closed_loop()`): closeness_value > 0, meaning
+  T1 failed and T5 revision improved the prediction. Used for the
+  DR-14 revision-improvement criterion.
+
 Without all 5 steps, the system is a recording system, not a
 learning system. `layer_status.LAYER_STATUS["creation"]` cannot
 move from `not_started` to `scaffolded` without a closed loop;
@@ -2255,7 +2263,7 @@ The edge tier is derived from the mechanism status:
 | (no mechanism) | ASSOCIATIVE | Keyword match, co-occurrence |
 | contradicted | CONTRADICTED | Formula executed, does NOT match (GAP-002) |
 
-**Simulation capability (cycle 56 clarification):**
+**Simulation capability (cycle 56 clarification, cycle 64 status note):**
 
 Only `observed`, `simulated`, and `derived` mechanisms may be used in
 causal simulation. `plausibility_checked` is VERIFIED tier (passed a
@@ -2263,6 +2271,11 @@ check) but NOT simulation-capable (not computed from a formula). This
 distinguishes "checked against physical reality" from "computed from
 a formula" — both are stronger than `asserted`, but only the latter
 can be used for numerical propagation.
+
+**Status (cycle 64):** OBSERVED, SIMULATED, and DERIVED are reserved
+for Phase III (BACON formula derivation). Not yet populated —
+0 edges have these statuses. PLAUSIBILITY_CHECKED (35 edges), ASSERTED
+(174 edges), and CONTRADICTED (15 edges) are the 3 active states.
 
 **Default tolerances per formula (GAP-001, documented cycle 33):**
 
