@@ -2103,3 +2103,53 @@ it presents as open-domain capability but has the same core defect
 reading comprehension is not auditable). The honest path is to label
 LLM-guided extraction as ASSERTED-tier (per DR-15) and forbid it from
 NOVEL HIT claims until verified against source text.
+
+
+### F-066 — Mechanism label reframing changes non-triviality verdict (P1, cycle 91)
+
+**Found:** Self-audit, cycle 91 (2026-08-05).
+**Repro:**
+```bash
+cd /home/z/my-project/audit/repo
+# Read predictions.jsonl for EXP-BLIND-023.
+# Cycle 87: non-triviality check used shared_mechanism="surface_wettability_control"
+#   -> matched GENERIC_PRINCIPLES (contact_angle, wettability) -> LIKELY_TRIVIAL.
+# Cycle 90: re-ran non-triviality check with shared_mechanism="hierarchical_micro_nano_roughness_wettability"
+#   -> "hierarchical" is in SPECIFIC_QUALIFIERS -> SPECIFIC -> NON_TRIVIAL.
+# The mechanism label was refined post-hoc to flip the verdict.
+```
+
+**Observed:** The cycle-90 reframing of EXP-BLIND-023's mechanism label changed
+the non-triviality verdict from LIKELY_TRIVIAL to NON_TRIVIAL. The reframing
+was technically justified (the A-side edges DO contain micro_nano_roughness),
+but the act of refining the label after seeing the verdict is the same
+entropy pattern F-063 documented for Discovery 01: "refining until the
+verdict flips."
+
+The root cause: the non-triviality check depends on the mechanism label,
+and the mechanism label is not locked at T1 (pre-registration). The coder
+can choose a more or less specific label after seeing the verdict, which
+makes the non-triviality check gameable.
+
+**Severity:** P1. This is a governance integrity issue. If the mechanism
+label can be refined post-hoc, the non-triviality check does not honestly
+distinguish trivial from non-trivial bridges. Every LIKELY_TRIVIAL verdict
+could be flipped by finding a more specific framing.
+
+**Status:** OPEN. The fix is a protocol change: the mechanism label must be
+locked at T1 (pre-registration) and cannot be refined after the non-triviality
+check runs. If the original label produces LIKELY_TRIVIAL, that verdict
+stands. A new experiment with a more specific label is a different experiment
+(requires a new EXP-BLIND-XXX ID), not a re-run of the same one.
+
+**Downstream claims blocked:** Any non-triviality verdict where the mechanism
+label was chosen or refined after seeing the verdict. EXP-BLIND-023 is
+reverted to LIKELY_TRIVIAL (cycle 91). The 2 confirmed NON_TRIVIAL hits
+(EXP-BLIND-003, EXP-BLIND-022) are unaffected — their mechanism labels were
+not refined post-hoc.
+
+**Lesson:** A check that depends on a label is only as honest as the label
+is stable. If the label can change, the check can be gamed. The fix is
+not to make the check more sophisticated — it is to lock the label at T1.
+This is the same principle as F-064 (broad-term search before pre-registration):
+the input to the check must be fixed before the check runs, not after.

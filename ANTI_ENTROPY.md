@@ -1943,20 +1943,24 @@ OBSERVE → EXTRACT → REPRESENT → EXPLAIN → DISCOVER → INTERVENE
 
 ### The Apollo Metrics (every PR improves one)
 
+**Note (cycle 91):** EXP-BLIND-023 was reverted from NON_TRIVIAL to
+LIKELY_TRIVIAL. Cycle 90 reframed its mechanism label post-hoc to flip the
+verdict — the same F-063 pattern. F-066 logged: mechanism labels must be
+locked at T1. The honest count is 2 confirmed non-trivial discoveries
+(EXP-BLIND-003, EXP-BLIND-022), not 3.
+
 **Note (cycle 83):** Discovery 01 (EXP-BLIND-001, mycelium→CaCO3) was
 reclassified from NOVEL HIT to RETRIEVAL per external auditor finding
 F-063. The FICP subfield is a named, actively published field with its
-own review papers. The single remaining novel hit (EXP-BLIND-003,
-nanofiber→BBB) is PROVISIONAL pending re-verification with a stable
-novelty rule (F-063) and extraction verification against source text
-(F-065). See FAILURES.md F-063, F-064, F-065.
+own review papers. See FAILURES.md F-063, F-064, F-065, F-066.
 
 | Metric | Current | Target |
 |---|---|---|
-| Blind tests | 22 | 100 |
-| Novel hits | 1 (PROVISIONAL) | 25 |
-| Retrievals | 5 | 25 |
-| Null results | 16 | 50 |
+| Blind tests | 28 | 100 |
+| Novel hits (confirmed non-trivial) | 2 | 25 |
+| Novel hits (likely trivial) | 1 (EXP-BLIND-023) | — |
+| Retrievals | 6 | 25 |
+| Null results | 19 | 50 |
 | Closed loops | 10 | 1000 |
 | Verified mechanisms | 14% | 75% |
 | Human intervention | High | Low |
