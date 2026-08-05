@@ -286,3 +286,39 @@
 {"timestamp": "2026-08-05T15:22:22.532414+00:00", "step": "ADD_SHARED", "shared_entities": [], "note": "shared intermediates added AFTER both literatures extracted separately"}
 {"timestamp": "2026-08-05T15:22:22.532458+00:00", "step": "COMBINE_AND_RUN", "total_nodes": 8, "total_edges": 6, "algorithms": ["SwansonBridgeSearch", "GentnerStructureMapping", "AltshullerContradictionSearch"]}
 {"timestamp": "2026-08-05T15:22:22.532732+00:00", "step": "RESULTS", "total_bridges": 2, "cross_literature_bridges": 0, "gentner_analogies": 12, "contradictions": 0, "cross_bridge_details": []}
+{"timestamp": "2026-08-05T15:29:10.156431+00:00", "step": "PRE_REGISTER", "test_id": "EXP-BLIND-031", "literature_A": "coccolithophore calcite plates biomineralization", "literature_B": "optical diffraction grating wavelength separation", "expected": "POTENTIAL_HIT"}
+{"timestamp": "2026-08-05T15:29:10.156567+00:00", "step": "FETCH_A_START", "query": "coccolithophore calcite plates biomineralization"}
+{"timestamp": "2026-08-05T15:29:12.997112+00:00", "step": "FETCH_A_DONE", "query": "coccolithophore calcite plates biomineralization", "papers_fetched": 10, "titles": ["Dynamic change of calcium-rich compartments during  - PMC", "Biomineralization Within Vesicles: The Calcite of Coccoliths", "Marine microalgae: an address plaque for calcium"]}
+{"timestamp": "2026-08-05T15:29:12.997335+00:00", "step": "EXTRACT_A_START", "literature": "coccolithophore calcite plates biomineralization", "note": "extracting SEPARATELY \u2014 no knowledge of Literature B"}
+{"timestamp": "2026-08-05T15:29:12.997532+00:00", "step": "EXTRACT_A_DONE", "nodes": 5, "edges": 5, "literature": "coccolithophore calcite plates biomineralization"}
+{"timestamp": "2026-08-05T15:29:12.997585+00:00", "step": "FETCH_B_START", "query": "optical diffraction grating wavelength separation"}
+{"timestamp": "2026-08-05T15:29:15.756309+00:00", "step": "FETCH_B_DONE", "query": "optical diffraction grating wavelength separation", "papers_fetched": 10, "titles": ["All About Diffraction Gratings", "Diffraction grating", "Diffraction Gratings Tutorial"]}
+{"timestamp": "2026-08-05T15:29:15.756487+00:00", "step": "EXTRACT_B_START", "literature": "optical diffraction grating wavelength separation", "note": "extracting SEPARATELY \u2014 no knowledge of Literature A"}
+{"timestamp": "2026-08-05T15:29:15.756620+00:00", "step": "EXTRACT_B_DONE", "nodes": 10, "edges": 10, "literature": "optical diffraction grating wavelength separation"}
+{"timestamp": "2026-08-05T15:29:15.756670+00:00", "step": "ADD_SHARED", "shared_entities": ["periodic_microstructure"], "note": "shared intermediates added AFTER both literatures extracted separately"}
+{"timestamp": "2026-08-05T15:29:15.756716+00:00", "step": "COMBINE_AND_RUN", "total_nodes": 11, "total_edges": 10, "algorithms": ["SwansonBridgeSearch", "GentnerStructureMapping", "AltshullerContradictionSearch"]}
+{"timestamp": "2026-08-05T15:29:15.757530+00:00", "step": "RESULTS", "total_bridges": 8, "cross_literature_bridges": 1, "gentner_analogies": 48, "contradictions": 0, "cross_bridge_details": [{"a": "periodic_arrangement", "b": "periodic_microstructure", "c": "interference", "score": 0.6}]}
+{"timestamp": "2026-08-05T15:29:15.757758+00:00", "step": "PRE_REGISTER", "test_id": "EXP-BLIND-032", "literature_A": "Mayan calendar astronomical cycle", "literature_B": "compiler instruction scheduling optimization", "expected": "NULL"}
+{"timestamp": "2026-08-05T15:29:15.757819+00:00", "step": "FETCH_A_START", "query": "Mayan calendar astronomical cycle"}
+{"timestamp": "2026-08-05T15:29:18.439526+00:00", "step": "FETCH_A_DONE", "query": "Mayan calendar astronomical cycle", "papers_fetched": 10, "titles": ["The Calendar System | Living Maya Time", "Maya calendar", "The Maya Calendar Explained"]}
+{"timestamp": "2026-08-05T15:29:18.439714+00:00", "step": "EXTRACT_A_START", "literature": "Mayan calendar astronomical cycle", "note": "extracting SEPARATELY \u2014 no knowledge of Literature B"}
+{"timestamp": "2026-08-05T15:29:18.439880+00:00", "step": "EXTRACT_A_DONE", "nodes": 3, "edges": 2, "literature": "Mayan calendar astronomical cycle"}
+{"timestamp": "2026-08-05T15:29:18.439933+00:00", "step": "FETCH_B_START", "query": "compiler instruction scheduling optimization"}
+{"timestamp": "2026-08-05T15:29:21.245305+00:00", "step": "FETCH_B_DONE", "query": "compiler instruction scheduling optimization", "papers_fetched": 10, "titles": ["Instruction scheduling", "CS415 Compilers Instruction Scheduling", "Is instruction scheduling obsolete?"]}
+{"timestamp": "2026-08-05T15:29:21.245701+00:00", "step": "EXTRACT_B_START", "literature": "compiler instruction scheduling optimization", "note": "extracting SEPARATELY \u2014 no knowledge of Literature A"}
+{"timestamp": "2026-08-05T15:29:21.245924+00:00", "step": "EXTRACT_B_DONE", "nodes": 6, "edges": 4, "literature": "compiler instruction scheduling optimization"}
+{"timestamp": "2026-08-05T15:29:21.246032+00:00", "step": "ADD_SHARED", "shared_entities": [], "note": "shared intermediates added AFTER both literatures extracted separately"}
+{"timestamp": "2026-08-05T15:29:21.246105+00:00", "step": "COMBINE_AND_RUN", "total_nodes": 6, "total_edges": 4, "algorithms": ["SwansonBridgeSearch", "GentnerStructureMapping", "AltshullerContradictionSearch"]}
+{"timestamp": "2026-08-05T15:29:21.246712+00:00", "step": "RESULTS", "total_bridges": 1, "cross_literature_bridges": 0, "gentner_analogies": 4, "contradictions": 0, "cross_bridge_details": []}
+{"timestamp": "2026-08-05T15:29:21.247043+00:00", "step": "PRE_REGISTER", "test_id": "EXP-BLIND-033", "literature_A": "medieval manuscript iron gall ink", "literature_B": "spacecraft reentry heat shield ablation", "expected": "NULL"}
+{"timestamp": "2026-08-05T15:29:21.247118+00:00", "step": "FETCH_A_START", "query": "medieval manuscript iron gall ink"}
+{"timestamp": "2026-08-05T15:29:23.559017+00:00", "step": "FETCH_A_DONE", "query": "medieval manuscript iron gall ink", "papers_fetched": 10, "titles": ["Iron-gall ink | ILLUMINATED", "Iron Gall Ink: A Medieval Recipe | Professor Sarah Peverley", "Iron gall ink - Ink of kings, monks and poets"]}
+{"timestamp": "2026-08-05T15:29:23.559199+00:00", "step": "EXTRACT_A_START", "literature": "medieval manuscript iron gall ink", "note": "extracting SEPARATELY \u2014 no knowledge of Literature B"}
+{"timestamp": "2026-08-05T15:29:23.559361+00:00", "step": "EXTRACT_A_DONE", "nodes": 3, "edges": 2, "literature": "medieval manuscript iron gall ink"}
+{"timestamp": "2026-08-05T15:29:23.559417+00:00", "step": "FETCH_B_START", "query": "spacecraft reentry heat shield ablation"}
+{"timestamp": "2026-08-05T15:29:26.304613+00:00", "step": "FETCH_B_DONE", "query": "spacecraft reentry heat shield ablation", "papers_fetched": 10, "titles": ["Atmospheric entry", "Ablation in spacecraft design and history", "ablative heat shield design"]}
+{"timestamp": "2026-08-05T15:29:26.304786+00:00", "step": "EXTRACT_B_START", "literature": "spacecraft reentry heat shield ablation", "note": "extracting SEPARATELY \u2014 no knowledge of Literature A"}
+{"timestamp": "2026-08-05T15:29:26.304901+00:00", "step": "EXTRACT_B_DONE", "nodes": 6, "edges": 4, "literature": "spacecraft reentry heat shield ablation"}
+{"timestamp": "2026-08-05T15:29:26.304947+00:00", "step": "ADD_SHARED", "shared_entities": [], "note": "shared intermediates added AFTER both literatures extracted separately"}
+{"timestamp": "2026-08-05T15:29:26.304985+00:00", "step": "COMBINE_AND_RUN", "total_nodes": 6, "total_edges": 4, "algorithms": ["SwansonBridgeSearch", "GentnerStructureMapping", "AltshullerContradictionSearch"]}
+{"timestamp": "2026-08-05T15:29:26.305223+00:00", "step": "RESULTS", "total_bridges": 2, "cross_literature_bridges": 0, "gentner_analogies": 5, "contradictions": 0, "cross_bridge_details": []}

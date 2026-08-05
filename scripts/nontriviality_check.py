@@ -121,8 +121,12 @@ def is_generic_match(mechanism: str, generic_principle: str) -> bool:
     mech_lower = mechanism.lower().replace(" ", "_")
     gp = generic_principle.lower().replace(" ", "_")
 
-    # The principle must be present
-    if gp not in mech_lower:
+    # The principle must be present as a WHOLE WORD/TOKEN (not a substring).
+    # Per cycle 92: "ph" must not match "phosphate" — use underscore-boundary
+    # matching. Split the mechanism into tokens and check if gp is one of them.
+    # Also handle multi-word generic principles (e.g., "contact_angle").
+    mech_tokens = mech_lower.split("_")
+    if gp not in mech_tokens and f"_{gp}_" not in f"_{mech_lower}_":
         return False
 
     # Check if any specific qualifier immediately precedes the principle
