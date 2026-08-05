@@ -146,7 +146,10 @@ class EpistemicPipeline:
                                           source_id_b: str = "") -> Dict:
         """Process two PDFs through the full pipeline and find shared entities.
         
-        This is the wired discovery path: two papers → entities → shared → bridges.
+        Per cycle 127 (Gen 4): wires status-tagged mechanism chains into
+        discovery. Chains with 'asserted' or higher status are used for
+        bridge detection. Chains with 'associative' status are flagged
+        but not used for bridges.
         """
         # Process both papers
         result_a = self.process_pdf(pdf_a, source_id_a)
@@ -165,32 +168,65 @@ class EpistemicPipeline:
         rels_a = self.relation_extractor.extract_from_document(doc_a, ents_a)
         rels_b = self.relation_extractor.extract_from_document(doc_b, ents_b)
         
-        # Find bridges: A → shared → B
+        # Per cycle 127 (Gen 4): classify chain status for each relation set
+        # Only use 'asserted' or higher status relations for bridge detection
+        asserted_rels_a = [r for r in rels_a if r.status == "asserted"]
+        asserted_rels_b = [r for r in rels_b if r.status == "asserted"]
+        associative_rels_a = [r for r in rels_a if r.status == "associative"]
+        associative_rels_b = [r for r in rels_b if r.status == "associative"]
+        
+        # Find bridges using ASSERTED relations only (Gen 4 quality gate)
         bridges = []
         for s in shared:
             sid = s["canonical_id"]
-            a_edges_to = [r for r in rels_a if r.subject == sid or r.obj == sid]
-            b_edges_to = [r for r in rels_b if r.subject == sid or r.obj == sid]
+            a_edges = [r for r in asserted_rels_a if r.subject == sid or r.obj == sid]
+            b_edges = [r for r in asserted_rels_b if r.subject == sid or r.obj == sid]
             
-            for ae in a_edges_to[:3]:
-                for be in b_edges_to[:3]:
+            for ae in a_edges[:3]:
+                for be in b_edges[:3]:
                     a_ent = ae.obj if ae.subject == sid else ae.subject
                     b_ent = be.obj if be.subject == sid else be.subject
                     bridges.append({
                         "a": a_ent, "shared": sid, "b": b_ent,
                         "a_status": ae.status, "b_status": be.status,
                         "a_confidence": ae.confidence, "b_confidence": be.confidence,
+                        "chain_status": self.mechanism_classifier.classify_chain([
+                            type('S', (), {'status': ae.status})(),
+                            type('S', (), {'status': be.status})(),
+                        ]),
                     })
+        
+        # Per cycle 127 (Gen 4): detect contradictions in combined relations
+        all_edges_combined = [
+            {"source": r.subject, "target": r.obj,
+             "relation": r.relation, "mechanism": r.relation}
+            for r in rels_a + rels_b
+        ]
+        contradictions = self.chain_extractor.detect_contradictions(all_edges_combined)
         
         return {
             "timestamp": datetime.now(timezone.utc).isoformat(),
-            "pipeline": "epistemic_v1_discovery",
+            "pipeline": "epistemic_v1_discovery_with_status",
             "paper_a": result_a,
             "paper_b": result_b,
             "shared_entities": shared,
             "bridges_found": len(bridges),
             "bridges": bridges[:10],
             "outcome": "POTENTIAL_HIT" if bridges else "NULL",
+            # Gen 4 cycle 127: status-tagged discovery
+            "status_summary": {
+                "asserted_a": len(asserted_rels_a),
+                "asserted_b": len(asserted_rels_b),
+                "associative_a": len(associative_rels_a),
+                "associative_b": len(associative_rels_b),
+                "bridges_from_asserted": len(bridges),
+            },
+            # Gen 4 cycle 127: contradiction detection on real data
+            "contradictions_found": len(contradictions),
+            "contradictions": [
+                {"entity": c.entity, "claim_1": c.claim_1, "claim_2": c.claim_2}
+                for c in contradictions[:5]
+            ],
         }
 
 

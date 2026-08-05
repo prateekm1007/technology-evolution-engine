@@ -618,6 +618,44 @@ def exclude_benchmark(benchmark_id: str, reason_code: str, source_reference: str
     return exclusion
 
 
+def generate_expert_audit_request(claim: Dict, reaudit: Dict) -> Dict:
+    """Generate a human-readable domain expert audit request (Gen 6, cycle 127).
+    
+    Per DR-44: the reaudit system should support domain expert audit as
+    an external layer. This function generates a structured request
+    that a human domain expert can review.
+    
+    The expert audit is the last layer in the 3-layer verification:
+    1. Reaudit (automated, trail + world)
+    2. CEO (independent novelty check)
+    3. Domain expert (human verification of upheld claims)
+    
+    This function produces the REQUEST, not the result. The expert
+    reviews the request and returns a verdict.
+    """
+    return {
+        "type": "expert_audit_request",
+        "claim_id": claim.get("claim_id", ""),
+        "timestamp": datetime.now(timezone.utc).isoformat(),
+        "writer": "scripts.reaudit_loop.py::generate_expert_audit_request",
+        "claim_proposition": claim.get("proposition", claim.get("outcome", "")),
+        "reaudit_verdict": reaudit.get("verdict", ""),
+        "reaudit_confidence": reaudit.get("confidence", 0),
+        "reaudit_overturned": reaudit.get("overturned", False),
+        "world_audit_performed": reaudit.get("evidence_summary", {}).get("world_audit_performed", False),
+        "world_audit_bridge_found": reaudit.get("evidence_summary", {}).get("world_audit_bridge_found", False),
+        "request": (
+            f"Please verify the following claim as a domain expert.\n"
+            f"Claim: {claim.get('proposition', claim.get('outcome', ''))[:200]}\n"
+            f"Reaudit verdict: {reaudit.get('verdict', 'unknown')}\n"
+            f"Reaudit confidence: {reaudit.get('confidence', 0)}\n"
+            f"World audit found bridge: {reaudit.get('evidence_summary', {}).get('world_audit_bridge_found', False)}\n"
+            f"Is this claim correct? Reply with: CONFIRMED, REFUTED, or INCONCLUSIVE."
+        ),
+        "status": "PENDING_EXPERT_REVIEW",
+    }
+
+
 if __name__ == "__main__":
     # Run the re-audit cycle
     import sys
