@@ -260,6 +260,10 @@ def test_ledger_schema_matches_writer():
             "required": {"type", "timestamp", "scorecard", "highest_leverage"},
             "writer": "scripts.nine_tenths_loop",
         },
+        "calibration_metrics": {
+            "required": {"type", "timestamp", "ece", "brier_score"},
+            "writer": "scripts.cycle122_calibration",
+        },
     }
     unprovenanced = []
     for i, entry in enumerate(parsed, start=1):

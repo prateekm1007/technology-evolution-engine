@@ -453,7 +453,11 @@ def run_adversarial_verification(claim: Dict) -> Dict:
         "verdict": verdict,
         "original_verdict": original_outcome,
         "overturned": overturned,
-        "confidence": 0.8,  # calibrated per §6 — will improve with more samples
+        # Per cycle 123: calibrated confidence based on claim type.
+        # NULL claims are rarely overturned (high confidence).
+        # Non-NULL claims are overturned more often (lower confidence).
+        # Calibration data: 25 NULL samples -> 100% upheld; 5 non-NULL -> 60% upheld.
+        "confidence": 0.90 if "NULL" in original_outcome.upper() else 0.65,
         "vocabulary_hash": vocab_hash,
         "evidence_summary": {
             "reclassifications_found": len(reclassifications),
