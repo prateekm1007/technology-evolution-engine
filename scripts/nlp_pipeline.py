@@ -257,21 +257,54 @@ class NLPPipeline:
     Per cycle 103: upgraded with:
     1. SciSpacy for scientific NER (filters ORG/PERSON/GPE)
     2. String-matching coreference resolution (connects per-sentence relations)
+    
+    Per cycle 121: optionally uses GLiNER for zero-shot entity extraction.
+    GLiNER can extract arbitrary entity types without pre-training on them.
+    Falls back to SciSpacy if GLiNER is not available.
     """
     
-    def __init__(self, model_name: str = "en_core_sci_sm"):
-        """Initialize the spaCy NLP pipeline.
+    def __init__(self, model_name: str = "en_core_sci_sm", use_gliner: bool = False):
+        """Initialize the NLP pipeline.
         
-        Per cycle 103: uses SciSpacy (en_core_sci_sm) by default for
-        scientific domain NER. Falls back to en_core_web_sm if unavailable.
+        Args:
+            model_name: SciSpacy model name
+            use_gliner: if True, use GLiNER instead of SciSpacy for NER.
+                       GLiNER uses PyTorch and requires more memory.
+                       Default: False (use SciSpacy, lighter).
+                       Set True for zero-shot entity extraction (DR-40).
+        
+        Per cycle 121: GLiNER and SciSpacy are alternatives, not both
+        loaded at once (memory constraint). GLiNER is zero-shot (DR-40),
+        SciSpacy is scientific-domain NER.
         """
-        try:
-            self.nlp = spacy.load(model_name)
-        except OSError:
-            # Fallback to general model if SciSpacy not available
-            self.nlp = spacy.load("en_core_web_sm")
+        self.use_gliner = use_gliner
+        self.gliner = None
+        self.nlp = None
+        
+        if use_gliner:
+            # GLiNER mode: load GLiNER for zero-shot NER, spaCy for dep parsing only
+            try:
+                from gliner import GLiNER
+                self.gliner = GLiNER.from_pretrained("urchade/gliner_small")
+                # Still load spaCy for dependency parsing (needed for relations)
+                # but use a lighter model
+                try:
+                    self.nlp = spacy.load("en_core_web_sm")
+                except OSError:
+                    self.nlp = spacy.load("en_core_sci_sm")
+            except Exception:
+                # GLiNER not available, fall back to SciSpacy
+                use_gliner = False
+        
+        if not use_gliner:
+            # SciSpacy mode: standard NER + dependency parsing
+            try:
+                self.nlp = spacy.load(model_name)
+            except OSError:
+                self.nlp = spacy.load("en_core_web_sm")
+        
         self._compile_patterns()
-        self._entity_aliases = {}  # coreference: canonical name → aliases
+        self._entity_aliases = {}
     
     def _resolve_coreference(self, doc: Doc, entities: List[ExtractedEntity]) -> List[ExtractedEntity]:
         """Resolve coreference using string matching (cycle 103).
@@ -352,43 +385,49 @@ class NLPPipeline:
             ]
     
     def extract_entities(self, text: str) -> List[ExtractedEntity]:
-        """Extract entities from text using spaCy NER + scientific patterns.
+        """Extract entities from text.
         
         Gen 2 target: move from strings to objects.
         Per cycle 103: uses SciSpacy + coreference resolution.
+        Per cycle 121: if GLiNER is loaded, uses it for zero-shot NER
+        instead of SciSpacy NER.
         """
         doc = self.nlp(text)
         entities = []
         seen_spans = set()
         
-        # 1. spaCy NER (general entities)
-        for ent in doc.ents:
-            # Per cycle 107: filter generic English words from SciSpacy output.
-            ent_text_lower = ent.text.lower().strip()
-            # Per cycle 109: also check underscore version (entity IDs use
-            # underscores, but entity text uses spaces). Check both formats.
-            ent_text_underscore = ent_text_lower.replace(" ", "_")
-            if ent_text_lower in ENTITY_STOPWORDS or ent_text_underscore in ENTITY_STOPWORDS:
-                continue
-            # Skip single words that are too short (< 4 chars) and not chemical formulas
-            if len(ent_text_lower) < 4 and not re.match(r'^[A-Z][a-z]?[0-9]', ent.text):
-                continue
-            
-            # Per cycle 108: POS-tag filtering. Only accept entities whose
-            # root token is a noun (NOUN) or proper noun (PROPN). Reject
-            # verbs (VERB), adjectives (ADJ), adverbs (ADV), etc.
-            # This removes "does", "due", "acknowledge", "charged" etc.
-            # that passed the stopword filter but are not nouns.
-            root_token = ent.root
-            if root_token.pos_ not in ("NOUN", "PROPN", "X"):
-                # "X" allows unknown POS (some scientific terms)
-                continue
-            # Also check: if the entity is multi-word, at least one token
-            # should be a noun (e.g., "spherical gold" — "gold" is a noun)
-            if len(ent) > 1:
-                has_noun = any(t.pos_ in ("NOUN", "PROPN") for t in ent)
-                if not has_noun:
+        # GLiNER mode: use GLiNER for zero-shot NER
+        if self.gliner:
+            gliner_entities = self._extract_with_gliner(text)
+            for ge in gliner_entities:
+                key = (ge.start, ge.end)
+                if key not in seen_spans:
+                    entities.append(ge)
+                    seen_spans.add(key)
+        else:
+            # SciSpacy mode: use spaCy NER
+            for ent in doc.ents:
+                # Per cycle 107: filter generic English words from SciSpacy output.
+                ent_text_lower = ent.text.lower().strip()
+                # Per cycle 109: also check underscore version (entity IDs use
+                # underscores, but entity text uses spaces). Check both formats.
+                ent_text_underscore = ent_text_lower.replace(" ", "_")
+                if ent_text_lower in ENTITY_STOPWORDS or ent_text_underscore in ENTITY_STOPWORDS:
                     continue
+                # Skip single words that are too short (< 4 chars) and not chemical formulas
+                if len(ent_text_lower) < 4 and not re.match(r'^[A-Z][a-z]?[0-9]', ent.text):
+                    continue
+                
+                # Per cycle 108: POS-tag filtering. Only accept entities whose
+                # root token is a noun (NOUN) or proper noun (PROPN). Reject
+                # verbs (VERB), adjectives (ADJ), adverbs (ADV), etc.
+                root_token = ent.root
+                if root_token.pos_ not in ("NOUN", "PROPN", "X"):
+                    continue
+                if len(ent) > 1:
+                    has_noun = any(t.pos_ in ("NOUN", "PROPN") for t in ent)
+                    if not has_noun:
+                        continue
             
             # With SciSpacy, entities are labeled "ENTITY" (scientific)
             # With en_core_web_sm, they're labeled ORG/PERSON/GPE/etc.
@@ -449,6 +488,73 @@ class NLPPipeline:
         # 3. Coreference resolution (cycle 103)
         # Merge entities that refer to the same thing across sentences
         entities = self._resolve_coreference(doc, entities)
+        
+        # 4. GLiNER zero-shot entity extraction (cycle 121)
+        # Per CEO directive: automate GLiREL in environment. GLiNER is the
+        # entity extraction component; GLiREL (relation extraction) uses
+        # GLiNER internally. This is the zero-shot NER from DR-40.
+        if self.gliner:
+            gliner_entities = self._extract_with_gliner(text)
+            # Merge: add GLiNER entities not already found by SciSpacy
+            existing_ids = {e.text.lower().strip() for e in entities}
+            for ge in gliner_entities:
+                if ge.text.lower().strip() not in existing_ids:
+                    entities.append(ge)
+                    existing_ids.add(ge.text.lower().strip())
+        
+        return entities
+    
+    def _extract_with_gliner(self, text: str) -> List[ExtractedEntity]:
+        """Extract entities using GLiNER zero-shot NER (cycle 121).
+        
+        GLiNER can extract arbitrary entity types without pre-training.
+        This is the DR-40 zero-shot entity extraction implementation.
+        """
+        if not self.gliner:
+            return []
+        
+        entities = []
+        labels = ["material", "mechanism", "property", "application"]
+        
+        try:
+            # GLiNER works best on chunks of text, not entire documents
+            # Process in chunks of ~500 chars
+            chunks = [text[i:i+500] for i in range(0, len(text), 500)]
+            
+            for chunk in chunks:
+                if len(chunk) < 20:
+                    continue
+                
+                preds = self.gliner.predict_entities(chunk, labels, threshold=0.5)
+                
+                for pred in preds:
+                    ent_text = pred["text"]
+                    ent_label = pred["label"]
+                    score = pred["score"]
+                    
+                    # Apply same filters as SciSpacy path
+                    ent_text_lower = ent_text.lower().strip()
+                    ent_text_underscore = ent_text_lower.replace(" ", "_")
+                    if ent_text_lower in ENTITY_STOPWORDS or ent_text_underscore in ENTITY_STOPWORDS:
+                        continue
+                    if len(ent_text_lower) < 4:
+                        continue
+                    
+                    # Find character offset in original text
+                    char_start = text.find(ent_text)
+                    if char_start == -1:
+                        char_start = 0
+                    char_end = char_start + len(ent_text)
+                    
+                    entities.append(ExtractedEntity(
+                        text=ent_text,
+                        label=ent_label,
+                        start=char_start,
+                        end=char_end,
+                        confidence=round(score, 2),
+                    ))
+        except Exception:
+            pass
         
         return entities
     
