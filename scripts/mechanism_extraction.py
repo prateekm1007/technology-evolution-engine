@@ -139,22 +139,32 @@ class MechanismExtractor:
         self.chains: List[CausalChain] = []
         self.contradictions: List[Contradiction] = []
     
-    def extract_chains(self, relations: List[Dict]) -> List[CausalChain]:
+    def extract_chains(self, relations: List[Dict], min_steps: int = 1,
+                       apply_quality_filter: bool = True) -> List[CausalChain]:
         """Build causal chains from a list of relations.
         
         A causal chain is a path through the relation graph where each
         edge is a causal relation. The chain represents a mechanism:
         the full causal story from root cause to final effect.
+        
+        Per cycle 105: added min_steps and apply_quality_filter params.
+        Default: min_steps=1, apply_quality_filter=True (for real data).
+        For synthetic test data: apply_quality_filter=False (test entities
+        may be short like "A", "B", "C").
         """
         # Build adjacency list (only causal relations)
         graph = defaultdict(list)
         for rel in relations:
-            relation_type = self.CAUSAL_RELATIONS.get(rel.get("relation", "").lower())
+            # Per cycle 105: handle both "relation" and "mechanism" keys.
+            # The NLP pipeline uses "mechanism", the synthetic test data
+            # uses "relation". Check both for compatibility.
+            relation_verb = rel.get("relation", rel.get("mechanism", "")).lower()
+            relation_type = self.CAUSAL_RELATIONS.get(relation_verb)
             if relation_type:
                 step = CausalStep(
                     cause=rel["source"],
                     effect=rel["target"],
-                    relation=rel["relation"],
+                    relation=relation_verb,
                     confidence=rel.get("confidence", 0.5),
                     evidence=rel.get("source_sentence", ""),
                 )
@@ -181,15 +191,59 @@ class MechanismExtractor:
             if source in roots:
                 continue
             chain_steps = self._dfs_chain(source, graph, visited=set(), max_depth=3)
-            if chain_steps and len(chain_steps) >= 2:
+            if chain_steps and len(chain_steps) >= min_steps:
                 chain = CausalChain(
                     chain_id=f"chain_{source}_{len(chains)}",
                     steps=chain_steps,
                 )
                 chains.append(chain)
         
+        # Per cycle 105: quality filter — remove chains with noise entities.
+        # Only apply for real data (not synthetic test data with short entities).
+        if apply_quality_filter:
+            chains = self._filter_quality(chains)
+        
         self.chains = chains
         return chains
+    
+    def _filter_quality(self, chains: List[CausalChain]) -> List[CausalChain]:
+        """Filter chains by quality (cycle 105).
+        
+        Removes chains containing noise entities:
+        - Very short entities (< 3 chars)
+        - Pure numbers or measurements (e.g., "200_nm", "0.5µm")
+        - Citation metadata (author names, years)
+        - Special characters only
+        """
+        import re
+        
+        def is_noise(entity: str) -> bool:
+            entity = entity.strip().lower()
+            if len(entity) < 3:
+                return True
+            # Pure numbers/measurements
+            if re.match(r'^[\d\.\-±µ]+$', entity):
+                return True
+            # Starts with a number (likely a measurement)
+            if re.match(r'^\d', entity):
+                return True
+            # Single character + unit
+            if re.match(r'^[a-z]\d', entity) and len(entity) < 5:
+                return True
+            return False
+        
+        filtered = []
+        for chain in chains:
+            # Check if any step has a noise entity
+            has_noise = False
+            for step in chain.steps:
+                if is_noise(step.cause) or is_noise(step.effect):
+                    has_noise = True
+                    break
+            if not has_noise:
+                filtered.append(chain)
+        
+        return filtered
     
     def _dfs_chain(self, node: str, graph: Dict, visited: set, max_depth: int) -> List[CausalStep]:
         """Depth-first search to build a causal chain from a node."""
@@ -236,7 +290,9 @@ class MechanismExtractor:
             # Check for opposing relation types on the same target
             types = {}
             for rel in rels:
-                rel_type = self.CAUSAL_RELATIONS.get(rel.get("relation", "").lower())
+                # Handle both "relation" and "mechanism" keys (cycle 105)
+                relation_verb = rel.get("relation", rel.get("mechanism", "")).lower()
+                rel_type = self.CAUSAL_RELATIONS.get(relation_verb)
                 if rel_type:
                     types.setdefault(rel_type, []).append(rel)
             
@@ -286,13 +342,17 @@ class MechanismExtractor:
             ),
         }
     
-    def extract_mechanisms(self, relations: List[Dict]) -> Dict:
+    def extract_mechanisms(self, relations: List[Dict], min_steps: int = 1) -> Dict:
         """Full mechanism extraction pipeline.
         
         Input: relations from Gen 3 NLP pipeline
         Output: causal chains, contradictions, counterfactuals
+        
+        Per cycle 105: min_steps parameter for quality filtering.
+        Default min_steps=1 (all chains). Set min_steps=2 for
+        quality chains only.
         """
-        chains = self.extract_chains(relations)
+        chains = self.extract_chains(relations, min_steps=min_steps)
         contradictions = self.detect_contradictions(relations)
         
         # Generate counterfactuals for each entity

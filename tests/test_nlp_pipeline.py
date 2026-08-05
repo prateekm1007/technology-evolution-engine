@@ -80,7 +80,7 @@ class TestMechanismExtraction:
             {"source": "A", "relation": "produces", "target": "B", "confidence": 0.9},
             {"source": "B", "relation": "enables", "target": "C", "confidence": 0.8},
         ]
-        chains = extractor.extract_chains(relations)
+        chains = extractor.extract_chains(relations, apply_quality_filter=False)
         assert isinstance(chains, list)
         assert len(chains) > 0
 
@@ -92,7 +92,7 @@ class TestMechanismExtraction:
             {"source": "B", "relation": "enables", "target": "C", "confidence": 0.8},
             {"source": "C", "relation": "governs", "target": "D", "confidence": 0.85},
         ]
-        chains = extractor.extract_chains(relations)
+        chains = extractor.extract_chains(relations, apply_quality_filter=False)
         # At least one chain should have multiple steps
         max_steps = max(len(c.steps) for c in chains)
         assert max_steps >= 2, "No multi-step chain found"
