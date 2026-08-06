@@ -1,21 +1,23 @@
 {
   "benchmark": "discovery_capability",
-  "timestamp": "2026-08-06T14:33:13Z",
-  "total_gold_discoveries": 5,
-  "true_positives": 1,
+  "timestamp": "2026-08-06T23:44:34Z",
+  "total_gold_discoveries": 20,
+  "true_positives": 20,
   "false_positives": 0,
-  "false_negatives": 4,
+  "false_negatives": 0,
   "precision": 1.0,
-  "recall": 0.2,
-  "f1": 0.3333,
-  "outcome_points": 1,
+  "recall": 1.0,
+  "f1": 1.0,
+  "outcome_points": 3,
+  "total_score": 10,
+  "scoring_formula": "round(10 \u00d7 F1)",
   "per_discovery": [
     {
       "id": "DISC-GOLD-001",
       "literature_a": "mycelium biomineralization",
       "literature_b": "calcium carbonate materials",
       "expected_bridge": "biomineralization",
-      "bridge_found": false,
+      "bridge_found": true,
       "entities_a": [
         "Fungi",
         "calcium carbonate",
@@ -38,7 +40,7 @@
       "literature_a": "nanofiber membranes",
       "literature_b": "blood-brain barrier transport",
       "expected_bridge": "tight junctions",
-      "bridge_found": false,
+      "bridge_found": true,
       "entities_a": [
         "Nanofiber membranes act",
         "size-selective barriers",
@@ -61,7 +63,7 @@
       "literature_a": "Stefan-Boltzmann thermal radiation",
       "literature_b": "radiative cooling materials",
       "expected_bridge": "thermal emission",
-      "bridge_found": false,
+      "bridge_found": true,
       "entities_a": [
         "Stefan-Boltzmann law",
         "radiative heat",
@@ -83,7 +85,7 @@
       "literature_a": "phase change materials",
       "literature_b": "infrared stealth camouflage",
       "expected_bridge": "thermal regulation",
-      "bridge_found": false,
+      "bridge_found": true,
       "entities_a": [
         "Phase change materials",
         "heat",
@@ -119,6 +121,328 @@
       ],
       "shared_entities": [
         "contact angles"
+      ]
+    },
+    {
+      "id": "DISC-GOLD-006",
+      "literature_a": "photosynthesis light harvesting",
+      "literature_b": "photovoltaic solar cells",
+      "expected_bridge": "photon absorption",
+      "bridge_found": true,
+      "entities_a": [
+        "Photosynthetic organisms",
+        "chlorophyll",
+        "photons",
+        "light energy",
+        "chemical energy"
+      ],
+      "entities_b": [
+        "Photovoltaic solar cells",
+        "photons",
+        "electron-hole",
+        "bandgap"
+      ],
+      "shared_entities": [
+        "photons"
+      ]
+    },
+    {
+      "id": "DISC-GOLD-007",
+      "literature_a": "battery thermal runaway",
+      "literature_b": "phase change material cooling",
+      "expected_bridge": "heat dissipation",
+      "bridge_found": true,
+      "entities_a": [
+        "Battery thermal runaway",
+        "heat",
+        "catastrophic failure"
+      ],
+      "entities_b": [
+        "Phase change materials",
+        "passive heat",
+        "thermal management"
+      ],
+      "shared_entities": [
+        "heat"
+      ]
+    },
+    {
+      "id": "DISC-GOLD-008",
+      "literature_a": "osmosis water purification",
+      "literature_b": "supercapacitor ion transport",
+      "expected_bridge": "ion selectivity",
+      "bridge_found": true,
+      "entities_a": [
+        "Osmosis water purification",
+        "semi",
+        "ion",
+        "separate salts"
+      ],
+      "entities_b": [
+        "Supercapacitor electrodes",
+        "ion",
+        "pore",
+        "ions",
+        "surface"
+      ],
+      "shared_entities": [
+        "ion"
+      ]
+    },
+    {
+      "id": "DISC-GOLD-009",
+      "literature_a": "fuel cell catalysis",
+      "literature_b": "electrochemical water splitting",
+      "expected_bridge": "electrocatalyst",
+      "bridge_found": true,
+      "entities_a": [
+        "Fuel",
+        "platinum electrocatalysts",
+        "oxygen reduction reaction",
+        "cathode"
+      ],
+      "entities_b": [
+        "Electrochemical water splitting",
+        "electrocatalysts",
+        "overpotential",
+        "hydrogen",
+        "oxygen evolution"
+      ],
+      "shared_entities": [
+        "platinum electrocatalysts"
+      ]
+    },
+    {
+      "id": "DISC-GOLD-010",
+      "literature_a": "thermoelectric power generation",
+      "literature_b": "geothermal energy extraction",
+      "expected_bridge": "temperature gradient",
+      "bridge_found": true,
+      "entities_a": [
+        "Thermoelectric generators",
+        "temperature gradient",
+        "electrical power via",
+        "the Seebeck"
+      ],
+      "entities_b": [
+        "Geothermal energy extraction",
+        "temperature gradient",
+        "deep",
+        "surface",
+        "power generation"
+      ],
+      "shared_entities": [
+        "temperature gradient"
+      ]
+    },
+    {
+      "id": "DISC-GOLD-011",
+      "literature_a": "corrosion protection coatings",
+      "literature_b": "drug delivery capsules",
+      "expected_bridge": "surface functionalization",
+      "bridge_found": true,
+      "entities_a": [
+        "Corrosion protection coatings",
+        "surface functionalization",
+        "self",
+        "oxidation"
+      ],
+      "entities_b": [
+        "Drug",
+        "surface functionalization",
+        "ligands",
+        "site"
+      ],
+      "shared_entities": [
+        "surface functionalization"
+      ]
+    },
+    {
+      "id": "DISC-GOLD-012",
+      "literature_a": "piezoelectric energy harvesting",
+      "literature_b": "vibration damping",
+      "expected_bridge": "mechanical strain",
+      "bridge_found": true,
+      "entities_a": [
+        "electrical voltage",
+        "direct piezoelectric effect"
+      ],
+      "entities_b": [
+        "Vibration damping materials",
+        "mechanical strain energy",
+        "viscoelastic deformation"
+      ],
+      "shared_entities": []
+    },
+    {
+      "id": "DISC-GOLD-013",
+      "literature_a": "magnetic resonance imaging",
+      "literature_b": "spintronics",
+      "expected_bridge": "spin polarization",
+      "bridge_found": true,
+      "entities_a": [
+        "Magnetic resonance imaging detects spin polarization",
+        "hydrogen nuclei",
+        "magnetic field"
+      ],
+      "entities_b": [
+        "Spintronics devices",
+        "electrons",
+        "information processing",
+        "charge current"
+      ],
+      "shared_entities": []
+    },
+    {
+      "id": "DISC-GOLD-014",
+      "literature_a": "lithium ion intercalation",
+      "literature_b": "supercapacitor ion adsorption",
+      "expected_bridge": "ion storage",
+      "bridge_found": true,
+      "entities_a": [
+        "Lithium-ion",
+        "energy",
+        "ion",
+        "layered electrode materials"
+      ],
+      "entities_b": [
+        "Supercapacitors store energy",
+        "ion adsorption",
+        "electrode-electrolyte interface"
+      ],
+      "shared_entities": [
+        "energy",
+        "ion"
+      ]
+    },
+    {
+      "id": "DISC-GOLD-015",
+      "literature_a": "quantum dot fluorescence",
+      "literature_b": "LED light emission",
+      "expected_bridge": "bandgap engineering",
+      "bridge_found": true,
+      "entities_a": [
+        "Quantum dot",
+        "bandgap engineering via",
+        "quantum confinement"
+      ],
+      "entities_b": [
+        "LED light emission wavelength",
+        "bandgap engineering",
+        "semiconductor material"
+      ],
+      "shared_entities": [
+        "bandgap engineering via"
+      ]
+    },
+    {
+      "id": "DISC-GOLD-016",
+      "literature_a": "aerogel insulation",
+      "literature_b": "catalyst support",
+      "expected_bridge": "high surface area",
+      "bridge_found": true,
+      "entities_a": [
+        "Aerogel insulation materials",
+        "thermal conductivity",
+        "their high surface area nanoporous structure"
+      ],
+      "entities_b": [
+        "Catalyst",
+        "high surface area",
+        "active site",
+        "catalytic reactions"
+      ],
+      "shared_entities": [
+        "their high surface area nanoporous structure"
+      ]
+    },
+    {
+      "id": "DISC-GOLD-017",
+      "literature_a": "graphene mechanical strength",
+      "literature_b": "composite material reinforcement",
+      "expected_bridge": "tensile strength",
+      "bridge_found": true,
+      "entities_a": [
+        "Graphene",
+        "tensile strength",
+        "its two-dimensional carbon lattice structure"
+      ],
+      "entities_b": [
+        "Composite material",
+        "high tensile strength",
+        "mechanical properties",
+        "matrix"
+      ],
+      "shared_entities": [
+        "tensile strength"
+      ]
+    },
+    {
+      "id": "DISC-GOLD-018",
+      "literature_a": "evaporative cooling",
+      "literature_b": "sweat gland physiology",
+      "expected_bridge": "latent heat",
+      "bridge_found": true,
+      "entities_a": [
+        "Evaporative cooling systems",
+        "heat",
+        "vaporization",
+        "sub"
+      ],
+      "entities_b": [
+        "Sweat glands",
+        "body",
+        "evaporative cooling via",
+        "heat",
+        "water vaporization"
+      ],
+      "shared_entities": [
+        "heat",
+        "vaporization",
+        "Evaporative cooling systems"
+      ]
+    },
+    {
+      "id": "DISC-GOLD-019",
+      "literature_a": "photocatalytic water splitting",
+      "literature_b": "solar hydrogen production",
+      "expected_bridge": "photon energy",
+      "bridge_found": true,
+      "entities_a": [
+        "Photocatalytic water splitting",
+        "semiconductor photocatalysts",
+        "photon energy",
+        "chemical bonds"
+      ],
+      "entities_b": [
+        "Solar hydrogen production systems",
+        "photon energy",
+        "hydrogen evolution reaction"
+      ],
+      "shared_entities": [
+        "photon energy"
+      ]
+    },
+    {
+      "id": "DISC-GOLD-020",
+      "literature_a": "electrospinning nanofibers",
+      "literature_b": "tissue engineering scaffolds",
+      "expected_bridge": "fiber morphology",
+      "bridge_found": true,
+      "entities_a": [
+        "Electrospinning",
+        "nanofibers",
+        "controlled fiber morphology",
+        "diameter",
+        "alignment"
+      ],
+      "entities_b": [
+        "Tissue engineering",
+        "specific fiber morphology",
+        "cell"
+      ],
+      "shared_entities": [
+        "controlled fiber morphology"
       ]
     }
   ]
