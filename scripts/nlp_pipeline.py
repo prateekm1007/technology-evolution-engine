@@ -946,6 +946,11 @@ class NLPPipeline:
                     if actual_verb.lower().strip() in _prepositions or len(actual_verb) < 3:
                         actual_verb = relation_verb
 
+                    # Per cycle 165: skip negated relations. "X without affecting Y" means
+                    # NO causal relation — the text explicitly says X does NOT affect Y.
+                    if "without" in text[max(0, match.start()-30):match.start()].lower():
+                        continue
+
                     # Per cycle 137: skip if the "verb" is actually a noun in context.
                     # Words like "control", "filter", "power", "scatter" can be nouns
                     # or verbs. If the extracted verb is a noun in the sentence, skip
@@ -1094,8 +1099,21 @@ class NLPPipeline:
         """
         subj_start = subj_ent.start
         # Check if " and " appears right before the subject
-        before_subj = text[max(0, subj_start - 10):subj_start].lower().strip()
-        if not before_subj.endswith("and"):
+        before_subj = text[max(0, subj_start - 15):subj_start].lower().strip()
+        # "the separator and causes" — separator follows "the" and precedes "and"
+        # Actually check: is the subject the OBJECT of a preceding verb?
+        # Pattern: "verb the/and subject" where subject is dobj of verb
+        if before_subj.endswith("and"):
+            return True
+        # Also check: "the X and verb Y" where X is the object of the preceding verb
+        # Look for pattern: "verb ... the subject" where subject is after "the"
+        if before_subj.endswith("the") or before_subj.endswith("the "):
+            # Check if there's a verb before "the"
+            text_before_the = text[max(0, subj_start - 50):subj_start - 4].lower()
+            verb_indicators = ["ed ", "es ", "s ", "ing "]
+            for indicator in verb_indicators:
+                if indicator in text_before_the[-20:]:
+                    return True
             return False
         # Check if there's a verb before the subject in the sentence
         # (indicating this is a coordination, not the main subject)
