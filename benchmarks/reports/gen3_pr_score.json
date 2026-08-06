@@ -1,6 +1,6 @@
 {
   "benchmark": "gen3_relation_extraction_pr",
-  "timestamp": "2026-08-06T13:11:08Z",
+  "timestamp": "2026-08-06T13:19:49Z",
   "sentences": 25,
   "gold_triples": 29,
   "true_positives": 20,
@@ -56,7 +56,7 @@
         },
         {
           "subject": "electric equivalent circuit",
-          "relation": "for",
+          "relation": "enables",
           "object": "plot"
         }
       ]

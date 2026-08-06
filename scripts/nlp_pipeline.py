@@ -932,6 +932,15 @@ class NLPPipeline:
                     # Extract the actual verb from the matched text.
                     actual_verb = self._extract_verb_from_match(match, text)
 
+                    # Per cycle 156: if the extracted verb is a preposition or too short
+                    # (e.g., "on", "for", "of"), use the pattern's canonical relation_verb
+                    # instead. Prepositions are not real verbs and won't be in the
+                    # mechanism extractor's ACTIVITY_VERBS taxonomy.
+                    _prepositions = {"on", "for", "of", "in", "to", "with", "by", "from",
+                                     "at", "upon", "via", "through", "into"}
+                    if actual_verb.lower().strip() in _prepositions or len(actual_verb) < 3:
+                        actual_verb = relation_verb
+
                     # Per cycle 137: skip if the "verb" is actually a noun in context.
                     # Words like "control", "filter", "power", "scatter" can be nouns
                     # or verbs. If the extracted verb is a noun in the sentence, skip

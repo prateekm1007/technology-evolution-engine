@@ -120,6 +120,8 @@ ACTIVITY_VERBS = {
     "exhibit": {"activity": "exhibit", "transition": "exhibits", "category": "characterizing"},
     "propose": {"activity": "propose", "transition": "enables", "category": "enabling"},
     "compare": {"activity": "compare", "transition": "relates_to", "category": "characterizing"},
+    "affect": {"activity": "affect", "transition": "affects", "category": "modulating"},
+    "solve": {"activity": "solve", "transition": "enables", "category": "enabling"},
     "show": {"activity": "show", "transition": "exhibits", "category": "characterizing"},
     "display": {"activity": "display", "transition": "exhibits", "category": "characterizing"},
     "demonstrate": {"activity": "demonstrate", "transition": "exhibits", "category": "characterizing"},
