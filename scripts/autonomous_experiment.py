@@ -120,7 +120,7 @@ def run_autonomous_experiment():
     old_tier = edge.tier.name  # "ASSERTED"
     if passed:
         edge.tier = EdgeTier.VERIFIED
-        edge.mechanism_status = MechanismStatus.VERIFIED
+        edge.mechanism_status = MechanismStatus.DERIVED
         new_tier = "VERIFIED"
         reasoning = (
             f"Prediction ({prediction:.4f} W/m²) matched measurement ({measurement:.4f} W/m²) "
