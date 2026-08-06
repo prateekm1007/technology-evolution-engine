@@ -805,6 +805,14 @@ class NLPPipeline:
                     if self._is_noun_in_context(actual_verb, match, doc):
                         continue
 
+                    # Per cycle 137: skip coordination false positives. If the captured
+                    # subject is immediately preceded by " and " in the text, it's likely
+                    # part of a conjunction (e.g., "penetrates the separator AND causes
+                    # short circuits" — "separator" is not the subject of "causes").
+                    # The real subject is before the first verb.
+                    if self._is_coordinated_subject(subj_ent, text, match):
+                        continue
+
                     # Determine direction
                     if direction == "reverse":
                         # "X due to Y" → Y causes X
@@ -850,6 +858,20 @@ class NLPPipeline:
         # Partial match: entity text is a substring of the fragment
         for key, ent in ent_by_text.items():
             if len(key) >= 4 and (key in text_fragment or text_fragment in key):
+                return ent
+
+        # Per cycle 137: token-overlap match. If no substring match, check if
+        # any significant token from the entity appears in the fragment.
+        # This handles cases where the regex captures a slightly different span
+        # (e.g., "elective absorption" instead of "selective absorption").
+        fragment_tokens = set(text_fragment.split()) - {'the', 'a', 'an', 'of', 'in', 'and', 'for', 'to', 'with', 'by', 'on', 'at', 'is', 'are'}
+        for key, ent in ent_by_text.items():
+            if len(key) < 4:
+                continue
+            ent_tokens = set(key.split()) - {'the', 'a', 'an', 'of', 'in', 'and', 'for', 'to', 'with', 'by', 'on', 'at', 'is', 'are'}
+            # Require at least one significant token overlap (len >= 4 to avoid noise)
+            significant_overlap = {t for t in (ent_tokens & fragment_tokens) if len(t) >= 4}
+            if significant_overlap:
                 return ent
 
         return None
@@ -909,6 +931,33 @@ class NLPPipeline:
                 if token.dep_ == "compound":
                     return True
                 return False
+        return False
+
+    def _is_coordinated_subject(self, subj_ent, text: str, match) -> bool:
+        """Check if a subject entity is part of a coordination (cycle 137).
+
+        In sentences like "X penetrates Y and causes Z", the pattern may capture
+        "Y causes Z" — but Y is the object of "penetrates", not the subject of
+        "causes". The real subject is X (before the first verb).
+
+        This method checks if the subject entity is immediately preceded by
+        " and " in the text (indicating it's part of a conjunction), AND if
+        there's a verb before the subject in the sentence.
+        """
+        subj_start = subj_ent.start
+        # Check if " and " appears right before the subject
+        before_subj = text[max(0, subj_start - 10):subj_start].lower().strip()
+        if not before_subj.endswith("and"):
+            return False
+        # Check if there's a verb before the subject in the sentence
+        # (indicating this is a coordination, not the main subject)
+        # Look at the text before the subject for verb-like words
+        text_before = text[:subj_start].lower()
+        # Common verb endings that indicate a preceding verb
+        verb_indicators = ["ed ", "es ", "s ", "ing "]
+        for indicator in verb_indicators:
+            if indicator in text_before[-20:]:
+                return True
         return False
     
     def _extract_neural_relations(self, text: str, entities: List[ExtractedEntity],
