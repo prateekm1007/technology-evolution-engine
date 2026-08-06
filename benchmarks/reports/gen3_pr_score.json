@@ -1,38 +1,44 @@
 {
   "benchmark": "gen3_relation_extraction_pr",
-  "timestamp": "2026-08-06T10:02:25Z",
+  "timestamp": "2026-08-06T10:12:22Z",
   "sentences": 25,
   "gold_triples": 29,
-  "true_positives": 10,
-  "false_positives": 12,
-  "false_negatives": 19,
-  "precision": 0.4545,
-  "recall": 0.3448,
-  "f1": 0.3922,
+  "true_positives": 16,
+  "false_positives": 17,
+  "false_negatives": 13,
+  "precision": 0.4848,
+  "recall": 0.5517,
+  "f1": 0.5161,
   "per_sentence": [
     {
       "sentence_idx": 0,
       "gold_count": 1,
-      "pred_count": 0,
-      "true_positives": 0,
+      "pred_count": 1,
+      "true_positives": 1,
       "false_positives": 0,
-      "false_negatives": 1,
-      "matched_gold": [],
-      "missed_gold": [
+      "false_negatives": 0,
+      "matched_gold": [
         [
           "h2so4",
           "exhibits",
           "capacitance"
         ]
       ],
-      "wrong_preds": []
+      "missed_gold": [],
+      "wrong_preds": [
+        {
+          "subject": "H2SO4",
+          "relation": "exhibited",
+          "object": "excellent specific areal capacitance"
+        }
+      ]
     },
     {
       "sentence_idx": 1,
       "gold_count": 1,
-      "pred_count": 0,
+      "pred_count": 1,
       "true_positives": 0,
-      "false_positives": 0,
+      "false_positives": 1,
       "false_negatives": 1,
       "matched_gold": [],
       "missed_gold": [
@@ -42,14 +48,20 @@
           "interface"
         ]
       ],
-      "wrong_preds": []
+      "wrong_preds": [
+        {
+          "subject": "plot",
+          "relation": "elucidate",
+          "object": "electrode electrolyte interface"
+        }
+      ]
     },
     {
       "sentence_idx": 2,
       "gold_count": 1,
-      "pred_count": 2,
+      "pred_count": 3,
       "true_positives": 0,
-      "false_positives": 2,
+      "false_positives": 3,
       "false_negatives": 1,
       "matched_gold": [],
       "missed_gold": [
@@ -67,17 +79,22 @@
         },
         {
           "subject": "convex optimal control formulation",
-          "relation": "minimize",
+          "relation": "control",
           "object": "total energy consumption"
+        },
+        {
+          "subject": "hard",
+          "relation": "power",
+          "object": "power output"
         }
       ]
     },
     {
       "sentence_idx": 3,
       "gold_count": 1,
-      "pred_count": 0,
+      "pred_count": 3,
       "true_positives": 0,
-      "false_positives": 0,
+      "false_positives": 3,
       "false_negatives": 1,
       "matched_gold": [],
       "missed_gold": [
@@ -87,7 +104,23 @@
           "baseline"
         ]
       ],
-      "wrong_preds": []
+      "wrong_preds": [
+        {
+          "subject": "low-pass filter",
+          "relation": "filter",
+          "object": "all-battery baseline"
+        },
+        {
+          "subject": "all-battery baseline",
+          "relation": "in",
+          "object": "numerical simulations"
+        },
+        {
+          "subject": "optimal controller",
+          "relation": "compared",
+          "object": "low-pass filter"
+        }
+      ]
     },
     {
       "sentence_idx": 4,
@@ -108,7 +141,7 @@
         {
           "subject": "Passive",
           "relation": "enables",
-          "object": "sub"
+          "object": "energy consumption"
         }
       ]
     },
@@ -136,7 +169,7 @@
       "wrong_preds": [
         {
           "subject": "metamaterial surface",
-          "relation": "reflect",
+          "relation": "reflects",
           "object": "solar radiation"
         },
         {
@@ -263,19 +296,25 @@
     {
       "sentence_idx": 11,
       "gold_count": 1,
-      "pred_count": 0,
-      "true_positives": 0,
+      "pred_count": 1,
+      "true_positives": 1,
       "false_positives": 0,
-      "false_negatives": 1,
-      "matched_gold": [],
-      "missed_gold": [
+      "false_negatives": 0,
+      "matched_gold": [
         [
           "electrolytes",
           "enable",
           "energy_density"
         ]
       ],
-      "wrong_preds": []
+      "missed_gold": [],
+      "wrong_preds": [
+        {
+          "subject": "Solid-state electrolytes",
+          "relation": "enable",
+          "object": "density"
+        }
+      ]
     },
     {
       "sentence_idx": 12,
@@ -295,7 +334,7 @@
       "wrong_preds": [
         {
           "subject": "Dendrite growth",
-          "relation": "penetrate",
+          "relation": "penetrates",
           "object": "separator"
         },
         {
@@ -313,24 +352,31 @@
     {
       "sentence_idx": 13,
       "gold_count": 2,
-      "pred_count": 0,
-      "true_positives": 0,
+      "pred_count": 1,
+      "true_positives": 1,
       "false_positives": 0,
-      "false_negatives": 2,
-      "matched_gold": [],
-      "missed_gold": [
+      "false_negatives": 1,
+      "matched_gold": [
         [
           "materials",
           "absorb",
           "heat"
-        ],
+        ]
+      ],
+      "missed_gold": [
         [
           "materials",
           "release",
           "heat"
         ]
       ],
-      "wrong_preds": []
+      "wrong_preds": [
+        {
+          "subject": "Phase change materials",
+          "relation": "absorb",
+          "object": "heat"
+        }
+      ]
     },
     {
       "sentence_idx": 14,
@@ -431,9 +477,9 @@
     {
       "sentence_idx": 18,
       "gold_count": 1,
-      "pred_count": 0,
+      "pred_count": 1,
       "true_positives": 0,
-      "false_positives": 0,
+      "false_positives": 1,
       "false_negatives": 1,
       "matched_gold": [],
       "missed_gold": [
@@ -443,7 +489,13 @@
           "mobility"
         ]
       ],
-      "wrong_preds": []
+      "wrong_preds": [
+        {
+          "subject": "Grain boundaries scatter charge carriers",
+          "relation": "scatter",
+          "object": "mobility"
+        }
+      ]
     },
     {
       "sentence_idx": 19,
@@ -471,21 +523,21 @@
       "sentence_idx": 20,
       "gold_count": 1,
       "pred_count": 1,
-      "true_positives": 0,
-      "false_positives": 1,
-      "false_negatives": 1,
-      "matched_gold": [],
-      "missed_gold": [
+      "true_positives": 1,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "matched_gold": [
         [
           "capillary_action",
           "drives",
           "water_transport"
         ]
       ],
+      "missed_gold": [],
       "wrong_preds": [
         {
           "subject": "Capillary action",
-          "relation": "drive",
+          "relation": "drives",
           "object": "water transport"
         }
       ]
@@ -516,12 +568,11 @@
     {
       "sentence_idx": 22,
       "gold_count": 2,
-      "pred_count": 0,
-      "true_positives": 0,
+      "pred_count": 2,
+      "true_positives": 2,
       "false_positives": 0,
-      "false_negatives": 2,
-      "matched_gold": [],
-      "missed_gold": [
+      "false_negatives": 0,
+      "matched_gold": [
         [
           "catalysts",
           "lower",
@@ -533,7 +584,19 @@
           "reaction_rate"
         ]
       ],
-      "wrong_preds": []
+      "missed_gold": [],
+      "wrong_preds": [
+        {
+          "subject": "Catalysts",
+          "relation": "increase",
+          "object": "reaction rate"
+        },
+        {
+          "subject": "Catalysts",
+          "relation": "lower",
+          "object": "activation energy"
+        }
+      ]
     },
     {
       "sentence_idx": 23,
@@ -582,7 +645,7 @@
       ]
     }
   ],
-  "outcome_points": 1,
+  "outcome_points": 2,
   "infra_score": 5,
-  "total_score": 6
+  "total_score": 7
 }

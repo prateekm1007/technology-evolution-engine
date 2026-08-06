@@ -686,51 +686,70 @@ class NLPPipeline:
 
         return relations
     
-    # Implicit causal patterns (cycle 119)
+    # Implicit causal patterns (cycle 119, expanded cycle 136)
     # These are linguistic patterns, NOT regex entity patterns.
     # They capture causal relations between already-extracted entities.
+    # Per cycle 136: accept all verb forms (base, -s, -ed, -ing) for each verb.
+    # The _extract_verb_from_match() method extracts the actual verb from the
+    # matched text, so the relation_verb here is just a fallback.
     IMPLICIT_CAUSAL_PATTERNS = [
         # (pattern, relation_verb, direction)
         # direction: "forward" means subj→obj, "reverse" means obj→subj
-        (r'(\w[\w\s]{2,40})\s+(?:due to|owing to|attributed to|caused by|as a result of)\s+(\w[\w\s]{2,40})',
+        (r'(\w[\w\s\-]{2,40})\s+(?:due to|owing to|attributed to|caused by|as a result of)\s+(\w[\w\s\-]{2,40})',
          "causes", "reverse"),  # "X due to Y" → Y causes X
-        (r'(\w[\w\s]{2,40})\s+(?:results in|leads to|causes|produces|generates|creates|induces|triggers)\s+(\w[\w\s]{2,40})',
+        (r'(\w[\w\s\-]{2,40})\s+(?:results?\s+in|leads?\s+to|causes?|produces?|generates?|creates?|induces?|triggers?)\s+(\w[\w\s\-]{2,40})',
          "produces", "forward"),  # "X results in Y" → X produces Y
-        (r'(\w[\w\s]{2,40})\s+(?:is responsible for|contributes to|enables|facilitates|promotes)\s+(\w[\w\s]{2,40})',
+        (r'(\w[\w\s\-]{2,40})\s+(?:is\s+responsible\s+for|contributes?\s+to|enables?|facilitates?|promotes?)\s+(\w[\w\s\-]{2,40})',
          "enables", "forward"),  # "X enables Y"
-        (r'(\w[\w\s]{2,40})\s+(?:depends on|requires|relies on)\s+(\w[\w\s]{2,40})',
+        (r'(\w[\w\s\-]{2,40})\s+(?:depends?\s+on|requires?|relies?\s+on)\s+(\w[\w\s\-]{2,40})',
          "requires", "forward"),  # "X depends on Y"
-        (r'(\w[\w\s]{2,40})\s+(?:governs|controls|determines|regulates|modulates)\s+(\w[\w\s]{2,40})',
+        (r'(\w[\w\s\-]{2,40})\s+(?:governs?|controls?|determines?|regulates?|modulates?)\s+(\w[\w\s\-]{2,40})',
          "governs", "forward"),  # "X governs Y"
-        (r'(\w[\w\s]{2,40})\s+(?:increases|enhances|improves|boosts)\s+(\w[\w\s]{2,40})',
+        (r'(\w[\w\s\-]{2,40})\s+(?:increases?|enhances?|improves?|boosts?)\s+(\w[\w\s\-]{2,40})',
          "increases", "forward"),  # "X increases Y"
-        (r'(\w[\w\s]{2,40})\s+(?:decreases|reduces|inhibits|suppresses|prevents)\s+(\w[\w\s]{2,40})',
+        (r'(\w[\w\s\-]{2,40})\s+(?:decreases?|reduces?|inhibits?|suppresses?|prevents?)\s+(\w[\w\s\-]{2,40})',
          "reduces", "forward"),  # "X reduces Y"
-        (r'(?:the|a|an)\s+(\w[\w\s]{2,40})\s+(?:of|in|on)\s+(\w[\w\s]{2,40})',
+        (r'(\w[\w\s\-]{2,40})\s+(?:lowers?|raises?|elevates?|depresses?)\s+(\w[\w\s\-]{2,40})',
+         "lowers", "forward"),  # "X lowers Y" (cycle 136: added "lower")
+        (r'(\w[\w\s\-]{2,40})\s+(?:absorbs?|adsorbs?|releases?|emits?|reflects?|transmits?)\s+(\w[\w\s\-]{2,40})',
+         "absorbs", "forward"),  # "X absorbs Y" (cycle 136: added physical verbs)
+        (r'(\w[\w\s\-]{2,40})\s+(?:rejects?|allows?|permits?|blocks?|filters?)\s+(\w[\w\s\-]{2,40})',
+         "rejects", "forward"),  # "X rejects Y" (cycle 136: added filtration verbs)
+        (r'(\w[\w\s\-]{2,40})\s+(?:drives?|powers?|propels?|motivates?)\s+(\w[\w\s\-]{2,40})',
+         "drives", "forward"),  # "X drives Y" (cycle 136: added "drive")
+        (r'(\w[\w\s\-]{2,40})\s+(?:penetrates?|permeates?|diffuses?|infiltrates?)\s+(\w[\w\s\-]{2,40})',
+         "penetrates", "forward"),  # "X penetrates Y"
+        (r'(\w[\w\s\-]{2,40})\s+(?:scatters?|deflects?|refracts?)\s+(\w[\w\s\-]{2,40})',
+         "scatters", "forward"),  # "X scatters Y"
+        (r'(?:the|a|an)\s+(\w[\w\s\-]{2,40})\s+(?:of|in|on)\s+(\w[\w\s\-]{2,40})',
          "relates_to", "forward"),  # "the X of Y" → X relates_to Y
         # Cycle 125: additional patterns for scientific writing
-        (r'(\w[\w\s]{2,40})\s+(?:arises from|stems from|originates from|derives from|results from)\s+(\w[\w\s]{2,40})',
+        (r'(\w[\w\s\-]{2,40})\s+(?:arises?\s+from|stems?\s+from|originates?\s+from|derives?\s+from|results?\s+from)\s+(\w[\w\s\-]{2,40})',
          "causes", "reverse"),  # "X arises from Y" → Y causes X
-        (r'(\w[\w\s]{2,40})\s+(?:is driven by|is determined by|is governed by|is controlled by)\s+(\w[\w\s]{2,40})',
+        (r'(\w[\w\s\-]{2,40})\s+(?:is\s+driven\s+by|is\s+determined\s+by|is\s+governed\s+by|is\s+controlled\s+by)\s+(\w[\w\s\-]{2,40})',
          "governs", "reverse"),  # "X is governed by Y" → Y governs X
-        (r'(\w[\w\s]{2,40})\s+(?:is proportional to|correlates with|scales with)\s+(\w[\w\s]{2,40})',
+        (r'(\w[\w\s\-]{2,40})\s+(?:is\s+proportional\s+to|correlates?\s+with|scales?\s+with)\s+(\w[\w\s\-]{2,40})',
          "correlates_with", "forward"),  # "X correlates with Y"
-        (r'(\w[\w\s]{2,40})\s+(?:is inversely proportional to|is inversely related to)\s+(\w[\w\s]{2,40})',
+        (r'(\w[\w\s\-]{2,40})\s+(?:is\s+inversely\s+proportional\s+to|is\s+inversely\s+related\s+to)\s+(\w[\w\s\-]{2,40})',
          "inversely_correlates", "forward"),  # "X inversely proportional to Y"
-        (r'(\w[\w\s]{2,40})\s+(?:affects|influences|impacts)\s+(\w[\w\s]{2,40})',
+        (r'(\w[\w\s\-]{2,40})\s+(?:affects?|influences?|impacts?)\s+(\w[\w\s\-]{2,40})',
          "affects", "forward"),  # "X affects Y"
-        (r'(\w[\w\s]{2,40})\s+(?:is a function of|depends upon)\s+(\w[\w\s]{2,40})',
+        (r'(\w[\w\s\-]{2,40})\s+(?:is\s+a\s+function\s+of|depends?\s+upon)\s+(\w[\w\s\-]{2,40})',
          "depends_on", "forward"),  # "X is a function of Y"
-        (r'(\w[\w\s]{2,40})\s+(?:is characterized by|exhibits|shows|displays)\s+(\w[\w\s]{2,40})',
+        (r'(\w[\w\s\-]{2,40})\s+(?:is\s+characterized\s+by|exhibits?|exhibited|shows?|displayed)\s+(\w[\w\s\-]{2,40})',
          "exhibits", "forward"),  # "X exhibits Y"
-        (r'(\w[\w\s]{2,40})\s+(?:is composed of|consists of|contains|comprises)\s+(\w[\w\s]{2,40})',
+        (r'(\w[\w\s\-]{2,40})\s+(?:is\s+composed\s+of|consists?\s+of|contains?|comprises?)\s+(\w[\w\s\-]{2,40})',
          "contains", "forward"),  # "X consists of Y"
-        (r'(\w[\w\s]{2,40})\s+(?:is formed by|is generated by|is produced by|is synthesized from)\s+(\w[\w\s]{2,40})',
+        (r'(\w[\w\s\-]{2,40})\s+(?:is\s+formed\s+by|is\s+generated\s+by|is\s+produced\s+by|is\s+synthesized\s+from)\s+(\w[\w\s\-]{2,40})',
          "produces", "reverse"),  # "X is produced by Y" → Y produces X
-        (r'(\w[\w\s]{2,40})\s+(?:transforms|converts|translates)\s+(\w[\w\s]{2,40})',
+        (r'(\w[\w\s\-]{2,40})\s+(?:transforms?|converts?|translates?)\s+(\w[\w\s\-]{2,40})',
          "transforms", "forward"),  # "X transforms Y"
-        (r'(\w[\w\s]{2,40})\s+(?:is applied to|is used for|is utilized for)\s+(\w[\w\s]{2,40})',
+        (r'(\w[\w\s\-]{2,40})\s+(?:is\s+applied\s+to|is\s+used\s+for|is\s+utilized\s+for)\s+(\w[\w\s\-]{2,40})',
          "applied_to", "forward"),  # "X is applied to Y"
+        (r'(\w[\w\s\-]{2,40})\s+(?:elucidates?|clarifies?|reveals?|demonstrates?|illustrates?)\s+(\w[\w\s\-]{2,40})',
+         "elucidates", "forward"),  # "X elucidates Y" (cycle 136: added)
+        (r'(\w[\w\s\-]{2,40})\s+(?:is\s+compared\s+with|is\s+compared\s+to)\s+(\w[\w\s\-]{2,40})',
+         "compared_with", "forward"),  # "X is compared with Y" (cycle 136: added)
     ]
     
     def _extract_implicit_causal(self, text: str, entities: List[ExtractedEntity],
