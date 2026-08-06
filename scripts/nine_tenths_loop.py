@@ -457,37 +457,74 @@ def assess_calibration() -> Dict:
 
 def assess_discovery_layer() -> Dict:
     """Gen 5: Assess the discovery layer (Swanson, Gentner, Altshuller).
-    
+
     Per cycle 129 (F-067 fix): Gen 5 was silently dropped from the
     scorecard. This function assesses the actual discovery capability.
+
+    Per DR-49 (cycle 137): infra capped at 7. Outcome points require
+    measured discovery precision from benchmarks/reports/gen5_pr_score.json.
     """
     score = 0
     max_score = 10
     details = []
-    
+
+    # --- Infrastructure points (max 7) ---
     score += 2
     details.append("SwansonBridgeSearch implemented (+2)")
-    
+
     score += 1
     details.append("GentnerStructureMapping implemented (+1)")
-    
+
     score += 1
     details.append("AltshullerContradictionSearch implemented (+1)")
-    
+
     score += 1
     details.append("BACON engine: 10 forms, Stefan-Boltzmann discovered (+1)")
-    
+
     score += 1
     details.append("Blind test runner with F-064 pre-check (+1)")
-    
+
     score += 1
     details.append("Mechanism-based discovery: automated bridge detection (+1, cycle 112)")
-    
+
+    # DR-49: cap infra at 7
+    if score > 7:
+        score = 7
+    details.append(f"Infra subtotal (capped at 7 per DR-49): {score}")
+
+    # Remaining infra gaps
     details.append("Gentner systematicity broken (constant scores) (0)")
     details.append("Arthur adjacent possible: merged-not-built (0)")
     details.append("Gentner produces 215K noise analogies (0)")
-    details.append("Discovery precision: 3/55 = 5.5% hit rate (0)")
-    
+
+    # --- Outcome points (max 3, per DR-49) ---
+    outcome_score = 0
+    bench_path = ROOT / "benchmarks" / "reports" / "gen5_pr_score.json"
+    if bench_path.exists():
+        try:
+            with bench_path.open() as f:
+                bench = json.load(f)
+            precision = bench.get("precision", 0.0)
+            tp = bench.get("true_positives", 0)
+            total = bench.get("total_blind_tests", 0)
+            if precision >= 0.50:
+                outcome_score = 3
+                details.append(f"Outcome: precision={precision:.4f} >= 0.50 ({tp}/{total}) → +3 (DR-49)")
+            elif precision >= 0.25:
+                outcome_score = 2
+                details.append(f"Outcome: precision={precision:.4f} in [0.25, 0.50) ({tp}/{total}) → +2 (DR-49)")
+            elif precision >= 0.10:
+                outcome_score = 1
+                details.append(f"Outcome: precision={precision:.4f} in [0.10, 0.25) ({tp}/{total}) → +1 (DR-49)")
+            else:
+                outcome_score = 0
+                details.append(f"Outcome: precision={precision:.4f} < 0.10 ({tp}/{total}) → +0 (DR-49)")
+        except Exception as e:
+            details.append(f"Outcome: benchmark unreadable ({e}) → +0")
+    else:
+        details.append("Outcome: no benchmark report → +0")
+
+    score += outcome_score
     return {"generation": 5, "name": "Discovery Layer", "score": score,
             "max": max_score, "details": details}
 
