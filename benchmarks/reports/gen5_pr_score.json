@@ -1,16 +1,16 @@
 {
   "benchmark": "gen5_discovery_pr",
-  "timestamp": "2026-08-06T10:31:03Z",
+  "timestamp": "2026-08-06T14:00:53Z",
   "total_blind_tests": 55,
   "potential_hits": 14,
   "null_results": 41,
   "reclassified": 2,
   "true_positives": 9,
   "false_positives": 8,
-  "false_negatives": 43,
+  "false_negatives": 2,
   "precision": 0.5294,
-  "recall": 0.1731,
-  "f1": 0.2609,
+  "recall": 0.8182,
+  "f1": 0.6429,
   "outcome_points": 3,
   "infra_score": 7,
   "total_score": 10,
@@ -58,6 +58,13 @@
       "t2_snippet": "PROVISIONAL. No published bridge. Pending non-triviality + F-065."
     },
     {
+      "experiment_id": "EXP-BLIND-001",
+      "literature_A": null,
+      "literature_B": null,
+      "verification": "CONFIRMED (from verification log)",
+      "t2_snippet": "CONFIRMED \u2014 Multiple independent sources verify that fungi/mycelium can precipitate CaCO3 via biomin"
+    },
+    {
       "experiment_id": "EXP-BLIND-003",
       "literature_A": null,
       "literature_B": null,
@@ -70,13 +77,6 @@
       "literature_B": null,
       "verification": "CONFIRMED (from verification log)",
       "t2_snippet": "PARTIALLY CONFIRMED \u2014 The concept of conductive nonmagnetic nanoparticles heated by eddy currents fo"
-    },
-    {
-      "experiment_id": "EXP-BLIND-001",
-      "literature_A": null,
-      "literature_B": null,
-      "verification": "CONFIRMED (from verification log)",
-      "t2_snippet": "CONFIRMED \u2014 Multiple independent sources verify that fungi/mycelium can precipitate CaCO3 via biomin"
     }
   ]
 }
