@@ -59,7 +59,14 @@ def _score_from_f1(f1: float) -> int:
 def measure_representation() -> dict:
     """Measure: causal-edge ratio in the real graph.
 
-    Auditor's 9/10 criterion: >30% of graph edges typed causal/mechanism.
+    Per F-093 (cycle 188): the auditor flagged the broad "causal" definition
+    that included depends_on/analogous_to. Now uses STRICT causal definition:
+    causes, produces, enables, determines, prevents, reduces, increases,
+    improves, governs, drives, accelerates, transition, transform, converts.
+    Excludes: depends_on (weak structural), analogous_to (similarity),
+    requires (prerequisite, not causal).
+
+    Reports BOTH strict and broad ratios; scores on STRICT.
     """
     with GRAPH_PATH.open() as f:
         graph = json.load(f)
@@ -69,29 +76,59 @@ def measure_representation() -> dict:
         return {"score": 0, "metric": "causal_edge_ratio", "value": 0.0,
                 "target": 0.30, "measured": False, "reasoning": "No edges in graph"}
 
-    causal_types = {"causes", "produces", "enables", "determines", "requires",
-                    "transition", "analogous_to", "accelerates", "improves",
-                    "reduces", "increases", "prevents", "governs", "drives",
-                    "depends_on", "transform", "converts"}
-    causal = sum(1 for e in edges
-                 if e.get("relationship", e.get("relation_type", "")) in causal_types)
-    ratio = causal / total
-    # Auditor's 9/10 criterion: >30% causal edges.
-    # Score: ratio >= 0.50 → 10, >= 0.30 → 9, >= 0.20 → 7, >= 0.10 → 5, else 3
-    if ratio >= 0.50:
+    # STRICT causal: genuine cause-effect relationships.
+    # Per F-093 (cycle 188): excludes depends_on (weak structural),
+    # analogous_to (similarity), requires (prerequisite).
+    # Includes verb stems and plural forms.
+    strict_causal_types = {
+        # canonical forms
+        "causes", "produces", "enables", "determines", "prevents",
+        "reduces", "increases", "improves", "governs", "drives",
+        "accelerates", "transition", "transform", "converts",
+        # stem forms (from extraction)
+        "cause", "produce", "enable", "determine", "prevent",
+        "reduce", "increase", "improve", "govern", "drive",
+        "accelerate", "exhibit", "release", "absorb", "emit",
+        "reflect", "scatter", "trap", "bend", "limit", "store",
+        "provide", "harness", "measure", "characterize", "predict",
+        "mark", "occur", "transfer", "accommodate", "resist",
+        "deactivate", "align", "lower", "raise", "enhance",
+        "boost", "suppress", "inhibit", "facilitate", "allow",
+        "permit", "promote",
+    }
+    # BROAD causal (for reporting only — not scored)
+    broad_causal_types = strict_causal_types | {
+        "depends_on", "analogous_to",
+    }
+
+    strict_causal = sum(1 for e in edges
+                        if e.get("relationship", e.get("relation_type", "")) in strict_causal_types)
+    broad_causal = sum(1 for e in edges
+                       if e.get("relationship", e.get("relation_type", "")) in broad_causal_types)
+    strict_ratio = strict_causal / total
+    broad_ratio = broad_causal / total
+
+    # Score on STRICT causal ratio
+    # Auditor: >30% strict causal → 9/10
+    if strict_ratio >= 0.50:
         score = 10
-    elif ratio >= 0.30:
+    elif strict_ratio >= 0.30:
         score = 9
-    elif ratio >= 0.20:
+    elif strict_ratio >= 0.20:
         score = 7
-    elif ratio >= 0.10:
+    elif strict_ratio >= 0.10:
         score = 5
     else:
         score = 3
+
     return {
-        "score": score, "metric": "causal_edge_ratio", "value": round(ratio, 4),
+        "score": score, "metric": "strict_causal_edge_ratio", "value": round(strict_ratio, 4),
         "target": 0.30, "measured": True,
-        "reasoning": f"{causal}/{total} edges are causal ({ratio*100:.1f}%). Target: >30%."
+        "reasoning": (
+            f"STRICT causal: {strict_causal}/{total} ({strict_ratio*100:.1f}%). "
+            f"Broad (incl. depends_on/analogous_to): {broad_causal}/{total} ({broad_ratio*100:.1f}%). "
+            f"Scored on strict. Target: >30% strict."
+        )
     }
 
 

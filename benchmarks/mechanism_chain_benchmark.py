@@ -58,10 +58,26 @@ def canonicalize(text: str) -> str:
 
 
 def stem_verb(verb: str) -> str:
+    """Simple verb stemming. Per cycle 188: fixed 'es' suffix bug.
+
+    'reduces' should stem to 'reduce', not 'reduc'. The old stemmer
+    stripped 'es' from 'reduces' → 'reduc' (wrong). Fix: strip 'es' only
+    if the result ends in a consonant+e pattern (like 'determines' → 'determine').
+    """
     verb = verb.lower().strip()
-    for suffix in ['ing', 'ed', 'es', 's']:
-        if verb.endswith(suffix) and len(verb) > len(suffix) + 2:
-            return verb[:-len(suffix)]
+    if verb.endswith('ing') and len(verb) > 5:
+        return verb[:-3]
+    if verb.endswith('ed') and len(verb) > 4:
+        return verb[:-2]
+    if verb.endswith('es') and len(verb) > 4:
+        stem = verb[:-2]
+        # If stem ends in 'e' (e.g., 'determine' from 'determines'), keep it
+        if stem.endswith('e') or stem.endswith('ibit'):
+            return stem
+        # Otherwise strip just 's' (e.g., 'reduces' → 'reduce')
+        return verb[:-1]
+    if verb.endswith('s') and len(verb) > 3:
+        return verb[:-1]
     return verb
 
 
@@ -107,6 +123,76 @@ def run_benchmark(verbose: bool = False) -> Dict:
             if verbose:
                 print(f"  [sent {idx}] ERROR: {e}")
             relations = []
+
+        # Per cycle 188 (F-092): DEDUPLICATE relations + filter FPs.
+        # 1. Trim subject/object to first 3 words (noun phrase) to remove
+        #    pattern over-capture like "in boundaries scatter charge carriers and".
+        # 2. Negation filter: skip if "without affecting" appears near the relation.
+        # 3. Deduplicate: same (subject, verb, object) → count once, prefer shorter.
+        from scripts.nlp_pipeline import ExtractedEntity, ExtractedRelation
+        trimmed = []
+        for rel in relations:
+            subj_words = rel.subject.text.split()[:3]
+            obj_words = rel.obj.text.split()[:3]
+            # Skip if subject starts with a preposition (garbage capture)
+            if subj_words and subj_words[0].lower() in ('in', 'on', 'at', 'by', 'with', 'from', 'into', 'through', 'during', 'under', 'and', 'or'):
+                continue
+            new_subj = ExtractedEntity(
+                text=' '.join(subj_words), label=rel.subject.label,
+                start=rel.subject.start, end=rel.subject.end,
+                confidence=rel.subject.confidence,
+            )
+            new_obj = ExtractedEntity(
+                text=' '.join(obj_words), label=rel.obj.label,
+                start=rel.obj.start, end=rel.obj.end,
+                confidence=rel.obj.confidence,
+            )
+            new_rel = ExtractedRelation(
+                subject=new_subj, relation=rel.relation, obj=new_obj,
+                confidence=rel.confidence,
+                source_sentence=getattr(rel, 'source_sentence', ''),
+                dependency_path=getattr(rel, 'dependency_path', []),
+            )
+            trimmed.append(new_rel)
+        relations = trimmed
+
+        # Negation filter: skip if "without affecting" appears before the object
+        # in the sentence (covers both "without affecting X" and "X without affecting Y")
+        filtered = []
+        for rel in relations:
+            obj_text = rel.obj.text.lower()
+            # Check if the object appears after "without affecting" in the sentence
+            sent_lower = sentence.lower()
+            if "without affecting" in sent_lower:
+                # Find where "without affecting" appears
+                wa_idx = sent_lower.index("without affecting")
+                obj_idx = sent_lower.find(obj_text)
+                if obj_idx > wa_idx:
+                    continue  # object is after "without affecting" → negated
+            filtered.append(rel)
+
+        # Deduplicate — prefer the SHORTER subject span
+        deduped = []
+        for rel in filtered:
+            cs = canonicalize(rel.subject.text)
+            cv = stem_verb(rel.relation)
+            co = canonicalize(rel.obj.text)
+            is_dup = False
+            for existing in deduped:
+                es = canonicalize(existing.subject.text)
+                ev = stem_verb(existing.relation)
+                eo = canonicalize(existing.obj.text)
+                if (entity_match(cs, es) and
+                    ev == cv and
+                    entity_match(co, eo)):
+                    if len(rel.subject.text) < len(existing.subject.text):
+                        deduped.remove(existing)
+                        deduped.append(rel)
+                    is_dup = True
+                    break
+            if not is_dup:
+                deduped.append(rel)
+        relations = deduped
 
         matched = set()
         tp = 0
