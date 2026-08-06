@@ -180,6 +180,39 @@ def discover_shared_entities(lit_a_entities: List, lit_b_entities: List) -> List
             if (nid_a, ntype_a, label_a) not in shared:
                 shared.append((nid_a, ntype_a, label_a))
 
+    # Per cycle 157: stem matching — extract word stems and check overlap.
+    # This catches "supercapacitors" vs "supercapacitor" (different pluralization)
+    # and "energy consumption" vs "total energy consumption" (different qualifiers).
+    def _stem(word):
+        word = word.lower().strip()
+        for suffix in ["ing", "ed", "es", "s"]:
+            if word.endswith(suffix) and len(word) > len(suffix) + 2:
+                return word[:-len(suffix)]
+        return word
+
+    def _get_stems(canon):
+        # Per cycle 157: split on _ AND / to handle compound terms like
+        # 'battery/supercapacitor_electric_vehicles'
+        tokens = canon.replace('/', '_').split('_')
+        return {_stem(w) for w in tokens if len(w) >= 4}
+
+    a_stems = {canon: _get_stems(canon) for canon in a_canonical}
+    b_stems = {canon: _get_stems(canon) for canon in b_canonical}
+
+    for canon_a, (nid_a, ntype_a, label_a) in a_canonical.items():
+        stems_a = a_stems.get(canon_a, set())
+        if not stems_a:
+            continue
+        for canon_b, stems_b in b_stems.items():
+            if canon_b in a_canonical:
+                continue  # already checked
+            # If at least 2 significant stem tokens overlap, it's a match
+            overlap = stems_a & stems_b
+            if len(overlap) >= 2 or (len(overlap) == 1 and len(stems_a) == 1):
+                if (nid_a, ntype_a, label_a) not in shared:
+                    shared.append((nid_a, ntype_a, label_a))
+                break
+
     return shared
 
 
