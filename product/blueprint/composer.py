@@ -3,6 +3,19 @@ from product.scoring.epistemic_status import migrate_confidence_to_typed
 class BlueprintComposer:
     def run(self, d):
         cs=d.get('candidates',[]); mode=d.get('mode','business'); mx=d.get('max_blueprints',5)
+        # Per DR-63 (cycle 198): candidates from the extraction pipeline may not
+        # have 'composite_score'. If missing, assign a default score based on
+        # available fields (domain overlap, element count).
+        for c in cs:
+            if 'composite_score' not in c:
+                # Derive a score from available fields
+                elements = c.get('elements', c.get('permutation', {}).values() if isinstance(c.get('permutation'), dict) else [])
+                n_elements = len(elements) if isinstance(elements, list) else 1
+                n_domains = len(c.get('adjacent_domains', [])) + 1
+                c['composite_score'] = min(0.8, 0.2 * n_elements + 0.1 * n_domains)
+                c.setdefault('elements', list(elements) if isinstance(elements, list) else [str(elements)])
+                c.setdefault('candidate_id', f"CAND-{hash(str(c)) & 0xFFFFFF:06X}")
+                c.setdefault('operator_applied', 'none')
         viable=sorted([c for c in cs if c.get('composite_score',0)>0.3],key=lambda c:c.get('composite_score',0),reverse=True)[:mx]
         return {'blueprints':[self._bp(c,mode) for c in viable],'total_viable':len(viable),'mode':mode}
     def _bp(self,c,mode):
