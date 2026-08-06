@@ -35,13 +35,13 @@ def build_disjoint_graph():
         ))
 
     graph.add_edge(DiscoveryEdge(source="fish_oil", target="blood_viscosity",
-                                  relation_type=RelationType.MECHANISM))
+                                  relation_type=RelationType.MECHANISM, evidence=[], metadata={}))
     graph.add_edge(DiscoveryEdge(source="blood_viscosity", target="platelet_aggregation",
-                                  relation_type=RelationType.MECHANISM))
+                                  relation_type=RelationType.MECHANISM, evidence=[], metadata={}))
     graph.add_edge(DiscoveryEdge(source="blood_viscosity", target="raynaud",
-                                  relation_type=RelationType.INFLUENCE))
+                                  relation_type=RelationType.INFLUENCE, evidence=[], metadata={}))
     graph.add_edge(DiscoveryEdge(source="raynaud", target="vasodilation",
-                                  relation_type=RelationType.MECHANISM))
+                                  relation_type=RelationType.MECHANISM, evidence=[], metadata={}))
     return graph
 
 
