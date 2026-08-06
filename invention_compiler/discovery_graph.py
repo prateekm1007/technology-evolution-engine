@@ -859,6 +859,68 @@ def _edge_type_sequence(graph: DiscoveryGraph, chain: List[str]) -> List[str]:
     return sequence
 
 
+def _get_edge_predicates(graph: DiscoveryGraph, chain: List[str]) -> List[str]:
+    """Get the sequence of edge PREDICATES (directions) along a chain.
+
+    Per cycle 158 (Test 5 fix): Gentner's structure mapping compares
+    RELATIONAL PREDICATES, not just edge layer types. The predicate is
+    the actual relation verb (e.g., "causes", "enables", "determines"),
+    stored in the edge's 'direction' field. This is different from
+    _edge_type_sequence which returns the RelationType (mechanism,
+    influence, etc.).
+
+    Returns a list of direction/predicate strings for each consecutive
+    pair in the chain. If no edge exists, returns empty list.
+    """
+    if len(chain) < 2:
+        return []
+    predicates = []
+    for i in range(len(chain) - 1):
+        src, tgt = chain[i], chain[i + 1]
+        found = False
+        for subgraph in graph._subgraphs.values():
+            for edge in subgraph.edges:
+                if edge.source == src and edge.target == tgt:
+                    pred = getattr(edge, 'direction', None) or 'unknown'
+                    predicates.append(pred.lower())
+                    found = True
+                    break
+            if found:
+                break
+        if not found:
+            return []
+    return predicates
+
+
+# Predicate similarity groups: predicates that serve similar causal roles
+_PREDICATE_GROUPS = {
+    "causal": {"causes", "produces", "generates", "creates", "induces", "triggers"},
+    "enabling": {"enables", "facilitates", "allows", "permits", "promotes"},
+    "modulating": {"increases", "enhances", "improves", "boosts", "decreases",
+                   "reduces", "lowers", "inhibits", "suppresses", "prevents",
+                   "minimizes", "maximizes", "optimizes", "affects"},
+    "determining": {"determines", "governs", "controls", "regulates", "dictates"},
+    "characterizing": {"exhibits", "shows", "displays", "demonstrates",
+                       "characterizes", "compares"},
+}
+
+
+def _predicates_similar(pred_a: str, pred_b: str) -> bool:
+    """Check if two predicates are in the same causal category.
+
+    Per cycle 158: Gentner's structure mapping allows analogies between
+    chains with similar (not identical) predicates. "causes" and "produces"
+    are in the same causal category, so a chain [causes, enables] is
+    analogous to [produces, allows] even though the exact verbs differ.
+    """
+    if pred_a == pred_b:
+        return True
+    for group in _PREDICATE_GROUPS.values():
+        if pred_a in group and pred_b in group:
+            return True
+    return False
+
+
 class GentnerStructureMapping:
     """Algorithm 2: Gentner structure mapping (DR-20).
     
@@ -950,6 +1012,27 @@ class GentnerStructureMapping:
                         matching_edges = sum(1 for a, b in zip(edge_types_a, edge_types_b) if a == b)
                         edge_overlap = matching_edges / len(edge_types_a) if edge_types_a else 0.0
 
+                        # Per cycle 158 (Test 5 fix): RELATIONAL structure mapping.
+                        # The auditor said "edge-type-sequence + no-shared-nodes is
+                        # a similarity proxy, not relational structure mapping."
+                        # The fix: compare actual PREDICATES (the direction field:
+                        # "causes", "enables", "determines"), not just edge layer
+                        # types (mechanism, influence, etc.).
+                        # Gentner's structure mapping theory: analogies are about
+                        # relational predicates, not attributes. Two chains are
+                        # analogous if they share the same RELATIONS in the same
+                        # order, connecting different entities.
+                        predicate_overlap = 0.0
+                        try:
+                            preds_a = _get_edge_predicates(graph, chain_a)
+                            preds_b = _get_edge_predicates(graph, chain_b)
+                            if preds_a and preds_b:
+                                matching_preds = sum(1 for a, b in zip(preds_a, preds_b)
+                                                     if a == b or _predicates_similar(a, b))
+                                predicate_overlap = matching_preds / len(preds_a)
+                        except Exception:
+                            predicate_overlap = 0.0
+
                         # Node similarity: check if nodes at corresponding positions
                         # share type information (not identity — they're in different
                         # domains). This distinguishes meaningful analogies from
@@ -965,10 +1048,15 @@ class GentnerStructureMapping:
                         except Exception:
                             node_type_overlap = 0.0
 
-                        # Systematicity = weighted combination of edge and node overlap.
-                        # This is no longer always 1.0 — it varies based on actual
-                        # structural similarity, not just signature grouping.
-                        systematicity = round(0.6 * edge_overlap + 0.4 * node_type_overlap, 4)
+                        # Systematicity = weighted combination of edge overlap,
+                        # predicate overlap, and node type overlap.
+                        # Per cycle 158: predicate_overlap is the Gentner-specific
+                        # component — it measures whether the actual RELATIONS
+                        # (not just edge layer types) match between chains.
+                        systematicity = round(
+                            0.3 * edge_overlap +
+                            0.4 * predicate_overlap +
+                            0.3 * node_type_overlap, 4)
 
                         # Only keep analogies with meaningful overlap (not noise)
                         if systematicity >= 0.3:
