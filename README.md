@@ -45,6 +45,14 @@ Per DR-49: infrastructure scores cap at 7/10. Scores above 7 require
 measured outcome benchmarks on disk. Every number is produced by running
 committed scoring code against committed benchmark reports.
 
+## External Auditor Scorecard (composite ~7.3/10, cycle 180)
+
+The external auditor tracks 12 categories (see `AUDITOR_SCORECARD.md` for
+the full table with per-category gap analysis and next-step plans).
+Composite has moved from 2.4 → 6.7 → 7.3 across cycles 145 → 179 → 180.
+CEO target: 9.0/10. Cycle 180 pushed 4 categories from 6→8 (Mechanism
+extraction, Structural analogy, Learning, Experiment design).
+
 ## Auditor Test Status (4 PASS, 6 PARTIAL, 0 FAIL)
 
 | Test | Status | What it tests |
