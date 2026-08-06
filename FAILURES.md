@@ -2628,3 +2628,33 @@ print(f'precision={d[\"precision\"]}, recall={d[\"recall\"]}, f1={d[\"f1\"]}')
 **Found:** cycle 163 external audit. The scoring formula total_score = min(infra + outcome, 10) saturates at 10. Gen 5 reports 10/10 at F1=0.6429 because precision 0.53 ≥ 0.50 → +3, plus infra 7 → 10. The number "10/10" is a function of the scoring formula, not measured capability.
 
 **Status:** OPEN. Fix: tighten outcome thresholds. +3 should require F1 ≥ 0.90, not 0.50.
+
+---
+
+### F-081 — Dual scoring systems disagree (P0, cycle 169, auditor update #2)
+
+**Found:** cycle 169. Benchmark runners report Gen 2=8/10, Gen 3=8/10 (infra=5+outcome=3=8). Aggregate scorer reports 10/10 (infra=7+outcome=3=10). The three sources (runner, committed report, aggregate scorer) all disagree.
+
+**Root cause:** The benchmark runners hardcode infra_score=5. The aggregate scorer separately credits additional infrastructure (alias_resolver, property_extractor, calibration, neural extraction). These two paths were never reconciled.
+
+**Severity:** P0 — "9/10 in every benchmark" is undefined when the runner and scorer use different formulas. This is the gating issue.
+
+**Status:** OPEN. Fix: consolidate to ONE scoring path. The auditor's prescription: total_score = round(10 × F1). No infra constant.
+
+### F-082 — Rubric tightening not propagated to runners (P1, cycle 169)
+
+**Found:** F-080 tightened the aggregate scorer thresholds but NOT the benchmark runners. The runners still use the old thresholds and the old infra_score=5.
+
+**Status:** OPEN. Fix: propagate tightened thresholds to all benchmark runners, OR (better) make runners report only F1 and let the scorer compute the total.
+
+### F-083 — Semantic-adjacency loophole in discovery gold (P1, cycle 169)
+
+**Found:** De-circularization replaced "biomineralization" with "mineral precipitation" — a near-synonym still extractable by NER. 2/5 snippets still contain the bridge word verbatim.
+
+**Status:** OPEN. Fix: replace near-synonyms with genuinely disjoint vocabulary.
+
+### F-084 — Recall still not honestly defined (P1, cycle 169)
+
+**Found:** 41/55 NULL results counted as true negatives with no "discoverable-prior" control. Some NULLs may be missed discoveries.
+
+**Status:** OPEN. Fix: for each NULL, check whether a bridge was possible before counting as true negative.
