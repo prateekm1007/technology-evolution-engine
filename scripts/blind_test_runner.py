@@ -128,11 +128,66 @@ def extract_with_nlp_pipeline(snippets: List[Dict], literature_name: str) -> tup
     return entities, edges
 
 
+def discover_shared_entities(lit_a_entities: List, lit_b_entities: List) -> List:
+    """Automatically discover shared entities between two literatures.
+
+    Per cycle 143 (Phase 5 fix): the auditor flagged that blind test inputs
+    (entities, edges, shared intermediates) were function parameters — meaning
+    the caller told the system what the shared entities were, rather than the
+    system discovering them. "That's not a discovery pipeline being tested,
+    that's a human hypothesis being logged through a discovery-shaped API."
+
+    This function replaces the manual shared_entities parameter with automatic
+    discovery: an entity is "shared" if its canonical form appears in BOTH
+    literature A and literature B. The canonical form is lowercase with
+    underscores for spaces.
+
+    Returns: list of (node_id, node_type, label) tuples for shared entities.
+    """
+    import re
+
+    def canonicalize(text: str) -> str:
+        text = text.strip().lower()
+        text = re.sub(r'^(the|a|an)\s+', '', text)
+        text = re.sub(r'[\s\-]+', '_', text)
+        return text
+
+    # Build canonical form sets for both literatures
+    a_canonical = {}
+    for nid, ntype, label in lit_a_entities:
+        canon = canonicalize(label)
+        if len(canon) >= 3:
+            a_canonical[canon] = (nid, ntype, label)
+
+    b_canonical = {}
+    for nid, ntype, label in lit_b_entities:
+        canon = canonicalize(label)
+        if len(canon) >= 3:
+            b_canonical[canon] = (nid, ntype, label)
+
+    # Find shared entities (canonical form appears in both)
+    shared = []
+    for canon, (nid, ntype, label) in a_canonical.items():
+        if canon in b_canonical:
+            # Use the entity from literature A (arbitrary — they're the same concept)
+            shared.append((nid, ntype, label))
+
+    # Also check for partial matches (one entity's canonical form is a substring
+    # of the other's) — this catches "permeability" vs "water_permeability"
+    for canon_a, (nid_a, ntype_a, label_a) in a_canonical.items():
+        if any(canon_a in canon_b or canon_b in canon_a
+               for canon_b in b_canonical if canon_b not in a_canonical):
+            if (nid_a, ntype_a, label_a) not in shared:
+                shared.append((nid_a, ntype_a, label_a))
+
+    return shared
+
+
 def run_blind_test_with_nlp(
     test_id: str,
     lit_a_query: str,
     lit_b_query: str,
-    shared_entities: List,
+    shared_entities: List = None,  # Per cycle 143: now optional (auto-discovered)
     expected: str = "unknown",
 ):
     """Run a blind discovery test using the NLP pipeline (Gen 2-3) for extraction.
@@ -258,6 +313,17 @@ def run_blind_test_with_nlp(
     })
     
     # Step 6: Add shared intermediates
+    # Per cycle 143 (Phase 5): if shared_entities is None, auto-discover them
+    # from the two literature extractions. This replaces the manual parameter
+    # that made blind tests "a human hypothesis logged through a discovery-shaped API."
+    if shared_entities is None:
+        shared_entities = discover_shared_entities(lit_a_entities, lit_b_entities)
+        log_extraction_step("AUTO_DISCOVER_SHARED", {
+            "shared_entities": [e[0] for e in shared_entities],
+            "method": "automatic_canonical_form_matching",
+            "note": "shared entities discovered automatically (not passed as parameter)",
+        })
+
     log_extraction_step("ADD_SHARED", {
         "shared_entities": [e[0] for e in shared_entities],
         "note": "shared intermediates added AFTER both literatures extracted separately",
