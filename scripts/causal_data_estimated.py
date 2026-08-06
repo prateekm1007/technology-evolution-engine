@@ -92,15 +92,41 @@ class DataEstimatedCounterfactual:
         return obs
 
     def find_real_causal_edge(self) -> Optional[Dict]:
-        """Find a real 'causes' edge extracted from a paper."""
+        """Find a real causal edge that has observations in the ledger.
+
+        Per cycle 189 (F-094): prefer edges that have matching observations
+        (edge_source/edge_target fields). Fall back to any 'causes' edge.
+        """
         edges = self.graph.get("edges", self.graph.get("links", []))
+
+        # First: find edges that have observations
+        observed_edges = set()
+        for obs in self.observations:
+            es = obs.get("edge_source", "")
+            et = obs.get("edge_target", "")
+            if es and et:
+                observed_edges.add((es, et))
+
+        # Look for a graph edge matching an observed edge
         for edge in edges:
-            if edge.get("relationship") == "causes":
+            src = edge.get("source", "")
+            tgt = edge.get("target", "")
+            if (src, tgt) in observed_edges:
+                return edge
+
+        # Fall back: any causal edge
+        for edge in edges:
+            if edge.get("relationship") in ("causes", "determines", "produces", "enables"):
                 return edge
         return None
 
     def estimate_effects_from_data(self, source: str, target: str) -> Optional[Tuple[float, float, int]]:
         """Estimate P(target=high | source=high) and P(target=high | source=low) from data.
+
+        Per cycle 189 (F-094): now uses explicit edge_source/edge_target fields
+        in observations (from causal_data_collection.py), plus the original
+        text-search fallback. If observations have source_high/effect_high
+        fields (binarized), uses those directly.
 
         Args:
             source: source node ID
@@ -110,9 +136,17 @@ class DataEstimatedCounterfactual:
             (p_effect_given_cause, p_effect_given_no_cause, n_observations)
             or None if insufficient data
         """
-        # Filter observations that mention the source or target
+        # Filter observations: look for explicit edge_source/edge_target match
+        # OR text mention of source/target
         relevant = []
         for obs in self.observations:
+            # Check explicit edge fields first (cycle 189)
+            es = obs.get("edge_source", "").lower()
+            et = obs.get("edge_target", "").lower()
+            if es == source.lower() and et == target.lower():
+                relevant.append(obs)
+                continue
+            # Fallback: text search
             obs_text = json.dumps(obs).lower()
             if source.lower() in obs_text or target.lower() in obs_text:
                 relevant.append(obs)
@@ -121,12 +155,19 @@ class DataEstimatedCounterfactual:
             # Insufficient data — return None (honest)
             return None
 
-        # Bin observations by source=high vs source=low
-        # (use prediction as a proxy for source state if needed)
+        # Per cycle 189: use explicit source_high/effect_high fields if available
+        cause_high_obs = [o for o in relevant if o.get("source_high")]
+        cause_low_obs = [o for o in relevant if not o.get("source_high")]
+
+        if cause_high_obs and cause_low_obs:
+            p_high = sum(1 for o in cause_high_obs if o.get("effect_high")) / len(cause_high_obs)
+            p_low = sum(1 for o in cause_low_obs if o.get("effect_high")) / len(cause_low_obs)
+            return (p_high, p_low, len(relevant))
+
+        # Fallback: binarize by prediction median
         cause_high = []
         cause_low = []
         for obs in relevant:
-            # Try to extract source value
             # If obs has explicit source state, use it
             # Otherwise, use prediction > median as "high"
             pred = obs.get("prediction", 0)

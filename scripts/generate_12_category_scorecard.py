@@ -76,29 +76,32 @@ def measure_representation() -> dict:
         return {"score": 0, "metric": "causal_edge_ratio", "value": 0.0,
                 "target": 0.30, "measured": False, "reasoning": "No edges in graph"}
 
-    # STRICT causal: genuine cause-effect relationships.
-    # Per F-093 (cycle 188): excludes depends_on (weak structural),
-    # analogous_to (similarity), requires (prerequisite).
-    # Includes verb stems and plural forms.
+    # STRICT causal: genuine cause-effect relationships only.
+    # Per F-093 (cycle 189): removed non-causal verbs flagged by auditor
+    # (provide, exhibit, predict, mark, allow, store, measure, characterize,
+    #  occur, transfer, accommodate, resist, deactivate, align, harness,
+    #  release, absorb, emit, reflect, scatter, trap, bend, limit).
+    # These are descriptive/characterizing, not cause-effect.
     strict_causal_types = {
-        # canonical forms
+        # canonical forms (genuine causal)
         "causes", "produces", "enables", "determines", "prevents",
         "reduces", "increases", "improves", "governs", "drives",
         "accelerates", "transition", "transform", "converts",
-        # stem forms (from extraction)
+        # stem forms (genuine causal only)
         "cause", "produce", "enable", "determine", "prevent",
         "reduce", "increase", "improve", "govern", "drive",
-        "accelerate", "exhibit", "release", "absorb", "emit",
-        "reflect", "scatter", "trap", "bend", "limit", "store",
-        "provide", "harness", "measure", "characterize", "predict",
-        "mark", "occur", "transfer", "accommodate", "resist",
-        "deactivate", "align", "lower", "raise", "enhance",
-        "boost", "suppress", "inhibit", "facilitate", "allow",
+        "accelerate", "lower", "raise", "enhance",
+        "boost", "suppress", "inhibit", "facilitate",
         "permit", "promote",
     }
     # BROAD causal (for reporting only — not scored)
     broad_causal_types = strict_causal_types | {
-        "depends_on", "analogous_to",
+        "depends_on", "analogous_to", "requires",
+        "exhibit", "release", "absorb", "emit",
+        "reflect", "scatter", "trap", "bend", "limit", "store",
+        "provide", "harness", "measure", "characterize", "predict",
+        "mark", "occur", "transfer", "accommodate", "resist",
+        "deactivate", "align", "allow",
     }
 
     strict_causal = sum(1 for e in edges
