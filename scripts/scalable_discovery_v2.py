@@ -175,6 +175,7 @@ class HierarchicalCrossDomainSearch:
         top_k: int = 20,
         subdomain_filter: Optional[str] = None,
         domain_filter: Optional[List[str]] = None,
+        max_pairs_per_subdomain: int = 100,
     ) -> List[CrossDomainCandidate]:
         """Discover cross-domain candidates using the hierarchical index.
 
@@ -183,6 +184,8 @@ class HierarchicalCrossDomainSearch:
             subdomain_filter: if provided, only consider nodes in this sub-domain
                               (across all domains)
             domain_filter: if provided, only consider these domains
+            max_pairs_per_subdomain: cap on pairs examined per (sub_a, sub_b)
+                                     combination (performance guard)
 
         Returns:
             list of CrossDomainCandidate objects, sorted by score
@@ -210,26 +213,68 @@ class HierarchicalCrossDomainSearch:
                     for sb in sub_b:
                         nodes_a = self.by_domain_subdomain[d_a][sa]
                         nodes_b = self.by_domain_subdomain[d_b][sb]
-                        for na in nodes_a:
-                            for nb in nodes_b:
-                                if (na, nb) in self.existing_edges:
-                                    continue
-                                # Compute score
-                                score, shared_prereqs, shared_constraints = \
-                                    self._compute_score(na, nb)
-                                if score > 0:
-                                    candidates.append(CrossDomainCandidate(
-                                        node_a=na,
-                                        node_b=nb,
-                                        domain_a=d_a,
-                                        domain_b=d_b,
-                                        score=score,
-                                        shared_prerequisites=shared_prereqs,
-                                        shared_constraints=shared_constraints,
-                                    ))
+
+                        # PERFORMANCE: skip if either subdomain has no nodes
+                        if not nodes_a or not nodes_b:
+                            continue
+
+                        # PERFORMANCE: if both subdomains are large, use the
+                        # inverted prereq index to find only pairs that share
+                        # at least one prereq (skipping the rest).
+                        if len(nodes_a) * len(nodes_b) > max_pairs_per_subdomain:
+                            # Find candidate pairs via the prereq index
+                            candidate_pairs = self._find_pairs_via_prereq_index(
+                                nodes_a, nodes_b, max_pairs_per_subdomain,
+                            )
+                        else:
+                            candidate_pairs = [(na, nb) for na in nodes_a for nb in nodes_b]
+
+                        for na, nb in candidate_pairs:
+                            if (na, nb) in self.existing_edges:
+                                continue
+                            # Compute score
+                            score, shared_prereqs, shared_constraints = \
+                                self._compute_score(na, nb)
+                            if score > 0:
+                                candidates.append(CrossDomainCandidate(
+                                    node_a=na,
+                                    node_b=nb,
+                                    domain_a=d_a,
+                                    domain_b=d_b,
+                                    score=score,
+                                    shared_prerequisites=shared_prereqs,
+                                    shared_constraints=shared_constraints,
+                                ))
 
         candidates.sort(key=lambda c: c.score, reverse=True)
         return candidates[:top_k]
+
+    def _find_pairs_via_prereq_index(
+        self, nodes_a: List[str], nodes_b: List[str], max_pairs: int,
+    ) -> List[Tuple[str, str]]:
+        """Find node pairs that share at least one prereq (via inverted index).
+
+        This avoids O(N×M) when both lists are large.
+        """
+        # For each node in nodes_a, find its prereqs
+        # Then look up nodes in nodes_b that share any prereq
+        pairs_set = set()
+        nodes_b_set = set(nodes_b)
+
+        for na in nodes_a:
+            node_a = self.node_info.get(na, {})
+            prereqs_a = set(p.lower() for p in node_a.get("prerequisites", []) or [])
+            if not prereqs_a:
+                continue
+            # For each prereq, look up nodes that have it
+            for prereq in prereqs_a:
+                for nb in self.prereq_index.get(prereq, set()):
+                    if nb in nodes_b_set and nb != na:
+                        pairs_set.add((na, nb))
+                        if len(pairs_set) >= max_pairs:
+                            return list(pairs_set)
+
+        return list(pairs_set)
 
     def _compute_score(
         self, na: str, nb: str
