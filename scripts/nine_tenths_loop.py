@@ -114,18 +114,18 @@ def assess_document_parsing() -> Dict:
             with bench_path.open() as f:
                 bench = json.load(f)
             f1 = bench.get("f1", 0.0)
-            if f1 >= 0.75:
+            if f1 >= 0.90:
                 outcome_score = 3
-                details.append(f"Outcome: F1={f1:.4f} >= 0.75 → +3 (DR-49)")
-            elif f1 >= 0.50:
+                details.append(f"Outcome: F1={f1:.4f} >= 0.90 → +3 (DR-49)")
+            elif f1 >= 0.75:
                 outcome_score = 2
-                details.append(f"Outcome: F1={f1:.4f} in [0.50, 0.75) → +2 (DR-49)")
-            elif f1 >= 0.25:
+                details.append(f"Outcome: F1={f1:.4f} in [0.75, 0.90) → +2 (DR-49)")
+            elif f1 >= 0.50:
                 outcome_score = 1
-                details.append(f"Outcome: F1={f1:.4f} in [0.25, 0.50) → +1 (DR-49)")
+                details.append(f"Outcome: F1={f1:.4f} in [0.50, 0.75) → +1 (DR-49)")
             else:
                 outcome_score = 0
-                details.append(f"Outcome: F1={f1:.4f} < 0.25 → +0 (DR-49)")
+                details.append(f"Outcome: F1={f1:.4f} < 0.50 → +0 (DR-49)")
         except Exception as e:
             details.append(f"Outcome: benchmark unreadable ({e}) → +0")
     else:
@@ -193,18 +193,18 @@ def assess_entity_extraction() -> Dict:
             with bench_path.open() as f:
                 bench = json.load(f)
             f1 = bench.get("f1", 0.0)
-            if f1 >= 0.75:
+            if f1 >= 0.90:
                 outcome_score = 3
-                details.append(f"Outcome: F1={f1:.4f} >= 0.75 → +3 (DR-49)")
-            elif f1 >= 0.50:
+                details.append(f"Outcome: F1={f1:.4f} >= 0.90 → +3 (DR-49)")
+            elif f1 >= 0.75:
                 outcome_score = 2
-                details.append(f"Outcome: F1={f1:.4f} in [0.50, 0.75) → +2 (DR-49)")
-            elif f1 >= 0.25:
+                details.append(f"Outcome: F1={f1:.4f} in [0.75, 0.90) → +2 (DR-49)")
+            elif f1 >= 0.50:
                 outcome_score = 1
-                details.append(f"Outcome: F1={f1:.4f} in [0.25, 0.50) → +1 (DR-49)")
+                details.append(f"Outcome: F1={f1:.4f} in [0.50, 0.75) → +1 (DR-49)")
             else:
                 outcome_score = 0
-                details.append(f"Outcome: F1={f1:.4f} < 0.25 → +0 (DR-49)")
+                details.append(f"Outcome: F1={f1:.4f} < 0.50 → +0 (DR-49)")
         except Exception as e:
             details.append(f"Outcome: benchmark unreadable ({e}) → +0")
     else:
@@ -280,18 +280,18 @@ def assess_relation_extraction() -> Dict:
             with benchmark_path.open() as f:
                 bench = json.load(f)
             f1 = bench.get("f1", 0.0)
-            if f1 >= 0.75:
+            if f1 >= 0.90:
                 outcome_score = 3
-                details.append(f"Outcome: F1={f1:.4f} >= 0.75 → +3 (DR-49)")
-            elif f1 >= 0.50:
+                details.append(f"Outcome: F1={f1:.4f} >= 0.90 → +3 (DR-49)")
+            elif f1 >= 0.75:
                 outcome_score = 2
-                details.append(f"Outcome: F1={f1:.4f} in [0.50, 0.75) → +2 (DR-49)")
-            elif f1 >= 0.25:
+                details.append(f"Outcome: F1={f1:.4f} in [0.75, 0.90) → +2 (DR-49)")
+            elif f1 >= 0.50:
                 outcome_score = 1
-                details.append(f"Outcome: F1={f1:.4f} in [0.25, 0.50) → +1 (DR-49)")
+                details.append(f"Outcome: F1={f1:.4f} in [0.50, 0.75) → +1 (DR-49)")
             else:
                 outcome_score = 0
-                details.append(f"Outcome: F1={f1:.4f} < 0.25 → +0 (DR-49)")
+                details.append(f"Outcome: F1={f1:.4f} < 0.50 → +0 (DR-49)")
         except Exception as e:
             details.append(f"Outcome: benchmark exists but unreadable ({e}) → +0")
     else:
@@ -347,18 +347,18 @@ def assess_mechanism_extraction() -> Dict:
             with bench_path.open() as f:
                 bench = json.load(f)
             f1 = bench.get("f1", 0.0)
-            if f1 >= 0.75:
+            if f1 >= 0.90:
                 outcome_score = 3
-                details.append(f"Outcome: F1={f1:.4f} >= 0.75 → +3 (DR-49)")
-            elif f1 >= 0.50:
+                details.append(f"Outcome: F1={f1:.4f} >= 0.90 → +3 (DR-49)")
+            elif f1 >= 0.75:
                 outcome_score = 2
-                details.append(f"Outcome: F1={f1:.4f} in [0.50, 0.75) → +2 (DR-49)")
-            elif f1 >= 0.25:
+                details.append(f"Outcome: F1={f1:.4f} in [0.75, 0.90) → +2 (DR-49)")
+            elif f1 >= 0.50:
                 outcome_score = 1
-                details.append(f"Outcome: F1={f1:.4f} in [0.25, 0.50) → +1 (DR-49)")
+                details.append(f"Outcome: F1={f1:.4f} in [0.50, 0.75) → +1 (DR-49)")
             else:
                 outcome_score = 0
-                details.append(f"Outcome: F1={f1:.4f} < 0.25 → +0 (DR-49)")
+                details.append(f"Outcome: F1={f1:.4f} < 0.50 → +0 (DR-49)")
         except Exception as e:
             details.append(f"Outcome: benchmark unreadable ({e}) → +0")
     else:
@@ -598,18 +598,18 @@ def assess_discovery_layer() -> Dict:
             tp = bench.get("true_positives", 0)
             total = bench.get("total_blind_tests", 0)
             # F1-based scoring (honest — balances precision and recall)
-            if f1 >= 0.50:
+            if f1 >= 0.90:
                 outcome_score = 3
-                details.append(f"Outcome: F1={f1:.4f} >= 0.50 (P={precision:.4f}, R={recall:.4f}, {tp}/{total}) → +3 (DR-49, F-073 fix)")
-            elif f1 >= 0.25:
+                details.append(f"Outcome: F1={f1:.4f} >= 0.90 (P={precision:.4f}, R={recall:.4f}, {tp}/{total}) → +3 (DR-49, F-073 fix)")
+            elif f1 >= 0.75:
                 outcome_score = 2
-                details.append(f"Outcome: F1={f1:.4f} in [0.25, 0.50) (P={precision:.4f}, R={recall:.4f}, {tp}/{total}) → +2 (DR-49, F-073 fix)")
-            elif f1 >= 0.10:
+                details.append(f"Outcome: F1={f1:.4f} in [0.75, 0.90) (P={precision:.4f}, R={recall:.4f}, {tp}/{total}) → +2 (DR-49, F-073 fix)")
+            elif f1 >= 0.50:
                 outcome_score = 1
-                details.append(f"Outcome: F1={f1:.4f} in [0.10, 0.25) (P={precision:.4f}, R={recall:.4f}, {tp}/{total}) → +1 (DR-49, F-073 fix)")
+                details.append(f"Outcome: F1={f1:.4f} in [0.50, 0.75) (P={precision:.4f}, R={recall:.4f}, {tp}/{total}) → +1 (DR-49, F-073 fix)")
             else:
                 outcome_score = 0
-                details.append(f"Outcome: F1={f1:.4f} < 0.10 (P={precision:.4f}, R={recall:.4f}, {tp}/{total}) → +0 (DR-49, F-073 fix)")
+                details.append(f"Outcome: F1={f1:.4f} < 0.50 (P={precision:.4f}, R={recall:.4f}, {tp}/{total}) → +0 (DR-49, F-073 fix)")
         except Exception as e:
             details.append(f"Outcome: benchmark unreadable ({e}) → +0")
     else:
