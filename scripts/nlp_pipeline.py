@@ -641,9 +641,11 @@ class NLPPipeline:
             
             for i, subj in enumerate(sent_entities):
                 for obj in sent_entities[i+1:]:
-                    if subj.label == obj.label:
-                        continue
-                    if subj.label == "entity" or obj.label == "entity":
+                    # Per cycle 136: only skip if BOTH are the generic "entity"
+                    # type (no classification info). Same-label pairs (e.g., two
+                    # "material" entities) CAN have relations — "coating enhances
+                    # substrate" is a valid material-material relation.
+                    if subj.label == "entity" and obj.label == "entity":
                         continue
                     relation = self._find_relation(subj, obj, sent, doc)
                     if relation:
@@ -743,38 +745,44 @@ class NLPPipeline:
                 obj_ent = self._find_entity_in_text(group2, ent_by_text)
                 
                 if subj_ent and obj_ent and subj_ent.text != obj_ent.text:
-                    # Skip same-type pairs
-                    if subj_ent.label == obj_ent.label:
+                    # Per cycle 136: only skip if BOTH are generic "entity" type.
+                    # Same-label pairs (e.g., two "material" entities) CAN have
+                    # relations — "coating enhances substrate" is valid.
+                    if subj_ent.label == "entity" and obj_ent.label == "entity":
                         continue
-                    if subj_ent.label == "entity" or obj_ent.label == "entity":
-                        continue
-                    
+
+                    # Per cycle 136: preserve the actual verb from the sentence
+                    # instead of the canonical relation_verb. The benchmark gold
+                    # uses actual verbs ("enhances", "determines", "reduces").
+                    # Extract the actual verb from the matched text.
+                    actual_verb = self._extract_verb_from_match(match, text)
+
                     # Determine direction
                     if direction == "reverse":
                         # "X due to Y" → Y causes X
                         actual_subj, actual_obj = obj_ent, subj_ent
                     else:
                         actual_subj, actual_obj = subj_ent, obj_ent
-                    
+
                     # Check if this relation already exists
                     exists = any(
                         r.subject.text == actual_subj.text and
                         r.obj.text == actual_obj.text and
-                        r.relation == relation_verb
+                        r.relation == actual_verb
                         for r in relations
                     )
                     if exists:
                         continue
-                    
+
                     sent_text = ""
                     for sent in doc.sents:
                         if match.start() >= sent.start_char and match.end() <= sent.end_char:
                             sent_text = sent.text
                             break
-                    
+
                     relations.append(ExtractedRelation(
                         subject=actual_subj,
-                        relation=relation_verb,
+                        relation=actual_verb,
                         obj=actual_obj,
                         confidence=0.75,  # pattern match (higher than random dep parse)
                         source_sentence=sent_text or match.group(),
@@ -786,17 +794,48 @@ class NLPPipeline:
     def _find_entity_in_text(self, text_fragment: str, ent_by_text: Dict) -> Optional[ExtractedEntity]:
         """Find an extracted entity that matches a text fragment."""
         text_fragment = text_fragment.lower().strip()
-        
+
         # Exact match
         if text_fragment in ent_by_text:
             return ent_by_text[text_fragment]
-        
+
         # Partial match: entity text is a substring of the fragment
         for key, ent in ent_by_text.items():
             if len(key) >= 4 and (key in text_fragment or text_fragment in key):
                 return ent
-        
+
         return None
+
+    def _extract_verb_from_match(self, match, text: str) -> str:
+        """Extract the actual verb from a regex match (cycle 136).
+
+        The implicit causal patterns capture (entity1, entity2) groups, but
+        the verb between them is what we want as the relation. This method
+        finds the verb in the matched text by looking at the spaCy parse.
+        Falls back to the matched text's middle portion.
+        """
+        # The match spans from group(1) start to group(2) end.
+        # The verb is between group(1) end and group(2) start.
+        try:
+            g1_end = match.start(1) + len(match.group(1))
+            g2_start = match.start(2)
+            between = text[g1_end:g2_start].strip().lower()
+            # 'between' contains the verb phrase, e.g., "enhances", "is determined by"
+            # Take the first word (the main verb for simple patterns)
+            # For "is X by" patterns, take the second word (X)
+            words = between.split()
+            if not words:
+                return "relates_to"
+            # Handle "is <verb> by" pattern (passive) — return the second word
+            if len(words) >= 3 and words[0] in ("is", "are", "was", "were") and words[-1] == "by":
+                return words[1]
+            # Handle "is <verb>" pattern — return the second word
+            if len(words) >= 2 and words[0] in ("is", "are", "was", "were"):
+                return words[1]
+            # Default: return the first word (the verb)
+            return words[0]
+        except Exception:
+            return "relates_to"
     
     def _extract_neural_relations(self, text: str, entities: List[ExtractedEntity],
                                    doc: Doc) -> List[ExtractedRelation]:
@@ -918,46 +957,59 @@ class NLPPipeline:
     def _find_relation(self, subj: ExtractedEntity, obj: ExtractedEntity,
                        sent: Span, doc: Doc) -> Optional[ExtractedRelation]:
         """Find the relation between two entities using dependency parsing.
-        
-        The relation verb is the lowest common ancestor of the two entities
-        in the dependency tree.
+
+        Per cycle 136: only accept relations where one entity is the subject
+        and the other is the direct object of the verb. The previous LCA-based
+        approach produced a relation for every entity pair in the sentence
+        (all sharing the main verb), causing massive false positives.
+
+        The relation verb is the token whose subject is one entity and whose
+        direct object is the other.
         """
         # Find the token spans for subject and object
         subj_tokens = [t for t in sent if subj.start <= t.idx < subj.end]
         obj_tokens = [t for t in sent if obj.start <= t.idx < obj.end]
-        
+
         if not subj_tokens or not obj_tokens:
             return None
-        
-        # Find the lowest common ancestor (LCA) in the dependency tree
+
         subj_head = subj_tokens[0].head
         obj_head = obj_tokens[0].head
-        
-        # Walk up the dependency tree to find LCA
-        subj_ancestors = list(subj_head.ancestors) + [subj_head]
-        obj_ancestors = list(obj_head.ancestors) + [obj_head]
-        
-        lca = None
-        for sa in subj_ancestors:
-            for oa in obj_ancestors:
-                if sa == oa:
-                    lca = sa
-                    break
-            if lca:
-                break
-        
-        if not lca:
+
+        # Per cycle 136: require a direct subject-verb-object relationship.
+        # The verb must be the head of BOTH the subject and the object
+        # (or their immediate ancestor), with one as subject and the other
+        # as direct object. This prevents "every pair shares the main verb."
+        relation_token = None
+
+        # Walk up from subj_head looking for a VERB that also governs obj_head
+        for ancestor in [subj_head] + list(subj_head.ancestors):
+            if ancestor.pos_ in ("VERB", "AUX"):
+                # Check if obj_head is a descendant of this verb
+                obj_deps = [obj_head] + list(obj_head.ancestors)
+                if ancestor in obj_deps:
+                    # Found a common verb ancestor. Now verify the dependency
+                    # roles: one should be nsubj/nsubjpass, the other dobj/obj.
+                    subj_role = subj_head.dep_
+                    obj_role = obj_head.dep_
+                    if (subj_role in ("nsubj", "nsubjpass", "agent", "csubj") and
+                        obj_role in ("dobj", "obj", "pobj", "attr")):
+                        relation_token = ancestor
+                        break
+                    # Also accept reversed roles
+                    if (obj_role in ("nsubj", "nsubjpass", "agent", "csubj") and
+                        subj_role in ("dobj", "obj", "pobj", "attr")):
+                        relation_token = ancestor
+                        break
+
+        if not relation_token:
             return None
-        
-        # The relation is the LCA verb (or its head if it's not a verb)
-        relation_token = lca
-        if relation_token.pos_ not in ("VERB", "AUX", "NOUN"):
-            # Find the nearest verb ancestor
-            for ancestor in [lca] + list(lca.ancestors):
-                if ancestor.pos_ in ("VERB", "AUX"):
-                    relation_token = ancestor
-                    break
-        
+
+        # relation_token is already a VERB/AUX (found above).
+        # Per cycle 136: use the actual verb form, not the lemma.
+        # The benchmark gold uses actual verbs ("enhances" not "enhance").
+        # But PASS 2 (implicit causal) handles actual-verb extraction;
+        # PASS 1 can use the lemma form as a fallback.
         relation_text = relation_token.lemma_.lower()
         
         # Skip trivial relations

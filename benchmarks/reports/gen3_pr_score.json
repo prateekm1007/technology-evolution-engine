@@ -1,14 +1,14 @@
 {
   "benchmark": "gen3_relation_extraction_pr",
-  "timestamp": "2026-08-06T02:48:25Z",
+  "timestamp": "2026-08-06T09:55:01Z",
   "sentences": 25,
   "gold_triples": 29,
-  "true_positives": 1,
-  "false_positives": 6,
-  "false_negatives": 28,
-  "precision": 0.1429,
-  "recall": 0.0345,
-  "f1": 0.0556,
+  "true_positives": 10,
+  "false_positives": 30,
+  "false_negatives": 19,
+  "precision": 0.25,
+  "recall": 0.3448,
+  "f1": 0.2899,
   "per_sentence": [
     {
       "sentence_idx": 0,
@@ -30,9 +30,9 @@
     {
       "sentence_idx": 1,
       "gold_count": 1,
-      "pred_count": 0,
+      "pred_count": 1,
       "true_positives": 0,
-      "false_positives": 0,
+      "false_positives": 1,
       "false_negatives": 1,
       "matched_gold": [],
       "missed_gold": [
@@ -42,14 +42,20 @@
           "interface"
         ]
       ],
-      "wrong_preds": []
+      "wrong_preds": [
+        {
+          "subject": "electric equivalent circuit",
+          "relation": "simulate",
+          "object": "electrode electrolyte interface"
+        }
+      ]
     },
     {
       "sentence_idx": 2,
       "gold_count": 1,
-      "pred_count": 0,
+      "pred_count": 3,
       "true_positives": 0,
-      "false_positives": 0,
+      "false_positives": 3,
       "false_negatives": 1,
       "matched_gold": [],
       "missed_gold": [
@@ -59,14 +65,30 @@
           "energy_consumption"
         ]
       ],
-      "wrong_preds": []
+      "wrong_preds": [
+        {
+          "subject": "hard",
+          "relation": "minimize",
+          "object": "convex optimal control formulation"
+        },
+        {
+          "subject": "convex optimal control formulation",
+          "relation": "minimize",
+          "object": "total energy consumption"
+        },
+        {
+          "subject": "convex optimal control formulation",
+          "relation": "minimize",
+          "object": "power output"
+        }
+      ]
     },
     {
       "sentence_idx": 3,
       "gold_count": 1,
-      "pred_count": 0,
+      "pred_count": 3,
       "true_positives": 0,
-      "false_positives": 0,
+      "false_positives": 3,
       "false_negatives": 1,
       "matched_gold": [],
       "missed_gold": [
@@ -76,14 +98,30 @@
           "baseline"
         ]
       ],
-      "wrong_preds": []
+      "wrong_preds": [
+        {
+          "subject": "low-pass filter",
+          "relation": "compare",
+          "object": "optimal controller"
+        },
+        {
+          "subject": "optimal controller",
+          "relation": "compare",
+          "object": "all-battery baseline"
+        },
+        {
+          "subject": "optimal controller",
+          "relation": "compare",
+          "object": "numerical simulations"
+        }
+      ]
     },
     {
       "sentence_idx": 4,
       "gold_count": 1,
-      "pred_count": 0,
+      "pred_count": 1,
       "true_positives": 0,
-      "false_positives": 0,
+      "false_positives": 1,
       "false_negatives": 1,
       "matched_gold": [],
       "missed_gold": [
@@ -93,29 +131,52 @@
           "temperatures"
         ]
       ],
-      "wrong_preds": []
+      "wrong_preds": [
+        {
+          "subject": "Passive",
+          "relation": "enables",
+          "object": "sub"
+        }
+      ]
     },
     {
       "sentence_idx": 5,
       "gold_count": 2,
-      "pred_count": 0,
-      "true_positives": 0,
-      "false_positives": 0,
-      "false_negatives": 2,
-      "matched_gold": [],
-      "missed_gold": [
+      "pred_count": 3,
+      "true_positives": 1,
+      "false_positives": 2,
+      "false_negatives": 1,
+      "matched_gold": [
         [
           "surface",
           "reflects",
           "solar_radiation"
-        ],
+        ]
+      ],
+      "missed_gold": [
         [
           "surface",
           "emits",
           "thermal_radiation"
         ]
       ],
-      "wrong_preds": []
+      "wrong_preds": [
+        {
+          "subject": "metamaterial surface",
+          "relation": "reflect",
+          "object": "solar radiation"
+        },
+        {
+          "subject": "metamaterial surface",
+          "relation": "reflect",
+          "object": "thermal radiation"
+        },
+        {
+          "subject": "metamaterial surface",
+          "relation": "reflect",
+          "object": "atmospheric window"
+        }
+      ]
     },
     {
       "sentence_idx": 6,
@@ -137,47 +198,53 @@
     {
       "sentence_idx": 7,
       "gold_count": 1,
-      "pred_count": 2,
-      "true_positives": 0,
-      "false_positives": 2,
-      "false_negatives": 1,
-      "matched_gold": [],
-      "missed_gold": [
+      "pred_count": 1,
+      "true_positives": 1,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "matched_gold": [
         [
           "bismuth_telluride",
           "exhibits",
           "seebeck_coefficient"
         ]
       ],
+      "missed_gold": [],
       "wrong_preds": [
         {
           "subject": "Bismuth",
-          "relation": "exhibit",
-          "object": "near"
-        },
-        {
-          "subject": "Bismuth",
-          "relation": "exhibit",
-          "object": "room"
+          "relation": "exhibits",
+          "object": "Seebeck"
         }
       ]
     },
     {
       "sentence_idx": 8,
       "gold_count": 1,
-      "pred_count": 0,
-      "true_positives": 0,
-      "false_positives": 0,
-      "false_negatives": 1,
-      "matched_gold": [],
-      "missed_gold": [
+      "pred_count": 2,
+      "true_positives": 1,
+      "false_positives": 1,
+      "false_negatives": 0,
+      "matched_gold": [
         [
           "carrier_concentration",
           "determines",
           "efficiency"
         ]
       ],
-      "wrong_preds": []
+      "missed_gold": [],
+      "wrong_preds": [
+        {
+          "subject": "carrier concentration",
+          "relation": "determine",
+          "object": "thermoelectric efficiency"
+        },
+        {
+          "subject": "carrier concentration",
+          "relation": "determines",
+          "object": "thermoelectric efficiency"
+        }
+      ]
     },
     {
       "sentence_idx": 9,
@@ -215,26 +282,42 @@
     {
       "sentence_idx": 10,
       "gold_count": 1,
-      "pred_count": 0,
-      "true_positives": 0,
-      "false_positives": 0,
-      "false_negatives": 1,
-      "matched_gold": [],
-      "missed_gold": [
+      "pred_count": 3,
+      "true_positives": 1,
+      "false_positives": 2,
+      "false_negatives": 0,
+      "matched_gold": [
         [
           "lithium_plating",
           "causes",
           "capacity_fade"
         ]
       ],
-      "wrong_preds": []
+      "missed_gold": [],
+      "wrong_preds": [
+        {
+          "subject": "Lithium plating",
+          "relation": "cause",
+          "object": "graphite anodes"
+        },
+        {
+          "subject": "Lithium plating",
+          "relation": "cause",
+          "object": "fast charging"
+        },
+        {
+          "subject": "Lithium plating",
+          "relation": "causes",
+          "object": "fade"
+        }
+      ]
     },
     {
       "sentence_idx": 11,
       "gold_count": 1,
-      "pred_count": 2,
+      "pred_count": 0,
       "true_positives": 0,
-      "false_positives": 2,
+      "false_positives": 0,
       "false_negatives": 1,
       "matched_gold": [],
       "missed_gold": [
@@ -244,25 +327,14 @@
           "energy_density"
         ]
       ],
-      "wrong_preds": [
-        {
-          "subject": "density",
-          "relation": "enable",
-          "object": "Solid-state electrolytes"
-        },
-        {
-          "subject": "density",
-          "relation": "enable",
-          "object": "liquid electrolytes"
-        }
-      ]
+      "wrong_preds": []
     },
     {
       "sentence_idx": 12,
       "gold_count": 1,
-      "pred_count": 0,
+      "pred_count": 3,
       "true_positives": 0,
-      "false_positives": 0,
+      "false_positives": 3,
       "false_negatives": 1,
       "matched_gold": [],
       "missed_gold": [
@@ -272,7 +344,23 @@
           "short_circuits"
         ]
       ],
-      "wrong_preds": []
+      "wrong_preds": [
+        {
+          "subject": "Dendrite growth",
+          "relation": "penetrate",
+          "object": "separator"
+        },
+        {
+          "subject": "Dendrite growth",
+          "relation": "penetrate",
+          "object": "internal short circuits"
+        },
+        {
+          "subject": "separator",
+          "relation": "causes",
+          "object": "internal short circuits"
+        }
+      ]
     },
     {
       "sentence_idx": 13,
@@ -299,26 +387,42 @@
     {
       "sentence_idx": 14,
       "gold_count": 1,
-      "pred_count": 0,
-      "true_positives": 0,
-      "false_positives": 0,
-      "false_negatives": 1,
-      "matched_gold": [],
-      "missed_gold": [
+      "pred_count": 3,
+      "true_positives": 1,
+      "false_positives": 2,
+      "false_negatives": 0,
+      "matched_gold": [
         [
           "stefan_boltzmann_law",
           "governs",
           "heat_transfer"
         ]
       ],
-      "wrong_preds": []
+      "missed_gold": [],
+      "wrong_preds": [
+        {
+          "subject": "radiative heat transfer",
+          "relation": "govern",
+          "object": "Stefan-Boltzmann law"
+        },
+        {
+          "subject": "Stefan-Boltzmann law",
+          "relation": "govern",
+          "object": "blackbody surface"
+        },
+        {
+          "subject": "Stefan-Boltzmann law",
+          "relation": "governs",
+          "object": "radiative heat transfer"
+        }
+      ]
     },
     {
       "sentence_idx": 15,
       "gold_count": 1,
-      "pred_count": 0,
+      "pred_count": 1,
       "true_positives": 0,
-      "false_positives": 0,
+      "false_positives": 1,
       "false_negatives": 1,
       "matched_gold": [],
       "missed_gold": [
@@ -328,7 +432,13 @@
           "heat_transfer"
         ]
       ],
-      "wrong_preds": []
+      "wrong_preds": [
+        {
+          "subject": "Convective heat transfer increases",
+          "relation": "increases",
+          "object": "fluid velocity"
+        }
+      ]
     },
     {
       "sentence_idx": 16,
@@ -350,19 +460,35 @@
     {
       "sentence_idx": 17,
       "gold_count": 1,
-      "pred_count": 0,
-      "true_positives": 0,
-      "false_positives": 0,
-      "false_negatives": 1,
-      "matched_gold": [],
-      "missed_gold": [
+      "pred_count": 3,
+      "true_positives": 1,
+      "false_positives": 2,
+      "false_negatives": 0,
+      "matched_gold": [
         [
           "bandgap",
           "determines",
           "absorption_edge"
         ]
       ],
-      "wrong_preds": []
+      "missed_gold": [],
+      "wrong_preds": [
+        {
+          "subject": "bandgap",
+          "relation": "determine",
+          "object": "semiconductor"
+        },
+        {
+          "subject": "bandgap",
+          "relation": "determines",
+          "object": "edge"
+        },
+        {
+          "subject": "edge",
+          "relation": "of",
+          "object": "semiconductor"
+        }
+      ]
     },
     {
       "sentence_idx": 18,
@@ -406,9 +532,9 @@
     {
       "sentence_idx": 20,
       "gold_count": 1,
-      "pred_count": 0,
+      "pred_count": 2,
       "true_positives": 0,
-      "false_positives": 0,
+      "false_positives": 2,
       "false_negatives": 1,
       "matched_gold": [],
       "missed_gold": [
@@ -418,24 +544,51 @@
           "water_transport"
         ]
       ],
-      "wrong_preds": []
+      "wrong_preds": [
+        {
+          "subject": "Capillary action",
+          "relation": "drive",
+          "object": "water transport"
+        },
+        {
+          "subject": "Capillary action",
+          "relation": "drive",
+          "object": "hydrophilic membrane"
+        }
+      ]
     },
     {
       "sentence_idx": 21,
       "gold_count": 1,
-      "pred_count": 0,
-      "true_positives": 0,
-      "false_positives": 0,
-      "false_negatives": 1,
-      "matched_gold": [],
-      "missed_gold": [
+      "pred_count": 3,
+      "true_positives": 1,
+      "false_positives": 2,
+      "false_negatives": 0,
+      "matched_gold": [
         [
           "activation_energy",
           "determines",
           "reaction_rate"
         ]
       ],
-      "wrong_preds": []
+      "missed_gold": [],
+      "wrong_preds": [
+        {
+          "subject": "activation energy",
+          "relation": "determine",
+          "object": "reaction rate"
+        },
+        {
+          "subject": "activation energy",
+          "relation": "determine",
+          "object": "given temperature"
+        },
+        {
+          "subject": "activation energy",
+          "relation": "determines",
+          "object": "reaction rate"
+        }
+      ]
     },
     {
       "sentence_idx": 22,
@@ -462,39 +615,66 @@
     {
       "sentence_idx": 23,
       "gold_count": 1,
-      "pred_count": 0,
-      "true_positives": 0,
-      "false_positives": 0,
-      "false_negatives": 1,
-      "matched_gold": [],
-      "missed_gold": [
+      "pred_count": 2,
+      "true_positives": 1,
+      "false_positives": 1,
+      "false_negatives": 0,
+      "matched_gold": [
         [
           "roughness",
           "enhances",
           "adhesion"
         ]
       ],
-      "wrong_preds": []
+      "missed_gold": [],
+      "wrong_preds": [
+        {
+          "subject": "Surface roughness",
+          "relation": "enhance",
+          "object": "coating"
+        },
+        {
+          "subject": "Surface roughness",
+          "relation": "enhances",
+          "object": "adhesion"
+        }
+      ]
     },
     {
       "sentence_idx": 24,
       "gold_count": 1,
-      "pred_count": 0,
-      "true_positives": 0,
-      "false_positives": 0,
-      "false_negatives": 1,
-      "matched_gold": [],
-      "missed_gold": [
+      "pred_count": 3,
+      "true_positives": 1,
+      "false_positives": 2,
+      "false_negatives": 0,
+      "matched_gold": [
         [
           "thermal_expansion",
           "causes",
           "changes"
         ]
       ],
-      "wrong_preds": []
+      "missed_gold": [],
+      "wrong_preds": [
+        {
+          "subject": "Thermal expansion",
+          "relation": "cause",
+          "object": "dimensional changes"
+        },
+        {
+          "subject": "Thermal expansion",
+          "relation": "cause",
+          "object": "structural material"
+        },
+        {
+          "subject": "Thermal expansion",
+          "relation": "causes",
+          "object": "dimensional changes"
+        }
+      ]
     }
   ],
-  "outcome_points": 0,
+  "outcome_points": 1,
   "infra_score": 5,
-  "total_score": 5
+  "total_score": 6
 }
