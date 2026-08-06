@@ -306,6 +306,53 @@ class NLPPipeline:
         self._compile_patterns()
         self._entity_aliases = {}
     
+    def _merge_compound_nouns(self, entities: List[ExtractedEntity], doc: Doc, text: str) -> List[ExtractedEntity]:
+        """Merge adjacent nouns into compound entities (cycle 142, Phase 2).
+
+        spaCy sometimes tags the second word of a compound noun as ADV or
+        another non-noun POS (e.g., "Bismuth telluride" — "telluride" is
+        tagged ADV). This method merges adjacent entities that form compound
+        nouns, and also merges entities that are immediately adjacent in
+        the text and both start with capital letters (proper noun compounds).
+        """
+        if len(entities) <= 1:
+            return entities
+
+        # Sort by start position
+        entities = sorted(entities, key=lambda e: e.start)
+
+        merged = []
+        i = 0
+        while i < len(entities):
+            current = entities[i]
+            # Check if the next entity is immediately adjacent (within 1 char)
+            if i + 1 < len(entities):
+                next_ent = entities[i + 1]
+                gap = next_ent.start - current.end
+                # Merge if gap is 0-1 chars (space) and both are short enough
+                if gap <= 1 and len(current.text) + len(next_ent.text) <= 50:
+                    # Check if the merged text forms a reasonable compound
+                    # (both parts are noun-like)
+                    merged_text = text[current.start:next_ent.end].strip()
+                    # Only merge if neither part is a stopword
+                    if (current.text.lower() not in ENTITY_STOPWORDS and
+                        next_ent.text.lower() not in ENTITY_STOPWORDS and
+                        len(current.text) >= 2 and len(next_ent.text) >= 2):
+                        merged_entity = ExtractedEntity(
+                            text=merged_text,
+                            label=current.label,  # keep the first entity's label
+                            start=current.start,
+                            end=next_ent.end,
+                            confidence=min(current.confidence, next_ent.confidence),
+                        )
+                        merged.append(merged_entity)
+                        i += 2
+                        continue
+            merged.append(current)
+            i += 1
+
+        return merged
+
     def _resolve_coreference(self, doc: Doc, entities: List[ExtractedEntity]) -> List[ExtractedEntity]:
         """Resolve coreference using string matching (cycle 103).
         
@@ -552,6 +599,23 @@ class NLPPipeline:
             )
             entities.append(entity)
             seen_spans.add((nc_start, nc_end))
+
+        # Per cycle 142 (Phase 2): compound-noun merge. spaCy sometimes tags
+        # the second word of a compound noun as ADV (e.g., "Bismuth telluride"
+        # — "telluride" is tagged ADV, so the noun chunk is just "Bismuth").
+        # This step merges adjacent nouns/near-nouns into compound entities.
+        # Also filters out single-word prepositions ("near", "by", "for")
+        # that slip through as entities.
+        entities = self._merge_compound_nouns(entities, doc, text)
+        entities = [e for e in entities if e.text.lower() not in
+                    {"near", "by", "for", "of", "in", "on", "at", "to", "from",
+                     "with", "and", "or", "but", "as", "is", "are", "was", "were",
+                     "be", "been", "being", "have", "has", "had", "do", "does",
+                     "did", "will", "would", "could", "should", "may", "might",
+                     "can", "shall", "must", "this", "that", "these", "those",
+                     "room", "time", "way", "case", "part", "number", "use",
+                     "used", "using", "via", "per", "than", "then", "here",
+                     "there", "where", "when", "how", "why", "what", "which"}]
 
         # 3. Coreference resolution (cycle 103)
         # Merge entities that refer to the same thing across sentences

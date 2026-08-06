@@ -1,14 +1,14 @@
 {
   "benchmark": "gen3_relation_extraction_pr",
-  "timestamp": "2026-08-06T10:35:53Z",
+  "timestamp": "2026-08-06T11:37:35Z",
   "sentences": 25,
   "gold_triples": 29,
   "true_positives": 19,
-  "false_positives": 13,
+  "false_positives": 11,
   "false_negatives": 10,
-  "precision": 0.5938,
+  "precision": 0.6333,
   "recall": 0.6552,
-  "f1": 0.623,
+  "f1": 0.6441,
   "per_sentence": [
     {
       "sentence_idx": 0,
@@ -73,14 +73,14 @@
       ],
       "wrong_preds": [
         {
-          "subject": "hard",
+          "subject": "convex optimal control formulation",
           "relation": "minimize",
-          "object": "convex optimal control formulation"
+          "object": "total energy consumption"
         },
         {
           "subject": "convex optimal control formulation",
           "relation": "minimize",
-          "object": "total energy consumption"
+          "object": "hard"
         }
       ]
     },
@@ -103,7 +103,7 @@
         {
           "subject": "optimal controller",
           "relation": "compared",
-          "object": "low-pass filter"
+          "object": "a low-pass"
         }
       ]
     },
@@ -206,7 +206,7 @@
         {
           "subject": "Bismuth",
           "relation": "exhibits",
-          "object": "high Seebeck coefficient"
+          "object": "a high Seebeck"
         }
       ]
     },
@@ -372,9 +372,9 @@
     {
       "sentence_idx": 14,
       "gold_count": 1,
-      "pred_count": 2,
+      "pred_count": 1,
       "true_positives": 1,
-      "false_positives": 1,
+      "false_positives": 0,
       "false_negatives": 0,
       "matched_gold": [
         [
@@ -386,14 +386,9 @@
       "missed_gold": [],
       "wrong_preds": [
         {
-          "subject": "radiative heat transfer",
-          "relation": "govern",
-          "object": "Stefan-Boltzmann law"
-        },
-        {
           "subject": "Stefan-Boltzmann law",
           "relation": "governs",
-          "object": "radiative heat transfer"
+          "object": "radiative heat"
         }
       ]
     },
@@ -480,9 +475,9 @@
     {
       "sentence_idx": 19,
       "gold_count": 2,
-      "pred_count": 3,
+      "pred_count": 2,
       "true_positives": 1,
-      "false_positives": 2,
+      "false_positives": 1,
       "false_negatives": 1,
       "matched_gold": [
         [
@@ -500,19 +495,14 @@
       ],
       "wrong_preds": [
         {
-          "subject": "salt",
+          "subject": "Reverse osmosis membranes",
           "relation": "reject",
-          "object": "Reverse osmosis membranes"
+          "object": "salt ions"
         },
         {
           "subject": "Reverse osmosis membranes",
           "relation": "reject",
           "object": "water permeation"
-        },
-        {
-          "subject": "Reverse osmosis membranes",
-          "relation": "reject",
-          "object": "salt"
         }
       ]
     },
