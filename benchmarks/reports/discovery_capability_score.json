@@ -1,36 +1,36 @@
 {
   "benchmark": "discovery_capability",
-  "timestamp": "2026-08-06T11:55:30Z",
+  "timestamp": "2026-08-06T14:33:13Z",
   "total_gold_discoveries": 5,
-  "true_positives": 4,
+  "true_positives": 1,
   "false_positives": 0,
-  "false_negatives": 1,
+  "false_negatives": 4,
   "precision": 1.0,
-  "recall": 0.8,
-  "f1": 0.8889,
-  "outcome_points": 3,
+  "recall": 0.2,
+  "f1": 0.3333,
+  "outcome_points": 1,
   "per_discovery": [
     {
       "id": "DISC-GOLD-001",
       "literature_a": "mycelium biomineralization",
       "literature_b": "calcium carbonate materials",
       "expected_bridge": "biomineralization",
-      "bridge_found": true,
+      "bridge_found": false,
       "entities_a": [
         "Fungi",
         "calcium carbonate",
-        "biomineralization",
+        "mineral precipitation",
         "stable mineral structures"
       ],
       "entities_b": [
         "Calcium",
         "controlled morphology",
         "biological pathways",
-        "biomineralization"
+        "precipitation"
       ],
       "shared_entities": [
-        "biomineralization",
-        "calcium carbonate"
+        "calcium carbonate",
+        "mineral precipitation"
       ]
     },
     {
@@ -52,7 +52,8 @@
         "molecular transport"
       ],
       "shared_entities": [
-        "pore"
+        "pore",
+        "size-selective barriers"
       ]
     },
     {
@@ -60,40 +61,42 @@
       "literature_a": "Stefan-Boltzmann thermal radiation",
       "literature_b": "radiative cooling materials",
       "expected_bridge": "thermal emission",
-      "bridge_found": true,
+      "bridge_found": false,
       "entities_a": [
         "Stefan-Boltzmann law",
-        "thermal radiation emission",
+        "radiative heat",
         "Q = \u03b5\u03c3AT\u2074",
         "fourth power"
       ],
       "entities_b": [
         "Radiative cooling materials",
         "sub",
-        "thermal emission",
+        "radiative heat",
         "atmospheric window"
       ],
-      "shared_entities": []
+      "shared_entities": [
+        "radiative heat"
+      ]
     },
     {
       "id": "DISC-GOLD-004",
       "literature_a": "phase change materials",
       "literature_b": "infrared stealth camouflage",
       "expected_bridge": "thermal regulation",
-      "bridge_found": true,
+      "bridge_found": false,
       "entities_a": [
         "Phase change materials",
         "heat",
         "phase transitions",
-        "thermal regulation"
+        "temperature control"
       ],
       "entities_b": [
         "Infrared stealth camouflage",
-        "dynamic thermal regulation",
+        "dynamic temperature control",
         "background temperature"
       ],
       "shared_entities": [
-        "thermal regulation"
+        "temperature control"
       ]
     },
     {

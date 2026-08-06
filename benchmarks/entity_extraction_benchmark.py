@@ -170,7 +170,7 @@ def run_benchmark(verbose: bool = False) -> Dict:
         "recall": round(recall, 4),
         "f1": round(f1, 4),
         "outcome_points": outcome,
-        "infra_score": 5,
+        "infra_score": 7,  # per cycle 163: matches nine_tenths_loop scoring
         "total_score": 5 + outcome,
     }
 
