@@ -91,12 +91,38 @@ def test_reaudit_entries_match_between_files():
     )
 
 
+def test_no_orphan_entries():
+    """Every reaudit claim_id in predictions.jsonl must have a counterpart in
+    reaudit_log.jsonl, and vice versa.
+
+    Per cycle 140 (auditor-caught): EXP-AUTO-002 existed in predictions.jsonl
+    but had no mirror in reaudit_log.jsonl — a dual-write miss from before the
+    two logs were synchronized. The existing test_reaudit_entries_match_between_files
+    only checks hash agreement for MATCHING claim_ids, not existence. This test
+    closes that gap: it asserts every entry in one file has a counterpart in the
+    other.
+    """
+    pred = count_broken(PREDICTIONS)
+    reaud = count_broken(REAUDIT_LOG)
+    pred_ids = set(pred["entries"].keys())
+    reaud_ids = set(reaud["entries"].keys())
+    orphans_in_pred = pred_ids - reaud_ids
+    orphans_in_reaud = reaud_ids - pred_ids
+    assert len(orphans_in_pred) == 0 and len(orphans_in_reaud) == 0, (
+        f"Orphan entries found (dual-write miss):\n"
+        f"  In predictions.jsonl but NOT in reaudit_log.jsonl: {sorted(orphans_in_pred)}\n"
+        f"  In reaudit_log.jsonl but NOT in predictions.jsonl: {sorted(orphans_in_reaud)}\n"
+        f"Every reaudit entry must exist in both ledger files."
+    )
+
+
 if __name__ == "__main__":
     tests = [
         test_predictions_no_broken_hashes,
         test_reaudit_log_no_broken_hashes,
         test_both_files_agree,
         test_reaudit_entries_match_between_files,
+        test_no_orphan_entries,
     ]
     passed = 0
     failed = 0
