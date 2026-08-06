@@ -1157,7 +1157,22 @@ class AltshullerContradictionSearch:
         principle recommendation. Uses the contradiction matrix to select
         the most applicable principle, with keyword matching to find the
         closest (improve, worsen) pair.
+
+        Per cycle 174: each resolution now includes a CONCRETE physical
+        implementation suggestion, not just a principle name.
         """
+        # Per cycle 174: concrete implementation suggestions per principle
+        CONCRETE_IMPLEMENTATIONS = {
+            40: "Use fiber-reinforced composites (e.g., carbon fiber + polymer matrix) to increase strength without adding weight",
+            35: f"Change the material phase (e.g., solid to porous, crystalline to amorphous) to modify {improve} without affecting {worsen}",
+            1: "Separate the conflicting functions into different modules or layers (e.g., multilayer coating)",
+            33: "Use the same base material for both components (e.g., both parts aluminum) to eliminate interface mismatch",
+            31: "Add porosity or hollow structures to reduce weight while maintaining structural integrity",
+            10: "Pre-condition the system before operation (e.g., pre-stress, pre-heat, pre-load) to shift the operating point",
+            36: "Use a phase-change material (e.g., PCM) to exploit latent heat for thermal management without energy input",
+            25: "Design the system to self-regulate (e.g., thermal expansion actuates a valve) for automatic maintenance",
+        }
+
         improve_lower = improve.lower()
         worsen_lower = worsen.lower()
 
@@ -1167,16 +1182,15 @@ class AltshullerContradictionSearch:
                 # Return the top recommended principle
                 top_principle = principles[0]
                 desc = AltshullerContradictionSearch.TRIZ_PRINCIPLES.get(top_principle, "unknown")
-                return f"TRIZ Principle {top_principle}: {desc}"
+                impl = CONCRETE_IMPLEMENTATIONS.get(top_principle, "")
+                return f"TRIZ Principle {top_principle}: {desc}. Implementation: {impl}"
 
-        # Fallback: if no matrix match, select a general-purpose principle
-        # based on the contradiction type
-        # Type 1 (same-source): use Principle 35 (Parameter changes) — most common resolution
-        # Type 2 (cross-source): use Principle 33 (Homogeneity) — match materials
         if "tradeoff" in worsen_lower or "via" in worsen_lower:
-            return f"TRIZ Principle 33: Homogeneity — make interacting objects same material to reduce tradeoff"
+            impl = CONCRETE_IMPLEMENTATIONS.get(33, "")
+            return f"TRIZ Principle 33: Homogeneity — {impl}"
         else:
-            return f"TRIZ Principle 35: Parameter changes — change physical state/density/conductivity to resolve {improve} vs {worsen}"
+            impl = CONCRETE_IMPLEMENTATIONS.get(35, "")
+            return f"TRIZ Principle 35: Parameter changes — {impl}"
 
     @staticmethod
     def find_contradictions(graph: DiscoveryGraph,
