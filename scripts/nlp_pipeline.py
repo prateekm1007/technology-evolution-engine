@@ -167,6 +167,15 @@ ENTITY_STOPWORDS = {
     "mean", "average", "median", "standard_deviation",
     "standard_error", "confidence_interval", "p-value", "p_value",
     "correlation", "regression", "anova", "t-test", "t_test",
+    # Cycle 152: paper metadata (URLs, arxiv IDs, dates, headers)
+    # These are NOT scientific entities — they're paper formatting.
+    "title", "url", "http", "https", "www", "org", "org/abs",
+    "arxiv", "arxiv.org", "doi", "date", "retrieval", "method",
+    "api", "api xml", "hint", "xml", "pdf", "html",
+    "retrieval method", "arxiv id", "id", "abs",
+    # Paper structure markers
+    "abstract", "introduction", "conclusion", "references",
+    "acknowledgments", "keywords", "keyword",
     "significance", "significant_difference",
     # Measurement units (shared across all papers)
     "nm", "μm", "mm", "cm", "ml", "μl", "l", "mg", "μg", "g",
@@ -616,6 +625,25 @@ class NLPPipeline:
                      "room", "time", "way", "case", "part", "number", "use",
                      "used", "using", "via", "per", "than", "then", "here",
                      "there", "where", "when", "how", "why", "what", "which"}]
+
+        # Per cycle 152: filter out paper metadata entities.
+        # Entities containing newlines, URLs, arxiv IDs, or dates are
+        # paper formatting, not scientific concepts. This was causing
+        # 10+ garbage entities per paper, drowning out real entities
+        # and reducing relation extraction yield to 1.2%.
+        import re as _re
+        _metadata_patterns = [
+            r'\n',  # newlines in entity text (multi-line garbage)
+            r'^\d{4}-\d{2}-\d{2}',  # dates like 2026-08-05
+            r'^https?://',  # URLs
+            r'arxiv',  # arxiv IDs/URLs
+            r'^\d{4}\.\d{4,5}',  # arxiv paper IDs like 1603.08320
+            r'^TITLE', r'^URL', r'^DATE', r'^API', r'^HINT', r'^XML',
+            r'^RETRIEVAL', r'^ARXIV',
+        ]
+        _compiled_meta = [_re.compile(p, _re.IGNORECASE) for p in _metadata_patterns]
+        entities = [e for e in entities
+                    if not any(p.search(e.text) for p in _compiled_meta)]
 
         # 3. Coreference resolution (cycle 103)
         # Merge entities that refer to the same thing across sentences
