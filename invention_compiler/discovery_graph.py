@@ -936,17 +936,115 @@ class GentnerStructureMapping:
 
 class AltshullerContradictionSearch:
     """Algorithm 3: Altshuller contradiction search (DR-20).
-    
+
     Per Genrich Altshuller (TRIZ): contradictions exist when improving
     one parameter worsens another. Resolution is the core of invention.
     Search the graph for contradictions and find analogous resolutions.
+
+    Per cycle 147 (auditor Test 6 fix): added the 40 TRIZ inventive
+    principles and a resolution selector. The auditor found that
+    'resolution is always None — identifies, never resolves.' Now
+    each contradiction gets a TRIZ principle recommendation based on
+    the contradiction matrix (which principle resolves which pair of
+    conflicting parameters).
     """
-    
+
+    # The 40 TRIZ Inventive Principles (Altshuller, 1984)
+    TRIZ_PRINCIPLES = {
+        1: "Segmentation — divide an object into independent parts",
+        2: "Taking out — separate the interfering part or property",
+        3: "Local quality — make each part perform in optimal conditions",
+        4: "Asymmetry — change symmetric to asymmetric",
+        5: "Merging — combine similar objects or operations",
+        6: "Universality — make a part perform multiple functions",
+        7: "Nested doll — contain one object inside another",
+        8: "Anti-weight — counteract weight with lift/buoyancy",
+        9: "Preliminary anti-action — pre-stress or pre-load opposite to undesired",
+        10: "Preliminary action — perform required action beforehand",
+        11: "Beforehand cushioning — prepare emergency measures",
+        12: "Equipotentiality — eliminate need to raise/lower",
+        13: "The other way round — invert the action or object",
+        14: "Spheroidality — use curves/rotary motion instead of linear",
+        15: "Dynamicity — make object adaptable or mobile",
+        16: "Partial or excessive actions — do slightly less/more than ideal",
+        17: "Another dimension — use a different axis/layer",
+        18: "Mechanical vibration — use oscillation/ultrasound/resonance",
+        19: "Periodic action — use pulses instead of continuous",
+        20: "Continuity of useful action — eliminate idle time",
+        21: "Skipping — do harmful action fast to avoid harm",
+        22: "Convert harm into benefit — use the negative for positive",
+        23: "Feedback — use feedback to improve control",
+        24: "Intermediary — use an intermediary carrier/substance",
+        25: "Self-service — make the object serve/repair itself",
+        26: "Copying — use copies instead of fragile originals",
+        27: "Cheap short-lived objects — replace with disposable",
+        28: "Mechanics substitution — replace mechanical with sensory/optical/acoustic",
+        29: "Pneumatics/hydraulics — use gas/liquid instead of solid",
+        30: "Flexible shells/thin films — use flexibility instead of rigidity",
+        31: "Porous materials — add pores/cavities to reduce weight",
+        32: "Color changes — change color/transparency/opacity",
+        33: "Homogeneity — make interacting objects same material",
+        34: "Discarding/recovering — discard used parts, recover after use",
+        35: "Parameter changes — change physical state/density/conductivity",
+        36: "Phase transitions — use effects from phase changes (latent heat, volume change)",
+        37: "Thermal expansion — use expansion/contraction from heat",
+        38: "Strong oxidants — use enriched oxygen/ozone",
+        39: "Inert atmosphere — use vacuum/inert gas to prevent harm",
+        40: "Composite materials — use composites instead of homogeneous",
+    }
+
+    # Simplified contradiction matrix: maps (improve_type, worsen_type) → [principle numbers]
+    # Based on Altshuller's 39×39 matrix (simplified to common engineering pairs)
+    CONTRADICTION_MATRIX = {
+        # (improve, worsen) → recommended principles
+        ("strength", "weight"): [40, 26, 27, 1],  # composites, copying, cheap disposable, segmentation
+        ("strength", "complexity"): [1, 35, 29, 25],  # segmentation, parameter change, pneumatics, self-service
+        ("temperature", "energy"): [25, 36, 19, 35],  # self-service, phase transition, periodic, parameter change
+        ("power", "weight"): [35, 10, 2, 34],  # parameter change, preliminary, take out, discarding
+        ("power", "heat"): [36, 35, 21, 39],  # phase transition, parameter change, skipping, inert atmosphere
+        ("speed", "accuracy"): [10, 35, 16, 28],  # preliminary, parameter change, excessive, mechanics substitution
+        ("efficiency", "complexity"): [35, 1, 5, 15],  # parameter change, segmentation, merging, dynamicity
+        ("efficiency", "cost"): [35, 10, 16, 25],  # parameter change, preliminary, excessive, self-service
+        ("durability", "weight"): [40, 26, 27, 1],  # composites, copying, disposable, segmentation
+        ("durability", "complexity"): [1, 35, 29, 15],  # segmentation, parameter change, pneumatics, dynamicity
+        ("conductivity", "strength"): [35, 33, 40, 1],  # parameter change, homogeneity, composites, segmentation
+        ("conductivity", "weight"): [35, 31, 40, 28],  # parameter change, porous, composites, mechanics substitution
+    }
+
+    @staticmethod
+    def _resolve_contradiction(improve: str, worsen: str, source: str) -> Optional[str]:
+        """Select a TRIZ principle to resolve a contradiction.
+
+        Per cycle 147: replaces 'resolution = None' with actual TRIZ
+        principle recommendation. Uses the contradiction matrix to select
+        the most applicable principle, with keyword matching to find the
+        closest (improve, worsen) pair.
+        """
+        improve_lower = improve.lower()
+        worsen_lower = worsen.lower()
+
+        # Try to match against the contradiction matrix
+        for (imp_key, wor_key), principles in AltshullerContradictionSearch.CONTRADICTION_MATRIX.items():
+            if imp_key in improve_lower and wor_key in worsen_lower:
+                # Return the top recommended principle
+                top_principle = principles[0]
+                desc = AltshullerContradictionSearch.TRIZ_PRINCIPLES.get(top_principle, "unknown")
+                return f"TRIZ Principle {top_principle}: {desc}"
+
+        # Fallback: if no matrix match, select a general-purpose principle
+        # based on the contradiction type
+        # Type 1 (same-source): use Principle 35 (Parameter changes) — most common resolution
+        # Type 2 (cross-source): use Principle 33 (Homogeneity) — match materials
+        if "tradeoff" in worsen_lower or "via" in worsen_lower:
+            return f"TRIZ Principle 33: Homogeneity — make interacting objects same material to reduce tradeoff"
+        else:
+            return f"TRIZ Principle 35: Parameter changes — change physical state/density/conductivity to resolve {improve} vs {worsen}"
+
     @staticmethod
     def find_contradictions(graph: DiscoveryGraph,
                              causal_graph: Optional[Any] = None) -> List[Contradiction]:
         """Find contradictions in the graph.
-        
+
         Two types of contradictions (TRIZ):
         Type 1 (same-source): Edge A→B "increases" AND Edge A→C "decreases"
           — changing one parameter improves one thing but worsens another
@@ -959,6 +1057,9 @@ class AltshullerContradictionSearch:
         exclude CONTRADICTED and ASSOCIATIVE edges from contradiction detection.
         Only VERIFIED + ASSERTED edges participate — this stops keyword-match
         edges from being counted as contradictions.
+
+        Per cycle 147: each contradiction now gets a TRIZ principle resolution
+        (was always None before).
         """
         contradictions = []
         # Build a set of (source, target) pairs to exclude (CONTRADICTED/ASSOCIATIVE)
@@ -991,21 +1092,22 @@ class AltshullerContradictionSearch:
                 elif "decreases" in str(edge.metadata).lower():
                     direction = "decreases"
                 node_effects[edge.source][edge.target] = direction
-        
+
         # Type 1: Same-source contradictions (changing X improves Y but worsens Z)
         for source, effects in node_effects.items():
             increases = [t for t, d in effects.items() if d == "increases"]
             decreases = [t for t, d in effects.items() if d == "decreases"]
             for inc in increases:
                 for dec in decreases:
+                    resolution = AltshullerContradictionSearch._resolve_contradiction(inc, dec, source)
                     contradictions.append(Contradiction(
                         contradiction_id=f"CONTR-T1-{source}-{inc}-{dec}",
                         improve=inc,
                         worsen=dec,
                         mechanism=f"Changing {source} improves {inc} but worsens {dec}",
-                        resolution=None,
+                        resolution=resolution,
                     ))
-        
+
         # Type 2: Cross-source contradictions (A increases C, B decreases C)
         # Build reverse map: target → {source → direction}
         target_effects = {}  # target → {source → direction}
@@ -1014,18 +1116,20 @@ class AltshullerContradictionSearch:
                 if target not in target_effects:
                     target_effects[target] = {}
                 target_effects[target][source] = direction
-        
+
         for target, sources in target_effects.items():
             increasers = [s for s, d in sources.items() if d == "increases"]
             decreasers = [s for s, d in sources.items() if d == "decreases"]
             for inc_src in increasers:
                 for dec_src in decreasers:
+                    resolution = AltshullerContradictionSearch._resolve_contradiction(
+                        f"{target} (via {inc_src})", f"{target} (via {dec_src})", inc_src)
                     contradictions.append(Contradiction(
                         contradiction_id=f"CONTR-T2-{inc_src}-{dec_src}-{target}",
                         improve=f"{target} (via {inc_src})",
                         worsen=f"{target} (via {dec_src})",
                         mechanism=f"{inc_src} increases {target} but {dec_src} decreases it — materials tradeoff",
-                        resolution=None,
+                        resolution=resolution,
                     ))
-        
+
         return contradictions
