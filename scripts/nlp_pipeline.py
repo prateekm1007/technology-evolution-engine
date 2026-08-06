@@ -650,12 +650,12 @@ class NLPPipeline:
                     relation = self._find_relation(subj, obj, sent, doc)
                     if relation:
                         relations.append(relation)
-        
+
         # PASS 2: Implicit causal pattern extraction (cycle 119)
         # This captures relations the dependency parser misses:
         # "X due to Y", "X results in Y", "X leads to Y"
         relations.extend(self._extract_implicit_causal(text, entities, doc))
-        
+
         # PASS 3: Neural (LLM-based) zero-shot relation extraction (cycle 120)
         # Per auditor: "neural relation extraction (OpenNRE/GLiREL) for the
         # remaining 3 points." OpenNRE/GLiREL not installable in this env.
@@ -663,7 +663,27 @@ class NLPPipeline:
         # This is closer to GLiREL (zero-shot, schema-based) than OpenNRE
         # (supervised, fixed types).
         relations.extend(self._extract_neural_relations(text, entities, doc))
-        
+
+        # Per cycle 136: deduplicate relations by (subject_text, object_text) pair.
+        # PASS 1 (dependency) and PASS 2 (implicit causal) can both produce a
+        # relation for the same entity pair with different verb forms (lemma
+        # "reduce" vs actual "reduces"). Keep the one with the actual verb form
+        # (PASS 2) when both exist, since the benchmark gold uses actual verbs.
+        # Also keep the highest-confidence relation per pair.
+        seen_pairs = {}
+        for rel in relations:
+            pair_key = (rel.subject.text.lower().strip(), rel.obj.text.lower().strip())
+            if pair_key in seen_pairs:
+                # Keep the relation with the longer verb (actual form > lemma)
+                existing = seen_pairs[pair_key]
+                if len(rel.relation) > len(existing.relation):
+                    seen_pairs[pair_key] = rel
+                elif rel.confidence > existing.confidence:
+                    seen_pairs[pair_key] = rel
+            else:
+                seen_pairs[pair_key] = rel
+        relations = list(seen_pairs.values())
+
         return relations
     
     # Implicit causal patterns (cycle 119)
@@ -990,15 +1010,21 @@ class NLPPipeline:
                 if ancestor in obj_deps:
                     # Found a common verb ancestor. Now verify the dependency
                     # roles: one should be nsubj/nsubjpass, the other dobj/obj.
+                    # Per cycle 136: do NOT accept pobj (prepositional object).
+                    # Prepositional objects ("in X", "of X", "at X") are indirect
+                    # relations, not direct causal objects. Accepting them produces
+                    # false positives like "Lithium plating causes graphite anodes"
+                    # (from "causes capacity fade IN graphite anodes"). Only accept
+                    # direct objects (dobj/obj/attr).
                     subj_role = subj_head.dep_
                     obj_role = obj_head.dep_
                     if (subj_role in ("nsubj", "nsubjpass", "agent", "csubj") and
-                        obj_role in ("dobj", "obj", "pobj", "attr")):
+                        obj_role in ("dobj", "obj", "attr")):
                         relation_token = ancestor
                         break
                     # Also accept reversed roles
                     if (obj_role in ("nsubj", "nsubjpass", "agent", "csubj") and
-                        subj_role in ("dobj", "obj", "pobj", "attr")):
+                        subj_role in ("dobj", "obj", "attr")):
                         relation_token = ancestor
                         break
 
