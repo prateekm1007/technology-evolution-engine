@@ -823,9 +823,9 @@ class NLPPipeline:
          "reduces", "forward"),  # "X reduces Y"
         (r'(\w[\w\s\-]{2,40})\s+(?:lowers?|raises?|elevates?|depresses?)\s+(\w[\w\s\-]{2,40})',
          "lowers", "forward"),  # "X lowers Y" (cycle 136: added "lower")
-        (r'(\w[\w\s\-]{2,40})\s+(?:absorbs?|adsorbs?|releases?|emits?|reflects?|transmits?)\s+(\w[\w\s\-]{2,40})',
+        (r'(\w[\w\s\-]{2,40})\s+(?:absorbs?|adsorbs?|releases?|emits?|reflects?|transmits?|emitting|absorbing|releasing|reflecting)\s+(\w[\w\s\-]{2,40})',
          "absorbs", "forward"),  # "X absorbs Y" (cycle 136: added physical verbs)
-        (r'(\w[\w\s\-]{2,40})\s+(?:rejects?|allows?|permits?|blocks?|filters?)\s+(\w[\w\s\-]{2,40})',
+        (r'(\w[\w\s\-]{2,40})\s+(?:rejects?|allows?|permits?|blocks?|filters?|allowing|rejecting|permitting)\s+(\w[\w\s\-]{2,40})',
          "rejects", "forward"),  # "X rejects Y" (cycle 136: added filtration verbs)
         (r'(\w[\w\s\-]{2,40})\s+(?:drives?|powers?|propels?|motivates?)\s+(\w[\w\s\-]{2,40})',
          "drives", "forward"),  # "X drives Y" (cycle 136: added "drive")
@@ -888,6 +888,12 @@ class NLPPipeline:
         # "X exhibited Y" (past tense — already handled but with different group structure)
         (r'(\w[\w\s\-]{2,40})\s+(?:exhibited|showed|displayed|demonstrated)\s+(\w[\w\s\-]{2,40})',
          "exhibits", "forward"),
+        # Per cycle 166: "while X-ing Y" → X emits/allows Y (gerund after while)
+        (r'(\w[\w\s\-]{2,40})\s+(?:emitting|absorbing|releasing|reflecting|allowing|rejecting|permitting)\s+(\w[\w\s\-]{2,40})',
+         "emits", "forward"),
+        # Per cycle 166: "X increases with Y" → Y increases X (reverse)
+        (r'(\w[\w\s\-]{2,40})\s+(?:increases?|enhances?|improves?)\s+with\s+(\w[\w\s\-]{2,40})',
+         "increases", "reverse"),  # "X increases with Y" → Y increases X
         # "improvement in X leads to Y" → X improves Y (requires 2 groups)
         (r'(?:improvement\s+in|improved)\s+(\w[\w\s\-]{2,40})\s+(?:leads?\s+to|results?\s+in|causes?)\s+(\w[\w\s\-]{2,40})',
          "improves", "forward"),
