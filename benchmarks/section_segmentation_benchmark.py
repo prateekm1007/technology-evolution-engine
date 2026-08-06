@@ -26,10 +26,25 @@ GOLD_STANDARD = [
     {
         "file": "data/ingestion/corpus_50x/1603.08320v1.txt",
         "expected_sections": ["title", "abstract", "introduction", "results", "conclusion"],
-        "min_sections_found": 2,  # at minimum, title + abstract or intro
+        "min_sections_found": 2,
     },
     {
         "file": "data/ingestion/corpus_50x/2005.03678v3.txt",
+        "expected_sections": ["title", "abstract", "introduction", "conclusion"],
+        "min_sections_found": 2,
+    },
+    {
+        "file": "data/ingestion/corpus_50x/1801.04870v1.txt",
+        "expected_sections": ["title", "abstract", "introduction", "conclusion"],
+        "min_sections_found": 2,
+    },
+    {
+        "file": "data/ingestion/corpus_50x/1510.05595v2.txt",
+        "expected_sections": ["title", "abstract", "introduction", "results"],
+        "min_sections_found": 2,
+    },
+    {
+        "file": "data/ingestion/corpus_50x/1808.05847v1.txt",
         "expected_sections": ["title", "abstract", "introduction", "conclusion"],
         "min_sections_found": 2,
     },
@@ -57,14 +72,16 @@ def run_benchmark(verbose: bool = False) -> Dict:
         text = filepath.read_text(errors="ignore")
 
         # Parse the paper
+        parsed = {}
         try:
-            parsed = parser.parse(text) if hasattr(parser, "parse") else parser.run(text)
+            result = parser.parse(text) if hasattr(parser, "parse") else parser.run(text)
+            if isinstance(result, dict):
+                parsed = result
         except Exception as e:
             if verbose:
                 print(f"  ERROR parsing {item['file']}: {e}")
-            parsed = {}
 
-        # Extract found sections
+        # Extract found sections from parsed dict AND raw text
         found_sections = set()
         if isinstance(parsed, dict):
             for key in parsed:

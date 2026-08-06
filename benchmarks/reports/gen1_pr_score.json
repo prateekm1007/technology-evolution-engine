@@ -1,13 +1,13 @@
 {
   "benchmark": "gen1_section_segmentation_pr",
-  "timestamp": "2026-08-06T02:38:13Z",
-  "files_tested": 2,
-  "true_positives": 4,
+  "timestamp": "2026-08-06T13:44:11Z",
+  "files_tested": 5,
+  "true_positives": 10,
   "false_positives": 0,
-  "false_negatives": 5,
+  "false_negatives": 11,
   "precision": 1.0,
-  "recall": 0.4444,
-  "f1": 0.6154,
+  "recall": 0.4762,
+  "f1": 0.6452,
   "outcome_points": 2,
   "infra_score": 7,
   "total_score": 9,
@@ -15,15 +15,15 @@
     {
       "file": "data/ingestion/corpus_50x/1603.08320v1.txt",
       "expected": [
-        "abstract",
         "introduction",
-        "results",
+        "conclusion",
+        "abstract",
         "title",
-        "conclusion"
+        "results"
       ],
       "found": [
-        "title",
-        "abstract"
+        "abstract",
+        "title"
       ],
       "tp": 2,
       "fn": 3
@@ -31,14 +31,59 @@
     {
       "file": "data/ingestion/corpus_50x/2005.03678v3.txt",
       "expected": [
-        "title",
         "abstract",
-        "conclusion",
-        "introduction"
+        "title",
+        "introduction",
+        "conclusion"
       ],
       "found": [
+        "abstract",
+        "title"
+      ],
+      "tp": 2,
+      "fn": 2
+    },
+    {
+      "file": "data/ingestion/corpus_50x/1801.04870v1.txt",
+      "expected": [
+        "abstract",
         "title",
-        "abstract"
+        "introduction",
+        "conclusion"
+      ],
+      "found": [
+        "abstract",
+        "title"
+      ],
+      "tp": 2,
+      "fn": 2
+    },
+    {
+      "file": "data/ingestion/corpus_50x/1510.05595v2.txt",
+      "expected": [
+        "abstract",
+        "title",
+        "introduction",
+        "results"
+      ],
+      "found": [
+        "abstract",
+        "title"
+      ],
+      "tp": 2,
+      "fn": 2
+    },
+    {
+      "file": "data/ingestion/corpus_50x/1808.05847v1.txt",
+      "expected": [
+        "abstract",
+        "title",
+        "introduction",
+        "conclusion"
+      ],
+      "found": [
+        "abstract",
+        "title"
       ],
       "tp": 2,
       "fn": 2
