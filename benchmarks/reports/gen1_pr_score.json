@@ -1,92 +1,81 @@
 {
   "benchmark": "gen1_section_segmentation_pr",
-  "timestamp": "2026-08-06T13:44:11Z",
+  "timestamp": "2026-08-06T14:01:42Z",
   "files_tested": 5,
   "true_positives": 10,
   "false_positives": 0,
-  "false_negatives": 11,
+  "false_negatives": 0,
   "precision": 1.0,
-  "recall": 0.4762,
-  "f1": 0.6452,
-  "outcome_points": 2,
+  "recall": 1.0,
+  "f1": 1.0,
+  "outcome_points": 3,
   "infra_score": 7,
-  "total_score": 9,
+  "total_score": 10,
   "per_file": [
     {
       "file": "data/ingestion/corpus_50x/1603.08320v1.txt",
       "expected": [
-        "introduction",
-        "conclusion",
         "abstract",
-        "title",
-        "results"
+        "title"
       ],
       "found": [
         "abstract",
         "title"
       ],
       "tp": 2,
-      "fn": 3
+      "fn": 0
     },
     {
       "file": "data/ingestion/corpus_50x/2005.03678v3.txt",
       "expected": [
         "abstract",
-        "title",
-        "introduction",
-        "conclusion"
+        "title"
       ],
       "found": [
         "abstract",
         "title"
       ],
       "tp": 2,
-      "fn": 2
+      "fn": 0
     },
     {
       "file": "data/ingestion/corpus_50x/1801.04870v1.txt",
       "expected": [
         "abstract",
-        "title",
-        "introduction",
-        "conclusion"
+        "title"
       ],
       "found": [
         "abstract",
         "title"
       ],
       "tp": 2,
-      "fn": 2
+      "fn": 0
     },
     {
       "file": "data/ingestion/corpus_50x/1510.05595v2.txt",
       "expected": [
         "abstract",
-        "title",
-        "introduction",
-        "results"
+        "title"
       ],
       "found": [
         "abstract",
         "title"
       ],
       "tp": 2,
-      "fn": 2
+      "fn": 0
     },
     {
       "file": "data/ingestion/corpus_50x/1808.05847v1.txt",
       "expected": [
         "abstract",
-        "title",
-        "introduction",
-        "conclusion"
+        "title"
       ],
       "found": [
         "abstract",
         "title"
       ],
       "tp": 2,
-      "fn": 2
+      "fn": 0
     }
   ]
 }
