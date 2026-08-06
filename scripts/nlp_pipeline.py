@@ -623,6 +623,7 @@ class NLPPipeline:
                      "did", "will", "would", "could", "should", "may", "might",
                      "can", "shall", "must", "this", "that", "these", "those",
                      "room", "time", "way", "case", "part", "number", "use",
+                     "hard", "plot", "passive", "relation", "utilization",
                      "used", "using", "via", "per", "than", "then", "here",
                      "there", "where", "when", "how", "why", "what", "which"}]
 
@@ -828,8 +829,9 @@ class NLPPipeline:
          "rejects", "forward"),  # "X rejects Y" (cycle 136: added filtration verbs)
         (r'(\w[\w\s\-]{2,40})\s+(?:drives?|powers?|propels?|motivates?)\s+(\w[\w\s\-]{2,40})',
          "drives", "forward"),  # "X drives Y" (cycle 136: added "drive")
-        (r'(\w[\w\s\-]{2,40})\s+(?:penetrates?|permeates?|diffuses?|infiltrates?)\s+(\w[\w\s\-]{2,40})',
-         "penetrates", "forward"),  # "X penetrates Y"
+        # Per cycle 161: REMOVED penetrates/permeates/diffuses pattern —
+        # physical verbs, not causal. Produced FPs like "Dendrite growth
+        # penetrates separator" which is descriptive, not a causal mechanism.
         (r'(\w[\w\s\-]{2,40})\s+(?:scatters?|deflects?|refracts?)\s+(\w[\w\s\-]{2,40})',
          "scatters", "forward"),  # "X scatters Y"
         # Per cycle 137: REMOVED the "the X of Y" → relates_to pattern.
@@ -1288,7 +1290,8 @@ class NLPPipeline:
         relation_text = relation_token.lemma_.lower()
         
         # Skip trivial relations
-        if relation_text in ("be", "have", "do", "make", "use", "show"):
+        if relation_text in ("be", "have", "do", "make", "use", "show",
+                             "penetrate", "permeate", "diffuse"):
             return None
         
         # Per cycle 103: skip citation/metadata relations

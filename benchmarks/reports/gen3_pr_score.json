@@ -1,14 +1,14 @@
 {
   "benchmark": "gen3_relation_extraction_pr",
-  "timestamp": "2026-08-06T13:49:29Z",
+  "timestamp": "2026-08-06T13:56:02Z",
   "sentences": 25,
   "gold_triples": 29,
   "true_positives": 20,
-  "false_positives": 9,
+  "false_positives": 4,
   "false_negatives": 9,
-  "precision": 0.6897,
+  "precision": 0.8333,
   "recall": 0.6897,
-  "f1": 0.6897,
+  "f1": 0.7547,
   "per_sentence": [
     {
       "sentence_idx": 0,
@@ -36,9 +36,9 @@
     {
       "sentence_idx": 1,
       "gold_count": 1,
-      "pred_count": 1,
+      "pred_count": 0,
       "true_positives": 0,
-      "false_positives": 1,
+      "false_positives": 0,
       "false_negatives": 1,
       "matched_gold": [],
       "missed_gold": [
@@ -48,20 +48,14 @@
           "interface"
         ]
       ],
-      "wrong_preds": [
-        {
-          "subject": "plot",
-          "relation": "elucidate",
-          "object": "electrode electrolyte interface"
-        }
-      ]
+      "wrong_preds": []
     },
     {
       "sentence_idx": 2,
       "gold_count": 1,
-      "pred_count": 2,
+      "pred_count": 1,
       "true_positives": 1,
-      "false_positives": 1,
+      "false_positives": 0,
       "false_negatives": 0,
       "matched_gold": [
         [
@@ -76,11 +70,6 @@
           "subject": "convex optimal control formulation",
           "relation": "minimizes",
           "object": "total energy consumption"
-        },
-        {
-          "subject": "convex optimal control formulation",
-          "relation": "minimize",
-          "object": "hard"
         }
       ]
     },
@@ -104,9 +93,9 @@
     {
       "sentence_idx": 4,
       "gold_count": 1,
-      "pred_count": 1,
+      "pred_count": 0,
       "true_positives": 0,
-      "false_positives": 1,
+      "false_positives": 0,
       "false_negatives": 1,
       "matched_gold": [],
       "missed_gold": [
@@ -116,13 +105,7 @@
           "temperatures"
         ]
       ],
-      "wrong_preds": [
-        {
-          "subject": "Passive",
-          "relation": "enables",
-          "object": "energy consumption"
-        }
-      ]
+      "wrong_preds": []
     },
     {
       "sentence_idx": 5,
@@ -304,9 +287,9 @@
     {
       "sentence_idx": 12,
       "gold_count": 1,
-      "pred_count": 3,
+      "pred_count": 1,
       "true_positives": 0,
-      "false_positives": 3,
+      "false_positives": 1,
       "false_negatives": 1,
       "matched_gold": [],
       "missed_gold": [
@@ -317,16 +300,6 @@
         ]
       ],
       "wrong_preds": [
-        {
-          "subject": "Dendrite growth",
-          "relation": "penetrates",
-          "object": "separator"
-        },
-        {
-          "subject": "Dendrite growth",
-          "relation": "penetrate",
-          "object": "internal short circuits"
-        },
         {
           "subject": "separator",
           "relation": "causes",
@@ -626,7 +599,7 @@
       ]
     }
   ],
-  "outcome_points": 2,
+  "outcome_points": 3,
   "infra_score": 5,
-  "total_score": 7
+  "total_score": 8
 }
