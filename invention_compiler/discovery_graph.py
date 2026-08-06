@@ -1161,6 +1161,18 @@ class AltshullerContradictionSearch:
         Per cycle 174: each resolution now includes a CONCRETE physical
         implementation suggestion, not just a principle name.
         """
+        # Per cycle 179: add step-by-step implementation procedures
+        IMPLEMENTATION_STEPS = {
+            40: ["1. Identify the load-bearing component", "2. Select fiber material (carbon/glass/Kevlar)", "3. Select matrix (epoxy/polyimide)", "4. Design layup orientation", "5. Manufacture via prepreg/autoclave"],
+            35: ["1. Identify the parameter to change", "2. Determine available phase states (solid/liquid/gas/plasma)", "3. Select the state that improves the target without worsening the other", "4. Implement the phase change (e.g., add porosity via foaming)"],
+            1: ["1. Identify the conflicting functions", "2. Determine which function needs each property", "3. Design separate modules for each function", "4. Add interface between modules"],
+            33: ["1. Identify the two interacting components", "2. Determine their current materials", "3. Select a common material that satisfies both functions", "4. Redesign both components in the common material"],
+            31: ["1. Identify the heavy component", "2. Determine if internal volume is available", "3. Design hollow/porous structure", "4. Verify structural integrity is maintained"],
+            10: ["1. Identify the parameter that needs pre-conditioning", "2. Determine the desired initial state", "3. Design a pre-conditioning mechanism (pre-stress/pre-heat/pre-load)", "4. Integrate into the system startup sequence"],
+            36: ["1. Identify the thermal management need", "2. Select a PCM with appropriate transition temperature", "3. Calculate required PCM mass from latent heat", "4. Integrate PCM into the thermal path"],
+            25: ["1. Identify the parameter to self-regulate", "2. Find a physical effect that responds to that parameter", "3. Design a feedback mechanism (e.g., thermal expansion → valve)", "4. Calibrate the self-regulation threshold"],
+        }
+
         # Per cycle 174: concrete implementation suggestions per principle
         CONCRETE_IMPLEMENTATIONS = {
             40: "Use fiber-reinforced composites (e.g., carbon fiber + polymer matrix) to increase strength without adding weight",
@@ -1183,14 +1195,20 @@ class AltshullerContradictionSearch:
                 top_principle = principles[0]
                 desc = AltshullerContradictionSearch.TRIZ_PRINCIPLES.get(top_principle, "unknown")
                 impl = CONCRETE_IMPLEMENTATIONS.get(top_principle, "")
-                return f"TRIZ Principle {top_principle}: {desc}. Implementation: {impl}"
+                steps = IMPLEMENTATION_STEPS.get(top_principle, [])
+                steps_str = " | ".join(steps) if steps else ""
+                return f"TRIZ Principle {top_principle}: {desc}. Implementation: {impl}. Steps: {steps_str}"
 
         if "tradeoff" in worsen_lower or "via" in worsen_lower:
             impl = CONCRETE_IMPLEMENTATIONS.get(33, "")
-            return f"TRIZ Principle 33: Homogeneity — {impl}"
+            steps = IMPLEMENTATION_STEPS.get(33, [])
+            steps_str = " | ".join(steps) if steps else ""
+            return f"TRIZ Principle 33: Homogeneity — {impl}. Steps: {steps_str}"
         else:
             impl = CONCRETE_IMPLEMENTATIONS.get(35, "")
-            return f"TRIZ Principle 35: Parameter changes — {impl}"
+            steps = IMPLEMENTATION_STEPS.get(35, [])
+            steps_str = " | ".join(steps) if steps else ""
+            return f"TRIZ Principle 35: Parameter changes — {impl}. Steps: {steps_str}"
 
     @staticmethod
     def find_contradictions(graph: DiscoveryGraph,
