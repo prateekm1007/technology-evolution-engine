@@ -863,6 +863,29 @@ class NLPPipeline:
          "elucidates", "forward"),  # "X elucidates Y" (cycle 136: added)
         (r'(\w[\w\s\-]{2,40})\s+(?:is\s+compared\s+with|is\s+compared\s+to)\s+(\w[\w\s\-]{2,40})',
          "compared_with", "forward"),  # "X is compared with Y" (cycle 136: added)
+        # Cycle 153: scientific paper patterns — these are common in paper
+        # abstracts/introductions but were missing from the pattern list.
+        # "influence of X on Y" → X affects Y
+        (r'(?:influence|effect|impact)\s+of\s+(\w[\w\s\-]{2,40})\s+(?:on|upon)\s+(\w[\w\s\-]{2,40})',
+         "affects", "forward"),
+        # "X synthesized by Y" → Y produces X (reverse)
+        (r'(\w[\w\s\-]{2,40})\s+(?:synthesized|synthesised|prepared|fabricated|deposited|grown|obtained)\s+(?:by|via|using|through)\s+(\w[\w\s\-]{2,40})',
+         "produces", "reverse"),  # "X synthesized by Y" → Y produces X
+        # "X characterized by Y" → Y characterizes X (reverse)
+        (r'(\w[\w\s\-]{2,40})\s+(?:characterized|analysed|analyzed|measured|examined)\s+(?:by|via|using|through)\s+(\w[\w\s\-]{2,40})',
+         "characterizes", "reverse"),
+        # "X discussed in relation to Y" → X relates_to Y
+        (r'(\w[\w\s\-]{2,40})\s+(?:discussed|investigated|studied)\s+(?:in\s+relation\s+to|with\s+respect\s+to|in\s+terms\s+of)\s+(\w[\w\s\-]{2,40})',
+         "relates_to", "forward"),
+        # "X for Y" → X enables Y (common in abstracts: "materials for energy storage")
+        (r'(\w[\w\s\-]{2,40})\s+for\s+(?:potential\s+)?(\w[\w\s\-]{5,40})',
+         "enables", "forward"),
+        # "X exhibited Y" (past tense — already handled but with different group structure)
+        (r'(\w[\w\s\-]{2,40})\s+(?:exhibited|showed|displayed|demonstrated)\s+(\w[\w\s\-]{2,40})',
+         "exhibits", "forward"),
+        # "improvement in X leads to Y" → X improves Y (requires 2 groups)
+        (r'(?:improvement\s+in|improved)\s+(\w[\w\s\-]{2,40})\s+(?:leads?\s+to|results?\s+in|causes?)\s+(\w[\w\s\-]{2,40})',
+         "improves", "forward"),
     ]
     
     def _extract_implicit_causal(self, text: str, entities: List[ExtractedEntity],

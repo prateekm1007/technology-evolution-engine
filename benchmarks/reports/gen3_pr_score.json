@@ -1,14 +1,14 @@
 {
   "benchmark": "gen3_relation_extraction_pr",
-  "timestamp": "2026-08-06T11:37:35Z",
+  "timestamp": "2026-08-06T13:00:35Z",
   "sentences": 25,
   "gold_triples": 29,
   "true_positives": 19,
-  "false_positives": 11,
+  "false_positives": 12,
   "false_negatives": 10,
-  "precision": 0.6333,
+  "precision": 0.6129,
   "recall": 0.6552,
-  "f1": 0.6441,
+  "f1": 0.6333,
   "per_sentence": [
     {
       "sentence_idx": 0,
@@ -36,9 +36,9 @@
     {
       "sentence_idx": 1,
       "gold_count": 1,
-      "pred_count": 1,
+      "pred_count": 2,
       "true_positives": 0,
-      "false_positives": 1,
+      "false_positives": 2,
       "false_negatives": 1,
       "matched_gold": [],
       "missed_gold": [
@@ -53,6 +53,11 @@
           "subject": "plot",
           "relation": "elucidate",
           "object": "electrode electrolyte interface"
+        },
+        {
+          "subject": "electric equivalent circuit",
+          "relation": "for",
+          "object": "plot"
         }
       ]
     },
