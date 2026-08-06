@@ -1,6 +1,6 @@
 {
   "benchmark": "gen5_discovery_pr",
-  "timestamp": "2026-08-06T15:30:45Z",
+  "timestamp": "2026-08-06T18:17:40Z",
   "total_blind_tests": 55,
   "potential_hits": 14,
   "null_results": 41,
@@ -16,7 +16,8 @@
   "f1": 0.9375,
   "outcome_points": 3,
   "infra_score": 7,
-  "total_score": 10,
+  "total_score": 9,
+  "scoring_formula": "round(10 \u00d7 F1) \u2014 connection-finding (retrieval+novel)",
   "verified_hits": [
     {
       "experiment_id": "EXP-BLIND-016",
@@ -110,18 +111,18 @@
       "t2_snippet": "PARTIALLY CONFIRMED \u2014 The concept of conductive nonmagnetic nanoparticles heated by eddy currents fo"
     },
     {
-      "experiment_id": "EXP-BLIND-001",
-      "literature_A": null,
-      "literature_B": null,
-      "verification": "CONFIRMED (from verification log)",
-      "t2_snippet": "CONFIRMED \u2014 Multiple independent sources verify that fungi/mycelium can precipitate CaCO3 via biomin"
-    },
-    {
       "experiment_id": "EXP-BLIND-003",
       "literature_A": null,
       "literature_B": null,
       "verification": "CONFIRMED (from verification log)",
       "t2_snippet": "CONFIRMED \u2014 Multiple sources verify that BBB tight junctions function as size-selective pores, analo"
+    },
+    {
+      "experiment_id": "EXP-BLIND-001",
+      "literature_A": null,
+      "literature_B": null,
+      "verification": "CONFIRMED (from verification log)",
+      "t2_snippet": "CONFIRMED \u2014 Multiple independent sources verify that fungi/mycelium can precipitate CaCO3 via biomin"
     }
   ]
 }

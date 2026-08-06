@@ -1,6 +1,6 @@
 {
   "benchmark": "gen2_entity_extraction_pr",
-  "timestamp": "2026-08-06T14:38:35Z",
+  "timestamp": "2026-08-06T18:17:29Z",
   "sentences": 20,
   "gold_entities": 63,
   "true_positives": 58,
@@ -11,5 +11,6 @@
   "f1": 0.9431,
   "outcome_points": 3,
   "infra_score": 7,
-  "total_score": 8
+  "total_score": 9,
+  "scoring_formula": "round(10 \u00d7 F1)"
 }

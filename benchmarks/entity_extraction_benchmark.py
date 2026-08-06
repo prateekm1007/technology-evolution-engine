@@ -173,8 +173,11 @@ def run_benchmark(verbose: bool = False) -> Dict:
         "recall": round(recall, 4),
         "f1": round(f1, 4),
         "outcome_points": outcome,
-        "infra_score": 7,  # per cycle 163: matches nine_tenths_loop scoring
-        "total_score": 5 + outcome,
+        "infra_score": 7,  # legacy field, kept for backward compat
+        # Per F-085 (cycle 184): single rubric — total_score = round(10 × F1).
+        # No infra constant, no min() saturation. The runner IS the source of truth.
+        "total_score": round(10 * f1),
+        "scoring_formula": "round(10 × F1)",
     }
 
 

@@ -279,9 +279,13 @@ def run_benchmark(verbose: bool = False) -> Dict:
         "precision": round(precision, 4),
         "recall": round(recall, 4),
         "f1": round(f1, 4),
-        "outcome_points": outcome,
-        "infra_score": 7,
-        "total_score": min(7 + outcome, 10),
+        "outcome_points": outcome,  # legacy
+        "infra_score": 7,  # legacy
+        # Per F-085 (cycle 184): single rubric — total_score = round(10 × F1).
+        # NOTE (F-087): F1 here measures CONNECTION-FINDING (retrieval+novel),
+        # not pure novel discovery. See novelty_rate for the novel-only metric.
+        "total_score": round(10 * f1),
+        "scoring_formula": "round(10 × F1) — connection-finding (retrieval+novel)",
         "verified_hits": verified_hits,
     }
 

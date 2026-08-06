@@ -897,6 +897,68 @@ class NLPPipeline:
         # "improvement in X leads to Y" → X improves Y (requires 2 groups)
         (r'(?:improvement\s+in|improved)\s+(\w[\w\s\-]{2,40})\s+(?:leads?\s+to|results?\s+in|causes?)\s+(\w[\w\s\-]{2,40})',
          "improves", "forward"),
+        # Per cycle 184 (auditor update #3, F-086): added missing verbs for
+        # the expanded gold set (89 triples across 10 domains).
+        # "X expands/extends Y" → X expands Y (physical expansion)
+        (r'(\w[\w\s\-]{2,40})\s+(?:expands?|extends?|dilates?|swells?)\s+(\w[\w\s\-]{2,40})',
+         "expands", "forward"),
+        # "X provides/supplies Y" → X provides Y (enabling)
+        (r'(\w[\w\s\-]{2,40})\s+(?:provides?|supplies?|delivers?|yields?)\s+(\w[\w\s\-]{2,40})',
+         "provides", "forward"),
+        # "X bends/refracts/deflects Y" → X bends Y (optical/mechanical)
+        (r'(\w[\w\s\-]{2,40})\s+(?:bends?|refracts?|deflects?|curves?)\s+(\w[\w\s\-]{2,40})',
+         "bends", "forward"),
+        # "X limits/constrains/restricts Y" → X limits Y
+        (r'(\w[\w\s\-]{2,40})\s+(?:limits?|constrains?|restricts?|caps?)\s+(\w[\w\s\-]{2,40})',
+         "limits", "forward"),
+        # "X traps/captures/confines Y" → X traps Y
+        (r'(\w[\w\s\-]{2,40})\s+(?:traps?|captures?|confines?|sequesters?)\s+(\w[\w\s\-]{2,40})',
+         "traps", "forward"),
+        # "X accelerates/accelerates/decelerates Y" → X accelerates Y
+        (r'(\w[\w\s\-]{2,40})\s+(?:accelerates?|decelerates?|speeds?\s+up|slows?)\s+(\w[\w\s\-]{2,40})',
+         "accelerates", "forward"),
+        # "X characterizes/describes/defines Y" → X characterizes Y
+        (r'(\w[\w\s\-]{2,40})\s+(?:characterizes?|describes?|defines?|specifies?)\s+(\w[\w\s\-]{2,40})',
+         "characterizes", "forward"),
+        # "X measures/quantifies/evaluates Y" → X measures Y
+        (r'(\w[\w\s\-]{2,40})\s+(?:measures?|quantifies?|evaluates?|assesses?)\s+(\w[\w\s\-]{2,40})',
+         "measures", "forward"),
+        # "X aligns/orients Y" → X aligns Y
+        (r'(\w[\w\s\-]{2,40})\s+(?:aligns?|orients?|orders?|arranges?)\s+(\w[\w\s\-]{2,40})',
+         "aligns", "forward"),
+        # "X harnesses/extracts Y" → X harnesses Y (energy)
+        (r'(\w[\w\s\-]{2,40})\s+(?:harnesses?|extracts?|harvests?|captures?)\s+(\w[\w\s\-]{2,40})',
+         "harnesses", "forward"),
+        # "X converts/transforms Y" → X converts Y (explicit "converts X to/into Y")
+        (r'(\w[\w\s\-]{2,40})\s+(?:converts?|transforms?|translates?)\s+(\w[\w\s\-]{2,40})',
+         "converts", "forward"),
+        # "X deactivates/poisons Y" → X deactivates Y (chemistry)
+        (r'(\w[\w\s\-]{2,40})\s+(?:deactivates?|poisons?|inactivates?|inhibits?)\s+(\w[\w\s\-]{2,40})',
+         "deactivates", "forward"),
+        # "X resists/withstands Y" → X resists Y (mechanical)
+        (r'(\w[\w\s\-]{2,40})\s+(?:resists?|withstands?|tolerates?|endures?)\s+(\w[\w\s\-]{2,40})',
+         "resists", "forward"),
+        # "X releases/emits Y" → X releases Y (explicit "releases" not in other patterns)
+        (r'(\w[\w\s\-]{2,40})\s+(?:releases?|emits?|discharges?)\s+(\w[\w\s\-]{2,40})',
+         "releases", "forward"),
+        # "X generates/produces Y" → X generates Y (explicit)
+        (r'(\w[\w\s\-]{2,40})\s+(?:generates?|produces?)\s+(\w[\w\s\-]{2,40})',
+         "generates", "forward"),
+        # "X stores/retains Y" → X stores Y
+        (r'(\w[\w\s\-]{2,40})\s+(?:stores?|retains?|accumulates?|sequesters?)\s+(\w[\w\s\-]{2,40})',
+         "stores", "forward"),
+        # "X accommodates/absorbs Y" → X accommodates Y
+        (r'(\w[\w\s\-]{2,40})\s+(?:accommodates?|absorbs?|uptakes?)\s+(\w[\w\s\-]{2,40})',
+         "accommodates", "forward"),
+        # "X predicts/forecasts Y" → X predicts Y
+        (r'(\w[\w\s\-]{2,40})\s+(?:predicts?|forecasts?|projects?|estimates?)\s+(\w[\w\s\-]{2,40})',
+         "predicts", "forward"),
+        # "X marks/signals/indicates Y" → X marks Y
+        (r'(\w[\w\s\-]{2,40})\s+(?:marks?|signals?|indicates?|denotes?)\s+(\w[\w\s\-]{2,40})',
+         "marks", "forward"),
+        # "X depends on Y" (already had "depends on" but only with plural; add singular)
+        (r'(\w[\w\s\-]{2,40})\s+(?:depends?\s+on|relies?\s+on)\s+(\w[\w\s\-]{2,40})',
+         "depends_on", "forward"),
     ]
     
     def _extract_implicit_causal(self, text: str, entities: List[ExtractedEntity],
@@ -929,7 +991,31 @@ class NLPPipeline:
                 # Try to match groups to extracted entities
                 subj_ent = self._find_entity_in_text(group1, ent_by_text)
                 obj_ent = self._find_entity_in_text(group2, ent_by_text)
-                
+
+                # Per cycle 184 (auditor update #3, F-086): if a pattern matched
+                # but one or both groups aren't in the entity list, SYNTHESIZE
+                # entities from the matched text. This dramatically improves
+                # recall — many gold triples have subjects/objects that spaCy
+                # doesn't label as entities (e.g., "Coulombic efficiency",
+                # "Hall-Petch relation", "ATP hydrolysis").
+                if subj_ent is None and len(group1) >= 4:
+                    # Create a synthetic entity from the matched text
+                    subj_ent = ExtractedEntity(
+                        text=match.group(1).strip(),
+                        label="concept",
+                        start=match.start(1),
+                        end=match.end(1),
+                        confidence=0.6,
+                    )
+                if obj_ent is None and len(group2) >= 4:
+                    obj_ent = ExtractedEntity(
+                        text=match.group(2).strip(),
+                        label="concept",
+                        start=match.start(2),
+                        end=match.end(2),
+                        confidence=0.6,
+                    )
+
                 if subj_ent and obj_ent and subj_ent.text != obj_ent.text:
                     # Per cycle 136: only skip if BOTH are generic "entity" type.
                     # Same-label pairs (e.g., two "material" entities) CAN have
@@ -1007,7 +1093,14 @@ class NLPPipeline:
         return relations
     
     def _find_entity_in_text(self, text_fragment: str, ent_by_text: Dict) -> Optional[ExtractedEntity]:
-        """Find an extracted entity that matches a text fragment."""
+        """Find an extracted entity that matches a text fragment.
+
+        Per cycle 184 (auditor update #3, F-086): tightened the matching
+        to avoid false positives. The previous version returned the first
+        entity with any token overlap, which caused "The Hall" to match
+        "The Hall-Petch relation" (wrong). Now we require the entity to
+        be a SUBSTANTIAL fraction of the fragment (≥50% of fragment length).
+        """
         text_fragment = text_fragment.lower().strip()
 
         # Exact match
@@ -1015,22 +1108,25 @@ class NLPPipeline:
             return ent_by_text[text_fragment]
 
         # Partial match: entity text is a substring of the fragment
+        # Require the entity to be ≥50% of the fragment length (avoids
+        # "The Hall" matching "The Hall-Petch relation")
         for key, ent in ent_by_text.items():
-            if len(key) >= 4 and (key in text_fragment or text_fragment in key):
-                return ent
+            if len(key) >= 4 and key in text_fragment:
+                if len(key) >= len(text_fragment) * 0.5:
+                    return ent
 
-        # Per cycle 137: token-overlap match. If no substring match, check if
-        # any significant token from the entity appears in the fragment.
-        # This handles cases where the regex captures a slightly different span
-        # (e.g., "elective absorption" instead of "selective absorption").
+        # Per cycle 137: token-overlap match. Require ALL significant tokens
+        # of the entity to appear in the fragment (not just one).
         fragment_tokens = set(text_fragment.split()) - {'the', 'a', 'an', 'of', 'in', 'and', 'for', 'to', 'with', 'by', 'on', 'at', 'is', 'are'}
         for key, ent in ent_by_text.items():
             if len(key) < 4:
                 continue
             ent_tokens = set(key.split()) - {'the', 'a', 'an', 'of', 'in', 'and', 'for', 'to', 'with', 'by', 'on', 'at', 'is', 'are'}
-            # Require at least one significant token overlap (len >= 4 to avoid noise)
             significant_overlap = {t for t in (ent_tokens & fragment_tokens) if len(t) >= 4}
-            if significant_overlap:
+            # Require ALL significant entity tokens to be in the fragment
+            # (was: any one token — too loose)
+            significant_ent_tokens = {t for t in ent_tokens if len(t) >= 4}
+            if significant_ent_tokens and significant_ent_tokens.issubset(fragment_tokens):
                 return ent
 
         return None

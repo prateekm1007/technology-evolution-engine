@@ -1,6 +1,6 @@
 {
   "benchmark": "gen4_mechanism_chain_pr",
-  "timestamp": "2026-08-06T15:01:03Z",
+  "timestamp": "2026-08-06T18:17:37Z",
   "sentences": 10,
   "gold_chains": 11,
   "true_positives": 10,
@@ -11,5 +11,6 @@
   "f1": 0.9091,
   "outcome_points": 3,
   "infra_score": 7,
-  "total_score": 10
+  "total_score": 9,
+  "scoring_formula": "round(10 \u00d7 F1)"
 }

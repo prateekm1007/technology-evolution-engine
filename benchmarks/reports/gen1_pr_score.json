@@ -1,6 +1,6 @@
 {
   "benchmark": "gen1_section_segmentation_pr",
-  "timestamp": "2026-08-06T14:01:42Z",
+  "timestamp": "2026-08-06T18:17:26Z",
   "files_tested": 5,
   "true_positives": 10,
   "false_positives": 0,
@@ -11,6 +11,7 @@
   "outcome_points": 3,
   "infra_score": 7,
   "total_score": 10,
+  "scoring_formula": "round(10 \u00d7 F1)",
   "per_file": [
     {
       "file": "data/ingestion/corpus_50x/1603.08320v1.txt",

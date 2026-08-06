@@ -235,11 +235,14 @@ class TestDiscoveryGraphComposition:
 
         # Query: what observations relate to patent_A?
         related = dg.cross_layer_query("patent_A", RelationType.OBSERVATION)
+        # Per F-090 (cycle 184): the original test referenced an undefined
+        # `results` variable (NameError). Fixed to use `related` consistently.
+        assert isinstance(related, list), \
+            "cross_layer_query must return a list"
         assert len(related) >= 0, (  # cross-layer traversal is complex — see note
             "Cross-layer query should find observations related to patent_A "
             "via: patent_A → patent_B → Bi2Te3 → seebeck → pred_S → obs_S"
         )
-        assert isinstance(results, list)  # cross-layer traversal returns a list
         # TODO: fix cross_layer_query to properly traverse entity_links
 
     def test_cross_layer_query_finds_mechanisms_from_patent(self):

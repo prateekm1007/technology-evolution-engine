@@ -234,7 +234,10 @@ def run_discovery_benchmark(verbose: bool = False) -> Dict:
         "precision": round(precision, 4),
         "recall": round(recall, 4),
         "f1": round(f1, 4),
-        "outcome_points": outcome,
+        "outcome_points": outcome,  # legacy
+        # Per F-085 (cycle 184): single rubric — total_score = round(10 × F1).
+        "total_score": round(10 * f1),
+        "scoring_formula": "round(10 × F1)",
         "per_discovery": results,
     }
 
