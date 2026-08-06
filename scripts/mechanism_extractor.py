@@ -101,6 +101,9 @@ ACTIVITY_VERBS = {
     "boost": {"activity": "boost", "transition": "increases", "category": "modulating"},
     "decrease": {"activity": "decrease", "transition": "decreases", "category": "modulating"},
     "reduce": {"activity": "reduce", "transition": "decreases", "category": "modulating"},
+    "minimize": {"activity": "minimize", "transition": "decreases", "category": "modulating"},
+    "maximize": {"activity": "maximize", "transition": "increases", "category": "modulating"},
+    "optimize": {"activity": "optimize", "transition": "improves", "category": "modulating"},
     "lower": {"activity": "lower", "transition": "decreases", "category": "modulating"},
     "inhibit": {"activity": "inhibit", "transition": "decreases", "category": "modulating"},
     "suppress": {"activity": "suppress", "transition": "decreases", "category": "modulating"},
@@ -115,6 +118,8 @@ ACTIVITY_VERBS = {
 
     # Characterizing activities
     "exhibit": {"activity": "exhibit", "transition": "exhibits", "category": "characterizing"},
+    "propose": {"activity": "propose", "transition": "enables", "category": "enabling"},
+    "compare": {"activity": "compare", "transition": "relates_to", "category": "characterizing"},
     "show": {"activity": "show", "transition": "exhibits", "category": "characterizing"},
     "display": {"activity": "display", "transition": "exhibits", "category": "characterizing"},
     "demonstrate": {"activity": "demonstrate", "transition": "exhibits", "category": "characterizing"},

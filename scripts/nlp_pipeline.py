@@ -818,7 +818,7 @@ class NLPPipeline:
          "governs", "forward"),  # "X governs Y"
         (r'(\w[\w\s\-]{2,40})\s+(?:increases?|enhances?|improves?|boosts?)\s+(\w[\w\s\-]{2,40})',
          "increases", "forward"),  # "X increases Y"
-        (r'(\w[\w\s\-]{2,40})\s+(?:decreases?|reduces?|inhibits?|suppresses?|prevents?)\s+(\w[\w\s\-]{2,40})',
+        (r'(\w[\w\s\-]{2,40})\s+(?:decreases?|reduces?|inhibits?|suppresses?|prevents?|minimizes?|maximizes?|optimizes?)\s+(\w[\w\s\-]{2,40})',
          "reduces", "forward"),  # "X reduces Y"
         (r'(\w[\w\s\-]{2,40})\s+(?:lowers?|raises?|elevates?|depresses?)\s+(\w[\w\s\-]{2,40})',
          "lowers", "forward"),  # "X lowers Y" (cycle 136: added "lower")

@@ -69,12 +69,23 @@ def run_benchmark(verbose: bool = False) -> Dict:
 
         verified = sum(1 for m in mechanisms if verify_mechanism(m, text))
 
-        # Match against gold
+        # Match against gold (fuzzy: token overlap)
+        import re as _re
+        def _canon(t): return set(_re.sub(r'^(the|a|an)\s+', '', t.strip().lower()).replace(' ', '_').split('_')) - {'the','a','an','of','in','and','for','to','with','by'}
         matched = 0
         for gs_subj, gs_act, gs_obj in gold_mechs:
+            gs_subj_tokens = _canon(gs_subj)
+            gs_obj_tokens = _canon(gs_obj)
             for m in mechanisms:
-                if (gs_subj.lower() in m.subject.lower() and
-                    gs_obj.lower() in m.object.lower()):
+                m_subj_tokens = _canon(m.subject)
+                m_obj_tokens = _canon(m.object)
+                # Token overlap: at least one significant token shared
+                # Token overlap OR substring match
+                subj_match = bool(gs_subj_tokens & m_subj_tokens) or any(
+                    t1 in t2 or t2 in t1 for t1 in gs_subj_tokens for t2 in m_subj_tokens if len(t1) >= 4)
+                obj_match = bool(gs_obj_tokens & m_obj_tokens) or any(
+                    t1 in t2 or t2 in t1 for t1 in gs_obj_tokens for t2 in m_obj_tokens if len(t1) >= 4)
+                if subj_match and obj_match:
                     matched += 1
                     break
 

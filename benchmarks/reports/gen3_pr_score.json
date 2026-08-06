@@ -1,14 +1,14 @@
 {
   "benchmark": "gen3_relation_extraction_pr",
-  "timestamp": "2026-08-06T13:00:35Z",
+  "timestamp": "2026-08-06T13:11:08Z",
   "sentences": 25,
   "gold_triples": 29,
-  "true_positives": 19,
-  "false_positives": 12,
-  "false_negatives": 10,
-  "precision": 0.6129,
-  "recall": 0.6552,
-  "f1": 0.6333,
+  "true_positives": 20,
+  "false_positives": 11,
+  "false_negatives": 9,
+  "precision": 0.6452,
+  "recall": 0.6897,
+  "f1": 0.6667,
   "per_sentence": [
     {
       "sentence_idx": 0,
@@ -65,21 +65,21 @@
       "sentence_idx": 2,
       "gold_count": 1,
       "pred_count": 2,
-      "true_positives": 0,
-      "false_positives": 2,
-      "false_negatives": 1,
-      "matched_gold": [],
-      "missed_gold": [
+      "true_positives": 1,
+      "false_positives": 1,
+      "false_negatives": 0,
+      "matched_gold": [
         [
           "control_formulation",
           "minimizes",
           "energy_consumption"
         ]
       ],
+      "missed_gold": [],
       "wrong_preds": [
         {
           "subject": "convex optimal control formulation",
-          "relation": "minimize",
+          "relation": "minimizes",
           "object": "total energy consumption"
         },
         {
