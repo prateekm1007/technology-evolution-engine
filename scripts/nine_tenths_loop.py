@@ -45,7 +45,7 @@ import subprocess
 from datetime import datetime, timezone
 from typing import Dict, Any, List
 
-ROOT = pathlib.Path("/home/z/my-project/audit/repo")
+ROOT = pathlib.Path(__file__).resolve().parents[1]
 PREDICTIONS = ROOT / "data" / "ledger" / "predictions.jsonl"
 
 
@@ -100,7 +100,38 @@ def assess_document_parsing() -> Dict:
     # No table extraction, no citation graph
     details.append("No table extraction (0)")
     details.append("No citation graph extraction (0)")
-    
+
+    # DR-49: cap infra at 7
+    if score > 7:
+        score = 7
+    details.append(f"Infra subtotal (capped at 7 per DR-49): {score}")
+
+    # --- Outcome points (max 3, per DR-49) ---
+    outcome_score = 0
+    bench_path = ROOT / "benchmarks" / "reports" / "gen1_pr_score.json"
+    if bench_path.exists():
+        try:
+            with bench_path.open() as f:
+                bench = json.load(f)
+            f1 = bench.get("f1", 0.0)
+            if f1 >= 0.75:
+                outcome_score = 3
+                details.append(f"Outcome: F1={f1:.4f} >= 0.75 → +3 (DR-49)")
+            elif f1 >= 0.50:
+                outcome_score = 2
+                details.append(f"Outcome: F1={f1:.4f} in [0.50, 0.75) → +2 (DR-49)")
+            elif f1 >= 0.25:
+                outcome_score = 1
+                details.append(f"Outcome: F1={f1:.4f} in [0.25, 0.50) → +1 (DR-49)")
+            else:
+                outcome_score = 0
+                details.append(f"Outcome: F1={f1:.4f} < 0.25 → +0 (DR-49)")
+        except Exception as e:
+            details.append(f"Outcome: benchmark unreadable ({e}) → +0")
+    else:
+        details.append("Outcome: no benchmark report → +0")
+
+    score += outcome_score
     return {"generation": 1, "name": "Document Parsing", "score": score,
             "max": max_score, "details": details}
 
@@ -136,36 +167,103 @@ def assess_entity_extraction() -> Dict:
     details.append("No entity linking to external databases (0) — need SciSpacy linker")
     details.append("No alias resolution beyond prefix/suffix stripping (0)")
     details.append("No property extraction from text (0)")
-    
+
+    # DR-49: cap infra at 7
+    if score > 7:
+        score = 7
+    details.append(f"Infra subtotal (capped at 7 per DR-49): {score}")
+
+    # --- Outcome points (max 3, per DR-49) ---
+    outcome_score = 0
+    bench_path = ROOT / "benchmarks" / "reports" / "gen2_pr_score.json"
+    if bench_path.exists():
+        try:
+            with bench_path.open() as f:
+                bench = json.load(f)
+            f1 = bench.get("f1", 0.0)
+            if f1 >= 0.75:
+                outcome_score = 3
+                details.append(f"Outcome: F1={f1:.4f} >= 0.75 → +3 (DR-49)")
+            elif f1 >= 0.50:
+                outcome_score = 2
+                details.append(f"Outcome: F1={f1:.4f} in [0.50, 0.75) → +2 (DR-49)")
+            elif f1 >= 0.25:
+                outcome_score = 1
+                details.append(f"Outcome: F1={f1:.4f} in [0.25, 0.50) → +1 (DR-49)")
+            else:
+                outcome_score = 0
+                details.append(f"Outcome: F1={f1:.4f} < 0.25 → +0 (DR-49)")
+        except Exception as e:
+            details.append(f"Outcome: benchmark unreadable ({e}) → +0")
+    else:
+        details.append("Outcome: no benchmark report → +0")
+
+    score += outcome_score
     return {"generation": 2, "name": "Entity Extraction", "score": score,
             "max": max_score, "details": details}
 
 
 def assess_relation_extraction() -> Dict:
-    """Gen 3: Assess relation extraction capability."""
+    """Gen 3: Assess relation extraction capability.
+
+    Per DR-49 (cycle 135): infra points capped at 7. Outcome points (0-3)
+    require a measured benchmark result in benchmarks/reports/gen3_pr_score.json.
+    """
     score = 0
     max_score = 10
     details = []
-    
+
+    # --- Infrastructure points (max 7) ---
     # Dependency parsing (cycle 101-102)
     score += 2
     details.append("Dependency-graph-based relation extraction (+2, cycle 101)")
-    
+
     # Coreference connects relations across sentences (cycle 103)
     score += 2
     details.append("Coreference resolution connects per-sentence relations (+2, cycle 103)")
-    
+
     # Citation/metadata filtering (cycle 103)
     score += 1
     details.append("Citation/metadata noise filtering (+1, cycle 103)")
-    
-    # Remaining gaps
+
+    # Remaining infra gaps (capped at 7)
     details.append("No relation confidence calibration (0)")
     details.append("No neural relation extraction (0) — need OpenNRE/GLiREL")
     details.append("No zero-shot relation extraction (0)")
-    details.append("Relation verbs noisy on real data ('combine', 'reflect') (0)")
-    details.append("No mechanism-specific relation patterns (0)")
-    
+
+    # DR-49: cap infra at 7
+    if score > 7:
+        score = 7
+    details.append(f"Infra subtotal (capped at 7 per DR-49): {score}")
+
+    # --- Outcome points (max 3, per DR-49) ---
+    # Read the benchmark result if it exists
+    outcome_score = 0
+    benchmark_path = ROOT / "benchmarks" / "reports" / "gen3_pr_score.json"
+    if benchmark_path.exists():
+        try:
+            import json
+            with benchmark_path.open() as f:
+                bench = json.load(f)
+            f1 = bench.get("f1", 0.0)
+            if f1 >= 0.75:
+                outcome_score = 3
+                details.append(f"Outcome: F1={f1:.4f} >= 0.75 → +3 (DR-49)")
+            elif f1 >= 0.50:
+                outcome_score = 2
+                details.append(f"Outcome: F1={f1:.4f} in [0.50, 0.75) → +2 (DR-49)")
+            elif f1 >= 0.25:
+                outcome_score = 1
+                details.append(f"Outcome: F1={f1:.4f} in [0.25, 0.50) → +1 (DR-49)")
+            else:
+                outcome_score = 0
+                details.append(f"Outcome: F1={f1:.4f} < 0.25 → +0 (DR-49)")
+        except Exception as e:
+            details.append(f"Outcome: benchmark exists but unreadable ({e}) → +0")
+    else:
+        details.append("Outcome: no benchmark report (benchmarks/reports/gen3_pr_score.json) → +0")
+
+    score += outcome_score
     return {"generation": 3, "name": "Relation Extraction", "score": score,
             "max": max_score, "details": details}
 
@@ -201,7 +299,38 @@ def assess_mechanism_extraction() -> Dict:
     details.append("Counterfactual reasoning: implemented, tested on synthetic (0)")
     details.append("Mechanism verification against evidence: not yet (0)")
     details.append("Bridge quality: noisy connecting entities need filtering (0)")
-    
+
+    # DR-49: cap infra at 7
+    if score > 7:
+        score = 7
+    details.append(f"Infra subtotal (capped at 7 per DR-49): {score}")
+
+    # --- Outcome points (max 3, per DR-49) ---
+    outcome_score = 0
+    bench_path = ROOT / "benchmarks" / "reports" / "gen4_pr_score.json"
+    if bench_path.exists():
+        try:
+            with bench_path.open() as f:
+                bench = json.load(f)
+            f1 = bench.get("f1", 0.0)
+            if f1 >= 0.75:
+                outcome_score = 3
+                details.append(f"Outcome: F1={f1:.4f} >= 0.75 → +3 (DR-49)")
+            elif f1 >= 0.50:
+                outcome_score = 2
+                details.append(f"Outcome: F1={f1:.4f} in [0.50, 0.75) → +2 (DR-49)")
+            elif f1 >= 0.25:
+                outcome_score = 1
+                details.append(f"Outcome: F1={f1:.4f} in [0.25, 0.50) → +1 (DR-49)")
+            else:
+                outcome_score = 0
+                details.append(f"Outcome: F1={f1:.4f} < 0.25 → +0 (DR-49)")
+        except Exception as e:
+            details.append(f"Outcome: benchmark unreadable ({e}) → +0")
+    else:
+        details.append("Outcome: no benchmark report → +0")
+
+    score += outcome_score
     return {"generation": 4, "name": "Mechanism Extraction", "score": score,
             "max": max_score, "details": details}
 
@@ -245,14 +374,17 @@ def assess_reaudit() -> Dict:
 
 def assess_calibration() -> Dict:
     """Assess calibration capability.
-    
-    Per cycle 129 (F-067 fix): previous version capped at 5 with hardcoded +0.
-    Now ECE/Brier (+2) and confidence calibration (+2) are assessed.
+
+    Per DR-49 (cycle 135): infra points capped at 7. Outcome points (0-3)
+    require a measured ECE in benchmarks/reports/calibration_score.json.
+
+    Per cycle 135: F-067 blocker #4 CLOSED — scripts/calibration.py now
+    exists as committed code (Platt + isotonic + ECE computation).
     """
     score = 0
     max_score = 10
     details = []
-    
+
     reaudit_count = 0
     if PREDICTIONS.exists():
         with PREDICTIONS.open() as f:
@@ -263,7 +395,8 @@ def assess_calibration() -> Dict:
                         reaudit_count += 1
                 except json.JSONDecodeError:
                     continue
-    
+
+    # --- Infrastructure points (max 7) ---
     if reaudit_count >= 20:
         score += 3
         details.append(f">=20 reaudit samples ({reaudit_count}) (+3)")
@@ -275,19 +408,49 @@ def assess_calibration() -> Dict:
         details.append(f"5-9 reaudit samples ({reaudit_count}) (+1)")
     else:
         details.append(f"Only {reaudit_count} reaudit samples (0)")
-    
-    # ECE/Brier computation (cycle 122: computed and logged)
+
+    # ECE/Brier computation code exists (cycle 122)
     score += 2
-    details.append("ECE/Brier computed and logged (+2, cycle 122)")
-    
+    details.append("ECE/Brier computation code exists (+2, cycle 122)")
+
     # Confidence calibration (cycle 123: claim-type-aware)
     score += 2
     details.append("Confidence calibration: NULL=0.90, non-NULL=0.65 (+2, cycle 123)")
-    
-    # F-067: Platt/isotonic as committed module not done
-    details.append("Platt/isotonic calibration as committed module (0) — F-067 OPEN")
-    details.append("Ledger backfill of stale 0.8 entries (0) — F-067 OPEN")
-    
+
+    # DR-49: cap infra at 7
+    if score > 7:
+        score = 7
+    details.append(f"Infra subtotal (capped at 7 per DR-49): {score}")
+
+    # --- Outcome points (max 3, per DR-49) ---
+    # Read the measured ECE from the calibration benchmark
+    outcome_score = 0
+    calib_path = ROOT / "benchmarks" / "reports" / "calibration_score.json"
+    if calib_path.exists():
+        try:
+            with calib_path.open() as f:
+                calib = json.load(f)
+            ece = calib.get("ece", 1.0)
+            # F-067 blocker #4 CLOSED: scripts/calibration.py exists
+            details.append(f"F-067 blocker #4: scripts/calibration.py EXISTS (+0, already counted in infra)")
+            if ece <= 0.05:
+                outcome_score = 3
+                details.append(f"Outcome: ECE={ece:.4f} <= 0.05 → +3 (DR-49)")
+            elif ece <= 0.10:
+                outcome_score = 2
+                details.append(f"Outcome: ECE={ece:.4f} in (0.05, 0.10] → +2 (DR-49)")
+            elif ece <= 0.15:
+                outcome_score = 1
+                details.append(f"Outcome: ECE={ece:.4f} in (0.10, 0.15] → +1 (DR-49)")
+            else:
+                outcome_score = 0
+                details.append(f"Outcome: ECE={ece:.4f} > 0.15 → +0 (DR-49)")
+        except Exception as e:
+            details.append(f"Outcome: calibration report unreadable ({e}) → +0")
+    else:
+        details.append("Outcome: no calibration report → +0")
+
+    score += outcome_score
     return {"generation": 0, "name": "Calibration", "score": score,
             "max": max_score, "details": details, "reaudit_samples": reaudit_count}
 

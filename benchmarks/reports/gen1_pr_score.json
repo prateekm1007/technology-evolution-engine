@@ -1,0 +1,47 @@
+{
+  "benchmark": "gen1_section_segmentation_pr",
+  "timestamp": "2026-08-06T02:38:13Z",
+  "files_tested": 2,
+  "true_positives": 4,
+  "false_positives": 0,
+  "false_negatives": 5,
+  "precision": 1.0,
+  "recall": 0.4444,
+  "f1": 0.6154,
+  "outcome_points": 2,
+  "infra_score": 7,
+  "total_score": 9,
+  "per_file": [
+    {
+      "file": "data/ingestion/corpus_50x/1603.08320v1.txt",
+      "expected": [
+        "abstract",
+        "introduction",
+        "results",
+        "title",
+        "conclusion"
+      ],
+      "found": [
+        "title",
+        "abstract"
+      ],
+      "tp": 2,
+      "fn": 3
+    },
+    {
+      "file": "data/ingestion/corpus_50x/2005.03678v3.txt",
+      "expected": [
+        "title",
+        "abstract",
+        "conclusion",
+        "introduction"
+      ],
+      "found": [
+        "title",
+        "abstract"
+      ],
+      "tp": 2,
+      "fn": 2
+    }
+  ]
+}

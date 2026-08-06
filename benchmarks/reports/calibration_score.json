@@ -1,0 +1,88 @@
+{
+  "method": "raw",
+  "n_samples": 35,
+  "ece": 0.1386,
+  "brier": 0.2,
+  "bins": [
+    {
+      "bin_lo": 0.0,
+      "bin_hi": 0.1,
+      "count": 0,
+      "accuracy": 0.0,
+      "confidence": 0.0,
+      "gap": 0.0
+    },
+    {
+      "bin_lo": 0.1,
+      "bin_hi": 0.2,
+      "count": 0,
+      "accuracy": 0.0,
+      "confidence": 0.0,
+      "gap": 0.0
+    },
+    {
+      "bin_lo": 0.2,
+      "bin_hi": 0.3,
+      "count": 0,
+      "accuracy": 0.0,
+      "confidence": 0.0,
+      "gap": 0.0
+    },
+    {
+      "bin_lo": 0.3,
+      "bin_hi": 0.4,
+      "count": 0,
+      "accuracy": 0.0,
+      "confidence": 0.0,
+      "gap": 0.0
+    },
+    {
+      "bin_lo": 0.4,
+      "bin_hi": 0.5,
+      "count": 0,
+      "accuracy": 0.0,
+      "confidence": 0.0,
+      "gap": 0.0
+    },
+    {
+      "bin_lo": 0.5,
+      "bin_hi": 0.6,
+      "count": 0,
+      "accuracy": 0.0,
+      "confidence": 0.0,
+      "gap": 0.0
+    },
+    {
+      "bin_lo": 0.6,
+      "bin_hi": 0.7,
+      "count": 8,
+      "accuracy": 0.875,
+      "confidence": 0.6688,
+      "gap": 0.2062
+    },
+    {
+      "bin_lo": 0.7,
+      "bin_hi": 0.8,
+      "count": 0,
+      "accuracy": 0.0,
+      "confidence": 0.0,
+      "gap": 0.0
+    },
+    {
+      "bin_lo": 0.8,
+      "bin_hi": 0.9,
+      "count": 25,
+      "accuracy": 0.68,
+      "confidence": 0.8,
+      "gap": 0.12
+    },
+    {
+      "bin_lo": 0.9,
+      "bin_hi": 1.0,
+      "count": 2,
+      "accuracy": 1.0,
+      "confidence": 0.9,
+      "gap": 0.1
+    }
+  ]
+}

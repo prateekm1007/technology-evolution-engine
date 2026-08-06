@@ -2252,3 +2252,153 @@ fix is procedural: every verification cycle begins with `git fetch && git pull`.
 DR-19 (proposed) should be amended: "No worklog entry may claim work is done
 unless the files are committed AND pushed AND fetched. The worklog indexes the
 remote, not any local copy."
+
+---
+
+### F-068 — CALIB-SCORE-DESIGN: calibration scoring awarded infra points without measuring ECE (P1, cycle 135)
+
+**Found:** cycle 135 (rebuild of unpushed cycle 130 work). Verified against
+committed code at commit 3e732d1 (cycle 129).
+
+**Repro:**
+```bash
+# Before cycle 135 fix:
+python3 -c "
+import sys; sys.path.insert(0, '.')
+from scripts.nine_tenths_loop import assess_calibration
+r = assess_calibration()
+print(r['score'], r['details'])
+"
+# Output: 7/10 with details awarding +3 (samples), +2 (ECE code exists),
+# +2 (confidence calibration) — but NO measured ECE was read.
+```
+
+**Observed:** The assess_calibration() function awarded points for
+infrastructure existing (>=20 samples, ECE computation code exists,
+confidence calibration exists) without reading a measured ECE value.
+The score reflected what was built, not what worked. This is the same
+pattern as F-067 (scorecard produced outside committed code) at a
+deeper level: the code exists, but the score doesn't measure its output.
+
+**Root cause:** The scoring function had no outcome-quality gate. It
+awarded points for code existing without requiring a measured result.
+
+**Severity:** P1 — the score was honest about infrastructure (7/10)
+but could not rise above 7 without a measured outcome. The risk is that
+future cycles award infra points that imply outcome quality.
+
+**Status:** RESOLVED in cycle 135. assess_calibration() now reads
+benchmarks/reports/calibration_score.json (produced by
+scripts/calibration.py) and awards outcome points per DR-49:
+- ECE <= 0.05 → +3
+- ECE <= 0.10 → +2
+- ECE <= 0.15 → +1
+- ECE > 0.15 → +0
+
+Measured raw ECE = 0.1386 (35 reaudit samples) → +1 outcome → 8/10.
+Platt-scaled ECE = 0.0037 → +3 outcome → 10/10 (but may be overfit on
+35 samples; the honest baseline is raw ECE).
+
+**Lesson:** Scoring what exists is not scoring what works. An ECE
+computation function that exists but is never run produces no measured
+ECE. The fix is DR-49: outcome points require a benchmark result on
+disk.
+
+---
+
+### F-069 — F-068-RECURRING: Gen 3 relation extraction scored infra without outcome (P1, cycle 135)
+
+**Found:** cycle 135 (rebuild of unpushed cycle 131 work). Verified
+against committed code at commit 3e732d1.
+
+**Repro:**
+```bash
+# Before cycle 135 fix:
+python3 -c "
+import sys; sys.path.insert(0, '.')
+from scripts.nine_tenths_loop import assess_relation_extraction
+r = assess_relation_extraction()
+print(r['score'], r['details'])
+"
+# Output: 5/10 with details awarding +2 (dependency parsing),
+# +2 (coreference), +1 (citation filtering) — but NO P/R benchmark.
+```
+
+**Observed:** assess_relation_extraction() awarded 5 points for
+infrastructure (dependency parsing, coreference, citation filtering)
+without any measured P/R/F1. This is the F-068 pattern recurring at
+Gen 3: the F-068 fix was applied to calibration, but the same pattern
+existed at Gen 3 unfixed.
+
+**Root cause:** F-068 was fixed locally (not generically). The lesson
+"score outcome, not infrastructure" was not generalized to all scoring
+functions. This is the meta-failure: fixing an instance of a pattern
+without fixing the pattern class.
+
+**Severity:** P1 — Gen 3 at 5/10 (infra) could not honestly rise
+without a measured F1. The risk is awarding infra points that imply
+extraction quality.
+
+**Status:** RESOLVED in cycle 135.
+1. benchmarks/relation_extraction_benchmark.py built (25 sentences,
+   29 gold triples). Measured F1 = 0.1212 (precision 50%, recall 6.9%).
+2. assess_relation_extraction() now reads
+   benchmarks/reports/gen3_pr_score.json per DR-49.
+3. F1 = 0.1212 < 0.25 → +0 outcome → Gen 3 = 5/10 (unchanged, but
+   now the score is outcome-validated, not infra-only).
+
+**Lesson:** "Name the pattern, not the instance." F-068 was an instance
+of the pattern "score infra, not outcome." The fix is DR-49: every
+scoring function has an outcome-quality gate. This makes the pattern
+structurally impossible, not behaviorally avoided.
+
+---
+
+### F-070 — Entity extraction bug: extract_entities() fails on many sentences (P1, cycle 135)
+
+**Found:** cycle 135, when running the Gen 3 P/R benchmark. The
+benchmark reported "cannot access local variable 'ent' where it is not
+associated with a value" on 12 of 25 sentences, producing 0 entities
+and therefore 0 relations.
+
+**Repro:**
+```bash
+python3 -c "
+import sys; sys.path.insert(0, '.')
+from scripts.nlp_pipeline import NLPPipeline
+p = NLPPipeline()
+try:
+    ents = p.extract_entities('Surface roughness enhances adhesion between the coating and the substrate.')
+    print(len(ents), 'entities')
+except Exception as e:
+    print('ERROR:', e)
+"
+# Output: ERROR: cannot access local variable 'ent' where it is not associated with a value
+```
+
+**Observed:** extract_entities() in scripts/nlp_pipeline.py throws
+"cannot access local variable 'ent'" on sentences where the spaCy
+entity loop completes without assigning 'ent' in a conditional path.
+This produces 0 entities, which cascades to 0 relations in
+extract_relations(). The Gen 3 benchmark measured F1=0.1212 largely
+because of this bug — 12 of 25 sentences got 0 predictions.
+
+**Root cause:** A variable scoping bug in extract_entities(). The
+variable 'ent' is referenced after a loop/conditional that may not
+assign it. This is a Python scoping issue where a variable defined
+inside a try/except or if-block is referenced outside it.
+
+**Severity:** P1 — this bug suppresses recall on many sentences.
+Fixing it should significantly improve Gen 3 F1 (from 0.1212 toward
+0.25+). It is the highest-leverage fix for Gen 3.
+
+**Status:** OPEN. The fix requires editing extract_entities() in
+scripts/nlp_pipeline.py to ensure 'ent' is always assigned before use
+(default to None, check before reference). This is the next cycle's
+priority.
+
+**Lesson:** The benchmark found the bug. This is the DR-49 principle
+in action: without a measured outcome (F1), the bug was invisible
+(the infra "works" — the function exists and runs on some sentences).
+The outcome measurement revealed that it fails on many sentences.
+Measuring outcomes surfaces bugs that infra scoring hides.

@@ -356,3 +356,58 @@ implementation should be checked against — the next artifact should be
 `scripts/reaudit_loop.py` built to this spec, followed by an external, independent audit
 of whether the implementation actually matches it. That audit should not be performed by
 the same session, instance, or context that wrote either this document or the code.
+
+---
+
+## 10. DR-49 — Outcome-quality gate (cycle 135, rebuild of unpushed cycle 132 work)
+
+### The principle
+
+Every scoring function in `nine_tenths_loop.py` must have an outcome-quality
+gate. Infrastructure points can contribute to the score but cannot exceed
+7/10 without a measured outcome. Scores above 7/10 require a measured
+outcome (P/R/F1, ECE, accuracy, overturn rate) that justifies the higher
+score.
+
+### Why this exists
+
+F-068 (CALIB-SCORE-DESIGN) and F-069 (F-068-RECURRING) documented the
+pattern: scoring functions awarded points for infrastructure existing
+(calibration code exists → points; relation extraction pipeline exists →
+points) without measuring whether the infrastructure actually produced
+correct results. This is the same pattern as F-067 (scorecard fabricated
+outside committed code) at a deeper level: the code exists, but the
+score reflects what is built, not what works.
+
+### The rule
+
+For each generation's `assess_*()` function:
+
+```
+infra_score (max 7)  +  outcome_score (max 3, requires measured outcome)  =  total (max 10)
+```
+
+- **Infra points (0-7):** awarded for code existing, tests passing,
+  infrastructure wired. Capped at 7.
+- **Outcome points (0-3):** awarded only when a benchmark has been run
+  and produced a measured result. The score is a function of the metric:
+  - F1 >= 0.75 → +3
+  - F1 >= 0.50 → +2
+  - F1 >= 0.25 → +1
+  - F1 < 0.25  → +0
+  - (For ECE: ECE <= 0.05 → +3; <= 0.10 → +2; <= 0.15 → +1; > 0.15 → +0)
+  - (For overturn rate: >= 20% → +3; >= 10% → +2; > 0% → +1; 0% → +0)
+
+### Enforcement
+
+The `assess_*()` functions must read the benchmark result from
+`benchmarks/reports/<name>_score.json` (produced by the benchmark runner).
+If the report file does not exist, outcome points = 0. The scorecard
+cannot award outcome points without a measured result on disk.
+
+### What this makes structurally impossible
+
+The F-068/F-069 pattern — scoring what exists, not what works — is now
+structurally impossible. A scoring function cannot produce >7/10 without
+a benchmark result file on disk. The scorecard is honest (DR-48: from
+committed code) AND conservative (DR-49: infra alone caps at 7/10).
