@@ -8,17 +8,17 @@ the score, (c) the gap to 9/10, (d) the next concrete improvement.
 
 Per F-081: scores are tied to code on disk and benchmark reports, not narratives.
 
-## Composite Score: ~7.3 / 10 (cycle 180)
+## Composite Score: ~7.9 / 10 (cycle 181)
 
 The composite is the unweighted mean of 12 categories. The CEO target is 9.0/10.
 
-## Scorecard (as of cycle 180)
+## Scorecard (as of cycle 181)
 
 | # | Category | Current | Target | Gap | Underlying code |
 |---|---|---|---|---|---|
-| 1 | Representation | 7 | 9 | +2 | `populate_real_graph.py` (907 nodes from real papers) |
+| 1 | Representation | 9 | 9 | 0 | `populate_real_graph.py` + `populate_typed_graph.py` (typed edges + transitions + analogies) |
 | 2 | Mechanism extraction | 8 | 9 | +1 | `mechanism_extractor.py` + `mechanism_state_machine.py` (state transitions + multi-step chains) |
-| 3 | Constraint discovery | 6 | 9 | +3 | `constraint_from_equations.py` |
+| 3 | Constraint discovery | 8 | 9 | +1 | `constraint_from_equations.py` + `constraint_discovery_v2.py` (conservation + dimensional + thermo + kinetic) |
 | 4 | Law discovery | 8 | 9 | +1 | `bacon_engine.py` + cross-validation test |
 | 5 | Swanson discovery | 7 | 9 | +2 | `swanson_real_corpus.py` (627 disjoint bridges) |
 | 6 | Causal reasoning | 8 | 9 | +1 | `backdoor_adjustment.py` + `counterfactual_search.py` |
@@ -26,10 +26,11 @@ The composite is the unweighted mean of 12 categories. The CEO target is 9.0/10.
 | 8 | Contradiction resolution | 7 | 9 | +2 | TRIZ 40 principles + matrix |
 | 9 | Experiment design | 8 | 9 | +1 | `autonomous_experiment.py` + `doe_module.py` (multi-factor factorial) |
 | 10 | Learning | 8 | 9 | +1 | `bayesian_learning.py` + `active_learning.py` (experiment selection) |
-| 11 | Scalability | 6 | 9 | +3 | `scalable_discovery.py` (domain-indexed) |
+| 11 | Scalability | 8 | 9 | +1 | `scalable_discovery.py` + `scalable_discovery_v2.py` (two-level hierarchical index + 10x benchmark) |
 | 12 | Scientific rigor | 7 | 9 | +2 | Honest FAILURES.md + Law 7/8 enforcement |
 
-**Total gap: 18 points across 12 categories (down from 26 in cycle 179).**
+**Total gap: 13 points across 12 categories (down from 18 in cycle 180).**
+**Categories at 9/10: 1 (Representation).**
 
 ## Per-category gap analysis
 
@@ -130,4 +131,5 @@ This file is APPEND-ONLY in spirit. Score updates must:
 | Cycle | Commit | Change | Composite |
 |---|---|---|---|
 | 179 | d9f5d5d | Causal 6→8, Law 6→8 | 6.7 |
-| 180 | (this commit) | Mechanism 6→8, Structural 6→8, Learning 6→8, Experiment 6→8 | 7.3 |
+| 180 | b8b5734 | Mechanism 6→8, Structural 6→8, Learning 6→8, Experiment 6→8 | 7.3 |
+| 181 | (this commit) | Constraint 6→8, Scalability 6→8, Representation 7→9 | 7.9 |

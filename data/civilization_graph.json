@@ -17627,6 +17627,38 @@
       "domain": "extracted_1304.1611v1",
       "source": "nlp_extraction",
       "extracted_at": "2026-08-06T16:57:19.822611+00:00"
+    },
+    {
+      "id": "of",
+      "type": "quantity",
+      "label": "of",
+      "domain": "extracted_1104.3379v1",
+      "source": "equation_extractor",
+      "extracted_at": "2026-08-06T17:43:39.694979+00:00"
+    },
+    {
+      "id": "wh",
+      "type": "quantity",
+      "label": "Wh",
+      "domain": "extracted_1104.3379v1",
+      "source": "equation_extractor",
+      "extracted_at": "2026-08-06T17:43:39.694979+00:00"
+    },
+    {
+      "id": "kg",
+      "type": "quantity",
+      "label": "kg",
+      "domain": "extracted_1104.3379v1",
+      "source": "equation_extractor",
+      "extracted_at": "2026-08-06T17:43:39.694979+00:00"
+    },
+    {
+      "id": "kw",
+      "type": "quantity",
+      "label": "kW",
+      "domain": "extracted_1104.3379v1",
+      "source": "equation_extractor",
+      "extracted_at": "2026-08-06T17:43:39.694979+00:00"
     }
   ],
   "edges": [
@@ -22268,6 +22300,165 @@
       "source_paper": "1304.1611v1",
       "extraction_method": "nlp_pipeline",
       "created_at": "2026-08-06T16:57:19.822611+00:00"
+    },
+    {
+      "source": "wh",
+      "target": "of",
+      "relationship": "determines",
+      "direction": "determines",
+      "predicate_category": "determining",
+      "weight": 0.85,
+      "description": "Wh determines of (from of ~48Wh/kg)",
+      "source_equation": "of ~48Wh/kg",
+      "source_paper": "1104.3379v1",
+      "extraction_method": "equation_extractor",
+      "created_at": "2026-08-06T17:43:39.694979+00:00"
+    },
+    {
+      "source": "kg",
+      "target": "of",
+      "relationship": "determines",
+      "direction": "determines",
+      "predicate_category": "determining",
+      "weight": 0.85,
+      "description": "kg determines of (from of ~48Wh/kg)",
+      "source_equation": "of ~48Wh/kg",
+      "source_paper": "1104.3379v1",
+      "extraction_method": "equation_extractor",
+      "created_at": "2026-08-06T17:43:39.694979+00:00"
+    },
+    {
+      "source": "kw",
+      "target": "of",
+      "relationship": "determines",
+      "direction": "determines",
+      "predicate_category": "determining",
+      "weight": 0.85,
+      "description": "kW determines of (from of ~21kW/kg)",
+      "source_equation": "of ~21kW/kg",
+      "source_paper": "1104.3379v1",
+      "extraction_method": "equation_extractor",
+      "created_at": "2026-08-06T17:43:39.694979+00:00"
+    },
+    {
+      "source": "component_cyclone_chamber",
+      "target": "principle_radiative_cooling_principle",
+      "relationship": "analogous_to",
+      "direction": "analogous_to",
+      "predicate_category": "analogous_to",
+      "weight": 1.0,
+      "description": "Depth-2 analogy: ['domain_fluid_dynamics', 'sub_cyclonic_separation', 'component_cyclone_chamber'] \u2194 ['domain_thermodynamics', 'sub_radiative_cooling', 'principle_radiative_cooling_principle'] (systematicity=1.00)",
+      "pair_alignment": "(unknown\u2192unknown) aligns with (unknown\u2192unknown) [2/2 exact, sys=1.00]",
+      "extraction_method": "structural_analogy_v2",
+      "created_at": "2026-08-06T17:43:39.694979+00:00"
+    },
+    {
+      "source": "component_cyclone_chamber",
+      "target": "sub_thermal_management",
+      "relationship": "analogous_to",
+      "direction": "analogous_to",
+      "predicate_category": "analogous_to",
+      "weight": 1.0,
+      "description": "Depth-2 analogy: ['domain_fluid_dynamics', 'sub_cyclonic_separation', 'component_cyclone_chamber'] \u2194 ['domain_thermodynamics', 'sub_radiative_cooling', 'sub_thermal_management'] (systematicity=1.00)",
+      "pair_alignment": "(unknown\u2192unknown) aligns with (unknown\u2192unknown) [2/2 exact, sys=1.00]",
+      "extraction_method": "structural_analogy_v2",
+      "created_at": "2026-08-06T17:43:39.694979+00:00"
+    },
+    {
+      "source": "component_cyclone_chamber",
+      "target": "real_US20160363396A1_an_array_of_said_metamaterial_nanostructures_arranged_in_an",
+      "relationship": "analogous_to",
+      "direction": "analogous_to",
+      "predicate_category": "analogous_to",
+      "weight": 1.0,
+      "description": "Depth-2 analogy: ['domain_fluid_dynamics', 'sub_cyclonic_separation', 'component_cyclone_chamber'] \u2194 ['domain_thermodynamics', 'sub_radiative_cooling', 'real_US20160363396A1_an_array_of_said_metamaterial_nanostructures_arranged_in_an'] (systematicity=1.00)",
+      "pair_alignment": "(unknown\u2192unknown) aligns with (unknown\u2192unknown) [2/2 exact, sys=1.00]",
+      "extraction_method": "structural_analogy_v2",
+      "created_at": "2026-08-06T17:43:39.694979+00:00"
+    },
+    {
+      "source": "component_cyclone_chamber",
+      "target": "real_US20160363396A1_reflect_at_least_94%_of_incident_solar_light_while_passing_",
+      "relationship": "analogous_to",
+      "direction": "analogous_to",
+      "predicate_category": "analogous_to",
+      "weight": 1.0,
+      "description": "Depth-2 analogy: ['domain_fluid_dynamics', 'sub_cyclonic_separation', 'component_cyclone_chamber'] \u2194 ['domain_thermodynamics', 'sub_radiative_cooling', 'real_US20160363396A1_reflect_at_least_94%_of_incident_solar_light_while_passing_'] (systematicity=1.00)",
+      "pair_alignment": "(unknown\u2192unknown) aligns with (unknown\u2192unknown) [2/2 exact, sys=1.00]",
+      "extraction_method": "structural_analogy_v2",
+      "created_at": "2026-08-06T17:43:39.694979+00:00"
+    },
+    {
+      "source": "component_cyclone_chamber",
+      "target": "real_US20160363396A1_generate_broadband_radiant_energy_including_both_said_porti",
+      "relationship": "analogous_to",
+      "direction": "analogous_to",
+      "predicate_category": "analogous_to",
+      "weight": 1.0,
+      "description": "Depth-2 analogy: ['domain_fluid_dynamics', 'sub_cyclonic_separation', 'component_cyclone_chamber'] \u2194 ['domain_thermodynamics', 'sub_radiative_cooling', 'real_US20160363396A1_generate_broadband_radiant_energy_including_both_said_porti'] (systematicity=1.00)",
+      "pair_alignment": "(unknown\u2192unknown) aligns with (unknown\u2192unknown) [2/2 exact, sys=1.00]",
+      "extraction_method": "structural_analogy_v2",
+      "created_at": "2026-08-06T17:43:39.694979+00:00"
+    },
+    {
+      "source": "component_cyclone_chamber",
+      "target": "real_US20160363396A1_transmit_at_least_said_portion_of_said_radiant_energy_emitt",
+      "relationship": "analogous_to",
+      "direction": "analogous_to",
+      "predicate_category": "analogous_to",
+      "weight": 1.0,
+      "description": "Depth-2 analogy: ['domain_fluid_dynamics', 'sub_cyclonic_separation', 'component_cyclone_chamber'] \u2194 ['domain_thermodynamics', 'sub_radiative_cooling', 'real_US20160363396A1_transmit_at_least_said_portion_of_said_radiant_energy_emitt'] (systematicity=1.00)",
+      "pair_alignment": "(unknown\u2192unknown) aligns with (unknown\u2192unknown) [2/2 exact, sys=1.00]",
+      "extraction_method": "structural_analogy_v2",
+      "created_at": "2026-08-06T17:43:39.694979+00:00"
+    },
+    {
+      "source": "component_cyclone_chamber",
+      "target": "real_US20160363396A1_dissipate_heat_in_the_form_of_radiant_energy_that_is_transm",
+      "relationship": "analogous_to",
+      "direction": "analogous_to",
+      "predicate_category": "analogous_to",
+      "weight": 1.0,
+      "description": "Depth-2 analogy: ['domain_fluid_dynamics', 'sub_cyclonic_separation', 'component_cyclone_chamber'] \u2194 ['domain_thermodynamics', 'sub_radiative_cooling', 'real_US20160363396A1_dissipate_heat_in_the_form_of_radiant_energy_that_is_transm'] (systematicity=1.00)",
+      "pair_alignment": "(unknown\u2192unknown) aligns with (unknown\u2192unknown) [2/2 exact, sys=1.00]",
+      "extraction_method": "structural_analogy_v2",
+      "created_at": "2026-08-06T17:43:39.694979+00:00"
+    },
+    {
+      "source": "component_cyclone_chamber",
+      "target": "real_US20160363396A1_reflect_incident_solar_radiation_directed_onto_the_upward-f",
+      "relationship": "analogous_to",
+      "direction": "analogous_to",
+      "predicate_category": "analogous_to",
+      "weight": 1.0,
+      "description": "Depth-2 analogy: ['domain_fluid_dynamics', 'sub_cyclonic_separation', 'component_cyclone_chamber'] \u2194 ['domain_thermodynamics', 'sub_radiative_cooling', 'real_US20160363396A1_reflect_incident_solar_radiation_directed_onto_the_upward-f'] (systematicity=1.00)",
+      "pair_alignment": "(unknown\u2192unknown) aligns with (unknown\u2192unknown) [2/2 exact, sys=1.00]",
+      "extraction_method": "structural_analogy_v2",
+      "created_at": "2026-08-06T17:43:39.694979+00:00"
+    },
+    {
+      "source": "component_cyclone_chamber",
+      "target": "real_US20160363396A1_a_plurality_of_metamaterial_nanostructures_configured_to_di",
+      "relationship": "analogous_to",
+      "direction": "analogous_to",
+      "predicate_category": "analogous_to",
+      "weight": 1.0,
+      "description": "Depth-2 analogy: ['domain_fluid_dynamics', 'sub_cyclonic_separation', 'component_cyclone_chamber'] \u2194 ['domain_thermodynamics', 'sub_radiative_cooling', 'real_US20160363396A1_a_plurality_of_metamaterial_nanostructures_configured_to_di'] (systematicity=1.00)",
+      "pair_alignment": "(unknown\u2192unknown) aligns with (unknown\u2192unknown) [2/2 exact, sys=1.00]",
+      "extraction_method": "structural_analogy_v2",
+      "created_at": "2026-08-06T17:43:39.694979+00:00"
+    },
+    {
+      "source": "component_cyclone_chamber",
+      "target": "real_US20160363396A1_8_\u03bcm_to_13_\u03bcm_and_16_\u03bcm_to_28_\u03bcm",
+      "relationship": "analogous_to",
+      "direction": "analogous_to",
+      "predicate_category": "analogous_to",
+      "weight": 1.0,
+      "description": "Depth-2 analogy: ['domain_fluid_dynamics', 'sub_cyclonic_separation', 'component_cyclone_chamber'] \u2194 ['domain_thermodynamics', 'sub_radiative_cooling', 'real_US20160363396A1_8_\u03bcm_to_13_\u03bcm_and_16_\u03bcm_to_28_\u03bcm'] (systematicity=1.00)",
+      "pair_alignment": "(unknown\u2192unknown) aligns with (unknown\u2192unknown) [2/2 exact, sys=1.00]",
+      "extraction_method": "structural_analogy_v2",
+      "created_at": "2026-08-06T17:43:39.694979+00:00"
     }
   ],
   "links": []
