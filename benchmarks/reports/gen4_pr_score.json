@@ -1,15 +1,15 @@
 {
   "benchmark": "gen4_mechanism_chain_pr",
-  "timestamp": "2026-08-06T10:11:41Z",
+  "timestamp": "2026-08-06T10:24:37Z",
   "sentences": 10,
   "gold_chains": 11,
   "true_positives": 9,
-  "false_positives": 6,
+  "false_positives": 4,
   "false_negatives": 2,
-  "precision": 0.6,
+  "precision": 0.6923,
   "recall": 0.8182,
-  "f1": 0.6923,
-  "outcome_points": 2,
+  "f1": 0.75,
+  "outcome_points": 3,
   "infra_score": 7,
-  "total_score": 9
+  "total_score": 10
 }

@@ -721,8 +721,10 @@ class NLPPipeline:
          "penetrates", "forward"),  # "X penetrates Y"
         (r'(\w[\w\s\-]{2,40})\s+(?:scatters?|deflects?|refracts?)\s+(\w[\w\s\-]{2,40})',
          "scatters", "forward"),  # "X scatters Y"
-        (r'(?:the|a|an)\s+(\w[\w\s\-]{2,40})\s+(?:of|in|on)\s+(\w[\w\s\-]{2,40})',
-         "relates_to", "forward"),  # "the X of Y" → X relates_to Y
+        # Per cycle 137: REMOVED the "the X of Y" → relates_to pattern.
+        # It was too generic and produced massive false positives (matched
+        # almost any sentence with of/in/on). The pattern generated noise
+        # like "baseline --in--> simulations" which is not a real relation.
         # Cycle 125: additional patterns for scientific writing
         (r'(\w[\w\s\-]{2,40})\s+(?:arises?\s+from|stems?\s+from|originates?\s+from|derives?\s+from|results?\s+from)\s+(\w[\w\s\-]{2,40})',
          "causes", "reverse"),  # "X arises from Y" → Y causes X
@@ -795,6 +797,13 @@ class NLPPipeline:
                     # uses actual verbs ("enhances", "determines", "reduces").
                     # Extract the actual verb from the matched text.
                     actual_verb = self._extract_verb_from_match(match, text)
+
+                    # Per cycle 137: skip if the "verb" is actually a noun in context.
+                    # Words like "control", "filter", "power", "scatter" can be nouns
+                    # or verbs. If the extracted verb is a noun in the sentence, skip
+                    # this relation — it's a false positive from pattern matching.
+                    if self._is_noun_in_context(actual_verb, match, doc):
+                        continue
 
                     # Determine direction
                     if direction == "reverse":
@@ -875,6 +884,32 @@ class NLPPipeline:
             return words[0]
         except Exception:
             return "relates_to"
+
+    def _is_noun_in_context(self, word: str, match, doc) -> bool:
+        """Check if a word is used as a noun in the sentence context (cycle 137).
+
+        Words like "control", "filter", "power", "scatter" can be nouns or verbs.
+        The implicit causal patterns may match them as verbs when they're actually
+        nouns in the sentence (e.g., "control formulation" — "control" is a noun).
+
+        This method finds the word in the spaCy doc and checks its POS tag. If it's
+        NOUN/PROPN, it's a false positive verb and the relation should be skipped.
+        """
+        word_lower = word.lower().strip()
+        if not word_lower or len(word_lower) < 3:
+            return False
+        # Find the word in the doc near the match position
+        match_start = match.start()
+        for token in doc:
+            if token.text.lower() == word_lower and token.idx >= match_start - 50:
+                # Check if this token is a noun
+                if token.pos_ in ("NOUN", "PROPN"):
+                    return True
+                # Also check if it's a compound noun (part of a noun phrase)
+                if token.dep_ == "compound":
+                    return True
+                return False
+        return False
     
     def _extract_neural_relations(self, text: str, entities: List[ExtractedEntity],
                                    doc: Doc) -> List[ExtractedRelation]:
