@@ -1,0 +1,122 @@
+{
+  "benchmark": "discovery_capability",
+  "timestamp": "2026-08-06T11:55:30Z",
+  "total_gold_discoveries": 5,
+  "true_positives": 4,
+  "false_positives": 0,
+  "false_negatives": 1,
+  "precision": 1.0,
+  "recall": 0.8,
+  "f1": 0.8889,
+  "outcome_points": 3,
+  "per_discovery": [
+    {
+      "id": "DISC-GOLD-001",
+      "literature_a": "mycelium biomineralization",
+      "literature_b": "calcium carbonate materials",
+      "expected_bridge": "biomineralization",
+      "bridge_found": true,
+      "entities_a": [
+        "Fungi",
+        "calcium carbonate",
+        "biomineralization",
+        "stable mineral structures"
+      ],
+      "entities_b": [
+        "Calcium",
+        "controlled morphology",
+        "biological pathways",
+        "biomineralization"
+      ],
+      "shared_entities": [
+        "biomineralization",
+        "calcium carbonate"
+      ]
+    },
+    {
+      "id": "DISC-GOLD-002",
+      "literature_a": "nanofiber membranes",
+      "literature_b": "blood-brain barrier transport",
+      "expected_bridge": "tight junctions",
+      "bridge_found": false,
+      "entities_a": [
+        "Nanofiber membranes act",
+        "size-selective barriers",
+        "filtering molecules",
+        "pore",
+        "density"
+      ],
+      "entities_b": [
+        "Blood-brain barrier",
+        "size-selective pores",
+        "molecular transport"
+      ],
+      "shared_entities": [
+        "pore"
+      ]
+    },
+    {
+      "id": "DISC-GOLD-003",
+      "literature_a": "Stefan-Boltzmann thermal radiation",
+      "literature_b": "radiative cooling materials",
+      "expected_bridge": "thermal emission",
+      "bridge_found": true,
+      "entities_a": [
+        "Stefan-Boltzmann law",
+        "thermal radiation emission",
+        "Q = \u03b5\u03c3AT\u2074",
+        "fourth power"
+      ],
+      "entities_b": [
+        "Radiative cooling materials",
+        "sub",
+        "thermal emission",
+        "atmospheric window"
+      ],
+      "shared_entities": []
+    },
+    {
+      "id": "DISC-GOLD-004",
+      "literature_a": "phase change materials",
+      "literature_b": "infrared stealth camouflage",
+      "expected_bridge": "thermal regulation",
+      "bridge_found": true,
+      "entities_a": [
+        "Phase change materials",
+        "heat",
+        "phase transitions",
+        "thermal regulation"
+      ],
+      "entities_b": [
+        "Infrared stealth camouflage",
+        "dynamic thermal regulation",
+        "background temperature"
+      ],
+      "shared_entities": [
+        "thermal regulation"
+      ]
+    },
+    {
+      "id": "DISC-GOLD-005",
+      "literature_a": "lotus leaf superhydrophobicity",
+      "literature_b": "battery separator wetting",
+      "expected_bridge": "contact angle",
+      "bridge_found": true,
+      "entities_a": [
+        "Lotus",
+        "exhibit superhydrophobicity",
+        "contact angles",
+        "150\u00b0",
+        "water adhesion"
+      ],
+      "entities_b": [
+        "Battery separator wetting",
+        "contact angle",
+        "electrolyte infiltration"
+      ],
+      "shared_entities": [
+        "contact angles"
+      ]
+    }
+  ]
+}
