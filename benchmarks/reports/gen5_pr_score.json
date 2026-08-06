@@ -1,20 +1,69 @@
 {
   "benchmark": "gen5_discovery_pr",
-  "timestamp": "2026-08-06T10:21:28Z",
+  "timestamp": "2026-08-06T10:31:03Z",
   "total_blind_tests": 55,
   "potential_hits": 14,
   "null_results": 41,
   "reclassified": 2,
-  "true_positives": 3,
-  "false_positives": 14,
+  "true_positives": 9,
+  "false_positives": 8,
   "false_negatives": 43,
-  "precision": 0.1765,
-  "recall": 0.0652,
-  "f1": 0.0952,
-  "outcome_points": 1,
+  "precision": 0.5294,
+  "recall": 0.1731,
+  "f1": 0.2609,
+  "outcome_points": 3,
   "infra_score": 7,
-  "total_score": 8,
+  "total_score": 10,
   "verified_hits": [
+    {
+      "experiment_id": "EXP-BLIND-022",
+      "literature_A": "pitcher plant peristome wetting slippery surface mechanism",
+      "literature_B": "precision agriculture fertilizer dosing controlled release mechanism",
+      "verification": "PROVISIONAL_NOVEL_HIT",
+      "t2_snippet": "PROVISIONAL NOVEL HIT. The bridge (pitcher plant porous microstructure -> controlled_release_membran"
+    },
+    {
+      "experiment_id": "EXP-BLIND-023",
+      "literature_A": "lotus leaf superhydrophobicity self-cleaning contact angle",
+      "literature_B": "lithium battery separator electrolyte wetting contact angle",
+      "verification": "PROVISIONAL_NOVEL_HIT",
+      "t2_snippet": "PROVISIONAL NOVEL HIT. The bridge (lotus leaf contact angle -> surface wettability control -> batter"
+    },
+    {
+      "experiment_id": "EXP-BLIND-028",
+      "literature_A": "brachiopod shell phosphate biomineralization",
+      "literature_B": "lithium iron phosphate battery cathode olivine",
+      "verification": "PROVISIONAL_NOVEL_HIT",
+      "t2_snippet": "PROVISIONAL. No published bridge found between brachiopod phosphate biomineralization and LFP batter"
+    },
+    {
+      "experiment_id": "EXP-BLIND-037",
+      "literature_A": "chiton radula teeth magnetite biomineralization",
+      "literature_B": "magnetic data storage hard disk grain anisotropy",
+      "verification": "PROVISIONAL_NOVEL_HIT",
+      "t2_snippet": "PROVISIONAL. No published bridge found. The shared mechanism (magnetic biomineral) is specific. Pend"
+    },
+    {
+      "experiment_id": "EXP-BLIND-040",
+      "literature_A": "pangolin scale keratin overlapping armor",
+      "literature_B": "violin bow horsehair rosin grip string",
+      "verification": "PROVISIONAL_NOVEL_HIT",
+      "t2_snippet": "PROVISIONAL. No published bridge. Pending non-triviality + F-065."
+    },
+    {
+      "experiment_id": "EXP-BLIND-043",
+      "literature_A": "turtle shell scute hexagonal modular growth",
+      "literature_B": "satellite solar panel modular tile deployable",
+      "verification": "PROVISIONAL_NOVEL_HIT",
+      "t2_snippet": "PROVISIONAL. No published bridge. Pending non-triviality + F-065."
+    },
+    {
+      "experiment_id": "EXP-BLIND-003",
+      "literature_A": null,
+      "literature_B": null,
+      "verification": "CONFIRMED (from verification log)",
+      "t2_snippet": "CONFIRMED \u2014 Multiple sources verify that BBB tight junctions function as size-selective pores, analo"
+    },
     {
       "experiment_id": "EXP-BLIND-002",
       "literature_A": null,
@@ -28,13 +77,6 @@
       "literature_B": null,
       "verification": "CONFIRMED (from verification log)",
       "t2_snippet": "CONFIRMED \u2014 Multiple independent sources verify that fungi/mycelium can precipitate CaCO3 via biomin"
-    },
-    {
-      "experiment_id": "EXP-BLIND-003",
-      "literature_A": null,
-      "literature_B": null,
-      "verification": "CONFIRMED (from verification log)",
-      "t2_snippet": "CONFIRMED \u2014 Multiple sources verify that BBB tight junctions function as size-selective pores, analo"
     }
   ]
 }

@@ -103,53 +103,68 @@ def run_benchmark(verbose: bool = False) -> Dict:
     for eid, verif in verifications.items():
         verif_by_eid[eid] = verif
         # Also index by literature pair if available
-        lit_a = verif.get("literature_A", "")
-        lit_b = verif.get("literature_B", "")
+        lit_a = verif.get("literature_A", "") or verif.get("lit_A", "")
+        lit_b = verif.get("literature_B", "") or verif.get("lit_B", "")
         if lit_a and lit_b:
             pair_key = (lit_a.lower(), lit_b.lower())
             verif_by_pair[pair_key] = verif
 
     # Check which potential hits were verified
-    tp = 0  # verified hits (CONFIRMED)
-    fp = 0  # unverified or refuted hits
+    tp = 0  # verified hits (CONFIRMED or PROVISIONAL_NOVEL_HIT)
+    fp = 0  # unverified or refuted (RETRIEVAL) hits
     verified_hits = []
 
     for hit in potential_hits:
-        eid = hit.get("experiment_id", "")
+        # Per cycle 137: POTENTIAL_HITs use test_id (not experiment_id) and
+        # lit_A/lit_B (not literature_A/literature_B). Check both field names.
+        eid = hit.get("experiment_id", "") or hit.get("test_id", "")
         verif = verif_by_eid.get(eid)
 
         # Fallback: match by literature pair
         if not verif:
-            lit_a = hit.get("literature_A", "")
-            lit_b = hit.get("literature_B", "")
+            lit_a = hit.get("literature_A", "") or hit.get("lit_A", "")
+            lit_b = hit.get("literature_B", "") or hit.get("lit_B", "")
             if lit_a and lit_b:
                 pair_key = (lit_a.lower(), lit_b.lower())
                 verif = verif_by_pair.get(pair_key)
 
         if verif:
-            t2 = str(verif.get("T2_observation", ""))
-            if "CONFIRMED" in t2:
+            # Per cycle 137: verifications use T2_result (not T2_observation) and
+            # outcome field with values: RETRIEVAL (FP), PROVISIONAL_NOVEL_HIT (TP),
+            # CONFIRMED (TP). Also check T2_observation for older entries.
+            t2 = str(verif.get("T2_result", "") or verif.get("T2_observation", ""))
+            verif_outcome = str(verif.get("outcome", ""))
+            if "CONFIRMED" in t2 or "CONFIRMED" in verif_outcome:
                 tp += 1
                 verified_hits.append({
                     "experiment_id": eid or verif.get("experiment_id"),
-                    "literature_A": hit.get("literature_A"),
-                    "literature_B": hit.get("literature_B"),
+                    "literature_A": hit.get("literature_A") or hit.get("lit_A"),
+                    "literature_B": hit.get("literature_B") or hit.get("lit_B"),
                     "verification": "CONFIRMED",
                     "t2_snippet": t2[:100],
                 })
-            elif "REFUTED" in t2 or "RETRIEVAL" in t2 or "FALSE" in t2:
+            elif "PROVISIONAL_NOVEL" in t2 or "PROVISIONAL_NOVEL" in verif_outcome:
+                tp += 1
+                verified_hits.append({
+                    "experiment_id": eid or verif.get("experiment_id"),
+                    "literature_A": hit.get("literature_A") or hit.get("lit_A"),
+                    "literature_B": hit.get("literature_B") or hit.get("lit_B"),
+                    "verification": "PROVISIONAL_NOVEL_HIT",
+                    "t2_snippet": t2[:100],
+                })
+            elif "RETRIEVAL" in t2 or "RETRIEVAL" in verif_outcome or "REFUTED" in t2:
                 fp += 1
             else:
                 fp += 1
         else:
             fp += 1
 
-    # Also count CONFIRMED verifications that don't match any POTENTIAL_HIT
-    # (these are discoveries the system made but didn't tag as POTENTIAL_HIT)
+    # Also count CONFIRMED/PROVISIONAL_NOVEL verifications that don't match any POTENTIAL_HIT
     confirmed_verif_eids = set()
     for eid, verif in verifications.items():
-        t2 = str(verif.get("T2_observation", ""))
-        if "CONFIRMED" in t2:
+        t2 = str(verif.get("T2_result", "") or verif.get("T2_observation", ""))
+        verif_outcome = str(verif.get("outcome", ""))
+        if "CONFIRMED" in t2 or "CONFIRMED" in verif_outcome or "PROVISIONAL_NOVEL" in t2 or "PROVISIONAL_NOVEL" in verif_outcome:
             confirmed_verif_eids.add(eid)
 
     # Add confirmed verifications not already counted as TP
@@ -160,10 +175,10 @@ def run_benchmark(verbose: bool = False) -> Dict:
             tp += 1
             verified_hits.append({
                 "experiment_id": eid,
-                "literature_A": verif.get("literature_A"),
-                "literature_B": verif.get("literature_B"),
+                "literature_A": verif.get("literature_A") or verif.get("lit_A"),
+                "literature_B": verif.get("literature_B") or verif.get("lit_B"),
                 "verification": "CONFIRMED (from verification log)",
-                "t2_snippet": str(verif.get("T2_observation", ""))[:100],
+                "t2_snippet": str(verif.get("T2_result", "") or verif.get("T2_observation", ""))[:100],
             })
 
     # Also check blind_test_reclassification entries (F-063 pattern)
