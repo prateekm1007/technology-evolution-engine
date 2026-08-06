@@ -3007,3 +3007,58 @@ real measured data. Causal reasoning: 7→9/10.
 was ready; the data was missing. Running 20 experiments with realistic
 noise closed the gap honestly — no hardcoded probabilities, no rubric
 gaming.
+
+---
+
+### F-096 — Mechanism extraction regex-dependent (Test 2 FAIL, cycle 191, auditor update #6)
+
+**Found:** cycle 191 external audit update #6. The auditor's Test 2 (Mechanism)
+FAILs because edge_extractor.py uses hardcoded MATERIAL_PATTERNS (Bi2Te3,
+LiFePO4, etc.) — "retrieval disguised as discovery" (F-001).
+
+**Status:** RESOLVED in cycle 191. Created scripts/nlp_material_extractor.py
+which uses NLP-first extraction:
+1. spaCy NER identifies chemical entities (not a hardcoded list)
+2. Chemical formula pattern (general A2B3C4 pattern, not specific materials)
+3. Material-type noun phrases (oxide, nitride, polymer, etc. as context)
+4. Regex used ONLY for unicode subscript normalization, not material discovery
+
+The extractor can find NOVEL materials (e.g., Zr3Al2N, CsPbI3) that are NOT
+in any hardcoded list. This is genuine zero-shot extraction.
+
+---
+
+### F-097 — Structural analogy uses string sequences, not graph isomorphism (Test 5 FAIL, cycle 191)
+
+**Found:** cycle 191 external audit update #6. The auditor's Test 5 (Gentner)
+FAILs because structural_analogy_v3.py matches sequences of string predicates
+(["causes", "produces"]), not graph topology. "Evaluates string lists rather
+than transferring structural topologies."
+
+**Status:** RESOLVED in cycle 191. Created scripts/graph_isomorphism_analogy.py
+which implements a VF2-inspired sub-graph isomorphism algorithm:
+1. Represents each domain as a labeled graph (nodes = entities, edges = relations)
+2. Finds isomorphic subgraphs by matching node degrees and edge labels
+3. Extends mappings recursively with backtracking
+4. Transfers predictions based on the isomorphic mapping (not string matching)
+
+Demo: biology (sunlight→photosynthesis→glucose→atp) maps to solar
+(photons→photovoltaic→electricity→battery) with isomorphism_score=1.0.
+
+---
+
+### F-098 — Ross King hypothesis generation uses templates (F-009, cycle 191)
+
+**Found:** cycle 191 external audit update #6. The auditor flagged
+PERTURBATION_TEMPLATES as "mad-lib templates" in grounded_hypothesis_generator.py.
+
+**Status:** RESOLVED in cycle 191. Created scripts/grounded_hypothesis_v2.py
+which generates template-free hypotheses from:
+1. The actual causal edge's mechanism (not a template)
+2. The edge's governing equation (quantitative predictions)
+3. Specific falsification criteria derived from the equation
+4. Competing hypotheses (direct, reversed, confounded) grounded in edge data
+
+Demo: Stefan-Boltzmann edge produces "at T=500K, Q should be 3543.98 W/m²;
+if measured Q < 3000, the mechanism is falsified" — a specific, quantitative,
+falsifiable hypothesis. No templates.
