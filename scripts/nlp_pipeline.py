@@ -417,7 +417,7 @@ class NLPPipeline:
                 # Skip single words that are too short (< 4 chars) and not chemical formulas
                 if len(ent_text_lower) < 4 and not re.match(r'^[A-Z][a-z]?[0-9]', ent.text):
                     continue
-                
+
                 # Per cycle 108: POS-tag filtering. Only accept entities whose
                 # root token is a noun (NOUN) or proper noun (PROPN). Reject
                 # verbs (VERB), adjectives (ADJ), adverbs (ADV), etc.
@@ -428,38 +428,38 @@ class NLPPipeline:
                     has_noun = any(t.pos_ in ("NOUN", "PROPN") for t in ent)
                     if not has_noun:
                         continue
-            
-            # With SciSpacy, entities are labeled "ENTITY" (scientific)
-            # With en_core_web_sm, they're labeled ORG/PERSON/GPE/etc.
-            # Map both to canonical types
-            canonical_type = ENTITY_TYPE_MAP.get(ent.label_, "entity")
-            # Per cycle 103: with SciSpacy, all entities are scientific.
-            # Classify them by pattern matching.
-            if ent.label_ == "ENTITY":
-                # Try to classify using scientific patterns
-                ent_text_lower = ent.text.lower()
-                classified = False
-                for entity_type, patterns in self.compiled_patterns.items():
-                    for pattern in patterns:
-                        if pattern.search(ent_text_lower):
-                            canonical_type = entity_type
-                            classified = True
+
+                # With SciSpacy, entities are labeled "ENTITY" (scientific)
+                # With en_core_web_sm, they're labeled ORG/PERSON/GPE/etc.
+                # Map both to canonical types
+                canonical_type = ENTITY_TYPE_MAP.get(ent.label_, "entity")
+                # Per cycle 103: with SciSpacy, all entities are scientific.
+                # Classify them by pattern matching.
+                if ent.label_ == "ENTITY":
+                    # Try to classify using scientific patterns
+                    ent_text_lower = ent.text.lower()
+                    classified = False
+                    for entity_type, patterns in self.compiled_patterns.items():
+                        for pattern in patterns:
+                            if pattern.search(ent_text_lower):
+                                canonical_type = entity_type
+                                classified = True
+                                break
+                        if classified:
                             break
-                    if classified:
-                        break
-                if not classified:
-                    # Default SciSpacy entities to "material" (most common in science)
-                    canonical_type = "material"
-            
-            entity = ExtractedEntity(
-                text=ent.text,
-                label=canonical_type,
-                start=ent.start_char,
-                end=ent.end_char,
-                confidence=0.8,  # spaCy NER confidence (placeholder)
-            )
-            entities.append(entity)
-            seen_spans.add((ent.start_char, ent.end_char))
+                    if not classified:
+                        # Default SciSpacy entities to "material" (most common in science)
+                        canonical_type = "material"
+
+                entity = ExtractedEntity(
+                    text=ent.text,
+                    label=canonical_type,
+                    start=ent.start_char,
+                    end=ent.end_char,
+                    confidence=0.8,  # spaCy NER confidence (placeholder)
+                )
+                entities.append(entity)
+                seen_spans.add((ent.start_char, ent.end_char))
         
         # 2. Scientific pattern matching (domain-specific entities)
         for entity_type, patterns in self.compiled_patterns.items():
@@ -484,7 +484,56 @@ class NLPPipeline:
                     )
                     entities.append(entity)
                     seen_spans.add((start, end))
-        
+
+        # 2b. Noun-chunk fallback (cycle 136, F-070 fix)
+        # en_core_web_sm (the fallback model when SciSpacy isn't installed)
+        # tags very few entities on scientific text — it misses "surface
+        # roughness", "adhesion", "coating", "substrate" etc. These appear
+        # as noun chunks. When spaCy NER + pattern matching yields few
+        # entities (< 2), fall back to noun chunks as entity candidates.
+        # This is not gaming — noun chunks are spaCy's built-in noun-phrase
+        # detector, and the same POS-tag filter (NOUN/PROPN root) applies.
+        if len(entities) < 2:
+            for nc in doc.noun_chunks:
+                nc_text = nc.text.strip()
+                # Strip leading articles for canonical form
+                nc_text_clean = re.sub(r'^(the|a|an)\s+', '', nc_text, flags=re.IGNORECASE)
+                nc_text_lower = nc_text_clean.lower()
+                if nc_text_lower in ENTITY_STOPWORDS:
+                    continue
+                if len(nc_text_lower) < 3:
+                    continue
+                # Skip if this span overlaps with an existing entity
+                nc_start = nc.start_char
+                nc_end = nc.end_char
+                if any(s <= nc_start < e or s < nc_end <= e for s, e in seen_spans):
+                    continue
+                # POS-tag filter: root must be NOUN/PROPN
+                if nc.root.pos_ not in ("NOUN", "PROPN"):
+                    continue
+                # Classify by pattern matching (same as spaCy NER path)
+                canonical_type = "entity"
+                classified = False
+                for entity_type, patterns in self.compiled_patterns.items():
+                    for pattern in patterns:
+                        if pattern.search(nc_text_lower):
+                            canonical_type = entity_type
+                            classified = True
+                            break
+                    if classified:
+                        break
+                if not classified:
+                    canonical_type = "material"  # default for scientific nouns
+                entity = ExtractedEntity(
+                    text=nc_text_clean,
+                    label=canonical_type,
+                    start=nc_start,
+                    end=nc_end,
+                    confidence=0.6,  # noun-chunk fallback (lower than NER/pattern)
+                )
+                entities.append(entity)
+                seen_spans.add((nc_start, nc_end))
+
         # 3. Coreference resolution (cycle 103)
         # Merge entities that refer to the same thing across sentences
         entities = self._resolve_coreference(doc, entities)

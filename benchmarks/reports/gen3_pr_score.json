@@ -1,14 +1,14 @@
 {
   "benchmark": "gen3_relation_extraction_pr",
-  "timestamp": "2026-08-06T02:25:23Z",
+  "timestamp": "2026-08-06T02:48:25Z",
   "sentences": 25,
   "gold_triples": 29,
-  "true_positives": 2,
-  "false_positives": 2,
-  "false_negatives": 27,
-  "precision": 0.5,
-  "recall": 0.069,
-  "f1": 0.1212,
+  "true_positives": 1,
+  "false_positives": 6,
+  "false_negatives": 28,
+  "precision": 0.1429,
+  "recall": 0.0345,
+  "f1": 0.0556,
   "per_sentence": [
     {
       "sentence_idx": 0,
@@ -137,9 +137,9 @@
     {
       "sentence_idx": 7,
       "gold_count": 1,
-      "pred_count": 0,
+      "pred_count": 2,
       "true_positives": 0,
-      "false_positives": 0,
+      "false_positives": 2,
       "false_negatives": 1,
       "matched_gold": [],
       "missed_gold": [
@@ -149,7 +149,18 @@
           "seebeck_coefficient"
         ]
       ],
-      "wrong_preds": []
+      "wrong_preds": [
+        {
+          "subject": "Bismuth",
+          "relation": "exhibit",
+          "object": "near"
+        },
+        {
+          "subject": "Bismuth",
+          "relation": "exhibit",
+          "object": "room"
+        }
+      ]
     },
     {
       "sentence_idx": 8,
@@ -221,9 +232,9 @@
     {
       "sentence_idx": 11,
       "gold_count": 1,
-      "pred_count": 0,
+      "pred_count": 2,
       "true_positives": 0,
-      "false_positives": 0,
+      "false_positives": 2,
       "false_negatives": 1,
       "matched_gold": [],
       "missed_gold": [
@@ -233,7 +244,18 @@
           "energy_density"
         ]
       ],
-      "wrong_preds": []
+      "wrong_preds": [
+        {
+          "subject": "density",
+          "relation": "enable",
+          "object": "Solid-state electrolytes"
+        },
+        {
+          "subject": "density",
+          "relation": "enable",
+          "object": "liquid electrolytes"
+        }
+      ]
     },
     {
       "sentence_idx": 12,
@@ -277,25 +299,19 @@
     {
       "sentence_idx": 14,
       "gold_count": 1,
-      "pred_count": 1,
-      "true_positives": 1,
+      "pred_count": 0,
+      "true_positives": 0,
       "false_positives": 0,
-      "false_negatives": 0,
-      "matched_gold": [
+      "false_negatives": 1,
+      "matched_gold": [],
+      "missed_gold": [
         [
           "stefan_boltzmann_law",
           "governs",
           "heat_transfer"
         ]
       ],
-      "missed_gold": [],
-      "wrong_preds": [
-        {
-          "subject": "The Stefan-Boltzmann",
-          "relation": "govern",
-          "object": "heat"
-        }
-      ]
+      "wrong_preds": []
     },
     {
       "sentence_idx": 15,
