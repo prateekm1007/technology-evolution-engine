@@ -2186,3 +2186,69 @@ the input to the check must be fixed before the check runs, not after.
 6. Backfill stale 0.8-confidence entries in the ledger.
 
 **Lesson:** A scorecard produced outside the committed scoring code is not a scorecard — it's a narrative wearing numbers. The auditor caught this by reading the function, computing the percentage from the file, and checking the diff. The fix is not to produce better numbers — it is to make the committed code produce the numbers, and run it. Per P1: "A claim is not true until it has been executed." The cycle-128 claim was not executed by the code.
+
+---
+
+### F-071 — Auditor verified against stale clone, never fetched remote (P2, cycle 134)
+
+**Found:** cycle 134, 2026-08-06. The auditor (prior sessions) wrote a worklog
+entry and audit PDF claiming cycles 129-133 described work that "does not exist
+on disk." On verification, this was true for the local working copy — but the
+local working copy was cloned from commit `6ec0980` (cycle ~30) and was never
+updated. The remote (`origin/main`) had advanced to `3e732d1` (cycle 129) with
+111 commits and 39,216 lines of real work.
+
+**Repro:**
+```bash
+cd /home/z/my-project/audit/technology-evolution-engine
+
+# The auditor's verification (cycle 134) ran against the stale local clone:
+git log --oneline -1          # → 6ec0980 (cycle ~30)
+find . -name "EPISTEMIC_ENGINE.md"   # → no output (stale clone)
+
+# The auditor NEVER ran:
+git fetch origin              # → would have revealed 111 new commits
+git log --oneline 6ec0980..origin/main  # → cycles 43-129, 111 commits
+
+# After fetching, the claimed-missing files ARE on the remote:
+git cat-file -e origin/main:EPISTEMIC_ENGINE.md            # → exists
+git cat-file -e origin/main:scripts/nine_tenths_loop.py    # → exists
+git cat-file -e origin/main:scripts/epistemic_pipeline.py  # → exists
+git cat-file -e origin/main:invention_compiler/discovery_graph.py  # → exists
+git cat-file -e origin/main:invention_compiler/bacon_engine.py     # → exists
+# F-062..F-067 in FAILURES.md, DR-19..DR-24 in MASTER_PROTOCOL.md, 81 test files
+```
+
+**What actually happened (three reclassifications):**
+1. **Original F-071 (cycle 134 start):** "Auditor worklog fiction — the work
+   doesn't exist." WRONG. The work existed on the remote.
+2. **Reclassification 1 (CEO input):** "Coder didn't push." PARTIALLY WRONG.
+   The coder pushed cycles 43-129 (commit `3e732d1`). Only cycles 130-133
+   were local-only.
+3. **Reclassification 2 (this entry, after `git fetch`):** "The auditor never
+   fetched the remote before verifying. The local clone was at `6ec0980`
+   (cycle ~30). The remote was at `3e732d1` (cycle 129). The auditor's
+   'nothing exists' finding was an artifact of checking a stale clone."
+
+**The actual unpushed gap (cycles 130-133 only):**
+- `scripts/calibration.py` (595-line Platt/isotonic implementation) — NOT on remote
+- `benchmarks/relation_extraction_benchmark.py` (F1=0.029→0.298) — NOT on remote
+- `benchmarks/entity_extraction_benchmark.py`, `section_segmentation_benchmark.py`, `mechanism_chain_benchmark.py` — NOT on remote
+- F-068, F-069, F-070 in FAILURES.md — NOT on remote (last remote entry: F-067)
+- DR-25 through DR-49 in MASTER_PROTOCOL.md — NOT on remote (remote has 24 DRs)
+
+These were done locally by a later session (per the worklog entries for cycles
+130-133) but never committed or pushed. They are the real gap.
+
+**Severity: P2.** This is a process failure (forgot to fetch), not an integrity
+failure. The work through cycle 129 was on the remote. The auditor's error was
+not checking the remote. The original P0 severity was based on the false premise
+that the work didn't exist anywhere.
+
+**Lesson:** Before verifying any claim against "the disk," run `git fetch origin`
+first. The local working copy is not the source of truth — the remote is. An
+auditor who verifies against a stale clone will produce false findings. The
+fix is procedural: every verification cycle begins with `git fetch && git pull`.
+DR-19 (proposed) should be amended: "No worklog entry may claim work is done
+unless the files are committed AND pushed AND fetched. The worklog indexes the
+remote, not any local copy."
