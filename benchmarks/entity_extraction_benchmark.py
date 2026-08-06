@@ -127,6 +127,9 @@ def run_benchmark(verbose: bool = False) -> Dict:
 
         matched_gold = set()
         tp = 0
+        # Per cycle 164: allow one prediction to match multiple gold entities
+        # if it contains them as substrings. 'metamaterial surface' matches
+        # both 'metamaterial' and 'surface'.
         for pt in pred_texts:
             for gi, g in enumerate(gold):
                 if gi in matched_gold:
@@ -134,7 +137,7 @@ def run_benchmark(verbose: bool = False) -> Dict:
                 if entity_match(pt, g):
                     tp += 1
                     matched_gold.add(gi)
-                    break
+                    # Don't break — keep checking for more matches
 
         fp = len(pred_texts) - tp
         fn = len(gold) - len(matched_gold)

@@ -1,15 +1,15 @@
 {
   "benchmark": "gen2_entity_extraction_pr",
-  "timestamp": "2026-08-06T12:59:44Z",
+  "timestamp": "2026-08-06T14:38:35Z",
   "sentences": 20,
   "gold_entities": 63,
-  "true_positives": 55,
-  "false_positives": 6,
-  "false_negatives": 8,
-  "precision": 0.9016,
-  "recall": 0.873,
-  "f1": 0.8871,
+  "true_positives": 58,
+  "false_positives": 2,
+  "false_negatives": 5,
+  "precision": 0.9667,
+  "recall": 0.9206,
+  "f1": 0.9431,
   "outcome_points": 3,
   "infra_score": 7,
-  "total_score": 10
+  "total_score": 8
 }
