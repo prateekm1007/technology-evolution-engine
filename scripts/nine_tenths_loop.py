@@ -171,9 +171,14 @@ def assess_entity_extraction() -> Dict:
         score += 1
         details.append("Property extraction from text: scripts/property_extractor.py (+1, cycle 144)")
 
+    # Alias resolution (cycle 159) — abbreviation-based alias resolution
+    alias_path = ROOT / "scripts" / "alias_resolver.py"
+    if alias_path.exists():
+        score += 1
+        details.append("Alias resolution: scripts/alias_resolver.py (abbreviation expansion) (+1, cycle 159)")
+
     # Remaining gaps
     details.append("No entity linking to external databases (0) — need SciSpacy linker")
-    details.append("No alias resolution beyond prefix/suffix stripping (0)")
 
     # DR-49: cap infra at 7
     if score > 7:
