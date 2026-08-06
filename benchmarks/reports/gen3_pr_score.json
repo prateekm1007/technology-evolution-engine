@@ -1,14 +1,14 @@
 {
   "benchmark": "gen3_relation_extraction_pr",
-  "timestamp": "2026-08-06T10:34:07Z",
+  "timestamp": "2026-08-06T10:35:53Z",
   "sentences": 25,
   "gold_triples": 29,
-  "true_positives": 18,
-  "false_positives": 11,
-  "false_negatives": 11,
-  "precision": 0.6207,
-  "recall": 0.6207,
-  "f1": 0.6207,
+  "true_positives": 19,
+  "false_positives": 13,
+  "false_negatives": 10,
+  "precision": 0.5938,
+  "recall": 0.6552,
+  "f1": 0.623,
   "per_sentence": [
     {
       "sentence_idx": 0,
@@ -206,7 +206,7 @@
         {
           "subject": "Bismuth",
           "relation": "exhibits",
-          "object": "Seebeck"
+          "object": "high Seebeck coefficient"
         }
       ]
     },
@@ -480,24 +480,41 @@
     {
       "sentence_idx": 19,
       "gold_count": 2,
-      "pred_count": 0,
-      "true_positives": 0,
-      "false_positives": 0,
-      "false_negatives": 2,
-      "matched_gold": [],
-      "missed_gold": [
+      "pred_count": 3,
+      "true_positives": 1,
+      "false_positives": 2,
+      "false_negatives": 1,
+      "matched_gold": [
         [
           "membranes",
           "reject",
           "salt_ions"
-        ],
+        ]
+      ],
+      "missed_gold": [
         [
           "membranes",
           "allow",
           "water_permeation"
         ]
       ],
-      "wrong_preds": []
+      "wrong_preds": [
+        {
+          "subject": "salt",
+          "relation": "reject",
+          "object": "Reverse osmosis membranes"
+        },
+        {
+          "subject": "Reverse osmosis membranes",
+          "relation": "reject",
+          "object": "water permeation"
+        },
+        {
+          "subject": "Reverse osmosis membranes",
+          "relation": "reject",
+          "object": "salt"
+        }
+      ]
     },
     {
       "sentence_idx": 20,

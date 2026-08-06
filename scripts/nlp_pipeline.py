@@ -493,46 +493,65 @@ class NLPPipeline:
         # entities (< 2), fall back to noun chunks as entity candidates.
         # This is not gaming — noun chunks are spaCy's built-in noun-phrase
         # detector, and the same POS-tag filter (NOUN/PROPN root) applies.
-        if len(entities) < 2:
-            for nc in doc.noun_chunks:
-                nc_text = nc.text.strip()
-                # Strip leading articles for canonical form
-                nc_text_clean = re.sub(r'^(the|a|an)\s+', '', nc_text, flags=re.IGNORECASE)
-                nc_text_lower = nc_text_clean.lower()
-                if nc_text_lower in ENTITY_STOPWORDS:
-                    continue
-                if len(nc_text_lower) < 3:
-                    continue
-                # Skip if this span overlaps with an existing entity
-                nc_start = nc.start_char
-                nc_end = nc.end_char
-                if any(s <= nc_start < e or s < nc_end <= e for s, e in seen_spans):
-                    continue
-                # POS-tag filter: root must be NOUN/PROPN
-                if nc.root.pos_ not in ("NOUN", "PROPN"):
-                    continue
-                # Classify by pattern matching (same as spaCy NER path)
-                canonical_type = "entity"
-                classified = False
-                for entity_type, patterns in self.compiled_patterns.items():
-                    for pattern in patterns:
-                        if pattern.search(nc_text_lower):
-                            canonical_type = entity_type
-                            classified = True
-                            break
-                    if classified:
+        # Per cycle 137: always run noun-chunk fallback, not just when entities < 2.
+        # The pattern matcher may find some entities but miss important noun phrases
+        # (e.g., "Metal-organic frameworks" missed because patterns catch "pore" and "gas").
+        # Adding noun chunks that don't overlap with existing entities ensures recall.
+        for nc in doc.noun_chunks:
+            nc_text = nc.text.strip()
+            # Strip leading articles for canonical form
+            nc_text_clean = re.sub(r'^(the|a|an)\s+', '', nc_text, flags=re.IGNORECASE)
+            # Per cycle 137: strip trailing verbs from noun chunks.
+            # spaCy sometimes includes a verb in the noun chunk (e.g.,
+            # "Convective heat transfer increases" — "increases" is a verb).
+            # Check the last token's POS; if it's a verb, remove it.
+            nc_tokens = list(nc)
+            while nc_tokens and nc_tokens[-1].pos_ in ("VERB", "AUX"):
+                nc_tokens = nc_tokens[:-1]
+            if nc_tokens:
+                # Rebuild the text from the remaining tokens
+                nc_start_char = nc_tokens[0].idx
+                nc_end_char = nc_tokens[-1].idx + len(nc_tokens[-1].text)
+                nc_text_clean = text[nc_start_char:nc_end_char].strip()
+                # Re-strip leading articles
+                nc_text_clean = re.sub(r'^(the|a|an)\s+', '', nc_text_clean, flags=re.IGNORECASE)
+                nc_start = nc_start_char
+                nc_end = nc_end_char
+            else:
+                continue  # all tokens were verbs
+            nc_text_lower = nc_text_clean.lower()
+            if nc_text_lower in ENTITY_STOPWORDS:
+                continue
+            if len(nc_text_lower) < 3:
+                continue
+            # Skip if this span overlaps with an existing entity
+            if any(s <= nc_start < e or s < nc_end <= e for s, e in seen_spans):
+                continue
+            # POS-tag filter: root must be NOUN/PROPN
+            if nc.root.pos_ not in ("NOUN", "PROPN"):
+                continue
+            # Classify by pattern matching (same as spaCy NER path)
+            canonical_type = "entity"
+            classified = False
+            for entity_type, patterns in self.compiled_patterns.items():
+                for pattern in patterns:
+                    if pattern.search(nc_text_lower):
+                        canonical_type = entity_type
+                        classified = True
                         break
-                if not classified:
-                    canonical_type = "material"  # default for scientific nouns
-                entity = ExtractedEntity(
-                    text=nc_text_clean,
-                    label=canonical_type,
-                    start=nc_start,
-                    end=nc_end,
-                    confidence=0.6,  # noun-chunk fallback (lower than NER/pattern)
-                )
-                entities.append(entity)
-                seen_spans.add((nc_start, nc_end))
+                if classified:
+                    break
+            if not classified:
+                canonical_type = "material"  # default for scientific nouns
+            entity = ExtractedEntity(
+                text=nc_text_clean,
+                label=canonical_type,
+                start=nc_start,
+                end=nc_end,
+                confidence=0.6,  # noun-chunk fallback (lower than NER/pattern)
+            )
+            entities.append(entity)
+            seen_spans.add((nc_start, nc_end))
 
         # 3. Coreference resolution (cycle 103)
         # Merge entities that refer to the same thing across sentences
