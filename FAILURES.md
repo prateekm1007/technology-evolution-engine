@@ -2521,3 +2521,35 @@ print(f'precision={d[\"precision\"]}, recall={d[\"recall\"]}, f1={d[\"f1\"]}')
 3. Gen 5 is still at target (9/10), but now honestly — the score reflects both precision AND recall.
 
 **Lesson:** "Precision-only" is a scope-narrowing pattern. When a metric makes the score look good, there's an incentive to not ask whether the metric is the right one. The auditor caught this by reading the scoring function and noticing it only read `precision`, not `recall` or `f1`. The fix is to use F1 for all P/R benchmarks, not precision alone. This is now applied to Gen 5; Gen 3 and Gen 4 already use F1. The principle: if a benchmark produces P, R, and F1, the score should use F1, not cherry-pick the best-looking metric.
+
+---
+
+### F-072 RECLASSIFICATION (cycle 139 — auditor-caught: backfill was half-complete)
+
+**Reclassification:** F-072 was marked RESOLVED in cycle 138, but the auditor caught that the backfill only reached one of two mirror files. `data/ledger/reaudit_log.jsonl` was still 23/34 (67.6%) broken — completely untouched by the cycle-138 backfill script, which only ever opened `predictions.jsonl`.
+
+**Auditor's finding:** "log_reaudit() writes every entry to two files, predictions.jsonl and data/ledger/reaudit_log.jsonl, and the backfill script only rewrote one of them. reaudit_log.jsonl is still 23/34 (67.6%) broken, completely untouched by this commit."
+
+**Root cause of the half-fix:** The cycle-138 backfill script (`backfill_vocabulary_hash.py`) only knew about `predictions.jsonl`. It never checked whether a second file existed carrying the same data. The diagnostic "23 of 35 entries" was true for one file and incomplete for the system.
+
+**Status:** RESOLVED in cycle 139.
+1. Wrote `backfill_vocabulary_hash_v2.py` that backfills BOTH files using a shared function.
+2. Used a canonical claim cache (from predictions.jsonl) so both files get identical hashes for the same claim_id — preventing the divergence that happened when each file computed hashes from its own (different) source data.
+3. Added `tests/test_vocabulary_hash_integrity.py` — 4 CI tests that check: (a) predictions.jsonl has 0 broken, (b) reaudit_log.jsonl has 0 broken, (c) both files agree, (d) reaudit entries match between files. This prevents the divergence from recurring.
+4. Both files now 0% broken, all hashes match between files.
+
+**Lesson:** When a system writes to multiple files, a fix to one file is not a fix to the system. The cycle-138 diagnostic said "23 of 35" and fixed exactly 23, in exactly one file, without checking whether a second file existed. The auditor caught this by reading the backfill script's source and noticing `reaudit_log.jsonl` never appeared in it. "Verify it anyway" includes verifying that the fix reached all the places the bug existed.
+
+---
+
+### F-074 — Backfill is a mutation, not a strict append; "per Law 7" undersold what happened (P3, cycle 139, auditor-caught)
+
+**Found:** cycle 139 auditor review. The auditor noted: "The backfill is a mutation, not a strict append. backfill_vocabulary_hash.py opens predictions.jsonl in 'w' mode and rewrites every line — the old broken vocabulary_hash values are gone from the file, replaced in place. That's a reasonable, transparent way to fix metadata, and it's honest about what it did — but it's not the immutable-then-append pattern from EPISTEMIC_ENGINE.md §2.1."
+
+**Observation:** The cycle-138 commit message said "Backfill event appended to ledger per Law 7." This is technically true (a backfill event WAS appended), but it undersells that the underlying reaudit entries were overwritten in place. The old broken `vocabulary_hash` values are gone — replaced with new values plus `vocabulary_hash_backfilled: True` and `vocabulary_hash_backfill_cycle: 138/139` markers.
+
+**Severity:** P3 — this is a precision-of-language issue, not an integrity violation. Verdicts, overturned flags, and confidences were preserved (the parts that actually matter). Only the broken metadata field was corrected. But calling this "per Law 7" when Law 7 specifies "append-only" is imprecise.
+
+**Status:** ACKNOWLEDGED. No code change needed — the backfill is the right approach for fixing broken metadata, and it's transparent about what it did (the backfill markers are in the entries). But future commit messages should say "metadata corrected in place, backfill event appended" rather than "per Law 7" when the underlying lines were overwritten.
+
+**Lesson:** Law 7 says "No benchmark, prediction, assumption, failure, or outcome may be silently altered." The key word is "silently." The backfill was NOT silent — it added markers (`vocabulary_hash_backfilled`, `vocabulary_hash_backfill_cycle`) and appended a backfill event. But "not silently altered" is different from "not altered." The honest framing is: "metadata corrected in place with markers, backfill event appended for auditability." Future fixes should use this framing.
