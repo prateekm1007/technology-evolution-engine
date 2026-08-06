@@ -26,7 +26,7 @@ import math
 from collections import defaultdict
 from itertools import combinations
 
-ROOT = pathlib.Path("/home/z/my-project/audit/repo")
+ROOT = pathlib.Path(__file__).resolve().parents[1]
 
 CAPABILITIES = [
     "ELECTROCHEMICAL_ENERGY_STORAGE", "ION_TRANSPORT", "INTERCALATION",

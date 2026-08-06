@@ -44,7 +44,7 @@ REPORT_DIR = ROOT / "evidence" / "reports"
 REPORT_DIR.mkdir(parents=True, exist_ok=True)
 
 # Use the venv that was set up for the audit.
-VENV_PYTHON = Path("/home/z/my-project/audit/venv/bin/python")
+VENV_PYTHON = Path(sys.executable)  # Use current Python, not a hardcoded venv path
 PY = str(VENV_PYTHON) if VENV_PYTHON.exists() else sys.executable
 
 

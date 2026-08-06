@@ -17,7 +17,7 @@ import json
 import pathlib
 from datetime import datetime, timezone
 
-ROOT = pathlib.Path("/home/z/my-project/audit/repo")
+ROOT = pathlib.Path(__file__).resolve().parents[1]
 OUTPUT = ROOT / "data" / "capability_graph.json"
 
 PATENTS = [

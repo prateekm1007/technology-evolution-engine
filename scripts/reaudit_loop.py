@@ -37,7 +37,7 @@ import pathlib
 from datetime import datetime, timezone
 from typing import Dict, Any, List, Optional
 
-ROOT = pathlib.Path("/home/z/my-project/audit/repo")
+ROOT = pathlib.Path(__file__).resolve().parents[1]
 PREDICTIONS = ROOT / "data" / "ledger" / "predictions.jsonl"
 REAUDIT_LOG = ROOT / "data" / "ledger" / "reaudit_log.jsonl"
 

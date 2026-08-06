@@ -54,7 +54,7 @@ import pathlib
 from datetime import datetime, timezone
 from typing import Dict, Any, List
 
-ROOT = pathlib.Path("/home/z/my-project/audit/repo")
+ROOT = pathlib.Path(__file__).resolve().parents[1]
 PREDICTIONS = ROOT / "data" / "ledger" / "predictions.jsonl"
 
 # Generic physics/chemistry principles that produce trivial bridges.

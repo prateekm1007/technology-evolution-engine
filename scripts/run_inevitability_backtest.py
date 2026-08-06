@@ -24,7 +24,7 @@ import math
 from collections import defaultdict
 from itertools import combinations
 
-ROOT = pathlib.Path("/home/z/my-project/audit/repo")
+ROOT = pathlib.Path(__file__).resolve().parents[1]
 PAGES_DIR = pathlib.Path("/tmp/phase10_patents/pages")
 
 CAPABILITIES = [

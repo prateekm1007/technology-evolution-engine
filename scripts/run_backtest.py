@@ -26,7 +26,7 @@ import pathlib
 import random
 from collections import defaultdict
 
-ROOT = pathlib.Path("/home/z/my-project/audit/repo")
+ROOT = pathlib.Path(__file__).resolve().parents[1]
 
 # ─── The 10 capabilities ───
 CAPABILITIES = [

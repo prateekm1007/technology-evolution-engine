@@ -22,7 +22,7 @@ import math
 from collections import defaultdict
 from itertools import combinations
 
-ROOT = pathlib.Path("/home/z/my-project/audit/repo")
+ROOT = pathlib.Path(__file__).resolve().parents[1]
 
 # ═══════════════════════════════════════════════════════════════
 # PART 1: EXPANDED Li-ion BACKTEST (14 time points)

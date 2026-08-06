@@ -247,6 +247,7 @@ class TestEssentialDocsAtRoot:
         "CONTRIBUTING.md",
         "README.md",
         "EXAMPLE_BLUEPRINT_001.md",
+        "EPISTEMIC_ENGINE.md",  # Per cycle 137: governance doc (DR-31..DR-49)
     ]
 
     @pytest.mark.parametrize("filename", ESSENTIAL)
