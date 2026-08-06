@@ -31,7 +31,7 @@ def build_disjoint_graph():
     ]:
         graph.add_node(DiscoveryNode(
             node_id=nid, node_type="concept", label=nid,
-            properties={"source_domain": domain}, layers=[], provenance={},
+            properties={"source_domain": domain}, layers=set(), provenance={},
         ))
 
     graph.add_edge(DiscoveryEdge(source="fish_oil", target="blood_viscosity",
