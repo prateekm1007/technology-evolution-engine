@@ -120,29 +120,35 @@ def test_law_cross_domain_validates_on_disjoint():
     assert result.generalizes
 
 
-# ===== Causal real corpus (Causal 8→9) =====
+# ===== Causal data-estimated (Causal 8→9, F-088 fix) =====
+# Per cycle 185 (PRECONDITION 0.5): causal_real_corpus.py was DELETED
+# (hardcoded probabilities, F-088). These tests now use causal_data_estimated.py
+# which returns honest "I don't know" when data is insufficient.
 
-def test_causal_real_corpus_finds_edge():
-    """RealCorpusCounterfactual finds a real causal edge."""
-    from scripts.causal_real_corpus import RealCorpusCounterfactual
-    rcc = RealCorpusCounterfactual()
-    edge = rcc.find_real_causal_edge()
+def test_causal_data_estimated_finds_edge():
+    """DataEstimatedCounterfactual finds a real causal edge."""
+    from scripts.causal_data_estimated import DataEstimatedCounterfactual
+    dec = DataEstimatedCounterfactual()
+    edge = dec.find_real_causal_edge()
     # Should find SOME edge (the corpus graph has edges)
     assert edge is not None
     assert "source" in edge
     assert "target" in edge
 
 
-def test_causal_real_corpus_runs_counterfactual():
-    """Counterfactual reasoning produces a result on a real edge."""
-    from scripts.causal_real_corpus import RealCorpusCounterfactual
-    rcc = RealCorpusCounterfactual()
-    result = rcc.run_on_real_edge()
+def test_causal_data_estimated_runs_counterfactual():
+    """Data-estimated counterfactual produces a result (may be 'insufficient data')."""
+    from scripts.causal_data_estimated import DataEstimatedCounterfactual
+    dec = DataEstimatedCounterfactual()
+    result = dec.run_on_real_edge()
     if result:  # may be None if no edges
+        # The result must be HONEST — no hardcoded probabilities.
+        # If insufficient data, all probabilities are 0.0 and is_honest=True.
         assert 0.0 <= result.p_observed <= 1.0
         assert 0.0 <= result.p_counterfactual <= 1.0
         assert result.edge_source
         assert result.edge_target
+        assert result.is_honest is True  # F-088: must be data-estimated, not hardcoded
 
 
 # ===== Structural analogy v3 (Structural 8→9) =====
@@ -295,7 +301,7 @@ def test_all_cycle_183_modules_importable():
     from scripts.mechanism_quantitative import link_equations_to_chain
     from scripts.constraint_chaining import chain_constraints
     from scripts.law_cross_domain import CrossDomainLawValidator
-    from scripts.causal_real_corpus import RealCorpusCounterfactual
+    from scripts.causal_data_estimated import DataEstimatedCounterfactual
     from scripts.structural_analogy_v3 import Depth3StructureMappingEngine
     from scripts.bayesian_doe import BayesianDOE
     from scripts.learning_corpus_selection import CorpusActiveLearner
@@ -304,7 +310,7 @@ def test_all_cycle_183_modules_importable():
     assert link_equations_to_chain is not None
     assert chain_constraints is not None
     assert CrossDomainLawValidator is not None
-    assert RealCorpusCounterfactual is not None
+    assert DataEstimatedCounterfactual is not None
     assert Depth3StructureMappingEngine is not None
     assert BayesianDOE is not None
     assert CorpusActiveLearner is not None

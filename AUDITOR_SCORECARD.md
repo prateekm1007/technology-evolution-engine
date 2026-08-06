@@ -5,7 +5,7 @@
 > Every score points to a benchmark report file + a passing test.
 > If a category has no measured benchmark, it gets score = 0.
 
-**Generated:** 2026-08-06 18:24 UTC
+**Generated:** 2026-08-06 18:36 UTC
 **Composite (7 generation benchmarks):** 9.14 / 10
 **Formula:** Single rubric — `total_score = round(10 × F1)` (or equivalent)
 **CEO target:** 9.0 / 10

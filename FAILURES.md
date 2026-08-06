@@ -2815,3 +2815,52 @@ test_discovery_graph.py now pass.
 **Lesson:** A test suite with always-failing tests is worse than no tests
 — it teaches the team that red is normal. Fix or delete always-failing
 tests immediately.
+
+---
+
+### F-091 — Duplicate source of truth pattern (P0, cycle 185, auditor update #3 addendum)
+
+**Found:** cycle 185 external audit update #3 addendum. The auditor identified
+a recurring pattern across FOUR separate failures:
+
+1. `nine_tenths_loop.py` vs `nine_tenths_loop_v2.py` disagreeing (F-085)
+2. `predictions.jsonl` vs `reaudit_log.jsonl` silently diverging (F-072)
+3. `engine/` claimed-archived while the live original stayed untouched
+4. A scoring function's stale detail text lagging behind a real fix
+
+**Root cause:** "This repo keeps allowing a second copy of a source of truth
+to exist, and every single time, the second copy is the one that goes stale
+first. The common root isn't any individual bug — it's that the repo keeps
+allowing a second copy of a source of truth to exist."
+
+**The auditor's PRECONDITION 0.5:** "After the single rubric is chosen,
+DELETE `nine_tenths_loop.py` outright rather than leaving it importable —
+don't deprecate it, don't leave it as a second code path someone might run
+by habit. The same applies to `engine/`: delete, don't archive-a-copy-and-
+leave-the-original. A CI test that fails the build if a second file defining
+`assess_all` or a second directory named `engine` reappears would turn
+'don't create a duplicate source of truth' from a discipline someone has
+to remember into something the build enforces."
+
+**Severity:** P0 — this is the highest-leverage fix because it eliminates
+the entire CLASS of failures, not just one instance.
+
+**Status:** RESOLVED in cycle 185.
+1. DELETED `scripts/nine_tenths_loop.py` (not archived — deleted).
+   The single source of truth is `scripts/nine_tenths_loop_v2.py`.
+2. DELETED `scripts/causal_real_corpus.py` (hardcoded probabilities, F-088).
+   The single source of truth is `scripts/causal_data_estimated.py`.
+3. Verified no live `engine/` directory exists (only `archive/dead_engine/engine/`).
+4. Created `tests/test_no_duplicate_sources_of_truth.py` — 7 CI tests that
+   fail the build if:
+   - A second file defining `assess_all` reappears
+   - A live `engine/` directory reappears at the repo root
+   - `causal_real_corpus.py` (hardcoded probabilities) reappears
+   - A second Swanson citation-disjoint module appears
+   - The single source of truth modules are not importable
+
+**Lesson:** "Don't create a duplicate source of truth" must be enforced by
+the build, not by discipline. A CI test that fails when a duplicate appears
+turns a lesson someone has to remember into a lesson the build enforces.
+This is the same principle that `test_vocabulary_hash_integrity.py` already
+proved works — generalized one level up.
