@@ -694,10 +694,23 @@ class SwansonBridgeSearch:
     """
     
     @staticmethod
-    def search(graph: DiscoveryGraph, max_depth: int = 3) -> List[Dict[str, Any]]:
+    def search(graph: DiscoveryGraph, max_depth: int = 3,
+               require_disjoint: bool = False) -> List[Dict[str, Any]]:
         """Search for undiscovered bridges in the graph.
-        
-        Returns a list of {a, b, c, score} where a→b and b→c exist
+
+        Per Swanson (1986): if A→B is established in one literature
+        and B→C in another, and the two literatures never cite each
+        other, A→C is a discoverable-but-undiscovered connection.
+
+        Args:
+            graph: the discovery graph
+            max_depth: maximum chain length to search
+            require_disjoint: if True, only return bridges where a and c
+                come from disjoint literatures (different source domains
+                with no shared edges). This is Swanson's core insight —
+                without it, the search is just path-finding, not discovery.
+
+        Returns a list of {a, b, c, score, disjoint} where a→b and b→c exist
         but a→c does not.
         """
         bridges = []
@@ -737,19 +750,52 @@ class SwansonBridgeSearch:
                             break
                     
                     if not a_to_c_exists:
+                        # Per cycle 148 (Test 1 fix): check literature disjointness.
+                        # Swanson's core insight: the two literatures must NOT cite
+                        # each other. Without this check, any path is a "bridge" —
+                        # that's path-finding, not discovery.
+                        is_disjoint = True
+                        if require_disjoint:
+                            # Check if a and c share any neighbors (literature overlap)
+                            a_neighbors = set()
+                            c_neighbors = set()
+                            for subgraph3 in graph._subgraphs.values():
+                                for edge3 in subgraph3.edges:
+                                    if edge3.source == a:
+                                        a_neighbors.add(edge3.target)
+                                    if edge3.source == c:
+                                        c_neighbors.add(edge3.target)
+                                    if edge3.target == a:
+                                        a_neighbors.add(edge3.source)
+                                    if edge3.target == c:
+                                        c_neighbors.add(edge3.source)
+                            # If a and c share many neighbors, they're in the same
+                            # literature (not disjoint). A true Swanson bridge connects
+                            # two literatures that don't overlap.
+                            shared_neighbors = a_neighbors & c_neighbors - {b}
+                            is_disjoint = len(shared_neighbors) == 0
+
+                            # Also check node properties for source_domain tags
+                            try:
+                                a_node = graph.get_node(a) or {}
+                                c_node = graph.get_node(c) or {}
+                                a_domain = a_node.get("source_domain", a_node.get("domain", ""))
+                                c_domain = c_node.get("source_domain", c_node.get("domain", ""))
+                                if a_domain and c_domain and a_domain == c_domain:
+                                    is_disjoint = False  # same domain = not disjoint
+                            except Exception:
+                                pass
+
+                        # Skip non-disjoint bridges if require_disjoint is True
+                        if require_disjoint and not is_disjoint:
+                            continue
+
                         # Score (cycle 54 fix, per Auditor Phase 1):
-                        # The old code was `score: 1.0` (hardcoded constant).
-                        # Now: score by relation_type (layer) of the two hops.
-                        # A bridge built from two MECHANISM edges should outrank
-                        # one built from two ASSOCIATION edges.
-                        # Layer weights (causal strength increases with layer):
-                        #   equivalence=0.1, association=0.2, influence=0.4,
-                        #   mechanism=0.6, intervention=0.8, observation=1.0
                         layer_weights = {
                             "equivalence": 0.1, "association": 0.2, "influence": 0.4,
                             "mechanism": 0.6, "intervention": 0.8, "observation": 1.0,
                         }
-                        a_to_b_weight = 0.2  # default if edge not found
+                        a_to_b_weight = 0.2
                         b_to_c_weight = 0.2
                         for subgraph2 in graph._subgraphs.values():
                             for edge2 in subgraph2.edges:
@@ -762,14 +808,18 @@ class SwansonBridgeSearch:
                                     rt_str = rt.value if hasattr(rt, 'value') else str(rt)
                                     b_to_c_weight = layer_weights.get(rt_str, 0.2)
                         bridge_score = (a_to_b_weight + b_to_c_weight) / 2.0
+                        # Boost score for disjoint bridges (genuine discovery)
+                        if is_disjoint:
+                            bridge_score *= 1.5
                         bridges.append({
                             "a": a,
                             "b": b,
                             "c": c,
-                            "score": bridge_score,
+                            "score": round(bridge_score, 4),
                             "a_to_b_layer": a_to_b_weight,
                             "b_to_c_layer": b_to_c_weight,
-                            "description": f"Undiscovered bridge: {a} → {b} → {c} (but {a} → {c} not connected)"
+                            "disjoint": is_disjoint,
+                            "description": f"{'[DISJOINT] ' if is_disjoint else ''}Bridge: {a} → {b} → {c} (a→c not connected)"
                         })
         
         return bridges
