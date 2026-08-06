@@ -393,9 +393,15 @@ def run_acid_test() -> Dict[str, Any]:
         "BACON":      {"status": bacon_status,
                        "count": bacon_count, "threshold": 1,
                        "unit": "law discovered on real data (R²≥0.95)"},
-        "Arthur":     {"status": "MERGED with Swanson",
-                       "count": len(bridges), "threshold": None,
-                       "unit": "merged — same algorithm as Swanson"},
+        "Arthur":     {"status": "NOT IMPLEMENTED",
+                       "count": 0, "threshold": 1,
+                       "unit": "adjacent-possible state-space traversal (not built)"},
+                       # Per cycle 141 (auditor fix): Arthur was "MERGED with Swanson"
+                       # which reused Swanson's count as a PASS. This is F-007
+                       # (vocabulary inflation). Arthur's adjacent-possible traversal
+                       # is a different algorithm from Swanson bridge search — it
+                       # requires state-space exploration (Youn et al.), not just
+                       # A→B→C bridge finding. Honestly marked NOT IMPLEMENTED.
         "_meta": {
             "total_nodes": len(dg.nodes),
             "total_edges": len(all_edges),

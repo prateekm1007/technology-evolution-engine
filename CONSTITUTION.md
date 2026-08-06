@@ -54,7 +54,11 @@ required before any claim may be labeled "verified" rather than
 for the current audit against this standard.
 
 ## Agent Roster (FROZEN)
-Historian, Naturalist, Oracle, Ecologist, Inventor, Destroyer, Cemetery, Prerequisite Engine, Resurrection Engine, Blueprint Generator, Ledger
+~Historian, Naturalist, Oracle, Ecologist, Inventor, Destroyer, Cemetery, Prerequisite Engine, Resurrection Engine, Blueprint Generator, Ledger~
+
+**Per cycle 141 (auditor F-007 finding):** The above roster was vocabulary inflation — the engine/ agents existed as stubs but were never wired into the pipeline and never performed real work. The Destroyer unconditionally returned `{'passed': True}` for every attack vector. The code has been archived to `archive/dead_engine/`.
+
+**Current actual roster:** The system uses `invention_compiler/` modules (edge_extractor, causal_graph, causal_simulator, discovery_graph, bacon_engine, knowledge modules) and `product/` subpackages (ingestion, discovery, scoring, retrieval, etc.). These are the modules that actually do work. The agent names above remain as conceptual labels in the design but do not correspond to live code.
 
 ## Entropy Prevention
 Never create versioned duplicates. Never create _new, _fixed, _final, _latest variants.

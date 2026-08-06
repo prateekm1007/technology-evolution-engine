@@ -885,22 +885,51 @@ class GentnerStructureMapping:
                     chain_b = group_chains[j][0]
                     edge_types_a = group_chains[i][1]
                     edge_types_b = group_chains[j][1]
-                    
+
                     # Same length (guaranteed by grouping)
                     # Check no shared nodes (different domains)
                     shared = set(chain_a) & set(chain_b)
                     if len(shared) == 0:
-                        # Systematicity: all edge types match (guaranteed by grouping)
-                        # so systematicity = 1.0 for same-signature chains
-                        systematicity = 1.0
-                        analogies.append({
-                            "chain_a": chain_a,
-                            "chain_b": chain_b,
-                            "systematicity": systematicity,
-                            "edge_types_a": edge_types_a,
-                            "edge_types_b": edge_types_b,
-                            "description": f"Structural analogy: {' → '.join(chain_a)} vs {' → '.join(chain_b)}"
-                        })
+                        # Per cycle 141 (auditor fix): systematicity was hardcoded
+                        # to 1.0 because chains are pre-grouped by signature. This
+                        # produced 215K+ noise analogies with identical scores.
+                        # Fix: compute actual partial overlap — the fraction of
+                        # edge types that match at corresponding positions, plus
+                        # a node-similarity bonus for chains with similar node
+                        # types (not just same edge signature).
+                        matching_edges = sum(1 for a, b in zip(edge_types_a, edge_types_b) if a == b)
+                        edge_overlap = matching_edges / len(edge_types_a) if edge_types_a else 0.0
+
+                        # Node similarity: check if nodes at corresponding positions
+                        # share type information (not identity — they're in different
+                        # domains). This distinguishes meaningful analogies from
+                        # arbitrary same-signature pairs.
+                        node_type_overlap = 0.0
+                        try:
+                            for na, nb in zip(chain_a, chain_b):
+                                ta = graph.get_node(na) or {}
+                                tb = graph.get_node(nb) or {}
+                                if ta.get("type") == tb.get("type"):
+                                    node_type_overlap += 1.0
+                            node_type_overlap = node_type_overlap / len(chain_a) if chain_a else 0.0
+                        except Exception:
+                            node_type_overlap = 0.0
+
+                        # Systematicity = weighted combination of edge and node overlap.
+                        # This is no longer always 1.0 — it varies based on actual
+                        # structural similarity, not just signature grouping.
+                        systematicity = round(0.6 * edge_overlap + 0.4 * node_type_overlap, 4)
+
+                        # Only keep analogies with meaningful overlap (not noise)
+                        if systematicity >= 0.3:
+                            analogies.append({
+                                "chain_a": chain_a,
+                                "chain_b": chain_b,
+                                "systematicity": systematicity,
+                                "edge_types_a": edge_types_a,
+                                "edge_types_b": edge_types_b,
+                                "description": f"Structural analogy: {' → '.join(chain_a)} vs {' → '.join(chain_b)}"
+                            })
         
         return analogies
 
