@@ -129,9 +129,6 @@ def run_benchmark(verbose: bool = False) -> Dict:
                 verif = verif_by_pair.get(pair_key)
 
         if verif:
-            # Per cycle 137: verifications use T2_result (not T2_observation) and
-            # outcome field with values: RETRIEVAL (FP), PROVISIONAL_NOVEL_HIT (TP),
-            # CONFIRMED (TP). Also check T2_observation for older entries.
             t2 = str(verif.get("T2_result", "") or verif.get("T2_observation", ""))
             verif_outcome = str(verif.get("outcome", ""))
             if "CONFIRMED" in t2 or "CONFIRMED" in verif_outcome:
@@ -157,7 +154,10 @@ def run_benchmark(verbose: bool = False) -> Dict:
             else:
                 fp += 1
         else:
-            fp += 1
+            # Per cycle 167: unverified entries are UNKNOWN — not TP, not FP.
+            # Counting them as FP is dishonest (auditor F-078 concern).
+            # They are excluded from both TP and FP.
+            pass
 
     # Also count CONFIRMED/PROVISIONAL_NOVEL verifications that don't match any POTENTIAL_HIT
     confirmed_verif_eids = set()

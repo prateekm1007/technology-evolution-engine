@@ -1,16 +1,16 @@
 {
   "benchmark": "gen5_discovery_pr",
-  "timestamp": "2026-08-06T14:00:53Z",
+  "timestamp": "2026-08-06T15:25:32Z",
   "total_blind_tests": 55,
   "potential_hits": 14,
   "null_results": 41,
   "reclassified": 2,
   "true_positives": 9,
-  "false_positives": 8,
+  "false_positives": 6,
   "false_negatives": 2,
-  "precision": 0.5294,
+  "precision": 0.6,
   "recall": 0.8182,
-  "f1": 0.6429,
+  "f1": 0.6923,
   "outcome_points": 3,
   "infra_score": 7,
   "total_score": 10,
@@ -58,6 +58,13 @@
       "t2_snippet": "PROVISIONAL. No published bridge. Pending non-triviality + F-065."
     },
     {
+      "experiment_id": "EXP-BLIND-002",
+      "literature_A": null,
+      "literature_B": null,
+      "verification": "CONFIRMED (from verification log)",
+      "t2_snippet": "PARTIALLY CONFIRMED \u2014 The concept of conductive nonmagnetic nanoparticles heated by eddy currents fo"
+    },
+    {
       "experiment_id": "EXP-BLIND-001",
       "literature_A": null,
       "literature_B": null,
@@ -70,13 +77,6 @@
       "literature_B": null,
       "verification": "CONFIRMED (from verification log)",
       "t2_snippet": "CONFIRMED \u2014 Multiple sources verify that BBB tight junctions function as size-selective pores, analo"
-    },
-    {
-      "experiment_id": "EXP-BLIND-002",
-      "literature_A": null,
-      "literature_B": null,
-      "verification": "CONFIRMED (from verification log)",
-      "t2_snippet": "PARTIALLY CONFIRMED \u2014 The concept of conductive nonmagnetic nanoparticles heated by eddy currents fo"
     }
   ]
 }
