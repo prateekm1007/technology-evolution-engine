@@ -861,8 +861,10 @@ class NLPPipeline:
          "applied_to", "forward"),  # "X is applied to Y"
         (r'(\w[\w\s\-]{2,40})\s+(?:elucidates?|clarifies?|reveals?|demonstrates?|illustrates?)\s+(\w[\w\s\-]{2,40})',
          "elucidates", "forward"),  # "X elucidates Y" (cycle 136: added)
-        (r'(\w[\w\s\-]{2,40})\s+(?:is\s+compared\s+with|is\s+compared\s+to)\s+(\w[\w\s\-]{2,40})',
-         "compared_with", "forward"),  # "X is compared with Y" (cycle 136: added)
+        # Per cycle 160: REMOVED "X is compared with Y" pattern.
+        # Comparison is descriptive, not causal — it produces false positives
+        # like "controller compared with low-pass filter" which is not a
+        # causal mechanism.
         # Cycle 153: scientific paper patterns — these are common in paper
         # abstracts/introductions but were missing from the pattern list.
         # "influence of X on Y" → X affects Y
@@ -877,9 +879,10 @@ class NLPPipeline:
         # "X discussed in relation to Y" → X relates_to Y
         (r'(\w[\w\s\-]{2,40})\s+(?:discussed|investigated|studied)\s+(?:in\s+relation\s+to|with\s+respect\s+to|in\s+terms\s+of)\s+(\w[\w\s\-]{2,40})',
          "relates_to", "forward"),
-        # "X for Y" → X enables Y (common in abstracts: "materials for energy storage")
-        (r'(\w[\w\s\-]{2,40})\s+for\s+(?:potential\s+)?(\w[\w\s\-]{5,40})',
-         "enables", "forward"),
+        # Per cycle 160: REMOVED "X for Y → enables" pattern.
+        # It was too broad — produced false positives like "Passive enables
+        # energy consumption" and "circuit enables plot". The pattern matched
+        # any "for" preposition, not just causal enabling.
         # "X exhibited Y" (past tense — already handled but with different group structure)
         (r'(\w[\w\s\-]{2,40})\s+(?:exhibited|showed|displayed|demonstrated)\s+(\w[\w\s\-]{2,40})',
          "exhibits", "forward"),

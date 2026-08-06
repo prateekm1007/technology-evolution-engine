@@ -1,14 +1,14 @@
 {
   "benchmark": "gen3_relation_extraction_pr",
-  "timestamp": "2026-08-06T13:19:49Z",
+  "timestamp": "2026-08-06T13:49:29Z",
   "sentences": 25,
   "gold_triples": 29,
   "true_positives": 20,
-  "false_positives": 11,
+  "false_positives": 9,
   "false_negatives": 9,
-  "precision": 0.6452,
+  "precision": 0.6897,
   "recall": 0.6897,
-  "f1": 0.6667,
+  "f1": 0.6897,
   "per_sentence": [
     {
       "sentence_idx": 0,
@@ -36,9 +36,9 @@
     {
       "sentence_idx": 1,
       "gold_count": 1,
-      "pred_count": 2,
+      "pred_count": 1,
       "true_positives": 0,
-      "false_positives": 2,
+      "false_positives": 1,
       "false_negatives": 1,
       "matched_gold": [],
       "missed_gold": [
@@ -53,11 +53,6 @@
           "subject": "plot",
           "relation": "elucidate",
           "object": "electrode electrolyte interface"
-        },
-        {
-          "subject": "electric equivalent circuit",
-          "relation": "enables",
-          "object": "plot"
         }
       ]
     },
@@ -92,9 +87,9 @@
     {
       "sentence_idx": 3,
       "gold_count": 1,
-      "pred_count": 1,
+      "pred_count": 0,
       "true_positives": 0,
-      "false_positives": 1,
+      "false_positives": 0,
       "false_negatives": 1,
       "matched_gold": [],
       "missed_gold": [
@@ -104,13 +99,7 @@
           "baseline"
         ]
       ],
-      "wrong_preds": [
-        {
-          "subject": "optimal controller",
-          "relation": "compared",
-          "object": "a low-pass"
-        }
-      ]
+      "wrong_preds": []
     },
     {
       "sentence_idx": 4,
