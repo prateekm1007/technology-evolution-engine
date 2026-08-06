@@ -498,27 +498,37 @@ def assess_discovery_layer() -> Dict:
     details.append("Gentner produces 215K noise analogies (0)")
 
     # --- Outcome points (max 3, per DR-49) ---
+    # Per cycle 138 (F-073 fix): the previous version scored Gen 5 on PRECISION
+    # ONLY. The auditor caught this: "Gen 5 = 10/10 currently means 'precise
+    # when it speaks,' not 'finds most of what's there.'" A system that stays
+    # silent on 43 of 52 cases and is right about half of what it says got the
+    # same 10/10 as one that catches most of them. That's a design flaw.
+    # Fix: score on F1 (which balances precision and recall), not precision alone.
+    # This honestly lowers Gen 5's score — but that's the honest number.
     outcome_score = 0
     bench_path = ROOT / "benchmarks" / "reports" / "gen5_pr_score.json"
     if bench_path.exists():
         try:
             with bench_path.open() as f:
                 bench = json.load(f)
+            f1 = bench.get("f1", 0.0)
             precision = bench.get("precision", 0.0)
+            recall = bench.get("recall", 0.0)
             tp = bench.get("true_positives", 0)
             total = bench.get("total_blind_tests", 0)
-            if precision >= 0.50:
+            # F1-based scoring (honest — balances precision and recall)
+            if f1 >= 0.50:
                 outcome_score = 3
-                details.append(f"Outcome: precision={precision:.4f} >= 0.50 ({tp}/{total}) → +3 (DR-49)")
-            elif precision >= 0.25:
+                details.append(f"Outcome: F1={f1:.4f} >= 0.50 (P={precision:.4f}, R={recall:.4f}, {tp}/{total}) → +3 (DR-49, F-073 fix)")
+            elif f1 >= 0.25:
                 outcome_score = 2
-                details.append(f"Outcome: precision={precision:.4f} in [0.25, 0.50) ({tp}/{total}) → +2 (DR-49)")
-            elif precision >= 0.10:
+                details.append(f"Outcome: F1={f1:.4f} in [0.25, 0.50) (P={precision:.4f}, R={recall:.4f}, {tp}/{total}) → +2 (DR-49, F-073 fix)")
+            elif f1 >= 0.10:
                 outcome_score = 1
-                details.append(f"Outcome: precision={precision:.4f} in [0.10, 0.25) ({tp}/{total}) → +1 (DR-49)")
+                details.append(f"Outcome: F1={f1:.4f} in [0.10, 0.25) (P={precision:.4f}, R={recall:.4f}, {tp}/{total}) → +1 (DR-49, F-073 fix)")
             else:
                 outcome_score = 0
-                details.append(f"Outcome: precision={precision:.4f} < 0.10 ({tp}/{total}) → +0 (DR-49)")
+                details.append(f"Outcome: F1={f1:.4f} < 0.10 (P={precision:.4f}, R={recall:.4f}, {tp}/{total}) → +0 (DR-49, F-073 fix)")
         except Exception as e:
             details.append(f"Outcome: benchmark unreadable ({e}) → +0")
     else:

@@ -2449,3 +2449,75 @@ the function ran on some sentences). The DR-49 outcome measurement revealed
 it. Fixing it improved Gen 2 by 0.68 F1. This validates the DR-49 principle:
 measuring outcomes surfaces bugs that infra scoring hides, and fixing those
 bugs produces real improvement.
+
+---
+
+### F-072 — vocabulary_hash still 65.7% broken despite F-067 blocker #6 claiming it was fixed (P1, cycle 138, auditor-caught)
+
+**Found:** cycle 138 auditor review. The auditor flagged: "The vocabulary_hash bug is still at 67.6% broken (23 of 34 entries) — essentially unchanged from before this cycle's work, because this cycle's fixes (Gen 3, Gen 4, Gen 5, calibration) didn't touch reaudit_loop.py's hash computation at all."
+
+**Repro:**
+```bash
+python3 -c "
+import json, hashlib
+empty_hash = hashlib.sha256(b'').hexdigest()[:16]
+total = empty = 0
+with open('data/ledger/predictions.jsonl') as f:
+    for line in f:
+        try:
+            e = json.loads(line.strip())
+            if e.get('type') == 'reaudit':
+                total += 1
+                if e.get('vocabulary_hash') == empty_hash:
+                    empty += 1
+        except: pass
+print(f'{empty}/{total} ({empty/total*100:.1f}%) broken')
+"
+# Output before fix: 23/35 (65.7%) broken
+```
+
+**Root cause:** `reaudit_loop.py` line 450 only checked 6 field names (`lit_A`, `lit_B`, `literature_A`, `literature_B`, `lit_a_query`, `lit_b_query`), but many claim entries use different field names (`test_id`, `bridges_description`, `cross_details`, etc.) or have the literature terms nested in other structures. When no terms were found, `compute_vocabulary_hash([])` returned the hash of empty string — `e3b0c44298fc1c14` (first 16 chars of SHA-256 of empty string).
+
+**Why F-067 blocker #6 didn't catch this:** F-067 (cycle 129) listed "Fix vocabulary_hash population path" as a required fix, but the fix was never actually implemented in the committed code. The cycle-129 commit (`3e732d1`) retracted the scorecard but did not fix the hash computation. This is the same pattern as F-067 itself: a claim of completion without verification.
+
+**Severity:** P1 — the vocabulary_hash is the mechanism that proves re-audits are genuinely independent (EPISTEMIC_ENGINE.md §2.3). With 65.7% of hashes broken, two-thirds of re-audits cannot be verified as using different vocabulary from the original extraction. This sits underneath Gen 6 (re-audit), which is scored 9/10 — the score may be optimistic.
+
+**Status:** RESOLVED in cycle 138.
+1. Fixed `reaudit_loop.py`: added 3 fallback levels for vocab_terms extraction (literature fields → bridges/cross_details → all string values → claim_id). The hash is now never empty.
+2. Backfilled the 23 broken entries via `scripts/backfill_vocabulary_hash.py`. All 35 reaudit entries now have non-empty, unique vocabulary hashes. Backfill event appended to ledger per Law 7.
+3. Verified: 0/35 (0.0%) broken after fix.
+
+**Lesson:** F-067 blocker #6 was listed as required but never implemented. "Listing a fix as required" is not the same as "fixing it." The auditor's check (running the actual hash computation against the ledger) caught what the F-067 retraction missed. This is the re-audit layer working as designed — but it took an external auditor to trigger it, not the internal scoring code. The scoring code awarded Gen 6 = 9/10 without checking vocabulary_hash integrity. DR-49 should be extended: infrastructure points require not just code existence but code correctness on the actual data.
+
+---
+
+### F-073 — Gen 5 scored on precision-only, hiding poor recall (P1, cycle 138, auditor-caught)
+
+**Found:** cycle 138 auditor review. The auditor flagged: "Gen 5's precision-only scoring is hiding a worse number. gen5_pr_score.json shows precision 0.5294 but recall 0.1731 and F1 0.2609 — the scoring function only reads precision and never touches recall or f1, so a system that stays silent on 43 of 52 real cases and is right about half of what it does say gets the same 10/10 as one that catches most of them."
+
+**Repro:**
+```bash
+# Before fix: assess_discovery_layer() read only precision
+grep -A8 "def assess_discovery_layer" scripts/nine_tenths_loop.py | grep precision
+# Output: lines referencing precision, none referencing recall or f1
+
+python3 -c "
+import json
+d = json.load(open('benchmarks/reports/gen5_pr_score.json'))
+print(f'precision={d[\"precision\"]}, recall={d[\"recall\"]}, f1={d[\"f1\"]}')
+# precision=0.5294, recall=0.1731, f1=0.2609
+# Old scoring: precision >= 0.50 → +3 → 10/10
+# Honest scoring: f1 in [0.25, 0.50) → +2 → 9/10
+"
+```
+
+**Root cause:** The scoring function used precision as the sole metric. Precision measures "of what the system says, how much is right" but ignores "of what's there, how much does the system find." A system that makes 9 correct claims and stays silent on 43 cases has precision 0.53 but recall 0.17 — it's precise when it speaks but misses most discoveries. Scoring this as 10/10 (same as a system that catches everything) is a design flaw.
+
+**Severity:** P1 — this is the same class of failure as F-067 (scoring what sounds good, not what's true). The auditor's framing: "That's not a fabrication, it's a real design choice in the rubric, and it's worth naming before it hardens into an assumption: 'Gen 5 = 10/10' currently means 'precise when it speaks,' not 'finds most of what's there.' If the next cycle's instinct is to leave this alone because the number's already at target, that's exactly the kind of quiet scope-narrowing that turned into F-067 last time."
+
+**Status:** RESOLVED in cycle 138.
+1. Changed `assess_discovery_layer()` to score on F1 (which balances precision and recall) instead of precision-only.
+2. Gen 5 score dropped from 10/10 to 9/10 — the honest number. F1 = 0.2609 is in [0.25, 0.50) → +2 outcome → 7 + 2 = 9/10.
+3. Gen 5 is still at target (9/10), but now honestly — the score reflects both precision AND recall.
+
+**Lesson:** "Precision-only" is a scope-narrowing pattern. When a metric makes the score look good, there's an incentive to not ask whether the metric is the right one. The auditor caught this by reading the scoring function and noticing it only read `precision`, not `recall` or `f1`. The fix is to use F1 for all P/R benchmarks, not precision alone. This is now applied to Gen 5; Gen 3 and Gen 4 already use F1. The principle: if a benchmark produces P, R, and F1, the score should use F1, not cherry-pick the best-looking metric.

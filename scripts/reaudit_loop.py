@@ -445,11 +445,58 @@ def run_adversarial_verification(claim: Dict) -> Dict:
         overturned = False
 
     # Compute vocabulary hash (use the claim's literature terms)
+    # Per cycle 138 (F-072 fix): the previous version only checked 6 field names
+    # (lit_A, lit_B, literature_A, literature_B, lit_a_query, lit_b_query), but
+    # many claim entries use different field names (test_id, bridges, cross_details,
+    # lit_A_query, etc.) or have the literature terms nested in other structures.
+    # When no terms were found, compute_vocabulary_hash([]) returned the hash of
+    # empty string — producing a broken hash for 23 of 35 entries (65.7%).
+    # Fix: fall back to ALL string values in the entry, plus the claim_id and
+    # bridge details, so the hash is never empty.
     entry = claim["entry"]
     vocab_terms = []
-    for key in ("lit_A", "lit_B", "literature_A", "literature_B", "lit_a_query", "lit_b_query"):
-        if key in entry:
+
+    # Primary: check all known literature field names
+    for key in ("lit_A", "lit_B", "literature_A", "literature_B",
+                "lit_a_query", "lit_b_query", "lit_A_query", "lit_B_query",
+                "literature_a", "literature_b"):
+        if key in entry and entry[key]:
             vocab_terms.append(str(entry[key]))
+
+    # Fallback 1: if no literature terms found, extract from bridges/cross_details
+    if not vocab_terms:
+        for bridge_key in ("bridges_description", "bridge", "cross_details"):
+            if bridge_key in entry and entry[bridge_key]:
+                val = entry[bridge_key]
+                if isinstance(val, str):
+                    vocab_terms.append(val)
+                elif isinstance(val, list):
+                    for item in val:
+                        if isinstance(item, dict):
+                            for v in item.values():
+                                if v:
+                                    vocab_terms.append(str(v))
+                        elif item:
+                            vocab_terms.append(str(item))
+
+    # Fallback 2: if still no terms, use ALL string values from the entry
+    # (excluding empty strings and common metadata fields)
+    if not vocab_terms:
+        skip_keys = {"type", "timestamp", "writer", "outcome", "expected",
+                     "extraction_log_proves_separation", "cycle"}
+        for k, v in entry.items():
+            if k in skip_keys:
+                continue
+            if v and isinstance(v, str) and len(v) >= 3:
+                vocab_terms.append(v)
+            elif v and isinstance(v, (int, float)):
+                vocab_terms.append(str(v))
+
+    # Fallback 3: if STILL no terms, use the claim_id itself (never produce
+    # an empty hash — that defeats the purpose of the vocabulary hash)
+    if not vocab_terms:
+        vocab_terms = [exp_id or "unknown_claim"]
+
     vocab_hash = compute_vocabulary_hash(vocab_terms)
 
     reaudit = {
