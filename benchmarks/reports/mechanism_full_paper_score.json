@@ -1,0 +1,36 @@
+{
+  "benchmark": "mechanism_full_paper",
+  "timestamp": "2026-08-06T12:52:58Z",
+  "papers_tested": 3,
+  "mechanisms_extracted": 2,
+  "mechanisms_verified": 2,
+  "verification_rate": 1.0,
+  "gold_mechanisms": 5,
+  "gold_matched": 1,
+  "recall": 0.2,
+  "f1": 0.3333,
+  "structural_completeness": 1.0,
+  "per_paper": [
+    {
+      "paper": "1603.08320v1.txt",
+      "extracted": 1,
+      "verified": 1,
+      "gold": 2,
+      "matched": 1
+    },
+    {
+      "paper": "2005.03678v3.txt",
+      "extracted": 0,
+      "verified": 0,
+      "gold": 2,
+      "matched": 0
+    },
+    {
+      "paper": "1510.05595v2.txt",
+      "extracted": 1,
+      "verified": 1,
+      "gold": 1,
+      "matched": 0
+    }
+  ]
+}
