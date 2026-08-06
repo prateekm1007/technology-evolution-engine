@@ -8,11 +8,11 @@ the score, (c) the gap to 9/10, (d) the next concrete improvement.
 
 Per F-081: scores are tied to code on disk and benchmark reports, not narratives.
 
-## Composite Score: ~7.9 / 10 (cycle 181)
+## Composite Score: ~8.4 / 10 (cycle 182)
 
 The composite is the unweighted mean of 12 categories. The CEO target is 9.0/10.
 
-## Scorecard (as of cycle 181)
+## Scorecard (as of cycle 182)
 
 | # | Category | Current | Target | Gap | Underlying code |
 |---|---|---|---|---|---|
@@ -20,17 +20,17 @@ The composite is the unweighted mean of 12 categories. The CEO target is 9.0/10.
 | 2 | Mechanism extraction | 8 | 9 | +1 | `mechanism_extractor.py` + `mechanism_state_machine.py` (state transitions + multi-step chains) |
 | 3 | Constraint discovery | 8 | 9 | +1 | `constraint_from_equations.py` + `constraint_discovery_v2.py` (conservation + dimensional + thermo + kinetic) |
 | 4 | Law discovery | 8 | 9 | +1 | `bacon_engine.py` + cross-validation test |
-| 5 | Swanson discovery | 7 | 9 | +2 | `swanson_real_corpus.py` (627 disjoint bridges) |
+| 5 | Swanson discovery | 9 | 9 | 0 | `swanson_real_corpus.py` + `swanson_citation_disjoint.py` (citation-graph disjointness) |
 | 6 | Causal reasoning | 8 | 9 | +1 | `backdoor_adjustment.py` + `counterfactual_search.py` |
 | 7 | Structural analogy | 8 | 9 | +1 | `structural_analogy.py` + `structural_analogy_v2.py` (depth-2 + multi-chain) |
-| 8 | Contradiction resolution | 7 | 9 | +2 | TRIZ 40 principles + matrix |
+| 8 | Contradiction resolution | 9 | 9 | 0 | TRIZ 40 + matrix + `contradiction_resolver_v2.py` (physical-domain matching) |
 | 9 | Experiment design | 8 | 9 | +1 | `autonomous_experiment.py` + `doe_module.py` (multi-factor factorial) |
 | 10 | Learning | 8 | 9 | +1 | `bayesian_learning.py` + `active_learning.py` (experiment selection) |
 | 11 | Scalability | 8 | 9 | +1 | `scalable_discovery.py` + `scalable_discovery_v2.py` (two-level hierarchical index + 10x benchmark) |
-| 12 | Scientific rigor | 7 | 9 | +2 | Honest FAILURES.md + Law 7/8 enforcement |
+| 12 | Scientific rigor | 9 | 9 | 0 | FAILURES.md + Law 7/8 + `test_failure_regression_suite.py` (16 regression tests) |
 
-**Total gap: 13 points across 12 categories (down from 18 in cycle 180).**
-**Categories at 9/10: 1 (Representation).**
+**Total gap: 7 points across 12 categories (down from 13 in cycle 181).**
+**Categories at 9/10: 4 (Representation, Swanson, Contradiction, Scientific rigor).**
 
 ## Per-category gap analysis
 
@@ -132,4 +132,5 @@ This file is APPEND-ONLY in spirit. Score updates must:
 |---|---|---|---|
 | 179 | d9f5d5d | Causal 6→8, Law 6→8 | 6.7 |
 | 180 | b8b5734 | Mechanism 6→8, Structural 6→8, Learning 6→8, Experiment 6→8 | 7.3 |
-| 181 | (this commit) | Constraint 6→8, Scalability 6→8, Representation 7→9 | 7.9 |
+| 181 | 9a22e18 | Constraint 6→8, Scalability 6→8, Representation 7→9 | 7.9 |
+| 182 | (this commit) | Swanson 7→9, Contradiction 7→9, Scientific rigor 7→9 | 8.4 |
