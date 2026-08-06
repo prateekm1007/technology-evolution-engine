@@ -18,54 +18,30 @@ from invention_compiler.discovery_graph import DiscoveryGraph, DiscoveryEdge, Re
 
 
 def build_disjoint_graph():
-    """Build a graph with two disjoint literatures.
-
-    Literature 1 (nutrition): fish_oil → blood_viscosity → platelet_aggregation
-    Literature 2 (medicine): raynaud → blood_viscosity → platelet_aggregation
-
-    The bridge concept (blood_viscosity) connects the two literatures.
-    fish_oil → blood_viscosity → raynaud is a Swanson bridge IF the
-    two literatures are disjoint (no shared edges other than through b).
-    """
+    """Build a graph with two disjoint literatures."""
+    from invention_compiler.discovery_graph import DiscoveryNode
     graph = DiscoveryGraph()
 
-    # Add nodes with source_domain tags
     for nid, domain in [
         ("fish_oil", "nutrition"),
-        ("blood_viscosity", "shared"),  # the bridge concept
+        ("blood_viscosity", "shared"),
         ("platelet_aggregation", "nutrition"),
         ("raynaud", "medicine"),
         ("vasodilation", "medicine"),
     ]:
-        graph.add_node({
-            "node_id": nid,
-            "node_type": "concept",
-            "label": nid,
-            "properties": {"source_domain": domain},
-        })
+        graph.add_node(DiscoveryNode(
+            node_id=nid, node_type="concept", label=nid,
+            properties={"source_domain": domain}, layers=[], provenance={},
+        ))
 
-    # Literature 1 (nutrition): fish_oil → blood_viscosity
-    graph.add_edge(DiscoveryEdge(
-        source="fish_oil", target="blood_viscosity",
-        relation_type=RelationType.MECHANISM,
-    ))
-    # blood_viscosity → platelet_aggregation (in nutrition literature)
-    graph.add_edge(DiscoveryEdge(
-        source="blood_viscosity", target="platelet_aggregation",
-        relation_type=RelationType.MECHANISM,
-    ))
-
-    # Literature 2 (medicine): raynaud → blood_viscosity (reversed: blood_viscosity affects raynaud)
-    graph.add_edge(DiscoveryEdge(
-        source="blood_viscosity", target="raynaud",
-        relation_type=RelationType.INFLUENCE,
-    ))
-    # raynaud → vasodilation (in medicine literature)
-    graph.add_edge(DiscoveryEdge(
-        source="raynaud", target="vasodilation",
-        relation_type=RelationType.MECHANISM,
-    ))
-
+    graph.add_edge(DiscoveryEdge(source="fish_oil", target="blood_viscosity",
+                                  relation_type=RelationType.MECHANISM))
+    graph.add_edge(DiscoveryEdge(source="blood_viscosity", target="platelet_aggregation",
+                                  relation_type=RelationType.MECHANISM))
+    graph.add_edge(DiscoveryEdge(source="blood_viscosity", target="raynaud",
+                                  relation_type=RelationType.INFLUENCE))
+    graph.add_edge(DiscoveryEdge(source="raynaud", target="vasodilation",
+                                  relation_type=RelationType.MECHANISM))
     return graph
 
 
