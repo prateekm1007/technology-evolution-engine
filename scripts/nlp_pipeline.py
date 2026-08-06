@@ -959,6 +959,12 @@ class NLPPipeline:
         # "X depends on Y" (already had "depends on" but only with plural; add singular)
         (r'(\w[\w\s\-]{2,40})\s+(?:depends?\s+on|relies?\s+on)\s+(\w[\w\s\-]{2,40})',
          "depends_on", "forward"),
+        # Per cycle 186: "X occurs under Y" → X occurs Y (mechanical/thermal)
+        (r'(\w[\w\s\-]{2,40})\s+(?:occurs?|happens?|takes?\s+place)\s+(?:under|at|in|during)\s+(\w[\w\s\-]{2,40})',
+         "occurs", "forward"),
+        # "X transfers Y" → X transfers Y (heat transfer)
+        (r'(\w[\w\s\-]{2,40})\s+(?:transfers?|conveys?|conducts?)\s+(\w[\w\s\-]{2,40})',
+         "transfers", "forward"),
     ]
     
     def _extract_implicit_causal(self, text: str, entities: List[ExtractedEntity],
@@ -989,32 +995,43 @@ class NLPPipeline:
                 group2 = match.group(2).strip().lower()
                 
                 # Try to match groups to extracted entities
-                subj_ent = self._find_entity_in_text(group1, ent_by_text)
-                obj_ent = self._find_entity_in_text(group2, ent_by_text)
+                subj_ent_found = self._find_entity_in_text(group1, ent_by_text)
+                obj_ent_found = self._find_entity_in_text(group2, ent_by_text)
 
-                # Per cycle 184 (auditor update #3, F-086): if a pattern matched
-                # but one or both groups aren't in the entity list, SYNTHESIZE
-                # entities from the matched text. This dramatically improves
-                # recall — many gold triples have subjects/objects that spaCy
-                # doesn't label as entities (e.g., "Coulombic efficiency",
-                # "Hall-Petch relation", "ATP hydrolysis").
-                if subj_ent is None and len(group1) >= 4:
-                    # Create a synthetic entity from the matched text
+                # Per cycle 186 (PRECONDITION 1): ALWAYS use the pattern group
+                # text as the entity text, not the spaCy entity text. spaCy often
+                # extracts verb+noun as one entity (e.g., "Refraction bends light",
+                # "Supercapacitors store energy"), which makes the subject include
+                # the verb. Using the pattern group text fixes this — the pattern
+                # correctly identifies the subject boundary.
+                #
+                # The entity lookup is still used to VERIFY that the group contains
+                # a real entity (validation), but the TEXT is always the pattern group.
+                if subj_ent_found or len(group1) >= 4:
+                    label = subj_ent_found.label if subj_ent_found else "concept"
+                    conf = subj_ent_found.confidence if subj_ent_found else 0.6
                     subj_ent = ExtractedEntity(
                         text=match.group(1).strip(),
-                        label="concept",
+                        label=label,
                         start=match.start(1),
                         end=match.end(1),
-                        confidence=0.6,
+                        confidence=conf,
                     )
-                if obj_ent is None and len(group2) >= 4:
+                else:
+                    subj_ent = None
+
+                if obj_ent_found or len(group2) >= 4:
+                    label = obj_ent_found.label if obj_ent_found else "concept"
+                    conf = obj_ent_found.confidence if obj_ent_found else 0.6
                     obj_ent = ExtractedEntity(
                         text=match.group(2).strip(),
-                        label="concept",
+                        label=label,
                         start=match.start(2),
                         end=match.end(2),
-                        confidence=0.6,
+                        confidence=conf,
                     )
+                else:
+                    obj_ent = None
 
                 if subj_ent and obj_ent and subj_ent.text != obj_ent.text:
                     # Per cycle 136: only skip if BOTH are generic "entity" type.
@@ -1095,11 +1112,11 @@ class NLPPipeline:
     def _find_entity_in_text(self, text_fragment: str, ent_by_text: Dict) -> Optional[ExtractedEntity]:
         """Find an extracted entity that matches a text fragment.
 
-        Per cycle 184 (auditor update #3, F-086): tightened the matching
-        to avoid false positives. The previous version returned the first
-        entity with any token overlap, which caused "The Hall" to match
-        "The Hall-Petch relation" (wrong). Now we require the entity to
-        be a SUBSTANTIAL fraction of the fragment (≥50% of fragment length).
+        Per cycle 186: check BOTH substring directions (fragment in entity
+        OR entity in fragment). The cycle 184 version only checked one
+        direction and required ≥50% length, missing cases like "refraction"
+        in "refraction bends light". Uses ALL-significant-tokens subset
+        matching for token overlap.
         """
         text_fragment = text_fragment.lower().strip()
 
@@ -1107,27 +1124,28 @@ class NLPPipeline:
         if text_fragment in ent_by_text:
             return ent_by_text[text_fragment]
 
-        # Partial match: entity text is a substring of the fragment
-        # Require the entity to be ≥50% of the fragment length (avoids
-        # "The Hall" matching "The Hall-Petch relation")
+        # Substring match (BOTH directions)
         for key, ent in ent_by_text.items():
-            if len(key) >= 4 and key in text_fragment:
-                if len(key) >= len(text_fragment) * 0.5:
+            if len(key) >= 4 and len(text_fragment) >= 4:
+                if key in text_fragment or text_fragment in key:
                     return ent
 
-        # Per cycle 137: token-overlap match. Require ALL significant tokens
-        # of the entity to appear in the fragment (not just one).
-        fragment_tokens = set(text_fragment.split()) - {'the', 'a', 'an', 'of', 'in', 'and', 'for', 'to', 'with', 'by', 'on', 'at', 'is', 'are'}
+        # Token-overlap: ALL significant tokens of shorter set in longer set
+        stop = {'the', 'a', 'an', 'of', 'in', 'and', 'for', 'to', 'with', 'by', 'on', 'at', 'is', 'are', 'from', 'into', 'through', 'during', 'under'}
+        fragment_tokens = set(text_fragment.split()) - stop
         for key, ent in ent_by_text.items():
             if len(key) < 4:
                 continue
-            ent_tokens = set(key.split()) - {'the', 'a', 'an', 'of', 'in', 'and', 'for', 'to', 'with', 'by', 'on', 'at', 'is', 'are'}
-            significant_overlap = {t for t in (ent_tokens & fragment_tokens) if len(t) >= 4}
-            # Require ALL significant entity tokens to be in the fragment
-            # (was: any one token — too loose)
-            significant_ent_tokens = {t for t in ent_tokens if len(t) >= 4}
-            if significant_ent_tokens and significant_ent_tokens.issubset(fragment_tokens):
-                return ent
+            ent_tokens = set(key.split()) - stop
+            sig_ent = {t for t in ent_tokens if len(t) >= 4}
+            sig_frag = {t for t in fragment_tokens if len(t) >= 4}
+            if sig_ent and sig_frag:
+                if len(sig_ent) <= len(sig_frag):
+                    if sig_ent.issubset(sig_frag):
+                        return ent
+                else:
+                    if sig_frag.issubset(sig_ent):
+                        return ent
 
         return None
 
@@ -1162,18 +1180,30 @@ class NLPPipeline:
         except Exception:
             return "relates_to"
 
+    # Per cycle 186: only apply _is_noun_in_context to genuinely ambiguous
+    # words (words that are commonly both nouns AND verbs in scientific text).
+    # Words like "bends", "measures", "stores", "releases" are clearly verbs
+    # and should NOT be checked — the check was killing valid relations.
+    AMBIGUOUS_NOUN_VERB_WORDS = {
+        "control", "filter", "power", "display", "charge",
+        "force", "model", "process", "state", "form", "change", "range",
+        "measure", "test", "study", "research", "design", "plan",
+        "use", "work", "function", "method", "approach", "system",
+    }
+
     def _is_noun_in_context(self, word: str, match, doc) -> bool:
         """Check if a word is used as a noun in the sentence context (cycle 137).
 
-        Words like "control", "filter", "power", "scatter" can be nouns or verbs.
-        The implicit causal patterns may match them as verbs when they're actually
-        nouns in the sentence (e.g., "control formulation" — "control" is a noun).
-
-        This method finds the word in the spaCy doc and checks its POS tag. If it's
-        NOUN/PROPN, it's a false positive verb and the relation should be skipped.
+        Per cycle 186: only applies to AMBIGUOUS words (both noun and verb).
+        Clearly-verb words (bends, measures, stores, releases, etc.) are
+        NOT checked — they were being incorrectly flagged as nouns by spaCy's
+        small model, killing valid relations.
         """
         word_lower = word.lower().strip()
         if not word_lower or len(word_lower) < 3:
+            return False
+        # Only check ambiguous words
+        if word_lower not in self.AMBIGUOUS_NOUN_VERB_WORDS:
             return False
         # Find the word in the doc near the match position
         match_start = match.start()
