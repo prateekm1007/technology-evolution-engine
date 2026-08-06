@@ -1,0 +1,484 @@
+{
+  "benchmark": "gen3_relation_extraction_pr",
+  "timestamp": "2026-08-06T02:25:23Z",
+  "sentences": 25,
+  "gold_triples": 29,
+  "true_positives": 2,
+  "false_positives": 2,
+  "false_negatives": 27,
+  "precision": 0.5,
+  "recall": 0.069,
+  "f1": 0.1212,
+  "per_sentence": [
+    {
+      "sentence_idx": 0,
+      "gold_count": 1,
+      "pred_count": 0,
+      "true_positives": 0,
+      "false_positives": 0,
+      "false_negatives": 1,
+      "matched_gold": [],
+      "missed_gold": [
+        [
+          "h2so4",
+          "exhibits",
+          "capacitance"
+        ]
+      ],
+      "wrong_preds": []
+    },
+    {
+      "sentence_idx": 1,
+      "gold_count": 1,
+      "pred_count": 0,
+      "true_positives": 0,
+      "false_positives": 0,
+      "false_negatives": 1,
+      "matched_gold": [],
+      "missed_gold": [
+        [
+          "nyquist_plot",
+          "elucidates",
+          "interface"
+        ]
+      ],
+      "wrong_preds": []
+    },
+    {
+      "sentence_idx": 2,
+      "gold_count": 1,
+      "pred_count": 0,
+      "true_positives": 0,
+      "false_positives": 0,
+      "false_negatives": 1,
+      "matched_gold": [],
+      "missed_gold": [
+        [
+          "control_formulation",
+          "minimizes",
+          "energy_consumption"
+        ]
+      ],
+      "wrong_preds": []
+    },
+    {
+      "sentence_idx": 3,
+      "gold_count": 1,
+      "pred_count": 0,
+      "true_positives": 0,
+      "false_positives": 0,
+      "false_negatives": 1,
+      "matched_gold": [],
+      "missed_gold": [
+        [
+          "controller",
+          "compared_with",
+          "baseline"
+        ]
+      ],
+      "wrong_preds": []
+    },
+    {
+      "sentence_idx": 4,
+      "gold_count": 1,
+      "pred_count": 0,
+      "true_positives": 0,
+      "false_positives": 0,
+      "false_negatives": 1,
+      "matched_gold": [],
+      "missed_gold": [
+        [
+          "radiative_cooling",
+          "enables",
+          "temperatures"
+        ]
+      ],
+      "wrong_preds": []
+    },
+    {
+      "sentence_idx": 5,
+      "gold_count": 2,
+      "pred_count": 0,
+      "true_positives": 0,
+      "false_positives": 0,
+      "false_negatives": 2,
+      "matched_gold": [],
+      "missed_gold": [
+        [
+          "surface",
+          "reflects",
+          "solar_radiation"
+        ],
+        [
+          "surface",
+          "emits",
+          "thermal_radiation"
+        ]
+      ],
+      "wrong_preds": []
+    },
+    {
+      "sentence_idx": 6,
+      "gold_count": 1,
+      "pred_count": 0,
+      "true_positives": 0,
+      "false_positives": 0,
+      "false_negatives": 1,
+      "matched_gold": [],
+      "missed_gold": [
+        [
+          "absorption",
+          "governs",
+          "cooling_performance"
+        ]
+      ],
+      "wrong_preds": []
+    },
+    {
+      "sentence_idx": 7,
+      "gold_count": 1,
+      "pred_count": 0,
+      "true_positives": 0,
+      "false_positives": 0,
+      "false_negatives": 1,
+      "matched_gold": [],
+      "missed_gold": [
+        [
+          "bismuth_telluride",
+          "exhibits",
+          "seebeck_coefficient"
+        ]
+      ],
+      "wrong_preds": []
+    },
+    {
+      "sentence_idx": 8,
+      "gold_count": 1,
+      "pred_count": 0,
+      "true_positives": 0,
+      "false_positives": 0,
+      "false_negatives": 1,
+      "matched_gold": [],
+      "missed_gold": [
+        [
+          "carrier_concentration",
+          "determines",
+          "efficiency"
+        ]
+      ],
+      "wrong_preds": []
+    },
+    {
+      "sentence_idx": 9,
+      "gold_count": 1,
+      "pred_count": 3,
+      "true_positives": 1,
+      "false_positives": 2,
+      "false_negatives": 0,
+      "matched_gold": [
+        [
+          "phonon_scattering",
+          "reduces",
+          "thermal_conductivity"
+        ]
+      ],
+      "missed_gold": [],
+      "wrong_preds": [
+        {
+          "subject": "Phonon",
+          "relation": "reduce",
+          "object": "thermal conductivity"
+        },
+        {
+          "subject": "Phonon",
+          "relation": "reduce",
+          "object": "electrical conductivity"
+        },
+        {
+          "subject": "Phonon",
+          "relation": "reduces",
+          "object": "thermal conductivity"
+        }
+      ]
+    },
+    {
+      "sentence_idx": 10,
+      "gold_count": 1,
+      "pred_count": 0,
+      "true_positives": 0,
+      "false_positives": 0,
+      "false_negatives": 1,
+      "matched_gold": [],
+      "missed_gold": [
+        [
+          "lithium_plating",
+          "causes",
+          "capacity_fade"
+        ]
+      ],
+      "wrong_preds": []
+    },
+    {
+      "sentence_idx": 11,
+      "gold_count": 1,
+      "pred_count": 0,
+      "true_positives": 0,
+      "false_positives": 0,
+      "false_negatives": 1,
+      "matched_gold": [],
+      "missed_gold": [
+        [
+          "electrolytes",
+          "enable",
+          "energy_density"
+        ]
+      ],
+      "wrong_preds": []
+    },
+    {
+      "sentence_idx": 12,
+      "gold_count": 1,
+      "pred_count": 0,
+      "true_positives": 0,
+      "false_positives": 0,
+      "false_negatives": 1,
+      "matched_gold": [],
+      "missed_gold": [
+        [
+          "dendrite_growth",
+          "causes",
+          "short_circuits"
+        ]
+      ],
+      "wrong_preds": []
+    },
+    {
+      "sentence_idx": 13,
+      "gold_count": 2,
+      "pred_count": 0,
+      "true_positives": 0,
+      "false_positives": 0,
+      "false_negatives": 2,
+      "matched_gold": [],
+      "missed_gold": [
+        [
+          "materials",
+          "absorb",
+          "heat"
+        ],
+        [
+          "materials",
+          "release",
+          "heat"
+        ]
+      ],
+      "wrong_preds": []
+    },
+    {
+      "sentence_idx": 14,
+      "gold_count": 1,
+      "pred_count": 1,
+      "true_positives": 1,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "matched_gold": [
+        [
+          "stefan_boltzmann_law",
+          "governs",
+          "heat_transfer"
+        ]
+      ],
+      "missed_gold": [],
+      "wrong_preds": [
+        {
+          "subject": "The Stefan-Boltzmann",
+          "relation": "govern",
+          "object": "heat"
+        }
+      ]
+    },
+    {
+      "sentence_idx": 15,
+      "gold_count": 1,
+      "pred_count": 0,
+      "true_positives": 0,
+      "false_positives": 0,
+      "false_negatives": 1,
+      "matched_gold": [],
+      "missed_gold": [
+        [
+          "velocity",
+          "increases",
+          "heat_transfer"
+        ]
+      ],
+      "wrong_preds": []
+    },
+    {
+      "sentence_idx": 16,
+      "gold_count": 1,
+      "pred_count": 0,
+      "true_positives": 0,
+      "false_positives": 0,
+      "false_negatives": 1,
+      "matched_gold": [],
+      "missed_gold": [
+        [
+          "frameworks",
+          "exhibit",
+          "pore_structures"
+        ]
+      ],
+      "wrong_preds": []
+    },
+    {
+      "sentence_idx": 17,
+      "gold_count": 1,
+      "pred_count": 0,
+      "true_positives": 0,
+      "false_positives": 0,
+      "false_negatives": 1,
+      "matched_gold": [],
+      "missed_gold": [
+        [
+          "bandgap",
+          "determines",
+          "absorption_edge"
+        ]
+      ],
+      "wrong_preds": []
+    },
+    {
+      "sentence_idx": 18,
+      "gold_count": 1,
+      "pred_count": 0,
+      "true_positives": 0,
+      "false_positives": 0,
+      "false_negatives": 1,
+      "matched_gold": [],
+      "missed_gold": [
+        [
+          "grain_boundaries",
+          "reduce",
+          "mobility"
+        ]
+      ],
+      "wrong_preds": []
+    },
+    {
+      "sentence_idx": 19,
+      "gold_count": 2,
+      "pred_count": 0,
+      "true_positives": 0,
+      "false_positives": 0,
+      "false_negatives": 2,
+      "matched_gold": [],
+      "missed_gold": [
+        [
+          "membranes",
+          "reject",
+          "salt_ions"
+        ],
+        [
+          "membranes",
+          "allow",
+          "water_permeation"
+        ]
+      ],
+      "wrong_preds": []
+    },
+    {
+      "sentence_idx": 20,
+      "gold_count": 1,
+      "pred_count": 0,
+      "true_positives": 0,
+      "false_positives": 0,
+      "false_negatives": 1,
+      "matched_gold": [],
+      "missed_gold": [
+        [
+          "capillary_action",
+          "drives",
+          "water_transport"
+        ]
+      ],
+      "wrong_preds": []
+    },
+    {
+      "sentence_idx": 21,
+      "gold_count": 1,
+      "pred_count": 0,
+      "true_positives": 0,
+      "false_positives": 0,
+      "false_negatives": 1,
+      "matched_gold": [],
+      "missed_gold": [
+        [
+          "activation_energy",
+          "determines",
+          "reaction_rate"
+        ]
+      ],
+      "wrong_preds": []
+    },
+    {
+      "sentence_idx": 22,
+      "gold_count": 2,
+      "pred_count": 0,
+      "true_positives": 0,
+      "false_positives": 0,
+      "false_negatives": 2,
+      "matched_gold": [],
+      "missed_gold": [
+        [
+          "catalysts",
+          "lower",
+          "activation_energy"
+        ],
+        [
+          "catalysts",
+          "increase",
+          "reaction_rate"
+        ]
+      ],
+      "wrong_preds": []
+    },
+    {
+      "sentence_idx": 23,
+      "gold_count": 1,
+      "pred_count": 0,
+      "true_positives": 0,
+      "false_positives": 0,
+      "false_negatives": 1,
+      "matched_gold": [],
+      "missed_gold": [
+        [
+          "roughness",
+          "enhances",
+          "adhesion"
+        ]
+      ],
+      "wrong_preds": []
+    },
+    {
+      "sentence_idx": 24,
+      "gold_count": 1,
+      "pred_count": 0,
+      "true_positives": 0,
+      "false_positives": 0,
+      "false_negatives": 1,
+      "matched_gold": [],
+      "missed_gold": [
+        [
+          "thermal_expansion",
+          "causes",
+          "changes"
+        ]
+      ],
+      "wrong_preds": []
+    }
+  ],
+  "outcome_points": 0,
+  "infra_score": 5,
+  "total_score": 5
+}
