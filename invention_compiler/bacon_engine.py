@@ -85,7 +85,7 @@ def _fit_linear(xs: List[float], ys: List[float]) -> Tuple[List[float], float, L
     mean_y = sy / n
     ss_tot = sum((y - mean_y) ** 2 for y in ys)
     ss_res = sum(r ** 2 for r in residuals)
-    r2 = 1.0 - (ss_res / ss_tot) if ss_tot > 1e-12 else 0.0
+    r2 = 1.0 - (ss_res / ss_tot) if ss_tot > 1e-30 else 0.0  # per cycle 146: lowered from 1e-12 to handle small-scale data
     return ([a, b], r2, residuals)
 
 
@@ -110,7 +110,7 @@ def _fit_power(xs: List[float], ys: List[float]) -> Tuple[List[float], float, Li
     mean_y = sum(ys) / n
     ss_tot = sum((y - mean_y) ** 2 for y in ys)
     ss_res = sum(r ** 2 for r in residuals)
-    r2 = 1.0 - (ss_res / ss_tot) if ss_tot > 1e-12 else 0.0
+    r2 = 1.0 - (ss_res / ss_tot) if ss_tot > 1e-30 else 0.0  # per cycle 146: lowered from 1e-12 to handle small-scale data
     return ([a, b], r2, residuals)
 
 
@@ -127,7 +127,7 @@ def _fit_exponential(xs: List[float], ys: List[float]) -> Tuple[List[float], flo
     mean_y = sum(ys) / n
     ss_tot = sum((y - mean_y) ** 2 for y in ys)
     ss_res = sum(r ** 2 for r in residuals)
-    r2 = 1.0 - (ss_res / ss_tot) if ss_tot > 1e-12 else 0.0
+    r2 = 1.0 - (ss_res / ss_tot) if ss_tot > 1e-30 else 0.0  # per cycle 146: lowered from 1e-12 to handle small-scale data
     return ([a, b], r2, residuals)
 
 
@@ -193,7 +193,7 @@ def _fit_quadratic(xs: List[float], ys: List[float]) -> Tuple[List[float], float
     mean_y = s_y / n
     ss_tot = sum((y - mean_y) ** 2 for y in ys)
     ss_res = sum(r ** 2 for r in residuals)
-    r2 = 1.0 - (ss_res / ss_tot) if ss_tot > 1e-12 else 0.0
+    r2 = 1.0 - (ss_res / ss_tot) if ss_tot > 1e-30 else 0.0  # per cycle 146: lowered from 1e-12 to handle small-scale data
     return ([a, b, c], r2, residuals)
 
 
@@ -243,7 +243,7 @@ def _fit_atan(xs: List[float], ys: List[float]) -> Tuple[List[float], float, Lis
                 mean_y = sum(ys) / n
                 ss_tot = sum((y - mean_y) ** 2 for y in ys)
                 ss_res = sum(r ** 2 for r in residuals)
-                r2_orig = 1.0 - (ss_res / ss_tot) if ss_tot > 1e-12 else 0.0
+                r2_orig = 1.0 - (ss_res / ss_tot) if ss_tot > 1e-30 else 0.0  # per cycle 146: lowered from 1e-12 to handle small-scale data
                 if r2_orig > best_r2:
                     best_r2 = r2_orig
                     best_params = [a, b, c]
@@ -283,7 +283,7 @@ def _fit_sin(xs: List[float], ys: List[float]) -> Tuple[List[float], float, List
                 mean_y = sum(ys) / n
                 ss_tot = sum((y - mean_y) ** 2 for y in ys)
                 ss_res = sum(r ** 2 for r in residuals)
-                r2_orig = 1.0 - (ss_res / ss_tot) if ss_tot > 1e-12 else 0.0
+                r2_orig = 1.0 - (ss_res / ss_tot) if ss_tot > 1e-30 else 0.0  # per cycle 146: lowered from 1e-12 to handle small-scale data
                 if r2_orig > best_r2:
                     best_r2 = r2_orig
                     best_params = [a, b, c]
@@ -323,7 +323,7 @@ def _fit_cos(xs: List[float], ys: List[float]) -> Tuple[List[float], float, List
                 mean_y = sum(ys) / n
                 ss_tot = sum((y - mean_y) ** 2 for y in ys)
                 ss_res = sum(r ** 2 for r in residuals)
-                r2_orig = 1.0 - (ss_res / ss_tot) if ss_tot > 1e-12 else 0.0
+                r2_orig = 1.0 - (ss_res / ss_tot) if ss_tot > 1e-30 else 0.0  # per cycle 146: lowered from 1e-12 to handle small-scale data
                 if r2_orig > best_r2:
                     best_r2 = r2_orig
                     best_params = [a, b, c]
@@ -713,6 +713,80 @@ def discover_composed_law(dataset: Dict[str, List[float]],
     # Apply threshold to the final result
     if best is not None and best.law.r2 >= threshold:
         return best
+
+    # Per cycle 146: BACON.3 extension — try 3-variable compositions.
+    # Some laws (e.g., Newton's F = G*m1*m2/r^2) require composing 3 variables.
+    # Try: z = (x_i OP x_j) OP x_k for all triples and operators.
+    if len(independent_vars) >= 3:
+        if verbose:
+            print(f"  BACON.3 extension: trying 3-variable compositions...")
+        from itertools import combinations
+        for idx_i, idx_j, idx_k in combinations(range(len(independent_vars)), 3):
+            vi, vj, vk = independent_vars[idx_i], independent_vars[idx_j], independent_vars[idx_k]
+            xs_i, xs_j, xs_k = dataset[vi], dataset[vj], dataset[vk]
+
+            # Try: z = (x_i * x_j) / x_k  (captures F = m1*m2/r)
+            try:
+                if all(xk != 0 for xk in xs_k):
+                    composed = [xi * xj / xk for xi, xj, xk in zip(xs_i, xs_j, xs_k)]
+                    label = f"({vi}*{vj})/{vk}"
+                    law = discover_law(composed, ys, x_label=label, y_label=target_var, threshold=0.0)
+                    if law and law.r2 > best_r2:
+                        best_r2 = law.r2
+                        best = ComposedLaw(
+                            composition_op="product_ratio",
+                            input_vars=[vi, vj, vk],
+                            composed_var_label=label,
+                            composed_values=composed,
+                            law=law,
+                            r2_improvement=law.r2 - best_single_r2,
+                        )
+                        if verbose:
+                            print(f"  FOUND: z = {label} → {law.name} R²={law.r2:.4f}")
+            except Exception:
+                pass
+
+            # Try: z = (x_i * x_j) / x_k^2  (captures F = m1*m2/r^2)
+            try:
+                if all(xk != 0 for xk in xs_k):
+                    composed = [xi * xj / (xk**2) for xi, xj, xk in zip(xs_i, xs_j, xs_k)]
+                    label = f"({vi}*{vj})/{vk}^2"
+                    law = discover_law(composed, ys, x_label=label, y_label=target_var, threshold=0.0)
+                    if law and law.r2 > best_r2:
+                        best_r2 = law.r2
+                        best = ComposedLaw(
+                            composition_op="product_ratio_sq",
+                            input_vars=[vi, vj, vk],
+                            composed_var_label=label,
+                            composed_values=composed,
+                            law=law,
+                            r2_improvement=law.r2 - best_single_r2,
+                        )
+                        if verbose:
+                            print(f"  FOUND: z = {label} → {law.name} R²={law.r2:.4f}")
+            except Exception:
+                pass
+
+            # Try: z = (x_i * x_j * x_k)  (product of 3)
+            try:
+                composed = [xi * xj * xk for xi, xj, xk in zip(xs_i, xs_j, xs_k)]
+                label = f"({vi}*{vj}*{vk})"
+                law = discover_law(composed, ys, x_label=label, y_label=target_var, threshold=0.0)
+                if law and law.r2 > best_r2:
+                    best_r2 = law.r2
+                    best = ComposedLaw(
+                        composition_op="product3",
+                        input_vars=[vi, vj, vk],
+                        composed_var_label=label,
+                        composed_values=composed,
+                        law=law,
+                        r2_improvement=law.r2 - best_single_r2,
+                    )
+            except Exception:
+                pass
+
+    if best is not None and best.law.r2 >= threshold:
+        return best
     return None
 
 
@@ -824,7 +898,7 @@ def cross_validate_law(xs: List[float], ys: List[float],
     ss_tot = sum((y - mean_test_y) ** 2 for y in test_ys)
     test_residuals = [yp - ya for yp, ya in zip(test_y_pred, test_ys)]
     ss_res = sum(r ** 2 for r in test_residuals)
-    test_r2 = 1.0 - (ss_res / ss_tot) if ss_tot > 1e-12 else 0.0
+    test_r2 = 1.0 - (ss_res / ss_tot) if ss_tot > 1e-30 else 0.0  # per cycle 146: lowered from 1e-12 to handle small-scale data
 
     # Compute train R² (re-fit on training only)
     # train_law.r2 IS the train R² already (computed in discover_law)
@@ -1176,7 +1250,7 @@ def k_fold_cross_validate_law(xs: List[float], ys: List[float],
         ss_tot = sum((y - mean_test_y) ** 2 for y in test_ys)
         test_residuals = [yp - ya for yp, ya in zip(test_y_pred, test_ys)]
         ss_res = sum(r ** 2 for r in test_residuals)
-        test_r2 = 1.0 - (ss_res / ss_tot) if ss_tot > 1e-12 else 0.0
+        test_r2 = 1.0 - (ss_res / ss_tot) if ss_tot > 1e-30 else 0.0  # per cycle 146: lowered from 1e-12 to handle small-scale data
         fold_test_r2.append(test_r2)
 
     # Final law fit on ALL data
@@ -1437,7 +1511,7 @@ def discover_hidden_variable(dataset: Dict[str, List[float]],
     mean_y = sum(ys) / len(ys)
     ss_tot = sum((y - mean_y) ** 2 for y in ys)
     ss_res = sum(r ** 2 for r in combined_resid)
-    combined_r2 = 1.0 - (ss_res / ss_tot) if ss_tot > 1e-12 else 0.0
+    combined_r2 = 1.0 - (ss_res / ss_tot) if ss_tot > 1e-30 else 0.0  # per cycle 146: lowered from 1e-12 to handle small-scale data
 
     return HiddenVariableDiscovery(
         primary_var=best_var,
