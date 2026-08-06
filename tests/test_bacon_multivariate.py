@@ -21,31 +21,41 @@ from invention_compiler.bacon_engine import discover_law, discover_composed_law
 
 
 def test_bacon_discovers_newtons_gravitation():
-    """BACON should discover F = G*m1*m2/r² from (m1, m2, r, F) data."""
-    G = 6.674e-11  # gravitational constant
+    """BACON should AUTONOMOUSLY discover F = G*m1*m2/r² from (m1, m2, r, F) data.
 
-    # Generate data varying all 3 variables independently
+    Per cycle 170 (F-079 fix): the previous test computed z = m1*m2/r² BY HAND
+    and fed it to discover_law. The auditor correctly flagged this as
+    non-autonomous. This test calls discover_composed_law() which must
+    find the composition AUTONOMOUSLY — no human supplies the composed variable.
+    """
+    from invention_compiler.bacon_engine import discover_composed_law
+
+    G = 6.674e-11
+
     m1 = [1.0, 2.0, 5.0, 10.0, 1.0, 3.0, 1.0, 1.0, 1.0, 1.0, 1.0]
     m2 = [1.0, 1.0, 1.0, 1.0, 2.0, 1.0, 5.0, 10.0, 1.0, 1.0, 1.0]
     r  = [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 2.0, 0.5, 3.0]
     F  = [G * a * b / (c**2) for a, b, c in zip(m1, m2, r)]
 
-    # Test the composition directly: z = (m1*m2)/r²
-    z = [a * b / (c**2) for a, b, c in zip(m1, m2, r)]
-    law = discover_law(z, F, threshold=0.0)
+    dataset = {"m1": m1, "m2": m2, "r": r, "F": F}
 
-    assert law is not None, "BACON failed to discover any law from Newton's gravitation data"
-    assert law.name == "linear", f"Expected linear law (F = G*z), got {law.name}"
-    assert law.r2 > 0.99, f"R² too low: {law.r2}"
+    # AUTONOMOUS: discover_composed_law must find the composition itself
+    result = discover_composed_law(dataset, "F", independent_vars=["m1", "m2", "r"])
+
+    assert result is not None, "BACON failed to discover any composed law autonomously"
+    assert result.law.r2 > 0.99, f"R² too low: {result.law.r2}"
+    assert "r" in result.composed_var_label, f"Expected r in composition, got {result.composed_var_label}"
+    assert "m1" in result.composed_var_label, f"Expected m1 in composition, got {result.composed_var_label}"
+    assert "m2" in result.composed_var_label, f"Expected m2 in composition, got {result.composed_var_label}"
 
     # The coefficient should be G
-    a, b = law.params
+    a = result.law.params[0]
     assert abs(a - G) / G < 0.01, f"Coefficient should be G={G}, got {a}"
-    assert abs(b) < 1e-20, f"Intercept should be ~0, got {b}"
 
-    print(f"  ✓ BACON discovered: F = {a:.4e} * (m1*m2/r²)")
-    print(f"  ✓ Newton's Law:     F = {G} * m1*m2/r²")
-    print(f"  ✓ R² = {law.r2:.6f}")
+    print(f"  ✓ BACON AUTONOMOUSLY discovered: F = {a:.4e} * {result.composed_var_label}")
+    print(f"  ✓ Newton's Law: F = {G} * m1*m2/r²")
+    print(f"  ✓ R² = {result.law.r2:.6f}")
+    print(f"  ✓ No human supplied the composed variable")
 
 
 def test_bacon_handles_small_scale_data():

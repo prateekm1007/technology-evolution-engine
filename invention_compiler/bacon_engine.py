@@ -710,9 +710,11 @@ def discover_composed_law(dataset: Dict[str, List[float]],
                         r2_improvement=law.r2 - best_single_r2,
                     )
 
-    # Apply threshold to the final result
-    if best is not None and best.law.r2 >= threshold:
-        return best
+    # Per cycle 170 (F-079 fix): do NOT return early here.
+    # The old code returned the 2-variable result if it passed threshold,
+    # which meant the 3-variable compositions never ran.
+    # This is why the auditor found 'BACON discovers Newton' was non-autonomous:
+    # the function returned m1*m2 (R²=0.918) before trying (m1*m2)/r² (R²=1.0).
 
     # Per cycle 146: BACON.3 extension — try 3-variable compositions.
     # Some laws (e.g., Newton's F = G*m1*m2/r^2) require composing 3 variables.
@@ -785,6 +787,12 @@ def discover_composed_law(dataset: Dict[str, List[float]],
             except Exception:
                 pass
 
+    # Per cycle 170 (F-079 fix): do NOT return early on 2-variable results.
+    # The 3-variable compositions (added cycle 146) may find a BETTER law
+    # (e.g., F = m1*m2/r² at R²=1.0 vs m1*m2 at R²=0.918).
+    # The old code returned the first result that passed threshold,
+    # which meant the 3-var search never ran when a 2-var result was good enough.
+    # Fix: search ALL compositions (2-var AND 3-var), then return the BEST.
     if best is not None and best.law.r2 >= threshold:
         return best
     return None
