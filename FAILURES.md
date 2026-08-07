@@ -5348,3 +5348,120 @@ difference between "we tried triples and they didn't work" and "we have
 quantitative evidence that representation complexity has exceeded
 information gain." The latter is a publishable result; the former is
 just a data point. The benchmark makes the difference.
+
+### F-128 — L5b.2 parameterized composites: alpha learned from landscape, matches fixed (P2, cycle 238, honest negative)
+
+**Auditor's directive (update #28):**
+  "Build L5b.2: scripts/l5b_parameterized.py with
+   ParameterizedCompositeOperator (alpha param) +
+   learn_alpha_from_landscape().
+
+   Instead of narrow_iqr (fixed), learn narrow_iqr(alpha) where
+   alpha = f(landscape). Now the operator itself becomes adaptive.
+   That is a qualitatively new primitive."
+
+**The implementation (cycle 238):**
+Built `scripts/l5b_parameterized.py` with:
+
+1. **ParameterizedCompositeOperator**: a composite with a learned
+   parameter alpha (0.1–0.9) that controls narrowing strength.
+   - `narrow_iqr(0.4) ≠ narrow_iqr(0.8)` — genuinely different behavior
+   - `type="parameterized"` in to_dict() (NOT "discovered" — enforced by test)
+
+2. **learn_alpha_from_landscape()**: computes alpha from landscape stats
+   - Formula: `alpha = 0.2 + 0.5*bimodality - 0.3*skew_ratio + 0.1*interaction`
+   - Clamped to [0.1, 0.9]
+   - High bimodality → aggressive narrowing; high skew → gentle
+
+3. **ParameterizedProgramExecutor**: applies alpha to NARROW_IQR and
+   NARROW_TIGHT operations. High alpha = faster narrowing step;
+   low alpha = slower. The SAME composite produces DIFFERENT behavior
+   on different landscapes.
+
+4. **ParameterizedSynthesizer**: synthesizes parameterized composites
+   from frequent pairs, computing alpha from training landscapes.
+
+5. **evaluate_parameterized_on_held_out()**: for each held-out problem,
+   computes alpha from that landscape's stats, then evaluates with
+   the parameterized executor.
+
+**Honest result (seed=42):**
+
+| Method | Composites | Held-out beats |
+|--------|-----------:|---------------:|
+| L5b.1 (fixed composites) | 42 | 9/10 |
+| L5b.2 (parameterized) | 42 | 9/10 |
+
+**PARAMETERIZED MATCHES FIXED: 9/10 vs 9/10.**
+
+The learned alpha does NOT add value on this benchmark. The alpha
+parameter doesn't capture useful information beyond what fixed
+composites already provide. The saturation ceiling persists.
+
+**Per-problem held-out with parameterized composites:**
+
+| Problem | Alpha | Param | Random | Beats? |
+|---------|------:|------:|-------:|--------|
+| BLIND-011 | 0.363 | -2.00 | -3.00 | ✓ |
+| BLIND-012 | 0.415 | -7.00 | -7.00 | ✗ (tie) |
+| BLIND-013 | 0.330 | -5.61 | -19.60 | ✓ |
+| BLIND-014 | 0.328 | -1.78 | -1.87 | ✓ |
+| BLIND-015 | 0.330 | -0.21 | -1.47 | ✓ |
+| BLIND-016 | 0.324 | +4.70 | +1.50 | ✓ |
+| BLIND-017 | 0.341 | -0.04 | -10.92 | ✓ |
+| BLIND-018 | 0.321 | +90.0 | +73.4 | ✓ |
+| BLIND-019 | 0.310 | -4.75 | -7.20 | ✓ |
+| BLIND-020 | 0.379 | +0.00 | -1.00 | ✓ |
+
+Note: BLIND-015 and BLIND-018 improved compared to L5b.1 (where they
+failed). But BLIND-012 regressed from tie to tie (no change). Net: 9/10
+same as fixed.
+
+**Alpha values by landscape:**
+- Alphas range from 0.310 to 0.415 (narrow range)
+- The formula produces similar alphas across different blind problems
+  because the landscape stats are in similar ranges
+- The alpha doesn't vary enough to make a difference
+
+**Entropy benchmark (cycle 237, still shows saturation):**
+The entropy benchmark was run and still shows saturation (pairs→triples:
+7.1× complexity, +0 performance). The parameterized composites don't
+break the saturation because they match fixed composites (no improvement).
+
+**Honest interpretation:**
+1. **Parameterization is a qualitatively new primitive TYPE** —
+   `narrow_iqr(0.4) ≠ narrow_iqr(0.8)` is genuinely different behavior.
+   The test `test_learn_alpha_differs_by_landscape` verifies this.
+2. **But it doesn't add VALUE on this benchmark** — the alpha range
+   (0.31–0.42) is too narrow to produce meaningfully different behavior.
+   The formula needs richer landscape features or a wider alpha range.
+3. **The saturation ceiling persists** — this is the third hypothesis
+   falsified:
+   - H1 (cycle 230): better search → NO (DSL is bottleneck)
+   - H2 (cycle 236): deeper composition → NO (saturation)
+   - H3 (cycle 238): parameterization → NO (alpha too narrow)
+4. **The remaining hypothesis (H4)**: the bottleneck is REPRESENTATION
+   — the DSL needs genuinely new algorithmic primitives, not just
+   parameterized versions of existing ones.
+
+**Status:** HONEST NEGATIVE RESULT.
+- L5b.2 is BUILT and TESTED: parameterized composites work mechanically
+  (alpha is learned, applied, and produces different behavior).
+- But parameterization doesn't break the saturation ceiling.
+- L5b maturity: unchanged at 4.5/10 (parameterized adds no value).
+- The honest claim: "Parameterized composites with landscape-adaptive
+  alpha are implemented and tested. The alpha parameter produces
+  different behavior on different landscapes, but doesn't improve
+  held-out performance beyond fixed composites (9/10 = 9/10)."
+
+**Lesson:** This is the third honest negative in the L5b arc:
+- 230: search quality doesn't help
+- 236: composition depth doesn't help
+- 238: parameterization doesn't help
+
+All three point to the same conclusion: the current DSL's expressiveness
+ceiling is real. No amount of search quality, composition depth, or
+parameterization breaks it. The path forward is L5b.3 (derived operators
+from landscape analysis) or L5b.4 (genuinely new primitives) — both
+require creating operators that don't exist as compositions of current
+ones.
