@@ -3821,3 +3821,195 @@ Ackley, Deceptive) are deliberately near boundaries — they reveal the
 classifier's limitations honestly. The 3/7 blind accuracy (vs 4/7 with
 seed=42 alone) is the honest measurement: the classifier's accuracy
 depends on the seed, which is exactly the instability this test reveals.
+
+### F-110 — "Executable causal chains" oversold (P1, cycle 222, auditor-caught)
+
+**Auditor's catch (update #12):**
+> "Currently 'executable causal chain' sounds stronger than what
+>  exists. They're closer to 'executable mechanistic justification'.
+>  They're executable. They're mechanistic. But they're still
+>  selected from known physics. Not discovered. That's still
+>  valuable. Just don't oversell them."
+
+**Honest acknowledgment:**
+The label "executable causal chain" implied the chains were DERIVED
+from data. They are not. They are CURATED — selected from a hand-
+authored MECHANISM_LABELS lookup table based on which (variable,
+derived) pair the probe revealed.
+
+**Resolution (cycle 222):**
+1. Renamed the CONCEPT from "executable causal chain" to "executable
+   mechanistic justification" in all user-facing prose:
+   - Updated CausalChain and CausalStep docstrings
+   - Updated heuristic_learning.py printed labels (now reads
+     "MECHANISTIC JUSTIFICATION: ... [CURATED, not derived]")
+   - Updated _pick_causal_chain docstring (now explicitly says
+     "SELECTS a curated mechanistic justification... does NOT DERIVE")
+2. The class name CausalChain is KEPT for backward compatibility
+   (it's the data structure name, not the user-facing concept).
+3. Added honest status block in CausalChain docstring:
+   - EXECUTABLE: each step has (variable, change, mechanism, formula)
+   - MECHANISTIC: references named physical relations
+   - JUSTIFICATION: justifies WHY a heuristic holds
+   - NOT DISCOVERED: topology and formulas are curated
+   - NOT CAUSAL in the strict sense: describes forward-model
+     dependencies, not counterfactual interventions
+
+**Status:** RESOLVED (honest naming).
+- The objects are still valuable (they're executable and mechanistic).
+- They are honestly labeled now.
+- The path to "discovered" causal chains remains future work (requires
+  symbolic regression or mechanism structure learning from data).
+
+**Lesson:** Per AP-5 (phantom-work detection) and the anti-entropy
+principle #5 ("Match the label to the evidence, not to the intent"):
+a label that implies more than the evidence supports is entropy. The
+label "causal chain" implied derivation; the honest label is
+"mechanistic justification" (curated). This is the same pattern as
+F-104 (claim > test) — the label must match what is actually demonstrated.
+
+---
+
+### F-111 — Threshold classifier is unstable on near-boundary landscapes (P1, cycle 222, self-caught via blind benchmark)
+
+**Already documented in F-109, but cycle 222 adds the ConfidenceClassifier
+which quantifies the instability honestly.**
+
+**The finding:**
+The ConfidenceClassifier (bootstrap sub-sampling) reveals that:
+- Needle, Constraint: confidence 1.00 (stable, far from boundaries)
+- Rastrigin: 0.90 (mostly stable)
+- Sphere, Ackley: 0.60 (unstable — near smooth/multimodal boundary)
+- Deceptive: 0.30 (very unstable — near needle/deceptive boundary)
+
+**Root cause:**
+The classifier uses hard thresholds. Landscapes with statistical
+signatures near a threshold (e.g., bimodality ≈ 0.55) flip between
+classifications depending on whether the sample's bimodality is 0.54
+or 0.56.
+
+**Cycle 222 mitigation (partial):**
+1. Built ConfidenceClassifier that reports confidence as the fraction
+   of bootstrap sub-samples agreeing with the full-sample classification.
+2. Built sample-size sweep: reports confidence at N=25%, 50%, 75%, 100%
+   of available samples. This answers the auditor's research question:
+   "How many samples are required before a landscape can be identified
+   with confidence?"
+3. Built EmbeddingClassifier that replaces threshold boundaries with
+   nearest-neighbor lookup in embedding space. This is the auditor's
+   recommended approach: "learn landscape representation instead."
+
+**Honest result:**
+- The ConfidenceClassifier honestly reports low confidence (0.30-0.60)
+  on near-boundary landscapes. This is the right behavior — it doesn't
+  fabricate confidence.
+- The EmbeddingClassifier agrees with threshold only 3/11 on the
+  observatory's 11 entries. This is expected: with only 11 historical
+  landscapes, each is its own nearest neighbor. The embedding classifier
+  needs THOUSANDS of entries to be useful.
+- The sample-size sweep shows that MORE samples don't always increase
+  confidence — for Sphere, confidence goes 1.00 (N=25) → 0.60 (N=100).
+  This is because the classification is near a boundary: more samples
+  reveal the ambiguity rather than resolve it.
+
+**Status:** PARTIAL.
+- The instability is now QUANTIFIED (confidence scores), not hidden.
+- The EmbeddingClassifier is the path forward but needs more data.
+- The honest answer to "how many samples?" is: it depends on how far
+  the landscape is from a classification boundary. Far landscapes
+  (Needle, Constraint) need ~25 samples. Near-boundary landscapes
+  (Sphere, Deceptive) may need 1000+ or may never reach high confidence
+  with threshold-based classification.
+
+**Lesson:** The auditor's insight was correct: "Your classifier isn't
+actually unstable. Your MEASUREMENT PROCESS is unstable." The
+ConfidenceClassifier makes this honest by reporting confidence as a
+function of the measurement process (bootstrap sub-sampling), not as
+a single hard label.
+
+---
+
+### F-112 — Held-out benchmark: 17/20 improved, 3/20 failed (P2, cycle 222, honest generalization test)
+
+**Auditor's challenge (update #12):**
+> "Freeze the current classifier and optimizer-routing logic. Do NOT
+>  tune it further. Evaluate it on 20-50 previously unseen optimization
+>  problems. Report performance WITHOUT changing the classifier."
+
+**The test (cycle 222):**
+Built `scripts/held_out_benchmark.py` with 20 previously-unseen
+optimization problems:
+- 12 classic synthetic functions (Beale, Booth, Bukin6, CrossInTray,
+  Easom, Eggcrate, Himmelblau, Levi13, Matyas, Schaffer2,
+  ThreeHumpCamel, Zakharov) — different from cycle 220's 7
+- 8 parametric variants (ShiftedSphere, ScaledRastrigin,
+  ComboSphereNeedle, NoisySphere, BowlWithWall, SinValley, Plateau,
+  TwinGaussians)
+
+The classifier and optimizer routing are FROZEN (cycle 221). We did
+NOT tune them. We report performance as-is.
+
+**Honest result: 17/20 improved (PASS the ≥15/20 bar).**
+
+| # | Problem | Type | Optimizer | Δ | Improved |
+|---|---------|------|-----------|---|----------|
+| 1 | Beale | multimodal | evolutionary_search | +0.772 | ✓ |
+| 2 | Booth | smooth | greedy_hill_climber | +2.663 | ✓ |
+| 3 | Bukin6 | smooth | greedy_hill_climber | +3.698 | ✓ |
+| 4 | CrossInTray | smooth | greedy_hill_climber | -0.241 | ✗ |
+| 5 | Easom | multimodal | evolutionary_search | -0.002 | ✗ |
+| 6 | Eggcrate | multimodal | evolutionary_search | +4.569 | ✓ |
+| 7 | Himmelblau | multimodal | evolutionary_search | +0.092 | ✓ |
+| 8 | Levi13 | smooth | greedy_hill_climber | +6.295 | ✓ |
+| 9 | Matyas | multimodal | evolutionary_search | +0.402 | ✓ |
+| 10 | Schaffer2 | smooth | greedy_hill_climber | +0.394 | ✓ |
+| 11 | ThreeHumpCamel | multimodal | evolutionary_search | +0.403 | ✓ |
+| 12 | Zakharov | multimodal | evolutionary_search | +19.508 | ✓ |
+| 13 | ShiftedSphere | smooth | greedy_hill_climber | +1.487 | ✓ |
+| 14 | ScaledRastrigin | multimodal | evolutionary_search | +15.332 | ✓ |
+| 15 | ComboSphereNeedle | multimodal | evolutionary_search | +0.084 | ✓ |
+| 16 | NoisySphere | smooth | greedy_hill_climber | +12.497 | ✓ |
+| 17 | BowlWithWall | smooth | greedy_hill_climber | +0.416 | ✓ |
+| 18 | SinValley | multimodal | evolutionary_search | +0.024 | ✓ |
+| 19 | Plateau | constraint_dom | evolutionary_search | +0.388 | ✓ |
+| 20 | TwinGaussians | needle | importance_sampler | -0.159 | ✗ |
+
+**3 failures (honest):**
+1. **CrossInTray** (-0.241): classified smooth, got greedy_hill_climber.
+   The landscape has many local minima; greedy locked onto a suboptimal
+   region. Correct classification would be multimodal.
+2. **Easom** (-0.002): classified multimodal, got evolutionary_search.
+   The landscape is a needle (global min in tiny region near (π,π));
+   evolutionary search didn't find it. Correct classification would be
+   needle.
+3. **TwinGaussians** (-0.159): classified needle, got importance_sampler.
+   The iter0 best (1.76) was already at a peak; iter5 found 1.60.
+   ImportanceSampler narrowed toward the seen-best, which was already
+   good. The "failure" is marginal — the optimizer didn't improve but
+   also didn't regress much.
+
+**Honest caveats:**
+1. "Improvement" is a WEAK bar. A random-restart optimizer would also
+   improve on most landscapes. The stronger test is whether the
+   SELECTED optimizer is BETTER than a default. That comparison is
+   future work.
+2. The 17/20 result uses seed=42 only. Multi-seed robustness is not
+   tested here (the 5-seed test is only on the original 4 technology
+   domains).
+3. The classifier was NOT tuned to these 20 problems — they were
+   generated after the cycle 221 freeze. This is the honest
+   generalization test the auditor asked for.
+
+**Status:** PASS (17/20 ≥ 15/20 bar).
+- The frozen classifier + optimizer routing generalizes to held-out
+  landscapes.
+- 3/20 failures are honest and diagnosed.
+- This is the strongest evidence so far that the transfer mechanism
+  is based on landscape characteristics, not accidental alignment
+  with the training domains.
+
+**Lesson:** The held-out benchmark is the test the auditor insisted on.
+It passes — but with caveats. The honest claim is now: "the frozen
+classifier + optimizer routing improves 17/20 held-out optimization
+problems, with 3 diagnosed failures on near-boundary landscapes."
+This is defensible because the classifier was NOT tuned to these problems.

@@ -73,7 +73,9 @@ class InventionHeuristic:
     exception_direction: str = ""   # "above" or "below"
     exception_reason: str = ""      # physical explanation of why the rule breaks
     physics_level: str = "statistical"  # "statistical" or "physical" (auditor's distinction)
-    # Cycle 218 — executable causal chain (auditor's update #8)
+    # Cycle 218 — executable mechanistic justification (auditor's update #8)
+    # Cycle 222 — honest rename: these are CURATED mechanistic justifications,
+    # not derived causal chains. See meta_invention.py CausalChain docstring.
     # "Instead of 'because Pisarenko', I'd like to see
     #  because → carrier_concentration → effective_mass →
     #  seebeck_coefficient → ZT. The explanation should itself be
@@ -207,7 +209,7 @@ class HeuristicLearner:
                                         "physical" if condition_name != "unconditional" else "statistical"
                                     )
 
-                                    # Cycle 218 — attach executable causal chain
+                                    # Cycle 218 — attach executable mechanistic justification
                                     chain_id, chain_steps = self._pick_causal_chain(
                                         var_name, exc_var, condition_name
                                     )
@@ -249,7 +251,7 @@ class HeuristicLearner:
                 )
                 physics_level = "physical" if exc_var else "statistical"
 
-                # Cycle 218 — attach executable causal chain
+                # Cycle 218 — attach executable mechanistic justification
                 chain_id, chain_steps = self._pick_causal_chain(
                     var_name, exc_var, "unconditional"
                 )
@@ -280,7 +282,13 @@ class HeuristicLearner:
 
     def _pick_causal_chain(self, var_name: str, exc_var: str,
                             condition: str) -> Tuple[str, List[Dict]]:
-        """Cycle 218 — pick the executable causal chain that explains this heuristic.
+        """Cycle 218 — pick the executable mechanistic justification that
+        explains this heuristic.
+
+        HONEST (cycle 222 rename): This method SELECTS a curated
+        mechanistic justification from a lookup table. It does NOT
+        DERIVE the chain from data. The chain topology and formulas
+        are human-authored. See meta_invention.py CausalChain docstring.
 
         Per auditor update #8: 'Instead of "because Pisarenko", I'd like
         to see because → carrier_concentration → effective_mass →
@@ -549,13 +557,13 @@ def main():
         else:
             print(f"   EXCEPTION: (none found — heuristic is purely statistical)")
         if h.causal_chain_id:
-            print(f"   CAUSAL CHAIN: {h.causal_chain_id}")
+            print(f"   MECHANISTIC JUSTIFICATION: {h.causal_chain_id}  [CURATED, not derived]")
             for i, step in enumerate(h.causal_chain_steps):
                 arrow = " →" if i < len(h.causal_chain_steps) - 1 else "  "
                 print(f"     {i+1}. {step['variable']} {step['change']} via {step['mechanism']}")
                 print(f"        formula: {step['formula']}")
         else:
-            print(f"   CAUSAL CHAIN: (none — no executable explanation attached)")
+            print(f"   MECHANISTIC JUSTIFICATION: (none — no curated justification attached)")
         print()
 
     # Test transferability on unseen data
