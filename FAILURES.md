@@ -5652,3 +5652,110 @@ Stage 6: "I invent new ways of inventing" (DR-90) — NOT STARTED
 **Status:** RESEARCH CHAPTER CLOSED. System frozen. DR-90 documented.
 The project has become what the auditor described: "an empirical science
 of invention whose claims survive adversarial, reproducible scrutiny."
+
+### F-131 — DR-91 Measurement Integrity: benchmark may be measuring recognition, not discovery (P0, cycle 242, existential)
+
+**Auditor's Stage −1 audit finding:**
+  "The current discovery metrics are NOT_TRUSTWORTHY because fuzzy
+   matching, synonym maps, and proposal-locus issues can inflate scores."
+
+**The independent audit (cycle 242):**
+
+Built `audit/stage_minus1/exact_matcher.py` — an INDEPENDENT matcher
+that does NOT import production matching logic. Implements 4 matching
+modes separately, plus proposal-only scoring and shuffled-gold
+false-positive estimation.
+
+**Honest findings:**
+
+1. **Exact match F1 = 0.0000**
+   The pipeline NEVER exactly matches the gold bridge. ALL discovery
+   credit comes from fuzzy token overlap and synonym matching. This
+   means the "discovery" is not a precise extraction — it's a loose
+   semantic proximity match.
+
+2. **Production F1 = 1.0000 (all entities + synonyms)**
+   The headline F1 of 1.0 (reported as 0.92 after F-099 circular gold
+   fix) is achieved through:
+   - 0 exact matches
+   - 19/20 token overlap matches (F1=0.9744)
+   - 20/20 synonym matches (F1=1.0000)
+   Synonyms add +0.0256 over token-only.
+
+3. **Proposal-only F1 = 0.8571 (shared entities + synonyms)**
+   When scored on SHARED entities only (actual cross-domain proposals),
+   F1 drops from 1.0 to 0.857. The proposal-locus inflation is +0.143
+   — the benchmark counts 14.3% of discoveries that are extraction
+   (entities in source text) rather than discovery (proposed bridges).
+
+4. **Shuffled gold FP floor = 1.0000**
+   CATASTROPHIC: when gold labels are shuffled to random entities,
+   the matching still scores 1.0 (100% recall). This means the matching
+   is so loose that ANY entity matches SOMETHING. The benchmark cannot
+   distinguish real discoveries from random noise.
+
+**Root cause analysis:**
+
+The token-overlap matcher (mode 2) matches if ANY significant token
+(≥4 chars) is shared between the bridge and any candidate entity.
+With 143 unique entities, the probability of sharing at least one
+4+ character token is extremely high — hence the 1.0 FP floor.
+
+The synonym map (20 entries) further loosens the matching by allowing
+semantically related but lexically different terms to match.
+
+The proposal-locus issue (counting all entities vs shared entities)
+inflates the score by counting extraction as discovery.
+
+**What this means for prior conclusions:**
+
+The F1=0.9189 (reported since cycle 201) may be overstated:
+- The TRUE discovery F1 (exact match, proposal-only) = 0.0
+- The FUZZY discovery F1 (token overlap, proposal-only) = 0.79
+- The SYNONYM+FUZZY discovery F1 (synonyms, proposal-only) = 0.86
+
+The 0.86 (proposal-only with synonyms) is the most honest number.
+The 0.92 (all entities with synonyms) is inflated by +0.06 from
+the proposal-locus issue.
+
+**Impact on H1-H4 saturation conclusions:**
+
+The L5b saturation conclusions (H1-H4, cycles 230-239) were based on
+the BLIND SUITE (20 optimization problems), NOT the discovery benchmark.
+The blind suite measures optimizer performance (beats random), not
+discovery F1. So the saturation conclusions are NOT directly affected
+by this measurement issue.
+
+However, the discovery F1=0.9189 (used in scorecards and maturity
+assessments) IS affected. The honest discovery F1 is likely 0.86
+(proposal-only with synonyms) or lower (if the synonym map is also
+gaming the benchmark).
+
+**Status:** EXISTENTIAL MEASUREMENT ISSUE IDENTIFIED.
+- The independent audit reveals the benchmark may be measuring
+  recognition (fuzzy matching) rather than discovery (exact extraction).
+- The shuffled-gold FP floor of 1.0 is the most alarming finding:
+  the matching cannot distinguish real from random.
+- DR-91 Phase 1 is STARTED but NOT COMPLETE:
+  - ✓ Independent exact matcher built
+  - ✓ Proposal-only matcher built
+  - ✓ Shuffled-gold FP estimator built
+  - ✗ Synonym auditor (not yet built)
+  - ✗ Gold leakage detector (not yet built)
+  - ✗ Proposal locus validator (not yet built)
+  - ✗ Bootstrap confidence intervals (not yet built)
+  - ✗ Reference benchmark (not yet built)
+
+**Immediate action required:**
+1. Fix the shuffled-gold FP floor (the matching is too loose)
+2. Determine the TRUE discovery F1 under strict matching
+3. Recalibrate historical headline numbers
+4. Reassess whether H1-H4 conclusions are affected
+
+**Lesson:** This is the most important finding in the project's history.
+The auditor's Stage −1 audit was correct: the measurement system itself
+must be validated before any scientific conclusions can be trusted.
+The F1=0.9189 that has been reported since cycle 201 may be inflated
+by loose matching. The honest F1 is likely 0.86 or lower. The project
+must complete DR-91 before any further capability work or representation
+discovery. The benchmark IS the product now.
