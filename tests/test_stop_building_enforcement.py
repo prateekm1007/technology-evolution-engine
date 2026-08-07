@@ -241,9 +241,79 @@ def test_measurement_specification_has_required_fields():
             f"Either add the field to all specified metrics, or mark "
             f"the metric as TODO in the inventory table."
         )
-    # Stage M1 requires at least 10 metrics specified (we have 16+)
-    assert n_specified >= 10, (
-        f"Stage M1 requires at least 10 specified metrics, found {n_specified}"
+    # Stage M1 requires all 30 metrics specified (cycle 260: complete)
+    assert n_specified >= 30, (
+        f"Stage M1 requires at least 30 specified metrics, found {n_specified}"
+    )
+
+
+def test_invention_metrics_m101_through_m105_specified():
+    """Cycle 260: M-101 through M-105 (invention metrics) must be specified."""
+    spec_path = REPO / "programs" / "A_metrology" / "MeasurementEngineSpecification.md"
+    spec = spec_path.read_text()
+    for metric_id in ("M-101", "M-102", "M-103", "M-104", "M-105"):
+        # Each should have a section header
+        assert f"## {metric_id}:" in spec, (
+            f"Missing section header for {metric_id}"
+        )
+        # Each should be marked SPECIFIED in the inventory, not TODO
+        # (find the inventory row for this metric)
+        for line in spec.splitlines():
+            if line.startswith(f"| {metric_id} "):
+                assert "TODO" not in line, (
+                    f"{metric_id} still marked TODO in inventory: {line}"
+                )
+                assert "SPECIFIED" in line, (
+                    f"{metric_id} not marked SPECIFIED: {line}"
+                )
+                break
+
+
+def test_search_metrics_m201_through_m205_specified():
+    """Cycle 260: M-201 through M-205 (search metrics) must be specified."""
+    spec_path = REPO / "programs" / "A_metrology" / "MeasurementEngineSpecification.md"
+    spec = spec_path.read_text()
+    for metric_id in ("M-201", "M-202", "M-203", "M-204", "M-205"):
+        assert f"## {metric_id}:" in spec, f"Missing section header for {metric_id}"
+        for line in spec.splitlines():
+            if line.startswith(f"| {metric_id} "):
+                assert "TODO" not in line, f"{metric_id} still marked TODO: {line}"
+                assert "SPECIFIED" in line, f"{metric_id} not marked SPECIFIED: {line}"
+                break
+
+
+def test_evaluation_metrics_m304_through_m306_specified():
+    """Cycle 260: M-304 through M-306 (evaluation metrics) must be specified."""
+    spec_path = REPO / "programs" / "A_metrology" / "MeasurementEngineSpecification.md"
+    spec = spec_path.read_text()
+    for metric_id in ("M-304", "M-305", "M-306"):
+        assert f"## {metric_id}:" in spec, f"Missing section header for {metric_id}"
+        for line in spec.splitlines():
+            if line.startswith(f"| {metric_id} "):
+                assert "TODO" not in line, f"{metric_id} still marked TODO: {line}"
+                assert "SPECIFIED" in line, f"{metric_id} not marked SPECIFIED: {line}"
+                break
+
+
+def test_stage_m1_acceptance_pass():
+    """Stage M1 acceptance criteria must be marked PASS (30/30)."""
+    spec_path = REPO / "programs" / "A_metrology" / "MeasurementEngineSpecification.md"
+    spec = spec_path.read_text()
+    assert "Stage M1: PASS" in spec or "**Stage M1: PASS" in spec, (
+        "Stage M1 acceptance must be marked PASS"
+    )
+    assert "30 of 30 metrics specified (100%)" in spec
+
+
+def test_no_todo_metrics_remain():
+    """No metric should remain marked TODO in the inventory tables."""
+    spec_path = REPO / "programs" / "A_metrology" / "MeasurementEngineSpecification.md"
+    spec = spec_path.read_text()
+    # Find all inventory table rows with TODO
+    todo_rows = [line for line in spec.splitlines()
+                 if line.startswith("| M-") and "TODO" in line]
+    assert not todo_rows, (
+        f"Metrics still marked TODO: {todo_rows}"
     )
 
 

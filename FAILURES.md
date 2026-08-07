@@ -7111,3 +7111,112 @@ TRUSTWORTHY) remains canonical.
   - Stage M6: sensitivity (perturb inputs, measure output movement)
   - Stage M7: failure envelope (when does it fail?)
   - Stage M8: measurement constitution (rules every metric must satisfy)
+
+
+### F-148 — Stage M1 complete: all 30 metrics specified (P1, cycle 260)
+
+**Driver:** ROADMAP_V2.md Stage M1. Per the measurement-first philosophy
+(cycle 258), every metric must be documented before Gate 1 (Measurement)
+can PASS. Cycle 259 left 14 metrics as TODO (M-101..M-105 invention,
+M-201..M-205 search, M-304..M-306 evaluation). Cycle 260 specifies all 14.
+
+**Mutual Read Protocol followed:** Read CONSTITUTION.md, ANTI_ENTROPY.md
+(lines 1-519), EPISTEMIC_ENGINE.md (lines 1-120), FAILURES.md tail
+(F-145..F-147), CONTRIBUTING.md, ROADMAP_V2.md, STOP_BUILDING.md,
+GO_NO_GO_GATES.md before writing any specification.
+
+**Work completed (cycle 260):**
+
+1. Located actual implementations for all 14 metrics (not invented):
+   - M-101..M-105: scripts/nine_tenths_loop_v2.py::assess_all reads
+     benchmarks/reports/gen{1..5}_pr_score.json. Score formula:
+     round(10 × F1) per F-081 single-rubric rule.
+   - M-201..M-205: scripts/l5b_synthesis_heldout.py and
+     l5b_synthesis_multiseed.py. Beats = best_outcome > rand_best + 1e-9.
+   - M-304: audit/measurement_integrity/dr95_epistemic_calibration.py
+     ::multi_evaluator_calibration (3 judges, agreement = all 3 agree)
+   - M-305: dr94_calibration_study.py::compute_calibration
+     (bias = mean(internal - external), +2.50 = overestimate)
+   - M-306: dr95_epistemic_calibration.py::compute_confidence_calibration
+     (ECE = 0.433, Brier, MCE)
+
+2. Specified all 14 metrics in programs/A_metrology/
+   MeasurementEngineSpecification.md, each with all 9 required fields:
+   Inputs, Outputs, Assumptions, Known failure modes, Uncertainty,
+   Evidence tier, Calibration status, Owner, Acceptance.
+
+3. Updated inventory tables: 14 metrics changed from "TODO" to
+   "SPECIFIED below". No TODO metrics remain.
+
+4. Updated Stage M1 acceptance: 30/30 metrics specified (100%).
+   Stage M1: PASS.
+
+5. Updated GO_NO_GO_GATES.md: Gate 1 Stage M1 criterion now PASS.
+   Gate 1 overall: IN PROGRESS (M1 PASS, M3 PASS, 7/11 criteria NOT
+   STARTED).
+
+**Key honest findings documented in the new specs:**
+
+  - M-101..M-104 (Gen 1-4 F1): each is a recognition metric, not a
+    discovery metric. High F1 here does NOT imply discovery capability
+    (F-075 caveat inherited).
+  - M-103 (Gen 3 Relation F1): the cycle-188 jump from 0.7143 to 0.9091
+    was a gold-fix (F-099 de-circularization), not a capability fix.
+  - M-104 (Gen 4 Mechanism F1): the 0.90 threshold (F-092) was set
+    post-fix; pre-fix it would have failed.
+  - M-105 (Gen 5 Discovery F1): THIS IS THE METRIC DR-91 INVALIDATED.
+    Must be reported alongside M-008 (FP floor) and M-005/M-013
+    (bootstrap-CI discovery F1). FORBIDDEN to report as naked F1.
+  - M-201..M-203 (search beats): point estimates with no bootstrap CI.
+    The 9/10 single-seed (M-203) is within the multi-seed CI (M-204
+    mean 8.6, std 0.80).
+  - M-204: the CANONICAL search claim is "8.6/10 mean across 5 seeds",
+    NOT "9/10". The multi-seed mean is honest; the single-seed is not.
+  - M-205 (selection rate 100%): suspiciously high; may indicate
+    trivial usefulness or search bias. NOT a capability claim.
+  - M-304 (inter-rater agreement 17%): catastrophic — evaluators
+    disagree 83% of the time. DR-96 finding.
+  - M-305 (self-validation bias +2.50): internal overestimates by 2.50
+    on a 5-point scale. 100% overestimate rate. DR-94 finding.
+  - M-306 (ECE 0.433): confidence is poorly calibrated. DR-96 finding.
+  - M-304 + M-305 + M-306 = evaluator-unreliability triad. Together
+    they block any evaluator-based claim.
+
+**Caveat (Stage M3 gap):** the 14 new metrics have "NOT YET QUANTIFIED"
+in their Uncertainty fields. Stage M3 bootstrap (cycle 259) covered 19
+metrics but NOT these 14. Extending bootstrap is a Stage M3 follow-up
+— it does not block Stage M1 acceptance (specification is complete),
+but it does block Gate 1 overall (the "Confidence intervals on all
+metrics" criterion requires all 30 to have CIs).
+
+**Tests added/updated (tests/test_stop_building_enforcement.py):**
+  - test_measurement_specification_has_required_fields: threshold
+    raised from 10 to 30 metrics
+  - test_invention_metrics_m101_through_m105_specified (NEW)
+  - test_search_metrics_m201_through_m205_specified (NEW)
+  - test_evaluation_metrics_m304_through_m306_specified (NEW)
+  - test_stage_m1_acceptance_pass (NEW): verifies "Stage M1: PASS"
+    and "30 of 30 metrics specified (100%)" in spec
+  - test_no_todo_metrics_remain (NEW): verifies no inventory row
+    still says "TODO"
+
+**Test results:**
+  - 16 STOP BUILDING tests pass (was 11, +5 new)
+  - 161 total tests pass (bootstrap + STOP BUILDING + DR-9x + python313
+    + scorecard integrity)
+  - No regressions
+
+**Status:** STAGE M1 COMPLETE. 30/30 metrics specified. Gate 1 Stage M1
+criterion PASS. Gate 1 overall: IN PROGRESS (M1 PASS, M3 PASS, 7/11
+criteria NOT STARTED). PRELIMINARY verdict (NOT TRUSTWORTHY) remains
+canonical.
+
+**Next steps for Gate 1:**
+  - Stage M3 extension: bootstrap the 14 new metrics (M-101..M-105,
+    M-201..M-205, M-304..M-306) so all 30 have 95% CIs
+  - Stage M2: measurement provenance (every score carries metadata)
+  - Stage M4: repeatability (run identical benchmark 100 times)
+  - Stage M5: reproducibility (different hardware/LLMs/prompts)
+  - Stage M6: sensitivity (perturb inputs, measure output movement)
+  - Stage M7: failure envelope (when does it fail?)
+  - Stage M8: measurement constitution (rules every metric must satisfy)

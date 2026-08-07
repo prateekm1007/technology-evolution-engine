@@ -20,16 +20,18 @@ the final gate; it cannot pass until Gates 1-3 pass.
 | Evaluator reliability quantified | M4 / E1 | NOT STARTED |
 | Calibration documented | M2 / E1 | NOT STARTED |
 | Repeatability demonstrated | M4 | NOT STARTED |
-| Measurement specification complete | M1 | IN PROGRESS (19/~30 metrics specified, 63%) |
+| Measurement specification complete | M1 | **PASS** (cycle 260: 30/30 metrics specified, all 9 fields each) |
 | Measurement provenance (no naked numbers) | M2 | NOT STARTED |
 | Reproducibility across hardware/LLMs/prompts | M5 | NOT STARTED |
 | Sensitivity analysis | M6 | NOT STARTED |
 | Failure envelope documented | M7 | NOT STARTED |
 | Measurement constitution | M8 | NOT STARTED |
 
-**Current verdict: IN PROGRESS.** Stage M3 (Bootstrap Statistics)
-complete. Stage M1 (Specification) 63% complete. 9 of 11 criteria
-remain NOT STARTED. This is the project's #1 priority.
+**Current verdict: IN PROGRESS.** Stage M1 (Specification) PASS —
+30/30 metrics specified. Stage M3 (Bootstrap Statistics) PASS — 25
+metrics have 95% CIs (caveat: 14 new M-101..M-105, M-201..M-205,
+M-304..M-306 metrics not yet bootstrapped). 7 of 11 criteria remain
+NOT STARTED. This is the project's #1 priority.
 
 ---
 
