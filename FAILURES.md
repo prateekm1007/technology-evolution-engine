@@ -3130,3 +3130,46 @@ amplification."
 formula rewards simultaneous maximization of S and σ, which is physically
 impossible. Physical-plausibility bounds are not optional — they are the
 difference between invention and number-gaming.
+
+---
+
+### F-101 — Learning metric counted vetoed (physically impossible) candidates (P0, cycle 213, auditor-caught)
+
+**Found:** cycle 213 external audit. The learning inventor's "avg ZT improves
+1.5→3.6→5.5" metric included vetoed candidates with ZT up to 13.9 (far above
+the F-100 ceiling of 5). The improvement was partly an artifact of counting
+physically impossible values, and the learning update used the same inflated
+average, potentially rewarding unphysical configurations.
+
+**Root cause:** Three computations used `sum(r.predicted_zt for r in results)`
+over ALL results (including vetoed) instead of PASSED candidates only:
+1. `overall_avg` (line 294) — used for policy updates
+2. `avg_pred` (line 418) — reported as the headline metric
+3. `best_zt` (line 434) — reported as the best candidate
+
+**Severity:** P0 — the headline learning claim was inflated. The mechanism
+(search policy changes) was real, but the measurement of improvement was
+not honest.
+
+**Status:** RESOLVED in cycle 213.
+1. `overall_avg` now computed over `passed_for_avg` only
+2. `avg_pred` now computed over `passed_for_report` only (0.0 if all vetoed)
+3. `best_zt` now computed over passed candidates only (default=0.0)
+4. Added regression test: `test_avg_zt_excludes_vetoed_candidates`
+
+Honest result (passed candidates only):
+  Iteration 1: avg ZT=1.074, best=2.540 (was: avg=1.535, best=10.298)
+  Iteration 2: avg ZT=1.424, best=4.407 (was: avg=3.632, best=12.258)
+  Iteration 3: avg ZT=1.402, best=4.172 (was: avg=5.488, best=13.924)
+  Improvement: +0.328 (was: +3.953 — inflated by 12x)
+
+The improvement is REAL but modest (+0.33, not +3.95). The search policy
+genuinely improves from evidence — but by a modest amount, not the dramatic
+number that was inflated by vetoed candidates.
+
+**Lesson:** A metric that includes physically impossible values is not a
+metric — it is an artifact. The F-100 plausibility veto exists to reject
+unphysical candidates; the learning metric must also exclude them. Every
+reported number must be computed over valid candidates only. The 12x
+inflation (+3.95 vs +0.33) shows how much unphysical values can distort
+an otherwise-real mechanism.
