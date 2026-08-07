@@ -159,3 +159,98 @@ def test_snse_not_locked_out_by_veto():
 
     assert ZT <= 5.0, f"SnSe ZT={ZT:.2f} exceeds physical max — would be vetoed"
     assert not result.vetoed, f"SnSe vetoed by plausibility checker — best real material locked out"
+
+
+def test_search_space_includes_all_thermoelectric_materials():
+    """The search space must include ALL thermoelectric materials from the DB.
+
+    Per auditor (cycle 208): 'add a test asserting the generator can actually
+    produce a SnSe/PbTe candidate when the spec targets high-temperature
+    thermoelectrics, not just evaluate them if hand-selected.'
+    """
+    from scripts.artifact_generator import ArtifactGenerator
+    from scripts.specification import SpecificationEngine
+    from scripts.capability_graph import CapabilityGraph
+
+    spec_engine = SpecificationEngine()
+    spec = spec_engine.compile("improve thermoelectric performance of bismuth telluride")
+    cg = CapabilityGraph()
+    cg.from_relations([("bismuth_telluride", "generates", "voltage")])
+
+    gen = ArtifactGenerator(seed=42)
+    materials = gen._find_materials(spec, cg)
+
+    # Must include at least 3 thermoelectric materials
+    assert len(materials) >= 3, f"Expected ≥3 materials in search space, got {materials}"
+    # Must include tin_selenide (SnSe — the record holder)
+    assert "tin_selenide" in materials, f"SnSe not in search space: {materials}"
+    # Must include lead_telluride (PbTe)
+    assert "lead_telluride" in materials, f"PbTe not in search space: {materials}"
+
+
+def test_generator_can_produce_snse_candidate():
+    """The generator can actually PRODUCE a SnSe candidate, not just evaluate it.
+
+    Per auditor: 'prove the generator can actually produce a SnSe/PbTe candidate
+    when the spec targets high-temperature thermoelectrics.'
+    """
+    from scripts.artifact_generator import ArtifactGenerator
+    from scripts.specification import SpecificationEngine
+    from scripts.capability_graph import CapabilityGraph
+
+    spec_engine = SpecificationEngine()
+    spec = spec_engine.compile("improve thermoelectric performance of bismuth telluride")
+    cg = CapabilityGraph()
+    cg.from_relations([("bismuth_telluride", "generates", "voltage")])
+
+    # Generate many candidates with different seeds to find SnSe
+    snse_found = False
+    for seed in range(100):
+        gen = ArtifactGenerator(seed=seed)
+        configs = gen.generate(spec, cg, n=5)
+        for c in configs:
+            for comp in c.components:
+                if comp.material == "tin_selenide":
+                    snse_found = True
+                    break
+            if snse_found:
+                break
+        if snse_found:
+            break
+
+    assert snse_found, "Generator never produced a SnSe candidate in 100 seeds × 5 configs"
+
+
+def test_snse_candidate_evaluated_at_correct_temperature():
+    """A SnSe candidate is evaluated at ~923K, not 350K."""
+    from scripts.artifact_generator import ArtifactGenerator
+    from scripts.specification import SpecificationEngine
+    from scripts.capability_graph import CapabilityGraph
+    from scripts.forward_model import ForwardModel
+
+    spec_engine = SpecificationEngine()
+    spec = spec_engine.compile("improve thermoelectric performance of bismuth telluride")
+    cg = CapabilityGraph()
+    cg.from_relations([("bismuth_telluride", "generates", "voltage")])
+
+    # Find a SnSe candidate
+    fm = ForwardModel()
+    for seed in range(100):
+        gen = ArtifactGenerator(seed=seed)
+        configs = gen.generate(spec, cg, n=5)
+        for c in configs:
+            for comp in c.components:
+                if comp.material == "tin_selenide":
+                    pred = fm.predict(c)
+                    T_avg = pred.predicted_properties.get("T_avg_K", 0)
+                    ZT = pred.predicted_properties.get("ZT", 0)
+                    # SnSe should be evaluated near 923K
+                    assert T_avg > 800, \
+                        f"SnSe evaluated at T_avg={T_avg}K — should be >800K"
+                    # ZT should be near 2.6
+                    assert ZT > 1.5, \
+                        f"SnSe ZT={ZT:.2f} at T={T_avg}K — should be >1.5 (near published 2.6)"
+                    return
+
+    # If we get here, SnSe was never found — that's a failure
+    assert False, "SnSe candidate never found in 100 seeds"

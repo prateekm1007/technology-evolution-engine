@@ -319,7 +319,13 @@ class ArtifactGenerator:
 
     # ----- internals ----------------------------------------------------
     def _find_materials(self, spec, cg) -> List[str]:
-        """Find materials whose capabilities match the spec's targets."""
+        """Find materials whose capabilities match the spec's targets.
+
+        Per cycle 209 (auditor finding): the search space must include ALL
+        thermoelectric materials from the database, not just the ones in the
+        capability graph. Otherwise SnSe, PbTe, etc. are never discoverable
+        by the search — they exist in MATERIAL_PARAMS but are unreachable.
+        """
         materials: List[str] = []
         for cap in spec.capability_targets:
             for entity in cg.get_entities_with_capability(cap):
@@ -332,6 +338,14 @@ class ArtifactGenerator:
             tm = spec.target_material.lower().replace(" ", "_")
             if tm in MATERIAL_PARAMS:
                 materials.append(tm)
+        # Per cycle 209: for thermoelectric domain, include ALL thermoelectric
+        # materials from the database so the search can discover SnSe, PbTe, etc.
+        if spec.domain == "thermoelectric":
+            te_materials = [
+                name for name, params in MATERIAL_PARAMS.items()
+                if "seebeck_coefficient" in params and params.get("seebeck_coefficient", 0) > 10e-6
+            ]
+            materials.extend(te_materials)
         # Fallback
         if not materials:
             materials = ["bismuth_telluride"]
