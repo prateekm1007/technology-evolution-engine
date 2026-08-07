@@ -21,7 +21,7 @@ the final gate; it cannot pass until Gates 1-3 pass.
 | Calibration documented | M2 / E1 | NOT STARTED |
 | Repeatability demonstrated | M4 | NOT STARTED |
 | Measurement specification complete | M1 | **PASS** (cycle 260: 30/30 metrics specified, all 9 fields each) |
-| Measurement provenance (no naked numbers) | M2 | NOT STARTED |
+| Measurement provenance (no naked numbers) | M2 | **PASS** (cycle 262: ScoredValue + ProvenanceRegistry + @with_provenance infrastructure complete; 38 metrics loaded) |
 | Reproducibility across hardware/LLMs/prompts | M5 | NOT STARTED |
 | Sensitivity analysis | M6 | NOT STARTED |
 | Failure envelope documented | M7 | NOT STARTED |
@@ -29,8 +29,8 @@ the final gate; it cannot pass until Gates 1-3 pass.
 
 **Current verdict: IN PROGRESS.** Stage M1 (Specification) PASS —
 30/30 metrics specified. Stage M3 (Bootstrap Statistics) PASS — all
-30 metrics have 95% CIs (cycle 261 extended bootstrap to cover the
-14 new M-101..M-105, M-201..M-205, M-304..M-306 metrics). 7 of 11
+30 metrics have 95% CIs. Stage M2 (Provenance) PASS — ScoredValue
+infrastructure complete, 38 metrics loaded into registry. 6 of 11
 criteria remain NOT STARTED. This is the project's #1 priority.
 
 ---

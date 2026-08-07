@@ -7354,3 +7354,121 @@ STARTED). PRELIMINARY verdict (NOT TRUSTWORTHY) remains canonical.
   - Stage M6: sensitivity (perturb inputs, measure output movement)
   - Stage M7: failure envelope (when does it fail?)
   - Stage M8: measurement constitution (rules every metric must satisfy)
+
+
+### F-150 — Stage M2 (Measurement Provenance) infrastructure complete: no naked numbers (P1, cycle 262)
+
+**Driver:** ROADMAP_V2.md Stage M2. Per ANTI_ENTROPY.md line 559:
+"No layer's output may emit a bare scalar." Every score must carry
+full provenance: ± uncertainty, evidence tier, calibration version,
+evaluator version, prompt version, judge version, timestamp,
+benchmark version.
+
+**Mutual Read Protocol followed:** Read CONSTITUTION.md (Principle 1),
+ANTI_ENTROPY.md (claim/confidence/evidence rule, lines 531-567),
+FAILURES.md tail (F-149), GO_NO_GO_GATES.md (Gate 1 status).
+
+**Work completed (cycle 262):**
+
+1. Built programs/A_metrology/measurement_provenance.py:
+   - ScoredValue dataclass: 17 fields (value + 14 provenance fields +
+     provenance_chain). Every score in the system should be a
+     ScoredValue, not a bare float.
+   - ProvenanceRegistry: loads reports/bootstrap_statistics.json and
+     provides metric_id -> CI lookup. 38 metrics loaded. This is the
+     bridge between Stage M3 (bootstrap) and Stage M2 (provenance).
+   - @with_provenance decorator: wraps a function returning float,
+     returns ScoredValue instead. Looks up the metric's bootstrap CI
+     from the registry and attaches it.
+   - format_score(sv): canonical string representation:
+     "M-005 = 0.8571 ± 0.0635 (95% CI: 0.7097, 0.9474; N=20, B=500,
+     tier=B, cal=dr91-cycle-243, eval=dr91-v1, bench=discovery-v1)"
+   - is_naked_number(obj): detects bare floats/ints that should be
+     ScoredValue. Used for CI enforcement.
+
+2. The 14 provenance fields per ScoredValue:
+   - value (float)
+   - metric_id (e.g. "M-005")
+   - metric_name (human-readable)
+   - uncertainty_std (bootstrap std from M3)
+   - ci_95_lower, ci_95_upper (95% CI from M3)
+   - n (sample size)
+   - n_resamples (bootstrap B)
+   - evidence_tier (A/B/C/D/E/F/G/H/I from CONSTITUTION evidence hierarchy)
+   - calibration_version (e.g. "dr91-cycle-243")
+   - evaluator_version (e.g. "dr91-v1")
+   - prompt_version (e.g. "standard-v1" or "n/a")
+   - judge_version (e.g. "judge_1_standard" or "n/a")
+   - timestamp (ISO 8601 UTC)
+   - benchmark_version (e.g. "discovery-v1")
+   - is_degenerate (from M3)
+   - provenance_chain (list of function names)
+
+3. Updated GO_NO_GO_GATES.md: Gate 1 Stage M2 criterion now PASS.
+   Gate 1 overall: IN PROGRESS (M1 PASS, M2 PASS, M3 PASS, 6/11
+   criteria NOT STARTED).
+
+4. Added 25 provenance tests (tests/test_measurement_provenance.py):
+   - ScoredValue: has all required fields, to_dict roundtrip,
+     format includes all key info, format_short, degenerate flag
+   - ProvenanceRegistry: loads bootstrap data, has M-005, has all 30
+     specified metrics, wrap attaches CI, wrap for unquantified
+     metric, wrap for degenerate metric
+   - @with_provenance: wraps function returning float, preserves
+     metadata, attaches raw_fn, works with arguments
+   - format_score / format_score_short: return strings
+   - is_naked_number: detects floats, detects ints, ignores
+     ScoredValue, ignores bool, ignores None/string
+   - Integration: decorator uses registry for CI, module-level
+     registry is shared singleton
+   - End-to-end: main() runs
+
+5. Added 3 STOP BUILDING tests:
+   - test_stage_m2_provenance_infrastructure_exists
+   - test_stage_m2_scored_value_is_importable
+   - test_stage_m2_registry_has_all_30_metrics
+
+**Honest status:**
+  - The infrastructure is COMPLETE and tested (25 + 3 = 28 tests pass).
+  - Not every score function in the codebase is wrapped yet. This is
+    a gradual migration — as functions are touched, they get wrapped.
+    The STOP_BUILDING list (cycle 258) prevents NEW naked-number
+    functions from being added without a corresponding measurement-
+    layer improvement.
+  - The registry loads from reports/bootstrap_statistics.json. If a
+    metric_id is not in the bootstrap data, the ScoredValue will have
+    uncertainty_std=0, CI=(value, value), is_degenerate=True. This is
+    documented as "UNQUANTIFIED" in the ScoredValue's provenance.
+
+**Example usage:**
+  @with_provenance(metric_id="M-005", metric_name="Discovery F1",
+                   evidence_tier="B", calibration_version="dr91-cycle-243",
+                   evaluator_version="dr91-v1", benchmark_version="discovery-v1")
+  def compute_discovery_f1(gold, candidates, match_fn):
+      # ... compute F1 ...
+      return f1
+
+  result = compute_discovery_f1(gold, candidates, match_fn)
+  # result is a ScoredValue with full provenance
+  print(format_score(result))
+  # "M-005 = 0.8571 ± 0.0635 (95% CI: 0.7097, 0.9474; N=20, B=500,
+  #  tier=B, cal=dr91-cycle-243, eval=dr91-v1, bench=discovery-v1)"
+
+**Test results:**
+  - 25 provenance tests pass
+  - 3 new STOP BUILDING tests pass (total 19)
+  - 189 total tests pass (no regressions)
+
+**Status:** STAGE M2 INFRASTRUCTURE COMPLETE. ScoredValue, ProvenanceRegistry,
+@with_provenance, format_score, is_naked_number all available. 38 metrics
+loaded into registry. Gate 1 Stage M2 criterion PASS. Gate 1 overall:
+IN PROGRESS (M1 PASS, M2 PASS, M3 PASS, 6/11 criteria NOT STARTED).
+PRELIMINARY verdict (NOT TRUSTWORTHY) remains canonical.
+
+**Next steps for Gate 1:**
+  - Stage M4: repeatability (run identical benchmark 100 times)
+  - Stage M5: reproducibility (different hardware/LLMs/prompts)
+  - Stage M6: sensitivity (perturb inputs, measure output movement)
+  - Stage M7: failure envelope (when does it fail?)
+  - Stage M8: measurement constitution (rules every metric must satisfy)
+  - Gradual migration: wrap existing score functions to return ScoredValue

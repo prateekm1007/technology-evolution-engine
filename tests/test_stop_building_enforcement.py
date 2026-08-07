@@ -388,3 +388,47 @@ def test_go_no_go_gates_md_has_current_status():
     # Current state must be documented
     assert "NOT STARTED" in gates_doc or "BLOCKED" in gates_doc
     assert "0/4 gates PASS" in gates_doc or "0/4" in gates_doc
+
+
+# ============================================================================
+# Stage M2 (Measurement Provenance) — cycle 262
+# ============================================================================
+
+def test_stage_m2_provenance_infrastructure_exists():
+    """Cycle 262: Stage M2 infrastructure must exist.
+
+    Per ROADMAP_V2.md Stage M2: no naked numbers. The provenance
+    infrastructure (ScoredValue, ProvenanceRegistry, @with_provenance)
+    must be in place.
+    """
+    assert (REPO / "programs" / "A_metrology" / "measurement_provenance.py").exists()
+    assert (REPO / "tests" / "test_measurement_provenance.py").exists()
+
+
+def test_stage_m2_scored_value_is_importable():
+    """ScoredValue must be importable from the measurement provenance module."""
+    from programs.A_metrology.measurement_provenance import ScoredValue
+    sv = ScoredValue(
+        value=0.5, metric_id="M-test", metric_name="test",
+        uncertainty_std=0.1, ci_95_lower=0.3, ci_95_upper=0.7,
+        n=10, n_resamples=100, evidence_tier="B",
+        calibration_version="v1", evaluator_version="v1",
+        prompt_version="n/a", judge_version="n/a",
+        timestamp="now", benchmark_version="v1",
+    )
+    assert sv.value == 0.5
+    assert sv.metric_id == "M-test"
+
+
+def test_stage_m2_registry_has_all_30_metrics():
+    """The provenance registry must have bootstrap data for all 30 metrics."""
+    from programs.A_metrology.measurement_provenance import ProvenanceRegistry
+    reg = ProvenanceRegistry()
+    required = (
+        {f"M-{i:03d}" for i in range(1, 17)} |
+        {f"M-{i:03d}" for i in range(101, 106)} |
+        {f"M-{i:03d}" for i in range(201, 206)} |
+        {"M-301", "M-302", "M-304", "M-305", "M-306"}
+    )
+    for mid in required:
+        assert reg.has_metric(mid), f"Registry missing {mid}"
