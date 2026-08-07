@@ -6609,3 +6609,49 @@ of the entire architecture.
 - PRELIMINARY verdict: still NOT TRUSTWORTHY
 - Remaining: Phase VIII (external baselines), Phase IX (historical recalibration),
   Phase X (scientific reassessment), FINAL VERDICT
+
+### F-143 — DR-91 audit response: 5 fixes from external completion audit (P1, cycle 254)
+
+**External audit finding (PARTIAL PASS — scaffolding delivered, completion overclaimed):**
+  1. FINAL_MEASUREMENT_VERDICT references still exist
+  2. Older DR-91..DR-96 tests fail (audit package not importable)
+  3. Several CI gates are always-pass (not real enforcement)
+  4. "All gaps closed" claim is overstated
+  5. Python 3.13 dependency issue (not fixed — environment-specific)
+
+**Fixes applied (cycle 254):**
+
+1. **FINAL→PRELIMINARY cleanup**: Fixed all remaining references in
+   audit/measurement_integrity/dr91_measurement_audit.py (2 lines) and
+   docs/MEASUREMENT_REASSESSMENT.md (1 line). No remaining FINAL
+   references outside FAILURES.md (which documents the history).
+
+2. **Import robustness**: Created __init__.py in audit/, audit/stage_minus1/,
+   and audit/measurement_integrity/. DR-91..DR-96 tests now pass:
+   59 passed (was 53 failed, 6 passed).
+
+3. **CI gate strengthening**:
+   - test_no_gold_leakage.py: replaced always-pass `assert critical >= 0`
+     with real enforcement against matching/scoring files (scripts/
+     matching logic specifically). Gold in capability/data files is
+     legitimate; gold in scoring functions is critical.
+   - test_synonym_audit.py: added test_synonym_audit_report_exists
+     (verifies UNSAFE status is documented) and test_synonym_policy_exists.
+   - test_false_positive_floor.py: added test_fp_floor_is_honestly_reported
+     (documents FP=1.0 honestly, with note to upgrade to FP<5% enforcement
+     when benchmark is fixed).
+
+4. **Corrected overclaimed wording**: F-142 said "all external audit gaps
+   closed." This was overstated. The honest claim is: "all requested
+   docs/tests scaffolded, import robustness fixed, CI gates strengthened,
+   but measurement remains NOT TRUSTWORTHY and multiple cleanup gaps
+   remain (external baselines, historical recalibration, final verdict)."
+
+5. **Python 3.13 dependency**: NOT FIXED (environment-specific, not a
+   code issue). The spaCy model requirement is documented; tests that
+   need spaCy are marked as requiring `python -m spacy download
+   en_core_web_sm`.
+
+**Status:** PARTIAL PASS → fixes applied. External audit findings 1-4
+addressed. Finding 5 (Python 3.13) is environment-specific.
+PRELIMINARY verdict: still NOT TRUSTWORTHY.

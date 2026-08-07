@@ -557,7 +557,7 @@ def main():
 
     # === FINAL VERDICT ===
     print("=" * 80)
-    print("FINAL MEASUREMENT VERDICT")
+    print("PRELIMINARY MEASUREMENT VERDICT")
     print("=" * 80)
     print()
 
@@ -603,7 +603,7 @@ def main():
 
     # Write final verdict
     with open(Path(repo_path, "PRELIMINARY_MEASUREMENT_VERDICT.md"), "w") as f:
-        f.write("# FINAL MEASUREMENT VERDICT\n\n")
+        f.write("# PRELIMINARY MEASUREMENT VERDICT\n\n")
         f.write(f"## Verdict: {verdict}\n\n")
         f.write("## Evidence\n\n")
         f.write(f"| Metric | Value |\n|---|---|\n")

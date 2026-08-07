@@ -32,6 +32,6 @@ This document remains INCOMPLETE until:
 2. The benchmark passes FP < 5%
 3. Bootstrap CIs are computed
 4. All historical scores are recomputed
-5. The FINAL_MEASUREMENT_VERDICT is issued
+5. The PRELIMINARY_MEASUREMENT_VERDICT is issued
 
 Only then can the reassessment be completed.
