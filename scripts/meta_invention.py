@@ -71,6 +71,57 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 # L1 — LANDSCAPE CLASSIFICATION
 # ============================================================================
 
+# ============================================================================
+# FROZEN THRESHOLDS (cycle 221) — per auditor's Goodhart warning
+# ============================================================================
+# These thresholds were tuned during cycles 218-220 to make the 5-seed 4/4
+# test pass. The auditor correctly flagged this as potential Goodhart drift:
+# "Were the thresholds chosen before or after running the five seeds? If
+# after, freeze them now. Then never change them again. Future domains
+# should use exactly those thresholds."
+#
+# HONEST STATUS: The thresholds ARE tuned to the observed technology
+# domains (TE, Battery, Catalyst, PV). They have NOT been validated on
+# held-out domains. The 4/7 synthetic-landscape result (F-106) is the
+# honest evidence: the thresholds generalize to 4/7 pure-math landscapes
+# but fail on 3/7 (Rosenbrock, Ackley, Deceptive).
+#
+# These constants are FROZEN. Changing them requires:
+#   1. A documented justification in FAILURES.md
+#   2. Re-running ALL tests (fast + slow)
+#   3. Re-running the synthetic-landscape benchmark
+#   4. The change must IMPROVE the synthetic-landscape result, not just
+#      the technology-domain result (otherwise it's overfitting)
+# ============================================================================
+
+FROZEN_THRESHOLDS = {
+    # Needle detection: most samples at floor, very few near max
+    "NEEDLE_NEAR_MIN_FRACTION": 0.5,    # near_min > this → needle candidate
+    "NEEDLE_NEAR_MAX_FRACTION": 0.1,    # near_max < this → needle candidate
+    # Degenerate spread: if spread < this × |max|, classify as needle
+    "DEGENERATE_SPREAD_FACTOR": 1e-9,
+    # Constraint-dominated: if >50% of samples produce exactly min_val
+    "CONSTRAINT_EXACT_MIN_FRACTION": 0.5,
+    # Deceptive: bimodality + gap in middle
+    "DECEPTIVE_BIMODALITY_MIN": 0.55,
+    "DECEPTIVE_NEAR_MIN_LO": 0.3,
+    "DECEPTIVE_NEAR_MIN_HI": 0.7,
+    "DECEPTIVE_MID_SPAN_RATIO": 0.10,   # middle 20% spans < this × spread
+    # Multimodal: interaction + bimodality
+    "MULTIMODAL_INTERACTION_MIN": 0.5,
+    "MULTIMODAL_BIMODALITY_MIN": 0.4,
+    # Smooth: skew ratio threshold
+    "SMOOTH_SKEW_RATIO_MIN": 0.15,
+    # BayesianOptimizer fallback
+    "BAYESIAN_CV_R2_MIN": 0.3,          # below this, fall back to evolutionary
+    "BAYESIAN_MUTATION_RATE": 0.5,      # 50% mutation in fallback
+    "BAYESIAN_FALLBACK_PADDING": 0.20,  # 20% padding in fallback
+    # Sample normalization
+    "NEAR_MAX_THRESHOLD": 0.95,         # normalized > this = "near max"
+    "NEAR_MIN_THRESHOLD": 0.05,         # normalized < this = "near min"
+}
+
+
 class LandscapeType(Enum):
     SMOOTH = "smooth"
     MULTIMODAL = "multimodal"
@@ -147,31 +198,18 @@ class LandscapeClassifier:
         min_val = outcomes[0]
 
         # Cycle 220 v2 — refined sign-aware metrics.
-        # The original nonzero_fraction ("> 5% of spread") couldn't
-        # distinguish "all-equal-because-needle" from "all-equal-because-
-        # smooth". The new metric: "fraction of samples within 5% of MAX"
-        # — this captures "how many samples are near the best seen".
-        # For a needle: very few samples are near max (most are at min).
-        # For a smooth landscape: many samples are spread across the range.
+        # Normalize outcomes to [0,1] based on observed spread (min→0, max→1)
+        # so the same statistical rules work regardless of sign.
         spread = max_val - min_val
         if spread < 1e-12:
             normalized = [0.5] * n
             near_max_fraction = 0.5  # degenerate, treat as unknown
         else:
             normalized = [(o - min_val) / spread for o in outcomes]
-            # "Near max" = within 5% of the spread from max
-            near_max_fraction = sum(1 for no in normalized if no > 0.95) / n
+            near_max_fraction = sum(1 for no in normalized
+                                    if no > FROZEN_THRESHOLDS["NEAR_MAX_THRESHOLD"]) / n
 
-        # Cycle 220 v3 — better needle detection.
-        # A needle landscape has TWO signatures:
-        #   (a) most samples at the FLOOR (near_min > 0.5), OR
-        #   (b) spread is degenerate (all samples produce same value
-        #       because the needle was never hit in N samples)
-        # Case (b) is critical: with N=100 random samples and a needle
-        # occupying 0.05^4 = 6.25e-6 of the volume, we expect ~0 hits.
-        # The tell-tale: spread < 1e-9 × |max| AND max is "suspiciously
-        # close to a floor value" (e.g., 0 or a small constant).
-        if spread < 1e-9 * max(1.0, abs(max_val)):
+        if spread < FROZEN_THRESHOLDS["DEGENERATE_SPREAD_FACTOR"] * max(1.0, abs(max_val)):
             # Degenerate spread — almost all samples produce same value.
             # This is the signature of a needle we haven't hit.
             landscape_type = LandscapeType.NEEDLE
@@ -188,13 +226,10 @@ class LandscapeClassifier:
             )
 
         # For non-degenerate landscapes, use the refined rules below.
-        # near_min_fraction: fraction of samples at the FLOOR (near min).
-        # For a needle: most samples are near min (nonzero=low).
-        # For a smooth landscape: samples are spread (nonzero=high).
-        near_min_fraction = sum(1 for no in normalized if no < 0.05) / n
+        near_min_fraction = sum(1 for no in normalized
+                                if no < FROZEN_THRESHOLDS["NEAR_MIN_THRESHOLD"]) / n
 
         # nonzero_fraction (kept for backward compat) = 1 - near_min_fraction
-        # = fraction of samples NOT at the floor
         nonzero_fraction = 1.0 - near_min_fraction
 
         # skew_ratio: how close the median is to the max.
@@ -206,43 +241,41 @@ class LandscapeClassifier:
         bimodality = self._bimodality_coefficient(outcomes)
         interaction_index = self._interaction_index(candidates, design_vars)
 
-        # Classification rules (sign-aware, refined)
+        # Classification rules (sign-aware, refined, FROZEN thresholds)
         # Order matters: most-specific rules first.
-        is_needle = near_min_fraction > 0.5 and near_max_fraction < 0.1
+        is_needle = (near_min_fraction > FROZEN_THRESHOLDS["NEEDLE_NEAR_MIN_FRACTION"]
+                     and near_max_fraction < FROZEN_THRESHOLDS["NEEDLE_NEAR_MAX_FRACTION"])
 
-        # Cycle 220 v4 — tighten the deceptive rule.
-        # The previous rule (bimodality > 0.55 and 0.3 <= near_min <= 0.7)
-        # was too permissive: it matched Catalyst (which has a continuous
-        # skewed distribution, not a true bimodal one). A real deceptive
-        # landscape has TWO separated peaks — visible as a GAP in the
-        # middle of the sorted outcomes.
-        # New rule: bimodality > 0.55 AND there's a clear gap (the middle
-        # 20% of sorted outcomes spans < 10% of the spread).
+        # Deceptive: bimodality + gap in middle
         is_deceptive = False
-        if not is_needle and bimodality > 0.55 and 0.3 <= near_min_fraction <= 0.7:
+        if (not is_needle
+            and bimodality > FROZEN_THRESHOLDS["DECEPTIVE_BIMODALITY_MIN"]
+            and FROZEN_THRESHOLDS["DECEPTIVE_NEAR_MIN_LO"] <= near_min_fraction
+            <= FROZEN_THRESHOLDS["DECEPTIVE_NEAR_MIN_HI"]):
             # Check for a gap in the middle of the sorted outcomes
             mid_lo_idx = int(0.4 * n)
             mid_hi_idx = int(0.6 * n)
             mid_lo_val = outcomes[mid_lo_idx]
             mid_hi_val = outcomes[mid_hi_idx]
             mid_span = mid_hi_val - mid_lo_val
-            if spread > 1e-12 and mid_span / spread < 0.10:
+            if (spread > 1e-12
+                and mid_span / spread < FROZEN_THRESHOLDS["DECEPTIVE_MID_SPAN_RATIO"]):
                 is_deceptive = True
 
         if is_needle:
             # Distinguish NEEDLE from CONSTRAINT_DOM:
-            # CONSTRAINT_DOM has a STRUCTURAL floor (exact same min value
-            # for many samples, because infeasible = 0 exactly).
-            exact_min_count = sum(1 for o in outcomes if abs(o - min_val) < 1e-9 * max(1.0, abs(min_val)))
-            if exact_min_count / n > 0.5:
+            exact_min_count = sum(1 for o in outcomes
+                                  if abs(o - min_val) < 1e-9 * max(1.0, abs(min_val)))
+            if exact_min_count / n > FROZEN_THRESHOLDS["CONSTRAINT_EXACT_MIN_FRACTION"]:
                 landscape_type = LandscapeType.CONSTRAINT_DOM
             else:
                 landscape_type = LandscapeType.NEEDLE
         elif is_deceptive:
             landscape_type = LandscapeType.DECEPTIVE
-        elif interaction_index > 0.5 and bimodality > 0.4:
+        elif (interaction_index > FROZEN_THRESHOLDS["MULTIMODAL_INTERACTION_MIN"]
+              and bimodality > FROZEN_THRESHOLDS["MULTIMODAL_BIMODALITY_MIN"]):
             landscape_type = LandscapeType.MULTIMODAL
-        elif skew_ratio > 0.15:
+        elif skew_ratio > FROZEN_THRESHOLDS["SMOOTH_SKEW_RATIO_MIN"]:
             landscape_type = LandscapeType.SMOOTH
         else:
             landscape_type = LandscapeType.SMOOTH
@@ -598,7 +631,7 @@ class BayesianOptimizer(Optimizer):
         # surrogate didn't generalize, so we fall back to a method that
         # doesn't rely on a surrogate at all.
         surrogate_r2 = self._surrogate_r2(candidates)
-        if surrogate_r2 < 0.3:
+        if surrogate_r2 < FROZEN_THRESHOLDS["BAYESIAN_CV_R2_MIN"]:
             # Surrogate is unreliable — use evolutionary-style step:
             # take top quartile as parents, generate offspring via
             # crossover + mutation, narrow policy to offspring range.
@@ -610,6 +643,7 @@ class BayesianOptimizer(Optimizer):
             if len(parents) >= 2:
                 # Generate offspring via crossover + mutation
                 offspring_designs = []
+                mutation_rate = FROZEN_THRESHOLDS["BAYESIAN_MUTATION_RATE"]
                 for _ in range(20):
                     p1, p2 = rng.sample(parents, 2)
                     child = {}
@@ -618,7 +652,7 @@ class BayesianOptimizer(Optimizer):
                         # Crossover: pick from p1 or p2
                         child[vname] = p1.design_point[vname] if rng.random() < 0.5 else p2.design_point[vname]
                         # Mutation: perturb (higher rate to escape local optima)
-                        if rng.random() < 0.5:  # 50% mutation rate (was 30%)
+                        if rng.random() < mutation_rate:
                             lo, hi = self.original_bounds[vname]
                             if lo > 0 and hi / lo > 100:
                                 log_val = math.log(max(1e-12, child[vname]))
@@ -629,14 +663,13 @@ class BayesianOptimizer(Optimizer):
                                 child[vname] = max(lo, min(hi, child[vname] + rng.uniform(-0.2, 0.2) * span))
                     offspring_designs.append(child)
                 # Narrow policy to range of offspring (wider than before)
+                pad = FROZEN_THRESHOLDS["BAYESIAN_FALLBACK_PADDING"]
                 for var in self.domain["design_vars"]:
                     vname = var["name"]
                     vals = [d[vname] for d in offspring_designs]
                     lo, hi = self.original_bounds[vname]
-                    # Add 20% padding to maintain diversity
-                    pad = 0.20 * (hi - lo)
-                    new_lo = max(lo, min(vals) - pad)
-                    new_hi = min(hi, max(vals) + pad)
+                    new_lo = max(lo, min(vals) - pad * (hi - lo))
+                    new_hi = min(hi, max(vals) + pad * (hi - lo))
                     if new_hi > new_lo:
                         self.policy[vname] = (new_lo, new_hi)
             return []
