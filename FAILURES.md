@@ -6387,3 +6387,93 @@ evaluator is too lenient" from an intuition into a measured
 scientific fact with permanent artifacts. Future generations will
 be compared against this baseline — if Gen1 has lower bias, that's
 measurable improvement. If not, the calibration problem persists.
+
+### F-140 — DR-95: Epistemic calibration research — confidence poorly calibrated, judges disagree (P1, cycle 251, exploratory)
+
+**CTO directive:**
+  "No Proposal Composer improvements are allowed. The only objective
+   is understanding the calibration problem. The output is not code —
+   the output is evidence.
+
+   The irony would be painful: fixing the self-validation bias by
+   creating a new evaluation bias."
+
+**STATISTICAL HONESTY (per CTO):**
+  N=6 is exploratory. Insufficient for statistical conclusions.
+  Report: 'Preliminary evidence suggests strong overestimation.'
+  NOT: 'Correlation is zero.' (meaningless at N=6)
+
+**Phase 1: Multi-evaluator calibration (3 LLM judges):**
+
+| Entity | J1 | J2 | J3 | Mean | Std | Agree? |
+|--------|---:|---:|---:|-----:|----:|--------|
+| heat | 2 | 2 | 2 | 2.00 | 0.00 | ✓ |
+| thermal_differential | 2 | 1 | 2 | 1.67 | 0.47 | ✗ |
+| surface_chemical_modification | 2 | 1 | 2 | 1.67 | 0.47 | ✗ |
+| energy_gap | 2 | 2 | 2 | 2.00 | 0.00 | ✗ |
+| phase_change_enthalpy | 2 | 1 | 2 | 1.67 | 0.47 | ✗ |
+| light_quantum_energy | 2 | 1 | 2 | 1.67 | 0.47 | ✗ |
+
+- Judges agree on recommendation: **1/6** (17%)
+- Mean inter-judge quality: **1.78/5**
+- The adversarial judge (J2) consistently scores 1 point lower
+
+**Phase 2: Confidence calibration:**
+
+| Metric | Value |
+|--------|------:|
+| Mean confidence | 0.200 |
+| Acceptance rate | 0.500 |
+| ECE | **0.433** |
+| Brier Score | **0.340** |
+| Max Calibration Error | 0.800 |
+
+**CONFIDENCE IS POORLY CALIBRATED (ECE = 0.433 > 0.2).**
+The composer's confidence (0.2) does NOT predict acceptance (50%).
+If confidence were calibrated, 0.2 confidence should mean ~20% acceptance.
+Actual: 50% acceptance at 0.2 confidence.
+
+**Phase 3: Disagreement analysis (why proposals are rejected):**
+
+| Failure mode | Count |
+|-------------|------:|
+| low_confidence | 15 |
+| mechanism_vague | 2 |
+| weak_novelty | 1 |
+
+**Top failure mode: low_confidence (15/18 = 83%).**
+The LLM judges consistently cite the low confidence score (0.2) as a
+reason to reject. The composer's own confidence signal is being used
+against it — the LLM interprets 0.2 confidence as "the proposer doesn't
+believe in their own hypothesis."
+
+**Key findings (exploratory, N=6):**
+1. Judges disagree 5/6 times on recommendation → evaluation itself is noisy
+2. Confidence (0.2) is poorly calibrated (ECE=0.433) → doesn't predict acceptance
+3. Top rejection reason is the low confidence score itself → circular
+4. The adversarial judge consistently scores 1 point lower → judge selection matters
+5. All judges rate quality ~2/5 → consistently low across judges
+
+**What this means:**
+- The calibration problem is REAL but the measurement of it is NOISY
+- With N=6 and 3 judges, we can't distinguish "proposals are bad" from
+  "judges are unreliable" — both are plausible
+- The low confidence (0.2) creates a circular rejection: LLM rejects
+  because confidence is low, but confidence is low because the composer
+  is uncertain
+- Need N≥30 proposals and multiple judge models to draw statistical
+  conclusions
+
+**Status:** EXPLORATORY CALIBRATION RESEARCH COMPLETE.
+- No Proposal Composer improvements (per CTO freeze)
+- Evidence collected but statistically insufficient (N=6)
+- Path forward: expand to N≥30, add human expert (Tier 2), test judge
+  robustness (different models/temperatures/prompts)
+- PRELIMINARY verdict: still NOT TRUSTWORTHY
+
+**Lesson:** The CTO's warning was prescient: "building Gen1 now would
+recreate Goodhart against the LLM judge." The multi-evaluator study
+shows judges disagree 5/6 times — if we had optimized Gen1 against
+one judge, we'd be optimizing against noise. The calibration science
+must come first. Only when we know whether the evaluation itself is
+reliable can we trust improvements to the composer.
