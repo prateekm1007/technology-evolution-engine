@@ -15,8 +15,8 @@ the final gate; it cannot pass until Gates 1-3 pass.
 
 | Criterion | Stage | Status |
 |---|---|---|
-| Bootstrap statistics implemented | M3 | **PASS** (cycle 259: 25 metrics bootstrapped, B=500/200) |
-| Confidence intervals on all metrics | M3 | **PASS** (cycle 259: all 25 metrics have 95% CIs in reports/bootstrap_statistics.json) |
+| Bootstrap statistics implemented | M3 | **PASS** (cycle 261: all 30 metrics bootstrapped, B=500/200/100) |
+| Confidence intervals on all metrics | M3 | **PASS** (cycle 261: all 30 metrics have 95% CIs in reports/bootstrap_statistics.json) |
 | Evaluator reliability quantified | M4 / E1 | NOT STARTED |
 | Calibration documented | M2 / E1 | NOT STARTED |
 | Repeatability demonstrated | M4 | NOT STARTED |
@@ -28,10 +28,10 @@ the final gate; it cannot pass until Gates 1-3 pass.
 | Measurement constitution | M8 | NOT STARTED |
 
 **Current verdict: IN PROGRESS.** Stage M1 (Specification) PASS —
-30/30 metrics specified. Stage M3 (Bootstrap Statistics) PASS — 25
-metrics have 95% CIs (caveat: 14 new M-101..M-105, M-201..M-205,
-M-304..M-306 metrics not yet bootstrapped). 7 of 11 criteria remain
-NOT STARTED. This is the project's #1 priority.
+30/30 metrics specified. Stage M3 (Bootstrap Statistics) PASS — all
+30 metrics have 95% CIs (cycle 261 extended bootstrap to cover the
+14 new M-101..M-105, M-201..M-205, M-304..M-306 metrics). 7 of 11
+criteria remain NOT STARTED. This is the project's #1 priority.
 
 ---
 

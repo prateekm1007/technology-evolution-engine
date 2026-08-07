@@ -278,6 +278,83 @@ def test_known_metrics_have_bootstrap_results():
     assert len(m303_variants) >= 1, "Missing M-303 (AI surrogate dimensions)"
 
 
+def test_all_30_specified_metrics_have_bootstrap_results():
+    """Cycle 261: all 30 specified M-metrics (including M-101..M-105,
+    M-201..M-205, M-304..M-306) must have bootstrap results."""
+    path = REPO / "reports" / "bootstrap_statistics.json"
+    data = json.loads(path.read_text())
+    metric_ids = {r["metric_id"] for r in data["results"]}
+
+    # All 30 specified metric IDs (M-303 counts as one, represented by
+    # at least one M-303-D* variant)
+    required_ids = (
+        {f"M-{i:03d}" for i in range(1, 17)} |   # M-001..M-016
+        {f"M-{i:03d}" for i in range(101, 106)} | # M-101..M-105
+        {f"M-{i:03d}" for i in range(201, 206)} | # M-201..M-205
+        {"M-301", "M-302", "M-304", "M-305", "M-306"}
+    )
+    missing = required_ids - metric_ids
+    assert not missing, (
+        f"Missing bootstrap results for: {missing}. "
+        f"Present: {sorted(metric_ids)}"
+    )
+    # At least one M-303 variant
+    m303_variants = {mid for mid in metric_ids if mid.startswith("M-303")}
+    assert len(m303_variants) >= 1, "Missing M-303 (AI surrogate dimensions)"
+
+
+def test_invention_metrics_have_bootstrap_cis():
+    """M-101..M-105 must have non-empty CI fields."""
+    path = REPO / "reports" / "bootstrap_statistics.json"
+    data = json.loads(path.read_text())
+    for mid in ("M-101", "M-102", "M-103", "M-104", "M-105"):
+        r = next((x for x in data["results"] if x["metric_id"] == mid), None)
+        assert r is not None, f"Missing {mid}"
+        assert "ci_95_lower" in r and "ci_95_upper" in r
+        assert r["n"] > 0, f"{mid} has N=0"
+        assert r["n_resamples"] > 0, f"{mid} has B=0"
+
+
+def test_search_metrics_have_bootstrap_cis():
+    """M-201..M-205 must have non-empty CI fields."""
+    path = REPO / "reports" / "bootstrap_statistics.json"
+    data = json.loads(path.read_text())
+    for mid in ("M-201", "M-202", "M-203", "M-204", "M-205"):
+        r = next((x for x in data["results"] if x["metric_id"] == mid), None)
+        assert r is not None, f"Missing {mid}"
+        assert "ci_95_lower" in r and "ci_95_upper" in r
+
+
+def test_evaluation_metrics_extended_have_bootstrap_cis():
+    """M-304..M-306 must have non-empty CI fields."""
+    path = REPO / "reports" / "bootstrap_statistics.json"
+    data = json.loads(path.read_text())
+    for mid in ("M-304", "M-305", "M-306"):
+        r = next((x for x in data["results"] if x["metric_id"] == mid), None)
+        assert r is not None, f"Missing {mid}"
+        assert "ci_95_lower" in r and "ci_95_upper" in r
+
+
+def test_m305_bias_ci_confirms_plus_2_50():
+    """M-305 (self-validation bias) CI should contain +2.50."""
+    path = REPO / "reports" / "bootstrap_statistics.json"
+    data = json.loads(path.read_text())
+    m305 = next(r for r in data["results"] if r["metric_id"] == "M-305")
+    assert abs(m305["point_estimate"] - 2.5) < 0.01
+    assert m305["ci_95_lower"] <= 2.5 <= m305["ci_95_upper"]
+
+
+def test_m304_agreement_ci_includes_zero():
+    """M-304 (inter-rater agreement) CI should include 0 (1/6 agreed,
+    small N means CI is very wide)."""
+    path = REPO / "reports" / "bootstrap_statistics.json"
+    data = json.loads(path.read_text())
+    m304 = next(r for r in data["results"] if r["metric_id"] == "M-304")
+    assert m304["ci_95_lower"] == 0.0, (
+        f"M-304 CI lower = {m304['ci_95_lower']}, expected 0.0 (small N, low agreement)"
+    )
+
+
 def test_m005_discovery_f1_has_ci_around_0857():
     """M-005 (Discovery F1) point estimate should be ~0.857 with a CI."""
     path = REPO / "reports" / "bootstrap_statistics.json"

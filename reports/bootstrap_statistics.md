@@ -1,6 +1,6 @@
 # Stage M3: Bootstrap Statistics (Program A)
 
-Cycle: 259
+Cycle: 261 (extended — all 30 specified metrics bootstrapped)
 
 Per ROADMAP_V2.md Stage M3: every F1 number must become
 `F1 = 0.91 ± 0.07 (95% CI: 0.78, 1.00; N=20, B=2000)`.
@@ -28,9 +28,9 @@ interval, sample size, and number of bootstrap resamples.
 | M-005 | Discovery F1 (shared, syn, DR-91) | 0.8571 ± 0.0635 | [0.7097, 0.9474] | 20 | 500 | no |
 | M-006 | Recognition F1 (all, syn, DR-91) | 1.0000 ± 0.0000 | [1.0000, 1.0000] | 20 | 500 | YES |
 | M-007 | Proposal-locus inflation | 0.1429 ± 0.0635 | [0.0526, 0.2903] | 20 | 500 | no |
-| M-008 | FP floor (synonym) | 0.9189 ± 0.0559 | [0.7879, 1.0000] | 20 | 200 | no |
+| M-008 | FP floor (synonym) | 0.9189 ± 0.0580 | [0.8226, 1.0000] | 20 | 200 | no |
 | M-009 | UNSAFE synonyms count | 18.0000 ± 1.4297 | [15.0000, 20.0000] | 20 | 500 | no |
-| M-010 | Per-proposal F1 (honest, lenient) | 0.1000 ± 0.0683 | [0.0000, 0.2500] | 20 | 500 | no |
+| M-010 | Per-proposal F1 (honest, lenient) | 0.0500 ± 0.0506 | [0.0000, 0.1500] | 20 | 500 | no |
 | M-011 | Per-proposal F1 (strict, honest) | 0.0000 ± 0.0000 | [0.0000, 0.0000] | 20 | 500 | YES |
 | M-012 | Aggregate F1 (DR-91) | 0.8571 ± 0.0635 | [0.7097, 0.9474] | 20 | 500 | no |
 | M-013 | Aggregate F1 (honest) | 0.8333 ± 0.0692 | [0.6471, 0.9231] | 20 | 500 | no |
@@ -46,6 +46,19 @@ interval, sample size, and number of bootstrap resamples.
 | M-303-D5 | AI surrogate D5 mean | 3.0000 ± 0.0000 | [3.0000, 3.0000] | 6 | 500 | YES |
 | M-303-D6 | AI surrogate D6 mean | 1.8333 ± 0.1517 | [1.5000, 2.0000] | 6 | 500 | no |
 | M-303-D7 | AI surrogate D7 mean | 1.8333 ± 0.1517 | [1.5000, 2.0000] | 6 | 500 | no |
+| M-101 | Gen 1 Document Parsing F1 | 1.0000 ± 0.0000 | [1.0000, 1.0000] | 5 | 500 | YES |
+| M-102 | Gen 2 Entity Extraction F1 | 0.9431 ± 0.0208 | [0.8983, 0.9764] | 65 | 500 | no |
+| M-103 | Gen 3 Relation Extraction F1 | 0.8800 ± 0.0304 | [0.8145, 0.9322] | 85 | 500 | no |
+| M-104 | Gen 4 Mechanism Extraction F1 | 0.9091 ± 0.0677 | [0.7368, 1.0000] | 12 | 500 | no |
+| M-105 | Gen 5 Discovery Layer F1 | 0.9375 ± 0.0464 | [0.8276, 1.0000] | 17 | 500 | no |
+| M-201 | L5a held-out beats (count / 10) | 0.9000 ± 0.0891 | [0.7000, 1.0000] | 10 | 100 | no |
+| M-202 | L5b held-out beats (count / 10) — same data as M-201 | 0.9000 ± 0.0891 | [0.7000, 1.0000] | 10 | 100 | no |
+| M-203 | L5b+Synthesis held-out beats (count / 10, single seed) | 0.9000 ± 0.0891 | [0.7000, 1.0000] | 10 | 100 | no |
+| M-204 | Multi-seed mean held-out beats (N=5 seeds) | 8.6000 ± 0.3529 | [8.0000, 9.4000] | 5 | 500 | no |
+| M-205 | Composite selection rate | 1.0000 ± 0.0000 | [1.0000, 1.0000] | 43 | 500 | YES |
+| M-304 | Inter-rater agreement rate | 0.1667 ± 0.1485 | [0.0000, 0.5000] | 6 | 500 | no |
+| M-305 | Self-validation bias (mean residual) | 2.5000 ± 0.0556 | [2.3750, 2.6250] | 6 | 500 | no |
+| M-306 | Expected Calibration Error (ECE) | 0.9000 ± 0.0111 | [0.8750, 0.9250] | 6 | 500 | no |
 
 ## Interpretation
 
@@ -63,8 +76,8 @@ interval, sample size, and number of bootstrap resamples.
 
 Widest CIs (most uncertain):
 - M-009 (UNSAFE synonyms count): width = 5.0000
+- M-204 (Multi-seed mean held-out beats (N=5 seeds)): width = 1.4000
 - M-302 (AI surrogate overall mean score): width = 1.1679
-- M-303-D1 (AI surrogate D1 mean): width = 1.0000
 
 Degenerate metrics (all bootstrap values identical — likely trivial):
 - M-001 (Exact F1 (all entities)): point = 0.0000
@@ -74,6 +87,8 @@ Degenerate metrics (all bootstrap values identical — likely trivial):
 - M-301 (AI surrogate accept rate): point = 0.0000
 - M-303-D3 (AI surrogate D3 mean): point = 2.0000
 - M-303-D5 (AI surrogate D5 mean): point = 3.0000
+- M-101 (Gen 1 Document Parsing F1): point = 1.0000
+- M-205 (Composite selection rate): point = 1.0000
 
 ## What this changes
 

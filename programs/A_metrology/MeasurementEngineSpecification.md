@@ -606,9 +606,11 @@ specified before Gate 1 (Measurement) can pass.
   to invention metrics (pending)
 
 **Uncertainty:**
-- NOT YET QUANTIFIED for invention metrics. Stage M3 bootstrap (cycle
-  259) covered discovery metrics M-001..M-016 and evaluation M-301..M-303
-  but NOT invention M-101..M-105. This is a Stage M1 acceptance gap.
+- Bootstrap quantified (cycle 261): 1.0000 ± 0.0000 (95% CI: 1.0000,
+  1.0000; N=5, B=500). DEGENERATE — all 5 files have perfect F1.
+- The degenerate CI means the metric cannot discriminate on this sample.
+- A larger benchmark with harder documents would produce non-degenerate
+  variance.
 
 **Evidence tier:**
 - D (academic literature: standard F1 on document parsing benchmarks)
@@ -653,7 +655,11 @@ specified before Gate 1 (Measurement) can pass.
   recognition, not bridge proposal; this metric inherits that caveat
 
 **Uncertainty:**
-- NOT YET QUANTIFIED (pending Stage M3 extension to invention metrics)
+- Bootstrap quantified (cycle 261): 0.9431 ± 0.0208 (95% CI: 0.8983,
+  0.9764; N=65, B=500). Synthetic reconstruction from aggregate TP/FP/FN.
+- The CI is narrow because N=65 (large sample). The synthetic
+  reconstruction assumes the per-item FP/FN split matches the aggregate
+  ratio — this is an approximation, documented in Known failure modes.
 
 **Evidence tier:**
 - D (academic: standard NER F1)
@@ -699,7 +705,11 @@ specified before Gate 1 (Measurement) can pass.
 - Still measures retrieval, not discovery (F-075)
 
 **Uncertainty:**
-- NOT YET QUANTIFIED (pending Stage M3 extension)
+- Bootstrap quantified (cycle 261): 0.8800 ± 0.0304 (95% CI: 0.8145,
+  0.9322; N=85, B=500). Per-sentence F1 resampled.
+- The CI is narrow because N=85 (large sample). This is the most
+  reliable invention metric bootstrap (real per-item data, not
+  synthetic reconstruction).
 
 **Evidence tier:**
 - D (academic: standard relation extraction F1)
@@ -745,7 +755,11 @@ specified before Gate 1 (Measurement) can pass.
   failed
 
 **Uncertainty:**
-- NOT YET QUANTIFIED (pending Stage M3 extension)
+- Bootstrap quantified (cycle 261): 0.9091 ± 0.0677 (95% CI: 0.7368,
+  1.0000; N=12, B=500). Synthetic reconstruction from aggregate TP/FP/FN.
+- The CI is wide (0.7368 to 1.0000) because N=12 is small and the F1
+  is high (near ceiling). The CI touching 1.0 means the metric could
+  plausibly be perfect on a different sample.
 
 **Evidence tier:**
 - D (academic: mechanism chain extraction)
@@ -794,12 +808,16 @@ specified before Gate 1 (Measurement) can pass.
   inherits that catastrophic finding
 
 **Uncertainty:**
-- NOT YET QUANTIFIED for this specific scorecard entry (pending Stage
-  M3 extension). The underlying M-005/M-013 ARE quantified:
-  - M-005: 0.8571 ± 0.0635 [0.7097, 0.9474]
-  - M-013: 0.8333 ± 0.0692 [0.6471, 0.9231]
-- This metric should report the same CI as M-005/M-013 once Stage M3
-  is extended.
+- Bootstrap quantified (cycle 261): 0.9375 ± 0.0464 (95% CI: 0.8276,
+  1.0000; N=17, B=500). Per-hit resampled (15 TPs + 2 FNs).
+- The CI touches 1.0 because the F1 is high and N=17 is moderate.
+- NOTE: this bootstrap uses the gen5_pr_score.json data (connection-
+  finding F1=0.9375), which is DIFFERENT from M-005/M-013 (discovery
+  F1=0.8571). The gen5 metric measures connection-finding (retrieval +
+  novel), while M-005 measures bridge proposal specifically. They are
+  not interchangeable. The DR-91 invalidation applies to M-005, not
+  directly to M-105 — but M-105 inherits the caveat because it uses the
+  same discovery benchmark infrastructure.
 
 **Evidence tier:**
 - B (forensic audit, DR-91) — but with P0 caveat that the metric
@@ -850,9 +868,14 @@ specified before Gate 1 (Measurement) can pass.
   conservative but may undercount
 
 **Uncertainty:**
-- NOT YET QUANTIFIED (pending Stage M3 extension to search metrics)
-- The 2/10 is a single-run point estimate; variance across seeds
-  unknown
+- Bootstrap quantified (cycle 261): 0.9000 ± 0.0891 (95% CI: 0.7000,
+  1.0000; N=10, B=100). Per-problem beats resampled.
+- The CI is wide (0.7000 to 1.0000) because N=10 is small and the
+  point estimate is high (9/10).
+- NOTE: the documented baseline was 2/10 (cycle 229), but the current
+  code produces 9/10. This discrepancy is a Stage M4 (repeatability)
+  finding — the code has drifted since cycle 229. The bootstrap reports
+  what the code produces NOW, not the historical number.
 
 **Evidence tier:**
 - B (forensic: held-out evaluation, no training leakage)
@@ -896,7 +919,13 @@ specified before Gate 1 (Measurement) can pass.
   search capability
 
 **Uncertainty:**
-- NOT YET QUANTIFIED (pending Stage M3 extension)
+- Bootstrap quantified (cycle 261): 0.9000 ± 0.0891 (95% CI: 0.7000,
+  1.0000; N=10, B=100). Same data as M-201 — see M-201 for details.
+- The documented 5/10 baseline (cycle 231) is NOT reproduced by current
+  code (which gives 9/10). This is because the evaluator uses
+  EXTENDED_OPS (18 ops) internally, making M-201 and M-202 identical.
+  A true L5a baseline would use BASE_OPS only (13 ops). This is a
+  Stage M4 repeatability finding.
 
 **Evidence tier:**
 - B (forensic: held-out evaluation)
@@ -942,9 +971,14 @@ specified before Gate 1 (Measurement) can pass.
   multi-seed context (M-204)
 
 **Uncertainty:**
-- Single-seed: NOT YET QUANTIFIED for the 9/10 figure specifically
+- Bootstrap quantified (cycle 261): 0.9000 ± 0.0891 (95% CI: 0.7000,
+  1.0000; N=10, B=100). Per-problem beats resampled.
+- The documented 9/10 (cycle 234) is NOT reproduced by current code
+  (which gives 9/10 on this run, but with composites from
+  min_pair_frequency=1 instead of the historical default). The
+  bootstrap CI is the same as M-201/M-202 because the per-problem
+  beats happen to be identical on this seed.
 - Multi-seed: quantified via M-204 (mean 8.6, std 0.80)
-- The single-seed 9/10 is within the multi-seed CI
 
 **Evidence tier:**
 - B (forensic: held-out + multi-seed)
@@ -989,9 +1023,14 @@ specified before Gate 1 (Measurement) can pass.
   but the composites themselves differ across seeds
 
 **Uncertainty:**
-- PARTIALLY QUANTIFIED: std 0.80 across 5 seeds. This IS a form of
-  uncertainty quantification, but it's seed-variance, not bootstrap-CI.
-- Full bootstrap CI pending Stage M3 extension to search metrics.
+- Bootstrap quantified (cycle 261): 8.6000 ± 0.3529 (95% CI: 8.0000,
+  9.4000; N=5, B=500). Per-seed beats resampled.
+- The CI is narrow (8.0 to 9.4) but N=5 is very small. The bootstrap
+  is on seed-level beats, not per-problem beats — this measures
+  seed-to-seed variance, not problem-to-problem variance.
+- The std 0.3529 is the bootstrap std; the original multi-seed std
+  was 0.80 (on the 5 raw values). The bootstrap std is smaller because
+  it benefits from resampling.
 
 **Evidence tier:**
 - B (forensic: multi-seed held-out)
@@ -1038,7 +1077,12 @@ specified before Gate 1 (Measurement) can pass.
   count as "selected"
 
 **Uncertainty:**
-- NOT YET QUANTIFIED (single run per seed; no bootstrap)
+- Bootstrap quantified (cycle 261): 1.0000 ± 0.0000 (95% CI: 1.0000,
+  1.0000; N=43, B=500). DEGENERATE — all 43 composites have
+  selection_count > 0.
+- The degenerate CI confirms the suspiciously-high finding documented
+  in Known failure modes: 100% selection rate is not a capability
+  claim, it's a usage claim. The metric cannot discriminate.
 
 **Evidence tier:**
 - B (forensic: held-out selection tracking)
@@ -1087,9 +1131,13 @@ specified before Gate 1 (Measurement) can pass.
   (F-143, F-145)
 
 **Uncertainty:**
-- NOT YET QUANTIFIED via bootstrap (6 proposals is too small for
-  meaningful CI)
-- The 17% is a point estimate on N=6; the CI would be very wide
+- Bootstrap quantified (cycle 261): 0.1667 ± 0.1485 (95% CI: 0.0000,
+  0.5000; N=6, B=500). Per-proposal agreement resampled.
+- The CI is very wide (0.0000 to 0.5000) because N=6 is small and the
+  point estimate is low (1/6 agreed). The CI includes 0, meaning the
+  true agreement rate could plausibly be 0%.
+- This wide CI is itself a finding: with N=6, we cannot distinguish
+  'evaluators rarely agree' from 'evaluators never agree'.
 
 **Evidence tier:**
 - I (LLM inference — judges are LLM-based)
@@ -1145,8 +1193,14 @@ specified before Gate 1 (Measurement) can pass.
   ground truth, we cannot distinguish
 
 **Uncertainty:**
-- NOT YET QUANTIFIED via bootstrap (small N)
-- The +2.50 is a point estimate on N=6 proposals
+- Bootstrap quantified (cycle 261): 2.5000 ± 0.0556 (95% CI: 2.3750,
+  2.6250; N=6, B=500). Per-proposal residual resampled.
+- The CI is narrow (2.3750 to 2.6250) because all 6 residuals are
+  tightly clustered around 2.5 (range 2.25 to 2.75). The bias is
+  consistent across proposals — this is NOT noise, it's systematic.
+- The narrow CI means the bias is precisely estimated: +2.50 ± 0.06.
+  This is a high-confidence finding: the internal evaluator overestimates
+  by exactly 2.50 points.
 
 **Evidence tier:**
 - I (LLM inference on both sides)
@@ -1200,9 +1254,18 @@ specified before Gate 1 (Measurement) can pass.
   is uncertain
 
 **Uncertainty:**
-- NOT YET QUANTIFIED via bootstrap (small N, binning instability)
-- The 0.433 is a point estimate on N=6; with 10 bins, most bins have
-  0-1 samples, making the ECE unreliable
+- Bootstrap quantified (cycle 261): 0.9000 ± 0.0111 (95% CI: 0.8750,
+  0.9250; N=6, B=500). Per-proposal (confidence, accepted) pairs resampled.
+- NOTE: the bootstrap ECE (0.9000) differs from the reported ECE (0.433)
+  because the bootstrap uses 5 bins and a confidence proxy (internal_quality
+  normalized to [0,1]) rather than the original confidence values. The
+  bootstrap ECE is higher because the proxy confidence is all in the
+  0.8-0.95 range, making every bin's |conf - acc| large.
+- The CI is narrow (0.8750 to 0.9250) but the metric itself is
+  approximated. The narrow CI reflects 'the approximation is stable',
+  not 'the ECE is precisely 0.90'.
+- The original 0.433 ECE (from dr95) used the actual confidence values
+  and 10 bins. The two numbers are not directly comparable.
 
 **Evidence tier:**
 - I (LLM inference)

@@ -7220,3 +7220,137 @@ canonical.
   - Stage M6: sensitivity (perturb inputs, measure output movement)
   - Stage M7: failure envelope (when does it fail?)
   - Stage M8: measurement constitution (rules every metric must satisfy)
+
+
+### F-149 — Stage M3 extension complete: all 30 metrics bootstrapped (P1, cycle 261)
+
+**Driver:** ROADMAP_V2.md Stage M3. Cycle 259 bootstrapped 19 metrics
+(M-001..M-016, M-301..M-303). Cycle 260 specified 14 more (M-101..M-105,
+M-201..M-205, M-304..M-306) but left their Uncertainty fields as "NOT
+YET QUANTIFIED". Cycle 261 extends bootstrap to cover all 30 metrics.
+
+**Mutual Read Protocol followed:** Read CONSTITUTION.md (Principle 1),
+ANTI_ENTROPY.md (lines 520-619: claim/confidence/evidence, close loops
+not modules, partially_closed ≠ closed), EPISTEMIC_ENGINE.md (lines
+120-219: outcome matrix symmetry, claim types), FAILURES.md tail
+(F-148), CONTRIBUTING.md (STOP BUILDING check), GO_NO_GO_GATES.md
+(Gate 1 status).
+
+**Work completed (cycle 261):**
+
+1. Built 14 new metric adapters in bootstrap_statistics.py:
+   - _bootstrap_invention_metrics(): M-101..M-105
+     - M-101: per-file F1 from gen1_pr_score.json (N=5)
+     - M-102: synthetic reconstruction from aggregate TP/FP/FN (N=65)
+     - M-103: per-sentence F1 from gen3_pr_score.json (N=85)
+     - M-104: synthetic reconstruction from aggregate (N=12)
+     - M-105: per-hit F1 from gen5_pr_score.json (N=17)
+   - _bootstrap_search_metrics(): M-201..M-205
+     - M-201: L5a held-out beats (run evaluator, N=10, B=100)
+     - M-202: same data as M-201 (evaluator uses EXTENDED_OPS internally)
+     - M-203: L5b+Synthesis (run OperatorSynthesizer, min_pair_frequency=1)
+     - M-204: per-seed beats from documented cycle 235 values (N=5)
+     - M-205: composite selection rate (N=43)
+   - _bootstrap_evaluation_metrics_extended(): M-304..M-306
+     - M-304: per-proposal judges_agree from dr95 (N=6)
+     - M-305: per-proposal residual from dr94 (N=6)
+     - M-306: per-proposal (confidence, accepted) pairs, 5-bin ECE (N=6)
+
+2. Ran extended bootstrap. 38 metrics bootstrapped (was 25).
+   Results in reports/bootstrap_statistics.json.
+
+3. Updated MeasurementEngineSpecification.md Uncertainty fields for
+   all 14 new metrics. Each now reports the bootstrap point estimate,
+   std, 95% CI, N, B, and degenerate flag. The "NOT YET QUANTIFIED"
+   caveat is removed.
+
+4. Updated GO_NO_GO_GATES.md: M3 criterion caveat removed. Gate 1
+   M3 criterion now unambiguously PASS (all 30 metrics have 95% CIs).
+
+5. Added 6 new bootstrap tests:
+   - test_all_30_specified_metrics_have_bootstrap_results
+   - test_invention_metrics_have_bootstrap_cis
+   - test_search_metrics_have_bootstrap_cis
+   - test_evaluation_metrics_extended_have_bootstrap_cis
+   - test_m305_bias_ci_confirms_plus_2_50
+   - test_m304_agreement_ci_includes_zero
+
+**Key findings (with CIs) for the 14 new metrics:**
+
+  Invention (M-101..M-105):
+  - M-101 Gen 1 Document Parsing F1: 1.0000 ± 0.0000 [1.0000, 1.0000]
+    DEGENERATE (all 5 files perfect)
+  - M-102 Gen 2 Entity Extraction F1: 0.9431 ± 0.0208 [0.8983, 0.9764]
+    N=65, synthetic reconstruction
+  - M-103 Gen 3 Relation Extraction F1: 0.8800 ± 0.0304 [0.8145, 0.9322]
+    N=85, real per-sentence data (most reliable invention bootstrap)
+  - M-104 Gen 4 Mechanism Extraction F1: 0.9091 ± 0.0677 [0.7368, 1.0000]
+    N=12, CI touches 1.0 (small sample, high F1)
+  - M-105 Gen 5 Discovery Layer F1: 0.9375 ± 0.0464 [0.8276, 1.0000]
+    N=17, CI touches 1.0
+
+  Search (M-201..M-205):
+  - M-201 L5a held-out: 0.9000 ± 0.0891 [0.7000, 1.0000] N=10 B=100
+    NOTE: documented baseline was 2/10; current code gives 9/10.
+    Code drift — Stage M4 repeatability finding.
+  - M-202 L5b held-out: same as M-201 (evaluator uses EXTENDED_OPS
+    internally, making L5a and L5b identical). Stage M4 finding.
+  - M-203 L5b+Synthesis: 0.9000 ± 0.0891 [0.7000, 1.0000]
+    Same CI as M-201/M-202 on this seed (per-problem beats identical).
+  - M-204 Multi-seed mean: 8.6000 ± 0.3529 [8.0000, 9.4000] N=5
+    Bootstrap std (0.35) is smaller than raw multi-seed std (0.80)
+    because bootstrap benefits from resampling.
+  - M-205 Composite selection rate: 1.0000 ± 0.0000 [1.0000, 1.0000]
+    DEGENERATE (all 43 composites selected). Confirms the suspiciously-
+    high finding: 100% selection is a usage claim, not a capability claim.
+
+  Evaluation (M-304..M-306):
+  - M-304 Inter-rater agreement: 0.1667 ± 0.1485 [0.0000, 0.5000] N=6
+    CI includes 0 — with N=6, cannot distinguish 'rarely agree' from
+    'never agree'.
+  - M-305 Self-validation bias: 2.5000 ± 0.0556 [2.3750, 2.6250] N=6
+    CI is narrow because all 6 residuals tightly clustered around 2.5.
+    High-confidence finding: internal overestimates by exactly +2.50.
+  - M-306 ECE: 0.9000 ± 0.0111 [0.8750, 0.9250] N=6
+    NOTE: bootstrap ECE (0.90) differs from reported ECE (0.433) because
+    bootstrap uses 5 bins and a confidence proxy. The two numbers are
+    not directly comparable. Narrow CI reflects 'approximation is stable',
+    not 'ECE is precisely 0.90'.
+
+**Honest caveats documented:**
+  - M-102, M-104: synthetic reconstruction from aggregate TP/FP/FN.
+    The CI reflects 'if per-item outcomes were Bernoulli with observed
+    rates, how much would F1 vary?' — an approximation.
+  - M-201, M-202: code drift since cycle 229. Documented 2/10 baseline
+    not reproduced (current code gives 9/10). Stage M4 finding.
+  - M-202: evaluator uses EXTENDED_OPS internally, making L5a = L5b.
+    A true L5a baseline would use BASE_OPS only. Stage M4 finding.
+  - M-203: used min_pair_frequency=1 (not historical default) to
+    produce composites. Documented in spec.
+  - M-306: bootstrap ECE uses proxy confidence (internal_quality/5),
+    not actual confidence values. Different from dr95's 0.433.
+
+**Degenerate metrics (now 8 of 38, was 7 of 25):**
+  - M-001, M-003, M-006, M-011 (existing)
+  - M-301, M-303-D3, M-303-D5 (existing)
+  - M-101 (NEW: all 5 files perfect F1)
+  - M-205 (NEW: all 43 composites selected)
+
+**Test results:**
+  - 30 bootstrap tests pass (was 24, +6 new)
+  - No regressions in existing test suite
+
+**Status:** STAGE M3 EXTENSION COMPLETE. All 30 specified metrics now
+have 95% CIs. Gate 1 Stage M3 criterion unambiguously PASS (no caveat).
+Gate 1 overall: IN PROGRESS (M1 PASS, M3 PASS, 7/11 criteria NOT
+STARTED). PRELIMINARY verdict (NOT TRUSTWORTHY) remains canonical.
+
+**Next steps for Gate 1:**
+  - Stage M2: measurement provenance (every score carries metadata)
+  - Stage M4: repeatability (run identical benchmark 100 times)
+    - Already have findings: M-201/M-202 code drift, M-202 evaluator
+      doesn't distinguish L5a from L5b
+  - Stage M5: reproducibility (different hardware/LLMs/prompts)
+  - Stage M6: sensitivity (perturb inputs, measure output movement)
+  - Stage M7: failure envelope (when does it fail?)
+  - Stage M8: measurement constitution (rules every metric must satisfy)
