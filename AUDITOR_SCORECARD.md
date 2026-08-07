@@ -5,7 +5,7 @@
 > Every score points to a benchmark report file + a passing test.
 > If a category has no measured benchmark, it gets score = 0.
 
-**Generated:** 2026-08-06 23:45 UTC
+**Generated:** 2026-08-07 01:07 UTC
 **Composite (7 generation benchmarks):** 9.43 / 10
 **Formula:** Single rubric — `total_score = round(10 × F1)` (or equivalent)
 **CEO target:** 9.0 / 10
@@ -21,7 +21,7 @@
 | Gen 5: Discovery Layer (connection-finding) | **9/10** | F1 | 0.9375 | `benchmarks/reports/gen5_pr_score.json` | `tests/test_regression_suite.py` | F-087: F1 counts RETRIEVAL+NOVEL as TP. novelty_rate tracked separately. |
 | Gen 6: Re-audit | **10/10** | overturn_rate | 0.2571 | `data/ledger/predictions.jsonl` | `tests/test_failure_regression_suite.py` | Re-audit adversarial verification |
 | Calibration | **10/10** | ECE | 0.0038 | `benchmarks/reports/calibration_score.json` | `tests/test_failure_regression_suite.py` | Platt scaling LOOCV |
-| Discovery Capability (operator-blind) | **10/10** | F1 | 1.0000 | `benchmarks/reports/discovery_capability_score.json` | `tests/test_failure_regression_suite.py` | Operator-blind gold-standard discovery |
+| Discovery Capability (operator-blind) | **9/10** | F1 | 0.9189 | `benchmarks/reports/discovery_capability_score.json` | `tests/test_failure_regression_suite.py` | Operator-blind gold-standard discovery |
 
 ## How to regenerate
 

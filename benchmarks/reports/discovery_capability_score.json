@@ -1,15 +1,15 @@
 {
   "benchmark": "discovery_capability",
-  "timestamp": "2026-08-06T23:44:34Z",
+  "timestamp": "2026-08-07T01:06:24Z",
   "total_gold_discoveries": 20,
-  "true_positives": 20,
+  "true_positives": 17,
   "false_positives": 0,
-  "false_negatives": 0,
+  "false_negatives": 3,
   "precision": 1.0,
-  "recall": 1.0,
-  "f1": 1.0,
+  "recall": 0.85,
+  "f1": 0.9189,
   "outcome_points": 3,
-  "total_score": 10,
+  "total_score": 9,
   "scoring_formula": "round(10 \u00d7 F1)",
   "per_discovery": [
     {
@@ -46,7 +46,7 @@
         "size-selective barriers",
         "filtering molecules",
         "pore",
-        "density"
+        "seal density"
       ],
       "entities_b": [
         "Blood-brain barrier",
@@ -73,12 +73,10 @@
       "entities_b": [
         "Radiative cooling materials",
         "sub",
-        "radiative heat",
+        "infrared radiation output",
         "atmospheric window"
       ],
-      "shared_entities": [
-        "radiative heat"
-      ]
+      "shared_entities": []
     },
     {
       "id": "DISC-GOLD-004",
@@ -90,16 +88,14 @@
         "Phase change materials",
         "heat",
         "phase transitions",
-        "temperature control"
+        "stable thermal conditions"
       ],
       "entities_b": [
         "Infrared stealth camouflage",
-        "dynamic temperature control",
+        "dynamic thermal management",
         "background temperature"
       ],
-      "shared_entities": [
-        "temperature control"
-      ]
+      "shared_entities": []
     },
     {
       "id": "DISC-GOLD-005",
@@ -110,18 +106,15 @@
       "entities_a": [
         "Lotus",
         "exhibit superhydrophobicity",
-        "contact angles",
         "150\u00b0",
         "water adhesion"
       ],
       "entities_b": [
         "Battery separator wetting",
-        "contact angle",
+        "surface wettability angle",
         "electrolyte infiltration"
       ],
-      "shared_entities": [
-        "contact angles"
-      ]
+      "shared_entities": []
     },
     {
       "id": "DISC-GOLD-006",
@@ -132,18 +125,18 @@
       "entities_a": [
         "Photosynthetic organisms",
         "chlorophyll",
-        "photons",
-        "light energy",
+        "light",
+        "solar radiation",
         "chemical energy"
       ],
       "entities_b": [
         "Photovoltaic solar cells",
-        "photons",
+        "light quanta",
         "electron-hole",
         "bandgap"
       ],
       "shared_entities": [
-        "photons"
+        "light"
       ]
     },
     {
@@ -155,15 +148,18 @@
       "entities_a": [
         "Battery thermal runaway",
         "heat",
+        "thermal removal capacity",
         "catastrophic failure"
       ],
       "entities_b": [
         "Phase change materials",
-        "passive heat",
+        "heat",
+        "passive thermal removal",
         "thermal management"
       ],
       "shared_entities": [
-        "heat"
+        "heat",
+        "thermal removal capacity"
       ]
     },
     {
@@ -194,22 +190,22 @@
       "literature_a": "fuel cell catalysis",
       "literature_b": "electrochemical water splitting",
       "expected_bridge": "electrocatalyst",
-      "bridge_found": true,
+      "bridge_found": false,
       "entities_a": [
         "Fuel",
-        "platinum electrocatalysts",
+        "platinum catalytic electrodes",
         "oxygen reduction reaction",
         "cathode"
       ],
       "entities_b": [
         "Electrochemical water splitting",
-        "electrocatalysts",
+        "catalytic electrodes",
         "overpotential",
         "hydrogen",
         "oxygen evolution"
       ],
       "shared_entities": [
-        "platinum electrocatalysts"
+        "platinum catalytic electrodes"
       ]
     },
     {
@@ -217,22 +213,22 @@
       "literature_a": "thermoelectric power generation",
       "literature_b": "geothermal energy extraction",
       "expected_bridge": "temperature gradient",
-      "bridge_found": true,
+      "bridge_found": false,
       "entities_a": [
         "Thermoelectric generators",
-        "temperature gradient",
+        "thermal differential",
         "electrical power via",
         "the Seebeck"
       ],
       "entities_b": [
         "Geothermal energy extraction",
-        "temperature gradient",
+        "thermal differential",
         "deep",
         "surface",
         "power generation"
       ],
       "shared_entities": [
-        "temperature gradient"
+        "thermal differential"
       ]
     },
     {
@@ -243,18 +239,18 @@
       "bridge_found": true,
       "entities_a": [
         "Corrosion protection coatings",
-        "surface functionalization",
+        "surface chemical modification",
         "self",
         "oxidation"
       ],
       "entities_b": [
         "Drug",
-        "surface functionalization",
+        "surface chemical modification",
         "ligands",
         "site"
       ],
       "shared_entities": [
-        "surface functionalization"
+        "surface chemical modification"
       ]
     },
     {
@@ -262,17 +258,21 @@
       "literature_a": "piezoelectric energy harvesting",
       "literature_b": "vibration damping",
       "expected_bridge": "mechanical strain",
-      "bridge_found": true,
+      "bridge_found": false,
       "entities_a": [
+        "Piezoelectric energy harvesting converts",
+        "physical deformation",
         "electrical voltage",
         "direct piezoelectric effect"
       ],
       "entities_b": [
         "Vibration damping materials",
-        "mechanical strain energy",
+        "physical deformation energy",
         "viscoelastic deformation"
       ],
-      "shared_entities": []
+      "shared_entities": [
+        "physical deformation"
+      ]
     },
     {
       "id": "DISC-GOLD-013",
@@ -281,17 +281,20 @@
       "expected_bridge": "spin polarization",
       "bridge_found": true,
       "entities_a": [
-        "Magnetic resonance imaging detects spin polarization",
+        "Magnetic resonance imaging detects quantum spin alignment",
         "hydrogen nuclei",
         "magnetic field"
       ],
       "entities_b": [
         "Spintronics devices",
+        "quantum spin",
         "electrons",
         "information processing",
         "charge current"
       ],
-      "shared_entities": []
+      "shared_entities": [
+        "Magnetic resonance imaging detects quantum spin alignment"
+      ]
     },
     {
       "id": "DISC-GOLD-014",
@@ -323,16 +326,16 @@
       "bridge_found": true,
       "entities_a": [
         "Quantum dot",
-        "bandgap engineering via",
-        "quantum confinement"
+        "energy gap",
+        "via quantum confinement"
       ],
       "entities_b": [
         "LED light emission wavelength",
-        "bandgap engineering",
+        "energy gap",
         "semiconductor material"
       ],
       "shared_entities": [
-        "bandgap engineering via"
+        "energy gap"
       ]
     },
     {
@@ -344,17 +347,15 @@
       "entities_a": [
         "Aerogel insulation materials",
         "thermal conductivity",
-        "their high surface area nanoporous structure"
+        "their extensive nanoporous structure"
       ],
       "entities_b": [
         "Catalyst",
-        "high surface area",
+        "porosity",
         "active site",
         "catalytic reactions"
       ],
-      "shared_entities": [
-        "their high surface area nanoporous structure"
-      ]
+      "shared_entities": []
     },
     {
       "id": "DISC-GOLD-017",
@@ -364,17 +365,17 @@
       "bridge_found": true,
       "entities_a": [
         "Graphene",
-        "tensile strength",
+        "pull resistance",
         "its two-dimensional carbon lattice structure"
       ],
       "entities_b": [
         "Composite material",
-        "high tensile strength",
+        "pull resistance fibers",
         "mechanical properties",
         "matrix"
       ],
       "shared_entities": [
-        "tensile strength"
+        "pull resistance"
       ]
     },
     {
@@ -385,7 +386,7 @@
       "bridge_found": true,
       "entities_a": [
         "Evaporative cooling systems",
-        "heat",
+        "phase-change enthalpy",
         "vaporization",
         "sub"
       ],
@@ -393,11 +394,11 @@
         "Sweat glands",
         "body",
         "evaporative cooling via",
-        "heat",
+        "phase-change enthalpy",
         "water vaporization"
       ],
       "shared_entities": [
-        "heat",
+        "phase-change enthalpy",
         "vaporization",
         "Evaporative cooling systems"
       ]
@@ -411,16 +412,16 @@
       "entities_a": [
         "Photocatalytic water splitting",
         "semiconductor photocatalysts",
-        "photon energy",
+        "light quantum energy",
         "chemical bonds"
       ],
       "entities_b": [
         "Solar hydrogen production systems",
-        "photon energy",
+        "light quantum energy",
         "hydrogen evolution reaction"
       ],
       "shared_entities": [
-        "photon energy"
+        "light quantum energy"
       ]
     },
     {
@@ -432,17 +433,17 @@
       "entities_a": [
         "Electrospinning",
         "nanofibers",
-        "controlled fiber morphology",
+        "controlled structural form",
         "diameter",
         "alignment"
       ],
       "entities_b": [
         "Tissue engineering",
-        "specific fiber morphology",
+        "specific structural form",
         "cell"
       ],
       "shared_entities": [
-        "controlled fiber morphology"
+        "controlled structural form"
       ]
     }
   ]

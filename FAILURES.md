@@ -3062,3 +3062,33 @@ which generates template-free hypotheses from:
 Demo: Stefan-Boltzmann edge produces "at T=500K, Q should be 3543.98 W/m²;
 if measured Q < 3000, the mechanism is falsified" — a specific, quantitative,
 falsifiable hypothesis. No templates.
+
+---
+
+### F-099 — Discovery gold set circular (15/20 bridge words in input text) (P0, cycle 201, auditor-caught)
+
+**Found:** cycle 201 external audit. 15 of 20 gold discoveries had the bridge word
+verbatim in the input snippets. The benchmark was measuring entity extraction
+(retrieval), not discovery (inference). F1=1.0 was meaningless.
+
+**Root cause:** When expanding the gold set from 5 to 20 (DR-52), the new
+discoveries were written with the bridge concept explicitly in both snippets.
+The original 5 had some non-circular entries, but the 15 new ones were all
+circular. This is F-001/F-013 (retrieval disguised as discovery / circular
+gold standard) recurring.
+
+**Severity:** P0 — the "discovery 10/10, F1=1.0, recall=1.0" claim was
+inflated. The honest F1 is 0.9189 (recall=0.85) after de-circularization.
+
+**Status:** RESOLVED in cycle 201. Rewrote all 20 snippets so the bridge
+word is NOT in either snippet. The bridge must be INFERRED from surrounding
+context, not retrieved. Verified: 0/20 circular after fix.
+
+Honest result: F1=0.9189, recall=0.85, 17 TP, 3 FN.
+The 3 misses are cases where the synonym matching doesn't bridge the
+gap between the snippet vocabulary and the gold bridge vocabulary.
+
+**Lesson:** "Discovery" means the answer is NOT in the input. If the bridge
+word appears in the snippet, the system is doing retrieval, not discovery.
+Every gold discovery must be checked for circularity: bridge ∉ snippet_a AND
+bridge ∉ snippet_b. This check is now part of the benchmark's self-validation.
