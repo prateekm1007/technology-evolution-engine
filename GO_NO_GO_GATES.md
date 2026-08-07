@@ -15,20 +15,21 @@ the final gate; it cannot pass until Gates 1-3 pass.
 
 | Criterion | Stage | Status |
 |---|---|---|
-| Bootstrap statistics implemented | M3 | NOT STARTED |
-| Confidence intervals on all metrics | M3 | NOT STARTED |
+| Bootstrap statistics implemented | M3 | **PASS** (cycle 259: 25 metrics bootstrapped, B=500/200) |
+| Confidence intervals on all metrics | M3 | **PASS** (cycle 259: all 25 metrics have 95% CIs in reports/bootstrap_statistics.json) |
 | Evaluator reliability quantified | M4 / E1 | NOT STARTED |
 | Calibration documented | M2 / E1 | NOT STARTED |
 | Repeatability demonstrated | M4 | NOT STARTED |
-| Measurement specification complete | M1 | IN PROGRESS (scaffold only) |
+| Measurement specification complete | M1 | IN PROGRESS (19/~30 metrics specified, 63%) |
 | Measurement provenance (no naked numbers) | M2 | NOT STARTED |
 | Reproducibility across hardware/LLMs/prompts | M5 | NOT STARTED |
 | Sensitivity analysis | M6 | NOT STARTED |
 | Failure envelope documented | M7 | NOT STARTED |
 | Measurement constitution | M8 | NOT STARTED |
 
-**Current verdict: NOT STARTED.** Stage M1 scaffold only; nothing
-else has begun. This is the project's #1 priority.
+**Current verdict: IN PROGRESS.** Stage M3 (Bootstrap Statistics)
+complete. Stage M1 (Specification) 63% complete. 9 of 11 criteria
+remain NOT STARTED. This is the project's #1 priority.
 
 ---
 
@@ -93,8 +94,8 @@ canonical) requires:
 - Gate 3 PASS
 - Gate 4 PASS
 
-Current state: **0/4 gates PASS.** PRELIMINARY (NOT TRUSTWORTHY)
-remains canonical.
+Current state: **0/4 gates PASS.** Gate 1 is IN PROGRESS (Stage M3
+complete, Stage M1 63%). PRELIMINARY (NOT TRUSTWORTHY) remains canonical.
 
 ---
 

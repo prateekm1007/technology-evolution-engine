@@ -6995,3 +6995,119 @@ FINAL verdict requires Gates 1-4 PASS, currently 0/4.
     (Program A) is trustworthy.
   - The next breakthrough is not another invention algorithm; it is
     trustworthy scientific measurement.
+
+
+### F-147 — Stage M3 (Bootstrap Statistics) complete: every metric has 95% CI (P1, cycle 259)
+
+**Driver:** ROADMAP_V2.md Stage M3. Per the measurement-first philosophy
+(cycle 258), no metric may be reported as a naked number. Every F1 must
+become `F1 = 0.91 ± 0.07 (95% CI: 0.78, 1.00; N=20, B=500)`.
+
+**Work completed (cycle 259):**
+
+1. Built programs/A_metrology/bootstrap_statistics.py — a general-purpose
+   bootstrap engine that takes any metric function and a sample, and
+   produces:
+   - point_estimate (metric on full sample)
+   - bootstrap_mean (mean across B resamples)
+   - bootstrap_std (std across B resamples)
+   - ci_95_lower, ci_95_upper (percentile-method 95% CI)
+   - ci_95_width
+   - n (sample size)
+   - B (number of bootstrap resamples)
+   - seed (for reproducibility)
+   - skewness, kurtosis (distribution shape)
+   - is_degenerate (True if all bootstrap values identical)
+
+2. Ran bootstrap on all 19 specified M-metrics (plus 6 per-dimension
+   variants of M-303, total 25 metrics). Results in
+   reports/bootstrap_statistics.json and reports/bootstrap_statistics.md.
+
+3. Updated PRELIMINARY_MEASUREMENT_VERDICT.md to replace the old naked-
+   number evidence table with the new bootstrap-CI table. The old table
+   is preserved for historical reference.
+
+4. Updated GO_NO_GO_GATES.md: Gate 1 Stage M3 criteria now PASS.
+   Gate 1 overall verdict: IN PROGRESS (M3 PASS, M1 63%, 9/11 criteria
+   still NOT STARTED).
+
+**Method:**
+  - Bootstrap unit: the GOLD DISCOVERIES sample (N=20)
+  - Resampling: with replacement, B=500 for fast metrics, B=200 for
+    expensive metrics (BM25, random, FP floor)
+  - CI method: percentile method (2.5th, 97.5th percentiles)
+  - Seed: 42 (reproducible)
+
+**Key findings (with CIs):**
+
+| Metric | Point ± Std | 95% CI | Interpretation |
+|---|---|---|---|
+| M-005 Discovery F1 (DR-91) | 0.8571 ± 0.0635 | [0.7097, 0.9474] | The headline F1 has a ±0.06 uncertainty. The CI is wide. |
+| M-008 FP floor | 0.9189 ± 0.0559 | [0.7879, 1.0000] | Confirms DR-91 finding: FP floor is near 1.0. The CI touches 1.0. |
+| M-010 Per-proposal F1 | 0.1000 ± 0.0683 | [0.0000, 0.2500] | Per-proposal F1 is very low. CI includes 0. |
+| M-013 Aggregate F1 (honest) | 0.8333 ± 0.0692 | [0.6471, 0.9231] | Honest F1 is lower than DR-91 F1, with wider CI. |
+| M-301 AI surrogate accept rate | 0.0000 ± 0.0000 | [0.0000, 0.0000] | Degenerate at 0. 0/6 accepted. |
+| M-302 AI surrogate mean score | 2.2381 ± 0.3090 | [1.6780, 2.8458] | CI is wide (small N=7). |
+
+**Degenerate metrics (7 of 25):**
+  - M-001 Exact F1: always 0 (strict matching never matches)
+  - M-003 Fuzzy F1: always 0 (bigram threshold too high)
+  - M-006 Recognition F1: always 1 (synonym matcher matches everything)
+  - M-011 Per-proposal F1 strict: always 0
+  - M-301 AI surrogate accept rate: always 0 (0/6 accepted)
+  - M-303-D3, M-303-D5: degenerate (all proposals scored same on these
+    dimensions)
+
+Degenerate metrics are flagged honestly. A degenerate metric is not
+necessarily wrong — it may just be insensitive to the sample. But it
+cannot be used to discriminate, and its CI is meaningless.
+
+**Tests added (tests/test_bootstrap_statistics.py, 24 tests):**
+  - Core engine: bootstrap_metric returns valid BootstrapResult
+  - CI contains point estimate for symmetric distributions
+  - CI width positive for non-degenerate metrics
+  - Degenerate metric detection
+  - Empty sample handling
+  - Reproducibility with same seed
+  - Different seeds produce different distributions
+  - Percentile helper (basic, empty, single)
+  - Skewness/kurtosis (symmetric, zero-std)
+  - BootstrapResult.format() and to_dict()
+  - End-to-end: reports/bootstrap_statistics.json exists with required
+    structure
+  - Every result has point, std, CI, N, B
+  - All 19 specified M-metrics have bootstrap results
+  - M-005 has CI around 0.857
+  - M-008 FP floor CI near 1.0
+  - M-001 is degenerate at 0
+  - M-301 is 0 (0/6 accepted)
+
+**Test results:**
+  - 24 bootstrap tests pass
+  - No regressions in existing test suite
+
+**Status:** STAGE M3 COMPLETE. Every specified metric now has a 95% CI.
+Gate 1 Stage M3 criteria PASS. Gate 1 overall: IN PROGRESS (M3 PASS,
+M1 63%, 9/11 criteria still NOT STARTED). PRELIMINARY verdict (NOT
+TRUSTWORTHY) remains canonical.
+
+**What this changes:**
+  - No metric may be reported as a naked number. Every claim must
+    include ± std and 95% CI.
+  - The headline F1=0.8571 is now F1=0.8571 ± 0.0635 (95% CI: 0.7097,
+    0.9474; N=20, B=500). This is a proper measurement, not a point
+    estimate.
+  - The FP floor=1.0000 is now FP floor=0.9189 ± 0.0559 (95% CI: 0.7879,
+    1.0000; N=20, B=200). The CI touches 1.0, confirming the
+    catastrophic finding.
+  - 7 metrics are degenerate — they cannot discriminate and their CIs
+    are meaningless. This is documented honestly.
+
+**Next steps for Gate 1:**
+  - Stage M1: complete remaining 14 metrics in MeasurementEngineSpecification.md
+  - Stage M2: measurement provenance (every score carries metadata)
+  - Stage M4: repeatability (run identical benchmark 100 times)
+  - Stage M5: reproducibility (different hardware/LLMs/prompts)
+  - Stage M6: sensitivity (perturb inputs, measure output movement)
+  - Stage M7: failure envelope (when does it fail?)
+  - Stage M8: measurement constitution (rules every metric must satisfy)
