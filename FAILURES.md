@@ -5174,3 +5174,85 @@ The composites are not seed-specific. The synthesis loop reliably
 produces useful, generalizable operator compositions. The remaining
 gaps (triples, parameterized, CMA-ES comparison) are refinement, not
 validation.
+
+### F-126 — L5b triple synthesis: deeper composition does NOT help (P2, cycle 236, honest negative)
+
+**Auditor's directive (post-235):**
+  "Option 1 (closest to current code): Extend synthesis to TRIPLES —
+   CompositeOperator of 3 operators. Build it; test if triple-composite
+   improves over pair on held-out; if not, document the negative (honest)."
+
+**The test (cycle 236):**
+Built `scripts/l5b_triple_synthesis.py` with:
+1. **TripleCompositeOperator** — fuses 3 operators into a named subroutine
+2. **TripleSynthesizer** — same pair-frequency method, but for 3-grams
+3. **Multi-seed evaluation** — 5 seeds × pairs vs triples comparison
+
+**Honest multi-seed result (5 seeds, threshold=1):**
+
+| Seed | Pairs beats | Triples beats | Triples synthesized |
+|-----:|------------:|--------------:|--------------------:|
+| 42 | 8/10 | 8/10 | 45 |
+| 7 | 8/10 | 9/10 | 44 |
+| 99 | 9/10 | 10/10 | 45 |
+| 123 | 8/10 | 8/10 | 45 |
+| 256 | 9/10 | 9/10 | 45 |
+
+| Metric | Pairs | Triples |
+|--------|------:|--------:|
+| Mean beats | 8.4/10 | 8.8/10 |
+| Std | 0.49 | 0.75 |
+| Range | [8, 9] | [8, 10] |
+
+**TRIPLES MATCH PAIRS: 8.8 vs 8.4 (within variance).**
+
+Deeper composition does NOT help. The extra expressive power of triples
+(45 per seed vs 3-5 for pairs) is offset by the larger search space.
+The result is the same — pair-level synthesis is sufficient.
+
+**Honest interpretation:**
+1. **Triples don't hurt** — 8.8/10 is within 0.4 of pairs' 8.4/10.
+   Both are well above L5b's 5/10 baseline.
+2. **Triples don't help** — the +0.4 improvement is within noise
+   (std 0.75 for triples vs 0.49 for pairs).
+3. **45 triples per seed** — many triples are synthesized (because
+   3-grams have more combinations than 2-grams), but the search
+   can't leverage them better than pairs.
+4. **The bottleneck is NOT composition depth** — it's elsewhere
+   (operator quality, search procedure, or DSL expressiveness).
+
+**What this means for the roadmap:**
+The auditor offered three options:
+1. Triples (this cycle) — tested, does NOT help
+2. Parameterized composites — NOT YET BUILT
+3. Landscape-stats-driven synthesis — NOT YET BUILT
+
+Since triples don't help, the path forward is NOT deeper composition.
+The path is DIFFERENT composition:
+- **Option 2 (parameterized)**: `narrow_iqr(α)` where α is learned
+  from landscape stats. This creates genuinely new parameterized
+  primitives, not just longer sequences.
+- **Option 3 (landscape-driven)**: Derive new operators from
+  measurement (e.g., high interaction → new interaction operator).
+
+Both are harder than triples but address the actual bottleneck
+(operator quality, not sequence length).
+
+**Status:** HONEST NEGATIVE RESULT.
+- Triples tested and found to MATCH pairs (8.8 vs 8.4, within variance).
+- Deeper composition is NOT the path forward.
+- The synthesis loop works at pair level; extending to triples adds
+  no value.
+- L5b maturity: unchanged at 4.5/10 (triples don't add value).
+- The honest claim: "Pair-level synthesis is sufficient. Deeper
+  composition (triples) does not improve held-out performance."
+
+**Lesson:** This is the second honest negative in the L5b arc:
+- Cycle 230: evolutionary search doesn't help (DSL is bottleneck)
+- Cycle 236: triples don't help (composition depth is not bottleneck)
+
+Both negatives are valuable — they rule out hypotheses and point to
+the real frontier. The real bottleneck is NOT search quality (230)
+and NOT composition depth (236). It's operator QUALITY — the need
+for genuinely new primitives (parameterized, conditional, or
+landscape-derived), not just longer sequences of existing ones.
