@@ -56,6 +56,9 @@ jobs:
       - name: Gate 5c — Multi-seed comparative (5 seeds × 20 problems, stable wins ≥7)
         run: python -m pytest tests/test_multi_seed_comparative.py::test_multi_seed_stable_wins_at_least_7 -v --tb=short
 
+      - name: Gate 5d — Multi-seed strong baselines (5 seeds × 20 problems, stable wins ≥5 vs CMA-ES/GP-BO)
+        run: python -m pytest tests/test_strong_baselines_v2.py::test_multi_seed_strong_stable_wins_at_least_5 -v --tb=short
+
       - name: Gate 6 — Law 14: Foundation Continuity check
         run: python scripts/check_continuity.py
 
