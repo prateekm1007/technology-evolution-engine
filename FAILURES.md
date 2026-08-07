@@ -6306,3 +6306,84 @@ The internal heuristic rated proposals 6/6 valid; the independent LLM
 rated 1/6 plausible. The gap (6/6 vs 1/6) is the self-validation bias.
 This is exactly why independent evaluation matters — it catches what
 self-evaluation cannot.
+
+### F-139 — DR-94: Calibration study — self-validation bias = +2.50 (P0, cycle 250, epistemic milestone)
+
+**CTO directive:**
+  "Freeze Proposal Composer Gen0 permanently. Create DR-94: Proposal
+   Calibration Study. Compute calibration metrics (bias, MCE, agreement).
+
+   The biggest discovery isn't 'proposal quality is low' — it's that
+   the internal evaluator systematically overestimates quality. That
+   is a measurable calibration problem."
+
+**Calibration metrics (Gen0, 6 proposals):**
+
+| Metric | Value |
+|--------|------:|
+| Mean internal score | 4.50/5 |
+| Mean external score | 2.00/5 |
+| Mean Calibration Error | 2.50 |
+| **Bias (internal - external)** | **+2.50** |
+| Variance | 0.02 |
+| Correlation | 0.00 |
+| Agreement rate (|resid|≤1) | **0.0%** |
+| Overestimate rate | **100.0%** |
+| Underestimate rate | 0.0% |
+
+**SELF-VALIDATION BIAS = +2.50 on a 5-point scale.**
+
+The internal heuristic rates proposals 4.50/5. The external LLM rates
+them 2.00/5. The gap (+2.50) is the self-validation bias. 100% of
+proposals were overestimated. 0% agreement. 0% correlation.
+
+**Per-proposal calibration:**
+
+| Entity | Internal | External | Residual |
+|--------|---------:|---------:|---------:|
+| heat | 4.25 | 2 | +2.25 |
+| thermal_differential | 4.50 | 2 | +2.50 |
+| surface_chemical_modification | 4.75 | 2 | +2.75 |
+| energy_gap | 4.50 | 2 | +2.50 |
+| phase_change_enthalpy | 4.50 | 2 | +2.50 |
+| light_quantum_energy | 4.50 | 2 | +2.50 |
+
+Every single proposal was overestimated by ≥2.25 points. The internal
+heuristic is maximally lenient; the external LLM is maximally skeptical.
+
+**Corrected honest wording (per CTO):**
+- ~~"0/6 potentially novel"~~ → "The external evaluator did not identify
+  evidence supporting novelty claims." (Novelty requires literature
+  comparison; the LLM only expressed skepticism.)
+- ~~"Scientific validity 6/6"~~ → "Scientific plausibility 1/6 (external
+  LLM, Tier 1). Internal heuristic (Tier 0) overestimates by +2.50."
+
+**Evidence tiers (per CTO):**
+| Tier | Evaluator | Status |
+|------|-----------|--------|
+| 0 | Internal heuristic (DR-93) | ✓ Completed — BIASED (+2.50) |
+| 1 | External LLM (DR-93.5) | ✓ Completed — more trustworthy |
+| 2 | Domain expert | Future |
+| 3 | Experimental validation | Future |
+
+**Proposal Composer Gen0 — PERMANENTLY FROZEN:**
+- Tag: proposal-composer-gen0
+- Status: FROZEN — never modify
+- Purpose: Baseline for comparing Gen1 (mechanism-driven)
+- All Gen0 results preserved in reports/ as permanent artifacts
+
+**Status:** CALIBRATION BIAS MEASURED AND DOCUMENTED.
+- Self-validation bias = +2.50 (internal overestimates by 50% of scale)
+- 100% overestimate rate, 0% agreement, 0% correlation
+- Gen0 frozen as permanent baseline
+- PROPOSAL_CALIBRATION_REPORT.md published as permanent artifact
+- Next: Proposal Composer Gen1 (mechanism-driven), then re-calibrate
+
+**Lesson:** The CTO's principle "No module validates itself" is now
+quantitatively validated. The internal evaluator's +2.50 bias is
+exactly the kind of epistemic failure the governance system was
+designed to catch. The calibration study transforms "the internal
+evaluator is too lenient" from an intuition into a measured
+scientific fact with permanent artifacts. Future generations will
+be compared against this baseline — if Gen1 has lower bias, that's
+measurable improvement. If not, the calibration problem persists.
