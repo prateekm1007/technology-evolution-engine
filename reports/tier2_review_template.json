@@ -1,0 +1,175 @@
+{
+  "rubric": {
+    "title": "Tier-2 Human Domain Expert Review Rubric",
+    "instructions": "For each proposal below, score the following dimensions on a 1-5 scale:\n  1 = Strongly disagree (the proposal fails this dimension)\n  2 = Disagree\n  3 = Neutral / uncertain\n  4 = Agree\n  5 = Strongly agree (the proposal clearly satisfies this dimension)\n\nAlso provide an overall verdict: ACCEPT, REVISE, or REJECT.\nYou may add comments. Be honest \u2014 the goal is to measure whether\nthese proposals constitute real scientific discovery, not to\nvalidate the system that produced them.",
+    "dimensions": [
+      {
+        "id": "D1",
+        "name": "Scientific plausibility",
+        "question": "The proposed mechanism (the 'bridge concept') is scientifically plausible given current domain knowledge."
+      },
+      {
+        "id": "D2",
+        "name": "Novelty",
+        "question": "The proposed connection between source domains is novel \u2014 it is not a trivial or already-well-known connection."
+      },
+      {
+        "id": "D3",
+        "name": "Prediction testability",
+        "question": "The prediction stated in the proposal is testable by a concrete experiment or observation."
+      },
+      {
+        "id": "D4",
+        "name": "Falsification rigor",
+        "question": "The falsification experiment, if carried out, would rigorously test the proposal (not just confirm it)."
+      },
+      {
+        "id": "D5",
+        "name": "Alternative explanations",
+        "question": "The proposal honestly considers plausible alternative explanations (not just strawman alternatives)."
+      },
+      {
+        "id": "D6",
+        "name": "Counterexample soundness",
+        "question": "The counterexample would, if observed, genuinely weaken or falsify the proposal."
+      },
+      {
+        "id": "D7",
+        "name": "Overall scientific value",
+        "question": "If the proposal is correct, it would advance the field in a meaningful way (not just an incremental observation)."
+      }
+    ],
+    "overall_verdict_options": [
+      "ACCEPT",
+      "REVISE",
+      "REJECT"
+    ]
+  },
+  "proposals": [
+    {
+      "anon_id": "REVIEW-001",
+      "shared_mechanism": "The concept 'energy_gap' appears in both source A and source B, suggesting a cross-domain connection mediated by energy_gap",
+      "necessary_assumptions": [
+        "'energy_gap' is a meaningful scientific concept",
+        "'energy_gap' is relevant to both source domains",
+        "The co-occurrence is not purely coincidental"
+      ],
+      "prediction": "If 'energy_gap' is a genuine cross-domain bridge, then papers in domain A that discuss 'energy_gap' should share mechanistic connections with papers in domain B that discuss 'energy_gap'",
+      "alternative_explanations": [
+        "The co-occurrence is coincidental (shared vocabulary)",
+        "'energy_gap' is a common scientific term with no specific cross-domain significance",
+        "The entity extraction produced a false positive"
+      ],
+      "counterexample": "If 'energy_gap' is removed from the shared entity set, the cross-domain connection should weaken or disappear",
+      "falsification_experiment": "Check if 'energy_gap' appears with similar frequency in non-cross-domain paper pairs. If it does, the bridge is not specific",
+      "system_confidence": 0.2
+    },
+    {
+      "anon_id": "REVIEW-002",
+      "shared_mechanism": "The concept 'thermal_differential' appears in both source A and source B, suggesting a cross-domain connection mediated by thermal_differential",
+      "necessary_assumptions": [
+        "'thermal_differential' is a meaningful scientific concept",
+        "'thermal_differential' is relevant to both source domains",
+        "The co-occurrence is not purely coincidental"
+      ],
+      "prediction": "If 'thermal_differential' is a genuine cross-domain bridge, then papers in domain A that discuss 'thermal_differential' should share mechanistic connections with papers in domain B that discuss 'thermal_differential'",
+      "alternative_explanations": [
+        "The co-occurrence is coincidental (shared vocabulary)",
+        "'thermal_differential' is a common scientific term with no specific cross-domain significance",
+        "The entity extraction produced a false positive"
+      ],
+      "counterexample": "If 'thermal_differential' is removed from the shared entity set, the cross-domain connection should weaken or disappear",
+      "falsification_experiment": "Check if 'thermal_differential' appears with similar frequency in non-cross-domain paper pairs. If it does, the bridge is not specific",
+      "system_confidence": 0.2
+    },
+    {
+      "anon_id": "REVIEW-003",
+      "shared_mechanism": "The concept 'surface_chemical_modification' appears in both source A and source B, suggesting a cross-domain connection mediated by surface_chemical_modification",
+      "necessary_assumptions": [
+        "'surface_chemical_modification' is a meaningful scientific concept",
+        "'surface_chemical_modification' is relevant to both source domains",
+        "The co-occurrence is not purely coincidental"
+      ],
+      "prediction": "If 'surface_chemical_modification' is a genuine cross-domain bridge, then papers in domain A that discuss 'surface_chemical_modification' should share mechanistic connections with papers in domain B that discuss 'surface_chemical_modification'",
+      "alternative_explanations": [
+        "The co-occurrence is coincidental (shared vocabulary)",
+        "'surface_chemical_modification' is a common scientific term with no specific cross-domain significance",
+        "The entity extraction produced a false positive"
+      ],
+      "counterexample": "If 'surface_chemical_modification' is removed from the shared entity set, the cross-domain connection should weaken or disappear",
+      "falsification_experiment": "Check if 'surface_chemical_modification' appears with similar frequency in non-cross-domain paper pairs. If it does, the bridge is not specific",
+      "system_confidence": 0.2
+    },
+    {
+      "anon_id": "REVIEW-004",
+      "shared_mechanism": "The concept 'phase_change_enthalpy' appears in both source A and source B, suggesting a cross-domain connection mediated by phase_change_enthalpy",
+      "necessary_assumptions": [
+        "'phase_change_enthalpy' is a meaningful scientific concept",
+        "'phase_change_enthalpy' is relevant to both source domains",
+        "The co-occurrence is not purely coincidental"
+      ],
+      "prediction": "If 'phase_change_enthalpy' is a genuine cross-domain bridge, then papers in domain A that discuss 'phase_change_enthalpy' should share mechanistic connections with papers in domain B that discuss 'phase_change_enthalpy'",
+      "alternative_explanations": [
+        "The co-occurrence is coincidental (shared vocabulary)",
+        "'phase_change_enthalpy' is a common scientific term with no specific cross-domain significance",
+        "The entity extraction produced a false positive"
+      ],
+      "counterexample": "If 'phase_change_enthalpy' is removed from the shared entity set, the cross-domain connection should weaken or disappear",
+      "falsification_experiment": "Check if 'phase_change_enthalpy' appears with similar frequency in non-cross-domain paper pairs. If it does, the bridge is not specific",
+      "system_confidence": 0.2
+    },
+    {
+      "anon_id": "REVIEW-005",
+      "shared_mechanism": "The concept 'heat' appears in both source A and source B, suggesting a cross-domain connection mediated by heat",
+      "necessary_assumptions": [
+        "'heat' is a meaningful scientific concept",
+        "'heat' is relevant to both source domains",
+        "The co-occurrence is not purely coincidental"
+      ],
+      "prediction": "If 'heat' is a genuine cross-domain bridge, then papers in domain A that discuss 'heat' should share mechanistic connections with papers in domain B that discuss 'heat'",
+      "alternative_explanations": [
+        "The co-occurrence is coincidental (shared vocabulary)",
+        "'heat' is a common scientific term with no specific cross-domain significance",
+        "The entity extraction produced a false positive"
+      ],
+      "counterexample": "If 'heat' is removed from the shared entity set, the cross-domain connection should weaken or disappear",
+      "falsification_experiment": "Check if 'heat' appears with similar frequency in non-cross-domain paper pairs. If it does, the bridge is not specific",
+      "system_confidence": 0.2
+    },
+    {
+      "anon_id": "REVIEW-006",
+      "shared_mechanism": "The concept 'light_quantum_energy' appears in both source A and source B, suggesting a cross-domain connection mediated by light_quantum_energy",
+      "necessary_assumptions": [
+        "'light_quantum_energy' is a meaningful scientific concept",
+        "'light_quantum_energy' is relevant to both source domains",
+        "The co-occurrence is not purely coincidental"
+      ],
+      "prediction": "If 'light_quantum_energy' is a genuine cross-domain bridge, then papers in domain A that discuss 'light_quantum_energy' should share mechanistic connections with papers in domain B that discuss 'light_quantum_energy'",
+      "alternative_explanations": [
+        "The co-occurrence is coincidental (shared vocabulary)",
+        "'light_quantum_energy' is a common scientific term with no specific cross-domain significance",
+        "The entity extraction produced a false positive"
+      ],
+      "counterexample": "If 'light_quantum_energy' is removed from the shared entity set, the cross-domain connection should weaken or disappear",
+      "falsification_experiment": "Check if 'light_quantum_energy' appears with similar frequency in non-cross-domain paper pairs. If it does, the bridge is not specific",
+      "system_confidence": 0.2
+    }
+  ],
+  "response_schema": {
+    "reviewer_id": "string",
+    "responses": [
+      {
+        "anon_id": "REVIEW-001",
+        "D1": "1-5 integer",
+        "D2": "1-5 integer",
+        "D3": "1-5 integer",
+        "D4": "1-5 integer",
+        "D5": "1-5 integer",
+        "D6": "1-5 integer",
+        "D7": "1-5 integer",
+        "overall_verdict": "ACCEPT | REVISE | REJECT",
+        "comments": "string (optional)"
+      }
+    ]
+  }
+}

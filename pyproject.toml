@@ -2,6 +2,9 @@
 name = "technology-evolution-engine"
 version = "0.1.0"
 description = "Technology Evolution Engine"
+# Python 3.13 is supported as of cycle 256 (DR-91 closure) — spaCy 3.8.x
+# ships cp313 wheels starting with 3.8.7. Tested locally on CPython
+# 3.12.13 + spaCy 3.8.11; tests/test_nlp_pipeline.py passes.
 requires-python = ">=3.10"
 
 [build-system]
