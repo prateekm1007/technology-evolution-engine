@@ -73,6 +73,13 @@ class InventionHeuristic:
     exception_direction: str = ""   # "above" or "below"
     exception_reason: str = ""      # physical explanation of why the rule breaks
     physics_level: str = "statistical"  # "statistical" or "physical" (auditor's distinction)
+    # Cycle 218 — executable causal chain (auditor's update #8)
+    # "Instead of 'because Pisarenko', I'd like to see
+    #  because → carrier_concentration → effective_mass →
+    #  seebeck_coefficient → ZT. The explanation should itself be
+    #  executable. Not prose. A causal graph."
+    causal_chain_id: str = ""       # references a named causal chain
+    causal_chain_steps: List[Dict] = field(default_factory=list)
 
     def to_dict(self) -> Dict:
         return {
@@ -92,6 +99,8 @@ class InventionHeuristic:
             "exception_direction": self.exception_direction,
             "exception_reason": self.exception_reason,
             "physics_level": self.physics_level,
+            "causal_chain_id": self.causal_chain_id,
+            "causal_chain_steps": self.causal_chain_steps,
         }
 
 
@@ -198,6 +207,11 @@ class HeuristicLearner:
                                         "physical" if condition_name != "unconditional" else "statistical"
                                     )
 
+                                    # Cycle 218 — attach executable causal chain
+                                    chain_id, chain_steps = self._pick_causal_chain(
+                                        var_name, exc_var, condition_name
+                                    )
+
                                     h = InventionHeuristic(
                                         heuristic_id=f"HEUR-{len(self.heuristics) + len(new_heuristics) + 1:03d}",
                                         statement=statement,
@@ -214,6 +228,8 @@ class HeuristicLearner:
                                         exception_direction=exc_dir,
                                         exception_reason=exc_reason,
                                         physics_level=physics_level,
+                                        causal_chain_id=chain_id,
+                                        causal_chain_steps=chain_steps,
                                     )
                                     new_heuristics.append(h)
                                     break  # one heuristic per variable
@@ -233,6 +249,11 @@ class HeuristicLearner:
                 )
                 physics_level = "physical" if exc_var else "statistical"
 
+                # Cycle 218 — attach executable causal chain
+                chain_id, chain_steps = self._pick_causal_chain(
+                    var_name, exc_var, "unconditional"
+                )
+
                 h = InventionHeuristic(
                     heuristic_id=f"HEUR-{len(self.heuristics) + len(new_heuristics) + 1:03d}",
                     statement=statement,
@@ -249,11 +270,53 @@ class HeuristicLearner:
                     exception_direction=exc_dir,
                     exception_reason=exc_reason,
                     physics_level=physics_level,
+                    causal_chain_id=chain_id,
+                    causal_chain_steps=chain_steps,
                 )
                 new_heuristics.append(h)
 
         self.heuristics.extend(new_heuristics)
         return new_heuristics
+
+    def _pick_causal_chain(self, var_name: str, exc_var: str,
+                            condition: str) -> Tuple[str, List[Dict]]:
+        """Cycle 218 — pick the executable causal chain that explains this heuristic.
+
+        Per auditor update #8: 'Instead of "because Pisarenko", I'd like
+        to see because → carrier_concentration → effective_mass →
+        seebeck_coefficient → ZT. The explanation should itself be
+        executable. Not prose. A causal graph.'
+
+        Returns (chain_id, list_of_step_dicts). Empty if no chain matches.
+        """
+        # Lazy import to avoid circular dependency
+        try:
+            from scripts.meta_invention import CAUSAL_CHAINS
+        except ImportError:
+            return "", []
+
+        # Map (variable, exception_or_condition) → causal chain
+        # The chain explains WHY the heuristic's exception exists.
+        chain = None
+        if var_name == "composition_x":
+            chain = CAUSAL_CHAINS.get("lattice_kappa")
+        elif var_name == "carrier_concentration":
+            chain = CAUSAL_CHAINS.get("pisarenko")
+        elif var_name == "grain_size_nm":
+            chain = CAUSAL_CHAINS.get("grain_boundary")
+        elif exc_var and "grain" in exc_var.lower():
+            chain = CAUSAL_CHAINS.get("grain_boundary")
+        elif exc_var and "carrier" in exc_var.lower():
+            chain = CAUSAL_CHAINS.get("pisarenko")
+
+        if chain is None:
+            return "", []
+
+        return chain.chain_id, [
+            {"variable": s.variable, "change": s.change,
+             "mechanism": s.mechanism, "formula": s.formula}
+            for s in chain.steps
+        ]
 
     def _find_exception(self, var_name: str, results: List[Any],
                          extractor, direction: str, fail_threshold: float):
@@ -485,6 +548,14 @@ def main():
             print(f"             because {h.exception_reason}")
         else:
             print(f"   EXCEPTION: (none found — heuristic is purely statistical)")
+        if h.causal_chain_id:
+            print(f"   CAUSAL CHAIN: {h.causal_chain_id}")
+            for i, step in enumerate(h.causal_chain_steps):
+                arrow = " →" if i < len(h.causal_chain_steps) - 1 else "  "
+                print(f"     {i+1}. {step['variable']} {step['change']} via {step['mechanism']}")
+                print(f"        formula: {step['formula']}")
+        else:
+            print(f"   CAUSAL CHAIN: (none — no executable explanation attached)")
         print()
 
     # Test transferability on unseen data
