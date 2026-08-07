@@ -115,3 +115,47 @@ def test_vertical_slice_uses_independent_measurement():
 if __name__ == "__main__":
     import pytest
     sys.exit(pytest.main([__file__, "-v"]))
+
+
+def test_all_materials_zt_consistent():
+    """Every material's stored S, σ, κ must reproduce its stated ZT within 0.5 at stated T.
+
+    Per auditor finding (cycle 206): SnSe stored values gave ZT=26 (not 2.6),
+    which locked out the best real material via the F-100 veto. This test
+    prevents data provenance bugs.
+    """
+    from scripts.materials_database import MATERIALS_DATABASE
+    for name, m in MATERIALS_DATABASE.items():
+        computed_zt = m.seebeck_coefficient**2 * m.electrical_conductivity * m.temperature / m.thermal_conductivity
+        diff = abs(computed_zt - m.zt)
+        assert diff < 0.5, \
+            f"{name}: computed ZT={computed_zt:.2f} but published ZT={m.zt:.2f} (diff={diff:.2f}). " \
+            f"Stored S, σ, κ, T must reproduce the published ZT."
+
+
+def test_snse_not_locked_out_by_veto():
+    """SnSe (ZT=2.6) must NOT be vetoed by the physical plausibility checker.
+
+    Per auditor finding: SnSe is the record-holding thermoelectric. If its
+    stored parameters produce ZT > 5, the F-100 veto locks it out — a real
+    high-performing material rejected by the system.
+    """
+    from scripts.materials_database import get_material_parameters
+    from scripts.forward_model import ForwardModel
+    from scripts.physical_plausibility import PhysicalPlausibilityChecker
+    from scripts.artifact_generator import Configuration, Component
+
+    params = get_material_parameters("SnSe")
+    comp = Component(material="SnSe", role="thermoelectric", parameters=params)
+    config = Configuration(config_id="TEST-SNSE", spec_objective="test",
+                           domain="thermoelectric", components=[comp])
+
+    fm = ForwardModel()
+    pred = fm.predict(config)
+    ZT = pred.predicted_properties.get("ZT", 0)
+
+    checker = PhysicalPlausibilityChecker()
+    result = checker.check_prediction(pred.predicted_properties)
+
+    assert ZT <= 5.0, f"SnSe ZT={ZT:.2f} exceeds physical max — would be vetoed"
+    assert not result.vetoed, f"SnSe vetoed by plausibility checker — best real material locked out"
