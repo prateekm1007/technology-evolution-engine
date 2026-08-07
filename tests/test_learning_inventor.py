@@ -161,6 +161,39 @@ def test_deterministic_under_seed():
             "Same seed must produce same avg ZT"
 
 
+def test_avg_zt_excludes_vetoed_candidates():
+    """F-101 (auditor): avg ZT must NOT include vetoed (physically impossible) candidates.
+
+    The auditor found that including vetoed candidates (ZT up to 13.9, above
+    the F-100 ceiling of 5) inflated the 'improvement' metric. This test
+    verifies the fix: avg_predicted_zt only includes passed candidates.
+    """
+    from scripts.learning_inventor import LearningInventor
+    from scripts.specification import SpecificationEngine
+
+    spec = SpecificationEngine().compile("improve thermoelectric performance")
+    inventor = LearningInventor(seed=42)
+    results = inventor.run_multiple(spec, n_iterations=3, n_per_iter=20)
+
+    for r in results:
+        # Get all passed candidates
+        passed = [c for c in r.candidates if c.passed_plausibility]
+        vetoed = [c for c in r.candidates if not c.passed_plausibility]
+
+        if passed:
+            expected_avg = sum(c.predicted_zt for c in passed) / len(passed)
+            assert abs(r.avg_predicted_zt - expected_avg) < 1e-6, \
+                f"Iteration {r.iteration}: avg_predicted_zt={r.avg_predicted_zt:.4f} " \
+                f"but passed-only avg={expected_avg:.4f} — vetoed candidates included!"
+
+        # Best ZT must also exclude vetoed
+        if passed:
+            expected_best = max(c.predicted_zt for c in passed)
+            assert r.best_zt <= expected_best + 1e-6, \
+                f"Iteration {r.iteration}: best_zt={r.best_zt:.4f} but " \
+                f"passed-only best={expected_best:.4f} — vetoed candidates included!"
+
+
 if __name__ == "__main__":
     import pytest
     sys.exit(pytest.main([__file__, "-v"]))

@@ -291,7 +291,16 @@ class LearningInventor:
             material_zt[r.design_point.base_material].append(r.predicted_zt)
 
         avg_zt_by_material = {m: sum(zts)/len(zts) for m, zts in material_zt.items()}
-        overall_avg = sum(r.predicted_zt for r in results) / len(results)
+        # F-101 (cycle 213): compute overall_avg over PASSED candidates only.
+        # The auditor found that including vetoed (physically impossible)
+        # candidates inflated the 'improvement' metric and could reward
+        # the search for drifting toward unphysical territory.
+        passed_for_avg = [r for r in results if r.passed_plausibility]
+        if passed_for_avg:
+            overall_avg = sum(r.predicted_zt for r in passed_for_avg) / len(passed_for_avg)
+        else:
+            # All vetoed — use all results as fallback (but this is a warning sign)
+            overall_avg = sum(r.predicted_zt for r in results) / len(results)
 
         for mat, avg_zt in avg_zt_by_material.items():
             if avg_zt > overall_avg:
@@ -415,9 +424,15 @@ class LearningInventor:
         # Compute stats
         passed = [r for r in results if r.failure_mode == "pass"]
         vetoed = [r for r in results if r.failure_mode == "vetoed"]
-        avg_pred = sum(r.predicted_zt for r in results) / len(results)
-        avg_meas = sum(r.measured_zt for r in results if r.measured_zt > 0) / max(1, len([r for r in results if r.measured_zt > 0]))
-        best_zt = max(r.predicted_zt for r in results)
+        # F-101 (cycle 213): report avg ZT over PASSED candidates only
+        passed_for_report = [r for r in results if r.passed_plausibility]
+        if passed_for_report:
+            avg_pred = sum(r.predicted_zt for r in passed_for_report) / len(passed_for_report)
+        else:
+            avg_pred = 0.0  # all vetoed — no valid predictions
+        avg_meas = sum(r.measured_zt for r in passed_for_report if r.measured_zt > 0) / max(1, len([r for r in passed_for_report if r.measured_zt > 0]))
+        # F-101: best_zt over passed candidates only
+        best_zt = max((r.predicted_zt for r in passed_for_report), default=0.0)
 
         result = LearningResult(
             iteration=iteration,
