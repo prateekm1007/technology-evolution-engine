@@ -69,6 +69,7 @@ Output:
 import sys
 import json
 import math
+import random
 import statistics
 from pathlib import Path
 from dataclasses import dataclass, field
@@ -420,6 +421,144 @@ def run_m203(seed: int) -> float:
 
 
 # ============================================================================
+# RUN M-304: Inter-rater agreement rate (E1) — Program D, Stage E1
+# ============================================================================
+
+def run_m304(seed: int) -> float:
+    """Run M-304 with a given seed. The seed controls resampling of
+    the 6 proposals from the dr95 cached data.
+
+    The metric is the fraction of proposals where all 3 judges agree
+    on the recommendation. We resample the 6 proposals with replacement
+    using the seed, compute the agreement rate on the resample, and
+    return it. This measures the stability of the agreement rate to
+    sample composition.
+
+    Per ROADMAP_V2 Stage E1: measure Agreement, Bias, Variance, Drift.
+    """
+    import json as _json
+    repo = Path(__file__).resolve().parents[2]
+    path = repo / "reports" / "dr95_calibration_research.json"
+    if not path.exists():
+        return 0.0
+    data = _json.loads(path.read_text())
+    multi_eval = data.get("multi_evaluator", [])
+    if not multi_eval:
+        return 0.0
+
+    # Per-proposal agreement boolean
+    agree_scores = [1.0 if m.get("judges_agree") else 0.0
+                    for m in multi_eval]
+
+    # Resample with replacement using the seed
+    rng = random.Random(seed)
+    n = len(agree_scores)
+    resampled = [agree_scores[rng.randrange(n)] for _ in range(n)]
+
+    # Agreement rate = fraction that agree
+    return sum(1.0 for x in resampled if x == 1.0) / len(resampled)
+
+
+# ============================================================================
+# RUN M-305: Self-validation bias (E1) — Program D, Stage E1
+# ============================================================================
+
+def run_m305(seed: int) -> float:
+    """Run M-305 with a given seed. The seed controls resampling of
+    the 6 proposals from the dr94 cached data.
+
+    The metric is the mean residual (internal - external). We resample
+    the 6 proposals with replacement using the seed, compute the mean
+    residual on the resample, and return it. This measures the
+    stability of the bias estimate to sample composition.
+
+    Per ROADMAP_V2 Stage E1: measure Agreement, Bias, Variance, Drift.
+    """
+    import json as _json
+    repo = Path(__file__).resolve().parents[2]
+    path = repo / "reports" / "calibration_study.json"
+    if not path.exists():
+        return 0.0
+    data = _json.loads(path.read_text())
+    table = data.get("table", [])
+    if not table:
+        return 0.0
+
+    # Per-proposal residual (internal - external)
+    residuals = [t.get("residual", 0.0) for t in table]
+
+    # Resample with replacement using the seed
+    rng = random.Random(seed)
+    n = len(residuals)
+    resampled = [residuals[rng.randrange(n)] for _ in range(n)]
+
+    # Bias = mean residual
+    return sum(resampled) / len(resampled)
+
+
+# ============================================================================
+# RUN M-306: Expected Calibration Error / ECE (E1) — Program D, Stage E1
+# ============================================================================
+
+def run_m306(seed: int) -> float:
+    """Run M-306 with a given seed. The seed controls resampling of
+    the 6 (confidence, accepted) pairs from the dr94+dr95 cached data.
+
+    The metric is the ECE computed on the resample. We resample the
+    6 proposals with replacement using the seed, compute ECE on the
+    resample using 5 bins, and return it. This measures the stability
+    of the ECE estimate to sample composition.
+
+    Per ROADMAP_V2 Stage E1: measure Agreement, Bias, Variance, Drift,
+    Calibration.
+    """
+    import json as _json
+    repo = Path(__file__).resolve().parents[2]
+
+    # Load dr94 for internal_quality (as confidence proxy)
+    d94_path = repo / "reports" / "calibration_study.json"
+    d95_path = repo / "reports" / "dr95_calibration_research.json"
+    if not d94_path.exists() or not d95_path.exists():
+        return 0.0
+
+    d94 = _json.loads(d94_path.read_text())
+    d95 = _json.loads(d95_path.read_text())
+    table = d94.get("table", [])
+    multi_eval = d95.get("multi_evaluator", [])
+    if not table or not multi_eval:
+        return 0.0
+
+    # Build (confidence, accepted) pairs
+    conf_by_entity = {t["entity"]: t.get("internal_quality", 0.0) / 5.0
+                      for t in table}
+    pairs = []
+    for m in multi_eval:
+        entity = m.get("entity", "")
+        conf = conf_by_entity.get(entity, 0.5)
+        recs = m.get("recommendations", [])
+        accepted = 1.0 if "ACCEPT" in recs else 0.0
+        pairs.append((conf, accepted))
+
+    # Resample with replacement using the seed
+    rng = random.Random(seed)
+    n = len(pairs)
+    resampled = [pairs[rng.randrange(n)] for _ in range(n)]
+
+    # Compute ECE on resample (5 bins)
+    ece = 0.0
+    for bin_lo in [0.0, 0.2, 0.4, 0.6, 0.8]:
+        bin_hi = bin_lo + 0.2
+        bin_items = [(c, a) for c, a in resampled
+                     if bin_lo <= c < bin_hi or (bin_hi == 1.0 and c == 1.0)]
+        if not bin_items:
+            continue
+        bin_conf = sum(c for c, a in bin_items) / len(bin_items)
+        bin_acc = sum(a for c, a in bin_items) / len(bin_items)
+        ece += abs(bin_conf - bin_acc) * len(bin_items) / n
+    return ece
+
+
+# ============================================================================
 # MAIN: run all metrics across all seeds
 # ============================================================================
 
@@ -429,6 +568,9 @@ METRIC_RUNNERS = [
     ("M-013", "Aggregate F1 (honest)", run_m013),
     ("M-201", "L5a held-out beats (/10)", run_m201),
     ("M-203", "L5b+Synthesis held-out beats (/10)", run_m203),
+    ("M-304", "Inter-rater agreement rate (E1)", run_m304),
+    ("M-305", "Self-validation bias (E1)", run_m305),
+    ("M-306", "Expected Calibration Error / ECE (E1)", run_m306),
 ]
 
 

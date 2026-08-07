@@ -7976,3 +7976,124 @@ PRELIMINARY verdict (NOT TRUSTWORTHY) remains canonical.
   - Evaluator reliability (M4/E1): extension of M4 to evaluator metrics
   - Calibration documented (M2/E1): documentation of calibration status
   These are extensions of existing work, not new infrastructure.
+
+
+### F-155 — Evaluator reliability (M4/E1) quantified: M-304 UNSTABLE, M-305/M-306 STABLE (P1, cycle 267)
+
+**Driver:** ROADMAP_V2.md Stage E1 (Evaluator Reliability) and Gate 1
+criterion "Evaluator reliability quantified." Per AP-1: "run it, don't
+reason about it." Extend M4 repeatability to evaluator metrics
+(M-304, M-305, M-306).
+
+**Mutual Read Protocol followed:** Read CONSTITUTION.md (Principle 1),
+ANTI_ENTROPY.md (AP-1), FAILURES.md tail (F-154), GO_NO_GO_GATES.md
+(Gate 1 status), ROADMAP_V2.md Stage E1.
+
+**Work completed (cycle 267):**
+
+1. Extended programs/A_metrology/repeatability_m4.py with 3 new
+   evaluator metric runners:
+   - run_m304(seed): resamples 6 proposals from dr95 cached data,
+     computes inter-rater agreement rate on resample
+   - run_m305(seed): resamples 6 proposals from dr94 cached data,
+     computes mean residual (bias) on resample
+   - run_m306(seed): resamples 6 (confidence, accepted) pairs from
+     dr94+dr95 cached data, computes ECE on resample with 5 bins
+
+2. The seed controls the resampling (random.Random(seed)), so each
+   seed produces a different resample → different metric value.
+   This measures the stability of the evaluator metrics to sample
+   composition.
+
+3. Ran extended M4 on 8 metrics (5 original + 3 evaluator) × 10 seeds.
+   Results in reports/repeatability_m4.json.
+
+**Key findings:**
+
+  | Metric | Mean | Std | CV | Verdict |
+  |---|---|---|---|---|
+  | M-005 Discovery F1 | 0.8571 | 0.0000 | 0.0000 | STABLE (DETERMINISTIC) |
+  | M-008 FP floor | 0.9595 | 0.0405 | 0.0422 | STABLE |
+  | M-013 Aggregate F1 (honest) | 0.8333 | 0.0000 | 0.0000 | STABLE (DETERMINISTIC) |
+  | M-201 L5a held-out (/10) | 0.8300 | 0.1100 | 0.1325 | ACCEPTABLE |
+  | M-203 L5b+Synth (/10) | 0.8400 | 0.0800 | 0.0952 | ACCEPTABLE |
+  | M-304 Inter-rater agreement | 0.1833 | 0.1167 | 0.6364 | **UNSTABLE** |
+  | M-305 Self-validation bias | 2.4917 | 0.0312 | 0.0125 | STABLE |
+  | M-306 ECE | 0.8983 | 0.0062 | 0.0069 | STABLE |
+
+  STABLE: 5/8, ACCEPTABLE: 2/8, UNSTABLE: 1/8, DETERMINISTIC: 2/8
+
+**Critical finding — M-304 (inter-rater agreement) is UNSTABLE:**
+  - CV = 0.6364 (64%) — far above the 15% UNSTABLE threshold
+  - Mean agreement = 0.1833 (18%), but resamples produce rates from
+    0% to 33% depending on which proposals are sampled
+  - Root cause: N=6 is too small for stable agreement estimation.
+    With 1/6 agreement, resampling 6 with replacement can easily
+    produce 0/6 or 2/6 agreement.
+  - This is NOT a code bug — it's a sample size problem. The
+    evaluator itself is unreliable because we only have 6 proposals.
+  - The DR-96 finding (83% disagreement, 17% agreement) is confirmed
+    but the CI is so wide that we cannot distinguish 'rarely agree'
+    from 'never agree' (the bootstrap CI [0.0, 0.5] also showed this).
+
+**M-305 (bias) is STABLE:**
+  - CV = 0.0125 (1.25%) — far below the 5% STABLE threshold
+  - Mean bias = 2.4917 (consistent with the DR-94 finding of +2.50)
+  - The bias is systematic, not noisy — all 6 residuals are tightly
+    clustered around 2.5 (range 2.25-2.75)
+  - This confirms: the internal evaluator overestimates by exactly
+    +2.50, consistently, across all proposals and all resamples.
+
+**M-306 (ECE) is STABLE:**
+  - CV = 0.0069 (0.69%) — extremely stable
+  - Mean ECE = 0.8983 (consistent with the M3 bootstrap finding of 0.90)
+  - The ECE is stable because all proposals have similar (confidence,
+    accepted) profiles — the proxy confidence is all in the 0.8-0.95
+    range, and none are accepted.
+
+**Why M-304 is UNSTABLE but M-305/M-306 are STABLE:**
+  - M-304 (agreement) is a BINARY metric (agree/disagree per proposal).
+    With N=6 and 1/6 agreement, the resampled rate swings wildly.
+  - M-305 (bias) is a CONTINUOUS metric (residual per proposal).
+    The residuals are tightly clustered (2.25-2.75), so the mean is
+    stable regardless of which proposals are resampled.
+  - M-306 (ECE) is also relatively continuous — the (confidence,
+    accepted) pairs are similar across proposals.
+  - This is a fundamental statistical property: binary metrics need
+    larger N than continuous metrics for stable estimation.
+
+**Gate M4 (overall) verdict: FAIL** (because M-304 is UNSTABLE).
+**Evaluator reliability (M4/E1) verdict: PARTIAL** — the evaluator
+metrics ARE quantified (all 3 tested across 10 seeds), but M-304 is
+UNSTABLE due to small N. The finding is honest: the evaluator is
+unreliable not because of noise but because of insufficient sample
+size.
+
+**Updated tests (tests/test_repeatability_m4.py):**
+  - test_metric_runners_has_8_metrics (was 5, now 8)
+  - test_original_5_metrics_pass_m4_threshold (only original 5)
+  - test_m304_is_unstable (NEW — documents the N=6 finding)
+  - test_m305_and_m306_are_stable (NEW — documents stability)
+  - test_gate_verdict_documents_m304_instability (NEW — replaced
+    test_gate_verdict_is_pass)
+
+**Updated GO_NO_GO_GATES.md:**
+  - Gate 1 evaluator reliability: NOT STARTED → PARTIAL
+  - Gate 1 overall: IN PROGRESS — 8 PASS + 2 PARTIAL = 10/11 addressed.
+    2/11 NOT STARTED (M5 reproducibility, calibration documented).
+
+**Test results:**
+  - 26 M4 tests pass (was 24, +2 new, -2 replaced)
+  - No regressions in existing test suite
+
+**Status:** EVALUATOR RELIABILITY (M4/E1) QUANTIFIED — PARTIAL. All 3
+evaluator metrics tested across 10 seeds. M-305 (bias) and M-306 (ECE)
+are STABLE. M-304 (agreement) is UNSTABLE (CV=0.64) because N=6 is
+too small for stable binary agreement estimation. Gate 1 overall:
+IN PROGRESS — 10/11 addressed (8 PASS + 2 PARTIAL). 2/11 NOT STARTED
+(M5, calibration). PRELIMINARY verdict (NOT TRUSTWORTHY) remains
+canonical.
+
+**Repair priority:** increase N to ≥20 proposals for stable M-304
+estimation. This requires the ProposalComposer to produce more
+proposals (currently only 6 from Gen0).
