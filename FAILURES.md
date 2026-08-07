@@ -6477,3 +6477,98 @@ shows judges disagree 5/6 times — if we had optimized Gen1 against
 one judge, we'd be optimizing against noise. The calibration science
 must come first. Only when we know whether the evaluation itself is
 reliable can we trust improvements to the composer.
+
+### F-141 — DR-96: Evaluation science — evaluators are unreliable instruments (P1, cycle 252, exploratory)
+
+**CTO directive:**
+  "Do not improve Proposal Composer Gen1. Build the science of
+   evaluation itself. A proposal cannot become trustworthy until the
+   evaluator is demonstrably trustworthy. Treat evaluators as scientific
+   instruments."
+
+**STATISTICAL NOTE:** N=6 is exploratory. Insufficient for statistical
+conclusions. Preliminary evidence only.
+
+**Phase 1: Evaluator disagreement graphs**
+
+56 disagreement edges across 6 proposals × 3 judges × 7 criteria.
+
+Top disagreement criterion: **novelty** (judges disagree on whether
+proposals are Known vs Incremental vs Potentially novel).
+
+The disagreement is STRUCTURED — we know WHAT they disagree about
+(novelty, specificity) and WHICH judges disagree (adversarial vs others).
+
+**Phase 2: Objective vs subjective criteria**
+
+Objective (verifiable automatically): structure_complete, falsifier_exists,
+prediction_exists, provenance_exists, mechanism_exists
+
+Subjective (require external judgment): novelty, scientific_plausibility,
+scientific_importance, elegance, usefulness
+
+PRINCIPLE: Never mix objective and subjective into one score.
+
+**Phase 3: Evaluator reliability**
+
+| Judge | N | Mean | Std | Min | Max | Majority Agree |
+|-------|--:|-----:|----:|----:|----:|---------------:|
+| judge_1_standard | 6 | 2.00 | 0.00 | 2 | 2 | 100.0% |
+| judge_2_adversarial | 6 | 1.33 | 0.47 | 1 | 2 | **33.3%** |
+| judge_3_neutral | 6 | 2.00 | 0.00 | 2 | 2 | 100.0% |
+
+**The adversarial judge has only 33% majority agreement.** It is the
+LEAST RELIABLE evaluator — it consistently scores 1 point lower.
+Judges 1 and 3 agree 100% with the majority (each other).
+
+This means: 2/3 judges are consistent, 1/3 is an outlier. If we had
+optimized Gen1 against the adversarial judge alone, we'd be optimizing
+against an outlier.
+
+**Phase 4: Adversarial evaluator tests**
+
+| Variant | Quality | Plausible | Recommendation |
+|---------|--------:|-----------|----------------|
+| swapped_mechanism_prediction | 2 | Yes | Revise |
+| removed_assumption | 2 | No | Reject |
+| confidence_boosted (0.2→0.9) | **3** | Yes | Revise |
+| empty_mechanism | 2 | Yes | Revise |
+
+**CRITICAL FINDING: Confidence boost increased score from 2→3 without
+any mechanism change.** The evaluator is influenced by the confidence
+field — higher confidence = higher score, even when the mechanism
+hasn't improved. This is a Goodhart vulnerability: if we optimize
+confidence, the evaluator rewards us without real improvement.
+
+Also concerning: empty_mechanism still scored 2/5 (not rejected). The
+evaluator didn't strongly penalize an empty mechanism field.
+
+**Key findings (exploratory, N=6):**
+1. 56 disagreements across 6 proposals → evaluation is noisy
+2. Adversarial judge is an outlier (33% majority agreement)
+3. Confidence field influences score (Goodhart vulnerability)
+4. Empty mechanism not strongly penalized
+5. Objective criteria can be verified automatically (don't need LLM)
+6. Subjective criteria need external judgment (not LLM alone)
+
+**What this means:**
+- Evaluators are scientific instruments with known bias and variance
+- The adversarial judge is less reliable than the standard/neutral judges
+- The confidence field creates a Goodhart vulnerability
+- Objective criteria should be verified automatically, not by LLM
+- Subjective criteria need human expert (Tier 2), not just LLM
+
+**Status:** EVALUATION SCIENCE STARTED (exploratory, N=6).
+- Evaluators characterized: 2/3 reliable, 1/3 outlier
+- Goodhart vulnerability identified (confidence → score)
+- Objective/subjective separation defined
+- Adversarial test suite built (4 variants)
+- PRELIMINARY verdict: still NOT TRUSTWORTHY
+- Need: N≥30, human expert (Tier 2), judge robustness testing
+
+**Lesson:** The CTO's insight was correct: "evaluation itself is an
+uncertain scientific object." We cannot trust proposal scores until
+we can trust the evaluator. DR-96 treats evaluators as measurement
+instruments — characterized, calibrated, stress-tested. This is the
+beginnings of a MEASUREMENT ENGINE: the most foundational component
+of the entire architecture.
