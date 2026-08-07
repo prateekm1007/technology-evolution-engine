@@ -6228,3 +6228,81 @@ proposal benchmark." DR-92 built the layer; DR-93 validates it.
 - Next: rerun Phase VI.6 with composed proposals for fair comparison
 - PRELIMINARY verdict: still NOT TRUSTWORTHY (proposals exist but
   benchmark hasn't been rerun with them yet)
+
+### F-138 — DR-93.5: Independent LLM validation — proposals rejected as scientifically implausible (P1, cycle 249, honest negative)
+
+**CTO directive:**
+  "Would an independent reviewer judge these proposals to be meaningful
+   scientific hypotheses? No module validates itself."
+
+**Independent LLM evaluation results (6 proposals, z-ai LLM judge):**
+
+| Criterion | Result |
+|-----------|--------|
+| Mechanistically coherent | 6/6 (all at least Partial) |
+| Scientifically plausible | **1/6** (83% rejected as implausible) |
+| Falsifiable | 6/6 (all Yes) |
+| Average quality | **2.00/5** |
+| Average specificity | 2.00/5 |
+| Known | 1/6 |
+| Incremental | 5/6 |
+| Potentially novel | **0/6** |
+| Accept | **0/6** |
+| Reject | 4/6 |
+| Revise | 2/6 |
+
+**The independent LLM REJECTS 4/6 proposals and accepts 0/6.**
+
+**Key findings:**
+1. Scientific plausibility: only 1/6 — the LLM finds the template-based
+   mechanisms ("The concept 'X' appears in both sources") scientifically
+   implausible. The mechanisms don't explain HOW the domains connect,
+   only THAT a shared entity exists.
+
+2. Novelty: 0/6 "potentially novel" — the LLM rates 5/6 as "Incremental"
+   and 1/6 as "Known." The CTO's caution was correct: the heuristic
+   "5 potentially novel" (from DR-93) was overstated. Independent
+   assessment shows 0 novel.
+
+3. Quality: 2.00/5 — the proposals are structurally valid (DR-93) but
+   scientifically weak (independent LLM). The template-based mechanisms
+   are too generic.
+
+4. Major flaws identified by LLM:
+   - "Low confidence score (0.2) suggests proposer has little belief"
+   - "Fails to specify the exact mechanism by which entity bridges domains"
+   - "Doesn't explain how heat bridges the domains or what specific
+     scientific properties are relevant"
+
+**Why the bug existed (P10):**
+DR-93's internal heuristic evaluation (check_scientific_validity) rated
+all 6 proposals as "scientifically valid" (6/6). The independent LLM
+rates only 1/6 as "scientifically plausible." The heuristic was too
+lenient — it checked for STRUCTURAL completeness (mechanism exists,
+prediction has "if") but not SCIENTIFIC depth (does the mechanism
+actually explain the connection?). The internal evaluation was grading
+its own homework.
+
+**Corrected honest wording:**
+- OLD (DR-93): "5 potentially novel" → HONEST: "0 potentially novel
+  (independent LLM assessment). 5 were 'not identified by heuristic
+  as matching known examples; independent novelty assessment has not
+  yet been performed.' Now performed: 0 novel."
+- OLD (DR-93): "Scientific validity: 6/6 (100%)" → HONEST: "Scientific
+  plausibility: 1/6 (17%) per independent LLM. The internal heuristic
+  was too lenient."
+
+**Status:** INDEPENDENT VALIDATION COMPLETE.
+- Proposals are structurally valid but scientifically weak
+- 0/6 accepted, 4/6 rejected by independent LLM
+- The Proposal Composer (generation 0) needs improvement:
+  - Replace template mechanisms with extracted mechanisms
+  - Increase confidence scores (currently 0.2, LLM sees as low)
+  - Add domain-specific context (not just "domain A" and "domain B")
+- PRELIMINARY verdict: still NOT TRUSTWORTHY
+
+**Lesson:** No module validates itself (CTO governance principle).
+The internal heuristic rated proposals 6/6 valid; the independent LLM
+rated 1/6 plausible. The gap (6/6 vs 1/6) is the self-validation bias.
+This is exactly why independent evaluation matters — it catches what
+self-evaluation cannot.
