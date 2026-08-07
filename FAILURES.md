@@ -5923,3 +5923,95 @@ FP=1.0 persists regardless of which matching component is disabled.
 PRELIMINARY_MEASUREMENT_VERDICT.md renamed from FINAL (CTO directive:
 investigation still in progress). Phases VIII-X remain: external
 reference benchmark, historical recalibration, scientific reassessment.
+
+### F-134 — DR-91 Phase VI.5: discovery object is wrong — entity, not proposal (P0, cycle 245, architectural root cause)
+
+**CTO directive (post-Phase VI+VII):**
+  "Your benchmark currently scores Discovery → Entity. But the
+   invention engine never invents entities. It invents mechanisms,
+   constraints, predictions, experiments. Discovery should probably
+   be scored the same way.
+
+   H4: Discovery object is wrong. You're benchmarking bridge == entity.
+   But discoveries aren't entities. They're propositions."
+
+**The four competing hypotheses (CTO):**
+
+| Hypothesis | Description | Phase VI data consistent? |
+|-----------|-------------|--------------------------|
+| H1 | Entity extractor too permissive (143 entities = noise) | YES |
+| H2 | Bridge definition too weak ("charge transfer" = "charge transport") | YES |
+| H3 | Gold bridges underspecified (single nouns occur everywhere) | YES |
+| H4 | Discovery object is wrong (scoring nouns, not claims) | YES |
+
+Phase VI could not distinguish between these because it only varied
+matching components, not the discovery OBJECT itself.
+
+**Phase VI.5 — Discovery Object Audit:**
+
+Redefines the discovery object from Entity (noun) to BridgeProposal
+(claim with mechanism + prediction + falsifier):
+
+```python
+class BridgeProposal:
+    mechanism: str           # "X causes Y via Z"
+    shared_variables: List[str]  # ["grain_size", "thermal_conductivity"]
+    prediction: str          # "if Z holds, then W"
+    falsification: str       # "if not-Z, then not-W"
+    evidence_sources: List[str]  # ["source_a", "source_b"]
+```
+
+**Experiment: entity FP vs proposal FP**
+
+| Object | Adversarial FP | Verdict |
+|--------|--------------:|---------|
+| Entity (noun) | 1.0000 | FAIL — any noun matches |
+| BridgeProposal (50% mechanism match) | 0.4500 | FAIL — still too loose |
+
+**Key finding: proposal FP (0.45) < entity FP (1.0)**
+
+The proposal object IS harder to fake than entities — but still not
+hard enough. The 0.45 FP rate means 45% of fake proposals (with
+random mechanisms, generic predictions, generic falsifiers) still
+match. The mechanism matcher (50% word overlap) is still too loose.
+
+**H4 is SUPPORTED but not fully RESOLVED:**
+- The discovery object IS wrong (entity → proposal is the right direction)
+- But the proposal matcher needs further tightening:
+  - Require 75%+ mechanism word overlap (not 50%)
+  - Require shared_variables to match EXACTLY (not just 1)
+  - Require prediction to share the SAME causal structure
+  - Require falsification to be SPECIFIC to the mechanism
+
+**Why the bug existed (P10):**
+
+The original benchmark (cycle 196-197) was designed to score entity
+extraction because that's what the pipeline produced. The pipeline
+extracts entities (nouns) from text, and the benchmark checked if
+the gold bridge noun appeared in the extracted entities. This was
+correct as a MEASURE OF EXTRACTION but incorrect as a MEASURE OF
+DISCOVERY. Discovery is not extraction — it's the PROPOSAL of a
+cross-domain connection with a mechanism. The benchmark measured
+the proxy (extraction) instead of the capability (proposal).
+
+**Impact on prior conclusions:**
+
+| Conclusion | Affected? | Reason |
+|-----------|-----------|--------|
+| Discovery F1=0.9189 | YES — INVALID | Measured entity recognition, not bridge proposal |
+| Discovery scorecard 9.0/10 | YES — UNVERIFIED | True discovery capability unknown |
+| H1-H4 saturation | NO | Based on blind suite, not discovery F1 |
+| DR-90 representation | YES — BLOCKED | Must wait for trustworthy benchmark |
+| Maturity assessments | YES | Discovery rating must be "UNVERIFIED" |
+
+**What must happen next:**
+1. Tighten the proposal matcher (75%+ mechanism overlap, exact variables)
+2. Redefine the gold set as BridgeProposals (not entities)
+3. Re-score the discovery engine against the new object
+4. Build external baselines (Phase VIII) with the new object
+5. Only then: FINAL VERDICT
+
+**Status:** ROOT CAUSE = WRONG DISCOVERY OBJECT.
+The benchmark measured entity recognition (noun extraction) instead
+of bridge proposal (mechanism + prediction + falsifier). The fix is
+to redefine the gold set and scorer. The true discovery F1 is UNKNOWN.
