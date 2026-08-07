@@ -561,7 +561,7 @@
       "rule_name": "Historical permanence",
       "metric_id": "M-008",
       "compliant": true,
-      "evidence": "m4_tested (CV=0.0703, verdict=ACCEPTABLE)",
+      "evidence": "m4_tested (CV=0.0422, verdict=STABLE)",
       "source": "reports/repeatability_m4.json + reports/bootstrap_statistics.json"
     },
     {
@@ -577,7 +577,7 @@
       "rule_name": "Bootstrap uncertainty",
       "metric_id": "M-008",
       "compliant": true,
-      "evidence": "M3 bootstrap exists: True (CI=0.8226, 1.0)",
+      "evidence": "M3 bootstrap exists: True (CI=0.7879, 1.0)",
       "source": "reports/bootstrap_statistics.json"
     },
     {
@@ -705,7 +705,7 @@
       "rule_name": "Bootstrap uncertainty",
       "metric_id": "M-010",
       "compliant": true,
-      "evidence": "M3 bootstrap exists: True (CI=0.0, 0.15)",
+      "evidence": "M3 bootstrap exists: True (CI=0.55, 0.9)",
       "source": "reports/bootstrap_statistics.json"
     },
     {
@@ -2353,7 +2353,7 @@
       "rule_name": "Historical permanence",
       "metric_id": "M-304",
       "compliant": true,
-      "evidence": "M4 system demonstrated on representative metrics (not individually tested)",
+      "evidence": "m4_tested (CV=0.6364, verdict=UNSTABLE)",
       "source": "reports/repeatability_m4.json + reports/bootstrap_statistics.json"
     },
     {
@@ -2417,7 +2417,7 @@
       "rule_name": "Historical permanence",
       "metric_id": "M-305",
       "compliant": true,
-      "evidence": "M4 system demonstrated on representative metrics (not individually tested)",
+      "evidence": "m4_tested (CV=0.0125, verdict=STABLE)",
       "source": "reports/repeatability_m4.json + reports/bootstrap_statistics.json"
     },
     {
@@ -2481,7 +2481,7 @@
       "rule_name": "Historical permanence",
       "metric_id": "M-306",
       "compliant": true,
-      "evidence": "M4 system demonstrated on representative metrics (not individually tested)",
+      "evidence": "m4_tested (CV=0.0069, verdict=STABLE)",
       "source": "reports/repeatability_m4.json + reports/bootstrap_statistics.json"
     },
     {

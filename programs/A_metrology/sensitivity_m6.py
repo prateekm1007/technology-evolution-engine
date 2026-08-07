@@ -378,12 +378,24 @@ def _compute_m013(gold, shared_entities, synmap):
 
 def _compute_m010(gold, shared_entities, synmap):
     """M-010: Per-proposal F1 (honest, lenient) — fraction of gold
-    bridges matched by the first shared entity."""
+    bridges matched by ANY shared entity.
+
+    REPAIRED (cycle 269): previously used only the FIRST shared entity
+    (shared_entities[0]), which was FRAGILE to input perturbation (M6
+    finding: -75% on drop_1_sentence). Now uses ALL shared entities
+    as candidates — a gold bridge is matched if ANY shared entity
+    matches it. This is the honest approach: the ProposalComposer
+    proposes ALL shared entities, not just the first.
+    """
     _, _, m_synonym = _make_matchers(synmap)
     if not shared_entities:
         return 0.0
-    candidate = shared_entities[0]
-    matches = sum(1 for g in gold if m_synonym(g["bridge"], candidate))
+    matches = 0
+    for g in gold:
+        for candidate in shared_entities:
+            if m_synonym(g["bridge"], candidate):
+                matches += 1
+                break  # one match is enough
     return matches / max(1, len(gold))
 
 

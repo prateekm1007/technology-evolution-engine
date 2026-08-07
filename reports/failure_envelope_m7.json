@@ -4,9 +4,9 @@
   "program": "A",
   "n_envelopes": 38,
   "n_degenerate": 9,
-  "n_has_fragile": 3,
-  "n_m4_tested": 5,
-  "n_m4_unstable": 0,
+  "n_has_fragile": 2,
+  "n_m4_tested": 8,
+  "n_m4_unstable": 1,
   "all_have_failure_modes": true,
   "all_have_boundary_conditions": true,
   "all_have_repair_recommendations": true,
@@ -279,15 +279,15 @@
     {
       "metric_id": "M-008",
       "metric_name": "FP floor (synonym)",
-      "baseline_value": 0.9189,
+      "baseline_value": 0.9474,
       "ci_95": [
-        0.8226,
+        0.7879,
         1.0
       ],
       "n": 20,
       "is_degenerate": false,
-      "repeatability_verdict": "ACCEPTABLE",
-      "cv": 0.0703,
+      "repeatability_verdict": "STABLE",
+      "cv": 0.0422,
       "fragile_perturbations": [],
       "known_failure_modes": [
         "FP floor = 0.9189 \u00b1 0.0559 [0.7879, 1.0000] \u2014 CATASTROPHIC",
@@ -351,40 +351,17 @@
     },
     {
       "metric_id": "M-010",
-      "metric_name": "Per-proposal F1 (honest, lenient)",
-      "baseline_value": 0.05,
+      "metric_name": "Per-proposal F1 (honest, lenient, ALL shared)",
+      "baseline_value": 0.75,
       "ci_95": [
-        0.0,
-        0.15
+        0.55,
+        0.9
       ],
       "n": 20,
       "is_degenerate": false,
       "repeatability_verdict": "NOT_TESTED",
       "cv": 0.0,
-      "fragile_perturbations": [
-        {
-          "metric_id": "M-010",
-          "metric_name": "Per-proposal F1 (honest, lenient)",
-          "perturbation_type": "INPUT",
-          "perturbation_name": "drop_1_sentence",
-          "baseline_value": 0.2,
-          "perturbed_value": 0.05,
-          "absolute_change": -0.15,
-          "relative_change": -0.75,
-          "sensitivity_class": "FRAGILE"
-        },
-        {
-          "metric_id": "M-010",
-          "metric_name": "Per-proposal F1 (honest, lenient)",
-          "perturbation_type": "SYNONYM",
-          "perturbation_name": "remove_50pct_synonyms",
-          "baseline_value": 0.2,
-          "perturbed_value": 0.15,
-          "absolute_change": -0.05,
-          "relative_change": -0.25,
-          "sensitivity_class": "FRAGILE"
-        }
-      ],
+      "fragile_perturbations": [],
       "known_failure_modes": [
         "FRAGILE to INPUT/drop_1_sentence (\u0394=-75%, M6 finding) \u2014 EXTREMELY fragile",
         "FRAGILE to SYNONYM/remove_50pct (\u0394=-25%, M6 finding)",
@@ -408,7 +385,7 @@
       "evidence_refs": [
         "reports/bootstrap_statistics.json (M3)",
         "M4: not tested",
-        "reports/sensitivity_m6.json (M6)",
+        "M6: no FRAGILE perturbations",
         "programs/A_metrology/MeasurementEngineSpecification.md (M1)"
       ]
     },
@@ -1301,8 +1278,8 @@
       ],
       "n": 6,
       "is_degenerate": false,
-      "repeatability_verdict": "NOT_TESTED",
-      "cv": 0.0,
+      "repeatability_verdict": "UNSTABLE",
+      "cv": 0.6364,
       "fragile_perturbations": [],
       "known_failure_modes": [
         "17% agreement (1/6) \u2014 evaluators disagree 83% of the time (DR-96)",
@@ -1324,7 +1301,7 @@
       ],
       "evidence_refs": [
         "reports/bootstrap_statistics.json (M3)",
-        "M4: not tested",
+        "reports/repeatability_m4.json (M4)",
         "M6: no FRAGILE perturbations",
         "programs/A_metrology/MeasurementEngineSpecification.md (M1)"
       ]
@@ -1339,8 +1316,8 @@
       ],
       "n": 6,
       "is_degenerate": false,
-      "repeatability_verdict": "NOT_TESTED",
-      "cv": 0.0,
+      "repeatability_verdict": "STABLE",
+      "cv": 0.0125,
       "fragile_perturbations": [],
       "known_failure_modes": [
         "+2.50 bias on 5-point scale \u2014 internal overestimates by 50% (DR-94)",
@@ -1362,7 +1339,7 @@
       ],
       "evidence_refs": [
         "reports/bootstrap_statistics.json (M3)",
-        "M4: not tested",
+        "reports/repeatability_m4.json (M4)",
         "M6: no FRAGILE perturbations",
         "programs/A_metrology/MeasurementEngineSpecification.md (M1)"
       ]
@@ -1377,8 +1354,8 @@
       ],
       "n": 6,
       "is_degenerate": false,
-      "repeatability_verdict": "NOT_TESTED",
-      "cv": 0.0,
+      "repeatability_verdict": "STABLE",
+      "cv": 0.0069,
       "fragile_perturbations": [],
       "known_failure_modes": [
         "ECE = 0.433 (from dr95) \u2014 poorly calibrated (threshold: ECE > 0.2 = poor)",
@@ -1400,7 +1377,7 @@
       ],
       "evidence_refs": [
         "reports/bootstrap_statistics.json (M3)",
-        "M4: not tested",
+        "reports/repeatability_m4.json (M4)",
         "M6: no FRAGILE perturbations",
         "programs/A_metrology/MeasurementEngineSpecification.md (M1)"
       ]

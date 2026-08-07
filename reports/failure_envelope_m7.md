@@ -24,9 +24,9 @@ Each envelope synthesizes data from:
 
 - Total metrics with failure envelopes: 38
 - Degenerate (M3): 9
-- Has FRAGILE perturbations (M6): 3
-- M4 repeatability tested: 5
-- M4 UNSTABLE: 0
+- Has FRAGILE perturbations (M6): 2
+- M4 repeatability tested: 8
+- M4 UNSTABLE: 1
 - All have known failure modes: YES
 - All have boundary conditions: YES
 - All have repair recommendations: YES
@@ -42,9 +42,9 @@ Each envelope synthesizes data from:
 | M-005 | Discovery F1 (shared, syn, DR-91) | 0.8571 | False | DETERMINISTIC | 1 |
 | M-006 | Recognition F1 (all, syn, DR-91) | 1.0000 | True | NOT_TESTED | 0 |
 | M-007 | Proposal-locus inflation | 0.1429 | False | NOT_TESTED | 0 |
-| M-008 | FP floor (synonym) | 0.9189 | False | ACCEPTABLE | 0 |
+| M-008 | FP floor (synonym) | 0.9474 | False | STABLE | 0 |
 | M-009 | UNSAFE synonyms count | 18.0000 | False | NOT_TESTED | 0 |
-| M-010 | Per-proposal F1 (honest, lenient) | 0.0500 | False | NOT_TESTED | 2 |
+| M-010 | Per-proposal F1 (honest, lenient, ALL sh | 0.7500 | False | NOT_TESTED | 0 |
 | M-011 | Per-proposal F1 (strict, honest) | 0.0000 | True | NOT_TESTED | 0 |
 | M-012 | Aggregate F1 (DR-91) | 0.8571 | False | NOT_TESTED | 0 |
 | M-013 | Aggregate F1 (honest) | 0.8333 | False | DETERMINISTIC | 1 |
@@ -70,9 +70,9 @@ Each envelope synthesizes data from:
 | M-303-D5 | AI surrogate D5 mean | 3.0000 | True | NOT_TESTED | 0 |
 | M-303-D6 | AI surrogate D6 mean | 1.8333 | False | NOT_TESTED | 0 |
 | M-303-D7 | AI surrogate D7 mean | 1.8333 | False | NOT_TESTED | 0 |
-| M-304 | Inter-rater agreement rate | 0.1667 | False | NOT_TESTED | 0 |
-| M-305 | Self-validation bias (mean residual) | 2.5000 | False | NOT_TESTED | 0 |
-| M-306 | Expected Calibration Error (ECE) | 0.9000 | False | NOT_TESTED | 0 |
+| M-304 | Inter-rater agreement rate | 0.1667 | False | UNSTABLE | 0 |
+| M-305 | Self-validation bias (mean residual) | 2.5000 | False | STABLE | 0 |
+| M-306 | Expected Calibration Error (ECE) | 0.9000 | False | STABLE | 0 |
 
 ## Gate M7 verdict: **PASS**
 
@@ -83,7 +83,6 @@ known failure modes, boundary conditions, and repair recommendations.
 
 ### Most fragile metrics (from M6)
 
-- **M-010** (Per-proposal F1 (honest, lenient)): 2 FRAGILE perturbation(s)
 - **M-005** (Discovery F1 (shared, syn, DR-91)): 1 FRAGILE perturbation(s)
 - **M-013** (Aggregate F1 (honest)): 1 FRAGILE perturbation(s)
 
@@ -101,7 +100,7 @@ known failure modes, boundary conditions, and repair recommendations.
 
 ### Metrics with UNSTABLE repeatability (from M4)
 
-- None (all tested metrics are STABLE or ACCEPTABLE)
+- **M-304** (Inter-rater agreement rate): CV = 0.6364
 
 ### Top repair priorities
 

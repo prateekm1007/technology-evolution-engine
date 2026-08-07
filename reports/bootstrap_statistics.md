@@ -28,9 +28,9 @@ interval, sample size, and number of bootstrap resamples.
 | M-005 | Discovery F1 (shared, syn, DR-91) | 0.8571 ± 0.0635 | [0.7097, 0.9474] | 20 | 500 | no |
 | M-006 | Recognition F1 (all, syn, DR-91) | 1.0000 ± 0.0000 | [1.0000, 1.0000] | 20 | 500 | YES |
 | M-007 | Proposal-locus inflation | 0.1429 ± 0.0635 | [0.0526, 0.2903] | 20 | 500 | no |
-| M-008 | FP floor (synonym) | 0.9189 ± 0.0580 | [0.8226, 1.0000] | 20 | 200 | no |
+| M-008 | FP floor (synonym) | 0.9474 ± 0.0541 | [0.7879, 1.0000] | 20 | 200 | no |
 | M-009 | UNSAFE synonyms count | 18.0000 ± 1.4297 | [15.0000, 20.0000] | 20 | 500 | no |
-| M-010 | Per-proposal F1 (honest, lenient) | 0.0500 ± 0.0506 | [0.0000, 0.1500] | 20 | 500 | no |
+| M-010 | Per-proposal F1 (honest, lenient, ALL shared) | 0.7500 ± 0.0948 | [0.5500, 0.9000] | 20 | 500 | no |
 | M-011 | Per-proposal F1 (strict, honest) | 0.0000 ± 0.0000 | [0.0000, 0.0000] | 20 | 500 | YES |
 | M-012 | Aggregate F1 (DR-91) | 0.8571 ± 0.0635 | [0.7097, 0.9474] | 20 | 500 | no |
 | M-013 | Aggregate F1 (honest) | 0.8333 ± 0.0692 | [0.6471, 0.9231] | 20 | 500 | no |

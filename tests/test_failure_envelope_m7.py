@@ -233,12 +233,17 @@ def test_m008_envelope_documents_fp_floor():
     assert "CATASTROPHIC" in all_text or "1.0" in all_text
 
 
-def test_m010_envelope_documents_fragility():
-    """M-010 envelope must document the M6 FRAGILE finding."""
+def test_m010_envelope_documents_repair():
+    """M-010 envelope should document the repair (cycle 269).
+    Previously had 2 FRAGILE perturbations; now 0 after repair
+    (using ALL shared entities instead of just the first)."""
     path = REPO / "reports" / "failure_envelope_m7.json"
     data = json.loads(path.read_text())
     m010 = next(e for e in data["envelopes"] if e["metric_id"] == "M-010")
-    assert len(m010["fragile_perturbations"]) >= 1
+    # After repair (cycle 269), M-010 should have 0 FRAGILE perturbations
+    assert len(m010["fragile_perturbations"]) == 0, (
+        f"M-010 should have 0 FRAGILE after repair, got {len(m010['fragile_perturbations'])}"
+    )
 
 
 def test_m105_envelope_documents_dr91_invalidation():

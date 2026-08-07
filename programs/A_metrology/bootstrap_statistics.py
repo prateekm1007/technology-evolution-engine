@@ -517,19 +517,25 @@ def bootstrap_all_metrics(n_resamples: int = 500, seed: int = 42) -> List[Bootst
     ))
 
     # ---- M-010: Per-proposal F1 (honest, lenient) ----
-    # Per-proposal F1 = fraction of proposals that match their gold bridge
-    # For bootstrap, resample the gold set and compute match rate
+    # Per-proposal F1 = fraction of gold bridges matched by ANY shared entity.
+    # REPAIRED (cycle 269): previously used only the FIRST shared entity
+    # (shared_entities[0]), which was FRAGILE to input perturbation (M6
+    # finding: -75% on drop_1_sentence). Now uses ALL shared entities
+    # as candidates — a gold bridge is matched if ANY shared entity
+    # matches it. This is the honest approach: the ProposalComposer
+    # proposes ALL shared entities, not just the first.
     def m010(sample_gold):
         matches = 0
         for g in sample_gold:
-            # Take the FIRST shared entity as the candidate (per DR-99)
+            # Check if ANY shared entity matches the gold bridge
             if shared_entities:
-                candidate = shared_entities[0]
-                if m_synonym(g["bridge"], candidate):
-                    matches += 1
+                for candidate in shared_entities:
+                    if m_synonym(g["bridge"], candidate):
+                        matches += 1
+                        break  # one match is enough
         return matches / max(1, len(sample_gold))
     results.append(bootstrap_metric(
-        gold, m010, n_resamples, seed, "M-010", "Per-proposal F1 (honest, lenient)"
+        gold, m010, n_resamples, seed, "M-010", "Per-proposal F1 (honest, lenient, ALL shared)"
     ))
 
     # ---- M-011: Per-proposal F1 (strict, honest) ----

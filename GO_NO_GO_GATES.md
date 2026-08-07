@@ -23,7 +23,7 @@ the final gate; it cannot pass until Gates 1-3 pass.
 | Measurement specification complete | M1 | **PASS** (cycle 260: 30/30 metrics specified, all 9 fields each) |
 | Measurement provenance (no naked numbers) | M2 | **PASS** (cycle 262: ScoredValue + ProvenanceRegistry + @with_provenance infrastructure complete; 38 metrics loaded) |
 | Reproducibility across hardware/LLMs/prompts | M5 | NOT STARTED |
-| Sensitivity analysis | M6 | **PARTIAL** (cycle 264: 26 perturbations tested, 18 ROBUST, 4 SENSITIVE, 4 FRAGILE; truncate_75pct and M-010 input perturbation are repair priorities) |
+| Sensitivity analysis | M6 | **PARTIAL** (cycle 269: 26 perturbations, 20 ROBUST, 4 SENSITIVE, 2 FRAGILE; M-010 repaired — was 4 FRAGILE, now 2; remaining: M-005/M-013 truncate_75pct) |
 | Failure envelope documented | M7 | **PASS** (cycle 265: 38 failure envelope documents generated, all with failure modes + boundary conditions + repair recommendations) |
 | Measurement constitution | M8 | **PASS** (cycle 266: 8 constitutional rules, 304 compliance checks, all compliant) |
 

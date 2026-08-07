@@ -335,8 +335,10 @@ specified before Gate 1 (Measurement) can pass.
 - Mean across N=40 is the per-proposal F1
 
 **Known failure modes:**
-- Returns 0.1500 — only 15% of proposals match their gold bridge
-- Below the useful-performance threshold of 0.30 (cycle 257)
+- REPAIRED (cycle 269): previously used only FIRST shared entity, which
+  was FRAGILE (-75% on input perturbation). Now uses ALL shared entities.
+- Baseline improved from 0.10-0.20 to 0.7500 (above 0.30 threshold).
+- M-010 is now ROBUST to input perturbation (was FRAGILE).
 
 **Uncertainty:** NOT YET QUANTIFIED. Stage M3 will add 95% CI.
 **Evidence tier:** B
