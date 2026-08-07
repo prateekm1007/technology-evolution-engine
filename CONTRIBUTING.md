@@ -16,7 +16,7 @@ Before committing, verify each item:
 
 - [ ] **Ran it.** I executed the code and pasted the actual output.
       I did not infer "it works" from reading the diff.
-- [ ] **Tests are green.** I ran `pytest tests/ -q` and the actual
+- [ ] **Tests are green.** I ran `python3 -m pytest tests/ -q` and the actual
       output shows 0 failures. I did not infer the count from the
       commit message or a partial run.
 - [ ] **No check was loosened to make new code pass.** If I changed
