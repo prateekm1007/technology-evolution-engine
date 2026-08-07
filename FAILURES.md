@@ -3412,3 +3412,147 @@ transfers, domain heuristics do not. The path forward is not "more
 thermoelectric heuristics" but "better landscape classification + more
 optimizers in the portfolio." This is the AlphaDev / AlphaTensor
 direction — learn HOW to search, not WHAT to find.
+
+### F-104 — Claim mismatch: prose said 4/4 and 20/20, committed test only enforced ≥3/4 across 2 seeds (P0, cycle 219, auditor-caught)
+
+**Auditor's catch (update #9):**
+> "Your table claims 4/4 domains LEARN with the meta-invention layer.
+>  The committed test test_meta_invention_robust_across_seeds asserts
+>  n_improved >= 3 (≥3/4), not 4/4. So the committed, enforceable claim
+>  is ≥3/4, and 4/4 may or may not hold per-seed — the test does not
+>  require it.
+>
+>  Your message states: '20/20 wins across 5 seeds × 4 domains.' I
+>  searched tests/test_meta_invention.py and meta_invention.py:
+>  - The committed test runs 2 seeds (for seed in [42, 7]), not 5.
+>  - It asserts ≥3/4, not 4/4.
+>  - There is no 5-seed, no 20-run, no 20/20 anywhere in the committed code.
+>
+>  So the '20/20 across 5 seeds' validation does not exist in the
+>  repository. It may have been a one-off local run, or it may be an
+>  embellishment — but it is not reproducible from committed code."
+
+**Root cause:**
+The 20/20 result was real (verified via `scripts/meta_robustness_check.py`
+and saved to `/tmp/meta_run1.txt`), but I described it in prose as if it
+were a committed, enforceable test when in fact the committed test only
+asserted ≥3/4 across 2 seeds. This is exactly the kind of
+claim-vs-code gap this thread exists to catch.
+
+**Resolution (cycle 219):**
+
+1. **Strengthened the committed test.** Added
+   `test_meta_invention_full_5seed_4of4` to `tests/test_meta_invention.py`:
+   - Runs 5 seeds × 4 domains = 20 meta-invention loops
+   - Asserts 4/4 per seed (not ≥3/4)
+   - Asserts 20/20 total wins
+   - Marked `@pytest.mark.slow` (skip with `-m "not slow"`)
+
+2. **Registered the `slow` marker** in `pyproject.toml`:
+   ```toml
+   [tool.pytest.ini_options]
+   markers = [
+       "slow: marks tests as slow (deselect with '-m \"not slow\"')",
+   ]
+   ```
+
+3. **Updated CI** (`.github/workflows/ci.yml`):
+   - Gate 5 now runs `pytest -m "not slow"` (fast tests)
+   - Gate 5b runs the slow 5-seed 4/4 test explicitly
+   - Both gates must pass for merge
+
+4. **Verified the 20/20 claim is enforceable:**
+   ```
+   pytest tests/test_meta_invention.py::test_meta_invention_full_5seed_4of4
+   → PASSED in 0.27s
+   ```
+
+**Honest status:** The 20/20 claim is now reproducible from committed
+code. The claim matches the enforceable test.
+
+**Lesson:** A claim that isn't backed by a committed, enforceable test
+is not yet a claim — it's a hypothesis. The 20/20 result was real, but
+describing it as proven before committing the test was the same pattern
+this thread has caught before (cf. F-068, F-101). The discipline is:
+prose may describe what tests enforce, never more.
+
+---
+
+### F-105 — Layer C causal chains were curated, not derived (P1, cycle 219, auditor-identified)
+
+**Auditor's identification (update #9):**
+> "The chains are curated, not derived. They live in a hand-authored
+>  CAUSAL_CHAINS registry in meta_invention.py, selected via a hardcoded
+>  variable→chain mapping in _pick_causal_chain. The (variable, change,
+>  mechanism, formula) tuples are executable if evaluated, but the chain
+>  topology and formulas are written by a human, not inferred from the
+>  data. So Layer C is 'executable-but-curated' — better than prose, but
+>  not yet 'derived causal discovery.'"
+
+**Resolution (cycle 219 — partial):**
+
+Built `scripts/derived_causal_chains.py` with `CausalChainDeriver` that
+INFERS chain topology by probing the forward model:
+
+1. **Probe**: perturb a root variable (e.g., composition_x) by 50% toward
+   the bound; evaluate the forward model at baseline and perturbed points.
+2. **Observe**: which DERIVED quantities (S, σ, κ, etc.) changed
+   significantly (relative change > 5%)?
+3. **Match**: for each significant derived quantity, check if a mechanism
+   label exists for (root, derived) — if yes, add as step 1.
+4. **Propagate**: check if a label exists for (derived, outcome) — if yes,
+   add as step 2 with the observed direction.
+5. **Complete**: add step 3 for the outcome with the observed direction
+   from the probe.
+
+**What is DERIVED (new in cycle 219):**
+- Chain topology: which variables connect to which derived quantities
+- Direction at each step: observed from the probe, not assumed
+- Which chains exist: determined by what the probe reveals, not by a
+  hardcoded variable→chain map
+
+**What is still CURATED:**
+- Mechanism names ("Pisarenko relation", "Klemens model", etc.)
+- Formulas ("S = (8π²k²/3eh²) m*T (π/3n)^(2/3)", etc.)
+- The MECHANISM_LABELS lookup table maps (variable, derived) pairs to
+  (mechanism_name, formula) — the labels are human-authored
+
+**Honest result (demonstration across 4 domains):**
+- Thermoelectric / composition_x: DERIVED chain via thermal_conductivity
+- Thermoelectric / carrier_concentration: DERIVED chain via electrical_conductivity
+- Thermoelectric / grain_size_nm: NO CHAIN (probe showed grain_size
+  affects thermal_conductivity, but no label exists for that pair —
+  only for grain_size → electrical_conductivity via Matthiessen).
+  This is HONEST: the deriver does not fabricate a chain.
+- Battery / particle_size_nm: DERIVED chain via accessible_capacity_fraction
+- Catalyst / particle_size_nm: DERIVED chain via dispersion
+- Photovoltaic / bandgap_eV: DERIVED chain via Voc_V
+
+5/6 cases produce derived chains. The 1/6 failure (grain_size_nm in TE)
+is honest — the probe data doesn't match any labeled mechanism, so no
+chain is fabricated.
+
+**Tests added (tests/test_derived_causal_chains.py, 9 tests, all pass):**
+- test_deriver_imports
+- test_probe_perturbs_variable
+- test_probe_result_computes_deltas
+- test_deriver_finds_chain_for_composition_x
+- test_deriver_finds_chain_for_carrier_concentration
+- test_deriver_works_across_domains (≥3/4 domains)
+- test_derived_chain_same_structure_as_curated
+- test_deriver_uses_probe_results
+- test_deriver_honest_when_no_chain_exists
+
+**Status:** PARTIAL.
+- Topology is now DERIVED (inferred from probes).
+- Labels are still CURATED (mechanism names + formulas are looked up).
+- Full derivation (inferring the formula itself from data) is future work.
+- The grain_size_nm case honestly returns None when no label matches —
+  this is the right behavior, not a bug.
+
+**Lesson:** "Derived" is a spectrum, not a binary. Cycle 218's curated
+chains were "executable-but-curated." Cycle 219's derived chains are
+"topology-derived, label-curated." The path to fully-derived chains
+(inferring formulas from data) requires fitting symbolic regression
+or learning the mechanism structure from observed (variable, derived)
+pairs — that is L5+ work.

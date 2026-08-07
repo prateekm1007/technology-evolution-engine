@@ -11,6 +11,8 @@ import random
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
+import pytest
+
 
 # ============================================================================
 # L1 — Landscape classification tests
@@ -305,11 +307,16 @@ def test_causal_chain_is_executable():
 
 
 # ============================================================================
-# Multi-seed robustness test (smoke test)
+# Multi-seed robustness tests
 # ============================================================================
 
 def test_meta_invention_robust_across_seeds():
-    """Meta-invention improves on >=3/4 domains across multiple seeds."""
+    """FAST smoke test: meta-invention improves on >=3/4 domains across 2 seeds.
+
+    This is the smoke test — quick to run, asserts the minimum bar.
+    The full 5-seed × 4-domain 4/4 enforcement is in
+    test_meta_invention_full_5seed_4of4 (marked slow).
+    """
     from scripts.meta_invention import run_meta_invention
     from scripts.cross_domain_transfer import (
         THERMOELECTRIC_DOMAIN, BATTERY_DOMAIN, CATALYST_DOMAIN, PV_DOMAIN,
@@ -323,7 +330,7 @@ def test_meta_invention_robust_across_seeds():
         ("PV", PV_DOMAIN, pv_forward),
     ]
 
-    # Run with 2 seeds (test runtime)
+    # Run with 2 seeds (fast smoke test)
     for seed in [42, 7]:
         n_improved = 0
         for name, spec, fn in cases:
@@ -336,6 +343,57 @@ def test_meta_invention_robust_across_seeds():
         assert n_improved >= 3, f"Seed {seed}: only {n_improved}/4 domains improved"
 
 
+@pytest.mark.slow
+def test_meta_invention_full_5seed_4of4():
+    """FULL validation: 5 seeds × 4 domains, asserting 4/4 per seed.
+
+    This is the test that backs the claim '20/20 wins across 5 seeds ×
+    4 domains'. Anything less than 4/4 per seed fails.
+
+    Marked slow because it runs 5 × 4 = 20 meta-invention loops.
+    Skip during normal development with: pytest -m "not slow"
+    """
+    from scripts.meta_invention import run_meta_invention
+    from scripts.cross_domain_transfer import (
+        THERMOELECTRIC_DOMAIN, BATTERY_DOMAIN, CATALYST_DOMAIN, PV_DOMAIN,
+        thermoelectric_forward, battery_forward, catalyst_forward, pv_forward,
+    )
+
+    cases = [
+        ("TE", THERMOELECTRIC_DOMAIN, thermoelectric_forward),
+        ("Battery", BATTERY_DOMAIN, battery_forward),
+        ("Catalyst", CATALYST_DOMAIN, catalyst_forward),
+        ("PV", PV_DOMAIN, pv_forward),
+    ]
+
+    seeds = [42, 7, 99, 123, 256]
+    total_wins = 0
+    total_runs = 0
+    per_seed_results = {}
+
+    for seed in seeds:
+        n_improved = 0
+        per_domain_deltas = {}
+        for name, spec, fn in cases:
+            iters, _, _ = run_meta_invention(
+                spec, fn, n_iterations=5, n_per_iter=50, seed=seed,
+            )
+            delta = iters[-1]["best_outcome"] - iters[0]["best_outcome"]
+            per_domain_deltas[name] = delta
+            if delta > 0:
+                n_improved += 1
+                total_wins += 1
+            total_runs += 1
+        per_seed_results[seed] = (n_improved, per_domain_deltas)
+        # Each seed must achieve 4/4
+        assert n_improved == 4, \
+            f"Seed {seed}: only {n_improved}/4 domains improved. Deltas: {per_domain_deltas}"
+
+    # Final sanity: 20/20 total wins
+    assert total_wins == total_runs, \
+        f"Expected {total_runs}/{total_runs} wins, got {total_wins}/{total_runs}. " \
+        f"Per-seed: {per_seed_results}"
+
+
 if __name__ == "__main__":
-    import pytest
     sys.exit(pytest.main([__file__, "-v"]))

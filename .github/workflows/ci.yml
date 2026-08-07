@@ -47,8 +47,11 @@ jobs:
           fi
           echo "PASS: product/PRODUCT.pdf matches regenerated PDF from source"
 
-      - name: Gate 5 — Test suite
-        run: python -m pytest tests/ -v --tb=short
+      - name: Gate 5 — Test suite (fast, excludes slow)
+        run: python -m pytest tests/ -v --tb=short -m "not slow"
+
+      - name: Gate 5b — Slow validation tests (5-seed × 4-domain 4/4 enforcement)
+        run: python -m pytest tests/test_meta_invention.py::test_meta_invention_full_5seed_4of4 -v --tb=short
 
       - name: Gate 6 — Law 14: Foundation Continuity check
         run: python scripts/check_continuity.py
