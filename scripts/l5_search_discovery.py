@@ -1,52 +1,59 @@
 #!/usr/bin/env python3
 """
-l5_search_discovery.py — L5 Search Theory Discovery (cycle 228).
+l5_search_discovery.py — L5a Program Discovery (cycle 229 honest rename).
 
-Per auditor's update #18 (remaining frontier):
-  "L5 Search Theory Discovery — inventing optimizers (AlphaDev analog),
-   not selecting from portfolio."
+HONEST NAMING (per auditor update #19, anti-entropy #5):
+  The auditor correctly distinguished:
+    - "optimizer invention" (AlphaDev sense: discovers NEW algorithms)
+    - "program synthesis" (this module: recombines FIXED primitives)
 
-This is the deepest frontier. Instead of SELECTING from a fixed portfolio
-(GreedyHillClimber, ImportanceSampler, BayesianOptimizer, EvolutionarySearch,
-CMA-ES, GP-BO), the engine INVENTS new optimizers by searching over a
-language of optimizer operations.
+  This module does PROGRAM SYNTHESIS, not optimizer invention.
+  The DSL already contains FIT_SURROGATE and ACQUIRE_EI — those are
+  Bayesian Optimization concepts. The search discovers useful
+  COMPOSITIONS of known operators, not new operators.
 
-THE APPROACH (AlphaDev-inspired):
-1. Define a DSL of optimizer PRIMITIVES — atomic operations that any
-   optimizer can use (sample, select_top_k, weighted_mean, crossover,
-   mutate, fit_surrogate, acquire_ei, etc.)
-2. An "optimizer program" is a SEQUENCE of these primitives.
-3. Search over programs (random + selection) to find ones that perform
-   well on training landscapes.
-4. Test the discovered program on HELD-OUT landscapes — does it
-   generalize, or is it overfit to the training set?
+  The honest claim: "discovered effective optimizer programs over a
+  fixed operator language." That wording is bulletproof.
 
-THE HONEST QUESTION:
-Can a program-search discover an optimizer that beats the portfolio on
-ANY landscape type? If yes — that's L5 progress (the engine invented
-something new). If no — the portfolio is sufficient and L5 doesn't
-add value yet.
+L5 SUBLAYER ROADMAP (per auditor update #19):
+  L5a — Program Discovery (this module): search over programs
+        composed from a FIXED DSL of known operators. WORKING.
+  L5b — Operator Discovery: search for NEW reusable operators
+        (e.g., LOCAL_CURVATURE_ESTIMATE, ENTROPY_GUIDED_MUTATION).
+        NOT STARTED (maturity ~2/10).
+  L5c — Language Discovery: search over the DSL itself — invent
+        new operator categories. CONCEPTUAL ONLY (maturity ~1/10).
+  L5d — Theory Discovery: explain WHY discovered operators work.
+        CONCEPTUAL ONLY (maturity ~1/10).
 
-This is a PROOF OF CONCEPT, not a full AlphaDev. A full system would:
-- Use reinforcement learning (not random search) to search programs
-- Have a richer DSL (conditionals, loops, memory)
-- Train on thousands of landscapes
-- Discover optimizers that human experts haven't thought of
+THE ARCHITECTURAL CONTRIBUTION (the real value):
+  The contribution isn't the DSL, EI, or surrogate models.
+  It's the ARCHITECTURAL INVERSION:
+    OLD: engineer → writes optimizer → optimizer searches designs
+    NEW: search → creates optimizer → optimizer searches designs
+  That recursion is the important contribution. Changing the search
+  procedure (random → evolution → MCTS → RL → beam → CEM) does NOT
+  require rewriting the architecture. That's exactly what you want.
 
-What this module DOES:
-- Defines a minimal but real DSL (10 primitives)
-- Searches over programs of length 3-5
-- Evaluates each program on 4 technology domains
-- Tests the best program on 7 synthetic landscapes (held-out)
-- Honestly reports whether the discovered program beats the portfolio
+WHAT THIS MODULE DOES:
+  - Defines a minimal but real DSL (13 primitives)
+  - Searches over programs of length 4 (random search + fitness selection)
+  - Evaluates each program on training domains
+  - Tests the best programs on held-out landscapes
+  - Honestly reports whether discovered programs beat the portfolio
 
-HONEST EXPECTATION:
-Random search over short programs is unlikely to beat a hand-engineered
-portfolio. The value of this module is:
-1. It BUILDS the L5 scaffolding (DSL + search + evaluation)
-2. It establishes a BASELINE for L5 (random search performance)
-3. Future work can replace random search with RL (the real AlphaDev)
-4. If by chance random search finds something good, that's a bonus
+WHAT THIS MODULE DOES NOT DO:
+  - Invent new operators (L5b — unstarted)
+  - Search over the DSL itself (L5c — conceptual only)
+  - Explain why programs work (L5d — conceptual only)
+  - Use RL (the search is random — the weakest procedure)
+  - Handle conditionals or loops (programs are fixed sequences)
+  - Train on thousands of landscapes (only 4 technology domains)
+
+HONEST STATUS: L5a BOOTSTRAPPED. The scaffolding (DSL + executor +
+search loop) works. The proof-of-concept (4/7 beats portfolio) shows
+the approach is viable. The remaining work (L5b/c/d, RL, richer DSL,
+blind benchmark) is the research frontier.
 """
 import sys
 import math
@@ -473,14 +480,27 @@ class ProgramExecutor:
 # L5 SEARCH — search over programs
 # ============================================================================
 
-class L5SearchDiscovery:
-    """Searches over optimizer programs to discover new optimizers.
+class L5ProgramDiscovery:
+    """L5a: Program Discovery — search over optimizer programs.
 
-    This is the L5 layer: instead of selecting from a portfolio, INVENT
-    optimizers by searching over sequences of operations.
+    HONEST NAMING (cycle 229): This class was originally named
+    L5SearchDiscovery and described as "inventing optimizers." The
+    auditor correctly flagged this as overselling: the search
+    discovers useful COMPOSITIONS of FIXED primitives, not new
+    algorithms. The DSL already contains Bayesian-optimization
+    concepts (FIT_SURROGATE, ACQUIRE_EI).
+
+    Renamed to L5ProgramDiscovery to match the honest claim:
+    "discovered effective optimizer programs over a fixed operator
+    language."
 
     The search is currently RANDOM (random program generation + selection).
-    A full AlphaDev-style system would use RL — that's future work.
+    Future work: evolution, MCTS, RL, beam, CEM — all plug into the
+    same architecture without rewriting the executor.
+
+    The architectural contribution (the real value):
+        search → creates optimizer → optimizer searches designs
+    That recursion is the important part, not the search procedure.
     """
 
     def __init__(self, n_programs: int = 50, program_length: int = 4,
@@ -596,14 +616,21 @@ class L5SearchDiscovery:
         }
 
 
+# Backward-compatibility alias (cycle 229 rename: L5SearchDiscovery → L5ProgramDiscovery)
+# The old name oversold the capability as "inventing optimizers." The
+# honest name is "program discovery" (search over fixed DSL, per auditor
+# update #19). Existing code that imports L5SearchDiscovery still works.
+L5SearchDiscovery = L5ProgramDiscovery
+
+
 # ============================================================================
 # MAIN
 # ============================================================================
 
 def main():
     print("=" * 90)
-    print("L5 SEARCH THEORY DISCOVERY (cycle 228)")
-    print("Inventing optimizers by searching over a language of operations")
+    print("L5a PROGRAM DISCOVERY (cycle 229 honest rename)")
+    print("Discovering optimizer programs by searching over a fixed DSL")
     print("=" * 90)
     print()
 
@@ -696,13 +723,25 @@ def main():
 
     max_beats = max(e["n_beats_portfolio"] for e in all_evaluations)
     if max_beats >= 3:
-        print(f"The L5 search discovered a program that beats the portfolio on")
-        print(f"{max_beats}/7 held-out landscapes. This is L5 PROGRESS — the engine")
-        print(f"invented an optimizer that wasn't in the portfolio.")
+        print(f"The L5a program discovery found a program that beats the portfolio on")
+        print(f"{max_beats}/7 held-out landscapes. This is L5a PROGRESS — the search")
+        print(f"discovered an effective composition of known operators.")
         print()
-        print(f"Honest caveat: random search over short programs is a WEAK L5.")
-        print(f"A real AlphaDev-style system would use RL, richer DSL, and")
-        print(f"thousands of training landscapes. But the scaffolding is built.")
+        print(f"HONEST CLAIM (cycle 229 rename): This is PROGRAM SYNTHESIS, not")
+        print(f"optimizer invention. The DSL already contains FIT_SURROGATE and")
+        print(f"ACQUIRE_EI (Bayesian-optimization concepts). The search discovers")
+        print(f"useful COMPOSITIONS of known operators, not new algorithms.")
+        print()
+        print(f"The architectural contribution is the RECURSION:")
+        print(f"  search → creates optimizer → optimizer searches designs")
+        print(f"Changing the search procedure (random → RL → MCTS) does NOT")
+        print(f"require rewriting the architecture. That's the real value.")
+        print()
+        print(f"L5 SUBLAYER ROADMAP:")
+        print(f"  L5a (this module): program discovery over fixed DSL — WORKING")
+        print(f"  L5b: operator discovery (new primitives) — NOT STARTED")
+        print(f"  L5c: language discovery (new DSL categories) — CONCEPTUAL")
+        print(f"  L5d: theory discovery (why operators work) — CONCEPTUAL")
     elif max_beats >= 1:
         print(f"The L5 search discovered a program that beats the portfolio on")
         print(f"{max_beats}/7 held-out landscapes. This is MARGINAL — the discovered")

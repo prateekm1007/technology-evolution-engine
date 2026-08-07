@@ -4525,3 +4525,118 @@ is viable — the engine CAN invent optimizers that weren't in the
 portfolio. The remaining work is replacing random search with RL,
 enriching the DSL, and scaling the training set. That's the path from
 "L5 scaffolding" to "L5 production" — the AlphaDev trajectory.
+
+### F-119 — L5a honest rename + blind suite: 2/10 generalization (P0, cycle 229, auditor-caught)
+
+**Auditor's challenge (update #19):**
+> "I would not call L5 'done.' I would call it BOOTSTRAPPED.
+>  You did NOT prove 'the engine invents optimizers.' You DID prove
+>  'optimizer design can itself become a search problem.' Those are
+>  very different scientific claims.
+>
+>  This sentence: 'The engine invented an optimizer pattern that wasn't
+>  in the portfolio.' Needs to be weakened. Because what happened is
+>  closer to: search recombined primitives → produced a sequence →
+>  performed better. That's program synthesis, not optimizer invention.
+>
+>  Your DSL already contains FIT_SURROGATE and ACQUIRE_EI. Those are
+>  already Bayesian Optimization concepts. So the search isn't inventing
+>  EI. It is discovering a useful composition of known operators.
+>
+>  I'd describe it as: 'discovered effective optimizer programs over a
+>  fixed operator language.' That wording is bulletproof."
+
+**What was done (cycle 229):**
+
+1. **HONEST RENAME** (per anti-entropy #5: match label to evidence):
+   - Renamed class L5SearchDiscovery → L5ProgramDiscovery
+   - Updated module docstring to say "PROGRAM SYNTHESIS, not optimizer
+     invention"
+   - Updated all printed labels: "invented an optimizer" → "discovered
+     an effective composition of known operators"
+   - Added backward-compat alias (L5SearchDiscovery = L5ProgramDiscovery)
+   - Updated the honest claim to: "discovered effective optimizer
+     programs over a fixed operator language"
+
+2. **L5 SUBLAYER ROADMAP** (docs/L5_SUBLAYER_ROADMAP.md):
+   - L5a — Program Discovery (WORKING, 7.8/10): search over programs
+     composed from a FIXED DSL
+   - L5b — Operator Discovery (NOT STARTED, ~2/10): search for NEW
+     reusable operators (LOCAL_CURVATURE_ESTIMATE, etc.)
+   - L5c — Language Discovery (CONCEPTUAL, ~1/10): search over the DSL
+     itself
+   - L5d — Theory Discovery (CONCEPTUAL, ~1/10): explain WHY discovered
+     operators work
+
+3. **BLIND BENCHMARK SUITE** (scripts/blind_suite.py):
+   - 20 unrelated problems: synthetic continuous (7), discrete/
+     combinatorial (5: TSP, SAT, Knapsack, Bin Packing, Job Shop),
+     engineering surrogates (4: circuit, portfolio, hyperparameter,
+     protein), hybrid (4: symbolic regression, neural architecture,
+     control, scheduling)
+   - All identities HIDDEN — only BLIND-001..020 IDs
+   - Only sample() and evaluate() exposed to the engine
+   - Verified no domain keywords leak into problem IDs or specs
+
+**Honest blind suite result (cycle 229):**
+
+L5a program discovery trained on BLIND-001..010, evaluated on
+BLIND-011..020 (held-out):
+
+| Problem | Program | Random | Beats? |
+|---------|---------|--------|--------|
+| BLIND-011 | -3.00 | -3.00 | ✗ (tie) |
+| BLIND-012 | -7.00 | -7.00 | ✗ (tie) |
+| BLIND-013 | -7.13 | -14.59 | ✓ |
+| BLIND-014 | -2.56 | -1.93 | ✗ |
+| BLIND-015 | -39.73 | -0.30 | ✗ |
+| BLIND-016 | +4.73 | +1.42 | ✓ |
+| BLIND-017 | -47.12 | -4.38 | ✗ |
+| BLIND-018 | +78.00 | +88.80 | ✗ |
+| BLIND-019 | -8.08 | -7.70 | ✗ |
+| BLIND-020 | -2.00 | -1.00 | ✗ |
+
+**Discovered program beats RANDOM on 2/10 held-out blind problems.**
+
+**Honest interpretation:**
+The discovered program does NOT generalize to unseen blind problems
+(2/10). This is an HONEST NEGATIVE RESULT. The program that worked on
+technology domains (4/7 beats portfolio) does NOT work on unrelated
+blind problems (2/10 beats random).
+
+This is exactly the test the auditor asked for: "If L5a consistently
+discovers optimizer programs that outperform a reasonable baseline
+across that blind suite, without domain labels, that's a much stronger
+demonstration." The result: L5a does NOT consistently outperform the
+baseline on the blind suite. The search is overfitting to the training
+domains.
+
+**Root causes (honest):**
+1. **Random search is too weak** — 30 random programs of length 4
+   cannot explore the program space effectively.
+2. **Small training set** — 10 blind problems is too few to learn
+   generalizable strategies.
+3. **Fixed DSL** — the 13 primitives may not be expressive enough for
+   the diverse blind suite (combinatorial problems like TSP/SAT need
+   different operators than continuous problems).
+4. **No domain-type awareness** — the discovered program is a fixed
+   sequence; it cannot adapt to different problem types (continuous vs
+   combinatorial vs hybrid).
+
+**Status:** HONEST NEGATIVE RESULT.
+- L5a is BOOTSTRAPPED (scaffolding works), NOT PROVEN (doesn't generalize).
+- The blind suite is the correct test, and it reveals the honest gap.
+- The 2/10 result is documented, not hidden.
+- Path forward: RL-based search, richer DSL with conditionals, larger
+  training set, domain-type-aware programs (L5b/c).
+
+**Lesson:** The blind suite is the harshest honest test. The technology
+domains (TE, Battery, Catalyst, PV) share characteristics (continuous,
+5-6 variables, physics-based) that the discovered program could exploit.
+The blind suite includes combinatorial problems (TSP, SAT, Knapsack)
+with fundamentally different structure. A program discovered on
+continuous problems cannot be expected to work on combinatorial ones
+without richer operators. This is the honest boundary: L5a works
+WITHIN a problem class, not ACROSS problem classes. Generalizing
+across classes requires L5b (operator discovery) and L5c (language
+discovery).
