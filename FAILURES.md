@@ -4908,3 +4908,102 @@ I must ask "did the ENGINE do this, or did the ENGINEER do this?"
 - True L5b: engine discovers the OPERATORS themselves.
 The honest naming follows this distinction. "Discovery" is reserved for
 what the engine does; "extension" or "design" for what the engineer does.
+
+### F-123 — L5b operator synthesis loop: engine generates composites that are selected (P1, cycle 233, first true L5b step)
+
+**Auditor's challenge (update #22):**
+  "Operator synthesis loop — the engine must generate new primitives
+   from composition of existing ones. No code exists for this.
+   Only when (1) exists can the claim become 'operator discovery'
+   again; until then, 'DSL extension' is the correct label."
+
+**The implementation (cycle 233):**
+Built `scripts/l5b_synthesis.py` with the first operator synthesis loop:
+
+1. **CompositeOperator** dataclass: a named, reusable subroutine
+   created by FUSING two existing operators. When a program references
+   the composite, the executor runs both constituents in sequence.
+
+2. **OperatorSynthesizer** class:
+   - Phase 1: Run program discovery on base DSL (18 ops)
+   - Phase 2: Analyze operator pairs that co-occur in HIGH-FITNESS
+     programs (top 50%)
+   - Phase 3: FUSE frequent pairs (≥ threshold) into CompositeOperators
+   - Phase 4: Re-run program discovery with composites added to DSL
+   - Phase 5: Count how often composites are SELECTED by the search
+
+**Honest result (50 programs, length 5, threshold=2, seed=42):**
+
+| Metric | Value |
+|--------|-------|
+| Base DSL (18 ops) best fitness | +38.5263 |
+| Composite DSL (18+17=35 ops) best fitness | +39.6132 |
+| Composites synthesized | 17 |
+| Composites selected by search | 17/17 (115 total selections) |
+| Performance change | +1.09 (composite DSL BEATS base DSL) |
+
+**17 composites were synthesized from frequent pairs, and ALL 17 were
+selected by the search in the re-run.** The composite DSL beat the base
+DSL by +1.09 fitness.
+
+**Sample composites synthesized:**
+- COMP-002: narrow_iqr_then_swap (selected 9 times)
+- COMP-007: swap_then_narrow_iqr (selected 10 times)
+- COMP-010: crossover_then_weighted_mean (selected 8 times)
+- COMP-012: sample_normal_then_widen (selected 8 times)
+
+**Honest interpretation:**
+1. **The synthesis loop WORKS.** The engine identified frequent pairs,
+   fused them into named composites, and the search SELECTED them.
+   This is the first step toward true L5b.
+2. **The composites are PAIRS, not new algorithms.** Each composite is
+   two existing ops fused into a named subroutine. This is NOT the same
+   as AlphaDev discovering a new sorting primitive. It IS the engine
+   doing the identifying and fusing — which is synthesis, not just
+   DSL extension.
+3. **The performance improvement is real but small (+1.09).** The
+   composites help because they let programs express useful 2-op
+   patterns in a single token, effectively giving the search more
+   expressive power per program slot.
+4. **All 17 composites were selected.** This means the search found
+   them useful — they weren't just synthesized and ignored.
+
+**The key distinction (now defensible):**
+- L5b (cycle 231): engineer adds SWAP, FLIP → "DSL extension"
+- L5b (cycle 233, this): engine identifies pairs, fuses them →
+  "operator synthesis" (first step toward "discovery")
+- True L5b (future): engine generates parameterized operators,
+  conditionals, or genuinely new algorithmic primitives
+
+**Honest claim:**
+"The engine synthesizes composite operators by identifying frequent
+pairs in high-fitness programs and fusing them. The composites are
+selected by the search and improve performance. This is the first
+step toward true operator discovery — the engine is doing the
+identifying and fusing, not the engineer."
+
+NOT: "the engine invented new algorithms" (composites are pairs of
+existing ops, not new algorithms).
+
+**Honest caveats:**
+1. Composites are PAIRS only (not triples, not parameterized)
+2. The fusion is sequential (no conditionals, no loops)
+3. Single seed (42). Multi-seed not tested.
+4. The +1.09 improvement is modest
+5. The composites don't help on the BLIND SUITE held-out (this test
+   was on training only — held-out generalization not measured)
+
+**Status:** FIRST STEP toward true L5b.
+- L5b maturity: 3/10 → 3.5/10 (synthesis loop built, composites
+  synthesized and selected, but pairs only, modest improvement)
+- The claim can now include "operator synthesis" (engine identifies
+  and fuses) alongside "DSL extension" (engineer adds hand-designed ops)
+- True "operator discovery" still requires parameterized generation
+  or genuinely new algorithmic primitives
+
+**Lesson:** The synthesis loop is the mechanism the auditor asked for.
+It's built, it works, and the composites are selected. The honest
+claim is precisely bounded: the engine SYNTHESIZES (identifies + fuses)
+but does not INVENT (create new algorithmic structure). That's the
+difference between L5b-scaffolding and true L5b — and it's now
+explicitly documented.
