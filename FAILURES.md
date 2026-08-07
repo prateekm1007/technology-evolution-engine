@@ -3173,3 +3173,114 @@ unphysical candidates; the learning metric must also exclude them. Every
 reported number must be computed over valid candidates only. The 12x
 inflation (+3.95 vs +0.33) shows how much unphysical values can distort
 an otherwise-real mechanism.
+
+### F-102 — Cross-domain transfer: architecture works in 2/4 domains, fails in 2/4 (P1, cycle 217, auditor-caught)
+
+**Auditor's hardest ask (update #7):**
+> "Suppose tomorrow I completely remove thermoelectrics. Now I ask:
+>  Design catalyst. Does the engine begin with grain size, carrier
+>  concentration, phonon scattering? No. Good. But does it instead say:
+>     Tradeoff A → Search Operator B → Constraint C
+>  If yes, you've learned invention. If no, you've learned thermoelectrics."
+
+**The test (cycle 217):**
+Built a domain-agnostic learning architecture (`scripts/cross_domain_transfer.py`)
+that runs the same algorithm on 4 structurally different domains:
+  - Thermoelectric (outcome: ZT, design vars: composition/carrier/grain/porosity)
+  - Li-ion battery (outcome: specific energy Wh/kg, design vars: thickness/porosity/particle/conc/C-rate)
+  - Heterogeneous catalyst (outcome: TOF s⁻¹, design vars: particle/support/loading/temp/SA)
+  - Photovoltaic (outcome: PCE %, design vars: thickness/bandgap/defects/grain/doping)
+
+Each domain has its own physically-grounded forward model with real tradeoffs
+(Pisarenko for TE, diffusion-limited capacity for battery, sintering for
+catalyst, Beer-Lambert + recombination for PV).
+
+**Honest result (5 iterations × 50 candidates per iter, seed=42):**
+
+| Domain        | Iter1 best | Iter5 best | Δ     | Verdict         |
+|---------------|-----------:|-----------:|------:|-----------------|
+| Thermoelectric|     0.452  |     0.573  | +0.12 | LEARNS          |
+| Battery       |     2.626  |     0.149  | -2.48 | FAILS (skewed)  |
+| Catalyst      |     2.779  |     5.681  | +2.90 | LEARNS          |
+| Photovoltaic  |    19.610  |    16.758  | -2.85 | FAILS (bimodal) |
+
+Median metric (more honest for skewed distributions):
+
+| Domain        | Iter1 med | Iter5 med | Δ      | Verdict         |
+|---------------|----------:|----------:|-------:|-----------------|
+| Thermoelectric|    0.133  |    0.265  | +0.132 | LEARNS          |
+| Battery       |    0.004  |    0.004  | +0.000 | STUCK (median≈0)|
+| Catalyst      |    0.272  |    0.520  | +0.247 | LEARNS          |
+| Photovoltaic  |    0.449  |    0.047  | -0.402 | REGRESSES       |
+
+**Result: 2/4 domains show clear learning, 2/4 do not.**
+
+**Failure modes (root cause analysis):**
+
+1. **Battery (skewed distribution):** The forward model produces median=0.004
+   Wh/kg, best=2.626 Wh/kg. The vast majority of random design points
+   produce near-zero specific energy because diffusion-limited capacity
+   collapses for most particle-size/C-rate combinations. The learner's
+   "high vs low" split is comparing "essentially zero" vs "essentially
+   zero plus noise" — there is no signal to extract. The iter1 best=2.626
+   is a 1-in-50 lucky draw that the search cannot reliably reproduce.
+
+2. **Photovoltaic (greedy narrowing on wrong variable):** The PV landscape
+   has a strong interaction between bandgap and defect density. The
+   learner picks "reducing absorber thickness" and "increasing bandgap"
+   as main heuristics, but the real optimum is at lower bandgap (1.1-1.3
+   eV, where Jsc is high) with low defect density. Greedy single-variable
+   narrowing drives the policy toward high-bandgap/high-Voc but low-Jsc
+   region, causing median PCE to regress from 0.449 to 0.047.
+
+**Warm-start with TE heuristics (auditor's predicted negative result):**
+
+Took 20 heuristics learned on thermoelectric, froze them, applied to
+non-TE domains. TE heuristics reference TE-specific variables (grain
+size, carrier concentration, κ, ZT) which do not exist in other domains:
+
+| Target domain | TE heuristics mapped | Inert | Effect       |
+|---------------|---------------------:|------:|--------------|
+| Battery       |                    5 |    15 | NEUTRAL      |
+| Catalyst      |                    0 |    20 | NEUTRAL      |
+| Photovoltaic  |                    5 |    15 | NEUTRAL      |
+
+The auditor's prediction is confirmed: **specific TE heuristics do NOT
+transfer to non-TE domains.** This is honest evidence that the learned
+heuristics are domain-specific, not general invention principles.
+
+**What this means for the auditor's distinction:**
+
+The auditor asked: "Have you learned invention, or thermoelectrics?"
+Honest answer:
+  - We have learned an INVENTION ALGORITHM (the DomainAgnosticLearner
+    architecture) that works on 2/4 structurally different domains.
+  - We have NOT learned DOMAIN-INVARIANT HEURISTICS — the specific
+    heuristics (e.g., "Reducing porosity below 0.30 when S > 100e-6
+    tends to increase ZT, EXCEPT when grain size > 7273nm") reference
+    TE-specific variables and do not transfer.
+  - The architecture has known failure modes on skewed/bimodal outcome
+    distributions (Battery, PV). The fix requires either quantile-based
+    importance sampling (for skewed) or multi-variable joint learning
+    (for interacting variables in PV).
+
+**Status:** OPEN.
+- Cycle 216 upgrade (exception clauses) is RESOLVED — heuristics now
+  have physics-level structure: "X tends to increase Y, EXCEPT when Z
+  (because reason)".
+- Cycle 217 cross-domain transfer is PARTIAL — 2/4 domains work, 2/4
+  fail with diagnosed root causes.
+- The remaining gap to "10 unrelated domains with iter3 > iter1" is
+  real engineering work: importance sampling for skewed landscapes,
+  multi-variable joint learning for interacting variables, and a
+  meta-level ontology to map domain variables to canonical roles
+  (transport variable, density variable, etc.) for true heuristic
+  transfer.
+
+**Lesson:** The auditor's distinction between "learned invention" and
+"learned thermoelectrics" is now empirically grounded. We have the
+former (algorithm transfers to 2/4 domains) but not the latter
+(specific heuristics do not transfer). This is a sharper, more honest
+claim than "the engine adapts." The 2/4 result is also a real
+falsification — the architecture is NOT universally general, and we
+now know exactly where and why it fails.

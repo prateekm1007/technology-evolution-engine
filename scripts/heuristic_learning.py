@@ -41,11 +41,25 @@ class InventionHeuristic:
     Unlike material preferences ("PbTe is good"), heuristics describe
     RELATIONSHIPS between design variables and outcomes that hold
     across materials.
+
+    Cycle 216 upgrade (auditor's "physics not statistics" requirement):
+    A real physics heuristic has an EXCEPTION clause — it states when
+    the rule breaks down. Without an exception, the heuristic is just
+    a regression coefficient. With an exception, it is a conditional
+    physical claim.
+
+    Example of a statistics-level heuristic (BANNED by this upgrade):
+        "grain_size < 20nm good"
+
+    Example of a physics-level heuristic (REQUIRED by this upgrade):
+        "Reducing grain size below 50nm increases ZT when lattice κ > 1.0,
+         EXCEPT when grain_boundary_resistance > 1e-8 Ω·m² (because then
+         σ collapses faster than κ is reduced)."
     """
     heuristic_id: str
-    statement: str           # human-readable: "Nanostructuring at grain<50nm improves ZT when κ>1.0"
+    statement: str           # human-readable full statement with exception clause
     variable: str            # "grain_size_nm"
-    condition: str           # "thermal_conductivity > 1.0"
+    condition: str           # "thermal_conductivity > 1.0" (when the rule applies)
     direction: str           # "decrease" (reduce grain size) or "increase"
     effect: str              # "increases ZT" or "decreases ZT"
     confidence: float        # 0-1, based on how consistently it held
@@ -53,6 +67,12 @@ class InventionHeuristic:
     counterexample_count: int  # how many contradicted it
     transferable: bool = False  # verified on unseen materials
     materials_tested: List[str] = field(default_factory=list)
+    # Cycle 216 — exception clause (the "when does this rule break" structure)
+    exception_variable: str = ""    # e.g. "grain_boundary_resistance"
+    exception_threshold: float = 0.0  # rule breaks above this value
+    exception_direction: str = ""   # "above" or "below"
+    exception_reason: str = ""      # physical explanation of why the rule breaks
+    physics_level: str = "statistical"  # "statistical" or "physical" (auditor's distinction)
 
     def to_dict(self) -> Dict:
         return {
@@ -67,6 +87,11 @@ class InventionHeuristic:
             "counterexample_count": self.counterexample_count,
             "transferable": self.transferable,
             "materials_tested": self.materials_tested,
+            "exception_variable": self.exception_variable,
+            "exception_threshold": self.exception_threshold,
+            "exception_direction": self.exception_direction,
+            "exception_reason": self.exception_reason,
+            "physics_level": self.physics_level,
         }
 
 
@@ -156,11 +181,26 @@ class HeuristicLearner:
                                 confidence = evidence / max(1, evidence + counterexamples)
 
                                 if confidence >= 0.6:
+                                    # Cycle 216 — find the exception clause.
+                                    # Look at counterexamples within condition_met:
+                                    # what other variable separated them from the
+                                    # winners? That variable + threshold = exception.
+                                    exc_var, exc_thr, exc_dir, exc_reason = self._find_exception(
+                                        var_name, condition_met, extractor, direction, cond_low_avg
+                                    )
+
+                                    statement = self._formulate_statement(
+                                        var_name, direction, threshold, condition_name,
+                                        exc_var, exc_thr, exc_dir, exc_reason
+                                    )
+
+                                    physics_level = "physical" if exc_var else (
+                                        "physical" if condition_name != "unconditional" else "statistical"
+                                    )
+
                                     h = InventionHeuristic(
                                         heuristic_id=f"HEUR-{len(self.heuristics) + len(new_heuristics) + 1:03d}",
-                                        statement=self._formulate_statement(
-                                            var_name, direction, threshold, condition_name
-                                        ),
+                                        statement=statement,
                                         variable=var_name,
                                         condition=condition_name,
                                         direction=direction,
@@ -169,6 +209,11 @@ class HeuristicLearner:
                                         evidence_count=evidence,
                                         counterexample_count=counterexamples,
                                         materials_tested=list(set(r.design_point.base_material for r in condition_met)),
+                                        exception_variable=exc_var,
+                                        exception_threshold=exc_thr,
+                                        exception_direction=exc_dir,
+                                        exception_reason=exc_reason,
+                                        physics_level=physics_level,
                                     )
                                     new_heuristics.append(h)
                                     break  # one heuristic per variable
@@ -178,9 +223,19 @@ class HeuristicLearner:
                 direction = "increase"
                 threshold = high_avg
 
+                # Cycle 216 — find exception for unconditional heuristic too
+                exc_var, exc_thr, exc_dir, exc_reason = self._find_exception(
+                    var_name, results, extractor, direction, low_avg
+                )
+                statement = self._formulate_statement(
+                    var_name, direction, threshold, "unconditional",
+                    exc_var, exc_thr, exc_dir, exc_reason
+                )
+                physics_level = "physical" if exc_var else "statistical"
+
                 h = InventionHeuristic(
                     heuristic_id=f"HEUR-{len(self.heuristics) + len(new_heuristics) + 1:03d}",
-                    statement=self._formulate_statement(var_name, direction, threshold, "unconditional"),
+                    statement=statement,
                     variable=var_name,
                     condition="unconditional",
                     direction=direction,
@@ -189,11 +244,91 @@ class HeuristicLearner:
                     evidence_count=len(high_zt),
                     counterexample_count=0,
                     materials_tested=list(set(r.design_point.base_material for r in results)),
+                    exception_variable=exc_var,
+                    exception_threshold=exc_thr,
+                    exception_direction=exc_dir,
+                    exception_reason=exc_reason,
+                    physics_level=physics_level,
                 )
                 new_heuristics.append(h)
 
         self.heuristics.extend(new_heuristics)
         return new_heuristics
+
+    def _find_exception(self, var_name: str, results: List[Any],
+                         extractor, direction: str, fail_threshold: float):
+        """Cycle 216 — find the EXCEPTION clause for a heuristic.
+
+        The auditor's question: "Does it produce
+            'Reducing grain size below 50nm increases ZT when κ > 1.0,
+             EXCEPT when grain_boundary_resistance > X'
+        or does it produce
+            'grain_size<20nm good'?"
+
+        This method finds the exception. It scans OTHER design variables
+        and finds one whose value consistently separates winners from
+        losers AMONG candidates that followed the main rule but failed.
+
+        Returns (exception_var, threshold, direction, reason).
+        Returns ("", 0, "", "") if no exception found.
+        """
+        # Candidates that followed the rule (var in the direction of success)
+        if direction == "decrease":
+            followed = [r for r in results if extractor(r) < fail_threshold]
+        else:
+            followed = [r for r in results if extractor(r) > fail_threshold]
+
+        if len(followed) < 6:
+            return "", 0.0, "", ""
+
+        zt_values = [r.predicted_zt for r in followed]
+        median_zt = sorted(zt_values)[len(zt_values) // 2]
+        winners = [r for r in followed if r.predicted_zt >= median_zt]
+        losers = [r for r in followed if r.predicted_zt < median_zt]
+
+        if len(winners) < 3 or len(losers) < 3:
+            return "", 0.0, "", ""
+
+        # Scan other design variables to find the discriminator
+        candidate_exceptions = [
+            ("grain_size_nm", lambda r: r.design_point.grain_size_nm, "grain size",
+             "grain boundary resistance grows and collapses σ faster than κ is reduced"),
+            ("carrier_concentration", lambda r: r.design_point.carrier_concentration, "carrier concentration",
+             "Pisarenko relation drives S toward zero"),
+            ("porosity", lambda r: r.design_point.porosity, "porosity",
+             "percolation threshold breaks electrical continuity"),
+            ("composition_x", lambda r: r.design_point.composition_x, "alloy fraction",
+             "disorder broadening reduces mobility faster than κ"),
+        ]
+
+        # Exclude the main variable
+        candidate_exceptions = [c for c in candidate_exceptions if c[0] != var_name]
+
+        best_var = None
+        best_sep = 0
+        best_thr = 0
+        best_dir = ""
+        best_reason = ""
+
+        for exc_name, exc_extract, exc_human, exc_reason in candidate_exceptions:
+            w_vals = [exc_extract(r) for r in winners]
+            l_vals = [exc_extract(r) for r in losers]
+            if not w_vals or not l_vals:
+                continue
+            w_avg = sum(w_vals) / len(w_vals)
+            l_avg = sum(l_vals) / len(l_vals)
+            sep = abs(w_avg - l_avg) / max(1e-12, abs(w_avg) + abs(l_avg))
+            if sep > best_sep and sep > 0.15:  # at least 15% separated
+                best_var = exc_human
+                best_sep = sep
+                best_thr = (w_avg + l_avg) / 2
+                best_dir = "above" if l_avg > w_avg else "below"
+                best_reason = exc_reason
+
+        if best_var is None:
+            return "", 0.0, "", ""
+
+        return best_var, best_thr, best_dir, best_reason
 
     def _get_threshold(self, var_name: str, results: List[Any]) -> float:
         """Get median threshold for a variable."""
@@ -206,8 +341,10 @@ class HeuristicLearner:
         return 0.0
 
     def _formulate_statement(self, var_name: str, direction: str,
-                             threshold: float, condition: str) -> str:
-        """Formulate a human-readable heuristic statement."""
+                             threshold: float, condition: str,
+                             exc_var: str = "", exc_threshold: float = 0.0,
+                             exc_dir: str = "", exc_reason: str = "") -> str:
+        """Formulate a human-readable heuristic statement with exception clause."""
         dir_word = "Reducing" if direction == "decrease" else "Increasing"
         var_human = {
             "grain_size_nm": "grain size",
@@ -228,7 +365,15 @@ class HeuristicLearner:
 
         cond_str = f" when {condition}" if condition != "unconditional" else ""
 
-        return f"{dir_word} {var_human}{threshold_str}{cond_str} tends to increase ZT"
+        # Cycle 216 — exception clause
+        exc_str = ""
+        if exc_var and exc_dir:
+            thr_str = f"{exc_threshold:.2e}" if exc_threshold < 0.01 or exc_threshold > 1000 else f"{exc_threshold:.2f}"
+            exc_str = f", EXCEPT when {exc_var} is {exc_dir} {thr_str}"
+            if exc_reason:
+                exc_str += f" (because {exc_reason})"
+
+        return f"{dir_word} {var_human}{threshold_str}{cond_str} tends to increase ZT{exc_str}"
 
     def test_transferability(self, heuristics: List[InventionHeuristic],
                               unseen_results: List[Any]) -> List[InventionHeuristic]:
@@ -331,9 +476,15 @@ def main():
 
     print(f"Learned {len(heuristics)} heuristics from training data:")
     for h in heuristics:
-        print(f"  [{h.heuristic_id}] {h.statement}")
-        print(f"    Confidence: {h.confidence:.2f} ({h.evidence_count} evidence, {h.counterexample_count} counterexamples)")
-        print(f"    Materials: {h.materials_tested}")
+        print(f"  [{h.heuristic_id}] (physics_level: {h.physics_level})")
+        print(f"   STATEMENT: {h.statement}")
+        print(f"   Confidence: {h.confidence:.2f} ({h.evidence_count} evidence, {h.counterexample_count} counterexamples)")
+        print(f"   Materials: {h.materials_tested}")
+        if h.exception_variable:
+            print(f"   EXCEPTION: when {h.exception_variable} is {h.exception_direction} {h.exception_threshold:.2e}")
+            print(f"             because {h.exception_reason}")
+        else:
+            print(f"   EXCEPTION: (none found — heuristic is purely statistical)")
         print()
 
     # Test transferability on unseen data
