@@ -1,0 +1,7 @@
+reviewer_id,reviewer_type,anon_id,D1,D2,D3,D4,D5,D6,D7,overall_verdict,comments
+AI_SURROGATE_001,AI_PRE_REVIEW,REVIEW-001,4,1,2,2,3,2,2,REJECT,"Energy gap is scientifically plausible but the proposal is only shared vocabulary; no concrete mechanism or nontrivial prediction."
+AI_SURROGATE_001,AI_PRE_REVIEW,REVIEW-002,4,1,2,2,3,2,2,REJECT,"Thermal differential is plausible but generic; the proposal lacks domain-specific mechanism and rigorous falsification."
+AI_SURROGATE_001,AI_PRE_REVIEW,REVIEW-003,4,2,2,2,3,2,2,REJECT,"Surface chemical modification has potential but is underspecified; needs concrete chemistry, domains, and measurable transfer."
+AI_SURROGATE_001,AI_PRE_REVIEW,REVIEW-004,4,1,2,2,3,2,2,REJECT,"Phase change enthalpy is real but proposal lacks a specific mechanistic hypothesis; counterexample is a benchmark artifact."
+AI_SURROGATE_001,AI_PRE_REVIEW,REVIEW-005,5,1,2,1,3,1,1,REJECT,"Heat is far too generic to be a discovery bridge; high risk of recognition-only scoring."
+AI_SURROGATE_001,AI_PRE_REVIEW,REVIEW-006,3,1,2,2,3,2,2,REJECT,"Likely photon-energy concept, but awkwardly specified and not grounded in a concrete cross-domain mechanism."

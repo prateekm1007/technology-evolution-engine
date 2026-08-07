@@ -1,11 +1,14 @@
 {
-  "cycle": 256,
+  "cycle": 257,
   "gate": "C",
   "gate_name": "proposal_evaluation_n30",
   "n_total": 40,
   "n_original": 20,
   "n_synthetic": 20,
   "n_met": true,
+  "useful_performance_threshold": 0.3,
+  "useful_performance_met": false,
+  "honest_f1_mean": 0.15,
   "distribution": {
     "n_total": 40,
     "n_original": 20,
@@ -494,5 +497,7 @@
       "source": "synthetic-strategy-3"
     }
   ],
-  "gate_verdict": "PASS"
+  "gate_verdict": "PASS",
+  "verdict_tier": "WEAK_STATISTICAL_PASS",
+  "verdict_tier_definition": "WEAK_STATISTICAL_PASS: N>=30 and the honest-F1 mean is statistically distinguishable from the FP floor (1.0), BUT the mean is below the useful-performance threshold (0.30). Distinguishability from FP=1.0 is necessary but not sufficient. Useful proposal performance requires per-proposal honest F1 mean >= 0.30. Observed: 0.1500. This gate does NOT prove useful discovery capability \u2014 it proves the matcher is not pure noise."
 }

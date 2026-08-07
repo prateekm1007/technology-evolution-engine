@@ -42,11 +42,13 @@ def harvest_gate_a(reports_dir: Path) -> Dict:
     """Read Gate A result from external_baselines.json."""
     path = reports_dir / "external_baselines.json"
     if not path.exists():
-        return {"available": False, "verdict": "NOT_RUN", "error": "file missing"}
+        return {"available": False, "verdict": "NOT_RUN",
+                "verdict_tier": "NOT_RUN", "error": "file missing"}
     data = json.loads(path.read_text())
     return {
         "available": True,
         "verdict": data.get("gate_verdict", "UNKNOWN"),
+        "verdict_tier": data.get("verdict_tier", "UNKNOWN"),
         "production_f1_strict": data.get("production_f1_strict"),
         "production_f1_lenient": data.get("production_f1_lenient"),
         "fp_floor_lenient": data.get("fp_floor_lenient"),
@@ -58,15 +60,18 @@ def harvest_gate_b(reports_dir: Path) -> Dict:
     """Read Gate B result from historical_recalibration.json."""
     path = reports_dir / "historical_recalibration.json"
     if not path.exists():
-        return {"available": False, "verdict": "NOT_RUN", "error": "file missing"}
+        return {"available": False, "verdict": "NOT_RUN",
+                "verdict_tier": "NOT_RUN", "error": "file missing"}
     data = json.loads(path.read_text())
     return {
         "available": True,
         "verdict": data.get("gate_verdict", "UNKNOWN"),
+        "verdict_tier": data.get("verdict_tier", "UNKNOWN"),
         "n_claims": data.get("n_claims"),
         "verdict_counts_dr91": data.get("verdict_counts_dr91_convention"),
         "verdict_counts_honest": data.get("verdict_counts_honest_convention"),
         "formula_inflation_observed": data.get("formula_inflation_observed"),
+        "formula_inflation_severity": data.get("formula_inflation_severity", "P0"),
     }
 
 
@@ -74,13 +79,18 @@ def harvest_gate_c(reports_dir: Path) -> Dict:
     """Read Gate C result from proposal_evaluation_n30.json."""
     path = reports_dir / "proposal_evaluation_n30.json"
     if not path.exists():
-        return {"available": False, "verdict": "NOT_RUN", "error": "file missing"}
+        return {"available": False, "verdict": "NOT_RUN",
+                "verdict_tier": "NOT_RUN", "error": "file missing"}
     data = json.loads(path.read_text())
     return {
         "available": True,
         "verdict": data.get("gate_verdict", "UNKNOWN"),
+        "verdict_tier": data.get("verdict_tier", "UNKNOWN"),
         "n_total": data.get("n_total"),
         "n_met": data.get("n_met"),
+        "useful_performance_threshold": data.get("useful_performance_threshold"),
+        "useful_performance_met": data.get("useful_performance_met"),
+        "honest_f1_mean": data.get("honest_f1_mean"),
         "distribution": data.get("distribution"),
         "t_test": data.get("t_test"),
     }
@@ -89,27 +99,64 @@ def harvest_gate_c(reports_dir: Path) -> Dict:
 def harvest_gate_d(reports_dir: Path) -> Dict:
     """Read Gate D result.
 
-    Gate D is special: it produces a scaffolding (not a result).
-    The actual verdict only exists if responses have been collected
-    and the aggregation script has been run, producing
-    tier2_review_aggregated.json.
+    Cycle 257 design change: Gate D now accepts AI specialist surrogate
+    review in lieu of Tier-2 human review (since this system is meant to
+    be an end-to-end AI loop). The aggregation script applies the same
+    verdict thresholds regardless of reviewer type.
+
+    The verdict_tier for Gate D is one of:
+      SCIENCE_PASS       — human or AI surrogate reviewed and accepted
+      AI_SURROGATE_REVIEW_FAIL — AI surrogate reviewed and rejected
+      BLOCKED_ON_HUMAN_OR_AI_SURROGATE_REVIEW — no responses yet
+      FAIL               — full failure
     """
     agg_path = reports_dir / "tier2_review_aggregated.json"
+    responses_path = reports_dir / "tier2_review_responses.csv"
     if not agg_path.exists():
         # Check if scaffolding exists
         scaffold_path = reports_dir / "tier2_review_status.md"
         if scaffold_path.exists():
             return {
                 "available": True,
-                "verdict": "BLOCKED_ON_HUMAN",
+                "verdict": "BLOCKED_ON_HUMAN_OR_AI_SURROGATE_REVIEW",
+                "verdict_tier": "BLOCKED_ON_HUMAN_OR_AI_SURROGATE_REVIEW",
                 "scaffolding_built": True,
-                "blocked_reason": "Awaiting human domain expert review responses",
+                "blocked_reason": (
+                    "Awaiting review responses (human Tier-2 OR AI surrogate). "
+                    "Per cycle 257 design change, AI specialist review is "
+                    "accepted because this system is meant to be an end-to-end "
+                    "AI loop."
+                ),
             }
-        return {"available": False, "verdict": "NOT_RUN", "error": "no scaffolding"}
+        return {"available": False, "verdict": "NOT_RUN",
+                "verdict_tier": "NOT_RUN", "error": "no scaffolding"}
     data = json.loads(agg_path.read_text())
+    gate_verdict = data.get("gate_verdict", "UNKNOWN")
+
+    # Determine reviewer type from responses CSV (look for reviewer_type column)
+    reviewer_type = "UNKNOWN"
+    if responses_path.exists():
+        import csv as _csv
+        with open(responses_path, "r") as f:
+            reader = _csv.DictReader(f)
+            first = next(iter(reader), {})
+            reviewer_type = first.get("reviewer_type", "HUMAN")
+
+    # Map verdict to verdict_tier
+    if reviewer_type == "AI_PRE_REVIEW":
+        if gate_verdict == "PASS":
+            verdict_tier = "SCIENCE_PASS"  # AI surrogate PASSED
+        else:
+            verdict_tier = f"AI_SURROGATE_REVIEW_{gate_verdict}"
+    else:
+        # Human review
+        verdict_tier = gate_verdict  # PASS/PARTIAL/FAIL
+
     return {
         "available": True,
-        "verdict": data.get("gate_verdict", "UNKNOWN"),
+        "verdict": gate_verdict,
+        "verdict_tier": verdict_tier,
+        "reviewer_type": reviewer_type,
         "n_responses": data.get("n_responses"),
         "accept_rate": data.get("accept_rate"),
         "overall_mean_score": data.get("overall_mean_score"),
@@ -123,6 +170,10 @@ def harvest_gate_d(reports_dir: Path) -> Dict:
 def decide_eligibility(gates: Dict[str, Dict]) -> Dict:
     """Decide whether the FINAL verdict is eligible based on gate results.
 
+    Cycle 257 tightening: FINAL verdict requires SCIENCE_PASS on ALL gates.
+    Anything less (INSTRUMENTATION_SCAFFOLD_PASS, SENSITIVITY_ANALYSIS_PASS,
+    WEAK_STATISTICAL_PASS, AI_SURROGATE_REVIEW_FAIL, BLOCKED) blocks eligibility.
+
     Returns a dict with:
       - eligible: bool
       - blocking_gates: list of gate names that blocked eligibility
@@ -132,18 +183,43 @@ def decide_eligibility(gates: Dict[str, Dict]) -> Dict:
     reasons = []
 
     for gate_name, gate_result in gates.items():
-        verdict = gate_result.get("verdict", "NOT_RUN")
-        if verdict in ("NOT_RUN", "BLOCKED_ON_HUMAN", "FAIL", "UNKNOWN"):
+        verdict_tier = gate_result.get("verdict_tier", "NOT_RUN")
+        if verdict_tier == "SCIENCE_PASS":
+            pass  # only this tier qualifies for FINAL verdict
+        elif verdict_tier in (
+            "INSTRUMENTATION_SCAFFOLD_PASS",
+            "SENSITIVITY_ANALYSIS_PASS",
+            "WEAK_STATISTICAL_PASS",
+        ):
             blocking.append(gate_name)
-            reasons.append(f"{gate_name}: {verdict} — {gate_result.get('blocked_reason', gate_result.get('error', 'no reason'))}")
-        elif verdict == "PARTIAL":
+            reasons.append(
+                f"{gate_name}: verdict_tier={verdict_tier} — instrumentation/scaffold "
+                f"pass only, NOT SCIENCE_PASS. The gate runs and produces signal "
+                f"but does not prove the scientific claim."
+            )
+        elif verdict_tier == "NOT_RUN":
             blocking.append(gate_name)
-            reasons.append(f"{gate_name}: PARTIAL — not full pass")
-        elif verdict == "PASS":
-            pass  # good
+            reasons.append(
+                f"{gate_name}: NOT_RUN — {gate_result.get('error', 'no reason')}"
+            )
+        elif verdict_tier.startswith("BLOCKED"):
+            blocking.append(gate_name)
+            reasons.append(
+                f"{gate_name}: {verdict_tier} — {gate_result.get('blocked_reason', 'blocked')}"
+            )
+        elif verdict_tier.startswith("AI_SURROGATE_REVIEW_"):
+            blocking.append(gate_name)
+            reasons.append(
+                f"{gate_name}: {verdict_tier} — AI surrogate review did not pass. "
+                f"accept_rate={gate_result.get('accept_rate')}, "
+                f"overall_mean={gate_result.get('overall_mean_score')}"
+            )
+        elif verdict_tier in ("FAIL", "PARTIAL"):
+            blocking.append(gate_name)
+            reasons.append(f"{gate_name}: verdict_tier={verdict_tier}")
         else:
             blocking.append(gate_name)
-            reasons.append(f"{gate_name}: unexpected verdict {verdict!r}")
+            reasons.append(f"{gate_name}: unexpected verdict_tier {verdict_tier!r}")
 
     eligible = len(blocking) == 0
 
@@ -151,8 +227,10 @@ def decide_eligibility(gates: Dict[str, Dict]) -> Dict:
         "eligible": eligible,
         "blocking_gates": blocking,
         "reasons": reasons,
-        "n_gates_passed": sum(1 for g in gates.values() if g.get("verdict") == "PASS"),
+        "n_gates_science_pass": sum(1 for g in gates.values() if g.get("verdict_tier") == "SCIENCE_PASS"),
         "n_gates_total": len(gates),
+        # Legacy field kept for backward compat with tests
+        "n_gates_passed": sum(1 for g in gates.values() if g.get("verdict") == "PASS"),
     }
 
 
@@ -243,7 +321,13 @@ def write_blocked_verdict(reports_dir: Path, gates: Dict,
     lines.append("")
     lines.append("## Status: NOT TRUSTWORTHY (FINAL verdict not yet earned)")
     lines.append("")
-    lines.append(f"Gate results: {eligibility['n_gates_passed']}/{eligibility['n_gates_total']} PASS")
+    lines.append(f"Gates with SCIENCE_PASS: {eligibility['n_gates_science_pass']}/{eligibility['n_gates_total']}")
+    lines.append("")
+    lines.append("**Cycle 257 tightening**: FINAL verdict requires SCIENCE_PASS on")
+    lines.append("ALL gates. INSTRUMENTATION_SCAFFOLD_PASS, SENSITIVITY_ANALYSIS_PASS,")
+    lines.append("WEAK_STATISTICAL_PASS, AI_SURROGATE_REVIEW_FAIL, and BLOCKED all")
+    lines.append("block eligibility. These verdict tiers mean the gate's")
+    lines.append("instrumentation runs but does not prove the scientific claim.")
     lines.append("")
     if eligibility["blocking_gates"]:
         lines.append("## Blocking gates")
@@ -253,49 +337,78 @@ def write_blocked_verdict(reports_dir: Path, gates: Dict,
         lines.append("")
     lines.append("## Gate summary")
     lines.append("")
-    lines.append("| Gate | Name | Verdict |")
-    lines.append("|---|---|---|")
+    lines.append("| Gate | Name | Verdict | Verdict tier |")
+    lines.append("|---|---|---|---|")
     gate_names = {
         "A": "External baselines",
         "B": "Historical re-calibration",
         "C": "N≥30 proposal evaluation",
-        "D": "Tier-2 human review",
+        "D": "Tier-2 / AI surrogate review",
     }
     for gate_letter in ("A", "B", "C", "D"):
         g = gates.get(gate_letter, {})
-        lines.append(f"| {gate_letter} | {gate_names[gate_letter]} | {g.get('verdict', 'NOT_RUN')} |")
+        v = g.get("verdict", "NOT_RUN")
+        vt = g.get("verdict_tier", "NOT_RUN")
+        if vt is None or vt == "UNKNOWN":
+            vt = "NOT_RUN"
+        lines.append(f"| {gate_letter} | {gate_names[gate_letter]} | {v} | {vt} |")
     lines.append("")
     lines.append("## What this means")
     lines.append("")
     lines.append("The PRELIMINARY verdict (NOT TRUSTWORTHY) remains in effect.")
     lines.append("The measurement system has NOT earned the FINAL verdict because")
-    lines.append("one or more gates have not passed.")
+    lines.append("zero gates have reached SCIENCE_PASS. The instrumentation runs,")
+    lines.append("but the scientific claims are not proven.")
     lines.append("")
     lines.append("## What is required to unblock")
     lines.append("")
     for gate, reason in zip(eligibility["blocking_gates"], eligibility["reasons"]):
         if gate == "A":
-            lines.append("- **Gate A (External baselines)**: re-run DR-97. If production")
-            lines.append("  F1 doesn't beat baselines, the matcher needs to be reworked.")
+            lines.append("- **Gate A (External baselines)**: Cycle 257 finding: the")
+            lines.append("  current BM25 baseline is lexical/oracle-assisted (uses the")
+            lines.append("  gold bridge as the query). Repair requires implementing")
+            lines.append("  true external baselines that propose bridges WITHOUT seeing")
+            lines.append("  gold labels.")
         elif gate == "B":
-            lines.append("- **Gate B (Historical re-calibration)**: re-run DR-98. If")
-            lines.append("  historical claims don't reproduce, the scorecard must be revised.")
+            lines.append("- **Gate B (Historical re-calibration)**: Cycle 257 finding:")
+            lines.append("  this is a sensitivity analysis, not a full recalibration.")
+            lines.append("  Repair requires reconstructing each historical cycle's")
+            lines.append("  original gold data, matcher version, and scoring formula.")
+            lines.append("  Also: P0 finding — DR-91 F1 formula `2r/(1+r)` inflates")
+            lines.append("  scores; future F1 claims must use honest `2pr/(p+r)`.")
         elif gate == "C":
-            lines.append("- **Gate C (N≥30 proposal evaluation)**: re-run DR-99. If")
-            lines.append("  honest F1 is statistically indistinguishable from FP floor,")
-            lines.append("  the matcher produces no signal.")
+            lines.append("- **Gate C (N≥30 proposal evaluation)**: Cycle 257 finding:")
+            lines.append("  the PASS criterion was too weak. Distinguishability from")
+            lines.append("  FP=1.0 is necessary but not sufficient. Useful proposal")
+            lines.append("  performance requires per-proposal honest F1 mean ≥ 0.30;")
+            lines.append("  observed 0.1500. Repair requires reworking the matcher to")
+            lines.append("  produce higher per-proposal F1.")
         elif gate == "D":
-            lines.append("- **Gate D (Tier-2 human review)**: This gate is BLOCKED on")
-            lines.append("  human domain expert review. Recruit ≥3 experts, distribute")
-            lines.append("  reports/tier2_review_form.md, collect responses, run the")
-            lines.append("  aggregation script. See reports/tier2_review_status.md.")
+            if "AI_SURROGATE_REVIEW_FAIL" in reason:
+                lines.append("- **Gate D (AI surrogate review)**: AI surrogate reviewer")
+                lines.append("  (AI_SURROGATE_001, Tier-1.5 pre-screen) reviewed 6")
+                lines.append("  proposals and REJECTED all 6. The proposals are")
+                lines.append("  'template-level shared-term hypotheses, not mature")
+                lines.append("  scientific discovery claims.' Per cycle 257 design,")
+                lines.append("  AI specialist review is accepted (end-to-end AI loop),")
+                lines.append("  but the proposals did not pass. Repair requires")
+                lines.append("  reworking the ProposalComposer to produce domain-grounded")
+                lines.append("  hypotheses with concrete mechanisms, not shared vocabulary.")
+            else:
+                lines.append("- **Gate D (Tier-2 / AI surrogate review)**: No review")
+                lines.append("  responses collected yet. Per cycle 257 design, AI")
+                lines.append("  specialist review is accepted. See")
+                lines.append("  reports/tier2_review_status.md.")
     lines.append("")
     lines.append("## What is NOT blocked")
     lines.append("")
     lines.append("The scaffolding for all four gates is complete. The measurement")
     lines.append("infrastructure is in place. The remaining work is:")
-    lines.append("- Rework (for any FAIL verdicts)")
-    lines.append("- Human review (for Gate D)")
+    lines.append("- Repair Gate A with true external baselines (no oracle)")
+    lines.append("- Repair Gate B with full historical recalibration + honest F1")
+    lines.append("- Repair Gate C with useful-performance threshold (≥0.30 mean F1)")
+    lines.append("- Repair Gate D with reworked ProposalComposer (or human review)")
+    lines.append("- Document formula inflation as P0 concern for any future F1 claim")
     lines.append("")
 
     blocked_path.write_text("\n".join(lines))
@@ -308,8 +421,9 @@ def write_blocked_verdict(reports_dir: Path, gates: Dict,
 
 def main():
     print("=" * 80)
-    print("DR-101: FINAL Verdict Eligibility (cycle 256, gate E)")
+    print("DR-101: FINAL Verdict Eligibility (cycle 257, gate E)")
     print("Meta-gate: harvests results from gates A-D, decides eligibility.")
+    print("Cycle 257 tightening: FINAL requires SCIENCE_PASS on ALL gates.")
     print("=" * 80)
     print()
 
@@ -326,32 +440,38 @@ def main():
 
     print("Gate results:")
     print()
-    print(f"{'Gate':<6} {'Available':<12} {'Verdict':<22} {'Detail'}")
-    print("-" * 80)
+    print(f"{'Gate':<6} {'Available':<8} {'Verdict':<14} {'Verdict tier':<45} {'Detail'}")
+    print("-" * 130)
     for gate_letter, g in gates.items():
         detail = ""
         if g.get("available"):
             if gate_letter == "A":
                 detail = f"prod F1 lenient = {g.get('production_f1_lenient')}"
             elif gate_letter == "B":
-                detail = f"n_claims = {g.get('n_claims')}"
+                detail = f"n_claims = {g.get('n_claims')}, formula_inflation = {g.get('formula_inflation_observed')}"
             elif gate_letter == "C":
-                detail = f"N = {g.get('n_total')}, n_met = {g.get('n_met')}"
+                detail = f"N = {g.get('n_total')}, useful_perf_met = {g.get('useful_performance_met')}"
             elif gate_letter == "D":
-                detail = g.get("blocked_reason", f"accept_rate = {g.get('accept_rate')}")
+                if g.get("reviewer_type") == "AI_PRE_REVIEW":
+                    detail = f"AI surrogate, accept_rate = {g.get('accept_rate')}"
+                else:
+                    detail = g.get("blocked_reason", f"accept_rate = {g.get('accept_rate')}")
         else:
             detail = g.get("error", "")
         avail = "yes" if g.get("available") else "no"
-        print(f"{gate_letter:<6} {avail:<12} {g.get('verdict', 'NOT_RUN'):<22} {detail}")
+        vt = g.get("verdict_tier", "NOT_RUN")
+        if vt is None or vt == "UNKNOWN":
+            vt = "NOT_RUN"
+        print(f"{gate_letter:<6} {avail:<8} {g.get('verdict', 'NOT_RUN'):<14} {vt:<45} {detail[:80]}")
     print()
 
     # Decide eligibility
     eligibility = decide_eligibility(gates)
     print("=" * 80)
-    print("ELIGIBILITY DECISION")
+    print("ELIGIBILITY DECISION (cycle 257 tightening)")
     print("=" * 80)
     print()
-    print(f"Gates passed: {eligibility['n_gates_passed']}/{eligibility['n_gates_total']}")
+    print(f"Gates with SCIENCE_PASS: {eligibility['n_gates_science_pass']}/{eligibility['n_gates_total']}")
     print(f"Eligible for FINAL verdict: {eligibility['eligible']}")
     if eligibility["blocking_gates"]:
         print(f"Blocking gates: {', '.join(eligibility['blocking_gates'])}")
@@ -382,7 +502,7 @@ def main():
 
     # Write eligibility report
     json_out = {
-        "cycle": 256,
+        "cycle": 257,
         "gate": "E",
         "gate_name": "final_verdict_eligibility",
         "gates": gates,
@@ -411,17 +531,21 @@ def main():
         lines.append("")
     lines.append("## Gate results")
     lines.append("")
-    lines.append("| Gate | Name | Verdict |")
-    lines.append("|---|---|---|")
+    lines.append("| Gate | Name | Verdict | Verdict tier |")
+    lines.append("|---|---|---|---|")
     gate_names = {
         "A": "External baselines (DR-97)",
         "B": "Historical re-calibration (DR-98)",
         "C": "N≥30 proposal evaluation (DR-99)",
-        "D": "Tier-2 human review (DR-100)",
+        "D": "Tier-2 / AI surrogate review (DR-100)",
     }
     for gate_letter in ("A", "B", "C", "D"):
         g = gates.get(gate_letter, {})
-        lines.append(f"| {gate_letter} | {gate_names[gate_letter]} | {g.get('verdict', 'NOT_RUN')} |")
+        v = g.get("verdict", "NOT_RUN")
+        vt = g.get("verdict_tier", "NOT_RUN")
+        if vt is None or vt == "UNKNOWN":
+            vt = "NOT_RUN"
+        lines.append(f"| {gate_letter} | {gate_names[gate_letter]} | {v} | {vt} |")
     lines.append("")
     if eligibility["eligible"]:
         lines.append("## Outcome")

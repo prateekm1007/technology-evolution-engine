@@ -1,5 +1,5 @@
 {
-  "cycle": 256,
+  "cycle": 257,
   "gate": "A",
   "gate_name": "external_baselines",
   "production_f1_strict": 0.0,
@@ -647,5 +647,7 @@
       "verdict": "PRODUCTION_BEATS_BASELINE"
     }
   ],
-  "gate_verdict": "PASS"
+  "gate_verdict": "PASS",
+  "verdict_tier": "INSTRUMENTATION_SCAFFOLD_PASS",
+  "verdict_tier_definition": "INSTRUMENTATION_SCAFFOLD_PASS: the instrumentation runs and produces a non-trivial signal, but the BM25 baseline uses the gold bridge text as the query (oracle-assisted). A true external baseline would propose bridges WITHOUT seeing gold labels. This gate does NOT prove the discovery claim \u2014 it proves the matcher is not pure noise."
 }

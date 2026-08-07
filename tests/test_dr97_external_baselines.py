@@ -200,3 +200,36 @@ def test_main_runs_and_writes_reports():
     assert "comparisons_lenient" in data
     assert "gate_verdict" in data
     assert data["gate_verdict"] in ["PASS", "PARTIAL", "FAIL"]
+
+
+def test_gate_a_has_verdict_tier_field():
+    """Cycle 257 tightening: Gate A must report a verdict_tier field
+    that is NOT SCIENCE_PASS (because BM25 is oracle-assisted)."""
+    from audit.measurement_integrity.dr97_external_baselines import main
+    main()
+    data = json.loads((REPO / "reports" / "external_baselines.json").read_text())
+    assert "verdict_tier" in data
+    assert data["verdict_tier"] in (
+        "INSTRUMENTATION_SCAFFOLD_PASS",
+        "SCIENCE_PASS",
+        "FAIL",
+    )
+    # The current implementation is oracle-assisted, so it should NOT
+    # claim SCIENCE_PASS
+    assert data["verdict_tier"] != "SCIENCE_PASS", (
+        "Gate A should not claim SCIENCE_PASS — the BM25 baseline is "
+        "lexical/oracle-assisted (uses gold bridge as query)."
+    )
+
+
+def test_gate_a_verdict_tier_definition_documents_limitation():
+    """The verdict_tier_definition must explain what the tier means."""
+    from audit.measurement_integrity.dr97_external_baselines import main
+    main()
+    data = json.loads((REPO / "reports" / "external_baselines.json").read_text())
+    assert "verdict_tier_definition" in data
+    definition = data["verdict_tier_definition"]
+    # Must mention the key limitation
+    assert "oracle" in definition.lower() or "lexical" in definition.lower(), (
+        "verdict_tier_definition must mention the oracle/lexical limitation"
+    )

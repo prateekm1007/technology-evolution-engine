@@ -24,27 +24,51 @@ def reports_dir():
 
 @pytest.fixture
 def sample_gates_all_pass():
+    """All gates SCIENCE_PASS — only this earns FINAL verdict (cycle 257)."""
     return {
-        "A": {"available": True, "verdict": "PASS",
+        "A": {"available": True, "verdict": "PASS", "verdict_tier": "SCIENCE_PASS",
               "production_f1_strict": 0.0, "production_f1_lenient": 0.8571,
               "fp_floor_lenient": 1.0, "comparisons_lenient": []},
-        "B": {"available": True, "verdict": "PASS", "n_claims": 7,
-              "formula_inflation_observed": True},
-        "C": {"available": True, "verdict": "PASS", "n_total": 40, "n_met": True,
-              "distribution": {"lenient_honest": {"mean": 0.15}}},
-        "D": {"available": True, "verdict": "PASS", "n_responses": 3,
-              "accept_rate": 0.6, "overall_mean_score": 3.8},
+        "B": {"available": True, "verdict": "PASS", "verdict_tier": "SCIENCE_PASS",
+              "n_claims": 7, "formula_inflation_observed": True},
+        "C": {"available": True, "verdict": "PASS", "verdict_tier": "SCIENCE_PASS",
+              "n_total": 40, "n_met": True,
+              "distribution": {"lenient_honest": {"mean": 0.5}}},
+        "D": {"available": True, "verdict": "PASS", "verdict_tier": "SCIENCE_PASS",
+              "n_responses": 3, "accept_rate": 0.6, "overall_mean_score": 3.8},
     }
 
 
 @pytest.fixture
 def sample_gates_d_blocked():
+    """Gate D BLOCKED — FINAL blocked."""
     return {
-        "A": {"available": True, "verdict": "PASS"},
-        "B": {"available": True, "verdict": "PASS"},
-        "C": {"available": True, "verdict": "PASS"},
-        "D": {"available": True, "verdict": "BLOCKED_ON_HUMAN",
-              "blocked_reason": "Awaiting human review"},
+        "A": {"available": True, "verdict": "PASS",
+              "verdict_tier": "INSTRUMENTATION_SCAFFOLD_PASS"},
+        "B": {"available": True, "verdict": "PASS",
+              "verdict_tier": "SENSITIVITY_ANALYSIS_PASS"},
+        "C": {"available": True, "verdict": "PASS",
+              "verdict_tier": "WEAK_STATISTICAL_PASS"},
+        "D": {"available": True, "verdict": "BLOCKED_ON_HUMAN_OR_AI_SURROGATE_REVIEW",
+              "verdict_tier": "BLOCKED_ON_HUMAN_OR_AI_SURROGATE_REVIEW",
+              "blocked_reason": "Awaiting review responses"},
+    }
+
+
+@pytest.fixture
+def sample_gates_current_cycle_257():
+    """Cycle 257 actual state: A,B,C instrumentation-only, D AI surrogate FAIL."""
+    return {
+        "A": {"available": True, "verdict": "PASS",
+              "verdict_tier": "INSTRUMENTATION_SCAFFOLD_PASS"},
+        "B": {"available": True, "verdict": "PASS",
+              "verdict_tier": "SENSITIVITY_ANALYSIS_PASS"},
+        "C": {"available": True, "verdict": "PASS",
+              "verdict_tier": "WEAK_STATISTICAL_PASS"},
+        "D": {"available": True, "verdict": "FAIL",
+              "verdict_tier": "AI_SURROGATE_REVIEW_FAIL",
+              "accept_rate": 0.0, "overall_mean_score": 2.2381,
+              "reviewer_type": "AI_PRE_REVIEW"},
     }
 
 
@@ -97,23 +121,50 @@ def test_decide_eligibility_all_pass(sample_gates_all_pass):
     result = decide_eligibility(sample_gates_all_pass)
     assert result["eligible"] is True
     assert result["blocking_gates"] == []
-    assert result["n_gates_passed"] == 4
+    assert result["n_gates_science_pass"] == 4
     assert result["n_gates_total"] == 4
 
 
 def test_decide_eligibility_d_blocked(sample_gates_d_blocked):
+    """Cycle 257: ALL gates block (A,B,C are instrumentation-only, D is BLOCKED)."""
     result = decide_eligibility(sample_gates_d_blocked)
     assert result["eligible"] is False
+    # All 4 gates block under cycle 257 tightening
+    assert "A" in result["blocking_gates"]
+    assert "B" in result["blocking_gates"]
+    assert "C" in result["blocking_gates"]
     assert "D" in result["blocking_gates"]
-    assert result["n_gates_passed"] == 3
+    assert result["n_gates_science_pass"] == 0
+
+
+def test_decide_eligibility_cycle_257_current_state(sample_gates_current_cycle_257):
+    """Cycle 257 actual state: all 4 gates block."""
+    result = decide_eligibility(sample_gates_current_cycle_257)
+    assert result["eligible"] is False
+    assert result["n_gates_science_pass"] == 0
+    assert set(result["blocking_gates"]) == {"A", "B", "C", "D"}
+
+
+def test_decide_eligibility_instrumentation_scaffold_pass_blocks():
+    """A gate with verdict_tier=INSTRUMENTATION_SCAFFOLD_PASS must BLOCK
+    eligibility (cycle 257 tightening). It's not SCIENCE_PASS."""
+    gates = {
+        "A": {"verdict": "PASS", "verdict_tier": "INSTRUMENTATION_SCAFFOLD_PASS"},
+        "B": {"verdict": "PASS", "verdict_tier": "SCIENCE_PASS"},
+        "C": {"verdict": "PASS", "verdict_tier": "SCIENCE_PASS"},
+        "D": {"verdict": "PASS", "verdict_tier": "SCIENCE_PASS"},
+    }
+    result = decide_eligibility(gates)
+    assert result["eligible"] is False
+    assert "A" in result["blocking_gates"]
 
 
 def test_decide_eligibility_partial_blocks():
     gates = {
-        "A": {"verdict": "PARTIAL"},
-        "B": {"verdict": "PASS"},
-        "C": {"verdict": "PASS"},
-        "D": {"verdict": "PASS"},
+        "A": {"verdict": "PARTIAL", "verdict_tier": "PARTIAL"},
+        "B": {"verdict": "PASS", "verdict_tier": "SCIENCE_PASS"},
+        "C": {"verdict": "PASS", "verdict_tier": "SCIENCE_PASS"},
+        "D": {"verdict": "PASS", "verdict_tier": "SCIENCE_PASS"},
     }
     result = decide_eligibility(gates)
     assert result["eligible"] is False
@@ -122,10 +173,10 @@ def test_decide_eligibility_partial_blocks():
 
 def test_decide_eligibility_fail_blocks():
     gates = {
-        "A": {"verdict": "FAIL"},
-        "B": {"verdict": "PASS"},
-        "C": {"verdict": "PASS"},
-        "D": {"verdict": "PASS"},
+        "A": {"verdict": "FAIL", "verdict_tier": "FAIL"},
+        "B": {"verdict": "PASS", "verdict_tier": "SCIENCE_PASS"},
+        "C": {"verdict": "PASS", "verdict_tier": "SCIENCE_PASS"},
+        "D": {"verdict": "PASS", "verdict_tier": "SCIENCE_PASS"},
     }
     result = decide_eligibility(gates)
     assert result["eligible"] is False
@@ -134,14 +185,28 @@ def test_decide_eligibility_fail_blocks():
 
 def test_decide_eligibility_not_run_blocks():
     gates = {
-        "A": {"verdict": "NOT_RUN", "error": "file missing"},
-        "B": {"verdict": "PASS"},
-        "C": {"verdict": "PASS"},
-        "D": {"verdict": "PASS"},
+        "A": {"verdict": "NOT_RUN", "verdict_tier": "NOT_RUN", "error": "file missing"},
+        "B": {"verdict": "PASS", "verdict_tier": "SCIENCE_PASS"},
+        "C": {"verdict": "PASS", "verdict_tier": "SCIENCE_PASS"},
+        "D": {"verdict": "PASS", "verdict_tier": "SCIENCE_PASS"},
     }
     result = decide_eligibility(gates)
     assert result["eligible"] is False
     assert "A" in result["blocking_gates"]
+
+
+def test_decide_eligibility_ai_surrogate_fail_blocks():
+    """Gate D with AI_SURROGATE_REVIEW_FAIL verdict_tier blocks eligibility."""
+    gates = {
+        "A": {"verdict": "PASS", "verdict_tier": "SCIENCE_PASS"},
+        "B": {"verdict": "PASS", "verdict_tier": "SCIENCE_PASS"},
+        "C": {"verdict": "PASS", "verdict_tier": "SCIENCE_PASS"},
+        "D": {"verdict": "FAIL", "verdict_tier": "AI_SURROGATE_REVIEW_FAIL",
+              "accept_rate": 0.0, "overall_mean_score": 2.0},
+    }
+    result = decide_eligibility(gates)
+    assert result["eligible"] is False
+    assert "D" in result["blocking_gates"]
 
 
 # ============================================================================
@@ -156,7 +221,6 @@ def test_write_blocked_verdict_creates_file(tmp_path, sample_gates_d_blocked):
     assert "FINAL VERDICT BLOCKED" in content
     assert "NOT TRUSTWORTHY" in content
     assert "D" in content  # blocking gate mentioned
-    assert "BLOCKED_ON_HUMAN" in content
 
 
 def test_write_final_verdict_creates_file(tmp_path, sample_gates_all_pass):
@@ -205,12 +269,12 @@ def test_main_writes_correct_verdict_file():
     assert final_path.exists() ^ blocked_path.exists()
 
 
-def test_main_currently_blocks_on_gate_d():
-    """At the time of writing, Gate D is BLOCKED_ON_HUMAN.
-    The verdict should be BLOCKED, not FINAL."""
+def test_main_currently_blocks_all_gates_cycle_257():
+    """Cycle 257: 0/4 gates have SCIENCE_PASS. The verdict should be BLOCKED.
+    All four gates (A, B, C, D) block eligibility under the tightened vocabulary."""
     from audit.measurement_integrity.dr101_final_verdict_eligibility import main
     rc = main()
-    # Should be 2 (blocked) because Gate D is blocked on human review
+    # Should be 2 (blocked) because no gate has SCIENCE_PASS
     assert rc == 2
     blocked_path = REPO / "FINAL_VERDICT_BLOCKED.md"
     assert blocked_path.exists()

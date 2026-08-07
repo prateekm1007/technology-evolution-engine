@@ -1,11 +1,12 @@
 {
-  "cycle": 256,
+  "cycle": 257,
   "gate": "E",
   "gate_name": "final_verdict_eligibility",
   "gates": {
     "A": {
       "available": true,
       "verdict": "PASS",
+      "verdict_tier": "INSTRUMENTATION_SCAFFOLD_PASS",
       "production_f1_strict": 0.0,
       "production_f1_lenient": 0.8571,
       "fp_floor_lenient": 1.0,
@@ -36,6 +37,7 @@
     "B": {
       "available": true,
       "verdict": "PASS",
+      "verdict_tier": "SENSITIVITY_ANALYSIS_PASS",
       "n_claims": 7,
       "verdict_counts_dr91": {
         "SURVIVES": 2,
@@ -47,13 +49,18 @@
         "ERODED": 1,
         "INVALIDATED": 4
       },
-      "formula_inflation_observed": true
+      "formula_inflation_observed": true,
+      "formula_inflation_severity": "P0"
     },
     "C": {
       "available": true,
       "verdict": "PASS",
+      "verdict_tier": "WEAK_STATISTICAL_PASS",
       "n_total": 40,
       "n_met": true,
+      "useful_performance_threshold": 0.3,
+      "useful_performance_met": false,
+      "honest_f1_mean": 0.15,
       "distribution": {
         "n_total": 40,
         "n_original": 20,
@@ -103,21 +110,31 @@
     },
     "D": {
       "available": true,
-      "verdict": "BLOCKED_ON_HUMAN",
-      "scaffolding_built": true,
-      "blocked_reason": "Awaiting human domain expert review responses"
+      "verdict": "FAIL",
+      "verdict_tier": "AI_SURROGATE_REVIEW_FAIL",
+      "reviewer_type": "AI_PRE_REVIEW",
+      "n_responses": 6,
+      "accept_rate": 0.0,
+      "overall_mean_score": 2.2381
     }
   },
   "eligibility": {
     "eligible": false,
     "blocking_gates": [
+      "A",
+      "B",
+      "C",
       "D"
     ],
     "reasons": [
-      "D: BLOCKED_ON_HUMAN \u2014 Awaiting human domain expert review responses"
+      "A: verdict_tier=INSTRUMENTATION_SCAFFOLD_PASS \u2014 instrumentation/scaffold pass only, NOT SCIENCE_PASS. The gate runs and produces signal but does not prove the scientific claim.",
+      "B: verdict_tier=SENSITIVITY_ANALYSIS_PASS \u2014 instrumentation/scaffold pass only, NOT SCIENCE_PASS. The gate runs and produces signal but does not prove the scientific claim.",
+      "C: verdict_tier=WEAK_STATISTICAL_PASS \u2014 instrumentation/scaffold pass only, NOT SCIENCE_PASS. The gate runs and produces signal but does not prove the scientific claim.",
+      "D: AI_SURROGATE_REVIEW_FAIL \u2014 AI surrogate review did not pass. accept_rate=0.0, overall_mean=2.2381"
     ],
-    "n_gates_passed": 3,
-    "n_gates_total": 4
+    "n_gates_science_pass": 0,
+    "n_gates_total": 4,
+    "n_gates_passed": 3
   },
   "final_verdict_written": false,
   "blocked_verdict_written": true

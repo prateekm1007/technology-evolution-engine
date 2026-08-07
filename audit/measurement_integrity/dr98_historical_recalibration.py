@@ -444,21 +444,32 @@ def main():
 
     if production_survives_dr91 and recognition_survives_dr91 and discovery_201_not_survives:
         gate_verdict = "PASS"
+        verdict_tier = "SENSITIVITY_ANALYSIS_PASS"
         print(f"PASS — under the DR-91 convention (the formula that produced them):")
         print(f"  - HC-006 (production F1=0.8571) SURVIVES at {hc006['rescored_lenient_f1_dr91']:.4f}")
         print(f"  - HC-007 (recognition F1=1.0000) SURVIVES at {hc007['rescored_lenient_f1_dr91']:.4f}")
         print(f"  - HC-005 (cycle 201 F1=0.9189) is {hc005['verdict_dr91_convention']} at {hc005['rescored_lenient_f1_dr91']:.4f} "
               f"(already documented in DR-91)")
         print()
+        print(f"  CYCLE 257 TIGHTENING:")
+        print(f"  verdict_tier = SENSITIVITY_ANALYSIS_PASS (NOT SCIENCE_PASS)")
+        print(f"  This gate is a forensic SENSITIVITY ANALYSIS, not a full historical")
+        print(f"  recalibration. We re-scored 7 hand-picked claims from FAILURES.md")
+        print(f"  against the CURRENT gold data — not against the actual gold data")
+        print(f"  each claim was originally scored against. A full recalibration")
+        print(f"  would require reconstructing each historical cycle's gold set,")
+        print(f"  matcher version, and scoring formula. That is out of scope here.")
+        print()
         if formula_inflation_documented:
-            print(f"  ADDITIONAL FINDING: The DR-91 F1 formula `2r/(1+r)` inflates scores")
-            print(f"  by ignoring false positives. Honest F1 (2pr/(p+r)) is significantly")
-            print(f"  lower for every claim. This is documented in the report but does")
-            print(f"  NOT block Gate B — the formula was the same then and now, so the")
-            print(f"  claims reproduce under it. The formula-inflation finding is a")
-            print(f"  separate item for the FINAL verdict consideration.")
+            print(f"  ADDITIONAL FINDING (P0 — see F-145): The DR-91 F1 formula")
+            print(f"  `2r/(1+r)` inflates scores by ignoring false positives. Honest")
+            print(f"  F1 (2pr/(p+r)) is significantly lower for every claim. This is")
+            print(f"  a P0 measurement concern for any future F1 claim. Both formulas")
+            print(f"  are now reported for transparency, but no future F1 claim may")
+            print(f"  use the DR-91 convention without also reporting the honest F1.")
     else:
         gate_verdict = "FAIL"
+        verdict_tier = "FAIL"
         print(f"FAIL — historical claims do not reproduce even under the DR-91 convention:")
         if not production_survives_dr91:
             print(f"  HC-006 (production F1) is {hc006['verdict_dr91_convention']}, not SURVIVES")
@@ -474,7 +485,7 @@ def main():
     reports_dir.mkdir(exist_ok=True)
 
     json_out = {
-        "cycle": 256,
+        "cycle": 257,
         "gate": "B",
         "gate_name": "historical_recalibration",
         "n_claims": len(results),
@@ -493,8 +504,19 @@ def main():
             "INVALIDATED": invalidated_s,
         },
         "formula_inflation_observed": formula_inflation_documented,
+        "formula_inflation_severity": "P0",
         "claims": results,
         "gate_verdict": gate_verdict,
+        "verdict_tier": verdict_tier,
+        "verdict_tier_definition": (
+            "SENSITIVITY_ANALYSIS_PASS: the 7 hand-picked claims reproduce under "
+            "the DR-91 convention, but this is NOT a full historical recalibration. "
+            "A full recalibration would require reconstructing each historical "
+            "cycle's gold set, matcher version, and scoring formula. We re-scored "
+            "against the CURRENT gold data only. This gate does NOT prove the "
+            "discovery claim — it proves the historical F1 numbers are not "
+            "fabricated (they reproduce under the formula that produced them)."
+        ),
     }
     with open(reports_dir / "historical_recalibration.json", "w") as f:
         json.dump(json_out, f, indent=2)
@@ -564,7 +586,19 @@ def main():
         lines.append("the FINAL verdict: any FINAL F1 number must use the honest formula")
         lines.append("and report both for transparency.")
         lines.append("")
-    lines.append(f"## Gate B verdict: **{gate_verdict}**")
+    lines.append(f"## Gate B verdict: **{gate_verdict}** (verdict_tier: **{verdict_tier}**)")
+    lines.append("")
+    lines.append("**Cycle 257 tightening**: This gate is a forensic SENSITIVITY ANALYSIS,")
+    lines.append("not a full historical recalibration. We re-scored 7 hand-picked claims")
+    lines.append("from FAILURES.md against the CURRENT gold data — not against the actual")
+    lines.append("gold data each claim was originally scored against. A full recalibration")
+    lines.append("would require reconstructing each historical cycle's gold set, matcher")
+    lines.append("version, and scoring formula.")
+    lines.append("")
+    lines.append("`verdict_tier = SENSITIVITY_ANALYSIS_PASS` means the 7 claims reproduce")
+    lines.append("under the DR-91 convention (the formula that produced them). It does NOT")
+    lines.append("prove the discovery claim. It proves the historical F1 numbers are not")
+    lines.append("fabricated.")
     lines.append("")
     if gate_verdict == "FAIL":
         lines.append("Historical capability claims do not reproduce under re-calibration,")
@@ -574,10 +608,15 @@ def main():
     else:
         lines.append("Current production F1 (HC-006) and recognition F1 (HC-007) reproduce")
         lines.append("under the DR-91 convention that produced them. The cycle-201 discovery")
-        lines.append("F1=0.9189 (HC-005) is INVALIDATED — already documented in DR-91.")
+        lines.append("F1=0.9189 (HC-005) is ERODED — already documented in DR-91.")
         lines.append("")
-        lines.append("The formula-inflation finding (DR-91 conv > honest conv) is documented")
-        lines.append("as a separate item for FINAL verdict consideration.")
+        lines.append("## P0 finding: DR-91 formula inflation")
+        lines.append("")
+        lines.append("The formula-inflation finding (DR-91 conv > honest conv) is a **P0")
+        lines.append("measurement concern** for any future F1 claim. No future F1 claim")
+        lines.append("may use the DR-91 convention `2r/(1+r)` without also reporting the")
+        lines.append("honest F1 `2pr/(p+r)`. The honest F1 is significantly lower for")
+        lines.append("every claim in this report.")
     lines.append("")
     with open(reports_dir / "historical_recalibration.md", "w") as f:
         f.write("\n".join(lines))
@@ -586,8 +625,12 @@ def main():
     print(f"Saved reports/historical_recalibration.md")
     print()
     print("=" * 80)
-    print(f"GATE B DECISION: {gate_verdict}")
+    print(f"GATE B DECISION: {gate_verdict} (verdict_tier: {verdict_tier})")
     print("=" * 80)
+    print()
+    print("NOTE: verdict_tier=SENSITIVITY_ANALYSIS_PASS, NOT SCIENCE_PASS.")
+    print("This gate does not prove the discovery claim. The FINAL verdict")
+    print("requires SCIENCE_PASS on all gates.")
     return 0 if gate_verdict == "PASS" else 2
 
 

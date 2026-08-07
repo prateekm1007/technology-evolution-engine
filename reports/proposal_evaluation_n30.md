@@ -27,13 +27,22 @@ Cycle: 256
 - p-value: 0.000000
 - Verdict (α=0.05): **REJECT_H0**
 
-## Gate C verdict: **PASS**
+## Gate C verdict: **PASS** (verdict_tier: **WEAK_STATISTICAL_PASS**)
 
-Sample size N=40 meets ≥30 requirement, and the
-honest-F1 mean (0.1500) is statistically distinguishable
-from the FP floor (1.0) at p<0.05.
+**Cycle 257 tightening**: This gate's PASS criterion was too weak.
+Distinguishability from FP=1.0 is NECESSARY but NOT SUFFICIENT.
+Useful proposal performance requires per-proposal honest F1 mean
+≥ 0.3. Observed: 0.1500.
 
-This is EVIDENCE (not proof) that the production matcher produces
-non-trivial signal on larger samples. It does not address whether
-the signal is *discovery* vs *recognition* — that requires Gate D
-(Tier-2 human domain expert review).
+WEAK_STATISTICAL_PASS: N=40 meets ≥30, honest F1 mean
+(0.1500) is distinguishable from FP floor at p<0.05,
+BUT the mean is below the useful-performance threshold
+(≥0.3).
+
+This means the matcher produces non-zero signal, but the signal
+is weak. Per-proposal F1 of 0.1500 means most proposals do not
+match the gold bridge. The matcher is statistically not pure
+noise, but it is not producing useful proposals at scale.
+
+To earn SCIENCE_PASS, the matcher's per-proposal honest F1
+must reach ≥ 0.3.

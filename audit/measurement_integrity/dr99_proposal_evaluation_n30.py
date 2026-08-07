@@ -490,21 +490,44 @@ def main():
     print()
     n_met = len(evaluations) >= 30
     honest_mean = stats["lenient_honest"]["mean"]
-    # Gate passes if:
-    # 1. N ≥ 30 (sample size adequate)
-    # 2. Honest F1 mean is distinguishable from FP floor (REJECT H0)
-    # 3. Honest F1 mean is NOT zero (some signal exists)
-    if n_met and t_test["verdict"] == "REJECT_H0" and honest_mean > 0:
+    # Cycle 257 tightening: distinguishability from FP=1.0 is necessary
+    # but NOT sufficient. Useful proposal performance requires honest F1
+    # mean ≥ 0.30 (a meaningful signal-to-noise ratio, not just non-zero).
+    USEFUL_PERFORMANCE_THRESHOLD = 0.30
+    useful_performance = honest_mean >= USEFUL_PERFORMANCE_THRESHOLD
+
+    # Gate tiers:
+    #   SCIENCE_PASS: N>=30 AND REJECT_H0 AND useful_performance
+    #   WEAK_STATISTICAL_PASS: N>=30 AND REJECT_H0 AND NOT useful_performance
+    #   FAIL: anything else
+    if n_met and t_test["verdict"] == "REJECT_H0" and useful_performance:
         gate_verdict = "PASS"
-        print(f"PASS — N≥30 ({len(evaluations)}), honest F1 mean ({honest_mean:.4f})")
-        print(f"       is statistically distinguishable from FP floor (1.0)")
-        print(f"       at p<0.05 (p={t_test['p_value']:.6f}).")
+        verdict_tier = "SCIENCE_PASS"
+        print(f"SCIENCE_PASS — N≥30 ({len(evaluations)}), honest F1 mean ({honest_mean:.4f})")
+        print(f"              is statistically distinguishable from FP floor (1.0)")
+        print(f"              AND meets useful-performance threshold (≥{USEFUL_PERFORMANCE_THRESHOLD}).")
+    elif n_met and t_test["verdict"] == "REJECT_H0" and not useful_performance:
+        gate_verdict = "PASS"  # statistical sanity check passes
+        verdict_tier = "WEAK_STATISTICAL_PASS"
+        print(f"WEAK_STATISTICAL_PASS — N≥30 ({len(evaluations)}), honest F1 mean ({honest_mean:.4f})")
+        print(f"                       is statistically distinguishable from FP floor (1.0)")
+        print(f"                       at p<0.05 (p={t_test['p_value']:.6f}).")
         print()
-        print(f"  → The production matcher produces non-trivial signal on N≥30")
-        print(f"    proposals. This is evidence (not proof) that the matcher is")
-        print(f"    measuring something real, not pure noise.")
+        print(f"  CYCLE 257 TIGHTENING:")
+        print(f"  verdict_tier = WEAK_STATISTICAL_PASS (NOT SCIENCE_PASS)")
+        print(f"  Distinguishability from FP=1.0 is necessary but NOT sufficient.")
+        print(f"  Useful proposal performance requires honest F1 mean ≥ {USEFUL_PERFORMANCE_THRESHOLD};")
+        print(f"  observed mean = {honest_mean:.4f} (BELOW threshold).")
+        print()
+        print(f"  → The matcher produces non-zero signal, but the signal is weak.")
+        print(f"    Per-proposal F1 of {honest_mean:.4f} means most proposals do not")
+        print(f"    match the gold bridge. The matcher is statistically not pure")
+        print(f"    noise, but it is not producing useful proposals at scale.")
+        print(f"  → To earn SCIENCE_PASS, the matcher's per-proposal honest F1")
+        print(f"    must reach ≥ {USEFUL_PERFORMANCE_THRESHOLD}.")
     elif n_met and t_test["verdict"] == "FAIL_TO_REJECT":
         gate_verdict = "FAIL"
+        verdict_tier = "FAIL"
         print(f"FAIL — N≥30 met ({len(evaluations)}), but honest F1 mean ({honest_mean:.4f})")
         print(f"       is NOT statistically distinguishable from FP floor (1.0)")
         print(f"       at p<0.05 (p={t_test['p_value']:.6f}).")
@@ -516,6 +539,7 @@ def main():
         print(f"FAIL — N≥30 NOT met (got {len(evaluations)} evaluations)")
     else:
         gate_verdict = "PARTIAL"
+        verdict_tier = "FAIL"
         print(f"PARTIAL — N≥30 met, but honest F1 mean is zero (no signal at all)")
     print()
 
@@ -525,13 +549,16 @@ def main():
     reports_dir.mkdir(exist_ok=True)
 
     json_out = {
-        "cycle": 256,
+        "cycle": 257,
         "gate": "C",
         "gate_name": "proposal_evaluation_n30",
         "n_total": len(evaluations),
         "n_original": stats["n_original"],
         "n_synthetic": stats["n_synthetic"],
         "n_met": n_met,
+        "useful_performance_threshold": USEFUL_PERFORMANCE_THRESHOLD,
+        "useful_performance_met": useful_performance,
+        "honest_f1_mean": honest_mean,
         "distribution": stats,
         "t_test": t_test,
         "evaluations": [
@@ -549,6 +576,16 @@ def main():
             for e in evaluations
         ],
         "gate_verdict": gate_verdict,
+        "verdict_tier": verdict_tier,
+        "verdict_tier_definition": (
+            "WEAK_STATISTICAL_PASS: N>=30 and the honest-F1 mean is "
+            "statistically distinguishable from the FP floor (1.0), BUT the "
+            "mean is below the useful-performance threshold (0.30). "
+            "Distinguishability from FP=1.0 is necessary but not sufficient. "
+            "Useful proposal performance requires per-proposal honest F1 mean "
+            ">= 0.30. Observed: 0.1500. This gate does NOT prove useful "
+            "discovery capability — it proves the matcher is not pure noise."
+        ),
     }
     with open(reports_dir / "proposal_evaluation_n30.json", "w") as f:
         json.dump(json_out, f, indent=2)
@@ -589,28 +626,40 @@ def main():
     lines.append(f"- p-value: {t_test['p_value']:.6f}")
     lines.append(f"- Verdict (α=0.05): **{t_test['verdict']}**")
     lines.append("")
-    lines.append(f"## Gate C verdict: **{gate_verdict}**")
+    lines.append(f"## Gate C verdict: **{gate_verdict}** (verdict_tier: **{verdict_tier}**)")
     lines.append("")
-    if gate_verdict == "PASS":
-        lines.append(f"Sample size N={len(evaluations)} meets ≥30 requirement, and the")
-        lines.append(f"honest-F1 mean ({honest_mean:.4f}) is statistically distinguishable")
-        lines.append(f"from the FP floor (1.0) at p<0.05.")
+    lines.append("**Cycle 257 tightening**: This gate's PASS criterion was too weak.")
+    lines.append("Distinguishability from FP=1.0 is NECESSARY but NOT SUFFICIENT.")
+    lines.append(f"Useful proposal performance requires per-proposal honest F1 mean")
+    lines.append(f"≥ {USEFUL_PERFORMANCE_THRESHOLD}. Observed: {honest_mean:.4f}.")
+    lines.append("")
+    if verdict_tier == "SCIENCE_PASS":
+        lines.append(f"SCIENCE_PASS: N={len(evaluations)} meets ≥30, honest F1 mean ")
+        lines.append(f"({honest_mean:.4f}) is distinguishable from FP floor AND meets")
+        lines.append(f"useful-performance threshold (≥{USEFUL_PERFORMANCE_THRESHOLD}).")
+    elif verdict_tier == "WEAK_STATISTICAL_PASS":
+        lines.append(f"WEAK_STATISTICAL_PASS: N={len(evaluations)} meets ≥30, honest F1 mean")
+        lines.append(f"({honest_mean:.4f}) is distinguishable from FP floor at p<0.05,")
+        lines.append(f"BUT the mean is below the useful-performance threshold")
+        lines.append(f"(≥{USEFUL_PERFORMANCE_THRESHOLD}).")
         lines.append("")
-        lines.append("This is EVIDENCE (not proof) that the production matcher produces")
-        lines.append("non-trivial signal on larger samples. It does not address whether")
-        lines.append("the signal is *discovery* vs *recognition* — that requires Gate D")
-        lines.append("(Tier-2 human domain expert review).")
+        lines.append("This means the matcher produces non-zero signal, but the signal")
+        lines.append("is weak. Per-proposal F1 of 0.1500 means most proposals do not")
+        lines.append("match the gold bridge. The matcher is statistically not pure")
+        lines.append("noise, but it is not producing useful proposals at scale.")
+        lines.append("")
+        lines.append("To earn SCIENCE_PASS, the matcher's per-proposal honest F1")
+        lines.append(f"must reach ≥ {USEFUL_PERFORMANCE_THRESHOLD}.")
     elif gate_verdict == "FAIL":
         if t_test["verdict"] == "FAIL_TO_REJECT":
-            lines.append(f"Sample size N={len(evaluations)} meets ≥30 requirement, BUT")
-            lines.append(f"the honest-F1 mean ({honest_mean:.4f}) is statistically")
-            lines.append(f"indistinguishable from the FP floor (1.0) at p<0.05.")
+            lines.append(f"FAIL: N={len(evaluations)} meets ≥30, but honest F1 mean")
+            lines.append(f"({honest_mean:.4f}) is statistically indistinguishable from")
+            lines.append(f"FP floor (1.0) at p<0.05.")
             lines.append("")
             lines.append("This means the production matcher's score is statistically")
-            lines.append("indistinguishable from random candidate matching. The discovery")
-            lines.append("claim is not supported at this sample size.")
+            lines.append("indistinguishable from random candidate matching.")
         else:
-            lines.append(f"Sample size N={len(evaluations)} does NOT meet ≥30 requirement.")
+            lines.append(f"FAIL: N={len(evaluations)} does NOT meet ≥30 requirement.")
     lines.append("")
     with open(reports_dir / "proposal_evaluation_n30.md", "w") as f:
         f.write("\n".join(lines))
@@ -619,7 +668,7 @@ def main():
     print(f"Saved reports/proposal_evaluation_n30.md")
     print()
     print("=" * 80)
-    print(f"GATE C DECISION: {gate_verdict}")
+    print(f"GATE C DECISION: {gate_verdict} (verdict_tier: {verdict_tier})")
     print("=" * 80)
     return 0 if gate_verdict == "PASS" else (1 if gate_verdict == "PARTIAL" else 2)
 

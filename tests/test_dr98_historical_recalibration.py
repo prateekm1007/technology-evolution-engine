@@ -198,3 +198,31 @@ def test_main_runs_and_writes_reports():
     assert data["n_claims"] == 7
     assert "gate_verdict" in data
     assert data["gate_verdict"] in ["PASS", "FAIL"]
+
+
+def test_gate_b_has_verdict_tier_field():
+    """Cycle 257 tightening: Gate B must report verdict_tier that is NOT
+    SCIENCE_PASS (because this is sensitivity analysis, not full
+    recalibration)."""
+    from audit.measurement_integrity.dr98_historical_recalibration import main
+    main()
+    data = json.loads((REPO / "reports" / "historical_recalibration.json").read_text())
+    assert "verdict_tier" in data
+    assert data["verdict_tier"] in (
+        "SENSITIVITY_ANALYSIS_PASS",
+        "SCIENCE_PASS",
+        "FAIL",
+    )
+    assert data["verdict_tier"] != "SCIENCE_PASS", (
+        "Gate B should not claim SCIENCE_PASS — it is a sensitivity "
+        "analysis, not a full historical recalibration."
+    )
+
+
+def test_gate_b_documents_formula_inflation_as_p0():
+    """The formula_inflation finding must be marked as P0 severity."""
+    from audit.measurement_integrity.dr98_historical_recalibration import main
+    main()
+    data = json.loads((REPO / "reports" / "historical_recalibration.json").read_text())
+    assert data.get("formula_inflation_severity") == "P0"
+    assert data.get("formula_inflation_observed") is True

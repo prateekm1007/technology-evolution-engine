@@ -34,11 +34,24 @@ measurement error that DR-91 was created to prevent.
 | Production (lenient) | 0.8571 | — | reference |
 | FP floor (lenient, DR-91) | 1.0000 | +0.1429 | ceiling |
 
-## Gate A verdict: **PASS**
+## Gate A verdict: **PASS** (verdict_tier: **INSTRUMENTATION_SCAFFOLD_PASS**)
+
+**Cycle 257 tightening**: This gate is a LEXICAL/ORACLE-ASSISTED BASELINE
+SANITY CHECK, not a full external-baseline validation. The BM25 baseline
+uses the gold bridge text as the query (oracle), which is not how a true
+external baseline would work. A true external baseline proposes bridges
+WITHOUT seeing gold labels.
+
+`verdict_tier = INSTRUMENTATION_SCAFFOLD_PASS` means the instrumentation
+runs and produces a non-trivial signal (production beats random+lenient
+by Δ=+0.7621), but it does NOT prove the discovery claim. To earn
+`SCIENCE_PASS`, this gate would need to be repaired with true external
+baselines that propose bridges without gold labels.
 
 Production beats all baselines on specific-bridge matching,
 by Δ=+0.7621 over random+lenient. Production IS doing more than
-random retrieval.
+random retrieval. But this is lexical/oracle-assisted, not a true
+external baseline validation.
 
 **IMPORTANT CAVEAT — this does NOT override DR-91's FP floor finding.**
 
@@ -49,6 +62,4 @@ random retrieval.
 
 These are different failure modes. Production is doing SOMETHING
 more than random, but it is ALSO accepting non-bridge entities
-at the FP floor. Both findings stand. Gate A passing means only
-that the production matcher is not pure noise; it does NOT mean
-the measurement system is trustworthy.
+at the FP floor. Both findings stand.

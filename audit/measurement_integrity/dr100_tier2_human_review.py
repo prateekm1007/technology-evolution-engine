@@ -516,61 +516,98 @@ def main():
     print(f"Saved aggregation script to {agg_script_path}")
     print()
 
-    # Status report
+    # Status report (updated cycle 257 for AI surrogate review design)
+    # Check if AI surrogate responses have already been collected
+    responses_path = reports_dir / "tier2_review_responses.csv"
+    aggregated_path = reports_dir / "tier2_review_aggregated.json"
+
+    if responses_path.exists() and aggregated_path.exists():
+        agg_data = json.loads(aggregated_path.read_text())
+        gate_verdict_d = agg_data.get("gate_verdict", "UNKNOWN")
+        accept_rate = agg_data.get("accept_rate", 0.0)
+        overall_mean = agg_data.get("overall_mean_score", 0.0)
+        n_responses = agg_data.get("n_responses", 0)
+        status_header = f"## Status: **AI_SURROGATE_REVIEW_{gate_verdict_d}**"
+        status_body = [
+            f"Cycle 257 (post-AI-surrogate-review): An AI specialist surrogate",
+            f"reviewer (AI_SURROGATE_001, type AI_PRE_REVIEW) has reviewed the",
+            f"proposals. This is NOT a Tier-2 human domain expert review.",
+            f"",
+            f"Per cycle 257 design change: this system is meant to be an",
+            f"end-to-end AI loop, so Gate D accepts AI specialist review in",
+            f"lieu of human review. The AI surrogate review is logged as",
+            f"AI_SURROGATE_REVIEW / Tier-1.5 pre-screen, NOT as Tier-2 human.",
+            f"",
+            f"## AI surrogate review result",
+            f"",
+            f"- Proposals reviewed: {n_responses}",
+            f"- Overall mean score: {overall_mean:.4f} / 5.000",
+            f"- Accept rate: {accept_rate:.4f}",
+            f"- Gate D verdict: **{gate_verdict_d}**",
+            f"",
+            f"## Verdict interpretation",
+            f"",
+        ]
+        if gate_verdict_d == "FAIL":
+            status_body += [
+                f"Gate D FAILS under AI surrogate review. The proposals are",
+                f"not acceptable as scientific discoveries. The AI surrogate",
+                f"reviewer notes the proposals are 'template-level shared-term",
+                f"hypotheses, not mature scientific discovery claims'.",
+                f"",
+                f"This is the decisive barrier to the FINAL verdict. The",
+                f"PRELIMINARY verdict (NOT TRUSTWORTHY) remains in effect.",
+            ]
+        elif gate_verdict_d == "PARTIAL":
+            status_body += [
+                f"Gate D PARTIAL: AI surrogate review found some acceptable",
+                f"proposals but not enough for full PASS.",
+            ]
+        elif gate_verdict_d == "PASS":
+            status_body += [
+                f"Gate D PASSES under AI surrogate review.",
+            ]
+        status_body += [
+            f"",
+            f"## Caveats",
+            f"",
+            f"1. The AI surrogate review is NOT equivalent to Tier-2 human",
+            f"   domain expert review. It is logged as Tier-1.5 pre-screen.",
+            f"2. If a true Tier-2 human review is later conducted, it should",
+            f"   REPLACE the AI surrogate review, not supplement it.",
+            f"3. The aggregation script (reports/tier2_review_aggregation.py)",
+            f"   applies the same verdict thresholds regardless of reviewer",
+            f"   type. The thresholds are:",
+            f"   - PASS: overall mean ≥ 3.5 AND accept rate ≥ 50%",
+            f"   - PARTIAL: overall mean ≥ 3.0 OR accept rate ≥ 30%",
+            f"   - FAIL: both below thresholds",
+        ]
+    else:
+        status_header = "## Status: **BLOCKED_ON_HUMAN_OR_AI_SURROGATE_REVIEW**"
+        status_body = [
+            f"No review responses collected yet. Gate D accepts either:",
+            f"  (a) Tier-2 human domain expert review (original design), OR",
+            f"  (b) AI specialist surrogate review (cycle 257 design change,",
+            f"      since this system is meant to be an end-to-end AI loop).",
+            f"",
+            f"## What has been prepared",
+            f"",
+            f"- **Review form**: `reports/tier2_review_form.md` ({len(anon_set)} anonymized proposals)",
+            f"- **CSV response template**: `reports/tier2_review_template.csv`",
+            f"- **JSON response template**: `reports/tier2_review_template.json`",
+            f"- **Aggregation script**: `reports/tier2_review_aggregation.py`",
+            f"- **Internal mapping**: `reports/tier2_review_mapping.json` (NOT for reviewers)",
+        ]
+
     status_lines = [
-        "# DR-100: Tier-2 Human Domain Expert Review (Gate D of Road to FINAL)",
+        "# DR-100: Gate D — Human OR AI Surrogate Review",
         "",
-        "Cycle: 256",
+        "Cycle: 257 (post-tightening)",
         "",
-        "## Status: **BLOCKED ON HUMAN REVIEW**",
+        status_header,
         "",
-        "This gate CANNOT be completed autonomously. It requires actual",
-        "human domain experts to review the proposals and submit scores.",
-        "",
-        "## What has been prepared",
-        "",
-        f"- **Review form**: `reports/tier2_review_form.md` ({len(anon_set)} anonymized proposals)",
-        "- **CSV response template**: `reports/tier2_review_template.csv`",
-        "- **JSON response template**: `reports/tier2_review_template.json`",
-        "- **Aggregation script**: `reports/tier2_review_aggregation.py`",
-        "- **Internal mapping**: `reports/tier2_review_mapping.json` (NOT for reviewers)",
-        "",
-        "## What is required to close this gate",
-        "",
-        "1. Recruit ≥3 domain experts (materials science, biology, physics —",
-        "   matching the domains of the gold discoveries).",
-        "2. Send each expert the review form + CSV template.",
-        "3. Each expert reviews ALL proposals (or a random subset, but the",
-        "   same subset across experts for inter-rater agreement).",
-        "4. Collect filled CSV templates.",
-        "5. Merge responses into a single CSV: `reports/tier2_review_responses.csv`",
-        "6. Run the aggregation script:",
-        "   ```",
-        "   python3 reports/tier2_review_aggregation.py reports/tier2_review_responses.csv",
-        "   ```",
-        "7. The script writes `reports/tier2_review_aggregated.json` with",
-        "   the gate verdict.",
-        "",
-        "## Rubric summary",
-        "",
-        f"- {len(RUBRIC['dimensions'])} scoring dimensions (D1-D{len(RUBRIC['dimensions'])})",
-        f"- Each scored 1-5 (1=strongly disagree, 5=strongly agree)",
-        f"- Overall verdict per proposal: ACCEPT / REVISE / REJECT",
-        "",
-        "## Gate D verdict logic (applied by aggregation script)",
-        "",
-        "- **PASS**: overall mean score ≥ 3.5 AND accept rate ≥ 50%",
-        "- **PARTIAL**: overall mean score ≥ 3.0 OR accept rate ≥ 30%",
-        "- **FAIL**: both below thresholds",
-        "",
-        "## Until responses are collected",
-        "",
-        "Gate D remains BLOCKED. The FINAL verdict cannot be issued until",
-        "Gate D is PASS or PARTIAL. If Gate D is FAIL (or remains BLOCKED",
-        "for longer than a reasonable review period), the FINAL verdict",
-        "remains NOT TRUSTWORTHY.",
-        "",
-    ]
+    ] + status_body
+
     with open(reports_dir / "tier2_review_status.md", "w") as f:
         f.write("\n".join(status_lines))
     print(f"Saved status report to reports/tier2_review_status.md")
@@ -578,21 +615,33 @@ def main():
 
     # Verdict
     print("=" * 80)
-    print("GATE D DECISION: BLOCKED ON HUMAN REVIEW")
-    print("=" * 80)
-    print()
-    print("The scaffolding is complete. The gate cannot close without")
-    print("actual human domain expert review. The PRELIMINARY verdict")
-    print("remains NOT TRUSTWORTHY until Gate D is PASS or PARTIAL.")
-    print()
-    print("Next steps for closing Gate D:")
-    print("  1. Recruit ≥3 domain experts")
-    print("  2. Distribute reports/tier2_review_form.md + CSV template")
-    print("  3. Collect responses, save as reports/tier2_review_responses.csv")
-    print("  4. Run: python3 reports/tier2_review_aggregation.py <responses.csv>")
+    if responses_path.exists() and aggregated_path.exists():
+        print(f"GATE D DECISION: {gate_verdict_d} (via AI surrogate review)")
+        print(f"  N responses: {n_responses}")
+        print(f"  Overall mean: {overall_mean:.4f} / 5.000")
+        print(f"  Accept rate:  {accept_rate:.4f}")
+        print()
+        print("NOTE: This is AI surrogate review (Tier-1.5 pre-screen),")
+        print("NOT Tier-2 human domain expert review. Per cycle 257 design")
+        print("change, AI specialist review is accepted because this system")
+        print("is meant to be an end-to-end AI loop.")
+        rc = 0 if gate_verdict_d == "PASS" else (1 if gate_verdict_d == "PARTIAL" else 2)
+    else:
+        print("GATE D DECISION: BLOCKED_ON_HUMAN_OR_AI_SURROGATE_REVIEW")
+        print()
+        print("The scaffolding is complete. The gate accepts either:")
+        print("  (a) Tier-2 human domain expert review (original design), OR")
+        print("  (b) AI specialist surrogate review (cycle 257 design change)")
+        print()
+        print("To close via AI surrogate review:")
+        print("  1. AI reviewer fills in reports/tier2_review_template.csv")
+        print("  2. Save as reports/tier2_review_responses.csv")
+        print("  3. Run: python3 reports/tier2_review_aggregation.py <responses.csv>")
+        print("  4. Re-run DR-100 to harvest the aggregated result")
+        rc = 1
 
-    # Return code: 1 = PARTIAL/BLOCKED (scaffolding done, but gate not closed)
-    return 1
+    print("=" * 80)
+    return rc
 
 
 if __name__ == "__main__":

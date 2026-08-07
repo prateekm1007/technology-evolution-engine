@@ -58,11 +58,28 @@ and now, so the claims reproduce under it), but it IS relevant to
 the FINAL verdict: any FINAL F1 number must use the honest formula
 and report both for transparency.
 
-## Gate B verdict: **PASS**
+## Gate B verdict: **PASS** (verdict_tier: **SENSITIVITY_ANALYSIS_PASS**)
+
+**Cycle 257 tightening**: This gate is a forensic SENSITIVITY ANALYSIS,
+not a full historical recalibration. We re-scored 7 hand-picked claims
+from FAILURES.md against the CURRENT gold data — not against the actual
+gold data each claim was originally scored against. A full recalibration
+would require reconstructing each historical cycle's gold set, matcher
+version, and scoring formula.
+
+`verdict_tier = SENSITIVITY_ANALYSIS_PASS` means the 7 claims reproduce
+under the DR-91 convention (the formula that produced them). It does NOT
+prove the discovery claim. It proves the historical F1 numbers are not
+fabricated.
 
 Current production F1 (HC-006) and recognition F1 (HC-007) reproduce
 under the DR-91 convention that produced them. The cycle-201 discovery
-F1=0.9189 (HC-005) is INVALIDATED — already documented in DR-91.
+F1=0.9189 (HC-005) is ERODED — already documented in DR-91.
 
-The formula-inflation finding (DR-91 conv > honest conv) is documented
-as a separate item for FINAL verdict consideration.
+## P0 finding: DR-91 formula inflation
+
+The formula-inflation finding (DR-91 conv > honest conv) is a **P0
+measurement concern** for any future F1 claim. No future F1 claim
+may use the DR-91 convention `2r/(1+r)` without also reporting the
+honest F1 `2pr/(p+r)`. The honest F1 is significantly lower for
+every claim in this report.

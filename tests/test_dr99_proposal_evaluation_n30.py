@@ -245,3 +245,36 @@ def test_main_runs_and_writes_reports():
     assert data["n_met"] is True
     assert "gate_verdict" in data
     assert data["gate_verdict"] in ["PASS", "PARTIAL", "FAIL"]
+
+
+def test_gate_c_has_verdict_tier_field():
+    """Cycle 257 tightening: Gate C must report verdict_tier that is NOT
+    SCIENCE_PASS (because per-proposal F1=0.15 is below 0.30 threshold)."""
+    from audit.measurement_integrity.dr99_proposal_evaluation_n30 import main
+    main()
+    data = json.loads((REPO / "reports" / "proposal_evaluation_n30.json").read_text())
+    assert "verdict_tier" in data
+    assert data["verdict_tier"] in (
+        "WEAK_STATISTICAL_PASS",
+        "SCIENCE_PASS",
+        "FAIL",
+    )
+    assert data["verdict_tier"] != "SCIENCE_PASS", (
+        "Gate C should not claim SCIENCE_PASS — per-proposal honest F1 "
+        "(0.1500) is below the useful-performance threshold (0.30)."
+    )
+
+
+def test_gate_c_reports_useful_performance_threshold_and_result():
+    """Gate C must report the useful-performance threshold and whether it
+    was met (cycle 257 tightening)."""
+    from audit.measurement_integrity.dr99_proposal_evaluation_n30 import main
+    main()
+    data = json.loads((REPO / "reports" / "proposal_evaluation_n30.json").read_text())
+    assert "useful_performance_threshold" in data
+    assert data["useful_performance_threshold"] == 0.30
+    assert "useful_performance_met" in data
+    assert "honest_f1_mean" in data
+    # Current observed mean is 0.15, below threshold
+    assert data["useful_performance_met"] is False
+    assert data["honest_f1_mean"] < data["useful_performance_threshold"]

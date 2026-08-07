@@ -669,24 +669,37 @@ def main():
         print(f"random candidates. Production F1=0.8571 is NOT a discovery")
         print(f"measurement — it is an artifact of lenient matching.")
         gate_verdict = "FAIL"
+        verdict_tier = "FAIL"
     elif delta_random < 0.20:
         print(f"PARTIAL: production beats random+lenient by Δ={delta_random:+.4f},")
         print(f"but not by the Δ>0.20 threshold required to claim production adds")
         print(f"value over a trivial baseline.")
         gate_verdict = "PARTIAL"
+        verdict_tier = "INSTRUMENTATION_SCAFFOLD_PASS"
     else:
         print(f"PASS on the baseline test: production beats random+lenient by Δ={delta_random:+.4f}.")
         print()
-        print(f"IMPORTANT CAVEAT — this does NOT override DR-91's FP floor finding.")
-        print(f"DR-91 measured: 'does the matcher accept non-bridge entities from")
-        print(f"the pool as gold?' (yes 100% of the time).")
-        print(f"DR-97 measures:  'does production beat baselines at picking the")
-        print(f"bridge concept specifically?' (yes, by +0.7621 over random).")
+        print(f"IMPORTANT CAVEAT (cycle 257 tightening):")
+        print(f"  This gate is a LEXICAL/ORACLE-ASSISTED BASELINE SANITY CHECK,")
+        print(f"  not a full external-baseline validation. The BM25 baseline")
+        print(f"  uses the gold bridge text as the query (oracle), which is not")
+        print(f"  how a true external baseline would work. A true external")
+        print(f"  baseline proposes bridges WITHOUT seeing gold labels.")
+        print()
+        print(f"  verdict_tier = INSTRUMENTATION_SCAFFOLD_PASS")
+        print(f"  (NOT SCIENCE_PASS — does not prove the discovery claim)")
+        print()
+        print(f"  This does NOT override DR-91's FP floor finding.")
+        print(f"  DR-91 measured: 'does the matcher accept non-bridge entities from")
+        print(f"  the pool as gold?' (yes 100% of the time).")
+        print(f"  DR-97 measures:  'does production beat baselines at picking the")
+        print(f"  bridge concept specifically?' (yes, by +0.7621 over random).")
         print(f"")
-        print(f"These are different failure modes. Production is doing SOMETHING")
-        print(f"more than random, but it is ALSO accepting non-bridge entities")
-        print(f"at the FP floor. Both findings stand.")
+        print(f"  These are different failure modes. Production is doing SOMETHING")
+        print(f"  more than random, but it is ALSO accepting non-bridge entities")
+        print(f"  at the FP floor. Both findings stand.")
         gate_verdict = "PASS"
+        verdict_tier = "INSTRUMENTATION_SCAFFOLD_PASS"
 
     # Write reports
     repo = Path(__file__).resolve().parents[2]
@@ -694,7 +707,7 @@ def main():
     reports_dir.mkdir(exist_ok=True)
 
     json_out = {
-        "cycle": 256,
+        "cycle": 257,
         "gate": "A",
         "gate_name": "external_baselines",
         "production_f1_strict": 0.0000,
@@ -712,6 +725,15 @@ def main():
         },
         "comparisons_lenient": comparisons,
         "gate_verdict": gate_verdict,
+        "verdict_tier": verdict_tier,
+        "verdict_tier_definition": (
+            "INSTRUMENTATION_SCAFFOLD_PASS: the instrumentation runs and "
+            "produces a non-trivial signal, but the BM25 baseline uses the "
+            "gold bridge text as the query (oracle-assisted). A true external "
+            "baseline would propose bridges WITHOUT seeing gold labels. This "
+            "gate does NOT prove the discovery claim — it proves the matcher "
+            "is not pure noise."
+        ),
     }
     with open(reports_dir / "external_baselines.json", "w") as f:
         json.dump(json_out, f, indent=2, default=str)
@@ -752,24 +774,30 @@ def main():
     lines.append(f"| Production (lenient) | 0.8571 | — | reference |")
     lines.append(f"| FP floor (lenient, DR-91) | 1.0000 | +0.1429 | ceiling |")
     lines.append("")
-    lines.append(f"## Gate A verdict: **{gate_verdict}**")
+    lines.append(f"## Gate A verdict: **{gate_verdict}** (verdict_tier: **{verdict_tier}**)")
+    lines.append("")
+    lines.append("**Cycle 257 tightening**: This gate is a LEXICAL/ORACLE-ASSISTED BASELINE")
+    lines.append("SANITY CHECK, not a full external-baseline validation. The BM25 baseline")
+    lines.append("uses the gold bridge text as the query (oracle), which is not how a true")
+    lines.append("external baseline would work. A true external baseline proposes bridges")
+    lines.append("WITHOUT seeing gold labels.")
+    lines.append("")
+    lines.append("`verdict_tier = INSTRUMENTATION_SCAFFOLD_PASS` means the instrumentation")
+    lines.append("runs and produces a non-trivial signal (production beats random+lenient")
+    lines.append("by Δ=+0.7621), but it does NOT prove the discovery claim. To earn")
+    lines.append("`SCIENCE_PASS`, this gate would need to be repaired with true external")
+    lines.append("baselines that propose bridges without gold labels.")
     lines.append("")
     if gate_verdict == "FAIL":
         lines.append("Production does NOT beat the lenient-random baseline by Δ>0.05.")
-        lines.append("This independently confirms DR-91's FP floor finding: the lenient")
-        lines.append("matcher scores random candidates at near-ceiling, so production")
-        lines.append("F1=0.8571 is not a discovery measurement.")
-        lines.append("")
-        lines.append("To pass Gate A, the production matcher would need to be reworked")
-        lines.append("so that its score is meaningfully higher than what random+lenient")
-        lines.append("achieves. That rework is outside this gate's scope; this gate")
-        lines.append("merely measures the current state.")
+        lines.append("This independently confirms DR-91's FP floor finding.")
     elif gate_verdict == "PARTIAL":
         lines.append("Production beats lenient-random but not by Δ>0.20.")
     else:
         lines.append("Production beats all baselines on specific-bridge matching,")
         lines.append("by Δ=+0.7621 over random+lenient. Production IS doing more than")
-        lines.append("random retrieval.")
+        lines.append("random retrieval. But this is lexical/oracle-assisted, not a true")
+        lines.append("external baseline validation.")
         lines.append("")
         lines.append("**IMPORTANT CAVEAT — this does NOT override DR-91's FP floor finding.**")
         lines.append("")
@@ -780,9 +808,7 @@ def main():
         lines.append("")
         lines.append("These are different failure modes. Production is doing SOMETHING")
         lines.append("more than random, but it is ALSO accepting non-bridge entities")
-        lines.append("at the FP floor. Both findings stand. Gate A passing means only")
-        lines.append("that the production matcher is not pure noise; it does NOT mean")
-        lines.append("the measurement system is trustworthy.")
+        lines.append("at the FP floor. Both findings stand.")
     lines.append("")
     with open(reports_dir / "external_baselines.md", "w") as f:
         f.write("\n".join(lines))
@@ -791,8 +817,12 @@ def main():
     print(f"Saved reports/external_baselines.md")
     print()
     print("=" * 80)
-    print(f"GATE A DECISION: {gate_verdict}")
+    print(f"GATE A DECISION: {gate_verdict} (verdict_tier: {verdict_tier})")
     print("=" * 80)
+    print()
+    print("NOTE: verdict_tier=INSTRUMENTATION_SCAFFOLD_PASS, NOT SCIENCE_PASS.")
+    print("This gate does not prove the discovery claim. It proves the matcher")
+    print("is not pure noise. The FINAL verdict requires SCIENCE_PASS on all gates.")
     return 0 if gate_verdict == "PASS" else (1 if gate_verdict == "PARTIAL" else 2)
 
 

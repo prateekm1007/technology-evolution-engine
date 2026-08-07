@@ -1,51 +1,44 @@
-# DR-100: Tier-2 Human Domain Expert Review (Gate D of Road to FINAL)
+# DR-100: Gate D — Human OR AI Surrogate Review
 
-Cycle: 256
+Cycle: 257 (post-tightening)
 
-## Status: **BLOCKED ON HUMAN REVIEW**
+## Status: **AI_SURROGATE_REVIEW_FAIL**
 
-This gate CANNOT be completed autonomously. It requires actual
-human domain experts to review the proposals and submit scores.
+Cycle 257 (post-AI-surrogate-review): An AI specialist surrogate
+reviewer (AI_SURROGATE_001, type AI_PRE_REVIEW) has reviewed the
+proposals. This is NOT a Tier-2 human domain expert review.
 
-## What has been prepared
+Per cycle 257 design change: this system is meant to be an
+end-to-end AI loop, so Gate D accepts AI specialist review in
+lieu of human review. The AI surrogate review is logged as
+AI_SURROGATE_REVIEW / Tier-1.5 pre-screen, NOT as Tier-2 human.
 
-- **Review form**: `reports/tier2_review_form.md` (6 anonymized proposals)
-- **CSV response template**: `reports/tier2_review_template.csv`
-- **JSON response template**: `reports/tier2_review_template.json`
-- **Aggregation script**: `reports/tier2_review_aggregation.py`
-- **Internal mapping**: `reports/tier2_review_mapping.json` (NOT for reviewers)
+## AI surrogate review result
 
-## What is required to close this gate
+- Proposals reviewed: 6
+- Overall mean score: 2.2381 / 5.000
+- Accept rate: 0.0000
+- Gate D verdict: **FAIL**
 
-1. Recruit ≥3 domain experts (materials science, biology, physics —
-   matching the domains of the gold discoveries).
-2. Send each expert the review form + CSV template.
-3. Each expert reviews ALL proposals (or a random subset, but the
-   same subset across experts for inter-rater agreement).
-4. Collect filled CSV templates.
-5. Merge responses into a single CSV: `reports/tier2_review_responses.csv`
-6. Run the aggregation script:
-   ```
-   python3 reports/tier2_review_aggregation.py reports/tier2_review_responses.csv
-   ```
-7. The script writes `reports/tier2_review_aggregated.json` with
-   the gate verdict.
+## Verdict interpretation
 
-## Rubric summary
+Gate D FAILS under AI surrogate review. The proposals are
+not acceptable as scientific discoveries. The AI surrogate
+reviewer notes the proposals are 'template-level shared-term
+hypotheses, not mature scientific discovery claims'.
 
-- 7 scoring dimensions (D1-D7)
-- Each scored 1-5 (1=strongly disagree, 5=strongly agree)
-- Overall verdict per proposal: ACCEPT / REVISE / REJECT
+This is the decisive barrier to the FINAL verdict. The
+PRELIMINARY verdict (NOT TRUSTWORTHY) remains in effect.
 
-## Gate D verdict logic (applied by aggregation script)
+## Caveats
 
-- **PASS**: overall mean score ≥ 3.5 AND accept rate ≥ 50%
-- **PARTIAL**: overall mean score ≥ 3.0 OR accept rate ≥ 30%
-- **FAIL**: both below thresholds
-
-## Until responses are collected
-
-Gate D remains BLOCKED. The FINAL verdict cannot be issued until
-Gate D is PASS or PARTIAL. If Gate D is FAIL (or remains BLOCKED
-for longer than a reasonable review period), the FINAL verdict
-remains NOT TRUSTWORTHY.
+1. The AI surrogate review is NOT equivalent to Tier-2 human
+   domain expert review. It is logged as Tier-1.5 pre-screen.
+2. If a true Tier-2 human review is later conducted, it should
+   REPLACE the AI surrogate review, not supplement it.
+3. The aggregation script (reports/tier2_review_aggregation.py)
+   applies the same verdict thresholds regardless of reviewer
+   type. The thresholds are:
+   - PASS: overall mean ≥ 3.5 AND accept rate ≥ 50%
+   - PARTIAL: overall mean ≥ 3.0 OR accept rate ≥ 30%
+   - FAIL: both below thresholds
