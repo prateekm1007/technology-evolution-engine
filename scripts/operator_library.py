@@ -125,34 +125,62 @@ def op_invert(config: Configuration, **kwargs) -> Configuration:
 
 def op_amplify(config: Configuration, factor: float = 2.0,
                params: Optional[List[str]] = None, **kwargs) -> Configuration:
-    """Multiply selected parameters by a factor > 1."""
+    """Multiply selected parameters by a factor > 1.
+
+    Per F-100 (cycle 205): amplified values are CLAMPED to physical bounds
+    to prevent unphysical number-gaming (e.g., ZT=16774 from unbounded
+    seebeck/σ amplification).
+    """
     c = _clone(config)
     if not c.components:
         c.design_operator_chain.append("amplify")
         return c
     if params is None:
         params = ["seebeck_coefficient", "electrical_conductivity"]
+    # F-100: import physical bounds and clamp
+    try:
+        from scripts.physical_plausibility import PhysicalPlausibilityChecker
+        checker = PhysicalPlausibilityChecker()
+    except ImportError:
+        checker = None
     for comp in c.components:
         for p in params:
             if p in comp.parameters and isinstance(comp.parameters[p], (int, float)):
-                comp.parameters[p] = comp.parameters[p] * factor
+                new_val = comp.parameters[p] * factor
+                # F-100: clamp to physical bounds
+                if checker:
+                    new_val = checker.clamp_parameter(p, new_val)
+                comp.parameters[p] = new_val
     c.design_operator_chain.append("amplify")
     return c
 
 
 def op_attenuate(config: Configuration, factor: float = 0.5,
                  params: Optional[List[str]] = None, **kwargs) -> Configuration:
-    """Multiply selected parameters by a factor < 1."""
+    """Multiply selected parameters by a factor < 1.
+
+    Per F-100 (cycle 205): attenuated values are CLAMPED to physical bounds.
+    """
     c = _clone(config)
     if not c.components:
         c.design_operator_chain.append("attenuate")
         return c
     if params is None:
         params = ["thermal_conductivity"]
+    # F-100: import physical bounds and clamp
+    try:
+        from scripts.physical_plausibility import PhysicalPlausibilityChecker
+        checker = PhysicalPlausibilityChecker()
+    except ImportError:
+        checker = None
     for comp in c.components:
         for p in params:
             if p in comp.parameters and isinstance(comp.parameters[p], (int, float)):
-                comp.parameters[p] = comp.parameters[p] * factor
+                new_val = comp.parameters[p] * factor
+                # F-100: clamp to physical bounds
+                if checker:
+                    new_val = checker.clamp_parameter(p, new_val)
+                comp.parameters[p] = new_val
     c.design_operator_chain.append("attenuate")
     return c
 

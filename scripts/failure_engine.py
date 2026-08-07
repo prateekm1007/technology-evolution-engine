@@ -84,12 +84,22 @@ class FailureEngine:
     def __init__(self,
                  self_validation_detector: Optional[SelfValidationDetector] = None,
                  gold_checker: Optional[CircularGoldChecker] = None,
-                 forward_model_checker: Optional[ForwardModelChecker] = None):
+                 forward_model_checker: Optional[ForwardModelChecker] = None,
+                 physical_plausibility_checker: Optional[Any] = None):
         self.detectors = {
             "self_validation": self_validation_detector or SelfValidationDetector(),
             "gold_contamination": gold_checker or CircularGoldChecker(),
             "forward_model_check": forward_model_checker or ForwardModelChecker(),
         }
+        # F-100: physical plausibility checker with VETO authority
+        if physical_plausibility_checker is not None:
+            self.detectors["physical_plausibility"] = physical_plausibility_checker
+        else:
+            try:
+                from scripts.physical_plausibility import PhysicalPlausibilityChecker
+                self.detectors["physical_plausibility"] = PhysicalPlausibilityChecker()
+            except ImportError:
+                pass
 
     # ----- public API ---------------------------------------------------
     def run(self,
@@ -163,6 +173,31 @@ class FailureEngine:
         else:
             reasons.append("forward_model_check: skipped (forward_model "
                            "or sample_configs missing)")
+
+        # 4. F-100: Physical plausibility checker
+        plaus_checker = self.detectors.get("physical_plausibility")
+        if plaus_checker is not None and prediction is not None:
+            # Extract predicted properties from the prediction object
+            pred_props = {}
+            if hasattr(prediction, 'predicted_properties'):
+                pred_props = prediction.predicted_properties
+            elif isinstance(prediction, dict):
+                pred_props = prediction
+
+            if pred_props:
+                plaus_result = plaus_checker.check_prediction(pred_props)
+                reports["physical_plausibility"] = plaus_result
+                n_run += 1
+                if plaus_result.vetoed:
+                    n_failed += 1
+                    violation_strs = [f"{v.parameter}={v.value} [{v.min_allowed},{v.max_allowed}]"
+                                      for v in plaus_result.violations if v.severity == "veto"]
+                    reasons.append(f"physical_plausibility VETO: {violation_strs}")
+                elif plaus_result.n_warnings > 0:
+                    n_warned += 1
+                    reasons.append(f"physical_plausibility WARN: {plaus_result.n_warnings} warnings")
+                else:
+                    n_passed += 1
 
         # Determine overall status
         if n_failed > 0:

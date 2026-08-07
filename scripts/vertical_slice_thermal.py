@@ -212,6 +212,7 @@ class VerticalSliceThermal:
         if inventor_result.final_best_config is not None:
             from scripts.forward_model import ForwardModel
             from scripts.measurement_engine import MeasurementInstrument
+            from scripts.physical_plausibility import PhysicalPlausibilityChecker
             fm = ForwardModel()
             inst = MeasurementInstrument()
             best = inventor_result.final_best_config
@@ -219,6 +220,28 @@ class VerticalSliceThermal:
             meas = inst.measure(best)
             pred_ZT = pred.predicted_properties.get("ZT")
             meas_ZT = meas.measured_properties.get("ZT")
+
+            # F-100: Physical plausibility veto — if ZT > 5, reject
+            plaus_checker = PhysicalPlausibilityChecker()
+            plaus_result = plaus_checker.check_prediction(pred.predicted_properties)
+            if plaus_result.vetoed:
+                report.plausibility_violations = plaus_result.to_dict()
+                # ZT is physically impossible — report honestly
+                report.best_predicted_ZT = pred_ZT
+                report.best_measured_ZT = meas_ZT
+                report.acceptance_passed = False
+                report.plausibility_note = (
+                    f"VETOED: predicted ZT={pred_ZT:.2f} exceeds physical maximum (5.0). "
+                    f"The candidate games the ZT formula by maximizing S and σ simultaneously, "
+                    f"which is physically impossible (Pisarenko relation). The search needs "
+                    f"material-realistic priors, not unbounded amplification."
+                )
+                trace.append({"step": "plausibility_veto",
+                              "ZT": pred_ZT,
+                              "vetoed": True})
+                report.trace = trace
+                return report
+
             report.best_predicted_ZT = pred_ZT
             report.best_measured_ZT = meas_ZT
             if pred_ZT is not None and meas_ZT is not None:

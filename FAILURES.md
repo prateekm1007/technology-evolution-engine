@@ -3092,3 +3092,41 @@ gap between the snippet vocabulary and the gold bridge vocabulary.
 word appears in the snippet, the system is doing retrieval, not discovery.
 Every gold discovery must be checked for circularity: bridge ∉ snippet_a AND
 bridge ∉ snippet_b. This check is now part of the benchmark's self-validation.
+
+---
+
+### F-100 — Vertical slice produces physically absurd ZT (209, not ~1-3) (P0, cycle 205, auditor-caught)
+
+**Found:** cycle 205 external audit. The vertical slice produced ZT=16774 (later
+209 after partial clamping), while real thermoelectric ZT peaks at ~3. The
+`amplify` operator multiplied S and σ with no physical bounds, and the ZT
+formula (ZT=S²σT/κ) rewards unbounded amplification.
+
+**Root cause:** (1) No physical-plausibility bounds on design operators.
+(2) No post-prediction veto on physically impossible results. (3) S and σ
+can be simultaneously maximized, which violates the Pisarenko relation
+(physically, increasing S decreases σ in real materials).
+
+**Severity:** P0 — "an invention engine must produce plausible artifacts that
+work in reality, not maximize a formula with no physical bounds."
+
+**Status:** RESOLVED in cycle 205.
+1. Created scripts/physical_plausibility.py with material-realistic bounds:
+   - ZT: [0, 5] (veto)
+   - Seebeck: [1e-6, 5e-4] V/K = [1, 500] µV/K (veto)
+   - σ: [1e2, 1e6] S/m (veto)
+   - κ: [0.01, 100] W/(m·K) (veto)
+2. Amplify/attenuate operators now CLAMP to physical bounds.
+3. Failure Engine now includes physical_plausibility checker with VETO.
+4. Vertical slice now VETOES candidates with ZT > 5 — acceptance_criteria
+   correctly FAILS instead of passing.
+
+Honest result: the vertical slice's best candidate (ZT=209) is VETOED.
+The system honestly reports: "VETOED: predicted ZT=209 exceeds physical
+maximum (5.0). The search needs material-realistic priors, not unbounded
+amplification."
+
+**Lesson:** An invention engine must produce *plausible* artifacts. The ZT
+formula rewards simultaneous maximization of S and σ, which is physically
+impossible. Physical-plausibility bounds are not optional — they are the
+difference between invention and number-gaming.

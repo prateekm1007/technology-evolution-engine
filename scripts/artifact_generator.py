@@ -362,14 +362,29 @@ class ArtifactGenerator:
             if config.components:
                 c = config.components[0]
                 k = round(rng.uniform(1.5, 3.0), 4)
+                # F-100: clamp amplified values to physical bounds
+                try:
+                    from scripts.physical_plausibility import PhysicalPlausibilityChecker
+                    _plaus_checker = PhysicalPlausibilityChecker()
+                except ImportError:
+                    _plaus_checker = None
                 for param in ("seebeck_coefficient", "electrical_conductivity"):
                     if param in c.parameters:
-                        c.parameters[param] = c.parameters[param] * k
+                        new_val = c.parameters[param] * k
+                        if _plaus_checker:
+                            new_val = _plaus_checker.clamp_parameter(param, new_val)
+                        c.parameters[param] = new_val
 
         elif op == "attenuate":
             if config.components:
                 c = config.components[0]
                 k = round(rng.uniform(0.3, 0.7), 4)
+                # F-100: clamp attenuated values to physical bounds
+                try:
+                    from scripts.physical_plausibility import PhysicalPlausibilityChecker
+                    _plaus_checker = PhysicalPlausibilityChecker()
+                except ImportError:
+                    _plaus_checker = None
                 for param in ("thermal_conductivity",):
                     if param in c.parameters:
                         c.parameters[param] = c.parameters[param] * k
