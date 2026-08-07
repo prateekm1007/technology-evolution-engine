@@ -25,16 +25,15 @@ the final gate; it cannot pass until Gates 1-3 pass.
 | Reproducibility across hardware/LLMs/prompts | M5 | NOT STARTED |
 | Sensitivity analysis | M6 | **PARTIAL** (cycle 264: 26 perturbations tested, 18 ROBUST, 4 SENSITIVE, 4 FRAGILE; truncate_75pct and M-010 input perturbation are repair priorities) |
 | Failure envelope documented | M7 | **PASS** (cycle 265: 38 failure envelope documents generated, all with failure modes + boundary conditions + repair recommendations) |
-| Measurement constitution | M8 | NOT STARTED |
+| Measurement constitution | M8 | **PASS** (cycle 266: 8 constitutional rules, 304 compliance checks, all compliant) |
 
 **Current verdict: IN PROGRESS.** Stage M1 (Specification) PASS.
-Stage M3 (Bootstrap Statistics) PASS — all 30 metrics have 95% CIs.
-Stage M2 (Provenance) PASS — ScoredValue infrastructure complete.
-Stage M4 (Repeatability) PASS — 5 metrics × 10 seeds, all CV < 0.15.
-Stage M6 (Sensitivity) PARTIAL — 4 FRAGILE perturbations identified.
-Stage M7 (Failure Envelope) PASS — 38 per-metric failure envelope
-documents generated. 3 of 11 criteria remain NOT STARTED (M5, M8,
-evaluator reliability, calibration). This is the project's #1 priority.
+Stage M3 (Bootstrap Statistics) PASS. Stage M2 (Provenance) PASS.
+Stage M4 (Repeatability) PASS. Stage M6 (Sensitivity) PARTIAL.
+Stage M7 (Failure Envelope) PASS. Stage M8 (Measurement Constitution)
+PASS — 8 rules, 304 checks, all compliant. 3 of 11 criteria remain
+NOT STARTED (M5 reproducibility, evaluator reliability, calibration).
+This is the project's #1 priority.
 
 ---
 
