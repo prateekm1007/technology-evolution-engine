@@ -5845,7 +5845,7 @@ RECOGNITION (can the entity be found in the source?) not DISCOVERY
 **Status:** NOT TRUSTWORTHY. Measurement freeze continues.
 The benchmark IS the product. No capability work until trustworthy.
 
-### F-133 — DR-91 Phase VI+VII: disease is in entity extraction, not matching (P0, cycle 244, root cause isolated)
+### F-133 — DR-91 Phase VI+VII: entity pool appears too noisy (hypothesis, not proven) (P0, cycle 244, root cause isolated)
 
 **CTO directive (post-243):**
   "Phase VI: Component Attribution. Disable each component, measure
@@ -5916,7 +5916,7 @@ The fix requires:
 3. Add an adversarial FP gate (reject benchmarks where fake bridges match)
 4. Reduce entity pool noise (better NER, filtering)
 
-**Status:** ROOT CAUSE ISOLATED. The disease is in the entity pool
+**Status:** SUBSTANTIALLY BETTER HYPOTHESIS (not yet proven). The disease appears to be in the entity pool
 (143 entities = any bridge matches), not in the matching components.
 FP=1.0 persists regardless of which matching component is disabled.
 
@@ -5924,7 +5924,7 @@ PRELIMINARY_MEASUREMENT_VERDICT.md renamed from FINAL (CTO directive:
 investigation still in progress). Phases VIII-X remain: external
 reference benchmark, historical recalibration, scientific reassessment.
 
-### F-134 — DR-91 Phase VI.5: discovery object is wrong — entity, not proposal (P0, cycle 245, architectural root cause)
+### F-134 — DR-91 Phase VI.5: discovery object is wrong — entity, not proposal (P0, cycle 245, substantially better hypothesis, not yet proven)
 
 **CTO directive (post-Phase VI+VII):**
   "Your benchmark currently scores Discovery → Entity. But the
@@ -6011,7 +6011,97 @@ the proxy (extraction) instead of the capability (proposal).
 4. Build external baselines (Phase VIII) with the new object
 5. Only then: FINAL VERDICT
 
-**Status:** ROOT CAUSE = WRONG DISCOVERY OBJECT.
+**Status:** SUBSTANTIALLY BETTER HYPOTHESIS (not yet proven): wrong discovery object.
 The benchmark measured entity recognition (noun extraction) instead
 of bridge proposal (mechanism + prediction + falsifier). The fix is
 to redefine the gold set and scorer. The true discovery F1 is UNKNOWN.
+
+### F-135 — DR-91 Phase VI.6: discovery object search — no object passes yet (P0, cycle 246, central research question identified)
+
+**CTO directive:**
+  "The objective is to discover which benchmark object has the lowest
+   adversarial FP while preserving genuine recall. Test Entity,
+   BridgeProposal, MechanismGraph, ScientificClaim, EvidenceGraph.
+
+   The output should be a paper-quality comparison table answering:
+   > What is the correct computational representation of a scientific
+   > discovery?"
+
+**HONEST WORDING (corrected per CTO):**
+  "We have identified a substantially better hypothesis for the root
+   cause, supported by preliminary evidence, but it is not yet proven."
+
+**The comparison table:**
+
+| Object | Recall | Adv FP | Random FP | Discrimination | Verdict |
+|--------|-------:|-------:|----------:|---------------:|---------|
+| A: Entity | 0.9500 | 0.1000 | 1.0000 | 9.50 | FAIL |
+| B: BridgeProposal | 0.0000 | 0.0000 | 0.0000 | 0.00 | FAIL |
+| C: MechanismGraph | 0.0000 | 0.0000 | 0.0000 | 0.00 | FAIL |
+| D: ScientificClaim | 0.0000 | 0.0000 | 0.0000 | 0.00 | FAIL |
+| E: EvidenceGraph | 0.0000 | 0.0000 | 0.0000 | 0.00 | FAIL |
+
+**NO objects pass (FP < 5% AND recall > 0).**
+
+**Honest interpretation:**
+
+1. Entity (Object A) has recall=0.95 but FP=0.10 — it catches real
+   discoveries but also catches 10% of fakes. Discrimination = 9.5
+   (best of all objects, but still fails the 5% FP threshold).
+
+2. Objects B-E have recall=0.00 — the matchers are TOO STRICT. The
+   candidate objects (generated from extracted entities) don't have
+   enough structural overlap with the gold objects. The matchers
+   require specific structural components (causal chains, assumptions,
+   evidence graphs) that the entity-derived candidates don't have.
+
+3. The trade-off: richer objects reduce FP but also reduce recall.
+   The Entity object has high recall + high FP. The richer objects
+   have zero FP + zero recall. Neither is useful.
+
+4. The correct object is BETWEEN these extremes — rich enough to
+   discriminate fakes, simple enough to match real candidates.
+   It has NOT been found yet.
+
+**The central research question:**
+
+> What is the correct computational representation of a scientific
+> discovery?
+
+This is now the central research question of the discovery engine.
+It is deeper than "how do we improve discovery?" — it asks what
+discovery IS, computationally.
+
+**Why no object passes:**
+
+The matchers for Objects B-E require structural components (mechanism
+text, causal chains, assumptions, evidence graphs) that the entity-
+extraction pipeline doesn't produce. The pipeline extracts ENTITIES
+(nouns), not PROPOSALS (claims with mechanisms). So richer objects
+can't be matched because the pipeline doesn't generate them.
+
+This is the discovery-invention convergence the CTO identified:
+the discovery engine should produce the same type of object as the
+invention engine (mechanisms, predictions, falsifiers), not just
+entities. Currently, discovery = entity extraction, invention =
+proposal generation. They should both produce ScientificClaims.
+
+**What this means for the project:**
+
+The project has shifted from "build a discovery engine" to "define
+what a computational discovery IS." This is a more fundamental
+question. Until it's answered:
+- Every discovery F1 is untrustworthy
+- Every maturity score for discovery is unverified
+- DR-90 (representation discovery) is blocked
+- The invention engine's discovery claims rest on an invalid benchmark
+
+**Status:** SEARCH NOT COMPLETE. No object passes.
+The correct discovery object has not been found. The search continues
+with:
+  - Tighter matchers (75%+ word overlap for proposals)
+  - Semantic matching (embeddings, not word overlap)
+  - Human-annotated gold proposals (domain expert writes the bridge)
+  - Discovery-invention convergence (both produce ScientificClaims)
+
+PRELIMINARY_MEASUREMENT_VERDICT.md remains NOT TRUSTWORTHY.
