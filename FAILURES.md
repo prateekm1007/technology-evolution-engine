@@ -5759,3 +5759,88 @@ The F1=0.9189 that has been reported since cycle 201 may be inflated
 by loose matching. The honest F1 is likely 0.86 or lower. The project
 must complete DR-91 before any further capability work or representation
 discovery. The benchmark IS the product now.
+
+### F-132 — DR-91 full forensic audit: verdict NOT TRUSTWORTHY (P0, cycle 243, existential)
+
+**DR-91 Constitutional Directive:**
+  "This is forensic engineering. Assume every historical result is
+   potentially wrong until independently reproduced."
+
+**Phases completed:**
+
+Phase I — Five Independent Matchers (zero production imports):
+  | Mode | ALL F1 | SHARED F1 |
+  |------|-------:|----------:|
+  | exact | 0.0000 | 0.0000 |
+  | token | 0.9744 | 0.7879 |
+  | fuzzy | 0.0000 | 0.0000 |
+  | synonym | 1.0000 | 0.8571 |
+  | reference | 0.0000 | 0.0000 |
+
+Phase II — Explain Every Point:
+  20 traces saved to reports/measurement_trace.json
+  Locus: 15 DISCOVERED, 5 RECOGNIZED
+
+Phase III — Synonym Audit:
+  20 synonyms audited. 1 UNSAFE. 19 SAFE.
+  Saved to reports/synonym_audit.md
+
+Phase IV — Gold Leakage Audit:
+  40 findings, all "questionable" (gold phrases in benchmark source).
+  0 critical. Saved to reports/gold_leakage_report.md
+
+Phase V — Proposal Locus Audit:
+  Recognition F1 = 1.0000
+  Discovery F1 = 0.8571
+  Inflation = +0.1429
+  NEVER combine Recognition and Discovery again.
+
+Phase VI — False Positive Audit (500× shuffle):
+  ALL modes: FP floor = 1.0000, verdict = FAIL
+  The matching cannot distinguish real discoveries from random noise.
+
+**VERDICT: NOT TRUSTWORTHY**
+
+Issues:
+  1. FP floor = 1.0000 (>5% threshold) — CATASTROPHIC
+  2. Proposal-locus inflation = +0.1429
+  3. 1 UNSAFE synonym
+  4. Exact match F1 = 0 (all credit from fuzzy/synonym)
+
+**Why the bug existed (P10):**
+The original benchmark (DR-51, cycle 197) added synonym matching and
+token overlap to fix 3/4 discovery misses. The fix was correct in
+intent (the bridge concepts ARE semantically present) but the
+implementation was too loose: any 4+ character token shared between
+any entity and any bridge counts as a match. With 143 entities, the
+probability of a random match is ~100%. The benchmark measures
+RECOGNITION (can the entity be found in the source?) not DISCOVERY
+(did the engine PROPOSE this as a cross-domain bridge?).
+
+**What this means:**
+- The discovery F1=0.9189 reported since cycle 201 is NOT reliable.
+- The honest Discovery F1 (shared entities, synonyms) = 0.8571.
+- The Recognition F1 (all entities, synonyms) = 1.0000.
+- The exact-match F1 = 0.0000 (the engine never extracts the exact bridge).
+- The FP floor of 1.0 means the benchmark CANNOT distinguish real
+  discovery from random noise.
+
+**Impact on prior conclusions:**
+- H1-H4 saturation (cycles 230-239): based on BLIND SUITE (optimizer
+  performance), NOT discovery F1. NOT affected.
+- Discovery scorecard (9.0/10): AFFECTED. Rests on F1=0.9189 which
+  is inflated. Honest F1 = 0.86 or lower.
+- Maturity assessments: Discovery rating should be revised down.
+- DR-90 representation discovery: must WAIT until measurement is fixed.
+
+**What must happen next:**
+1. Fix the matching: tighten token overlap (require ALL significant
+   tokens, not just one)
+2. Fix the FP floor: the matching must be discriminative
+3. Separate Discovery F1 from Recognition F1 permanently
+4. Recalibrate all historical headline numbers
+5. Reassess maturity scores
+6. Only then resume any capability work
+
+**Status:** NOT TRUSTWORTHY. Measurement freeze continues.
+The benchmark IS the product. No capability work until trustworthy.
