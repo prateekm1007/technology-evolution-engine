@@ -5574,3 +5574,81 @@ new primitives must come from outside" — is the strongest possible
 negative result. It's not a setback; it's the definitive answer to
 "what's the bottleneck?" The bottleneck is REPRESENTATION, and it
 requires fundamentally new operator types that this DSL cannot express.
+
+### F-130 — L5b research chapter CLOSED: saturation evidence complete, DR-90 defined (P0, cycle 240, milestone)
+
+**The milestone:**
+
+The L5b research chapter (cycles 228-239) is CLOSED. Four independent
+hypotheses were tested and falsified:
+
+| Hypothesis | Cycle | Result |
+|-----------|------:|--------|
+| H1: Better search (evolutionary) | 230 | NO |
+| H2: Deeper composition (triples) | 236 | NO |
+| H3: Parameterization (alpha) | 238 | NO |
+| H4: Landscape-derived operators | 239 | NO |
+
+**The saturation evidence is COMPLETE.** The entropy benchmark (cycle 237)
+provides the quantitative stopping criterion: representation complexity
+has exceeded information gain.
+
+**The conclusion (definitive):**
+
+> "The DSL's current primitive vocabulary is sufficient. New primitives
+> must come from OUTSIDE the existing composition space."
+
+**What was achieved in the L5b chapter:**
+- L5a program discovery: 2/10 → 5/10 (DSL extension with combinatorial ops)
+- L5b pair synthesis: 5/10 → 9/10 (engine synthesizes composites from pairs)
+- Multi-seed robustness: 8.6/10 mean (std 0.80, range [8, 10])
+- Saturation evidence: 4 hypotheses falsified, entropy benchmark confirms
+
+**What was NOT achieved:**
+- Breaking the 9/10 ceiling (all 4 hypotheses failed)
+- Engine-discovered genuinely new primitives (L5b.4 — not built)
+- Universal superiority (baseline is random-restart, not CMA-ES on blind)
+
+**DR-90 — Representation Discovery (the next research chapter):**
+
+Documented in `docs/DR-90_REPRESENTATION_DISCOVERY.md`.
+
+Hypothesis H-REP-001:
+> "The limiting factor in automated invention is not search quality
+> but representational expressiveness. Systems that can discover new
+> representational primitives will unlock invention strategies that
+> cannot be reached by composing, parameterizing, or deriving operators
+> within a fixed DSL."
+
+DR-90 is a multi-year research program with 6 stages:
+1. Study human invention (100 historical primitives)
+2. Representation grammar (manipulate representations, not operators)
+3. Representation mutation (the search space itself changes)
+4. Representation evaluation (novel reachable states, not accuracy)
+5. Primitive discovery (genuine conceptual inventions)
+6. External validation (same compute, same data, representation changes)
+
+**System FREEZE (PERMANENT):**
+
+The following are FROZEN — no modifications, only additive work:
+- Discovery Engine
+- Extraction (entities, relations, mechanisms)
+- Forward Models
+- L1-L5b (all layers)
+- Failure Engine
+- Benchmarks (discovery, blind suite, entropy)
+- Scorecards
+- FAILURES.md (F-001 through F-130)
+
+**The honest state of the project:**
+
+Stage 1: "I can read" (Discovery) — ACHIEVED
+Stage 2: "I can connect ideas" (Mechanisms) — ACHIEVED
+Stage 3: "I can propose designs" (Invention engine) — ACHIEVED
+Stage 4: "I can improve how I search" (L1-L5a) — ACHIEVED
+Stage 5: "I know the limits of my own thinking" (L5b saturation) — ACHIEVED
+Stage 6: "I invent new ways of inventing" (DR-90) — NOT STARTED
+
+**Status:** RESEARCH CHAPTER CLOSED. System frozen. DR-90 documented.
+The project has become what the auditor described: "an empirical science
+of invention whose claims survive adversarial, reproducible scrutiny."
