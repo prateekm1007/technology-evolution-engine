@@ -24,19 +24,19 @@ interval, sample size, and number of bootstrap resamples.
 | M-001 | Exact F1 (all entities) | 0.0000 ± 0.0000 | [0.0000, 0.0000] | 20 | 500 | YES |
 | M-002 | Token F1 (all entities) | 0.2533 ± 0.0134 | [0.2102, 0.2614] | 20 | 500 | no |
 | M-003 | Fuzzy F1 (all entities) | 0.0000 ± 0.0000 | [0.0000, 0.0000] | 20 | 500 | YES |
-| M-004 | Synonym F1 (all entities) | 0.3053 ± 0.0106 | [0.2564, 0.2963] | 20 | 500 | no |
-| M-005 | Discovery F1 (shared, syn, DR-91) | 0.8571 ± 0.0635 | [0.7097, 0.9474] | 20 | 500 | no |
-| M-006 | Recognition F1 (all, syn, DR-91) | 1.0000 ± 0.0000 | [1.0000, 1.0000] | 20 | 500 | YES |
-| M-007 | Proposal-locus inflation | 0.1429 ± 0.0635 | [0.0526, 0.2903] | 20 | 500 | no |
-| M-008 | FP floor (synonym) | 0.9474 ± 0.0541 | [0.7879, 1.0000] | 20 | 200 | no |
-| M-009 | UNSAFE synonyms count | 18.0000 ± 1.4297 | [15.0000, 20.0000] | 20 | 500 | no |
-| M-010 | Per-proposal F1 (honest, lenient, ALL shared) | 0.7500 ± 0.0948 | [0.5500, 0.9000] | 20 | 500 | no |
+| M-004 | Synonym F1 (all entities) | 0.2533 ± 0.0134 | [0.2102, 0.2614] | 20 | 500 | no |
+| M-005 | Discovery F1 (shared, syn, DR-91) | 0.7879 ± 0.0809 | [0.6207, 0.9189] | 20 | 500 | no |
+| M-006 | Recognition F1 (all, syn, DR-91) | 0.9744 ± 0.0252 | [0.9189, 1.0000] | 20 | 500 | no |
+| M-007 | Proposal-locus inflation | 0.1865 ± 0.0768 | [0.0554, 0.3759] | 20 | 500 | no |
+| M-008 | FP floor (synonym) | 0.9189 ± 0.0978 | [0.6667, 1.0000] | 20 | 200 | no |
+| M-009 | UNSAFE synonyms count | 0.0000 ± 0.0000 | [0.0000, 0.0000] | 20 | 500 | YES |
+| M-010 | Per-proposal F1 (honest, lenient, ALL shared) | 0.6500 ± 0.1081 | [0.4500, 0.8500] | 20 | 500 | no |
 | M-011 | Per-proposal F1 (strict, honest) | 0.0000 ± 0.0000 | [0.0000, 0.0000] | 20 | 500 | YES |
-| M-012 | Aggregate F1 (DR-91) | 0.8571 ± 0.0635 | [0.7097, 0.9474] | 20 | 500 | no |
-| M-013 | Aggregate F1 (honest) | 0.8333 ± 0.0692 | [0.6471, 0.9231] | 20 | 500 | no |
-| M-014 | BM25 recall@1 (lenient) | 0.6500 ± 0.1044 | [0.4500, 0.8500] | 20 | 200 | no |
-| M-015 | Random baseline F1 (lenient) | 0.1000 ± 0.0739 | [0.0000, 0.2500] | 20 | 200 | no |
-| M-016 | Frequency baseline F1 (lenient) | 0.3000 ± 0.0989 | [0.1500, 0.5000] | 20 | 200 | no |
+| M-012 | Aggregate F1 (DR-91) | 0.7879 ± 0.0809 | [0.6207, 0.9189] | 20 | 500 | no |
+| M-013 | Aggregate F1 (honest) | 0.7647 ± 0.0875 | [0.5455, 0.8947] | 20 | 500 | no |
+| M-014 | BM25 recall@1 (lenient) | 0.3000 ± 0.0997 | [0.1487, 0.5000] | 20 | 200 | no |
+| M-015 | Random baseline F1 (lenient) | 0.0500 ± 0.0517 | [0.0000, 0.1500] | 20 | 200 | no |
+| M-016 | Frequency baseline F1 (lenient) | 0.1000 ± 0.0748 | [0.0000, 0.2500] | 20 | 200 | no |
 | M-301 | AI surrogate accept rate | 0.0000 ± 0.0000 | [0.0000, 0.0000] | 6 | 500 | YES |
 | M-302 | AI surrogate overall mean score | 2.2381 ± 0.3090 | [1.6780, 2.8458] | 7 | 500 | no |
 | M-303-D1 | AI surrogate D1 mean | 4.0000 ± 0.2394 | [3.5000, 4.5000] | 6 | 500 | no |
@@ -75,14 +75,14 @@ interval, sample size, and number of bootstrap resamples.
 ## Key observations
 
 Widest CIs (most uncertain):
-- M-009 (UNSAFE synonyms count): width = 5.0000
 - M-204 (Multi-seed mean held-out beats (N=5 seeds)): width = 1.4000
 - M-302 (AI surrogate overall mean score): width = 1.1679
+- M-303-D1 (AI surrogate D1 mean): width = 1.0000
 
 Degenerate metrics (all bootstrap values identical — likely trivial):
 - M-001 (Exact F1 (all entities)): point = 0.0000
 - M-003 (Fuzzy F1 (all entities)): point = 0.0000
-- M-006 (Recognition F1 (all, syn, DR-91)): point = 1.0000
+- M-009 (UNSAFE synonyms count): point = 0.0000
 - M-011 (Per-proposal F1 (strict, honest)): point = 0.0000
 - M-301 (AI surrogate accept rate): point = 0.0000
 - M-303-D3 (AI surrogate D3 mean): point = 2.0000

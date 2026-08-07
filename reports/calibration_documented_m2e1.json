@@ -41,7 +41,7 @@
       "ece": null,
       "bias": null,
       "fp_floor": null,
-      "notes": "FP floor = 0.9474 (>5% threshold). DR-91 audit exists but FP floor blocks discovery claims. Metric is measured but NOT trustworthy."
+      "notes": "FP floor = 0.9189 (>5% threshold). DR-91 audit exists but FP floor blocks discovery claims. Metric is measured but NOT trustworthy."
     },
     {
       "metric_id": "M-003",
@@ -73,7 +73,7 @@
       "ece": null,
       "bias": null,
       "fp_floor": null,
-      "notes": "FP floor = 0.9474 (>5% threshold). DR-91 audit exists but FP floor blocks discovery claims. Metric is measured but NOT trustworthy."
+      "notes": "FP floor = 0.9189 (>5% threshold). DR-91 audit exists but FP floor blocks discovery claims. Metric is measured but NOT trustworthy."
     },
     {
       "metric_id": "M-005",
@@ -89,15 +89,15 @@
       "ece": null,
       "bias": null,
       "fp_floor": null,
-      "notes": "FP floor = 0.9474 (>5% threshold). DR-91 audit exists but FP floor blocks discovery claims. Metric is measured but NOT trustworthy."
+      "notes": "FP floor = 0.9189 (>5% threshold). DR-91 audit exists but FP floor blocks discovery claims. Metric is measured but NOT trustworthy."
     },
     {
       "metric_id": "M-006",
       "metric_name": "Recognition F1 (all, syn, DR-91)",
-      "calibration_level": "DEGENERATE",
-      "calibration_method": "M3 bootstrap (degenerate: std=0, no variance)",
-      "calibration_version": "m3-cycle-261",
-      "has_external_validation": false,
+      "calibration_level": "PARTIALLY_CALIBRATED",
+      "calibration_method": "DR-91 independent audit + M3 bootstrap CI",
+      "calibration_version": "dr91-cycle-243",
+      "has_external_validation": true,
       "has_bootstrap_ci": true,
       "has_repeatability": false,
       "has_sensitivity": false,
@@ -105,7 +105,7 @@
       "ece": null,
       "bias": null,
       "fp_floor": null,
-      "notes": "Degenerate: produces constant value 1.0000. No calibration possible."
+      "notes": "FP floor = 0.9189 (>5% threshold). DR-91 audit exists but FP floor blocks discovery claims. Metric is measured but NOT trustworthy."
     },
     {
       "metric_id": "M-007",
@@ -121,7 +121,7 @@
       "ece": null,
       "bias": null,
       "fp_floor": null,
-      "notes": "FP floor = 0.9474 (>5% threshold). DR-91 audit exists but FP floor blocks discovery claims. Metric is measured but NOT trustworthy."
+      "notes": "FP floor = 0.9189 (>5% threshold). DR-91 audit exists but FP floor blocks discovery claims. Metric is measured but NOT trustworthy."
     },
     {
       "metric_id": "M-008",
@@ -136,16 +136,16 @@
       "has_failure_envelope": true,
       "ece": null,
       "bias": null,
-      "fp_floor": 0.9474,
-      "notes": "FP floor = 0.9474. CATASTROPHIC (>5% threshold). The metric IS the calibration finding."
+      "fp_floor": 0.9189,
+      "notes": "FP floor = 0.9189. CATASTROPHIC (>5% threshold). The metric IS the calibration finding."
     },
     {
       "metric_id": "M-009",
       "metric_name": "UNSAFE synonyms count",
-      "calibration_level": "PARTIALLY_CALIBRATED",
-      "calibration_method": "DR-91 independent audit + M3 bootstrap CI",
-      "calibration_version": "dr91-cycle-243",
-      "has_external_validation": true,
+      "calibration_level": "DEGENERATE",
+      "calibration_method": "M3 bootstrap (degenerate: std=0, no variance)",
+      "calibration_version": "m3-cycle-261",
+      "has_external_validation": false,
       "has_bootstrap_ci": true,
       "has_repeatability": false,
       "has_sensitivity": false,
@@ -153,7 +153,7 @@
       "ece": null,
       "bias": null,
       "fp_floor": null,
-      "notes": "FP floor = 0.9474 (>5% threshold). DR-91 audit exists but FP floor blocks discovery claims. Metric is measured but NOT trustworthy."
+      "notes": "Degenerate: produces constant value 0.0000. No calibration possible."
     },
     {
       "metric_id": "M-010",
@@ -169,7 +169,7 @@
       "ece": null,
       "bias": null,
       "fp_floor": null,
-      "notes": "FP floor = 0.9474 (>5% threshold). DR-91 audit exists but FP floor blocks discovery claims. Metric is measured but NOT trustworthy."
+      "notes": "FP floor = 0.9189 (>5% threshold). DR-91 audit exists but FP floor blocks discovery claims. Metric is measured but NOT trustworthy."
     },
     {
       "metric_id": "M-011",
@@ -201,7 +201,7 @@
       "ece": null,
       "bias": null,
       "fp_floor": null,
-      "notes": "FP floor = 0.9474 (>5% threshold). DR-91 audit exists but FP floor blocks discovery claims. Metric is measured but NOT trustworthy."
+      "notes": "FP floor = 0.9189 (>5% threshold). DR-91 audit exists but FP floor blocks discovery claims. Metric is measured but NOT trustworthy."
     },
     {
       "metric_id": "M-013",
@@ -217,7 +217,7 @@
       "ece": null,
       "bias": null,
       "fp_floor": null,
-      "notes": "FP floor = 0.9474 (>5% threshold). DR-91 audit exists but FP floor blocks discovery claims. Metric is measured but NOT trustworthy."
+      "notes": "FP floor = 0.9189 (>5% threshold). DR-91 audit exists but FP floor blocks discovery claims. Metric is measured but NOT trustworthy."
     },
     {
       "metric_id": "M-014",
@@ -233,7 +233,7 @@
       "ece": null,
       "bias": null,
       "fp_floor": null,
-      "notes": "FP floor = 0.9474 (>5% threshold). DR-91 audit exists but FP floor blocks discovery claims. Metric is measured but NOT trustworthy."
+      "notes": "FP floor = 0.9189 (>5% threshold). DR-91 audit exists but FP floor blocks discovery claims. Metric is measured but NOT trustworthy."
     },
     {
       "metric_id": "M-015",
@@ -249,7 +249,7 @@
       "ece": null,
       "bias": null,
       "fp_floor": null,
-      "notes": "FP floor = 0.9474 (>5% threshold). DR-91 audit exists but FP floor blocks discovery claims. Metric is measured but NOT trustworthy."
+      "notes": "FP floor = 0.9189 (>5% threshold). DR-91 audit exists but FP floor blocks discovery claims. Metric is measured but NOT trustworthy."
     },
     {
       "metric_id": "M-016",
@@ -265,7 +265,7 @@
       "ece": null,
       "bias": null,
       "fp_floor": null,
-      "notes": "FP floor = 0.9474 (>5% threshold). DR-91 audit exists but FP floor blocks discovery claims. Metric is measured but NOT trustworthy."
+      "notes": "FP floor = 0.9189 (>5% threshold). DR-91 audit exists but FP floor blocks discovery claims. Metric is measured but NOT trustworthy."
     },
     {
       "metric_id": "M-101",

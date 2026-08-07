@@ -122,10 +122,10 @@
     {
       "metric_id": "M-004",
       "metric_name": "Synonym F1 (all entities)",
-      "baseline_value": 0.3053,
+      "baseline_value": 0.2533,
       "ci_95": [
-        0.2564,
-        0.2963
+        0.2102,
+        0.2614
       ],
       "n": 20,
       "is_degenerate": false,
@@ -160,10 +160,10 @@
     {
       "metric_id": "M-005",
       "metric_name": "Discovery F1 (shared, syn, DR-91)",
-      "baseline_value": 0.8571,
+      "baseline_value": 0.7879,
       "ci_95": [
-        0.7097,
-        0.9474
+        0.6207,
+        0.9189
       ],
       "n": 20,
       "is_degenerate": false,
@@ -175,10 +175,10 @@
           "metric_name": "Discovery F1 (DR-91)",
           "perturbation_type": "INPUT",
           "perturbation_name": "truncate_75pct",
-          "baseline_value": 0.8571,
-          "perturbed_value": 0.5714,
-          "absolute_change": -0.2857,
-          "relative_change": -0.3333,
+          "baseline_value": 0.7879,
+          "perturbed_value": 0.5185,
+          "absolute_change": -0.2694,
+          "relative_change": -0.3419,
           "sensitivity_class": "FRAGILE"
         }
       ],
@@ -211,13 +211,13 @@
     {
       "metric_id": "M-006",
       "metric_name": "Recognition F1 (all, syn, DR-91)",
-      "baseline_value": 1.0,
+      "baseline_value": 0.9744,
       "ci_95": [
-        1.0,
+        0.9189,
         1.0
       ],
       "n": 20,
-      "is_degenerate": true,
+      "is_degenerate": false,
       "repeatability_verdict": "NOT_TESTED",
       "cv": 0.0,
       "fragile_perturbations": [],
@@ -245,10 +245,10 @@
     {
       "metric_id": "M-007",
       "metric_name": "Proposal-locus inflation",
-      "baseline_value": 0.1429,
+      "baseline_value": 0.1865,
       "ci_95": [
-        0.0526,
-        0.2903
+        0.0554,
+        0.3759
       ],
       "n": 20,
       "is_degenerate": false,
@@ -279,9 +279,9 @@
     {
       "metric_id": "M-008",
       "metric_name": "FP floor (synonym)",
-      "baseline_value": 0.9474,
+      "baseline_value": 0.9189,
       "ci_95": [
-        0.7879,
+        0.6667,
         1.0
       ],
       "n": 20,
@@ -318,13 +318,13 @@
     {
       "metric_id": "M-009",
       "metric_name": "UNSAFE synonyms count",
-      "baseline_value": 18.0,
+      "baseline_value": 0.0,
       "ci_95": [
-        15.0,
-        20.0
+        0.0,
+        0.0
       ],
       "n": 20,
-      "is_degenerate": false,
+      "is_degenerate": true,
       "repeatability_verdict": "NOT_TESTED",
       "cv": 0.0,
       "fragile_perturbations": [],
@@ -352,10 +352,10 @@
     {
       "metric_id": "M-010",
       "metric_name": "Per-proposal F1 (honest, lenient, ALL shared)",
-      "baseline_value": 0.75,
+      "baseline_value": 0.65,
       "ci_95": [
-        0.55,
-        0.9
+        0.45,
+        0.85
       ],
       "n": 20,
       "is_degenerate": false,
@@ -425,10 +425,10 @@
     {
       "metric_id": "M-012",
       "metric_name": "Aggregate F1 (DR-91)",
-      "baseline_value": 0.8571,
+      "baseline_value": 0.7879,
       "ci_95": [
-        0.7097,
-        0.9474
+        0.6207,
+        0.9189
       ],
       "n": 20,
       "is_degenerate": false,
@@ -460,10 +460,10 @@
     {
       "metric_id": "M-013",
       "metric_name": "Aggregate F1 (honest)",
-      "baseline_value": 0.8333,
+      "baseline_value": 0.7647,
       "ci_95": [
-        0.6471,
-        0.9231
+        0.5455,
+        0.8947
       ],
       "n": 20,
       "is_degenerate": false,
@@ -475,10 +475,10 @@
           "metric_name": "Aggregate F1 (honest)",
           "perturbation_type": "INPUT",
           "perturbation_name": "truncate_75pct",
-          "baseline_value": 0.8333,
-          "perturbed_value": 0.5714,
-          "absolute_change": -0.2619,
-          "relative_change": -0.3143,
+          "baseline_value": 0.7647,
+          "perturbed_value": 0.5185,
+          "absolute_change": -0.2462,
+          "relative_change": -0.3219,
           "sensitivity_class": "FRAGILE"
         }
       ],
@@ -507,10 +507,10 @@
     {
       "metric_id": "M-014",
       "metric_name": "BM25 recall@1 (lenient)",
-      "baseline_value": 0.65,
+      "baseline_value": 0.3,
       "ci_95": [
-        0.45,
-        0.85
+        0.1487,
+        0.5
       ],
       "n": 20,
       "is_degenerate": false,
@@ -543,10 +543,10 @@
     {
       "metric_id": "M-015",
       "metric_name": "Random baseline F1 (lenient)",
-      "baseline_value": 0.1,
+      "baseline_value": 0.05,
       "ci_95": [
         0.0,
-        0.25
+        0.15
       ],
       "n": 20,
       "is_degenerate": false,
@@ -579,10 +579,10 @@
     {
       "metric_id": "M-016",
       "metric_name": "Frequency baseline F1 (lenient)",
-      "baseline_value": 0.3,
+      "baseline_value": 0.1,
       "ci_95": [
-        0.15,
-        0.5
+        0.0,
+        0.25
       ],
       "n": 20,
       "is_degenerate": false,

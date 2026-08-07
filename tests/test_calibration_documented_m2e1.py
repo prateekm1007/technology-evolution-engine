@@ -148,10 +148,14 @@ def test_degenerate_metrics_are_documented():
                       if s["calibration_level"] == "DEGENERATE"]
     # M-001 (exact F1 always 0) should be degenerate
     assert "M-001" in degenerate_ids
-    # M-006 (recognition F1 always 1 under DR-91) should be degenerate
-    assert "M-006" in degenerate_ids
-    # At least 9 degenerate metrics
-    assert len(degenerate_ids) >= 9
+    # M-006 was degenerate (1.0000) before cycle 270 (circular synonyms
+    # removed). Now 0.9744 — NOT degenerate. This is an improvement:
+    # the metric can now discriminate.
+    assert "M-006" not in degenerate_ids, (
+        "M-006 should NOT be degenerate after circular synonym removal (cycle 270)"
+    )
+    # At least 7 degenerate metrics (was 9, M-006 and M-004 no longer degenerate)
+    assert len(degenerate_ids) >= 7
 
 
 def test_gate_verdict_is_pass():

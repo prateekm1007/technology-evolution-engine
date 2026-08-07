@@ -8303,3 +8303,114 @@ TRUSTWORTHY) remains canonical.
      M6 from PARTIAL to PASS.
   2. M-008 FP floor: tighten the matcher to reduce FP floor from 0.92.
   3. M-304 evaluator agreement: increase N to >=20 for stable estimation.
+
+
+### F-158 — P0 CIRCULAR VALIDATION: BRIDGE_SYNONYMS was gold-derived, removed (P0, cycle 270)
+
+**Driver:** External deep audit (cycle 270). The auditor verified
+directly (not from a report) that BRIDGE_SYNONYMS had exactly 20
+entries for 20 gold discoveries, with 19/20 gold bridges as direct
+keys. The synonym values were reverse-engineered from what the
+extraction pipeline produced for those specific items, not drawn from
+a general thesaurus.
+
+This is a P0 circular validation violation of MC-1 (No self-validation)
+of the Measurement Constitution. Every metric that used m_synonym
+(M-004, M-005, M-006, M-008, M-010, M-012, M-013, M-014, M-015,
+M-016) was contaminated. The M-010 "repair" (cycle 269, first→ALL
+shared entities) was a legitimate bug fix, but it widened the
+candidate pool against a circular synonym map — making the metric
+easier to satisfy in a way that looked like improvement.
+
+**The auditor's exact diagnosis:**
+> "The 0.75 baseline, the 'ROBUST' reclassification, the confidence
+> intervals — all of that statistical machinery is real and well-built,
+> and all of it is currently computing a precise, well-characterized
+> number for the wrong question."
+
+**Verification (done by me, not from a report):**
+  - 19/20 gold bridges are direct keys in BRIDGE_SYNONYMS
+  - Synonym values like "size_selective_pores", "paracellular_barrier",
+    "calcium_carbonate_precipitation" are clearly reverse-engineered
+    from extraction pipeline output, not general thesaurus entries
+
+**Fix applied (cycle 270):**
+  1. Removed BRIDGE_SYNONYMS entirely (set to empty dict {})
+  2. m_synonym now falls back to m_token (substring + token overlap),
+     which is completely non-circular
+  3. All M-stages re-run fresh with non-circular matcher
+
+**Results — BEFORE (circular) vs AFTER (non-circular):**
+
+  | Metric | BEFORE | AFTER | Change |
+  |---|---|---|---|
+  | M-004 Synonym F1 | 0.3053 | 0.2533 | ↓ (synonyms removed) |
+  | M-005 Discovery F1 | 0.8571 | 0.7879 | ↓ (honest drop) |
+  | M-006 Recognition F1 | 1.0000 (DEGENERATE) | 0.9744 (NOT degenerate) | ↑ IMPROVEMENT |
+  | M-008 FP floor | 0.9189 | 0.9189 | unchanged |
+  | M-010 Per-proposal F1 | 0.7500 | 0.6500 | ↓ (honest, still >0.30) |
+  | M-013 Aggregate F1 (honest) | 0.8333 | 0.7647 | ↓ (honest drop) |
+
+  Key improvement: M-006 is NO LONGER DEGENERATE. Was 1.0000 (always
+  matched via circular synonyms), now 0.9744 (can discriminate). This
+  is a genuine improvement from removing circularity.
+
+  HC-006 (production F1=0.8571) is now ERODED (not SURVIVES) under
+  DR-91 re-calibration. The delta is -0.069 (|delta| > 0.05). This
+  is honest: the production F1 was inflated by circular synonyms.
+
+**Structural test added (tests/test_no_gold_derived_synonyms.py):**
+  - test_bridge_synonyms_is_empty_or_independent: verifies BRIDGE_SYNONYMS
+    is empty OR its keys don't overlap with gold bridges
+  - test_bridge_synonyms_documented_provenance: if non-empty, source
+    must document independent provenance
+  - test_m_synonym_falls_back_to_token_when_no_synonyms: verifies
+    m_synonym == m_token when synmap is empty
+
+  This is the same lesson as everything else in this audit history:
+  the fix that survives isn't the one-time correction, it's the test
+  that makes the mistake structurally harder to reintroduce.
+
+**Tests updated (4 tests, asserting old circular values):**
+  - test_m005_discovery_f1_has_ci_around_0857 → test_m005_discovery_f1_has_ci_around_079
+  - test_degenerate_metrics_are_documented: M-006 no longer degenerate
+  - test_recalibrate_hc006: SURVIVES → ERODED
+  - test_recalibrate_hc007: 1.0 → >=0.95
+
+**Gate 1 honest reassessment:**
+  Gate 1 is still 9 PASS + 2 PARTIAL = 11/11 addressed. The
+  underlying numbers are now HONEST. The circularity affected the
+  metric VALUES, not the gate STRUCTURE — the infrastructure (M1
+  spec, M2 provenance, M3 bootstrap, M4 repeatability, M6 sensitivity,
+  M7 failure envelopes, M8 constitution) is all valid and was not
+  itself circular. What was circular was the DATA flowing through
+  the infrastructure.
+
+  The key improvement: M-006 is no longer degenerate. This means the
+  recognition F1 can now discriminate, which was impossible with the
+  circular synonyms (everything matched → 1.0000).
+
+**WordNet was considered and rejected:**
+  WordNet was tested as an independent synonym source, but it produces
+  too much noise for domain-specific terms. "Tight junctions" gets
+  41 WordNet synonyms including "blind_drunk" and "pixilated" (synonyms
+  for "tight" meaning drunk). This would introduce false matches,
+  increasing the FP floor. The synonym map will be rebuilt in a future
+  cycle from an LLM prompted with only bridge concept names, or from
+  a domain expert.
+
+**Test results:**
+  - 303 tests pass (was 300, +3 new structural tests)
+  - 4 tests updated to reflect non-circular values
+  - No regressions
+
+**Status:** P0 CIRCULAR VALIDATION FIXED. BRIDGE_SYNONYMS removed.
+All metrics re-run fresh with non-circular matcher. M-006 no longer
+degenerate. HC-006 now ERODED (was SURVIVES). Structural test added
+to prevent reintroduction. Gate 1 still 11/11 addressed (9 PASS +
+2 PARTIAL) with HONEST underlying values. PRELIMINARY verdict (NOT
+TRUSTWORTHY) remains canonical.
+
+**This is the most important fix in the entire audit.** Every
+downstream gate that waits on Gate 1 is now waiting on honest
+numbers, not circular ones.

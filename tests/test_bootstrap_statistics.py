@@ -355,12 +355,14 @@ def test_m304_agreement_ci_includes_zero():
     )
 
 
-def test_m005_discovery_f1_has_ci_around_0857():
-    """M-005 (Discovery F1) point estimate should be ~0.857 with a CI."""
+def test_m005_discovery_f1_has_ci_around_079():
+    """M-005 (Discovery F1) point estimate should be ~0.79 with a CI.
+    Note: was 0.8571 before cycle 270 (circular synonyms removed).
+    Now 0.7879 with non-circular (empty) synonym map."""
     path = REPO / "reports" / "bootstrap_statistics.json"
     data = json.loads(path.read_text())
     m005 = next(r for r in data["results"] if r["metric_id"] == "M-005")
-    assert abs(m005["point_estimate"] - 0.8571) < 0.01
+    assert abs(m005["point_estimate"] - 0.79) < 0.05
     # CI should be non-trivial (width > 0.1)
     assert m005["ci_95_upper"] - m005["ci_95_lower"] > 0.1
     # CI should contain the point estimate

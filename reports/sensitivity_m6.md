@@ -36,60 +36,60 @@ Per AP-1: run it, don't reason about it.
 
 | Metric | Type | Perturbation | Baseline | Perturbed | Δ | Rel Δ | Class |
 |---|---|---|---|---|---|---|---|
-| M-005 | INPUT | drop_1_sentence | 0.8571 | 0.8571 | +0.0000 | +0.0000 | ROBUST |
-| M-005 | INPUT | shuffle_sentences | 0.8571 | 0.8571 | +0.0000 | +0.0000 | ROBUST |
-| M-005 | INPUT | truncate_75pct | 0.8571 | 0.5714 | -0.2857 | -0.3333 | FRAGILE |
-| M-005 | GOLD | drop_1_gold | 0.8571 | 0.8485 | -0.0087 | -0.0101 | ROBUST |
-| M-005 | GOLD | drop_2_gold | 0.8571 | 0.8387 | -0.0184 | -0.0215 | ROBUST |
-| M-005 | GOLD | rename_gold | 0.8571 | 0.7879 | -0.0693 | -0.0808 | SENSITIVE |
-| M-005 | SYNONYM | remove_1_synonym | 0.8571 | 0.8571 | +0.0000 | +0.0000 | ROBUST |
-| M-005 | SYNONYM | remove_25pct_synonyms | 0.8571 | 0.8571 | +0.0000 | +0.0000 | ROBUST |
-| M-005 | SYNONYM | remove_50pct_synonyms | 0.8571 | 0.8235 | -0.0336 | -0.0392 | ROBUST |
+| M-005 | INPUT | drop_1_sentence | 0.7879 | 0.7879 | +0.0000 | +0.0000 | ROBUST |
+| M-005 | INPUT | shuffle_sentences | 0.7879 | 0.7879 | +0.0000 | +0.0000 | ROBUST |
+| M-005 | INPUT | truncate_75pct | 0.7879 | 0.5185 | -0.2694 | -0.3419 | FRAGILE |
+| M-005 | GOLD | drop_1_gold | 0.7879 | 0.7742 | -0.0137 | -0.0174 | ROBUST |
+| M-005 | GOLD | drop_2_gold | 0.7879 | 0.7586 | -0.0293 | -0.0371 | ROBUST |
+| M-005 | GOLD | rename_gold | 0.7879 | 0.7879 | +0.0000 | +0.0000 | ROBUST |
+| M-005 | SYNONYM | remove_1_synonym | 0.7879 | 0.7879 | +0.0000 | +0.0000 | ROBUST |
+| M-005 | SYNONYM | remove_25pct_synonyms | 0.7879 | 0.7879 | +0.0000 | +0.0000 | ROBUST |
+| M-005 | SYNONYM | remove_50pct_synonyms | 0.7879 | 0.7879 | +0.0000 | +0.0000 | ROBUST |
 | M-008 | SYNONYM | remove_1_synonym | 0.9474 | 0.9474 | +0.0000 | +0.0000 | ROBUST |
-| M-008 | SYNONYM | remove_25pct_synonyms | 0.9474 | 0.9189 | -0.0284 | -0.0300 | ROBUST |
-| M-008 | SYNONYM | remove_50pct_synonyms | 0.9474 | 0.9189 | -0.0284 | -0.0300 | ROBUST |
+| M-008 | SYNONYM | remove_25pct_synonyms | 0.9474 | 0.9474 | +0.0000 | +0.0000 | ROBUST |
+| M-008 | SYNONYM | remove_50pct_synonyms | 0.9474 | 0.9474 | +0.0000 | +0.0000 | ROBUST |
 | M-008 | GOLD | drop_1_gold | 0.9474 | 0.9444 | -0.0029 | -0.0031 | ROBUST |
 | M-008 | GOLD | drop_2_gold | 0.9474 | 0.9412 | -0.0062 | -0.0065 | ROBUST |
-| M-013 | INPUT | drop_1_sentence | 0.8333 | 0.8333 | +0.0000 | +0.0000 | ROBUST |
-| M-013 | INPUT | truncate_75pct | 0.8333 | 0.5714 | -0.2619 | -0.3143 | FRAGILE |
-| M-013 | GOLD | drop_1_gold | 0.8333 | 0.8235 | -0.0098 | -0.0118 | ROBUST |
-| M-013 | GOLD | drop_2_gold | 0.8333 | 0.8125 | -0.0208 | -0.0250 | ROBUST |
-| M-013 | GOLD | rename_gold | 0.8333 | 0.7647 | -0.0686 | -0.0824 | SENSITIVE |
-| M-013 | SYNONYM | remove_25pct_synonyms | 0.8333 | 0.8333 | +0.0000 | +0.0000 | ROBUST |
-| M-013 | SYNONYM | remove_50pct_synonyms | 0.8333 | 0.8000 | -0.0333 | -0.0400 | ROBUST |
-| M-010 | INPUT | drop_1_sentence | 0.7500 | 0.7500 | +0.0000 | +0.0000 | ROBUST |
-| M-010 | GOLD | drop_1_gold | 0.7500 | 0.7368 | -0.0132 | -0.0175 | ROBUST |
-| M-010 | GOLD | drop_2_gold | 0.7500 | 0.7222 | -0.0278 | -0.0370 | ROBUST |
-| M-010 | SYNONYM | remove_25pct_synonyms | 0.7500 | 0.7500 | +0.0000 | +0.0000 | ROBUST |
-| M-010 | SYNONYM | remove_50pct_synonyms | 0.7500 | 0.7000 | -0.0500 | -0.0667 | SENSITIVE |
+| M-013 | INPUT | drop_1_sentence | 0.7647 | 0.7647 | +0.0000 | +0.0000 | ROBUST |
+| M-013 | INPUT | truncate_75pct | 0.7647 | 0.5185 | -0.2462 | -0.3219 | FRAGILE |
+| M-013 | GOLD | drop_1_gold | 0.7647 | 0.7500 | -0.0147 | -0.0192 | ROBUST |
+| M-013 | GOLD | drop_2_gold | 0.7647 | 0.7333 | -0.0314 | -0.0410 | ROBUST |
+| M-013 | GOLD | rename_gold | 0.7647 | 0.7647 | +0.0000 | +0.0000 | ROBUST |
+| M-013 | SYNONYM | remove_25pct_synonyms | 0.7647 | 0.7647 | +0.0000 | +0.0000 | ROBUST |
+| M-013 | SYNONYM | remove_50pct_synonyms | 0.7647 | 0.7647 | +0.0000 | +0.0000 | ROBUST |
+| M-010 | INPUT | drop_1_sentence | 0.6500 | 0.6500 | +0.0000 | +0.0000 | ROBUST |
+| M-010 | GOLD | drop_1_gold | 0.6500 | 0.6316 | -0.0184 | -0.0283 | ROBUST |
+| M-010 | GOLD | drop_2_gold | 0.6500 | 0.6111 | -0.0389 | -0.0598 | SENSITIVE |
+| M-010 | SYNONYM | remove_25pct_synonyms | 0.6500 | 0.6500 | +0.0000 | +0.0000 | ROBUST |
+| M-010 | SYNONYM | remove_50pct_synonyms | 0.6500 | 0.6500 | +0.0000 | +0.0000 | ROBUST |
 
 ## Summary
 
-- ROBUST (|Δ| < 5%): 21/26
-- SENSITIVE (5-15%): 3/26
+- ROBUST (|Δ| < 5%): 23/26
+- SENSITIVE (5-15%): 1/26
 - FRAGILE (> 15%): 2/26
 
 ### Per-metric summary
 
 | Metric | ROBUST | SENSITIVE | FRAGILE | Total |
 |---|---|---|---|---|
-| M-005 | 7 | 1 | 1 | 9 |
+| M-005 | 8 | 0 | 1 | 9 |
 | M-008 | 5 | 0 | 0 | 5 |
 | M-010 | 4 | 1 | 0 | 5 |
-| M-013 | 5 | 1 | 1 | 7 |
+| M-013 | 6 | 0 | 1 | 7 |
 
 ### Per-perturbation-type summary
 
 | Type | ROBUST | SENSITIVE | FRAGILE | Total |
 |---|---|---|---|---|
-| GOLD | 8 | 2 | 0 | 10 |
+| GOLD | 9 | 1 | 0 | 10 |
 | INPUT | 4 | 0 | 2 | 6 |
-| SYNONYM | 9 | 1 | 0 | 10 |
+| SYNONYM | 10 | 0 | 0 | 10 |
 
 ### FRAGILE perturbations (repair priorities)
 
-- **M-005 / INPUT/truncate_75pct**: Δ=-0.2857 (-0.3333). Baseline=0.8571 → Perturbed=0.5714
-- **M-013 / INPUT/truncate_75pct**: Δ=-0.2619 (-0.3143). Baseline=0.8333 → Perturbed=0.5714
+- **M-005 / INPUT/truncate_75pct**: Δ=-0.2694 (-0.3419). Baseline=0.7879 → Perturbed=0.5185
+- **M-013 / INPUT/truncate_75pct**: Δ=-0.2462 (-0.3219). Baseline=0.7647 → Perturbed=0.5185
 
 ## Gate M6 verdict: **PARTIAL**
 

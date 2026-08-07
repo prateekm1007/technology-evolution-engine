@@ -9,8 +9,8 @@
       "metric_name": "Discovery F1 (DR-91)",
       "perturbation_type": "INPUT",
       "perturbation_name": "drop_1_sentence",
-      "baseline_value": 0.8571,
-      "perturbed_value": 0.8571,
+      "baseline_value": 0.7879,
+      "perturbed_value": 0.7879,
       "absolute_change": 0.0,
       "relative_change": 0.0,
       "sensitivity_class": "ROBUST"
@@ -20,8 +20,8 @@
       "metric_name": "Discovery F1 (DR-91)",
       "perturbation_type": "INPUT",
       "perturbation_name": "shuffle_sentences",
-      "baseline_value": 0.8571,
-      "perturbed_value": 0.8571,
+      "baseline_value": 0.7879,
+      "perturbed_value": 0.7879,
       "absolute_change": 0.0,
       "relative_change": 0.0,
       "sensitivity_class": "ROBUST"
@@ -31,10 +31,10 @@
       "metric_name": "Discovery F1 (DR-91)",
       "perturbation_type": "INPUT",
       "perturbation_name": "truncate_75pct",
-      "baseline_value": 0.8571,
-      "perturbed_value": 0.5714,
-      "absolute_change": -0.2857,
-      "relative_change": -0.3333,
+      "baseline_value": 0.7879,
+      "perturbed_value": 0.5185,
+      "absolute_change": -0.2694,
+      "relative_change": -0.3419,
       "sensitivity_class": "FRAGILE"
     },
     {
@@ -42,10 +42,10 @@
       "metric_name": "Discovery F1 (DR-91)",
       "perturbation_type": "GOLD",
       "perturbation_name": "drop_1_gold",
-      "baseline_value": 0.8571,
-      "perturbed_value": 0.8485,
-      "absolute_change": -0.0087,
-      "relative_change": -0.0101,
+      "baseline_value": 0.7879,
+      "perturbed_value": 0.7742,
+      "absolute_change": -0.0137,
+      "relative_change": -0.0174,
       "sensitivity_class": "ROBUST"
     },
     {
@@ -53,10 +53,10 @@
       "metric_name": "Discovery F1 (DR-91)",
       "perturbation_type": "GOLD",
       "perturbation_name": "drop_2_gold",
-      "baseline_value": 0.8571,
-      "perturbed_value": 0.8387,
-      "absolute_change": -0.0184,
-      "relative_change": -0.0215,
+      "baseline_value": 0.7879,
+      "perturbed_value": 0.7586,
+      "absolute_change": -0.0293,
+      "relative_change": -0.0371,
       "sensitivity_class": "ROBUST"
     },
     {
@@ -64,19 +64,19 @@
       "metric_name": "Discovery F1 (DR-91)",
       "perturbation_type": "GOLD",
       "perturbation_name": "rename_gold",
-      "baseline_value": 0.8571,
+      "baseline_value": 0.7879,
       "perturbed_value": 0.7879,
-      "absolute_change": -0.0693,
-      "relative_change": -0.0808,
-      "sensitivity_class": "SENSITIVE"
+      "absolute_change": 0.0,
+      "relative_change": 0.0,
+      "sensitivity_class": "ROBUST"
     },
     {
       "metric_id": "M-005",
       "metric_name": "Discovery F1 (DR-91)",
       "perturbation_type": "SYNONYM",
       "perturbation_name": "remove_1_synonym",
-      "baseline_value": 0.8571,
-      "perturbed_value": 0.8571,
+      "baseline_value": 0.7879,
+      "perturbed_value": 0.7879,
       "absolute_change": 0.0,
       "relative_change": 0.0,
       "sensitivity_class": "ROBUST"
@@ -86,8 +86,8 @@
       "metric_name": "Discovery F1 (DR-91)",
       "perturbation_type": "SYNONYM",
       "perturbation_name": "remove_25pct_synonyms",
-      "baseline_value": 0.8571,
-      "perturbed_value": 0.8571,
+      "baseline_value": 0.7879,
+      "perturbed_value": 0.7879,
       "absolute_change": 0.0,
       "relative_change": 0.0,
       "sensitivity_class": "ROBUST"
@@ -97,10 +97,10 @@
       "metric_name": "Discovery F1 (DR-91)",
       "perturbation_type": "SYNONYM",
       "perturbation_name": "remove_50pct_synonyms",
-      "baseline_value": 0.8571,
-      "perturbed_value": 0.8235,
-      "absolute_change": -0.0336,
-      "relative_change": -0.0392,
+      "baseline_value": 0.7879,
+      "perturbed_value": 0.7879,
+      "absolute_change": 0.0,
+      "relative_change": 0.0,
       "sensitivity_class": "ROBUST"
     },
     {
@@ -120,9 +120,9 @@
       "perturbation_type": "SYNONYM",
       "perturbation_name": "remove_25pct_synonyms",
       "baseline_value": 0.9474,
-      "perturbed_value": 0.9189,
-      "absolute_change": -0.0284,
-      "relative_change": -0.03,
+      "perturbed_value": 0.9474,
+      "absolute_change": 0.0,
+      "relative_change": 0.0,
       "sensitivity_class": "ROBUST"
     },
     {
@@ -131,9 +131,9 @@
       "perturbation_type": "SYNONYM",
       "perturbation_name": "remove_50pct_synonyms",
       "baseline_value": 0.9474,
-      "perturbed_value": 0.9189,
-      "absolute_change": -0.0284,
-      "relative_change": -0.03,
+      "perturbed_value": 0.9474,
+      "absolute_change": 0.0,
+      "relative_change": 0.0,
       "sensitivity_class": "ROBUST"
     },
     {
@@ -163,8 +163,8 @@
       "metric_name": "Aggregate F1 (honest)",
       "perturbation_type": "INPUT",
       "perturbation_name": "drop_1_sentence",
-      "baseline_value": 0.8333,
-      "perturbed_value": 0.8333,
+      "baseline_value": 0.7647,
+      "perturbed_value": 0.7647,
       "absolute_change": 0.0,
       "relative_change": 0.0,
       "sensitivity_class": "ROBUST"
@@ -174,10 +174,10 @@
       "metric_name": "Aggregate F1 (honest)",
       "perturbation_type": "INPUT",
       "perturbation_name": "truncate_75pct",
-      "baseline_value": 0.8333,
-      "perturbed_value": 0.5714,
-      "absolute_change": -0.2619,
-      "relative_change": -0.3143,
+      "baseline_value": 0.7647,
+      "perturbed_value": 0.5185,
+      "absolute_change": -0.2462,
+      "relative_change": -0.3219,
       "sensitivity_class": "FRAGILE"
     },
     {
@@ -185,10 +185,10 @@
       "metric_name": "Aggregate F1 (honest)",
       "perturbation_type": "GOLD",
       "perturbation_name": "drop_1_gold",
-      "baseline_value": 0.8333,
-      "perturbed_value": 0.8235,
-      "absolute_change": -0.0098,
-      "relative_change": -0.0118,
+      "baseline_value": 0.7647,
+      "perturbed_value": 0.75,
+      "absolute_change": -0.0147,
+      "relative_change": -0.0192,
       "sensitivity_class": "ROBUST"
     },
     {
@@ -196,10 +196,10 @@
       "metric_name": "Aggregate F1 (honest)",
       "perturbation_type": "GOLD",
       "perturbation_name": "drop_2_gold",
-      "baseline_value": 0.8333,
-      "perturbed_value": 0.8125,
-      "absolute_change": -0.0208,
-      "relative_change": -0.025,
+      "baseline_value": 0.7647,
+      "perturbed_value": 0.7333,
+      "absolute_change": -0.0314,
+      "relative_change": -0.041,
       "sensitivity_class": "ROBUST"
     },
     {
@@ -207,19 +207,19 @@
       "metric_name": "Aggregate F1 (honest)",
       "perturbation_type": "GOLD",
       "perturbation_name": "rename_gold",
-      "baseline_value": 0.8333,
+      "baseline_value": 0.7647,
       "perturbed_value": 0.7647,
-      "absolute_change": -0.0686,
-      "relative_change": -0.0824,
-      "sensitivity_class": "SENSITIVE"
+      "absolute_change": 0.0,
+      "relative_change": 0.0,
+      "sensitivity_class": "ROBUST"
     },
     {
       "metric_id": "M-013",
       "metric_name": "Aggregate F1 (honest)",
       "perturbation_type": "SYNONYM",
       "perturbation_name": "remove_25pct_synonyms",
-      "baseline_value": 0.8333,
-      "perturbed_value": 0.8333,
+      "baseline_value": 0.7647,
+      "perturbed_value": 0.7647,
       "absolute_change": 0.0,
       "relative_change": 0.0,
       "sensitivity_class": "ROBUST"
@@ -229,10 +229,10 @@
       "metric_name": "Aggregate F1 (honest)",
       "perturbation_type": "SYNONYM",
       "perturbation_name": "remove_50pct_synonyms",
-      "baseline_value": 0.8333,
-      "perturbed_value": 0.8,
-      "absolute_change": -0.0333,
-      "relative_change": -0.04,
+      "baseline_value": 0.7647,
+      "perturbed_value": 0.7647,
+      "absolute_change": 0.0,
+      "relative_change": 0.0,
       "sensitivity_class": "ROBUST"
     },
     {
@@ -240,8 +240,8 @@
       "metric_name": "Per-proposal F1 (honest, lenient)",
       "perturbation_type": "INPUT",
       "perturbation_name": "drop_1_sentence",
-      "baseline_value": 0.75,
-      "perturbed_value": 0.75,
+      "baseline_value": 0.65,
+      "perturbed_value": 0.65,
       "absolute_change": 0.0,
       "relative_change": 0.0,
       "sensitivity_class": "ROBUST"
@@ -251,10 +251,10 @@
       "metric_name": "Per-proposal F1 (honest, lenient)",
       "perturbation_type": "GOLD",
       "perturbation_name": "drop_1_gold",
-      "baseline_value": 0.75,
-      "perturbed_value": 0.7368,
-      "absolute_change": -0.0132,
-      "relative_change": -0.0175,
+      "baseline_value": 0.65,
+      "perturbed_value": 0.6316,
+      "absolute_change": -0.0184,
+      "relative_change": -0.0283,
       "sensitivity_class": "ROBUST"
     },
     {
@@ -262,19 +262,19 @@
       "metric_name": "Per-proposal F1 (honest, lenient)",
       "perturbation_type": "GOLD",
       "perturbation_name": "drop_2_gold",
-      "baseline_value": 0.75,
-      "perturbed_value": 0.7222,
-      "absolute_change": -0.0278,
-      "relative_change": -0.037,
-      "sensitivity_class": "ROBUST"
+      "baseline_value": 0.65,
+      "perturbed_value": 0.6111,
+      "absolute_change": -0.0389,
+      "relative_change": -0.0598,
+      "sensitivity_class": "SENSITIVE"
     },
     {
       "metric_id": "M-010",
       "metric_name": "Per-proposal F1 (honest, lenient)",
       "perturbation_type": "SYNONYM",
       "perturbation_name": "remove_25pct_synonyms",
-      "baseline_value": 0.75,
-      "perturbed_value": 0.75,
+      "baseline_value": 0.65,
+      "perturbed_value": 0.65,
       "absolute_change": 0.0,
       "relative_change": 0.0,
       "sensitivity_class": "ROBUST"
@@ -284,16 +284,16 @@
       "metric_name": "Per-proposal F1 (honest, lenient)",
       "perturbation_type": "SYNONYM",
       "perturbation_name": "remove_50pct_synonyms",
-      "baseline_value": 0.75,
-      "perturbed_value": 0.7,
-      "absolute_change": -0.05,
-      "relative_change": -0.0667,
-      "sensitivity_class": "SENSITIVE"
+      "baseline_value": 0.65,
+      "perturbed_value": 0.65,
+      "absolute_change": 0.0,
+      "relative_change": 0.0,
+      "sensitivity_class": "ROBUST"
     }
   ],
   "verdict_counts": {
-    "ROBUST": 21,
-    "SENSITIVE": 3,
+    "ROBUST": 23,
+    "SENSITIVE": 1,
     "FRAGILE": 2
   },
   "gate_verdict": "PARTIAL",

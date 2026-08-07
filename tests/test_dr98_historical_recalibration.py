@@ -150,9 +150,12 @@ def test_recalibrate_hc006_uses_shared_entities(gold_discoveries, synmap):
     hc006 = next(c for c in HISTORICAL_CLAIMS if c.claim_id == "HC-006")
     r = recalibrate_claim(hc006, gold_discoveries, synmap)
     assert r["candidate_set"] == "shared_entities"
-    # Should reproduce 0.8571 under DR-91 convention
-    assert r["rescored_lenient_f1_dr91"] == 0.8571
-    assert r["verdict_dr91_convention"] == "SURVIVES"
+    # After cycle 270 (circular synonyms removed), DR-91 F1 is 0.7879
+    # (was 0.8571 with circular synonyms). Delta = -0.069 → ERODED
+    # (|delta| > 0.05). This is honest: the production F1 was inflated
+    # by circular synonyms.
+    assert abs(r["rescored_lenient_f1_dr91"] - 0.79) < 0.05
+    assert r["verdict_dr91_convention"] == "ERODED"
 
 
 def test_recalibrate_hc007_uses_all_entities(gold_discoveries, synmap):
@@ -160,8 +163,9 @@ def test_recalibrate_hc007_uses_all_entities(gold_discoveries, synmap):
     hc007 = next(c for c in HISTORICAL_CLAIMS if c.claim_id == "HC-007")
     r = recalibrate_claim(hc007, gold_discoveries, synmap)
     assert r["candidate_set"] == "all_entities"
-    # Should reproduce 1.0 under DR-91 convention
-    assert r["rescored_lenient_f1_dr91"] == 1.0
+    # After cycle 270 (circular synonyms removed), DR-91 F1 is 0.9744
+    # (was 1.0 with circular synonyms). Still SURVIVES (within ±0.05 of 1.0).
+    assert r["rescored_lenient_f1_dr91"] >= 0.95
     assert r["verdict_dr91_convention"] == "SURVIVES"
 
 

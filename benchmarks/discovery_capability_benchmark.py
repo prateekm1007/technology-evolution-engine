@@ -50,48 +50,22 @@ sys.path.insert(0, str(REPO))
 # These are REAL published cross-domain connections. The system has NOT been
 # told these connections. If it discovers them, that's genuine discovery.
 
-# Per DR-51 (cycle 197): semantic synonym map for bridge matching.
-# 3 of 4 misses were synonym failures: the bridge concept is semantically
-# present in the shared entities but not lexically matched.
-# This map is NOT a "hardcoded discovery vocabulary" (DR-40 forbids that for
-# extraction). It's a scoring aid for the BENCHMARK's gold-matching step,
-# allowing the benchmark to credit semantically-correct discoveries.
-BRIDGE_SYNONYMS = {
-    "biomineralization": {"mineral_precipitation", "calcium_carbonate_precipitation",
-                          "biological_mineralization", "mineral_formation"},
-    "thermal_emission": {"radiative_heat", "thermal_radiation", "heat_emission",
-                         "radiative_emission"},
-    "thermal_regulation": {"temperature_control", "thermal_management",
-                           "temperature_regulation", "thermal_control"},
-    "tight_junctions": {"size_selective_pores", "size_selective_barriers",
-                        "molecular_barrier", "paracellular_barrier"},
-    "contact_angle": {"wetting_angle", "contact_angles"},
-    "photon_absorption": {"light_absorption", "photon_capture", "absorb_photons",
-                          "absorbing_photons"},
-    "heat_dissipation": {"thermal_dissipation", "heat_removal", "cooling",
-                         "thermal_management"},
-    "ion_selectivity": {"ion_filtering", "selective_ion", "ion_screening",
-                        "pore_size_selectivity"},
-    "electrocatalyst": {"catalyst", "electrocatalysis", "catalytic_material",
-                        "platinum_catalyst"},
-    "temperature_gradient": {"thermal_gradient", "heat_gradient",
-                             "temperature_difference"},
-    "surface_functionization": {"surface_treatment", "surface_modification",
-                                "functionalization"},
-    "mechanical_strain": {"strain", "mechanical_deformation", "elastic_strain"},
-    "spin_polarization": {"nuclear_spin", "electron_spin", "spin_alignment"},
-    "ion_storage": {"charge_storage", "ion_intercalation", "ion_adsorption"},
-    "bandgap_engineering": {"bandgap", "band_gap", "quantum_confinement",
-                            "semiconductor_bandgap"},
-    "high_surface_area": {"surface_area", "porous_structure", "nanoporous",
-                          "large_surface"},
-    "tensile_strength": {"mechanical_strength", "tensile", "mechanical_properties"},
-    "latent_heat": {"heat_of_vaporization", "vaporization_heat", "phase_change_heat"},
-    "photon_energy": {"light_energy", "photon", "photon_conversion",
-                      "light_harvesting"},
-    "fiber_morphology": {"fiber_diameter", "fiber_alignment", "nanofiber_structure",
-                         "fiber_structure"},
-}
+# P0 CIRCULAR VALIDATION FIX (cycle 270, F-158):
+# BRIDGE_SYNONYMS was removed because it was circular — 19/20 gold bridges
+# were direct keys, and the synonym values were reverse-engineered from what
+# the extraction pipeline produced for those specific items, not drawn from
+# a general thesaurus. This violated MC-1 (No self-validation) of the
+# Measurement Constitution.
+#
+# The synonym map may be rebuilt in a future cycle from an INDEPENDENT source
+# (LLM prompted with only bridge concept names, domain expert, or WordNet),
+# but only after proving the source had no access to GOLD_DISCOVERIES or the
+# extraction pipeline output. Until then, m_synonym falls back to m_token
+# (substring + token overlap), which is completely non-circular.
+#
+# Structural test: tests/test_no_gold_derived_synonyms.py enforces that
+# BRIDGE_SYNONYMS keys do not overlap with gold bridge names.
+BRIDGE_SYNONYMS = {}
 
 
 def _bridge_matches(expected_bridge: str, candidate: str) -> bool:

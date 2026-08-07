@@ -20,21 +20,21 @@ Brier score.' Per AP-1: run it, don't reason about it.
 | Metric | Name | Level | External Validation | Method | Version | Notes |
 |---|---|---|---|---|---|---|
 | M-001 | Exact F1 (all entities) | DEGENERATE | no | M3 bootstrap (degenerate: std= | m3-cycle-261 | Degenerate: produces constant value 0.0000. No calibration p... |
-| M-002 | Token F1 (all entities) | PARTIALLY_CALIBRATED | YES | DR-91 independent audit + M3 b | dr91-cycle-243 | FP floor = 0.9474 (>5% threshold). DR-91 audit exists but FP... |
+| M-002 | Token F1 (all entities) | PARTIALLY_CALIBRATED | YES | DR-91 independent audit + M3 b | dr91-cycle-243 | FP floor = 0.9189 (>5% threshold). DR-91 audit exists but FP... |
 | M-003 | Fuzzy F1 (all entities) | DEGENERATE | no | M3 bootstrap (degenerate: std= | m3-cycle-261 | Degenerate: produces constant value 0.0000. No calibration p... |
-| M-004 | Synonym F1 (all entities) | PARTIALLY_CALIBRATED | YES | DR-91 independent audit + M3 b | dr91-cycle-243 | FP floor = 0.9474 (>5% threshold). DR-91 audit exists but FP... |
-| M-005 | Discovery F1 (shared, syn, DR-91) | PARTIALLY_CALIBRATED | YES | DR-91 independent audit + M3 b | dr91-cycle-243 | FP floor = 0.9474 (>5% threshold). DR-91 audit exists but FP... |
-| M-006 | Recognition F1 (all, syn, DR-91) | DEGENERATE | no | M3 bootstrap (degenerate: std= | m3-cycle-261 | Degenerate: produces constant value 1.0000. No calibration p... |
-| M-007 | Proposal-locus inflation | PARTIALLY_CALIBRATED | YES | DR-91 independent audit + M3 b | dr91-cycle-243 | FP floor = 0.9474 (>5% threshold). DR-91 audit exists but FP... |
-| M-008 | FP floor (synonym) | PARTIALLY_CALIBRATED | YES | DR-91 adversarial test (1000×  | dr91-cycle-243 | FP floor = 0.9474. CATASTROPHIC (>5% threshold). The metric ... |
-| M-009 | UNSAFE synonyms count | PARTIALLY_CALIBRATED | YES | DR-91 independent audit + M3 b | dr91-cycle-243 | FP floor = 0.9474 (>5% threshold). DR-91 audit exists but FP... |
-| M-010 | Per-proposal F1 (honest, lenient, A | PARTIALLY_CALIBRATED | YES | DR-91 independent audit + M3 b | dr91-cycle-243 | FP floor = 0.9474 (>5% threshold). DR-91 audit exists but FP... |
+| M-004 | Synonym F1 (all entities) | PARTIALLY_CALIBRATED | YES | DR-91 independent audit + M3 b | dr91-cycle-243 | FP floor = 0.9189 (>5% threshold). DR-91 audit exists but FP... |
+| M-005 | Discovery F1 (shared, syn, DR-91) | PARTIALLY_CALIBRATED | YES | DR-91 independent audit + M3 b | dr91-cycle-243 | FP floor = 0.9189 (>5% threshold). DR-91 audit exists but FP... |
+| M-006 | Recognition F1 (all, syn, DR-91) | PARTIALLY_CALIBRATED | YES | DR-91 independent audit + M3 b | dr91-cycle-243 | FP floor = 0.9189 (>5% threshold). DR-91 audit exists but FP... |
+| M-007 | Proposal-locus inflation | PARTIALLY_CALIBRATED | YES | DR-91 independent audit + M3 b | dr91-cycle-243 | FP floor = 0.9189 (>5% threshold). DR-91 audit exists but FP... |
+| M-008 | FP floor (synonym) | PARTIALLY_CALIBRATED | YES | DR-91 adversarial test (1000×  | dr91-cycle-243 | FP floor = 0.9189. CATASTROPHIC (>5% threshold). The metric ... |
+| M-009 | UNSAFE synonyms count | DEGENERATE | no | M3 bootstrap (degenerate: std= | m3-cycle-261 | Degenerate: produces constant value 0.0000. No calibration p... |
+| M-010 | Per-proposal F1 (honest, lenient, A | PARTIALLY_CALIBRATED | YES | DR-91 independent audit + M3 b | dr91-cycle-243 | FP floor = 0.9189 (>5% threshold). DR-91 audit exists but FP... |
 | M-011 | Per-proposal F1 (strict, honest) | DEGENERATE | no | M3 bootstrap (degenerate: std= | m3-cycle-261 | Degenerate: produces constant value 0.0000. No calibration p... |
-| M-012 | Aggregate F1 (DR-91) | PARTIALLY_CALIBRATED | YES | DR-91 independent audit + M3 b | dr91-cycle-243 | FP floor = 0.9474 (>5% threshold). DR-91 audit exists but FP... |
-| M-013 | Aggregate F1 (honest) | PARTIALLY_CALIBRATED | YES | DR-91 independent audit + M3 b | dr91-cycle-243 | FP floor = 0.9474 (>5% threshold). DR-91 audit exists but FP... |
-| M-014 | BM25 recall@1 (lenient) | PARTIALLY_CALIBRATED | YES | DR-91 independent audit + M3 b | dr91-cycle-243 | FP floor = 0.9474 (>5% threshold). DR-91 audit exists but FP... |
-| M-015 | Random baseline F1 (lenient) | PARTIALLY_CALIBRATED | YES | DR-91 independent audit + M3 b | dr91-cycle-243 | FP floor = 0.9474 (>5% threshold). DR-91 audit exists but FP... |
-| M-016 | Frequency baseline F1 (lenient) | PARTIALLY_CALIBRATED | YES | DR-91 independent audit + M3 b | dr91-cycle-243 | FP floor = 0.9474 (>5% threshold). DR-91 audit exists but FP... |
+| M-012 | Aggregate F1 (DR-91) | PARTIALLY_CALIBRATED | YES | DR-91 independent audit + M3 b | dr91-cycle-243 | FP floor = 0.9189 (>5% threshold). DR-91 audit exists but FP... |
+| M-013 | Aggregate F1 (honest) | PARTIALLY_CALIBRATED | YES | DR-91 independent audit + M3 b | dr91-cycle-243 | FP floor = 0.9189 (>5% threshold). DR-91 audit exists but FP... |
+| M-014 | BM25 recall@1 (lenient) | PARTIALLY_CALIBRATED | YES | DR-91 independent audit + M3 b | dr91-cycle-243 | FP floor = 0.9189 (>5% threshold). DR-91 audit exists but FP... |
+| M-015 | Random baseline F1 (lenient) | PARTIALLY_CALIBRATED | YES | DR-91 independent audit + M3 b | dr91-cycle-243 | FP floor = 0.9189 (>5% threshold). DR-91 audit exists but FP... |
+| M-016 | Frequency baseline F1 (lenient) | PARTIALLY_CALIBRATED | YES | DR-91 independent audit + M3 b | dr91-cycle-243 | FP floor = 0.9189 (>5% threshold). DR-91 audit exists but FP... |
 | M-101 | Gen 1 Document Parsing F1 | DEGENERATE | no | M3 bootstrap (degenerate: std= | m3-cycle-261 | Degenerate: produces constant value 1.0000. No calibration p... |
 | M-102 | Gen 2 Entity Extraction F1 | PARTIALLY_CALIBRATED | YES | DR-91 audit + M3 bootstrap CI  | dr91-cycle-243 | Invention metrics have M3 CIs and scorecard tests (F-092). N... |
 | M-103 | Gen 3 Relation Extraction F1 | PARTIALLY_CALIBRATED | YES | DR-91 audit + M3 bootstrap CI  | dr91-cycle-243 | Invention metrics have M3 CIs and scorecard tests (F-092). N... |

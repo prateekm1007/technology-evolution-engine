@@ -321,7 +321,7 @@
       "rule_name": "Bootstrap uncertainty",
       "metric_id": "M-004",
       "compliant": true,
-      "evidence": "M3 bootstrap exists: True (CI=0.2564, 0.2963)",
+      "evidence": "M3 bootstrap exists: True (CI=0.2102, 0.2614)",
       "source": "reports/bootstrap_statistics.json"
     },
     {
@@ -385,7 +385,7 @@
       "rule_name": "Bootstrap uncertainty",
       "metric_id": "M-005",
       "compliant": true,
-      "evidence": "M3 bootstrap exists: True (CI=0.7097, 0.9474)",
+      "evidence": "M3 bootstrap exists: True (CI=0.6207, 0.9189)",
       "source": "reports/bootstrap_statistics.json"
     },
     {
@@ -433,7 +433,7 @@
       "rule_name": "Historical permanence",
       "metric_id": "M-006",
       "compliant": true,
-      "evidence": "deterministic (degenerate in M3, no drift possible)",
+      "evidence": "M4 system demonstrated on representative metrics (not individually tested)",
       "source": "reports/repeatability_m4.json + reports/bootstrap_statistics.json"
     },
     {
@@ -449,7 +449,7 @@
       "rule_name": "Bootstrap uncertainty",
       "metric_id": "M-006",
       "compliant": true,
-      "evidence": "M3 bootstrap exists: True (CI=1.0, 1.0)",
+      "evidence": "M3 bootstrap exists: True (CI=0.9189, 1.0)",
       "source": "reports/bootstrap_statistics.json"
     },
     {
@@ -513,7 +513,7 @@
       "rule_name": "Bootstrap uncertainty",
       "metric_id": "M-007",
       "compliant": true,
-      "evidence": "M3 bootstrap exists: True (CI=0.0526, 0.2903)",
+      "evidence": "M3 bootstrap exists: True (CI=0.0554, 0.3759)",
       "source": "reports/bootstrap_statistics.json"
     },
     {
@@ -577,7 +577,7 @@
       "rule_name": "Bootstrap uncertainty",
       "metric_id": "M-008",
       "compliant": true,
-      "evidence": "M3 bootstrap exists: True (CI=0.7879, 1.0)",
+      "evidence": "M3 bootstrap exists: True (CI=0.6667, 1.0)",
       "source": "reports/bootstrap_statistics.json"
     },
     {
@@ -625,7 +625,7 @@
       "rule_name": "Historical permanence",
       "metric_id": "M-009",
       "compliant": true,
-      "evidence": "M4 system demonstrated on representative metrics (not individually tested)",
+      "evidence": "deterministic (degenerate in M3, no drift possible)",
       "source": "reports/repeatability_m4.json + reports/bootstrap_statistics.json"
     },
     {
@@ -641,7 +641,7 @@
       "rule_name": "Bootstrap uncertainty",
       "metric_id": "M-009",
       "compliant": true,
-      "evidence": "M3 bootstrap exists: True (CI=15.0, 20.0)",
+      "evidence": "M3 bootstrap exists: True (CI=0.0, 0.0)",
       "source": "reports/bootstrap_statistics.json"
     },
     {
@@ -705,7 +705,7 @@
       "rule_name": "Bootstrap uncertainty",
       "metric_id": "M-010",
       "compliant": true,
-      "evidence": "M3 bootstrap exists: True (CI=0.55, 0.9)",
+      "evidence": "M3 bootstrap exists: True (CI=0.45, 0.85)",
       "source": "reports/bootstrap_statistics.json"
     },
     {
@@ -833,7 +833,7 @@
       "rule_name": "Bootstrap uncertainty",
       "metric_id": "M-012",
       "compliant": true,
-      "evidence": "M3 bootstrap exists: True (CI=0.7097, 0.9474)",
+      "evidence": "M3 bootstrap exists: True (CI=0.6207, 0.9189)",
       "source": "reports/bootstrap_statistics.json"
     },
     {
@@ -897,7 +897,7 @@
       "rule_name": "Bootstrap uncertainty",
       "metric_id": "M-013",
       "compliant": true,
-      "evidence": "M3 bootstrap exists: True (CI=0.6471, 0.9231)",
+      "evidence": "M3 bootstrap exists: True (CI=0.5455, 0.8947)",
       "source": "reports/bootstrap_statistics.json"
     },
     {
@@ -961,7 +961,7 @@
       "rule_name": "Bootstrap uncertainty",
       "metric_id": "M-014",
       "compliant": true,
-      "evidence": "M3 bootstrap exists: True (CI=0.45, 0.85)",
+      "evidence": "M3 bootstrap exists: True (CI=0.1487, 0.5)",
       "source": "reports/bootstrap_statistics.json"
     },
     {
@@ -1024,72 +1024,72 @@
       "rule_id": "MC-8",
       "rule_name": "Bootstrap uncertainty",
       "metric_id": "M-015",
+      "compliant": true,
+      "evidence": "M3 bootstrap exists: True (CI=0.0, 0.15)",
+      "source": "reports/bootstrap_statistics.json"
+    },
+    {
+      "rule_id": "MC-1",
+      "rule_name": "No self-validation",
+      "metric_id": "M-016",
+      "compliant": true,
+      "evidence": "DR-91 independent audit module exists (zero production imports)",
+      "source": "audit/measurement_integrity/dr91_measurement_audit.py"
+    },
+    {
+      "rule_id": "MC-2",
+      "rule_name": "Independent rescoring",
+      "metric_id": "M-016",
+      "compliant": true,
+      "evidence": "M3 bootstrap uses independent matchers (reproduced from DR-91)",
+      "source": "programs/A_metrology/bootstrap_statistics.py"
+    },
+    {
+      "rule_id": "MC-3",
+      "rule_name": "Confidence calibration",
+      "metric_id": "M-016",
+      "compliant": true,
+      "evidence": "N/A \u2014 metric does not produce confidence scores",
+      "source": "N/A"
+    },
+    {
+      "rule_id": "MC-4",
+      "rule_name": "Evidence tiers",
+      "metric_id": "M-016",
+      "compliant": true,
+      "evidence": "M1 spec exists with Evidence tier field",
+      "source": "programs/A_metrology/MeasurementEngineSpecification.md"
+    },
+    {
+      "rule_id": "MC-5",
+      "rule_name": "Adversarial testing",
+      "metric_id": "M-016",
+      "compliant": true,
+      "evidence": "envelope=True, fp_floor=True",
+      "source": "reports/failure_envelopes/ + reports/bootstrap_statistics.json (M-008)"
+    },
+    {
+      "rule_id": "MC-6",
+      "rule_name": "Historical permanence",
+      "metric_id": "M-016",
+      "compliant": true,
+      "evidence": "M4 system demonstrated on representative metrics (not individually tested)",
+      "source": "reports/repeatability_m4.json + reports/bootstrap_statistics.json"
+    },
+    {
+      "rule_id": "MC-7",
+      "rule_name": "No naked numbers",
+      "metric_id": "M-016",
+      "compliant": true,
+      "evidence": "ScoredValue + ProvenanceRegistry + @with_provenance exist",
+      "source": "programs/A_metrology/measurement_provenance.py"
+    },
+    {
+      "rule_id": "MC-8",
+      "rule_name": "Bootstrap uncertainty",
+      "metric_id": "M-016",
       "compliant": true,
       "evidence": "M3 bootstrap exists: True (CI=0.0, 0.25)",
-      "source": "reports/bootstrap_statistics.json"
-    },
-    {
-      "rule_id": "MC-1",
-      "rule_name": "No self-validation",
-      "metric_id": "M-016",
-      "compliant": true,
-      "evidence": "DR-91 independent audit module exists (zero production imports)",
-      "source": "audit/measurement_integrity/dr91_measurement_audit.py"
-    },
-    {
-      "rule_id": "MC-2",
-      "rule_name": "Independent rescoring",
-      "metric_id": "M-016",
-      "compliant": true,
-      "evidence": "M3 bootstrap uses independent matchers (reproduced from DR-91)",
-      "source": "programs/A_metrology/bootstrap_statistics.py"
-    },
-    {
-      "rule_id": "MC-3",
-      "rule_name": "Confidence calibration",
-      "metric_id": "M-016",
-      "compliant": true,
-      "evidence": "N/A \u2014 metric does not produce confidence scores",
-      "source": "N/A"
-    },
-    {
-      "rule_id": "MC-4",
-      "rule_name": "Evidence tiers",
-      "metric_id": "M-016",
-      "compliant": true,
-      "evidence": "M1 spec exists with Evidence tier field",
-      "source": "programs/A_metrology/MeasurementEngineSpecification.md"
-    },
-    {
-      "rule_id": "MC-5",
-      "rule_name": "Adversarial testing",
-      "metric_id": "M-016",
-      "compliant": true,
-      "evidence": "envelope=True, fp_floor=True",
-      "source": "reports/failure_envelopes/ + reports/bootstrap_statistics.json (M-008)"
-    },
-    {
-      "rule_id": "MC-6",
-      "rule_name": "Historical permanence",
-      "metric_id": "M-016",
-      "compliant": true,
-      "evidence": "M4 system demonstrated on representative metrics (not individually tested)",
-      "source": "reports/repeatability_m4.json + reports/bootstrap_statistics.json"
-    },
-    {
-      "rule_id": "MC-7",
-      "rule_name": "No naked numbers",
-      "metric_id": "M-016",
-      "compliant": true,
-      "evidence": "ScoredValue + ProvenanceRegistry + @with_provenance exist",
-      "source": "programs/A_metrology/measurement_provenance.py"
-    },
-    {
-      "rule_id": "MC-8",
-      "rule_name": "Bootstrap uncertainty",
-      "metric_id": "M-016",
-      "compliant": true,
-      "evidence": "M3 bootstrap exists: True (CI=0.15, 0.5)",
       "source": "reports/bootstrap_statistics.json"
     },
     {
