@@ -6171,3 +6171,60 @@ Instead of "no object passes," the honest conclusion is:
 - The correct conclusion: Entity is tested (FP too high), Objects
   B-E are not yet testable (missing Proposal Composer)
 - DR-92 (Proposal Composer) is the next priority
+
+### F-137 — DR-93: Proposal Composer produces valid proposals (P1, cycle 248, architectural milestone)
+
+**CTO directive:**
+  "Does ProposalComposer actually produce scientifically meaningful
+   BridgeProposals? Measure structural validity, scientific validity,
+   discovery validity, proposal quality. BEFORE ProposalMatcher."
+
+**HONEST WORDING (corrected per CTO):**
+  "The path to testing trustworthiness is now available."
+  NOT: "The path to trustworthiness is now clear."
+
+**DR-93 evaluation results:**
+
+6 proposals composed from 20 gold discoveries. Each evaluated on 4 dimensions:
+
+1. STRUCTURAL VALIDITY: 6/6 (100%) pass all 12 checks
+   - All have mechanism, prediction, falsifier, assumptions, alternatives,
+     counterexample, confidence, provenance, source clusters
+
+2. SCIENTIFIC VALIDITY: 6/6 (100%) pass ≥4/5 dimensions
+   - All are coherent, testable, plausible, specific, non-trivial
+
+3. DISCOVERY VALIDITY:
+   - KNOWN: 1/6 (matches a gold bridge)
+   - TRIVIAL: 0/6 (none are common scientific terms)
+   - POTENTIALLY_NOVEL: 5/6 (entities not in gold set, not trivial)
+
+4. PROPOSAL QUALITY: average 4.50/5.0
+   - Clarity, specificity, falsifiability, completeness all ≥4
+
+**Verdict: PROPOSALS ARE STRUCTURALLY SOUND AND SCIENTIFICALLY COHERENT.**
+
+The Proposal Composer (generation 0: entity → template → proposal)
+produces valid proposals that can now be benchmarked.
+
+**Honest caveats:**
+1. The composer is generation 0 (template-based, not mechanism-based)
+2. Only 6/20 gold discoveries produce proposals (low shared-entity count)
+3. Scientific validity is heuristic (not domain-expert or LLM-judged)
+4. The proposals are structurally complete but scientifically shallow
+5. Future: composer should consume mechanisms, relations, constraints
+
+**Why the bug existed (P10):**
+The original pipeline (cycle 196) ended at entity extraction. There
+was no "compose proposal" layer. The benchmark scored entities because
+that's all the pipeline produced. The missing layer was identified by
+the CTO in the Phase VI.6 review: "you're feeding entity extractor →
+proposal benchmark." DR-92 built the layer; DR-93 validates it.
+
+**Status:** PROPOSAL COMPOSER VALIDATED (generation 0).
+- Structural: 100% valid
+- Scientific: 100% valid (heuristic)
+- Quality: 4.50/5.0
+- Next: rerun Phase VI.6 with composed proposals for fair comparison
+- PRELIMINARY verdict: still NOT TRUSTWORTHY (proposals exist but
+  benchmark hasn't been rerun with them yet)
