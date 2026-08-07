@@ -6105,3 +6105,69 @@ with:
   - Discovery-invention convergence (both produce ScientificClaims)
 
 PRELIMINARY_MEASUREMENT_VERDICT.md remains NOT TRUSTWORTHY.
+
+### F-136 — DR-91 Phase VI.6 CORRECTION: Objects B-E are NOT TESTABLE, not FAIL (P0, cycle 247, CTO-caught)
+
+**CTO correction (post-246):**
+  "I do NOT think the conclusion is 'No object passes.' I think the
+   correct conclusion is: 'None of the five candidate objects can be
+   fairly evaluated because the candidate generation pipeline still
+   produces entity-level outputs.'
+
+   You're feeding Entity extractor → Proposal benchmark. Of course
+   recall becomes zero. The pipeline never generated proposals. It
+   generated nouns. This is equivalent to benchmarking an image
+   classifier with audio inputs."
+
+**The CTO is correct.** The comparison table is misleading:
+
+  | Object | Status (WRONG) | Status (CORRECT) |
+  |--------|---------------|-----------------|
+  | Entity | FAIL | Tested (FP=0.10, recall=0.95) |
+  | Proposal | FAIL | NOT YET TESTABLE (pipeline produces entities, not proposals) |
+  | MechanismGraph | FAIL | NOT YET TESTABLE |
+  | ScientificClaim | FAIL | NOT YET TESTABLE |
+  | EvidenceGraph | FAIL | NOT YET TESTABLE |
+
+Objects B-E scored 0 recall because the pipeline generates ENTITIES
+(nouns), not PROPOSALS (claims with mechanisms). Testing a proposal
+matcher against entity outputs is a pipeline mismatch — the proposal
+matcher was never actually tested.
+
+**The missing architectural layer:**
+
+The discovery pipeline currently is:
+  Corpus → Entity extraction → Entity list → Entity matcher
+
+It NEEDS to be:
+  Corpus → Entity extraction → Relations → Mechanisms → Constraints
+  → Contradictions → Predictions → Falsifications → BridgeProposal
+  → Proposal matcher
+
+The "Compose proposal" layer does not exist. That is why richer
+discovery objects can't be evaluated — the pipeline never generates
+them.
+
+**Why the bug existed (P10):**
+
+The benchmark was designed (cycle 196-197) to measure what the
+pipeline produced (entities). When we redefined the discovery object
+(Phase VI.5), we changed the MATCHER but not the GENERATOR. The
+generator still produces entities. The matcher expects proposals.
+The mismatch makes the comparison meaningless for objects B-E.
+
+**Corrected conclusion:**
+
+Instead of "no object passes," the honest conclusion is:
+  "Entity is the only testable object (FP=0.10, recall=0.95).
+   Objects B-E are NOT YET TESTABLE because the pipeline lacks a
+   Proposal Composer that transforms extracted evidence into
+   structured BridgeProposal objects. Building this layer (DR-92)
+   is the prerequisite for fairly evaluating richer discovery objects."
+
+**Status:** CORRECTION APPLIED.
+- F-135's conclusion was overstrong (said "no object passes" when
+  4 objects were never fairly tested)
+- The correct conclusion: Entity is tested (FP too high), Objects
+  B-E are not yet testable (missing Proposal Composer)
+- DR-92 (Proposal Composer) is the next priority
