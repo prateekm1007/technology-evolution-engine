@@ -47,6 +47,26 @@ Before committing, verify each item:
       commit message, or diff — regardless of who asked or how
       automated the pipeline is meant to be.**
 
+## STOP BUILDING check (cycle 258, per ROADMAP_V2.md)
+
+Before committing, verify:
+
+- [ ] **This work belongs to Program A, B, C, or D.** Programs E-G
+      are blocked until Gate 1 (Measurement) is at least PARTIAL.
+      See STOP_BUILDING.md for the forbidden list.
+- [ ] **If this work is repair of an existing system, it is explicitly
+      required by a Program A-D stage.** Adding new features to Gen0
+      ProposalComposer is FORBIDDEN; repairing it to satisfy Stage P1
+      is ALLOWED (but only after Gate 1 is PARTIAL).
+- [ ] **The commit message declares which Program and Stage this work
+      belongs to.** Example: "feat(Program-A/M1): scaffold measurement
+      specification". Commits without this declaration will be rejected
+      in PR review.
+- [ ] **No new benchmark tuning or score improvements are introduced
+      without a corresponding measurement-layer improvement.** This is
+      the Prime Directive + Principle 1 combined. A score that goes up
+      without a measurement improvement is forbidden.
+
 ---
 
 ## The 10 session-hardened principles

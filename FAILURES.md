@@ -6865,3 +6865,133 @@ The instrumentation runs and produces signal, but the scientific claims
 are not proven. The AI surrogate review confirmed the proposals are
 template-level shared-term hypotheses, not mature scientific discovery
 claims. The PRELIMINARY verdict (NOT TRUSTWORTHY) remains canonical.
+
+
+### F-146 — Cycle 258: Constitutional Roadmap V2 — measurement-first philosophy (P0, cycle 258)
+
+**Driver:** External directive (cycle 258). The project philosophy changes:
+
+  FROM: building an invention engine
+  TO:   building the scientific infrastructure that makes an invention
+        engine possible
+
+The bottleneck is NOT invention. The bottleneck is measurement.
+
+**Constitutional change:**
+  - Principle 1 added to CONSTITUTION.md: "No capability work until the
+    measurement layer proves it can measure that capability."
+  - ROADMAP_V2.md created as canonical project plan (7 programs A-G,
+    4 GO/NO-GO gates, sequenced dependencies).
+  - STOP_BUILDING.md created as enforceable forbidden list.
+  - GO_NO_GO_GATES.md created as canonical gate structure (Gate 1-4).
+  - CONTRIBUTING.md updated with STOP BUILDING pre-commit check.
+
+**New architecture (constitutional):**
+
+```
+Measurement Engine
+        ↓
+Discovery Engine
+        ↓
+Proposal Engine
+        ↓
+Invention Engine
+        ↓
+Product
+```
+
+Everything depends on Measurement. Nothing bypasses Measurement.
+
+**STOP BUILDING list (forbidden until Programs A-D complete):**
+  1. Better Proposal Composer (beyond Gen0 experiments)
+  2. New discovery algorithms
+  3. New invention algorithms
+  4. L6 search
+  5. Product features
+  6. UI improvements
+  7. Commercialization work
+  8. Benchmark tuning (forbidden permanently — No-Gaming Rule)
+  9. Score improvements (forbidden permanently — Prime Directive)
+
+**GO / NO-GO Gates (canonical):**
+  - Gate 1 — Measurement (Program A): bootstrap, CI, reliability,
+    calibration, repeatability. Current: NOT STARTED.
+  - Gate 2 — Discovery (Program B): proposal-first benchmark,
+    external baselines, historical recalibration, FP floor, human
+    review. Current: BLOCKED (5/6 criteria not started or failed).
+  - Gate 3 — Proposal (Program C): mechanism-driven proposals,
+    independent evaluation, calibration bias. Current: NOT STARTED
+    (Gen0 frozen).
+  - Gate 4 — Invention (Program E): blocked until Gates 1-3 PASS.
+    Current: BLOCKED.
+
+**Mapping existing work to new structure:**
+  - DR-97 (external baselines) → Gate 2 Stage D3. Status:
+    INSTRUMENTATION_SCAFFOLD_PASS (oracle-assisted; needs true external
+    baselines).
+  - DR-98 (historical recalibration) → Gate 2 Stage D4. Status:
+    SENSITIVITY_ANALYSIS_PASS (not full recalibration; needs original
+    gold data reconstruction).
+  - DR-99 (N≥30 proposal evaluation) → Gate 1 Stage M3 (precursor).
+    Status: WEAK_STATISTICAL_PASS (per-proposal F1=0.15 below 0.30
+    useful-performance threshold).
+  - DR-100 (Tier-2 / AI surrogate review) → Gate 2 Stage D5 / Gate 3
+    Stage P3. Status: AI_SURROGATE_REVIEW_FAIL (0/6 accepted, mean
+    2.24/5).
+  - DR-101 (final verdict eligibility) → Gate 1+2+3+4 (meta). Status:
+    BLOCKED (0/4 SCIENCE_PASS).
+
+**Stage M1 begun (Program A, Priority #1):**
+  - programs/A_metrology/MeasurementEngineSpecification.md created.
+  - 19 metrics specified (M-001 through M-016, M-301 through M-303).
+  - Each metric has all 9 required fields: Inputs, Outputs, Assumptions,
+    Known failure modes, Uncertainty, Evidence tier, Calibration status,
+    Owner, Acceptance.
+  - 14 metrics remaining (invention M-101..M-105, search M-201..M-205,
+    evaluation M-304..M-306) marked as TODO.
+  - Stage M1 acceptance: every metric documented, no undocumented metric
+    remains. Current: 19/~30 metrics (63%).
+
+**Program directory structure created:**
+  - programs/A_metrology/
+  - programs/B_discovery/
+  - programs/C_proposal/
+  - programs/D_evaluation/
+  - programs/E_invention/
+  - programs/F_search/
+  - programs/G_research_infrastructure/
+
+**Tests added (tests/test_stop_building_enforcement.py, 11 tests):**
+  - test_roadmap_v2_exists
+  - test_stop_building_md_exists
+  - test_go_no_go_gates_md_exists
+  - test_constitution_references_principle_1
+  - test_contributing_has_stop_building_check
+  - test_measurement_engine_specification_exists
+  - test_measurement_specification_has_required_fields (verifies all 9
+    fields present for each specified metric)
+  - test_no_forbidden_patterns_in_source_files (scans for STOP BUILDING
+    violations: ProposalComposerGen1+, L6 search, benchmark tuning
+    comments, score improvement comments)
+  - test_gen0_proposal_composer_is_frozen (smoke test)
+  - test_programs_a_through_g_directories_exist
+  - test_go_no_go_gates_md_has_current_status
+
+**Test results:**
+  - 11 STOP BUILDING tests pass
+  - No regressions in existing test suite
+
+**Status:** CONSTITUTIONAL ROADMAP V2 IN EFFECT. Principle 1
+(measurement-first) is now constitutional. STOP BUILDING list enforced
+via CI. Stage M1 (Measurement Specification) begun; 19/~30 metrics
+specified. PRELIMINARY verdict (NOT TRUSTWORTHY) remains canonical.
+FINAL verdict requires Gates 1-4 PASS, currently 0/4.
+
+**What this changes for the coder:**
+  - The coder is no longer building an invention engine.
+  - The coder is building the scientific infrastructure that makes an
+    invention engine possible.
+  - All capability work (Programs E-G) is FORBIDDEN until measurement
+    (Program A) is trustworthy.
+  - The next breakthrough is not another invention algorithm; it is
+    trustworthy scientific measurement.

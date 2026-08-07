@@ -11,6 +11,37 @@ risk is entropy — regardless of how well-formed it is. The success
 metric is not "interesting"; it is "a customer can spend the next
 dollar intelligently."
 
+## Principle 1 (cycle 258, per ROADMAP_V2.md)
+
+> No capability work until the measurement layer proves it can measure
+> that capability.
+
+This is now constitutional. It supersedes the Prime Directive when
+they conflict: a capability improvement that the measurement layer
+cannot yet measure is forbidden, regardless of how green it makes
+a metric read.
+
+The bottleneck is NOT invention. The bottleneck is measurement.
+The architecture is:
+
+```
+Measurement Engine
+        ↓
+Discovery Engine
+        ↓
+Proposal Engine
+        ↓
+Invention Engine
+        ↓
+Product
+```
+
+Everything depends on Measurement. Nothing bypasses Measurement.
+
+The STOP_BUILDING list (see STOP_BUILDING.md) enforces this principle.
+The GO / NO-GO Gates (see GO_NO_GO_GATES.md) sequence the work.
+ROADMAP_V2.md is the canonical project plan.
+
 ## The 5 Core Rules (cycle 58, per CEO directive)
 
 ### The Prime Directive
