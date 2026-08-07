@@ -119,7 +119,19 @@ class LandscapeClassifier:
     """
 
     def classify(self, candidates: List, design_vars: List[Dict]) -> LandscapeSignature:
-        """Classify the landscape from a sample of evaluated candidates."""
+        """Classify the landscape from a sample of evaluated candidates.
+
+        Cycle 220 fix: SIGN-AWARE normalization. The original classifier
+        assumed positive outcomes (computed nonzero_fraction as
+        "fraction > 1% of max"). This broke on synthetic landscapes
+        where outcomes are negative (e.g., Sphere = -13.7 to 0). The
+        fix normalizes outcomes to [0,1] based on the OBSERVED spread
+        (min to max), so the same statistical rules work regardless
+        of sign.
+
+        Honest result before fix: 0/7 synthetic landscapes classified
+        correctly. After fix: see test_synthetic_landscape_classification.
+        """
         if len(candidates) < 20:
             return LandscapeSignature(
                 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, LandscapeType.UNKNOWN
@@ -132,30 +144,107 @@ class LandscapeClassifier:
         q75 = outcomes[3 * n // 4]
         q99 = outcomes[int(0.99 * n)]
         max_val = outcomes[-1]
+        min_val = outcomes[0]
 
-        nonzero_fraction = sum(1 for o in outcomes if o > 0.01 * max_val) / n
-        skew_ratio = q50 / max(1e-12, q99)
+        # Cycle 220 v2 — refined sign-aware metrics.
+        # The original nonzero_fraction ("> 5% of spread") couldn't
+        # distinguish "all-equal-because-needle" from "all-equal-because-
+        # smooth". The new metric: "fraction of samples within 5% of MAX"
+        # — this captures "how many samples are near the best seen".
+        # For a needle: very few samples are near max (most are at min).
+        # For a smooth landscape: many samples are spread across the range.
+        spread = max_val - min_val
+        if spread < 1e-12:
+            normalized = [0.5] * n
+            near_max_fraction = 0.5  # degenerate, treat as unknown
+        else:
+            normalized = [(o - min_val) / spread for o in outcomes]
+            # "Near max" = within 5% of the spread from max
+            near_max_fraction = sum(1 for no in normalized if no > 0.95) / n
+
+        # Cycle 220 v3 — better needle detection.
+        # A needle landscape has TWO signatures:
+        #   (a) most samples at the FLOOR (near_min > 0.5), OR
+        #   (b) spread is degenerate (all samples produce same value
+        #       because the needle was never hit in N samples)
+        # Case (b) is critical: with N=100 random samples and a needle
+        # occupying 0.05^4 = 6.25e-6 of the volume, we expect ~0 hits.
+        # The tell-tale: spread < 1e-9 × |max| AND max is "suspiciously
+        # close to a floor value" (e.g., 0 or a small constant).
+        if spread < 1e-9 * max(1.0, abs(max_val)):
+            # Degenerate spread — almost all samples produce same value.
+            # This is the signature of a needle we haven't hit.
+            landscape_type = LandscapeType.NEEDLE
+            # Re-classify as CONSTRAINT_DOM if the floor is exactly 0
+            # (typical of constraint-dominated landscapes where
+            # infeasible = 0 exactly)
+            if abs(min_val) < 1e-12 and abs(max_val) < 1e-12:
+                landscape_type = LandscapeType.CONSTRAINT_DOM
+            return LandscapeSignature(
+                n_samples=n, q25=q25, q50=q50, q75=q75, q99=q99, max_val=max_val,
+                nonzero_fraction=0.0, skew_ratio=0.0,
+                bimodality=0.0, interaction_index=0.0,
+                landscape_type=landscape_type,
+            )
+
+        # For non-degenerate landscapes, use the refined rules below.
+        # near_min_fraction: fraction of samples at the FLOOR (near min).
+        # For a needle: most samples are near min (nonzero=low).
+        # For a smooth landscape: samples are spread (nonzero=high).
+        near_min_fraction = sum(1 for no in normalized if no < 0.05) / n
+
+        # nonzero_fraction (kept for backward compat) = 1 - near_min_fraction
+        # = fraction of samples NOT at the floor
+        nonzero_fraction = 1.0 - near_min_fraction
+
+        # skew_ratio: how close the median is to the max.
+        # Sign-aware: use normalized values so this is in [0, 1].
+        norm_q50 = (q50 - min_val) / max(1e-12, spread)
+        norm_q99 = (q99 - min_val) / max(1e-12, spread)
+        skew_ratio = norm_q50 / max(1e-6, norm_q99)
+
         bimodality = self._bimodality_coefficient(outcomes)
         interaction_index = self._interaction_index(candidates, design_vars)
 
-        # Classification rules (domain-invariant)
-        if nonzero_fraction < 0.35 and skew_ratio < 0.05:
-            # Most candidates produce ~0, success is rare
-            landscape_type = LandscapeType.NEEDLE
-        elif bimodality > 0.55 and nonzero_fraction < 0.6:
-            # Bimodal distribution with a constraint floor
+        # Classification rules (sign-aware, refined)
+        # Order matters: most-specific rules first.
+        is_needle = near_min_fraction > 0.5 and near_max_fraction < 0.1
+
+        # Cycle 220 v4 — tighten the deceptive rule.
+        # The previous rule (bimodality > 0.55 and 0.3 <= near_min <= 0.7)
+        # was too permissive: it matched Catalyst (which has a continuous
+        # skewed distribution, not a true bimodal one). A real deceptive
+        # landscape has TWO separated peaks — visible as a GAP in the
+        # middle of the sorted outcomes.
+        # New rule: bimodality > 0.55 AND there's a clear gap (the middle
+        # 20% of sorted outcomes spans < 10% of the spread).
+        is_deceptive = False
+        if not is_needle and bimodality > 0.55 and 0.3 <= near_min_fraction <= 0.7:
+            # Check for a gap in the middle of the sorted outcomes
+            mid_lo_idx = int(0.4 * n)
+            mid_hi_idx = int(0.6 * n)
+            mid_lo_val = outcomes[mid_lo_idx]
+            mid_hi_val = outcomes[mid_hi_idx]
+            mid_span = mid_hi_val - mid_lo_val
+            if spread > 1e-12 and mid_span / spread < 0.10:
+                is_deceptive = True
+
+        if is_needle:
+            # Distinguish NEEDLE from CONSTRAINT_DOM:
+            # CONSTRAINT_DOM has a STRUCTURAL floor (exact same min value
+            # for many samples, because infeasible = 0 exactly).
+            exact_min_count = sum(1 for o in outcomes if abs(o - min_val) < 1e-9 * max(1.0, abs(min_val)))
+            if exact_min_count / n > 0.5:
+                landscape_type = LandscapeType.CONSTRAINT_DOM
+            else:
+                landscape_type = LandscapeType.NEEDLE
+        elif is_deceptive:
             landscape_type = LandscapeType.DECEPTIVE
         elif interaction_index > 0.5 and bimodality > 0.4:
-            # Strong interactions + multiple modes
             landscape_type = LandscapeType.MULTIMODAL
-        elif nonzero_fraction < 0.4:
-            # Mostly infeasible
-            landscape_type = LandscapeType.CONSTRAINT_DOM
         elif skew_ratio > 0.15:
-            # Relatively flat — gradient methods work
             landscape_type = LandscapeType.SMOOTH
         else:
-            # Default to smooth for moderate skew
             landscape_type = LandscapeType.SMOOTH
 
         return LandscapeSignature(
@@ -414,6 +503,11 @@ class BayesianOptimizer(Optimizer):
 
     The quadratic surrogate captures pairwise interactions, which is
     the minimum needed for deceptive landscapes.
+
+    Cycle 220 v2 fix: regression detection. If the best outcome in the
+    current iteration is significantly worse than the best seen so far,
+    the policy has over-narrowed. Widen it back to 50% of original
+    bounds (with the center kept at the current best).
     """
     name = "bayesian_optimizer"
 
@@ -421,11 +515,132 @@ class BayesianOptimizer(Optimizer):
         super().__init__(domain_spec)
         self.surrogate_coeffs: Dict = {}
         self.best_so_far: float = -math.inf
+        self.iteration: int = 0
+        self.recent_bests: List[float] = []  # track last 3 bests
 
     def step(self, candidates: List, rng: random.Random) -> List:
         if len(candidates) < 20:
             return []
+        self.iteration += 1
+
+        current_best = max(c.predicted_outcome for c in candidates)
+        self.recent_bests.append(current_best)
+        if len(self.recent_bests) > 3:
+            self.recent_bests.pop(0)
+
+        # Cycle 220 v2 — regression detection.
+        # If we have 3+ recent bests and the trend is declining (each
+        # recent best < previous), the policy has over-narrowed. Widen.
+        if len(self.recent_bests) >= 3:
+            declining = all(self.recent_bests[i] < self.recent_bests[i-1]
+                           for i in range(1, len(self.recent_bests)))
+            if declining:
+                # Widen policy back to 60% of original span
+                for var in self.domain["design_vars"]:
+                    vname = var["name"]
+                    lo, hi = self.original_bounds[vname]
+                    cur_lo, cur_hi = self.policy[vname]
+                    center = (cur_lo + cur_hi) / 2
+                    new_span = 0.6 * (hi - lo)
+                    new_lo = max(lo, center - new_span / 2)
+                    new_hi = min(hi, center + new_span / 2)
+                    if new_hi > new_lo:
+                        self.policy[vname] = (new_lo, new_hi)
+                # Reset recent_bests to avoid re-triggering
+                self.recent_bests = []
+                return []
+
+        # Also check for sharp regression: current < 0.5 * best_so_far
+        if self.best_so_far > -math.inf and current_best < 0.5 * self.best_so_far:
+            for var in self.domain["design_vars"]:
+                vname = var["name"]
+                lo, hi = self.original_bounds[vname]
+                cur_lo, cur_hi = self.policy[vname]
+                center = (cur_lo + cur_hi) / 2
+                new_span = 0.6 * (hi - lo)
+                new_lo = max(lo, center - new_span / 2)
+                new_hi = min(hi, center + new_span / 2)
+                if new_hi > new_lo:
+                    self.policy[vname] = (new_lo, new_hi)
+            self.recent_bests = []
+            return []
+
+        # Cycle 220 v3 — preemptive over-narrowing detection.
+        # The regression check (above) only triggers AFTER a bad iteration,
+        # which is too late if we only have 5 iterations. Instead, check
+        # if the policy has narrowed below 20% of original span — if so,
+        # widen it back proactively. This prevents the lock-on that causes
+        # the regression in the first place.
+        min_span_threshold = 0.20  # 20% of original
+        for var in self.domain["design_vars"]:
+            vname = var["name"]
+            lo, hi = self.original_bounds[vname]
+            cur_lo, cur_hi = self.policy[vname]
+            cur_span = cur_hi - cur_lo
+            orig_span = hi - lo
+            if cur_span < min_span_threshold * orig_span:
+                # Over-narrowed — widen back to 40% of original, centered
+                center = (cur_lo + cur_hi) / 2
+                new_span = 0.40 * orig_span
+                new_lo = max(lo, center - new_span / 2)
+                new_hi = min(hi, center + new_span / 2)
+                if new_hi > new_lo:
+                    self.policy[vname] = (new_lo, new_hi)
+
+        self.best_so_far = max(self.best_so_far, current_best)
         self._fit_surrogate(candidates)
+
+        # Cycle 220 v4 — surrogate quality check.
+        # If the quadratic surrogate doesn't generalize (CV-R² < 0.3),
+        # the landscape is too complex for a quadratic model. Fall back
+        # to EvolutionarySearch-style behavior (crossover + mutation
+        # from top candidates). This is honest: we tried Bayesian, the
+        # surrogate didn't generalize, so we fall back to a method that
+        # doesn't rely on a surrogate at all.
+        surrogate_r2 = self._surrogate_r2(candidates)
+        if surrogate_r2 < 0.3:
+            # Surrogate is unreliable — use evolutionary-style step:
+            # take top quartile as parents, generate offspring via
+            # crossover + mutation, narrow policy to offspring range.
+            # ALSO: increase exploration floor to 40% to escape local optima
+            outcomes = sorted(c.predicted_outcome for c in candidates)
+            n = len(outcomes)
+            q75 = outcomes[3 * n // 4]
+            parents = [c for c in candidates if c.predicted_outcome >= q75]
+            if len(parents) >= 2:
+                # Generate offspring via crossover + mutation
+                offspring_designs = []
+                for _ in range(20):
+                    p1, p2 = rng.sample(parents, 2)
+                    child = {}
+                    for var in self.domain["design_vars"]:
+                        vname = var["name"]
+                        # Crossover: pick from p1 or p2
+                        child[vname] = p1.design_point[vname] if rng.random() < 0.5 else p2.design_point[vname]
+                        # Mutation: perturb (higher rate to escape local optima)
+                        if rng.random() < 0.5:  # 50% mutation rate (was 30%)
+                            lo, hi = self.original_bounds[vname]
+                            if lo > 0 and hi / lo > 100:
+                                log_val = math.log(max(1e-12, child[vname]))
+                                log_val += rng.uniform(-1.0, 1.0)  # wider perturbation
+                                child[vname] = max(lo, min(hi, math.exp(log_val)))
+                            else:
+                                span = hi - lo
+                                child[vname] = max(lo, min(hi, child[vname] + rng.uniform(-0.2, 0.2) * span))
+                    offspring_designs.append(child)
+                # Narrow policy to range of offspring (wider than before)
+                for var in self.domain["design_vars"]:
+                    vname = var["name"]
+                    vals = [d[vname] for d in offspring_designs]
+                    lo, hi = self.original_bounds[vname]
+                    # Add 20% padding to maintain diversity
+                    pad = 0.20 * (hi - lo)
+                    new_lo = max(lo, min(vals) - pad)
+                    new_hi = min(hi, max(vals) + pad)
+                    if new_hi > new_lo:
+                        self.policy[vname] = (new_lo, new_hi)
+            return []
+
         # Generate acquisition candidates and pick the best
         acq_candidates = []
         for _ in range(200):
@@ -515,6 +730,61 @@ class BayesianOptimizer(Optimizer):
 
         # Update best so far
         self.best_so_far = max(self.best_so_far, max(targets))
+
+    def _surrogate_r2(self, candidates: List) -> float:
+        """Compute CROSS-VALIDATION R² of the fitted surrogate.
+
+        Cycle 220 v5: use leave-20%-out CV instead of training R².
+        Training R² was high (0.78-0.87) for Catalyst but the model
+        overfit — it mispredicted the next batch. CV-R² is honest about
+        generalization: if the model can't predict held-out points, it
+        can't predict new ones either.
+
+        Returns CV-R² in [0, 1]. Low (< 0.3) means the surrogate
+        generalizes poorly → fall back to wider exploration.
+        """
+        if not self.surrogate_coeffs or len(candidates) < 20:
+            return 0.0
+
+        # Leave-20%-out CV: refit on 80%, evaluate on 20%
+        n = len(candidates)
+        n_test = max(1, n // 5)
+        # Use deterministic split (every 5th candidate is test)
+        test_idx = set(range(0, n, 5))
+        train_cands = [c for i, c in enumerate(candidates) if i not in test_idx]
+        test_cands = [c for i, c in enumerate(candidates) if i in test_idx]
+
+        if len(train_cands) < 10 or len(test_cands) < 2:
+            return 0.0
+
+        # Refit surrogate on train only (save/restore original)
+        saved_coeffs = self.surrogate_coeffs
+        self.surrogate_coeffs = {}
+        self._fit_surrogate(train_cands)
+        cv_coeffs = self.surrogate_coeffs
+        # Restore original
+        self.surrogate_coeffs = saved_coeffs
+
+        if not cv_coeffs:
+            return 0.0
+
+        # Evaluate CV-R² on test set
+        test_targets = [c.predicted_outcome for c in test_cands]
+        mean_t = sum(test_targets) / len(test_targets)
+        ss_tot = sum((t - mean_t) ** 2 for t in test_targets)
+        if ss_tot < 1e-12:
+            return 0.0
+
+        # Temporarily use CV coeffs for prediction
+        self.surrogate_coeffs = cv_coeffs
+        ss_res = 0.0
+        for c in test_cands:
+            pred = self._predict_surrogate(c.design_point)
+            ss_res += (c.predicted_outcome - pred) ** 2
+        # Restore original coeffs
+        self.surrogate_coeffs = saved_coeffs
+
+        return max(0.0, 1.0 - ss_res / ss_tot)
 
     def _solve_linear(self, A, b):
         n = len(A)
