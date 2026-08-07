@@ -378,18 +378,25 @@ def run_discovery_benchmark(verbose: bool = False) -> Dict:
 
     Per F-099 (cycle 201): the gold set is self-checked for circularity.
     If any bridge word appears verbatim in either snippet, the benchmark
-    raises a CIRCULARITY WARNING.
+    FAILS HARD (exits non-zero) — not just a warning.
     """
-    # F-099: self-check for circularity
+    # F-099: HARD GATE self-check for circularity
     circular_count = 0
+    circular_details = []
     for gold in GOLD_DISCOVERIES:
         bridge = gold["bridge"].lower()
         if bridge in gold["source_snippet_a"].lower() or bridge in gold["source_snippet_b"].lower():
             circular_count += 1
+            circular_details.append(f"{gold['id']}: bridge '{bridge}' in input text")
             if verbose:
-                print(f"  ⚠ CIRCULAR: {gold['id']} bridge '{bridge}' in input text")
+                print(f"  ✗ CIRCULAR: {gold['id']} bridge '{bridge}' in input text")
     if circular_count > 0:
-        print(f"  ⚠ CIRCULARITY WARNING: {circular_count}/{len(GOLD_DISCOVERIES)} gold discoveries have bridge word in input text (F-099)")
+        print(f"  ✗ CIRCULARITY FAILURE: {circular_count}/{len(GOLD_DISCOVERIES)} gold discoveries have bridge word in input text (F-099)")
+        for detail in circular_details:
+            print(f"    - {detail}")
+        print("  HARD GATE: benchmark exits non-zero. Fix the gold set before proceeding.")
+        import sys as _sys
+        _sys.exit(1)
 
     try:
         from scripts.nlp_pipeline import NLPPipeline
