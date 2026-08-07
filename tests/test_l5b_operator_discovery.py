@@ -124,5 +124,23 @@ def test_l5b_beats_l5a_on_blind_suite():
         f"Expected ≥1 (the extended DSL should help)."
 
 
+def test_l5b_honest_naming():
+    """Cycle 232: L5b is honestly named 'DSL extension' not 'operator discovery'.
+
+    Per auditor update #21 and anti-entropy #5: the 5 operators are
+    HAND-DESIGNED by the engineer, not DISCOVERED by the engine.
+    The class name and docstring must reflect this honestly.
+    """
+    from scripts.l5b_operator_discovery import L5bDSLExtension, L5bOperatorDiscovery
+    # The honest class name exists
+    assert L5bDSLExtension is not None
+    # Backward-compat alias works
+    assert L5bOperatorDiscovery is L5bDSLExtension
+    # The docstring must mention "hand-designed" (honest)
+    assert "hand-designed" in L5bDSLExtension.__doc__.lower() or \
+           "hand-designed" in L5bDSLExtension.__doc__, \
+        "L5bDSLExtension docstring must mention 'hand-designed' per cycle 232 rename"
+
+
 if __name__ == "__main__":
     sys.exit(pytest.main([__file__, "-v"]))

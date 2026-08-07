@@ -4820,3 +4820,91 @@ On combinatorial problems (BLIND-018, 019, 020):
 The flat fitness in cycle 230 pointed to the DSL; cycle 231 verified
 by extending the DSL and observing improvement. This is the honest,
 empirical approach the auditor praised.
+
+### F-122 — L5b honest rename: "operator discovery" → "DSL extension with hand-designed operators" (P0, cycle 232, auditor-caught)
+
+**Auditor's catch (update #21):**
+> "Claim A: 'L5b: OPERATOR DISCOVERY' / 'new combinatorial operators'
+>  Claim B (implied): 'The engine discovered new operators.'
+>
+>  Evidence in l5b_operator_discovery.py:
+>  - SWAP, FLIP, etc. are HARDCODED enum values with human-written docstrings.
+>  - There is NO search loop over operator definitions.
+>  - There is NO synthesis mechanism that creates SWAP from primitives.
+>
+>  Mismatch verdict: CONFIRMED — the operators are hand-designed by the
+>  engineer, not discovered by the engine. True L5b requires the engine
+>  to invent primitives that did not exist in any human specification.
+>
+>  Honest correction: 'L5b: DSL extension with hand-designed combinatorial
+>  operators, first test on blind suite, 2/10 → 5/10.' Not 'operator
+>  discovery' in the AlphaDev sense."
+
+**What was done (cycle 232):**
+
+Per anti-entropy #5 ("Match the label to the evidence, not to the
+intent") and anti-entropy #7 ("Named things need substance"):
+
+1. **Renamed class** L5bOperatorDiscovery → L5bDSLExtension
+   - The old name implied the engine DISCOVERS operators. It does not.
+   - The new name honestly says what happens: the DSL is EXTENDED.
+   - Backward-compat alias added (L5bOperatorDiscovery = L5bDSLExtension).
+
+2. **Updated module docstring** to say:
+   - "This module does DSL EXTENSION, not operator discovery."
+   - "The 5 new operators are HARDCODED enum values designed by the
+     engineer, not discovered by the engine."
+   - "There is no search loop over operator definitions."
+   - "There is no synthesis mechanism that creates SWAP from primitives."
+
+3. **Updated class docstring** to say:
+   - "Hand-designed operators (NOT engine-discovered)"
+   - "True operator discovery (engine generating new primitives) is the
+     next frontier — not built here."
+
+4. **Updated printed labels** to say:
+   - "L5b DSL EXTENSION (cycle 232 honest rename)"
+   - "Hand-designed operators: SWAP, FLIP, THRESHOLD, LOCAL_2OPT, PENALTY_SELECT"
+   - "NOTE: operators are hand-designed, NOT engine-discovered"
+
+5. **Added test_l5b_honest_naming** which asserts:
+   - L5bDSLExtension class exists (honest name)
+   - L5bOperatorDiscovery alias works (backward compat)
+   - Docstring mentions "hand-designed" (honest labeling)
+
+**The honest claim is now:**
+"L5b: DSL extension with hand-designed combinatorial operators, first
+test on blind suite, 2/10 → 5/10."
+
+NOT: "operator discovery" (which implies engine-discovered primitives).
+
+**Why this matters:**
+The distinction between "DSL extension" and "operator discovery" is the
+same distinction the auditor drew for L5a (program synthesis vs
+optimizer invention). In both cases, the honest claim is WEAKER but
+DEFENSIBLE. The auditor's framework:
+  - L5a: program synthesis over fixed DSL (WORKING, 7.8/10)
+  - L5b: DSL extension with hand-designed operators (3/10, started)
+  - True L5b: engine-discovered operators (NOT BUILT, requires synthesis loop)
+
+The cycle 232 rename moves L5b from "claiming more than it does" to
+"matching the label to the evidence." This is the same discipline
+applied in:
+  - F-104 (claim > test → reconciled)
+  - F-110 ("executable causal chain" → "mechanistic justification")
+  - F-119 (L5 "optimizer invention" → "program synthesis")
+  - F-122 (this: L5b "operator discovery" → "DSL extension")
+
+**Status:** RESOLVED (honest naming applied).
+- The 2/10 → 5/10 result is REAL (the DSL extension works).
+- The operators are HAND-DESIGNED (not engine-discovered).
+- The claim now matches the evidence.
+- True L5b (engine-discovered operators) remains unbuilt.
+
+**Lesson:** The pattern is now clear: every time I describe a capability,
+I must ask "did the ENGINE do this, or did the ENGINEER do this?"
+- L5a: engine discovers PROGRAMS (compositions), engineer designed the DSL.
+- L5b (current): engineer designed the OPERATORS, engine uses them.
+- True L5b: engine discovers the OPERATORS themselves.
+The honest naming follows this distinction. "Discovery" is reserved for
+what the engine does; "extension" or "design" for what the engineer does.

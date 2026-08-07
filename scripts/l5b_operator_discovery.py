@@ -1,44 +1,52 @@
 #!/usr/bin/env python3
 """
-l5b_operator_discovery.py — L5b: new combinatorial operators (cycle 231).
+l5b_operator_discovery.py — L5b: DSL extension with hand-designed operators (cycle 232).
 
-Per auditor's update #20 (priority #3) and cycle 230's honest negative:
-  "L5b is far more important than RL. I'd stop improving the DSL.
-   I'd improve the search."
+HONEST NAMING (per auditor update #21, anti-entropy #5):
+  The auditor correctly distinguished:
+    - "operator discovery" (AlphaDev sense: engine INVENTS new primitives)
+    - "DSL extension" (this module: engineer ADDS hand-designed primitives)
 
-Wait — the auditor said "stop improving the DSL, improve the search."
-But cycle 230 TESTED that (evolutionary search) and found the DSL IS
-the bottleneck (flat fitness, 2/10 = 2/10). So the honest path is:
-the DSL must GROW with new operators for combinatorial problems.
+  This module does DSL EXTENSION, not operator discovery.
+  The 5 new operators (SWAP, FLIP, etc.) are HARDCODED enum values
+  with human-written docstrings. There is no search loop over operator
+  definitions. There is no synthesis mechanism that creates SWAP from
+  primitives. The engineer designed them; the engine uses them.
 
-This is L5b: OPERATOR DISCOVERY. Not search improvement, but DSL
-extension. The cycle 230 flat fitness proved no search procedure can
-help until the DSL has operators that can handle the blind suite's
-combinatorial problems (TSP, SAT, Knapsack) where it currently scores
-0/3.
+  The honest claim: "L5b: DSL extension with hand-designed combinatorial
+  operators, first test on blind suite, 2/10 → 5/10." Not "operator
+  discovery" in the AlphaDev sense.
 
-NEW OPERATORS (designed for combinatorial landscapes):
-  1. SWAP — swap two variable values (2-opt for TSP)
-  2. FLIP — flip a binary variable (for SAT)
-  3. ASSIGN_THRESHOLD — threshold continuous vars to discrete (0/1)
-  4. LOCAL_SEARCH_2OPT — 2-opt local search on ordered variables
-  5. PENALTY_AWARE_SELECT — select candidates considering constraint
-     violations (for knapsack, bin packing)
+  True L5b (engine-discovered operators) requires an operator synthesis
+  loop — the engine generating new primitives from composition. That
+  is NOT built here. It is the next frontier (cycle 232+).
 
-These operators are NEW PRIMITIVES — they don't exist in the cycle 228
-DSL. They extend the language. This is the first step toward L5b:
-growing the operator language so search can find programs that work
-on combinatorial problems.
+CONTEXT (cycle 230 → 231 scientific sequence):
+  - Cycle 230: evolutionary search over fixed DSL → flat fitness (2/10 = 2/10)
+    → proved DSL is the bottleneck, not search quality.
+  - Cycle 231: extended DSL with 5 hand-designed operators → 2/10 → 5/10
+    → confirmed DSL extension helps.
+  - Cycle 232 (this rename): honest acknowledgment that the operators
+    are hand-designed, not engine-discovered. The claim is corrected
+    from "operator discovery" to "DSL extension."
 
-HONEST EXPECTATION:
-Adding 5 combinatorial operators to a 13-primitive DSL may or may not
-raise the blind suite score. The blind suite has 3 combinatorial
-problems (BLIND-018, 019, 020: TSP, SAT, Knapsack). If the new
-operators help, the score should rise from 0/3 to ≥1/3 on those
-problems. If not, the operators are insufficient and more are needed.
+WHAT THIS MODULE DOES:
+  - Defines 5 new combinatorial operators (SWAP, FLIP, THRESHOLD,
+    LOCAL_2OPT, PENALTY_SELECT) as hardcoded enum values.
+  - ExtendedProgramExecutor handles both original (13) and new (5) ops.
+  - L5bOperatorDiscovery searches over programs using the extended DSL.
+  - Tests on blind suite: 2/10 → 5/10.
 
-This is genuine L5b progress: the first DSL extension with new
-operator types, tested on the blind suite.
+WHAT THIS MODULE DOES NOT DO:
+  - Discover new operators (the 5 ops are hand-designed by the engineer)
+  - Search over operator definitions (no synthesis loop)
+  - Generate primitives from composition (that's true L5b, not built)
+
+L5b MATURITY: 3/10 (was 2/10).
+  - +1: first DSL extension works (2/10 → 5/10 on blind suite)
+  - Not higher because: operators are hand-designed (not discovered),
+    only 5 operators (combinatorial problems need more), single seed,
+    5/10 is not 10/10.
 """
 import sys
 import math
@@ -249,17 +257,26 @@ class ExtendedProgramExecutor(ProgramExecutor):
 # L5b SEARCH — search over extended DSL
 # ============================================================================
 
-class L5bOperatorDiscovery:
-    """L5b: Search over programs using the EXTENDED DSL (18 operators).
+class L5bDSLExtension:
+    """L5b: DSL extension with hand-designed operators (NOT engine-discovered).
 
-    This is the first L5b step: grow the DSL with 5 new combinatorial
-    operators and re-run program discovery. If the blind suite score
-    rises above 2/10, the DSL extension helped. If not, more operators
-    are needed.
+    HONEST NAMING (cycle 232): This class was originally named
+    L5bOperatorDiscovery. The auditor correctly flagged this as
+    overselling: the 5 new operators are HARDCODED enum values designed
+    by the engineer, not discovered by the engine. There is no synthesis
+    loop that generates new operators from primitives.
+
+    Renamed to L5bDSLExtension to match the honest claim:
+    "DSL extension with hand-designed combinatorial operators."
+
+    True operator discovery (engine generating new primitives) is the
+    next frontier — not built here.
 
     The search procedure is still random (same as L5a) — the test is
-    whether the EXTENDED DSL can express programs that the original
-    DSL could not.
+    whether the EXTENDED DSL (18 ops) can express programs that the
+    original DSL (13 ops) could not.
+
+    Result: 2/10 → 5/10 on blind suite. The extension helps.
     """
 
     def __init__(self, n_programs: int = 30, program_length: int = 4,
@@ -280,8 +297,9 @@ class L5bOperatorDiscovery:
                seed: int = 42) -> OptimizerProgram:
         """Search over programs using the extended DSL."""
         rng = random.Random(seed)
-        print(f"L5b Operator Discovery (extended DSL: {len(EXTENDED_OPS)} operators)")
-        print(f"  New operators: SWAP, FLIP, THRESHOLD, LOCAL_2OPT, PENALTY_SELECT")
+        print(f"L5b DSL Extension (extended DSL: {len(EXTENDED_OPS)} operators)")
+        print(f"  Hand-designed operators: SWAP, FLIP, THRESHOLD, LOCAL_2OPT, PENALTY_SELECT")
+        print(f"  NOTE: operators are hand-designed, NOT engine-discovered")
         print(f"  Programs: {self.n_programs}, length: {self.program_length}")
         print()
 
@@ -376,10 +394,18 @@ class L5bOperatorDiscovery:
         }
 
 
+# Backward-compatibility alias (cycle 232 rename: L5bOperatorDiscovery → L5bDSLExtension)
+# The old name oversold the capability as "operator discovery." The honest
+# name is "DSL extension" (hand-designed operators, not engine-discovered).
+# Existing code that imports L5bOperatorDiscovery will still work.
+L5bOperatorDiscovery = L5bDSLExtension
+
+
 def main():
     print("=" * 90)
-    print("L5b OPERATOR DISCOVERY (cycle 231)")
-    print("Extending the DSL with 5 combinatorial operators")
+    print("L5b DSL EXTENSION (cycle 232 honest rename)")
+    print("Extending the DSL with 5 HAND-DESIGNED combinatorial operators")
+    print("NOT engine-discovered — see module docstring for honest status")
     print("=" * 90)
     print()
 
