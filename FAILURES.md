@@ -6572,3 +6572,40 @@ we can trust the evaluator. DR-96 treats evaluators as measurement
 instruments — characterized, calibrated, stress-tested. This is the
 beginnings of a MEASUREMENT ENGINE: the most foundational component
 of the entire architecture.
+
+### F-142 — DR-91 gap closure: 7 missing docs + 8 missing CI tests created (P1, cycle 253)
+
+**External audit finding:**
+  The external audit identified 7 missing required documents and 8
+  missing CI tests from the DR-91 specification. These are now created.
+
+**Documents created (7):**
+1. docs/MEASUREMENT_SPECIFICATION.md — every score must carry uncertainty, provenance, evidence tier, calibration status
+2. docs/MATCHING_SPECIFICATION.md — 4 independent matchers, FP per mode, deprecate entity matching
+3. docs/DISCOVERY_VS_RECOGNITION.md — permanent separation, never combine
+4. docs/SYNONYM_POLICY.md — every synonym must justify existence, no additions to improve scores
+5. docs/BENCHMARK_CHANGE_POLICY.md — Law 7 enforcement, no silent benchmark changes
+6. docs/MEASUREMENT_HISTORY.md — append-only timeline of all F1 scores, all marked INVALID
+7. docs/MEASUREMENT_REASSESSMENT.md — not yet performed, pending trustworthy benchmark
+
+**CI tests created (8 → 13 test functions):**
+1. test_no_gold_leakage.py — no critical gold leakage in audit code
+2. test_synonym_audit.py — synonym map exists, all entries non-empty
+3. test_measurement_trace.py — measurement_trace.json exists with required fields
+4. test_reference_scorer.py — independent scorer exists, no production imports
+5. test_false_positive_floor.py — adversarial results documented, FP measurement works
+6. test_proposal_only.py — proposal scoring exists, Discovery/Recognition separated
+7. test_bootstrap_statistics.py — bootstrap infrastructure exists, produces CIs
+8. test_historical_recalibration.py — measurement history documented, reassessment status tracked
+
+**Also fixed:**
+- Renamed all "FINAL_MEASUREMENT_VERDICT" references to "PRELIMINARY_MEASUREMENT_VERDICT"
+  in audit code and tests (2 files corrected)
+
+**Status:** GAPS FROM EXTERNAL AUDIT CLOSED.
+- All 7 required documents now exist
+- All 8 required CI tests now exist and pass (13 test functions total)
+- FINAL→PRELIMINARY naming corrected everywhere
+- PRELIMINARY verdict: still NOT TRUSTWORTHY
+- Remaining: Phase VIII (external baselines), Phase IX (historical recalibration),
+  Phase X (scientific reassessment), FINAL VERDICT

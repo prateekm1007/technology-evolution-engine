@@ -83,9 +83,9 @@ def test_fp_audit_verdict():
 
 
 def test_verdict_is_valid():
-    """FINAL_MEASUREMENT_VERDICT.md contains a valid verdict."""
+    """PRELIMINARY_MEASUREMENT_VERDICT.md contains a valid verdict."""
     repo = Path(__file__).resolve().parents[2]
-    verdict_file = repo / "FINAL_MEASUREMENT_VERDICT.md"
+    verdict_file = repo / "PRELIMINARY_MEASUREMENT_VERDICT.md"
     if verdict_file.exists():
         content = verdict_file.read_text()
         valid = ["TRUSTWORTHY", "PARTIALLY TRUSTWORTHY", "NOT TRUSTWORTHY"]

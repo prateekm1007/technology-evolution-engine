@@ -15,7 +15,7 @@ Phases implemented in this module:
   V   — Proposal Locus Audit (Discovery F1 vs Recognition F1)
   VI  — False Positive Audit (1000× shuffle, FP > 5% = fail)
 
-Output: reports/ for all artifacts + FINAL_MEASUREMENT_VERDICT.md
+Output: reports/ for all artifacts + PRELIMINARY_MEASUREMENT_VERDICT.md
 
 ABSOLUTE RULE: forbidden from increasing any benchmark score.
 If every headline score drops to zero, that is acceptable.
@@ -602,7 +602,7 @@ def main():
     print()
 
     # Write final verdict
-    with open(Path(repo_path, "FINAL_MEASUREMENT_VERDICT.md"), "w") as f:
+    with open(Path(repo_path, "PRELIMINARY_MEASUREMENT_VERDICT.md"), "w") as f:
         f.write("# FINAL MEASUREMENT VERDICT\n\n")
         f.write(f"## Verdict: {verdict}\n\n")
         f.write("## Evidence\n\n")
@@ -620,7 +620,7 @@ def main():
             f.write("## Issues\n\n")
             for issue in issues:
                 f.write(f"- {issue}\n")
-    print(f"Saved to FINAL_MEASUREMENT_VERDICT.md")
+    print(f"Saved to PRELIMINARY_MEASUREMENT_VERDICT.md")
 
 
 if __name__ == "__main__":
