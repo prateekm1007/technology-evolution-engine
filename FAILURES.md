@@ -5844,3 +5844,82 @@ RECOGNITION (can the entity be found in the source?) not DISCOVERY
 
 **Status:** NOT TRUSTWORTHY. Measurement freeze continues.
 The benchmark IS the product. No capability work until trustworthy.
+
+### F-133 — DR-91 Phase VI+VII: disease is in entity extraction, not matching (P0, cycle 244, root cause isolated)
+
+**CTO directive (post-243):**
+  "Phase VI: Component Attribution. Disable each component, measure
+   ΔFP and ΔRecall. Now you know exactly where the disease lives.
+
+   Phase VII: Adversarial Benchmark. Don't repair the benchmark.
+   Try to destroy it. Intentionally."
+
+**Phase VI — Component Attribution results:**
+
+| Component | FP Floor | Recall | ΔFP | ΔRecall |
+|-----------|---------:|-------:|----:|--------:|
+| BASELINE (all + synonyms) | 1.0000 | 1.0000 | — | — |
+| Disable synonyms (token only) | 1.0000 | 0.9500 | +0.00 | -0.05 |
+| Disable token overlap (exact only) | 1.0000 | 0.0000 | +0.00 | -1.00 |
+| Disable proposal inflation (shared only) | 1.0000 | 0.7500 | +0.00 | -0.25 |
+| Disable BOTH (shared + exact) | 1.0000 | 0.0000 | +0.00 | -1.00 |
+| Fuzzy only | 1.0000 | 0.0000 | +0.00 | -1.00 |
+
+**CRITICAL FINDING: FP floor = 1.0000 regardless of which component is disabled.**
+
+The disease is NOT in synonyms. NOT in token overlap. NOT in proposal
+inflation. It's in the ENTITY EXTRACTION: with 143 unique entities,
+ANY bridge (real or fake) will match SOMETHING. The entity pool is too
+large and too noisy for the matching to be discriminative.
+
+**Phase VII — Adversarial Benchmark results:**
+
+| Adversarial Type | N | Matched | FP Rate | Verdict |
+|-----------------|---:|--------:|--------:|---------|
+| plausible_nonsense | 20 | 20 | 1.0000 | FAIL |
+| cross_domain_distractors | 20 | 20 | 1.0000 | FAIL |
+| near_identical | 18 | 18 | 1.0000 | FAIL |
+| same_noun_different | 18 | 18 | 1.0000 | FAIL |
+| random_entities | 20 | 20 | 1.0000 | FAIL |
+
+**ALL 5 adversarial types scored FP = 1.0.** The benchmark cannot
+distinguish real discoveries from:
+- Random scientific word pairs (plausible nonsense)
+- Real concepts from wrong domains (cross-domain distractors)
+- 1-token edits of real bridges (near-identical)
+- Same noun, different mechanism (same_noun_different)
+- Pure random entities (control)
+
+**Root cause (P10 — why the bug existed):**
+
+The benchmark uses entity extraction (spaCy NER + noun chunks) which
+produces ~143 entities from 20 gold snippet pairs. The matching logic
+then checks if ANY of these 143 entities matches the gold bridge via
+token overlap (≥1 shared 4+ char token). With 143 entities, the
+probability of sharing at least one 4+ char token with ANY bridge
+is effectively 100%.
+
+The matching is not the problem — the ENTITY POOL is the problem.
+The entity extractor produces too many noisy entities, and the
+matching checks against ALL of them. The fix must address the entity
+pool size/quality, not the matching logic.
+
+**What this means:**
+
+The benchmark's FP=1.0 is NOT a matching bug. It's a DESIGN flaw:
+the benchmark checks "does the bridge appear as ANY extracted entity?"
+instead of "did the engine PROPOSE this as a cross-domain bridge?"
+
+The fix requires:
+1. Score ONLY shared entities (already known: drops to 0.857)
+2. Tighten the matching (require ALL significant tokens, not just one)
+3. Add an adversarial FP gate (reject benchmarks where fake bridges match)
+4. Reduce entity pool noise (better NER, filtering)
+
+**Status:** ROOT CAUSE ISOLATED. The disease is in the entity pool
+(143 entities = any bridge matches), not in the matching components.
+FP=1.0 persists regardless of which matching component is disabled.
+
+PRELIMINARY_MEASUREMENT_VERDICT.md renamed from FINAL (CTO directive:
+investigation still in progress). Phases VIII-X remain: external
+reference benchmark, historical recalibration, scientific reassessment.

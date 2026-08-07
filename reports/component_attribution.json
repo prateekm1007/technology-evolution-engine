@@ -1,0 +1,44 @@
+[
+  {
+    "component": "BASELINE (all + synonyms)",
+    "fp_floor": 1.0,
+    "recall": 1.0,
+    "delta_fp": 0.0,
+    "delta_recall": 0.0
+  },
+  {
+    "component": "Disable synonyms (token only)",
+    "fp_floor": 1.0,
+    "recall": 0.95,
+    "delta_fp": 0.0,
+    "delta_recall": -0.05
+  },
+  {
+    "component": "Disable token overlap (exact only)",
+    "fp_floor": 1.0,
+    "recall": 0.0,
+    "delta_fp": 0.0,
+    "delta_recall": -1.0
+  },
+  {
+    "component": "Disable proposal inflation (shared only)",
+    "fp_floor": 1.0,
+    "recall": 0.75,
+    "delta_fp": 0.0,
+    "delta_recall": -0.25
+  },
+  {
+    "component": "Disable BOTH (shared + exact only)",
+    "fp_floor": 1.0,
+    "recall": 0.0,
+    "delta_fp": 0.0,
+    "delta_recall": -1.0
+  },
+  {
+    "component": "Fuzzy only (no token, no synonym)",
+    "fp_floor": 1.0,
+    "recall": 0.0,
+    "delta_fp": 0.0,
+    "delta_recall": -1.0
+  }
+]
