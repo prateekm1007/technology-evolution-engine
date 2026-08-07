@@ -211,15 +211,15 @@ class VerticalSliceThermal:
         # 7. Predict + measure the best config to extract ZT values
         if inventor_result.final_best_config is not None:
             from scripts.forward_model import ForwardModel
-            from scripts.measurement_engine import MeasurementInstrument
+            from scripts.independent_measurement import IndependentMeasurement
             from scripts.physical_plausibility import PhysicalPlausibilityChecker
             fm = ForwardModel()
-            inst = MeasurementInstrument()
+            inst = IndependentMeasurement()  # INDEPENDENT code path (Track A2)
             best = inventor_result.final_best_config
             pred = fm.predict(best)
-            meas = inst.measure(best)
+            meas = inst.measure(best)  # independent measurement
             pred_ZT = pred.predicted_properties.get("ZT")
-            meas_ZT = meas.measured_properties.get("ZT")
+            meas_ZT = meas.measured_zt  # from independent code path
 
             # F-100: Physical plausibility veto — if ZT > 5, reject
             plaus_checker = PhysicalPlausibilityChecker()
