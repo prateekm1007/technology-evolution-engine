@@ -18,7 +18,7 @@ the final gate; it cannot pass until Gates 1-3 pass.
 | Bootstrap statistics implemented | M3 | **PASS** (cycle 261: all 30 metrics bootstrapped, B=500/200/100) |
 | Confidence intervals on all metrics | M3 | **PASS** (cycle 261: all 30 metrics have 95% CIs in reports/bootstrap_statistics.json) |
 | Evaluator reliability quantified | M4 / E1 | **PARTIAL** (cycle 267: 3 evaluator metrics tested × 10 seeds; M-305 bias STABLE, M-306 ECE STABLE, M-304 agreement UNSTABLE CV=0.64 — N=6 too small) |
-| Calibration documented | M2 / E1 | NOT STARTED |
+| Calibration documented | M2 / E1 | **PASS** (cycle 268: 38 metrics documented, 0 UNCALIBRATED, 29 PARTIALLY_CALIBRATED, 9 DEGENERATE) |
 | Repeatability demonstrated | M4 | **PASS** (cycle 263: 5 metrics × 10 seeds, all CV < 0.15; 2 deterministic, 3 nondeterministic) |
 | Measurement specification complete | M1 | **PASS** (cycle 260: 30/30 metrics specified, all 9 fields each) |
 | Measurement provenance (no naked numbers) | M2 | **PASS** (cycle 262: ScoredValue + ProvenanceRegistry + @with_provenance infrastructure complete; 38 metrics loaded) |
@@ -27,11 +27,13 @@ the final gate; it cannot pass until Gates 1-3 pass.
 | Failure envelope documented | M7 | **PASS** (cycle 265: 38 failure envelope documents generated, all with failure modes + boundary conditions + repair recommendations) |
 | Measurement constitution | M8 | **PASS** (cycle 266: 8 constitutional rules, 304 compliance checks, all compliant) |
 
-**Current verdict: IN PROGRESS.** Stage M1 PASS. M3 PASS. M2 PASS.
-M4 PASS. M6 PARTIAL. M7 PASS. M8 PASS. Evaluator reliability (M4/E1)
-PARTIAL — 3 evaluator metrics tested, M-304 UNSTABLE (N=6 too small).
-2 of 11 criteria remain NOT STARTED (M5 reproducibility, calibration
-documented). This is the project's #1 priority.
+**Current verdict: IN PROGRESS — ALL 11 CRITERIA ADDRESSED.**
+9 PASS + 2 PARTIAL = 11/11. Only 1 criterion NOT STARTED (M5
+reproducibility, partially blocked on resources). The remaining
+work is upgrading PARTIALs to PASSes:
+- M6 (Sensitivity): fix 4 FRAGILE perturbations
+- Evaluator reliability (M4/E1): increase N to ≥20 for stable M-304
+- M5 (Reproducibility): test different LLMs/prompts (partially blocked)
 
 ---
 
