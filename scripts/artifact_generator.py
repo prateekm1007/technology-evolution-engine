@@ -62,25 +62,37 @@ MATERIAL_PARAMS: Dict[str, Dict[str, float]] = {
         "seebeck_coefficient": 200e-6,      # V/K  (~200 µV/K at 300K)
         "electrical_conductivity": 1.0e5,   # S/m
         "thermal_conductivity": 1.5,        # W/(m·K)
+        "temperature": 300.0,               # K (peak operating temperature)
         "density": 7700.0,                  # kg/m^3
         "cost_per_kg": 200.0,               # USD/kg
         "max_temp": 600.0,                  # K (decomposition)
     },
     "lead_telluride": {
         "seebeck_coefficient": 250e-6,
-        "electrical_conductivity": 5.0e4,
-        "thermal_conductivity": 2.0,
+        "electrical_conductivity": 7.0e4,
+        "thermal_conductivity": 2.5,
+        "temperature": 773.0,
         "density": 8200.0,
-        "cost_per_kg": 150.0,
-        "max_temp": 700.0,
+        "cost_per_kg": 100.0,
+        "max_temp": 800.0,
     },
     "copper": {
         "electrical_conductivity": 5.96e7,
         "thermal_conductivity": 401.0,
         "seebeck_coefficient": 1.94e-6,
+        "temperature": 300.0,
         "density": 8960.0,
         "cost_per_kg": 9.0,
         "max_temp": 1358.0,
+    },
+    "tin_selenide": {
+        "seebeck_coefficient": 510e-6,
+        "electrical_conductivity": 2.5e3,
+        "thermal_conductivity": 0.23,
+        "temperature": 923.0,
+        "density": 6179.0,
+        "cost_per_kg": 50.0,
+        "max_temp": 923.0,
     },
     "graphene": {
         "electrical_conductivity": 1.0e8,
@@ -262,8 +274,13 @@ class ArtifactGenerator:
                 parameters={
                     "thickness_m": 1.0e-3,
                     "area_m2": 1.0e-4,
-                    "T_hot_K": 400.0,
-                    "T_cold_K": 300.0,
+                    # Per cycle 208 (auditor finding): evaluate each material
+                    # at its OWN operating temperature from the materials DB,
+                    # not a fixed 350K. This prevents systematically undervaluing
+                    # high-temperature thermoelectrics like SnSe (ZT=2.6 at 923K
+                    # but only ZT≈1.0 at 350K).
+                    "T_hot_K": base_params.get("temperature", 400.0) + 50.0,  # hot side = peak T + 50K
+                    "T_cold_K": max(300.0, base_params.get("temperature", 400.0) - 50.0),  # cold side = peak T - 50K (min 300K)
                 },
                 design_operator_chain=["init"],
                 source_capabilities=list(spec.capability_targets),
