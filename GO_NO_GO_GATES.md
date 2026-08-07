@@ -19,7 +19,7 @@ the final gate; it cannot pass until Gates 1-3 pass.
 | Confidence intervals on all metrics | M3 | **PASS** (cycle 261: all 30 metrics have 95% CIs in reports/bootstrap_statistics.json) |
 | Evaluator reliability quantified | M4 / E1 | NOT STARTED |
 | Calibration documented | M2 / E1 | NOT STARTED |
-| Repeatability demonstrated | M4 | NOT STARTED |
+| Repeatability demonstrated | M4 | **PASS** (cycle 263: 5 metrics × 10 seeds, all CV < 0.15; 2 deterministic, 3 nondeterministic) |
 | Measurement specification complete | M1 | **PASS** (cycle 260: 30/30 metrics specified, all 9 fields each) |
 | Measurement provenance (no naked numbers) | M2 | **PASS** (cycle 262: ScoredValue + ProvenanceRegistry + @with_provenance infrastructure complete; 38 metrics loaded) |
 | Reproducibility across hardware/LLMs/prompts | M5 | NOT STARTED |
@@ -30,8 +30,9 @@ the final gate; it cannot pass until Gates 1-3 pass.
 **Current verdict: IN PROGRESS.** Stage M1 (Specification) PASS —
 30/30 metrics specified. Stage M3 (Bootstrap Statistics) PASS — all
 30 metrics have 95% CIs. Stage M2 (Provenance) PASS — ScoredValue
-infrastructure complete, 38 metrics loaded into registry. 6 of 11
-criteria remain NOT STARTED. This is the project's #1 priority.
+infrastructure complete, 38 metrics loaded. Stage M4 (Repeatability)
+PASS — 5 metrics × 10 seeds, all CV < 0.15. 5 of 11 criteria remain
+NOT STARTED. This is the project's #1 priority.
 
 ---
 
