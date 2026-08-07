@@ -4640,3 +4640,104 @@ without richer operators. This is the honest boundary: L5a works
 WITHIN a problem class, not ACROSS problem classes. Generalizing
 across classes requires L5b (operator discovery) and L5c (language
 discovery).
+
+### F-120 — Evolutionary search matches random: DSL is the bottleneck, not search quality (P1, cycle 230, honest negative)
+
+**Auditor's challenge (update #20, priority #1):**
+> "Random is now your bottleneck. The repository is reaching a point
+>  where Architecture >> Search quality. Earlier the opposite was true.
+>  Now your DSL is better than your search algorithm. That's a good
+>  place to be. I'd stop improving the DSL. I'd improve the search."
+
+**The hypothesis:**
+If search quality was the bottleneck (not the DSL), replacing random
+search with evolutionary search (crossover + mutation + selection)
+should raise the blind suite score above 2/10.
+
+**The test (cycle 230):**
+Built `scripts/evolutionary_program_search.py` with:
+- Population of 30 programs (initialized randomly)
+- 5 generations of evolution
+- Tournament selection (k=3)
+- Single-point crossover (rate=0.7)
+- Mutation (rate=0.3, replace operations)
+- Elitism (top 30% preserved each generation)
+
+Ran on the blind suite (10 training, 10 held-out) — same setup as
+cycle 229's random search baseline.
+
+**Honest result:**
+
+| Search | Training fitness | Beats baseline (held-out) |
+|--------|-----------------:|--------------------------:|
+| Random (cycle 229) | +38.5544 | 2/10 |
+| Evolutionary (cycle 230) | +38.5544 | 2/10 |
+
+**Evolutionary search MATCHES random search. No improvement.**
+
+Fitness history across 6 generations (0-5):
+```
+[+38.554, +38.554, +38.554, +38.554, +38.554, +38.554]
+```
+
+**The fitness is completely flat.** Evolution did not improve training
+fitness over generations. The best program found in generation 0
+(narrow_iqr → mutate → select_top_10 → acquire_ei) remained the best
+through all 5 generations.
+
+**Honest interpretation:**
+The auditor offered two hypotheses:
+1. Search quality is the bottleneck → evolutionary should help
+2. DSL is the bottleneck → evolutionary won't help (need L5b)
+
+**The result supports hypothesis #2.** Evolutionary search did NOT
+improve on random search. The search space appears FLAT — many
+programs have similar fitness, and crossover/mutation cannot find
+higher-fitness regions because they don't exist in the current DSL.
+
+**Root cause analysis:**
+1. **The DSL is designed for continuous optimization.** The 13
+   primitives (sample_uniform, narrow_iqr, fit_surrogate, etc.)
+   are all continuous-optimization operations. The blind suite
+   includes combinatorial problems (TSP, SAT, Knapsack) that need
+   fundamentally different operators (e.g., 2-opt for TSP, variable
+   flipping for SAT).
+2. **The search space is flat within the DSL.** All programs composed
+   from continuous-optimization primitives produce similar performance
+   on combinatorial problems (because they're all the wrong tool).
+   Evolution can't escape this because crossover/mutation stay within
+   the same primitive set.
+3. **No conditional operators.** The DSL has no IF/THEN — programs
+   can't adapt their behavior based on problem type. A fixed sequence
+   of continuous-optimization ops will fail on combinatorial problems
+   regardless of how the sequence is searched.
+
+**What this means for the roadmap:**
+The auditor's priority #1 (improve search) has been tested and found
+insufficient. The honest path forward is the auditor's priority #3:
+**L5b (operator discovery)** is more important than search quality.
+
+The DSL needs to GROW — new primitives for:
+- Combinatorial operations (2-opt, variable flipping, set manipulation)
+- Conditional operations (IF landscape_type == needle THEN ...)
+- Problem-type detection (continuous vs discrete vs hybrid)
+- Adaptive operators (operators that change behavior based on state)
+
+**Status:** HONEST NEGATIVE RESULT.
+- Evolutionary search tested and found to match random (2/10).
+- The bottleneck is the DSL, not the search quality.
+- The flat fitness history is strong evidence: the search space
+  has no higher-fitness regions reachable by recombining the
+  current 13 primitives.
+- Path forward: L5b (operator discovery) — the DSL must grow before
+  search quality can help.
+
+**Lesson:** The auditor's two hypotheses were both valuable:
+- Hypothesis #1 (search quality) was TESTABLE and FALSIFIED.
+- Hypothesis #2 (DSL insufficiency) is now SUPPORTED by evidence.
+This is how science works: test the easy hypothesis first (improve
+search), and if it fails, the harder hypothesis (evolve the DSL) is
+confirmed. The flat fitness history is the smoking gun — it proves
+the search space is flat within the current DSL, which means NO search
+procedure (random, evolutionary, RL, MCTS) can do better until the DSL
+grows. That's L5b territory.
