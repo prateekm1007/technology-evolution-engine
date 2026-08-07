@@ -7754,3 +7754,129 @@ TRUSTWORTHY) remains canonical.
   - Repair INPUT/truncate: make NLP pipeline robust to truncation
   - Evaluator reliability (M4/E1): extend M4 to evaluator metrics
   - Calibration documented (M2/E1): document calibration status
+
+
+### F-153 — Stage M7 (Failure Envelope) complete: 38 per-metric failure envelope documents (P1, cycle 265)
+
+**Driver:** ROADMAP_V2.md Stage M7. "Instead of 'When does it work?'
+Answer 'When does it fail?' Every evaluator must have Failure Envelope
+document."
+
+Per AP-1: "run it, don't reason about it." Per AP-5: "phantom-work
+detection — described work not on disk is entropy." Per scaffolding ≠
+closure: must produce actual documents, not just infrastructure.
+
+**Mutual Read Protocol followed:** Read CONSTITUTION.md (Principle 1),
+ANTI_ENTROPY.md (AP-1, AP-5, scaffolding ≠ closure), FAILURES.md tail
+(F-152), GO_NO_GO_GATES.md (Gate 1 status), ROADMAP_V2.md Stage M7.
+
+**Work completed (cycle 265):**
+
+1. Built programs/A_metrology/failure_envelope_m7.py:
+   - FailureEnvelope dataclass: 14 fields (metric_id, metric_name,
+     baseline_value, ci_95, n, is_degenerate, repeatability_verdict,
+     cv, fragile_perturbations, known_failure_modes,
+     boundary_conditions, failure_signatures, repair_recommendations,
+     evidence_refs)
+   - FAILURE_MODE_KB: curated knowledge base with per-metric failure
+     modes, boundary conditions, failure signatures, and repair
+     recommendations for all 30+ specified metrics
+   - generate_all_envelopes(): synthesizes M3 (bootstrap), M4
+     (repeatability), M6 (sensitivity), and the KB into per-metric
+     FailureEnvelope objects
+   - to_markdown(): renders each envelope as a complete .md document
+
+2. Generated 38 failure envelope documents in
+   reports/failure_envelopes/ (one per metric with M3 bootstrap data).
+   Each document contains:
+   - Normal operating range (baseline, CI, N, degenerate, repeatability)
+   - Known failure modes (curated + from M3/M4/M6)
+   - Boundary conditions (when does it fail?)
+   - Failure signatures (what does failure look like?)
+   - Fragile perturbations table (from M6, if any)
+   - Repair recommendations
+   - Evidence references (links to M3/M4/M6 reports)
+
+3. THE DIFFERENCE FROM M6 (SENSITIVITY):
+   - M6: perturbs inputs, measures output movement. Quantitative.
+   - M7: synthesizes M3+M4+M6+KB into per-metric failure envelope docs.
+     Qualitative + quantitative. Answers: "under what conditions does
+     this metric fail, and what does failure look like?"
+
+4. Summary reports generated:
+   - reports/failure_envelope_m7.json (38 envelopes, full data)
+   - reports/failure_envelope_m7.md (human-readable summary with
+     per-metric index, top repair priorities, key findings)
+
+**Summary statistics:**
+  - Total metrics with failure envelopes: 38
+  - Degenerate (M3): 9
+  - Has FRAGILE perturbations (M6): 3
+  - M4 repeatability tested: 5
+  - M4 UNSTABLE: 0
+  - All have known failure modes: YES (38/38)
+  - All have boundary conditions: YES (38/38)
+  - All have repair recommendations: YES (38/38)
+
+**Top 5 repair priorities (from failure envelopes):**
+  1. M-008 (FP floor): FP floor = 0.92 (CI touches 1.0). The matcher
+     cannot discriminate. #1 repair priority for the entire system.
+  2. M-010 (per-proposal F1): FRAGILE to input perturbation (-75%).
+     Uses only first shared entity — brittle. Repair: use all shared
+     entities.
+  3. M-105 (Gen 5 Discovery F1): DR-91 invalidated. FORBIDDEN to
+     report as naked F1. Must report alongside M-008 and M-005/M-013.
+  4. M-305 (self-validation bias): +2.50 bias (100% overestimate).
+     Internal evaluator not trustworthy. Replace with calibrated
+     external.
+  5. M-201/M-202 (search beats): Code drift. Documented baselines
+     stale (2/10, 5/10). Update to M4 means (8.3/10, 8.3/10).
+
+**Key findings across all envelopes:**
+  - 9 metrics are DEGENERATE (no variance) — they cannot discriminate
+  - 3 metrics have FRAGILE perturbations (M6) — input-sensitive
+  - 0 metrics are UNSTABLE (M4) — all tested are STABLE/ACCEPTABLE
+  - Every metric has at least 1 known failure mode, 1 boundary
+    condition, and 1 repair recommendation
+
+**Gate M7 verdict: PASS**
+  - All 38 metrics have failure envelope documents
+  - All have known failure modes: YES
+  - All have boundary conditions: YES
+  - All have repair recommendations: YES
+
+**Tests added (tests/test_failure_envelope_m7.py, 26 tests):**
+  - FailureEnvelope dataclass fields and to_dict/to_markdown
+  - FAILURE_MODE_KB has all 30 specified metrics
+  - KB has M-008 FP floor finding, M-010 fragility, M-105 DR-91
+    invalidation, M-305 bias
+  - reports/failure_envelopes/ directory exists with ≥30 files
+  - M-008, M-010, M-105 .md files exist
+  - JSON has correct structure, all envelopes have required fields
+  - All envelopes have failure modes, boundary conditions, repairs
+  - Specific metric checks (M-008 documents FP floor, M-010 documents
+    fragility, M-105 documents DR-91, M-305 documents bias)
+  - Gate verdict is PASS
+  - .md files have all required sections
+
+**Updated GO_NO_GO_GATES.md:**
+  - Gate 1 Stage M7 criterion: NOT STARTED → PASS
+  - Gate 1 overall: IN PROGRESS (M1, M2, M3, M4, M7 PASS; M6 PARTIAL;
+    3/11 criteria NOT STARTED: M5, M8, evaluator reliability, calibration)
+
+**Test results:**
+  - 26 M7 tests pass
+  - No regressions in existing test suite
+
+**Status:** STAGE M7 COMPLETE. 38 per-metric failure envelope documents
+generated. Gate 1 Stage M7 criterion PASS. Gate 1 overall: IN PROGRESS
+(M1, M2, M3, M4, M7 PASS; M6 PARTIAL; 3/11 NOT STARTED). PRELIMINARY
+verdict (NOT TRUSTWORTHY) remains canonical.
+
+**Next steps for Gate 1:**
+  - Stage M8: measurement constitution (rules every metric must satisfy)
+  - Stage M5: reproducibility (different hardware/LLMs/prompts)
+  - Evaluator reliability (M4/E1): extend M4 to evaluator metrics
+  - Calibration documented (M2/E1): document calibration status
+  - Repair work: M-008 FP floor, M-010 fragility, M-105 reporting,
+    M-305 bias, M-201/M-202 code drift
