@@ -586,6 +586,57 @@ def main():
     print("=" * 80)
     print()
 
+    # PHASE 6 EPISTEMIC GATE (audit round 14):
+    # DR-97 makes a scientific decision (Gate A verdict) that depends on
+    # M-005 (production F1) and M-008 (FP floor). Both are currently
+    # non-eligible. The scientific comparison must not proceed.
+    import sys as _sys
+    from pathlib import Path as _Path
+    _sys.path.insert(0, str(_Path(__file__).resolve().parents[2]))
+    from engine.epistemic_state_enforcer import (
+        assert_metric_eligible_for_scientific_use,
+        MetricNotEligible,
+    )
+
+    _epistemic_blocks = []
+    for _critical_metric in ["M-005", "M-008"]:
+        try:
+            assert_metric_eligible_for_scientific_use(_critical_metric)
+        except MetricNotEligible as _e:
+            _epistemic_blocks.append({"metric": _critical_metric, "error": str(_e)})
+
+    if _epistemic_blocks:
+        print("EPISTEMIC GATE BLOCKED: The following critical-path metrics")
+        print("are not eligible for scientific use:")
+        for _b in _epistemic_blocks:
+            print(f"  {_b['metric']}: {_b['error'][:200]}")
+        print()
+        print("The scientific comparison (Gate A) cannot proceed because")
+        print("production F1 (M-005) and FP floor (M-008) are untrusted.")
+        print("Per Phase 6: no scientific decision may use a non-eligible metric.")
+        print()
+
+        # Write a BLOCKED result
+        _result = {
+            "cycle": 256, "stage": "Gate A", "dr": "DR-97",
+            "gate_verdict": "FAIL",
+            "verdict_tier": "EPISTEMIC_GATE_BLOCKED",
+            "eligible": False,
+            "epistemic_gate": "BLOCKED",
+            "epistemic_blocks": _epistemic_blocks,
+            "reason": (
+                "M-005 and M-008 are not eligible for scientific use. "
+                "The production F1 and FP floor values that drive the "
+                "Gate A comparison are untrusted. The scientific decision "
+                "cannot proceed."
+            ),
+        }
+        _out = _Path(__file__).resolve().parents[2] / "reports" / "external_baselines.json"
+        _out.parent.mkdir(parents=True, exist_ok=True)
+        _out.write_text(__import__("json").dumps(_result, indent=2))
+        print(f"Result written to {_out}")
+        return _result
+
     from benchmarks.discovery_capability_benchmark import GOLD_DISCOVERIES
     synmap = load_synonym_map()
 

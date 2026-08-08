@@ -168,116 +168,100 @@ class TestM008DependencyBoundary:
 # CATEGORY 3: CONSUMER INVENTORY COVERAGE (corrections E, F)
 # =====================================================================
 
-# The machine-readable consumer inventory (correction E)
-SCIENTIFIC_CONSUMERS = [
-    {
-        "file": "programs/A_metrology/calibration_documented_m2e1.py",
-        "function": "determine_calibration_status",
-        "metric_sources": ["M-008"],
-        "source_artifact": "reports/bootstrap_statistics.json",
-        "required_gate": "assert_metric_eligible_for_scientific_use",
-        "verified": True,
-    },
-    {
-        "file": "audit/measurement_integrity/dr101_final_verdict_eligibility.py",
-        "function": "decide_eligibility",
-        "metric_sources": ["M-005", "M-008"],
-        "source_artifact": "transitive (via gate verdicts)",
-        "required_gate": "assert_metric_eligible_for_scientific_use",
-        "verified": True,
-    },
-    {
-        "file": "audit/measurement_integrity/dr97_external_baselines.py",
-        "function": "compare_to_production",
-        "metric_sources": ["M-005 (hardcoded as 0.7879)"],
-        "source_artifact": "hardcoded value",
-        "required_gate": "assert_metric_eligible_for_scientific_use",
-        "verified": False,
-        "note": "Uses hardcoded production_f1=0.7879 — bypass risk (correction G)",
-    },
-    {
-        "file": "audit/measurement_integrity/dr98_historical_recalibration.py",
-        "function": "classify",
-        "metric_sources": ["M-005 (hardcoded historical F1s)"],
-        "source_artifact": "hardcoded values",
-        "required_gate": "assert_metric_eligible_for_scientific_use",
-        "verified": False,
-        "note": "Uses 7 hardcoded historical F1 values — bypass risk (correction G)",
-    },
-    {
-        "file": "audit/measurement_integrity/dr99_proposal_evaluation_n30.py",
-        "function": "t_test_against_fp_floor",
-        "metric_sources": ["M-008 (hardcoded as fp_floor=1.0)"],
-        "source_artifact": "hardcoded value",
-        "required_gate": "assert_metric_eligible_for_scientific_use",
-        "verified": False,
-        "note": "Uses hardcoded fp_floor=1.0 — bypass risk (correction G)",
-    },
-]
+# Correction E: The authoritative inventory is now a machine-readable
+# repository artifact, not just test-file constants.
+INVENTORY_PATH = REPO / "reports" / "phase6" / "consumer_inventory.json"
 
-NON_SCIENTIFIC_CONSUMERS = [
-    {"file": "programs/A_metrology/measurement_verification_sprint.py", "classification": "REPORTING"},
-    {"file": "programs/A_metrology/measurement_provenance.py", "classification": "TOOLING"},
-    {"file": "programs/A_metrology/stage_minus_1_metrology.py", "classification": "INDEPENDENT_COMPUTATION"},
-    {"file": "scripts/generate_auditor_scorecard.py", "classification": "REPORTING"},
-    {"file": "scripts/phase3_regeneration_test.py", "classification": "DIAGNOSTIC"},
-    {"file": "scripts/phase4_metric_inventory_v2.py", "classification": "INVENTORY"},
-    {"file": "programs/A_metrology/final_repository_verification.py", "classification": "REPORTING"},
-    {"file": "programs/A_metrology/failure_envelope_m7.py", "classification": "DIAGNOSTIC"},
-    {"file": "programs/A_metrology/measurement_constitution_m8.py", "classification": "COMPLIANCE_CHECK"},
-]
+
+def _load_inventory():
+    """Load the authoritative consumer inventory."""
+    return json.loads(INVENTORY_PATH.read_text())
 
 
 class TestConsumerInventory:
-    """Correction E: machine-readable consumer inventory.
-    Correction F: structural test that fails if scientific consumer lacks gate."""
+    """Correction E: machine-readable consumer inventory (authoritative artifact).
+    Correction F: structural test that fails if ANY scientific consumer lacks gate.
+    Correction 7 (zero-bypass): fails if ANY scientific consumer is bypass_risk."""
 
-    def test_consumer_inventory_exists_and_classified(self):
-        """The consumer inventory must exist with all 14 consumers classified."""
-        total = len(SCIENTIFIC_CONSUMERS) + len(NON_SCIENTIFIC_CONSUMERS)
-        # The audit found 14 consumers; we have 5 scientific + 9 non-scientific = 14
-        assert total == 14, f"Expected 14 consumers, got {total}"
-
-    def test_all_scientific_consumers_have_strong_gate(self):
-        """Correction F: every SCIENTIFIC_DECISION consumer must have the
-        strong assert_metric_eligible_for_scientific_use gate.
-
-        This test inspects the ACTUAL production code, not just documentation.
-        """
-        for consumer in SCIENTIFIC_CONSUMERS:
-            path = REPO / consumer["file"]
-            if not path.exists():
-                pytest.fail(f"Consumer file missing: {consumer['file']}")
-
-            content = path.read_text()
-
-            if consumer["verified"]:
-                # Verified consumers must have the strong gate in their code
-                assert "assert_metric_eligible_for_scientific_use" in content, (
-                    f"{consumer['file']} ({consumer['function']}) is a verified "
-                    f"scientific consumer but does not call "
-                    f"assert_metric_eligible_for_scientific_use. "
-                    f"Audit correction F: all scientific consumers must use "
-                    f"the strong gate."
-                )
-            else:
-                # Unverified consumers are known gaps — record them but don't fail
-                # (these are documented for future wiring)
-                pass
-
-    def test_unverified_scientific_consumers_documented(self):
-        """Unverified scientific consumers must be explicitly documented
-        as gaps, not silently ignored."""
-        unverified = [c for c in SCIENTIFIC_CONSUMERS if not c["verified"]]
-        # We know there are 3 unverified consumers (dr97, dr98, dr99)
-        # These use hardcoded values — bypass risk per correction G
-        assert len(unverified) == 3, (
-            f"Expected 3 unverified scientific consumers (dr97, dr98, dr99), "
-            f"got {len(unverified)}. These use hardcoded metric values — "
-            f"bypass risk that must be documented."
+    def test_inventory_artifact_exists(self):
+        """The authoritative inventory must exist as a repository artifact."""
+        assert INVENTORY_PATH.exists(), (
+            f"Consumer inventory must exist at {INVENTORY_PATH}. "
+            f"Per audit correction E: the inventory must be a machine-readable "
+            f"repository artifact, not just test-file constants."
         )
-        for c in unverified:
-            assert "note" in c, f"Unverified consumer {c['file']} must have a note explaining the gap"
+
+    def test_inventory_has_14_consumers(self):
+        """The inventory must contain all 14 consumers."""
+        inv = _load_inventory()
+        assert inv["total_consumers"] == 14
+        assert len(inv["scientific_consumers"]) == 5
+        assert len(inv["non_scientific_consumers"]) == 9
+
+    def test_zero_bypass_invariant(self):
+        """Correction 7: ZERO scientific consumers may be bypass_risk.
+
+        This test has NO escape hatch. If ANY scientific consumer is
+        bypass_risk=true, the test FAILS. There is no else:pass.
+        """
+        inv = _load_inventory()
+        for consumer in inv["scientific_consumers"]:
+            assert consumer["bypass_risk"] is False, (
+                f"{consumer['file']} ({consumer['function']}) is a scientific "
+                f"consumer with bypass_risk=True. This is FORBIDDEN. "
+                f"Per audit round 14: documentation of a bypass is not "
+                f"enforcement of a bypass. Every scientific consumer must "
+                f"be gated. There is no escape hatch."
+            )
+
+    def test_all_scientific_consumers_verified_and_gated(self):
+        """Correction F: EVERY scientific consumer must be verified=true
+        with the strong gate. NO escape hatch for unverified consumers.
+
+        This test inspects the ACTUAL production code. If a scientific
+        consumer does not call assert_metric_eligible_for_scientific_use,
+        the test FAILS.
+        """
+        inv = _load_inventory()
+        for consumer in inv["scientific_consumers"]:
+            # Must be verified
+            assert consumer["verified"] is True, (
+                f"{consumer['file']} ({consumer['function']}) is a scientific "
+                f"consumer with verified=False. This is FORBIDDEN. "
+                f"Per audit round 14: there must be no 'else: pass' escape "
+                f"hatch for a known scientific consumer."
+            )
+
+            # Must have the strong gate in actual production code
+            path = REPO / consumer["file"]
+            assert path.exists(), f"Consumer file missing: {consumer['file']}"
+            content = path.read_text()
+            assert "assert_metric_eligible_for_scientific_use" in content, (
+                f"{consumer['file']} ({consumer['function']}) is a scientific "
+                f"consumer but does not call assert_metric_eligible_for_scientific_use "
+                f"in its production code. Per Phase 6: every scientific decision "
+                f"path must pass through the strong epistemic gate."
+            )
+
+    def test_acceptance_condition_met(self):
+        """The zero-bypass acceptance condition must be met:
+            scientific_consumers = N
+            gated_consumers = N
+            bypass_risk_consumers = 0
+            blocked_when_noneligible = N
+            scientifically_eligible_metrics = 0
+        """
+        inv = _load_inventory()
+        zbi = inv["zero_bypass_invariant"]
+        assert zbi["scientific_consumers"] == zbi["gated_consumers"], (
+            f"gated_consumers ({zbi['gated_consumers']}) must equal "
+            f"scientific_consumers ({zbi['scientific_consumers']})"
+        )
+        assert zbi["bypass_risk_consumers"] == 0, (
+            f"bypass_risk_consumers must be 0, got {zbi['bypass_risk_consumers']}"
+        )
+        assert zbi["scientifically_eligible_metrics"] == 0
+        assert zbi["acceptance_condition_met"] is True
 
 
 # =====================================================================
@@ -291,20 +275,25 @@ class TestBypassResistance:
     another artifact (hardcoded values, cached values, aggregate reports).
     """
 
-    def test_hardcoded_metric_values_documented(self):
-        """Hardcoded metric values in scientific consumers must be documented
-        as bypass risks. They cannot be silently used."""
+    def test_hardcoded_metric_values_preserved_not_deleted(self):
+        """Hardcoded metric values in scientific consumers must be PRESERVED
+        (not deleted, not replaced) — per correction K. The gate blocks
+        BEFORE they are used, so the values remain in the code but are
+        inaccessible when metrics are non-eligible."""
         # dr97 hardcodes production_f1=0.7879 (from M-005)
         dr97 = REPO / "audit" / "measurement_integrity" / "dr97_external_baselines.py"
         if dr97.exists():
             content = dr97.read_text()
-            if "0.7879" in content:
-                # This is a known bypass risk — documented in the inventory
-                assert any(
-                    c["file"] == "audit/measurement_integrity/dr97_external_baselines.py"
-                    and not c["verified"]
-                    for c in SCIENTIFIC_CONSUMERS
-                ), "dr97 hardcoded value must be documented as unverified in inventory"
+            # The hardcoded value must still be present (not deleted)
+            assert "0.7879" in content, (
+                "dr97's hardcoded production_f1=0.7879 must be PRESERVED, not deleted. "
+                "The gate blocks before it is used. Per correction K: no value deletion."
+            )
+            # But the gate must also be present
+            assert "assert_metric_eligible_for_scientific_use" in content, (
+                "dr97 must have the epistemic gate. The hardcoded value is "
+                "preserved but blocked by the gate."
+            )
 
     def test_calibration_consumer_uses_gate_not_direct_read(self):
         """The calibration consumer must NOT read M-008 directly before
