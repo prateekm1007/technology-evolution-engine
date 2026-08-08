@@ -315,5 +315,81 @@ def test_m008_determinism_statement_is_conditional_not_causal():
     )
 
 
+def test_m008_causal_attribution_not_claimed():
+    """M-008 must NOT claim the cause of the discrepancy has been established.
+
+    Per audit round 9:
+        "Replace 'The discrepancy from input change' with 'The discrepancy
+         is consistent with at least one effective-input or environment
+         difference; causal attribution remains open.'"
+
+    The repository must distinguish:
+        DETERMINISTIC_UNDER_IDENTICAL_EFFECTIVE_INPUTS (true)
+    from:
+        CAUSE_OF_DISCREPANCY_ESTABLISHED (must be false)
+
+    And M-008 must be marked RECONCILIATION_OPEN.
+    """
+    assert INVENTORY_PATH.exists()
+
+    inventory = json.loads(INVENTORY_PATH.read_text())
+
+    # Check the m008_quarantine_summary
+    m008_summary = inventory.get("m008_quarantine_summary", {})
+    assert m008_summary.get("CAUSE_OF_DISCREPANCY_ESTABLISHED") is False, (
+        "M-008 must have CAUSE_OF_DISCREPANCY_ESTABLISHED=false. "
+        "Causal attribution has NOT been established. The discrepancy is "
+        "consistent with at least one effective-input or environment "
+        "difference, but the specific cause has not been identified."
+    )
+    assert m008_summary.get("DETERMINISTIC_UNDER_IDENTICAL_EFFECTIVE_INPUTS") is True, (
+        "M-008 must have DETERMINISTIC_UNDER_IDENTICAL_EFFECTIVE_INPUTS=true. "
+        "This is the narrow claim the evidence supports."
+    )
+    assert m008_summary.get("RECONCILIATION_STATUS") == "RECONCILIATION_OPEN", (
+        "M-008 must have RECONCILIATION_STATUS=RECONCILIATION_OPEN. "
+        "The discrepancy has not been reconciled."
+    )
+
+    # Check the per-metric determinism_analysis
+    metrics = inventory.get("metrics", [])
+    m008 = None
+    for m in metrics:
+        if m.get("metric_id") == "M-008":
+            m008 = m
+            break
+
+    assert m008 is not None
+    quarantine = m008.get("quarantine", {})
+    determinism = quarantine.get("determinism_analysis", {})
+
+    assert determinism.get("CAUSE_OF_DISCREPANCY_ESTABLISHED") is False, (
+        "M-008 determinism_analysis must have CAUSE_OF_DISCREPANCY_ESTABLISHED=false"
+    )
+    assert determinism.get("DETERMINISTIC_UNDER_IDENTICAL_EFFECTIVE_INPUTS") is True, (
+        "M-008 determinism_analysis must have DETERMINISTIC_UNDER_IDENTICAL_EFFECTIVE_INPUTS=true"
+    )
+    assert determinism.get("RECONCILIATION_STATUS") == "RECONCILIATION_OPEN", (
+        "M-008 determinism_analysis must have RECONCILIATION_STATUS=RECONCILIATION_OPEN"
+    )
+
+    # Check that the wording does NOT claim the cause has been identified
+    determinism_text = json.dumps(determinism).lower()
+    forbidden_phrases = [
+        "discrepancy must come from",
+        "must come from a change in",
+        "discrepancy from input change",
+        "cause has been identified",
+        "cause is",
+    ]
+    for phrase in forbidden_phrases:
+        assert phrase not in determinism_text, (
+            f"M-008 determinism analysis contains forbidden phrase '{phrase}'. "
+            f"This implies causal attribution has been established, which it has NOT. "
+            f"Per audit round 9: use 'consistent with at least one effective-input "
+            f"or environment difference; causal attribution remains open.'"
+        )
+
+
 if __name__ == "__main__":
     sys.exit(pytest.main([__file__, "-v"]))

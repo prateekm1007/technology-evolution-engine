@@ -1,8 +1,8 @@
 {
   "phase": 4,
-  "phase_name": "Inventory every measurement metric (corrected per audit round 8)",
+  "phase_name": "Inventory every measurement metric (corrected per audit round 9)",
   "status": "COMPLETE",
-  "commit": "51a35fe",
+  "commit": "pending",
   "protocol_frozen": false,
   "protocol_frozen_meaning": "Phase 4 is an inventory task, not a preregistered experiment. The broader measurement/discrimination protocol (Phases 8-17) is not yet frozen.",
   "scientific_results_visible": true,
@@ -11,6 +11,13 @@
   "timestamp_utc": "2026-08-08T17:03:00Z",
   "github_ci_status": "NOT_INDEPENDENTLY_VERIFIED",
 
+  "audit_round_9_corrections_applied": {
+    "wording_tightened": "Replaced 'discrepancy from input change' (which implies causal attribution) with 'consistent with at least one effective-input or environment difference; causal attribution remains open' (which the evidence supports).",
+    "explicit_distinction_added": "Added DETERMINISTIC_UNDER_IDENTICAL_EFFECTIVE_INPUTS=true (narrow claim) vs CAUSE_OF_DISCREPANCY_ESTABLISHED=false (not yet established). These are separate fields so the epistemic state is unambiguous.",
+    "reconciliation_status_added": "M-008 now has RECONCILIATION_STATUS=RECONCILIATION_OPEN. The discrepancy has not been reconciled.",
+    "machine_test_added": "test_m008_causal_attribution_not_claimed verifies CAUSE_OF_DISCREPANCY_ESTABLISHED=false, RECONCILIATION_STATUS=RECONCILIATION_OPEN, and forbids phrases that imply causal attribution ('discrepancy must come from', 'cause has been identified', etc.).",
+    "principle": "The repository must distinguish 'narrowed the hypothesis space' from 'explained the discrepancy.' Causal attribution remains open."
+  },
   "audit_round_8_corrections_applied": {
     "two_dimensional_state_machine": "Replaced REGENERATED_AND_MATCHED (which conventionally means 'independently regenerated') with two separate fields: regeneration_status=NOT_INDEPENDENTLY_VERIFIED + shared_run_comparison=MATCHED. The status is now self-explanatory without caveats.",
     "independent_regeneration_flag": "Added independent_regeneration=false to all 38 metrics. No metric has been independently regenerated.",
@@ -51,13 +58,16 @@
     "shared_run_comparison": "MISMATCHED",
     "independent_regeneration": false,
     "measurement_usability": "QUARANTINED",
+    "RECONCILIATION_STATUS": "RECONCILIATION_OPEN",
+    "DETERMINISTIC_UNDER_IDENTICAL_EFFECTIVE_INPUTS": true,
+    "CAUSE_OF_DISCREPANCY_ESTABLISHED": false,
     "scientifically_eligible": false,
     "used_for_scientific_decision": "NO",
     "n_resamples": 200,
     "n_resamples_note": "M-008 hardcodes 200 resamples (bootstrap_statistics.py:489), NOT the global 500. Both committed and fresh runs use 200 for M-008. This does NOT explain the discrepancy.",
     "determinism_statement": "M-008's point-estimate computation is deterministic CONDITIONAL ON identical effective inputs, code, dependencies, and execution environment.",
-    "what_has_been_established": "Under fixed seed + fixed code path + Python Random, the computation is deterministic. The observed discrepancy demonstrates that at least one effective determinant differs OR that an unexamined source of nondeterminism exists.",
-    "what_has_NOT_been_established": "The cause of the discrepancy has NOT been identified. The narrowed hypothesis space (all_entities, gold, m_synonym, _score_f1_dr91) is a search space, not a diagnosis.",
+    "what_has_been_established": "Under fixed seed + fixed code path + Python Random, the computation is deterministic. The discrepancy is consistent with at least one effective-input or environment difference; causal attribution remains open.",
+    "what_has_NOT_been_established": "The cause of the discrepancy has NOT been identified. The discrepancy is consistent with at least one effective-input or environment difference; causal attribution remains open. The narrowed hypothesis space is a search space, not a diagnosis.",
     "rng_topology": {
       "rng_instance": "module-scoped (created outside the m008 closure at bootstrap_statistics.py:480)",
       "seed": 42,
