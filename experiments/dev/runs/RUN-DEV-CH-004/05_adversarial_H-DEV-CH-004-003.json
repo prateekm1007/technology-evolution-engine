@@ -1,0 +1,74 @@
+{
+  "stage": "05_adversarial_H-DEV-CH-004-003",
+  "run_id": "RUN-DEV-CH-004",
+  "code_sha": "db38c7dba5aef5073fb26ac2d8e534768d66515c",
+  "input_hash": "fb7614d3123043a9818279af6ac403a3bdcbd0db4099b8ea72f1a855a1fc4061",
+  "output_hash": "239316685cab3a5d6076d6b9496088cdf409773148858cbc094c4b01d5bffe04",
+  "provider_manifest": {
+    "provider": "zai",
+    "model": "glm-4-plus",
+    "version": "z-ai-web-dev-sdk",
+    "configuration": {
+      "temperature": 0.2,
+      "max_tokens": 4096,
+      "system_sha": "1f5a3fff3aebc2e1d44b2312f4b604b5c2911cacaf452eb6ca705c724fc9142b"
+    },
+    "prompt_sha": "c6e96b620d20b2c3de4323c67f7a35ad6152722c7e79bbeecf061f55ffd5aaf4",
+    "seed": null,
+    "tool_versions": {
+      "z_ai_cli": "z-ai"
+    },
+    "timestamp": "2026-08-08T08:51:59.283554+00:00",
+    "latency_ms": 9896,
+    "success": true,
+    "error": ""
+  },
+  "result": {
+    "hypothesis_id": "H-DEV-CH-004-003",
+    "failure_modes": [
+      {
+        "category": "FRAGILE_ASSUMPTION",
+        "description": "The assumption that simple local rules can produce complex global optimization is fundamentally flawed without considering network-wide coordination effects",
+        "severity": "HIGH",
+        "evidence": "Traffic networks exhibit non-linear dynamics where local optimizations often create global bottlenecks (Braess paradox)"
+      },
+      {
+        "category": "CONTRADICTS_KNOWN",
+        "description": "Direct contradicts established traffic flow theory which shows that optimal signal coordination requires explicit timing plans",
+        "severity": "HIGH",
+        "evidence": "All major metropolitan areas use coordinated signal timing systems with fixed offsets, not purely local rules"
+      },
+      {
+        "category": "BOUNDARY_BREAKS",
+        "description": "Fails to account for boundary conditions like network entry/exit points and major arterials that cannot be controlled by local rules alone",
+        "severity": "MEDIUM",
+        "evidence": "Network boundaries create fundamental asymmetries that prevent true self-organization"
+      },
+      {
+        "category": "PRIOR_ART_EXISTS",
+        "description": "Numerous existing adaptive signal systems use more sophisticated approaches than simple threshold rules",
+        "severity": "MEDIUM",
+        "evidence": "SCATS, SCOOT, and RHODES systems all use predictive algorithms and network-wide coordination"
+      },
+      {
+        "category": "FALSIFIER_TRIGGERED",
+        "description": "The hypothesis predicts emergence of optimal patterns, but real-world implementations show exactly the oscillations and instabilities predicted as failure modes",
+        "severity": "HIGH",
+        "evidence": "Multiple studies show simple local rules create 'traffic waves' that propagate through networks, worsening congestion"
+      },
+      {
+        "category": "INCOMPATIBLE_TARGET",
+        "description": "The target of 'system-level optimization' is mathematically ill-defined without specifying optimization criteria",
+        "severity": "LOW",
+        "evidence": "Different optimization goals (throughput vs. delay vs. emissions) lead to conflicting signal timing requirements"
+      }
+    ],
+    "survives": false,
+    "outcome": "ADVERSARIAL_FAILED",
+    "n_high_severity": 3,
+    "n_medium_severity": 2,
+    "n_low_severity": 1,
+    "source_hypothesis_hash": ""
+  },
+  "timestamp": "2026-08-08T08:52:09.179993+00:00"
+}

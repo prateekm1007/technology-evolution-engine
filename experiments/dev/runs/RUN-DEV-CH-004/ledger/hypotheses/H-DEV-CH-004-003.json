@@ -1,0 +1,31 @@
+{
+  "hypothesis_id": "H-DEV-CH-004-003",
+  "claim": "Traffic signals adapt through emergent pattern formation where each intersection follows simple rules based on local conditions, creating system-level optimization",
+  "mechanism": "Each intersection follows a simple rule set (e.g., increase green time if queue length exceeds threshold, decrease if queue is zero) that, when applied across the network, creates emergent patterns that optimize flow",
+  "evidence": [
+    "Emergent behavior appears in other complex systems",
+    "Some traffic signal systems use simple heuristic rules"
+  ],
+  "assumptions": [
+    "Simple local rules can produce complex global optimization",
+    "The network will self-organize into optimal patterns",
+    "No explicit communication between intersections is needed"
+  ],
+  "predictions": [],
+  "expected_failure_modes": [
+    "Oscillations between intersections causing 'traffic waves'",
+    "Failure to adapt to non-recurrent congestion patterns"
+  ],
+  "novelty_rationale": "Directly transfers the myxomycete emergent computation principle to traffic signal control through simple local rules",
+  "testability": "Can be tested by implementing simple rule-based signal control and measuring system performance",
+  "falsifier": "If the simple rules fail to produce optimal flow patterns or create oscillations or instabilities in the network",
+  "epistemic_state": "HYPOTHESIZED",
+  "parent_hypothesis_ids": [],
+  "provenance": {
+    "nodes": {},
+    "edges": [],
+    "committed_hash": null
+  },
+  "is_testable": true,
+  "provenance_root_hash": ""
+}

@@ -1,6 +1,6 @@
 {
   "case_id": "DC-DEV-CH-004",
-  "created_at": "2026-08-08T08:41:41.480601+00:00",
+  "created_at": "2026-08-08T08:52:11.961466+00:00",
   "engine_version": "",
   "knowledge_snapshot": "",
   "input_sources": [
@@ -26,6 +26,18 @@
     "mechanism_graph:DEV-CH-004",
     "mechanism_pattern:DEV-CH-004",
     "transfer:TH-DEV-CH-004-001",
+    "hypothesis:H-DEV-CH-004-001",
+    "adversarial:H-DEV-CH-004-001",
+    "rediscovery:H-DEV-CH-004-001",
+    "novelty:H-DEV-CH-004-001",
+    "hypothesis:H-DEV-CH-004-002",
+    "adversarial:H-DEV-CH-004-002",
+    "rediscovery:H-DEV-CH-004-002",
+    "novelty:H-DEV-CH-004-002",
+    "hypothesis:H-DEV-CH-004-003",
+    "adversarial:H-DEV-CH-004-003",
+    "rediscovery:H-DEV-CH-004-003",
+    "novelty:H-DEV-CH-004-003",
     "run:DEV-CH-004"
   ],
   "provenance": {
@@ -54,23 +66,152 @@
       "mechanism_pattern:DEV-CH-004": {
         "node_id": "mechanism_pattern:DEV-CH-004",
         "node_type": "mechanism_pattern",
-        "content_hash": "b1214fdf8b9a047bda8cc2f4d3018946e5af20f8738dba750aa999f6e8e42585",
+        "content_hash": "643560d0cee9a6191b571c93752c99df7f74c24415aa95cb90be7a6ebc9d08cf",
         "metadata": {
           "artifact_stage": "02_abstraction",
-          "artifact_output_hash": "b1214fdf8b9a047bda8cc2f4d3018946e5af20f8738dba750aa999f6e8e42585",
+          "artifact_output_hash": "643560d0cee9a6191b571c93752c99df7f74c24415aa95cb90be7a6ebc9d08cf",
           "pattern_id": "MP-DEV-CH-004"
         }
       },
       "transfer:TH-DEV-CH-004-001": {
         "node_id": "transfer:TH-DEV-CH-004-001",
         "node_type": "transfer_hypothesis",
-        "content_hash": "7005d1c577a2f2f3d1b2fe94c1031d8bcc044b693ef0508a74c00ec88ca1f3f2",
+        "content_hash": "138eed16bbe72f1b7a00f65a71f25e25d61f8351e447ca7f9cd61c45907ed0c4",
         "metadata": {
           "artifact_stage": "03_transfer",
-          "artifact_output_hash": "7005d1c577a2f2f3d1b2fe94c1031d8bcc044b693ef0508a74c00ec88ca1f3f2",
+          "artifact_output_hash": "138eed16bbe72f1b7a00f65a71f25e25d61f8351e447ca7f9cd61c45907ed0c4",
           "source_domain": "myxomycete biology / emergent computation",
           "target_domain": "urban transportation engineering",
-          "transferred_principle": "distributed adaptive network optimization through local exploration and reinforcement of efficient traffic flow patterns"
+          "transferred_principle": "distributed network optimization through local interactions and feedback"
+        }
+      },
+      "hypothesis:H-DEV-CH-004-001": {
+        "node_id": "hypothesis:H-DEV-CH-004-001",
+        "node_type": "hypothesis",
+        "content_hash": "11f818a1ca5b21cab1656478adf160f373a96aeee4d3d00e4c29efc3ce96cfcf",
+        "metadata": {
+          "artifact_stage": "04_hypotheses",
+          "artifact_output_hash": "11f818a1ca5b21cab1656478adf160f373a96aeee4d3d00e4c29efc3ce96cfcf",
+          "claim": "Traffic signals adapt through local feedback of queue length and vehicle count, adjusting green time",
+          "hypothesis_object_hash": "b69c36bdb43f81076a6439b2bdea7d3b3c4c1ca9a050bb325f58d15377687990"
+        }
+      },
+      "adversarial:H-DEV-CH-004-001": {
+        "node_id": "adversarial:H-DEV-CH-004-001",
+        "node_type": "adversarial_analysis",
+        "content_hash": "a2109688da3c4da36ee58bc1f8bc7f3c4bd2aaffbebe8432f44b1cdf2fb45b6c",
+        "metadata": {
+          "artifact_stage": "05_adversarial_H-DEV-CH-004-001",
+          "artifact_output_hash": "a2109688da3c4da36ee58bc1f8bc7f3c4bd2aaffbebe8432f44b1cdf2fb45b6c",
+          "outcome": "ADVERSARIAL_FAILED",
+          "survives": false
+        }
+      },
+      "rediscovery:H-DEV-CH-004-001": {
+        "node_id": "rediscovery:H-DEV-CH-004-001",
+        "node_type": "rediscovery_analysis",
+        "content_hash": "2d7a66051ad2beff2a8ebea43e34fcf8c47ad0d25345053b8354f9fb714b4a15",
+        "metadata": {
+          "artifact_stage": "06_rediscovery_H-DEV-CH-004-001",
+          "artifact_output_hash": "2d7a66051ad2beff2a8ebea43e34fcf8c47ad0d25345053b8354f9fb714b4a15",
+          "classification": "NON_TRIVIAL_TRANSFER",
+          "is_rediscovery": false
+        }
+      },
+      "novelty:H-DEV-CH-004-001": {
+        "node_id": "novelty:H-DEV-CH-004-001",
+        "node_type": "novelty_assessment",
+        "content_hash": "6fe9b546c495dcbc868db24f7ab553777dcfcd06c54e5bca3b9e190933bc6a3a",
+        "metadata": {
+          "artifact_stage": "07_novelty_H-DEV-CH-004-001",
+          "artifact_output_hash": "6fe9b546c495dcbc868db24f7ab553777dcfcd06c54e5bca3b9e190933bc6a3a",
+          "status": "NOT_EVALUATED"
+        }
+      },
+      "hypothesis:H-DEV-CH-004-002": {
+        "node_id": "hypothesis:H-DEV-CH-004-002",
+        "node_type": "hypothesis",
+        "content_hash": "11f818a1ca5b21cab1656478adf160f373a96aeee4d3d00e4c29efc3ce96cfcf",
+        "metadata": {
+          "artifact_stage": "04_hypotheses",
+          "artifact_output_hash": "11f818a1ca5b21cab1656478adf160f373a96aeee4d3d00e4c29efc3ce96cfcf",
+          "claim": "Traffic signals adapt through distributed consensus with neighboring intersections, creating coordin",
+          "hypothesis_object_hash": "4092e5bf5d6b808040caece15cc30f0d42846c9ade01460ce0db92b49f2702d2"
+        }
+      },
+      "adversarial:H-DEV-CH-004-002": {
+        "node_id": "adversarial:H-DEV-CH-004-002",
+        "node_type": "adversarial_analysis",
+        "content_hash": "1b3f6d09feb3654ef71530b4f63d2ab84489db9270b334cef69143420fc900c5",
+        "metadata": {
+          "artifact_stage": "05_adversarial_H-DEV-CH-004-002",
+          "artifact_output_hash": "1b3f6d09feb3654ef71530b4f63d2ab84489db9270b334cef69143420fc900c5",
+          "outcome": "ADVERSARIAL_FAILED",
+          "survives": false
+        }
+      },
+      "rediscovery:H-DEV-CH-004-002": {
+        "node_id": "rediscovery:H-DEV-CH-004-002",
+        "node_type": "rediscovery_analysis",
+        "content_hash": "3edeeeac8a5eeb930bb990069c71ad00dbabc72cf4997449d4ab8863975d40df",
+        "metadata": {
+          "artifact_stage": "06_rediscovery_H-DEV-CH-004-002",
+          "artifact_output_hash": "3edeeeac8a5eeb930bb990069c71ad00dbabc72cf4997449d4ab8863975d40df",
+          "classification": "NON_TRIVIAL_TRANSFER",
+          "is_rediscovery": false
+        }
+      },
+      "novelty:H-DEV-CH-004-002": {
+        "node_id": "novelty:H-DEV-CH-004-002",
+        "node_type": "novelty_assessment",
+        "content_hash": "047da1e8a2a05a62469331a2e0675da0daf5414144a7646c89c9c97f8dab3645",
+        "metadata": {
+          "artifact_stage": "07_novelty_H-DEV-CH-004-002",
+          "artifact_output_hash": "047da1e8a2a05a62469331a2e0675da0daf5414144a7646c89c9c97f8dab3645",
+          "status": "NOT_EVALUATED"
+        }
+      },
+      "hypothesis:H-DEV-CH-004-003": {
+        "node_id": "hypothesis:H-DEV-CH-004-003",
+        "node_type": "hypothesis",
+        "content_hash": "11f818a1ca5b21cab1656478adf160f373a96aeee4d3d00e4c29efc3ce96cfcf",
+        "metadata": {
+          "artifact_stage": "04_hypotheses",
+          "artifact_output_hash": "11f818a1ca5b21cab1656478adf160f373a96aeee4d3d00e4c29efc3ce96cfcf",
+          "claim": "Traffic signals adapt through emergent pattern formation where each intersection follows simple rule",
+          "hypothesis_object_hash": "fb7614d3123043a9818279af6ac403a3bdcbd0db4099b8ea72f1a855a1fc4061"
+        }
+      },
+      "adversarial:H-DEV-CH-004-003": {
+        "node_id": "adversarial:H-DEV-CH-004-003",
+        "node_type": "adversarial_analysis",
+        "content_hash": "239316685cab3a5d6076d6b9496088cdf409773148858cbc094c4b01d5bffe04",
+        "metadata": {
+          "artifact_stage": "05_adversarial_H-DEV-CH-004-003",
+          "artifact_output_hash": "239316685cab3a5d6076d6b9496088cdf409773148858cbc094c4b01d5bffe04",
+          "outcome": "ADVERSARIAL_FAILED",
+          "survives": false
+        }
+      },
+      "rediscovery:H-DEV-CH-004-003": {
+        "node_id": "rediscovery:H-DEV-CH-004-003",
+        "node_type": "rediscovery_analysis",
+        "content_hash": "64ebdeccf7ee5f0e9cee28e9f45ed0a229b8f48a957c51274250468e116fcd3a",
+        "metadata": {
+          "artifact_stage": "06_rediscovery_H-DEV-CH-004-003",
+          "artifact_output_hash": "64ebdeccf7ee5f0e9cee28e9f45ed0a229b8f48a957c51274250468e116fcd3a",
+          "classification": "PARAPHRASED_IN_INPUT",
+          "is_rediscovery": true
+        }
+      },
+      "novelty:H-DEV-CH-004-003": {
+        "node_id": "novelty:H-DEV-CH-004-003",
+        "node_type": "novelty_assessment",
+        "content_hash": "d47fdbc2fc975bcd40e3ca380ebdfb778d4b3237cadcb815ecc70ace9cc52d31",
+        "metadata": {
+          "artifact_stage": "07_novelty_H-DEV-CH-004-003",
+          "artifact_output_hash": "d47fdbc2fc975bcd40e3ca380ebdfb778d4b3237cadcb815ecc70ace9cc52d31",
+          "status": "NOT_EVALUATED"
         }
       },
       "run:DEV-CH-004": {
@@ -79,7 +220,7 @@
         "content_hash": "13341ac4f4ed1028f8190dc8f5ce9c07700819b3290f8dd10f0991bee80758e1",
         "metadata": {
           "run_id": "RUN-DEV-CH-004",
-          "engine_code_sha": "42d81344d75224f8f641ffd5fed58a6ce0a80af6",
+          "engine_code_sha": "db38c7dba5aef5073fb26ac2d8e534768d66515c",
           "artifact_stage": "manifest",
           "artifact_output_hash": ""
         }
@@ -93,7 +234,7 @@
         "edge_type": "DERIVES_FROM",
         "evidence": "mechanism graph extracted from source",
         "actor": "mechanism_extractor",
-        "timestamp": "2026-08-08T08:41:41.480639+00:00"
+        "timestamp": "2026-08-08T08:52:11.961512+00:00"
       },
       {
         "edge_id": "prov:mp_mg:DEV-CH-004",
@@ -102,7 +243,7 @@
         "edge_type": "DERIVES_FROM",
         "evidence": "pattern abstracted from mechanism graph",
         "actor": "mechanism_abstracter",
-        "timestamp": "2026-08-08T08:41:41.480649+00:00"
+        "timestamp": "2026-08-08T08:52:11.961522+00:00"
       },
       {
         "edge_id": "prov:th_mp:TH-DEV-CH-004-001",
@@ -111,14 +252,122 @@
         "edge_type": "DERIVES_FROM",
         "evidence": "transfer derived from pattern",
         "actor": "cross_domain_transfer",
-        "timestamp": "2026-08-08T08:41:41.480656+00:00"
+        "timestamp": "2026-08-08T08:52:11.961530+00:00"
+      },
+      {
+        "edge_id": "prov:h_th:H-DEV-CH-004-001",
+        "source_node_id": "transfer:TH-DEV-CH-004-001",
+        "target_node_id": "hypothesis:H-DEV-CH-004-001",
+        "edge_type": "DERIVES_FROM",
+        "evidence": "hypothesis derived from transfer",
+        "actor": "hypothesis_engine",
+        "timestamp": "2026-08-08T08:52:11.961581+00:00"
+      },
+      {
+        "edge_id": "prov:adv_h:H-DEV-CH-004-001",
+        "source_node_id": "hypothesis:H-DEV-CH-004-001",
+        "target_node_id": "adversarial:H-DEV-CH-004-001",
+        "edge_type": "ANALYZES",
+        "evidence": "adversarial analysis of hypothesis",
+        "actor": "adversarial_engine",
+        "timestamp": "2026-08-08T08:52:11.961693+00:00"
+      },
+      {
+        "edge_id": "prov:rd_h:H-DEV-CH-004-001",
+        "source_node_id": "hypothesis:H-DEV-CH-004-001",
+        "target_node_id": "rediscovery:H-DEV-CH-004-001",
+        "edge_type": "ANALYZES",
+        "evidence": "rediscovery classification of hypothesis",
+        "actor": "rediscovery_detector",
+        "timestamp": "2026-08-08T08:52:11.961763+00:00"
+      },
+      {
+        "edge_id": "prov:nov_h:H-DEV-CH-004-001",
+        "source_node_id": "hypothesis:H-DEV-CH-004-001",
+        "target_node_id": "novelty:H-DEV-CH-004-001",
+        "edge_type": "ANALYZES",
+        "evidence": "novelty assessment of hypothesis",
+        "actor": "novelty_firewall",
+        "timestamp": "2026-08-08T08:52:11.961821+00:00"
+      },
+      {
+        "edge_id": "prov:h_th:H-DEV-CH-004-002",
+        "source_node_id": "transfer:TH-DEV-CH-004-001",
+        "target_node_id": "hypothesis:H-DEV-CH-004-002",
+        "edge_type": "DERIVES_FROM",
+        "evidence": "hypothesis derived from transfer",
+        "actor": "hypothesis_engine",
+        "timestamp": "2026-08-08T08:52:11.961927+00:00"
+      },
+      {
+        "edge_id": "prov:adv_h:H-DEV-CH-004-002",
+        "source_node_id": "hypothesis:H-DEV-CH-004-002",
+        "target_node_id": "adversarial:H-DEV-CH-004-002",
+        "edge_type": "ANALYZES",
+        "evidence": "adversarial analysis of hypothesis",
+        "actor": "adversarial_engine",
+        "timestamp": "2026-08-08T08:52:11.962009+00:00"
+      },
+      {
+        "edge_id": "prov:rd_h:H-DEV-CH-004-002",
+        "source_node_id": "hypothesis:H-DEV-CH-004-002",
+        "target_node_id": "rediscovery:H-DEV-CH-004-002",
+        "edge_type": "ANALYZES",
+        "evidence": "rediscovery classification of hypothesis",
+        "actor": "rediscovery_detector",
+        "timestamp": "2026-08-08T08:52:11.962092+00:00"
+      },
+      {
+        "edge_id": "prov:nov_h:H-DEV-CH-004-002",
+        "source_node_id": "hypothesis:H-DEV-CH-004-002",
+        "target_node_id": "novelty:H-DEV-CH-004-002",
+        "edge_type": "ANALYZES",
+        "evidence": "novelty assessment of hypothesis",
+        "actor": "novelty_firewall",
+        "timestamp": "2026-08-08T08:52:11.962150+00:00"
+      },
+      {
+        "edge_id": "prov:h_th:H-DEV-CH-004-003",
+        "source_node_id": "transfer:TH-DEV-CH-004-001",
+        "target_node_id": "hypothesis:H-DEV-CH-004-003",
+        "edge_type": "DERIVES_FROM",
+        "evidence": "hypothesis derived from transfer",
+        "actor": "hypothesis_engine",
+        "timestamp": "2026-08-08T08:52:11.962252+00:00"
+      },
+      {
+        "edge_id": "prov:adv_h:H-DEV-CH-004-003",
+        "source_node_id": "hypothesis:H-DEV-CH-004-003",
+        "target_node_id": "adversarial:H-DEV-CH-004-003",
+        "edge_type": "ANALYZES",
+        "evidence": "adversarial analysis of hypothesis",
+        "actor": "adversarial_engine",
+        "timestamp": "2026-08-08T08:52:11.962321+00:00"
+      },
+      {
+        "edge_id": "prov:rd_h:H-DEV-CH-004-003",
+        "source_node_id": "hypothesis:H-DEV-CH-004-003",
+        "target_node_id": "rediscovery:H-DEV-CH-004-003",
+        "edge_type": "ANALYZES",
+        "evidence": "rediscovery classification of hypothesis",
+        "actor": "rediscovery_detector",
+        "timestamp": "2026-08-08T08:52:11.962374+00:00"
+      },
+      {
+        "edge_id": "prov:nov_h:H-DEV-CH-004-003",
+        "source_node_id": "hypothesis:H-DEV-CH-004-003",
+        "target_node_id": "novelty:H-DEV-CH-004-003",
+        "edge_type": "ANALYZES",
+        "evidence": "novelty assessment of hypothesis",
+        "actor": "novelty_firewall",
+        "timestamp": "2026-08-08T08:52:11.962422+00:00"
       }
     ],
-    "committed_hash": "c347c609c4750a4334dda6425976ef0a9680b79b26a04ccb8bc668f629de207a"
+    "committed_hash": "d9a737cc0b78c56f4318cde6d058aefcce19760def1a21129d6251ad46f4de12"
   },
   "parent_cases": [],
   "derived_cases": [],
   "failure_state": null,
   "manifest": null,
-  "provenance_root_hash": "c347c609c4750a4334dda6425976ef0a9680b79b26a04ccb8bc668f629de207a"
+  "provenance_root_hash": "d9a737cc0b78c56f4318cde6d058aefcce19760def1a21129d6251ad46f4de12"
 }

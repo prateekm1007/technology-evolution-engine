@@ -1,12 +1,139 @@
 {
   "stage": "10_rankings",
   "run_id": "RUN-DEV-CH-004",
-  "code_sha": "42d81344d75224f8f641ffd5fed58a6ce0a80af6",
-  "input_hash": "3fedfeca59edbe708d9a239a949ddfdd9b579f51c86e6fcf56d869c6a0513199",
-  "output_hash": "084ca3ae747c9db78121fbdbc408cc97cf5d7fbc31f26227dbc0ba742ea2c807",
+  "code_sha": "db38c7dba5aef5073fb26ac2d8e534768d66515c",
+  "input_hash": "f063cc770960537f36109288e478a916a50b7b8887828ce7abfc7b98a85bb1f7",
+  "output_hash": "ef5753a0114cea2608b6933a21c6b3d9bce44531f59d539746bffb6a9a1a4c31",
   "provider_manifest": null,
   "result": {
-    "rankings": {}
+    "rankings": {
+      "H-DEV-CH-004-001": {
+        "hypothesis_id": "H-DEV-CH-004-001",
+        "dimensions": {
+          "mechanistic_coherence": [
+            0.5,
+            "hypothesis has a mechanism"
+          ],
+          "cross_domain_distance": [
+            0.8,
+            "source 'myxomycete biology / emergent computation' != target 'urban transportation engineering'"
+          ],
+          "novelty_evidence": [
+            0.0,
+            ""
+          ],
+          "testability": [
+            0.5,
+            "hypothesis marked testable"
+          ],
+          "falsifiability": [
+            1.0,
+            "non-empty falsifier"
+          ],
+          "prior_art_risk": [
+            0.0,
+            ""
+          ],
+          "expected_information_gain": [
+            0.2,
+            "no experiment design yet"
+          ],
+          "potential_impact": [
+            0.6,
+            "specific expected effect"
+          ],
+          "experimental_feasibility": [
+            0.0,
+            ""
+          ]
+        },
+        "note": "dimensions reported separately, not collapsed into a single score"
+      },
+      "H-DEV-CH-004-002": {
+        "hypothesis_id": "H-DEV-CH-004-002",
+        "dimensions": {
+          "mechanistic_coherence": [
+            0.5,
+            "hypothesis has a mechanism"
+          ],
+          "cross_domain_distance": [
+            0.8,
+            "source 'myxomycete biology / emergent computation' != target 'urban transportation engineering'"
+          ],
+          "novelty_evidence": [
+            0.0,
+            ""
+          ],
+          "testability": [
+            0.5,
+            "hypothesis marked testable"
+          ],
+          "falsifiability": [
+            1.0,
+            "non-empty falsifier"
+          ],
+          "prior_art_risk": [
+            0.0,
+            ""
+          ],
+          "expected_information_gain": [
+            0.2,
+            "no experiment design yet"
+          ],
+          "potential_impact": [
+            0.6,
+            "specific expected effect"
+          ],
+          "experimental_feasibility": [
+            0.0,
+            ""
+          ]
+        },
+        "note": "dimensions reported separately, not collapsed into a single score"
+      },
+      "H-DEV-CH-004-003": {
+        "hypothesis_id": "H-DEV-CH-004-003",
+        "dimensions": {
+          "mechanistic_coherence": [
+            0.5,
+            "hypothesis has a mechanism"
+          ],
+          "cross_domain_distance": [
+            0.8,
+            "source 'myxomycete biology / emergent computation' != target 'urban transportation engineering'"
+          ],
+          "novelty_evidence": [
+            0.0,
+            ""
+          ],
+          "testability": [
+            0.5,
+            "hypothesis marked testable"
+          ],
+          "falsifiability": [
+            1.0,
+            "non-empty falsifier"
+          ],
+          "prior_art_risk": [
+            0.0,
+            ""
+          ],
+          "expected_information_gain": [
+            0.2,
+            "no experiment design yet"
+          ],
+          "potential_impact": [
+            0.6,
+            "specific expected effect"
+          ],
+          "experimental_feasibility": [
+            0.0,
+            ""
+          ]
+        },
+        "note": "dimensions reported separately, not collapsed into a single score"
+      }
+    }
   },
-  "timestamp": "2026-08-08T08:41:41.478358+00:00"
+  "timestamp": "2026-08-08T08:52:11.949597+00:00"
 }

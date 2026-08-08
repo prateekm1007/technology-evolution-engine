@@ -1,0 +1,34 @@
+{
+  "stage": "06_rediscovery_H-DEV-CH-004-001",
+  "run_id": "RUN-DEV-CH-004",
+  "code_sha": "db38c7dba5aef5073fb26ac2d8e534768d66515c",
+  "input_hash": "b69c36bdb43f81076a6439b2bdea7d3b3c4c1ca9a050bb325f58d15377687990",
+  "output_hash": "2d7a66051ad2beff2a8ebea43e34fcf8c47ad0d25345053b8354f9fb714b4a15",
+  "provider_manifest": {
+    "provider": "zai",
+    "model": "glm-4-plus",
+    "version": "z-ai-web-dev-sdk",
+    "configuration": {
+      "temperature": 0.1,
+      "max_tokens": 4096,
+      "system_sha": "dbdd0760dff49fc029b32b580a575b7de33a87d371edc2b0deec93bfb2b90b01"
+    },
+    "prompt_sha": "b381a43967e153b9e2931a89c6057e7c933d9dff23f0422480e1830405898d2e",
+    "seed": null,
+    "tool_versions": {
+      "z_ai_cli": "z-ai"
+    },
+    "timestamp": "2026-08-08T08:51:44.021924+00:00",
+    "latency_ms": 3611,
+    "success": true,
+    "error": ""
+  },
+  "result": {
+    "hypothesis_id": "H-DEV-CH-004-001",
+    "classification": "NON_TRIVIAL_TRANSFER",
+    "evidence": "The hypothesis describes traffic signal adaptation based on queue length and vehicle count, which is a concept from traffic engineering. The source document discusses Physarum polycephalum's network adaptation through protoplasmic streaming and feedback mechanisms in biological systems. While both involve feedback loops and network optimization, the specific application to traffic signals with queue monitoring and green time adjustment represents a cross-domain transfer from biological systems to engineering that cannot be directly derived from the source text.",
+    "is_rediscovery": false,
+    "source_hypothesis_hash": ""
+  },
+  "timestamp": "2026-08-08T08:51:47.633463+00:00"
+}

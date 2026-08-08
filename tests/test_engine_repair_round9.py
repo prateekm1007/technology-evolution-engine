@@ -236,19 +236,19 @@ class TestBlocker2LedgerObjectContentHash:
 class TestRepairCEngineIdentity:
     """ENGINE_CODE_SHA must be the actual Git commit SHA, not a manual string."""
 
-    def test_engine_code_sha_is_git_commit(self):
+    def test_engine_commit_sha_is_git_commit(self):
         """ENGINE_CODE_SHA must be a 40-char hex string (Git SHA-1)."""
         assert len(ENGINE_CODE_SHA) == 40, \
             f"ENGINE_CODE_SHA must be a Git commit SHA (40 chars), got {ENGINE_CODE_SHA!r}"
         assert all(c in "0123456789abcdef" for c in ENGINE_CODE_SHA), \
             f"ENGINE_CODE_SHA must be hex, got {ENGINE_CODE_SHA!r}"
 
-    def test_engine_code_sha_in_anchor(self, tmp_path):
+    def test_engine_commit_sha_in_anchor(self, tmp_path):
         """The RUN_INTEGRITY_ANCHOR must record the actual Git commit SHA."""
         loop, result, run_dir = _run_mock_loop(CHALLENGE_4, tmp_path, run_id="RUN-C-1")
         anchor = json.loads((run_dir / "RUN_INTEGRITY_ANCHOR.json").read_text())
-        assert anchor["engine_code_sha"] == ENGINE_CODE_SHA
-        assert len(anchor["engine_code_sha"]) == 40
+        assert anchor["engine_commit_sha"] == ENGINE_CODE_SHA
+        assert len(anchor["engine_commit_sha"]) == 40
 
 
 # ============================================================================
@@ -354,7 +354,7 @@ class TestCoordinatedAttack:
        changed, but the Git commit (external) still records the original
     3. If they modify everything including the anchor and recompute all
        hashes → the Git commit SHA (recorded in the anchor as
-       engine_code_sha) still doesn't match the current Git HEAD
+       engine_commit_sha) still doesn't match the current Git HEAD
     """
 
     def test_coordinated_attack_with_anchor_recomputation(self, tmp_path):
@@ -362,7 +362,7 @@ class TestCoordinatedAttack:
         including the anchor's self-hash. The only thing they cannot
         change is the Git commit (external record).
 
-        The attack should still be detected because the engine_code_sha
+        The attack should still be detected because the engine_commit_sha
         in the anchor must match the actual Git HEAD — and the attacker
         cannot change the Git history."""
         loop, result, run_dir = _run_mock_loop(CHALLENGE_4, tmp_path, run_id="RUN-COORD-1")
@@ -407,12 +407,12 @@ class TestCoordinatedAttack:
         #
         # BUT the attacker CANNOT change:
         # - The Git commit (external record)
-        # - The engine_code_sha in the anchor (must match Git HEAD)
+        # - The engine_commit_sha in the anchor (must match Git HEAD)
         #
-        # The anchor's engine_code_sha was set at creation time to the
+        # The anchor's engine_commit_sha was set at creation time to the
         # Git HEAD. The attacker didn't change it (they'd need to also
         # recompute the anchor self-hash, which they did). So the
-        # engine_code_sha still matches.
+        # engine_commit_sha still matches.
         #
         # The remaining detection vector is: the freeze_record_sha256
         # and ledger hashes. If the attacker also modified those, they
@@ -442,11 +442,11 @@ class TestCoordinatedAttack:
         #
         # This is the limit of self-contained verification: ultimately
         # the Git commit (or a signed release) is the external root.
-        # The anchor records engine_code_sha = Git HEAD, which the
+        # The anchor records engine_commit_sha = Git HEAD, which the
         # attacker cannot change without a new commit.
         #
-        # Verify: engine_code_sha in the anchor matches the current Git HEAD
-        assert anchor["engine_code_sha"] == ENGINE_CODE_SHA
+        # Verify: engine_commit_sha in the anchor matches the current Git HEAD
+        assert anchor["engine_commit_sha"] == ENGINE_CODE_SHA
 
 
 def _mutate_one_byte(path: Path) -> None:

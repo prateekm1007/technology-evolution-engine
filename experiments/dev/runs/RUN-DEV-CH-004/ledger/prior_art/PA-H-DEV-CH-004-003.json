@@ -1,0 +1,19 @@
+{
+  "assessment_id": "PA-H-DEV-CH-004-003",
+  "hypothesis_id": "H-DEV-CH-004-003",
+  "status": "NOT_EVALUATED",
+  "search_scope": [
+    "dev_corpus"
+  ],
+  "queries": [
+    "Traffic signals adapt through emergent pattern formation where each intersection follows simple rules based on local conditions, creating system-level optimization Each intersection follows a simple rule set (e.g., increase green time if queue length exceeds threshold, decrease if queue is zero) that, when applied across the network, creates emergent patterns that optimize flow"
+  ],
+  "sources": [],
+  "matched_prior_art": [],
+  "similarity": "no matches in dev corpus \u2014 NOT proof of novelty",
+  "review_required": true,
+  "confidence": 0.3,
+  "cutoff": "2026-08-08",
+  "reviewer": "novelty_firewall_v0",
+  "timestamp": "2026-08-08T08:52:11.944899+00:00"
+}

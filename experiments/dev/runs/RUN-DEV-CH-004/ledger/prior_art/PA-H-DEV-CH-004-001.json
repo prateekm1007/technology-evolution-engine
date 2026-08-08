@@ -1,0 +1,19 @@
+{
+  "assessment_id": "PA-H-DEV-CH-004-001",
+  "hypothesis_id": "H-DEV-CH-004-001",
+  "status": "NOT_EVALUATED",
+  "search_scope": [
+    "dev_corpus"
+  ],
+  "queries": [
+    "Traffic signals adapt through local feedback of queue length and vehicle count, adjusting green time to minimize local waiting time Each intersection continuously monitors its own queue length and vehicle count, then adjusts signal timing proportionally to reduce local waiting times without considering downstream effects"
+  ],
+  "sources": [],
+  "matched_prior_art": [],
+  "similarity": "no matches in dev corpus \u2014 NOT proof of novelty",
+  "review_required": true,
+  "confidence": 0.3,
+  "cutoff": "2026-08-08",
+  "reviewer": "novelty_firewall_v0",
+  "timestamp": "2026-08-08T08:51:47.635506+00:00"
+}

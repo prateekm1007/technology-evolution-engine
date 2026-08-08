@@ -1,0 +1,31 @@
+{
+  "hypothesis_id": "H-DEV-CH-004-002",
+  "claim": "Traffic signals adapt through distributed consensus with neighboring intersections, creating coordinated green waves",
+  "mechanism": "Each intersection communicates its current state and planned adjustments to adjacent intersections, then reaches consensus on timing that balances local and network-wide objectives",
+  "evidence": [
+    "Distributed consensus algorithms work in other network systems",
+    "Coordinated signal systems exist but typically require central planning"
+  ],
+  "assumptions": [
+    "Intersections can communicate with immediate neighbors",
+    "Consensus algorithms can converge quickly",
+    "Network-wide objectives can be approximated through local interactions"
+  ],
+  "predictions": [],
+  "expected_failure_modes": [
+    "Communication delays preventing timely adaptation",
+    "Inability to reach consensus during rapidly changing conditions"
+  ],
+  "novelty_rationale": "Transfers the myxomycete network adaptation principle through distributed consensus rather than purely local decision-making",
+  "testability": "Can be tested by implementing communication between adjacent intersections and measuring convergence time and solution quality",
+  "falsifier": "If the communication overhead required for consensus makes real-time adaptation infeasible or if consensus cannot be reached quickly enough to respond to changing conditions",
+  "epistemic_state": "HYPOTHESIZED",
+  "parent_hypothesis_ids": [],
+  "provenance": {
+    "nodes": {},
+    "edges": [],
+    "committed_hash": null
+  },
+  "is_testable": true,
+  "provenance_root_hash": ""
+}

@@ -1,0 +1,74 @@
+{
+  "stage": "05_adversarial_H-DEV-CH-004-002",
+  "run_id": "RUN-DEV-CH-004",
+  "code_sha": "db38c7dba5aef5073fb26ac2d8e534768d66515c",
+  "input_hash": "4092e5bf5d6b808040caece15cc30f0d42846c9ade01460ce0db92b49f2702d2",
+  "output_hash": "1b3f6d09feb3654ef71530b4f63d2ab84489db9270b334cef69143420fc900c5",
+  "provider_manifest": {
+    "provider": "zai",
+    "model": "glm-4-plus",
+    "version": "z-ai-web-dev-sdk",
+    "configuration": {
+      "temperature": 0.2,
+      "max_tokens": 4096,
+      "system_sha": "1f5a3fff3aebc2e1d44b2312f4b604b5c2911cacaf452eb6ca705c724fc9142b"
+    },
+    "prompt_sha": "23a4f08a9b129e0fe4ca18e93a2455c805eb59a4e1612b86dbab20a7dae62080",
+    "seed": null,
+    "tool_versions": {
+      "z_ai_cli": "z-ai"
+    },
+    "timestamp": "2026-08-08T08:51:47.638044+00:00",
+    "latency_ms": 9243,
+    "success": true,
+    "error": ""
+  },
+  "result": {
+    "hypothesis_id": "H-DEV-CH-004-002",
+    "failure_modes": [
+      {
+        "category": "FRAGILE_ASSUMPTION",
+        "description": "Assumption that intersections can communicate reliably with immediate neighbors is unrealistic in current infrastructure",
+        "severity": "HIGH",
+        "evidence": "Most traffic signal infrastructure is decades old and lacks reliable communication capabilities between intersections"
+      },
+      {
+        "category": "CONTRADICTS_KNOWN",
+        "description": "Distributed consensus algorithms have proven too slow for real-time traffic control",
+        "severity": "HIGH",
+        "evidence": "Existing distributed systems like blockchain consensus take seconds to minutes, while traffic signals need millisecond-level response times"
+      },
+      {
+        "category": "BOUNDARY_BREAKS",
+        "description": "The system would fail at network boundaries where intersections have different numbers of neighbors",
+        "severity": "HIGH",
+        "evidence": "Uneven network topology would create convergence issues at intersections with fewer neighbors, creating bottlenecks"
+      },
+      {
+        "category": "PRIOR_ART_EXISTS",
+        "description": "Similar approaches have been attempted and failed in the past",
+        "severity": "MEDIUM",
+        "evidence": "Previous distributed traffic signal systems like SCATS and SCOOT have shown limited success and mostly rely on centralized coordination"
+      },
+      {
+        "category": "FALSIFIER_TRIGGERED",
+        "description": "The proposed system would be overwhelmed by communication overhead",
+        "severity": "HIGH",
+        "evidence": "Each intersection would need to communicate with all neighbors, creating O(n^2) communication complexity that scales poorly with network size"
+      },
+      {
+        "category": "INCOMPATIBLE_TARGET",
+        "description": "Traffic signals require deterministic timing for safety, while consensus algorithms are probabilistic",
+        "severity": "HIGH",
+        "evidence": "Traffic signals must guarantee minimum green times for pedestrian safety, which probabilistic consensus cannot guarantee"
+      }
+    ],
+    "survives": false,
+    "outcome": "ADVERSARIAL_FAILED",
+    "n_high_severity": 5,
+    "n_medium_severity": 1,
+    "n_low_severity": 0,
+    "source_hypothesis_hash": ""
+  },
+  "timestamp": "2026-08-08T08:51:56.881921+00:00"
+}

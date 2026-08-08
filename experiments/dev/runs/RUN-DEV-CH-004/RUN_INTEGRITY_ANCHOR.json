@@ -1,15 +1,16 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "run_id": "RUN-DEV-CH-004",
-  "manifest_sha256": "78a3b2329ccaf642abc9d4405e6f65a1dd41cd3a29359213a29a72845109eee3",
-  "ledger_index_sha256": "531ed9aa5ed6e4f83aadb26c56c55130d52a767815cebb6332950e8396774c23",
-  "ledger_inventory_sha256": "69e18f9be0af1bfc30309ff884d88716bb04606730a9e04a41494fdc401570cc",
-  "freeze_record_sha256": "acb243c0034bacd3f540c1cc3de4d54335807fc698914db6c421de7da21027da",
-  "stage_inventory_sha256": "019fca21d74d9595668f28d7cc3845843d44658b4a4c78140a87cfa0c639e0ee",
-  "engine_code_sha": "42d81344d75224f8f641ffd5fed58a6ce0a80af6",
+  "manifest_sha256": "c6d2b8dbafc7af3b94b2162682855528b433a25b12d98ad808165e9f5118d79a",
+  "ledger_index_sha256": "81c486609e287ba7c6de4097a1b717e952bed6a1ff7852f32b2ca9262759d1b2",
+  "ledger_inventory_sha256": "74d82c6b39dd33a80b0dd98addaffcb201e8836ebed50a2b88872c55e8644b74",
+  "freeze_record_sha256": "7b4089b33743debc6b7ca7a1144b30f4cd07a83a57c8346abab176f558431c34",
+  "stage_inventory_sha256": "55bc09f4f5e9cb035bcdbf34ef2971ec7d96e842d3eb35bafab46a761610885e",
+  "engine_commit_sha": "db38c7dba5aef5073fb26ac2d8e534768d66515c",
+  "run_record_commit_sha": "049dc2e15809e430b14950dfc12a3df31a9205af",
   "working_tree_clean": false,
-  "working_tree_sha256": "adf55a57130ff79edb136b3a15fd3ade0e735d64a5beb88f1a13d085a6018087",
-  "created_at": "2026-08-08T08:41:41.496139+00:00",
-  "note": "RUN_INTEGRITY_ANCHOR \u2014 the external root of trust. An auditor starts here and verifies every layer below. The anchor's own integrity is verified by comparing it against an externally-recorded value (the Git commit contains the committed anchor file).",
-  "anchor_sha256": "9f0e8e1756a894b1275cffc8778aab5046df29cc2e8ead9fd31c89b541eae097"
+  "working_tree_status_sha256": "53326344b9895ff862d78d0c050704d24e1b7992da4bd1ca9d18a813b7886994",
+  "created_at": "2026-08-08T08:52:11.991844+00:00",
+  "note": "RUN_INTEGRITY_ANCHOR \u2014 the external root of trust. engine_commit_sha = the Git commit whose engine source produced this run. run_record_commit_sha = the Git commit that froze the run artifacts (filled post-commit). An auditor verifies: anchor self-hash, engine commit exists, run-record commit contains this anchor, all mutable files match.",
+  "anchor_sha256": "37eff04d66a1efee3b7cd7ad6dc40c830ec1e188aff6968eb3cb84127a478355"
 }

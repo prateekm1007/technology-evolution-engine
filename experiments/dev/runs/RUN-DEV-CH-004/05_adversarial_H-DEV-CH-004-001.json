@@ -1,0 +1,74 @@
+{
+  "stage": "05_adversarial_H-DEV-CH-004-001",
+  "run_id": "RUN-DEV-CH-004",
+  "code_sha": "db38c7dba5aef5073fb26ac2d8e534768d66515c",
+  "input_hash": "b69c36bdb43f81076a6439b2bdea7d3b3c4c1ca9a050bb325f58d15377687990",
+  "output_hash": "a2109688da3c4da36ee58bc1f8bc7f3c4bd2aaffbebe8432f44b1cdf2fb45b6c",
+  "provider_manifest": {
+    "provider": "zai",
+    "model": "glm-4-plus",
+    "version": "z-ai-web-dev-sdk",
+    "configuration": {
+      "temperature": 0.2,
+      "max_tokens": 4096,
+      "system_sha": "1f5a3fff3aebc2e1d44b2312f4b604b5c2911cacaf452eb6ca705c724fc9142b"
+    },
+    "prompt_sha": "8f56e5bf6005e41490d891ceacaf53e95a73027bf8fe45a9c168a8b46859f2ce",
+    "seed": null,
+    "tool_versions": {
+      "z_ai_cli": "z-ai"
+    },
+    "timestamp": "2026-08-08T08:51:34.042869+00:00",
+    "latency_ms": 9970,
+    "success": true,
+    "error": ""
+  },
+  "result": {
+    "hypothesis_id": "H-DEV-CH-004-001",
+    "failure_modes": [
+      {
+        "category": "CONTRADICTS_KNOWN",
+        "description": "Local optimization demonstrably does NOT lead to global optimization in traffic networks",
+        "severity": "HIGH",
+        "evidence": "Decades of traffic engineering research shows that selfish local optimization creates Braess paradox effects and system-wide degradation"
+      },
+      {
+        "category": "FRAGILE_ASSUMPTION",
+        "description": "Queue length as primary performance metric ignores critical factors like pedestrian safety, emergency vehicle access, and emissions",
+        "severity": "HIGH",
+        "evidence": "Real-world traffic systems must balance multiple objectives, not just vehicle queue length"
+      },
+      {
+        "category": "BOUNDARY_BREAKS",
+        "description": "The assumption of independent intersection operation fails at network scale",
+        "severity": "HIGH",
+        "evidence": "Traffic networks are inherently interconnected; changes at one intersection propagate through the system"
+      },
+      {
+        "category": "FALSIFIER_TRIGGERED",
+        "description": "The proposed mechanism would immediately fail in any realistic network with moderate traffic",
+        "severity": "HIGH",
+        "evidence": "Basic traffic engineering principles show that uncoordinated signal timing creates stop-and-wave propagation that increases overall delay"
+      },
+      {
+        "category": "INCOMPATIBLE_TARGET",
+        "description": "Minimizing local waiting time conflicts with other critical system objectives",
+        "severity": "MEDIUM",
+        "evidence": "Emergency vehicle response, transit priority, and pedestrian safety would be compromised by pure queue-length optimization"
+      },
+      {
+        "category": "PRIOR_ART_EXISTS",
+        "description": "Numerous existing adaptive signal systems have already demonstrated the limitations of local-only optimization",
+        "severity": "MEDIUM",
+        "evidence": "SCATS, SCOOT, and other major traffic control systems all incorporate network-level coordination"
+      }
+    ],
+    "survives": false,
+    "outcome": "ADVERSARIAL_FAILED",
+    "n_high_severity": 4,
+    "n_medium_severity": 2,
+    "n_low_severity": 0,
+    "source_hypothesis_hash": ""
+  },
+  "timestamp": "2026-08-08T08:51:44.013836+00:00"
+}

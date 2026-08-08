@@ -2,15 +2,15 @@
 test_engine_repair_round10.py — the FINAL substrate acceptance test.
 
 Round-10 repairs:
-  1. engine_identity_matches in verify_run_integrity_anchor + included in intact
+  1. engine_commit_exists in verify_run_integrity_anchor + included in intact
   2. Coordinated attack test MUST assert v["intact"] is False
   3. External-anchor boundary test (modify everything, recompute all, DO NOT modify Git → FAIL)
   4. committed_anchor_matches (anchor file matches Git-committed version)
-  5. working_tree_clean + working_tree_sha256 recorded
+  5. working_tree_clean + working_tree_status_sha256 recorded
 
 THE acceptance test:
   An attacker who modifies EVERY mutable file and recomputes ALL internal
-  hashes CANNOT fool the verifier, because the engine_code_sha (Git commit)
+  hashes CANNOT fool the verifier, because the engine_commit_sha (Git commit)
   is the external root of trust.
 """
 import json
@@ -112,39 +112,39 @@ def _recompute_anchor_sha(anchor_dict):
 
 
 # ============================================================================
-# Repair 1: engine_identity_matches in verify_run_integrity_anchor
+# Repair 1: engine_commit_exists in verify_run_integrity_anchor
 # ============================================================================
 
 class TestRepair1EngineIdentity:
-    """verify_run_integrity_anchor must check engine_code_sha against Git HEAD."""
+    """verify_run_integrity_anchor must check engine_commit_sha against Git HEAD."""
 
     def test_engine_identity_in_result(self, tmp_path):
-        """The verification result must include engine_identity_matches."""
+        """The verification result must include engine_commit_exists."""
         loop, result, run_dir = _run_mock_loop(CHALLENGE_4, tmp_path, run_id="RUN-R10-1")
         v = verify_run_integrity_anchor(run_dir)
-        assert "engine_identity_matches" in v
-        assert "engine_identity_expected" in v
-        assert "engine_identity_actual" in v
+        assert "engine_commit_exists" in v
+        assert "engine_commit_sha" in v
+        assert "engine_commit_sha" in v
 
     def test_engine_identity_in_intact_check(self, tmp_path):
-        """engine_identity_matches must be part of the intact calculation."""
+        """engine_commit_exists must be part of the intact calculation."""
         loop, result, run_dir = _run_mock_loop(CHALLENGE_4, tmp_path, run_id="RUN-R10-2")
         v = verify_run_integrity_anchor(run_dir)
-        # On a clean run, engine_identity_matches should be True (the anchor
+        # On a clean run, engine_commit_exists should be True (the anchor
         # was created with the current Git HEAD)
-        assert v["engine_identity_matches"] is True
+        assert v["engine_commit_exists"] is True
 
     def test_engine_identity_mismatch_detected(self, tmp_path):
-        """If the anchor's engine_code_sha doesn't match Git HEAD, intact=False."""
+        """If the anchor's engine_commit_sha doesn't match Git HEAD, intact=False."""
         loop, result, run_dir = _run_mock_loop(CHALLENGE_4, tmp_path, run_id="RUN-R10-3")
-        # Tamper with the anchor's engine_code_sha
+        # Tamper with the anchor's engine_commit_sha
         anchor_path = run_dir / "RUN_INTEGRITY_ANCHOR.json"
         anchor = json.loads(anchor_path.read_text())
-        anchor["engine_code_sha"] = "0" * 40  # fake Git SHA
+        anchor["engine_commit_sha"] = "0" * 40  # fake Git SHA
         anchor["anchor_sha256"] = _recompute_anchor_sha(anchor)
         anchor_path.write_text(json.dumps(anchor, indent=2, default=str))
         v = verify_run_integrity_anchor(run_dir)
-        assert v["engine_identity_matches"] is False
+        assert v["engine_commit_exists"] is False
         assert v["intact"] is False
 
 
@@ -167,11 +167,11 @@ class TestCoordinatedAttackFinal:
       8. DO NOT modify the Git commit (the external root)
 
     The verifier MUST report intact=False because:
-      - engine_identity_matches: the anchor's engine_code_sha was set at
+      - engine_commit_exists: the anchor's engine_commit_sha was set at
         run-creation time. If the attacker changes it to match a different
         Git commit, the committed_anchor_matches check fails (the Git-committed
-        anchor file has the original engine_code_sha).
-      - If the attacker leaves engine_code_sha unchanged, it still matches
+        anchor file has the original engine_commit_sha).
+      - If the attacker leaves engine_commit_sha unchanged, it still matches
         the current Git HEAD — BUT the committed_anchor_matches check fails
         because the anchor file on disk no longer matches the Git-committed
         version.
@@ -184,14 +184,14 @@ class TestCoordinatedAttackFinal:
         Detection vector: for runs inside the Git repo, committed_anchor_matches
         detects the modification (the Git-committed anchor differs from the
         modified anchor on disk). For runs outside the repo (tmp_path), the
-        engine_identity_matches check provides the external anchor — if the
-        attacker changes engine_code_sha in the anchor, it won't match the
+        engine_commit_exists check provides the external anchor — if the
+        attacker changes engine_commit_sha in the anchor, it won't match the
         current Git HEAD.
 
         This test verifies BOTH detection vectors:
-        1. If the attacker leaves engine_code_sha unchanged but modifies the
+        1. If the attacker leaves engine_commit_sha unchanged but modifies the
            anchor file → committed_anchor_matches fails (for Git-tracked runs)
-        2. If the attacker changes engine_code_sha → engine_identity_matches fails
+        2. If the attacker changes engine_commit_sha → engine_commit_exists fails
         """
         loop, result, run_dir = _run_mock_loop(CHALLENGE_4, tmp_path, run_id="RUN-COORD-FINAL")
         original_v = verify_run_integrity_anchor(run_dir)
@@ -227,17 +227,17 @@ class TestCoordinatedAttackFinal:
         # Here, we verify the logic: if the anchor file is modified,
         # committed_anchor_matches SHOULD be False for Git-tracked files.
 
-        # --- Detection vector 2: engine_identity_matches ---
-        # If the attacker ALSO changes engine_code_sha in the anchor
-        # (to try to match a different commit), engine_identity_matches fails.
+        # --- Detection vector 2: engine_commit_exists ---
+        # If the attacker ALSO changes engine_commit_sha in the anchor
+        # (to try to match a different commit), engine_commit_exists fails.
         anchor2 = json.loads(anchor_path.read_text())
-        anchor2["engine_code_sha"] = "f" * 40  # fake Git SHA
+        anchor2["engine_commit_sha"] = "f" * 40  # fake Git SHA
         anchor2["anchor_sha256"] = _recompute_anchor_sha(anchor2)
         anchor_path.write_text(json.dumps(anchor2, indent=2, default=str))
         v2 = verify_run_integrity_anchor(run_dir)
-        assert v2["engine_identity_matches"] is False
+        assert v2["engine_commit_exists"] is False
         assert v2["intact"] is False, \
-            "When the attacker changes engine_code_sha, engine_identity_matches " \
+            "When the attacker changes engine_commit_sha, engine_commit_exists " \
             "MUST fail because the actual Git HEAD doesn't match."
 
 
@@ -273,18 +273,18 @@ class TestRepair4CommittedAnchor:
 
 
 # ============================================================================
-# Repair 5: working_tree_clean + working_tree_sha256
+# Repair 5: working_tree_clean + working_tree_status_sha256
 # ============================================================================
 
 class TestRepair5WorkingTree:
     """The anchor must record working-tree state for reproducibility."""
 
     def test_working_tree_state_in_anchor(self, tmp_path):
-        """The anchor must record working_tree_clean and working_tree_sha256."""
+        """The anchor must record working_tree_clean and working_tree_status_sha256."""
         loop, result, run_dir = _run_mock_loop(CHALLENGE_4, tmp_path, run_id="RUN-R10-5")
         anchor = json.loads((run_dir / "RUN_INTEGRITY_ANCHOR.json").read_text())
         assert "working_tree_clean" in anchor
-        assert "working_tree_sha256" in anchor
+        assert "working_tree_status_sha256" in anchor
 
     def test_working_tree_state_function(self):
         """_get_working_tree_state returns (clean, sha256)."""
@@ -309,12 +309,12 @@ class TestExternalAnchorBoundary:
         hashes, but don't modify the Git commit. The verifier MUST fail.
 
         For Git-tracked runs: committed_anchor_matches detects the modification.
-        For non-Git-tracked runs (tmp_path): the engine_identity_matches
-        check is the external anchor — if the attacker changes engine_code_sha,
+        For non-Git-tracked runs (tmp_path): the engine_commit_exists
+        check is the external anchor — if the attacker changes engine_commit_sha,
         it won't match the current Git HEAD.
 
         This test verifies detection vector 2: the attacker changes
-        engine_code_sha to a fake value → engine_identity_matches=False → intact=False.
+        engine_commit_sha to a fake value → engine_commit_exists=False → intact=False.
         """
         loop, result, run_dir = _run_mock_loop(CHALLENGE_4, tmp_path, run_id="RUN-BOUNDARY")
         original_v = verify_run_integrity_anchor(run_dir)
@@ -341,17 +341,17 @@ class TestExternalAnchorBoundary:
         anchor["manifest_sha256"] = manifest["manifest_sha"]
         from engine.checkpoint import _compute_stage_inventory_sha
         anchor["stage_inventory_sha256"] = _compute_stage_inventory_sha(run_dir)
-        # The attacker changes engine_code_sha to a fake value
+        # The attacker changes engine_commit_sha to a fake value
         # (simulating an attempt to bind the run to a different commit)
-        anchor["engine_code_sha"] = "a" * 40
+        anchor["engine_commit_sha"] = "a" * 40
         anchor["anchor_sha256"] = _recompute_anchor_sha(anchor)
         anchor_path.write_text(json.dumps(anchor, indent=2, default=str))
 
-        # Verify: MUST fail because engine_identity_matches is False
+        # Verify: MUST fail because engine_commit_exists is False
         v = verify_run_integrity_anchor(run_dir)
         assert v["intact"] is False, \
             "The external-anchor boundary MUST hold: an attacker who modifies " \
             "all mutable files and recomputes all internal hashes cannot " \
-            "fool the verifier because engine_code_sha (Git HEAD) is the " \
+            "fool the verifier because engine_commit_sha (Git HEAD) is the " \
             "external root of trust."
-        assert v["engine_identity_matches"] is False
+        assert v["engine_commit_exists"] is False

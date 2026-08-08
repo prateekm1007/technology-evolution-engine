@@ -1,0 +1,31 @@
+{
+  "hypothesis_id": "H-DEV-CH-004-001",
+  "claim": "Traffic signals adapt through local feedback of queue length and vehicle count, adjusting green time to minimize local waiting time",
+  "mechanism": "Each intersection continuously monitors its own queue length and vehicle count, then adjusts signal timing proportionally to reduce local waiting times without considering downstream effects",
+  "evidence": [
+    "Local traffic sensors can provide real-time queue length data",
+    "Some adaptive signal systems use local queue detection"
+  ],
+  "assumptions": [
+    "Local optimization leads to global optimization",
+    "Queue length is the primary determinant of system performance",
+    "Intersections operate independently"
+  ],
+  "predictions": [],
+  "expected_failure_modes": [
+    "Braess paradox where local improvements create system-wide congestion",
+    "Inability to coordinate platoon movement between intersections"
+  ],
+  "novelty_rationale": "Applies the myxomycete principle of local resource optimization to traffic signals without requiring central coordination",
+  "testability": "Can be tested in simulation by comparing local-only optimization with centralized optimization",
+  "falsifier": "If implementing local-only optimization results in increased delays at downstream intersections or causes gridlock at network scale",
+  "epistemic_state": "HYPOTHESIZED",
+  "parent_hypothesis_ids": [],
+  "provenance": {
+    "nodes": {},
+    "edges": [],
+    "committed_hash": null
+  },
+  "is_testable": true,
+  "provenance_root_hash": ""
+}
