@@ -1,17 +1,58 @@
-# Protocol A — Lexical Matcher Discrimination
+# Protocol A — Lexical Matcher Selectivity Gate
 
 **Status:** DRAFT (not yet authorized)
 **Date:** 2026-08-09
 **Supersedes:** PREREGISTRATION_SUPERSEDED_DRAFT.md (which was invalid for relationship discrimination)
-**Claim limit:** LEXICAL_MATCHER_DISCRIMINATION only
+**Claim limit:** LEXICAL_SELECTIVITY only (NOT discovery, NOT relationship discrimination)
+
+---
+
+## Experimental Validity Assessment (audit round 26)
+
+### Can Protocol A produce an informative measurement given TPR_true = 1.0 by construction?
+
+**Yes, but only as a gatekeeping test — not as a discrimination measurement.**
+
+Because TPR_true = 1.0 by construction, the headline metric Δ = TPR - FPR reduces to (1.0 - FPR). The experiment effectively measures FPR_shuffled alone. This is still informative:
+
+- **If FPR_shuffled is high (near 1.0):** The matcher matches everything — it has no lexical selectivity. Protocol B (where the system generates candidates) would be uninterpretable because the scorer cannot distinguish correct from incorrect candidates. Protocol B is premature.
+- **If FPR_shuffled is low (near 0.0):** The matcher has lexical selectivity — it does not match arbitrary strings. This is a necessary precondition for Protocol B: the scoring function can distinguish correct from incorrect candidates at the lexical level.
+
+**What Protocol A does NOT establish:**
+- It does NOT prove the matcher discriminates true cross-domain relationships (the matcher never sees relationships — only two strings)
+- It does NOT prove the discovery engine can identify bridges from source documents
+- It does NOT validate the discovery pipeline
+- Perfect lexical selectivity (FPR=0.0) does NOT imply discovery capability
+
+### Why Protocol A is still worth running
+
+Protocol A is a **necessary precondition** for Protocol B, not a substitute for it:
+
+```
+Protocol A (lexical selectivity gate)
+    ↓
+FPR_shuffled ≤ 0.20 → scorer has lexical selectivity → Protocol B may proceed
+FPR_shuffled > 0.20 → scorer is too permissive → Protocol B is premature
+```
+
+Without Protocol A, Protocol B's results would be uninterpretable: if the scorer matches everything, we cannot tell whether the system's output is correct or incorrect.
+
+### Metric reduction (honest)
+
+Because TPR_true = 1.0 by construction:
+```
+Δ = TPR_true - FPR_shuffled = 1.0 - FPR_shuffled
+```
+
+The experiment reduces to measuring FPR_shuffled. The preregistration should NOT present Δ as a two-sided discrimination metric. The primary measured variable is FPR_shuffled.
 
 ---
 
 ## Central Question
 
-> **Can the frozen lexical matcher `_bridge_matches()` distinguish gold bridge strings from bridge strings borrowed from other cases?**
+> **Does the frozen lexical matcher `_bridge_matches()` have sufficient lexical selectivity to serve as a scoring function for Protocol B?**
 
-This is NOT a discovery experiment. It is a lexical separability benchmark. It tests whether the matcher's exact/token/synonym matching can tell the difference between the correct bridge and a wrong bridge from a different domain pair.
+This is a gatekeeping test. It determines whether the scoring infrastructure is ready for discovery discrimination testing (Protocol B), not whether discovery discrimination exists.
 
 ---
 
@@ -21,6 +62,8 @@ This is NOT a discovery experiment. It is a lexical separability benchmark. It t
 - It does NOT claim cross-domain relationship discrimination
 - It does NOT claim the engine can identify bridges from source documents
 - It does NOT use M-008 (FP floor) as a decision metric
+- It does NOT validate the discovery pipeline
+- TPR_true = 1.0 by construction — this is documented, not hidden
 
 ---
 
@@ -55,6 +98,8 @@ The null tests whether a bridge from a different domain pair accidentally matche
 FPR_shuffled
 ```
 
+**Note:** Because TPR_true = 1.0 by construction, Δ = TPR - FPR reduces to (1 - FPR). The primary measured variable is FPR_shuffled. The experiment does NOT present Δ as a two-sided discrimination metric.
+
 A low FPR_shuffled means the matcher can lexically separate gold bridges from non-gold bridges. This is necessary but NOT sufficient for discovery discrimination.
 
 ### Threshold
@@ -62,7 +107,7 @@ A low FPR_shuffled means the matcher can lexically separate gold bridges from no
 FPR_shuffled ≤ 0.20
 ```
 
-If FPR_shuffled > 0.20, the matcher cannot even lexically separate bridges, and Protocol B (discovery discrimination) is premature.
+If FPR_shuffled > 0.20, the matcher cannot lexically separate bridges, and Protocol B (discovery discrimination) is premature.
 
 ---
 
