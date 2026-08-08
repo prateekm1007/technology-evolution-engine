@@ -1,8 +1,8 @@
 # SCIENTIFIC_GATE_2_PROTOCOL.md
 
-## Version: 1.1
+## Version: 1.2 (FROZEN)
 
-## Status: CONDITIONALLY APPROVED — REVISED per independent protocol review
+## Status: APPROVED FOR EXECUTION
 
 ## Revision history
 - v1.0: Initial draft (2026-08-08)
@@ -13,6 +13,9 @@
   4. Gate-B: NOVEL_AS_OF_CUTOFF replaces absolute "never published"
   5. Control-equivalence table (model, version, prompt, attempts, tools, time, temperature)
   6. Matched null replaces naive random vocabulary; inter-rater reliability required
+- v1.2: Final corrections per independent protocol review (2026-08-08). Two changes:
+  1. "strongest non-human, non-engine system" → "preregistered primary non-engine comparator"
+  2. Wald CI → Newcombe hybrid Wilson CI for the difference in yields
 
 ## Approval chain
 ```
@@ -24,7 +27,9 @@ Development frozen
    ↓
 Gate 2 protocol v1.0 → CONDITIONALLY APPROVED
    ↓
-Gate 2 protocol v1.1 → AWAITING FINAL INDEPENDENT REVIEW
+Gate 2 protocol v1.1 → CONDITIONALLY APPROVED (two corrections)
+   ↓
+Gate 2 protocol v1.2 → APPROVED FOR EXECUTION (FROZEN)
    ↓
 Protocol freeze → PENDING
    ↓
@@ -482,7 +487,7 @@ Failure does NOT mean the engine is incapable of discovery. It means the experim
 ## Primary comparison
 **Engine vs. generic-LLM baseline**
 
-The generic-LLM baseline is the primary comparison because it represents the strongest non-human, non-engine system. If the engine cannot beat a generic LLM, it is not adding specialized value.
+The generic-LLM baseline is the preregistered primary non-engine comparator.
 
 ## Secondary comparisons
 - Engine vs. retrieval baseline
@@ -505,7 +510,12 @@ Fisher's exact test (one-sided) for the primary comparison, given the expected s
 - Number needed to treat (NNT = 1 / risk difference, if positive)
 
 ## Confidence interval method
-Exact (Clopper-Pearson) binomial confidence intervals for individual yields. Wald interval with continuity correction for the difference.
+
+Individual yields:
+Exact Clopper-Pearson 95% CI.
+
+Difference in yields:
+Newcombe hybrid Wilson 95% CI for the difference in proportions.
 
 ## Sample size
 N ≥ 20 prospective cases (per system: engine + 4 controls = 100 total evaluations).
@@ -615,7 +625,7 @@ No implementation occurs until the protocol is independently approved and frozen
 ---
 
 ## Protocol version
-1.1
+1.2 (FROZEN)
 
 ## Date
 2026-08-08
