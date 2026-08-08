@@ -549,7 +549,7 @@ def compare_to_production(baseline_results: Dict, production_f1: float = 0.7879)
     Args:
         baseline_results: dict from one of the baseline functions
         production_f1: production F1 from PRELIMINARY_MEASUREMENT_VERDICT.md
-                       (default 0.8571 = proposal-locus shared/synonym F1)
+                       (default 0.7879 = post-cycle-270 non-circular shared/token F1)
 
     Returns:
         comparison dict with delta and verdict
@@ -662,11 +662,11 @@ def main():
     print()
     delta_random = comparisons[1]["delta"]
     if delta_random < 0.05:
-        print(f"CRITICAL: production (0.8571) does NOT meaningfully beat the")
+        print(f"CRITICAL: production (0.7879) does NOT meaningfully beat the")
         print(f"random+lenient baseline ({comparisons[1]['baseline_f1']:.4f}).")
         print(f"Δ = {delta_random:+.4f}. This confirms DR-91's FP floor = 1.0 finding:")
         print(f"the lenient matcher gives everything a high score, including")
-        print(f"random candidates. Production F1=0.8571 is NOT a discovery")
+        print(f"random candidates. Production F1=0.7879 is NOT a discovery")
         print(f"measurement — it is an artifact of lenient matching.")
         gate_verdict = "FAIL"
         verdict_tier = "FAIL"
@@ -711,7 +711,7 @@ def main():
         "gate": "A",
         "gate_name": "external_baselines",
         "production_f1_strict": 0.0000,
-        "production_f1_lenient": 0.8571,
+        "production_f1_lenient": 0.7879,
         "fp_floor_lenient": 1.0000,
         "strict_mode": {
             "bm25": bm25_strict,
@@ -752,7 +752,7 @@ def main():
     lines.append("- **Strict mode**: baselines score with canonicalized exact match only.")
     lines.append("  Production under strict mode scores F1=0.0000 (per DR-91 audit).")
     lines.append("- **Lenient mode**: baselines use production's synonym+token rules.")
-    lines.append("  Production under lenient mode scores F1=0.8571, but the FP floor")
+    lines.append("  Production under lenient mode scores F1=0.7879, but the FP floor")
     lines.append("  is 1.0000 (per DR-91 audit). The fair bar is: production must beat")
     lines.append("  the *lenient* baselines.")
     lines.append("")
@@ -771,7 +771,7 @@ def main():
     lines.append("|---|---|---|---|")
     for c in comparisons:
         lines.append(f"| {c['baseline']} | {c['baseline_f1']:.4f} | {c['delta']:+.4f} | {c['verdict']} |")
-    lines.append(f"| Production (lenient) | 0.8571 | — | reference |")
+    lines.append(f"| Production (lenient) | 0.7879 | — | reference |")
     lines.append(f"| FP floor (lenient, DR-91) | 1.0000 | +0.1429 | ceiling |")
     lines.append("")
     lines.append(f"## Gate A verdict: **{gate_verdict}** (verdict_tier: **{verdict_tier}**)")
