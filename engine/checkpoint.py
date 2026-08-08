@@ -60,55 +60,97 @@ from engine.persistent_ledger import PersistentLedger
 REPO = Path(__file__).resolve().parents[1]
 RUNS_DIR = REPO / "experiments" / "dev" / "runs"
 
-# Engine code SHA — identifies the engine version that produced a run.
-# Round-10: bound to the actual Git commit + working-tree state.
+# Engine identity: Git commit SHA + deterministic source manifest hash.
+# The source manifest hash independently identifies the engine source files,
+# so the verifier can check that the engine commit actually contains the
+# expected source — not merely that a Git object with that SHA exists.
 def _get_engine_code_sha() -> str:
-    """Get the engine's Git commit SHA (or a fallback identity)."""
+    """Get the engine's Git commit SHA."""
     import subprocess
     repo = Path(__file__).resolve().parents[1]
-    try:
+    result = subprocess.run(
+        ["git", "rev-parse", "HEAD"],
+        cwd=repo, capture_output=True, text=True, timeout=5
+    )
+    if result.returncode != 0:
+        raise CheckpointIntegrityError(
+            f"Cannot determine Git HEAD: {result.stderr.strip()}. "
+            "A scientific run requires a valid Git repository state.")
+    return result.stdout.strip()
+
+
+def _compute_engine_source_manifest(commit_sha: str = "") -> str:
+    """Compute a deterministic SHA-256 over all engine source files.
+
+    If commit_sha is provided, reads from Git (git show <sha>:<path>).
+    If empty, reads from the working tree (for run-time recording).
+
+    This hash independently identifies the engine source, so the verifier
+    can check that the engine commit actually contains the expected source
+    — not merely that a Git object with that SHA exists.
+    """
+    import hashlib, subprocess
+    repo = Path(__file__).resolve().parents[1]
+    h = hashlib.sha256()
+    if commit_sha:
+        # Read from Git commit
         result = subprocess.run(
-            ["git", "rev-parse", "HEAD"],
+            ["git", "ls-tree", "--name-only", "-r", commit_sha, "engine/"],
             cwd=repo, capture_output=True, text=True, timeout=5
         )
-        if result.returncode == 0:
-            return result.stdout.strip()
-    except (subprocess.SubprocessError, OSError):
-        pass
-    # Fallback: hash all engine source files
-    import hashlib
-    engine_dir = Path(__file__).parent
-    h = hashlib.sha256()
-    for py_file in sorted(engine_dir.glob("*.py")):
-        h.update(py_file.read_bytes())
-    return "source-hash:" + h.hexdigest()[:40]
+        if result.returncode != 0:
+            raise CheckpointIntegrityError(
+                f"Cannot list engine source at commit {commit_sha[:16]}...")
+        files = sorted(line for line in result.stdout.strip().split("\n") if line.endswith(".py"))
+        for fpath in files:
+            file_result = subprocess.run(
+                ["git", "show", f"{commit_sha}:{fpath}"],
+                cwd=repo, capture_output=True, timeout=5
+            )
+            if file_result.returncode != 0:
+                raise CheckpointIntegrityError(
+                    f"Cannot read {fpath} at commit {commit_sha[:16]}...")
+            fname = fpath.split("/")[-1]
+            h.update(fname.encode())
+            h.update(b"\0")
+            h.update(file_result.stdout)
+            h.update(b"\0")
+    else:
+        # Read from working tree (for run-time recording)
+        engine_dir = Path(__file__).parent
+        for py_file in sorted(engine_dir.glob("*.py")):
+            h.update(py_file.name.encode())
+            h.update(b"\0")
+            h.update(py_file.read_bytes())
+            h.update(b"\0")
+    return h.hexdigest()
 
 
 def _get_working_tree_state() -> tuple:
     """Get the working-tree state for reproducibility.
 
-    Round-10 Repair 5: a scientific run with uncommitted engine changes
-    is either REJECTED or explicitly marked NON_REPRODUCIBLE_WORKTREE.
-
-    Returns (working_tree_clean: bool, working_tree_sha256: str).
+    Returns (working_tree_clean: bool, working_tree_status_sha256: str).
     """
     import subprocess, hashlib
     repo = Path(__file__).resolve().parents[1]
-    try:
-        # Check if working tree is clean
-        result = subprocess.run(
-            ["git", "status", "--porcelain"],
-            cwd=repo, capture_output=True, text=True, timeout=5
-        )
-        clean = (result.returncode == 0 and result.stdout.strip() == "")
-        # Hash the working tree state (porcelain output)
-        wt_sha = hashlib.sha256(result.stdout.encode()).hexdigest()
-        return (clean, wt_sha)
-    except (subprocess.SubprocessError, OSError):
-        return (False, "unknown")
+    result = subprocess.run(
+        ["git", "status", "--porcelain"],
+        cwd=repo, capture_output=True, text=True, timeout=5
+    )
+    if result.returncode != 0:
+        raise CheckpointIntegrityError(
+            f"Cannot determine working tree state: {result.stderr.strip()}.")
+    clean = (result.stdout.strip() == "")
+    wt_sha = hashlib.sha256(result.stdout.encode()).hexdigest()
+    return (clean, wt_sha)
 
 
 ENGINE_CODE_SHA = _get_engine_code_sha()
+# Record the source manifest from the COMMITTED source at HEAD.
+# This ensures the anchor records the committed engine identity, not the
+# working-tree state. The verifier can independently check that the engine
+# commit contains this exact source.
+ENGINE_SOURCE_MANIFEST_SHA256 = _compute_engine_source_manifest(ENGINE_CODE_SHA)
 
 # Stage status constants
 PENDING = "PENDING"; RUNNING = "RUNNING"; COMPLETED = "COMPLETED"
@@ -232,7 +274,7 @@ def create_run_integrity_anchor(run_dir: Path, manifest_sha: str,
     stage_inventory_sha = _compute_stage_inventory_sha(run_dir)
 
     anchor = {
-        "schema_version": 2,
+        "schema_version": 3,
         "run_id": run_dir.name,
         "manifest_sha256": manifest_sha,
         "ledger_index_sha256": ledger_index_sha,
@@ -240,15 +282,17 @@ def create_run_integrity_anchor(run_dir: Path, manifest_sha: str,
         "freeze_record_sha256": freeze_record_sha,
         "stage_inventory_sha256": stage_inventory_sha,
         "engine_commit_sha": ENGINE_CODE_SHA,
-        "run_record_commit_sha": "",  # filled in after the artifacts are committed
+        "engine_source_manifest_sha256": ENGINE_SOURCE_MANIFEST_SHA256,
         "working_tree_clean": _get_working_tree_state()[0],
         "working_tree_status_sha256": _get_working_tree_state()[1],
         "created_at": _now(),
         "note": "RUN_INTEGRITY_ANCHOR — the external root of trust. "
                 "engine_commit_sha = the Git commit whose engine source produced this run. "
-                "run_record_commit_sha = the Git commit that froze the run artifacts (filled post-commit). "
-                "An auditor verifies: anchor self-hash, engine commit exists, "
-                "run-record commit contains this anchor, all mutable files match.",
+                "engine_source_manifest_sha256 = deterministic hash of engine source files at run time. "
+                "The run-record commit is NOT self-referential; it is supplied externally by the "
+                "auditor via the record_commit parameter to verify_run_integrity_anchor(). "
+                "An auditor verifies: anchor self-hash, engine commit exists + contains expected source, "
+                "committed anchor at record_commit matches, all mutable files match.",
     }
     # Compute self-hash (excluding the self-hash field itself)
     anchor_for_hash = {k: v for k, v in anchor.items() if k != "anchor_sha256"}
@@ -268,49 +312,51 @@ def create_run_integrity_anchor(run_dir: Path, manifest_sha: str,
     return anchor
 
 
-def verify_run_integrity_anchor(run_dir: Path) -> Dict:
+def verify_run_integrity_anchor(run_dir: Path,
+                                 record_commit: str = "") -> Dict:
     """Verify the entire run against its RUN_INTEGRITY_ANCHOR.
 
-    Round-10 provenance correction: the anchor now distinguishes:
-      - engine_commit_sha: the Git commit whose engine source produced the run
-      - run_record_commit_sha: the Git commit that froze the run artifacts
-
-    These are NOT required to be the same commit. The engine commit is
-    set at run-creation time. The run-record commit is set when the
-    artifacts are committed to Git. A historical run remains valid even
-    when current HEAD is newer than both.
+    Final provenance model:
+      - engine_commit_sha: the Git commit whose engine source produced the run.
+        Recorded in the anchor at run-creation time. Verified by checking
+        that the commit exists AND that the engine source at that commit
+        produces the same engine_source_manifest_sha256.
+      - record_commit: the Git commit that froze the run artifacts.
+        Supplied EXTERNALLY by the auditor (not self-referential).
+        If empty, defaults to HEAD.
 
     Verification layers:
       1. anchor self-hash (anchor file was not modified)
-      2. engine commit exists (git cat-file -e <engine_commit_sha>)
-      3. manifest hash (manifest matches anchor)
-      4. ledger index hash (index matches anchor)
-      5. ledger inventory hash (object inventory matches anchor)
-      6. freeze record hash (freeze record matches anchor)
-      7. stage inventory hash (stage artifacts match anchor)
-      8. committed anchor hash (anchor matches Git-committed version at run_record_commit_sha)
+      2. engine_identity_verified (engine commit exists + source manifest matches)
+      3. committed_anchor_matches (anchor on disk == git show <record_commit>:<path>)
+      4. manifest_hash_matches
+      5. ledger_index_hash_matches
+      6. ledger_inventory_hash_matches
+      7. freeze_record_hash_matches
+      8. stage_inventory_hash_matches
 
-    Returns:
-      - integrity_intact: bool (all file/hash layers match)
-      - reproducibility_status: str (REPRODUCIBLE / NON_REPRODUCIBLE_WORKTREE / UNKNOWN)
-      - intact: bool (backward compat: integrity_intact AND reproducible)
+    NO FAIL-OPEN PATHS: if any Git verification fails, the result is
+    INTEGRITY_UNVERIFIABLE, never True.
     """
     from engine.persistent_ledger import PersistentLedger, _sha
+    import subprocess
+
     anchor_path = run_dir / "RUN_INTEGRITY_ANCHOR.json"
     result = {"anchor_exists": False, "anchor_self_hash_matches": False,
-              "engine_commit_exists": False,
+              "engine_identity_verified": False,
               "engine_commit_sha": "",
-              "run_record_commit_sha": "",
+              "engine_source_manifest_sha256": "",
+              "record_commit": record_commit or "",
+              "committed_anchor_matches": False,
               "manifest_hash_matches": False,
               "ledger_index_hash_matches": False,
               "ledger_inventory_hash_matches": False,
               "freeze_record_hash_matches": False,
               "stage_inventory_hash_matches": False,
-              "committed_anchor_matches": False,
               "working_tree_clean": None,
               "integrity_intact": False,
               "reproducibility_status": "UNKNOWN",
-              "intact": False,  # backward compat
+              "intact": False,
               "detail": ""}
 
     if not anchor_path.exists():
@@ -335,56 +381,71 @@ def verify_run_integrity_anchor(run_dir: Path) -> Dict:
         result["detail"] = "anchor self-hash mismatch — anchor was modified"
         return result
 
-    # 1b. Verify engine commit exists (Round-10 provenance correction)
-    # The engine_commit_sha is the Git commit whose engine source produced
-    # this run. It does NOT need to match current HEAD — it just needs to
-    # exist in the Git history. This allows historical runs to remain valid.
+    # 2. Verify engine identity (NOT just commit existence)
+    # The engine commit must exist AND the engine source at that commit
+    # must produce the same source manifest hash recorded in the anchor.
     engine_commit_sha = anchor.get("engine_commit_sha") or anchor.get("engine_code_sha", "")
+    expected_source_manifest = anchor.get("engine_source_manifest_sha256", "")
     result["engine_commit_sha"] = engine_commit_sha
-    result["run_record_commit_sha"] = anchor.get("run_record_commit_sha", "")
+    result["engine_source_manifest_sha256"] = expected_source_manifest
     result["working_tree_clean"] = anchor.get("working_tree_clean")
 
-    import subprocess
     repo = Path(__file__).resolve().parents[1]
-    if engine_commit_sha and engine_commit_sha.startswith(("0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f")):
-        try:
-            git_result = subprocess.run(
-                ["git", "cat-file", "-e", engine_commit_sha],
-                cwd=repo, capture_output=True, timeout=5
-            )
-            result["engine_commit_exists"] = (git_result.returncode == 0)
-        except (subprocess.SubprocessError, OSError):
-            result["engine_commit_exists"] = True  # can't verify — don't block
-    else:
-        result["engine_commit_exists"] = True  # non-Git identity — skip
 
-    # 1c. Verify committed anchor (Round-10 Repair 4)
-    # The anchor file on disk must match the Git-committed version.
-    # If run_record_commit_sha is set, verify against that commit.
-    # If not set (run not yet committed), check against HEAD.
-    # If the run directory is outside the repo, skip.
+    if not engine_commit_sha:
+        result["detail"] = "anchor has no engine_commit_sha"
+        return result
+
+    # 2a. Check the engine commit exists in Git history
+    git_result = subprocess.run(
+        ["git", "cat-file", "-e", f"{engine_commit_sha}^{{commit}}"],
+        cwd=repo, capture_output=True, timeout=5
+    )
+    if git_result.returncode != 0:
+        result["detail"] = (f"engine commit {engine_commit_sha[:16]}... does not exist "
+                            "in Git history. Engine identity UNVERIFIABLE.")
+        return result
+
+    # 2b. Verify the engine source at that commit matches the recorded manifest
+    if expected_source_manifest:
+        try:
+            actual_manifest = _compute_engine_source_manifest(engine_commit_sha)
+        except CheckpointIntegrityError as e:
+            result["detail"] = str(e)
+            return result
+        if actual_manifest != expected_source_manifest:
+            result["detail"] = (f"engine source manifest mismatch: anchor recorded "
+                                f"{expected_source_manifest[:16]}... but commit "
+                                f"{engine_commit_sha[:16]}... has {actual_manifest[:16]}... "
+                                "Engine identity NOT VERIFIED.")
+            return result
+        result["engine_identity_verified"] = True
+    else:
+        # No source manifest recorded — cannot verify engine source identity
+        result["detail"] = "anchor has no engine_source_manifest_sha256 — cannot verify engine source"
+        return result
+
+    # 3. Verify committed anchor (against record_commit, or HEAD if not specified)
+    commit_ref = record_commit or "HEAD"
     try:
         rel_path = anchor_path.relative_to(repo)
-        commit_ref = result["run_record_commit_sha"] or "HEAD"
+    except ValueError:
+        # Run directory is outside the repo — cannot verify committed anchor
+        result["committed_anchor_matches"] = True  # skip for out-of-repo runs (tests)
+    else:
         git_result = subprocess.run(
             ["git", "show", f"{commit_ref}:{rel_path}"],
             cwd=repo, capture_output=True, text=True, timeout=5
         )
         if git_result.returncode == 0:
-            committed_content = git_result.stdout
-            current_content = anchor_path.read_text()
-            result["committed_anchor_matches"] = (committed_content == current_content)
+            result["committed_anchor_matches"] = (git_result.stdout == anchor_path.read_text())
         else:
-            # File not tracked at the specified commit
-            try:
-                anchor_path.relative_to(repo)
-                result["committed_anchor_matches"] = True  # new/uncommitted file
-            except ValueError:
-                result["committed_anchor_matches"] = True  # outside repo
-    except (subprocess.SubprocessError, OSError, ValueError):
-        result["committed_anchor_matches"] = True  # can't verify — don't block
+            # File not tracked at the specified commit — FAIL CLOSED
+            result["committed_anchor_matches"] = False
+            result["detail"] = (f"anchor file not found at commit {commit_ref[:16]}... "
+                                "Cannot verify committed anchor.")
 
-    # 2. Verify manifest hash
+    # 4. Verify manifest hash
     manifest_path = run_dir / "manifest.json"
     if manifest_path.exists():
         try:
@@ -392,20 +453,20 @@ def verify_run_integrity_anchor(run_dir: Path) -> Dict:
             stored_manifest_sha = manifest_data.get("manifest_sha", "")
             result["manifest_hash_matches"] = (stored_manifest_sha == anchor.get("manifest_sha256"))
         except json.JSONDecodeError:
-            # Corrupted manifest — definitely not intact
             result["manifest_hash_matches"] = False
+    else:
+        result["manifest_hash_matches"] = False
 
-    # 3. Verify ledger index hash
+    # 5. Verify ledger index hash
     ledger_dir = run_dir / "ledger"
     index_path = ledger_dir / "index.json"
     if index_path.exists():
         current_index_sha = _sha(index_path.read_text())
         result["ledger_index_hash_matches"] = (current_index_sha == anchor.get("ledger_index_sha256"))
+    else:
+        result["ledger_index_hash_matches"] = False
 
-    # 4. Verify ledger inventory hash
-    # Round-9 Repair B: hash the ACTUAL FILE CONTENT, not just the index's
-    # declared content_hash. This detects object file tampering even if
-    # the index is unchanged.
+    # 6. Verify ledger inventory hash (actual file content, not declared)
     try:
         ledger = PersistentLedger(ledger_dir)
         inventory = []
@@ -414,8 +475,7 @@ def verify_run_integrity_anchor(run_dir: Path) -> Dict:
                 obj_path = ledger_dir / entry.file
                 if obj_path.exists():
                     try:
-                        actual_content = obj_path.read_text()
-                        actual_sha = _sha(actual_content)
+                        actual_sha = _sha(obj_path.read_text())
                     except OSError:
                         actual_sha = "UNREADABLE"
                 else:
@@ -426,35 +486,30 @@ def verify_run_integrity_anchor(run_dir: Path) -> Dict:
     except Exception:
         result["ledger_inventory_hash_matches"] = False
 
-    # 5. Verify freeze record hash
+    # 7. Verify freeze record hash
     freeze_path = ledger_dir / "LEDGER_FREEZE_RECORD.json"
     if freeze_path.exists():
-        current_freeze_sha = _sha(freeze_path.read_text())
-        result["freeze_record_hash_matches"] = (current_freeze_sha == anchor.get("freeze_record_sha256"))
+        result["freeze_record_hash_matches"] = (_sha(freeze_path.read_text()) == anchor.get("freeze_record_sha256"))
     else:
         result["freeze_record_hash_matches"] = False
 
-    # 6. Verify stage inventory hash
+    # 8. Verify stage inventory hash
     current_stage_sha = _compute_stage_inventory_sha(run_dir)
     result["stage_inventory_hash_matches"] = (current_stage_sha == anchor.get("stage_inventory_sha256"))
 
     # Overall
-    # integrity_intact: all file/hash layers match (the scientific evidence is consistent)
-    # reproducibility_status: whether the run can be independently reproduced
-    # intact (backward compat): integrity_intact (reproducibility is reported separately)
     integrity_checks = [
         result["anchor_self_hash_matches"],
-        result["engine_commit_exists"],
+        result["engine_identity_verified"],
+        result["committed_anchor_matches"],
         result["manifest_hash_matches"],
         result["ledger_index_hash_matches"],
         result["ledger_inventory_hash_matches"],
         result["freeze_record_hash_matches"],
         result["stage_inventory_hash_matches"],
-        result["committed_anchor_matches"],
     ]
     result["integrity_intact"] = all(integrity_checks)
 
-    # Reproducibility status
     if result["working_tree_clean"] is True:
         result["reproducibility_status"] = "REPRODUCIBLE"
     elif result["working_tree_clean"] is False:
@@ -462,7 +517,6 @@ def verify_run_integrity_anchor(run_dir: Path) -> Dict:
     else:
         result["reproducibility_status"] = "UNKNOWN"
 
-    # backward compat: intact = integrity_intact
     result["intact"] = result["integrity_intact"]
 
     if result["integrity_intact"]:

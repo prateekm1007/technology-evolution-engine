@@ -1,9 +1,9 @@
 {
   "stage": "06_rediscovery_H-DEV-CH-004-003",
   "run_id": "RUN-DEV-CH-004",
-  "code_sha": "db38c7dba5aef5073fb26ac2d8e534768d66515c",
-  "input_hash": "fb7614d3123043a9818279af6ac403a3bdcbd0db4099b8ea72f1a855a1fc4061",
-  "output_hash": "64ebdeccf7ee5f0e9cee28e9f45ed0a229b8f48a957c51274250468e116fcd3a",
+  "code_sha": "5d21bc6786b486dd11ec67b58f9c5ab92d249811",
+  "input_hash": "a9318f84baf00bc807dcd347f6fc7fc31468209c27a7cbbf3e7c06728609c0e9",
+  "output_hash": "583d5a3d50374cb6b6902f5458ea7d867ba9ac58f360bcd189366f04810ef1ad",
   "provider_manifest": {
     "provider": "zai",
     "model": "glm-4-plus",
@@ -13,22 +13,22 @@
       "max_tokens": 4096,
       "system_sha": "dbdd0760dff49fc029b32b580a575b7de33a87d371edc2b0deec93bfb2b90b01"
     },
-    "prompt_sha": "6ca3690390f34bc1ecfb4f1ec233e71dbc0dab0f167a66962bfe784e0edf9e6f",
+    "prompt_sha": "7e8151b3977b071e773c3878c4859323d13987c4f33f492413a556c3617deea8",
     "seed": null,
     "tool_versions": {
       "z_ai_cli": "z-ai"
     },
-    "timestamp": "2026-08-08T08:52:09.181986+00:00",
-    "latency_ms": 2752,
+    "timestamp": "2026-08-08T09:00:55.307060+00:00",
+    "latency_ms": 3242,
     "success": true,
     "error": ""
   },
   "result": {
     "hypothesis_id": "H-DEV-CH-004-003",
-    "classification": "PARAPHRASED_IN_INPUT",
-    "evidence": "The hypothesis describes traffic signals adapting through emergent pattern formation with simple local rules, which is a paraphrase of the Physarum polycephalum adaptation mechanism described in the source. The source explains how the slime mold creates an adaptive network through local feedback rules (high flow \u2192 tube thickens; low flow \u2192 tube thins) that lead to system-level optimization without global planning. The hypothesis applies this same concept to traffic signals, using similar language about 'simple rules based on local conditions' creating 'system-level optimization.'",
-    "is_rediscovery": true,
+    "classification": "NON_TRIVIAL_TRANSFER",
+    "evidence": "The hypothesis describes a traffic signal timing system where intersections compete for vehicle throughput based on relative performance metrics. This involves concepts of competitive resource allocation, dynamic signal adjustment based on comparative performance, and network-wide optimization through local competition. The source document discusses Physarum polycephalum, a slime mold that creates adaptive transport networks through protoplasmic streaming and feedback mechanisms. While both systems involve adaptive networks and feedback loops, the hypothesis applies these biological concepts to a completely different domain (traffic engineering) with specific mechanisms (signal timing, vehicle throughput competition) not present in the biological source. This represents a genuine cross-domain transfer rather than a direct composition, structural inference, or paraphrase of the source material.",
+    "is_rediscovery": false,
     "source_hypothesis_hash": ""
   },
-  "timestamp": "2026-08-08T08:52:11.934862+00:00"
+  "timestamp": "2026-08-08T09:00:58.550355+00:00"
 }

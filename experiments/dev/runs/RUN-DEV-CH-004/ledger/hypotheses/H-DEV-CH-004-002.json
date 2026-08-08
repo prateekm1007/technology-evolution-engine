@@ -1,24 +1,27 @@
 {
   "hypothesis_id": "H-DEV-CH-004-002",
-  "claim": "Traffic signals adapt through distributed consensus with neighboring intersections, creating coordinated green waves",
-  "mechanism": "Each intersection communicates its current state and planned adjustments to adjacent intersections, then reaches consensus on timing that balances local and network-wide objectives",
+  "claim": "Traffic signal optimization occurs through a stigmergic mechanism where intersections modify their timing based on physical traffic flow patterns left by preceding vehicles, creating an emergent coordination system.",
+  "mechanism": "Each intersection continuously monitors traffic flow patterns (queue lengths, vehicle counts) and adjusts its timing parameters to optimize flow. These adjustments create 'traffic traces' in the form of vehicle movement patterns that propagate through the network. Subsequent vehicles and intersections respond to these traces, creating an emergent coordination system where signal timing adapts based on the collective behavior of the system rather than explicit communication or optimization algorithms.",
   "evidence": [
-    "Distributed consensus algorithms work in other network systems",
-    "Coordinated signal systems exist but typically require central planning"
+    "Stigmergy has been observed in biological systems and has been applied to distributed robotics",
+    "Traffic flow patterns do influence driver behavior at intersections",
+    "Emergent properties have been observed in traffic systems without central coordination"
   ],
   "assumptions": [
-    "Intersections can communicate with immediate neighbors",
-    "Consensus algorithms can converge quickly",
-    "Network-wide objectives can be approximated through local interactions"
+    "Vehicle movement patterns contain sufficient information for coordination",
+    "Intersections can detect and respond to traffic traces",
+    "The system will self-organize through these traces without explicit optimization",
+    "Traffic traces propagate through the network at a rate that enables timely adaptation"
   ],
   "predictions": [],
   "expected_failure_modes": [
-    "Communication delays preventing timely adaptation",
-    "Inability to reach consensus during rapidly changing conditions"
+    "Inability to detect meaningful patterns in complex traffic scenarios",
+    "Response delays due to slow propagation of traffic traces",
+    "System instability in response to unpredictable events"
   ],
-  "novelty_rationale": "Transfers the myxomycete network adaptation principle through distributed consensus rather than purely local decision-making",
-  "testability": "Can be tested by implementing communication between adjacent intersections and measuring convergence time and solution quality",
-  "falsifier": "If the communication overhead required for consensus makes real-time adaptation infeasible or if consensus cannot be reached quickly enough to respond to changing conditions",
+  "novelty_rationale": "This hypothesis applies stigmergy principles to traffic signal control, using physical traffic patterns as the communication medium rather than explicit digital communication, creating a more organic adaptation mechanism.",
+  "testability": "The hypothesis can be tested by implementing a system where intersections only respond to observed traffic patterns without explicit communication, and measuring whether emergent coordination develops.",
+  "falsifier": "If the system fails to adapt to incidents or changing conditions because intersections cannot detect meaningful patterns in the traffic flow, or if the system produces inconsistent signal timing that doesn't correlate with actual traffic conditions, the hypothesis would be falsified.",
   "epistemic_state": "HYPOTHESIZED",
   "parent_hypothesis_ids": [],
   "provenance": {

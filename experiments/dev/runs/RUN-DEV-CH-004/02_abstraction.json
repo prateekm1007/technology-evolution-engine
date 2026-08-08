@@ -1,9 +1,9 @@
 {
   "stage": "02_abstraction",
   "run_id": "RUN-DEV-CH-004",
-  "code_sha": "db38c7dba5aef5073fb26ac2d8e534768d66515c",
-  "input_hash": "3f4472ee4235042318fa15b8c24020ab6ed3c3a84106d741483a2b80235898f3",
-  "output_hash": "643560d0cee9a6191b571c93752c99df7f74c24415aa95cb90be7a6ebc9d08cf",
+  "code_sha": "5d21bc6786b486dd11ec67b58f9c5ab92d249811",
+  "input_hash": "31a09e4a3f1e79a882f02e6303da0dfa4eb5370f45886a82e139294f0dad3cf5",
+  "output_hash": "578e57319a4c2da158781a68255799da36390b237db300faee10bada67729d5f",
   "provider_manifest": {
     "provider": "zai",
     "model": "glm-4-plus",
@@ -18,8 +18,8 @@
     "tool_versions": {
       "z_ai_cli": "z-ai"
     },
-    "timestamp": "2026-08-08T08:51:02.852269+00:00",
-    "latency_ms": 4639,
+    "timestamp": "2026-08-08T08:59:49.045951+00:00",
+    "latency_ms": 2801,
     "success": true,
     "error": ""
   },
@@ -27,48 +27,47 @@
     "pattern": {
       "pattern_id": "MP-DEV-CH-004",
       "source_domain": "myxomycete biology / emergent computation",
-      "causal_structure": "resource flow enables network adaptation under environmental constraints, producing optimized transport pathways",
+      "causal_structure": "exploration enables network formation under resource constraints, optimizing transport efficiency",
       "inputs": [
-        "initial network configuration",
-        "external resource distribution",
-        "environmental constraints"
+        "initial exploration",
+        "resource locations",
+        "resource concentration"
       ],
       "conditions": [
-        "continuous resource availability",
+        "resource availability",
         "network connectivity",
-        "feedback sensitivity"
+        "environmental constraints"
       ],
       "operations": [
-        "local sensing",
-        "path selection",
-        "resource allocation",
-        "network restructuring"
+        "protoplasmic streaming",
+        "network reinforcement",
+        "path pruning"
       ],
       "intermediate_state": [
+        "network topology",
         "flow distribution",
-        "network stress points",
-        "adaptive pathways"
+        "resource gradients"
       ],
       "outputs": [
-        "optimized network topology",
-        "efficient resource distribution",
-        "reduced transport costs"
+        "optimized transport network",
+        "resource distribution",
+        "network adaptation"
       ],
       "constraints": [
-        "network connectivity requirements",
-        "resource conservation",
-        "time-dependent adaptation"
+        "energy expenditure",
+        "time efficiency",
+        "structural integrity"
       ],
       "failure_conditions": [
         "resource depletion",
-        "network isolation",
-        "environmental disruption"
+        "network disconnection",
+        "environmental barriers"
       ],
-      "abstract_principle": "distributed network optimization through local interactions and feedback",
+      "abstract_principle": "adaptive network formation through feedback between exploration and resource utilization",
       "source_graph_summary": "0 nodes, 0 edges"
     },
     "failures": [],
-    "source_extraction_hash": "20ee195a20f0211c41f9e2b116e0a8a560c1e4850dbc75177b1a4473103e908f"
+    "source_extraction_hash": "eb02ce974c70b9417f75c057b691531af3c96289f81d0280d09e09a5c3ac909f"
   },
-  "timestamp": "2026-08-08T08:51:07.492667+00:00"
+  "timestamp": "2026-08-08T08:59:51.848263+00:00"
 }

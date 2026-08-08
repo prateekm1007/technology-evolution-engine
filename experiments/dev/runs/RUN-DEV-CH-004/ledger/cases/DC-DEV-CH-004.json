@@ -1,6 +1,6 @@
 {
   "case_id": "DC-DEV-CH-004",
-  "created_at": "2026-08-08T08:52:11.961466+00:00",
+  "created_at": "2026-08-08T09:00:58.561251+00:00",
   "engine_version": "",
   "knowledge_snapshot": "",
   "input_sources": [
@@ -45,20 +45,20 @@
       "source_doc:doc_af4f56b7b49b": {
         "node_id": "source_doc:doc_af4f56b7b49b",
         "node_type": "source_document",
-        "content_hash": "20ee195a20f0211c41f9e2b116e0a8a560c1e4850dbc75177b1a4473103e908f",
+        "content_hash": "eb02ce974c70b9417f75c057b691531af3c96289f81d0280d09e09a5c3ac909f",
         "metadata": {
           "artifact_stage": "01_extraction",
-          "artifact_output_hash": "20ee195a20f0211c41f9e2b116e0a8a560c1e4850dbc75177b1a4473103e908f",
+          "artifact_output_hash": "eb02ce974c70b9417f75c057b691531af3c96289f81d0280d09e09a5c3ac909f",
           "title": "Physarum polycephalum Network Adaptation: Adaptive Biologically-Inspired Transport Networks"
         }
       },
       "mechanism_graph:DEV-CH-004": {
         "node_id": "mechanism_graph:DEV-CH-004",
         "node_type": "mechanism_graph",
-        "content_hash": "20ee195a20f0211c41f9e2b116e0a8a560c1e4850dbc75177b1a4473103e908f",
+        "content_hash": "eb02ce974c70b9417f75c057b691531af3c96289f81d0280d09e09a5c3ac909f",
         "metadata": {
           "artifact_stage": "01_extraction",
-          "artifact_output_hash": "20ee195a20f0211c41f9e2b116e0a8a560c1e4850dbc75177b1a4473103e908f",
+          "artifact_output_hash": "eb02ce974c70b9417f75c057b691531af3c96289f81d0280d09e09a5c3ac909f",
           "n_nodes": 0,
           "n_edges": 0
         }
@@ -66,43 +66,43 @@
       "mechanism_pattern:DEV-CH-004": {
         "node_id": "mechanism_pattern:DEV-CH-004",
         "node_type": "mechanism_pattern",
-        "content_hash": "643560d0cee9a6191b571c93752c99df7f74c24415aa95cb90be7a6ebc9d08cf",
+        "content_hash": "578e57319a4c2da158781a68255799da36390b237db300faee10bada67729d5f",
         "metadata": {
           "artifact_stage": "02_abstraction",
-          "artifact_output_hash": "643560d0cee9a6191b571c93752c99df7f74c24415aa95cb90be7a6ebc9d08cf",
+          "artifact_output_hash": "578e57319a4c2da158781a68255799da36390b237db300faee10bada67729d5f",
           "pattern_id": "MP-DEV-CH-004"
         }
       },
       "transfer:TH-DEV-CH-004-001": {
         "node_id": "transfer:TH-DEV-CH-004-001",
         "node_type": "transfer_hypothesis",
-        "content_hash": "138eed16bbe72f1b7a00f65a71f25e25d61f8351e447ca7f9cd61c45907ed0c4",
+        "content_hash": "a337be9d3e9c0e96a9faf1299b01582da16713b59b1429c0fac817046273bcb6",
         "metadata": {
           "artifact_stage": "03_transfer",
-          "artifact_output_hash": "138eed16bbe72f1b7a00f65a71f25e25d61f8351e447ca7f9cd61c45907ed0c4",
+          "artifact_output_hash": "a337be9d3e9c0e96a9faf1299b01582da16713b59b1429c0fac817046273bcb6",
           "source_domain": "myxomycete biology / emergent computation",
           "target_domain": "urban transportation engineering",
-          "transferred_principle": "distributed network optimization through local interactions and feedback"
+          "transferred_principle": "adaptive traffic signal timing through feedback between local exploration and flow optimization"
         }
       },
       "hypothesis:H-DEV-CH-004-001": {
         "node_id": "hypothesis:H-DEV-CH-004-001",
         "node_type": "hypothesis",
-        "content_hash": "11f818a1ca5b21cab1656478adf160f373a96aeee4d3d00e4c29efc3ce96cfcf",
+        "content_hash": "eaf9f134fed1037afed73f853db1c73d0506a6bf72495797d0cb44cd8e693349",
         "metadata": {
           "artifact_stage": "04_hypotheses",
-          "artifact_output_hash": "11f818a1ca5b21cab1656478adf160f373a96aeee4d3d00e4c29efc3ce96cfcf",
-          "claim": "Traffic signals adapt through local feedback of queue length and vehicle count, adjusting green time",
-          "hypothesis_object_hash": "b69c36bdb43f81076a6439b2bdea7d3b3c4c1ca9a050bb325f58d15377687990"
+          "artifact_output_hash": "eaf9f134fed1037afed73f853db1c73d0506a6bf72495797d0cb44cd8e693349",
+          "claim": "Adaptive traffic signal timing emerges from a decentralized reinforcement learning mechanism where e",
+          "hypothesis_object_hash": "b8ea6e05fc4a7a4b875e20822ee5986c97e84acbd74c3ea6d1e95e49c0f91299"
         }
       },
       "adversarial:H-DEV-CH-004-001": {
         "node_id": "adversarial:H-DEV-CH-004-001",
         "node_type": "adversarial_analysis",
-        "content_hash": "a2109688da3c4da36ee58bc1f8bc7f3c4bd2aaffbebe8432f44b1cdf2fb45b6c",
+        "content_hash": "970e2fa92ef3b1d51e836332533dba8a90213f024cdb4e79a16b0e9ada4e051b",
         "metadata": {
           "artifact_stage": "05_adversarial_H-DEV-CH-004-001",
-          "artifact_output_hash": "a2109688da3c4da36ee58bc1f8bc7f3c4bd2aaffbebe8432f44b1cdf2fb45b6c",
+          "artifact_output_hash": "970e2fa92ef3b1d51e836332533dba8a90213f024cdb4e79a16b0e9ada4e051b",
           "outcome": "ADVERSARIAL_FAILED",
           "survives": false
         }
@@ -110,10 +110,10 @@
       "rediscovery:H-DEV-CH-004-001": {
         "node_id": "rediscovery:H-DEV-CH-004-001",
         "node_type": "rediscovery_analysis",
-        "content_hash": "2d7a66051ad2beff2a8ebea43e34fcf8c47ad0d25345053b8354f9fb714b4a15",
+        "content_hash": "37ff1635b53111eb12b3563c9544139333d88461e7ba6f37365e9a700011226d",
         "metadata": {
           "artifact_stage": "06_rediscovery_H-DEV-CH-004-001",
-          "artifact_output_hash": "2d7a66051ad2beff2a8ebea43e34fcf8c47ad0d25345053b8354f9fb714b4a15",
+          "artifact_output_hash": "37ff1635b53111eb12b3563c9544139333d88461e7ba6f37365e9a700011226d",
           "classification": "NON_TRIVIAL_TRANSFER",
           "is_rediscovery": false
         }
@@ -131,21 +131,21 @@
       "hypothesis:H-DEV-CH-004-002": {
         "node_id": "hypothesis:H-DEV-CH-004-002",
         "node_type": "hypothesis",
-        "content_hash": "11f818a1ca5b21cab1656478adf160f373a96aeee4d3d00e4c29efc3ce96cfcf",
+        "content_hash": "eaf9f134fed1037afed73f853db1c73d0506a6bf72495797d0cb44cd8e693349",
         "metadata": {
           "artifact_stage": "04_hypotheses",
-          "artifact_output_hash": "11f818a1ca5b21cab1656478adf160f373a96aeee4d3d00e4c29efc3ce96cfcf",
-          "claim": "Traffic signals adapt through distributed consensus with neighboring intersections, creating coordin",
-          "hypothesis_object_hash": "4092e5bf5d6b808040caece15cc30f0d42846c9ade01460ce0db92b49f2702d2"
+          "artifact_output_hash": "eaf9f134fed1037afed73f853db1c73d0506a6bf72495797d0cb44cd8e693349",
+          "claim": "Traffic signal optimization occurs through a stigmergic mechanism where intersections modify their t",
+          "hypothesis_object_hash": "89d0dccb614dee7fa387115ce83c6186bb8d354016e7ab008e3306e85e7ce505"
         }
       },
       "adversarial:H-DEV-CH-004-002": {
         "node_id": "adversarial:H-DEV-CH-004-002",
         "node_type": "adversarial_analysis",
-        "content_hash": "1b3f6d09feb3654ef71530b4f63d2ab84489db9270b334cef69143420fc900c5",
+        "content_hash": "74c934aec2bebd24b5c15eb1607d55a1fee7fc0e4e85001f6d19553e5a48c035",
         "metadata": {
           "artifact_stage": "05_adversarial_H-DEV-CH-004-002",
-          "artifact_output_hash": "1b3f6d09feb3654ef71530b4f63d2ab84489db9270b334cef69143420fc900c5",
+          "artifact_output_hash": "74c934aec2bebd24b5c15eb1607d55a1fee7fc0e4e85001f6d19553e5a48c035",
           "outcome": "ADVERSARIAL_FAILED",
           "survives": false
         }
@@ -153,10 +153,10 @@
       "rediscovery:H-DEV-CH-004-002": {
         "node_id": "rediscovery:H-DEV-CH-004-002",
         "node_type": "rediscovery_analysis",
-        "content_hash": "3edeeeac8a5eeb930bb990069c71ad00dbabc72cf4997449d4ab8863975d40df",
+        "content_hash": "16c8d61081e1b49fa69b349805d0407ff45842177b8650bec71ad9c045fb09f3",
         "metadata": {
           "artifact_stage": "06_rediscovery_H-DEV-CH-004-002",
-          "artifact_output_hash": "3edeeeac8a5eeb930bb990069c71ad00dbabc72cf4997449d4ab8863975d40df",
+          "artifact_output_hash": "16c8d61081e1b49fa69b349805d0407ff45842177b8650bec71ad9c045fb09f3",
           "classification": "NON_TRIVIAL_TRANSFER",
           "is_rediscovery": false
         }
@@ -174,21 +174,21 @@
       "hypothesis:H-DEV-CH-004-003": {
         "node_id": "hypothesis:H-DEV-CH-004-003",
         "node_type": "hypothesis",
-        "content_hash": "11f818a1ca5b21cab1656478adf160f373a96aeee4d3d00e4c29efc3ce96cfcf",
+        "content_hash": "eaf9f134fed1037afed73f853db1c73d0506a6bf72495797d0cb44cd8e693349",
         "metadata": {
           "artifact_stage": "04_hypotheses",
-          "artifact_output_hash": "11f818a1ca5b21cab1656478adf160f373a96aeee4d3d00e4c29efc3ce96cfcf",
-          "claim": "Traffic signals adapt through emergent pattern formation where each intersection follows simple rule",
-          "hypothesis_object_hash": "fb7614d3123043a9818279af6ac403a3bdcbd0db4099b8ea72f1a855a1fc4061"
+          "artifact_output_hash": "eaf9f134fed1037afed73f853db1c73d0506a6bf72495797d0cb44cd8e693349",
+          "claim": "Adaptive signal timing emerges from a competitive resource allocation mechanism where intersections ",
+          "hypothesis_object_hash": "a9318f84baf00bc807dcd347f6fc7fc31468209c27a7cbbf3e7c06728609c0e9"
         }
       },
       "adversarial:H-DEV-CH-004-003": {
         "node_id": "adversarial:H-DEV-CH-004-003",
         "node_type": "adversarial_analysis",
-        "content_hash": "239316685cab3a5d6076d6b9496088cdf409773148858cbc094c4b01d5bffe04",
+        "content_hash": "7adb914eb39aaef83a2436fbe83ab8afb3040791fb694993761fb19fe4684458",
         "metadata": {
           "artifact_stage": "05_adversarial_H-DEV-CH-004-003",
-          "artifact_output_hash": "239316685cab3a5d6076d6b9496088cdf409773148858cbc094c4b01d5bffe04",
+          "artifact_output_hash": "7adb914eb39aaef83a2436fbe83ab8afb3040791fb694993761fb19fe4684458",
           "outcome": "ADVERSARIAL_FAILED",
           "survives": false
         }
@@ -196,12 +196,12 @@
       "rediscovery:H-DEV-CH-004-003": {
         "node_id": "rediscovery:H-DEV-CH-004-003",
         "node_type": "rediscovery_analysis",
-        "content_hash": "64ebdeccf7ee5f0e9cee28e9f45ed0a229b8f48a957c51274250468e116fcd3a",
+        "content_hash": "583d5a3d50374cb6b6902f5458ea7d867ba9ac58f360bcd189366f04810ef1ad",
         "metadata": {
           "artifact_stage": "06_rediscovery_H-DEV-CH-004-003",
-          "artifact_output_hash": "64ebdeccf7ee5f0e9cee28e9f45ed0a229b8f48a957c51274250468e116fcd3a",
-          "classification": "PARAPHRASED_IN_INPUT",
-          "is_rediscovery": true
+          "artifact_output_hash": "583d5a3d50374cb6b6902f5458ea7d867ba9ac58f360bcd189366f04810ef1ad",
+          "classification": "NON_TRIVIAL_TRANSFER",
+          "is_rediscovery": false
         }
       },
       "novelty:H-DEV-CH-004-003": {
@@ -220,7 +220,7 @@
         "content_hash": "13341ac4f4ed1028f8190dc8f5ce9c07700819b3290f8dd10f0991bee80758e1",
         "metadata": {
           "run_id": "RUN-DEV-CH-004",
-          "engine_code_sha": "db38c7dba5aef5073fb26ac2d8e534768d66515c",
+          "engine_code_sha": "5d21bc6786b486dd11ec67b58f9c5ab92d249811",
           "artifact_stage": "manifest",
           "artifact_output_hash": ""
         }
@@ -234,7 +234,7 @@
         "edge_type": "DERIVES_FROM",
         "evidence": "mechanism graph extracted from source",
         "actor": "mechanism_extractor",
-        "timestamp": "2026-08-08T08:52:11.961512+00:00"
+        "timestamp": "2026-08-08T09:00:58.561283+00:00"
       },
       {
         "edge_id": "prov:mp_mg:DEV-CH-004",
@@ -243,7 +243,7 @@
         "edge_type": "DERIVES_FROM",
         "evidence": "pattern abstracted from mechanism graph",
         "actor": "mechanism_abstracter",
-        "timestamp": "2026-08-08T08:52:11.961522+00:00"
+        "timestamp": "2026-08-08T09:00:58.561290+00:00"
       },
       {
         "edge_id": "prov:th_mp:TH-DEV-CH-004-001",
@@ -252,7 +252,7 @@
         "edge_type": "DERIVES_FROM",
         "evidence": "transfer derived from pattern",
         "actor": "cross_domain_transfer",
-        "timestamp": "2026-08-08T08:52:11.961530+00:00"
+        "timestamp": "2026-08-08T09:00:58.561300+00:00"
       },
       {
         "edge_id": "prov:h_th:H-DEV-CH-004-001",
@@ -261,7 +261,7 @@
         "edge_type": "DERIVES_FROM",
         "evidence": "hypothesis derived from transfer",
         "actor": "hypothesis_engine",
-        "timestamp": "2026-08-08T08:52:11.961581+00:00"
+        "timestamp": "2026-08-08T09:00:58.561333+00:00"
       },
       {
         "edge_id": "prov:adv_h:H-DEV-CH-004-001",
@@ -270,7 +270,7 @@
         "edge_type": "ANALYZES",
         "evidence": "adversarial analysis of hypothesis",
         "actor": "adversarial_engine",
-        "timestamp": "2026-08-08T08:52:11.961693+00:00"
+        "timestamp": "2026-08-08T09:00:58.561386+00:00"
       },
       {
         "edge_id": "prov:rd_h:H-DEV-CH-004-001",
@@ -279,7 +279,7 @@
         "edge_type": "ANALYZES",
         "evidence": "rediscovery classification of hypothesis",
         "actor": "rediscovery_detector",
-        "timestamp": "2026-08-08T08:52:11.961763+00:00"
+        "timestamp": "2026-08-08T09:00:58.561427+00:00"
       },
       {
         "edge_id": "prov:nov_h:H-DEV-CH-004-001",
@@ -288,7 +288,7 @@
         "edge_type": "ANALYZES",
         "evidence": "novelty assessment of hypothesis",
         "actor": "novelty_firewall",
-        "timestamp": "2026-08-08T08:52:11.961821+00:00"
+        "timestamp": "2026-08-08T09:00:58.561469+00:00"
       },
       {
         "edge_id": "prov:h_th:H-DEV-CH-004-002",
@@ -297,7 +297,7 @@
         "edge_type": "DERIVES_FROM",
         "evidence": "hypothesis derived from transfer",
         "actor": "hypothesis_engine",
-        "timestamp": "2026-08-08T08:52:11.961927+00:00"
+        "timestamp": "2026-08-08T09:00:58.561535+00:00"
       },
       {
         "edge_id": "prov:adv_h:H-DEV-CH-004-002",
@@ -306,7 +306,7 @@
         "edge_type": "ANALYZES",
         "evidence": "adversarial analysis of hypothesis",
         "actor": "adversarial_engine",
-        "timestamp": "2026-08-08T08:52:11.962009+00:00"
+        "timestamp": "2026-08-08T09:00:58.561584+00:00"
       },
       {
         "edge_id": "prov:rd_h:H-DEV-CH-004-002",
@@ -315,7 +315,7 @@
         "edge_type": "ANALYZES",
         "evidence": "rediscovery classification of hypothesis",
         "actor": "rediscovery_detector",
-        "timestamp": "2026-08-08T08:52:11.962092+00:00"
+        "timestamp": "2026-08-08T09:00:58.561624+00:00"
       },
       {
         "edge_id": "prov:nov_h:H-DEV-CH-004-002",
@@ -324,7 +324,7 @@
         "edge_type": "ANALYZES",
         "evidence": "novelty assessment of hypothesis",
         "actor": "novelty_firewall",
-        "timestamp": "2026-08-08T08:52:11.962150+00:00"
+        "timestamp": "2026-08-08T09:00:58.561677+00:00"
       },
       {
         "edge_id": "prov:h_th:H-DEV-CH-004-003",
@@ -333,7 +333,7 @@
         "edge_type": "DERIVES_FROM",
         "evidence": "hypothesis derived from transfer",
         "actor": "hypothesis_engine",
-        "timestamp": "2026-08-08T08:52:11.962252+00:00"
+        "timestamp": "2026-08-08T09:00:58.561733+00:00"
       },
       {
         "edge_id": "prov:adv_h:H-DEV-CH-004-003",
@@ -342,7 +342,7 @@
         "edge_type": "ANALYZES",
         "evidence": "adversarial analysis of hypothesis",
         "actor": "adversarial_engine",
-        "timestamp": "2026-08-08T08:52:11.962321+00:00"
+        "timestamp": "2026-08-08T09:00:58.561789+00:00"
       },
       {
         "edge_id": "prov:rd_h:H-DEV-CH-004-003",
@@ -351,7 +351,7 @@
         "edge_type": "ANALYZES",
         "evidence": "rediscovery classification of hypothesis",
         "actor": "rediscovery_detector",
-        "timestamp": "2026-08-08T08:52:11.962374+00:00"
+        "timestamp": "2026-08-08T09:00:58.561834+00:00"
       },
       {
         "edge_id": "prov:nov_h:H-DEV-CH-004-003",
@@ -360,14 +360,14 @@
         "edge_type": "ANALYZES",
         "evidence": "novelty assessment of hypothesis",
         "actor": "novelty_firewall",
-        "timestamp": "2026-08-08T08:52:11.962422+00:00"
+        "timestamp": "2026-08-08T09:00:58.561866+00:00"
       }
     ],
-    "committed_hash": "d9a737cc0b78c56f4318cde6d058aefcce19760def1a21129d6251ad46f4de12"
+    "committed_hash": "08446bada01ab1c46c071665852e3423b9f5fcf95d7419b72256500b3610c575"
   },
   "parent_cases": [],
   "derived_cases": [],
   "failure_state": null,
   "manifest": null,
-  "provenance_root_hash": "d9a737cc0b78c56f4318cde6d058aefcce19760def1a21129d6251ad46f4de12"
+  "provenance_root_hash": "08446bada01ab1c46c071665852e3423b9f5fcf95d7419b72256500b3610c575"
 }

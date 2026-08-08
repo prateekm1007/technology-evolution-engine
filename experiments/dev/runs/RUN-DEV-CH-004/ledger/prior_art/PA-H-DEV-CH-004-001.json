@@ -6,7 +6,7 @@
     "dev_corpus"
   ],
   "queries": [
-    "Traffic signals adapt through local feedback of queue length and vehicle count, adjusting green time to minimize local waiting time Each intersection continuously monitors its own queue length and vehicle count, then adjusts signal timing proportionally to reduce local waiting times without considering downstream effects"
+    "Adaptive traffic signal timing emerges from a decentralized reinforcement learning mechanism where each intersection independently adjusts its timing based on local traffic rewards, with occasional communication of performance metrics to neighbors. Each intersection acts as an autonomous agent that continuously evaluates signal timing policies using a local reward function (e.g., reduced vehicle delay). Through trial and error, intersections discover optimal timing parameters. Periodically, intersections share performance metrics with adjacent intersections, enabling network-wide optimization through local information exchange rather than global coordination."
   ],
   "sources": [],
   "matched_prior_art": [],
@@ -15,5 +15,5 @@
   "confidence": 0.3,
   "cutoff": "2026-08-08",
   "reviewer": "novelty_firewall_v0",
-  "timestamp": "2026-08-08T08:51:47.635506+00:00"
+  "timestamp": "2026-08-08T09:00:33.843637+00:00"
 }

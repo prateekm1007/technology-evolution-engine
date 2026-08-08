@@ -1,9 +1,9 @@
 {
   "stage": "05_adversarial_H-DEV-CH-004-003",
   "run_id": "RUN-DEV-CH-004",
-  "code_sha": "db38c7dba5aef5073fb26ac2d8e534768d66515c",
-  "input_hash": "fb7614d3123043a9818279af6ac403a3bdcbd0db4099b8ea72f1a855a1fc4061",
-  "output_hash": "239316685cab3a5d6076d6b9496088cdf409773148858cbc094c4b01d5bffe04",
+  "code_sha": "5d21bc6786b486dd11ec67b58f9c5ab92d249811",
+  "input_hash": "a9318f84baf00bc807dcd347f6fc7fc31468209c27a7cbbf3e7c06728609c0e9",
+  "output_hash": "7adb914eb39aaef83a2436fbe83ab8afb3040791fb694993761fb19fe4684458",
   "provider_manifest": {
     "provider": "zai",
     "model": "glm-4-plus",
@@ -13,13 +13,13 @@
       "max_tokens": 4096,
       "system_sha": "1f5a3fff3aebc2e1d44b2312f4b604b5c2911cacaf452eb6ca705c724fc9142b"
     },
-    "prompt_sha": "c6e96b620d20b2c3de4323c67f7a35ad6152722c7e79bbeecf061f55ffd5aaf4",
+    "prompt_sha": "9ed5c737db90f2a0d2f74c4d12d2ad77e1b14bc1c2bdca8c205e8d470e932f84",
     "seed": null,
     "tool_versions": {
       "z_ai_cli": "z-ai"
     },
-    "timestamp": "2026-08-08T08:51:59.283554+00:00",
-    "latency_ms": 9896,
+    "timestamp": "2026-08-08T09:00:44.441335+00:00",
+    "latency_ms": 10858,
     "success": true,
     "error": ""
   },
@@ -27,48 +27,48 @@
     "hypothesis_id": "H-DEV-CH-004-003",
     "failure_modes": [
       {
-        "category": "FRAGILE_ASSUMPTION",
-        "description": "The assumption that simple local rules can produce complex global optimization is fundamentally flawed without considering network-wide coordination effects",
+        "category": "CONTRADICTS_KNOWN",
+        "description": "Traffic engineering principles have long established that competitive signal timing leads to Braess's paradox outcomes where overall system performance degrades despite local improvements",
         "severity": "HIGH",
-        "evidence": "Traffic networks exhibit non-linear dynamics where local optimizations often create global bottlenecks (Braess paradox)"
+        "evidence": "Braess's paradox has been repeatedly demonstrated in traffic networks since 1968, showing that optimizing individual components without considering system-wide effects can reduce overall efficiency"
       },
       {
-        "category": "CONTRADICTS_KNOWN",
-        "description": "Direct contradicts established traffic flow theory which shows that optimal signal coordination requires explicit timing plans",
+        "category": "FRAGILE_ASSUMPTION",
+        "description": "The assumption that intersections can accurately measure and compare performance metrics is fundamentally flawed due to different intersection geometries, turning radii, and capacity constraints",
         "severity": "HIGH",
-        "evidence": "All major metropolitan areas use coordinated signal timing systems with fixed offsets, not purely local rules"
+        "evidence": "Intersections with different physical characteristics cannot be fairly compared using simple throughput metrics, as a 4-way stop operates under completely different optimization parameters than a complex 7-way intersection"
       },
       {
         "category": "BOUNDARY_BREAKS",
-        "description": "Fails to account for boundary conditions like network entry/exit points and major arterials that cannot be controlled by local rules alone",
+        "description": "The mechanism fails to account for intersections at network boundaries that cannot compete equally with interior nodes",
         "severity": "MEDIUM",
-        "evidence": "Network boundaries create fundamental asymmetries that prevent true self-organization"
-      },
-      {
-        "category": "PRIOR_ART_EXISTS",
-        "description": "Numerous existing adaptive signal systems use more sophisticated approaches than simple threshold rules",
-        "severity": "MEDIUM",
-        "evidence": "SCATS, SCOOT, and RHODES systems all use predictive algorithms and network-wide coordination"
+        "evidence": "Boundary conditions in network optimization are well-known to create systemic biases, and this competitive mechanism would systematically disadvantage entry/exit points of the traffic network"
       },
       {
         "category": "FALSIFIER_TRIGGERED",
-        "description": "The hypothesis predicts emergence of optimal patterns, but real-world implementations show exactly the oscillations and instabilities predicted as failure modes",
+        "description": "The hypothesis directly predicts 'hotspots' and 'oscillations' as expected outcomes, which are actually failure modes in traffic systems",
         "severity": "HIGH",
-        "evidence": "Multiple studies show simple local rules create 'traffic waves' that propagate through networks, worsening congestion"
+        "evidence": "The hypothesis explicitly lists 'creation of hotspots' and 'oscillations' as expected behaviors, but these are precisely the failure modes that traffic signal systems are designed to prevent"
+      },
+      {
+        "category": "PRIOR_ART_EXISTS",
+        "description": "The concept of competitive resource allocation in traffic systems has been extensively studied and rejected by transportation researchers",
+        "severity": "MEDIUM",
+        "evidence": "The TRANSYT and SCOOT systems from the 1970s-80s explicitly rejected competitive approaches in favor of system-wide optimization, and subsequent research has consistently shown cooperative methods outperform competitive ones"
       },
       {
         "category": "INCOMPATIBLE_TARGET",
-        "description": "The target of 'system-level optimization' is mathematically ill-defined without specifying optimization criteria",
-        "severity": "LOW",
-        "evidence": "Different optimization goals (throughput vs. delay vs. emissions) lead to conflicting signal timing requirements"
+        "description": "The hypothesis optimizes for vehicle throughput rather than the actual goal of traffic systems which is to move people and goods efficiently",
+        "severity": "HIGH",
+        "evidence": "Modern traffic systems prioritize people throughput (including transit, pedestrians, cyclists) over vehicle throughput, making this optimization criterion fundamentally misaligned with real-world objectives"
       }
     ],
     "survives": false,
     "outcome": "ADVERSARIAL_FAILED",
-    "n_high_severity": 3,
+    "n_high_severity": 4,
     "n_medium_severity": 2,
-    "n_low_severity": 1,
+    "n_low_severity": 0,
     "source_hypothesis_hash": ""
   },
-  "timestamp": "2026-08-08T08:52:09.179993+00:00"
+  "timestamp": "2026-08-08T09:00:55.300355+00:00"
 }

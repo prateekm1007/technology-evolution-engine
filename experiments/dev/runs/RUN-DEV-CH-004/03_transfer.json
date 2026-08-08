@@ -1,9 +1,9 @@
 {
   "stage": "03_transfer",
   "run_id": "RUN-DEV-CH-004",
-  "code_sha": "db38c7dba5aef5073fb26ac2d8e534768d66515c",
-  "input_hash": "c9d9990181b53b472f8d72673d2a638e96eea4427e084f6ccaca4574b5f058fb",
-  "output_hash": "138eed16bbe72f1b7a00f65a71f25e25d61f8351e447ca7f9cd61c45907ed0c4",
+  "code_sha": "5d21bc6786b486dd11ec67b58f9c5ab92d249811",
+  "input_hash": "1a30ca41b6b5a698987de2202d5d161e5fd74b8e6f201f152d88bbc81fae8886",
+  "output_hash": "a337be9d3e9c0e96a9faf1299b01582da16713b59b1429c0fac817046273bcb6",
   "provider_manifest": {
     "provider": "zai",
     "model": "glm-4-plus",
@@ -13,13 +13,13 @@
       "max_tokens": 4096,
       "system_sha": "f596607dc28478b7317f95a37a7bf99f11ad2e25e10bde5d1c0a9009ba6b1583"
     },
-    "prompt_sha": "839feb46ca6e8e82ef1cf519a044970a95c0e60687b9c032f29357f81332553d",
+    "prompt_sha": "ec17a3b86f9034b3d75bc19f6383844f5f7ba5d1d619a03568b9f27197388a73",
     "seed": null,
     "tool_versions": {
       "z_ai_cli": "z-ai"
     },
-    "timestamp": "2026-08-08T08:51:07.494074+00:00",
-    "latency_ms": 5949,
+    "timestamp": "2026-08-08T08:59:51.850408+00:00",
+    "latency_ms": 5442,
     "success": true,
     "error": ""
   },
@@ -28,28 +28,28 @@
       {
         "transfer_id": "TH-DEV-CH-004-001",
         "source_domain": "myxomycete biology / emergent computation",
-        "source_mechanism": "resource flow enables network adaptation under environmental constraints, producing optimized transport pathways",
+        "source_mechanism": "adaptive network formation through feedback between exploration and resource utilization",
         "source_conditions": [
-          "continuous resource availability",
+          "resource availability",
           "network connectivity",
-          "feedback sensitivity"
+          "environmental constraints"
         ],
         "target_domain": "urban transportation engineering",
         "target_problem": "A mid-sized city (population 800,000) has a traffic signal network with 247 signalized intersections. The current signal timing plan is optimized centrally every 6 months using a macroscopic traffic model, but it cannot adapt to real-time conditions: incidents, weather, special events, and construction. Re-optimizing centrally every minute is computationally infeasible and would require expensive predictive models. The city wants a distributed, adaptive signal timing approach that uses only local traffic flow measurements (vehicle count and queue length at each intersection) to adjust green-split and offset in real time, without a central optimizer.",
-        "transferred_principle": "distributed network optimization through local interactions and feedback",
-        "required_translation": "replace resource flow with traffic flow, network restructuring with signal timing adjustment, local sensing with loop detector measurements, and environmental constraints with traffic demand patterns",
-        "expected_effect": "adaptive traffic signal timing that optimizes traffic flow through local decisions without central coordination",
+        "transferred_principle": "adaptive traffic signal timing through feedback between local exploration and flow optimization",
+        "required_translation": "replace protoplasmic streaming with vehicle movement, resource locations with traffic demand, network reinforcement with signal timing adjustments, and path pruning with phase optimization",
+        "expected_effect": "distributed optimization of traffic signal timing that adapts to real-time conditions without central coordination",
         "boundary_conditions": [
-          "continuous traffic flow",
-          "network connectivity between adjacent intersections",
-          "sensitivity to local queue length and vehicle count"
+          "limited communication between adjacent intersections",
+          "local measurement constraints (vehicle count and queue length only)",
+          "heterogeneous intersection degrees"
         ],
         "failure_conditions": [
-          "complete network isolation",
-          "extreme traffic imbalance overwhelming local capacity",
-          "communication failures between adjacent intersections"
+          "network disconnection (communication failure)",
+          "resource depletion (extreme congestion)",
+          "environmental barriers (unpredictable events exceeding adaptation capacity)"
         ],
-        "testable_prediction": "after implementing the adaptive signal timing system, average intersection delay will decrease by 15% during non-incident conditions, and the system will recover to within 5% of optimal delay within 10 minutes of an incident, compared to the current centrally-optimized system",
+        "testable_prediction": "When implementing this distributed system, the average intersection delay should decrease by at least 15% compared to the current semi-optimized system during normal conditions, and the system should adapt to incidents within 10 minutes (measured from incident occurrence to when delay returns to within 5% of pre-incident levels)",
         "epistemic_state": "HYPOTHESIZED",
         "provenance": {
           "nodes": {},
@@ -62,7 +62,7 @@
     "rejected": [],
     "n_accepted": 1,
     "n_rejected": 0,
-    "source_abstraction_hash": "643560d0cee9a6191b571c93752c99df7f74c24415aa95cb90be7a6ebc9d08cf"
+    "source_abstraction_hash": "578e57319a4c2da158781a68255799da36390b237db300faee10bada67729d5f"
   },
-  "timestamp": "2026-08-08T08:51:13.444082+00:00"
+  "timestamp": "2026-08-08T08:59:57.293396+00:00"
 }

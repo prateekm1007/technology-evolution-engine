@@ -1,9 +1,9 @@
 {
   "stage": "06_rediscovery_H-DEV-CH-004-002",
   "run_id": "RUN-DEV-CH-004",
-  "code_sha": "db38c7dba5aef5073fb26ac2d8e534768d66515c",
-  "input_hash": "4092e5bf5d6b808040caece15cc30f0d42846c9ade01460ce0db92b49f2702d2",
-  "output_hash": "3edeeeac8a5eeb930bb990069c71ad00dbabc72cf4997449d4ab8863975d40df",
+  "code_sha": "5d21bc6786b486dd11ec67b58f9c5ab92d249811",
+  "input_hash": "89d0dccb614dee7fa387115ce83c6186bb8d354016e7ab008e3306e85e7ce505",
+  "output_hash": "16c8d61081e1b49fa69b349805d0407ff45842177b8650bec71ad9c045fb09f3",
   "provider_manifest": {
     "provider": "zai",
     "model": "glm-4-plus",
@@ -13,22 +13,22 @@
       "max_tokens": 4096,
       "system_sha": "dbdd0760dff49fc029b32b580a575b7de33a87d371edc2b0deec93bfb2b90b01"
     },
-    "prompt_sha": "2bb3a8af91589ce2a1d5d3cc495f71565b842707993c40e61ad1d8c8cd667afc",
+    "prompt_sha": "32f34192ac864513da80e1c81aa8653aa8eec306835fb7a30a31276a6bdd0d26",
     "seed": null,
     "tool_versions": {
       "z_ai_cli": "z-ai"
     },
-    "timestamp": "2026-08-08T08:51:56.883573+00:00",
-    "latency_ms": 2396,
+    "timestamp": "2026-08-08T09:00:41.881998+00:00",
+    "latency_ms": 2554,
     "success": true,
     "error": ""
   },
   "result": {
     "hypothesis_id": "H-DEV-CH-004-002",
     "classification": "NON_TRIVIAL_TRANSFER",
-    "evidence": "The hypothesis describes a traffic signal coordination system using distributed consensus and communication between intersections. The source document discusses a slime mold's network adaptation mechanism using protoplasmic streaming and feedback loops for optimizing transport networks. While both involve network optimization, the specific mechanism of traffic signals communicating states and reaching consensus is not present in the source. The slime mold uses local feedback based on flow rates, not explicit communication between nodes. This represents a cross-domain transfer from biological network adaptation to traffic engineering, not a direct composition or structural inference from the source text.",
+    "evidence": "The hypothesis applies the biological stigmergic mechanism of Physarum polycephalum to traffic signal optimization. While the source document describes how the slime mold adapts its transport network through feedback mechanisms based on flow patterns, the hypothesis transfers this concept to a completely different domain (traffic engineering). The mechanism described in the hypothesis - intersections adjusting timing based on traffic flow patterns left by vehicles - is not explicitly stated or directly derived from the source document about the slime mold's network adaptation. This represents a genuine cross-domain transfer of the stigmergic concept from biology to traffic systems.",
     "is_rediscovery": false,
     "source_hypothesis_hash": ""
   },
-  "timestamp": "2026-08-08T08:51:59.280094+00:00"
+  "timestamp": "2026-08-08T09:00:44.436704+00:00"
 }

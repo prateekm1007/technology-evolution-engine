@@ -1,9 +1,9 @@
 {
   "stage": "04_hypotheses",
   "run_id": "RUN-DEV-CH-004",
-  "code_sha": "db38c7dba5aef5073fb26ac2d8e534768d66515c",
-  "input_hash": "e0f0c0fef2ad9442020c36434e45099fa116508281c0612d41e7dd55e2e5e6fb",
-  "output_hash": "11f818a1ca5b21cab1656478adf160f373a96aeee4d3d00e4c29efc3ce96cfcf",
+  "code_sha": "5d21bc6786b486dd11ec67b58f9c5ab92d249811",
+  "input_hash": "8129cdbf9425c236c44c77fb4698a74d683c7e24bc972cd5fd8cb8c6ea75a70e",
+  "output_hash": "eaf9f134fed1037afed73f853db1c73d0506a6bf72495797d0cb44cd8e693349",
   "provider_manifest": {
     "provider": "zai",
     "model": "glm-4-plus",
@@ -13,13 +13,13 @@
       "max_tokens": 4096,
       "system_sha": "38a0abb453a9eb9fd88d0b4dd513feea94d69501c86ec3d4d7778b86034369c8"
     },
-    "prompt_sha": "e8a05ceeae0c60188585300f6a4b49525b828cc876977dc64f1dc7c0b8f6649c",
+    "prompt_sha": "77e5cf12766c1c30d7ebe7c97a939fe0dcd4902c1ce7fc865f692f7b54cfed4c",
     "seed": null,
     "tool_versions": {
       "z_ai_cli": "z-ai"
     },
-    "timestamp": "2026-08-08T08:51:13.445942+00:00",
-    "latency_ms": 20593,
+    "timestamp": "2026-08-08T08:59:57.295011+00:00",
+    "latency_ms": 23809,
     "success": true,
     "error": ""
   },
@@ -27,25 +27,28 @@
     "hypotheses": [
       {
         "hypothesis_id": "H-DEV-CH-004-001",
-        "claim": "Traffic signals adapt through local feedback of queue length and vehicle count, adjusting green time to minimize local waiting time",
-        "mechanism": "Each intersection continuously monitors its own queue length and vehicle count, then adjusts signal timing proportionally to reduce local waiting times without considering downstream effects",
+        "claim": "Adaptive traffic signal timing emerges from a decentralized reinforcement learning mechanism where each intersection independently adjusts its timing based on local traffic rewards, with occasional communication of performance metrics to neighbors.",
+        "mechanism": "Each intersection acts as an autonomous agent that continuously evaluates signal timing policies using a local reward function (e.g., reduced vehicle delay). Through trial and error, intersections discover optimal timing parameters. Periodically, intersections share performance metrics with adjacent intersections, enabling network-wide optimization through local information exchange rather than global coordination.",
         "evidence": [
-          "Local traffic sensors can provide real-time queue length data",
-          "Some adaptive signal systems use local queue detection"
+          "Reinforcement learning has shown success in controlling complex systems with local feedback",
+          "Distributed multi-agent systems can solve optimization problems without central coordination",
+          "Local traffic measurements contain sufficient information for adaptive control"
         ],
         "assumptions": [
-          "Local optimization leads to global optimization",
-          "Queue length is the primary determinant of system performance",
-          "Intersections operate independently"
+          "Intersections can independently evaluate policy performance",
+          "Limited communication of performance metrics is sufficient for network-wide optimization",
+          "Local reward functions align with global traffic objectives",
+          "Intersections can maintain and update internal policy models"
         ],
         "predictions": [],
         "expected_failure_modes": [
-          "Braess paradox where local improvements create system-wide congestion",
-          "Inability to coordinate platoon movement between intersections"
+          "Oscillations between intersections due to conflicting optimization objectives",
+          "Convergence to local optima that are suboptimal for the network",
+          "Computational overload at intersections due to complex policy evaluation"
         ],
-        "novelty_rationale": "Applies the myxomycete principle of local resource optimization to traffic signals without requiring central coordination",
-        "testability": "Can be tested in simulation by comparing local-only optimization with centralized optimization",
-        "falsifier": "If implementing local-only optimization results in increased delays at downstream intersections or causes gridlock at network scale",
+        "novelty_rationale": "This hypothesis extends reinforcement learning from single-agent to multi-agent traffic control systems, using myxomycete-inspired exploration while maintaining computational feasibility through localized learning.",
+        "testability": "The hypothesis can be tested by implementing a reinforcement learning system at each intersection with varying communication frequencies and measuring convergence time and performance metrics.",
+        "falsifier": "If implementing this system results in oscillating or divergent signal timing patterns where intersections continuously adjust parameters without converging to stable solutions, or if the system fails to improve network-wide traffic flow despite improving local metrics, the hypothesis would be falsified.",
         "epistemic_state": "HYPOTHESIZED",
         "parent_hypothesis_ids": [],
         "provenance": {
@@ -58,25 +61,28 @@
       },
       {
         "hypothesis_id": "H-DEV-CH-004-002",
-        "claim": "Traffic signals adapt through distributed consensus with neighboring intersections, creating coordinated green waves",
-        "mechanism": "Each intersection communicates its current state and planned adjustments to adjacent intersections, then reaches consensus on timing that balances local and network-wide objectives",
+        "claim": "Traffic signal optimization occurs through a stigmergic mechanism where intersections modify their timing based on physical traffic flow patterns left by preceding vehicles, creating an emergent coordination system.",
+        "mechanism": "Each intersection continuously monitors traffic flow patterns (queue lengths, vehicle counts) and adjusts its timing parameters to optimize flow. These adjustments create 'traffic traces' in the form of vehicle movement patterns that propagate through the network. Subsequent vehicles and intersections respond to these traces, creating an emergent coordination system where signal timing adapts based on the collective behavior of the system rather than explicit communication or optimization algorithms.",
         "evidence": [
-          "Distributed consensus algorithms work in other network systems",
-          "Coordinated signal systems exist but typically require central planning"
+          "Stigmergy has been observed in biological systems and has been applied to distributed robotics",
+          "Traffic flow patterns do influence driver behavior at intersections",
+          "Emergent properties have been observed in traffic systems without central coordination"
         ],
         "assumptions": [
-          "Intersections can communicate with immediate neighbors",
-          "Consensus algorithms can converge quickly",
-          "Network-wide objectives can be approximated through local interactions"
+          "Vehicle movement patterns contain sufficient information for coordination",
+          "Intersections can detect and respond to traffic traces",
+          "The system will self-organize through these traces without explicit optimization",
+          "Traffic traces propagate through the network at a rate that enables timely adaptation"
         ],
         "predictions": [],
         "expected_failure_modes": [
-          "Communication delays preventing timely adaptation",
-          "Inability to reach consensus during rapidly changing conditions"
+          "Inability to detect meaningful patterns in complex traffic scenarios",
+          "Response delays due to slow propagation of traffic traces",
+          "System instability in response to unpredictable events"
         ],
-        "novelty_rationale": "Transfers the myxomycete network adaptation principle through distributed consensus rather than purely local decision-making",
-        "testability": "Can be tested by implementing communication between adjacent intersections and measuring convergence time and solution quality",
-        "falsifier": "If the communication overhead required for consensus makes real-time adaptation infeasible or if consensus cannot be reached quickly enough to respond to changing conditions",
+        "novelty_rationale": "This hypothesis applies stigmergy principles to traffic signal control, using physical traffic patterns as the communication medium rather than explicit digital communication, creating a more organic adaptation mechanism.",
+        "testability": "The hypothesis can be tested by implementing a system where intersections only respond to observed traffic patterns without explicit communication, and measuring whether emergent coordination develops.",
+        "falsifier": "If the system fails to adapt to incidents or changing conditions because intersections cannot detect meaningful patterns in the traffic flow, or if the system produces inconsistent signal timing that doesn't correlate with actual traffic conditions, the hypothesis would be falsified.",
         "epistemic_state": "HYPOTHESIZED",
         "parent_hypothesis_ids": [],
         "provenance": {
@@ -89,25 +95,28 @@
       },
       {
         "hypothesis_id": "H-DEV-CH-004-003",
-        "claim": "Traffic signals adapt through emergent pattern formation where each intersection follows simple rules based on local conditions, creating system-level optimization",
-        "mechanism": "Each intersection follows a simple rule set (e.g., increase green time if queue length exceeds threshold, decrease if queue is zero) that, when applied across the network, creates emergent patterns that optimize flow",
+        "claim": "Adaptive signal timing emerges from a competitive resource allocation mechanism where intersections compete for vehicle throughput, with signal adjustments based on relative performance compared to neighboring intersections.",
+        "mechanism": "Each intersection continuously evaluates its performance (vehicles served per unit time) relative to its neighbors. When an intersection's performance falls below that of its neighbors, it increases its green time for the direction with higher demand, effectively 'competing' for vehicle throughput. This creates a system where intersections dynamically adjust their timing based on relative performance, leading to network-wide optimization through local competition rather than cooperation or explicit optimization.",
         "evidence": [
-          "Emergent behavior appears in other complex systems",
-          "Some traffic signal systems use simple heuristic rules"
+          "Resource competition has been shown to optimize resource allocation in biological systems",
+          "Relative performance metrics can drive optimization in distributed systems",
+          "Traffic flow does exhibit competitive dynamics at intersections"
         ],
         "assumptions": [
-          "Simple local rules can produce complex global optimization",
-          "The network will self-organize into optimal patterns",
-          "No explicit communication between intersections is needed"
+          "Relative performance comparison provides sufficient information for optimization",
+          "Competition between intersections leads to network-wide optimum",
+          "Intersections can accurately measure and compare performance metrics",
+          "The competitive dynamic will stabilize rather than create oscillations"
         ],
         "predictions": [],
         "expected_failure_modes": [
-          "Oscillations between intersections causing 'traffic waves'",
-          "Failure to adapt to non-recurrent congestion patterns"
+          "Creation of 'hotspots' where traffic concentrates inefficiently",
+          "Oscillations as intersections overcompensate for relative performance differences",
+          "System instability during demand shifts or incidents"
         ],
-        "novelty_rationale": "Directly transfers the myxomycete emergent computation principle to traffic signal control through simple local rules",
-        "testability": "Can be tested by implementing simple rule-based signal control and measuring system performance",
-        "falsifier": "If the simple rules fail to produce optimal flow patterns or create oscillations or instabilities in the network",
+        "novelty_rationale": "This hypothesis introduces a competitive rather than cooperative framework for traffic signal optimization, applying biological competition principles to transportation systems.",
+        "testability": "The hypothesis can be tested by implementing a system where intersections adjust timing based on relative performance metrics compared to neighbors, and measuring whether this leads to improved network performance.",
+        "falsifier": "If implementing this competitive system results in traffic being diverted to less efficient routes, increased congestion at certain intersections, or overall network performance degradation compared to a cooperative system, the hypothesis would be falsified.",
         "epistemic_state": "HYPOTHESIZED",
         "parent_hypothesis_ids": [],
         "provenance": {
@@ -119,9 +128,9 @@
         "provenance_root_hash": ""
       }
     ],
-    "distinguishing_predictions": "The local optimization hypothesis would predict maximum improvement at the monitored intersection but potential degradation downstream; the distributed consensus hypothesis would predict coordinated green waves but require communication infrastructure; the emergent pattern hypothesis would predict self-organization but potentially with longer convergence time and oscillatory behavior during transitions. These can be distinguished by measuring: 1) correlation between local improvements and downstream effects, 2) communication requirements and convergence time, and 3) pattern stability and convergence speed under different traffic conditions.",
+    "distinguishing_predictions": "The reinforcement learning hypothesis would predict improved performance with increased communication frequency between intersections, while the stigmergic hypothesis would predict better performance with reduced communication as intersections rely more on traffic pattern observation. The competitive hypothesis would predict that intersections with higher degrees (more connections) would perform better than isolated intersections, whereas the other hypotheses would not necessarily show this relationship. Additionally, the competitive system would likely show more pronounced oscillations during demand shifts, while the reinforcement learning system would adapt more smoothly, and the stigmergic system would show adaptation delays proportional to traffic flow propagation times.",
     "transfer_id": "TH-DEV-CH-004-001",
-    "source_transfer_hash": "138eed16bbe72f1b7a00f65a71f25e25d61f8351e447ca7f9cd61c45907ed0c4"
+    "source_transfer_hash": "a337be9d3e9c0e96a9faf1299b01582da16713b59b1429c0fac817046273bcb6"
   },
-  "timestamp": "2026-08-08T08:51:34.041340+00:00"
+  "timestamp": "2026-08-08T09:00:21.106405+00:00"
 }

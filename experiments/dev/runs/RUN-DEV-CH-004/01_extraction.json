@@ -1,9 +1,9 @@
 {
   "stage": "01_extraction",
   "run_id": "RUN-DEV-CH-004",
-  "code_sha": "db38c7dba5aef5073fb26ac2d8e534768d66515c",
+  "code_sha": "5d21bc6786b486dd11ec67b58f9c5ab92d249811",
   "input_hash": "adb0f6dfcbaca08e72bc9170faff3e36cb3f383a37b3f60bf75e7363a55af77d",
-  "output_hash": "20ee195a20f0211c41f9e2b116e0a8a560c1e4850dbc75177b1a4473103e908f",
+  "output_hash": "eb02ce974c70b9417f75c057b691531af3c96289f81d0280d09e09a5c3ac909f",
   "provider_manifest": {
     "provider": "zai",
     "model": "glm-4-plus",
@@ -18,8 +18,8 @@
     "tool_versions": {
       "z_ai_cli": "z-ai"
     },
-    "timestamp": "2026-08-08T08:50:21.131708+00:00",
-    "latency_ms": 41718,
+    "timestamp": "2026-08-08T08:58:52.073221+00:00",
+    "latency_ms": 56970,
     "success": true,
     "error": ""
   },
@@ -38,9 +38,9 @@
       {
         "failure_type": "MALFORMED_JSON",
         "detail": "not valid JSON",
-        "raw_llm_output": "{\n  \"nodes\": [\n    {\n      \"node_id\": \"N1\",\n      \"node_type\": \"ENTITY\",\n      \"label\": \"Physarum polycephalum\",\n      \"description\": \"Single-celled multinucleate organism that forms tubular networks\",\n      \"evidence_quote\": \"The slime mold Physarum polycephalum is a single-celled multinucleate organism that forages for food by growing a tubular cytoplasmic network connecting discovered food sources.\"\n    },\n    {\n      \"node_id\": \"N2\",\n      \"node_type\": \"PROCESS\",\n      \"label\": \"protoplasmic"
+        "raw_llm_output": "{\n  \"nodes\": [\n    {\n      \"node_id\": \"N1\",\n      \"node_type\": \"ENTITY\",\n      \"label\": \"Physarum polycephalum\",\n      \"description\": \"Single-celled multinucleate organism that forages for food\",\n      \"evidence_quote\": \"The slime mold Physarum polycephalum is a single-celled multinucleate organism that forages for food by growing a tubular cytoplasmic network connecting discovered food sources.\"\n    },\n    {\n      \"node_id\": \"N2\",\n      \"node_type\": \"ENTITY\",\n      \"label\": \"tubular cytoplasmic"
       }
     ]
   },
-  "timestamp": "2026-08-08T08:51:02.850641+00:00"
+  "timestamp": "2026-08-08T08:59:49.043908+00:00"
 }

@@ -1,24 +1,27 @@
 {
   "hypothesis_id": "H-DEV-CH-004-003",
-  "claim": "Traffic signals adapt through emergent pattern formation where each intersection follows simple rules based on local conditions, creating system-level optimization",
-  "mechanism": "Each intersection follows a simple rule set (e.g., increase green time if queue length exceeds threshold, decrease if queue is zero) that, when applied across the network, creates emergent patterns that optimize flow",
+  "claim": "Adaptive signal timing emerges from a competitive resource allocation mechanism where intersections compete for vehicle throughput, with signal adjustments based on relative performance compared to neighboring intersections.",
+  "mechanism": "Each intersection continuously evaluates its performance (vehicles served per unit time) relative to its neighbors. When an intersection's performance falls below that of its neighbors, it increases its green time for the direction with higher demand, effectively 'competing' for vehicle throughput. This creates a system where intersections dynamically adjust their timing based on relative performance, leading to network-wide optimization through local competition rather than cooperation or explicit optimization.",
   "evidence": [
-    "Emergent behavior appears in other complex systems",
-    "Some traffic signal systems use simple heuristic rules"
+    "Resource competition has been shown to optimize resource allocation in biological systems",
+    "Relative performance metrics can drive optimization in distributed systems",
+    "Traffic flow does exhibit competitive dynamics at intersections"
   ],
   "assumptions": [
-    "Simple local rules can produce complex global optimization",
-    "The network will self-organize into optimal patterns",
-    "No explicit communication between intersections is needed"
+    "Relative performance comparison provides sufficient information for optimization",
+    "Competition between intersections leads to network-wide optimum",
+    "Intersections can accurately measure and compare performance metrics",
+    "The competitive dynamic will stabilize rather than create oscillations"
   ],
   "predictions": [],
   "expected_failure_modes": [
-    "Oscillations between intersections causing 'traffic waves'",
-    "Failure to adapt to non-recurrent congestion patterns"
+    "Creation of 'hotspots' where traffic concentrates inefficiently",
+    "Oscillations as intersections overcompensate for relative performance differences",
+    "System instability during demand shifts or incidents"
   ],
-  "novelty_rationale": "Directly transfers the myxomycete emergent computation principle to traffic signal control through simple local rules",
-  "testability": "Can be tested by implementing simple rule-based signal control and measuring system performance",
-  "falsifier": "If the simple rules fail to produce optimal flow patterns or create oscillations or instabilities in the network",
+  "novelty_rationale": "This hypothesis introduces a competitive rather than cooperative framework for traffic signal optimization, applying biological competition principles to transportation systems.",
+  "testability": "The hypothesis can be tested by implementing a system where intersections adjust timing based on relative performance metrics compared to neighbors, and measuring whether this leads to improved network performance.",
+  "falsifier": "If implementing this competitive system results in traffic being diverted to less efficient routes, increased congestion at certain intersections, or overall network performance degradation compared to a cooperative system, the hypothesis would be falsified.",
   "epistemic_state": "HYPOTHESIZED",
   "parent_hypothesis_ids": [],
   "provenance": {

@@ -6,7 +6,7 @@
     "dev_corpus"
   ],
   "queries": [
-    "Traffic signals adapt through emergent pattern formation where each intersection follows simple rules based on local conditions, creating system-level optimization Each intersection follows a simple rule set (e.g., increase green time if queue length exceeds threshold, decrease if queue is zero) that, when applied across the network, creates emergent patterns that optimize flow"
+    "Adaptive signal timing emerges from a competitive resource allocation mechanism where intersections compete for vehicle throughput, with signal adjustments based on relative performance compared to neighboring intersections. Each intersection continuously evaluates its performance (vehicles served per unit time) relative to its neighbors. When an intersection's performance falls below that of its neighbors, it increases its green time for the direction with higher demand, effectively 'competing' for vehicle throughput. This creates a system where intersections dynamically adjust their timing based on relative performance, leading to network-wide optimization through local competition rather than cooperation or explicit optimization."
   ],
   "sources": [],
   "matched_prior_art": [],
@@ -15,5 +15,5 @@
   "confidence": 0.3,
   "cutoff": "2026-08-08",
   "reviewer": "novelty_firewall_v0",
-  "timestamp": "2026-08-08T08:52:11.944899+00:00"
+  "timestamp": "2026-08-08T09:00:58.553397+00:00"
 }
