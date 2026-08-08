@@ -1,109 +1,135 @@
 {
   "artifact_type": "PROTOCOL_A_POWER_CALCULATION",
-  "generated_at_utc": "2026-08-08T22:06:38.056835+00:00",
-  "calculation_type": "EXACT_BINOMIAL (deterministic, no simulation, no RNG)",
+  "calculation_type": "EXACT_BINOMIAL (deterministic, no simulation, no RNG, no timestamp)",
   "protocol": "Protocol A \u2014 Lexical Matcher Discrimination",
   "parameters": {
     "n_null_cases": 20,
     "threshold_fpr": 0.2,
     "threshold_count": 4,
-    "decision_rule": "FPR_shuffled \u2264 0.2 (\u2264 4/20) \u2192 LEXICALLY_SEPARABLE"
+    "decision_rule": "FPR_shuffled \u2264 0.20 (\u2264 4/20) \u2192 LEXICALLY_SEPARABLE"
   },
-  "power_table": [
+  "probability_table": [
     {
       "true_fpr": 0.0,
-      "power": 1.0,
-      "interpretation": "ADEQUATE \u2014 can detect good matchers (FPR\u22640.10) with \u226580% power"
+      "probability_lexically_separable": 1.0,
+      "interpretation": "ADEQUATE \u2014 if true FPR is 0.00, P(LEXICALLY_SEPARABLE) \u2265 80%"
     },
     {
       "true_fpr": 0.05,
-      "power": 0.997426,
-      "interpretation": "ADEQUATE \u2014 can detect good matchers (FPR\u22640.10) with \u226580% power"
+      "probability_lexically_separable": 0.997426,
+      "interpretation": "ADEQUATE \u2014 if true FPR is 0.05, P(LEXICALLY_SEPARABLE) \u2265 80%"
     },
     {
       "true_fpr": 0.1,
-      "power": 0.956826,
-      "interpretation": "ADEQUATE \u2014 can detect good matchers (FPR\u22640.10) with \u226580% power"
+      "probability_lexically_separable": 0.956826,
+      "interpretation": "ADEQUATE \u2014 if true FPR is 0.10, P(LEXICALLY_SEPARABLE) \u2265 80%"
     },
     {
       "true_fpr": 0.15,
-      "power": 0.829847,
-      "interpretation": "ADEQUATE at threshold \u2014 can detect FPR=0.20 with \u226580% power"
+      "probability_lexically_separable": 0.829847,
+      "interpretation": "ADEQUATE at threshold \u2014 if true FPR is 0.15, P(LEXICALLY_SEPARABLE) \u2265 80%"
     },
     {
       "true_fpr": 0.2,
-      "power": 0.629648,
-      "interpretation": "MARGINAL \u2014 ~50% power at FPR=0.25"
+      "probability_lexically_separable": 0.629648,
+      "interpretation": "MARGINAL \u2014 if true FPR is 0.20, P(LEXICALLY_SEPARABLE) \u2248 63%"
     },
     {
       "true_fpr": 0.25,
-      "power": 0.414842,
-      "interpretation": "EXPLORATORY \u2014 insufficient power for confident claim"
+      "probability_lexically_separable": 0.414842,
+      "interpretation": "EXPLORATORY \u2014 if true FPR is 0.25, P(LEXICALLY_SEPARABLE) = 0.4148"
     },
     {
       "true_fpr": 0.3,
-      "power": 0.237508,
-      "interpretation": "EXPLORATORY \u2014 insufficient power for confident claim"
+      "probability_lexically_separable": 0.237508,
+      "interpretation": "EXPLORATORY \u2014 if true FPR is 0.30, P(LEXICALLY_SEPARABLE) = 0.2375"
     },
     {
       "true_fpr": 0.35,
-      "power": 0.118197,
-      "interpretation": "EXPLORATORY \u2014 insufficient power for confident claim"
+      "probability_lexically_separable": 0.118197,
+      "interpretation": "EXPLORATORY \u2014 if true FPR is 0.35, P(LEXICALLY_SEPARABLE) = 0.1182"
     },
     {
       "true_fpr": 0.4,
-      "power": 0.050952,
-      "interpretation": "EXPLORATORY \u2014 insufficient power for confident claim"
+      "probability_lexically_separable": 0.050952,
+      "interpretation": "EXPLORATORY \u2014 if true FPR is 0.40, P(LEXICALLY_SEPARABLE) = 0.0510"
     },
     {
       "true_fpr": 0.5,
-      "power": 0.005909,
-      "interpretation": "GOOD Type I control \u2014 \u22645% false LEXICALLY_SEPARABLE under random H0"
+      "probability_lexically_separable": 0.005909,
+      "interpretation": "GOOD Type I control \u2014 if true FPR is 0.50, P(false LEXICALLY_SEPARABLE) \u2264 5%"
     },
     {
       "true_fpr": 0.6,
-      "power": 0.000317,
-      "interpretation": "GOOD Type I control \u2014 \u22645% false LEXICALLY_SEPARABLE under random H0"
+      "probability_lexically_separable": 0.000317,
+      "interpretation": "GOOD Type I control \u2014 if true FPR is 0.60, P(false LEXICALLY_SEPARABLE) \u2264 5%"
     },
     {
       "true_fpr": 0.7,
-      "power": 6e-06,
-      "interpretation": "GOOD Type I control \u2014 \u22645% false LEXICALLY_SEPARABLE under random H0"
+      "probability_lexically_separable": 6e-06,
+      "interpretation": "GOOD Type I control \u2014 if true FPR is 0.70, P(false LEXICALLY_SEPARABLE) \u2264 5%"
     },
     {
       "true_fpr": 0.8,
-      "power": 0.0,
-      "interpretation": "GOOD Type I control \u2014 \u22645% false LEXICALLY_SEPARABLE under random H0"
+      "probability_lexically_separable": 0.0,
+      "interpretation": "GOOD Type I control \u2014 if true FPR is 0.80, P(false LEXICALLY_SEPARABLE) \u2264 5%"
     },
     {
       "true_fpr": 0.9,
-      "power": 0.0,
-      "interpretation": "GOOD Type I control \u2014 \u22645% false LEXICALLY_SEPARABLE under random H0"
+      "probability_lexically_separable": 0.0,
+      "interpretation": "GOOD Type I control \u2014 if true FPR is 0.90, P(false LEXICALLY_SEPARABLE) \u2264 5%"
     },
     {
       "true_fpr": 1.0,
-      "power": 0.0,
-      "interpretation": "GOOD Type I control \u2014 \u22645% false LEXICALLY_SEPARABLE under random H0"
+      "probability_lexically_separable": 0.0,
+      "interpretation": "GOOD Type I control \u2014 if true FPR is 1.00, P(false LEXICALLY_SEPARABLE) \u2264 5%"
     }
   ],
   "key_values": {
-    "power_at_fpr_0.10": 0.956826,
-    "power_at_fpr_0.20": 0.629648,
-    "power_at_fpr_0.25": 0.414842,
-    "power_at_fpr_0.50": 0.005909
+    "if_true_fpr_0.10": {
+      "description": "If the true null-case FPR is 0.10, the probability that the preregistered rule observes \u22644/20 false matches and therefore classifies the matcher as LEXICALLY_SEPARABLE",
+      "value": 0.956826
+    },
+    "if_true_fpr_0.15": {
+      "description": "If the true null-case FPR is 0.15, the probability that the preregistered rule observes \u22644/20 false matches and therefore classifies the matcher as LEXICALLY_SEPARABLE",
+      "value": 0.829847
+    },
+    "if_true_fpr_0.20": {
+      "description": "If the true null-case FPR is 0.20 (the threshold), the probability that the preregistered rule observes \u22644/20 false matches and therefore classifies the matcher as LEXICALLY_SEPARABLE",
+      "value": 0.629648
+    },
+    "if_true_fpr_0.25": {
+      "description": "If the true null-case FPR is 0.25, the probability that the preregistered rule observes \u22644/20 false matches and therefore classifies the matcher as LEXICALLY_SEPARABLE",
+      "value": 0.414842
+    },
+    "if_true_fpr_0.50": {
+      "description": "If the true null-case FPR is 0.50 (random), the probability that the preregistered rule observes \u22644/20 false matches and therefore classifies the matcher as LEXICALLY_SEPARABLE (Type I error)",
+      "value": 0.005909
+    }
   },
-  "type_1_error": {
-    "h0_fpr_0.30": 0.237508,
-    "h0_fpr_0.40": 0.050952,
-    "h0_fpr_0.50": 0.005909
-  },
+  "type_1_error": [
+    {
+      "h0_fpr": 0.3,
+      "type_1_error": 0.237508
+    },
+    {
+      "h0_fpr": 0.4,
+      "type_1_error": 0.050952
+    },
+    {
+      "h0_fpr": 0.5,
+      "type_1_error": 0.005909
+    }
+  ],
   "classification": "ADEQUATE_FOR_DETECTING_FPR_0.10",
   "interpretation": {
-    "ADEQUATE_FOR_DETECTING_FPR_0.10": "N=20 has \u226580% power to detect FPR=0.10 (a good matcher with 10% accidental match rate). The experiment can confidently distinguish a good matcher from random.",
-    "ADEQUATE_FOR_DETECTING_FPR_0.25": "N=20 has \u226580% power to detect FPR=0.25 but NOT FPR=0.10. The experiment can distinguish a poor matcher from random but cannot confidently verify a good matcher.",
-    "EXPLORATORY_LOW_POWERED": "N=20 has <80% power even at FPR=0.25. The experiment is exploratory and cannot make confident claims about discrimination ability."
+    "ADEQUATE_FOR_DETECTING_FPR_0.10": "If the true null-case FPR is 0.10, the probability that the preregistered rule classifies the matcher as LEXICALLY_SEPARABLE is \u226580%. The experiment can confidently distinguish a good lexical matcher from random.",
+    "ADEQUATE_FOR_DETECTING_FPR_0.25": "If the true null-case FPR is 0.25, the probability that the preregistered rule classifies the matcher as LEXICALLY_SEPARABLE is \u226580%. The experiment can distinguish a poor matcher from random but cannot confidently verify a good matcher.",
+    "EXPLORATORY_LOW_POWERED": "If the true null-case FPR is 0.25, the probability that the preregistered rule classifies the matcher as LEXICALLY_SEPARABLE is <80%. The experiment is exploratory and cannot make confident claims about discrimination ability."
   },
   "claim_limitation": "Protocol A tests LEXICAL separability only. It does NOT test discovery capability, cross-domain relationship discrimination, or engine competence. TPR_true = 1.0 by construction.",
   "mechanically_reproducible": true,
-  "calculation_sha256": "a7c4b099931f8c21fd2185b2ca545ab207047de921fbacd0ce6fde68fa209c86"
+  "reproducibility_note": "This artifact contains no timestamp, no RNG output, and no nondeterministic fields. Running the script twice from identical source produces identical JSON bytes and identical SHA-256 values. Canonical JSON serialization: sort_keys=True, separators=(',', ':').",
+  "calculation_content_sha256": "66aceb04a8d3dcfbbbfb55cfb3820cf28953628e14d18b69a578565ca0cd943b",
+  "artifact_sha256": "14172d4f6cb3adc43e8c451667c8469c2bf33b4a52fe9540291bbf92750b1324"
 }
