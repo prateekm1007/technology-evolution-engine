@@ -234,35 +234,69 @@ def run_case(case_id, reasoning_provider):
 
         print(f"  [{case_id}-{condition}] Generating hypotheses...")
 
-        # ONLY THIS DIFFERS between conditions
-        if condition == "A-baseline":
-            result = hyp_engine.generate(transfer, id_prefix=f"H-{case_id}")
-        elif condition == "B-hgen1":
-            result = hyp_engine.generate(transfer, id_prefix=f"H-{case_id}",
-                mechanism_graph=real_graph)
-        elif condition == "C-null":
-            # Reconstruct null graph from frozen data
-            null_graph_obj = MechanismGraph()
-            for n in null_data["graph"]["nodes"].values():
-                null_graph_obj.add_node(MechanismNode(
-                    node_id=n["node_id"], node_type=MechanismNodeType(n["node_type"]),
-                    label=n["label"], description=n.get("description", ""),
-                    provenance=n.get("provenance", [])))
-            for e in null_data["graph"]["edges"]:
-                null_graph_obj.add_edge(MechanismEdge(
-                    edge_id=e["edge_id"], source_id=e["source_id"], target_id=e["target_id"],
-                    edge_type=MechanismEdgeType(e["edge_type"]),
-                    confidence=e.get("confidence", 0.5), evidence=e.get("evidence", [])))
-            result = hyp_engine.generate(transfer, id_prefix=f"H-{case_id}",
-                mechanism_graph=null_graph_obj)
+        # Reuse existing 04_hypotheses.json if it exists (resume capability)
+        hyp_file = cond_dir / "04_hypotheses.json"
+        if hyp_file.exists():
+            print(f"  [{case_id}-{condition}] Reusing existing 04_hypotheses.json")
+            cached = json.loads(hyp_file.read_text())
+            # Reconstruct real Hypothesis objects from cached data
+            from discovery_infrastructure.discovery_substrate import Hypothesis as HypObj
+            cached_hyps = []
+            for h in cached.get("hypotheses", []):
+                try:
+                    cached_hyps.append(HypObj(
+                        hypothesis_id=h.get("hypothesis_id", h.get("id", "")),
+                        claim=h.get("claim", ""),
+                        mechanism=h.get("mechanism", ""),
+                        evidence=h.get("evidence", []),
+                        assumptions=h.get("assumptions", []),
+                        predictions=h.get("predictions", []),
+                        expected_failure_modes=h.get("expected_failure_modes", []),
+                        novelty_rationale=h.get("novelty_rationale", ""),
+                        testability=h.get("testability", ""),
+                        falsifier=h.get("falsifier", ""),
+                        epistemic_state=EpistemicState(h.get("epistemic_state", "HYPOTHESIZED")),
+                        parent_hypothesis_ids=h.get("parent_hypothesis_ids", []),
+                        is_testable=h.get("is_testable", bool(h.get("falsifier", "").strip())),
+                    ))
+                except Exception as e:
+                    print(f"  [{case_id}-{condition}] WARN: skipping cached hyp {h.get('hypothesis_id','?')}: {e}")
+            # Use a simple result-like object
+            class _LiteResult:
+                pass
+            result = _LiteResult()
+            result.hypotheses = cached_hyps
+            result.distinguishing_predictions = cached.get("distinguishing_predictions", "")
+        else:
+            # ONLY THIS DIFFERS between conditions
+            if condition == "A-baseline":
+                result = hyp_engine.generate(transfer, id_prefix=f"H-{case_id}")
+            elif condition == "B-hgen1":
+                result = hyp_engine.generate(transfer, id_prefix=f"H-{case_id}",
+                    mechanism_graph=real_graph)
+            elif condition == "C-null":
+                # Reconstruct null graph from frozen data
+                null_graph_obj = MechanismGraph()
+                for n in null_data["graph"]["nodes"].values():
+                    null_graph_obj.add_node(MechanismNode(
+                        node_id=n["node_id"], node_type=MechanismNodeType(n["node_type"]),
+                        label=n["label"], description=n.get("description", ""),
+                        provenance=n.get("provenance", [])))
+                for e in null_data["graph"]["edges"]:
+                    null_graph_obj.add_edge(MechanismEdge(
+                        edge_id=e["edge_id"], source_id=e["source_id"], target_id=e["target_id"],
+                        edge_type=MechanismEdgeType(e["edge_type"]),
+                        confidence=e.get("confidence", 0.5), evidence=e.get("evidence", [])))
+                result = hyp_engine.generate(transfer, id_prefix=f"H-{case_id}",
+                    mechanism_graph=null_graph_obj)
 
-        hyp_output = {
-            "hypotheses": [h.to_dict() for h in result.hypotheses],
-            "distinguishing_predictions": result.distinguishing_predictions,
-            "n_hypotheses": len(result.hypotheses),
-            "n_testable": sum(1 for h in result.hypotheses if h.is_testable),
-        }
-        save_json(cond_dir / "04_hypotheses.json", hyp_output)
+            hyp_output = {
+                "hypotheses": [h.to_dict() for h in result.hypotheses],
+                "distinguishing_predictions": result.distinguishing_predictions,
+                "n_hypotheses": len(result.hypotheses),
+                "n_testable": sum(1 for h in result.hypotheses if h.is_testable),
+            }
+            save_json(hyp_file, hyp_output)
 
         # ===== STEP 3: Run UNCHANGED adversarial gate on every hypothesis =====
         print(f"  [{case_id}-{condition}] Running adversarial gate...")
@@ -284,15 +318,16 @@ def run_case(case_id, reasoning_provider):
 
         save_json(cond_dir / "05_adversarial.json", {"results": adv_results})
 
+        n_testable_total = sum(1 for h in result.hypotheses if h.is_testable)
         cond_result = {
             "condition": condition,
             "n_hypotheses": len(result.hypotheses),
-            "n_testable": hyp_output["n_testable"],
+            "n_testable": n_testable_total,
             "n_survived": sum(1 for a in adv_results if a.get("survives")),
             "n_killed": sum(1 for a in adv_results if not a.get("survives") and not a.get("skipped")),
-            "hypotheses": [{"id": h.hypothesis_id, "claim": h.claim[:300],
-                            "mechanism": h.mechanism[:300],
-                            "falsifier": h.falsifier[:300] if h.falsifier else "",
+            "hypotheses": [{"id": h.hypothesis_id, "claim": (h.claim or "")[:300],
+                            "mechanism": (h.mechanism or "")[:300],
+                            "falsifier": (h.falsifier or "")[:300] if h.falsifier else "",
                             "is_testable": h.is_testable}
                            for h in result.hypotheses],
             "adversarial": adv_results,
@@ -409,7 +444,10 @@ def main():
     reasoning = OpenRouterProvider(
         api_key=API_KEY,
         model="nvidia/nemotron-3-ultra-550b-a55b:free",
-        timeout=120,
+        default_max_tokens=8192,
+        timeout=180,
+        max_retries=3,
+        retry_backoff=5.0,
     )
     print(f"Provider: {reasoning.provider_name} / {reasoning.model_name}")
     all_results = []

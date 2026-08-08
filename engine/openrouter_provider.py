@@ -33,13 +33,27 @@ class OpenRouterProvider:
 
     def __init__(self, *, api_key: str, model: str = "moonshotai/kimi-k3",
                  default_temperature: float = 0.2,
-                 default_max_tokens: int = 4096,
-                 timeout: int = 120):
+                 default_max_tokens: int = 8192,
+                 timeout: int = 180,
+                 max_retries: int = 3,
+                 retry_backoff: float = 5.0):
+        """ReasoningProvider backed by OpenRouter.
+
+        Operational parameters (not science):
+          max_retries     — number of retries on empty response or 429/5xx
+          retry_backoff   — seconds to wait between retries (multiplied by attempt #)
+        Nemotron 3 Ultra is a reasoning model whose free tier intermittently
+        returns an empty `content` (when reasoning tokens saturate max_tokens
+        before answer text is produced). Retrying with a higher max_tokens
+        on the next attempt usually recovers a non-empty response.
+        """
         self._api_key = api_key
         self._model = model
         self._default_temperature = default_temperature
         self._default_max_tokens = default_max_tokens
         self._timeout = timeout
+        self._max_retries = max_retries
+        self._retry_backoff = retry_backoff
         self._base_url = "https://openrouter.ai/api/v1/chat/completions"
 
     @property
@@ -84,55 +98,87 @@ class OpenRouterProvider:
             messages.append({"role": "system", "content": system})
         messages.append({"role": "user", "content": prompt})
 
-        start = time.time()
-        try:
-            resp = requests.post(
-                self._base_url,
-                headers={
-                    "Authorization": f"Bearer {self._api_key}",
-                    "Content-Type": "application/json",
-                },
-                json={
-                    "model": self._model,
-                    "messages": messages,
-                    "temperature": temperature,
-                    "max_tokens": max_tokens,
-                },
-                timeout=self._timeout,
-            )
-            manifest.latency_ms = int((time.time() - start) * 1000)
+        # Retry loop: Nemotron free tier intermittently returns empty content
+        # when reasoning_tokens saturate max_tokens before answer text.
+        # On each retry, double max_tokens (up to 32768) to give the model
+        # more room for the answer after its reasoning.
+        attempt_max_tokens = max_tokens
+        last_error = ""
+        for attempt in range(1, self._max_retries + 1):
+            start = time.time()
+            try:
+                resp = requests.post(
+                    self._base_url,
+                    headers={
+                        "Authorization": f"Bearer {self._api_key}",
+                        "Content-Type": "application/json",
+                    },
+                    json={
+                        "model": self._model,
+                        "messages": messages,
+                        "temperature": temperature,
+                        "max_tokens": attempt_max_tokens,
+                    },
+                    timeout=self._timeout,
+                )
+                manifest.latency_ms = int((time.time() - start) * 1000)
 
-            if resp.status_code != 200:
-                manifest.success = False
-                manifest.error = f"HTTP {resp.status_code}: {resp.text[:500]}"
-                return "", manifest
+                if resp.status_code == 429:
+                    last_error = f"HTTP 429: {resp.text[:200]}"
+                    manifest.configuration[f"attempt_{attempt}_status"] = "429"
+                    # backoff and retry
+                    time.sleep(self._retry_backoff * attempt)
+                    continue
+                if resp.status_code >= 500:
+                    last_error = f"HTTP {resp.status_code}: {resp.text[:200]}"
+                    manifest.configuration[f"attempt_{attempt}_status"] = str(resp.status_code)
+                    time.sleep(self._retry_backoff * attempt)
+                    continue
+                if resp.status_code != 200:
+                    manifest.success = False
+                    manifest.error = f"HTTP {resp.status_code}: {resp.text[:500]}"
+                    return "", manifest
 
-            data = resp.json()
-            content = data.get("choices", [{}])[0].get("message", {}).get("content", "")
+                data = resp.json()
+                content = data.get("choices", [{}])[0].get("message", {}).get("content", "")
 
-            if not content or not content.strip():
-                manifest.success = False
-                manifest.error = "empty response"
-                return "", manifest
+                if not content or not content.strip():
+                    # Empty content — reasoning model saturated max_tokens
+                    # with reasoning before producing answer. Retry with more.
+                    last_error = "empty response (reasoning saturated max_tokens)"
+                    manifest.configuration[f"attempt_{attempt}_status"] = "empty"
+                    manifest.configuration[f"attempt_{attempt}_max_tokens"] = attempt_max_tokens
+                    # Double max_tokens for next attempt (cap at 32768)
+                    attempt_max_tokens = min(attempt_max_tokens * 2, 32768)
+                    time.sleep(self._retry_backoff * 0.5 * attempt)
+                    continue
 
-            # Record usage if available
-            usage = data.get("usage", {})
-            manifest.configuration["prompt_tokens"] = usage.get("prompt_tokens", 0)
-            manifest.configuration["completion_tokens"] = usage.get("completion_tokens", 0)
-            manifest.configuration["cost"] = usage.get("cost", 0)
+                # Success — record usage and return
+                usage = data.get("usage", {})
+                manifest.configuration["prompt_tokens"] = usage.get("prompt_tokens", 0)
+                manifest.configuration["completion_tokens"] = usage.get("completion_tokens", 0)
+                manifest.configuration["cost"] = usage.get("cost", 0)
+                manifest.configuration["attempts"] = attempt
+                manifest.configuration["final_max_tokens"] = attempt_max_tokens
+                return content, manifest
 
-            return content, manifest
+            except requests.exceptions.Timeout:
+                manifest.latency_ms = int((time.time() - start) * 1000)
+                last_error = f"timeout after {self._timeout}s (attempt {attempt})"
+                manifest.configuration[f"attempt_{attempt}_status"] = "timeout"
+                time.sleep(self._retry_backoff * attempt)
+                continue
+            except Exception as e:
+                manifest.latency_ms = int((time.time() - start) * 1000)
+                last_error = f"{type(e).__name__}: {e} (attempt {attempt})"
+                manifest.configuration[f"attempt_{attempt}_status"] = "exception"
+                time.sleep(self._retry_backoff * attempt)
+                continue
 
-        except requests.exceptions.Timeout:
-            manifest.latency_ms = int((time.time() - start) * 1000)
-            manifest.success = False
-            manifest.error = f"timeout after {self._timeout}s"
-            return "", manifest
-        except Exception as e:
-            manifest.latency_ms = int((time.time() - start) * 1000)
-            manifest.success = False
-            manifest.error = f"{type(e).__name__}: {e}"
-            return "", manifest
+        # All retries exhausted
+        manifest.success = False
+        manifest.error = f"all {self._max_retries} retries failed; last_error={last_error}"
+        return "", manifest
 
 
 def _prompt_sha(prompt: str) -> str:
