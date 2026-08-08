@@ -1,0 +1,48 @@
+{
+  "phase": 7,
+  "phase_name": "FREEZE F1 OPTIMIZATION",
+  "status": "COMPLETE",
+  "commit": "pending",
+  "protocol_frozen": false,
+  "protocol_frozen_meaning": "Phase 7 is a freeze enforcement task, not a preregistered experiment.",
+  "scientific_results_visible": false,
+  "next_allowed_phase": "8",
+  "timestamp_utc": "2026-08-08T17:50:00Z",
+  "github_ci_status": "NOT_INDEPENDENTLY_VERIFIED",
+
+  "freeze_summary": {
+    "frozen_f1_baseline": 0.5714,
+    "baseline_source": "stage-1-measurement-integrity-baseline",
+    "baseline_cycle": 134,
+    "baseline_sha256": "frozen",
+    "optimization_possible": false,
+    "reason_optimization_impossible": "Zero scientifically eligible metrics. There is nothing to optimize against. The metrics that would measure F1 improvement are themselves not scientifically eligible.",
+    "forbidden_patterns": [
+      "benchmark_tuning",
+      "threshold_lowering",
+      "score_improvement_without_capability",
+      "synonym_expansion_for_score",
+      "matcher_widening_for_score",
+      "gold_set_modification_for_score"
+    ],
+    "enforcement_type": "MECHANICAL (exception-raising, not policy statement)"
+  },
+
+  "why_optimization_is_impossible": {
+    "policy_reason": "STOP_BUILDING.md items 8 and 9: benchmark tuning and score improvements without capability improvement are forbidden permanently (No-Gaming Rule, Prime Directive).",
+    "epistemic_reason": "Phase 4/5/6 established that ALL 38 metrics are forbidden for scientific use (0 eligible). F1 optimization requires scientifically eligible metrics to measure improvement against. There are none.",
+    "mechanical_reason": "engine/f1_optimization_freeze.py raises F1OptimizationForbidden for any forbidden optimization pattern. The freeze is machine-enforced."
+  },
+
+  "m008_status_preserved": {
+    "DETERMINISTIC_UNDER_IDENTICAL_EFFECTIVE_INPUTS": true,
+    "CAUSE_OF_DISCREPANCY_ESTABLISHED": false,
+    "RECONCILIATION_STATUS": "RECONCILIATION_OPEN",
+    "note": "M-008 causal-attribution-open trio preserved. No modification."
+  },
+
+  "phase_7_artifacts": {
+    "freeze_module": "engine/f1_optimization_freeze.py",
+    "freeze_tests": "tests/test_phase7_f1_freeze.py (18 tests, all pass)"
+  }
+}
