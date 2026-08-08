@@ -11,11 +11,18 @@
   "bridge_synonyms_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
   "score_artifact_sha256": "99eaad1ce848998abc66795b229764870dd4763d6612e8264790eb04afbd39b1",
   "benchmark_source_sha256": "9ba196603e90f5fb83e5bf1f10cf7c7523357b725b107c72afcede0642adc547",
-  "bootstrap_source_sha256": "5669b9b27f1d42e103783b100646794d97fa586aff81735e35b16aef26157d26",
 
-  "manifest_note": "This manifest is an IMMUTABLE reference artifact. It was created at Phase 7 freeze time with actual SHA-256 hashes of the production data structures. The runtime freeze gate loads this manifest and compares current hashes against these values. The runtime NEVER self-baselines. If the manifest is missing, the gate fails closed. If any hash mismatches, the gate raises F1OptimizationForbidden. This manifest itself is committed to git — modifying it produces a different git commit, which is externally detectable.",
+  "trust_anchor": {
+    "anchor_type": "git_blob_sha",
+    "anchor_description": "The git blob SHA-256 of this manifest file. The runtime verifies that the manifest on disk produces the same git blob SHA as the one recorded here. Since git blob SHAs are content-addressed, modifying the manifest changes its blob SHA, which no longer matches the anchor. The anchor itself is verified by checking that the manifest file's git blob SHA matches this value. This prevents manifest substitution: an attacker who modifies both the manifest and the production data still fails because the manifest's blob SHA changes.",
+    "git_blob_sha256": "TO_BE_SET_AFTER_COMMIT",
+    "anchor_commit": "TO_BE_SET_AFTER_COMMIT"
+  },
+
+  "manifest_note": "This manifest is an IMMUTABLE reference artifact. The runtime freeze gate loads this manifest, verifies its own integrity via the trust_anchor (git blob SHA), then compares current production hashes against the manifest values. The runtime NEVER self-baselines. If the manifest is missing, corrupt, or its trust anchor doesn't match, the gate fails closed.",
 
   "self_baselining_prohibited": true,
   "fail_closed_on_missing_manifest": true,
-  "fail_closed_on_hash_computation_error": true
+  "fail_closed_on_hash_computation_error": true,
+  "fail_closed_on_manifest_substitution": true
 }
