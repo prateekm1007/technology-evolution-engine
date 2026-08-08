@@ -1,13 +1,15 @@
 {
   "schema_version": 1,
   "run_id": "RUN-DEV-CH-004",
-  "manifest_sha256": "3080c521dfd356b9d40fb64de8b924fa16c328d8e06be1f85c053ccdb425c0b8",
-  "ledger_index_sha256": "ad86b6320ecf02d2a9cf53ce2edc6afb4194c62616f9873b60175ad08aae3d6a",
-  "ledger_inventory_sha256": "6e891be01e6f065724088038ffc2eef28312063f6de9362b6034fddb1eec3476",
-  "freeze_record_sha256": "edd0d4f9071d32c43878a9a9a6e4c96cfa7917b7293cdc06b310db5a4e4b9278",
-  "stage_inventory_sha256": "4f6740ee43f12cae1b08cced6c966dec1f32873d6360e97ab28f1d6968e784e2",
-  "engine_code_sha": "8e2bf668838d2afb943a656e2814b9be04bb5c61",
-  "created_at": "2026-08-08T08:31:25.823998+00:00",
-  "note": "RUN_INTEGRITY_ANCHOR \u2014 the external root of trust. An auditor starts here and verifies every layer below. The anchor's own integrity is verified by comparing it against an externally-recorded value (e.g. the Git commit).",
-  "anchor_sha256": "89aa17b313d34e9ec82268182e403677b02e5eb7677c9daa2f38ec2411c9ca45"
+  "manifest_sha256": "78a3b2329ccaf642abc9d4405e6f65a1dd41cd3a29359213a29a72845109eee3",
+  "ledger_index_sha256": "531ed9aa5ed6e4f83aadb26c56c55130d52a767815cebb6332950e8396774c23",
+  "ledger_inventory_sha256": "69e18f9be0af1bfc30309ff884d88716bb04606730a9e04a41494fdc401570cc",
+  "freeze_record_sha256": "acb243c0034bacd3f540c1cc3de4d54335807fc698914db6c421de7da21027da",
+  "stage_inventory_sha256": "019fca21d74d9595668f28d7cc3845843d44658b4a4c78140a87cfa0c639e0ee",
+  "engine_code_sha": "42d81344d75224f8f641ffd5fed58a6ce0a80af6",
+  "working_tree_clean": false,
+  "working_tree_sha256": "adf55a57130ff79edb136b3a15fd3ade0e735d64a5beb88f1a13d085a6018087",
+  "created_at": "2026-08-08T08:41:41.496139+00:00",
+  "note": "RUN_INTEGRITY_ANCHOR \u2014 the external root of trust. An auditor starts here and verifies every layer below. The anchor's own integrity is verified by comparing it against an externally-recorded value (the Git commit contains the committed anchor file).",
+  "anchor_sha256": "9f0e8e1756a894b1275cffc8778aab5046df29cc2e8ead9fd31c89b541eae097"
 }

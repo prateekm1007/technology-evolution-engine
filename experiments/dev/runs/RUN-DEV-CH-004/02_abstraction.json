@@ -1,9 +1,9 @@
 {
   "stage": "02_abstraction",
   "run_id": "RUN-DEV-CH-004",
-  "code_sha": "8e2bf668838d2afb943a656e2814b9be04bb5c61",
-  "input_hash": "b592821f00b64f30c041b61e38fdaf0f3674b71dee83da959467fead54afe4a5",
-  "output_hash": "4989aead66b2479fba28eb9007b9885588b13849b38c5bc5e06c10872d646bea",
+  "code_sha": "42d81344d75224f8f641ffd5fed58a6ce0a80af6",
+  "input_hash": "c9237b5a1e866d46f73535a2a13d22275ec8790535c2c2de29def86c621da3d3",
+  "output_hash": "b1214fdf8b9a047bda8cc2f4d3018946e5af20f8738dba750aa999f6e8e42585",
   "provider_manifest": {
     "provider": "zai",
     "model": "glm-4-plus",
@@ -13,13 +13,13 @@
       "max_tokens": 4096,
       "system_sha": "da25f0e8a1231c4250cad400e03ce5c0a835dbc6ca8fc600ce255ef3727d663e"
     },
-    "prompt_sha": "db68545be28e4cbc7d54ebc67ee6b5af4fb28613578f59e9bfe80fb3809bbab8",
+    "prompt_sha": "ab160b4a4ff0a24144ada5a7f9d6bcb243a5b889f2e985ee799c83b18bf58f66",
     "seed": null,
     "tool_versions": {
       "z_ai_cli": "z-ai"
     },
-    "timestamp": "2026-08-08T08:30:07.294906+00:00",
-    "latency_ms": 3872,
+    "timestamp": "2026-08-08T08:41:11.149521+00:00",
+    "latency_ms": 4537,
     "success": true,
     "error": ""
   },
@@ -27,43 +27,47 @@
     "pattern": {
       "pattern_id": "MP-DEV-CH-004",
       "source_domain": "myxomycete biology / emergent computation",
-      "causal_structure": "oscillatory contraction generates pressure differentials, enabling directional flow through network paths, which then drives structural reinforcement of high-flow channels and weakening of low-flow channels",
+      "causal_structure": "exploration enables network formation under resource constraints, producing efficient transport pathways",
       "inputs": [
-        "multiple connection paths between sources",
-        "oscillatory contraction capability"
+        "initial exploratory probes",
+        "resource distribution",
+        "environmental obstacles"
       ],
       "conditions": [
-        "variable flow rates through different paths",
-        "structural material availability for remodeling"
+        "resource availability",
+        "environmental constraints",
+        "time for adaptation"
       ],
       "operations": [
-        "generate pressure differentials via rhythmic contraction",
-        "direct flow through preferred paths",
-        "thicken high-flow channels",
-        "thin low-flow channels"
+        "proliferation along favorable paths",
+        "retraction of inefficient connections",
+        "reinforcement of high-flow routes"
       ],
       "intermediate_state": [
-        "pressure-driven flow distribution",
-        "differential flow rates across network"
+        "transient network structure",
+        "uneven resource distribution",
+        "exploration-exploitation balance"
       ],
       "outputs": [
         "optimized transport network",
-        "efficient resource distribution"
+        "efficient resource distribution",
+        "adapted connectivity pattern"
       ],
       "constraints": [
-        "limited structural material",
-        "energy expenditure for contraction and remodeling"
+        "physical limitations of protoplasm",
+        "energy conservation requirements",
+        "environmental boundaries"
       ],
       "failure_conditions": [
-        "material depletion prevents network adaptation",
-        "uniform flow eliminates pressure differentials",
-        "external damage disrupts network connectivity"
+        "complete resource depletion",
+        "insufficient exploratory capacity",
+        "environmental isolation"
       ],
-      "abstract_principle": "adaptive network optimization through flow-dependent structural remodeling",
-      "source_graph_summary": "26 nodes, 14 edges"
+      "abstract_principle": "adaptive network formation through positive feedback and resource optimization",
+      "source_graph_summary": "0 nodes, 0 edges"
     },
     "failures": [],
-    "source_extraction_hash": "62db13c5cf89f1970d526fa4c19575d3b77c7d314ba4812fab65c08c049cace6"
+    "source_extraction_hash": "20ee195a20f0211c41f9e2b116e0a8a560c1e4850dbc75177b1a4473103e908f"
   },
-  "timestamp": "2026-08-08T08:30:11.171378+00:00"
+  "timestamp": "2026-08-08T08:41:15.688073+00:00"
 }
