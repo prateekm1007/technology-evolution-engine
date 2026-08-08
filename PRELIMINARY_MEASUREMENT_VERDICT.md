@@ -2,6 +2,12 @@
 
 ## Verdict: NOT TRUSTWORTHY
 
+**CYCLE 270 UPDATE (F-158):** BRIDGE_SYNONYMS was removed
+(circular validation). All F1 values below were regenerated with empty
+synonym map (m_synonym falls back to m_token). Discovery capability F1
+dropped from 0.9189 to 0.5714. Discovery F1 (shared) dropped from 0.8571
+to 0.7879. These are the honest, non-circular values.
+
 ## Canonical status (cycle 259)
 
 This file remains the CANONICAL measurement verdict. The FINAL verdict
@@ -25,14 +31,14 @@ reports/bootstrap_statistics.json.
 | Token F1 (all entities) | 0.2533 ± 0.0134 | [0.2102, 0.2614] | 20 | 500 |
 | Fuzzy F1 (all entities) | 0.0000 ± 0.0000 | [0.0000, 0.0000] | 20 | 500 |
 | Synonym F1 (all entities) | 0.3053 ± 0.0106 | [0.2564, 0.2963] | 20 | 500 |
-| Discovery F1 (shared, syn, DR-91) | 0.8571 ± 0.0635 | [0.7097, 0.9474] | 20 | 500 |
+| Discovery F1 (shared, syn, DR-91) | 0.7879 ± 0.0809 | [0.6207, 0.9189] | 20 | 500 |
 | Recognition F1 (all, syn, DR-91) | 1.0000 ± 0.0000 | [1.0000, 1.0000] | 20 | 500 |
 | Proposal-locus inflation | 0.1429 ± 0.0635 | [0.0526, 0.2903] | 20 | 500 |
-| FP floor (synonym) | 0.9189 ± 0.0559 | [0.7879, 1.0000] | 20 | 200 |
+| FP floor (synonym) | 0.9189 ± 0.0978 | [0.6667, 1.0000] | 20 | 200 |
 | UNSAFE synonyms count | 18.0000 ± 1.4297 | [15.0000, 20.0000] | 20 | 500 |
 | Per-proposal F1 (honest, lenient) | 0.1000 ± 0.0683 | [0.0000, 0.2500] | 20 | 500 |
-| Aggregate F1 (DR-91) | 0.8571 ± 0.0635 | [0.7097, 0.9474] | 20 | 500 |
-| Aggregate F1 (honest) | 0.8333 ± 0.0692 | [0.6471, 0.9231] | 20 | 500 |
+| Aggregate F1 (DR-91) | 0.7879 ± 0.0809 | [0.6207, 0.9189] | 20 | 500 |
+| Aggregate F1 (honest) | 0.7647 ± 0.0875 | [0.5455, 0.8947] | 20 | 500 |
 | BM25 recall@1 (lenient) | 0.6500 ± 0.1044 | [0.4500, 0.8500] | 20 | 200 |
 | Random baseline F1 (lenient) | 0.1000 ± 0.0739 | [0.0000, 0.2500] | 20 | 200 |
 | Frequency baseline F1 (lenient) | 0.3000 ± 0.0989 | [0.1500, 0.5000] | 20 | 200 |
@@ -53,7 +59,7 @@ transparency. The honest formula is canonical (P0 rule, F-145).
 | Token F1 (all entities) | 0.9744 |
 | Fuzzy F1 (all entities) | 0.0000 |
 | Synonym F1 (all entities) | 1.0000 |
-| Discovery F1 (shared, synonyms) | 0.8571 |
+| Discovery F1 (shared, synonyms) | 0.7879 |
 | Recognition F1 (all, synonyms) | 1.0000 |
 | Proposal-locus inflation | +0.1429 |
 | FP floor (synonym match) | 1.0000 |

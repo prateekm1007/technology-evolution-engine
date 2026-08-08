@@ -1,15 +1,15 @@
 {
   "benchmark": "discovery_capability",
-  "timestamp": "2026-08-07T01:06:24Z",
+  "timestamp": "2026-08-07T23:58:20Z",
   "total_gold_discoveries": 20,
-  "true_positives": 17,
+  "true_positives": 8,
   "false_positives": 0,
-  "false_negatives": 3,
+  "false_negatives": 12,
   "precision": 1.0,
-  "recall": 0.85,
-  "f1": 0.9189,
-  "outcome_points": 3,
-  "total_score": 9,
+  "recall": 0.4,
+  "f1": 0.5714,
+  "outcome_points": 2,
+  "total_score": 6,
   "scoring_formula": "round(10 \u00d7 F1)",
   "per_discovery": [
     {
@@ -17,7 +17,7 @@
       "literature_a": "mycelium biomineralization",
       "literature_b": "calcium carbonate materials",
       "expected_bridge": "biomineralization",
-      "bridge_found": true,
+      "bridge_found": false,
       "entities_a": [
         "Fungi",
         "calcium carbonate",
@@ -40,7 +40,7 @@
       "literature_a": "nanofiber membranes",
       "literature_b": "blood-brain barrier transport",
       "expected_bridge": "tight junctions",
-      "bridge_found": true,
+      "bridge_found": false,
       "entities_a": [
         "Nanofiber membranes act",
         "size-selective barriers",
@@ -63,7 +63,7 @@
       "literature_a": "Stefan-Boltzmann thermal radiation",
       "literature_b": "radiative cooling materials",
       "expected_bridge": "thermal emission",
-      "bridge_found": true,
+      "bridge_found": false,
       "entities_a": [
         "Stefan-Boltzmann law",
         "radiative heat",
@@ -121,7 +121,7 @@
       "literature_a": "photosynthesis light harvesting",
       "literature_b": "photovoltaic solar cells",
       "expected_bridge": "photon absorption",
-      "bridge_found": true,
+      "bridge_found": false,
       "entities_a": [
         "Photosynthetic organisms",
         "chlorophyll",
@@ -323,7 +323,7 @@
       "literature_a": "quantum dot fluorescence",
       "literature_b": "LED light emission",
       "expected_bridge": "bandgap engineering",
-      "bridge_found": true,
+      "bridge_found": false,
       "entities_a": [
         "Quantum dot",
         "energy gap",
@@ -343,7 +343,7 @@
       "literature_a": "aerogel insulation",
       "literature_b": "catalyst support",
       "expected_bridge": "high surface area",
-      "bridge_found": true,
+      "bridge_found": false,
       "entities_a": [
         "Aerogel insulation materials",
         "thermal conductivity",
@@ -362,7 +362,7 @@
       "literature_a": "graphene mechanical strength",
       "literature_b": "composite material reinforcement",
       "expected_bridge": "tensile strength",
-      "bridge_found": true,
+      "bridge_found": false,
       "entities_a": [
         "Graphene",
         "pull resistance",
@@ -383,7 +383,7 @@
       "literature_a": "evaporative cooling",
       "literature_b": "sweat gland physiology",
       "expected_bridge": "latent heat",
-      "bridge_found": true,
+      "bridge_found": false,
       "entities_a": [
         "Evaporative cooling systems",
         "phase-change enthalpy",
@@ -429,7 +429,7 @@
       "literature_a": "electrospinning nanofibers",
       "literature_b": "tissue engineering scaffolds",
       "expected_bridge": "fiber morphology",
-      "bridge_found": true,
+      "bridge_found": false,
       "entities_a": [
         "Electrospinning",
         "nanofibers",

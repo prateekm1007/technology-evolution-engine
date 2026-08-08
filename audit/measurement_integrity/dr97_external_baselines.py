@@ -543,7 +543,7 @@ def random_baseline_lenient(gold_discoveries: List[Dict],
 # COMPARISON: production vs baselines
 # ============================================================================
 
-def compare_to_production(baseline_results: Dict, production_f1: float = 0.8571) -> Dict:
+def compare_to_production(baseline_results: Dict, production_f1: float = 0.7879) -> Dict:
     """Compare a baseline F1 to the production F1 (from PRELIMINARY verdict).
 
     Args:
@@ -591,7 +591,7 @@ def main():
 
     print(f"Gold discoveries: {len(GOLD_DISCOVERIES)}")
     print(f"Synonym entries:  {len(synmap)}")
-    print(f"Production F1 (PRELIMINARY verdict, shared/synonym): 0.8571")
+    print(f"Production F1 (PRELIMINARY verdict, shared/synonym): 0.7879")
     print(f"FP floor (DR-91 audit): 1.0000  ← THIS IS THE REAL BAR")
     print()
 
@@ -622,7 +622,7 @@ def main():
     print("LENIENT MODE — baselines get production's synonym+token rules")
     print("=" * 80)
     print()
-    print("Reference: production LENIENT F1 = 0.8571; FP floor = 1.0000")
+    print("Reference: production LENIENT F1 = 0.7879; FP floor = 1.0000")
     print()
 
     bm25_len = bm25_baseline_lenient(GOLD_DISCOVERIES, synmap)
@@ -634,7 +634,7 @@ def main():
     print(f"{'BM25 (lenient)':<40} {bm25_len['f1_proxy']:<10.4f}")
     print(f"{'Random (lenient, mean of 100)':<40} {rnd_len['mean_f1']:<10.4f}")
     print(f"{'Frequency (lenient)':<40} {freq_len['f1']:<10.4f}")
-    print(f"{'Production (lenient, DR-91)':<40} {0.8571:<10.4f}")
+    print(f"{'Production (lenient, DR-91)':<40} {0.7879:<10.4f}")
     print(f"{'FP floor (lenient, DR-91)':<40} {1.0000:<10.4f}")
     print()
 
@@ -645,9 +645,9 @@ def main():
     print("=" * 80)
     print()
     comparisons = [
-        compare_to_production(bm25_len, production_f1=0.8571),
-        compare_to_production(rnd_len, production_f1=0.8571),
-        compare_to_production(freq_len, production_f1=0.8571),
+        compare_to_production(bm25_len, production_f1=0.7879),
+        compare_to_production(rnd_len, production_f1=0.7879),
+        compare_to_production(freq_len, production_f1=0.7879),
     ]
     print(f"{'Baseline':<40} {'F1':<10} {'Δ vs prod':<12} {'Verdict'}")
     print("-" * 90)
