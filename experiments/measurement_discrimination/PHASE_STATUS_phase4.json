@@ -1,0 +1,78 @@
+{
+  "phase": 4,
+  "phase_name": "Inventory every measurement metric",
+  "status": "COMPLETE",
+  "commit": "pending",
+  "protocol_frozen": false,
+  "protocol_frozen_meaning": "Phase 4 is an inventory task, not a preregistered experiment. The broader measurement/discrimination protocol (Phases 8-17) is not yet frozen.",
+  "scientific_results_visible": true,
+  "scientific_results_note": "Phase 4 produced a metric inventory. This is a measurement infrastructure artifact, not a discovery claim. M-008 is explicitly quarantined.",
+  "next_allowed_phase": "5",
+  "timestamp_utc": "2026-08-08T16:52:00Z",
+  "github_ci_status": "NOT_INDEPENDENTLY_VERIFIED",
+
+  "inventory_summary": {
+    "total_metrics": 38,
+    "quarantined": 1,
+    "critical_path_for_matcher_discrimination": 10,
+    "regeneration_passed": 37,
+    "regeneration_failed": 1,
+    "regeneration_not_tested": 0
+  },
+
+  "critical_path_metrics": ["M-004", "M-005", "M-006", "M-007", "M-008", "M-010", "M-011", "M-012", "M-013", "M-015"],
+
+  "m008_quarantine": {
+    "metric_id": "M-008",
+    "metric_name": "FP floor / false-positive floor",
+    "current_stored_value": 0.9189,
+    "fresh_regenerated_value": 0.8889,
+    "regeneration_status": "FAILED",
+    "value_status": "UNTRUSTED",
+    "measurement_usability": "QUARANTINED",
+    "used_for_scientific_decision": "NO",
+    "value_deleted": "NO",
+    "value_replaced": "NO",
+    "values_averaged": "NO",
+    "historical_provenance": "PENDING_INVESTIGATION",
+    "investigation_required": [
+      "identify provenance of committed 0.9189",
+      "identify exact input dataset/hash",
+      "identify exact code commit",
+      "identify dependency lock",
+      "identify RNG implementation/environment",
+      "reproduce historical computation",
+      "classify cause"
+    ],
+    "note": "M-008 is the single most critical metric. It is the FP floor — if random candidates score near 1.0, the matcher does not discriminate. Current value 0.9189 is ~18x above the 0.05 acceptance threshold (MC-5: FP floor > 5% blocks discovery claims). It does not regenerate (fresh=0.8889, diff=0.030). Per audit round 6: no retroactive repair, no deletion, no replacement, no averaging. The discrepancy must be causally attributed before M-008 can be trusted.",
+    "what_m008_measures": "M-008 measures the False Positive floor of the discovery matcher: what F1 do RANDOM candidates achieve when scored against the gold pool? A discriminating matcher should produce F1 near 0 on random candidates. If random candidates score near 1.0, the matcher does not discriminate at all.",
+    "computation_location": "programs/A_metrology/bootstrap_statistics.py:474-490",
+    "spec_location": "programs/A_metrology/MeasurementEngineSpecification.md:270-295",
+    "inputs": {
+      "gold_set": "GOLD_DISCOVERIES (N=20)",
+      "entity_pool": "all_entities (NLP-extracted, fixed at module load)",
+      "matcher": "m_synonym (falls back to m_token since BRIDGE_SYNONYMS emptied cycle 270)",
+      "f1_formula": "_score_f1_dr91: f1 = 2*recall/(1+recall) (assumes precision=recall)"
+    },
+    "acceptance_criterion": "< 0.05 for any discovery claim",
+    "current_value_vs_threshold": "0.9189 vs 0.05 = 18.4x above threshold",
+    "ci_95": "[0.6667, 1.0000] — CI touches 1.0, meaning true FP floor could plausibly be 100%"
+  },
+
+  "m008_what_it_means_for_the_program": {
+    "matcher_discrimination": "M-008 IS the metric that determines whether the matcher is discriminative. The Phase 8-17 discrimination study depends on this metric being trustworthy. With M-008 quarantined, the discrimination study cannot proceed until the regeneration discrepancy is resolved.",
+    "discovery_claims": "Per MC-5, M-008 > 5% blocks ALL discovery claims. Current value 0.9189 means ALL discovery claims are blocked. This is not new — the Stage -1 audit already established this. The quarantine adds that the 0.9189 value itself is now untrusted.",
+    "no_retroactive_repair": "Per audit round 6: do NOT delete 0.9189, do NOT replace with 0.8889, do NOT average them. The discrepancy is an honest finding that must be causally attributed."
+  },
+
+  "no_retroactive_repair": true,
+  "no_value_deletion": true,
+  "no_value_replacement": true,
+  "no_value_averaging": true,
+
+  "phase_4_artifacts": {
+    "inventory_script": "scripts/phase4_metric_inventory.py",
+    "inventory_result": "reports/phase4/metric_inventory.json",
+    "phase3_corrections": "experiments/measurement_discrimination/PHASE_STATUS_phase3.json (protocol_frozen meaning clarified, NLP overstatement tightened, M-008 quarantine added)"
+  }
+}

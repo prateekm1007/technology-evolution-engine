@@ -5,6 +5,7 @@
   "verdict": "FAIL",
   "commit": "7ca5e18",
   "protocol_frozen": false,
+  "protocol_frozen_meaning": "Phase 3 was an authorized diagnostic/regeneration verification, NOT a preregistered scientific experiment. protocol_frozen=false means Phase 3 itself had no preregistered protocol to freeze. The broader measurement/discrimination protocol (Phases 8-17) is not yet frozen — that occurs at Phase 13 per Amendment 6. Do not flip this to true merely because Phase 3 completed.",
   "scientific_results_visible": true,
   "scientific_results_note": "Phase 3 produced a REGENERATION VERDICT. This is a measurement result, not a discovery claim. The verdict is FAIL because M-008 (FP floor) does not regenerate to the same value as the committed artifact.",
   "next_allowed_phase": "4 (with caveat: Phase 3 FAIL must be acknowledged)",
@@ -47,12 +48,39 @@
       "elapsed_seconds": 1.0,
       "fresh_values": {"f1": 0.5714, "tp": null, "fp": null, "fn": null, "total_score": null},
       "committed_values": {"f1": 0.5714, "tp": null, "fp": null, "fn": null, "total_score": null},
-      "interpretation": "The discovery capability benchmark regenerates exactly. f1=0.5714 matches the committed artifact. The NLP pipeline produces identical results."
+      "interpretation": "run_discovery_benchmark() reproduced the committed discovery_capability_score.json values exactly under the tested environment and invocation. f1=0.5714 matches. This establishes regeneration for this specific benchmark only — it does NOT generalize to the entire NLP pipeline or to other benchmarks not tested."
     }
   },
 
   "overall_verdict": "FAIL",
-  "overall_verdict_reason": "1 of 2 regeneration tests passed. M-008 (bootstrap FP floor) does not regenerate to the committed value. Per the audit: REGENERATION = FAILED, not approximately equivalent.",
+  "overall_verdict_reason": "1 of 2 regeneration tests passed. M-008 (bootstrap FP floor) does not regenerate to the committed value. Per the audit: REGENERATION = FAILED, not approximately equivalent. 36 of 38 metrics reproduced; 2 fields of M-008 did not reproduce. The failure of one metric matters disproportionately because M-008 is the FP floor used to determine whether the discovery matcher is discriminative (MC-5: FP floor > 5% blocks discovery claims).",
+
+  "m008_quarantine": {
+    "metric_id": "M-008",
+    "metric_name": "FP floor / false-positive floor",
+    "current_stored_value": 0.9189,
+    "fresh_regenerated_value": 0.888888888888889,
+    "stored_ci_95_lower": 0.6667,
+    "fresh_ci_95_lower": 0.6206896551724138,
+    "regeneration_status": "FAILED",
+    "value_status": "UNTRUSTED",
+    "measurement_usability": "QUARANTINED",
+    "used_for_scientific_decision": "NO",
+    "value_deleted": "NO",
+    "value_replaced": "NO",
+    "values_averaged": "NO",
+    "historical_provenance": "PENDING_INVESTIGATION",
+    "investigation_required": [
+      "identify provenance of committed 0.9189",
+      "identify exact input dataset/hash",
+      "identify exact code commit",
+      "identify dependency lock",
+      "identify RNG implementation/environment",
+      "reproduce historical computation",
+      "classify cause"
+    ],
+    "note": "M-008 is quarantined per audit round 6. No retroactive repair. No deletion. No replacement. No averaging. The discrepancy is an honest finding that must be causally attributed before M-008 can be trusted. Per MC-5, M-008 (FP floor) is critical-path for the matcher discrimination study."
+  },
 
   "comparison_rule": "SEMANTIC (point estimates match within 1e-4 tolerance; integer counts match exactly). NOT 'approximately equivalent' — precise semantic comparison with tight tolerance. Per audit: no 'approximately equivalent' unless the preregistered comparison rule explicitly permits semantic equivalence, which it does not.",
 

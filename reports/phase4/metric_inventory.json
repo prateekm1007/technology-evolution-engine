@@ -1,0 +1,1379 @@
+{
+  "phase": 4,
+  "phase_name": "Inventory every measurement metric",
+  "timestamp_utc": "2026-08-08T16:52:08.245727+00:00",
+  "git_head": "163d65d18afc7508e2093cd15f98881c1163a9c2",
+  "summary": {
+    "total_metrics": 38,
+    "quarantined": 1,
+    "critical_path_for_matcher_discrimination": 10,
+    "regeneration_passed": 37,
+    "regeneration_failed": 1,
+    "regeneration_not_tested": 0
+  },
+  "m008_quarantine_summary": {
+    "metric_id": "M-008",
+    "metric_name": "FP floor / false-positive floor",
+    "current_stored_value": 0.9189,
+    "fresh_regenerated_value": 0.8889,
+    "regeneration_status": "FAILED",
+    "measurement_usability": "QUARANTINED",
+    "used_for_scientific_decision": "NO",
+    "value_deleted": "NO",
+    "value_replaced": "NO",
+    "values_averaged": "NO",
+    "note": "M-008 is the single most critical metric. It is the FP floor \u2014 if random candidates score near 1.0, the matcher does not discriminate. Current value 0.9189 is ~18x above the 0.05 acceptance threshold. It does not regenerate (fresh=0.8889). Per MC-5, M-008 blocks ALL discovery claims. It is quarantined until the regeneration discrepancy is causally attributed."
+  },
+  "metrics": [
+    {
+      "metric_id": "M-001",
+      "metric_name": "Exact F1 (all entities)",
+      "stored_result": {
+        "point_estimate": 0.0,
+        "bootstrap_mean": 0.0,
+        "bootstrap_std": 0.0,
+        "ci_95_lower": 0.0,
+        "ci_95_upper": 0.0,
+        "ci_95_width": 0.0,
+        "n": 20,
+        "n_resamples": 500,
+        "seed": 42
+      },
+      "definition_location": {
+        "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
+        "computation": "programs/A_metrology/bootstrap_statistics.py",
+        "committed_results": "reports/bootstrap_statistics.json"
+      },
+      "inputs": {
+        "gold_set": "GOLD_DISCOVERIES (N=20, benchmarks/discovery_capability_benchmark.py:105-328)",
+        "entity_pool": "all_entities (NLP-extracted from 40 source snippets, fixed at module load)",
+        "synonym_map": "BRIDGE_SYNONYMS (EMPTY since cycle 270, discovery_capability_benchmark.py:68)",
+        "matchers": "m_exact, m_token, m_synonym (falls back to m_token), m_fuzzy"
+      },
+      "computation": "Exact F1 (all entities) \u2014 strict string equality matching",
+      "regeneration_status": "PASSED",
+      "fresh_regenerated_value": null,
+      "critical_path_for_matcher_discrimination": false,
+      "measurement_usability": "ACTIVE",
+      "used_for_scientific_decision": "NO",
+      "value_deleted": "NO",
+      "value_replaced": "NO",
+      "values_averaged": "NO",
+      "historical_provenance": "COMMITTED"
+    },
+    {
+      "metric_id": "M-002",
+      "metric_name": "Token F1 (all entities)",
+      "stored_result": {
+        "point_estimate": 0.2533,
+        "bootstrap_mean": 0.2413,
+        "bootstrap_std": 0.0134,
+        "ci_95_lower": 0.2102,
+        "ci_95_upper": 0.2614,
+        "ci_95_width": 0.0513,
+        "n": 20,
+        "n_resamples": 500,
+        "seed": 42
+      },
+      "definition_location": {
+        "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
+        "computation": "programs/A_metrology/bootstrap_statistics.py",
+        "committed_results": "reports/bootstrap_statistics.json"
+      },
+      "inputs": {
+        "gold_set": "GOLD_DISCOVERIES (N=20, benchmarks/discovery_capability_benchmark.py:105-328)",
+        "entity_pool": "all_entities (NLP-extracted from 40 source snippets, fixed at module load)",
+        "synonym_map": "BRIDGE_SYNONYMS (EMPTY since cycle 270, discovery_capability_benchmark.py:68)",
+        "matchers": "m_exact, m_token, m_synonym (falls back to m_token), m_fuzzy"
+      },
+      "computation": "Token F1 (all entities) \u2014 substring + shared token matching",
+      "regeneration_status": "PASSED",
+      "fresh_regenerated_value": null,
+      "critical_path_for_matcher_discrimination": false,
+      "measurement_usability": "ACTIVE",
+      "used_for_scientific_decision": "NO",
+      "value_deleted": "NO",
+      "value_replaced": "NO",
+      "values_averaged": "NO",
+      "historical_provenance": "COMMITTED"
+    },
+    {
+      "metric_id": "M-003",
+      "metric_name": "Fuzzy F1 (all entities)",
+      "stored_result": {
+        "point_estimate": 0.0,
+        "bootstrap_mean": 0.0,
+        "bootstrap_std": 0.0,
+        "ci_95_lower": 0.0,
+        "ci_95_upper": 0.0,
+        "ci_95_width": 0.0,
+        "n": 20,
+        "n_resamples": 500,
+        "seed": 42
+      },
+      "definition_location": {
+        "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
+        "computation": "programs/A_metrology/bootstrap_statistics.py",
+        "committed_results": "reports/bootstrap_statistics.json"
+      },
+      "inputs": {
+        "gold_set": "GOLD_DISCOVERIES (N=20, benchmarks/discovery_capability_benchmark.py:105-328)",
+        "entity_pool": "all_entities (NLP-extracted from 40 source snippets, fixed at module load)",
+        "synonym_map": "BRIDGE_SYNONYMS (EMPTY since cycle 270, discovery_capability_benchmark.py:68)",
+        "matchers": "m_exact, m_token, m_synonym (falls back to m_token), m_fuzzy"
+      },
+      "computation": "Fuzzy F1 (all entities) \u2014 fuzzy string matching",
+      "regeneration_status": "PASSED",
+      "fresh_regenerated_value": null,
+      "critical_path_for_matcher_discrimination": false,
+      "measurement_usability": "ACTIVE",
+      "used_for_scientific_decision": "NO",
+      "value_deleted": "NO",
+      "value_replaced": "NO",
+      "values_averaged": "NO",
+      "historical_provenance": "COMMITTED"
+    },
+    {
+      "metric_id": "M-004",
+      "metric_name": "Synonym F1 (all entities)",
+      "stored_result": {
+        "point_estimate": 0.2533,
+        "bootstrap_mean": 0.2413,
+        "bootstrap_std": 0.0134,
+        "ci_95_lower": 0.2102,
+        "ci_95_upper": 0.2614,
+        "ci_95_width": 0.0513,
+        "n": 20,
+        "n_resamples": 500,
+        "seed": 42
+      },
+      "definition_location": {
+        "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
+        "computation": "programs/A_metrology/bootstrap_statistics.py",
+        "committed_results": "reports/bootstrap_statistics.json"
+      },
+      "inputs": {
+        "gold_set": "GOLD_DISCOVERIES (N=20, benchmarks/discovery_capability_benchmark.py:105-328)",
+        "entity_pool": "all_entities (NLP-extracted from 40 source snippets, fixed at module load)",
+        "synonym_map": "BRIDGE_SYNONYMS (EMPTY since cycle 270, discovery_capability_benchmark.py:68)",
+        "matchers": "m_exact, m_token, m_synonym (falls back to m_token), m_fuzzy"
+      },
+      "computation": "Synonym F1 (all entities) \u2014 synonym-aware matching (now falls back to token since BRIDGE_SYNONYMS emptied)",
+      "regeneration_status": "PASSED",
+      "fresh_regenerated_value": null,
+      "critical_path_for_matcher_discrimination": true,
+      "measurement_usability": "ACTIVE",
+      "used_for_scientific_decision": "YES",
+      "value_deleted": "NO",
+      "value_replaced": "NO",
+      "values_averaged": "NO",
+      "historical_provenance": "COMMITTED"
+    },
+    {
+      "metric_id": "M-005",
+      "metric_name": "Discovery F1 (shared, syn, DR-91)",
+      "stored_result": {
+        "point_estimate": 0.7879,
+        "bootstrap_mean": 0.7834,
+        "bootstrap_std": 0.0809,
+        "ci_95_lower": 0.6207,
+        "ci_95_upper": 0.9189,
+        "ci_95_width": 0.2982,
+        "n": 20,
+        "n_resamples": 500,
+        "seed": 42
+      },
+      "definition_location": {
+        "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
+        "computation": "programs/A_metrology/bootstrap_statistics.py",
+        "committed_results": "reports/bootstrap_statistics.json"
+      },
+      "inputs": {
+        "gold_set": "GOLD_DISCOVERIES (N=20, benchmarks/discovery_capability_benchmark.py:105-328)",
+        "entity_pool": "all_entities (NLP-extracted from 40 source snippets, fixed at module load)",
+        "synonym_map": "BRIDGE_SYNONYMS (EMPTY since cycle 270, discovery_capability_benchmark.py:68)",
+        "matchers": "m_exact, m_token, m_synonym (falls back to m_token), m_fuzzy"
+      },
+      "computation": "Discovery F1 (shared, synonym, DR-91) \u2014 F1 = 2*recall/(1+recall), the headline discovery metric",
+      "regeneration_status": "PASSED",
+      "fresh_regenerated_value": null,
+      "critical_path_for_matcher_discrimination": true,
+      "measurement_usability": "ACTIVE",
+      "used_for_scientific_decision": "YES",
+      "value_deleted": "NO",
+      "value_replaced": "NO",
+      "values_averaged": "NO",
+      "historical_provenance": "COMMITTED"
+    },
+    {
+      "metric_id": "M-006",
+      "metric_name": "Recognition F1 (all, syn, DR-91)",
+      "stored_result": {
+        "point_estimate": 0.9744,
+        "bootstrap_mean": 0.9751,
+        "bootstrap_std": 0.0252,
+        "ci_95_lower": 0.9189,
+        "ci_95_upper": 1.0,
+        "ci_95_width": 0.0811,
+        "n": 20,
+        "n_resamples": 500,
+        "seed": 42
+      },
+      "definition_location": {
+        "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
+        "computation": "programs/A_metrology/bootstrap_statistics.py",
+        "committed_results": "reports/bootstrap_statistics.json"
+      },
+      "inputs": {
+        "gold_set": "GOLD_DISCOVERIES (N=20, benchmarks/discovery_capability_benchmark.py:105-328)",
+        "entity_pool": "all_entities (NLP-extracted from 40 source snippets, fixed at module load)",
+        "synonym_map": "BRIDGE_SYNONYMS (EMPTY since cycle 270, discovery_capability_benchmark.py:68)",
+        "matchers": "m_exact, m_token, m_synonym (falls back to m_token), m_fuzzy"
+      },
+      "computation": "Recognition F1 (all, synonym, DR-91) \u2014 recognition metric for inflation diagnosis",
+      "regeneration_status": "PASSED",
+      "fresh_regenerated_value": null,
+      "critical_path_for_matcher_discrimination": true,
+      "measurement_usability": "ACTIVE",
+      "used_for_scientific_decision": "YES",
+      "value_deleted": "NO",
+      "value_replaced": "NO",
+      "values_averaged": "NO",
+      "historical_provenance": "COMMITTED"
+    },
+    {
+      "metric_id": "M-007",
+      "metric_name": "Proposal-locus inflation",
+      "stored_result": {
+        "point_estimate": 0.1865,
+        "bootstrap_mean": 0.1917,
+        "bootstrap_std": 0.0768,
+        "ci_95_lower": 0.0554,
+        "ci_95_upper": 0.3759,
+        "ci_95_width": 0.3205,
+        "n": 20,
+        "n_resamples": 500,
+        "seed": 42
+      },
+      "definition_location": {
+        "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
+        "computation": "programs/A_metrology/bootstrap_statistics.py",
+        "committed_results": "reports/bootstrap_statistics.json"
+      },
+      "inputs": {
+        "gold_set": "GOLD_DISCOVERIES (N=20, benchmarks/discovery_capability_benchmark.py:105-328)",
+        "entity_pool": "all_entities (NLP-extracted from 40 source snippets, fixed at module load)",
+        "synonym_map": "BRIDGE_SYNONYMS (EMPTY since cycle 270, discovery_capability_benchmark.py:68)",
+        "matchers": "m_exact, m_token, m_synonym (falls back to m_token), m_fuzzy"
+      },
+      "computation": "Proposal-locus inflation \u2014 difference between M-006 and M-005",
+      "regeneration_status": "PASSED",
+      "fresh_regenerated_value": null,
+      "critical_path_for_matcher_discrimination": true,
+      "measurement_usability": "ACTIVE",
+      "used_for_scientific_decision": "YES",
+      "value_deleted": "NO",
+      "value_replaced": "NO",
+      "values_averaged": "NO",
+      "historical_provenance": "COMMITTED"
+    },
+    {
+      "metric_id": "M-008",
+      "metric_name": "FP floor (synonym)",
+      "stored_result": {
+        "point_estimate": 0.9189,
+        "bootstrap_mean": 0.867,
+        "bootstrap_std": 0.0978,
+        "ci_95_lower": 0.6667,
+        "ci_95_upper": 1.0,
+        "ci_95_width": 0.3333,
+        "n": 20,
+        "n_resamples": 200,
+        "seed": 42
+      },
+      "definition_location": {
+        "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
+        "computation": "programs/A_metrology/bootstrap_statistics.py",
+        "committed_results": "reports/bootstrap_statistics.json"
+      },
+      "inputs": {
+        "gold_set": "GOLD_DISCOVERIES (N=20, benchmarks/discovery_capability_benchmark.py:105-328)",
+        "entity_pool": "all_entities (NLP-extracted from 40 source snippets, fixed at module load)",
+        "synonym_map": "BRIDGE_SYNONYMS (EMPTY since cycle 270, discovery_capability_benchmark.py:68)",
+        "matchers": "m_exact, m_token, m_synonym (falls back to m_token), m_fuzzy"
+      },
+      "computation": "FP floor (synonym match) \u2014 F1 of RANDOM candidates against gold pool. SHOULD be near 0 for a discriminating matcher. Currently 0.9189 = matcher does NOT discriminate.",
+      "regeneration_status": "FAILED",
+      "fresh_regenerated_value": 0.6206896551724138,
+      "critical_path_for_matcher_discrimination": true,
+      "measurement_usability": "QUARANTINED",
+      "used_for_scientific_decision": "NO",
+      "value_deleted": "NO",
+      "value_replaced": "NO",
+      "values_averaged": "NO",
+      "historical_provenance": "PENDING_INVESTIGATION",
+      "investigation_required": [
+        "identify provenance of committed 0.9189",
+        "identify exact input dataset/hash",
+        "identify exact code commit",
+        "identify dependency lock",
+        "identify RNG implementation/environment",
+        "reproduce historical computation",
+        "classify cause"
+      ],
+      "quarantine_note": "M-008 is quarantined per audit round 6. The FP floor does not regenerate (fresh=0.8889 vs committed=0.9189, diff=0.030). No retroactive repair. No deletion. No replacement. No averaging. The discrepancy must be causally attributed before M-008 can be trusted. Per MC-5, M-008 (FP floor > 5% blocks discovery claims) is the single most critical metric for the matcher discrimination study."
+    },
+    {
+      "metric_id": "M-009",
+      "metric_name": "UNSAFE synonyms count",
+      "stored_result": {
+        "point_estimate": 0.0,
+        "bootstrap_mean": 0.0,
+        "bootstrap_std": 0.0,
+        "ci_95_lower": 0.0,
+        "ci_95_upper": 0.0,
+        "ci_95_width": 0.0,
+        "n": 20,
+        "n_resamples": 500,
+        "seed": 42
+      },
+      "definition_location": {
+        "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
+        "computation": "programs/A_metrology/bootstrap_statistics.py",
+        "committed_results": "reports/bootstrap_statistics.json"
+      },
+      "inputs": {
+        "gold_set": "GOLD_DISCOVERIES (N=20, benchmarks/discovery_capability_benchmark.py:105-328)",
+        "entity_pool": "all_entities (NLP-extracted from 40 source snippets, fixed at module load)",
+        "synonym_map": "BRIDGE_SYNONYMS (EMPTY since cycle 270, discovery_capability_benchmark.py:68)",
+        "matchers": "m_exact, m_token, m_synonym (falls back to m_token), m_fuzzy"
+      },
+      "computation": "UNSAFE synonyms count \u2014 count of circular/gold-derived synonyms (now 0)",
+      "regeneration_status": "PASSED",
+      "fresh_regenerated_value": null,
+      "critical_path_for_matcher_discrimination": false,
+      "measurement_usability": "ACTIVE",
+      "used_for_scientific_decision": "NO",
+      "value_deleted": "NO",
+      "value_replaced": "NO",
+      "values_averaged": "NO",
+      "historical_provenance": "COMMITTED"
+    },
+    {
+      "metric_id": "M-010",
+      "metric_name": "Per-proposal F1 (honest, lenient, ALL shared)",
+      "stored_result": {
+        "point_estimate": 0.65,
+        "bootstrap_mean": 0.6511,
+        "bootstrap_std": 0.1081,
+        "ci_95_lower": 0.45,
+        "ci_95_upper": 0.85,
+        "ci_95_width": 0.4,
+        "n": 20,
+        "n_resamples": 500,
+        "seed": 42
+      },
+      "definition_location": {
+        "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
+        "computation": "programs/A_metrology/bootstrap_statistics.py",
+        "committed_results": "reports/bootstrap_statistics.json"
+      },
+      "inputs": {
+        "gold_set": "GOLD_DISCOVERIES (N=20, benchmarks/discovery_capability_benchmark.py:105-328)",
+        "entity_pool": "all_entities (NLP-extracted from 40 source snippets, fixed at module load)",
+        "synonym_map": "BRIDGE_SYNONYMS (EMPTY since cycle 270, discovery_capability_benchmark.py:68)",
+        "matchers": "m_exact, m_token, m_synonym (falls back to m_token), m_fuzzy"
+      },
+      "computation": "Per-proposal F1 (honest, lenient, ALL shared) \u2014 honest per-proposal F1",
+      "regeneration_status": "PASSED",
+      "fresh_regenerated_value": null,
+      "critical_path_for_matcher_discrimination": true,
+      "measurement_usability": "ACTIVE",
+      "used_for_scientific_decision": "YES",
+      "value_deleted": "NO",
+      "value_replaced": "NO",
+      "values_averaged": "NO",
+      "historical_provenance": "COMMITTED"
+    },
+    {
+      "metric_id": "M-011",
+      "metric_name": "Per-proposal F1 (strict, honest)",
+      "stored_result": {
+        "point_estimate": 0.0,
+        "bootstrap_mean": 0.0,
+        "bootstrap_std": 0.0,
+        "ci_95_lower": 0.0,
+        "ci_95_upper": 0.0,
+        "ci_95_width": 0.0,
+        "n": 20,
+        "n_resamples": 500,
+        "seed": 42
+      },
+      "definition_location": {
+        "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
+        "computation": "programs/A_metrology/bootstrap_statistics.py",
+        "committed_results": "reports/bootstrap_statistics.json"
+      },
+      "inputs": {
+        "gold_set": "GOLD_DISCOVERIES (N=20, benchmarks/discovery_capability_benchmark.py:105-328)",
+        "entity_pool": "all_entities (NLP-extracted from 40 source snippets, fixed at module load)",
+        "synonym_map": "BRIDGE_SYNONYMS (EMPTY since cycle 270, discovery_capability_benchmark.py:68)",
+        "matchers": "m_exact, m_token, m_synonym (falls back to m_token), m_fuzzy"
+      },
+      "computation": "Per-proposal F1 (strict, honest) \u2014 strict per-proposal F1",
+      "regeneration_status": "PASSED",
+      "fresh_regenerated_value": null,
+      "critical_path_for_matcher_discrimination": true,
+      "measurement_usability": "ACTIVE",
+      "used_for_scientific_decision": "YES",
+      "value_deleted": "NO",
+      "value_replaced": "NO",
+      "values_averaged": "NO",
+      "historical_provenance": "COMMITTED"
+    },
+    {
+      "metric_id": "M-012",
+      "metric_name": "Aggregate F1 (DR-91)",
+      "stored_result": {
+        "point_estimate": 0.7879,
+        "bootstrap_mean": 0.7834,
+        "bootstrap_std": 0.0809,
+        "ci_95_lower": 0.6207,
+        "ci_95_upper": 0.9189,
+        "ci_95_width": 0.2982,
+        "n": 20,
+        "n_resamples": 500,
+        "seed": 42
+      },
+      "definition_location": {
+        "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
+        "computation": "programs/A_metrology/bootstrap_statistics.py",
+        "committed_results": "reports/bootstrap_statistics.json"
+      },
+      "inputs": {
+        "gold_set": "GOLD_DISCOVERIES (N=20, benchmarks/discovery_capability_benchmark.py:105-328)",
+        "entity_pool": "all_entities (NLP-extracted from 40 source snippets, fixed at module load)",
+        "synonym_map": "BRIDGE_SYNONYMS (EMPTY since cycle 270, discovery_capability_benchmark.py:68)",
+        "matchers": "m_exact, m_token, m_synonym (falls back to m_token), m_fuzzy"
+      },
+      "computation": "Aggregate F1 (DR-91 convention) \u2014 formula-inflated aggregate",
+      "regeneration_status": "PASSED",
+      "fresh_regenerated_value": null,
+      "critical_path_for_matcher_discrimination": true,
+      "measurement_usability": "ACTIVE",
+      "used_for_scientific_decision": "YES",
+      "value_deleted": "NO",
+      "value_replaced": "NO",
+      "values_averaged": "NO",
+      "historical_provenance": "COMMITTED"
+    },
+    {
+      "metric_id": "M-013",
+      "metric_name": "Aggregate F1 (honest)",
+      "stored_result": {
+        "point_estimate": 0.7647,
+        "bootstrap_mean": 0.7376,
+        "bootstrap_std": 0.0875,
+        "ci_95_lower": 0.5455,
+        "ci_95_upper": 0.8947,
+        "ci_95_width": 0.3493,
+        "n": 20,
+        "n_resamples": 500,
+        "seed": 42
+      },
+      "definition_location": {
+        "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
+        "computation": "programs/A_metrology/bootstrap_statistics.py",
+        "committed_results": "reports/bootstrap_statistics.json"
+      },
+      "inputs": {
+        "gold_set": "GOLD_DISCOVERIES (N=20, benchmarks/discovery_capability_benchmark.py:105-328)",
+        "entity_pool": "all_entities (NLP-extracted from 40 source snippets, fixed at module load)",
+        "synonym_map": "BRIDGE_SYNONYMS (EMPTY since cycle 270, discovery_capability_benchmark.py:68)",
+        "matchers": "m_exact, m_token, m_synonym (falls back to m_token), m_fuzzy"
+      },
+      "computation": "Aggregate F1 (honest convention) \u2014 honest aggregate F1",
+      "regeneration_status": "PASSED",
+      "fresh_regenerated_value": null,
+      "critical_path_for_matcher_discrimination": true,
+      "measurement_usability": "ACTIVE",
+      "used_for_scientific_decision": "YES",
+      "value_deleted": "NO",
+      "value_replaced": "NO",
+      "values_averaged": "NO",
+      "historical_provenance": "COMMITTED"
+    },
+    {
+      "metric_id": "M-014",
+      "metric_name": "BM25 recall@1 (lenient)",
+      "stored_result": {
+        "point_estimate": 0.3,
+        "bootstrap_mean": 0.299,
+        "bootstrap_std": 0.0997,
+        "ci_95_lower": 0.1487,
+        "ci_95_upper": 0.5,
+        "ci_95_width": 0.3513,
+        "n": 20,
+        "n_resamples": 200,
+        "seed": 42
+      },
+      "definition_location": {
+        "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
+        "computation": "programs/A_metrology/bootstrap_statistics.py",
+        "committed_results": "reports/bootstrap_statistics.json"
+      },
+      "inputs": {
+        "gold_set": "GOLD_DISCOVERIES (N=20, benchmarks/discovery_capability_benchmark.py:105-328)",
+        "entity_pool": "all_entities (NLP-extracted from 40 source snippets, fixed at module load)",
+        "synonym_map": "BRIDGE_SYNONYMS (EMPTY since cycle 270, discovery_capability_benchmark.py:68)",
+        "matchers": "m_exact, m_token, m_synonym (falls back to m_token), m_fuzzy"
+      },
+      "computation": "BM25 baseline recall@1 (lenient) \u2014 oracle-assisted BM25 baseline",
+      "regeneration_status": "PASSED",
+      "fresh_regenerated_value": null,
+      "critical_path_for_matcher_discrimination": false,
+      "measurement_usability": "ACTIVE",
+      "used_for_scientific_decision": "NO",
+      "value_deleted": "NO",
+      "value_replaced": "NO",
+      "values_averaged": "NO",
+      "historical_provenance": "COMMITTED"
+    },
+    {
+      "metric_id": "M-015",
+      "metric_name": "Random baseline F1 (lenient)",
+      "stored_result": {
+        "point_estimate": 0.05,
+        "bootstrap_mean": 0.05,
+        "bootstrap_std": 0.0517,
+        "ci_95_lower": 0.0,
+        "ci_95_upper": 0.15,
+        "ci_95_width": 0.15,
+        "n": 20,
+        "n_resamples": 200,
+        "seed": 42
+      },
+      "definition_location": {
+        "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
+        "computation": "programs/A_metrology/bootstrap_statistics.py",
+        "committed_results": "reports/bootstrap_statistics.json"
+      },
+      "inputs": {
+        "gold_set": "GOLD_DISCOVERIES (N=20, benchmarks/discovery_capability_benchmark.py:105-328)",
+        "entity_pool": "all_entities (NLP-extracted from 40 source snippets, fixed at module load)",
+        "synonym_map": "BRIDGE_SYNONYMS (EMPTY since cycle 270, discovery_capability_benchmark.py:68)",
+        "matchers": "m_exact, m_token, m_synonym (falls back to m_token), m_fuzzy"
+      },
+      "computation": "Random baseline F1 (lenient) \u2014 random 2-gram candidate baseline",
+      "regeneration_status": "PASSED",
+      "fresh_regenerated_value": null,
+      "critical_path_for_matcher_discrimination": true,
+      "measurement_usability": "ACTIVE",
+      "used_for_scientific_decision": "YES",
+      "value_deleted": "NO",
+      "value_replaced": "NO",
+      "values_averaged": "NO",
+      "historical_provenance": "COMMITTED"
+    },
+    {
+      "metric_id": "M-016",
+      "metric_name": "Frequency baseline F1 (lenient)",
+      "stored_result": {
+        "point_estimate": 0.1,
+        "bootstrap_mean": 0.1025,
+        "bootstrap_std": 0.0748,
+        "ci_95_lower": 0.0,
+        "ci_95_upper": 0.25,
+        "ci_95_width": 0.25,
+        "n": 20,
+        "n_resamples": 200,
+        "seed": 42
+      },
+      "definition_location": {
+        "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
+        "computation": "programs/A_metrology/bootstrap_statistics.py",
+        "committed_results": "reports/bootstrap_statistics.json"
+      },
+      "inputs": {
+        "gold_set": "GOLD_DISCOVERIES (N=20, benchmarks/discovery_capability_benchmark.py:105-328)",
+        "entity_pool": "all_entities (NLP-extracted from 40 source snippets, fixed at module load)",
+        "synonym_map": "BRIDGE_SYNONYMS (EMPTY since cycle 270, discovery_capability_benchmark.py:68)",
+        "matchers": "m_exact, m_token, m_synonym (falls back to m_token), m_fuzzy"
+      },
+      "computation": "Frequency baseline F1 (lenient) \u2014 frequency-based baseline",
+      "regeneration_status": "PASSED",
+      "fresh_regenerated_value": null,
+      "critical_path_for_matcher_discrimination": false,
+      "measurement_usability": "ACTIVE",
+      "used_for_scientific_decision": "NO",
+      "value_deleted": "NO",
+      "value_replaced": "NO",
+      "values_averaged": "NO",
+      "historical_provenance": "COMMITTED"
+    },
+    {
+      "metric_id": "M-301",
+      "metric_name": "AI surrogate accept rate",
+      "stored_result": {
+        "point_estimate": 0.0,
+        "bootstrap_mean": 0.0,
+        "bootstrap_std": 0.0,
+        "ci_95_lower": 0.0,
+        "ci_95_upper": 0.0,
+        "ci_95_width": 0.0,
+        "n": 6,
+        "n_resamples": 500,
+        "seed": 42
+      },
+      "definition_location": {
+        "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
+        "computation": "programs/A_metrology/bootstrap_statistics.py",
+        "committed_results": "reports/bootstrap_statistics.json"
+      },
+      "inputs": {
+        "source": "reports/tier2_review_aggregated.json, reports/tier2_review_responses.csv, reports/dr95_calibration_research.json, reports/calibration_study.json",
+        "description": "AI surrogate evaluation and calibration data"
+      },
+      "computation": "M-301 \u2014 AI surrogate evaluation / calibration metric",
+      "regeneration_status": "PASSED",
+      "fresh_regenerated_value": null,
+      "critical_path_for_matcher_discrimination": false,
+      "measurement_usability": "ACTIVE",
+      "used_for_scientific_decision": "NO",
+      "value_deleted": "NO",
+      "value_replaced": "NO",
+      "values_averaged": "NO",
+      "historical_provenance": "COMMITTED"
+    },
+    {
+      "metric_id": "M-302",
+      "metric_name": "AI surrogate overall mean score",
+      "stored_result": {
+        "point_estimate": 2.2381,
+        "bootstrap_mean": 2.2325,
+        "bootstrap_std": 0.309,
+        "ci_95_lower": 1.678,
+        "ci_95_upper": 2.8458,
+        "ci_95_width": 1.1679,
+        "n": 7,
+        "n_resamples": 500,
+        "seed": 42
+      },
+      "definition_location": {
+        "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
+        "computation": "programs/A_metrology/bootstrap_statistics.py",
+        "committed_results": "reports/bootstrap_statistics.json"
+      },
+      "inputs": {
+        "source": "reports/tier2_review_aggregated.json, reports/tier2_review_responses.csv, reports/dr95_calibration_research.json, reports/calibration_study.json",
+        "description": "AI surrogate evaluation and calibration data"
+      },
+      "computation": "M-302 \u2014 AI surrogate evaluation / calibration metric",
+      "regeneration_status": "PASSED",
+      "fresh_regenerated_value": null,
+      "critical_path_for_matcher_discrimination": false,
+      "measurement_usability": "ACTIVE",
+      "used_for_scientific_decision": "NO",
+      "value_deleted": "NO",
+      "value_replaced": "NO",
+      "values_averaged": "NO",
+      "historical_provenance": "COMMITTED"
+    },
+    {
+      "metric_id": "M-303-D1",
+      "metric_name": "AI surrogate D1 mean",
+      "stored_result": {
+        "point_estimate": 4.0,
+        "bootstrap_mean": 3.9933,
+        "bootstrap_std": 0.2394,
+        "ci_95_lower": 3.5,
+        "ci_95_upper": 4.5,
+        "ci_95_width": 1.0,
+        "n": 6,
+        "n_resamples": 500,
+        "seed": 42
+      },
+      "definition_location": {
+        "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
+        "computation": "programs/A_metrology/bootstrap_statistics.py",
+        "committed_results": "reports/bootstrap_statistics.json"
+      },
+      "inputs": {
+        "source": "reports/tier2_review_aggregated.json, reports/tier2_review_responses.csv, reports/dr95_calibration_research.json, reports/calibration_study.json",
+        "description": "AI surrogate evaluation and calibration data"
+      },
+      "computation": "M-303-D1 \u2014 AI surrogate evaluation / calibration metric",
+      "regeneration_status": "PASSED",
+      "fresh_regenerated_value": null,
+      "critical_path_for_matcher_discrimination": false,
+      "measurement_usability": "ACTIVE",
+      "used_for_scientific_decision": "NO",
+      "value_deleted": "NO",
+      "value_replaced": "NO",
+      "values_averaged": "NO",
+      "historical_provenance": "COMMITTED"
+    },
+    {
+      "metric_id": "M-303-D2",
+      "metric_name": "AI surrogate D2 mean",
+      "stored_result": {
+        "point_estimate": 1.1667,
+        "bootstrap_mean": 1.169,
+        "bootstrap_std": 0.1485,
+        "ci_95_lower": 1.0,
+        "ci_95_upper": 1.5,
+        "ci_95_width": 0.5,
+        "n": 6,
+        "n_resamples": 500,
+        "seed": 42
+      },
+      "definition_location": {
+        "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
+        "computation": "programs/A_metrology/bootstrap_statistics.py",
+        "committed_results": "reports/bootstrap_statistics.json"
+      },
+      "inputs": {
+        "source": "reports/tier2_review_aggregated.json, reports/tier2_review_responses.csv, reports/dr95_calibration_research.json, reports/calibration_study.json",
+        "description": "AI surrogate evaluation and calibration data"
+      },
+      "computation": "M-303-D2 \u2014 AI surrogate evaluation / calibration metric",
+      "regeneration_status": "PASSED",
+      "fresh_regenerated_value": null,
+      "critical_path_for_matcher_discrimination": false,
+      "measurement_usability": "ACTIVE",
+      "used_for_scientific_decision": "NO",
+      "value_deleted": "NO",
+      "value_replaced": "NO",
+      "values_averaged": "NO",
+      "historical_provenance": "COMMITTED"
+    },
+    {
+      "metric_id": "M-303-D3",
+      "metric_name": "AI surrogate D3 mean",
+      "stored_result": {
+        "point_estimate": 2.0,
+        "bootstrap_mean": 2.0,
+        "bootstrap_std": 0.0,
+        "ci_95_lower": 2.0,
+        "ci_95_upper": 2.0,
+        "ci_95_width": 0.0,
+        "n": 6,
+        "n_resamples": 500,
+        "seed": 42
+      },
+      "definition_location": {
+        "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
+        "computation": "programs/A_metrology/bootstrap_statistics.py",
+        "committed_results": "reports/bootstrap_statistics.json"
+      },
+      "inputs": {
+        "source": "reports/tier2_review_aggregated.json, reports/tier2_review_responses.csv, reports/dr95_calibration_research.json, reports/calibration_study.json",
+        "description": "AI surrogate evaluation and calibration data"
+      },
+      "computation": "M-303-D3 \u2014 AI surrogate evaluation / calibration metric",
+      "regeneration_status": "PASSED",
+      "fresh_regenerated_value": null,
+      "critical_path_for_matcher_discrimination": false,
+      "measurement_usability": "ACTIVE",
+      "used_for_scientific_decision": "NO",
+      "value_deleted": "NO",
+      "value_replaced": "NO",
+      "values_averaged": "NO",
+      "historical_provenance": "COMMITTED"
+    },
+    {
+      "metric_id": "M-303-D4",
+      "metric_name": "AI surrogate D4 mean",
+      "stored_result": {
+        "point_estimate": 1.8333,
+        "bootstrap_mean": 1.8327,
+        "bootstrap_std": 0.1517,
+        "ci_95_lower": 1.5,
+        "ci_95_upper": 2.0,
+        "ci_95_width": 0.5,
+        "n": 6,
+        "n_resamples": 500,
+        "seed": 42
+      },
+      "definition_location": {
+        "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
+        "computation": "programs/A_metrology/bootstrap_statistics.py",
+        "committed_results": "reports/bootstrap_statistics.json"
+      },
+      "inputs": {
+        "source": "reports/tier2_review_aggregated.json, reports/tier2_review_responses.csv, reports/dr95_calibration_research.json, reports/calibration_study.json",
+        "description": "AI surrogate evaluation and calibration data"
+      },
+      "computation": "M-303-D4 \u2014 AI surrogate evaluation / calibration metric",
+      "regeneration_status": "PASSED",
+      "fresh_regenerated_value": null,
+      "critical_path_for_matcher_discrimination": false,
+      "measurement_usability": "ACTIVE",
+      "used_for_scientific_decision": "NO",
+      "value_deleted": "NO",
+      "value_replaced": "NO",
+      "values_averaged": "NO",
+      "historical_provenance": "COMMITTED"
+    },
+    {
+      "metric_id": "M-303-D5",
+      "metric_name": "AI surrogate D5 mean",
+      "stored_result": {
+        "point_estimate": 3.0,
+        "bootstrap_mean": 3.0,
+        "bootstrap_std": 0.0,
+        "ci_95_lower": 3.0,
+        "ci_95_upper": 3.0,
+        "ci_95_width": 0.0,
+        "n": 6,
+        "n_resamples": 500,
+        "seed": 42
+      },
+      "definition_location": {
+        "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
+        "computation": "programs/A_metrology/bootstrap_statistics.py",
+        "committed_results": "reports/bootstrap_statistics.json"
+      },
+      "inputs": {
+        "source": "reports/tier2_review_aggregated.json, reports/tier2_review_responses.csv, reports/dr95_calibration_research.json, reports/calibration_study.json",
+        "description": "AI surrogate evaluation and calibration data"
+      },
+      "computation": "M-303-D5 \u2014 AI surrogate evaluation / calibration metric",
+      "regeneration_status": "PASSED",
+      "fresh_regenerated_value": null,
+      "critical_path_for_matcher_discrimination": false,
+      "measurement_usability": "ACTIVE",
+      "used_for_scientific_decision": "NO",
+      "value_deleted": "NO",
+      "value_replaced": "NO",
+      "values_averaged": "NO",
+      "historical_provenance": "COMMITTED"
+    },
+    {
+      "metric_id": "M-303-D6",
+      "metric_name": "AI surrogate D6 mean",
+      "stored_result": {
+        "point_estimate": 1.8333,
+        "bootstrap_mean": 1.8327,
+        "bootstrap_std": 0.1517,
+        "ci_95_lower": 1.5,
+        "ci_95_upper": 2.0,
+        "ci_95_width": 0.5,
+        "n": 6,
+        "n_resamples": 500,
+        "seed": 42
+      },
+      "definition_location": {
+        "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
+        "computation": "programs/A_metrology/bootstrap_statistics.py",
+        "committed_results": "reports/bootstrap_statistics.json"
+      },
+      "inputs": {
+        "source": "reports/tier2_review_aggregated.json, reports/tier2_review_responses.csv, reports/dr95_calibration_research.json, reports/calibration_study.json",
+        "description": "AI surrogate evaluation and calibration data"
+      },
+      "computation": "M-303-D6 \u2014 AI surrogate evaluation / calibration metric",
+      "regeneration_status": "PASSED",
+      "fresh_regenerated_value": null,
+      "critical_path_for_matcher_discrimination": false,
+      "measurement_usability": "ACTIVE",
+      "used_for_scientific_decision": "NO",
+      "value_deleted": "NO",
+      "value_replaced": "NO",
+      "values_averaged": "NO",
+      "historical_provenance": "COMMITTED"
+    },
+    {
+      "metric_id": "M-303-D7",
+      "metric_name": "AI surrogate D7 mean",
+      "stored_result": {
+        "point_estimate": 1.8333,
+        "bootstrap_mean": 1.8327,
+        "bootstrap_std": 0.1517,
+        "ci_95_lower": 1.5,
+        "ci_95_upper": 2.0,
+        "ci_95_width": 0.5,
+        "n": 6,
+        "n_resamples": 500,
+        "seed": 42
+      },
+      "definition_location": {
+        "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
+        "computation": "programs/A_metrology/bootstrap_statistics.py",
+        "committed_results": "reports/bootstrap_statistics.json"
+      },
+      "inputs": {
+        "source": "reports/tier2_review_aggregated.json, reports/tier2_review_responses.csv, reports/dr95_calibration_research.json, reports/calibration_study.json",
+        "description": "AI surrogate evaluation and calibration data"
+      },
+      "computation": "M-303-D7 \u2014 AI surrogate evaluation / calibration metric",
+      "regeneration_status": "PASSED",
+      "fresh_regenerated_value": null,
+      "critical_path_for_matcher_discrimination": false,
+      "measurement_usability": "ACTIVE",
+      "used_for_scientific_decision": "NO",
+      "value_deleted": "NO",
+      "value_replaced": "NO",
+      "values_averaged": "NO",
+      "historical_provenance": "COMMITTED"
+    },
+    {
+      "metric_id": "M-101",
+      "metric_name": "Gen 1 Document Parsing F1",
+      "stored_result": {
+        "point_estimate": 1.0,
+        "bootstrap_mean": 1.0,
+        "bootstrap_std": 0.0,
+        "ci_95_lower": 1.0,
+        "ci_95_upper": 1.0,
+        "ci_95_width": 0.0,
+        "n": 5,
+        "n_resamples": 500,
+        "seed": 42
+      },
+      "definition_location": {
+        "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
+        "computation": "programs/A_metrology/bootstrap_statistics.py",
+        "committed_results": "reports/bootstrap_statistics.json"
+      },
+      "inputs": {
+        "source": "benchmarks/reports/gen{1..5}_pr_score.json",
+        "description": "Per-generation invention pipeline P/R scores"
+      },
+      "computation": "M-101 \u2014 per-generation invention pipeline F1",
+      "regeneration_status": "PASSED",
+      "fresh_regenerated_value": null,
+      "critical_path_for_matcher_discrimination": false,
+      "measurement_usability": "ACTIVE",
+      "used_for_scientific_decision": "NO",
+      "value_deleted": "NO",
+      "value_replaced": "NO",
+      "values_averaged": "NO",
+      "historical_provenance": "COMMITTED"
+    },
+    {
+      "metric_id": "M-102",
+      "metric_name": "Gen 2 Entity Extraction F1",
+      "stored_result": {
+        "point_estimate": 0.9431,
+        "bootstrap_mean": 0.9431,
+        "bootstrap_std": 0.0208,
+        "ci_95_lower": 0.8983,
+        "ci_95_upper": 0.9764,
+        "ci_95_width": 0.0781,
+        "n": 65,
+        "n_resamples": 500,
+        "seed": 42
+      },
+      "definition_location": {
+        "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
+        "computation": "programs/A_metrology/bootstrap_statistics.py",
+        "committed_results": "reports/bootstrap_statistics.json"
+      },
+      "inputs": {
+        "source": "benchmarks/reports/gen{1..5}_pr_score.json",
+        "description": "Per-generation invention pipeline P/R scores"
+      },
+      "computation": "M-102 \u2014 per-generation invention pipeline F1",
+      "regeneration_status": "PASSED",
+      "fresh_regenerated_value": null,
+      "critical_path_for_matcher_discrimination": false,
+      "measurement_usability": "ACTIVE",
+      "used_for_scientific_decision": "NO",
+      "value_deleted": "NO",
+      "value_replaced": "NO",
+      "values_averaged": "NO",
+      "historical_provenance": "COMMITTED"
+    },
+    {
+      "metric_id": "M-103",
+      "metric_name": "Gen 3 Relation Extraction F1",
+      "stored_result": {
+        "point_estimate": 0.88,
+        "bootstrap_mean": 0.878,
+        "bootstrap_std": 0.0304,
+        "ci_95_lower": 0.8145,
+        "ci_95_upper": 0.9322,
+        "ci_95_width": 0.1177,
+        "n": 85,
+        "n_resamples": 500,
+        "seed": 42
+      },
+      "definition_location": {
+        "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
+        "computation": "programs/A_metrology/bootstrap_statistics.py",
+        "committed_results": "reports/bootstrap_statistics.json"
+      },
+      "inputs": {
+        "source": "benchmarks/reports/gen{1..5}_pr_score.json",
+        "description": "Per-generation invention pipeline P/R scores"
+      },
+      "computation": "M-103 \u2014 per-generation invention pipeline F1",
+      "regeneration_status": "PASSED",
+      "fresh_regenerated_value": null,
+      "critical_path_for_matcher_discrimination": false,
+      "measurement_usability": "ACTIVE",
+      "used_for_scientific_decision": "NO",
+      "value_deleted": "NO",
+      "value_replaced": "NO",
+      "values_averaged": "NO",
+      "historical_provenance": "COMMITTED"
+    },
+    {
+      "metric_id": "M-104",
+      "metric_name": "Gen 4 Mechanism Extraction F1",
+      "stored_result": {
+        "point_estimate": 0.9091,
+        "bootstrap_mean": 0.8984,
+        "bootstrap_std": 0.0677,
+        "ci_95_lower": 0.7368,
+        "ci_95_upper": 1.0,
+        "ci_95_width": 0.2632,
+        "n": 12,
+        "n_resamples": 500,
+        "seed": 42
+      },
+      "definition_location": {
+        "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
+        "computation": "programs/A_metrology/bootstrap_statistics.py",
+        "committed_results": "reports/bootstrap_statistics.json"
+      },
+      "inputs": {
+        "source": "benchmarks/reports/gen{1..5}_pr_score.json",
+        "description": "Per-generation invention pipeline P/R scores"
+      },
+      "computation": "M-104 \u2014 per-generation invention pipeline F1",
+      "regeneration_status": "PASSED",
+      "fresh_regenerated_value": null,
+      "critical_path_for_matcher_discrimination": false,
+      "measurement_usability": "ACTIVE",
+      "used_for_scientific_decision": "NO",
+      "value_deleted": "NO",
+      "value_replaced": "NO",
+      "values_averaged": "NO",
+      "historical_provenance": "COMMITTED"
+    },
+    {
+      "metric_id": "M-105",
+      "metric_name": "Gen 5 Discovery Layer F1",
+      "stored_result": {
+        "point_estimate": 0.9375,
+        "bootstrap_mean": 0.9353,
+        "bootstrap_std": 0.0464,
+        "ci_95_lower": 0.8276,
+        "ci_95_upper": 1.0,
+        "ci_95_width": 0.1724,
+        "n": 17,
+        "n_resamples": 500,
+        "seed": 42
+      },
+      "definition_location": {
+        "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
+        "computation": "programs/A_metrology/bootstrap_statistics.py",
+        "committed_results": "reports/bootstrap_statistics.json"
+      },
+      "inputs": {
+        "source": "benchmarks/reports/gen{1..5}_pr_score.json",
+        "description": "Per-generation invention pipeline P/R scores"
+      },
+      "computation": "M-105 \u2014 per-generation invention pipeline F1",
+      "regeneration_status": "PASSED",
+      "fresh_regenerated_value": null,
+      "critical_path_for_matcher_discrimination": false,
+      "measurement_usability": "ACTIVE",
+      "used_for_scientific_decision": "NO",
+      "value_deleted": "NO",
+      "value_replaced": "NO",
+      "values_averaged": "NO",
+      "historical_provenance": "COMMITTED"
+    },
+    {
+      "metric_id": "M-201",
+      "metric_name": "L5a held-out beats (count / 10)",
+      "stored_result": {
+        "point_estimate": 0.9,
+        "bootstrap_mean": 0.892,
+        "bootstrap_std": 0.0891,
+        "ci_95_lower": 0.7,
+        "ci_95_upper": 1.0,
+        "ci_95_width": 0.3,
+        "n": 10,
+        "n_resamples": 100,
+        "seed": 42
+      },
+      "definition_location": {
+        "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
+        "computation": "programs/A_metrology/bootstrap_statistics.py",
+        "committed_results": "reports/bootstrap_statistics.json"
+      },
+      "inputs": {
+        "source": "BLIND_SUITE[10:] (10 held-out blind problems, BLIND-011..020)",
+        "training": "BLIND_SUITE[:10] (BLIND-001..010) for composite synthesis"
+      },
+      "computation": "M-201 \u2014 search/l5b held-out evaluation",
+      "regeneration_status": "PASSED",
+      "fresh_regenerated_value": null,
+      "critical_path_for_matcher_discrimination": false,
+      "measurement_usability": "ACTIVE",
+      "used_for_scientific_decision": "NO",
+      "value_deleted": "NO",
+      "value_replaced": "NO",
+      "values_averaged": "NO",
+      "historical_provenance": "COMMITTED"
+    },
+    {
+      "metric_id": "M-202",
+      "metric_name": "L5b held-out beats (count / 10) \u2014 same data as M-201",
+      "stored_result": {
+        "point_estimate": 0.9,
+        "bootstrap_mean": 0.892,
+        "bootstrap_std": 0.0891,
+        "ci_95_lower": 0.7,
+        "ci_95_upper": 1.0,
+        "ci_95_width": 0.3,
+        "n": 10,
+        "n_resamples": 100,
+        "seed": 42
+      },
+      "definition_location": {
+        "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
+        "computation": "programs/A_metrology/bootstrap_statistics.py",
+        "committed_results": "reports/bootstrap_statistics.json"
+      },
+      "inputs": {
+        "source": "BLIND_SUITE[10:] (10 held-out blind problems, BLIND-011..020)",
+        "training": "BLIND_SUITE[:10] (BLIND-001..010) for composite synthesis"
+      },
+      "computation": "M-202 \u2014 search/l5b held-out evaluation",
+      "regeneration_status": "PASSED",
+      "fresh_regenerated_value": null,
+      "critical_path_for_matcher_discrimination": false,
+      "measurement_usability": "ACTIVE",
+      "used_for_scientific_decision": "NO",
+      "value_deleted": "NO",
+      "value_replaced": "NO",
+      "values_averaged": "NO",
+      "historical_provenance": "COMMITTED"
+    },
+    {
+      "metric_id": "M-203",
+      "metric_name": "L5b+Synthesis held-out beats (count / 10, single seed)",
+      "stored_result": {
+        "point_estimate": 0.9,
+        "bootstrap_mean": 0.892,
+        "bootstrap_std": 0.0891,
+        "ci_95_lower": 0.7,
+        "ci_95_upper": 1.0,
+        "ci_95_width": 0.3,
+        "n": 10,
+        "n_resamples": 100,
+        "seed": 42
+      },
+      "definition_location": {
+        "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
+        "computation": "programs/A_metrology/bootstrap_statistics.py",
+        "committed_results": "reports/bootstrap_statistics.json"
+      },
+      "inputs": {
+        "source": "BLIND_SUITE[10:] (10 held-out blind problems, BLIND-011..020)",
+        "training": "BLIND_SUITE[:10] (BLIND-001..010) for composite synthesis"
+      },
+      "computation": "M-203 \u2014 search/l5b held-out evaluation",
+      "regeneration_status": "PASSED",
+      "fresh_regenerated_value": null,
+      "critical_path_for_matcher_discrimination": false,
+      "measurement_usability": "ACTIVE",
+      "used_for_scientific_decision": "NO",
+      "value_deleted": "NO",
+      "value_replaced": "NO",
+      "values_averaged": "NO",
+      "historical_provenance": "COMMITTED"
+    },
+    {
+      "metric_id": "M-204",
+      "metric_name": "Multi-seed mean held-out beats (N=5 seeds)",
+      "stored_result": {
+        "point_estimate": 8.6,
+        "bootstrap_mean": 8.614,
+        "bootstrap_std": 0.3529,
+        "ci_95_lower": 8.0,
+        "ci_95_upper": 9.4,
+        "ci_95_width": 1.4,
+        "n": 5,
+        "n_resamples": 500,
+        "seed": 42
+      },
+      "definition_location": {
+        "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
+        "computation": "programs/A_metrology/bootstrap_statistics.py",
+        "committed_results": "reports/bootstrap_statistics.json"
+      },
+      "inputs": {
+        "source": "BLIND_SUITE[10:] (10 held-out blind problems, BLIND-011..020)",
+        "training": "BLIND_SUITE[:10] (BLIND-001..010) for composite synthesis"
+      },
+      "computation": "M-204 \u2014 search/l5b held-out evaluation",
+      "regeneration_status": "PASSED",
+      "fresh_regenerated_value": null,
+      "critical_path_for_matcher_discrimination": false,
+      "measurement_usability": "ACTIVE",
+      "used_for_scientific_decision": "NO",
+      "value_deleted": "NO",
+      "value_replaced": "NO",
+      "values_averaged": "NO",
+      "historical_provenance": "COMMITTED"
+    },
+    {
+      "metric_id": "M-205",
+      "metric_name": "Composite selection rate",
+      "stored_result": {
+        "point_estimate": 1.0,
+        "bootstrap_mean": 1.0,
+        "bootstrap_std": 0.0,
+        "ci_95_lower": 1.0,
+        "ci_95_upper": 1.0,
+        "ci_95_width": 0.0,
+        "n": 43,
+        "n_resamples": 500,
+        "seed": 42
+      },
+      "definition_location": {
+        "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
+        "computation": "programs/A_metrology/bootstrap_statistics.py",
+        "committed_results": "reports/bootstrap_statistics.json"
+      },
+      "inputs": {
+        "source": "BLIND_SUITE[10:] (10 held-out blind problems, BLIND-011..020)",
+        "training": "BLIND_SUITE[:10] (BLIND-001..010) for composite synthesis"
+      },
+      "computation": "M-205 \u2014 search/l5b held-out evaluation",
+      "regeneration_status": "PASSED",
+      "fresh_regenerated_value": null,
+      "critical_path_for_matcher_discrimination": false,
+      "measurement_usability": "ACTIVE",
+      "used_for_scientific_decision": "NO",
+      "value_deleted": "NO",
+      "value_replaced": "NO",
+      "values_averaged": "NO",
+      "historical_provenance": "COMMITTED"
+    },
+    {
+      "metric_id": "M-304",
+      "metric_name": "Inter-rater agreement rate",
+      "stored_result": {
+        "point_estimate": 0.1667,
+        "bootstrap_mean": 0.169,
+        "bootstrap_std": 0.1485,
+        "ci_95_lower": 0.0,
+        "ci_95_upper": 0.5,
+        "ci_95_width": 0.5,
+        "n": 6,
+        "n_resamples": 500,
+        "seed": 42
+      },
+      "definition_location": {
+        "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
+        "computation": "programs/A_metrology/bootstrap_statistics.py",
+        "committed_results": "reports/bootstrap_statistics.json"
+      },
+      "inputs": {
+        "source": "reports/tier2_review_aggregated.json, reports/tier2_review_responses.csv, reports/dr95_calibration_research.json, reports/calibration_study.json",
+        "description": "AI surrogate evaluation and calibration data"
+      },
+      "computation": "M-304 \u2014 AI surrogate evaluation / calibration metric",
+      "regeneration_status": "PASSED",
+      "fresh_regenerated_value": null,
+      "critical_path_for_matcher_discrimination": false,
+      "measurement_usability": "ACTIVE",
+      "used_for_scientific_decision": "NO",
+      "value_deleted": "NO",
+      "value_replaced": "NO",
+      "values_averaged": "NO",
+      "historical_provenance": "COMMITTED"
+    },
+    {
+      "metric_id": "M-305",
+      "metric_name": "Self-validation bias (mean residual)",
+      "stored_result": {
+        "point_estimate": 2.5,
+        "bootstrap_mean": 2.5021,
+        "bootstrap_std": 0.0556,
+        "ci_95_lower": 2.375,
+        "ci_95_upper": 2.625,
+        "ci_95_width": 0.25,
+        "n": 6,
+        "n_resamples": 500,
+        "seed": 42
+      },
+      "definition_location": {
+        "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
+        "computation": "programs/A_metrology/bootstrap_statistics.py",
+        "committed_results": "reports/bootstrap_statistics.json"
+      },
+      "inputs": {
+        "source": "reports/tier2_review_aggregated.json, reports/tier2_review_responses.csv, reports/dr95_calibration_research.json, reports/calibration_study.json",
+        "description": "AI surrogate evaluation and calibration data"
+      },
+      "computation": "M-305 \u2014 AI surrogate evaluation / calibration metric",
+      "regeneration_status": "PASSED",
+      "fresh_regenerated_value": null,
+      "critical_path_for_matcher_discrimination": false,
+      "measurement_usability": "ACTIVE",
+      "used_for_scientific_decision": "NO",
+      "value_deleted": "NO",
+      "value_replaced": "NO",
+      "values_averaged": "NO",
+      "historical_provenance": "COMMITTED"
+    },
+    {
+      "metric_id": "M-306",
+      "metric_name": "Expected Calibration Error (ECE)",
+      "stored_result": {
+        "point_estimate": 0.9,
+        "bootstrap_mean": 0.9004,
+        "bootstrap_std": 0.0111,
+        "ci_95_lower": 0.875,
+        "ci_95_upper": 0.925,
+        "ci_95_width": 0.05,
+        "n": 6,
+        "n_resamples": 500,
+        "seed": 42
+      },
+      "definition_location": {
+        "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
+        "computation": "programs/A_metrology/bootstrap_statistics.py",
+        "committed_results": "reports/bootstrap_statistics.json"
+      },
+      "inputs": {
+        "source": "reports/tier2_review_aggregated.json, reports/tier2_review_responses.csv, reports/dr95_calibration_research.json, reports/calibration_study.json",
+        "description": "AI surrogate evaluation and calibration data"
+      },
+      "computation": "M-306 \u2014 AI surrogate evaluation / calibration metric",
+      "regeneration_status": "PASSED",
+      "fresh_regenerated_value": null,
+      "critical_path_for_matcher_discrimination": false,
+      "measurement_usability": "ACTIVE",
+      "used_for_scientific_decision": "NO",
+      "value_deleted": "NO",
+      "value_replaced": "NO",
+      "values_averaged": "NO",
+      "historical_provenance": "COMMITTED"
+    }
+  ],
+  "critical_path_metrics": [
+    "M-004",
+    "M-005",
+    "M-006",
+    "M-007",
+    "M-008",
+    "M-010",
+    "M-011",
+    "M-012",
+    "M-013",
+    "M-015"
+  ],
+  "no_retroactive_repair": true,
+  "no_value_deletion": true,
+  "no_value_replacement": true,
+  "no_value_averaging": true
+}
