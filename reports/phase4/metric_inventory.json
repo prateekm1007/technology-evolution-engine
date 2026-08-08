@@ -1,29 +1,76 @@
 {
   "phase": 4,
-  "phase_name": "Inventory every measurement metric",
-  "timestamp_utc": "2026-08-08T16:52:08.245727+00:00",
-  "git_head": "163d65d18afc7508e2093cd15f98881c1163a9c2",
+  "phase_name": "Inventory every measurement metric (corrected per audit round 7)",
+  "timestamp_utc": "2026-08-08T16:56:41.673011+00:00",
+  "git_head": "52a483648732891db38d0bcb6469a8f000bb3152",
+  "audit_round": 7,
+  "correction_summary": {
+    "removed_unsupported_passed_claims": "Per audit: 'absence of a failed regeneration is not evidence of successful regeneration.' Removed PASSED from 37 metrics. Replaced with REGENERATED_AND_MATCHED with shared-context caveat.",
+    "added_provenance_declared_vs_verified": "Every metric now has provenance.provenance_declared (location known) and provenance.provenance_verified (cryptographically verified). No metric has provenance_verified=true yet.",
+    "added_input_hashes": "SHA-256 hashes for computation source, spec source, committed results, gold set source, synonym map. Entity pool hash requires runtime computation (noted).",
+    "m008_n_resamples_clarified": "M-008 uses 200 resamples (hardcoded), not the global 500. This does NOT explain the discrepancy.",
+    "m008_determinism_traced": "point_estimate = metric_fn(original_sample). M-008's metric_fn uses a module-level RNG. Deterministic under fixed inputs. Discrepancy must come from input change.",
+    "epistemic_ladder_applied": "HISTORICAL \u2192 PROVENANCE_DECLARED \u2192 REPRODUCTION_UNTESTED \u2192 REGENERATED_AND_MATCHED \u2192 SCIENTIFICALLY_ELIGIBLE (+ QUARANTINED for failures). No metric is SCIENTIFICALLY_ELIGIBLE yet.",
+    "m008_language_tightened": "M-008 is the 'current preregistered/blocking measurement for false-positive-floor assessment under MC-5', NOT a mathematical definition of discrimination.",
+    "phase_8_17_split": "Blocked: scientific verdicts using M-008. Potentially allowed: infrastructure work not using M-008 as evidence."
+  },
   "summary": {
     "total_metrics": 38,
+    "regenerated_and_matched_shared_context": 37,
+    "regenerated_and_failed": 1,
+    "not_independently_regenerated": 0,
+    "scientifically_eligible": 0,
     "quarantined": 1,
     "critical_path_for_matcher_discrimination": 10,
-    "regeneration_passed": 37,
-    "regeneration_failed": 1,
-    "regeneration_not_tested": 0
+    "note": "37 metrics are REGENERATED_AND_MATCHED under a single shared-context run. This is NOT the same as 37 independent regeneration proofs. No metric is SCIENTIFICALLY_ELIGIBLE."
+  },
+  "epistemic_ladder": {
+    "levels": [
+      "HISTORICAL",
+      "PROVENANCE_DECLARED",
+      "REPRODUCTION_UNTESTED",
+      "REGENERATED_AND_MATCHED",
+      "SCIENTIFICALLY_ELIGIBLE"
+    ],
+    "quarantine": "REGENERATED_AND_FAILED \u2192 QUARANTINED",
+    "current_state": "All metrics are at REGENERATED_AND_MATCHED (37) or QUARANTINED (1, M-008). None are SCIENTIFICALLY_ELIGIBLE. Moving to SCIENTIFICALLY_ELIGIBLE requires independent per-metric regeneration, not shared-context."
   },
   "m008_quarantine_summary": {
     "metric_id": "M-008",
     "metric_name": "FP floor / false-positive floor",
     "current_stored_value": 0.9189,
     "fresh_regenerated_value": 0.8889,
-    "regeneration_status": "FAILED",
+    "regeneration_status": "REGENERATED_AND_FAILED",
     "measurement_usability": "QUARANTINED",
+    "scientifically_eligible": false,
     "used_for_scientific_decision": "NO",
+    "n_resamples": 200,
+    "n_resamples_note": "M-008 hardcodes 200 resamples (bootstrap_statistics.py:489), NOT the global 500. This does NOT explain the discrepancy.",
+    "determinism": "point_estimate is deterministic under fixed inputs. Discrepancy must come from input change (all_entities, gold, m_synonym, or _score_f1_dr91).",
+    "what_m008_measures_precise": "M-008 is the current preregistered/blocking measurement for false-positive-floor assessment. Under MC-5, an FP floor above 5% blocks discovery claims. This is a policy threshold, not a mathematical definition of discrimination.",
     "value_deleted": "NO",
     "value_replaced": "NO",
-    "values_averaged": "NO",
-    "note": "M-008 is the single most critical metric. It is the FP floor \u2014 if random candidates score near 1.0, the matcher does not discriminate. Current value 0.9189 is ~18x above the 0.05 acceptance threshold. It does not regenerate (fresh=0.8889). Per MC-5, M-008 blocks ALL discovery claims. It is quarantined until the regeneration discrepancy is causally attributed."
+    "values_averaged": "NO"
   },
+  "phase_8_17_impact": {
+    "blocked": "Any scientific verdict that consumes M-008 as an authoritative measurement. No scientific verdict may be generated using M-008 until reconciliation.",
+    "potentially_allowed": [
+      "matcher harness construction (does not use M-008 as evidence)",
+      "null-control harness construction",
+      "vocabulary provenance tooling",
+      "pre-registration scaffolding",
+      "statistical analysis code",
+      "input hashing",
+      "provenance validators",
+      "human adjudication tooling"
+    ],
+    "principle": "The project should not freeze useful measurement infrastructure merely because one metric is quarantined. But no scientific verdict may use M-008 until reconciliation."
+  },
+  "no_retroactive_repair": true,
+  "no_value_deletion": true,
+  "no_value_replacement": true,
+  "no_value_averaging": true,
+  "governing_principle": "Absence of a failed regeneration is not evidence of successful regeneration.",
   "metrics": [
     {
       "metric_id": "M-001",
@@ -34,32 +81,42 @@
         "bootstrap_std": 0.0,
         "ci_95_lower": 0.0,
         "ci_95_upper": 0.0,
-        "ci_95_width": 0.0,
         "n": 20,
         "n_resamples": 500,
         "seed": 42
       },
-      "definition_location": {
-        "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
-        "computation": "programs/A_metrology/bootstrap_statistics.py",
-        "committed_results": "reports/bootstrap_statistics.json"
+      "provenance": {
+        "provenance_declared": true,
+        "provenance_verified": false,
+        "provenance_note": "provenance_declared=true means the definition location is known. provenance_verified=false means we have NOT cryptographically verified that the historical number was generated from exactly these inputs. Declared provenance is not verified provenance.",
+        "definition_locations": {
+          "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
+          "computation": "programs/A_metrology/bootstrap_statistics.py",
+          "committed_results": "reports/bootstrap_statistics.json"
+        },
+        "input_hashes": {
+          "computation_source_sha256": "5669b9b27f1d42e103783b100646794d97fa586aff81735e35b16aef26157d26",
+          "spec_source_sha256": "cc0115f4d93b2eed35476c1b050b0859de38c39e310bed3286788960e245611e",
+          "committed_results_sha256": "ce3169fef06190778801f17a1c25cbaf3984cdf809c3466ea3ffddee279e83c7",
+          "gold_set_source_sha256": "9e5b90dd7cfa8dc0bb72289a111f611e9eb1cd0c8c1dbf1262cfc55303040b08",
+          "synonym_map_note": "BRIDGE_SYNONYMS = {} (empty since cycle 270). Hash of empty dict.",
+          "synonym_map_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "entity_pool_note": "all_entities is computed at module load by NLP extraction of 40 source snippets. Its content and ORDERING affect M-008's random candidate generation. Hash must be computed at runtime (not yet done in this inventory).",
+          "entity_pool_sha256": "RUNTIME_COMPUTATION_REQUIRED"
+        }
       },
-      "inputs": {
-        "gold_set": "GOLD_DISCOVERIES (N=20, benchmarks/discovery_capability_benchmark.py:105-328)",
-        "entity_pool": "all_entities (NLP-extracted from 40 source snippets, fixed at module load)",
-        "synonym_map": "BRIDGE_SYNONYMS (EMPTY since cycle 270, discovery_capability_benchmark.py:68)",
-        "matchers": "m_exact, m_token, m_synonym (falls back to m_token), m_fuzzy"
+      "regeneration_status": "REGENERATED_AND_MATCHED",
+      "regeneration_evidence": {
+        "fresh_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
+        "comparison": "field-by-field (point_estimate, ci_95_lower, ci_95_upper)",
+        "result": "all compared fields matched within 1e-4 tolerance",
+        "caveat": "This comparison was part of a single shared-context run of bootstrap_all_metrics, not an independent per-metric regeneration test. The metric is REGENERATED_AND_MATCHED under this shared context, but has not been independently regenerated in isolation.",
+        "fresh_output_artifact": "reports/phase3/regeneration_result.json"
       },
-      "computation": "Exact F1 (all entities) \u2014 strict string equality matching",
-      "regeneration_status": "PASSED",
-      "fresh_regenerated_value": null,
       "critical_path_for_matcher_discrimination": false,
-      "measurement_usability": "ACTIVE",
-      "used_for_scientific_decision": "NO",
-      "value_deleted": "NO",
-      "value_replaced": "NO",
-      "values_averaged": "NO",
-      "historical_provenance": "COMMITTED"
+      "measurement_usability": "REGENERATED_AND_MATCHED",
+      "scientifically_eligible": false,
+      "used_for_scientific_decision": "NO"
     },
     {
       "metric_id": "M-002",
@@ -70,32 +127,42 @@
         "bootstrap_std": 0.0134,
         "ci_95_lower": 0.2102,
         "ci_95_upper": 0.2614,
-        "ci_95_width": 0.0513,
         "n": 20,
         "n_resamples": 500,
         "seed": 42
       },
-      "definition_location": {
-        "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
-        "computation": "programs/A_metrology/bootstrap_statistics.py",
-        "committed_results": "reports/bootstrap_statistics.json"
+      "provenance": {
+        "provenance_declared": true,
+        "provenance_verified": false,
+        "provenance_note": "provenance_declared=true means the definition location is known. provenance_verified=false means we have NOT cryptographically verified that the historical number was generated from exactly these inputs. Declared provenance is not verified provenance.",
+        "definition_locations": {
+          "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
+          "computation": "programs/A_metrology/bootstrap_statistics.py",
+          "committed_results": "reports/bootstrap_statistics.json"
+        },
+        "input_hashes": {
+          "computation_source_sha256": "5669b9b27f1d42e103783b100646794d97fa586aff81735e35b16aef26157d26",
+          "spec_source_sha256": "cc0115f4d93b2eed35476c1b050b0859de38c39e310bed3286788960e245611e",
+          "committed_results_sha256": "ce3169fef06190778801f17a1c25cbaf3984cdf809c3466ea3ffddee279e83c7",
+          "gold_set_source_sha256": "9e5b90dd7cfa8dc0bb72289a111f611e9eb1cd0c8c1dbf1262cfc55303040b08",
+          "synonym_map_note": "BRIDGE_SYNONYMS = {} (empty since cycle 270). Hash of empty dict.",
+          "synonym_map_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "entity_pool_note": "all_entities is computed at module load by NLP extraction of 40 source snippets. Its content and ORDERING affect M-008's random candidate generation. Hash must be computed at runtime (not yet done in this inventory).",
+          "entity_pool_sha256": "RUNTIME_COMPUTATION_REQUIRED"
+        }
       },
-      "inputs": {
-        "gold_set": "GOLD_DISCOVERIES (N=20, benchmarks/discovery_capability_benchmark.py:105-328)",
-        "entity_pool": "all_entities (NLP-extracted from 40 source snippets, fixed at module load)",
-        "synonym_map": "BRIDGE_SYNONYMS (EMPTY since cycle 270, discovery_capability_benchmark.py:68)",
-        "matchers": "m_exact, m_token, m_synonym (falls back to m_token), m_fuzzy"
+      "regeneration_status": "REGENERATED_AND_MATCHED",
+      "regeneration_evidence": {
+        "fresh_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
+        "comparison": "field-by-field (point_estimate, ci_95_lower, ci_95_upper)",
+        "result": "all compared fields matched within 1e-4 tolerance",
+        "caveat": "This comparison was part of a single shared-context run of bootstrap_all_metrics, not an independent per-metric regeneration test. The metric is REGENERATED_AND_MATCHED under this shared context, but has not been independently regenerated in isolation.",
+        "fresh_output_artifact": "reports/phase3/regeneration_result.json"
       },
-      "computation": "Token F1 (all entities) \u2014 substring + shared token matching",
-      "regeneration_status": "PASSED",
-      "fresh_regenerated_value": null,
       "critical_path_for_matcher_discrimination": false,
-      "measurement_usability": "ACTIVE",
-      "used_for_scientific_decision": "NO",
-      "value_deleted": "NO",
-      "value_replaced": "NO",
-      "values_averaged": "NO",
-      "historical_provenance": "COMMITTED"
+      "measurement_usability": "REGENERATED_AND_MATCHED",
+      "scientifically_eligible": false,
+      "used_for_scientific_decision": "NO"
     },
     {
       "metric_id": "M-003",
@@ -106,32 +173,42 @@
         "bootstrap_std": 0.0,
         "ci_95_lower": 0.0,
         "ci_95_upper": 0.0,
-        "ci_95_width": 0.0,
         "n": 20,
         "n_resamples": 500,
         "seed": 42
       },
-      "definition_location": {
-        "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
-        "computation": "programs/A_metrology/bootstrap_statistics.py",
-        "committed_results": "reports/bootstrap_statistics.json"
+      "provenance": {
+        "provenance_declared": true,
+        "provenance_verified": false,
+        "provenance_note": "provenance_declared=true means the definition location is known. provenance_verified=false means we have NOT cryptographically verified that the historical number was generated from exactly these inputs. Declared provenance is not verified provenance.",
+        "definition_locations": {
+          "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
+          "computation": "programs/A_metrology/bootstrap_statistics.py",
+          "committed_results": "reports/bootstrap_statistics.json"
+        },
+        "input_hashes": {
+          "computation_source_sha256": "5669b9b27f1d42e103783b100646794d97fa586aff81735e35b16aef26157d26",
+          "spec_source_sha256": "cc0115f4d93b2eed35476c1b050b0859de38c39e310bed3286788960e245611e",
+          "committed_results_sha256": "ce3169fef06190778801f17a1c25cbaf3984cdf809c3466ea3ffddee279e83c7",
+          "gold_set_source_sha256": "9e5b90dd7cfa8dc0bb72289a111f611e9eb1cd0c8c1dbf1262cfc55303040b08",
+          "synonym_map_note": "BRIDGE_SYNONYMS = {} (empty since cycle 270). Hash of empty dict.",
+          "synonym_map_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "entity_pool_note": "all_entities is computed at module load by NLP extraction of 40 source snippets. Its content and ORDERING affect M-008's random candidate generation. Hash must be computed at runtime (not yet done in this inventory).",
+          "entity_pool_sha256": "RUNTIME_COMPUTATION_REQUIRED"
+        }
       },
-      "inputs": {
-        "gold_set": "GOLD_DISCOVERIES (N=20, benchmarks/discovery_capability_benchmark.py:105-328)",
-        "entity_pool": "all_entities (NLP-extracted from 40 source snippets, fixed at module load)",
-        "synonym_map": "BRIDGE_SYNONYMS (EMPTY since cycle 270, discovery_capability_benchmark.py:68)",
-        "matchers": "m_exact, m_token, m_synonym (falls back to m_token), m_fuzzy"
+      "regeneration_status": "REGENERATED_AND_MATCHED",
+      "regeneration_evidence": {
+        "fresh_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
+        "comparison": "field-by-field (point_estimate, ci_95_lower, ci_95_upper)",
+        "result": "all compared fields matched within 1e-4 tolerance",
+        "caveat": "This comparison was part of a single shared-context run of bootstrap_all_metrics, not an independent per-metric regeneration test. The metric is REGENERATED_AND_MATCHED under this shared context, but has not been independently regenerated in isolation.",
+        "fresh_output_artifact": "reports/phase3/regeneration_result.json"
       },
-      "computation": "Fuzzy F1 (all entities) \u2014 fuzzy string matching",
-      "regeneration_status": "PASSED",
-      "fresh_regenerated_value": null,
       "critical_path_for_matcher_discrimination": false,
-      "measurement_usability": "ACTIVE",
-      "used_for_scientific_decision": "NO",
-      "value_deleted": "NO",
-      "value_replaced": "NO",
-      "values_averaged": "NO",
-      "historical_provenance": "COMMITTED"
+      "measurement_usability": "REGENERATED_AND_MATCHED",
+      "scientifically_eligible": false,
+      "used_for_scientific_decision": "NO"
     },
     {
       "metric_id": "M-004",
@@ -142,32 +219,42 @@
         "bootstrap_std": 0.0134,
         "ci_95_lower": 0.2102,
         "ci_95_upper": 0.2614,
-        "ci_95_width": 0.0513,
         "n": 20,
         "n_resamples": 500,
         "seed": 42
       },
-      "definition_location": {
-        "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
-        "computation": "programs/A_metrology/bootstrap_statistics.py",
-        "committed_results": "reports/bootstrap_statistics.json"
+      "provenance": {
+        "provenance_declared": true,
+        "provenance_verified": false,
+        "provenance_note": "provenance_declared=true means the definition location is known. provenance_verified=false means we have NOT cryptographically verified that the historical number was generated from exactly these inputs. Declared provenance is not verified provenance.",
+        "definition_locations": {
+          "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
+          "computation": "programs/A_metrology/bootstrap_statistics.py",
+          "committed_results": "reports/bootstrap_statistics.json"
+        },
+        "input_hashes": {
+          "computation_source_sha256": "5669b9b27f1d42e103783b100646794d97fa586aff81735e35b16aef26157d26",
+          "spec_source_sha256": "cc0115f4d93b2eed35476c1b050b0859de38c39e310bed3286788960e245611e",
+          "committed_results_sha256": "ce3169fef06190778801f17a1c25cbaf3984cdf809c3466ea3ffddee279e83c7",
+          "gold_set_source_sha256": "9e5b90dd7cfa8dc0bb72289a111f611e9eb1cd0c8c1dbf1262cfc55303040b08",
+          "synonym_map_note": "BRIDGE_SYNONYMS = {} (empty since cycle 270). Hash of empty dict.",
+          "synonym_map_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "entity_pool_note": "all_entities is computed at module load by NLP extraction of 40 source snippets. Its content and ORDERING affect M-008's random candidate generation. Hash must be computed at runtime (not yet done in this inventory).",
+          "entity_pool_sha256": "RUNTIME_COMPUTATION_REQUIRED"
+        }
       },
-      "inputs": {
-        "gold_set": "GOLD_DISCOVERIES (N=20, benchmarks/discovery_capability_benchmark.py:105-328)",
-        "entity_pool": "all_entities (NLP-extracted from 40 source snippets, fixed at module load)",
-        "synonym_map": "BRIDGE_SYNONYMS (EMPTY since cycle 270, discovery_capability_benchmark.py:68)",
-        "matchers": "m_exact, m_token, m_synonym (falls back to m_token), m_fuzzy"
+      "regeneration_status": "REGENERATED_AND_MATCHED",
+      "regeneration_evidence": {
+        "fresh_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
+        "comparison": "field-by-field (point_estimate, ci_95_lower, ci_95_upper)",
+        "result": "all compared fields matched within 1e-4 tolerance",
+        "caveat": "This comparison was part of a single shared-context run of bootstrap_all_metrics, not an independent per-metric regeneration test. The metric is REGENERATED_AND_MATCHED under this shared context, but has not been independently regenerated in isolation.",
+        "fresh_output_artifact": "reports/phase3/regeneration_result.json"
       },
-      "computation": "Synonym F1 (all entities) \u2014 synonym-aware matching (now falls back to token since BRIDGE_SYNONYMS emptied)",
-      "regeneration_status": "PASSED",
-      "fresh_regenerated_value": null,
       "critical_path_for_matcher_discrimination": true,
-      "measurement_usability": "ACTIVE",
-      "used_for_scientific_decision": "YES",
-      "value_deleted": "NO",
-      "value_replaced": "NO",
-      "values_averaged": "NO",
-      "historical_provenance": "COMMITTED"
+      "measurement_usability": "REGENERATED_AND_MATCHED",
+      "scientifically_eligible": false,
+      "used_for_scientific_decision": "NOT_YET"
     },
     {
       "metric_id": "M-005",
@@ -178,32 +265,42 @@
         "bootstrap_std": 0.0809,
         "ci_95_lower": 0.6207,
         "ci_95_upper": 0.9189,
-        "ci_95_width": 0.2982,
         "n": 20,
         "n_resamples": 500,
         "seed": 42
       },
-      "definition_location": {
-        "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
-        "computation": "programs/A_metrology/bootstrap_statistics.py",
-        "committed_results": "reports/bootstrap_statistics.json"
+      "provenance": {
+        "provenance_declared": true,
+        "provenance_verified": false,
+        "provenance_note": "provenance_declared=true means the definition location is known. provenance_verified=false means we have NOT cryptographically verified that the historical number was generated from exactly these inputs. Declared provenance is not verified provenance.",
+        "definition_locations": {
+          "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
+          "computation": "programs/A_metrology/bootstrap_statistics.py",
+          "committed_results": "reports/bootstrap_statistics.json"
+        },
+        "input_hashes": {
+          "computation_source_sha256": "5669b9b27f1d42e103783b100646794d97fa586aff81735e35b16aef26157d26",
+          "spec_source_sha256": "cc0115f4d93b2eed35476c1b050b0859de38c39e310bed3286788960e245611e",
+          "committed_results_sha256": "ce3169fef06190778801f17a1c25cbaf3984cdf809c3466ea3ffddee279e83c7",
+          "gold_set_source_sha256": "9e5b90dd7cfa8dc0bb72289a111f611e9eb1cd0c8c1dbf1262cfc55303040b08",
+          "synonym_map_note": "BRIDGE_SYNONYMS = {} (empty since cycle 270). Hash of empty dict.",
+          "synonym_map_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "entity_pool_note": "all_entities is computed at module load by NLP extraction of 40 source snippets. Its content and ORDERING affect M-008's random candidate generation. Hash must be computed at runtime (not yet done in this inventory).",
+          "entity_pool_sha256": "RUNTIME_COMPUTATION_REQUIRED"
+        }
       },
-      "inputs": {
-        "gold_set": "GOLD_DISCOVERIES (N=20, benchmarks/discovery_capability_benchmark.py:105-328)",
-        "entity_pool": "all_entities (NLP-extracted from 40 source snippets, fixed at module load)",
-        "synonym_map": "BRIDGE_SYNONYMS (EMPTY since cycle 270, discovery_capability_benchmark.py:68)",
-        "matchers": "m_exact, m_token, m_synonym (falls back to m_token), m_fuzzy"
+      "regeneration_status": "REGENERATED_AND_MATCHED",
+      "regeneration_evidence": {
+        "fresh_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
+        "comparison": "field-by-field (point_estimate, ci_95_lower, ci_95_upper)",
+        "result": "all compared fields matched within 1e-4 tolerance",
+        "caveat": "This comparison was part of a single shared-context run of bootstrap_all_metrics, not an independent per-metric regeneration test. The metric is REGENERATED_AND_MATCHED under this shared context, but has not been independently regenerated in isolation.",
+        "fresh_output_artifact": "reports/phase3/regeneration_result.json"
       },
-      "computation": "Discovery F1 (shared, synonym, DR-91) \u2014 F1 = 2*recall/(1+recall), the headline discovery metric",
-      "regeneration_status": "PASSED",
-      "fresh_regenerated_value": null,
       "critical_path_for_matcher_discrimination": true,
-      "measurement_usability": "ACTIVE",
-      "used_for_scientific_decision": "YES",
-      "value_deleted": "NO",
-      "value_replaced": "NO",
-      "values_averaged": "NO",
-      "historical_provenance": "COMMITTED"
+      "measurement_usability": "REGENERATED_AND_MATCHED",
+      "scientifically_eligible": false,
+      "used_for_scientific_decision": "NOT_YET"
     },
     {
       "metric_id": "M-006",
@@ -214,32 +311,42 @@
         "bootstrap_std": 0.0252,
         "ci_95_lower": 0.9189,
         "ci_95_upper": 1.0,
-        "ci_95_width": 0.0811,
         "n": 20,
         "n_resamples": 500,
         "seed": 42
       },
-      "definition_location": {
-        "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
-        "computation": "programs/A_metrology/bootstrap_statistics.py",
-        "committed_results": "reports/bootstrap_statistics.json"
+      "provenance": {
+        "provenance_declared": true,
+        "provenance_verified": false,
+        "provenance_note": "provenance_declared=true means the definition location is known. provenance_verified=false means we have NOT cryptographically verified that the historical number was generated from exactly these inputs. Declared provenance is not verified provenance.",
+        "definition_locations": {
+          "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
+          "computation": "programs/A_metrology/bootstrap_statistics.py",
+          "committed_results": "reports/bootstrap_statistics.json"
+        },
+        "input_hashes": {
+          "computation_source_sha256": "5669b9b27f1d42e103783b100646794d97fa586aff81735e35b16aef26157d26",
+          "spec_source_sha256": "cc0115f4d93b2eed35476c1b050b0859de38c39e310bed3286788960e245611e",
+          "committed_results_sha256": "ce3169fef06190778801f17a1c25cbaf3984cdf809c3466ea3ffddee279e83c7",
+          "gold_set_source_sha256": "9e5b90dd7cfa8dc0bb72289a111f611e9eb1cd0c8c1dbf1262cfc55303040b08",
+          "synonym_map_note": "BRIDGE_SYNONYMS = {} (empty since cycle 270). Hash of empty dict.",
+          "synonym_map_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "entity_pool_note": "all_entities is computed at module load by NLP extraction of 40 source snippets. Its content and ORDERING affect M-008's random candidate generation. Hash must be computed at runtime (not yet done in this inventory).",
+          "entity_pool_sha256": "RUNTIME_COMPUTATION_REQUIRED"
+        }
       },
-      "inputs": {
-        "gold_set": "GOLD_DISCOVERIES (N=20, benchmarks/discovery_capability_benchmark.py:105-328)",
-        "entity_pool": "all_entities (NLP-extracted from 40 source snippets, fixed at module load)",
-        "synonym_map": "BRIDGE_SYNONYMS (EMPTY since cycle 270, discovery_capability_benchmark.py:68)",
-        "matchers": "m_exact, m_token, m_synonym (falls back to m_token), m_fuzzy"
+      "regeneration_status": "REGENERATED_AND_MATCHED",
+      "regeneration_evidence": {
+        "fresh_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
+        "comparison": "field-by-field (point_estimate, ci_95_lower, ci_95_upper)",
+        "result": "all compared fields matched within 1e-4 tolerance",
+        "caveat": "This comparison was part of a single shared-context run of bootstrap_all_metrics, not an independent per-metric regeneration test. The metric is REGENERATED_AND_MATCHED under this shared context, but has not been independently regenerated in isolation.",
+        "fresh_output_artifact": "reports/phase3/regeneration_result.json"
       },
-      "computation": "Recognition F1 (all, synonym, DR-91) \u2014 recognition metric for inflation diagnosis",
-      "regeneration_status": "PASSED",
-      "fresh_regenerated_value": null,
       "critical_path_for_matcher_discrimination": true,
-      "measurement_usability": "ACTIVE",
-      "used_for_scientific_decision": "YES",
-      "value_deleted": "NO",
-      "value_replaced": "NO",
-      "values_averaged": "NO",
-      "historical_provenance": "COMMITTED"
+      "measurement_usability": "REGENERATED_AND_MATCHED",
+      "scientifically_eligible": false,
+      "used_for_scientific_decision": "NOT_YET"
     },
     {
       "metric_id": "M-007",
@@ -250,32 +357,42 @@
         "bootstrap_std": 0.0768,
         "ci_95_lower": 0.0554,
         "ci_95_upper": 0.3759,
-        "ci_95_width": 0.3205,
         "n": 20,
         "n_resamples": 500,
         "seed": 42
       },
-      "definition_location": {
-        "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
-        "computation": "programs/A_metrology/bootstrap_statistics.py",
-        "committed_results": "reports/bootstrap_statistics.json"
+      "provenance": {
+        "provenance_declared": true,
+        "provenance_verified": false,
+        "provenance_note": "provenance_declared=true means the definition location is known. provenance_verified=false means we have NOT cryptographically verified that the historical number was generated from exactly these inputs. Declared provenance is not verified provenance.",
+        "definition_locations": {
+          "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
+          "computation": "programs/A_metrology/bootstrap_statistics.py",
+          "committed_results": "reports/bootstrap_statistics.json"
+        },
+        "input_hashes": {
+          "computation_source_sha256": "5669b9b27f1d42e103783b100646794d97fa586aff81735e35b16aef26157d26",
+          "spec_source_sha256": "cc0115f4d93b2eed35476c1b050b0859de38c39e310bed3286788960e245611e",
+          "committed_results_sha256": "ce3169fef06190778801f17a1c25cbaf3984cdf809c3466ea3ffddee279e83c7",
+          "gold_set_source_sha256": "9e5b90dd7cfa8dc0bb72289a111f611e9eb1cd0c8c1dbf1262cfc55303040b08",
+          "synonym_map_note": "BRIDGE_SYNONYMS = {} (empty since cycle 270). Hash of empty dict.",
+          "synonym_map_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "entity_pool_note": "all_entities is computed at module load by NLP extraction of 40 source snippets. Its content and ORDERING affect M-008's random candidate generation. Hash must be computed at runtime (not yet done in this inventory).",
+          "entity_pool_sha256": "RUNTIME_COMPUTATION_REQUIRED"
+        }
       },
-      "inputs": {
-        "gold_set": "GOLD_DISCOVERIES (N=20, benchmarks/discovery_capability_benchmark.py:105-328)",
-        "entity_pool": "all_entities (NLP-extracted from 40 source snippets, fixed at module load)",
-        "synonym_map": "BRIDGE_SYNONYMS (EMPTY since cycle 270, discovery_capability_benchmark.py:68)",
-        "matchers": "m_exact, m_token, m_synonym (falls back to m_token), m_fuzzy"
+      "regeneration_status": "REGENERATED_AND_MATCHED",
+      "regeneration_evidence": {
+        "fresh_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
+        "comparison": "field-by-field (point_estimate, ci_95_lower, ci_95_upper)",
+        "result": "all compared fields matched within 1e-4 tolerance",
+        "caveat": "This comparison was part of a single shared-context run of bootstrap_all_metrics, not an independent per-metric regeneration test. The metric is REGENERATED_AND_MATCHED under this shared context, but has not been independently regenerated in isolation.",
+        "fresh_output_artifact": "reports/phase3/regeneration_result.json"
       },
-      "computation": "Proposal-locus inflation \u2014 difference between M-006 and M-005",
-      "regeneration_status": "PASSED",
-      "fresh_regenerated_value": null,
       "critical_path_for_matcher_discrimination": true,
-      "measurement_usability": "ACTIVE",
-      "used_for_scientific_decision": "YES",
-      "value_deleted": "NO",
-      "value_replaced": "NO",
-      "values_averaged": "NO",
-      "historical_provenance": "COMMITTED"
+      "measurement_usability": "REGENERATED_AND_MATCHED",
+      "scientifically_eligible": false,
+      "used_for_scientific_decision": "NOT_YET"
     },
     {
       "metric_id": "M-008",
@@ -286,42 +403,72 @@
         "bootstrap_std": 0.0978,
         "ci_95_lower": 0.6667,
         "ci_95_upper": 1.0,
-        "ci_95_width": 0.3333,
         "n": 20,
         "n_resamples": 200,
         "seed": 42
       },
-      "definition_location": {
-        "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
-        "computation": "programs/A_metrology/bootstrap_statistics.py",
-        "committed_results": "reports/bootstrap_statistics.json"
+      "provenance": {
+        "provenance_declared": true,
+        "provenance_verified": false,
+        "provenance_note": "provenance_declared=true means the definition location is known. provenance_verified=false means we have NOT cryptographically verified that the historical number was generated from exactly these inputs. Declared provenance is not verified provenance.",
+        "definition_locations": {
+          "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
+          "computation": "programs/A_metrology/bootstrap_statistics.py",
+          "committed_results": "reports/bootstrap_statistics.json"
+        },
+        "input_hashes": {
+          "computation_source_sha256": "5669b9b27f1d42e103783b100646794d97fa586aff81735e35b16aef26157d26",
+          "spec_source_sha256": "cc0115f4d93b2eed35476c1b050b0859de38c39e310bed3286788960e245611e",
+          "committed_results_sha256": "ce3169fef06190778801f17a1c25cbaf3984cdf809c3466ea3ffddee279e83c7",
+          "gold_set_source_sha256": "9e5b90dd7cfa8dc0bb72289a111f611e9eb1cd0c8c1dbf1262cfc55303040b08",
+          "synonym_map_note": "BRIDGE_SYNONYMS = {} (empty since cycle 270). Hash of empty dict.",
+          "synonym_map_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "entity_pool_note": "all_entities is computed at module load by NLP extraction of 40 source snippets. Its content and ORDERING affect M-008's random candidate generation. Hash must be computed at runtime (not yet done in this inventory).",
+          "entity_pool_sha256": "RUNTIME_COMPUTATION_REQUIRED"
+        }
       },
-      "inputs": {
-        "gold_set": "GOLD_DISCOVERIES (N=20, benchmarks/discovery_capability_benchmark.py:105-328)",
-        "entity_pool": "all_entities (NLP-extracted from 40 source snippets, fixed at module load)",
-        "synonym_map": "BRIDGE_SYNONYMS (EMPTY since cycle 270, discovery_capability_benchmark.py:68)",
-        "matchers": "m_exact, m_token, m_synonym (falls back to m_token), m_fuzzy"
+      "regeneration_status": "REGENERATED_AND_FAILED",
+      "regeneration_evidence": {
+        "fresh_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
+        "comparison": "field-by-field (point_estimate, ci_95_lower, ci_95_upper)",
+        "result": "2 fields mismatched (point_estimate: 0.8889 vs 0.9189; ci_95_lower: 0.6207 vs 0.6667)",
+        "fresh_output_artifact": "reports/phase3/regeneration_result.json"
       },
-      "computation": "FP floor (synonym match) \u2014 F1 of RANDOM candidates against gold pool. SHOULD be near 0 for a discriminating matcher. Currently 0.9189 = matcher does NOT discriminate.",
-      "regeneration_status": "FAILED",
-      "fresh_regenerated_value": 0.6206896551724138,
       "critical_path_for_matcher_discrimination": true,
       "measurement_usability": "QUARANTINED",
+      "scientifically_eligible": false,
       "used_for_scientific_decision": "NO",
-      "value_deleted": "NO",
-      "value_replaced": "NO",
-      "values_averaged": "NO",
-      "historical_provenance": "PENDING_INVESTIGATION",
-      "investigation_required": [
-        "identify provenance of committed 0.9189",
-        "identify exact input dataset/hash",
-        "identify exact code commit",
-        "identify dependency lock",
-        "identify RNG implementation/environment",
-        "reproduce historical computation",
-        "classify cause"
-      ],
-      "quarantine_note": "M-008 is quarantined per audit round 6. The FP floor does not regenerate (fresh=0.8889 vs committed=0.9189, diff=0.030). No retroactive repair. No deletion. No replacement. No averaging. The discrepancy must be causally attributed before M-008 can be trusted. Per MC-5, M-008 (FP floor > 5% blocks discovery claims) is the single most critical metric for the matcher discrimination study."
+      "n_resamples_note": "M-008 uses 200 bootstrap resamples (hardcoded at bootstrap_statistics.py:489), NOT the global n_resamples=500. This is deliberate because the random-candidate calculation is expensive. This does NOT explain the regeneration discrepancy \u2014 both committed and fresh runs use 200 for M-008.",
+      "quarantine": {
+        "value_deleted": "NO",
+        "value_replaced": "NO",
+        "values_averaged": "NO",
+        "historical_provenance": "PENDING_INVESTIGATION",
+        "investigation_required": [
+          "identify provenance of committed 0.9189",
+          "identify exact input dataset/hash",
+          "identify exact code commit",
+          "identify dependency lock",
+          "identify RNG implementation/environment",
+          "reproduce historical computation",
+          "classify cause"
+        ],
+        "note": "M-008 is quarantined. The point_estimate IS deterministic under fixed inputs (see determinism analysis). The discrepancy must come from a change in all_entities, gold, m_synonym, or _score_f1_dr91. No retroactive repair.",
+        "determinism_analysis": {
+          "point_estimate_computation": "metric_fn(original_sample) \u2014 computed on the ORIGINAL sample, NOT a resample. See bootstrap_statistics.py:165.",
+          "m008_closure_rng": "rng_fp = _random.Random(seed) is created ONCE at module load time (line 480), OUTSIDE the m008 closure. The RNG state is shared across the point_estimate computation and all bootstrap resamples.",
+          "determinism_conditions": [
+            "all_entities content and ordering must be identical",
+            "gold (GOLD_DISCOVERIES) content and ordering must be identical",
+            "m_synonym behavior must be identical (currently falls back to m_token since BRIDGE_SYNONYMS emptied)",
+            "_score_f1_dr91 formula must be identical",
+            "Python random module must produce identical sequences (Mersenne Twister is deterministic for same seed)"
+          ],
+          "point_estimate_is_deterministic_under_fixed_inputs": true,
+          "implication": "Since point_estimate IS deterministic under fixed inputs, the discrepancy (0.9189 vs 0.8889) MUST come from a change in: all_entities content/ordering, gold content/ordering, m_synonym behavior, or _score_f1_dr91. The investigation must identify which of these changed between the committed artifact generation and the Phase 3 fresh run.",
+          "note": "This analysis does NOT explain the discrepancy. It narrows the search space. The actual cause must be identified by the 7-item investigation checklist."
+        }
+      }
     },
     {
       "metric_id": "M-009",
@@ -332,32 +479,42 @@
         "bootstrap_std": 0.0,
         "ci_95_lower": 0.0,
         "ci_95_upper": 0.0,
-        "ci_95_width": 0.0,
         "n": 20,
         "n_resamples": 500,
         "seed": 42
       },
-      "definition_location": {
-        "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
-        "computation": "programs/A_metrology/bootstrap_statistics.py",
-        "committed_results": "reports/bootstrap_statistics.json"
+      "provenance": {
+        "provenance_declared": true,
+        "provenance_verified": false,
+        "provenance_note": "provenance_declared=true means the definition location is known. provenance_verified=false means we have NOT cryptographically verified that the historical number was generated from exactly these inputs. Declared provenance is not verified provenance.",
+        "definition_locations": {
+          "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
+          "computation": "programs/A_metrology/bootstrap_statistics.py",
+          "committed_results": "reports/bootstrap_statistics.json"
+        },
+        "input_hashes": {
+          "computation_source_sha256": "5669b9b27f1d42e103783b100646794d97fa586aff81735e35b16aef26157d26",
+          "spec_source_sha256": "cc0115f4d93b2eed35476c1b050b0859de38c39e310bed3286788960e245611e",
+          "committed_results_sha256": "ce3169fef06190778801f17a1c25cbaf3984cdf809c3466ea3ffddee279e83c7",
+          "gold_set_source_sha256": "9e5b90dd7cfa8dc0bb72289a111f611e9eb1cd0c8c1dbf1262cfc55303040b08",
+          "synonym_map_note": "BRIDGE_SYNONYMS = {} (empty since cycle 270). Hash of empty dict.",
+          "synonym_map_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "entity_pool_note": "all_entities is computed at module load by NLP extraction of 40 source snippets. Its content and ORDERING affect M-008's random candidate generation. Hash must be computed at runtime (not yet done in this inventory).",
+          "entity_pool_sha256": "RUNTIME_COMPUTATION_REQUIRED"
+        }
       },
-      "inputs": {
-        "gold_set": "GOLD_DISCOVERIES (N=20, benchmarks/discovery_capability_benchmark.py:105-328)",
-        "entity_pool": "all_entities (NLP-extracted from 40 source snippets, fixed at module load)",
-        "synonym_map": "BRIDGE_SYNONYMS (EMPTY since cycle 270, discovery_capability_benchmark.py:68)",
-        "matchers": "m_exact, m_token, m_synonym (falls back to m_token), m_fuzzy"
+      "regeneration_status": "REGENERATED_AND_MATCHED",
+      "regeneration_evidence": {
+        "fresh_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
+        "comparison": "field-by-field (point_estimate, ci_95_lower, ci_95_upper)",
+        "result": "all compared fields matched within 1e-4 tolerance",
+        "caveat": "This comparison was part of a single shared-context run of bootstrap_all_metrics, not an independent per-metric regeneration test. The metric is REGENERATED_AND_MATCHED under this shared context, but has not been independently regenerated in isolation.",
+        "fresh_output_artifact": "reports/phase3/regeneration_result.json"
       },
-      "computation": "UNSAFE synonyms count \u2014 count of circular/gold-derived synonyms (now 0)",
-      "regeneration_status": "PASSED",
-      "fresh_regenerated_value": null,
       "critical_path_for_matcher_discrimination": false,
-      "measurement_usability": "ACTIVE",
-      "used_for_scientific_decision": "NO",
-      "value_deleted": "NO",
-      "value_replaced": "NO",
-      "values_averaged": "NO",
-      "historical_provenance": "COMMITTED"
+      "measurement_usability": "REGENERATED_AND_MATCHED",
+      "scientifically_eligible": false,
+      "used_for_scientific_decision": "NO"
     },
     {
       "metric_id": "M-010",
@@ -368,32 +525,42 @@
         "bootstrap_std": 0.1081,
         "ci_95_lower": 0.45,
         "ci_95_upper": 0.85,
-        "ci_95_width": 0.4,
         "n": 20,
         "n_resamples": 500,
         "seed": 42
       },
-      "definition_location": {
-        "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
-        "computation": "programs/A_metrology/bootstrap_statistics.py",
-        "committed_results": "reports/bootstrap_statistics.json"
+      "provenance": {
+        "provenance_declared": true,
+        "provenance_verified": false,
+        "provenance_note": "provenance_declared=true means the definition location is known. provenance_verified=false means we have NOT cryptographically verified that the historical number was generated from exactly these inputs. Declared provenance is not verified provenance.",
+        "definition_locations": {
+          "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
+          "computation": "programs/A_metrology/bootstrap_statistics.py",
+          "committed_results": "reports/bootstrap_statistics.json"
+        },
+        "input_hashes": {
+          "computation_source_sha256": "5669b9b27f1d42e103783b100646794d97fa586aff81735e35b16aef26157d26",
+          "spec_source_sha256": "cc0115f4d93b2eed35476c1b050b0859de38c39e310bed3286788960e245611e",
+          "committed_results_sha256": "ce3169fef06190778801f17a1c25cbaf3984cdf809c3466ea3ffddee279e83c7",
+          "gold_set_source_sha256": "9e5b90dd7cfa8dc0bb72289a111f611e9eb1cd0c8c1dbf1262cfc55303040b08",
+          "synonym_map_note": "BRIDGE_SYNONYMS = {} (empty since cycle 270). Hash of empty dict.",
+          "synonym_map_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "entity_pool_note": "all_entities is computed at module load by NLP extraction of 40 source snippets. Its content and ORDERING affect M-008's random candidate generation. Hash must be computed at runtime (not yet done in this inventory).",
+          "entity_pool_sha256": "RUNTIME_COMPUTATION_REQUIRED"
+        }
       },
-      "inputs": {
-        "gold_set": "GOLD_DISCOVERIES (N=20, benchmarks/discovery_capability_benchmark.py:105-328)",
-        "entity_pool": "all_entities (NLP-extracted from 40 source snippets, fixed at module load)",
-        "synonym_map": "BRIDGE_SYNONYMS (EMPTY since cycle 270, discovery_capability_benchmark.py:68)",
-        "matchers": "m_exact, m_token, m_synonym (falls back to m_token), m_fuzzy"
+      "regeneration_status": "REGENERATED_AND_MATCHED",
+      "regeneration_evidence": {
+        "fresh_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
+        "comparison": "field-by-field (point_estimate, ci_95_lower, ci_95_upper)",
+        "result": "all compared fields matched within 1e-4 tolerance",
+        "caveat": "This comparison was part of a single shared-context run of bootstrap_all_metrics, not an independent per-metric regeneration test. The metric is REGENERATED_AND_MATCHED under this shared context, but has not been independently regenerated in isolation.",
+        "fresh_output_artifact": "reports/phase3/regeneration_result.json"
       },
-      "computation": "Per-proposal F1 (honest, lenient, ALL shared) \u2014 honest per-proposal F1",
-      "regeneration_status": "PASSED",
-      "fresh_regenerated_value": null,
       "critical_path_for_matcher_discrimination": true,
-      "measurement_usability": "ACTIVE",
-      "used_for_scientific_decision": "YES",
-      "value_deleted": "NO",
-      "value_replaced": "NO",
-      "values_averaged": "NO",
-      "historical_provenance": "COMMITTED"
+      "measurement_usability": "REGENERATED_AND_MATCHED",
+      "scientifically_eligible": false,
+      "used_for_scientific_decision": "NOT_YET"
     },
     {
       "metric_id": "M-011",
@@ -404,32 +571,42 @@
         "bootstrap_std": 0.0,
         "ci_95_lower": 0.0,
         "ci_95_upper": 0.0,
-        "ci_95_width": 0.0,
         "n": 20,
         "n_resamples": 500,
         "seed": 42
       },
-      "definition_location": {
-        "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
-        "computation": "programs/A_metrology/bootstrap_statistics.py",
-        "committed_results": "reports/bootstrap_statistics.json"
+      "provenance": {
+        "provenance_declared": true,
+        "provenance_verified": false,
+        "provenance_note": "provenance_declared=true means the definition location is known. provenance_verified=false means we have NOT cryptographically verified that the historical number was generated from exactly these inputs. Declared provenance is not verified provenance.",
+        "definition_locations": {
+          "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
+          "computation": "programs/A_metrology/bootstrap_statistics.py",
+          "committed_results": "reports/bootstrap_statistics.json"
+        },
+        "input_hashes": {
+          "computation_source_sha256": "5669b9b27f1d42e103783b100646794d97fa586aff81735e35b16aef26157d26",
+          "spec_source_sha256": "cc0115f4d93b2eed35476c1b050b0859de38c39e310bed3286788960e245611e",
+          "committed_results_sha256": "ce3169fef06190778801f17a1c25cbaf3984cdf809c3466ea3ffddee279e83c7",
+          "gold_set_source_sha256": "9e5b90dd7cfa8dc0bb72289a111f611e9eb1cd0c8c1dbf1262cfc55303040b08",
+          "synonym_map_note": "BRIDGE_SYNONYMS = {} (empty since cycle 270). Hash of empty dict.",
+          "synonym_map_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "entity_pool_note": "all_entities is computed at module load by NLP extraction of 40 source snippets. Its content and ORDERING affect M-008's random candidate generation. Hash must be computed at runtime (not yet done in this inventory).",
+          "entity_pool_sha256": "RUNTIME_COMPUTATION_REQUIRED"
+        }
       },
-      "inputs": {
-        "gold_set": "GOLD_DISCOVERIES (N=20, benchmarks/discovery_capability_benchmark.py:105-328)",
-        "entity_pool": "all_entities (NLP-extracted from 40 source snippets, fixed at module load)",
-        "synonym_map": "BRIDGE_SYNONYMS (EMPTY since cycle 270, discovery_capability_benchmark.py:68)",
-        "matchers": "m_exact, m_token, m_synonym (falls back to m_token), m_fuzzy"
+      "regeneration_status": "REGENERATED_AND_MATCHED",
+      "regeneration_evidence": {
+        "fresh_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
+        "comparison": "field-by-field (point_estimate, ci_95_lower, ci_95_upper)",
+        "result": "all compared fields matched within 1e-4 tolerance",
+        "caveat": "This comparison was part of a single shared-context run of bootstrap_all_metrics, not an independent per-metric regeneration test. The metric is REGENERATED_AND_MATCHED under this shared context, but has not been independently regenerated in isolation.",
+        "fresh_output_artifact": "reports/phase3/regeneration_result.json"
       },
-      "computation": "Per-proposal F1 (strict, honest) \u2014 strict per-proposal F1",
-      "regeneration_status": "PASSED",
-      "fresh_regenerated_value": null,
       "critical_path_for_matcher_discrimination": true,
-      "measurement_usability": "ACTIVE",
-      "used_for_scientific_decision": "YES",
-      "value_deleted": "NO",
-      "value_replaced": "NO",
-      "values_averaged": "NO",
-      "historical_provenance": "COMMITTED"
+      "measurement_usability": "REGENERATED_AND_MATCHED",
+      "scientifically_eligible": false,
+      "used_for_scientific_decision": "NOT_YET"
     },
     {
       "metric_id": "M-012",
@@ -440,32 +617,42 @@
         "bootstrap_std": 0.0809,
         "ci_95_lower": 0.6207,
         "ci_95_upper": 0.9189,
-        "ci_95_width": 0.2982,
         "n": 20,
         "n_resamples": 500,
         "seed": 42
       },
-      "definition_location": {
-        "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
-        "computation": "programs/A_metrology/bootstrap_statistics.py",
-        "committed_results": "reports/bootstrap_statistics.json"
+      "provenance": {
+        "provenance_declared": true,
+        "provenance_verified": false,
+        "provenance_note": "provenance_declared=true means the definition location is known. provenance_verified=false means we have NOT cryptographically verified that the historical number was generated from exactly these inputs. Declared provenance is not verified provenance.",
+        "definition_locations": {
+          "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
+          "computation": "programs/A_metrology/bootstrap_statistics.py",
+          "committed_results": "reports/bootstrap_statistics.json"
+        },
+        "input_hashes": {
+          "computation_source_sha256": "5669b9b27f1d42e103783b100646794d97fa586aff81735e35b16aef26157d26",
+          "spec_source_sha256": "cc0115f4d93b2eed35476c1b050b0859de38c39e310bed3286788960e245611e",
+          "committed_results_sha256": "ce3169fef06190778801f17a1c25cbaf3984cdf809c3466ea3ffddee279e83c7",
+          "gold_set_source_sha256": "9e5b90dd7cfa8dc0bb72289a111f611e9eb1cd0c8c1dbf1262cfc55303040b08",
+          "synonym_map_note": "BRIDGE_SYNONYMS = {} (empty since cycle 270). Hash of empty dict.",
+          "synonym_map_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "entity_pool_note": "all_entities is computed at module load by NLP extraction of 40 source snippets. Its content and ORDERING affect M-008's random candidate generation. Hash must be computed at runtime (not yet done in this inventory).",
+          "entity_pool_sha256": "RUNTIME_COMPUTATION_REQUIRED"
+        }
       },
-      "inputs": {
-        "gold_set": "GOLD_DISCOVERIES (N=20, benchmarks/discovery_capability_benchmark.py:105-328)",
-        "entity_pool": "all_entities (NLP-extracted from 40 source snippets, fixed at module load)",
-        "synonym_map": "BRIDGE_SYNONYMS (EMPTY since cycle 270, discovery_capability_benchmark.py:68)",
-        "matchers": "m_exact, m_token, m_synonym (falls back to m_token), m_fuzzy"
+      "regeneration_status": "REGENERATED_AND_MATCHED",
+      "regeneration_evidence": {
+        "fresh_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
+        "comparison": "field-by-field (point_estimate, ci_95_lower, ci_95_upper)",
+        "result": "all compared fields matched within 1e-4 tolerance",
+        "caveat": "This comparison was part of a single shared-context run of bootstrap_all_metrics, not an independent per-metric regeneration test. The metric is REGENERATED_AND_MATCHED under this shared context, but has not been independently regenerated in isolation.",
+        "fresh_output_artifact": "reports/phase3/regeneration_result.json"
       },
-      "computation": "Aggregate F1 (DR-91 convention) \u2014 formula-inflated aggregate",
-      "regeneration_status": "PASSED",
-      "fresh_regenerated_value": null,
       "critical_path_for_matcher_discrimination": true,
-      "measurement_usability": "ACTIVE",
-      "used_for_scientific_decision": "YES",
-      "value_deleted": "NO",
-      "value_replaced": "NO",
-      "values_averaged": "NO",
-      "historical_provenance": "COMMITTED"
+      "measurement_usability": "REGENERATED_AND_MATCHED",
+      "scientifically_eligible": false,
+      "used_for_scientific_decision": "NOT_YET"
     },
     {
       "metric_id": "M-013",
@@ -476,32 +663,42 @@
         "bootstrap_std": 0.0875,
         "ci_95_lower": 0.5455,
         "ci_95_upper": 0.8947,
-        "ci_95_width": 0.3493,
         "n": 20,
         "n_resamples": 500,
         "seed": 42
       },
-      "definition_location": {
-        "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
-        "computation": "programs/A_metrology/bootstrap_statistics.py",
-        "committed_results": "reports/bootstrap_statistics.json"
+      "provenance": {
+        "provenance_declared": true,
+        "provenance_verified": false,
+        "provenance_note": "provenance_declared=true means the definition location is known. provenance_verified=false means we have NOT cryptographically verified that the historical number was generated from exactly these inputs. Declared provenance is not verified provenance.",
+        "definition_locations": {
+          "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
+          "computation": "programs/A_metrology/bootstrap_statistics.py",
+          "committed_results": "reports/bootstrap_statistics.json"
+        },
+        "input_hashes": {
+          "computation_source_sha256": "5669b9b27f1d42e103783b100646794d97fa586aff81735e35b16aef26157d26",
+          "spec_source_sha256": "cc0115f4d93b2eed35476c1b050b0859de38c39e310bed3286788960e245611e",
+          "committed_results_sha256": "ce3169fef06190778801f17a1c25cbaf3984cdf809c3466ea3ffddee279e83c7",
+          "gold_set_source_sha256": "9e5b90dd7cfa8dc0bb72289a111f611e9eb1cd0c8c1dbf1262cfc55303040b08",
+          "synonym_map_note": "BRIDGE_SYNONYMS = {} (empty since cycle 270). Hash of empty dict.",
+          "synonym_map_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "entity_pool_note": "all_entities is computed at module load by NLP extraction of 40 source snippets. Its content and ORDERING affect M-008's random candidate generation. Hash must be computed at runtime (not yet done in this inventory).",
+          "entity_pool_sha256": "RUNTIME_COMPUTATION_REQUIRED"
+        }
       },
-      "inputs": {
-        "gold_set": "GOLD_DISCOVERIES (N=20, benchmarks/discovery_capability_benchmark.py:105-328)",
-        "entity_pool": "all_entities (NLP-extracted from 40 source snippets, fixed at module load)",
-        "synonym_map": "BRIDGE_SYNONYMS (EMPTY since cycle 270, discovery_capability_benchmark.py:68)",
-        "matchers": "m_exact, m_token, m_synonym (falls back to m_token), m_fuzzy"
+      "regeneration_status": "REGENERATED_AND_MATCHED",
+      "regeneration_evidence": {
+        "fresh_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
+        "comparison": "field-by-field (point_estimate, ci_95_lower, ci_95_upper)",
+        "result": "all compared fields matched within 1e-4 tolerance",
+        "caveat": "This comparison was part of a single shared-context run of bootstrap_all_metrics, not an independent per-metric regeneration test. The metric is REGENERATED_AND_MATCHED under this shared context, but has not been independently regenerated in isolation.",
+        "fresh_output_artifact": "reports/phase3/regeneration_result.json"
       },
-      "computation": "Aggregate F1 (honest convention) \u2014 honest aggregate F1",
-      "regeneration_status": "PASSED",
-      "fresh_regenerated_value": null,
       "critical_path_for_matcher_discrimination": true,
-      "measurement_usability": "ACTIVE",
-      "used_for_scientific_decision": "YES",
-      "value_deleted": "NO",
-      "value_replaced": "NO",
-      "values_averaged": "NO",
-      "historical_provenance": "COMMITTED"
+      "measurement_usability": "REGENERATED_AND_MATCHED",
+      "scientifically_eligible": false,
+      "used_for_scientific_decision": "NOT_YET"
     },
     {
       "metric_id": "M-014",
@@ -512,32 +709,42 @@
         "bootstrap_std": 0.0997,
         "ci_95_lower": 0.1487,
         "ci_95_upper": 0.5,
-        "ci_95_width": 0.3513,
         "n": 20,
         "n_resamples": 200,
         "seed": 42
       },
-      "definition_location": {
-        "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
-        "computation": "programs/A_metrology/bootstrap_statistics.py",
-        "committed_results": "reports/bootstrap_statistics.json"
+      "provenance": {
+        "provenance_declared": true,
+        "provenance_verified": false,
+        "provenance_note": "provenance_declared=true means the definition location is known. provenance_verified=false means we have NOT cryptographically verified that the historical number was generated from exactly these inputs. Declared provenance is not verified provenance.",
+        "definition_locations": {
+          "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
+          "computation": "programs/A_metrology/bootstrap_statistics.py",
+          "committed_results": "reports/bootstrap_statistics.json"
+        },
+        "input_hashes": {
+          "computation_source_sha256": "5669b9b27f1d42e103783b100646794d97fa586aff81735e35b16aef26157d26",
+          "spec_source_sha256": "cc0115f4d93b2eed35476c1b050b0859de38c39e310bed3286788960e245611e",
+          "committed_results_sha256": "ce3169fef06190778801f17a1c25cbaf3984cdf809c3466ea3ffddee279e83c7",
+          "gold_set_source_sha256": "9e5b90dd7cfa8dc0bb72289a111f611e9eb1cd0c8c1dbf1262cfc55303040b08",
+          "synonym_map_note": "BRIDGE_SYNONYMS = {} (empty since cycle 270). Hash of empty dict.",
+          "synonym_map_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "entity_pool_note": "all_entities is computed at module load by NLP extraction of 40 source snippets. Its content and ORDERING affect M-008's random candidate generation. Hash must be computed at runtime (not yet done in this inventory).",
+          "entity_pool_sha256": "RUNTIME_COMPUTATION_REQUIRED"
+        }
       },
-      "inputs": {
-        "gold_set": "GOLD_DISCOVERIES (N=20, benchmarks/discovery_capability_benchmark.py:105-328)",
-        "entity_pool": "all_entities (NLP-extracted from 40 source snippets, fixed at module load)",
-        "synonym_map": "BRIDGE_SYNONYMS (EMPTY since cycle 270, discovery_capability_benchmark.py:68)",
-        "matchers": "m_exact, m_token, m_synonym (falls back to m_token), m_fuzzy"
+      "regeneration_status": "REGENERATED_AND_MATCHED",
+      "regeneration_evidence": {
+        "fresh_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
+        "comparison": "field-by-field (point_estimate, ci_95_lower, ci_95_upper)",
+        "result": "all compared fields matched within 1e-4 tolerance",
+        "caveat": "This comparison was part of a single shared-context run of bootstrap_all_metrics, not an independent per-metric regeneration test. The metric is REGENERATED_AND_MATCHED under this shared context, but has not been independently regenerated in isolation.",
+        "fresh_output_artifact": "reports/phase3/regeneration_result.json"
       },
-      "computation": "BM25 baseline recall@1 (lenient) \u2014 oracle-assisted BM25 baseline",
-      "regeneration_status": "PASSED",
-      "fresh_regenerated_value": null,
       "critical_path_for_matcher_discrimination": false,
-      "measurement_usability": "ACTIVE",
-      "used_for_scientific_decision": "NO",
-      "value_deleted": "NO",
-      "value_replaced": "NO",
-      "values_averaged": "NO",
-      "historical_provenance": "COMMITTED"
+      "measurement_usability": "REGENERATED_AND_MATCHED",
+      "scientifically_eligible": false,
+      "used_for_scientific_decision": "NO"
     },
     {
       "metric_id": "M-015",
@@ -548,32 +755,42 @@
         "bootstrap_std": 0.0517,
         "ci_95_lower": 0.0,
         "ci_95_upper": 0.15,
-        "ci_95_width": 0.15,
         "n": 20,
         "n_resamples": 200,
         "seed": 42
       },
-      "definition_location": {
-        "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
-        "computation": "programs/A_metrology/bootstrap_statistics.py",
-        "committed_results": "reports/bootstrap_statistics.json"
+      "provenance": {
+        "provenance_declared": true,
+        "provenance_verified": false,
+        "provenance_note": "provenance_declared=true means the definition location is known. provenance_verified=false means we have NOT cryptographically verified that the historical number was generated from exactly these inputs. Declared provenance is not verified provenance.",
+        "definition_locations": {
+          "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
+          "computation": "programs/A_metrology/bootstrap_statistics.py",
+          "committed_results": "reports/bootstrap_statistics.json"
+        },
+        "input_hashes": {
+          "computation_source_sha256": "5669b9b27f1d42e103783b100646794d97fa586aff81735e35b16aef26157d26",
+          "spec_source_sha256": "cc0115f4d93b2eed35476c1b050b0859de38c39e310bed3286788960e245611e",
+          "committed_results_sha256": "ce3169fef06190778801f17a1c25cbaf3984cdf809c3466ea3ffddee279e83c7",
+          "gold_set_source_sha256": "9e5b90dd7cfa8dc0bb72289a111f611e9eb1cd0c8c1dbf1262cfc55303040b08",
+          "synonym_map_note": "BRIDGE_SYNONYMS = {} (empty since cycle 270). Hash of empty dict.",
+          "synonym_map_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "entity_pool_note": "all_entities is computed at module load by NLP extraction of 40 source snippets. Its content and ORDERING affect M-008's random candidate generation. Hash must be computed at runtime (not yet done in this inventory).",
+          "entity_pool_sha256": "RUNTIME_COMPUTATION_REQUIRED"
+        }
       },
-      "inputs": {
-        "gold_set": "GOLD_DISCOVERIES (N=20, benchmarks/discovery_capability_benchmark.py:105-328)",
-        "entity_pool": "all_entities (NLP-extracted from 40 source snippets, fixed at module load)",
-        "synonym_map": "BRIDGE_SYNONYMS (EMPTY since cycle 270, discovery_capability_benchmark.py:68)",
-        "matchers": "m_exact, m_token, m_synonym (falls back to m_token), m_fuzzy"
+      "regeneration_status": "REGENERATED_AND_MATCHED",
+      "regeneration_evidence": {
+        "fresh_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
+        "comparison": "field-by-field (point_estimate, ci_95_lower, ci_95_upper)",
+        "result": "all compared fields matched within 1e-4 tolerance",
+        "caveat": "This comparison was part of a single shared-context run of bootstrap_all_metrics, not an independent per-metric regeneration test. The metric is REGENERATED_AND_MATCHED under this shared context, but has not been independently regenerated in isolation.",
+        "fresh_output_artifact": "reports/phase3/regeneration_result.json"
       },
-      "computation": "Random baseline F1 (lenient) \u2014 random 2-gram candidate baseline",
-      "regeneration_status": "PASSED",
-      "fresh_regenerated_value": null,
       "critical_path_for_matcher_discrimination": true,
-      "measurement_usability": "ACTIVE",
-      "used_for_scientific_decision": "YES",
-      "value_deleted": "NO",
-      "value_replaced": "NO",
-      "values_averaged": "NO",
-      "historical_provenance": "COMMITTED"
+      "measurement_usability": "REGENERATED_AND_MATCHED",
+      "scientifically_eligible": false,
+      "used_for_scientific_decision": "NOT_YET"
     },
     {
       "metric_id": "M-016",
@@ -584,32 +801,42 @@
         "bootstrap_std": 0.0748,
         "ci_95_lower": 0.0,
         "ci_95_upper": 0.25,
-        "ci_95_width": 0.25,
         "n": 20,
         "n_resamples": 200,
         "seed": 42
       },
-      "definition_location": {
-        "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
-        "computation": "programs/A_metrology/bootstrap_statistics.py",
-        "committed_results": "reports/bootstrap_statistics.json"
+      "provenance": {
+        "provenance_declared": true,
+        "provenance_verified": false,
+        "provenance_note": "provenance_declared=true means the definition location is known. provenance_verified=false means we have NOT cryptographically verified that the historical number was generated from exactly these inputs. Declared provenance is not verified provenance.",
+        "definition_locations": {
+          "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
+          "computation": "programs/A_metrology/bootstrap_statistics.py",
+          "committed_results": "reports/bootstrap_statistics.json"
+        },
+        "input_hashes": {
+          "computation_source_sha256": "5669b9b27f1d42e103783b100646794d97fa586aff81735e35b16aef26157d26",
+          "spec_source_sha256": "cc0115f4d93b2eed35476c1b050b0859de38c39e310bed3286788960e245611e",
+          "committed_results_sha256": "ce3169fef06190778801f17a1c25cbaf3984cdf809c3466ea3ffddee279e83c7",
+          "gold_set_source_sha256": "9e5b90dd7cfa8dc0bb72289a111f611e9eb1cd0c8c1dbf1262cfc55303040b08",
+          "synonym_map_note": "BRIDGE_SYNONYMS = {} (empty since cycle 270). Hash of empty dict.",
+          "synonym_map_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "entity_pool_note": "all_entities is computed at module load by NLP extraction of 40 source snippets. Its content and ORDERING affect M-008's random candidate generation. Hash must be computed at runtime (not yet done in this inventory).",
+          "entity_pool_sha256": "RUNTIME_COMPUTATION_REQUIRED"
+        }
       },
-      "inputs": {
-        "gold_set": "GOLD_DISCOVERIES (N=20, benchmarks/discovery_capability_benchmark.py:105-328)",
-        "entity_pool": "all_entities (NLP-extracted from 40 source snippets, fixed at module load)",
-        "synonym_map": "BRIDGE_SYNONYMS (EMPTY since cycle 270, discovery_capability_benchmark.py:68)",
-        "matchers": "m_exact, m_token, m_synonym (falls back to m_token), m_fuzzy"
+      "regeneration_status": "REGENERATED_AND_MATCHED",
+      "regeneration_evidence": {
+        "fresh_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
+        "comparison": "field-by-field (point_estimate, ci_95_lower, ci_95_upper)",
+        "result": "all compared fields matched within 1e-4 tolerance",
+        "caveat": "This comparison was part of a single shared-context run of bootstrap_all_metrics, not an independent per-metric regeneration test. The metric is REGENERATED_AND_MATCHED under this shared context, but has not been independently regenerated in isolation.",
+        "fresh_output_artifact": "reports/phase3/regeneration_result.json"
       },
-      "computation": "Frequency baseline F1 (lenient) \u2014 frequency-based baseline",
-      "regeneration_status": "PASSED",
-      "fresh_regenerated_value": null,
       "critical_path_for_matcher_discrimination": false,
-      "measurement_usability": "ACTIVE",
-      "used_for_scientific_decision": "NO",
-      "value_deleted": "NO",
-      "value_replaced": "NO",
-      "values_averaged": "NO",
-      "historical_provenance": "COMMITTED"
+      "measurement_usability": "REGENERATED_AND_MATCHED",
+      "scientifically_eligible": false,
+      "used_for_scientific_decision": "NO"
     },
     {
       "metric_id": "M-301",
@@ -620,30 +847,37 @@
         "bootstrap_std": 0.0,
         "ci_95_lower": 0.0,
         "ci_95_upper": 0.0,
-        "ci_95_width": 0.0,
         "n": 6,
         "n_resamples": 500,
         "seed": 42
       },
-      "definition_location": {
-        "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
-        "computation": "programs/A_metrology/bootstrap_statistics.py",
-        "committed_results": "reports/bootstrap_statistics.json"
+      "provenance": {
+        "provenance_declared": true,
+        "provenance_verified": false,
+        "provenance_note": "provenance_declared=true means the definition location is known. provenance_verified=false means we have NOT cryptographically verified that the historical number was generated from exactly these inputs. Declared provenance is not verified provenance.",
+        "definition_locations": {
+          "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
+          "computation": "programs/A_metrology/bootstrap_statistics.py",
+          "committed_results": "reports/bootstrap_statistics.json"
+        },
+        "input_hashes": {
+          "computation_source_sha256": "5669b9b27f1d42e103783b100646794d97fa586aff81735e35b16aef26157d26",
+          "spec_source_sha256": "cc0115f4d93b2eed35476c1b050b0859de38c39e310bed3286788960e245611e",
+          "committed_results_sha256": "ce3169fef06190778801f17a1c25cbaf3984cdf809c3466ea3ffddee279e83c7"
+        }
       },
-      "inputs": {
-        "source": "reports/tier2_review_aggregated.json, reports/tier2_review_responses.csv, reports/dr95_calibration_research.json, reports/calibration_study.json",
-        "description": "AI surrogate evaluation and calibration data"
+      "regeneration_status": "REGENERATED_AND_MATCHED",
+      "regeneration_evidence": {
+        "fresh_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
+        "comparison": "field-by-field (point_estimate, ci_95_lower, ci_95_upper)",
+        "result": "all compared fields matched within 1e-4 tolerance",
+        "caveat": "This comparison was part of a single shared-context run of bootstrap_all_metrics, not an independent per-metric regeneration test. The metric is REGENERATED_AND_MATCHED under this shared context, but has not been independently regenerated in isolation.",
+        "fresh_output_artifact": "reports/phase3/regeneration_result.json"
       },
-      "computation": "M-301 \u2014 AI surrogate evaluation / calibration metric",
-      "regeneration_status": "PASSED",
-      "fresh_regenerated_value": null,
       "critical_path_for_matcher_discrimination": false,
-      "measurement_usability": "ACTIVE",
-      "used_for_scientific_decision": "NO",
-      "value_deleted": "NO",
-      "value_replaced": "NO",
-      "values_averaged": "NO",
-      "historical_provenance": "COMMITTED"
+      "measurement_usability": "REGENERATED_AND_MATCHED",
+      "scientifically_eligible": false,
+      "used_for_scientific_decision": "NO"
     },
     {
       "metric_id": "M-302",
@@ -654,30 +888,37 @@
         "bootstrap_std": 0.309,
         "ci_95_lower": 1.678,
         "ci_95_upper": 2.8458,
-        "ci_95_width": 1.1679,
         "n": 7,
         "n_resamples": 500,
         "seed": 42
       },
-      "definition_location": {
-        "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
-        "computation": "programs/A_metrology/bootstrap_statistics.py",
-        "committed_results": "reports/bootstrap_statistics.json"
+      "provenance": {
+        "provenance_declared": true,
+        "provenance_verified": false,
+        "provenance_note": "provenance_declared=true means the definition location is known. provenance_verified=false means we have NOT cryptographically verified that the historical number was generated from exactly these inputs. Declared provenance is not verified provenance.",
+        "definition_locations": {
+          "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
+          "computation": "programs/A_metrology/bootstrap_statistics.py",
+          "committed_results": "reports/bootstrap_statistics.json"
+        },
+        "input_hashes": {
+          "computation_source_sha256": "5669b9b27f1d42e103783b100646794d97fa586aff81735e35b16aef26157d26",
+          "spec_source_sha256": "cc0115f4d93b2eed35476c1b050b0859de38c39e310bed3286788960e245611e",
+          "committed_results_sha256": "ce3169fef06190778801f17a1c25cbaf3984cdf809c3466ea3ffddee279e83c7"
+        }
       },
-      "inputs": {
-        "source": "reports/tier2_review_aggregated.json, reports/tier2_review_responses.csv, reports/dr95_calibration_research.json, reports/calibration_study.json",
-        "description": "AI surrogate evaluation and calibration data"
+      "regeneration_status": "REGENERATED_AND_MATCHED",
+      "regeneration_evidence": {
+        "fresh_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
+        "comparison": "field-by-field (point_estimate, ci_95_lower, ci_95_upper)",
+        "result": "all compared fields matched within 1e-4 tolerance",
+        "caveat": "This comparison was part of a single shared-context run of bootstrap_all_metrics, not an independent per-metric regeneration test. The metric is REGENERATED_AND_MATCHED under this shared context, but has not been independently regenerated in isolation.",
+        "fresh_output_artifact": "reports/phase3/regeneration_result.json"
       },
-      "computation": "M-302 \u2014 AI surrogate evaluation / calibration metric",
-      "regeneration_status": "PASSED",
-      "fresh_regenerated_value": null,
       "critical_path_for_matcher_discrimination": false,
-      "measurement_usability": "ACTIVE",
-      "used_for_scientific_decision": "NO",
-      "value_deleted": "NO",
-      "value_replaced": "NO",
-      "values_averaged": "NO",
-      "historical_provenance": "COMMITTED"
+      "measurement_usability": "REGENERATED_AND_MATCHED",
+      "scientifically_eligible": false,
+      "used_for_scientific_decision": "NO"
     },
     {
       "metric_id": "M-303-D1",
@@ -688,30 +929,37 @@
         "bootstrap_std": 0.2394,
         "ci_95_lower": 3.5,
         "ci_95_upper": 4.5,
-        "ci_95_width": 1.0,
         "n": 6,
         "n_resamples": 500,
         "seed": 42
       },
-      "definition_location": {
-        "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
-        "computation": "programs/A_metrology/bootstrap_statistics.py",
-        "committed_results": "reports/bootstrap_statistics.json"
+      "provenance": {
+        "provenance_declared": true,
+        "provenance_verified": false,
+        "provenance_note": "provenance_declared=true means the definition location is known. provenance_verified=false means we have NOT cryptographically verified that the historical number was generated from exactly these inputs. Declared provenance is not verified provenance.",
+        "definition_locations": {
+          "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
+          "computation": "programs/A_metrology/bootstrap_statistics.py",
+          "committed_results": "reports/bootstrap_statistics.json"
+        },
+        "input_hashes": {
+          "computation_source_sha256": "5669b9b27f1d42e103783b100646794d97fa586aff81735e35b16aef26157d26",
+          "spec_source_sha256": "cc0115f4d93b2eed35476c1b050b0859de38c39e310bed3286788960e245611e",
+          "committed_results_sha256": "ce3169fef06190778801f17a1c25cbaf3984cdf809c3466ea3ffddee279e83c7"
+        }
       },
-      "inputs": {
-        "source": "reports/tier2_review_aggregated.json, reports/tier2_review_responses.csv, reports/dr95_calibration_research.json, reports/calibration_study.json",
-        "description": "AI surrogate evaluation and calibration data"
+      "regeneration_status": "REGENERATED_AND_MATCHED",
+      "regeneration_evidence": {
+        "fresh_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
+        "comparison": "field-by-field (point_estimate, ci_95_lower, ci_95_upper)",
+        "result": "all compared fields matched within 1e-4 tolerance",
+        "caveat": "This comparison was part of a single shared-context run of bootstrap_all_metrics, not an independent per-metric regeneration test. The metric is REGENERATED_AND_MATCHED under this shared context, but has not been independently regenerated in isolation.",
+        "fresh_output_artifact": "reports/phase3/regeneration_result.json"
       },
-      "computation": "M-303-D1 \u2014 AI surrogate evaluation / calibration metric",
-      "regeneration_status": "PASSED",
-      "fresh_regenerated_value": null,
       "critical_path_for_matcher_discrimination": false,
-      "measurement_usability": "ACTIVE",
-      "used_for_scientific_decision": "NO",
-      "value_deleted": "NO",
-      "value_replaced": "NO",
-      "values_averaged": "NO",
-      "historical_provenance": "COMMITTED"
+      "measurement_usability": "REGENERATED_AND_MATCHED",
+      "scientifically_eligible": false,
+      "used_for_scientific_decision": "NO"
     },
     {
       "metric_id": "M-303-D2",
@@ -722,30 +970,37 @@
         "bootstrap_std": 0.1485,
         "ci_95_lower": 1.0,
         "ci_95_upper": 1.5,
-        "ci_95_width": 0.5,
         "n": 6,
         "n_resamples": 500,
         "seed": 42
       },
-      "definition_location": {
-        "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
-        "computation": "programs/A_metrology/bootstrap_statistics.py",
-        "committed_results": "reports/bootstrap_statistics.json"
+      "provenance": {
+        "provenance_declared": true,
+        "provenance_verified": false,
+        "provenance_note": "provenance_declared=true means the definition location is known. provenance_verified=false means we have NOT cryptographically verified that the historical number was generated from exactly these inputs. Declared provenance is not verified provenance.",
+        "definition_locations": {
+          "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
+          "computation": "programs/A_metrology/bootstrap_statistics.py",
+          "committed_results": "reports/bootstrap_statistics.json"
+        },
+        "input_hashes": {
+          "computation_source_sha256": "5669b9b27f1d42e103783b100646794d97fa586aff81735e35b16aef26157d26",
+          "spec_source_sha256": "cc0115f4d93b2eed35476c1b050b0859de38c39e310bed3286788960e245611e",
+          "committed_results_sha256": "ce3169fef06190778801f17a1c25cbaf3984cdf809c3466ea3ffddee279e83c7"
+        }
       },
-      "inputs": {
-        "source": "reports/tier2_review_aggregated.json, reports/tier2_review_responses.csv, reports/dr95_calibration_research.json, reports/calibration_study.json",
-        "description": "AI surrogate evaluation and calibration data"
+      "regeneration_status": "REGENERATED_AND_MATCHED",
+      "regeneration_evidence": {
+        "fresh_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
+        "comparison": "field-by-field (point_estimate, ci_95_lower, ci_95_upper)",
+        "result": "all compared fields matched within 1e-4 tolerance",
+        "caveat": "This comparison was part of a single shared-context run of bootstrap_all_metrics, not an independent per-metric regeneration test. The metric is REGENERATED_AND_MATCHED under this shared context, but has not been independently regenerated in isolation.",
+        "fresh_output_artifact": "reports/phase3/regeneration_result.json"
       },
-      "computation": "M-303-D2 \u2014 AI surrogate evaluation / calibration metric",
-      "regeneration_status": "PASSED",
-      "fresh_regenerated_value": null,
       "critical_path_for_matcher_discrimination": false,
-      "measurement_usability": "ACTIVE",
-      "used_for_scientific_decision": "NO",
-      "value_deleted": "NO",
-      "value_replaced": "NO",
-      "values_averaged": "NO",
-      "historical_provenance": "COMMITTED"
+      "measurement_usability": "REGENERATED_AND_MATCHED",
+      "scientifically_eligible": false,
+      "used_for_scientific_decision": "NO"
     },
     {
       "metric_id": "M-303-D3",
@@ -756,30 +1011,37 @@
         "bootstrap_std": 0.0,
         "ci_95_lower": 2.0,
         "ci_95_upper": 2.0,
-        "ci_95_width": 0.0,
         "n": 6,
         "n_resamples": 500,
         "seed": 42
       },
-      "definition_location": {
-        "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
-        "computation": "programs/A_metrology/bootstrap_statistics.py",
-        "committed_results": "reports/bootstrap_statistics.json"
+      "provenance": {
+        "provenance_declared": true,
+        "provenance_verified": false,
+        "provenance_note": "provenance_declared=true means the definition location is known. provenance_verified=false means we have NOT cryptographically verified that the historical number was generated from exactly these inputs. Declared provenance is not verified provenance.",
+        "definition_locations": {
+          "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
+          "computation": "programs/A_metrology/bootstrap_statistics.py",
+          "committed_results": "reports/bootstrap_statistics.json"
+        },
+        "input_hashes": {
+          "computation_source_sha256": "5669b9b27f1d42e103783b100646794d97fa586aff81735e35b16aef26157d26",
+          "spec_source_sha256": "cc0115f4d93b2eed35476c1b050b0859de38c39e310bed3286788960e245611e",
+          "committed_results_sha256": "ce3169fef06190778801f17a1c25cbaf3984cdf809c3466ea3ffddee279e83c7"
+        }
       },
-      "inputs": {
-        "source": "reports/tier2_review_aggregated.json, reports/tier2_review_responses.csv, reports/dr95_calibration_research.json, reports/calibration_study.json",
-        "description": "AI surrogate evaluation and calibration data"
+      "regeneration_status": "REGENERATED_AND_MATCHED",
+      "regeneration_evidence": {
+        "fresh_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
+        "comparison": "field-by-field (point_estimate, ci_95_lower, ci_95_upper)",
+        "result": "all compared fields matched within 1e-4 tolerance",
+        "caveat": "This comparison was part of a single shared-context run of bootstrap_all_metrics, not an independent per-metric regeneration test. The metric is REGENERATED_AND_MATCHED under this shared context, but has not been independently regenerated in isolation.",
+        "fresh_output_artifact": "reports/phase3/regeneration_result.json"
       },
-      "computation": "M-303-D3 \u2014 AI surrogate evaluation / calibration metric",
-      "regeneration_status": "PASSED",
-      "fresh_regenerated_value": null,
       "critical_path_for_matcher_discrimination": false,
-      "measurement_usability": "ACTIVE",
-      "used_for_scientific_decision": "NO",
-      "value_deleted": "NO",
-      "value_replaced": "NO",
-      "values_averaged": "NO",
-      "historical_provenance": "COMMITTED"
+      "measurement_usability": "REGENERATED_AND_MATCHED",
+      "scientifically_eligible": false,
+      "used_for_scientific_decision": "NO"
     },
     {
       "metric_id": "M-303-D4",
@@ -790,30 +1052,37 @@
         "bootstrap_std": 0.1517,
         "ci_95_lower": 1.5,
         "ci_95_upper": 2.0,
-        "ci_95_width": 0.5,
         "n": 6,
         "n_resamples": 500,
         "seed": 42
       },
-      "definition_location": {
-        "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
-        "computation": "programs/A_metrology/bootstrap_statistics.py",
-        "committed_results": "reports/bootstrap_statistics.json"
+      "provenance": {
+        "provenance_declared": true,
+        "provenance_verified": false,
+        "provenance_note": "provenance_declared=true means the definition location is known. provenance_verified=false means we have NOT cryptographically verified that the historical number was generated from exactly these inputs. Declared provenance is not verified provenance.",
+        "definition_locations": {
+          "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
+          "computation": "programs/A_metrology/bootstrap_statistics.py",
+          "committed_results": "reports/bootstrap_statistics.json"
+        },
+        "input_hashes": {
+          "computation_source_sha256": "5669b9b27f1d42e103783b100646794d97fa586aff81735e35b16aef26157d26",
+          "spec_source_sha256": "cc0115f4d93b2eed35476c1b050b0859de38c39e310bed3286788960e245611e",
+          "committed_results_sha256": "ce3169fef06190778801f17a1c25cbaf3984cdf809c3466ea3ffddee279e83c7"
+        }
       },
-      "inputs": {
-        "source": "reports/tier2_review_aggregated.json, reports/tier2_review_responses.csv, reports/dr95_calibration_research.json, reports/calibration_study.json",
-        "description": "AI surrogate evaluation and calibration data"
+      "regeneration_status": "REGENERATED_AND_MATCHED",
+      "regeneration_evidence": {
+        "fresh_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
+        "comparison": "field-by-field (point_estimate, ci_95_lower, ci_95_upper)",
+        "result": "all compared fields matched within 1e-4 tolerance",
+        "caveat": "This comparison was part of a single shared-context run of bootstrap_all_metrics, not an independent per-metric regeneration test. The metric is REGENERATED_AND_MATCHED under this shared context, but has not been independently regenerated in isolation.",
+        "fresh_output_artifact": "reports/phase3/regeneration_result.json"
       },
-      "computation": "M-303-D4 \u2014 AI surrogate evaluation / calibration metric",
-      "regeneration_status": "PASSED",
-      "fresh_regenerated_value": null,
       "critical_path_for_matcher_discrimination": false,
-      "measurement_usability": "ACTIVE",
-      "used_for_scientific_decision": "NO",
-      "value_deleted": "NO",
-      "value_replaced": "NO",
-      "values_averaged": "NO",
-      "historical_provenance": "COMMITTED"
+      "measurement_usability": "REGENERATED_AND_MATCHED",
+      "scientifically_eligible": false,
+      "used_for_scientific_decision": "NO"
     },
     {
       "metric_id": "M-303-D5",
@@ -824,30 +1093,37 @@
         "bootstrap_std": 0.0,
         "ci_95_lower": 3.0,
         "ci_95_upper": 3.0,
-        "ci_95_width": 0.0,
         "n": 6,
         "n_resamples": 500,
         "seed": 42
       },
-      "definition_location": {
-        "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
-        "computation": "programs/A_metrology/bootstrap_statistics.py",
-        "committed_results": "reports/bootstrap_statistics.json"
+      "provenance": {
+        "provenance_declared": true,
+        "provenance_verified": false,
+        "provenance_note": "provenance_declared=true means the definition location is known. provenance_verified=false means we have NOT cryptographically verified that the historical number was generated from exactly these inputs. Declared provenance is not verified provenance.",
+        "definition_locations": {
+          "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
+          "computation": "programs/A_metrology/bootstrap_statistics.py",
+          "committed_results": "reports/bootstrap_statistics.json"
+        },
+        "input_hashes": {
+          "computation_source_sha256": "5669b9b27f1d42e103783b100646794d97fa586aff81735e35b16aef26157d26",
+          "spec_source_sha256": "cc0115f4d93b2eed35476c1b050b0859de38c39e310bed3286788960e245611e",
+          "committed_results_sha256": "ce3169fef06190778801f17a1c25cbaf3984cdf809c3466ea3ffddee279e83c7"
+        }
       },
-      "inputs": {
-        "source": "reports/tier2_review_aggregated.json, reports/tier2_review_responses.csv, reports/dr95_calibration_research.json, reports/calibration_study.json",
-        "description": "AI surrogate evaluation and calibration data"
+      "regeneration_status": "REGENERATED_AND_MATCHED",
+      "regeneration_evidence": {
+        "fresh_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
+        "comparison": "field-by-field (point_estimate, ci_95_lower, ci_95_upper)",
+        "result": "all compared fields matched within 1e-4 tolerance",
+        "caveat": "This comparison was part of a single shared-context run of bootstrap_all_metrics, not an independent per-metric regeneration test. The metric is REGENERATED_AND_MATCHED under this shared context, but has not been independently regenerated in isolation.",
+        "fresh_output_artifact": "reports/phase3/regeneration_result.json"
       },
-      "computation": "M-303-D5 \u2014 AI surrogate evaluation / calibration metric",
-      "regeneration_status": "PASSED",
-      "fresh_regenerated_value": null,
       "critical_path_for_matcher_discrimination": false,
-      "measurement_usability": "ACTIVE",
-      "used_for_scientific_decision": "NO",
-      "value_deleted": "NO",
-      "value_replaced": "NO",
-      "values_averaged": "NO",
-      "historical_provenance": "COMMITTED"
+      "measurement_usability": "REGENERATED_AND_MATCHED",
+      "scientifically_eligible": false,
+      "used_for_scientific_decision": "NO"
     },
     {
       "metric_id": "M-303-D6",
@@ -858,30 +1134,37 @@
         "bootstrap_std": 0.1517,
         "ci_95_lower": 1.5,
         "ci_95_upper": 2.0,
-        "ci_95_width": 0.5,
         "n": 6,
         "n_resamples": 500,
         "seed": 42
       },
-      "definition_location": {
-        "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
-        "computation": "programs/A_metrology/bootstrap_statistics.py",
-        "committed_results": "reports/bootstrap_statistics.json"
+      "provenance": {
+        "provenance_declared": true,
+        "provenance_verified": false,
+        "provenance_note": "provenance_declared=true means the definition location is known. provenance_verified=false means we have NOT cryptographically verified that the historical number was generated from exactly these inputs. Declared provenance is not verified provenance.",
+        "definition_locations": {
+          "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
+          "computation": "programs/A_metrology/bootstrap_statistics.py",
+          "committed_results": "reports/bootstrap_statistics.json"
+        },
+        "input_hashes": {
+          "computation_source_sha256": "5669b9b27f1d42e103783b100646794d97fa586aff81735e35b16aef26157d26",
+          "spec_source_sha256": "cc0115f4d93b2eed35476c1b050b0859de38c39e310bed3286788960e245611e",
+          "committed_results_sha256": "ce3169fef06190778801f17a1c25cbaf3984cdf809c3466ea3ffddee279e83c7"
+        }
       },
-      "inputs": {
-        "source": "reports/tier2_review_aggregated.json, reports/tier2_review_responses.csv, reports/dr95_calibration_research.json, reports/calibration_study.json",
-        "description": "AI surrogate evaluation and calibration data"
+      "regeneration_status": "REGENERATED_AND_MATCHED",
+      "regeneration_evidence": {
+        "fresh_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
+        "comparison": "field-by-field (point_estimate, ci_95_lower, ci_95_upper)",
+        "result": "all compared fields matched within 1e-4 tolerance",
+        "caveat": "This comparison was part of a single shared-context run of bootstrap_all_metrics, not an independent per-metric regeneration test. The metric is REGENERATED_AND_MATCHED under this shared context, but has not been independently regenerated in isolation.",
+        "fresh_output_artifact": "reports/phase3/regeneration_result.json"
       },
-      "computation": "M-303-D6 \u2014 AI surrogate evaluation / calibration metric",
-      "regeneration_status": "PASSED",
-      "fresh_regenerated_value": null,
       "critical_path_for_matcher_discrimination": false,
-      "measurement_usability": "ACTIVE",
-      "used_for_scientific_decision": "NO",
-      "value_deleted": "NO",
-      "value_replaced": "NO",
-      "values_averaged": "NO",
-      "historical_provenance": "COMMITTED"
+      "measurement_usability": "REGENERATED_AND_MATCHED",
+      "scientifically_eligible": false,
+      "used_for_scientific_decision": "NO"
     },
     {
       "metric_id": "M-303-D7",
@@ -892,30 +1175,37 @@
         "bootstrap_std": 0.1517,
         "ci_95_lower": 1.5,
         "ci_95_upper": 2.0,
-        "ci_95_width": 0.5,
         "n": 6,
         "n_resamples": 500,
         "seed": 42
       },
-      "definition_location": {
-        "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
-        "computation": "programs/A_metrology/bootstrap_statistics.py",
-        "committed_results": "reports/bootstrap_statistics.json"
+      "provenance": {
+        "provenance_declared": true,
+        "provenance_verified": false,
+        "provenance_note": "provenance_declared=true means the definition location is known. provenance_verified=false means we have NOT cryptographically verified that the historical number was generated from exactly these inputs. Declared provenance is not verified provenance.",
+        "definition_locations": {
+          "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
+          "computation": "programs/A_metrology/bootstrap_statistics.py",
+          "committed_results": "reports/bootstrap_statistics.json"
+        },
+        "input_hashes": {
+          "computation_source_sha256": "5669b9b27f1d42e103783b100646794d97fa586aff81735e35b16aef26157d26",
+          "spec_source_sha256": "cc0115f4d93b2eed35476c1b050b0859de38c39e310bed3286788960e245611e",
+          "committed_results_sha256": "ce3169fef06190778801f17a1c25cbaf3984cdf809c3466ea3ffddee279e83c7"
+        }
       },
-      "inputs": {
-        "source": "reports/tier2_review_aggregated.json, reports/tier2_review_responses.csv, reports/dr95_calibration_research.json, reports/calibration_study.json",
-        "description": "AI surrogate evaluation and calibration data"
+      "regeneration_status": "REGENERATED_AND_MATCHED",
+      "regeneration_evidence": {
+        "fresh_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
+        "comparison": "field-by-field (point_estimate, ci_95_lower, ci_95_upper)",
+        "result": "all compared fields matched within 1e-4 tolerance",
+        "caveat": "This comparison was part of a single shared-context run of bootstrap_all_metrics, not an independent per-metric regeneration test. The metric is REGENERATED_AND_MATCHED under this shared context, but has not been independently regenerated in isolation.",
+        "fresh_output_artifact": "reports/phase3/regeneration_result.json"
       },
-      "computation": "M-303-D7 \u2014 AI surrogate evaluation / calibration metric",
-      "regeneration_status": "PASSED",
-      "fresh_regenerated_value": null,
       "critical_path_for_matcher_discrimination": false,
-      "measurement_usability": "ACTIVE",
-      "used_for_scientific_decision": "NO",
-      "value_deleted": "NO",
-      "value_replaced": "NO",
-      "values_averaged": "NO",
-      "historical_provenance": "COMMITTED"
+      "measurement_usability": "REGENERATED_AND_MATCHED",
+      "scientifically_eligible": false,
+      "used_for_scientific_decision": "NO"
     },
     {
       "metric_id": "M-101",
@@ -926,30 +1216,37 @@
         "bootstrap_std": 0.0,
         "ci_95_lower": 1.0,
         "ci_95_upper": 1.0,
-        "ci_95_width": 0.0,
         "n": 5,
         "n_resamples": 500,
         "seed": 42
       },
-      "definition_location": {
-        "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
-        "computation": "programs/A_metrology/bootstrap_statistics.py",
-        "committed_results": "reports/bootstrap_statistics.json"
+      "provenance": {
+        "provenance_declared": true,
+        "provenance_verified": false,
+        "provenance_note": "provenance_declared=true means the definition location is known. provenance_verified=false means we have NOT cryptographically verified that the historical number was generated from exactly these inputs. Declared provenance is not verified provenance.",
+        "definition_locations": {
+          "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
+          "computation": "programs/A_metrology/bootstrap_statistics.py",
+          "committed_results": "reports/bootstrap_statistics.json"
+        },
+        "input_hashes": {
+          "computation_source_sha256": "5669b9b27f1d42e103783b100646794d97fa586aff81735e35b16aef26157d26",
+          "spec_source_sha256": "cc0115f4d93b2eed35476c1b050b0859de38c39e310bed3286788960e245611e",
+          "committed_results_sha256": "ce3169fef06190778801f17a1c25cbaf3984cdf809c3466ea3ffddee279e83c7"
+        }
       },
-      "inputs": {
-        "source": "benchmarks/reports/gen{1..5}_pr_score.json",
-        "description": "Per-generation invention pipeline P/R scores"
+      "regeneration_status": "REGENERATED_AND_MATCHED",
+      "regeneration_evidence": {
+        "fresh_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
+        "comparison": "field-by-field (point_estimate, ci_95_lower, ci_95_upper)",
+        "result": "all compared fields matched within 1e-4 tolerance",
+        "caveat": "This comparison was part of a single shared-context run of bootstrap_all_metrics, not an independent per-metric regeneration test. The metric is REGENERATED_AND_MATCHED under this shared context, but has not been independently regenerated in isolation.",
+        "fresh_output_artifact": "reports/phase3/regeneration_result.json"
       },
-      "computation": "M-101 \u2014 per-generation invention pipeline F1",
-      "regeneration_status": "PASSED",
-      "fresh_regenerated_value": null,
       "critical_path_for_matcher_discrimination": false,
-      "measurement_usability": "ACTIVE",
-      "used_for_scientific_decision": "NO",
-      "value_deleted": "NO",
-      "value_replaced": "NO",
-      "values_averaged": "NO",
-      "historical_provenance": "COMMITTED"
+      "measurement_usability": "REGENERATED_AND_MATCHED",
+      "scientifically_eligible": false,
+      "used_for_scientific_decision": "NO"
     },
     {
       "metric_id": "M-102",
@@ -960,30 +1257,37 @@
         "bootstrap_std": 0.0208,
         "ci_95_lower": 0.8983,
         "ci_95_upper": 0.9764,
-        "ci_95_width": 0.0781,
         "n": 65,
         "n_resamples": 500,
         "seed": 42
       },
-      "definition_location": {
-        "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
-        "computation": "programs/A_metrology/bootstrap_statistics.py",
-        "committed_results": "reports/bootstrap_statistics.json"
+      "provenance": {
+        "provenance_declared": true,
+        "provenance_verified": false,
+        "provenance_note": "provenance_declared=true means the definition location is known. provenance_verified=false means we have NOT cryptographically verified that the historical number was generated from exactly these inputs. Declared provenance is not verified provenance.",
+        "definition_locations": {
+          "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
+          "computation": "programs/A_metrology/bootstrap_statistics.py",
+          "committed_results": "reports/bootstrap_statistics.json"
+        },
+        "input_hashes": {
+          "computation_source_sha256": "5669b9b27f1d42e103783b100646794d97fa586aff81735e35b16aef26157d26",
+          "spec_source_sha256": "cc0115f4d93b2eed35476c1b050b0859de38c39e310bed3286788960e245611e",
+          "committed_results_sha256": "ce3169fef06190778801f17a1c25cbaf3984cdf809c3466ea3ffddee279e83c7"
+        }
       },
-      "inputs": {
-        "source": "benchmarks/reports/gen{1..5}_pr_score.json",
-        "description": "Per-generation invention pipeline P/R scores"
+      "regeneration_status": "REGENERATED_AND_MATCHED",
+      "regeneration_evidence": {
+        "fresh_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
+        "comparison": "field-by-field (point_estimate, ci_95_lower, ci_95_upper)",
+        "result": "all compared fields matched within 1e-4 tolerance",
+        "caveat": "This comparison was part of a single shared-context run of bootstrap_all_metrics, not an independent per-metric regeneration test. The metric is REGENERATED_AND_MATCHED under this shared context, but has not been independently regenerated in isolation.",
+        "fresh_output_artifact": "reports/phase3/regeneration_result.json"
       },
-      "computation": "M-102 \u2014 per-generation invention pipeline F1",
-      "regeneration_status": "PASSED",
-      "fresh_regenerated_value": null,
       "critical_path_for_matcher_discrimination": false,
-      "measurement_usability": "ACTIVE",
-      "used_for_scientific_decision": "NO",
-      "value_deleted": "NO",
-      "value_replaced": "NO",
-      "values_averaged": "NO",
-      "historical_provenance": "COMMITTED"
+      "measurement_usability": "REGENERATED_AND_MATCHED",
+      "scientifically_eligible": false,
+      "used_for_scientific_decision": "NO"
     },
     {
       "metric_id": "M-103",
@@ -994,30 +1298,37 @@
         "bootstrap_std": 0.0304,
         "ci_95_lower": 0.8145,
         "ci_95_upper": 0.9322,
-        "ci_95_width": 0.1177,
         "n": 85,
         "n_resamples": 500,
         "seed": 42
       },
-      "definition_location": {
-        "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
-        "computation": "programs/A_metrology/bootstrap_statistics.py",
-        "committed_results": "reports/bootstrap_statistics.json"
+      "provenance": {
+        "provenance_declared": true,
+        "provenance_verified": false,
+        "provenance_note": "provenance_declared=true means the definition location is known. provenance_verified=false means we have NOT cryptographically verified that the historical number was generated from exactly these inputs. Declared provenance is not verified provenance.",
+        "definition_locations": {
+          "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
+          "computation": "programs/A_metrology/bootstrap_statistics.py",
+          "committed_results": "reports/bootstrap_statistics.json"
+        },
+        "input_hashes": {
+          "computation_source_sha256": "5669b9b27f1d42e103783b100646794d97fa586aff81735e35b16aef26157d26",
+          "spec_source_sha256": "cc0115f4d93b2eed35476c1b050b0859de38c39e310bed3286788960e245611e",
+          "committed_results_sha256": "ce3169fef06190778801f17a1c25cbaf3984cdf809c3466ea3ffddee279e83c7"
+        }
       },
-      "inputs": {
-        "source": "benchmarks/reports/gen{1..5}_pr_score.json",
-        "description": "Per-generation invention pipeline P/R scores"
+      "regeneration_status": "REGENERATED_AND_MATCHED",
+      "regeneration_evidence": {
+        "fresh_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
+        "comparison": "field-by-field (point_estimate, ci_95_lower, ci_95_upper)",
+        "result": "all compared fields matched within 1e-4 tolerance",
+        "caveat": "This comparison was part of a single shared-context run of bootstrap_all_metrics, not an independent per-metric regeneration test. The metric is REGENERATED_AND_MATCHED under this shared context, but has not been independently regenerated in isolation.",
+        "fresh_output_artifact": "reports/phase3/regeneration_result.json"
       },
-      "computation": "M-103 \u2014 per-generation invention pipeline F1",
-      "regeneration_status": "PASSED",
-      "fresh_regenerated_value": null,
       "critical_path_for_matcher_discrimination": false,
-      "measurement_usability": "ACTIVE",
-      "used_for_scientific_decision": "NO",
-      "value_deleted": "NO",
-      "value_replaced": "NO",
-      "values_averaged": "NO",
-      "historical_provenance": "COMMITTED"
+      "measurement_usability": "REGENERATED_AND_MATCHED",
+      "scientifically_eligible": false,
+      "used_for_scientific_decision": "NO"
     },
     {
       "metric_id": "M-104",
@@ -1028,30 +1339,37 @@
         "bootstrap_std": 0.0677,
         "ci_95_lower": 0.7368,
         "ci_95_upper": 1.0,
-        "ci_95_width": 0.2632,
         "n": 12,
         "n_resamples": 500,
         "seed": 42
       },
-      "definition_location": {
-        "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
-        "computation": "programs/A_metrology/bootstrap_statistics.py",
-        "committed_results": "reports/bootstrap_statistics.json"
+      "provenance": {
+        "provenance_declared": true,
+        "provenance_verified": false,
+        "provenance_note": "provenance_declared=true means the definition location is known. provenance_verified=false means we have NOT cryptographically verified that the historical number was generated from exactly these inputs. Declared provenance is not verified provenance.",
+        "definition_locations": {
+          "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
+          "computation": "programs/A_metrology/bootstrap_statistics.py",
+          "committed_results": "reports/bootstrap_statistics.json"
+        },
+        "input_hashes": {
+          "computation_source_sha256": "5669b9b27f1d42e103783b100646794d97fa586aff81735e35b16aef26157d26",
+          "spec_source_sha256": "cc0115f4d93b2eed35476c1b050b0859de38c39e310bed3286788960e245611e",
+          "committed_results_sha256": "ce3169fef06190778801f17a1c25cbaf3984cdf809c3466ea3ffddee279e83c7"
+        }
       },
-      "inputs": {
-        "source": "benchmarks/reports/gen{1..5}_pr_score.json",
-        "description": "Per-generation invention pipeline P/R scores"
+      "regeneration_status": "REGENERATED_AND_MATCHED",
+      "regeneration_evidence": {
+        "fresh_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
+        "comparison": "field-by-field (point_estimate, ci_95_lower, ci_95_upper)",
+        "result": "all compared fields matched within 1e-4 tolerance",
+        "caveat": "This comparison was part of a single shared-context run of bootstrap_all_metrics, not an independent per-metric regeneration test. The metric is REGENERATED_AND_MATCHED under this shared context, but has not been independently regenerated in isolation.",
+        "fresh_output_artifact": "reports/phase3/regeneration_result.json"
       },
-      "computation": "M-104 \u2014 per-generation invention pipeline F1",
-      "regeneration_status": "PASSED",
-      "fresh_regenerated_value": null,
       "critical_path_for_matcher_discrimination": false,
-      "measurement_usability": "ACTIVE",
-      "used_for_scientific_decision": "NO",
-      "value_deleted": "NO",
-      "value_replaced": "NO",
-      "values_averaged": "NO",
-      "historical_provenance": "COMMITTED"
+      "measurement_usability": "REGENERATED_AND_MATCHED",
+      "scientifically_eligible": false,
+      "used_for_scientific_decision": "NO"
     },
     {
       "metric_id": "M-105",
@@ -1062,30 +1380,37 @@
         "bootstrap_std": 0.0464,
         "ci_95_lower": 0.8276,
         "ci_95_upper": 1.0,
-        "ci_95_width": 0.1724,
         "n": 17,
         "n_resamples": 500,
         "seed": 42
       },
-      "definition_location": {
-        "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
-        "computation": "programs/A_metrology/bootstrap_statistics.py",
-        "committed_results": "reports/bootstrap_statistics.json"
+      "provenance": {
+        "provenance_declared": true,
+        "provenance_verified": false,
+        "provenance_note": "provenance_declared=true means the definition location is known. provenance_verified=false means we have NOT cryptographically verified that the historical number was generated from exactly these inputs. Declared provenance is not verified provenance.",
+        "definition_locations": {
+          "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
+          "computation": "programs/A_metrology/bootstrap_statistics.py",
+          "committed_results": "reports/bootstrap_statistics.json"
+        },
+        "input_hashes": {
+          "computation_source_sha256": "5669b9b27f1d42e103783b100646794d97fa586aff81735e35b16aef26157d26",
+          "spec_source_sha256": "cc0115f4d93b2eed35476c1b050b0859de38c39e310bed3286788960e245611e",
+          "committed_results_sha256": "ce3169fef06190778801f17a1c25cbaf3984cdf809c3466ea3ffddee279e83c7"
+        }
       },
-      "inputs": {
-        "source": "benchmarks/reports/gen{1..5}_pr_score.json",
-        "description": "Per-generation invention pipeline P/R scores"
+      "regeneration_status": "REGENERATED_AND_MATCHED",
+      "regeneration_evidence": {
+        "fresh_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
+        "comparison": "field-by-field (point_estimate, ci_95_lower, ci_95_upper)",
+        "result": "all compared fields matched within 1e-4 tolerance",
+        "caveat": "This comparison was part of a single shared-context run of bootstrap_all_metrics, not an independent per-metric regeneration test. The metric is REGENERATED_AND_MATCHED under this shared context, but has not been independently regenerated in isolation.",
+        "fresh_output_artifact": "reports/phase3/regeneration_result.json"
       },
-      "computation": "M-105 \u2014 per-generation invention pipeline F1",
-      "regeneration_status": "PASSED",
-      "fresh_regenerated_value": null,
       "critical_path_for_matcher_discrimination": false,
-      "measurement_usability": "ACTIVE",
-      "used_for_scientific_decision": "NO",
-      "value_deleted": "NO",
-      "value_replaced": "NO",
-      "values_averaged": "NO",
-      "historical_provenance": "COMMITTED"
+      "measurement_usability": "REGENERATED_AND_MATCHED",
+      "scientifically_eligible": false,
+      "used_for_scientific_decision": "NO"
     },
     {
       "metric_id": "M-201",
@@ -1096,30 +1421,37 @@
         "bootstrap_std": 0.0891,
         "ci_95_lower": 0.7,
         "ci_95_upper": 1.0,
-        "ci_95_width": 0.3,
         "n": 10,
         "n_resamples": 100,
         "seed": 42
       },
-      "definition_location": {
-        "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
-        "computation": "programs/A_metrology/bootstrap_statistics.py",
-        "committed_results": "reports/bootstrap_statistics.json"
+      "provenance": {
+        "provenance_declared": true,
+        "provenance_verified": false,
+        "provenance_note": "provenance_declared=true means the definition location is known. provenance_verified=false means we have NOT cryptographically verified that the historical number was generated from exactly these inputs. Declared provenance is not verified provenance.",
+        "definition_locations": {
+          "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
+          "computation": "programs/A_metrology/bootstrap_statistics.py",
+          "committed_results": "reports/bootstrap_statistics.json"
+        },
+        "input_hashes": {
+          "computation_source_sha256": "5669b9b27f1d42e103783b100646794d97fa586aff81735e35b16aef26157d26",
+          "spec_source_sha256": "cc0115f4d93b2eed35476c1b050b0859de38c39e310bed3286788960e245611e",
+          "committed_results_sha256": "ce3169fef06190778801f17a1c25cbaf3984cdf809c3466ea3ffddee279e83c7"
+        }
       },
-      "inputs": {
-        "source": "BLIND_SUITE[10:] (10 held-out blind problems, BLIND-011..020)",
-        "training": "BLIND_SUITE[:10] (BLIND-001..010) for composite synthesis"
+      "regeneration_status": "REGENERATED_AND_MATCHED",
+      "regeneration_evidence": {
+        "fresh_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
+        "comparison": "field-by-field (point_estimate, ci_95_lower, ci_95_upper)",
+        "result": "all compared fields matched within 1e-4 tolerance",
+        "caveat": "This comparison was part of a single shared-context run of bootstrap_all_metrics, not an independent per-metric regeneration test. The metric is REGENERATED_AND_MATCHED under this shared context, but has not been independently regenerated in isolation.",
+        "fresh_output_artifact": "reports/phase3/regeneration_result.json"
       },
-      "computation": "M-201 \u2014 search/l5b held-out evaluation",
-      "regeneration_status": "PASSED",
-      "fresh_regenerated_value": null,
       "critical_path_for_matcher_discrimination": false,
-      "measurement_usability": "ACTIVE",
-      "used_for_scientific_decision": "NO",
-      "value_deleted": "NO",
-      "value_replaced": "NO",
-      "values_averaged": "NO",
-      "historical_provenance": "COMMITTED"
+      "measurement_usability": "REGENERATED_AND_MATCHED",
+      "scientifically_eligible": false,
+      "used_for_scientific_decision": "NO"
     },
     {
       "metric_id": "M-202",
@@ -1130,30 +1462,37 @@
         "bootstrap_std": 0.0891,
         "ci_95_lower": 0.7,
         "ci_95_upper": 1.0,
-        "ci_95_width": 0.3,
         "n": 10,
         "n_resamples": 100,
         "seed": 42
       },
-      "definition_location": {
-        "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
-        "computation": "programs/A_metrology/bootstrap_statistics.py",
-        "committed_results": "reports/bootstrap_statistics.json"
+      "provenance": {
+        "provenance_declared": true,
+        "provenance_verified": false,
+        "provenance_note": "provenance_declared=true means the definition location is known. provenance_verified=false means we have NOT cryptographically verified that the historical number was generated from exactly these inputs. Declared provenance is not verified provenance.",
+        "definition_locations": {
+          "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
+          "computation": "programs/A_metrology/bootstrap_statistics.py",
+          "committed_results": "reports/bootstrap_statistics.json"
+        },
+        "input_hashes": {
+          "computation_source_sha256": "5669b9b27f1d42e103783b100646794d97fa586aff81735e35b16aef26157d26",
+          "spec_source_sha256": "cc0115f4d93b2eed35476c1b050b0859de38c39e310bed3286788960e245611e",
+          "committed_results_sha256": "ce3169fef06190778801f17a1c25cbaf3984cdf809c3466ea3ffddee279e83c7"
+        }
       },
-      "inputs": {
-        "source": "BLIND_SUITE[10:] (10 held-out blind problems, BLIND-011..020)",
-        "training": "BLIND_SUITE[:10] (BLIND-001..010) for composite synthesis"
+      "regeneration_status": "REGENERATED_AND_MATCHED",
+      "regeneration_evidence": {
+        "fresh_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
+        "comparison": "field-by-field (point_estimate, ci_95_lower, ci_95_upper)",
+        "result": "all compared fields matched within 1e-4 tolerance",
+        "caveat": "This comparison was part of a single shared-context run of bootstrap_all_metrics, not an independent per-metric regeneration test. The metric is REGENERATED_AND_MATCHED under this shared context, but has not been independently regenerated in isolation.",
+        "fresh_output_artifact": "reports/phase3/regeneration_result.json"
       },
-      "computation": "M-202 \u2014 search/l5b held-out evaluation",
-      "regeneration_status": "PASSED",
-      "fresh_regenerated_value": null,
       "critical_path_for_matcher_discrimination": false,
-      "measurement_usability": "ACTIVE",
-      "used_for_scientific_decision": "NO",
-      "value_deleted": "NO",
-      "value_replaced": "NO",
-      "values_averaged": "NO",
-      "historical_provenance": "COMMITTED"
+      "measurement_usability": "REGENERATED_AND_MATCHED",
+      "scientifically_eligible": false,
+      "used_for_scientific_decision": "NO"
     },
     {
       "metric_id": "M-203",
@@ -1164,30 +1503,37 @@
         "bootstrap_std": 0.0891,
         "ci_95_lower": 0.7,
         "ci_95_upper": 1.0,
-        "ci_95_width": 0.3,
         "n": 10,
         "n_resamples": 100,
         "seed": 42
       },
-      "definition_location": {
-        "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
-        "computation": "programs/A_metrology/bootstrap_statistics.py",
-        "committed_results": "reports/bootstrap_statistics.json"
+      "provenance": {
+        "provenance_declared": true,
+        "provenance_verified": false,
+        "provenance_note": "provenance_declared=true means the definition location is known. provenance_verified=false means we have NOT cryptographically verified that the historical number was generated from exactly these inputs. Declared provenance is not verified provenance.",
+        "definition_locations": {
+          "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
+          "computation": "programs/A_metrology/bootstrap_statistics.py",
+          "committed_results": "reports/bootstrap_statistics.json"
+        },
+        "input_hashes": {
+          "computation_source_sha256": "5669b9b27f1d42e103783b100646794d97fa586aff81735e35b16aef26157d26",
+          "spec_source_sha256": "cc0115f4d93b2eed35476c1b050b0859de38c39e310bed3286788960e245611e",
+          "committed_results_sha256": "ce3169fef06190778801f17a1c25cbaf3984cdf809c3466ea3ffddee279e83c7"
+        }
       },
-      "inputs": {
-        "source": "BLIND_SUITE[10:] (10 held-out blind problems, BLIND-011..020)",
-        "training": "BLIND_SUITE[:10] (BLIND-001..010) for composite synthesis"
+      "regeneration_status": "REGENERATED_AND_MATCHED",
+      "regeneration_evidence": {
+        "fresh_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
+        "comparison": "field-by-field (point_estimate, ci_95_lower, ci_95_upper)",
+        "result": "all compared fields matched within 1e-4 tolerance",
+        "caveat": "This comparison was part of a single shared-context run of bootstrap_all_metrics, not an independent per-metric regeneration test. The metric is REGENERATED_AND_MATCHED under this shared context, but has not been independently regenerated in isolation.",
+        "fresh_output_artifact": "reports/phase3/regeneration_result.json"
       },
-      "computation": "M-203 \u2014 search/l5b held-out evaluation",
-      "regeneration_status": "PASSED",
-      "fresh_regenerated_value": null,
       "critical_path_for_matcher_discrimination": false,
-      "measurement_usability": "ACTIVE",
-      "used_for_scientific_decision": "NO",
-      "value_deleted": "NO",
-      "value_replaced": "NO",
-      "values_averaged": "NO",
-      "historical_provenance": "COMMITTED"
+      "measurement_usability": "REGENERATED_AND_MATCHED",
+      "scientifically_eligible": false,
+      "used_for_scientific_decision": "NO"
     },
     {
       "metric_id": "M-204",
@@ -1198,30 +1544,37 @@
         "bootstrap_std": 0.3529,
         "ci_95_lower": 8.0,
         "ci_95_upper": 9.4,
-        "ci_95_width": 1.4,
         "n": 5,
         "n_resamples": 500,
         "seed": 42
       },
-      "definition_location": {
-        "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
-        "computation": "programs/A_metrology/bootstrap_statistics.py",
-        "committed_results": "reports/bootstrap_statistics.json"
+      "provenance": {
+        "provenance_declared": true,
+        "provenance_verified": false,
+        "provenance_note": "provenance_declared=true means the definition location is known. provenance_verified=false means we have NOT cryptographically verified that the historical number was generated from exactly these inputs. Declared provenance is not verified provenance.",
+        "definition_locations": {
+          "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
+          "computation": "programs/A_metrology/bootstrap_statistics.py",
+          "committed_results": "reports/bootstrap_statistics.json"
+        },
+        "input_hashes": {
+          "computation_source_sha256": "5669b9b27f1d42e103783b100646794d97fa586aff81735e35b16aef26157d26",
+          "spec_source_sha256": "cc0115f4d93b2eed35476c1b050b0859de38c39e310bed3286788960e245611e",
+          "committed_results_sha256": "ce3169fef06190778801f17a1c25cbaf3984cdf809c3466ea3ffddee279e83c7"
+        }
       },
-      "inputs": {
-        "source": "BLIND_SUITE[10:] (10 held-out blind problems, BLIND-011..020)",
-        "training": "BLIND_SUITE[:10] (BLIND-001..010) for composite synthesis"
+      "regeneration_status": "REGENERATED_AND_MATCHED",
+      "regeneration_evidence": {
+        "fresh_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
+        "comparison": "field-by-field (point_estimate, ci_95_lower, ci_95_upper)",
+        "result": "all compared fields matched within 1e-4 tolerance",
+        "caveat": "This comparison was part of a single shared-context run of bootstrap_all_metrics, not an independent per-metric regeneration test. The metric is REGENERATED_AND_MATCHED under this shared context, but has not been independently regenerated in isolation.",
+        "fresh_output_artifact": "reports/phase3/regeneration_result.json"
       },
-      "computation": "M-204 \u2014 search/l5b held-out evaluation",
-      "regeneration_status": "PASSED",
-      "fresh_regenerated_value": null,
       "critical_path_for_matcher_discrimination": false,
-      "measurement_usability": "ACTIVE",
-      "used_for_scientific_decision": "NO",
-      "value_deleted": "NO",
-      "value_replaced": "NO",
-      "values_averaged": "NO",
-      "historical_provenance": "COMMITTED"
+      "measurement_usability": "REGENERATED_AND_MATCHED",
+      "scientifically_eligible": false,
+      "used_for_scientific_decision": "NO"
     },
     {
       "metric_id": "M-205",
@@ -1232,30 +1585,37 @@
         "bootstrap_std": 0.0,
         "ci_95_lower": 1.0,
         "ci_95_upper": 1.0,
-        "ci_95_width": 0.0,
         "n": 43,
         "n_resamples": 500,
         "seed": 42
       },
-      "definition_location": {
-        "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
-        "computation": "programs/A_metrology/bootstrap_statistics.py",
-        "committed_results": "reports/bootstrap_statistics.json"
+      "provenance": {
+        "provenance_declared": true,
+        "provenance_verified": false,
+        "provenance_note": "provenance_declared=true means the definition location is known. provenance_verified=false means we have NOT cryptographically verified that the historical number was generated from exactly these inputs. Declared provenance is not verified provenance.",
+        "definition_locations": {
+          "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
+          "computation": "programs/A_metrology/bootstrap_statistics.py",
+          "committed_results": "reports/bootstrap_statistics.json"
+        },
+        "input_hashes": {
+          "computation_source_sha256": "5669b9b27f1d42e103783b100646794d97fa586aff81735e35b16aef26157d26",
+          "spec_source_sha256": "cc0115f4d93b2eed35476c1b050b0859de38c39e310bed3286788960e245611e",
+          "committed_results_sha256": "ce3169fef06190778801f17a1c25cbaf3984cdf809c3466ea3ffddee279e83c7"
+        }
       },
-      "inputs": {
-        "source": "BLIND_SUITE[10:] (10 held-out blind problems, BLIND-011..020)",
-        "training": "BLIND_SUITE[:10] (BLIND-001..010) for composite synthesis"
+      "regeneration_status": "REGENERATED_AND_MATCHED",
+      "regeneration_evidence": {
+        "fresh_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
+        "comparison": "field-by-field (point_estimate, ci_95_lower, ci_95_upper)",
+        "result": "all compared fields matched within 1e-4 tolerance",
+        "caveat": "This comparison was part of a single shared-context run of bootstrap_all_metrics, not an independent per-metric regeneration test. The metric is REGENERATED_AND_MATCHED under this shared context, but has not been independently regenerated in isolation.",
+        "fresh_output_artifact": "reports/phase3/regeneration_result.json"
       },
-      "computation": "M-205 \u2014 search/l5b held-out evaluation",
-      "regeneration_status": "PASSED",
-      "fresh_regenerated_value": null,
       "critical_path_for_matcher_discrimination": false,
-      "measurement_usability": "ACTIVE",
-      "used_for_scientific_decision": "NO",
-      "value_deleted": "NO",
-      "value_replaced": "NO",
-      "values_averaged": "NO",
-      "historical_provenance": "COMMITTED"
+      "measurement_usability": "REGENERATED_AND_MATCHED",
+      "scientifically_eligible": false,
+      "used_for_scientific_decision": "NO"
     },
     {
       "metric_id": "M-304",
@@ -1266,30 +1626,37 @@
         "bootstrap_std": 0.1485,
         "ci_95_lower": 0.0,
         "ci_95_upper": 0.5,
-        "ci_95_width": 0.5,
         "n": 6,
         "n_resamples": 500,
         "seed": 42
       },
-      "definition_location": {
-        "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
-        "computation": "programs/A_metrology/bootstrap_statistics.py",
-        "committed_results": "reports/bootstrap_statistics.json"
+      "provenance": {
+        "provenance_declared": true,
+        "provenance_verified": false,
+        "provenance_note": "provenance_declared=true means the definition location is known. provenance_verified=false means we have NOT cryptographically verified that the historical number was generated from exactly these inputs. Declared provenance is not verified provenance.",
+        "definition_locations": {
+          "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
+          "computation": "programs/A_metrology/bootstrap_statistics.py",
+          "committed_results": "reports/bootstrap_statistics.json"
+        },
+        "input_hashes": {
+          "computation_source_sha256": "5669b9b27f1d42e103783b100646794d97fa586aff81735e35b16aef26157d26",
+          "spec_source_sha256": "cc0115f4d93b2eed35476c1b050b0859de38c39e310bed3286788960e245611e",
+          "committed_results_sha256": "ce3169fef06190778801f17a1c25cbaf3984cdf809c3466ea3ffddee279e83c7"
+        }
       },
-      "inputs": {
-        "source": "reports/tier2_review_aggregated.json, reports/tier2_review_responses.csv, reports/dr95_calibration_research.json, reports/calibration_study.json",
-        "description": "AI surrogate evaluation and calibration data"
+      "regeneration_status": "REGENERATED_AND_MATCHED",
+      "regeneration_evidence": {
+        "fresh_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
+        "comparison": "field-by-field (point_estimate, ci_95_lower, ci_95_upper)",
+        "result": "all compared fields matched within 1e-4 tolerance",
+        "caveat": "This comparison was part of a single shared-context run of bootstrap_all_metrics, not an independent per-metric regeneration test. The metric is REGENERATED_AND_MATCHED under this shared context, but has not been independently regenerated in isolation.",
+        "fresh_output_artifact": "reports/phase3/regeneration_result.json"
       },
-      "computation": "M-304 \u2014 AI surrogate evaluation / calibration metric",
-      "regeneration_status": "PASSED",
-      "fresh_regenerated_value": null,
       "critical_path_for_matcher_discrimination": false,
-      "measurement_usability": "ACTIVE",
-      "used_for_scientific_decision": "NO",
-      "value_deleted": "NO",
-      "value_replaced": "NO",
-      "values_averaged": "NO",
-      "historical_provenance": "COMMITTED"
+      "measurement_usability": "REGENERATED_AND_MATCHED",
+      "scientifically_eligible": false,
+      "used_for_scientific_decision": "NO"
     },
     {
       "metric_id": "M-305",
@@ -1300,30 +1667,37 @@
         "bootstrap_std": 0.0556,
         "ci_95_lower": 2.375,
         "ci_95_upper": 2.625,
-        "ci_95_width": 0.25,
         "n": 6,
         "n_resamples": 500,
         "seed": 42
       },
-      "definition_location": {
-        "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
-        "computation": "programs/A_metrology/bootstrap_statistics.py",
-        "committed_results": "reports/bootstrap_statistics.json"
+      "provenance": {
+        "provenance_declared": true,
+        "provenance_verified": false,
+        "provenance_note": "provenance_declared=true means the definition location is known. provenance_verified=false means we have NOT cryptographically verified that the historical number was generated from exactly these inputs. Declared provenance is not verified provenance.",
+        "definition_locations": {
+          "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
+          "computation": "programs/A_metrology/bootstrap_statistics.py",
+          "committed_results": "reports/bootstrap_statistics.json"
+        },
+        "input_hashes": {
+          "computation_source_sha256": "5669b9b27f1d42e103783b100646794d97fa586aff81735e35b16aef26157d26",
+          "spec_source_sha256": "cc0115f4d93b2eed35476c1b050b0859de38c39e310bed3286788960e245611e",
+          "committed_results_sha256": "ce3169fef06190778801f17a1c25cbaf3984cdf809c3466ea3ffddee279e83c7"
+        }
       },
-      "inputs": {
-        "source": "reports/tier2_review_aggregated.json, reports/tier2_review_responses.csv, reports/dr95_calibration_research.json, reports/calibration_study.json",
-        "description": "AI surrogate evaluation and calibration data"
+      "regeneration_status": "REGENERATED_AND_MATCHED",
+      "regeneration_evidence": {
+        "fresh_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
+        "comparison": "field-by-field (point_estimate, ci_95_lower, ci_95_upper)",
+        "result": "all compared fields matched within 1e-4 tolerance",
+        "caveat": "This comparison was part of a single shared-context run of bootstrap_all_metrics, not an independent per-metric regeneration test. The metric is REGENERATED_AND_MATCHED under this shared context, but has not been independently regenerated in isolation.",
+        "fresh_output_artifact": "reports/phase3/regeneration_result.json"
       },
-      "computation": "M-305 \u2014 AI surrogate evaluation / calibration metric",
-      "regeneration_status": "PASSED",
-      "fresh_regenerated_value": null,
       "critical_path_for_matcher_discrimination": false,
-      "measurement_usability": "ACTIVE",
-      "used_for_scientific_decision": "NO",
-      "value_deleted": "NO",
-      "value_replaced": "NO",
-      "values_averaged": "NO",
-      "historical_provenance": "COMMITTED"
+      "measurement_usability": "REGENERATED_AND_MATCHED",
+      "scientifically_eligible": false,
+      "used_for_scientific_decision": "NO"
     },
     {
       "metric_id": "M-306",
@@ -1334,46 +1708,37 @@
         "bootstrap_std": 0.0111,
         "ci_95_lower": 0.875,
         "ci_95_upper": 0.925,
-        "ci_95_width": 0.05,
         "n": 6,
         "n_resamples": 500,
         "seed": 42
       },
-      "definition_location": {
-        "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
-        "computation": "programs/A_metrology/bootstrap_statistics.py",
-        "committed_results": "reports/bootstrap_statistics.json"
+      "provenance": {
+        "provenance_declared": true,
+        "provenance_verified": false,
+        "provenance_note": "provenance_declared=true means the definition location is known. provenance_verified=false means we have NOT cryptographically verified that the historical number was generated from exactly these inputs. Declared provenance is not verified provenance.",
+        "definition_locations": {
+          "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
+          "computation": "programs/A_metrology/bootstrap_statistics.py",
+          "committed_results": "reports/bootstrap_statistics.json"
+        },
+        "input_hashes": {
+          "computation_source_sha256": "5669b9b27f1d42e103783b100646794d97fa586aff81735e35b16aef26157d26",
+          "spec_source_sha256": "cc0115f4d93b2eed35476c1b050b0859de38c39e310bed3286788960e245611e",
+          "committed_results_sha256": "ce3169fef06190778801f17a1c25cbaf3984cdf809c3466ea3ffddee279e83c7"
+        }
       },
-      "inputs": {
-        "source": "reports/tier2_review_aggregated.json, reports/tier2_review_responses.csv, reports/dr95_calibration_research.json, reports/calibration_study.json",
-        "description": "AI surrogate evaluation and calibration data"
+      "regeneration_status": "REGENERATED_AND_MATCHED",
+      "regeneration_evidence": {
+        "fresh_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
+        "comparison": "field-by-field (point_estimate, ci_95_lower, ci_95_upper)",
+        "result": "all compared fields matched within 1e-4 tolerance",
+        "caveat": "This comparison was part of a single shared-context run of bootstrap_all_metrics, not an independent per-metric regeneration test. The metric is REGENERATED_AND_MATCHED under this shared context, but has not been independently regenerated in isolation.",
+        "fresh_output_artifact": "reports/phase3/regeneration_result.json"
       },
-      "computation": "M-306 \u2014 AI surrogate evaluation / calibration metric",
-      "regeneration_status": "PASSED",
-      "fresh_regenerated_value": null,
       "critical_path_for_matcher_discrimination": false,
-      "measurement_usability": "ACTIVE",
-      "used_for_scientific_decision": "NO",
-      "value_deleted": "NO",
-      "value_replaced": "NO",
-      "values_averaged": "NO",
-      "historical_provenance": "COMMITTED"
+      "measurement_usability": "REGENERATED_AND_MATCHED",
+      "scientifically_eligible": false,
+      "used_for_scientific_decision": "NO"
     }
-  ],
-  "critical_path_metrics": [
-    "M-004",
-    "M-005",
-    "M-006",
-    "M-007",
-    "M-008",
-    "M-010",
-    "M-011",
-    "M-012",
-    "M-013",
-    "M-015"
-  ],
-  "no_retroactive_repair": true,
-  "no_value_deletion": true,
-  "no_value_replacement": true,
-  "no_value_averaging": true
+  ]
 }
