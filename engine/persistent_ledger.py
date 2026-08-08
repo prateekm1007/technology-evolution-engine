@@ -92,6 +92,54 @@ class LedgerIntegrityError(Exception):
     pass
 
 
+# ============================================================================
+# Repair C: Explicit verification states (round-7)
+# ============================================================================
+
+class VerificationStatus(str):
+    """Explicit verification outcome states. Round-7 Repair C.
+
+    Replaces ambiguous boolean-only verification. An auditor should never
+    have to infer from a boolean whether the evidence store itself has
+    been corrupted.
+
+    VALID              — object exists, hash matches, no corruption
+    INVALID            — object exists but hash doesn't match (tampered)
+    INTEGRITY_FAILURE  — the evidence store itself is compromised
+                         (missing object, malformed JSON, corrupted index,
+                         substituted object, index/object mismatch)
+    """
+    VALID = "VALID"
+    INVALID = "INVALID"
+    INTEGRITY_FAILURE = "INTEGRITY_FAILURE"
+
+
+@dataclass
+class VerificationResult:
+    """Typed verification result. Round-7 Repair C."""
+    status: str  # VerificationStatus value
+    object_type: str = ""
+    object_id: str = ""
+    content_hash: str = ""
+    actual_hash: str = ""
+    file: str = ""
+    detail: str = ""
+
+    @property
+    def is_valid(self) -> bool:
+        return self.status == VerificationStatus.VALID
+
+    @property
+    def is_integrity_failure(self) -> bool:
+        return self.status == VerificationStatus.INTEGRITY_FAILURE
+
+    def to_dict(self) -> Dict:
+        return {"status": self.status, "object_type": self.object_type,
+                "object_id": self.object_id, "content_hash": self.content_hash,
+                "actual_hash": self.actual_hash, "file": self.file,
+                "detail": self.detail}
+
+
 class PersistentLedger:
     """A discovery ledger that persists every object to disk.
 
@@ -250,17 +298,27 @@ class PersistentLedger:
     def verify_registration(self, object_type: str, object_id: str) -> Dict:
         """Verify that an object is registered and its file hash matches.
 
+        Round-7 Repair C: returns explicit verification states, not just booleans.
+        The dict now includes a 'status' field with one of:
+          - VALID: object exists, hash matches
+          - INVALID: object exists but hash doesn't match (tampered)
+          - INTEGRITY_FAILURE: missing object, malformed JSON, or corrupted index
+          - NOT_REGISTERED: object is not in the index
+
         Returns a dict with:
-          - registered: bool (is the object in the index?)
+          - status: str (VerificationStatus value or NOT_REGISTERED)
+          - registered: bool (backward compat)
           - file_exists: bool
-          - content_hash_matches: bool (does the file hash match the index?)
+          - content_hash_matches: bool (backward compat)
           - content_hash: the hash from the index
           - actual_hash: the hash computed from the file
           - file: the relative path to the file
+          - detail: human-readable explanation
         """
-        result = {"registered": False, "file_exists": False,
-                  "content_hash_matches": False,
-                  "content_hash": "", "actual_hash": "", "file": ""}
+        result = {"status": "NOT_REGISTERED", "registered": False,
+                  "file_exists": False, "content_hash_matches": False,
+                  "content_hash": "", "actual_hash": "", "file": "",
+                  "detail": "object not in index"}
         entries = self._index.get(object_type, {})
         entry = entries.get(object_id)
         if not entry:
@@ -270,16 +328,34 @@ class PersistentLedger:
         result["file"] = entry.file
         file_path = self.ledger_dir / entry.file
         if not file_path.exists():
+            result["status"] = VerificationStatus.INTEGRITY_FAILURE
+            result["detail"] = f"file {entry.file} missing — evidence destroyed"
             return result
         result["file_exists"] = True
         try:
             obj_dict = json.loads(file_path.read_text())
-            actual_hash = _object_hash(obj_dict)
-            result["actual_hash"] = actual_hash
-            result["content_hash_matches"] = (actual_hash == entry.content_hash)
-        except json.JSONDecodeError:
-            pass
+        except json.JSONDecodeError as e:
+            result["status"] = VerificationStatus.INTEGRITY_FAILURE
+            result["detail"] = f"file {entry.file} is corrupted (invalid JSON): {e}"
+            return result
+        actual_hash = _object_hash(obj_dict)
+        result["actual_hash"] = actual_hash
+        if actual_hash == entry.content_hash:
+            result["content_hash_matches"] = True
+            result["status"] = VerificationStatus.VALID
+            result["detail"] = "object verified"
+        else:
+            result["status"] = VerificationStatus.INVALID
+            result["detail"] = f"hash mismatch: index={entry.content_hash[:16]}... file={actual_hash[:16]}..."
         return result
+
+    def verify_registration_typed(self, object_type: str, object_id: str) -> VerificationResult:
+        """Typed verification result. Round-7 Repair C."""
+        d = self.verify_registration(object_type, object_id)
+        return VerificationResult(
+            status=d["status"], object_type=object_type, object_id=object_id,
+            content_hash=d["content_hash"], actual_hash=d["actual_hash"],
+            file=d["file"], detail=d["detail"])
 
     def verify_all(self) -> Dict:
         """Verify every object in the ledger.
@@ -390,5 +466,121 @@ class PersistentLedger:
             "index_file": str(self._index_path),
         }
 
+    # ========================================================================
+    # Repair B: Ledger freeze record (round-7)
+    # ========================================================================
 
-__all__ = ["PersistentLedger", "LedgerEntry"]
+    def create_freeze_record(self, *, run_id: str = "",
+                             manifest_sha: str = "") -> Dict:
+        """Create a LEDGER_FREEZE_RECORD that cryptographically anchors the
+        ledger index to the run manifest.
+
+        Round-7 Repair B (per reviewer directive): the ledger index is the
+        authority for object registration, but the index itself has no
+        independent cryptographic identity. An attacker who modifies both
+        the index AND the referenced objects can produce a self-consistent
+        but fraudulent ledger.
+
+        The freeze record binds the ledger to the run manifest by recording:
+            - ledger_index_sha256: hash of the index.json content
+            - object_inventory_sha256: hash of all (object_id, content_hash) pairs
+            - run_id: the run this ledger belongs to
+            - manifest_sha: hash of the run manifest (if provided)
+            - created_at: when the freeze record was created
+
+        An auditor can then verify:
+            1. The current index hash matches the freeze record
+            2. The current object inventory hash matches the freeze record
+            3. The manifest hash matches the freeze record
+            4. The freeze record itself was not substituted (by comparing
+               its hash against an externally-recorded value, e.g. in the
+               run manifest)
+
+        This is the same principle as the Gate 2 FREEZE_RECORD.
+        """
+        # Compute the index hash
+        index_content = self._index_path.read_text() if self._index_path.exists() else ""
+        index_sha = _sha(index_content)
+
+        # Compute the object inventory hash
+        # The inventory is the sorted list of (object_type, object_id, content_hash) triples
+        inventory = []
+        for otype, entries in sorted(self._index.items()):
+            for oid, entry in sorted(entries.items()):
+                inventory.append(f"{otype}/{oid}/{entry.content_hash}")
+        inventory_str = "\n".join(sorted(inventory))
+        inventory_sha = _sha(inventory_str)
+
+        freeze_record = {
+            "schema_version": 1,
+            "ledger_index_sha256": index_sha,
+            "object_inventory_sha256": inventory_sha,
+            "run_id": run_id,
+            "manifest_sha256": manifest_sha,
+            "total_objects": sum(len(entries) for entries in self._index.values()),
+            "created_at": _now(),
+        }
+        # Write the freeze record to disk
+        freeze_path = self.ledger_dir / "LEDGER_FREEZE_RECORD.json"
+        freeze_path.write_text(json.dumps(freeze_record, indent=2, default=str))
+        return freeze_record
+
+    def verify_freeze_record(self, *, manifest_sha: str = "") -> Dict:
+        """Verify the ledger against its freeze record.
+
+        Returns a dict with:
+          - freeze_record_exists: bool
+          - index_hash_matches: bool
+          - inventory_hash_matches: bool
+          - manifest_hash_matches: bool (if manifest_sha provided)
+          - detail: human-readable explanation
+        """
+        freeze_path = self.ledger_dir / "LEDGER_FREEZE_RECORD.json"
+        result = {"freeze_record_exists": False, "index_hash_matches": False,
+                  "inventory_hash_matches": False, "manifest_hash_matches": False,
+                  "detail": ""}
+        if not freeze_path.exists():
+            result["detail"] = "no LEDGER_FREEZE_RECORD.json found"
+            return result
+        result["freeze_record_exists"] = True
+        try:
+            freeze = json.loads(freeze_path.read_text())
+        except json.JSONDecodeError as e:
+            result["detail"] = f"freeze record corrupted: {e}"
+            return result
+
+        # Verify index hash
+        index_content = self._index_path.read_text() if self._index_path.exists() else ""
+        current_index_sha = _sha(index_content)
+        result["index_hash_matches"] = (current_index_sha == freeze.get("ledger_index_sha256"))
+
+        # Verify object inventory hash
+        inventory = []
+        for otype, entries in sorted(self._index.items()):
+            for oid, entry in sorted(entries.items()):
+                inventory.append(f"{otype}/{oid}/{entry.content_hash}")
+        inventory_str = "\n".join(sorted(inventory))
+        current_inventory_sha = _sha(inventory_str)
+        result["inventory_hash_matches"] = (current_inventory_sha == freeze.get("object_inventory_sha256"))
+
+        # Verify manifest hash (if provided)
+        if manifest_sha:
+            result["manifest_hash_matches"] = (manifest_sha == freeze.get("manifest_sha256"))
+
+        # Overall detail
+        mismatches = []
+        if not result["index_hash_matches"]:
+            mismatches.append("index hash")
+        if not result["inventory_hash_matches"]:
+            mismatches.append("inventory hash")
+        if manifest_sha and not result["manifest_hash_matches"]:
+            mismatches.append("manifest hash")
+        if mismatches:
+            result["detail"] = f"freeze record mismatches: {', '.join(mismatches)}"
+        else:
+            result["detail"] = "freeze record verified"
+        return result
+
+
+__all__ = ["PersistentLedger", "LedgerEntry", "LedgerIntegrityError",
+           "VerificationStatus", "VerificationResult"]

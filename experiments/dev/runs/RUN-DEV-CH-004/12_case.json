@@ -2,12 +2,12 @@
   "stage": "12_case",
   "run_id": "RUN-DEV-CH-004",
   "code_sha": "engine-v0.1-round3",
-  "input_hash": "3abe4a8b4171e682d35f7e8652a72fa957c2f7a34fe6cb2b87705b34391e5d6e",
-  "output_hash": "f78f3abdb6aefa1436de867fd845fcc588d892575bfcac38ddaee05727a35dca",
+  "input_hash": "28c35b6793e13d06808e0357dd5487a75634387fc9ae47072af6e047fde8c75e",
+  "output_hash": "4b5588e8668750622a7b7640a1b2932d6a095974bd9263a3340af002bc6037e0",
   "provider_manifest": null,
   "result": {
     "case_id": "DC-DEV-CH-004",
-    "provenance_root_hash": "cd9bbdeb0a7b6f1c8f8926e18fb5d094df4fae3a1e7123d5104e6ef25d569af3",
+    "provenance_root_hash": "8016c9d363c286a7262201e4fe9698de2004b2fe9190c0f25ddb4b42b70109fd",
     "verify_provenance": true,
     "final_state": "TESTABLE_HYPOTHESIS",
     "lineage_verification": {
@@ -42,24 +42,28 @@
         {
           "name": "provenance_root_hash_verifiable",
           "passed": true,
-          "detail": "root_hash=cd9bbdeb0a7b6f1c..."
+          "detail": "root_hash=8016c9d363c286a7..."
         }
       ],
       "reachable_nodes": [
         "adversarial:H-DEV-CH-004-001",
         "adversarial:H-DEV-CH-004-002",
         "adversarial:H-DEV-CH-004-003",
+        "adversarial:H-DEV-CH-004-004",
         "hypothesis:H-DEV-CH-004-001",
         "hypothesis:H-DEV-CH-004-002",
         "hypothesis:H-DEV-CH-004-003",
+        "hypothesis:H-DEV-CH-004-004",
         "mechanism_graph:DEV-CH-004",
         "mechanism_pattern:DEV-CH-004",
         "novelty:H-DEV-CH-004-001",
         "novelty:H-DEV-CH-004-002",
         "novelty:H-DEV-CH-004-003",
+        "novelty:H-DEV-CH-004-004",
         "rediscovery:H-DEV-CH-004-001",
         "rediscovery:H-DEV-CH-004-002",
         "rediscovery:H-DEV-CH-004-003",
+        "rediscovery:H-DEV-CH-004-004",
         "run:DEV-CH-004",
         "source_doc:doc_af4f56b7b49b",
         "transfer:TH-DEV-CH-004-001"
@@ -67,21 +71,23 @@
       "orphans": [],
       "missing_parents": [],
       "hash_mismatches": [],
-      "node_count": 17,
-      "edge_count": 15
+      "node_count": 21,
+      "edge_count": 19
     },
     "lineage_valid": true,
     "ledger_verification": {
+      "status": "VALID",
       "registered": true,
       "file_exists": true,
       "content_hash_matches": true,
-      "content_hash": "2a924341c22137d38764eb114968b681182e9a9dff303e49c2bcbd3193a9cbfc",
-      "actual_hash": "2a924341c22137d38764eb114968b681182e9a9dff303e49c2bcbd3193a9cbfc",
-      "file": "cases/DC-DEV-CH-004.json"
+      "content_hash": "b635c220ee64acd21d779f441b64b1fd74be5e49658e8b383ddb3b73f1271b42",
+      "actual_hash": "b635c220ee64acd21d779f441b64b1fd74be5e49658e8b383ddb3b73f1271b42",
+      "file": "cases/DC-DEV-CH-004.json",
+      "detail": "object verified"
     },
     "registered_in_persistent_ledger": true,
     "ledger_dir": "/home/z/my-project/audit/technology-evolution-engine/experiments/dev/runs/RUN-DEV-CH-004/ledger",
-    "evidence_count": 17
+    "evidence_count": 21
   },
-  "timestamp": "2026-08-08T07:56:47.755231+00:00"
+  "timestamp": "2026-08-08T08:08:13.817993+00:00"
 }

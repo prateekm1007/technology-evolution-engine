@@ -2,8 +2,8 @@
   "stage": "05_adversarial_H-DEV-CH-004-003",
   "run_id": "RUN-DEV-CH-004",
   "code_sha": "engine-v0.1-round3",
-  "input_hash": "2f42fd5498fdfceee0dec909edc4f117e4a83142dcbd7e767de3fdc765c8f72b",
-  "output_hash": "77dfdcc91b6bda4a1cb452863bfe983c5f8821926529e2694ff7c9ec73dd5dcb",
+  "input_hash": "f72d5919f11cd5c22a416a994147f3bbd3767f9db6185f9f9a44b2dc895d039b",
+  "output_hash": "7fc3d69485e0360b60704f226766daf9ce10c719537049acd425c94c3ae0eefd",
   "provider_manifest": {
     "provider": "zai",
     "model": "glm-4-plus",
@@ -13,13 +13,13 @@
       "max_tokens": 4096,
       "system_sha": "1f5a3fff3aebc2e1d44b2312f4b604b5c2911cacaf452eb6ca705c724fc9142b"
     },
-    "prompt_sha": "6d58a77cd2665e1a17875a2923b2aa30f34e8335c9ec8527605c1ddeaffc7d15",
+    "prompt_sha": "f1d4fc633c3a767612c23d6f5e75e1c4274e1a3f9c52ef0237b0ae588f8059b5",
     "seed": null,
     "tool_versions": {
       "z_ai_cli": "z-ai"
     },
-    "timestamp": "2026-08-08T07:56:26.185448+00:00",
-    "latency_ms": 19035,
+    "timestamp": "2026-08-08T08:07:50.350345+00:00",
+    "latency_ms": 7412,
     "success": true,
     "error": ""
   },
@@ -28,39 +28,39 @@
     "failure_modes": [
       {
         "category": "FRAGILE_ASSUMPTION",
-        "description": "Traffic flow rarely exhibits clean periodic patterns in real urban networks",
+        "description": "Local reward signals cannot accurately reflect system performance in complex traffic networks",
         "severity": "HIGH",
-        "evidence": "Real traffic flows are dominated by stochastic events, accidents, pedestrian crossings, and random arrivals that disrupt any potential periodicity. The assumption of detectable dominant frequencies is fundamentally flawed."
+        "evidence": "Traffic systems are inherently non-linear and emergent; local improvements often create bottlenecks elsewhere (Braess paradox)"
       },
       {
         "category": "CONTRADICTS_KNOWN",
-        "description": "Resonance mechanisms in traffic systems typically create bottlenecks rather than optimize flow",
+        "description": "Distributed reinforcement learning cannot effectively manage the exploration-exploitation balance in large-scale traffic systems",
         "severity": "HIGH",
-        "evidence": "Traffic engineering literature consistently shows that synchronization of traffic signals often creates resonance effects that amplify congestion rather than alleviate it, particularly when multiple intersections attempt to synchronize."
+        "evidence": "Multi-agent RL suffers from non-stationarity problems where the environment changes as other agents learn, making stable convergence nearly impossible"
       },
       {
         "category": "BOUNDARY_BREAKS",
-        "description": "The hypothesis fails to account for the fundamental difference between biological slime mold adaptation and engineered traffic systems",
+        "description": "The hypothesis ignores critical boundary conditions of real-world traffic systems",
         "severity": "HIGH",
-        "evidence": "Slime molds are decentralized biological systems with evolutionary optimization over millions of generations. Traffic systems are engineered with specific objectives, constraints, and safety requirements that cannot be compared to biological adaptation mechanisms."
+        "evidence": "Emergency vehicles, weather events, accidents, and construction zones create extreme conditions that break the learning assumptions"
       },
       {
         "category": "PRIOR_ART_EXISTS",
-        "description": "Frequency-based signal timing has been extensively researched and shown to be ineffective",
+        "description": "Numerous existing distributed traffic control systems already outperform RL approaches",
         "severity": "MEDIUM",
-        "evidence": "Numerous studies from the 1990s onward have explored adaptive signal timing using frequency analysis, with consistent results showing that these approaches perform worse than modern machine learning-based methods that consider multiple factors beyond simple periodicity."
+        "evidence": "SCATS, SCOOT, and RHODES systems have decades of proven performance in real cities with predictable, optimized timing"
       },
       {
         "category": "FALSIFIER_TRIGGERED",
-        "description": "The hypothesis predicts improved performance from resonance, which contradicts established traffic flow theory",
+        "description": "The system would catastrophically fail during peak hours when exploration is most dangerous",
         "severity": "HIGH",
-        "evidence": "Fundamental traffic flow theory (e.g., Lighthill-Whitham-Richards model) shows that resonance effects in traffic systems typically lead to phantom jams and reduced throughput rather than improved efficiency. The hypothesis directly contradicts this well-established theory."
+        "evidence": "Exploration requires random timing changes that would cause gridlock during high traffic periods"
       },
       {
         "category": "INCOMPATIBLE_TARGET",
-        "description": "The mechanism cannot satisfy competing traffic engineering objectives",
+        "description": "Traffic optimization objectives are fundamentally incompatible with pure reward maximization",
         "severity": "HIGH",
-        "evidence": "Traffic systems must balance multiple conflicting objectives: throughput, safety, pedestrian access, emergency vehicle priority, and pollution reduction. A resonance-based mechanism optimized solely for flow frequencies would fail to address these critical competing requirements."
+        "evidence": "Traffic systems require multi-objective optimization (throughput, safety, emissions, equity) that cannot be reduced to a single reward signal"
       }
     ],
     "survives": false,
@@ -70,5 +70,5 @@
     "n_low_severity": 0,
     "source_hypothesis_hash": ""
   },
-  "timestamp": "2026-08-08T07:56:45.221540+00:00"
+  "timestamp": "2026-08-08T08:07:57.762979+00:00"
 }

@@ -2,8 +2,8 @@
   "stage": "06_rediscovery_H-DEV-CH-004-002",
   "run_id": "RUN-DEV-CH-004",
   "code_sha": "engine-v0.1-round3",
-  "input_hash": "96b56fa954403043e55c249bcd4a93f55766e5a79084b47a331c0847fb2327bb",
-  "output_hash": "f1dda2d5c0b0cc469fb4626e6ba9160feeed818008bc6f494d91d8d65101456e",
+  "input_hash": "e7c647ab679c121f2ad6b45e057c9d75d367e1887c3c9add78b74d90ae8e3447",
+  "output_hash": "073df7a7afd785ef5e18d1ecd56c7c0ebc18b6b4870382861ac5229959015a14",
   "provider_manifest": {
     "provider": "zai",
     "model": "glm-4-plus",
@@ -13,22 +13,22 @@
       "max_tokens": 4096,
       "system_sha": "dbdd0760dff49fc029b32b580a575b7de33a87d371edc2b0deec93bfb2b90b01"
     },
-    "prompt_sha": "929bafbb3da13e1f21b74c2c6b746cabeadb04b7a8706e0e3f3fde28ea92acf7",
+    "prompt_sha": "aa2c8cf30dc8ab15e23e2d3d3fe3d2139264819661a09f19e718d20c7f958792",
     "seed": null,
     "tool_versions": {
       "z_ai_cli": "z-ai"
     },
-    "timestamp": "2026-08-08T07:56:24.053537+00:00",
-    "latency_ms": 2127,
+    "timestamp": "2026-08-08T08:07:45.018491+00:00",
+    "latency_ms": 5327,
     "success": true,
     "error": ""
   },
   "result": {
     "hypothesis_id": "H-DEV-CH-004-002",
-    "classification": "PARAPHRASED_IN_INPUT",
-    "evidence": "The hypothesis describes a mechanism where intersections adjust their green time based on relative flow they can attract, creating a competitive dynamic similar to slime mold networks. This is a restatement of the source document's description of Physarum polycephalum network adaptation, where the organism preferentially routes flow through thicker tubes, with high flow causing tube thickening and low flow causing tube thinning - essentially a competitive resource allocation mechanism where paths compete for flow resources.",
-    "is_rediscovery": true,
+    "classification": "NON_TRIVIAL_TRANSFER",
+    "evidence": "The hypothesis describes a distributed traffic signal system that uses consensus mechanisms through iterative message passing between intersections. While the source document discusses how Physarum polycephalum creates adaptive networks through protoplasmic streaming and feedback mechanisms, there's no direct mapping to traffic signal systems. The hypothesis applies biological principles (consensus building, iterative evaluation) to a completely different domain (traffic management). This requires cross-domain transfer of concepts beyond what's explicitly stated or paraphrased in the source document. The traffic system's mechanism of maintaining and sharing candidate timing parameters, evaluating them based on local metrics, and achieving system-wide coherence isn't directly described in the slime mold adaptation process, though it's inspired by similar principles of self-organization.",
+    "is_rediscovery": false,
     "source_hypothesis_hash": ""
   },
-  "timestamp": "2026-08-08T07:56:26.181010+00:00"
+  "timestamp": "2026-08-08T08:07:50.346058+00:00"
 }

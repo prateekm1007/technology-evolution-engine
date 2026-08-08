@@ -1,0 +1,74 @@
+{
+  "stage": "05_adversarial_H-DEV-CH-004-004",
+  "run_id": "RUN-DEV-CH-004",
+  "code_sha": "engine-v0.1-round3",
+  "input_hash": "755a792f132851a6ef3c9708132fe64c4e3909967b11bccff739bfb411cd4b05",
+  "output_hash": "92244dcaa40a89e02efc892eb06afdfcf80b3e4050025c1d6a1341552b09389d",
+  "provider_manifest": {
+    "provider": "zai",
+    "model": "glm-4-plus",
+    "version": "z-ai-web-dev-sdk",
+    "configuration": {
+      "temperature": 0.2,
+      "max_tokens": 4096,
+      "system_sha": "1f5a3fff3aebc2e1d44b2312f4b604b5c2911cacaf452eb6ca705c724fc9142b"
+    },
+    "prompt_sha": "2e78d37d4cfee163955c960617e02ffa1bce0fcd8448a7e66244ea1d5958d7f6",
+    "seed": null,
+    "tool_versions": {
+      "z_ai_cli": "z-ai"
+    },
+    "timestamp": "2026-08-08T08:08:00.400364+00:00",
+    "latency_ms": 10243,
+    "success": true,
+    "error": ""
+  },
+  "result": {
+    "hypothesis_id": "H-DEV-CH-004-004",
+    "failure_modes": [
+      {
+        "category": "FRAGILE_ASSUMPTION",
+        "description": "The assumption that local traffic measurements can be aggregated to detect network-wide patterns is fundamentally flawed. Traffic systems exhibit emergent behavior that cannot be reliably reconstructed from local measurements alone due to the nonlinear dynamics of traffic flow.",
+        "severity": "HIGH",
+        "evidence": "Traffic flow theory has long established that macroscopic patterns emerge from microscopic interactions but cannot be reliably predicted from local measurements alone due to chaotic behavior and sensitivity to initial conditions."
+      },
+      {
+        "category": "CONTRADICTS_KNOWN",
+        "description": "The hypothesis contradicts well-established traffic flow theory which shows that wave-like propagation of congestion is actually a symptom of system failure, not a solution.",
+        "severity": "HIGH",
+        "evidence": "Traffic engineering literature consistently shows that 'traffic waves' are manifestations of instability in the system, not a controllable pattern that can be harnessed for optimization."
+      },
+      {
+        "category": "BOUNDARY_BREAKS",
+        "description": "The system would catastrophically fail at network boundaries where intersections have different connectivity patterns, creating information bottlenecks that prevent proper network-wide processing.",
+        "severity": "HIGH",
+        "evidence": "Real-world traffic networks have irregular topologies with varying node connectivity. The hypothesis provides no mechanism for handling boundary conditions where information propagation would be asymmetric or blocked."
+      },
+      {
+        "category": "PRIOR_ART_EXISTS",
+        "description": "The core mechanism described is essentially a rehash of existing distributed traffic control systems that have already been shown to be ineffective at city-wide scale.",
+        "severity": "MEDIUM",
+        "evidence": "Systems like SCATS and SCOOT have implemented similar decentralized approaches for decades and are known to perform poorly compared to centralized optimization approaches, especially during unusual traffic conditions."
+      },
+      {
+        "category": "FALSIFIER_TRIGGERED",
+        "description": "The hypothesis explicitly states that the system should distinguish between temporary and persistent congestion, but provides no mechanism for doing so, making it immediately falsifiable.",
+        "severity": "HIGH",
+        "evidence": "The assumption list acknowledges this critical requirement but offers no solution, while the mechanism description provides no differentiation between transient and persistent congestion states."
+      },
+      {
+        "category": "INCOMPATIBLE_TARGET",
+        "description": "The target system is incompatible with real-world traffic infrastructure constraints, particularly the requirement for real-time processing and communication between intersections.",
+        "severity": "MEDIUM",
+        "evidence": "Existing traffic signal infrastructure has limited communication capabilities and processing power, making the real-time information sharing and processing requirements computationally infeasible."
+      }
+    ],
+    "survives": false,
+    "outcome": "ADVERSARIAL_FAILED",
+    "n_high_severity": 4,
+    "n_medium_severity": 2,
+    "n_low_severity": 0,
+    "source_hypothesis_hash": ""
+  },
+  "timestamp": "2026-08-08T08:08:10.643969+00:00"
+}

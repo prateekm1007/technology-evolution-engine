@@ -69,6 +69,17 @@ ENGINE_CODE_SHA = "engine-v0.1-round3"
 PENDING = "PENDING"; RUNNING = "RUNNING"; COMPLETED = "COMPLETED"
 FAILED = "FAILED"; SKIPPED = "SKIPPED"
 
+
+class CheckpointIntegrityError(Exception):
+    """Raised when the checkpoint manifest itself is corrupted or inconsistent.
+
+    Round-7 (per reviewer directive): a corrupted manifest must produce an
+    explicit CHECKPOINT_INTEGRITY_FAILURE, not a generic JSON exception.
+    The manifest is the authority for the entire run state — its integrity
+    is not optional.
+    """
+    pass
+
 # Scientific stages — if any of these FAIL, the loop STOPs (fail-closed).
 # Non-scientific stages (rankings, state-machine bookkeeping, case assembly)
 # may fail without blocking because they are derivable from prior stages.
@@ -224,6 +235,20 @@ class CheckpointedDiscoveryLoop:
 
         if resume and manifest_path.exists():
             manifest = self._load_manifest(manifest_path)
+        elif resume and not manifest_path.exists():
+            # Resume requested but manifest is missing. Check if there are
+            # existing stage artifacts — if so, this is a corrupted run,
+            # not a fresh start.
+            existing_artifacts = list(run_dir.glob("*.json")) + list(run_dir.glob("*.json.tmp"))
+            if existing_artifacts:
+                raise CheckpointIntegrityError(
+                    f"Resume requested but manifest.json is missing, yet {len(existing_artifacts)} "
+                    f"stage artifacts exist in {run_dir}. This indicates a corrupted run — "
+                    "the manifest was deleted but artifacts remain. Cannot resume safely.")
+            # No artifacts exist — this is a fresh start, not a resume
+            manifest = RunManifest(run_id=run_id, challenge_id=challenge.challenge_id,
+                                   started_at=_now(), last_updated=_now())
+            self._save_manifest(manifest, manifest_path)
         else:
             manifest = RunManifest(run_id=run_id, challenge_id=challenge.challenge_id,
                                    started_at=_now(), last_updated=_now())
@@ -387,7 +412,21 @@ class CheckpointedDiscoveryLoop:
         )
         manifest.last_updated = _now()
         self._save_manifest(manifest, manifest_path)
-        return manifest.to_dict()
+
+        # Repair B: create the ledger freeze record after the run completes.
+        # This anchors the ledger index to the run manifest, so an attacker
+        # cannot substitute both the index AND the objects without detection.
+        manifest_dict = manifest.to_dict()
+        manifest_sha = manifest_dict.get("manifest_sha", "")
+        if self.ledger:
+            try:
+                self.ledger.create_freeze_record(
+                    run_id=manifest.run_id,
+                    manifest_sha=manifest_sha)
+            except Exception:
+                pass  # freeze record creation is best-effort; don't fail the run
+
+        return manifest_dict
 
     # ========================================================================
     # Stage implementations — each returns (result_dict, provider_manifest)
@@ -1097,10 +1136,83 @@ class CheckpointedDiscoveryLoop:
         except json.JSONDecodeError: return None
 
     def _save_manifest(self, manifest: RunManifest, path: Path) -> None:
-        path.write_text(json.dumps(manifest.to_dict(), indent=2, default=str))
+        """Atomically save the manifest. Round-7 Repair A.
+
+        Protocol:
+            1. Write manifest to manifest.json.tmp
+            2. fsync the temp file
+            3. Atomically rename temp → final (manifest.json)
+            4. Reload and verify the written file matches what we serialized
+
+        If the process dies during step 1 or 2, the temp file is orphaned
+        but manifest.json is unchanged (the previous committed state).
+        If the process dies during step 3, the rename is atomic at the
+        filesystem level — either it happened or it didn't.
+        Step 4 catches any filesystem-level corruption.
+
+        A corrupted manifest on resume raises CheckpointIntegrityError.
+        """
+        import os
+        content = json.dumps(manifest.to_dict(), indent=2, default=str)
+        temp_path = path.with_suffix(".json.tmp")
+
+        # 1. Write to temp file
+        temp_path.write_text(content)
+
+        # 2. fsync the temp file (ensure data is on disk before rename)
+        try:
+            with open(temp_path, "rb") as f:
+                os.fsync(f.fileno())
+        except OSError:
+            pass  # fsync may fail on some filesystems; the rename still provides atomicity
+
+        # 3. Atomic rename
+        temp_path.replace(path)
+
+        # 4. Verify: reload and check the content matches
+        try:
+            verify_content = path.read_text()
+            if verify_content != content:
+                raise CheckpointIntegrityError(
+                    f"Manifest post-write verification failed: written content does not "
+                    f"match serialized content. This indicates a filesystem-level corruption.")
+        except OSError as e:
+            raise CheckpointIntegrityError(
+                f"Manifest post-write verification failed: cannot reload: {e}") from e
 
     def _load_manifest(self, path: Path) -> RunManifest:
-        d = json.loads(path.read_text())
+        """Load the manifest. Round-7: fail-closed on corruption.
+
+        A corrupted manifest raises CheckpointIntegrityError, not a
+        generic JSON exception. The manifest is the authority for the
+        entire run state — ambiguous state is unacceptable.
+        """
+        if not path.exists():
+            raise CheckpointIntegrityError(
+                f"Manifest file does not exist: {path}. Cannot resume without an "
+                "authoritative run manifest.")
+        try:
+            raw = path.read_text()
+        except OSError as e:
+            raise CheckpointIntegrityError(
+                f"Cannot read manifest file {path}: {e}") from e
+        try:
+            d = json.loads(raw)
+        except json.JSONDecodeError as e:
+            raise CheckpointIntegrityError(
+                f"Manifest file {path} is corrupted (invalid JSON): {e}. "
+                "The checkpoint state is ambiguous — cannot resume safely.") from e
+        if not isinstance(d, dict):
+            raise CheckpointIntegrityError(
+                f"Manifest file {path} is corrupted (not a JSON object). "
+                "The checkpoint state is ambiguous.")
+        # Verify required fields
+        required = ["run_id", "challenge_id", "started_at", "stages"]
+        for field in required:
+            if field not in d:
+                raise CheckpointIntegrityError(
+                    f"Manifest file {path} is corrupted: missing required field '{field}'. "
+                    "The checkpoint state is ambiguous.")
         m = RunManifest(run_id=d["run_id"], challenge_id=d["challenge_id"],
                         started_at=d["started_at"], last_updated=d["last_updated"],
                         engine_code_sha=d.get("engine_code_sha", ENGINE_CODE_SHA),

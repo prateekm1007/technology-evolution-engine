@@ -2,8 +2,8 @@
   "stage": "05_adversarial_H-DEV-CH-004-001",
   "run_id": "RUN-DEV-CH-004",
   "code_sha": "engine-v0.1-round3",
-  "input_hash": "bce8961cca820f28fdc3672d481dcb00b72c09434f2cfc03a288eb6a6922bfd4",
-  "output_hash": "f47c071167b21a02049c4f0392723078f6d6ee4d34a3dc00f541cf861e3f71dc",
+  "input_hash": "30e8f1f07b4a3a7b94da32f548075fb264557e0e0e9da09b11208d16f01b3b4e",
+  "output_hash": "f79056cefa54994702b93ca321d5698349aa0448491f6e2122aa2e621a4e7c86",
   "provider_manifest": {
     "provider": "zai",
     "model": "glm-4-plus",
@@ -13,13 +13,13 @@
       "max_tokens": 4096,
       "system_sha": "1f5a3fff3aebc2e1d44b2312f4b604b5c2911cacaf452eb6ca705c724fc9142b"
     },
-    "prompt_sha": "b7059709ff18f17787874c430e0fa41a6f658fafe8c5699f92893c780cd54dc2",
+    "prompt_sha": "58e349d55d0a92d50a52e7cfbe91f2d22753ed26b915752ee9c14387dfc1d4f0",
     "seed": null,
     "tool_versions": {
       "z_ai_cli": "z-ai"
     },
-    "timestamp": "2026-08-08T07:55:58.959467+00:00",
-    "latency_ms": 7687,
+    "timestamp": "2026-08-08T08:07:24.587846+00:00",
+    "latency_ms": 8098,
     "success": true,
     "error": ""
   },
@@ -27,48 +27,48 @@
     "hypothesis_id": "H-DEV-CH-004-001",
     "failure_modes": [
       {
-        "category": "FRAGILE_ASSUMPTION",
-        "description": "Queue length as primary determinant ignores intersection capacity constraints and turning movements",
+        "category": "CONTRADICTS_KNOWN",
+        "description": "Traffic systems are known to exhibit emergent chaos and non-linear dynamics that make gradient descent fundamentally inappropriate",
         "severity": "HIGH",
-        "evidence": "Traffic engineering literature consistently shows optimal signal timing requires considering multiple factors including saturation flow, pedestrian crossings, and turning ratios"
+        "evidence": "Traffic flow research has consistently shown that microscopic traffic behavior follows non-linear dynamics with phase transitions and chaos, making gradient-based optimization methods unstable"
       },
       {
-        "category": "CONTRADICTS_KNOWN",
-        "description": "Positive feedback loop for longer queues creates instability, contradicting established traffic flow theory",
+        "category": "FRAGILE_ASSUMPTION",
+        "description": "The assumption that intersections can reliably communicate performance metrics to neighbors is unrealistic",
         "severity": "HIGH",
-        "evidence": "Wardrop's principles and Newell's kinematic wave theory demonstrate that positive feedback on queue length leads to instability and phantom jams"
+        "evidence": "Real-world traffic systems have communication delays, packet loss, and inconsistent data transmission that would completely disrupt gradient descent calculations"
       },
       {
         "category": "BOUNDARY_BREAKS",
-        "description": "The analogy to myxomycete conduit thickening ignores fundamental differences between biological systems and engineered traffic systems",
-        "severity": "HIGH",
-        "evidence": "Slime molds lack safety constraints, fixed physical infrastructure, and must accommodate human behavior - all critical in traffic systems"
-      },
-      {
-        "category": "PRIOR_ART_EXISTS",
-        "description": "Local adaptive signal control systems like SCATS and SCOOT already exist and use similar principles with proven limitations",
+        "description": "The hypothesis fails to account for boundary effects where edge intersections have fewer neighbors",
         "severity": "MEDIUM",
-        "evidence": "These systems have been in operation for decades and require central coordination to avoid the exact failure modes predicted"
+        "evidence": "Edge intersections in any traffic network will have asymmetric neighbor relationships, creating bias in the optimization process that would lead to systematically poor performance at network boundaries"
       },
       {
         "category": "FALSIFIER_TRIGGERED",
-        "description": "The hypothesis predicts oscillations as a potential failure mode, which immediately undermines the core claim of stable adaptation",
+        "description": "The system would exhibit persistent oscillations even under steady-state conditions",
         "severity": "HIGH",
-        "evidence": "The hypothesis explicitly lists oscillations as an expected failure mode, demonstrating the system's inherent instability"
+        "evidence": "Gradient descent with delayed feedback (inevitable in real traffic systems) creates positive feedback loops that cause oscillations - this is a fundamental limitation of distributed control with communication delays"
+      },
+      {
+        "category": "PRIOR_ART_EXISTS",
+        "description": "Similar distributed approaches have already been tried and failed",
+        "severity": "MEDIUM",
+        "evidence": "Previous attempts at distributed traffic signal optimization (e.g., PRODYN, OPAC) all required significant central coordination and failed when truly decentralized"
       },
       {
         "category": "INCOMPATIBLE_TARGET",
-        "description": "The system cannot achieve network-wide optimization without coordination, contradicting the distributed optimization claim",
+        "description": "Local optimization objectives conflict with global traffic efficiency",
         "severity": "HIGH",
-        "evidence": "Braess's paradox demonstrates that local optimization can lead to global degradation, requiring network-level awareness"
+        "evidence": "Minimizing local queue lengths often creates phantom jams and reduces overall throughput - this is a well-documented phenomenon in traffic engineering"
       }
     ],
     "survives": false,
     "outcome": "ADVERSARIAL_FAILED",
-    "n_high_severity": 5,
-    "n_medium_severity": 1,
+    "n_high_severity": 4,
+    "n_medium_severity": 2,
     "n_low_severity": 0,
     "source_hypothesis_hash": ""
   },
-  "timestamp": "2026-08-08T07:56:06.647206+00:00"
+  "timestamp": "2026-08-08T08:07:32.687043+00:00"
 }

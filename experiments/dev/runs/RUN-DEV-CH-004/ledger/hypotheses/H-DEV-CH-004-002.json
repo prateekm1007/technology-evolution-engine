@@ -1,26 +1,28 @@
 {
   "hypothesis_id": "H-DEV-CH-004-002",
-  "claim": "Signal timing adaptation occurs through a competitive resource allocation mechanism similar to myxomycete network formation, where intersections compete for 'traffic flow resources' by adjusting their green time to attract more vehicles.",
-  "mechanism": "Intersections adjust their green time not based on their own queue length, but on the relative flow they can attract from neighboring intersections. This creates a competitive dynamic where intersections optimize for their own flow capture while contributing to network efficiency, similar to how slime mold networks optimize for nutrient distribution.",
+  "claim": "The distributed traffic signal system operates through an emergent consensus mechanism where intersections negotiate timing parameters through iterative message passing to achieve system-wide coherence",
+  "mechanism": "Each intersection maintains multiple candidate timing parameters and evaluates them based on local metrics. It then shares these candidates with neighbors, which in turn evaluate them based on their local context. Through iterative rounds of evaluation and sharing, the system converges to a consensus set of parameters that represents a balance between local efficiency and global coherence. This mimics the consensus-building behavior observed in slime mold network formation.",
   "evidence": [
-    "Slime molds optimize networks for resource distribution",
-    "Competitive dynamics can lead to efficient resource allocation",
-    "Traffic flow patterns can be influenced by signal timing"
+    "Consensus algorithms are well-established in distributed computing",
+    "Emergent consensus is observed in biological systems like slime molds",
+    "Multi-agent consensus has been applied to traffic systems with some success"
   ],
   "assumptions": [
-    "Intersections can measure flow from neighboring intersections",
-    "Competitive allocation leads to global optimization",
-    "Flow capture is a valid proxy for network efficiency"
+    "Intersections can effectively evaluate and compare multiple timing options",
+    "Message passing between intersections can be implemented with low overhead",
+    "The consensus process will converge within acceptable timeframes",
+    "Local evaluations can adequately represent global traffic conditions"
   ],
   "predictions": [],
   "expected_failure_modes": [
-    "Uneven distribution of traffic flow",
-    "Starvation of certain intersections",
-    "Formation of traffic hotspots"
+    "Failure to reach consensus in heterogeneous network conditions",
+    "Excessive computational overhead from message passing",
+    "Consensus on suboptimal timing parameters",
+    "Vulnerability to manipulation by malicious intersections"
   ],
-  "novelty_rationale": "This hypothesis introduces a competitive rather than cooperative adaptation mechanism, where intersections optimize for their own flow capture while inadvertently contributing to network-wide efficiency.",
-  "testability": "The hypothesis can be tested by implementing a system where intersections adjust green time based on the flow they attract from neighbors and measuring both local and network performance.",
-  "falsifier": "If implementing competitive flow-based green time adjustment leads to some intersections being starved of traffic flow while others become oversaturated, or if it creates unstable flow patterns, the hypothesis would be falsified.",
+  "novelty_rationale": "This hypothesis applies emergent consensus principles to traffic signal optimization, where intersections collectively determine optimal timing through iterative negotiation rather than individual optimization",
+  "testability": "The hypothesis can be tested by implementing the consensus mechanism and measuring the quality of the consensus solution, convergence time, and system performance",
+  "falsifier": "If the system fails to reach a consistent consensus across all intersections or if the consensus solution performs worse than the current fixed-timing system",
   "epistemic_state": "HYPOTHESIZED",
   "parent_hypothesis_ids": [],
   "provenance": {

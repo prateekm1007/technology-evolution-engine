@@ -2,8 +2,8 @@
   "stage": "04_hypotheses",
   "run_id": "RUN-DEV-CH-004",
   "code_sha": "engine-v0.1-round3",
-  "input_hash": "2c47da8f32e86b005b94164b44a8cc88e998efff4178dfe1e757c4a359ca0b5b",
-  "output_hash": "7d6f025b9c77ca98705173862fbf36c3d15011e8d50be148fc54ebc493178d55",
+  "input_hash": "71978ff2ad7ce2ad10124b2b9fce103f5303ddc2c2be05f6f81ef168ba58fefd",
+  "output_hash": "3ce4bbc41fd8d6a90012552892cf6fdc859205600b231a9ff48e57bac95cd1b2",
   "provider_manifest": {
     "provider": "zai",
     "model": "glm-4-plus",
@@ -13,13 +13,13 @@
       "max_tokens": 4096,
       "system_sha": "38a0abb453a9eb9fd88d0b4dd513feea94d69501c86ec3d4d7778b86034369c8"
     },
-    "prompt_sha": "cef07c9a4cfe7e17de2b86f297de0a6afc356bb325e99d55d282a825765a10a2",
+    "prompt_sha": "19a8f3ab9f62a1527725c3c6673d8add918467726d667e3a0ba9c4fb02ee1148",
     "seed": null,
     "tool_versions": {
       "z_ai_cli": "z-ai"
     },
-    "timestamp": "2026-08-08T07:55:39.020001+00:00",
-    "latency_ms": 19935,
+    "timestamp": "2026-08-08T08:06:46.338885+00:00",
+    "latency_ms": 38244,
     "success": true,
     "error": ""
   },
@@ -27,27 +27,29 @@
     "hypotheses": [
       {
         "hypothesis_id": "H-DEV-CH-004-001",
-        "claim": "Traffic signal phases adapt through a local feedback mechanism similar to myxomycete conduit thickening, where each intersection independently adjusts green time based on queue length measurements.",
-        "mechanism": "Each intersection continuously monitors queue length and adjusts green time proportionally to the measured queue, creating a positive feedback loop where longer queues receive more green time. This mimics the thickening of conduits in response to higher flow rates in slime molds.",
+        "claim": "The distributed traffic signal system operates through local gradient descent where each intersection adjusts its timing parameters based on immediate performance metrics and weighted feedback from neighbors",
+        "mechanism": "Each intersection continuously evaluates its performance (queue length, throughput) and compares it with neighbors. It then adjusts green time and offset parameters in the direction that minimizes local performance metrics relative to neighbors, creating a distributed gradient descent optimization process. This creates a system where intersections 'compete' to minimize local congestion while being influenced by adjacent performance.",
         "evidence": [
-          "Slime molds optimize conduit thickness based on flow rates",
-          "Local traffic measurements can inform signal timing decisions",
-          "Distributed systems can achieve global optimization"
+          "Local gradient-based optimization is well-established in control theory",
+          "Myxomycetes use local chemical gradients for network optimization",
+          "Distributed gradient descent has been successfully applied to other distributed systems"
         ],
         "assumptions": [
-          "Queue length is the primary determinant of optimal green time",
-          "Intersections can operate independently without coordination",
-          "The system will naturally converge to an optimal state"
+          "Local performance metrics can be accurately measured",
+          "Intersections can reliably communicate performance metrics to neighbors",
+          "The system will converge to a local optimum rather than oscillate",
+          "Traffic flow exhibits predictable local patterns that can be optimized through gradient descent"
         ],
         "predictions": [],
         "expected_failure_modes": [
-          "Oscillations in signal timing",
-          "Gridlock at certain intersections",
-          "Inability to adapt to network-wide traffic patterns"
+          "Oscillatory behavior between intersections",
+          "Local optima that are globally suboptimal",
+          "Sensitivity to measurement noise",
+          "Failure to adapt to sudden traffic pattern changes"
         ],
-        "novelty_rationale": "This hypothesis introduces a biologically-inspired local adaptation mechanism that doesn't require central coordination, unlike traditional traffic signal optimization systems.",
-        "testability": "The hypothesis can be tested by implementing a system where each intersection adjusts green time based solely on its own queue measurements and measuring network performance.",
-        "falsifier": "If implementing local queue-based green time adjustment leads to persistent oscillations in signal timing or increased network-wide congestion compared to fixed timing plans, the hypothesis would be falsified.",
+        "novelty_rationale": "This hypothesis applies gradient descent principles to traffic signal timing in a fully distributed manner without central coordination, using only local measurements and neighbor communication",
+        "testability": "The hypothesis can be tested by implementing the system and measuring convergence time, stability, and performance under various traffic conditions",
+        "falsifier": "If the system fails to converge to a stable solution under steady-state conditions or exhibits persistent oscillations in traffic flow patterns",
         "epistemic_state": "HYPOTHESIZED",
         "parent_hypothesis_ids": [],
         "provenance": {
@@ -60,27 +62,29 @@
       },
       {
         "hypothesis_id": "H-DEV-CH-004-002",
-        "claim": "Signal timing adaptation occurs through a competitive resource allocation mechanism similar to myxomycete network formation, where intersections compete for 'traffic flow resources' by adjusting their green time to attract more vehicles.",
-        "mechanism": "Intersections adjust their green time not based on their own queue length, but on the relative flow they can attract from neighboring intersections. This creates a competitive dynamic where intersections optimize for their own flow capture while contributing to network efficiency, similar to how slime mold networks optimize for nutrient distribution.",
+        "claim": "The distributed traffic signal system operates through an emergent consensus mechanism where intersections negotiate timing parameters through iterative message passing to achieve system-wide coherence",
+        "mechanism": "Each intersection maintains multiple candidate timing parameters and evaluates them based on local metrics. It then shares these candidates with neighbors, which in turn evaluate them based on their local context. Through iterative rounds of evaluation and sharing, the system converges to a consensus set of parameters that represents a balance between local efficiency and global coherence. This mimics the consensus-building behavior observed in slime mold network formation.",
         "evidence": [
-          "Slime molds optimize networks for resource distribution",
-          "Competitive dynamics can lead to efficient resource allocation",
-          "Traffic flow patterns can be influenced by signal timing"
+          "Consensus algorithms are well-established in distributed computing",
+          "Emergent consensus is observed in biological systems like slime molds",
+          "Multi-agent consensus has been applied to traffic systems with some success"
         ],
         "assumptions": [
-          "Intersections can measure flow from neighboring intersections",
-          "Competitive allocation leads to global optimization",
-          "Flow capture is a valid proxy for network efficiency"
+          "Intersections can effectively evaluate and compare multiple timing options",
+          "Message passing between intersections can be implemented with low overhead",
+          "The consensus process will converge within acceptable timeframes",
+          "Local evaluations can adequately represent global traffic conditions"
         ],
         "predictions": [],
         "expected_failure_modes": [
-          "Uneven distribution of traffic flow",
-          "Starvation of certain intersections",
-          "Formation of traffic hotspots"
+          "Failure to reach consensus in heterogeneous network conditions",
+          "Excessive computational overhead from message passing",
+          "Consensus on suboptimal timing parameters",
+          "Vulnerability to manipulation by malicious intersections"
         ],
-        "novelty_rationale": "This hypothesis introduces a competitive rather than cooperative adaptation mechanism, where intersections optimize for their own flow capture while inadvertently contributing to network-wide efficiency.",
-        "testability": "The hypothesis can be tested by implementing a system where intersections adjust green time based on the flow they attract from neighbors and measuring both local and network performance.",
-        "falsifier": "If implementing competitive flow-based green time adjustment leads to some intersections being starved of traffic flow while others become oversaturated, or if it creates unstable flow patterns, the hypothesis would be falsified.",
+        "novelty_rationale": "This hypothesis applies emergent consensus principles to traffic signal optimization, where intersections collectively determine optimal timing through iterative negotiation rather than individual optimization",
+        "testability": "The hypothesis can be tested by implementing the consensus mechanism and measuring the quality of the consensus solution, convergence time, and system performance",
+        "falsifier": "If the system fails to reach a consistent consensus across all intersections or if the consensus solution performs worse than the current fixed-timing system",
         "epistemic_state": "HYPOTHESIZED",
         "parent_hypothesis_ids": [],
         "provenance": {
@@ -93,27 +97,64 @@
       },
       {
         "hypothesis_id": "H-DEV-CH-004-003",
-        "claim": "Signal timing adaptation occurs through a network-wide resonance mechanism where intersections adjust their timing parameters to match the dominant traffic flow frequencies in the network.",
-        "mechanism": "Each intersection continuously measures traffic flow patterns and identifies dominant frequencies (periodic patterns) in the arriving traffic. The intersection then adjusts its signal timing parameters to resonate with these dominant frequencies, similar to how slime mold conduits adapt their thickness to match flow frequencies in the organism.",
+        "claim": "The distributed traffic signal system operates through a reinforcement learning mechanism where intersections learn optimal timing parameters through trial and error based on local reward signals",
+        "mechanism": "Each intersection maintains a policy for timing parameters that it continuously updates based on local reward signals (e.g., reduced queue length, increased throughput). Interactions with neighboring intersections provide additional reward signals that influence learning. The system uses a distributed reinforcement learning algorithm where each intersection learns independently but shares its policy updates with neighbors, allowing the collective system to discover emergent optimal timing strategies through exploration and exploitation.",
         "evidence": [
-          "Slime molds adapt conduit thickness to match flow frequencies",
-          "Traffic flow often exhibits periodic patterns",
-          "Resonance can optimize system performance in dynamic environments"
+          "Reinforcement learning has been successfully applied to traffic signal control",
+          "Distributed reinforcement learning has shown promise in multi-agent systems",
+          "Biological systems like slime molds exhibit learning-like behaviors in adaptation"
         ],
         "assumptions": [
-          "Traffic flow exhibits periodic patterns that can be identified locally",
-          "Resonance with flow frequencies leads to optimal timing",
-          "Intersections can identify and respond to dominant flow frequencies"
+          "Local reward signals accurately reflect system performance",
+          "Intersections can effectively learn from limited experience",
+          "Policy sharing between intersections improves collective learning",
+          "The exploration-exploitation balance can be effectively managed"
         ],
         "predictions": [],
         "expected_failure_modes": [
-          "Inability to handle multiple conflicting frequencies",
-          "Sensitivity to noise in frequency detection",
-          "Failure to adapt to non-periodic traffic patterns"
+          "Slow convergence in complex traffic scenarios",
+          "Overfitting to local conditions at the expense of global performance",
+          "Catastrophic forgetting of previously learned strategies",
+          "Vulnerability to exploration leading to temporary performance degradation"
         ],
-        "novelty_rationale": "This hypothesis introduces a frequency-based adaptation mechanism rather than a queue-length or flow-based mechanism, focusing on temporal patterns rather than spatial distributions.",
-        "testability": "The hypothesis can be tested by implementing a system where intersections identify dominant traffic flow frequencies and adjust timing parameters to resonate with these frequencies.",
-        "falsifier": "If implementing frequency-based signal timing adjustment fails to improve network performance or creates timing conflicts when multiple dominant frequencies exist in different parts of the network, the hypothesis would be falsified.",
+        "novelty_rationale": "This hypothesis applies distributed reinforcement learning to traffic signal optimization, where intersections learn optimal timing through experience sharing rather than explicit optimization algorithms",
+        "testability": "The hypothesis can be tested by implementing the reinforcement learning system and measuring learning speed, final performance, and adaptability to changing conditions",
+        "falsifier": "If the system fails to improve over time compared to a baseline system or if it converges to a suboptimal solution that doesn't adapt to changing traffic patterns",
+        "epistemic_state": "HYPOTHESIZED",
+        "parent_hypothesis_ids": [],
+        "provenance": {
+          "nodes": {},
+          "edges": [],
+          "committed_hash": null
+        },
+        "is_testable": true,
+        "provenance_root_hash": ""
+      },
+      {
+        "hypothesis_id": "H-DEV-CH-004-004",
+        "claim": "The distributed traffic signal system operates through a decentralized information processing mechanism where intersections collectively process traffic flow information to identify and respond to congestion patterns",
+        "mechanism": "Each intersection acts as a simple processing node that monitors local traffic conditions and shares information with neighbors. The network as a whole processes this information to detect emerging congestion patterns and propagate response signals through the network. When congestion is detected, intersections adjust their timing parameters to create 'wave-like' traffic flow patterns that propagate through the network, similar to how slime molds propagate nutrient information through their networks. This creates a system where congestion information is processed and responded to at a network level through local interactions.",
+        "evidence": [
+          "Decentralized information processing is used in biological systems",
+          "Wave-based traffic control has shown promise in limited applications",
+          "Distributed pattern detection has been successfully implemented in sensor networks"
+        ],
+        "assumptions": [
+          "Local traffic measurements can be aggregated to detect network-wide patterns",
+          "Information propagation through the network can be effectively modeled",
+          "Wave-like traffic flow patterns can be created and maintained",
+          "The system can distinguish between temporary and persistent congestion"
+        ],
+        "predictions": [],
+        "expected_failure_modes": [
+          "Information propagation delays leading to inadequate responses",
+          "Misinterpretation of traffic patterns causing incorrect responses",
+          "Inability to distinguish between different types of congestion",
+          "Response signals creating oscillatory behavior in traffic flow"
+        ],
+        "novelty_rationale": "This hypothesis applies decentralized information processing principles to traffic signal optimization, where the network collectively processes traffic information to create adaptive wave-like flow patterns",
+        "testability": "The hypothesis can be tested by implementing the information processing mechanism and measuring the system's ability to detect congestion patterns and propagate appropriate responses",
+        "falsifier": "If the system fails to detect congestion patterns in a timely manner or if the response signals create unintended traffic flow disruptions",
         "epistemic_state": "HYPOTHESIZED",
         "parent_hypothesis_ids": [],
         "provenance": {
@@ -125,9 +166,9 @@
         "provenance_root_hash": ""
       }
     ],
-    "distinguishing_predictions": "The three hypotheses can be distinguished by their response to different traffic scenarios: 1) Under a localized incident, the queue-length hypothesis would show immediate local adaptation but potentially poor network-wide coordination; 2) The competitive resource allocation hypothesis would show flow redistribution but potentially create new congestion points; 3) The frequency resonance hypothesis would show adaptation to periodic patterns but potentially struggle with non-periodic incidents. Additionally, the queue-length hypothesis would be most sensitive to local queue measurements, the competitive hypothesis to neighbor flow measurements, and the frequency hypothesis to temporal pattern detection.",
+    "distinguishing_predictions": "The hypotheses can be distinguished by their convergence behavior under different traffic conditions: 1) The gradient descent hypothesis should show smooth convergence to local optima but may get stuck in suboptimal solutions; 2) The consensus hypothesis should show coordinated changes across the network but may have slower convergence; 3) The reinforcement learning hypothesis should show improvement over time but may have initial instability; 4) The information processing hypothesis should show network-wide pattern detection but may have delayed responses. Additionally, the reinforcement learning hypothesis would require training time before optimal performance, while the others should perform immediately. The information processing hypothesis would be most sensitive to network topology changes, while the gradient descent hypothesis would be most sensitive to measurement noise.",
     "transfer_id": "TH-DEV-CH-004-001",
-    "source_transfer_hash": "c8117be609193963a032957686a0868352448f6e51ee1d09d094efdd32b58760"
+    "source_transfer_hash": "cd7944bc7ea18f2cf63a80d8692212685da16b85c2037d4bd03020b489172ea6"
   },
-  "timestamp": "2026-08-08T07:55:58.957809+00:00"
+  "timestamp": "2026-08-08T08:07:24.586390+00:00"
 }
