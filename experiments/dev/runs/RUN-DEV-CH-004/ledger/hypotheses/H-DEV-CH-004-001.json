@@ -1,28 +1,25 @@
 {
   "hypothesis_id": "H-DEV-CH-004-001",
-  "claim": "The distributed traffic signal system operates through local gradient descent where each intersection adjusts its timing parameters based on immediate performance metrics and weighted feedback from neighbors",
-  "mechanism": "Each intersection continuously evaluates its performance (queue length, throughput) and compares it with neighbors. It then adjusts green time and offset parameters in the direction that minimizes local performance metrics relative to neighbors, creating a distributed gradient descent optimization process. This creates a system where intersections 'compete' to minimize local congestion while being influenced by adjacent performance.",
+  "claim": "Traffic flow directly modulates signal timing through local feedback loops, with each intersection independently adjusting its green time based on immediate queue length measurements.",
+  "mechanism": "Each intersection controller operates as an independent entity, continuously measuring queue length and vehicle count, then extending or reducing green time proportionally to these measurements without coordination with neighboring intersections.",
   "evidence": [
-    "Local gradient-based optimization is well-established in control theory",
-    "Myxomycetes use local chemical gradients for network optimization",
-    "Distributed gradient descent has been successfully applied to other distributed systems"
+    "Myxomycetes adapt tube diameter based on local flow without central coordination",
+    "Local traffic measurements are readily available at each intersection"
   ],
   "assumptions": [
-    "Local performance metrics can be accurately measured",
-    "Intersections can reliably communicate performance metrics to neighbors",
-    "The system will converge to a local optimum rather than oscillate",
-    "Traffic flow exhibits predictable local patterns that can be optimized through gradient descent"
+    "Queue length is the primary determinant of optimal green time",
+    "Local measurements provide sufficient information for optimal timing",
+    "Independent operation doesn't lead to system-wide oscillations"
   ],
   "predictions": [],
   "expected_failure_modes": [
-    "Oscillatory behavior between intersections",
-    "Local optima that are globally suboptimal",
-    "Sensitivity to measurement noise",
-    "Failure to adapt to sudden traffic pattern changes"
+    "Oscillating signal timing",
+    "Gridlock formation at critical intersections",
+    "Inability to adapt to network-wide congestion patterns"
   ],
-  "novelty_rationale": "This hypothesis applies gradient descent principles to traffic signal timing in a fully distributed manner without central coordination, using only local measurements and neighbor communication",
-  "testability": "The hypothesis can be tested by implementing the system and measuring convergence time, stability, and performance under various traffic conditions",
-  "falsifier": "If the system fails to converge to a stable solution under steady-state conditions or exhibits persistent oscillations in traffic flow patterns",
+  "novelty_rationale": "Applies direct local feedback from slime mold network adaptation to traffic signal control without inter-intersection coordination.",
+  "testability": "Highly testable by implementing isolated intersection controllers with varying feedback gains and measuring performance metrics.",
+  "falsifier": "If the system develops persistent oscillations in signal timing or shows reduced throughput compared to fixed timing, this hypothesis would be proven wrong as independent operation would fail to optimize network-level flow.",
   "epistemic_state": "HYPOTHESIZED",
   "parent_hypothesis_ids": [],
   "provenance": {

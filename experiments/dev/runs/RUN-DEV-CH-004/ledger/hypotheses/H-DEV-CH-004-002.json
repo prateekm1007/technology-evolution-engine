@@ -1,28 +1,25 @@
 {
   "hypothesis_id": "H-DEV-CH-004-002",
-  "claim": "The distributed traffic signal system operates through an emergent consensus mechanism where intersections negotiate timing parameters through iterative message passing to achieve system-wide coherence",
-  "mechanism": "Each intersection maintains multiple candidate timing parameters and evaluates them based on local metrics. It then shares these candidates with neighbors, which in turn evaluate them based on their local context. Through iterative rounds of evaluation and sharing, the system converges to a consensus set of parameters that represents a balance between local efficiency and global coherence. This mimics the consensus-building behavior observed in slime mold network formation.",
+  "claim": "Signal timing adaptation emerges from distributed communication between neighboring intersections, where each intersection adjusts its timing based on both local measurements and information from adjacent signals.",
+  "mechanism": "Each intersection communicates its current state (queue length, cycle time) to neighboring intersections, then uses this information to calculate optimal offset and green split, creating a distributed optimization that balances local and network-level objectives.",
   "evidence": [
-    "Consensus algorithms are well-established in distributed computing",
-    "Emergent consensus is observed in biological systems like slime molds",
-    "Multi-agent consensus has been applied to traffic systems with some success"
+    "Myxomycete networks adapt based on flow information distributed throughout the organism",
+    "Traffic signal coordination has shown benefits in some urban environments"
   ],
   "assumptions": [
-    "Intersections can effectively evaluate and compare multiple timing options",
-    "Message passing between intersections can be implemented with low overhead",
-    "The consensus process will converge within acceptable timeframes",
-    "Local evaluations can adequately represent global traffic conditions"
+    "Neighboring intersections share sufficient information for coordinated optimization",
+    "Communication delays are small enough to allow real-time coordination",
+    "Network topology provides adequate information flow"
   ],
   "predictions": [],
   "expected_failure_modes": [
-    "Failure to reach consensus in heterogeneous network conditions",
-    "Excessive computational overhead from message passing",
-    "Consensus on suboptimal timing parameters",
-    "Vulnerability to manipulation by malicious intersections"
+    "Communication bottlenecks",
+    "Propagation of timing errors through the network",
+    "Increased vulnerability to communication failures"
   ],
-  "novelty_rationale": "This hypothesis applies emergent consensus principles to traffic signal optimization, where intersections collectively determine optimal timing through iterative negotiation rather than individual optimization",
-  "testability": "The hypothesis can be tested by implementing the consensus mechanism and measuring the quality of the consensus solution, convergence time, and system performance",
-  "falsifier": "If the system fails to reach a consistent consensus across all intersections or if the consensus solution performs worse than the current fixed-timing system",
+  "novelty_rationale": "Transfers the slime mold's distributed information processing concept to create a communication-based adaptive signal system rather than purely local control.",
+  "testability": "Testable by implementing varying communication protocols and delay scenarios between intersections.",
+  "falsifier": "If increased communication between intersections leads to slower adaptation times or higher computational overhead without significant improvement in throughput, this hypothesis would be proven wrong as the communication overhead would outweigh benefits.",
   "epistemic_state": "HYPOTHESIZED",
   "parent_hypothesis_ids": [],
   "provenance": {

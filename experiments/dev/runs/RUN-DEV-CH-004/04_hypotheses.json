@@ -2,8 +2,8 @@
   "stage": "04_hypotheses",
   "run_id": "RUN-DEV-CH-004",
   "code_sha": "engine-v0.1-round3",
-  "input_hash": "71978ff2ad7ce2ad10124b2b9fce103f5303ddc2c2be05f6f81ef168ba58fefd",
-  "output_hash": "3ce4bbc41fd8d6a90012552892cf6fdc859205600b231a9ff48e57bac95cd1b2",
+  "input_hash": "d5f5cd3b2bc5b33d9fe0c5b648666c15e145ab72cd726f2c2cf937d380c66fa0",
+  "output_hash": "0bc9883970779f613508a1e8687ff8a54a94c553bf321a7942a3f7e4038f8e39",
   "provider_manifest": {
     "provider": "zai",
     "model": "glm-4-plus",
@@ -13,13 +13,13 @@
       "max_tokens": 4096,
       "system_sha": "38a0abb453a9eb9fd88d0b4dd513feea94d69501c86ec3d4d7778b86034369c8"
     },
-    "prompt_sha": "19a8f3ab9f62a1527725c3c6673d8add918467726d667e3a0ba9c4fb02ee1148",
+    "prompt_sha": "7de09e775832d296e4d694be5737806a5229641e01b90e0490bfe27ca64a7488",
     "seed": null,
     "tool_versions": {
       "z_ai_cli": "z-ai"
     },
-    "timestamp": "2026-08-08T08:06:46.338885+00:00",
-    "latency_ms": 38244,
+    "timestamp": "2026-08-08T08:17:58.671669+00:00",
+    "latency_ms": 21806,
     "success": true,
     "error": ""
   },
@@ -27,29 +27,26 @@
     "hypotheses": [
       {
         "hypothesis_id": "H-DEV-CH-004-001",
-        "claim": "The distributed traffic signal system operates through local gradient descent where each intersection adjusts its timing parameters based on immediate performance metrics and weighted feedback from neighbors",
-        "mechanism": "Each intersection continuously evaluates its performance (queue length, throughput) and compares it with neighbors. It then adjusts green time and offset parameters in the direction that minimizes local performance metrics relative to neighbors, creating a distributed gradient descent optimization process. This creates a system where intersections 'compete' to minimize local congestion while being influenced by adjacent performance.",
+        "claim": "Traffic flow directly modulates signal timing through local feedback loops, with each intersection independently adjusting its green time based on immediate queue length measurements.",
+        "mechanism": "Each intersection controller operates as an independent entity, continuously measuring queue length and vehicle count, then extending or reducing green time proportionally to these measurements without coordination with neighboring intersections.",
         "evidence": [
-          "Local gradient-based optimization is well-established in control theory",
-          "Myxomycetes use local chemical gradients for network optimization",
-          "Distributed gradient descent has been successfully applied to other distributed systems"
+          "Myxomycetes adapt tube diameter based on local flow without central coordination",
+          "Local traffic measurements are readily available at each intersection"
         ],
         "assumptions": [
-          "Local performance metrics can be accurately measured",
-          "Intersections can reliably communicate performance metrics to neighbors",
-          "The system will converge to a local optimum rather than oscillate",
-          "Traffic flow exhibits predictable local patterns that can be optimized through gradient descent"
+          "Queue length is the primary determinant of optimal green time",
+          "Local measurements provide sufficient information for optimal timing",
+          "Independent operation doesn't lead to system-wide oscillations"
         ],
         "predictions": [],
         "expected_failure_modes": [
-          "Oscillatory behavior between intersections",
-          "Local optima that are globally suboptimal",
-          "Sensitivity to measurement noise",
-          "Failure to adapt to sudden traffic pattern changes"
+          "Oscillating signal timing",
+          "Gridlock formation at critical intersections",
+          "Inability to adapt to network-wide congestion patterns"
         ],
-        "novelty_rationale": "This hypothesis applies gradient descent principles to traffic signal timing in a fully distributed manner without central coordination, using only local measurements and neighbor communication",
-        "testability": "The hypothesis can be tested by implementing the system and measuring convergence time, stability, and performance under various traffic conditions",
-        "falsifier": "If the system fails to converge to a stable solution under steady-state conditions or exhibits persistent oscillations in traffic flow patterns",
+        "novelty_rationale": "Applies direct local feedback from slime mold network adaptation to traffic signal control without inter-intersection coordination.",
+        "testability": "Highly testable by implementing isolated intersection controllers with varying feedback gains and measuring performance metrics.",
+        "falsifier": "If the system develops persistent oscillations in signal timing or shows reduced throughput compared to fixed timing, this hypothesis would be proven wrong as independent operation would fail to optimize network-level flow.",
         "epistemic_state": "HYPOTHESIZED",
         "parent_hypothesis_ids": [],
         "provenance": {
@@ -62,29 +59,26 @@
       },
       {
         "hypothesis_id": "H-DEV-CH-004-002",
-        "claim": "The distributed traffic signal system operates through an emergent consensus mechanism where intersections negotiate timing parameters through iterative message passing to achieve system-wide coherence",
-        "mechanism": "Each intersection maintains multiple candidate timing parameters and evaluates them based on local metrics. It then shares these candidates with neighbors, which in turn evaluate them based on their local context. Through iterative rounds of evaluation and sharing, the system converges to a consensus set of parameters that represents a balance between local efficiency and global coherence. This mimics the consensus-building behavior observed in slime mold network formation.",
+        "claim": "Signal timing adaptation emerges from distributed communication between neighboring intersections, where each intersection adjusts its timing based on both local measurements and information from adjacent signals.",
+        "mechanism": "Each intersection communicates its current state (queue length, cycle time) to neighboring intersections, then uses this information to calculate optimal offset and green split, creating a distributed optimization that balances local and network-level objectives.",
         "evidence": [
-          "Consensus algorithms are well-established in distributed computing",
-          "Emergent consensus is observed in biological systems like slime molds",
-          "Multi-agent consensus has been applied to traffic systems with some success"
+          "Myxomycete networks adapt based on flow information distributed throughout the organism",
+          "Traffic signal coordination has shown benefits in some urban environments"
         ],
         "assumptions": [
-          "Intersections can effectively evaluate and compare multiple timing options",
-          "Message passing between intersections can be implemented with low overhead",
-          "The consensus process will converge within acceptable timeframes",
-          "Local evaluations can adequately represent global traffic conditions"
+          "Neighboring intersections share sufficient information for coordinated optimization",
+          "Communication delays are small enough to allow real-time coordination",
+          "Network topology provides adequate information flow"
         ],
         "predictions": [],
         "expected_failure_modes": [
-          "Failure to reach consensus in heterogeneous network conditions",
-          "Excessive computational overhead from message passing",
-          "Consensus on suboptimal timing parameters",
-          "Vulnerability to manipulation by malicious intersections"
+          "Communication bottlenecks",
+          "Propagation of timing errors through the network",
+          "Increased vulnerability to communication failures"
         ],
-        "novelty_rationale": "This hypothesis applies emergent consensus principles to traffic signal optimization, where intersections collectively determine optimal timing through iterative negotiation rather than individual optimization",
-        "testability": "The hypothesis can be tested by implementing the consensus mechanism and measuring the quality of the consensus solution, convergence time, and system performance",
-        "falsifier": "If the system fails to reach a consistent consensus across all intersections or if the consensus solution performs worse than the current fixed-timing system",
+        "novelty_rationale": "Transfers the slime mold's distributed information processing concept to create a communication-based adaptive signal system rather than purely local control.",
+        "testability": "Testable by implementing varying communication protocols and delay scenarios between intersections.",
+        "falsifier": "If increased communication between intersections leads to slower adaptation times or higher computational overhead without significant improvement in throughput, this hypothesis would be proven wrong as the communication overhead would outweigh benefits.",
         "epistemic_state": "HYPOTHESIZED",
         "parent_hypothesis_ids": [],
         "provenance": {
@@ -97,64 +91,26 @@
       },
       {
         "hypothesis_id": "H-DEV-CH-004-003",
-        "claim": "The distributed traffic signal system operates through a reinforcement learning mechanism where intersections learn optimal timing parameters through trial and error based on local reward signals",
-        "mechanism": "Each intersection maintains a policy for timing parameters that it continuously updates based on local reward signals (e.g., reduced queue length, increased throughput). Interactions with neighboring intersections provide additional reward signals that influence learning. The system uses a distributed reinforcement learning algorithm where each intersection learns independently but shares its policy updates with neighbors, allowing the collective system to discover emergent optimal timing strategies through exploration and exploitation.",
+        "claim": "Signal timing adaptation operates through a gradient descent mechanism where each intersection adjusts its parameters to minimize a local cost function based on both current performance and historical performance trends.",
+        "mechanism": "Each intersection continuously evaluates multiple timing strategies using a cost function that considers delay, throughput, and compliance with minimum green times, then moves toward the strategy that minimizes this cost over time, creating a hill-climbing optimization process.",
         "evidence": [
-          "Reinforcement learning has been successfully applied to traffic signal control",
-          "Distributed reinforcement learning has shown promise in multi-agent systems",
-          "Biological systems like slime molds exhibit learning-like behaviors in adaptation"
+          "Myxomycetes optimize through iterative structural adjustments based on flow feedback",
+          "Reinforcement learning approaches have shown promise in traffic control"
         ],
         "assumptions": [
-          "Local reward signals accurately reflect system performance",
-          "Intersections can effectively learn from limited experience",
-          "Policy sharing between intersections improves collective learning",
-          "The exploration-exploitation balance can be effectively managed"
+          "Local cost functions can be defined that correlate with network-level performance",
+          "Historical data provides useful information for future optimization",
+          "The system can escape local minima in the cost landscape"
         ],
         "predictions": [],
         "expected_failure_modes": [
-          "Slow convergence in complex traffic scenarios",
-          "Overfitting to local conditions at the expense of global performance",
-          "Catastrophic forgetting of previously learned strategies",
-          "Vulnerability to exploration leading to temporary performance degradation"
+          "Convergence to local optima",
+          "Slow adaptation to sudden traffic changes",
+          "Sensitivity to initial conditions"
         ],
-        "novelty_rationale": "This hypothesis applies distributed reinforcement learning to traffic signal optimization, where intersections learn optimal timing through experience sharing rather than explicit optimization algorithms",
-        "testability": "The hypothesis can be tested by implementing the reinforcement learning system and measuring learning speed, final performance, and adaptability to changing conditions",
-        "falsifier": "If the system fails to improve over time compared to a baseline system or if it converges to a suboptimal solution that doesn't adapt to changing traffic patterns",
-        "epistemic_state": "HYPOTHESIZED",
-        "parent_hypothesis_ids": [],
-        "provenance": {
-          "nodes": {},
-          "edges": [],
-          "committed_hash": null
-        },
-        "is_testable": true,
-        "provenance_root_hash": ""
-      },
-      {
-        "hypothesis_id": "H-DEV-CH-004-004",
-        "claim": "The distributed traffic signal system operates through a decentralized information processing mechanism where intersections collectively process traffic flow information to identify and respond to congestion patterns",
-        "mechanism": "Each intersection acts as a simple processing node that monitors local traffic conditions and shares information with neighbors. The network as a whole processes this information to detect emerging congestion patterns and propagate response signals through the network. When congestion is detected, intersections adjust their timing parameters to create 'wave-like' traffic flow patterns that propagate through the network, similar to how slime molds propagate nutrient information through their networks. This creates a system where congestion information is processed and responded to at a network level through local interactions.",
-        "evidence": [
-          "Decentralized information processing is used in biological systems",
-          "Wave-based traffic control has shown promise in limited applications",
-          "Distributed pattern detection has been successfully implemented in sensor networks"
-        ],
-        "assumptions": [
-          "Local traffic measurements can be aggregated to detect network-wide patterns",
-          "Information propagation through the network can be effectively modeled",
-          "Wave-like traffic flow patterns can be created and maintained",
-          "The system can distinguish between temporary and persistent congestion"
-        ],
-        "predictions": [],
-        "expected_failure_modes": [
-          "Information propagation delays leading to inadequate responses",
-          "Misinterpretation of traffic patterns causing incorrect responses",
-          "Inability to distinguish between different types of congestion",
-          "Response signals creating oscillatory behavior in traffic flow"
-        ],
-        "novelty_rationale": "This hypothesis applies decentralized information processing principles to traffic signal optimization, where the network collectively processes traffic information to create adaptive wave-like flow patterns",
-        "testability": "The hypothesis can be tested by implementing the information processing mechanism and measuring the system's ability to detect congestion patterns and propagate appropriate responses",
-        "falsifier": "If the system fails to detect congestion patterns in a timely manner or if the response signals create unintended traffic flow disruptions",
+        "novelty_rationale": "Applies the concept of iterative optimization from slime mold adaptation to create a learning-based signal timing system rather than direct feedback or communication-based approaches.",
+        "testability": "Testable by implementing different cost functions and learning rates at intersections and measuring convergence to optimal timing.",
+        "falsifier": "If the system converges to suboptimal timing patterns that get stuck in local minima or fails to adapt to changing traffic patterns, this hypothesis would be proven wrong as the gradient descent mechanism would be insufficient for global optimization.",
         "epistemic_state": "HYPOTHESIZED",
         "parent_hypothesis_ids": [],
         "provenance": {
@@ -166,9 +122,9 @@
         "provenance_root_hash": ""
       }
     ],
-    "distinguishing_predictions": "The hypotheses can be distinguished by their convergence behavior under different traffic conditions: 1) The gradient descent hypothesis should show smooth convergence to local optima but may get stuck in suboptimal solutions; 2) The consensus hypothesis should show coordinated changes across the network but may have slower convergence; 3) The reinforcement learning hypothesis should show improvement over time but may have initial instability; 4) The information processing hypothesis should show network-wide pattern detection but may have delayed responses. Additionally, the reinforcement learning hypothesis would require training time before optimal performance, while the others should perform immediately. The information processing hypothesis would be most sensitive to network topology changes, while the gradient descent hypothesis would be most sensitive to measurement noise.",
+    "distinguishing_predictions": "The independent local feedback hypothesis would predict that adding communication between intersections would provide no additional benefit or might even degrade performance. The distributed communication hypothesis would predict that communication range and frequency directly correlate with system performance up to a point. The gradient descent hypothesis would predict that system performance improves over time as intersections 'learn' optimal timing strategies, with faster learning rates leading to better adaptation to changing conditions. These hypotheses can be distinguished by measuring the impact of communication on performance, the time evolution of system efficiency, and the correlation between local optimization metrics and network-level performance.",
     "transfer_id": "TH-DEV-CH-004-001",
-    "source_transfer_hash": "cd7944bc7ea18f2cf63a80d8692212685da16b85c2037d4bd03020b489172ea6"
+    "source_transfer_hash": "d644adb76de97e611ef9c8d5c9057272a116be712db48f447a27da270bc850fe"
   },
-  "timestamp": "2026-08-08T08:07:24.586390+00:00"
+  "timestamp": "2026-08-08T08:18:20.480255+00:00"
 }

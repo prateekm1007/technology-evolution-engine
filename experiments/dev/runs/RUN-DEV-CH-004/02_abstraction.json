@@ -2,8 +2,8 @@
   "stage": "02_abstraction",
   "run_id": "RUN-DEV-CH-004",
   "code_sha": "engine-v0.1-round3",
-  "input_hash": "93ac94ceada60b3a787278e1f43e5cdd0185a8de31dcd29275c20813fadbf76b",
-  "output_hash": "9dbf1293a955e6cec7e7a54652a86044375ee258c5339514f1662d9fcd1c8a25",
+  "input_hash": "5a997cf91085787c0a4afecde833f47ef9933f613b3c9eeabb0de773e12c088c",
+  "output_hash": "c80a87a6a63184a95ac4ebba181a23a9d9a9f344e640b046578e7acbbf8e1967",
   "provider_manifest": {
     "provider": "zai",
     "model": "glm-4-plus",
@@ -13,13 +13,13 @@
       "max_tokens": 4096,
       "system_sha": "da25f0e8a1231c4250cad400e03ce5c0a835dbc6ca8fc600ce255ef3727d663e"
     },
-    "prompt_sha": "ab160b4a4ff0a24144ada5a7f9d6bcb243a5b889f2e985ee799c83b18bf58f66",
+    "prompt_sha": "83888192d285b95a4c9c61b61db3d4aea43bc13e13ebe5099fcf6b644e7f9fa9",
     "seed": null,
     "tool_versions": {
       "z_ai_cli": "z-ai"
     },
-    "timestamp": "2026-08-08T08:06:39.473437+00:00",
-    "latency_ms": 2526,
+    "timestamp": "2026-08-08T08:17:49.979679+00:00",
+    "latency_ms": 3703,
     "success": true,
     "error": ""
   },
@@ -27,48 +27,44 @@
     "pattern": {
       "pattern_id": "MP-DEV-CH-004",
       "source_domain": "myxomycete biology / emergent computation",
-      "causal_structure": "sensory input enables network reconfiguration under resource constraints, producing optimized transport pathways",
+      "causal_structure": "Flow rate enables structural adaptation under feedback constraints, producing optimized network topology",
       "inputs": [
-        "resource distribution",
-        "environmental signals",
-        "network state"
+        "resource flow",
+        "network structure"
       ],
       "conditions": [
-        "resource availability",
-        "environmental stability",
-        "network connectivity"
+        "feedback gain regime",
+        "resource availability"
       ],
       "operations": [
-        "sensory detection",
-        "feedback processing",
-        "structural modification",
-        "resource allocation"
+        "rhythmic contraction",
+        "structural thickening",
+        "structural thinning",
+        "flow regulation"
       ],
       "intermediate_state": [
-        "network topology",
-        "flow dynamics",
-        "resource gradients"
+        "variable tube radius",
+        "path thickness variation",
+        "network adaptation"
       ],
       "outputs": [
         "optimized transport network",
-        "energy efficiency",
-        "environmental adaptation"
+        "efficient resource distribution"
       ],
       "constraints": [
-        "physical limitations",
-        "energy conservation",
-        "time constraints"
+        "flow-to-radius feedback stability",
+        "structural integrity limits"
       ],
       "failure_conditions": [
-        "resource depletion",
-        "network isolation",
-        "environmental disruption"
+        "insufficient flow",
+        "excessive flow",
+        "oscillating feedback cycles"
       ],
-      "abstract_principle": "adaptive network formation through feedback-driven structural optimization",
-      "source_graph_summary": "0 nodes, 0 edges"
+      "abstract_principle": "Self-organizing network optimizes transport capacity through dynamic feedback between flow and structural dimensions",
+      "source_graph_summary": "18 nodes, 16 edges"
     },
     "failures": [],
-    "source_extraction_hash": "58c7807ce28bc823f84a3e146b63ab3ed5825cd4651890d2d7879ee844b02b68"
+    "source_extraction_hash": "71d76f0f1b84a39b5385f751809635c9f62e116e34e678c1124b424fb12fb398"
   },
-  "timestamp": "2026-08-08T08:06:42.000073+00:00"
+  "timestamp": "2026-08-08T08:17:53.684215+00:00"
 }

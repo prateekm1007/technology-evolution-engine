@@ -352,17 +352,39 @@ class TestRepairEInterruptionTests:
 
     def test_interruption_before_artifact_write(self, tmp_path):
         """If the process dies before the artifact temp file is written,
-        resume must re-run the stage from scratch."""
-        # Simulate: run a loop, then delete an artifact file to simulate
-        # "died before write". Resume must re-run.
+        resume must re-run the stage from scratch.
+
+        This test simulates a crash by deleting the artifact AND resetting
+        the manifest stage status. The manifest self-hash is recomputed
+        so the loader accepts the modified manifest (simulating a crash
+        that happened before the manifest was atomically committed with
+        the stage's old state).
+        """
+        import hashlib
         loop, result, run_dir = _run_mock_loop(CHALLENGE_4, tmp_path, run_id="RUN-INT-1")
         # Delete the 02_abstraction artifact (simulate "died before write")
         (run_dir / "02_abstraction.json").unlink()
-        # Also reset the manifest stage status to PENDING (simulate "died before commit")
+        # Reset the manifest stage status to PENDING (simulate "died before commit")
         manifest = json.loads((run_dir / "manifest.json").read_text())
         manifest["stages"]["02_abstraction"]["status"] = "PENDING"
         manifest["stages"]["02_abstraction"]["output_hash"] = ""
+        # Recompute the manifest self-hash so the loader accepts the modification
+        # (this simulates a crash where the manifest was written before the
+        # stage completed, not a malicious tampering)
+        d_without_sha = {k: v for k, v in manifest.items() if k != "manifest_sha"}
+        manifest["manifest_sha"] = hashlib.sha256(
+            json.dumps(d_without_sha, sort_keys=True, default=str).encode()).hexdigest()
         (run_dir / "manifest.json").write_text(json.dumps(manifest, indent=2, default=str))
+        # Also need to update the RUN_INTEGRITY_ANCHOR to match the new manifest
+        anchor_path = run_dir / "RUN_INTEGRITY_ANCHOR.json"
+        if anchor_path.exists():
+            anchor = json.loads(anchor_path.read_text())
+            anchor["manifest_sha256"] = manifest["manifest_sha"]
+            # Recompute anchor self-hash
+            anchor_for_hash = {k: v for k, v in anchor.items() if k != "anchor_sha256"}
+            anchor["anchor_sha256"] = hashlib.sha256(
+                json.dumps(anchor_for_hash, sort_keys=True, default=str).encode()).hexdigest()
+            anchor_path.write_text(json.dumps(anchor, indent=2, default=str))
         # Resume — the stage must re-run
         import engine.checkpoint as cp
         original = cp.RUNS_DIR

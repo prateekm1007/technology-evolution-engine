@@ -40,6 +40,7 @@ import hashlib
 import json
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
+from enum import Enum
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
@@ -96,22 +97,26 @@ class LedgerIntegrityError(Exception):
 # Repair C: Explicit verification states (round-7)
 # ============================================================================
 
-class VerificationStatus(str):
-    """Explicit verification outcome states. Round-7 Repair C.
+class VerificationStatus(str, Enum):
+    """Explicit verification outcome states. Round-8 Repair D.
 
-    Replaces ambiguous boolean-only verification. An auditor should never
-    have to infer from a boolean whether the evidence store itself has
-    been corrupted.
+    A real Enum (not just a str subclass) with a closed state space.
+    An auditor should never have to infer from a boolean whether the
+    evidence store itself has been corrupted.
 
-    VALID              — object exists, hash matches, no corruption
-    INVALID            — object exists but hash doesn't match (tampered)
-    INTEGRITY_FAILURE  — the evidence store itself is compromised
-                         (missing object, malformed JSON, corrupted index,
-                         substituted object, index/object mismatch)
+    VALID              — Registered object exists and content hash matches
+    INVALID            — Registered object exists but content differs from
+                         committed hash (tampered content)
+    INTEGRITY_FAILURE  — Evidence infrastructure itself is structurally
+                         corrupted (missing file, malformed JSON, corrupted
+                         index, missing freeze record, freeze record mismatch,
+                         index points somewhere it shouldn't)
+    NOT_REGISTERED     — Requested object has no ledger registration
     """
     VALID = "VALID"
     INVALID = "INVALID"
     INTEGRITY_FAILURE = "INTEGRITY_FAILURE"
+    NOT_REGISTERED = "NOT_REGISTERED"
 
 
 @dataclass
@@ -315,7 +320,7 @@ class PersistentLedger:
           - file: the relative path to the file
           - detail: human-readable explanation
         """
-        result = {"status": "NOT_REGISTERED", "registered": False,
+        result = {"status": VerificationStatus.NOT_REGISTERED, "registered": False,
                   "file_exists": False, "content_hash_matches": False,
                   "content_hash": "", "actual_hash": "", "file": "",
                   "detail": "object not in index"}

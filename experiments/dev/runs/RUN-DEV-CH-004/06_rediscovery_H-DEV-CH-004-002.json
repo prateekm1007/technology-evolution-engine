@@ -2,8 +2,8 @@
   "stage": "06_rediscovery_H-DEV-CH-004-002",
   "run_id": "RUN-DEV-CH-004",
   "code_sha": "engine-v0.1-round3",
-  "input_hash": "e7c647ab679c121f2ad6b45e057c9d75d367e1887c3c9add78b74d90ae8e3447",
-  "output_hash": "073df7a7afd785ef5e18d1ecd56c7c0ebc18b6b4870382861ac5229959015a14",
+  "input_hash": "0f78e7f7ba76435939c27b39651657c22850d6abb88877dfc21f40a30953b0c2",
+  "output_hash": "acc04f589806f4c4d4ead4ac43a4db0d971f0df8c63a6689965cf697ce9576b4",
   "provider_manifest": {
     "provider": "zai",
     "model": "glm-4-plus",
@@ -13,22 +13,22 @@
       "max_tokens": 4096,
       "system_sha": "dbdd0760dff49fc029b32b580a575b7de33a87d371edc2b0deec93bfb2b90b01"
     },
-    "prompt_sha": "aa2c8cf30dc8ab15e23e2d3d3fe3d2139264819661a09f19e718d20c7f958792",
+    "prompt_sha": "f70bfa645a6f9ec3eafc0fd70235ca24f4b040a52e96091c9364e4111f76da01",
     "seed": null,
     "tool_versions": {
       "z_ai_cli": "z-ai"
     },
-    "timestamp": "2026-08-08T08:07:45.018491+00:00",
-    "latency_ms": 5327,
+    "timestamp": "2026-08-08T08:18:49.340497+00:00",
+    "latency_ms": 2568,
     "success": true,
     "error": ""
   },
   "result": {
     "hypothesis_id": "H-DEV-CH-004-002",
     "classification": "NON_TRIVIAL_TRANSFER",
-    "evidence": "The hypothesis describes a distributed traffic signal system that uses consensus mechanisms through iterative message passing between intersections. While the source document discusses how Physarum polycephalum creates adaptive networks through protoplasmic streaming and feedback mechanisms, there's no direct mapping to traffic signal systems. The hypothesis applies biological principles (consensus building, iterative evaluation) to a completely different domain (traffic management). This requires cross-domain transfer of concepts beyond what's explicitly stated or paraphrased in the source document. The traffic system's mechanism of maintaining and sharing candidate timing parameters, evaluating them based on local metrics, and achieving system-wide coherence isn't directly described in the slime mold adaptation process, though it's inspired by similar principles of self-organization.",
+    "evidence": "The hypothesis describes traffic signal timing adaptation through distributed communication between intersections, which is a concept from urban traffic engineering. The source documents describe Physarum polycephalum's biological network adaptation mechanism, which involves protoplasmic streaming and tube thickening/thinning based on flow rates. While both systems involve distributed optimization and feedback mechanisms, the hypothesis applies these biological principles to a completely different domain (traffic signal control) with specific concepts like 'queue length,' 'cycle time,' 'offset,' and 'green split' that are not present in the source. This represents a genuine cross-domain transfer rather than a direct composition or structural inference from the biological system described.",
     "is_rediscovery": false,
     "source_hypothesis_hash": ""
   },
-  "timestamp": "2026-08-08T08:07:50.346058+00:00"
+  "timestamp": "2026-08-08T08:18:51.909530+00:00"
 }

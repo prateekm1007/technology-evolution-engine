@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "run_id": "RUN-DEV-CH-004",
+  "manifest_sha256": "df3cf746d245e7e04ab4e5bad2027ac0980bb97d92052434c8bea81d60522aa6",
+  "ledger_index_sha256": "5fd806871e0a57d726c444800855ccd64f14f4039db5c74f6599b509b668d8c7",
+  "ledger_inventory_sha256": "bd5c645e7af8207b26fd3947f60c7140bb15fc9c136e12f38cc7aef50ea6df5e",
+  "freeze_record_sha256": "7b48a7cb1183876bdf847072d44e3f65eaa643b2d4eec13c150329c44c6139b5",
+  "stage_inventory_sha256": "4b1fc3e8e337f0f759ca1c3f1908caa7c988847481534efd35be42cd29059b61",
+  "engine_code_sha": "engine-v0.1-round3",
+  "created_at": "2026-08-08T08:19:23.014529+00:00",
+  "note": "RUN_INTEGRITY_ANCHOR \u2014 the external root of trust. An auditor starts here and verifies every layer below. The anchor's own integrity is verified by comparing it against an externally-recorded value (e.g. the Git commit).",
+  "anchor_sha256": "128e9b335389fe1d77e1974ca15c47e6d031b58fd105dd5da0b896ffe80d12c8"
+}

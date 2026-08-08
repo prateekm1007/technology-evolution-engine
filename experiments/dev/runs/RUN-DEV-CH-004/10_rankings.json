@@ -2,8 +2,8 @@
   "stage": "10_rankings",
   "run_id": "RUN-DEV-CH-004",
   "code_sha": "engine-v0.1-round3",
-  "input_hash": "356d0e4e959cbe076e61483838b383d2c899e3821237a69e3f6b8eabba6fb69a",
-  "output_hash": "b5d3e11a3c16b2803ae86bc0c79b85a0c839c2c70f5660be8fd10c278fc10958",
+  "input_hash": "0d6004230a5bafaa3b899acdeed732cb06ff262c0c0a3aafbb4b5cb68afc36ce",
+  "output_hash": "ef5753a0114cea2608b6933a21c6b3d9bce44531f59d539746bffb6a9a1a4c31",
   "provider_manifest": null,
   "result": {
     "rankings": {
@@ -132,50 +132,8 @@
           ]
         },
         "note": "dimensions reported separately, not collapsed into a single score"
-      },
-      "H-DEV-CH-004-004": {
-        "hypothesis_id": "H-DEV-CH-004-004",
-        "dimensions": {
-          "mechanistic_coherence": [
-            0.5,
-            "hypothesis has a mechanism"
-          ],
-          "cross_domain_distance": [
-            0.8,
-            "source 'myxomycete biology / emergent computation' != target 'urban transportation engineering'"
-          ],
-          "novelty_evidence": [
-            0.0,
-            ""
-          ],
-          "testability": [
-            0.5,
-            "hypothesis marked testable"
-          ],
-          "falsifiability": [
-            1.0,
-            "non-empty falsifier"
-          ],
-          "prior_art_risk": [
-            0.0,
-            ""
-          ],
-          "expected_information_gain": [
-            0.2,
-            "no experiment design yet"
-          ],
-          "potential_impact": [
-            0.6,
-            "specific expected effect"
-          ],
-          "experimental_feasibility": [
-            0.0,
-            ""
-          ]
-        },
-        "note": "dimensions reported separately, not collapsed into a single score"
       }
     }
   },
-  "timestamp": "2026-08-08T08:08:13.807911+00:00"
+  "timestamp": "2026-08-08T08:19:11.253761+00:00"
 }

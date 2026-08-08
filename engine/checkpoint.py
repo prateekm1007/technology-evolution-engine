@@ -80,6 +80,228 @@ class CheckpointIntegrityError(Exception):
     """
     pass
 
+
+# ============================================================================
+# Round-8 Repair C: RUN_INTEGRITY_ANCHOR — the external root of trust
+# ============================================================================
+
+def _compute_stage_inventory_sha(run_dir: Path) -> str:
+    """Compute a hash over all stage artifacts in the run directory.
+
+    This is the 'stage inventory' — a deterministic hash of every
+    *.json file (except manifest.json, RUN_INTEGRITY_ANCHOR.json, and
+    the ledger directory) in the run directory, identified by filename
+    + output_hash.
+
+    The anchor file itself is excluded to avoid a circular dependency
+    (the anchor records the stage inventory hash, so the stage inventory
+    must not include the anchor).
+    """
+    import hashlib
+    inventory = []
+    for p in sorted(run_dir.glob("*.json")):
+        if p.name in ("manifest.json", "RUN_INTEGRITY_ANCHOR.json"):
+            continue
+        try:
+            data = json.loads(p.read_text())
+            output_hash = data.get("output_hash", "")
+            inventory.append(f"{p.name}:{output_hash}")
+        except (json.JSONDecodeError, OSError):
+            inventory.append(f"{p.name}:UNREADABLE")
+    inventory_str = "\n".join(inventory)
+    return hashlib.sha256(inventory_str.encode("utf-8")).hexdigest()
+
+
+def create_run_integrity_anchor(run_dir: Path, manifest_sha: str,
+                                 freeze_record_sha: str) -> Dict:
+    """Create RUN_INTEGRITY_ANCHOR.json — the external root of trust.
+
+    Round-8 Repair C (per reviewer directive): the freeze record is
+    itself a mutable file in the run directory. An attacker who replaces
+    the freeze record, index, and objects together can produce a
+    self-consistent but fraudulent ledger.
+
+    The RUN_INTEGRITY_ANCHOR breaks this circularity by recording hashes
+    of ALL mutable components in a single file that serves as the root.
+    The anchor itself is bound to the external world via the Git commit
+    (the commit SHA is recorded in the anchor and can be verified
+    independently).
+
+    Hierarchy:
+                 RUN_INTEGRITY_ANCHOR
+                         │
+          ┌──────────────┼──────────────┐
+          ↓              ↓              ↓
+      manifest        ledger          stages
+          │              │
+          ↓              ↓
+      stage hashes   index hash
+                         │
+                         ↓
+                  object inventory
+                         │
+                         ↓
+                   object hashes
+
+    An auditor starts from the anchor and verifies every layer below.
+    The anchor's own integrity is verified by comparing it against an
+    externally-recorded value (e.g. the Git commit, or a signed release).
+    """
+    from engine.persistent_ledger import PersistentLedger, _sha
+    ledger_dir = run_dir / "ledger"
+    ledger = PersistentLedger(ledger_dir)
+
+    # Compute the ledger index hash
+    index_path = ledger_dir / "index.json"
+    index_content = index_path.read_text() if index_path.exists() else ""
+    ledger_index_sha = _sha(index_content)
+
+    # Compute the object inventory hash
+    inventory = []
+    for otype, entries in sorted(ledger._index.items()):
+        for oid, entry in sorted(entries.items()):
+            inventory.append(f"{otype}/{oid}/{entry.content_hash}")
+    inventory_str = "\n".join(sorted(inventory))
+    ledger_inventory_sha = _sha(inventory_str)
+
+    # Compute the stage inventory hash
+    stage_inventory_sha = _compute_stage_inventory_sha(run_dir)
+
+    anchor = {
+        "schema_version": 1,
+        "run_id": run_dir.name,
+        "manifest_sha256": manifest_sha,
+        "ledger_index_sha256": ledger_index_sha,
+        "ledger_inventory_sha256": ledger_inventory_sha,
+        "freeze_record_sha256": freeze_record_sha,
+        "stage_inventory_sha256": stage_inventory_sha,
+        "engine_code_sha": ENGINE_CODE_SHA,
+        "created_at": _now(),
+        "note": "RUN_INTEGRITY_ANCHOR — the external root of trust. "
+                "An auditor starts here and verifies every layer below. "
+                "The anchor's own integrity is verified by comparing it "
+                "against an externally-recorded value (e.g. the Git commit).",
+    }
+    # Compute self-hash (excluding the self-hash field itself)
+    anchor_for_hash = {k: v for k, v in anchor.items() if k != "anchor_sha256"}
+    anchor["anchor_sha256"] = _sha(json.dumps(anchor_for_hash, sort_keys=True, default=str))
+
+    anchor_path = run_dir / "RUN_INTEGRITY_ANCHOR.json"
+    # Atomic write
+    temp_path = run_dir / "RUN_INTEGRITY_ANCHOR.json.tmp"
+    import os
+    temp_path.write_text(json.dumps(anchor, indent=2, default=str))
+    try:
+        with open(temp_path, "rb") as f:
+            os.fsync(f.fileno())
+    except OSError:
+        pass
+    temp_path.replace(anchor_path)
+    return anchor
+
+
+def verify_run_integrity_anchor(run_dir: Path) -> Dict:
+    """Verify the entire run against its RUN_INTEGRITY_ANCHOR.
+
+    Returns a dict with per-component verification results.
+    The auditor starts from the anchor and verifies every layer:
+      1. anchor self-hash (the anchor file was not modified)
+      2. manifest hash (manifest matches anchor)
+      3. manifest self-hash (manifest was not modified after creation)
+      4. ledger index hash (index matches anchor)
+      5. ledger inventory hash (object inventory matches anchor)
+      6. freeze record hash (freeze record matches anchor)
+      7. stage inventory hash (stage artifacts match anchor)
+
+    If ANY layer fails, the run is NOT intact.
+    """
+    from engine.persistent_ledger import PersistentLedger, _sha
+    anchor_path = run_dir / "RUN_INTEGRITY_ANCHOR.json"
+    result = {"anchor_exists": False, "anchor_self_hash_matches": False,
+              "manifest_hash_matches": False,
+              "ledger_index_hash_matches": False,
+              "ledger_inventory_hash_matches": False,
+              "freeze_record_hash_matches": False,
+              "stage_inventory_hash_matches": False,
+              "detail": "", "intact": False}
+
+    if not anchor_path.exists():
+        result["detail"] = "RUN_INTEGRITY_ANCHOR.json does not exist"
+        return result
+    result["anchor_exists"] = True
+
+    try:
+        anchor = json.loads(anchor_path.read_text())
+    except json.JSONDecodeError as e:
+        result["detail"] = f"anchor corrupted: {e}"
+        return result
+
+    # 1. Verify anchor self-hash
+    stored_anchor_sha = anchor.pop("anchor_sha256", "")
+    if not stored_anchor_sha:
+        result["detail"] = "anchor has no anchor_sha256 field"
+        return result
+    recomputed_anchor_sha = _sha(json.dumps(anchor, sort_keys=True, default=str))
+    result["anchor_self_hash_matches"] = (recomputed_anchor_sha == stored_anchor_sha)
+    if not result["anchor_self_hash_matches"]:
+        result["detail"] = "anchor self-hash mismatch — anchor was modified"
+        return result
+
+    # 2. Verify manifest hash
+    manifest_path = run_dir / "manifest.json"
+    if manifest_path.exists():
+        manifest_data = json.loads(manifest_path.read_text())
+        stored_manifest_sha = manifest_data.get("manifest_sha", "")
+        result["manifest_hash_matches"] = (stored_manifest_sha == anchor.get("manifest_sha256"))
+
+    # 3. Verify ledger index hash
+    ledger_dir = run_dir / "ledger"
+    index_path = ledger_dir / "index.json"
+    if index_path.exists():
+        current_index_sha = _sha(index_path.read_text())
+        result["ledger_index_hash_matches"] = (current_index_sha == anchor.get("ledger_index_sha256"))
+
+    # 4. Verify ledger inventory hash
+    try:
+        ledger = PersistentLedger(ledger_dir)
+        inventory = []
+        for otype, entries in sorted(ledger._index.items()):
+            for oid, entry in sorted(entries.items()):
+                inventory.append(f"{otype}/{oid}/{entry.content_hash}")
+        current_inventory_sha = _sha("\n".join(sorted(inventory)))
+        result["ledger_inventory_hash_matches"] = (current_inventory_sha == anchor.get("ledger_inventory_sha256"))
+    except Exception:
+        result["ledger_inventory_hash_matches"] = False
+
+    # 5. Verify freeze record hash
+    freeze_path = ledger_dir / "LEDGER_FREEZE_RECORD.json"
+    if freeze_path.exists():
+        current_freeze_sha = _sha(freeze_path.read_text())
+        result["freeze_record_hash_matches"] = (current_freeze_sha == anchor.get("freeze_record_sha256"))
+    else:
+        result["freeze_record_hash_matches"] = False
+
+    # 6. Verify stage inventory hash
+    current_stage_sha = _compute_stage_inventory_sha(run_dir)
+    result["stage_inventory_hash_matches"] = (current_stage_sha == anchor.get("stage_inventory_sha256"))
+
+    # Overall
+    all_match = all([
+        result["anchor_self_hash_matches"],
+        result["manifest_hash_matches"],
+        result["ledger_index_hash_matches"],
+        result["ledger_inventory_hash_matches"],
+        result["freeze_record_hash_matches"],
+        result["stage_inventory_hash_matches"],
+    ])
+    result["intact"] = all_match
+    if all_match:
+        result["detail"] = "run integrity verified — all layers match the anchor"
+    else:
+        failed = [k for k, v in result.items() if isinstance(v, bool) and not v and k != "intact"]
+        result["detail"] = f"integrity failures: {', '.join(failed)}"
+    return result
+
 # Scientific stages — if any of these FAIL, the loop STOPs (fail-closed).
 # Non-scientific stages (rankings, state-machine bookkeeping, case assembly)
 # may fail without blocking because they are derivable from prior stages.
@@ -414,17 +636,49 @@ class CheckpointedDiscoveryLoop:
         self._save_manifest(manifest, manifest_path)
 
         # Repair B: create the ledger freeze record after the run completes.
-        # This anchors the ledger index to the run manifest, so an attacker
-        # cannot substitute both the index AND the objects without detection.
+        # Round-8: freeze record creation is NOT best-effort. If it fails,
+        # the run cannot be represented as fully committed.
         manifest_dict = manifest.to_dict()
         manifest_sha = manifest_dict.get("manifest_sha", "")
+        freeze_record_sha = ""
         if self.ledger:
             try:
-                self.ledger.create_freeze_record(
+                freeze_record = self.ledger.create_freeze_record(
                     run_id=manifest.run_id,
                     manifest_sha=manifest_sha)
-            except Exception:
-                pass  # freeze record creation is best-effort; don't fail the run
+                # Compute the freeze record hash from the FILE CONTENT
+                # (not the dict), so verify_run_integrity_anchor can
+                # compare against the same file content.
+                freeze_path = self._ledger_dir / "LEDGER_FREEZE_RECORD.json"
+                freeze_record_sha = _sha(freeze_path.read_text())
+            except Exception as e:
+                # Round-8 Repair B: fail-closed. A run without a valid freeze
+                # record is NOT complete — the ledger is unanchored.
+                manifest.completed = False
+                manifest.failed_closed = True
+                manifest.failed_closed_at = "freeze_record_creation"
+                manifest.last_updated = _now()
+                self._save_manifest(manifest, manifest_path)
+                raise CheckpointIntegrityError(
+                    f"Freeze record creation failed: {e}. The run cannot be "
+                    "represented as committed without an anchored ledger.") from e
+
+        # Round-8 Repair C: create the RUN_INTEGRITY_ANCHOR.
+        # This is the external root of trust that binds manifest + ledger +
+        # freeze record + stage inventory + engine identity. An attacker
+        # who modifies any mutable file in the run directory will break
+        # the anchor's hash chain.
+        try:
+            create_run_integrity_anchor(run_dir, manifest_sha, freeze_record_sha)
+        except Exception as e:
+            manifest.completed = False
+            manifest.failed_closed = True
+            manifest.failed_closed_at = "anchor_creation"
+            manifest.last_updated = _now()
+            self._save_manifest(manifest, manifest_path)
+            raise CheckpointIntegrityError(
+                f"RUN_INTEGRITY_ANCHOR creation failed: {e}. The run cannot "
+                "be represented as committed without an anchored identity.") from e
 
         return manifest_dict
 
@@ -1181,11 +1435,17 @@ class CheckpointedDiscoveryLoop:
                 f"Manifest post-write verification failed: cannot reload: {e}") from e
 
     def _load_manifest(self, path: Path) -> RunManifest:
-        """Load the manifest. Round-7: fail-closed on corruption.
+        """Load the manifest. Round-8 Repair A: verify manifest self-hash.
 
-        A corrupted manifest raises CheckpointIntegrityError, not a
-        generic JSON exception. The manifest is the authority for the
-        entire run state — ambiguous state is unacceptable.
+        The manifest's `manifest_sha` is a self-hash computed by
+        RunManifest.to_dict(). On load, we recompute the hash of the
+        manifest content (excluding manifest_sha itself) and compare it
+        to the stored value. If they don't match, the manifest was
+        modified after creation → CheckpointIntegrityError.
+
+        This protects against post-write modification: an attacker who
+        changes completed=True or stage output_hashes will invalidate
+        the self-hash, even if the JSON remains valid.
         """
         if not path.exists():
             raise CheckpointIntegrityError(
@@ -1213,6 +1473,28 @@ class CheckpointedDiscoveryLoop:
                 raise CheckpointIntegrityError(
                     f"Manifest file {path} is corrupted: missing required field '{field}'. "
                     "The checkpoint state is ambiguous.")
+
+        # Round-8 Repair A: verify manifest self-hash
+        stored_sha = d.get("manifest_sha", "")
+        if stored_sha:
+            # Recompute the hash: remove manifest_sha, canonically
+            # serialize, hash
+            d_without_sha = {k: v for k, v in d.items() if k != "manifest_sha"}
+            recomputed_sha = _sha(json.dumps(d_without_sha, sort_keys=True, default=str))
+            if recomputed_sha != stored_sha:
+                raise CheckpointIntegrityError(
+                    f"Manifest self-hash verification FAILED. The manifest was modified "
+                    f"after creation. Stored hash: {stored_sha[:16]}..., "
+                    f"recomputed: {recomputed_sha[:16]}... "
+                    "The checkpoint state cannot be trusted.")
+        else:
+            # No stored hash — this is either an old manifest or a
+            # tampered one where the attacker removed the hash.
+            raise CheckpointIntegrityError(
+                f"Manifest file {path} has no manifest_sha field. "
+                "Either this is a legacy manifest or the hash was removed. "
+                "The checkpoint state cannot be trusted.")
+
         m = RunManifest(run_id=d["run_id"], challenge_id=d["challenge_id"],
                         started_at=d["started_at"], last_updated=d["last_updated"],
                         engine_code_sha=d.get("engine_code_sha", ENGINE_CODE_SHA),

@@ -1,86 +1,86 @@
 {
   "run_id": "RUN-DEV-CH-004",
   "challenge_id": "DEV-CH-004",
-  "started_at": "2026-08-08T08:05:58.081216+00:00",
-  "last_updated": "2026-08-08T08:08:13.820248+00:00",
+  "started_at": "2026-08-08T08:17:09.341238+00:00",
+  "last_updated": "2026-08-08T08:19:23.012058+00:00",
   "engine_code_sha": "engine-v0.1-round3",
   "resume_from": "12_case",
   "stages": {
     "01_extraction": {
       "stage": "01_extraction",
       "status": "COMPLETED",
-      "started_at": "2026-08-08T08:05:58.081511+00:00",
-      "completed_at": "2026-08-08T08:06:39.472411+00:00",
-      "latency_ms": 41389,
+      "started_at": "2026-08-08T08:17:09.341503+00:00",
+      "completed_at": "2026-08-08T08:17:49.977539+00:00",
+      "latency_ms": 40634,
       "error": "",
-      "output_hash": "58c7807ce28bc823f84a3e146b63ab3ed5825cd4651890d2d7879ee844b02b68",
-      "provider_manifest_sha": "c8ec2386a2a6112f7d76a5f1fbe5299bafe98fa273c87280ee92e7ee4a0d5bf5"
+      "output_hash": "71d76f0f1b84a39b5385f751809635c9f62e116e34e678c1124b424fb12fb398",
+      "provider_manifest_sha": "d06e01cb4bb6471a38c2d12d9e413aa26ee7e385b78fc7d3f0fc4bc5eea9f145"
     },
     "02_abstraction": {
       "stage": "02_abstraction",
       "status": "COMPLETED",
-      "started_at": "2026-08-08T08:06:39.473161+00:00",
-      "completed_at": "2026-08-08T08:06:42.000477+00:00",
-      "latency_ms": 2526,
+      "started_at": "2026-08-08T08:17:49.978651+00:00",
+      "completed_at": "2026-08-08T08:17:53.684571+00:00",
+      "latency_ms": 3705,
       "error": "",
-      "output_hash": "9dbf1293a955e6cec7e7a54652a86044375ee258c5339514f1662d9fcd1c8a25",
-      "provider_manifest_sha": "1595c58136081f1c153c3a39ad97216a5eb00b8b21a3edd6aa811543eddcc11e"
+      "output_hash": "c80a87a6a63184a95ac4ebba181a23a9d9a9f344e640b046578e7acbbf8e1967",
+      "provider_manifest_sha": "d10c36803eae39979217ad90518ad6ccadd51cfb7afd35775368db16ca0ba8aa"
     },
     "03_transfer": {
       "stage": "03_transfer",
       "status": "COMPLETED",
-      "started_at": "2026-08-08T08:06:42.001569+00:00",
-      "completed_at": "2026-08-08T08:06:46.337269+00:00",
-      "latency_ms": 4334,
+      "started_at": "2026-08-08T08:17:53.685917+00:00",
+      "completed_at": "2026-08-08T08:17:58.669857+00:00",
+      "latency_ms": 4983,
       "error": "",
-      "output_hash": "cd7944bc7ea18f2cf63a80d8692212685da16b85c2037d4bd03020b489172ea6",
-      "provider_manifest_sha": "c9af04bd972065242a31dbde5ffca10df5c04a25eba0d1106d069511d0b5700d"
+      "output_hash": "d644adb76de97e611ef9c8d5c9057272a116be712db48f447a27da270bc850fe",
+      "provider_manifest_sha": "952e5e794f0c353414f391d90c5d8eceb08056514d4bae6da7b587e1738cc5f7"
     },
     "04_hypotheses": {
       "stage": "04_hypotheses",
       "status": "COMPLETED",
-      "started_at": "2026-08-08T08:06:46.338271+00:00",
-      "completed_at": "2026-08-08T08:07:24.586867+00:00",
-      "latency_ms": 38247,
+      "started_at": "2026-08-08T08:17:58.671011+00:00",
+      "completed_at": "2026-08-08T08:18:20.480619+00:00",
+      "latency_ms": 21808,
       "error": "",
-      "output_hash": "3ce4bbc41fd8d6a90012552892cf6fdc859205600b231a9ff48e57bac95cd1b2",
-      "provider_manifest_sha": "a66ea3e6cf44fdc367c652f94c0936f4dc582677c68145f61569e626d40f2d53"
+      "output_hash": "0bc9883970779f613508a1e8687ff8a54a94c553bf321a7942a3f7e4038f8e39",
+      "provider_manifest_sha": "810e3fa3cc1235ed9f24a6e4a1b926f516ceb0ca9d2c8c06cc8d9e09ac29e7aa"
     },
     "05_adversarial_H-DEV-CH-004-001": {
       "stage": "05_adversarial_H-DEV-CH-004-001",
       "status": "COMPLETED",
-      "started_at": "2026-08-08T08:07:24.587509+00:00",
-      "completed_at": "2026-08-08T08:07:32.687459+00:00",
-      "latency_ms": 8099,
+      "started_at": "2026-08-08T08:18:20.481227+00:00",
+      "completed_at": "2026-08-08T08:18:33.426641+00:00",
+      "latency_ms": 12944,
       "error": "",
-      "output_hash": "f79056cefa54994702b93ca321d5698349aa0448491f6e2122aa2e621a4e7c86",
-      "provider_manifest_sha": "8e7e088e4543daaaf3c17c74f28df7c557158a84351f4a65ba2373bf83c99a83"
+      "output_hash": "cced5d22526d7522bece5344490e1844ccd91310b54c9e824cb0454ee63bb102",
+      "provider_manifest_sha": "d9364a67d0779e2d9632b0485a2b5bfc633737c8a19be17a10a0a892e9c36156"
     },
     "06_rediscovery_H-DEV-CH-004-001": {
       "stage": "06_rediscovery_H-DEV-CH-004-001",
       "status": "COMPLETED",
-      "started_at": "2026-08-08T08:07:32.688491+00:00",
-      "completed_at": "2026-08-08T08:07:35.999523+00:00",
-      "latency_ms": 3310,
+      "started_at": "2026-08-08T08:18:33.427454+00:00",
+      "completed_at": "2026-08-08T08:18:36.036120+00:00",
+      "latency_ms": 2607,
       "error": "",
-      "output_hash": "c416e2afd8a4c5d9cb8f4861d631cea2819703bacc7d17c6c54fc6119376f120",
-      "provider_manifest_sha": "6809348cda7a6a389c004f820a39e23639415a8b8508e35ba999ea1ec988944c"
+      "output_hash": "542f1bc5ff802239da474031007b99ce22ddc83688fe6015913f0c6598563ac1",
+      "provider_manifest_sha": "d23ae82fb23d382bfa867a19c26e4ffad668f0e18d1ac430f2357916617eba5f"
     },
     "07_novelty_H-DEV-CH-004-001": {
       "stage": "07_novelty_H-DEV-CH-004-001",
       "status": "COMPLETED",
-      "started_at": "2026-08-08T08:07:36.000448+00:00",
-      "completed_at": "2026-08-08T08:07:36.001346+00:00",
+      "started_at": "2026-08-08T08:18:36.037241+00:00",
+      "completed_at": "2026-08-08T08:18:36.038305+00:00",
       "latency_ms": 0,
       "error": "",
-      "output_hash": "b79c5c5857bffc0cbd890b241e56b53525bc938c3b8acb4e8aa005686600aa84",
-      "provider_manifest_sha": "d3dbf4ad5b7c9e56b61685e6aeb1064295cb3d5a8f212324652abd797d32fa95"
+      "output_hash": "6fe9b546c495dcbc868db24f7ab553777dcfcd06c54e5bca3b9e190933bc6a3a",
+      "provider_manifest_sha": "1f9d6c44b9a44f6adeca070896583c75c67f0f4768f5882a3ba24a076e95f5a5"
     },
     "BLOCKED_adversarial_H-DEV-CH-004-001": {
       "stage": "BLOCKED_adversarial_H-DEV-CH-004-001",
       "status": "SKIPPED",
-      "started_at": "2026-08-08T08:08:11.623151+00:00",
-      "completed_at": "2026-08-08T08:08:11.623167+00:00",
+      "started_at": "2026-08-08T08:19:23.009829+00:00",
+      "completed_at": "2026-08-08T08:19:23.009841+00:00",
       "latency_ms": null,
       "error": "hypothesis H-DEV-CH-004-001 blocked: adversarial outcome = FAILED",
       "output_hash": "",
@@ -89,38 +89,38 @@
     "05_adversarial_H-DEV-CH-004-002": {
       "stage": "05_adversarial_H-DEV-CH-004-002",
       "status": "COMPLETED",
-      "started_at": "2026-08-08T08:07:36.002733+00:00",
-      "completed_at": "2026-08-08T08:07:45.017177+00:00",
-      "latency_ms": 9013,
+      "started_at": "2026-08-08T08:18:36.039318+00:00",
+      "completed_at": "2026-08-08T08:18:49.339240+00:00",
+      "latency_ms": 13299,
       "error": "",
-      "output_hash": "fb10ea349b282c057fa4b0c923799df89d09c9ba859df084ec18ef74d8fdd7f2",
-      "provider_manifest_sha": "1d23e57ae5a888268583e7c3d7e5b9a5c466730ba777af0d76b01a83241cf41a"
+      "output_hash": "572ccb9ec59cd8472df712b737acf04a5a112af511063030e670da6d0b236977",
+      "provider_manifest_sha": "59a2f517d404f15331b0cfc9a86bfb2dcacf9d0c02ae334611066933282e687a"
     },
     "06_rediscovery_H-DEV-CH-004-002": {
       "stage": "06_rediscovery_H-DEV-CH-004-002",
       "status": "COMPLETED",
-      "started_at": "2026-08-08T08:07:45.018105+00:00",
-      "completed_at": "2026-08-08T08:07:50.346449+00:00",
-      "latency_ms": 5327,
+      "started_at": "2026-08-08T08:18:49.340160+00:00",
+      "completed_at": "2026-08-08T08:18:51.909928+00:00",
+      "latency_ms": 2569,
       "error": "",
-      "output_hash": "073df7a7afd785ef5e18d1ecd56c7c0ebc18b6b4870382861ac5229959015a14",
-      "provider_manifest_sha": "a3130d20491a3e8d27568d77f7f81c304e9385289d7bfe98015c96b80bb5b452"
+      "output_hash": "acc04f589806f4c4d4ead4ac43a4db0d971f0df8c63a6689965cf697ce9576b4",
+      "provider_manifest_sha": "a9d6ae7d6e66da8b200d93fa2bfaaa0b2aabafd2865af5590fce62943740e52e"
     },
     "07_novelty_H-DEV-CH-004-002": {
       "stage": "07_novelty_H-DEV-CH-004-002",
       "status": "COMPLETED",
-      "started_at": "2026-08-08T08:07:50.347426+00:00",
-      "completed_at": "2026-08-08T08:07:50.348555+00:00",
+      "started_at": "2026-08-08T08:18:51.910828+00:00",
+      "completed_at": "2026-08-08T08:18:51.911751+00:00",
       "latency_ms": 0,
       "error": "",
-      "output_hash": "c0823842a490d27cae9778486fde8a9a4bdc15bd8c84ce33c0814d306d0565c2",
-      "provider_manifest_sha": "5783aa75175d6a47b0e39775af5935bbf8d803875fcd0002e7d7abcdb51c19c1"
+      "output_hash": "047da1e8a2a05a62469331a2e0675da0daf5414144a7646c89c9c97f8dab3645",
+      "provider_manifest_sha": "4cdc052f452b59081cc8b68053c7321873af66b920947ba714f091c9854aaaea"
     },
     "BLOCKED_adversarial_H-DEV-CH-004-002": {
       "stage": "BLOCKED_adversarial_H-DEV-CH-004-002",
       "status": "SKIPPED",
-      "started_at": "2026-08-08T08:08:11.624521+00:00",
-      "completed_at": "2026-08-08T08:08:11.624533+00:00",
+      "started_at": "2026-08-08T08:19:23.010711+00:00",
+      "completed_at": "2026-08-08T08:19:23.010718+00:00",
       "latency_ms": null,
       "error": "hypothesis H-DEV-CH-004-002 blocked: adversarial outcome = FAILED",
       "output_hash": "",
@@ -129,115 +129,75 @@
     "05_adversarial_H-DEV-CH-004-003": {
       "stage": "05_adversarial_H-DEV-CH-004-003",
       "status": "COMPLETED",
-      "started_at": "2026-08-08T08:07:50.349747+00:00",
-      "completed_at": "2026-08-08T08:07:57.763449+00:00",
-      "latency_ms": 7412,
+      "started_at": "2026-08-08T08:18:51.913123+00:00",
+      "completed_at": "2026-08-08T08:19:07.162323+00:00",
+      "latency_ms": 15248,
       "error": "",
-      "output_hash": "7fc3d69485e0360b60704f226766daf9ce10c719537049acd425c94c3ae0eefd",
-      "provider_manifest_sha": "47bbe2a8e1188b3d1698dc6d984e7d9255992b2bba03420135534504495a5b05"
+      "output_hash": "469b6404e10a3a7cb218088e1280b4825b7fed6157d1f6aef4c3256f58a6eed0",
+      "provider_manifest_sha": "1d4036968a7f7bc27c73beffad6311191295e774146592572e85e5e2df457e6b"
     },
     "06_rediscovery_H-DEV-CH-004-003": {
       "stage": "06_rediscovery_H-DEV-CH-004-003",
       "status": "COMPLETED",
-      "started_at": "2026-08-08T08:07:57.764544+00:00",
-      "completed_at": "2026-08-08T08:08:00.396134+00:00",
-      "latency_ms": 2630,
+      "started_at": "2026-08-08T08:19:07.163511+00:00",
+      "completed_at": "2026-08-08T08:19:11.249797+00:00",
+      "latency_ms": 4085,
       "error": "",
-      "output_hash": "a77d7ab1d2434c89014f2846a7a591be3d57033cc307797bc1ba9303bf53a12c",
-      "provider_manifest_sha": "e7bc98f837a4a50ac7dc89e7f46dc77314f6280e010d507c4f3d625ec8b8cb41"
+      "output_hash": "8105cc7e5633a01247cef42e872036ef6d334f58c67e82484fc0d0173ee85a99",
+      "provider_manifest_sha": "ae040cbd20d11dbaa8a0241b931397ba555ded6ee8b3f2ebca8e562aadba7134"
     },
     "07_novelty_H-DEV-CH-004-003": {
       "stage": "07_novelty_H-DEV-CH-004-003",
       "status": "COMPLETED",
-      "started_at": "2026-08-08T08:08:00.397329+00:00",
-      "completed_at": "2026-08-08T08:08:00.398433+00:00",
+      "started_at": "2026-08-08T08:19:11.250832+00:00",
+      "completed_at": "2026-08-08T08:19:11.251754+00:00",
       "latency_ms": 0,
       "error": "",
-      "output_hash": "d6e96713b2fd7d84fd8786247e2d428a66a110a301f6cc52ac44e436dc3578fe",
-      "provider_manifest_sha": "487da7b253a7aec780a36098e3f07265bdd817eee1a86bf4269ee03f31e28d8b"
+      "output_hash": "d47fdbc2fc975bcd40e3ca380ebdfb778d4b3237cadcb815ecc70ace9cc52d31",
+      "provider_manifest_sha": "c4f76eff3fe4ba225eafa4db241bce14115547592e24dedef8cbbae1efc3bf94"
     },
     "BLOCKED_adversarial_H-DEV-CH-004-003": {
       "stage": "BLOCKED_adversarial_H-DEV-CH-004-003",
       "status": "SKIPPED",
-      "started_at": "2026-08-08T08:08:11.625580+00:00",
-      "completed_at": "2026-08-08T08:08:11.625590+00:00",
+      "started_at": "2026-08-08T08:19:23.011352+00:00",
+      "completed_at": "2026-08-08T08:19:23.011357+00:00",
       "latency_ms": null,
       "error": "hypothesis H-DEV-CH-004-003 blocked: adversarial outcome = FAILED",
-      "output_hash": "",
-      "provider_manifest_sha": ""
-    },
-    "05_adversarial_H-DEV-CH-004-004": {
-      "stage": "05_adversarial_H-DEV-CH-004-004",
-      "status": "COMPLETED",
-      "started_at": "2026-08-08T08:08:00.399796+00:00",
-      "completed_at": "2026-08-08T08:08:10.644423+00:00",
-      "latency_ms": 10243,
-      "error": "",
-      "output_hash": "92244dcaa40a89e02efc892eb06afdfcf80b3e4050025c1d6a1341552b09389d",
-      "provider_manifest_sha": "d8a35f990c2a61372372b4e8c00bdf40d189219323e77ca219f6f4745d4f158c"
-    },
-    "06_rediscovery_H-DEV-CH-004-004": {
-      "stage": "06_rediscovery_H-DEV-CH-004-004",
-      "status": "COMPLETED",
-      "started_at": "2026-08-08T08:08:11.626625+00:00",
-      "completed_at": "2026-08-08T08:08:13.799051+00:00",
-      "latency_ms": 2171,
-      "error": "",
-      "output_hash": "d5e5e424bbb6fcc155b7c8436e1f2f39c7f5abfef1abbe21d428a325184c9cbb",
-      "provider_manifest_sha": "89d5817b26ec12fca566e02a2f2e62665c933e3680f9d2fb44dc7247491bf546"
-    },
-    "07_novelty_H-DEV-CH-004-004": {
-      "stage": "07_novelty_H-DEV-CH-004-004",
-      "status": "COMPLETED",
-      "started_at": "2026-08-08T08:08:13.800139+00:00",
-      "completed_at": "2026-08-08T08:08:13.801311+00:00",
-      "latency_ms": 0,
-      "error": "",
-      "output_hash": "d48003f5d1783699e3ca0505183a3af875f5508262711525e76008477b6565d4",
-      "provider_manifest_sha": "e21ef6c904c3fee5825180e7acb815185fb1f2cc1232e9599314daf7626a2ee5"
-    },
-    "BLOCKED_adversarial_H-DEV-CH-004-004": {
-      "stage": "BLOCKED_adversarial_H-DEV-CH-004-004",
-      "status": "SKIPPED",
-      "started_at": "2026-08-08T08:08:13.804087+00:00",
-      "completed_at": "2026-08-08T08:08:13.804098+00:00",
-      "latency_ms": null,
-      "error": "hypothesis H-DEV-CH-004-004 blocked: adversarial outcome = FAILED",
       "output_hash": "",
       "provider_manifest_sha": ""
     },
     "10_rankings": {
       "stage": "10_rankings",
       "status": "COMPLETED",
-      "started_at": "2026-08-08T08:08:13.804744+00:00",
-      "completed_at": "2026-08-08T08:08:13.808312+00:00",
+      "started_at": "2026-08-08T08:19:11.253134+00:00",
+      "completed_at": "2026-08-08T08:19:11.254084+00:00",
       "latency_ms": 0,
       "error": "",
-      "output_hash": "b5d3e11a3c16b2803ae86bc0c79b85a0c839c2c70f5660be8fd10c278fc10958",
+      "output_hash": "ef5753a0114cea2608b6933a21c6b3d9bce44531f59d539746bffb6a9a1a4c31",
       "provider_manifest_sha": ""
     },
     "11_state_machine": {
       "stage": "11_state_machine",
       "status": "COMPLETED",
-      "started_at": "2026-08-08T08:08:13.809467+00:00",
-      "completed_at": "2026-08-08T08:08:13.810768+00:00",
+      "started_at": "2026-08-08T08:19:11.255264+00:00",
+      "completed_at": "2026-08-08T08:19:11.256463+00:00",
       "latency_ms": 0,
       "error": "",
-      "output_hash": "9ccc2075a21abfaf61703480c3868fbb91683d3a1a2b813e2023fc8eb7357fd3",
+      "output_hash": "88738e5cbcc6cb37b6e5f8252cd8e6902626e45f0f68deaad4da88cb32d9dce4",
       "provider_manifest_sha": ""
     },
     "12_case": {
       "stage": "12_case",
       "status": "COMPLETED",
-      "started_at": "2026-08-08T08:08:13.811841+00:00",
-      "completed_at": "2026-08-08T08:08:13.818274+00:00",
-      "latency_ms": 5,
+      "started_at": "2026-08-08T08:19:11.257386+00:00",
+      "completed_at": "2026-08-08T08:19:11.262701+00:00",
+      "latency_ms": 4,
       "error": "",
-      "output_hash": "4b5588e8668750622a7b7640a1b2932d6a095974bd9263a3340af002bc6037e0",
+      "output_hash": "5e6aa0c294039113d894850dfb583f4c4d945b295c751afbb266cd7cdf41175c",
       "provider_manifest_sha": ""
     }
   },
-  "n_hypotheses": 4,
+  "n_hypotheses": 3,
   "n_hypotheses_survived_adversarial": 0,
   "n_hypotheses_rediscovery": 0,
   "final_state": "TESTABLE_HYPOTHESIS",
@@ -245,5 +205,5 @@
   "completed": true,
   "failed_closed": false,
   "failed_closed_at": "",
-  "manifest_sha": "1cdaf765ddf110148e47bc5bedee9e25b773d3a3beb69fb13f85814adcbac330"
+  "manifest_sha": "df3cf746d245e7e04ab4e5bad2027ac0980bb97d92052434c8bea81d60522aa6"
 }

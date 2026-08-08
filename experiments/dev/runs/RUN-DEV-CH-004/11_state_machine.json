@@ -2,8 +2,8 @@
   "stage": "11_state_machine",
   "run_id": "RUN-DEV-CH-004",
   "code_sha": "engine-v0.1-round3",
-  "input_hash": "356d0e4e959cbe076e61483838b383d2c899e3821237a69e3f6b8eabba6fb69a",
-  "output_hash": "9ccc2075a21abfaf61703480c3868fbb91683d3a1a2b813e2023fc8eb7357fd3",
+  "input_hash": "0d6004230a5bafaa3b899acdeed732cb06ff262c0c0a3aafbb4b5cb68afc36ce",
+  "output_hash": "88738e5cbcc6cb37b6e5f8252cd8e6902626e45f0f68deaad4da88cb32d9dce4",
   "provider_manifest": null,
   "result": {
     "final_state": "TESTABLE_HYPOTHESIS",
@@ -12,7 +12,7 @@
         "from_state": "RAW_EVIDENCE",
         "to_state": "STRUCTURED_KNOWLEDGE",
         "actor": "loop",
-        "timestamp": "2026-08-08T08:08:13.810308+00:00",
+        "timestamp": "2026-08-08T08:19:11.256001+00:00",
         "code_sha": "engine-v0.1-round3",
         "evidence": "dev_pipeline_stage",
         "reason": "phase advance"
@@ -21,7 +21,7 @@
         "from_state": "STRUCTURED_KNOWLEDGE",
         "to_state": "MECHANISM",
         "actor": "loop",
-        "timestamp": "2026-08-08T08:08:13.810320+00:00",
+        "timestamp": "2026-08-08T08:19:11.256031+00:00",
         "code_sha": "engine-v0.1-round3",
         "evidence": "dev_pipeline_stage",
         "reason": "phase advance"
@@ -30,7 +30,7 @@
         "from_state": "MECHANISM",
         "to_state": "TRANSFER_HYPOTHESIS",
         "actor": "loop",
-        "timestamp": "2026-08-08T08:08:13.810325+00:00",
+        "timestamp": "2026-08-08T08:19:11.256037+00:00",
         "code_sha": "engine-v0.1-round3",
         "evidence": "dev_pipeline_stage",
         "reason": "phase advance"
@@ -39,7 +39,7 @@
         "from_state": "TRANSFER_HYPOTHESIS",
         "to_state": "CANDIDATE_DISCOVERY",
         "actor": "loop",
-        "timestamp": "2026-08-08T08:08:13.810328+00:00",
+        "timestamp": "2026-08-08T08:19:11.256040+00:00",
         "code_sha": "engine-v0.1-round3",
         "evidence": "dev_pipeline_stage",
         "reason": "phase advance"
@@ -48,7 +48,7 @@
         "from_state": "CANDIDATE_DISCOVERY",
         "to_state": "GATE_A",
         "actor": "loop",
-        "timestamp": "2026-08-08T08:08:13.810331+00:00",
+        "timestamp": "2026-08-08T08:19:11.256043+00:00",
         "code_sha": "engine-v0.1-round3",
         "evidence": "dev_pipeline_stage",
         "reason": "phase advance"
@@ -57,7 +57,7 @@
         "from_state": "GATE_A",
         "to_state": "GATE_B",
         "actor": "loop",
-        "timestamp": "2026-08-08T08:08:13.810334+00:00",
+        "timestamp": "2026-08-08T08:19:11.256045+00:00",
         "code_sha": "engine-v0.1-round3",
         "evidence": "dev_pipeline_stage",
         "reason": "phase advance"
@@ -66,7 +66,7 @@
         "from_state": "GATE_B",
         "to_state": "GATE_C",
         "actor": "loop",
-        "timestamp": "2026-08-08T08:08:13.810336+00:00",
+        "timestamp": "2026-08-08T08:19:11.256047+00:00",
         "code_sha": "engine-v0.1-round3",
         "evidence": "dev_pipeline_stage",
         "reason": "phase advance"
@@ -75,7 +75,7 @@
         "from_state": "GATE_C",
         "to_state": "TESTABLE_HYPOTHESIS",
         "actor": "loop",
-        "timestamp": "2026-08-08T08:08:13.810340+00:00",
+        "timestamp": "2026-08-08T08:19:11.256051+00:00",
         "code_sha": "engine-v0.1-round3",
         "evidence": "dev_pipeline_stage",
         "reason": "phase advance"
@@ -83,12 +83,12 @@
     ],
     "pipeline_stage_reached": "TESTABLE_HYPOTHESIS",
     "candidate_status": "ALL_BLOCKED_AT_ADVERSARIAL",
-    "n_hypotheses": 4,
+    "n_hypotheses": 3,
     "n_survived_adversarial": 0,
-    "n_blocked_adversarial": 4,
+    "n_blocked_adversarial": 3,
     "n_inconclusive_adversarial": 0,
     "scientific_gate_passed": false,
     "note": "DEV pipeline stages GATE_A/B/C are NOT scientific Gate A/B/C. They are pipeline markers. Scientific gates require independent adjudication per SCIENTIFIC_GATE_2_PROTOCOL.md. candidate_status=ALL_BLOCKED_AT_ADVERSARIAL describes the outcome of the adversarial filter, NOT scientific gate passage."
   },
-  "timestamp": "2026-08-08T08:08:13.810512+00:00"
+  "timestamp": "2026-08-08T08:19:11.256230+00:00"
 }
