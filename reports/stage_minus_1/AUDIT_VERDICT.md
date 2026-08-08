@@ -19,8 +19,8 @@ a tautology, not a measurement.
 ## 4. Is 0.9189 an empirical FP floor?
 NO. The 0.9189 in the old discovery_capability_score.json was the
 circular-synonym F1. The M-008 value of 0.9189 is a random-candidate
-FP floor — a different measurement. The shuffled-gold experiment
-(Part 7) is the actual empirical FP floor: mean hit rate = 0.1374.
+null hit rate — a different measurement. The shuffled-gold experiment
+(Part 7) provides the actual empirical null hit rate: 0.1374.
 
 ## 5. What fraction of current TPs depend on fallback?
 25.0% (2/8)
@@ -33,17 +33,32 @@ FP floor — a different measurement. The shuffled-gold experiment
 - TP=0, FP=0, FN=20
 - Precision=1.0000, Recall=0.0000, F1=0.0000
 
-## 8. What is the shuffled-gold FP floor?
+## 8. What is the shuffled-gold null hit rate?
 - N=1000 trials, seed=270
 - Mean hit rate: 0.1374
 - P(shuffled >= current): 0.0020
 - Range: [0.0000, 0.4500]
 
+This provides an empirical estimate of chance matching under the shuffled-gold null.
+
 ## 9. What is the strict proposal-level precision?
-- TP (correct proposals): 0
+
+Two distinct measurements:
+
+### A. Current matcher, actual proposal population
+- TP (correct proposals): 6
 - FP (incorrect proposals): 16
 - Precision: 0.2727
+- Recall: 0.3000
 - F1: 0.2857
+
+### B. Strict normalized matcher applied to those proposals
+- TP: 0
+- FP: 16
+- FN: 20
+- Precision: 0.0000
+- Recall: 0.0000
+- F1: 0.0000
 
 ## 10. Can the current F1 be interpreted as independent invention?
 NO. The current F1 of 0.5714 is inflated by:
@@ -53,7 +68,7 @@ NO. The current F1 of 0.5714 is inflated by:
 
 The honest proposal-only F1 is 0.4615.
 The strict proposal+FP F1 is 0.0000.
-The empirical FP floor (shuffled gold) is 0.1374.
+The shuffled-gold null hit rate is 0.1374 (empirical estimate of chance matching under the shuffled-gold null).
 
 ---
 

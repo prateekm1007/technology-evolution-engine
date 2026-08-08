@@ -1,4 +1,4 @@
-# Shuffled-Gold FP Floor Experiment
+# Shuffled-Gold Null Hit Rate Experiment
 
 ## Method
 - N trials: 1000
@@ -17,8 +17,9 @@
 - P(shuffled >= current): 0.0020
 
 ## Interpretation
-The shuffled-gold mean hit rate (0.1374) is the empirical FP floor.
-This is the rate at which random bridge assignments produce matches.
+The shuffled-gold mean hit rate (0.1374) provides an empirical estimate
+of chance matching under the shuffled-gold null. This is the rate at
+which random bridge assignments produce matches.
 Current hit rate: 0.4000
 The gap between current and shuffled is the signal above noise.
 
