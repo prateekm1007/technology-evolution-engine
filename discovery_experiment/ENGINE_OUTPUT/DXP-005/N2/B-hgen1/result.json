@@ -1,0 +1,99 @@
+{
+  "condition": "B-hgen1",
+  "n_hypotheses": 3,
+  "n_testable": 3,
+  "n_survived": 2,
+  "n_killed": 1,
+  "hypotheses": [
+    {
+      "id": "H-N2-001",
+      "claim": "Passive titanium micro-flaps (height 1.5 mm, chord 5 mm, spanwise spacing 10 mm) on the aft 15% of the submarine hull will deploy at a pressure gradient threshold of dp/dx > 0.5 kPa/m, generating streamwise vortices that transport high-momentum fluid from the logarithmic layer into the near-wall reg",
+      "mechanism": "Adverse pressure gradient triggers flap deployment via calibrated hinge stiffness (k = 0.8 N\u00b7m/rad); deployed flaps act as miniature vortex generators, shedding counter-rotating streamwise vortex pairs (circulation \u0393 \u2248 0.015 m\u00b2/s) that induce wall-normal velocity w+ \u2248 15, sweeping high-momentum flui",
+      "falsifier": "If PSP shows separation line moves forward or stays fixed when flaps deploy (vs. smooth hull) at design pressure gradient, the vortex energization mechanism is invalid.",
+      "is_testable": true
+    },
+    {
+      "id": "H-N2-002",
+      "claim": "Passive polymer-composite micro-flaps (height 1.2 mm, chord 4 mm, density 50 flaps/m spanwise) deploy at dp/dx > 0.6 kPa/m, generating streamwise vortices that induce a localized favorable pressure gradient via vortex-induced velocity field (\u0394Cp \u2248 +0.04), effectively 'virtual shaping' the stern pres",
+      "mechanism": "Deployed flaps create a staggered array of streamwise vortices (\u03bb_z = 8 mm, \u0393 = 0.012 m\u00b2/s) whose induced velocity field produces a wall-normal upwash (w > 0) upstream of each vortex core and downwash (w < 0) downstream; the net effect is a streamwise pressure gradient modification \u2202p/\u2202x \u221d -\u03c1 \u2202(u'w'",
+      "falsifier": "If PSP shows no favorable pressure gradient modification (\u0394Cp < +0.01) in the vortex array region despite confirmed vortex generation (via PIV), the virtual shaping mechanism is falsified.",
+      "is_testable": true
+    },
+    {
+      "id": "H-N2-003",
+      "claim": "Passive shape-memory alloy (SMA) micro-flaps (height 1.0 mm, chord 6 mm, NiTi alloy, Af = 15\u00b0C) deploy via combined pressure-gradient and thermal activation (\u0394T > 2\u00b0C from adiabatic compression in adverse gradient), generating streamwise vortices that suppress crossflow instability modes (wavenumber",
+      "mechanism": "On axisymmetric bodies, adverse pressure gradient amplifies crossflow vortices (stationary and traveling) that cause early separation; deployed flaps generate streamwise vortices that interact destructively with crossflow modes via vortex-vortex interaction (phase opposition), suppressing crossflow ",
+      "falsifier": "If hot-film measurements show no reduction in crossflow spectral energy (\u03b2\u03b4 \u2248 0.8) when flaps are deployed, despite confirmed flap deployment and vortex generation, the crossflow suppression mechanism is falsified.",
+      "is_testable": true
+    }
+  ],
+  "adversarial": [
+    {
+      "hypothesis_id": "H-N2-001",
+      "outcome": null,
+      "survives": true,
+      "failure_modes": [],
+      "n_high": 0,
+      "n_medium": 0
+    },
+    {
+      "hypothesis_id": "H-N2-002",
+      "outcome": null,
+      "survives": true,
+      "failure_modes": [],
+      "n_high": 0,
+      "n_medium": 0
+    },
+    {
+      "hypothesis_id": "H-N2-003",
+      "outcome": null,
+      "survives": false,
+      "failure_modes": [
+        {
+          "category": "CONTRADICTS_KNOWN",
+          "description": "Crossflow instability requires a spanwise pressure gradient component, which is absent on axisymmetric bodies at zero yaw. The dominant instability on axisymmetric hulls is Tollmien-Schlichting (TS) waves, not crossflow vortices. Khalil et al. (2015) likely studied yawed bodies or appendages, not the bare axisymmetric stern.",
+          "severity": "HIGH",
+          "evidence": "Boundary layer theory (Schlichting, White): Crossflow instability arises only in 3D boundary layers with crossflow velocity component (e.g., swept wings, cones at incidence). Axisymmetric bodies at zero incidence have 2D boundary layers in meridional planes; N-factor > 9 at Re > 1e8 corresponds to TS transition, not crossflow."
+        },
+        {
+          "category": "CONTRADICTS_KNOWN",
+          "description": "Adiabatic compression in water at 18 knots (9.26 m/s) yields \u0394T \u2248 0.01\u00b0C, not 3\u00b0C. Water is nearly incompressible; the temperature rise from stagnation is \u0394T = v\u00b2/(2\u00b7cp) \u2248 43/(2\u00b74184) \u2248 0.005\u00b0C. The claimed \u0394T \u2248 3\u00b0C violates basic thermodynamics of liquid water.",
+          "severity": "HIGH",
+          "evidence": "For water: cp \u2248 4184 J/kg\u00b7K, v = 9.26 m/s \u2192 dynamic head = v\u00b2/2 \u2248 42.9 J/kg \u2192 \u0394T = 42.9/4184 \u2248 0.01\u00b0C. Even with recovery factor r=1, \u0394T < 0.02\u00b0C. CFD verification claim is physically impossible for liquid water."
+        },
+        {
+          "category": "FRAGILE_ASSUMPTION",
+          "description": "SMA activation temperature Af = 15\u00b0C cannot be reached via adiabatic compression in seawater (typical 4\u201315\u00b0C). With \u0394T < 0.02\u00b0C, the thermal trigger will never activate. The dual pressure/thermal trigger reduces to pressure-only, but SMA requires temperature change for phase transformation; pressure-gradient alone cannot deploy NiTi flaps without thermal input.",
+          "severity": "HIGH",
+          "evidence": "NiTi SMA actuation requires temperature change through hysteresis loop (Af\u2013As > 0). Pressure-induced martensite transformation in NiTi is negligible at hydrostatic pressures < 100 MPa (submarine depths). Adiabatic heating in water is orders of magnitude too small."
+        },
+        {
+          "category": "BOUNDARY_BREAKS",
+          "description": "Flap height h = 1 mm is far smaller than boundary layer thickness \u03b4 at Re = 1e8 (\u03b4 \u2248 20\u201350 mm on submarine stern). Sub-boundary-layer vortex generators (h/\u03b4 < 0.05) cannot generate streamwise vortices strong enough to suppress instability modes; they produce negligible circulation (\u0393 \u221d h\u00b2). Wavelength matching \u03bbz \u2248 8 mm is arbitrary and unvalidated.",
+          "severity": "MEDIUM",
+          "evidence": "Submarine stern Re \u2248 1e8 \u2192 \u03b4 \u2248 0.37\u00b7x/Re_x^0.2 \u2248 30 mm at x \u2248 10 m. h/\u03b4 \u2248 0.03. Vortex generator effectiveness scales as (h/\u03b4)\u00b2; at h/\u03b4 < 0.1, vortex circulation is too weak to modify outer-layer instabilities (Lin 2002). Crossflow wavelength on swept wings is O(\u03b4), not 8 mm."
+        },
+        {
+          "category": "INCOMPATIBLE_TARGET",
+          "description": "The mechanism targets crossflow suppression (Edge B\u2192D), but separation on axisymmetric sterns is driven by adverse-pressure-gradient-induced TS wave growth and separation bubble formation, not crossflow. Streamwise vortices from micro-flaps would primarily enhance momentum transport (Edge C), not suppress non-existent crossflow modes. The claimed mechanism misidentifies the instability physics.",
+          "severity": "HIGH",
+          "evidence": "Axisymmetric separation: Adverse pressure gradient \u2192 TS wave amplification \u2192 inflectional velocity profile \u2192 separation. Crossflow vortices do not exist without spanwise pressure gradient. Saric et al. (2002) results apply only to swept wings (\u03b2\u03b4 \u2248 0.8 is crossflow parameter for 3D boundary layers)."
+        },
+        {
+          "category": "FALSIFIER_TRIGGERED",
+          "description": "The falsifier (hot-film crossflow spectral energy at \u03b2\u03b4 \u2248 0.8) will detect no crossflow signal on an axisymmetric model at zero yaw, regardless of flap deployment. A null result would be misinterpreted as mechanism failure rather than hypothesis error. The test cannot distinguish between 'mechanism fails' and 'target instability absent'.",
+          "severity": "MEDIUM",
+          "evidence": "Hot-film arrays at Re = 5e6 (1:20 model) will measure TS wave spectra (frequency ~ 1\u20135 kHz), not crossflow. Crossflow requires yaw angle > 5\u00b0 to appear. The test design assumes crossflow exists; if it doesn't, the falsifier is uninformative."
+        },
+        {
+          "category": "PRIOR_ART_EXISTS",
+          "description": "SMA micro-flaps for separation control have been studied (e.g., NASA morphing flaps, Lagoudas 2012), but all target 2D/3D separation via momentum injection (Edge C), not crossflow suppression. The novelty claim of 'unique crossflow suppression on axisymmetric hulls' is invalid because crossflow is not the operative instability.",
+          "severity": "MEDIUM",
+          "evidence": "Lagoudas (2012) Ch. 12: SMA actuators for marine morphing structures target shock/boundary-layer interaction or 2D separation. No prior art demonstrates crossflow suppression on axisymmetric bodies because the instability does not exist there."
+        }
+      ],
+      "n_high": 4,
+      "n_medium": 3
+    }
+  ]
+}

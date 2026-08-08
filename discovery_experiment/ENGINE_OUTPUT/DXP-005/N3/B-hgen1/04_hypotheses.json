@@ -2,26 +2,27 @@
   "hypotheses": [
     {
       "hypothesis_id": "H-N3-001",
-      "claim": "A fixed anionic charge density of \u22651.5 mol/L on the polymer backbone generates a Donnan potential that concentrates Li+ ions in the polymer phase, raising the Li+ transference number to \u22650.5 and achieving \u226512 mS/cm ionic conductivity at 25\u00b0C.",
-      "mechanism": "High concentration of fixed anionic groups (sulfonate/carboxylate) on the thermoresponsive copolymer creates a Donnan potential (analogous to osmotic pressure from high mucilage concentration) that selectively enriches Li+ in the polymer matrix, enhancing Li+ transport relative to PF6-.",
+      "claim": "A PNIPAM-co-sodium acrylate (85:15 mol%) copolymer with fixed sulfonate groups at 1.8 mol/L charge density generates a Donnan potential of \u226545 mV that concentrates Li+ to 2.5 M within the polymer mesh at 25\u00b0C, enabling 12 mS/cm conductivity despite 40 wt% polymer content.",
+      "mechanism": "High fixed charge density on the polymer backbone creates a Donnan equilibrium that excludes PF6- anions and concentrates Li+ cations within the swollen gel, directly analogous to how high mucilage concentration generates osmotic pressure to retain water (E1, E5). The osmotic gradient across the polymer-solution interface drives Li+ partitioning into the gel phase.",
       "evidence": [
-        "Donnan equilibrium theory predicts ion partitioning proportional to fixed charge density",
-        "Analogous to mucilage osmotic pressure enabling 300x water absorption (E5)"
+        "Donnan potential measured by membrane potential method",
+        "Li+ concentration in gel via ICP-MS after equilibrium swelling",
+        "Conductivity vs. polymer content scaling"
       ],
       "assumptions": [
-        "Polymer is electrochemically stable up to 4.5V vs. Li/Li+",
-        "Fixed charge density is uniformly distributed",
-        "Electrolyte is 1M LiPF6 in FEC:DMC (1:1)"
+        "Sulfonate groups remain fully dissociated up to 4.5V",
+        "Polymer mesh size in swollen state \u22652 nm for solvated Li+ transport",
+        "Donnan equilibrium established within 1 hour of electrolyte uptake"
       ],
       "predictions": [],
       "expected_failure_modes": [
-        "Anion trapping by fixed charges reduces Li+ mobility",
-        "Polymer swelling dilutes fixed charge density below effective threshold",
-        "Oxidative degradation of anionic groups at >4.3V"
+        "Anion trapping reduces transference number below 0.4",
+        "Oxidative degradation of sulfonate groups >4.3V",
+        "Insufficient mesh size for solvated Li+ transport"
       ],
-      "novelty_rationale": "Directly translates the mucilage osmotic pressure mechanism (E1, E5) into a Donnan potential mechanism for Li+ concentration, a specific physical mechanism not previously exploited in battery electrolytes.",
-      "testability": "Measure Li+ transference number via Bruce-Vincent method and conductivity via EIS on hydrogels with systematically varied fixed charge density (0.5\u20132.0 mol/L).",
-      "falsifier": "If Li+ transference number remains <0.4 at 1.5 mol/L fixed charge density, or if conductivity does not exceed 10 mS/cm at 25\u00b0C, the hypothesis is falsified.",
+      "novelty_rationale": "Directly translates the mucilage osmotic concentration mechanism (E1, E5) to Li+ concentration via fixed-charge Donnan effect, rather than relying on generic 'polymer electrolyte' concepts.",
+      "testability": "Measure Donnan potential, Li+ partitioning, and conductivity in PNIPAM-co-sodium acrylate gels with varying charge density (0.5\u20132.5 mol/L) swollen in 1M LiPF6 FEC:DMC.",
+      "falsifier": "If Li+ concentration in the gel phase does not exceed bulk concentration by \u22651.5\u00d7 at 25\u00b0C for charge density \u22651.5 mol/L, the Donnan concentration mechanism is falsified.",
       "epistemic_state": "HYPOTHESIZED",
       "parent_hypothesis_ids": [],
       "provenance": {
@@ -34,26 +35,27 @@
     },
     {
       "hypothesis_id": "H-N3-002",
-      "claim": "At the LCST (65\u201370\u00b0C), the PNIPAM-based copolymer undergoes a sharp coil-to-globule transition that reduces mesh size to \u22640.5 nm, sterically blocking PF6- access to the cathode surface and suppressing thermal decomposition, resulting in \u22645% electrolyte mass loss after 100h at 80\u00b0C.",
-      "mechanism": "Temperature-dependent polymer chain collapse (analogous to CAM-induced stomatal closure during high-evaporation periods) dynamically gates ion transport pathways: the collapsed state physically obstructs PF6- diffusion to the cathode, inhibiting decomposition reactions that drive volatilization.",
+      "claim": "The PNIPAM-co-acrylic acid copolymer undergoes a sharp coil-to-globule transition at 65\u00b0C (LCST) that reduces mesh size from 2.5 nm to 0.4 nm, physically blocking PF6- access to the cathode surface and suppressing thermal decomposition, reducing electrolyte mass loss to \u22643% after 200h at 80\u00b0C.",
+      "mechanism": "Temperature-triggered polymer collapse acts as an autonomous 'stomatal closure' that dynamically regulates ion transport pathways, directly analogous to CAM-induced stomatal closure reducing water loss during high-evaporation periods (E3, E4). The collapsed state sterically hinders PF6- diffusion to the cathode interface while permitting Li+ transport through residual hydrophilic channels.",
       "evidence": [
-        "PNIPAM exhibits sharp LCST transition with mesh size change from ~2 nm to <0.5 nm",
-        "Stomatal closure reduces water loss by >90% in CAM plants (E4)"
+        "In-situ SAXS/WAXS for mesh size vs. temperature",
+        "TGA-MS for mass loss and decomposition products",
+        "EIS during thermal cycling for conductivity hysteresis"
       ],
       "assumptions": [
-        "LCST is tuned to 65\u201370\u00b0C via copolymer composition",
-        "Mesh size in collapsed state \u22640.5 nm",
-        "PF6- decomposition is the primary mass loss pathway"
+        "LCST tunable to 65\u00b0C via 85:15 PNIPAM:acrylic acid ratio",
+        "Hysteresis <5\u00b0C between heating/cooling cycles",
+        "Collapsed state maintains percolated Li+ pathways"
       ],
       "predictions": [],
       "expected_failure_modes": [
-        "Hysteresis >10\u00b0C causes delayed collapse, allowing decomposition during heating",
-        "Irreversible collapse from syneresis after cycling",
-        "Mesh size in collapsed state >1 nm, insufficient to block PF6-"
+        "Phase transition hysteresis >10\u00b0C causing conductivity lag",
+        "Irreversible collapse from syneresis after thermal cycling",
+        "Incomplete PF6- blocking in collapsed state"
       ],
-      "novelty_rationale": "Maps the temporal aperture regulation (stomatal closure) to an autonomous, temperature-triggered physical gating mechanism that selectively blocks anion transport \u2014 a specific structural mechanism distinct from generic 'thermal stability' additives.",
-      "testability": "In-situ SAXS/WAXS during heating to measure mesh size; TGA-MS to quantify mass loss and identify volatile species; EIS during thermal cycling to correlate conductivity drop with LCST.",
-      "falsifier": "If mass loss exceeds 10% after 100h at 80\u00b0C, or if conductivity does not show a sharp drop at the LCST (e.g., gradual decline), or if PF6- decomposition products are still detected in the collapsed state, the hypothesis is falsified.",
+      "novelty_rationale": "Maps the temporal aperture regulation (CAM stomatal control, E3-E4) to autonomous polymer phase transition gating, not just static polymer properties.",
+      "testability": "Thermal cycling EIS + in-situ SAXS on PNIPAM-co-acrylic acid/LiPF6-FEC:DMC gels; compare mass loss at 80\u00b0C with/without polymer.",
+      "falsifier": "If electrolyte mass loss at 80\u00b0C exceeds 10% after 200h despite polymer LCST at 65\u00b0C, or if conductivity does not drop \u226560% across the LCST, the autonomous gating mechanism is falsified.",
       "epistemic_state": "HYPOTHESIZED",
       "parent_hypothesis_ids": [],
       "provenance": {
@@ -66,26 +68,28 @@
     },
     {
       "hypothesis_id": "H-N3-003",
-      "claim": "The Donnan swelling pressure generated by the fixed anionic groups (\u22650.5 MPa at 80\u00b0C) counteracts the vapor pressure of the electrolyte components, suppressing volatilization and achieving \u22643% mass loss after 200h at 80\u00b0C.",
-      "mechanism": "Osmotic pressure (Donnan potential) creates a swelling pressure that retains electrolyte against temperature-driven volatilization, directly analogous to mucilage osmotic pressure inhibiting evaporation (E2) and retaining water against evaporation (E7).",
+      "claim": "The swollen polymer gel generates a swelling pressure of \u22650.8 MPa at 25\u00b0C that mechanically constrains the liquid electrolyte, reducing its vapor pressure and suppressing volatilization of DMC/FEC at 80\u00b0C to \u22642% mass loss, while the UCST transition at -30\u00b0C prevents freezing by maintaining a percolated liquid phase down to -40\u00b0C.",
+      "mechanism": "Osmotic/swelling pressure of the hydrophilic gel physically retains the electrolyte against evaporative/volatilization forces, directly analogous to mucilage osmotic pressure retaining water against evaporation (E2, E7). At low temperatures, the UCST-driven swelling prevents ice nucleation by confining electrolyte in nanopores.",
       "evidence": [
-        "Osmotic pressure of polyelectrolyte gels can exceed 1 MPa at high charge density",
-        "Mucilage osmotic pressure retains water against evaporation (E7)"
+        "Osmotic stress measurements for swelling pressure",
+        "TGA-MS for volatilization kinetics at 80\u00b0C",
+        "DSC for freezing point depression",
+        "EIS at -40\u00b0C"
       ],
       "assumptions": [
-        "Fixed charge density \u22651.5 mol/L",
-        "Polymer network is mechanically robust (modulus 1\u201310 MPa)",
-        "Electrolyte vapor pressure at 80\u00b0C is ~0.3 MPa"
+        "Gel modulus 1-10 MPa withstands electrode volume changes",
+        "Polymer-electrolyte interfacial adhesion >5 J/m\u00b2",
+        "UCST at -30\u00b0C maintained in 1M LiPF6"
       ],
       "predictions": [],
       "expected_failure_modes": [
-        "Electrolyte plasticizes polymer, reducing modulus and swelling pressure",
-        "Oxidative degradation reduces fixed charge density over time",
-        "Vapor pressure of electrolyte exceeds swelling pressure at 80\u00b0C"
+        "Polymer oxidative degradation reduces swelling pressure over cycles",
+        "Electrolyte syneresis causes irreversible pressure loss",
+        "Interfacial delamination at electrode surfaces"
       ],
-      "novelty_rationale": "Identifies a specific thermodynamic mechanism \u2014 swelling pressure opposing vapor pressure \u2014 rather than relying on chemical stability or barrier coatings. This is a direct translation of the evaporation inhibition edge (E2).",
-      "testability": "Measure swelling pressure via constrained swelling rheometry at 80\u00b0C; TGA-MS for mass loss and volatile species identification; compare mass loss in constrained vs. free-swelling conditions.",
-      "falsifier": "If swelling pressure at 80\u00b0C is <0.1 MPa, or if mass loss exceeds 5% after 200h at 80\u00b0C despite high fixed charge density, the hypothesis is falsified.",
+      "novelty_rationale": "Translates the osmotic pressure \u2192 evaporation inhibition causal chain (E2, E7) to swelling pressure \u2192 volatilization suppression and freezing prevention, a mechanical retention mechanism distinct from Donnan or gating effects.",
+      "testability": "Measure swelling pressure via centrifugation/osmotic stress; compare volatilization rates of free vs. gel-confined electrolyte at 80\u00b0C; DSC for freezing behavior.",
+      "falsifier": "If swelling pressure is <0.3 MPa at 25\u00b0C, or if volatilization mass loss at 80\u00b0C exceeds 5% after 200h, or if ice crystallization occurs above -40\u00b0C, the mechanical retention mechanism is falsified.",
       "epistemic_state": "HYPOTHESIZED",
       "parent_hypothesis_ids": [],
       "provenance": {
@@ -98,26 +102,27 @@
     },
     {
       "hypothesis_id": "H-N3-004",
-      "claim": "The osmotic gradient between the dry polymer and the electrolyte drives absorption of \u226520x the polymer's weight in electrolyte (analogous to mucilage's 300x water absorption), and the polymer retains \u226595% of this electrolyte after 500 charge-discharge cycles, preventing dry-out.",
-      "mechanism": "The osmotic gradient (E5) and osmotic regulation (E6) enable the polymer matrix to act as a reservoir that absorbs and retains large volumes of electrolyte, maintaining ionic conductivity throughout cycling by preventing electrolyte depletion at electrode interfaces.",
+      "claim": "The combination of fixed anionic groups (1.8 mol/L) and LCST/UCST transitions creates a self-regulating Li+ transference number that increases from 0.35 (25\u00b0C) to 0.65 (70\u00b0C) as polymer collapse selectively hinders PF6- mobility, enabling >99.5% Coulombic efficiency at 80\u00b0C by suppressing concentration polarization.",
+      "mechanism": "Osmotic regulation of ion transport via dynamic mesh size and fixed charges, integrating the mucilage absorption capacity (E5) with temporal aperture regulation (E3, E4). The Donnan effect concentrates Li+ while the collapsed state at high temperature sterically excludes PF6-, autonomously increasing t+ when thermal decomposition risk is highest.",
       "evidence": [
-        "Mucilage absorbs 300x its weight via osmotic gradient (E5)",
-        "Cacti store water in stems via osmotic regulation (E6)"
+        "Bruce-Vincent t+ measurements vs. temperature",
+        "Galvanostatic cycling at 80\u00b0C for Coulombic efficiency",
+        "PFG-NMR for Li+/PF6- diffusion coefficients"
       ],
       "assumptions": [
-        "Polymer is initially dry and porous",
-        "Electrolyte is 1M LiPF6 in FEC:DMC (1:1)",
-        "Electrode volume changes do not mechanically expel electrolyte"
+        "Fixed charge density \u22651.5 mol/L maintained after cycling",
+        "LCST transition does not trap Li+ in collapsed domains",
+        "Anion mobility reduction >10\u00d7 across LCST"
       ],
       "predictions": [],
       "expected_failure_modes": [
-        "Polymer collapses irreversibly after first cycle, reducing absorption capacity",
-        "Electrolyte decomposition products clog polymer pores",
-        "Mechanical stress from electrode expansion expels electrolyte"
+        "Li+ trapping in collapsed domains reduces conductivity",
+        "Anion trapping at low temperature reduces t+ below 0.3",
+        "Hysteresis causes t+ lag during thermal transients"
       ],
-      "novelty_rationale": "Frames electrolyte retention as an osmotic absorption/regulation process rather than passive wetting, predicting a specific absorption capacity and long-term retention metric derived from the source mechanism.",
-      "testability": "Gravimetric absorption measurement; long-term cycling with periodic electrolyte extraction and mass measurement; NMR imaging of electrolyte distribution in cell.",
-      "falsifier": "If absorption is <10x polymer weight, or if electrolyte retention drops below 90% after 500 cycles, the hypothesis is falsified.",
+      "novelty_rationale": "Integrates absorption/concentration (E5) with dynamic gating (E3-E4) to predict a temperature-dependent transference number \u2014 a unique emergent property not captured by single-mechanism hypotheses.",
+      "testability": "Measure t+ vs. temperature for PNIPAM-co-sulfonate gels; correlate with mesh size (SAXS) and cycling performance at 80\u00b0C.",
+      "falsifier": "If t+ does not increase by \u22650.25 across the LCST (65\u00b0C), or if Coulombic efficiency at 80\u00b0C falls below 99.0% after 200 cycles, the self-regulating transference mechanism is falsified.",
       "epistemic_state": "HYPOTHESIZED",
       "parent_hypothesis_ids": [],
       "provenance": {
@@ -129,7 +134,7 @@
       "provenance_root_hash": ""
     }
   ],
-  "distinguishing_predictions": "Hypothesis 1 is distinguished by high Li+ transference number (\u22650.5) at room temperature without thermal triggering. Hypothesis 2 predicts a sharp, reversible conductivity drop at a specific LCST (65\u00b0C) correlated with mesh size collapse. Hypothesis 3 predicts a measurable swelling pressure (\u22650.5 MPa) that directly correlates with suppressed mass loss at 80\u00b0C, independent of LCST transition. Hypothesis 4 predicts high initial absorption capacity (\u226520x weight) and long-term retention (\u226595% after 500 cycles) without requiring thermal transitions. Key distinguishing experiments: (1) Measure Li+ transference number vs. fixed charge density at 25\u00b0C (tests H1). (2) In-situ SAXS during heating through LCST to correlate mesh size, conductivity drop, and PF6- blocking (tests H2). (3) Constrained swelling rheometry at 80\u00b0C to measure swelling pressure vs. mass loss (tests H3). (4) Gravimetric absorption and 500-cycle retention in full cells (tests H4). If H1 is true but H2 false, conductivity drop at LCST will be absent. If H3 is true but H1 false, mass loss will be low even with low transference number. If H4 is true but H3 false, absorption will be high but mass loss at 80\u00b0C may still be high.",
+  "distinguishing_predictions": "Hypothesis 1 (Donnan concentration) predicts high Li+ partitioning (\u22652.5 M in gel) at all temperatures but no sharp conductivity change at LCST. Hypothesis 2 (autonomous gating) predicts a sharp conductivity drop \u226560% at 65\u00b0C with mesh size collapse to \u22640.4 nm, but does not require high Li+ partitioning. Hypothesis 3 (mechanical retention) predicts high swelling pressure (\u22650.8 MPa) and suppressed volatilization/freezing without requiring conductivity changes at LCST. Hypothesis 4 (self-regulating t+) predicts a unique transference number increase from 0.35 to 0.65 across LCST. Key distinguishing experiments: (1) In-situ SAXS + EIS during heating to correlate mesh size, conductivity, and t+ simultaneously; (2) ICP-MS of Li+ in gel vs. bulk at 25\u00b0C and 70\u00b0C; (3) TGA-MS of gel vs. free electrolyte at 80\u00b0C; (4) Bruce-Vincent t+ measurements across -40\u00b0C to 80\u00b0C. Only Hypothesis 4 predicts t+ increase with temperature; only Hypothesis 2 predicts sharp mesh collapse at LCST; only Hypothesis 1 predicts high Li+ partitioning at 25\u00b0C; only Hypothesis 3 predicts high swelling pressure and freezing suppression.",
   "n_hypotheses": 4,
   "n_testable": 4
 }

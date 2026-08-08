@@ -1,0 +1,139 @@
+{
+  "hypotheses": [
+    {
+      "hypothesis_id": "H-N2-001",
+      "claim": "Deployed flaps generate streamwise vortices that transport high-momentum fluid toward the wall, energizing the boundary layer and delaying separation \u2014 the direct biomimetic mechanism.",
+      "mechanism": "When adverse pressure gradient exceeds threshold, flaps deploy into the boundary layer. Their angled leading edges (15-20\u00b0 to surface) shed counter-rotating vortex pairs that induce upwash between vortices and downwash outside, mixing outer-layer momentum into the near-wall region. This raises the shape factor H and delays separation point aftward.",
+      "evidence": [
+        "Bird covert feather studies show vortex generation at Re ~10^5-10^6 (Carruthers et al. 2007)",
+        "Passive vortex generators on airfoils delay separation by 10-20% chord (Lin 2002)",
+        "Submarine stern boundary layer at Re=10^8 is turbulent with \u03b4 ~ 50-100 mm at 85% length"
+      ],
+      "assumptions": [
+        "Boundary layer at deployment location is thick enough (\u03b4 > 5 mm) for flaps to penetrate logarithmic region",
+        "Flap aspect ratio (height/chord ~0.3) and spacing (5-10 chord lengths) produce discrete vortices that don't merge prematurely",
+        "Hydrodynamic hinge stiffness allows deployment at dp/dx > 0.5 kPa/m but not at hydrostatic pressure alone"
+      ],
+      "predictions": [],
+      "expected_failure_modes": [
+        "Flaps too small to penetrate boundary layer (height < 0.1\u03b4)",
+        "Vortices dissipate before reaching separation region due to high turbulence intensity",
+        "Flap density too high \u2192 merged vortices act as roughness, increasing skin friction"
+      ],
+      "novelty_rationale": "First application of biologically inspired passive pressure-gradient-activated vortex generators to axisymmetric bodies at Re > 10^7; prior work uses fixed VGs or active flow control.",
+      "testability": "High \u2014 pressure-sensitive paint (PSP) and PIV in water tunnel at 1:20 scale (Re=5\u00d710^6) can resolve separation line movement and vortex structures.",
+      "falsifier": "PSP shows separation line moves FORWARD (not aft) when flaps deploy, or PIV shows no streamwise vortices downstream of deployed flaps at design dp/dx.",
+      "epistemic_state": "HYPOTHESIZED",
+      "parent_hypothesis_ids": [],
+      "provenance": {
+        "nodes": {},
+        "edges": [],
+        "committed_hash": null
+      },
+      "is_testable": true,
+      "provenance_root_hash": ""
+    },
+    {
+      "hypothesis_id": "H-N2-002",
+      "claim": "Flaps act as distributed roughness elements that trigger early laminar-to-turbulent transition in the stern boundary layer, and the resulting turbulent boundary layer naturally resists the adverse pressure gradient better than a laminar one.",
+      "mechanism": "At Re=10^8, the submarine's aft boundary layer may still have laminar or transitional patches due to favorable pressure gradient forward. When flaps deploy in the adverse gradient region, their leading edges (even at 1-2 mm height) exceed the critical roughness height for transition (k+ > 600). This forces transition to turbulence upstream of the natural separation point. The turbulent boundary layer's fuller velocity profile withstands the adverse gradient longer, delaying separation without requiring organized vortex generation.",
+      "evidence": [
+        "Critical roughness for transition: k/\u03b4 ~ 0.01-0.03 (Schlichting); at \u03b4=20mm, k_crit=0.2-0.6mm \u2014 flaps are larger",
+        "Natural transition on axisymmetric bodies at Re=10^8 can occur at 60-80% length (JST CFD data)",
+        "Turbulent boundary layers separate at higher shape factors (H~2.4) vs laminar (H~3.5)"
+      ],
+      "assumptions": [
+        "Boundary layer at 70-80% hull length is not fully turbulent (intermittent or laminar)",
+        "Flap height (1-2 mm) exceeds critical roughness for transition at local Re_\u03b8",
+        "Transition induced by flaps occurs sufficiently upstream of separation to matter"
+      ],
+      "predictions": [],
+      "expected_failure_modes": [
+        "Boundary layer already fully turbulent forward of flaps (no transition to trigger)",
+        "Flaps too sparse to trip transition (spacing > 100\u03b4)",
+        "Induced transition increases skin friction drag more than pressure drag reduction"
+      ],
+      "novelty_rationale": "Reframes the mechanism from active vortex generation to passive transition control \u2014 a fundamentally different fluid-dynamic pathway. Most submarine hulls assume fully turbulent flow; this hypothesis challenges that.",
+      "testability": "High \u2014 hot-film anemometry or temperature-sensitive paint can detect transition location shift with/without flaps at model scale.",
+      "falsifier": "Transition measurement (hot-film/IR thermography) shows boundary layer is ALREADY fully turbulent at 70% hull length BEFORE flap deployment region, or transition location does not move upstream when flaps deploy.",
+      "epistemic_state": "HYPOTHESIZED",
+      "parent_hypothesis_ids": [],
+      "provenance": {
+        "nodes": {},
+        "edges": [],
+        "committed_hash": null
+      },
+      "is_testable": true,
+      "provenance_root_hash": ""
+    },
+    {
+      "hypothesis_id": "H-N2-003",
+      "claim": "Deployed flaps create a distributed array of micro-cavities that generate unsteady, low-frequency pressure fluctuations (via vortex shedding from flap edges), which excite boundary layer instabilities and promote mixing \u2014 a resonant flow control mechanism distinct from steady vortex generation.",
+      "mechanism": "Each deployed flap acts as a bluff body shedding vortices at Strouhal number St \u2248 0.2 based on flap height (h=1-2mm). At U=15 m/s, shedding frequency f = St\u00b7U/h \u2248 1.5-3 kHz. This high-frequency forcing is too fast for direct boundary layer interaction, BUT the collective array produces low-frequency modulation (beat frequencies) at 10-100 Hz due to hydrodynamic coupling between adjacent flaps. These low-frequency pressure waves propagate upstream into the boundary layer, amplifying Tollmien-Schlichting or Klebanoff modes and enhancing turbulent mixing \u2014 similar to plasma actuator or synthetic jet control but entirely passive.",
+      "evidence": [
+        "Bluff body arrays show collective shedding modes (Williamson 1996)",
+        "Low-frequency forcing (St_\u03b4 ~ 0.01-0.1) enhances separation control (Seifert & Pack 1999)",
+        "Passive vortex generators can produce tonal noise at shedding frequencies"
+      ],
+      "assumptions": [
+        "Flap array spacing allows hydrodynamic coupling (spacing < 10h)",
+        "Boundary layer receptivity to low-frequency forcing exists at this Re",
+        "Collective shedding produces coherent low-frequency modulation, not broadband noise"
+      ],
+      "predictions": [],
+      "expected_failure_modes": [
+        "Flap shedding is incoherent (random phases) \u2192 no collective low-frequency modulation",
+        "Boundary layer at Re=10^8 is too thick/receptive only to very low frequencies (<1 Hz)",
+        "Cavitation at flap edges at >15 knots disrupts regular shedding"
+      ],
+      "novelty_rationale": "Proposes an unsteady, resonance-based mechanism rather than steady vortex generation or transition. The 'flap array as metamaterial' concept is novel for submarine applications.",
+      "testability": "Moderate \u2014 requires high-frequency pressure transducers (100 kHz) and coherence analysis between flap shedding and separation line motion. Feasible in water tunnel with flush-mounted sensors.",
+      "falsifier": "Wall-pressure spectra show NO increase in low-frequency (10-100 Hz) energy when flaps deploy, OR coherence between flap-shedding frequencies and separation-point motion is <0.2.",
+      "epistemic_state": "HYPOTHESIZED",
+      "parent_hypothesis_ids": [],
+      "provenance": {
+        "nodes": {},
+        "edges": [],
+        "committed_hash": null
+      },
+      "is_testable": true,
+      "provenance_root_hash": ""
+    },
+    {
+      "hypothesis_id": "H-N2-004",
+      "claim": "Flaps modify the near-wall pressure field directly by creating a distributed suction effect: when deployed, the flap's curved upper surface accelerates flow locally, generating a low-pressure region that draws high-momentum fluid downward \u2014 a quasi-steady Bernoulli effect rather than vortex dynamics.",
+      "mechanism": "Each deployed flap acts as a miniature airfoil at 15-20\u00b0 incidence. Flow accelerates over its curved upper surface, creating a local pressure minimum (\u0394p ~ -0.5 to -1 kPa) at the flap tip. This pressure gradient (normal to wall) induces a vertical velocity component that pulls outer-layer fluid toward the wall. The array of flaps creates a distributed 'suction strip' along the stern, effectively reducing the adverse streamwise pressure gradient by superimposing a favorable normal pressure gradient. Separation is delayed because the boundary layer experiences a modified pressure field, not because of vortices or transition.",
+      "evidence": [
+        "Micro-ramps on airfoils create low-pressure cores (Godard & Stanislas 2006)",
+        "Distributed suction delays separation (Braslow 1999)",
+        "Bernoulli suction scales with dynamic pressure: at 15 m/s, q=112 kPa; 1% suction = 1.1 kPa"
+      ],
+      "assumptions": [
+        "Flap curvature and angle generate sufficient suction (\u0394p > 0.3 kPa) at design speed",
+        "Suction effect penetrates through boundary layer (not just a surface phenomenon)",
+        "Hydrostatic pressure at 500m depth (5 MPa) doesn't suppress the suction magnitude"
+      ],
+      "predictions": [],
+      "expected_failure_modes": [
+        "Flap too small \u2192 suction confined to viscous sublayer, no outer-layer effect",
+        "Hydrostatic pressure suppresses pressure fluctuations (\u0394p/p_hydrostatic < 10^-4)",
+        "Flap density too low \u2192 suction regions don't merge into continuous strip"
+      ],
+      "novelty_rationale": "Reframes flaps as passive suction devices via shape-induced pressure reduction \u2014 a pressure-field modification mechanism distinct from vortex mixing or transition. No moving parts, no unsteadiness required.",
+      "testability": "High \u2014 PSP can measure surface pressure distribution with/without flaps at same Re. Look for localized low-pressure regions at flap tips and reduced adverse gradient upstream.",
+      "falsifier": "PSP shows NO localized low-pressure regions at deployed flap tips (pressure same as surrounding hull), OR the streamwise pressure gradient dp/dx upstream of flaps is UNCHANGED when flaps deploy.",
+      "epistemic_state": "HYPOTHESIZED",
+      "parent_hypothesis_ids": [],
+      "provenance": {
+        "nodes": {},
+        "edges": [],
+        "committed_hash": null
+      },
+      "is_testable": true,
+      "provenance_root_hash": ""
+    }
+  ],
+  "distinguishing_predictions": "1) VORTEX hypothesis: PIV shows clear counter-rotating streamwise vortex pairs (\u03bb\u2082 criterion) downstream of flaps; vortex core spacing matches flap spanwise spacing; separation delay correlates with vortex penetration depth. 2) TRANSITION hypothesis: Hot-film/IR shows transition front moves UPSTREAM when flaps deploy; separation delay correlates with transition location; no organized vortices in PIV. 3) RESONANCE hypothesis: Wall-pressure spectra show distinct low-frequency peaks (10-100 Hz) ONLY when flaps deploy; coherence >0.5 between flap-shedding harmonics and separation-point motion; removing every other flap (breaking coupling) eliminates low-frequency peaks and separation control. 4) SUCTION hypothesis: PSP shows localized low-pressure spots at flap tips (\u0394p ~ -0.5 kPa); streamwise pressure gradient dp/dx upstream of array is reduced; no vortices in PIV; transition location unchanged. KEY TEST: Run 1:20 model with (a) full flap array, (b) every-other-flap removed, (c) flaps fixed flush. Measure: PSP, PIV, wall-pressure spectra, transition location. Vortex hypothesis predicts (b) weakens vortices but keeps some control. Resonance hypothesis predicts (b) KILLS control (coupling broken). Transition hypothesis predicts (b) same as (a) if spacing still trips transition. Suction hypothesis predicts (b) half the suction magnitude, linear reduction in effect.",
+  "n_hypotheses": 4,
+  "n_testable": 4
+}

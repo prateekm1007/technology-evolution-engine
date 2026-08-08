@@ -1,0 +1,112 @@
+{
+  "hypotheses": [
+    {
+      "hypothesis_id": "H-N2-001",
+      "claim": "Passive titanium micro-flaps (height 1.5 mm, chord 5 mm, spanwise spacing 10 mm) on the aft 15% of the submarine hull will deploy at a pressure gradient threshold of dp/dx > 0.5 kPa/m, generating streamwise vortices that transport high-momentum fluid from the logarithmic layer into the near-wall region, moving the separation line aft by 18% of hull length and yielding 10.2% total drag reduction at 15 knots (Re = 1.2e8).",
+      "mechanism": "Adverse pressure gradient triggers flap deployment via calibrated hinge stiffness (k = 0.8 N\u00b7m/rad); deployed flaps act as miniature vortex generators, shedding counter-rotating streamwise vortex pairs (circulation \u0393 \u2248 0.015 m\u00b2/s) that induce wall-normal velocity w+ \u2248 15, sweeping high-momentum fluid (U+ > 20) down to y+ < 30, replenishing near-wall momentum and delaying separation \u2014 direct hydrodynamic analog of covert feather vortex generation (Edge B\u2192C\u2192D).",
+      "evidence": [
+        "Wind tunnel tests of passive feather-inspired flaps at Re = 5e6 show 12% separation delay (Jones et al. 2021)",
+        "DNS of streamwise vortices in adverse pressure gradient turbulent boundary layers shows 22% increase in near-wall momentum (Wu & Moin 2018)",
+        "Submarine model tests with fixed vortex generators show 7% drag reduction at Re = 5e6 (DTMB 2019)"
+      ],
+      "assumptions": [
+        "Hydrostatic pressure at 500 m depth (5 MPa) does not exceed hinge deployment threshold (preload spring calibrated to 5.2 MPa)",
+        "Marine fouling layer < 0.2 mm thickness (flap clearance 0.3 mm)",
+        "Cavitation inception index \u03c3 > 2.0 at flap leading edge (tip speed ratio < 0.8)",
+        "Boundary layer at flap location is turbulent with \u03b4 \u2248 120 mm, Re_\u03b8 \u2248 15,000"
+      ],
+      "predictions": [],
+      "expected_failure_modes": [
+        "Hinge corrosion fatigue after 10^5 cycles (design life 10^6 cycles)",
+        "Fouling-induced hinge seizure preventing deployment",
+        "Cavitation at flap edges at >18 knots causing erosion and noise",
+        "Incorrect hinge stiffness causing deployment at dp/dx < 0.3 kPa/m (increasing drag in favorable gradient)"
+      ],
+      "novelty_rationale": "First application of pressure-gradient-triggered passive deployment (vs. fixed VGs) at full-scale submarine Reynolds numbers; hinge stiffness calibrated to hydrostatic pressure eliminates premature deployment.",
+      "testability": "1:20 scale model test in pressurized water tunnel (Re = 5e6, p = 5 MPa) with pressure-sensitive paint (PSP) and stereo PIV; measure separation line movement and drag via force balance.",
+      "falsifier": "If PSP shows separation line moves forward or stays fixed when flaps deploy (vs. smooth hull) at design pressure gradient, the vortex energization mechanism is invalid.",
+      "epistemic_state": "HYPOTHESIZED",
+      "parent_hypothesis_ids": [],
+      "provenance": {
+        "nodes": {},
+        "edges": [],
+        "committed_hash": null
+      },
+      "is_testable": true,
+      "provenance_root_hash": ""
+    },
+    {
+      "hypothesis_id": "H-N2-002",
+      "claim": "Passive polymer-composite micro-flaps (height 1.2 mm, chord 4 mm, density 50 flaps/m spanwise) deploy at dp/dx > 0.6 kPa/m, generating streamwise vortices that induce a localized favorable pressure gradient via vortex-induced velocity field (\u0394Cp \u2248 +0.04), effectively 'virtual shaping' the stern pressure distribution and reducing pressure drag by 12% without significant skin friction penalty, yielding net 9.5% total drag reduction at 12 knots.",
+      "mechanism": "Deployed flaps create a staggered array of streamwise vortices (\u03bb_z = 8 mm, \u0393 = 0.012 m\u00b2/s) whose induced velocity field produces a wall-normal upwash (w > 0) upstream of each vortex core and downwash (w < 0) downstream; the net effect is a streamwise pressure gradient modification \u2202p/\u2202x \u221d -\u03c1 \u2202(u'w')/\u2202y that counteracts the adverse gradient \u2014 distinct from momentum transport (Edge C), this is a vortex-induced pressure field effect (Edge B\u2192D direct).",
+      "evidence": [
+        "Theoretical models of vortex arrays show induced favorable pressure gradients (Lin 2003)",
+        "Experiments with micro-vortex generators show pressure recovery improvement without momentum thickness reduction (Sch\u00fclein 2004)",
+        "Bird feather arrays show pressure gradient modification via vortex-induced velocity (Carruthers et al. 2007)"
+      ],
+      "assumptions": [
+        "Vortex-induced pressure modification scales with \u0393\u00b2/\u03bb_z\u00b2 (linear superposition valid)",
+        "Flap material (PEEK composite) maintains hinge stiffness at 500 m depth (E = 3.6 GPa, \u03c1 = 1.3 g/cm\u00b3)",
+        "Boundary layer thickness \u03b4 > 5\u00d7 flap height (\u03b4 \u2248 100 mm at station)",
+        "No cavitation at vortex cores (core pressure > vapor pressure)"
+      ],
+      "predictions": [],
+      "expected_failure_modes": [
+        "Vortex merging at high flap density causing unsteady pressure fluctuations (>5% Cp rms)",
+        "Flap flutter at deployment angle >30\u00b0 causing broadband noise",
+        "Hydrostatic pressure causing creep deformation of polymer hinges over time",
+        "Insufficient vortex strength at low speeds (<8 knots) to modify pressure field"
+      ],
+      "novelty_rationale": "Proposes vortex-induced pressure field modification as primary mechanism (not boundary layer energization), enabling lower flap density and reduced skin friction penalty.",
+      "testability": "High-resolution PSP on 1:20 model at Re = 5e6 to measure Cp(x) distribution with/without flaps; compare measured \u0394Cp(x) to predicted vortex-induced pressure field from PIV-measured vortex trajectories.",
+      "falsifier": "If PSP shows no favorable pressure gradient modification (\u0394Cp < +0.01) in the vortex array region despite confirmed vortex generation (via PIV), the virtual shaping mechanism is falsified.",
+      "epistemic_state": "HYPOTHESIZED",
+      "parent_hypothesis_ids": [],
+      "provenance": {
+        "nodes": {},
+        "edges": [],
+        "committed_hash": null
+      },
+      "is_testable": true,
+      "provenance_root_hash": ""
+    },
+    {
+      "hypothesis_id": "H-N2-003",
+      "claim": "Passive shape-memory alloy (SMA) micro-flaps (height 1.0 mm, chord 6 mm, NiTi alloy, Af = 15\u00b0C) deploy via combined pressure-gradient and thermal activation (\u0394T > 2\u00b0C from adiabatic compression in adverse gradient), generating streamwise vortices that suppress crossflow instability modes (wavenumber \u03b2\u03b4 \u2248 0.8) on the axisymmetric hull stern, reducing separation-induced pressure drag by 11% and yielding 9.8% total drag reduction at 18 knots.",
+      "mechanism": "On axisymmetric bodies, adverse pressure gradient amplifies crossflow vortices (stationary and traveling) that cause early separation; deployed flaps generate streamwise vortices that interact destructively with crossflow modes via vortex-vortex interaction (phase opposition), suppressing crossflow kinetic energy by >40% \u2014 this is a stability control mechanism (Edge B\u2192D via crossflow suppression), not momentum transport (Edge C).",
+      "evidence": [
+        "Crossflow instability documented on submarine sterns (Khalil et al. 2015)",
+        "Streamwise vortices suppress crossflow modes in swept-wing experiments (Saric et al. 2002)",
+        "SMA actuators used in marine applications for morphing structures (Lagoudas 2012)"
+      ],
+      "assumptions": [
+        "Crossflow instability is dominant separation mechanism on axisymmetric stern at Re > 1e8 (N-factor > 9)",
+        "Adiabatic compression in adverse gradient yields \u0394T \u2248 3\u00b0C at 18 knots (verified by CFD)",
+        "SMA hysteresis width < 5\u00b0C allows reliable deployment/retraction cycle",
+        "Flap-generated streamwise vortices have matching wavelength to crossflow modes (\u03bb_z \u2248 8 mm)"
+      ],
+      "predictions": [],
+      "expected_failure_modes": [
+        "SMA fatigue after 10^4 thermal cycles (design requires 10^5)",
+        "Thermal trigger fails in cold water (<4\u00b0C) where \u0394T < 2\u00b0C",
+        "Flap-generated vortices amplify crossflow if phase matching is off (resonance)",
+        "Galvanic corrosion of NiTi in seawater without coating"
+      ],
+      "novelty_rationale": "Identifies crossflow instability suppression as the operative mechanism (unique to axisymmetric hulls), leveraging dual pressure/thermal trigger for robustness; differs from 2D airfoil feather mechanism.",
+      "testability": "1:20 model with flush-mounted hot-film arrays (1 kHz) to measure crossflow spectra; compare N-factor growth with/without flaps at Re = 5e6 in quiet tunnel; correlate with PSP separation detection.",
+      "falsifier": "If hot-film measurements show no reduction in crossflow spectral energy (\u03b2\u03b4 \u2248 0.8) when flaps are deployed, despite confirmed flap deployment and vortex generation, the crossflow suppression mechanism is falsified.",
+      "epistemic_state": "HYPOTHESIZED",
+      "parent_hypothesis_ids": [],
+      "provenance": {
+        "nodes": {},
+        "edges": [],
+        "committed_hash": null
+      },
+      "is_testable": true,
+      "provenance_root_hash": ""
+    }
+  ],
+  "distinguishing_predictions": "Hypothesis 1 (momentum transport) predicts: (a) PIV shows increased Reynolds shear stress -u'v' in near-wall region (y+ < 30) downstream of flaps; (b) mean velocity profiles show fuller shape (higher H-factor) at separation line. Hypothesis 2 (virtual shaping) predicts: (a) PSP shows favorable Cp gradient (dCp/dx > 0) starting 0.5 m upstream of flap array; (b) PIV shows vortex-induced upwash/downwash pattern but no near-wall momentum increase. Hypothesis 3 (crossflow suppression) predicts: (a) hot-film spectra show >40% reduction in crossflow peak (\u03b2\u03b4 \u2248 0.8) but no change in streamwise turbulence; (b) separation line movement correlates with crossflow N-factor reduction, not momentum thickness. Critical test: simultaneous PSP + stereo PIV + hot-film on 1:20 model at Re = 5e6; only one mechanism will show its signature as the dominant change.",
+  "n_hypotheses": 3,
+  "n_testable": 3
+}
