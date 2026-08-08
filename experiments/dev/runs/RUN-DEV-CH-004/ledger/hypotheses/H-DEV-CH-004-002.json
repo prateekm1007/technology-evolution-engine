@@ -1,0 +1,34 @@
+{
+  "hypothesis_id": "H-DEV-CH-004-002",
+  "claim": "The adaptive traffic signal system operates through an emergent collective intelligence mechanism where intersections follow simple local rules that, when combined with neighbor communication, result in system-wide optimization without explicit coordination.",
+  "mechanism": "Each intersection follows simple local rules: if queue length is above threshold, increase green time proportionally to queue length; if throughput is below threshold, adjust offset to better match neighbor phases. These rules, combined with limited neighbor communication about phase timing, create an emergent system that self-organizes to optimize network flow. The system exhibits properties similar to slime mold network formation, where simple components create complex adaptive behavior.",
+  "evidence": [
+    "Emergence in biological systems like slime mold networks",
+    "Success of simple rule-based systems in complex environments (e.g., ant colonies)",
+    "Empirical observation that traffic systems can self-organize under certain conditions"
+  ],
+  "assumptions": [
+    "Local rules are sufficient for system-wide optimization",
+    "Neighbor communication provides enough information for coordination",
+    "The system will exhibit emergent properties beyond the sum of individual behaviors",
+    "Simple rules can adapt to diverse traffic conditions"
+  ],
+  "predictions": [],
+  "expected_failure_modes": [
+    "Failure to adapt to unusual traffic patterns not represented in the rule design",
+    "Emergence of unwanted collective behaviors like phantom traffic jams",
+    "Sensitivity to initial conditions leading to different outcomes for similar scenarios"
+  ],
+  "novelty_rationale": "This hypothesis proposes an emergent intelligence approach rather than an optimization-based one, potentially offering more robust adaptation to unexpected conditions by relying on simple, distributed rules rather than complex calculations.",
+  "testability": "The hypothesis can be tested by implementing the simple rules in simulation and measuring whether system-wide optimization emerges. The rules can be systematically varied to identify which combinations produce the best results.",
+  "falsifier": "If the system fails to achieve network-wide optimization under diverse conditions, or if performance degrades compared to centrally optimized solutions even with sufficient time for emergence, the emergent intelligence mechanism would be falsified.",
+  "epistemic_state": "HYPOTHESIZED",
+  "parent_hypothesis_ids": [],
+  "provenance": {
+    "nodes": {},
+    "edges": [],
+    "committed_hash": null
+  },
+  "is_testable": true,
+  "provenance_root_hash": ""
+}

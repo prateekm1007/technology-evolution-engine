@@ -2,8 +2,8 @@
   "stage": "06_rediscovery_H-DEV-CH-004-001",
   "run_id": "RUN-DEV-CH-004",
   "code_sha": "engine-v0.1-round3",
-  "input_hash": "fb7d31e80eb42bfe9057c52974e1aee276723ee1fa22c189c399f0d949cf53be",
-  "output_hash": "b1151bbfa81931c86e54c5e3bcfc144ccf70db43a539e8d5429a277246604b54",
+  "input_hash": "5ffbb58523089a76086b47efba046c115eaaa56d98b2b4baf805a32f563c06ff",
+  "output_hash": "010340ea3ead0122a003f71ab7c03b37e22a6c0dc4f399451b1219e6663c004c",
   "provider_manifest": {
     "provider": "zai",
     "model": "glm-4-plus",
@@ -13,22 +13,22 @@
       "max_tokens": 4096,
       "system_sha": "dbdd0760dff49fc029b32b580a575b7de33a87d371edc2b0deec93bfb2b90b01"
     },
-    "prompt_sha": "06f9a5854e0ed1c440b4863213b2bd39992678cfc3d9de9802a709c772ae42ad",
+    "prompt_sha": "399942469873de2b746fbe7a65177e9d811cea3213bf18bae1822a71f7a405df",
     "seed": null,
     "tool_versions": {
       "z_ai_cli": "z-ai"
     },
-    "timestamp": "2026-08-08T07:19:59.324113+00:00",
-    "latency_ms": 3495,
+    "timestamp": "2026-08-08T07:34:26.177971+00:00",
+    "latency_ms": 2042,
     "success": true,
     "error": ""
   },
   "result": {
     "hypothesis_id": "H-DEV-CH-004-001",
     "classification": "NON_TRIVIAL_TRANSFER",
-    "evidence": "The hypothesis describes a traffic signal control system that adjusts green time based on queue length measurements at intersections. This is a completely different domain from the source document, which describes how Physarum polycephalum (slime mold) adapts its tubular network through protoplasmic streaming and feedback mechanisms. While both systems involve self-organization and feedback loops, the specific mechanisms, entities (traffic signals vs. cytoplasmic tubes), and application domains (traffic engineering vs. biological organisms) are fundamentally different. The hypothesis requires transferring the concept of self-optimizing networks through local feedback to an entirely new domain not present in the source text.",
+    "evidence": "The hypothesis describes a decentralized traffic signal system using gradient descent and neighbor information, which is a technical engineering concept. The source document describes Physarum polycephalum's biological network adaptation through protoplasmic streaming and tube thickening/thinning based on flow rates. While both involve distributed optimization and local feedback, the specific mechanism described (gradient descent, performance metrics calculations, green-split adjustments) has no direct correspondence to the biological process described in the source. This represents a genuine cross-domain transfer from biological systems to engineering systems, not a direct composition, paraphrase, or structural inference from the source text.",
     "is_rediscovery": false,
     "source_hypothesis_hash": ""
   },
-  "timestamp": "2026-08-08T07:20:02.820035+00:00"
+  "timestamp": "2026-08-08T07:34:28.220809+00:00"
 }

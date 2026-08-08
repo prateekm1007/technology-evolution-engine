@@ -106,8 +106,8 @@ class TestRepair1Lineage:
     every upstream scientific object, and must be registered in the ledger."""
 
     def test_case_contains_traversable_lineage(self, tmp_path):
-        """After a full mock run, the case artifact must have lineage_node_count > 1
-        and lineage_traversable = True."""
+        """After a full mock run, the case artifact must have lineage_valid = True
+        (verified by actual DFS traversal, not node_count > 1)."""
         loop, result = _run_mock_loop(CHALLENGE_4, tmp_path)
         case_stage = result.get("stages", {}).get("12_case")
         assert case_stage is not None
@@ -116,10 +116,10 @@ class TestRepair1Lineage:
         run_dir = tmp_path / "runs" / f"RUN-{CHALLENGE_4.challenge_id}"
         case_data = json.loads((run_dir / "12_case.json").read_text())
         case_result = case_data["result"]
-        assert case_result["lineage_traversable"] is True
-        assert case_result["lineage_node_count"] > 5, \
-            "lineage must contain multiple nodes (source, graph, pattern, transfer, hypothesis, ...)"
-        assert case_result["registered_in_ledger"] is True
+        # Repair A: lineage_valid is now computed by actual graph traversal
+        assert case_result["lineage_valid"] is True, \
+            f"lineage must be valid by DFS traversal: {case_result.get('lineage_verification', {})}"
+        assert case_result["registered_in_persistent_ledger"] is True
         assert case_result["evidence_count"] > 5
 
     def test_case_provenance_links_source_to_experiment(self, tmp_path):
@@ -129,17 +129,17 @@ class TestRepair1Lineage:
         loop, result = _run_mock_loop(CHALLENGE_4, tmp_path)
         run_dir = tmp_path / "runs" / f"RUN-{CHALLENGE_4.challenge_id}"
         case_data = json.loads((run_dir / "12_case.json").read_text())
-        # The case artifact contains the case_id; we need to inspect the
-        # ledger's provenance graph to verify traversability.
-        case = loop.ledger.cases.get(case_data["result"]["case_id"])
+        # The PersistentLedger stores cases on disk; load the case from disk
+        case = loop.ledger.get_case(case_data["result"]["case_id"])
         assert case is not None
-        # Verify the provenance graph has nodes for each upstream object type
-        node_types = {n.node_type for n in case.provenance.nodes.values()}
-        assert "source_document" in node_types
-        assert "mechanism_graph" in node_types
-        assert "mechanism_pattern" in node_types
-        assert "transfer_hypothesis" in node_types
-        assert "hypothesis" in node_types
+        # The lineage_verification field in the case artifact contains the
+        # full verification result with reachable_nodes and node_types.
+        lineage = case_data["result"]["lineage_verification"]
+        # Verify the verification checked all required parent relationships
+        checks = {c["name"]: c["passed"] for c in lineage["checks"]}
+        assert checks.get("required_parent_relationships") is True
+        assert checks.get("no_orphan_scientific_nodes") is True
+        assert checks.get("expected_types_reachable") is True
 
 
 # ============================================================================

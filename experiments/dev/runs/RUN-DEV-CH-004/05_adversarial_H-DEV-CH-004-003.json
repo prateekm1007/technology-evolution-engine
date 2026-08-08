@@ -2,8 +2,8 @@
   "stage": "05_adversarial_H-DEV-CH-004-003",
   "run_id": "RUN-DEV-CH-004",
   "code_sha": "engine-v0.1-round3",
-  "input_hash": "91c3d61a18441eead43dcef2d5aabb93c6770a0c71a02d4e8afd993fe47ef7f4",
-  "output_hash": "edcdae59ab211589114afcaa7dbf6f75b4452036b994f4734beeb946a44ee764",
+  "input_hash": "18aa81b5e12967fd494b755ac59da6f629518a7f0a4edda76ea4c7ae58e7ae6b",
+  "output_hash": "572563e071e2250a6728fe42f136b0337b903758b5ff8b179780d2ea9a141cf2",
   "provider_manifest": {
     "provider": "zai",
     "model": "glm-4-plus",
@@ -13,13 +13,13 @@
       "max_tokens": 4096,
       "system_sha": "1f5a3fff3aebc2e1d44b2312f4b604b5c2911cacaf452eb6ca705c724fc9142b"
     },
-    "prompt_sha": "23f32e94b584b507e0b31eea4a3cda2f7558d8741c8167bac6ceb4d09e625e1d",
+    "prompt_sha": "e23ad07a012ebc61bd4ca25e1de1c9f1dac9d6a65bb6fb3e15fcccbb6ac125d9",
     "seed": null,
     "tool_versions": {
       "z_ai_cli": "z-ai"
     },
-    "timestamp": "2026-08-08T07:20:14.948941+00:00",
-    "latency_ms": 12850,
+    "timestamp": "2026-08-08T07:34:47.466982+00:00",
+    "latency_ms": 19728,
     "success": true,
     "error": ""
   },
@@ -28,47 +28,59 @@
     "failure_modes": [
       {
         "category": "FRAGILE_ASSUMPTION",
-        "description": "The assumption that intersections can communicate performance metrics with neighbors is fundamentally flawed. Real-world traffic systems use legacy, incompatible communication protocols with significant latency and reliability issues.",
+        "description": "The assumption that intersections have sufficient computational capacity for reinforcement learning is completely unrealistic. Modern traffic signal controllers are typically low-power embedded systems with minimal processing capabilities, unable to run complex reinforcement learning algorithms.",
         "severity": "HIGH",
-        "evidence": "Most traffic signal systems use legacy protocols (NEMA, 170/171) with limited bandwidth and high latency, making real-time sharing of performance metrics impractical."
+        "evidence": "Traffic signal controllers are typically legacy systems with limited computational resources, often running on microcontrollers with minimal processing power and memory."
       },
       {
         "category": "CONTRADICTS_KNOWN",
-        "description": "The claim that local reward functions can guide network-wide optimization directly contradicts established traffic flow theory. Local optimization consistently creates Braess's paradox scenarios where network-wide performance degrades.",
+        "description": "The claim that intersections can share policies with neighbors contradicts known communication limitations in transportation infrastructure. Traffic systems operate on isolated networks with strict security protocols, making real-time policy sharing practically impossible.",
         "severity": "HIGH",
-        "evidence": "Numerous studies (e.g., Meneguzzer, 2011; Smith, 2009) demonstrate that locally optimized traffic signals create gridlock conditions across the network."
+        "evidence": "Transportation control systems are typically isolated from external networks for security reasons and use legacy communication protocols that cannot support high-bandwidth policy sharing."
       },
       {
         "category": "BOUNDARY_BREAKS",
-        "description": "The hypothesis fails to account for the non-stationary nature of traffic patterns. Rush hour conditions, accidents, and special events create dynamic boundary conditions that break the learning model.",
+        "description": "The hypothesis completely ignores the physical constraints of traffic signal timing. Modern signals have fixed minimum and maximum green times, pedestrian crossing requirements, and safety constraints that cannot be violated during 'learning' phases.",
         "severity": "HIGH",
-        "evidence": "Traffic patterns exhibit extreme non-stationarity with sudden changes in flow volume, composition, and route choices that cannot be adequately captured by reinforcement learning models."
-      },
-      {
-        "category": "PRIOR_ART_EXISTS",
-        "description": "The claimed novelty is completely unfounded. Distributed reinforcement learning for traffic signal optimization has been extensively researched and implemented since at least 2015 with minimal real-world adoption due to poor performance.",
-        "severity": "MEDIUM",
-        "evidence": "Van der Pol et al. (2016), El-Tantawy et al. (2013), and countless subsequent papers have already explored this exact approach with consistently disappointing results."
+        "evidence": "Traffic signal timing is governed by strict safety standards and physical constraints that cannot be overridden by a learning algorithm, making unconstrained exploration impossible."
       },
       {
         "category": "FALSIFIER_TRIGGERED",
-        "description": "The hypothesis fails its own falsification criterion. Real-world testing shows learning processes never converge within 15 minutes and consistently produce timing policies that increase network-wide travel time.",
+        "description": "The hypothesis predicts that the system will show consistent improvement over time, but real-world traffic systems face unpredictable disruptions (accidents, weather, special events) that would cause catastrophic performance failures regardless of learning progress.",
         "severity": "HIGH",
-        "evidence": "Every implementation of distributed reinforcement learning for traffic signals (e.g., SCATS, SCOOT) has shown convergence times of hours or days, not minutes, with worse performance than fixed-time optimization."
+        "evidence": "Real-world traffic systems must handle unpredictable events that would overwhelm any reinforcement learning system trained on normal patterns, leading to immediate failure modes."
       },
       {
         "category": "INCOMPATIBLE_TARGET",
-        "description": "The target system is fundamentally incompatible with the proposed mechanism. Traffic networks are highly constrained by physical infrastructure, political boundaries, and legacy systems that cannot support the proposed distributed learning approach.",
+        "description": "The focus on local optimization at each intersection directly conflicts with the network-level optimization needed for traffic flow. Self-interested learning would create suboptimal network performance as intersections optimize for local metrics rather than system-wide efficiency.",
         "severity": "HIGH",
-        "evidence": "Traffic signal systems are governed by municipal regulations, maintenance contracts, and hardware lifespans that make dynamic reconfiguration impossible without massive infrastructure investment."
+        "evidence": "Game theory demonstrates that local optimization in interconnected systems leads to Nash equilibria that are Pareto inefficient, resulting in worse overall system performance."
+      },
+      {
+        "category": "FRAGILE_ASSUMPTION",
+        "description": "The assumption that reward functions accurately reflect system performance is naive. Traffic metrics are conflicting (throughput vs. equity vs. safety), and any single reward function would lead to perverse incentives and gaming of the metrics.",
+        "severity": "MEDIUM",
+        "evidence": "Multi-objective optimization problems in transportation consistently show that no single metric can capture system performance, leading to trade-offs that reward functions cannot properly balance."
+      },
+      {
+        "category": "PRIOR_ART_EXISTS",
+        "description": "The claimed novelty is completely unfounded. Distributed reinforcement learning for traffic control has been extensively researched and implemented in various forms for over a decade, with numerous published papers and real-world deployments.",
+        "severity": "HIGH",
+        "evidence": "Numerous publications from MIT, UC Berkeley, and other institutions have demonstrated distributed reinforcement learning for traffic control since at least 2010, with implementations in cities like Los Angeles and Pittsburgh."
+      },
+      {
+        "category": "FALSIFIER_TRIGGERED",
+        "description": "The hypothesis expects the system to adapt to novel scenarios, but reinforcement learning systems are notoriously poor at generalization to situations outside their training distribution, making this expectation unrealistic for the complex, diverse scenarios faced in real traffic systems.",
+        "severity": "MEDIUM",
+        "evidence": "Cognitive science and machine learning research consistently show that reinforcement learning systems fail at zero-shot generalization, requiring extensive retraining for new scenarios."
       }
     ],
     "survives": false,
     "outcome": "ADVERSARIAL_FAILED",
-    "n_high_severity": 5,
-    "n_medium_severity": 1,
+    "n_high_severity": 6,
+    "n_medium_severity": 2,
     "n_low_severity": 0,
     "source_hypothesis_hash": ""
   },
-  "timestamp": "2026-08-08T07:20:27.799534+00:00"
+  "timestamp": "2026-08-08T07:35:07.195512+00:00"
 }

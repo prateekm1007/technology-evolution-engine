@@ -2,19 +2,86 @@
   "stage": "12_case",
   "run_id": "RUN-DEV-CH-004",
   "code_sha": "engine-v0.1-round3",
-  "input_hash": "0e9cae04b412b8603a6eaef911996b050e0ae5cebf5c8843369def2318e12ed8",
-  "output_hash": "e0fca64949397d567a239e4e716c06d3d334a44ec27cf95988f18ea25d8c4d7f",
+  "input_hash": "bcb3b540978ef16ac503a74faf5c73ae5b69a9770e4b7d9e42b8a8c3ca430092",
+  "output_hash": "181cec19707ca06a6e0f82ecf93d39579da96290b2c794d76457ea363d989491",
   "provider_manifest": null,
   "result": {
     "case_id": "DC-DEV-CH-004",
-    "provenance_root_hash": "a6f85fa4cd896ab1ca4a23a84176c78657d40ed38116c858cd150a1a05c49502",
+    "provenance_root_hash": "f62b71f754a3e2fb17085a9d2aa65e587626b46d3c77078d1024a7c0d2730a2b",
     "verify_provenance": true,
     "final_state": "TESTABLE_HYPOTHESIS",
-    "lineage_node_count": 17,
-    "lineage_edge_count": 15,
-    "lineage_traversable": true,
-    "registered_in_ledger": true,
+    "lineage_verification": {
+      "case_id": "DC-DEV-CH-004",
+      "valid": true,
+      "checks": [
+        {
+          "name": "no_dangling_edges",
+          "passed": true,
+          "detail": "all edge endpoints exist"
+        },
+        {
+          "name": "expected_types_reachable",
+          "passed": true,
+          "detail": "all 5 expected types reachable"
+        },
+        {
+          "name": "no_orphan_scientific_nodes",
+          "passed": true,
+          "detail": "all non-root nodes have at least one incoming edge"
+        },
+        {
+          "name": "required_parent_relationships",
+          "passed": true,
+          "detail": "all required parent-child relationships present"
+        },
+        {
+          "name": "artifact_hash_verification",
+          "passed": true,
+          "detail": "all verifiable hashes match stage artifacts"
+        },
+        {
+          "name": "provenance_root_hash_verifiable",
+          "passed": true,
+          "detail": "root_hash=f62b71f754a3e2fb..."
+        }
+      ],
+      "reachable_nodes": [
+        "adversarial:H-DEV-CH-004-001",
+        "adversarial:H-DEV-CH-004-002",
+        "adversarial:H-DEV-CH-004-003",
+        "hypothesis:H-DEV-CH-004-001",
+        "hypothesis:H-DEV-CH-004-002",
+        "hypothesis:H-DEV-CH-004-003",
+        "mechanism_graph:DEV-CH-004",
+        "mechanism_pattern:DEV-CH-004",
+        "novelty:H-DEV-CH-004-001",
+        "novelty:H-DEV-CH-004-002",
+        "novelty:H-DEV-CH-004-003",
+        "rediscovery:H-DEV-CH-004-001",
+        "rediscovery:H-DEV-CH-004-002",
+        "rediscovery:H-DEV-CH-004-003",
+        "run:DEV-CH-004",
+        "source_doc:doc_af4f56b7b49b",
+        "transfer:TH-DEV-CH-004-001"
+      ],
+      "orphans": [],
+      "missing_parents": [],
+      "hash_mismatches": [],
+      "node_count": 17,
+      "edge_count": 15
+    },
+    "lineage_valid": true,
+    "ledger_verification": {
+      "registered": true,
+      "file_exists": true,
+      "content_hash_matches": true,
+      "content_hash": "73408dce63ad18914eddd89f93104c3590bb6d5c72781ac34ba11001cc2adeff",
+      "actual_hash": "73408dce63ad18914eddd89f93104c3590bb6d5c72781ac34ba11001cc2adeff",
+      "file": "cases/DC-DEV-CH-004.json"
+    },
+    "registered_in_persistent_ledger": true,
+    "ledger_dir": "/home/z/my-project/audit/technology-evolution-engine/experiments/dev/runs/RUN-DEV-CH-004/ledger",
     "evidence_count": 17
   },
-  "timestamp": "2026-08-08T07:20:30.771298+00:00"
+  "timestamp": "2026-08-08T07:35:09.246692+00:00"
 }

@@ -1,0 +1,69 @@
+{
+  "hypothesis": {
+    "H-DEV-CH-004-001": {
+      "object_type": "hypothesis",
+      "object_id": "H-DEV-CH-004-001",
+      "content_hash": "5ffbb58523089a76086b47efba046c115eaaa56d98b2b4baf805a32f563c06ff",
+      "file": "hypotheses/H-DEV-CH-004-001.json",
+      "registered_at": "2026-08-08T07:34:11.934885+00:00",
+      "provenance_root_hash": ""
+    },
+    "H-DEV-CH-004-002": {
+      "object_type": "hypothesis",
+      "object_id": "H-DEV-CH-004-002",
+      "content_hash": "14c23cdf96150c22ba17c60ec02b440b802a0b53d2b436e8e78b2dc09892a6ac",
+      "file": "hypotheses/H-DEV-CH-004-002.json",
+      "registered_at": "2026-08-08T07:34:11.935169+00:00",
+      "provenance_root_hash": ""
+    },
+    "H-DEV-CH-004-003": {
+      "object_type": "hypothesis",
+      "object_id": "H-DEV-CH-004-003",
+      "content_hash": "18aa81b5e12967fd494b755ac59da6f629518a7f0a4edda76ea4c7ae58e7ae6b",
+      "file": "hypotheses/H-DEV-CH-004-003.json",
+      "registered_at": "2026-08-08T07:34:11.935441+00:00",
+      "provenance_root_hash": ""
+    }
+  },
+  "prior_art": {
+    "PA-H-DEV-CH-004-001": {
+      "object_type": "prior_art",
+      "object_id": "PA-H-DEV-CH-004-001",
+      "content_hash": "df12c797e56cc4160b7bdfbd20615267e32ca465eec0652428ce8bb3958cb325",
+      "file": "prior_art/PA-H-DEV-CH-004-001.json",
+      "registered_at": "2026-08-08T07:34:28.222660+00:00",
+      "provenance_root_hash": ""
+    },
+    "PA-H-DEV-CH-004-002": {
+      "object_type": "prior_art",
+      "object_id": "PA-H-DEV-CH-004-002",
+      "content_hash": "969a7729e0428eaa53ec2af529bcc771f339350e55aa3b502690f1f4eb47df35",
+      "file": "prior_art/PA-H-DEV-CH-004-002.json",
+      "registered_at": "2026-08-08T07:34:47.465443+00:00",
+      "provenance_root_hash": ""
+    },
+    "PA-H-DEV-CH-004-003": {
+      "object_type": "prior_art",
+      "object_id": "PA-H-DEV-CH-004-003",
+      "content_hash": "143f3377b067d7e1a3350438349e8d207f21213b8b0afe947aa66434e8aa79cd",
+      "file": "prior_art/PA-H-DEV-CH-004-003.json",
+      "registered_at": "2026-08-08T07:35:09.239493+00:00",
+      "provenance_root_hash": ""
+    }
+  },
+  "case": {
+    "DC-DEV-CH-004": {
+      "object_type": "case",
+      "object_id": "DC-DEV-CH-004",
+      "content_hash": "73408dce63ad18914eddd89f93104c3590bb6d5c72781ac34ba11001cc2adeff",
+      "file": "cases/DC-DEV-CH-004.json",
+      "registered_at": "2026-08-08T07:35:09.245782+00:00",
+      "provenance_root_hash": "f62b71f754a3e2fb17085a9d2aa65e587626b46d3c77078d1024a7c0d2730a2b"
+    }
+  },
+  "_meta": {
+    "ledger_dir": "/home/z/my-project/audit/technology-evolution-engine/experiments/dev/runs/RUN-DEV-CH-004/ledger",
+    "last_updated": "2026-08-08T07:35:09.245798+00:00",
+    "total_objects": 7
+  }
+}

@@ -2,8 +2,8 @@
   "stage": "03_transfer",
   "run_id": "RUN-DEV-CH-004",
   "code_sha": "engine-v0.1-round3",
-  "input_hash": "f7c6d353eb04bb181129f3a0fe6a665f52020d9f84dbb4b4e7df847a986067c0",
-  "output_hash": "e89951bc9d1782a296233ec174ef7153fd93b25abeaeee160c882c6817e18078",
+  "input_hash": "3b267c4012f027d7bc723aa18f024cdb1eb66114c3069b1b3e31ecd86a5852ae",
+  "output_hash": "a9b81de5c9b970186029d5b4e8719e63f951b1ffff731f69d699ade6407cb154",
   "provider_manifest": {
     "provider": "zai",
     "model": "glm-4-plus",
@@ -13,13 +13,13 @@
       "max_tokens": 4096,
       "system_sha": "f596607dc28478b7317f95a37a7bf99f11ad2e25e10bde5d1c0a9009ba6b1583"
     },
-    "prompt_sha": "bb208a1029286214a7f7b8c125fb630602beafed2ed7879b74e347043140cfc5",
+    "prompt_sha": "993dac9c5d8dd1cc869d55b7424e6a494edd6bed9d84712a0c440ca1c3fe34d2",
     "seed": null,
     "tool_versions": {
       "z_ai_cli": "z-ai"
     },
-    "timestamp": "2026-08-08T07:19:15.967557+00:00",
-    "latency_ms": 4565,
+    "timestamp": "2026-08-08T07:33:37.641284+00:00",
+    "latency_ms": 6098,
     "success": true,
     "error": ""
   },
@@ -28,30 +28,29 @@
       {
         "transfer_id": "TH-DEV-CH-004-001",
         "source_domain": "myxomycete biology / emergent computation",
-        "source_mechanism": "Resource flow enables structural adaptation under feedback regulation, producing optimized network topology",
+        "source_mechanism": "Flow routing enables network optimization under flow rate constraints, producing shortest-path behavior",
         "source_conditions": [
-          "feedback gain regime",
-          "resource availability"
+          "Flow rate variation",
+          "Network connectivity"
         ],
         "target_domain": "urban transportation engineering",
         "target_problem": "A mid-sized city (population 800,000) has a traffic signal network with 247 signalized intersections. The current signal timing plan is optimized centrally every 6 months using a macroscopic traffic model, but it cannot adapt to real-time conditions: incidents, weather, special events, and construction. Re-optimizing centrally every minute is computationally infeasible and would require expensive predictive models. The city wants a distributed, adaptive signal timing approach that uses only local traffic flow measurements (vehicle count and queue length at each intersection) to adjust green-split and offset in real time, without a central optimizer.",
-        "transferred_principle": "Adaptive network systems optimize resource distribution through dynamic structural modification based on usage patterns.",
-        "required_translation": "Replace resource flow with traffic flow, structural adaptation with signal timing adjustments, and network topology with traffic signal coordination. Replace rhythmic contraction with signal cycle adjustments, structural thickening with increased green time for congested approaches, structural thinning with decreased green time for underutilized approaches, and self-repair with automatic offset recalibration based on queue dissipation.",
-        "expected_effect": "Distributed optimization of traffic signal timing that adapts to real-time conditions without central coordination, reducing overall travel time and improving network efficiency.",
+        "transferred_principle": "Adaptive signal timing based on local flow measurements and neighbor communication, optimizing network-wide traffic flow through distributed feedback-controlled green-split adjustments",
+        "required_translation": "Replace biological tubes with traffic signal phases, resource flow with vehicle flow, diameter modulation with green-split adjustment, and flow monitoring with inductive loop detectors measuring vehicle count and queue length",
+        "expected_effect": "Self-optimizing traffic signal network that adapts to real-time conditions without central control, reducing overall travel time and improving intersection throughput",
         "boundary_conditions": [
-          "Local measurements only (vehicle count and queue length)",
-          "Limited communication to adjacent intersections",
-          "Convergence within 15 minutes of perturbation",
-          "Stability under cyclic topology",
-          "Heterogeneous intersection handling"
+          "Minimum and maximum green time constraints",
+          "Maximum communication distance between adjacent intersections",
+          "Minimum detection reliability threshold",
+          "Maximum computational complexity per intersection"
         ],
         "failure_conditions": [
-          "Oscillating signal timing",
-          "Network-wide gridlock",
-          "Failure to converge within 15 minutes",
-          "Excessive communication overhead"
+          "Oscillating signal timing between adjacent intersections",
+          "Network-wide congestion propagation",
+          "Local maxima trapping where no intersection can improve its metrics",
+          "Communication delays exceeding threshold"
         ],
-        "testable_prediction": "After implementing the adaptive signal system, average travel time during a non-recurring incident will decrease by at least 15% within 20 minutes without central re-optimization, compared to the current system.",
+        "testable_prediction": "In a simulated network with a random incident causing 30% capacity reduction on one corridor, the adaptive system will restore within-network flow equilibrium within 12 minutes, reducing average delay by at least 25% compared to the fixed-timing baseline, while maintaining stability (no oscillations) for at least 30 minutes after recovery",
         "epistemic_state": "HYPOTHESIZED",
         "provenance": {
           "nodes": {},
@@ -64,7 +63,7 @@
     "rejected": [],
     "n_accepted": 1,
     "n_rejected": 0,
-    "source_abstraction_hash": "fecea0e5b894f3fd613ffb4a744ddc0265fb8f1dc3f01fb39eeb40c485547588"
+    "source_abstraction_hash": "907bc523bc43e96da79e56f9cc9dec8455b9f819d62677ca13b5c42b7cc7c9db"
   },
-  "timestamp": "2026-08-08T07:19:20.533913+00:00"
+  "timestamp": "2026-08-08T07:33:43.740151+00:00"
 }

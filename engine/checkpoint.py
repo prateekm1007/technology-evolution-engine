@@ -53,6 +53,8 @@ from engine.candidate_ranker import CandidateRanker
 from engine.discovery_memory import DiscoveryMemory
 from engine.experimental_learning import ExperimentalLearningEngine
 from engine.dev_fixtures import DevChallenge
+from engine.lineage_validator import LineageValidator
+from engine.persistent_ledger import PersistentLedger
 
 
 REPO = Path(__file__).resolve().parents[1]
@@ -204,8 +206,10 @@ class CheckpointedDiscoveryLoop:
         self.ranker = CandidateRanker()
         self.memory = DiscoveryMemory()
         self.learning_engine = ExperimentalLearningEngine()
-        # Repair 1: the ledger is now populated by the loop
-        self.ledger = DiscoveryLedger()
+        # Repair B: use a PersistentLedger that saves to disk + is reloadable
+        self._ledger_dir: Optional[Path] = None
+        self.ledger: Optional[PersistentLedger] = None
+        self._lineage_validator = LineageValidator()
 
     def run(self, challenge: DevChallenge, *, run_id: Optional[str] = None,
             resume: bool = True) -> Dict:
@@ -213,6 +217,10 @@ class CheckpointedDiscoveryLoop:
         run_dir = RUNS_DIR / run_id
         run_dir.mkdir(parents=True, exist_ok=True)
         manifest_path = run_dir / "manifest.json"
+
+        # Repair B: initialize the persistent ledger in the run directory
+        self._ledger_dir = run_dir / "ledger"
+        self.ledger = PersistentLedger(self._ledger_dir)
 
         if resume and manifest_path.exists():
             manifest = self._load_manifest(manifest_path)
@@ -586,14 +594,50 @@ class CheckpointedDiscoveryLoop:
         return {"rankings": rankings}, None
 
     def _stage_state_machine(self, challenge: DevChallenge, run_dir: Path, input_data) -> Tuple[Dict, Optional[Dict]]:
+        """Repair C: record candidate_status explicitly.
+
+        When all hypotheses are blocked at adversarial, the state machine
+        still records pipeline_stage_reached=TESTABLE_HYPOTHESIS (the
+        canonical hypothesis DID reach that stage), but candidate_status
+        is set to ALL_BLOCKED_AT_ADVERSARIAL so the reader cannot mistake
+        the pipeline marker for a surviving scientific state.
+        """
         hyp_data = input_data
         if not hyp_data or not hyp_data.get("result"):
             return {"final_state": "RAW_EVIDENCE", "history": [],
                     "pipeline_stage_reached": "RAW_EVIDENCE",
+                    "candidate_status": "NO_HYPOTHESES",
                     "scientific_gate_passed": False,
                     "note": "no hypotheses produced"}, None
         testable = [h for h in hyp_data["result"]["hypotheses"] if h.get("is_testable")]
         sm = DiscoveryStateMachine(f"DC-{challenge.challenge_id}")
+
+        # Repair C: compute candidate_status by inspecting adversarial outcomes
+        n_survived = 0
+        n_blocked = 0
+        n_inconclusive = 0
+        for h_dict in testable:
+            hid = h_dict["hypothesis_id"]
+            adv_data = self._load_stage(run_dir, f"05_adversarial_{hid}")
+            adv_outcome = (adv_data or {}).get("result", {}).get("outcome", AdversarialOutcome.INCONCLUSIVE)
+            if adv_outcome == AdversarialOutcome.SURVIVES:
+                n_survived += 1
+            elif adv_outcome == AdversarialOutcome.FAILED:
+                n_blocked += 1
+            else:
+                n_inconclusive += 1
+
+        if n_survived > 0:
+            candidate_status = "CANDIDATES_SURVIVED"
+        elif n_blocked > 0 and n_inconclusive == 0:
+            candidate_status = "ALL_BLOCKED_AT_ADVERSARIAL"
+        elif n_blocked > 0:
+            candidate_status = "PARTIALLY_BLOCKED_AT_ADVERSARIAL"
+        elif n_inconclusive > 0:
+            candidate_status = "ALL_INCONCLUSIVE_AT_ADVERSARIAL"
+        else:
+            candidate_status = "NO_HYPOTHESES"
+
         try:
             if not testable:
                 for s in [DiscoveryState.STRUCTURED_KNOWLEDGE, DiscoveryState.MECHANISM,
@@ -622,15 +666,25 @@ class CheckpointedDiscoveryLoop:
             return {"final_state": sm.current_state.value,
                     "history": [t.to_dict() for t in sm.history],
                     "pipeline_stage_reached": sm.current_state.value,
+                    # Repair C: explicit candidate_status so the reader cannot
+                    # mistake pipeline_stage_reached for a surviving scientific state.
+                    "candidate_status": candidate_status,
+                    "n_hypotheses": len(testable),
+                    "n_survived_adversarial": n_survived,
+                    "n_blocked_adversarial": n_blocked,
+                    "n_inconclusive_adversarial": n_inconclusive,
                     # Repair 4b: explicitly state that NO scientific gate has passed
                     "scientific_gate_passed": False,
                     "note": "DEV pipeline stages GATE_A/B/C are NOT scientific Gate A/B/C. "
                             "They are pipeline markers. Scientific gates require independent "
-                            "adjudication per SCIENTIFIC_GATE_2_PROTOCOL.md."}, None
+                            "adjudication per SCIENTIFIC_GATE_2_PROTOCOL.md. "
+                            f"candidate_status={candidate_status} describes the outcome of "
+                            "the adversarial filter, NOT scientific gate passage."}, None
         except Exception as e:
             return {"final_state": sm.current_state.value,
                     "history": [t.to_dict() for t in sm.history],
                     "pipeline_stage_reached": sm.current_state.value,
+                    "candidate_status": candidate_status,
                     "scientific_gate_passed": False,
                     "error": str(e)}, None
 
@@ -809,24 +863,31 @@ class CheckpointedDiscoveryLoop:
         except Exception:
             pass
 
-        # Repair 1: register the case in the ledger
+        # Repair B: register the case in the PERSISTENT ledger (saves to disk)
         try:
             self.ledger.register_case(case)
         except DuplicateRegistrationError:
             pass
 
-        # Verify traversability
-        lineage_node_count = len(prov.nodes)
-        lineage_edge_count = len(prov.edges)
+        # Repair A: real lineage verification by graph traversal (NOT node_count > 1)
+        lineage_result = self._lineage_validator.verify(case, run_dir=run_dir)
+
+        # Repair B: verify the case is registered in the persistent ledger
+        ledger_verification = self.ledger.verify_registration("case", case.case_id)
 
         return {"case_id": case.case_id,
                 "provenance_root_hash": case.provenance_root_hash,
                 "verify_provenance": case.verify_provenance(),
                 "final_state": final_state,
-                "lineage_node_count": lineage_node_count,
-                "lineage_edge_count": lineage_edge_count,
-                "lineage_traversable": lineage_node_count > 1,
-                "registered_in_ledger": case.case_id in self.ledger.cases,
+                # Repair A: lineage verification by actual DFS traversal
+                "lineage_verification": lineage_result.to_dict(),
+                "lineage_valid": lineage_result.valid,
+                # Repair B: persistent ledger verification
+                "ledger_verification": ledger_verification,
+                "registered_in_persistent_ledger": ledger_verification["registered"]
+                    and ledger_verification["file_exists"]
+                    and ledger_verification["content_hash_matches"],
+                "ledger_dir": str(self._ledger_dir) if self._ledger_dir else "",
                 "evidence_count": len(case.evidence)}, None
 
     # ========================================================================
