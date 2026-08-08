@@ -1,0 +1,25 @@
+{
+  "ambient_entity_exposure": {
+    "total_entities_A": 79,
+    "total_entities_B": 77,
+    "unique_entities_A": 77,
+    "unique_entities_B": 76,
+    "total_ambient_candidates": 156,
+    "gold_matching_ambient_candidates": 14
+  },
+  "proposal_population": {
+    "total_proposals": 22,
+    "unique_proposals": 21,
+    "correct_proposals": 6,
+    "incorrect_proposals": 16,
+    "unmatched_proposals": 16
+  },
+  "strict_proposal_precision": {
+    "TP": 6,
+    "FP": 16,
+    "precision": 0.2727,
+    "recall": 0.3,
+    "F1": 0.2857,
+    "note": "FP = proposals that don't match their case's gold bridge. This is proposal-level, not entity-level."
+  }
+}

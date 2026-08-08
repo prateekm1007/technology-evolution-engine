@@ -1,0 +1,265 @@
+{
+  "hits": [
+    {
+      "id": "DISC-GOLD-001",
+      "expected_bridge": "biomineralization",
+      "shared_entities": [
+        "calcium carbonate",
+        "mineral precipitation"
+      ],
+      "shared_match": null,
+      "fallback_match": null,
+      "fallback_entity": null,
+      "fallback_source": null,
+      "final_current_hit": false,
+      "locus": "MISSED"
+    },
+    {
+      "id": "DISC-GOLD-002",
+      "expected_bridge": "tight junctions",
+      "shared_entities": [
+        "pore",
+        "size-selective barriers"
+      ],
+      "shared_match": null,
+      "fallback_match": null,
+      "fallback_entity": null,
+      "fallback_source": null,
+      "final_current_hit": false,
+      "locus": "MISSED"
+    },
+    {
+      "id": "DISC-GOLD-003",
+      "expected_bridge": "thermal emission",
+      "shared_entities": [],
+      "shared_match": null,
+      "fallback_match": null,
+      "fallback_entity": null,
+      "fallback_source": null,
+      "final_current_hit": false,
+      "locus": "MISSED"
+    },
+    {
+      "id": "DISC-GOLD-004",
+      "expected_bridge": "thermal regulation",
+      "shared_entities": [],
+      "shared_match": null,
+      "fallback_match": "stable thermal conditions",
+      "fallback_entity": "stable thermal conditions",
+      "fallback_source": "A",
+      "final_current_hit": true,
+      "locus": "AMBIENT_FALLBACK"
+    },
+    {
+      "id": "DISC-GOLD-005",
+      "expected_bridge": "contact angle",
+      "shared_entities": [],
+      "shared_match": null,
+      "fallback_match": "surface wettability angle",
+      "fallback_entity": "surface wettability angle",
+      "fallback_source": "B",
+      "final_current_hit": true,
+      "locus": "AMBIENT_FALLBACK"
+    },
+    {
+      "id": "DISC-GOLD-006",
+      "expected_bridge": "photon absorption",
+      "shared_entities": [
+        "light"
+      ],
+      "shared_match": null,
+      "fallback_match": null,
+      "fallback_entity": null,
+      "fallback_source": null,
+      "final_current_hit": false,
+      "locus": "MISSED"
+    },
+    {
+      "id": "DISC-GOLD-007",
+      "expected_bridge": "heat dissipation",
+      "shared_entities": [
+        "heat",
+        "thermal removal capacity"
+      ],
+      "shared_match": "heat",
+      "fallback_match": null,
+      "fallback_entity": null,
+      "fallback_source": null,
+      "final_current_hit": true,
+      "locus": "SHARED_PROPOSAL"
+    },
+    {
+      "id": "DISC-GOLD-008",
+      "expected_bridge": "ion selectivity",
+      "shared_entities": [
+        "ion"
+      ],
+      "shared_match": "ion",
+      "fallback_match": null,
+      "fallback_entity": null,
+      "fallback_source": null,
+      "final_current_hit": true,
+      "locus": "SHARED_PROPOSAL"
+    },
+    {
+      "id": "DISC-GOLD-009",
+      "expected_bridge": "electrocatalyst",
+      "shared_entities": [
+        "platinum catalytic electrodes"
+      ],
+      "shared_match": null,
+      "fallback_match": null,
+      "fallback_entity": null,
+      "fallback_source": null,
+      "final_current_hit": false,
+      "locus": "MISSED"
+    },
+    {
+      "id": "DISC-GOLD-010",
+      "expected_bridge": "temperature gradient",
+      "shared_entities": [
+        "thermal differential"
+      ],
+      "shared_match": null,
+      "fallback_match": null,
+      "fallback_entity": null,
+      "fallback_source": null,
+      "final_current_hit": false,
+      "locus": "MISSED"
+    },
+    {
+      "id": "DISC-GOLD-011",
+      "expected_bridge": "surface functionalization",
+      "shared_entities": [
+        "surface chemical modification"
+      ],
+      "shared_match": "surface chemical modification",
+      "fallback_match": null,
+      "fallback_entity": null,
+      "fallback_source": null,
+      "final_current_hit": true,
+      "locus": "SHARED_PROPOSAL"
+    },
+    {
+      "id": "DISC-GOLD-012",
+      "expected_bridge": "mechanical strain",
+      "shared_entities": [
+        "physical deformation"
+      ],
+      "shared_match": null,
+      "fallback_match": null,
+      "fallback_entity": null,
+      "fallback_source": null,
+      "final_current_hit": false,
+      "locus": "MISSED"
+    },
+    {
+      "id": "DISC-GOLD-013",
+      "expected_bridge": "spin polarization",
+      "shared_entities": [
+        "Magnetic resonance imaging detects quantum spin alignment"
+      ],
+      "shared_match": "Magnetic resonance imaging detects quantum spin alignment",
+      "fallback_match": null,
+      "fallback_entity": null,
+      "fallback_source": null,
+      "final_current_hit": true,
+      "locus": "SHARED_PROPOSAL"
+    },
+    {
+      "id": "DISC-GOLD-014",
+      "expected_bridge": "ion storage",
+      "shared_entities": [
+        "energy",
+        "ion"
+      ],
+      "shared_match": "ion",
+      "fallback_match": null,
+      "fallback_entity": null,
+      "fallback_source": null,
+      "final_current_hit": true,
+      "locus": "SHARED_PROPOSAL"
+    },
+    {
+      "id": "DISC-GOLD-015",
+      "expected_bridge": "bandgap engineering",
+      "shared_entities": [
+        "energy gap"
+      ],
+      "shared_match": null,
+      "fallback_match": null,
+      "fallback_entity": null,
+      "fallback_source": null,
+      "final_current_hit": false,
+      "locus": "MISSED"
+    },
+    {
+      "id": "DISC-GOLD-016",
+      "expected_bridge": "high surface area",
+      "shared_entities": [],
+      "shared_match": null,
+      "fallback_match": null,
+      "fallback_entity": null,
+      "fallback_source": null,
+      "final_current_hit": false,
+      "locus": "MISSED"
+    },
+    {
+      "id": "DISC-GOLD-017",
+      "expected_bridge": "tensile strength",
+      "shared_entities": [
+        "pull resistance"
+      ],
+      "shared_match": null,
+      "fallback_match": null,
+      "fallback_entity": null,
+      "fallback_source": null,
+      "final_current_hit": false,
+      "locus": "MISSED"
+    },
+    {
+      "id": "DISC-GOLD-018",
+      "expected_bridge": "latent heat",
+      "shared_entities": [
+        "phase-change enthalpy",
+        "vaporization",
+        "Evaporative cooling systems"
+      ],
+      "shared_match": null,
+      "fallback_match": null,
+      "fallback_entity": null,
+      "fallback_source": null,
+      "final_current_hit": false,
+      "locus": "MISSED"
+    },
+    {
+      "id": "DISC-GOLD-019",
+      "expected_bridge": "photon energy",
+      "shared_entities": [
+        "light quantum energy"
+      ],
+      "shared_match": "light quantum energy",
+      "fallback_match": null,
+      "fallback_entity": null,
+      "fallback_source": null,
+      "final_current_hit": true,
+      "locus": "SHARED_PROPOSAL"
+    },
+    {
+      "id": "DISC-GOLD-020",
+      "expected_bridge": "fiber morphology",
+      "shared_entities": [
+        "controlled structural form"
+      ],
+      "shared_match": null,
+      "fallback_match": null,
+      "fallback_entity": null,
+      "fallback_source": null,
+      "final_current_hit": false,
+      "locus": "MISSED"
+    }
+  ],
+  "SHARED_PROPOSAL": 6,
+  "AMBIENT_FALLBACK": 2,
+  "MISSED": 12
+}
