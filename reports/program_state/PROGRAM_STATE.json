@@ -1,8 +1,8 @@
 {
-  "repository_head": "b5d0e3492c0cb05469786bb9eacff93c816358ef",
+  "repository_head": "faf6ab880c2f5e7c53fbb4d627e4ea5df60cb40d",
   "branch": "external-review-preparation",
   "remote_url": "https://github.com/prateekm1007/technology-evolution-engine.git",
-  "generated_at_utc": "2026-08-08T15:33:37.373032+00:00",
+  "generated_at_utc": "2026-08-08T15:35:30.328365+00:00",
   "generator_script": "scripts/generate_program_state.py",
   "substrate": {
     "status": "FROZEN",
@@ -35,19 +35,19 @@
   ],
   "phase_0": {
     "status": "COMPLETE",
-    "commit": "d060aa9",
+    "commit": "5f27ca9",
     "tests_passed_local": 178,
     "github_ci_status": "NOT_INDEPENDENTLY_VERIFIED"
   },
   "phase_1": {
     "status": "COMPLETE",
-    "commit": "pending",
+    "commit": "324f437",
     "tests_passed_local": 16,
     "github_ci_status": "NOT_INDEPENDENTLY_VERIFIED"
   },
   "phase_2": {
     "status": "COMPLETE",
-    "commit": "pending",
+    "commit": "b5d0e34",
     "tests_passed_local": 35,
     "github_ci_status": "NOT_INDEPENDENTLY_VERIFIED"
   },
@@ -57,14 +57,14 @@
     "check_method": "git status --porcelain engine/"
   },
   "working_tree": {
-    "total_dirty": 1685,
-    "content_changes": 2,
-    "mode_only_changes": 1681,
-    "untracked": 2,
+    "total_dirty": 1648,
+    "content_changes": 1,
+    "mode_only_changes": 1647,
+    "untracked": 0,
     "working_tree_clean": false
   },
   "local_test_status": {
-    "test_file_count": 198,
+    "test_file_count": 199,
     "last_full_suite_run": "NOT_RUN_IN_THIS_SESSION",
     "selected_suite_smoke_check": {
       "command": "python3 -m pytest tests/test_dr62_business_pipeline.py tests/test_phase1_business_pipeline_silent_failures.py tests/test_phase2_blueprint_composer_silent_failures.py -v",
