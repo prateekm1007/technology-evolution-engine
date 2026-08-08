@@ -1,0 +1,74 @@
+{
+  "stage": "05_adversarial_H-DXP-003-001",
+  "run_id": "RUN-DXP-003",
+  "code_sha": "be6bdbcdb657cc1a9309700a052f9a0c3e89e56b",
+  "input_hash": "4a560c708c3ab854bd9179420126116db8d084834755fff35734f95070908963",
+  "output_hash": "a73b4b9611a4c5ca4309022584f7cad03ce7add0c0524c5f64716963a37ed9ba",
+  "provider_manifest": {
+    "provider": "zai",
+    "model": "glm-4-plus",
+    "version": "z-ai-web-dev-sdk",
+    "configuration": {
+      "temperature": 0.2,
+      "max_tokens": 4096,
+      "system_sha": "1f5a3fff3aebc2e1d44b2312f4b604b5c2911cacaf452eb6ca705c724fc9142b"
+    },
+    "prompt_sha": "7ff24559a767f6f6ae38d670f16ca86af46b6e64c3341e026c9ef1c652e1c6f3",
+    "seed": null,
+    "tool_versions": {
+      "z_ai_cli": "z-ai"
+    },
+    "timestamp": "2026-08-08T09:53:08.516978+00:00",
+    "latency_ms": 6019,
+    "success": true,
+    "error": ""
+  },
+  "result": {
+    "hypothesis_id": "H-DXP-003-001",
+    "failure_modes": [
+      {
+        "category": "FRAGILE_ASSUMPTION",
+        "description": "Range estimation accuracy is insufficient for reliable pulse adaptation",
+        "severity": "HIGH",
+        "evidence": "Sea clutter severely corrupts range estimates, making accurate real-time range determination unreliable for pulse adaptation decisions"
+      },
+      {
+        "category": "CONTRADICTS_KNOWN",
+        "description": "Pulse duration changes inherently increase range-Doppler coupling",
+        "severity": "HIGH",
+        "evidence": "Radar signal processing fundamentals show that varying pulse duration directly alters range-Doppler coupling characteristics, degrading performance"
+      },
+      {
+        "category": "BOUNDARY_BREAKS",
+        "description": "The approach fails at grazing angles and high sea states",
+        "severity": "MEDIUM",
+        "evidence": "Sea clutter models show unpredictable behavior at extreme conditions where adaptive pulse duration would have no predictable benefit"
+      },
+      {
+        "category": "PRIOR_ART_EXISTS",
+        "description": "Waveform diversity techniques already address this problem more effectively",
+        "severity": "MEDIUM",
+        "evidence": "Multiple studies demonstrate that joint time-frequency adaptive waveforms outperform simple pulse duration adjustments"
+      },
+      {
+        "category": "FALSIFIER_TRIGGERED",
+        "description": "Processing delays prevent real-time adaptation",
+        "severity": "HIGH",
+        "evidence": "Current FPGA processing cannot achieve the microsecond switching times required for effective pulse duration adaptation in practical radar systems"
+      },
+      {
+        "category": "INCOMPATIBLE_TARGET",
+        "description": "The approach degrades performance for low-RCS targets",
+        "severity": "HIGH",
+        "evidence": "Longer pulses reduce range resolution, making small or low-observable targets even harder to detect"
+      }
+    ],
+    "survives": false,
+    "outcome": "ADVERSARIAL_FAILED",
+    "n_high_severity": 4,
+    "n_medium_severity": 2,
+    "n_low_severity": 0,
+    "source_hypothesis_hash": ""
+  },
+  "timestamp": "2026-08-08T09:53:14.536863+00:00"
+}

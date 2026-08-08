@@ -1,0 +1,136 @@
+{
+  "stage": "04_hypotheses",
+  "run_id": "RUN-DXP-003",
+  "code_sha": "be6bdbcdb657cc1a9309700a052f9a0c3e89e56b",
+  "input_hash": "1b8f824b02d8d4110323129630a3ffad0c54943f8a42bf197e3fd073a0747856",
+  "output_hash": "1e4cfe94c783bc4ff21b8d117ad70fbdc24c832ee11ca84d06f646619a4d95e6",
+  "provider_manifest": {
+    "provider": "zai",
+    "model": "glm-4-plus",
+    "version": "z-ai-web-dev-sdk",
+    "configuration": {
+      "temperature": 0.3,
+      "max_tokens": 4096,
+      "system_sha": "38a0abb453a9eb9fd88d0b4dd513feea94d69501c86ec3d4d7778b86034369c8"
+    },
+    "prompt_sha": "f76d505767e9a92b95b6317cb9886de101683f64b88f9c87af62d797c6c9e3e5",
+    "seed": null,
+    "tool_versions": {
+      "z_ai_cli": "z-ai"
+    },
+    "timestamp": "2026-08-08T09:52:49.891361+00:00",
+    "latency_ms": 18622,
+    "success": true,
+    "error": ""
+  },
+  "result": {
+    "hypotheses": [
+      {
+        "hypothesis_id": "H-DXP-003-001",
+        "claim": "Adaptive pulse duration based on target range feedback reduces sea clutter false alarms while maintaining detection performance",
+        "mechanism": "The radar system continuously estimates target range and adjusts pulse duration accordingly. Shorter pulses are used for near targets to maintain resolution, while longer pulses are used for distant targets to increase energy on target and improve signal-to-clutter ratio.",
+        "evidence": [
+          "Bioacoustic systems in bats demonstrate adaptive pulse emission based on target distance",
+          "LFM waveforms show range-dependent clutter characteristics",
+          "Existing radar systems use pulse duration adjustments for specific scenarios"
+        ],
+        "assumptions": [
+          "Range estimation accuracy is sufficient for pulse adaptation",
+          "Sea clutter characteristics vary predictably with range",
+          "Pulse duration changes do not introduce significant range-Doppler coupling",
+          "FPGA hardware can implement real-time pulse generation switching"
+        ],
+        "predictions": [],
+        "expected_failure_modes": [
+          "Range-Doppler coupling becomes problematic at certain pulse durations",
+          "Switching between pulse durations introduces range ambiguities",
+          "Processing delays prevent real-time adaptation"
+        ],
+        "novelty_rationale": "Unlike fixed waveform systems, this approach dynamically optimizes pulse parameters based on real-time environmental feedback, similar to how bioacoustic systems adapt their signals",
+        "testability": "Can be implemented by modifying existing radar pulse generation algorithms to include range-dependent pulse duration control",
+        "falsifier": "If the system shows increased false alarm rates or reduced detection probability when implementing adaptive pulse duration compared to fixed LFM waveforms across all target ranges",
+        "epistemic_state": "HYPOTHESIZED",
+        "parent_hypothesis_ids": [],
+        "provenance": {
+          "nodes": {},
+          "edges": [],
+          "committed_hash": null
+        },
+        "is_testable": true,
+        "provenance_root_hash": ""
+      },
+      {
+        "hypothesis_id": "H-DXP-003-002",
+        "claim": "Adaptive waveform generation based on clutter feedback rather than target range reduces false alarms while maintaining detection",
+        "mechanism": "The radar system continuously analyzes clutter characteristics across different ranges and adapts pulse parameters to minimize clutter returns while maintaining sufficient energy for target detection. This approach focuses on suppressing the interference source rather than optimizing for target characteristics.",
+        "evidence": [
+          "Bioacoustic systems adjust signals based on environmental interference",
+          "Existing radar systems use clutter maps for signal processing",
+          "Adaptive filtering shows promise in radar applications"
+        ],
+        "assumptions": [
+          "Clutter characteristics can be accurately measured in real-time",
+          "Clutter patterns are consistent enough for adaptive response",
+          "Pulse parameter adjustments can effectively suppress clutter without compromising target detection",
+          "Processing hardware can handle real-time clutter analysis and waveform adaptation"
+        ],
+        "predictions": [],
+        "expected_failure_modes": [
+          "Clutter characteristics change too rapidly for adaptation",
+          "Clutter suppression inadvertently reduces target returns",
+          "Processing requirements exceed FPGA capabilities"
+        ],
+        "novelty_rationale": "Shifts the adaptation focus from target characteristics to interference suppression, analogous to how bioacoustic systems adjust to ambient noise rather than just target distance",
+        "testability": "Can be tested by implementing clutter analysis algorithms that drive waveform adaptation rather than target range estimates",
+        "falsifier": "If the system shows no improvement in false alarm rates or degraded detection performance when using clutter-driven adaptation compared to range-driven or fixed waveforms",
+        "epistemic_state": "HYPOTHESIZED",
+        "parent_hypothesis_ids": [],
+        "provenance": {
+          "nodes": {},
+          "edges": [],
+          "committed_hash": null
+        },
+        "is_testable": true,
+        "provenance_root_hash": ""
+      },
+      {
+        "hypothesis_id": "H-DXP-003-003",
+        "claim": "Multi-pulse adaptive strategy combining different pulse durations based on both target range and clutter characteristics optimizes detection while minimizing false alarms",
+        "mechanism": "The radar system employs a sequence of pulses with different durations in each dwell, with each pulse optimized for specific conditions. A short pulse maintains resolution for near targets, a medium pulse balances resolution and energy for mid-range targets, and a long pulse maximizes energy for distant targets while being weighted based on local clutter conditions.",
+        "evidence": [
+          "Some bioacoustic systems use multiple call types in sequence",
+          "Multi-pulse radar techniques exist but are not commonly adapted to clutter suppression",
+          "Frequency diversity approaches have shown promise in radar applications"
+        ],
+        "assumptions": [
+          "Multiple pulse types can be generated and processed within real-time constraints",
+          "Clutter characteristics vary sufficiently across ranges to justify multiple pulse types",
+          "Target returns can be correctly associated with the appropriate pulse type",
+          "Processing hardware can handle the increased computational load"
+        ],
+        "predictions": [],
+        "expected_failure_modes": [
+          "Increased pulse sequence reduces dwell time on targets",
+          "Processing multiple pulse types exceeds FPGA capabilities",
+          "Pulse interactions create new interference patterns"
+        ],
+        "novelty_rationale": "Combines range-based and clutter-based adaptation strategies in a multi-pulse approach, analogous to how some bioacoustic systems use multiple signal types in sequence",
+        "testability": "Can be implemented by modifying the radar to generate a sequence of differently duration pulses in each dwell and analyzing the results separately",
+        "falsifier": "If the multi-pulse approach shows no improvement in false alarm rate or detection probability compared to single adaptive pulse approaches, or if the processing requirements exceed real-time capabilities",
+        "epistemic_state": "HYPOTHESIZED",
+        "parent_hypothesis_ids": [],
+        "provenance": {
+          "nodes": {},
+          "edges": [],
+          "committed_hash": null
+        },
+        "is_testable": true,
+        "provenance_root_hash": ""
+      }
+    ],
+    "distinguishing_predictions": "The range-based adaptation hypothesis will show optimal performance at medium ranges where clutter characteristics are most predictable. The clutter-based adaptation hypothesis will perform better in environments with highly variable clutter across different ranges. The multi-pulse approach will show the best overall performance but will be most sensitive to processing delays and may exhibit range ambiguities not present in the other approaches. Additionally, the range-based approach will show stronger range-Doppler coupling effects, while the clutter-based approach will be more sensitive to rapid clutter changes, and the multi-pulse approach will require more computational resources.",
+    "transfer_id": "TH-DXP-003-001",
+    "source_transfer_hash": "22b1c0ef24b6087870f1df5c61014e28db286f91d265fdde653a7b1a3b960dea"
+  },
+  "timestamp": "2026-08-08T09:53:08.515549+00:00"
+}

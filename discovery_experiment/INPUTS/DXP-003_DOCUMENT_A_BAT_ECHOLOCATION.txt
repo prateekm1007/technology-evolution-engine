@@ -1,0 +1,41 @@
+Bat Echolocation Signal Processing and Adaptive Call Design
+
+Bats of the suborder Microchiroptera navigate and hunt using laryngeal echolocation. They emit ultrasonic calls through their larynx and process the returning echoes to build a three-dimensional acoustic image of their surroundings. The signal processing strategies employed by echolocating bats represent one of the most sophisticated natural sonar systems known.
+
+FM Sweep Structure
+
+Most echolocating bats use frequency-modulated (FM) calls: short pulses that sweep downward in frequency, typically spanning 20-80 kHz in 2-10 milliseconds. The FM sweep provides range resolution through the time-bandwidth product: the wider the bandwidth and the shorter the duration, the finer the range resolution. A bat hunting insects in cluttered vegetation uses short-duration (2-3 ms), wide-bandwidth (50+ kHz) sweeps to resolve targets at close range (1-3 m) against background clutter. A bat searching for prey in open air uses longer-duration (5-10 ms), narrower-bandwidth sweeps to detect distant targets (5-10 m) with greater sensitivity but coarser resolution.
+
+Adaptive Call Duration
+
+Bats dynamically adjust their call duration based on the distance to the target. As a bat approaches prey, it progressively shortens its calls. This serves two purposes: (1) shorter calls reduce the overlap between the outgoing call and the returning echo, which would otherwise cause masking and degrade detection; (2) shorter calls allow more rapid updates, enabling finer tracking of the target's trajectory. The bat effectively transitions from a "search" mode (long calls, high sensitivity, coarse resolution) to an "approach" mode (short calls, lower sensitivity, fine resolution) to a "terminal" mode (very short calls, maximum update rate).
+
+This adaptation is not pre-programmed but driven by real-time echo feedback. The bat measures the echo delay (which gives target range) and adjusts its next call's duration accordingly. The relationship is approximately: call_duration = 2 * target_range / sound_speed + safety_margin, where the safety_margin ensures the call ends before the echo arrives.
+
+Doppler-Shift Compensation (DSC)
+
+Horseshoe bats (Rhinolophidae) use constant-frequency (CF) calls rather than FM calls. These bats emit a long-duration call at a specific frequency and listen for Doppler shifts in the echo caused by their own flight speed and the target's movement. The auditory system has a specialized "acoustic fovea" — a region of the cochlea tuned to a narrow frequency band around the call frequency — that provides extreme sensitivity to frequency shifts.
+
+To keep the echo within this acoustic fovea, horseshoe bats perform Doppler-shift compensation: they lower their call frequency as they fly faster, so that the Doppler-shifted echo remains at the foveal frequency. This is a closed-loop feedback system: the bat detects the echo frequency error and adjusts the next call to compensate. The compensation is not perfect — there is a residual frequency offset that encodes the target's relative velocity, which the bat uses to discriminate flying insects from stationary clutter.
+
+Jamming Avoidance Response (JAR)
+
+When multiple bats echolocate simultaneously, their calls can interfere with each other. Bats exhibit a jamming avoidance response: they shift their call frequency away from the frequencies used by nearby bats. This is similar to frequency-division multiple access in communication systems. The JAR is observed most clearly in bats hunting in groups: each individual tends to use a slightly different frequency band, reducing mutual interference.
+
+The JAR is driven by detecting overlapping echoes — when a bat hears an echo at a frequency and timing consistent with another bat's call rather than its own, it shifts its next call. The response is rapid (within 1-2 calls) and can shift the call frequency by 5-15 kHz.
+
+Echo Processing and Target Classification
+
+Bats process echoes using a combination of spectral and temporal features. The FM sweep creates a "spectrogram" that encodes target shape and texture: different frequencies reflect differently from different surface geometries, creating a spectral signature. The temporal structure encodes range and size. Bats can discriminate between insect species based on echo spectral signatures, and can detect fluttering wings through micro-Doppler modulations in the CF echo.
+
+The auditory processing involves specialized neurons that are tuned to specific combinations of frequency and timing, effectively performing a matched-filter operation on the echo. This neural matched filter is adapted to the bat's own call parameters, maximizing the signal-to-noise ratio for echoes of its specific call.
+
+Known Failure Modes
+
+1. Range ambiguity: When target range exceeds the call duration times the speed of sound, the echo from one call arrives during the next call, creating range ambiguity. Bats handle this by using call intervals longer than the maximum echo delay, but this limits the update rate.
+
+2. Clutter interference: In dense vegetation, echoes from background objects (leaves, branches) can mask target echoes. Bats reduce this by using directional calls and processing only the first-return echo (nearest target), but this strategy fails when the target is behind clutter.
+
+3. Frequency-dependent attenuation: High frequencies attenuate faster in air, limiting the detection range for high-frequency calls. Bats compensate by lowering their call frequency when searching for distant targets, but this reduces range resolution.
+
+4. Interference from conspecifics: In large colonies, the jamming avoidance response may be insufficient, and bats may experience degraded performance due to acoustic interference from many simultaneous callers.

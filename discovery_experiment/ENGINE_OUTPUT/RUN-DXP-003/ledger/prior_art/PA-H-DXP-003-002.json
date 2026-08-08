@@ -1,0 +1,19 @@
+{
+  "assessment_id": "PA-H-DXP-003-002",
+  "hypothesis_id": "H-DXP-003-002",
+  "status": "NOT_EVALUATED",
+  "search_scope": [
+    "dev_corpus"
+  ],
+  "queries": [
+    "Adaptive waveform generation based on clutter feedback rather than target range reduces false alarms while maintaining detection The radar system continuously analyzes clutter characteristics across different ranges and adapts pulse parameters to minimize clutter returns while maintaining sufficient energy for target detection. This approach focuses on suppressing the interference source rather than optimizing for target characteristics."
+  ],
+  "sources": [],
+  "matched_prior_art": [],
+  "similarity": "no matches in dev corpus \u2014 NOT proof of novelty",
+  "review_required": true,
+  "confidence": 0.3,
+  "cutoff": "2026-08-08",
+  "reviewer": "novelty_firewall_v0",
+  "timestamp": "2026-08-08T09:53:26.538230+00:00"
+}

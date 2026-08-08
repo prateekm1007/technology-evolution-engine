@@ -1,0 +1,74 @@
+{
+  "stage": "05_adversarial_H-DXP-003-002",
+  "run_id": "RUN-DXP-003",
+  "code_sha": "be6bdbcdb657cc1a9309700a052f9a0c3e89e56b",
+  "input_hash": "4b96e61fd68f45174350e150acd0aaf0435ab803b55ce0dc9f659fe577a705f4",
+  "output_hash": "1f93ff0a00af365c0b425e69109e2e63cf67155c7438c227e0a06e19f3a5f703",
+  "provider_manifest": {
+    "provider": "zai",
+    "model": "glm-4-plus",
+    "version": "z-ai-web-dev-sdk",
+    "configuration": {
+      "temperature": 0.2,
+      "max_tokens": 4096,
+      "system_sha": "1f5a3fff3aebc2e1d44b2312f4b604b5c2911cacaf452eb6ca705c724fc9142b"
+    },
+    "prompt_sha": "15183a02c746233e8bd2eb7150994ccc7d2c356b30c2ff2c48f390684f07d11d",
+    "seed": null,
+    "tool_versions": {
+      "z_ai_cli": "z-ai"
+    },
+    "timestamp": "2026-08-08T09:53:16.328038+00:00",
+    "latency_ms": 8234,
+    "success": true,
+    "error": ""
+  },
+  "result": {
+    "hypothesis_id": "H-DXP-003-002",
+    "failure_modes": [
+      {
+        "category": "FRAGILE_ASSUMPTION",
+        "description": "Clutter characteristics cannot be accurately measured in real-time due to the chaotic nature of environmental interference",
+        "severity": "HIGH",
+        "evidence": "Atmospheric conditions, weather phenomena, and environmental changes cause clutter to evolve unpredictably, making consistent measurement impossible"
+      },
+      {
+        "category": "CONTRADICTS_KNOWN",
+        "description": "Suppressing clutter inherently reduces target detection capability as targets exist within the same environmental context",
+        "severity": "HIGH",
+        "evidence": "Fundamental radar principles show that clutter and target signals occupy the same frequency space; suppressing one necessarily affects the other"
+      },
+      {
+        "category": "BOUNDARY_BREAKS",
+        "description": "Processing requirements for real-time clutter analysis exceed current FPGA capabilities",
+        "severity": "MEDIUM",
+        "evidence": "Modern radar systems already struggle with computational load; adding real-time clutter analysis would require processing power beyond current military-grade systems"
+      },
+      {
+        "category": "PRIOR_ART_EXISTS",
+        "description": "Similar approaches have been tried and failed in the past",
+        "severity": "MEDIUM",
+        "evidence": "Historical attempts at adaptive clutter suppression resulted in significant target detection losses, documented in IEEE papers from the 1990s"
+      },
+      {
+        "category": "FALSIFIER_TRIGGERED",
+        "description": "The proposed approach would fail in multi-path environments where clutter and target signals are indistinguishable",
+        "severity": "HIGH",
+        "evidence": "In urban or complex terrain scenarios, target returns are embedded in clutter returns, making separation impossible regardless of waveform adaptation"
+      },
+      {
+        "category": "INCOMPATIBLE_TARGET",
+        "description": "The approach fails for low-RCS targets that are inherently masked by clutter",
+        "severity": "HIGH",
+        "evidence": "Stealth targets and small objects have such low radar cross-sections that they're indistinguishable from background clutter regardless of waveform adaptation"
+      }
+    ],
+    "survives": false,
+    "outcome": "ADVERSARIAL_FAILED",
+    "n_high_severity": 4,
+    "n_medium_severity": 2,
+    "n_low_severity": 0,
+    "source_hypothesis_hash": ""
+  },
+  "timestamp": "2026-08-08T09:53:24.565492+00:00"
+}

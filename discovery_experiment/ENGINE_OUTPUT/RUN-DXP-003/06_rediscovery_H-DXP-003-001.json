@@ -1,0 +1,34 @@
+{
+  "stage": "06_rediscovery_H-DXP-003-001",
+  "run_id": "RUN-DXP-003",
+  "code_sha": "be6bdbcdb657cc1a9309700a052f9a0c3e89e56b",
+  "input_hash": "4a560c708c3ab854bd9179420126116db8d084834755fff35734f95070908963",
+  "output_hash": "8b64dac5f011351f23d19671284c91285ff097719f5aa69a99fbffe59bc2f54e",
+  "provider_manifest": {
+    "provider": "zai",
+    "model": "glm-4-plus",
+    "version": "z-ai-web-dev-sdk",
+    "configuration": {
+      "temperature": 0.1,
+      "max_tokens": 4096,
+      "system_sha": "dbdd0760dff49fc029b32b580a575b7de33a87d371edc2b0deec93bfb2b90b01"
+    },
+    "prompt_sha": "01c1f152a64493350a446be97cb548d0f7cddc262cacac717cb1cbb4d75f1688",
+    "seed": null,
+    "tool_versions": {
+      "z_ai_cli": "z-ai"
+    },
+    "timestamp": "2026-08-08T09:53:14.538511+00:00",
+    "latency_ms": 1781,
+    "success": true,
+    "error": ""
+  },
+  "result": {
+    "hypothesis_id": "H-DXP-003-001",
+    "classification": "PARAPHRASED_IN_INPUT",
+    "evidence": "The hypothesis about adaptive pulse duration based on target range feedback reducing sea clutter false alarms while maintaining detection performance is a direct paraphrase of the bat echolocation system described in the source document. The source explains how bats adjust call duration based on target distance: using shorter calls for near targets to maintain resolution and reduce masking, and longer calls for distant targets to increase sensitivity. This mirrors the hypothesis exactly, with the only difference being the domain (bat echolocation vs radar systems).",
+    "is_rediscovery": true,
+    "source_hypothesis_hash": ""
+  },
+  "timestamp": "2026-08-08T09:53:16.323849+00:00"
+}
