@@ -1,0 +1,34 @@
+{
+  "stage": "06_rediscovery_H-DXP-002-001",
+  "run_id": "RUN-DXP-002",
+  "code_sha": "d6b7aee5790e2d45839fb08b7add0c89d4e40d09",
+  "input_hash": "69b048e4f5ed0b6b72ddf222a34eda704908e1e62f25b9de8f6c18c6fa76f390",
+  "output_hash": "18f5434e41a234b9ec09417a4280f743e9f59d5f3970d3972294b8dad2057fb9",
+  "provider_manifest": {
+    "provider": "zai",
+    "model": "glm-4-plus",
+    "version": "z-ai-web-dev-sdk",
+    "configuration": {
+      "temperature": 0.1,
+      "max_tokens": 4096,
+      "system_sha": "dbdd0760dff49fc029b32b580a575b7de33a87d371edc2b0deec93bfb2b90b01"
+    },
+    "prompt_sha": "01629132085090e9812cee8e8095133eeefa8d17b20be68991665753f14553ab",
+    "seed": null,
+    "tool_versions": {
+      "z_ai_cli": "z-ai"
+    },
+    "timestamp": "2026-08-08T09:43:33.005038+00:00",
+    "latency_ms": 1895,
+    "success": true,
+    "error": ""
+  },
+  "result": {
+    "hypothesis_id": "H-DXP-002-001",
+    "classification": "PARAPHRASED_IN_INPUT",
+    "evidence": "The hypothesis mechanism directly paraphrases information from the source document. The text describes how 'raised bumps (approximately 0.5 mm in diameter, spaced about 0.5-1.0 mm apart) that are hydrophilic (water-attracting), surrounded by a background of hydrophobic (water-repelling) microstructured waxy channels' and explains that 'microscopic water droplets preferentially nucleate on the hydrophilic bumps' and 'The hydrophilic nature of the bump keeps the growing droplet pinned in place.' This matches the hypothesis claim about hierarchical surface structure with differential wettability creating capillary forces that pull droplets toward hydrophilic regions.",
+    "is_rediscovery": true,
+    "source_hypothesis_hash": ""
+  },
+  "timestamp": "2026-08-08T09:43:34.901338+00:00"
+}

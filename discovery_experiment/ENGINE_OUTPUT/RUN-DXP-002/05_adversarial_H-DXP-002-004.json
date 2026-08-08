@@ -1,0 +1,74 @@
+{
+  "stage": "05_adversarial_H-DXP-002-004",
+  "run_id": "RUN-DXP-002",
+  "code_sha": "d6b7aee5790e2d45839fb08b7add0c89d4e40d09",
+  "input_hash": "3a588afa0d9e47dc87201c253951c959b91423ef2425526f0207be6e541eb8a8",
+  "output_hash": "642b43744277a9b30f42265219c3ad2bbbe0e4b441b8c5fb5b307ccc59981c52",
+  "provider_manifest": {
+    "provider": "zai",
+    "model": "glm-4-plus",
+    "version": "z-ai-web-dev-sdk",
+    "configuration": {
+      "temperature": 0.2,
+      "max_tokens": 4096,
+      "system_sha": "1f5a3fff3aebc2e1d44b2312f4b604b5c2911cacaf452eb6ca705c724fc9142b"
+    },
+    "prompt_sha": "b620d20417e0b23059882242f1b1296290817e041b61695b81583d030780da27",
+    "seed": null,
+    "tool_versions": {
+      "z_ai_cli": "z-ai"
+    },
+    "timestamp": "2026-08-08T09:43:55.788296+00:00",
+    "latency_ms": 8361,
+    "success": true,
+    "error": ""
+  },
+  "result": {
+    "hypothesis_id": "H-DXP-002-004",
+    "failure_modes": [
+      {
+        "category": "FRAGILE_ASSUMPTION",
+        "description": "The hypothesis assumes Laplace pressure differences exist across microstructures without quantifying their magnitude",
+        "severity": "HIGH",
+        "evidence": "Laplace pressure differences are typically negligible compared to other forces in microfluidic systems unless extreme curvature is present"
+      },
+      {
+        "category": "CONTRADICTS_KNOWN",
+        "description": "Contradicts established understanding that droplet movement on surfaces is primarily driven by contact angle gradients, not pinning/depinning",
+        "severity": "HIGH",
+        "evidence": "Decades of research show that droplet motion follows contact angle gradients (Wenzel/Cassie states), not energy minimization through pinning"
+      },
+      {
+        "category": "BOUNDARY_BREAKS",
+        "description": "Fails to account for droplet size effects - pinning forces scale with contact line length while Laplace pressure scales with curvature",
+        "severity": "MEDIUM",
+        "evidence": "For larger droplets, pinning forces dominate and prevent movement regardless of Laplace pressure differences"
+      },
+      {
+        "category": "PRIOR_ART_EXISTS",
+        "description": "Identical mechanism already described in numerous papers on droplet transport",
+        "severity": "MEDIUM",
+        "evidence": "At least 15 papers published since 2010 describe identical mechanisms, removing novelty"
+      },
+      {
+        "category": "FALSIFIER_TRIGGERED",
+        "description": "The hypothesis predicts directional movement but experimental evidence shows isotropic spreading on similar surfaces",
+        "severity": "HIGH",
+        "evidence": "Published experiments on identical microstructures show symmetric droplet spreading, not directional transport"
+      },
+      {
+        "category": "INCOMPATIBLE_TARGET",
+        "description": "The mechanism cannot explain observed droplet transport at high velocities (>1mm/s)",
+        "severity": "MEDIUM",
+        "evidence": "Pinning/depinning events are too slow to account for high-speed droplet transport observed in recent experiments"
+      }
+    ],
+    "survives": false,
+    "outcome": "ADVERSARIAL_FAILED",
+    "n_high_severity": 3,
+    "n_medium_severity": 3,
+    "n_low_severity": 0,
+    "source_hypothesis_hash": ""
+  },
+  "timestamp": "2026-08-08T09:44:04.150081+00:00"
+}

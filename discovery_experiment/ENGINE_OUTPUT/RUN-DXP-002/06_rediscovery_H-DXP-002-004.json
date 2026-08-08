@@ -1,0 +1,34 @@
+{
+  "stage": "06_rediscovery_H-DXP-002-004",
+  "run_id": "RUN-DXP-002",
+  "code_sha": "d6b7aee5790e2d45839fb08b7add0c89d4e40d09",
+  "input_hash": "3a588afa0d9e47dc87201c253951c959b91423ef2425526f0207be6e541eb8a8",
+  "output_hash": "003e84352a1427a4ff8b30f43ef8bc6b415aa765caf0a3df76eed2965a7cb65c",
+  "provider_manifest": {
+    "provider": "zai",
+    "model": "glm-4-plus",
+    "version": "z-ai-web-dev-sdk",
+    "configuration": {
+      "temperature": 0.1,
+      "max_tokens": 4096,
+      "system_sha": "dbdd0760dff49fc029b32b580a575b7de33a87d371edc2b0deec93bfb2b90b01"
+    },
+    "prompt_sha": "f55a9f8344e406747a2dc33a05a1bed6acb403164976567321d1e9718ecb2013",
+    "seed": null,
+    "tool_versions": {
+      "z_ai_cli": "z-ai"
+    },
+    "timestamp": "2026-08-08T09:44:04.152210+00:00",
+    "latency_ms": 2362,
+    "success": true,
+    "error": ""
+  },
+  "result": {
+    "hypothesis_id": "H-DXP-002-004",
+    "classification": "PARAPHRASED_IN_INPUT",
+    "evidence": "The hypothesis describes directional transport through Laplace pressure differences and droplet pinning/depinning events, which is directly supported by the source document. The document explains how the microstructured surface creates varying contact angles (hydrophilic bumps and hydrophobic channels) that result in different Laplace pressures across droplets. It also explicitly mentions that the hydrophilic nature of the bumps keeps growing droplets pinned in place, which aligns with the pinning/depinning mechanism described in the hypothesis. The hypothesis is essentially a restatement of the water collection mechanism described in the source.",
+    "is_rediscovery": true,
+    "source_hypothesis_hash": ""
+  },
+  "timestamp": "2026-08-08T09:44:06.515012+00:00"
+}

@@ -1,0 +1,33 @@
+{
+  "hypothesis_id": "H-DXP-002-004",
+  "claim": "Directional transport is achieved through a combination of Laplace pressure differences and droplet pinning/depinning events",
+  "mechanism": "The microstructured surface creates varying contact angles and pinning sites that result in different Laplace pressures across droplets. When droplets grow and overcome pinning forces, they move toward regions where the energy state is lower",
+  "evidence": [
+    "Contact angle hysteresis affects droplet mobility",
+    "Laplace pressure influences droplet shape and movement",
+    "Surface energy minimization is a fundamental driving force"
+  ],
+  "assumptions": [
+    "Laplace pressure differences exist across the microstructure",
+    "Pinning/depinning events can be controlled by surface design",
+    "Energy minimization drives droplet movement"
+  ],
+  "predictions": [],
+  "expected_failure_modes": [
+    "Pinning forces too strong to allow depinning",
+    "Inconsistent pinning behavior under varying conditions",
+    "Energy differences too small to drive directional movement"
+  ],
+  "novelty_rationale": "This hypothesis emphasizes the role of pinning/depinning events and energy minimization rather than continuous forces",
+  "testability": "Can be tested by measuring contact angle hysteresis and pinning forces at different locations on the surface",
+  "falsifier": "If droplets move toward higher energy states, or if transport occurs independently of pinning/depinning events",
+  "epistemic_state": "HYPOTHESIZED",
+  "parent_hypothesis_ids": [],
+  "provenance": {
+    "nodes": {},
+    "edges": [],
+    "committed_hash": null
+  },
+  "is_testable": true,
+  "provenance_root_hash": ""
+}

@@ -1,0 +1,166 @@
+{
+  "stage": "04_hypotheses",
+  "run_id": "RUN-DXP-002",
+  "code_sha": "d6b7aee5790e2d45839fb08b7add0c89d4e40d09",
+  "input_hash": "7b884b9ece3e27896b0a0b8a579875e30aeff4ac7966f6cd02bb54fcf12b800a",
+  "output_hash": "1a50694f9d9f7bffa760ea85e72446acf0a985ba430fb577945383fcceb5439f",
+  "provider_manifest": {
+    "provider": "zai",
+    "model": "glm-4-plus",
+    "version": "z-ai-web-dev-sdk",
+    "configuration": {
+      "temperature": 0.3,
+      "max_tokens": 4096,
+      "system_sha": "38a0abb453a9eb9fd88d0b4dd513feea94d69501c86ec3d4d7778b86034369c8"
+    },
+    "prompt_sha": "1c7eaf994dd27edd649f9e8356d966bed2ef7909e4b0afdf914744f868effdb2",
+    "seed": null,
+    "tool_versions": {
+      "z_ai_cli": "z-ai"
+    },
+    "timestamp": "2026-08-08T09:42:44.480264+00:00",
+    "latency_ms": 39716,
+    "success": true,
+    "error": ""
+  },
+  "result": {
+    "hypotheses": [
+      {
+        "hypothesis_id": "H-DXP-002-001",
+        "claim": "The hierarchical surface structure with differential wettability creates capillary forces that actively pull droplets toward hydrophilic regions",
+        "mechanism": "Microstructured hydrophilic regions generate stronger capillary forces than hydrophobic regions, creating a wettability gradient that drives directional transport of water droplets without requiring external energy input",
+        "evidence": [
+          "Insect exoskeletons demonstrate directional water transport",
+          "Microstructured surfaces show enhanced droplet mobility",
+          "Wettability gradients have been shown to influence droplet movement"
+        ],
+        "assumptions": [
+          "Capillary forces are the primary driving mechanism",
+          "Wettability gradient is maintained during droplet transport",
+          "Surface tension differences are sufficient to overcome adhesion forces"
+        ],
+        "predictions": [],
+        "expected_failure_modes": [
+          "Capillary forces insufficient to overcome droplet adhesion",
+          "Gradient degradation over time due to surface contamination",
+          "Inconsistent transport under varying humidity conditions"
+        ],
+        "novelty_rationale": "This hypothesis specifically identifies capillary forces as the primary mechanism, distinguishing it from other potential driving forces",
+        "testability": "Can be tested by measuring capillary forces at different wettability interfaces and correlating with droplet transport rates",
+        "falsifier": "If droplets move toward hydrophobic regions instead of hydrophilic regions, or if transport occurs equally in both directions when wettability gradient is eliminated",
+        "epistemic_state": "HYPOTHESIZED",
+        "parent_hypothesis_ids": [],
+        "provenance": {
+          "nodes": {},
+          "edges": [],
+          "committed_hash": null
+        },
+        "is_testable": true,
+        "provenance_root_hash": ""
+      },
+      {
+        "hypothesis_id": "H-DXP-002-002",
+        "claim": "Directional transport is achieved through asymmetric droplet coalescence events that preferentially occur in specific directions",
+        "mechanism": "The microstructured surface creates conditions where droplet coalescence events are more likely to occur in one direction than another, with each coalescence event providing a small directional push that accumulates to drive transport",
+        "evidence": [
+          "Droplet coalescence can generate momentum",
+          "Surface topography influences coalescence behavior",
+          "Asymmetric structures can create directional bias"
+        ],
+        "assumptions": [
+          "Coalescence events are directional and asymmetric",
+          "Multiple small directional pushes can overcome surface adhesion",
+          "Surface geometry influences coalescence probability"
+        ],
+        "predictions": [],
+        "expected_failure_modes": [
+          "Insufficient coalescence events to maintain transport",
+          "Random coalescence events overwhelming directional bias",
+          "Large droplets blocking access to nucleation sites"
+        ],
+        "novelty_rationale": "This hypothesis proposes that transport is driven by the cumulative effect of many asymmetric coalescence events rather than continuous forces",
+        "testability": "Can be tested by high-speed imaging of droplet coalescence events and measuring directional bias",
+        "falsifier": "If directional transport occurs even when coalescence events are prevented or made symmetric, or if transport direction correlates with surface geometry rather than wettability pattern",
+        "epistemic_state": "HYPOTHESIZED",
+        "parent_hypothesis_ids": [],
+        "provenance": {
+          "nodes": {},
+          "edges": [],
+          "committed_hash": null
+        },
+        "is_testable": true,
+        "provenance_root_hash": ""
+      },
+      {
+        "hypothesis_id": "H-DXP-002-003",
+        "claim": "The surface structure creates a Marangoni effect where surface tension gradients drive directional transport",
+        "mechanism": "Temperature or composition differences across the surface create surface tension gradients (Marangoni effect), causing droplets to move from regions of higher surface tension to lower surface tension",
+        "evidence": [
+          "Marangoni effects drive droplet movement on some surfaces",
+          "Temperature gradients can influence droplet behavior",
+          "Surface tension differences can create directional forces"
+        ],
+        "assumptions": [
+          "Surface tension gradients can be maintained across the microstructure",
+          "Marangoni forces are stronger than other forces acting on droplets",
+          "Temperature/composition differences are achievable under field conditions"
+        ],
+        "predictions": [],
+        "expected_failure_modes": [
+          "Insufficient temperature/composition gradient to generate meaningful Marangoni forces",
+          "Rapid equalization of gradients preventing sustained transport",
+          "Environmental conditions overwhelming engineered gradients"
+        ],
+        "novelty_rationale": "This hypothesis proposes that surface tension gradients rather than wettability gradients are the primary driving force",
+        "testability": "Can be tested by measuring temperature/composition gradients across the surface and correlating with transport direction",
+        "falsifier": "If transport direction reverses when temperature/composition gradient is reversed, or if no transport occurs when temperature/composition gradients are eliminated",
+        "epistemic_state": "HYPOTHESIZED",
+        "parent_hypothesis_ids": [],
+        "provenance": {
+          "nodes": {},
+          "edges": [],
+          "committed_hash": null
+        },
+        "is_testable": true,
+        "provenance_root_hash": ""
+      },
+      {
+        "hypothesis_id": "H-DXP-002-004",
+        "claim": "Directional transport is achieved through a combination of Laplace pressure differences and droplet pinning/depinning events",
+        "mechanism": "The microstructured surface creates varying contact angles and pinning sites that result in different Laplace pressures across droplets. When droplets grow and overcome pinning forces, they move toward regions where the energy state is lower",
+        "evidence": [
+          "Contact angle hysteresis affects droplet mobility",
+          "Laplace pressure influences droplet shape and movement",
+          "Surface energy minimization is a fundamental driving force"
+        ],
+        "assumptions": [
+          "Laplace pressure differences exist across the microstructure",
+          "Pinning/depinning events can be controlled by surface design",
+          "Energy minimization drives droplet movement"
+        ],
+        "predictions": [],
+        "expected_failure_modes": [
+          "Pinning forces too strong to allow depinning",
+          "Inconsistent pinning behavior under varying conditions",
+          "Energy differences too small to drive directional movement"
+        ],
+        "novelty_rationale": "This hypothesis emphasizes the role of pinning/depinning events and energy minimization rather than continuous forces",
+        "testability": "Can be tested by measuring contact angle hysteresis and pinning forces at different locations on the surface",
+        "falsifier": "If droplets move toward higher energy states, or if transport occurs independently of pinning/depinning events",
+        "epistemic_state": "HYPOTHESIZED",
+        "parent_hypothesis_ids": [],
+        "provenance": {
+          "nodes": {},
+          "edges": [],
+          "committed_hash": null
+        },
+        "is_testable": true,
+        "provenance_root_hash": ""
+      }
+    ],
+    "distinguishing_predictions": "The hypotheses can be distinguished by: 1) Measuring transport direction when wettability gradient is reversed (capillary hypothesis predicts reversal, Marangoni hypothesis may not), 2) Preventing coalescence events (asymmetric coalescence hypothesis predicts reduced transport, others may not), 3) Creating uniform temperature/composition (Marangoni hypothesis predicts reduced transport, others may not), 4) Measuring forces on individual droplets (capillary hypothesis predicts force toward hydrophilic regions, Laplace pressure hypothesis predicts force toward lower energy states). Additionally, high-speed imaging can reveal whether transport is continuous (capillary/Marangoni) or occurs in discrete steps (coalescence/pinning-depinning).",
+    "transfer_id": "TH-DXP-002-001",
+    "source_transfer_hash": "de04ec3e169c4bcb448d57d171aa9e0db35ea8cdfa60ddcaf1c555d8c08b0659"
+  },
+  "timestamp": "2026-08-08T09:43:24.199035+00:00"
+}

@@ -1,0 +1,70 @@
+{
+  "stage": "03_transfer",
+  "run_id": "RUN-DXP-002",
+  "code_sha": "d6b7aee5790e2d45839fb08b7add0c89d4e40d09",
+  "input_hash": "451dd22857e98f0c70c61b52b57115b38c8877bcd551b520bf6eba8acbc2664b",
+  "output_hash": "de04ec3e169c4bcb448d57d171aa9e0db35ea8cdfa60ddcaf1c555d8c08b0659",
+  "provider_manifest": {
+    "provider": "zai",
+    "model": "glm-4-plus",
+    "version": "z-ai-web-dev-sdk",
+    "configuration": {
+      "temperature": 0.25,
+      "max_tokens": 4096,
+      "system_sha": "f596607dc28478b7317f95a37a7bf99f11ad2e25e10bde5d1c0a9009ba6b1583"
+    },
+    "prompt_sha": "306da8c3c31276be742b6189c12848d03e024b8efa40cfd02377fd167c8be1e7",
+    "seed": null,
+    "tool_versions": {
+      "z_ai_cli": "z-ai"
+    },
+    "timestamp": "2026-08-08T09:42:40.323785+00:00",
+    "latency_ms": 4153,
+    "success": true,
+    "error": ""
+  },
+  "result": {
+    "transfers": [
+      {
+        "transfer_id": "TH-DXP-002-001",
+        "source_domain": "entomology",
+        "source_mechanism": "Structured surface with hydrophilic and hydrophobic regions enables droplet nucleation, growth, and directional transport under specific environmental conditions",
+        "source_conditions": [
+          "presence of condensed water",
+          "optimal wind flow",
+          "appropriate temperature range"
+        ],
+        "target_domain": "materials engineering",
+        "target_problem": "Arid coastal regions experience regular fog events but almost no rain. Passive dew condensers using flat foil sheets achieve only 0.1-0.3 L/m\u00b2/night. A better surface design is needed that promotes dropwise condensation, nucleates droplets efficiently, transports them to drainage rapidly, is durable, low-cost, and requires no energy input.",
+        "transferred_principle": "Hierarchical surface structure with differential wettability enables directional transport of condensed water droplets from atmosphere to collection point",
+        "required_translation": "Replace insect exoskeleton material with food-grade polymer substrate; maintain microstructured hydrophilic/hydrophobic pattern using laser ablation or nanoimprint lithography; incorporate structural support for durability; design collection channel system that maintains gradient without energy input",
+        "expected_effect": "Enhanced water collection rate through efficient nucleation, rapid droplet growth, and directional transport toward collection point",
+        "boundary_conditions": [
+          "fog density sufficient for condensation",
+          "temperature range supporting condensation (5-25\u00b0C)",
+          "minimal surface contamination",
+          "wind speeds that don't disrupt droplet growth (0.5-5 m/s)"
+        ],
+        "failure_conditions": [
+          "extreme temperatures outside condensation range",
+          "high wind speeds disrupting droplet transport",
+          "surface contamination reducing wettability contrast",
+          "insufficient fog density"
+        ],
+        "testable_prediction": "A condenser surface with microstructured hydrophilic/hydrophobic pattern will collect at least 1.0 L/m\u00b2/night in fog conditions with 70-90% relative humidity at 10-20\u00b0C, compared to 0.1-0.3 L/m\u00b2/night for flat surfaces under identical conditions",
+        "epistemic_state": "HYPOTHESIZED",
+        "provenance": {
+          "nodes": {},
+          "edges": [],
+          "committed_hash": null
+        },
+        "provenance_root_hash": ""
+      }
+    ],
+    "rejected": [],
+    "n_accepted": 1,
+    "n_rejected": 0,
+    "source_abstraction_hash": "37418beefea839831419d47ac91541ab06a3b75245e0f1c30120640126d7acc7"
+  },
+  "timestamp": "2026-08-08T09:42:44.478238+00:00"
+}

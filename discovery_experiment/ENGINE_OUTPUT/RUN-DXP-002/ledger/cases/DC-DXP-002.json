@@ -1,0 +1,456 @@
+{
+  "case_id": "DC-DXP-002",
+  "created_at": "2026-08-08T09:44:06.529999+00:00",
+  "engine_version": "",
+  "knowledge_snapshot": "",
+  "input_sources": [
+    "Fog-Harvesting Mechanism of the Namib Desert Fog-Basking Beetle"
+  ],
+  "input_domains": [
+    "entomology",
+    "materials engineering"
+  ],
+  "mechanisms": [],
+  "constraints": [],
+  "observations": [],
+  "candidate_relationship": "",
+  "candidate_mechanism": "",
+  "candidate_hypothesis": "",
+  "predictions": [],
+  "proposed_experiment": "",
+  "prior_art_status": "NOT_EVALUATED",
+  "novelty_status": "NOT_EVALUATED",
+  "validation_status": "UNKNOWN",
+  "evidence": [
+    "source_doc:doc_702465dfbd26",
+    "mechanism_graph:DXP-002",
+    "mechanism_pattern:DXP-002",
+    "transfer:TH-DXP-002-001",
+    "hypothesis:H-DXP-002-001",
+    "adversarial:H-DXP-002-001",
+    "rediscovery:H-DXP-002-001",
+    "novelty:H-DXP-002-001",
+    "hypothesis:H-DXP-002-002",
+    "adversarial:H-DXP-002-002",
+    "rediscovery:H-DXP-002-002",
+    "novelty:H-DXP-002-002",
+    "hypothesis:H-DXP-002-003",
+    "adversarial:H-DXP-002-003",
+    "rediscovery:H-DXP-002-003",
+    "novelty:H-DXP-002-003",
+    "hypothesis:H-DXP-002-004",
+    "adversarial:H-DXP-002-004",
+    "rediscovery:H-DXP-002-004",
+    "novelty:H-DXP-002-004",
+    "run:DXP-002"
+  ],
+  "provenance": {
+    "nodes": {
+      "source_doc:doc_702465dfbd26": {
+        "node_id": "source_doc:doc_702465dfbd26",
+        "node_type": "source_document",
+        "content_hash": "ed0a00cb17f40c889e0e1b271edd1925ffe68bede5a1e0e5bb3955e8f0199e45",
+        "metadata": {
+          "artifact_stage": "01_extraction",
+          "artifact_output_hash": "ed0a00cb17f40c889e0e1b271edd1925ffe68bede5a1e0e5bb3955e8f0199e45",
+          "title": "Fog-Harvesting Mechanism of the Namib Desert Fog-Basking Beetle"
+        }
+      },
+      "mechanism_graph:DXP-002": {
+        "node_id": "mechanism_graph:DXP-002",
+        "node_type": "mechanism_graph",
+        "content_hash": "ed0a00cb17f40c889e0e1b271edd1925ffe68bede5a1e0e5bb3955e8f0199e45",
+        "metadata": {
+          "artifact_stage": "01_extraction",
+          "artifact_output_hash": "ed0a00cb17f40c889e0e1b271edd1925ffe68bede5a1e0e5bb3955e8f0199e45",
+          "n_nodes": 23,
+          "n_edges": 19
+        }
+      },
+      "mechanism_pattern:DXP-002": {
+        "node_id": "mechanism_pattern:DXP-002",
+        "node_type": "mechanism_pattern",
+        "content_hash": "37418beefea839831419d47ac91541ab06a3b75245e0f1c30120640126d7acc7",
+        "metadata": {
+          "artifact_stage": "02_abstraction",
+          "artifact_output_hash": "37418beefea839831419d47ac91541ab06a3b75245e0f1c30120640126d7acc7",
+          "pattern_id": "MP-DXP-002"
+        }
+      },
+      "transfer:TH-DXP-002-001": {
+        "node_id": "transfer:TH-DXP-002-001",
+        "node_type": "transfer_hypothesis",
+        "content_hash": "de04ec3e169c4bcb448d57d171aa9e0db35ea8cdfa60ddcaf1c555d8c08b0659",
+        "metadata": {
+          "artifact_stage": "03_transfer",
+          "artifact_output_hash": "de04ec3e169c4bcb448d57d171aa9e0db35ea8cdfa60ddcaf1c555d8c08b0659",
+          "source_domain": "entomology",
+          "target_domain": "materials engineering",
+          "transferred_principle": "Hierarchical surface structure with differential wettability enables directional transport of condensed water droplets from atmosphere to collection point"
+        }
+      },
+      "hypothesis:H-DXP-002-001": {
+        "node_id": "hypothesis:H-DXP-002-001",
+        "node_type": "hypothesis",
+        "content_hash": "1a50694f9d9f7bffa760ea85e72446acf0a985ba430fb577945383fcceb5439f",
+        "metadata": {
+          "artifact_stage": "04_hypotheses",
+          "artifact_output_hash": "1a50694f9d9f7bffa760ea85e72446acf0a985ba430fb577945383fcceb5439f",
+          "claim": "The hierarchical surface structure with differential wettability creates capillary forces that activ",
+          "hypothesis_object_hash": "69b048e4f5ed0b6b72ddf222a34eda704908e1e62f25b9de8f6c18c6fa76f390"
+        }
+      },
+      "adversarial:H-DXP-002-001": {
+        "node_id": "adversarial:H-DXP-002-001",
+        "node_type": "adversarial_analysis",
+        "content_hash": "4ef1302c85fccca65f6b1dfea9e187ca37ed3c0013775c4bb3d6df8b06d5a86a",
+        "metadata": {
+          "artifact_stage": "05_adversarial_H-DXP-002-001",
+          "artifact_output_hash": "4ef1302c85fccca65f6b1dfea9e187ca37ed3c0013775c4bb3d6df8b06d5a86a",
+          "outcome": "ADVERSARIAL_FAILED",
+          "survives": false
+        }
+      },
+      "rediscovery:H-DXP-002-001": {
+        "node_id": "rediscovery:H-DXP-002-001",
+        "node_type": "rediscovery_analysis",
+        "content_hash": "18f5434e41a234b9ec09417a4280f743e9f59d5f3970d3972294b8dad2057fb9",
+        "metadata": {
+          "artifact_stage": "06_rediscovery_H-DXP-002-001",
+          "artifact_output_hash": "18f5434e41a234b9ec09417a4280f743e9f59d5f3970d3972294b8dad2057fb9",
+          "classification": "PARAPHRASED_IN_INPUT",
+          "is_rediscovery": true
+        }
+      },
+      "novelty:H-DXP-002-001": {
+        "node_id": "novelty:H-DXP-002-001",
+        "node_type": "novelty_assessment",
+        "content_hash": "c6520cc41dbfcb753935f0939346272577731174ec1490148322cd483574cdf7",
+        "metadata": {
+          "artifact_stage": "07_novelty_H-DXP-002-001",
+          "artifact_output_hash": "c6520cc41dbfcb753935f0939346272577731174ec1490148322cd483574cdf7",
+          "status": "NOT_EVALUATED"
+        }
+      },
+      "hypothesis:H-DXP-002-002": {
+        "node_id": "hypothesis:H-DXP-002-002",
+        "node_type": "hypothesis",
+        "content_hash": "1a50694f9d9f7bffa760ea85e72446acf0a985ba430fb577945383fcceb5439f",
+        "metadata": {
+          "artifact_stage": "04_hypotheses",
+          "artifact_output_hash": "1a50694f9d9f7bffa760ea85e72446acf0a985ba430fb577945383fcceb5439f",
+          "claim": "Directional transport is achieved through asymmetric droplet coalescence events that preferentially ",
+          "hypothesis_object_hash": "574fe6e36b13b826291eb4d52288e2b3c929769308575f6488e9ecbe120ef7fe"
+        }
+      },
+      "adversarial:H-DXP-002-002": {
+        "node_id": "adversarial:H-DXP-002-002",
+        "node_type": "adversarial_analysis",
+        "content_hash": "3196276346101894eb4efe168cc5af1b8296d2221e1dbd230327edf58871a91c",
+        "metadata": {
+          "artifact_stage": "05_adversarial_H-DXP-002-002",
+          "artifact_output_hash": "3196276346101894eb4efe168cc5af1b8296d2221e1dbd230327edf58871a91c",
+          "outcome": "ADVERSARIAL_FAILED",
+          "survives": false
+        }
+      },
+      "rediscovery:H-DXP-002-002": {
+        "node_id": "rediscovery:H-DXP-002-002",
+        "node_type": "rediscovery_analysis",
+        "content_hash": "452c62ebe0eba1aad06ce007015b2d4ad584ae7674e0f05301a3130c7c07ead0",
+        "metadata": {
+          "artifact_stage": "06_rediscovery_H-DXP-002-002",
+          "artifact_output_hash": "452c62ebe0eba1aad06ce007015b2d4ad584ae7674e0f05301a3130c7c07ead0",
+          "classification": "PARAPHRASED_IN_INPUT",
+          "is_rediscovery": true
+        }
+      },
+      "novelty:H-DXP-002-002": {
+        "node_id": "novelty:H-DXP-002-002",
+        "node_type": "novelty_assessment",
+        "content_hash": "189b0d4ea5076405ac09126937c1157bf95954009f1b5862dd3ffb0163bbc475",
+        "metadata": {
+          "artifact_stage": "07_novelty_H-DXP-002-002",
+          "artifact_output_hash": "189b0d4ea5076405ac09126937c1157bf95954009f1b5862dd3ffb0163bbc475",
+          "status": "NOT_EVALUATED"
+        }
+      },
+      "hypothesis:H-DXP-002-003": {
+        "node_id": "hypothesis:H-DXP-002-003",
+        "node_type": "hypothesis",
+        "content_hash": "1a50694f9d9f7bffa760ea85e72446acf0a985ba430fb577945383fcceb5439f",
+        "metadata": {
+          "artifact_stage": "04_hypotheses",
+          "artifact_output_hash": "1a50694f9d9f7bffa760ea85e72446acf0a985ba430fb577945383fcceb5439f",
+          "claim": "The surface structure creates a Marangoni effect where surface tension gradients drive directional t",
+          "hypothesis_object_hash": "e6aad5487b8e9411df14998809fd8a54ecc3ef603fcccef3539b34900e42b942"
+        }
+      },
+      "adversarial:H-DXP-002-003": {
+        "node_id": "adversarial:H-DXP-002-003",
+        "node_type": "adversarial_analysis",
+        "content_hash": "155b90e4249c27da78d7086589f5afc0d9f2b440f4d26f7db0731ce5470d2c57",
+        "metadata": {
+          "artifact_stage": "05_adversarial_H-DXP-002-003",
+          "artifact_output_hash": "155b90e4249c27da78d7086589f5afc0d9f2b440f4d26f7db0731ce5470d2c57",
+          "outcome": "ADVERSARIAL_FAILED",
+          "survives": false
+        }
+      },
+      "rediscovery:H-DXP-002-003": {
+        "node_id": "rediscovery:H-DXP-002-003",
+        "node_type": "rediscovery_analysis",
+        "content_hash": "916f969fd1661dc0373fbfc4fc358faa3a8e317416f8a62e2a34b4760ea71a03",
+        "metadata": {
+          "artifact_stage": "06_rediscovery_H-DXP-002-003",
+          "artifact_output_hash": "916f969fd1661dc0373fbfc4fc358faa3a8e317416f8a62e2a34b4760ea71a03",
+          "classification": "STRUCTURAL_INFERENCE",
+          "is_rediscovery": false
+        }
+      },
+      "novelty:H-DXP-002-003": {
+        "node_id": "novelty:H-DXP-002-003",
+        "node_type": "novelty_assessment",
+        "content_hash": "2c2603efcad0b096cfc4da21a53953ed703462ea504ff67c9a867118f1a36155",
+        "metadata": {
+          "artifact_stage": "07_novelty_H-DXP-002-003",
+          "artifact_output_hash": "2c2603efcad0b096cfc4da21a53953ed703462ea504ff67c9a867118f1a36155",
+          "status": "NOT_EVALUATED"
+        }
+      },
+      "hypothesis:H-DXP-002-004": {
+        "node_id": "hypothesis:H-DXP-002-004",
+        "node_type": "hypothesis",
+        "content_hash": "1a50694f9d9f7bffa760ea85e72446acf0a985ba430fb577945383fcceb5439f",
+        "metadata": {
+          "artifact_stage": "04_hypotheses",
+          "artifact_output_hash": "1a50694f9d9f7bffa760ea85e72446acf0a985ba430fb577945383fcceb5439f",
+          "claim": "Directional transport is achieved through a combination of Laplace pressure differences and droplet ",
+          "hypothesis_object_hash": "3a588afa0d9e47dc87201c253951c959b91423ef2425526f0207be6e541eb8a8"
+        }
+      },
+      "adversarial:H-DXP-002-004": {
+        "node_id": "adversarial:H-DXP-002-004",
+        "node_type": "adversarial_analysis",
+        "content_hash": "642b43744277a9b30f42265219c3ad2bbbe0e4b441b8c5fb5b307ccc59981c52",
+        "metadata": {
+          "artifact_stage": "05_adversarial_H-DXP-002-004",
+          "artifact_output_hash": "642b43744277a9b30f42265219c3ad2bbbe0e4b441b8c5fb5b307ccc59981c52",
+          "outcome": "ADVERSARIAL_FAILED",
+          "survives": false
+        }
+      },
+      "rediscovery:H-DXP-002-004": {
+        "node_id": "rediscovery:H-DXP-002-004",
+        "node_type": "rediscovery_analysis",
+        "content_hash": "003e84352a1427a4ff8b30f43ef8bc6b415aa765caf0a3df76eed2965a7cb65c",
+        "metadata": {
+          "artifact_stage": "06_rediscovery_H-DXP-002-004",
+          "artifact_output_hash": "003e84352a1427a4ff8b30f43ef8bc6b415aa765caf0a3df76eed2965a7cb65c",
+          "classification": "PARAPHRASED_IN_INPUT",
+          "is_rediscovery": true
+        }
+      },
+      "novelty:H-DXP-002-004": {
+        "node_id": "novelty:H-DXP-002-004",
+        "node_type": "novelty_assessment",
+        "content_hash": "b67442bd97101675d4bd8922bb0a332159acf9ee161116dd9c3fa2f0adf434e2",
+        "metadata": {
+          "artifact_stage": "07_novelty_H-DXP-002-004",
+          "artifact_output_hash": "b67442bd97101675d4bd8922bb0a332159acf9ee161116dd9c3fa2f0adf434e2",
+          "status": "NOT_EVALUATED"
+        }
+      },
+      "run:DXP-002": {
+        "node_id": "run:DXP-002",
+        "node_type": "checkpointed_run",
+        "content_hash": "a976559ccad81af4198dc34538df10cc1f35d61e13a63e3df06f3a023966820d",
+        "metadata": {
+          "run_id": "RUN-DXP-002",
+          "engine_code_sha": "d6b7aee5790e2d45839fb08b7add0c89d4e40d09",
+          "artifact_stage": "manifest",
+          "artifact_output_hash": ""
+        }
+      }
+    },
+    "edges": [
+      {
+        "edge_id": "prov:mg_src:DXP-002",
+        "source_node_id": "source_doc:doc_702465dfbd26",
+        "target_node_id": "mechanism_graph:DXP-002",
+        "edge_type": "DERIVES_FROM",
+        "evidence": "mechanism graph extracted from source",
+        "actor": "mechanism_extractor",
+        "timestamp": "2026-08-08T09:44:06.530074+00:00"
+      },
+      {
+        "edge_id": "prov:mp_mg:DXP-002",
+        "source_node_id": "mechanism_graph:DXP-002",
+        "target_node_id": "mechanism_pattern:DXP-002",
+        "edge_type": "DERIVES_FROM",
+        "evidence": "pattern abstracted from mechanism graph",
+        "actor": "mechanism_abstracter",
+        "timestamp": "2026-08-08T09:44:06.530086+00:00"
+      },
+      {
+        "edge_id": "prov:th_mp:TH-DXP-002-001",
+        "source_node_id": "mechanism_pattern:DXP-002",
+        "target_node_id": "transfer:TH-DXP-002-001",
+        "edge_type": "DERIVES_FROM",
+        "evidence": "transfer derived from pattern",
+        "actor": "cross_domain_transfer",
+        "timestamp": "2026-08-08T09:44:06.530093+00:00"
+      },
+      {
+        "edge_id": "prov:h_th:H-DXP-002-001",
+        "source_node_id": "transfer:TH-DXP-002-001",
+        "target_node_id": "hypothesis:H-DXP-002-001",
+        "edge_type": "DERIVES_FROM",
+        "evidence": "hypothesis derived from transfer",
+        "actor": "hypothesis_engine",
+        "timestamp": "2026-08-08T09:44:06.530148+00:00"
+      },
+      {
+        "edge_id": "prov:adv_h:H-DXP-002-001",
+        "source_node_id": "hypothesis:H-DXP-002-001",
+        "target_node_id": "adversarial:H-DXP-002-001",
+        "edge_type": "ANALYZES",
+        "evidence": "adversarial analysis of hypothesis",
+        "actor": "adversarial_engine",
+        "timestamp": "2026-08-08T09:44:06.530239+00:00"
+      },
+      {
+        "edge_id": "prov:rd_h:H-DXP-002-001",
+        "source_node_id": "hypothesis:H-DXP-002-001",
+        "target_node_id": "rediscovery:H-DXP-002-001",
+        "edge_type": "ANALYZES",
+        "evidence": "rediscovery classification of hypothesis",
+        "actor": "rediscovery_detector",
+        "timestamp": "2026-08-08T09:44:06.530295+00:00"
+      },
+      {
+        "edge_id": "prov:nov_h:H-DXP-002-001",
+        "source_node_id": "hypothesis:H-DXP-002-001",
+        "target_node_id": "novelty:H-DXP-002-001",
+        "edge_type": "ANALYZES",
+        "evidence": "novelty assessment of hypothesis",
+        "actor": "novelty_firewall",
+        "timestamp": "2026-08-08T09:44:06.530347+00:00"
+      },
+      {
+        "edge_id": "prov:h_th:H-DXP-002-002",
+        "source_node_id": "transfer:TH-DXP-002-001",
+        "target_node_id": "hypothesis:H-DXP-002-002",
+        "edge_type": "DERIVES_FROM",
+        "evidence": "hypothesis derived from transfer",
+        "actor": "hypothesis_engine",
+        "timestamp": "2026-08-08T09:44:06.530436+00:00"
+      },
+      {
+        "edge_id": "prov:adv_h:H-DXP-002-002",
+        "source_node_id": "hypothesis:H-DXP-002-002",
+        "target_node_id": "adversarial:H-DXP-002-002",
+        "edge_type": "ANALYZES",
+        "evidence": "adversarial analysis of hypothesis",
+        "actor": "adversarial_engine",
+        "timestamp": "2026-08-08T09:44:06.530507+00:00"
+      },
+      {
+        "edge_id": "prov:rd_h:H-DXP-002-002",
+        "source_node_id": "hypothesis:H-DXP-002-002",
+        "target_node_id": "rediscovery:H-DXP-002-002",
+        "edge_type": "ANALYZES",
+        "evidence": "rediscovery classification of hypothesis",
+        "actor": "rediscovery_detector",
+        "timestamp": "2026-08-08T09:44:06.530556+00:00"
+      },
+      {
+        "edge_id": "prov:nov_h:H-DXP-002-002",
+        "source_node_id": "hypothesis:H-DXP-002-002",
+        "target_node_id": "novelty:H-DXP-002-002",
+        "edge_type": "ANALYZES",
+        "evidence": "novelty assessment of hypothesis",
+        "actor": "novelty_firewall",
+        "timestamp": "2026-08-08T09:44:06.530599+00:00"
+      },
+      {
+        "edge_id": "prov:h_th:H-DXP-002-003",
+        "source_node_id": "transfer:TH-DXP-002-001",
+        "target_node_id": "hypothesis:H-DXP-002-003",
+        "edge_type": "DERIVES_FROM",
+        "evidence": "hypothesis derived from transfer",
+        "actor": "hypothesis_engine",
+        "timestamp": "2026-08-08T09:44:06.530686+00:00"
+      },
+      {
+        "edge_id": "prov:adv_h:H-DXP-002-003",
+        "source_node_id": "hypothesis:H-DXP-002-003",
+        "target_node_id": "adversarial:H-DXP-002-003",
+        "edge_type": "ANALYZES",
+        "evidence": "adversarial analysis of hypothesis",
+        "actor": "adversarial_engine",
+        "timestamp": "2026-08-08T09:44:06.530756+00:00"
+      },
+      {
+        "edge_id": "prov:rd_h:H-DXP-002-003",
+        "source_node_id": "hypothesis:H-DXP-002-003",
+        "target_node_id": "rediscovery:H-DXP-002-003",
+        "edge_type": "ANALYZES",
+        "evidence": "rediscovery classification of hypothesis",
+        "actor": "rediscovery_detector",
+        "timestamp": "2026-08-08T09:44:06.530807+00:00"
+      },
+      {
+        "edge_id": "prov:nov_h:H-DXP-002-003",
+        "source_node_id": "hypothesis:H-DXP-002-003",
+        "target_node_id": "novelty:H-DXP-002-003",
+        "edge_type": "ANALYZES",
+        "evidence": "novelty assessment of hypothesis",
+        "actor": "novelty_firewall",
+        "timestamp": "2026-08-08T09:44:06.530853+00:00"
+      },
+      {
+        "edge_id": "prov:h_th:H-DXP-002-004",
+        "source_node_id": "transfer:TH-DXP-002-001",
+        "target_node_id": "hypothesis:H-DXP-002-004",
+        "edge_type": "DERIVES_FROM",
+        "evidence": "hypothesis derived from transfer",
+        "actor": "hypothesis_engine",
+        "timestamp": "2026-08-08T09:44:06.530919+00:00"
+      },
+      {
+        "edge_id": "prov:adv_h:H-DXP-002-004",
+        "source_node_id": "hypothesis:H-DXP-002-004",
+        "target_node_id": "adversarial:H-DXP-002-004",
+        "edge_type": "ANALYZES",
+        "evidence": "adversarial analysis of hypothesis",
+        "actor": "adversarial_engine",
+        "timestamp": "2026-08-08T09:44:06.530978+00:00"
+      },
+      {
+        "edge_id": "prov:rd_h:H-DXP-002-004",
+        "source_node_id": "hypothesis:H-DXP-002-004",
+        "target_node_id": "rediscovery:H-DXP-002-004",
+        "edge_type": "ANALYZES",
+        "evidence": "rediscovery classification of hypothesis",
+        "actor": "rediscovery_detector",
+        "timestamp": "2026-08-08T09:44:06.531040+00:00"
+      },
+      {
+        "edge_id": "prov:nov_h:H-DXP-002-004",
+        "source_node_id": "hypothesis:H-DXP-002-004",
+        "target_node_id": "novelty:H-DXP-002-004",
+        "edge_type": "ANALYZES",
+        "evidence": "novelty assessment of hypothesis",
+        "actor": "novelty_firewall",
+        "timestamp": "2026-08-08T09:44:06.531092+00:00"
+      }
+    ],
+    "committed_hash": "7ee04963993edc33076df0f6c0c6a75ddbed93a52daeaa5637f2b94f72993453"
+  },
+  "parent_cases": [],
+  "derived_cases": [],
+  "failure_state": null,
+  "manifest": null,
+  "provenance_root_hash": "7ee04963993edc33076df0f6c0c6a75ddbed93a52daeaa5637f2b94f72993453"
+}

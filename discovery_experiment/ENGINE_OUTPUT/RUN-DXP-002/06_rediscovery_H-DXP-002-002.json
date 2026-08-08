@@ -1,0 +1,34 @@
+{
+  "stage": "06_rediscovery_H-DXP-002-002",
+  "run_id": "RUN-DXP-002",
+  "code_sha": "d6b7aee5790e2d45839fb08b7add0c89d4e40d09",
+  "input_hash": "574fe6e36b13b826291eb4d52288e2b3c929769308575f6488e9ecbe120ef7fe",
+  "output_hash": "452c62ebe0eba1aad06ce007015b2d4ad584ae7674e0f05301a3130c7c07ead0",
+  "provider_manifest": {
+    "provider": "zai",
+    "model": "glm-4-plus",
+    "version": "z-ai-web-dev-sdk",
+    "configuration": {
+      "temperature": 0.1,
+      "max_tokens": 4096,
+      "system_sha": "dbdd0760dff49fc029b32b580a575b7de33a87d371edc2b0deec93bfb2b90b01"
+    },
+    "prompt_sha": "69e0eda215b363928feb19e29a7704a848d0deeb427e84be1749c4811d762e6e",
+    "seed": null,
+    "tool_versions": {
+      "z_ai_cli": "z-ai"
+    },
+    "timestamp": "2026-08-08T09:43:42.535484+00:00",
+    "latency_ms": 2239,
+    "success": true,
+    "error": ""
+  },
+  "result": {
+    "hypothesis_id": "H-DXP-002-002",
+    "classification": "PARAPHRASED_IN_INPUT",
+    "evidence": "The hypothesis describes directional transport through asymmetric droplet coalescence events, which is directly supported by the source document. The document explains how the microstructured surface (hydrophilic bumps on hydrophobic background) creates conditions where droplet nucleation and growth occur preferentially on specific areas. While the document doesn't explicitly mention 'asymmetric droplet coalescence events' or 'directional push that accumulates to drive transport', it describes the fundamental mechanism of how the surface structure creates directional water movement through preferential droplet nucleation on specific areas and subsequent water running down the beetle's body. The hypothesis is essentially a restatement of the water collection mechanism described in the source.",
+    "is_rediscovery": true,
+    "source_hypothesis_hash": ""
+  },
+  "timestamp": "2026-08-08T09:43:44.775903+00:00"
+}

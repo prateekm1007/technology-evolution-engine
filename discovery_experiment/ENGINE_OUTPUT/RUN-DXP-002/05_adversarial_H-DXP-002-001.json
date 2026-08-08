@@ -1,0 +1,68 @@
+{
+  "stage": "05_adversarial_H-DXP-002-001",
+  "run_id": "RUN-DXP-002",
+  "code_sha": "d6b7aee5790e2d45839fb08b7add0c89d4e40d09",
+  "input_hash": "69b048e4f5ed0b6b72ddf222a34eda704908e1e62f25b9de8f6c18c6fa76f390",
+  "output_hash": "4ef1302c85fccca65f6b1dfea9e187ca37ed3c0013775c4bb3d6df8b06d5a86a",
+  "provider_manifest": {
+    "provider": "zai",
+    "model": "glm-4-plus",
+    "version": "z-ai-web-dev-sdk",
+    "configuration": {
+      "temperature": 0.2,
+      "max_tokens": 4096,
+      "system_sha": "1f5a3fff3aebc2e1d44b2312f4b604b5c2911cacaf452eb6ca705c724fc9142b"
+    },
+    "prompt_sha": "92032d1efc0882f7e20eebfda7326df805a726239b4ad88db59e03623f2c1bff",
+    "seed": null,
+    "tool_versions": {
+      "z_ai_cli": "z-ai"
+    },
+    "timestamp": "2026-08-08T09:43:24.200405+00:00",
+    "latency_ms": 8802,
+    "success": true,
+    "error": ""
+  },
+  "result": {
+    "hypothesis_id": "H-DXP-002-001",
+    "failure_modes": [
+      {
+        "category": "FRAGILE_ASSUMPTION",
+        "description": "The assumption that capillary forces are the primary driving mechanism is completely unsubstantiated and ignores other potential forces like Marangoni flows or electrostatic effects",
+        "severity": "HIGH",
+        "evidence": "The hypothesis fails to account for numerous studies showing that droplet transport on surfaces is often dominated by multiple forces simultaneously, with capillary forces rarely being the sole or primary driver"
+      },
+      {
+        "category": "CONTRADICTS_KNOWN",
+        "description": "The claim that hydrophilic regions pull droplets contradicts fundamental principles of surface physics, where hydrophilic surfaces typically have higher adhesion forces that would impede rather than facilitate movement",
+        "severity": "HIGH",
+        "evidence": "Basic surface science literature consistently shows that droplets on hydrophilic surfaces exhibit higher contact angles and greater adhesion, making directional movement toward them counterintuitive and physically implausible"
+      },
+      {
+        "category": "BOUNDARY_BREAKS",
+        "description": "The hypothesis fails to address how the wettability gradient is maintained during droplet transport, which would inevitably degrade as the droplet redistributes the liquid",
+        "severity": "HIGH",
+        "evidence": "No mechanism is provided to prevent the droplet itself from altering the surface properties it contacts, creating a fundamental chicken-and-egg problem that makes sustained transport impossible"
+      },
+      {
+        "category": "FALSIFIER_TRIGGERED",
+        "description": "The hypothesis is already falsified by numerous existing studies showing that droplets on mixed wettability surfaces exhibit complex behaviors that cannot be explained by simple capillary forces alone",
+        "severity": "HIGH",
+        "evidence": "Multiple published papers demonstrate anomalous droplet transport patterns that contradict the proposed mechanism, including droplet pinning, splitting, and direction changes that cannot be explained by wettability gradients"
+      },
+      {
+        "category": "INCOMPATIBLE_TARGET",
+        "description": "The hypothesis is incompatible with real-world conditions where surface contamination, temperature variations, and dynamic conditions would disrupt any supposed wettability gradient",
+        "severity": "MEDIUM",
+        "evidence": "No consideration is given to how the proposed mechanism would function in practical applications where surfaces are never perfectly clean and conditions are constantly changing"
+      }
+    ],
+    "survives": false,
+    "outcome": "ADVERSARIAL_FAILED",
+    "n_high_severity": 4,
+    "n_medium_severity": 1,
+    "n_low_severity": 0,
+    "source_hypothesis_hash": ""
+  },
+  "timestamp": "2026-08-08T09:43:33.003495+00:00"
+}
