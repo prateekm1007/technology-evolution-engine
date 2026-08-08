@@ -61,9 +61,31 @@ REPO = Path(__file__).resolve().parents[1]
 RUNS_DIR = REPO / "experiments" / "dev" / "runs"
 
 # Engine code SHA — identifies the engine version that produced a run.
-# Updated manually when the engine code changes. Used in every stage
-# artifact for reproducibility.
-ENGINE_CODE_SHA = "engine-v0.1-round3"
+# Round-9 Repair C: bound to the actual Git commit, not a manual string.
+# This is determined at import time by reading the Git HEAD of the
+# repository. If Git is not available, falls back to a source-tree hash.
+def _get_engine_code_sha() -> str:
+    """Get the engine's Git commit SHA (or a fallback identity)."""
+    import subprocess
+    repo = Path(__file__).resolve().parents[1]
+    try:
+        result = subprocess.run(
+            ["git", "rev-parse", "HEAD"],
+            cwd=repo, capture_output=True, text=True, timeout=5
+        )
+        if result.returncode == 0:
+            return result.stdout.strip()
+    except (subprocess.SubprocessError, OSError):
+        pass
+    # Fallback: hash all engine source files
+    import hashlib
+    engine_dir = Path(__file__).parent
+    h = hashlib.sha256()
+    for py_file in sorted(engine_dir.glob("*.py")):
+        h.update(py_file.read_bytes())
+    return "source-hash:" + h.hexdigest()[:40]
+
+ENGINE_CODE_SHA = _get_engine_code_sha()
 
 # Stage status constants
 PENDING = "PENDING"; RUNNING = "RUNNING"; COMPLETED = "COMPLETED"
@@ -88,14 +110,16 @@ class CheckpointIntegrityError(Exception):
 def _compute_stage_inventory_sha(run_dir: Path) -> str:
     """Compute a hash over all stage artifacts in the run directory.
 
-    This is the 'stage inventory' — a deterministic hash of every
-    *.json file (except manifest.json, RUN_INTEGRITY_ANCHOR.json, and
-    the ledger directory) in the run directory, identified by filename
-    + output_hash.
+    Round-9 Repair A: the inventory now hashes the ACTUAL FILE CONTENT
+    (file_sha256), the ACTUAL RESULT CONTENT (result_sha256), and the
+    DECLARED output_hash. This prevents the attack where an attacker
+    modifies the result but leaves output_hash unchanged.
 
-    The anchor file itself is excluded to avoid a circular dependency
-    (the anchor records the stage inventory hash, so the stage inventory
-    must not include the anchor).
+    The inventory entry per file is:
+        filename:file_sha256:result_sha256:declared_output_hash
+
+    The verifier independently recomputes file_sha256 and result_sha256
+    and does NOT trust the declared output_hash.
     """
     import hashlib
     inventory = []
@@ -103,11 +127,16 @@ def _compute_stage_inventory_sha(run_dir: Path) -> str:
         if p.name in ("manifest.json", "RUN_INTEGRITY_ANCHOR.json"):
             continue
         try:
-            data = json.loads(p.read_text())
-            output_hash = data.get("output_hash", "")
-            inventory.append(f"{p.name}:{output_hash}")
+            raw_content = p.read_text()
+            file_sha = hashlib.sha256(raw_content.encode("utf-8")).hexdigest()
+            data = json.loads(raw_content)
+            declared_output_hash = data.get("output_hash", "")
+            # Hash the result field independently
+            result_str = json.dumps(data.get("result", {}), sort_keys=True, default=str)
+            result_sha = hashlib.sha256(result_str.encode("utf-8")).hexdigest()
+            inventory.append(f"{p.name}:{file_sha}:{result_sha}:{declared_output_hash}")
         except (json.JSONDecodeError, OSError):
-            inventory.append(f"{p.name}:UNREADABLE")
+            inventory.append(f"{p.name}:UNREADABLE:UNREADABLE:UNREADABLE")
     inventory_str = "\n".join(inventory)
     return hashlib.sha256(inventory_str.encode("utf-8")).hexdigest()
 
@@ -157,10 +186,22 @@ def create_run_integrity_anchor(run_dir: Path, manifest_sha: str,
     ledger_index_sha = _sha(index_content)
 
     # Compute the object inventory hash
+    # Round-9 Repair B: hash the ACTUAL FILE CONTENT, not just the
+    # index's declared content_hash. This prevents the attack where an
+    # attacker modifies an object file without changing the index.
     inventory = []
     for otype, entries in sorted(ledger._index.items()):
         for oid, entry in sorted(entries.items()):
-            inventory.append(f"{otype}/{oid}/{entry.content_hash}")
+            obj_path = ledger_dir / entry.file
+            if obj_path.exists():
+                try:
+                    actual_content = obj_path.read_text()
+                    actual_sha = _sha(actual_content)
+                except OSError:
+                    actual_sha = "UNREADABLE"
+            else:
+                actual_sha = "MISSING"
+            inventory.append(f"{otype}/{oid}/{entry.content_hash}/{actual_sha}")
     inventory_str = "\n".join(sorted(inventory))
     ledger_inventory_sha = _sha(inventory_str)
 
@@ -250,9 +291,13 @@ def verify_run_integrity_anchor(run_dir: Path) -> Dict:
     # 2. Verify manifest hash
     manifest_path = run_dir / "manifest.json"
     if manifest_path.exists():
-        manifest_data = json.loads(manifest_path.read_text())
-        stored_manifest_sha = manifest_data.get("manifest_sha", "")
-        result["manifest_hash_matches"] = (stored_manifest_sha == anchor.get("manifest_sha256"))
+        try:
+            manifest_data = json.loads(manifest_path.read_text())
+            stored_manifest_sha = manifest_data.get("manifest_sha", "")
+            result["manifest_hash_matches"] = (stored_manifest_sha == anchor.get("manifest_sha256"))
+        except json.JSONDecodeError:
+            # Corrupted manifest — definitely not intact
+            result["manifest_hash_matches"] = False
 
     # 3. Verify ledger index hash
     ledger_dir = run_dir / "ledger"
@@ -262,12 +307,24 @@ def verify_run_integrity_anchor(run_dir: Path) -> Dict:
         result["ledger_index_hash_matches"] = (current_index_sha == anchor.get("ledger_index_sha256"))
 
     # 4. Verify ledger inventory hash
+    # Round-9 Repair B: hash the ACTUAL FILE CONTENT, not just the index's
+    # declared content_hash. This detects object file tampering even if
+    # the index is unchanged.
     try:
         ledger = PersistentLedger(ledger_dir)
         inventory = []
         for otype, entries in sorted(ledger._index.items()):
             for oid, entry in sorted(entries.items()):
-                inventory.append(f"{otype}/{oid}/{entry.content_hash}")
+                obj_path = ledger_dir / entry.file
+                if obj_path.exists():
+                    try:
+                        actual_content = obj_path.read_text()
+                        actual_sha = _sha(actual_content)
+                    except OSError:
+                        actual_sha = "UNREADABLE"
+                else:
+                    actual_sha = "MISSING"
+                inventory.append(f"{otype}/{oid}/{entry.content_hash}/{actual_sha}")
         current_inventory_sha = _sha("\n".join(sorted(inventory)))
         result["ledger_inventory_hash_matches"] = (current_inventory_sha == anchor.get("ledger_inventory_sha256"))
     except Exception:

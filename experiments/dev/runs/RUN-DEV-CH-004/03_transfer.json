@@ -1,9 +1,9 @@
 {
   "stage": "03_transfer",
   "run_id": "RUN-DEV-CH-004",
-  "code_sha": "engine-v0.1-round3",
-  "input_hash": "387d54cfee8066c3d2397a89225a5cc6b6a51f9329598ada1e9a1553aeae114e",
-  "output_hash": "d644adb76de97e611ef9c8d5c9057272a116be712db48f447a27da270bc850fe",
+  "code_sha": "8e2bf668838d2afb943a656e2814b9be04bb5c61",
+  "input_hash": "cb29afbb945951ee3271631d4915fc9cc5bd65194e8f34d335377cea3bd11e51",
+  "output_hash": "775197bc02c6066336f78bfe68fe262bb7544213c2430177f6cfdfc55f4eda58",
   "provider_manifest": {
     "provider": "zai",
     "model": "glm-4-plus",
@@ -13,13 +13,13 @@
       "max_tokens": 4096,
       "system_sha": "f596607dc28478b7317f95a37a7bf99f11ad2e25e10bde5d1c0a9009ba6b1583"
     },
-    "prompt_sha": "b2bd49a72713433091813c633a56a25b0eab41b70b61c9564c7f2b1def2984c5",
+    "prompt_sha": "8e63a9cac34892d11c72617148623de0adb19ca31bd3cb524960415230b76b3f",
     "seed": null,
     "tool_versions": {
       "z_ai_cli": "z-ai"
     },
-    "timestamp": "2026-08-08T08:17:53.686439+00:00",
-    "latency_ms": 4982,
+    "timestamp": "2026-08-08T08:30:11.173399+00:00",
+    "latency_ms": 4873,
     "success": true,
     "error": ""
   },
@@ -28,28 +28,27 @@
       {
         "transfer_id": "TH-DEV-CH-004-001",
         "source_domain": "myxomycete biology / emergent computation",
-        "source_mechanism": "Flow rate enables structural adaptation under feedback constraints, producing optimized network topology",
+        "source_mechanism": "oscillatory contraction generates pressure differentials, enabling directional flow through network paths, which then drives structural reinforcement of high-flow channels and weakening of low-flow channels",
         "source_conditions": [
-          "feedback gain regime",
-          "resource availability"
+          "variable flow rates through different paths",
+          "structural material availability for remodeling"
         ],
         "target_domain": "urban transportation engineering",
         "target_problem": "A mid-sized city (population 800,000) has a traffic signal network with 247 signalized intersections. The current signal timing plan is optimized centrally every 6 months using a macroscopic traffic model, but it cannot adapt to real-time conditions: incidents, weather, special events, and construction. Re-optimizing centrally every minute is computationally infeasible and would require expensive predictive models. The city wants a distributed, adaptive signal timing approach that uses only local traffic flow measurements (vehicle count and queue length at each intersection) to adjust green-split and offset in real time, without a central optimizer.",
-        "transferred_principle": "Traffic flow enables signal timing adaptation under local feedback constraints, producing optimized traffic network throughput",
-        "required_translation": "Replace rhythmic contraction/thickening/thinning with signal green phase extension/reduction; replace tube radius with green time allocation; replace resource flow with vehicle flow; replace structural integrity with minimum green time constraints",
-        "expected_effect": "Distributed adaptive signal timing that optimizes traffic flow without central coordination",
+        "transferred_principle": "adaptive network optimization through flow-dependent structural remodeling",
+        "required_translation": "replace physical contraction with signal timing adjustments, replace pressure differentials with traffic flow incentives, replace structural material with timing plan flexibility, replace thickening/thinning channels with green time allocation changes",
+        "expected_effect": "traffic signals adapt their timing based on local flow conditions, creating a self-organizing network that optimizes traffic flow without central coordination",
         "boundary_conditions": [
-          "Minimum/maximum green time constraints",
-          "Maximum communication delay between neighbors",
-          "Detection accuracy limits"
+          "each intersection has only local traffic measurements",
+          "communication limited to immediate neighbors",
+          "signal timing adjustments must be gradual to avoid instability"
         ],
         "failure_conditions": [
-          "Insufficient traffic data",
-          "Excessive communication delays",
-          "Oscillating signal timing cycles",
-          "Congestion propagation"
+          "uniform traffic flow eliminates flow differentials",
+          "communication failures prevent coordination between neighbors",
+          "excessive oscillations in signal timing"
         ],
-        "testable_prediction": "Under incident conditions, the adaptive network will reduce average intersection delay by at least 15% compared to the fixed-timing system within 30 minutes of the incident, while maintaining stability without oscillations",
+        "testable_prediction": "after an incident creates a flow imbalance, the adaptive signal network will redistribute green time to favor high-flow corridors within 15 minutes, reducing total travel time by at least 12% compared to the fixed-timing system",
         "epistemic_state": "HYPOTHESIZED",
         "provenance": {
           "nodes": {},
@@ -62,7 +61,7 @@
     "rejected": [],
     "n_accepted": 1,
     "n_rejected": 0,
-    "source_abstraction_hash": "c80a87a6a63184a95ac4ebba181a23a9d9a9f344e640b046578e7acbbf8e1967"
+    "source_abstraction_hash": "4989aead66b2479fba28eb9007b9885588b13849b38c5bc5e06c10872d646bea"
   },
-  "timestamp": "2026-08-08T08:17:58.669409+00:00"
+  "timestamp": "2026-08-08T08:30:16.047900+00:00"
 }

@@ -6,7 +6,7 @@
     "dev_corpus"
   ],
   "queries": [
-    "Signal timing adaptation emerges from distributed communication between neighboring intersections, where each intersection adjusts its timing based on both local measurements and information from adjacent signals. Each intersection communicates its current state (queue length, cycle time) to neighboring intersections, then uses this information to calculate optimal offset and green split, creating a distributed optimization that balances local and network-level objectives."
+    "Traffic signals adapt by coordinating with neighboring intersections to create 'platoons' of vehicles that can travel through multiple intersections without stopping Each intersection communicates its current timing and queue status to immediate neighbors. The system then adjusts signal offsets (the timing difference between adjacent signals) to create waves of green lights along major corridors. When a platoon of vehicles is detected moving through one intersection, subsequent intersections adjust their timing to allow the platoon to continue with minimal stopping"
   ],
   "sources": [],
   "matched_prior_art": [],
@@ -15,5 +15,5 @@
   "confidence": 0.3,
   "cutoff": "2026-08-08",
   "reviewer": "novelty_firewall_v0",
-  "timestamp": "2026-08-08T08:18:51.911251+00:00"
+  "timestamp": "2026-08-08T08:31:04.759248+00:00"
 }

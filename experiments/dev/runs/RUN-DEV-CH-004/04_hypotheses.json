@@ -1,9 +1,9 @@
 {
   "stage": "04_hypotheses",
   "run_id": "RUN-DEV-CH-004",
-  "code_sha": "engine-v0.1-round3",
-  "input_hash": "d5f5cd3b2bc5b33d9fe0c5b648666c15e145ab72cd726f2c2cf937d380c66fa0",
-  "output_hash": "0bc9883970779f613508a1e8687ff8a54a94c553bf321a7942a3f7e4038f8e39",
+  "code_sha": "8e2bf668838d2afb943a656e2814b9be04bb5c61",
+  "input_hash": "8c08c78ccd8b56df7945fa7f0e940b13a4f7b4492343528e4e68c054ff2d0577",
+  "output_hash": "d30f0c16568152113cc7bed1bdda40a0bf9c92ca15ab4a0a4da19a309bcd895f",
   "provider_manifest": {
     "provider": "zai",
     "model": "glm-4-plus",
@@ -13,13 +13,13 @@
       "max_tokens": 4096,
       "system_sha": "38a0abb453a9eb9fd88d0b4dd513feea94d69501c86ec3d4d7778b86034369c8"
     },
-    "prompt_sha": "7de09e775832d296e4d694be5737806a5229641e01b90e0490bfe27ca64a7488",
+    "prompt_sha": "e50ef8a74eae6172447ac69f664c5535265c16635516d9e1a080b8e4dbb307b8",
     "seed": null,
     "tool_versions": {
       "z_ai_cli": "z-ai"
     },
-    "timestamp": "2026-08-08T08:17:58.671669+00:00",
-    "latency_ms": 21806,
+    "timestamp": "2026-08-08T08:30:16.049799+00:00",
+    "latency_ms": 23271,
     "success": true,
     "error": ""
   },
@@ -27,26 +27,26 @@
     "hypotheses": [
       {
         "hypothesis_id": "H-DEV-CH-004-001",
-        "claim": "Traffic flow directly modulates signal timing through local feedback loops, with each intersection independently adjusting its green time based on immediate queue length measurements.",
-        "mechanism": "Each intersection controller operates as an independent entity, continuously measuring queue length and vehicle count, then extending or reducing green time proportionally to these measurements without coordination with neighboring intersections.",
+        "claim": "Traffic signals adapt by gradually increasing green time for approaches with higher traffic flow, creating a self-reinforcing cycle that prioritizes busy corridors",
+        "mechanism": "Each intersection continuously monitors vehicle count and queue length on all approaches. If an approach shows higher flow than average, its green time is incrementally increased (up to a maximum), while approaches with lower flow have their green time reduced. This creates a positive feedback loop where busy corridors get progressively more green time, while less busy corridors get less",
         "evidence": [
-          "Myxomycetes adapt tube diameter based on local flow without central coordination",
-          "Local traffic measurements are readily available at each intersection"
+          "Myxomycetes reinforce high-flow channels through structural thickening",
+          "Traffic engineering principles show that green time allocation affects overall network efficiency"
         ],
         "assumptions": [
-          "Queue length is the primary determinant of optimal green time",
-          "Local measurements provide sufficient information for optimal timing",
-          "Independent operation doesn't lead to system-wide oscillations"
+          "Traffic flow patterns are relatively stable over short periods",
+          "Intersections can accurately measure and respond to flow differentials",
+          "There are no external constraints preventing green time redistribution"
         ],
         "predictions": [],
         "expected_failure_modes": [
-          "Oscillating signal timing",
-          "Gridlock formation at critical intersections",
-          "Inability to adapt to network-wide congestion patterns"
+          "Oscillations in signal timing as the system overcorrects",
+          "Gridlock if too much green time is allocated to major corridors at the expense of cross-streets",
+          "Failure to adapt to sudden changes in traffic patterns"
         ],
-        "novelty_rationale": "Applies direct local feedback from slime mold network adaptation to traffic signal control without inter-intersection coordination.",
-        "testability": "Highly testable by implementing isolated intersection controllers with varying feedback gains and measuring performance metrics.",
-        "falsifier": "If the system develops persistent oscillations in signal timing or shows reduced throughput compared to fixed timing, this hypothesis would be proven wrong as independent operation would fail to optimize network-level flow.",
+        "novelty_rationale": "This hypothesis applies the principle of positive feedback from slime mold networks to traffic signal timing, creating a self-organizing system without central coordination",
+        "testability": "Can be tested by implementing the algorithm in simulation and measuring how quickly it redistributes green time after an incident",
+        "falsifier": "If implementing this algorithm causes traffic to become worse on the high-flow corridors rather than better, as the positive feedback would incorrectly reinforce inefficient patterns",
         "epistemic_state": "HYPOTHESIZED",
         "parent_hypothesis_ids": [],
         "provenance": {
@@ -59,26 +59,26 @@
       },
       {
         "hypothesis_id": "H-DEV-CH-004-002",
-        "claim": "Signal timing adaptation emerges from distributed communication between neighboring intersections, where each intersection adjusts its timing based on both local measurements and information from adjacent signals.",
-        "mechanism": "Each intersection communicates its current state (queue length, cycle time) to neighboring intersections, then uses this information to calculate optimal offset and green split, creating a distributed optimization that balances local and network-level objectives.",
+        "claim": "Traffic signals adapt by coordinating with neighboring intersections to create 'platoons' of vehicles that can travel through multiple intersections without stopping",
+        "mechanism": "Each intersection communicates its current timing and queue status to immediate neighbors. The system then adjusts signal offsets (the timing difference between adjacent signals) to create waves of green lights along major corridors. When a platoon of vehicles is detected moving through one intersection, subsequent intersections adjust their timing to allow the platoon to continue with minimal stopping",
         "evidence": [
-          "Myxomycete networks adapt based on flow information distributed throughout the organism",
-          "Traffic signal coordination has shown benefits in some urban environments"
+          "Myxomycetes create coordinated pressure waves through their networks",
+          "Traffic signal coordination has been shown to improve flow on major arterials"
         ],
         "assumptions": [
-          "Neighboring intersections share sufficient information for coordinated optimization",
-          "Communication delays are small enough to allow real-time coordination",
-          "Network topology provides adequate information flow"
+          "Vehicle platoons can be reliably detected at intersections",
+          "Neighbors can communicate timing information effectively",
+          "Traffic patterns have some degree of predictability over short distances"
         ],
         "predictions": [],
         "expected_failure_modes": [
-          "Communication bottlenecks",
-          "Propagation of timing errors through the network",
-          "Increased vulnerability to communication failures"
+          "Coordination failures when neighbors have inconsistent traffic patterns",
+          "Increased delays for vehicles not part of organized platoons",
+          "Difficulty adapting to irregular traffic patterns"
         ],
-        "novelty_rationale": "Transfers the slime mold's distributed information processing concept to create a communication-based adaptive signal system rather than purely local control.",
-        "testability": "Testable by implementing varying communication protocols and delay scenarios between intersections.",
-        "falsifier": "If increased communication between intersections leads to slower adaptation times or higher computational overhead without significant improvement in throughput, this hypothesis would be proven wrong as the communication overhead would outweigh benefits.",
+        "novelty_rationale": "This hypothesis focuses on the temporal coordination aspect of the slime mold's pressure differentials, applying it to traffic signal offsets rather than just green time allocation",
+        "testability": "Can be tested by measuring the percentage of vehicles that can travel through multiple consecutive signals without stopping, compared to fixed-timing systems",
+        "falsifier": "If implementing this coordination system results in worse overall traffic flow because the focus on platoons creates congestion at intersection boundaries",
         "epistemic_state": "HYPOTHESIZED",
         "parent_hypothesis_ids": [],
         "provenance": {
@@ -91,26 +91,26 @@
       },
       {
         "hypothesis_id": "H-DEV-CH-004-003",
-        "claim": "Signal timing adaptation operates through a gradient descent mechanism where each intersection adjusts its parameters to minimize a local cost function based on both current performance and historical performance trends.",
-        "mechanism": "Each intersection continuously evaluates multiple timing strategies using a cost function that considers delay, throughput, and compliance with minimum green times, then moves toward the strategy that minimizes this cost over time, creating a hill-climbing optimization process.",
+        "claim": "Traffic signals adapt by implementing a 'market-based' system where intersections compete for traffic flow by adjusting their timing to be more accommodating",
+        "mechanism": "Each intersection operates with a 'budget' of timing flexibility. When an intersection detects higher traffic flow, it can 'spend' some of its budget to increase green time for that approach. However, the budget is replenished based on how efficiently the intersection processes traffic (vehicles per green cycle). This creates a competitive system where intersections that handle traffic more efficiently get more resources to further improve",
         "evidence": [
-          "Myxomycetes optimize through iterative structural adjustments based on flow feedback",
-          "Reinforcement learning approaches have shown promise in traffic control"
+          "Myxomycetes allocate resources based on flow efficiency",
+          "Market-based approaches have been successful in other resource allocation problems"
         ],
         "assumptions": [
-          "Local cost functions can be defined that correlate with network-level performance",
-          "Historical data provides useful information for future optimization",
-          "The system can escape local minima in the cost landscape"
+          "Traffic efficiency can be accurately measured at each intersection",
+          "A budget system can effectively distribute timing resources",
+          "Intersections will compete in a way that benefits the overall network"
         ],
         "predictions": [],
         "expected_failure_modes": [
-          "Convergence to local optima",
-          "Slow adaptation to sudden traffic changes",
-          "Sensitivity to initial conditions"
+          "Resource hoarding by already efficient intersections",
+          "Inability to respond to sudden changes in traffic patterns",
+          "Complexity of the budget system making it difficult to implement and maintain"
         ],
-        "novelty_rationale": "Applies the concept of iterative optimization from slime mold adaptation to create a learning-based signal timing system rather than direct feedback or communication-based approaches.",
-        "testability": "Testable by implementing different cost functions and learning rates at intersections and measuring convergence to optimal timing.",
-        "falsifier": "If the system converges to suboptimal timing patterns that get stuck in local minima or fails to adapt to changing traffic patterns, this hypothesis would be proven wrong as the gradient descent mechanism would be insufficient for global optimization.",
+        "novelty_rationale": "This hypothesis introduces a resource allocation metaphor to the traffic signal problem, where timing flexibility is treated as a scarce resource that is distributed based on performance",
+        "testability": "Can be tested by implementing the budget system and measuring whether intersections with better performance metrics actually receive more timing flexibility",
+        "falsifier": "If implementing this budget system leads to some intersections hoarding timing resources while others become chronically under-resourced, creating inequality in the network",
         "epistemic_state": "HYPOTHESIZED",
         "parent_hypothesis_ids": [],
         "provenance": {
@@ -122,9 +122,9 @@
         "provenance_root_hash": ""
       }
     ],
-    "distinguishing_predictions": "The independent local feedback hypothesis would predict that adding communication between intersections would provide no additional benefit or might even degrade performance. The distributed communication hypothesis would predict that communication range and frequency directly correlate with system performance up to a point. The gradient descent hypothesis would predict that system performance improves over time as intersections 'learn' optimal timing strategies, with faster learning rates leading to better adaptation to changing conditions. These hypotheses can be distinguished by measuring the impact of communication on performance, the time evolution of system efficiency, and the correlation between local optimization metrics and network-level performance.",
+    "distinguishing_predictions": "The three hypotheses can be distinguished by their response to specific traffic patterns: 1) The positive feedback hypothesis would quickly allocate more green time to a suddenly busy corridor but might create oscillations; 2) The platoon coordination hypothesis would focus on creating smooth waves of green lights along major corridors but might neglect cross-street traffic; 3) The market-based hypothesis would gradually shift resources to more efficient intersections but might initially under-respond to sudden changes. Testing these would involve creating specific traffic scenarios: a sudden incident on one corridor, a coordinated platoon moving through multiple intersections, and a gradual shift in traffic patterns over time.",
     "transfer_id": "TH-DEV-CH-004-001",
-    "source_transfer_hash": "d644adb76de97e611ef9c8d5c9057272a116be712db48f447a27da270bc850fe"
+    "source_transfer_hash": "775197bc02c6066336f78bfe68fe262bb7544213c2430177f6cfdfc55f4eda58"
   },
-  "timestamp": "2026-08-08T08:18:20.480255+00:00"
+  "timestamp": "2026-08-08T08:30:39.324236+00:00"
 }

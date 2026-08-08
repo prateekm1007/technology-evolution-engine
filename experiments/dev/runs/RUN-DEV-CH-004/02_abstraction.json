@@ -1,9 +1,9 @@
 {
   "stage": "02_abstraction",
   "run_id": "RUN-DEV-CH-004",
-  "code_sha": "engine-v0.1-round3",
-  "input_hash": "5a997cf91085787c0a4afecde833f47ef9933f613b3c9eeabb0de773e12c088c",
-  "output_hash": "c80a87a6a63184a95ac4ebba181a23a9d9a9f344e640b046578e7acbbf8e1967",
+  "code_sha": "8e2bf668838d2afb943a656e2814b9be04bb5c61",
+  "input_hash": "b592821f00b64f30c041b61e38fdaf0f3674b71dee83da959467fead54afe4a5",
+  "output_hash": "4989aead66b2479fba28eb9007b9885588b13849b38c5bc5e06c10872d646bea",
   "provider_manifest": {
     "provider": "zai",
     "model": "glm-4-plus",
@@ -13,13 +13,13 @@
       "max_tokens": 4096,
       "system_sha": "da25f0e8a1231c4250cad400e03ce5c0a835dbc6ca8fc600ce255ef3727d663e"
     },
-    "prompt_sha": "83888192d285b95a4c9c61b61db3d4aea43bc13e13ebe5099fcf6b644e7f9fa9",
+    "prompt_sha": "db68545be28e4cbc7d54ebc67ee6b5af4fb28613578f59e9bfe80fb3809bbab8",
     "seed": null,
     "tool_versions": {
       "z_ai_cli": "z-ai"
     },
-    "timestamp": "2026-08-08T08:17:49.979679+00:00",
-    "latency_ms": 3703,
+    "timestamp": "2026-08-08T08:30:07.294906+00:00",
+    "latency_ms": 3872,
     "success": true,
     "error": ""
   },
@@ -27,44 +27,43 @@
     "pattern": {
       "pattern_id": "MP-DEV-CH-004",
       "source_domain": "myxomycete biology / emergent computation",
-      "causal_structure": "Flow rate enables structural adaptation under feedback constraints, producing optimized network topology",
+      "causal_structure": "oscillatory contraction generates pressure differentials, enabling directional flow through network paths, which then drives structural reinforcement of high-flow channels and weakening of low-flow channels",
       "inputs": [
-        "resource flow",
-        "network structure"
+        "multiple connection paths between sources",
+        "oscillatory contraction capability"
       ],
       "conditions": [
-        "feedback gain regime",
-        "resource availability"
+        "variable flow rates through different paths",
+        "structural material availability for remodeling"
       ],
       "operations": [
-        "rhythmic contraction",
-        "structural thickening",
-        "structural thinning",
-        "flow regulation"
+        "generate pressure differentials via rhythmic contraction",
+        "direct flow through preferred paths",
+        "thicken high-flow channels",
+        "thin low-flow channels"
       ],
       "intermediate_state": [
-        "variable tube radius",
-        "path thickness variation",
-        "network adaptation"
+        "pressure-driven flow distribution",
+        "differential flow rates across network"
       ],
       "outputs": [
         "optimized transport network",
         "efficient resource distribution"
       ],
       "constraints": [
-        "flow-to-radius feedback stability",
-        "structural integrity limits"
+        "limited structural material",
+        "energy expenditure for contraction and remodeling"
       ],
       "failure_conditions": [
-        "insufficient flow",
-        "excessive flow",
-        "oscillating feedback cycles"
+        "material depletion prevents network adaptation",
+        "uniform flow eliminates pressure differentials",
+        "external damage disrupts network connectivity"
       ],
-      "abstract_principle": "Self-organizing network optimizes transport capacity through dynamic feedback between flow and structural dimensions",
-      "source_graph_summary": "18 nodes, 16 edges"
+      "abstract_principle": "adaptive network optimization through flow-dependent structural remodeling",
+      "source_graph_summary": "26 nodes, 14 edges"
     },
     "failures": [],
-    "source_extraction_hash": "71d76f0f1b84a39b5385f751809635c9f62e116e34e678c1124b424fb12fb398"
+    "source_extraction_hash": "62db13c5cf89f1970d526fa4c19575d3b77c7d314ba4812fab65c08c049cace6"
   },
-  "timestamp": "2026-08-08T08:17:53.684215+00:00"
+  "timestamp": "2026-08-08T08:30:11.171378+00:00"
 }

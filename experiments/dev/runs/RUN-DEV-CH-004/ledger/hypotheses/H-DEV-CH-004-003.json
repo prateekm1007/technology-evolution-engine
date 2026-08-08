@@ -1,25 +1,25 @@
 {
   "hypothesis_id": "H-DEV-CH-004-003",
-  "claim": "Signal timing adaptation operates through a gradient descent mechanism where each intersection adjusts its parameters to minimize a local cost function based on both current performance and historical performance trends.",
-  "mechanism": "Each intersection continuously evaluates multiple timing strategies using a cost function that considers delay, throughput, and compliance with minimum green times, then moves toward the strategy that minimizes this cost over time, creating a hill-climbing optimization process.",
+  "claim": "Traffic signals adapt by implementing a 'market-based' system where intersections compete for traffic flow by adjusting their timing to be more accommodating",
+  "mechanism": "Each intersection operates with a 'budget' of timing flexibility. When an intersection detects higher traffic flow, it can 'spend' some of its budget to increase green time for that approach. However, the budget is replenished based on how efficiently the intersection processes traffic (vehicles per green cycle). This creates a competitive system where intersections that handle traffic more efficiently get more resources to further improve",
   "evidence": [
-    "Myxomycetes optimize through iterative structural adjustments based on flow feedback",
-    "Reinforcement learning approaches have shown promise in traffic control"
+    "Myxomycetes allocate resources based on flow efficiency",
+    "Market-based approaches have been successful in other resource allocation problems"
   ],
   "assumptions": [
-    "Local cost functions can be defined that correlate with network-level performance",
-    "Historical data provides useful information for future optimization",
-    "The system can escape local minima in the cost landscape"
+    "Traffic efficiency can be accurately measured at each intersection",
+    "A budget system can effectively distribute timing resources",
+    "Intersections will compete in a way that benefits the overall network"
   ],
   "predictions": [],
   "expected_failure_modes": [
-    "Convergence to local optima",
-    "Slow adaptation to sudden traffic changes",
-    "Sensitivity to initial conditions"
+    "Resource hoarding by already efficient intersections",
+    "Inability to respond to sudden changes in traffic patterns",
+    "Complexity of the budget system making it difficult to implement and maintain"
   ],
-  "novelty_rationale": "Applies the concept of iterative optimization from slime mold adaptation to create a learning-based signal timing system rather than direct feedback or communication-based approaches.",
-  "testability": "Testable by implementing different cost functions and learning rates at intersections and measuring convergence to optimal timing.",
-  "falsifier": "If the system converges to suboptimal timing patterns that get stuck in local minima or fails to adapt to changing traffic patterns, this hypothesis would be proven wrong as the gradient descent mechanism would be insufficient for global optimization.",
+  "novelty_rationale": "This hypothesis introduces a resource allocation metaphor to the traffic signal problem, where timing flexibility is treated as a scarce resource that is distributed based on performance",
+  "testability": "Can be tested by implementing the budget system and measuring whether intersections with better performance metrics actually receive more timing flexibility",
+  "falsifier": "If implementing this budget system leads to some intersections hoarding timing resources while others become chronically under-resourced, creating inequality in the network",
   "epistemic_state": "HYPOTHESIZED",
   "parent_hypothesis_ids": [],
   "provenance": {

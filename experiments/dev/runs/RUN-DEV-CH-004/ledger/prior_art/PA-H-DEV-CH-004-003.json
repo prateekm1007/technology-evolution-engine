@@ -6,7 +6,7 @@
     "dev_corpus"
   ],
   "queries": [
-    "Signal timing adaptation operates through a gradient descent mechanism where each intersection adjusts its parameters to minimize a local cost function based on both current performance and historical performance trends. Each intersection continuously evaluates multiple timing strategies using a cost function that considers delay, throughput, and compliance with minimum green times, then moves toward the strategy that minimizes this cost over time, creating a hill-climbing optimization process."
+    "Traffic signals adapt by implementing a 'market-based' system where intersections compete for traffic flow by adjusting their timing to be more accommodating Each intersection operates with a 'budget' of timing flexibility. When an intersection detects higher traffic flow, it can 'spend' some of its budget to increase green time for that approach. However, the budget is replenished based on how efficiently the intersection processes traffic (vehicles per green cycle). This creates a competitive system where intersections that handle traffic more efficiently get more resources to further improve"
   ],
   "sources": [],
   "matched_prior_art": [],
@@ -15,5 +15,5 @@
   "confidence": 0.3,
   "cutoff": "2026-08-08",
   "reviewer": "novelty_firewall_v0",
-  "timestamp": "2026-08-08T08:19:11.251312+00:00"
+  "timestamp": "2026-08-08T08:31:17.634712+00:00"
 }

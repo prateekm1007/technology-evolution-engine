@@ -1,9 +1,9 @@
 {
   "stage": "05_adversarial_H-DEV-CH-004-001",
   "run_id": "RUN-DEV-CH-004",
-  "code_sha": "engine-v0.1-round3",
-  "input_hash": "9c203f052b3fe2b1b8d3dd98326571393cda93d0a7ad053163d15238c2ef8416",
-  "output_hash": "cced5d22526d7522bece5344490e1844ccd91310b54c9e824cb0454ee63bb102",
+  "code_sha": "8e2bf668838d2afb943a656e2814b9be04bb5c61",
+  "input_hash": "6eb4b05ab232c420d6db7a1ce7bc2eabbbf656f258eeca4eb0ae909700cb5275",
+  "output_hash": "e1b72c25898643927c78c22107c539d16715826eed026b1d453e0911d41b9cb0",
   "provider_manifest": {
     "provider": "zai",
     "model": "glm-4-plus",
@@ -13,13 +13,13 @@
       "max_tokens": 4096,
       "system_sha": "1f5a3fff3aebc2e1d44b2312f4b604b5c2911cacaf452eb6ca705c724fc9142b"
     },
-    "prompt_sha": "896048a2317c9ae481d0bc7b324d63ffd11ff59e40d4841a66cc446d0dbc9b26",
+    "prompt_sha": "15bd228b5eababe385dde38e2959e044eedf31fe9e12f2f888182f17ae735798",
     "seed": null,
     "tool_versions": {
       "z_ai_cli": "z-ai"
     },
-    "timestamp": "2026-08-08T08:18:20.481546+00:00",
-    "latency_ms": 12944,
+    "timestamp": "2026-08-08T08:30:39.325745+00:00",
+    "latency_ms": 10787,
     "success": true,
     "error": ""
   },
@@ -27,48 +27,48 @@
     "hypothesis_id": "H-DEV-CH-004-001",
     "failure_modes": [
       {
-        "category": "FRAGILE_ASSUMPTION",
-        "description": "Queue length as primary determinant ignores intersection capacity constraints",
+        "category": "CONTRADICTS_KNOWN",
+        "description": "Positive feedback in traffic systems leads to Braess's paradox, where adding capacity can actually reduce overall network efficiency",
         "severity": "HIGH",
-        "evidence": "Traffic engineering literature consistently shows that optimal timing requires balancing multiple factors including pedestrian crossing times, safety considerations, and intersection capacity, not just queue length."
+        "evidence": "Braess's paradox is a well-established phenomenon in traffic engineering where adding capacity to a road network can increase travel times for all users"
       },
       {
-        "category": "CONTRADICTS_KNOWN",
-        "description": "Independent operation contradicts well-established traffic signal coordination principles",
+        "category": "FRAGILE_ASSUMPTION",
+        "description": "Assumption that traffic flow patterns are stable is fundamentally flawed in real-world scenarios with accidents, weather events, and rush hour variations",
         "severity": "HIGH",
-        "evidence": "Decades of traffic engineering research demonstrate that coordinated signal systems (like bandwidth optimization or progressive signal systems) outperform isolated operation in nearly all urban scenarios."
+        "evidence": "Real-world traffic systems experience frequent disruptions and pattern changes that would cause this system to constantly overcorrect"
       },
       {
         "category": "BOUNDARY_BREAKS",
-        "description": "Fails to account for overflow effects at intersection boundaries",
-        "severity": "HIGH",
-        "evidence": "Local adjustments would cause queue spillover to upstream intersections, creating cascading failures that the local controllers cannot detect or mitigate."
-      },
-      {
-        "category": "PRIOR_ART_EXISTS",
-        "description": "Local feedback control with coordination already exists in modern adaptive systems",
+        "description": "The mechanism would fail at network boundaries where intersections connect to different traffic patterns, creating discontinuities",
         "severity": "MEDIUM",
-        "evidence": "Systems like SCATS and SCOOT already implement local feedback with coordination, making this approach neither novel nor superior to existing technology."
+        "evidence": "Traffic networks are heterogeneous systems with varying intersection types, road capacities, and traffic demands that cannot be uniformly optimized"
       },
       {
         "category": "FALSIFIER_TRIGGERED",
-        "description": "Expected oscillations would inevitably occur with competing local objectives",
+        "description": "The proposed mechanism directly contradicts established traffic engineering principles that seek to balance flows across the network rather than reinforce existing imbalances",
         "severity": "HIGH",
-        "evidence": "Game theory shows that when each intersection optimizes locally without considering network effects, Braess's paradox and similar phenomena create system-wide inefficiencies."
+        "evidence": "Modern traffic signal systems use responsive algorithms that work to minimize total delay and maximize throughput across all approaches, not reinforce existing inequalities"
+      },
+      {
+        "category": "PRIOR_ART_EXISTS",
+        "description": "Adaptive traffic signal systems using similar feedback principles have been extensively researched and shown to perform poorly compared to balanced approaches",
+        "severity": "MEDIUM",
+        "evidence": "Numerous studies since the 1970s have shown that purely reactive systems without network-wide optimization perform poorly compared to coordinated signal systems"
       },
       {
         "category": "INCOMPATIBLE_TARGET",
-        "description": "Slime mold analogy fundamentally misapplies biological principles to engineered systems",
+        "description": "The hypothesis prioritizes flow maximization for high-volume corridors while ignoring critical secondary metrics like pedestrian safety, emergency vehicle access, and equitable service",
         "severity": "HIGH",
-        "evidence": "Traffic systems have non-negotiable physical constraints (vehicle dimensions, acceleration limits) and safety requirements that biological systems lack, making direct analogy invalid."
+        "evidence": "Real-world traffic systems must balance multiple competing objectives, not optimize for a single metric like vehicle throughput"
       }
     ],
     "survives": false,
     "outcome": "ADVERSARIAL_FAILED",
-    "n_high_severity": 5,
-    "n_medium_severity": 1,
+    "n_high_severity": 4,
+    "n_medium_severity": 2,
     "n_low_severity": 0,
     "source_hypothesis_hash": ""
   },
-  "timestamp": "2026-08-08T08:18:33.426199+00:00"
+  "timestamp": "2026-08-08T08:30:50.113689+00:00"
 }

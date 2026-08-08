@@ -6,7 +6,7 @@
     "dev_corpus"
   ],
   "queries": [
-    "Traffic flow directly modulates signal timing through local feedback loops, with each intersection independently adjusting its green time based on immediate queue length measurements. Each intersection controller operates as an independent entity, continuously measuring queue length and vehicle count, then extending or reducing green time proportionally to these measurements without coordination with neighboring intersections."
+    "Traffic signals adapt by gradually increasing green time for approaches with higher traffic flow, creating a self-reinforcing cycle that prioritizes busy corridors Each intersection continuously monitors vehicle count and queue length on all approaches. If an approach shows higher flow than average, its green time is incrementally increased (up to a maximum), while approaches with lower flow have their green time reduced. This creates a positive feedback loop where busy corridors get progressively more green time, while less busy corridors get less"
   ],
   "sources": [],
   "matched_prior_art": [],
@@ -15,5 +15,5 @@
   "confidence": 0.3,
   "cutoff": "2026-08-08",
   "reviewer": "novelty_firewall_v0",
-  "timestamp": "2026-08-08T08:18:36.037784+00:00"
+  "timestamp": "2026-08-08T08:30:53.154554+00:00"
 }

@@ -1,9 +1,9 @@
 {
   "stage": "06_rediscovery_H-DEV-CH-004-003",
   "run_id": "RUN-DEV-CH-004",
-  "code_sha": "engine-v0.1-round3",
-  "input_hash": "957e7e3baf5cf94ab9c6dec799b6f8476de795409688b55c207879c98db2fab2",
-  "output_hash": "8105cc7e5633a01247cef42e872036ef6d334f58c67e82484fc0d0173ee85a99",
+  "code_sha": "8e2bf668838d2afb943a656e2814b9be04bb5c61",
+  "input_hash": "f0212e3f86e6cd20f573e613d489025338ff09cfce0965e5d73d5e517790691e",
+  "output_hash": "6f51d9ce7468d1b01019a40a02dc5e49dcb4fce79c0c0a7effb07a9264e60007",
   "provider_manifest": {
     "provider": "zai",
     "model": "glm-4-plus",
@@ -13,22 +13,22 @@
       "max_tokens": 4096,
       "system_sha": "dbdd0760dff49fc029b32b580a575b7de33a87d371edc2b0deec93bfb2b90b01"
     },
-    "prompt_sha": "92f22c0e22a2e63dfed3d8de1924fd10dffcf4913ae3d52df3816c30492b72b5",
+    "prompt_sha": "9a1ba707aa8bdc9028a986ff7228cd284bab3a90959507af6cdfed74836f3ffa",
     "seed": null,
     "tool_versions": {
       "z_ai_cli": "z-ai"
     },
-    "timestamp": "2026-08-08T08:19:07.163963+00:00",
-    "latency_ms": 4085,
+    "timestamp": "2026-08-08T08:31:13.135059+00:00",
+    "latency_ms": 4497,
     "success": true,
     "error": ""
   },
   "result": {
     "hypothesis_id": "H-DEV-CH-004-003",
     "classification": "NON_TRIVIAL_TRANSFER",
-    "evidence": "The hypothesis describes a signal timing adaptation mechanism using gradient descent and cost functions for traffic intersections, which is completely unrelated to the source document about Physarum polycephalum's biological network adaptation through protoplasmic streaming and tube thickness feedback. The source discusses biological processes in slime mold networks, while the hypothesis concerns traffic engineering optimization. There is no conceptual overlap or transferable elements between these domains.",
+    "evidence": "The hypothesis describes a 'market-based' traffic signal system where intersections compete for traffic flow by adjusting timing based on a 'budget' system. While the source document describes a biological system (Physarum polycephalum) that adapts its transport network through feedback mechanisms, the transfer to a traffic signal system with budgets, competition, and efficiency-based resource allocation represents a significant cross-domain transfer. The biological system uses flow-dependent tube thickening/thinning, while the traffic system uses a budget mechanism with efficiency-based replenishment. This is not a direct composition, structural inference, or simple paraphrase of the source content, but rather a genuine cross-domain application of the adaptation principles.",
     "is_rediscovery": false,
     "source_hypothesis_hash": ""
   },
-  "timestamp": "2026-08-08T08:19:11.249435+00:00"
+  "timestamp": "2026-08-08T08:31:17.632709+00:00"
 }
