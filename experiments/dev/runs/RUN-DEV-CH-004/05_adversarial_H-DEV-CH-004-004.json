@@ -1,0 +1,42 @@
+{
+  "hypothesis_id": "H-DEV-CH-004-004",
+  "failure_modes": [
+    {
+      "category": "FRAGILE_ASSUMPTION",
+      "description": "Controllers can implement learning algorithms with limited resources",
+      "severity": "HIGH",
+      "evidence": "Traffic signal controllers typically use simple, low-power microcontrollers with minimal processing capabilities. Neural networks require significant computational resources for training and inference, making implementation in resource-constrained environments practically impossible without severe simplification that would undermine the learning capability."
+    },
+    {
+      "category": "CONTRADICTS_KNOWN",
+      "description": "Local learning can generalize to network-wide optimization",
+      "severity": "HIGH",
+      "evidence": "Traffic networks exhibit complex emergent behaviors where local optimizations often lead to global inefficiencies (Braess's paradox). Decentralized learning systems have repeatedly failed to achieve network-wide optimization due to lack of global awareness and coordination between nodes."
+    },
+    {
+      "category": "BOUNDARY_BREAKS",
+      "description": "Experience leads to improved performance over time",
+      "severity": "MEDIUM",
+      "evidence": "Real-world traffic systems face non-stationary environments with changing infrastructure, driver behavior, and external factors. Learning systems that perform well in controlled environments typically fail to maintain performance in these dynamic conditions without constant retraining and human intervention."
+    },
+    {
+      "category": "PRIOR_ART_EXISTS",
+      "description": "Novel application of machine learning to traffic signals",
+      "severity": "MEDIUM",
+      "evidence": "The concept of adaptive traffic signal control using machine learning has been extensively researched since the 1990s, with numerous implementations like SCATS, SCOOT, and RHODES. The hypothesis merely repackages existing approaches without fundamentally new insights."
+    },
+    {
+      "category": "FALSIFIER_TRIGGERED",
+      "description": "Cannot adapt to traffic patterns not encountered during training",
+      "severity": "HIGH",
+      "evidence": "The hypothesis explicitly states the system would fail with unseen patterns, yet real-world traffic systems must handle novel situations daily (accidents, construction, special events, weather disruptions). This limitation makes the system fundamentally unsuitable for real deployment."
+    },
+    {
+      "category": "INCOMPATIBLE_TARGET",
+      "description": "Distributed learning can achieve optimal timing",
+      "severity": "HIGH",
+      "evidence": "Traffic signal optimization requires solving a complex multi-objective optimization problem with conflicting goals (minimize delay, maximize throughput, reduce emissions, ensure safety). Neural networks excel at pattern recognition but are poorly suited for multi-objective optimization with explicit constraints."
+    }
+  ],
+  "survives": false
+}

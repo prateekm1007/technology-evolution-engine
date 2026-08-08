@@ -1,0 +1,21 @@
+{
+  "hypothesis_id": "H-DEV-CH-004-002",
+  "prediction": {
+    "prediction_id": "P-H-DEV-CH-004-002",
+    "hypothesis_id": "H-DEV-CH-004-002",
+    "observable": "average vehicle delay per intersection during peak hours",
+    "expected_direction": "decrease",
+    "expected_magnitude": "15-25% reduction in average delay",
+    "conditions": [
+      "high traffic volume",
+      "multiple adjacent intersections with coordinated signals"
+    ],
+    "baseline": "current fixed-time signal timing system",
+    "falsifier": "If the adaptive system shows no statistically significant reduction in average delay compared to fixed timing, or if any intersection shows increased delay of more than 10% compared to fixed timing, the hypothesis would be refuted.",
+    "uncertainty": 0.2,
+    "epistemic_state": "PREDICTED",
+    "is_testable": true
+  },
+  "failed": false,
+  "failures": []
+}

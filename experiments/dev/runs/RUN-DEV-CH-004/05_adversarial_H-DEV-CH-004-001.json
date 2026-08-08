@@ -1,0 +1,42 @@
+{
+  "hypothesis_id": "H-DEV-CH-004-001",
+  "failure_modes": [
+    {
+      "category": "FRAGILE_ASSUMPTION",
+      "description": "Local controllers cannot accurately measure traffic flow in real-world conditions with sensor errors, weather effects, and vehicle detection failures",
+      "severity": "HIGH",
+      "evidence": "Traffic sensor failure rates are estimated at 10-15% in urban environments, leading to incorrect flow measurements that would corrupt the feedback mechanism"
+    },
+    {
+      "category": "CONTRADICTS_KNOWN",
+      "description": "Positive feedback in traffic systems leads to Braess's paradox where adding capacity can reduce overall network performance",
+      "severity": "HIGH",
+      "evidence": "Numerous studies have shown that uncoordinated local optimization can create worse system-wide performance than fixed-time signals"
+    },
+    {
+      "category": "BOUNDARY_BREAKS",
+      "description": "The mechanism fails to account for pedestrian and bicycle traffic which requires different timing logic",
+      "severity": "MEDIUM",
+      "evidence": "Urban intersections must balance multiple transportation modes, and vehicle-focused optimization would create dangerous conditions for pedestrians"
+    },
+    {
+      "category": "FALSIFIER_TRIGGERED",
+      "description": "The system would exhibit persistent oscillations between adjacent intersections with conflicting timing",
+      "severity": "HIGH",
+      "evidence": "Existing adaptive signal systems require inter-communication to prevent exactly this failure mode, which this hypothesis explicitly rejects"
+    },
+    {
+      "category": "INCOMPATIBLE_TARGET",
+      "description": "Network-wide optimization cannot emerge from purely local decisions in non-convex optimization problems like traffic flow",
+      "severity": "HIGH",
+      "evidence": "Traffic flow optimization is a known non-convex problem where local optima do not guarantee global optimality"
+    },
+    {
+      "category": "PRIOR_ART_EXISTS",
+      "description": "Similar decentralized approaches have been tried and failed in real-world implementations",
+      "severity": "MEDIUM",
+      "evidence": "The TRANSYT and SCOOT systems from the 1970s already demonstrated that some coordination is necessary for effective traffic optimization"
+    }
+  ],
+  "survives": false
+}

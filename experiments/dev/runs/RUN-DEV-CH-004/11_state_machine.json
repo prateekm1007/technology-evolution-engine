@@ -1,0 +1,86 @@
+{
+  "final_state": "EXPERIMENT",
+  "history": [
+    {
+      "from_state": "RAW_EVIDENCE",
+      "to_state": "STRUCTURED_KNOWLEDGE",
+      "actor": "loop",
+      "timestamp": "2026-08-08T06:56:19.590506+00:00",
+      "code_sha": "engine-v0.1",
+      "evidence": "auto",
+      "reason": "phase advance"
+    },
+    {
+      "from_state": "STRUCTURED_KNOWLEDGE",
+      "to_state": "MECHANISM",
+      "actor": "loop",
+      "timestamp": "2026-08-08T06:56:19.590527+00:00",
+      "code_sha": "engine-v0.1",
+      "evidence": "auto",
+      "reason": "phase advance"
+    },
+    {
+      "from_state": "MECHANISM",
+      "to_state": "TRANSFER_HYPOTHESIS",
+      "actor": "loop",
+      "timestamp": "2026-08-08T06:56:19.590533+00:00",
+      "code_sha": "engine-v0.1",
+      "evidence": "auto",
+      "reason": "phase advance"
+    },
+    {
+      "from_state": "TRANSFER_HYPOTHESIS",
+      "to_state": "CANDIDATE_DISCOVERY",
+      "actor": "loop",
+      "timestamp": "2026-08-08T06:56:19.590536+00:00",
+      "code_sha": "engine-v0.1",
+      "evidence": "auto",
+      "reason": "phase advance"
+    },
+    {
+      "from_state": "CANDIDATE_DISCOVERY",
+      "to_state": "GATE_A",
+      "actor": "loop",
+      "timestamp": "2026-08-08T06:56:19.590539+00:00",
+      "code_sha": "engine-v0.1",
+      "evidence": "auto",
+      "reason": "phase advance"
+    },
+    {
+      "from_state": "GATE_A",
+      "to_state": "GATE_B",
+      "actor": "loop",
+      "timestamp": "2026-08-08T06:56:19.590542+00:00",
+      "code_sha": "engine-v0.1",
+      "evidence": "auto",
+      "reason": "phase advance"
+    },
+    {
+      "from_state": "GATE_B",
+      "to_state": "GATE_C",
+      "actor": "loop",
+      "timestamp": "2026-08-08T06:56:19.590545+00:00",
+      "code_sha": "engine-v0.1",
+      "evidence": "auto",
+      "reason": "phase advance"
+    },
+    {
+      "from_state": "GATE_C",
+      "to_state": "TESTABLE_HYPOTHESIS",
+      "actor": "loop",
+      "timestamp": "2026-08-08T06:56:19.590549+00:00",
+      "code_sha": "engine-v0.1",
+      "evidence": "auto",
+      "reason": "phase advance"
+    },
+    {
+      "from_state": "TESTABLE_HYPOTHESIS",
+      "to_state": "EXPERIMENT",
+      "actor": "loop",
+      "timestamp": "2026-08-08T06:56:19.590623+00:00",
+      "code_sha": "engine-v0.1",
+      "evidence": "experiment designed",
+      "reason": "ready"
+    }
+  ]
+}

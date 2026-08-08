@@ -1,0 +1,43 @@
+{
+  "transfers": [
+    {
+      "transfer_id": "TH-DEV-CH-004-001",
+      "source_domain": "myxomycete biology / emergent computation",
+      "source_mechanism": "Flow-dependent reinforcement of transport structures through positive feedback",
+      "source_conditions": [
+        "substance flow",
+        "initial network structure",
+        "feedback gain regime",
+        "material availability"
+      ],
+      "target_domain": "urban transportation engineering",
+      "target_problem": "A mid-sized city (population 800,000) has a traffic signal network with 247 signalized intersections. The current signal timing plan is optimized centrally every 6 months using a macroscopic traffic model, but it cannot adapt to real-time conditions: incidents, weather, special events, and construction. Re-optimizing centrally every minute is computationally infeasible and would require expensive predictive models. The city wants a distributed, adaptive signal timing approach that uses only local traffic flow measurements (vehicle count and queue length at each intersection) to adjust green-split and offset in real time, without a central optimizer.",
+      "transferred_principle": "Traffic flow-dependent reinforcement of signal timing through local positive feedback enables adaptive optimization of traffic networks without central coordination.",
+      "required_translation": "Replace rhythmic contraction with signal green phase timing, structural thickening with increased green time allocation, structural thinning with decreased green time allocation, and flow-dependent adaptation with traffic-responsive signal timing adjustments. Replace material availability with computational resources at each intersection controller.",
+      "expected_effect": "Development of an adaptive traffic signal network that self-optimizes based on local traffic conditions, converging to efficient flow patterns without central coordination.",
+      "boundary_conditions": [
+        "sufficient traffic flow to trigger adaptation",
+        "limited communication range between adjacent intersections",
+        "bounded computational capacity at each intersection",
+        "minimum detection accuracy requirements"
+      ],
+      "failure_conditions": [
+        "extremely low traffic flow preventing adaptation",
+        "communication failures between adjacent intersections",
+        "oscillating feedback causing timing instability",
+        "excessive computational load preventing real-time decisions"
+      ],
+      "testable_prediction": "After implementing the adaptive signal system, average intersection delay will decrease by at least 15% during peak hours compared to the current 6-month-optimized plan, while maintaining stability (no oscillations) during simulated incident scenarios.",
+      "epistemic_state": "HYPOTHESIZED",
+      "provenance": {
+        "nodes": {},
+        "edges": [],
+        "committed_hash": null
+      },
+      "provenance_root_hash": ""
+    }
+  ],
+  "rejected": [],
+  "n_accepted": 1,
+  "n_rejected": 0
+}

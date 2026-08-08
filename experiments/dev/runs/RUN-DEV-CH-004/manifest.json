@@ -1,0 +1,255 @@
+{
+  "run_id": "RUN-DEV-CH-004",
+  "challenge_id": "DEV-CH-004",
+  "started_at": "2026-08-08T06:53:23.603846+00:00",
+  "last_updated": "2026-08-08T06:56:19.592153+00:00",
+  "resume_from": "12_case",
+  "stages": {
+    "01_extraction": {
+      "stage": "01_extraction",
+      "status": "COMPLETED",
+      "started_at": "2026-08-08T06:53:23.603971+00:00",
+      "completed_at": "2026-08-08T06:54:03.542071+00:00",
+      "latency_ms": 39937,
+      "error": "",
+      "manifest": null
+    },
+    "02_abstraction": {
+      "stage": "02_abstraction",
+      "status": "COMPLETED",
+      "started_at": "2026-08-08T06:54:03.542873+00:00",
+      "completed_at": "2026-08-08T06:54:07.207778+00:00",
+      "latency_ms": 3664,
+      "error": "",
+      "manifest": null
+    },
+    "03_transfer": {
+      "stage": "03_transfer",
+      "status": "COMPLETED",
+      "started_at": "2026-08-08T06:54:07.208210+00:00",
+      "completed_at": "2026-08-08T06:54:14.727900+00:00",
+      "latency_ms": 7519,
+      "error": "",
+      "manifest": null
+    },
+    "04_hypotheses": {
+      "stage": "04_hypotheses",
+      "status": "COMPLETED",
+      "started_at": "2026-08-08T06:54:14.728305+00:00",
+      "completed_at": "2026-08-08T06:54:38.658095+00:00",
+      "latency_ms": 23929,
+      "error": "",
+      "manifest": null
+    },
+    "05_adversarial_H-DEV-CH-004-001": {
+      "stage": "05_adversarial_H-DEV-CH-004-001",
+      "status": "COMPLETED",
+      "started_at": "2026-08-08T06:54:38.658722+00:00",
+      "completed_at": "2026-08-08T06:54:46.779597+00:00",
+      "latency_ms": 8120,
+      "error": "",
+      "manifest": null
+    },
+    "06_rediscovery_H-DEV-CH-004-001": {
+      "stage": "06_rediscovery_H-DEV-CH-004-001",
+      "status": "COMPLETED",
+      "started_at": "2026-08-08T06:54:46.780160+00:00",
+      "completed_at": "2026-08-08T06:54:48.518397+00:00",
+      "latency_ms": 1737,
+      "error": "",
+      "manifest": null
+    },
+    "07_novelty_H-DEV-CH-004-001": {
+      "stage": "07_novelty_H-DEV-CH-004-001",
+      "status": "COMPLETED",
+      "started_at": "2026-08-08T06:54:48.518842+00:00",
+      "completed_at": "2026-08-08T06:54:48.520880+00:00",
+      "latency_ms": 0,
+      "error": "",
+      "manifest": null
+    },
+    "08_prediction_H-DEV-CH-004-001": {
+      "stage": "08_prediction_H-DEV-CH-004-001",
+      "status": "COMPLETED",
+      "started_at": "2026-08-08T06:54:48.521358+00:00",
+      "completed_at": "2026-08-08T06:54:50.683130+00:00",
+      "latency_ms": 2161,
+      "error": "",
+      "manifest": null
+    },
+    "09_experiment_H-DEV-CH-004-001": {
+      "stage": "09_experiment_H-DEV-CH-004-001",
+      "status": "COMPLETED",
+      "started_at": "2026-08-08T06:54:50.683592+00:00",
+      "completed_at": "2026-08-08T06:54:58.938729+00:00",
+      "latency_ms": 8254,
+      "error": "",
+      "manifest": null
+    },
+    "05_adversarial_H-DEV-CH-004-002": {
+      "stage": "05_adversarial_H-DEV-CH-004-002",
+      "status": "COMPLETED",
+      "started_at": "2026-08-08T06:54:58.939274+00:00",
+      "completed_at": "2026-08-08T06:55:10.842939+00:00",
+      "latency_ms": 11902,
+      "error": "",
+      "manifest": null
+    },
+    "06_rediscovery_H-DEV-CH-004-002": {
+      "stage": "06_rediscovery_H-DEV-CH-004-002",
+      "status": "COMPLETED",
+      "started_at": "2026-08-08T06:55:10.843450+00:00",
+      "completed_at": "2026-08-08T06:55:13.554832+00:00",
+      "latency_ms": 2710,
+      "error": "",
+      "manifest": null
+    },
+    "07_novelty_H-DEV-CH-004-002": {
+      "stage": "07_novelty_H-DEV-CH-004-002",
+      "status": "COMPLETED",
+      "started_at": "2026-08-08T06:55:13.555435+00:00",
+      "completed_at": "2026-08-08T06:55:13.556189+00:00",
+      "latency_ms": 0,
+      "error": "",
+      "manifest": null
+    },
+    "08_prediction_H-DEV-CH-004-002": {
+      "stage": "08_prediction_H-DEV-CH-004-002",
+      "status": "COMPLETED",
+      "started_at": "2026-08-08T06:55:13.556598+00:00",
+      "completed_at": "2026-08-08T06:55:16.106045+00:00",
+      "latency_ms": 2549,
+      "error": "",
+      "manifest": null
+    },
+    "09_experiment_H-DEV-CH-004-002": {
+      "stage": "09_experiment_H-DEV-CH-004-002",
+      "status": "COMPLETED",
+      "started_at": "2026-08-08T06:55:16.106539+00:00",
+      "completed_at": "2026-08-08T06:55:24.760125+00:00",
+      "latency_ms": 8652,
+      "error": "",
+      "manifest": null
+    },
+    "05_adversarial_H-DEV-CH-004-003": {
+      "stage": "05_adversarial_H-DEV-CH-004-003",
+      "status": "COMPLETED",
+      "started_at": "2026-08-08T06:55:35.221449+00:00",
+      "completed_at": "2026-08-08T06:55:43.528668+00:00",
+      "latency_ms": 8306,
+      "error": "",
+      "manifest": null
+    },
+    "06_rediscovery_H-DEV-CH-004-003": {
+      "stage": "06_rediscovery_H-DEV-CH-004-003",
+      "status": "COMPLETED",
+      "started_at": "2026-08-08T06:55:43.529545+00:00",
+      "completed_at": "2026-08-08T06:55:46.169750+00:00",
+      "latency_ms": 2639,
+      "error": "",
+      "manifest": null
+    },
+    "07_novelty_H-DEV-CH-004-003": {
+      "stage": "07_novelty_H-DEV-CH-004-003",
+      "status": "COMPLETED",
+      "started_at": "2026-08-08T06:55:46.170356+00:00",
+      "completed_at": "2026-08-08T06:55:46.170875+00:00",
+      "latency_ms": 0,
+      "error": "",
+      "manifest": null
+    },
+    "08_prediction_H-DEV-CH-004-003": {
+      "stage": "08_prediction_H-DEV-CH-004-003",
+      "status": "COMPLETED",
+      "started_at": "2026-08-08T06:55:46.171291+00:00",
+      "completed_at": "2026-08-08T06:55:48.043445+00:00",
+      "latency_ms": 1871,
+      "error": "",
+      "manifest": null
+    },
+    "09_experiment_H-DEV-CH-004-003": {
+      "stage": "09_experiment_H-DEV-CH-004-003",
+      "status": "COMPLETED",
+      "started_at": "2026-08-08T06:55:48.044071+00:00",
+      "completed_at": "2026-08-08T06:55:55.521509+00:00",
+      "latency_ms": 7476,
+      "error": "",
+      "manifest": null
+    },
+    "05_adversarial_H-DEV-CH-004-004": {
+      "stage": "05_adversarial_H-DEV-CH-004-004",
+      "status": "COMPLETED",
+      "started_at": "2026-08-08T06:55:55.522306+00:00",
+      "completed_at": "2026-08-08T06:56:05.729606+00:00",
+      "latency_ms": 10206,
+      "error": "",
+      "manifest": null
+    },
+    "06_rediscovery_H-DEV-CH-004-004": {
+      "stage": "06_rediscovery_H-DEV-CH-004-004",
+      "status": "COMPLETED",
+      "started_at": "2026-08-08T06:56:05.730253+00:00",
+      "completed_at": "2026-08-08T06:56:08.222091+00:00",
+      "latency_ms": 2491,
+      "error": "",
+      "manifest": null
+    },
+    "07_novelty_H-DEV-CH-004-004": {
+      "stage": "07_novelty_H-DEV-CH-004-004",
+      "status": "COMPLETED",
+      "started_at": "2026-08-08T06:56:08.222755+00:00",
+      "completed_at": "2026-08-08T06:56:08.223513+00:00",
+      "latency_ms": 0,
+      "error": "",
+      "manifest": null
+    },
+    "08_prediction_H-DEV-CH-004-004": {
+      "stage": "08_prediction_H-DEV-CH-004-004",
+      "status": "COMPLETED",
+      "started_at": "2026-08-08T06:56:08.224408+00:00",
+      "completed_at": "2026-08-08T06:56:11.707574+00:00",
+      "latency_ms": 3482,
+      "error": "",
+      "manifest": null
+    },
+    "09_experiment_H-DEV-CH-004-004": {
+      "stage": "09_experiment_H-DEV-CH-004-004",
+      "status": "COMPLETED",
+      "started_at": "2026-08-08T06:56:11.708213+00:00",
+      "completed_at": "2026-08-08T06:56:19.587900+00:00",
+      "latency_ms": 7855,
+      "error": "",
+      "manifest": null
+    },
+    "10_rankings": {
+      "stage": "10_rankings",
+      "status": "COMPLETED",
+      "started_at": "2026-08-08T06:56:19.588459+00:00",
+      "completed_at": "2026-08-08T06:56:19.589140+00:00",
+      "latency_ms": 0,
+      "error": "",
+      "manifest": null
+    },
+    "11_state_machine": {
+      "stage": "11_state_machine",
+      "status": "COMPLETED",
+      "started_at": "2026-08-08T06:56:19.589611+00:00",
+      "completed_at": "2026-08-08T06:56:19.590710+00:00",
+      "latency_ms": 0,
+      "error": "",
+      "manifest": null
+    },
+    "12_case": {
+      "stage": "12_case",
+      "status": "COMPLETED",
+      "started_at": "2026-08-08T06:56:19.591270+00:00",
+      "completed_at": "2026-08-08T06:56:19.591738+00:00",
+      "latency_ms": 0,
+      "error": "",
+      "manifest": null
+    }
+  },
+  "n_hypotheses": 4,
+  "final_state": "",
+  "completed": true
+}

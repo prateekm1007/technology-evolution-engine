@@ -1,0 +1,42 @@
+{
+  "hypothesis_id": "H-DEV-CH-004-002",
+  "failure_modes": [
+    {
+      "category": "FRAGILE_ASSUMPTION",
+      "description": "The assumption that intersections can model their 'value' to the network is completely unsubstantiated and ignores the complexity of traffic flow dynamics",
+      "severity": "HIGH",
+      "evidence": "Traffic flow is governed by fluid dynamics principles, not economic valuation. Intersections cannot 'know' their network value without global information, which contradicts the decentralized nature of the proposed system"
+    },
+    {
+      "category": "CONTRADICTS_KNOWN",
+      "description": "The claim that competitive dynamics lead to global optimization directly contradicts established research in traffic engineering",
+      "severity": "HIGH",
+      "evidence": "Decades of traffic engineering research have shown that competitive signal timing leads to Braess's paradox outcomes where increased capacity actually reduces network performance"
+    },
+    {
+      "category": "BOUNDARY_BREAKS",
+      "description": "The hypothesis fails to account for boundary conditions where traffic patterns exceed system capacity",
+      "severity": "MEDIUM",
+      "evidence": "Market mechanisms fail catastrophically when demand exceeds supply, which is exactly what happens during peak traffic hours in urban networks"
+    },
+    {
+      "category": "PRIOR_ART_EXISTS",
+      "description": "Numerous existing distributed traffic signal control systems already implement similar competitive resource allocation",
+      "severity": "LOW",
+      "evidence": "Systems like SCATS and SCOOT have been using distributed optimization with competitive elements for decades, showing that this approach doesn't provide significant improvements over traditional methods"
+    },
+    {
+      "category": "FALSIFIER_TRIGGERED",
+      "description": "The proposed system would create exactly the inefficient allocations described in the falsifier condition",
+      "severity": "HIGH",
+      "evidence": "Market-based systems naturally create winners and losers. High-demand corridors would capture all available green time while side streets would be chronically under-served, precisely the failure condition"
+    },
+    {
+      "category": "INCOMPATIBLE_TARGET",
+      "description": "Traffic flow does not respond to timing changes as if making economic choices",
+      "severity": "HIGH",
+      "evidence": "Driver behavior follows established traffic flow theory (like the Lighthill-Whitham-Richards model), not economic decision-making. Vehicles cannot 'choose' different routes based on signal timing in real-time"
+    }
+  ],
+  "survives": false
+}

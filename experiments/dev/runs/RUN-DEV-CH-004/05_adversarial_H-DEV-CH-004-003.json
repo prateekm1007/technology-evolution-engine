@@ -1,0 +1,42 @@
+{
+  "hypothesis_id": "H-DEV-CH-004-003",
+  "failure_modes": [
+    {
+      "category": "FRAGILE_ASSUMPTION",
+      "description": "Controllers can evaluate multiple strategies simultaneously",
+      "severity": "HIGH",
+      "evidence": "Real-world traffic controllers have limited processing capacity and cannot practically evaluate multiple complex timing strategies in real-time while also managing actual traffic flow."
+    },
+    {
+      "category": "CONTRADICTS_KNOWN",
+      "description": "Evolutionary process leads to global optimization",
+      "severity": "HIGH",
+      "evidence": "Evolutionary algorithms are well-known to often converge to local optima rather than global optima, especially in complex, multi-modal optimization problems like traffic flow."
+    },
+    {
+      "category": "BOUNDARY_BREAKS",
+      "description": "Network can inherit and combine beneficial strategies",
+      "severity": "MEDIUM",
+      "evidence": "Traffic systems exist in heterogeneous environments with different intersection geometries, traffic patterns, and regulatory constraints that prevent straightforward inheritance and combination of strategies."
+    },
+    {
+      "category": "PRIOR_ART_EXISTS",
+      "description": "Evolutionary approach to traffic optimization",
+      "severity": "MEDIUM",
+      "evidence": "Numerous prior studies have applied evolutionary algorithms to traffic signal optimization, with limited success due to the computational complexity and real-time constraints of the problem."
+    },
+    {
+      "category": "FALSIFIER_TRIGGERED",
+      "description": "Inability to adapt to changing traffic patterns",
+      "severity": "HIGH",
+      "evidence": "The hypothesis explicitly lists this as an expected failure mode, indicating the proponents acknowledge the system cannot handle dynamic changes - a critical flaw for a traffic control system."
+    },
+    {
+      "category": "INCOMPATIBLE_TARGET",
+      "description": "Traffic signal optimization as evolutionary process",
+      "severity": "HIGH",
+      "evidence": "Traffic systems require deterministic, predictable behavior for safety and efficiency, while evolutionary processes are inherently probabilistic and may produce unpredictable or unsafe timing configurations."
+    }
+  ],
+  "survives": false
+}

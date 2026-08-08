@@ -1,0 +1,22 @@
+{
+  "hypothesis_id": "H-DEV-CH-004-004",
+  "prediction": {
+    "prediction_id": "P-H-DEV-CH-004-004",
+    "hypothesis_id": "H-DEV-CH-004-004",
+    "observable": "Average vehicle wait time at a specific intersection during morning rush hour",
+    "expected_direction": "decrease",
+    "expected_magnitude": "15-25% reduction",
+    "conditions": [
+      "After 30 days of adaptive learning",
+      "During similar traffic volume patterns",
+      "With consistent weather conditions"
+    ],
+    "baseline": "Current fixed-timing signal system with 60-second cycles",
+    "falsifier": "If the adaptive system shows no statistically significant improvement (p>0.05) in average wait time compared to the fixed-timing system after 30 days of operation, or if performance degrades when encountering new traffic patterns not seen during training",
+    "uncertainty": 0.2,
+    "epistemic_state": "PREDICTED",
+    "is_testable": true
+  },
+  "failed": false,
+  "failures": []
+}

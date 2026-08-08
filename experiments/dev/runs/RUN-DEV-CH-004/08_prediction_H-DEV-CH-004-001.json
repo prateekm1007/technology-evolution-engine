@@ -1,0 +1,22 @@
+{
+  "hypothesis_id": "H-DEV-CH-004-001",
+  "prediction": {
+    "prediction_id": "P-H-DEV-CH-004-001",
+    "hypothesis_id": "H-DEV-CH-004-001",
+    "observable": "Average green light duration at a specific intersection during morning rush hour",
+    "expected_direction": "increase",
+    "expected_magnitude": "15-25% increase over 30 days",
+    "conditions": [
+      "consistent morning traffic patterns (7-9 AM)",
+      "no external disruptions (accidents, construction)",
+      "adaptive signal system operational"
+    ],
+    "baseline": "Current fixed 60-second green light duration",
+    "falsifier": "No statistically significant increase in green light duration after 30 days of operation under consistent traffic conditions",
+    "uncertainty": 0.2,
+    "epistemic_state": "PREDICTED",
+    "is_testable": true
+  },
+  "failed": false,
+  "failures": []
+}

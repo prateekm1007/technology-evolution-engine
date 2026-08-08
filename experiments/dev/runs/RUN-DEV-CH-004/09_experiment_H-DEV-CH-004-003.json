@@ -1,0 +1,41 @@
+{
+  "hypothesis_id": "H-DEV-CH-004-003",
+  "experiment": {
+    "experiment_id": "E-H-DEV-CH-004-003",
+    "hypothesis_id": "H-DEV-CH-004-003",
+    "objective": "To determine whether traffic signals adapt through evolutionary selection by comparing vehicle wait times between fixed-time and adaptive signal timing systems over a 30-day period.",
+    "independent_variables": [
+      "signal timing strategy",
+      "traffic density",
+      "time of day"
+    ],
+    "dependent_variables": [
+      "average vehicle wait time",
+      "throughput per hour",
+      "number of stops per vehicle"
+    ],
+    "controls": [
+      "identical traffic patterns",
+      "same intersection layouts",
+      "consistent weather conditions",
+      "same time period for comparison"
+    ],
+    "baseline": "Current fixed-time signal timing system with predetermined cycles",
+    "procedure": "Select 4-6 connected intersections in a medium-density urban area. Implement the adaptive signal timing system in half of the intersections while maintaining fixed timing in the others. Collect traffic flow data (vehicle wait times, throughput, stops) continuously for 30 days. Compare performance metrics between adaptive and fixed-time intersections, controlling for time of day and traffic density.",
+    "expected_result": "Adaptive signal timing shows 15-25% reduction in average vehicle wait time compared to fixed-time signals at similar intersections under high traffic density conditions.",
+    "falsification_condition": "Average vehicle wait times at adaptive intersections remain unchanged or increase by more than 5% compared to fixed-time intersections after 30 days of operation, despite controlling for external factors.",
+    "sample_requirements": "4-6 connected traffic intersections with similar traffic patterns, existing infrastructure compatible with adaptive signal controllers, data collection systems capable of measuring vehicle wait times and throughput",
+    "safety_constraints": [
+      "Ensure all signal timing changes maintain safe traffic flow",
+      "No changes during peak traffic hours",
+      "Emergency override capability",
+      "Regular safety inspections"
+    ],
+    "estimated_cost": "medium",
+    "estimated_duration": "30 days",
+    "information_gain": "This experiment would provide strong evidence for or against the hypothesis of evolutionary adaptation in traffic signal systems, potentially validating a new approach to urban traffic management that could reduce congestion and fuel consumption.",
+    "is_testable": true
+  },
+  "failed": false,
+  "failures": []
+}
