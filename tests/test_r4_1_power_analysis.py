@@ -589,11 +589,12 @@ class TestStatisticalLessonRecorded:
         )
         assert "polynomial" in lesson.lower(), (
             "statistical_lesson (R4.1A) must mention that Power(p11) is "
-            "a polynomial, enabling certified extrema via root-finding"
+            "a polynomial, enabling formal root isolation"
         )
-        assert "CERTIFIED" in lesson, (
-            "statistical_lesson (R4.1A) must mention that extrema are "
-            "CERTIFIED, not merely approximated by a grid"
+        assert "FORMALLY ISOLATED" in lesson or "FORMAL" in lesson, (
+            "statistical_lesson (R4.1A, round 38) must mention that "
+            "stationary points are FORMALLY ISOLATED via Sturm sequences, "
+            "not merely 'certified' by a grid cross-check"
         )
 
 
@@ -930,154 +931,173 @@ class TestTypeIReportingDistinction:
 
 
 # =====================================================================
-# CATEGORY 14: ROOT COMPLETENESS VERIFICATION (audit round 37)
+# CATEGORY 14: FORMAL REAL-ROOT ISOLATION (audit round 38)
 # =====================================================================
 
-class TestRootCompleteness:
-    """Verify that companion-matrix root-finding found ALL real roots
-    of Power'(p11) in the feasible interval.
+class TestFormalRootIsolation:
+    """Verify FORMAL real-root isolation of Power'(p11) in the feasible
+    interval using sympy's Sturm-sequence-based root counting and
+    isolation.
 
-    Per audit round 37:
-        "There is a subtle distinction between finding all stationary
-         points numerically and proving that all stationary points
-         were found. For the latter, your test suite should explicitly
-         establish that the polynomial derivative has degree <= 19
-         and that the root solver returned the complete set of real
-         roots to the numerical tolerance being used."
+    Per audit round 38:
+        "Replace the current asymmetric root_completeness test with
+         actual polynomial real-root isolation, preferably using
+         exact/high-precision arithmetic, and make the artifact say
+         exactly what that method proves."
 
-    This class verifies:
-    1. The derivative polynomial has degree <= N-1 = 19
-    2. Every companion root satisfies |Power'(root)| < tolerance
-    3. An INDEPENDENT method (power-function local-extremum detection)
-       finds no roots that the companion method missed
-    4. The reported extremum is at one of the evaluated points
-       (endpoint or stationary point)
+    This replaces the previous asymmetric root_completeness logic
+    (audit round 37) which:
+    - allowed the companion method to have "extra" roots
+    - relied on a 10,000-point grid that cannot establish completeness
+
+    The new method uses:
+    - exact rational arithmetic for polynomial coefficients
+    - Sturm sequences (sympy's count_roots) to count real roots EXACTLY
+    - sympy's real_roots to isolate each root as an exact algebraic number
+
+    This is FORMAL real-root isolation — no grid, no eigenvalue
+    approximation, no finite-resolution limit.
     """
 
     @pytest.mark.parametrize("pe,pr", r4_1.POWER_SCENARIOS + r4_1.TYPE_I_SCENARIOS)
     def test_derivative_degree_at_most_N_minus_1(self, pe, pr):
         """Power'(p11) must have degree <= N-1 = 19. Power(p11) has
         degree <= N = 20, so its derivative has degree <= 19."""
-        poly = r4_1.power_polynomial(pe, pr)
-        deriv = poly.deriv()
-        assert deriv.degree() <= r4_1.N - 1, (
+        poly = r4_1.power_polynomial_exact(pe, pr)
+        deriv = poly.diff()
+        assert int(deriv.degree()) <= r4_1.N - 1, (
             f"Derivative degree {deriv.degree()} exceeds N-1={r4_1.N-1} "
             f"for pe={pe}, pr={pr}"
         )
 
     @pytest.mark.parametrize("pe,pr", r4_1.POWER_SCENARIOS + r4_1.TYPE_I_SCENARIOS)
-    def test_companion_roots_satisfy_residual_tolerance(self, pe, pr):
-        """Every companion root must satisfy |Power'(root)| <
-        ROOT_RESIDUAL_TOL. This verifies the root is actually a zero
-        of the derivative, not a numerical artifact."""
-        poly = r4_1.power_polynomial(pe, pr)
-        deriv = poly.deriv()
-        lo, hi = r4_1.feasible_p11_interval(pe, pr)
-        if hi <= lo + 1e-15:
-            return  # degenerate interval
-        check = r4_1.verify_root_completeness(deriv, lo, hi, pe=pe, pr=pr)
-        assert check["all_residuals_below_tol"], (
-            f"Companion roots have residual above tolerance for "
-            f"pe={pe}, pr={pr}: max_residual={check['max_residual']:.2e} "
-            f"vs tol={r4_1.ROOT_RESIDUAL_TOL:.0e}"
+    def test_sturm_count_equals_isolated_count(self, pe, pr):
+        """The Sturm count (exact root count from Sturm sequences) must
+        equal the number of isolated real roots. This is a sanity check
+        on the exact-arithmetic root isolation.
+
+        If this fails, there's a bug in the sympy isolation logic."""
+        isolation = r4_1.certified_root_isolation(pe, pr)
+        assert isolation["sturm_count"] == isolation["n_real_roots"], (
+            f"Sturm count {isolation['sturm_count']} != isolated count "
+            f"{isolation['n_real_roots']} for pe={pe}, pr={pr}"
+        )
+        assert len(isolation["roots"]) == isolation["sturm_count"], (
+            f"Roots list length {len(isolation['roots'])} != Sturm count "
+            f"{isolation['sturm_count']} for pe={pe}, pr={pr}"
         )
 
     @pytest.mark.parametrize("pe,pr", r4_1.POWER_SCENARIOS + r4_1.TYPE_I_SCENARIOS)
-    def test_independent_method_finds_no_unmatched_roots(self, pe, pr):
-        """The independent power-function local-extremum method must
-        NOT find any stationary points that the companion method
-        missed. If it does, the companion method has a completeness
-        failure.
-
-        This is the central root-completeness invariant: no additional
-        real roots are discoverable under an independent root-solving
-        method."""
-        poly = r4_1.power_polynomial(pe, pr)
-        deriv = poly.deriv()
-        lo, hi = r4_1.feasible_p11_interval(pe, pr)
-        if hi <= lo + 1e-15:
-            return  # degenerate interval
-        check = r4_1.verify_root_completeness(deriv, lo, hi, pe=pe, pr=pr)
-        assert check["independent_roots_all_matched"], (
-            f"Independent method found unmatched roots for pe={pe}, "
-            f"pr={pr}: {check['unmatched_independent_roots']}. "
-            f"The companion method missed these stationary points — "
-            f"completeness failure."
+    def test_method_is_sturm_exact_rational(self, pe, pr):
+        """The root isolation method must be STURM_SEQUENCE_EXACT_RATIONAL.
+        This ensures we're using the formal method, not a grid-based
+        approximation."""
+        isolation = r4_1.certified_root_isolation(pe, pr)
+        assert isolation["method"] == "STURM_SEQUENCE_EXACT_RATIONAL", (
+            f"Method is {isolation['method']}, expected "
+            f"STURM_SEQUENCE_EXACT_RATIONAL for pe={pe}, pr={pr}"
         )
 
     @pytest.mark.parametrize("pe,pr", r4_1.POWER_SCENARIOS + r4_1.TYPE_I_SCENARIOS)
-    def test_roots_match_overall(self, pe, pr):
-        """The roots_match field must be True for every scenario. This
-        combines the residual check and the independent-method check."""
-        poly = r4_1.power_polynomial(pe, pr)
-        deriv = poly.deriv()
+    def test_isolated_roots_in_feasible_interval(self, pe, pr):
+        """Every isolated root must lie in the feasible interval [lo, hi]."""
         lo, hi = r4_1.feasible_p11_interval(pe, pr)
-        if hi <= lo + 1e-15:
-            return  # degenerate interval
-        check = r4_1.verify_root_completeness(deriv, lo, hi, pe=pe, pr=pr)
-        assert check["roots_match"], (
-            f"Root completeness verification failed for pe={pe}, pr={pr}: "
-            f"companion={check['n_companion']} roots, "
-            f"independent={check['n_power_extrema']} roots, "
-            f"unmatched={check['unmatched_independent_roots']}, "
-            f"max_residual={check['max_residual']:.2e}"
-        )
+        isolation = r4_1.certified_root_isolation(pe, pr)
+        for root in isolation["roots"]:
+            p11 = root["p11"]
+            if p11 is not None:
+                assert lo - 1e-9 <= p11 <= hi + 1e-9, (
+                    f"Root p11={p11} outside feasible interval "
+                    f"[{lo}, {hi}] for pe={pe}, pr={pr}"
+                )
 
-    @pytest.mark.parametrize("pe,pr", r4_1.POWER_SCENARIOS)
+    @pytest.mark.parametrize("pe,pr", r4_1.POWER_SCENARIOS + r4_1.TYPE_I_SCENARIOS)
     def test_extremum_at_evaluated_point(self, pe, pr):
         """The reported extremum must be at one of the evaluated points
-        (endpoint or stationary point). This confirms the optimization
-        searched the right candidate set."""
-        certified = r4_1.certified_extrema(pe, pr)
+        (endpoint or isolated stationary point). This confirms the
+        optimization searched the right candidate set."""
+        certified = r4_1.certified_global_extrema(pe, pr)
         assert certified["extremum_at_evaluated_point"], (
             f"Extremum is not at an evaluated point for pe={pe}, pr={pr}"
         )
 
-    def test_pe040_pr010_interior_extremum_independently_confirmed(self):
+    def test_pe040_pr010_interior_extremum_sturm_confirmed(self):
         """For pe=0.40, pr=0.10, the interior stationary point at
-        p11 ≈ 0.0474 must be confirmed by the independent power-function
-        method. This proves the companion method didn't miss it."""
-        poly = r4_1.power_polynomial(0.40, 0.10)
-        deriv = poly.deriv()
-        lo, hi = r4_1.feasible_p11_interval(0.40, 0.10)
-        check = r4_1.verify_root_completeness(deriv, lo, hi, pe=0.40, pr=0.10)
-        # The independent method must find at least one stationary point
-        # near 0.0474.
-        assert check["n_power_extrema"] >= 1, (
-            f"Independent method found {check['n_power_extrema']} "
-            f"stationary points, expected >= 1"
+        p11 ≈ 0.0474 must be isolated by the Sturm-sequence method.
+
+        This is the scenario where the previous grid-based method
+        could only approximate the location. The Sturm method gives
+        the EXACT algebraic number."""
+        isolation = r4_1.certified_root_isolation(0.40, 0.10)
+        assert isolation["sturm_count"] == 1, (
+            f"Expected 1 stationary point for pe=0.40, pr=0.10, "
+            f"got {isolation['sturm_count']}"
         )
-        # At least one independent root must match the companion root.
-        companion_roots = check["companion_roots"]
-        power_roots = check["power_extrema_roots"]
-        assert check["roots_match"], (
-            f"Roots don't match: companion={companion_roots}, "
-            f"power={power_roots}"
+        root = isolation["roots"][0]
+        lo, hi = r4_1.feasible_p11_interval(0.40, 0.10)
+        assert lo < root["p11"] < hi, (
+            f"Stationary point p11={root['p11']} must be in the interior "
+            f"of [{lo}, {hi}]"
+        )
+        # The exact algebraic representation must be a CRootOf (not a
+        # simple rational), confirming this is a non-trivial root.
+        assert "CRootOf" in root["p11_exact"], (
+            f"Expected CRootOf for interior extremum, got "
+            f"{root['p11_exact']}"
         )
 
-    def test_artifact_records_root_completeness(self):
-        """The committed JSON must record the root-completeness
-        verification results for every scenario, so the certification
-        is auditable."""
+    def test_peq010_boundary_root_with_multiplicity(self):
+        """For pe=pr=0.10, the derivative has a root at the boundary
+        p11=0.1 (= hi) with multiplicity. The Sturm method must
+        correctly identify this as 1 distinct root."""
+        isolation = r4_1.certified_root_isolation(0.10, 0.10)
+        assert isolation["sturm_count"] == 1, (
+            f"Expected 1 distinct root for pe=pr=0.10, "
+            f"got {isolation['sturm_count']}"
+        )
+        root = isolation["roots"][0]
+        assert root["multiplicity"] >= 1, (
+            f"Expected multiplicity >= 1, got {root['multiplicity']}"
+        )
+
+    def test_no_asymmetric_root_completeness_field(self):
+        """The artifact must NOT contain the old asymmetric
+        root_completeness field. This was removed in audit round 38
+        because it allowed the companion method to have "extra" roots,
+        which does NOT establish root-set equality."""
         committed = json.loads(OUTPUT.read_text())
         for row in committed["power_scenarios"]:
-            assert "root_completeness" in row, (
-                f"Scenario pe={row['pe']}, pr={row['pr']} missing "
-                f"root_completeness field"
+            assert "root_completeness" not in row, (
+                f"Scenario pe={row['pe']}, pr={row['pr']} still contains "
+                f"the old asymmetric 'root_completeness' field. "
+                f"This was removed in audit round 38."
             )
-            rc = row["root_completeness"]
-            for key in ("n_companion", "n_power_extrema",
-                        "independent_roots_all_matched", "roots_match",
-                        "max_residual", "all_residuals_below_tol"):
-                assert key in rc, (
-                    f"root_completeness missing key '{key}' for "
+
+    def test_artifact_records_root_isolation(self):
+        """The committed JSON must record the root_isolation field for
+        every scenario, with the Sturm count, isolated roots, and
+        method."""
+        committed = json.loads(OUTPUT.read_text())
+        for row in committed["power_scenarios"]:
+            assert "root_isolation" in row, (
+                f"Scenario pe={row['pe']}, pr={row['pr']} missing "
+                f"root_isolation field"
+            )
+            ri = row["root_isolation"]
+            for key in ("n_real_roots", "roots", "sturm_count", "method"):
+                assert key in ri, (
+                    f"root_isolation missing key '{key}' for "
                     f"pe={row['pe']}, pr={row['pr']}"
                 )
-            assert rc["roots_match"] is True, (
-                f"roots_match is False for pe={row['pe']}, pr={row['pr']}"
+            assert ri["method"] == "STURM_SEQUENCE_EXACT_RATIONAL", (
+                f"Method is {ri['method']}, expected "
+                f"STURM_SEQUENCE_EXACT_RATIONAL"
             )
-            assert rc["all_residuals_below_tol"] is True, (
-                f"all_residuals_below_tol is False for "
+            assert ri["sturm_count"] == ri["n_real_roots"], (
+                f"Sturm count != n_real_roots for pe={row['pe']}, pr={row['pr']}"
+            )
+            assert len(ri["roots"]) == ri["sturm_count"], (
+                f"Roots list length != Sturm count for "
                 f"pe={row['pe']}, pr={row['pr']}"
             )
 
@@ -1109,3 +1129,34 @@ class TestRootCompleteness:
                 f"extremum_at_evaluated_point is False for "
                 f"pe={row['pe']}, pr={row['pr']}"
             )
+
+    def test_grid_search_is_cross_check_not_completeness(self):
+        """The grid search must be present as a VALUE cross-check only,
+        not as a root-completeness method. The artifact must NOT claim
+        the grid establishes completeness."""
+        committed = json.loads(OUTPUT.read_text())
+        for row in committed["power_scenarios"]:
+            assert "grid_search" in row, (
+                f"Scenario pe={row['pe']}, pr={row['pr']} missing "
+                f"grid_search cross-check field"
+            )
+            assert "grid_and_certified_agree" in row, (
+                f"Scenario pe={row['pe']}, pr={row['pr']} missing "
+                f"grid_and_certified_agree field"
+            )
+            # The grid search field must NOT claim completeness.
+            gs = row["grid_search"]
+            assert "completeness" not in str(gs).lower(), (
+                f"grid_search field must not claim completeness for "
+                f"pe={row['pe']}, pr={row['pr']}"
+            )
+
+    def test_polynomial_has_exact_rational_coefficients(self):
+        """The exact polynomial must have rational coefficients (domain
+        QQ), not floating-point. This is what enables Sturm-sequence
+        root isolation."""
+        from sympy import QQ
+        poly = r4_1.power_polynomial_exact(0.50, 0.10)
+        assert poly.domain == QQ, (
+            f"Polynomial domain is {poly.domain}, expected QQ (rationals)"
+        )

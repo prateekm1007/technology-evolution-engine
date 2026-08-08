@@ -1,8 +1,8 @@
 {
-  "artifact_type": "R4_1A_POWER_ANALYSIS_CERTIFIED",
-  "calculation_type": "EXACT_FINITE_SAMPLE_JOINT_DISTRIBUTION_POWER_ENUMERATOR_WITH_CERTIFIED_EXTREMA (deterministic, no simulation, no RNG, no timestamp)",
-  "purpose": "Replace the hand-written McNemar power table in B1_B2_DESIGN_REVISION_R4_1.md with a mechanically enumerated table whose extrema are CERTIFIED via polynomial root-finding, not merely approximated by a grid search. The R4.1 table assumed extrema occur at the endpoints of the feasible p11 interval; this script constructs Power(p11) as an explicit degree-<=N polynomial, differentiates it, finds ALL stationary points, and evaluates at endpoints + stationary points to certify the global min/max.",
-  "statistical_lesson": "Minimising the discordant-pair count n_d does NOT necessarily minimise power for a composite decision rule. Power depends on the SIGN of (b - c), not merely on the count (b + c). The combined rule (p < 0.05 AND ci_lower > 0.20) must be evaluated over the complete joint outcome distribution and the complete preregistered decision function. Furthermore, for finite N, Power(p11) is a polynomial of degree <= N in p11, so the global extrema can be CERTIFIED by polynomial root-finding rather than approximated by a grid search.",
+  "artifact_type": "R4_1A_POWER_ANALYSIS_STURM_ISOLATION",
+  "calculation_type": "EXACT_FINITE_SAMPLE_JOINT_DISTRIBUTION_POWER_ENUMERATOR_WITH_FORMAL_REAL_ROOT_ISOLATION (deterministic, no simulation, no RNG, no timestamp)",
+  "purpose": "Replace the hand-written McNemar power table in B1_B2_DESIGN_REVISION_R4_1.md with a mechanically enumerated table whose stationary points are isolated via FORMAL real-root isolation (Sturm sequences over exact rational arithmetic), not merely approximated by a grid search or companion-matrix eigenvalues. The R4.1 table assumed extrema occur at the endpoints of the feasible p11 interval; this script constructs Power(p11) as an explicit degree-<=N polynomial with EXACT RATIONAL coefficients, differentiates it, uses Sturm sequences to count and isolate ALL real roots of Power'(p11) in the feasible interval, and evaluates at endpoints + isolated stationary points.",
+  "statistical_lesson": "Minimising the discordant-pair count n_d does NOT necessarily minimise power for a composite decision rule. Power depends on the SIGN of (b - c), not merely on the count (b + c). The combined rule (p < 0.05 AND ci_lower > 0.20) must be evaluated over the complete joint outcome distribution and the complete preregistered decision function. Furthermore, for finite N, Power(p11) is a polynomial of degree <= N in p11 with EXACT RATIONAL coefficients, so all stationary points can be FORMALLY ISOLATED via Sturm sequences \u2014 no grid, no eigenvalue approximation, no finite-resolution limit.",
   "parameters": {
     "N": 20,
     "alpha": 0.05,
@@ -11,9 +11,10 @@
     "p_value_method": "binom.sf(b-1, n_d, 0.5) (exact one-sided upper tail) \u2014 IMPORTED from scripts/r4_reference_vectors.py",
     "ci_method": "Wald with continuity correction: theta_hat +/- 1.96*SE +/- 1/(2N) \u2014 IMPORTED from scripts/r4_reference_vectors.py",
     "passes_rule": "p_one_sided < 0.05 AND ci_lower > 0.20 \u2014 matches r4_reference_vectors.py EXACTLY",
-    "extremum_method": "CERTIFIED via polynomial root-finding. For fixed (pe, pr), Power(p11) is a degree-<=N polynomial in p11. We differentiate it, find all roots of Power'(p11) via companion matrix eigenvalues, filter to real roots in the feasible interval, and evaluate Power at endpoints + stationary points. This gives the certified global min/max, not merely the max of a grid.",
-    "grid_cross_check": "A 1001-point grid search is retained as a cross-check. Certified and grid-search extrema must agree to within 0.0001.",
-    "polynomial_degree": "Each term P(b,c|p11) = M * (pe-p11)^b * (pr-p11)^c * (1-pe-pr+p11)^(N-b-c) is a polynomial of degree b + c + (N-b-c) = N. The power is the sum over passing (b,c) pairs, so it is also degree <= N = 20.",
+    "extremum_method": "FORMAL REAL-ROOT ISOLATION via Sturm sequences over exact rational arithmetic (sympy). For fixed (pe, pr), Power(p11) is a degree-<=N polynomial with exact rational coefficients. We compute the derivative (also exact rational), use Sturm sequences (sympy's count_roots) to count the EXACT number of DISTINCT real roots in [lo, hi], isolate each root as an exact algebraic number (sympy's real_roots / CRootOf), and evaluate Power at endpoints + isolated stationary points. This is FORMAL root isolation \u2014 no grid, no companion-matrix eigenvalue approximation, no finite-resolution limitation.",
+    "root_isolation_method": "Sturm sequences (sympy Poly.count_roots) for exact root counting. CRootOf (sympy Poly.real_roots) for exact root isolation. All arithmetic is exact rational (domain QQ).",
+    "grid_cross_check": "A 1001-point grid search is retained as a VALUE cross-check on the extremal power values. It does NOT establish root completeness \u2014 that is exclusively established by the Sturm-sequence method. Certified and grid-search values must agree to within 0.0001.",
+    "polynomial_degree": "Each term P(b,c|p11) = M * (pe-p11)^b * (pr-p11)^c * (1-pe-pr+2*p11)^(N-b-c) is a polynomial of degree b + c + (N-b-c) = N. The power is the sum over passing (b,c) pairs, so it is also degree <= N = 20. The derivative has degree <= N-1 = 19.",
     "enumeration": "For each (pe, pr, p11), sum P(b, c | p10, p01) * I[passes(b, c)] over all (b, c) with b + c <= N. P(b, c) is the marginal of Multinomial(N; p10, p01, 1 - p10 - p01). EXACT \u2014 no simulation."
   },
   "power_scenarios": [
@@ -31,17 +32,13 @@
       "stationary_points": [],
       "extremum_at_endpoint": true,
       "derivative_degree": 19,
-      "root_completeness": {
-        "companion_roots": [],
-        "power_extrema_roots": [],
-        "n_companion": 0,
-        "n_power_extrema": 0,
-        "independent_roots_all_matched": true,
-        "unmatched_independent_roots": [],
-        "companion_extra_roots": [],
-        "roots_match": true,
-        "max_residual": 0.0,
-        "all_residuals_below_tol": true
+      "root_isolation": {
+        "n_real_roots": 0,
+        "roots": [],
+        "sturm_count": 0,
+        "interval_lo": 0.0,
+        "interval_hi": 0.1,
+        "method": "STURM_SEQUENCE_EXACT_RATIONAL"
       },
       "extremum_at_evaluated_point": true,
       "grid_search": {
@@ -67,17 +64,13 @@
       "stationary_points": [],
       "extremum_at_endpoint": true,
       "derivative_degree": 19,
-      "root_completeness": {
-        "companion_roots": [],
-        "power_extrema_roots": [],
-        "n_companion": 0,
-        "n_power_extrema": 0,
-        "independent_roots_all_matched": true,
-        "unmatched_independent_roots": [],
-        "companion_extra_roots": [],
-        "roots_match": true,
-        "max_residual": 0.0,
-        "all_residuals_below_tol": true
+      "root_isolation": {
+        "n_real_roots": 0,
+        "roots": [],
+        "sturm_count": 0,
+        "interval_lo": 0.0,
+        "interval_hi": 0.05,
+        "method": "STURM_SEQUENCE_EXACT_RATIONAL"
       },
       "extremum_at_evaluated_point": true,
       "grid_search": {
@@ -103,17 +96,13 @@
       "stationary_points": [],
       "extremum_at_endpoint": true,
       "derivative_degree": 19,
-      "root_completeness": {
-        "companion_roots": [],
-        "power_extrema_roots": [],
-        "n_companion": 0,
-        "n_power_extrema": 0,
-        "independent_roots_all_matched": true,
-        "unmatched_independent_roots": [],
-        "companion_extra_roots": [],
-        "roots_match": true,
-        "max_residual": 0.0,
-        "all_residuals_below_tol": true
+      "root_isolation": {
+        "n_real_roots": 0,
+        "roots": [],
+        "sturm_count": 0,
+        "interval_lo": 0.0,
+        "interval_hi": 0.1,
+        "method": "STURM_SEQUENCE_EXACT_RATIONAL"
       },
       "extremum_at_evaluated_point": true,
       "grid_search": {
@@ -139,17 +128,13 @@
       "stationary_points": [],
       "extremum_at_endpoint": true,
       "derivative_degree": 19,
-      "root_completeness": {
-        "companion_roots": [],
-        "power_extrema_roots": [],
-        "n_companion": 0,
-        "n_power_extrema": 0,
-        "independent_roots_all_matched": true,
-        "unmatched_independent_roots": [],
-        "companion_extra_roots": [],
-        "roots_match": true,
-        "max_residual": 0.0,
-        "all_residuals_below_tol": true
+      "root_isolation": {
+        "n_real_roots": 0,
+        "roots": [],
+        "sturm_count": 0,
+        "interval_lo": 0.0,
+        "interval_hi": 0.05,
+        "method": "STURM_SEQUENCE_EXACT_RATIONAL"
       },
       "extremum_at_evaluated_point": true,
       "grid_search": {
@@ -175,17 +160,13 @@
       "stationary_points": [],
       "extremum_at_endpoint": true,
       "derivative_degree": 19,
-      "root_completeness": {
-        "companion_roots": [],
-        "power_extrema_roots": [],
-        "n_companion": 0,
-        "n_power_extrema": 0,
-        "independent_roots_all_matched": true,
-        "unmatched_independent_roots": [],
-        "companion_extra_roots": [],
-        "roots_match": true,
-        "max_residual": 0.0,
-        "all_residuals_below_tol": true
+      "root_isolation": {
+        "n_real_roots": 0,
+        "roots": [],
+        "sturm_count": 0,
+        "interval_lo": 0.0,
+        "interval_hi": 0.1,
+        "method": "STURM_SEQUENCE_EXACT_RATIONAL"
       },
       "extremum_at_evaluated_point": true,
       "grid_search": {
@@ -216,21 +197,19 @@
       ],
       "extremum_at_endpoint": true,
       "derivative_degree": 19,
-      "root_completeness": {
-        "companion_roots": [
-          0.0473636483
+      "root_isolation": {
+        "n_real_roots": 1,
+        "roots": [
+          {
+            "p11": 0.04736364828089997,
+            "p11_exact": "CRootOf(3162200000000000*x**11 - 38419760000000000*x**10 - 99815400000000000*x**9 - 85511031600000000*x**8 - 37670563680000000*x**7 - 9828266814000000*x**6 - 1605559212000000*x**5 - 170305185720000*x**4 - 11863837815000*x**3 - 356764106800*x**2 + 26737672750*x + 2167626651, 5)",
+            "multiplicity": 1
+          }
         ],
-        "power_extrema_roots": [
-          0.047363644
-        ],
-        "n_companion": 1,
-        "n_power_extrema": 1,
-        "independent_roots_all_matched": true,
-        "unmatched_independent_roots": [],
-        "companion_extra_roots": [],
-        "roots_match": true,
-        "max_residual": 0.0,
-        "all_residuals_below_tol": true
+        "sturm_count": 1,
+        "interval_lo": 0.0,
+        "interval_hi": 0.1,
+        "method": "STURM_SEQUENCE_EXACT_RATIONAL"
       },
       "extremum_at_evaluated_point": true,
       "grid_search": {
@@ -256,17 +235,13 @@
       "stationary_points": [],
       "extremum_at_endpoint": true,
       "derivative_degree": 19,
-      "root_completeness": {
-        "companion_roots": [],
-        "power_extrema_roots": [],
-        "n_companion": 0,
-        "n_power_extrema": 0,
-        "independent_roots_all_matched": true,
-        "unmatched_independent_roots": [],
-        "companion_extra_roots": [],
-        "roots_match": true,
-        "max_residual": 0.0,
-        "all_residuals_below_tol": true
+      "root_isolation": {
+        "n_real_roots": 0,
+        "roots": [],
+        "sturm_count": 0,
+        "interval_lo": 0.0,
+        "interval_hi": 0.05,
+        "method": "STURM_SEQUENCE_EXACT_RATIONAL"
       },
       "extremum_at_evaluated_point": true,
       "grid_search": {
@@ -292,17 +267,13 @@
       "stationary_points": [],
       "extremum_at_endpoint": true,
       "derivative_degree": 0,
-      "root_completeness": {
-        "companion_roots": [],
-        "power_extrema_roots": [],
-        "n_companion": 0,
-        "n_power_extrema": 0,
-        "independent_roots_all_matched": true,
-        "unmatched_independent_roots": [],
-        "companion_extra_roots": [],
-        "roots_match": true,
-        "max_residual": 0.0,
-        "all_residuals_below_tol": true
+      "root_isolation": {
+        "n_real_roots": 0,
+        "roots": [],
+        "sturm_count": 0,
+        "interval_lo": 0.0,
+        "interval_hi": 0.0,
+        "method": "STURM_SEQUENCE_EXACT_RATIONAL"
       },
       "extremum_at_evaluated_point": true,
       "grid_search": {
@@ -322,34 +293,32 @@
       "theta": 0.0,
       "p11_lo": 0.0,
       "p11_hi": 0.1,
-      "power_min": 5.624298769768554e-19,
+      "power_min": 6.640738306473715e-19,
       "power_max": 1.6936565024602134e-05,
-      "p11_at_min": 0.098308901,
+      "p11_at_min": 0.1,
       "p11_at_max": 0.0,
       "n_stationary_points": 1,
       "stationary_points": [
         {
-          "p11": 0.098308901,
+          "p11": 0.1,
           "power": 0.0
         }
       ],
       "extremum_at_endpoint": true,
       "derivative_degree": 19,
-      "root_completeness": {
-        "companion_roots": [
-          0.098308901
+      "root_isolation": {
+        "n_real_roots": 1,
+        "roots": [
+          {
+            "p11": 0.1,
+            "p11_exact": "1/10",
+            "multiplicity": 8
+          }
         ],
-        "power_extrema_roots": [],
-        "n_companion": 1,
-        "n_power_extrema": 0,
-        "independent_roots_all_matched": true,
-        "unmatched_independent_roots": [],
-        "companion_extra_roots": [
-          0.098308901
-        ],
-        "roots_match": true,
-        "max_residual": 3.686287386450715e-17,
-        "all_residuals_below_tol": true
+        "sturm_count": 1,
+        "interval_lo": 0.0,
+        "interval_hi": 0.1,
+        "method": "STURM_SEQUENCE_EXACT_RATIONAL"
       },
       "extremum_at_evaluated_point": true,
       "grid_search": {
@@ -367,34 +336,32 @@
       "theta": 0.0,
       "p11_lo": 0.0,
       "p11_hi": 0.2,
-      "power_min": 5.444863310222203e-16,
+      "power_min": 6.718800862892671e-16,
       "power_max": 0.0006086773533520702,
-      "p11_at_min": 0.1964413853,
+      "p11_at_min": 0.2,
       "p11_at_max": 0.0,
       "n_stationary_points": 1,
       "stationary_points": [
         {
-          "p11": 0.1964413853,
+          "p11": 0.2,
           "power": 0.0
         }
       ],
       "extremum_at_endpoint": true,
       "derivative_degree": 19,
-      "root_completeness": {
-        "companion_roots": [
-          0.1964413853
+      "root_isolation": {
+        "n_real_roots": 1,
+        "roots": [
+          {
+            "p11": 0.2,
+            "p11_exact": "1/5",
+            "multiplicity": 8
+          }
         ],
-        "power_extrema_roots": [],
-        "n_companion": 1,
-        "n_power_extrema": 0,
-        "independent_roots_all_matched": true,
-        "unmatched_independent_roots": [],
-        "companion_extra_roots": [
-          0.1964413853
-        ],
-        "roots_match": true,
-        "max_residual": 9.367506770274758e-17,
-        "all_residuals_below_tol": true
+        "sturm_count": 1,
+        "interval_lo": 0.0,
+        "interval_hi": 0.2,
+        "method": "STURM_SEQUENCE_EXACT_RATIONAL"
       },
       "extremum_at_evaluated_point": true,
       "grid_search": {
@@ -416,21 +383,28 @@
       "power_max": 0.001739104160527913,
       "p11_at_min": 0.3,
       "p11_at_max": 0.0,
-      "n_stationary_points": 0,
-      "stationary_points": [],
+      "n_stationary_points": 1,
+      "stationary_points": [
+        {
+          "p11": 0.3,
+          "power": -0.0
+        }
+      ],
       "extremum_at_endpoint": true,
       "derivative_degree": 19,
-      "root_completeness": {
-        "companion_roots": [],
-        "power_extrema_roots": [],
-        "n_companion": 0,
-        "n_power_extrema": 0,
-        "independent_roots_all_matched": true,
-        "unmatched_independent_roots": [],
-        "companion_extra_roots": [],
-        "roots_match": true,
-        "max_residual": 0.0,
-        "all_residuals_below_tol": true
+      "root_isolation": {
+        "n_real_roots": 1,
+        "roots": [
+          {
+            "p11": 0.3,
+            "p11_exact": "3/10",
+            "multiplicity": 8
+          }
+        ],
+        "sturm_count": 1,
+        "interval_lo": 0.0,
+        "interval_hi": 0.3,
+        "method": "STURM_SEQUENCE_EXACT_RATIONAL"
       },
       "extremum_at_evaluated_point": true,
       "grid_search": {
@@ -455,27 +429,25 @@
       "n_stationary_points": 1,
       "stationary_points": [
         {
-          "p11": 0.4897627894,
-          "power": -0.0
+          "p11": 0.5,
+          "power": 0.0
         }
       ],
       "extremum_at_endpoint": true,
       "derivative_degree": 19,
-      "root_completeness": {
-        "companion_roots": [
-          0.4897627894
+      "root_isolation": {
+        "n_real_roots": 1,
+        "roots": [
+          {
+            "p11": 0.5,
+            "p11_exact": "1/2",
+            "multiplicity": 8
+          }
         ],
-        "power_extrema_roots": [],
-        "n_companion": 1,
-        "n_power_extrema": 0,
-        "independent_roots_all_matched": true,
-        "unmatched_independent_roots": [],
-        "companion_extra_roots": [
-          0.4897627894
-        ],
-        "roots_match": true,
-        "max_residual": 3.475054966006752e-10,
-        "all_residuals_below_tol": true
+        "sturm_count": 1,
+        "interval_lo": 0.0,
+        "interval_hi": 0.5,
+        "method": "STURM_SEQUENCE_EXACT_RATIONAL"
       },
       "extremum_at_evaluated_point": true,
       "grid_search": {
@@ -493,34 +465,32 @@
       "theta": 0.0,
       "p11_lo": 0.4,
       "p11_hi": 0.7,
-      "power_min": 7.560876724710397e-08,
+      "power_min": 1.0553648621680622e-07,
       "power_max": 0.0017391041402134988,
-      "p11_at_min": 0.6686720395,
+      "p11_at_min": 0.7,
       "p11_at_max": 0.4,
       "n_stationary_points": 1,
       "stationary_points": [
         {
-          "p11": 0.6686720395,
-          "power": 7.56e-08
+          "p11": 0.7,
+          "power": 1.055e-07
         }
       ],
       "extremum_at_endpoint": true,
       "derivative_degree": 19,
-      "root_completeness": {
-        "companion_roots": [
-          0.6686720395
+      "root_isolation": {
+        "n_real_roots": 1,
+        "roots": [
+          {
+            "p11": 0.7,
+            "p11_exact": "7/10",
+            "multiplicity": 8
+          }
         ],
-        "power_extrema_roots": [],
-        "n_companion": 1,
-        "n_power_extrema": 0,
-        "independent_roots_all_matched": true,
-        "unmatched_independent_roots": [],
-        "companion_extra_roots": [
-          0.6686720395
-        ],
-        "roots_match": true,
-        "max_residual": 3.3605010685278103e-07,
-        "all_residuals_below_tol": true
+        "sturm_count": 1,
+        "interval_lo": 0.3999999999999999,
+        "interval_hi": 0.7,
+        "method": "STURM_SEQUENCE_EXACT_RATIONAL"
       },
       "extremum_at_evaluated_point": true,
       "grid_search": {
@@ -547,10 +517,10 @@
       "EXPLORATORY_MEDIUM_EFFECT_MARGINAL": "Best-case power for theta=0.40 is in [0.50, 0.80). N=20 with the combined rule is exploratory. A positive result justifies Stage 2B (larger N); a negative result does NOT establish absence of capability.",
       "ADEQUATE_FOR_LARGE_EFFECTS_ONLY": "Best-case power for theta=0.40 is >= 0.80, but only for the most favourable joint distribution. Medium effects may still be missed depending on the true concordance structure."
     },
-    "frozen_status_note": "R4.1 power claims have been mechanically superseded by this artifact. The hand-written table in B1_B2_DESIGN_REVISION_R4_1.md Section 2 is INVALID \u2014 do not cite it. Cite this artifact instead. The extrema in this artifact are CERTIFIED via polynomial root-finding (R4.1A upgrade)."
+    "frozen_status_note": "R4.1 power claims have been mechanically superseded by this artifact. The hand-written table in B1_B2_DESIGN_REVISION_R4_1.md Section 2 is INVALID \u2014 do not cite it. Cite this artifact instead. The stationary points in this artifact are FORMALLY ISOLATED via Sturm sequences over exact rational arithmetic (R4.1A upgrade, audit round 38). This is formal real-root isolation \u2014 no grid, no eigenvalue approximation, no finite-resolution limitation."
   },
   "mechanically_reproducible": true,
   "reproducibility_note": "This artifact contains no timestamp, no RNG output, and no nondeterministic fields. Running the script twice from identical source produces identical JSON bytes and identical SHA-256 values. Canonical JSON: sort_keys=True, separators=(',', ':').",
-  "calculation_content_sha256": "d7d6f843d6246fa69108cc1ad71731eb3eac0057f45914376d970ecd67ea3dc0",
-  "artifact_sha256": "4848c569ed15d8194e292d9cfa06f0a53792ce9b8ed49fc1b0977a9234f26cc1"
+  "calculation_content_sha256": "b4401f47918562ae5334ee46859a093a3c3020938608e479db28e5870af805cb",
+  "artifact_sha256": "d75a087b0cd77ef74ec1f32188393114bdf760bf14ba1fa256d16f30bb18e187"
 }
