@@ -226,6 +226,8 @@ def main():
     state["phase_1"] = get_phase_status(1)
     state["phase_2"] = get_phase_status(2)
     state["phase_3"] = get_phase_status(3)
+    state["phase_4"] = get_phase_status(4)
+    state["phase_5"] = get_phase_status(5)
 
     # Engine source clean check
     state["engine_source"] = {
