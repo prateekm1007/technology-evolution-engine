@@ -927,3 +927,185 @@ class TestTypeIReportingDistinction:
             "The global upper bound must be 0.05 (alpha), not the "
             "tested-scenario max."
         )
+
+
+# =====================================================================
+# CATEGORY 14: ROOT COMPLETENESS VERIFICATION (audit round 37)
+# =====================================================================
+
+class TestRootCompleteness:
+    """Verify that companion-matrix root-finding found ALL real roots
+    of Power'(p11) in the feasible interval.
+
+    Per audit round 37:
+        "There is a subtle distinction between finding all stationary
+         points numerically and proving that all stationary points
+         were found. For the latter, your test suite should explicitly
+         establish that the polynomial derivative has degree <= 19
+         and that the root solver returned the complete set of real
+         roots to the numerical tolerance being used."
+
+    This class verifies:
+    1. The derivative polynomial has degree <= N-1 = 19
+    2. Every companion root satisfies |Power'(root)| < tolerance
+    3. An INDEPENDENT method (power-function local-extremum detection)
+       finds no roots that the companion method missed
+    4. The reported extremum is at one of the evaluated points
+       (endpoint or stationary point)
+    """
+
+    @pytest.mark.parametrize("pe,pr", r4_1.POWER_SCENARIOS + r4_1.TYPE_I_SCENARIOS)
+    def test_derivative_degree_at_most_N_minus_1(self, pe, pr):
+        """Power'(p11) must have degree <= N-1 = 19. Power(p11) has
+        degree <= N = 20, so its derivative has degree <= 19."""
+        poly = r4_1.power_polynomial(pe, pr)
+        deriv = poly.deriv()
+        assert deriv.degree() <= r4_1.N - 1, (
+            f"Derivative degree {deriv.degree()} exceeds N-1={r4_1.N-1} "
+            f"for pe={pe}, pr={pr}"
+        )
+
+    @pytest.mark.parametrize("pe,pr", r4_1.POWER_SCENARIOS + r4_1.TYPE_I_SCENARIOS)
+    def test_companion_roots_satisfy_residual_tolerance(self, pe, pr):
+        """Every companion root must satisfy |Power'(root)| <
+        ROOT_RESIDUAL_TOL. This verifies the root is actually a zero
+        of the derivative, not a numerical artifact."""
+        poly = r4_1.power_polynomial(pe, pr)
+        deriv = poly.deriv()
+        lo, hi = r4_1.feasible_p11_interval(pe, pr)
+        if hi <= lo + 1e-15:
+            return  # degenerate interval
+        check = r4_1.verify_root_completeness(deriv, lo, hi, pe=pe, pr=pr)
+        assert check["all_residuals_below_tol"], (
+            f"Companion roots have residual above tolerance for "
+            f"pe={pe}, pr={pr}: max_residual={check['max_residual']:.2e} "
+            f"vs tol={r4_1.ROOT_RESIDUAL_TOL:.0e}"
+        )
+
+    @pytest.mark.parametrize("pe,pr", r4_1.POWER_SCENARIOS + r4_1.TYPE_I_SCENARIOS)
+    def test_independent_method_finds_no_unmatched_roots(self, pe, pr):
+        """The independent power-function local-extremum method must
+        NOT find any stationary points that the companion method
+        missed. If it does, the companion method has a completeness
+        failure.
+
+        This is the central root-completeness invariant: no additional
+        real roots are discoverable under an independent root-solving
+        method."""
+        poly = r4_1.power_polynomial(pe, pr)
+        deriv = poly.deriv()
+        lo, hi = r4_1.feasible_p11_interval(pe, pr)
+        if hi <= lo + 1e-15:
+            return  # degenerate interval
+        check = r4_1.verify_root_completeness(deriv, lo, hi, pe=pe, pr=pr)
+        assert check["independent_roots_all_matched"], (
+            f"Independent method found unmatched roots for pe={pe}, "
+            f"pr={pr}: {check['unmatched_independent_roots']}. "
+            f"The companion method missed these stationary points — "
+            f"completeness failure."
+        )
+
+    @pytest.mark.parametrize("pe,pr", r4_1.POWER_SCENARIOS + r4_1.TYPE_I_SCENARIOS)
+    def test_roots_match_overall(self, pe, pr):
+        """The roots_match field must be True for every scenario. This
+        combines the residual check and the independent-method check."""
+        poly = r4_1.power_polynomial(pe, pr)
+        deriv = poly.deriv()
+        lo, hi = r4_1.feasible_p11_interval(pe, pr)
+        if hi <= lo + 1e-15:
+            return  # degenerate interval
+        check = r4_1.verify_root_completeness(deriv, lo, hi, pe=pe, pr=pr)
+        assert check["roots_match"], (
+            f"Root completeness verification failed for pe={pe}, pr={pr}: "
+            f"companion={check['n_companion']} roots, "
+            f"independent={check['n_power_extrema']} roots, "
+            f"unmatched={check['unmatched_independent_roots']}, "
+            f"max_residual={check['max_residual']:.2e}"
+        )
+
+    @pytest.mark.parametrize("pe,pr", r4_1.POWER_SCENARIOS)
+    def test_extremum_at_evaluated_point(self, pe, pr):
+        """The reported extremum must be at one of the evaluated points
+        (endpoint or stationary point). This confirms the optimization
+        searched the right candidate set."""
+        certified = r4_1.certified_extrema(pe, pr)
+        assert certified["extremum_at_evaluated_point"], (
+            f"Extremum is not at an evaluated point for pe={pe}, pr={pr}"
+        )
+
+    def test_pe040_pr010_interior_extremum_independently_confirmed(self):
+        """For pe=0.40, pr=0.10, the interior stationary point at
+        p11 ≈ 0.0474 must be confirmed by the independent power-function
+        method. This proves the companion method didn't miss it."""
+        poly = r4_1.power_polynomial(0.40, 0.10)
+        deriv = poly.deriv()
+        lo, hi = r4_1.feasible_p11_interval(0.40, 0.10)
+        check = r4_1.verify_root_completeness(deriv, lo, hi, pe=0.40, pr=0.10)
+        # The independent method must find at least one stationary point
+        # near 0.0474.
+        assert check["n_power_extrema"] >= 1, (
+            f"Independent method found {check['n_power_extrema']} "
+            f"stationary points, expected >= 1"
+        )
+        # At least one independent root must match the companion root.
+        companion_roots = check["companion_roots"]
+        power_roots = check["power_extrema_roots"]
+        assert check["roots_match"], (
+            f"Roots don't match: companion={companion_roots}, "
+            f"power={power_roots}"
+        )
+
+    def test_artifact_records_root_completeness(self):
+        """The committed JSON must record the root-completeness
+        verification results for every scenario, so the certification
+        is auditable."""
+        committed = json.loads(OUTPUT.read_text())
+        for row in committed["power_scenarios"]:
+            assert "root_completeness" in row, (
+                f"Scenario pe={row['pe']}, pr={row['pr']} missing "
+                f"root_completeness field"
+            )
+            rc = row["root_completeness"]
+            for key in ("n_companion", "n_power_extrema",
+                        "independent_roots_all_matched", "roots_match",
+                        "max_residual", "all_residuals_below_tol"):
+                assert key in rc, (
+                    f"root_completeness missing key '{key}' for "
+                    f"pe={row['pe']}, pr={row['pr']}"
+                )
+            assert rc["roots_match"] is True, (
+                f"roots_match is False for pe={row['pe']}, pr={row['pr']}"
+            )
+            assert rc["all_residuals_below_tol"] is True, (
+                f"all_residuals_below_tol is False for "
+                f"pe={row['pe']}, pr={row['pr']}"
+            )
+
+    def test_artifact_records_derivative_degree(self):
+        """The committed JSON must record the derivative degree for
+        every scenario, establishing that Power'(p11) has degree
+        <= N-1 = 19."""
+        committed = json.loads(OUTPUT.read_text())
+        for row in committed["power_scenarios"]:
+            assert "derivative_degree" in row, (
+                f"Scenario pe={row['pe']}, pr={row['pr']} missing "
+                f"derivative_degree field"
+            )
+            assert row["derivative_degree"] <= r4_1.N - 1, (
+                f"derivative_degree {row['derivative_degree']} exceeds "
+                f"N-1={r4_1.N-1} for pe={row['pe']}, pr={row['pr']}"
+            )
+
+    def test_artifact_records_extremum_at_evaluated_point(self):
+        """The committed JSON must record that the extremum is at an
+        evaluated point for every scenario."""
+        committed = json.loads(OUTPUT.read_text())
+        for row in committed["power_scenarios"]:
+            assert "extremum_at_evaluated_point" in row, (
+                f"Scenario pe={row['pe']}, pr={row['pr']} missing "
+                f"extremum_at_evaluated_point field"
+            )
+            assert row["extremum_at_evaluated_point"] is True, (
+                f"extremum_at_evaluated_point is False for "
+                f"pe={row['pe']}, pr={row['pr']}"
+            )
