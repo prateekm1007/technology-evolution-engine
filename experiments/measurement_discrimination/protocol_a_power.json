@@ -1,0 +1,109 @@
+{
+  "artifact_type": "PROTOCOL_A_POWER_CALCULATION",
+  "generated_at_utc": "2026-08-08T22:06:38.056835+00:00",
+  "calculation_type": "EXACT_BINOMIAL (deterministic, no simulation, no RNG)",
+  "protocol": "Protocol A \u2014 Lexical Matcher Discrimination",
+  "parameters": {
+    "n_null_cases": 20,
+    "threshold_fpr": 0.2,
+    "threshold_count": 4,
+    "decision_rule": "FPR_shuffled \u2264 0.2 (\u2264 4/20) \u2192 LEXICALLY_SEPARABLE"
+  },
+  "power_table": [
+    {
+      "true_fpr": 0.0,
+      "power": 1.0,
+      "interpretation": "ADEQUATE \u2014 can detect good matchers (FPR\u22640.10) with \u226580% power"
+    },
+    {
+      "true_fpr": 0.05,
+      "power": 0.997426,
+      "interpretation": "ADEQUATE \u2014 can detect good matchers (FPR\u22640.10) with \u226580% power"
+    },
+    {
+      "true_fpr": 0.1,
+      "power": 0.956826,
+      "interpretation": "ADEQUATE \u2014 can detect good matchers (FPR\u22640.10) with \u226580% power"
+    },
+    {
+      "true_fpr": 0.15,
+      "power": 0.829847,
+      "interpretation": "ADEQUATE at threshold \u2014 can detect FPR=0.20 with \u226580% power"
+    },
+    {
+      "true_fpr": 0.2,
+      "power": 0.629648,
+      "interpretation": "MARGINAL \u2014 ~50% power at FPR=0.25"
+    },
+    {
+      "true_fpr": 0.25,
+      "power": 0.414842,
+      "interpretation": "EXPLORATORY \u2014 insufficient power for confident claim"
+    },
+    {
+      "true_fpr": 0.3,
+      "power": 0.237508,
+      "interpretation": "EXPLORATORY \u2014 insufficient power for confident claim"
+    },
+    {
+      "true_fpr": 0.35,
+      "power": 0.118197,
+      "interpretation": "EXPLORATORY \u2014 insufficient power for confident claim"
+    },
+    {
+      "true_fpr": 0.4,
+      "power": 0.050952,
+      "interpretation": "EXPLORATORY \u2014 insufficient power for confident claim"
+    },
+    {
+      "true_fpr": 0.5,
+      "power": 0.005909,
+      "interpretation": "GOOD Type I control \u2014 \u22645% false LEXICALLY_SEPARABLE under random H0"
+    },
+    {
+      "true_fpr": 0.6,
+      "power": 0.000317,
+      "interpretation": "GOOD Type I control \u2014 \u22645% false LEXICALLY_SEPARABLE under random H0"
+    },
+    {
+      "true_fpr": 0.7,
+      "power": 6e-06,
+      "interpretation": "GOOD Type I control \u2014 \u22645% false LEXICALLY_SEPARABLE under random H0"
+    },
+    {
+      "true_fpr": 0.8,
+      "power": 0.0,
+      "interpretation": "GOOD Type I control \u2014 \u22645% false LEXICALLY_SEPARABLE under random H0"
+    },
+    {
+      "true_fpr": 0.9,
+      "power": 0.0,
+      "interpretation": "GOOD Type I control \u2014 \u22645% false LEXICALLY_SEPARABLE under random H0"
+    },
+    {
+      "true_fpr": 1.0,
+      "power": 0.0,
+      "interpretation": "GOOD Type I control \u2014 \u22645% false LEXICALLY_SEPARABLE under random H0"
+    }
+  ],
+  "key_values": {
+    "power_at_fpr_0.10": 0.956826,
+    "power_at_fpr_0.20": 0.629648,
+    "power_at_fpr_0.25": 0.414842,
+    "power_at_fpr_0.50": 0.005909
+  },
+  "type_1_error": {
+    "h0_fpr_0.30": 0.237508,
+    "h0_fpr_0.40": 0.050952,
+    "h0_fpr_0.50": 0.005909
+  },
+  "classification": "ADEQUATE_FOR_DETECTING_FPR_0.10",
+  "interpretation": {
+    "ADEQUATE_FOR_DETECTING_FPR_0.10": "N=20 has \u226580% power to detect FPR=0.10 (a good matcher with 10% accidental match rate). The experiment can confidently distinguish a good matcher from random.",
+    "ADEQUATE_FOR_DETECTING_FPR_0.25": "N=20 has \u226580% power to detect FPR=0.25 but NOT FPR=0.10. The experiment can distinguish a poor matcher from random but cannot confidently verify a good matcher.",
+    "EXPLORATORY_LOW_POWERED": "N=20 has <80% power even at FPR=0.25. The experiment is exploratory and cannot make confident claims about discrimination ability."
+  },
+  "claim_limitation": "Protocol A tests LEXICAL separability only. It does NOT test discovery capability, cross-domain relationship discrimination, or engine competence. TPR_true = 1.0 by construction.",
+  "mechanically_reproducible": true,
+  "calculation_sha256": "a7c4b099931f8c21fd2185b2ca545ab207047de921fbacd0ce6fde68fa209c86"
+}
