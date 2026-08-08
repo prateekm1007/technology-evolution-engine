@@ -1,0 +1,28 @@
+{
+  "hypothesis_id": "H-DXP-004-004",
+  "claim": "The riblet alignment will create directional flow control that delays flow separation and maintains a cleaner boundary layer, reducing drag by 5-8% but increasing drag by 10-15% during pigging operations",
+  "mechanism": "The anisotropic riblet structure creates higher resistance to cross-flow than to streamwise flow, helping maintain a clean boundary layer and delaying flow separation. However, when flow is not aligned with riblets (such as during pigging operations), the same structure increases drag due to the enhanced surface area and flow disruption.",
+  "evidence": [
+    "Shark skin riblets increase drag when flow is not aligned",
+    "Studies show anisotropic surfaces can increase drag under off-design conditions"
+  ],
+  "assumptions": [
+    "Pigging operations create non-aligned flow conditions",
+    "The riblet structure survives pigging operations without significant damage",
+    "Flow separation points are predictable in straight pipe sections"
+  ],
+  "predictions": [],
+  "expected_failure_modes": [],
+  "novelty_rationale": "Predicts both the beneficial effect during normal operation and the detrimental effect during maintenance operations, providing a more complete picture of the technology",
+  "testability": "Can be tested by measuring pressure drop during normal operation and during pigging operations with and without riblets",
+  "falsifier": "If drag reduction is not observed during normal operation or if drag doesn't increase during pigging operations",
+  "epistemic_state": "HYPOTHESIZED",
+  "parent_hypothesis_ids": [],
+  "provenance": {
+    "nodes": {},
+    "edges": [],
+    "committed_hash": null
+  },
+  "is_testable": true,
+  "provenance_root_hash": ""
+}

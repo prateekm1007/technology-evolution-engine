@@ -1,0 +1,32 @@
+{
+  "hypothesis_id": "H-DXP-004-001",
+  "claim": "Engineered riblets will lift streamwise vortices away from the pipe surface, reducing the wetted surface area that vortices can act upon and decreasing drag by 6-9%",
+  "mechanism": "The micro-ridges create anisotropic surface topology that lifts near-wall turbulent structures away from the pipe wall, similar to shark skin riblets lifting vortices away from the dermal denticles. This reduces the momentum transfer between the turbulent structures and the wall.",
+  "evidence": [
+    "Shark skin riblets achieve 5-10% drag reduction in turbulent flow",
+    "Wind tunnel tests show riblets reduce drag when aligned with flow direction"
+  ],
+  "assumptions": [
+    "The riblet dimensions (height 50-200 \u03bcm, spacing 100-400 \u03bcm) are optimized for the pipe Reynolds number of 500,000",
+    "Flow remains predominantly aligned with riblets during normal operation",
+    "Manufacturing precision maintains consistent riblet geometry"
+  ],
+  "predictions": [],
+  "expected_failure_modes": [
+    "Manufacturing defects causing uneven riblet heights",
+    "Pigging operations damaging riblet geometry",
+    "Biofilm filling riblet valleys over time"
+  ],
+  "novelty_rationale": "This applies the specific vortex-lifting mechanism from shark skin to pipe flow, rather than generic surface roughness modifications",
+  "testability": "Can be tested by measuring pressure drop in a pipe section with precisely manufactured riblets compared to smooth pipe under identical flow conditions",
+  "falsifier": "If pressure measurements show no drag reduction or increased drag when riblets are aligned with flow direction",
+  "epistemic_state": "HYPOTHESIZED",
+  "parent_hypothesis_ids": [],
+  "provenance": {
+    "nodes": {},
+    "edges": [],
+    "committed_hash": null
+  },
+  "is_testable": true,
+  "provenance_root_hash": ""
+}

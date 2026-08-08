@@ -1,0 +1,181 @@
+{
+  "stage": "10_rankings",
+  "run_id": "RUN-DXP-004-HGEN1",
+  "code_sha": "b945c056742d30986464263ccdc7dc5acbe6e1fc",
+  "input_hash": "8483b3855dc61f4bf6fc3a53c41b9367be371358bf2916decbc1e0319b9979c3",
+  "output_hash": "ee72be3568e3f4f29607db14c71a883915ec87b0ebb4fb7f8a4d2e3d29e382c1",
+  "provider_manifest": null,
+  "result": {
+    "rankings": {
+      "H-DXP-004-001": {
+        "hypothesis_id": "H-DXP-004-001",
+        "dimensions": {
+          "mechanistic_coherence": [
+            0.5,
+            "hypothesis has a mechanism"
+          ],
+          "cross_domain_distance": [
+            0.8,
+            "source 'ichthyology' != target 'fluid mechanics'"
+          ],
+          "novelty_evidence": [
+            0.0,
+            ""
+          ],
+          "testability": [
+            0.5,
+            "hypothesis marked testable"
+          ],
+          "falsifiability": [
+            1.0,
+            "non-empty falsifier"
+          ],
+          "prior_art_risk": [
+            0.0,
+            ""
+          ],
+          "expected_information_gain": [
+            0.2,
+            "no experiment design yet"
+          ],
+          "potential_impact": [
+            0.6,
+            "specific expected effect"
+          ],
+          "experimental_feasibility": [
+            0.0,
+            ""
+          ]
+        },
+        "note": "dimensions reported separately, not collapsed into a single score"
+      },
+      "H-DXP-004-002": {
+        "hypothesis_id": "H-DXP-004-002",
+        "dimensions": {
+          "mechanistic_coherence": [
+            0.5,
+            "hypothesis has a mechanism"
+          ],
+          "cross_domain_distance": [
+            0.8,
+            "source 'ichthyology' != target 'fluid mechanics'"
+          ],
+          "novelty_evidence": [
+            0.0,
+            ""
+          ],
+          "testability": [
+            0.5,
+            "hypothesis marked testable"
+          ],
+          "falsifiability": [
+            1.0,
+            "non-empty falsifier"
+          ],
+          "prior_art_risk": [
+            0.0,
+            ""
+          ],
+          "expected_information_gain": [
+            0.2,
+            "no experiment design yet"
+          ],
+          "potential_impact": [
+            0.6,
+            "specific expected effect"
+          ],
+          "experimental_feasibility": [
+            0.0,
+            ""
+          ]
+        },
+        "note": "dimensions reported separately, not collapsed into a single score"
+      },
+      "H-DXP-004-003": {
+        "hypothesis_id": "H-DXP-004-003",
+        "dimensions": {
+          "mechanistic_coherence": [
+            0.5,
+            "hypothesis has a mechanism"
+          ],
+          "cross_domain_distance": [
+            0.8,
+            "source 'ichthyology' != target 'fluid mechanics'"
+          ],
+          "novelty_evidence": [
+            0.0,
+            ""
+          ],
+          "testability": [
+            0.5,
+            "hypothesis marked testable"
+          ],
+          "falsifiability": [
+            1.0,
+            "non-empty falsifier"
+          ],
+          "prior_art_risk": [
+            0.0,
+            ""
+          ],
+          "expected_information_gain": [
+            0.2,
+            "no experiment design yet"
+          ],
+          "potential_impact": [
+            0.6,
+            "specific expected effect"
+          ],
+          "experimental_feasibility": [
+            0.0,
+            ""
+          ]
+        },
+        "note": "dimensions reported separately, not collapsed into a single score"
+      },
+      "H-DXP-004-004": {
+        "hypothesis_id": "H-DXP-004-004",
+        "dimensions": {
+          "mechanistic_coherence": [
+            0.5,
+            "hypothesis has a mechanism"
+          ],
+          "cross_domain_distance": [
+            0.8,
+            "source 'ichthyology' != target 'fluid mechanics'"
+          ],
+          "novelty_evidence": [
+            0.0,
+            ""
+          ],
+          "testability": [
+            0.5,
+            "hypothesis marked testable"
+          ],
+          "falsifiability": [
+            1.0,
+            "non-empty falsifier"
+          ],
+          "prior_art_risk": [
+            0.0,
+            ""
+          ],
+          "expected_information_gain": [
+            0.2,
+            "no experiment design yet"
+          ],
+          "potential_impact": [
+            0.6,
+            "specific expected effect"
+          ],
+          "experimental_feasibility": [
+            0.0,
+            ""
+          ]
+        },
+        "note": "dimensions reported separately, not collapsed into a single score"
+      }
+    }
+  },
+  "timestamp": "2026-08-08T11:39:41.328199+00:00"
+}

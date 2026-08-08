@@ -1,0 +1,68 @@
+{
+  "stage": "05_adversarial_H-DXP-004-004",
+  "run_id": "RUN-DXP-004-HGEN1",
+  "code_sha": "b945c056742d30986464263ccdc7dc5acbe6e1fc",
+  "input_hash": "c0319afa890d04e370a3633a3730a10029b0382c0692e6904d849fa7f44aec07",
+  "output_hash": "df9ab4c705c5b9ee9a167e50300892949057666271d5208a831b349a43f09a8e",
+  "provider_manifest": {
+    "provider": "zai",
+    "model": "glm-4-plus",
+    "version": "z-ai-web-dev-sdk",
+    "configuration": {
+      "temperature": 0.2,
+      "max_tokens": 4096,
+      "system_sha": "1f5a3fff3aebc2e1d44b2312f4b604b5c2911cacaf452eb6ca705c724fc9142b"
+    },
+    "prompt_sha": "0e0e9b78699507a1ac9e2ce761839a330987069ffad39407070dd31fe4d0280c",
+    "seed": null,
+    "tool_versions": {
+      "z_ai_cli": "z-ai"
+    },
+    "timestamp": "2026-08-08T11:39:29.114678+00:00",
+    "latency_ms": 6574,
+    "success": true,
+    "error": ""
+  },
+  "result": {
+    "hypothesis_id": "H-DXP-004-004",
+    "failure_modes": [
+      {
+        "category": "FRAGILE_ASSUMPTION",
+        "description": "Assumes riblet structure survives pigging operations without damage",
+        "severity": "HIGH",
+        "evidence": "Pigging operations involve mechanical scrapers moving at high pressure that would likely abrade or destroy delicate riblet structures"
+      },
+      {
+        "category": "CONTRADICTS_KNOWN",
+        "description": "Claims both drag reduction and increase from same structure",
+        "severity": "HIGH",
+        "evidence": "Riblets have been extensively studied and only show drag reduction when aligned, never both reduction and increase from same configuration"
+      },
+      {
+        "category": "BOUNDARY_BREAKS",
+        "description": "Assumes predictable flow separation in straight pipes",
+        "severity": "MEDIUM",
+        "evidence": "Flow separation in pipes is influenced by numerous factors including surface roughness, Reynolds number, and inlet conditions that make prediction unreliable"
+      },
+      {
+        "category": "FALSIFIER_TRIGGERED",
+        "description": "Falsifier condition already met by hypothesis itself",
+        "severity": "HIGH",
+        "evidence": "Hypothesis predicts contradictory outcomes (drag reduction and increase) which cannot both be true simultaneously"
+      },
+      {
+        "category": "PRIOR_ART_EXISTS",
+        "description": "Novelty claim invalid as bidirectional drag effects are well-documented",
+        "severity": "MEDIUM",
+        "evidence": "Multiple studies already demonstrate riblets increase drag when flow is not aligned, contradicting novelty claim"
+      }
+    ],
+    "survives": false,
+    "outcome": "ADVERSARIAL_FAILED",
+    "n_high_severity": 3,
+    "n_medium_severity": 2,
+    "n_low_severity": 0,
+    "source_hypothesis_hash": ""
+  },
+  "timestamp": "2026-08-08T11:39:35.689884+00:00"
+}

@@ -1,0 +1,74 @@
+{
+  "stage": "05_adversarial_H-DXP-004-003",
+  "run_id": "RUN-DXP-004-HGEN1",
+  "code_sha": "b945c056742d30986464263ccdc7dc5acbe6e1fc",
+  "input_hash": "fd03f6c8227dc9b1ea8f3b8023ff7b66cd2e7f993acfcd663088e7ffc252c31e",
+  "output_hash": "dcea5acc26b2ac103b23a8d5e574392f0b70af10497b5a02505d8ef68c73335b",
+  "provider_manifest": {
+    "provider": "zai",
+    "model": "glm-4-plus",
+    "version": "z-ai-web-dev-sdk",
+    "configuration": {
+      "temperature": 0.2,
+      "max_tokens": 4096,
+      "system_sha": "1f5a3fff3aebc2e1d44b2312f4b604b5c2911cacaf452eb6ca705c724fc9142b"
+    },
+    "prompt_sha": "c3d33b58df2d7eb68784b2cd72bf312db140b9d1a2a9fdd624a777b33650fb33",
+    "seed": null,
+    "tool_versions": {
+      "z_ai_cli": "z-ai"
+    },
+    "timestamp": "2026-08-08T11:39:18.112746+00:00",
+    "latency_ms": 8828,
+    "success": true,
+    "error": ""
+  },
+  "result": {
+    "hypothesis_id": "H-DXP-004-003",
+    "failure_modes": [
+      {
+        "category": "FRAGILE_ASSUMPTION",
+        "description": "HDPE material will maintain flexibility at operating temperatures",
+        "severity": "HIGH",
+        "evidence": "HDPE significantly stiffens at temperatures above 60\u00b0C, which are common in industrial pipe applications. The hypothesis provides no temperature range or stabilization method."
+      },
+      {
+        "category": "CONTRADICTS_KNOWN",
+        "description": "Flexible surfaces reduce drag in pipe flow",
+        "severity": "HIGH",
+        "evidence": "Fluid dynamics research consistently shows that compliant surfaces in turbulent pipe flow typically increase drag due to increased effective roughness and energy dissipation through deformation."
+      },
+      {
+        "category": "BOUNDARY_BREAKS",
+        "description": "Micro-structure maintains structural integrity under pressure",
+        "severity": "MEDIUM",
+        "evidence": "Micro-structures are inherently stress concentrators. The hypothesis provides no data on fatigue resistance or long-term performance under cyclic loading."
+      },
+      {
+        "category": "BOUNDARY_BREAKS",
+        "description": "Surface deformation doesn't increase roughness over time",
+        "severity": "HIGH",
+        "evidence": "Polymer surfaces are susceptible to creep and permanent deformation under sustained loading, which would increase effective roughness and negate any potential drag benefits."
+      },
+      {
+        "category": "FALSIFIER_TRIGGERED",
+        "description": "Pressure fluctuations are not reduced by flexible surface",
+        "severity": "HIGH",
+        "evidence": "The mechanism described is based on shark skin research which applies to external flow, not internal pipe flow where boundary conditions are fundamentally different."
+      },
+      {
+        "category": "PRIOR_ART_EXISTS",
+        "description": "Shark skin drag reduction mechanisms",
+        "severity": "MEDIUM",
+        "evidence": "Recent studies show shark skin drag reduction primarily comes from riblet topology reducing friction, not skin flexibility which is minimal in most shark species."
+      }
+    ],
+    "survives": false,
+    "outcome": "ADVERSARIAL_FAILED",
+    "n_high_severity": 4,
+    "n_medium_severity": 2,
+    "n_low_severity": 0,
+    "source_hypothesis_hash": ""
+  },
+  "timestamp": "2026-08-08T11:39:26.942081+00:00"
+}

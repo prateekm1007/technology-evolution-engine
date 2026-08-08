@@ -1,0 +1,34 @@
+{
+  "stage": "06_rediscovery_H-DXP-004-004",
+  "run_id": "RUN-DXP-004-HGEN1",
+  "code_sha": "b945c056742d30986464263ccdc7dc5acbe6e1fc",
+  "input_hash": "c0319afa890d04e370a3633a3730a10029b0382c0692e6904d849fa7f44aec07",
+  "output_hash": "b8750cf80cb9b4ada9212140a6dce7eb820ce39678694e58263dd7143c51e49c",
+  "provider_manifest": {
+    "provider": "zai",
+    "model": "glm-4-plus",
+    "version": "z-ai-web-dev-sdk",
+    "configuration": {
+      "temperature": 0.1,
+      "max_tokens": 4096,
+      "system_sha": "dbdd0760dff49fc029b32b580a575b7de33a87d371edc2b0deec93bfb2b90b01"
+    },
+    "prompt_sha": "23da806514b5298b75bb3b25d92c08977921ea010e216acf37595b5464f5a28d",
+    "seed": null,
+    "tool_versions": {
+      "z_ai_cli": "z-ai"
+    },
+    "timestamp": "2026-08-08T11:39:35.692138+00:00",
+    "latency_ms": 5630,
+    "success": true,
+    "error": ""
+  },
+  "result": {
+    "hypothesis_id": "H-DXP-004-004",
+    "classification": "PARAPHRASED_IN_INPUT",
+    "evidence": "The hypothesis is a restatement of the source content regarding riblet function. The source document explains that shark skin denticles have longitudinal riblets that create anisotropic resistance, reducing drag by interacting with turbulent flow structures. It also mentions the riblets are aligned in the flow direction during steady swimming. The hypothesis paraphrases this information, adding specific percentages (5-8% drag reduction, 10-15% increase during pigging) that are not explicitly stated in the source but are consistent with the described mechanism. The core concept of directional flow control and drag reduction through riblet alignment is directly from the source.",
+    "is_rediscovery": true,
+    "source_hypothesis_hash": ""
+  },
+  "timestamp": "2026-08-08T11:39:41.322827+00:00"
+}

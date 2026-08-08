@@ -1,0 +1,34 @@
+{
+  "stage": "06_rediscovery_H-DXP-004-002",
+  "run_id": "RUN-DXP-004-HGEN1",
+  "code_sha": "b945c056742d30986464263ccdc7dc5acbe6e1fc",
+  "input_hash": "00b369b8416ec6c5c8f142d3c951821720e2991d7d1c19fcfb5492209e37478b",
+  "output_hash": "b2c1c8a560779b8c65cc30f199c6bf29a2a271446698c7c8c9f8dc37924bead2",
+  "provider_manifest": {
+    "provider": "zai",
+    "model": "glm-4-plus",
+    "version": "z-ai-web-dev-sdk",
+    "configuration": {
+      "temperature": 0.1,
+      "max_tokens": 4096,
+      "system_sha": "dbdd0760dff49fc029b32b580a575b7de33a87d371edc2b0deec93bfb2b90b01"
+    },
+    "prompt_sha": "dbd6a92418965674fb031730c79c59339cfd9aa2c518901712f971d6b0bfce05",
+    "seed": null,
+    "tool_versions": {
+      "z_ai_cli": "z-ai"
+    },
+    "timestamp": "2026-08-08T11:39:16.051994+00:00",
+    "latency_ms": 2056,
+    "success": true,
+    "error": ""
+  },
+  "result": {
+    "hypothesis_id": "H-DXP-004-002",
+    "classification": "PARAPHRASED_IN_INPUT",
+    "evidence": "The hypothesis directly paraphrases information from the source document. The document explicitly states that shark skin denticles have longitudinal riblets that create streamwise vortices which reduce drag by interacting with the viscous sublayer. It also mentions that the riblet structure prevents organisms from gaining mechanical footholds. The hypothesis combines these two points from the source without introducing new information or requiring cross-domain reasoning.",
+    "is_rediscovery": true,
+    "source_hypothesis_hash": ""
+  },
+  "timestamp": "2026-08-08T11:39:18.109113+00:00"
+}

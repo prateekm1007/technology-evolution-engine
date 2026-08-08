@@ -1,0 +1,68 @@
+{
+  "stage": "02_abstraction",
+  "run_id": "RUN-DXP-004-HGEN1",
+  "code_sha": "b945c056742d30986464263ccdc7dc5acbe6e1fc",
+  "input_hash": "37a4380a18e4203b724b357f8777538aa915775aa49fe40df17050e02db21192",
+  "output_hash": "0e50b9d63de6416f868efc3c7483c63fae0e6c88b30a6d532beb4c747f8704d2",
+  "provider_manifest": {
+    "provider": "zai",
+    "model": "glm-4-plus",
+    "version": "z-ai-web-dev-sdk",
+    "configuration": {
+      "temperature": 0.15,
+      "max_tokens": 4096,
+      "system_sha": "da25f0e8a1231c4250cad400e03ce5c0a835dbc6ca8fc600ce255ef3727d663e"
+    },
+    "prompt_sha": "fed2a0030ba1ba11dc539e9ebb5526c6669dacf01d534f8d13d3a897e9c91e96",
+    "seed": null,
+    "tool_versions": {
+      "z_ai_cli": "z-ai"
+    },
+    "timestamp": "2026-08-08T11:38:26.846439+00:00",
+    "latency_ms": 3414,
+    "success": true,
+    "error": ""
+  },
+  "result": {
+    "pattern": {
+      "pattern_id": "MP-DXP-004",
+      "source_domain": "ichthyology",
+      "causal_structure": "Surface micro-topography enables directional flow control under fluid conditions, producing drag reduction and anti-fouling effects",
+      "inputs": [
+        "fluid medium",
+        "external force"
+      ],
+      "conditions": [
+        "turbulent flow",
+        "low Reynolds number"
+      ],
+      "operations": [
+        "surface interaction",
+        "flow directionality",
+        "boundary layer modification"
+      ],
+      "intermediate_state": [
+        "aligned flow pattern",
+        "reduced shear stress"
+      ],
+      "outputs": [
+        "drag reduction",
+        "anti-fouling"
+      ],
+      "constraints": [
+        "size scaling limitation",
+        "structural integrity"
+      ],
+      "failure_conditions": [
+        "surface damage",
+        "off-design flow",
+        "fouling accumulation"
+      ],
+      "abstract_principle": "Hierarchical surface structures reduce drag and inhibit attachment through directional flow control and surface micro-topography.",
+      "source_graph_summary": "18 nodes, 10 edges"
+    },
+    "failures": [],
+    "source_extraction_hash": "ab1e16e97f5bf254ac6f511673425b06216fe60faaeada25bf72e60d00044359"
+  },
+  "timestamp": "2026-08-08T11:38:30.261365+00:00"
+}

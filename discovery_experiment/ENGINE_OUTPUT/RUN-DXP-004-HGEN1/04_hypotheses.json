@@ -1,0 +1,150 @@
+{
+  "stage": "04_hypotheses",
+  "run_id": "RUN-DXP-004-HGEN1",
+  "code_sha": "b945c056742d30986464263ccdc7dc5acbe6e1fc",
+  "input_hash": "fa75488fe56716dd2a9eecdf268a506190dafd0f71135e57e9f54a1ac666da82",
+  "output_hash": "e7844ebbc9a8e103bea889ee89f1a5cd8c6a387965d75a8016aa7fe93a796cbd",
+  "provider_manifest": {
+    "provider": "zai",
+    "model": "glm-4-plus",
+    "version": "z-ai-web-dev-sdk",
+    "configuration": {
+      "temperature": 0.3,
+      "max_tokens": 4096,
+      "system_sha": "38a0abb453a9eb9fd88d0b4dd513feea94d69501c86ec3d4d7778b86034369c8"
+    },
+    "prompt_sha": "05ca7523a52b6a978509e704f06652140013e8fe8931ce40918132263105b93b",
+    "seed": null,
+    "tool_versions": {
+      "z_ai_cli": "z-ai"
+    },
+    "timestamp": "2026-08-08T11:38:33.945504+00:00",
+    "latency_ms": 18276,
+    "success": true,
+    "error": ""
+  },
+  "result": {
+    "hypotheses": [
+      {
+        "hypothesis_id": "H-DXP-004-001",
+        "claim": "Engineered riblets will lift streamwise vortices away from the pipe surface, reducing the wetted surface area that vortices can act upon and decreasing drag by 6-9%",
+        "mechanism": "The micro-ridges create anisotropic surface topology that lifts near-wall turbulent structures away from the pipe wall, similar to shark skin riblets lifting vortices away from the dermal denticles. This reduces the momentum transfer between the turbulent structures and the wall.",
+        "evidence": [
+          "Shark skin riblets achieve 5-10% drag reduction in turbulent flow",
+          "Wind tunnel tests show riblets reduce drag when aligned with flow direction"
+        ],
+        "assumptions": [
+          "The riblet dimensions (height 50-200 \u03bcm, spacing 100-400 \u03bcm) are optimized for the pipe Reynolds number of 500,000",
+          "Flow remains predominantly aligned with riblets during normal operation",
+          "Manufacturing precision maintains consistent riblet geometry"
+        ],
+        "predictions": [],
+        "expected_failure_modes": [
+          "Manufacturing defects causing uneven riblet heights",
+          "Pigging operations damaging riblet geometry",
+          "Biofilm filling riblet valleys over time"
+        ],
+        "novelty_rationale": "This applies the specific vortex-lifting mechanism from shark skin to pipe flow, rather than generic surface roughness modifications",
+        "testability": "Can be tested by measuring pressure drop in a pipe section with precisely manufactured riblets compared to smooth pipe under identical flow conditions",
+        "falsifier": "If pressure measurements show no drag reduction or increased drag when riblets are aligned with flow direction",
+        "epistemic_state": "HYPOTHESIZED",
+        "parent_hypothesis_ids": [],
+        "provenance": {
+          "nodes": {},
+          "edges": [],
+          "committed_hash": null
+        },
+        "is_testable": true,
+        "provenance_root_hash": ""
+      },
+      {
+        "hypothesis_id": "H-DXP-004-002",
+        "claim": "The hierarchical riblet pattern will create longitudinal vortices that thin the viscous sublayer, reducing drag by 4-7% while inhibiting biofilm attachment through topological interference",
+        "mechanism": "The hierarchical surface structure generates controlled streamwise vortices that disrupt the near-wall flow organization, effectively thinning the viscous sublayer and reducing drag. The narrow valleys between riblets also prevent biofilm organisms from gaining mechanical footholds, similar to how shark skin inhibits barnacle attachment.",
+        "evidence": [
+          "Shark skin's hierarchical structure provides both drag reduction and anti-fouling",
+          "Lab studies show micro-patterned surfaces reduce biofilm attachment by 40-60%"
+        ],
+        "assumptions": [
+          "The hierarchical pattern combines micro-ridges (50-100 \u03bcm) with nano-features (1-10 \u03bcm)",
+          "Water chemistry doesn't promote excessive mineral scaling that fills valleys",
+          "Flow velocity remains within design parameters"
+        ],
+        "predictions": [],
+        "expected_failure_modes": [],
+        "novelty_rationale": "Combines both drag reduction and anti-fouling mechanisms from shark skin into a single hierarchical structure for pipes",
+        "testability": "Can be tested by measuring both pressure drop and biofilm adhesion strength in treated vs. untreated pipe sections after 6 months of operation",
+        "falsifier": "If biofilm adhesion strength is not reduced or if pressure drop increases despite the hierarchical structure",
+        "epistemic_state": "HYPOTHESIZED",
+        "parent_hypothesis_ids": [],
+        "provenance": {
+          "nodes": {},
+          "edges": [],
+          "committed_hash": null
+        },
+        "is_testable": true,
+        "provenance_root_hash": ""
+      },
+      {
+        "hypothesis_id": "H-DXP-004-003",
+        "claim": "The engineered surface flexibility will absorb pressure fluctuations and reduce turbulent stress transfer, decreasing drag by 3-6% while maintaining structural integrity",
+        "mechanism": "The HDPE micro-structured surface will have localized flexibility that allows it to deform under hydrodynamic loading, absorbing pressure fluctuations and reducing the transfer of turbulent stresses to the pipe wall. This mimics the skin flexibility of sharks that helps reduce drag by dampening near-wall turbulence.",
+        "evidence": [
+          "Shark skin flexibility contributes to drag reduction by absorbing pressure fluctuations",
+          "Flexible polymer surfaces have shown drag reduction in some applications"
+        ],
+        "assumptions": [
+          "The HDPE material maintains flexibility at operating temperatures",
+          "The micro-structure doesn't compromise the material's structural integrity",
+          "The surface deformation doesn't lead to increased roughness over time"
+        ],
+        "predictions": [],
+        "expected_failure_modes": [],
+        "novelty_rationale": "Focuses on the material flexibility aspect of shark skin rather than just surface topology, applying it to pipe flow",
+        "testability": "Can be tested by measuring pressure fluctuations along the pipe wall and comparing pressure drop between flexible and rigid micro-structured surfaces",
+        "falsifier": "If pressure fluctuations are not reduced or if the flexible surface shows increased drag compared to rigid micro-structures",
+        "epistemic_state": "HYPOTHESIZED",
+        "parent_hypothesis_ids": [],
+        "provenance": {
+          "nodes": {},
+          "edges": [],
+          "committed_hash": null
+        },
+        "is_testable": true,
+        "provenance_root_hash": ""
+      },
+      {
+        "hypothesis_id": "H-DXP-004-004",
+        "claim": "The riblet alignment will create directional flow control that delays flow separation and maintains a cleaner boundary layer, reducing drag by 5-8% but increasing drag by 10-15% during pigging operations",
+        "mechanism": "The anisotropic riblet structure creates higher resistance to cross-flow than to streamwise flow, helping maintain a clean boundary layer and delaying flow separation. However, when flow is not aligned with riblets (such as during pigging operations), the same structure increases drag due to the enhanced surface area and flow disruption.",
+        "evidence": [
+          "Shark skin riblets increase drag when flow is not aligned",
+          "Studies show anisotropic surfaces can increase drag under off-design conditions"
+        ],
+        "assumptions": [
+          "Pigging operations create non-aligned flow conditions",
+          "The riblet structure survives pigging operations without significant damage",
+          "Flow separation points are predictable in straight pipe sections"
+        ],
+        "predictions": [],
+        "expected_failure_modes": [],
+        "novelty_rationale": "Predicts both the beneficial effect during normal operation and the detrimental effect during maintenance operations, providing a more complete picture of the technology",
+        "testability": "Can be tested by measuring pressure drop during normal operation and during pigging operations with and without riblets",
+        "falsifier": "If drag reduction is not observed during normal operation or if drag doesn't increase during pigging operations",
+        "epistemic_state": "HYPOTHESIZED",
+        "parent_hypothesis_ids": [],
+        "provenance": {
+          "nodes": {},
+          "edges": [],
+          "committed_hash": null
+        },
+        "is_testable": true,
+        "provenance_root_hash": ""
+      }
+    ],
+    "distinguishing_predictions": "The hypotheses can be distinguished by: 1) Measuring pressure fluctuations (Hypothesis 3 would show reduced fluctuations), 2) Testing biofilm adhesion strength (Hypothesis 2 would show the strongest reduction), 3) Measuring drag during pigging operations (Hypothesis 4 would show increased drag), and 4) Examining riblet geometry after operation (Hypothesis 1 and 2 would show degradation if valleys are filled, while Hypothesis 3 would focus on material flexibility rather than geometric changes).",
+    "transfer_id": "TH-DXP-004-001",
+    "source_transfer_hash": "2b48583b0f2b8aee7c2e876fb27e46569d811f3d4094e6903f8ed280c4a58cba"
+  },
+  "timestamp": "2026-08-08T11:38:52.224908+00:00"
+}

@@ -1,0 +1,34 @@
+{
+  "stage": "06_rediscovery_H-DXP-004-003",
+  "run_id": "RUN-DXP-004-HGEN1",
+  "code_sha": "b945c056742d30986464263ccdc7dc5acbe6e1fc",
+  "input_hash": "fd03f6c8227dc9b1ea8f3b8023ff7b66cd2e7f993acfcd663088e7ffc252c31e",
+  "output_hash": "d47314e92861ca1365218677e27305170a6a947edcc7eaca1c0ad96ae8503e63",
+  "provider_manifest": {
+    "provider": "zai",
+    "model": "glm-4-plus",
+    "version": "z-ai-web-dev-sdk",
+    "configuration": {
+      "temperature": 0.1,
+      "max_tokens": 4096,
+      "system_sha": "dbdd0760dff49fc029b32b580a575b7de33a87d371edc2b0deec93bfb2b90b01"
+    },
+    "prompt_sha": "8c88e2237758106dad25253d78ae71fc9603c88637bc85d80d854b1998338eb6",
+    "seed": null,
+    "tool_versions": {
+      "z_ai_cli": "z-ai"
+    },
+    "timestamp": "2026-08-08T11:39:26.943772+00:00",
+    "latency_ms": 2166,
+    "success": true,
+    "error": ""
+  },
+  "result": {
+    "hypothesis_id": "H-DXP-004-003",
+    "classification": "PARAPHRASED_IN_INPUT",
+    "evidence": "The hypothesis describes an HDPE micro-structured surface that mimics shark skin denticles to reduce drag by absorbing pressure fluctuations and reducing turbulent stress transfer. This is directly paraphrased from the source document which explains that shark skin denticles with riblets reduce drag by lifting vortices away from the surface and reducing shear stress transfer to the surface. The hypothesis applies this biological mechanism to an engineered surface without introducing new concepts or cross-domain reasoning.",
+    "is_rediscovery": true,
+    "source_hypothesis_hash": ""
+  },
+  "timestamp": "2026-08-08T11:39:29.110931+00:00"
+}

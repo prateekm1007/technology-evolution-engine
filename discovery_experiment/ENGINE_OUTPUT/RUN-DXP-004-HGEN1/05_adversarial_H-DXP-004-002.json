@@ -1,0 +1,74 @@
+{
+  "stage": "05_adversarial_H-DXP-004-002",
+  "run_id": "RUN-DXP-004-HGEN1",
+  "code_sha": "b945c056742d30986464263ccdc7dc5acbe6e1fc",
+  "input_hash": "00b369b8416ec6c5c8f142d3c951821720e2991d7d1c19fcfb5492209e37478b",
+  "output_hash": "1b63db23b7eece4e447b6fa2f0eccaf63306f0b9e938dca5aa90cbcb3d401e81",
+  "provider_manifest": {
+    "provider": "zai",
+    "model": "glm-4-plus",
+    "version": "z-ai-web-dev-sdk",
+    "configuration": {
+      "temperature": 0.2,
+      "max_tokens": 4096,
+      "system_sha": "1f5a3fff3aebc2e1d44b2312f4b604b5c2911cacaf452eb6ca705c724fc9142b"
+    },
+    "prompt_sha": "b712ebb47d2a0402bf55c77b8ff77b7e15a89d830085557fe7a7b78503e5eed3",
+    "seed": null,
+    "tool_versions": {
+      "z_ai_cli": "z-ai"
+    },
+    "timestamp": "2026-08-08T11:39:05.155017+00:00",
+    "latency_ms": 10894,
+    "success": true,
+    "error": ""
+  },
+  "result": {
+    "hypothesis_id": "H-DXP-004-002",
+    "failure_modes": [
+      {
+        "category": "FRAGILE_ASSUMPTION",
+        "description": "The assumption about water chemistry not promoting excessive mineral scaling is completely unsupported and unrealistic for most industrial applications",
+        "severity": "HIGH",
+        "evidence": "Real-world pipe systems almost always experience some mineral scaling, which would rapidly fill the narrow valleys between riblets, destroying both drag reduction and anti-fouling properties"
+      },
+      {
+        "category": "CONTRADICTS_KNOWN",
+        "description": "The claim that hierarchical riblets will thin the viscous sublayer contradicts established fluid dynamics knowledge",
+        "severity": "HIGH",
+        "evidence": "Riblets actually work by increasing the effective surface area and reducing the cross-flow component of turbulent motion, not by thinning the viscous sublayer"
+      },
+      {
+        "category": "BOUNDARY_BREAKS",
+        "description": "The proposed drag reduction range of 4-7% is unrealistically high for industrial pipe applications",
+        "severity": "MEDIUM",
+        "evidence": "Published studies show riblet structures typically achieve 1-3% drag reduction in pipes, with 5% being the absolute upper limit in ideal laboratory conditions"
+      },
+      {
+        "category": "PRIOR_ART_EXISTS",
+        "description": "The combination of drag reduction and anti-fouling in hierarchical structures is not novel",
+        "severity": "MEDIUM",
+        "evidence": "Multiple patents and publications from the past decade describe similar approaches, including US20170160821A1 and 'Bioinspired surfaces: from superhydrophobicity to self-healing' by Bhushan 2016"
+      },
+      {
+        "category": "FALSIFIER_TRIGGERED",
+        "description": "The hypothesis already fails its own falsification criteria",
+        "severity": "HIGH",
+        "evidence": "The falsifier states 'if biofilm adhesion strength is not reduced or if pressure drop increases' - both outcomes are highly likely given the fragile assumptions and unrealistic performance claims"
+      },
+      {
+        "category": "INCOMPATIBLE_TARGET",
+        "description": "The proposed solution is incompatible with real-world pipe manufacturing and installation requirements",
+        "severity": "MEDIUM",
+        "evidence": "Creating hierarchical structures with both micro-ridges (50-100 \u03bcm) and nano-features (1-10 \u03bcm) would be prohibitively expensive for large-diameter pipes and would likely fail during installation"
+      }
+    ],
+    "survives": false,
+    "outcome": "ADVERSARIAL_FAILED",
+    "n_high_severity": 3,
+    "n_medium_severity": 3,
+    "n_low_severity": 0,
+    "source_hypothesis_hash": ""
+  },
+  "timestamp": "2026-08-08T11:39:16.050454+00:00"
+}
