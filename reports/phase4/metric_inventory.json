@@ -1,46 +1,56 @@
 {
   "phase": 4,
-  "phase_name": "Inventory every measurement metric (corrected per audit round 7)",
-  "timestamp_utc": "2026-08-08T16:56:41.673011+00:00",
-  "git_head": "52a483648732891db38d0bcb6469a8f000bb3152",
-  "audit_round": 7,
+  "phase_name": "Inventory every measurement metric (corrected per audit round 8)",
+  "timestamp_utc": "2026-08-08T17:03:33.783027+00:00",
+  "git_head": "40b124b2f4daba472561453bc8d7c000b62c866c",
+  "audit_round": 8,
   "correction_summary": {
-    "removed_unsupported_passed_claims": "Per audit: 'absence of a failed regeneration is not evidence of successful regeneration.' Removed PASSED from 37 metrics. Replaced with REGENERATED_AND_MATCHED with shared-context caveat.",
-    "added_provenance_declared_vs_verified": "Every metric now has provenance.provenance_declared (location known) and provenance.provenance_verified (cryptographically verified). No metric has provenance_verified=true yet.",
+    "round_7_correction": "Removed unsupported 'PASSED' claims. Added provenance_declared vs provenance_verified. Added input hashes. Traced M-008 determinism. Added epistemic ladder.",
+    "round_8_correction": "REGENERATED_AND_MATCHED was still too strong \u2014 it conventionally means 'independently regenerated and compared.' Replaced with two-dimensional state: regeneration_status=NOT_INDEPENDENTLY_VERIFIED + shared_run_comparison=MATCHED. Added independent_regeneration=false flag. Tightened M-008 determinism statement (conditional, not causal). Recorded exact RNG topology. Added rng_modification_prohibition.",
+    "two_dimensional_state_machine": "Dimension 1: regeneration_status (NOT_INDEPENDENTLY_VERIFIED / FAILED). Dimension 2: shared_run_comparison (MATCHED / MISMATCHED). These are separate fields so the status is self-explanatory without caveats.",
+    "added_provenance_declared_vs_verified": "Every metric has provenance.provenance_declared (location known) and provenance.provenance_verified (cryptographically verified). No metric has provenance_verified=true.",
     "added_input_hashes": "SHA-256 hashes for computation source, spec source, committed results, gold set source, synonym map. Entity pool hash requires runtime computation (noted).",
     "m008_n_resamples_clarified": "M-008 uses 200 resamples (hardcoded), not the global 500. This does NOT explain the discrepancy.",
-    "m008_determinism_traced": "point_estimate = metric_fn(original_sample). M-008's metric_fn uses a module-level RNG. Deterministic under fixed inputs. Discrepancy must come from input change.",
-    "epistemic_ladder_applied": "HISTORICAL \u2192 PROVENANCE_DECLARED \u2192 REPRODUCTION_UNTESTED \u2192 REGENERATED_AND_MATCHED \u2192 SCIENTIFICALLY_ELIGIBLE (+ QUARANTINED for failures). No metric is SCIENTIFICALLY_ELIGIBLE yet.",
+    "m008_determinism_tightened": "point_estimate is deterministic CONDITIONAL ON identical effective inputs, code, dependencies, and environment. The cause of the discrepancy has NOT been identified. The narrowed hypothesis space is a search space, not a diagnosis.",
+    "m008_rng_topology_recorded": "Module-scoped RNG, seed 42, point-estimate call consumes RNG state, bootstrap calls continue same stream. Do NOT modify RNG while investigating.",
+    "epistemic_ladder_strictified": "HISTORICAL \u2192 PROVENANCE_DECLARED \u2192 REPRODUCTION_NOT_TESTED \u2192 REPRODUCED_IN_SHARED_RUN \u2192 INDEPENDENTLY_REGENERATED \u2192 INDEPENDENTLY_REGENERATED_AND_MATCHED \u2192 SCIENTIFICALLY_ELIGIBLE (+ QUARANTINED for failures). No metric is SCIENTIFICALLY_ELIGIBLE.",
     "m008_language_tightened": "M-008 is the 'current preregistered/blocking measurement for false-positive-floor assessment under MC-5', NOT a mathematical definition of discrimination.",
     "phase_8_17_split": "Blocked: scientific verdicts using M-008. Potentially allowed: infrastructure work not using M-008 as evidence."
   },
   "summary": {
     "total_metrics": 38,
-    "regenerated_and_matched_shared_context": 37,
-    "regenerated_and_failed": 1,
-    "not_independently_regenerated": 0,
+    "regeneration_status_not_independently_verified": 37,
+    "regeneration_status_failed": 1,
+    "shared_run_comparison_matched": 37,
+    "shared_run_comparison_mismatched": 1,
+    "independent_regenerations": 0,
     "scientifically_eligible": 0,
     "quarantined": 1,
     "critical_path_for_matcher_discrimination": 10,
-    "note": "37 metrics are REGENERATED_AND_MATCHED under a single shared-context run. This is NOT the same as 37 independent regeneration proofs. No metric is SCIENTIFICALLY_ELIGIBLE."
+    "note": "37 metrics are NOT_INDEPENDENTLY_VERIFIED with shared_run_comparison=MATCHED. 1 (M-008) is FAILED with MISMATCHED. 0 are INDEPENDENTLY_REGENERATED. 0 are SCIENTIFICALLY_ELIGIBLE. The two-dimensional state is self-explanatory without caveats."
   },
   "epistemic_ladder": {
     "levels": [
       "HISTORICAL",
       "PROVENANCE_DECLARED",
-      "REPRODUCTION_UNTESTED",
-      "REGENERATED_AND_MATCHED",
+      "REPRODUCTION_NOT_TESTED",
+      "REPRODUCED_IN_SHARED_RUN",
+      "INDEPENDENTLY_REGENERATED",
+      "INDEPENDENTLY_REGENERATED_AND_MATCHED",
       "SCIENTIFICALLY_ELIGIBLE"
     ],
-    "quarantine": "REGENERATED_AND_FAILED \u2192 QUARANTINED",
-    "current_state": "All metrics are at REGENERATED_AND_MATCHED (37) or QUARANTINED (1, M-008). None are SCIENTIFICALLY_ELIGIBLE. Moving to SCIENTIFICALLY_ELIGIBLE requires independent per-metric regeneration, not shared-context."
+    "failure_branch": "REGENERATION_FAILED \u2192 QUARANTINED",
+    "current_state": "37 at REPRODUCED_IN_SHARED_RUN (NOT_INDEPENDENTLY_VERIFIED + MATCHED), 1 at QUARANTINED (FAILED + MISMATCHED). 0 at INDEPENDENTLY_REGENERATED or above.",
+    "governing_principle": "Absence of a failed regeneration is not evidence of successful regeneration. Matching in a shared run is necessary but not sufficient for independent reproducibility.",
+    "self_explanatory": "The status fields are self-explanatory without caveats. regeneration_status=NOT_INDEPENDENTLY_VERIFIED cannot be mistaken for 'this metric has been reproduced.'"
   },
   "m008_quarantine_summary": {
     "metric_id": "M-008",
     "metric_name": "FP floor / false-positive floor",
     "current_stored_value": 0.9189,
     "fresh_regenerated_value": 0.8889,
-    "regeneration_status": "REGENERATED_AND_FAILED",
+    "regeneration_status": "FAILED",
+    "shared_run_comparison": "MISMATCHED",
     "measurement_usability": "QUARANTINED",
     "scientifically_eligible": false,
     "used_for_scientific_decision": "NO",
@@ -105,16 +115,20 @@
           "entity_pool_sha256": "RUNTIME_COMPUTATION_REQUIRED"
         }
       },
-      "regeneration_status": "REGENERATED_AND_MATCHED",
+      "regeneration_status": "NOT_INDEPENDENTLY_VERIFIED",
+      "shared_run_comparison": "MATCHED",
+      "independent_regeneration": false,
       "regeneration_evidence": {
-        "fresh_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
+        "shared_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
         "comparison": "field-by-field (point_estimate, ci_95_lower, ci_95_upper)",
-        "result": "all compared fields matched within 1e-4 tolerance",
-        "caveat": "This comparison was part of a single shared-context run of bootstrap_all_metrics, not an independent per-metric regeneration test. The metric is REGENERATED_AND_MATCHED under this shared context, but has not been independently regenerated in isolation.",
-        "fresh_output_artifact": "reports/phase3/regeneration_result.json"
+        "result": "all compared fields matched within 1e-4 tolerance in the shared aggregate run",
+        "fresh_output_artifact": "reports/phase3/regeneration_result.json",
+        "independent_regeneration": false,
+        "note": "This metric matched in a single shared-context run of bootstrap_all_metrics. It has NOT been independently regenerated. The shared run shares imports, module-level RNG, and NLP pipeline state across all 38 metrics. Matching in a shared run is necessary but not sufficient for independent reproducibility."
       },
+      "epistemic_level": "REPRODUCED_IN_SHARED_RUN",
       "critical_path_for_matcher_discrimination": false,
-      "measurement_usability": "REGENERATED_AND_MATCHED",
+      "measurement_usability": "REPRODUCED_IN_SHARED_RUN",
       "scientifically_eligible": false,
       "used_for_scientific_decision": "NO"
     },
@@ -151,16 +165,20 @@
           "entity_pool_sha256": "RUNTIME_COMPUTATION_REQUIRED"
         }
       },
-      "regeneration_status": "REGENERATED_AND_MATCHED",
+      "regeneration_status": "NOT_INDEPENDENTLY_VERIFIED",
+      "shared_run_comparison": "MATCHED",
+      "independent_regeneration": false,
       "regeneration_evidence": {
-        "fresh_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
+        "shared_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
         "comparison": "field-by-field (point_estimate, ci_95_lower, ci_95_upper)",
-        "result": "all compared fields matched within 1e-4 tolerance",
-        "caveat": "This comparison was part of a single shared-context run of bootstrap_all_metrics, not an independent per-metric regeneration test. The metric is REGENERATED_AND_MATCHED under this shared context, but has not been independently regenerated in isolation.",
-        "fresh_output_artifact": "reports/phase3/regeneration_result.json"
+        "result": "all compared fields matched within 1e-4 tolerance in the shared aggregate run",
+        "fresh_output_artifact": "reports/phase3/regeneration_result.json",
+        "independent_regeneration": false,
+        "note": "This metric matched in a single shared-context run of bootstrap_all_metrics. It has NOT been independently regenerated. The shared run shares imports, module-level RNG, and NLP pipeline state across all 38 metrics. Matching in a shared run is necessary but not sufficient for independent reproducibility."
       },
+      "epistemic_level": "REPRODUCED_IN_SHARED_RUN",
       "critical_path_for_matcher_discrimination": false,
-      "measurement_usability": "REGENERATED_AND_MATCHED",
+      "measurement_usability": "REPRODUCED_IN_SHARED_RUN",
       "scientifically_eligible": false,
       "used_for_scientific_decision": "NO"
     },
@@ -197,16 +215,20 @@
           "entity_pool_sha256": "RUNTIME_COMPUTATION_REQUIRED"
         }
       },
-      "regeneration_status": "REGENERATED_AND_MATCHED",
+      "regeneration_status": "NOT_INDEPENDENTLY_VERIFIED",
+      "shared_run_comparison": "MATCHED",
+      "independent_regeneration": false,
       "regeneration_evidence": {
-        "fresh_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
+        "shared_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
         "comparison": "field-by-field (point_estimate, ci_95_lower, ci_95_upper)",
-        "result": "all compared fields matched within 1e-4 tolerance",
-        "caveat": "This comparison was part of a single shared-context run of bootstrap_all_metrics, not an independent per-metric regeneration test. The metric is REGENERATED_AND_MATCHED under this shared context, but has not been independently regenerated in isolation.",
-        "fresh_output_artifact": "reports/phase3/regeneration_result.json"
+        "result": "all compared fields matched within 1e-4 tolerance in the shared aggregate run",
+        "fresh_output_artifact": "reports/phase3/regeneration_result.json",
+        "independent_regeneration": false,
+        "note": "This metric matched in a single shared-context run of bootstrap_all_metrics. It has NOT been independently regenerated. The shared run shares imports, module-level RNG, and NLP pipeline state across all 38 metrics. Matching in a shared run is necessary but not sufficient for independent reproducibility."
       },
+      "epistemic_level": "REPRODUCED_IN_SHARED_RUN",
       "critical_path_for_matcher_discrimination": false,
-      "measurement_usability": "REGENERATED_AND_MATCHED",
+      "measurement_usability": "REPRODUCED_IN_SHARED_RUN",
       "scientifically_eligible": false,
       "used_for_scientific_decision": "NO"
     },
@@ -243,16 +265,20 @@
           "entity_pool_sha256": "RUNTIME_COMPUTATION_REQUIRED"
         }
       },
-      "regeneration_status": "REGENERATED_AND_MATCHED",
+      "regeneration_status": "NOT_INDEPENDENTLY_VERIFIED",
+      "shared_run_comparison": "MATCHED",
+      "independent_regeneration": false,
       "regeneration_evidence": {
-        "fresh_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
+        "shared_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
         "comparison": "field-by-field (point_estimate, ci_95_lower, ci_95_upper)",
-        "result": "all compared fields matched within 1e-4 tolerance",
-        "caveat": "This comparison was part of a single shared-context run of bootstrap_all_metrics, not an independent per-metric regeneration test. The metric is REGENERATED_AND_MATCHED under this shared context, but has not been independently regenerated in isolation.",
-        "fresh_output_artifact": "reports/phase3/regeneration_result.json"
+        "result": "all compared fields matched within 1e-4 tolerance in the shared aggregate run",
+        "fresh_output_artifact": "reports/phase3/regeneration_result.json",
+        "independent_regeneration": false,
+        "note": "This metric matched in a single shared-context run of bootstrap_all_metrics. It has NOT been independently regenerated. The shared run shares imports, module-level RNG, and NLP pipeline state across all 38 metrics. Matching in a shared run is necessary but not sufficient for independent reproducibility."
       },
+      "epistemic_level": "REPRODUCED_IN_SHARED_RUN",
       "critical_path_for_matcher_discrimination": true,
-      "measurement_usability": "REGENERATED_AND_MATCHED",
+      "measurement_usability": "REPRODUCED_IN_SHARED_RUN",
       "scientifically_eligible": false,
       "used_for_scientific_decision": "NOT_YET"
     },
@@ -289,16 +315,20 @@
           "entity_pool_sha256": "RUNTIME_COMPUTATION_REQUIRED"
         }
       },
-      "regeneration_status": "REGENERATED_AND_MATCHED",
+      "regeneration_status": "NOT_INDEPENDENTLY_VERIFIED",
+      "shared_run_comparison": "MATCHED",
+      "independent_regeneration": false,
       "regeneration_evidence": {
-        "fresh_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
+        "shared_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
         "comparison": "field-by-field (point_estimate, ci_95_lower, ci_95_upper)",
-        "result": "all compared fields matched within 1e-4 tolerance",
-        "caveat": "This comparison was part of a single shared-context run of bootstrap_all_metrics, not an independent per-metric regeneration test. The metric is REGENERATED_AND_MATCHED under this shared context, but has not been independently regenerated in isolation.",
-        "fresh_output_artifact": "reports/phase3/regeneration_result.json"
+        "result": "all compared fields matched within 1e-4 tolerance in the shared aggregate run",
+        "fresh_output_artifact": "reports/phase3/regeneration_result.json",
+        "independent_regeneration": false,
+        "note": "This metric matched in a single shared-context run of bootstrap_all_metrics. It has NOT been independently regenerated. The shared run shares imports, module-level RNG, and NLP pipeline state across all 38 metrics. Matching in a shared run is necessary but not sufficient for independent reproducibility."
       },
+      "epistemic_level": "REPRODUCED_IN_SHARED_RUN",
       "critical_path_for_matcher_discrimination": true,
-      "measurement_usability": "REGENERATED_AND_MATCHED",
+      "measurement_usability": "REPRODUCED_IN_SHARED_RUN",
       "scientifically_eligible": false,
       "used_for_scientific_decision": "NOT_YET"
     },
@@ -335,16 +365,20 @@
           "entity_pool_sha256": "RUNTIME_COMPUTATION_REQUIRED"
         }
       },
-      "regeneration_status": "REGENERATED_AND_MATCHED",
+      "regeneration_status": "NOT_INDEPENDENTLY_VERIFIED",
+      "shared_run_comparison": "MATCHED",
+      "independent_regeneration": false,
       "regeneration_evidence": {
-        "fresh_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
+        "shared_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
         "comparison": "field-by-field (point_estimate, ci_95_lower, ci_95_upper)",
-        "result": "all compared fields matched within 1e-4 tolerance",
-        "caveat": "This comparison was part of a single shared-context run of bootstrap_all_metrics, not an independent per-metric regeneration test. The metric is REGENERATED_AND_MATCHED under this shared context, but has not been independently regenerated in isolation.",
-        "fresh_output_artifact": "reports/phase3/regeneration_result.json"
+        "result": "all compared fields matched within 1e-4 tolerance in the shared aggregate run",
+        "fresh_output_artifact": "reports/phase3/regeneration_result.json",
+        "independent_regeneration": false,
+        "note": "This metric matched in a single shared-context run of bootstrap_all_metrics. It has NOT been independently regenerated. The shared run shares imports, module-level RNG, and NLP pipeline state across all 38 metrics. Matching in a shared run is necessary but not sufficient for independent reproducibility."
       },
+      "epistemic_level": "REPRODUCED_IN_SHARED_RUN",
       "critical_path_for_matcher_discrimination": true,
-      "measurement_usability": "REGENERATED_AND_MATCHED",
+      "measurement_usability": "REPRODUCED_IN_SHARED_RUN",
       "scientifically_eligible": false,
       "used_for_scientific_decision": "NOT_YET"
     },
@@ -381,16 +415,20 @@
           "entity_pool_sha256": "RUNTIME_COMPUTATION_REQUIRED"
         }
       },
-      "regeneration_status": "REGENERATED_AND_MATCHED",
+      "regeneration_status": "NOT_INDEPENDENTLY_VERIFIED",
+      "shared_run_comparison": "MATCHED",
+      "independent_regeneration": false,
       "regeneration_evidence": {
-        "fresh_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
+        "shared_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
         "comparison": "field-by-field (point_estimate, ci_95_lower, ci_95_upper)",
-        "result": "all compared fields matched within 1e-4 tolerance",
-        "caveat": "This comparison was part of a single shared-context run of bootstrap_all_metrics, not an independent per-metric regeneration test. The metric is REGENERATED_AND_MATCHED under this shared context, but has not been independently regenerated in isolation.",
-        "fresh_output_artifact": "reports/phase3/regeneration_result.json"
+        "result": "all compared fields matched within 1e-4 tolerance in the shared aggregate run",
+        "fresh_output_artifact": "reports/phase3/regeneration_result.json",
+        "independent_regeneration": false,
+        "note": "This metric matched in a single shared-context run of bootstrap_all_metrics. It has NOT been independently regenerated. The shared run shares imports, module-level RNG, and NLP pipeline state across all 38 metrics. Matching in a shared run is necessary but not sufficient for independent reproducibility."
       },
+      "epistemic_level": "REPRODUCED_IN_SHARED_RUN",
       "critical_path_for_matcher_discrimination": true,
-      "measurement_usability": "REGENERATED_AND_MATCHED",
+      "measurement_usability": "REPRODUCED_IN_SHARED_RUN",
       "scientifically_eligible": false,
       "used_for_scientific_decision": "NOT_YET"
     },
@@ -427,13 +465,18 @@
           "entity_pool_sha256": "RUNTIME_COMPUTATION_REQUIRED"
         }
       },
-      "regeneration_status": "REGENERATED_AND_FAILED",
+      "regeneration_status": "FAILED",
+      "shared_run_comparison": "MISMATCHED",
+      "independent_regeneration": false,
       "regeneration_evidence": {
-        "fresh_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
+        "shared_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
         "comparison": "field-by-field (point_estimate, ci_95_lower, ci_95_upper)",
         "result": "2 fields mismatched (point_estimate: 0.8889 vs 0.9189; ci_95_lower: 0.6207 vs 0.6667)",
-        "fresh_output_artifact": "reports/phase3/regeneration_result.json"
+        "fresh_output_artifact": "reports/phase3/regeneration_result.json",
+        "independent_regeneration": false,
+        "note": "M-008 failed even in the shared run. It is quarantined."
       },
+      "epistemic_level": "QUARANTINED",
       "critical_path_for_matcher_discrimination": true,
       "measurement_usability": "QUARANTINED",
       "scientifically_eligible": false,
@@ -456,16 +499,18 @@
         "note": "M-008 is quarantined. The point_estimate IS deterministic under fixed inputs (see determinism analysis). The discrepancy must come from a change in all_entities, gold, m_synonym, or _score_f1_dr91. No retroactive repair.",
         "determinism_analysis": {
           "point_estimate_computation": "metric_fn(original_sample) \u2014 computed on the ORIGINAL sample, NOT a resample. See bootstrap_statistics.py:165.",
-          "m008_closure_rng": "rng_fp = _random.Random(seed) is created ONCE at module load time (line 480), OUTSIDE the m008 closure. The RNG state is shared across the point_estimate computation and all bootstrap resamples.",
-          "determinism_conditions": [
-            "all_entities content and ordering must be identical",
-            "gold (GOLD_DISCOVERIES) content and ordering must be identical",
-            "m_synonym behavior must be identical (currently falls back to m_token since BRIDGE_SYNONYMS emptied)",
-            "_score_f1_dr91 formula must be identical",
-            "Python random module must produce identical sequences (Mersenne Twister is deterministic for same seed)"
-          ],
-          "point_estimate_is_deterministic_under_fixed_inputs": true,
-          "implication": "Since point_estimate IS deterministic under fixed inputs, the discrepancy (0.9189 vs 0.8889) MUST come from a change in: all_entities content/ordering, gold content/ordering, m_synonym behavior, or _score_f1_dr91. The investigation must identify which of these changed between the committed artifact generation and the Phase 3 fresh run.",
+          "rng_topology": {
+            "rng_instance": "module-scoped (created outside the m008 closure at bootstrap_statistics.py:480)",
+            "seed": 42,
+            "initialization": "rng_fp = _random.Random(seed) \u2014 created ONCE at module load time",
+            "point_estimate_call": "consumes RNG state (generates random candidates for the point estimate)",
+            "bootstrap_calls": "continue the SAME RNG stream (state is shared, not reset per resample)",
+            "implication": "The RNG state at any given bootstrap resample depends on how many random candidates were generated by all preceding calls. Changing the number of preceding calls (e.g., different all_entities length) shifts the RNG stream for all subsequent calls."
+          },
+          "determinism_statement": "M-008's point-estimate computation is deterministic CONDITIONAL ON identical effective inputs, code, dependencies, and execution environment. This includes: entity contents, entity ordering, entity count, gold contents/order, matcher implementation, matcher dependencies, canonicalization behavior, NLP/model-produced entity pool, Python/package/runtime differences, and other effective environment state.",
+          "what_has_been_established": "Under fixed seed + fixed code path + Python Random, the computation is deterministic. The observed discrepancy (0.9189 vs 0.8889) demonstrates that at least one effective determinant differs OR that an unexamined source of nondeterminism exists.",
+          "what_has_NOT_been_established": "The cause of the discrepancy has NOT been identified. The narrowed hypothesis space (all_entities, gold, m_synonym, _score_f1_dr91) is a search space, not a diagnosis.",
+          "rng_modification_prohibition": "Per audit round 8, point 8: do NOT modify M-008's current RNG implementation while investigating the discrepancy. Changing rng_fp from module-scoped to function-scoped would change the historical computation's RNG semantics and could mask the actual cause. Any RNG redesign must wait until after causal attribution and requires its own governance treatment.",
           "note": "This analysis does NOT explain the discrepancy. It narrows the search space. The actual cause must be identified by the 7-item investigation checklist."
         }
       }
@@ -503,16 +548,20 @@
           "entity_pool_sha256": "RUNTIME_COMPUTATION_REQUIRED"
         }
       },
-      "regeneration_status": "REGENERATED_AND_MATCHED",
+      "regeneration_status": "NOT_INDEPENDENTLY_VERIFIED",
+      "shared_run_comparison": "MATCHED",
+      "independent_regeneration": false,
       "regeneration_evidence": {
-        "fresh_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
+        "shared_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
         "comparison": "field-by-field (point_estimate, ci_95_lower, ci_95_upper)",
-        "result": "all compared fields matched within 1e-4 tolerance",
-        "caveat": "This comparison was part of a single shared-context run of bootstrap_all_metrics, not an independent per-metric regeneration test. The metric is REGENERATED_AND_MATCHED under this shared context, but has not been independently regenerated in isolation.",
-        "fresh_output_artifact": "reports/phase3/regeneration_result.json"
+        "result": "all compared fields matched within 1e-4 tolerance in the shared aggregate run",
+        "fresh_output_artifact": "reports/phase3/regeneration_result.json",
+        "independent_regeneration": false,
+        "note": "This metric matched in a single shared-context run of bootstrap_all_metrics. It has NOT been independently regenerated. The shared run shares imports, module-level RNG, and NLP pipeline state across all 38 metrics. Matching in a shared run is necessary but not sufficient for independent reproducibility."
       },
+      "epistemic_level": "REPRODUCED_IN_SHARED_RUN",
       "critical_path_for_matcher_discrimination": false,
-      "measurement_usability": "REGENERATED_AND_MATCHED",
+      "measurement_usability": "REPRODUCED_IN_SHARED_RUN",
       "scientifically_eligible": false,
       "used_for_scientific_decision": "NO"
     },
@@ -549,16 +598,20 @@
           "entity_pool_sha256": "RUNTIME_COMPUTATION_REQUIRED"
         }
       },
-      "regeneration_status": "REGENERATED_AND_MATCHED",
+      "regeneration_status": "NOT_INDEPENDENTLY_VERIFIED",
+      "shared_run_comparison": "MATCHED",
+      "independent_regeneration": false,
       "regeneration_evidence": {
-        "fresh_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
+        "shared_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
         "comparison": "field-by-field (point_estimate, ci_95_lower, ci_95_upper)",
-        "result": "all compared fields matched within 1e-4 tolerance",
-        "caveat": "This comparison was part of a single shared-context run of bootstrap_all_metrics, not an independent per-metric regeneration test. The metric is REGENERATED_AND_MATCHED under this shared context, but has not been independently regenerated in isolation.",
-        "fresh_output_artifact": "reports/phase3/regeneration_result.json"
+        "result": "all compared fields matched within 1e-4 tolerance in the shared aggregate run",
+        "fresh_output_artifact": "reports/phase3/regeneration_result.json",
+        "independent_regeneration": false,
+        "note": "This metric matched in a single shared-context run of bootstrap_all_metrics. It has NOT been independently regenerated. The shared run shares imports, module-level RNG, and NLP pipeline state across all 38 metrics. Matching in a shared run is necessary but not sufficient for independent reproducibility."
       },
+      "epistemic_level": "REPRODUCED_IN_SHARED_RUN",
       "critical_path_for_matcher_discrimination": true,
-      "measurement_usability": "REGENERATED_AND_MATCHED",
+      "measurement_usability": "REPRODUCED_IN_SHARED_RUN",
       "scientifically_eligible": false,
       "used_for_scientific_decision": "NOT_YET"
     },
@@ -595,16 +648,20 @@
           "entity_pool_sha256": "RUNTIME_COMPUTATION_REQUIRED"
         }
       },
-      "regeneration_status": "REGENERATED_AND_MATCHED",
+      "regeneration_status": "NOT_INDEPENDENTLY_VERIFIED",
+      "shared_run_comparison": "MATCHED",
+      "independent_regeneration": false,
       "regeneration_evidence": {
-        "fresh_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
+        "shared_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
         "comparison": "field-by-field (point_estimate, ci_95_lower, ci_95_upper)",
-        "result": "all compared fields matched within 1e-4 tolerance",
-        "caveat": "This comparison was part of a single shared-context run of bootstrap_all_metrics, not an independent per-metric regeneration test. The metric is REGENERATED_AND_MATCHED under this shared context, but has not been independently regenerated in isolation.",
-        "fresh_output_artifact": "reports/phase3/regeneration_result.json"
+        "result": "all compared fields matched within 1e-4 tolerance in the shared aggregate run",
+        "fresh_output_artifact": "reports/phase3/regeneration_result.json",
+        "independent_regeneration": false,
+        "note": "This metric matched in a single shared-context run of bootstrap_all_metrics. It has NOT been independently regenerated. The shared run shares imports, module-level RNG, and NLP pipeline state across all 38 metrics. Matching in a shared run is necessary but not sufficient for independent reproducibility."
       },
+      "epistemic_level": "REPRODUCED_IN_SHARED_RUN",
       "critical_path_for_matcher_discrimination": true,
-      "measurement_usability": "REGENERATED_AND_MATCHED",
+      "measurement_usability": "REPRODUCED_IN_SHARED_RUN",
       "scientifically_eligible": false,
       "used_for_scientific_decision": "NOT_YET"
     },
@@ -641,16 +698,20 @@
           "entity_pool_sha256": "RUNTIME_COMPUTATION_REQUIRED"
         }
       },
-      "regeneration_status": "REGENERATED_AND_MATCHED",
+      "regeneration_status": "NOT_INDEPENDENTLY_VERIFIED",
+      "shared_run_comparison": "MATCHED",
+      "independent_regeneration": false,
       "regeneration_evidence": {
-        "fresh_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
+        "shared_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
         "comparison": "field-by-field (point_estimate, ci_95_lower, ci_95_upper)",
-        "result": "all compared fields matched within 1e-4 tolerance",
-        "caveat": "This comparison was part of a single shared-context run of bootstrap_all_metrics, not an independent per-metric regeneration test. The metric is REGENERATED_AND_MATCHED under this shared context, but has not been independently regenerated in isolation.",
-        "fresh_output_artifact": "reports/phase3/regeneration_result.json"
+        "result": "all compared fields matched within 1e-4 tolerance in the shared aggregate run",
+        "fresh_output_artifact": "reports/phase3/regeneration_result.json",
+        "independent_regeneration": false,
+        "note": "This metric matched in a single shared-context run of bootstrap_all_metrics. It has NOT been independently regenerated. The shared run shares imports, module-level RNG, and NLP pipeline state across all 38 metrics. Matching in a shared run is necessary but not sufficient for independent reproducibility."
       },
+      "epistemic_level": "REPRODUCED_IN_SHARED_RUN",
       "critical_path_for_matcher_discrimination": true,
-      "measurement_usability": "REGENERATED_AND_MATCHED",
+      "measurement_usability": "REPRODUCED_IN_SHARED_RUN",
       "scientifically_eligible": false,
       "used_for_scientific_decision": "NOT_YET"
     },
@@ -687,16 +748,20 @@
           "entity_pool_sha256": "RUNTIME_COMPUTATION_REQUIRED"
         }
       },
-      "regeneration_status": "REGENERATED_AND_MATCHED",
+      "regeneration_status": "NOT_INDEPENDENTLY_VERIFIED",
+      "shared_run_comparison": "MATCHED",
+      "independent_regeneration": false,
       "regeneration_evidence": {
-        "fresh_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
+        "shared_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
         "comparison": "field-by-field (point_estimate, ci_95_lower, ci_95_upper)",
-        "result": "all compared fields matched within 1e-4 tolerance",
-        "caveat": "This comparison was part of a single shared-context run of bootstrap_all_metrics, not an independent per-metric regeneration test. The metric is REGENERATED_AND_MATCHED under this shared context, but has not been independently regenerated in isolation.",
-        "fresh_output_artifact": "reports/phase3/regeneration_result.json"
+        "result": "all compared fields matched within 1e-4 tolerance in the shared aggregate run",
+        "fresh_output_artifact": "reports/phase3/regeneration_result.json",
+        "independent_regeneration": false,
+        "note": "This metric matched in a single shared-context run of bootstrap_all_metrics. It has NOT been independently regenerated. The shared run shares imports, module-level RNG, and NLP pipeline state across all 38 metrics. Matching in a shared run is necessary but not sufficient for independent reproducibility."
       },
+      "epistemic_level": "REPRODUCED_IN_SHARED_RUN",
       "critical_path_for_matcher_discrimination": true,
-      "measurement_usability": "REGENERATED_AND_MATCHED",
+      "measurement_usability": "REPRODUCED_IN_SHARED_RUN",
       "scientifically_eligible": false,
       "used_for_scientific_decision": "NOT_YET"
     },
@@ -733,16 +798,20 @@
           "entity_pool_sha256": "RUNTIME_COMPUTATION_REQUIRED"
         }
       },
-      "regeneration_status": "REGENERATED_AND_MATCHED",
+      "regeneration_status": "NOT_INDEPENDENTLY_VERIFIED",
+      "shared_run_comparison": "MATCHED",
+      "independent_regeneration": false,
       "regeneration_evidence": {
-        "fresh_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
+        "shared_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
         "comparison": "field-by-field (point_estimate, ci_95_lower, ci_95_upper)",
-        "result": "all compared fields matched within 1e-4 tolerance",
-        "caveat": "This comparison was part of a single shared-context run of bootstrap_all_metrics, not an independent per-metric regeneration test. The metric is REGENERATED_AND_MATCHED under this shared context, but has not been independently regenerated in isolation.",
-        "fresh_output_artifact": "reports/phase3/regeneration_result.json"
+        "result": "all compared fields matched within 1e-4 tolerance in the shared aggregate run",
+        "fresh_output_artifact": "reports/phase3/regeneration_result.json",
+        "independent_regeneration": false,
+        "note": "This metric matched in a single shared-context run of bootstrap_all_metrics. It has NOT been independently regenerated. The shared run shares imports, module-level RNG, and NLP pipeline state across all 38 metrics. Matching in a shared run is necessary but not sufficient for independent reproducibility."
       },
+      "epistemic_level": "REPRODUCED_IN_SHARED_RUN",
       "critical_path_for_matcher_discrimination": false,
-      "measurement_usability": "REGENERATED_AND_MATCHED",
+      "measurement_usability": "REPRODUCED_IN_SHARED_RUN",
       "scientifically_eligible": false,
       "used_for_scientific_decision": "NO"
     },
@@ -779,16 +848,20 @@
           "entity_pool_sha256": "RUNTIME_COMPUTATION_REQUIRED"
         }
       },
-      "regeneration_status": "REGENERATED_AND_MATCHED",
+      "regeneration_status": "NOT_INDEPENDENTLY_VERIFIED",
+      "shared_run_comparison": "MATCHED",
+      "independent_regeneration": false,
       "regeneration_evidence": {
-        "fresh_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
+        "shared_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
         "comparison": "field-by-field (point_estimate, ci_95_lower, ci_95_upper)",
-        "result": "all compared fields matched within 1e-4 tolerance",
-        "caveat": "This comparison was part of a single shared-context run of bootstrap_all_metrics, not an independent per-metric regeneration test. The metric is REGENERATED_AND_MATCHED under this shared context, but has not been independently regenerated in isolation.",
-        "fresh_output_artifact": "reports/phase3/regeneration_result.json"
+        "result": "all compared fields matched within 1e-4 tolerance in the shared aggregate run",
+        "fresh_output_artifact": "reports/phase3/regeneration_result.json",
+        "independent_regeneration": false,
+        "note": "This metric matched in a single shared-context run of bootstrap_all_metrics. It has NOT been independently regenerated. The shared run shares imports, module-level RNG, and NLP pipeline state across all 38 metrics. Matching in a shared run is necessary but not sufficient for independent reproducibility."
       },
+      "epistemic_level": "REPRODUCED_IN_SHARED_RUN",
       "critical_path_for_matcher_discrimination": true,
-      "measurement_usability": "REGENERATED_AND_MATCHED",
+      "measurement_usability": "REPRODUCED_IN_SHARED_RUN",
       "scientifically_eligible": false,
       "used_for_scientific_decision": "NOT_YET"
     },
@@ -825,16 +898,20 @@
           "entity_pool_sha256": "RUNTIME_COMPUTATION_REQUIRED"
         }
       },
-      "regeneration_status": "REGENERATED_AND_MATCHED",
+      "regeneration_status": "NOT_INDEPENDENTLY_VERIFIED",
+      "shared_run_comparison": "MATCHED",
+      "independent_regeneration": false,
       "regeneration_evidence": {
-        "fresh_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
+        "shared_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
         "comparison": "field-by-field (point_estimate, ci_95_lower, ci_95_upper)",
-        "result": "all compared fields matched within 1e-4 tolerance",
-        "caveat": "This comparison was part of a single shared-context run of bootstrap_all_metrics, not an independent per-metric regeneration test. The metric is REGENERATED_AND_MATCHED under this shared context, but has not been independently regenerated in isolation.",
-        "fresh_output_artifact": "reports/phase3/regeneration_result.json"
+        "result": "all compared fields matched within 1e-4 tolerance in the shared aggregate run",
+        "fresh_output_artifact": "reports/phase3/regeneration_result.json",
+        "independent_regeneration": false,
+        "note": "This metric matched in a single shared-context run of bootstrap_all_metrics. It has NOT been independently regenerated. The shared run shares imports, module-level RNG, and NLP pipeline state across all 38 metrics. Matching in a shared run is necessary but not sufficient for independent reproducibility."
       },
+      "epistemic_level": "REPRODUCED_IN_SHARED_RUN",
       "critical_path_for_matcher_discrimination": false,
-      "measurement_usability": "REGENERATED_AND_MATCHED",
+      "measurement_usability": "REPRODUCED_IN_SHARED_RUN",
       "scientifically_eligible": false,
       "used_for_scientific_decision": "NO"
     },
@@ -866,16 +943,20 @@
           "committed_results_sha256": "ce3169fef06190778801f17a1c25cbaf3984cdf809c3466ea3ffddee279e83c7"
         }
       },
-      "regeneration_status": "REGENERATED_AND_MATCHED",
+      "regeneration_status": "NOT_INDEPENDENTLY_VERIFIED",
+      "shared_run_comparison": "MATCHED",
+      "independent_regeneration": false,
       "regeneration_evidence": {
-        "fresh_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
+        "shared_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
         "comparison": "field-by-field (point_estimate, ci_95_lower, ci_95_upper)",
-        "result": "all compared fields matched within 1e-4 tolerance",
-        "caveat": "This comparison was part of a single shared-context run of bootstrap_all_metrics, not an independent per-metric regeneration test. The metric is REGENERATED_AND_MATCHED under this shared context, but has not been independently regenerated in isolation.",
-        "fresh_output_artifact": "reports/phase3/regeneration_result.json"
+        "result": "all compared fields matched within 1e-4 tolerance in the shared aggregate run",
+        "fresh_output_artifact": "reports/phase3/regeneration_result.json",
+        "independent_regeneration": false,
+        "note": "This metric matched in a single shared-context run of bootstrap_all_metrics. It has NOT been independently regenerated. The shared run shares imports, module-level RNG, and NLP pipeline state across all 38 metrics. Matching in a shared run is necessary but not sufficient for independent reproducibility."
       },
+      "epistemic_level": "REPRODUCED_IN_SHARED_RUN",
       "critical_path_for_matcher_discrimination": false,
-      "measurement_usability": "REGENERATED_AND_MATCHED",
+      "measurement_usability": "REPRODUCED_IN_SHARED_RUN",
       "scientifically_eligible": false,
       "used_for_scientific_decision": "NO"
     },
@@ -907,16 +988,20 @@
           "committed_results_sha256": "ce3169fef06190778801f17a1c25cbaf3984cdf809c3466ea3ffddee279e83c7"
         }
       },
-      "regeneration_status": "REGENERATED_AND_MATCHED",
+      "regeneration_status": "NOT_INDEPENDENTLY_VERIFIED",
+      "shared_run_comparison": "MATCHED",
+      "independent_regeneration": false,
       "regeneration_evidence": {
-        "fresh_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
+        "shared_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
         "comparison": "field-by-field (point_estimate, ci_95_lower, ci_95_upper)",
-        "result": "all compared fields matched within 1e-4 tolerance",
-        "caveat": "This comparison was part of a single shared-context run of bootstrap_all_metrics, not an independent per-metric regeneration test. The metric is REGENERATED_AND_MATCHED under this shared context, but has not been independently regenerated in isolation.",
-        "fresh_output_artifact": "reports/phase3/regeneration_result.json"
+        "result": "all compared fields matched within 1e-4 tolerance in the shared aggregate run",
+        "fresh_output_artifact": "reports/phase3/regeneration_result.json",
+        "independent_regeneration": false,
+        "note": "This metric matched in a single shared-context run of bootstrap_all_metrics. It has NOT been independently regenerated. The shared run shares imports, module-level RNG, and NLP pipeline state across all 38 metrics. Matching in a shared run is necessary but not sufficient for independent reproducibility."
       },
+      "epistemic_level": "REPRODUCED_IN_SHARED_RUN",
       "critical_path_for_matcher_discrimination": false,
-      "measurement_usability": "REGENERATED_AND_MATCHED",
+      "measurement_usability": "REPRODUCED_IN_SHARED_RUN",
       "scientifically_eligible": false,
       "used_for_scientific_decision": "NO"
     },
@@ -948,16 +1033,20 @@
           "committed_results_sha256": "ce3169fef06190778801f17a1c25cbaf3984cdf809c3466ea3ffddee279e83c7"
         }
       },
-      "regeneration_status": "REGENERATED_AND_MATCHED",
+      "regeneration_status": "NOT_INDEPENDENTLY_VERIFIED",
+      "shared_run_comparison": "MATCHED",
+      "independent_regeneration": false,
       "regeneration_evidence": {
-        "fresh_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
+        "shared_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
         "comparison": "field-by-field (point_estimate, ci_95_lower, ci_95_upper)",
-        "result": "all compared fields matched within 1e-4 tolerance",
-        "caveat": "This comparison was part of a single shared-context run of bootstrap_all_metrics, not an independent per-metric regeneration test. The metric is REGENERATED_AND_MATCHED under this shared context, but has not been independently regenerated in isolation.",
-        "fresh_output_artifact": "reports/phase3/regeneration_result.json"
+        "result": "all compared fields matched within 1e-4 tolerance in the shared aggregate run",
+        "fresh_output_artifact": "reports/phase3/regeneration_result.json",
+        "independent_regeneration": false,
+        "note": "This metric matched in a single shared-context run of bootstrap_all_metrics. It has NOT been independently regenerated. The shared run shares imports, module-level RNG, and NLP pipeline state across all 38 metrics. Matching in a shared run is necessary but not sufficient for independent reproducibility."
       },
+      "epistemic_level": "REPRODUCED_IN_SHARED_RUN",
       "critical_path_for_matcher_discrimination": false,
-      "measurement_usability": "REGENERATED_AND_MATCHED",
+      "measurement_usability": "REPRODUCED_IN_SHARED_RUN",
       "scientifically_eligible": false,
       "used_for_scientific_decision": "NO"
     },
@@ -989,16 +1078,20 @@
           "committed_results_sha256": "ce3169fef06190778801f17a1c25cbaf3984cdf809c3466ea3ffddee279e83c7"
         }
       },
-      "regeneration_status": "REGENERATED_AND_MATCHED",
+      "regeneration_status": "NOT_INDEPENDENTLY_VERIFIED",
+      "shared_run_comparison": "MATCHED",
+      "independent_regeneration": false,
       "regeneration_evidence": {
-        "fresh_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
+        "shared_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
         "comparison": "field-by-field (point_estimate, ci_95_lower, ci_95_upper)",
-        "result": "all compared fields matched within 1e-4 tolerance",
-        "caveat": "This comparison was part of a single shared-context run of bootstrap_all_metrics, not an independent per-metric regeneration test. The metric is REGENERATED_AND_MATCHED under this shared context, but has not been independently regenerated in isolation.",
-        "fresh_output_artifact": "reports/phase3/regeneration_result.json"
+        "result": "all compared fields matched within 1e-4 tolerance in the shared aggregate run",
+        "fresh_output_artifact": "reports/phase3/regeneration_result.json",
+        "independent_regeneration": false,
+        "note": "This metric matched in a single shared-context run of bootstrap_all_metrics. It has NOT been independently regenerated. The shared run shares imports, module-level RNG, and NLP pipeline state across all 38 metrics. Matching in a shared run is necessary but not sufficient for independent reproducibility."
       },
+      "epistemic_level": "REPRODUCED_IN_SHARED_RUN",
       "critical_path_for_matcher_discrimination": false,
-      "measurement_usability": "REGENERATED_AND_MATCHED",
+      "measurement_usability": "REPRODUCED_IN_SHARED_RUN",
       "scientifically_eligible": false,
       "used_for_scientific_decision": "NO"
     },
@@ -1030,16 +1123,20 @@
           "committed_results_sha256": "ce3169fef06190778801f17a1c25cbaf3984cdf809c3466ea3ffddee279e83c7"
         }
       },
-      "regeneration_status": "REGENERATED_AND_MATCHED",
+      "regeneration_status": "NOT_INDEPENDENTLY_VERIFIED",
+      "shared_run_comparison": "MATCHED",
+      "independent_regeneration": false,
       "regeneration_evidence": {
-        "fresh_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
+        "shared_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
         "comparison": "field-by-field (point_estimate, ci_95_lower, ci_95_upper)",
-        "result": "all compared fields matched within 1e-4 tolerance",
-        "caveat": "This comparison was part of a single shared-context run of bootstrap_all_metrics, not an independent per-metric regeneration test. The metric is REGENERATED_AND_MATCHED under this shared context, but has not been independently regenerated in isolation.",
-        "fresh_output_artifact": "reports/phase3/regeneration_result.json"
+        "result": "all compared fields matched within 1e-4 tolerance in the shared aggregate run",
+        "fresh_output_artifact": "reports/phase3/regeneration_result.json",
+        "independent_regeneration": false,
+        "note": "This metric matched in a single shared-context run of bootstrap_all_metrics. It has NOT been independently regenerated. The shared run shares imports, module-level RNG, and NLP pipeline state across all 38 metrics. Matching in a shared run is necessary but not sufficient for independent reproducibility."
       },
+      "epistemic_level": "REPRODUCED_IN_SHARED_RUN",
       "critical_path_for_matcher_discrimination": false,
-      "measurement_usability": "REGENERATED_AND_MATCHED",
+      "measurement_usability": "REPRODUCED_IN_SHARED_RUN",
       "scientifically_eligible": false,
       "used_for_scientific_decision": "NO"
     },
@@ -1071,16 +1168,20 @@
           "committed_results_sha256": "ce3169fef06190778801f17a1c25cbaf3984cdf809c3466ea3ffddee279e83c7"
         }
       },
-      "regeneration_status": "REGENERATED_AND_MATCHED",
+      "regeneration_status": "NOT_INDEPENDENTLY_VERIFIED",
+      "shared_run_comparison": "MATCHED",
+      "independent_regeneration": false,
       "regeneration_evidence": {
-        "fresh_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
+        "shared_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
         "comparison": "field-by-field (point_estimate, ci_95_lower, ci_95_upper)",
-        "result": "all compared fields matched within 1e-4 tolerance",
-        "caveat": "This comparison was part of a single shared-context run of bootstrap_all_metrics, not an independent per-metric regeneration test. The metric is REGENERATED_AND_MATCHED under this shared context, but has not been independently regenerated in isolation.",
-        "fresh_output_artifact": "reports/phase3/regeneration_result.json"
+        "result": "all compared fields matched within 1e-4 tolerance in the shared aggregate run",
+        "fresh_output_artifact": "reports/phase3/regeneration_result.json",
+        "independent_regeneration": false,
+        "note": "This metric matched in a single shared-context run of bootstrap_all_metrics. It has NOT been independently regenerated. The shared run shares imports, module-level RNG, and NLP pipeline state across all 38 metrics. Matching in a shared run is necessary but not sufficient for independent reproducibility."
       },
+      "epistemic_level": "REPRODUCED_IN_SHARED_RUN",
       "critical_path_for_matcher_discrimination": false,
-      "measurement_usability": "REGENERATED_AND_MATCHED",
+      "measurement_usability": "REPRODUCED_IN_SHARED_RUN",
       "scientifically_eligible": false,
       "used_for_scientific_decision": "NO"
     },
@@ -1112,16 +1213,20 @@
           "committed_results_sha256": "ce3169fef06190778801f17a1c25cbaf3984cdf809c3466ea3ffddee279e83c7"
         }
       },
-      "regeneration_status": "REGENERATED_AND_MATCHED",
+      "regeneration_status": "NOT_INDEPENDENTLY_VERIFIED",
+      "shared_run_comparison": "MATCHED",
+      "independent_regeneration": false,
       "regeneration_evidence": {
-        "fresh_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
+        "shared_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
         "comparison": "field-by-field (point_estimate, ci_95_lower, ci_95_upper)",
-        "result": "all compared fields matched within 1e-4 tolerance",
-        "caveat": "This comparison was part of a single shared-context run of bootstrap_all_metrics, not an independent per-metric regeneration test. The metric is REGENERATED_AND_MATCHED under this shared context, but has not been independently regenerated in isolation.",
-        "fresh_output_artifact": "reports/phase3/regeneration_result.json"
+        "result": "all compared fields matched within 1e-4 tolerance in the shared aggregate run",
+        "fresh_output_artifact": "reports/phase3/regeneration_result.json",
+        "independent_regeneration": false,
+        "note": "This metric matched in a single shared-context run of bootstrap_all_metrics. It has NOT been independently regenerated. The shared run shares imports, module-level RNG, and NLP pipeline state across all 38 metrics. Matching in a shared run is necessary but not sufficient for independent reproducibility."
       },
+      "epistemic_level": "REPRODUCED_IN_SHARED_RUN",
       "critical_path_for_matcher_discrimination": false,
-      "measurement_usability": "REGENERATED_AND_MATCHED",
+      "measurement_usability": "REPRODUCED_IN_SHARED_RUN",
       "scientifically_eligible": false,
       "used_for_scientific_decision": "NO"
     },
@@ -1153,16 +1258,20 @@
           "committed_results_sha256": "ce3169fef06190778801f17a1c25cbaf3984cdf809c3466ea3ffddee279e83c7"
         }
       },
-      "regeneration_status": "REGENERATED_AND_MATCHED",
+      "regeneration_status": "NOT_INDEPENDENTLY_VERIFIED",
+      "shared_run_comparison": "MATCHED",
+      "independent_regeneration": false,
       "regeneration_evidence": {
-        "fresh_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
+        "shared_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
         "comparison": "field-by-field (point_estimate, ci_95_lower, ci_95_upper)",
-        "result": "all compared fields matched within 1e-4 tolerance",
-        "caveat": "This comparison was part of a single shared-context run of bootstrap_all_metrics, not an independent per-metric regeneration test. The metric is REGENERATED_AND_MATCHED under this shared context, but has not been independently regenerated in isolation.",
-        "fresh_output_artifact": "reports/phase3/regeneration_result.json"
+        "result": "all compared fields matched within 1e-4 tolerance in the shared aggregate run",
+        "fresh_output_artifact": "reports/phase3/regeneration_result.json",
+        "independent_regeneration": false,
+        "note": "This metric matched in a single shared-context run of bootstrap_all_metrics. It has NOT been independently regenerated. The shared run shares imports, module-level RNG, and NLP pipeline state across all 38 metrics. Matching in a shared run is necessary but not sufficient for independent reproducibility."
       },
+      "epistemic_level": "REPRODUCED_IN_SHARED_RUN",
       "critical_path_for_matcher_discrimination": false,
-      "measurement_usability": "REGENERATED_AND_MATCHED",
+      "measurement_usability": "REPRODUCED_IN_SHARED_RUN",
       "scientifically_eligible": false,
       "used_for_scientific_decision": "NO"
     },
@@ -1194,16 +1303,20 @@
           "committed_results_sha256": "ce3169fef06190778801f17a1c25cbaf3984cdf809c3466ea3ffddee279e83c7"
         }
       },
-      "regeneration_status": "REGENERATED_AND_MATCHED",
+      "regeneration_status": "NOT_INDEPENDENTLY_VERIFIED",
+      "shared_run_comparison": "MATCHED",
+      "independent_regeneration": false,
       "regeneration_evidence": {
-        "fresh_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
+        "shared_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
         "comparison": "field-by-field (point_estimate, ci_95_lower, ci_95_upper)",
-        "result": "all compared fields matched within 1e-4 tolerance",
-        "caveat": "This comparison was part of a single shared-context run of bootstrap_all_metrics, not an independent per-metric regeneration test. The metric is REGENERATED_AND_MATCHED under this shared context, but has not been independently regenerated in isolation.",
-        "fresh_output_artifact": "reports/phase3/regeneration_result.json"
+        "result": "all compared fields matched within 1e-4 tolerance in the shared aggregate run",
+        "fresh_output_artifact": "reports/phase3/regeneration_result.json",
+        "independent_regeneration": false,
+        "note": "This metric matched in a single shared-context run of bootstrap_all_metrics. It has NOT been independently regenerated. The shared run shares imports, module-level RNG, and NLP pipeline state across all 38 metrics. Matching in a shared run is necessary but not sufficient for independent reproducibility."
       },
+      "epistemic_level": "REPRODUCED_IN_SHARED_RUN",
       "critical_path_for_matcher_discrimination": false,
-      "measurement_usability": "REGENERATED_AND_MATCHED",
+      "measurement_usability": "REPRODUCED_IN_SHARED_RUN",
       "scientifically_eligible": false,
       "used_for_scientific_decision": "NO"
     },
@@ -1235,16 +1348,20 @@
           "committed_results_sha256": "ce3169fef06190778801f17a1c25cbaf3984cdf809c3466ea3ffddee279e83c7"
         }
       },
-      "regeneration_status": "REGENERATED_AND_MATCHED",
+      "regeneration_status": "NOT_INDEPENDENTLY_VERIFIED",
+      "shared_run_comparison": "MATCHED",
+      "independent_regeneration": false,
       "regeneration_evidence": {
-        "fresh_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
+        "shared_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
         "comparison": "field-by-field (point_estimate, ci_95_lower, ci_95_upper)",
-        "result": "all compared fields matched within 1e-4 tolerance",
-        "caveat": "This comparison was part of a single shared-context run of bootstrap_all_metrics, not an independent per-metric regeneration test. The metric is REGENERATED_AND_MATCHED under this shared context, but has not been independently regenerated in isolation.",
-        "fresh_output_artifact": "reports/phase3/regeneration_result.json"
+        "result": "all compared fields matched within 1e-4 tolerance in the shared aggregate run",
+        "fresh_output_artifact": "reports/phase3/regeneration_result.json",
+        "independent_regeneration": false,
+        "note": "This metric matched in a single shared-context run of bootstrap_all_metrics. It has NOT been independently regenerated. The shared run shares imports, module-level RNG, and NLP pipeline state across all 38 metrics. Matching in a shared run is necessary but not sufficient for independent reproducibility."
       },
+      "epistemic_level": "REPRODUCED_IN_SHARED_RUN",
       "critical_path_for_matcher_discrimination": false,
-      "measurement_usability": "REGENERATED_AND_MATCHED",
+      "measurement_usability": "REPRODUCED_IN_SHARED_RUN",
       "scientifically_eligible": false,
       "used_for_scientific_decision": "NO"
     },
@@ -1276,16 +1393,20 @@
           "committed_results_sha256": "ce3169fef06190778801f17a1c25cbaf3984cdf809c3466ea3ffddee279e83c7"
         }
       },
-      "regeneration_status": "REGENERATED_AND_MATCHED",
+      "regeneration_status": "NOT_INDEPENDENTLY_VERIFIED",
+      "shared_run_comparison": "MATCHED",
+      "independent_regeneration": false,
       "regeneration_evidence": {
-        "fresh_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
+        "shared_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
         "comparison": "field-by-field (point_estimate, ci_95_lower, ci_95_upper)",
-        "result": "all compared fields matched within 1e-4 tolerance",
-        "caveat": "This comparison was part of a single shared-context run of bootstrap_all_metrics, not an independent per-metric regeneration test. The metric is REGENERATED_AND_MATCHED under this shared context, but has not been independently regenerated in isolation.",
-        "fresh_output_artifact": "reports/phase3/regeneration_result.json"
+        "result": "all compared fields matched within 1e-4 tolerance in the shared aggregate run",
+        "fresh_output_artifact": "reports/phase3/regeneration_result.json",
+        "independent_regeneration": false,
+        "note": "This metric matched in a single shared-context run of bootstrap_all_metrics. It has NOT been independently regenerated. The shared run shares imports, module-level RNG, and NLP pipeline state across all 38 metrics. Matching in a shared run is necessary but not sufficient for independent reproducibility."
       },
+      "epistemic_level": "REPRODUCED_IN_SHARED_RUN",
       "critical_path_for_matcher_discrimination": false,
-      "measurement_usability": "REGENERATED_AND_MATCHED",
+      "measurement_usability": "REPRODUCED_IN_SHARED_RUN",
       "scientifically_eligible": false,
       "used_for_scientific_decision": "NO"
     },
@@ -1317,16 +1438,20 @@
           "committed_results_sha256": "ce3169fef06190778801f17a1c25cbaf3984cdf809c3466ea3ffddee279e83c7"
         }
       },
-      "regeneration_status": "REGENERATED_AND_MATCHED",
+      "regeneration_status": "NOT_INDEPENDENTLY_VERIFIED",
+      "shared_run_comparison": "MATCHED",
+      "independent_regeneration": false,
       "regeneration_evidence": {
-        "fresh_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
+        "shared_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
         "comparison": "field-by-field (point_estimate, ci_95_lower, ci_95_upper)",
-        "result": "all compared fields matched within 1e-4 tolerance",
-        "caveat": "This comparison was part of a single shared-context run of bootstrap_all_metrics, not an independent per-metric regeneration test. The metric is REGENERATED_AND_MATCHED under this shared context, but has not been independently regenerated in isolation.",
-        "fresh_output_artifact": "reports/phase3/regeneration_result.json"
+        "result": "all compared fields matched within 1e-4 tolerance in the shared aggregate run",
+        "fresh_output_artifact": "reports/phase3/regeneration_result.json",
+        "independent_regeneration": false,
+        "note": "This metric matched in a single shared-context run of bootstrap_all_metrics. It has NOT been independently regenerated. The shared run shares imports, module-level RNG, and NLP pipeline state across all 38 metrics. Matching in a shared run is necessary but not sufficient for independent reproducibility."
       },
+      "epistemic_level": "REPRODUCED_IN_SHARED_RUN",
       "critical_path_for_matcher_discrimination": false,
-      "measurement_usability": "REGENERATED_AND_MATCHED",
+      "measurement_usability": "REPRODUCED_IN_SHARED_RUN",
       "scientifically_eligible": false,
       "used_for_scientific_decision": "NO"
     },
@@ -1358,16 +1483,20 @@
           "committed_results_sha256": "ce3169fef06190778801f17a1c25cbaf3984cdf809c3466ea3ffddee279e83c7"
         }
       },
-      "regeneration_status": "REGENERATED_AND_MATCHED",
+      "regeneration_status": "NOT_INDEPENDENTLY_VERIFIED",
+      "shared_run_comparison": "MATCHED",
+      "independent_regeneration": false,
       "regeneration_evidence": {
-        "fresh_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
+        "shared_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
         "comparison": "field-by-field (point_estimate, ci_95_lower, ci_95_upper)",
-        "result": "all compared fields matched within 1e-4 tolerance",
-        "caveat": "This comparison was part of a single shared-context run of bootstrap_all_metrics, not an independent per-metric regeneration test. The metric is REGENERATED_AND_MATCHED under this shared context, but has not been independently regenerated in isolation.",
-        "fresh_output_artifact": "reports/phase3/regeneration_result.json"
+        "result": "all compared fields matched within 1e-4 tolerance in the shared aggregate run",
+        "fresh_output_artifact": "reports/phase3/regeneration_result.json",
+        "independent_regeneration": false,
+        "note": "This metric matched in a single shared-context run of bootstrap_all_metrics. It has NOT been independently regenerated. The shared run shares imports, module-level RNG, and NLP pipeline state across all 38 metrics. Matching in a shared run is necessary but not sufficient for independent reproducibility."
       },
+      "epistemic_level": "REPRODUCED_IN_SHARED_RUN",
       "critical_path_for_matcher_discrimination": false,
-      "measurement_usability": "REGENERATED_AND_MATCHED",
+      "measurement_usability": "REPRODUCED_IN_SHARED_RUN",
       "scientifically_eligible": false,
       "used_for_scientific_decision": "NO"
     },
@@ -1399,16 +1528,20 @@
           "committed_results_sha256": "ce3169fef06190778801f17a1c25cbaf3984cdf809c3466ea3ffddee279e83c7"
         }
       },
-      "regeneration_status": "REGENERATED_AND_MATCHED",
+      "regeneration_status": "NOT_INDEPENDENTLY_VERIFIED",
+      "shared_run_comparison": "MATCHED",
+      "independent_regeneration": false,
       "regeneration_evidence": {
-        "fresh_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
+        "shared_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
         "comparison": "field-by-field (point_estimate, ci_95_lower, ci_95_upper)",
-        "result": "all compared fields matched within 1e-4 tolerance",
-        "caveat": "This comparison was part of a single shared-context run of bootstrap_all_metrics, not an independent per-metric regeneration test. The metric is REGENERATED_AND_MATCHED under this shared context, but has not been independently regenerated in isolation.",
-        "fresh_output_artifact": "reports/phase3/regeneration_result.json"
+        "result": "all compared fields matched within 1e-4 tolerance in the shared aggregate run",
+        "fresh_output_artifact": "reports/phase3/regeneration_result.json",
+        "independent_regeneration": false,
+        "note": "This metric matched in a single shared-context run of bootstrap_all_metrics. It has NOT been independently regenerated. The shared run shares imports, module-level RNG, and NLP pipeline state across all 38 metrics. Matching in a shared run is necessary but not sufficient for independent reproducibility."
       },
+      "epistemic_level": "REPRODUCED_IN_SHARED_RUN",
       "critical_path_for_matcher_discrimination": false,
-      "measurement_usability": "REGENERATED_AND_MATCHED",
+      "measurement_usability": "REPRODUCED_IN_SHARED_RUN",
       "scientifically_eligible": false,
       "used_for_scientific_decision": "NO"
     },
@@ -1440,16 +1573,20 @@
           "committed_results_sha256": "ce3169fef06190778801f17a1c25cbaf3984cdf809c3466ea3ffddee279e83c7"
         }
       },
-      "regeneration_status": "REGENERATED_AND_MATCHED",
+      "regeneration_status": "NOT_INDEPENDENTLY_VERIFIED",
+      "shared_run_comparison": "MATCHED",
+      "independent_regeneration": false,
       "regeneration_evidence": {
-        "fresh_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
+        "shared_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
         "comparison": "field-by-field (point_estimate, ci_95_lower, ci_95_upper)",
-        "result": "all compared fields matched within 1e-4 tolerance",
-        "caveat": "This comparison was part of a single shared-context run of bootstrap_all_metrics, not an independent per-metric regeneration test. The metric is REGENERATED_AND_MATCHED under this shared context, but has not been independently regenerated in isolation.",
-        "fresh_output_artifact": "reports/phase3/regeneration_result.json"
+        "result": "all compared fields matched within 1e-4 tolerance in the shared aggregate run",
+        "fresh_output_artifact": "reports/phase3/regeneration_result.json",
+        "independent_regeneration": false,
+        "note": "This metric matched in a single shared-context run of bootstrap_all_metrics. It has NOT been independently regenerated. The shared run shares imports, module-level RNG, and NLP pipeline state across all 38 metrics. Matching in a shared run is necessary but not sufficient for independent reproducibility."
       },
+      "epistemic_level": "REPRODUCED_IN_SHARED_RUN",
       "critical_path_for_matcher_discrimination": false,
-      "measurement_usability": "REGENERATED_AND_MATCHED",
+      "measurement_usability": "REPRODUCED_IN_SHARED_RUN",
       "scientifically_eligible": false,
       "used_for_scientific_decision": "NO"
     },
@@ -1481,16 +1618,20 @@
           "committed_results_sha256": "ce3169fef06190778801f17a1c25cbaf3984cdf809c3466ea3ffddee279e83c7"
         }
       },
-      "regeneration_status": "REGENERATED_AND_MATCHED",
+      "regeneration_status": "NOT_INDEPENDENTLY_VERIFIED",
+      "shared_run_comparison": "MATCHED",
+      "independent_regeneration": false,
       "regeneration_evidence": {
-        "fresh_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
+        "shared_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
         "comparison": "field-by-field (point_estimate, ci_95_lower, ci_95_upper)",
-        "result": "all compared fields matched within 1e-4 tolerance",
-        "caveat": "This comparison was part of a single shared-context run of bootstrap_all_metrics, not an independent per-metric regeneration test. The metric is REGENERATED_AND_MATCHED under this shared context, but has not been independently regenerated in isolation.",
-        "fresh_output_artifact": "reports/phase3/regeneration_result.json"
+        "result": "all compared fields matched within 1e-4 tolerance in the shared aggregate run",
+        "fresh_output_artifact": "reports/phase3/regeneration_result.json",
+        "independent_regeneration": false,
+        "note": "This metric matched in a single shared-context run of bootstrap_all_metrics. It has NOT been independently regenerated. The shared run shares imports, module-level RNG, and NLP pipeline state across all 38 metrics. Matching in a shared run is necessary but not sufficient for independent reproducibility."
       },
+      "epistemic_level": "REPRODUCED_IN_SHARED_RUN",
       "critical_path_for_matcher_discrimination": false,
-      "measurement_usability": "REGENERATED_AND_MATCHED",
+      "measurement_usability": "REPRODUCED_IN_SHARED_RUN",
       "scientifically_eligible": false,
       "used_for_scientific_decision": "NO"
     },
@@ -1522,16 +1663,20 @@
           "committed_results_sha256": "ce3169fef06190778801f17a1c25cbaf3984cdf809c3466ea3ffddee279e83c7"
         }
       },
-      "regeneration_status": "REGENERATED_AND_MATCHED",
+      "regeneration_status": "NOT_INDEPENDENTLY_VERIFIED",
+      "shared_run_comparison": "MATCHED",
+      "independent_regeneration": false,
       "regeneration_evidence": {
-        "fresh_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
+        "shared_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
         "comparison": "field-by-field (point_estimate, ci_95_lower, ci_95_upper)",
-        "result": "all compared fields matched within 1e-4 tolerance",
-        "caveat": "This comparison was part of a single shared-context run of bootstrap_all_metrics, not an independent per-metric regeneration test. The metric is REGENERATED_AND_MATCHED under this shared context, but has not been independently regenerated in isolation.",
-        "fresh_output_artifact": "reports/phase3/regeneration_result.json"
+        "result": "all compared fields matched within 1e-4 tolerance in the shared aggregate run",
+        "fresh_output_artifact": "reports/phase3/regeneration_result.json",
+        "independent_regeneration": false,
+        "note": "This metric matched in a single shared-context run of bootstrap_all_metrics. It has NOT been independently regenerated. The shared run shares imports, module-level RNG, and NLP pipeline state across all 38 metrics. Matching in a shared run is necessary but not sufficient for independent reproducibility."
       },
+      "epistemic_level": "REPRODUCED_IN_SHARED_RUN",
       "critical_path_for_matcher_discrimination": false,
-      "measurement_usability": "REGENERATED_AND_MATCHED",
+      "measurement_usability": "REPRODUCED_IN_SHARED_RUN",
       "scientifically_eligible": false,
       "used_for_scientific_decision": "NO"
     },
@@ -1563,16 +1708,20 @@
           "committed_results_sha256": "ce3169fef06190778801f17a1c25cbaf3984cdf809c3466ea3ffddee279e83c7"
         }
       },
-      "regeneration_status": "REGENERATED_AND_MATCHED",
+      "regeneration_status": "NOT_INDEPENDENTLY_VERIFIED",
+      "shared_run_comparison": "MATCHED",
+      "independent_regeneration": false,
       "regeneration_evidence": {
-        "fresh_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
+        "shared_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
         "comparison": "field-by-field (point_estimate, ci_95_lower, ci_95_upper)",
-        "result": "all compared fields matched within 1e-4 tolerance",
-        "caveat": "This comparison was part of a single shared-context run of bootstrap_all_metrics, not an independent per-metric regeneration test. The metric is REGENERATED_AND_MATCHED under this shared context, but has not been independently regenerated in isolation.",
-        "fresh_output_artifact": "reports/phase3/regeneration_result.json"
+        "result": "all compared fields matched within 1e-4 tolerance in the shared aggregate run",
+        "fresh_output_artifact": "reports/phase3/regeneration_result.json",
+        "independent_regeneration": false,
+        "note": "This metric matched in a single shared-context run of bootstrap_all_metrics. It has NOT been independently regenerated. The shared run shares imports, module-level RNG, and NLP pipeline state across all 38 metrics. Matching in a shared run is necessary but not sufficient for independent reproducibility."
       },
+      "epistemic_level": "REPRODUCED_IN_SHARED_RUN",
       "critical_path_for_matcher_discrimination": false,
-      "measurement_usability": "REGENERATED_AND_MATCHED",
+      "measurement_usability": "REPRODUCED_IN_SHARED_RUN",
       "scientifically_eligible": false,
       "used_for_scientific_decision": "NO"
     },
@@ -1604,16 +1753,20 @@
           "committed_results_sha256": "ce3169fef06190778801f17a1c25cbaf3984cdf809c3466ea3ffddee279e83c7"
         }
       },
-      "regeneration_status": "REGENERATED_AND_MATCHED",
+      "regeneration_status": "NOT_INDEPENDENTLY_VERIFIED",
+      "shared_run_comparison": "MATCHED",
+      "independent_regeneration": false,
       "regeneration_evidence": {
-        "fresh_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
+        "shared_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
         "comparison": "field-by-field (point_estimate, ci_95_lower, ci_95_upper)",
-        "result": "all compared fields matched within 1e-4 tolerance",
-        "caveat": "This comparison was part of a single shared-context run of bootstrap_all_metrics, not an independent per-metric regeneration test. The metric is REGENERATED_AND_MATCHED under this shared context, but has not been independently regenerated in isolation.",
-        "fresh_output_artifact": "reports/phase3/regeneration_result.json"
+        "result": "all compared fields matched within 1e-4 tolerance in the shared aggregate run",
+        "fresh_output_artifact": "reports/phase3/regeneration_result.json",
+        "independent_regeneration": false,
+        "note": "This metric matched in a single shared-context run of bootstrap_all_metrics. It has NOT been independently regenerated. The shared run shares imports, module-level RNG, and NLP pipeline state across all 38 metrics. Matching in a shared run is necessary but not sufficient for independent reproducibility."
       },
+      "epistemic_level": "REPRODUCED_IN_SHARED_RUN",
       "critical_path_for_matcher_discrimination": false,
-      "measurement_usability": "REGENERATED_AND_MATCHED",
+      "measurement_usability": "REPRODUCED_IN_SHARED_RUN",
       "scientifically_eligible": false,
       "used_for_scientific_decision": "NO"
     },
@@ -1645,16 +1798,20 @@
           "committed_results_sha256": "ce3169fef06190778801f17a1c25cbaf3984cdf809c3466ea3ffddee279e83c7"
         }
       },
-      "regeneration_status": "REGENERATED_AND_MATCHED",
+      "regeneration_status": "NOT_INDEPENDENTLY_VERIFIED",
+      "shared_run_comparison": "MATCHED",
+      "independent_regeneration": false,
       "regeneration_evidence": {
-        "fresh_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
+        "shared_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
         "comparison": "field-by-field (point_estimate, ci_95_lower, ci_95_upper)",
-        "result": "all compared fields matched within 1e-4 tolerance",
-        "caveat": "This comparison was part of a single shared-context run of bootstrap_all_metrics, not an independent per-metric regeneration test. The metric is REGENERATED_AND_MATCHED under this shared context, but has not been independently regenerated in isolation.",
-        "fresh_output_artifact": "reports/phase3/regeneration_result.json"
+        "result": "all compared fields matched within 1e-4 tolerance in the shared aggregate run",
+        "fresh_output_artifact": "reports/phase3/regeneration_result.json",
+        "independent_regeneration": false,
+        "note": "This metric matched in a single shared-context run of bootstrap_all_metrics. It has NOT been independently regenerated. The shared run shares imports, module-level RNG, and NLP pipeline state across all 38 metrics. Matching in a shared run is necessary but not sufficient for independent reproducibility."
       },
+      "epistemic_level": "REPRODUCED_IN_SHARED_RUN",
       "critical_path_for_matcher_discrimination": false,
-      "measurement_usability": "REGENERATED_AND_MATCHED",
+      "measurement_usability": "REPRODUCED_IN_SHARED_RUN",
       "scientifically_eligible": false,
       "used_for_scientific_decision": "NO"
     },
@@ -1686,16 +1843,20 @@
           "committed_results_sha256": "ce3169fef06190778801f17a1c25cbaf3984cdf809c3466ea3ffddee279e83c7"
         }
       },
-      "regeneration_status": "REGENERATED_AND_MATCHED",
+      "regeneration_status": "NOT_INDEPENDENTLY_VERIFIED",
+      "shared_run_comparison": "MATCHED",
+      "independent_regeneration": false,
       "regeneration_evidence": {
-        "fresh_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
+        "shared_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
         "comparison": "field-by-field (point_estimate, ci_95_lower, ci_95_upper)",
-        "result": "all compared fields matched within 1e-4 tolerance",
-        "caveat": "This comparison was part of a single shared-context run of bootstrap_all_metrics, not an independent per-metric regeneration test. The metric is REGENERATED_AND_MATCHED under this shared context, but has not been independently regenerated in isolation.",
-        "fresh_output_artifact": "reports/phase3/regeneration_result.json"
+        "result": "all compared fields matched within 1e-4 tolerance in the shared aggregate run",
+        "fresh_output_artifact": "reports/phase3/regeneration_result.json",
+        "independent_regeneration": false,
+        "note": "This metric matched in a single shared-context run of bootstrap_all_metrics. It has NOT been independently regenerated. The shared run shares imports, module-level RNG, and NLP pipeline state across all 38 metrics. Matching in a shared run is necessary but not sufficient for independent reproducibility."
       },
+      "epistemic_level": "REPRODUCED_IN_SHARED_RUN",
       "critical_path_for_matcher_discrimination": false,
-      "measurement_usability": "REGENERATED_AND_MATCHED",
+      "measurement_usability": "REPRODUCED_IN_SHARED_RUN",
       "scientifically_eligible": false,
       "used_for_scientific_decision": "NO"
     },
@@ -1727,16 +1888,20 @@
           "committed_results_sha256": "ce3169fef06190778801f17a1c25cbaf3984cdf809c3466ea3ffddee279e83c7"
         }
       },
-      "regeneration_status": "REGENERATED_AND_MATCHED",
+      "regeneration_status": "NOT_INDEPENDENTLY_VERIFIED",
+      "shared_run_comparison": "MATCHED",
+      "independent_regeneration": false,
       "regeneration_evidence": {
-        "fresh_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
+        "shared_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
         "comparison": "field-by-field (point_estimate, ci_95_lower, ci_95_upper)",
-        "result": "all compared fields matched within 1e-4 tolerance",
-        "caveat": "This comparison was part of a single shared-context run of bootstrap_all_metrics, not an independent per-metric regeneration test. The metric is REGENERATED_AND_MATCHED under this shared context, but has not been independently regenerated in isolation.",
-        "fresh_output_artifact": "reports/phase3/regeneration_result.json"
+        "result": "all compared fields matched within 1e-4 tolerance in the shared aggregate run",
+        "fresh_output_artifact": "reports/phase3/regeneration_result.json",
+        "independent_regeneration": false,
+        "note": "This metric matched in a single shared-context run of bootstrap_all_metrics. It has NOT been independently regenerated. The shared run shares imports, module-level RNG, and NLP pipeline state across all 38 metrics. Matching in a shared run is necessary but not sufficient for independent reproducibility."
       },
+      "epistemic_level": "REPRODUCED_IN_SHARED_RUN",
       "critical_path_for_matcher_discrimination": false,
-      "measurement_usability": "REGENERATED_AND_MATCHED",
+      "measurement_usability": "REPRODUCED_IN_SHARED_RUN",
       "scientifically_eligible": false,
       "used_for_scientific_decision": "NO"
     }

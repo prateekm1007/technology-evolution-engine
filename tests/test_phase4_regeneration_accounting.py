@@ -1,21 +1,22 @@
-"""Test: no unsupported regeneration_status=PASSED claims (audit round 7).
+"""Tests: Phase 4 regeneration epistemic accounting (audit round 8).
 
-Per audit round 7:
+Per audit round 8:
 
-    "Add a machine test that fails if regeneration_status=PASSED exists
-     without a corresponding fresh-output artifact and comparison record."
+    "REGENERATED_AND_MATCHED is still too strong. It conventionally means
+     'independently regenerated and compared.' But what actually happened
+     was one fresh aggregate computation where 36/38 matched."
 
-    "The governing principle is: absence of a failed regeneration is not
-     evidence of successful regeneration."
+    "Add a machine test that rejects INDEPENDENTLY_REGENERATED or equivalent
+     claims when the only evidence is an aggregate/shared-run artifact."
 
-This test verifies that the metric inventory does NOT use 'PASSED' as a
-regeneration_status. The valid values are:
-    REGENERATED_AND_MATCHED (with fresh-output artifact + comparison record)
-    REGENERATED_AND_FAILED
-    NOT_INDEPENDENTLY_REGENERATED
+The valid two-dimensional state is:
+    regeneration_status: NOT_INDEPENDENTLY_VERIFIED | FAILED
+    shared_run_comparison: MATCHED | MISMATCHED
+    independent_regeneration: false (for all — no independent regen done)
 
-The old 'PASSED' value is forbidden because it conflates 'produced by a
-fresh run' with 'independently regenerated and compared'.
+Forbidden:
+    regeneration_status: PASSED, REGENERATED_AND_MATCHED, INDEPENDENTLY_REGENERATED
+    (unless independent_regeneration=true with per-metric artifact)
 """
 import json
 import sys
@@ -29,9 +30,13 @@ REPO = Path(__file__).resolve().parents[1]
 INVENTORY_PATH = REPO / "reports" / "phase4" / "metric_inventory.json"
 
 VALID_REGENERATION_STATUSES = {
-    "REGENERATED_AND_MATCHED",
-    "REGENERATED_AND_FAILED",
-    "NOT_INDEPENDENTLY_REGENERATED",
+    "NOT_INDEPENDENTLY_VERIFIED",
+    "FAILED",
+}
+
+VALID_SHARED_RUN_COMPARISONS = {
+    "MATCHED",
+    "MISMATCHED",
 }
 
 FORBIDDEN_REGENERATION_STATUSES = {
@@ -39,21 +44,20 @@ FORBIDDEN_REGENERATION_STATUSES = {
     "PASS",
     "VERIFIED",
     "REPRODUCED",
+    "REGENERATED_AND_MATCHED",  # forbidden per round 8 — too strong
+    "INDEPENDENTLY_REGENERATED",  # forbidden unless independent_regeneration=true
+    "INDEPENDENTLY_REGENERATED_AND_MATCHED",
 }
 
 
-def test_no_unsupported_regeneration_passed_claims():
-    """The metric inventory must NOT use 'PASSED' as a regeneration_status.
+def test_no_unsupported_regeneration_claims():
+    """The metric inventory must NOT use 'PASSED', 'REGENERATED_AND_MATCHED',
+    or 'INDEPENDENTLY_REGENERATED' as regeneration_status.
 
-    'PASSED' conflates 'produced by a fresh run' with 'independently
-    regenerated and compared.' Per audit round 7, the governing principle
-    is: absence of a failed regeneration is not evidence of successful
-    regeneration.
-
-    Valid values:
-        REGENERATED_AND_MATCHED — fresh output matched committed (with artifact)
-        REGENERATED_AND_FAILED — fresh output did not match
-        NOT_INDEPENDENTLY_REGENERATED — no fresh-output comparison exists
+    These conventionally mean 'independently regenerated and compared,'
+    but Phase 3 was a shared aggregate run, not independent per-metric
+    regeneration. Per audit round 8, the status must be self-explanatory
+    without caveats.
     """
     assert INVENTORY_PATH.exists(), "metric_inventory.json must exist"
 
@@ -64,59 +68,31 @@ def test_no_unsupported_regeneration_passed_claims():
         mid = metric.get("metric_id", "?")
         status = metric.get("regeneration_status", "")
 
-        # Check for forbidden values
         for forbidden in FORBIDDEN_REGENERATION_STATUSES:
             assert status != forbidden, (
                 f"Metric {mid} has regeneration_status={repr(status)}. "
-                f"The value {repr(forbidden)} is forbidden per audit round 7. "
-                f"Use REGENERATED_AND_MATCHED, REGENERATED_AND_FAILED, or "
-                f"NOT_INDEPENDENTLY_REGENERATED instead. "
-                f"Governing principle: absence of a failed regeneration is not "
-                f"evidence of successful regeneration."
+                f"The value {repr(forbidden)} is forbidden per audit round 8. "
+                f"It conventionally means 'independently regenerated' but Phase 3 "
+                f"was a shared aggregate run. Use NOT_INDEPENDENTLY_VERIFIED "
+                f"or FAILED instead. "
+                f"Governing principle: matching in a shared run is necessary "
+                f"but not sufficient for independent reproducibility."
             )
 
-        # Check that status is one of the valid values
         assert status in VALID_REGENERATION_STATUSES, (
             f"Metric {mid} has regeneration_status={repr(status)}. "
             f"Must be one of {VALID_REGENERATION_STATUSES}."
         )
 
 
-def test_regenerated_and_matched_has_fresh_output_artifact():
-    """Every metric marked REGENERATED_AND_MATCHED must have a
-    regeneration_evidence.fresh_output_artifact pointing to an actual
-    fresh-output comparison record."""
-    assert INVENTORY_PATH.exists()
+def test_shared_run_comparison_is_separate_field():
+    """Every metric must have shared_run_comparison as a SEPARATE field
+    from regeneration_status. The two dimensions must not be conflated.
 
-    inventory = json.loads(INVENTORY_PATH.read_text())
-    metrics = inventory.get("metrics", [])
-
-    for metric in metrics:
-        if metric.get("regeneration_status") == "REGENERATED_AND_MATCHED":
-            mid = metric.get("metric_id", "?")
-            evidence = metric.get("regeneration_evidence", {})
-            artifact = evidence.get("fresh_output_artifact")
-
-            assert artifact is not None, (
-                f"Metric {mid} is REGENERATED_AND_MATCHED but has no "
-                f"fresh_output_artifact in regeneration_evidence. "
-                f"A matching claim requires a fresh-output comparison record."
-            )
-
-            # Verify the artifact exists on disk
-            artifact_path = REPO / artifact
-            assert artifact_path.exists(), (
-                f"Metric {mid} references fresh_output_artifact={artifact} "
-                f"but the file does not exist at {artifact_path}."
-            )
-
-
-def test_no_metric_is_scientifically_eligible_without_independent_regen():
-    """No metric may be scientifically_eligible=true unless it has been
-    independently regenerated (not just shared-context matched).
-
-    Per audit round 7:
-        "Only ACTIVE_VERIFIED should be eligible to support a scientific decision."
+    Per audit round 8:
+        "Use a distinct state... or, even cleaner:
+         REPRODUCTION_STATUS = NOT_INDEPENDENTLY_VERIFIED
+         SHARED_RUN_COMPARISON = MATCHED"
     """
     assert INVENTORY_PATH.exists()
 
@@ -125,31 +101,98 @@ def test_no_metric_is_scientifically_eligible_without_independent_regen():
 
     for metric in metrics:
         mid = metric.get("metric_id", "?")
-        status = metric.get("regeneration_status", "")
+        src = metric.get("shared_run_comparison")
+
+        assert src is not None, (
+            f"Metric {mid} missing shared_run_comparison field. "
+            f"This must be a separate field from regeneration_status."
+        )
+        assert src in VALID_SHARED_RUN_COMPARISONS, (
+            f"Metric {mid} has shared_run_comparison={repr(src)}. "
+            f"Must be one of {VALID_SHARED_RUN_COMPARISONS}."
+        )
+
+
+def test_independent_regeneration_is_false_for_all():
+    """No metric may have independent_regeneration=true.
+
+    Phase 3 was a shared aggregate run. No metric has been independently
+    regenerated. Per audit round 8, point 5: add independent_regeneration=false
+    to all shared-run metrics.
+    """
+    assert INVENTORY_PATH.exists()
+
+    inventory = json.loads(INVENTORY_PATH.read_text())
+    metrics = inventory.get("metrics", [])
+
+    for metric in metrics:
+        mid = metric.get("metric_id", "?")
+        ir = metric.get("independent_regeneration")
+
+        assert ir is False, (
+            f"Metric {mid} has independent_regeneration={repr(ir)}. "
+            f"No metric has been independently regenerated. Phase 3 was a "
+            f"shared aggregate run. independent_regeneration must be false."
+        )
+
+
+def test_shared_run_cannot_claim_independent_regeneration():
+    """If a metric's evidence source is an aggregate/shared-run artifact,
+    it must NOT claim independent regeneration.
+
+    This is the core audit round 8 test. A shared-run artifact
+    (reports/phase3/regeneration_result.json from bootstrap_all_metrics)
+    cannot prove independent per-metric regeneration.
+    """
+    assert INVENTORY_PATH.exists()
+
+    inventory = json.loads(INVENTORY_PATH.read_text())
+    metrics = inventory.get("metrics", [])
+
+    for metric in metrics:
+        mid = metric.get("metric_id", "?")
+        evidence = metric.get("regeneration_evidence", {})
+        artifact = evidence.get("fresh_output_artifact", "")
+        independent = metric.get("independent_regeneration", False)
+
+        # If the artifact is the shared Phase 3 aggregate output,
+        # independent_regeneration must be false
+        if "phase3/regeneration_result" in artifact:
+            assert independent is False, (
+                f"Metric {mid} claims independent_regeneration=true but its "
+                f"evidence artifact is {artifact} — a shared aggregate run "
+                f"output. A shared-run artifact cannot prove independent "
+                f"per-metric regeneration. Per audit round 8: the governing "
+                f"principle is that absence of a failed regeneration is not "
+                f"evidence of successful regeneration."
+            )
+
+
+def test_no_metric_is_scientifically_eligible():
+    """No metric may be scientifically_eligible=true.
+
+    Scientific eligibility requires INDEPENDENT regeneration, not just
+    shared-run matching. No metric has been independently regenerated.
+    """
+    assert INVENTORY_PATH.exists()
+
+    inventory = json.loads(INVENTORY_PATH.read_text())
+    metrics = inventory.get("metrics", [])
+
+    for metric in metrics:
+        mid = metric.get("metric_id", "?")
         eligible = metric.get("scientifically_eligible", False)
 
-        if eligible:
-            # To be scientifically eligible, the metric must be
-            # REGENERATED_AND_MATCHED AND have independent regeneration
-            # (not shared context). Currently no metric meets this bar.
-            assert status == "REGENERATED_AND_MATCHED", (
-                f"Metric {mid} is scientifically_eligible=true but "
-                f"regeneration_status={repr(status)}. Only "
-                f"REGENERATED_AND_MATCHED metrics can be eligible."
-            )
-            # Even REGENERATED_AND_MATCHED is not enough — it must be
-            # independently regenerated, not shared-context.
-            evidence = metric.get("regeneration_evidence", {})
-            caveat = evidence.get("caveat", "")
-            assert "shared context" not in caveat.lower() or "independent" not in caveat.lower(), (
-                f"Metric {mid} is scientifically_eligible=true but its "
-                f"regeneration evidence has a shared-context caveat. "
-                f"Scientific eligibility requires independent regeneration."
-            )
+        assert eligible is False, (
+            f"Metric {mid} is scientifically_eligible=true. No metric has "
+            f"been independently regenerated. Scientific eligibility requires "
+            f"independent per-metric regeneration, not shared-run matching."
+        )
 
 
-def test_m008_is_quarantined():
-    """M-008 must be QUARANTINED with no retroactive repair."""
+def test_m008_is_quarantined_with_mismatched_shared_run():
+    """M-008 must be QUARANTINED with regeneration_status=FAILED and
+    shared_run_comparison=MISMATCHED."""
     assert INVENTORY_PATH.exists()
 
     inventory = json.loads(INVENTORY_PATH.read_text())
@@ -162,10 +205,12 @@ def test_m008_is_quarantined():
             break
 
     assert m008 is not None, "M-008 must be in the inventory"
-    assert m008["regeneration_status"] == "REGENERATED_AND_FAILED"
+    assert m008["regeneration_status"] == "FAILED"
+    assert m008["shared_run_comparison"] == "MISMATCHED"
     assert m008["measurement_usability"] == "QUARANTINED"
     assert m008["scientifically_eligible"] is False
     assert m008["used_for_scientific_decision"] == "NO"
+    assert m008["independent_regeneration"] is False
 
     quarantine = m008.get("quarantine", {})
     assert quarantine.get("value_deleted") == "NO"
@@ -177,8 +222,8 @@ def test_provenance_declared_vs_verified_distinction():
     """Every metric must have provenance.provenance_declared and
     provenance.provenance_verified as separate fields.
 
-    Per audit round 7:
-        "There is a crucial distinction: PROVENANCE_DECLARED vs PROVENANCE_VERIFIED."
+    provenance_verified must be false — no metric has been
+    cryptographically verified.
     """
     assert INVENTORY_PATH.exists()
 
@@ -190,19 +235,84 @@ def test_provenance_declared_vs_verified_distinction():
         provenance = metric.get("provenance", {})
 
         assert "provenance_declared" in provenance, (
-            f"Metric {mid} missing provenance.provenance_declared field"
+            f"Metric {mid} missing provenance.provenance_declared"
         )
         assert "provenance_verified" in provenance, (
-            f"Metric {mid} missing provenance.provenance_verified field"
+            f"Metric {mid} missing provenance.provenance_verified"
         )
-
-        # provenance_verified must be false — no metric has been
-        # cryptographically verified yet
         assert provenance["provenance_verified"] is False, (
             f"Metric {mid} has provenance_verified=true. No metric has been "
-            f"independently provenance-verified yet. Declared provenance is not "
+            f"independently provenance-verified. Declared provenance is not "
             f"verified provenance."
         )
+
+
+def test_m008_rng_topology_recorded():
+    """M-008 must have its RNG topology recorded per audit round 8, point 9."""
+    assert INVENTORY_PATH.exists()
+
+    inventory = json.loads(INVENTORY_PATH.read_text())
+    metrics = inventory.get("metrics", [])
+
+    m008 = None
+    for m in metrics:
+        if m.get("metric_id") == "M-008":
+            m008 = m
+            break
+
+    assert m008 is not None
+    quarantine = m008.get("quarantine", {})
+    determinism = quarantine.get("determinism_analysis", {})
+
+    assert "rng_topology" in determinism, "M-008 must have rng_topology recorded"
+    rng = determinism["rng_topology"]
+    assert "module-scoped" in rng["rng_instance"], (
+        f"M-008 rng_instance must mention 'module-scoped', got: {rng['rng_instance']}"
+    )
+    assert rng["seed"] == 42
+    assert "consumes RNG state" in rng["point_estimate_call"]
+    assert "continue the SAME RNG stream" in rng["bootstrap_calls"]
+
+    # RNG modification prohibition must be recorded
+    assert "rng_modification_prohibition" in determinism, (
+        "M-008 must record rng_modification_prohibition per audit round 8, point 8"
+    )
+
+
+def test_m008_determinism_statement_is_conditional_not_causal():
+    """M-008's determinism statement must be conditional (not claim the
+    cause of the discrepancy has been identified).
+
+    Per audit round 8, point 10:
+        "Do not claim the cause of the 0.9189 → 0.8889 discrepancy has
+         been identified."
+    """
+    assert INVENTORY_PATH.exists()
+
+    inventory = json.loads(INVENTORY_PATH.read_text())
+    metrics = inventory.get("metrics", [])
+
+    m008 = None
+    for m in metrics:
+        if m.get("metric_id") == "M-008":
+            m008 = m
+            break
+
+    assert m008 is not None
+    quarantine = m008.get("quarantine", {})
+    determinism = quarantine.get("determinism_analysis", {})
+
+    # The determinism statement must be conditional
+    statement = determinism.get("determinism_statement", "")
+    assert "CONDITIONAL ON" in statement or "conditional on" in statement, (
+        "M-008 determinism statement must be conditional, not absolute"
+    )
+
+    # Must explicitly state what has NOT been established
+    not_established = determinism.get("what_has_NOT_been_established", "")
+    assert "NOT been identified" in not_established or "not been identified" in not_established, (
+        "M-008 must explicitly state that the cause has NOT been identified"
+    )
 
 
 if __name__ == "__main__":
