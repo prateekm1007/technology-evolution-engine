@@ -16,6 +16,12 @@ from engine.openrouter_provider import OpenRouterProvider
 
 
 def main():
+    # ===== MACHINE-ENFORCED PROTOCOL LOCK (audit finding A) =====
+    # DXP-005 is PAUSED. The runner cannot proceed unless PROGRAM_STATE.json
+    # explicitly says status=AUTHORIZED.
+    from engine.protocol_lock import assert_experiment_authorized
+    assert_experiment_authorized("DXP-005")
+
     if len(sys.argv) < 2:
         print("Usage: python3 scripts/run_dxp005_one.py <CASE_ID>")
         print(f"Available: {sorted(CASES.keys())}")

@@ -1,9 +1,17 @@
 {
-  "repository_head": "faf6ab880c2f5e7c53fbb4d627e4ea5df60cb40d",
-  "branch": "external-review-preparation",
-  "remote_url": "https://github.com/prateekm1007/technology-evolution-engine.git",
-  "generated_at_utc": "2026-08-08T15:35:30.328365+00:00",
-  "generator_script": "scripts/generate_program_state.py",
+  "state_snapshot": {
+    "describes_commit": "8e66b55f155c314b417686a3bbed88c328f49a9a",
+    "describes_commit_relationship": "parent of the commit containing this file (after commit, validator checks describes_commit == HEAD~1)",
+    "generated_at_utc": "2026-08-08T15:48:53.786410+00:00",
+    "generator_script": "scripts/generate_program_state.py",
+    "validator_script": "scripts/validate_program_state.py",
+    "self_reference_note": "A committed file cannot truthfully contain its own final commit SHA. This file describes the repository state as of describes_commit, which is the PARENT of the commit containing this file. The validator (validate_program_state.py) independently verifies this relationship."
+  },
+  "repository": {
+    "described_head": "8e66b55f155c314b417686a3bbed88c328f49a9a",
+    "branch": "external-review-preparation",
+    "remote_url": "https://github.com/prateekm1007/technology-evolution-engine.git"
+  },
   "substrate": {
     "status": "FROZEN",
     "freeze_evidence": "f8e3f2a (per worklog history)"
@@ -53,24 +61,24 @@
   },
   "phase_3": null,
   "engine_source": {
-    "content_clean": true,
+    "content_clean": false,
     "check_method": "git status --porcelain engine/"
   },
   "working_tree": {
-    "total_dirty": 1648,
-    "content_changes": 1,
+    "total_dirty": 1658,
+    "content_changes": 8,
     "mode_only_changes": 1647,
-    "untracked": 0,
+    "untracked": 3,
     "working_tree_clean": false
   },
   "local_test_status": {
     "test_file_count": 199,
     "last_full_suite_run": "NOT_RUN_IN_THIS_SESSION",
     "selected_suite_smoke_check": {
-      "command": "python3 -m pytest tests/test_dr62_business_pipeline.py tests/test_phase1_business_pipeline_silent_failures.py tests/test_phase2_blueprint_composer_silent_failures.py -v",
-      "result": "35 passed (4 DR-62 + 12 Phase 1 + 19 Phase 2)",
+      "command": "python3 -m pytest tests/test_dr62_business_pipeline.py tests/test_phase1_business_pipeline_silent_failures.py tests/test_phase2_blueprint_composer_silent_failures.py tests/test_phase2_dr63_consumer_boundary_integration.py -v",
+      "result": "37 passed (4 DR-62 + 12 Phase 1 + 19 Phase 2 + 2 DR-63 integration)",
       "scope": "SELECTED LOCAL SUITE \u2014 not the full repository test suite",
-      "note": "The full suite (2663 tests collected) was not run in this session. The 35-test count is a smoke check only."
+      "note": "The full suite (2663 tests collected) was not run in this session. The test count is a smoke check only."
     }
   },
   "github_ci_status": "NOT_INDEPENDENTLY_VERIFIED",
@@ -85,7 +93,7 @@
     "bridge_synonyms_state": "EMPTY_MAP_{}_FROZEN"
   },
   "north_star": "NOT_ACHIEVED",
-  "north_star_path": "Phase 0 (COMPLETE) \u2192 Phase 1 (COMPLETE) \u2192 Phase 2 (COMPLETE) \u2192 Phase 3 (NEXT) \u2192 ... \u2192 Phase 17 (DISCRIMINATIVE or NOT_DISCRIMINATIVE). Only DISCRIMINATIVE at Phase 17 allows DXP-005 to resume. NOT_DISCRIMINATIVE preserves the negative result per Amendment 15.",
+  "north_star_path": "Phase 0 (COMPLETE) \u2192 Phase 1 (COMPLETE) \u2192 Phase 2 (COMPLETE) \u2192 Phase 3 (NEXT, BLOCKED pending audit approval) \u2192 ... \u2192 Phase 17 (DISCRIMINATIVE or NOT_DISCRIMINATIVE). Only DISCRIMINATIVE at Phase 17 allows DXP-005 to resume. NOT_DISCRIMINATIVE preserves the negative result per Amendment 15.",
   "amendment_compliance": {
     "amendment_1_frozen_matcher_read_only": "PENDING \u2014 Phase 8",
     "amendment_2_vocabulary_pre_frozen_source": "PENDING \u2014 Phase 9",
@@ -100,7 +108,7 @@
     "amendment_11_observed_vs_expected": "ENFORCED",
     "amendment_12_commit_categorization": "ENFORCED",
     "amendment_13_phase_status_json": "ENFORCED",
-    "amendment_14_scientific_visibility_boundary": "ENFORCED \u2014 DXP-005 paused, Nemotron pilot quarantined",
+    "amendment_14_scientific_visibility_boundary": "ENFORCED \u2014 DXP-005 paused, Nemotron pilot quarantined, protocol lock machine-enforced",
     "amendment_15_failure_is_valid": "ACKNOWLEDGED",
     "amendment_16_discovery_gate_depends_on_discrimination": "ACKNOWLEDGED"
   }

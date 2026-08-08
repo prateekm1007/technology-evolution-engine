@@ -432,6 +432,13 @@ def generate_final_table(all_results):
 
 
 def main():
+    # ===== MACHINE-ENFORCED PROTOCOL LOCK (audit finding A) =====
+    # DXP-005 is PAUSED. The runner cannot proceed unless PROGRAM_STATE.json
+    # explicitly says status=AUTHORIZED. This is not a documentary prohibition
+    # — it is a hard failure that prevents execution.
+    from engine.protocol_lock import assert_experiment_authorized
+    assert_experiment_authorized("DXP-005")
+
     # Protocol amendment: ZAI API rate-limited (429). Using OpenRouter
     # with Kimi K3 per CEO directive. The A/B/C ablation comparison
     # remains valid within a single provider. Cross-experiment

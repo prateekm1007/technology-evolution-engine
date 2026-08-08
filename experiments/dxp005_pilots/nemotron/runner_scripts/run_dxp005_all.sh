@@ -7,6 +7,20 @@
 # Usage: bash scripts/run_dxp005_all.sh
 set -uo pipefail
 cd /home/z/my-project/audit/technology-evolution-engine
+
+# ===== MACHINE-ENFORCED PROTOCOL LOCK (audit finding A) =====
+# DXP-005 is PAUSED. The runner cannot proceed unless PROGRAM_STATE.json
+# explicitly says status=AUTHORIZED. This is not a documentary prohibition
+# — it is a hard failure that prevents execution.
+python3 -m engine.protocol_lock DXP-005
+LOCK_RC=$?
+if [ $LOCK_RC -ne 0 ]; then
+  echo "ERROR: DXP-005 protocol lock denied execution. See message above." >&2
+  echo "To resume DXP-005, all resume_conditions in PROGRAM_STATE.json must" >&2
+  echo "be met AND status must be updated to AUTHORIZED by an authorized operator." >&2
+  exit 1
+fi
+
 # OPENROUTER_API_KEY must be set in the environment. Do NOT hardcode keys
 # in source files (CONTRIBUTING.md item 12, GitHub secret scanning).
 if [ -z "${OPENROUTER_API_KEY:-}" ]; then

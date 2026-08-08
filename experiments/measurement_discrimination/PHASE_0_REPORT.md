@@ -1,7 +1,7 @@
 # Phase 0 — Establish Repository Truth
 
 **Status:** COMPLETE
-**Commit:** d060aa9 (DXP-005 pause) + this commit
+**Commit:** 8b4c985 (DXP-005 pause) + 5f27ca9 (this Phase 0 commit)
 **Date:** 2026-08-08
 **Amendment Reference:** Amendment 3 (CI verification), Amendment 13 (PHASE_STATUS.json)
 
@@ -97,7 +97,7 @@ DXP-005 was paused in this Phase 0 work:
 
 - Partial state preserved (frozen-in-place, not modified)
 - Pause notice written: `discovery_experiment/FINAL_VERDICT/DXP-005_PAUSE_NOTICE.md`
-- Pause commit: `d060aa9`
+- Pause commit: `8b4c985`
 - Resume condition: ONLY if Phase 17 produces `DISCRIMINATIVE`
 - No "rescue" allowed (Amendment 15)
 

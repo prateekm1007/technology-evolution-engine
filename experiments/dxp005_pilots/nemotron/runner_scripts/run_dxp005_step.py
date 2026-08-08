@@ -391,6 +391,12 @@ def step_adversarial(case_id, condition, provider):
 
 
 def main():
+    # ===== MACHINE-ENFORCED PROTOCOL LOCK (audit finding A) =====
+    # DXP-005 is PAUSED. The runner cannot proceed unless PROGRAM_STATE.json
+    # explicitly says status=AUTHORIZED.
+    from engine.protocol_lock import assert_experiment_authorized
+    assert_experiment_authorized("DXP-005")
+
     if len(sys.argv) < 3:
         print("Usage: python3 scripts/run_dxp005_step.py <step> <case_id> [condition]")
         print("  step: upstream | hypotheses | adversarial")
