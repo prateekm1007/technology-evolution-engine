@@ -7,10 +7,10 @@
   "freeze_record_sha256": "7b4089b33743debc6b7ca7a1144b30f4cd07a83a57c8346abab176f558431c34",
   "stage_inventory_sha256": "55bc09f4f5e9cb035bcdbf34ef2971ec7d96e842d3eb35bafab46a761610885e",
   "engine_commit_sha": "db38c7dba5aef5073fb26ac2d8e534768d66515c",
-  "run_record_commit_sha": "049dc2e15809e430b14950dfc12a3df31a9205af",
+  "run_record_commit_sha": "054a6695742847935a19edf795e5e329e2d05833",
   "working_tree_clean": false,
   "working_tree_status_sha256": "53326344b9895ff862d78d0c050704d24e1b7992da4bd1ca9d18a813b7886994",
   "created_at": "2026-08-08T08:52:11.991844+00:00",
   "note": "RUN_INTEGRITY_ANCHOR \u2014 the external root of trust. engine_commit_sha = the Git commit whose engine source produced this run. run_record_commit_sha = the Git commit that froze the run artifacts (filled post-commit). An auditor verifies: anchor self-hash, engine commit exists, run-record commit contains this anchor, all mutable files match.",
-  "anchor_sha256": "37eff04d66a1efee3b7cd7ad6dc40c830ec1e188aff6968eb3cb84127a478355"
+  "anchor_sha256": "6041b907b3d8aa6bcc42275ae054786c663bb6c978173101b678943752529cf9"
 }
