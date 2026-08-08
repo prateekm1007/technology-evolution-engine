@@ -13,21 +13,49 @@ Per P3:
 Per P4:
     "State files are a claim about reality, not a diary of intentions."
 
+SCIENTIFIC SCOPE (per audit round 22):
+    These tests prove: "The freeze MECHANISM rejects filesystem mutations
+    relative to an independently committed Git HEAD in an isolated real
+    repository."
+
+    These tests do NOT prove: "The production frozen artifacts are
+    independently trustworthy." That latter claim depends on the
+    provenance work already audited (Phases 3-6).
+
+MUTATION SURFACES (per audit round 22):
+    BRIDGE_SYNONYMS is defined INSIDE discovery_capability_benchmark.py,
+    not as a separately protected file. The synonym test modifies that
+    same benchmark-source surface. The accurate statement is:
+
+    "All identified mutation classes tested at filesystem level, including
+     synonym mutation within the benchmark-source surface."
+
+    NOT: "All 5 independently protected filesystem surfaces tested."
+
+Protected mutation classes:
+    1. benchmark-source content (includes GOLD_DISCOVERIES, BRIDGE_SYNONYMS,
+       matcher logic, F1 formula, thresholds)
+    2. score artifact
+    3. manifest
+    4. coordinated manifest + score attack
+    5. coordinated multi-artifact attack
+    6. synonym mutation (within the benchmark-source surface, exercised
+       as a distinct semantic mutation class)
+
 These tests:
     1. Create a TEMPORARY directory (not the real working tree)
     2. Copy the exact frozen artifacts into it
     3. Initialize a real git repo and commit the pristine fixture
-    4. Point the freeze module at the temporary repo (via environment,
-       NOT by mocking the integrity mechanism)
+    4. Load the freeze module from the temp repo (NOT by mocking the
+       integrity mechanism)
     5. Run the gate on pristine → PASS
     6. Physically mutate each artifact → direct invocation → FAIL
     7. Restore → PASS
-    8. Repeat for ALL 5 mutation surfaces (including synonyms)
-    9. Mutate manifest + artifact together → FAIL
-    10. Mutate all artifacts → FAIL
-    11. Verify SHA-256 equality with original after restoration
-    12. Delete the temporary repository
-    13. Confirm the real project working tree was NEVER touched
+    8. Mutate manifest + artifact together → FAIL
+    9. Mutate all artifacts → FAIL
+    10. Verify SHA-256 equality with original after restoration
+    11. Delete the temporary repository
+    12. Confirm the real project working tree was NEVER touched
 
 The real project working tree is NEVER modified. All mutations happen
 in the temporary fixture. The freeze gate runs against the temporary

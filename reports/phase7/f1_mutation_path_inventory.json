@@ -5,6 +5,8 @@
   "gated_paths": 3,
   "ungated_paths": 0,
   "bypass_risk_paths": 0,
+  "mutation_surface_description": "All identified mutation classes tested at filesystem level, including synonym mutation within the benchmark-source surface. BRIDGE_SYNONYMS is defined INSIDE discovery_capability_benchmark.py, not as a separately protected file. The synonym test modifies that same benchmark-source surface.",
+  "scientific_scope": "These tests prove the freeze MECHANISM rejects filesystem mutations relative to an independently committed Git HEAD in an isolated real repository. They do NOT prove the production frozen artifacts are independently trustworthy — that depends on provenance work audited in Phases 3-6.",
 
   "f1_mutation_paths": [
     {
