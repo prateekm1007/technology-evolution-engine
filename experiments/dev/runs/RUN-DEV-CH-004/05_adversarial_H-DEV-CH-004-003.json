@@ -2,8 +2,8 @@
   "stage": "05_adversarial_H-DEV-CH-004-003",
   "run_id": "RUN-DEV-CH-004",
   "code_sha": "engine-v0.1-round3",
-  "input_hash": "18aa81b5e12967fd494b755ac59da6f629518a7f0a4edda76ea4c7ae58e7ae6b",
-  "output_hash": "572563e071e2250a6728fe42f136b0337b903758b5ff8b179780d2ea9a141cf2",
+  "input_hash": "6acf2316cdb9c1b18e758ddc71220c79d0d191b984190b75a6c77b36268e900c",
+  "output_hash": "97fed7f927ffb0a975e230565f731b1e74c26d425c69acc01907198ebda0a300",
   "provider_manifest": {
     "provider": "zai",
     "model": "glm-4-plus",
@@ -13,13 +13,13 @@
       "max_tokens": 4096,
       "system_sha": "1f5a3fff3aebc2e1d44b2312f4b604b5c2911cacaf452eb6ca705c724fc9142b"
     },
-    "prompt_sha": "e23ad07a012ebc61bd4ca25e1de1c9f1dac9d6a65bb6fb3e15fcccbb6ac125d9",
+    "prompt_sha": "dcc0acc3a76aec7a8d7b6728bf887e70f7b937151ec9e6aa8125d0b30b673f0d",
     "seed": null,
     "tool_versions": {
       "z_ai_cli": "z-ai"
     },
-    "timestamp": "2026-08-08T07:34:47.466982+00:00",
-    "latency_ms": 19728,
+    "timestamp": "2026-08-08T07:46:57.148839+00:00",
+    "latency_ms": 9968,
     "success": true,
     "error": ""
   },
@@ -28,59 +28,47 @@
     "failure_modes": [
       {
         "category": "FRAGILE_ASSUMPTION",
-        "description": "The assumption that intersections have sufficient computational capacity for reinforcement learning is completely unrealistic. Modern traffic signal controllers are typically low-power embedded systems with minimal processing capabilities, unable to run complex reinforcement learning algorithms.",
+        "description": "The assumption that traffic patterns serve as sufficient information for neighbors is fundamentally flawed. Traffic flow patterns are ambiguous and contain noise that makes interpretation unreliable.",
         "severity": "HIGH",
-        "evidence": "Traffic signal controllers are typically legacy systems with limited computational resources, often running on microcontrollers with minimal processing power and memory."
+        "evidence": "Traffic engineers have long recognized that flow patterns alone cannot distinguish between temporary congestion and persistent demand, leading to inappropriate signal adjustments."
       },
       {
         "category": "CONTRADICTS_KNOWN",
-        "description": "The claim that intersections can share policies with neighbors contradicts known communication limitations in transportation infrastructure. Traffic systems operate on isolated networks with strict security protocols, making real-time policy sharing practically impossible.",
+        "description": "Direct contradicts established traffic engineering knowledge that centralized control or coordinated systems significantly outperform isolated intersection control.",
         "severity": "HIGH",
-        "evidence": "Transportation control systems are typically isolated from external networks for security reasons and use legacy communication protocols that cannot support high-bandwidth policy sharing."
+        "evidence": "Numerous studies show that coordinated signal systems can reduce travel time by 15-30% compared to isolated control, which this approach would essentially be."
       },
       {
         "category": "BOUNDARY_BREAKS",
-        "description": "The hypothesis completely ignores the physical constraints of traffic signal timing. Modern signals have fixed minimum and maximum green times, pedestrian crossing requirements, and safety constraints that cannot be violated during 'learning' phases.",
-        "severity": "HIGH",
-        "evidence": "Traffic signal timing is governed by strict safety standards and physical constraints that cannot be overridden by a learning algorithm, making unconstrained exploration impossible."
-      },
-      {
-        "category": "FALSIFIER_TRIGGERED",
-        "description": "The hypothesis predicts that the system will show consistent improvement over time, but real-world traffic systems face unpredictable disruptions (accidents, weather, special events) that would cause catastrophic performance failures regardless of learning progress.",
-        "severity": "HIGH",
-        "evidence": "Real-world traffic systems must handle unpredictable events that would overwhelm any reinforcement learning system trained on normal patterns, leading to immediate failure modes."
-      },
-      {
-        "category": "INCOMPATIBLE_TARGET",
-        "description": "The focus on local optimization at each intersection directly conflicts with the network-level optimization needed for traffic flow. Self-interested learning would create suboptimal network performance as intersections optimize for local metrics rather than system-wide efficiency.",
-        "severity": "HIGH",
-        "evidence": "Game theory demonstrates that local optimization in interconnected systems leads to Nash equilibria that are Pareto inefficient, resulting in worse overall system performance."
-      },
-      {
-        "category": "FRAGILE_ASSUMPTION",
-        "description": "The assumption that reward functions accurately reflect system performance is naive. Traffic metrics are conflicting (throughput vs. equity vs. safety), and any single reward function would lead to perverse incentives and gaming of the metrics.",
+        "description": "The mechanism fails to account for non-traffic environmental factors that influence traffic patterns but are not part of the stigmergy feedback loop.",
         "severity": "MEDIUM",
-        "evidence": "Multi-objective optimization problems in transportation consistently show that no single metric can capture system performance, leading to trade-offs that reward functions cannot properly balance."
+        "evidence": "Weather events, accidents, and construction create traffic patterns that don't result from signal timing, creating false environmental signals that would mislead the system."
       },
       {
         "category": "PRIOR_ART_EXISTS",
-        "description": "The claimed novelty is completely unfounded. Distributed reinforcement learning for traffic control has been extensively researched and implemented in various forms for over a decade, with numerous published papers and real-world deployments.",
-        "severity": "HIGH",
-        "evidence": "Numerous publications from MIT, UC Berkeley, and other institutions have demonstrated distributed reinforcement learning for traffic control since at least 2010, with implementations in cities like Los Angeles and Pittsburgh."
+        "description": "The core concept is not novel - isolated intersection control systems have been extensively studied and shown to be inferior to coordinated approaches.",
+        "severity": "MEDIUM",
+        "evidence": "The TRANSYT and SCATS systems from the 1970s already demonstrated the superiority of coordinated signal control over isolated methods."
       },
       {
         "category": "FALSIFIER_TRIGGERED",
-        "description": "The hypothesis expects the system to adapt to novel scenarios, but reinforcement learning systems are notoriously poor at generalization to situations outside their training distribution, making this expectation unrealistic for the complex, diverse scenarios faced in real traffic systems.",
-        "severity": "MEDIUM",
-        "evidence": "Cognitive science and machine learning research consistently show that reinforcement learning systems fail at zero-shot generalization, requiring extensive retraining for new scenarios."
+        "description": "The hypothesis directly contradicts its own falsifier condition - it explicitly predicts failure for non-adjacent intersections.",
+        "severity": "HIGH",
+        "evidence": "The hypothesis admits it will fail for non-adjacent intersections, making it fundamentally unsuitable for real-world networks where intersections must coordinate beyond immediate neighbors."
+      },
+      {
+        "category": "INCOMPATIBLE_TARGET",
+        "description": "The approach is incompatible with the actual target of traffic signal systems - optimizing network-wide performance rather than local efficiency.",
+        "severity": "HIGH",
+        "evidence": "Real-world traffic systems prioritize network-wide flow, not local intersection efficiency. A stigmergy approach would optimize for local metrics, creating Braess paradox situations where local improvements create global degradation."
       }
     ],
     "survives": false,
     "outcome": "ADVERSARIAL_FAILED",
-    "n_high_severity": 6,
+    "n_high_severity": 4,
     "n_medium_severity": 2,
     "n_low_severity": 0,
     "source_hypothesis_hash": ""
   },
-  "timestamp": "2026-08-08T07:35:07.195512+00:00"
+  "timestamp": "2026-08-08T07:47:07.117820+00:00"
 }

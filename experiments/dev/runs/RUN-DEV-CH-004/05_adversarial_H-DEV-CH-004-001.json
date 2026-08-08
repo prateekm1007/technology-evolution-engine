@@ -2,8 +2,8 @@
   "stage": "05_adversarial_H-DEV-CH-004-001",
   "run_id": "RUN-DEV-CH-004",
   "code_sha": "engine-v0.1-round3",
-  "input_hash": "5ffbb58523089a76086b47efba046c115eaaa56d98b2b4baf805a32f563c06ff",
-  "output_hash": "db3a077fdade7d7edc6d924aae78cb99317534c0c464ba3d0389e4677e824320",
+  "input_hash": "7c57904ab505dfb0b31fbced220ff22308e748f06b6e43ecb693aea36c963f4c",
+  "output_hash": "1ec97a6496fa64c32c1a06457c6068415cb783432b14eba4dd4f44f5c07c18e6",
   "provider_manifest": {
     "provider": "zai",
     "model": "glm-4-plus",
@@ -13,13 +13,13 @@
       "max_tokens": 4096,
       "system_sha": "1f5a3fff3aebc2e1d44b2312f4b604b5c2911cacaf452eb6ca705c724fc9142b"
     },
-    "prompt_sha": "292274ccb2527e8b1cae27f9ea945e36909f53324e9707c511a53eb42cb4ec21",
+    "prompt_sha": "314544d3244d84252b2176b73d90dc6e46f38dbd46e9762473466855848e5d5f",
     "seed": null,
     "tool_versions": {
       "z_ai_cli": "z-ai"
     },
-    "timestamp": "2026-08-08T07:34:11.936896+00:00",
-    "latency_ms": 14239,
+    "timestamp": "2026-08-08T07:46:15.980683+00:00",
+    "latency_ms": 8753,
     "success": true,
     "error": ""
   },
@@ -28,39 +28,39 @@
     "failure_modes": [
       {
         "category": "FRAGILE_ASSUMPTION",
-        "description": "The assumption that intersections can calculate performance gradients is fundamentally flawed. Traffic systems are highly stochastic with numerous unmeasurable variables (driver behavior, weather, accidents) that make gradient calculation impossible in practice.",
+        "description": "Local optimization leads to global optimum",
         "severity": "HIGH",
-        "evidence": "Traffic systems exhibit chaotic behavior that cannot be modeled with deterministic gradients. Real-world traffic data shows high variance that cannot be reduced to simple gradient calculations."
+        "evidence": "This is the fundamental flaw of distributed systems without coordination. The Braess paradox demonstrates that local improvements can lead to global degradation. Traffic networks are classic examples where individual optimizations create worse overall outcomes."
       },
       {
         "category": "CONTRADICTS_KNOWN",
-        "description": "The claim contradicts established knowledge in control theory and traffic engineering. Gradient descent requires smooth, convex optimization landscapes which traffic networks demonstrably do not possess.",
+        "description": "Traffic signals can effectively coordinate without explicit communication",
         "severity": "HIGH",
-        "evidence": "Numerous studies have shown traffic networks are non-convex with multiple local optima, making gradient-based methods prone to failure. Existing successful systems use reinforcement learning or other non-gradient approaches."
+        "evidence": "Transportation engineering has established that traffic signal coordination requires explicit timing plans and communication. The TRANSYT and SCATS systems explicitly coordinate signals. The hypothesis contradicts decades of traffic engineering practice."
       },
       {
         "category": "BOUNDARY_BREAKS",
-        "description": "The mechanism breaks down at network boundaries where intersections have fewer neighbors. The inverse proportionality to neighbor performance metrics would cause unstable behavior at perimeter intersections.",
+        "description": "Intersection controllers have sufficient computational capacity",
         "severity": "MEDIUM",
-        "evidence": "Any distributed system with boundary effects suffers from edge cases. The proposed mechanism would create different behavior patterns at network edges versus interior intersections, leading to systemic inefficiencies."
-      },
-      {
-        "category": "PRIOR_ART_EXISTS",
-        "description": "Similar approaches have been extensively researched and failed. The concept of distributed traffic signal optimization using gradient methods has been attempted multiple times with poor results.",
-        "severity": "MEDIUM",
-        "evidence": "Numerous papers from the 1990s-2000s attempted similar gradient-based approaches and abandoned them due to poor performance compared to other methods like reinforcement learning or model predictive control."
+        "evidence": "Modern traffic controllers are often legacy systems with limited processing power. Continuous reinforcement learning would require significant computational resources that most intersections don't possess, especially during high-traffic periods when resources are most needed."
       },
       {
         "category": "FALSIFIER_TRIGGERED",
-        "description": "The hypothesis is already falsified by its own expected failure modes. The predicted oscillations and convergence to local maxima are inherent flaws that cannot be resolved with the proposed mechanism.",
+        "description": "System fails to converge within required timeframe",
         "severity": "HIGH",
-        "evidence": "The hypothesis explicitly predicts oscillatory behavior and suboptimal convergence - these are not edge cases but fundamental limitations of the approach that would prevent practical implementation."
+        "evidence": "The hypothesis itself admits this as a falsifier. Traffic patterns are highly variable and non-stationary, making convergence within 15 minutes unrealistic. Morning rush, accidents, and weather events create constantly changing conditions that prevent stable convergence."
       },
       {
         "category": "INCOMPATIBLE_TARGET",
-        "description": "Traffic signal optimization requires real-time responsiveness, but gradient descent methods inherently require multiple iterations to converge, making them incompatible with the time constraints of traffic control.",
+        "description": "Reward function prioritizes local delay",
         "severity": "HIGH",
-        "evidence": "Traffic signals must make decisions in seconds or milliseconds, while gradient descent methods typically require many iterations to approach a solution. The computational complexity alone makes this approach impractical."
+        "evidence": "Traffic systems have multiple objectives beyond local delay: pedestrian safety, emergency vehicle priority, air quality, and equity. A reward function focused only on local delay would create dangerous incentives, such as prioritizing high-volume roads over pedestrian crossings."
+      },
+      {
+        "category": "PRIOR_ART_EXISTS",
+        "description": "Reinforcement learning approaches to traffic control",
+        "severity": "MEDIUM",
+        "evidence": "The hypothesis claims novelty but ignores extensive prior work. Systems like RHODES, Lighthouse, and various academic papers have applied reinforcement learning to traffic control, often with coordination mechanisms. The purely local approach has been shown inferior to coordinated approaches."
       }
     ],
     "survives": false,
@@ -70,5 +70,5 @@
     "n_low_severity": 0,
     "source_hypothesis_hash": ""
   },
-  "timestamp": "2026-08-08T07:34:26.176522+00:00"
+  "timestamp": "2026-08-08T07:46:24.734799+00:00"
 }

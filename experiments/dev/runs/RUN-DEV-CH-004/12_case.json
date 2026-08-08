@@ -2,17 +2,17 @@
   "stage": "12_case",
   "run_id": "RUN-DEV-CH-004",
   "code_sha": "engine-v0.1-round3",
-  "input_hash": "bcb3b540978ef16ac503a74faf5c73ae5b69a9770e4b7d9e42b8a8c3ca430092",
-  "output_hash": "181cec19707ca06a6e0f82ecf93d39579da96290b2c794d76457ea363d989491",
+  "input_hash": "bd5b1a9761fc40e7cd4af31f5588676be9b8f6b9bbc2b5699d7a47b70a7bca20",
+  "output_hash": "431be0c91eda30fc0a176ba0c4e6a9490bae5cb15a4091fa7b49ea7007849d51",
   "provider_manifest": null,
   "result": {
     "case_id": "DC-DEV-CH-004",
-    "provenance_root_hash": "f62b71f754a3e2fb17085a9d2aa65e587626b46d3c77078d1024a7c0d2730a2b",
+    "provenance_root_hash": "b9523d129a54df6baed5b87577d332a8de39dcb5ff68c824f959b8d20837757e",
     "verify_provenance": true,
     "final_state": "TESTABLE_HYPOTHESIS",
     "lineage_verification": {
       "case_id": "DC-DEV-CH-004",
-      "valid": true,
+      "valid": false,
       "checks": [
         {
           "name": "no_dangling_edges",
@@ -36,13 +36,13 @@
         },
         {
           "name": "artifact_hash_verification",
-          "passed": true,
-          "detail": "all verifiable hashes match stage artifacts"
+          "passed": false,
+          "detail": "2 hash mismatches"
         },
         {
           "name": "provenance_root_hash_verifiable",
           "passed": true,
-          "detail": "root_hash=f62b71f754a3e2fb..."
+          "detail": "root_hash=b9523d129a54df6b..."
         }
       ],
       "reachable_nodes": [
@@ -66,22 +66,25 @@
       ],
       "orphans": [],
       "missing_parents": [],
-      "hash_mismatches": [],
+      "hash_mismatches": [
+        "rediscovery:H-DEV-CH-004-002 (type=rediscovery_analysis): artifact 06_rediscovery_H-DEV-CH-004-002.json output_hash 97ad93c5e8697ee5... != manifest stage output_hash e2b4ff0db83cd57b... \u2014 manifest/artifact mismatch",
+        "adversarial:H-DEV-CH-004-003 (type=adversarial_analysis): artifact 05_adversarial_H-DEV-CH-004-003.json output_hash 97fed7f927ffb0a9... != manifest stage output_hash f0ab0d551d410cfa... \u2014 manifest/artifact mismatch"
+      ],
       "node_count": 17,
       "edge_count": 15
     },
-    "lineage_valid": true,
+    "lineage_valid": false,
     "ledger_verification": {
       "registered": true,
       "file_exists": true,
       "content_hash_matches": true,
-      "content_hash": "73408dce63ad18914eddd89f93104c3590bb6d5c72781ac34ba11001cc2adeff",
-      "actual_hash": "73408dce63ad18914eddd89f93104c3590bb6d5c72781ac34ba11001cc2adeff",
+      "content_hash": "6d8d8eaae362111455bc8f21837fc5458dd3fe2b4e19944c96b3079295f9a566",
+      "actual_hash": "6d8d8eaae362111455bc8f21837fc5458dd3fe2b4e19944c96b3079295f9a566",
       "file": "cases/DC-DEV-CH-004.json"
     },
     "registered_in_persistent_ledger": true,
     "ledger_dir": "/home/z/my-project/audit/technology-evolution-engine/experiments/dev/runs/RUN-DEV-CH-004/ledger",
     "evidence_count": 17
   },
-  "timestamp": "2026-08-08T07:35:09.246692+00:00"
+  "timestamp": "2026-08-08T07:47:19.489539+00:00"
 }

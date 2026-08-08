@@ -1,27 +1,26 @@
 {
   "hypothesis_id": "H-DEV-CH-004-001",
-  "claim": "The adaptive traffic signal system operates through a decentralized gradient descent mechanism where each intersection continuously adjusts its timing parameters based on local performance metrics and neighbor information.",
-  "mechanism": "Each intersection measures its own performance (vehicle throughput, queue length) and receives performance metrics from adjacent intersections. It then calculates a gradient indicating how to adjust green-split to improve its performance while considering neighbor performance. The adjustment is proportional to the local gradient and inversely proportional to the sum of neighbor performance metrics, creating a distributed optimization process.",
+  "claim": "Traffic signals adapt through local reinforcement learning, where each intersection adjusts its timing based on immediate traffic flow rewards without explicit coordination.",
+  "mechanism": "Each intersection controller operates as an independent agent that continuously evaluates traffic flow metrics (queue length, vehicle count) and adjusts signal timing parameters using a reward function that prioritizes minimizing local delay. Controllers share minimal information with adjacent intersections only to maintain platoon coordination.",
   "evidence": [
-    "Success of gradient-based optimization in other distributed systems",
-    "Empirical observation that traffic flow responds predictably to signal timing changes",
-    "Demonstration of similar principles in myxomycete tube networks"
+    "Reinforcement learning has shown success in isolated traffic signal optimization",
+    "Local decision-making reduces computational overhead",
+    "Emergent coordination has been observed in distributed systems"
   ],
   "assumptions": [
-    "Intersections can calculate performance gradients",
-    "Communication between adjacent intersections is reliable and timely",
-    "Performance metrics are sufficient to determine optimization direction",
-    "The system will converge to a global optimum through local adjustments"
+    "Local optimization leads to global optimum",
+    "Intersections have sufficient computational capacity for continuous learning",
+    "Traffic patterns exhibit sufficient regularity for reinforcement learning to converge"
   ],
   "predictions": [],
   "expected_failure_modes": [
-    "Oscillations between intersections as they overcorrect based on neighbor information",
-    "Convergence to local maxima that are significantly worse than the global optimum",
-    "Sensitivity to measurement noise causing erratic timing adjustments"
+    "Oscillations between adjacent intersections",
+    "Suboptimal global performance due to local optimization conflicts",
+    "Computational overload at intersection controllers during high-traffic periods"
   ],
-  "novelty_rationale": "This hypothesis introduces a gradient-based approach to traffic signal control, which differs from traditional fixed-time or simple actuated control by using neighbor information to guide optimization direction, potentially avoiding local maxima traps.",
-  "testability": "The hypothesis can be tested by implementing the algorithm in simulation and measuring convergence time, stability, and performance metrics. Variations in communication frequency and neighbor influence can be systematically tested.",
-  "falsifier": "If the system consistently converges to suboptimal configurations even with perfect communication and sufficient iterations, or if it exhibits oscillatory behavior that doesn't dampen over time, the gradient descent mechanism would be falsified.",
+  "novelty_rationale": "Applies a reinforcement learning framework to traffic signal adaptation, treating each intersection as an independent learning agent rather than a coordinated system.",
+  "testability": "Can be tested in simulation by implementing reinforcement learning algorithms at each intersection and measuring convergence time and system-wide performance metrics.",
+  "falsifier": "If the system fails to converge within the required 15-minute timeframe or exhibits oscillatory behavior when tested with varying traffic patterns, this hypothesis would be proven wrong.",
   "epistemic_state": "HYPOTHESIZED",
   "parent_hypothesis_ids": [],
   "provenance": {

@@ -2,8 +2,8 @@
   "stage": "04_hypotheses",
   "run_id": "RUN-DEV-CH-004",
   "code_sha": "engine-v0.1-round3",
-  "input_hash": "6b76fc26b20777d9ef76557eaf48ca68e4f6a88937806f6467155ff1e7f29190",
-  "output_hash": "f07c6ecea226a56f6ef5ee619bafb8db2c00df13f7fd763ee1526f99957a41cf",
+  "input_hash": "24642361836197dd1710833f53b6d2703be576750a405fa7c634fc57d8d3dd59",
+  "output_hash": "251bcb20113b8558ce02e4c59a500f0c9478fb1271edf84b992b7dbd0cd3786d",
   "provider_manifest": {
     "provider": "zai",
     "model": "glm-4-plus",
@@ -13,13 +13,13 @@
       "max_tokens": 4096,
       "system_sha": "38a0abb453a9eb9fd88d0b4dd513feea94d69501c86ec3d4d7778b86034369c8"
     },
-    "prompt_sha": "435fb9e6a4ae178afb3f2bf6ed402d02b2c3e8b90dd1ee19ef1793a247cc47be",
+    "prompt_sha": "06fb098a686f18ef7836e48dcfb35391d2565d9dacddb97cd08a322073aef161",
     "seed": null,
     "tool_versions": {
       "z_ai_cli": "z-ai"
     },
-    "timestamp": "2026-08-08T07:33:43.741615+00:00",
-    "latency_ms": 28192,
+    "timestamp": "2026-08-08T07:45:59.181267+00:00",
+    "latency_ms": 16796,
     "success": true,
     "error": ""
   },
@@ -27,28 +27,27 @@
     "hypotheses": [
       {
         "hypothesis_id": "H-DEV-CH-004-001",
-        "claim": "The adaptive traffic signal system operates through a decentralized gradient descent mechanism where each intersection continuously adjusts its timing parameters based on local performance metrics and neighbor information.",
-        "mechanism": "Each intersection measures its own performance (vehicle throughput, queue length) and receives performance metrics from adjacent intersections. It then calculates a gradient indicating how to adjust green-split to improve its performance while considering neighbor performance. The adjustment is proportional to the local gradient and inversely proportional to the sum of neighbor performance metrics, creating a distributed optimization process.",
+        "claim": "Traffic signals adapt through local reinforcement learning, where each intersection adjusts its timing based on immediate traffic flow rewards without explicit coordination.",
+        "mechanism": "Each intersection controller operates as an independent agent that continuously evaluates traffic flow metrics (queue length, vehicle count) and adjusts signal timing parameters using a reward function that prioritizes minimizing local delay. Controllers share minimal information with adjacent intersections only to maintain platoon coordination.",
         "evidence": [
-          "Success of gradient-based optimization in other distributed systems",
-          "Empirical observation that traffic flow responds predictably to signal timing changes",
-          "Demonstration of similar principles in myxomycete tube networks"
+          "Reinforcement learning has shown success in isolated traffic signal optimization",
+          "Local decision-making reduces computational overhead",
+          "Emergent coordination has been observed in distributed systems"
         ],
         "assumptions": [
-          "Intersections can calculate performance gradients",
-          "Communication between adjacent intersections is reliable and timely",
-          "Performance metrics are sufficient to determine optimization direction",
-          "The system will converge to a global optimum through local adjustments"
+          "Local optimization leads to global optimum",
+          "Intersections have sufficient computational capacity for continuous learning",
+          "Traffic patterns exhibit sufficient regularity for reinforcement learning to converge"
         ],
         "predictions": [],
         "expected_failure_modes": [
-          "Oscillations between intersections as they overcorrect based on neighbor information",
-          "Convergence to local maxima that are significantly worse than the global optimum",
-          "Sensitivity to measurement noise causing erratic timing adjustments"
+          "Oscillations between adjacent intersections",
+          "Suboptimal global performance due to local optimization conflicts",
+          "Computational overload at intersection controllers during high-traffic periods"
         ],
-        "novelty_rationale": "This hypothesis introduces a gradient-based approach to traffic signal control, which differs from traditional fixed-time or simple actuated control by using neighbor information to guide optimization direction, potentially avoiding local maxima traps.",
-        "testability": "The hypothesis can be tested by implementing the algorithm in simulation and measuring convergence time, stability, and performance metrics. Variations in communication frequency and neighbor influence can be systematically tested.",
-        "falsifier": "If the system consistently converges to suboptimal configurations even with perfect communication and sufficient iterations, or if it exhibits oscillatory behavior that doesn't dampen over time, the gradient descent mechanism would be falsified.",
+        "novelty_rationale": "Applies a reinforcement learning framework to traffic signal adaptation, treating each intersection as an independent learning agent rather than a coordinated system.",
+        "testability": "Can be tested in simulation by implementing reinforcement learning algorithms at each intersection and measuring convergence time and system-wide performance metrics.",
+        "falsifier": "If the system fails to converge within the required 15-minute timeframe or exhibits oscillatory behavior when tested with varying traffic patterns, this hypothesis would be proven wrong.",
         "epistemic_state": "HYPOTHESIZED",
         "parent_hypothesis_ids": [],
         "provenance": {
@@ -61,28 +60,27 @@
       },
       {
         "hypothesis_id": "H-DEV-CH-004-002",
-        "claim": "The adaptive traffic signal system operates through an emergent collective intelligence mechanism where intersections follow simple local rules that, when combined with neighbor communication, result in system-wide optimization without explicit coordination.",
-        "mechanism": "Each intersection follows simple local rules: if queue length is above threshold, increase green time proportionally to queue length; if throughput is below threshold, adjust offset to better match neighbor phases. These rules, combined with limited neighbor communication about phase timing, create an emergent system that self-organizes to optimize network flow. The system exhibits properties similar to slime mold network formation, where simple components create complex adaptive behavior.",
+        "claim": "Traffic signals adapt through a distributed consensus mechanism where intersections negotiate timing adjustments based on shared traffic flow predictions.",
+        "mechanism": "Each intersection maintains a local model of traffic flow and shares predictions with adjacent intersections. Through iterative negotiation, intersections agree on signal timing that optimizes for collective rather than individual performance. The consensus process uses weighted voting based on intersection importance and traffic volume.",
         "evidence": [
-          "Emergence in biological systems like slime mold networks",
-          "Success of simple rule-based systems in complex environments (e.g., ant colonies)",
-          "Empirical observation that traffic systems can self-organize under certain conditions"
+          "Consensus algorithms work well in distributed systems",
+          "Negotiation-based approaches have succeeded in resource allocation problems",
+          "Traffic prediction models have shown reasonable accuracy in short time horizons"
         ],
         "assumptions": [
-          "Local rules are sufficient for system-wide optimization",
-          "Neighbor communication provides enough information for coordination",
-          "The system will exhibit emergent properties beyond the sum of individual behaviors",
-          "Simple rules can adapt to diverse traffic conditions"
+          "Intersections can reliably share traffic predictions with neighbors",
+          "Negotiation process converges quickly enough for real-time adaptation",
+          "Local traffic models are sufficiently accurate for prediction"
         ],
         "predictions": [],
         "expected_failure_modes": [
-          "Failure to adapt to unusual traffic patterns not represented in the rule design",
-          "Emergence of unwanted collective behaviors like phantom traffic jams",
-          "Sensitivity to initial conditions leading to different outcomes for similar scenarios"
+          "Deadlock in consensus process during conflicting traffic conditions",
+          "Excessive communication overhead causing delays",
+          "Bias toward high-volume intersections at expense of overall network efficiency"
         ],
-        "novelty_rationale": "This hypothesis proposes an emergent intelligence approach rather than an optimization-based one, potentially offering more robust adaptation to unexpected conditions by relying on simple, distributed rules rather than complex calculations.",
-        "testability": "The hypothesis can be tested by implementing the simple rules in simulation and measuring whether system-wide optimization emerges. The rules can be systematically varied to identify which combinations produce the best results.",
-        "falsifier": "If the system fails to achieve network-wide optimization under diverse conditions, or if performance degrades compared to centrally optimized solutions even with sufficient time for emergence, the emergent intelligence mechanism would be falsified.",
+        "novelty_rationale": "Transfers the concept of distributed consensus from biological systems to traffic signal optimization, emphasizing collective decision-making over individual optimization.",
+        "testability": "Can be tested by implementing a consensus protocol between simulated intersections and measuring the time to reach agreement and resulting traffic flow improvements.",
+        "falsifier": "If the negotiation process fails to converge within the required 15-minute timeframe or results in significantly worse performance than centrally optimized signals, this hypothesis would be proven wrong.",
         "epistemic_state": "HYPOTHESIZED",
         "parent_hypothesis_ids": [],
         "provenance": {
@@ -95,29 +93,27 @@
       },
       {
         "hypothesis_id": "H-DEV-CH-004-003",
-        "claim": "The adaptive traffic signal system operates through a distributed reinforcement learning mechanism where intersections learn optimal timing policies through interaction with their environment and neighbors.",
-        "mechanism": "Each intersection implements a reinforcement learning algorithm that receives rewards based on local performance metrics (throughput, queue length, delay). The learning algorithm explores different timing strategies and updates its policy based on the rewards received. Additionally, intersections share their learned policies with neighbors, allowing the network to collectively develop optimal strategies through distributed learning. The system gradually improves its performance over time as each intersection learns from its own experiences and those of its neighbors.",
+        "claim": "Traffic signals adapt through a stigmergy-inspired mechanism where intersections indirectly coordinate through environmental modifications (traffic flow patterns) rather than direct communication.",
+        "mechanism": "Each intersection adjusts its signal timing based on local traffic conditions and the residual effects of previous timing decisions (traffic platoons, queue formations). These effects create an 'environmental' pattern that influences neighboring intersections without explicit communication. The system exhibits emergent coordination through these indirect feedback loops.",
         "evidence": [
-          "Success of reinforcement learning in complex control problems",
-          "Demonstration of learning in biological systems",
-          "Emergence of optimal behavior through trial and error in adaptive systems"
+          "Stigmergy has been observed in biological systems to achieve complex coordination",
+          "Traffic platoons naturally form and influence downstream intersections",
+          "Emergent behavior has been observed in some traffic signal systems"
         ],
         "assumptions": [
-          "Intersections have sufficient computational capacity for reinforcement learning",
-          "Reward functions accurately reflect system performance",
-          "Learning can occur in real-time within traffic signal constraints",
-          "Shared policies between intersections enable network-wide learning"
+          "Traffic patterns created by one intersection serve as sufficient information for neighbors",
+          "Indirect coordination can achieve near-optimal performance",
+          "The system can distinguish between beneficial and detrimental environmental patterns"
         ],
         "predictions": [],
         "expected_failure_modes": [
-          "Slow learning that cannot adapt to real-time traffic conditions",
-          "Overfitting to specific traffic patterns encountered during training",
-          "Instability during learning phases causing erratic signal timing",
-          "Catastrophic forgetting when encountering new traffic patterns"
+          "Propagation of timing errors through the network",
+          "Inability to adapt to network-wide disruptions",
+          "Suboptimal coordination due to limited environmental information"
         ],
-        "novelty_rationale": "This hypothesis introduces a learning-based approach where the system improves its performance over time through experience, rather than relying on predefined optimization algorithms or simple rules. This could potentially adapt to changing conditions better than static approaches.",
-        "testability": "The hypothesis can be tested by implementing reinforcement learning at intersections and measuring learning curves, performance improvement over time, and generalization to new scenarios. Different learning algorithms and reward structures can be systematically compared.",
-        "falsifier": "If the system fails to show consistent improvement over time, or if performance plateaus at suboptimal levels despite continued learning, or if the system cannot adapt to novel scenarios not encountered during learning, the reinforcement learning mechanism would be falsified.",
+        "novelty_rationale": "Applies the biological principle of stigmergy to traffic signal control, eliminating the need for explicit communication between intersections while still achieving coordination.",
+        "testability": "Can be tested by implementing a system where intersections only respond to local traffic conditions without direct communication and measuring emergent coordination and system performance.",
+        "falsifier": "If the system fails to achieve coordination between non-adjacent intersections or produces significantly worse performance than centrally optimized signals, this hypothesis would be proven wrong.",
         "epistemic_state": "HYPOTHESIZED",
         "parent_hypothesis_ids": [],
         "provenance": {
@@ -129,9 +125,9 @@
         "provenance_root_hash": ""
       }
     ],
-    "distinguishing_predictions": "The gradient descent hypothesis predicts that the system will converge to a stable optimum relatively quickly but may be sensitive to initial conditions. The emergent intelligence hypothesis predicts that the system will exhibit adaptive behavior even with simple rules but may take longer to reach optimal configurations and could show unexpected collective behaviors. The reinforcement learning hypothesis predicts that the system will improve its performance over time with repeated exposure to similar conditions but may struggle with novel scenarios. These hypotheses can be distinguished by measuring convergence speed, sensitivity to initial conditions, adaptation to novel scenarios, and the presence of emergent behaviors not explicitly programmed into the system.",
+    "distinguishing_predictions": "The reinforcement learning hypothesis would predict that intersections initially perform poorly but improve over time as they learn, while the consensus hypothesis would predict more consistent performance but with potential delays during negotiation. The stigmergy hypothesis would predict coordination only between physically adjacent intersections with diminishing effects further away. Under conditions of network-wide disruption (e.g., city-wide event), the reinforcement learning hypothesis would show the fastest adaptation but potentially with oscillations, the consensus hypothesis would show coordinated but slower response, and the stigmergy hypothesis would show gradual propagation of changes through the network. If communication bandwidth between intersections is artificially limited, the stigmergy hypothesis would maintain performance while the others would degrade significantly.",
     "transfer_id": "TH-DEV-CH-004-001",
-    "source_transfer_hash": "a9b81de5c9b970186029d5b4e8719e63f951b1ffff731f69d699ade6407cb154"
+    "source_transfer_hash": "fd7aca02e99d6931bdef4ecf398e934a8c224c737f8fdf20c6aa7f48ea51837d"
   },
-  "timestamp": "2026-08-08T07:34:11.935931+00:00"
+  "timestamp": "2026-08-08T07:46:15.979663+00:00"
 }

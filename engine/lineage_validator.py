@@ -253,36 +253,113 @@ class LineageValidator:
     def _verify_hashes(self, prov: ProvenanceGraph, run_dir: Path) -> List[str]:
         """Verify that node content_hashes match the actual stage artifacts on disk.
 
-        For nodes whose metadata references a stage artifact, we load the
-        artifact and verify its output_hash matches the node's content_hash.
+        FAIL-CLOSED semantics (per reviewer round-5 directive):
+          - Every node with metadata["artifact_stage"] MUST be verified.
+          - If artifact_stage is present but the artifact file is missing → FAIL.
+          - If the artifact file exists but output_hash is empty → FAIL.
+          - If artifact.output_hash != node.content_hash → FAIL.
+          - If artifact_stage is absent AND the node type is one that SHOULD
+            reference an artifact (i.e. not a root type) → FAIL (missing reference).
+          - Only root-type nodes (source_document, checkpointed_run) without
+            artifact_stage are allowed to skip — and even then, only if they
+            have a content_hash (otherwise FAIL).
+
+        This replaces the previous best-effort skip behavior. A check that
+        passes because there was nothing eligible to check is NOT evidence
+        that the hashes were verified.
         """
         mismatches = []
+        # Node types that MUST carry an artifact_stage reference
+        # (because their content originates from a checkpoint stage artifact)
+        TYPES_REQUIRING_ARTIFACT_REF = {
+            "mechanism_graph", "mechanism_pattern", "transfer_hypothesis",
+            "hypothesis", "adversarial_analysis", "rediscovery_analysis",
+            "novelty_assessment", "prediction", "experiment_proposal",
+        }
         for nid, node in prov.nodes.items():
-            # Skip nodes that don't reference a stage artifact
-            if not node.metadata:
+            artifact_stage = node.metadata.get("artifact_stage", "") if node.metadata else ""
+            expected_hash = node.metadata.get("artifact_output_hash", "") if node.metadata else ""
+
+            # Root types (source_document, checkpointed_run) may not reference
+            # a stage artifact — but source_document DOES reference 01_extraction
+            # in the current implementation, so this branch is rarely hit.
+            if node.node_type not in TYPES_REQUIRING_ARTIFACT_REF:
+                # Root-type node: no artifact reference required
                 continue
-            # Check if this node's content_hash can be verified against a stage artifact
-            # The extraction/adversarial/etc nodes store the stage's output_hash
-            # in their content_hash field. We verify by loading the stage artifact.
-            stage_ref = node.metadata.get("stage") or node.metadata.get("stage_artifact")
-            if not stage_ref:
-                # Try to infer the stage from the node_id pattern
-                # e.g. "adversarial:H-DEV-CH-004-001" → stage "05_adversarial_H-DEV-CH-004-001"
-                # This is best-effort; nodes without a verifiable artifact are skipped.
+
+            # FAIL if the artifact_stage reference is missing entirely
+            if not artifact_stage:
+                mismatches.append(
+                    f"{nid} (type={node.node_type}): missing artifact_stage reference — "
+                    "every non-root provenance node MUST reference its source artifact")
                 continue
-            artifact_path = run_dir / f"{stage_ref}.json"
+
+            # FAIL if the expected hash is empty
+            if not expected_hash:
+                mismatches.append(
+                    f"{nid} (type={node.node_type}): artifact_output_hash is empty — "
+                    f"artifact_stage={artifact_stage!r} but no hash recorded")
+                continue
+
+            # FAIL if the node's own content_hash doesn't match the expected hash
+            if node.content_hash != expected_hash:
+                mismatches.append(
+                    f"{nid} (type={node.node_type}): node content_hash "
+                    f"{node.content_hash[:16]}... != artifact_output_hash "
+                    f"{expected_hash[:16]}... — node hash does not match its declared artifact hash")
+                continue
+
+            # Load the artifact file from disk
+            artifact_path = run_dir / f"{artifact_stage}.json"
             if not artifact_path.exists():
-                mismatches.append(f"{nid}: referenced stage artifact {stage_ref}.json not found")
+                mismatches.append(
+                    f"{nid} (type={node.node_type}): artifact file {artifact_stage}.json "
+                    "does not exist on disk")
                 continue
+
+            # Parse the artifact JSON
             try:
                 artifact = json.loads(artifact_path.read_text())
-                artifact_hash = artifact.get("output_hash", "")
-                if artifact_hash and node.content_hash and artifact_hash != node.content_hash:
-                    mismatches.append(
-                        f"{nid}: content_hash {node.content_hash[:16]}... "
-                        f"!= artifact output_hash {artifact_hash[:16]}...")
-            except (json.JSONDecodeError, KeyError) as e:
-                mismatches.append(f"{nid}: could not parse stage artifact: {e}")
+            except json.JSONDecodeError as e:
+                mismatches.append(
+                    f"{nid} (type={node.node_type}): artifact {artifact_stage}.json "
+                    f"is not valid JSON: {e}")
+                continue
+
+            # Extract the artifact's output_hash
+            artifact_hash = artifact.get("output_hash", "")
+            if not artifact_hash:
+                mismatches.append(
+                    f"{nid} (type={node.node_type}): artifact {artifact_stage}.json "
+                    "has no output_hash field")
+                continue
+
+            # FAIL if the artifact's output_hash doesn't match the node's content_hash
+            if artifact_hash != node.content_hash:
+                mismatches.append(
+                    f"{nid} (type={node.node_type}): node content_hash "
+                    f"{node.content_hash[:16]}... != artifact {artifact_stage}.json "
+                    f"output_hash {artifact_hash[:16]}... — artifact was modified "
+                    "after lineage creation or substituted")
+                continue
+
+            # Cross-check: the artifact's output_hash must also match the
+            # run manifest's recorded output_hash for this stage (if the
+            # manifest is available)
+            manifest_path = run_dir / "manifest.json"
+            if manifest_path.exists():
+                try:
+                    manifest = json.loads(manifest_path.read_text())
+                    stage_status = manifest.get("stages", {}).get(artifact_stage, {})
+                    manifest_hash = stage_status.get("output_hash", "")
+                    if manifest_hash and manifest_hash != artifact_hash:
+                        mismatches.append(
+                            f"{nid} (type={node.node_type}): artifact {artifact_stage}.json "
+                            f"output_hash {artifact_hash[:16]}... != manifest stage "
+                            f"output_hash {manifest_hash[:16]}... — manifest/artifact mismatch")
+                except (json.JSONDecodeError, KeyError):
+                    pass  # manifest parse failure is not a lineage failure
+
         return mismatches
 
 

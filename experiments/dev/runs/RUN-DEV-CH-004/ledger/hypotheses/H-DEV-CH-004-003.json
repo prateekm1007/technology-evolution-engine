@@ -1,28 +1,26 @@
 {
   "hypothesis_id": "H-DEV-CH-004-003",
-  "claim": "The adaptive traffic signal system operates through a distributed reinforcement learning mechanism where intersections learn optimal timing policies through interaction with their environment and neighbors.",
-  "mechanism": "Each intersection implements a reinforcement learning algorithm that receives rewards based on local performance metrics (throughput, queue length, delay). The learning algorithm explores different timing strategies and updates its policy based on the rewards received. Additionally, intersections share their learned policies with neighbors, allowing the network to collectively develop optimal strategies through distributed learning. The system gradually improves its performance over time as each intersection learns from its own experiences and those of its neighbors.",
+  "claim": "Traffic signals adapt through a stigmergy-inspired mechanism where intersections indirectly coordinate through environmental modifications (traffic flow patterns) rather than direct communication.",
+  "mechanism": "Each intersection adjusts its signal timing based on local traffic conditions and the residual effects of previous timing decisions (traffic platoons, queue formations). These effects create an 'environmental' pattern that influences neighboring intersections without explicit communication. The system exhibits emergent coordination through these indirect feedback loops.",
   "evidence": [
-    "Success of reinforcement learning in complex control problems",
-    "Demonstration of learning in biological systems",
-    "Emergence of optimal behavior through trial and error in adaptive systems"
+    "Stigmergy has been observed in biological systems to achieve complex coordination",
+    "Traffic platoons naturally form and influence downstream intersections",
+    "Emergent behavior has been observed in some traffic signal systems"
   ],
   "assumptions": [
-    "Intersections have sufficient computational capacity for reinforcement learning",
-    "Reward functions accurately reflect system performance",
-    "Learning can occur in real-time within traffic signal constraints",
-    "Shared policies between intersections enable network-wide learning"
+    "Traffic patterns created by one intersection serve as sufficient information for neighbors",
+    "Indirect coordination can achieve near-optimal performance",
+    "The system can distinguish between beneficial and detrimental environmental patterns"
   ],
   "predictions": [],
   "expected_failure_modes": [
-    "Slow learning that cannot adapt to real-time traffic conditions",
-    "Overfitting to specific traffic patterns encountered during training",
-    "Instability during learning phases causing erratic signal timing",
-    "Catastrophic forgetting when encountering new traffic patterns"
+    "Propagation of timing errors through the network",
+    "Inability to adapt to network-wide disruptions",
+    "Suboptimal coordination due to limited environmental information"
   ],
-  "novelty_rationale": "This hypothesis introduces a learning-based approach where the system improves its performance over time through experience, rather than relying on predefined optimization algorithms or simple rules. This could potentially adapt to changing conditions better than static approaches.",
-  "testability": "The hypothesis can be tested by implementing reinforcement learning at intersections and measuring learning curves, performance improvement over time, and generalization to new scenarios. Different learning algorithms and reward structures can be systematically compared.",
-  "falsifier": "If the system fails to show consistent improvement over time, or if performance plateaus at suboptimal levels despite continued learning, or if the system cannot adapt to novel scenarios not encountered during learning, the reinforcement learning mechanism would be falsified.",
+  "novelty_rationale": "Applies the biological principle of stigmergy to traffic signal control, eliminating the need for explicit communication between intersections while still achieving coordination.",
+  "testability": "Can be tested by implementing a system where intersections only respond to local traffic conditions without direct communication and measuring emergent coordination and system performance.",
+  "falsifier": "If the system fails to achieve coordination between non-adjacent intersections or produces significantly worse performance than centrally optimized signals, this hypothesis would be proven wrong.",
   "epistemic_state": "HYPOTHESIZED",
   "parent_hypothesis_ids": [],
   "provenance": {

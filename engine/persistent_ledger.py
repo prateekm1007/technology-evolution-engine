@@ -47,6 +47,7 @@ from discovery_infrastructure.discovery_substrate import (
     DiscoveryLedger, DiscoveryCase, Hypothesis, Prediction,
     ExperimentProposal, TransferHypothesis, DiscoveryFailure,
     PriorArtAssessment, DuplicateRegistrationError,
+    ProvenanceGraph, ProvenanceNode, ProvenanceEdge,
 )
 
 
@@ -252,18 +253,72 @@ class PersistentLedger:
                 "details": details}
 
     def get_case(self, case_id: str) -> Optional[DiscoveryCase]:
-        """Load a case from disk (for external auditors)."""
+        """Load a case from disk with COMPLETE provenance graph reconstruction.
+
+        Repair B (round-5): an external auditor can call this method to load
+        a persisted case and independently traverse its provenance graph
+        without rerunning the engine. The reconstructed DiscoveryCase has:
+          - case_id, input_sources, input_domains, evidence
+          - provenance_root_hash
+          - a fully populated ProvenanceGraph (nodes + edges)
+          - verify_provenance() works
+          - LineageValidator().verify(case) works
+
+        This is NOT a simplified reconstruction — it rebuilds the complete
+        ProvenanceGraph from the persisted JSON.
+        """
         file_path = self.ledger_dir / "cases" / f"{case_id}.json"
         if not file_path.exists():
             return None
         d = json.loads(file_path.read_text())
-        # Reconstruct the case (simplified — full reconstruction would need
-        # all the provenance graph nodes/edges)
+
+        # Reconstruct the DiscoveryCase with all fields
         case = DiscoveryCase(case_id=d["case_id"])
         case.input_sources = d.get("input_sources", [])
         case.input_domains = d.get("input_domains", [])
         case.evidence = d.get("evidence", [])
         case.provenance_root_hash = d.get("provenance_root_hash", "")
+
+        # Reconstruct the complete ProvenanceGraph
+        prov_data = d.get("provenance", {})
+        case.provenance = ProvenanceGraph()
+        # Reconstruct nodes
+        for node_data in prov_data.get("nodes", {}).values():
+            case.provenance.add_node(ProvenanceNode(
+                node_id=node_data["node_id"],
+                node_type=node_data["node_type"],
+                content_hash=node_data.get("content_hash", ""),
+                metadata=node_data.get("metadata", {}),
+            ))
+        # Reconstruct edges (preserve original timestamp so content_hash matches)
+        for edge_data in prov_data.get("edges", []):
+            edge = ProvenanceEdge(
+                edge_id=edge_data["edge_id"],
+                source_node_id=edge_data["source_node_id"],
+                target_node_id=edge_data["target_node_id"],
+                edge_type=edge_data["edge_type"],
+                evidence=edge_data.get("evidence", ""),
+                actor=edge_data.get("actor", ""),
+            )
+            # Preserve the original timestamp so the reconstructed graph's
+            # content_hash matches the original committed hash.
+            edge.timestamp = edge_data.get("timestamp", edge.timestamp)
+            case.provenance.add_edge(edge)
+        # Re-commit the provenance graph so verify_provenance() works.
+        # The committed hash is deterministic (content-addressed), so
+        # re-committing produces the same hash as the original — IF the
+        # graph content is identical. If the persisted JSON was tampered,
+        # the re-committed hash will differ from case.provenance_root_hash,
+        # and verify_provenance() will return False (which is the correct
+        # behavior for detecting tampering).
+        stored_hash = case.provenance_root_hash
+        recomputed_hash = case.provenance.commit()
+        # If the recomputed hash doesn't match the stored hash, the
+        # persisted provenance was tampered. Leave provenance_root_hash
+        # as the stored value so verify_provenance() detects the mismatch.
+        case.provenance_root_hash = stored_hash
+        case.provenance._committed_hash = recomputed_hash
+
         return case
 
     def to_dict(self) -> Dict:

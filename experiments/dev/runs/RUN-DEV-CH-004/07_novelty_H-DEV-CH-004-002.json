@@ -2,7 +2,7 @@
   "stage": "07_novelty_H-DEV-CH-004-002",
   "run_id": "RUN-DEV-CH-004",
   "code_sha": "engine-v0.1-round3",
-  "input_hash": "14c23cdf96150c22ba17c60ec02b440b802a0b53d2b436e8e78b2dc09892a6ac",
+  "input_hash": "fea27f647b7884e1507bae15b571bf490e0d8495b47e7e7cb29ed21b06b6ede5",
   "output_hash": "470e2f3264051cba937be94b747fd8784f1ed96b136bd05cb618d598b095bb64",
   "provider_manifest": {
     "provider": "mock-literature",
@@ -12,10 +12,10 @@
       "corpus_size": 1,
       "cutoff": "2026-08-08"
     },
-    "prompt_sha": "4f1905529f922e65ed138b1fca6631f9f54a56fd1695bd337f34d8de7ad05a7e",
+    "prompt_sha": "7c31b8d372ce07c395b257810959ef7d0bae0026bfc46f0ab361bc3122352bd1",
     "seed": null,
     "tool_versions": {},
-    "timestamp": "2026-08-08T07:34:55.038825+00:00",
+    "timestamp": "2026-08-08T07:46:57.147251+00:00",
     "latency_ms": null,
     "success": true,
     "error": ""
@@ -28,5 +28,5 @@
     "review_required": true,
     "source_hypothesis_hash": ""
   },
-  "timestamp": "2026-08-08T07:34:55.039351+00:00"
+  "timestamp": "2026-08-08T07:46:57.147725+00:00"
 }

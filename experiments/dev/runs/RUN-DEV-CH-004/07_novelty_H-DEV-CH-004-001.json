@@ -2,8 +2,8 @@
   "stage": "07_novelty_H-DEV-CH-004-001",
   "run_id": "RUN-DEV-CH-004",
   "code_sha": "engine-v0.1-round3",
-  "input_hash": "5ffbb58523089a76086b47efba046c115eaaa56d98b2b4baf805a32f563c06ff",
-  "output_hash": "b79c5c5857bffc0cbd890b241e56b53525bc938c3b8acb4e8aa005686600aa84",
+  "input_hash": "7c57904ab505dfb0b31fbced220ff22308e748f06b6e43ecb693aea36c963f4c",
+  "output_hash": "6fe9b546c495dcbc868db24f7ab553777dcfcd06c54e5bca3b9e190933bc6a3a",
   "provider_manifest": {
     "provider": "mock-literature",
     "model": "dev-corpus-v0",
@@ -12,21 +12,21 @@
       "corpus_size": 1,
       "cutoff": "2026-08-08"
     },
-    "prompt_sha": "f07260c5a5288fb3b09a549eb8ad12b5cc037cd3a4dd4d4c1dd77f62b4a41ebf",
+    "prompt_sha": "71a4b468dac42d147d596eb41f91f65cdbdaf84f7fe74b7a3ab37edb7cb0145b",
     "seed": null,
     "tool_versions": {},
-    "timestamp": "2026-08-08T07:34:28.222356+00:00",
+    "timestamp": "2026-08-08T07:46:41.747516+00:00",
     "latency_ms": null,
     "success": true,
     "error": ""
   },
   "result": {
     "hypothesis_id": "H-DEV-CH-004-001",
-    "status": "AMBIGUOUS",
-    "similarity": "weak matches in dev corpus",
+    "status": "NOT_EVALUATED",
+    "similarity": "no matches in dev corpus \u2014 NOT proof of novelty",
     "matched_prior_art": [],
     "review_required": true,
     "source_hypothesis_hash": ""
   },
-  "timestamp": "2026-08-08T07:34:28.222785+00:00"
+  "timestamp": "2026-08-08T07:46:41.747876+00:00"
 }

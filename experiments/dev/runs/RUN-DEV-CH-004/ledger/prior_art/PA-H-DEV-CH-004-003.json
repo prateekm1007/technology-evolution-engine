@@ -6,7 +6,7 @@
     "dev_corpus"
   ],
   "queries": [
-    "The adaptive traffic signal system operates through a distributed reinforcement learning mechanism where intersections learn optimal timing policies through interaction with their environment and neighbors. Each intersection implements a reinforcement learning algorithm that receives rewards based on local performance metrics (throughput, queue length, delay). The learning algorithm explores different timing strategies and updates its policy based on the rewards received. Additionally, intersections share their learned policies with neighbors, allowing the network to collectively develop optimal strategies through distributed learning. The system gradually improves its performance over time as each intersection learns from its own experiences and those of its neighbors."
+    "Traffic signals adapt through a stigmergy-inspired mechanism where intersections indirectly coordinate through environmental modifications (traffic flow patterns) rather than direct communication. Each intersection adjusts its signal timing based on local traffic conditions and the residual effects of previous timing decisions (traffic platoons, queue formations). These effects create an 'environmental' pattern that influences neighboring intersections without explicit communication. The system exhibits emergent coordination through these indirect feedback loops."
   ],
   "sources": [
     "The Lotus Effect: Superhydrophobicity and Self-Cleaning"
@@ -17,5 +17,5 @@
   "confidence": 0.7,
   "cutoff": "2026-08-08",
   "reviewer": "novelty_firewall_v0",
-  "timestamp": "2026-08-08T07:35:09.239333+00:00"
+  "timestamp": "2026-08-08T07:47:19.481027+00:00"
 }

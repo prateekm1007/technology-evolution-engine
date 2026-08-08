@@ -689,59 +689,77 @@ class CheckpointedDiscoveryLoop:
                     "error": str(e)}, None
 
     def _stage_case(self, challenge: DevChallenge, run_dir: Path, input_data) -> Tuple[Dict, Optional[Dict]]:
-        """Repair 1: build a DiscoveryCase with TRAVERSABLE LINEAGE and register in ledger."""
+        """Repair A: build a DiscoveryCase with TRAVERSABLE LINEAGE where every
+        node carries an explicit artifact reference (artifact_stage,
+        artifact_output_hash) so the LineageValidator can enforce hash
+        matching FAIL-CLOSED (not best-effort skip)."""
         sm_data = input_data
         final_state = sm_data.get("result", {}).get("final_state", "") if sm_data else ""
 
-        # Collect all upstream object IDs for the lineage
+        # Collect all upstream stage artifacts
         ext_data = self._load_stage(run_dir, "01_extraction")
         ab_data = self._load_stage(run_dir, "02_abstraction")
         tr_data = self._load_stage(run_dir, "03_transfer")
         hyp_data = self._load_stage(run_dir, "04_hypotheses")
 
-        # Build the case with full lineage references
+        # Helper: build the artifact-reference metadata that every node MUST carry
+        def _artifact_ref(stage_name: str, stage_data: Optional[Dict]) -> Dict:
+            """Return metadata with explicit artifact_stage + artifact_output_hash.
+            These fields are REQUIRED by LineageValidator._verify_hashes().
+            If the stage data is missing or has no output_hash, the reference
+            is still recorded (so the validator can FAIL rather than skip)."""
+            if stage_data and stage_data.get("output_hash"):
+                return {
+                    "artifact_stage": stage_name,
+                    "artifact_output_hash": stage_data["output_hash"],
+                }
+            # Even if missing, record the expected stage so the validator
+            # can FAIL (not skip) when the artifact is absent.
+            return {"artifact_stage": stage_name, "artifact_output_hash": ""}
+
         case = DiscoveryCase(
             case_id=f"DC-{challenge.challenge_id}",
             input_sources=[d.get("title", "") for d in challenge.source_documents],
             input_domains=[challenge.source_domain, challenge.target_domain],
-            evidence=[],  # will be populated below
+            evidence=[],
         )
-
-        # Repair 1: build a traversable provenance graph linking every upstream object
         prov = case.provenance
 
-        # Source document node
+        # Source document node (references 01_extraction artifact)
         if ext_data and ext_data.get("result"):
             ext_result = ext_data["result"]
+            doc_id = ext_result.get('source_document_id', challenge.challenge_id)
             prov.add_node(ProvenanceNode(
-                node_id=f"source_doc:{ext_result.get('source_document_id', challenge.challenge_id)}",
+                node_id=f"source_doc:{doc_id}",
                 node_type="source_document",
                 content_hash=ext_data.get("output_hash", ""),
-                metadata={"title": ext_result.get("source_document_title", ""),
-                          "extraction_output_hash": ext_data.get("output_hash", "")}))
+                metadata={**_artifact_ref("01_extraction", ext_data),
+                          "title": ext_result.get("source_document_title", "")}))
 
-        # Mechanism graph node
+        # Mechanism graph node (references 01_extraction artifact — same stage)
         if ext_data and ext_data.get("result"):
             prov.add_node(ProvenanceNode(
                 node_id=f"mechanism_graph:{challenge.challenge_id}",
                 node_type="mechanism_graph",
                 content_hash=ext_data.get("output_hash", ""),
-                metadata={"n_nodes": ext_result.get("n_nodes", 0),
+                metadata={**_artifact_ref("01_extraction", ext_data),
+                          "n_nodes": ext_result.get("n_nodes", 0),
                           "n_edges": ext_result.get("n_edges", 0)}))
             prov.add_edge(ProvenanceEdge(
                 f"prov:mg_src:{challenge.challenge_id}",
-                f"source_doc:{ext_result.get('source_document_id', challenge.challenge_id)}",
+                f"source_doc:{doc_id}",
                 f"mechanism_graph:{challenge.challenge_id}",
                 "DERIVES_FROM", "mechanism graph extracted from source",
                 actor="mechanism_extractor"))
 
-        # Mechanism pattern node
+        # Mechanism pattern node (references 02_abstraction artifact)
         if ab_data and ab_data.get("result"):
             prov.add_node(ProvenanceNode(
                 node_id=f"mechanism_pattern:{challenge.challenge_id}",
                 node_type="mechanism_pattern",
                 content_hash=ab_data.get("output_hash", ""),
-                metadata={"pattern_id": ab_data["result"].get("pattern", {}).get("pattern_id", "")}))
+                metadata={**_artifact_ref("02_abstraction", ab_data),
+                          "pattern_id": ab_data["result"].get("pattern", {}).get("pattern_id", "")}))
             prov.add_edge(ProvenanceEdge(
                 f"prov:mp_mg:{challenge.challenge_id}",
                 f"mechanism_graph:{challenge.challenge_id}",
@@ -749,7 +767,8 @@ class CheckpointedDiscoveryLoop:
                 "DERIVES_FROM", "pattern abstracted from mechanism graph",
                 actor="mechanism_abstracter"))
 
-        # Transfer hypothesis node
+        # Transfer hypothesis node (references 03_transfer artifact)
+        transfer_id = ""
         if tr_data and tr_data.get("result") and tr_data["result"].get("transfers"):
             t = tr_data["result"]["transfers"][0]
             transfer_id = t["transfer_id"]
@@ -757,7 +776,8 @@ class CheckpointedDiscoveryLoop:
                 node_id=f"transfer:{transfer_id}",
                 node_type="transfer_hypothesis",
                 content_hash=tr_data.get("output_hash", ""),
-                metadata={"source_domain": t.get("source_domain", ""),
+                metadata={**_artifact_ref("03_transfer", tr_data),
+                          "source_domain": t.get("source_domain", ""),
                           "target_domain": t.get("target_domain", ""),
                           "transferred_principle": t.get("transferred_principle", "")}))
             prov.add_edge(ProvenanceEdge(
@@ -767,94 +787,110 @@ class CheckpointedDiscoveryLoop:
                 "DERIVES_FROM", "transfer derived from pattern",
                 actor="cross_domain_transfer"))
 
-        # Per-hypothesis lineage: hypothesis → adversarial → rediscovery → novelty → prediction → experiment
+        # Per-hypothesis lineage
         if hyp_data and hyp_data.get("result"):
             for h_dict in hyp_data["result"]["hypotheses"]:
                 if not h_dict.get("is_testable"): continue
                 hid = h_dict["hypothesis_id"]
-                # Hypothesis node
+                # Hypothesis node (references 04_hypotheses artifact)
+                # The content_hash MUST match the stage artifact's output_hash
+                # so the LineageValidator can verify it fail-closed.
+                hyp_artifact_hash = hyp_data.get("output_hash", "")
                 prov.add_node(ProvenanceNode(
                     node_id=f"hypothesis:{hid}",
                     node_type="hypothesis",
-                    content_hash=_sha(json.dumps(h_dict, sort_keys=True, default=str)),
-                    metadata={"claim": h_dict.get("claim", "")[:100]}))
-                if tr_data and tr_data.get("result") and tr_data["result"].get("transfers"):
+                    content_hash=hyp_artifact_hash,
+                    metadata={**_artifact_ref("04_hypotheses", hyp_data),
+                              "claim": h_dict.get("claim", "")[:100],
+                              "hypothesis_object_hash": _sha(json.dumps(h_dict, sort_keys=True, default=str))}))
+                if transfer_id:
                     prov.add_edge(ProvenanceEdge(
                         f"prov:h_th:{hid}", f"transfer:{transfer_id}",
                         f"hypothesis:{hid}", "DERIVES_FROM",
                         "hypothesis derived from transfer", actor="hypothesis_engine"))
 
-                # Adversarial node
+                # Adversarial node (references 05_adversarial_<hid> artifact)
                 adv = self._load_stage(run_dir, f"05_adversarial_{hid}")
+                adv_stage = f"05_adversarial_{hid}"
                 if adv and adv.get("result"):
                     prov.add_node(ProvenanceNode(
                         node_id=f"adversarial:{hid}", node_type="adversarial_analysis",
                         content_hash=adv.get("output_hash", ""),
-                        metadata={"outcome": adv["result"].get("outcome", ""),
+                        metadata={**_artifact_ref(adv_stage, adv),
+                                  "outcome": adv["result"].get("outcome", ""),
                                   "survives": adv["result"].get("survives", False)}))
                     prov.add_edge(ProvenanceEdge(
                         f"prov:adv_h:{hid}", f"hypothesis:{hid}", f"adversarial:{hid}",
                         "ANALYZES", "adversarial analysis of hypothesis",
                         actor="adversarial_engine"))
 
-                # Rediscovery node
+                # Rediscovery node (references 06_rediscovery_<hid> artifact)
                 rd = self._load_stage(run_dir, f"06_rediscovery_{hid}")
+                rd_stage = f"06_rediscovery_{hid}"
                 if rd and rd.get("result"):
                     prov.add_node(ProvenanceNode(
                         node_id=f"rediscovery:{hid}", node_type="rediscovery_analysis",
                         content_hash=rd.get("output_hash", ""),
-                        metadata={"classification": rd["result"].get("classification", ""),
+                        metadata={**_artifact_ref(rd_stage, rd),
+                                  "classification": rd["result"].get("classification", ""),
                                   "is_rediscovery": rd["result"].get("is_rediscovery", False)}))
                     prov.add_edge(ProvenanceEdge(
                         f"prov:rd_h:{hid}", f"hypothesis:{hid}", f"rediscovery:{hid}",
                         "ANALYZES", "rediscovery classification of hypothesis",
                         actor="rediscovery_detector"))
 
-                # Novelty node
+                # Novelty node (references 07_novelty_<hid> artifact)
                 nov = self._load_stage(run_dir, f"07_novelty_{hid}")
+                nov_stage = f"07_novelty_{hid}"
                 if nov and nov.get("result"):
                     prov.add_node(ProvenanceNode(
                         node_id=f"novelty:{hid}", node_type="novelty_assessment",
                         content_hash=nov.get("output_hash", ""),
-                        metadata={"status": nov["result"].get("status", "")}))
+                        metadata={**_artifact_ref(nov_stage, nov),
+                                  "status": nov["result"].get("status", "")}))
                     prov.add_edge(ProvenanceEdge(
                         f"prov:nov_h:{hid}", f"hypothesis:{hid}", f"novelty:{hid}",
                         "ANALYZES", "novelty assessment of hypothesis",
                         actor="novelty_firewall"))
 
-                # Prediction node (only if hypothesis survived adversarial)
+                # Prediction node (references 08_prediction_<hid> artifact)
                 pred = self._load_stage(run_dir, f"08_prediction_{hid}")
+                pred_stage = f"08_prediction_{hid}"
                 if pred and pred.get("result") and pred["result"].get("prediction"):
                     prov.add_node(ProvenanceNode(
                         node_id=f"prediction:{hid}", node_type="prediction",
                         content_hash=pred.get("output_hash", ""),
-                        metadata={"observable": pred["result"]["prediction"].get("observable", "")[:80]}))
+                        metadata={**_artifact_ref(pred_stage, pred),
+                                  "observable": pred["result"]["prediction"].get("observable", "")[:80]}))
                     prov.add_edge(ProvenanceEdge(
                         f"prov:pred_h:{hid}", f"hypothesis:{hid}", f"prediction:{hid}",
                         "DERIVES_FROM", "prediction derived from hypothesis",
                         actor="prediction_engine"))
 
-                # Experiment node
+                # Experiment node (references 09_experiment_<hid> artifact)
                 exp = self._load_stage(run_dir, f"09_experiment_{hid}")
+                exp_stage = f"09_experiment_{hid}"
                 if exp and exp.get("result") and exp["result"].get("experiment"):
                     prov.add_node(ProvenanceNode(
                         node_id=f"experiment:{hid}", node_type="experiment_proposal",
                         content_hash=exp.get("output_hash", ""),
-                        metadata={"experiment_id": exp["result"]["experiment"].get("experiment_id", "")}))
+                        metadata={**_artifact_ref(exp_stage, exp),
+                                  "experiment_id": exp["result"]["experiment"].get("experiment_id", "")}))
                     prov.add_edge(ProvenanceEdge(
                         f"prov:exp_pred:{hid}", f"prediction:{hid}", f"experiment:{hid}",
                         "DERIVES_FROM", "experiment designed from prediction",
                         actor="experiment_designer"))
 
-        # Run manifest node
+        # Run manifest node (references the manifest.json itself)
         prov.add_node(ProvenanceNode(
             node_id=f"run:{challenge.challenge_id}",
             node_type="checkpointed_run",
             content_hash=_sha(challenge.challenge_id),
             metadata={"run_id": f"RUN-{challenge.challenge_id}",
-                      "engine_code_sha": ENGINE_CODE_SHA}))
+                      "engine_code_sha": ENGINE_CODE_SHA,
+                      "artifact_stage": "manifest",
+                      "artifact_output_hash": ""}))  # manifest hash filled after save
 
-        # Populate case.evidence with all upstream object IDs (Repair 1)
         case.evidence = list(prov.nodes.keys())
 
         # Commit provenance
