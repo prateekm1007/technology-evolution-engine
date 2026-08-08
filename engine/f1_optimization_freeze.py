@@ -1,35 +1,26 @@
-"""f1_optimization_freeze.py — Machine-enforce F1 optimization freeze (Phase 7).
+"""f1_optimization_freeze.py — Machine-enforce F1 optimization freeze (Phase 7 R3).
 
-Per the 18-phase plan:
-    "Phase 7: FREEZE F1 OPTIMIZATION"
+Per audit round 17:
+    "The structural hash is not actually frozen. The first execution
+     defines the freeze. That is not tamper-evidence."
 
-Per STOP_BUILDING.md:
-    Item 8: Benchmark tuning is forbidden permanently (No-Gaming Rule)
-    Item 9: Score improvements without capability improvement are
-            forbidden permanently (Prime Directive)
+    "The freeze needs a committed, immutable-at-runtime reference artifact
+     created at the actual freeze point."
 
-Per CONSTITUTION.md:
-    The Prime Directive: "If an action would make a metric read greener
-    without making the product genuinely greener, that action is forbidden."
-    The No-Gaming Rule: "Do NOT lower a threshold to silence a red."
+    "Never: hash current artifacts → if no baseline exists: make current
+     artifacts the baseline."
 
-Per the audit (round 15):
-    "Phase 7 should operate under the fact that there are currently
-     zero scientifically eligible measurement metrics."
+This module loads an IMMUTABLE committed manifest
+(reports/phase7/frozen_f1_manifest.json) and compares current production
+hashes against the manifest values. It NEVER self-baselines. If the
+manifest is missing, the gate fails closed. If hash computation fails,
+the gate fails closed (P6: never write bare except Exception).
 
-Per the audit (round 16):
-    "The freeze gate is string-based and can be bypassed by rewording.
-     Need SHA-256 tamper-evidence on the actual frozen data structures."
-
-This module provides TWO layers of enforcement:
-    1. STRUCTURAL: SHA-256 tamper-evidence on frozen data structures
-       (GOLD_DISCOVERIES, BRIDGE_SYNONYMS, committed F1 score).
-       These checks hash the ACTUAL data, not a caller-supplied string.
-    2. DESCRIPTIVE: action-string patterns for explicit self-reporting
-       (weaker, but useful as a tripwire).
-
-The structural checks are the primary enforcement. They cannot be
-bypassed by rewording because they hash the actual data content.
+Enforcement layers:
+    1. STRUCTURAL: SHA-256 tamper-evidence against immutable manifest
+    2. DESCRIPTIVE: action-string patterns (weaker tripwire)
+    3. EPISTEMIC: zero eligible metrics (nothing to optimize against)
+    4. POST_COMPUTATION: F1 result checked against frozen baseline
 """
 from __future__ import annotations
 
@@ -37,81 +28,18 @@ import hashlib
 import json
 import sys
 from pathlib import Path
-from typing import Any, Optional
+from typing import Optional
 
 
 REPO = Path(__file__).resolve().parents[1]
+MANIFEST_PATH = REPO / "reports" / "phase7" / "frozen_f1_manifest.json"
 
-# The historical F1 baseline. This is the FROZEN value from Stage -1
-# (cycle 134). It is NOT a capability claim. It is the measurement
-# baseline that all future measurements are compared against.
 FROZEN_F1_BASELINE = 0.5714
 FROZEN_F1_BASELINE_SHA256 = hashlib.sha256(
     json.dumps({"f1": FROZEN_F1_BASELINE, "source": "stage-1-measurement-integrity-baseline",
                 "cycle": 134}).encode()
 ).hexdigest()
 
-# Frozen data structure hashes (Phase 7 Round 2 — structural enforcement)
-# These are computed from the ACTUAL committed data at the freeze point.
-# If the data changes, the hash changes, and the freeze gate raises.
-
-def _compute_gold_hash() -> str:
-    """Compute SHA-256 of GOLD_DISCOVERIES at import time.
-    This is the ACTUAL data hash, not a caller-supplied string."""
-    try:
-        sys.path.insert(0, str(REPO))
-        from benchmarks.discovery_capability_benchmark import GOLD_DISCOVERIES
-        return hashlib.sha256(
-            json.dumps(GOLD_DISCOVERIES, sort_keys=True, default=str).encode()
-        ).hexdigest()
-    except Exception:
-        return "COMPUTATION_FAILED"
-
-def _compute_synonym_hash() -> str:
-    """Compute SHA-256 of BRIDGE_SYNONYMS at import time."""
-    try:
-        sys.path.insert(0, str(REPO))
-        from benchmarks.discovery_capability_benchmark import BRIDGE_SYNONYMS
-        return hashlib.sha256(
-            json.dumps(BRIDGE_SYNONYMS, sort_keys=True, default=str).encode()
-        ).hexdigest()
-    except Exception:
-        return "COMPUTATION_FAILED"
-
-def _compute_committed_score_hash() -> str:
-    """Compute SHA-256 of the committed discovery_capability_score.json."""
-    try:
-        score_path = REPO / "benchmarks" / "reports" / "discovery_capability_score.json"
-        if score_path.exists():
-            data = json.loads(score_path.read_text())
-            return hashlib.sha256(
-                json.dumps(data, sort_keys=True).encode()
-            ).hexdigest()
-        return "FILE_NOT_FOUND"
-    except Exception:
-        return "COMPUTATION_FAILED"
-
-# Compute the current hashes (at module load time)
-_CURRENT_GOLD_HASH = None
-_CURRENT_SYNONYM_HASH = None
-_CURRENT_SCORE_HASH = None
-
-def _init_hashes():
-    """Initialize hash values. Called lazily to avoid import-order issues."""
-    global _CURRENT_GOLD_HASH, _CURRENT_SYNONYM_HASH, _CURRENT_SCORE_HASH
-    if _CURRENT_GOLD_HASH is None:
-        _CURRENT_GOLD_HASH = _compute_gold_hash()
-        _CURRENT_SYNONYM_HASH = _compute_synonym_hash()
-        _CURRENT_SCORE_HASH = _compute_committed_score_hash()
-
-# The FROZEN hashes — recorded at freeze time (Phase 7, commit b302f92)
-# These are the hashes of the data as it existed when the freeze was applied.
-# If the data changes, the current hash will differ and the gate will raise.
-FROZEN_GOLD_HASH = "will_be_set_after_first_computation"
-FROZEN_SYNONYM_HASH = "will_be_set_after_first_computation"
-FROZEN_SCORE_HASH = "will_be_set_after_first_computation"
-
-# Forbidden optimization patterns (STOP_BUILDING.md items 8 and 9)
 FORBIDDEN_OPTIMIZATION_PATTERNS = [
     "benchmark_tuning",
     "threshold_lowering",
@@ -124,166 +52,271 @@ FORBIDDEN_OPTIMIZATION_PATTERNS = [
 
 class F1OptimizationForbidden(Exception):
     """Raised when an action would modify the frozen F1 baseline or
-    engage in forbidden optimization.
+    engage in forbidden optimization. Hard failure — operation cannot proceed."""
+    pass
 
-    Per STOP_BUILDING.md:
-        Item 8: Benchmark tuning is forbidden permanently
-        Item 9: Score improvements without capability improvement are
-                forbidden permanently
 
-    This is a hard failure. The optimization cannot proceed.
+class FreezeManifestMissing(F1OptimizationForbidden):
+    """Raised when the immutable freeze manifest is missing.
+    The gate fails closed — no manifest = no freeze = no execution."""
+    pass
+
+
+class FreezeManifestCorrupt(F1OptimizationForbidden):
+    """Raised when the freeze manifest is malformed or missing required fields."""
+    pass
+
+
+class HashComputationFailed(F1OptimizationForbidden):
+    """Raised when hash computation fails. Per P6: fail closed, not open.
+    A failed hash computation must NOT produce a fallback string that
+    could become a baseline."""
+    pass
+
+
+def _load_manifest() -> dict:
+    """Load the immutable freeze manifest.
+
+    Raises:
+        FreezeManifestMissing: if the manifest file does not exist
+        FreezeManifestCorrupt: if the manifest is malformed or missing fields
     """
+    if not MANIFEST_PATH.exists():
+        raise FreezeManifestMissing(
+            f"F1 FREEZE MANIFEST MISSING: {MANIFEST_PATH}. "
+            f"The immutable freeze manifest must exist. Without it, the "
+            f"freeze gate cannot verify that data has not been modified. "
+            f"Per Phase 7 Round 3: the gate fails closed when the manifest "
+            f"is missing. It NEVER self-baselines."
+        )
+    try:
+        manifest = json.loads(MANIFEST_PATH.read_text())
+    except json.JSONDecodeError as e:
+        raise FreezeManifestCorrupt(
+            f"F1 FREEZE MANIFEST CORRUPT: {MANIFEST_PATH} is not valid JSON: {e}"
+        )
+
+    required_fields = [
+        "gold_discoveries_sha256", "bridge_synonyms_sha256",
+        "score_artifact_sha256", "benchmark_source_sha256",
+        "baseline_f1", "immutable_reference"
+    ]
+    for field in required_fields:
+        if field not in manifest:
+            raise FreezeManifestCorrupt(
+                f"F1 FREEZE MANIFEST CORRUPT: missing required field '{field}'"
+            )
+
+    if manifest.get("immutable_reference") is not True:
+        raise FreezeManifestCorrupt(
+            f"F1 FREEZE MANIFEST CORRUPT: immutable_reference must be true"
+        )
+
+    return manifest
+
+
+def _compute_gold_hash() -> str:
+    """Compute SHA-256 of GOLD_DISCOVERIES. Fail closed on any error."""
+    try:
+        sys.path.insert(0, str(REPO))
+        from benchmarks.discovery_capability_benchmark import GOLD_DISCOVERIES
+        return hashlib.sha256(
+            json.dumps(GOLD_DISCOVERIES, sort_keys=True, default=str).encode()
+        ).hexdigest()
+    except Exception as e:
+        raise HashComputationFailed(
+            f"HASH COMPUTATION FAILED (GOLD_DISCOVERIES): {type(e).__name__}: {e}. "
+            f"Per P6: fail closed. A failed hash computation must NOT produce "
+            f"a fallback string. The gate cannot proceed without a valid hash."
+        )
+
+
+def _compute_synonym_hash() -> str:
+    """Compute SHA-256 of BRIDGE_SYNONYMS. Fail closed on any error."""
+    try:
+        sys.path.insert(0, str(REPO))
+        from benchmarks.discovery_capability_benchmark import BRIDGE_SYNONYMS
+        return hashlib.sha256(
+            json.dumps(BRIDGE_SYNONYMS, sort_keys=True, default=str).encode()
+        ).hexdigest()
+    except Exception as e:
+        raise HashComputationFailed(
+            f"HASH COMPUTATION FAILED (BRIDGE_SYNONYMS): {type(e).__name__}: {e}. "
+            f"Per P6: fail closed."
+        )
+
+
+def _compute_score_hash() -> str:
+    """Compute SHA-256 of committed discovery_capability_score.json. Fail closed."""
+    try:
+        score_path = REPO / "benchmarks" / "reports" / "discovery_capability_score.json"
+        if not score_path.exists():
+            raise HashComputationFailed(
+                f"HASH COMPUTATION FAILED: committed score file missing: {score_path}"
+            )
+        data = json.loads(score_path.read_text())
+        return hashlib.sha256(
+            json.dumps(data, sort_keys=True).encode()
+        ).hexdigest()
+    except HashComputationFailed:
+        raise
+    except Exception as e:
+        raise HashComputationFailed(
+            f"HASH COMPUTATION FAILED (score artifact): {type(e).__name__}: {e}. "
+            f"Per P6: fail closed."
+        )
+
+
+def _compute_benchmark_source_hash() -> str:
+    """Compute SHA-256 of the benchmark source file. Fail closed."""
+    try:
+        path = REPO / "benchmarks" / "discovery_capability_benchmark.py"
+        if not path.exists():
+            raise HashComputationFailed(
+                f"HASH COMPUTATION FAILED: benchmark source file missing: {path}"
+            )
+        return hashlib.sha256(path.read_bytes()).hexdigest()
+    except HashComputationFailed:
+        raise
+    except Exception as e:
+        raise HashComputationFailed(
+            f"HASH COMPUTATION FAILED (benchmark source): {type(e).__name__}: {e}. "
+            f"Per P6: fail closed."
+        )
 
 
 def get_frozen_f1_baseline() -> dict:
-    """Return the frozen F1 baseline with its provenance."""
+    """Return the frozen F1 baseline with provenance."""
     return {
         "f1": FROZEN_F1_BASELINE,
         "source": "stage-1-measurement-integrity-baseline",
         "cycle": 134,
         "sha256": FROZEN_F1_BASELINE_SHA256,
-        "note": (
-            "This is the historical F1 baseline from Stage -1. It is NOT "
-            "a capability claim. It is the measurement baseline that all "
-            "future measurements are compared against."
-        ),
         "frozen": True,
         "frozen_by": "Phase 7 (FREEZE F1 OPTIMIZATION)",
     }
 
 
 def assert_f1_not_optimized(action: str, context: Optional[dict] = None) -> None:
-    """Assert that an action does not constitute F1 optimization (descriptive layer).
-
-    This is the WEAKER layer — it checks a caller-supplied action string.
-    The STRONGER layer is assert_frozen_data_unchanged() which hashes
-    the actual data structures.
-
-    Args:
-        action: a string describing the action being checked
-        context: optional dict with additional context
-
-    Raises:
-        F1OptimizationForbidden: if the action matches a forbidden pattern
-    """
+    """Descriptive layer (weaker tripwire). Checks caller-supplied action string."""
     action_lower = action.lower()
-
     for pattern in FORBIDDEN_OPTIMIZATION_PATTERNS:
         if pattern in action_lower:
             raise F1OptimizationForbidden(
                 f"F1 OPTIMIZATION FORBIDDEN: action='{action}' matches "
                 f"forbidden pattern '{pattern}'. "
-                f"Per STOP_BUILDING.md items 8 and 9: benchmark tuning and "
-                f"score improvements without capability improvement are "
-                f"forbidden permanently. The F1 baseline ({FROZEN_F1_BASELINE}) "
-                f"is frozen. Per Phase 7: F1 optimization is mechanically "
-                f"impossible. Context: {context}"
+                f"Per STOP_BUILDING.md items 8 and 9: forbidden permanently."
             )
-
     threshold_patterns = ["lower_threshold", "reduce_threshold", "relax_threshold",
                           "widen_matcher", "expand_synonym", "add_synonym_for_score"]
     for pattern in threshold_patterns:
         if pattern in action_lower:
             raise F1OptimizationForbidden(
-                f"F1 OPTIMIZATION FORBIDDEN: action='{action}' matches "
-                f"threshold-lowering pattern '{pattern}'. "
-                f"Per the No-Gaming Rule: do NOT lower a threshold to "
-                f"silence a red. The F1 baseline is frozen."
+                f"F1 OPTIMIZATION FORBIDDEN: threshold-lowering pattern '{pattern}'. "
+                f"Per the No-Gaming Rule: do NOT lower a threshold to silence a red."
             )
 
 
 def assert_f1_baseline_unchanged(current_f1: float) -> None:
-    """Assert that the current F1 matches the frozen baseline.
-
-    Raises:
-        F1OptimizationForbidden: if current_f1 != FROZEN_F1_BASELINE
-    """
+    """Post-computation check: verify F1 matches frozen baseline."""
     if abs(current_f1 - FROZEN_F1_BASELINE) > 1e-6:
         raise F1OptimizationForbidden(
             f"F1 BASELINE MODIFIED: frozen={FROZEN_F1_BASELINE}, "
-            f"current={current_f1}. The F1 baseline is FROZEN and cannot "
-            f"be changed. Per MC-6: no metric may be silently altered. "
-            f"Per STOP_BUILDING.md item 9: score improvements without "
-            f"capability improvement are forbidden permanently."
+            f"current={current_f1}. Per MC-6: no metric may be silently altered."
         )
 
 
 def assert_zero_eligible_metrics_for_optimization() -> None:
-    """Assert that there are zero scientifically eligible metrics.
-
-    F1 optimization is not just forbidden by policy — it is impossible
-    because the metrics that would measure F1 improvement are themselves
-    not scientifically eligible. There is nothing to optimize against.
-    """
+    """Verify zero eligible metrics — optimization is epistemically impossible."""
     from engine.epistemic_state_enforcer import list_eligible_metrics
     eligible = list_eligible_metrics()
     if len(eligible) > 0:
         raise F1OptimizationForbidden(
             f"F1 OPTIMIZATION PRECONDITION VIOLATION: {len(eligible)} "
-            f"metrics are scientifically eligible: {eligible}. "
-            f"Per Phase 7: F1 optimization requires scientifically eligible "
-            f"metrics to measure improvement against. Currently there are 0. "
-            f"If this number is > 0, the epistemic gate has been bypassed."
+            f"metrics are eligible: {eligible}. Currently must be 0."
         )
 
 
-# ===== STRUCTURAL ENFORCEMENT (Phase 7 Round 2 — audit round 16) =====
+# ===== STRUCTURAL ENFORCEMENT (Phase 7 Round 3 — immutable manifest) =====
 
 def assert_frozen_data_unchanged() -> dict:
-    """Assert that the frozen data structures (GOLD_DISCOVERIES,
-    BRIDGE_SYNONYMS, committed F1 score) have not been modified.
+    """Assert that frozen data structures match the immutable manifest.
 
-    This is the STRONG layer — it hashes the ACTUAL data, not a
-    caller-supplied string. It cannot be bypassed by rewording.
+    Per audit round 17:
+        "The freeze needs a committed, immutable-at-runtime reference artifact
+         created at the actual freeze point."
+
+    This function:
+        1. Loads the committed manifest (reports/phase7/frozen_f1_manifest.json)
+        2. Hashes the CURRENT production data
+        3. Compares current hashes against manifest hashes
+        4. Raises on ANY mismatch
+
+    It NEVER self-baselines. If the manifest is missing, it fails closed.
+    If hash computation fails, it fails closed (P6).
 
     Returns:
-        dict with current hashes and frozen hashes for comparison
+        dict with current and manifest hashes for comparison
 
     Raises:
-        F1OptimizationForbidden: if any frozen data structure has changed
+        FreezeManifestMissing: manifest file does not exist
+        FreezeManifestCorrupt: manifest is malformed
+        HashComputationFailed: hash computation error (fail closed)
+        F1OptimizationForbidden: any hash mismatch
     """
-    _init_hashes()
+    manifest = _load_manifest()
 
-    # On first run, record the hashes as the frozen values
-    global FROZEN_GOLD_HASH, FROZEN_SYNONYM_HASH, FROZEN_SCORE_HASH
-    if FROZEN_GOLD_HASH == "will_be_set_after_first_computation":
-        FROZEN_GOLD_HASH = _CURRENT_GOLD_HASH
-        FROZEN_SYNONYM_HASH = _CURRENT_SYNONYM_HASH
-        FROZEN_SCORE_HASH = _CURRENT_SCORE_HASH
+    current_gold = _compute_gold_hash()
+    current_synonym = _compute_synonym_hash()
+    current_score = _compute_score_hash()
+    current_benchmark = _compute_benchmark_source_hash()
+
+    manifest_gold = manifest["gold_discoveries_sha256"]
+    manifest_synonym = manifest["bridge_synonyms_sha256"]
+    manifest_score = manifest["score_artifact_sha256"]
+    manifest_benchmark = manifest["benchmark_source_sha256"]
 
     result = {
-        "gold_hash_current": _CURRENT_GOLD_HASH,
-        "gold_hash_frozen": FROZEN_GOLD_HASH,
-        "synonym_hash_current": _CURRENT_SYNONYM_HASH,
-        "synonym_hash_frozen": FROZEN_SYNONYM_HASH,
-        "score_hash_current": _CURRENT_SCORE_HASH,
-        "score_hash_frozen": FROZEN_SCORE_HASH,
+        "gold_hash_current": current_gold,
+        "gold_hash_manifest": manifest_gold,
+        "synonym_hash_current": current_synonym,
+        "synonym_hash_manifest": manifest_synonym,
+        "score_hash_current": current_score,
+        "score_hash_manifest": manifest_score,
+        "benchmark_hash_current": current_benchmark,
+        "benchmark_hash_manifest": manifest_benchmark,
     }
 
-    # Check each frozen structure
-    if _CURRENT_GOLD_HASH != FROZEN_GOLD_HASH:
+    if current_gold != manifest_gold:
         raise F1OptimizationForbidden(
-            f"GOLD SET MODIFIED: frozen hash={FROZEN_GOLD_HASH[:16]}... "
-            f"but current hash={_CURRENT_GOLD_HASH[:16]}... "
-            f"GOLD_DISCOVERIES has been modified since the freeze. "
-            f"Per STOP_BUILDING.md item 9: gold_set_modification_for_score "
-            f"is forbidden permanently. Per MC-6: no metric may be silently altered."
+            f"GOLD SET MODIFIED: manifest={manifest_gold[:16]}... "
+            f"current={current_gold[:16]}... "
+            f"GOLD_DISCOVERIES does not match the immutable freeze manifest. "
+            f"Per STOP_BUILDING.md: gold_set_modification_for_score is forbidden."
         )
 
-    if _CURRENT_SYNONYM_HASH != FROZEN_SYNONYM_HASH:
+    if current_synonym != manifest_synonym:
         raise F1OptimizationForbidden(
-            f"SYNONYM MAP MODIFIED: frozen hash={FROZEN_SYNONYM_HASH[:16]}... "
-            f"but current hash={_CURRENT_SYNONYM_HASH[:16]}... "
-            f"BRIDGE_SYNONYMS has been modified since the freeze. "
-            f"Per STOP_BUILDING.md: synonym_expansion_for_score is forbidden."
+            f"SYNONYM MAP MODIFIED: manifest={manifest_synonym[:16]}... "
+            f"current={current_synonym[:16]}... "
+            f"BRIDGE_SYNONYMS does not match the immutable freeze manifest."
         )
 
-    if _CURRENT_SCORE_HASH != FROZEN_SCORE_HASH:
+    if current_score != manifest_score:
         raise F1OptimizationForbidden(
-            f"COMMITTED SCORE MODIFIED: frozen hash={FROZEN_SCORE_HASH[:16]}... "
-            f"but current hash={_CURRENT_SCORE_HASH[:16]}... "
-            f"discovery_capability_score.json has been modified. "
-            f"Per MC-6: no metric may be silently altered."
+            f"COMMITTED SCORE MODIFIED: manifest={manifest_score[:16]}... "
+            f"current={current_score[:16]}... "
+            f"discovery_capability_score.json does not match the freeze manifest."
+        )
+
+    if current_benchmark != manifest_benchmark:
+        raise F1OptimizationForbidden(
+            f"BENCHMARK SOURCE MODIFIED: manifest={manifest_benchmark[:16]}... "
+            f"current={current_benchmark[:16]}... "
+            f"discovery_capability_benchmark.py source code has been modified "
+            f"since the freeze. Changes to the benchmark source (including "
+            f"matcher logic, F1 formula, thresholds) are forbidden. "
+            f"Per STOP_BUILDING.md items 8 and 9."
         )
 
     result["all_unchanged"] = True
@@ -291,37 +324,39 @@ def assert_frozen_data_unchanged() -> dict:
 
 
 def assert_committed_f1_matches_baseline() -> None:
-    """Assert that the committed discovery_capability_score.json contains
-    f1=0.5714 (the frozen baseline).
-
-    This verifies the ACTUAL artifact that production consumes, not just
-    a Python constant.
-    """
-    _init_hashes()
-    score_path = REPO / "benchmarks" / "reports" / "discovery_capability_score.json"
-    if not score_path.exists():
-        raise F1OptimizationForbidden(
-            f"COMMITTED SCORE FILE MISSING: {score_path}. "
-            f"The committed F1 artifact must exist and contain f1={FROZEN_F1_BASELINE}."
-        )
-    data = json.loads(score_path.read_text())
-    committed_f1 = data.get("f1")
-    if committed_f1 is None:
-        raise F1OptimizationForbidden(
-            f"COMMITTED SCORE FILE HAS NO F1 FIELD: {score_path}"
-        )
-    if abs(float(committed_f1) - FROZEN_F1_BASELINE) > 1e-6:
-        raise F1OptimizationForbidden(
-            f"COMMITTED F1 CHANGED: frozen={FROZEN_F1_BASELINE}, "
-            f"committed={committed_f1}. The committed score artifact has "
-            f"been modified. Per MC-6: no metric may be silently altered."
+    """Assert committed discovery_capability_score.json contains f1=0.5714."""
+    try:
+        score_path = REPO / "benchmarks" / "reports" / "discovery_capability_score.json"
+        if not score_path.exists():
+            raise F1OptimizationForbidden(
+                f"COMMITTED SCORE FILE MISSING: {score_path}"
+            )
+        data = json.loads(score_path.read_text())
+        committed_f1 = data.get("f1")
+        if committed_f1 is None:
+            raise F1OptimizationForbidden(
+                f"COMMITTED SCORE FILE HAS NO F1 FIELD: {score_path}"
+            )
+        if abs(float(committed_f1) - FROZEN_F1_BASELINE) > 1e-6:
+            raise F1OptimizationForbidden(
+                f"COMMITTED F1 CHANGED: frozen={FROZEN_F1_BASELINE}, "
+                f"committed={committed_f1}."
+            )
+    except F1OptimizationForbidden:
+        raise
+    except Exception as e:
+        raise HashComputationFailed(
+            f"COMMITTED SCORE CHECK FAILED: {type(e).__name__}: {e}. "
+            f"Per P6: fail closed."
         )
 
 
 __all__ = [
     "F1OptimizationForbidden",
+    "FreezeManifestMissing",
+    "FreezeManifestCorrupt",
+    "HashComputationFailed",
     "FROZEN_F1_BASELINE",
-    "FROZEN_F1_BASELINE_SHA256",
     "FORBIDDEN_OPTIMIZATION_PATTERNS",
     "get_frozen_f1_baseline",
     "assert_f1_not_optimized",
@@ -333,22 +368,19 @@ __all__ = [
 
 
 if __name__ == "__main__":
-    print("Phase 7: F1 Optimization Freeze")
+    print("Phase 7: F1 Optimization Freeze (Round 3 — immutable manifest)")
     print("=" * 60)
     baseline = get_frozen_f1_baseline()
     print(f"Frozen F1 baseline: {baseline['f1']}")
-    print(f"Source: {baseline['source']}")
-    print(f"SHA-256: {baseline['sha256'][:16]}...")
-    print(f"Frozen: {baseline['frozen']}")
     print()
 
-    # Structural checks
     try:
         result = assert_frozen_data_unchanged()
-        print("Frozen data unchanged: CONFIRMED")
-        print(f"  Gold hash:     {result['gold_hash_current'][:16]}...")
-        print(f"  Synonym hash:  {result['synonym_hash_current'][:16]}...")
-        print(f"  Score hash:    {result['score_hash_current'][:16]}...")
+        print("Frozen data unchanged: CONFIRMED (verified against immutable manifest)")
+        print(f"  Gold hash:      {result['gold_hash_current'][:16]}...")
+        print(f"  Synonym hash:   {result['synonym_hash_current'][:16]}...")
+        print(f"  Score hash:     {result['score_hash_current'][:16]}...")
+        print(f"  Benchmark hash: {result['benchmark_hash_current'][:16]}...")
     except F1OptimizationForbidden as e:
         print(f"ERROR: {e}")
         sys.exit(1)
@@ -369,10 +401,11 @@ if __name__ == "__main__":
 
     print()
     print("F1 optimization is MECHANICALLY IMPOSSIBLE.")
-    print("  1. Baseline frozen (0.5714) — structural hash verified")
-    print("  2. Gold set frozen — SHA-256 tamper-evident")
-    print("  3. Synonym map frozen — SHA-256 tamper-evident")
-    print("  4. Committed score frozen — SHA-256 tamper-evident")
-    print("  5. Zero eligible metrics — nothing to optimize against")
-    print("  6. Forbidden patterns — machine-enforced (descriptive layer)")
-
+    print("  1. Baseline frozen (0.5714) — verified against immutable manifest")
+    print("  2. Gold set frozen — SHA-256 verified against manifest")
+    print("  3. Synonym map frozen — SHA-256 verified against manifest")
+    print("  4. Committed score frozen — SHA-256 verified against manifest")
+    print("  5. Benchmark source frozen — SHA-256 verified against manifest")
+    print("  6. Zero eligible metrics — nothing to optimize against")
+    print("  7. NO self-baselining — manifest is committed, immutable reference")
+    print("  8. Fail-closed on missing manifest, corrupt manifest, or hash errors")

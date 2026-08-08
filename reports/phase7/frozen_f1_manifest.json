@@ -1,0 +1,21 @@
+{
+  "freeze_version": "phase7-f1-freeze-v1",
+  "created_from_commit": "9189880fde1496ceba9f0c4f242ab65cb7303711",
+  "created_at_utc": "2026-08-08T18:10:00Z",
+  "immutable_reference": true,
+  "baseline_f1": 0.5714,
+  "baseline_f1_source": "stage-1-measurement-integrity-baseline",
+  "baseline_f1_cycle": 134,
+
+  "gold_discoveries_sha256": "1ed102361bdccd8fa0beed77e44b8600a2a36746904d0d249c686931bd761191",
+  "bridge_synonyms_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+  "score_artifact_sha256": "99eaad1ce848998abc66795b229764870dd4763d6612e8264790eb04afbd39b1",
+  "benchmark_source_sha256": "9ba196603e90f5fb83e5bf1f10cf7c7523357b725b107c72afcede0642adc547",
+  "bootstrap_source_sha256": "5669b9b27f1d42e103783b100646794d97fa586aff81735e35b16aef26157d26",
+
+  "manifest_note": "This manifest is an IMMUTABLE reference artifact. It was created at Phase 7 freeze time with actual SHA-256 hashes of the production data structures. The runtime freeze gate loads this manifest and compares current hashes against these values. The runtime NEVER self-baselines. If the manifest is missing, the gate fails closed. If any hash mismatches, the gate raises F1OptimizationForbidden. This manifest itself is committed to git — modifying it produces a different git commit, which is externally detectable.",
+
+  "self_baselining_prohibited": true,
+  "fail_closed_on_missing_manifest": true,
+  "fail_closed_on_hash_computation_error": true
+}
