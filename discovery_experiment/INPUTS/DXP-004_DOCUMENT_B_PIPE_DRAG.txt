@@ -1,0 +1,49 @@
+Drag Reduction Surface Design for Water Transport Pipelines
+
+Problem Statement
+
+A municipal water transport system uses a 10-kilometer pipeline (0.5 m internal diameter) to move drinking water from a treatment plant to a storage reservoir. The pipeline operates at a flow rate of 0.2 m³/s, giving a mean flow velocity of 1.02 m/s and a Reynolds number of approximately 500,000 (fully turbulent flow). The pipeline is gravity-fed with a single pump station.
+
+Current Approach
+
+The pipeline uses commercially smooth-walled HDPE (high-density polyethylene) pipe. The current friction factor is f = 0.013 (Darcy friction factor), giving a pressure drop of approximately 85 kPa over the 10 km length. The pump station consumes 25 kW to maintain the required flow rate.
+
+Chemical drag reducers (polymer additives) were tested but rejected due to:
+1. Cost: $50,000/year for polymer additives
+2. Environmental concerns: polymer residue in drinking water
+3. Regulatory: food-grade certification required for any water contact material
+
+Limitations
+
+1. Smooth-wall friction floor: The HDPE pipe is already near the "smooth pipe" limit on the Moody diagram. Further smoothing of the surface yields negligible improvement.
+
+2. Chemical incompatibility: No chemical additives are permitted in the drinking water supply.
+
+3. Energy cost: The 25 kW pump consumption represents 60% of the treatment plant's total energy budget. A 5% reduction in pumping energy would save $8,000/year.
+
+4. Scaling: Mineral scale buildup on the pipe wall increases roughness over time, gradually increasing the friction factor from 0.013 to 0.016 over a 5-year period before cleaning is required.
+
+Constraints
+
+- No chemical additives of any kind
+- Surface modification only (internal pipe lining or texture)
+- Must be food-grade certified (NSF/ANSI 61)
+- 20-year design lifetime
+- Maximum surface feature height: 200 micrometers (to avoid trapping sediment)
+- Pipe must remain cleanable (pigging) — no features that could trap debris
+- Temperature range: 5-25°C
+- Cost of surface treatment: ≤ $100/meter of pipe
+- The surface treatment must be applicable to existing pipes (retrofit, not new construction)
+
+What Is Needed
+
+A passive surface treatment for the internal pipe wall that:
+1. Reduces the pressure drop by at least 5% compared to the current smooth HDPE wall
+2. Does not use chemicals or additives
+3. Is food-grade certified
+4. Survives 20 years of water flow
+5. Does not trap sediment or debris
+6. Can be applied as a retrofit to existing pipes
+7. Has a quantifiable physical basis — not trial-and-error
+
+The proposal should specify the surface geometry, the expected pressure drop reduction, and the physical mechanism by which the reduction occurs. The prediction should be testable against fluid mechanics principles (Reynolds number, friction factor, wall shear stress).

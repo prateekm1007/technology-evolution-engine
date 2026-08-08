@@ -1,0 +1,450 @@
+{
+  "stage": "01_extraction",
+  "run_id": "RUN-DXP-004",
+  "code_sha": "9cf2046069a549721298cc8d709ac7bc8b4e8997",
+  "input_hash": "2f0247f6baeb94b044d5bca0b61df2c58261106bef9c91610b0b7b049ae1a32f",
+  "output_hash": "659925cd4bed5a603c8d5fccb8b0fe36f0f9ffb4f99bc65cac8aefc1e6c95ef2",
+  "provider_manifest": {
+    "provider": "zai",
+    "model": "glm-4-plus",
+    "version": "z-ai-web-dev-sdk",
+    "configuration": {
+      "temperature": 0.1,
+      "max_tokens": 4096,
+      "system_sha": "5507f539e45f54255b712a0a34b95eca13bde984fd953d98497aa3967ca392f4"
+    },
+    "prompt_sha": "0b2baaf8a27d03264f650771ed678ea109c5ecad567db548ea799c27d65b5706",
+    "seed": null,
+    "tool_versions": {
+      "z_ai_cli": "z-ai"
+    },
+    "timestamp": "2026-08-08T10:03:39.535098+00:00",
+    "latency_ms": 63650,
+    "success": true,
+    "error": ""
+  },
+  "result": {
+    "ok": true,
+    "source_document_id": "doc_d4f5ea689289",
+    "source_document_title": "Shark Skin Denticle Morphology and Hydrodynamic Function",
+    "graph": {
+      "nodes": {
+        "doc_d4f5ea689289:N1": {
+          "node_id": "doc_d4f5ea689289:N1",
+          "node_type": "system",
+          "label": "shark skin",
+          "description": "integumentary structure of elasmobranch fishes",
+          "epistemic_state": "OBSERVED",
+          "provenance": [
+            "doc:doc_d4f5ea689289"
+          ]
+        },
+        "doc_d4f5ea689289:N2": {
+          "node_id": "doc_d4f5ea689289:N2",
+          "node_type": "system",
+          "label": "dermal denticles",
+          "description": "tooth-like scales covering shark skin",
+          "epistemic_state": "OBSERVED",
+          "provenance": [
+            "doc:doc_d4f5ea689289"
+          ]
+        },
+        "doc_d4f5ea689289:N3": {
+          "node_id": "doc_d4f5ea689289:N3",
+          "node_type": "system",
+          "label": "denticle crown",
+          "description": "upper part of denticle with riblets",
+          "epistemic_state": "OBSERVED",
+          "provenance": [
+            "doc:doc_d4f5ea689289"
+          ]
+        },
+        "doc_d4f5ea689289:N4": {
+          "node_id": "doc_d4f5ea689289:N4",
+          "node_type": "property",
+          "label": "riblet structure",
+          "description": "longitudinal ridges on denticle crown",
+          "epistemic_state": "OBSERVED",
+          "provenance": [
+            "doc:doc_d4f5ea689289"
+          ]
+        },
+        "doc_d4f5ea689289:N5": {
+          "node_id": "doc_d4f5ea689289:N5",
+          "node_type": "property",
+          "label": "riblet spacing",
+          "description": "distance between riblet peaks",
+          "epistemic_state": "OBSERVED",
+          "provenance": [
+            "doc:doc_d4f5ea689289"
+          ]
+        },
+        "doc_d4f5ea689289:N6": {
+          "node_id": "doc_d4f5ea689289:N6",
+          "node_type": "property",
+          "label": "riblet height",
+          "description": "vertical dimension of riblets",
+          "epistemic_state": "OBSERVED",
+          "provenance": [
+            "doc:doc_d4f5ea689289"
+          ]
+        },
+        "doc_d4f5ea689289:N7": {
+          "node_id": "doc_d4f5ea689289:N7",
+          "node_type": "property",
+          "label": "staggered arrangement",
+          "description": "overlapping pattern of denticles",
+          "epistemic_state": "OBSERVED",
+          "provenance": [
+            "doc:doc_d4f5ea689289"
+          ]
+        },
+        "doc_d4f5ea689289:N8": {
+          "node_id": "doc_d4f5ea689289:N8",
+          "node_type": "process",
+          "label": "drag reduction",
+          "description": "reduction of hydrodynamic drag through riblet interaction",
+          "epistemic_state": "OBSERVED",
+          "provenance": [
+            "doc:doc_d4f5ea689289"
+          ]
+        },
+        "doc_d4f5ea689289:N9": {
+          "node_id": "doc_d4f5ea689289:N9",
+          "node_type": "process",
+          "label": "flow directionality",
+          "description": "anisotropic resistance to water flow",
+          "epistemic_state": "OBSERVED",
+          "provenance": [
+            "doc:doc_d4f5ea689289"
+          ]
+        },
+        "doc_d4f5ea689289:N10": {
+          "node_id": "doc_d4f5ea689289:N10",
+          "node_type": "process",
+          "label": "anti-fouling",
+          "description": "inhibition of organism attachment",
+          "epistemic_state": "OBSERVED",
+          "provenance": [
+            "doc:doc_d4f5ea689289"
+          ]
+        },
+        "doc_d4f5ea689289:N11": {
+          "node_id": "doc_d4f5ea689289:N11",
+          "node_type": "system",
+          "label": "mucus layer",
+          "description": "glycoprotein secretion on skin surface",
+          "epistemic_state": "OBSERVED",
+          "provenance": [
+            "doc:doc_d4f5ea689289"
+          ]
+        },
+        "doc_d4f5ea689289:N12": {
+          "node_id": "doc_d4f5ea689289:N12",
+          "node_type": "property",
+          "label": "skin flexibility",
+          "description": "deformable composite structure",
+          "epistemic_state": "OBSERVED",
+          "provenance": [
+            "doc:doc_d4f5ea689289"
+          ]
+        },
+        "doc_d4f5ea689289:N13": {
+          "node_id": "doc_d4f5ea689289:N13",
+          "node_type": "condition",
+          "label": "turbulent flow",
+          "description": "flow condition necessary for riblet function",
+          "epistemic_state": "OBSERVED",
+          "provenance": [
+            "doc:doc_d4f5ea689289"
+          ]
+        },
+        "doc_d4f5ea689289:N14": {
+          "node_id": "doc_d4f5ea689289:N14",
+          "node_type": "condition",
+          "label": "high Reynolds number",
+          "description": "swimming speed condition for riblet effectiveness",
+          "epistemic_state": "OBSERVED",
+          "provenance": [
+            "doc:doc_d4f5ea689289"
+          ]
+        },
+        "doc_d4f5ea689289:N15": {
+          "node_id": "doc_d4f5ea689289:N15",
+          "node_type": "failure_mode",
+          "label": "biofouling",
+          "description": "accumulation of organisms in riblet valleys",
+          "epistemic_state": "OBSERVED",
+          "provenance": [
+            "doc:doc_d4f5ea689289"
+          ]
+        },
+        "doc_d4f5ea689289:N16": {
+          "node_id": "doc_d4f5ea689289:N16",
+          "node_type": "failure_mode",
+          "label": "riblet damage",
+          "description": "physical destruction of denticle geometry",
+          "epistemic_state": "OBSERVED",
+          "provenance": [
+            "doc:doc_d4f5ea689289"
+          ]
+        },
+        "doc_d4f5ea689289:N17": {
+          "node_id": "doc_d4f5ea689289:N17",
+          "node_type": "failure_mode",
+          "label": "off-design flow",
+          "description": "misalignment between flow and riblets",
+          "epistemic_state": "OBSERVED",
+          "provenance": [
+            "doc:doc_d4f5ea689289"
+          ]
+        },
+        "doc_d4f5ea689289:N18": {
+          "node_id": "doc_d4f5ea689289:N18",
+          "node_type": "failure_mode",
+          "label": "size scaling",
+          "description": "suboptimal riblet dimensions for different scales",
+          "epistemic_state": "OBSERVED",
+          "provenance": [
+            "doc:doc_d4f5ea689289"
+          ]
+        },
+        "doc_d4f5ea689289:N19": {
+          "node_id": "doc_d4f5ea689289:N19",
+          "node_type": "measurement",
+          "label": "riblet spacing measurement",
+          "description": "quantitative measurement of riblet dimensions",
+          "epistemic_state": "OBSERVED",
+          "provenance": [
+            "doc:doc_d4f5ea689289"
+          ]
+        },
+        "doc_d4f5ea689289:N20": {
+          "node_id": "doc_d4f5ea689289:N20",
+          "node_type": "measurement",
+          "label": "riblet height measurement",
+          "description": "quantitative measurement of riblet dimensions",
+          "epistemic_state": "OBSERVED",
+          "provenance": [
+            "doc:doc_d4f5ea689289"
+          ]
+        },
+        "doc_d4f5ea689289:N21": {
+          "node_id": "doc_d4f5ea689289:N21",
+          "node_type": "condition",
+          "label": "flow alignment",
+          "description": "proper orientation of riblets relative to flow",
+          "epistemic_state": "OBSERVED",
+          "provenance": [
+            "doc:doc_d4f5ea689289"
+          ]
+        },
+        "doc_d4f5ea689289:N22": {
+          "node_id": "doc_d4f5ea689289:N22",
+          "node_type": "process",
+          "label": "boundary layer maintenance",
+          "description": "delay of flow separation",
+          "epistemic_state": "OBSERVED",
+          "provenance": [
+            "doc:doc_d4f5ea689289"
+          ]
+        },
+        "doc_d4f5ea689289:N23": {
+          "node_id": "doc_d4f5ea689289:N23",
+          "node_type": "mechanism",
+          "label": "vortex interaction",
+          "description": "riblets interacting with turbulent structures",
+          "epistemic_state": "OBSERVED",
+          "provenance": [
+            "doc:doc_d4f5ea689289"
+          ]
+        }
+      },
+      "edges": [
+        {
+          "edge_id": "doc_d4f5ea689289:E4",
+          "source_id": "doc_d4f5ea689289:N4",
+          "target_id": "doc_d4f5ea689289:N8",
+          "edge_type": "ENABLES",
+          "confidence": 0.5,
+          "evidence": [
+            "The riblets lift these vortices away from the surface, reducing the wetted surface area that the vortices can act upon"
+          ],
+          "epistemic_state": "OBSERVED"
+        },
+        {
+          "edge_id": "doc_d4f5ea689289:E5",
+          "source_id": "doc_d4f5ea689289:N4",
+          "target_id": "doc_d4f5ea689289:N9",
+          "edge_type": "ENABLES",
+          "confidence": 0.5,
+          "evidence": [
+            "The anisotropic riblet structure creates higher resistance to cross-flow (perpendicular to the riblets) than to streamwise flow"
+          ],
+          "epistemic_state": "OBSERVED"
+        },
+        {
+          "edge_id": "doc_d4f5ea689289:E6",
+          "source_id": "doc_d4f5ea689289:N4",
+          "target_id": "doc_d4f5ea689289:N10",
+          "edge_type": "ENABLES",
+          "confidence": 0.5,
+          "evidence": [
+            "The microscale roughness pattern inhibits the attachment of barnacles, algae, and other fouling organisms"
+          ],
+          "epistemic_state": "OBSERVED"
+        },
+        {
+          "edge_id": "doc_d4f5ea689289:E9",
+          "source_id": "doc_d4f5ea689289:N23",
+          "target_id": "doc_d4f5ea689289:N8",
+          "edge_type": "PRODUCES",
+          "confidence": 0.5,
+          "evidence": [
+            "The riblets lift these vortices away from the surface, reducing the wetted surface area that the vortices can act upon"
+          ],
+          "epistemic_state": "OBSERVED"
+        },
+        {
+          "edge_id": "doc_d4f5ea689289:E10",
+          "source_id": "doc_d4f5ea689289:N9",
+          "target_id": "doc_d4f5ea689289:N22",
+          "edge_type": "ENABLES",
+          "confidence": 0.5,
+          "evidence": [
+            "This helps maintain a clean boundary layer and delays flow separation, which is critical for maneuverability"
+          ],
+          "epistemic_state": "OBSERVED"
+        },
+        {
+          "edge_id": "doc_d4f5ea689289:E14",
+          "source_id": "doc_d4f5ea689289:N14",
+          "target_id": "doc_d4f5ea689289:N8",
+          "edge_type": "FAILS_UNDER",
+          "confidence": 0.5,
+          "evidence": [
+            "At low swimming speeds (Re < 10,000), the boundary layer is laminar and the riblets have no effect on drag"
+          ],
+          "epistemic_state": "OBSERVED"
+        },
+        {
+          "edge_id": "doc_d4f5ea689289:E15",
+          "source_id": "doc_d4f5ea689289:N15",
+          "target_id": "doc_d4f5ea689289:N8",
+          "edge_type": "INHIBITS",
+          "confidence": 0.5,
+          "evidence": [
+            "In aquaculture or captivity, sharks can accumulate fouling organisms that fill the riblet valleys, negating the hydrodynamic benefit"
+          ],
+          "epistemic_state": "OBSERVED"
+        },
+        {
+          "edge_id": "doc_d4f5ea689289:E16",
+          "source_id": "doc_d4f5ea689289:N16",
+          "target_id": "doc_d4f5ea689289:N8",
+          "edge_type": "INHIBITS",
+          "confidence": 0.5,
+          "evidence": [
+            "Physical damage to the denticle crowns (from abrasion or parasite attachment) can destroy the riblet geometry and locally increase drag"
+          ],
+          "epistemic_state": "OBSERVED"
+        },
+        {
+          "edge_id": "doc_d4f5ea689289:E17",
+          "source_id": "doc_d4f5ea689289:N17",
+          "target_id": "doc_d4f5ea689289:N8",
+          "edge_type": "INHIBITS",
+          "confidence": 0.5,
+          "evidence": [
+            "When the flow direction is not aligned with the riblets (e.g., during sharp turns), the riblets can increase drag rather than reduce it"
+          ],
+          "epistemic_state": "OBSERVED"
+        },
+        {
+          "edge_id": "doc_d4f5ea689289:E18",
+          "source_id": "doc_d4f5ea689289:N18",
+          "target_id": "doc_d4f5ea689289:N8",
+          "edge_type": "INHIBITS",
+          "confidence": 0.5,
+          "evidence": [
+            "At different scales (much larger or smaller), the same riblet proportions may not produce the same drag reduction effect"
+          ],
+          "epistemic_state": "OBSERVED"
+        },
+        {
+          "edge_id": "doc_d4f5ea689289:E20",
+          "source_id": "doc_d4f5ea689289:N19",
+          "target_id": "doc_d4f5ea689289:N18",
+          "edge_type": "CONSTRAINS",
+          "confidence": 0.5,
+          "evidence": [
+            "The riblet dimensions (30-100 \u03bcm spacing) are optimized for the shark's swimming speed and body size"
+          ],
+          "epistemic_state": "OBSERVED"
+        },
+        {
+          "edge_id": "doc_d4f5ea689289:E21",
+          "source_id": "doc_d4f5ea689289:N20",
+          "target_id": "doc_d4f5ea689289:N18",
+          "edge_type": "CONSTRAINS",
+          "confidence": 0.5,
+          "evidence": [
+            "The riblet dimensions (30-100 \u03bcm spacing) are optimized for the shark's swimming speed and body size"
+          ],
+          "epistemic_state": "OBSERVED"
+        }
+      ]
+    },
+    "n_nodes": 23,
+    "n_edges": 12,
+    "n_failures": 9,
+    "failures": [
+      {
+        "failure_type": "INVALID_EDGE_TYPE",
+        "detail": "edge 'E1' type 'HAS_COMPONENT' invalid. Valid: ['CAUSES', 'CONSTRAINS', 'CORRELATES_WITH', 'ENABLES', 'FAILS_UNDER', 'INHIBITS', 'MODULATES', 'PRODUCES', 'REQUIRES', 'TRANSFERS_TO']",
+        "raw_llm_output": ""
+      },
+      {
+        "failure_type": "INVALID_EDGE_TYPE",
+        "detail": "edge 'E2' type 'HAS_COMPONENT' invalid. Valid: ['CAUSES', 'CONSTRAINS', 'CORRELATES_WITH', 'ENABLES', 'FAILS_UNDER', 'INHIBITS', 'MODULATES', 'PRODUCES', 'REQUIRES', 'TRANSFERS_TO']",
+        "raw_llm_output": ""
+      },
+      {
+        "failure_type": "INVALID_EDGE_TYPE",
+        "detail": "edge 'E3' type 'HAS_PROPERTY' invalid. Valid: ['CAUSES', 'CONSTRAINS', 'CORRELATES_WITH', 'ENABLES', 'FAILS_UNDER', 'INHIBITS', 'MODULATES', 'PRODUCES', 'REQUIRES', 'TRANSFERS_TO']",
+        "raw_llm_output": ""
+      },
+      {
+        "failure_type": "INVALID_EDGE_TYPE",
+        "detail": "edge 'E7' type 'MAINTAINS' invalid. Valid: ['CAUSES', 'CONSTRAINS', 'CORRELATES_WITH', 'ENABLES', 'FAILS_UNDER', 'INHIBITS', 'MODULATES', 'PRODUCES', 'REQUIRES', 'TRANSFERS_TO']",
+        "raw_llm_output": ""
+      },
+      {
+        "failure_type": "INVALID_EDGE_TYPE",
+        "detail": "edge 'E8' type 'INTERACTS_WITH' invalid. Valid: ['CAUSES', 'CONSTRAINS', 'CORRELATES_WITH', 'ENABLES', 'FAILS_UNDER', 'INHIBITS', 'MODULATES', 'PRODUCES', 'REQUIRES', 'TRANSFERS_TO']",
+        "raw_llm_output": ""
+      },
+      {
+        "failure_type": "INVALID_EDGE_TYPE",
+        "detail": "edge 'E11' type 'CONTRIBUTES_TO' invalid. Valid: ['CAUSES', 'CONSTRAINS', 'CORRELATES_WITH', 'ENABLES', 'FAILS_UNDER', 'INHIBITS', 'MODULATES', 'PRODUCES', 'REQUIRES', 'TRANSFERS_TO']",
+        "raw_llm_output": ""
+      },
+      {
+        "failure_type": "INVALID_EDGE_TYPE",
+        "detail": "edge 'E12' type 'CONTRIBUTES_TO' invalid. Valid: ['CAUSES', 'CONSTRAINS', 'CORRELATES_WITH', 'ENABLES', 'FAILS_UNDER', 'INHIBITS', 'MODULATES', 'PRODUCES', 'REQUIRES', 'TRANSFERS_TO']",
+        "raw_llm_output": ""
+      },
+      {
+        "failure_type": "INVALID_EDGE_TYPE",
+        "detail": "edge 'E13' type 'REQUIRED_FOR' invalid. Valid: ['CAUSES', 'CONSTRAINS', 'CORRELATES_WITH', 'ENABLES', 'FAILS_UNDER', 'INHIBITS', 'MODULATES', 'PRODUCES', 'REQUIRES', 'TRANSFERS_TO']",
+        "raw_llm_output": ""
+      },
+      {
+        "failure_type": "INVALID_EDGE_TYPE",
+        "detail": "edge 'E19' type 'REQUIRED_FOR' invalid. Valid: ['CAUSES', 'CONSTRAINS', 'CORRELATES_WITH', 'ENABLES', 'FAILS_UNDER', 'INHIBITS', 'MODULATES', 'PRODUCES', 'REQUIRES', 'TRANSFERS_TO']",
+        "raw_llm_output": ""
+      }
+    ]
+  },
+  "timestamp": "2026-08-08T10:04:43.187196+00:00"
+}

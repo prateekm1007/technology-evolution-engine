@@ -1,0 +1,164 @@
+{
+  "stage": "04_hypotheses",
+  "run_id": "RUN-DXP-004",
+  "code_sha": "9cf2046069a549721298cc8d709ac7bc8b4e8997",
+  "input_hash": "13d064ee08e3029ebaeb06c791410e19f15f8574fc4e969d09af77e35606c49e",
+  "output_hash": "a9d681a6fae512792f813156005441187f018791ac059d3ea405c8411e83c6f1",
+  "provider_manifest": {
+    "provider": "zai",
+    "model": "glm-4-plus",
+    "version": "z-ai-web-dev-sdk",
+    "configuration": {
+      "temperature": 0.3,
+      "max_tokens": 4096,
+      "system_sha": "38a0abb453a9eb9fd88d0b4dd513feea94d69501c86ec3d4d7778b86034369c8"
+    },
+    "prompt_sha": "d837033294228b3b086f3b273eaa658513bbdfd077cfbad9ee781b36eb09d3f3",
+    "seed": null,
+    "tool_versions": {
+      "z_ai_cli": "z-ai"
+    },
+    "timestamp": "2026-08-08T10:04:50.316597+00:00",
+    "latency_ms": 24439,
+    "success": true,
+    "error": ""
+  },
+  "result": {
+    "hypotheses": [
+      {
+        "hypothesis_id": "H-DXP-004-001",
+        "claim": "Directional microstructures reduce drag primarily by modifying the boundary layer transition from laminar to turbulent flow.",
+        "mechanism": "The microstructures create a controlled disturbance in the boundary layer that delays transition to turbulent flow, reducing skin friction drag. The hierarchical pattern maintains this effect across varying Reynolds numbers.",
+        "evidence": [
+          "Fish scales reduce drag by modifying boundary layer dynamics",
+          "Surface features can influence boundary layer stability"
+        ],
+        "assumptions": [
+          "Boundary layer transition is the dominant factor in pipe friction at Re=500,000",
+          "Microstructures can consistently delay transition without causing premature turbulence",
+          "Feature height and spacing are optimal for delaying transition"
+        ],
+        "predictions": [],
+        "expected_failure_modes": [
+          "Premature transition due to feature geometry",
+          "Inconsistent performance across flow velocities",
+          "Feature erosion affecting transition characteristics"
+        ],
+        "novelty_rationale": "This hypothesis specifically focuses on boundary layer transition as the primary mechanism, rather than general flow modification.",
+        "testability": "Can be tested by measuring velocity profiles near the wall and comparing transition points between smooth and microstructured pipes.",
+        "falsifier": "If microstructured pipes show the same or earlier transition to turbulent flow as smooth pipes but still maintain reduced drag, this hypothesis is wrong.",
+        "epistemic_state": "HYPOTHESIZED",
+        "parent_hypothesis_ids": [],
+        "provenance": {
+          "nodes": {},
+          "edges": [],
+          "committed_hash": null
+        },
+        "is_testable": true,
+        "provenance_root_hash": ""
+      },
+      {
+        "hypothesis_id": "H-DXP-004-002",
+        "claim": "Directional microstructures reduce drag primarily through the generation of micro-streams that reduce viscous dissipation.",
+        "mechanism": "The microstructures create multiple parallel micro-streams that reduce the effective viscosity gradient at the wall. These micro-streams act as low-friction pathways that carry a significant portion of the flow, reducing overall energy dissipation.",
+        "evidence": [
+          "Fish scales create micro-channels that reduce local viscosity",
+          "Microfluidic devices show reduced friction with structured surfaces"
+        ],
+        "assumptions": [
+          "Micro-streams can maintain coherence at Re=500,000",
+          "The viscosity reduction effect dominates over other drag mechanisms",
+          "Feature geometry optimizes micro-stream formation"
+        ],
+        "predictions": [],
+        "expected_failure_modes": [
+          "Micro-stream disruption at higher flow rates",
+          "Increased turbulence from micro-stream interactions",
+          "Feature clogging disrupting micro-stream formation"
+        ],
+        "novelty_rationale": "This hypothesis emphasizes micro-stream formation and viscosity reduction rather than boundary layer modification.",
+        "testability": "Can be tested using particle image velocimetry to visualize and measure micro-stream formation and velocity profiles.",
+        "falsifier": "If microstructured pipes show no evidence of coherent micro-streams but still maintain reduced drag, this hypothesis is wrong.",
+        "epistemic_state": "HYPOTHESIZED",
+        "parent_hypothesis_ids": [],
+        "provenance": {
+          "nodes": {},
+          "edges": [],
+          "committed_hash": null
+        },
+        "is_testable": true,
+        "provenance_root_hash": ""
+      },
+      {
+        "hypothesis_id": "H-DXP-004-003",
+        "claim": "Directional microstructures reduce drag primarily by inhibiting biofilm formation and reducing surface roughness effects.",
+        "mechanism": "The microstructures prevent biofilm attachment by creating a surface that is difficult for microorganisms to colonize. Additionally, the aligned features reduce the effective surface roughness compared to random roughness, which would increase drag.",
+        "evidence": [
+          "Fish skin reduces biofouling through surface structure",
+          "Biofilms can increase pipe friction by 20-80%",
+          "Aligned surface features reduce roughness effects"
+        ],
+        "assumptions": [
+          "Biofilm formation is a significant contributor to drag in water pipes",
+          "Microstructures can consistently prevent biofilm attachment",
+          "Aligned features are less drag-inducing than random roughness"
+        ],
+        "predictions": [],
+        "expected_failure_modes": [
+          "Biofilm accumulation in feature valleys",
+          "Increased roughness from feature damage",
+          "Reduced effectiveness in water with high organic content"
+        ],
+        "novelty_rationale": "This hypothesis focuses on biofilm inhibition and surface roughness effects rather than direct flow modification.",
+        "testability": "Can be tested by comparing biofilm accumulation and surface roughness measurements between smooth and microstructured pipes after operational periods.",
+        "falsifier": "If microstructured pipes show similar biofilm accumulation to smooth pipes but still maintain reduced drag, this hypothesis is wrong.",
+        "epistemic_state": "HYPOTHESIZED",
+        "parent_hypothesis_ids": [],
+        "provenance": {
+          "nodes": {},
+          "edges": [],
+          "committed_hash": null
+        },
+        "is_testable": true,
+        "provenance_root_hash": ""
+      },
+      {
+        "hypothesis_id": "H-DXP-004-004",
+        "claim": "Directional microstructures reduce drag primarily through elastic deformation that reduces the effective contact area with the fluid.",
+        "mechanism": "The microstructures are designed to flex under flow pressure, creating a dynamic surface that reduces the effective contact area with the fluid. This flexibility allows the surface to temporarily align with flow streamlines, reducing drag through a combination of reduced contact area and improved flow alignment.",
+        "evidence": [
+          "Fish skin scales have some flexibility that affects flow",
+          "Elastic surfaces can reduce drag in certain conditions",
+          "Dynamic surfaces can adapt to flow conditions"
+        ],
+        "assumptions": [
+          "The polymer microstructures can deform elastically under operational pressures",
+          "Deformation reduces effective contact area without increasing turbulence",
+          "Recovery after deformation is rapid and complete"
+        ],
+        "predictions": [],
+        "expected_failure_modes": [
+          "Permanent deformation of features",
+          "Reduced effectiveness over time due to material fatigue",
+          "Increased drag from feature misalignment after deformation"
+        ],
+        "novelty_rationale": "This hypothesis introduces surface flexibility and dynamic adaptation as the primary mechanism, rather than static structural features.",
+        "testability": "Can be tested using high-speed imaging to measure surface deformation under flow and correlating deformation with drag reduction.",
+        "falsifier": "If microstructured pipes show no measurable deformation under operational pressures but still maintain reduced drag, this hypothesis is wrong.",
+        "epistemic_state": "HYPOTHESIZED",
+        "parent_hypothesis_ids": [],
+        "provenance": {
+          "nodes": {},
+          "edges": [],
+          "committed_hash": null
+        },
+        "is_testable": true,
+        "provenance_root_hash": ""
+      }
+    ],
+    "distinguishing_predictions": "These hypotheses can be distinguished through several observations: 1) Boundary layer transition hypothesis predicts specific changes in velocity profiles near the wall; 2) Micro-stream hypothesis predicts the formation of coherent parallel flow channels; 3) Biofilm inhibition hypothesis predicts reduced biofilm accumulation but no specific flow pattern changes; 4) Elastic deformation hypothesis predicts measurable surface movement under flow pressure. Pressure drop measurements across different Reynolds numbers, biofilm thickness assessments, surface deformation imaging, and detailed velocity profile mapping would help distinguish between these mechanisms.",
+    "transfer_id": "TH-DXP-004-001",
+    "source_transfer_hash": "080ce0e608e053194c119931079504dd231ebd4090295d5fa0d1e360d0ee2141"
+  },
+  "timestamp": "2026-08-08T10:05:14.757985+00:00"
+}

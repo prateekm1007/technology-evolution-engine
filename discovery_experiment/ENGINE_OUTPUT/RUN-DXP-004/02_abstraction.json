@@ -1,0 +1,70 @@
+{
+  "stage": "02_abstraction",
+  "run_id": "RUN-DXP-004",
+  "code_sha": "9cf2046069a549721298cc8d709ac7bc8b4e8997",
+  "input_hash": "5cb661d7aa5ff8108efe039d651c3c78889762e8d2bd3fd5b4ba336094106bae",
+  "output_hash": "63d02d041d73eabf51c0048cb970795734ef30ca29219217067bc9febfbf499b",
+  "provider_manifest": {
+    "provider": "zai",
+    "model": "glm-4-plus",
+    "version": "z-ai-web-dev-sdk",
+    "configuration": {
+      "temperature": 0.15,
+      "max_tokens": 4096,
+      "system_sha": "da25f0e8a1231c4250cad400e03ce5c0a835dbc6ca8fc600ce255ef3727d663e"
+    },
+    "prompt_sha": "cac484e1959baf5c1d3a09b2d04e4ad198ee80aca935c55ed7f2bcd33984163d",
+    "seed": null,
+    "tool_versions": {
+      "z_ai_cli": "z-ai"
+    },
+    "timestamp": "2026-08-08T10:04:43.190067+00:00",
+    "latency_ms": 2653,
+    "success": true,
+    "error": ""
+  },
+  "result": {
+    "pattern": {
+      "pattern_id": "MP-DXP-004",
+      "source_domain": "ichthyology",
+      "causal_structure": "Surface microstructures enable drag reduction under specific flow conditions, producing directional resistance and anti-fouling effects.",
+      "inputs": [
+        "fluid medium",
+        "external force"
+      ],
+      "conditions": [
+        "turbulent flow",
+        "high Reynolds number"
+      ],
+      "operations": [
+        "flow directionality",
+        "drag reduction",
+        "anti-fouling"
+      ],
+      "intermediate_state": [
+        "boundary layer modification",
+        "anisotropic surface"
+      ],
+      "outputs": [
+        "reduced resistance",
+        "inhibited attachment"
+      ],
+      "constraints": [
+        "structural integrity",
+        "dimensional scaling",
+        "flow alignment"
+      ],
+      "failure_conditions": [
+        "structural damage",
+        "biofouling",
+        "off-design flow",
+        "size mismatch"
+      ],
+      "abstract_principle": "Hierarchical surface structures with directional features reduce resistance to directional flow while inhibiting attachment.",
+      "source_graph_summary": "23 nodes, 12 edges"
+    },
+    "failures": [],
+    "source_extraction_hash": "659925cd4bed5a603c8d5fccb8b0fe36f0f9ffb4f99bc65cac8aefc1e6c95ef2"
+  },
+  "timestamp": "2026-08-08T10:04:45.844449+00:00"
+}

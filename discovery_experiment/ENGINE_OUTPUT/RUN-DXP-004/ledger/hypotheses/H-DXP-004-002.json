@@ -1,0 +1,32 @@
+{
+  "hypothesis_id": "H-DXP-004-002",
+  "claim": "Directional microstructures reduce drag primarily through the generation of micro-streams that reduce viscous dissipation.",
+  "mechanism": "The microstructures create multiple parallel micro-streams that reduce the effective viscosity gradient at the wall. These micro-streams act as low-friction pathways that carry a significant portion of the flow, reducing overall energy dissipation.",
+  "evidence": [
+    "Fish scales create micro-channels that reduce local viscosity",
+    "Microfluidic devices show reduced friction with structured surfaces"
+  ],
+  "assumptions": [
+    "Micro-streams can maintain coherence at Re=500,000",
+    "The viscosity reduction effect dominates over other drag mechanisms",
+    "Feature geometry optimizes micro-stream formation"
+  ],
+  "predictions": [],
+  "expected_failure_modes": [
+    "Micro-stream disruption at higher flow rates",
+    "Increased turbulence from micro-stream interactions",
+    "Feature clogging disrupting micro-stream formation"
+  ],
+  "novelty_rationale": "This hypothesis emphasizes micro-stream formation and viscosity reduction rather than boundary layer modification.",
+  "testability": "Can be tested using particle image velocimetry to visualize and measure micro-stream formation and velocity profiles.",
+  "falsifier": "If microstructured pipes show no evidence of coherent micro-streams but still maintain reduced drag, this hypothesis is wrong.",
+  "epistemic_state": "HYPOTHESIZED",
+  "parent_hypothesis_ids": [],
+  "provenance": {
+    "nodes": {},
+    "edges": [],
+    "committed_hash": null
+  },
+  "is_testable": true,
+  "provenance_root_hash": ""
+}

@@ -1,0 +1,249 @@
+{
+  "run_id": "RUN-DXP-004",
+  "challenge_id": "DXP-004",
+  "started_at": "2026-08-08T10:03:39.534052+00:00",
+  "last_updated": "2026-08-08T10:06:16.557543+00:00",
+  "engine_code_sha": "9cf2046069a549721298cc8d709ac7bc8b4e8997",
+  "resume_from": "12_case",
+  "stages": {
+    "01_extraction": {
+      "stage": "01_extraction",
+      "status": "COMPLETED",
+      "started_at": "2026-08-08T10:03:39.534423+00:00",
+      "completed_at": "2026-08-08T10:04:43.188125+00:00",
+      "latency_ms": 63652,
+      "error": "",
+      "output_hash": "659925cd4bed5a603c8d5fccb8b0fe36f0f9ffb4f99bc65cac8aefc1e6c95ef2",
+      "provider_manifest_sha": "65e2cc8bd877a44d75ea87b51828d815c61186d550cdaf9cc81000e0d85757b1"
+    },
+    "02_abstraction": {
+      "stage": "02_abstraction",
+      "status": "COMPLETED",
+      "started_at": "2026-08-08T10:04:43.189078+00:00",
+      "completed_at": "2026-08-08T10:04:45.844930+00:00",
+      "latency_ms": 2654,
+      "error": "",
+      "output_hash": "63d02d041d73eabf51c0048cb970795734ef30ca29219217067bc9febfbf499b",
+      "provider_manifest_sha": "864daf8e989d585ce3e36961c289e2d36702bb5099282493d6264f5fecbf5f95"
+    },
+    "03_transfer": {
+      "stage": "03_transfer",
+      "status": "COMPLETED",
+      "started_at": "2026-08-08T10:04:45.846089+00:00",
+      "completed_at": "2026-08-08T10:04:50.314372+00:00",
+      "latency_ms": 4467,
+      "error": "",
+      "output_hash": "080ce0e608e053194c119931079504dd231ebd4090295d5fa0d1e360d0ee2141",
+      "provider_manifest_sha": "f47ea9da70ec348ddc61ee77e0180013197f650b742d94fc28c73a129c7a66a9"
+    },
+    "04_hypotheses": {
+      "stage": "04_hypotheses",
+      "status": "COMPLETED",
+      "started_at": "2026-08-08T10:04:50.315671+00:00",
+      "completed_at": "2026-08-08T10:05:14.758436+00:00",
+      "latency_ms": 24441,
+      "error": "",
+      "output_hash": "a9d681a6fae512792f813156005441187f018791ac059d3ea405c8411e83c6f1",
+      "provider_manifest_sha": "210145e747e67e93ddec2725203c19d641ea55e2e87b2d6dabae9773df76413c"
+    },
+    "05_adversarial_H-DXP-004-001": {
+      "stage": "05_adversarial_H-DXP-004-001",
+      "status": "COMPLETED",
+      "started_at": "2026-08-08T10:05:14.759188+00:00",
+      "completed_at": "2026-08-08T10:05:27.049849+00:00",
+      "latency_ms": 12289,
+      "error": "",
+      "output_hash": "74d0cb41d478e6c27e32bde3074fc0f27b24d1b1142040bd1db37477d6804fca",
+      "provider_manifest_sha": "05cf32d1d73a4e375211cc73cae0bd71af2c892951850b10519fb44c78271825"
+    },
+    "06_rediscovery_H-DXP-004-001": {
+      "stage": "06_rediscovery_H-DXP-004-001",
+      "status": "COMPLETED",
+      "started_at": "2026-08-08T10:05:27.050719+00:00",
+      "completed_at": "2026-08-08T10:05:30.362695+00:00",
+      "latency_ms": 3311,
+      "error": "",
+      "output_hash": "96f0db50c38fe08184d0054e38823e748adeb18b5e52d6350da6fe84d1a92bc5",
+      "provider_manifest_sha": "ea94f1d27603d0ede7939fb5308d4c5137227b270aa9b4c2079c8248a8547381"
+    },
+    "07_novelty_H-DXP-004-001": {
+      "stage": "07_novelty_H-DXP-004-001",
+      "status": "COMPLETED",
+      "started_at": "2026-08-08T10:05:30.369790+00:00",
+      "completed_at": "2026-08-08T10:05:30.373465+00:00",
+      "latency_ms": 0,
+      "error": "",
+      "output_hash": "e66c9cc394023da78483b1f679c9ed8ea2051314cb21fade9c37a89ef391e868",
+      "provider_manifest_sha": "c2f69b2c1ba23c6c2da376c6055eb8a8de00def5e2db2eab530bee789210a9a5"
+    },
+    "BLOCKED_adversarial_H-DXP-004-001": {
+      "stage": "BLOCKED_adversarial_H-DXP-004-001",
+      "status": "SKIPPED",
+      "started_at": "2026-08-08T10:05:52.392974+00:00",
+      "completed_at": "2026-08-08T10:05:52.392984+00:00",
+      "latency_ms": null,
+      "error": "hypothesis H-DXP-004-001 blocked: adversarial outcome = FAILED",
+      "output_hash": "",
+      "provider_manifest_sha": ""
+    },
+    "05_adversarial_H-DXP-004-002": {
+      "stage": "05_adversarial_H-DXP-004-002",
+      "status": "COMPLETED",
+      "started_at": "2026-08-08T10:05:30.374889+00:00",
+      "completed_at": "2026-08-08T10:05:42.279625+00:00",
+      "latency_ms": 11903,
+      "error": "",
+      "output_hash": "93ccc66e88cf090f301bbaa4ad47144425a52143ed56eb7741db7b90737c8846",
+      "provider_manifest_sha": "9bed6f01579d0fb10c41fe722102638cebe8dab769c5e2d9250cc50f179ea49f"
+    },
+    "06_rediscovery_H-DXP-004-002": {
+      "stage": "06_rediscovery_H-DXP-004-002",
+      "status": "COMPLETED",
+      "started_at": "2026-08-08T10:05:42.280636+00:00",
+      "completed_at": "2026-08-08T10:05:44.445858+00:00",
+      "latency_ms": 2164,
+      "error": "",
+      "output_hash": "9de36e3dea5f38551a976cf8c4708695f79a8438cdf7d18a4252d526b4c6e3a2",
+      "provider_manifest_sha": "7700322236aa46cf9f8be613a0c66602f600b5b2ddb5b977f2b39a8d13dd85f3"
+    },
+    "07_novelty_H-DXP-004-002": {
+      "stage": "07_novelty_H-DXP-004-002",
+      "status": "COMPLETED",
+      "started_at": "2026-08-08T10:05:44.446784+00:00",
+      "completed_at": "2026-08-08T10:05:44.447694+00:00",
+      "latency_ms": 0,
+      "error": "",
+      "output_hash": "115de9a1ef3c60bf21ce78c4c4d779e46c03ea9b2ecfd6bae3ad23dad5022673",
+      "provider_manifest_sha": "c2501e5ba3b3a90dea8e407ff8bdabe28d5455b351a3f09041eeaef523f909eb"
+    },
+    "BLOCKED_adversarial_H-DXP-004-002": {
+      "stage": "BLOCKED_adversarial_H-DXP-004-002",
+      "status": "SKIPPED",
+      "started_at": "2026-08-08T10:05:52.393713+00:00",
+      "completed_at": "2026-08-08T10:05:52.393719+00:00",
+      "latency_ms": null,
+      "error": "hypothesis H-DXP-004-002 blocked: adversarial outcome = FAILED",
+      "output_hash": "",
+      "provider_manifest_sha": ""
+    },
+    "05_adversarial_H-DXP-004-003": {
+      "stage": "05_adversarial_H-DXP-004-003",
+      "status": "COMPLETED",
+      "started_at": "2026-08-08T10:05:52.394114+00:00",
+      "completed_at": "2026-08-08T10:06:03.338306+00:00",
+      "latency_ms": 10943,
+      "error": "",
+      "output_hash": "93531c0331f1ee66e5b217d4065b16fd612be750c6d3744b3e26dec08866d472",
+      "provider_manifest_sha": "c1c52840275c545e7eaf9bf957ff2206e61655f18c96f17b41610e09f731e6f2"
+    },
+    "06_rediscovery_H-DXP-004-003": {
+      "stage": "06_rediscovery_H-DXP-004-003",
+      "status": "COMPLETED",
+      "started_at": "2026-08-08T10:06:03.339367+00:00",
+      "completed_at": "2026-08-08T10:06:06.447565+00:00",
+      "latency_ms": 3107,
+      "error": "",
+      "output_hash": "3bad30a741797cce020cea0994c2a9b4dcd7ca8d8b277c4833cf14eb24cd4aeb",
+      "provider_manifest_sha": "030795dcc683d2cf6c0a180740aed34e49f9a5af11750c3a52d7d2d5e364eff6"
+    },
+    "07_novelty_H-DXP-004-003": {
+      "stage": "07_novelty_H-DXP-004-003",
+      "status": "COMPLETED",
+      "started_at": "2026-08-08T10:06:06.449211+00:00",
+      "completed_at": "2026-08-08T10:06:06.450786+00:00",
+      "latency_ms": 0,
+      "error": "",
+      "output_hash": "c43a254b91f3b0dbe4c448ac893cd3d0c37b36d6ebbbfdaa14d7fe2dd37833e4",
+      "provider_manifest_sha": "4550d7552b777a2b77347ce8e40d293345987981569d5cab7dc5ce7386d1ced1"
+    },
+    "BLOCKED_adversarial_H-DXP-004-003": {
+      "stage": "BLOCKED_adversarial_H-DXP-004-003",
+      "status": "SKIPPED",
+      "started_at": "2026-08-08T10:06:06.452412+00:00",
+      "completed_at": "2026-08-08T10:06:06.452421+00:00",
+      "latency_ms": null,
+      "error": "hypothesis H-DXP-004-003 blocked: adversarial outcome = FAILED",
+      "output_hash": "",
+      "provider_manifest_sha": ""
+    },
+    "05_adversarial_H-DXP-004-004": {
+      "stage": "05_adversarial_H-DXP-004-004",
+      "status": "COMPLETED",
+      "started_at": "2026-08-08T10:06:06.453050+00:00",
+      "completed_at": "2026-08-08T10:06:13.833519+00:00",
+      "latency_ms": 7379,
+      "error": "",
+      "output_hash": "bb700563815a6ab23e38444b4a3da1c61656e2dc52a462b40e4e18709bc9c96e",
+      "provider_manifest_sha": "d2c86b03252b604add18f3b5269216fa9cb52603afd080ce2aca9591de7d5cbd"
+    },
+    "06_rediscovery_H-DXP-004-004": {
+      "stage": "06_rediscovery_H-DXP-004-004",
+      "status": "COMPLETED",
+      "started_at": "2026-08-08T10:06:13.834641+00:00",
+      "completed_at": "2026-08-08T10:06:16.541480+00:00",
+      "latency_ms": 2705,
+      "error": "",
+      "output_hash": "2e8cf040b18df4f09329e2edb2b7aee7ac89959809e219987a65e233667655cf",
+      "provider_manifest_sha": "a63888a1c7bd5dfd36e68c0395ea32781e601f8ba22bd8394f6636eef8c90108"
+    },
+    "07_novelty_H-DXP-004-004": {
+      "stage": "07_novelty_H-DXP-004-004",
+      "status": "COMPLETED",
+      "started_at": "2026-08-08T10:06:16.542697+00:00",
+      "completed_at": "2026-08-08T10:06:16.543703+00:00",
+      "latency_ms": 0,
+      "error": "",
+      "output_hash": "7b2efc006f1a4ff24f4da4cf601668cd833c85a4f5af0a83273ef0ad594a11a3",
+      "provider_manifest_sha": "2bfdca15bb1ef7942b6cd235fa191ce85b57253914a5ae7bc4c875514ee5687f"
+    },
+    "BLOCKED_adversarial_H-DXP-004-004": {
+      "stage": "BLOCKED_adversarial_H-DXP-004-004",
+      "status": "SKIPPED",
+      "started_at": "2026-08-08T10:06:16.544686+00:00",
+      "completed_at": "2026-08-08T10:06:16.544691+00:00",
+      "latency_ms": null,
+      "error": "hypothesis H-DXP-004-004 blocked: adversarial outcome = FAILED",
+      "output_hash": "",
+      "provider_manifest_sha": ""
+    },
+    "10_rankings": {
+      "stage": "10_rankings",
+      "status": "COMPLETED",
+      "started_at": "2026-08-08T10:06:16.545275+00:00",
+      "completed_at": "2026-08-08T10:06:16.546540+00:00",
+      "latency_ms": 0,
+      "error": "",
+      "output_hash": "ee72be3568e3f4f29607db14c71a883915ec87b0ebb4fb7f8a4d2e3d29e382c1",
+      "provider_manifest_sha": ""
+    },
+    "11_state_machine": {
+      "stage": "11_state_machine",
+      "status": "COMPLETED",
+      "started_at": "2026-08-08T10:06:16.547722+00:00",
+      "completed_at": "2026-08-08T10:06:16.549038+00:00",
+      "latency_ms": 0,
+      "error": "",
+      "output_hash": "a526e35ebcb6cb220374b7a8e31bbf3315a723d9ab11c508910fa98a47e1a960",
+      "provider_manifest_sha": ""
+    },
+    "12_case": {
+      "stage": "12_case",
+      "status": "COMPLETED",
+      "started_at": "2026-08-08T10:06:16.550092+00:00",
+      "completed_at": "2026-08-08T10:06:16.556420+00:00",
+      "latency_ms": 5,
+      "error": "",
+      "output_hash": "de8707aac0764eff1a73db0ec9462ca00f38fe610ee5020c5fd2b7266342299d",
+      "provider_manifest_sha": ""
+    }
+  },
+  "n_hypotheses": 4,
+  "n_hypotheses_survived_adversarial": 0,
+  "n_hypotheses_rediscovery": 4,
+  "final_state": "TESTABLE_HYPOTHESIS",
+  "final_state_source": "11_state_machine.json",
+  "completed": true,
+  "failed_closed": false,
+  "failed_closed_at": "",
+  "manifest_sha": "469f47069f0640743315e83976e5fa8be03b67af54bfa29cc9b3b06b76d8d478"
+}

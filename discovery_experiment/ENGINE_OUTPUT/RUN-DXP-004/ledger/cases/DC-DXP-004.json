@@ -1,0 +1,456 @@
+{
+  "case_id": "DC-DXP-004",
+  "created_at": "2026-08-08T10:06:16.550901+00:00",
+  "engine_version": "",
+  "knowledge_snapshot": "",
+  "input_sources": [
+    "Shark Skin Denticle Morphology and Hydrodynamic Function"
+  ],
+  "input_domains": [
+    "ichthyology",
+    "fluid mechanics"
+  ],
+  "mechanisms": [],
+  "constraints": [],
+  "observations": [],
+  "candidate_relationship": "",
+  "candidate_mechanism": "",
+  "candidate_hypothesis": "",
+  "predictions": [],
+  "proposed_experiment": "",
+  "prior_art_status": "NOT_EVALUATED",
+  "novelty_status": "NOT_EVALUATED",
+  "validation_status": "UNKNOWN",
+  "evidence": [
+    "source_doc:doc_d4f5ea689289",
+    "mechanism_graph:DXP-004",
+    "mechanism_pattern:DXP-004",
+    "transfer:TH-DXP-004-001",
+    "hypothesis:H-DXP-004-001",
+    "adversarial:H-DXP-004-001",
+    "rediscovery:H-DXP-004-001",
+    "novelty:H-DXP-004-001",
+    "hypothesis:H-DXP-004-002",
+    "adversarial:H-DXP-004-002",
+    "rediscovery:H-DXP-004-002",
+    "novelty:H-DXP-004-002",
+    "hypothesis:H-DXP-004-003",
+    "adversarial:H-DXP-004-003",
+    "rediscovery:H-DXP-004-003",
+    "novelty:H-DXP-004-003",
+    "hypothesis:H-DXP-004-004",
+    "adversarial:H-DXP-004-004",
+    "rediscovery:H-DXP-004-004",
+    "novelty:H-DXP-004-004",
+    "run:DXP-004"
+  ],
+  "provenance": {
+    "nodes": {
+      "source_doc:doc_d4f5ea689289": {
+        "node_id": "source_doc:doc_d4f5ea689289",
+        "node_type": "source_document",
+        "content_hash": "659925cd4bed5a603c8d5fccb8b0fe36f0f9ffb4f99bc65cac8aefc1e6c95ef2",
+        "metadata": {
+          "artifact_stage": "01_extraction",
+          "artifact_output_hash": "659925cd4bed5a603c8d5fccb8b0fe36f0f9ffb4f99bc65cac8aefc1e6c95ef2",
+          "title": "Shark Skin Denticle Morphology and Hydrodynamic Function"
+        }
+      },
+      "mechanism_graph:DXP-004": {
+        "node_id": "mechanism_graph:DXP-004",
+        "node_type": "mechanism_graph",
+        "content_hash": "659925cd4bed5a603c8d5fccb8b0fe36f0f9ffb4f99bc65cac8aefc1e6c95ef2",
+        "metadata": {
+          "artifact_stage": "01_extraction",
+          "artifact_output_hash": "659925cd4bed5a603c8d5fccb8b0fe36f0f9ffb4f99bc65cac8aefc1e6c95ef2",
+          "n_nodes": 23,
+          "n_edges": 12
+        }
+      },
+      "mechanism_pattern:DXP-004": {
+        "node_id": "mechanism_pattern:DXP-004",
+        "node_type": "mechanism_pattern",
+        "content_hash": "63d02d041d73eabf51c0048cb970795734ef30ca29219217067bc9febfbf499b",
+        "metadata": {
+          "artifact_stage": "02_abstraction",
+          "artifact_output_hash": "63d02d041d73eabf51c0048cb970795734ef30ca29219217067bc9febfbf499b",
+          "pattern_id": "MP-DXP-004"
+        }
+      },
+      "transfer:TH-DXP-004-001": {
+        "node_id": "transfer:TH-DXP-004-001",
+        "node_type": "transfer_hypothesis",
+        "content_hash": "080ce0e608e053194c119931079504dd231ebd4090295d5fa0d1e360d0ee2141",
+        "metadata": {
+          "artifact_stage": "03_transfer",
+          "artifact_output_hash": "080ce0e608e053194c119931079504dd231ebd4090295d5fa0d1e360d0ee2141",
+          "source_domain": "ichthyology",
+          "target_domain": "fluid mechanics",
+          "transferred_principle": "Directional microstructures on the pipe inner surface modify boundary layer dynamics to reduce drag and inhibit particle/biofilm attachment."
+        }
+      },
+      "hypothesis:H-DXP-004-001": {
+        "node_id": "hypothesis:H-DXP-004-001",
+        "node_type": "hypothesis",
+        "content_hash": "a9d681a6fae512792f813156005441187f018791ac059d3ea405c8411e83c6f1",
+        "metadata": {
+          "artifact_stage": "04_hypotheses",
+          "artifact_output_hash": "a9d681a6fae512792f813156005441187f018791ac059d3ea405c8411e83c6f1",
+          "claim": "Directional microstructures reduce drag primarily by modifying the boundary layer transition from la",
+          "hypothesis_object_hash": "7b40c18cf0071ff3796bbec0f01de2dce3ead0de2321f177f8c9508f2e0b2b7e"
+        }
+      },
+      "adversarial:H-DXP-004-001": {
+        "node_id": "adversarial:H-DXP-004-001",
+        "node_type": "adversarial_analysis",
+        "content_hash": "74d0cb41d478e6c27e32bde3074fc0f27b24d1b1142040bd1db37477d6804fca",
+        "metadata": {
+          "artifact_stage": "05_adversarial_H-DXP-004-001",
+          "artifact_output_hash": "74d0cb41d478e6c27e32bde3074fc0f27b24d1b1142040bd1db37477d6804fca",
+          "outcome": "ADVERSARIAL_FAILED",
+          "survives": false
+        }
+      },
+      "rediscovery:H-DXP-004-001": {
+        "node_id": "rediscovery:H-DXP-004-001",
+        "node_type": "rediscovery_analysis",
+        "content_hash": "96f0db50c38fe08184d0054e38823e748adeb18b5e52d6350da6fe84d1a92bc5",
+        "metadata": {
+          "artifact_stage": "06_rediscovery_H-DXP-004-001",
+          "artifact_output_hash": "96f0db50c38fe08184d0054e38823e748adeb18b5e52d6350da6fe84d1a92bc5",
+          "classification": "PARAPHRASED_IN_INPUT",
+          "is_rediscovery": true
+        }
+      },
+      "novelty:H-DXP-004-001": {
+        "node_id": "novelty:H-DXP-004-001",
+        "node_type": "novelty_assessment",
+        "content_hash": "e66c9cc394023da78483b1f679c9ed8ea2051314cb21fade9c37a89ef391e868",
+        "metadata": {
+          "artifact_stage": "07_novelty_H-DXP-004-001",
+          "artifact_output_hash": "e66c9cc394023da78483b1f679c9ed8ea2051314cb21fade9c37a89ef391e868",
+          "status": "NOT_EVALUATED"
+        }
+      },
+      "hypothesis:H-DXP-004-002": {
+        "node_id": "hypothesis:H-DXP-004-002",
+        "node_type": "hypothesis",
+        "content_hash": "a9d681a6fae512792f813156005441187f018791ac059d3ea405c8411e83c6f1",
+        "metadata": {
+          "artifact_stage": "04_hypotheses",
+          "artifact_output_hash": "a9d681a6fae512792f813156005441187f018791ac059d3ea405c8411e83c6f1",
+          "claim": "Directional microstructures reduce drag primarily through the generation of micro-streams that reduc",
+          "hypothesis_object_hash": "221433dda3537f27918463afdf0e0bd35369b71941d264fa09da6491670eb5a2"
+        }
+      },
+      "adversarial:H-DXP-004-002": {
+        "node_id": "adversarial:H-DXP-004-002",
+        "node_type": "adversarial_analysis",
+        "content_hash": "93ccc66e88cf090f301bbaa4ad47144425a52143ed56eb7741db7b90737c8846",
+        "metadata": {
+          "artifact_stage": "05_adversarial_H-DXP-004-002",
+          "artifact_output_hash": "93ccc66e88cf090f301bbaa4ad47144425a52143ed56eb7741db7b90737c8846",
+          "outcome": "ADVERSARIAL_FAILED",
+          "survives": false
+        }
+      },
+      "rediscovery:H-DXP-004-002": {
+        "node_id": "rediscovery:H-DXP-004-002",
+        "node_type": "rediscovery_analysis",
+        "content_hash": "9de36e3dea5f38551a976cf8c4708695f79a8438cdf7d18a4252d526b4c6e3a2",
+        "metadata": {
+          "artifact_stage": "06_rediscovery_H-DXP-004-002",
+          "artifact_output_hash": "9de36e3dea5f38551a976cf8c4708695f79a8438cdf7d18a4252d526b4c6e3a2",
+          "classification": "PARAPHRASED_IN_INPUT",
+          "is_rediscovery": true
+        }
+      },
+      "novelty:H-DXP-004-002": {
+        "node_id": "novelty:H-DXP-004-002",
+        "node_type": "novelty_assessment",
+        "content_hash": "115de9a1ef3c60bf21ce78c4c4d779e46c03ea9b2ecfd6bae3ad23dad5022673",
+        "metadata": {
+          "artifact_stage": "07_novelty_H-DXP-004-002",
+          "artifact_output_hash": "115de9a1ef3c60bf21ce78c4c4d779e46c03ea9b2ecfd6bae3ad23dad5022673",
+          "status": "NOT_EVALUATED"
+        }
+      },
+      "hypothesis:H-DXP-004-003": {
+        "node_id": "hypothesis:H-DXP-004-003",
+        "node_type": "hypothesis",
+        "content_hash": "a9d681a6fae512792f813156005441187f018791ac059d3ea405c8411e83c6f1",
+        "metadata": {
+          "artifact_stage": "04_hypotheses",
+          "artifact_output_hash": "a9d681a6fae512792f813156005441187f018791ac059d3ea405c8411e83c6f1",
+          "claim": "Directional microstructures reduce drag primarily by inhibiting biofilm formation and reducing surfa",
+          "hypothesis_object_hash": "9250c77b2a7f2bf0dbb9588ece7a0eb97ee50f09b3a8d90dbfbf89acdcd38c58"
+        }
+      },
+      "adversarial:H-DXP-004-003": {
+        "node_id": "adversarial:H-DXP-004-003",
+        "node_type": "adversarial_analysis",
+        "content_hash": "93531c0331f1ee66e5b217d4065b16fd612be750c6d3744b3e26dec08866d472",
+        "metadata": {
+          "artifact_stage": "05_adversarial_H-DXP-004-003",
+          "artifact_output_hash": "93531c0331f1ee66e5b217d4065b16fd612be750c6d3744b3e26dec08866d472",
+          "outcome": "ADVERSARIAL_FAILED",
+          "survives": false
+        }
+      },
+      "rediscovery:H-DXP-004-003": {
+        "node_id": "rediscovery:H-DXP-004-003",
+        "node_type": "rediscovery_analysis",
+        "content_hash": "3bad30a741797cce020cea0994c2a9b4dcd7ca8d8b277c4833cf14eb24cd4aeb",
+        "metadata": {
+          "artifact_stage": "06_rediscovery_H-DXP-004-003",
+          "artifact_output_hash": "3bad30a741797cce020cea0994c2a9b4dcd7ca8d8b277c4833cf14eb24cd4aeb",
+          "classification": "PARAPHRASED_IN_INPUT",
+          "is_rediscovery": true
+        }
+      },
+      "novelty:H-DXP-004-003": {
+        "node_id": "novelty:H-DXP-004-003",
+        "node_type": "novelty_assessment",
+        "content_hash": "c43a254b91f3b0dbe4c448ac893cd3d0c37b36d6ebbbfdaa14d7fe2dd37833e4",
+        "metadata": {
+          "artifact_stage": "07_novelty_H-DXP-004-003",
+          "artifact_output_hash": "c43a254b91f3b0dbe4c448ac893cd3d0c37b36d6ebbbfdaa14d7fe2dd37833e4",
+          "status": "NOT_EVALUATED"
+        }
+      },
+      "hypothesis:H-DXP-004-004": {
+        "node_id": "hypothesis:H-DXP-004-004",
+        "node_type": "hypothesis",
+        "content_hash": "a9d681a6fae512792f813156005441187f018791ac059d3ea405c8411e83c6f1",
+        "metadata": {
+          "artifact_stage": "04_hypotheses",
+          "artifact_output_hash": "a9d681a6fae512792f813156005441187f018791ac059d3ea405c8411e83c6f1",
+          "claim": "Directional microstructures reduce drag primarily through elastic deformation that reduces the effec",
+          "hypothesis_object_hash": "5f87b99ac4868018e3669260a765c2e68a3f49633e435979f7f266fef8382fc7"
+        }
+      },
+      "adversarial:H-DXP-004-004": {
+        "node_id": "adversarial:H-DXP-004-004",
+        "node_type": "adversarial_analysis",
+        "content_hash": "bb700563815a6ab23e38444b4a3da1c61656e2dc52a462b40e4e18709bc9c96e",
+        "metadata": {
+          "artifact_stage": "05_adversarial_H-DXP-004-004",
+          "artifact_output_hash": "bb700563815a6ab23e38444b4a3da1c61656e2dc52a462b40e4e18709bc9c96e",
+          "outcome": "ADVERSARIAL_FAILED",
+          "survives": false
+        }
+      },
+      "rediscovery:H-DXP-004-004": {
+        "node_id": "rediscovery:H-DXP-004-004",
+        "node_type": "rediscovery_analysis",
+        "content_hash": "2e8cf040b18df4f09329e2edb2b7aee7ac89959809e219987a65e233667655cf",
+        "metadata": {
+          "artifact_stage": "06_rediscovery_H-DXP-004-004",
+          "artifact_output_hash": "2e8cf040b18df4f09329e2edb2b7aee7ac89959809e219987a65e233667655cf",
+          "classification": "PARAPHRASED_IN_INPUT",
+          "is_rediscovery": true
+        }
+      },
+      "novelty:H-DXP-004-004": {
+        "node_id": "novelty:H-DXP-004-004",
+        "node_type": "novelty_assessment",
+        "content_hash": "7b2efc006f1a4ff24f4da4cf601668cd833c85a4f5af0a83273ef0ad594a11a3",
+        "metadata": {
+          "artifact_stage": "07_novelty_H-DXP-004-004",
+          "artifact_output_hash": "7b2efc006f1a4ff24f4da4cf601668cd833c85a4f5af0a83273ef0ad594a11a3",
+          "status": "NOT_EVALUATED"
+        }
+      },
+      "run:DXP-004": {
+        "node_id": "run:DXP-004",
+        "node_type": "checkpointed_run",
+        "content_hash": "57564608ae09c91e39731d8675f2b0a32793ee765ef08d88de35c8a4f7c33de6",
+        "metadata": {
+          "run_id": "RUN-DXP-004",
+          "engine_code_sha": "9cf2046069a549721298cc8d709ac7bc8b4e8997",
+          "artifact_stage": "manifest",
+          "artifact_output_hash": ""
+        }
+      }
+    },
+    "edges": [
+      {
+        "edge_id": "prov:mg_src:DXP-004",
+        "source_node_id": "source_doc:doc_d4f5ea689289",
+        "target_node_id": "mechanism_graph:DXP-004",
+        "edge_type": "DERIVES_FROM",
+        "evidence": "mechanism graph extracted from source",
+        "actor": "mechanism_extractor",
+        "timestamp": "2026-08-08T10:06:16.550931+00:00"
+      },
+      {
+        "edge_id": "prov:mp_mg:DXP-004",
+        "source_node_id": "mechanism_graph:DXP-004",
+        "target_node_id": "mechanism_pattern:DXP-004",
+        "edge_type": "DERIVES_FROM",
+        "evidence": "pattern abstracted from mechanism graph",
+        "actor": "mechanism_abstracter",
+        "timestamp": "2026-08-08T10:06:16.550941+00:00"
+      },
+      {
+        "edge_id": "prov:th_mp:TH-DXP-004-001",
+        "source_node_id": "mechanism_pattern:DXP-004",
+        "target_node_id": "transfer:TH-DXP-004-001",
+        "edge_type": "DERIVES_FROM",
+        "evidence": "transfer derived from pattern",
+        "actor": "cross_domain_transfer",
+        "timestamp": "2026-08-08T10:06:16.550947+00:00"
+      },
+      {
+        "edge_id": "prov:h_th:H-DXP-004-001",
+        "source_node_id": "transfer:TH-DXP-004-001",
+        "target_node_id": "hypothesis:H-DXP-004-001",
+        "edge_type": "DERIVES_FROM",
+        "evidence": "hypothesis derived from transfer",
+        "actor": "hypothesis_engine",
+        "timestamp": "2026-08-08T10:06:16.550976+00:00"
+      },
+      {
+        "edge_id": "prov:adv_h:H-DXP-004-001",
+        "source_node_id": "hypothesis:H-DXP-004-001",
+        "target_node_id": "adversarial:H-DXP-004-001",
+        "edge_type": "ANALYZES",
+        "evidence": "adversarial analysis of hypothesis",
+        "actor": "adversarial_engine",
+        "timestamp": "2026-08-08T10:06:16.551072+00:00"
+      },
+      {
+        "edge_id": "prov:rd_h:H-DXP-004-001",
+        "source_node_id": "hypothesis:H-DXP-004-001",
+        "target_node_id": "rediscovery:H-DXP-004-001",
+        "edge_type": "ANALYZES",
+        "evidence": "rediscovery classification of hypothesis",
+        "actor": "rediscovery_detector",
+        "timestamp": "2026-08-08T10:06:16.551118+00:00"
+      },
+      {
+        "edge_id": "prov:nov_h:H-DXP-004-001",
+        "source_node_id": "hypothesis:H-DXP-004-001",
+        "target_node_id": "novelty:H-DXP-004-001",
+        "edge_type": "ANALYZES",
+        "evidence": "novelty assessment of hypothesis",
+        "actor": "novelty_firewall",
+        "timestamp": "2026-08-08T10:06:16.551150+00:00"
+      },
+      {
+        "edge_id": "prov:h_th:H-DXP-004-002",
+        "source_node_id": "transfer:TH-DXP-004-001",
+        "target_node_id": "hypothesis:H-DXP-004-002",
+        "edge_type": "DERIVES_FROM",
+        "evidence": "hypothesis derived from transfer",
+        "actor": "hypothesis_engine",
+        "timestamp": "2026-08-08T10:06:16.551206+00:00"
+      },
+      {
+        "edge_id": "prov:adv_h:H-DXP-004-002",
+        "source_node_id": "hypothesis:H-DXP-004-002",
+        "target_node_id": "adversarial:H-DXP-004-002",
+        "edge_type": "ANALYZES",
+        "evidence": "adversarial analysis of hypothesis",
+        "actor": "adversarial_engine",
+        "timestamp": "2026-08-08T10:06:16.551260+00:00"
+      },
+      {
+        "edge_id": "prov:rd_h:H-DXP-004-002",
+        "source_node_id": "hypothesis:H-DXP-004-002",
+        "target_node_id": "rediscovery:H-DXP-004-002",
+        "edge_type": "ANALYZES",
+        "evidence": "rediscovery classification of hypothesis",
+        "actor": "rediscovery_detector",
+        "timestamp": "2026-08-08T10:06:16.551297+00:00"
+      },
+      {
+        "edge_id": "prov:nov_h:H-DXP-004-002",
+        "source_node_id": "hypothesis:H-DXP-004-002",
+        "target_node_id": "novelty:H-DXP-004-002",
+        "edge_type": "ANALYZES",
+        "evidence": "novelty assessment of hypothesis",
+        "actor": "novelty_firewall",
+        "timestamp": "2026-08-08T10:06:16.551330+00:00"
+      },
+      {
+        "edge_id": "prov:h_th:H-DXP-004-003",
+        "source_node_id": "transfer:TH-DXP-004-001",
+        "target_node_id": "hypothesis:H-DXP-004-003",
+        "edge_type": "DERIVES_FROM",
+        "evidence": "hypothesis derived from transfer",
+        "actor": "hypothesis_engine",
+        "timestamp": "2026-08-08T10:06:16.551372+00:00"
+      },
+      {
+        "edge_id": "prov:adv_h:H-DXP-004-003",
+        "source_node_id": "hypothesis:H-DXP-004-003",
+        "target_node_id": "adversarial:H-DXP-004-003",
+        "edge_type": "ANALYZES",
+        "evidence": "adversarial analysis of hypothesis",
+        "actor": "adversarial_engine",
+        "timestamp": "2026-08-08T10:06:16.551415+00:00"
+      },
+      {
+        "edge_id": "prov:rd_h:H-DXP-004-003",
+        "source_node_id": "hypothesis:H-DXP-004-003",
+        "target_node_id": "rediscovery:H-DXP-004-003",
+        "edge_type": "ANALYZES",
+        "evidence": "rediscovery classification of hypothesis",
+        "actor": "rediscovery_detector",
+        "timestamp": "2026-08-08T10:06:16.551449+00:00"
+      },
+      {
+        "edge_id": "prov:nov_h:H-DXP-004-003",
+        "source_node_id": "hypothesis:H-DXP-004-003",
+        "target_node_id": "novelty:H-DXP-004-003",
+        "edge_type": "ANALYZES",
+        "evidence": "novelty assessment of hypothesis",
+        "actor": "novelty_firewall",
+        "timestamp": "2026-08-08T10:06:16.551478+00:00"
+      },
+      {
+        "edge_id": "prov:h_th:H-DXP-004-004",
+        "source_node_id": "transfer:TH-DXP-004-001",
+        "target_node_id": "hypothesis:H-DXP-004-004",
+        "edge_type": "DERIVES_FROM",
+        "evidence": "hypothesis derived from transfer",
+        "actor": "hypothesis_engine",
+        "timestamp": "2026-08-08T10:06:16.551517+00:00"
+      },
+      {
+        "edge_id": "prov:adv_h:H-DXP-004-004",
+        "source_node_id": "hypothesis:H-DXP-004-004",
+        "target_node_id": "adversarial:H-DXP-004-004",
+        "edge_type": "ANALYZES",
+        "evidence": "adversarial analysis of hypothesis",
+        "actor": "adversarial_engine",
+        "timestamp": "2026-08-08T10:06:16.551555+00:00"
+      },
+      {
+        "edge_id": "prov:rd_h:H-DXP-004-004",
+        "source_node_id": "hypothesis:H-DXP-004-004",
+        "target_node_id": "rediscovery:H-DXP-004-004",
+        "edge_type": "ANALYZES",
+        "evidence": "rediscovery classification of hypothesis",
+        "actor": "rediscovery_detector",
+        "timestamp": "2026-08-08T10:06:16.551589+00:00"
+      },
+      {
+        "edge_id": "prov:nov_h:H-DXP-004-004",
+        "source_node_id": "hypothesis:H-DXP-004-004",
+        "target_node_id": "novelty:H-DXP-004-004",
+        "edge_type": "ANALYZES",
+        "evidence": "novelty assessment of hypothesis",
+        "actor": "novelty_firewall",
+        "timestamp": "2026-08-08T10:06:16.551620+00:00"
+      }
+    ],
+    "committed_hash": "70569a52656212509f094952855b67c9efd5854244a72685719f13faf243c240"
+  },
+  "parent_cases": [],
+  "derived_cases": [],
+  "failure_state": null,
+  "manifest": null,
+  "provenance_root_hash": "70569a52656212509f094952855b67c9efd5854244a72685719f13faf243c240"
+}

@@ -1,0 +1,34 @@
+{
+  "stage": "06_rediscovery_H-DXP-004-002",
+  "run_id": "RUN-DXP-004",
+  "code_sha": "9cf2046069a549721298cc8d709ac7bc8b4e8997",
+  "input_hash": "221433dda3537f27918463afdf0e0bd35369b71941d264fa09da6491670eb5a2",
+  "output_hash": "9de36e3dea5f38551a976cf8c4708695f79a8438cdf7d18a4252d526b4c6e3a2",
+  "provider_manifest": {
+    "provider": "zai",
+    "model": "glm-4-plus",
+    "version": "z-ai-web-dev-sdk",
+    "configuration": {
+      "temperature": 0.1,
+      "max_tokens": 4096,
+      "system_sha": "dbdd0760dff49fc029b32b580a575b7de33a87d371edc2b0deec93bfb2b90b01"
+    },
+    "prompt_sha": "b2277d8af93d21d341ad596a65160670572177efb13dad48ae7daebf01c9803e",
+    "seed": null,
+    "tool_versions": {
+      "z_ai_cli": "z-ai"
+    },
+    "timestamp": "2026-08-08T10:05:42.281004+00:00",
+    "latency_ms": 2164,
+    "success": true,
+    "error": ""
+  },
+  "result": {
+    "hypothesis_id": "H-DXP-004-002",
+    "classification": "PARAPHRASED_IN_INPUT",
+    "evidence": "The hypothesis describes how directional microstructures (riblets on shark skin denticles) reduce drag through micro-streams that reduce viscous dissipation. This is directly supported by the source document which explains that riblets interact with near-wall turbulent structures, lift vortices away from the surface, and reduce the shear stress transfer to the surface. The mechanism described in the hypothesis is a restatement of the hydrodynamic function explained in the source document.",
+    "is_rediscovery": true,
+    "source_hypothesis_hash": ""
+  },
+  "timestamp": "2026-08-08T10:05:44.445502+00:00"
+}
