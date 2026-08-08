@@ -161,25 +161,62 @@ class OpenRouterProvider:
                 manifest.configuration["attempts"] = attempt
                 manifest.configuration["final_max_tokens"] = attempt_max_tokens
 
-                # ===== P46: Verify the served instrument (audit finding round 4) =====
+                # ===== P46: Verify the served instrument — FAIL-CLOSED (round 5) =====
                 # OpenRouter returns the served model in the top-level "model"
                 # field and the upstream provider in the "provider" field.
+                # Both are read from the response (NOT inferred from config).
                 served_model = data.get("model")
                 served_provider = data.get("provider")
                 manifest.served_model = served_model
                 manifest.served_provider = served_provider
-                if served_model is not None and served_model != self._model:
+
+                # Compute served_instrument_verified (all 4 conditions must hold)
+                manifest.served_instrument_verified = (
+                    served_provider is not None
+                    and served_model is not None
+                    and served_provider == self.provider_name
+                    and served_model == self._model
+                )
+
+                # FAIL-CLOSED: if served instrument is not verified, hard-fail
+                # Per P6: unknown instrument identity is a hard failure.
+                if not manifest.served_instrument_verified:
                     manifest.success = False
-                    manifest.error = (
-                        f"P46 SERVED-INSTRUMENT MISMATCH: requested model={self._model} "
-                        f"but response served model={served_model} "
-                        f"(served_provider={served_provider}). OpenRouter routed "
-                        f"the request to a different instrument. This is an "
-                        f"experimental identity violation."
-                    )
+                    if served_model is None and served_provider is None:
+                        manifest.error = (
+                            "P46_SERVED_INSTRUMENT_UNVERIFIED: OpenRouter response "
+                            "contains no served-model or served-provider metadata. "
+                            "Experimental identity cannot be established."
+                        )
+                    elif served_model is None:
+                        manifest.error = (
+                            "P46_SERVED_INSTRUMENT_UNVERIFIED: OpenRouter response "
+                            "contains no served-model metadata."
+                        )
+                    elif served_provider is None:
+                        manifest.error = (
+                            "P46_SERVED_INSTRUMENT_UNVERIFIED: OpenRouter response "
+                            f"contains no served-provider metadata. (served_model={served_model})"
+                        )
+                    elif served_model != self._model:
+                        manifest.error = (
+                            f"P46_SERVED_INSTRUMENT_MISMATCH: requested model={self._model} "
+                            f"but response served model={served_model} "
+                            f"(served_provider={served_provider}). OpenRouter routed "
+                            f"the request to a different instrument."
+                        )
+                    elif served_provider != self.provider_name:
+                        manifest.error = (
+                            f"P46_SERVED_INSTRUMENT_MISMATCH: requested provider={self.provider_name} "
+                            f"but response served provider={served_provider}."
+                        )
+                    else:
+                        manifest.error = (
+                            "P46_SERVED_INSTRUMENT_UNVERIFIED: unknown reason. "
+                            f"(requested: provider={self.provider_name}, model={self._model}; "
+                            f"served: provider={served_provider}, model={served_model})"
+                        )
                     return "", manifest
-                if served_model is None:
-                    manifest.configuration["p46_served_model_absent"] = True
 
                 return content, manifest
 

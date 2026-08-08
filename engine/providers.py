@@ -32,20 +32,26 @@ from typing import Any, Dict, List, Optional, Protocol
 class ProviderCallManifest:
     """Reproducibility record for a single provider call.
 
-    P46 (verify the served instrument, not the requested one):
+    P46 (verify the served instrument, not the requested one) — FAIL-CLOSED:
         The `provider` and `model` fields record what was REQUESTED.
         The `served_provider` and `served_model` fields record what was
         actually SERVED, as reported by the provider's response metadata.
 
-        If served_provider/served_model are None, the provider did not
-        report served-instrument metadata and the manifest cannot
-        establish experimental identity. If they are set and differ from
-        the requested values, the provider call is marked failed
-        (success=False, error describes the mismatch).
+        `served_instrument_verified` is True if and only if:
+            served_provider is present (not None)
+            AND served_model is present (not None)
+            AND served_provider == provider (requested)
+            AND served_model == model (requested)
+
+        Per P6 (fail closed, not open): if the served instrument cannot
+        be established, the call FAILS. There is no warning-only path.
+        Unknown instrument identity is a hard failure, not a warning.
 
         This is the machine-enforced P46 invariant: a request for the
         preregistered instrument is not evidence that the preregistered
-        instrument actually produced the observation.
+        instrument actually produced the observation. If the response
+        does not prove what instrument served it, the observation has
+        no experimental identity.
     """
     provider: str                        # requested provider
     model: str                           # requested model
@@ -58,9 +64,10 @@ class ProviderCallManifest:
     latency_ms: Optional[int] = None
     success: bool = True
     error: str = ""
-    # P46 served-instrument fields (audit finding round 4)
-    served_provider: Optional[str] = None  # provider as reported by response
-    served_model: Optional[str] = None     # model as reported by response
+    # P46 served-instrument fields (audit finding round 4 + round 5 fail-closed)
+    served_provider: Optional[str] = None  # provider as reported by response (NOT inferred)
+    served_model: Optional[str] = None     # model as reported by response (NOT inferred)
+    served_instrument_verified: bool = False  # True iff served matches requested AND both present
 
     def to_dict(self) -> Dict:
         return {
@@ -71,6 +78,7 @@ class ProviderCallManifest:
             "success": self.success, "error": self.error,
             "served_provider": self.served_provider,
             "served_model": self.served_model,
+            "served_instrument_verified": self.served_instrument_verified,
         }
 
 
@@ -147,32 +155,84 @@ class ZAIReasoningProvider:
             with open(tmp_path) as f:
                 data = json.load(f)
 
-            # ===== P46: Verify the served instrument, not the requested one =====
-            # (audit finding round 4)
-            # Read the served model from the response metadata. The z-ai CLI
-            # returns an OpenAI-compatible response with a top-level "model"
-            # field. If the served model differs from the requested model,
-            # the provider call is marked FAILED.
+            # ===== P46: Verify the served instrument — FAIL-CLOSED (round 5) =====
+            # Read served model AND served provider from the response metadata.
+            # Do NOT infer served_provider from client configuration.
+            #
+            # The z-ai CLI response includes a top-level "model" field but
+            # does NOT include a "provider" field. This means:
+            #   - served_model can be verified from the response
+            #   - served_provider CANNOT be verified from the response
+            #
+            # Per P6 (fail closed): if the served instrument cannot be fully
+            # established, the call FAILS. Unknown instrument identity is a
+            # hard failure, not a warning.
+            #
+            # Per the audit (round 5): "If the response format exposes provider
+            # identity, read it from the response. If it doesn't, then served
+            # provider identity is unavailable and should be represented as
+            # unavailable, not inferred."
             served_model = data.get("model")
+            served_provider = data.get("provider")  # None if response doesn't include it
             manifest.served_model = served_model
-            manifest.served_provider = self.provider_name  # z-ai CLI always serves via ZAI
-            if served_model is not None and served_model != self._model:
-                manifest.success = False
-                manifest.error = (
-                    f"P46 SERVED-INSTRUMENT MISMATCH: requested model={self._model} "
-                    f"but response served model={served_model}. The provider routed "
-                    f"the request to a different instrument. This is an experimental "
-                    f"identity violation — the preregistered instrument did not "
-                    f"produce this observation."
-                )
-                return "", manifest
-            if served_model is None:
-                # The response did not include served-model metadata. This is
-                # a P46 warning — we cannot establish experimental identity.
-                # We do NOT hard-fail (the z-ai CLI may not always report the
-                # model field), but we record the absence in the manifest.
-                manifest.configuration["p46_served_model_absent"] = True
+            manifest.served_provider = served_provider
 
+            # Compute served_instrument_verified (all 4 conditions must hold)
+            manifest.served_instrument_verified = (
+                served_provider is not None
+                and served_model is not None
+                and served_provider == self.provider_name
+                and served_model == self._model
+            )
+
+            # FAIL-CLOSED: if served instrument is not verified, hard-fail
+            if not manifest.served_instrument_verified:
+                manifest.success = False
+                if served_model is None and served_provider is None:
+                    manifest.error = (
+                        "P46_SERVED_INSTRUMENT_UNVERIFIED: response contains no "
+                        "served-model or served-provider metadata. The z-ai CLI "
+                        "response does not prove which instrument produced this "
+                        "observation. Experimental identity cannot be established. "
+                        f"(requested: provider={self.provider_name}, model={self._model})"
+                    )
+                elif served_model is None:
+                    manifest.error = (
+                        "P46_SERVED_INSTRUMENT_UNVERIFIED: response contains no "
+                        "served-model metadata. Experimental identity cannot be "
+                        f"established. (requested model={self._model})"
+                    )
+                elif served_provider is None:
+                    manifest.error = (
+                        "P46_SERVED_INSTRUMENT_UNVERIFIED: response contains no "
+                        "served-provider metadata. The z-ai CLI does not report "
+                        "which provider served the response, so provider identity "
+                        f"cannot be verified. (requested: provider={self.provider_name}, "
+                        f"served_model={served_model})"
+                    )
+                elif served_model != self._model:
+                    manifest.error = (
+                        f"P46_SERVED_INSTRUMENT_MISMATCH: requested model={self._model} "
+                        f"but response served model={served_model}. The provider routed "
+                        f"the request to a different instrument. This is an experimental "
+                        f"identity violation — the preregistered instrument did not "
+                        f"produce this observation."
+                    )
+                elif served_provider != self.provider_name:
+                    manifest.error = (
+                        f"P46_SERVED_INSTRUMENT_MISMATCH: requested provider={self.provider_name} "
+                        f"but response served provider={served_provider}. This is an "
+                        f"experimental identity violation."
+                    )
+                else:
+                    manifest.error = (
+                        "P46_SERVED_INSTRUMENT_UNVERIFIED: unknown reason. "
+                        f"(requested: provider={self.provider_name}, model={self._model}; "
+                        f"served: provider={served_provider}, model={served_model})"
+                    )
+                return "", manifest
+
+            # Served instrument is verified — continue to extract content
             response = data.get("choices", [{}])[0].get("message", {}).get("content", "")
             if not response.strip():
                 manifest.success = False
@@ -196,7 +256,18 @@ class ZAIReasoningProvider:
 
 
 class MockReasoningProvider:
-    """Deterministic mock for tests."""
+    """Deterministic mock for tests.
+
+    P46 note (round 5): The mock explicitly sets served_instrument_verified=False.
+    This is intentional — a mock provider CANNOT establish real experimental
+    identity. Downstream code that checks served_instrument_verified will
+    correctly reject mock-generated observations.
+
+    If a test needs to simulate a verified instrument, it must explicitly
+    construct a manifest with served_instrument_verified=True and the
+    matching served_provider/served_model fields. The mock does not do this
+    automatically because that would be inferring identity, which P46 forbids.
+    """
     def __init__(self, responses: Optional[Dict[str, str]] = None,
                  default_response: str = ""):
         self._responses = responses or {}
@@ -217,6 +288,9 @@ class MockReasoningProvider:
             provider=self.provider_name, model=self.model_name, version=self.version,
             configuration={"temperature": temperature, "max_tokens": max_tokens},
             prompt_sha=psha, seed=seed,
+            # P46: mock cannot verify served instrument identity.
+            # served_instrument_verified remains False (the default).
+            # served_provider and served_model remain None (the default).
         )
         for prefix, resp in self._responses.items():
             if prompt.startswith(prefix):
