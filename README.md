@@ -29,21 +29,30 @@ scientific knowledge. It does not yet autonomously discover new knowledge
 that was not, in substance, already supplied by a human. The gap between
 what the code does and what the vocabulary claims is being actively closed.
 
-## Scorecard (7/7 at target, DR-49 enforced)
+## Scorecard (see AUDITOR_SCORECARD.md for current values)
 
-| Generation | Score | Measured Outcome |
-|---|---|---|
-| Gen 1: Document Parsing | 9/10 | F1 = 0.6154 (section segmentation) |
-| Gen 2: Entity Extraction | 9/10 | F1 = 0.8871 (P/R benchmark) |
-| Gen 3: Relation Extraction | 9/10 | F1 = 0.6333 (P/R benchmark) |
-| Gen 4: Mechanism Extraction | 10/10 | F1 = 0.8000 (mechanism chain) |
-| Gen 5: Discovery Layer | 9/10 | F1 = 0.2609 (discovery capability) |
-| Gen 6: Re-audit | 9/10 | 35 reaudit samples, 20% overturn rate |
-| Calibration | 10/10 | ECE = 0.0038 (Platt LOOCV) |
+> **NOTE:** The table below was stale and has been replaced with a
+> pointer to the auto-generated scorecard. README.md is manually
+> maintained and can drift. For current scores, always check
+> `AUDITOR_SCORECARD.md` (auto-generated from benchmark reports).
+
+| Generation | Score | F1 | Source |
+|---|---|---|---|
+| Gen 1: Document Parsing | 10/10 | 1.0000 | `benchmarks/reports/gen1_pr_score.json` |
+| Gen 2: Entity Extraction | 9/10 | 0.9431 | `benchmarks/reports/gen2_pr_score.json` |
+| Gen 3: Relation Extraction | 9/10 | 0.8632 | `benchmarks/reports/gen3_pr_score.json` |
+| Gen 4: Mechanism Extraction | 9/10 | 0.9091 | `benchmarks/reports/gen4_pr_score.json` |
+| Gen 5: Discovery Layer | 9/10 | 0.9375 | `benchmarks/reports/gen5_pr_score.json` |
+| Discovery Capability | 6/10 | 0.5714 | `benchmarks/reports/discovery_capability_score.json` |
+| Calibration | 10/10 | ECE=0.0038 | `benchmarks/reports/calibration_score.json` |
+
+**Discovery Capability F1 = 0.5714** (was 0.9189 before cycle 270
+circular synonym removal — see F-158 in FAILURES.md).
 
 Per DR-49: infrastructure scores cap at 7/10. Scores above 7 require
 measured outcome benchmarks on disk. Every number is produced by running
-committed scoring code against committed benchmark reports.
+committed scoring code against committed benchmark reports. See
+`AUDITOR_SCORECARD.md` for the auto-generated authoritative version.
 
 ## External Auditor Scorecard (composite ~7.3/10, cycle 180)
 
