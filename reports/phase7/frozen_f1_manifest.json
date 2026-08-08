@@ -15,8 +15,8 @@
   "trust_anchor": {
     "anchor_type": "git_blob_sha",
     "anchor_description": "The git blob SHA-256 of this manifest file. The runtime verifies that the manifest on disk produces the same git blob SHA as the one recorded here. Since git blob SHAs are content-addressed, modifying the manifest changes its blob SHA, which no longer matches the anchor. The anchor itself is verified by checking that the manifest file's git blob SHA matches this value. This prevents manifest substitution: an attacker who modifies both the manifest and the production data still fails because the manifest's blob SHA changes.",
-    "git_blob_sha256": "TO_BE_SET_AFTER_COMMIT",
-    "anchor_commit": "TO_BE_SET_AFTER_COMMIT"
+    "git_blob_sha256": "28c007f6a3659ef1abd4670824a82ad41256bf87",
+    "anchor_commit": "0be72ac0db2534436d9c82e5c89f6f5491fe2998"
   },
 
   "manifest_note": "This manifest is an IMMUTABLE reference artifact. The runtime freeze gate loads this manifest, verifies its own integrity via the trust_anchor (git blob SHA), then compares current production hashes against the manifest values. The runtime NEVER self-baselines. If the manifest is missing, corrupt, or its trust anchor doesn't match, the gate fails closed.",
