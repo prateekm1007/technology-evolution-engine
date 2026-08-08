@@ -1020,7 +1020,30 @@ class CheckpointedDiscoveryLoop:
             failure_conditions=t.get("failure_conditions", []),
             testable_prediction=t.get("testable_prediction", ""),
             epistemic_state=EpistemicState(t.get("epistemic_state", "HYPOTHESIZED")))
-        result = self.hypothesis_engine.generate(transfer, id_prefix=f"H-{challenge.challenge_id}")
+
+        # H-GEN-1 intervention: load the mechanism graph from the extraction
+        # stage and pass it to the hypothesis generator alongside the
+        # abstraction-derived transfer. This preserves mechanism-specific
+        # causal information that the abstraction erases.
+        ext_data = self._load_stage(run_dir, "01_extraction")
+        mechanism_graph = None
+        if ext_data and ext_data.get("result", {}).get("graph"):
+            graph_data = ext_data["result"]["graph"]
+            mechanism_graph = MechanismGraph()
+            for n in graph_data.get("nodes", {}).values():
+                mechanism_graph.add_node(MechanismNode(
+                    node_id=n["node_id"], node_type=MechanismNodeType(n["node_type"]),
+                    label=n["label"], description=n.get("description", ""),
+                    provenance=n.get("provenance", [])))
+            for e in graph_data.get("edges", []):
+                mechanism_graph.add_edge(MechanismEdge(
+                    edge_id=e["edge_id"], source_id=e["source_id"], target_id=e["target_id"],
+                    edge_type=MechanismEdgeType(e["edge_type"]),
+                    confidence=e.get("confidence", 0.5), evidence=e.get("evidence", [])))
+
+        result = self.hypothesis_engine.generate(transfer,
+            id_prefix=f"H-{challenge.challenge_id}",
+            mechanism_graph=mechanism_graph)
         provider_manifest = result.manifests[0].to_dict() if result.manifests else None
         # Register hypotheses in the ledger (Repair 1)
         for h in result.hypotheses:
