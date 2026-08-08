@@ -140,20 +140,55 @@ def main():
                 f"All unregistered pilots must have valid_for_primary_analysis=false."
             )
 
-    # ===== CHECK 5: Working tree honesty =====
+    # ===== CHECK 5: Working tree honesty (tightened, audit finding D round 3) =====
+    # The auditor flagged the previous >50 tolerance as too permissive. The
+    # state file describes a parent commit, so the working tree at validation
+    # time may differ from the working tree at generation time. We separate
+    # two concerns:
+    #
+    # 1. state_at_described_commit: the working_tree field records the state
+    #    AS OF the described commit. This is historical and should match
+    #    exactly what `git status --porcelain` showed at generation time.
+    #    We cannot re-verify this exactly (the working tree has moved on),
+    #    but we record it for audit trail.
+    #
+    # 2. working_tree_at_validation: the current working tree state. This
+    #    is what we check now. If the file claims working_tree_clean=true
+    #    but the tree is dirty, that's a contradiction. If the file claims
+    #    a specific dirty count, we allow small drift (working tree changes
+    #    between generation and validation) but reject large discrepancies.
+    #
+    # The tolerance is now ZERO for the clean/dirty boundary and TIGHT
+    # (≤5) for the count. The previous >50 tolerance was too permissive.
     wt = state.get("working_tree", {})
     if wt:
         actual_dirty = git(["status", "--porcelain"])
         actual_count = len(actual_dirty.split("\n")) if actual_dirty else 0
         recorded_total = wt.get("total_dirty", -1)
-        # Allow some drift (the file describes a parent commit, working
-        # tree may have changed slightly). But if the difference is large,
-        # the file is stale.
-        if recorded_total >= 0 and abs(actual_count - recorded_total) > 50:
+        recorded_clean = wt.get("working_tree_clean", None)
+
+        # Check 5a: clean/dirty boundary must be exact
+        actual_clean = (actual_count == 0)
+        if recorded_clean is not None and recorded_clean != actual_clean:
+            errors.append(
+                f"working_tree.working_tree_clean={recorded_clean} but actual "
+                f"clean state is {actual_clean} (actual dirty count={actual_count}). "
+                f"The clean/dirty boundary must be exact. The state file claims "
+                f"the tree is {'clean' if recorded_clean else 'dirty'} but reality "
+                f"is {'clean' if actual_clean else 'dirty'}. "
+                f"Regenerate with generate_program_state.py."
+            )
+
+        # Check 5b: dirty count must be within 5 (tight tolerance)
+        # The working tree may change slightly between generation and validation
+        # (e.g., new untracked files, minor edits), but large discrepancies
+        # indicate staleness.
+        if recorded_total >= 0 and abs(actual_count - recorded_total) > 5:
             errors.append(
                 f"working_tree.total_dirty={recorded_total} but actual dirty "
-                f"count is {actual_count}. Difference > 50 suggests the file "
-                f"is stale. Regenerate with generate_program_state.py."
+                f"count is {actual_count}. Difference > 5 suggests the file "
+                f"is stale (tightened from >50 per audit finding D round 3). "
+                f"Regenerate with generate_program_state.py."
             )
 
     # ===== REPORT =====

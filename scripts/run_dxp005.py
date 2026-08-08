@@ -111,6 +111,13 @@ def run_case(case_id, reasoning_provider):
     doc_a, doc_b_text, case_data = get_case_documents(case_id)
     case_dir = OUTPUT_DIR / case_id
 
+    # ===== OUTPUT DIRECTORY LOCK (defense-in-depth, audit finding B round 3) =====
+    # main() already checks OUTPUT_DIR, but we verify the per-case subdirectory
+    # here too. This ensures that even if run_case() is called directly (e.g.,
+    # by run_dxp005_one.py), the output path is still validated.
+    from engine.protocol_lock import assert_output_dir_writable
+    assert_output_dir_writable("DXP-005", case_dir)
+
     # ===== STEP 1: Freeze upstream (extraction → abstraction → transfer) =====
     upstream_dir = case_dir / "upstream"
     upstream_hash_file = upstream_dir / "HASHES.json"
@@ -436,26 +443,28 @@ def main():
     # DXP-005 is PAUSED. The runner cannot proceed unless PROGRAM_STATE.json
     # explicitly says status=AUTHORIZED. This is not a documentary prohibition
     # — it is a hard failure that prevents execution.
-    from engine.protocol_lock import assert_experiment_authorized
+    from engine.protocol_lock import assert_experiment_authorized, assert_output_dir_writable
     assert_experiment_authorized("DXP-005")
 
-    # Protocol amendment: ZAI API rate-limited (429). Using OpenRouter
-    # with Kimi K3 per CEO directive. The A/B/C ablation comparison
-    # remains valid within a single provider. Cross-experiment
-    # comparisons with DXP-001/002/003/004 (ZAI) are NOT valid.
-    from engine.openrouter_provider import OpenRouterProvider
-    API_KEY = os.environ.get("OPENROUTER_API_KEY", "")
-    if not API_KEY:
-        print("ERROR: OPENROUTER_API_KEY environment variable not set")
-        return
-    reasoning = OpenRouterProvider(
-        api_key=API_KEY,
-        model="nvidia/nemotron-3-ultra-550b-a55b:free",
-        default_max_tokens=4096,
-        timeout=60,
-        max_retries=3,
-        retry_backoff=3.0,
-    )
+    # ===== OUTPUT DIRECTORY LOCK (audit finding B, round 3) =====
+    # Verify that writing to the DXP-005 output directory is permitted.
+    # This prevents quarantined pilots or unauthorized experiments from
+    # writing to the primary DXP-005 output path.
+    assert_output_dir_writable("DXP-005", OUTPUT_DIR)
+
+    # ===== CANONICAL PREREGISTERED PROVIDER (audit finding, round 3) =====
+    # DXP-005 was preregistered with ZAI (glm-4-plus via z-ai CLI).
+    # The Nemotron/OpenRouter workaround that previously lived here was
+    # an unauthorized provider substitution (Amendment 14 violation) and
+    # has been removed. The canonical runner uses ONLY the preregistered
+    # provider. The test_canonical_dxp005_runner_matches_frozen_provider
+    # governance test verifies this invariant structurally.
+    #
+    # If ZAI is unavailable (HTTP 429), the runner will fail at the first
+    # provider call. That is the correct behavior — the experiment is
+    # PAUSED, not authorized for execution with a different provider.
+    from engine.providers import ZAIReasoningProvider
+    reasoning = ZAIReasoningProvider(timeout=120)
     print(f"Provider: {reasoning.provider_name} / {reasoning.model_name}")
     all_results = []
     case_ids = sorted(CASES.keys())

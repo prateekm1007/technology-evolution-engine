@@ -1,29 +1,64 @@
 #!/usr/bin/env python3
-"""run_dxp005_one.py — Run a single DXP-005 case.
+"""run_dxp005_one.py — Run a single DXP-005 case (NEMOTRON PILOT — ARCHIVAL).
 
-Usage: python3 scripts/run_dxp005_one.py <CASE_ID>
+**STATUS: ARCHIVAL — DO NOT EXECUTE**
+This is a quarantined pilot runner. It is preserved as an archival artifact
+documenting how the Nemotron pilot was executed. It contains a machine-
+enforced protocol lock that prevents execution while DXP-005 is PAUSED.
 
-Used to run cases one at a time, since long-running background processes
-get killed by the shell session.
+The output directory is the quarantine namespace
+(experiments/dxp005_pilots/nemotron/ENGINE_OUTPUT/) — NOT the primary
+DXP-005 output path.
+
+See: experiments/dxp005_pilots/nemotron/QUARANTINE_MANIFEST.json
+See: experiments/dxp005_pilots/nemotron/runner_scripts/README.md
 """
 import sys, os, json, time
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)) + "/..")
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)) + "/../discovery_experiment/CASES")
+from pathlib import Path
 
-# Import everything from the main runner
-from scripts.run_dxp005 import run_case, OUTPUT_DIR, CASES, save_json, generate_final_table
+# NOTE: this file lives at experiments/dxp005_pilots/nemotron/runner_scripts/
+# so parents[4] is the repo root.
+REPO = Path(__file__).resolve().parents[4]
+sys.path.insert(0, str(REPO))
+sys.path.insert(0, str(REPO / "discovery_experiment/CASES"))
+
 from engine.openrouter_provider import OpenRouterProvider
+from engine.mechanism_extraction import MechanismExtractionEngine
+from engine.mechanism_abstraction import MechanismAbstractionEngine
+from engine.cross_domain_transfer import CrossDomainTransferEngine
+from engine.hypothesis_generation import HypothesisGenerationEngine
+from engine.adversarial_analysis import AdversarialAnalysisEngine
+from discovery_infrastructure.discovery_substrate import (
+    TransferHypothesis, EpistemicState, MechanismGraph, MechanismNode,
+    MechanismEdge, MechanismNodeType, MechanismEdgeType,
+)
+
+GT = json.loads((REPO / "discovery_experiment/CASES/DXP-005/DXP-005_GROUND_TRUTH.json").read_text())
+CASES = GT["cases"]
+
+# OUTPUT_DIR redirected to quarantine namespace (audit finding B, round 3).
+OUTPUT_DIR = REPO / "experiments" / "dxp005_pilots" / "nemotron" / "ENGINE_OUTPUT"
+OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+
+
+def save_json(path, data):
+    """Save JSON with timestamp."""
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(data, indent=2, default=str))
 
 
 def main():
     # ===== MACHINE-ENFORCED PROTOCOL LOCK (audit finding A) =====
     # DXP-005 is PAUSED. The runner cannot proceed unless PROGRAM_STATE.json
     # explicitly says status=AUTHORIZED.
-    from engine.protocol_lock import assert_experiment_authorized
+    from engine.protocol_lock import assert_experiment_authorized, assert_output_dir_writable
     assert_experiment_authorized("DXP-005")
 
+    # ===== OUTPUT DIRECTORY LOCK (audit finding B, round 3) =====
+    assert_output_dir_writable("DXP-005", OUTPUT_DIR)
+
     if len(sys.argv) < 2:
-        print("Usage: python3 scripts/run_dxp005_one.py <CASE_ID>")
+        print("Usage: python3 run_dxp005_one.py <CASE_ID>")
         print(f"Available: {sorted(CASES.keys())}")
         return
 
@@ -49,29 +84,14 @@ def main():
     print(f"Case: {case_id}")
     print(f"Started: {time.strftime('%H:%M:%S')}")
 
-    t0 = time.time()
-    try:
-        result = run_case(case_id, reasoning)
-    except Exception as e:
-        import traceback
-        result = {"case_id": case_id, "status": f"ERROR: {type(e).__name__}: {e}",
-                  "traceback": traceback.format_exc()}
-        print(f"ERROR: {e}")
-        traceback.print_exc()
-
-    t1 = time.time()
-    print(f"Elapsed: {t1-t0:.1f}s")
-
-    case_result_file = OUTPUT_DIR / f"{case_id}-result.json"
-    save_json(case_result_file, result)
-
-    # Print summary
-    if "conditions" in result:
-        for cond, cr in result.get("conditions", {}).items():
-            print(f"  {case_id}-{cond}: {cr.get('n_hypotheses',0)} hyps, "
-                  f"{cr.get('n_survived',0)} survived, {cr.get('n_killed',0)} killed")
-    else:
-        print(f"  {case_id}: {result.get('status', 'COMPLETED')}")
+    # NOTE: run_case is imported lazily to avoid importing the canonical
+    # runner (which now uses ZAI). The quarantined runner uses its own
+    # Nemotron provider. The run_case function itself is provider-agnostic
+    # — it accepts any ReasoningProvider. We import it here for the pilot
+    # record only; execution is blocked by the protocol lock above.
+    print("ERROR: This quarantined pilot runner cannot execute while DXP-005 is PAUSED.")
+    print("       The protocol lock above should have prevented reaching this line.")
+    return
 
 
 if __name__ == "__main__":

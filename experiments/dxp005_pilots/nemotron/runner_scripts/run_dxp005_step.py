@@ -1,19 +1,25 @@
 #!/usr/bin/env python3
-"""run_dxp005_step.py — Run a single step of DXP-005.
+"""run_dxp005_step.py — Run a single step of DXP-005 (NEMOTRON PILOT — ARCHIVAL).
 
-Each invocation does ONE small unit of work:
-  - generate upstream for one case (extraction/abstraction/transfer/null graph)
-  - generate hypotheses for one case × one condition
-  - run adversarial on one case × one condition × one hypothesis
+**STATUS: ARCHIVAL — DO NOT EXECUTE**
+This is a quarantined pilot runner. It is preserved as an archival artifact
+documenting how the Nemotron pilot was executed. It contains a machine-
+enforced protocol lock that prevents execution while DXP-005 is PAUSED.
 
-Saves progress after each step. Designed to fit within the bash tool's
-time budget per invocation.
+The output directory has been redirected to the quarantine namespace
+(experiments/dxp005_pilots/nemotron/ENGINE_OUTPUT/) to prevent the
+quarantined pilot from writing to the primary DXP-005 output directory.
+
+See: experiments/dxp005_pilots/nemotron/QUARANTINE_MANIFEST.json
+See: experiments/dxp005_pilots/nemotron/runner_scripts/README.md
 """
 import sys, os, json, time, hashlib
 from pathlib import Path
 from datetime import datetime, timezone
 
-REPO = Path(__file__).resolve().parents[1]
+# NOTE: this file lives at experiments/dxp005_pilots/nemotron/runner_scripts/
+# so parents[4] is the repo root.
+REPO = Path(__file__).resolve().parents[4]
 sys.path.insert(0, str(REPO))
 sys.path.insert(0, str(REPO / "discovery_experiment/CASES"))
 
@@ -31,7 +37,11 @@ from discovery_infrastructure.discovery_substrate import (
 GT = json.loads((REPO / "discovery_experiment/CASES/DXP-005/DXP-005_GROUND_TRUTH.json").read_text())
 CASES = GT["cases"]
 CONDITIONS = ["A-baseline", "B-hgen1", "C-null"]
-OUTPUT_DIR = REPO / "discovery_experiment/ENGINE_OUTPUT/DXP-005"
+
+# OUTPUT_DIR redirected to quarantine namespace (audit finding B, round 3).
+# The quarantined pilot writes ONLY to its own directory, never to the
+# primary DXP-005 output path.
+OUTPUT_DIR = REPO / "experiments" / "dxp005_pilots" / "nemotron" / "ENGINE_OUTPUT"
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
 
@@ -394,8 +404,13 @@ def main():
     # ===== MACHINE-ENFORCED PROTOCOL LOCK (audit finding A) =====
     # DXP-005 is PAUSED. The runner cannot proceed unless PROGRAM_STATE.json
     # explicitly says status=AUTHORIZED.
-    from engine.protocol_lock import assert_experiment_authorized
+    from engine.protocol_lock import assert_experiment_authorized, assert_output_dir_writable
     assert_experiment_authorized("DXP-005")
+
+    # ===== OUTPUT DIRECTORY LOCK (audit finding B, round 3) =====
+    # Even though OUTPUT_DIR has been redirected to the quarantine namespace,
+    # we also verify it here on the execution path. This is defense-in-depth.
+    assert_output_dir_writable("DXP-005", OUTPUT_DIR)
 
     if len(sys.argv) < 3:
         print("Usage: python3 scripts/run_dxp005_step.py <step> <case_id> [condition]")

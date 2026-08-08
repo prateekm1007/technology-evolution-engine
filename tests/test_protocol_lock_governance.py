@@ -200,5 +200,151 @@ def test_all_dxp005_runners_have_protocol_lock():
             )
 
 
+# ===== TEST 6: Canonical DXP-005 runner matches frozen provider =====
+
+def test_canonical_dxp005_runner_matches_frozen_provider():
+    """The canonical scripts/run_dxp005.py must use the preregistered ZAI
+    provider, NOT Nemotron/OpenRouter. This is the structural invariant
+    the auditor required (round 3):
+
+        "The canonical DXP-005 runner needs to be restored to the actual
+         frozen protocol: ZAI, glm-4-plus, z-ai CLI, frozen protocol."
+
+    This test verifies structurally that:
+    1. The canonical runner imports ZAIReasoningProvider
+    2. The canonical runner does NOT import OpenRouterProvider
+    3. The canonical runner does NOT reference Nemotron model names
+    4. The canonical runner does NOT read OPENROUTER_API_KEY
+    5. The canonical runner does NOT contain the 'protocol amendment' comment
+       that justified the provider substitution
+
+    If any of these fail, the canonical runner has drifted from the frozen
+    protocol and must be restored.
+    """
+    canonical_runner = REPO / "scripts" / "run_dxp005.py"
+    assert canonical_runner.exists(), "scripts/run_dxp005.py must exist"
+    content = canonical_runner.read_text()
+
+    # 1. Must import ZAIReasoningProvider
+    assert "ZAIReasoningProvider" in content, (
+        "scripts/run_dxp005.py must import ZAIReasoningProvider (the "
+        "preregistered provider). Audit finding round 3."
+    )
+
+    # 2. Must NOT import OpenRouterProvider (except in comments explaining
+    #    what was removed — we allow the word in comments but not as an
+    #    actual import)
+    # Strip comments for the import check
+    import_lines = [line for line in content.split("\n")
+                    if line.strip().startswith("from ") or line.strip().startswith("import ")]
+    for line in import_lines:
+        assert "openrouter" not in line.lower(), (
+            f"scripts/run_dxp005.py must NOT import OpenRouterProvider. "
+            f"Found import: {line.strip()}. The canonical runner uses ZAI only. "
+            f"Audit finding round 3."
+        )
+
+    # 3. Must NOT reference Nemotron model names in executable code
+    #    (comments explaining what was removed are allowed)
+    nemotron_patterns = [
+        'nvidia/nemotron',
+        'nemotron-3-ultra',
+        'nemotron-3-super',
+        'nemotron-nano',
+    ]
+    for pattern in nemotron_patterns:
+        # Check if the pattern appears in a non-comment, non-string line
+        for line_num, line in enumerate(content.split("\n"), 1):
+            stripped = line.strip()
+            # Skip comments
+            if stripped.startswith("#"):
+                continue
+            # Skip docstrings (rough heuristic: lines inside triple quotes)
+            # We check if the pattern appears as a string literal
+            if pattern in stripped:
+                # Allow if it's inside a string (for documentation)
+                # but flag if it's in an actual provider config
+                if 'model=' in stripped and pattern in stripped:
+                    pytest.fail(
+                        f"scripts/run_dxp005.py line {line_num} configures a "
+                        f"Nemotron model: {stripped}. The canonical runner must "
+                        f"use ZAI only. Audit finding round 3."
+                    )
+
+    # 4. Must NOT read OPENROUTER_API_KEY
+    assert "OPENROUTER_API_KEY" not in content, (
+        "scripts/run_dxp005.py must NOT read OPENROUTER_API_KEY. "
+        "The canonical runner uses ZAI (z-ai CLI), which does not require "
+        "an API key environment variable. Audit finding round 3."
+    )
+
+    # 5. Must NOT contain the 'protocol amendment' justification comment
+    #    (the old comment said "ZAI API rate-limited (429). Using OpenRouter...")
+    assert "Protocol amendment: ZAI API rate-limited" not in content, (
+        "scripts/run_dxp005.py must NOT contain the 'Protocol amendment' comment "
+        "that justified the Nemotron provider substitution. That substitution "
+        "was an Amendment 14 violation and has been reverted. "
+        "Audit finding round 3."
+    )
+
+
+# ===== TEST 7: Quarantined runners write only to quarantine namespace =====
+
+def test_quarantined_runners_write_only_to_quarantine_namespace():
+    """The quarantined Nemotron pilot runners must write ONLY to the
+    quarantine namespace (experiments/dxp005_pilots/nemotron/ENGINE_OUTPUT/),
+    never to the primary DXP-005 output directory
+    (discovery_experiment/ENGINE_OUTPUT/DXP-005/).
+
+    This is the structural invariant for audit finding B (round 3):
+    the output-dir lock must be on the execution path, not just in tests.
+    """
+    pilot_dir = REPO / "experiments" / "dxp005_pilots" / "nemotron" / "runner_scripts"
+    primary_output = "discovery_experiment/ENGINE_OUTPUT/DXP-005"
+
+    # Check all Python runners in the quarantine
+    for runner in pilot_dir.glob("run_dxp005*.py"):
+        content = runner.read_text()
+
+        # The runner must NOT set OUTPUT_DIR to the primary path
+        for line_num, line in enumerate(content.split("\n"), 1):
+            stripped = line.strip()
+            if stripped.startswith("#"):
+                continue
+            if "OUTPUT_DIR" in stripped and "=" in stripped:
+                # Check if this line sets OUTPUT_DIR to the primary path
+                if primary_output in stripped:
+                    pytest.fail(
+                        f"{runner.name} line {line_num} sets OUTPUT_DIR to the "
+                        f"primary DXP-005 output path: {stripped}. Quarantined "
+                        f"runners must write ONLY to the quarantine namespace. "
+                        f"Audit finding B round 3."
+                    )
+
+        # The runner must contain assert_output_dir_writable on the execution path
+        assert "assert_output_dir_writable" in content, (
+            f"{runner.name} must call assert_output_dir_writable() on the "
+            f"execution path (not just in tests). Audit finding B round 3."
+        )
+
+    # Check the shell script
+    sh_runner = pilot_dir / "run_dxp005_all.sh"
+    if sh_runner.exists():
+        content = sh_runner.read_text()
+        # The shell script must NOT reference the primary output path for writing
+        # (it can reference it in comments/error messages, but not for OUTPUT_DIR)
+        for line_num, line in enumerate(content.split("\n"), 1):
+            stripped = line.strip()
+            if stripped.startswith("#"):
+                continue
+            # Check for RESULT_FILE or UPSTREAM_HASH pointing to primary output
+            if primary_output in stripped and ("RESULT_FILE=" in stripped or "UPSTREAM_HASH=" in stripped):
+                pytest.fail(
+                    f"{sh_runner.name} line {line_num} references the primary "
+                    f"DXP-005 output path: {stripped}. Quarantined runners must "
+                    f"write ONLY to the quarantine namespace. Audit finding B round 3."
+                )
+
+
 if __name__ == "__main__":
     sys.exit(pytest.main([__file__, "-v"]))
