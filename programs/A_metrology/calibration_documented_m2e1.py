@@ -204,6 +204,35 @@ def determine_calibration_status(metric_id: str, m3_r: Dict, m4_r: Dict,
     elif metric_id.startswith("M-0") and metric_id != "M-008":
         # Discovery metrics (M-001..M-007, M-009..M-016)
         # Check FP floor
+        # PHASE 6 EPISTEMIC GATE (audit round 12):
+        # Before using M-008's value for a scientific decision (the 5%
+        # threshold check that determines whether discovery claims are
+        # blocked), we must verify M-008 is eligible for scientific use.
+        # M-008 is currently FULLY QUARANTINED (regeneration failed).
+        # The gate will raise MetricNotEligible, preventing the scientific
+        # decision from proceeding with an untrusted value.
+        from engine.epistemic_state_enforcer import assert_metric_not_quarantined
+        try:
+            assert_metric_not_quarantined("M-008")
+        except Exception as gate_error:
+            level = "QUARANTINED"
+            method = "EPISTEMIC GATE BLOCKED — M-008 is quarantined"
+            version = "phase6-epistemic-enforcement"
+            ext_val = False
+            notes = (
+                f"EPISTEMIC GATE: M-008 is quarantined and cannot be used "
+                f"for the FP floor 5% threshold check. Gate error: {gate_error}. "
+                f"The calibration status of all discovery metrics (M-001..M-007, "
+                f"M-009..M-016) cannot be determined because the FP floor "
+                f"metric is untrusted. Per Phase 6: no scientific decision "
+                f"may use a quarantined metric."
+            )
+            return {
+                "metric_id": metric_id, "calibration_level": level,
+                "method": method, "version": version,
+                "external_validation": ext_val, "notes": notes,
+                "epistemic_gate": "BLOCKED",
+            }
         m008_data = _load_json(Path(__file__).resolve().parents[2] / "reports" / "bootstrap_statistics.json")
         if m008_data:
             m008_r = next((r for r in m008_data.get("results", []) if r["metric_id"] == "M-008"), None)

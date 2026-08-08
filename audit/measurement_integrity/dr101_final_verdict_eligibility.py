@@ -174,11 +174,59 @@ def decide_eligibility(gates: Dict[str, Dict]) -> Dict:
     Anything less (INSTRUMENTATION_SCAFFOLD_PASS, SENSITIVITY_ANALYSIS_PASS,
     WEAK_STATISTICAL_PASS, AI_SURROGATE_REVIEW_FAIL, BLOCKED) blocks eligibility.
 
+    Phase 6 epistemic gate (audit round 12): Before deciding eligibility,
+    verify that M-005 (discovery F1) and M-008 (FP floor) — the two
+    critical-path metrics that feed the gate verdicts — are eligible
+    for scientific use. If they are quarantined, eligibility is BLOCKED
+    regardless of gate verdicts, because the gate verdicts themselves
+    were derived from untrusted metrics.
+
     Returns a dict with:
       - eligible: bool
       - blocking_gates: list of gate names that blocked eligibility
       - reason: human-readable explanation
     """
+    # PHASE 6 EPISTEMIC GATE (audit round 12)
+    # The gate verdicts aggregated below were derived from metric values
+    # (M-005 F1, M-008 FP floor) that are currently quarantined. No
+    # eligibility decision may be made using untrusted metrics.
+    import sys
+    from pathlib import Path
+    sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+    from engine.epistemic_state_enforcer import (
+        assert_metric_eligible_for_scientific_use,
+        MetricNotEligible,
+    )
+
+    epistemic_blocks = []
+    for critical_metric in ["M-005", "M-008"]:
+        try:
+            assert_metric_eligible_for_scientific_use(critical_metric)
+        except MetricNotEligible as e:
+            epistemic_blocks.append({
+                "metric": critical_metric,
+                "error": str(e),
+            })
+
+    if epistemic_blocks:
+        return {
+            "eligible": False,
+            "blocking_gates": ["EPISTEMIC_GATE"],
+            "reason": (
+                f"EPISTEMIC GATE BLOCKED: The following critical-path metrics "
+                f"are not eligible for scientific use: "
+                f"{[b['metric'] for b in epistemic_blocks]}. "
+                f"The gate verdicts aggregated by this function were derived "
+                f"from these metrics. Since the metrics are quarantined/not "
+                f"independently verified, the gate verdicts themselves are "
+                f"untrusted. No eligibility decision may be made. Per Phase 6: "
+                f"no scientific decision may use a non-eligible metric. "
+                f"Epistemic blocks: {epistemic_blocks}"
+            ),
+            "epistemic_gate": "BLOCKED",
+            "epistemic_blocks": epistemic_blocks,
+        }
+
     blocking = []
     reasons = []
 
