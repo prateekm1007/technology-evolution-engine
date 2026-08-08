@@ -490,7 +490,44 @@ def main():
     print("(Does the system find published relations it was NOT told about?)")
     print("=" * 60)
 
+    # PHASE 7 F1 FREEZE GATE (audit round 16):
+    # Before running the benchmark, verify that the frozen data structures
+    # (GOLD_DISCOVERIES, BRIDGE_SYNONYMS, committed score) have not been
+    # modified. This is the STRUCTURAL layer — it hashes the actual data,
+    # not a caller-supplied string. It cannot be bypassed by rewording.
+    import sys as _sys
+    from pathlib import Path as _Path
+    _sys.path.insert(0, str(_Path(__file__).resolve().parents[1]))
+    from engine.f1_optimization_freeze import (
+        assert_frozen_data_unchanged,
+        assert_committed_f1_matches_baseline,
+        assert_zero_eligible_metrics_for_optimization,
+        F1OptimizationForbidden,
+    )
+
+    try:
+        _freeze_result = assert_frozen_data_unchanged()
+        print(f"F1 freeze gate: FROZEN DATA UNCHANGED (structural hash verified)")
+        assert_committed_f1_matches_baseline()
+        print(f"F1 freeze gate: COMMITTED SCORE MATCHES BASELINE (0.5714)")
+        assert_zero_eligible_metrics_for_optimization()
+        print(f"F1 freeze gate: ZERO ELIGIBLE METRICS (optimization impossible)")
+    except F1OptimizationForbidden as e:
+        print(f"F1 FREEZE GATE BLOCKED: {e}")
+        _sys.exit(1)
+
     result = run_discovery_benchmark(verbose=verbose)
+
+    # PHASE 7 F1 FREEZE GATE (post-computation):
+    # After computing F1, verify it matches the frozen baseline.
+    # If the benchmark produces a different F1, the data or code has
+    # been modified since the freeze.
+    try:
+        from engine.f1_optimization_freeze import assert_f1_baseline_unchanged
+        assert_f1_baseline_unchanged(result.get("f1", 0))
+    except F1OptimizationForbidden as e:
+        print(f"F1 FREEZE GATE BLOCKED (post-computation): {e}")
+        _sys.exit(1)
 
     if "error" in result:
         print(f"ERROR: {result['error']}")
