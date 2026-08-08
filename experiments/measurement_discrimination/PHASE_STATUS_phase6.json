@@ -1,0 +1,51 @@
+{
+  "phase": 6,
+  "phase_name": "Enforce epistemic states",
+  "status": "COMPLETE",
+  "commit": "pending",
+  "protocol_frozen": false,
+  "protocol_frozen_meaning": "Phase 6 is an enforcement task, not a preregistered experiment.",
+  "scientific_results_visible": false,
+  "next_allowed_phase": "7",
+  "timestamp_utc": "2026-08-08T17:30:00Z",
+  "github_ci_status": "NOT_INDEPENDENTLY_VERIFIED",
+
+  "enforcement_summary": {
+    "enforcement_type": "MECHANICAL (exception-raising, not boolean-returning)",
+    "enforcer_module": "engine/epistemic_state_enforcer.py",
+    "enforcement_function": "assert_metric_eligible_for_scientific_use(metric_id)",
+    "behavior": "Raises MetricNotEligible exception if the metric is not SCIENTIFICALLY_ELIGIBLE. The calling code cannot continue past the assertion. This is a hard gate, not a check that returns False.",
+    "currently_eligible": 0,
+    "currently_quarantined": 1,
+    "currently_provisional": 37,
+    "note": "ALL 38 metrics are blocked for scientific use. 0 are eligible. The enforcer is mechanical — it raises, not returns."
+  },
+
+  "enforcement_functions": {
+    "assert_metric_eligible_for_scientific_use": "Hard gate for scientific decisions. Raises MetricNotEligible if metric is not SCIENTIFICALLY_ELIGIBLE. Currently blocks ALL 38 metrics.",
+    "assert_metric_not_quarantined": "Weaker gate for non-scientific operations. Blocks FULLY QUARANTINED metrics (M-008) but allows PROVISIONAL ones.",
+    "get_metric_epistemic_state": "Returns the epistemic state of a metric (does not enforce).",
+    "list_eligible_metrics": "Returns list of SCIENTIFICALLY_ELIGIBLE metric IDs (currently empty).",
+    "list_quarantined_metrics": "Returns list of FULLY QUARANTINED metric IDs (currently M-008).",
+    "list_provisionally_quarantined_metrics": "Returns list of PROVISIONALLY QUARANTINED metric IDs (currently 37)."
+  },
+
+  "mechanical_not_documentary": {
+    "principle": "Per audit round 11: 'Phase 6 must enforce epistemic states mechanically, not merely create another report saying that the states exist.'",
+    "implementation": "The enforcer raises MetricNotEligible, which is an exception. Code that calls assert_metric_eligible_for_scientific_use('M-008') cannot continue to the next line. The exception prevents the scientific operation from proceeding.",
+    "cannot_be_bypassed": "Unlike a boolean return (if check(): use_metric()), the raise pattern (assert_metric_eligible_for_scientific_use(); use_metric()) cannot be bypassed by ignoring the return value. The raise stops execution.",
+    "test_verification": "test_enforcement_raises_exception_not_returns_false and test_enforcement_cannot_be_bypassed_by_ignoring_return_value verify this mechanically."
+  },
+
+  "m008_status_preserved": {
+    "DETERMINISTIC_UNDER_IDENTICAL_EFFECTIVE_INPUTS": true,
+    "CAUSE_OF_DISCREPANCY_ESTABLISHED": false,
+    "RECONCILIATION_STATUS": "RECONCILIATION_OPEN",
+    "note": "M-008 causal-attribution-open trio preserved. The enforcer blocks M-008 for ALL uses (scientific and non-scientific)."
+  },
+
+  "phase_6_artifacts": {
+    "enforcer_module": "engine/epistemic_state_enforcer.py",
+    "enforcement_tests": "tests/test_phase6_epistemic_enforcement.py (13 tests, all pass)"
+  }
+}
