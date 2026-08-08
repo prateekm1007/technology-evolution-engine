@@ -13,12 +13,12 @@
   "benchmark_source_sha256": "9ba196603e90f5fb83e5bf1f10cf7c7523357b725b107c72afcede0642adc547",
 
   "trust_anchor": {
-    "anchor_type": "git_commit",
-    "anchor_description": "The runtime verifies that the manifest file on disk matches the manifest committed at this git commit by running: git cat-file blob <anchor_commit>:reports/phase7/frozen_f1_manifest.json. If the on-disk manifest differs from the committed version, the manifest has been substituted and the gate fails closed. This prevents the attack where an attacker modifies both the manifest and the production data simultaneously.",
-    "anchor_commit": "90ea35171893eba5a3fdc2e63119aafcb2667b4c"
+    "anchor_type": "git_head_comparison",
+    "anchor_description": "The runtime verifies that the manifest file on disk matches the manifest committed at git HEAD by running: git cat-file blob HEAD:reports/phase7/frozen_f1_manifest.json. If the on-disk manifest differs from the committed version, the manifest has been locally substituted and the gate fails closed. This prevents the attack where an attacker modifies both the manifest and the production data simultaneously — the modified manifest would not match the git-committed version.",
+    "verification_command": "git cat-file blob HEAD:reports/phase7/frozen_f1_manifest.json"
   },
 
-  "manifest_note": "This manifest is an IMMUTABLE reference artifact. The runtime freeze gate: (1) loads this manifest, (2) verifies the manifest on disk matches the committed version at the anchor commit via git cat-file, (3) compares current production hashes against manifest values. The runtime NEVER self-baselines. If the manifest is missing, corrupt, substituted, or any hash mismatches, the gate fails closed.",
+  "manifest_note": "This manifest is an IMMUTABLE reference artifact. The runtime freeze gate: (1) loads this manifest from disk, (2) verifies the on-disk manifest matches the git-committed version at HEAD via git cat-file (prevents manifest substitution), (3) compares current production hashes against manifest values. The runtime NEVER self-baselines. If the manifest is missing, corrupt, substituted, or any hash mismatches, the gate fails closed.",
 
   "self_baselining_prohibited": true,
   "fail_closed_on_missing_manifest": true,

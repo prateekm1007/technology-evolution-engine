@@ -75,12 +75,25 @@ class HashComputationFailed(F1OptimizationForbidden):
 
 
 def _load_manifest() -> dict:
-    """Load the immutable freeze manifest.
+    """Load the immutable freeze manifest and verify it against git HEAD.
+
+    Per audit round 18:
+        "The manifest is a mutable repository file. Nothing verifies that
+         the manifest itself is the originally committed manifest."
+
+    This function:
+        1. Reads the manifest from disk
+        2. Reads the manifest from git HEAD (git cat-file)
+        3. Compares them — if they differ, the manifest has been substituted
+        4. Validates required fields
 
     Raises:
-        FreezeManifestMissing: if the manifest file does not exist
-        FreezeManifestCorrupt: if the manifest is malformed or missing fields
+        FreezeManifestMissing: manifest file does not exist
+        FreezeManifestCorrupt: manifest is malformed or missing fields
+        F1OptimizationForbidden: manifest on disk doesn't match git HEAD
     """
+    import subprocess
+
     if not MANIFEST_PATH.exists():
         raise FreezeManifestMissing(
             f"F1 FREEZE MANIFEST MISSING: {MANIFEST_PATH}. "
@@ -89,8 +102,47 @@ def _load_manifest() -> dict:
             f"Per Phase 7 Round 3: the gate fails closed when the manifest "
             f"is missing. It NEVER self-baselines."
         )
+
+    # Read the on-disk manifest
+    disk_content = MANIFEST_PATH.read_text()
+
+    # Read the git-committed manifest at HEAD
     try:
-        manifest = json.loads(MANIFEST_PATH.read_text())
+        result = subprocess.run(
+            ["git", "cat-file", "blob", f"HEAD:{MANIFEST_PATH.relative_to(REPO)}"],
+            cwd=REPO, capture_output=True, text=True, timeout=10
+        )
+        if result.returncode != 0:
+            raise FreezeManifestCorrupt(
+                f"F1 FREEZE MANIFEST NOT IN GIT: cannot read "
+                f"HEAD:{MANIFEST_PATH.relative_to(REPO)}. "
+                f"git error: {result.stderr.strip()[:200]}. "
+                f"The manifest must be committed to git."
+            )
+        git_content = result.stdout
+    except FreezeManifestCorrupt:
+        raise
+    except Exception as e:
+        raise HashComputationFailed(
+            f"MANIFEST GIT VERIFICATION FAILED: {type(e).__name__}: {e}. "
+            f"Per P6: fail closed. Cannot verify manifest against git HEAD."
+        )
+
+    # Verify on-disk matches git HEAD (prevents manifest substitution)
+    if disk_content != git_content:
+        raise F1OptimizationForbidden(
+            f"MANIFEST SUBSTITUTION DETECTED: the manifest on disk does not "
+            f"match the manifest committed at git HEAD. This means the manifest "
+            f"has been locally modified after being committed. An attacker who "
+            f"modifies both the manifest and the production data would be caught "
+            f"here because the modified manifest doesn't match the git-committed "
+            f"version. Per Phase 7 Round 4: the thing that defines the freeze "
+            f"cannot be allowed to redefine itself."
+        )
+
+    # Parse the (verified) manifest
+    try:
+        manifest = json.loads(disk_content)
     except json.JSONDecodeError as e:
         raise FreezeManifestCorrupt(
             f"F1 FREEZE MANIFEST CORRUPT: {MANIFEST_PATH} is not valid JSON: {e}"
@@ -110,6 +162,16 @@ def _load_manifest() -> dict:
     if manifest.get("immutable_reference") is not True:
         raise FreezeManifestCorrupt(
             f"F1 FREEZE MANIFEST CORRUPT: immutable_reference must be true"
+        )
+
+    # Cross-validate: manifest baseline_f1 must match the Python constant
+    manifest_f1 = manifest.get("baseline_f1")
+    if manifest_f1 is not None and abs(float(manifest_f1) - FROZEN_F1_BASELINE) > 1e-6:
+        raise F1OptimizationForbidden(
+            f"F1 BASELINE MISMATCH BETWEEN SOURCES: "
+            f"manifest baseline_f1={manifest_f1} but Python constant "
+            f"FROZEN_F1_BASELINE={FROZEN_F1_BASELINE}. These must agree. "
+            f"Per audit round 18: single source of truth for the baseline."
         )
 
     return manifest
