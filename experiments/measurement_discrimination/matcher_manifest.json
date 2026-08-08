@@ -1,0 +1,14 @@
+{
+  "matcher_commit": "9189880fde1496ceba9f0c4f242ab65cb7303711",
+  "matcher_file": "benchmarks/discovery_capability_benchmark.py",
+  "matcher_function": "_bridge_matches",
+  "matcher_source_sha256": "9ba196603e90f5fb83e5bf1f10cf7c7523357b725b107c72afcede0642adc547",
+  "matcher_configuration": {
+    "bridge_synonyms": "{}",
+    "synonym_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+    "canonicalization": "canonicalize() in discovery_capability_benchmark.py",
+    "fuzzy_threshold": "N/A"
+  },
+  "read_only": true,
+  "amendment_1_compliance": "matcher is imported and called through public interface; not edited, modified, or calibrated"
+}

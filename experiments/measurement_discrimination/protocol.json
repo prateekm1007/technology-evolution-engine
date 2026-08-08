@@ -1,0 +1,141 @@
+{
+  "protocol_version": "phase8-discrimination-v1",
+  "status": "PREPARED_NOT_AUTHORIZED",
+  "created_at_utc": "2026-08-09T00:00:00Z",
+  "central_question": "Can the frozen discovery matcher discriminate between true cross-domain relationships and matched null controls at a rate significantly above chance?",
+
+  "frozen_matcher": {
+    "commit": "9189880fde1496ceba9f0c4f242ab65cb7303711",
+    "file": "benchmarks/discovery_capability_benchmark.py",
+    "function": "_bridge_matches",
+    "source_sha256": "9ba196603e90f5fb83e5bf1f10cf7c7523357b725b107c72afcede0642adc547",
+    "configuration": {
+      "bridge_synonyms": "{}",
+      "synonym_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+      "canonicalization": "canonicalize() in discovery_capability_benchmark.py",
+      "fuzzy_threshold": "N/A"
+    },
+    "read_only": true,
+    "amendment_1_compliance": "matcher is imported and called through public interface; not edited, modified, or calibrated"
+  },
+
+  "frozen_gold_set": {
+    "source": "benchmarks/discovery_capability_benchmark.py:105-328",
+    "commit": "9189880fde1496ceba9f0c4f242ab65cb7303711",
+    "sha256": "1ed102361bdccd8fa0beed77e44b8600a2a36746904d0d249c686931bd761191",
+    "count": 20,
+    "frozen": true
+  },
+
+  "frozen_vocabulary": {
+    "L3_synonym": {
+      "source": "BRIDGE_SYNONYMS = {} (empty, frozen since cycle 270)",
+      "sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+      "gold_derived": false,
+      "created_before_gold_access": true
+    },
+    "L4_semantic": {
+      "model": "N/A (no embedding model in frozen production matcher)",
+      "residual_leakage_risk": "N/A"
+    }
+  },
+
+  "control_construction": {
+    "type": "shuffled_gold",
+    "algorithm": "for each gold[i]: shuffled_bridge = gold[(i + 10) % 20].bridge; fallback offset = 7 if collision",
+    "seed": 42,
+    "matching_properties": ["document_length_pm10pct", "token_count_pm10pct", "domain_distribution", "structural_complexity"],
+    "quality_audit": "required (Amendment 9). If any null violates matching properties: INCONCLUSIVE_INVALID_NULL",
+    "dataset_sha256": "to_be_set_after_generation"
+  },
+
+  "candidate_generation": {
+    "true_candidates": "gold bridge concepts (20)",
+    "null_candidates": "shuffled bridge concepts (20)",
+    "scoring": "frozen _bridge_matches() returns True/False. No separate scoring layer."
+  },
+
+  "primary_discrimination_metric": {
+    "name": "delta_TPR_FPR",
+    "formula": "Δ = TPR_true − FPR_shuffled",
+    "TPR_true": "(matched true bridges) / (total true bridges)",
+    "FPR_shuffled": "(matched shuffled bridges) / (total shuffled bridges)",
+    "threshold": 0.20,
+    "threshold_preregistered_before_results": true,
+    "success_condition": "Δ ≥ 0.20 AND lower bound of 95% CI for Δ > 0"
+  },
+
+  "secondary_criteria": {
+    "precision_separation": {"threshold": 0.15, "preregistered": true},
+    "false_positive_ceiling": {"threshold": 0.30, "preregistered": true}
+  },
+
+  "statistical_procedure": {
+    "ci_method": "95% percentile bootstrap",
+    "n_resamples": 10000,
+    "resampling_unit": "case level",
+    "seed": 42,
+    "ties_policy": "ties produce Δ=0, CI lower bound ≤ 0, fails success condition",
+    "missing_value_policy": "matcher crash = no match (conservative)"
+  },
+
+  "sample_size": {
+    "n_true": 20,
+    "n_null": 20,
+    "total": 40,
+    "multiplicity": "single primary comparison, no correction needed"
+  },
+
+  "decision_rule": {
+    "DISCRIMINATIVE": "Δ ≥ 0.20 AND CI_lower > 0 AND FPR_shuffled ≤ 0.30",
+    "NOT_DISCRIMINATIVE": "Δ < 0.20 OR CI_lower ≤ 0",
+    "NOT_DISCRIMINATIVE_handling": "result preserved, no rescue, no synonym addition, no threshold change, no hard case removal, no null alteration, no rerun, no 'promising' label, discovery claims remain BLOCKED"
+  },
+
+  "dxp005_resumption_conditions": [
+    "discrimination study produces DISCRIMINATIVE",
+    "ZAI provider available (HTTP 429 resolved)",
+    "frozen protocol (66b3212) still valid",
+    "ground truth (db2df3ec) still valid",
+    "no protocol parameters changed",
+    "P46 served-instrument verification satisfied (ZAI CLI response includes model AND provider fields)"
+  ],
+
+  "adversarial_attack_matrix": {
+    "vocabulary_leakage": "BRIDGE_SYNONYMS empty, verified by test_no_gold_derived_synonyms.py",
+    "control_contamination": "fixed offset (10), fallback (7), quality audit required",
+    "candidate_encoding": "candidate is bridge string only, no metadata",
+    "ordering_leak": "matcher receives one pair at a time, no order visibility",
+    "scorer_info_advantage": "scorer IS matcher, no separate scoring layer",
+    "repeated_entity_dependence": "case-level resampling, documented limitation",
+    "null_contamination": "shuffled bridge from different domain pair, flagged if accidentally valid",
+    "provider_leak": "frozen matcher is pure string matching, no LLM calls",
+    "rng_artifacts": "seed 42 preregistered, deterministic algorithm documented",
+    "threshold_shopping": "threshold 0.20 preregistered BEFORE results, not data-derived",
+    "direct_invocation_bypass": "harness IS direct invocation, epistemic gate blocks ungated consumers",
+    "future_input_modification": "Phase 7 freeze gate maintains SHA-256 hashes, detects modifications"
+  },
+
+  "lock_file_required": true,
+  "lock_file_contents": [
+    "PREREGISTRATION.md",
+    "protocol.json",
+    "protocol.sha256",
+    "matcher_manifest.json",
+    "vocabulary_manifest.json",
+    "dataset_manifest.json",
+    "controls_manifest.json"
+  ],
+  "execution_refuses_without_lock_file": true,
+
+  "does_not_authorize": [
+    "executing the discrimination study",
+    "executing DXP-005",
+    "modifying the frozen matcher",
+    "modifying the gold set",
+    "modifying BRIDGE_SYNONYMS",
+    "repairing M-008",
+    "making any discovery claim",
+    "making any capability claim"
+  ]
+}
