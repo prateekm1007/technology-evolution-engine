@@ -450,7 +450,7 @@ def verify_run_integrity_anchor(run_dir: Path,
 
     # 3. Verify committed anchor (against record_commit — REQUIRED, no default)
     try:
-        rel_path = anchor_path.relative_to(repo)
+        rel_path = anchor_path.resolve().relative_to(repo)
     except ValueError:
         # Run directory is outside the repo — FAIL CLOSED
         result["committed_anchor_matches"] = False
