@@ -1,0 +1,48 @@
+{
+  "diagnostic_type": "ZAI_RESPONSE_SCHEMA_DIAGNOSTIC",
+  "timestamp_utc": "2026-08-08T16:34:57.468296+00:00",
+  "cli_version": "exit 1: \u274c Error: Unknown command \"--version\"",
+  "capture_error": null,
+  "raw_response": {
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "content": "OK",
+          "role": "assistant"
+        }
+      }
+    ],
+    "created": 1786206897,
+    "id": "20260809003457294ca336827f424e",
+    "model": "glm-4-plus",
+    "object": "chat.completion",
+    "request_id": "20260809003457294ca336827f424e",
+    "usage": {
+      "completion_tokens": 2,
+      "prompt_tokens": 14,
+      "total_tokens": 16
+    }
+  },
+  "raw_response_sha256": "dceee928479470e30bf67ed1dc4ed07027bbb42972d56c8d4fe551dbd105a2c9",
+  "fields_present": [
+    "id",
+    "object",
+    "created",
+    "model",
+    "choices",
+    "usage"
+  ],
+  "fields_absent": [
+    "provider",
+    "system_fingerprint",
+    "service_tier"
+  ],
+  "model_field_present": true,
+  "provider_field_present": false,
+  "model_value": "glm-4-plus",
+  "provider_value": null,
+  "scientific_experiment_executed": false,
+  "note": "Non-scientific diagnostic. Captures actual CLI response schema for P46 verification purposes. Does NOT execute DXP-005 or any scientific experiment."
+}

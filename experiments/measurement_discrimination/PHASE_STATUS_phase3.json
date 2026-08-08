@@ -1,0 +1,78 @@
+{
+  "phase": 3,
+  "phase_name": "REAL regeneration verification",
+  "status": "COMPLETE",
+  "verdict": "FAIL",
+  "commit": "pending",
+  "protocol_frozen": false,
+  "scientific_results_visible": true,
+  "scientific_results_note": "Phase 3 produced a REGENERATION VERDICT. This is a measurement result, not a discovery claim. The verdict is FAIL because M-008 (FP floor) does not regenerate to the same value as the committed artifact.",
+  "next_allowed_phase": "4 (with caveat: Phase 3 FAIL must be acknowledged)",
+  "timestamp_utc": "2026-08-08T16:40:00Z",
+  "github_ci_status": "NOT_INDEPENDENTLY_VERIFIED",
+
+  "regeneration_tests": {
+    "test_1_bootstrap_all_metrics": {
+      "verdict": "FAIL",
+      "committed_artifact": "reports/bootstrap_statistics.json",
+      "fresh_computation": "bootstrap_all_metrics(n_resamples=500, seed=42)",
+      "elapsed_seconds": 85.7,
+      "fresh_metric_count": 38,
+      "committed_metric_count": 38,
+      "mismatch_count": 2,
+      "mismatches": [
+        {
+          "metric_id": "M-008",
+          "field": "point_estimate",
+          "fresh": 0.888888888888889,
+          "committed": 0.9189,
+          "diff": 0.0300111111111111,
+          "tolerance": 0.0001
+        },
+        {
+          "metric_id": "M-008",
+          "field": "ci_95_lower",
+          "fresh": 0.6206896551724138,
+          "committed": 0.6667,
+          "diff": 0.04601034482758615,
+          "tolerance": 0.0001
+        }
+      ],
+      "interpretation": "M-008 (FP floor / false-positive floor) does not regenerate. The committed artifact reports point_estimate=0.9189 but fresh computation produces 0.8889. This is a 3% discrepancy — not a floating-point precision issue but a real difference. Possible causes: (a) code change in M-008 since the committed artifact was generated, (b) dependency version difference affecting the random resampling, (c) data change in the gold set or entity pool. The discrepancy is NOT explained or explained away — it is recorded as a regeneration failure."
+    },
+    "test_2_run_discovery_benchmark": {
+      "verdict": "PASS",
+      "committed_artifact": "benchmarks/reports/discovery_capability_score.json",
+      "fresh_computation": "run_discovery_benchmark()",
+      "elapsed_seconds": 1.0,
+      "fresh_values": {"f1": 0.5714, "tp": null, "fp": null, "fn": null, "total_score": null},
+      "committed_values": {"f1": 0.5714, "tp": null, "fp": null, "fn": null, "total_score": null},
+      "interpretation": "The discovery capability benchmark regenerates exactly. f1=0.5714 matches the committed artifact. The NLP pipeline produces identical results."
+    }
+  },
+
+  "overall_verdict": "FAIL",
+  "overall_verdict_reason": "1 of 2 regeneration tests passed. M-008 (bootstrap FP floor) does not regenerate to the committed value. Per the audit: REGENERATION = FAILED, not approximately equivalent.",
+
+  "comparison_rule": "SEMANTIC (point estimates match within 1e-4 tolerance; integer counts match exactly). NOT 'approximately equivalent' — precise semantic comparison with tight tolerance. Per audit: no 'approximately equivalent' unless the preregistered comparison rule explicitly permits semantic equivalence, which it does not.",
+
+  "scientific_experiment_executed": false,
+  "dxp005_executed": false,
+  "frozen_assets_modified": false,
+
+  "phase_3_artifacts": {
+    "regeneration_script": "scripts/phase3_regeneration_test.py",
+    "regeneration_result": "reports/phase3/regeneration_result.json",
+    "zai_diagnostic": "reports/diagnostics/zai_response_schema.json",
+    "zai_diagnostic_script": "scripts/zai_response_schema_diagnostic.py"
+  },
+
+  "zai_response_schema_diagnostic": {
+    "model_field_present": true,
+    "model_value": "glm-4-plus",
+    "provider_field_present": false,
+    "raw_response_sha256": "dceee928479470e3...",
+    "note": "Independently captured CLI response confirms: z-ai CLI reports model='glm-4-plus' but does NOT report provider. This is now captured evidence, not just an implementation finding.",
+    "scientific_experiment_executed": false
+  }
+}
