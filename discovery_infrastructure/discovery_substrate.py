@@ -37,6 +37,44 @@ from pathlib import Path
 
 
 # ============================================================================
+# SUBSTRATE INVARIANT EXCEPTIONS
+# ============================================================================
+# These exist so that invalid scientific states are REJECTED at construction
+# or registration, not merely documented. The substrate's value comes from
+# making invalid states unrepresentable, not from describing them in prose.
+
+class ProvenanceImmutableError(Exception):
+    """Raised when attempting to mutate a committed (frozen) provenance graph.
+
+    Once a ProvenanceGraph has been committed via commit(), its content is
+    frozen and referenced by its content hash. To revise provenance, fork()
+    the graph, modify the fork, and commit() the new graph — which produces
+    a different content hash. The original committed hash never changes.
+    """
+
+
+class DuplicateRegistrationError(Exception):
+    """Raised when attempting to register an ID that already exists.
+
+    An append-only ledger must reject duplicate identifiers. Overwriting an
+    existing object silently destroys scientific provenance. For revision,
+    register a new versioned ID (CASE-001.v2) or a derived case linked to
+    the original — never overwrite history.
+    """
+
+
+class UnfalsifiableError(Exception):
+    """Raised when a testable scientific object lacks a falsifier.
+
+    A hypothesis, prediction, or experiment proposal that claims to be
+    testable (is_testable=True) MUST specify what observation would refute
+    it. An object without a falsifier may exist only as explicitly marked
+    EXPLORATORY (is_testable=False); it must not masquerade as a scientific
+    hypothesis.
+    """
+
+
+# ============================================================================
 # EPISTEMIC STATES — the confidence ladder
 # ============================================================================
 
@@ -66,6 +104,14 @@ class EpistemicState(str, Enum):
 
 
 # Valid state transitions (from → {allowed targets})
+#
+# Invariant (Repair #6): UNKNOWN may NOT jump directly to PREDICTED,
+# EXPERIMENTALLY_SUPPORTED, REPLICATED, or ESTABLISHED. An object that has
+# lost its epistemic footing must re-enter the ladder at an early
+# investigative state (OBSERVED / EXTRACTED / INFERRED / HYPOTHESIZED) and
+# traverse the full evidence ladder again. Without this rule, UNKNOWN acts
+# as an escape hatch that bypasses the scientific ladder — an object could
+# become ESTABLISHED without ever accruing the evidence the ladder demands.
 VALID_TRANSITIONS: Dict[EpistemicState, set] = {
     EpistemicState.OBSERVED: {EpistemicState.EXTRACTED, EpistemicState.REFUTED, EpistemicState.UNKNOWN},
     EpistemicState.EXTRACTED: {EpistemicState.INFERRED, EpistemicState.REFUTED, EpistemicState.UNKNOWN},
@@ -76,7 +122,16 @@ VALID_TRANSITIONS: Dict[EpistemicState, set] = {
     EpistemicState.REPLICATED: {EpistemicState.ESTABLISHED, EpistemicState.REFUTED, EpistemicState.UNKNOWN},
     EpistemicState.ESTABLISHED: {EpistemicState.REFUTED, EpistemicState.UNKNOWN},
     EpistemicState.REFUTED: set(),  # terminal
-    EpistemicState.UNKNOWN: {s for s in EpistemicState if s != EpistemicState.UNKNOWN},
+    # UNKNOWN can only re-enter the ladder at an early investigative state,
+    # or be terminal-REFUTED. It CANNOT jump to PREDICTED, EXPERIMENTALLY_SUPPORTED,
+    # REPLICATED, or ESTABLISHED — those require evidence the object does not have.
+    EpistemicState.UNKNOWN: {
+        EpistemicState.OBSERVED,
+        EpistemicState.EXTRACTED,
+        EpistemicState.INFERRED,
+        EpistemicState.HYPOTHESIZED,
+        EpistemicState.REFUTED,
+    },
 }
 
 
@@ -112,29 +167,113 @@ class ProvenanceEdge:
 
 
 class ProvenanceGraph:
-    """A traversable provenance graph.
-    
+    """A traversable, content-addressed provenance graph.
+
     A future reviewer should be able to ask:
         'Why does the system believe this?'
     and traverse the answer all the way to primary evidence.
+
+    Immutability invariant (Repair #1):
+        Once committed via commit(), the graph is FROZEN. The committed
+        content hash becomes the provenance root hash for the parent
+        object. Any subsequent add_node() / add_edge() raises
+        ProvenanceImmutableError. To revise provenance, fork() into a
+        new mutable graph, modify, and commit() — producing a NEW,
+        DIFFERENT root hash. The original committed hash never changes.
+
+    The standard the substrate now meets:
+        NOT "the system has a field for provenance."
+        BUT "the system cannot silently alter provenance."
     """
     def __init__(self):
         self.nodes: Dict[str, ProvenanceNode] = {}
         self.edges: List[ProvenanceEdge] = []
-    
+        self._committed_hash: Optional[str] = None
+
+    @property
+    def is_committed(self) -> bool:
+        return self._committed_hash is not None
+
+    @property
+    def committed_hash(self) -> Optional[str]:
+        return self._committed_hash
+
     def add_node(self, node: ProvenanceNode) -> None:
+        if self._committed_hash is not None:
+            raise ProvenanceImmutableError(
+                f"ProvenanceGraph is committed (root_hash={self._committed_hash[:12]}...). "
+                "Cannot add node after commit. To revise, fork() into a new mutable "
+                "graph, modify, and commit() — producing a new, different root hash."
+            )
         self.nodes[node.node_id] = node
-    
+
     def add_edge(self, edge: ProvenanceEdge) -> None:
+        if self._committed_hash is not None:
+            raise ProvenanceImmutableError(
+                f"ProvenanceGraph is committed (root_hash={self._committed_hash[:12]}...). "
+                "Cannot add edge after commit. To revise, fork() into a new mutable "
+                "graph, modify, and commit() — producing a new, different root hash."
+            )
         self.edges.append(edge)
-    
+
+    def content_hash(self) -> str:
+        """Full SHA-256 over canonical JSON of nodes and edges.
+
+        Returns the 64-character hex digest. NOT truncated — scientific
+        provenance requires full content addressing (Repair #5).
+        """
+        canonical = {
+            "nodes": {k: v.to_dict() for k, v in sorted(self.nodes.items())},
+            "edges": [e.to_dict() for e in self.edges],
+        }
+        content = json.dumps(canonical, sort_keys=True, default=str)
+        return hashlib.sha256(content.encode("utf-8")).hexdigest()
+
+    def commit(self) -> str:
+        """Freeze the graph. Returns the content root hash.
+
+        Subsequent add_node/add_edge calls raise ProvenanceImmutableError.
+        Idempotent: calling commit() again returns the same hash.
+        """
+        if self._committed_hash is None:
+            self._committed_hash = self.content_hash()
+        return self._committed_hash
+
+    def verify(self, expected_hash: Optional[str] = None) -> bool:
+        """Verify that the current graph matches the expected (or committed) hash.
+
+        If expected_hash is provided, verify against it; otherwise verify
+        against the committed hash. Returns True iff the recomputed content
+        hash matches. A modified graph will fail verification against the
+        original committed hash — silent mutation is detectable.
+        """
+        check = expected_hash if expected_hash is not None else self._committed_hash
+        if check is None:
+            return False
+        return self.content_hash() == check
+
+    def fork(self) -> "ProvenanceGraph":
+        """Create a mutable copy of this graph.
+
+        The new graph is uncommitted (mutable). The original graph's
+        committed state is unchanged. Use this to revise provenance:
+        fork → modify → commit (new hash) — the original hash is preserved.
+        """
+        new_graph = ProvenanceGraph()
+        for nid, node in self.nodes.items():
+            new_graph.nodes[nid] = ProvenanceNode(**node.to_dict())
+        for edge in self.edges:
+            new_graph.edges.append(ProvenanceEdge(**edge.to_dict()))
+        # new_graph._committed_hash is None — mutable
+        return new_graph
+
     def trace_back(self, node_id: str) -> List[ProvenanceNode]:
         """Trace all ancestors of a node (why does the system believe this?)."""
         visited = set()
         result = []
         self._trace_back_recursive(node_id, visited, result)
         return result
-    
+
     def _trace_back_recursive(self, node_id: str, visited: set, result: list) -> None:
         if node_id in visited:
             return
@@ -144,11 +283,12 @@ class ProvenanceGraph:
         for edge in self.edges:
             if edge.target_node_id == node_id and edge.source_node_id not in visited:
                 self._trace_back_recursive(edge.source_node_id, visited, result)
-    
+
     def to_dict(self) -> Dict:
         return {
             "nodes": {k: v.to_dict() for k, v in self.nodes.items()},
             "edges": [e.to_dict() for e in self.edges],
+            "committed_hash": self._committed_hash,
         }
 
 
@@ -210,7 +350,24 @@ class MechanismEdge:
     confidence: float = 0.0  # 0-1, but NEVER collapse provenance into just this
     evidence: List[str] = field(default_factory=list)  # source passages
     epistemic_state: EpistemicState = EpistemicState.OBSERVED
-    
+
+    def __post_init__(self):
+        # Repair #8: confidence is a declared invariant [0.0, 1.0]. Scientific
+        # infrastructure must reject declared-invariant violations rather than
+        # silently accept out-of-range values that would later contaminate
+        # downstream reasoning.
+        if not isinstance(self.confidence, (int, float)):
+            raise ValueError(
+                f"MechanismEdge '{self.edge_id}' confidence must be numeric, "
+                f"got {type(self.confidence).__name__}."
+            )
+        if not (0.0 <= float(self.confidence) <= 1.0):
+            raise ValueError(
+                f"MechanismEdge '{self.edge_id}' confidence must be in [0.0, 1.0], "
+                f"got {self.confidence}. Declared invariants must be enforced, not "
+                f"merely documented."
+            )
+
     def to_dict(self) -> Dict:
         d = asdict(self)
         d["edge_type"] = self.edge_type.value
@@ -260,7 +417,7 @@ class MechanismGraph:
 @dataclass
 class TransferHypothesis:
     """A cross-domain mechanism transfer candidate.
-    
+
     This is the conceptual object that discover_shared_entities() was missing.
     Instead of asking 'do these papers share an entity?', this asks
     'can a mechanism operating under these conditions transfer into
@@ -280,7 +437,30 @@ class TransferHypothesis:
     testable_prediction: str = ""
     epistemic_state: EpistemicState = EpistemicState.HYPOTHESIZED
     provenance: ProvenanceGraph = field(default_factory=ProvenanceGraph)
-    
+    provenance_root_hash: str = ""  # set when provenance is committed (Repair #1)
+
+    def commit_provenance(self) -> str:
+        """Freeze the provenance graph and record its content root hash.
+
+        After this call, the graph is immutable. Any attempt to add nodes
+        or edges will raise ProvenanceImmutableError. To revise, fork the
+        graph, modify, and recommit — producing a new, different hash.
+        """
+        h = self.provenance.commit()
+        self.provenance_root_hash = h
+        return h
+
+    def verify_provenance(self) -> bool:
+        """Verify that the current provenance graph matches the committed root hash.
+
+        Returns False if no provenance has been committed, or if the graph
+        has been mutated since commit (which would require bypassing the
+        immutability invariant — this method detects such tampering).
+        """
+        if not self.provenance_root_hash:
+            return False
+        return self.provenance.verify(self.provenance_root_hash)
+
     def to_dict(self) -> Dict:
         d = asdict(self)
         d["epistemic_state"] = self.epistemic_state.value
@@ -294,10 +474,23 @@ class TransferHypothesis:
 
 @dataclass
 class Hypothesis:
-    """A testable scientific hypothesis.
-    
-    Every hypothesis must include a falsifier — what observation
-    would prove it wrong. This prevents unfalsifiable prose.
+    """A scientific hypothesis.
+
+    Falsifiability invariant (Repair #4):
+        A hypothesis that claims to be testable (is_testable=True) MUST
+        specify a falsifier — what observation would prove it wrong. An
+        object without a falsifier may exist only as explicitly marked
+        EXPLORATORY (is_testable=False); it must not masquerade as a
+        scientific hypothesis.
+
+        The standard the substrate now meets:
+            NOT "the system has a falsifier field."
+            BUT "a testable hypothesis cannot exist without a falsifier."
+
+    Provenance invariant (Repair #1):
+        Once commit_provenance() is called, the provenance graph is frozen
+        and its content hash is recorded as provenance_root_hash. Subsequent
+        mutation of the graph raises ProvenanceImmutableError.
     """
     hypothesis_id: str
     claim: str  # falsifiable statement, not a number
@@ -312,7 +505,35 @@ class Hypothesis:
     epistemic_state: EpistemicState = EpistemicState.HYPOTHESIZED
     parent_hypothesis_ids: List[str] = field(default_factory=list)
     provenance: ProvenanceGraph = field(default_factory=ProvenanceGraph)
-    
+    is_testable: bool = False  # EXPLORATORY by default; True requires non-empty falsifier
+    provenance_root_hash: str = ""  # set when provenance is committed (Repair #1)
+
+    def __post_init__(self):
+        if self.is_testable and not (self.falsifier and self.falsifier.strip()):
+            raise UnfalsifiableError(
+                f"Hypothesis '{self.hypothesis_id}' is marked is_testable=True but has "
+                "no falsifier. A testable hypothesis without a falsifier is scientifically "
+                "invalid. Either provide a non-empty falsifier, or set is_testable=False "
+                "(EXPLORATORY) to explicitly mark this as an early-stage untestable object."
+            )
+
+    def commit_provenance(self) -> str:
+        """Freeze the provenance graph and record its content root hash.
+
+        After this call, the graph is immutable. Any attempt to add nodes
+        or edges will raise ProvenanceImmutableError. To revise, fork the
+        graph, modify, and recommit — producing a new, different hash.
+        """
+        h = self.provenance.commit()
+        self.provenance_root_hash = h
+        return h
+
+    def verify_provenance(self) -> bool:
+        """Verify that the current provenance graph matches the committed root hash."""
+        if not self.provenance_root_hash:
+            return False
+        return self.provenance.verify(self.provenance_root_hash)
+
     def to_dict(self) -> Dict:
         d = asdict(self)
         d["epistemic_state"] = self.epistemic_state.value
@@ -327,9 +548,15 @@ class Hypothesis:
 @dataclass
 class Prediction:
     """A falsifiable prediction derived from a hypothesis.
-    
-    The critical field is 'falsifier' — what observation would
-    prove the hypothesis wrong.
+
+    Falsifiability invariant (Repair #4):
+        A prediction that claims to be testable (is_testable=True) MUST
+        specify a falsifier. An exploratory prediction (is_testable=False)
+        is permitted but must not be treated as a scientific prediction.
+
+    Bounds invariant (Repair #8):
+        uncertainty is a declared invariant [0.0, 1.0]. Out-of-range values
+        are rejected at construction.
     """
     prediction_id: str
     hypothesis_id: str
@@ -341,7 +568,27 @@ class Prediction:
     falsifier: str = ""  # what observation would refute the hypothesis
     uncertainty: float = 0.0  # 0-1
     epistemic_state: EpistemicState = EpistemicState.PREDICTED
-    
+    is_testable: bool = False  # EXPLORATORY by default; True requires non-empty falsifier
+
+    def __post_init__(self):
+        if self.is_testable and not (self.falsifier and self.falsifier.strip()):
+            raise UnfalsifiableError(
+                f"Prediction '{self.prediction_id}' is marked is_testable=True but has "
+                "no falsifier. A testable prediction must specify what observation would "
+                "refute it. Either provide a non-empty falsifier, or set is_testable=False "
+                "(EXPLORATORY)."
+            )
+        if not isinstance(self.uncertainty, (int, float)):
+            raise ValueError(
+                f"Prediction '{self.prediction_id}' uncertainty must be numeric, "
+                f"got {type(self.uncertainty).__name__}."
+            )
+        if not (0.0 <= float(self.uncertainty) <= 1.0):
+            raise ValueError(
+                f"Prediction '{self.prediction_id}' uncertainty must be in [0.0, 1.0], "
+                f"got {self.uncertainty}. Declared invariants must be enforced."
+            )
+
     def to_dict(self) -> Dict:
         d = asdict(self)
         d["epistemic_state"] = self.epistemic_state.value
@@ -355,7 +602,14 @@ class Prediction:
 @dataclass
 class ExperimentProposal:
     """A proposed experiment to test a hypothesis.
-    
+
+    Falsifiability invariant (Repair #4):
+        An experiment that claims to be testable (is_testable=True) MUST
+        specify a falsification_condition — what result would falsify the
+        hypothesis. An exploratory experiment design (is_testable=False)
+        is permitted for early-stage sketching but must not be treated as
+        a scientific test.
+
     The engine should eventually optimize experiments not merely for
     expected success but for expected information gain per unit cost/time.
     """
@@ -374,7 +628,19 @@ class ExperimentProposal:
     estimated_cost: str = ""  # not a number yet — premature optimization
     estimated_duration: str = ""
     information_gain: str = ""  # qualitative for now
-    
+    is_testable: bool = False  # EXPLORATORY by default; True requires non-empty falsification_condition
+
+    def __post_init__(self):
+        if self.is_testable and not (
+            self.falsification_condition and self.falsification_condition.strip()
+        ):
+            raise UnfalsifiableError(
+                f"ExperimentProposal '{self.experiment_id}' is marked is_testable=True "
+                "but has no falsification_condition. A testable experiment must specify "
+                "what result would falsify the hypothesis. Either provide a non-empty "
+                "falsification_condition, or set is_testable=False (EXPLORATORY)."
+            )
+
     def to_dict(self) -> Dict:
         return asdict(self)
 
@@ -405,12 +671,19 @@ class ExperimentManifest:
         return asdict(self)
     
     def to_hash(self) -> str:
-        """Content-addressed hash of the manifest."""
+        """Content-addressed hash of the manifest.
+
+        Returns the FULL SHA-256 (64 hex characters). Previously this was
+        truncated to 16 hex chars (64 bits) — insufficient for scientific
+        content addressing. Scientific provenance requires full hash width
+        so that collision resistance matches the underlying cryptographic
+        primitive (Repair #5).
+        """
         d = self.to_dict()
         # Remove timestamp from hash computation (it changes each time)
         d.pop("timestamp", None)
         content = json.dumps(d, sort_keys=True)
-        return hashlib.sha256(content.encode()).hexdigest()[:16]
+        return hashlib.sha256(content.encode()).hexdigest()
 
 
 # ============================================================================
@@ -504,10 +777,17 @@ class PriorArtAssessment:
 @dataclass
 class DiscoveryCase:
     """The atomic unit of a discovery attempt.
-    
+
     Every discovery candidate is a durable, immutable evidence object.
     Supports incomplete hypotheses — scientific discovery frequently
     begins with 'something here might matter.'
+
+    Provenance invariant (Repair #1):
+        Once commit_provenance() is called, the provenance graph is frozen
+        and its content hash is recorded as provenance_root_hash. Any
+        subsequent attempt to mutate the provenance graph raises
+        ProvenanceImmutableError. verify_provenance() detects tampering
+        by recomputing the hash and comparing.
     """
     case_id: str
     created_at: str = field(default_factory=lambda: datetime.now(timezone.utc).isoformat())
@@ -532,7 +812,33 @@ class DiscoveryCase:
     derived_cases: List[str] = field(default_factory=list)
     failure_state: Optional[str] = None  # failure ID if failed
     manifest: Optional[ExperimentManifest] = None
-    
+    provenance_root_hash: str = ""  # set when provenance is committed (Repair #1)
+
+    def commit_provenance(self) -> str:
+        """Freeze the provenance graph and record its content root hash.
+
+        After this call, the graph is immutable. Any attempt to add nodes
+        or edges will raise ProvenanceImmutableError. To revise, fork the
+        graph, modify, and recommit — producing a new, different hash.
+
+        Returns the 64-character SHA-256 hex digest of the graph's
+        canonical JSON.
+        """
+        h = self.provenance.commit()
+        self.provenance_root_hash = h
+        return h
+
+    def verify_provenance(self) -> bool:
+        """Verify that the current provenance graph matches the committed root hash.
+
+        Returns False if no provenance has been committed, or if the graph
+        has been mutated since commit. Detects tampering with the evidence
+        chain after the case has been recorded.
+        """
+        if not self.provenance_root_hash:
+            return False
+        return self.provenance.verify(self.provenance_root_hash)
+
     def to_dict(self) -> Dict:
         d = asdict(self)
         d["validation_status"] = self.validation_status.value if isinstance(self.validation_status, EpistemicState) else self.validation_status
@@ -584,6 +890,28 @@ DISCOVERY_TRANSITIONS: Dict[DiscoveryState, set] = {
 }
 
 
+# Scientific evaluation pipeline states (Repair #6-extended).
+#
+# Once a case enters this set of states, it has crossed the boundary from
+# "exploratory sketch" into "scientific evaluation." The directive:
+#
+#     "Nothing can enter the scientific evaluation pipeline without a falsifier."
+#
+# This is stronger than the construction-time check on `is_testable`. A
+# future engine could construct a Hypothesis with is_testable=False and
+# later attempt to move it into the scientific pipeline. The transition
+# itself must reject that — the falsifier invariant is enforced at the
+# gate, not just at object construction.
+SCIENTIFIC_PIPELINE_STATES: set = {
+    DiscoveryState.TESTABLE_HYPOTHESIS,
+    DiscoveryState.EXPERIMENT,
+    DiscoveryState.RESULT,
+    DiscoveryState.REPLICATION,
+    DiscoveryState.VALIDATED_DISCOVERY,
+    DiscoveryState.INVENTION_CANDIDATE,
+}
+
+
 @dataclass
 class StateTransition:
     """A recorded state transition with full audit trail."""
@@ -604,25 +932,102 @@ class StateTransition:
 
 class DiscoveryStateMachine:
     """Manages state transitions for a discovery case.
-    
+
     Every transition needs: actor, timestamp, code SHA, evidence, reason.
     Invalid transitions raise ValueError.
+
+    Audit-trail invariant (Repair #7):
+        ALL transitions are scientifically consequential — including
+        transitions to FAILED (a failure must be attributable to an actor
+        operating on a code version, with evidence and a reason). The
+        transition() method rejects empty actor / code_sha / evidence /
+        reason. The audit trail exists structurally AND the integrity
+        constraint is enforced — not just one or the other.
+
+    Pipeline-entry invariant (Repair #6-extended):
+        The transition INTO any state in SCIENTIFIC_PIPELINE_STATES
+        (TESTABLE_HYPOTHESIS, EXPERIMENT, RESULT, REPLICATION,
+        VALIDATED_DISCOVERY, INVENTION_CANDIDATE) requires the caller to
+        pass a `hypothesis` argument whose `falsifier` is non-empty.
+        This enforces the directive:
+
+            "Nothing can enter the scientific evaluation pipeline without
+             a falsifier."
+
+        This is stronger than the construction-time check on `is_testable`
+        because it prevents a future engine from constructing an exploratory
+        Hypothesis (is_testable=False, falsifier="") and later moving it
+        into the scientific pipeline. The transition itself rejects that.
     """
     def __init__(self, case_id: str):
         self.case_id = case_id
         self.current_state: DiscoveryState = DiscoveryState.RAW_EVIDENCE
         self.history: List[StateTransition] = []
-    
+
     def transition(self, to_state: DiscoveryState, actor: str,
-                   code_sha: str = "", evidence: str = "", reason: str = "") -> StateTransition:
-        """Attempt a state transition. Raises ValueError if invalid."""
+                   code_sha: str = "", evidence: str = "", reason: str = "",
+                   hypothesis: Optional["Hypothesis"] = None) -> StateTransition:
+        """Attempt a state transition. Raises ValueError if invalid.
+
+        Raises ValueError if:
+          - the transition is not in DISCOVERY_TRANSITIONS (invalid path)
+          - any of actor / code_sha / evidence / reason is empty or
+            whitespace-only (audit trail incomplete)
+          - the transition targets a SCIENTIFIC_PIPELINE_STATES state and
+            the provided `hypothesis` is None or has an empty falsifier
+            (Repair #6-extended: pipeline-entry invariant)
+        """
         if to_state not in DISCOVERY_TRANSITIONS.get(self.current_state, set()):
             raise ValueError(
                 f"Invalid transition: {self.current_state.value} → {to_state.value}. "
                 f"Valid targets from {self.current_state.value}: "
                 f"{[s.value for s in DISCOVERY_TRANSITIONS.get(self.current_state, set())]}"
             )
-        
+
+        # Repair #7: require non-empty actor / code_sha / evidence / reason
+        # on all transitions. Every transition is scientifically consequential.
+        missing = []
+        if not (actor and actor.strip()):
+            missing.append("actor")
+        if not (code_sha and code_sha.strip()):
+            missing.append("code_sha")
+        if not (evidence and evidence.strip()):
+            missing.append("evidence")
+        if not (reason and reason.strip()):
+            missing.append("reason")
+        if missing:
+            raise ValueError(
+                f"Transition {self.current_state.value} → {to_state.value} rejected: "
+                f"audit trail requires non-empty {', '.join(missing)}. "
+                "Scientifically consequential transitions must record who did it, "
+                "on what code version, with what evidence, and for what reason."
+            )
+
+        # Repair #6-extended: pipeline-entry invariant.
+        # Entering any SCIENTIFIC_PIPELINE_STATES state requires a hypothesis
+        # with a non-empty falsifier. The construction-time check on
+        # is_testable is NOT sufficient — a future engine could construct an
+        # exploratory hypothesis and later attempt to move it into the
+        # scientific pipeline. This transition enforces the invariant at the
+        # gate.
+        if to_state in SCIENTIFIC_PIPELINE_STATES:
+            if hypothesis is None:
+                raise UnfalsifiableError(
+                    f"Transition {self.current_state.value} → {to_state.value} rejected: "
+                    "entering a scientific-pipeline state requires a `hypothesis` "
+                    "argument. Nothing can enter the scientific evaluation pipeline "
+                    "without a falsifier."
+                )
+            falsifier = getattr(hypothesis, "falsifier", "") or ""
+            if not falsifier.strip():
+                raise UnfalsifiableError(
+                    f"Transition {self.current_state.value} → {to_state.value} rejected: "
+                    f"hypothesis '{getattr(hypothesis, 'hypothesis_id', '?')}' has no "
+                    "falsifier. Nothing can enter the scientific evaluation pipeline "
+                    "without a falsifier. The construction-time is_testable check is "
+                    "not sufficient — the transition itself enforces the invariant."
+                )
+
         transition = StateTransition(
             from_state=self.current_state,
             to_state=to_state,
@@ -634,10 +1039,10 @@ class DiscoveryStateMachine:
         self.history.append(transition)
         self.current_state = to_state
         return transition
-    
+
     def can_transition(self, to_state: DiscoveryState) -> bool:
         return to_state in DISCOVERY_TRANSITIONS.get(self.current_state, set())
-    
+
     def to_dict(self) -> Dict:
         return {
             "case_id": self.case_id,
@@ -652,9 +1057,18 @@ class DiscoveryStateMachine:
 
 class DiscoveryLedger:
     """Append-only ledger of all discovery candidates.
-    
-    No deletion of failures. No silent relabeling.
-    A failed candidate remains in the ledger forever.
+
+    Append-only invariant (Repair #2):
+        No deletion of failures. No silent relabeling. No silent overwrite.
+        A failed candidate remains in the ledger forever. Registering the
+        same ID twice raises DuplicateRegistrationError — the ledger does
+        NOT replace the previous object. For revision, register a new
+        versioned ID (e.g. CASE-001.v2) or a derived case linked to the
+        original via parent_cases / derived_cases.
+
+        The standard the substrate now meets:
+            NOT "the ledger has no delete method."
+            BUT "registering an existing ID is rejected, not silently overwritten."
     """
     def __init__(self):
         self.cases: Dict[str, DiscoveryCase] = {}
@@ -666,37 +1080,75 @@ class DiscoveryLedger:
         self.transfers: Dict[str, TransferHypothesis] = {}
         self.mechanisms: Dict[str, MechanismGraph] = {}
         self.state_machines: Dict[str, DiscoveryStateMachine] = {}
-    
+
     def register_case(self, case: DiscoveryCase) -> None:
+        if case.case_id in self.cases:
+            raise DuplicateRegistrationError(
+                f"Case ID '{case.case_id}' already exists in the ledger. "
+                "Append-only ledger: registration must use a unique ID. "
+                "For revision, register a versioned ID (e.g. CASE-001.v2) or "
+                "a derived case linked to the original via parent_cases."
+            )
         self.cases[case.case_id] = case
         self.state_machines[case.case_id] = DiscoveryStateMachine(case.case_id)
-    
+
     def register_hypothesis(self, hyp: Hypothesis) -> None:
+        if hyp.hypothesis_id in self.hypotheses:
+            raise DuplicateRegistrationError(
+                f"Hypothesis ID '{hyp.hypothesis_id}' already exists in the ledger. "
+                "Append-only ledger: registration must use a unique ID. "
+                "For revision, register H-001.v2 linked via parent_hypothesis_ids."
+            )
         self.hypotheses[hyp.hypothesis_id] = hyp
-    
+
     def register_prediction(self, pred: Prediction) -> None:
+        if pred.prediction_id in self.predictions:
+            raise DuplicateRegistrationError(
+                f"Prediction ID '{pred.prediction_id}' already exists in the ledger. "
+                "Append-only ledger: registration must use a unique ID."
+            )
         self.predictions[pred.prediction_id] = pred
-    
+
     def register_experiment(self, exp: ExperimentProposal) -> None:
+        if exp.experiment_id in self.experiments:
+            raise DuplicateRegistrationError(
+                f"Experiment ID '{exp.experiment_id}' already exists in the ledger. "
+                "Append-only ledger: registration must use a unique ID."
+            )
         self.experiments[exp.experiment_id] = exp
-    
+
     def register_failure(self, failure: DiscoveryFailure) -> None:
+        if failure.failure_id in self.failures:
+            raise DuplicateRegistrationError(
+                f"Failure ID '{failure.failure_id}' already exists in the ledger. "
+                "Append-only ledger: registration must use a unique ID."
+            )
         self.failures[failure.failure_id] = failure
-    
+
     def register_prior_art(self, assessment: PriorArtAssessment) -> None:
+        if assessment.assessment_id in self.prior_art:
+            raise DuplicateRegistrationError(
+                f"PriorArtAssessment ID '{assessment.assessment_id}' already exists in the ledger. "
+                "Append-only ledger: registration must use a unique ID."
+            )
         self.prior_art[assessment.assessment_id] = assessment
-    
+
     def register_transfer(self, transfer: TransferHypothesis) -> None:
+        if transfer.transfer_id in self.transfers:
+            raise DuplicateRegistrationError(
+                f"TransferHypothesis ID '{transfer.transfer_id}' already exists in the ledger. "
+                "Append-only ledger: registration must use a unique ID."
+            )
         self.transfers[transfer.transfer_id] = transfer
-    
+
     def get_case_history(self, case_id: str) -> List[StateTransition]:
         if case_id in self.state_machines:
             return self.state_machines[case_id].history
         return []
-    
+
     def get_failures_for_hypothesis(self, hypothesis_id: str) -> List[DiscoveryFailure]:
         return [f for f in self.failures.values() if f.hypothesis_id == hypothesis_id]
-    
+
     def get_lineage(self, case_id: str) -> Dict:
         """Get parent and derived cases for lineage tracing."""
         case = self.cases.get(case_id)
@@ -707,7 +1159,7 @@ class DiscoveryLedger:
             "parents": case.parent_cases,
             "derived": case.derived_cases,
         }
-    
+
     def to_dict(self) -> Dict:
         return {
             "cases": {k: v.to_dict() for k, v in self.cases.items()},
