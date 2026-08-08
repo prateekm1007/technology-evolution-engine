@@ -1,6 +1,18 @@
 # SCIENTIFIC_GATE_2_PROTOCOL.md
 
-## Status: DRAFT — AWAITING INDEPENDENT PROTOCOL REVIEW
+## Version: 1.1
+
+## Status: CONDITIONALLY APPROVED — REVISED per independent protocol review
+
+## Revision history
+- v1.0: Initial draft (2026-08-08)
+- v1.1: Revised per independent protocol review (2026-08-08). Six corrections:
+  1. Statistical preregistration (α, primary comparison, multiplicity, effect size, CI)
+  2. N=20 reinterpreted as pilot; Stage 2B expansion criterion added
+  3. Gate-A adjudication rubric (A0–A4, only A4 passes)
+  4. Gate-B: NOVEL_AS_OF_CUTOFF replaces absolute "never published"
+  5. Control-equivalence table (model, version, prompt, attempts, tools, time, temperature)
+  6. Matched null replaces naive random vocabulary; inter-rater reliability required
 
 ## Approval chain
 ```
@@ -10,9 +22,9 @@ External review → PREMATURE
    ↓
 Development frozen
    ↓
-Gate 2 protocol design → APPROVED (this document)
+Gate 2 protocol v1.0 → CONDITIONALLY APPROVED
    ↓
-Independent protocol review → PENDING
+Gate 2 protocol v1.1 → AWAITING FINAL INDEPENDENT REVIEW
    ↓
 Protocol freeze → PENDING
    ↓
@@ -105,15 +117,26 @@ The engine must generate a proposal that cannot be recovered from the input thro
 
 ### Gate A adjudication procedure
 
-For each proposal, an independent evaluator asks:
+For each proposal, an independent evaluator classifies it using the following rubric:
 
-> Could a competent evaluator reconstruct the proposed bridge merely by looking at entities, relations, phrases, synonyms, or paraphrases already present in A and B?
+```
+A0 — Explicit: the proposal is stated verbatim in either input
+A1 — Lexical/paraphrase: the proposal is recoverable via synonym, substring, or paraphrase of input text
+A2 — Entity/relation extraction: the proposal is an entity or relation directly extractable from either input
+A3 — Direct compositional inference: the proposal is an obvious composition of explicitly stated relationships (e.g., A causes B, B causes C → A causes C, where both links are explicit)
+A4 — Non-trivial derived proposal: the proposal cannot be recovered by any of the above methods
+```
 
-If YES → Gate A FAIL.
+Only **A4** passes Gate A.
 
-The evaluator must document exactly where in the input the concept appears (or a close paraphrase thereof).
+The evaluator must document:
+- The classification (A0, A1, A2, A3, or A4)
+- The evidence supporting the classification (e.g., "the phrase 'thermal regulation' appears in source A line 3")
+- Why the proposal is or is not recoverable from the inputs
 
-If the evaluator cannot find the concept or a close paraphrase in either input → Gate A PASS.
+This makes Gate A auditable: two independent evaluators should be able to review the same evidence and reach the same classification.
+
+If the evaluator cannot find the concept or a close paraphrase in either input → A4 → Gate A PASS.
 
 ### Anti-leakage rule
 
@@ -146,14 +169,31 @@ An evaluator independent of the engine must search prior literature and classify
 ### Classification
 
 ```
-NOVEL — not previously published
-PREVIOUSLY_KNOWN — published before the benchmark
-PARTIAL_PRECEDENT — related but not identical
-AMBIGUOUS — unclear
-UNSUPPORTED — no evidence found
+NOVEL_AS_OF_CUTOFF — no materially equivalent relationship identified in the
+                     predefined search corpus using the preregistered search
+                     procedure as of the specified cutoff date
+PRIOR_ART_FOUND     — a materially equivalent relationship was identified
+PARTIAL_PRECEDENT   — related but not identical
+AMBIGUOUS           — unclear
+UNSUPPORTED         — no evidence found
 ```
 
-Only `NOVEL` can pass Gate B.
+Only `NOVEL_AS_OF_CUTOFF` can pass Gate B.
+
+### Literature search protocol (preregistered)
+
+The evaluator must record:
+- Databases searched (e.g., Google Scholar, PubMed, arXiv, Semantic Scholar)
+- Search terms used
+- Date searched
+- Date cutoff (the date before which prior art disqualifies novelty)
+- Inclusion/exclusion rules for screening results
+- Reviewer identity
+- Number of results screened
+- Number of full-text reviews
+- Final determination
+
+This replaces the previous "not previously published" language, which cannot be proven absolutely. "NOVEL_AS_OF_CUTOFF" is defensible because it documents the search procedure that was performed.
 
 ### Rediscovery category
 
@@ -189,7 +229,11 @@ Experts do NOT receive:
 - Whether the proposal is from the "gold" set
 - The engine's own confidence score
 
-Experts answer:
+### Inter-rater reliability (minimum two experts per proposal)
+
+A minimum of **two independent experts** must evaluate each proposal. For contentious cases, **three experts** are required.
+
+Each expert independently answers:
 ```
 Is the relationship coherent? YES/NO
 Is the mechanism plausible? YES/NO
@@ -200,7 +244,27 @@ Is it potentially useful? YES/NO
 Overall: PASS/FAIL
 ```
 
-Only PASS at Gate C permits the claim **validated discovery**.
+### Disagreement handling
+
+If experts disagree materially (one says PASS, one says FAIL):
+- A third expert is recruited
+- The proposal is classified as AMBIGUOUS until adjudicated
+- The adjudication procedure is: the third expert reviews the same materials and provides the deciding vote
+- If all three disagree, the proposal remains AMBIGUOUS
+
+Do NOT simply average expert opinions. Record:
+```
+expert_1_result
+expert_2_result
+expert_3_result (if applicable)
+agreement (YES/NO)
+adjudication (if needed)
+final_result
+```
+
+For binary categorical judgments, calculate an appropriate agreement statistic (e.g., Cohen's kappa) where sample size permits.
+
+Only unanimous PASS (or adjudicated PASS) at Gate C permits the claim **validated discovery**.
 
 ---
 
@@ -238,31 +302,55 @@ The bridge concept (if one exists) must NOT be explicitly named in either source
 
 # 5. Mandatory control arms
 
-Every test case must be run through ALL of the following:
+Every test case must be run through ALL of the following. All arms must use the same input material and be scored under the same Gate A/B/C process.
+
+## Control-equivalence table
+
+For every arm, the following must be preregistered and held equivalent:
+
+| Parameter | Engine | Retrieval baseline | Generic LLM | Human | Matched null |
+|---|---|---|---|---|---|
+| Input material | Same A + B | Same A + B | Same A + B | Same A + B | Same A + B |
+| Model/system | TEE engine | BM25 + entity extraction | Prespecified LLM (model + version) | Qualified researcher | Structured recombination |
+| Prompt | N/A (engine native) | N/A (algorithmic) | Preregistered zero-shot prompt | Preregistered task instructions | N/A (algorithmic) |
+| Temperature | N/A | N/A | 0.0 (deterministic) | N/A | N/A |
+| Max attempts | 1 | 1 | 1 | 1 (within time budget) | 1 |
+| Time limit | N/A | N/A | N/A | 30 minutes per case | N/A |
+| External search access | No | No | No | No | No |
+| Tool access | Engine's native pipeline | Retrieval only | Text generation only | Pen and paper / word processor | Recombination only |
+| Retry policy | None | None | None | None | None |
+| Output format | Stated relationship + mechanism | Shared entity name | Stated relationship + mechanism | Stated relationship + mechanism | Stated relationship + mechanism |
 
 ### Control 1 — Retrieval/entity baseline
-- Extract entities from A and B
-- Find entity intersections
+- Extract entities from A and B using the same NLP pipeline
+- Find entity intersections (shared entities)
 - Propose any shared entity as a "discovery"
 - Score under Gate A/B/C
 
 ### Control 2 — Generic LLM
-- Give both sources to a generic LLM (GPT-4, Claude, etc.)
-- Prompt: "Given these two texts from different domains, what connecting concept or mechanism do they share? Propose a specific, testable cross-domain relationship."
+- Give both sources to a preregistered generic LLM (specific model and version documented before execution)
+- Prompt: "Given these two texts from different domains, what connecting concept or mechanism do they share? Propose a specific, testable cross-domain relationship with a mechanism."
+- Temperature: 0.0 (deterministic)
+- One attempt per case
 - Score under Gate A/B/C
 
 ### Control 3 — Human baseline
-- Give both sources to qualified researchers
-- Ask them to propose a cross-domain connection
+- Give both sources to qualified researchers (domain-matched where possible)
+- Time budget: 30 minutes per case
+- No external literature search (to match engine conditions)
+- Ask: "Propose a specific, testable cross-domain relationship with a mechanism."
 - Score under Gate A/B/C
 
-### Control 4 — Random/null baseline
-- Randomly select terms from a scientific vocabulary
-- Propose random cross-domain connections
+### Control 4 — Matched null baseline
+- For each case, take the engine's proposal structure (relationship + mechanism format)
+- Replace the domain-specific content with content randomly recombined from OTHER cases' mechanisms
+- Preserve proposal length, domain labels, and structural form
+- This produces structurally plausible-looking but causally meaningless proposals
 - Score under Gate A/B/C
-- This establishes the chance rate of apparently interesting proposals
 
-## Purpose
+**Purpose of matched null:** Answer "How often can a structurally plausible-looking but causally meaningless proposal accidentally pass the adjudication process?" This is much stronger than naive random vocabulary sampling.
+
+## Purpose of all controls
 
 The engine must demonstrate something beyond these controls. The critical question:
 
@@ -323,7 +411,7 @@ Total Prospective Cases
 - Generic-LLM yield
 - Human yield
 - Random/null yield
-- Independent rediscovery yield (PREVIOUSLY_KNOWN but absent from inputs)
+- Independent rediscovery yield (PRIOR_ART_FOUND but absent from inputs — i.e., the engine reconstructed a known relationship that was NOT in the supplied inputs)
 
 ## Every numerator must link to an auditable case
 
@@ -335,19 +423,19 @@ No aggregate number may be reported without the individual case files that produ
 
 These are defined BEFORE execution. Goalposts do not move afterward.
 
-### Failure condition 1 — No differentiation from baselines
+### Failure condition 1 — No differentiation from primary control
 
-> If the engine's validated novel-discovery yield is not distinguishable from the retrieval/generic-LLM/null baselines, the experiment does not establish specialized discovery capability.
+> If the engine's validated novel-discovery yield is not significantly greater than the generic-LLM baseline yield (one-sided Fisher's exact test, α = 0.05), the experiment does not establish specialized discovery capability beyond what a generic LLM can achieve.
 
 ### Failure condition 2 — Insufficient volume
 
-> If fewer than 3 cases survive all three gates (A=PASS, B=NOVEL, C=PASS), the result is insufficient to establish general discovery capability.
+> If fewer than 3 cases survive all three gates (A=A4, B=NOVEL_AS_OF_CUTOFF, C=PASS), the result is insufficient to establish even pilot-level discovery capability.
 
-3 is a minimum, not a target. The protocol does not claim that 3 discoveries prove general capability — only that fewer than 3 is insufficient.
+3 is a minimum for the pilot, not a target. Three discoveries out of twenty is nowhere near evidence of broad general capability — it is the minimum to justify a Stage 2B expansion.
 
 ### Failure condition 3 — Gate-A leakage
 
-> If more than 50% of the engine's proposals fail Gate A (i.e., are recoverable from inputs), the engine is not demonstrating generation beyond extraction.
+> If more than 50% of the engine's proposals are classified as A0, A1, A2, or A3 (i.e., recoverable from inputs), the engine is not demonstrating generation beyond extraction.
 
 ### Failure condition 4 — No expert validation
 
@@ -386,31 +474,59 @@ Failure does NOT mean the engine is incapable of discovery. It means the experim
 
 ---
 
-# 10. Statistical analysis
+# 10. Statistical analysis (preregistered)
 
-### Comparison
+## Significance level
+α = 0.05, one-sided (engine yield > control yield)
 
-The primary comparison is:
+## Primary comparison
+**Engine vs. generic-LLM baseline**
 
-```
-Engine yield vs. best control yield
-```
+The generic-LLM baseline is the primary comparison because it represents the strongest non-human, non-engine system. If the engine cannot beat a generic LLM, it is not adding specialized value.
 
-Where yield = validated novel discoveries / total cases.
+## Secondary comparisons
+- Engine vs. retrieval baseline
+- Engine vs. human baseline
+- Engine vs. matched null
 
-### Statistical test
+All secondary comparisons use the same α = 0.05 but are reported with confidence intervals and interpreted as exploratory.
 
-Fisher's exact test or binomial test, depending on sample size.
+## Multiplicity treatment
+The primary comparison is the confirmatory test. Secondary comparisons are exploratory and do not require multiplicity correction, but this is stated in advance — not decided post hoc.
 
-The protocol does NOT prescribe a specific p-value threshold. Instead, it requires:
-- The effect size (difference in yield)
-- The confidence interval
-- The sample size
-- A pre-registered interpretation
+If the protocol is revised to use "best control" as the primary comparison, Bonferroni correction across 4 comparisons would be required (α = 0.05/4 = 0.0125). The current design avoids this by preregistering the generic-LLM as the single primary comparison.
 
-### Minimum sample size
+## Statistical test
+Fisher's exact test (one-sided) for the primary comparison, given the expected small sample sizes and binary outcomes.
 
+## Effect-size reporting
+- Absolute risk difference (engine yield − control yield)
+- 95% confidence interval (via exact/binomial method)
+- Number needed to treat (NNT = 1 / risk difference, if positive)
+
+## Confidence interval method
+Exact (Clopper-Pearson) binomial confidence intervals for individual yields. Wald interval with continuity correction for the difference.
+
+## Sample size
 N ≥ 20 prospective cases (per system: engine + 4 controls = 100 total evaluations).
+
+### Interpretation of N=20
+
+N=20 is a **minimum prospective pilot** intended to determine whether the engine merits a larger validation study. It is NOT, by itself, sufficient to establish general-purpose discovery capability.
+
+### Stage 2B expansion criterion
+
+If Gate 2A (pilot) shows promising signal (engine yield > primary control yield, with effect size > 0), the protocol expands to:
+
+```
+Gate 2B = independent replication
+- New cases (not seen in Gate 2A)
+- New domains (not covered in Gate 2A)
+- New evaluators (not used in Gate 2A)
+- N ≥ 50 for Gate 2B
+```
+
+No claim of "world-class" or general discovery capability should follow from Gate 2A alone. Gate 2B is required for such claims.
 
 ---
 
@@ -425,10 +541,12 @@ The experiment stops and reports PREMATURE if:
 
 The experiment reports FAIL if any pre-registered failure condition is met.
 
-The experiment reports PASS only if:
-- At least 3 cases survive all three gates
-- Engine yield > best control yield
-- The effect is not explainable by chance alone
+The experiment reports PASS (pilot) only if:
+- At least 3 cases survive all three gates (A=A4, B=NOVEL_AS_OF_CUTOFF, C=PASS)
+- Engine yield > generic-LLM yield (primary comparison, one-sided Fisher's exact, α = 0.05)
+- Engine yield > matched-null yield
+
+PASS at pilot does NOT establish general discovery capability. It only justifies Stage 2B expansion.
 
 ---
 
@@ -475,9 +593,9 @@ These can only be reconsidered AFTER this protocol is independently reviewed, fr
 | Proposal mechanism | `discover_shared_entities()` (entity overlap) | Engine must generate, not retrieve |
 | Matching | `_bridge_matches()` (token overlap) | Gate A: independent evaluator determines if recoverable from inputs |
 | FP measurement | FP=0 by construction | Every proposal evaluated; incorrect proposals count against yield |
-| Novelty | Not tested | Gate B: independent literature search |
-| Expert validation | Not performed | Gate C: blinded expert review |
-| Controls | None | 4 mandatory controls (retrieval, LLM, human, random) |
+| Novelty | Not tested | Gate B: independent literature search (NOVEL_AS_OF_CUTOFF) |
+| Expert validation | Not performed | Gate C: blinded expert review (minimum 2 experts, disagreement handling) |
+| Controls | None | 4 mandatory controls (retrieval, LLM, human, matched null) |
 | Headline metric | F1 (single number) | Validated discovery yield (no single F1) |
 | Prospective | No (gold set known to builders) | Yes (inputs frozen before engine runs) |
 | Leakage control | Lexical only | Lexical + semantic + conceptual + mechanistic |
@@ -497,7 +615,7 @@ No implementation occurs until the protocol is independently approved and frozen
 ---
 
 ## Protocol version
-1.0
+1.1
 
 ## Date
 2026-08-08
