@@ -2,8 +2,8 @@
   "stage": "11_state_machine",
   "run_id": "RUN-DEV-CH-004",
   "code_sha": "engine-v0.1-round3",
-  "input_hash": "8a3fb233c0861a744dacb86736680789c63af7055d4203d82d454f350bd18eb6",
-  "output_hash": "4cfd22708d30681078e733ed9a0098122f8365f2ee4067180e7dfbc69e6564bc",
+  "input_hash": "3d98edc329a1e4fd4e7c9f9b1720def622c38e649e454a3e030969dcd743d116",
+  "output_hash": "0a8b3970e468f99c5fe6d6194e8cfc8a1b3f13f26255fa1b99f6e4003d28d526",
   "provider_manifest": null,
   "result": {
     "final_state": "TESTABLE_HYPOTHESIS",
@@ -12,7 +12,7 @@
         "from_state": "RAW_EVIDENCE",
         "to_state": "STRUCTURED_KNOWLEDGE",
         "actor": "loop",
-        "timestamp": "2026-08-08T07:47:19.483946+00:00",
+        "timestamp": "2026-08-08T07:56:47.748847+00:00",
         "code_sha": "engine-v0.1-round3",
         "evidence": "dev_pipeline_stage",
         "reason": "phase advance"
@@ -21,7 +21,7 @@
         "from_state": "STRUCTURED_KNOWLEDGE",
         "to_state": "MECHANISM",
         "actor": "loop",
-        "timestamp": "2026-08-08T07:47:19.483958+00:00",
+        "timestamp": "2026-08-08T07:56:47.748858+00:00",
         "code_sha": "engine-v0.1-round3",
         "evidence": "dev_pipeline_stage",
         "reason": "phase advance"
@@ -30,7 +30,7 @@
         "from_state": "MECHANISM",
         "to_state": "TRANSFER_HYPOTHESIS",
         "actor": "loop",
-        "timestamp": "2026-08-08T07:47:19.483962+00:00",
+        "timestamp": "2026-08-08T07:56:47.748863+00:00",
         "code_sha": "engine-v0.1-round3",
         "evidence": "dev_pipeline_stage",
         "reason": "phase advance"
@@ -39,7 +39,7 @@
         "from_state": "TRANSFER_HYPOTHESIS",
         "to_state": "CANDIDATE_DISCOVERY",
         "actor": "loop",
-        "timestamp": "2026-08-08T07:47:19.483965+00:00",
+        "timestamp": "2026-08-08T07:56:47.748866+00:00",
         "code_sha": "engine-v0.1-round3",
         "evidence": "dev_pipeline_stage",
         "reason": "phase advance"
@@ -48,7 +48,7 @@
         "from_state": "CANDIDATE_DISCOVERY",
         "to_state": "GATE_A",
         "actor": "loop",
-        "timestamp": "2026-08-08T07:47:19.483968+00:00",
+        "timestamp": "2026-08-08T07:56:47.748869+00:00",
         "code_sha": "engine-v0.1-round3",
         "evidence": "dev_pipeline_stage",
         "reason": "phase advance"
@@ -57,7 +57,7 @@
         "from_state": "GATE_A",
         "to_state": "GATE_B",
         "actor": "loop",
-        "timestamp": "2026-08-08T07:47:19.483970+00:00",
+        "timestamp": "2026-08-08T07:56:47.748872+00:00",
         "code_sha": "engine-v0.1-round3",
         "evidence": "dev_pipeline_stage",
         "reason": "phase advance"
@@ -66,7 +66,7 @@
         "from_state": "GATE_B",
         "to_state": "GATE_C",
         "actor": "loop",
-        "timestamp": "2026-08-08T07:47:19.483973+00:00",
+        "timestamp": "2026-08-08T07:56:47.748875+00:00",
         "code_sha": "engine-v0.1-round3",
         "evidence": "dev_pipeline_stage",
         "reason": "phase advance"
@@ -75,7 +75,7 @@
         "from_state": "GATE_C",
         "to_state": "TESTABLE_HYPOTHESIS",
         "actor": "loop",
-        "timestamp": "2026-08-08T07:47:19.483976+00:00",
+        "timestamp": "2026-08-08T07:56:47.748879+00:00",
         "code_sha": "engine-v0.1-round3",
         "evidence": "dev_pipeline_stage",
         "reason": "phase advance"
@@ -90,5 +90,5 @@
     "scientific_gate_passed": false,
     "note": "DEV pipeline stages GATE_A/B/C are NOT scientific Gate A/B/C. They are pipeline markers. Scientific gates require independent adjudication per SCIENTIFIC_GATE_2_PROTOCOL.md. candidate_status=ALL_BLOCKED_AT_ADVERSARIAL describes the outcome of the adversarial filter, NOT scientific gate passage."
   },
-  "timestamp": "2026-08-08T07:47:19.484150+00:00"
+  "timestamp": "2026-08-08T07:56:47.749062+00:00"
 }

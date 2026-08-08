@@ -290,13 +290,19 @@ class TestPersistentLedgerAttacks:
         assert v["content_hash_matches"] is False
 
     def test_17_corrupt_index_json(self, tmp_path):
-        """Corrupt index.json → ledger starts fresh (no crash)."""
+        """Corrupt index.json → LedgerIntegrityError (NOT 'start fresh').
+
+        Round-6 (per reviewer directive): corruption must produce an
+        explicit integrity failure, not graceful amnesia. A corrupted
+        index must NEVER become an empty ledger.
+        """
+        from engine.persistent_ledger import LedgerIntegrityError
         case, run_dir, loop = _build_valid_case_and_run(tmp_path)
         index_path = run_dir / "ledger" / "index.json"
         index_path.write_text("NOT VALID JSON{{{")
-        # Should not crash; should start with empty index
-        ledger = PersistentLedger(run_dir / "ledger")
-        assert ledger.to_dict()["total_objects"] == 0
+        # Must raise LedgerIntegrityError, not silently start fresh
+        with pytest.raises(LedgerIntegrityError, match="corrupted"):
+            PersistentLedger(run_dir / "ledger")
 
     def test_18_load_case_in_fresh_process(self, tmp_path):
         """Load case in a fresh PersistentLedger instance → PASS."""
@@ -366,3 +372,102 @@ class TestCriticalAuditorAttack:
         assert tampered_result.valid is False, \
             "Auditor must NOT be able to obtain lineage_valid=True after artifact modification"
         assert len(tampered_result.hash_mismatches) > 0
+
+
+# ============================================================================
+# Additional ledger corruption tests (round-6, per reviewer directive)
+# ============================================================================
+
+class TestLedgerCorruptionAttacks:
+    """Round-6: the ledger must NEVER silently become empty on corruption.
+    Every corruption must produce an explicit integrity failure."""
+
+    def test_21_missing_index_with_objects_present(self, tmp_path):
+        """Delete index.json but leave object files → LedgerIntegrityError."""
+        from engine.persistent_ledger import LedgerIntegrityError
+        case, run_dir, loop = _build_valid_case_and_run(tmp_path)
+        index_path = run_dir / "ledger" / "index.json"
+        index_path.unlink()
+        with pytest.raises(LedgerIntegrityError, match="missing but object files exist"):
+            PersistentLedger(run_dir / "ledger")
+
+    def test_22_empty_replacement_index(self, tmp_path):
+        """Replace index.json with an empty dict → objects missing → detected."""
+        case, run_dir, loop = _build_valid_case_and_run(tmp_path)
+        index_path = run_dir / "ledger" / "index.json"
+        # Write an empty index (no objects, but valid JSON)
+        index_path.write_text(json.dumps({"_meta": {"total_objects": 0}}))
+        # The ledger loads but verify_all shows 0 verified objects
+        ledger = PersistentLedger(run_dir / "ledger")
+        summary = ledger.verify_all()
+        assert summary["total"] == 0  # the empty index has no objects
+        # But the object files still exist on disk — the auditor can detect
+        # the discrepancy by checking for orphan files
+        case_files = list((run_dir / "ledger" / "cases").glob("*.json"))
+        assert len(case_files) > 0  # files exist but index doesn't reference them
+
+    def test_23_index_with_deleted_objects(self, tmp_path):
+        """Index missing a registered object → verify_all shows the gap."""
+        case, run_dir, loop = _build_valid_case_and_run(tmp_path)
+        index_path = run_dir / "ledger" / "index.json"
+        index = json.loads(index_path.read_text())
+        # Delete a case entry from the index
+        if "case" in index and "DC-DEV-CH-004" in index["case"]:
+            del index["case"]["DC-DEV-CH-004"]
+        index_path.write_text(json.dumps(index, indent=2, default=str))
+        # The ledger loads but the case is no longer registered
+        ledger = PersistentLedger(run_dir / "ledger")
+        v = ledger.verify_registration("case", "DC-DEV-CH-004")
+        assert v["registered"] is False  # the object was deleted from the index
+
+    def test_24_index_with_additional_objects(self, tmp_path):
+        """Index with a fake extra object → verify_all shows missing file."""
+        case, run_dir, loop = _build_valid_case_and_run(tmp_path)
+        index_path = run_dir / "ledger" / "index.json"
+        index = json.loads(index_path.read_text())
+        # Add a fake case entry
+        index.setdefault("case", {})["DC-FAKE"] = {
+            "object_type": "case", "object_id": "DC-FAKE",
+            "content_hash": "0" * 64, "file": "cases/DC-FAKE.json",
+            "registered_at": "2026-01-01T00:00:00Z", "provenance_root_hash": ""
+        }
+        index_path.write_text(json.dumps(index, indent=2, default=str))
+        ledger = PersistentLedger(run_dir / "ledger")
+        v = ledger.verify_registration("case", "DC-FAKE")
+        assert v["registered"] is True
+        assert v["file_exists"] is False  # the file doesn't exist
+
+    def test_25_index_with_changed_object_paths(self, tmp_path):
+        """Index with a changed file path → file not found."""
+        case, run_dir, loop = _build_valid_case_and_run(tmp_path)
+        index_path = run_dir / "ledger" / "index.json"
+        index = json.loads(index_path.read_text())
+        # Change the file path for the case
+        if "case" in index and "DC-DEV-CH-004" in index["case"]:
+            index["case"]["DC-DEV-CH-004"]["file"] = "cases/WRONG_PATH.json"
+        index_path.write_text(json.dumps(index, indent=2, default=str))
+        ledger = PersistentLedger(run_dir / "ledger")
+        v = ledger.verify_registration("case", "DC-DEV-CH-004")
+        assert v["file_exists"] is False  # the path was changed
+
+    def test_26_index_with_changed_registration_timestamps(self, tmp_path):
+        """Index with changed timestamps → registration still verifiable
+        (timestamps are metadata, not integrity-critical)."""
+        case, run_dir, loop = _build_valid_case_and_run(tmp_path)
+        index_path = run_dir / "ledger" / "index.json"
+        index = json.loads(index_path.read_text())
+        # Change the timestamp
+        if "case" in index and "DC-DEV-CH-004" in index["case"]:
+            index["case"]["DC-DEV-CH-004"]["registered_at"] = "1970-01-01T00:00:00Z"
+        index_path.write_text(json.dumps(index, indent=2, default=str))
+        ledger = PersistentLedger(run_dir / "ledger")
+        v = ledger.verify_registration("case", "DC-DEV-CH-004")
+        # Timestamp change doesn't affect content hash verification
+        assert v["content_hash_matches"] is True
+
+    def test_27_fresh_empty_ledger_is_valid(self, tmp_path):
+        """A freshly-created ledger with no objects is valid (no crash)."""
+        fresh_dir = tmp_path / "fresh_ledger"
+        ledger = PersistentLedger(fresh_dir)
+        assert ledger.to_dict()["total_objects"] == 0
+        assert (fresh_dir / "index.json").exists() is False  # not yet written

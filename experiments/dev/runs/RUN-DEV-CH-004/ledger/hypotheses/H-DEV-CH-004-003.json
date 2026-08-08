@@ -1,26 +1,26 @@
 {
   "hypothesis_id": "H-DEV-CH-004-003",
-  "claim": "Traffic signals adapt through a stigmergy-inspired mechanism where intersections indirectly coordinate through environmental modifications (traffic flow patterns) rather than direct communication.",
-  "mechanism": "Each intersection adjusts its signal timing based on local traffic conditions and the residual effects of previous timing decisions (traffic platoons, queue formations). These effects create an 'environmental' pattern that influences neighboring intersections without explicit communication. The system exhibits emergent coordination through these indirect feedback loops.",
+  "claim": "Signal timing adaptation occurs through a network-wide resonance mechanism where intersections adjust their timing parameters to match the dominant traffic flow frequencies in the network.",
+  "mechanism": "Each intersection continuously measures traffic flow patterns and identifies dominant frequencies (periodic patterns) in the arriving traffic. The intersection then adjusts its signal timing parameters to resonate with these dominant frequencies, similar to how slime mold conduits adapt their thickness to match flow frequencies in the organism.",
   "evidence": [
-    "Stigmergy has been observed in biological systems to achieve complex coordination",
-    "Traffic platoons naturally form and influence downstream intersections",
-    "Emergent behavior has been observed in some traffic signal systems"
+    "Slime molds adapt conduit thickness to match flow frequencies",
+    "Traffic flow often exhibits periodic patterns",
+    "Resonance can optimize system performance in dynamic environments"
   ],
   "assumptions": [
-    "Traffic patterns created by one intersection serve as sufficient information for neighbors",
-    "Indirect coordination can achieve near-optimal performance",
-    "The system can distinguish between beneficial and detrimental environmental patterns"
+    "Traffic flow exhibits periodic patterns that can be identified locally",
+    "Resonance with flow frequencies leads to optimal timing",
+    "Intersections can identify and respond to dominant flow frequencies"
   ],
   "predictions": [],
   "expected_failure_modes": [
-    "Propagation of timing errors through the network",
-    "Inability to adapt to network-wide disruptions",
-    "Suboptimal coordination due to limited environmental information"
+    "Inability to handle multiple conflicting frequencies",
+    "Sensitivity to noise in frequency detection",
+    "Failure to adapt to non-periodic traffic patterns"
   ],
-  "novelty_rationale": "Applies the biological principle of stigmergy to traffic signal control, eliminating the need for explicit communication between intersections while still achieving coordination.",
-  "testability": "Can be tested by implementing a system where intersections only respond to local traffic conditions without direct communication and measuring emergent coordination and system performance.",
-  "falsifier": "If the system fails to achieve coordination between non-adjacent intersections or produces significantly worse performance than centrally optimized signals, this hypothesis would be proven wrong.",
+  "novelty_rationale": "This hypothesis introduces a frequency-based adaptation mechanism rather than a queue-length or flow-based mechanism, focusing on temporal patterns rather than spatial distributions.",
+  "testability": "The hypothesis can be tested by implementing a system where intersections identify dominant traffic flow frequencies and adjust timing parameters to resonate with these frequencies.",
+  "falsifier": "If implementing frequency-based signal timing adjustment fails to improve network performance or creates timing conflicts when multiple dominant frequencies exist in different parts of the network, the hypothesis would be falsified.",
   "epistemic_state": "HYPOTHESIZED",
   "parent_hypothesis_ids": [],
   "provenance": {

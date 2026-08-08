@@ -1,26 +1,26 @@
 {
   "hypothesis_id": "H-DEV-CH-004-002",
-  "claim": "Traffic signals adapt through a distributed consensus mechanism where intersections negotiate timing adjustments based on shared traffic flow predictions.",
-  "mechanism": "Each intersection maintains a local model of traffic flow and shares predictions with adjacent intersections. Through iterative negotiation, intersections agree on signal timing that optimizes for collective rather than individual performance. The consensus process uses weighted voting based on intersection importance and traffic volume.",
+  "claim": "Signal timing adaptation occurs through a competitive resource allocation mechanism similar to myxomycete network formation, where intersections compete for 'traffic flow resources' by adjusting their green time to attract more vehicles.",
+  "mechanism": "Intersections adjust their green time not based on their own queue length, but on the relative flow they can attract from neighboring intersections. This creates a competitive dynamic where intersections optimize for their own flow capture while contributing to network efficiency, similar to how slime mold networks optimize for nutrient distribution.",
   "evidence": [
-    "Consensus algorithms work well in distributed systems",
-    "Negotiation-based approaches have succeeded in resource allocation problems",
-    "Traffic prediction models have shown reasonable accuracy in short time horizons"
+    "Slime molds optimize networks for resource distribution",
+    "Competitive dynamics can lead to efficient resource allocation",
+    "Traffic flow patterns can be influenced by signal timing"
   ],
   "assumptions": [
-    "Intersections can reliably share traffic predictions with neighbors",
-    "Negotiation process converges quickly enough for real-time adaptation",
-    "Local traffic models are sufficiently accurate for prediction"
+    "Intersections can measure flow from neighboring intersections",
+    "Competitive allocation leads to global optimization",
+    "Flow capture is a valid proxy for network efficiency"
   ],
   "predictions": [],
   "expected_failure_modes": [
-    "Deadlock in consensus process during conflicting traffic conditions",
-    "Excessive communication overhead causing delays",
-    "Bias toward high-volume intersections at expense of overall network efficiency"
+    "Uneven distribution of traffic flow",
+    "Starvation of certain intersections",
+    "Formation of traffic hotspots"
   ],
-  "novelty_rationale": "Transfers the concept of distributed consensus from biological systems to traffic signal optimization, emphasizing collective decision-making over individual optimization.",
-  "testability": "Can be tested by implementing a consensus protocol between simulated intersections and measuring the time to reach agreement and resulting traffic flow improvements.",
-  "falsifier": "If the negotiation process fails to converge within the required 15-minute timeframe or results in significantly worse performance than centrally optimized signals, this hypothesis would be proven wrong.",
+  "novelty_rationale": "This hypothesis introduces a competitive rather than cooperative adaptation mechanism, where intersections optimize for their own flow capture while inadvertently contributing to network-wide efficiency.",
+  "testability": "The hypothesis can be tested by implementing a system where intersections adjust green time based on the flow they attract from neighbors and measuring both local and network performance.",
+  "falsifier": "If implementing competitive flow-based green time adjustment leads to some intersections being starved of traffic flow while others become oversaturated, or if it creates unstable flow patterns, the hypothesis would be falsified.",
   "epistemic_state": "HYPOTHESIZED",
   "parent_hypothesis_ids": [],
   "provenance": {

@@ -932,51 +932,116 @@ class CheckpointedDiscoveryLoop:
 
     def _run_stage(self, manifest: RunManifest, stage: str,
                    manifest_path: Path, run_dir: Path, fn, input_data: Any = None) -> None:
-        """Run a single stage with checkpointing.
+        """Run a single stage with TRANSACTIONAL checkpointing.
 
-        Repair 2: persists provider_manifest + input_hash + output_hash.
-        Repair 3: scientific stages that fail set manifest.failed_closed.
-        Repair 5: the manifest records each stage's output_hash.
+        Round-6 transactional protocol (per reviewer directive):
+            1. STAGE_START: mark stage RUNNING, save manifest
+            2. STAGE_OUTPUT_WRITTEN: execute stage, write artifact to a TEMP file
+            3. STAGE_HASH_COMPUTED: compute output_hash from the artifact
+            4. STAGE_MANIFEST_COMMITTED: update manifest with the hash, save manifest
+            5. STAGE_COMMITTED: atomically rename temp artifact to final path
+
+        If the process dies anywhere before STAGE_COMMITTED:
+            - resume detects the stale state (manifest hash != artifact hash,
+              or artifact missing, or manifest says RUNNING)
+            - the stage is re-run from scratch
+
+        A resumed run must NEVER produce: artifact hash X, manifest says hash Y.
         """
         if stage not in manifest.stages:
             manifest.stages[stage] = StageStatus(stage=stage)
         ss = manifest.stages[stage]
+
+        # Check for stale state from a previous interrupted run.
+        # If the manifest says COMPLETED but the artifact hash doesn't match,
+        # or the artifact is missing, we must re-run.
+        if ss.status == COMPLETED:
+            artifact_path = run_dir / f"{stage}.json"
+            if not artifact_path.exists():
+                # Artifact missing but manifest says COMPLETED → stale, re-run
+                ss.status = PENDING
+                ss.error = ""
+            else:
+                try:
+                    existing = json.loads(artifact_path.read_text())
+                    existing_hash = existing.get("output_hash", "")
+                    if existing_hash and ss.output_hash and existing_hash != ss.output_hash:
+                        # Hash mismatch → stale, re-run
+                        ss.status = PENDING
+                        ss.error = ""
+                except (json.JSONDecodeError, KeyError):
+                    ss.status = PENDING
+                    ss.error = ""
+
         ss.status = RUNNING; ss.started_at = _now()
         manifest.last_updated = _now(); manifest.resume_from = stage
         self._save_manifest(manifest, manifest_path)
 
-        # Compute input hash (Repair 2)
         input_hash = _sha(json.dumps(input_data, sort_keys=True, default=str)) if input_data is not None else ""
 
         start = time.time()
         try:
             result, provider_manifest = fn(input_data) if input_data is not None else fn(None)
             ss.latency_ms = int((time.time() - start) * 1000)
-            ss.completed_at = _now(); ss.status = COMPLETED
 
-            # Compute output hash (Repair 2)
+            # Compute output hash from the result
             output_str = json.dumps(result, sort_keys=True, default=str)
             output_hash = _sha(output_str)
 
-            # Build the full stage artifact (Repair 2)
+            # Build the full stage artifact
             artifact = StageArtifact(
                 stage=stage, run_id=manifest.run_id, code_sha=ENGINE_CODE_SHA,
                 input_hash=input_hash, output_hash=output_hash,
                 provider_manifest=provider_manifest, result=result)
+            artifact_dict = artifact.to_dict()
 
-            # Persist the artifact
-            (run_dir / f"{stage}.json").write_text(
-                json.dumps(artifact.to_dict(), indent=2, default=str))
+            # TRANSACTIONAL WRITE PROTOCOL:
+            # 1. Write to a temp file first
+            temp_path = run_dir / f"{stage}.json.tmp"
+            temp_path.write_text(json.dumps(artifact_dict, indent=2, default=str))
 
-            # Update manifest with hashes (Repair 5)
+            # 2. Verify the temp file's hash matches what we computed
+            temp_content = temp_path.read_text()
+            temp_hash = _sha(json.dumps(json.loads(temp_content)["result"], sort_keys=True, default=str))
+            if temp_hash != output_hash:
+                # This should never happen, but if it does, FAIL
+                temp_path.unlink(missing_ok=True)
+                raise RuntimeError(f"transactional integrity failure: temp hash {temp_hash[:16]}... "
+                                   f"!= computed hash {output_hash[:16]}...")
+
+            # 3. Update manifest with the hash BEFORE renaming
             ss.output_hash = output_hash
             if provider_manifest:
                 ss.provider_manifest_sha = _sha(json.dumps(provider_manifest, sort_keys=True, default=str))
+            ss.completed_at = _now(); ss.status = COMPLETED
+            manifest.last_updated = _now()
+            self._save_manifest(manifest, manifest_path)
+
+            # 4. Atomically rename temp → final (this is the COMMIT point)
+            final_path = run_dir / f"{stage}.json"
+            temp_path.replace(final_path)
+
+            # 5. Verify the final file's hash matches the manifest
+            final_content = json.loads(final_path.read_text())
+            final_hash = final_content.get("output_hash", "")
+            if final_hash != ss.output_hash:
+                # Hash mismatch after commit → integrity failure
+                ss.status = FAILED
+                ss.error = f"post-commit integrity failure: artifact hash {final_hash[:16]}... " \
+                           f"!= manifest hash {ss.output_hash[:16]}..."
+                self._save_manifest(manifest, manifest_path)
+                if self._is_scientific_stage(stage):
+                    manifest.failed_closed = True
+                    manifest.failed_closed_at = stage
+                return
 
         except Exception as e:
             ss.latency_ms = int((time.time() - start) * 1000)
             ss.completed_at = _now(); ss.status = FAILED
             ss.error = f"{type(e).__name__}: {e}\n{traceback.format_exc()}"
+            # Clean up temp file if it exists
+            temp_path = run_dir / f"{stage}.json.tmp"
+            temp_path.unlink(missing_ok=True)
             # Persist a failure artifact so the error is inspectable
             failure_artifact = StageArtifact(
                 stage=stage, run_id=manifest.run_id, code_sha=ENGINE_CODE_SHA,
@@ -999,8 +1064,29 @@ class CheckpointedDiscoveryLoop:
         return False
 
     def _is_completed(self, manifest: RunManifest, stage: str) -> bool:
+        """Check if a stage is truly completed (status=COMPLETED AND artifact
+        hash matches the manifest). Round-6: stale-state detection.
+
+        If the manifest says COMPLETED but the artifact file is missing or
+        its output_hash doesn't match the manifest's recorded hash, the
+        stage is NOT completed — it must be re-run.
+        """
         s = manifest.stages.get(stage)
-        return s is not None and s.status == COMPLETED
+        if s is None or s.status != COMPLETED:
+            return False
+        # Verify the artifact file exists and its hash matches
+        run_dir = RUNS_DIR / manifest.run_id
+        artifact_path = run_dir / f"{stage}.json"
+        if not artifact_path.exists():
+            return False  # artifact missing — must re-run
+        try:
+            artifact = json.loads(artifact_path.read_text())
+            artifact_hash = artifact.get("output_hash", "")
+            if artifact_hash != s.output_hash:
+                return False  # hash mismatch — must re-run
+        except (json.JSONDecodeError, KeyError):
+            return False  # corrupted artifact — must re-run
+        return True
 
     def _load_stage(self, run_dir: Path, stage: str) -> Optional[Dict]:
         """Load a stage artifact. Returns the full StageArtifact dict

@@ -2,8 +2,8 @@
   "stage": "05_adversarial_H-DEV-CH-004-003",
   "run_id": "RUN-DEV-CH-004",
   "code_sha": "engine-v0.1-round3",
-  "input_hash": "6acf2316cdb9c1b18e758ddc71220c79d0d191b984190b75a6c77b36268e900c",
-  "output_hash": "97fed7f927ffb0a975e230565f731b1e74c26d425c69acc01907198ebda0a300",
+  "input_hash": "2f42fd5498fdfceee0dec909edc4f117e4a83142dcbd7e767de3fdc765c8f72b",
+  "output_hash": "77dfdcc91b6bda4a1cb452863bfe983c5f8821926529e2694ff7c9ec73dd5dcb",
   "provider_manifest": {
     "provider": "zai",
     "model": "glm-4-plus",
@@ -13,13 +13,13 @@
       "max_tokens": 4096,
       "system_sha": "1f5a3fff3aebc2e1d44b2312f4b604b5c2911cacaf452eb6ca705c724fc9142b"
     },
-    "prompt_sha": "dcc0acc3a76aec7a8d7b6728bf887e70f7b937151ec9e6aa8125d0b30b673f0d",
+    "prompt_sha": "6d58a77cd2665e1a17875a2923b2aa30f34e8335c9ec8527605c1ddeaffc7d15",
     "seed": null,
     "tool_versions": {
       "z_ai_cli": "z-ai"
     },
-    "timestamp": "2026-08-08T07:46:57.148839+00:00",
-    "latency_ms": 9968,
+    "timestamp": "2026-08-08T07:56:26.185448+00:00",
+    "latency_ms": 19035,
     "success": true,
     "error": ""
   },
@@ -28,47 +28,47 @@
     "failure_modes": [
       {
         "category": "FRAGILE_ASSUMPTION",
-        "description": "The assumption that traffic patterns serve as sufficient information for neighbors is fundamentally flawed. Traffic flow patterns are ambiguous and contain noise that makes interpretation unreliable.",
+        "description": "Traffic flow rarely exhibits clean periodic patterns in real urban networks",
         "severity": "HIGH",
-        "evidence": "Traffic engineers have long recognized that flow patterns alone cannot distinguish between temporary congestion and persistent demand, leading to inappropriate signal adjustments."
+        "evidence": "Real traffic flows are dominated by stochastic events, accidents, pedestrian crossings, and random arrivals that disrupt any potential periodicity. The assumption of detectable dominant frequencies is fundamentally flawed."
       },
       {
         "category": "CONTRADICTS_KNOWN",
-        "description": "Direct contradicts established traffic engineering knowledge that centralized control or coordinated systems significantly outperform isolated intersection control.",
+        "description": "Resonance mechanisms in traffic systems typically create bottlenecks rather than optimize flow",
         "severity": "HIGH",
-        "evidence": "Numerous studies show that coordinated signal systems can reduce travel time by 15-30% compared to isolated control, which this approach would essentially be."
+        "evidence": "Traffic engineering literature consistently shows that synchronization of traffic signals often creates resonance effects that amplify congestion rather than alleviate it, particularly when multiple intersections attempt to synchronize."
       },
       {
         "category": "BOUNDARY_BREAKS",
-        "description": "The mechanism fails to account for non-traffic environmental factors that influence traffic patterns but are not part of the stigmergy feedback loop.",
-        "severity": "MEDIUM",
-        "evidence": "Weather events, accidents, and construction create traffic patterns that don't result from signal timing, creating false environmental signals that would mislead the system."
+        "description": "The hypothesis fails to account for the fundamental difference between biological slime mold adaptation and engineered traffic systems",
+        "severity": "HIGH",
+        "evidence": "Slime molds are decentralized biological systems with evolutionary optimization over millions of generations. Traffic systems are engineered with specific objectives, constraints, and safety requirements that cannot be compared to biological adaptation mechanisms."
       },
       {
         "category": "PRIOR_ART_EXISTS",
-        "description": "The core concept is not novel - isolated intersection control systems have been extensively studied and shown to be inferior to coordinated approaches.",
+        "description": "Frequency-based signal timing has been extensively researched and shown to be ineffective",
         "severity": "MEDIUM",
-        "evidence": "The TRANSYT and SCATS systems from the 1970s already demonstrated the superiority of coordinated signal control over isolated methods."
+        "evidence": "Numerous studies from the 1990s onward have explored adaptive signal timing using frequency analysis, with consistent results showing that these approaches perform worse than modern machine learning-based methods that consider multiple factors beyond simple periodicity."
       },
       {
         "category": "FALSIFIER_TRIGGERED",
-        "description": "The hypothesis directly contradicts its own falsifier condition - it explicitly predicts failure for non-adjacent intersections.",
+        "description": "The hypothesis predicts improved performance from resonance, which contradicts established traffic flow theory",
         "severity": "HIGH",
-        "evidence": "The hypothesis admits it will fail for non-adjacent intersections, making it fundamentally unsuitable for real-world networks where intersections must coordinate beyond immediate neighbors."
+        "evidence": "Fundamental traffic flow theory (e.g., Lighthill-Whitham-Richards model) shows that resonance effects in traffic systems typically lead to phantom jams and reduced throughput rather than improved efficiency. The hypothesis directly contradicts this well-established theory."
       },
       {
         "category": "INCOMPATIBLE_TARGET",
-        "description": "The approach is incompatible with the actual target of traffic signal systems - optimizing network-wide performance rather than local efficiency.",
+        "description": "The mechanism cannot satisfy competing traffic engineering objectives",
         "severity": "HIGH",
-        "evidence": "Real-world traffic systems prioritize network-wide flow, not local intersection efficiency. A stigmergy approach would optimize for local metrics, creating Braess paradox situations where local improvements create global degradation."
+        "evidence": "Traffic systems must balance multiple conflicting objectives: throughput, safety, pedestrian access, emergency vehicle priority, and pollution reduction. A resonance-based mechanism optimized solely for flow frequencies would fail to address these critical competing requirements."
       }
     ],
     "survives": false,
     "outcome": "ADVERSARIAL_FAILED",
-    "n_high_severity": 4,
-    "n_medium_severity": 2,
+    "n_high_severity": 5,
+    "n_medium_severity": 1,
     "n_low_severity": 0,
     "source_hypothesis_hash": ""
   },
-  "timestamp": "2026-08-08T07:47:07.117820+00:00"
+  "timestamp": "2026-08-08T07:56:45.221540+00:00"
 }

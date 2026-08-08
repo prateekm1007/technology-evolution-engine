@@ -2,8 +2,8 @@
   "stage": "04_hypotheses",
   "run_id": "RUN-DEV-CH-004",
   "code_sha": "engine-v0.1-round3",
-  "input_hash": "24642361836197dd1710833f53b6d2703be576750a405fa7c634fc57d8d3dd59",
-  "output_hash": "251bcb20113b8558ce02e4c59a500f0c9478fb1271edf84b992b7dbd0cd3786d",
+  "input_hash": "2c47da8f32e86b005b94164b44a8cc88e998efff4178dfe1e757c4a359ca0b5b",
+  "output_hash": "7d6f025b9c77ca98705173862fbf36c3d15011e8d50be148fc54ebc493178d55",
   "provider_manifest": {
     "provider": "zai",
     "model": "glm-4-plus",
@@ -13,13 +13,13 @@
       "max_tokens": 4096,
       "system_sha": "38a0abb453a9eb9fd88d0b4dd513feea94d69501c86ec3d4d7778b86034369c8"
     },
-    "prompt_sha": "06fb098a686f18ef7836e48dcfb35391d2565d9dacddb97cd08a322073aef161",
+    "prompt_sha": "cef07c9a4cfe7e17de2b86f297de0a6afc356bb325e99d55d282a825765a10a2",
     "seed": null,
     "tool_versions": {
       "z_ai_cli": "z-ai"
     },
-    "timestamp": "2026-08-08T07:45:59.181267+00:00",
-    "latency_ms": 16796,
+    "timestamp": "2026-08-08T07:55:39.020001+00:00",
+    "latency_ms": 19935,
     "success": true,
     "error": ""
   },
@@ -27,27 +27,27 @@
     "hypotheses": [
       {
         "hypothesis_id": "H-DEV-CH-004-001",
-        "claim": "Traffic signals adapt through local reinforcement learning, where each intersection adjusts its timing based on immediate traffic flow rewards without explicit coordination.",
-        "mechanism": "Each intersection controller operates as an independent agent that continuously evaluates traffic flow metrics (queue length, vehicle count) and adjusts signal timing parameters using a reward function that prioritizes minimizing local delay. Controllers share minimal information with adjacent intersections only to maintain platoon coordination.",
+        "claim": "Traffic signal phases adapt through a local feedback mechanism similar to myxomycete conduit thickening, where each intersection independently adjusts green time based on queue length measurements.",
+        "mechanism": "Each intersection continuously monitors queue length and adjusts green time proportionally to the measured queue, creating a positive feedback loop where longer queues receive more green time. This mimics the thickening of conduits in response to higher flow rates in slime molds.",
         "evidence": [
-          "Reinforcement learning has shown success in isolated traffic signal optimization",
-          "Local decision-making reduces computational overhead",
-          "Emergent coordination has been observed in distributed systems"
+          "Slime molds optimize conduit thickness based on flow rates",
+          "Local traffic measurements can inform signal timing decisions",
+          "Distributed systems can achieve global optimization"
         ],
         "assumptions": [
-          "Local optimization leads to global optimum",
-          "Intersections have sufficient computational capacity for continuous learning",
-          "Traffic patterns exhibit sufficient regularity for reinforcement learning to converge"
+          "Queue length is the primary determinant of optimal green time",
+          "Intersections can operate independently without coordination",
+          "The system will naturally converge to an optimal state"
         ],
         "predictions": [],
         "expected_failure_modes": [
-          "Oscillations between adjacent intersections",
-          "Suboptimal global performance due to local optimization conflicts",
-          "Computational overload at intersection controllers during high-traffic periods"
+          "Oscillations in signal timing",
+          "Gridlock at certain intersections",
+          "Inability to adapt to network-wide traffic patterns"
         ],
-        "novelty_rationale": "Applies a reinforcement learning framework to traffic signal adaptation, treating each intersection as an independent learning agent rather than a coordinated system.",
-        "testability": "Can be tested in simulation by implementing reinforcement learning algorithms at each intersection and measuring convergence time and system-wide performance metrics.",
-        "falsifier": "If the system fails to converge within the required 15-minute timeframe or exhibits oscillatory behavior when tested with varying traffic patterns, this hypothesis would be proven wrong.",
+        "novelty_rationale": "This hypothesis introduces a biologically-inspired local adaptation mechanism that doesn't require central coordination, unlike traditional traffic signal optimization systems.",
+        "testability": "The hypothesis can be tested by implementing a system where each intersection adjusts green time based solely on its own queue measurements and measuring network performance.",
+        "falsifier": "If implementing local queue-based green time adjustment leads to persistent oscillations in signal timing or increased network-wide congestion compared to fixed timing plans, the hypothesis would be falsified.",
         "epistemic_state": "HYPOTHESIZED",
         "parent_hypothesis_ids": [],
         "provenance": {
@@ -60,27 +60,27 @@
       },
       {
         "hypothesis_id": "H-DEV-CH-004-002",
-        "claim": "Traffic signals adapt through a distributed consensus mechanism where intersections negotiate timing adjustments based on shared traffic flow predictions.",
-        "mechanism": "Each intersection maintains a local model of traffic flow and shares predictions with adjacent intersections. Through iterative negotiation, intersections agree on signal timing that optimizes for collective rather than individual performance. The consensus process uses weighted voting based on intersection importance and traffic volume.",
+        "claim": "Signal timing adaptation occurs through a competitive resource allocation mechanism similar to myxomycete network formation, where intersections compete for 'traffic flow resources' by adjusting their green time to attract more vehicles.",
+        "mechanism": "Intersections adjust their green time not based on their own queue length, but on the relative flow they can attract from neighboring intersections. This creates a competitive dynamic where intersections optimize for their own flow capture while contributing to network efficiency, similar to how slime mold networks optimize for nutrient distribution.",
         "evidence": [
-          "Consensus algorithms work well in distributed systems",
-          "Negotiation-based approaches have succeeded in resource allocation problems",
-          "Traffic prediction models have shown reasonable accuracy in short time horizons"
+          "Slime molds optimize networks for resource distribution",
+          "Competitive dynamics can lead to efficient resource allocation",
+          "Traffic flow patterns can be influenced by signal timing"
         ],
         "assumptions": [
-          "Intersections can reliably share traffic predictions with neighbors",
-          "Negotiation process converges quickly enough for real-time adaptation",
-          "Local traffic models are sufficiently accurate for prediction"
+          "Intersections can measure flow from neighboring intersections",
+          "Competitive allocation leads to global optimization",
+          "Flow capture is a valid proxy for network efficiency"
         ],
         "predictions": [],
         "expected_failure_modes": [
-          "Deadlock in consensus process during conflicting traffic conditions",
-          "Excessive communication overhead causing delays",
-          "Bias toward high-volume intersections at expense of overall network efficiency"
+          "Uneven distribution of traffic flow",
+          "Starvation of certain intersections",
+          "Formation of traffic hotspots"
         ],
-        "novelty_rationale": "Transfers the concept of distributed consensus from biological systems to traffic signal optimization, emphasizing collective decision-making over individual optimization.",
-        "testability": "Can be tested by implementing a consensus protocol between simulated intersections and measuring the time to reach agreement and resulting traffic flow improvements.",
-        "falsifier": "If the negotiation process fails to converge within the required 15-minute timeframe or results in significantly worse performance than centrally optimized signals, this hypothesis would be proven wrong.",
+        "novelty_rationale": "This hypothesis introduces a competitive rather than cooperative adaptation mechanism, where intersections optimize for their own flow capture while inadvertently contributing to network-wide efficiency.",
+        "testability": "The hypothesis can be tested by implementing a system where intersections adjust green time based on the flow they attract from neighbors and measuring both local and network performance.",
+        "falsifier": "If implementing competitive flow-based green time adjustment leads to some intersections being starved of traffic flow while others become oversaturated, or if it creates unstable flow patterns, the hypothesis would be falsified.",
         "epistemic_state": "HYPOTHESIZED",
         "parent_hypothesis_ids": [],
         "provenance": {
@@ -93,27 +93,27 @@
       },
       {
         "hypothesis_id": "H-DEV-CH-004-003",
-        "claim": "Traffic signals adapt through a stigmergy-inspired mechanism where intersections indirectly coordinate through environmental modifications (traffic flow patterns) rather than direct communication.",
-        "mechanism": "Each intersection adjusts its signal timing based on local traffic conditions and the residual effects of previous timing decisions (traffic platoons, queue formations). These effects create an 'environmental' pattern that influences neighboring intersections without explicit communication. The system exhibits emergent coordination through these indirect feedback loops.",
+        "claim": "Signal timing adaptation occurs through a network-wide resonance mechanism where intersections adjust their timing parameters to match the dominant traffic flow frequencies in the network.",
+        "mechanism": "Each intersection continuously measures traffic flow patterns and identifies dominant frequencies (periodic patterns) in the arriving traffic. The intersection then adjusts its signal timing parameters to resonate with these dominant frequencies, similar to how slime mold conduits adapt their thickness to match flow frequencies in the organism.",
         "evidence": [
-          "Stigmergy has been observed in biological systems to achieve complex coordination",
-          "Traffic platoons naturally form and influence downstream intersections",
-          "Emergent behavior has been observed in some traffic signal systems"
+          "Slime molds adapt conduit thickness to match flow frequencies",
+          "Traffic flow often exhibits periodic patterns",
+          "Resonance can optimize system performance in dynamic environments"
         ],
         "assumptions": [
-          "Traffic patterns created by one intersection serve as sufficient information for neighbors",
-          "Indirect coordination can achieve near-optimal performance",
-          "The system can distinguish between beneficial and detrimental environmental patterns"
+          "Traffic flow exhibits periodic patterns that can be identified locally",
+          "Resonance with flow frequencies leads to optimal timing",
+          "Intersections can identify and respond to dominant flow frequencies"
         ],
         "predictions": [],
         "expected_failure_modes": [
-          "Propagation of timing errors through the network",
-          "Inability to adapt to network-wide disruptions",
-          "Suboptimal coordination due to limited environmental information"
+          "Inability to handle multiple conflicting frequencies",
+          "Sensitivity to noise in frequency detection",
+          "Failure to adapt to non-periodic traffic patterns"
         ],
-        "novelty_rationale": "Applies the biological principle of stigmergy to traffic signal control, eliminating the need for explicit communication between intersections while still achieving coordination.",
-        "testability": "Can be tested by implementing a system where intersections only respond to local traffic conditions without direct communication and measuring emergent coordination and system performance.",
-        "falsifier": "If the system fails to achieve coordination between non-adjacent intersections or produces significantly worse performance than centrally optimized signals, this hypothesis would be proven wrong.",
+        "novelty_rationale": "This hypothesis introduces a frequency-based adaptation mechanism rather than a queue-length or flow-based mechanism, focusing on temporal patterns rather than spatial distributions.",
+        "testability": "The hypothesis can be tested by implementing a system where intersections identify dominant traffic flow frequencies and adjust timing parameters to resonate with these frequencies.",
+        "falsifier": "If implementing frequency-based signal timing adjustment fails to improve network performance or creates timing conflicts when multiple dominant frequencies exist in different parts of the network, the hypothesis would be falsified.",
         "epistemic_state": "HYPOTHESIZED",
         "parent_hypothesis_ids": [],
         "provenance": {
@@ -125,9 +125,9 @@
         "provenance_root_hash": ""
       }
     ],
-    "distinguishing_predictions": "The reinforcement learning hypothesis would predict that intersections initially perform poorly but improve over time as they learn, while the consensus hypothesis would predict more consistent performance but with potential delays during negotiation. The stigmergy hypothesis would predict coordination only between physically adjacent intersections with diminishing effects further away. Under conditions of network-wide disruption (e.g., city-wide event), the reinforcement learning hypothesis would show the fastest adaptation but potentially with oscillations, the consensus hypothesis would show coordinated but slower response, and the stigmergy hypothesis would show gradual propagation of changes through the network. If communication bandwidth between intersections is artificially limited, the stigmergy hypothesis would maintain performance while the others would degrade significantly.",
+    "distinguishing_predictions": "The three hypotheses can be distinguished by their response to different traffic scenarios: 1) Under a localized incident, the queue-length hypothesis would show immediate local adaptation but potentially poor network-wide coordination; 2) The competitive resource allocation hypothesis would show flow redistribution but potentially create new congestion points; 3) The frequency resonance hypothesis would show adaptation to periodic patterns but potentially struggle with non-periodic incidents. Additionally, the queue-length hypothesis would be most sensitive to local queue measurements, the competitive hypothesis to neighbor flow measurements, and the frequency hypothesis to temporal pattern detection.",
     "transfer_id": "TH-DEV-CH-004-001",
-    "source_transfer_hash": "fd7aca02e99d6931bdef4ecf398e934a8c224c737f8fdf20c6aa7f48ea51837d"
+    "source_transfer_hash": "c8117be609193963a032957686a0868352448f6e51ee1d09d094efdd32b58760"
   },
-  "timestamp": "2026-08-08T07:46:15.979663+00:00"
+  "timestamp": "2026-08-08T07:55:58.957809+00:00"
 }

@@ -6,7 +6,7 @@
     "dev_corpus"
   ],
   "queries": [
-    "Traffic signals adapt through local reinforcement learning, where each intersection adjusts its timing based on immediate traffic flow rewards without explicit coordination. Each intersection controller operates as an independent agent that continuously evaluates traffic flow metrics (queue length, vehicle count) and adjusts signal timing parameters using a reward function that prioritizes minimizing local delay. Controllers share minimal information with adjacent intersections only to maintain platoon coordination."
+    "Traffic signal phases adapt through a local feedback mechanism similar to myxomycete conduit thickening, where each intersection independently adjusts green time based on queue length measurements. Each intersection continuously monitors queue length and adjusts green time proportionally to the measured queue, creating a positive feedback loop where longer queues receive more green time. This mimics the thickening of conduits in response to higher flow rates in slime molds."
   ],
   "sources": [],
   "matched_prior_art": [],
@@ -15,5 +15,5 @@
   "confidence": 0.3,
   "cutoff": "2026-08-08",
   "reviewer": "novelty_firewall_v0",
-  "timestamp": "2026-08-08T07:46:41.747549+00:00"
+  "timestamp": "2026-08-08T07:56:08.718119+00:00"
 }

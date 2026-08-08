@@ -81,13 +81,30 @@ class LedgerEntry:
                 "provenance_root_hash": self.provenance_root_hash}
 
 
+class LedgerIntegrityError(Exception):
+    """Raised when the persistent ledger's integrity is compromised.
+
+    Round-6 (per reviewer directive): corruption must NEVER produce an
+    empty ledger. A corrupted index, missing object, or hash mismatch
+    must raise this error so the caller can fail-closed rather than
+    silently treating the ledger as empty.
+    """
+    pass
+
+
 class PersistentLedger:
     """A discovery ledger that persists every object to disk.
 
-    Wraps the in-memory DiscoveryLedger. Every register_*() call both
-    registers in memory AND writes the object to disk + updates the index.
-    An external auditor can load the index + files without rerunning the
-    engine.
+    Round-6 FAIL-CLOSED semantics (per reviewer directive):
+        - Corrupted index.json → raise LedgerIntegrityError (NOT "start fresh")
+        - Missing index.json on an existing ledger → raise LedgerIntegrityError
+        - Object file missing → verification reports the failure
+        - Hash mismatch → verification reports the failure
+        - NEVER silently treat corruption as an empty ledger
+
+    An empty ledger is ONLY valid if it was just created (no index.json
+    exists yet). Once any object has been registered, the index MUST
+    exist and MUST be valid. Any corruption is a hard failure.
     """
 
     def __init__(self, ledger_dir: Path):
@@ -102,7 +119,7 @@ class PersistentLedger:
         # Index: {object_type: {object_id: LedgerEntry}}
         self._index: Dict[str, Dict[str, LedgerEntry]] = {}
         self._index_path = self.ledger_dir / "index.json"
-        self._load_index()
+        self._load_index_fail_closed()
 
     # ========================================================================
     # Registration (delegates to in-memory ledger + persists to disk)
@@ -168,20 +185,63 @@ class PersistentLedger:
         }
         self._index_path.write_text(json.dumps(index_data, indent=2, default=str))
 
-    def _load_index(self) -> None:
-        """Load the index from disk if it exists."""
+    def _load_index_fail_closed(self) -> None:
+        """Load the index from disk. FAIL-CLOSED on corruption.
+
+        Round-6 (per reviewer directive):
+            - If the ledger directory exists but index.json is missing →
+              check if any object files exist. If they do, this is a
+              corrupted ledger → raise LedgerIntegrityError.
+            - If index.json exists but is not valid JSON → raise
+              LedgerIntegrityError.
+            - If index.json exists but has unexpected structure → raise
+              LedgerIntegrityError.
+            - An empty index (no index.json, no object files) is ONLY
+              valid for a freshly-created ledger.
+        """
         if not self._index_path.exists():
+            # Check if any object files exist in subdirectories
+            object_files_exist = any(
+                any(self.ledger_dir.glob(f"{subdir}/*.json"))
+                for subdir in ["cases", "hypotheses", "predictions",
+                               "experiments", "prior_art", "transfers", "failures"]
+            )
+            if object_files_exist:
+                raise LedgerIntegrityError(
+                    f"Ledger index.json missing but object files exist in {self.ledger_dir}. "
+                    "This indicates a corrupted ledger — the index was deleted but objects remain. "
+                    "Cannot start fresh: evidence would be lost.")
+            # Fresh ledger with no objects — this is valid
             return
+
+        # Index exists — parse it
         try:
             data = json.loads(self._index_path.read_text())
-            for otype, entries in data.items():
-                if otype == "_meta":
-                    continue
-                self._index[otype] = {}
-                for oid, e_dict in entries.items():
+        except json.JSONDecodeError as e:
+            raise LedgerIntegrityError(
+                f"Ledger index.json is corrupted (invalid JSON): {e}. "
+                "Cannot start fresh: corruption must be investigated, not hidden.") from e
+
+        if not isinstance(data, dict):
+            raise LedgerIntegrityError(
+                f"Ledger index.json is corrupted (not a JSON object). "
+                "Cannot start fresh: corruption must be investigated.")
+
+        for otype, entries in data.items():
+            if otype == "_meta":
+                continue
+            if not isinstance(entries, dict):
+                raise LedgerIntegrityError(
+                    f"Ledger index.json has invalid structure: '{otype}' is not a dict. "
+                    "Cannot start fresh: corruption must be investigated.")
+            self._index[otype] = {}
+            for oid, e_dict in entries.items():
+                try:
                     self._index[otype][oid] = LedgerEntry(**e_dict)
-        except (json.JSONDecodeError, TypeError):
-            pass  # corrupted index — start fresh
+                except TypeError as e:
+                    raise LedgerIntegrityError(
+                        f"Ledger index.json entry '{otype}/{oid}' has invalid fields: {e}. "
+                        "Cannot start fresh: corruption must be investigated.") from e
 
     # ========================================================================
     # Verification (for external auditors)

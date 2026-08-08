@@ -2,8 +2,8 @@
   "stage": "02_abstraction",
   "run_id": "RUN-DEV-CH-004",
   "code_sha": "engine-v0.1-round3",
-  "input_hash": "8a84b12b5c2fccd7385f72a71cd17dc6ea1fe92ed4dbb0e1f784d8386f2da7f9",
-  "output_hash": "907bc523bc43e96da79e56f9cc9dec8455b9f819d62677ca13b5c42b7cc7c9db",
+  "input_hash": "7d4bffc0e831fc58914622aa476fa7e9419b9ab72bf27ff3fc9e018c3f159d07",
+  "output_hash": "ed9b5866036d9dc0216c107f3c7e886b5062771977151c933aa391423c8c83c9",
   "provider_manifest": {
     "provider": "zai",
     "model": "glm-4-plus",
@@ -13,13 +13,13 @@
       "max_tokens": 4096,
       "system_sha": "da25f0e8a1231c4250cad400e03ce5c0a835dbc6ca8fc600ce255ef3727d663e"
     },
-    "prompt_sha": "2a0b183205fa945a53f521d1f15d7ff75dd29ade9d4f342f08302371f3fef7d6",
+    "prompt_sha": "35c4aa76b0f09e72e3e542f1aeb81e02bc7911da151d850b0b9478b5ed35bca5",
     "seed": null,
     "tool_versions": {
       "z_ai_cli": "z-ai"
     },
-    "timestamp": "2026-08-08T07:33:33.266219+00:00",
-    "latency_ms": 4372,
+    "timestamp": "2026-08-08T07:55:28.551122+00:00",
+    "latency_ms": 3678,
     "success": true,
     "error": ""
   },
@@ -27,44 +27,42 @@
     "pattern": {
       "pattern_id": "MP-DEV-CH-004",
       "source_domain": "myxomycete biology / emergent computation",
-      "causal_structure": "Flow routing enables network optimization under flow rate constraints, producing shortest-path behavior",
+      "causal_structure": "Flow rate enables conduit adaptation under feedback constraints, producing optimized network topology",
       "inputs": [
-        "Resource flow",
-        "Network topology"
+        "flow rate",
+        "conduit dimensions"
       ],
       "conditions": [
-        "Flow rate variation",
-        "Network connectivity"
+        "feedback gain regime",
+        "flow convergence requirements"
       ],
       "operations": [
-        "Flow monitoring",
-        "Diameter modulation",
-        "Resource routing"
+        "conduit thickening",
+        "conduit thinning",
+        "self-repair"
       ],
       "intermediate_state": [
-        "Flow-to-radius ratio",
-        "Tube thickness distribution"
+        "conduit diameter adjustment",
+        "flow redistribution"
       ],
       "outputs": [
-        "Optimized network topology",
-        "Shortest-path behavior",
-        "Self-repair capability"
+        "network adaptation",
+        "shortest-path-like behavior"
       ],
       "constraints": [
-        "Feedback gain constraint",
-        "Maximum flow capacity",
-        "Minimum structural integrity"
+        "feedback gain regime",
+        "flow stability requirements"
       ],
       "failure_conditions": [
-        "Flow collapse",
-        "Tube rupture",
-        "Oscillating feedback"
+        "conduit collapse",
+        "conduit rupture",
+        "oscillating flow"
       ],
-      "abstract_principle": "Adaptive network structures optimize resource flow through feedback-controlled diameter modulation based on flow conditions.",
-      "source_graph_summary": "16 nodes, 17 edges"
+      "abstract_principle": "Adaptive feedback between flow dynamics and conduit dimensions enables self-optimizing network structures.",
+      "source_graph_summary": "16 nodes, 16 edges"
     },
     "failures": [],
-    "source_extraction_hash": "9d91689ba478ceba1f3e96b8fd081240264bb5a770578728eb36a4ed587e9489"
+    "source_extraction_hash": "2a9e623413d8ab220eff0c2bd3a4ece776ffc5c3c915131658f8345e6501db0f"
   },
-  "timestamp": "2026-08-08T07:33:37.640054+00:00"
+  "timestamp": "2026-08-08T07:55:32.229844+00:00"
 }
