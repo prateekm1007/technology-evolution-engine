@@ -37,8 +37,9 @@ GT = json.loads((REPO / "discovery_experiment/CASES/DXP-005/DXP-005_GROUND_TRUTH
 CASES = GT["cases"]
 
 # OUTPUT_DIR redirected to quarantine namespace (audit finding B, round 3).
+# Directory is NOT created at import time (audit finding round 4).
+# It is created inside main() AFTER the protocol lock passes.
 OUTPUT_DIR = REPO / "experiments" / "dxp005_pilots" / "nemotron" / "ENGINE_OUTPUT"
-OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
 
 def save_json(path, data):
@@ -56,6 +57,9 @@ def main():
 
     # ===== OUTPUT DIRECTORY LOCK (audit finding B, round 3) =====
     assert_output_dir_writable("DXP-005", OUTPUT_DIR)
+
+    # ===== CREATE OUTPUT DIRECTORY (audit finding round 4) =====
+    OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
     if len(sys.argv) < 2:
         print("Usage: python3 run_dxp005_one.py <CASE_ID>")

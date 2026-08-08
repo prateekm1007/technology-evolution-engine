@@ -30,9 +30,25 @@ from typing import Any, Dict, List, Optional, Protocol
 
 @dataclass
 class ProviderCallManifest:
-    """Reproducibility record for a single provider call."""
-    provider: str
-    model: str
+    """Reproducibility record for a single provider call.
+
+    P46 (verify the served instrument, not the requested one):
+        The `provider` and `model` fields record what was REQUESTED.
+        The `served_provider` and `served_model` fields record what was
+        actually SERVED, as reported by the provider's response metadata.
+
+        If served_provider/served_model are None, the provider did not
+        report served-instrument metadata and the manifest cannot
+        establish experimental identity. If they are set and differ from
+        the requested values, the provider call is marked failed
+        (success=False, error describes the mismatch).
+
+        This is the machine-enforced P46 invariant: a request for the
+        preregistered instrument is not evidence that the preregistered
+        instrument actually produced the observation.
+    """
+    provider: str                        # requested provider
+    model: str                           # requested model
     version: str
     configuration: Dict[str, Any] = field(default_factory=dict)
     prompt_sha: str = ""
@@ -42,6 +58,9 @@ class ProviderCallManifest:
     latency_ms: Optional[int] = None
     success: bool = True
     error: str = ""
+    # P46 served-instrument fields (audit finding round 4)
+    served_provider: Optional[str] = None  # provider as reported by response
+    served_model: Optional[str] = None     # model as reported by response
 
     def to_dict(self) -> Dict:
         return {
@@ -50,6 +69,8 @@ class ProviderCallManifest:
             "seed": self.seed, "tool_versions": self.tool_versions,
             "timestamp": self.timestamp, "latency_ms": self.latency_ms,
             "success": self.success, "error": self.error,
+            "served_provider": self.served_provider,
+            "served_model": self.served_model,
         }
 
 
@@ -125,6 +146,33 @@ class ZAIReasoningProvider:
                 return "", manifest
             with open(tmp_path) as f:
                 data = json.load(f)
+
+            # ===== P46: Verify the served instrument, not the requested one =====
+            # (audit finding round 4)
+            # Read the served model from the response metadata. The z-ai CLI
+            # returns an OpenAI-compatible response with a top-level "model"
+            # field. If the served model differs from the requested model,
+            # the provider call is marked FAILED.
+            served_model = data.get("model")
+            manifest.served_model = served_model
+            manifest.served_provider = self.provider_name  # z-ai CLI always serves via ZAI
+            if served_model is not None and served_model != self._model:
+                manifest.success = False
+                manifest.error = (
+                    f"P46 SERVED-INSTRUMENT MISMATCH: requested model={self._model} "
+                    f"but response served model={served_model}. The provider routed "
+                    f"the request to a different instrument. This is an experimental "
+                    f"identity violation — the preregistered instrument did not "
+                    f"produce this observation."
+                )
+                return "", manifest
+            if served_model is None:
+                # The response did not include served-model metadata. This is
+                # a P46 warning — we cannot establish experimental identity.
+                # We do NOT hard-fail (the z-ai CLI may not always report the
+                # model field), but we record the absence in the manifest.
+                manifest.configuration["p46_served_model_absent"] = True
+
             response = data.get("choices", [{}])[0].get("message", {}).get("content", "")
             if not response.strip():
                 manifest.success = False

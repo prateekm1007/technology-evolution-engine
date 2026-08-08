@@ -160,6 +160,27 @@ class OpenRouterProvider:
                 manifest.configuration["cost"] = usage.get("cost", 0)
                 manifest.configuration["attempts"] = attempt
                 manifest.configuration["final_max_tokens"] = attempt_max_tokens
+
+                # ===== P46: Verify the served instrument (audit finding round 4) =====
+                # OpenRouter returns the served model in the top-level "model"
+                # field and the upstream provider in the "provider" field.
+                served_model = data.get("model")
+                served_provider = data.get("provider")
+                manifest.served_model = served_model
+                manifest.served_provider = served_provider
+                if served_model is not None and served_model != self._model:
+                    manifest.success = False
+                    manifest.error = (
+                        f"P46 SERVED-INSTRUMENT MISMATCH: requested model={self._model} "
+                        f"but response served model={served_model} "
+                        f"(served_provider={served_provider}). OpenRouter routed "
+                        f"the request to a different instrument. This is an "
+                        f"experimental identity violation."
+                    )
+                    return "", manifest
+                if served_model is None:
+                    manifest.configuration["p46_served_model_absent"] = True
+
                 return content, manifest
 
             except requests.exceptions.Timeout:

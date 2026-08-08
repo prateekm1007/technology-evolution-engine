@@ -41,8 +41,9 @@ CONDITIONS = ["A-baseline", "B-hgen1", "C-null"]
 # OUTPUT_DIR redirected to quarantine namespace (audit finding B, round 3).
 # The quarantined pilot writes ONLY to its own directory, never to the
 # primary DXP-005 output path.
+# Directory is NOT created at import time (audit finding round 4).
+# It is created inside main() AFTER the protocol lock passes.
 OUTPUT_DIR = REPO / "experiments" / "dxp005_pilots" / "nemotron" / "ENGINE_OUTPUT"
-OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
 
 def make_provider():
@@ -411,6 +412,11 @@ def main():
     # Even though OUTPUT_DIR has been redirected to the quarantine namespace,
     # we also verify it here on the execution path. This is defense-in-depth.
     assert_output_dir_writable("DXP-005", OUTPUT_DIR)
+
+    # ===== CREATE OUTPUT DIRECTORY (audit finding round 4) =====
+    # Directory is created ONLY after the protocol lock and output-dir lock
+    # have passed. Importing this module has zero side effects.
+    OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
     if len(sys.argv) < 3:
         print("Usage: python3 scripts/run_dxp005_step.py <step> <case_id> [condition]")

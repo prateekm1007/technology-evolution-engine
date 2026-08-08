@@ -346,5 +346,64 @@ def test_quarantined_runners_write_only_to_quarantine_namespace():
                 )
 
 
+# ===== TEST 8: DXP-005 runners have zero import-time side effects (round 4) =====
+
+def test_dxp005_runner_no_import_time_side_effects():
+    """Importing any DXP-005 runner must perform ZERO experiment-state mutation.
+
+    The auditor found (round 4) that OUTPUT_DIR.mkdir() was called at module
+    load time, BEFORE the protocol lock in main(). This means merely importing
+    the runner creates the output directory — an experiment-state side effect
+    that occurs before authorization is checked.
+
+    The invariant (P21: all-paths trigger rule):
+        import runner → zero state mutation
+
+    This test verifies structurally that no DXP-005 runner calls mkdir()
+    at module level. The mkdir() must occur only inside main() or a
+    function called after the protocol lock.
+    """
+    # Check the canonical runner
+    canonical = REPO / "scripts" / "run_dxp005.py"
+    assert canonical.exists()
+    _assert_no_module_level_mkdir(canonical)
+
+    # Check the quarantined runners
+    pilot_dir = REPO / "experiments" / "dxp005_pilots" / "nemotron" / "runner_scripts"
+    if pilot_dir.exists():
+        for runner in pilot_dir.glob("run_dxp005*.py"):
+            _assert_no_module_level_mkdir(runner)
+
+
+def _assert_no_module_level_mkdir(runner_path: Path):
+    """Verify that the given runner file does not call mkdir() at module level.
+
+    Module-level = any line that is NOT inside a function/class definition
+    and NOT a comment.
+    """
+    import ast
+    source = runner_path.read_text()
+    tree = ast.parse(source)
+
+    # Walk top-level statements only (not inside function/class defs)
+    for node in ast.iter_child_nodes(tree):
+        # Skip function and class definitions — their bodies are not module-level
+        if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef, ast.ClassDef)):
+            continue
+        # Check for calls to .mkdir() in top-level expressions
+        for sub in ast.walk(node):
+            if isinstance(sub, ast.Call):
+                # Check if it's a method call named "mkdir"
+                if isinstance(sub.func, ast.Attribute) and sub.func.attr == "mkdir":
+                    pytest.fail(
+                        f"{runner_path.name} calls .mkdir() at module level "
+                        f"(line {node.lineno}). Importing this module creates "
+                        f"the output directory BEFORE the protocol lock runs. "
+                        f"This violates P21 (all-paths trigger rule). "
+                        f"Move the mkdir() inside main() after the protocol lock. "
+                        f"Audit finding round 4."
+                    )
+
+
 if __name__ == "__main__":
     sys.exit(pytest.main([__file__, "-v"]))

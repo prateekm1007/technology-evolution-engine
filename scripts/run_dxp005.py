@@ -38,8 +38,11 @@ from discovery_infrastructure.discovery_substrate import (
 gt = json.loads((REPO / "discovery_experiment/CASES/DXP-005/DXP-005_GROUND_TRUTH.json").read_text())
 CASES = gt["cases"]
 CONDITIONS = ["A-baseline", "B-hgen1", "C-null"]
+# OUTPUT_DIR is defined but NOT created at import time (audit finding round 4).
+# The directory is created only inside main() AFTER the protocol lock and
+# output-dir lock have passed. Importing this module has zero experiment-
+# state side effects (P21: all-paths trigger rule).
 OUTPUT_DIR = REPO / "discovery_experiment/ENGINE_OUTPUT/DXP-005"
-OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
 
 def get_case_documents(case_id):
@@ -451,6 +454,11 @@ def main():
     # This prevents quarantined pilots or unauthorized experiments from
     # writing to the primary DXP-005 output path.
     assert_output_dir_writable("DXP-005", OUTPUT_DIR)
+
+    # ===== CREATE OUTPUT DIRECTORY (audit finding round 4) =====
+    # The directory is created ONLY after the protocol lock and output-dir
+    # lock have passed. Importing this module has zero side effects.
+    OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
     # ===== CANONICAL PREREGISTERED PROVIDER (audit finding, round 3) =====
     # DXP-005 was preregistered with ZAI (glm-4-plus via z-ai CLI).
