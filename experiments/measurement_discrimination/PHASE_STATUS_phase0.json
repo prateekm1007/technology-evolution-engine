@@ -2,13 +2,13 @@
   "phase": 0,
   "phase_name": "Establish Repository Truth",
   "status": "COMPLETE",
-  "commit": "d060aa9",
+  "commit": "5f27ca9",
   "branch": "external-review-preparation",
   "remote": "https://github.com/prateekm1007/technology-evolution-engine.git",
   "protocol_frozen": false,
   "tests_passed_local": 178,
   "tests_total_collected": 2663,
-  "tests_local_scope": "tests/test_discovery_substrate.py + tests/test_engine_adversarial_attacks.py only (smoke check, not full suite)",
+  "tests_local_scope": "SELECTED LOCAL SUITE — tests/test_discovery_substrate.py + tests/test_engine_adversarial_attacks.py only (smoke check). This is NOT the full repository test suite.",
   "scientific_results_visible": false,
   "next_allowed_phase": 1,
   "timestamp_utc": "2026-08-08T15:05:00Z",
@@ -17,8 +17,12 @@
   "github_ci_status_reason": "GitHub REST API rate-limited (no auth token in environment). GitHub CLI (gh) not available. Cannot independently retrieve Actions run/conclusion evidence. Per Amendment 3, this is NOT a defect — it is the correct terminal state when independent verification is unavailable.",
 
   "local_tests_vs_github_ci_distinction": {
-    "local_tests": "178 substrate+adversarial tests passed in 2.49s (smoke check only). The full 2663-test suite was collected but not all run in this Phase 0 snapshot.",
-    "github_ci": "NOT_INDEPENDENTLY_VERIFIED. The repository contains a .github/workflows/ci.yml workflow file ('Master Protocol Enforcement') that runs Gate 1 (read-list check) and Gate 2 (Law 27 forbidden-language scan), but no run evidence has been independently retrieved. Local pytest results are NOT evidence of GitHub CI status."
+    "required_format_per_audit_finding_9": {
+      "selected_local_suite": "178 passed (tests/test_discovery_substrate.py + tests/test_engine_adversarial_attacks.py)",
+      "full_local_suite": "NOT RUN (2663 tests collected, 0 run in this session)",
+      "github_ci": "NOT_INDEPENDENTLY_VERIFIED"
+    },
+    "note": "The 178-test count is a SELECTED LOCAL SUITE smoke check, not the full repository test suite. The full suite (2663 tests) was collected but not run. This must not be interpreted as 'repository test suite = 178' or 'CI passed'."
   },
 
   "engine_source_state": {
