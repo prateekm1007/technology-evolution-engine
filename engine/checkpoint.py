@@ -82,18 +82,20 @@ def _get_engine_code_sha() -> str:
 def _compute_engine_source_manifest(commit_sha: str = "") -> str:
     """Compute a deterministic SHA-256 over all engine source files.
 
-    If commit_sha is provided, reads from Git (git show <sha>:<path>).
-    If empty, reads from the working tree (for run-time recording).
+    Uses the full repository-relative path (e.g. 'engine/checkpoint.py')
+    not just the filename, to avoid ambiguity if subdirectories are added.
 
-    This hash independently identifies the engine source, so the verifier
-    can check that the engine commit actually contains the expected source
-    — not merely that a Git object with that SHA exists.
+    If commit_sha is provided, reads from Git (git show <sha>:<path>).
+    If empty, reads from the working tree.
+
+    Covers engine/*.py. The discovery_infrastructure/ substrate is an
+    external dependency whose identity is separately governed by its own
+    commit history and the substrate's integrity invariants.
     """
     import hashlib, subprocess
     repo = Path(__file__).resolve().parents[1]
     h = hashlib.sha256()
     if commit_sha:
-        # Read from Git commit
         result = subprocess.run(
             ["git", "ls-tree", "--name-only", "-r", commit_sha, "engine/"],
             cwd=repo, capture_output=True, text=True, timeout=5
@@ -110,20 +112,37 @@ def _compute_engine_source_manifest(commit_sha: str = "") -> str:
             if file_result.returncode != 0:
                 raise CheckpointIntegrityError(
                     f"Cannot read {fpath} at commit {commit_sha[:16]}...")
-            fname = fpath.split("/")[-1]
-            h.update(fname.encode())
+            h.update(fpath.encode())
             h.update(b"\0")
             h.update(file_result.stdout)
             h.update(b"\0")
     else:
-        # Read from working tree (for run-time recording)
         engine_dir = Path(__file__).parent
         for py_file in sorted(engine_dir.glob("*.py")):
-            h.update(py_file.name.encode())
+            rel = str(py_file.relative_to(repo))
+            h.update(rel.encode())
             h.update(b"\0")
             h.update(py_file.read_bytes())
             h.update(b"\0")
     return h.hexdigest()
+
+
+def _check_engine_source_clean() -> bool:
+    """Check that all engine/*.py files are unmodified relative to HEAD.
+
+    Final provenance requirement: a scientific run may only be created
+    when the executable engine source is clean. Generated run artifacts
+    (in experiments/) can be dirty — engine source cannot.
+    """
+    import subprocess
+    repo = Path(__file__).resolve().parents[1]
+    result = subprocess.run(
+        ["git", "status", "--porcelain", "engine/"],
+        cwd=repo, capture_output=True, text=True, timeout=5
+    )
+    if result.returncode != 0:
+        return False
+    return result.stdout.strip() == ""
 
 
 def _get_working_tree_state() -> tuple:
@@ -313,33 +332,37 @@ def create_run_integrity_anchor(run_dir: Path, manifest_sha: str,
 
 
 def verify_run_integrity_anchor(run_dir: Path,
-                                 record_commit: str = "") -> Dict:
+                                 record_commit: str) -> Dict:
     """Verify the entire run against its RUN_INTEGRITY_ANCHOR.
 
     Final provenance model:
       - engine_commit_sha: the Git commit whose engine source produced the run.
-        Recorded in the anchor at run-creation time. Verified by checking
-        that the commit exists AND that the engine source at that commit
-        produces the same engine_source_manifest_sha256.
       - record_commit: the Git commit that froze the run artifacts.
-        Supplied EXTERNALLY by the auditor (not self-referential).
-        If empty, defaults to HEAD.
+        REQUIRED — the auditor must explicitly specify which commit.
+        No default to HEAD.
 
-    Verification layers:
-      1. anchor self-hash (anchor file was not modified)
-      2. engine_identity_verified (engine commit exists + source manifest matches)
-      3. committed_anchor_matches (anchor on disk == git show <record_commit>:<path>)
-      4. manifest_hash_matches
-      5. ledger_index_hash_matches
-      6. ledger_inventory_hash_matches
-      7. freeze_record_hash_matches
-      8. stage_inventory_hash_matches
-
-    NO FAIL-OPEN PATHS: if any Git verification fails, the result is
-    INTEGRITY_UNVERIFIABLE, never True.
+    NO FAIL-OPEN PATHS:
+      - record_commit missing → INTEGRITY_UNVERIFIABLE
+      - run outside repo → committed_anchor_matches = False
+      - Git failure → INTEGRITY_UNVERIFIABLE
+      Never True on verification failure.
     """
     from engine.persistent_ledger import PersistentLedger, _sha
     import subprocess
+
+    # record_commit is REQUIRED — no default to HEAD
+    if not record_commit:
+        return {"anchor_exists": False, "anchor_self_hash_matches": False,
+                "engine_identity_verified": False,
+                "engine_commit_sha": "", "engine_source_manifest_sha256": "",
+                "record_commit": "", "committed_anchor_matches": False,
+                "manifest_hash_matches": False, "ledger_index_hash_matches": False,
+                "ledger_inventory_hash_matches": False, "freeze_record_hash_matches": False,
+                "stage_inventory_hash_matches": False, "working_tree_clean": None,
+                "integrity_intact": False, "reproducibility_status": "UNKNOWN",
+                "intact": False,
+                "detail": "record_commit is required. The auditor must explicitly "
+                          "specify which Git commit froze the run artifacts."}
 
     anchor_path = run_dir / "RUN_INTEGRITY_ANCHOR.json"
     result = {"anchor_exists": False, "anchor_self_hash_matches": False,
@@ -425,16 +448,17 @@ def verify_run_integrity_anchor(run_dir: Path,
         result["detail"] = "anchor has no engine_source_manifest_sha256 — cannot verify engine source"
         return result
 
-    # 3. Verify committed anchor (against record_commit, or HEAD if not specified)
-    commit_ref = record_commit or "HEAD"
+    # 3. Verify committed anchor (against record_commit — REQUIRED, no default)
     try:
         rel_path = anchor_path.relative_to(repo)
     except ValueError:
-        # Run directory is outside the repo — cannot verify committed anchor
-        result["committed_anchor_matches"] = True  # skip for out-of-repo runs (tests)
+        # Run directory is outside the repo — FAIL CLOSED
+        result["committed_anchor_matches"] = False
+        result["detail"] = ("run directory is outside the Git repository. "
+                            "Cannot verify committed anchor — INTEGRITY_UNVERIFIABLE.")
     else:
         git_result = subprocess.run(
-            ["git", "show", f"{commit_ref}:{rel_path}"],
+            ["git", "show", f"{record_commit}:{rel_path}"],
             cwd=repo, capture_output=True, text=True, timeout=5
         )
         if git_result.returncode == 0:
@@ -442,7 +466,7 @@ def verify_run_integrity_anchor(run_dir: Path,
         else:
             # File not tracked at the specified commit — FAIL CLOSED
             result["committed_anchor_matches"] = False
-            result["detail"] = (f"anchor file not found at commit {commit_ref[:16]}... "
+            result["detail"] = (f"anchor file not found at commit {record_commit[:16]}... "
                                 "Cannot verify committed anchor.")
 
     # 4. Verify manifest hash
@@ -677,6 +701,15 @@ class CheckpointedDiscoveryLoop:
         run_dir = RUNS_DIR / run_id
         run_dir.mkdir(parents=True, exist_ok=True)
         manifest_path = run_dir / "manifest.json"
+
+        # Final provenance requirement: refuse to create a scientific run
+        # when the executable engine source is dirty. Generated run artifacts
+        # can be dirty — engine source cannot.
+        if not _check_engine_source_clean():
+            raise CheckpointIntegrityError(
+                "Engine source files are modified relative to HEAD. "
+                "A scientific run may only be created with clean engine source. "
+                "Commit your engine changes before running.")
 
         # Repair B: initialize the persistent ledger in the run directory
         self._ledger_dir = run_dir / "ledger"
