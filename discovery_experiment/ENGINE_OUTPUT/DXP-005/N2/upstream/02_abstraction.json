@@ -1,0 +1,43 @@
+{
+  "pattern": {
+    "pattern_id": "MP-N2",
+    "source_domain": "ornithology",
+    "causal_structure": "Asymmetric profile enables differential fluid acceleration under flow conditions, producing pressure gradient that yields net directional force.",
+    "inputs": [
+      "fluid flow",
+      "asymmetric profile geometry"
+    ],
+    "conditions": [
+      "steady fluid motion",
+      "profile orientation relative to flow"
+    ],
+    "operations": [
+      "fluid acceleration over convex surface",
+      "fluid deceleration over flatter surface",
+      "pressure field establishment",
+      "force integration across surface"
+    ],
+    "intermediate_state": [
+      "velocity differential",
+      "pressure differential",
+      "pressure gradient field"
+    ],
+    "outputs": [
+      "net directional force",
+      "performance coefficient"
+    ],
+    "constraints": [
+      "geometric configuration parameters",
+      "flow regime limits",
+      "structural integrity bounds"
+    ],
+    "failure_conditions": [
+      "flow separation",
+      "stall condition",
+      "insufficient pressure differential",
+      "structural deformation beyond tolerance"
+    ],
+    "abstract_principle": "An asymmetric profile differentially accelerates fluid flow across its surfaces, creating a pressure gradient that generates a net directional force.",
+    "source_graph_summary": "20 nodes, 17 edges"
+  }
+}

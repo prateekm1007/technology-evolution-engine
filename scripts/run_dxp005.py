@@ -197,7 +197,11 @@ def run_case(case_id, reasoning_provider):
             edge_type=MechanismEdgeType(e["edge_type"]),
             confidence=e.get("confidence", 0.5), evidence=e.get("evidence", [])))
 
-    # Transfer hypothesis (shared)
+    # Transfer hypothesis (shared) — check for rejected transfer
+    if not tr_data.get("transfers"):
+        print(f"  [{case_id}] Transfer was rejected — no hypotheses can be generated")
+        return {"case_id": case_id, "status": "TRANSFER_REJECTED",
+                "upstream_hashes": upstream, "conditions": {}}
     t = tr_data["transfers"][0]
     transfer = TransferHypothesis(
         transfer_id=t["transfer_id"], source_domain=t.get("source_domain", ""),
@@ -393,7 +397,21 @@ def generate_final_table(all_results):
 
 
 def main():
-    reasoning = ZAIReasoningProvider(timeout=120)
+    # Protocol amendment: ZAI API rate-limited (429). Using OpenRouter
+    # with Kimi K3 per CEO directive. The A/B/C ablation comparison
+    # remains valid within a single provider. Cross-experiment
+    # comparisons with DXP-001/002/003/004 (ZAI) are NOT valid.
+    from engine.openrouter_provider import OpenRouterProvider
+    API_KEY = os.environ.get("OPENROUTER_API_KEY", "")
+    if not API_KEY:
+        print("ERROR: OPENROUTER_API_KEY environment variable not set")
+        return
+    reasoning = OpenRouterProvider(
+        api_key=API_KEY,
+        model="nvidia/nemotron-3-ultra-550b-a55b:free",
+        timeout=120,
+    )
+    print(f"Provider: {reasoning.provider_name} / {reasoning.model_name}")
     all_results = []
     case_ids = sorted(CASES.keys())
 

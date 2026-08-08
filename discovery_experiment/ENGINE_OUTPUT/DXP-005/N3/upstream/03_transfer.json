@@ -1,0 +1,42 @@
+{
+  "transfers": [
+    {
+      "transfer_id": "TH-N3-001",
+      "source_domain": "botany",
+      "source_mechanism": "Hydrophilic gel matrix at high concentration generates osmotic pressure to retain fluid against evaporative forces, with temporal aperture regulation reducing loss during high-evaporation periods.",
+      "source_conditions": [
+        "osmotic gradient",
+        "evaporation gradient",
+        "temporal cycles"
+      ],
+      "target_domain": "electrochemistry",
+      "target_problem": "Battery Electrolyte Design\n\nNeed: electrolyte for lithium-ion battery with wider temperature range (-40 to 80C) and higher ionic conductivity (target: 10 mS/cm). Current electrolytes use LiPF6 in organic carbonates. Must be electrochemically stable (4.5V window), non-flammable, and compatible with graphite anode and NMC cathode.\n",
+      "transferred_principle": "A stimuli-responsive polymer matrix generates a Donnan potential/swelling pressure to concentrate lithium ions, while temperature-dependent conformational changes dynamically regulate ion transport pathways to maintain conductivity across extreme temperatures.",
+      "required_translation": "Hydrophilic gel \u2192 thermoresponsive copolymer (e.g., PNIPAM-co-acrylic acid) with tunable LCST/UCST; osmotic pressure \u2192 Donnan potential from fixed anionic groups (sulfonate/carboxylate) on polymer backbone; fluid (water) \u2192 non-flammable liquid electrolyte (LiPF6 in fluoroethylene carbonate/dimethyl carbonate) or ionic liquid; evaporation gradient \u2192 temperature-driven decomposition/volatilization gradient; temporal aperture regulation \u2192 autonomous polymer chain collapse/swelling at phase transition temperatures; regulatory energy \u2192 thermal energy (passive) or applied potential (active gating).",
+      "expected_effect": "Electrolyte maintains \u226510 mS/cm ionic conductivity from -40\u00b0C to 80\u00b0C, suppresses thermal decomposition and volatilization at 80\u00b0C (\u22645% mass loss after 100h), prevents freezing at -40\u00b0C, achieves 4.5V electrochemical stability, and enables graphite/NMC compatibility with >99.5% Coulombic efficiency.",
+      "boundary_conditions": [
+        "Polymer must be electrochemically inert up to 4.5V vs. Li/Li+",
+        "Phase transition temperatures tuned to -30\u00b0C (UCST) and 70\u00b0C (LCST) via copolymer composition",
+        "Fixed charge density \u22651.5 mol/L to generate sufficient Donnan potential for Li+ concentration",
+        "Mesh size in swollen state \u22652 nm for solvated Li+ transport; collapsed state \u22640.5 nm to block PF6- decomposition pathways",
+        "Mechanical modulus 1-10 MPa to withstand electrode volume changes"
+      ],
+      "failure_conditions": [
+        "Polymer oxidative degradation at cathode interface >4.3V",
+        "Phase transition hysteresis >10\u00b0C causing conductivity lag",
+        "Li+ transference number <0.4 due to anion trapping",
+        "Irreversible collapse from electrolyte syneresis after thermal cycling",
+        "Interfacial resistance >50 \u03a9\u00b7cm\u00b2 at graphite anode"
+      ],
+      "testable_prediction": "A PNIPAM-co-sodium acrylate (85:15 mol%) hydrogel swollen with 1M LiPF6 in FEC:DMC (1:1) will exhibit a sharp conductivity drop from 12 mS/cm to 3 mS/cm at 65\u00b0C (LCST) with <2% electrolyte mass loss after 200h at 80\u00b0C, while maintaining 8 mS/cm at -40\u00b0C (UCST at -30\u00b0C), verified by in-situ EIS and TGA-MS during thermal cycling.",
+      "epistemic_state": "HYPOTHESIZED",
+      "provenance": {
+        "nodes": {},
+        "edges": [],
+        "committed_hash": null
+      },
+      "provenance_root_hash": ""
+    }
+  ],
+  "rejected": []
+}

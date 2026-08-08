@@ -1,0 +1,9 @@
+{
+  "transfers": [],
+  "rejected": [
+    {
+      "reason": "The source mechanism (MP-N2) describes lift generation via asymmetric profile differential fluid acceleration \u2014 a causal structure that produces a net directional force perpendicular to flow. The target problem seeks drag reduction on an axisymmetric submarine hull at Re~10^8. Introducing asymmetry to create pressure gradients would generate unwanted lift/side forces, increase wetted area, and likely increase pressure drag and structural complexity, contradicting the drag-reduction goal. The abstract principle of 'differential acceleration for net force' does not map to drag minimization on a volume-constrained axisymmetric body; no plausible translation preserves the causal structure while meeting target constraints.",
+      "source_pattern": "MP-N2"
+    }
+  ]
+}

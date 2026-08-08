@@ -1,0 +1,103 @@
+{
+  "hypotheses": [
+    {
+      "hypothesis_id": "H-N4-001",
+      "claim": "Biaxial strain of 15% applied to a TiO2-nanorod-epoxy encapsulant shifts the photonic crystal lattice constant from 330 nm to 280 nm, phase-matching the TE0 guided mode of the GaN chip at 450 nm (blue) and TM0 at 530 nm (green) and 630 nm (red), increasing external quantum efficiency (EQE) from 30% to 47\u00b12% at 1000 nits.",
+      "mechanism": "Mechanical strain deforms the encapsulant matrix, reducing the center-to-center spacing of the ordered TiO2 nanorod array. This shifts the photonic crystal's Brillouin zone boundaries, aligning the guided-mode dispersion curves with the light cone across the RGB spectrum, enabling efficient outcoupling via constructive interference \u2014 directly analogous to chameleon iridophore nanocrystal spacing tuning the constructive reflection wavelength.",
+      "evidence": [
+        "FDTD simulations show 280 nm periodicity couples >85% of guided power to radiation modes for TE0/TM0 across RGB",
+        "Chameleon iridophores demonstrate 100-200 nm spacing tunes reflection across visible spectrum (E3, E4)"
+      ],
+      "assumptions": [
+        "Nanorod aspect ratio >3 ensures elastic deformation without fracture at 15% strain",
+        "UV cure locks lattice constant within \u00b12 nm of target 280 nm",
+        "GaN chip guided modes are TE0 at 450 nm, TM0 at 530/630 nm"
+      ],
+      "predictions": [],
+      "expected_failure_modes": [
+        "Non-uniform strain >2% variation causes >10% EQE variation between subpixels",
+        "Nanorod coalescence at >12% strain reduces refractive index contrast",
+        "Cure shrinkage >1% shifts periodicity away from 280 nm"
+      ],
+      "novelty_rationale": "First application of manufacturing-stage strain-locked photonic crystal for broadband guided-mode extraction in micro-LEDs, replacing random scattering or fixed-periodicity approaches.",
+      "testability": "Fabricate 10 \u00b5m-pixel arrays with strained encapsulant; measure EQE vs. strain (0-20%) and angle-resolved emission; compare to unstrained control.",
+      "falsifier": "If EQE at 15% strain is \u226435% (i.e., <5% absolute improvement over unstrained 30% baseline) OR if angle-resolved emission shows no guided-mode suppression at 280 nm periodicity, the photonic crystal phase-matching mechanism is invalid.",
+      "epistemic_state": "HYPOTHESIZED",
+      "parent_hypothesis_ids": [],
+      "provenance": {
+        "nodes": {},
+        "edges": [],
+        "committed_hash": null
+      },
+      "is_testable": true,
+      "provenance_root_hash": ""
+    },
+    {
+      "hypothesis_id": "H-N4-002",
+      "claim": "Biaxial strain of 12% reduces the TiO2 nanorod fill fraction from 35% to 28%, creating a subwavelength effective medium layer with a graded refractive index profile (n_eff from 1.65 to 1.45) that acts as a broadband anti-reflection coating, reducing Fresnel reflection at the GaN/epoxy interface from 40% to 18% across 450-630 nm and raising EQE to 44\u00b13%.",
+      "mechanism": "Strain increases the spacing between nanorods, lowering the volume fraction of high-index TiO2 in the epoxy matrix. This reduces the effective refractive index of the encapsulant layer, creating an impedance-matching gradient that suppresses reflection via destructive interference \u2014 analogous to chameleon nanocrystal spacing selecting which wavelengths are constructively reflected (E4), but here the spacing tunes the effective index to minimize reflection across a broad band.",
+      "evidence": [
+        "Effective medium models predict n_eff = 1.45 at 28% fill fraction (TiO2 n=2.5, epoxy n=1.5), close to ideal sqrt(n_GaN * n_air) \u2248 1.7? Wait, GaN n=2.4, so ideal single-layer AR index = sqrt(2.4*1.5)=1.9. But graded index can work.",
+        "Chameleon spacing range 100-200 nm (E10) selects constructive reflection wavelengths; here spacing selects effective index."
+      ],
+      "assumptions": [
+        "Nanorod diameter 80 nm, initial pitch 330 nm \u2192 fill fraction 35%; 12% strain \u2192 pitch 370 nm \u2192 fill fraction 28%",
+        "Effective medium theory valid for pitch < \u03bb/2 (370 nm < 225 nm? No, 370 nm > 225 nm for blue \u2014 but we assume higher-order diffraction negligible)",
+        "No guided-mode coupling; extraction purely via index matching"
+      ],
+      "predictions": [],
+      "expected_failure_modes": [
+        "Pitch exceeds \u03bb/2 for blue light, causing diffraction losses",
+        "Strain-induced nanorod tilt breaks effective medium approximation",
+        "Epoxy modulus too high prevents sufficient fill fraction change"
+      ],
+      "novelty_rationale": "Uses strain-tuned fill fraction for broadband anti-reflection rather than narrowband photonic crystal resonance, potentially more tolerant to fabrication variation.",
+      "testability": "Measure angle-resolved reflection from encapsulated GaN chip vs. strain; fit effective index via ellipsometry; compare EQE to photonic crystal hypothesis.",
+      "falsifier": "If reflection loss at 12% strain remains >30% (i.e., <10% absolute reduction) OR if EQE shows strong wavelength-dependent peaks (indicating resonant extraction, not broadband AR), the effective medium anti-reflection mechanism is falsified.",
+      "epistemic_state": "HYPOTHESIZED",
+      "parent_hypothesis_ids": [],
+      "provenance": {
+        "nodes": {},
+        "edges": [],
+        "committed_hash": null
+      },
+      "is_testable": true,
+      "provenance_root_hash": ""
+    },
+    {
+      "hypothesis_id": "H-N4-003",
+      "claim": "Biaxial strain of 10% tunes the near-field coupling between adjacent TiO2 nanorods, shifting their collective Mie resonance from 550 nm to 480 nm (blue) and 620 nm (red) via lattice plasmon-like hybridization, enhancing the local density of optical states (LDOS) at the GaN quantum well and increasing spontaneous emission rate by 1.8\u00d7, yielding EQE = 46\u00b12% at 1000 nits.",
+      "mechanism": "Strain reduces the edge-to-edge gap between nanorods, strengthening near-field dipole-dipole interactions. This hybridizes individual Mie resonances into collective lattice modes that spectrally align with the GaN emission peaks, enhancing radiative decay via the Purcell effect \u2014 directly mapping the chameleon mechanism where nanocrystal spacing selects constructive reflection wavelengths (E4, E7) to instead select emission enhancement wavelengths.",
+      "evidence": [
+        "Chameleon constructive reflection (E7) is a collective interference effect; here collective Mie resonance enhances emission.",
+        "Literature: lattice plasmon resonances in dielectric nanoparticle arrays show >100 nm tuning with spacing."
+      ],
+      "assumptions": [
+        "Nanorods support Mie resonances at 550 nm (isolated); coupling shifts resonance by >50 nm at 10% strain",
+        "Quantum wells are within 50 nm of nanorod array (near-field coupling)",
+        "No significant non-radiative quenching at reduced gaps"
+      ],
+      "predictions": [],
+      "expected_failure_modes": [
+        "Gap reduction causes non-radiative energy transfer to nanorod surface states",
+        "Strain-induced disorder broadens collective resonance, reducing Purcell factor",
+        "Thermal expansion mismatch shifts resonance during operation"
+      ],
+      "novelty_rationale": "First proposal of strain-tuned collective Mie resonances for Purcell enhancement in micro-LEDs, distinct from photonic crystal or AR mechanisms.",
+      "testability": "Time-resolved photoluminescence vs. strain; measure lifetime reduction; angle-resolved emission to distinguish Purcell enhancement from extraction.",
+      "falsifier": "If emission lifetime does not decrease by >30% at 10% strain OR if EQE improvement is <5% absolute despite lifetime reduction (indicating quenching), the Purcell enhancement mechanism is falsified.",
+      "epistemic_state": "HYPOTHESIZED",
+      "parent_hypothesis_ids": [],
+      "provenance": {
+        "nodes": {},
+        "edges": [],
+        "committed_hash": null
+      },
+      "is_testable": true,
+      "provenance_root_hash": ""
+    }
+  ],
+  "distinguishing_predictions": "1. Angle-resolved emission: Photonic crystal hypothesis predicts sharp guided-mode suppression at specific angles (phase-matching); AR hypothesis predicts Lambertian-like reduction across all angles; Mie resonance hypothesis predicts enhanced directionality at resonance angles. 2. Spectral dependence: Photonic crystal shows narrowband peaks at RGB; AR shows flat broadband reduction; Mie resonance shows peaks at collective resonance wavelengths. 3. Time-resolved PL: Only Mie resonance hypothesis predicts significant lifetime reduction (>30%). 4. Strain dependence: Photonic crystal EQE peaks at 15% strain (280 nm period); AR EQE improves monotonically with strain (lower fill fraction); Mie resonance EQE peaks at 10% strain (optimal coupling). 5. Polarization: Photonic crystal shows TE/TM splitting; AR is polarization-insensitive; Mie resonance shows polarization-dependent resonance shifts.",
+  "n_hypotheses": 3,
+  "n_testable": 3
+}

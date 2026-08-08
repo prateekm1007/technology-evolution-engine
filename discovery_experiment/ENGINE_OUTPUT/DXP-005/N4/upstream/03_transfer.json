@@ -1,0 +1,45 @@
+{
+  "transfers": [
+    {
+      "transfer_id": "TH-N4-001",
+      "source_domain": "herpetology",
+      "source_mechanism": "Mechanical deformation of a deformable matrix tunes the inter-element spacing of an ordered nanoreflector array, shifting the constructive interference condition to produce actively tunable narrowband reflection (color change).",
+      "source_conditions": [
+        "ordered nanostructure array present",
+        "deformable supporting matrix",
+        "tunable spacing within operational range",
+        "physiological actuation signal"
+      ],
+      "target_domain": "display technology",
+      "target_problem": "LED Display Efficiency Improvement\n\nNeed: improve external quantum efficiency of micro-LED displays from 30% to 45%. Current losses: 40% total internal reflection at chip-epoxy interface, 15% absorption in substrate. Constraints: 1080p resolution, 1000 nits brightness, RGB color, 5-year lifetime. Must use existing GaN chip technology.\n",
+      "transferred_principle": "Controlled mechanical strain applied to a deformable encapsulant layer containing an ordered nanostructure array shifts the periodicity of extraction features, optimizing the phase-matching condition for guided-mode outcoupling across the RGB spectrum to maximize broadband light extraction efficiency.",
+      "required_translation": "Replace physiological actuation with manufacturing-stage mechanical strain (e.g., biaxial stretching of encapsulant film or pressure-assisted nanoimprint); replace iridophore nanoreflectors (guanine crystals) with high-index dielectric nanostructures (e.g., TiO2 nanorods or air-hole photonic crystal) embedded in UV-curable epoxy; replace color-tuning function with broadband extraction optimization targeting GaN guided modes; lock deformation via UV cure instead of continuous physiological control.",
+      "expected_effect": "Reduces total internal reflection loss at chip-epoxy interface from 40% to <22% by providing optimized momentum-matching nanostructures for TE/TM guided modes across 450-630 nm, raising external quantum efficiency from 30% to >45% at 1000 nits while maintaining 1080p pixel definition and 5-year operational stability.",
+      "boundary_conditions": [
+        "Encapsulant modulus must allow uniform deformation at <50\u00b0C before cure",
+        "Nanostructure aspect ratio >2 to survive strain without fracture",
+        "Strain uniformity <2% variation across 1080p panel (6.2M subpixels)",
+        "Refractive index contrast >0.5 between nanostructure and epoxy",
+        "Cure shrinkage <1% to preserve tuned periodicity",
+        "Thermal expansion mismatch <5 ppm/K between GaN and encapsulant"
+      ],
+      "failure_conditions": [
+        "Non-uniform strain causing >10% EQE variation between subpixels",
+        "Nanostructure collapse or coalescence during deformation",
+        "Epoxy modulus too high (>1 GPa pre-cure) preventing sufficient strain",
+        "Delamination at chip-epoxy interface under thermal cycling",
+        "Periodicity drift >5 nm post-cure due to stress relaxation",
+        "Absorption in nanostructure material >2% across RGB"
+      ],
+      "testable_prediction": "A 10 \u00b5m-pitch micro-LED with a biaxially strained (15% strain) TiO2-nanorod-epoxy encapsulant (periodicity tuned to 280 nm) will exhibit 47\u00b12% EQE at 1000 nits across all RGB subpixels, with <3% efficiency drop after 1000 thermal cycles (-40\u00b0C to 85\u00b0C), compared to 32% EQE for an unstrained planar epoxy control.",
+      "epistemic_state": "HYPOTHESIZED",
+      "provenance": {
+        "nodes": {},
+        "edges": [],
+        "committed_hash": null
+      },
+      "provenance_root_hash": ""
+    }
+  ],
+  "rejected": []
+}
