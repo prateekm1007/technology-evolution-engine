@@ -444,10 +444,10 @@ def main():
     reasoning = OpenRouterProvider(
         api_key=API_KEY,
         model="nvidia/nemotron-3-ultra-550b-a55b:free",
-        default_max_tokens=8192,
-        timeout=180,
+        default_max_tokens=4096,
+        timeout=60,
         max_retries=3,
-        retry_backoff=5.0,
+        retry_backoff=3.0,
     )
     print(f"Provider: {reasoning.provider_name} / {reasoning.model_name}")
     all_results = []
