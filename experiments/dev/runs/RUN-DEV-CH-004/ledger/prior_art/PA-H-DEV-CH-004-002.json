@@ -6,7 +6,7 @@
     "dev_corpus"
   ],
   "queries": [
-    "Traffic signal optimization occurs through a stigmergic mechanism where intersections modify their timing based on physical traffic flow patterns left by preceding vehicles, creating an emergent coordination system. Each intersection continuously monitors traffic flow patterns (queue lengths, vehicle counts) and adjusts its timing parameters to optimize flow. These adjustments create 'traffic traces' in the form of vehicle movement patterns that propagate through the network. Subsequent vehicles and intersections respond to these traces, creating an emergent coordination system where signal timing adapts based on the collective behavior of the system rather than explicit communication or optimization algorithms."
+    "Emergent traffic network optimization through reinforcement learning at each intersection Each intersection operates as an independent reinforcement learning agent that maximizes a local reward function (e.g., vehicles served per cycle) while receiving limited state information from neighbors, with the collective behavior emerging as optimal network performance"
   ],
   "sources": [],
   "matched_prior_art": [],
@@ -15,5 +15,5 @@
   "confidence": 0.3,
   "cutoff": "2026-08-08",
   "reviewer": "novelty_firewall_v0",
-  "timestamp": "2026-08-08T09:00:44.439218+00:00"
+  "timestamp": "2026-08-08T09:11:58.729521+00:00"
 }

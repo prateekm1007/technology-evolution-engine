@@ -1,9 +1,9 @@
 {
   "stage": "05_adversarial_H-DEV-CH-004-002",
   "run_id": "RUN-DEV-CH-004",
-  "code_sha": "5d21bc6786b486dd11ec67b58f9c5ab92d249811",
-  "input_hash": "89d0dccb614dee7fa387115ce83c6186bb8d354016e7ab008e3306e85e7ce505",
-  "output_hash": "74c934aec2bebd24b5c15eb1607d55a1fee7fc0e4e85001f6d19553e5a48c035",
+  "code_sha": "7c7da713eedf1f61714252efe3e2b4573f764b72",
+  "input_hash": "0685a5748c83490187e2d00a928f6c7eb99bdcf0d872003105823642c441d9bf",
+  "output_hash": "3912f2f0eab02b642d143a9759cbbe537d088ac9e36358213cc59a019c4a691d",
   "provider_manifest": {
     "provider": "zai",
     "model": "glm-4-plus",
@@ -13,13 +13,13 @@
       "max_tokens": 4096,
       "system_sha": "1f5a3fff3aebc2e1d44b2312f4b604b5c2911cacaf452eb6ca705c724fc9142b"
     },
-    "prompt_sha": "eba8011d2f33fb2101a09d84d5d0ee91d64ac27c9228bcc8c642fd93af701210",
+    "prompt_sha": "6905d9bc632b9f2ed85403c0e43aa4d6c32765aee131ae37555602aca4d98272",
     "seed": null,
     "tool_versions": {
       "z_ai_cli": "z-ai"
     },
-    "timestamp": "2026-08-08T09:00:33.845655+00:00",
-    "latency_ms": 8034,
+    "timestamp": "2026-08-08T09:11:47.083572+00:00",
+    "latency_ms": 8662,
     "success": true,
     "error": ""
   },
@@ -28,39 +28,39 @@
     "failure_modes": [
       {
         "category": "FRAGILE_ASSUMPTION",
-        "description": "The hypothesis assumes vehicle movement patterns contain sufficient information for coordination, but traffic flow is notoriously noisy and ambiguous",
+        "description": "Local reward maximization leads to global optimum",
         "severity": "HIGH",
-        "evidence": "Traffic studies show vehicle movements are highly variable and influenced by countless factors beyond simple traffic patterns, making reliable pattern recognition nearly impossible"
+        "evidence": "Traffic networks are classic examples of non-convex optimization problems where local optima can trap learning algorithms. The Braess paradox demonstrates that adding capacity to a network can actually reduce overall performance, proving that local improvements don't guarantee global benefits."
       },
       {
         "category": "CONTRADICTS_KNOWN",
-        "description": "The claim contradicts established traffic engineering knowledge that explicit optimization algorithms are necessary for effective signal coordination",
+        "description": "Limited neighbor communication provides sufficient state information",
         "severity": "HIGH",
-        "evidence": "Decades of traffic engineering research demonstrate that coordinated signal systems require explicit timing plans and optimization, not emergent behavior"
+        "evidence": "Traffic flow theory has long established that network-level effects depend on global information. The fundamental diagram of traffic flow shows that local measurements cannot capture the phase transitions between free flow and congested states that propagate through networks."
       },
       {
         "category": "BOUNDARY_BREAKS",
-        "description": "The hypothesis fails to account for emergency vehicles, pedestrians, and other non-standard traffic elements that break the pattern",
+        "description": "Reinforcement learning can converge within required time frame",
         "severity": "MEDIUM",
-        "evidence": "Real-world traffic systems must handle emergency vehicles, pedestrians, and unpredictable events that cannot be incorporated into a pattern-based system"
+        "evidence": "Real traffic systems operate on seconds-scale decision cycles, while RL algorithms typically require thousands of episodes to converge. The curse of dimensionality in state spaces makes convergence infeasible for realistic traffic networks with heterogeneous vehicle types and human driver behaviors."
       },
       {
         "category": "PRIOR_ART_EXISTS",
-        "description": "Similar adaptive traffic systems have been attempted and failed in practice",
+        "description": "Distributed multi-agent systems can solve complex optimization problems",
         "severity": "MEDIUM",
-        "evidence": "Previous attempts at pattern-based traffic control, such as some early SCATS implementations, were abandoned due to poor performance compared to optimized systems"
+        "evidence": "The proposed approach is essentially a rehash of distributed adaptive signal control (DASC) systems from the 1990s, which abandoned local optimization due to poor performance. Modern approaches like SCATS and SCOOT use centralized coordination with distributed execution, not purely local optimization."
       },
       {
         "category": "FALSIFIER_TRIGGERED",
-        "description": "The hypothesis is already falsified by the fact that traffic systems without explicit coordination consistently perform poorly",
+        "description": "Performance degrades compared to simple proportional control",
         "severity": "HIGH",
-        "evidence": "All major metropolitan areas use explicit signal coordination and optimization because emergent systems have proven incapable of handling real traffic demands"
+        "evidence": "The falsifier condition is triggered because decades of traffic control research shows that simple actuated signal control outperforms complex adaptive systems in most real-world scenarios. The computational overhead of RL agents would likely degrade performance rather than improve it."
       },
       {
         "category": "INCOMPATIBLE_TARGET",
-        "description": "The approach is fundamentally incompatible with the need for predictable traffic flow in urban environments",
+        "description": "Traffic patterns exhibit sufficient regularity for learning",
         "severity": "HIGH",
-        "evidence": "Urban transportation systems require predictable flow patterns for emergency services, public transit, and pedestrian safety, which emergent systems cannot provide"
+        "evidence": "Traffic systems are characterized by extreme stochasticity due to accidents, weather, special events, and human irrationality. This violates the stationarity assumption required for RL algorithms, leading to non-stationary learning environments where convergence is impossible."
       }
     ],
     "survives": false,
@@ -70,5 +70,5 @@
     "n_low_severity": 0,
     "source_hypothesis_hash": ""
   },
-  "timestamp": "2026-08-08T09:00:41.880239+00:00"
+  "timestamp": "2026-08-08T09:11:55.746646+00:00"
 }

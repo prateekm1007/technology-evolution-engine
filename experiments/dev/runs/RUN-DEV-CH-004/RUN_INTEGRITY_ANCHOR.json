@@ -1,16 +1,16 @@
 {
   "schema_version": 3,
   "run_id": "RUN-DEV-CH-004",
-  "manifest_sha256": "1ecf705c3d959beaa9b163ea001155229c219cedf1f41187a2f2424c63d3c1da",
-  "ledger_index_sha256": "f6a39a02e654fd60b8246f7dae6b52216b57b854fe87bef46ccd7536a84a7e3c",
-  "ledger_inventory_sha256": "045324151db74ef6ee1448a47f0b40f3ae4322207955a375a480b7a43c078c67",
-  "freeze_record_sha256": "e8d83e4607e0e31fdb9785df6dc39ca795293359dfed8fa119b4b575f290ad2f",
-  "stage_inventory_sha256": "af1d6f795a8090a817e88bae264bf481035ec15c8734c45396fc1c63968ca076",
-  "engine_commit_sha": "5d21bc6786b486dd11ec67b58f9c5ab92d249811",
-  "engine_source_manifest_sha256": "1ff316b3f749ede9bb537ae443382ec7f3b67077df953859d0afbbcf9a977743",
+  "manifest_sha256": "99e6056637fd321804559ab8544c268af32be16e72de0a9b8aaa32919237346c",
+  "ledger_index_sha256": "bb2e340649673c4b520341e92354c55a08a2d1e6446c230a70ad9b6e3feb008e",
+  "ledger_inventory_sha256": "728186016a947ede0bfa96e0f2e31ff057efe18bfc5d8fef2b6c3c76c47ca6cb",
+  "freeze_record_sha256": "6a7f9d66689ca3ca08044c5da801176a2b9f61efe5b2b4de3f85e25b04c71e7d",
+  "stage_inventory_sha256": "b5c9f0612e8e14eb1bb01f7ac84241f93d2b869ad2b4a089443c28b07138e9e8",
+  "engine_commit_sha": "7c7da713eedf1f61714252efe3e2b4573f764b72",
+  "engine_source_manifest_sha256": "064aa548de5113e9f564516d5766a71943c9e97f01cffa8a75dfd86649b4e070",
   "working_tree_clean": false,
-  "working_tree_status_sha256": "a8d611da1c614cd1d07701262e6aae9be0819ba9483d056b58b0c013d01543af",
-  "created_at": "2026-08-08T09:01:05.439880+00:00",
+  "working_tree_status_sha256": "e619d01276230e90c5cbf93abef635166605c474fef7c593e9556615c06733f8",
+  "created_at": "2026-08-08T09:12:29.260229+00:00",
   "note": "RUN_INTEGRITY_ANCHOR \u2014 the external root of trust. engine_commit_sha = the Git commit whose engine source produced this run. engine_source_manifest_sha256 = deterministic hash of engine source files at run time. The run-record commit is NOT self-referential; it is supplied externally by the auditor via the record_commit parameter to verify_run_integrity_anchor(). An auditor verifies: anchor self-hash, engine commit exists + contains expected source, committed anchor at record_commit matches, all mutable files match.",
-  "anchor_sha256": "792c12bef2dc0082eadbab38a33ef1b47df0fa1f9fc63b87be15103dd9f67bda"
+  "anchor_sha256": "fed7d55d9bd68d25b4b09e9c790abea1792efd7383658a0f64d549120ff27c87"
 }

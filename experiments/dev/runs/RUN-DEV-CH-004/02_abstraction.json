@@ -1,9 +1,9 @@
 {
   "stage": "02_abstraction",
   "run_id": "RUN-DEV-CH-004",
-  "code_sha": "5d21bc6786b486dd11ec67b58f9c5ab92d249811",
-  "input_hash": "31a09e4a3f1e79a882f02e6303da0dfa4eb5370f45886a82e139294f0dad3cf5",
-  "output_hash": "578e57319a4c2da158781a68255799da36390b237db300faee10bada67729d5f",
+  "code_sha": "7c7da713eedf1f61714252efe3e2b4573f764b72",
+  "input_hash": "16ddec8434cad5145effc1e9ebe871a3100121428f010f16b141a9b8bb9b73b4",
+  "output_hash": "b2e55cf7a47d9edd8da97a4522593e1a0324bfa54582ee5f9874089ae5e77e79",
   "provider_manifest": {
     "provider": "zai",
     "model": "glm-4-plus",
@@ -13,13 +13,13 @@
       "max_tokens": 4096,
       "system_sha": "da25f0e8a1231c4250cad400e03ce5c0a835dbc6ca8fc600ce255ef3727d663e"
     },
-    "prompt_sha": "ab160b4a4ff0a24144ada5a7f9d6bcb243a5b889f2e985ee799c83b18bf58f66",
+    "prompt_sha": "3c10218721aacb46f7acae2509cc0c6bc0511aa6d6d0c85b679004800aab40b5",
     "seed": null,
     "tool_versions": {
       "z_ai_cli": "z-ai"
     },
-    "timestamp": "2026-08-08T08:59:49.045951+00:00",
-    "latency_ms": 2801,
+    "timestamp": "2026-08-08T09:10:59.363868+00:00",
+    "latency_ms": 2361,
     "success": true,
     "error": ""
   },
@@ -27,47 +27,41 @@
     "pattern": {
       "pattern_id": "MP-DEV-CH-004",
       "source_domain": "myxomycete biology / emergent computation",
-      "causal_structure": "exploration enables network formation under resource constraints, optimizing transport efficiency",
+      "causal_structure": "Flow enables structural adaptation under pressure differentials, producing optimized network topology",
       "inputs": [
-        "initial exploration",
-        "resource locations",
-        "resource concentration"
+        "material flow",
+        "network structure"
       ],
       "conditions": [
-        "resource availability",
-        "network connectivity",
-        "environmental constraints"
+        "pressure differentials",
+        "feedback gain regime"
       ],
       "operations": [
-        "protoplasmic streaming",
-        "network reinforcement",
-        "path pruning"
+        "flow-dependent structural modification",
+        "distributed optimization"
       ],
       "intermediate_state": [
-        "network topology",
-        "flow distribution",
-        "resource gradients"
+        "flow rate variation",
+        "structural reinforcement/atrophy"
       ],
       "outputs": [
-        "optimized transport network",
-        "resource distribution",
-        "network adaptation"
+        "optimized network topology",
+        "self-repair capability"
       ],
       "constraints": [
-        "energy expenditure",
-        "time efficiency",
-        "structural integrity"
+        "feedback gain regime",
+        "material availability"
       ],
       "failure_conditions": [
-        "resource depletion",
-        "network disconnection",
-        "environmental barriers"
+        "flow collapse",
+        "flow rupture",
+        "oscillating flow"
       ],
-      "abstract_principle": "adaptive network formation through feedback between exploration and resource utilization",
-      "source_graph_summary": "0 nodes, 0 edges"
+      "abstract_principle": "Flow-dependent feedback enables adaptive network optimization through local structural modifications.",
+      "source_graph_summary": "16 nodes, 17 edges"
     },
     "failures": [],
-    "source_extraction_hash": "eb02ce974c70b9417f75c057b691531af3c96289f81d0280d09e09a5c3ac909f"
+    "source_extraction_hash": "359b558ee23a5f812e5a3e2e5118ef36a1dfce149bca72cec80923d3aa67bf7f"
   },
-  "timestamp": "2026-08-08T08:59:51.848263+00:00"
+  "timestamp": "2026-08-08T09:11:01.726483+00:00"
 }

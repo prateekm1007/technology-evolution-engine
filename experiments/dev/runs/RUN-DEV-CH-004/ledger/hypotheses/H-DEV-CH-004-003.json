@@ -1,27 +1,28 @@
 {
   "hypothesis_id": "H-DEV-CH-004-003",
-  "claim": "Adaptive signal timing emerges from a competitive resource allocation mechanism where intersections compete for vehicle throughput, with signal adjustments based on relative performance compared to neighboring intersections.",
-  "mechanism": "Each intersection continuously evaluates its performance (vehicles served per unit time) relative to its neighbors. When an intersection's performance falls below that of its neighbors, it increases its green time for the direction with higher demand, effectively 'competing' for vehicle throughput. This creates a system where intersections dynamically adjust their timing based on relative performance, leading to network-wide optimization through local competition rather than cooperation or explicit optimization.",
+  "claim": "Traffic signal adaptation through analog computation in distributed network",
+  "mechanism": "The traffic signal network operates as an analog computer where each intersection represents a computational node, and traffic flow acts as the information carrier. Signal timing adjustments are computed through emergent patterns of congestion propagation, where each intersection's state represents a computational variable in solving the global traffic optimization problem",
   "evidence": [
-    "Resource competition has been shown to optimize resource allocation in biological systems",
-    "Relative performance metrics can drive optimization in distributed systems",
-    "Traffic flow does exhibit competitive dynamics at intersections"
+    "Myxomycetes solve optimization problems through physical network structures",
+    "Analog computing can solve certain problems more efficiently than digital",
+    "Traffic flow exhibits wave-like properties that can carry information"
   ],
   "assumptions": [
-    "Relative performance comparison provides sufficient information for optimization",
-    "Competition between intersections leads to network-wide optimum",
-    "Intersections can accurately measure and compare performance metrics",
-    "The competitive dynamic will stabilize rather than create oscillations"
+    "Traffic congestion patterns can be mapped directly to computational variables",
+    "The physical network can perform computation through flow dynamics",
+    "Emergent patterns of congestion encode the optimal solution",
+    "The analog computation converges faster than digital re-optimization"
   ],
   "predictions": [],
   "expected_failure_modes": [
-    "Creation of 'hotspots' where traffic concentrates inefficiently",
-    "Oscillations as intersections overcompensate for relative performance differences",
-    "System instability during demand shifts or incidents"
+    "Noise in traffic measurements corrupting the computation",
+    "Non-linearities preventing convergence to optimal solutions",
+    "Instability in the computational dynamics",
+    "Failure to scale to network size"
   ],
-  "novelty_rationale": "This hypothesis introduces a competitive rather than cooperative framework for traffic signal optimization, applying biological competition principles to transportation systems.",
-  "testability": "The hypothesis can be tested by implementing a system where intersections adjust timing based on relative performance metrics compared to neighbors, and measuring whether this leads to improved network performance.",
-  "falsifier": "If implementing this competitive system results in traffic being diverted to less efficient routes, increased congestion at certain intersections, or overall network performance degradation compared to a cooperative system, the hypothesis would be falsified.",
+  "novelty_rationale": "Transposes the myxomycete's emergent computation capabilities directly onto the traffic network, treating physical traffic flow as a computational substrate rather than just a control variable",
+  "testability": "Can be tested by implementing the system and measuring whether traffic patterns converge to predicted computational solutions, and comparing convergence speed to digital optimization methods",
+  "falsifier": "If traffic patterns do not exhibit the predicted computational properties, or if the system fails to find solutions that are demonstrably better than random timing adjustments",
   "epistemic_state": "HYPOTHESIZED",
   "parent_hypothesis_ids": [],
   "provenance": {

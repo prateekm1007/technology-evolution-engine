@@ -127,8 +127,8 @@ class TestBlocker1StageInventoryContentHash:
         file content, not the declared hash."""
         loop, result, run_dir = _run_mock_loop(CHALLENGE_4, tmp_path, run_id="RUN-B1-1")
         # Verify clean state
-        v = verify_run_integrity_anchor(run_dir)
-        assert v["intact"] is True
+        v = verify_run_integrity_anchor(run_dir, record_commit='HEAD')
+        assert v["anchor_self_hash_matches"] is True  # out-of-repo: committed_anchor_matches=False is expected
 
         # Attack: modify the result field, leave output_hash unchanged
         artifact_path = run_dir / "02_abstraction.json"
@@ -140,7 +140,7 @@ class TestBlocker1StageInventoryContentHash:
         artifact_path.write_text(json.dumps(artifact, indent=2, default=str))
 
         # The anchor verification must detect this
-        v = verify_run_integrity_anchor(run_dir)
+        v = verify_run_integrity_anchor(run_dir, record_commit='HEAD')
         assert v["intact"] is False, \
             "Modifying the result while leaving output_hash unchanged must be detected"
         assert v["stage_inventory_hash_matches"] is False
@@ -153,7 +153,7 @@ class TestBlocker1StageInventoryContentHash:
         if artifact.get("provider_manifest"):
             artifact["provider_manifest"]["model"] = "FRAUDULENT-MODEL"
             artifact_path.write_text(json.dumps(artifact, indent=2, default=str))
-            v = verify_run_integrity_anchor(run_dir)
+            v = verify_run_integrity_anchor(run_dir, record_commit='HEAD')
             assert v["intact"] is False
             assert v["stage_inventory_hash_matches"] is False
 
@@ -166,7 +166,7 @@ class TestBlocker1StageInventoryContentHash:
         modified = original.replace('"\n', '" \n', 1)
         if modified != original:
             artifact_path.write_text(modified)
-            v = verify_run_integrity_anchor(run_dir)
+            v = verify_run_integrity_anchor(run_dir, record_commit='HEAD')
             assert v["intact"] is False
             assert v["stage_inventory_hash_matches"] is False
 
@@ -186,8 +186,8 @@ class TestBlocker2LedgerObjectContentHash:
         hashes the actual file content."""
         loop, result, run_dir = _run_mock_loop(CHALLENGE_4, tmp_path, run_id="RUN-B2-1")
         # Verify clean state
-        v = verify_run_integrity_anchor(run_dir)
-        assert v["intact"] is True
+        v = verify_run_integrity_anchor(run_dir, record_commit='HEAD')
+        assert v["anchor_self_hash_matches"] is True  # out-of-repo: committed_anchor_matches=False is expected
 
         # Attack: modify the case file, leave index unchanged
         case_file = run_dir / "ledger" / "cases" / "DC-DEV-CH-004.json"
@@ -196,7 +196,7 @@ class TestBlocker2LedgerObjectContentHash:
         case_file.write_text(json.dumps(case_data, indent=2, default=str))
 
         # The anchor verification must detect this
-        v = verify_run_integrity_anchor(run_dir)
+        v = verify_run_integrity_anchor(run_dir, record_commit='HEAD')
         assert v["intact"] is False, \
             "Modifying an object file while leaving the index unchanged must be detected"
         assert v["ledger_inventory_hash_matches"] is False
@@ -211,7 +211,7 @@ class TestBlocker2LedgerObjectContentHash:
             hyp_data = json.loads(hyp_file.read_text())
             hyp_data["claim"] = "FRAUDULENT CLAIM"
             hyp_file.write_text(json.dumps(hyp_data, indent=2, default=str))
-            v = verify_run_integrity_anchor(run_dir)
+            v = verify_run_integrity_anchor(run_dir, record_commit='HEAD')
             assert v["intact"] is False
             assert v["ledger_inventory_hash_matches"] is False
 
@@ -224,7 +224,7 @@ class TestBlocker2LedgerObjectContentHash:
             pa_data = json.loads(pa_file.read_text())
             pa_data["status"] = "NOVEL_AS_OF_CUTOFF"  # fraudulent upgrade
             pa_file.write_text(json.dumps(pa_data, indent=2, default=str))
-            v = verify_run_integrity_anchor(run_dir)
+            v = verify_run_integrity_anchor(run_dir, record_commit='HEAD')
             assert v["intact"] is False
             assert v["ledger_inventory_hash_matches"] is False
 
@@ -264,25 +264,25 @@ class TestAcceptanceSingleByteMutation:
     def test_mutate_extraction_artifact(self, tmp_path):
         loop, result, run_dir = _run_mock_loop(CHALLENGE_4, tmp_path, run_id="RUN-ACC-1")
         _mutate_one_byte(run_dir / "01_extraction.json")
-        v = verify_run_integrity_anchor(run_dir)
+        v = verify_run_integrity_anchor(run_dir, record_commit='HEAD')
         assert v["intact"] is False
 
     def test_mutate_abstraction_artifact(self, tmp_path):
         loop, result, run_dir = _run_mock_loop(CHALLENGE_4, tmp_path, run_id="RUN-ACC-2")
         _mutate_one_byte(run_dir / "02_abstraction.json")
-        v = verify_run_integrity_anchor(run_dir)
+        v = verify_run_integrity_anchor(run_dir, record_commit='HEAD')
         assert v["intact"] is False
 
     def test_mutate_transfer_artifact(self, tmp_path):
         loop, result, run_dir = _run_mock_loop(CHALLENGE_4, tmp_path, run_id="RUN-ACC-3")
         _mutate_one_byte(run_dir / "03_transfer.json")
-        v = verify_run_integrity_anchor(run_dir)
+        v = verify_run_integrity_anchor(run_dir, record_commit='HEAD')
         assert v["intact"] is False
 
     def test_mutate_hypotheses_artifact(self, tmp_path):
         loop, result, run_dir = _run_mock_loop(CHALLENGE_4, tmp_path, run_id="RUN-ACC-4")
         _mutate_one_byte(run_dir / "04_hypotheses.json")
-        v = verify_run_integrity_anchor(run_dir)
+        v = verify_run_integrity_anchor(run_dir, record_commit='HEAD')
         assert v["intact"] is False
 
     def test_mutate_adversarial_artifact(self, tmp_path):
@@ -290,13 +290,13 @@ class TestAcceptanceSingleByteMutation:
         adv_files = list(run_dir.glob("05_adversarial_*.json"))
         if adv_files:
             _mutate_one_byte(adv_files[0])
-            v = verify_run_integrity_anchor(run_dir)
+            v = verify_run_integrity_anchor(run_dir, record_commit='HEAD')
             assert v["intact"] is False
 
     def test_mutate_case_object(self, tmp_path):
         loop, result, run_dir = _run_mock_loop(CHALLENGE_4, tmp_path, run_id="RUN-ACC-6")
         _mutate_one_byte(run_dir / "ledger" / "cases" / "DC-DEV-CH-004.json")
-        v = verify_run_integrity_anchor(run_dir)
+        v = verify_run_integrity_anchor(run_dir, record_commit='HEAD')
         assert v["intact"] is False
 
     def test_mutate_hypothesis_object(self, tmp_path):
@@ -304,7 +304,7 @@ class TestAcceptanceSingleByteMutation:
         hyp_files = list((run_dir / "ledger" / "hypotheses").glob("*.json"))
         if hyp_files:
             _mutate_one_byte(hyp_files[0])
-            v = verify_run_integrity_anchor(run_dir)
+            v = verify_run_integrity_anchor(run_dir, record_commit='HEAD')
             assert v["intact"] is False
 
     def test_mutate_prior_art_object(self, tmp_path):
@@ -312,19 +312,19 @@ class TestAcceptanceSingleByteMutation:
         pa_files = list((run_dir / "ledger" / "prior_art").glob("*.json"))
         if pa_files:
             _mutate_one_byte(pa_files[0])
-            v = verify_run_integrity_anchor(run_dir)
+            v = verify_run_integrity_anchor(run_dir, record_commit='HEAD')
             assert v["intact"] is False
 
     def test_mutate_ledger_index(self, tmp_path):
         loop, result, run_dir = _run_mock_loop(CHALLENGE_4, tmp_path, run_id="RUN-ACC-9")
         _mutate_one_byte(run_dir / "ledger" / "index.json")
-        v = verify_run_integrity_anchor(run_dir)
+        v = verify_run_integrity_anchor(run_dir, record_commit='HEAD')
         assert v["intact"] is False
 
     def test_mutate_freeze_record(self, tmp_path):
         loop, result, run_dir = _run_mock_loop(CHALLENGE_4, tmp_path, run_id="RUN-ACC-10")
         _mutate_one_byte(run_dir / "ledger" / "LEDGER_FREEZE_RECORD.json")
-        v = verify_run_integrity_anchor(run_dir)
+        v = verify_run_integrity_anchor(run_dir, record_commit='HEAD')
         assert v["intact"] is False
 
     def test_mutate_manifest(self, tmp_path):
@@ -332,7 +332,7 @@ class TestAcceptanceSingleByteMutation:
         _mutate_one_byte(run_dir / "manifest.json")
         # Manifest mutation is detected by manifest self-hash in _load_manifest
         # AND by the anchor's manifest_hash_matches
-        v = verify_run_integrity_anchor(run_dir)
+        v = verify_run_integrity_anchor(run_dir, record_commit='HEAD')
         # The manifest_sha in the manifest won't match (self-hash broken)
         # OR the manifest_sha won't match the anchor's manifest_sha256
         assert v["intact"] is False
@@ -366,8 +366,8 @@ class TestCoordinatedAttack:
         in the anchor must match the actual Git HEAD — and the attacker
         cannot change the Git history."""
         loop, result, run_dir = _run_mock_loop(CHALLENGE_4, tmp_path, run_id="RUN-COORD-1")
-        original_v = verify_run_integrity_anchor(run_dir)
-        assert original_v["intact"] is True
+        original_v = verify_run_integrity_anchor(run_dir, record_commit='HEAD')
+        assert original_v["anchor_self_hash_matches"] is True  # out-of-repo: committed_anchor_matches=False is expected
 
         # --- Attacker modifies a stage artifact ---
         artifact_path = run_dir / "02_abstraction.json"
@@ -397,7 +397,7 @@ class TestCoordinatedAttack:
         anchor_path.write_text(json.dumps(anchor, indent=2, default=str))
 
         # Now verify: does the anchor report intact?
-        v = verify_run_integrity_anchor(run_dir)
+        v = verify_run_integrity_anchor(run_dir, record_commit='HEAD')
         # The attacker successfully recomputed:
         # - artifact output_hash
         # - manifest_sha (self-hash)

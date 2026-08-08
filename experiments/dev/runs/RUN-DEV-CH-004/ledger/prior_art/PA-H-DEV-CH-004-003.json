@@ -6,7 +6,7 @@
     "dev_corpus"
   ],
   "queries": [
-    "Adaptive signal timing emerges from a competitive resource allocation mechanism where intersections compete for vehicle throughput, with signal adjustments based on relative performance compared to neighboring intersections. Each intersection continuously evaluates its performance (vehicles served per unit time) relative to its neighbors. When an intersection's performance falls below that of its neighbors, it increases its green time for the direction with higher demand, effectively 'competing' for vehicle throughput. This creates a system where intersections dynamically adjust their timing based on relative performance, leading to network-wide optimization through local competition rather than cooperation or explicit optimization."
+    "Traffic signal adaptation through analog computation in distributed network The traffic signal network operates as an analog computer where each intersection represents a computational node, and traffic flow acts as the information carrier. Signal timing adjustments are computed through emergent patterns of congestion propagation, where each intersection's state represents a computational variable in solving the global traffic optimization problem"
   ],
   "sources": [],
   "matched_prior_art": [],
@@ -15,5 +15,5 @@
   "confidence": 0.3,
   "cutoff": "2026-08-08",
   "reviewer": "novelty_firewall_v0",
-  "timestamp": "2026-08-08T09:00:58.553397+00:00"
+  "timestamp": "2026-08-08T09:12:15.484491+00:00"
 }

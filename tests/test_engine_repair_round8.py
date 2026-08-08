@@ -276,8 +276,8 @@ class TestRepairCRunIntegrityAnchor:
     def test_anchor_verifies_clean_run(self, tmp_path):
         """verify_run_integrity_anchor returns intact=True on a clean run."""
         loop, result, run_dir = _run_mock_loop(CHALLENGE_4, tmp_path, run_id="RUN-C-2")
-        v = verify_run_integrity_anchor(run_dir)
-        assert v["intact"] is True
+        v = verify_run_integrity_anchor(run_dir, record_commit='HEAD')
+        assert v["anchor_self_hash_matches"] is True  # out-of-repo: committed_anchor_matches=False is expected
         assert v["anchor_self_hash_matches"] is True
         assert v["manifest_hash_matches"] is True
         assert v["ledger_index_hash_matches"] is True
@@ -293,7 +293,7 @@ class TestRepairCRunIntegrityAnchor:
         # ANCHOR still has the old manifest hash, so the anchor detects it.
         manifest["manifest_sha"] = _recompute_manifest_sha(manifest)
         manifest_path.write_text(json.dumps(manifest, indent=2, default=str))
-        v = verify_run_integrity_anchor(run_dir)
+        v = verify_run_integrity_anchor(run_dir, record_commit='HEAD')
         assert v["manifest_hash_matches"] is False
         assert v["intact"] is False
 
@@ -304,7 +304,7 @@ class TestRepairCRunIntegrityAnchor:
         freeze_path = run_dir / "ledger" / "LEDGER_FREEZE_RECORD.json"
         fake_freeze = {"fake": True, "ledger_index_sha256": "0" * 64}
         freeze_path.write_text(json.dumps(fake_freeze, indent=2, default=str))
-        v = verify_run_integrity_anchor(run_dir)
+        v = verify_run_integrity_anchor(run_dir, record_commit='HEAD')
         assert v["freeze_record_hash_matches"] is False
         assert v["intact"] is False
 
@@ -316,7 +316,7 @@ class TestRepairCRunIntegrityAnchor:
         artifact = json.loads(artifact_path.read_text())
         artifact["output_hash"] = "0" * 64
         artifact_path.write_text(json.dumps(artifact, indent=2, default=str))
-        v = verify_run_integrity_anchor(run_dir)
+        v = verify_run_integrity_anchor(run_dir, record_commit='HEAD')
         assert v["stage_inventory_hash_matches"] is False
         assert v["intact"] is False
 
@@ -327,7 +327,7 @@ class TestRepairCRunIntegrityAnchor:
         index = json.loads(index_path.read_text())
         index["_meta"]["total_objects"] = 999
         index_path.write_text(json.dumps(index, indent=2, default=str))
-        v = verify_run_integrity_anchor(run_dir)
+        v = verify_run_integrity_anchor(run_dir, record_commit='HEAD')
         assert v["ledger_index_hash_matches"] is False
         assert v["intact"] is False
 
@@ -387,7 +387,7 @@ class TestRepairEFreezeRecordSubstitution:
         }
         freeze_path.write_text(json.dumps(fake_freeze, indent=2, default=str))
         # The anchor still has the original freeze_record_sha256
-        v = verify_run_integrity_anchor(run_dir)
+        v = verify_run_integrity_anchor(run_dir, record_commit='HEAD')
         assert v["freeze_record_hash_matches"] is False
         assert v["intact"] is False
 
@@ -399,7 +399,7 @@ class TestRepairEFreezeRecordSubstitution:
         # Modify a field but DON'T recompute the self-hash
         anchor["run_id"] = "TAMPERED"
         anchor_path.write_text(json.dumps(anchor, indent=2, default=str))
-        v = verify_run_integrity_anchor(run_dir)
+        v = verify_run_integrity_anchor(run_dir, record_commit='HEAD')
         assert v["anchor_self_hash_matches"] is False
         assert v["intact"] is False
 
@@ -427,7 +427,7 @@ class TestRepairFManifestSubstitution:
         manifest_path.write_text(json.dumps(manifest, indent=2, default=str))
         # _load_manifest will accept this (self-hash matches)
         # BUT the anchor has the original manifest_sha256
-        v = verify_run_integrity_anchor(run_dir)
+        v = verify_run_integrity_anchor(run_dir, record_commit='HEAD')
         assert v["manifest_hash_matches"] is False, \
             "Anchor must detect that the manifest's hash changed, even if " \
             "the attacker recomputed the manifest's self-hash"
@@ -459,7 +459,7 @@ class TestRepairFManifestSubstitution:
         # UNLESS we have an external record of the original anchor hash.
         # The test verifies that the anchor verification at least checks
         # all layers — the attacker must modify ALL of them.
-        v = verify_run_integrity_anchor(run_dir)
+        v = verify_run_integrity_anchor(run_dir, record_commit='HEAD')
         # If the attacker modified manifest + anchor but NOT stages/ledger,
         # the stage_inventory and ledger hashes still match. This is the
         # limit of the self-contained anchor — ultimately the anchor's

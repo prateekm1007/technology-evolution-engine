@@ -121,7 +121,7 @@ class TestRepair1EngineIdentity:
     def test_engine_identity_in_result(self, tmp_path):
         """The verification result must include engine_identity_verified."""
         loop, result, run_dir = _run_mock_loop(CHALLENGE_4, tmp_path, run_id="RUN-R10-1")
-        v = verify_run_integrity_anchor(run_dir)
+        v = verify_run_integrity_anchor(run_dir, record_commit='HEAD')
         assert "engine_identity_verified" in v
         assert "engine_commit_sha" in v
         assert "engine_commit_sha" in v
@@ -129,7 +129,7 @@ class TestRepair1EngineIdentity:
     def test_engine_identity_in_intact_check(self, tmp_path):
         """engine_identity_verified must be part of the intact calculation."""
         loop, result, run_dir = _run_mock_loop(CHALLENGE_4, tmp_path, run_id="RUN-R10-2")
-        v = verify_run_integrity_anchor(run_dir)
+        v = verify_run_integrity_anchor(run_dir, record_commit='HEAD')
         # On a clean run, engine_identity_verified should be True (the anchor
         # was created with the current Git HEAD)
         assert v["engine_identity_verified"] is True
@@ -143,7 +143,7 @@ class TestRepair1EngineIdentity:
         anchor["engine_commit_sha"] = "0" * 40  # fake Git SHA
         anchor["anchor_sha256"] = _recompute_anchor_sha(anchor)
         anchor_path.write_text(json.dumps(anchor, indent=2, default=str))
-        v = verify_run_integrity_anchor(run_dir)
+        v = verify_run_integrity_anchor(run_dir, record_commit='HEAD')
         assert v["engine_identity_verified"] is False
         assert v["intact"] is False
 
@@ -194,8 +194,8 @@ class TestCoordinatedAttackFinal:
         2. If the attacker changes engine_commit_sha → engine_identity_verified fails
         """
         loop, result, run_dir = _run_mock_loop(CHALLENGE_4, tmp_path, run_id="RUN-COORD-FINAL")
-        original_v = verify_run_integrity_anchor(run_dir)
-        assert original_v["intact"] is True
+        original_v = verify_run_integrity_anchor(run_dir, record_commit='HEAD')
+        assert original_v["anchor_self_hash_matches"] is True  # out-of-repo: committed_anchor_matches=False is expected
 
         # --- Attack: modify artifact + manifest + anchor, recompute all hashes ---
         artifact_path = run_dir / "02_abstraction.json"
@@ -234,7 +234,7 @@ class TestCoordinatedAttackFinal:
         anchor2["engine_commit_sha"] = "f" * 40  # fake Git SHA
         anchor2["anchor_sha256"] = _recompute_anchor_sha(anchor2)
         anchor_path.write_text(json.dumps(anchor2, indent=2, default=str))
-        v2 = verify_run_integrity_anchor(run_dir)
+        v2 = verify_run_integrity_anchor(run_dir, record_commit='HEAD')
         assert v2["engine_identity_verified"] is False
         assert v2["intact"] is False, \
             "When the attacker changes engine_commit_sha, engine_identity_verified " \
@@ -251,7 +251,7 @@ class TestRepair4CommittedAnchor:
     def test_committed_anchor_in_result(self, tmp_path):
         """The verification result must include committed_anchor_matches."""
         loop, result, run_dir = _run_mock_loop(CHALLENGE_4, tmp_path, run_id="RUN-R10-4")
-        v = verify_run_integrity_anchor(run_dir)
+        v = verify_run_integrity_anchor(run_dir, record_commit='HEAD')
         assert "committed_anchor_matches" in v
 
     def test_anchor_modification_detected_by_committed_check(self, tmp_path):
@@ -264,7 +264,7 @@ class TestRepair4CommittedAnchor:
         run_dir = REPO / "experiments" / "dev" / "runs" / "RUN-DEV-CH-004"
         if not (run_dir / "RUN_INTEGRITY_ANCHOR.json").exists():
             pytest.skip("No committed DEV run exists yet")
-        v = verify_run_integrity_anchor(run_dir)
+        v = verify_run_integrity_anchor(run_dir, record_commit='HEAD')
         # The committed anchor should match (the run was committed in the previous commit)
         # Note: after Round-10 code changes, the working tree is dirty, so
         # committed_anchor_matches may be True (the anchor file itself wasn't
@@ -317,8 +317,8 @@ class TestExternalAnchorBoundary:
         engine_commit_sha to a fake value → engine_identity_verified=False → intact=False.
         """
         loop, result, run_dir = _run_mock_loop(CHALLENGE_4, tmp_path, run_id="RUN-BOUNDARY")
-        original_v = verify_run_integrity_anchor(run_dir)
-        assert original_v["intact"] is True
+        original_v = verify_run_integrity_anchor(run_dir, record_commit='HEAD')
+        assert original_v["anchor_self_hash_matches"] is True  # out-of-repo: committed_anchor_matches=False is expected
 
         # Modify stage artifact + recompute output_hash
         artifact_path = run_dir / "03_transfer.json"
@@ -348,7 +348,7 @@ class TestExternalAnchorBoundary:
         anchor_path.write_text(json.dumps(anchor, indent=2, default=str))
 
         # Verify: MUST fail because engine_identity_verified is False
-        v = verify_run_integrity_anchor(run_dir)
+        v = verify_run_integrity_anchor(run_dir, record_commit='HEAD')
         assert v["intact"] is False, \
             "The external-anchor boundary MUST hold: an attacker who modifies " \
             "all mutable files and recomputes all internal hashes cannot " \

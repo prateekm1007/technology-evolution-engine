@@ -1,27 +1,27 @@
 {
   "hypothesis_id": "H-DEV-CH-004-001",
-  "claim": "Adaptive traffic signal timing emerges from a decentralized reinforcement learning mechanism where each intersection independently adjusts its timing based on local traffic rewards, with occasional communication of performance metrics to neighbors.",
-  "mechanism": "Each intersection acts as an autonomous agent that continuously evaluates signal timing policies using a local reward function (e.g., reduced vehicle delay). Through trial and error, intersections discover optimal timing parameters. Periodically, intersections share performance metrics with adjacent intersections, enabling network-wide optimization through local information exchange rather than global coordination.",
+  "claim": "Distributed adaptive signal timing through local queue length feedback",
+  "mechanism": "Each intersection adjusts its green time proportionally to its local queue length, with a small portion of adjustment influenced by immediate neighbors' states through limited communication",
   "evidence": [
-    "Reinforcement learning has shown success in controlling complex systems with local feedback",
-    "Distributed multi-agent systems can solve optimization problems without central coordination",
-    "Local traffic measurements contain sufficient information for adaptive control"
+    "Myxomycetes adjust tube structures based on local flow conditions",
+    "Proportional control systems are stable for single intersections",
+    "Distributed systems can achieve global optimization through local interactions"
   ],
   "assumptions": [
-    "Intersections can independently evaluate policy performance",
-    "Limited communication of performance metrics is sufficient for network-wide optimization",
-    "Local reward functions align with global traffic objectives",
-    "Intersections can maintain and update internal policy models"
+    "Queue length is the primary indicator of traffic demand",
+    "Local adjustments will propagate beneficial changes through the network",
+    "Proportional control without integral terms will prevent oscillation",
+    "Network topology is sufficiently connected for information propagation"
   ],
   "predictions": [],
   "expected_failure_modes": [
-    "Oscillations between intersections due to conflicting optimization objectives",
-    "Convergence to local optima that are suboptimal for the network",
-    "Computational overload at intersections due to complex policy evaluation"
+    "Oscillations between intersections when proportional gains are too high",
+    "Gridlock when neighboring intersections simultaneously increase green time for conflicting flows",
+    "Failure to adapt to sudden demand changes due to lack of integral control"
   ],
-  "novelty_rationale": "This hypothesis extends reinforcement learning from single-agent to multi-agent traffic control systems, using myxomycete-inspired exploration while maintaining computational feasibility through localized learning.",
-  "testability": "The hypothesis can be tested by implementing a reinforcement learning system at each intersection with varying communication frequencies and measuring convergence time and performance metrics.",
-  "falsifier": "If implementing this system results in oscillating or divergent signal timing patterns where intersections continuously adjust parameters without converging to stable solutions, or if the system fails to improve network-wide traffic flow despite improving local metrics, the hypothesis would be falsified.",
+  "novelty_rationale": "Translates the myxomycete's flow-dependent structural modification into a traffic signal control system using only local measurements and neighbor communication, without requiring central coordination or predictive models",
+  "testability": "Can be implemented in simulation with varying network topologies and traffic conditions, with metrics including average delay, convergence time, and oscillation frequency",
+  "falsifier": "If the system fails to converge within 15 minutes under normal traffic conditions or exhibits persistent oscillations in signal timing across the network",
   "epistemic_state": "HYPOTHESIZED",
   "parent_hypothesis_ids": [],
   "provenance": {

@@ -1,9 +1,9 @@
 {
   "stage": "11_state_machine",
   "run_id": "RUN-DEV-CH-004",
-  "code_sha": "5d21bc6786b486dd11ec67b58f9c5ab92d249811",
-  "input_hash": "95f6166e9666f7d2e30bffff395896dc5d3b905c42ba685891eb06439b026c52",
-  "output_hash": "57f54302524bd302562948610be0bc0d13ebbc509a756f27836af88c0ee5ff63",
+  "code_sha": "7c7da713eedf1f61714252efe3e2b4573f764b72",
+  "input_hash": "0b403cb2efe21fc50638d9ec952f72d797fd67c36964756d4548bc0717e08e55",
+  "output_hash": "4928429b958904be93d491d8f183991214c2207346a23223d56874566c27b27c",
   "provider_manifest": null,
   "result": {
     "final_state": "TESTABLE_HYPOTHESIS",
@@ -12,8 +12,8 @@
         "from_state": "RAW_EVIDENCE",
         "to_state": "STRUCTURED_KNOWLEDGE",
         "actor": "loop",
-        "timestamp": "2026-08-08T09:00:58.557884+00:00",
-        "code_sha": "5d21bc6786b486dd11ec67b58f9c5ab92d249811",
+        "timestamp": "2026-08-08T09:12:26.706382+00:00",
+        "code_sha": "7c7da713eedf1f61714252efe3e2b4573f764b72",
         "evidence": "dev_pipeline_stage",
         "reason": "phase advance"
       },
@@ -21,8 +21,8 @@
         "from_state": "STRUCTURED_KNOWLEDGE",
         "to_state": "MECHANISM",
         "actor": "loop",
-        "timestamp": "2026-08-08T09:00:58.557898+00:00",
-        "code_sha": "5d21bc6786b486dd11ec67b58f9c5ab92d249811",
+        "timestamp": "2026-08-08T09:12:26.706391+00:00",
+        "code_sha": "7c7da713eedf1f61714252efe3e2b4573f764b72",
         "evidence": "dev_pipeline_stage",
         "reason": "phase advance"
       },
@@ -30,8 +30,8 @@
         "from_state": "MECHANISM",
         "to_state": "TRANSFER_HYPOTHESIS",
         "actor": "loop",
-        "timestamp": "2026-08-08T09:00:58.557902+00:00",
-        "code_sha": "5d21bc6786b486dd11ec67b58f9c5ab92d249811",
+        "timestamp": "2026-08-08T09:12:26.706395+00:00",
+        "code_sha": "7c7da713eedf1f61714252efe3e2b4573f764b72",
         "evidence": "dev_pipeline_stage",
         "reason": "phase advance"
       },
@@ -39,8 +39,8 @@
         "from_state": "TRANSFER_HYPOTHESIS",
         "to_state": "CANDIDATE_DISCOVERY",
         "actor": "loop",
-        "timestamp": "2026-08-08T09:00:58.557906+00:00",
-        "code_sha": "5d21bc6786b486dd11ec67b58f9c5ab92d249811",
+        "timestamp": "2026-08-08T09:12:26.706399+00:00",
+        "code_sha": "7c7da713eedf1f61714252efe3e2b4573f764b72",
         "evidence": "dev_pipeline_stage",
         "reason": "phase advance"
       },
@@ -48,8 +48,8 @@
         "from_state": "CANDIDATE_DISCOVERY",
         "to_state": "GATE_A",
         "actor": "loop",
-        "timestamp": "2026-08-08T09:00:58.557909+00:00",
-        "code_sha": "5d21bc6786b486dd11ec67b58f9c5ab92d249811",
+        "timestamp": "2026-08-08T09:12:26.706402+00:00",
+        "code_sha": "7c7da713eedf1f61714252efe3e2b4573f764b72",
         "evidence": "dev_pipeline_stage",
         "reason": "phase advance"
       },
@@ -57,8 +57,8 @@
         "from_state": "GATE_A",
         "to_state": "GATE_B",
         "actor": "loop",
-        "timestamp": "2026-08-08T09:00:58.557911+00:00",
-        "code_sha": "5d21bc6786b486dd11ec67b58f9c5ab92d249811",
+        "timestamp": "2026-08-08T09:12:26.706408+00:00",
+        "code_sha": "7c7da713eedf1f61714252efe3e2b4573f764b72",
         "evidence": "dev_pipeline_stage",
         "reason": "phase advance"
       },
@@ -66,8 +66,8 @@
         "from_state": "GATE_B",
         "to_state": "GATE_C",
         "actor": "loop",
-        "timestamp": "2026-08-08T09:00:58.557914+00:00",
-        "code_sha": "5d21bc6786b486dd11ec67b58f9c5ab92d249811",
+        "timestamp": "2026-08-08T09:12:26.706410+00:00",
+        "code_sha": "7c7da713eedf1f61714252efe3e2b4573f764b72",
         "evidence": "dev_pipeline_stage",
         "reason": "phase advance"
       },
@@ -75,20 +75,20 @@
         "from_state": "GATE_C",
         "to_state": "TESTABLE_HYPOTHESIS",
         "actor": "loop",
-        "timestamp": "2026-08-08T09:00:58.557918+00:00",
-        "code_sha": "5d21bc6786b486dd11ec67b58f9c5ab92d249811",
+        "timestamp": "2026-08-08T09:12:26.706413+00:00",
+        "code_sha": "7c7da713eedf1f61714252efe3e2b4573f764b72",
         "evidence": "dev_pipeline_stage",
         "reason": "phase advance"
       }
     ],
     "pipeline_stage_reached": "TESTABLE_HYPOTHESIS",
     "candidate_status": "ALL_BLOCKED_AT_ADVERSARIAL",
-    "n_hypotheses": 3,
+    "n_hypotheses": 4,
     "n_survived_adversarial": 0,
-    "n_blocked_adversarial": 3,
+    "n_blocked_adversarial": 4,
     "n_inconclusive_adversarial": 0,
     "scientific_gate_passed": false,
     "note": "DEV pipeline stages GATE_A/B/C are NOT scientific Gate A/B/C. They are pipeline markers. Scientific gates require independent adjudication per SCIENTIFIC_GATE_2_PROTOCOL.md. candidate_status=ALL_BLOCKED_AT_ADVERSARIAL describes the outcome of the adversarial filter, NOT scientific gate passage."
   },
-  "timestamp": "2026-08-08T09:00:58.558100+00:00"
+  "timestamp": "2026-08-08T09:12:26.706589+00:00"
 }

@@ -1,8 +1,8 @@
 {
   "stage": "07_novelty_H-DEV-CH-004-002",
   "run_id": "RUN-DEV-CH-004",
-  "code_sha": "5d21bc6786b486dd11ec67b58f9c5ab92d249811",
-  "input_hash": "89d0dccb614dee7fa387115ce83c6186bb8d354016e7ab008e3306e85e7ce505",
+  "code_sha": "7c7da713eedf1f61714252efe3e2b4573f764b72",
+  "input_hash": "0685a5748c83490187e2d00a928f6c7eb99bdcf0d872003105823642c441d9bf",
   "output_hash": "047da1e8a2a05a62469331a2e0675da0daf5414144a7646c89c9c97f8dab3645",
   "provider_manifest": {
     "provider": "mock-literature",
@@ -12,10 +12,10 @@
       "corpus_size": 1,
       "cutoff": "2026-08-08"
     },
-    "prompt_sha": "e1a30d31ac86124def395bb6d868d255ca363e203a33d753170401abf3306af3",
+    "prompt_sha": "aae1759afadce4fba7aa974d99f98a3580563e1e20d61994455a5b981f7a01ff",
     "seed": null,
     "tool_versions": {},
-    "timestamp": "2026-08-08T09:00:44.439178+00:00",
+    "timestamp": "2026-08-08T09:11:58.729490+00:00",
     "latency_ms": null,
     "success": true,
     "error": ""
@@ -28,5 +28,5 @@
     "review_required": true,
     "source_hypothesis_hash": ""
   },
-  "timestamp": "2026-08-08T09:00:44.439553+00:00"
+  "timestamp": "2026-08-08T09:11:58.729836+00:00"
 }

@@ -1,9 +1,9 @@
 {
   "stage": "06_rediscovery_H-DEV-CH-004-001",
   "run_id": "RUN-DEV-CH-004",
-  "code_sha": "5d21bc6786b486dd11ec67b58f9c5ab92d249811",
-  "input_hash": "b8ea6e05fc4a7a4b875e20822ee5986c97e84acbd74c3ea6d1e95e49c0f91299",
-  "output_hash": "37ff1635b53111eb12b3563c9544139333d88461e7ba6f37365e9a700011226d",
+  "code_sha": "7c7da713eedf1f61714252efe3e2b4573f764b72",
+  "input_hash": "d99593d9c3d462a50b4111c7fb454d7bcd786c46603acd4e8fa48af5950865e5",
+  "output_hash": "16d5a1626c5b4e1c2e36f9a57ee7c3e5c258c9b0cc18ac19d75fd58dfb1ff68e",
   "provider_manifest": {
     "provider": "zai",
     "model": "glm-4-plus",
@@ -13,22 +13,22 @@
       "max_tokens": 4096,
       "system_sha": "dbdd0760dff49fc029b32b580a575b7de33a87d371edc2b0deec93bfb2b90b01"
     },
-    "prompt_sha": "8883a50b7b015cf0cdf810427a35909e59cb5c93ef96519036edbee7be87e7ee",
+    "prompt_sha": "a3a7c5a1b079dd00066df36be2826f4c26a7c6c9b9e0d837f121ba2432361284",
     "seed": null,
     "tool_versions": {
       "z_ai_cli": "z-ai"
     },
-    "timestamp": "2026-08-08T09:00:30.818958+00:00",
-    "latency_ms": 3022,
+    "timestamp": "2026-08-08T09:11:44.348859+00:00",
+    "latency_ms": 2731,
     "success": true,
     "error": ""
   },
   "result": {
     "hypothesis_id": "H-DEV-CH-004-001",
     "classification": "NON_TRIVIAL_TRANSFER",
-    "evidence": "The hypothesis describes a decentralized reinforcement learning system for traffic signal timing, where intersections act as autonomous agents adjusting based on local rewards and sharing metrics with neighbors. The source documents describe a biological system (Physarum polycephalum) that creates transport networks through protoplasmic streaming and feedback mechanisms, where tubes thicken with high flow and thin with low flow. While both systems involve decentralized optimization and local feedback, the hypothesis transfers these concepts from a biological domain (slime mold network adaptation) to a completely different domain (traffic signal control). The specific mechanisms described (reinforcement learning, reward functions, autonomous agents) have no direct counterpart in the biological source, making this a genuine cross-domain transfer that cannot be reduced to the source text.",
+    "evidence": "The hypothesis describes a distributed adaptive signal timing system for traffic intersections based on local queue length feedback with neighbor communication. The source document describes a biological system (Physarum polycephalum) that creates adaptive transport networks through protoplasmic streaming and feedback mechanisms. While both systems involve distributed adaptation and feedback, the specific application to traffic signal timing with queue length metrics and neighbor communication represents a significant cross-domain transfer from biological network formation to traffic engineering. The hypothesis cannot be directly derived from the source text, which describes a completely different biological system with different variables (tube radius, flow rate) and mechanisms (actin-myosin contractions, cytoplasmic streaming).",
     "is_rediscovery": false,
     "source_hypothesis_hash": ""
   },
-  "timestamp": "2026-08-08T09:00:33.841551+00:00"
+  "timestamp": "2026-08-08T09:11:47.080389+00:00"
 }

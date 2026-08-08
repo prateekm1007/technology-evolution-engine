@@ -1,9 +1,9 @@
 {
   "stage": "05_adversarial_H-DEV-CH-004-001",
   "run_id": "RUN-DEV-CH-004",
-  "code_sha": "5d21bc6786b486dd11ec67b58f9c5ab92d249811",
-  "input_hash": "b8ea6e05fc4a7a4b875e20822ee5986c97e84acbd74c3ea6d1e95e49c0f91299",
-  "output_hash": "970e2fa92ef3b1d51e836332533dba8a90213f024cdb4e79a16b0e9ada4e051b",
+  "code_sha": "7c7da713eedf1f61714252efe3e2b4573f764b72",
+  "input_hash": "d99593d9c3d462a50b4111c7fb454d7bcd786c46603acd4e8fa48af5950865e5",
+  "output_hash": "9af229e634123782de027ad94d180fe6c5ddb2ba199ad0e38da0d41931402514",
   "provider_manifest": {
     "provider": "zai",
     "model": "glm-4-plus",
@@ -13,13 +13,13 @@
       "max_tokens": 4096,
       "system_sha": "1f5a3fff3aebc2e1d44b2312f4b604b5c2911cacaf452eb6ca705c724fc9142b"
     },
-    "prompt_sha": "74301d5bd70eff54f76a26e17b60412e3f6f2eb954535a32c8db6fc498670a7a",
+    "prompt_sha": "b9d73bb1bf5f725a0d7f46e8939044a7271e764a717381b358feabfd5aabb352",
     "seed": null,
     "tool_versions": {
       "z_ai_cli": "z-ai"
     },
-    "timestamp": "2026-08-08T09:00:21.107844+00:00",
-    "latency_ms": 9707,
+    "timestamp": "2026-08-08T09:11:36.622903+00:00",
+    "latency_ms": 7722,
     "success": true,
     "error": ""
   },
@@ -28,39 +28,39 @@
     "failure_modes": [
       {
         "category": "FRAGILE_ASSUMPTION",
-        "description": "The assumption that local reward functions align with global traffic objectives is fundamentally flawed without a centralized coordination mechanism to ensure alignment.",
+        "description": "Queue length is the primary indicator of traffic demand",
         "severity": "HIGH",
-        "evidence": "Traffic networks are inherently non-linear systems where local optimizations often create global bottlenecks (Braess paradox). Without explicit alignment between local and global objectives, the system will inevitably create worse overall performance."
+        "evidence": "Queue length is a lagging indicator that doesn't capture turning movements, pedestrian crossings, or future demand patterns. The system would fail to anticipate and prepare for traffic waves forming upstream."
       },
       {
         "category": "CONTRADICTS_KNOWN",
-        "description": "This contradicts decades of traffic engineering research showing that network-wide coordination is necessary for optimal traffic flow.",
+        "description": "Proportional control without integral terms will prevent oscillation",
         "severity": "HIGH",
-        "evidence": "Modern traffic control systems (SCATS, SCOOT) all rely on some form of centralized coordination or network-wide optimization. Pure decentralized approaches have consistently failed in real-world implementations."
+        "evidence": "Control theory 101: pure proportional control guarantees steady-state error in systems with integrators. Traffic flow has inherent integrator behavior (queue accumulation), so this will\u5fc5\u7136 lead to persistent offset and oscillations."
       },
       {
         "category": "BOUNDARY_BREAKS",
-        "description": "The hypothesis fails to account for boundary conditions where intersections have asymmetric traffic patterns or different road capacities.",
+        "description": "Limited communication between neighbors",
         "severity": "MEDIUM",
-        "evidence": "In heterogeneous networks where intersections have vastly different traffic characteristics, the learning mechanism would converge at different rates, potentially creating bottlenecks at intersections with higher computational complexity."
+        "evidence": "In real networks, communication failures are common. The system doesn't specify how to handle missing neighbor data, leading to asymmetric adjustments and potential cascading failures."
       },
       {
         "category": "PRIOR_ART_EXISTS",
-        "description": "This approach is not novel as similar multi-agent reinforcement learning approaches have been attempted and failed in traffic control.",
+        "description": "Distributed adaptive signal timing",
         "severity": "MEDIUM",
-        "evidence": "Previous implementations of multi-agent RL for traffic control (e.g., Van der Pol et al. 2018) consistently showed that without significant constraints or network awareness, systems either failed to converge or performed worse than traditional methods."
+        "evidence": "Tollmien's work in 1930s and modern adaptive systems like SCATS, SCOOT, and RHODES already implement distributed coordination with more sophisticated algorithms than simple proportional control."
       },
       {
         "category": "FALSIFIER_TRIGGERED",
-        "description": "The expected failure modes (oscillations, local optima) are not just possible but inevitable in this design.",
+        "description": "Failure to converge within 15 minutes",
         "severity": "HIGH",
-        "evidence": "The described mechanism guarantees oscillations because intersections will continuously respond to local conditions without awareness of network-wide effects, creating a classic 'tragedy of the commons' scenario where each intersection optimizes for itself at the expense of the network."
+        "evidence": "The falsifier condition itself exposes a critical flaw - real traffic systems must operate continuously, not have 15-minute warm-up periods. The system would cause chaos during morning rush hour while 'converging'."
       },
       {
         "category": "INCOMPATIBLE_TARGET",
-        "description": "The computational requirements for real-time policy evaluation at each intersection are incompatible with the processing capabilities of existing traffic signal controllers.",
+        "description": "Translating biological mechanisms to engineering systems",
         "severity": "HIGH",
-        "evidence": "Modern traffic signal controllers typically have limited computational resources (often 8-16 bit processors) incapable of running complex reinforcement learning algorithms in real-time while handling other critical functions like pedestrian detection and emergency vehicle preemption."
+        "evidence": "Myxomycetes operate on completely different timescales and physics than traffic systems. The analogy is superficial and ignores fundamental differences between biological adaptation and engineered control systems."
       }
     ],
     "survives": false,
@@ -70,5 +70,5 @@
     "n_low_severity": 0,
     "source_hypothesis_hash": ""
   },
-  "timestamp": "2026-08-08T09:00:30.816124+00:00"
+  "timestamp": "2026-08-08T09:11:44.345699+00:00"
 }

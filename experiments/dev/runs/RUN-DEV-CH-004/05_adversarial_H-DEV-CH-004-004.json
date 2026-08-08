@@ -1,0 +1,80 @@
+{
+  "stage": "05_adversarial_H-DEV-CH-004-004",
+  "run_id": "RUN-DEV-CH-004",
+  "code_sha": "7c7da713eedf1f61714252efe3e2b4573f764b72",
+  "input_hash": "91edd9a030e6f9c566c3c33f7414fc434fdeafcb5ae0a0804ea7a421fc2bfb97",
+  "output_hash": "9f31a35f7e67bf79e7bd6ecc8fbef15f2a2bd9972d77461b9e9cfb108b2a7539",
+  "provider_manifest": {
+    "provider": "zai",
+    "model": "glm-4-plus",
+    "version": "z-ai-web-dev-sdk",
+    "configuration": {
+      "temperature": 0.2,
+      "max_tokens": 4096,
+      "system_sha": "1f5a3fff3aebc2e1d44b2312f4b604b5c2911cacaf452eb6ca705c724fc9142b"
+    },
+    "prompt_sha": "ae77a23a80cfaee8f876037124cc4da1fa775529db29466f5f9481aeea4b42a4",
+    "seed": null,
+    "tool_versions": {
+      "z_ai_cli": "z-ai"
+    },
+    "timestamp": "2026-08-08T09:12:15.486453+00:00",
+    "latency_ms": 8444,
+    "success": true,
+    "error": ""
+  },
+  "result": {
+    "hypothesis_id": "H-DEV-CH-004-004",
+    "failure_modes": [
+      {
+        "category": "FRAGILE_ASSUMPTION",
+        "description": "Maximizing information flow correlates with maximizing traffic throughput",
+        "severity": "HIGH",
+        "evidence": "Information theory measures data correlation, not necessarily throughput. High mutual information could indicate congestion rather than efficiency. The fundamental assumption is untested and likely wrong."
+      },
+      {
+        "category": "CONTRADICTS_KNOWN",
+        "description": "Local measurements can estimate network-wide information flow",
+        "severity": "HIGH",
+        "evidence": "Network information theory shows that local measurements cannot reliably estimate global information flow without significant overhead. This contradicts established results in network information theory."
+      },
+      {
+        "category": "BOUNDARY_BREAKS",
+        "description": "Information-theoretic optimization is computationally feasible in real-time",
+        "severity": "HIGH",
+        "evidence": "Calculating mutual information for even moderate-sized networks is NP-hard. Real-time traffic control requires millisecond decisions, making this approach computationally infeasible."
+      },
+      {
+        "category": "FALSIFIER_TRIGGERED",
+        "description": "The hypothesis lacks falsifiable predictions",
+        "severity": "MEDIUM",
+        "evidence": "The predictions field is empty. Without specific, testable predictions, the hypothesis cannot be properly evaluated or falsified."
+      },
+      {
+        "category": "PRIOR_ART_EXISTS",
+        "description": "Novelty claim is unfounded",
+        "severity": "MEDIUM",
+        "evidence": "Information-theoretic approaches to traffic control have been explored since at least 2005 (e.g., work by Varaiya and others). The claimed novelty is overstated."
+      },
+      {
+        "category": "INCOMPATIBLE_TARGET",
+        "description": "Self-organization conflicts with traffic safety requirements",
+        "severity": "HIGH",
+        "evidence": "Traffic systems must prioritize safety above all else. Purely information-theoretic optimization could create dangerous configurations that maximize information flow but violate safety constraints."
+      },
+      {
+        "category": "FRAGILE_ASSUMPTION",
+        "description": "The network has sufficient heterogeneity to benefit from information maximization",
+        "severity": "LOW",
+        "evidence": "Many real traffic networks have homogeneous sections where this approach would provide no benefit. The hypothesis doesn't address how to handle such cases."
+      }
+    ],
+    "survives": false,
+    "outcome": "ADVERSARIAL_FAILED",
+    "n_high_severity": 4,
+    "n_medium_severity": 2,
+    "n_low_severity": 1,
+    "source_hypothesis_hash": ""
+  },
+  "timestamp": "2026-08-08T09:12:23.931548+00:00"
+}

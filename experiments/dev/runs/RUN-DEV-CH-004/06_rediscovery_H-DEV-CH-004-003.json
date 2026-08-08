@@ -1,9 +1,9 @@
 {
   "stage": "06_rediscovery_H-DEV-CH-004-003",
   "run_id": "RUN-DEV-CH-004",
-  "code_sha": "5d21bc6786b486dd11ec67b58f9c5ab92d249811",
-  "input_hash": "a9318f84baf00bc807dcd347f6fc7fc31468209c27a7cbbf3e7c06728609c0e9",
-  "output_hash": "583d5a3d50374cb6b6902f5458ea7d867ba9ac58f360bcd189366f04810ef1ad",
+  "code_sha": "7c7da713eedf1f61714252efe3e2b4573f764b72",
+  "input_hash": "fe877caa03f919ae97887f1be3b92a79dd22f4201ee9535397cca3b37a24828c",
+  "output_hash": "fac4f774b7a78e7f4558fe297075335e1494e338f7d6fe88d00348ed25ab4b90",
   "provider_manifest": {
     "provider": "zai",
     "model": "glm-4-plus",
@@ -13,22 +13,22 @@
       "max_tokens": 4096,
       "system_sha": "dbdd0760dff49fc029b32b580a575b7de33a87d371edc2b0deec93bfb2b90b01"
     },
-    "prompt_sha": "7e8151b3977b071e773c3878c4859323d13987c4f33f492413a556c3617deea8",
+    "prompt_sha": "deb4a2485ae8b84a951f158c55b2eb526f32091cf9a023e7b5a660020501291e",
     "seed": null,
     "tool_versions": {
       "z_ai_cli": "z-ai"
     },
-    "timestamp": "2026-08-08T09:00:55.307060+00:00",
-    "latency_ms": 3242,
+    "timestamp": "2026-08-08T09:12:12.311140+00:00",
+    "latency_ms": 3171,
     "success": true,
     "error": ""
   },
   "result": {
     "hypothesis_id": "H-DEV-CH-004-003",
     "classification": "NON_TRIVIAL_TRANSFER",
-    "evidence": "The hypothesis describes a traffic signal timing system where intersections compete for vehicle throughput based on relative performance metrics. This involves concepts of competitive resource allocation, dynamic signal adjustment based on comparative performance, and network-wide optimization through local competition. The source document discusses Physarum polycephalum, a slime mold that creates adaptive transport networks through protoplasmic streaming and feedback mechanisms. While both systems involve adaptive networks and feedback loops, the hypothesis applies these biological concepts to a completely different domain (traffic engineering) with specific mechanisms (signal timing, vehicle throughput competition) not present in the biological source. This represents a genuine cross-domain transfer rather than a direct composition, structural inference, or paraphrase of the source material.",
+    "evidence": "The hypothesis applies biological concepts from Physarum polycephalum (slime mold) network adaptation to traffic signal systems. While the source describes how the slime mold creates optimal transport networks through protoplasmic streaming and feedback mechanisms, the hypothesis transfers this biological model to a completely different domain (traffic engineering). The hypothesis is not explicitly stated, paraphrased, or directly composed from the source text. It requires a genuine cross-domain transfer of the biological adaptation mechanism to create an analogy with traffic signal networks, which goes beyond mere structural inference within the source domain.",
     "is_rediscovery": false,
     "source_hypothesis_hash": ""
   },
-  "timestamp": "2026-08-08T09:00:58.550355+00:00"
+  "timestamp": "2026-08-08T09:12:15.482805+00:00"
 }
