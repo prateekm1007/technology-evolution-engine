@@ -1,0 +1,38 @@
+Adaptive Fresh-Air Ventilation Control for Office Buildings
+
+Problem Statement
+
+A mid-size office building (200 occupants, 5 floors, mixed climate with hot humid summers and cold dry winters) uses a variable-air-volume (VAV) HVAC system with outdoor air dampers. The current ventilation control strategy uses a fixed schedule: dampers are set to a minimum position during occupied hours and closed during unoccupied hours. A CO2 sensor in the return air duct provides feedback, but the control logic is simple: if CO2 exceeds 1000 ppm, increase damper position; if it drops below 800 ppm, decrease damper position.
+
+Current Limitations
+
+1. Slow response: The CO2 sensor in the return air duct has significant transport delay (2-5 minutes) because air must travel from occupied zones through the return duct to the sensor. By the time high CO2 is detected, occupants may have already experienced degraded air quality.
+
+2. Overshoot: The simple threshold-based control causes the damper to open too far when CO2 is high, over-ventilating the space and wasting energy. It then closes too far when CO2 drops, causing CO2 to rise again. This produces oscillatory behavior.
+
+3. Inability to anticipate: The system cannot predict when CO2 will rise (e.g., when a meeting starts or when occupancy increases suddenly). It only reacts after the fact.
+
+4. Energy waste: Over-ventilation during periods of low occupancy wastes heating and cooling energy. The building's energy bills are 30% higher than comparable buildings with demand-controlled ventilation.
+
+5. Comfort complaints: During transition seasons (spring/fall), the system struggles to maintain both temperature and air quality, leading to occupant complaints about stuffiness.
+
+Constraints
+
+- Damper actuation rate: The outdoor air damper can change position at most 10% per minute (physical actuator limit).
+- Sensor latency: The CO2 sensor has a 2-5 minute transport delay.
+- Comfort standards: ASHRAE 62.1 requires minimum ventilation rates per occupant. CO2 should not exceed 1000 ppm during occupied hours.
+- Energy target: The building manager wants to reduce ventilation-related energy consumption by at least 15% compared to the fixed-schedule baseline.
+- No new sensors: The building has one CO2 sensor (return duct), one temperature sensor (return duct), and outdoor air temperature/humidity sensors. No additional sensors can be installed due to budget constraints.
+- Control hardware: The building automation system (BAS) can execute control logic at 1-minute intervals.
+
+What is needed
+
+A ventilation control strategy that:
+1. Responds faster than the CO2 sensor transport delay allows
+2. Avoids the overshoot/oscillation problem of threshold-based control
+3. Can anticipate changes in ventilation demand
+4. Minimizes energy consumption while maintaining air quality
+5. Works with the existing sensor suite and actuator constraints
+6. Does not require a building occupancy model or schedule (occupancy is unpredictable in this building)
+
+The strategy should be implementable on the existing BAS within one month. It should not require cloud connectivity or machine learning infrastructure. It should be tunable by a building engineer without specialized control theory expertise.

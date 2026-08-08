@@ -1,0 +1,34 @@
+{
+  "stage": "06_rediscovery_H-DXP-001-002",
+  "run_id": "RUN-DXP-001",
+  "code_sha": "f8e3f2ac136e3b03acc0b3314dc901fc614ae4a8",
+  "input_hash": "03609c7073066fc7553d5647f3a7091cf8fd317035800e76da65b4959caa1b67",
+  "output_hash": "ee89773bd57f6332fbdd74503f334fb232115e2d261c4ea69c00ff3f3535f79e",
+  "provider_manifest": {
+    "provider": "zai",
+    "model": "glm-4-plus",
+    "version": "z-ai-web-dev-sdk",
+    "configuration": {
+      "temperature": 0.1,
+      "max_tokens": 4096,
+      "system_sha": "dbdd0760dff49fc029b32b580a575b7de33a87d371edc2b0deec93bfb2b90b01"
+    },
+    "prompt_sha": "e0cab4340a413f91bcadeab0748e1b22c3c6cd74def35873fda96f2f18535e9b",
+    "seed": null,
+    "tool_versions": {
+      "z_ai_cli": "z-ai"
+    },
+    "timestamp": "2026-08-08T09:31:33.923086+00:00",
+    "latency_ms": 1799,
+    "success": true,
+    "error": ""
+  },
+  "result": {
+    "hypothesis_id": "H-DXP-001-002",
+    "classification": "NON_TRIVIAL_TRANSFER",
+    "evidence": "The hypothesis proposes applying a biological mechanism (stomatal conductance) to a technical system (ventilation control) through model predictive control. While the source documents describe stomatal regulation mechanisms (ABA signaling, VPD response) as anticipatory feedback systems, they do not mention model predictive control, building systems, or engineering applications. The hypothesis requires cross-domain transfer from plant biology to HVAC control systems, combining concepts from both domains in a novel way not present in the source.",
+    "is_rediscovery": false,
+    "source_hypothesis_hash": ""
+  },
+  "timestamp": "2026-08-08T09:31:35.722912+00:00"
+}

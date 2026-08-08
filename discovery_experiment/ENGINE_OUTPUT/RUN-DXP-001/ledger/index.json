@@ -1,0 +1,69 @@
+{
+  "hypothesis": {
+    "H-DXP-001-001": {
+      "object_type": "hypothesis",
+      "object_id": "H-DXP-001-001",
+      "content_hash": "83b03455cdcb82ef85f1b555cc5e28160847c1367f4a0ac6d028b7ff1ff78472",
+      "file": "hypotheses/H-DXP-001-001.json",
+      "registered_at": "2026-08-08T09:31:11.796067+00:00",
+      "provenance_root_hash": ""
+    },
+    "H-DXP-001-002": {
+      "object_type": "hypothesis",
+      "object_id": "H-DXP-001-002",
+      "content_hash": "03609c7073066fc7553d5647f3a7091cf8fd317035800e76da65b4959caa1b67",
+      "file": "hypotheses/H-DXP-001-002.json",
+      "registered_at": "2026-08-08T09:31:11.796324+00:00",
+      "provenance_root_hash": ""
+    },
+    "H-DXP-001-003": {
+      "object_type": "hypothesis",
+      "object_id": "H-DXP-001-003",
+      "content_hash": "03949afc4113186e40c4bacf7d18794c7b290014cbcc376d38ca90cb32d9e858",
+      "file": "hypotheses/H-DXP-001-003.json",
+      "registered_at": "2026-08-08T09:31:11.796571+00:00",
+      "provenance_root_hash": ""
+    }
+  },
+  "prior_art": {
+    "PA-H-DXP-001-001": {
+      "object_type": "prior_art",
+      "object_id": "PA-H-DXP-001-001",
+      "content_hash": "f234d172b77c58896c41ba0c53756b34a7e392924d57985efb660f97431cbaf7",
+      "file": "prior_art/PA-H-DXP-001-001.json",
+      "registered_at": "2026-08-08T09:31:23.128006+00:00",
+      "provenance_root_hash": ""
+    },
+    "PA-H-DXP-001-002": {
+      "object_type": "prior_art",
+      "object_id": "PA-H-DXP-001-002",
+      "content_hash": "e5eddf390aa88407c928d4ee90f321593962d85e9ece2eb33cebf4ed793c5401",
+      "file": "prior_art/PA-H-DXP-001-002.json",
+      "registered_at": "2026-08-08T09:31:35.724844+00:00",
+      "provenance_root_hash": ""
+    },
+    "PA-H-DXP-001-003": {
+      "object_type": "prior_art",
+      "object_id": "PA-H-DXP-001-003",
+      "content_hash": "3ebfd2dd1397e06d411b67ee681ddd59f6370da6f9f50b49d1e68351219e9761",
+      "file": "prior_art/PA-H-DXP-001-003.json",
+      "registered_at": "2026-08-08T09:31:45.988084+00:00",
+      "provenance_root_hash": ""
+    }
+  },
+  "case": {
+    "DC-DXP-001": {
+      "object_type": "case",
+      "object_id": "DC-DXP-001",
+      "content_hash": "07959d6339a2778d9a2931965679b9ec1528ec5f85077bdf67e38289b5852372",
+      "file": "cases/DC-DXP-001.json",
+      "registered_at": "2026-08-08T09:31:45.995553+00:00",
+      "provenance_root_hash": "b9d5d146160ff5200f3f96bb9e86e5e984f0180a70f5a0fd5bee46b793b7c59f"
+    }
+  },
+  "_meta": {
+    "ledger_dir": "discovery_experiment/ENGINE_OUTPUT/RUN-DXP-001/ledger",
+    "last_updated": "2026-08-08T09:31:45.995568+00:00",
+    "total_objects": 7
+  }
+}

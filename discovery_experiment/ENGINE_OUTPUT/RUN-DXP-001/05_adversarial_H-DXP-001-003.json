@@ -1,0 +1,74 @@
+{
+  "stage": "05_adversarial_H-DXP-001-003",
+  "run_id": "RUN-DXP-001",
+  "code_sha": "f8e3f2ac136e3b03acc0b3314dc901fc614ae4a8",
+  "input_hash": "03949afc4113186e40c4bacf7d18794c7b290014cbcc376d38ca90cb32d9e858",
+  "output_hash": "eaaac8b8735f899eb9c2246d151ef9c2ecf033305745760a997bc17a65462667",
+  "provider_manifest": {
+    "provider": "zai",
+    "model": "glm-4-plus",
+    "version": "z-ai-web-dev-sdk",
+    "configuration": {
+      "temperature": 0.2,
+      "max_tokens": 4096,
+      "system_sha": "1f5a3fff3aebc2e1d44b2312f4b604b5c2911cacaf452eb6ca705c724fc9142b"
+    },
+    "prompt_sha": "0e3d9a4c5aca7fea26555395b96bcb913bde7f5159fdcfebb43011efcb910f10",
+    "seed": null,
+    "tool_versions": {
+      "z_ai_cli": "z-ai"
+    },
+    "timestamp": "2026-08-08T09:31:35.726741+00:00",
+    "latency_ms": 8447,
+    "success": true,
+    "error": ""
+  },
+  "result": {
+    "hypothesis_id": "H-DXP-001-003",
+    "failure_modes": [
+      {
+        "category": "FRAGILE_ASSUMPTION",
+        "description": "The assumption that neural networks can effectively learn complex building parameter relationships is unfounded without specifying architecture, size, or training methodology",
+        "severity": "HIGH",
+        "evidence": "Neural networks require careful architectural design and massive datasets to avoid overfitting in complex control systems"
+      },
+      {
+        "category": "CONTRADICTS_KNOWN",
+        "description": "Stomatal regulation evolved for gas exchange in plants, not for optimizing energy efficiency in buildings - fundamental mismatch in objectives",
+        "severity": "HIGH",
+        "evidence": "Stomata regulate CO2/O2 exchange with water conservation as primary constraint, not energy optimization"
+      },
+      {
+        "category": "BOUNDARY_BREAKS",
+        "description": "Building ventilation systems have different scale, time constants, and failure modes than cellular systems",
+        "severity": "HIGH",
+        "evidence": "Neural networks designed for cellular processes cannot directly translate to building-scale systems without complete re-engineering"
+      },
+      {
+        "category": "PRIOR_ART_EXISTS",
+        "description": "Numerous existing neural network HVAC control systems have been developed without resorting to biological analogies",
+        "severity": "MEDIUM",
+        "evidence": "Multiple papers on neural network HVAC controls exist without biological inspiration"
+      },
+      {
+        "category": "FALSIFIER_TRIGGERED",
+        "description": "The hypothesis admits it could fail to converge during training, which is highly likely given the complexity of the problem",
+        "severity": "HIGH",
+        "evidence": "The hypothesis itself identifies failure to converge as a potential falsifier, indicating fundamental weakness"
+      },
+      {
+        "category": "INCOMPATIBLE_TARGET",
+        "description": "Building ventilation requires predictable, explainable control decisions, while neural networks are inherently black-box",
+        "severity": "HIGH",
+        "evidence": "Safety-critical building systems require transparent decision-making, which neural networks cannot provide"
+      }
+    ],
+    "survives": false,
+    "outcome": "ADVERSARIAL_FAILED",
+    "n_high_severity": 5,
+    "n_medium_severity": 1,
+    "n_low_severity": 0,
+    "source_hypothesis_hash": ""
+  },
+  "timestamp": "2026-08-08T09:31:44.174333+00:00"
+}

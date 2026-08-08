@@ -1,0 +1,69 @@
+{
+  "stage": "03_transfer",
+  "run_id": "RUN-DXP-001",
+  "code_sha": "f8e3f2ac136e3b03acc0b3314dc901fc614ae4a8",
+  "input_hash": "8dc5b7f906b5df93d78e6226d061489c4aadf90ced8fefca46851b4afaab959b",
+  "output_hash": "b8b383ec5ed8bcc166fab8c94c816259ad2b5a9b74d41ac8d19c12c5d9d7c711",
+  "provider_manifest": {
+    "provider": "zai",
+    "model": "glm-4-plus",
+    "version": "z-ai-web-dev-sdk",
+    "configuration": {
+      "temperature": 0.25,
+      "max_tokens": 4096,
+      "system_sha": "f596607dc28478b7317f95a37a7bf99f11ad2e25e10bde5d1c0a9009ba6b1583"
+    },
+    "prompt_sha": "4fdcc52db082b7408456b13fc8b0a150776018ad5df9c62fc18f82bc4a44fbe4",
+    "seed": null,
+    "tool_versions": {
+      "z_ai_cli": "z-ai"
+    },
+    "timestamp": "2026-08-08T09:30:48.589032+00:00",
+    "latency_ms": 4337,
+    "success": true,
+    "error": ""
+  },
+  "result": {
+    "transfers": [
+      {
+        "transfer_id": "TH-DXP-001-001",
+        "source_domain": "plant physiology",
+        "source_mechanism": "Signal detection triggers molecular response that alters cellular state, changing aperture size to control resource exchange",
+        "source_conditions": [
+          "resource availability",
+          "environmental stress",
+          "atmospheric demand"
+        ],
+        "target_domain": "building HVAC control",
+        "target_problem": "A mid-size office building (200 occupants, 5 floors, mixed climate) uses a VAV HVAC system with outdoor air dampers. The current ventilation control uses fixed schedules and simple CO2 threshold logic, causing slow response, overshoot, oscillation, energy waste, and comfort complaints. A better control strategy is needed that responds faster, avoids overshoot, can anticipate changes, minimizes energy, works with existing sensors, and is implementable on the existing BAS within one month.",
+        "transferred_principle": "Feedback regulation system modulates aperture size in response to environmental conditions to balance resource exchange",
+        "required_translation": "Replace stomatal cells with VAV damper actuators, CO2 molecules with CO2 sensors, ion transport with PID control algorithms, cellular hydration state with damper position, and membrane potential with control signal strength",
+        "expected_effect": "Improved ventilation control with faster response, reduced overshoot, minimized energy consumption, and better occupant comfort",
+        "boundary_conditions": [
+          "CO2 sensor transport delay (2-5 minutes)",
+          "damper actuation rate limit (10% per minute)",
+          "control interval (1 minute)",
+          "ASHRAE 62.1 compliance (CO2 \u2264 1000 ppm)"
+        ],
+        "failure_conditions": [
+          "signal detection failure",
+          "control response impairment",
+          "damper mechanical failure"
+        ],
+        "testable_prediction": "Implementing the stomatal-inspired control algorithm will reduce ventilation energy consumption by at least 15% while maintaining CO2 levels below 1000 ppm during occupied hours, with 30% fewer comfort complaints compared to the current threshold-based control",
+        "epistemic_state": "HYPOTHESIZED",
+        "provenance": {
+          "nodes": {},
+          "edges": [],
+          "committed_hash": null
+        },
+        "provenance_root_hash": ""
+      }
+    ],
+    "rejected": [],
+    "n_accepted": 1,
+    "n_rejected": 0,
+    "source_abstraction_hash": "e1cc3a51eba47bd10b5ffa74fc529565ed0e138e0fd19761c608fd67fb7b34c1"
+  },
+  "timestamp": "2026-08-08T09:30:52.927113+00:00"
+}

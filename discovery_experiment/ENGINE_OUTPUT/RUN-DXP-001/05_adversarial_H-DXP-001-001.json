@@ -1,0 +1,74 @@
+{
+  "stage": "05_adversarial_H-DXP-001-001",
+  "run_id": "RUN-DXP-001",
+  "code_sha": "f8e3f2ac136e3b03acc0b3314dc901fc614ae4a8",
+  "input_hash": "83b03455cdcb82ef85f1b555cc5e28160847c1367f4a0ac6d028b7ff1ff78472",
+  "output_hash": "5351032ecfc8cb6244970198b805721e2038195ca0abefbb173449d93fd27202",
+  "provider_manifest": {
+    "provider": "zai",
+    "model": "glm-4-plus",
+    "version": "z-ai-web-dev-sdk",
+    "configuration": {
+      "temperature": 0.2,
+      "max_tokens": 4096,
+      "system_sha": "1f5a3fff3aebc2e1d44b2312f4b604b5c2911cacaf452eb6ca705c724fc9142b"
+    },
+    "prompt_sha": "264fa0a39fe6ec0541531da2670f05a6f49655197511bb6cbb5f631ddc299ce2",
+    "seed": null,
+    "tool_versions": {
+      "z_ai_cli": "z-ai"
+    },
+    "timestamp": "2026-08-08T09:31:11.798696+00:00",
+    "latency_ms": 9950,
+    "success": true,
+    "error": ""
+  },
+  "result": {
+    "hypothesis_id": "H-DXP-001-001",
+    "failure_modes": [
+      {
+        "category": "FRAGILE_ASSUMPTION",
+        "description": "CO2 concentration is NOT the primary indicator of ventilation need in most buildings",
+        "severity": "HIGH",
+        "evidence": "Multiple studies show that ventilation requirements depend on multiple factors including occupancy, outdoor air quality, humidity, and specific building contaminants. CO2 alone is a poor proxy for actual ventilation needs in many scenarios."
+      },
+      {
+        "category": "CONTRADICTS_KNOWN",
+        "description": "Stomatal response is fundamentally different from mechanical damper control",
+        "severity": "HIGH",
+        "evidence": "Stomatal regulation involves complex biological processes including hydraulic signaling, hormone responses, and cellular-level feedback mechanisms that cannot be accurately modeled by a simple PID controller with adaptive gains."
+      },
+      {
+        "category": "BOUNDARY_BREAKS",
+        "description": "The algorithm fails to account for extreme conditions",
+        "severity": "MEDIUM",
+        "evidence": "Stomatal responses have evolved for natural environmental conditions, not the extreme temperature differentials and rapid pressure changes common in HVAC systems. The PID controller would likely behave unpredictably under these boundary conditions."
+      },
+      {
+        "category": "PRIOR_ART_EXISTS",
+        "description": "Adaptive PID control for ventilation is well-established",
+        "severity": "MEDIUM",
+        "evidence": "Numerous papers and commercial systems already implement adaptive PID control for HVAC applications based on multiple sensors and predictive models, not just CO2. The claimed novelty is overstated."
+      },
+      {
+        "category": "FALSIFIER_TRIGGERED",
+        "description": "The proposed falsifier is inadequate",
+        "severity": "HIGH",
+        "evidence": "The falsifier only compares against threshold-based control, which is a strawman. Any modern control system would outperform simple threshold control. A proper falsifier would compare against state-of-the-art model predictive control or other advanced algorithms."
+      },
+      {
+        "category": "INCOMPATIBLE_TARGET",
+        "description": "The biological analogy is fundamentally incompatible with mechanical systems",
+        "severity": "HIGH",
+        "evidence": "Stomatal regulation evolved for slow-changing environmental conditions and operates at timescales incompatible with building control systems. The analogy breaks down when considering the rapid response times and different physical constraints of mechanical dampers."
+      }
+    ],
+    "survives": false,
+    "outcome": "ADVERSARIAL_FAILED",
+    "n_high_severity": 4,
+    "n_medium_severity": 2,
+    "n_low_severity": 0,
+    "source_hypothesis_hash": ""
+  },
+  "timestamp": "2026-08-08T09:31:21.749335+00:00"
+}

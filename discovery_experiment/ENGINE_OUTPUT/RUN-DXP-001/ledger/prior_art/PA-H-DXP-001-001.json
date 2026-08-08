@@ -1,0 +1,19 @@
+{
+  "assessment_id": "PA-H-DXP-001-001",
+  "hypothesis_id": "H-DXP-001-001",
+  "status": "NOT_EVALUATED",
+  "search_scope": [
+    "dev_corpus"
+  ],
+  "queries": [
+    "The stomatal-inspired control algorithm should implement a proportional-integral-derivative (PID) controller with adaptive gains that respond to CO2 concentration changes The algorithm uses CO2 sensor readings as input, calculates error from setpoint, and applies PID control to modulate damper positions. The integral term accounts for accumulated error, derivative term predicts future changes, and proportional term provides immediate response. Gains adapt based on rate of CO2 change to optimize response time."
+  ],
+  "sources": [],
+  "matched_prior_art": [],
+  "similarity": "no matches in dev corpus \u2014 NOT proof of novelty",
+  "review_required": true,
+  "confidence": 0.3,
+  "cutoff": "2026-08-08",
+  "reviewer": "novelty_firewall_v0",
+  "timestamp": "2026-08-08T09:31:23.127720+00:00"
+}

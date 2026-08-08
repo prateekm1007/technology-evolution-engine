@@ -1,0 +1,34 @@
+{
+  "stage": "06_rediscovery_H-DXP-001-001",
+  "run_id": "RUN-DXP-001",
+  "code_sha": "f8e3f2ac136e3b03acc0b3314dc901fc614ae4a8",
+  "input_hash": "83b03455cdcb82ef85f1b555cc5e28160847c1367f4a0ac6d028b7ff1ff78472",
+  "output_hash": "2ccb948aeec02cecdebab0efaf719d96051fc95498b85e3222c7870a478b8fb4",
+  "provider_manifest": {
+    "provider": "zai",
+    "model": "glm-4-plus",
+    "version": "z-ai-web-dev-sdk",
+    "configuration": {
+      "temperature": 0.1,
+      "max_tokens": 4096,
+      "system_sha": "dbdd0760dff49fc029b32b580a575b7de33a87d371edc2b0deec93bfb2b90b01"
+    },
+    "prompt_sha": "e3c1c874467affed92b4b0a2ebccd1732c0b9cc5a0a2f9e6f3ff7606ccfb2166",
+    "seed": null,
+    "tool_versions": {
+      "z_ai_cli": "z-ai"
+    },
+    "timestamp": "2026-08-08T09:31:21.751314+00:00",
+    "latency_ms": 1374,
+    "success": true,
+    "error": ""
+  },
+  "result": {
+    "hypothesis_id": "H-DXP-001-001",
+    "classification": "NON_TRIVIAL_TRANSFER",
+    "evidence": "The hypothesis proposes a specific engineering implementation (PID controller with adaptive gains) based on biological inspiration (stomatal regulation). The source documents describe the biological mechanisms of stomatal regulation (guard cell turgor, ABA signaling, VPD response) but do not mention PID controllers, control algorithms, or engineering implementations. The transfer from biological processes to a control system architecture requires significant cross-domain knowledge not present in the source.",
+    "is_rediscovery": false,
+    "source_hypothesis_hash": ""
+  },
+  "timestamp": "2026-08-08T09:31:23.126128+00:00"
+}

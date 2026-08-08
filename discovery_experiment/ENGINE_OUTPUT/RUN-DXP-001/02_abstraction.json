@@ -1,0 +1,72 @@
+{
+  "stage": "02_abstraction",
+  "run_id": "RUN-DXP-001",
+  "code_sha": "f8e3f2ac136e3b03acc0b3314dc901fc614ae4a8",
+  "input_hash": "52c6a535c1f102bca7a6c63485d39ccf0b7463dc8013a787d2b09dfaf933e4d4",
+  "output_hash": "e1cc3a51eba47bd10b5ffa74fc529565ed0e138e0fd19761c608fd67fb7b34c1",
+  "provider_manifest": {
+    "provider": "zai",
+    "model": "glm-4-plus",
+    "version": "z-ai-web-dev-sdk",
+    "configuration": {
+      "temperature": 0.15,
+      "max_tokens": 4096,
+      "system_sha": "da25f0e8a1231c4250cad400e03ce5c0a835dbc6ca8fc600ce255ef3727d663e"
+    },
+    "prompt_sha": "59144edf41911abd13b5d44778772d3dce4792919ac548d08fb76a6031d59856",
+    "seed": null,
+    "tool_versions": {
+      "z_ai_cli": "z-ai"
+    },
+    "timestamp": "2026-08-08T09:30:45.032163+00:00",
+    "latency_ms": 3554,
+    "success": true,
+    "error": ""
+  },
+  "result": {
+    "pattern": {
+      "pattern_id": "MP-DXP-001",
+      "source_domain": "plant physiology",
+      "causal_structure": "Signal detection triggers molecular response that alters cellular state, changing aperture size to control resource exchange",
+      "inputs": [
+        "environmental signal",
+        "internal resource concentration"
+      ],
+      "conditions": [
+        "resource availability",
+        "environmental stress",
+        "atmospheric demand"
+      ],
+      "operations": [
+        "signal transduction",
+        "ion transport",
+        "cell volume modulation",
+        "aperture adjustment"
+      ],
+      "intermediate_state": [
+        "cellular hydration state",
+        "membrane potential change",
+        "ion concentration gradient"
+      ],
+      "outputs": [
+        "resource exchange rate",
+        "system hydration level"
+      ],
+      "constraints": [
+        "energy cost of regulation",
+        "response time limitations",
+        "tradeoff between competing resources"
+      ],
+      "failure_conditions": [
+        "signal detection failure",
+        "molecular response impairment",
+        "physical damage to regulatory structures"
+      ],
+      "abstract_principle": "Feedback regulation system modulates aperture size in response to environmental conditions to balance resource exchange",
+      "source_graph_summary": "24 nodes, 25 edges"
+    },
+    "failures": [],
+    "source_extraction_hash": "e52256983c3ed1fc67c12b7ebe57948bc2bcdcc43a3c632b0069e181a3942bc2"
+  },
+  "timestamp": "2026-08-08T09:30:48.587267+00:00"
+}

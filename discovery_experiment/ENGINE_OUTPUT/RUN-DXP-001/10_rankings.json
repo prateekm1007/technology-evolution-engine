@@ -1,0 +1,139 @@
+{
+  "stage": "10_rankings",
+  "run_id": "RUN-DXP-001",
+  "code_sha": "f8e3f2ac136e3b03acc0b3314dc901fc614ae4a8",
+  "input_hash": "8982b701d00939e3ff1490cb92ac3eb8078baf6942126bf217766a88191fa7c4",
+  "output_hash": "608ff9b37f717e368f63254f0444ec86031479b360a6466c41a8b392f5738e23",
+  "provider_manifest": null,
+  "result": {
+    "rankings": {
+      "H-DXP-001-001": {
+        "hypothesis_id": "H-DXP-001-001",
+        "dimensions": {
+          "mechanistic_coherence": [
+            0.5,
+            "hypothesis has a mechanism"
+          ],
+          "cross_domain_distance": [
+            0.8,
+            "source 'plant physiology' != target 'building HVAC control'"
+          ],
+          "novelty_evidence": [
+            0.0,
+            ""
+          ],
+          "testability": [
+            0.5,
+            "hypothesis marked testable"
+          ],
+          "falsifiability": [
+            1.0,
+            "non-empty falsifier"
+          ],
+          "prior_art_risk": [
+            0.0,
+            ""
+          ],
+          "expected_information_gain": [
+            0.2,
+            "no experiment design yet"
+          ],
+          "potential_impact": [
+            0.6,
+            "specific expected effect"
+          ],
+          "experimental_feasibility": [
+            0.0,
+            ""
+          ]
+        },
+        "note": "dimensions reported separately, not collapsed into a single score"
+      },
+      "H-DXP-001-002": {
+        "hypothesis_id": "H-DXP-001-002",
+        "dimensions": {
+          "mechanistic_coherence": [
+            0.5,
+            "hypothesis has a mechanism"
+          ],
+          "cross_domain_distance": [
+            0.8,
+            "source 'plant physiology' != target 'building HVAC control'"
+          ],
+          "novelty_evidence": [
+            0.0,
+            ""
+          ],
+          "testability": [
+            0.5,
+            "hypothesis marked testable"
+          ],
+          "falsifiability": [
+            1.0,
+            "non-empty falsifier"
+          ],
+          "prior_art_risk": [
+            0.0,
+            ""
+          ],
+          "expected_information_gain": [
+            0.2,
+            "no experiment design yet"
+          ],
+          "potential_impact": [
+            0.6,
+            "specific expected effect"
+          ],
+          "experimental_feasibility": [
+            0.0,
+            ""
+          ]
+        },
+        "note": "dimensions reported separately, not collapsed into a single score"
+      },
+      "H-DXP-001-003": {
+        "hypothesis_id": "H-DXP-001-003",
+        "dimensions": {
+          "mechanistic_coherence": [
+            0.5,
+            "hypothesis has a mechanism"
+          ],
+          "cross_domain_distance": [
+            0.8,
+            "source 'plant physiology' != target 'building HVAC control'"
+          ],
+          "novelty_evidence": [
+            0.0,
+            ""
+          ],
+          "testability": [
+            0.5,
+            "hypothesis marked testable"
+          ],
+          "falsifiability": [
+            1.0,
+            "non-empty falsifier"
+          ],
+          "prior_art_risk": [
+            0.0,
+            ""
+          ],
+          "expected_information_gain": [
+            0.2,
+            "no experiment design yet"
+          ],
+          "potential_impact": [
+            0.6,
+            "specific expected effect"
+          ],
+          "experimental_feasibility": [
+            0.0,
+            ""
+          ]
+        },
+        "note": "dimensions reported separately, not collapsed into a single score"
+      }
+    }
+  },
+  "timestamp": "2026-08-08T09:31:45.990180+00:00"
+}
