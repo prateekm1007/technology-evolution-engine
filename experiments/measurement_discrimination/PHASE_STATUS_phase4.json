@@ -16,7 +16,7 @@
     "explicit_distinction_added": "Added DETERMINISTIC_UNDER_IDENTICAL_EFFECTIVE_INPUTS=true (narrow claim) vs CAUSE_OF_DISCREPANCY_ESTABLISHED=false (not yet established). These are separate fields so the epistemic state is unambiguous.",
     "reconciliation_status_added": "M-008 now has RECONCILIATION_STATUS=RECONCILIATION_OPEN. The discrepancy has not been reconciled.",
     "machine_test_added": "test_m008_causal_attribution_not_claimed verifies CAUSE_OF_DISCREPANCY_ESTABLISHED=false, RECONCILIATION_STATUS=RECONCILIATION_OPEN, and forbids phrases that imply causal attribution ('discrepancy must come from', 'cause has been identified', etc.).",
-    "principle": "The repository must distinguish 'narrowed the hypothesis space' from 'explained the discrepancy.' Causal attribution remains open."
+    "principle": "The repository must distinguish 'narrowed the hypothesis space' from 'attributed the cause.' Causal attribution remains open — M-008 is not explained yet, only narrowed."
   },
   "audit_round_8_corrections_applied": {
     "two_dimensional_state_machine": "Replaced REGENERATED_AND_MATCHED (which conventionally means 'independently regenerated') with two separate fields: regeneration_status=NOT_INDEPENDENTLY_VERIFIED + shared_run_comparison=MATCHED. The status is now self-explanatory without caveats.",
