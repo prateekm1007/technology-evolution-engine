@@ -56,9 +56,9 @@ The current gold set covers materials science, biology, physics, chemistry. Give
 
 ## Test G — Temporal holdout
 
-Use literature published after benchmark construction.
+Use literature published after the benchmark's documented construction/freeze cutoff.
 
-The gold set was constructed before August 2026. Use papers from September 2026 or later.
+Determine the benchmark's documented construction/freeze cutoff from repository provenance. Use only literature published after that cutoff. If no sufficient post-cutoff corpus exists, mark the temporal holdout as UNAVAILABLE/PENDING rather than inventing a future test window.
 
 **Purpose:** Prevent benchmark memorization. If the gold answers are somehow encoded in the system, temporal holdout would catch it.
 
