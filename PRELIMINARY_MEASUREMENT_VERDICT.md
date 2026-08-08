@@ -36,7 +36,7 @@ cycle-270 bootstrap run with empty BRIDGE_SYNONYMS (non-circular).
 | Discovery F1 (shared, syn, DR-91) | 0.7879 ± 0.0809 | [0.6207, 0.9189] | 20 | 500 |
 | Recognition F1 (all, syn, DR-91) | 0.9744 ± 0.0252 | [0.9189, 1.0000] | 20 | 500 |
 | Proposal-locus inflation | 0.1864 ± 0.0809 | [0.0526, 0.3548] | 20 | 500 |
-| FP floor (synonym) | 0.9189 ± 0.0978 | [0.6667, 1.0000] | 20 | 200 |
+| FP floor (token, syn empty) | 0.9189 ± 0.0978 | [0.6667, 1.0000] | 20 | 200 |
 | UNSAFE synonyms count | 0.0000 ± 0.0000 | [0.0000, 0.0000] | 20 | 500 |
 | Per-proposal F1 (ALL shared, honest) | 0.6500 ± 0.1081 | [0.4500, 0.8500] | 20 | 500 |
 | Aggregate F1 (DR-91) | 0.7879 ± 0.0809 | [0.6207, 0.9189] | 20 | 500 |
@@ -69,7 +69,7 @@ only. They are NOT current. Do not cite them as current measurements.
 | Synonym F1 (all entities) | 0.3053 | 0.2533 |
 | Discovery F1 (shared, syn, DR-91) | 0.8571 | 0.7879 |
 | Recognition F1 (all, syn, DR-91) | 1.0000 (DEGENERATE) | 0.9744 (NOT degenerate) |
-| FP floor (synonym) | 0.9189 | 0.9189 (unchanged) |
+| FP floor (token, syn empty) | 0.9189 | 0.9189 (unchanged) |
 | UNSAFE synonyms count | 18 | 0 |
 | Per-proposal F1 (ALL shared) | 0.7500 | 0.6500 |
 | Aggregate F1 (DR-91) | 0.8571 | 0.7879 |

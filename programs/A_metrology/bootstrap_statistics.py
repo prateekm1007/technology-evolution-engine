@@ -486,7 +486,7 @@ def bootstrap_all_metrics(n_resamples: int = 500, seed: int = 42) -> List[Bootst
         return _score_f1_dr91(sample_gold, rand_candidates, m_synonym)
     # Use fewer resamples for FP floor (each one is expensive)
     results.append(bootstrap_metric(
-        gold, m008, 200, seed, "M-008", "FP floor (synonym)"
+        gold, m008, 200, seed, "M-008", "FP floor (token — synonyms empty since cycle 270)"
     ))
 
     # ---- M-009: UNSAFE synonyms count ----
