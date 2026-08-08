@@ -1,86 +1,89 @@
 {
-  "final_state": "EXPERIMENT",
-  "history": [
-    {
-      "from_state": "RAW_EVIDENCE",
-      "to_state": "STRUCTURED_KNOWLEDGE",
-      "actor": "loop",
-      "timestamp": "2026-08-08T06:56:19.590506+00:00",
-      "code_sha": "engine-v0.1",
-      "evidence": "auto",
-      "reason": "phase advance"
-    },
-    {
-      "from_state": "STRUCTURED_KNOWLEDGE",
-      "to_state": "MECHANISM",
-      "actor": "loop",
-      "timestamp": "2026-08-08T06:56:19.590527+00:00",
-      "code_sha": "engine-v0.1",
-      "evidence": "auto",
-      "reason": "phase advance"
-    },
-    {
-      "from_state": "MECHANISM",
-      "to_state": "TRANSFER_HYPOTHESIS",
-      "actor": "loop",
-      "timestamp": "2026-08-08T06:56:19.590533+00:00",
-      "code_sha": "engine-v0.1",
-      "evidence": "auto",
-      "reason": "phase advance"
-    },
-    {
-      "from_state": "TRANSFER_HYPOTHESIS",
-      "to_state": "CANDIDATE_DISCOVERY",
-      "actor": "loop",
-      "timestamp": "2026-08-08T06:56:19.590536+00:00",
-      "code_sha": "engine-v0.1",
-      "evidence": "auto",
-      "reason": "phase advance"
-    },
-    {
-      "from_state": "CANDIDATE_DISCOVERY",
-      "to_state": "GATE_A",
-      "actor": "loop",
-      "timestamp": "2026-08-08T06:56:19.590539+00:00",
-      "code_sha": "engine-v0.1",
-      "evidence": "auto",
-      "reason": "phase advance"
-    },
-    {
-      "from_state": "GATE_A",
-      "to_state": "GATE_B",
-      "actor": "loop",
-      "timestamp": "2026-08-08T06:56:19.590542+00:00",
-      "code_sha": "engine-v0.1",
-      "evidence": "auto",
-      "reason": "phase advance"
-    },
-    {
-      "from_state": "GATE_B",
-      "to_state": "GATE_C",
-      "actor": "loop",
-      "timestamp": "2026-08-08T06:56:19.590545+00:00",
-      "code_sha": "engine-v0.1",
-      "evidence": "auto",
-      "reason": "phase advance"
-    },
-    {
-      "from_state": "GATE_C",
-      "to_state": "TESTABLE_HYPOTHESIS",
-      "actor": "loop",
-      "timestamp": "2026-08-08T06:56:19.590549+00:00",
-      "code_sha": "engine-v0.1",
-      "evidence": "auto",
-      "reason": "phase advance"
-    },
-    {
-      "from_state": "TESTABLE_HYPOTHESIS",
-      "to_state": "EXPERIMENT",
-      "actor": "loop",
-      "timestamp": "2026-08-08T06:56:19.590623+00:00",
-      "code_sha": "engine-v0.1",
-      "evidence": "experiment designed",
-      "reason": "ready"
-    }
-  ]
+  "stage": "11_state_machine",
+  "run_id": "RUN-DEV-CH-004",
+  "code_sha": "engine-v0.1-round3",
+  "input_hash": "34a0dd5fddb44156992f6dea40c031a38ee3d04907ad8512cd009f5b8cdc4dd9",
+  "output_hash": "1bec009a988ca23844f6ad5a865c2b9228de4ab46cd7ec08effc909d0da797ff",
+  "provider_manifest": null,
+  "result": {
+    "final_state": "TESTABLE_HYPOTHESIS",
+    "history": [
+      {
+        "from_state": "RAW_EVIDENCE",
+        "to_state": "STRUCTURED_KNOWLEDGE",
+        "actor": "loop",
+        "timestamp": "2026-08-08T07:20:30.767044+00:00",
+        "code_sha": "engine-v0.1-round3",
+        "evidence": "dev_pipeline_stage",
+        "reason": "phase advance"
+      },
+      {
+        "from_state": "STRUCTURED_KNOWLEDGE",
+        "to_state": "MECHANISM",
+        "actor": "loop",
+        "timestamp": "2026-08-08T07:20:30.767066+00:00",
+        "code_sha": "engine-v0.1-round3",
+        "evidence": "dev_pipeline_stage",
+        "reason": "phase advance"
+      },
+      {
+        "from_state": "MECHANISM",
+        "to_state": "TRANSFER_HYPOTHESIS",
+        "actor": "loop",
+        "timestamp": "2026-08-08T07:20:30.767072+00:00",
+        "code_sha": "engine-v0.1-round3",
+        "evidence": "dev_pipeline_stage",
+        "reason": "phase advance"
+      },
+      {
+        "from_state": "TRANSFER_HYPOTHESIS",
+        "to_state": "CANDIDATE_DISCOVERY",
+        "actor": "loop",
+        "timestamp": "2026-08-08T07:20:30.767076+00:00",
+        "code_sha": "engine-v0.1-round3",
+        "evidence": "dev_pipeline_stage",
+        "reason": "phase advance"
+      },
+      {
+        "from_state": "CANDIDATE_DISCOVERY",
+        "to_state": "GATE_A",
+        "actor": "loop",
+        "timestamp": "2026-08-08T07:20:30.767080+00:00",
+        "code_sha": "engine-v0.1-round3",
+        "evidence": "dev_pipeline_stage",
+        "reason": "phase advance"
+      },
+      {
+        "from_state": "GATE_A",
+        "to_state": "GATE_B",
+        "actor": "loop",
+        "timestamp": "2026-08-08T07:20:30.767084+00:00",
+        "code_sha": "engine-v0.1-round3",
+        "evidence": "dev_pipeline_stage",
+        "reason": "phase advance"
+      },
+      {
+        "from_state": "GATE_B",
+        "to_state": "GATE_C",
+        "actor": "loop",
+        "timestamp": "2026-08-08T07:20:30.767088+00:00",
+        "code_sha": "engine-v0.1-round3",
+        "evidence": "dev_pipeline_stage",
+        "reason": "phase advance"
+      },
+      {
+        "from_state": "GATE_C",
+        "to_state": "TESTABLE_HYPOTHESIS",
+        "actor": "loop",
+        "timestamp": "2026-08-08T07:20:30.767093+00:00",
+        "code_sha": "engine-v0.1-round3",
+        "evidence": "dev_pipeline_stage",
+        "reason": "phase advance"
+      }
+    ],
+    "pipeline_stage_reached": "TESTABLE_HYPOTHESIS",
+    "scientific_gate_passed": false,
+    "note": "DEV pipeline stages GATE_A/B/C are NOT scientific Gate A/B/C. They are pipeline markers. Scientific gates require independent adjudication per SCIENTIFIC_GATE_2_PROTOCOL.md."
+  },
+  "timestamp": "2026-08-08T07:20:30.767417+00:00"
 }

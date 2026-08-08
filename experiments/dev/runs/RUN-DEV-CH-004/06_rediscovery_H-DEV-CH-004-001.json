@@ -1,6 +1,34 @@
 {
-  "hypothesis_id": "H-DEV-CH-004-001",
-  "classification": "PARAPHRASED_IN_INPUT",
-  "evidence": "The hypothesis about traffic signals adapting through local positive feedback mirrors the description of Physarum polycephalum's network adaptation mechanism. Both describe systems that use local feedback (high flow \u2192 increased capacity) to create self-organizing optimization without central coordination. The traffic hypothesis is essentially a paraphrase of the biological mechanism described in the source document, where the slime mold adapts its tubular network based on flow patterns using similar positive feedback principles.",
-  "is_rediscovery": true
+  "stage": "06_rediscovery_H-DEV-CH-004-001",
+  "run_id": "RUN-DEV-CH-004",
+  "code_sha": "engine-v0.1-round3",
+  "input_hash": "fb7d31e80eb42bfe9057c52974e1aee276723ee1fa22c189c399f0d949cf53be",
+  "output_hash": "b1151bbfa81931c86e54c5e3bcfc144ccf70db43a539e8d5429a277246604b54",
+  "provider_manifest": {
+    "provider": "zai",
+    "model": "glm-4-plus",
+    "version": "z-ai-web-dev-sdk",
+    "configuration": {
+      "temperature": 0.1,
+      "max_tokens": 4096,
+      "system_sha": "dbdd0760dff49fc029b32b580a575b7de33a87d371edc2b0deec93bfb2b90b01"
+    },
+    "prompt_sha": "06f9a5854e0ed1c440b4863213b2bd39992678cfc3d9de9802a709c772ae42ad",
+    "seed": null,
+    "tool_versions": {
+      "z_ai_cli": "z-ai"
+    },
+    "timestamp": "2026-08-08T07:19:59.324113+00:00",
+    "latency_ms": 3495,
+    "success": true,
+    "error": ""
+  },
+  "result": {
+    "hypothesis_id": "H-DEV-CH-004-001",
+    "classification": "NON_TRIVIAL_TRANSFER",
+    "evidence": "The hypothesis describes a traffic signal control system that adjusts green time based on queue length measurements at intersections. This is a completely different domain from the source document, which describes how Physarum polycephalum (slime mold) adapts its tubular network through protoplasmic streaming and feedback mechanisms. While both systems involve self-organization and feedback loops, the specific mechanisms, entities (traffic signals vs. cytoplasmic tubes), and application domains (traffic engineering vs. biological organisms) are fundamentally different. The hypothesis requires transferring the concept of self-optimizing networks through local feedback to an entirely new domain not present in the source text.",
+    "is_rediscovery": false,
+    "source_hypothesis_hash": ""
+  },
+  "timestamp": "2026-08-08T07:20:02.820035+00:00"
 }

@@ -1,146 +1,130 @@
 {
-  "hypotheses": [
-    {
-      "hypothesis_id": "H-DEV-CH-004-001",
-      "claim": "Traffic signals adapt through local positive feedback where increased flow leads to longer green times, creating a self-reinforcing cycle that optimizes traffic patterns",
-      "mechanism": "Each intersection controller continuously monitors local traffic metrics (vehicle count, queue length) and adjusts green time allocation based on a simple feedback rule: higher flow \u2192 increased green time. This creates a positive feedback loop where well-used routes get prioritized, gradually optimizing the network without central coordination.",
-      "evidence": [
-        "Myxomycetes develop efficient transport networks through similar feedback mechanisms",
-        "Local traffic signal optimization has shown promise in small-scale trials",
-        "Positive feedback systems can exhibit emergent optimization"
-      ],
-      "assumptions": [
-        "Local controllers can accurately measure traffic flow",
-        "Feedback gain is set appropriately to avoid oscillations",
-        "Network will naturally converge to optimal configuration",
-        "No external interventions disrupt the adaptation process"
-      ],
-      "predictions": [],
-      "expected_failure_modes": [
-        "Oscillations between adjacent intersections with conflicting timing",
-        "Gridlock formation at critical intersections during demand peaks",
-        "Suboptimal routing that creates persistent bottlenecks",
-        "Failure to adapt to sudden changes in traffic patterns"
-      ],
-      "novelty_rationale": "This hypothesis proposes a purely decentralized adaptation mechanism without any coordination between intersections, relying solely on local measurements and adjustments to achieve network-wide optimization.",
-      "testability": "Can be tested by implementing the system in a traffic simulation with varying demand patterns and measuring convergence time, stability, and overall network performance metrics.",
-      "falsifier": "If the system fails to converge to an optimal configuration or exhibits persistent oscillations under stable traffic conditions, the hypothesis would be proven wrong.",
-      "epistemic_state": "HYPOTHESIZED",
-      "parent_hypothesis_ids": [],
-      "provenance": {
-        "nodes": {},
-        "edges": [],
-        "committed_hash": null
-      },
-      "is_testable": true,
-      "provenance_root_hash": ""
+  "stage": "04_hypotheses",
+  "run_id": "RUN-DEV-CH-004",
+  "code_sha": "engine-v0.1-round3",
+  "input_hash": "8189fa8fc44c6df704ccad2e18d52ff57cf9b2a3d10915eca27dd85ab4582b85",
+  "output_hash": "52bd457bd08598ef6d4e2d19149a6b8afec7677a3c2f741d075168ffb8932c31",
+  "provider_manifest": {
+    "provider": "zai",
+    "model": "glm-4-plus",
+    "version": "z-ai-web-dev-sdk",
+    "configuration": {
+      "temperature": 0.3,
+      "max_tokens": 4096,
+      "system_sha": "38a0abb453a9eb9fd88d0b4dd513feea94d69501c86ec3d4d7778b86034369c8"
     },
-    {
-      "hypothesis_id": "H-DEV-CH-004-002",
-      "claim": "Traffic signals adapt through competitive resource allocation where intersections compete for traffic flow, leading to emergent optimization through a market-like mechanism",
-      "mechanism": "Each intersection controller operates as an economic agent that 'prices' its green time based on local demand. Interferences between adjacent signals create a competitive environment where signal timing adjustments reflect a local market equilibrium, with flow acting as the currency that determines resource allocation.",
-      "evidence": [
-        "Market-based approaches have shown success in distributed resource allocation",
-        "Competitive dynamics can lead to efficient outcomes in complex systems",
-        "Economic principles have been applied to traffic flow modeling"
-      ],
-      "assumptions": [
-        "Intersections can model their 'value' to the network",
-        "Competitive dynamics lead to global optimization",
-        "Traffic flow responds to timing changes as if making economic choices",
-        "Local markets can coordinate without explicit communication"
-      ],
-      "predictions": [],
-      "expected_failure_modes": [
-        "Market failures leading to persistent inefficiencies",
-        "Trapped suboptimal equilibria that cannot be escaped",
-        "Extreme sensitivity to initial conditions",
-        "Failure to coordinate across network boundaries"
-      ],
-      "novelty_rationale": "This hypothesis frames traffic signal optimization as an economic problem rather than a control problem, introducing competitive dynamics and market-like behavior between intersections.",
-      "testability": "Can be tested by implementing a market-based signal timing system and measuring whether it converges to efficient allocations under various traffic conditions, comparing performance to traditional optimization methods.",
-      "falsifier": "If the system creates inefficient allocations where some intersections are chronically underutilized while others are oversaturated despite available capacity, the hypothesis would be proven wrong.",
-      "epistemic_state": "HYPOTHESIZED",
-      "parent_hypothesis_ids": [],
-      "provenance": {
-        "nodes": {},
-        "edges": [],
-        "committed_hash": null
-      },
-      "is_testable": true,
-      "provenance_root_hash": ""
+    "prompt_sha": "904bb50e9ed034d056b69af2ed71a8aa8afe82665ff3e95330d7a31c4c85a53b",
+    "seed": null,
+    "tool_versions": {
+      "z_ai_cli": "z-ai"
     },
-    {
-      "hypothesis_id": "H-DEV-CH-004-003",
-      "claim": "Traffic signals adapt through evolutionary selection where timing strategies that improve flow are reinforced and propagated through the network",
-      "mechanism": "Each intersection controller maintains multiple timing strategies and evaluates their performance based on local traffic metrics. Successful strategies are retained and shared with neighboring intersections, while poor strategies are discarded. Over time, the network evolves toward more efficient configurations through a process of variation, selection, and inheritance.",
-      "evidence": [
-        "Evolutionary algorithms have successfully solved complex optimization problems",
-        "Collective intelligence emerges from simple individual rules",
-        "Information sharing can accelerate adaptation in distributed systems"
-      ],
-      "assumptions": [
-        "Controllers can evaluate multiple strategies simultaneously",
-        "Successful strategies can be identified and communicated",
-        "Network can inherit and combine beneficial strategies",
-        "Evolutionary process leads to global optimization"
-      ],
-      "predictions": [],
-      "expected_failure_modes": [
-        "Premature convergence to suboptimal solutions",
-        "Loss of beneficial genetic diversity",
-        "Inability to adapt to changing traffic patterns",
-        "Excessive computational overhead for strategy evaluation"
-      ],
-      "novelty_rationale": "This hypothesis applies principles of evolutionary biology to traffic signal optimization, framing the process as an evolutionary system rather than a control system or economic market.",
-      "testability": "Can be tested by implementing an evolutionary signal timing system and measuring the rate of improvement, diversity of strategies, and convergence to optimal configurations compared to other approaches.",
-      "falsifier": "If the system fails to improve over time or converges to suboptimal configurations that are not locally optimal, the hypothesis would be proven wrong.",
-      "epistemic_state": "HYPOTHESIZED",
-      "parent_hypothesis_ids": [],
-      "provenance": {
-        "nodes": {},
-        "edges": [],
-        "committed_hash": null
+    "timestamp": "2026-08-08T07:19:20.535716+00:00",
+    "latency_ms": 22493,
+    "success": true,
+    "error": ""
+  },
+  "result": {
+    "hypotheses": [
+      {
+        "hypothesis_id": "H-DEV-CH-004-001",
+        "claim": "Traffic signals adapt by dynamically adjusting green time allocation based on local queue length measurements, creating a self-optimizing network where each intersection responds to immediate demand.",
+        "mechanism": "Each intersection continuously monitors queue lengths on all approaches and increases green time for approaches with longer queues while proportionally reducing time for approaches with shorter queues. This creates a local feedback loop that balances queue dissipation across approaches without explicit coordination with neighboring intersections.",
+        "evidence": [
+          "Existing actuated signal control systems that respond to local detectors",
+          "Research showing benefits of queue-based signal timing at isolated intersections"
+        ],
+        "assumptions": [
+          "Queue length is the primary indicator of traffic demand",
+          "Local adjustments will naturally propagate beneficial effects to adjacent intersections",
+          "No systematic oscillations will emerge from individual intersection decisions"
+        ],
+        "predictions": [],
+        "expected_failure_modes": [
+          "Oscillations between intersections",
+          "Gridlock at critical network nodes",
+          "Failure to distribute green time efficiently across the network"
+        ],
+        "novelty_rationale": "Extends local actuated control to a network-wide system without central coordination, drawing inspiration from how slime molds optimize resource distribution locally.",
+        "testability": "Can be tested by implementing queue-based timing adjustments at a subset of intersections and measuring travel time impacts compared to fixed-time control.",
+        "falsifier": "If implementing queue-based timing adjustments leads to increased average travel time or persistent oscillations in signal timing across the network.",
+        "epistemic_state": "HYPOTHESIZED",
+        "parent_hypothesis_ids": [],
+        "provenance": {
+          "nodes": {},
+          "edges": [],
+          "committed_hash": null
+        },
+        "is_testable": true,
+        "provenance_root_hash": ""
       },
-      "is_testable": true,
-      "provenance_root_hash": ""
-    },
-    {
-      "hypothesis_id": "H-DEV-CH-004-004",
-      "claim": "Traffic signals adapt through neural network-like learning where intersections develop specialized responses to different traffic patterns through experience",
-      "mechanism": "Each intersection controller maintains a simple neural network that learns the relationship between local traffic conditions and optimal timing through experience. As the system processes more traffic data, it develops specialized responses to different patterns, creating a distributed memory of optimal configurations for various scenarios.",
-      "evidence": [
-        "Machine learning has shown promise in traffic signal optimization",
-        "Neural networks can recognize complex patterns in data",
-        "Distributed learning systems can achieve global optimization"
-      ],
-      "assumptions": [
-        "Controllers can implement learning algorithms with limited resources",
-        "Traffic patterns exhibit regularities that can be learned",
-        "Local learning can generalize to network-wide optimization",
-        "Experience leads to improved performance over time"
-      ],
-      "predictions": [],
-      "expected_failure_modes": [
-        "Overfitting to specific traffic patterns",
-        "Catastrophic forgetting of previously learned patterns",
-        "Computational limitations preventing real-time learning",
-        "Poor generalization to different network configurations"
-      ],
-      "novelty_rationale": "This hypothesis applies principles of neural computation and machine learning to traffic signal optimization, framing the process as a learning system that develops specialized responses rather than following predetermined rules.",
-      "testability": "Can be tested by implementing a learning-based signal timing system and measuring improvement over time, generalization to unseen traffic patterns, and adaptability to changing conditions.",
-      "falsifier": "If the system fails to improve with experience or cannot adapt to traffic patterns not encountered during training, the hypothesis would be proven wrong.",
-      "epistemic_state": "HYPOTHESIZED",
-      "parent_hypothesis_ids": [],
-      "provenance": {
-        "nodes": {},
-        "edges": [],
-        "committed_hash": null
+      {
+        "hypothesis_id": "H-DEV-CH-004-002",
+        "claim": "Traffic signals adapt by forming dynamic clusters where neighboring intersections coordinate their offsets to create green wave corridors that propagate through the network based on measured traffic flow patterns.",
+        "mechanism": "Intersections communicate with adjacent neighbors to form temporary clusters based on traffic flow direction and volume. Within each cluster, signals coordinate their offsets to create continuous green waves for dominant traffic flows. Cluster boundaries and coordination parameters shift dynamically based on changing traffic patterns.",
+        "evidence": [
+          "Benefits of coordinated signal systems on major arterials",
+          "Research on traffic flow propagation through networks"
+        ],
+        "assumptions": [
+          "Adjacent intersections can communicate with limited bandwidth",
+          "Traffic flow patterns have sufficient spatial coherence to form meaningful clusters",
+          "Dynamic clustering can respond faster than centralized re-optimization"
+        ],
+        "predictions": [],
+        "expected_failure_modes": [
+          "Cluster boundary instability",
+          "Inconsistent coordination between clusters",
+          "Failure to adapt to sudden changes in traffic patterns"
+        ],
+        "novelty_rationale": "Applies the slime mold's emergent clustering behavior to traffic signal coordination, allowing the network to self-organize into optimal flow patterns without central planning.",
+        "testability": "Can be tested by implementing a clustering algorithm with dynamic offset adjustment and measuring corridor travel times compared to time-of-day plans.",
+        "falsifier": "If dynamic clustering leads to inconsistent coordination between clusters or fails to maintain stable green waves under changing traffic conditions.",
+        "epistemic_state": "HYPOTHESIZED",
+        "parent_hypothesis_ids": [],
+        "provenance": {
+          "nodes": {},
+          "edges": [],
+          "committed_hash": null
+        },
+        "is_testable": true,
+        "provenance_root_hash": ""
       },
-      "is_testable": true,
-      "provenance_root_hash": ""
-    }
-  ],
-  "distinguishing_predictions": "The hypotheses can be distinguished by their adaptation mechanisms: 1) The positive feedback hypothesis predicts monotonic improvement and convergence without communication, 2) The competitive hypothesis predicts oscillations during adaptation and sensitivity to neighboring signals, 3) The evolutionary hypothesis predicts diversity of strategies and gradual improvement through information sharing, and 4) The learning hypothesis predicts improvement through experience and specialized responses to specific patterns. Testing under controlled traffic scenarios with varying demand patterns and incident conditions would reveal which mechanism best explains the observed adaptation behavior.",
-  "transfer_id": "TH-DEV-CH-004-001"
+      {
+        "hypothesis_id": "H-DEV-CH-004-003",
+        "claim": "Traffic signals adapt by implementing a distributed reinforcement learning algorithm where each intersection learns optimal timing parameters through experience of local traffic conditions and rewards based on network-wide performance metrics.",
+        "mechanism": "Each intersection maintains a set of timing policies and selects the policy that maximizes a local reward function (e.g., vehicles served per cycle, queue reduction). Intersections periodically share performance metrics with neighbors, allowing the network to collectively learn which timing configurations work best under different conditions.",
+        "evidence": [
+          "Success of reinforcement learning in traffic signal control at single intersections",
+          "Distributed learning algorithms in multi-agent systems"
+        ],
+        "assumptions": [
+          "Intersections can communicate performance metrics with neighbors",
+          "Local reward functions can guide network-wide optimization",
+          "The learning process converges within the required time frame"
+        ],
+        "predictions": [],
+        "expected_failure_modes": [
+          "Slow convergence under changing conditions",
+          "Suboptimal local policies leading to network-wide inefficiency",
+          "Instability in the learning process"
+        ],
+        "novelty_rationale": "Transfers the slime mold's evolutionary adaptation mechanism through a learning process, allowing the traffic network to 'evolve' optimal signal timing through experience rather than explicit optimization.",
+        "testability": "Can be tested by implementing a distributed reinforcement learning system and comparing convergence time and performance against traditional optimization methods.",
+        "falsifier": "If the learning process fails to converge within 15 minutes or produces inconsistent timing policies that increase network-wide travel time.",
+        "epistemic_state": "HYPOTHESIZED",
+        "parent_hypothesis_ids": [],
+        "provenance": {
+          "nodes": {},
+          "edges": [],
+          "committed_hash": null
+        },
+        "is_testable": true,
+        "provenance_root_hash": ""
+      }
+    ],
+    "distinguishing_predictions": "The queue-length hypothesis predicts that isolated intersections will show immediate improvements even without coordination, while the clustering hypothesis predicts benefits primarily along coordinated corridors. The reinforcement learning hypothesis predicts gradual improvement over time as the system learns optimal policies. Under incident conditions, the queue-length hypothesis may show rapid but potentially inconsistent response, the clustering hypothesis may show coordinated response along affected corridors, and the reinforcement learning hypothesis may show adaptive response based on learned incident patterns. Testing these predictions would involve measuring intersection-level, corridor-level, and network-level performance metrics under different traffic conditions.",
+    "transfer_id": "TH-DEV-CH-004-001",
+    "source_transfer_hash": "e89951bc9d1782a296233ec174ef7153fd93b25abeaeee160c882c6817e18078"
+  },
+  "timestamp": "2026-08-08T07:19:43.029410+00:00"
 }

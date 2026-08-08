@@ -1,362 +1,377 @@
 {
-  "ok": true,
-  "source_document_id": "doc_af4f56b7b49b",
-  "source_document_title": "Physarum polycephalum Network Adaptation: Adaptive Biologically-Inspired Transport Networks",
-  "graph": {
-    "nodes": {
-      "doc_af4f56b7b49b:N1": {
-        "node_id": "doc_af4f56b7b49b:N1",
-        "node_type": "system",
-        "label": "Physarum polycephalum",
-        "description": "Single-celled multinucleate organism that forms transport networks",
-        "epistemic_state": "OBSERVED",
-        "provenance": [
-          "doc:doc_af4f56b7b49b"
-        ]
-      },
-      "doc_af4f56b7b49b:N2": {
-        "node_id": "doc_af4f56b7b49b:N2",
-        "node_type": "process",
-        "label": "protoplasmic streaming",
-        "description": "Movement of cytoplasm through the network",
-        "epistemic_state": "OBSERVED",
-        "provenance": [
-          "doc:doc_af4f56b7b49b"
-        ]
-      },
-      "doc_af4f56b7b49b:N3": {
-        "node_id": "doc_af4f56b7b49b:N3",
-        "node_type": "process",
-        "label": "rhythmic contraction",
-        "description": "Contraction of actin-myosin cytoskeleton",
-        "epistemic_state": "OBSERVED",
-        "provenance": [
-          "doc:doc_af4f56b7b49b"
-        ]
-      },
-      "doc_af4f56b7b49b:N4": {
-        "node_id": "doc_af4f56b7b49b:N4",
-        "node_type": "property",
-        "label": "tube radius",
-        "description": "Radius of the tubular network",
-        "epistemic_state": "OBSERVED",
-        "provenance": [
-          "doc:doc_af4f56b7b49b"
-        ]
-      },
-      "doc_af4f56b7b49b:N5": {
-        "node_id": "doc_af4f56b7b49b:N5",
-        "node_type": "process",
-        "label": "shuttle-streaming",
-        "description": "Flow of cytoplasm driven by pressure differentials",
-        "epistemic_state": "OBSERVED",
-        "provenance": [
-          "doc:doc_af4f56b7b49b"
-        ]
-      },
-      "doc_af4f56b7b49b:N6": {
-        "node_id": "doc_af4f56b7b49b:N6",
-        "node_type": "property",
-        "label": "flow rate",
-        "description": "Rate of cytoplasm flow through tubes",
-        "epistemic_state": "OBSERVED",
-        "provenance": [
-          "doc:doc_af4f56b7b49b"
-        ]
-      },
-      "doc_af4f56b7b49b:N7": {
-        "node_id": "doc_af4f56b7b49b:N7",
-        "node_type": "process",
-        "label": "tube thickening",
-        "description": "Increase in tube radius due to actin polymerization and wall deposition",
-        "epistemic_state": "OBSERVED",
-        "provenance": [
-          "doc:doc_af4f56b7b49b"
-        ]
-      },
-      "doc_af4f56b7b49b:N8": {
-        "node_id": "doc_af4f56b7b49b:N8",
-        "node_type": "process",
-        "label": "tube thinning",
-        "description": "Decrease in tube radius due to actin depolymerization and wall retraction",
-        "epistemic_state": "OBSERVED",
-        "provenance": [
-          "doc:doc_af4f56b7b49b"
-        ]
-      },
-      "doc_af4f56b7b49b:N9": {
-        "node_id": "doc_af4f56b7b49b:N9",
-        "node_type": "mechanism",
-        "label": "positive feedback loop",
-        "description": "Flow-dependent tube adaptation that reinforces existing flow patterns",
-        "epistemic_state": "OBSERVED",
-        "provenance": [
-          "doc:doc_af4f56b7b49b"
-        ]
-      },
-      "doc_af4f56b7b49b:N10": {
-        "node_id": "doc_af4f56b7b49b:N10",
-        "node_type": "failure_mode",
-        "label": "tube collapse",
-        "description": "Network failure when flow is too low to maintain tubes",
-        "epistemic_state": "OBSERVED",
-        "provenance": [
-          "doc:doc_af4f56b7b49b"
-        ]
-      },
-      "doc_af4f56b7b49b:N11": {
-        "node_id": "doc_af4f56b7b49b:N11",
-        "node_type": "failure_mode",
-        "label": "tube rupture",
-        "description": "Network failure when flow is too high for tubes to thicken fast enough",
-        "epistemic_state": "OBSERVED",
-        "provenance": [
-          "doc:doc_af4f56b7b49b"
-        ]
-      },
-      "doc_af4f56b7b49b:N12": {
-        "node_id": "doc_af4f56b7b49b:N12",
-        "node_type": "failure_mode",
-        "label": "oscillating flow",
-        "description": "Network failure when cycles cause flow oscillation instead of convergence",
-        "epistemic_state": "OBSERVED",
-        "provenance": [
-          "doc:doc_af4f56b7b49b"
-        ]
-      },
-      "doc_af4f56b7b49b:N13": {
-        "node_id": "doc_af4f56b7b49b:N13",
-        "node_type": "constraint",
-        "label": "feedback gain regime",
-        "description": "Optimal range for flow-to-radius feedback",
-        "epistemic_state": "OBSERVED",
-        "provenance": [
-          "doc:doc_af4f56b7b49b"
-        ]
-      },
-      "doc_af4f56b7b49b:N14": {
-        "node_id": "doc_af4f56b7b49b:N14",
-        "node_type": "effect",
-        "label": "shortest-path behavior",
-        "description": "Network property of finding efficient paths between food sources",
-        "epistemic_state": "OBSERVED",
-        "provenance": [
-          "doc:doc_af4f56b7b49b"
-        ]
-      },
-      "doc_af4f56b7b49b:N15": {
-        "node_id": "doc_af4f56b7b49b:N15",
-        "node_type": "effect",
-        "label": "self-repair",
-        "description": "Network ability to recover from damage",
-        "epistemic_state": "OBSERVED",
-        "provenance": [
-          "doc:doc_af4f56b7b49b"
-        ]
-      },
-      "doc_af4f56b7b49b:N16": {
-        "node_id": "doc_af4f56b7b49b:N16",
-        "node_type": "mechanism",
-        "label": "distributed optimization",
-        "description": "Problem solving through local feedback rules",
-        "epistemic_state": "OBSERVED",
-        "provenance": [
-          "doc:doc_af4f56b7b49b"
-        ]
-      }
+  "stage": "01_extraction",
+  "run_id": "RUN-DEV-CH-004",
+  "code_sha": "engine-v0.1-round3",
+  "input_hash": "adb0f6dfcbaca08e72bc9170faff3e36cb3f383a37b3f60bf75e7363a55af77d",
+  "output_hash": "94deeb34e4ede577917080b87bd620d6a03c37a2e93727fa2b58866c16abf103",
+  "provider_manifest": {
+    "provider": "zai",
+    "model": "glm-4-plus",
+    "version": "z-ai-web-dev-sdk",
+    "configuration": {
+      "temperature": 0.1,
+      "max_tokens": 4096,
+      "system_sha": "5507f539e45f54255b712a0a34b95eca13bde984fd953d98497aa3967ca392f4"
     },
-    "edges": [
-      {
-        "edge_id": "doc_af4f56b7b49b:E1",
-        "source_id": "doc_af4f56b7b49b:N3",
-        "target_id": "doc_af4f56b7b49b:N2",
-        "edge_type": "ENABLES",
-        "confidence": 0.5,
-        "evidence": [
-          "The core adaptation mechanism is protoplasmic streaming driven by rhythmic contraction of the actin-myosin cytoskeleton along the tube walls."
-        ],
-        "epistemic_state": "OBSERVED"
-      },
-      {
-        "edge_id": "doc_af4f56b7b49b:E2",
-        "source_id": "doc_af4f56b7b49b:N3",
-        "target_id": "doc_af4f56b7b49b:N5",
-        "edge_type": "PRODUCES",
-        "confidence": 0.5,
-        "evidence": [
-          "The contraction amplitude varies along the tube length, creating pressure differentials that drive shuttle-streaming of cytoplasm."
-        ],
-        "epistemic_state": "OBSERVED"
-      },
-      {
-        "edge_id": "doc_af4f56b7b49b:E3",
-        "source_id": "doc_af4f56b7b49b:N4",
-        "target_id": "doc_af4f56b7b49b:N6",
-        "edge_type": "CORRELATES_WITH",
-        "confidence": 0.5,
-        "evidence": [
-          "Through-flow rate scales approximately with the fourth power of tube radius (Hagen-Poiseuille), so small radius differences produce large flow differences."
-        ],
-        "epistemic_state": "OBSERVED"
-      },
-      {
-        "edge_id": "doc_af4f56b7b49b:E4",
-        "source_id": "doc_af4f56b7b49b:N6",
-        "target_id": "doc_af4f56b7b49b:N7",
-        "edge_type": "CAUSES",
-        "confidence": 0.5,
-        "evidence": [
-          "high flow \u2192 tube thickens (actin polymerization, wall deposition)"
-        ],
-        "epistemic_state": "OBSERVED"
-      },
-      {
-        "edge_id": "doc_af4f56b7b49b:E5",
-        "source_id": "doc_af4f56b7b49b:N6",
-        "target_id": "doc_af4f56b7b49b:N8",
-        "edge_type": "INHIBITS",
-        "confidence": 0.5,
-        "evidence": [
-          "low flow \u2192 tube thins and eventually disappears (actin depolymerization, wall retraction)"
-        ],
-        "epistemic_state": "OBSERVED"
-      },
-      {
-        "edge_id": "doc_af4f56b7b49b:E6",
-        "source_id": "doc_af4f56b7b49b:N7",
-        "target_id": "doc_af4f56b7b49b:N4",
-        "edge_type": "MODULATES",
-        "confidence": 0.5,
-        "evidence": [
-          "high flow \u2192 tube thickens"
-        ],
-        "epistemic_state": "OBSERVED"
-      },
-      {
-        "edge_id": "doc_af4f56b7b49b:E7",
-        "source_id": "doc_af4f56b7b49b:N8",
-        "target_id": "doc_af4f56b7b49b:N4",
-        "edge_type": "MODULATES",
-        "confidence": 0.5,
-        "evidence": [
-          "low flow \u2192 tube thins"
-        ],
-        "epistemic_state": "OBSERVED"
-      },
-      {
-        "edge_id": "doc_af4f56b7b49b:E8",
-        "source_id": "doc_af4f56b7b49b:N7",
-        "target_id": "doc_af4f56b7b49b:N6",
-        "edge_type": "ENABLES",
-        "confidence": 0.5,
-        "evidence": [
-          "the path that carries more flow becomes even more capable of carrying flow"
-        ],
-        "epistemic_state": "OBSERVED"
-      },
-      {
-        "edge_id": "doc_af4f56b7b49b:E9",
-        "source_id": "doc_af4f56b7b49b:N8",
-        "target_id": "doc_af4f56b7b49b:N6",
-        "edge_type": "INHIBITS",
-        "confidence": 0.5,
-        "evidence": [
-          "the path that carries less atrophies"
-        ],
-        "epistemic_state": "OBSERVED"
-      },
-      {
-        "edge_id": "doc_af4f56b7b49b:E10",
-        "source_id": "doc_af4f56b7b49b:N6",
-        "target_id": "doc_af4f56b7b49b:N9",
-        "edge_type": "PRODUCES",
-        "confidence": 0.5,
-        "evidence": [
-          "This is a positive feedback loop: the path that carries more flow becomes even more capable of carrying flow"
-        ],
-        "epistemic_state": "OBSERVED"
-      },
-      {
-        "edge_id": "doc_af4f56b7b49b:E11",
-        "source_id": "doc_af4f56b7b49b:N6",
-        "target_id": "doc_af4f56b7b49b:N10",
-        "edge_type": "FAILS_UNDER",
-        "confidence": 0.5,
-        "evidence": [
-          "flow is so low that the positive feedback cannot overcome baseline tube maintenance (the tube collapses everywhere)"
-        ],
-        "epistemic_state": "OBSERVED"
-      },
-      {
-        "edge_id": "doc_af4f56b7b49b:E12",
-        "source_id": "doc_af4f56b7b49b:N6",
-        "target_id": "doc_af4f56b7b49b:N11",
-        "edge_type": "FAILS_UNDER",
-        "confidence": 0.5,
-        "evidence": [
-          "flow is so high that the tube cannot thicken fast enough (rupture)"
-        ],
-        "epistemic_state": "OBSERVED"
-      },
-      {
-        "edge_id": "doc_af4f56b7b49b:E13",
-        "source_id": "doc_af4f56b7b49b:N13",
-        "target_id": "doc_af4f56b7b49b:N9",
-        "edge_type": "CONSTRAINS",
-        "confidence": 0.5,
-        "evidence": [
-          "The boundary condition is that the flow-to-radius feedback gain must be in a regime where perturbations damp out rather than amplify."
-        ],
-        "epistemic_state": "OBSERVED"
-      },
-      {
-        "edge_id": "doc_af4f56b7b49b:E14",
-        "source_id": "doc_af4f56b7b49b:N9",
-        "target_id": "doc_af4f56b7b49b:N14",
-        "edge_type": "PRODUCES",
-        "confidence": 0.5,
-        "evidence": [
-          "The resulting networks exhibit shortest-path-like behavior without any global planner"
-        ],
-        "epistemic_state": "OBSERVED"
-      },
-      {
-        "edge_id": "doc_af4f56b7b49b:E15",
-        "source_id": "doc_af4f56b7b49b:N9",
-        "target_id": "doc_af4f56b7b49b:N15",
-        "edge_type": "PRODUCES",
-        "confidence": 0.5,
-        "evidence": [
-          "they self-repair when damaged"
-        ],
-        "epistemic_state": "OBSERVED"
-      },
-      {
-        "edge_id": "doc_af4f56b7b49b:E16",
-        "source_id": "doc_af4f56b7b49b:N1",
-        "target_id": "doc_af4f56b7b49b:N16",
-        "edge_type": "PRODUCES",
-        "confidence": 0.5,
-        "evidence": [
-          "The organism effectively solves a distributed optimization problem using only local feedback rules."
-        ],
-        "epistemic_state": "OBSERVED"
-      },
-      {
-        "edge_id": "doc_af4f56b7b49b:E17",
-        "source_id": "doc_af4f56b7b49b:N9",
-        "target_id": "doc_af4f56b7b49b:N16",
-        "edge_type": "ENABLES",
-        "confidence": 0.5,
-        "evidence": [
-          "The organism effectively solves a distributed optimization problem using only local feedback rules."
-        ],
-        "epistemic_state": "OBSERVED"
-      }
-    ]
+    "prompt_sha": "36eb84297df3ba5fd968e7e9da10223bd14ba5ee15ba7ea289c42050c36c0330",
+    "seed": null,
+    "tool_versions": {
+      "z_ai_cli": "z-ai"
+    },
+    "timestamp": "2026-08-08T07:18:04.273011+00:00",
+    "latency_ms": 68047,
+    "success": true,
+    "error": ""
   },
-  "n_nodes": 16,
-  "n_edges": 17,
-  "n_failures": 0,
-  "failures": []
+  "result": {
+    "ok": true,
+    "source_document_id": "doc_af4f56b7b49b",
+    "source_document_title": "Physarum polycephalum Network Adaptation: Adaptive Biologically-Inspired Transport Networks",
+    "graph": {
+      "nodes": {
+        "doc_af4f56b7b49b:N1": {
+          "node_id": "doc_af4f56b7b49b:N1",
+          "node_type": "system",
+          "label": "Physarum polycephalum",
+          "description": "Single-celled multinucleate organism that forms tubular networks",
+          "epistemic_state": "OBSERVED",
+          "provenance": [
+            "doc:doc_af4f56b7b49b"
+          ]
+        },
+        "doc_af4f56b7b49b:N2": {
+          "node_id": "doc_af4f56b7b49b:N2",
+          "node_type": "process",
+          "label": "protoplasmic streaming",
+          "description": "Flow of cytoplasm through tubular network",
+          "epistemic_state": "OBSERVED",
+          "provenance": [
+            "doc:doc_af4f56b7b49b"
+          ]
+        },
+        "doc_af4f56b7b49b:N3": {
+          "node_id": "doc_af4f56b7b49b:N3",
+          "node_type": "process",
+          "label": "rhythmic contraction",
+          "description": "Contraction of actin-myosin cytoskeleton along tube walls",
+          "epistemic_state": "OBSERVED",
+          "provenance": [
+            "doc:doc_af4f56b7b49b"
+          ]
+        },
+        "doc_af4f56b7b49b:N4": {
+          "node_id": "doc_af4f56b7b49b:N4",
+          "node_type": "property",
+          "label": "tube radius",
+          "description": "Radius of the tubular network",
+          "epistemic_state": "OBSERVED",
+          "provenance": [
+            "doc:doc_af4f56b7b49b"
+          ]
+        },
+        "doc_af4f56b7b49b:N5": {
+          "node_id": "doc_af4f56b7b49b:N5",
+          "node_type": "property",
+          "label": "flow rate",
+          "description": "Rate of cytoplasmic flow through tubes",
+          "epistemic_state": "OBSERVED",
+          "provenance": [
+            "doc:doc_af4f56b7b49b"
+          ]
+        },
+        "doc_af4f56b7b49b:N6": {
+          "node_id": "doc_af4f56b7b49b:N6",
+          "node_type": "property",
+          "label": "high flow",
+          "description": "State of high cytoplasmic flow in a tube",
+          "epistemic_state": "OBSERVED",
+          "provenance": [
+            "doc:doc_af4f56b7b49b"
+          ]
+        },
+        "doc_af4f56b7b49b:N7": {
+          "node_id": "doc_af4f56b7b49b:N7",
+          "node_type": "property",
+          "label": "low flow",
+          "description": "State of low cytoplasmic flow in a tube",
+          "epistemic_state": "OBSERVED",
+          "provenance": [
+            "doc:doc_af4f56b7b49b"
+          ]
+        },
+        "doc_af4f56b7b49b:N8": {
+          "node_id": "doc_af4f56b7b49b:N8",
+          "node_type": "process",
+          "label": "tube thickening",
+          "description": "Process of increasing tube radius through actin polymerization and wall deposition",
+          "epistemic_state": "OBSERVED",
+          "provenance": [
+            "doc:doc_af4f56b7b49b"
+          ]
+        },
+        "doc_af4f56b7b49b:N9": {
+          "node_id": "doc_af4f56b7b49b:N9",
+          "node_type": "process",
+          "label": "tube thinning",
+          "description": "Process of decreasing tube radius through actin depolymerization and wall retraction",
+          "epistemic_state": "OBSERVED",
+          "provenance": [
+            "doc:doc_af4f56b7b49b"
+          ]
+        },
+        "doc_af4f56b7b49b:N10": {
+          "node_id": "doc_af4f56b7b49b:N10",
+          "node_type": "mechanism",
+          "label": "flow-to-radius feedback",
+          "description": "Positive feedback loop between flow rate and tube radius",
+          "epistemic_state": "OBSERVED",
+          "provenance": [
+            "doc:doc_af4f56b7b49b"
+          ]
+        },
+        "doc_af4f56b7b49b:N11": {
+          "node_id": "doc_af4f56b7b49b:N11",
+          "node_type": "failure_mode",
+          "label": "tube collapse",
+          "description": "Failure when flow is too low to maintain tube structure",
+          "epistemic_state": "OBSERVED",
+          "provenance": [
+            "doc:doc_af4f56b7b49b"
+          ]
+        },
+        "doc_af4f56b7b49b:N12": {
+          "node_id": "doc_af4f56b7b49b:N12",
+          "node_type": "failure_mode",
+          "label": "tube rupture",
+          "description": "Failure when flow is too high for tube structure to handle",
+          "epistemic_state": "OBSERVED",
+          "provenance": [
+            "doc:doc_af4f56b7b49b"
+          ]
+        },
+        "doc_af4f56b7b49b:N13": {
+          "node_id": "doc_af4f56b7b49b:N13",
+          "node_type": "failure_mode",
+          "label": "oscillating flow",
+          "description": "Failure when network cycles prevent flow convergence",
+          "epistemic_state": "OBSERVED",
+          "provenance": [
+            "doc:doc_af4f56b7b49b"
+          ]
+        },
+        "doc_af4f56b7b49b:N14": {
+          "node_id": "doc_af4f56b7b49b:N14",
+          "node_type": "constraint",
+          "label": "feedback gain regime",
+          "description": "Constraint that feedback gain must be in a regime where perturbations damp out",
+          "epistemic_state": "OBSERVED",
+          "provenance": [
+            "doc:doc_af4f56b7b49b"
+          ]
+        },
+        "doc_af4f56b7b49b:N15": {
+          "node_id": "doc_af4f56b7b49b:N15",
+          "node_type": "property",
+          "label": "tube thickness",
+          "description": "Thickness of the tubular network",
+          "epistemic_state": "OBSERVED",
+          "provenance": [
+            "doc:doc_af4f56b7b49b"
+          ]
+        },
+        "doc_af4f56b7b49b:N16": {
+          "node_id": "doc_af4f56b7b49b:N16",
+          "node_type": "property",
+          "label": "tube length",
+          "description": "Length of the tubular network",
+          "epistemic_state": "OBSERVED",
+          "provenance": [
+            "doc:doc_af4f56b7b49b"
+          ]
+        },
+        "doc_af4f56b7b49b:N17": {
+          "node_id": "doc_af4f56b7b49b:N17",
+          "node_type": "process",
+          "label": "self-repair",
+          "description": "Process of network repairing itself when damaged",
+          "epistemic_state": "OBSERVED",
+          "provenance": [
+            "doc:doc_af4f56b7b49b"
+          ]
+        }
+      },
+      "edges": [
+        {
+          "edge_id": "doc_af4f56b7b49b:E1",
+          "source_id": "doc_af4f56b7b49b:N3",
+          "target_id": "doc_af4f56b7b49b:N2",
+          "edge_type": "ENABLES",
+          "confidence": 0.5,
+          "evidence": [
+            "The core adaptation mechanism is protoplasmic streaming driven by rhythmic contraction of the actin-myosin cytoskeleton along the tube walls."
+          ],
+          "epistemic_state": "OBSERVED"
+        },
+        {
+          "edge_id": "doc_af4f56b7b49b:E2",
+          "source_id": "doc_af4f56b7b49b:N4",
+          "target_id": "doc_af4f56b7b49b:N5",
+          "edge_type": "PRODUCES",
+          "confidence": 0.5,
+          "evidence": [
+            "Through-flow rate scales approximately with the fourth power of tube radius (Hagen-Poiseuille), so small radius differences produce large flow differences."
+          ],
+          "epistemic_state": "OBSERVED"
+        },
+        {
+          "edge_id": "doc_af4f56b7b49b:E3",
+          "source_id": "doc_af4f56b7b49b:N6",
+          "target_id": "doc_af4f56b7b49b:N8",
+          "edge_type": "CAUSES",
+          "confidence": 0.5,
+          "evidence": [
+            "The feedback is: high flow \u2192 tube thickens (actin polymerization, wall deposition);"
+          ],
+          "epistemic_state": "OBSERVED"
+        },
+        {
+          "edge_id": "doc_af4f56b7b49b:E4",
+          "source_id": "doc_af4f56b7b49b:N7",
+          "target_id": "doc_af4f56b7b49b:N9",
+          "edge_type": "CAUSES",
+          "confidence": 0.5,
+          "evidence": [
+            "low flow \u2192 tube thins and eventually disappears (actin depolymerization, wall retraction)."
+          ],
+          "epistemic_state": "OBSERVED"
+        },
+        {
+          "edge_id": "doc_af4f56b7b49b:E5",
+          "source_id": "doc_af4f56b7b49b:N8",
+          "target_id": "doc_af4f56b7b49b:N6",
+          "edge_type": "PRODUCES",
+          "confidence": 0.5,
+          "evidence": [
+            "This is a positive feedback loop: the path that carries more flow becomes even more capable of carrying flow, while the path that carries less atrophies."
+          ],
+          "epistemic_state": "OBSERVED"
+        },
+        {
+          "edge_id": "doc_af4f56b7b49b:E6",
+          "source_id": "doc_af4f56b7b49b:N9",
+          "target_id": "doc_af4f56b7b49b:N7",
+          "edge_type": "PRODUCES",
+          "confidence": 0.5,
+          "evidence": [
+            "This is a positive feedback loop: the path that carries more flow becomes even more capable of carrying flow, while the path that carries less atrophies."
+          ],
+          "epistemic_state": "OBSERVED"
+        },
+        {
+          "edge_id": "doc_af4f56b7b49b:E7",
+          "source_id": "doc_af4f56b7b49b:N5",
+          "target_id": "doc_af4f56b7b49b:N10",
+          "edge_type": "MODULATES",
+          "confidence": 0.5,
+          "evidence": [
+            "This is a positive feedback loop: the path that carries more flow becomes even more capable of carrying flow, while the path that carries less atrophies."
+          ],
+          "epistemic_state": "OBSERVED"
+        },
+        {
+          "edge_id": "doc_af4f56b7b49b:E8",
+          "source_id": "doc_af4f56b7b49b:N10",
+          "target_id": "doc_af4f56b7b49b:N4",
+          "edge_type": "MODULATES",
+          "confidence": 0.5,
+          "evidence": [
+            "This is a positive feedback loop: the path that carries more flow becomes even more capable of carrying flow, while the path that carries less atrophies."
+          ],
+          "epistemic_state": "OBSERVED"
+        },
+        {
+          "edge_id": "doc_af4f56b7b49b:E9",
+          "source_id": "doc_af4f56b7b49b:N7",
+          "target_id": "doc_af4f56b7b49b:N11",
+          "edge_type": "FAILS_UNDER",
+          "confidence": 0.5,
+          "evidence": [
+            "The mechanism fails when: (1) flow is so low that the positive feedback cannot overcome baseline tube maintenance (the tube collapses everywhere);"
+          ],
+          "epistemic_state": "OBSERVED"
+        },
+        {
+          "edge_id": "doc_af4f56b7b49b:E10",
+          "source_id": "doc_af4f56b7b49b:N6",
+          "target_id": "doc_af4f56b7b49b:N12",
+          "edge_type": "FAILS_UNDER",
+          "confidence": 0.5,
+          "evidence": [
+            "(2) flow is so high that the tube cannot thicken fast enough (rupture);"
+          ],
+          "epistemic_state": "OBSERVED"
+        },
+        {
+          "edge_id": "doc_af4f56b7b49b:E11",
+          "source_id": "doc_af4f56b7b49b:N13",
+          "target_id": "doc_af4f56b7b49b:N10",
+          "edge_type": "INHIBITS",
+          "confidence": 0.5,
+          "evidence": [
+            "(3) the network has cycles that allow flow to oscillate rather than converge (the feedback never stabilizes)."
+          ],
+          "epistemic_state": "OBSERVED"
+        },
+        {
+          "edge_id": "doc_af4f56b7b49b:E12",
+          "source_id": "doc_af4f56b7b49b:N14",
+          "target_id": "doc_af4f56b7b49b:N10",
+          "edge_type": "CONSTRAINS",
+          "confidence": 0.5,
+          "evidence": [
+            "The boundary condition is that the flow-to-radius feedback gain must be in a regime where perturbations damp out rather than amplify."
+          ],
+          "epistemic_state": "OBSERVED"
+        },
+        {
+          "edge_id": "doc_af4f56b7b49b:E13",
+          "source_id": "doc_af4f56b7b49b:N15",
+          "target_id": "doc_af4f56b7b49b:N5",
+          "edge_type": "PRODUCES",
+          "confidence": 0.5,
+          "evidence": [
+            "When two paths connect the same two food sources, the organism preferentially routes flow through the thicker, shorter tube."
+          ],
+          "epistemic_state": "OBSERVED"
+        },
+        {
+          "edge_id": "doc_af4f56b7b49b:E14",
+          "source_id": "doc_af4f56b7b49b:N16",
+          "target_id": "doc_af4f56b7b49b:N5",
+          "edge_type": "PRODUCES",
+          "confidence": 0.5,
+          "evidence": [
+            "When two paths connect the same two food sources, the organism preferentially routes flow through the thicker, shorter tube."
+          ],
+          "epistemic_state": "OBSERVED"
+        },
+        {
+          "edge_id": "doc_af4f56b7b49b:E15",
+          "source_id": "doc_af4f56b7b49b:N1",
+          "target_id": "doc_af4f56b7b49b:N17",
+          "edge_type": "PRODUCES",
+          "confidence": 0.5,
+          "evidence": [
+            "The resulting networks exhibit shortest-path-like behavior without any global planner, and they self-repair when damaged."
+          ],
+          "epistemic_state": "OBSERVED"
+        }
+      ]
+    },
+    "n_nodes": 17,
+    "n_edges": 15,
+    "n_failures": 0,
+    "failures": []
+  },
+  "timestamp": "2026-08-08T07:19:12.321963+00:00"
 }

@@ -1,6 +1,20 @@
 {
-  "case_id": "DC-DEV-CH-004",
-  "provenance_root_hash": "ef94f61988426f98afc61e03c3d2d28699efffb75567974210844f39a92eae1b",
-  "verify_provenance": true,
-  "final_state": "EXPERIMENT"
+  "stage": "12_case",
+  "run_id": "RUN-DEV-CH-004",
+  "code_sha": "engine-v0.1-round3",
+  "input_hash": "0e9cae04b412b8603a6eaef911996b050e0ae5cebf5c8843369def2318e12ed8",
+  "output_hash": "e0fca64949397d567a239e4e716c06d3d334a44ec27cf95988f18ea25d8c4d7f",
+  "provider_manifest": null,
+  "result": {
+    "case_id": "DC-DEV-CH-004",
+    "provenance_root_hash": "a6f85fa4cd896ab1ca4a23a84176c78657d40ed38116c858cd150a1a05c49502",
+    "verify_provenance": true,
+    "final_state": "TESTABLE_HYPOTHESIS",
+    "lineage_node_count": 17,
+    "lineage_edge_count": 15,
+    "lineage_traversable": true,
+    "registered_in_ledger": true,
+    "evidence_count": 17
+  },
+  "timestamp": "2026-08-08T07:20:30.771298+00:00"
 }

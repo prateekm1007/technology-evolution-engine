@@ -1,6 +1,34 @@
 {
-  "hypothesis_id": "H-DEV-CH-004-002",
-  "classification": "PARAPHRASED_IN_INPUT",
-  "evidence": "The hypothesis describes a competitive resource allocation system with market-like mechanisms where intersections compete for traffic flow. This is a direct paraphrase of the source document's description of Physarum polycephalum's network adaptation, where paths connecting food sources compete through flow-based feedback mechanisms. The source describes how the organism preferentially routes flow through thicker tubes, with high flow causing tube thickening and low flow causing tube thinning - a market-like competition where flow acts as the determining factor for resource allocation. The hypothesis simply replaces the biological context (slime mold tubes) with a traffic context (intersections) while maintaining the same core mechanism of competitive resource allocation based on flow feedback.",
-  "is_rediscovery": true
+  "stage": "06_rediscovery_H-DEV-CH-004-002",
+  "run_id": "RUN-DEV-CH-004",
+  "code_sha": "engine-v0.1-round3",
+  "input_hash": "6cfb88fe71068ce82cae0e70adb3684474607e8da53bf261f6a5065f4aea8912",
+  "output_hash": "9cccfe4acf76e6889512fcdbd1ee2b29ab8e53647b3851aabba09c71c59dacc8",
+  "provider_manifest": {
+    "provider": "zai",
+    "model": "glm-4-plus",
+    "version": "z-ai-web-dev-sdk",
+    "configuration": {
+      "temperature": 0.1,
+      "max_tokens": 4096,
+      "system_sha": "dbdd0760dff49fc029b32b580a575b7de33a87d371edc2b0deec93bfb2b90b01"
+    },
+    "prompt_sha": "167408da1a040f85fdcd2d2a3977334d0f494b0fe30337aab0fc736080432dff",
+    "seed": null,
+    "tool_versions": {
+      "z_ai_cli": "z-ai"
+    },
+    "timestamp": "2026-08-08T07:20:11.911301+00:00",
+    "latency_ms": 3034,
+    "success": true,
+    "error": ""
+  },
+  "result": {
+    "hypothesis_id": "H-DEV-CH-004-002",
+    "classification": "NON_TRIVIAL_TRANSFER",
+    "evidence": "The hypothesis describes traffic signal coordination in urban environments, forming dynamic clusters and green wave corridors based on traffic flow patterns. The source document discusses Physarum polycephalum, a slime mold that creates adaptive transport networks through biological processes. While both involve network adaptation and flow optimization, the hypothesis applies biological principles (self-organization, feedback loops) to a completely different domain (traffic engineering). This represents a genuine cross-domain transfer that cannot be directly derived from the source text, as the source doesn't mention traffic systems, signals, or urban infrastructure.",
+    "is_rediscovery": false,
+    "source_hypothesis_hash": ""
+  },
+  "timestamp": "2026-08-08T07:20:14.945925+00:00"
 }

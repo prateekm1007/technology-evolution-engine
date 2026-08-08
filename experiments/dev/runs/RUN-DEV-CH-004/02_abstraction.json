@@ -1,44 +1,69 @@
 {
-  "pattern": {
-    "pattern_id": "MP-DEV-CH-004",
-    "source_domain": "myxomycete biology / emergent computation",
-    "causal_structure": "Flow rate enables structural reinforcement under feedback conditions, producing optimized transport networks",
-    "inputs": [
-      "substance flow",
-      "initial network structure"
-    ],
-    "conditions": [
-      "feedback gain regime",
-      "material availability"
-    ],
-    "operations": [
-      "rhythmic contraction",
-      "structural thickening",
-      "structural thinning",
-      "flow-dependent adaptation"
-    ],
-    "intermediate_state": [
-      "flow rate variation",
-      "structural reinforcement",
-      "network optimization"
-    ],
-    "outputs": [
-      "optimized transport network",
-      "efficient path formation",
-      "self-repair capability"
-    ],
-    "constraints": [
-      "feedback gain range",
-      "material limitations",
-      "flow pressure limits"
-    ],
-    "failure_conditions": [
-      "insufficient flow",
-      "excessive flow",
-      "oscillating feedback"
-    ],
-    "abstract_principle": "Flow-dependent reinforcement of transport structures through positive feedback enables efficient network formation and adaptation.",
-    "source_graph_summary": "16 nodes, 17 edges"
+  "stage": "02_abstraction",
+  "run_id": "RUN-DEV-CH-004",
+  "code_sha": "engine-v0.1-round3",
+  "input_hash": "2d3b58fd6827e65845db50edebdd61a77e1a096927c91dc9e0de1a58d4e52ed3",
+  "output_hash": "fecea0e5b894f3fd613ffb4a744ddc0265fb8f1dc3f01fb39eeb40c485547588",
+  "provider_manifest": {
+    "provider": "zai",
+    "model": "glm-4-plus",
+    "version": "z-ai-web-dev-sdk",
+    "configuration": {
+      "temperature": 0.15,
+      "max_tokens": 4096,
+      "system_sha": "da25f0e8a1231c4250cad400e03ce5c0a835dbc6ca8fc600ce255ef3727d663e"
+    },
+    "prompt_sha": "c360783b7f89734fef2042a24269e7e546d0ec59c88259f23597cc2341cf447f",
+    "seed": null,
+    "tool_versions": {
+      "z_ai_cli": "z-ai"
+    },
+    "timestamp": "2026-08-08T07:19:12.324353+00:00",
+    "latency_ms": 3641,
+    "success": true,
+    "error": ""
   },
-  "failures": []
+  "result": {
+    "pattern": {
+      "pattern_id": "MP-DEV-CH-004",
+      "source_domain": "myxomycete biology / emergent computation",
+      "causal_structure": "Resource flow enables structural adaptation under feedback regulation, producing optimized network topology",
+      "inputs": [
+        "resource flow",
+        "network structure"
+      ],
+      "conditions": [
+        "feedback gain regime",
+        "resource availability"
+      ],
+      "operations": [
+        "rhythmic contraction",
+        "structural thickening",
+        "structural thinning",
+        "self-repair"
+      ],
+      "intermediate_state": [
+        "flow rate variation",
+        "structural modification"
+      ],
+      "outputs": [
+        "optimized network topology",
+        "efficient resource distribution"
+      ],
+      "constraints": [
+        "feedback stability",
+        "structural integrity limits"
+      ],
+      "failure_conditions": [
+        "network collapse",
+        "structural rupture",
+        "oscillating behavior"
+      ],
+      "abstract_principle": "Adaptive network systems optimize resource distribution through dynamic structural modification based on usage patterns.",
+      "source_graph_summary": "17 nodes, 15 edges"
+    },
+    "failures": [],
+    "source_extraction_hash": "94deeb34e4ede577917080b87bd620d6a03c37a2e93727fa2b58866c16abf103"
+  },
+  "timestamp": "2026-08-08T07:19:15.966317+00:00"
 }

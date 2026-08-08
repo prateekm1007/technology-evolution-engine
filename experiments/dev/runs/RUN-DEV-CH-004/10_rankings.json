@@ -1,172 +1,139 @@
 {
-  "rankings": {
-    "H-DEV-CH-004-001": {
-      "hypothesis_id": "H-DEV-CH-004-001",
-      "dimensions": {
-        "mechanistic_coherence": [
-          0.5,
-          "hypothesis has a mechanism"
-        ],
-        "cross_domain_distance": [
-          0.8,
-          "source 'myxomycete biology / emergent computation' != target 'urban transportation engineering'"
-        ],
-        "novelty_evidence": [
-          0.0,
-          ""
-        ],
-        "testability": [
-          0.5,
-          "hypothesis marked testable"
-        ],
-        "falsifiability": [
-          1.0,
-          "non-empty falsifier"
-        ],
-        "prior_art_risk": [
-          0.0,
-          ""
-        ],
-        "expected_information_gain": [
-          0.2,
-          "no experiment design yet"
-        ],
-        "potential_impact": [
-          0.6,
-          "specific expected effect"
-        ],
-        "experimental_feasibility": [
-          0.0,
-          ""
-        ]
+  "stage": "10_rankings",
+  "run_id": "RUN-DEV-CH-004",
+  "code_sha": "engine-v0.1-round3",
+  "input_hash": "34a0dd5fddb44156992f6dea40c031a38ee3d04907ad8512cd009f5b8cdc4dd9",
+  "output_hash": "ef5753a0114cea2608b6933a21c6b3d9bce44531f59d539746bffb6a9a1a4c31",
+  "provider_manifest": null,
+  "result": {
+    "rankings": {
+      "H-DEV-CH-004-001": {
+        "hypothesis_id": "H-DEV-CH-004-001",
+        "dimensions": {
+          "mechanistic_coherence": [
+            0.5,
+            "hypothesis has a mechanism"
+          ],
+          "cross_domain_distance": [
+            0.8,
+            "source 'myxomycete biology / emergent computation' != target 'urban transportation engineering'"
+          ],
+          "novelty_evidence": [
+            0.0,
+            ""
+          ],
+          "testability": [
+            0.5,
+            "hypothesis marked testable"
+          ],
+          "falsifiability": [
+            1.0,
+            "non-empty falsifier"
+          ],
+          "prior_art_risk": [
+            0.0,
+            ""
+          ],
+          "expected_information_gain": [
+            0.2,
+            "no experiment design yet"
+          ],
+          "potential_impact": [
+            0.6,
+            "specific expected effect"
+          ],
+          "experimental_feasibility": [
+            0.0,
+            ""
+          ]
+        },
+        "note": "dimensions reported separately, not collapsed into a single score"
       },
-      "note": "dimensions reported separately, not collapsed into a single score"
-    },
-    "H-DEV-CH-004-002": {
-      "hypothesis_id": "H-DEV-CH-004-002",
-      "dimensions": {
-        "mechanistic_coherence": [
-          0.5,
-          "hypothesis has a mechanism"
-        ],
-        "cross_domain_distance": [
-          0.8,
-          "source 'myxomycete biology / emergent computation' != target 'urban transportation engineering'"
-        ],
-        "novelty_evidence": [
-          0.0,
-          ""
-        ],
-        "testability": [
-          0.5,
-          "hypothesis marked testable"
-        ],
-        "falsifiability": [
-          1.0,
-          "non-empty falsifier"
-        ],
-        "prior_art_risk": [
-          0.0,
-          ""
-        ],
-        "expected_information_gain": [
-          0.2,
-          "no experiment design yet"
-        ],
-        "potential_impact": [
-          0.6,
-          "specific expected effect"
-        ],
-        "experimental_feasibility": [
-          0.0,
-          ""
-        ]
+      "H-DEV-CH-004-002": {
+        "hypothesis_id": "H-DEV-CH-004-002",
+        "dimensions": {
+          "mechanistic_coherence": [
+            0.5,
+            "hypothesis has a mechanism"
+          ],
+          "cross_domain_distance": [
+            0.8,
+            "source 'myxomycete biology / emergent computation' != target 'urban transportation engineering'"
+          ],
+          "novelty_evidence": [
+            0.0,
+            ""
+          ],
+          "testability": [
+            0.5,
+            "hypothesis marked testable"
+          ],
+          "falsifiability": [
+            1.0,
+            "non-empty falsifier"
+          ],
+          "prior_art_risk": [
+            0.0,
+            ""
+          ],
+          "expected_information_gain": [
+            0.2,
+            "no experiment design yet"
+          ],
+          "potential_impact": [
+            0.6,
+            "specific expected effect"
+          ],
+          "experimental_feasibility": [
+            0.0,
+            ""
+          ]
+        },
+        "note": "dimensions reported separately, not collapsed into a single score"
       },
-      "note": "dimensions reported separately, not collapsed into a single score"
-    },
-    "H-DEV-CH-004-003": {
-      "hypothesis_id": "H-DEV-CH-004-003",
-      "dimensions": {
-        "mechanistic_coherence": [
-          0.5,
-          "hypothesis has a mechanism"
-        ],
-        "cross_domain_distance": [
-          0.8,
-          "source 'myxomycete biology / emergent computation' != target 'urban transportation engineering'"
-        ],
-        "novelty_evidence": [
-          0.0,
-          ""
-        ],
-        "testability": [
-          0.5,
-          "hypothesis marked testable"
-        ],
-        "falsifiability": [
-          1.0,
-          "non-empty falsifier"
-        ],
-        "prior_art_risk": [
-          0.0,
-          ""
-        ],
-        "expected_information_gain": [
-          0.2,
-          "no experiment design yet"
-        ],
-        "potential_impact": [
-          0.6,
-          "specific expected effect"
-        ],
-        "experimental_feasibility": [
-          0.0,
-          ""
-        ]
-      },
-      "note": "dimensions reported separately, not collapsed into a single score"
-    },
-    "H-DEV-CH-004-004": {
-      "hypothesis_id": "H-DEV-CH-004-004",
-      "dimensions": {
-        "mechanistic_coherence": [
-          0.5,
-          "hypothesis has a mechanism"
-        ],
-        "cross_domain_distance": [
-          0.8,
-          "source 'myxomycete biology / emergent computation' != target 'urban transportation engineering'"
-        ],
-        "novelty_evidence": [
-          0.0,
-          ""
-        ],
-        "testability": [
-          0.5,
-          "hypothesis marked testable"
-        ],
-        "falsifiability": [
-          1.0,
-          "non-empty falsifier"
-        ],
-        "prior_art_risk": [
-          0.0,
-          ""
-        ],
-        "expected_information_gain": [
-          0.2,
-          "no experiment design yet"
-        ],
-        "potential_impact": [
-          0.6,
-          "specific expected effect"
-        ],
-        "experimental_feasibility": [
-          0.0,
-          ""
-        ]
-      },
-      "note": "dimensions reported separately, not collapsed into a single score"
+      "H-DEV-CH-004-003": {
+        "hypothesis_id": "H-DEV-CH-004-003",
+        "dimensions": {
+          "mechanistic_coherence": [
+            0.5,
+            "hypothesis has a mechanism"
+          ],
+          "cross_domain_distance": [
+            0.8,
+            "source 'myxomycete biology / emergent computation' != target 'urban transportation engineering'"
+          ],
+          "novelty_evidence": [
+            0.0,
+            ""
+          ],
+          "testability": [
+            0.5,
+            "hypothesis marked testable"
+          ],
+          "falsifiability": [
+            1.0,
+            "non-empty falsifier"
+          ],
+          "prior_art_risk": [
+            0.0,
+            ""
+          ],
+          "expected_information_gain": [
+            0.2,
+            "no experiment design yet"
+          ],
+          "potential_impact": [
+            0.6,
+            "specific expected effect"
+          ],
+          "experimental_feasibility": [
+            0.0,
+            ""
+          ]
+        },
+        "note": "dimensions reported separately, not collapsed into a single score"
+      }
     }
-  }
+  },
+  "timestamp": "2026-08-08T07:20:30.765192+00:00"
 }
