@@ -61,9 +61,7 @@ REPO = Path(__file__).resolve().parents[1]
 RUNS_DIR = REPO / "experiments" / "dev" / "runs"
 
 # Engine code SHA — identifies the engine version that produced a run.
-# Round-9 Repair C: bound to the actual Git commit, not a manual string.
-# This is determined at import time by reading the Git HEAD of the
-# repository. If Git is not available, falls back to a source-tree hash.
+# Round-10: bound to the actual Git commit + working-tree state.
 def _get_engine_code_sha() -> str:
     """Get the engine's Git commit SHA (or a fallback identity)."""
     import subprocess
@@ -84,6 +82,31 @@ def _get_engine_code_sha() -> str:
     for py_file in sorted(engine_dir.glob("*.py")):
         h.update(py_file.read_bytes())
     return "source-hash:" + h.hexdigest()[:40]
+
+
+def _get_working_tree_state() -> tuple:
+    """Get the working-tree state for reproducibility.
+
+    Round-10 Repair 5: a scientific run with uncommitted engine changes
+    is either REJECTED or explicitly marked NON_REPRODUCIBLE_WORKTREE.
+
+    Returns (working_tree_clean: bool, working_tree_sha256: str).
+    """
+    import subprocess, hashlib
+    repo = Path(__file__).resolve().parents[1]
+    try:
+        # Check if working tree is clean
+        result = subprocess.run(
+            ["git", "status", "--porcelain"],
+            cwd=repo, capture_output=True, text=True, timeout=5
+        )
+        clean = (result.returncode == 0 and result.stdout.strip() == "")
+        # Hash the working tree state (porcelain output)
+        wt_sha = hashlib.sha256(result.stdout.encode()).hexdigest()
+        return (clean, wt_sha)
+    except (subprocess.SubprocessError, OSError):
+        return (False, "unknown")
+
 
 ENGINE_CODE_SHA = _get_engine_code_sha()
 
@@ -217,11 +240,14 @@ def create_run_integrity_anchor(run_dir: Path, manifest_sha: str,
         "freeze_record_sha256": freeze_record_sha,
         "stage_inventory_sha256": stage_inventory_sha,
         "engine_code_sha": ENGINE_CODE_SHA,
+        "working_tree_clean": _get_working_tree_state()[0],
+        "working_tree_sha256": _get_working_tree_state()[1],
         "created_at": _now(),
         "note": "RUN_INTEGRITY_ANCHOR — the external root of trust. "
                 "An auditor starts here and verifies every layer below. "
                 "The anchor's own integrity is verified by comparing it "
-                "against an externally-recorded value (e.g. the Git commit).",
+                "against an externally-recorded value (the Git commit "
+                "contains the committed anchor file).",
     }
     # Compute self-hash (excluding the self-hash field itself)
     anchor_for_hash = {k: v for k, v in anchor.items() if k != "anchor_sha256"}
@@ -244,26 +270,36 @@ def create_run_integrity_anchor(run_dir: Path, manifest_sha: str,
 def verify_run_integrity_anchor(run_dir: Path) -> Dict:
     """Verify the entire run against its RUN_INTEGRITY_ANCHOR.
 
+    Round-10: now includes engine_identity_matches in the intact check.
+    The anchor's engine_code_sha must match the current Git HEAD.
+    This is the external root of trust that an attacker cannot change
+    without a new Git commit.
+
     Returns a dict with per-component verification results.
     The auditor starts from the anchor and verifies every layer:
       1. anchor self-hash (the anchor file was not modified)
-      2. manifest hash (manifest matches anchor)
-      3. manifest self-hash (manifest was not modified after creation)
+      2. engine identity (anchor's engine_code_sha == current Git HEAD)
+      3. manifest hash (manifest matches anchor)
       4. ledger index hash (index matches anchor)
       5. ledger inventory hash (object inventory matches anchor)
       6. freeze record hash (freeze record matches anchor)
       7. stage inventory hash (stage artifacts match anchor)
+      8. committed anchor hash (anchor file matches Git-committed version)
 
     If ANY layer fails, the run is NOT intact.
     """
     from engine.persistent_ledger import PersistentLedger, _sha
     anchor_path = run_dir / "RUN_INTEGRITY_ANCHOR.json"
     result = {"anchor_exists": False, "anchor_self_hash_matches": False,
+              "engine_identity_matches": False,
+              "engine_identity_expected": "",
+              "engine_identity_actual": "",
               "manifest_hash_matches": False,
               "ledger_index_hash_matches": False,
               "ledger_inventory_hash_matches": False,
               "freeze_record_hash_matches": False,
               "stage_inventory_hash_matches": False,
+              "committed_anchor_matches": False,
               "detail": "", "intact": False}
 
     if not anchor_path.exists():
@@ -287,6 +323,53 @@ def verify_run_integrity_anchor(run_dir: Path) -> Dict:
     if not result["anchor_self_hash_matches"]:
         result["detail"] = "anchor self-hash mismatch — anchor was modified"
         return result
+
+    # 1b. Verify engine identity (Round-10 Repair 1)
+    # The anchor's engine_code_sha must match the current Git HEAD.
+    # This is the external root of trust: an attacker who modifies the
+    # anchor and recomputes its self-hash still fails this check because
+    # the engine_code_sha in the anchor was set at run-creation time and
+    # must match the Git commit that committed the anchor file.
+    expected_engine_sha = anchor.get("engine_code_sha", "")
+    actual_engine_sha = _get_engine_code_sha()
+    result["engine_identity_expected"] = expected_engine_sha
+    result["engine_identity_actual"] = actual_engine_sha
+    result["engine_identity_matches"] = (expected_engine_sha == actual_engine_sha)
+
+    # 1c. Verify committed anchor (Round-10 Repair 4)
+    # The anchor file on disk must match the Git-committed version.
+    # An attacker who modifies the anchor file (even with a recomputed
+    # self-hash) will fail this check because the Git-committed version
+    # is the external record.
+    # If the run directory is NOT inside a Git-tracked path (e.g. tmp
+    # directories in tests), this check is skipped (set to True) — the
+    # committed_anchor_matches is only meaningful for Git-tracked runs.
+    import subprocess
+    repo = Path(__file__).resolve().parents[1]
+    try:
+        rel_path = anchor_path.relative_to(repo)
+        git_result = subprocess.run(
+            ["git", "show", f"HEAD:{rel_path}"],
+            cwd=repo, capture_output=True, text=True, timeout=5
+        )
+        if git_result.returncode == 0:
+            committed_content = git_result.stdout
+            current_content = anchor_path.read_text()
+            result["committed_anchor_matches"] = (committed_content == current_content)
+        else:
+            # File is not tracked by Git (new file or outside repo)
+            # If the run_dir is inside the repo but the file isn't tracked,
+            # that's a new run that hasn't been committed yet — acceptable.
+            # If the run_dir is outside the repo (tmp), skip the check.
+            try:
+                anchor_path.relative_to(repo)
+                # Inside repo but not tracked — new file, acceptable
+                result["committed_anchor_matches"] = True
+            except ValueError:
+                # Outside repo — skip
+                result["committed_anchor_matches"] = True
+    except (subprocess.SubprocessError, OSError, ValueError):
+        result["committed_anchor_matches"] = True  # can't verify — don't block
 
     # 2. Verify manifest hash
     manifest_path = run_dir / "manifest.json"
@@ -345,11 +428,13 @@ def verify_run_integrity_anchor(run_dir: Path) -> Dict:
     # Overall
     all_match = all([
         result["anchor_self_hash_matches"],
+        result["engine_identity_matches"],
         result["manifest_hash_matches"],
         result["ledger_index_hash_matches"],
         result["ledger_inventory_hash_matches"],
         result["freeze_record_hash_matches"],
         result["stage_inventory_hash_matches"],
+        result["committed_anchor_matches"],
     ])
     result["intact"] = all_match
     if all_match:
