@@ -1,7 +1,7 @@
 # Task 2: Measurement Dependency Graph
 
-Generated: 2026-08-08T00:00:06.737458+00:00
-Commit: 808654db911b
+Generated: 2026-08-08T00:31:27.228156+00:00
+Commit: f322df8ff281
 
 ## M-001
 
@@ -15,7 +15,7 @@ Commit: 808654db911b
 **Producer:** programs/A_metrology/bootstrap_statistics.py
 **Reports:** reports/measurement_constitution_m8.json, reports/calibration_documented_m2e1.json, reports/bootstrap_statistics.json, reports/failure_envelope_m7.json
 **Tests:** none
-**Docs:** reports/bootstrap_statistics.md, reports/calibration_documented_m2e1.md, reports/failure_envelope_m7.md
+**Docs:** reports/bootstrap_statistics.md, reports/calibration_documented_m2e1.md, reports/historical_metric_inventory.md
 
 ## M-003
 
@@ -50,7 +50,7 @@ Commit: 808654db911b
 **Producer:** programs/A_metrology/bootstrap_statistics.py
 **Reports:** reports/measurement_constitution_m8.json, reports/calibration_documented_m2e1.json, reports/bootstrap_statistics.json, reports/failure_envelope_m7.json
 **Tests:** none
-**Docs:** reports/bootstrap_statistics.md, reports/calibration_documented_m2e1.md, reports/failure_envelope_m7.md
+**Docs:** reports/bootstrap_statistics.md, reports/calibration_documented_m2e1.md, reports/historical_metric_inventory.md
 
 ## M-008
 
@@ -64,14 +64,14 @@ Commit: 808654db911b
 **Producer:** programs/A_metrology/bootstrap_statistics.py
 **Reports:** reports/measurement_constitution_m8.json, reports/calibration_documented_m2e1.json, reports/bootstrap_statistics.json, reports/failure_envelope_m7.json
 **Tests:** none
-**Docs:** reports/bootstrap_statistics.md, reports/calibration_documented_m2e1.md, reports/failure_envelope_m7.md
+**Docs:** reports/bootstrap_statistics.md, reports/calibration_documented_m2e1.md, reports/measurement_dependency_graph.md
 
 ## M-010
 
 **Producer:** tests/test_failure_envelope_m7.py
 **Reports:** reports/measurement_constitution_m8.json, reports/calibration_documented_m2e1.json, reports/bootstrap_statistics.json, reports/failure_envelope_m7.json, reports/sensitivity_m6.json
 **Tests:** tests/test_failure_envelope_m7.py, tests/test_sensitivity_m6.py
-**Docs:** FAILURES.md, GO_NO_GO_GATES.md, reports/bootstrap_statistics.md
+**Docs:** FAILURES.md, PRELIMINARY_MEASUREMENT_VERDICT.md, GO_NO_GO_GATES.md
 
 ## M-011
 
@@ -134,14 +134,14 @@ Commit: 808654db911b
 **Producer:** tests/test_bootstrap_statistics.py
 **Reports:** reports/measurement_constitution_m8.json, reports/calibration_documented_m2e1.json, reports/bootstrap_statistics.json, reports/failure_envelope_m7.json
 **Tests:** tests/test_bootstrap_statistics.py
-**Docs:** reports/bootstrap_statistics.md, reports/calibration_documented_m2e1.md, reports/failure_envelope_m7.md
+**Docs:** reports/bootstrap_statistics.md, reports/calibration_documented_m2e1.md, reports/historical_metric_inventory.md
 
 ## M-303-D2
 
 **Producer:** programs/A_metrology/failure_envelope_m7.py
 **Reports:** reports/measurement_constitution_m8.json, reports/calibration_documented_m2e1.json, reports/bootstrap_statistics.json, reports/failure_envelope_m7.json
 **Tests:** none
-**Docs:** reports/bootstrap_statistics.md, reports/calibration_documented_m2e1.md, reports/failure_envelope_m7.md
+**Docs:** reports/bootstrap_statistics.md, reports/calibration_documented_m2e1.md, reports/historical_metric_inventory.md
 
 ## M-303-D3
 
@@ -155,7 +155,7 @@ Commit: 808654db911b
 **Producer:** programs/A_metrology/failure_envelope_m7.py
 **Reports:** reports/measurement_constitution_m8.json, reports/calibration_documented_m2e1.json, reports/bootstrap_statistics.json, reports/failure_envelope_m7.json
 **Tests:** none
-**Docs:** reports/bootstrap_statistics.md, reports/calibration_documented_m2e1.md, reports/failure_envelope_m7.md
+**Docs:** reports/bootstrap_statistics.md, reports/calibration_documented_m2e1.md, reports/measurement_dependency_graph.md
 
 ## M-303-D5
 
@@ -169,14 +169,14 @@ Commit: 808654db911b
 **Producer:** programs/A_metrology/failure_envelope_m7.py
 **Reports:** reports/measurement_constitution_m8.json, reports/calibration_documented_m2e1.json, reports/bootstrap_statistics.json, reports/failure_envelope_m7.json
 **Tests:** none
-**Docs:** reports/bootstrap_statistics.md, reports/calibration_documented_m2e1.md, reports/failure_envelope_m7.md
+**Docs:** reports/bootstrap_statistics.md, reports/calibration_documented_m2e1.md, reports/measurement_dependency_graph.md
 
 ## M-303-D7
 
 **Producer:** programs/A_metrology/failure_envelope_m7.py
 **Reports:** reports/measurement_constitution_m8.json, reports/calibration_documented_m2e1.json, reports/bootstrap_statistics.json, reports/failure_envelope_m7.json
 **Tests:** none
-**Docs:** reports/bootstrap_statistics.md, reports/calibration_documented_m2e1.md, reports/failure_envelope_m7.md
+**Docs:** reports/bootstrap_statistics.md, reports/calibration_documented_m2e1.md, reports/measurement_dependency_graph.md
 
 ## M-101
 

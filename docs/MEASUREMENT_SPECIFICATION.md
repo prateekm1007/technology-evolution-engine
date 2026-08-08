@@ -30,7 +30,7 @@ F1 = 0.91 ± 0.05 (95% CI, N=200, Tier 1, calibrated)  ← REQUIRED
 
 ## Current State (cycle 252)
 
-- **Discovery F1 = 0.9189**: INVALID (measured entity recognition, not discovery)
+- **Discovery F1 = 0.9189** (HISTORICAL — was circular, current F1=0.5714 after cycle 270): INVALID (measured entity recognition, not discovery)
 - **Proposal F1**: UNKNOWN (pipeline produces proposals but benchmark not rerun)
 - **Evaluator reliability**: EXPLORATORY (N=6, insufficient for conclusions)
 - **Confidence calibration**: POOR (ECE=0.433, Brier=0.340)

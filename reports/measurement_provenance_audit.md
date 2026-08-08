@@ -1,7 +1,7 @@
 # Task 4: Measurement Provenance Audit
 
-Generated: 2026-08-08T00:00:08.957622+00:00
-Commit: 808654db911b
+Generated: 2026-08-08T00:31:29.372291+00:00
+Commit: f322df8ff281
 
 Every published metric must answer:
 - Who produced it?
@@ -20,11 +20,11 @@ If any published score cannot answer these questions, it is marked UNVERIFIED.
 
 - **Value:** 0.0000 ± 0.0000 (95% CI: 0.0000, 0.0000)
 - **Who produced it:** programs/A_metrology/bootstrap_statistics.py
-- **Which commit:** 808654db911b
+- **Which commit:** f322df8ff281
 - **Which benchmark:** benchmarks/discovery_capability_benchmark.py (GOLD_DISCOVERIES, N=20)
 - **Which seed:** 42
 - **Which evaluator:** independent matchers (reproduced from DR-91, zero production imports)
-- **When:** 2026-08-08T00:00:08.960290+00:00
+- **When:** 2026-08-08T00:31:29.374962+00:00
 - **Against which dataset:** GOLD_DISCOVERIES (20 gold bridge discoveries)
 - **Using which matcher:** m_synonym (falls back to m_token, BRIDGE_SYNONYMS={} since cycle 270)
 - **Using which calibration version:** post-cycle-270 (non-circular)
@@ -36,11 +36,11 @@ If any published score cannot answer these questions, it is marked UNVERIFIED.
 
 - **Value:** 0.2533 ± 0.0134 (95% CI: 0.2102, 0.2614)
 - **Who produced it:** programs/A_metrology/bootstrap_statistics.py
-- **Which commit:** 808654db911b
+- **Which commit:** f322df8ff281
 - **Which benchmark:** benchmarks/discovery_capability_benchmark.py (GOLD_DISCOVERIES, N=20)
 - **Which seed:** 42
 - **Which evaluator:** independent matchers (reproduced from DR-91, zero production imports)
-- **When:** 2026-08-08T00:00:08.961326+00:00
+- **When:** 2026-08-08T00:31:29.376020+00:00
 - **Against which dataset:** GOLD_DISCOVERIES (20 gold bridge discoveries)
 - **Using which matcher:** m_synonym (falls back to m_token, BRIDGE_SYNONYMS={} since cycle 270)
 - **Using which calibration version:** post-cycle-270 (non-circular)
@@ -52,11 +52,11 @@ If any published score cannot answer these questions, it is marked UNVERIFIED.
 
 - **Value:** 0.0000 ± 0.0000 (95% CI: 0.0000, 0.0000)
 - **Who produced it:** programs/A_metrology/bootstrap_statistics.py
-- **Which commit:** 808654db911b
+- **Which commit:** f322df8ff281
 - **Which benchmark:** benchmarks/discovery_capability_benchmark.py (GOLD_DISCOVERIES, N=20)
 - **Which seed:** 42
 - **Which evaluator:** independent matchers (reproduced from DR-91, zero production imports)
-- **When:** 2026-08-08T00:00:08.962322+00:00
+- **When:** 2026-08-08T00:31:29.377316+00:00
 - **Against which dataset:** GOLD_DISCOVERIES (20 gold bridge discoveries)
 - **Using which matcher:** m_synonym (falls back to m_token, BRIDGE_SYNONYMS={} since cycle 270)
 - **Using which calibration version:** post-cycle-270 (non-circular)
@@ -68,11 +68,11 @@ If any published score cannot answer these questions, it is marked UNVERIFIED.
 
 - **Value:** 0.2533 ± 0.0134 (95% CI: 0.2102, 0.2614)
 - **Who produced it:** programs/A_metrology/bootstrap_statistics.py
-- **Which commit:** 808654db911b
+- **Which commit:** f322df8ff281
 - **Which benchmark:** benchmarks/discovery_capability_benchmark.py (GOLD_DISCOVERIES, N=20)
 - **Which seed:** 42
 - **Which evaluator:** independent matchers (reproduced from DR-91, zero production imports)
-- **When:** 2026-08-08T00:00:08.963284+00:00
+- **When:** 2026-08-08T00:31:29.378352+00:00
 - **Against which dataset:** GOLD_DISCOVERIES (20 gold bridge discoveries)
 - **Using which matcher:** m_synonym (falls back to m_token, BRIDGE_SYNONYMS={} since cycle 270)
 - **Using which calibration version:** post-cycle-270 (non-circular)
@@ -84,11 +84,11 @@ If any published score cannot answer these questions, it is marked UNVERIFIED.
 
 - **Value:** 0.7879 ± 0.0809 (95% CI: 0.6207, 0.9189)
 - **Who produced it:** programs/A_metrology/bootstrap_statistics.py
-- **Which commit:** 808654db911b
+- **Which commit:** f322df8ff281
 - **Which benchmark:** benchmarks/discovery_capability_benchmark.py (GOLD_DISCOVERIES, N=20)
 - **Which seed:** 42
 - **Which evaluator:** independent matchers (reproduced from DR-91, zero production imports)
-- **When:** 2026-08-08T00:00:08.964250+00:00
+- **When:** 2026-08-08T00:31:29.379303+00:00
 - **Against which dataset:** GOLD_DISCOVERIES (20 gold bridge discoveries)
 - **Using which matcher:** m_synonym (falls back to m_token, BRIDGE_SYNONYMS={} since cycle 270)
 - **Using which calibration version:** post-cycle-270 (non-circular)
@@ -100,11 +100,11 @@ If any published score cannot answer these questions, it is marked UNVERIFIED.
 
 - **Value:** 0.9744 ± 0.0252 (95% CI: 0.9189, 1.0000)
 - **Who produced it:** programs/A_metrology/bootstrap_statistics.py
-- **Which commit:** 808654db911b
+- **Which commit:** f322df8ff281
 - **Which benchmark:** benchmarks/discovery_capability_benchmark.py (GOLD_DISCOVERIES, N=20)
 - **Which seed:** 42
 - **Which evaluator:** independent matchers (reproduced from DR-91, zero production imports)
-- **When:** 2026-08-08T00:00:08.965360+00:00
+- **When:** 2026-08-08T00:31:29.380288+00:00
 - **Against which dataset:** GOLD_DISCOVERIES (20 gold bridge discoveries)
 - **Using which matcher:** m_synonym (falls back to m_token, BRIDGE_SYNONYMS={} since cycle 270)
 - **Using which calibration version:** post-cycle-270 (non-circular)
@@ -116,11 +116,11 @@ If any published score cannot answer these questions, it is marked UNVERIFIED.
 
 - **Value:** 0.1865 ± 0.0768 (95% CI: 0.0554, 0.3759)
 - **Who produced it:** programs/A_metrology/bootstrap_statistics.py
-- **Which commit:** 808654db911b
+- **Which commit:** f322df8ff281
 - **Which benchmark:** benchmarks/discovery_capability_benchmark.py (GOLD_DISCOVERIES, N=20)
 - **Which seed:** 42
 - **Which evaluator:** independent matchers (reproduced from DR-91, zero production imports)
-- **When:** 2026-08-08T00:00:08.966296+00:00
+- **When:** 2026-08-08T00:31:29.381228+00:00
 - **Against which dataset:** GOLD_DISCOVERIES (20 gold bridge discoveries)
 - **Using which matcher:** m_synonym (falls back to m_token, BRIDGE_SYNONYMS={} since cycle 270)
 - **Using which calibration version:** post-cycle-270 (non-circular)
@@ -132,11 +132,11 @@ If any published score cannot answer these questions, it is marked UNVERIFIED.
 
 - **Value:** 0.9189 ± 0.0978 (95% CI: 0.6667, 1.0000)
 - **Who produced it:** programs/A_metrology/bootstrap_statistics.py
-- **Which commit:** 808654db911b
+- **Which commit:** f322df8ff281
 - **Which benchmark:** benchmarks/discovery_capability_benchmark.py (GOLD_DISCOVERIES, N=20)
 - **Which seed:** 42
 - **Which evaluator:** independent matchers (reproduced from DR-91, zero production imports)
-- **When:** 2026-08-08T00:00:08.967347+00:00
+- **When:** 2026-08-08T00:31:29.382188+00:00
 - **Against which dataset:** GOLD_DISCOVERIES (20 gold bridge discoveries)
 - **Using which matcher:** m_synonym (falls back to m_token, BRIDGE_SYNONYMS={} since cycle 270)
 - **Using which calibration version:** post-cycle-270 (non-circular)
@@ -148,11 +148,11 @@ If any published score cannot answer these questions, it is marked UNVERIFIED.
 
 - **Value:** 0.0000 ± 0.0000 (95% CI: 0.0000, 0.0000)
 - **Who produced it:** programs/A_metrology/bootstrap_statistics.py
-- **Which commit:** 808654db911b
+- **Which commit:** f322df8ff281
 - **Which benchmark:** benchmarks/discovery_capability_benchmark.py (GOLD_DISCOVERIES, N=20)
 - **Which seed:** 42
 - **Which evaluator:** independent matchers (reproduced from DR-91, zero production imports)
-- **When:** 2026-08-08T00:00:08.968724+00:00
+- **When:** 2026-08-08T00:31:29.383133+00:00
 - **Against which dataset:** GOLD_DISCOVERIES (20 gold bridge discoveries)
 - **Using which matcher:** m_synonym (falls back to m_token, BRIDGE_SYNONYMS={} since cycle 270)
 - **Using which calibration version:** post-cycle-270 (non-circular)
@@ -164,11 +164,11 @@ If any published score cannot answer these questions, it is marked UNVERIFIED.
 
 - **Value:** 0.6500 ± 0.1081 (95% CI: 0.4500, 0.8500)
 - **Who produced it:** programs/A_metrology/bootstrap_statistics.py
-- **Which commit:** 808654db911b
+- **Which commit:** f322df8ff281
 - **Which benchmark:** benchmarks/discovery_capability_benchmark.py (GOLD_DISCOVERIES, N=20)
 - **Which seed:** 42
 - **Which evaluator:** independent matchers (reproduced from DR-91, zero production imports)
-- **When:** 2026-08-08T00:00:08.969748+00:00
+- **When:** 2026-08-08T00:31:29.384070+00:00
 - **Against which dataset:** GOLD_DISCOVERIES (20 gold bridge discoveries)
 - **Using which matcher:** m_synonym (falls back to m_token, BRIDGE_SYNONYMS={} since cycle 270)
 - **Using which calibration version:** post-cycle-270 (non-circular)
@@ -180,11 +180,11 @@ If any published score cannot answer these questions, it is marked UNVERIFIED.
 
 - **Value:** 0.0000 ± 0.0000 (95% CI: 0.0000, 0.0000)
 - **Who produced it:** programs/A_metrology/bootstrap_statistics.py
-- **Which commit:** 808654db911b
+- **Which commit:** f322df8ff281
 - **Which benchmark:** benchmarks/discovery_capability_benchmark.py (GOLD_DISCOVERIES, N=20)
 - **Which seed:** 42
 - **Which evaluator:** independent matchers (reproduced from DR-91, zero production imports)
-- **When:** 2026-08-08T00:00:08.970751+00:00
+- **When:** 2026-08-08T00:31:29.385040+00:00
 - **Against which dataset:** GOLD_DISCOVERIES (20 gold bridge discoveries)
 - **Using which matcher:** m_synonym (falls back to m_token, BRIDGE_SYNONYMS={} since cycle 270)
 - **Using which calibration version:** post-cycle-270 (non-circular)
@@ -196,11 +196,11 @@ If any published score cannot answer these questions, it is marked UNVERIFIED.
 
 - **Value:** 0.7879 ± 0.0809 (95% CI: 0.6207, 0.9189)
 - **Who produced it:** programs/A_metrology/bootstrap_statistics.py
-- **Which commit:** 808654db911b
+- **Which commit:** f322df8ff281
 - **Which benchmark:** benchmarks/discovery_capability_benchmark.py (GOLD_DISCOVERIES, N=20)
 - **Which seed:** 42
 - **Which evaluator:** independent matchers (reproduced from DR-91, zero production imports)
-- **When:** 2026-08-08T00:00:08.971742+00:00
+- **When:** 2026-08-08T00:31:29.385973+00:00
 - **Against which dataset:** GOLD_DISCOVERIES (20 gold bridge discoveries)
 - **Using which matcher:** m_synonym (falls back to m_token, BRIDGE_SYNONYMS={} since cycle 270)
 - **Using which calibration version:** post-cycle-270 (non-circular)
@@ -212,11 +212,11 @@ If any published score cannot answer these questions, it is marked UNVERIFIED.
 
 - **Value:** 0.7647 ± 0.0875 (95% CI: 0.5455, 0.8947)
 - **Who produced it:** programs/A_metrology/bootstrap_statistics.py
-- **Which commit:** 808654db911b
+- **Which commit:** f322df8ff281
 - **Which benchmark:** benchmarks/discovery_capability_benchmark.py (GOLD_DISCOVERIES, N=20)
 - **Which seed:** 42
 - **Which evaluator:** independent matchers (reproduced from DR-91, zero production imports)
-- **When:** 2026-08-08T00:00:08.972747+00:00
+- **When:** 2026-08-08T00:31:29.386936+00:00
 - **Against which dataset:** GOLD_DISCOVERIES (20 gold bridge discoveries)
 - **Using which matcher:** m_synonym (falls back to m_token, BRIDGE_SYNONYMS={} since cycle 270)
 - **Using which calibration version:** post-cycle-270 (non-circular)
@@ -228,11 +228,11 @@ If any published score cannot answer these questions, it is marked UNVERIFIED.
 
 - **Value:** 0.3000 ± 0.0997 (95% CI: 0.1487, 0.5000)
 - **Who produced it:** programs/A_metrology/bootstrap_statistics.py
-- **Which commit:** 808654db911b
+- **Which commit:** f322df8ff281
 - **Which benchmark:** benchmarks/discovery_capability_benchmark.py (GOLD_DISCOVERIES, N=20)
 - **Which seed:** 42
 - **Which evaluator:** independent matchers (reproduced from DR-91, zero production imports)
-- **When:** 2026-08-08T00:00:08.973811+00:00
+- **When:** 2026-08-08T00:31:29.387879+00:00
 - **Against which dataset:** GOLD_DISCOVERIES (20 gold bridge discoveries)
 - **Using which matcher:** m_synonym (falls back to m_token, BRIDGE_SYNONYMS={} since cycle 270)
 - **Using which calibration version:** post-cycle-270 (non-circular)
@@ -244,11 +244,11 @@ If any published score cannot answer these questions, it is marked UNVERIFIED.
 
 - **Value:** 0.0500 ± 0.0517 (95% CI: 0.0000, 0.1500)
 - **Who produced it:** programs/A_metrology/bootstrap_statistics.py
-- **Which commit:** 808654db911b
+- **Which commit:** f322df8ff281
 - **Which benchmark:** benchmarks/discovery_capability_benchmark.py (GOLD_DISCOVERIES, N=20)
 - **Which seed:** 42
 - **Which evaluator:** independent matchers (reproduced from DR-91, zero production imports)
-- **When:** 2026-08-08T00:00:08.974764+00:00
+- **When:** 2026-08-08T00:31:29.388888+00:00
 - **Against which dataset:** GOLD_DISCOVERIES (20 gold bridge discoveries)
 - **Using which matcher:** m_synonym (falls back to m_token, BRIDGE_SYNONYMS={} since cycle 270)
 - **Using which calibration version:** post-cycle-270 (non-circular)
@@ -260,11 +260,11 @@ If any published score cannot answer these questions, it is marked UNVERIFIED.
 
 - **Value:** 0.1000 ± 0.0748 (95% CI: 0.0000, 0.2500)
 - **Who produced it:** programs/A_metrology/bootstrap_statistics.py
-- **Which commit:** 808654db911b
+- **Which commit:** f322df8ff281
 - **Which benchmark:** benchmarks/discovery_capability_benchmark.py (GOLD_DISCOVERIES, N=20)
 - **Which seed:** 42
 - **Which evaluator:** independent matchers (reproduced from DR-91, zero production imports)
-- **When:** 2026-08-08T00:00:08.975810+00:00
+- **When:** 2026-08-08T00:31:29.389808+00:00
 - **Against which dataset:** GOLD_DISCOVERIES (20 gold bridge discoveries)
 - **Using which matcher:** m_synonym (falls back to m_token, BRIDGE_SYNONYMS={} since cycle 270)
 - **Using which calibration version:** post-cycle-270 (non-circular)
@@ -276,11 +276,11 @@ If any published score cannot answer these questions, it is marked UNVERIFIED.
 
 - **Value:** 0.0000 ± 0.0000 (95% CI: 0.0000, 0.0000)
 - **Who produced it:** programs/A_metrology/bootstrap_statistics.py
-- **Which commit:** 808654db911b
+- **Which commit:** f322df8ff281
 - **Which benchmark:** benchmarks/discovery_capability_benchmark.py (GOLD_DISCOVERIES, N=6)
 - **Which seed:** 42
 - **Which evaluator:** independent matchers (reproduced from DR-91, zero production imports)
-- **When:** 2026-08-08T00:00:08.976776+00:00
+- **When:** 2026-08-08T00:31:29.390786+00:00
 - **Against which dataset:** GOLD_DISCOVERIES (20 gold bridge discoveries)
 - **Using which matcher:** m_synonym (falls back to m_token, BRIDGE_SYNONYMS={} since cycle 270)
 - **Using which calibration version:** post-cycle-270 (non-circular)
@@ -292,11 +292,11 @@ If any published score cannot answer these questions, it is marked UNVERIFIED.
 
 - **Value:** 2.2381 ± 0.3090 (95% CI: 1.6780, 2.8458)
 - **Who produced it:** programs/A_metrology/bootstrap_statistics.py
-- **Which commit:** 808654db911b
+- **Which commit:** f322df8ff281
 - **Which benchmark:** benchmarks/discovery_capability_benchmark.py (GOLD_DISCOVERIES, N=7)
 - **Which seed:** 42
 - **Which evaluator:** independent matchers (reproduced from DR-91, zero production imports)
-- **When:** 2026-08-08T00:00:08.977782+00:00
+- **When:** 2026-08-08T00:31:29.391759+00:00
 - **Against which dataset:** GOLD_DISCOVERIES (20 gold bridge discoveries)
 - **Using which matcher:** m_synonym (falls back to m_token, BRIDGE_SYNONYMS={} since cycle 270)
 - **Using which calibration version:** post-cycle-270 (non-circular)
@@ -308,11 +308,11 @@ If any published score cannot answer these questions, it is marked UNVERIFIED.
 
 - **Value:** 4.0000 ± 0.2394 (95% CI: 3.5000, 4.5000)
 - **Who produced it:** programs/A_metrology/bootstrap_statistics.py
-- **Which commit:** 808654db911b
+- **Which commit:** f322df8ff281
 - **Which benchmark:** benchmarks/discovery_capability_benchmark.py (GOLD_DISCOVERIES, N=6)
 - **Which seed:** 42
 - **Which evaluator:** independent matchers (reproduced from DR-91, zero production imports)
-- **When:** 2026-08-08T00:00:08.978716+00:00
+- **When:** 2026-08-08T00:31:29.392724+00:00
 - **Against which dataset:** GOLD_DISCOVERIES (20 gold bridge discoveries)
 - **Using which matcher:** m_synonym (falls back to m_token, BRIDGE_SYNONYMS={} since cycle 270)
 - **Using which calibration version:** post-cycle-270 (non-circular)
@@ -324,11 +324,11 @@ If any published score cannot answer these questions, it is marked UNVERIFIED.
 
 - **Value:** 1.1667 ± 0.1485 (95% CI: 1.0000, 1.5000)
 - **Who produced it:** programs/A_metrology/bootstrap_statistics.py
-- **Which commit:** 808654db911b
+- **Which commit:** f322df8ff281
 - **Which benchmark:** benchmarks/discovery_capability_benchmark.py (GOLD_DISCOVERIES, N=6)
 - **Which seed:** 42
 - **Which evaluator:** independent matchers (reproduced from DR-91, zero production imports)
-- **When:** 2026-08-08T00:00:08.979715+00:00
+- **When:** 2026-08-08T00:31:29.393783+00:00
 - **Against which dataset:** GOLD_DISCOVERIES (20 gold bridge discoveries)
 - **Using which matcher:** m_synonym (falls back to m_token, BRIDGE_SYNONYMS={} since cycle 270)
 - **Using which calibration version:** post-cycle-270 (non-circular)
@@ -340,11 +340,11 @@ If any published score cannot answer these questions, it is marked UNVERIFIED.
 
 - **Value:** 2.0000 ± 0.0000 (95% CI: 2.0000, 2.0000)
 - **Who produced it:** programs/A_metrology/bootstrap_statistics.py
-- **Which commit:** 808654db911b
+- **Which commit:** f322df8ff281
 - **Which benchmark:** benchmarks/discovery_capability_benchmark.py (GOLD_DISCOVERIES, N=6)
 - **Which seed:** 42
 - **Which evaluator:** independent matchers (reproduced from DR-91, zero production imports)
-- **When:** 2026-08-08T00:00:08.980683+00:00
+- **When:** 2026-08-08T00:31:29.394812+00:00
 - **Against which dataset:** GOLD_DISCOVERIES (20 gold bridge discoveries)
 - **Using which matcher:** m_synonym (falls back to m_token, BRIDGE_SYNONYMS={} since cycle 270)
 - **Using which calibration version:** post-cycle-270 (non-circular)
@@ -356,11 +356,11 @@ If any published score cannot answer these questions, it is marked UNVERIFIED.
 
 - **Value:** 1.8333 ± 0.1517 (95% CI: 1.5000, 2.0000)
 - **Who produced it:** programs/A_metrology/bootstrap_statistics.py
-- **Which commit:** 808654db911b
+- **Which commit:** f322df8ff281
 - **Which benchmark:** benchmarks/discovery_capability_benchmark.py (GOLD_DISCOVERIES, N=6)
 - **Which seed:** 42
 - **Which evaluator:** independent matchers (reproduced from DR-91, zero production imports)
-- **When:** 2026-08-08T00:00:08.981665+00:00
+- **When:** 2026-08-08T00:31:29.395740+00:00
 - **Against which dataset:** GOLD_DISCOVERIES (20 gold bridge discoveries)
 - **Using which matcher:** m_synonym (falls back to m_token, BRIDGE_SYNONYMS={} since cycle 270)
 - **Using which calibration version:** post-cycle-270 (non-circular)
@@ -372,11 +372,11 @@ If any published score cannot answer these questions, it is marked UNVERIFIED.
 
 - **Value:** 3.0000 ± 0.0000 (95% CI: 3.0000, 3.0000)
 - **Who produced it:** programs/A_metrology/bootstrap_statistics.py
-- **Which commit:** 808654db911b
+- **Which commit:** f322df8ff281
 - **Which benchmark:** benchmarks/discovery_capability_benchmark.py (GOLD_DISCOVERIES, N=6)
 - **Which seed:** 42
 - **Which evaluator:** independent matchers (reproduced from DR-91, zero production imports)
-- **When:** 2026-08-08T00:00:08.982604+00:00
+- **When:** 2026-08-08T00:31:29.396691+00:00
 - **Against which dataset:** GOLD_DISCOVERIES (20 gold bridge discoveries)
 - **Using which matcher:** m_synonym (falls back to m_token, BRIDGE_SYNONYMS={} since cycle 270)
 - **Using which calibration version:** post-cycle-270 (non-circular)
@@ -388,11 +388,11 @@ If any published score cannot answer these questions, it is marked UNVERIFIED.
 
 - **Value:** 1.8333 ± 0.1517 (95% CI: 1.5000, 2.0000)
 - **Who produced it:** programs/A_metrology/bootstrap_statistics.py
-- **Which commit:** 808654db911b
+- **Which commit:** f322df8ff281
 - **Which benchmark:** benchmarks/discovery_capability_benchmark.py (GOLD_DISCOVERIES, N=6)
 - **Which seed:** 42
 - **Which evaluator:** independent matchers (reproduced from DR-91, zero production imports)
-- **When:** 2026-08-08T00:00:08.983576+00:00
+- **When:** 2026-08-08T00:31:29.397622+00:00
 - **Against which dataset:** GOLD_DISCOVERIES (20 gold bridge discoveries)
 - **Using which matcher:** m_synonym (falls back to m_token, BRIDGE_SYNONYMS={} since cycle 270)
 - **Using which calibration version:** post-cycle-270 (non-circular)
@@ -404,11 +404,11 @@ If any published score cannot answer these questions, it is marked UNVERIFIED.
 
 - **Value:** 1.8333 ± 0.1517 (95% CI: 1.5000, 2.0000)
 - **Who produced it:** programs/A_metrology/bootstrap_statistics.py
-- **Which commit:** 808654db911b
+- **Which commit:** f322df8ff281
 - **Which benchmark:** benchmarks/discovery_capability_benchmark.py (GOLD_DISCOVERIES, N=6)
 - **Which seed:** 42
 - **Which evaluator:** independent matchers (reproduced from DR-91, zero production imports)
-- **When:** 2026-08-08T00:00:08.984671+00:00
+- **When:** 2026-08-08T00:31:29.398576+00:00
 - **Against which dataset:** GOLD_DISCOVERIES (20 gold bridge discoveries)
 - **Using which matcher:** m_synonym (falls back to m_token, BRIDGE_SYNONYMS={} since cycle 270)
 - **Using which calibration version:** post-cycle-270 (non-circular)
@@ -420,11 +420,11 @@ If any published score cannot answer these questions, it is marked UNVERIFIED.
 
 - **Value:** 1.0000 ± 0.0000 (95% CI: 1.0000, 1.0000)
 - **Who produced it:** programs/A_metrology/bootstrap_statistics.py
-- **Which commit:** 808654db911b
+- **Which commit:** f322df8ff281
 - **Which benchmark:** benchmarks/discovery_capability_benchmark.py (GOLD_DISCOVERIES, N=5)
 - **Which seed:** 42
 - **Which evaluator:** independent matchers (reproduced from DR-91, zero production imports)
-- **When:** 2026-08-08T00:00:08.985925+00:00
+- **When:** 2026-08-08T00:31:29.399510+00:00
 - **Against which dataset:** GOLD_DISCOVERIES (20 gold bridge discoveries)
 - **Using which matcher:** m_synonym (falls back to m_token, BRIDGE_SYNONYMS={} since cycle 270)
 - **Using which calibration version:** post-cycle-270 (non-circular)
@@ -436,11 +436,11 @@ If any published score cannot answer these questions, it is marked UNVERIFIED.
 
 - **Value:** 0.9431 ± 0.0208 (95% CI: 0.8983, 0.9764)
 - **Who produced it:** programs/A_metrology/bootstrap_statistics.py
-- **Which commit:** 808654db911b
+- **Which commit:** f322df8ff281
 - **Which benchmark:** benchmarks/discovery_capability_benchmark.py (GOLD_DISCOVERIES, N=65)
 - **Which seed:** 42
 - **Which evaluator:** independent matchers (reproduced from DR-91, zero production imports)
-- **When:** 2026-08-08T00:00:08.986938+00:00
+- **When:** 2026-08-08T00:31:29.400549+00:00
 - **Against which dataset:** GOLD_DISCOVERIES (20 gold bridge discoveries)
 - **Using which matcher:** m_synonym (falls back to m_token, BRIDGE_SYNONYMS={} since cycle 270)
 - **Using which calibration version:** post-cycle-270 (non-circular)
@@ -452,11 +452,11 @@ If any published score cannot answer these questions, it is marked UNVERIFIED.
 
 - **Value:** 0.8800 ± 0.0304 (95% CI: 0.8145, 0.9322)
 - **Who produced it:** programs/A_metrology/bootstrap_statistics.py
-- **Which commit:** 808654db911b
+- **Which commit:** f322df8ff281
 - **Which benchmark:** benchmarks/discovery_capability_benchmark.py (GOLD_DISCOVERIES, N=85)
 - **Which seed:** 42
 - **Which evaluator:** independent matchers (reproduced from DR-91, zero production imports)
-- **When:** 2026-08-08T00:00:08.987900+00:00
+- **When:** 2026-08-08T00:31:29.401513+00:00
 - **Against which dataset:** GOLD_DISCOVERIES (20 gold bridge discoveries)
 - **Using which matcher:** m_synonym (falls back to m_token, BRIDGE_SYNONYMS={} since cycle 270)
 - **Using which calibration version:** post-cycle-270 (non-circular)
@@ -468,11 +468,11 @@ If any published score cannot answer these questions, it is marked UNVERIFIED.
 
 - **Value:** 0.9091 ± 0.0677 (95% CI: 0.7368, 1.0000)
 - **Who produced it:** programs/A_metrology/bootstrap_statistics.py
-- **Which commit:** 808654db911b
+- **Which commit:** f322df8ff281
 - **Which benchmark:** benchmarks/discovery_capability_benchmark.py (GOLD_DISCOVERIES, N=12)
 - **Which seed:** 42
 - **Which evaluator:** independent matchers (reproduced from DR-91, zero production imports)
-- **When:** 2026-08-08T00:00:08.988844+00:00
+- **When:** 2026-08-08T00:31:29.402461+00:00
 - **Against which dataset:** GOLD_DISCOVERIES (20 gold bridge discoveries)
 - **Using which matcher:** m_synonym (falls back to m_token, BRIDGE_SYNONYMS={} since cycle 270)
 - **Using which calibration version:** post-cycle-270 (non-circular)
@@ -484,11 +484,11 @@ If any published score cannot answer these questions, it is marked UNVERIFIED.
 
 - **Value:** 0.9375 ± 0.0464 (95% CI: 0.8276, 1.0000)
 - **Who produced it:** programs/A_metrology/bootstrap_statistics.py
-- **Which commit:** 808654db911b
+- **Which commit:** f322df8ff281
 - **Which benchmark:** benchmarks/discovery_capability_benchmark.py (GOLD_DISCOVERIES, N=17)
 - **Which seed:** 42
 - **Which evaluator:** independent matchers (reproduced from DR-91, zero production imports)
-- **When:** 2026-08-08T00:00:08.989757+00:00
+- **When:** 2026-08-08T00:31:29.403384+00:00
 - **Against which dataset:** GOLD_DISCOVERIES (20 gold bridge discoveries)
 - **Using which matcher:** m_synonym (falls back to m_token, BRIDGE_SYNONYMS={} since cycle 270)
 - **Using which calibration version:** post-cycle-270 (non-circular)
@@ -500,11 +500,11 @@ If any published score cannot answer these questions, it is marked UNVERIFIED.
 
 - **Value:** 0.9000 ± 0.0891 (95% CI: 0.7000, 1.0000)
 - **Who produced it:** programs/A_metrology/bootstrap_statistics.py
-- **Which commit:** 808654db911b
+- **Which commit:** f322df8ff281
 - **Which benchmark:** benchmarks/discovery_capability_benchmark.py (GOLD_DISCOVERIES, N=10)
 - **Which seed:** 42
 - **Which evaluator:** independent matchers (reproduced from DR-91, zero production imports)
-- **When:** 2026-08-08T00:00:08.990704+00:00
+- **When:** 2026-08-08T00:31:29.404334+00:00
 - **Against which dataset:** GOLD_DISCOVERIES (20 gold bridge discoveries)
 - **Using which matcher:** m_synonym (falls back to m_token, BRIDGE_SYNONYMS={} since cycle 270)
 - **Using which calibration version:** post-cycle-270 (non-circular)
@@ -516,11 +516,11 @@ If any published score cannot answer these questions, it is marked UNVERIFIED.
 
 - **Value:** 0.9000 ± 0.0891 (95% CI: 0.7000, 1.0000)
 - **Who produced it:** programs/A_metrology/bootstrap_statistics.py
-- **Which commit:** 808654db911b
+- **Which commit:** f322df8ff281
 - **Which benchmark:** benchmarks/discovery_capability_benchmark.py (GOLD_DISCOVERIES, N=10)
 - **Which seed:** 42
 - **Which evaluator:** independent matchers (reproduced from DR-91, zero production imports)
-- **When:** 2026-08-08T00:00:08.991649+00:00
+- **When:** 2026-08-08T00:31:29.405284+00:00
 - **Against which dataset:** GOLD_DISCOVERIES (20 gold bridge discoveries)
 - **Using which matcher:** m_synonym (falls back to m_token, BRIDGE_SYNONYMS={} since cycle 270)
 - **Using which calibration version:** post-cycle-270 (non-circular)
@@ -532,11 +532,11 @@ If any published score cannot answer these questions, it is marked UNVERIFIED.
 
 - **Value:** 0.9000 ± 0.0891 (95% CI: 0.7000, 1.0000)
 - **Who produced it:** programs/A_metrology/bootstrap_statistics.py
-- **Which commit:** 808654db911b
+- **Which commit:** f322df8ff281
 - **Which benchmark:** benchmarks/discovery_capability_benchmark.py (GOLD_DISCOVERIES, N=10)
 - **Which seed:** 42
 - **Which evaluator:** independent matchers (reproduced from DR-91, zero production imports)
-- **When:** 2026-08-08T00:00:08.992657+00:00
+- **When:** 2026-08-08T00:31:29.406328+00:00
 - **Against which dataset:** GOLD_DISCOVERIES (20 gold bridge discoveries)
 - **Using which matcher:** m_synonym (falls back to m_token, BRIDGE_SYNONYMS={} since cycle 270)
 - **Using which calibration version:** post-cycle-270 (non-circular)
@@ -548,11 +548,11 @@ If any published score cannot answer these questions, it is marked UNVERIFIED.
 
 - **Value:** 8.6000 ± 0.3529 (95% CI: 8.0000, 9.4000)
 - **Who produced it:** programs/A_metrology/bootstrap_statistics.py
-- **Which commit:** 808654db911b
+- **Which commit:** f322df8ff281
 - **Which benchmark:** benchmarks/discovery_capability_benchmark.py (GOLD_DISCOVERIES, N=5)
 - **Which seed:** 42
 - **Which evaluator:** independent matchers (reproduced from DR-91, zero production imports)
-- **When:** 2026-08-08T00:00:08.993582+00:00
+- **When:** 2026-08-08T00:31:29.407270+00:00
 - **Against which dataset:** GOLD_DISCOVERIES (20 gold bridge discoveries)
 - **Using which matcher:** m_synonym (falls back to m_token, BRIDGE_SYNONYMS={} since cycle 270)
 - **Using which calibration version:** post-cycle-270 (non-circular)
@@ -564,11 +564,11 @@ If any published score cannot answer these questions, it is marked UNVERIFIED.
 
 - **Value:** 1.0000 ± 0.0000 (95% CI: 1.0000, 1.0000)
 - **Who produced it:** programs/A_metrology/bootstrap_statistics.py
-- **Which commit:** 808654db911b
+- **Which commit:** f322df8ff281
 - **Which benchmark:** benchmarks/discovery_capability_benchmark.py (GOLD_DISCOVERIES, N=43)
 - **Which seed:** 42
 - **Which evaluator:** independent matchers (reproduced from DR-91, zero production imports)
-- **When:** 2026-08-08T00:00:08.994571+00:00
+- **When:** 2026-08-08T00:31:29.408212+00:00
 - **Against which dataset:** GOLD_DISCOVERIES (20 gold bridge discoveries)
 - **Using which matcher:** m_synonym (falls back to m_token, BRIDGE_SYNONYMS={} since cycle 270)
 - **Using which calibration version:** post-cycle-270 (non-circular)
@@ -580,11 +580,11 @@ If any published score cannot answer these questions, it is marked UNVERIFIED.
 
 - **Value:** 0.1667 ± 0.1485 (95% CI: 0.0000, 0.5000)
 - **Who produced it:** programs/A_metrology/bootstrap_statistics.py
-- **Which commit:** 808654db911b
+- **Which commit:** f322df8ff281
 - **Which benchmark:** benchmarks/discovery_capability_benchmark.py (GOLD_DISCOVERIES, N=6)
 - **Which seed:** 42
 - **Which evaluator:** independent matchers (reproduced from DR-91, zero production imports)
-- **When:** 2026-08-08T00:00:08.995507+00:00
+- **When:** 2026-08-08T00:31:29.409138+00:00
 - **Against which dataset:** GOLD_DISCOVERIES (20 gold bridge discoveries)
 - **Using which matcher:** m_synonym (falls back to m_token, BRIDGE_SYNONYMS={} since cycle 270)
 - **Using which calibration version:** post-cycle-270 (non-circular)
@@ -596,11 +596,11 @@ If any published score cannot answer these questions, it is marked UNVERIFIED.
 
 - **Value:** 2.5000 ± 0.0556 (95% CI: 2.3750, 2.6250)
 - **Who produced it:** programs/A_metrology/bootstrap_statistics.py
-- **Which commit:** 808654db911b
+- **Which commit:** f322df8ff281
 - **Which benchmark:** benchmarks/discovery_capability_benchmark.py (GOLD_DISCOVERIES, N=6)
 - **Which seed:** 42
 - **Which evaluator:** independent matchers (reproduced from DR-91, zero production imports)
-- **When:** 2026-08-08T00:00:08.996425+00:00
+- **When:** 2026-08-08T00:31:29.410049+00:00
 - **Against which dataset:** GOLD_DISCOVERIES (20 gold bridge discoveries)
 - **Using which matcher:** m_synonym (falls back to m_token, BRIDGE_SYNONYMS={} since cycle 270)
 - **Using which calibration version:** post-cycle-270 (non-circular)
@@ -612,11 +612,11 @@ If any published score cannot answer these questions, it is marked UNVERIFIED.
 
 - **Value:** 0.9000 ± 0.0111 (95% CI: 0.8750, 0.9250)
 - **Who produced it:** programs/A_metrology/bootstrap_statistics.py
-- **Which commit:** 808654db911b
+- **Which commit:** f322df8ff281
 - **Which benchmark:** benchmarks/discovery_capability_benchmark.py (GOLD_DISCOVERIES, N=6)
 - **Which seed:** 42
 - **Which evaluator:** independent matchers (reproduced from DR-91, zero production imports)
-- **When:** 2026-08-08T00:00:08.997395+00:00
+- **When:** 2026-08-08T00:31:29.411070+00:00
 - **Against which dataset:** GOLD_DISCOVERIES (20 gold bridge discoveries)
 - **Using which matcher:** m_synonym (falls back to m_token, BRIDGE_SYNONYMS={} since cycle 270)
 - **Using which calibration version:** post-cycle-270 (non-circular)

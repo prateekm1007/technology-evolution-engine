@@ -1,7 +1,7 @@
 # Honest Scoreboard
 
-Generated: 2026-08-08T00:00:08.997984+00:00
-Commit: 808654db911b
+Generated: 2026-08-08T00:31:29.411623+00:00
+Commit: f322df8ff281
 Matcher: m_synonym (falls back to m_token, BRIDGE_SYNONYMS={} since cycle 270)
 
 No naked numbers. Every metric carries provenance.

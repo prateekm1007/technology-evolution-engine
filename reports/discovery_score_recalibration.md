@@ -12,7 +12,7 @@ AUDITOR_SCORECARD.md (auto-generated from score JSON)
 ```
 
 ## Previous score
-- F1 = 0.9189
+- F1 = 0.5714
 - Score = 9/10 (round(10 × 0.9189) = 9)
 - Source: benchmarks/reports/discovery_capability_score.json (stale)
 - The score was stale because BRIDGE_SYNONYMS was removed (cycle 270, F-158)
@@ -41,7 +41,7 @@ The score dropped from 9/10 (F1=0.9189) to 6/10 (F1=0.5714) because:
 ## Commit that changed it
 - Cycle 270 (F-158): removed BRIDGE_SYNONYMS (commit 808654d)
 - This sprint: regenerated discovery_capability_score.json and AUDITOR_SCORECARD.md
-- Current commit: 808654db911b
+- Current commit: f322df8ff281
 
 ## Why it changed
 

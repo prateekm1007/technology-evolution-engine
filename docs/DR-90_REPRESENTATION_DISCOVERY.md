@@ -37,7 +37,7 @@ Instead answer one question:
 
 The following modules are FROZEN. No modifications. Only additive work.
 
-- Discovery Engine (F1=0.9189)
+- Discovery Engine (F1=0.9189 HISTORICAL — current F1=0.5714 after cycle 270 circular synonym removal)
 - Extraction (entities, relations, mechanisms)
 - Forward Models
 - L1-L5b (landscape measurement, taxonomy, optimizer selection,

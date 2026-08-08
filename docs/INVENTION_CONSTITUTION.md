@@ -24,7 +24,7 @@ If all steps are real for one domain, the repo has crossed the threshold into in
 
 | Stage | What it does | Status |
 |---|---|---|
-| Discovery | Find relationships not explicitly stated | ✅ Done (F1=0.9189, non-circular 20-item gold) |
+| Discovery | Find relationships not explicitly stated | ✅ Done (F1=0.9189 (HISTORICAL — was circular, current F1=0.5714 after cycle 270)) |
 | Capability | What can this knowledge do? | ✅ Exists (`scripts/capability_graph.py`) — extend, don't rebuild |
 | Specification | What do we want? | ✅ Built (`scripts/specification.py`) |
 | Invention | Generate candidates that did not exist, predict, measure | 🚧 Building (vertical slice closes) |
@@ -56,7 +56,7 @@ stage (Constitutional Rule 8).
 These tests are MANDATORY. No new stage may merge without passing them.
 
 **The discovery baseline is NOT fixed truth.** The Failure Engine must audit
-it continuously. The current honest discovery F1=0.9189 is defensible but
+it continuously. The current honest discovery F1=0.9189 was defensible at the time (HISTORICAL — current F1=0.5714 after circular synonym removal in cycle 270) but
 must not be treated as permanent — it can change if the gold set or
 extraction pipeline changes.
 
