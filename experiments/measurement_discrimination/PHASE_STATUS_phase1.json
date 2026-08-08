@@ -1,0 +1,88 @@
+{
+  "phase": 1,
+  "phase_name": "Fix BusinessPipeline silent failures",
+  "status": "COMPLETE",
+  "commit": "pending",
+  "protocol_frozen": false,
+  "tests_passed_local": 16,
+  "tests_local_scope": "tests/test_dr62_business_pipeline.py (4) + tests/test_phase1_business_pipeline_silent_failures.py (12)",
+  "tests_total_collected": 2663,
+  "scientific_results_visible": false,
+  "next_allowed_phase": 2,
+  "timestamp_utc": "2026-08-08T15:15:00Z",
+  "github_ci_status": "NOT_INDEPENDENTLY_VERIFIED",
+
+  "silent_failures_fixed": [
+    {
+      "id": "SF-1",
+      "location": "BusinessPipeline.run()",
+      "old_behavior": "Accepted empty raw_text via .get('raw_text',''); empty input flowed through every stage and produced a zero-valued report indistinguishable from a real negative result.",
+      "new_behavior": "Raises ValueError if raw_text is missing, non-string, empty, or whitespace-only.",
+      "test": "test_empty_raw_text_raises, test_whitespace_only_raw_text_raises, test_non_string_raw_text_raises"
+    },
+    {
+      "id": "SF-2",
+      "location": "BusinessPipeline.run() — parser output contract",
+      "old_behavior": "If parser returned empty extraction (no components/materials/claims, <10 words), the pipeline silently produced a zero-valued report.",
+      "new_behavior": "Raises ValueError with parser output details, refusing to produce a zero-valued report.",
+      "test": "test_parser_empty_extraction_raises"
+    },
+    {
+      "id": "SF-3",
+      "location": "GraphRetriever.graph property",
+      "old_behavior": "Caught all Exception and silently returned {'nodes':{}, 'edges':[]}. Missing graph file was indistinguishable from successfully loaded empty graph.",
+      "new_behavior": "Catches FileNotFoundError, JSONDecodeError, OSError separately. Records error in _load_error. Does NOT catch generic Exception. Surfaces error via load_error property and 'graph_load_error' field in run() result.",
+      "test": "test_retriever_graph_missing_records_error, test_retriever_graph_corrupt_records_error, test_retriever_result_includes_graph_load_error_field"
+    },
+    {
+      "id": "SF-4",
+      "location": "GraphRetriever._cem()",
+      "old_behavior": "Caught all Exception and passed silently. Permissions/encoding errors looked like 'no cemetery matches'.",
+      "new_behavior": "Catches OSError and UnicodeDecodeError specifically. Records per-file errors in _last_cemetery_scan_errors. Does NOT catch generic Exception. Surfaces errors via last_cemetery_scan_errors property.",
+      "test": "(covered by Phase 1 retriever tests; per-file error recording)"
+    },
+    {
+      "id": "SF-5",
+      "location": "BusinessPipeline.run() — stage output contract",
+      "old_behavior": "Each stage used .get() extensively. If a stage returned None or a partial dict, the next stage silently produced a zero-valued result.",
+      "new_behavior": "Added _check_stage_output() that verifies each stage returns a dict with all required keys. Raises TypeError for non-dict, KeyError for missing keys.",
+      "test": "test_stage_output_non_dict_raises, test_stage_output_missing_required_key_raises"
+    },
+    {
+      "id": "SF-6",
+      "location": "BusinessPipeline.run() — permuter silent failure",
+      "old_behavior": "Permuter could silently return total_generated=0 even with non-empty parser output. Pipeline then produced a zero-blueprint report.",
+      "new_behavior": "Raises RuntimeError if permuter returns 0 candidates despite non-empty parser output.",
+      "test": "test_permuter_zero_candidates_raises"
+    },
+    {
+      "id": "SF-7",
+      "location": "BusinessPipeline.run() — empty graph",
+      "old_behavior": "Empty graph (load failure or genuinely empty) silently produced a zero-valued report.",
+      "new_behavior": "Raises RuntimeError if total_nodes_searched is 0.",
+      "test": "test_pipeline_rejects_empty_graph"
+    }
+  ],
+
+  "silent_failures_not_yet_fixed": [
+    "Phase 2 will address BlueprintComposer silent failures (DR-63 partial fix already in place for missing composite_score, but other silent failure patterns remain)."
+  ],
+
+  "amendment_compliance": {
+    "amendment_11_observed_vs_expected": "ENFORCED — every fix has a test verifying the OBSERVED behavior (raise on bad input). No fix relies on EXPECTED behavior.",
+    "amendment_12_commit_categorization": "ENFORCED — this commit's category is ENGINEERING_FIX.",
+    "amendment_13_phase_status_json": "ENFORCED — this file IS the Phase 1 PHASE_STATUS.json.",
+    "amendment_14_scientific_visibility_boundary": "ENFORCED — no scientific results visible. Phase 1 is infrastructure-only."
+  },
+
+  "phase_1_artifacts": {
+    "phase_status_json": "experiments/measurement_discrimination/PHASE_STATUS_phase1.json (this file)",
+    "modified_files": [
+      "product/business/pipeline.py",
+      "product/retrieval/graph_retriever.py"
+    ],
+    "new_test_files": [
+      "tests/test_phase1_business_pipeline_silent_failures.py"
+    ]
+  }
+}
