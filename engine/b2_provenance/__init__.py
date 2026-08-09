@@ -44,6 +44,12 @@ from .generation_null import (
     NULL_CONFIG,
     verify_frozen_components,
 )
+from .execution_gate import (
+    ExecutionGate,
+    ExecutionGateError,
+    ExecutionRecord,
+    assert_execution_gate_active,
+)
 
 __all__ = [
     # Content-addressed storage
