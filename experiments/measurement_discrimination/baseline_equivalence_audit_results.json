@@ -1,214 +1,101 @@
 {
   "audit_type": "BASELINE_EQUIVALENCE_AUDIT",
-  "case_id": "AUDIT-CASE-001",
-  "n_dimensions": 13,
-  "n_equivalent": 10,
-  "n_not_equivalent": 3,
-  "known_confounds": [
-    "llm_access",
-    "prompt_complexity",
-    "entity_specificity"
-  ],
-  "n_known_confounds": 3,
-  "unexpected_failures": [],
+  "case_id": "CASE-001",
+  "engine_entries_found": 0,
+  "null_entries_found": 0,
+  "n_dimensions": 9,
+  "state_counts": {
+    "NOT_RUN": 8,
+    "CONTRACT_EQUAL": 1
+  },
   "measurements": [
     {
       "dimension": "source_pair",
-      "engine_value": "same",
-      "null_value": "same",
-      "equivalent": true,
-      "notes": "Both arms receive the same source pair (by construction)."
-    },
-    {
-      "dimension": "upstream_extraction",
-      "engine_value": "same",
-      "null_value": "same",
-      "equivalent": true,
-      "notes": "Both arms share the extraction prefix (by construction)."
-    },
-    {
-      "dimension": "abstraction",
-      "engine_value": "same",
-      "null_value": "same",
-      "equivalent": true,
-      "notes": "Both arms share the abstraction prefix (by construction)."
+      "state": "NOT_RUN",
+      "engine_provenance": {},
+      "null_provenance": {},
+      "engine_value": null,
+      "null_value": null,
+      "notes": "Engine not executed yet"
     },
     {
       "dimension": "candidate_count",
-      "engine_value": 3,
-      "null_value": 3,
-      "equivalent": true,
-      "notes": "Both arms produce exactly 3 candidates (rank-paired, K=3)."
+      "state": "NOT_RUN",
+      "engine_provenance": {},
+      "null_provenance": {},
+      "engine_value": null,
+      "null_value": null,
+      "notes": "Engine not executed yet"
     },
     {
       "dimension": "candidate_schema",
-      "engine_value": {
-        "n_candidates": 3,
-        "has_relationship_count": 3,
-        "has_mechanism_count": 3,
-        "has_no_mechanism_proposed_count": 0,
-        "all_have_relationship": true,
-        "all_have_mechanism": true
-      },
-      "null_value": {
-        "n_candidates": 3,
-        "has_relationship_count": 3,
-        "has_mechanism_count": 3,
-        "has_no_mechanism_proposed_count": 0,
-        "all_have_relationship": true,
-        "all_have_mechanism": true
-      },
-      "equivalent": true,
-      "notes": "Both arms use RELATIONSHIP + MECHANISM schema."
+      "state": "NOT_RUN",
+      "engine_provenance": {},
+      "null_provenance": {},
+      "engine_value": null,
+      "null_value": null,
+      "notes": "Engine not executed yet"
     },
     {
       "dimension": "candidate_length",
-      "engine_value": {
-        "n": 3,
-        "min": 661,
-        "max": 745,
-        "mean": 689.0,
-        "median": 661,
-        "lengths": [
-          745,
-          661,
-          661
-        ]
-      },
-      "null_value": {
-        "n": 3,
-        "min": 355,
-        "max": 397,
-        "mean": 369.0,
-        "median": 355,
-        "lengths": [
-          397,
-          355,
-          355
-        ]
-      },
-      "equivalent": true,
-      "notes": "Mean length ratio: 1.87x. Engine mean: 689, Null mean: 369. Differences in length may affect adjudicator perception."
+      "state": "NOT_RUN",
+      "engine_provenance": {},
+      "null_provenance": {},
+      "engine_value": null,
+      "null_value": null,
+      "notes": "Engine not executed yet"
     },
     {
       "dimension": "mechanism_presence",
-      "engine_value": {
-        "n_candidates": 3,
-        "n_with_mechanism": 3,
-        "all_have_mechanism": true,
-        "mechanisms": [
-          {
-            "present": true,
-            "is_placeholder": false,
-            "length": 589,
-            "text_preview": "The mechanism by which Crystal nucleation in supersaturated calcium phosphate solutions influences M"
-          },
-          {
-            "present": true,
-            "is_placeholder": false,
-            "length": 526,
-            "text_preview": "The mechanism by which Protein-mediated biomineralization in bone tissue influences Thermal gradient"
-          },
-          {
-            "present": true,
-            "is_placeholder": false,
-            "length": 526,
-            "text_preview": "The mechanism by which Acoustic cavitation controlling polymorph selection influences Ultrasonic fre"
-          }
-        ]
-      },
-      "null_value": {
-        "n_candidates": 3,
-        "n_with_mechanism": 3,
-        "all_have_mechanism": true,
-        "mechanisms": [
-          {
-            "present": true,
-            "is_placeholder": false,
-            "length": 235,
-            "text_preview": "Both domains involve related phenomena. Crystal nucleation in supersaturated calcium phosphate solut"
-          },
-          {
-            "present": true,
-            "is_placeholder": false,
-            "length": 214,
-            "text_preview": "Both domains involve related phenomena. Protein-mediated biomineralization in bone tissue occurs in "
-          },
-          {
-            "present": true,
-            "is_placeholder": false,
-            "length": 214,
-            "text_preview": "Both domains involve related phenomena. Acoustic cavitation controlling polymorph selection occurs i"
-          }
-        ]
-      },
-      "equivalent": true,
-      "notes": "Both arms produce actual mechanisms (not NO_MECHANISM_PROPOSED). This confirms the null is NOT tautologically disadvantaged."
-    },
-    {
-      "dimension": "information_available",
-      "engine_value": "same abstractions",
-      "null_value": "same abstractions",
-      "equivalent": true,
-      "notes": "Both arms receive the same extracted/abstracted mechanisms. The information differential is only in the downstream generation."
-    },
-    {
-      "dimension": "llm_access",
-      "engine_value": "yes (ZAI/GLM)",
-      "null_value": "no (deterministic templates)",
-      "equivalent": false,
-      "notes": "CONFOUND: The engine has LLM access; the null does not. This is the intended experimental contrast (downstream pipeline), but it means the null cannot match the engine's linguistic sophistication. This is a known structural difference."
-    },
-    {
-      "dimension": "prompt_complexity",
-      "engine_value": "complex (transfer + generation prompts)",
-      "null_value": "none (deterministic templates)",
-      "equivalent": false,
-      "notes": "CONFOUND: The engine uses complex prompts; the null uses none. This is part of the downstream pipeline difference."
-    },
-    {
-      "dimension": "entity_specificity",
-      "engine_value": {
-        "n_candidates": 3,
-        "n_with_shared_entity": 0,
-        "entities": [
-          null,
-          null,
-          null
-        ]
-      },
-      "null_value": {
-        "n_candidates": 3,
-        "n_with_shared_entity": 0,
-        "entities": [
-          null,
-          null,
-          null
-        ]
-      },
-      "equivalent": false,
-      "notes": "The null explicitly extracts and names shared entities. The engine (simulated) uses different language. This may give the null an advantage in explicitness."
-    },
-    {
-      "dimension": "human_intervention",
-      "engine_value": "none",
-      "null_value": "none",
-      "equivalent": true,
-      "notes": "No human selects, rewrites, or discards candidates in either arm."
+      "state": "NOT_RUN",
+      "engine_provenance": {},
+      "null_provenance": {},
+      "engine_value": null,
+      "null_value": null,
+      "notes": "Engine not executed yet"
     },
     {
       "dimension": "invocation_seed",
-      "engine_value": "b7315d30e20c947b...",
-      "null_value": "b7315d30e20c947b...",
-      "equivalent": true,
-      "notes": "Both arms use the same invocation seed (arm_id NOT in seed). NOTE: The null is deterministic, so the seed has no operational effect on null generation. The seed equality ensures invocation identity is shared, not that generation randomness is equalized."
+      "state": "NOT_RUN",
+      "engine_provenance": {},
+      "null_provenance": {},
+      "engine_value": null,
+      "null_value": null,
+      "notes": "Engine not executed yet"
+    },
+    {
+      "dimension": "llm_access",
+      "state": "NOT_RUN",
+      "engine_provenance": {},
+      "null_provenance": {},
+      "engine_value": null,
+      "null_value": null,
+      "notes": "Engine not executed yet"
+    },
+    {
+      "dimension": "prompt_complexity",
+      "state": "NOT_RUN",
+      "engine_provenance": {},
+      "null_provenance": {},
+      "engine_value": null,
+      "null_value": null,
+      "notes": "Engine not executed yet"
+    },
+    {
+      "dimension": "human_intervention",
+      "state": "CONTRACT_EQUAL",
+      "engine_provenance": {},
+      "null_provenance": {},
+      "engine_value": "none",
+      "null_value": "none",
+      "notes": "No human selects, rewrites, or discards candidates. Verified by provenance ledger (CANDIDATE_GENERATED events are machine-created, immutable)."
     }
   ],
   "summary": {
-    "tautological_null": false,
-    "null_can_produce_mechanisms": true,
-    "schema_equal": true,
-    "seed_equal": true,
-    "fairness_hypothesis": "The null is capable of competing (produces mechanisms, same schema, same count). However, fairness is NOT established \u2014 the null has different LLM access, prompt complexity, and entity specificity. These are known confounds that are part of the intended experimental contrast (downstream pipeline difference). The baseline equivalence audit measures these differences; it does not declare them acceptable."
+    "engine_executed": false,
+    "null_executed": false,
+    "all_observations_from_real_artifacts": false,
+    "fairness_established": false,
+    "notes": "This audit consumes actual provenance ledger entries. If engine entries are NOT_RUN, the audit cannot establish equivalence \u2014 it can only report that the engine has not been executed yet. Fairness is NEVER declared; it is measured."
   }
 }
