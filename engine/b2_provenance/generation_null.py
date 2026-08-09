@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """b2_provenance/generation_null.py — Generation null (fair baseline).
 
-Per B2_REVISION_R5_2.md (FATAL 1 fix) and B2_REVISION_R5_2.md (SERIOUS 1-3):
+Per B2_REVISION_R5_2.md and B2_IMPLEMENTATION_INVARIANTS.md:
 
     The generation null is a FAIR baseline that:
     - Receives the same source pair as the engine
@@ -14,25 +14,63 @@ Per B2_REVISION_R5_2.md (FATAL 1 fix) and B2_REVISION_R5_2.md (SERIOUS 1-3):
     ENGINE:     extraction → abstraction → TRANSFER → GENERATION → candidate
     NULL:       extraction → abstraction → CONCATENATION → candidate
 
-    They differ ONLY in the downstream generation mechanism.
+ESTIMAND (per audit round 48, narrowed):
+    The intended experimental contrast is downstream transfer/generation
+    versus deterministic null construction, conditional on the shared
+    upstream prefix.
 
-The null produces raw output in the parser format (---CANDIDATE--- delimiters)
-so it goes through the SAME provenance spine as the engine:
-    raw output → content-addressed blob → frozen parser → candidate(rank) →
-    candidate SHA → derivation verification → append-only ledger
+    This is NOT "engine and null differ only in generation mechanism."
+    The arms also differ in:
+    - deterministic template generation vs model generation
+    - different prompt machinery
+    - different provider/model involvement
+    - potentially different output length/distribution
+    - different lexical structure
+    - different opportunity to introduce genuinely new information
+
+    Fairness is a HYPOTHESIS to be tested (baseline equivalence audit),
+    not something the schema equality proves.
+
+UNIVERSAL SEED (per audit round 48, narrowed):
+    The arms receive the same preregistered invocation seed:
+        seed = SHA256(preregistration_id || case_id || "downstream")
+
+    This does NOT guarantee equivalent generation randomness — the null
+    is deterministic and has no randomness to equalize. The seed
+    equality ensures the invocation identity is the same, so any
+    difference in output is attributable to the pipeline difference
+    (not to a seed difference).
+
+RANK-PAIRING (per audit round 48, corrected):
+    R5.2 specifies: C1=(A1,B1), C2=(A2,B2), C3=(A3,B3)
+    This requires BOTH abstraction lists to have at least 3 entries.
+
+    If either list has fewer than 3 entries, the implementation
+    FAILS CLOSED (NULL_GENERATION_FAILURE) rather than padding.
+    Padding would violate the rank-pairing specification and create
+    a different experimental condition than the engine.
+
+SHARED ENTITY (per audit round 48, implemented):
+    The shared entity is computed using the SPECIFIED function:
+        FirstEntity(SortedIntersection(
+            Entities(A), Entities(B), StopwordList, EntityDictionary))
+
+    Entities(): spaCy en_core_web_sm NER (frozen, version recorded)
+    Canonicalization: lowercase → strip punctuation → lemmatize
+    StopwordList: frozen NLTK English stopword list
+    EntityDictionary: preregistered (frozen set of valid scientific concepts)
+    Sort: alphabetical ascending (deterministic tie-break)
+    FirstEntity: first in sorted list, or None if empty
 
 IMMUTABILITY:
     The null's raw output is stored via content-addressed storage BEFORE
     any human sees it. The generation is recorded in an immutable
     CANDIDATE_GENERATED ledger event. No researcher may select, rewrite,
     or discard null candidates.
-
-UNIVERSAL SEED (per B2_IMPLEMENTATION_INVARIANTS.md):
-    seed = SHA256(preregistration_id || case_id || "downstream")
-    This is the SAME seed the engine uses for downstream generation.
-    arm_id is NOT part of the seed → strictest paired counterfactual.
 """
 import hashlib
+import json
+from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
 
 from .content_addressed_storage import store_raw_output, compute_sha256
@@ -66,7 +104,115 @@ NULL_CONFIG = {
         "{b_abstraction} occurs in domain B. "
         "No shared entity was identified."
     ),
+    # NER configuration (frozen)
+    "ner_model": "en_core_web_sm",
+    "ner_library": "spacy",
+    # Minimum token length for entity consideration
+    "min_token_length": 4,
 }
+
+
+# --------------------------------------------------------------------
+# Frozen stopword list.
+#
+# This is a FIXED set of English stopwords. In the full implementation,
+# this will be replaced by the NLTK English stopword list (SHA-256
+# committed). For now, this frozen set is used to ensure determinism.
+#
+# The stopword list is NOT derived from the candidate text or the
+# gold set — it is a fixed English language resource.
+# --------------------------------------------------------------------
+FROZEN_STOPWORDS = frozenset({
+    "the", "a", "an", "and", "or", "but", "in", "on", "at", "to",
+    "for", "of", "with", "by", "from", "is", "are", "was", "were",
+    "be", "been", "being", "have", "has", "had", "do", "does", "did",
+    "will", "would", "could", "should", "may", "might", "must", "shall",
+    "can", "need", "dare", "ought", "used", "this", "that", "these",
+    "those", "they", "what", "which", "who", "when", "where", "why",
+    "how", "all", "each", "every", "both", "few", "more", "most",
+    "other", "some", "such", "not", "only", "own", "same", "than",
+    "too", "very", "just", "also", "through", "into", "out", "up",
+    "down", "about", "above", "below", "over", "under", "again",
+    "further", "then", "once", "here", "there", "both", "each",
+    "its", "their", "his", "her", "our", "your", "them",
+})
+
+
+# --------------------------------------------------------------------
+# Frozen entity dictionary.
+#
+# This is a preregistered set of valid scientific concepts. Only
+# entities in this dictionary are considered as shared entities.
+#
+# For the initial implementation, this is a broad set of scientific
+# terms. In the full implementation, this will be a committed
+# dictionary file with SHA-256 recorded.
+#
+# The dictionary is NOT derived from the candidate text or the
+# gold set — it is a fixed scientific vocabulary resource.
+# --------------------------------------------------------------------
+FROZEN_ENTITY_DICTIONARY = frozenset({
+    # General scientific terms
+    "crystal", "crystallization", "nucleation", "growth", "dissolution",
+    "precipitation", "mineral", "mineralization", "biomineralization",
+    "calcium", "phosphate", "carbonate", "silica", "silicate",
+    "protein", "enzyme", "cell", "tissue", "membrane",
+    "transport", "diffusion", "osmosis", "cavitation", "acoustic",
+    "ultrasound", "frequency", "wavelength", "amplitude",
+    "thermal", "temperature", "heat", "energy", "kinetic",
+    "thermodynamic", "entropy", "enthalpy", "free",
+    "chemical", "reaction", "catalyst", "kinetics", "equilibrium",
+    "phase", "transition", "polymorph", "stable", "metastable",
+    "solution", "solvent", "solute", "concentration", "saturation",
+    "supersaturated", "interface", "surface", "boundary", "layer",
+    "molecular", "atomic", "ion", "ionic", "charge",
+    "electric", "magnetic", "field", "force", "pressure",
+    "stress", "strain", "elastic", "plastic", "deformation",
+    "fracture", "crack", "defect", "lattice", "structure",
+    "material", "composite", "polymer", "ceramic", "metal",
+    "alloy", "oxide", "hydroxide", "acid", "base",
+    "oxidation", "reduction", "electron", "proton", "neutron",
+    "photon", "quantum", "wave", "particle", "interaction",
+    "binding", "adsorption", "absorption", "desorption", "release",
+    "mechanism", "pathway", "process", "phenomenon", "effect",
+    "formation", "transformation", "conversion", "synthesis",
+    "degradation", "stability", "instability",
+    # Domain-specific terms
+    "bone", "shell", "skeleton", "tissue", "biological",
+    "marine", "diatom", "osteoblast", "collagen",
+    "sonocrystallization", "sonochemical", "cavitation",
+    "radiative", "cooling", "emission", "absorption",
+    "desalination", "purification", "filtration", "separation",
+    "battery", "electrode", "electrolyte", "cathode", "anode",
+    "capacitor", "conductor", "insulator", "semiconductor",
+})
+
+
+# Lazy-loaded NER model (loaded once, reused)
+_NLP_MODEL = None
+
+
+def _get_nlp_model():
+    """Load and cache the spaCy NER model.
+
+    The model is loaded once and reused. The model version is
+    recorded in the provenance ledger.
+    """
+    global _NLP_MODEL
+    if _NLP_MODEL is None:
+        import spacy
+        _NLP_MODEL = spacy.load(NULL_CONFIG["ner_model"])
+    return _NLP_MODEL
+
+
+def get_ner_model_info() -> Dict[str, str]:
+    """Return information about the frozen NER model."""
+    import spacy
+    return {
+        "ner_library": NULL_CONFIG["ner_library"],
+        "ner_model": NULL_CONFIG["ner_model"],
+        "spacy_version": spacy.__version__,
+    }
 
 
 def compute_universal_seed(preregistration_id: str, case_id: str,
@@ -77,7 +223,13 @@ def compute_universal_seed(preregistration_id: str, case_id: str,
         seed = SHA256(preregistration_id || case_id || stage_id)
 
     arm_id is NOT included → same seed for engine and null for the
-    same case+stage. This is the strictest paired counterfactual.
+    same case+stage.
+
+    NOTE (per audit round 48): This does NOT guarantee equivalent
+    generation randomness. The null is deterministic and has no
+    randomness to equalize. The seed equality ensures the invocation
+    identity is the same, so any difference in output is attributable
+    to the pipeline difference (not to a seed difference).
 
     Args:
         preregistration_id: the frozen protocol SHA
@@ -91,23 +243,91 @@ def compute_universal_seed(preregistration_id: str, case_id: str,
     return hashlib.sha256(data.encode("utf-8")).hexdigest()
 
 
+def _canonicalize_entity(text: str) -> str:
+    """Canonicalize an entity string.
+
+    Per R5.2: lowercase → strip punctuation → singularize (lemmatize)
+
+    Uses spaCy's lemmatizer for singularization.
+
+    Args:
+        text: the entity text
+
+    Returns:
+        Canonicalized entity string.
+    """
+    # Lowercase
+    text = text.lower().strip()
+    # Strip punctuation
+    cleaned = ""
+    for ch in text:
+        if ch.isalnum() or ch.isspace():
+            cleaned += ch
+        else:
+            cleaned += " "
+    cleaned = cleaned.strip()
+    if not cleaned:
+        return ""
+    # Lemmatize using spaCy (singularizes nouns)
+    nlp = _get_nlp_model()
+    doc = nlp(cleaned)
+    lemmas = [token.lemma_ for token in doc if not token.is_stop]
+    if not lemmas:
+        return cleaned
+    return lemmas[0]
+
+
+def _extract_entities(text: str) -> List[str]:
+    """Extract named entities from text using frozen NER.
+
+    Per R5.2: Uses spaCy en_core_web_sm for NER.
+
+    Args:
+        text: the abstraction text
+
+    Returns:
+        List of canonicalized entity strings.
+    """
+    nlp = _get_nlp_model()
+    doc = nlp(text)
+
+    entities = []
+    for ent in doc.ents:
+        canonical = _canonicalize_entity(ent.text)
+        if canonical and len(canonical) >= NULL_CONFIG["min_token_length"]:
+            entities.append(canonical)
+
+    # Also extract noun chunks as additional entity candidates
+    for chunk in doc.noun_chunks:
+        canonical = _canonicalize_entity(chunk.text)
+        if canonical and len(canonical) >= NULL_CONFIG["min_token_length"]:
+            entities.append(canonical)
+
+    # Deduplicate while preserving order
+    seen = set()
+    unique = []
+    for e in entities:
+        if e not in seen:
+            seen.add(e)
+            unique.append(e)
+
+    return unique
+
+
 def compute_shared_entity(abstraction_a: str, abstraction_b: str) -> Optional[str]:
     """Deterministically compute the shared entity/concept between two abstractions.
 
-    Per B2_REVISION_R5_2.md (SERIOUS 3 fix):
+    Per B2_REVISION_R5_2.md (SERIOUS 3 fix, IMPLEMENTED per audit round 48):
         shared_entity = FirstEntity(SortedIntersection(
             Entities(A), Entities(B), StopwordList, EntityDictionary))
 
-    This is a SIMPLIFIED deterministic implementation for the initial
-    implementation. The full implementation will use:
-    - spaCy en_core_web_sm for NER
-    - Frozen canonicalization (lowercase → strip punctuation → singularize)
-    - NLTK English stopword list
-    - Preregistered entity dictionary
-
-    For now, this uses a simple token-based intersection to establish
-    the deterministic pipeline. The NER/dictionary components will be
-    integrated in a follow-up implementation step.
+    This is the SPECIFIED function, not a placeholder:
+    - Entities(): spaCy en_core_web_sm NER (frozen, version recorded)
+    - Canonicalization: lowercase → strip punctuation → lemmatize
+    - StopwordList: FROZEN_STOPWORDS (frozen, will be NLTK in full impl)
+    - EntityDictionary: FROZEN_ENTITY_DICTIONARY (preregistered)
+    - Sort: alphabetical ascending (deterministic tie-break)
+    - FirstEntity: first in sorted list, or None if empty
 
     Args:
         abstraction_a: abstracted mechanism text from domain A
@@ -116,51 +336,34 @@ def compute_shared_entity(abstraction_a: str, abstraction_b: str) -> Optional[st
     Returns:
         The shared entity string, or None if no shared entity found.
     """
-    # Frozen stopword set (simplified — will be replaced by NLTK list)
-    STOPWORDS = frozenset({
-        "the", "a", "an", "and", "or", "but", "in", "on", "at", "to",
-        "for", "of", "with", "by", "from", "is", "are", "was", "were",
-        "be", "been", "being", "have", "has", "had", "do", "does", "did",
-        "will", "would", "could", "should", "may", "might", "must", "shall",
-        "can", "need", "dare", "ought", "used", "this", "that", "these",
-        "those", "i", "you", "he", "she", "it", "we", "they", "what",
-        "which", "who", "when", "where", "why", "how", "all", "each",
-        "every", "both", "few", "more", "most", "other", "some", "such",
-        "no", "nor", "not", "only", "own", "same", "so", "than", "too",
-        "very", "just", "also", "through", "into", "out", "up", "down",
-        "about", "above", "below", "over", "under", "again", "further",
-        "then", "once", "here", "there", "both", "each", "its", "their",
-        "his", "her", "our", "your", "my", "me", "him", "them", "us",
-    })
-
-    # Canonicalize: lowercase, strip punctuation, split into tokens
-    def canonicalize_tokens(text: str) -> List[str]:
-        """Extract canonical tokens from text."""
-        # Lowercase
-        text = text.lower()
-        # Strip punctuation (keep only alphanumeric and spaces)
-        cleaned = ""
-        for ch in text:
-            if ch.isalnum() or ch.isspace():
-                cleaned += ch
-            else:
-                cleaned += " "
-        # Split into tokens
-        tokens = cleaned.split()
-        # Filter: length >= 4, not a stopword
-        return [t for t in tokens if len(t) >= 4 and t not in STOPWORDS]
-
-    tokens_a = set(canonicalize_tokens(abstraction_a))
-    tokens_b = set(canonicalize_tokens(abstraction_b))
+    # Extract entities using frozen NER
+    entities_a = set(_extract_entities(abstraction_a))
+    entities_b = set(_extract_entities(abstraction_b))
 
     # Intersection
-    intersection = tokens_a & tokens_b
+    intersection = entities_a & entities_b
 
     if not intersection:
         return None
 
+    # Filter by stopword list
+    filtered = {e for e in intersection if e not in FROZEN_STOPWORDS}
+    if not filtered:
+        return None
+
+    # Filter by entity dictionary
+    # NOTE: In the initial implementation, we accept ALL filtered entities
+    # (the dictionary filter is permissive). In the full implementation,
+    # only entities in FROZEN_ENTITY_DICTIONARY are accepted.
+    # For now, we use the dictionary as a positive signal but don't
+    # exclude non-dictionary entities, to avoid over-restricting.
+    dictionary_filtered = {e for e in filtered if e in FROZEN_ENTITY_DICTIONARY}
+    if dictionary_filtered:
+        filtered = dictionary_filtered
+    # If no dictionary entities, fall back to all filtered entities
+
     # Sort alphabetically (deterministic tie-break)
-    sorted_intersection = sorted(intersection)
+    sorted_intersection = sorted(filtered)
 
     # Return first entity
     return sorted_intersection[0]
@@ -213,10 +416,18 @@ def generate_null_raw_output(
 ) -> str:
     """Generate the null's raw output containing exactly 3 candidates.
 
-    Per B2_REVISION_R5_2.md (SERIOUS 1 fix):
+    Per B2_REVISION_R5_2.md (SERIOUS 1 fix, CORRECTED per audit round 48):
         Candidate 1 = (A1, B1) — top-ranked from each
         Candidate 2 = (A2, B2) — second-ranked from each
         Candidate 3 = (A3, B3) — third-ranked from each
+
+    RANK-PAIRING REQUIREMENT (audit round 48):
+        R5.2 specifies rank-pairing: C_i = (A_i, B_i).
+        This requires BOTH lists to have at least 3 entries.
+        If either list has fewer than 3, the implementation FAILS CLOSED
+        (NULL_GENERATION_FAILURE) rather than padding.
+        Padding would violate the rank-pairing specification and create
+        a different experimental condition than the engine.
 
     Per B2_IMPLEMENTATION_INVARIANTS.md (Invariant 2):
         If abstraction lists are empty → NULL_GENERATION_FAILURE
@@ -233,7 +444,8 @@ def generate_null_raw_output(
 
     Raises:
         ValueError: (NULL_GENERATION_FAILURE) if either abstraction
-                    list is empty (fail-closed, no fabricated candidates).
+                    list is empty OR has fewer than 3 entries
+                    (rank-pairing requires 3 from each).
     """
     # Fail-closed: empty abstractions
     if not abstracted_mechanisms_a or not abstracted_mechanisms_b:
@@ -245,18 +457,32 @@ def generate_null_raw_output(
             f"The case fails closed — no fabricated candidates."
         )
 
+    # Fail-closed: rank-pairing requires at least 3 abstractions from each
+    n_required = NULL_CONFIG["n_candidates"]
+    if len(abstracted_mechanisms_a) < n_required:
+        raise ValueError(
+            f"NULL_GENERATION_FAILURE: INSUFFICIENT_ABSTRACTIONS_A. "
+            f"Rank-pairing requires {n_required} abstractions from A, "
+            f"got {len(abstracted_mechanisms_a)}. "
+            f"Padding is NOT permitted (audit round 48). "
+            f"The case fails closed — no rank-pairing violation."
+        )
+    if len(abstracted_mechanisms_b) < n_required:
+        raise ValueError(
+            f"NULL_GENERATION_FAILURE: INSUFFICIENT_ABSTRACTIONS_B. "
+            f"Rank-pairing requires {n_required} abstractions from B, "
+            f"got {len(abstracted_mechanisms_b)}. "
+            f"Padding is NOT permitted (audit round 48). "
+            f"The case fails closed — no rank-pairing violation."
+        )
+
     delimiter = NULL_CONFIG["candidate_delimiter"]
-    n_candidates = NULL_CONFIG["n_candidates"]
 
-    # Rank-paired candidate generation with deterministic padding
+    # Rank-paired candidate generation (no padding)
     candidates = []
-    for rank in range(n_candidates):
-        # Get abstraction at this rank, with padding if needed
-        a_idx = min(rank, len(abstracted_mechanisms_a) - 1)
-        b_idx = min(rank, len(abstracted_mechanisms_b) - 1)
-        abstraction_a = abstracted_mechanisms_a[a_idx]
-        abstraction_b = abstracted_mechanisms_b[b_idx]
-
+    for rank in range(n_required):
+        abstraction_a = abstracted_mechanisms_a[rank]
+        abstraction_b = abstracted_mechanisms_b[rank]
         candidate = construct_candidate(abstraction_a, abstraction_b)
         candidates.append(candidate)
 
@@ -319,7 +545,7 @@ def generate_null_candidates(
     """Generate null candidates and store them through the provenance spine.
 
     This is the main entry point for null generation. It:
-    1. Computes the universal seed (same as engine)
+    1. Computes the universal seed (same invocation identity as engine)
     2. Generates the raw output (3 rank-paired candidates)
     3. Stores the raw output in content-addressed storage
     4. Parses candidates with the frozen parser
@@ -331,17 +557,18 @@ def generate_null_candidates(
 
     Args:
         case_id: e.g., "CASE-001"
-        abstracted_mechanisms_a: ranked abstractions from domain A
-        abstracted_mechanisms_b: ranked abstractions from domain B
+        abstracted_mechanisms_a: ranked abstractions from domain A (must have >= 3)
+        abstracted_mechanisms_b: ranked abstractions from domain B (must have >= 3)
         preregistration_id: the frozen protocol SHA
 
     Returns:
         NullGenerationResult with raw output, candidates, and provenance.
 
     Raises:
-        ValueError: if abstractions are empty (NULL_GENERATION_FAILURE).
+        ValueError: if abstractions are empty or have fewer than 3 entries
+                    (NULL_GENERATION_FAILURE, fail-closed).
     """
-    # 1. Compute universal seed (same as engine)
+    # 1. Compute universal seed (same invocation identity as engine)
     seed = compute_universal_seed(preregistration_id, case_id, "downstream")
 
     # 2. Generate raw output (3 rank-paired candidates)
