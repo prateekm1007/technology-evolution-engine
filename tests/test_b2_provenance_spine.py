@@ -275,14 +275,38 @@ Candidate 4: This should be discarded (max 3).
         assert "X" * 10000 not in candidates[0]
 
     def test_parser_does_not_modify_candidate_text(self):
-        """The parser must return candidates EXACTLY as they appear in
-        the raw output (after stripping whitespace). No truncation,
-        no repair, no silent modification."""
-        original = "This is an exact candidate that must not be modified."
+        """The parser deterministically derives the candidate REPRESENTATION
+        from raw output by applying the FROZEN NORMALIZATION RULE
+        (str.strip() — removing leading/trailing whitespace).
+
+        Per audit round 47: the parser does NOT claim to preserve candidate
+        text byte-for-byte. It applies a frozen, explicit normalization rule.
+        Internal whitespace is preserved; only leading/trailing whitespace
+        is stripped.
+
+        This test verifies:
+        1. Internal whitespace is preserved
+        2. Leading/trailing whitespace is stripped (frozen normalization)
+        3. The normalization is deterministic (same input → same output)
+        """
+        # Internal whitespace preserved, leading/trailing stripped
+        original = "  This is a candidate with  internal  spaces.  "
         raw_output = f"---PREAMBLE---\n---CANDIDATE---\n{original}\n"
         candidates = parse_candidates(raw_output)
         assert len(candidates) == 1
-        assert candidates[0] == original  # exact match, no modification
+        # Frozen normalization: strip leading/trailing whitespace only
+        assert candidates[0] == "This is a candidate with  internal  spaces."
+        # Internal whitespace is NOT modified
+        assert "  internal  spaces" in candidates[0]
+
+    def test_parser_normalization_is_frozen_and_deterministic(self):
+        """The whitespace normalization rule (str.strip) is frozen and
+        deterministic. Same input always produces same output."""
+        raw_output = "---PREAMBLE---\n---CANDIDATE---\n  \t Test candidate \t  \n"
+        results1 = parse_candidates(raw_output)
+        results2 = parse_candidates(raw_output)
+        assert results1 == results2
+        assert results1[0] == "Test candidate"  # leading/trailing whitespace stripped
 
 
 # =====================================================================

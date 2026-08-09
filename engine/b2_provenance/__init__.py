@@ -1,9 +1,13 @@
 #!/usr/bin/env python3
-"""b2_provenance/__init__.py — B2 provenance spine package.
+"""b2_provenance — B2 provenance spine and generation null package.
 
 The provenance spine is the foundation of the B2 causal chain:
     raw output → content-addressed blob → frozen parser → candidate(rank) →
     candidate SHA → derivation verification → append-only ledger → adjudication
+
+The generation null is the fair baseline that produces candidates through
+a different mechanism (concatenation, not transfer+generation) while
+sharing the same provenance spine.
 """
 from .content_addressed_storage import (
     compute_sha256,
@@ -26,6 +30,18 @@ from .frozen_parser import (
 from .provenance_ledger import (
     ProvenanceLedger,
     LEDGER_PATH,
+    EVENT_TYPE_CANDIDATE_GENERATED,
+    EVENT_TYPE_ADJUDICATION_RECORDED,
+)
+from .generation_null import (
+    compute_universal_seed,
+    compute_shared_entity,
+    construct_candidate,
+    generate_null_raw_output,
+    generate_null_candidates,
+    record_null_in_ledger,
+    NullGenerationResult,
+    NULL_CONFIG,
 )
 
 __all__ = [
@@ -48,4 +64,15 @@ __all__ = [
     # Provenance ledger
     "ProvenanceLedger",
     "LEDGER_PATH",
+    "EVENT_TYPE_CANDIDATE_GENERATED",
+    "EVENT_TYPE_ADJUDICATION_RECORDED",
+    # Generation null
+    "compute_universal_seed",
+    "compute_shared_entity",
+    "construct_candidate",
+    "generate_null_raw_output",
+    "generate_null_candidates",
+    "record_null_in_ledger",
+    "NullGenerationResult",
+    "NULL_CONFIG",
 ]

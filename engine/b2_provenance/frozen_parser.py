@@ -101,8 +101,36 @@ def parse_candidates(raw_output: str) -> List[str]:
     PARSER_CONFIG["max_candidates"] eligible candidates are returned.
 
     A candidate is "eligible" if:
-    - It is non-empty after stripping whitespace
-    - Its length is between min_candidate_length and max_candidate_length
+    - It is non-empty after applying the FROZEN NORMALIZATION RULE
+    - Its length (after normalization) is between min_candidate_length
+      and max_candidate_length
+
+    FROZEN NORMALIZATION RULE (per audit round 47):
+        Each candidate segment is normalized by applying Python's
+        str.strip() — removing leading and trailing whitespace.
+
+        This is an EXPLICIT, FROZEN normalization rule. It is part of
+        the parser's definition of what constitutes a candidate. The
+        parser does NOT claim to preserve candidate text byte-for-byte
+        from raw output; it deterministically derives the candidate
+        REPRESENTATION from raw output by applying this frozen rule.
+
+        Whitespace normalization is semantically irrelevant to the
+        candidate's scientific content (leading/trailing whitespace
+        has no meaning in a mechanism description). The rule is frozen
+        so that the derivation invariant:
+            SHA256(parser(raw_output).candidate(rank)) == candidate_sha256
+        remains mechanically verifiable.
+
+        Internal whitespace (within the candidate text) is NOT modified.
+        Only leading and trailing whitespace is stripped.
+
+    The parser does NOT:
+    - Truncate overlong candidates (they are rejected as ineligible)
+    - Modify internal whitespace
+    - Change case
+    - Remove punctuation
+    - Apply any semantic transformation
 
     Args:
         raw_output: the raw output string from the engine or null
