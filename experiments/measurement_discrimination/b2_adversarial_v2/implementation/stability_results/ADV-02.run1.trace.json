@@ -1,0 +1,67 @@
+{
+  "schema_version": "b2-trace-v3",
+  "candidate": {
+    "id": "ADV-02",
+    "text": "calcified matrix in osseous structures",
+    "source_a": "Calcium phosphate forms crystalline deposits in bone tissue through osteoblast-mediated mineralization.",
+    "source_b": "Marine diatoms precipitate silica-based cell walls using enzymatic silicatein proteins."
+  },
+  "atoms": [
+    {
+      "atom_id": "a1",
+      "claim": "{matrix: calcified}",
+      "source_support": [
+        {
+          "support_type": "SOURCE_LOCAL",
+          "source_id": "A",
+          "spans": [
+            {
+              "span_text": "crystalline deposits",
+              "start": 24,
+              "end": 44
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "atom_id": "a2",
+      "claim": "{structure: osseous}",
+      "source_support": [
+        {
+          "support_type": "SOURCE_LOCAL",
+          "source_id": "A",
+          "spans": [
+            {
+              "span_text": "bone tissue",
+              "start": 48,
+              "end": 59
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "counterfactuals": [
+    {
+      "removed_source": "A",
+      "unsupported_atoms": [
+        "a1",
+        "a2"
+      ],
+      "justified_without_source": false
+    },
+    {
+      "removed_source": "B",
+      "unsupported_atoms": [],
+      "justified_without_source": true
+    }
+  ],
+  "classification": {
+    "justified_by_corpus": true,
+    "iss_a": true,
+    "iss_b": false,
+    "iss_state": "ISS_one",
+    "label": "REJECT"
+  }
+}

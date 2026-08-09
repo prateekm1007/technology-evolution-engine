@@ -1,0 +1,273 @@
+{
+  "assessment": "n=5 stability",
+  "n_runs": 5,
+  "total_llm_calls": 65,
+  "no_tuning": {
+    "detector_modified": false,
+    "prompt_modified": false,
+    "code_modified": false
+  },
+  "schema_validity": {
+    "all_runs_valid": 12,
+    "total_cases": 13
+  },
+  "stability": {
+    "mean_agreement": 3.77,
+    "unanimous": 3,
+    "four_of_five": 5,
+    "three_of_five": 4,
+    "unstable": 1,
+    "total": 13
+  },
+  "calibration_accuracy": {
+    "amended_spec_labels": 8,
+    "total": 13
+  },
+  "semantic_failures": [
+    {
+      "id": "ADV-05",
+      "candidate": "hypermineralization",
+      "expected": "REJECT",
+      "got": "NOT_ADJUDICATED_BY_B2",
+      "agreement": "4/5"
+    },
+    {
+      "id": "ADV-06",
+      "candidate": "xenomineralization",
+      "expected": "REJECT",
+      "got": "ALLOW",
+      "agreement": "5/5"
+    },
+    {
+      "id": "ADV-07",
+      "candidate": "enzyme-templated inorganic lattice formation",
+      "expected": "ALLOW",
+      "got": "REJECT",
+      "agreement": "4/5"
+    },
+    {
+      "id": "ADV-08",
+      "candidate": "protein-catalyzed biogenic oxide precipitation",
+      "expected": "ALLOW",
+      "got": "NOT_ADJUDICATED_BY_B2",
+      "agreement": "3/5"
+    },
+    {
+      "id": "ADV-13",
+      "candidate": "pseudomineralization",
+      "expected": "REJECT",
+      "got": "NOT_ADJUDICATED_BY_B2",
+      "agreement": "2/5"
+    }
+  ],
+  "per_case": [
+    {
+      "id": "ADV-01",
+      "candidate": "skeletal calcification process",
+      "run_labels": [
+        "REJECT",
+        "REJECT",
+        "REJECT",
+        "REJECT",
+        "REJECT"
+      ],
+      "majority": "REJECT",
+      "agreement": "5/5",
+      "unanimous": true,
+      "is_tie": false,
+      "match": true
+    },
+    {
+      "id": "ADV-02",
+      "candidate": "calcified matrix in osseous structures",
+      "run_labels": [
+        "REJECT",
+        "REJECT",
+        "REJECT",
+        "NOT_ADJUDICATED_BY_B2",
+        "NOT_ADJUDICATED_BY_B2"
+      ],
+      "majority": "REJECT",
+      "agreement": "3/5",
+      "unanimous": false,
+      "is_tie": false,
+      "match": true
+    },
+    {
+      "id": "ADV-03",
+      "candidate": "enzyme-templated mineral deposition",
+      "run_labels": [
+        "NOT_ADJUDICATED_BY_B2",
+        "ALLOW",
+        "ALLOW",
+        "ALLOW",
+        "ALLOW"
+      ],
+      "majority": "ALLOW",
+      "agreement": "4/5",
+      "unanimous": false,
+      "is_tie": false,
+      "match": true
+    },
+    {
+      "id": "ADV-04",
+      "candidate": "silicatein-guided calcification",
+      "run_labels": [
+        "ALLOW",
+        "ALLOW",
+        "NOT_ADJUDICATED_BY_B2",
+        "ALLOW",
+        "ALLOW"
+      ],
+      "majority": "ALLOW",
+      "agreement": "4/5",
+      "unanimous": false,
+      "is_tie": false,
+      "match": true
+    },
+    {
+      "id": "ADV-05",
+      "candidate": "hypermineralization",
+      "run_labels": [
+        "NOT_ADJUDICATED_BY_B2",
+        "NOT_ADJUDICATED_BY_B2",
+        "NOT_ADJUDICATED_BY_B2",
+        "REJECT",
+        "NOT_ADJUDICATED_BY_B2"
+      ],
+      "majority": "NOT_ADJUDICATED_BY_B2",
+      "agreement": "4/5",
+      "unanimous": false,
+      "is_tie": false,
+      "match": false
+    },
+    {
+      "id": "ADV-06",
+      "candidate": "xenomineralization",
+      "run_labels": [
+        "ALLOW",
+        "ALLOW",
+        "ALLOW",
+        "ALLOW",
+        "ALLOW"
+      ],
+      "majority": "ALLOW",
+      "agreement": "5/5",
+      "unanimous": true,
+      "is_tie": false,
+      "match": false
+    },
+    {
+      "id": "ADV-07",
+      "candidate": "enzyme-templated inorganic lattice formation",
+      "run_labels": [
+        "REJECT",
+        "REJECT",
+        "REJECT",
+        "REJECT",
+        "ALLOW"
+      ],
+      "majority": "REJECT",
+      "agreement": "4/5",
+      "unanimous": false,
+      "is_tie": false,
+      "match": false
+    },
+    {
+      "id": "ADV-08",
+      "candidate": "protein-catalyzed biogenic oxide precipitation",
+      "run_labels": [
+        "NOT_ADJUDICATED_BY_B2",
+        "NOT_ADJUDICATED_BY_B2",
+        "NOT_ADJUDICATED_BY_B2",
+        "REJECT",
+        "REJECT"
+      ],
+      "majority": "NOT_ADJUDICATED_BY_B2",
+      "agreement": "3/5",
+      "unanimous": false,
+      "is_tie": false,
+      "match": false
+    },
+    {
+      "id": "ADV-09",
+      "candidate": "quantum entanglement",
+      "run_labels": [
+        "NOT_ADJUDICATED_BY_B2",
+        "NOT_ADJUDICATED_BY_B2",
+        "ALLOW",
+        "NOT_ADJUDICATED_BY_B2",
+        "ALLOW"
+      ],
+      "majority": "NOT_ADJUDICATED_BY_B2",
+      "agreement": "3/5",
+      "unanimous": false,
+      "is_tie": false,
+      "match": true
+    },
+    {
+      "id": "ADV-10",
+      "candidate": "calcium phosphate",
+      "run_labels": [
+        "REJECT",
+        "REJECT",
+        "REJECT",
+        "REJECT",
+        "REJECT"
+      ],
+      "majority": "REJECT",
+      "agreement": "5/5",
+      "unanimous": true,
+      "is_tie": false,
+      "match": true
+    },
+    {
+      "id": "ADV-11",
+      "candidate": "biomineralization",
+      "run_labels": [
+        "ALLOW",
+        "ALLOW",
+        "REJECT",
+        "ALLOW",
+        "NOT_ADJUDICATED_BY_B2"
+      ],
+      "majority": "ALLOW",
+      "agreement": "3/5",
+      "unanimous": false,
+      "is_tie": false,
+      "match": true
+    },
+    {
+      "id": "ADV-12",
+      "candidate": "mineralizing",
+      "run_labels": [
+        "REJECT",
+        "REJECT",
+        "REJECT",
+        "ALLOW",
+        "REJECT"
+      ],
+      "majority": "REJECT",
+      "agreement": "4/5",
+      "unanimous": false,
+      "is_tie": false,
+      "match": true
+    },
+    {
+      "id": "ADV-13",
+      "candidate": "pseudomineralization",
+      "run_labels": [
+        "NOT_ADJUDICATED_BY_B2",
+        "REJECT",
+        "ALLOW",
+        "REJECT",
+        "NOT_ADJUDICATED_BY_B2"
+      ],
+      "majority": "NOT_ADJUDICATED_BY_B2",
+      "agreement": "2/5",
+      "unanimous": false,
+      "is_tie": true,
+      "match": false
+    }
+  ]
+}

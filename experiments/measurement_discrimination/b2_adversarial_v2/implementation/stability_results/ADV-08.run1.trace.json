@@ -1,0 +1,85 @@
+{
+  "schema_version": "b2-trace-v3",
+  "candidate": {
+    "id": "ADV-08",
+    "text": "protein-catalyzed biogenic oxide precipitation",
+    "source_a": "Calcium phosphate forms crystalline deposits in bone tissue through osteoblast-mediated mineralization.",
+    "source_b": "Marine diatoms precipitate silica-based cell walls using enzymatic silicatein proteins."
+  },
+  "atoms": [
+    {
+      "atom_id": "a1",
+      "claim": "{process: biogenic_precipitation}",
+      "source_support": [
+        {
+          "support_type": "SOURCE_LOCAL",
+          "source_id": "A",
+          "spans": [
+            {
+              "span_text": "Calcium phosphate forms crystalline deposits in bone tissue",
+              "start": 0,
+              "end": 59
+            }
+          ]
+        },
+        {
+          "support_type": "SOURCE_LOCAL",
+          "source_id": "B",
+          "spans": [
+            {
+              "span_text": "Marine diatoms precipitate silica-based cell walls",
+              "start": 0,
+              "end": 50
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "atom_id": "a2",
+      "claim": "{catalyst: protein}",
+      "source_support": [
+        {
+          "support_type": "SOURCE_LOCAL",
+          "source_id": "B",
+          "spans": [
+            {
+              "span_text": "enzymatic silicatein proteins",
+              "start": 57,
+              "end": 86
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "atom_id": "a3",
+      "claim": "{material: oxide}",
+      "source_support": []
+    }
+  ],
+  "counterfactuals": [
+    {
+      "removed_source": "A",
+      "unsupported_atoms": [
+        "a3"
+      ],
+      "justified_without_source": false
+    },
+    {
+      "removed_source": "B",
+      "unsupported_atoms": [
+        "a2",
+        "a3"
+      ],
+      "justified_without_source": false
+    }
+  ],
+  "classification": {
+    "justified_by_corpus": false,
+    "iss_a": false,
+    "iss_b": false,
+    "iss_state": "UNSUPPORTED",
+    "label": "NOT_ADJUDICATED_BY_B2"
+  }
+}

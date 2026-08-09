@@ -1,0 +1,95 @@
+{
+  "schema_version": "b2-trace-v3",
+  "candidate": {
+    "id": "ADV-03",
+    "text": "enzyme-templated mineral deposition",
+    "source_a": "Calcium phosphate forms crystalline deposits in bone tissue through osteoblast-mediated mineralization.",
+    "source_b": "Marine diatoms precipitate silica-based cell walls using enzymatic silicatein proteins."
+  },
+  "atoms": [
+    {
+      "atom_id": "a1",
+      "claim": "{process: mineral_deposition}",
+      "source_support": [
+        {
+          "support_type": "SOURCE_LOCAL",
+          "source_id": "A",
+          "spans": [
+            {
+              "span_text": "mineralization",
+              "start": 88,
+              "end": 102
+            }
+          ]
+        },
+        {
+          "support_type": "SOURCE_LOCAL",
+          "source_id": "B",
+          "spans": [
+            {
+              "span_text": "precipitate",
+              "start": 15,
+              "end": 26
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "atom_id": "a2",
+      "claim": "{mediator: enzyme}",
+      "source_support": [
+        {
+          "support_type": "SOURCE_LOCAL",
+          "source_id": "A",
+          "spans": [
+            {
+              "span_text": "osteoblast-mediated",
+              "start": 68,
+              "end": 87
+            }
+          ]
+        },
+        {
+          "support_type": "SOURCE_LOCAL",
+          "source_id": "B",
+          "spans": [
+            {
+              "span_text": "enzymatic silicatein",
+              "start": 57,
+              "end": 77
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "atom_id": "a3",
+      "claim": "{mechanism: templating}",
+      "source_support": []
+    }
+  ],
+  "counterfactuals": [
+    {
+      "removed_source": "A",
+      "unsupported_atoms": [
+        "a3"
+      ],
+      "justified_without_source": false
+    },
+    {
+      "removed_source": "B",
+      "unsupported_atoms": [
+        "a3"
+      ],
+      "justified_without_source": false
+    }
+  ],
+  "classification": {
+    "justified_by_corpus": false,
+    "iss_a": false,
+    "iss_b": false,
+    "iss_state": "UNSUPPORTED",
+    "label": "NOT_ADJUDICATED_BY_B2"
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "schema_version": "b2-trace-v3",
+  "candidate": {
+    "id": "ADV-04",
+    "text": "silicatein-guided calcification",
+    "source_a": "Calcium phosphate forms crystalline deposits in bone tissue through osteoblast-mediated mineralization.",
+    "source_b": "Marine diatoms precipitate silica-based cell walls using enzymatic silicatein proteins."
+  },
+  "atoms": [
+    {
+      "atom_id": "a1",
+      "claim": "{process: calcification, mediator: silicatein}",
+      "source_support": [
+        {
+          "support_type": "JOINT_CROSS_SOURCE",
+          "source_a_spans": [
+            {
+              "span_text": "osteoblast-mediated mineralization",
+              "start": 68,
+              "end": 102
+            }
+          ],
+          "source_b_spans": [
+            {
+              "span_text": "enzymatic silicatein proteins",
+              "start": 57,
+              "end": 86
+            }
+          ],
+          "derived_claim": "{process: calcification, mediator: silicatein}",
+          "inference_rule": "COMPOSITION",
+          "counterfactual_a": "Without Source A, there is no evidence of calcification process",
+          "counterfactual_b": "Without Source B, there is no evidence of silicatein as the mediator"
+        }
+      ]
+    }
+  ],
+  "counterfactuals": [
+    {
+      "removed_source": "A",
+      "unsupported_atoms": [
+        "a1"
+      ],
+      "justified_without_source": false
+    },
+    {
+      "removed_source": "B",
+      "unsupported_atoms": [
+        "a1"
+      ],
+      "justified_without_source": false
+    }
+  ],
+  "classification": {
+    "justified_by_corpus": true,
+    "iss_a": true,
+    "iss_b": true,
+    "iss_state": "ISS_both",
+    "label": "ALLOW"
+  }
+}
