@@ -1,0 +1,102 @@
+{
+  "schema_version": "b2-adversarial-v2",
+  "frozen_at": "2026-08-09",
+  "source_a": "Calcium phosphate forms crystalline deposits in bone tissue through osteoblast-mediated mineralization.",
+  "source_b": "Marine diatoms precipitate silica-based cell walls using enzymatic silicatein proteins.",
+  "detector_commit": "20ac268",
+  "rationale_location": "cases/ADV-NN.md",
+  "meta_property_5_note": "Each case ships its own semantic adjudication rationale as a separate file under cases/. The expected_label in this fixture is the OUTPUT of the rationale's reasoning, not an independently asserted label. A human adjudicator can read cases/ADV-NN.md and verify the expected_label without consulting this fixture.",
+  "cases": [
+    {
+      "id": "ADV-01",
+      "category": "(1) no-overlap source-local paraphrase",
+      "candidate": "skeletal calcification process",
+      "expected_label": "REJECT",
+      "rationale": "cases/ADV-01.md"
+    },
+    {
+      "id": "ADV-02",
+      "category": "(1) no-overlap source-local paraphrase",
+      "candidate": "calcified matrix in osseous structures",
+      "expected_label": "REJECT",
+      "rationale": "cases/ADV-02.md"
+    },
+    {
+      "id": "ADV-03",
+      "category": "(2) cross-source synthesis w/ one-source overlap",
+      "candidate": "enzyme-templated mineral deposition",
+      "expected_label": "ALLOW",
+      "rationale": "cases/ADV-03.md"
+    },
+    {
+      "id": "ADV-04",
+      "category": "(2) cross-source synthesis w/ one-source overlap",
+      "candidate": "silicatein-guided calcification",
+      "expected_label": "ALLOW",
+      "rationale": "cases/ADV-04.md"
+    },
+    {
+      "id": "ADV-05",
+      "category": "(3) source-local disguised as cross-domain",
+      "candidate": "hypermineralization",
+      "expected_label": "REJECT",
+      "rationale": "cases/ADV-05.md"
+    },
+    {
+      "id": "ADV-06",
+      "category": "(3) source-local disguised as cross-domain",
+      "candidate": "xenomineralization",
+      "expected_label": "REJECT",
+      "rationale": "cases/ADV-06.md"
+    },
+    {
+      "id": "ADV-07",
+      "category": "(4) minimal-overlap cross-source synthesis",
+      "candidate": "enzyme-templated inorganic lattice formation",
+      "expected_label": "ALLOW",
+      "rationale": "cases/ADV-07.md"
+    },
+    {
+      "id": "ADV-08",
+      "category": "(4) minimal-overlap cross-source synthesis",
+      "candidate": "protein-catalyzed biogenic oxide precipitation",
+      "expected_label": "ALLOW",
+      "rationale": "cases/ADV-08.md"
+    },
+    {
+      "id": "ADV-09",
+      "category": "(control) clean bridge, no overlap",
+      "candidate": "quantum entanglement",
+      "expected_label": "ALLOW",
+      "rationale": "cases/ADV-09.md"
+    },
+    {
+      "id": "ADV-10",
+      "category": "(control) exact-string leakage",
+      "candidate": "calcium phosphate",
+      "expected_label": "REJECT",
+      "rationale": "cases/ADV-10.md"
+    },
+    {
+      "id": "ADV-11",
+      "category": "(control) round-72 true-allow case",
+      "candidate": "biomineralization",
+      "expected_label": "ALLOW",
+      "rationale": "cases/ADV-11.md"
+    },
+    {
+      "id": "ADV-12",
+      "category": "(control) round-72 true-reject case",
+      "candidate": "mineralizing",
+      "expected_label": "REJECT",
+      "rationale": "cases/ADV-12.md"
+    },
+    {
+      "id": "ADV-13",
+      "category": "(3) source-local disguised as cross-domain (defeats suffix heuristic)",
+      "candidate": "pseudomineralization",
+      "expected_label": "REJECT",
+      "rationale": "cases/ADV-13.md"
+    }
+  ]
+}
