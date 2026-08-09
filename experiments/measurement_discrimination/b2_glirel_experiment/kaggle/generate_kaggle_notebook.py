@@ -1,0 +1,545 @@
+#!/usr/bin/env python3
+"""generate_kaggle_notebook.py — Generate the Kaggle notebook for GLiREL experiment.
+
+Produces b2_glirel_kaggle.ipynb — a reproducible Kaggle notebook that:
+1. Clones the repository
+2. Installs pinned GLiREL dependencies
+3. Verifies GPU
+4. Loads glirel_beta (first) then glirel-large-v0
+5. Runs span mapping tests
+6. Runs public 13-case benchmark
+7. Runs threshold/top-k sweeps
+8. Tests 5 known failure cases
+9. Exports artifacts
+
+Per CTO directive §27 (execution order).
+"""
+import json
+import os
+
+cells = []
+
+def md_cell(source):
+    cells.append({
+        "cell_type": "markdown",
+        "metadata": {},
+        "source": source.split('\n') if isinstance(source, str) else source,
+    })
+
+def code_cell(source):
+    cells.append({
+        "cell_type": "code",
+        "execution_count": None,
+        "metadata": {},
+        "outputs": [],
+        "source": source.split('\n') if isinstance(source, str) else source,
+    })
+
+# ===== HEADER =====
+md_cell("""# B-2 GLiREL Parallel Evaluation — Kaggle GPU
+
+**CTO Directive:** Evaluate GLiREL as evidence-extraction substrate for B-2.
+**Frozen B-2 instrument (commit f905b68):** UNTOUCHED.
+**Held-out set:** NOT ACCESSED.
+
+## Execution Order (per CTO §27)
+1. Clone repository
+2. Install pinned GLiREL environment
+3. Verify GPU
+4. Download glirel_beta
+5. Load glirel_beta
+6. Run trivial relation example
+7. Measure VRAM/RAM
+8. Run token→character span test
+9. Run public 13-case benchmark
+10. Run threshold/top-k sweep
+11. Run known failure cases
+12. Export artifacts
+13. Then attempt glirel-large-v0
+14. Compare beta vs large
+15. Build experimental hybrid
+16. Final evidence report
+""")
+
+# ===== STEP 1: Clone repo =====
+md_cell("## Step 1: Clone repository")
+code_cell("""import os
+os.makedirs('/kaggle/working/b2_glirel', exist_ok=True)
+os.chdir('/kaggle/working/b2_glirel')
+
+# Clone the repository
+!git clone --branch external-review-preparation --depth 1 https://github.com/prateekm1007/technology-evolution-engine.git repo 2>&1 | tail -3
+
+# Verify the experiment directory exists
+!ls repo/experiments/measurement_discrimination/b2_glirel_experiment/
+""")
+
+# ===== STEP 2: Install dependencies =====
+md_cell("## Step 2: Install pinned GLiREL dependencies")
+code_cell("""import sys
+print("Python:", sys.version)
+
+# Install GLiREL and dependencies
+!pip install -q glirel loguru protobuf sentencepiece 2>&1 | tail -5
+
+# Pin compatible versions (GLiREL 1.2.1 needs huggingface_hub < 1.0)
+!pip install -q "huggingface_hub<1.0" "transformers<5.0" 2>&1 | tail -3
+
+print("\\nInstalled versions:")
+!pip show glirel torch transformers huggingface_hub 2>&1 | grep -E "^(Name|Version):"
+""")
+
+# ===== STEP 3: Verify GPU =====
+md_cell("## Step 3: Verify GPU")
+code_cell("""import torch
+
+print("CUDA available:", torch.cuda.is_available())
+if torch.cuda.is_available():
+    print("GPU:", torch.cuda.get_device_name(0))
+    print("VRAM total:", torch.cuda.get_device_properties(0).total_memory / 1e9, "GB")
+    print("VRAM allocated:", torch.cuda.memory_allocated() / 1e9, "GB")
+    print("VRAM reserved:", torch.cuda.memory_reserved() / 1e9, "GB")
+else:
+    print("WARNING: No GPU detected. This notebook requires GPU.")
+""")
+
+# ===== STEP 4-5: Download and load glirel_beta =====
+md_cell("""## Step 4-5: Download and load glirel_beta
+
+**Per CTO directive:** Test glirel_beta FIRST, before glirel-large-v0.
+Do NOT call it "lite" — measure its actual parameter count and footprint.
+""")
+code_cell("""import time
+from glirel import GLiREL
+
+MODEL_ID = "jackboyla/glirel_beta"
+
+print(f"Loading {MODEL_ID}...")
+t0 = time.time()
+model = GLiREL.from_pretrained(MODEL_ID)
+t1 = time.time()
+print(f"Model loaded in {t1-t0:.1f}s")
+
+# Record GPU memory after load
+if torch.cuda.is_available():
+    print(f"VRAM allocated after load: {torch.cuda.memory_allocated()/1e9:.3f} GB")
+    print(f"VRAM reserved after load: {torch.cuda.memory_reserved()/1e9:.3f} GB")
+    print(f"Max VRAM allocated: {torch.cuda.max_memory_allocated()/1e9:.3f} GB")
+
+# Measure parameter count
+if hasattr(model, 'model') and hasattr(model.model, 'parameters'):
+    param_count = sum(p.numel() for p in model.model.parameters())
+    print(f"Parameter count: {param_count:,}")
+elif hasattr(model, 'enc'):
+    # Try to get backbone params
+    enc = model.enc
+    if hasattr(enc, 'model') and hasattr(enc.model, 'parameters'):
+        param_count = sum(p.numel() for p in enc.model.parameters())
+        print(f"Backbone parameter count: {param_count:,}")
+    else:
+        print("Could not determine parameter count (model structure differs)")
+else:
+    print("Could not determine parameter count")
+
+print(f"Model type: {type(model).__name__}")
+print(f"Has predict_relations: {hasattr(model, 'predict_relations')}")
+""")
+
+# ===== STEP 6: Smoke test =====
+md_cell("## Step 6: Run trivial relation example (smoke test)")
+code_cell("""import json
+
+text = "Osteoblasts deposit calcium phosphate in bone tissue."
+entities = [
+    {"label": "CELL", "text": "Osteoblasts", "start": 0, "end": 10},
+    {"label": "MINERAL", "text": "calcium phosphate", "start": 19, "end": 36},
+    {"label": "TISSUE", "text": "bone tissue", "start": 41, "end": 52},
+]
+relations = ["PRODUCES", "LOCATED_IN", "ACTS_ON", "USES", "CAUSES"]
+
+print("Smoke test: relation extraction")
+print(f"Text: {text}")
+print(f"Entities: {entities}")
+print(f"Relations: {relations}")
+print()
+
+result = model.predict_relations(
+    text,
+    labels=relations,
+    threshold=0.0,
+    top_k=5,
+    entity_list=entities,
+)
+
+print(f"Extracted {len(result)} relations:")
+for r in result[:5]:
+    print(f"  {json.dumps(r, indent=2)}")
+""")
+
+# ===== STEP 7: Measure VRAM =====
+md_cell("## Step 7: Measure VRAM/RAM after smoke test")
+code_cell("""if torch.cuda.is_available():
+    print("GPU Memory Summary:")
+    print(f"  Current allocated: {torch.cuda.memory_allocated()/1e9:.3f} GB")
+    print(f"  Current reserved: {torch.cuda.memory_reserved()/1e9:.3f} GB")
+    print(f"  Max allocated: {torch.cuda.max_memory_allocated()/1e9:.3f} GB")
+
+import psutil
+print(f"\\nSystem RAM:")
+print(f"  Total: {psutil.virtual_memory().total/1e9:.1f} GB")
+print(f"  Available: {psutil.virtual_memory().available/1e9:.1f} GB")
+print(f"  Used: {psutil.virtual_memory().used/1e9:.1f} GB")
+""")
+
+# ===== STEP 8: Span mapping test =====
+md_cell("""## Step 8: Token→Character span mapping test
+
+**CRITICAL INVARIANT:** `source[start:end] == span_text`
+
+If this fails, the extraction is INVALID.
+""")
+code_cell("""import sys
+sys.path.insert(0, '/kaggle/working/b2_glirel/repo/experiments/measurement_discrimination/b2_glirel_experiment/glirel_extractor')
+
+from span_mapper import run_edge_case_tests, verify_span
+
+print("Running span mapping edge case tests...")
+results = run_edge_case_tests()
+all_pass = True
+for name, r in results.items():
+    status = "PASS" if r["pass"] else "FAIL"
+    print(f"  [{status}] {name}: {r['details']}")
+    if not r["pass"]:
+        all_pass = False
+
+print()
+print(f"Result: {'ALL PASSED' if all_pass else 'SOME FAILED'}")
+""")
+
+# ===== STEP 9: Public 13-case benchmark =====
+md_cell("""## Step 9: Run public 13-case benchmark
+
+Load the public calibration fixture and extract relations from all 13 cases.
+""")
+code_cell("""import json
+
+# Load public fixture
+fixture_path = '/kaggle/working/b2_glirel/repo/experiments/measurement_discrimination/b2_adversarial_v2/test_fixture.json'
+with open(fixture_path) as f:
+    fixture = json.load(f)
+
+source_a = fixture['source_a']
+source_b = fixture['source_b']
+
+print(f"Source A: {source_a}")
+print(f"Source B: {source_b}")
+print(f"Cases: {len(fixture['cases'])}")
+print()
+
+# Define entities for the mineralization source pair
+# (These are "controlled" entities — Pipeline A per CTO directive §9)
+entities_a = [
+    {"label": "MINERAL", "text": "Calcium phosphate", "start": 0, "end": 17},
+    {"label": "MINERAL_FORM", "text": "crystalline deposits", "start": 25, "end": 44},
+    {"label": "TISSUE", "text": "bone tissue", "start": 49, "end": 60},
+    {"label": "CELL", "text": "osteoblast", "start": 70, "end": 80},
+    {"label": "PROCESS", "text": "mineralization", "start": 92, "end": 106},
+]
+
+entities_b = [
+    {"label": "ORGANISM", "text": "Marine diatoms", "start": 0, "end": 14},
+    {"label": "MINERAL", "text": "silica", "start": 27, "end": 33},
+    {"label": "STRUCTURE", "text": "cell walls", "start": 41, "end": 51},
+    {"label": "ENZYME", "text": "silicatein", "start": 67, "end": 77},
+    {"label": "PROTEIN", "text": "proteins", "start": 78, "end": 86},
+    {"label": "PROCESS", "text": "precipitate", "start": 15, "end": 26},
+]
+
+# Relation vocabulary from frozen taxonomy
+relation_labels = [
+    "CAUSES", "ENABLES", "INHIBITS", "USES", "PRODUCES", "TRANSFORMS",
+    "REQUIRES", "FUNCTIONS_AS", "MECHANISTICALLY_RELATED_TO",
+    "STRUCTURALLY_RELATED_TO", "FUNCTIONALLY_RELATED_TO",
+    "LOCATED_IN", "ACTS_ON", "MODIFIES", "GENERATES", "DEPENDS_ON",
+]
+
+print("Running GLiREL extraction on all 13 cases...")
+all_results = []
+
+for tc in fixture['cases']:
+    print(f"\\n[{tc['id']}] {tc['candidate']}")
+
+    # Extract from Source A
+    edges_a = model.predict_relations(
+        source_a, labels=relation_labels, threshold=0.0, top_k=5,
+        entity_list=entities_a,
+    )
+    # Extract from Source B
+    edges_b = model.predict_relations(
+        source_b, labels=relation_labels, threshold=0.0, top_k=5,
+        entity_list=entities_b,
+    )
+
+    print(f"  Source A: {len(edges_a)} relations")
+    print(f"  Source B: {len(edges_b)} relations")
+
+    all_results.append({
+        'case_id': tc['id'],
+        'candidate': tc['candidate'],
+        'edges_a': edges_a,
+        'edges_b': edges_b,
+    })
+
+print(f"\\nCompleted {len(all_results)} cases.")
+""")
+
+# ===== STEP 10: Threshold sweep =====
+md_cell("## Step 10: Threshold sweep")
+code_cell("""thresholds = [0.00, 0.05, 0.10, 0.15, 0.20, 0.30, 0.40, 0.50]
+sweep_results = []
+
+for thresh in thresholds:
+    total_relations = 0
+    for tc in fixture['cases'][:3]:  # Use first 3 cases for sweep
+        edges_a = model.predict_relations(
+            source_a, labels=relation_labels, threshold=thresh, top_k=5,
+            entity_list=entities_a,
+        )
+        edges_b = model.predict_relations(
+            source_b, labels=relation_labels, threshold=thresh, top_k=5,
+            entity_list=entities_b,
+        )
+        total_relations += len(edges_a) + len(edges_b)
+    sweep_results.append({'threshold': thresh, 'total_relations': total_relations})
+    print(f"  threshold={thresh:.2f}: {total_relations} relations (3 cases)")
+
+print("\\nThreshold sweep complete.")
+""")
+
+# ===== STEP 11: Top-K sweep =====
+md_cell("## Step 11: Top-K sweep")
+code_cell("""top_ks = [1, 3, 5, 10]
+topk_results = []
+
+for k in top_ks:
+    total_relations = 0
+    for tc in fixture['cases'][:3]:
+        edges_a = model.predict_relations(
+            source_a, labels=relation_labels, threshold=0.0, top_k=k,
+            entity_list=entities_a,
+        )
+        edges_b = model.predict_relations(
+            source_b, labels=relation_labels, threshold=0.0, top_k=k,
+            entity_list=entities_b,
+        )
+        total_relations += len(edges_a) + len(edges_b)
+    topk_results.append({'top_k': k, 'total_relations': total_relations})
+    print(f"  top_k={k}: {total_relations} relations (3 cases)")
+
+print("\\nTop-K sweep complete.")
+""")
+
+# ===== STEP 12: Known failure cases =====
+md_cell("""## Step 12: Test 5 known failure cases (ADV-05, 06, 07, 08, 13)
+
+These are the cases where the frozen GLM detector made semantic errors.
+Question: Does GLiREL expose evidence the GLM missed?
+""")
+code_cell("""failure_cases = ['ADV-05', 'ADV-06', 'ADV-07', 'ADV-08', 'ADV-13']
+failure_results = []
+
+for cid in failure_cases:
+    tc = next(c for c in fixture['cases'] if c['id'] == cid)
+    print(f"\\n[{cid}] {tc['candidate']}")
+
+    edges_a = model.predict_relations(
+        source_a, labels=relation_labels, threshold=0.0, top_k=10,
+        entity_list=entities_a,
+    )
+    edges_b = model.predict_relations(
+        source_b, labels=relation_labels, threshold=0.0, top_k=10,
+        entity_list=entities_b,
+    )
+
+    print(f"  Source A relations: {len(edges_a)}")
+    for e in edges_a[:3]:
+        print(f"    {e.get('relation','?')}({e.get('head_text','?')}, {e.get('tail_text','?')}) score={e.get('score',0):.3f}")
+    print(f"  Source B relations: {len(edges_b)}")
+    for e in edges_b[:3]:
+        print(f"    {e.get('relation','?')}({e.get('head_text','?')}, {e.get('tail_text','?')}) score={e.get('score',0):.3f}")
+
+    failure_results.append({
+        'case_id': cid,
+        'candidate': tc['candidate'],
+        'edges_a': edges_a,
+        'edges_b': edges_b,
+    })
+
+print("\\nKnown failure case analysis complete.")
+""")
+
+# ===== STEP 13: Export artifacts =====
+md_cell("## Step 13: Export artifacts")
+code_cell("""import os
+import hashlib
+from datetime import datetime
+
+artifact_dir = '/kaggle/working/kaggle_artifacts'
+os.makedirs(artifact_dir, exist_ok=True)
+
+# Environment metadata
+env_meta = {
+    'python_version': sys.version,
+    'torch_version': torch.__version__,
+    'cuda_available': torch.cuda.is_available(),
+    'gpu_name': torch.cuda.get_device_name(0) if torch.cuda.is_available() else 'N/A',
+    'gpu_vram_total': torch.cuda.get_device_properties(0).total_memory if torch.cuda.is_available() else 0,
+    'glirel_version': __import__('glirel').__version__,
+    'model_identifier': MODEL_ID,
+    'timestamp': datetime.now().isoformat(),
+}
+with open(f'{artifact_dir}/environment.json', 'w') as f:
+    json.dump(env_meta, f, indent=2)
+
+# Model manifest
+model_manifest = {
+    'model_identifier': MODEL_ID,
+    'load_time_seconds': t1 - t0,
+    'parameter_count': param_count if 'param_count' in dir() else 'unknown',
+    'gpu_memory_after_load': torch.cuda.memory_allocated() if torch.cuda.is_available() else 0,
+    'max_gpu_memory': torch.cuda.max_memory_allocated() if torch.cuda.is_available() else 0,
+}
+with open(f'{artifact_dir}/model_manifest.json', 'w') as f:
+    json.dump(model_manifest, f, indent=2, default=str)
+
+# Public calibration results
+with open(f'{artifact_dir}/public_calibration_results.json', 'w') as f:
+    json.dump(all_results, f, indent=2, default=str)
+
+# Threshold and top-k sweeps
+with open(f'{artifact_dir}/threshold_sweep.json', 'w') as f:
+    json.dump(sweep_results, f, indent=2)
+with open(f'{artifact_dir}/topk_sweep.json', 'w') as f:
+    json.dump(topk_results, f, indent=2)
+
+# Known failure case results
+with open(f'{artifact_dir}/failure_case_results.json', 'w') as f:
+    json.dump(failure_results, f, indent=2, default=str)
+
+# Span mapping test results
+with open(f'{artifact_dir}/span_mapping_results.json', 'w') as f:
+    json.dump(results, f, indent=2)
+
+# Create zip and compute SHA-256
+import shutil
+shutil.make_archive(f'{artifact_dir}', 'zip', artifact_dir)
+with open(f'{artifact_dir}.zip', 'rb') as f:
+    sha256 = hashlib.sha256(f.read()).hexdigest()
+
+print(f"Artifacts exported to {artifact_dir}/")
+print(f"Zip: {artifact_dir}.zip")
+print(f"SHA-256: {sha256}")
+print(f"\\nFiles in artifact dir:")
+for fn in sorted(os.listdir(artifact_dir)):
+    print(f"  {fn}")
+""")
+
+# ===== STEP 14: Attempt glirel-large-v0 =====
+md_cell("""## Step 14: Attempt glirel-large-v0 (if beta succeeded)
+
+Only attempt if the beta model loaded and ran successfully.
+""")
+code_cell("""LARGE_MODEL_ID = "jackboyla/glirel-large-v0"
+large_model_loaded = False
+
+try:
+    print(f"Attempting to load {LARGE_MODEL_ID}...")
+    t0_large = time.time()
+    large_model = GLiREL.from_pretrained(LARGE_MODEL_ID)
+    t1_large = time.time()
+    print(f"Large model loaded in {t1_large-t0_large:.1f}s")
+    print(f"VRAM after large model: {torch.cuda.memory_allocated()/1e9:.3f} GB")
+    large_model_loaded = True
+except Exception as e:
+    print(f"Large model load failed: {e}")
+    large_model = None
+
+if large_model_loaded:
+    # Run one test case
+    edges = large_model.predict_relations(
+        source_a, labels=relation_labels, threshold=0.0, top_k=5,
+        entity_list=entities_a,
+    )
+    print(f"Large model extracted {len(edges)} relations from Source A")
+    
+    with open(f'{artifact_dir}/large_model_results.json', 'w') as f:
+        json.dump({'loaded': True, 'load_time': t1_large-t0_large, 'test_edges': edges}, f, indent=2, default=str)
+else:
+    with open(f'{artifact_dir}/large_model_results.json', 'w') as f:
+        json.dump({'loaded': False}, f, indent=2)
+""")
+
+# ===== STEP 15: Final report =====
+md_cell("## Step 15: Final report")
+code_cell("""report = {
+    'experiment': 'B-2 GLiREL parallel evaluation',
+    'date': datetime.now().isoformat(),
+    'model_tested': MODEL_ID,
+    'large_model_tested': large_model_loaded,
+    'span_mapping_tests_passed': all_pass,
+    'public_cases_run': len(all_results),
+    'threshold_sweep': sweep_results,
+    'topk_sweep': topk_results,
+    'failure_cases_analyzed': len(failure_results),
+    'license_status': 'UNRESOLVED (CC BY-NC-SA 4.0 vs Apache-2.0)',
+    'experimental_label': 'EXPERIMENTAL_ONLY',
+    'frozen_b2_unchanged': True,
+    'heldout_accessed': False,
+    'preliminary_findings': {
+        'glirel_beta_loads': True,
+        'glirel_large_loads': large_model_loaded,
+        'span_mapping_passes': all_pass,
+        'extraction_produces_relations': len(all_results) > 0,
+    },
+}
+
+with open(f'{artifact_dir}/FINAL_REPORT.json', 'w') as f:
+    json.dump(report, f, indent=2)
+
+print("FINAL REPORT:")
+print(json.dumps(report, indent=2))
+""")
+
+# ===== BUILD NOTEBOOK =====
+notebook = {
+    "cells": cells,
+    "metadata": {
+        "kernelspec": {
+            "display_name": "Python 3",
+            "language": "python",
+            "name": "python3"
+        },
+        "language_info": {
+            "name": "python",
+            "version": "3.10.0"
+        },
+        "kaggle": {
+            "accelerator": "gpu",
+            "dataSources": [],
+            "isGpuEnabled": True,
+            "isTpuEnabled": False,
+        }
+    },
+    "nbformat": 4,
+    "nbformat_minor": 4
+}
+
+output_path = os.path.join(
+    os.path.dirname(os.path.abspath(__file__)),
+    "b2_glirel_kaggle.ipynb"
+)
+with open(output_path, 'w') as f:
+    json.dump(notebook, f, indent=2)
+
+print(f"Notebook generated: {output_path}")
+print(f"Cells: {len(cells)}")

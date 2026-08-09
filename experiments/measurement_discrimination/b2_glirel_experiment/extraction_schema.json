@@ -1,0 +1,39 @@
+{
+  "schema_version": "glirel-evidence-graph-v1",
+  "frozen_at": "2026-08-10",
+  "description": "Normalized intermediate representation for GLiREL evidence extraction. Every edge preserves provenance: which source, which span, which model, which relation label, which score.",
+  "evidence_edge": {
+    "source_id": "<string: 'A' or 'B'>",
+    "document_id": "<string: identifier for the source document>",
+    "head_text": "<string: head entity text>",
+    "head_start": "<integer: character offset into source text>",
+    "head_end": "<integer: character offset (exclusive)>",
+    "relation": "<string: relation label from frozen taxonomy>",
+    "tail_text": "<string: tail entity text>",
+    "tail_start": "<integer: character offset into source text>",
+    "tail_end": "<integer: character offset (exclusive)>",
+    "model_score": "<float: GLiREL confidence score>",
+    "model_identifier": "<string: GLiREL model identifier>",
+    "threshold": "<float: score threshold used>",
+    "top_k": "<integer: top_k parameter used>",
+    "ner_source": "<string: 'controlled' or 'gliner' or 'spacy' etc.>"
+  },
+  "evidence_graph": {
+    "source_a_text": "<string: verbatim Source A text>",
+    "source_b_text": "<string: verbatim Source B text>",
+    "candidate": "<string: the candidate phrase being evaluated>",
+    "edges": ["<evidence_edge>"],
+    "cross_source_edges": ["<evidence_edge: edges where head and tail come from different sources>"],
+    "source_local_edges_a": ["<evidence_edge: edges fully within Source A>"],
+    "source_local_edges_b": ["<evidence_edge: edges fully within Source B>"]
+  },
+  "span_invariant": {
+    "rule": "source_text[start:end] == span_text",
+    "enforcement": "MANDATORY — if this invariant fails for any span, the extraction is INVALID_SPAN",
+    "llm_correction_allowed": false
+  },
+  "provenance_requirement": {
+    "rule": "Every edge must record: source_id, head span, tail span, relation, score, model_identifier",
+    "enforcement": "MANDATORY — edges without full provenance are rejected"
+  }
+}

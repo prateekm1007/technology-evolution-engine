@@ -1,0 +1,39 @@
+{
+  "schema_version": "relation-taxonomy-v1",
+  "frozen_at": "2026-08-10",
+  "description": "Relation vocabulary for GLiREL zero-shot relation extraction queries. These labels are QUERIES to the extractor, NOT evidence that the relation exists.",
+  "extraction_relations": {
+    "CAUSES": "A causes or brings about B",
+    "ENABLES": "A enables or permits B",
+    "INHIBITS": "A inhibits or suppresses B",
+    "USES": "A uses or utilizes B",
+    "PRODUCES": "A produces or generates B",
+    "TRANSFORMS": "A transforms or converts B",
+    "REQUIRES": "A requires or depends on B",
+    "FUNCTIONS_AS": "A functions as B",
+    "MECHANISTICALLY_RELATED_TO": "A is mechanistically related to B",
+    "STRUCTURALLY_RELATED_TO": "A is structurally related to B",
+    "FUNCTIONALLY_RELATED_TO": "A is functionally related to B",
+    "LOCATED_IN": "A is located in B",
+    "ACTS_ON": "A acts on B",
+    "MODIFIES": "A modifies B",
+    "GENERATES": "A generates B",
+    "DEPENDS_ON": "A depends on B"
+  },
+  "b2_inference_rules": {
+    "COMPOSITION": "combines a process/capability from one source with a substrate/mediator from the other",
+    "ABSTRACTION": "identifies a shared abstract category that subsumes specific instances in both sources",
+    "SPECIALIZATION": "applies a general principle from one source to a specific case in the other",
+    "GENERALIZATION": "generalizes from two specific instances to a broader rule",
+    "CAUSAL_TRANSFER": "transfers a causal mechanism from one source to a system in the other",
+    "MECHANISTIC_ANALOGY": "asserts mechanistic analogy between mechanisms in the two sources",
+    "STRUCTURAL_ANALOGY": "asserts structural correspondence between entities in the two sources",
+    "FUNCTIONAL_ANALOGY": "asserts functional correspondence between entities in the two sources",
+    "OTHER": "derivation does not fit any of the above; requires independent adjudication"
+  },
+  "provenance_labels": {
+    "SOURCE_LOCAL_RELATION": "relation fully contained within one source",
+    "CROSS_SOURCE_RELATION": "relation requires evidence from both sources"
+  },
+  "note": "All relation labels are EXTRACTION QUERIES. GLiREL returning a relation with high score does NOT mean the relation is scientifically valid. The downstream B-2 semantic adjudicator (frozen, commit f905b68) remains authoritative."
+}

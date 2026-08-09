@@ -1,0 +1,71 @@
+{
+  "schema_version": "adversarial-fixtures-v1",
+  "frozen_at": "2026-08-10",
+  "description": "Independent adversarial engineering fixtures for GLiREL evaluation. NOT part of the sealed held-out set. NOT derived from held-out material. These are new, public, independent test cases per CTO directive §12.",
+  "fixtures": [
+    {
+      "id": "ADV-PUB-01",
+      "description": "A mentions entity X, B mentions entity X → no actual relation",
+      "source_a": "Calcium is an essential element in biological systems.",
+      "source_b": "Calcium was first isolated by Humphry Davy in 1808.",
+      "candidate": "calcium-mediated biological isolation",
+      "expected_behavior": "SOURCE_LOCAL — no cross-source mechanism"
+    },
+    {
+      "id": "ADV-PUB-02",
+      "description": "A causes X, B merely mentions X → no cross-source mechanism",
+      "source_a": "Silicatein catalyzes the formation of silica networks.",
+      "source_b": "Silica networks are found in many marine organisms.",
+      "candidate": "silicatein-catalyzed marine organism formation",
+      "expected_behavior": "SOURCE_LOCAL — B merely mentions, doesn't provide mechanism"
+    },
+    {
+      "id": "ADV-PUB-03",
+      "description": "A and B contain related entities → no synthesis",
+      "source_a": "Iron is a transition metal with high magnetic permeability.",
+      "source_b": "Hemoglobin contains iron in its heme group.",
+      "candidate": "magnetic hemoglobin",
+      "expected_behavior": "UNSUPPORTED — entities are related but no mechanism connects them"
+    },
+    {
+      "id": "ADV-PUB-04",
+      "description": "A and B contain genuinely complementary mechanisms → candidate cross-source",
+      "source_a": "Photosystem II uses light energy to split water molecules.",
+      "source_b": "Hydrogen fuel cells combine hydrogen and oxygen to produce electricity.",
+      "candidate": "light-driven hydrogen fuel production",
+      "expected_behavior": "ISS_both — complementary mechanisms from A and B"
+    },
+    {
+      "id": "ADV-PUB-05",
+      "description": "A contains complete mechanism, B contributes nothing → SOURCE_LOCAL",
+      "source_a": "Osteoblasts deposit calcium phosphate in bone tissue through mineralization.",
+      "source_b": "The weather is sunny today.",
+      "candidate": "osteoblast-mediated bone mineralization",
+      "expected_behavior": "ISS_one (source-local to A) — B contributes nothing"
+    },
+    {
+      "id": "ADV-PUB-06",
+      "description": "A and B independently support same mechanism → REDUNDANT_SUPPORT",
+      "source_a": "Enzymes catalyze biochemical reactions by lowering activation energy.",
+      "source_b": "Catalysts accelerate chemical reactions by reducing activation barriers.",
+      "candidate": "catalytic acceleration of biochemical reactions",
+      "expected_behavior": "REDUNDANT_SUPPORT — both sources independently support"
+    },
+    {
+      "id": "ADV-PUB-07",
+      "description": "Neither source supports proposed mechanism → UNSUPPORTED",
+      "source_a": "Trees absorb carbon dioxide during photosynthesis.",
+      "source_b": "The ocean has significant tidal forces from the moon.",
+      "candidate": "quantum tunneling in photosynthetic antenna complexes",
+      "expected_behavior": "UNSUPPORTED — neither source mentions quantum tunneling"
+    },
+    {
+      "id": "ADV-PUB-08",
+      "description": "Source-local morphological derivative (Mode C pattern)",
+      "source_a": "Polymerization creates long-chain molecules from monomers.",
+      "source_b": "Crystallization forms ordered solid structures from solution.",
+      "candidate": "pseudopolymerization",
+      "expected_behavior": "ISS_one (source-local to A) — 'pseudo-' prefix doesn't bridge to B"
+    }
+  ]
+}
