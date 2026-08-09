@@ -97,6 +97,12 @@ class ProvenanceLedger:
         The hash is computed over the canonical JSON serialization
         (sorted keys, compact separators) of the entry with entry_hash
         removed.
+
+        NOTE: artifact_status IS included in the hash. This means changing
+        artifact_status changes the hash, which would break the chain if
+        done by mutation. Instead, compromise is recorded as a separate
+        COMPROMISE_RECORDED event (append-only), preserving the original
+        entry's hash while recording the compromised status.
         """
         entry_without_hash = {k: v for k, v in entry.items() if k != "entry_hash"}
         entry_str = json.dumps(entry_without_hash, sort_keys=True, separators=(",", ":"))
@@ -107,6 +113,69 @@ class ProvenanceLedger:
         if not self._entries:
             return "GENESIS"
         return self._entries[-1]["entry_hash"]
+
+    def mark_execution_compromised(self, execution_id: str, reason: str) -> Dict[str, Any]:
+        """Mark all CANDIDATE_GENERATED events for an execution as COMPROMISED.
+
+        Per audit round 58: post-execution mutation must MECHANICALLY
+        invalidate artifacts, not merely describe them as compromised.
+
+        This creates a COMPROMISE_RECORDED event in the ledger (append-only,
+        not a mutation of existing entries). The event references the
+        execution_id and the reason. The audit can then check: if a
+        COMPROMISE_RECORDED event exists for an execution_id, all
+        CANDIDATE_GENERATED events with that execution_id are compromised.
+
+        This preserves the immutability of the original CANDIDATE_GENERATED
+        events while mechanically recording that they are compromised.
+
+        Args:
+            execution_id: the execution whose artifacts are compromised
+            reason: why the artifacts are compromised
+
+        Returns:
+            The created COMPROMISE_RECORDED event.
+
+        Raises:
+            ValueError: if a COMPROMISE_RECORDED event already exists
+                        for this execution_id (no double-compromise).
+        """
+        # Check for duplicate compromise event
+        for existing in self._entries:
+            if (existing.get("event_type") == "COMPROMISE_RECORDED"
+                    and existing.get("execution_id") == execution_id):
+                raise ValueError(
+                    f"Compromise already recorded for execution {execution_id}. "
+                    f"Cannot record twice (append-only)."
+                )
+
+        prev_hash = self._get_prev_hash()
+
+        entry = {
+            "event_type": "COMPROMISE_RECORDED",
+            "execution_id": execution_id,
+            "reason": reason,
+            "compromise_timestamp": datetime.now(timezone.utc).isoformat(),
+            "prev_entry_hash": prev_hash,
+        }
+
+        entry["entry_hash"] = self._compute_entry_hash(entry)
+        self._entries.append(entry)
+        self._save()
+        return entry
+
+    def is_execution_compromised(self, execution_id: str) -> bool:
+        """Check if an execution has been marked as compromised.
+
+        Returns True if a COMPROMISE_RECORDED event exists for this
+        execution_id. All CANDIDATE_GENERATED events with this
+        execution_id should be treated as compromised.
+        """
+        for entry in self._entries:
+            if (entry.get("event_type") == "COMPROMISE_RECORDED"
+                    and entry.get("execution_id") == execution_id):
+                return True
+        return False
 
     def append_candidate_entry(
         self,
@@ -179,8 +248,15 @@ class ProvenanceLedger:
         #    candidates through lower-level functions, store raw output,
         #    compute real hashes — but CANNOT create a CANDIDATE_GENERATED
         #    provenance event without an active verified gate.
-        from .execution_gate import assert_execution_gate_active
+        from .execution_gate import assert_execution_gate_active, _ACTIVE_GATE
         assert_execution_gate_active()
+
+        # Per audit round 58: bind execution identity into the artifact.
+        # execution_id and manifest_sha256 come from the ACTIVE GATE,
+        # not from caller-supplied arguments. An auditor can mechanically
+        # connect execution → artifact.
+        execution_id = _ACTIVE_GATE.record.execution_id if _ACTIVE_GATE.record else "UNKNOWN"
+        manifest_sha256 = _ACTIVE_GATE.manifest.get("manifest_sha256", "UNKNOWN")
 
         candidate_id = f"{case_id}-{arm.upper()}-CAND-{candidate_rank:03d}"
 
@@ -197,12 +273,16 @@ class ProvenanceLedger:
 
         # The generation event contains ONLY generation fields.
         # No adjudication fields — those go in a separate event.
+        # Per audit round 58: includes execution_id + manifest_sha256
+        # sourced from the active gate (not caller-supplied).
         entry = {
             "event_type": EVENT_TYPE_CANDIDATE_GENERATED,
             "candidate_id": candidate_id,
             "case_id": case_id,
             "arm": arm,
             "candidate_rank": candidate_rank,
+            "execution_id": execution_id,
+            "manifest_sha256": manifest_sha256,
             "raw_output_sha256": raw_output_sha256,
             "raw_output_blob_path": raw_output_blob_path,
             "parser_sha256": get_parser_sha256(),
@@ -216,6 +296,7 @@ class ProvenanceLedger:
             "prompt_hash": prompt_hash,
             "source_pair_sha256": source_pair_sha256,
             "invocation_seed": invocation_seed,
+            "artifact_status": "VALID",  # can be marked COMPROMISED by post-exec check
             "prev_entry_hash": prev_hash,
         }
 
