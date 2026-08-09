@@ -1,43 +1,24 @@
 #!/usr/bin/env python3
 """execution_gate.py — Hard gate: no generation without sealed manifest.
 
-Per audit round 55: the 14 execution-boundary tests establish that
-tampering is detected. But they do not establish that the actual
-production execution path is FORCED to invoke verify_execution_manifest()
-before generating the first candidate.
+Per audit round 55-59: the execution gate enforces that no CANDIDATE_GENERATED
+event can be created without a sealed+verified manifest. The gate is enforced
+at the AUTHORITATIVE PROVENANCE BOUNDARY (ProvenanceLedger.append_candidate_entry).
 
-The invariant:
-    UNSEALED / INVALID MANIFEST → HARD STOP → NO GENERATION
-    SEALED + VERIFIED MANIFEST → EXECUTION → IMMUTABLE ARTIFACTS → STOP
+ARCHITECTURAL INVARIANT (per audit round 59):
+    The gate AUTO-BINDS to the ledger when append_candidate_entry is called.
+    In __exit__, if post-execution verification fails, the gate AUTOMATICALLY
+    calls ledger.mark_execution_compromised(). No human/caller action required.
 
-No repair loop. No threshold tuning. No candidate selection.
-No interpretation.
+    SEALED MANIFEST → EXECUTION GATE → CANDIDATE_GENERATED → EXECUTION ENDS
+    → REVERIFY MANIFEST → if INVALID → COMPROMISE_RECORDED (automatic)
 
-This module provides the execution gate that MUST be called before
-any engine or null generation. It is the single entry point.
-
-DESIGN:
-    The gate is a context manager. Generation code runs inside
-    `with execution_gate(manifest) as gate:` and if the manifest
-    is not sealed/verified, the context manager raises
-    ExecutionGateError before any generation code executes.
-
-    There is NO bypass path. The generation functions
-    (generate_null_candidates, etc.) do not accept a manifest
-    parameter — they can only be called from within an active
-    execution gate context.
+    No human intervention exists anywhere in that path.
 
 REPORTING (per audit round 55):
     The first run reports only machine facts:
-    - what ran
-    - what artifacts were produced
-    - hashes
-    - failures
-    - exclusions
-    - provenance status
-
-    It does NOT use language such as: successful, failed, fair,
-    discovery, significant, or North Star.
+    - what ran, what artifacts, hashes, failures, exclusions, provenance status
+    - NO: successful, failed, fair, discovery, significant, or North Star
 """
 import json
 import sys
@@ -56,10 +37,7 @@ from scripts.verify_audit_instrument import (
 
 
 class ExecutionGateError(Exception):
-    """Raised when execution is attempted without a sealed/verified manifest.
-
-    This is a HARD STOP. No generation may proceed.
-    """
+    """Raised when execution is attempted without a sealed/verified manifest."""
     pass
 
 
@@ -67,19 +45,7 @@ class ExecutionGateError(Exception):
 class ExecutionRecord:
     """Machine-fact record of what happened during execution.
 
-    Contains ONLY machine facts:
-    - what ran (case_ids, arms)
-    - what artifacts were produced (hashes)
-    - failures (verification errors, generation errors)
-    - exclusions (cases that failed)
-    - provenance status (verified/not verified)
-
-    Does NOT contain interpretive language:
-    - no "successful" / "failed" (only "ran" / "did not run")
-    - no "fair" / "unfair"
-    - no "discovery" / "signal"
-    - no "significant"
-    - no "North Star"
+    Contains ONLY machine facts. No interpretive language.
     """
     execution_id: str
     manifest_sha256: str
@@ -110,61 +76,54 @@ class ExecutionRecord:
 
     def add_artifact(self, case_id: str, arm: str, rank: int,
                      candidate_sha256: str, raw_output_sha256: str):
-        """Record a produced artifact (machine fact only)."""
         self.artifacts_produced.append({
-            "case_id": case_id,
-            "arm": arm,
-            "candidate_rank": rank,
+            "case_id": case_id, "arm": arm, "candidate_rank": rank,
             "candidate_sha256": candidate_sha256,
             "raw_output_sha256": raw_output_sha256,
         })
 
     def add_failure(self, description: str):
-        """Record a failure (machine fact only)."""
         self.failures.append(description)
 
     def add_exclusion(self, case_id: str, reason: str):
-        """Record an exclusion (machine fact only)."""
         self.exclusions.append({"case_id": case_id, "reason": reason})
 
 
 class ExecutionGate:
     """Hard gate: no generation without a sealed/verified manifest.
 
+    Per audit round 59: the gate AUTO-BINDS to the ledger when
+    append_candidate_entry is called. In __exit__, if post-execution
+    verification fails, the gate AUTOMATICALLY calls
+    ledger.mark_execution_compromised(). No caller action required.
+
     Usage:
         manifest = create_execution_manifest(...)
         with ExecutionGate(manifest) as gate:
-            # Generation code here — can only run if manifest is sealed/verified
             result = generate_null_candidates(...)
-            gate.record.artifact_produced(...)
+            # append_candidate_entry auto-binds gate to ledger
 
-    If the manifest is not sealed or not verified, the context manager
-    raises ExecutionGateError before any generation code executes.
-
-    There is NO bypass path.
+    INVARIANTS:
+    1. No CANDIDATE_GENERATED without active gate (enforced at ledger)
+    2. execution_id + manifest_sha256 in every CANDIDATE_GENERATED (from gate)
+    3. Post-execution mutation → automatic COMPROMISE_RECORDED (no caller action)
     """
 
     def __init__(self, manifest: Dict[str, Any]):
         self.manifest = manifest
         self.record: Optional[ExecutionRecord] = None
         self._active = False
+        # Per audit round 59: gate auto-binds to ledger
+        self._bound_ledger = None
 
     def __enter__(self) -> "ExecutionGate":
-        """Verify the manifest before allowing any generation.
-
-        Raises ExecutionGateError if:
-        - manifest_sha256 is missing (not sealed)
-        - verify_execution_manifest() fails (invalidated)
-        - verify_instrument() fails (instrument changed)
-        """
-        # Check manifest is sealed
+        """Verify the manifest before allowing any generation."""
         if "manifest_sha256" not in self.manifest:
             raise ExecutionGateError(
                 "HARD STOP: Manifest is not sealed (missing manifest_sha256). "
                 "No generation may proceed."
             )
 
-        # Verify the manifest
         ok, errors = verify_execution_manifest(self.manifest)
         if not ok:
             raise ExecutionGateError(
@@ -173,7 +132,6 @@ class ExecutionGate:
                 "No generation may proceed. EXECUTION_INVALIDATED."
             )
 
-        # Create the execution record
         self.record = ExecutionRecord(
             execution_id=f"EXEC-{self.manifest['manifest_sha256'][:16]}",
             manifest_sha256=self.manifest["manifest_sha256"],
@@ -185,26 +143,36 @@ class ExecutionGate:
         self._active = True
         return self
 
+    def bind_ledger(self, ledger):
+        """Auto-bind to the ledger when append_candidate_entry is called.
+
+        Per audit round 59: the gate must own the ledger reference so
+        that __exit__ can AUTOMATICALLY call mark_execution_compromised()
+        without any caller action.
+
+        This is called by ProvenanceLedger.append_candidate_entry() when
+        it detects an active gate — the ledger registers itself with the
+        gate so the gate can invalidate it later if needed.
+        """
+        self._bound_ledger = ledger
+
     def __exit__(self, exc_type, exc_val, exc_tb):
         """Finalize the execution record.
 
-        Per audit round 58: verify the manifest is STILL valid after
-        execution. If invalid, MECHANICALLY INVALIDATE the artifacts
-        by recording a COMPROMISE_RECORDED event in the provenance
-        ledger (not merely describing them as compromised in memory).
+        Per audit round 59: if post-execution verification fails,
+        AUTOMATICALLY call ledger.mark_execution_compromised().
+        NO CALLER ACTION REQUIRED.
 
-        This establishes:
+        The flow:
             manifest verified BEFORE execution
+            +
+            candidate generated + persisted
             +
             manifest/source/runtime unchanged DURING execution
             +
-            artifacts mechanically invalidated if substrate changed
+            if INVALID → AUTOMATIC COMPROMISE_RECORDED (no human)
 
-        The compromise is recorded as an append-only COMPROMISE_RECORDED
-        event in the ledger. This preserves the immutability of the
-        original CANDIDATE_GENERATED events while mechanically recording
-        that they are compromised. The audit checks is_execution_compromised()
-        to determine artifact validity.
+        No human intervention exists anywhere in that path.
         """
         self._active = False
 
@@ -218,24 +186,32 @@ class ExecutionGate:
             self.record.add_failure(compromise_reason)
             self.record.manifest_verified = False
 
-            # MECHANICAL INVALIDATION: record COMPROMISE_RECORDED in the ledger
-            # Per audit round 58: this is not merely a string in a failure
-            # record — it is a mechanically enforced artifact state.
-            # The ledger's is_execution_compromised() method returns True
-            # for this execution_id, and the audit treats all
-            # CANDIDATE_GENERATED events with this execution_id as
-            # compromised.
-            # NOTE: The ledger is found via the global active gate's
-            # record, which contains the execution_id. The caller must
-            # pass the ledger to mark_execution_compromised.
-            # For now, we store the compromise reason in the record
-            # and the caller is responsible for calling
-            # ledger.mark_execution_compromised(execution_id, reason).
-            # This is because the gate doesn't own the ledger reference.
-            self.record.add_failure(
-                "CALLER MUST CALL: ledger.mark_execution_compromised("
-                f"'{self.record.execution_id}', '{compromise_reason[:100]}...')"
-            )
+            # AUTOMATIC MECHANICAL INVALIDATION
+            # Per audit round 59: the gate AUTO-BINDS to the ledger when
+            # append_candidate_entry is called. Here, it AUTOMATICALLY
+            # calls mark_execution_compromised(). No caller action required.
+            if self._bound_ledger is not None:
+                try:
+                    self._bound_ledger.mark_execution_compromised(
+                        self.record.execution_id,
+                        compromise_reason,
+                    )
+                    self.record.add_failure(
+                        f"AUTOMATIC COMPROMISE_RECORDED for execution_id="
+                        f"{self.record.execution_id}"
+                    )
+                except ValueError:
+                    # Already compromised — shouldn't happen, but handle gracefully
+                    self.record.add_failure(
+                        "COMPROMISE_RECORDED already exists for "
+                        f"{self.record.execution_id}"
+                    )
+            else:
+                # No ledger was bound — no candidates were generated
+                self.record.add_failure(
+                    "No ledger bound to gate — no candidates were generated, "
+                    "so no COMPROMISE_RECORDED needed."
+                )
 
         if self.record:
             self.record.finished_at = datetime.now(timezone.utc).isoformat()
@@ -243,17 +219,13 @@ class ExecutionGate:
                 self.record.add_failure(
                     f"Exception during execution: {exc_type.__name__}: {exc_val}"
                 )
-        # Don't suppress exceptions
         return False
 
     @property
     def is_active(self) -> bool:
-        """Whether the gate is currently active (inside the context manager)."""
         return self._active
 
     def assert_active(self):
-        """Assert that the gate is active. Called by generation functions
-        to enforce that they can only run inside an execution gate."""
         if not self._active:
             raise ExecutionGateError(
                 "HARD STOP: Generation attempted outside an active execution gate. "
@@ -261,61 +233,42 @@ class ExecutionGate:
             )
 
     def add_case_processed(self, case_id: str):
-        """Record that a case was processed."""
         if self.record:
             self.record.cases_processed.append(case_id)
 
     def add_arm_run(self, arm: str):
-        """Record that an arm was run."""
         if self.record:
             self.record.arms_run.append(arm)
 
     def add_artifact(self, case_id: str, arm: str, rank: int,
                      candidate_sha256: str, raw_output_sha256: str):
-        """Record a produced artifact."""
         if self.record:
             self.record.add_artifact(case_id, arm, rank,
                                       candidate_sha256, raw_output_sha256)
 
     def add_failure(self, description: str):
-        """Record a failure."""
         if self.record:
             self.record.add_failure(description)
 
     def add_exclusion(self, case_id: str, reason: str):
-        """Record an exclusion."""
         if self.record:
             self.record.add_exclusion(case_id, reason)
 
     def get_record(self) -> Optional[ExecutionRecord]:
-        """Get the execution record (machine facts only)."""
         return self.record
 
 
-# --------------------------------------------------------------------
-# Global active gate (for enforcement)
-# --------------------------------------------------------------------
+# Global active gate
 _ACTIVE_GATE: Optional[ExecutionGate] = None
 
 
 def _set_active_gate(gate: Optional[ExecutionGate]):
-    """Set the global active gate. Called by ExecutionGate.__enter__/__exit__."""
     global _ACTIVE_GATE
     _ACTIVE_GATE = gate
 
 
 def assert_execution_gate_active():
-    """Assert that an execution gate is active.
-
-    This function is called by generation functions to enforce that
-    they can ONLY run inside an active execution gate context.
-
-    This is the SINGLE enforcement point. If this check is bypassed,
-    generation can proceed without a sealed manifest.
-
-    Raises:
-        ExecutionGateError: if no gate is active.
-    """
+    """Assert that an execution gate is active. Called by generation functions."""
     if _ACTIVE_GATE is None or not _ACTIVE_GATE.is_active:
         raise ExecutionGateError(
             "HARD STOP: Generation attempted without an active execution gate. "
@@ -324,7 +277,6 @@ def assert_execution_gate_active():
         )
 
 
-# Patch __enter__/__exit__ to set/clear the global gate
 _original_enter = ExecutionGate.__enter__
 _original_exit = ExecutionGate.__exit__
 

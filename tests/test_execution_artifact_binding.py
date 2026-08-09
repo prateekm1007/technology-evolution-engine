@@ -91,7 +91,7 @@ class TestExecutionArtifactBinding:
         assert entry["manifest_sha256"] == execution_gate.manifest["manifest_sha256"]
 
     def test_candidate_event_contains_artifact_status(self, tmp_path, execution_gate):
-        """Every CANDIDATE_GENERATED event contains artifact_status = VALID."""
+        """Every CANDIDATE_GENERATED event contains initial_artifact_status = VALID."""
         ledger = ProvenanceLedger(ledger_path=tmp_path / "ledger.json")
         entry = ledger.append_candidate_entry(
             case_id="CASE-001", arm="null", candidate_rank=1,
@@ -102,7 +102,7 @@ class TestExecutionArtifactBinding:
             prompt_hash="c"*64, source_pair_sha256="d"*64,
             invocation_seed="e"*64,
         )
-        assert entry["artifact_status"] == "VALID"
+        assert entry["initial_artifact_status"] == "VALID"
 
     def test_auditor_can_connect_execution_to_artifact(self, tmp_path, execution_gate):
         """An auditor can mechanically connect execution → artifact by
@@ -207,7 +207,7 @@ class TestCompromiseRecording:
         # Original entry hash unchanged
         retrieved = ledger.get_generation_event(entry["candidate_id"])
         assert retrieved["entry_hash"] == original_hash
-        assert retrieved["artifact_status"] == "VALID"  # original status preserved
+        assert retrieved["initial_artifact_status"] == "VALID"  # original status preserved
 
         # Hash chain still valid
         assert ledger.verify_hash_chain() is True
@@ -283,3 +283,113 @@ class TestCompromiseRecording:
         )
         assert adj_entry["event_type"] == "ADJUDICATION_RECORDED"
         assert adj_entry["case_success"] is True
+
+
+class TestAutomaticInvalidation:
+    """Per audit round 59: the CRITICAL test.
+
+    Generate a candidate inside the gate, then mutate the substrate.
+    The gate's __exit__ must AUTOMATICALLY call
+    mark_execution_compromised() — NO explicit call in the test.
+
+    Then verify:
+    - is_execution_compromised returns True
+    - verify_hash_chain still passes
+    - get_artifact_status returns COMPROMISED
+    """
+
+    def test_mutation_auto_invalidates_no_caller_action(self, tmp_path, monkeypatch):
+        """THE AUDITOR'S TEST: generate candidate, mutate substrate,
+        NO explicit mark_execution_compromised call, verify automatic
+        invalidation.
+
+        Per audit round 59: "There must be no explicit call to
+        mark_execution_compromised() in the test."
+        """
+        from engine.b2_provenance import content_addressed_storage as cas
+        monkeypatch.setattr(cas, "STORAGE_ROOT", tmp_path / "raw_outputs")
+
+        manifest = create_execution_manifest("TEST-AUTO-INVALIDATE", ["CASE-001"], {})
+        ledger = ProvenanceLedger(ledger_path=tmp_path / "ledger.json")
+
+        with ExecutionGate(manifest) as gate:
+            # Generate a candidate inside the gate
+            entry = ledger.append_candidate_entry(
+                case_id="CASE-001", arm="null", candidate_rank=1,
+                raw_output_sha256="a"*64, raw_output_blob_path="/fake",
+                candidate_sha256="b"*64, candidate_text="test candidate",
+                generation_timestamp="2026-01-01T00:00:00Z",
+                engine_version="v1", provider="ZAI", model="glm-4-plus",
+                prompt_hash="c"*64, source_pair_sha256="d"*64,
+                invocation_seed="e"*64,
+            )
+            candidate_id = entry["candidate_id"]
+            execution_id = entry["execution_id"]
+
+            # MUTATE THE SUBSTRATE: tamper with the manifest AFTER
+            # candidate generation but BEFORE gate exits.
+            # This simulates a source file change during execution.
+            manifest["case_ids"].append("EVIL-CASE")
+
+        # === AFTER GATE EXITS ===
+        # NO explicit call to mark_execution_compromised() anywhere below.
+
+        # 1. is_execution_compromised returns True (automatic)
+        assert ledger.is_execution_compromised(execution_id) is True, (
+            "Execution was NOT automatically compromised after substrate "
+            "mutation. The gate must auto-call mark_execution_compromised()."
+        )
+
+        # 2. verify_hash_chain still passes (COMPROMISE_RECORDED is append-only)
+        assert ledger.verify_hash_chain() is True, (
+            "Hash chain broken after compromise recording."
+        )
+
+        # 3. get_artifact_status returns COMPROMISED (derived property)
+        assert ledger.get_artifact_status(candidate_id) == "COMPROMISED", (
+            "Artifact status is NOT COMPROMISED after execution was "
+            "automatically invalidated. get_artifact_status must derive "
+            "COMPROMISED from the COMPROMISE_RECORDED event."
+        )
+
+        # 4. Original entry's initial_artifact_status is still VALID (immutable)
+        gen_entry = ledger.get_generation_event(candidate_id)
+        assert gen_entry["initial_artifact_status"] == "VALID", (
+            "Original entry was mutated — initial_artifact_status should "
+            "remain VALID (the initial state). Current status is DERIVED "
+            "via get_artifact_status()."
+        )
+
+        # 5. The gate's record contains the failure
+        assert gate.record.manifest_verified is False
+        assert any("COMPROMISE_RECORDED" in f for f in gate.record.failures)
+
+    def test_no_mutation_no_compromise(self, tmp_path, monkeypatch):
+        """When no mutation occurs, no COMPROMISE_RECORDED is created."""
+        from engine.b2_provenance import content_addressed_storage as cas
+        monkeypatch.setattr(cas, "STORAGE_ROOT", tmp_path / "raw_outputs")
+
+        manifest = create_execution_manifest("TEST-NO-MUTATION", ["CASE-001"], {})
+        ledger = ProvenanceLedger(ledger_path=tmp_path / "ledger.json")
+
+        with ExecutionGate(manifest) as gate:
+            entry = ledger.append_candidate_entry(
+                case_id="CASE-001", arm="null", candidate_rank=1,
+                raw_output_sha256="a"*64, raw_output_blob_path="/fake",
+                candidate_sha256="b"*64, candidate_text="test candidate",
+                generation_timestamp="2026-01-01T00:00:00Z",
+                engine_version="v1", provider="ZAI", model="glm-4-plus",
+                prompt_hash="c"*64, source_pair_sha256="d"*64,
+                invocation_seed="e"*64,
+            )
+            # NO mutation — manifest stays valid
+
+        # No compromise
+        assert not ledger.is_execution_compromised(entry["execution_id"])
+        assert ledger.get_artifact_status(entry["candidate_id"]) == "VALID"
+        assert gate.record.manifest_verified is True
+
+    def test_get_artifact_status_not_found(self, tmp_path):
+        """get_artifact_status returns NOT_FOUND for nonexistent candidates."""
+        ledger = ProvenanceLedger(ledger_path=tmp_path / "ledger.json")
+        assert ledger.get_artifact_status("NONEXISTENT") == "NOT_FOUND"

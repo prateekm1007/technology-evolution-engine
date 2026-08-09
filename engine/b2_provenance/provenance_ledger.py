@@ -177,6 +177,32 @@ class ProvenanceLedger:
                 return True
         return False
 
+    def get_artifact_status(self, candidate_id: str) -> str:
+        """Derive the CURRENT status of an artifact from the ledger.
+
+        Per audit round 59: current status is a DERIVED property, not
+        a stored field. It is computed by evaluating:
+
+            CANDIDATE_GENERATED exists?
+                +
+            COMPROMISE_RECORDED for that execution_id?
+                ↓
+            if no compromise → "VALID"
+            if compromised → "COMPROMISED"
+            if not found → "NOT_FOUND"
+
+        This is much harder to misunderstand than a stored field.
+        """
+        gen_entry = self.get_generation_event(candidate_id)
+        if gen_entry is None:
+            return "NOT_FOUND"
+
+        execution_id = gen_entry.get("execution_id")
+        if execution_id and self.is_execution_compromised(execution_id):
+            return "COMPROMISED"
+
+        return "VALID"
+
     def append_candidate_entry(
         self,
         case_id: str,
@@ -251,6 +277,12 @@ class ProvenanceLedger:
         from .execution_gate import assert_execution_gate_active, _ACTIVE_GATE
         assert_execution_gate_active()
 
+        # Per audit round 59: auto-bind the gate to this ledger so __exit__
+        # can AUTOMATICALLY call mark_execution_compromised() without
+        # any caller action.
+        if _ACTIVE_GATE is not None:
+            _ACTIVE_GATE.bind_ledger(self)
+
         # Per audit round 58: bind execution identity into the artifact.
         # execution_id and manifest_sha256 come from the ACTIVE GATE,
         # not from caller-supplied arguments. An auditor can mechanically
@@ -296,7 +328,7 @@ class ProvenanceLedger:
             "prompt_hash": prompt_hash,
             "source_pair_sha256": source_pair_sha256,
             "invocation_seed": invocation_seed,
-            "artifact_status": "VALID",  # can be marked COMPROMISED by post-exec check
+            "initial_artifact_status": "VALID",  # current status derivable via get_artifact_status()
             "prev_entry_hash": prev_hash,
         }
 
