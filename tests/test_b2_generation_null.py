@@ -38,8 +38,19 @@ from engine.b2_provenance import (
     verify_derivation,
     compute_sha256,
     store_raw_output,
+    ExecutionGate,
 )
 from engine.b2_provenance.content_addressed_storage import STORAGE_ROOT
+from scripts.verify_audit_instrument import create_execution_manifest
+
+
+@pytest.fixture
+def execution_gate():
+    """Fixture that provides an active execution gate for tests that need
+    to call generate_null_candidates."""
+    manifest = create_execution_manifest("TEST-FIXTURE", ["CASE-001"], {})
+    with ExecutionGate(manifest) as gate:
+        yield gate
 
 
 # =====================================================================
@@ -289,7 +300,7 @@ class TestNullGeneration:
         raw_output = generate_null_raw_output(a_list, b_list)
         assert NULL_CONFIG["candidate_delimiter"] in raw_output
 
-    def test_null_candidates_parseable_by_frozen_parser(self):
+    def test_null_candidates_parseable_by_frozen_parser(self, execution_gate):
         """Null candidates are parseable by the same frozen parser as engine."""
         a_list, b_list = self._make_abstractions(3)
         raw_output = generate_null_raw_output(a_list, b_list)
@@ -306,7 +317,7 @@ class TestNullGeneration:
 class TestProvenanceSpineIntegration:
     """Verify the null goes through the same provenance spine as the engine."""
 
-    def test_generate_null_candidates_stores_raw_output(self, tmp_path, monkeypatch):
+    def test_generate_null_candidates_stores_raw_output(self, tmp_path, monkeypatch, execution_gate):
         """generate_null_candidates stores raw output in content-addressed storage."""
         # Patch storage root to temp
         from engine.b2_provenance import content_addressed_storage as cas
@@ -325,7 +336,7 @@ class TestProvenanceSpineIntegration:
         assert len(result.raw_output_sha256) == 64
         assert result.raw_output_blob_path is not None
 
-    def test_generate_null_candidates_returns_3_candidates(self, tmp_path, monkeypatch):
+    def test_generate_null_candidates_returns_3_candidates(self, tmp_path, monkeypatch, execution_gate):
         """generate_null_candidates returns exactly 3 candidates."""
         from engine.b2_provenance import content_addressed_storage as cas
         monkeypatch.setattr(cas, "STORAGE_ROOT", tmp_path / "raw_outputs")
@@ -342,7 +353,7 @@ class TestProvenanceSpineIntegration:
         assert result.n_candidates() == 3
         assert len(result.candidate_sha256s) == 3
 
-    def test_null_candidates_derivation_verifiable(self, tmp_path, monkeypatch):
+    def test_null_candidates_derivation_verifiable(self, tmp_path, monkeypatch, execution_gate):
         """Each null candidate's derivation is verifiable through the parser."""
         from engine.b2_provenance import content_addressed_storage as cas
         monkeypatch.setattr(cas, "STORAGE_ROOT", tmp_path / "raw_outputs")
@@ -364,7 +375,7 @@ class TestProvenanceSpineIntegration:
                 f"Null candidate at rank {rank} failed derivation verification"
             )
 
-    def test_null_candidates_recorded_in_ledger(self, tmp_path, monkeypatch):
+    def test_null_candidates_recorded_in_ledger(self, tmp_path, monkeypatch, execution_gate):
         """Null candidates are recorded as CANDIDATE_GENERATED events in the ledger."""
         from engine.b2_provenance import content_addressed_storage as cas
         monkeypatch.setattr(cas, "STORAGE_ROOT", tmp_path / "raw_outputs")
@@ -404,7 +415,7 @@ class TestProvenanceSpineIntegration:
             assert entry["arm"] == "null"
             assert entry["case_id"] == "CASE-001"
 
-    def test_null_uses_same_seed_as_engine(self, tmp_path, monkeypatch):
+    def test_null_uses_same_seed_as_engine(self, tmp_path, monkeypatch, execution_gate):
         """The null uses the same universal seed as the engine."""
         from engine.b2_provenance import content_addressed_storage as cas
         monkeypatch.setattr(cas, "STORAGE_ROOT", tmp_path / "raw_outputs")
@@ -424,7 +435,7 @@ class TestProvenanceSpineIntegration:
         expected_seed = compute_universal_seed(prereg_id, case_id, "downstream")
         assert result.invocation_seed == expected_seed
 
-    def test_null_candidate_schema_same_as_engine(self):
+    def test_null_candidate_schema_same_as_engine(self, execution_gate):
         """Null candidates use the same schema (relationship + mechanism)
         that the engine uses."""
         a = "Crystal nucleation in solutions"
@@ -436,7 +447,7 @@ class TestProvenanceSpineIntegration:
         assert "RELATIONSHIP:" in candidate
         assert "MECHANISM:" in candidate
 
-    def test_null_can_produce_mechanism(self):
+    def test_null_can_produce_mechanism(self, execution_gate):
         """The null CAN produce a mechanism (unlike the old retrieval null
         that produced 'NO_MECHANISM_PROPOSED').
 
@@ -462,7 +473,7 @@ class TestProvenanceSpineIntegration:
 class TestNullImmutability:
     """Verify null candidates are immutable once recorded."""
 
-    def test_null_generation_entry_immutable(self, tmp_path, monkeypatch):
+    def test_null_generation_entry_immutable(self, tmp_path, monkeypatch, execution_gate):
         """Null CANDIDATE_GENERATED events are immutable."""
         from engine.b2_provenance import content_addressed_storage as cas
         monkeypatch.setattr(cas, "STORAGE_ROOT", tmp_path / "raw_outputs")

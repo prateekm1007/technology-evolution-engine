@@ -681,7 +681,15 @@ def generate_null_candidates(
     Raises:
         ValueError: if abstractions are empty or have fewer than 3 entries
                     (NULL_GENERATION_FAILURE, fail-closed).
+        ExecutionGateError: if called outside an active execution gate
+                    (HARD STOP — no generation without sealed manifest).
     """
+    # 0. Assert execution gate is active — NO BYPASS PATH
+    #    Per audit round 55-56: generation cannot proceed without a
+    #    sealed+verified manifest. This is the single enforcement point.
+    from .execution_gate import assert_execution_gate_active
+    assert_execution_gate_active()
+
     # 1. Compute universal seed (same invocation identity as engine)
     seed = compute_universal_seed(preregistration_id, case_id, "downstream")
 
