@@ -1,0 +1,68 @@
+{
+  "execution_type": "DIAGNOSTIC",
+  "manifest_sha256": "8f44dec67b12006dd720ddc3d124d88eb78ec3af29d7fa58c959c25186daf4de",
+  "manifest_verified_before": true,
+  "started_at": "2026-08-09T11:59:53.475313+00:00",
+  "arms_attempted": [
+    "null",
+    "engine"
+  ],
+  "arms_completed": [
+    "null"
+  ],
+  "arms_failed": [
+    {
+      "arm": "engine",
+      "error_type": "TypeError",
+      "error_message": "OpenRouterProvider.__init__() missing 1 required keyword-only argument: 'api_key'"
+    }
+  ],
+  "artifacts_produced": [
+    {
+      "arm": "null",
+      "case_id": "DIAG-001",
+      "candidate_rank": 1,
+      "candidate_sha256": "012cb462b6268e733e4e5f818be1a43382e54f11080abb8ac4335a5d5e571591",
+      "raw_output_sha256": "8eed19f4b32fc67076ab7c967a09fe12f7759982135a8a5187f396b9c7763ee6",
+      "candidate_length": 397
+    },
+    {
+      "arm": "null",
+      "case_id": "DIAG-001",
+      "candidate_rank": 2,
+      "candidate_sha256": "e4bb5381ffaf31e11410f02ecc2d5b1c9a5506b6f199855410b6fdc5ddbb7cc5",
+      "raw_output_sha256": "8eed19f4b32fc67076ab7c967a09fe12f7759982135a8a5187f396b9c7763ee6",
+      "candidate_length": 355
+    },
+    {
+      "arm": "null",
+      "case_id": "DIAG-001",
+      "candidate_rank": 3,
+      "candidate_sha256": "3535b6a9849816ce9a0c1a7eecdd6e65865bcf9f6f314ff0183893469a133cdb",
+      "raw_output_sha256": "8eed19f4b32fc67076ab7c967a09fe12f7759982135a8a5187f396b9c7763ee6",
+      "candidate_length": 355
+    }
+  ],
+  "provenance_ledger_path": "/home/z/my-project/audit/technology-evolution-engine/provenance/ledger.json",
+  "failures": [],
+  "execution_id": "EXEC-fce72d94a7c446ef97a9a4e22f45e893",
+  "finished_at": "2026-08-09T11:59:54.002194+00:00",
+  "manifest_verified_after": true,
+  "provenance_verified": true,
+  "ledger_n_generation_events": 3,
+  "ledger_n_adjudication_events": 0,
+  "ledger_sha256": "eaa76e9a0bfe84b24e3190a26da3b862f2ae84c65438649219f4e464b7a09f18",
+  "ledger_hash_chain_valid": true,
+  "baseline_audit": {
+    "engine_entries_found": 0,
+    "null_entries_found": 3,
+    "n_dimensions": 13,
+    "state_counts": {
+      "NOT_RUN": 12,
+      "CONTRACT_EQUAL": 1
+    },
+    "fairness_established": false
+  },
+  "artifact_type": "DIAGNOSTIC_EXECUTION_RECORD",
+  "diagnostic_rule": "This is a DIAGNOSTIC execution. Results do NOT establish baseline fairness, discovery capability, or North Star. They establish machine facts about what ran and what artifacts were produced. Interpretation is reserved for a fresh-context independent auditor."
+}
