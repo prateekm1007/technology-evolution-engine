@@ -1,0 +1,13 @@
+{
+  "artifact": "B-2 held-out adversarial set",
+  "version": "b2-heldout-v1",
+  "protocol_commit": "1c9d8691dfe4fe150f7ca9fcd269931ba151566e",
+  "schema": "b2-trace-v3",
+  "case_count": 20,
+  "source_pair_count": 4,
+  "plaintext_sha256": "7b0bb6b5fda4a485018cc1170e56d3f7f1eaef2a65ef9385c97fcbca5aa02c69",
+  "ciphertext_sha256": "319de3cfc938e07775a73fa37e5258a63822f776b39bfe06874615379dc6afb1",
+  "aad": "B2-HOLDOUT-2026-08-09-v1",
+  "sealed_at": "2026-08-09T23:10:00+05:30",
+  "access": "encrypted; decryption key withheld from implementation agent"
+}
