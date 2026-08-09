@@ -393,3 +393,120 @@ class TestAutomaticInvalidation:
         """get_artifact_status returns NOT_FOUND for nonexistent candidates."""
         ledger = ProvenanceLedger(ledger_path=tmp_path / "ledger.json")
         assert ledger.get_artifact_status("NONEXISTENT") == "NOT_FOUND"
+
+
+class TestUniqueExecutionIdentity:
+    """Per audit round 60: execution_id must be unique per execution instance,
+    not derived from manifest_sha256. Same manifest executed twice → different
+    execution_ids. Compromise of one does not affect the other.
+
+    The auditor's test:
+        Open the same valid manifest twice;
+        assert the two execution IDs differ;
+        generate artifacts under both;
+        compromise the first;
+        assert artifacts from execution 1 are COMPROMISED while
+        execution 2 remains VALID.
+    """
+
+    def test_same_manifest_different_execution_ids(self, tmp_path, monkeypatch):
+        """Same manifest executed twice → different execution_ids."""
+        from engine.b2_provenance import content_addressed_storage as cas
+        monkeypatch.setattr(cas, "STORAGE_ROOT", tmp_path / "raw_outputs")
+
+        manifest = create_execution_manifest("TEST-UNIQUE-ID", ["CASE-001"], {})
+
+        id_1 = None
+        id_2 = None
+
+        with ExecutionGate(manifest) as gate1:
+            id_1 = gate1.record.execution_id
+
+        with ExecutionGate(manifest) as gate2:
+            id_2 = gate2.record.execution_id
+
+        assert id_1 != id_2, (
+            "Same manifest produced the same execution_id. "
+            "execution_id must be unique per execution instance."
+        )
+
+    def test_compromise_first_second_remains_valid(self, tmp_path, monkeypatch):
+        """Compromise execution 1 → execution 1 artifacts COMPROMISED,
+        execution 2 artifacts remain VALID."""
+        from engine.b2_provenance import content_addressed_storage as cas
+        monkeypatch.setattr(cas, "STORAGE_ROOT", tmp_path / "raw_outputs")
+
+        manifest = create_execution_manifest("TEST-ISOLATION", ["CASE-001"], {})
+        ledger = ProvenanceLedger(ledger_path=tmp_path / "ledger.json")
+
+        # Execution 1: generate candidate, then mutate substrate
+        with ExecutionGate(manifest) as gate1:
+            entry1 = ledger.append_candidate_entry(
+                case_id="CASE-001", arm="null", candidate_rank=1,
+                raw_output_sha256="a"*64, raw_output_blob_path="/fake1",
+                candidate_sha256="b"*64, candidate_text="candidate 1",
+                generation_timestamp="2026-01-01T00:00:00Z",
+                engine_version="v1", provider="ZAI", model="glm-4-plus",
+                prompt_hash="c"*64, source_pair_sha256="d"*64,
+                invocation_seed="e"*64,
+            )
+            cand1_id = entry1["candidate_id"]
+            exec1_id = entry1["execution_id"]
+            # Mutate substrate → gate1 auto-compromises
+            manifest["case_ids"].append("EVIL")
+
+        # Restore manifest for execution 2
+        manifest = create_execution_manifest("TEST-ISOLATION", ["CASE-001"], {})
+
+        # Execution 2: generate candidate, NO mutation
+        with ExecutionGate(manifest) as gate2:
+            entry2 = ledger.append_candidate_entry(
+                case_id="CASE-001", arm="null", candidate_rank=2,
+                raw_output_sha256="f"*64, raw_output_blob_path="/fake2",
+                candidate_sha256="g"*64, candidate_text="candidate 2",
+                generation_timestamp="2026-01-01T00:00:00Z",
+                engine_version="v1", provider="ZAI", model="glm-4-plus",
+                prompt_hash="c"*64, source_pair_sha256="d"*64,
+                invocation_seed="e"*64,
+            )
+            cand2_id = entry2["candidate_id"]
+            exec2_id = entry2["execution_id"]
+
+        # Assert: different execution_ids
+        assert exec1_id != exec2_id
+
+        # Assert: execution 1 is compromised (automatic)
+        assert ledger.is_execution_compromised(exec1_id) is True
+
+        # Assert: execution 2 is NOT compromised
+        assert ledger.is_execution_compromised(exec2_id) is False
+
+        # Assert: candidate 1 status is COMPROMISED
+        assert ledger.get_artifact_status(cand1_id) == "COMPROMISED"
+
+        # Assert: candidate 2 status is VALID (unaffected by execution 1's compromise)
+        assert ledger.get_artifact_status(cand2_id) == "VALID", (
+            "Candidate 2 was compromised by execution 1's failure. "
+            "Execution identity isolation is broken — compromise of "
+            "one execution must not affect another."
+        )
+
+        # Assert: hash chain still valid
+        assert ledger.verify_hash_chain() is True
+
+    def test_both_executions_share_manifest_sha256(self, tmp_path, monkeypatch):
+        """Both executions share the same manifest_sha256 (substrate identity)
+        but have different execution_ids (instance identity)."""
+        from engine.b2_provenance import content_addressed_storage as cas
+        monkeypatch.setattr(cas, "STORAGE_ROOT", tmp_path / "raw_outputs")
+
+        manifest = create_execution_manifest("TEST-SHARED-SUBSTRATE", ["CASE-001"], {})
+        manifest_sha = manifest["manifest_sha256"]
+
+        with ExecutionGate(manifest) as gate1:
+            assert gate1.record.manifest_sha256 == manifest_sha
+
+        with ExecutionGate(manifest) as gate2:
+            assert gate2.record.manifest_sha256 == manifest_sha
+            # Same substrate, different instance
+            assert gate1.record.execution_id != gate2.record.execution_id

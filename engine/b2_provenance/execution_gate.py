@@ -20,8 +20,10 @@ REPORTING (per audit round 55):
     - what ran, what artifacts, hashes, failures, exclusions, provenance status
     - NO: successful, failed, fair, discovery, significant, or North Star
 """
+import hashlib
 import json
 import sys
+import uuid
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from pathlib import Path
@@ -132,8 +134,15 @@ class ExecutionGate:
                 "No generation may proceed. EXECUTION_INVALIDATED."
             )
 
+        # Per audit round 60: execution_id is a UNIQUE per-instance identifier
+        # generated when the gate opens, NOT derived from manifest_sha256.
+        # This prevents identity collision when the same manifest is executed
+        # twice. The manifest_sha256 is retained separately as the substrate
+        # identity.
+        #   execution_id    = unique execution instance (UUID)
+        #   manifest_sha256 = exact experimental substrate
         self.record = ExecutionRecord(
-            execution_id=f"EXEC-{self.manifest['manifest_sha256'][:16]}",
+            execution_id=f"EXEC-{uuid.uuid4().hex}",
             manifest_sha256=self.manifest["manifest_sha256"],
             started_at=datetime.now(timezone.utc).isoformat(),
             manifest_verified=True,
