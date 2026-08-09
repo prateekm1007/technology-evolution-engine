@@ -1,14 +1,16 @@
 # B-2 REPAIR SPECIFICATION — Independent Semantic Support
 
-**Status:** AMENDED SPEC (round-75) — FROZEN FOR RE-ADJUDICATION
+**Status:** AMENDED SPEC (round-76) — FROZEN FOR RE-ADJUDICATION
 **Original freeze:** 2026-08-09 (commit `8a84fdc`, round-73)
 **First amended freeze:** 2026-08-10 (commit `4bc945d`, round-74)
-**Second amended freeze:** 2026-08-10 (this revision, round-75)
+**Second amended freeze:** 2026-08-10 (commit `3076d3a`, round-75)
+**Third amended freeze:** 2026-08-10 (this revision, round-76)
 **Frozen by:** protocol-B implementer (this agent)
-**Adjudication status:** Round-74 verdict ACCEPT WITH CONDITIONS →
-round-75 verdict ACCEPT WITH CONDITIONS. This second amended revision
-resolves all 3 round-75 conditions + the Section 5.1 refinement.
-Awaiting re-adjudication before any implementation work may begin.
+**Adjudication status:** Round-75 verdict ACCEPT WITH CONDITIONS →
+round-76 verdict REJECT WITH ONE MANDATORY CONDITION. This third amended
+revision resolves the round-76 condition (eliminate non-constructible
+`ISS_neither`, replace with `REDUNDANT_SUPPORT`). Awaiting re-adjudication
+before any implementation work may begin.
 
 **Supersedes:** The lexical detector at commit `20ac268`
 (`b1_b2_verification._check_leakage`). That detector's 6/6 result on the
@@ -22,8 +24,10 @@ round-73 verdict, which adjudicated the B-2 v2 adversarial diagnostic
 repair specification be drafted and independently adjudicated before any
 implementation work begins. The round-74 verdict (ACCEPT WITH CONDITIONS)
 directed the first amendment (7 conditions + wording correction). The
-round-75 verdict (ACCEPT WITH CONDITIONS) directed this second amendment
-(3 conditions + 1 refinement).
+round-75 verdict (ACCEPT WITH CONDITIONS) directed the second amendment
+(3 conditions + 1 refinement). The round-76 verdict (REJECT WITH ONE
+MANDATORY CONDITION) directed this third amendment (eliminate
+non-constructible `ISS_neither`).
 
 **Adjudication history:**
 
@@ -31,45 +35,35 @@ round-75 verdict (ACCEPT WITH CONDITIONS) directed this second amendment
 |-------|---------|--------|
 | 73 | — | Spec drafted and frozen at commit `8a84fdc` |
 | 74 | ACCEPT WITH CONDITIONS | First amended revision (commit `4bc945d`) resolves 7 conditions + wording correction |
-| 75 | ACCEPT WITH CONDITIONS | This second amended revision resolves 3 conditions + Section 5.1 refinement |
-| 76+ | PENDING | Re-adjudication by external auditor |
+| 75 | ACCEPT WITH CONDITIONS | Second amended revision (commit `3076d3a`) resolves 3 conditions + Section 5.1 refinement |
+| 76 | REJECT WITH ONE MANDATORY CONDITION | This third amended revision eliminates non-constructible `ISS_neither`, replaces with `REDUNDANT_SUPPORT` |
+| 77+ | PENDING | Re-adjudication by external auditor |
 
-**Round-75 conditions resolved by this amendment:**
+**Round-76 condition resolved by this amendment:**
 
-1. **Separate `UNSUPPORTED` from `ISS_neither`** (Section 2.1, 2.4, 2.5,
-   2.6.2, 2.7, 8.5). `ISS_neither` now requires `Justified(c, {A,B})` as
-   a precondition; `UNSUPPORTED` is a new state for candidates with
-   unsupported atomic claims; the decision criterion adds
-   `UNSUPPORTED → NOT_ADJUDICATED_BY_B2` (forwarded to Gate B, NOT
-   ALLOWED). Closes the loophole where a candidate combining a
-   legitimate mechanism with an invented unsupported mechanism would
-   be ALLOWED as "genuinely novel."
-2. **Independent double-adjudication + disagreement resolution** (new
-   Section 3.6). Two independent adjudicators evaluate every held-out
-   trace, blind to the detector's label; disagreements are recorded and
-   resolved via a predefined procedure; raw agreement is reported; ≥ 80%
-   raw agreement required for the held-out set to be usable.
-3. **Freeze concrete trace JSON schema** (new Section 3.7). The
-   `b2-trace-v1` schema is frozen: `candidate`, `atoms[]` (with
-   `atom_id`, `claim`, `source_support[]`), `counterfactuals[]` (with
-   `removed_source`, `unsupported_atoms[]`, `justified_without_source`),
-   `classification` (with `justified_by_corpus`, `iss_a`, `iss_b`,
-   `iss_state`, `label`). No free-form structural variation permitted.
+1. **Eliminate non-constructible `ISS_neither`; replace with
+   `REDUNDANT_SUPPORT`** (Section 2.1, 2.4, 2.5, 2.7, 3.2, 3.7, 8.5).
 
-**Round-75 refinement:**
+   The round-75 amendment defined `ISS_neither` as
+   `Justified(c,{A,B}) AND NOT ISS_A AND NOT ISS_B` and described it as
+   "genuinely novel relative to the sources, requiring both sources'
+   combined context but not attributable to either source alone." But
+   under the operational `Justified()` definition (span-mapped to
+   individual sources), `NOT ISS_A` means "removing A does NOT make the
+   candidate unjustified" → B alone is sufficient. `NOT ISS_B` means A
+   alone is sufficient. So `ISS_neither` was mathematically equivalent
+   to "both sources independently justify the candidate" — i.e.
+   **redundant support**, not "jointly necessary." The "true ISS_neither"
+   category was non-constructible, which would make the held-out set
+   requirement impossible to satisfy honestly.
 
-- Section 5.1: public-vs-held-out "drop of more than 1 case in any
-  category" is now an **audit trigger**, NOT proof of tuning. With tiny
-  category counts, a single-case drop is statistically weak evidence.
-
-**Round-75 consequence — ADV-09 reclassification:**
-
-- ADV-09 (`quantum entanglement`) is reclassified from `ISS_neither →
-  ALLOW` to `UNSUPPORTED → NOT_ADJUDICATED_BY_B2`. The original "clean
-  bridge" control no longer tests what it was designed to test; the
-  held-out set must include a new "genuinely novel relative to sources"
-  (true `ISS_neither`) control category. See Section 2.5 note and open
-  question 9.11.
+   The round-76 amendment adopts the auditor's Option A: eliminate
+   `ISS_neither` as a B-2 state; replace with `REDUNDANT_SUPPORT`
+   (both sources independently justify the candidate). B-2 becomes a
+   clean 4-state instrument: `ISS_one` (REJECT), `ISS_both` (ALLOW),
+   `REDUNDANT_SUPPORT` (ALLOW, reported separately), `UNSUPPORTED`
+   (NOT_ADJUDICATED_BY_B2). B-2 never has to decide whether something
+   is "novel" — that responsibility stays with the discovery gates.
 
 ---
 
@@ -226,14 +220,13 @@ A candidate has independent semantic support from **exactly one** source iff:
 ISS_one(c, {A, B})  :=  (IndependentSemanticSupport(c, A, {A, B})  XOR  IndependentSemanticSupport(c, B, {A, B}))
 ```
 
-A candidate has independent semantic support from **neither** source iff
-it is justified by the combined corpus but not independently attributable
-to either source alone:
+A candidate has **redundant support** iff it is justified by the combined
+corpus AND each source alone independently justifies it:
 
 ```
-ISS_neither(c, {A, B})  :=  Justified(c, {A, B})
-                            AND  NOT IndependentSemanticSupport(c, A, {A, B})
-                            AND  NOT IndependentSemanticSupport(c, B, {A, B})
+REDUNDANT_SUPPORT(c, {A, B})  :=  Justified(c, {A, B})
+                                  AND  Justified(c, {A})
+                                  AND  Justified(c, {B})
 ```
 
 A candidate is **unsupported** iff it is NOT justified by the full corpus
@@ -244,31 +237,60 @@ alone or in combination):
 UNSUPPORTED(c, {A, B})  :=  NOT Justified(c, {A, B})
 ```
 
-**Critical distinction (round-75 condition 1):** `ISS_neither` is NOT the
-same as `UNSUPPORTED`.
+**Critical distinction (round-76 condition, superseding round-75):** the
+round-75 amendment introduced a state called `ISS_neither`, defined as
+`Justified(c,{A,B}) AND NOT ISS_A AND NOT ISS_B`, and described it as
+"genuinely novel relative to the sources, requiring both sources' combined
+context but not attributable to either source alone." This description was
+**mathematically inconsistent** with the operational `Justified()`
+definition (Section 2.6.2, span-mapped to individual sources).
 
-- `ISS_neither` means the candidate IS justified by the combined corpus
-  `{A, B}`, but removing Source A leaves it unjustified AND removing
-  Source B leaves it unjustified — i.e. it is genuinely novel relative to
-  the sources, requiring both sources' combined context to be justified
-  but not independently attributable to either. This is a legitimate
-  "genuinely novel" candidate and must be ALLOWED by B-2.
+The inconsistency: under the span-map definition, `NOT ISS_A` means
+"removing A does NOT make the candidate unjustified," which means B alone
+is sufficient to justify the candidate. `NOT ISS_B` means A alone is
+sufficient. So `ISS_neither` (as defined in round-75) was mathematically
+equivalent to "both A alone and B alone independently justify the
+candidate" — i.e. **redundant support**, not "jointly necessary but not
+independently attributable." The "true ISS_neither" category (jointly
+necessary, not independently attributable) was **non-constructible**
+under the span-map definition, because the span-map cannot represent
+joint inference that requires both sources together.
 
-- `UNSUPPORTED` means the candidate contains at least one atomic claim
-  that cannot be justified by Source A alone, Source B alone, OR the two
-  sources together. This is NOT "genuinely novel" — it is a candidate
-  with fabricated or nonsensical content. It must NOT be ALLOWED by B-2.
-  It is forwarded to Gate B as `NOT_ADJUDICATED_BY_B2`.
+The round-76 amendment resolves this by eliminating `ISS_neither` and
+renaming the state to `REDUNDANT_SUPPORT`, which accurately describes
+what the mathematics actually computes. B-2 now has four clean,
+mutually-exclusive, collectively-exhaustive, constructible states:
 
-The previous version of this spec (commit `4bc945d`) defined
-`ISS_neither` as `NOT ISS_A AND NOT ISS_B` without requiring
-`Justified(c, {A, B})`. That definition conflated "genuinely novel" with
-"unsupported" and created a loophole: a candidate combining a legitimate
-mechanism from Source A with an invented unsupported mechanism would be
-classified as `ISS_neither` and ALLOWED, when it should be classified as
-`UNSUPPORTED` and forwarded to Gate B. The round-75 amendment closes
-this loophole by requiring `Justified(c, {A, B})` as a precondition for
-`ISS_neither`.
+| State | Definition | Label |
+|-------|-----------|-------|
+| `UNSUPPORTED` | `NOT Justified(c,{A,B})` | `NOT_ADJUDICATED_BY_B2` |
+| `ISS_one` | `Justified(c,{A,B})` AND exactly one of {`Justified(c,{A})`, `Justified(c,{B})`} | `REJECT` |
+| `ISS_both` | `Justified(c,{A,B})` AND NOT `Justified(c,{A})` AND NOT `Justified(c,{B})` | `ALLOW` |
+| `REDUNDANT_SUPPORT` | `Justified(c,{A,B})` AND `Justified(c,{A})` AND `Justified(c,{B})` | `ALLOW` (reported separately) |
+
+- `ISS_one` (source-local leakage): the candidate is justified by the
+  corpus, and one source alone is sufficient. The other source
+  contributes nothing unique. REJECT.
+- `ISS_both` (cross-source synthesis): the candidate is justified by
+  the corpus, and neither source alone is sufficient. Both sources
+  contribute unique supporting spans. ALLOW.
+- `REDUNDANT_SUPPORT`: the candidate is justified by the corpus, and
+  each source alone independently justifies it. Both sources say the
+  same thing about this candidate. ALLOW (reported separately for
+  downstream transparency). This is NOT leakage (not source-local to
+  one), and NOT cross-source synthesis (no unique contribution from
+  either). It is simply a candidate that both sources independently
+  support.
+- `UNSUPPORTED`: the candidate contains at least one atomic claim with
+  no supporting span in either source. NOT_ADJUDICATED_BY_B2
+  (forwarded to Gate B).
+
+**B-2 never has to decide whether something is "novel"** (round-76,
+per auditor's directive). The responsibility for novelty adjudication
+stays with the discovery gates (Gate B / Gate C). B-2 is a leakage AND
+support instrument — it detects whether a candidate is source-local
+(leakage) or unsupported (fabricated), and passes everything else
+through to Gate B.
 
 ### 2.2 Source-local explainability
 
@@ -293,24 +315,28 @@ must be ALLOWED.
 
 ### 2.4 The decision criterion
 
-The B-2 detector's decision criterion (round-75 amended to add the
-`UNSUPPORTED` branch):
+The B-2 detector's decision criterion (round-76 amended to replace
+non-constructible `ISS_neither` with `REDUNDANT_SUPPORT`):
 
 ```
-                ┌─ ALLOW                  if ISS_both(c, {A, B})        (cross-source synthesis)
-                ├─ ALLOW                  if ISS_neither(c, {A, B})     (genuinely novel — justified by combined corpus, not attributable to either source alone)
-detector(c) ───┼─ REJECT                  if ISS_one(c, {A, B})         (source-local — leakage)
-                └─ NOT_ADJUDICATED_BY_B2  if UNSUPPORTED(c, {A, B})     (contains claims not justified by either source — forwarded to Gate B)
+                ┌─ REJECT                  if ISS_one(c, {A, B})             (source-local — leakage)
+                ├─ ALLOW                   if ISS_both(c, {A, B})           (cross-source synthesis — both sources contribute uniquely)
+detector(c) ───┼─ ALLOW                   if REDUNDANT_SUPPORT(c, {A, B})  (both sources independently justify — reported separately)
+                └─ NOT_ADJUDICATED_BY_B2  if UNSUPPORTED(c, {A, B})        (contains claims not justified by either source — forwarded to Gate B)
 ```
 
 Equivalently:
 
 - REJECT iff the candidate has independent semantic support from exactly
-  one source (source-local leakage).
-- ALLOW iff the candidate is justified by the combined corpus AND has
-  independent semantic support from both sources (cross-source synthesis),
-  OR is justified by the combined corpus AND has independent semantic
-  support from neither source (genuinely novel relative to sources).
+  one source (source-local leakage; one source alone is sufficient, the
+  other contributes nothing unique).
+- ALLOW iff the candidate is justified by the combined corpus AND neither
+  source alone is sufficient (cross-source synthesis; both sources
+  contribute unique supporting spans).
+- ALLOW iff the candidate is justified by the combined corpus AND each
+  source alone independently justifies it (redundant support; both
+  sources say the same thing). Reported separately from `ISS_both` for
+  downstream transparency, but treated as ALLOW by B-2.
 - NOT_ADJUDICATED_BY_B2 iff the candidate is NOT justified by the combined
   corpus (contains at least one unsupported atomic claim). B-2 does not
   issue an ALLOW or REJECT for such candidates; they are forwarded to
@@ -321,16 +347,34 @@ candidate would still be justified if one source were removed. A lexical
 detector cannot compute this counterfactual, because the counterfactual
 depends on the candidate's *meaning*, not its surface form.
 
-**Why UNSUPPORTED is not an ALLOW (round-75 condition 1):** the previous
-version of this spec allowed `UNSUPPORTED` candidates to pass B-2 by
-routing them through the `ISS_neither` branch. This created a loophole:
-a candidate combining a legitimate Source A mechanism with an invented
-unsupported mechanism would be ALLOWED as "genuinely novel," when in fact
-it is partially fabricated. The round-75 amendment closes this loophole
-by requiring `Justified(c, {A, B})` as a precondition for `ISS_neither`,
-and by routing `UNSUPPORTED` candidates to Gate B rather than ALLOWING
-them. B-2 is a leakage instrument; it must not quietly become a novelty
-detector that approves fabricated candidates (Section 2.7, 8.5).
+**Why REDUNDANT_SUPPORT is ALLOW (not REJECT or NOT_ADJUDICATED):**
+`REDUNDANT_SUPPORT` is not leakage (the candidate is not source-local to
+one source — both sources independently support it). It is also not
+unsupported (the candidate IS justified by the corpus). B-2's job is to
+detect leakage and unsupported claims; `REDUNDANT_SUPPORT` is neither.
+Whether a redundantly-supported candidate is a "good invention" is Gate
+B's responsibility. B-2 reports it separately from `ISS_both` so that
+downstream gates can distinguish "cross-source synthesis" (unique
+contribution from both) from "redundant support" (both say the same
+thing) — these are scientifically different even though B-2 treats both
+as ALLOW.
+
+**Mathematical note (round-76):** the four states are mutually
+exclusive and collectively exhaustive given the span-map definition of
+`Justified()` (Section 2.6.2). Every candidate falls into exactly one
+state. The previous round-75 `ISS_neither` state was non-constructible
+under the span-map definition because it claimed to represent "jointly
+necessary but not independently attributable" — which is actually
+`ISS_both` under the span-map definition. See Section 2.1 for the full
+derivation.
+
+**Why UNSUPPORTED is not an ALLOW (round-75, retained):** the round-75
+amendment closed the loophole where a candidate combining a legitimate
+mechanism with an invented unsupported mechanism would be ALLOWED.
+`UNSUPPORTED` candidates are forwarded to Gate B as
+`NOT_ADJUDICATED_BY_B2`, NOT ALLOWED. B-2 is a leakage AND support
+instrument; it must not quietly become a novelty detector that approves
+fabricated candidates (Section 2.7, 8.5).
 
 ### 2.5 Worked examples (mapping the criterion to the adversarial set)
 
@@ -354,10 +398,7 @@ detector that approves fabricated candidates (Section 2.7, 8.5).
 ADV-14 is an illustrative example added by the round-75 amendment to
 demonstrate the `UNSUPPORTED` branch. It combines legitimate source
 vocabulary (`osteoblast` from Source A, `silica shells` from Source B)
-with an invented unsupported mechanism (`quantum coherence`). Under the
-previous version of this spec (commit `4bc945d`), this candidate would
-have been classified as `ISS_neither` and ALLOWED — the loophole the
-round-75 amendment closes. Under the amended criterion, the
+with an invented unsupported mechanism (`quantum coherence`). The
 `{phenomenon: quantum_coherence}` atomic claim has no supporting span in
 either source, so `Justified(c, {A, B}) = false`, so the candidate is
 `UNSUPPORTED`, and B-2 forwards it to Gate B as
@@ -370,33 +411,37 @@ separate rationale file, but its ISS determination is derivable from
 Section 2.6.2 by applying the span-map test to the `{phenomenon:
 quantum_coherence}` atomic claim.)
 
-**Note on ADV-09 reclassification (round-75):** the previous version of
-this spec (commit `4bc945d`) classified `quantum entanglement` as
-`ISS_neither → ALLOW` (a "clean bridge" control). Under the amended
-criterion, `quantum entanglement` is reclassified as `UNSUPPORTED →
-NOT_ADJUDICATED_BY_B2`. The atomic claim `{phenomenon:
-quantum_entanglement}` has no supporting span in either Source A or
-Source B, so `Justified(c, {A, B}) = false`, so the candidate is
-`UNSUPPORTED` rather than `ISS_neither`. This reclassification is
-correct: `quantum entanglement` is not "genuinely novel relative to the
-sources" in the sense the round-75 amendment establishes — it is simply
-unrelated to the sources, and B-2 should not be in the business of
-approving it. Gate B decides whether it is a valid invention.
+**Note on ADV-09 (round-75, retained):** `quantum entanglement` is
+classified as `UNSUPPORTED → NOT_ADJUDICATED_BY_B2`. The atomic claim
+`{phenomenon: quantum_entanglement}` has no supporting span in either
+Source A or Source B, so `Justified(c, {A, B}) = false`. `quantum
+entanglement` is simply unrelated to the sources; B-2 does not approve
+it. Gate B decides whether it is a valid invention.
 
-The rationale file `cases/ADV-09.md` should be updated to reflect this
-reclassification when the held-out set is constructed; for now, the
-reclassification is documented here in the spec.
+**Note on REDUNDANT_SUPPORT (round-76):** none of the 13 public ADV
+cases are `REDUNDANT_SUPPORT`. The public set does not contain a case
+where both sources independently justify the same candidate. The
+held-out set (Section 3.2) must include at least 2 `REDUNDANT_SUPPORT`
+cases — these are straightforward to construct: a candidate whose
+atomic claims all have supporting spans in Source A AND all have
+supporting spans in Source B (independently). For example, if Source A
+and Source B both independently assert that "osteoblasts deposit
+calcium phosphate in bone," then the candidate "calcium phosphate
+deposition in bone" would be `REDUNDANT_SUPPORT`. Constructing such
+cases requires source pairs that overlap in some claims but differ in
+others — the held-out set's multiple source pairs (Section 3.2.1)
+should be designed with this in mind.
 
-**Consequence for the "clean bridge" control category:** the original
-adversarial v2 set included ADV-09 as a "clean bridge, no overlap →
-ALLOW" control. Under the amended criterion, this control no longer
-tests what it was designed to test. The held-out set (Section 3.2) must
-include a new "genuinely novel relative to sources" (true `ISS_neither`)
-control category — a candidate whose atomic claims ARE all supported by
-the combined corpus `{A, B}` but whose support is distributed such that
-removing either source leaves the candidate unjustified. Constructing
-such a candidate requires careful design; the auditor should ensure the
-held-out set includes at least 2 such cases.
+**Note on the removed `ISS_neither` state (round-76):** the round-75
+amendment introduced `ISS_neither` and reclassified ADV-09 from
+`ISS_neither → ALLOW` to `UNSUPPORTED → NOT_ADJUDICATED_BY_B2`. The
+round-76 amendment eliminates `ISS_neither` entirely (it was
+non-constructible under the span-map definition of `Justified()`).
+ADV-09 remains `UNSUPPORTED → NOT_ADJUDICATED_BY_B2` (unchanged from
+round-75). No reclassification of ADV-09 is needed for round-76; the
+only change is that the `ISS_neither` state no longer exists as a
+target for any candidate. See Section 2.1 for the mathematical
+derivation of why `ISS_neither` was non-constructible.
 
 ### 2.6 Operational definition of `Justified()` (round-74 condition 1)
 
@@ -455,12 +500,19 @@ for discovery adjudication, NOT allowed as a B-2 pass. The unsupported
 claims are reported in the trace (Section 3.3, element 4: counterfactual
 evaluation, "unsupported claims" set).
 
-**Critical (round-75 condition 1):** the previous version of this section
-(commit `4bc945d`) said an unsupported candidate "places it in
-`ISS_neither` and yields ALLOW." That was the loophole the round-75
-amendment closes. Under the amended criterion, an unsupported candidate
-is `UNSUPPORTED`, NOT `ISS_neither`. `ISS_neither` now requires
-`Justified(c, {A, B})` as a precondition (Section 2.1).
+**Critical (round-75 condition 1, round-76 finalized):** the round-74
+version of this section (commit `4bc945d`) said an unsupported candidate
+"places it in `ISS_neither` and yields ALLOW." That was the loophole the
+round-75 amendment closed by introducing `UNSUPPORTED` as a separate
+state. The round-75 amendment also introduced `ISS_neither` as a state
+for "justified by combined corpus but not attributable to either source
+alone" — but the round-76 verdict identified that this `ISS_neither`
+was mathematically equivalent to `REDUNDANT_SUPPORT` under the span-map
+definition of `Justified()`, and was therefore non-constructible as
+described. The round-76 amendment eliminates `ISS_neither` entirely and
+renames the state to `REDUNDANT_SUPPORT`. Under the current (round-76)
+criterion, an unsupported candidate is `UNSUPPORTED` (NOT
+`REDUNDANT_SUPPORT`, NOT `ISS_both`, NOT `ISS_one`).
 
 #### 2.6.3 The counterfactual test, operationalized
 
@@ -527,20 +579,23 @@ This operational definition does not rule out:
   judgment applies, but the trace must still cite the specific spans that
   ground the inference.
 
-### 2.7 B-2 is a leakage instrument, NOT a novelty detector (round-74 condition 7; round-75 strengthened)
+### 2.7 B-2 is a leakage and support instrument, NOT a novelty detector (round-74 condition 7; round-75 strengthened; round-76 finalized)
 
-The B-2 decision criterion (Section 2.4, round-75 amended) places
-`ISS_neither` candidates in the ALLOW branch — but only when
-`Justified(c, {A, B})` holds (i.e. the candidate IS justified by the
-combined corpus, just not attributable to either source alone).
-Candidates that are NOT justified by the combined corpus are
-`UNSUPPORTED` and are forwarded to Gate B as `NOT_ADJUDICATED_BY_B2`,
-NOT allowed.
+The B-2 decision criterion (Section 2.4, round-76 amended) has four
+states: `ISS_one` (REJECT), `ISS_both` (ALLOW), `REDUNDANT_SUPPORT`
+(ALLOW, reported separately), and `UNSUPPORTED` (NOT_ADJUDICATED_BY_B2).
 
-This is correct **for leakage detection** — B-2's job is to reject
-source-local derivatives, not to evaluate whether a candidate is a good
-invention. The round-75 amendment strengthens this by ensuring B-2 also
-does not approve candidates with fabricated or unsupported content.
+B-2's job is to detect:
+- **source-local leakage** (`ISS_one`): the candidate is fully
+  attributable to one source. REJECT.
+- **unsupported claims** (`UNSUPPORTED`): the candidate contains at
+  least one atomic claim with no supporting span in either source.
+  Forward to Gate B as `NOT_ADJUDICATED_BY_B2`.
+
+B-2 does NOT adjudicate:
+- whether a candidate is a "good invention" (Gate B's job)
+- whether a candidate is "novel" (Gate B's job)
+- whether a candidate is "scientifically meaningful" (Gate B's job)
 
 B-2 must remain distinct from **discovery adjudication** (Gate B / Gate C
 in the engine's gate hierarchy). The two gates evaluate different
@@ -548,36 +603,35 @@ properties:
 
 | Gate | Question | Outcome |
 |------|----------|---------|
-| B-2 (this spec) | Is the candidate leaked from one source, or unsupported? | REJECT iff `ISS_one`; ALLOW iff `ISS_both` or `ISS_neither`; `NOT_ADJUDICATED_BY_B2` iff `UNSUPPORTED` |
+| B-2 (this spec) | Is the candidate leaked from one source, or unsupported? | REJECT iff `ISS_one`; ALLOW iff `ISS_both` or `REDUNDANT_SUPPORT`; `NOT_ADJUDICATED_BY_B2` iff `UNSUPPORTED` |
 | Gate B / discovery | Is the candidate a valid, meaningful mechanism? | Separate adjudication, separate criteria |
 
-A candidate that passes B-2 via `ISS_neither` is **not blocked by B-2**,
-but it may still be rejected by Gate B for being untestable or otherwise
-invalid as a mechanism proposal. A candidate that B-2 routes to
-`NOT_ADJUDICATED_BY_B2` (UNSUPPORTED) is also forwarded to Gate B — Gate
-B may reject it for being nonsensical or fabricated, OR may adjudicate
-it as a valid invention if the unsupported claim is independently
-defensible. B-2 does not pre-judge either case.
+A candidate that passes B-2 via `ISS_both` (cross-source synthesis) or
+`REDUNDANT_SUPPORT` (both sources independently justify) is **not blocked
+by B-2**, but it may still be rejected by Gate B for being untestable or
+otherwise invalid as a mechanism proposal. A candidate that B-2 routes
+to `NOT_ADJUDICATED_BY_B2` (UNSUPPORTED) is also forwarded to Gate B —
+Gate B may reject it for being nonsensical or fabricated, OR may
+adjudicate it as a valid invention if the unsupported claim is
+independently defensible. B-2 does not pre-judge either case.
 
-**Implementation requirement:** The detector's trace must explicitly flag
-both `ISS_neither` and `UNSUPPORTED` cases:
-
-- `ISS_neither`: "passed B-2 leakage check; justified by combined
-  corpus; not adjudicated for discovery validity."
-- `UNSUPPORTED`: "NOT adjudicated by B-2; contains unsupported atomic
-  claims {…}; forwarded to Gate B."
-
-The downstream Gate B adjudicator must receive these flags and must NOT
-treat B-2 passage (ALLOW) as evidence of discovery validity, and must
-NOT treat B-2's `NOT_ADJUDICATED_BY_B2` as a B-2 REJECT.
+**Implementation requirement:** The detector's trace must explicitly
+report the `iss_state` for every candidate
+(`ISS_one` / `ISS_both` / `REDUNDANT_SUPPORT` / `UNSUPPORTED`), per
+the frozen JSON schema (Section 3.7.1). The downstream Gate B
+adjudicator must receive this `iss_state` and must NOT treat B-2
+passage (ALLOW) as evidence of discovery validity, and must NOT treat
+B-2's `NOT_ADJUDICATED_BY_B2` as a B-2 REJECT.
 
 **Anti-regression requirement (Section 8.5):** The spec, the
-implementation, and the audit must all preserve the B-2 / Gate B
-distinction AND the `ISS_neither` / `UNSUPPORTED` distinction. Any
-attempt to (a) expand B-2's criterion to include novelty evaluation, or
-(b) collapse `UNSUPPORTED` back into `ISS_neither` (re-opening the
-round-75 loophole), is scope creep / regression and must be rejected by
-the auditor.
+implementation, and the audit must all preserve:
+1. The B-2 / Gate B distinction (B-2 is leakage + support, not novelty).
+2. The four-state ontology (`ISS_one` / `ISS_both` / `REDUNDANT_SUPPORT`
+   / `UNSUPPORTED`). Any attempt to (a) expand B-2's criterion to
+   include novelty evaluation, (b) collapse `UNSUPPORTED` into an ALLOW
+   state, or (c) re-introduce the non-constructible `ISS_neither` state
+   (round-76 elimination), is regression and must be rejected by the
+   auditor.
 
 ---
 
@@ -615,7 +669,8 @@ is frozen and before implementation begins. The held-out set:
 
 - Is constructed using the same rationale-template as the public set
   (`cases/ADV-NN.md` format).
-- Contains at least 12 cases, distributed across Modes A/B/C.
+- Contains at least 12 cases, distributed across Modes A/B/C **and**
+  the `REDUNDANT_SUPPORT` and `UNSUPPORTED` categories.
 - Contains at least 2 cases in each of the following sub-categories:
   - Mode A: source-local paraphrase with zero lexical overlap.
   - Mode A: source-local paraphrase with partial lexical overlap that does
@@ -628,6 +683,15 @@ is frozen and before implementation begins. The held-out set:
     `COMMON_SUFFIXES` (calibration — should REJECT).
   - Mode C: source-local derivative whose excess does NOT fit a suffix in
     `COMMON_SUFFIXES` (the ADV-13 pattern — should REJECT).
+  - **`REDUNDANT_SUPPORT` (round-76, NEW):** a candidate whose atomic
+    claims all have supporting spans in Source A AND all have supporting
+    spans in Source B independently. Should be ALLOW, reported as
+    `REDUNDANT_SUPPORT` (not `ISS_both`). At least 2 cases required.
+  - **`UNSUPPORTED` (round-75, retained):** a candidate containing at
+    least one atomic claim with no supporting span in either source
+    (fabricated or nonsensical content mixed with legitimate source
+    vocabulary, per the ADV-14 pattern). Should be
+    `NOT_ADJUDICATED_BY_B2`. At least 2 cases required.
 
 #### 3.2.1 Multiple source pairs — MANDATORY (round-74 condition 5)
 
@@ -874,7 +938,7 @@ Both adjudicators:
   atomic claim decomposition + span map (Section 3.7), but NOT the
   detector's REJECT/ALLOW/NOT_ADJUDICATED_BY_B2 label.
 - Independently produce their own ISS determination
-  (`ISS_one` / `ISS_both` / `ISS_neither` / `UNSUPPORTED`) and their
+  (`ISS_one` / `ISS_both` / `REDUNDANT_SUPPORT` / `UNSUPPORTED`) and their
   own label.
 - Record their reasoning in the same rationale-template format as the
   public set (`cases/ADV-NN.md`).
@@ -982,7 +1046,7 @@ free-form structural variation is NOT permitted.
     "justified_by_corpus": "<boolean, Justified(c, {A,B})>",
     "iss_a": "<boolean, IndependentSemanticSupport(c, A, {A,B})>",
     "iss_b": "<boolean, IndependentSemanticSupport(c, B, {A,B})>",
-    "iss_state": "<string, one of: 'ISS_one' | 'ISS_both' | 'ISS_neither' | 'UNSUPPORTED'>",
+    "iss_state": "<string, one of: 'ISS_one' | 'ISS_both' | 'REDUNDANT_SUPPORT' | 'UNSUPPORTED'>",
     "label": "<string, one of: 'REJECT' | 'ALLOW' | 'NOT_ADJUDICATED_BY_B2'>"
   }
 }
@@ -1006,20 +1070,28 @@ free-form structural variation is NOT permitted.
    `removed_source: "A"` and one for `removed_source: "B"`.
 
 4. **`classification.iss_state` must be consistent with
-   `classification.justified_by_corpus`, `iss_a`, and `iss_b`:**
+   `classification.justified_by_corpus`, `iss_a`, and `iss_b`**
+   (round-76 amended):
    - `UNSUPPORTED` iff `justified_by_corpus == false`.
    - `ISS_one` iff `justified_by_corpus == true` AND exactly one of
      `iss_a`, `iss_b` is true.
    - `ISS_both` iff `justified_by_corpus == true` AND both `iss_a` and
      `iss_b` are true.
-   - `ISS_neither` iff `justified_by_corpus == true` AND neither
+   - `REDUNDANT_SUPPORT` iff `justified_by_corpus == true` AND neither
      `iss_a` nor `iss_b` is true.
 
+   (Note: `iss_a` = `IndependentSemanticSupport(c, A, {A,B})` =
+   `Justified(c,{A,B}) AND NOT Justified(c,{B})`. So `iss_a == false`
+   when `Justified(c,{A}) == true` (given `Justified(c,{A,B}) == true`).
+   `REDUNDANT_SUPPORT` is the case where both `iss_a` and `iss_b` are
+   false, meaning both `Justified(c,{A})` and `Justified(c,{B})` are
+   true — i.e. both sources independently justify the candidate.)
+
 5. **`classification.label` must be consistent with `iss_state`** per
-   Section 2.4:
+   Section 2.4 (round-76 amended):
    - `ISS_one` → `REJECT`
    - `ISS_both` → `ALLOW`
-   - `ISS_neither` → `ALLOW`
+   - `REDUNDANT_SUPPORT` → `ALLOW`
    - `UNSUPPORTED` → `NOT_ADJUDICATED_BY_B2`
 
 6. **`span_text` must be the verbatim substring of the cited source at
@@ -1040,19 +1112,26 @@ A frozen schema ensures:
 - The double-adjudication protocol (Section 3.6) receives a uniform
   input format.
 - The downstream Gate B adjudicator receives a uniform handoff format
-  (preserving the `ISS_neither` / `UNSUPPORTED` distinction end-to-end,
-  per Section 8.5).
+  (preserving the four-state ontology — `ISS_one` / `ISS_both` /
+  `REDUNDANT_SUPPORT` / `UNSUPPORTED` — end-to-end, per Section 8.5).
 
 #### 3.7.4 Schema versioning
 
-This schema is frozen at version `b2-trace-v1`. Any future revision
-requires a new version number, a new adjudication cycle, and
-re-verification of all held-out results against the new schema. The
-schema version is recorded in the trace:
+This schema is frozen at version `b2-trace-v2` (round-76). The version
+was bumped from `b2-trace-v1` (round-75) to `b2-trace-v2` because the
+`iss_state` enum changed: `ISS_neither` was removed and
+`REDUNDANT_SUPPORT` was added. This is a breaking schema change; traces
+produced under `b2-trace-v1` are NOT valid under `b2-trace-v2` (and
+vice versa), because the `iss_state` field may contain a value that the
+other schema version does not recognize.
+
+Any future revision requires a new version number, a new adjudication
+cycle, and re-verification of all held-out results against the new
+schema. The schema version is recorded in the trace:
 
 ```json
 {
-  "schema_version": "b2-trace-v1",
+  "schema_version": "b2-trace-v2",
   ...
 }
 ```
@@ -1453,8 +1532,12 @@ Protocol B discrimination run.
 If the discrimination run produces a positive result (engine arm
 outperforms null arm), the result is **scientific evidence** that the
 engine performs cross-source discovery — provided the detector has been
-adjudicated per this spec AND the `ISS_neither` candidates are reported
-separately from `ISS_both` candidates (Section 8.5).
+adjudicated per this spec AND the `REDUNDANT_SUPPORT` candidates are
+reported separately from `ISS_both` candidates (Section 8.5). A
+positive run driven by `ISS_both` candidates is evidence of cross-source
+synthesis; a positive run driven by `REDUNDANT_SUPPORT` candidates is
+evidence of redundant candidate generation (both sources independently
+support the same candidates), which is scientifically weaker.
 
 If the discrimination run produces a null result, the result is evidence
 that the engine does NOT perform cross-source discovery, OR that the
@@ -1508,40 +1591,50 @@ of discovery capability. Scientific evidence requires:
 Anything short of these three is engineering evidence, not scientific
 evidence.
 
-### 8.5 B-2 must remain a leakage instrument, NOT a novelty detector (round-74 condition 7; round-75 strengthened)
+### 8.5 B-2 must remain a leakage and support instrument, NOT a novelty detector (round-74 condition 7; round-75 strengthened; round-76 finalized)
 
-Per Section 2.7, B-2 evaluates leakage (does the candidate derive from one
-source alone?) AND support (does the candidate contain unsupported claims?),
-NOT discovery validity (is the candidate a good invention?). The two gates
-must remain distinct, AND the `ISS_neither` / `UNSUPPORTED` distinction
-(round-75) must be preserved end-to-end.
+Per Section 2.7, B-2 evaluates leakage (does the candidate derive from
+one source alone?) AND support (does the candidate contain unsupported
+claims?), NOT discovery validity (is the candidate a good invention?).
+The two gates must remain distinct, AND the four-state ontology
+(`ISS_one` / `ISS_both` / `REDUNDANT_SUPPORT` / `UNSUPPORTED`) must be
+preserved end-to-end.
 
 Anti-regression safeguards:
 
-- The B-2 criterion must NOT be expanded to include novelty evaluation. Any
-  proposal to add "REJECT if `ISS_neither` because the candidate is
-  nonsense" is scope creep and must be rejected by the auditor.
-- The B-2 criterion must NOT collapse `UNSUPPORTED` back into `ISS_neither`.
-  Any proposal to "ALLOW unsupported candidates because they're novel" is
-  a re-opening of the round-75 loophole and must be rejected by the
+- The B-2 criterion must NOT be expanded to include novelty evaluation.
+  Any proposal to add "REJECT if `REDUNDANT_SUPPORT` because the
+  candidate is not novel" is scope creep and must be rejected by the
+  auditor. B-2 does not adjudicate novelty; Gate B does.
+- The B-2 criterion must NOT collapse `UNSUPPORTED` into an ALLOW state.
+  Any proposal to "ALLOW unsupported candidates because they're novel"
+  is a re-opening of the round-75 loophole and must be rejected by the
   auditor. `UNSUPPORTED` candidates are forwarded to Gate B as
   `NOT_ADJUDICATED_BY_B2`, NOT ALLOWED.
-- The B-2 trace's `iss_state` field (Section 3.7.1) must be preserved
-  end-to-end and forwarded to the downstream Gate B adjudicator. The
-  downstream gate must receive the full classification
-  (`ISS_one` / `ISS_both` / `ISS_neither` / `UNSUPPORTED`), NOT just the
-  B-2 label (`REJECT` / `ALLOW` / `NOT_ADJUDICATED_BY_B2`).
-- The Protocol B discrimination run must report `ISS_neither` candidates
-  and `UNSUPPORTED` candidates separately from `ISS_both` candidates. A
-  positive discrimination run driven entirely by `ISS_neither` candidates
-  (i.e. candidates that pass B-2 because they are genuinely novel relative
-  to the sources) is scientifically different from one driven by
-  `ISS_both` candidates (i.e. candidates that pass B-2 because they
-  perform cross-source synthesis). The former is evidence of novel
-  candidate generation; the latter is evidence of cross-source discovery.
-  A positive run driven by `UNSUPPORTED` candidates (which should NOT
-  happen, since they are `NOT_ADJUDICATED_BY_B2`) would indicate a B-2
-  implementation bug.
+- The B-2 criterion must NOT re-introduce the non-constructible
+  `ISS_neither` state (round-76 elimination). Any proposal to add a
+  fifth state for "jointly necessary but not independently attributable"
+  must be rejected — under the span-map definition of `Justified()`,
+  that category IS `ISS_both`, not a separate state. See Section 2.1
+  for the mathematical derivation.
+- The B-2 trace's `iss_state` field (Section 3.7.1, schema
+  `b2-trace-v2`) must be preserved end-to-end and forwarded to the
+  downstream Gate B adjudicator. The downstream gate must receive the
+  full classification (`ISS_one` / `ISS_both` / `REDUNDANT_SUPPORT` /
+  `UNSUPPORTED`), NOT just the B-2 label (`REJECT` / `ALLOW` /
+  `NOT_ADJUDICATED_BY_B2`).
+- The Protocol B discrimination run must report `REDUNDANT_SUPPORT`
+  candidates and `UNSUPPORTED` candidates separately from `ISS_both`
+  candidates. A positive discrimination run driven entirely by
+  `REDUNDANT_SUPPORT` candidates (i.e. candidates that pass B-2 because
+  both sources independently justify them) is scientifically different
+  from one driven by `ISS_both` candidates (i.e. candidates that pass
+  B-2 because they perform cross-source synthesis with unique
+  contributions from both sources). The former is evidence of redundant
+  candidate generation; the latter is evidence of cross-source
+  discovery. A positive run driven by `UNSUPPORTED` candidates (which
+  should NOT happen, since they are `NOT_ADJUDICATED_BY_B2`) would
+  indicate a B-2 implementation bug.
 
 ### 8.6 LLM instrument drift invalidates downstream results (round-74 condition 3)
 
@@ -1599,15 +1692,17 @@ categories' failures are more catastrophic).
 
 ### 9.2 Justification trace format — RESOLVED (round-75)
 
-**Resolved (round-75):** The concrete JSON schema is now frozen at
-Section 3.7. All implementations must produce traces matching the
-`b2-trace-v1` schema (Section 3.7.1, 3.7.2). Free-text traces are not
-acceptable. The schema includes: `candidate`, `atoms[]` (with
-`atom_id`, `claim`, `source_support[]`), `counterfactuals[]` (with
-`removed_source`, `unsupported_atoms[]`, `justified_without_source`),
-and `classification` (with `justified_by_corpus`, `iss_a`, `iss_b`,
+**Resolved (round-75, updated round-76):** The concrete JSON schema is
+now frozen at Section 3.7. All implementations must produce traces
+matching the `b2-trace-v2` schema (Section 3.7.1, 3.7.2; round-76
+bumped from v1 due to `iss_state` enum change: `ISS_neither` removed,
+`REDUNDANT_SUPPORT` added). Free-text traces are not acceptable. The
+schema includes: `candidate`, `atoms[]` (with `atom_id`, `claim`,
+`source_support[]`), `counterfactuals[]` (with `removed_source`,
+`unsupported_atoms[]`, `justified_without_source`), and
+`classification` (with `justified_by_corpus`, `iss_a`, `iss_b`,
 `iss_state`, `label`). Schema versioning is via the `schema_version`
-field (currently `b2-trace-v1`).
+field (currently `b2-trace-v2`).
 
 ### 9.3 LLM-based implementation — RESOLVED (round-74)
 
@@ -1687,20 +1782,23 @@ are additional operational tests required (e.g. inter-annotator agreement
 on span maps, a formal claim taxonomy, an ontology of permitted inference
 types)?
 
-### 9.9 NEW (round-74) — B-2 / Gate B boundary preservation — PARTIALLY RESOLVED (round-75)
+### 9.9 B-2 / Gate B boundary preservation — RESOLVED (round-76)
 
-Section 2.7 and Section 8.5 specify that B-2 must remain a leakage
-instrument and must not absorb Gate B's discovery-validity
-responsibilities. The round-75 amendment strengthened this by separating
-`UNSUPPORTED` from `ISS_neither` (Section 2.1, 2.4) and by requiring the
-full `iss_state` to be preserved end-to-end in the trace (Section 3.7,
-8.5).
+Section 2.7 and Section 8.5 specify that B-2 must remain a leakage and
+support instrument and must not absorb Gate B's discovery-validity
+responsibilities. The round-75 amendment strengthened this by
+separating `UNSUPPORTED` from the (now-eliminated) `ISS_neither`. The
+round-76 amendment finalized this by eliminating the non-constructible
+`ISS_neither` state entirely and replacing it with `REDUNDANT_SUPPORT`,
+producing a clean four-state ontology (`ISS_one` / `ISS_both` /
+`REDUNDANT_SUPPORT` / `UNSUPPORTED`).
 
-**Resolved (round-75):** The `ISS_neither` / `UNSUPPORTED` distinction is
-now explicit in the decision criterion (Section 2.4), the trace schema
-(Section 3.7.1 `classification.iss_state`), and the anti-regression
-safeguards (Section 8.5). The downstream Gate B adjudicator receives the
-full `iss_state`, not just the B-2 label.
+**Resolved (round-76):** The four-state ontology is explicit in the
+decision criterion (Section 2.4), the trace schema (Section 3.7.1,
+`b2-trace-v2`, `classification.iss_state`), and the anti-regression
+safeguards (Section 8.5). The downstream Gate B adjudicator receives
+the full `iss_state`, not just the B-2 label. B-2 never adjudicates
+novelty (Section 2.7).
 
 **Remaining question:** Is the Section 8.5 safeguard ("the B-2 trace's
 `iss_state` field must be preserved end-to-end and forwarded to the
@@ -1709,7 +1807,7 @@ prescribe a concrete Gate B handoff format (i.e. the JSON schema that
 Gate B receives)? The auditor may direct that a Gate B handoff schema
 be added before implementation.
 
-### 9.10 NEW (round-75) — Double-adjudicator qualification
+### 9.10 Double-adjudicator qualification (round-75, retained)
 
 Section 3.6 introduces a double-adjudication protocol with a ≥ 80% raw
 agreement threshold. The auditor must adjudicate whether this threshold
@@ -1721,26 +1819,22 @@ too ambiguous) or should the protocol be strengthened (e.g. triple
 adjudication, or a formal ontology of permitted inferences)? The auditor
 may direct a different threshold or protocol.
 
-### 9.11 NEW (round-75) — ADV-09 reclassification and the "genuinely novel" control category
+### 9.11 RESOLVED (round-76) — formerly "true ISS_neither control category"
 
-The round-75 amendment reclassifies ADV-09 (`quantum entanglement`) from
-`ISS_neither → ALLOW` to `UNSUPPORTED → NOT_ADJUDICATED_BY_B2` (Section
-2.5 note). This means the original "clean bridge, no overlap → ALLOW"
-control no longer tests what it was designed to test. The held-out set
-must include a new "genuinely novel relative to sources" (true
-`ISS_neither`) control category — candidates whose atomic claims ARE all
-supported by the combined corpus `{A, B}` but whose support is
-distributed such that removing either source leaves the candidate
-unjustified.
+**Resolved (round-76):** the round-75 open question 9.11 asked whether
+the "true `ISS_neither`" control category was constructible. The
+round-76 verdict established that `ISS_neither` (as defined in
+round-75) was **non-constructible** under the span-map definition of
+`Justified()` — it was mathematically equivalent to `REDUNDANT_SUPPORT`,
+not to "jointly necessary but not independently attributable" (which is
+`ISS_both`). The round-76 amendment eliminates `ISS_neither` and
+replaces it with `REDUNDANT_SUPPORT`, which IS constructible: a
+candidate whose atomic claims all have supporting spans in Source A AND
+all have supporting spans in Source B independently.
 
-**Question:** Is the description of the true `ISS_neither` control
-category (Section 2.5 note + Section 3.2 sub-categories) precise
-enough for the auditor to construct such cases? Constructing a
-candidate that is justified by `{A, B}` but not by `{A}` alone or
-`{B}` alone requires careful design — the candidate must use content
-from both sources jointly (not just union). The auditor may direct
-that the spec provide a concrete construction recipe or worked
-example for this category.
+The held-out set (Section 3.2) now requires at least 2
+`REDUNDANT_SUPPORT` cases (instead of the non-constructible "true
+`ISS_neither`" cases). No open question remains on this topic.
 
 ---
 
@@ -1776,11 +1870,12 @@ R5.1 design revision document.
 ## 11. Status
 
 ```text
-Spec status:                    AMENDED (round-75) — FROZEN FOR RE-ADJUDICATION
+Spec status:                    AMENDED (round-76) — FROZEN FOR RE-ADJUDICATION
 Original freeze:                commit 8a84fdc, 2026-08-09 (round-73)
 First amended freeze:           commit 4bc945d, 2026-08-10 (round-74)
-Second amended freeze:          this revision, 2026-08-10 (round-75)
-Implementation status:          NOT STARTED — blocked on round-75 re-adjudication
+Second amended freeze:          commit 3076d3a, 2026-08-10 (round-75)
+Third amended freeze:           this revision, 2026-08-10 (round-76)
+Implementation status:          NOT STARTED — blocked on round-76 re-adjudication
 Production substrate status:    UNCHANGED — no modifications made
 Protocol B status:              BLOCKED — blocked on implementation freeze + final
                                 independent adjudication (Section 7.7)
@@ -1789,6 +1884,9 @@ Lexical detector status:        FROZEN at commit 20ac268 — no re-tuning
 Adversarial v2 diagnostic:      6/13 mismatches (3/9 adversarial matches)
                                 — canonical evidence that lexical detector
                                 does NOT solve paraphrase leakage
+Trace schema version:           b2-trace-v2 (round-76; bumped from v1 due
+                                to iss_state enum change: ISS_neither removed,
+                                REDUNDANT_SUPPORT added)
 
 Round-74 conditions resolved (commit 4bc945d):
   1. Operational Justified()          — new Section 2.6
@@ -1800,31 +1898,38 @@ Round-74 conditions resolved (commit 4bc945d):
   7. B-2 vs discovery separation      — new Section 2.7 + Section 8.5
   +  Wording correction               — Sections 1.1, 1.5, 6
 
-Round-75 conditions resolved (this revision):
+Round-75 conditions resolved (commit 3076d3a):
   1. Separate UNSUPPORTED from ISS_neither
-     — Section 2.1 (new UNSUPPORTED definition, ISS_neither now requires
-       Justified(c,{A,B}) as precondition)
-     — Section 2.4 (decision criterion adds UNSUPPORTED →
-       NOT_ADJUDICATED_BY_B2)
-     — Section 2.5 (ADV-14 illustrative example; ADV-09 reclassified)
-     — Section 2.6.2 (loophole text fixed)
-     — Section 2.7 (strengthened: UNSUPPORTED forwarded to Gate B)
-     — Section 8.5 (preserved end-to-end via iss_state in trace)
-  2. Independent double-adjudication
-     — new Section 3.6 (two adjudicators, blind to detector label,
-       disagreement resolution, raw agreement reporting, ≥80% threshold)
-  3. Freeze concrete trace JSON schema
-     — new Section 3.7 (b2-trace-v1 schema: candidate, atoms[],
-       counterfactuals[], classification; no free-form variation)
-  +  Section 5.1 refinement: public-vs-held-out drop is audit trigger,
-     NOT proof of tuning
+  2. Independent double-adjudication  — new Section 3.6
+  3. Freeze concrete trace JSON schema — new Section 3.7 (b2-trace-v1)
+  +  Section 5.1 refinement: audit trigger, not proof of tuning
 
-Round-75 consequence:
-  ADV-09 (quantum entanglement) reclassified from ISS_neither → ALLOW
-  to UNSUPPORTED → NOT_ADJUDICATED_BY_B2. Original "clean bridge" control
-  no longer tests what it was designed to test. Held-out set must include
-  a new "genuinely novel relative to sources" (true ISS_neither) control
-  category. See Section 2.5 note and open question 9.11.
+Round-76 condition resolved (this revision):
+  1. Eliminate non-constructible ISS_neither; replace with REDUNDANT_SUPPORT
+     — Section 2.1 (ISS_neither removed; REDUNDANT_SUPPORT defined;
+       four-state ontology table added)
+     — Section 2.4 (decision criterion: REDUNDANT_SUPPORT → ALLOW,
+       reported separately)
+     — Section 2.5 (note on REDUNDANT_SUPPORT construction; note on
+       removed ISS_neither state)
+     — Section 2.6.2 (loophole history updated for round-76)
+     — Section 2.7 (four-state ontology; B-2 never adjudicates novelty)
+     — Section 3.2 (held-out sub-categories: REDUNDANT_SUPPORT and
+       UNSUPPORTED categories added, each >=2 cases required)
+     — Section 3.7 (schema bumped to b2-trace-v2; iss_state enum
+       updated; consistency rules updated)
+     — Section 8.5 (anti-regression: four-state ontology preserved
+       end-to-end; re-introduction of ISS_neither is regression)
+     — Section 9.9 (RESOLVED), Section 9.11 (RESOLVED — formerly
+       "true ISS_neither control category," now moot)
+
+Four-state ontology (round-76, final):
+  ISS_one            → REJECT                  (source-local leakage)
+  ISS_both           → ALLOW                   (cross-source synthesis)
+  REDUNDANT_SUPPORT  → ALLOW (reported separately) (both sources independently justify)
+  UNSUPPORTED        → NOT_ADJUDICATED_BY_B2   (forwarded to Gate B)
+
+  B-2 never adjudicates novelty. That responsibility stays with Gate B.
 
 Open questions remaining for auditor:
   9.1  catastrophic-failure definition refinement
@@ -1832,21 +1937,23 @@ Open questions remaining for auditor:
   9.4  N for majority vote (5 vs 10)
   9.7  re-freeze criteria (proposed default in Section 9.7)
   9.8  operational Justified() adequacy
-  9.9  B-2 / Gate B boundary preservation — PARTIALLY RESOLVED (round-75):
+  9.9  B-2 / Gate B boundary preservation — RESOLVED (round-76):
        remaining question is whether a concrete Gate B handoff schema
        is needed
-  9.10 double-adjudicator qualification (NEW, round-75): is ≥80% raw
-       agreement the right threshold?
-  9.11 ADV-09 reclassification and the "genuinely novel" control category
-       (NEW, round-75): is the description precise enough for the auditor
-       to construct true ISS_neither cases?
+  9.10 double-adjudicator qualification: is ≥80% raw agreement the
+       right threshold?
+  9.11 RESOLVED (round-76) — formerly "true ISS_neither control category,"
+       now moot (ISS_neither eliminated; REDUNDANT_SUPPORT is constructible)
 ```
 
 This amended spec is now awaiting the auditor's re-adjudication per
 Section 7.2. No implementation work may begin until the auditor accepts
 the amended spec (unconditionally or with conditions).
 
-Per the round-75 verdict: "This is the last specification-level barrier
-I see before we should stop designing and start testing." If the auditor
-accepts this round-75 amended spec, the workflow proceeds to held-out
-set construction (Section 7.3) and implementation (Section 7.4).
+Per the round-76 verdict: "Once that one conceptual correction is frozen
+and re-adjudicated, I would consider the specification ready to leave
+the design phase. At that point, the next work should be held-out
+construction and implementation — not another architecture round." If
+the auditor accepts this round-76 amended spec, the workflow proceeds
+to held-out set construction (Section 7.3) and implementation
+(Section 7.4).
