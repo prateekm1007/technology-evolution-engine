@@ -396,22 +396,42 @@ def _to_rational(x):
 def _exact_less_than(a, b):
     """Return True if a < b using EXACT algebraic comparison.
 
-    Uses sympy's exact algebraic number comparison. If the exact
-    comparison is inconclusive (returns None), falls back to
-    high-precision (50-digit) numerical comparison.
+    FAIL-CLOSED: if sympy cannot establish the sign of (a - b)
+    exactly, this function RAISES AssertionError rather than
+    falling back to numerical comparison. This guarantees that the
+    authoritative extremum-selection path contains NO numerical
+    approximation — the decision of which candidate wins is always
+    made by exact algebraic reasoning.
 
-    This is used to compare power values at candidate points
-    (endpoints and isolated stationary roots) without any floating-
-    point approximation in the comparison step.
+    Per audit round 40: a 50-digit numerical fallback was removed
+    because it would silently decide the ordering using floating-
+    point when exact comparison was inconclusive, contradicting the
+    artifact's claim of exact algebraic extremum selection. The
+    fail-closed design is consistent with the governance philosophy
+    (P6: fail closed) established throughout this audit.
+
+    If this function raises in practice, it means sympy's exact
+    algebraic comparison is insufficient for the specific candidate
+    values — the correct response is to investigate WHY and either
+    simplify the expressions or use a stronger exact method, NOT to
+    silently fall back to numerical comparison.
     """
     diff = simplify(a - b)  # a < b iff (a - b) < 0
     if diff.is_negative is True:
         return True
     if diff.is_negative is False:
         return False
-    # Fallback: high-precision numerical comparison.
-    diff_num = float(sympy_N(diff, 50))
-    return diff_num < 0
+    # FAIL-CLOSED: refuse to decide using numerical approximation.
+    raise AssertionError(
+        f"Exact algebraic comparison was inconclusive for "
+        f"a={a!r} vs b={b!r}. The simplified difference "
+        f"(a - b) = {diff!r} has is_negative=None, meaning sympy "
+        f"cannot prove the sign. Refusing numerical fallback — "
+        f"the authoritative extremum-selection path must use exact "
+        f"algebraic comparison only. Investigate why the expressions "
+        f"are not comparable and simplify them or use a stronger "
+        f"exact method."
+    )
 
 
 def power_polynomial_exact(pe, pr):

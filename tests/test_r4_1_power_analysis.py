@@ -1327,3 +1327,96 @@ class TestFormalRootIsolation:
                 f"Extremum evaluation method is NUMPY for pe={row['pe']}, "
                 f"pr={row['pr']} — should be EXACT_ALGEBRAIC"
             )
+
+    # -----------------------------------------------------------------
+    # FAIL-CLOSED COMPARISON (audit round 40)
+    # The auditor found that _exact_less_than had a 50-digit numerical
+    # fallback when sympy's is_negative returned None. This means the
+    # comparison was NOT guaranteed exact in all cases. The fix:
+    # fail-closed — raise AssertionError instead of falling back.
+    # -----------------------------------------------------------------
+
+    def test_exact_less_than_raises_on_inconclusive_comparison(self):
+        """When sympy cannot establish the sign of (a - b), the
+        _exact_less_than function must RAISE AssertionError rather
+        than falling back to numerical comparison.
+
+        This is the fail-closed invariant: the authoritative extremum-
+        selection path must never use numerical approximation to decide
+        which candidate wins.
+
+        We test this by constructing a mock object that returns
+        is_negative=None, simulating sympy's inability to determine
+        the sign."""
+        from unittest.mock import MagicMock, patch
+        from sympy import Symbol
+
+        # Create two sympy expressions that we'll mock as inconclusive.
+        a = Symbol('a')
+        b = Symbol('b')
+
+        # Mock simplify to return an object with is_negative=None.
+        mock_diff = MagicMock()
+        mock_diff.is_negative = None  # inconclusive
+        mock_diff.__repr__ = lambda self: "MockInconclusiveDiff"
+
+        with patch.object(r4_1, 'simplify', return_value=mock_diff):
+            with pytest.raises(AssertionError, match="inconclusive"):
+                r4_1._exact_less_than(a, b)
+
+    def test_exact_less_than_no_numerical_fallback_in_source(self):
+        """The _exact_less_than source code must NOT contain any
+        numerical fallback (no sympy_N call, no float() conversion
+        for comparison decisions). This is a static check that
+        prevents the fallback from being reintroduced."""
+        import inspect
+        source = inspect.getsource(r4_1._exact_less_than)
+        # The function must NOT call sympy_N (numerical evaluation).
+        assert "sympy_N" not in source, (
+            "_exact_less_than contains sympy_N call — numerical "
+            "fallback was reintroduced"
+        )
+        # The function must NOT convert to float for comparison.
+        # (float() for reporting in other functions is fine, but not
+        # in the comparison logic itself.)
+        assert "float(" not in source.replace("float('-inf')", ""), (
+            "_exact_less_than contains float() conversion — numerical "
+            "fallback was reintroduced"
+        )
+        # The function must raise AssertionError on inconclusive.
+        assert "AssertionError" in source, (
+            "_exact_less_than must raise AssertionError on "
+            "inconclusive comparison (fail-closed)"
+        )
+
+    @pytest.mark.parametrize("pe,pr", r4_1.POWER_SCENARIOS + r4_1.TYPE_I_SCENARIOS)
+    def test_all_scenario_comparisons_succeed_exactly(self, pe, pr):
+        """For every scenario, the extremum selection must succeed
+        using EXACT algebraic comparison — no fail-closed assertion
+        is triggered. This verifies that sympy can establish the
+        sign for all actual candidate values in the power analysis.
+
+        If this test fails, it means sympy's exact comparison is
+        insufficient for some scenario, and the expressions need to
+        be simplified or a stronger exact method is needed."""
+        # This should not raise.
+        certified = r4_1.certified_global_extrema(pe, pr)
+        # Verify the result is valid.
+        assert certified["extremum_evaluation_method"] == "EXACT_ALGEBRAIC"
+        assert certified["power_min"] <= certified["power_max"] + 1e-15
+
+    def test_artifact_extremum_selection_is_exact(self):
+        """The committed JSON must record that extremum selection used
+        exact algebraic comparison with NO numerical fallback. The
+        extremum_evaluation_method must be EXACT_ALGEBRAIC, and the
+        artifact must not mention any numerical fallback."""
+        committed = json.loads(OUTPUT.read_text())
+        for row in committed["power_scenarios"]:
+            assert row["extremum_evaluation_method"] == "EXACT_ALGEBRAIC"
+        # Check the parameters section for any mention of fallback.
+        params = committed.get("parameters", {})
+        eval_method = params.get("extremum_evaluation_method", "")
+        assert "fallback" not in eval_method.lower(), (
+            "Artifact mentions 'fallback' in extremum_evaluation_method — "
+            "the fail-closed design should have no fallback"
+        )
