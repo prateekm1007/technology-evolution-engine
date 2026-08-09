@@ -1,16 +1,18 @@
 # B-2 REPAIR SPECIFICATION — Independent Semantic Support
 
-**Status:** AMENDED SPEC (round-76) — FROZEN FOR RE-ADJUDICATION
+**Status:** AMENDED SPEC (round-77) — FROZEN FOR RE-ADJUDICATION
 **Original freeze:** 2026-08-09 (commit `8a84fdc`, round-73)
 **First amended freeze:** 2026-08-10 (commit `4bc945d`, round-74)
 **Second amended freeze:** 2026-08-10 (commit `3076d3a`, round-75)
-**Third amended freeze:** 2026-08-10 (this revision, round-76)
+**Third amended freeze:** 2026-08-10 (commit `9b4d843`, round-76)
+**Fourth amended freeze:** 2026-08-10 (this revision, round-77)
 **Frozen by:** protocol-B implementer (this agent)
-**Adjudication status:** Round-75 verdict ACCEPT WITH CONDITIONS →
-round-76 verdict REJECT WITH ONE MANDATORY CONDITION. This third amended
-revision resolves the round-76 condition (eliminate non-constructible
-`ISS_neither`, replace with `REDUNDANT_SUPPORT`). Awaiting re-adjudication
-before any implementation work may begin.
+**Adjudication status:** Round-76 verdict REJECT WITH ONE MANDATORY
+CONDITION → round-77 verdict REJECT WITH ONE MANDATORY CONDITION. This
+fourth amended revision resolves the round-77 condition (add
+`JOINT_CROSS_SOURCE` support to represent cross-source synthesis
+relations). Awaiting re-adjudication before any implementation work
+may begin.
 
 **Supersedes:** The lexical detector at commit `20ac268`
 (`b1_b2_verification._check_leakage`). That detector's 6/6 result on the
@@ -22,12 +24,9 @@ solved.
 round-73 verdict, which adjudicated the B-2 v2 adversarial diagnostic
 (6/13 mismatches across three semantic failure modes) and directed that a
 repair specification be drafted and independently adjudicated before any
-implementation work begins. The round-74 verdict (ACCEPT WITH CONDITIONS)
-directed the first amendment (7 conditions + wording correction). The
-round-75 verdict (ACCEPT WITH CONDITIONS) directed the second amendment
-(3 conditions + 1 refinement). The round-76 verdict (REJECT WITH ONE
-MANDATORY CONDITION) directed this third amendment (eliminate
-non-constructible `ISS_neither`).
+implementation work begins. Subsequent verdicts (round-74 through
+round-77) each directed amendments to resolve specific defects. This
+fourth amended revision resolves the round-77 condition.
 
 **Adjudication history:**
 
@@ -36,34 +35,52 @@ non-constructible `ISS_neither`).
 | 73 | — | Spec drafted and frozen at commit `8a84fdc` |
 | 74 | ACCEPT WITH CONDITIONS | First amended revision (commit `4bc945d`) resolves 7 conditions + wording correction |
 | 75 | ACCEPT WITH CONDITIONS | Second amended revision (commit `3076d3a`) resolves 3 conditions + Section 5.1 refinement |
-| 76 | REJECT WITH ONE MANDATORY CONDITION | This third amended revision eliminates non-constructible `ISS_neither`, replaces with `REDUNDANT_SUPPORT` |
-| 77+ | PENDING | Re-adjudication by external auditor |
+| 76 | REJECT WITH ONE MANDATORY CONDITION | Third amended revision (commit `9b4d843`) eliminates non-constructible `ISS_neither`, replaces with `REDUNDANT_SUPPORT` |
+| 77 | REJECT WITH ONE MANDATORY CONDITION | This fourth amended revision adds `JOINT_CROSS_SOURCE` support to represent cross-source synthesis relations |
+| 78+ | PENDING | Re-adjudication by external auditor |
 
-**Round-76 condition resolved by this amendment:**
+**Round-77 condition resolved by this amendment:**
 
-1. **Eliminate non-constructible `ISS_neither`; replace with
-   `REDUNDANT_SUPPORT`** (Section 2.1, 2.4, 2.5, 2.7, 3.2, 3.7, 8.5).
+1. **Add `JOINT_CROSS_SOURCE` support mechanism** (Section 2.6.2,
+   2.6.3, 2.6.4, 2.6.5, 2.6.6, 2.6.7; Section 2.7; Section 3.7).
 
-   The round-75 amendment defined `ISS_neither` as
-   `Justified(c,{A,B}) AND NOT ISS_A AND NOT ISS_B` and described it as
-   "genuinely novel relative to the sources, requiring both sources'
-   combined context but not attributable to either source alone." But
-   under the operational `Justified()` definition (span-mapped to
-   individual sources), `NOT ISS_A` means "removing A does NOT make the
-   candidate unjustified" → B alone is sufficient. `NOT ISS_B` means A
-   alone is sufficient. So `ISS_neither` was mathematically equivalent
-   to "both sources independently justify the candidate" — i.e.
-   **redundant support**, not "jointly necessary." The "true ISS_neither"
-   category was non-constructible, which would make the held-out set
-   requirement impossible to satisfy honestly.
+   The round-76 spec defined `Justified()` via span-mapped evidence
+   where each atomic claim must have a supporting span in Source A or
+   Source B individually. But cross-source synthesis relations (e.g.
+   `enzyme_templates_mineral_deposition`) are not asserted by either
+   source alone — they emerge from the combination. Under the
+   round-76 spec, these relation atoms would be misclassified as
+   `UNSUPPORTED`, systematically suppressing the very discoveries the
+   engine is supposed to find.
 
-   The round-76 amendment adopts the auditor's Option A: eliminate
-   `ISS_neither` as a B-2 state; replace with `REDUNDANT_SUPPORT`
-   (both sources independently justify the candidate). B-2 becomes a
-   clean 4-state instrument: `ISS_one` (REJECT), `ISS_both` (ALLOW),
-   `REDUNDANT_SUPPORT` (ALLOW, reported separately), `UNSUPPORTED`
-   (NOT_ADJUDICATED_BY_B2). B-2 never has to decide whether something
-   is "novel" — that responsibility stays with the discovery gates.
+   The round-77 amendment adds a second support type,
+   `JOINT_CROSS_SOURCE`, alongside the existing `SOURCE_LOCAL` type.
+   A `JOINT_CROSS_SOURCE` support entry contains: `source_a_spans`,
+   `source_b_spans`, `derived_claim`, `inference_rule`,
+   `counterfactual_a`, `counterfactual_b`. It represents a claim
+   derived from combining evidence from both sources under a stated
+   inference rule, where neither source independently asserts the
+   claim.
+
+   The amendment includes five mandatory anti-cheating conditions
+   (Section 2.6.7) to prevent the detector from manufacturing
+   plausible "A + B = invention" explanations: (1) A genuinely
+   supports its component, (2) B genuinely supports its component,
+   (3) the derived claim follows from the combination under the
+   stated inference rule, (4) neither source alone supports the
+   complete relation, (5) removing either source destroys the
+   justification.
+
+   The schema is bumped to `b2-trace-v3` (breaking change:
+   `source_support` structure changed to support both `SOURCE_LOCAL`
+   and `JOINT_CROSS_SOURCE` entry types).
+
+   The B-2 / Gate B boundary is clarified: B-2 establishes
+   **provenance topology** (is the candidate source-local,
+   cross-source synthesis, redundant, or unsupported?); Gate B
+   establishes **discovery validity** (is the jointly-supported
+   relationship actually a valid mechanism?). B-2 does not evaluate
+   whether the `inference_rule` produces a "good" invention.
 
 ---
 
@@ -443,6 +460,40 @@ only change is that the `ISS_neither` state no longer exists as a
 target for any candidate. See Section 2.1 for the mathematical
 derivation of why `ISS_neither` was non-constructible.
 
+**Note on `JOINT_CROSS_SOURCE` support for cross-source synthesis cases
+(round-77, NEW):** the cross-source synthesis cases (ADV-03, ADV-04,
+ADV-07, ADV-08, ADV-11) each contain a relation atom that is not
+asserted by either source alone but emerges from their combination.
+Under the round-76 spec, these relation atoms would have been
+misclassified as `UNSUPPORTED` (the contradiction the round-77
+amendment resolves). Under the round-77 amended spec, these relation
+atoms are supported by `JOINT_CROSS_SOURCE` entries:
+
+- **ADV-03** `enzyme-templated mineral deposition`: the relation
+  `enzyme_templates_mineral_deposition` is supported by A-spans for
+  mineral deposition + B-spans for enzyme/silicatein, derived via the
+  inference rule "composition" (enzyme catalyst applied to mineral
+  deposition process).
+- **ADV-04** `silicatein-guided calcification`: the relation
+  `silicatein_guides_calcification` is supported by A-spans for
+  calcification + B-spans for silicatein, derived via "causal
+  attribution."
+- **ADV-07** `enzyme-templated inorganic lattice formation`: the
+  relation is supported by A-spans for inorganic lattice formation +
+  B-spans for enzyme-templating, derived via "composition."
+- **ADV-08** `protein-catalyzed biogenic oxide precipitation`: the
+  relation is supported by A-spans for biogenic oxide precipitation +
+  B-spans for protein catalysis, derived via "causal attribution."
+- **ADV-11** `biomineralization`: the relation
+  `biological_mineral_deposition` is supported by A-spans for bone
+  mineralization + B-spans for diatom silica shell formation, derived
+  via "abstraction" (both are instances of biologically-controlled
+  mineral deposition).
+
+The `inference_rule` values above ("composition," "causal attribution,"
+"abstraction") are illustrative, not prescriptive. The taxonomy of
+permitted inference rules is an open question (Section 9.12).
+
 ### 2.6 Operational definition of `Justified()` (round-74 condition 1)
 
 The counterfactual definition of ISS in Section 2.1 relies on a `Justified()`
@@ -474,80 +525,212 @@ that is materially incomplete (e.g. omits a key relation) or materially
 inflated (e.g. adds atoms not present in the candidate) is grounds for
 rejection of the trace.
 
-#### 2.6.2 Span-mapped evidence
+#### 2.6.2 Span-mapped evidence (round-77 amended: two support types)
 
 A candidate `c` is `Justified(c, corpus)` iff **every** atomic claim in
-`Atoms(c)` has a **supporting span** in the corpus.
+`Atoms(c)` has at least one **support entry** in the corpus.
 
-A **supporting span** for atomic claim `a` in source `S` is a contiguous
-substring of `S` that an independent adjudicator can identify as asserting
-`a` (either literally or via standard scientific inference — synonymy,
-hypernymy, or direct implication). The supporting span is recorded as a
-character-offset range `(start, end)` into `S`.
+A **support entry** is one of two types (round-77 amendment):
+
+**Type 1: `SOURCE_LOCAL` support.** A `SOURCE_LOCAL` support entry for
+atomic claim `a` in source `S` is a contiguous substring of `S` that an
+independent adjudicator can identify as asserting `a` (either literally
+or via standard scientific inference — synonymy, hypernymy, or direct
+implication). The supporting span is recorded as a character-offset
+range `(start, end)` into `S`.
+
+**Type 2: `JOINT_CROSS_SOURCE` support (round-77, NEW).** A
+`JOINT_CROSS_SOURCE` support entry for atomic claim `a` is a structured
+derivation in which:
+
+- one or more spans from Source A support a **component** `a_A`,
+- one or more spans from Source B support a **component** `a_B`,
+- the atomic claim `a` is the **derived claim** that follows from
+  combining `a_A` and `a_B` under a stated **inference rule**,
+- neither Source A alone nor Source B alone asserts `a`.
+
+`JOINT_CROSS_SOURCE` support is the mechanism that represents
+**cross-source synthesis relations** — the new relationships that emerge
+from combining capabilities in Source A and Source B, which neither
+source asserts independently. This is the type of support that
+distinguishes a genuine cross-source invention (which should be
+`ISS_both → ALLOW`) from a fabricated claim (which should be
+`UNSUPPORTED → NOT_ADJUDICATED_BY_B2`).
+
+**Why `JOINT_CROSS_SOURCE` is necessary (round-77 condition):**
+without it, the span-map definition of `Justified()` cannot represent
+the relation atom in a cross-source synthesis. For example, the
+candidate `enzyme-templated mineral deposition` has atoms:
+
+```
+a1 = {process: mineral_deposition}         → SOURCE_LOCAL(A)
+a2 = {mediator: enzyme_catalyst}           → SOURCE_LOCAL(B)
+a3 = {relation: enzyme_templates_mineral_deposition}  → ???
+```
+
+The relation `a3` is not asserted by Source A (which describes
+osteoblast-mediated mineralization, not enzyme-templated
+mineralization). It is not asserted by Source B (which describes
+silicatein-mediated silica precipitation, not mineral deposition).
+It is the new relationship created by combining the enzyme concept
+from Source B with the mineral deposition concept from Source A.
+
+Under the round-76 spec (without `JOINT_CROSS_SOURCE`), `a3` has no
+supporting span in either source → `UNSUPPORTED` →
+`NOT_ADJUDICATED_BY_B2`. But the candidate should be `ISS_both →
+ALLOW`. This is the contradiction the round-77 amendment resolves.
+
+With `JOINT_CROSS_SOURCE` support, `a3` is supported by:
+
+```
+source_a_spans: [spans supporting mineral_deposition]
+source_b_spans: [spans supporting enzyme_catalyst / silicatein]
+derived_claim: enzyme_templates_mineral_deposition
+inference_rule: composition (enzyme catalyst applied to mineral deposition process)
+```
+
+Neither source alone asserts the derived claim; both sources together
+support it via the stated inference rule.
+
+**Critical boundary (round-77):** `JOINT_CROSS_SOURCE` support is NOT
+a license for the detector to claim "the LLM thinks A and B together
+imply the relation." That would recreate the exact problem the prior
+rounds eliminated. `JOINT_CROSS_SOURCE` support is an **auditable
+structure** with mandatory fields and mandatory adjudicator
+verification (Section 2.6.7).
 
 Concretely, the detector's trace must include, for each atomic claim:
 
-- the claim itself (e.g. `{mediator: enzyme_catalyst}`),
-- the source it is mapped to (`A` or `B`),
-- the supporting span as a verbatim quote from that source,
-- the character offsets of the span in the source.
+- the claim itself (e.g. `{relation: enzyme_templates_mineral_deposition}`),
+- a list of support entries, each with:
+  - `support_type`: `SOURCE_LOCAL` or `JOINT_CROSS_SOURCE`
+  - for `SOURCE_LOCAL`: the source (`A` or `B`), the supporting span
+    as a verbatim quote, the character offsets `(start, end)`
+  - for `JOINT_CROSS_SOURCE`: the `source_a_spans`, `source_b_spans`,
+    `derived_claim`, `inference_rule`, `counterfactual_a`,
+    `counterfactual_b` (full structure in Section 2.6.7 and Section 3.7)
 
-A claim with no supporting span in either source is **unsupported**. A
-candidate with any unsupported atomic claim is `NOT Justified(c, {A, B})`,
-which (per Section 2.4, round-75 amended) places it in `UNSUPPORTED` and
-yields `NOT_ADJUDICATED_BY_B2` — the candidate is forwarded to Gate B
-for discovery adjudication, NOT allowed as a B-2 pass. The unsupported
-claims are reported in the trace (Section 3.3, element 4: counterfactual
-evaluation, "unsupported claims" set).
+A claim with no support entry of either type is **unsupported**. A
+candidate with any unsupported atomic claim is `NOT Justified(c,
+{A, B})`, which (per Section 2.4) places it in `UNSUPPORTED` and yields
+`NOT_ADJUDICATED_BY_B2` — the candidate is forwarded to Gate B for
+discovery adjudication, NOT allowed as a B-2 pass.
 
-**Critical (round-75 condition 1, round-76 finalized):** the round-74
-version of this section (commit `4bc945d`) said an unsupported candidate
-"places it in `ISS_neither` and yields ALLOW." That was the loophole the
-round-75 amendment closed by introducing `UNSUPPORTED` as a separate
-state. The round-75 amendment also introduced `ISS_neither` as a state
-for "justified by combined corpus but not attributable to either source
-alone" — but the round-76 verdict identified that this `ISS_neither`
-was mathematically equivalent to `REDUNDANT_SUPPORT` under the span-map
-definition of `Justified()`, and was therefore non-constructible as
-described. The round-76 amendment eliminates `ISS_neither` entirely and
-renames the state to `REDUNDANT_SUPPORT`. Under the current (round-76)
-criterion, an unsupported candidate is `UNSUPPORTED` (NOT
+**Critical (round-75 condition 1, round-76 finalized, round-77
+extended):** the round-74 version of this section (commit `4bc945d`)
+said an unsupported candidate "places it in `ISS_neither` and yields
+ALLOW." That was the loophole the round-75 amendment closed by
+introducing `UNSUPPORTED` as a separate state. The round-76 amendment
+eliminated the non-constructible `ISS_neither` and replaced it with
+`REDUNDANT_SUPPORT`. The round-77 amendment adds `JOINT_CROSS_SOURCE`
+support so that cross-source synthesis relations are representable
+(rather than being misclassified as `UNSUPPORTED`). Under the current
+(round-77) criterion, an unsupported candidate is `UNSUPPORTED` (NOT
 `REDUNDANT_SUPPORT`, NOT `ISS_both`, NOT `ISS_one`).
 
-#### 2.6.3 The counterfactual test, operationalized
+#### 2.6.3 The counterfactual test, operationalized (round-77 amended for joint support)
 
-With `Justified()` defined via span-mapped evidence, the counterfactual
-`NOT Justified(c, {A, B} \ {S})` becomes operationally testable:
+With `Justified()` defined via support entries (Section 2.6.2), the
+counterfactual `NOT Justified(c, {A, B} \ {S})` becomes operationally
+testable:
 
 > Remove source `S` from the corpus. Re-evaluate every atomic claim in
-> `Atoms(c)`. If any atomic claim that was previously supported by `S` now
-> has no supporting span in the remaining source, then `c` is NOT justified
-> by `{A, B} \ {S}` — i.e. `c` has independent semantic support from `S`.
+> `Atoms(c)`. For each atomic claim, check whether it still has at least
+> one support entry that survives the removal. A `SOURCE_LOCAL(S)`
+> entry is destroyed by removing `S`. A `SOURCE_LOCAL(other)` entry
+> survives. A `JOINT_CROSS_SOURCE` entry is destroyed by removing
+> **either** source (because joint support requires both). If any atomic
+> claim has no surviving support entry, then `c` is NOT justified by
+> `{A, B} \ {S}` — i.e. `c` has independent semantic support from `S`.
+
+**Support entry survival matrix (round-77):**
+
+| Support entry type | Remove A | Remove B |
+|--------------------|----------|----------|
+| `SOURCE_LOCAL(A)` | destroyed | survives |
+| `SOURCE_LOCAL(B)` | survives | destroyed |
+| `JOINT_CROSS_SOURCE` | destroyed | destroyed |
+
+An atomic claim is **unsupported without `S`** iff ALL of its support
+entries are destroyed by removing `S`. For example:
+
+- An atom with only `SOURCE_LOCAL(A)` support → unsupported without A,
+  supported without B.
+- An atom with only `JOINT_CROSS_SOURCE` support → unsupported without
+  A AND unsupported without B.
+- An atom with both `SOURCE_LOCAL(A)` and `SOURCE_LOCAL(B)` support →
+  supported without A (via B) AND supported without B (via A). This
+  atom contributes to `REDUNDANT_SUPPORT` classification.
+- An atom with `SOURCE_LOCAL(A)` and `JOINT_CROSS_SOURCE` support →
+  unsupported without A (both entries destroyed), supported without B
+  (via the local A entry).
 
 The detector's trace must include, for each source `S`:
 
-- the set of atomic claims supported by `S`,
+- the set of atomic claims supported by `S` (via `SOURCE_LOCAL(S)` or
+  `JOINT_CROSS_SOURCE`),
 - the set of atomic claims supported by the other source,
-- the set of atomic claims supported by neither source (unsupported),
+- the set of atomic claims that become unsupported when `S` is removed
+  (all support entries destroyed),
+- the set of atomic claims supported by neither source (unsupported
+  even with both sources present),
 - the counterfactual verdict: "removing `S` would leave claims {…}
   unsupported, therefore `c` is [NOT] justified by `{A,B}\{S}`."
 
-#### 2.6.4 Independent adjudication of the span map
+**Why this matters for `ISS_both` (round-77):** a candidate is `ISS_both`
+iff `Justified(c,{A,B})` is true AND removing A leaves it unjustified
+AND removing B leaves it unjustified. This requires at least one atomic
+claim that is unsupported without A, AND at least one atomic claim that
+is unsupported without B. `JOINT_CROSS_SOURCE` entries are the primary
+mechanism by which this happens for cross-source synthesis: the
+relation atom (e.g. `enzyme_templates_mineral_deposition`) is destroyed
+by removing either source, making the candidate `ISS_both`.
 
-The span map is the detector's **claimed** evidence. It is not proof. The
+#### 2.6.4 Independent adjudication of the support map (round-77 amended for joint support)
+
+The support map is the detector's **claimed** evidence. It is not proof. The
 auditor (or an independent adjudicator) must verify, for each atomic claim
 in a held-out case, that:
+
+**For `SOURCE_LOCAL` support entries:**
 
 1. The supporting span is actually present in the cited source at the cited
    offsets.
 2. The supporting span actually asserts the atomic claim (i.e. the
    claim-to-span mapping is semantically valid).
-3. No atomic claim has been silently dropped or fabricated.
 
-A trace whose span map fails verification on any atomic claim is rejected,
+**For `JOINT_CROSS_SOURCE` support entries (round-77, NEW):**
+
+3. The `source_a_spans` are actually present in Source A at the cited
+   offsets.
+4. The `source_b_spans` are actually present in Source B at the cited
+   offsets.
+5. Source A genuinely supports the A-component of the derivation (i.e.
+   the spans assert what the detector claims they assert).
+6. Source B genuinely supports the B-component of the derivation.
+7. The `derived_claim` actually follows from combining the A-component
+   and the B-component under the stated `inference_rule`. (The
+   adjudicator's judgment applies; the permitted inference rules are
+   an open question — see Section 9.12.)
+8. Neither Source A alone nor Source B alone asserts the `derived_claim`.
+   (If either source independently asserts the derived claim, the
+   support entry should be `SOURCE_LOCAL`, not `JOINT_CROSS_SOURCE`.)
+9. Removing either source destroys the justification (i.e. the
+   `counterfactual_a` and `counterfactual_b` fields correctly identify
+   the derived claim as unsupported without the respective source).
+
+**For all support entries:**
+
+10. No atomic claim has been silently dropped or fabricated.
+11. Every atomic claim has at least one support entry, OR is explicitly
+    listed as unsupported in the counterfactual evaluation.
+
+A trace whose support map fails verification on any atomic claim is rejected,
 regardless of the detector's label. This is the operational mechanism that
 prevents the detector from generating coherent false explanations
-(Section 3.5).
+(Section 3.5) — including false `JOINT_CROSS_SOURCE` derivations that
+manufacture a plausible "A + B = invention" explanation without genuine
+cross-source support.
 
 #### 2.6.5 What this rules out
 
@@ -562,6 +745,14 @@ This operational definition rules out:
   to a span that mentions `osteoblasts` but not enzymes) is rejected.
 - **Silent decomposition gaps.** A trace that omits an atomic claim to
   avoid an unsupported-claim flag is rejected.
+- **False `JOINT_CROSS_SOURCE` derivations (round-77, NEW).** A trace
+  that claims `JOINT_CROSS_SOURCE` support for a derived claim that
+  does not actually follow from the A and B components under the stated
+  inference rule is rejected. A trace that claims
+  `JOINT_CROSS_SOURCE` support when one of the sources independently
+  asserts the derived claim (i.e. it should be `SOURCE_LOCAL`) is
+  rejected. A trace that cites `JOINT_CROSS_SOURCE` support without
+  specifying the `inference_rule` is rejected.
 
 #### 2.6.6 What this does NOT rule out
 
@@ -570,47 +761,143 @@ This operational definition does not rule out:
 - **Synonymy and hypernymy in span mapping.** The supporting span may
   assert the atomic claim via synonymy (`skeletal` ↔ `bone`) or hypernymy
   (`enzyme` ↔ `silicatein`). The adjudicator's judgment applies.
-- **Multi-span support.** An atomic claim may be supported by the
-  conjunction of two spans in the same source (e.g. one span asserting
-  the substrate, another asserting the mediator). The trace must cite
-  both spans.
+- **Multi-span support within a single source.** An atomic claim may be
+  supported by the conjunction of two spans in the same source (e.g. one
+  span asserting the substrate, another asserting the mediator). The
+  trace must cite both spans. (This is a `SOURCE_LOCAL` entry with
+  multiple spans; the schema in Section 3.7 supports this via a list of
+  spans per support entry.)
 - **Inference from context.** An atomic claim may be supported by the
   source's overall context rather than a single sentence. The adjudicator's
   judgment applies, but the trace must still cite the specific spans that
   ground the inference.
+- **Cross-source synthesis relations (round-77, NEW).** An atomic claim
+  that represents a relationship emerging from the combination of Source
+  A and Source B (e.g. `enzyme_templates_mineral_deposition`) may be
+  supported by a `JOINT_CROSS_SOURCE` entry. This is the primary
+  mechanism for representing cross-source invention. The trace must
+  include the full joint-support structure (Section 2.6.7).
 
-### 2.7 B-2 is a leakage and support instrument, NOT a novelty detector (round-74 condition 7; round-75 strengthened; round-76 finalized)
+#### 2.6.7 `JOINT_CROSS_SOURCE` support structure and anti-cheating conditions (round-77, NEW)
 
-The B-2 decision criterion (Section 2.4, round-76 amended) has four
-states: `ISS_one` (REJECT), `ISS_both` (ALLOW), `REDUNDANT_SUPPORT`
-(ALLOW, reported separately), and `UNSUPPORTED` (NOT_ADJUDICATED_BY_B2).
+A `JOINT_CROSS_SOURCE` support entry must contain the following fields,
+all mandatory:
 
-B-2's job is to detect:
+```
+{
+  "support_type": "JOINT_CROSS_SOURCE",
+  "source_a_spans": [
+    { "span_text": "<verbatim substring of Source A>",
+      "start": <integer>,
+      "end": <integer> }
+  ],
+  "source_b_spans": [
+    { "span_text": "<verbatim substring of Source B>",
+      "start": <integer>,
+      "end": <integer> }
+  ],
+  "derived_claim": "<the atomic claim that follows from combining A and B>",
+  "inference_rule": "<the rule under which the derivation is valid>",
+  "counterfactual_a": "<why removing Source A leaves derived_claim unsupported>",
+  "counterfactual_b": "<why removing Source B leaves derived_claim unsupported>"
+}
+```
+
+**Mandatory anti-cheating conditions (round-77):**
+
+The adjudicator must verify ALL of the following for every
+`JOINT_CROSS_SOURCE` entry (per Section 2.6.4, items 3-9):
+
+1. **A genuinely supports its component.** The `source_a_spans` are
+   present in Source A at the cited offsets and assert what the detector
+   claims they assert.
+2. **B genuinely supports its component.** The `source_b_spans` are
+   present in Source B at the cited offsets and assert what the detector
+   claims they assert.
+3. **The derived claim actually follows from the combination.** The
+   `derived_claim` is a valid inference from the A-component and
+   B-component under the stated `inference_rule`. The adjudicator's
+   judgment applies; the permitted inference rules are an open question
+   (Section 9.12).
+4. **Neither source alone supports the complete relation.** Neither
+   Source A nor Source B independently asserts the `derived_claim`. If
+   either source does, the support entry should be `SOURCE_LOCAL`, not
+   `JOINT_CROSS_SOURCE`.
+5. **Removing either source destroys the justification.** The
+   `counterfactual_a` and `counterfactual_b` fields correctly identify
+   the derived claim as unsupported without the respective source.
+
+**Why these conditions are mandatory:** without them, an LLM-based
+detector could manufacture a plausible "A + B = invention" explanation
+for any candidate — citing real spans from A and B, claiming a
+derivation, and asserting `JOINT_CROSS_SOURCE` support. This would
+recreate the exact problem the prior rounds eliminated: a coherent
+false explanation accepted as evidence. The five conditions above are
+the operational mechanism that prevents this.
+
+**Boundary between B-2 and Gate B (round-77 clarified):**
+
+`JOINT_CROSS_SOURCE` support establishes **provenance topology**: the
+candidate's relation is genuinely derived from both sources, not
+fabricated. This is what B-2 adjudicates.
+
+Whether the derived relation is a **valid mechanism or invention** —
+i.e. whether it is scientifically meaningful, testable, and non-obvious
+— is **Gate B's responsibility**, not B-2's. B-2 does not evaluate
+whether the `inference_rule` produces a "good" invention; it evaluates
+whether the `inference_rule` is honestly applied to real evidence from
+both sources.
+
+This preserves the B-2 / Gate B separation (Section 2.7): B-2
+establishes provenance topology; Gate B establishes discovery validity.
+
+### 2.7 B-2 establishes provenance topology, Gate B establishes discovery validity (round-74 condition 7; round-75 strengthened; round-76 finalized; round-77 clarified)
+
+The B-2 decision criterion (Section 2.4, round-76 amended, round-77
+extended with `JOINT_CROSS_SOURCE` support) has four states: `ISS_one`
+(REJECT), `ISS_both` (ALLOW), `REDUNDANT_SUPPORT` (ALLOW, reported
+separately), and `UNSUPPORTED` (NOT_ADJUDICATED_BY_B2).
+
+B-2's job is to establish **provenance topology** — i.e. to classify
+the candidate's relationship to the sources:
+
 - **source-local leakage** (`ISS_one`): the candidate is fully
   attributable to one source. REJECT.
+- **cross-source synthesis** (`ISS_both`): the candidate contains at
+  least one atomic claim supported by `JOINT_CROSS_SOURCE` evidence,
+  AND removing either source leaves the candidate unjustified. ALLOW.
+- **redundant support** (`REDUNDANT_SUPPORT`): both sources
+  independently justify the candidate (all claims have `SOURCE_LOCAL`
+  support from both sources). ALLOW (reported separately).
 - **unsupported claims** (`UNSUPPORTED`): the candidate contains at
-  least one atomic claim with no supporting span in either source.
-  Forward to Gate B as `NOT_ADJUDICATED_BY_B2`.
+  least one atomic claim with no support entry of any type
+  (`SOURCE_LOCAL` or `JOINT_CROSS_SOURCE`). Forward to Gate B as
+  `NOT_ADJUDICATED_BY_B2`.
 
 B-2 does NOT adjudicate:
+
 - whether a candidate is a "good invention" (Gate B's job)
 - whether a candidate is "novel" (Gate B's job)
 - whether a candidate is "scientifically meaningful" (Gate B's job)
+- whether a `JOINT_CROSS_SOURCE` derivation produces a "valid"
+  mechanism (Gate B's job — B-2 only verifies the derivation is
+  honestly applied to real evidence, per Section 2.6.7)
 
-B-2 must remain distinct from **discovery adjudication** (Gate B / Gate C
-in the engine's gate hierarchy). The two gates evaluate different
-properties:
+B-2 must remain distinct from **discovery adjudication** (Gate B /
+Gate C in the engine's gate hierarchy). The two gates evaluate
+different properties:
 
 | Gate | Question | Outcome |
 |------|----------|---------|
-| B-2 (this spec) | Is the candidate leaked from one source, or unsupported? | REJECT iff `ISS_one`; ALLOW iff `ISS_both` or `REDUNDANT_SUPPORT`; `NOT_ADJUDICATED_BY_B2` iff `UNSUPPORTED` |
-| Gate B / discovery | Is the candidate a valid, meaningful mechanism? | Separate adjudication, separate criteria |
+| B-2 (this spec) | What is the candidate's provenance topology? (source-local / cross-source synthesis / redundant / unsupported) | REJECT iff `ISS_one`; ALLOW iff `ISS_both` or `REDUNDANT_SUPPORT`; `NOT_ADJUDICATED_BY_B2` iff `UNSUPPORTED` |
+| Gate B / discovery | Is the candidate a valid, meaningful mechanism? (is the jointly-supported relationship actually a valid invention?) | Separate adjudication, separate criteria |
 
-A candidate that passes B-2 via `ISS_both` (cross-source synthesis) or
-`REDUNDANT_SUPPORT` (both sources independently justify) is **not blocked
-by B-2**, but it may still be rejected by Gate B for being untestable or
-otherwise invalid as a mechanism proposal. A candidate that B-2 routes
-to `NOT_ADJUDICATED_BY_B2` (UNSUPPORTED) is also forwarded to Gate B —
+A candidate that passes B-2 via `ISS_both` (cross-source synthesis via
+`JOINT_CROSS_SOURCE` support) or `REDUNDANT_SUPPORT` (both sources
+independently justify) is **not blocked by B-2**, but it may still be
+rejected by Gate B for being untestable, obvious, or otherwise invalid
+as a mechanism proposal. A candidate that B-2 routes to
+`NOT_ADJUDICATED_BY_B2` (UNSUPPORTED) is also forwarded to Gate B —
 Gate B may reject it for being nonsensical or fabricated, OR may
 adjudicate it as a valid invention if the unsupported claim is
 independently defensible. B-2 does not pre-judge either case.
@@ -618,20 +905,27 @@ independently defensible. B-2 does not pre-judge either case.
 **Implementation requirement:** The detector's trace must explicitly
 report the `iss_state` for every candidate
 (`ISS_one` / `ISS_both` / `REDUNDANT_SUPPORT` / `UNSUPPORTED`), per
-the frozen JSON schema (Section 3.7.1). The downstream Gate B
-adjudicator must receive this `iss_state` and must NOT treat B-2
-passage (ALLOW) as evidence of discovery validity, and must NOT treat
-B-2's `NOT_ADJUDICATED_BY_B2` as a B-2 REJECT.
+the frozen JSON schema (Section 3.7.1, `b2-trace-v3`). The
+downstream Gate B adjudicator must receive this `iss_state` and the
+full support map (including `JOINT_CROSS_SOURCE` entries) and must
+NOT treat B-2 passage (ALLOW) as evidence of discovery validity, and
+must NOT treat B-2's `NOT_ADJUDICATED_BY_B2` as a B-2 REJECT.
 
 **Anti-regression requirement (Section 8.5):** The spec, the
 implementation, and the audit must all preserve:
-1. The B-2 / Gate B distinction (B-2 is leakage + support, not novelty).
+1. The B-2 / Gate B distinction (B-2 = provenance topology, Gate B =
+   discovery validity).
 2. The four-state ontology (`ISS_one` / `ISS_both` / `REDUNDANT_SUPPORT`
-   / `UNSUPPORTED`). Any attempt to (a) expand B-2's criterion to
-   include novelty evaluation, (b) collapse `UNSUPPORTED` into an ALLOW
-   state, or (c) re-introduce the non-constructible `ISS_neither` state
-   (round-76 elimination), is regression and must be rejected by the
-   auditor.
+   / `UNSUPPORTED`).
+3. The two support types (`SOURCE_LOCAL` / `JOINT_CROSS_SOURCE`).
+4. The five anti-cheating conditions for `JOINT_CROSS_SOURCE` (Section
+   2.6.7).
+
+Any attempt to (a) expand B-2's criterion to include novelty
+evaluation, (b) collapse `UNSUPPORTED` into an ALLOW state, (c)
+re-introduce the non-constructible `ISS_neither` state, or (d) allow
+`JOINT_CROSS_SOURCE` support without the five anti-cheating
+conditions, is regression and must be rejected by the auditor.
 
 ---
 
@@ -999,22 +1293,29 @@ This is especially important for Mode B (cross-source synthesis), where
 the cross-source connection may be hypernymy or umbrella scope — both
 of which are adjudicator-dependent judgments.
 
-### 3.7 Frozen concrete trace JSON schema (round-75 condition 3)
+### 3.7 Frozen concrete trace JSON schema (round-75 condition 3; round-77 amended for JOINT_CROSS_SOURCE)
 
 The spec previously said the trace must be "machine-parseable" but left
 the exact JSON schema as an open question. Two implementations could
 satisfy "machine parseable" while producing incompatible evidence. The
 round-75 amendment freezes a concrete JSON schema that all
-implementations must produce.
+implementations must produce. The round-77 amendment extends the schema
+to support `JOINT_CROSS_SOURCE` support entries (Section 2.6.2, 2.6.7).
 
-#### 3.7.1 The schema
+#### 3.7.1 The schema (b2-trace-v3, round-77)
 
 Every detector decision must produce a JSON object matching the
 following schema. Field names are exact; types are mandatory;
 free-form structural variation is NOT permitted.
 
+The `source_support` array contains entries of two types
+(discriminated by `support_type`): `SOURCE_LOCAL` and
+`JOINT_CROSS_SOURCE`. An atom may have multiple support entries of
+either type.
+
 ```json
 {
+  "schema_version": "b2-trace-v3",
   "candidate": {
     "id": "<string, the case ID>",
     "text": "<string, the candidate phrase>",
@@ -1024,13 +1325,39 @@ free-form structural variation is NOT permitted.
   "atoms": [
     {
       "atom_id": "<string, unique within this trace, e.g. 'a1'>",
-      "claim": "<string, the atomic claim, e.g. '{mediator: enzyme_catalyst}'>",
+      "claim": "<string, the atomic claim, e.g. '{relation: enzyme_templates_mineral_deposition}'>",
       "source_support": [
         {
+          "support_type": "SOURCE_LOCAL",
           "source_id": "<string, 'A' or 'B'>",
-          "span_text": "<string, verbatim substring of the cited source>",
-          "start": "<integer, character offset into the source text>",
-          "end": "<integer, character offset (exclusive)>"
+          "spans": [
+            {
+              "span_text": "<string, verbatim substring of the cited source>",
+              "start": "<integer, character offset into the source text>",
+              "end": "<integer, character offset (exclusive)>"
+            }
+          ]
+        },
+        {
+          "support_type": "JOINT_CROSS_SOURCE",
+          "source_a_spans": [
+            {
+              "span_text": "<string, verbatim substring of Source A>",
+              "start": "<integer, character offset into Source A>",
+              "end": "<integer, character offset (exclusive)>"
+            }
+          ],
+          "source_b_spans": [
+            {
+              "span_text": "<string, verbatim substring of Source B>",
+              "start": "<integer, character offset into Source B>",
+              "end": "<integer, character offset (exclusive)>"
+            }
+          ],
+          "derived_claim": "<string, the atomic claim that follows from combining A and B components>",
+          "inference_rule": "<string, the rule under which the derivation is valid>",
+          "counterfactual_a": "<string, why removing Source A leaves derived_claim unsupported>",
+          "counterfactual_b": "<string, why removing Source B leaves derived_claim unsupported>"
         }
       ]
     }
@@ -1052,19 +1379,33 @@ free-form structural variation is NOT permitted.
 }
 ```
 
-#### 3.7.2 Schema requirements
+**Note on `SOURCE_LOCAL` spans:** the `spans` array (for `SOURCE_LOCAL`
+entries) contains one or more span objects. Multiple spans are used
+when an atomic claim is supported by a conjunction of spans in the
+same source (Section 2.6.6, multi-span support). A single-span entry
+has a `spans` array with one element.
+
+**Note on `JOINT_CROSS_SOURCE` entries:** the `source_a_spans` and
+`source_b_spans` arrays each contain one or more span objects from the
+respective source. The `derived_claim` is the atomic claim that follows
+from combining the A and B components. The `inference_rule` states the
+rule under which the derivation is valid (open question 9.12 for
+taxonomy). The `counterfactual_a` and `counterfactual_b` fields explain
+why removing the respective source leaves the derived claim unsupported.
+
+#### 3.7.2 Schema requirements (round-77 amended)
 
 1. **Every atomic claim must have at least one entry in `source_support`
    OR be listed in `counterfactuals[].unsupported_atoms` for at least
-   one removed source.** An atom with no supporting span in either
-   source AND not listed as unsupported is a silent decomposition gap
-   and is grounds for trace rejection (Section 2.6.5).
+   one removed source.** An atom with no support entry of any type AND
+   not listed as unsupported is a silent decomposition gap and is
+   grounds for trace rejection (Section 2.6.5).
 
 2. **`source_support` may be an empty list** for an atom that has no
-   supporting span in either source. Such an atom is unsupported and
-   must appear in `counterfactuals[].unsupported_atoms` for both
-   removed sources (since removing either source still leaves it
-   unsupported).
+   support entry of any type in either source. Such an atom is
+   unsupported and must appear in `counterfactuals[].unsupported_atoms`
+   for both removed sources (since removing either source still leaves
+   it unsupported).
 
 3. **`counterfactuals` must contain exactly two entries**, one for
    `removed_source: "A"` and one for `removed_source: "B"`.
@@ -1097,11 +1438,31 @@ free-form structural variation is NOT permitted.
 6. **`span_text` must be the verbatim substring of the cited source at
    the cited offsets.** The auditor's verification (Section 2.6.4)
    checks `source_text[start:end] == span_text`. Any mismatch is
-   grounds for trace rejection.
+   grounds for trace rejection. This applies to `SOURCE_LOCAL.spans`,
+   `JOINT_CROSS_SOURCE.source_a_spans`, and
+   `JOINT_CROSS_SOURCE.source_b_spans` equally.
 
-7. **No free-form structural variation is permitted.** All fields are
+7. **`JOINT_CROSS_SOURCE` entries must contain all mandatory fields**
+   (round-77, NEW): `source_a_spans` (non-empty), `source_b_spans`
+   (non-empty), `derived_claim` (non-empty), `inference_rule`
+   (non-empty), `counterfactual_a` (non-empty), `counterfactual_b`
+   (non-empty). Any missing or empty field is grounds for trace
+   rejection.
+
+8. **`JOINT_CROSS_SOURCE` entries must satisfy the five anti-cheating
+   conditions** (Section 2.6.7). The adjudicator verifies:
+   - A genuinely supports its component (spans present and assertive).
+   - B genuinely supports its component.
+   - The derived claim follows from the combination under the stated
+     inference rule.
+   - Neither source alone supports the complete relation (else it
+     should be `SOURCE_LOCAL`).
+   - Removing either source destroys the justification.
+
+9. **No free-form structural variation is permitted.** All fields are
    mandatory; no additional top-level fields are allowed without
-   auditor approval; no fields may be renamed.
+   auditor approval (except `schema_version`); no fields may be
+   renamed.
 
 #### 3.7.3 Why a frozen schema
 
@@ -1113,17 +1474,27 @@ A frozen schema ensures:
   input format.
 - The downstream Gate B adjudicator receives a uniform handoff format
   (preserving the four-state ontology — `ISS_one` / `ISS_both` /
-  `REDUNDANT_SUPPORT` / `UNSUPPORTED` — end-to-end, per Section 8.5).
+  `REDUNDANT_SUPPORT` / `UNSUPPORTED` — and the two support types —
+  `SOURCE_LOCAL` / `JOINT_CROSS_SOURCE` — end-to-end, per Section 8.5).
 
 #### 3.7.4 Schema versioning
 
-This schema is frozen at version `b2-trace-v2` (round-76). The version
-was bumped from `b2-trace-v1` (round-75) to `b2-trace-v2` because the
-`iss_state` enum changed: `ISS_neither` was removed and
-`REDUNDANT_SUPPORT` was added. This is a breaking schema change; traces
-produced under `b2-trace-v1` are NOT valid under `b2-trace-v2` (and
-vice versa), because the `iss_state` field may contain a value that the
-other schema version does not recognize.
+This schema is frozen at version `b2-trace-v3` (round-77). The version
+was bumped from `b2-trace-v2` (round-76) to `b2-trace-v3` because the
+`source_support` structure changed: `SOURCE_LOCAL` entries now use a
+`spans` array (instead of a single `span_text`/`start`/`end` triple),
+and `JOINT_CROSS_SOURCE` entries are new. This is a breaking schema
+change; traces produced under `b2-trace-v2` are NOT valid under
+`b2-trace-v3` (and vice versa), because the `source_support` structure
+is materially different.
+
+Version history:
+- `b2-trace-v1` (round-75): initial frozen schema.
+- `b2-trace-v2` (round-76): `iss_state` enum changed (`ISS_neither`
+  removed, `REDUNDANT_SUPPORT` added).
+- `b2-trace-v3` (round-77): `source_support` structure changed
+  (`SOURCE_LOCAL` now uses `spans` array; `JOINT_CROSS_SOURCE` type
+  added with mandatory fields).
 
 Any future revision requires a new version number, a new adjudication
 cycle, and re-verification of all held-out results against the new
@@ -1131,7 +1502,7 @@ schema. The schema version is recorded in the trace:
 
 ```json
 {
-  "schema_version": "b2-trace-v2",
+  "schema_version": "b2-trace-v3",
   ...
 }
 ```
@@ -1591,14 +1962,15 @@ of discovery capability. Scientific evidence requires:
 Anything short of these three is engineering evidence, not scientific
 evidence.
 
-### 8.5 B-2 must remain a leakage and support instrument, NOT a novelty detector (round-74 condition 7; round-75 strengthened; round-76 finalized)
+### 8.5 B-2 establishes provenance topology, Gate B establishes discovery validity (round-74 → round-77 finalized)
 
-Per Section 2.7, B-2 evaluates leakage (does the candidate derive from
-one source alone?) AND support (does the candidate contain unsupported
-claims?), NOT discovery validity (is the candidate a good invention?).
-The two gates must remain distinct, AND the four-state ontology
-(`ISS_one` / `ISS_both` / `REDUNDANT_SUPPORT` / `UNSUPPORTED`) must be
-preserved end-to-end.
+Per Section 2.7, B-2 establishes **provenance topology**: is the
+candidate source-local (`ISS_one`), cross-source synthesis
+(`ISS_both` via `JOINT_CROSS_SOURCE` support), redundantly supported
+(`REDUNDANT_SUPPORT`), or unsupported (`UNSUPPORTED`)? Gate B
+establishes **discovery validity**: is the candidate a valid, meaningful
+mechanism? The two gates must remain distinct, AND the four-state
+ontology AND the two support types must be preserved end-to-end.
 
 Anti-regression safeguards:
 
@@ -1617,20 +1989,35 @@ Anti-regression safeguards:
   must be rejected — under the span-map definition of `Justified()`,
   that category IS `ISS_both`, not a separate state. See Section 2.1
   for the mathematical derivation.
-- The B-2 trace's `iss_state` field (Section 3.7.1, schema
-  `b2-trace-v2`) must be preserved end-to-end and forwarded to the
-  downstream Gate B adjudicator. The downstream gate must receive the
-  full classification (`ISS_one` / `ISS_both` / `REDUNDANT_SUPPORT` /
-  `UNSUPPORTED`), NOT just the B-2 label (`REJECT` / `ALLOW` /
-  `NOT_ADJUDICATED_BY_B2`).
+- `JOINT_CROSS_SOURCE` support must NOT be used without the five
+  anti-cheating conditions (round-77, Section 2.6.7). Any proposal
+  to allow `JOINT_CROSS_SOURCE` support without verifying (1) A
+  genuinely supports its component, (2) B genuinely supports its
+  component, (3) the derived claim follows from the combination,
+  (4) neither source alone supports the complete relation, (5)
+  removing either source destroys the justification, is a re-opening
+  of the "LLM manufactures plausible A+B=invention" problem and must
+  be rejected by the auditor.
+- The B-2 criterion must NOT evaluate whether a
+  `JOINT_CROSS_SOURCE` derivation produces a "valid" or "good"
+  invention (round-77). B-2 only verifies the derivation is honestly
+  applied to real evidence from both sources. Whether the derived
+  relation is a valid mechanism is Gate B's responsibility.
+- The B-2 trace's `iss_state` field AND the full support map
+  (including `JOINT_CROSS_SOURCE` entries) must be preserved
+  end-to-end and forwarded to the downstream Gate B adjudicator
+  (Section 3.7.1, schema `b2-trace-v3`). The downstream gate must
+  receive the full classification (`ISS_one` / `ISS_both` /
+  `REDUNDANT_SUPPORT` / `UNSUPPORTED`) AND the support entries
+  (`SOURCE_LOCAL` / `JOINT_CROSS_SOURCE`), NOT just the B-2 label.
 - The Protocol B discrimination run must report `REDUNDANT_SUPPORT`
   candidates and `UNSUPPORTED` candidates separately from `ISS_both`
   candidates. A positive discrimination run driven entirely by
   `REDUNDANT_SUPPORT` candidates (i.e. candidates that pass B-2 because
   both sources independently justify them) is scientifically different
   from one driven by `ISS_both` candidates (i.e. candidates that pass
-  B-2 because they perform cross-source synthesis with unique
-  contributions from both sources). The former is evidence of redundant
+  B-2 because they perform cross-source synthesis via
+  `JOINT_CROSS_SOURCE` support). The former is evidence of redundant
   candidate generation; the latter is evidence of cross-source
   discovery. A positive run driven by `UNSUPPORTED` candidates (which
   should NOT happen, since they are `NOT_ADJUDICATED_BY_B2`) would
@@ -1690,19 +2077,21 @@ an FP or FN on a non-borderline case. The auditor may refine this
 definition (e.g. by adding severity tiers, or by specifying which
 categories' failures are more catastrophic).
 
-### 9.2 Justification trace format — RESOLVED (round-75)
+### 9.2 Justification trace format — RESOLVED (round-75, updated round-77)
 
-**Resolved (round-75, updated round-76):** The concrete JSON schema is
+**Resolved (round-75, updated round-77):** The concrete JSON schema is
 now frozen at Section 3.7. All implementations must produce traces
-matching the `b2-trace-v2` schema (Section 3.7.1, 3.7.2; round-76
-bumped from v1 due to `iss_state` enum change: `ISS_neither` removed,
-`REDUNDANT_SUPPORT` added). Free-text traces are not acceptable. The
-schema includes: `candidate`, `atoms[]` (with `atom_id`, `claim`,
-`source_support[]`), `counterfactuals[]` (with `removed_source`,
+matching the `b2-trace-v3` schema (Section 3.7.1, 3.7.2; round-77
+bumped from v2 due to `source_support` structure change:
+`SOURCE_LOCAL` now uses `spans` array, `JOINT_CROSS_SOURCE` type
+added). Free-text traces are not acceptable. The schema includes:
+`candidate`, `atoms[]` (with `atom_id`, `claim`, `source_support[]`
+where each entry has `support_type` of `SOURCE_LOCAL` or
+`JOINT_CROSS_SOURCE`), `counterfactuals[]` (with `removed_source`,
 `unsupported_atoms[]`, `justified_without_source`), and
 `classification` (with `justified_by_corpus`, `iss_a`, `iss_b`,
 `iss_state`, `label`). Schema versioning is via the `schema_version`
-field (currently `b2-trace-v2`).
+field (currently `b2-trace-v3`).
 
 ### 9.3 LLM-based implementation — RESOLVED (round-74)
 
@@ -1793,12 +2182,13 @@ round-76 amendment finalized this by eliminating the non-constructible
 producing a clean four-state ontology (`ISS_one` / `ISS_both` /
 `REDUNDANT_SUPPORT` / `UNSUPPORTED`).
 
-**Resolved (round-76):** The four-state ontology is explicit in the
-decision criterion (Section 2.4), the trace schema (Section 3.7.1,
-`b2-trace-v2`, `classification.iss_state`), and the anti-regression
-safeguards (Section 8.5). The downstream Gate B adjudicator receives
-the full `iss_state`, not just the B-2 label. B-2 never adjudicates
-novelty (Section 2.7).
+**Resolved (round-76, extended round-77):** The four-state ontology is
+explicit in the decision criterion (Section 2.4), the trace schema
+(Section 3.7.1, `b2-trace-v3`, `classification.iss_state`), and the
+anti-regression safeguards (Section 8.5). The downstream Gate B
+adjudicator receives the full `iss_state` and the full support map
+(including `JOINT_CROSS_SOURCE` entries), not just the B-2 label. B-2
+never adjudicates novelty (Section 2.7).
 
 **Remaining question:** Is the Section 8.5 safeguard ("the B-2 trace's
 `iss_state` field must be preserved end-to-end and forwarded to the
@@ -1836,6 +2226,37 @@ The held-out set (Section 3.2) now requires at least 2
 `REDUNDANT_SUPPORT` cases (instead of the non-constructible "true
 `ISS_neither`" cases). No open question remains on this topic.
 
+### 9.12 NEW (round-77) — Inference rule taxonomy for JOINT_CROSS_SOURCE
+
+Section 2.6.7 introduces `JOINT_CROSS_SOURCE` support with a mandatory
+`inference_rule` field. The spec requires the adjudicator to verify
+that "the derived claim actually follows from the combination under
+the stated inference rule" (Section 2.6.4, item 7), but does NOT
+prescribe a fixed taxonomy of permitted inference rules.
+
+**Question:** Should the spec prescribe a fixed taxonomy of permitted
+`inference_rule` values (e.g. `composition`, `causal_attribution`,
+`transfer`, `abstraction`), or should the `inference_rule` field
+remain free-form with the adjudicator judging each derivation on its
+merits?
+
+**Trade-off:**
+- A fixed taxonomy makes adjudication more reproducible (two
+  adjudicators seeing the same derivation should pick the same rule)
+  and makes the anti-cheating conditions easier to verify (each rule
+  can have specific structural requirements).
+- A free-form field allows the detector to represent novel inference
+  types that the taxonomy did not anticipate, but risks
+  adjudicator-dependent judgments.
+
+**Proposed default (for auditor approval):** the spec should prescribe
+a minimal initial taxonomy (e.g. `composition`, `causal_attribution`,
+`abstraction`) with an `other` escape hatch that requires the detector
+to provide a free-text explanation. The taxonomy can be expanded in
+future spec revisions as the held-out set reveals inference types not
+covered by the initial set. The auditor may direct a different
+approach.
+
 ---
 
 ## 10. Files
@@ -1870,12 +2291,13 @@ R5.1 design revision document.
 ## 11. Status
 
 ```text
-Spec status:                    AMENDED (round-76) — FROZEN FOR RE-ADJUDICATION
+Spec status:                    AMENDED (round-77) — FROZEN FOR RE-ADJUDICATION
 Original freeze:                commit 8a84fdc, 2026-08-09 (round-73)
 First amended freeze:           commit 4bc945d, 2026-08-10 (round-74)
 Second amended freeze:          commit 3076d3a, 2026-08-10 (round-75)
-Third amended freeze:           this revision, 2026-08-10 (round-76)
-Implementation status:          NOT STARTED — blocked on round-76 re-adjudication
+Third amended freeze:           commit 9b4d843, 2026-08-10 (round-76)
+Fourth amended freeze:          this revision, 2026-08-10 (round-77)
+Implementation status:          NOT STARTED — blocked on round-77 re-adjudication
 Production substrate status:    UNCHANGED — no modifications made
 Protocol B status:              BLOCKED — blocked on implementation freeze + final
                                 independent adjudication (Section 7.7)
@@ -1884,9 +2306,10 @@ Lexical detector status:        FROZEN at commit 20ac268 — no re-tuning
 Adversarial v2 diagnostic:      6/13 mismatches (3/9 adversarial matches)
                                 — canonical evidence that lexical detector
                                 does NOT solve paraphrase leakage
-Trace schema version:           b2-trace-v2 (round-76; bumped from v1 due
-                                to iss_state enum change: ISS_neither removed,
-                                REDUNDANT_SUPPORT added)
+Trace schema version:           b2-trace-v3 (round-77; bumped from v2 due
+                                to source_support structure change:
+                                SOURCE_LOCAL now uses spans array;
+                                JOINT_CROSS_SOURCE type added)
 
 Round-74 conditions resolved (commit 4bc945d):
   1. Operational Justified()          — new Section 2.6
@@ -1904,32 +2327,39 @@ Round-75 conditions resolved (commit 3076d3a):
   3. Freeze concrete trace JSON schema — new Section 3.7 (b2-trace-v1)
   +  Section 5.1 refinement: audit trigger, not proof of tuning
 
-Round-76 condition resolved (this revision):
+Round-76 condition resolved (commit 9b4d843):
   1. Eliminate non-constructible ISS_neither; replace with REDUNDANT_SUPPORT
-     — Section 2.1 (ISS_neither removed; REDUNDANT_SUPPORT defined;
-       four-state ontology table added)
-     — Section 2.4 (decision criterion: REDUNDANT_SUPPORT → ALLOW,
-       reported separately)
-     — Section 2.5 (note on REDUNDANT_SUPPORT construction; note on
-       removed ISS_neither state)
-     — Section 2.6.2 (loophole history updated for round-76)
-     — Section 2.7 (four-state ontology; B-2 never adjudicates novelty)
-     — Section 3.2 (held-out sub-categories: REDUNDANT_SUPPORT and
-       UNSUPPORTED categories added, each >=2 cases required)
-     — Section 3.7 (schema bumped to b2-trace-v2; iss_state enum
-       updated; consistency rules updated)
-     — Section 8.5 (anti-regression: four-state ontology preserved
-       end-to-end; re-introduction of ISS_neither is regression)
-     — Section 9.9 (RESOLVED), Section 9.11 (RESOLVED — formerly
-       "true ISS_neither control category," now moot)
 
-Four-state ontology (round-76, final):
+Round-77 condition resolved (this revision):
+  1. Add JOINT_CROSS_SOURCE support mechanism
+     — Section 2.6.2 (two support types: SOURCE_LOCAL + JOINT_CROSS_SOURCE)
+     — Section 2.6.3 (counterfactual: JOINT_CROSS_SOURCE destroyed by
+       removing either source)
+     — Section 2.6.4 (adjudicator verifies 5 anti-cheating conditions)
+     — Section 2.6.5 (rules out false JOINT_CROSS_SOURCE derivations)
+     — Section 2.6.6 (does not rule out cross-source synthesis relations)
+     — Section 2.6.7 (NEW: JOINT_CROSS_SOURCE structure + anti-cheating)
+     — Section 2.7 (B-2 = provenance topology, Gate B = discovery validity)
+     — Section 2.5 (worked examples: JOINT_CROSS_SOURCE for ADV-03/04/07/08/11)
+     — Section 3.7 (schema b2-trace-v3: support_type discriminator,
+       JOINT_CROSS_SOURCE fields)
+     — Section 8.5 (anti-regression: JOINT_CROSS_SOURCE conditions mandatory)
+
+Four-state ontology (round-76, retained):
   ISS_one            → REJECT                  (source-local leakage)
-  ISS_both           → ALLOW                   (cross-source synthesis)
+  ISS_both           → ALLOW                   (cross-source synthesis via JOINT_CROSS_SOURCE)
   REDUNDANT_SUPPORT  → ALLOW (reported separately) (both sources independently justify)
   UNSUPPORTED        → NOT_ADJUDICATED_BY_B2   (forwarded to Gate B)
 
-  B-2 never adjudicates novelty. That responsibility stays with Gate B.
+Two support types (round-77, NEW):
+  SOURCE_LOCAL         — single-source span(s) asserting the claim
+  JOINT_CROSS_SOURCE   — A-spans + B-spans + inference_rule → derived claim
+                         (5 anti-cheating conditions mandatory, Section 2.6.7)
+
+Boundary (round-77, clarified):
+  B-2 establishes provenance topology (source-local / cross-source / redundant / unsupported)
+  Gate B establishes discovery validity (is the jointly-supported relationship a valid mechanism?)
+  B-2 never adjudicates novelty or invention quality.
 
 Open questions remaining for auditor:
   9.1  catastrophic-failure definition refinement
@@ -1943,17 +2373,19 @@ Open questions remaining for auditor:
   9.10 double-adjudicator qualification: is ≥80% raw agreement the
        right threshold?
   9.11 RESOLVED (round-76) — formerly "true ISS_neither control category,"
-       now moot (ISS_neither eliminated; REDUNDANT_SUPPORT is constructible)
+       now moot
+  9.12 NEW (round-77): inference rule taxonomy for JOINT_CROSS_SOURCE —
+       fixed taxonomy vs free-form? Proposed default: minimal initial
+       taxonomy + "other" escape hatch.
 ```
 
 This amended spec is now awaiting the auditor's re-adjudication per
 Section 7.2. No implementation work may begin until the auditor accepts
 the amended spec (unconditionally or with conditions).
 
-Per the round-76 verdict: "Once that one conceptual correction is frozen
-and re-adjudicated, I would consider the specification ready to leave
-the design phase. At that point, the next work should be held-out
-construction and implementation — not another architecture round." If
-the auditor accepts this round-76 amended spec, the workflow proceeds
-to held-out set construction (Section 7.3) and implementation
-(Section 7.4).
+Per the round-77 verdict: "Once this one point is repaired and
+independently re-adjudicated, I would expect the remaining work to be
+**measurement construction and implementation**, not another
+architectural redesign." If the auditor accepts this round-77 amended
+spec, the workflow proceeds to held-out set construction (Section 7.3)
+and implementation (Section 7.4).
