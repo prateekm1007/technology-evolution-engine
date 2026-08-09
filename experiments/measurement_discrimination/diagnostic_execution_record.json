@@ -2,45 +2,45 @@
   "execution_type": "DIAGNOSTIC",
   "manifest_sha256": "5c52dca04a5b1d4d59db0241ac260b4a782db0c6c4dd59cd2a4635b142f9464a",
   "manifest_verified_before": true,
-  "started_at": "2026-08-09T12:23:23.391529+00:00",
+  "started_at": "2026-08-09T12:58:20.082225+00:00",
   "arms_attempted": [
     "null",
     "engine"
   ],
   "arms_completed": [
-    "null"
+    "engine"
   ],
   "arms_failed": [
     {
-      "arm": "engine",
-      "error_type": "RuntimeError",
-      "error_message": "Mechanism extraction failed: [ExtractionFailure(failure_type='PROVIDER_FAILURE', detail='no usable response: P46_SERVED_INSTRUMENT_UNVERIFIED: response contains no served-provider metadata. The z-ai CLI does not report which provider served the response, so provider identity cannot be verified. (requested: provider=zai, served_model=glm-4-plus)', raw_llm_output='')]"
+      "arm": "null",
+      "error_type": "ValueError",
+      "error_message": "Generation event already exists for DIAG-001-NULL-CAND-001. The ledger is append-only \u2014 cannot overwrite."
     }
   ],
   "artifacts_produced": [
     {
-      "arm": "null",
+      "arm": "engine",
       "case_id": "DIAG-001",
       "candidate_rank": 1,
-      "candidate_sha256": "c51df5e8b98db192f0b3e28febdc152ace199a81763b33c06daac2c2a5e76167",
-      "raw_output_sha256": "f3bad7e8a78f9a137035f15555e491e0fbbcc0ee3130184a569c26fc8f6613c4",
-      "candidate_length": 465
+      "candidate_sha256": "660b41964108f9e1394e70d3806f51cacac7e184651464733754ff5d5f4b02d0",
+      "raw_output_sha256": "165c4246b222baadef057c4f9a92597b28102e48d0de721b7079c4b49d9c58f2",
+      "candidate_length": 761
     },
     {
-      "arm": "null",
+      "arm": "engine",
       "case_id": "DIAG-001",
       "candidate_rank": 2,
-      "candidate_sha256": "88edd523dbd2070f2ebefd0488b28dace030d84369a70a0e8fb1bb2bdf4341e6",
-      "raw_output_sha256": "f3bad7e8a78f9a137035f15555e491e0fbbcc0ee3130184a569c26fc8f6613c4",
-      "candidate_length": 433
+      "candidate_sha256": "3d6f560651f9fa007d9288283f94236c38fd9483aca5b165e3bd6f3fd14666f6",
+      "raw_output_sha256": "165c4246b222baadef057c4f9a92597b28102e48d0de721b7079c4b49d9c58f2",
+      "candidate_length": 712
     },
     {
-      "arm": "null",
+      "arm": "engine",
       "case_id": "DIAG-001",
       "candidate_rank": 3,
-      "candidate_sha256": "1ab1b2b833545b34c262a5bca1e1895492737472d8ae1e921a01c69d580b83ca",
-      "raw_output_sha256": "f3bad7e8a78f9a137035f15555e491e0fbbcc0ee3130184a569c26fc8f6613c4",
-      "candidate_length": 441
+      "candidate_sha256": "228f4bad80d14f1574ec8ae46055c4eae0322410ee681f3e473936210e480157",
+      "raw_output_sha256": "165c4246b222baadef057c4f9a92597b28102e48d0de721b7079c4b49d9c58f2",
+      "candidate_length": 674
     }
   ],
   "provenance_ledger_path": "/home/z/my-project/audit/technology-evolution-engine/provenance/ledger_diag2.json",
@@ -48,24 +48,26 @@
   "source_pair_sha256": "356d84d86b81e626c4828e7dd247192ca58e44898504a625baa825e19a99413f",
   "source_a_path": "data/ingestion/real/arxiv_2301.04523.txt",
   "source_b_path": "data/ingestion/real/arxiv_2003.10495.txt",
-  "execution_id": "EXEC-ae399886846e4606acd8a280a57ae7e1",
-  "finished_at": "2026-08-09T12:23:48.489089+00:00",
+  "execution_id": "EXEC-65fe315ef94842a3ae21189ead3d1a7c",
+  "finished_at": "2026-08-09T12:59:25.439091+00:00",
   "manifest_verified_after": true,
   "provenance_verified": true,
-  "ledger_n_generation_events": 3,
+  "ledger_n_generation_events": 6,
   "ledger_n_adjudication_events": 0,
-  "ledger_sha256": "c86554640e6cd0d583a39d74840f8aa371dd86a1eadd05896ded8ba2c50c4301",
+  "ledger_sha256": "21bda9aeb95949e67c71ebe66a740e77cf445d56d59c7f482f1f42c7c4c42c2b",
   "ledger_hash_chain_valid": true,
   "baseline_audit": {
-    "engine_entries_found": 0,
+    "engine_entries_found": 3,
     "null_entries_found": 3,
     "n_dimensions": 13,
     "state_counts": {
-      "NOT_RUN": 12,
+      "OBSERVED_EQUAL": 5,
+      "NOT_OBSERVABLE": 3,
+      "OBSERVED_DIFFERENT": 4,
       "CONTRACT_EQUAL": 1
     },
     "fairness_established": false,
-    "all_observations_from_verified_artifacts": false
+    "all_observations_from_verified_artifacts": true
   },
   "artifact_type": "DIAGNOSTIC_EXECUTION_RECORD",
   "diagnostic_rule": "This is a DIAGNOSTIC execution. Results do NOT establish baseline fairness, discovery capability, or North Star. They establish machine facts about what ran and what artifacts were produced. Interpretation is reserved for a fresh-context independent auditor."

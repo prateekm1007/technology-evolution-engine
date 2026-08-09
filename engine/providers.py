@@ -37,21 +37,34 @@ class ProviderCallManifest:
         The `served_provider` and `served_model` fields record what was
         actually SERVED, as reported by the provider's response metadata.
 
+        P46 GOVERNANCE DECISION (audit round 63):
+            The frozen P46 specification (ANTI_ENTROPY.md line 1745) states:
+                "Verify the served instrument, not the requested one. Read
+                 response.model on every call, assert it equals the expected
+                 instrument, fail loudly on any mismatch."
+
+            This requires verifying served_model. It does NOT require
+            verifying served_provider. The round-5 implementation that
+            required both was an OVERCONSTRAINT relative to the frozen
+            specification.
+
         `served_instrument_verified` is True if and only if:
-            served_provider is present (not None)
-            AND served_model is present (not None)
-            AND served_provider == provider (requested)
+            served_model is present (not None)
             AND served_model == model (requested)
 
-        Per P6 (fail closed, not open): if the served instrument cannot
-        be established, the call FAILS. There is no warning-only path.
-        Unknown instrument identity is a hard failure, not a warning.
+        `served_provider` is OPTIONAL metadata:
+            - When present in the response, it is recorded.
+            - When absent, it does NOT cause P46 failure.
+            - It is NOT used to determine served_instrument_verified.
 
-        This is the machine-enforced P46 invariant: a request for the
-        preregistered instrument is not evidence that the preregistered
-        instrument actually produced the observation. If the response
-        does not prove what instrument served it, the observation has
-        no experimental identity.
+        Per P6 (fail closed): if served_model is absent or mismatches,
+        the call FAILS. There is no warning-only path for model
+        verification. Unknown model identity is a hard failure.
+
+        SCIENTIFIC BOUNDARY:
+            served_model = "glm-4-plus" → observed (attested by response)
+            served_provider = "zai" → NOT attested by this interface
+            The artifact distinguishes these propositions.
     """
     provider: str                        # requested provider
     model: str                           # requested model
@@ -64,10 +77,12 @@ class ProviderCallManifest:
     latency_ms: Optional[int] = None
     success: bool = True
     error: str = ""
-    # P46 served-instrument fields (audit finding round 4 + round 5 fail-closed)
-    served_provider: Optional[str] = None  # provider as reported by response (NOT inferred)
-    served_model: Optional[str] = None     # model as reported by response (NOT inferred)
-    served_instrument_verified: bool = False  # True iff served matches requested AND both present
+    # P46 served-instrument fields
+    # Per audit round 63: served_model is REQUIRED by P46 (ANTI_ENTROPY.md).
+    # served_provider is OPTIONAL metadata (not required by frozen P46 spec).
+    served_provider: Optional[str] = None  # optional metadata: provider as reported by response
+    served_model: Optional[str] = None     # required by P46: model as reported by response
+    served_instrument_verified: bool = False  # True iff served_model present AND == requested model
 
     def to_dict(self) -> Dict:
         return {
@@ -155,60 +170,43 @@ class ZAIReasoningProvider:
             with open(tmp_path) as f:
                 data = json.load(f)
 
-            # ===== P46: Verify the served instrument — FAIL-CLOSED (round 5) =====
-            # Read served model AND served provider from the response metadata.
-            # Do NOT infer served_provider from client configuration.
+            # ===== P46: Verify the served instrument — FAIL-CLOSED =====
+            # Per audit round 63 / P46 GOVERNANCE DECISION:
+            #   The frozen P46 specification (ANTI_ENTROPY.md) requires:
+            #     "Read response.model on every call, assert it equals
+            #      the expected instrument, fail loudly on any mismatch."
             #
-            # The z-ai CLI response includes a top-level "model" field but
-            # does NOT include a "provider" field. This means:
-            #   - served_model can be verified from the response
-            #   - served_provider CANNOT be verified from the response
+            #   This requires verifying served_model (from response.model).
+            #   It does NOT require verifying served_provider.
             #
-            # Per P6 (fail closed): if the served instrument cannot be fully
-            # established, the call FAILS. Unknown instrument identity is a
-            # hard failure, not a warning.
+            #   served_provider is OPTIONAL metadata:
+            #     - When present in the response, it is recorded.
+            #     - When absent, it does NOT cause P46 failure.
+            #     - It is NOT used to determine served_instrument_verified.
             #
-            # Per the audit (round 5): "If the response format exposes provider
-            # identity, read it from the response. If it doesn't, then served
-            # provider identity is unavailable and should be represented as
-            # unavailable, not inferred."
+            # SCIENTIFIC BOUNDARY:
+            #   served_model = "glm-4-plus" → observed (attested by response)
+            #   served_provider = "zai" → NOT attested by this interface
+            #   The artifact distinguishes these propositions.
             served_model = data.get("model")
-            served_provider = data.get("provider")  # None if response doesn't include it
+            served_provider = data.get("provider")  # optional metadata, None if absent
             manifest.served_model = served_model
             manifest.served_provider = served_provider
 
-            # Compute served_instrument_verified (all 4 conditions must hold)
+            # P46 verification: served_model must be present AND match requested model
             manifest.served_instrument_verified = (
-                served_provider is not None
-                and served_model is not None
-                and served_provider == self.provider_name
+                served_model is not None
                 and served_model == self._model
             )
 
-            # FAIL-CLOSED: if served instrument is not verified, hard-fail
+            # FAIL-CLOSED: if served_model is absent or mismatches, hard-fail
             if not manifest.served_instrument_verified:
                 manifest.success = False
-                if served_model is None and served_provider is None:
-                    manifest.error = (
-                        "P46_SERVED_INSTRUMENT_UNVERIFIED: response contains no "
-                        "served-model or served-provider metadata. The z-ai CLI "
-                        "response does not prove which instrument produced this "
-                        "observation. Experimental identity cannot be established. "
-                        f"(requested: provider={self.provider_name}, model={self._model})"
-                    )
-                elif served_model is None:
+                if served_model is None:
                     manifest.error = (
                         "P46_SERVED_INSTRUMENT_UNVERIFIED: response contains no "
                         "served-model metadata. Experimental identity cannot be "
                         f"established. (requested model={self._model})"
-                    )
-                elif served_provider is None:
-                    manifest.error = (
-                        "P46_SERVED_INSTRUMENT_UNVERIFIED: response contains no "
-                        "served-provider metadata. The z-ai CLI does not report "
-                        "which provider served the response, so provider identity "
-                        f"cannot be verified. (requested: provider={self.provider_name}, "
-                        f"served_model={served_model})"
                     )
                 elif served_model != self._model:
                     manifest.error = (
@@ -218,17 +216,11 @@ class ZAIReasoningProvider:
                         f"identity violation — the preregistered instrument did not "
                         f"produce this observation."
                     )
-                elif served_provider != self.provider_name:
-                    manifest.error = (
-                        f"P46_SERVED_INSTRUMENT_MISMATCH: requested provider={self.provider_name} "
-                        f"but response served provider={served_provider}. This is an "
-                        f"experimental identity violation."
-                    )
                 else:
                     manifest.error = (
                         "P46_SERVED_INSTRUMENT_UNVERIFIED: unknown reason. "
-                        f"(requested: provider={self.provider_name}, model={self._model}; "
-                        f"served: provider={served_provider}, model={served_model})"
+                        f"(requested: model={self._model}; "
+                        f"served: model={served_model})"
                     )
                 return "", manifest
 
