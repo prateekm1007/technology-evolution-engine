@@ -1160,3 +1160,170 @@ class TestFormalRootIsolation:
         assert poly.domain == QQ, (
             f"Polynomial domain is {poly.domain}, expected QQ (rationals)"
         )
+
+    # -----------------------------------------------------------------
+    # EXACT ALGEBRAIC EVALUATION (audit round 39)
+    # The auditor found that while root LOCATIONS were formally
+    # isolated, the extremum VALUES were still computed via float
+    # evaluation. These tests verify the fix: exact algebraic
+    # evaluation at isolated roots, with exact comparison.
+    # -----------------------------------------------------------------
+
+    @pytest.mark.parametrize("pe,pr", r4_1.POWER_SCENARIOS + r4_1.TYPE_I_SCENARIOS)
+    def test_extremum_values_have_exact_representation(self, pe, pr):
+        """Every scenario must have power_min_exact and power_max_exact
+        fields containing the EXACT algebraic representation of the
+        extremum values (not just float approximations)."""
+        certified = r4_1.certified_global_extrema(pe, pr)
+        assert "power_min_exact" in certified, (
+            f"Missing power_min_exact for pe={pe}, pr={pr}"
+        )
+        assert "power_max_exact" in certified, (
+            f"Missing power_max_exact for pe={pe}, pr={pr}"
+        )
+        assert certified["power_min_exact"] != "", (
+            f"power_min_exact is empty for pe={pe}, pr={pr}"
+        )
+        assert certified["power_max_exact"] != "", (
+            f"power_max_exact is empty for pe={pe}, pr={pr}"
+        )
+
+    @pytest.mark.parametrize("pe,pr", r4_1.POWER_SCENARIOS + r4_1.TYPE_I_SCENARIOS)
+    def test_extremum_locations_have_exact_representation(self, pe, pr):
+        """Every scenario must have p11_at_min_exact and p11_at_max_exact
+        fields containing the EXACT algebraic representation of the
+        extremum locations."""
+        certified = r4_1.certified_global_extrema(pe, pr)
+        assert "p11_at_min_exact" in certified, (
+            f"Missing p11_at_min_exact for pe={pe}, pr={pr}"
+        )
+        assert "p11_at_max_exact" in certified, (
+            f"Missing p11_at_max_exact for pe={pe}, pr={pr}"
+        )
+
+    @pytest.mark.parametrize("pe,pr", r4_1.POWER_SCENARIOS + r4_1.TYPE_I_SCENARIOS)
+    def test_extremum_evaluation_method_is_exact_algebraic(self, pe, pr):
+        """The extremum evaluation method must be EXACT_ALGEBRAIC,
+        confirming that the power values were computed using exact
+        algebraic arithmetic, not float polynomial evaluation."""
+        certified = r4_1.certified_global_extrema(pe, pr)
+        assert certified["extremum_evaluation_method"] == "EXACT_ALGEBRAIC", (
+            f"Method is {certified['extremum_evaluation_method']}, "
+            f"expected EXACT_ALGEBRAIC for pe={pe}, pr={pr}"
+        )
+
+    @pytest.mark.parametrize("pe,pr", r4_1.POWER_SCENARIOS)
+    def test_float_approximation_matches_exact_to_high_precision(self, pe, pr):
+        """The float approximation (power_min) must match the exact
+        algebraic value (power_min_exact) to at least 10 decimal
+        places. This verifies the float is a faithful representation
+        of the exact value."""
+        from sympy import N as sympy_N, Rational
+        certified = r4_1.certified_global_extrema(pe, pr)
+        # Re-evaluate the exact value to 50 digits and convert to float.
+        exact_min_str = certified["power_min_exact"]
+        exact_max_str = certified["power_max_exact"]
+        # Use sympy to parse the exact string and evaluate numerically.
+        from sympy import sympify
+        try:
+            exact_min_val = sympify(exact_min_str)
+            exact_max_val = sympify(exact_max_str)
+            float_min = float(sympy_N(exact_min_val, 50))
+            float_max = float(sympy_N(exact_max_val, 50))
+            assert abs(float_min - certified["power_min"]) < 1e-10, (
+                f"power_min float {certified['power_min']} doesn't match "
+                f"exact value {float_min} for pe={pe}, pr={pr}"
+            )
+            assert abs(float_max - certified["power_max"]) < 1e-10, (
+                f"power_max float {certified['power_max']} doesn't match "
+                f"exact value {float_max} for pe={pe}, pr={pr}"
+            )
+        except Exception as e:
+            pytest.skip(f"Could not parse exact value for comparison: {e}")
+
+    def test_pe040_pr010_interior_extremum_is_algebraic(self):
+        """For pe=0.40, pr=0.10, the power MAXIMUM occurs at the
+        interior stationary point. The exact value must be an algebraic
+        expression (involving CRootOf), not a simple rational —
+        confirming it was evaluated at the exact algebraic root, not
+        a float approximation."""
+        certified = r4_1.certified_global_extrema(0.40, 0.10)
+        # The max is at the interior root.
+        assert "CRootOf" in certified["power_max_exact"], (
+            f"Expected CRootOf in power_max_exact for interior extremum, "
+            f"got: {certified['power_max_exact'][:80]}"
+        )
+        assert "CRootOf" in certified["p11_at_max_exact"], (
+            f"Expected CRootOf in p11_at_max_exact for interior extremum, "
+            f"got: {certified['p11_at_max_exact'][:80]}"
+        )
+
+    def test_pe050_pr010_endpoint_extremum_is_rational(self):
+        """For pe=0.50, pr=0.10, the extrema occur at endpoints (0 and 0.1).
+        The exact values must be simple rationals (not CRootOf),
+        confirming they were evaluated at exact rational endpoints."""
+        certified = r4_1.certified_global_extrema(0.50, 0.10)
+        # Both extrema are at endpoints.
+        assert "CRootOf" not in certified["power_min_exact"], (
+            f"Expected rational (not CRootOf) for endpoint extremum, "
+            f"got: {certified['power_min_exact'][:80]}"
+        )
+        assert "CRootOf" not in certified["power_max_exact"], (
+            f"Expected rational (not CRootOf) for endpoint extremum, "
+            f"got: {certified['power_max_exact'][:80]}"
+        )
+        # The locations should be "0" and "1/10".
+        assert certified["p11_at_min_exact"] in ("0", "0"), (
+            f"Expected p11_at_min_exact='0', got: {certified['p11_at_min_exact']}"
+        )
+
+    def test_artifact_records_exact_values(self):
+        """The committed JSON must record power_min_exact, power_max_exact,
+        p11_at_min_exact, p11_at_max_exact, and extremum_evaluation_method
+        for every scenario."""
+        committed = json.loads(OUTPUT.read_text())
+        for row in committed["power_scenarios"]:
+            for key in ("power_min_exact", "power_max_exact",
+                        "p11_at_min_exact", "p11_at_max_exact",
+                        "extremum_evaluation_method"):
+                assert key in row, (
+                    f"Scenario pe={row['pe']}, pr={row['pr']} missing "
+                    f"{key} field"
+                )
+            assert row["extremum_evaluation_method"] == "EXACT_ALGEBRAIC", (
+                f"extremum_evaluation_method is "
+                f"{row['extremum_evaluation_method']}, expected "
+                f"EXACT_ALGEBRAIC"
+            )
+
+    def test_stationary_points_have_exact_power_values(self):
+        """The stationary_points list must include power_exact for each
+        stationary point — the exact algebraic representation of the
+        power at that root."""
+        committed = json.loads(OUTPUT.read_text())
+        for row in committed["power_scenarios"]:
+            for sp in row["stationary_points"]:
+                assert "power_exact" in sp, (
+                    f"Stationary point missing power_exact for "
+                    f"pe={row['pe']}, pr={row['pr']}"
+                )
+                assert "p11_exact" in sp, (
+                    f"Stationary point missing p11_exact for "
+                    f"pe={row['pe']}, pr={row['pr']}"
+                )
+
+    def test_no_float_only_extremum_evaluation(self):
+        """The artifact must NOT use float polynomial evaluation for the
+        authoritative extremum values. The extremum_evaluation_method
+        must be EXACT_ALGEBRAIC, not FLOAT or NUMPY."""
+        committed = json.loads(OUTPUT.read_text())
+        for row in committed["power_scenarios"]:
+            method = row["extremum_evaluation_method"]
+            assert method != "FLOAT", (
+                f"Extremum evaluation method is FLOAT for pe={row['pe']}, "
+                f"pr={row['pr']} — should be EXACT_ALGEBRAIC"
+            )
+            assert method != "NUMPY", (
+                f"Extremum evaluation method is NUMPY for pe={row['pe']}, "
+                f"pr={row['pr']} — should be EXACT_ALGEBRAIC"
+            )

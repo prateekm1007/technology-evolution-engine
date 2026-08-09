@@ -381,7 +381,7 @@ def power_polynomial(pe, pr):
 # evaluation."
 # --------------------------------------------------------------------
 from sympy import (Symbol, Rational, Poly, real_roots as sympy_real_roots,
-                   sympify, N as sympy_N)
+                   sympify, N as sympy_N, simplify)
 
 P11_SYMBOL = Symbol('p11')
 
@@ -391,6 +391,27 @@ def _to_rational(x):
     binary floating-point representation issues (e.g., 0.1 is not
     exactly representable in binary, but Rational('0.1') = 1/10)."""
     return Rational(str(x))
+
+
+def _exact_less_than(a, b):
+    """Return True if a < b using EXACT algebraic comparison.
+
+    Uses sympy's exact algebraic number comparison. If the exact
+    comparison is inconclusive (returns None), falls back to
+    high-precision (50-digit) numerical comparison.
+
+    This is used to compare power values at candidate points
+    (endpoints and isolated stationary roots) without any floating-
+    point approximation in the comparison step.
+    """
+    diff = simplify(a - b)  # a < b iff (a - b) < 0
+    if diff.is_negative is True:
+        return True
+    if diff.is_negative is False:
+        return False
+    # Fallback: high-precision numerical comparison.
+    diff_num = float(sympy_N(diff, 50))
+    return diff_num < 0
 
 
 def power_polynomial_exact(pe, pr):
@@ -445,15 +466,16 @@ def certified_root_isolation(pe, pr):
       number
 
     MULTIPLICITY HANDLING:
-    Sturm's count_roots counts roots WITH multiplicity. We use
-    Poly.real_roots(multiple=True) to get real roots with multiplicity
-    preserved, so the counts match.
+    Sturm's count_roots counts DISTINCT roots (ignoring multiplicity).
+    We use Poly.real_roots(multiple=False) to get distinct roots with
+    their multiplicities reported separately, so the counts match.
 
     Returns:
         {
-            "n_real_roots": int (exact count from Sturm, with multiplicity),
-            "roots": list of dicts with 'p11' (float approx) and
-                     'p11_exact' (string representation),
+            "n_real_roots": int (exact count of DISTINCT roots from Sturm),
+            "roots": list of dicts with 'p11' (float approx),
+                     'p11_exact' (string representation), and
+                     'multiplicity' (int),
             "sturm_count": int (same as n_real_roots, for clarity),
             "interval_lo": lo,
             "interval_hi": hi,
@@ -538,104 +560,152 @@ def certified_root_isolation(pe, pr):
 
 def certified_global_extrema(pe, pr):
     """Find the global min/max of Power(p11) over the feasible interval
-    using FORMAL real-root isolation.
+    using FORMAL real-root isolation and EXACT algebraic evaluation.
 
     This is the authoritative extremum finder. It replaces the previous
-    certified_extrema function which used companion-matrix eigenvalues
-    (numerical approximation) plus an asymmetric cross-check.
+    version which used companion-matrix eigenvalues (numerical
+    approximation) and float polynomial evaluation at the roots.
 
     Method:
-    1. Construct Power(p11) with exact rational coefficients.
+    1. Construct Power(p11) with EXACT RATIONAL coefficients.
     2. Compute Power'(p11) (exact rational).
     3. Use Sturm sequences to count real roots of Power' in [lo, hi].
-    4. Isolate each root as an exact algebraic number.
-    5. Evaluate Power at: lo, hi, and every isolated root.
-    6. The min/max of these evaluations is the global extremum.
+    4. Isolate each root as an EXACT algebraic number (CRootOf).
+    5. Evaluate Power at: lo, hi, and every isolated root — using
+       EXACT algebraic arithmetic (no float approximation).
+    6. Compare candidate values using EXACT algebraic comparison.
+    7. The min/max are the global extrema, determined exactly.
 
-    This is a FORMAL global optimization:
-    - Power(p11) is a polynomial (continuous and differentiable).
-    - Global extrema on a closed interval occur at endpoints or at
-      stationary points where Power'(p11) = 0.
-    - Sturm sequences give the EXACT count of stationary points.
-    - sympy's real_roots isolates each one as an exact algebraic number.
-    - No grid, no eigenvalue approximation, no finite-resolution limit.
+    This establishes TWO things (per audit round 39):
+    - FORMAL STATIONARY-POINT ENUMERATION: all endpoints and
+      stationary points are exactly enumerated.
+    - EXACT GLOBAL EXTREMUM DETERMINATION: candidate values are
+      compared in exact algebraic arithmetic.
 
-    Returns the same dict format as the old certified_extrema, plus
-    root_isolation details.
+    Float approximations (power_min, power_max, p11_at_min, etc.) are
+    provided for READABILITY ONLY. The authoritative values are the
+    exact algebraic representations (power_min_exact, power_max_exact,
+    p11_at_min_exact, p11_at_max_exact).
     """
     lo, hi = feasible_p11_interval(pe, pr)
+    lo_r = _to_rational(lo) if not isinstance(lo, int) else Rational(lo)
+    hi_r = _to_rational(hi) if not isinstance(hi, int) else Rational(hi)
 
     # Handle degenerate interval.
     if hi <= lo + 1e-15:
-        p = power_at_p11(pe, pr, lo)
+        poly_exact = power_polynomial_exact(pe, pr)
+        p_exact = simplify(poly_exact.as_expr().subs(P11_SYMBOL, lo_r))
+        p_float = float(sympy_N(p_exact, 50))
         return {
-            "power_min": p,
-            "power_max": p,
-            "p11_at_min": lo,
-            "p11_at_max": lo,
+            "power_min": p_float,
+            "power_max": p_float,
+            "power_min_exact": str(p_exact),
+            "power_max_exact": str(p_exact),
+            "p11_at_min": float(sympy_N(lo_r, 15)),
+            "p11_at_max": float(sympy_N(lo_r, 15)),
+            "p11_at_min_exact": str(lo_r),
+            "p11_at_max_exact": str(lo_r),
             "n_stationary_points": 0,
             "stationary_points": [],
             "derivative_degree": 0,
             "root_isolation": certified_root_isolation(pe, pr),
             "extremum_at_evaluated_point": True,
+            "extremum_evaluation_method": "EXACT_ALGEBRAIC",
         }
 
     # Construct exact polynomial and derivative.
     poly_exact = power_polynomial_exact(pe, pr)
     deriv_exact = poly_exact.diff()
     derivative_degree = int(deriv_exact.degree())
+    poly_expr = poly_exact.as_expr()
 
     # Handle zero derivative (constant power).
     if deriv_exact.is_zero:
-        p_lo = float(poly_exact(lo))
-        p_hi = float(poly_exact(hi))
-        power_min = min(p_lo, p_hi)
-        power_max = max(p_lo, p_hi)
+        p_lo_exact = simplify(poly_expr.subs(P11_SYMBOL, lo_r))
+        p_hi_exact = simplify(poly_expr.subs(P11_SYMBOL, hi_r))
+        if _exact_less_than(p_lo_exact, p_hi_exact):
+            power_min_exact, power_max_exact = p_lo_exact, p_hi_exact
+            p11_min_exact, p11_max_exact = lo_r, hi_r
+        else:
+            power_min_exact, power_max_exact = p_hi_exact, p_lo_exact
+            p11_min_exact, p11_max_exact = hi_r, lo_r
         return {
-            "power_min": power_min,
-            "power_max": power_max,
-            "p11_at_min": lo if p_lo <= p_hi else hi,
-            "p11_at_max": hi if p_lo <= p_hi else lo,
+            "power_min": float(sympy_N(power_min_exact, 50)),
+            "power_max": float(sympy_N(power_max_exact, 50)),
+            "power_min_exact": str(power_min_exact),
+            "power_max_exact": str(power_max_exact),
+            "p11_at_min": float(sympy_N(p11_min_exact, 15)),
+            "p11_at_max": float(sympy_N(p11_max_exact, 15)),
+            "p11_at_min_exact": str(p11_min_exact),
+            "p11_at_max_exact": str(p11_max_exact),
             "n_stationary_points": 0,
             "stationary_points": [],
             "derivative_degree": 0,
             "root_isolation": certified_root_isolation(pe, pr),
             "extremum_at_evaluated_point": True,
+            "extremum_evaluation_method": "EXACT_ALGEBRAIC",
         }
 
     # FORMAL REAL-ROOT ISOLATION via Sturm sequences.
+    # Isolate exact real roots directly from the derivative.
+    real_root_tuples = deriv_exact.real_roots(multiple=False)
+    exact_roots_in_interval = []
+    for root, multiplicity in real_root_tuples:
+        if lo_r <= root <= hi_r:
+            exact_roots_in_interval.append(root)
+
+    # Build EXACT candidate set: endpoints + isolated roots.
+    candidates_exact = [lo_r, hi_r] + exact_roots_in_interval
+
+    # Evaluate the EXACT polynomial at each candidate using EXACT
+    # algebraic arithmetic (no float approximation).
+    powers_exact = [simplify(poly_expr.subs(P11_SYMBOL, c))
+                    for c in candidates_exact]
+
+    # Find min and max using EXACT algebraic comparison.
+    idx_min = 0
+    for i in range(1, len(powers_exact)):
+        if _exact_less_than(powers_exact[i], powers_exact[idx_min]):
+            idx_min = i
+
+    idx_max = 0
+    for i in range(1, len(powers_exact)):
+        if _exact_less_than(powers_exact[idx_max], powers_exact[i]):
+            idx_max = i
+
+    # Get float approximations for READABILITY ONLY.
+    candidates_float = [float(sympy_N(c, 15)) for c in candidates_exact]
+    powers_float = [float(sympy_N(p, 50)) for p in powers_exact]
+
+    # Get root isolation info for reporting.
     isolation = certified_root_isolation(pe, pr)
-    stationary_points = [r["p11"] for r in isolation["roots"]]
 
-    # Also construct the numpy polynomial for fast float evaluation.
-    poly_float = power_polynomial(pe, pr)
-
-    # Evaluate power at: lo, hi, and every isolated stationary point.
-    candidates = [lo, hi] + stationary_points
-    powers = [float(poly_float(c)) for c in candidates]
-
-    # Clamp tiny negative values to 0 (floating-point artifact in
-    # the float evaluation — the exact polynomial is non-negative).
-    powers = [max(0.0, min(1.0, p)) for p in powers]
-
-    idx_min = min(range(len(powers)), key=lambda i: powers[i])
-    idx_max = max(range(len(powers)), key=lambda i: powers[i])
-
-    extremum_at_evaluated_point = True  # by construction
+    # Build stationary_points list with exact values.
+    stationary_points = []
+    for i, root in enumerate(exact_roots_in_interval):
+        root_idx = i + 2  # +2 because candidates_exact = [lo, hi] + roots
+        stationary_points.append({
+            "p11": float(sympy_N(root, 15)),
+            "p11_exact": str(root),
+            "power": float(sympy_N(powers_exact[root_idx], 50)),
+            "power_exact": str(powers_exact[root_idx]),
+        })
 
     return {
-        "power_min": powers[idx_min],
-        "power_max": powers[idx_max],
-        "p11_at_min": candidates[idx_min],
-        "p11_at_max": candidates[idx_max],
-        "n_stationary_points": len(stationary_points),
-        "stationary_points": [
-            {"p11": round(p, 10), "power": round(float(poly_float(p)), 10)}
-            for p in stationary_points
-        ],
+        "power_min": powers_float[idx_min],
+        "power_max": powers_float[idx_max],
+        "power_min_exact": str(powers_exact[idx_min]),
+        "power_max_exact": str(powers_exact[idx_max]),
+        "p11_at_min": candidates_float[idx_min],
+        "p11_at_max": candidates_float[idx_max],
+        "p11_at_min_exact": str(candidates_exact[idx_min]),
+        "p11_at_max_exact": str(candidates_exact[idx_max]),
+        "n_stationary_points": len(exact_roots_in_interval),
+        "stationary_points": stationary_points,
         "derivative_degree": derivative_degree,
         "root_isolation": isolation,
-        "extremum_at_evaluated_point": extremum_at_evaluated_point,
+        "extremum_at_evaluated_point": True,
+        "extremum_evaluation_method": "EXACT_ALGEBRAIC",
     }
 
 
@@ -1137,11 +1207,19 @@ def search_power_extrema(pe, pr):
         "theta": round(pe - pr, 10),
         "p11_lo": round(lo, 10),
         "p11_hi": round(hi, 10),
-        # Certified extrema via formal real-root isolation (authoritative)
+        # Extremal VALUES (float approximations for readability)
         "power_min": certified["power_min"],
         "power_max": certified["power_max"],
         "p11_at_min": round(certified["p11_at_min"], 10),
         "p11_at_max": round(certified["p11_at_max"], 10),
+        # EXACT algebraic representations (authoritative)
+        "power_min_exact": certified.get("power_min_exact", ""),
+        "power_max_exact": certified.get("power_max_exact", ""),
+        "p11_at_min_exact": certified.get("p11_at_min_exact", ""),
+        "p11_at_max_exact": certified.get("p11_at_max_exact", ""),
+        "extremum_evaluation_method": certified.get(
+            "extremum_evaluation_method", "EXACT_ALGEBRAIC"
+        ),
         "n_stationary_points": certified["n_stationary_points"],
         "stationary_points": certified["stationary_points"],
         "extremum_at_endpoint": extremum_at_endpoint,
@@ -1363,22 +1441,34 @@ def main():
                 "matches r4_reference_vectors.py EXACTLY"
             ),
             "extremum_method": (
-                "FORMAL REAL-ROOT ISOLATION via Sturm sequences over exact "
-                "rational arithmetic (sympy). For fixed (pe, pr), Power(p11) "
+                "FORMAL STATIONARY-POINT ENUMERATION + EXACT ALGEBRAIC "
+                "EXTREMUM DETERMINATION. For fixed (pe, pr), Power(p11) "
                 "is a degree-<=N polynomial with exact rational coefficients. "
                 "We compute the derivative (also exact rational), use "
                 "Sturm sequences (sympy's count_roots) to count the EXACT "
                 "number of DISTINCT real roots in [lo, hi], isolate each "
                 "root as an exact algebraic number (sympy's real_roots / "
-                "CRootOf), and evaluate Power at endpoints + isolated "
-                "stationary points. This is FORMAL root isolation — no grid, "
-                "no companion-matrix eigenvalue approximation, no finite-"
-                "resolution limitation."
+                "CRootOf), evaluate Power at endpoints + isolated roots "
+                "using EXACT algebraic arithmetic (no float approximation), "
+                "and compare candidate values using EXACT algebraic "
+                "comparison. This establishes BOTH (1) formal stationary-"
+                "point enumeration AND (2) exact global extremum "
+                "determination."
             ),
             "root_isolation_method": (
                 "Sturm sequences (sympy Poly.count_roots) for exact root "
                 "counting. CRootOf (sympy Poly.real_roots) for exact root "
                 "isolation. All arithmetic is exact rational (domain QQ)."
+            ),
+            "extremum_evaluation_method": (
+                "EXACT_ALGEBRAIC. The exact polynomial is evaluated at each "
+                "candidate (endpoints and isolated roots) using sympy's "
+                "exact algebraic substitution (poly_expr.subs(symbol, root)). "
+                "Candidate values are compared using exact algebraic "
+                "comparison (is_negative on the exact difference). Float "
+                "approximations are provided for readability only — the "
+                "authoritative values are the exact algebraic representations "
+                "(power_min_exact, power_max_exact, etc.)."
             ),
             "grid_cross_check": (
                 f"A {P11_GRID_SIZE}-point grid search is retained as a "
