@@ -1,21 +1,20 @@
 # B-2 REPAIR SPECIFICATION — Independent Semantic Support
 
-**Status:** AMENDED SPEC (round-78) — FROZEN FOR RE-ADJUDICATION
+**Status:** AMENDED SPEC (round-79) — FROZEN FOR RE-ADJUDICATION
 **Original freeze:** 2026-08-09 (commit `8a84fdc`, round-73)
 **First amended freeze:** 2026-08-10 (commit `4bc945d`, round-74)
 **Second amended freeze:** 2026-08-10 (commit `3076d3a`, round-75)
 **Third amended freeze:** 2026-08-10 (commit `9b4d843`, round-76)
 **Fourth amended freeze:** 2026-08-10 (commit `7f2977a`, round-77)
-**Fifth amended freeze:** 2026-08-10 (this revision, round-78)
+**Fifth amended freeze:** 2026-08-10 (commit `015b735`, round-78)
+**Sixth amended freeze:** 2026-08-10 (this revision, round-79)
 **Frozen by:** protocol-B implementer (this agent)
-**Adjudication status:** Round-77 verdict REJECT WITH ONE MANDATORY
-CONDITION → round-78 verdict REJECT WITH TWO MANDATORY CONDITIONS.
-This fifth amended revision resolves both round-78 conditions:
-(1) decouple `ISS_both` from `JOINT_CROSS_SOURCE` (ISS_both is a
-candidate-level counterfactual property; JOINT_CROSS_SOURCE is one
-evidence path for an atomic claim); (2) freeze the inference-rule
-taxonomy. Awaiting re-adjudication before any implementation work
-may begin.
+**Adjudication status:** Round-78 verdict REJECT WITH TWO MANDATORY
+CONDITIONS → round-79 verdict ACCEPT WITH ONE CONDITION. This sixth
+amended revision resolves the round-79 condition: explicitly state
+that inference-rule classification does not establish derivation
+validity, and freeze the 8-step verification ordering. Awaiting
+re-adjudication before any implementation work may begin.
 
 **Supersedes:** The lexical detector at commit `20ac268`
 (`b1_b2_verification._check_leakage`). That detector's 6/6 result on the
@@ -28,8 +27,8 @@ round-73 verdict, which adjudicated the B-2 v2 adversarial diagnostic
 (6/13 mismatches across three semantic failure modes) and directed that a
 repair specification be drafted and independently adjudicated before any
 implementation work begins. Subsequent verdicts (round-74 through
-round-78) each directed amendments to resolve specific defects. This
-fifth amended revision resolves the two round-78 conditions.
+round-79) each directed amendments to resolve specific defects. This
+sixth amended revision resolves the round-79 condition.
 
 **Adjudication history:**
 
@@ -40,45 +39,39 @@ fifth amended revision resolves the two round-78 conditions.
 | 75 | ACCEPT WITH CONDITIONS | Second amended revision (commit `3076d3a`) resolves 3 conditions + Section 5.1 refinement |
 | 76 | REJECT WITH ONE MANDATORY CONDITION | Third amended revision (commit `9b4d843`) eliminates non-constructible `ISS_neither`, replaces with `REDUNDANT_SUPPORT` |
 | 77 | REJECT WITH ONE MANDATORY CONDITION | Fourth amended revision (commit `7f2977a`) adds `JOINT_CROSS_SOURCE` support for cross-source synthesis relations |
-| 78 | REJECT WITH TWO MANDATORY CONDITIONS | This fifth amended revision decouples `ISS_both` from `JOINT_CROSS_SOURCE` and freezes the inference-rule taxonomy |
-| 79+ | PENDING | Re-adjudication by external auditor |
+| 78 | REJECT WITH TWO MANDATORY CONDITIONS | Fifth amended revision (commit `015b735`) decouples `ISS_both` from `JOINT_CROSS_SOURCE` and freezes the inference-rule taxonomy |
+| 79 | ACCEPT WITH ONE CONDITION | This sixth amended revision adds the 8-step verification ordering (classification is not validity) |
+| 80+ | PENDING | Re-adjudication by external auditor |
 
-**Round-78 conditions resolved by this amendment:**
+**Round-79 condition resolved by this amendment:**
 
-1. **Decouple `ISS_both` from `JOINT_CROSS_SOURCE`** (Section 2.1, 2.7).
+1. **Explicitly state that inference-rule classification does not
+   establish derivation validity, and freeze the verification
+   ordering** (new Section 2.6.9; Section 2.7 anti-regression item 7;
+   Section 8.5 anti-regression).
 
-   The round-77 spec incorrectly tied `ISS_both` to the existence of a
-   `JOINT_CROSS_SOURCE` atom. But `ISS_both` is a property of the
-   **candidate** (determined by the counterfactual test), while
-   `JOINT_CROSS_SOURCE` is a property of an **evidence path** for an
-   atomic claim. The cross-source property can emerge from the
-   combination of independently supported atoms (atom `a1` from A,
-   atom `a2` from B — neither source alone justifies the whole
-   candidate) WITHOUT any `JOINT_CROSS_SOURCE` evidence. The round-78
-   amendment makes this decoupling explicit: `ISS_both` is defined
-   purely from the counterfactual; `JOINT_CROSS_SOURCE` is one
-   possible evidence path, not a necessary condition.
+   The round-78 spec froze the inference-rule taxonomy
+   (`inference-rules-v1`), which prevents the detector from inventing
+   rule labels. But the taxonomy is a **classification ontology**, not
+   an **inference engine** — selecting `COMPOSITION`,
+   `ABSTRACTION`, etc. must never itself imply that the derived claim
+   is true. Without an explicit verification ordering, an
+   implementation could accept a `JOINT_CROSS_SOURCE` entry based
+   solely on classification ("LLM says this is COMPOSITION →
+   COMPOSITION accepted → derived claim accepted"), recreating the
+   semantic-leakage problem the spec is trying to eliminate.
 
-   Key principle: **evidence type determines how an atomic claim is
-   supported; counterfactuals determine the candidate's ISS state.**
-   Do not conflate those two levels.
+   The round-79 amendment adds Section 2.6.9: a mandatory 8-step
+   verification ordering for every `JOINT_CROSS_SOURCE` entry. Each
+   step must pass before the next is evaluated; failure at any step
+   rejects the entry. Step 5 (independently judge whether the derived
+   claim actually follows under the stated rule) is the operational
+   mechanism that prevents misapplication of real labels.
 
-2. **Freeze the inference-rule taxonomy** (new Section 2.6.8;
-   Section 3.7.2 requirement 8).
-
-   The round-77 spec left `inference_rule` as an open question
-   (§9.12), which created a "semantic-rule tuning" optimization
-   surface — the detector could emit any plausible-sounding rule
-   label to justify a derivation. The round-78 amendment freezes a
-   minimal taxonomy (`inference-rules-v1`): 8 named rules
-   (`COMPOSITION`, `ABSTRACTION`, `SPECIALIZATION`, `GENERALIZATION`,
-   `CAUSAL_TRANSFER`, `MECHANISTIC_ANALOGY`, `STRUCTURAL_ANALOGY`,
-   `FUNCTIONAL_ANALOGY`) plus `OTHER`. Each rule has a definition,
-   admissibility criteria, examples, and adversarial counterexamples.
-   `OTHER` cannot automatically qualify a `JOINT_CROSS_SOURCE` claim
-   as a B-2 pass — it requires independent adjudication and is
-   reported separately. The schema enforces the enum via requirement
-   8.
+   This is a small specification clarification, not another
+   architecture round. The auditor stated: "Once that sentence/order
+   is frozen and re-adjudicated, I would consider the specification
+   sufficiently closed to move out of design."
 
 ---
 
@@ -959,6 +952,114 @@ The taxonomy is versioned (`inference-rules-v1`). Future revisions
 require a new version number, a new adjudication cycle, and
 re-verification of all held-out results.
 
+#### 2.6.9 Verification ordering — classification is not validity (round-79, NEW)
+
+**Critical principle (round-79):** the inference taxonomy is a
+**classification ontology**, NOT an **inference engine**. Selecting
+`COMPOSITION`, `ABSTRACTION`, `CAUSAL_TRANSFER`, etc. must **never
+itself imply that the derived claim is true**.
+
+The taxonomy labels the *type* of inference the detector claims to be
+performing. It does NOT establish that the inference is valid. A
+detector that emits `inference_rule = "COMPOSITION"` has only
+*classified* its derivation; it has not *proven* the derivation. The
+adjudicator must independently verify that the derived claim actually
+follows under the stated rule.
+
+**Mandatory verification ordering (round-79, normative):**
+
+For every `JOINT_CROSS_SOURCE` support entry, the adjudicator must
+execute the following 8-step sequence **in order**. Each step must
+pass before the next is evaluated. Failure at any step rejects the
+support entry (the atom is treated as unsupported).
+
+```
+Step 1: Identify inference_rule
+        — Confirm the entry's inference_rule field is from the frozen
+          taxonomy (Section 2.6.8). If OTHER, flag
+          UNCLASSIFIED_INFERENCE and route to independent adjudication
+          (cannot auto-qualify).
+
+Step 2: Verify rule admissibility conditions
+        — Confirm the entry satisfies the admissibility criteria for
+          the stated rule (Section 2.6.8 table). E.g. for COMPOSITION:
+          Source A asserts process/capability P, Source B asserts
+          substrate/mediator M (or vice versa), the derived claim
+          asserts "P applied to M", neither source alone asserts
+          "P applied to M".
+
+Step 3: Verify A-component evidence
+        — Confirm source_a_spans are present in Source A at the cited
+          offsets and actually assert the A-component.
+
+Step 4: Verify B-component evidence
+        — Confirm source_b_spans are present in Source B at the cited
+          offsets and actually assert the B-component.
+
+Step 5: Independently judge whether the derived claim actually follows
+        under the stated rule
+        — The adjudicator independently evaluates: given the A-component
+          and B-component as verified in steps 3-4, does the
+          derived_claim actually follow under the inference_rule
+          verified in step 2? This is a semantic judgment, NOT a
+          mechanical check. The adjudicator must NOT accept the
+          detector's assertion that the derivation is valid; the
+          adjudicator must independently confirm it.
+
+Step 6: Verify neither source independently asserts the complete
+        derived claim
+        — Confirm the derived_claim is NOT asserted by Source A alone
+          and NOT asserted by Source B alone. If either source
+          independently asserts it, the support entry should be
+          SOURCE_LOCAL, not JOINT_CROSS_SOURCE.
+
+Step 7: Verify counterfactual destruction
+        — Confirm counterfactual_a (removing Source A leaves
+          derived_claim unsupported) and counterfactual_b (removing
+          Source B leaves derived_claim unsupported) are correct.
+
+Step 8: Only then accept JOINT_CROSS_SOURCE support
+        — If and only if all 7 preceding steps pass, the
+          JOINT_CROSS_SOURCE entry is accepted as valid support for
+          the atom. The atom is supported.
+```
+
+**Why the ordering is mandatory (round-79):**
+
+Without this explicit ordering, an implementation could effectively
+do:
+
+```
+LLM: "This looks like COMPOSITION."
+       ↓
+COMPOSITION accepted
+       ↓
+derived claim accepted
+```
+
+That would recreate the exact semantic-leakage problem this
+specification is trying to eliminate. The frozen taxonomy prevents
+the detector from inventing rule labels, but it does NOT prevent the
+detector from misapplying a real label. Step 5 (independent judgment
+that the derived claim actually follows) is the operational mechanism
+that prevents misapplication.
+
+**Relationship to existing requirements:**
+
+This ordering consolidates requirements already present in §2.6.4
+(adjudicator verification) and §2.6.7 (anti-cheating conditions) into
+a single normative sequence. The consolidation is necessary because
+the taxonomy is now frozen and decision-critical — the ordering must
+be an explicit normative requirement rather than something inferred
+from several sections.
+
+**Anti-regression (Section 8.5):** any implementation that accepts a
+`JOINT_CROSS_SOURCE` entry without executing all 8 steps in order is
+non-compliant. Specifically, accepting an entry based solely on
+`inference_rule` classification (steps 1-2) without independent
+judgment of derivation validity (step 5) is a critical regression
+and must be rejected by the auditor.
+
 ### 2.7 B-2 establishes provenance topology, Gate B establishes discovery validity (round-74 condition 7; round-75 strengthened; round-76 finalized; round-77 clarified; round-78 decoupled)
 
 The B-2 decision criterion (Section 2.4, round-76 amended, round-77
@@ -1067,14 +1168,24 @@ implementation, and the audit must all preserve:
    exists but cannot automatically qualify a `JOINT_CROSS_SOURCE` claim
    as a B-2 pass — it requires independent adjudication and is reported
    separately.
+7. **The 8-step verification ordering (round-79, NEW):** every
+   `JOINT_CROSS_SOURCE` entry must pass the 8-step verification
+   sequence (Section 2.6.9) in order. Inference-rule classification
+   (steps 1-2) does NOT establish derivation validity; the adjudicator
+   must independently judge that the derived claim follows (step 5).
+   Accepting an entry based solely on classification without
+   independent judgment of validity is a critical regression.
 
 Any attempt to (a) expand B-2's criterion to include novelty
 evaluation, (b) collapse `UNSUPPORTED` into an ALLOW state, (c)
 re-introduce the non-constructible `ISS_neither` state, (d) allow
 `JOINT_CROSS_SOURCE` support without the five anti-cheating
 conditions, (e) make `JOINT_CROSS_SOURCE` a necessary condition for
-`ISS_both`, or (f) allow free-form `inference_rule` values outside the
-frozen taxonomy, is regression and must be rejected by the auditor.
+`ISS_both`, (f) allow free-form `inference_rule` values outside the
+frozen taxonomy, or (g) accept `JOINT_CROSS_SOURCE` support without
+the 8-step verification ordering (especially step 5: independent
+judgment of derivation validity), is regression and must be rejected
+by the auditor.
 
 ---
 
@@ -2161,6 +2272,18 @@ Anti-regression safeguards:
   removing either source destroys the justification, is a re-opening
   of the "LLM manufactures plausible A+B=invention" problem and must
   be rejected by the auditor.
+- **Inference-rule classification does NOT establish derivation
+  validity (round-79, NEW).** The frozen taxonomy
+  (`inference-rules-v1`, Section 2.6.8) is a classification ontology,
+  NOT an inference engine. Selecting `COMPOSITION`,
+  `ABSTRACTION`, `CAUSAL_TRANSFER`, etc. must never itself imply
+  that the derived claim is true. Every `JOINT_CROSS_SOURCE` entry
+  must pass the 8-step verification ordering (Section 2.6.9),
+  including step 5: the adjudicator must **independently judge**
+  whether the derived claim actually follows under the stated rule.
+  Accepting an entry based solely on classification (steps 1-2)
+  without independent judgment of validity (step 5) is a critical
+  regression and must be rejected by the auditor.
 - The B-2 criterion must NOT evaluate whether a
   `JOINT_CROSS_SOURCE` derivation produces a "valid" or "good"
   invention (round-77). B-2 only verifies the derivation is honestly
@@ -2446,14 +2569,15 @@ R5.1 design revision document.
 ## 11. Status
 
 ```text
-Spec status:                    AMENDED (round-78) — FROZEN FOR RE-ADJUDICATION
+Spec status:                    AMENDED (round-79) — FROZEN FOR RE-ADJUDICATION
 Original freeze:                commit 8a84fdc, 2026-08-09 (round-73)
 First amended freeze:           commit 4bc945d, 2026-08-10 (round-74)
 Second amended freeze:          commit 3076d3a, 2026-08-10 (round-75)
 Third amended freeze:           commit 9b4d843, 2026-08-10 (round-76)
 Fourth amended freeze:          commit 7f2977a, 2026-08-10 (round-77)
-Fifth amended freeze:           this revision, 2026-08-10 (round-78)
-Implementation status:          NOT STARTED — blocked on round-78 re-adjudication
+Fifth amended freeze:           commit 015b735, 2026-08-10 (round-78)
+Sixth amended freeze:           this revision, 2026-08-10 (round-79)
+Implementation status:          NOT STARTED — blocked on round-79 re-adjudication
 Production substrate status:    UNCHANGED — no modifications made
 Protocol B status:              BLOCKED — blocked on implementation freeze + final
                                 independent adjudication (Section 7.7)
@@ -2466,6 +2590,8 @@ Trace schema version:           b2-trace-v3 (round-77; source_support structure
                                 with SOURCE_LOCAL + JOINT_CROSS_SOURCE)
 Inference-rule taxonomy:        inference-rules-v1 (round-78; 8 named rules
                                 + OTHER; frozen at Section 2.6.8)
+Verification ordering:          8-step mandatory sequence (round-79; frozen
+                                at Section 2.6.9; classification ≠ validity)
 
 Round-74 conditions resolved (commit 4bc945d):
   1. Operational Justified()          — new Section 2.6
@@ -2489,21 +2615,22 @@ Round-76 condition resolved (commit 9b4d843):
 Round-77 condition resolved (commit 7f2977a):
   1. Add JOINT_CROSS_SOURCE support mechanism (Section 2.6.2-2.6.7, 3.7)
 
-Round-78 conditions resolved (this revision):
+Round-78 conditions resolved (commit 015b735):
   1. Decouple ISS_both from JOINT_CROSS_SOURCE
-     — Section 2.1 (ISS_both definition: pure counterfactual, decoupling note)
-     — Section 2.7 (ISS_both via two pathways: independent atoms OR joint
-       relation; key principle: evidence type ≠ ISS state)
-     — Section 2.7 anti-regression item 5 (decoupling mandatory)
-  2. Freeze inference-rule taxonomy
-     — new Section 2.6.8 (inference-rules-v1: 8 named rules + OTHER;
-       definitions, admissibility, examples, counterexamples, OTHER
-       handling)
-     — Section 3.7.1 schema (inference_rule enum; inference_rule_other
-       field)
-     — Section 3.7.2 requirement 8 (enum enforced; OTHER cannot auto-pass)
-     — Section 2.7 anti-regression item 6 (taxonomy frozen)
-     — Section 9.12 RESOLVED
+  2. Freeze inference-rule taxonomy (inference-rules-v1)
+
+Round-79 condition resolved (this revision):
+  1. Explicitly state that inference-rule classification does not
+     establish derivation validity; freeze the 8-step verification
+     ordering.
+     — new Section 2.6.9 (8-step mandatory verification sequence;
+       classification is classification ontology, not inference engine;
+       step 5 = independent judgment of derivation validity)
+     — Section 2.7 anti-regression item 7 (8-step ordering mandatory;
+       accepting based solely on classification is critical regression)
+     — Section 8.5 anti-regression (classification ≠ validity rule;
+       step 5 independent judgment required)
+     — Section 11 status (verification ordering line added)
 
 Four-state ontology (round-76, retained; round-78 decoupled):
   ISS_one            → REJECT                  (source-local leakage)
@@ -2555,10 +2682,12 @@ This amended spec is now awaiting the auditor's re-adjudication per
 Section 7.2. No implementation work may begin until the auditor accepts
 the amended spec (unconditionally or with conditions).
 
-Per the round-78 verdict: "Once those two surgical corrections are made
-and independently re-adjudicated, I would be comfortable allowing the
-process to leave specification design and move into **blind held-out
-construction → implementation → adversarial audit → freeze →
-discrimination execution**." If the auditor accepts this round-78
-amended spec, the workflow proceeds to held-out set construction
-(Section 7.3) and implementation (Section 7.4).
+Per the round-79 verdict: "Once that sentence/order is frozen and
+re-adjudicated, I would consider the specification sufficiently closed
+to move out of design: **blind held-out construction → implementation
+→ adversarial audit → freeze → discrimination execution → independent
+adjudication.**" The auditor also noted: "The next phase should
+finally generate **evidence about the engine**, rather than another
+increasingly elaborate specification." If the auditor accepts this
+round-79 amended spec, the workflow proceeds to held-out set
+construction (Section 7.3) and implementation (Section 7.4).
