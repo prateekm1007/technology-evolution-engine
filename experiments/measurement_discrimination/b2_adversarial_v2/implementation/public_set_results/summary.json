@@ -1,0 +1,199 @@
+{
+  "model": "glm-4-plus",
+  "n_runs": 1,
+  "total_cases": 13,
+  "label_matches": 7,
+  "valid_traces": 13,
+  "by_category": {
+    "(1) no-overlap source-local paraphrase": {
+      "total": 2,
+      "match": 2,
+      "valid": 2
+    },
+    "(2) cross-source synthesis w/ one-source overlap": {
+      "total": 2,
+      "match": 2,
+      "valid": 2
+    },
+    "(3) source-local disguised as cross-domain": {
+      "total": 2,
+      "match": 0,
+      "valid": 2
+    },
+    "(4) minimal-overlap cross-source synthesis": {
+      "total": 2,
+      "match": 0,
+      "valid": 2
+    },
+    "(control) clean bridge, no overlap": {
+      "total": 1,
+      "match": 0,
+      "valid": 1
+    },
+    "(control) exact-string leakage": {
+      "total": 1,
+      "match": 1,
+      "valid": 1
+    },
+    "(control) round-72 true-allow case": {
+      "total": 1,
+      "match": 1,
+      "valid": 1
+    },
+    "(control) round-72 true-reject case": {
+      "total": 1,
+      "match": 1,
+      "valid": 1
+    },
+    "(3) source-local disguised as cross-domain (defeats suffix heuristic)": {
+      "total": 1,
+      "match": 0,
+      "valid": 1
+    }
+  },
+  "results": [
+    {
+      "id": "ADV-01",
+      "category": "(1) no-overlap source-local paraphrase",
+      "candidate": "skeletal calcification process",
+      "expected_label": "REJECT",
+      "detector_label": "REJECT",
+      "match": true,
+      "iss_state": "ISS_one",
+      "trace_valid": true,
+      "validation_error_count": 0
+    },
+    {
+      "id": "ADV-02",
+      "category": "(1) no-overlap source-local paraphrase",
+      "candidate": "calcified matrix in osseous structures",
+      "expected_label": "REJECT",
+      "detector_label": "REJECT",
+      "match": true,
+      "iss_state": "ISS_one",
+      "trace_valid": true,
+      "validation_error_count": 0
+    },
+    {
+      "id": "ADV-03",
+      "category": "(2) cross-source synthesis w/ one-source overlap",
+      "candidate": "enzyme-templated mineral deposition",
+      "expected_label": "ALLOW",
+      "detector_label": "ALLOW",
+      "match": true,
+      "iss_state": "ISS_both",
+      "trace_valid": true,
+      "validation_error_count": 0
+    },
+    {
+      "id": "ADV-04",
+      "category": "(2) cross-source synthesis w/ one-source overlap",
+      "candidate": "silicatein-guided calcification",
+      "expected_label": "ALLOW",
+      "detector_label": "ALLOW",
+      "match": true,
+      "iss_state": "ISS_both",
+      "trace_valid": true,
+      "validation_error_count": 0
+    },
+    {
+      "id": "ADV-05",
+      "category": "(3) source-local disguised as cross-domain",
+      "candidate": "hypermineralization",
+      "expected_label": "REJECT",
+      "detector_label": "NOT_ADJUDICATED_BY_B2",
+      "match": false,
+      "iss_state": "UNSUPPORTED",
+      "trace_valid": true,
+      "validation_error_count": 0
+    },
+    {
+      "id": "ADV-06",
+      "category": "(3) source-local disguised as cross-domain",
+      "candidate": "xenomineralization",
+      "expected_label": "REJECT",
+      "detector_label": "ALLOW",
+      "match": false,
+      "iss_state": "ISS_both",
+      "trace_valid": true,
+      "validation_error_count": 0
+    },
+    {
+      "id": "ADV-07",
+      "category": "(4) minimal-overlap cross-source synthesis",
+      "candidate": "enzyme-templated inorganic lattice formation",
+      "expected_label": "ALLOW",
+      "detector_label": "REJECT",
+      "match": false,
+      "iss_state": "ISS_one",
+      "trace_valid": true,
+      "validation_error_count": 0
+    },
+    {
+      "id": "ADV-08",
+      "category": "(4) minimal-overlap cross-source synthesis",
+      "candidate": "protein-catalyzed biogenic oxide precipitation",
+      "expected_label": "ALLOW",
+      "detector_label": "NOT_ADJUDICATED_BY_B2",
+      "match": false,
+      "iss_state": "UNSUPPORTED",
+      "trace_valid": true,
+      "validation_error_count": 0
+    },
+    {
+      "id": "ADV-09",
+      "category": "(control) clean bridge, no overlap",
+      "candidate": "quantum entanglement",
+      "expected_label": "ALLOW",
+      "detector_label": "NOT_ADJUDICATED_BY_B2",
+      "match": false,
+      "iss_state": "UNSUPPORTED",
+      "trace_valid": true,
+      "validation_error_count": 0
+    },
+    {
+      "id": "ADV-10",
+      "category": "(control) exact-string leakage",
+      "candidate": "calcium phosphate",
+      "expected_label": "REJECT",
+      "detector_label": "REJECT",
+      "match": true,
+      "iss_state": "ISS_one",
+      "trace_valid": true,
+      "validation_error_count": 0
+    },
+    {
+      "id": "ADV-11",
+      "category": "(control) round-72 true-allow case",
+      "candidate": "biomineralization",
+      "expected_label": "ALLOW",
+      "detector_label": "ALLOW",
+      "match": true,
+      "iss_state": "ISS_both",
+      "trace_valid": true,
+      "validation_error_count": 0
+    },
+    {
+      "id": "ADV-12",
+      "category": "(control) round-72 true-reject case",
+      "candidate": "mineralizing",
+      "expected_label": "REJECT",
+      "detector_label": "REJECT",
+      "match": true,
+      "iss_state": "ISS_one",
+      "trace_valid": true,
+      "validation_error_count": 0
+    },
+    {
+      "id": "ADV-13",
+      "category": "(3) source-local disguised as cross-domain (defeats suffix heuristic)",
+      "candidate": "pseudomineralization",
+      "expected_label": "REJECT",
+      "detector_label": "NOT_ADJUDICATED_BY_B2",
+      "match": false,
+      "iss_state": "UNSUPPORTED",
+      "trace_valid": true,
+      "validation_error_count": 0
+    }
+  ]
+}

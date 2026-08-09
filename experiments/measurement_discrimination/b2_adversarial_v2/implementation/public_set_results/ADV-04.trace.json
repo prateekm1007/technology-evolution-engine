@@ -1,0 +1,97 @@
+{
+  "schema_version": "b2-trace-v3",
+  "candidate": {
+    "id": "ADV-04",
+    "text": "silicatein-guided calcification",
+    "source_a": "Calcium phosphate forms crystalline deposits in bone tissue through osteoblast-mediated mineralization.",
+    "source_b": "Marine diatoms precipitate silica-based cell walls using enzymatic silicatein proteins."
+  },
+  "atoms": [
+    {
+      "atom_id": "a1",
+      "claim": "{process: calcification}",
+      "source_support": [
+        {
+          "support_type": "SOURCE_LOCAL",
+          "source_id": "A",
+          "spans": [
+            {
+              "span_text": "Calcium phosphate forms crystalline deposits in bone tissue",
+              "start": 0,
+              "end": 59
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "atom_id": "a2",
+      "claim": "{mediator: silicatein}",
+      "source_support": [
+        {
+          "support_type": "SOURCE_LOCAL",
+          "source_id": "B",
+          "spans": [
+            {
+              "span_text": "enzymatic silicatein proteins",
+              "start": 57,
+              "end": 86
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "atom_id": "a3",
+      "claim": "{process: guided_by_mediator}",
+      "source_support": [
+        {
+          "support_type": "JOINT_CROSS_SOURCE",
+          "source_a_spans": [
+            {
+              "span_text": "osteoblast-mediated mineralization",
+              "start": 68,
+              "end": 102
+            }
+          ],
+          "source_b_spans": [
+            {
+              "span_text": "using enzymatic silicatein proteins",
+              "start": 51,
+              "end": 86
+            }
+          ],
+          "derived_claim": "{process: guided_by_mediator}",
+          "inference_rule": "MECHANISTIC_ANALOGY",
+          "counterfactual_a": "Without source A, there's no evidence of a process being guided by a mediator in the context of mineralization.",
+          "counterfactual_b": "Without source B, there's no evidence of silicatein as a mediator that guides a process."
+        }
+      ]
+    }
+  ],
+  "counterfactuals": [
+    {
+      "removed_source": "A",
+      "unsupported_atoms": [
+        "a1",
+        "a3"
+      ],
+      "justified_without_source": false
+    },
+    {
+      "removed_source": "B",
+      "unsupported_atoms": [
+        "a2",
+        "a3"
+      ],
+      "justified_without_source": false
+    }
+  ],
+  "classification": {
+    "justified_by_corpus": true,
+    "iss_a": true,
+    "iss_b": true,
+    "iss_state": "ISS_both",
+    "label": "ALLOW"
+  }
+}

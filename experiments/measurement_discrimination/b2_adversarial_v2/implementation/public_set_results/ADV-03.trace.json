@@ -1,0 +1,145 @@
+{
+  "schema_version": "b2-trace-v3",
+  "candidate": {
+    "id": "ADV-03",
+    "text": "enzyme-templated mineral deposition",
+    "source_a": "Calcium phosphate forms crystalline deposits in bone tissue through osteoblast-mediated mineralization.",
+    "source_b": "Marine diatoms precipitate silica-based cell walls using enzymatic silicatein proteins."
+  },
+  "atoms": [
+    {
+      "atom_id": "a1",
+      "claim": "{process: mineral_deposition}",
+      "source_support": [
+        {
+          "support_type": "SOURCE_LOCAL",
+          "source_id": "A",
+          "spans": [
+            {
+              "span_text": "mineralization",
+              "start": 88,
+              "end": 102
+            }
+          ]
+        },
+        {
+          "support_type": "SOURCE_LOCAL",
+          "source_id": "B",
+          "spans": [
+            {
+              "span_text": "precipitate",
+              "start": 15,
+              "end": 26
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "atom_id": "a2",
+      "claim": "{mediator: enzyme}",
+      "source_support": [
+        {
+          "support_type": "SOURCE_LOCAL",
+          "source_id": "A",
+          "spans": [
+            {
+              "span_text": "osteoblast-mediated",
+              "start": 68,
+              "end": 87
+            }
+          ]
+        },
+        {
+          "support_type": "SOURCE_LOCAL",
+          "source_id": "B",
+          "spans": [
+            {
+              "span_text": "enzymatic silicatein",
+              "start": 57,
+              "end": 77
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "atom_id": "a3",
+      "claim": "{substrate: mineral}",
+      "source_support": [
+        {
+          "support_type": "SOURCE_LOCAL",
+          "source_id": "A",
+          "spans": [
+            {
+              "span_text": "Calcium phosphate",
+              "start": 0,
+              "end": 17
+            }
+          ]
+        },
+        {
+          "support_type": "SOURCE_LOCAL",
+          "source_id": "B",
+          "spans": [
+            {
+              "span_text": "silica-based",
+              "start": 27,
+              "end": 39
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "atom_id": "a4",
+      "claim": "{relationship: enzyme_templated}",
+      "source_support": [
+        {
+          "support_type": "JOINT_CROSS_SOURCE",
+          "source_a_spans": [
+            {
+              "span_text": "osteoblast-mediated",
+              "start": 68,
+              "end": 87
+            }
+          ],
+          "source_b_spans": [
+            {
+              "span_text": "enzymatic silicatein",
+              "start": 57,
+              "end": 77
+            }
+          ],
+          "derived_claim": "{relationship: enzyme_templated}",
+          "inference_rule": "COMPOSITION",
+          "counterfactual_a": "Without Source A, we lose the concept of osteoblast-mediated mineralization, which is the only example of biological templating in the corpus.",
+          "counterfactual_b": "Without Source B, we lose the concept of enzymatic silicatein proteins, which is the only example of enzymatic activity in mineral formation in the corpus."
+        }
+      ]
+    }
+  ],
+  "counterfactuals": [
+    {
+      "removed_source": "A",
+      "unsupported_atoms": [
+        "a4"
+      ],
+      "justified_without_source": false
+    },
+    {
+      "removed_source": "B",
+      "unsupported_atoms": [
+        "a4"
+      ],
+      "justified_without_source": false
+    }
+  ],
+  "classification": {
+    "justified_by_corpus": true,
+    "iss_a": true,
+    "iss_b": true,
+    "iss_state": "ISS_both",
+    "label": "ALLOW"
+  }
+}
