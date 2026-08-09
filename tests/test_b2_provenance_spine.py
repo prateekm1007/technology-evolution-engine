@@ -37,8 +37,19 @@ from engine.b2_provenance import (
     get_parser_config_sha256,
     get_parser_version,
     ProvenanceLedger,
+    ExecutionGate,
 )
 from engine.b2_provenance.content_addressed_storage import STORAGE_ROOT
+from scripts.verify_audit_instrument import create_execution_manifest
+
+
+@pytest.fixture
+def execution_gate():
+    """Fixture that provides an active execution gate for tests that need
+    to call append_candidate_entry (which now requires the gate)."""
+    manifest = create_execution_manifest("TEST-FIXTURE", ["CASE-001"], {})
+    with ExecutionGate(manifest) as gate:
+        yield gate
 
 
 # =====================================================================
@@ -340,7 +351,7 @@ class TestProvenanceLedger:
             "invocation_seed": "e" * 64,
         }
 
-    def test_append_and_retrieve(self, tmp_path):
+    def test_append_and_retrieve(self, tmp_path, execution_gate):
         """Appending an entry and retrieving it works."""
         ledger = self._create_test_ledger(tmp_path)
         params = self._make_test_entry_params()
@@ -357,14 +368,14 @@ class TestProvenanceLedger:
         assert retrieved is not None
         assert retrieved["candidate_id"] == "CASE-001-ENGINE-CAND-001"
 
-    def test_hash_chain_genesis(self, tmp_path):
+    def test_hash_chain_genesis(self, tmp_path, execution_gate):
         """First entry's prev_entry_hash is 'GENESIS'."""
         ledger = self._create_test_ledger(tmp_path)
         params = self._make_test_entry_params()
         entry = ledger.append_candidate_entry(**params)
         assert entry["prev_entry_hash"] == "GENESIS"
 
-    def test_hash_chain_linkage(self, tmp_path):
+    def test_hash_chain_linkage(self, tmp_path, execution_gate):
         """Second entry's prev_entry_hash matches first entry's entry_hash."""
         ledger = self._create_test_ledger(tmp_path)
 
@@ -376,7 +387,7 @@ class TestProvenanceLedger:
 
         assert entry2["prev_entry_hash"] == entry1["entry_hash"]
 
-    def test_verify_hash_chain_intact(self, tmp_path):
+    def test_verify_hash_chain_intact(self, tmp_path, execution_gate):
         """verify_hash_chain returns True for an unmodified ledger."""
         ledger = self._create_test_ledger(tmp_path)
         for rank in [1, 2, 3]:
@@ -385,7 +396,7 @@ class TestProvenanceLedger:
 
         assert ledger.verify_hash_chain() is True
 
-    def test_tamper_detection_modified_entry(self, tmp_path):
+    def test_tamper_detection_modified_entry(self, tmp_path, execution_gate):
         """If an entry is modified after hashing, verify_hash_chain fails."""
         ledger = self._create_test_ledger(tmp_path)
         params = self._make_test_entry_params()
@@ -397,7 +408,7 @@ class TestProvenanceLedger:
         with pytest.raises(AssertionError, match="Entry hash mismatch"):
             ledger.verify_hash_chain()
 
-    def test_tamper_detection_broken_chain(self, tmp_path):
+    def test_tamper_detection_broken_chain(self, tmp_path, execution_gate):
         """If prev_entry_hash is modified, verify_hash_chain fails."""
         ledger = self._create_test_ledger(tmp_path)
         params1 = self._make_test_entry_params(rank=1)
@@ -412,7 +423,7 @@ class TestProvenanceLedger:
         with pytest.raises(AssertionError, match="Hash chain broken"):
             ledger.verify_hash_chain()
 
-    def test_append_only_no_overwrite(self, tmp_path):
+    def test_append_only_no_overwrite(self, tmp_path, execution_gate):
         """Appending a duplicate entry raises ValueError (append-only)."""
         ledger = self._create_test_ledger(tmp_path)
         params = self._make_test_entry_params(rank=1)
@@ -421,7 +432,7 @@ class TestProvenanceLedger:
         with pytest.raises(ValueError, match="already exists"):
             ledger.append_candidate_entry(**params)
 
-    def test_append_adjudication_result(self, tmp_path):
+    def test_append_adjudication_result(self, tmp_path, execution_gate):
         """Adjudication creates a SEPARATE event (not a mutation of the
         generation entry). Per audit round 46 (FATAL): the generation
         entry must remain immutable."""
@@ -468,7 +479,7 @@ class TestProvenanceLedger:
         # The adjudication event is linked in the chain.
         assert adj_entry["prev_entry_hash"] == gen_hash_before
 
-    def test_no_overwrite_adjudication(self, tmp_path):
+    def test_no_overwrite_adjudication(self, tmp_path, execution_gate):
         """Adjudication events cannot be duplicated (no double-adjudication)."""
         ledger = self._create_test_ledger(tmp_path)
         params = self._make_test_entry_params()
@@ -495,7 +506,7 @@ class TestProvenanceLedger:
         with pytest.raises(ValueError, match="already exists"):
             ledger.append_adjudication_result(**adj_params)
 
-    def test_generation_entry_immutable_after_adjudication(self, tmp_path):
+    def test_generation_entry_immutable_after_adjudication(self, tmp_path, execution_gate):
         """Per audit round 46 (FATAL): the generation entry must remain
         immutable after adjudication. This test verifies:
 
@@ -546,7 +557,7 @@ class TestProvenanceLedger:
         assert adj_entry["event_type"] == "ADJUDICATION_RECORDED"
         assert adj_entry is not gen_after  # different objects
 
-    def test_generation_immutability_detects_mutation(self, tmp_path):
+    def test_generation_immutability_detects_mutation(self, tmp_path, execution_gate):
         """If the generation entry is mutated after adjudication,
         verify_generation_immutability raises AssertionError."""
         ledger = self._create_test_ledger(tmp_path)
@@ -575,7 +586,7 @@ class TestProvenanceLedger:
         with pytest.raises(AssertionError, match="MODIFIED"):
             ledger.verify_generation_immutability("CASE-001-ENGINE-CAND-001")
 
-    def test_adjudication_requires_generation_event(self, tmp_path):
+    def test_adjudication_requires_generation_event(self, tmp_path, execution_gate):
         """Cannot adjudicate a candidate that was never generated."""
         ledger = self._create_test_ledger(tmp_path)
 
@@ -596,7 +607,7 @@ class TestProvenanceLedger:
                 case_success=True,
             )
 
-    def test_combined_record_merges_events(self, tmp_path):
+    def test_combined_record_merges_events(self, tmp_path, execution_gate):
         """get_combined_record merges generation + adjudication into
         a single view (without modifying the underlying events)."""
         ledger = self._create_test_ledger(tmp_path)
@@ -627,7 +638,7 @@ class TestProvenanceLedger:
         assert ledger.n_generation_events() == 1
         assert ledger.n_adjudication_events() == 1
 
-    def test_ledger_persists_to_disk(self, tmp_path):
+    def test_ledger_persists_to_disk(self, tmp_path, execution_gate):
         """The ledger persists entries to disk and reloads them."""
         ledger_path = tmp_path / "test_ledger.json"
         ledger = ProvenanceLedger(ledger_path=ledger_path)
@@ -640,7 +651,7 @@ class TestProvenanceLedger:
         entry = ledger2.get_entry("CASE-001-ENGINE-CAND-001")
         assert entry is not None
 
-    def test_ledger_sha256_stable(self, tmp_path):
+    def test_ledger_sha256_stable(self, tmp_path, execution_gate):
         """The ledger SHA-256 is stable for the same content."""
         ledger = self._create_test_ledger(tmp_path)
         params = self._make_test_entry_params()
@@ -650,7 +661,7 @@ class TestProvenanceLedger:
         sha2 = ledger.get_ledger_sha256()
         assert sha1 == sha2
 
-    def test_ledger_sha256_changes_on_append(self, tmp_path):
+    def test_ledger_sha256_changes_on_append(self, tmp_path, execution_gate):
         """The ledger SHA-256 changes when a new entry is appended."""
         ledger = self._create_test_ledger(tmp_path)
         params1 = self._make_test_entry_params(rank=1)
@@ -663,7 +674,7 @@ class TestProvenanceLedger:
 
         assert sha1 != sha2
 
-    def test_get_entries_for_case(self, tmp_path):
+    def test_get_entries_for_case(self, tmp_path, execution_gate):
         """get_entries_for_case returns all entries for a case."""
         ledger = self._create_test_ledger(tmp_path)
 
@@ -682,7 +693,7 @@ class TestProvenanceLedger:
         assert len(case1_entries) == 3
         assert len(case2_entries) == 1
 
-    def test_get_entries_for_case_filtered_by_arm(self, tmp_path):
+    def test_get_entries_for_case_filtered_by_arm(self, tmp_path, execution_gate):
         """get_entries_for_case with arm filter works."""
         ledger = self._create_test_ledger(tmp_path)
 

@@ -17,7 +17,7 @@
     },
     "provenance_ledger_script": {
       "path": "engine/b2_provenance/provenance_ledger.py",
-      "sha256": "0733f97864d146e8bb0d65f85f5bde9980faa4046907de55dd32e6cff9cf4601"
+      "sha256": "5cf6e358b77e9c28f108c4b5107ab9ba0bbaa1ad5e26f79a96aa5552d4307ed1"
     },
     "content_addressed_storage_script": {
       "path": "engine/b2_provenance/content_addressed_storage.py",
@@ -144,5 +144,5 @@
     "sympy_version": "1.14.0",
     "scipy_version": "1.14.1"
   },
-  "instrument_sha256": "f98298a2ea33c65eb3f1e3ef2347498bd65e2a04016389b9403e2c47cf377d56"
+  "instrument_sha256": "b6b03bcfde432f1c538f15e1b81f888da3754031cf56b64d8ba9bfbcd62d94c2"
 }

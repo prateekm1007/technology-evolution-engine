@@ -32,12 +32,24 @@ from engine.b2_provenance import (
     parse_candidates,
     verify_frozen_components,
     ProvenanceLedger,
+    ExecutionGate,
 )
 from engine.b2_provenance.generation_null import (
     FROZEN_STOPWORDS,
     FROZEN_ENTITY_DICTIONARY,
     record_null_in_ledger,
 )
+from scripts.verify_audit_instrument import create_execution_manifest
+
+
+@pytest.fixture
+def execution_gate():
+    """Fixture that provides an active execution gate."""
+    manifest = create_execution_manifest("TEST-FIXTURE", ["CASE-001"], {})
+    with ExecutionGate(manifest) as gate:
+        yield gate
+
+
 from scripts.baseline_equivalence_audit import (
     run_baseline_equivalence_audit,
     _compare_provenance_fields,
@@ -90,7 +102,7 @@ class TestNoHardcodedDifferent:
     """candidate_length must be computed from actual measurements,
     never hard-coded as OBSERVED_DIFFERENT."""
 
-    def test_identical_lengths_are_observed_equal(self, tmp_path, monkeypatch):
+    def test_identical_lengths_are_observed_equal(self, tmp_path, monkeypatch, execution_gate):
         """If both arms produce identical-length candidates, state is
         OBSERVED_EQUAL, not hard-coded OBSERVED_DIFFERENT."""
         from engine.b2_provenance import content_addressed_storage as cas
@@ -209,7 +221,7 @@ class TestProvenanceVerification:
         assert not verified
         assert "SHA mismatch" in err or "not found" in err
 
-    def test_audit_reports_provenance_verification_errors(self, tmp_path):
+    def test_audit_reports_provenance_verification_errors(self, tmp_path, execution_gate):
         """When provenance verification fails, the audit reports errors."""
         ledger = ProvenanceLedger(ledger_path=tmp_path / "ledger.json")
         # Append entry with fake hashes (will fail verification)

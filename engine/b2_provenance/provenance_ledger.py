@@ -156,7 +156,32 @@ class ProvenanceLedger:
         Raises:
             ValueError: if a generation event for this candidate_id
                         already exists (append-only, no overwrite).
+            ExecutionGateError: if called outside an active execution gate
+                        (HARD STOP — no CANDIDATE_GENERATED event without
+                        a sealed+verified manifest).
+
+        ARCHITECTURAL INVARIANT (per audit round 57):
+            The authoritative provenance boundary — not merely the preferred
+            generation entry point — enforces execution authorization.
+
+            No CANDIDATE_GENERATED event can be created outside an active
+            verified execution context. This is PREVENTION, not detection.
+
+            Lower-level pure functions (generate_null_raw_output,
+            construct_candidate, etc.) remain ungated because they produce
+            text without side effects. But anything that makes an
+            experimental artifact AUTHORITATIVE (by writing to the
+            immutable provenance ledger) MUST be gated.
         """
+        # 0. Assert execution gate is active — NO BYPASS PATH
+        #    Per audit round 57: the authoritative provenance boundary
+        #    enforces execution authorization. A caller can generate
+        #    candidates through lower-level functions, store raw output,
+        #    compute real hashes — but CANNOT create a CANDIDATE_GENERATED
+        #    provenance event without an active verified gate.
+        from .execution_gate import assert_execution_gate_active
+        assert_execution_gate_active()
+
         candidate_id = f"{case_id}-{arm.upper()}-CAND-{candidate_rank:03d}"
 
         # Check for duplicate generation event (append-only).

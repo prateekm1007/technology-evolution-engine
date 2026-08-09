@@ -251,49 +251,31 @@ class TestNoAlternateBypassPaths:
     """Verify there are no alternate public functions that can write
     candidates to the provenance ledger without going through the gate."""
 
-    def test_provenance_ledger_append_does_not_require_gate(self, tmp_path):
-        """ProvenanceLedger.append_candidate_entry does NOT require the gate.
+    def test_provenance_ledger_append_requires_gate(self, tmp_path):
+        """Per audit round 57: ProvenanceLedger.append_candidate_entry
+        NOW REQUIRES the execution gate. This is the AUTHORITATIVE
+        PROVENANCE BOUNDARY — no CANDIDATE_GENERATED event can be
+        created outside an active verified execution context.
 
-        This is by design: the ledger is a low-level storage component.
-        The gate is enforced at the generation level (generate_null_candidates),
-        which is the ONLY function that calls both generate_null_raw_output
-        AND record_null_in_ledger.
-
-        However, this means someone COULD call append_candidate_entry directly.
-        This is acceptable because:
-        1. The ledger entry would have fake hashes (no real raw output stored)
-        2. The derivation verification would fail (candidate_sha256 wouldn't match)
-        3. The baseline audit would report NOT_OBSERVABLE (provenance invalid)
-        4. The experiment result would be INCONCLUSIVE_PROVENANCE_VIOLATION
-
-        So while the ledger itself is not gated, any entries created without
-        going through the gated generation path will fail provenance
-        verification and be rejected by the audit.
+        This is PREVENTION, not detection. A caller can generate
+        candidates through lower-level functions, store raw output,
+        compute real hashes — but CANNOT create a CANDIDATE_GENERATED
+        provenance event without an active verified gate.
         """
-        ledger = ProvenanceLedger = __import__(
-            "engine.b2_provenance.provenance_ledger",
-            fromlist=["ProvenanceLedger"]
-        ).ProvenanceLedger(ledger_path=tmp_path / "test.json")
+        from engine.b2_provenance.provenance_ledger import ProvenanceLedger
+        ledger = ProvenanceLedger(ledger_path=tmp_path / "test.json")
 
-        # This works (ledger is not gated) but the entry will have fake hashes
-        entry = ledger.append_candidate_entry(
-            case_id="CASE-001", arm="null", candidate_rank=1,
-            raw_output_sha256="f"*64, raw_output_blob_path="/fake",
-            candidate_sha256="g"*64, candidate_text="fake candidate",
-            generation_timestamp="2026-01-01T00:00:00Z",
-            engine_version="v1", provider="ZAI", model="glm-4-plus",
-            prompt_hash="h"*64, source_pair_sha256="i"*64,
-            invocation_seed="j"*64,
-        )
-        assert entry is not None
-
-        # But provenance verification would fail:
-        from scripts.baseline_equivalence_audit import _verify_entry_provenance
-        verified, err = _verify_entry_provenance(entry)
-        assert not verified, (
-            "Entry with fake hashes passed provenance verification — "
-            "this should NOT happen. The fake entry should be rejected."
-        )
+        # Without gate → HARD STOP
+        with pytest.raises(ExecutionGateError, match="HARD STOP"):
+            ledger.append_candidate_entry(
+                case_id="CASE-001", arm="null", candidate_rank=1,
+                raw_output_sha256="f"*64, raw_output_blob_path="/fake",
+                candidate_sha256="g"*64, candidate_text="fake candidate",
+                generation_timestamp="2026-01-01T00:00:00Z",
+                engine_version="v1", provider="ZAI", model="glm-4-plus",
+                prompt_hash="h"*64, source_pair_sha256="i"*64,
+                invocation_seed="j"*64,
+            )
 
     def test_generation_with_gate_then_provenance_verification(self, tmp_path, monkeypatch):
         """Full integration: generation inside gate → provenance verification passes.

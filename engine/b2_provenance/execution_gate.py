@@ -186,8 +186,35 @@ class ExecutionGate:
         return self
 
     def __exit__(self, exc_type, exc_val, exc_tb):
-        """Finalize the execution record."""
+        """Finalize the execution record.
+
+        Per audit round 57: verify the manifest is STILL valid after
+        execution. This establishes:
+
+            manifest verified BEFORE execution
+            +
+            manifest/source/runtime unchanged DURING execution
+            +
+            all authoritative artifacts provenance-verified AFTER execution
+
+        If the manifest is invalid at exit, the execution record is
+        marked as compromised.
+        """
         self._active = False
+
+        # Post-execution manifest re-verification
+        # Per audit round 57: "no source/config mutation is permitted
+        # during execution, and the finalizer verifies the manifest
+        # again before sealing the execution record."
+        post_ok, post_errors = verify_execution_manifest(self.manifest)
+        if not post_ok and self.record:
+            self.record.add_failure(
+                f"POST-EXECUTION MANIFEST INVALIDATED: {post_errors}. "
+                f"The experimental substrate changed DURING execution. "
+                f"All artifacts from this execution are compromised."
+            )
+            self.record.manifest_verified = False
+
         if self.record:
             self.record.finished_at = datetime.now(timezone.utc).isoformat()
             if exc_type is not None:
