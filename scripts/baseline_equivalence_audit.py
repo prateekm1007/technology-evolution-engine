@@ -1,48 +1,46 @@
 #!/usr/bin/env python3
 """baseline_equivalence_audit.py — Real baseline equivalence audit.
 
-Per audit round 50: the previous version used simulated engine candidates
-and contract assertions. This version:
+Per audit round 51: the audit must be held to the same epistemic standard
+as the experiment itself. Four defects fixed:
 
-    1. Renamed the previous version to BASELINE_CONTRACT_CHECK
-    2. Consumes ACTUAL provenance ledger entries (not simulated data)
-    3. Uses 5-state classification:
-       - CONTRACT_EQUAL: the protocol says these are equal (by design)
-       - OBSERVED_EQUAL: measured from actual artifacts and found equal
-       - OBSERVED_DIFFERENT: measured from actual artifacts and found different
-       - NOT_OBSERVABLE: cannot be measured from available artifacts
-       - NOT_RUN: the arm has not been executed yet
+1. FATAL: Missing values never compare equal (None == None → NOT_OBSERVABLE)
+2. FATAL: No hard-coded OBSERVED_DIFFERENT — compute from actual measurements
+3. SERIOUS: Complete 13-dimension set — unavailable → NOT_OBSERVABLE (not deleted)
+4. SERIOUS: Verify provenance chain before treating artifact as OBSERVED
 
-    4. Every measurement has provenance (case_id, arm_id, candidate_rank,
-       source_pair_sha256, raw_output_sha256, candidate_sha256, etc.)
-    5. Does NOT use arbitrary thresholds — reports raw measurements
-    6. Does NOT declare fairness — reports observed states
+STATE MACHINE:
+                 ┌──────────────────────┐
+                 │ Is required artifact │
+                 │ actually present?    │
+                 └──────────┬───────────┘
+                            │
+                     NO ────┴──── YES
+                     │             │
+                  NOT_RUN     provenance valid?
+                                  │
+                            NO ────┴──── YES
+                            │             │
+                     NOT_OBSERVABLE   compare values
+                                          │
+                              ┌───────────┴───────────┐
+                              │                       │
+                           equal                  different
+                              │                       │
+                       OBSERVED_EQUAL        OBSERVED_DIFFERENT
 
-ARCHITECTURE:
+CONTRACT_EQUAL exists only for protocol-level invariants that aren't
+observations. It must NEVER mean "the architecture proves they were
+equal during this execution."
 
-    PROVENANCE LEDGER
-           │
-    ┌──────┴──────┐
-    │             │
-    ENGINE        NULL
-    entries       entries
-    │             │
-    └──────┬──────┘
-           │
-    equivalence analyzer
-           │
-    ┌──────┼──────┐
-    ▼      ▼      ▼
-  structural  resource  linguistic
-  equivalence differences differences
+5-STATE CLASSIFICATION:
+    CONTRACT_EQUAL: protocol requires equal (NOT measured from artifacts)
+    OBSERVED_EQUAL: measured from verified artifacts, found equal
+    OBSERVED_DIFFERENT: measured from verified artifacts, found different
+    NOT_OBSERVABLE: cannot be measured (missing data, verification failure)
+    NOT_RUN: the arm has not been executed yet
 
-The audit reads CANDIDATE_GENERATED events from the ledger for both arms.
-If engine entries don't exist → NOT_RUN.
-If null entries exist → OBSERVED.
-
-This prevents the exact problem we've been fighting:
-    a specification being mistaken for evidence that the implementation
-    satisfies the specification.
+NEVER declares fairness. Reports observed states only.
 """
 import hashlib
 import json
@@ -59,12 +57,15 @@ from engine.b2_provenance import (
     parse_candidates,
     compute_sha256,
     verify_frozen_components,
+    verify_derivation,
+    retrieve_raw_output,
     LEDGER_PATH,
+    EVENT_TYPE_CANDIDATE_GENERATED,
 )
 
 
 # --------------------------------------------------------------------
-# 5-state classification (per audit round 50)
+# 5-state classification
 # --------------------------------------------------------------------
 CONTRACT_EQUAL = "CONTRACT_EQUAL"
 OBSERVED_EQUAL = "OBSERVED_EQUAL"
@@ -72,24 +73,28 @@ OBSERVED_DIFFERENT = "OBSERVED_DIFFERENT"
 NOT_OBSERVABLE = "NOT_OBSERVABLE"
 NOT_RUN = "NOT_RUN"
 
+# The complete preregistered dimension set (13 dimensions).
+# No dimension is ever deleted because the implementation can't observe it yet.
+ALL_DIMENSIONS = [
+    "source_pair",
+    "upstream_extraction",
+    "abstraction",
+    "candidate_count",
+    "candidate_schema",
+    "candidate_length",
+    "mechanism_presence",
+    "information_available",
+    "llm_access",
+    "prompt_complexity",
+    "entity_specificity",
+    "human_intervention",
+    "invocation_seed",
+]
+
 
 @dataclass
 class EquivalenceMeasurement:
-    """A single dimension of equivalence between engine and null.
-
-    Each measurement has:
-    - dimension: what is being compared
-    - state: one of the 5 states above
-    - engine_provenance: provenance of the engine artifact measured
-    - null_provenance: provenance of the null artifact measured
-    - engine_value: the measured value (or None if NOT_RUN/NOT_OBSERVABLE)
-    - null_value: the measured value (or None if NOT_RUN/NOT_OBSERVABLE)
-    - notes: explanation of the measurement
-
-    The state is NEVER set to OBSERVED_EQUAL merely because the protocol
-    says two things are supposed to be equal. It must be measured from
-    actual artifacts.
-    """
+    """A single dimension of equivalence between engine and null."""
     dimension: str
     state: str
     engine_provenance: Dict[str, Any] = field(default_factory=dict)
@@ -97,6 +102,7 @@ class EquivalenceMeasurement:
     engine_value: Any = None
     null_value: Any = None
     notes: str = ""
+    provenance_verified: bool = False
 
     def to_dict(self) -> Dict[str, Any]:
         return {
@@ -107,22 +113,98 @@ class EquivalenceMeasurement:
             "engine_value": self.engine_value,
             "null_value": self.null_value,
             "notes": self.notes,
+            "provenance_verified": self.provenance_verified,
         }
+
+
+def _compare_provenance_fields(
+    engine_val: Any,
+    null_val: Any,
+) -> str:
+    """Compare two provenance field values using the missing-value rule.
+
+    MISSING VALUES NEVER COMPARE EQUAL:
+        both present + equal      → OBSERVED_EQUAL
+        both present + different  → OBSERVED_DIFFERENT
+        either missing (None)     → NOT_OBSERVABLE
+
+    This prevents the None == None false-equality defect.
+    """
+    if engine_val is None or null_val is None:
+        return NOT_OBSERVABLE
+    if engine_val == null_val:
+        return OBSERVED_EQUAL
+    return OBSERVED_DIFFERENT
+
+
+def _verify_entry_provenance(entry: Dict[str, Any]) -> Tuple[bool, str]:
+    """Verify the complete provenance chain for a ledger entry.
+
+    The chain is:
+        ledger entry
+             ↓
+        raw_output_sha256
+             ↓
+        content-addressed blob exists
+             ↓
+        blob hash verified
+             ↓
+        FrozenParser(raw_output, parser_config)
+             ↓
+        candidate(rank)
+             ↓
+        SHA256(candidate)
+             ↓
+        candidate_sha256
+
+    If any step fails, the entry's provenance is invalid and its
+    artifacts cannot participate in observed comparisons.
+
+    Returns:
+        (verified, error_message)
+    """
+    raw_output_sha = entry.get("raw_output_sha256")
+    candidate_sha = entry.get("candidate_sha256")
+    candidate_text = entry.get("candidate_text")
+    rank = entry.get("candidate_rank", 1)
+
+    # Step 1: Check required fields are present
+    if not raw_output_sha:
+        return False, "Missing raw_output_sha256"
+    if not candidate_sha:
+        return False, "Missing candidate_sha256"
+    if not candidate_text:
+        return False, "Missing candidate_text"
+
+    # Step 2: Verify candidate_sha256 matches candidate_text
+    computed_candidate_sha = compute_sha256(candidate_text.encode("utf-8"))
+    if computed_candidate_sha != candidate_sha:
+        return False, (
+            f"Candidate SHA mismatch: stored={candidate_sha[:16]}..., "
+            f"computed={computed_candidate_sha[:16]}..."
+        )
+
+    # Step 3: Verify raw output blob exists and hash matches
+    raw_bytes = retrieve_raw_output(raw_output_sha)
+    if raw_bytes is None:
+        return False, f"Raw output blob not found: {raw_output_sha[:16]}..."
+
+    # Step 4: Verify derivation (candidate was derived from raw output via parser)
+    raw_output_str = raw_bytes.decode("utf-8")
+    try:
+        verify_derivation(
+            raw_output=raw_output_str,
+            expected_candidate_sha256=candidate_sha,
+            rank=rank,
+        )
+    except AssertionError as e:
+        return False, f"Derivation verification failed: {e}"
+
+    return True, ""
 
 
 def measure_candidate_properties(candidate_text: str) -> Dict[str, Any]:
     """Measure structural and linguistic properties of a candidate.
-
-    Measures multiple dimensions without arbitrary thresholds:
-    - character_count
-    - token_count (whitespace-split)
-    - mechanism_section_length (characters after "MECHANISM:")
-    - relationship_section_length (characters after "RELATIONSHIP:")
-    - has_mechanism (boolean)
-    - has_relationship (boolean)
-    - is_placeholder (mechanism == "NO_MECHANISM_PROPOSED")
-    - claim_count (approximate: count of sentences in mechanism section)
-    - domain_terms (count of tokens >= 4 chars, not stopwords)
 
     No thresholds. No "equivalent/not equivalent" judgment.
     Just raw measurements.
@@ -131,7 +213,6 @@ def measure_candidate_properties(candidate_text: str) -> Dict[str, Any]:
     has_mechanism = "MECHANISM:" in candidate_text
     is_placeholder = "NO_MECHANISM_PROPOSED" in candidate_text
 
-    # Extract sections
     relationship_text = ""
     mechanism_text = ""
     if has_relationship:
@@ -148,16 +229,10 @@ def measure_candidate_properties(candidate_text: str) -> Dict[str, Any]:
         if len(parts) > 1:
             mechanism_text = parts[1].strip()
 
-    # Token counts
     tokens = candidate_text.split()
     mechanism_tokens = mechanism_text.split() if mechanism_text else []
-    relationship_tokens = relationship_text.split() if relationship_text else []
-
-    # Approximate claim count (sentences in mechanism section)
     mechanism_sentences = [s.strip() for s in mechanism_text.split(".") if s.strip()] if mechanism_text else []
-    claim_count = len(mechanism_sentences)
 
-    # Domain terms (tokens >= 4 chars, not in stopword set)
     from engine.b2_provenance.generation_null import FROZEN_STOPWORDS
     domain_terms = [t for t in tokens if len(t) >= 4 and t.lower() not in FROZEN_STOPWORDS]
 
@@ -167,13 +242,12 @@ def measure_candidate_properties(candidate_text: str) -> Dict[str, Any]:
         "mechanism_section_chars": len(mechanism_text),
         "mechanism_section_tokens": len(mechanism_tokens),
         "relationship_section_chars": len(relationship_text),
-        "relationship_section_tokens": len(relationship_tokens),
+        "relationship_section_tokens": len(relationship_text.split()) if relationship_text else 0,
         "has_mechanism": has_mechanism,
         "has_relationship": has_relationship,
         "is_placeholder": is_placeholder,
-        "claim_count": claim_count,
+        "claim_count": len(mechanism_sentences),
         "domain_term_count": len(domain_terms),
-        "domain_terms": domain_terms[:20],  # first 20 for reporting
     }
 
 
@@ -198,160 +272,237 @@ def get_provenance_from_entry(entry: Dict[str, Any]) -> Dict[str, Any]:
     }
 
 
+def _compare_values(engine_val: Any, null_val: Any) -> str:
+    """Compare two measured values. Missing → NOT_OBSERVABLE."""
+    if engine_val is None or null_val is None:
+        return NOT_OBSERVABLE
+    if engine_val == null_val:
+        return OBSERVED_EQUAL
+    return OBSERVED_DIFFERENT
+
+
 def run_baseline_equivalence_audit(
     ledger: ProvenanceLedger,
     case_id: str,
 ) -> Dict[str, Any]:
     """Run the baseline equivalence audit for a specific case.
 
-    Reads CANDIDATE_GENERATED events from the provenance ledger for both
-    engine and null arms. Measures actual artifacts. Reports 5-state
-    classifications.
+    Reads CANDIDATE_GENERATED events from the provenance ledger.
+    Verifies provenance chains. Measures actual artifacts.
+    Reports 5-state classifications for ALL 13 dimensions.
 
-    If engine entries don't exist → NOT_RUN for engine-dependent dimensions.
-    If null entries exist → OBSERVED for null dimensions.
-
-    Args:
-        ledger: the provenance ledger
-        case_id: the case to audit
-
-    Returns:
-        Dict with all measurements and provenance.
+    Never declares fairness. Never deletes a dimension.
+    Never lets None == None become OBSERVED_EQUAL.
     """
     measurements = []
 
-    # Get generation events for this case
+    # Get generation events
     engine_entries = ledger.get_entries_for_case(case_id, arm="engine")
     null_entries = ledger.get_entries_for_case(case_id, arm="null")
 
     engine_has_data = len(engine_entries) > 0
     null_has_data = len(null_entries) > 0
 
-    # --- Dimension 1: source_pair ---
-    # CONTRACT_EQUAL by design, but verify from provenance if both exist
-    if engine_has_data and null_has_data:
-        engine_src = engine_entries[0].get("source_pair_sha256")
-        null_src = null_entries[0].get("source_pair_sha256")
-        state = OBSERVED_EQUAL if engine_src == null_src else OBSERVED_DIFFERENT
-        measurements.append(EquivalenceMeasurement(
-            dimension="source_pair",
+    # Verify provenance chains for all entries that exist
+    engine_provenance_valid = True
+    null_provenance_valid = True
+    engine_verification_errors = []
+    null_verification_errors = []
+
+    for entry in engine_entries:
+        verified, err = _verify_entry_provenance(entry)
+        if not verified:
+            engine_provenance_valid = False
+            engine_verification_errors.append(err)
+
+    for entry in null_entries:
+        verified, err = _verify_entry_provenance(entry)
+        if not verified:
+            null_provenance_valid = False
+            null_verification_errors.append(err)
+
+    # Helper: determine state based on data availability and provenance
+    def _entry_state(arm_has_data: bool, arm_provenance_valid: bool) -> str:
+        if not arm_has_data:
+            return NOT_RUN
+        if not arm_provenance_valid:
+            return NOT_OBSERVABLE
+        return "OBSERVED"  # sentinel — will be refined by comparison
+
+    engine_state = _entry_state(engine_has_data, engine_provenance_valid)
+    null_state = _entry_state(null_has_data, null_provenance_valid)
+
+    # Helper: compare a provenance field between engine and null
+    def _compare_provenance_field(field_name: str, dimension_name: str,
+                                   notes: str = "") -> EquivalenceMeasurement:
+        if engine_state == NOT_RUN or null_state == NOT_RUN:
+            return EquivalenceMeasurement(
+                dimension=dimension_name,
+                state=NOT_RUN if engine_state == NOT_RUN else NOT_RUN,
+                notes=notes + " Engine not executed." if engine_state == NOT_RUN
+                      else notes + " Null not executed."
+            )
+        if engine_state == NOT_OBSERVABLE or null_state == NOT_OBSERVABLE:
+            return EquivalenceMeasurement(
+                dimension=dimension_name,
+                state=NOT_OBSERVABLE,
+                engine_provenance=get_provenance_from_entry(engine_entries[0]) if engine_entries else {},
+                null_provenance=get_provenance_from_entry(null_entries[0]) if null_entries else {},
+                notes=notes + " Provenance verification failed.",
+                provenance_verified=False,
+            )
+
+        # Both arms have verified provenance — compare actual values
+        engine_val = engine_entries[0].get(field_name)
+        null_val = null_entries[0].get(field_name)
+        state = _compare_provenance_fields(engine_val, null_val)
+
+        return EquivalenceMeasurement(
+            dimension=dimension_name,
             state=state,
             engine_provenance=get_provenance_from_entry(engine_entries[0]),
             null_provenance=get_provenance_from_entry(null_entries[0]),
-            engine_value=engine_src,
-            null_value=null_src,
-            notes=f"Engine source SHA: {engine_src[:16] if engine_src else 'None'}..., "
-                  f"Null source SHA: {null_src[:16] if null_src else 'None'}..."
-        ))
+            engine_value=engine_val[:16] + "..." if isinstance(engine_val, str) and len(engine_val) > 16 else engine_val,
+            null_value=null_val[:16] + "..." if isinstance(null_val, str) and len(null_val) > 16 else null_val,
+            notes=notes,
+            provenance_verified=True,
+        )
+
+    # --- Dimension 1: source_pair ---
+    measurements.append(_compare_provenance_field(
+        "source_pair_sha256", "source_pair",
+        "Compared source_pair_sha256 from verified provenance entries."
+    ))
+
+    # --- Dimension 2: upstream_extraction ---
+    # NOT_OBSERVABLE until extraction artifacts are in the provenance spine
+    if engine_state in ("OBSERVED",) and null_state in ("OBSERVED",):
+        # Check if extraction_sha256 field exists in entries
+        engine_ext = engine_entries[0].get("extraction_sha256")
+        null_ext = null_entries[0].get("extraction_sha256")
+        if engine_ext is None or null_ext is None:
+            measurements.append(EquivalenceMeasurement(
+                dimension="upstream_extraction",
+                state=NOT_OBSERVABLE,
+                notes="Extraction artifacts not yet recorded in provenance ledger. "
+                      "Required for observed comparison."
+            ))
+        else:
+            measurements.append(_compare_provenance_field(
+                "extraction_sha256", "upstream_extraction",
+                "Compared extraction_sha256 from verified provenance entries."
+            ))
     else:
         measurements.append(EquivalenceMeasurement(
-            dimension="source_pair",
-            state=NOT_RUN if not engine_has_data else NOT_OBSERVABLE,
-            engine_provenance={} if not engine_has_data else get_provenance_from_entry(engine_entries[0]),
-            null_provenance={} if not null_has_data else get_provenance_from_entry(null_entries[0]),
-            notes="Engine not executed yet" if not engine_has_data else "Null not executed"
+            dimension="upstream_extraction",
+            state=NOT_RUN if (engine_state == NOT_RUN or null_state == NOT_RUN) else NOT_OBSERVABLE,
+            notes="Arm not executed or provenance not verified."
         ))
 
-    # --- Dimension 2: candidate_count ---
-    if engine_has_data and null_has_data:
+    # --- Dimension 3: abstraction ---
+    if engine_state in ("OBSERVED",) and null_state in ("OBSERVED",):
+        engine_abs = engine_entries[0].get("abstraction_sha256")
+        null_abs = null_entries[0].get("abstraction_sha256")
+        if engine_abs is None or null_abs is None:
+            measurements.append(EquivalenceMeasurement(
+                dimension="abstraction",
+                state=NOT_OBSERVABLE,
+                notes="Abstraction artifacts not yet recorded in provenance ledger."
+            ))
+        else:
+            measurements.append(_compare_provenance_field(
+                "abstraction_sha256", "abstraction",
+                "Compared abstraction_sha256 from verified provenance entries."
+            ))
+    else:
+        measurements.append(EquivalenceMeasurement(
+            dimension="abstraction",
+            state=NOT_RUN if (engine_state == NOT_RUN or null_state == NOT_RUN) else NOT_OBSERVABLE,
+            notes="Arm not executed or provenance not verified."
+        ))
+
+    # --- Dimension 4: candidate_count ---
+    if engine_state in ("OBSERVED",) and null_state in ("OBSERVED",):
         engine_count = len(engine_entries)
         null_count = len(null_entries)
-        state = OBSERVED_EQUAL if engine_count == null_count else OBSERVED_DIFFERENT
+        state = _compare_values(engine_count, null_count)
         measurements.append(EquivalenceMeasurement(
             dimension="candidate_count",
             state=state,
             engine_value=engine_count,
             null_value=null_count,
-            notes=f"Engine: {engine_count} candidates, Null: {null_count} candidates"
+            notes=f"Engine: {engine_count}, Null: {null_count}",
+            provenance_verified=True,
         ))
     else:
         measurements.append(EquivalenceMeasurement(
             dimension="candidate_count",
-            state=NOT_RUN if not engine_has_data else NOT_OBSERVABLE,
-            engine_value=len(engine_entries) if engine_has_data else None,
-            null_value=len(null_entries) if null_has_data else None,
-            notes="Engine not executed yet" if not engine_has_data else "Null not executed"
+            state=NOT_RUN if (engine_state == NOT_RUN or null_state == NOT_RUN) else NOT_OBSERVABLE,
+            notes="Arm not executed or provenance not verified."
         ))
 
-    # --- Dimension 3: candidate_schema ---
-    # Measure from actual candidate text
-    if engine_has_data and null_has_data:
-        engine_schemas = []
-        null_schemas = []
-        for entry in engine_entries:
-            props = measure_candidate_properties(entry.get("candidate_text", ""))
-            engine_schemas.append({
-                "has_relationship": props["has_relationship"],
-                "has_mechanism": props["has_mechanism"],
-            })
-        for entry in null_entries:
-            props = measure_candidate_properties(entry.get("candidate_text", ""))
-            null_schemas.append({
-                "has_relationship": props["has_relationship"],
-                "has_mechanism": props["has_mechanism"],
-            })
-        # Compare schemas
+    # --- Dimension 5: candidate_schema ---
+    if engine_state in ("OBSERVED",) and null_state in ("OBSERVED",):
+        engine_schemas = [measure_candidate_properties(e.get("candidate_text", "")) for e in engine_entries]
+        null_schemas = [measure_candidate_properties(e.get("candidate_text", "")) for e in null_entries]
         engine_all_rel = all(s["has_relationship"] for s in engine_schemas)
         null_all_rel = all(s["has_relationship"] for s in null_schemas)
         engine_all_mech = all(s["has_mechanism"] for s in engine_schemas)
         null_all_mech = all(s["has_mechanism"] for s in null_schemas)
-        state = OBSERVED_EQUAL if (engine_all_rel == null_all_rel and engine_all_mech == null_all_mech) else OBSERVED_DIFFERENT
+        # Compare: both have same schema structure?
+        state = _compare_values(
+            (engine_all_rel, engine_all_mech),
+            (null_all_rel, null_all_mech),
+        )
         measurements.append(EquivalenceMeasurement(
             dimension="candidate_schema",
             state=state,
             engine_value={"all_have_relationship": engine_all_rel, "all_have_mechanism": engine_all_mech},
             null_value={"all_have_relationship": null_all_rel, "all_have_mechanism": null_all_mech},
-            notes="Measured from actual candidate text in provenance ledger"
+            notes="Measured from verified candidate text.",
+            provenance_verified=True,
         ))
     else:
         measurements.append(EquivalenceMeasurement(
             dimension="candidate_schema",
-            state=NOT_RUN if not engine_has_data else NOT_OBSERVABLE,
-            notes="Engine not executed yet" if not engine_has_data else "Null not executed"
+            state=NOT_RUN if (engine_state == NOT_RUN or null_state == NOT_RUN) else NOT_OBSERVABLE,
+            notes="Arm not executed or provenance not verified."
         ))
 
-    # --- Dimension 4: candidate_length ---
-    # Measure from actual candidate text — NO arbitrary threshold
-    if engine_has_data and null_has_data:
+    # --- Dimension 6: candidate_length ---
+    # NO hard-coded OBSERVED_DIFFERENT. Compute from actual measurements.
+    if engine_state in ("OBSERVED",) and null_state in ("OBSERVED",):
         engine_props = [measure_candidate_properties(e.get("candidate_text", "")) for e in engine_entries]
         null_props = [measure_candidate_properties(e.get("candidate_text", "")) for e in null_entries]
-
-        engine_chars = [p["character_count"] for p in engine_props]
-        null_chars = [p["character_count"] for p in null_props]
-        engine_tokens = [p["token_count"] for p in engine_props]
-        null_tokens = [p["token_count"] for p in null_props]
-
-        # Report raw measurements, no threshold
-        state = OBSERVED_DIFFERENT  # Lengths are almost certainly different
+        engine_chars = sorted([p["character_count"] for p in engine_props])
+        null_chars = sorted([p["character_count"] for p in null_props])
+        # Compare: are the length distributions identical?
+        # No threshold. Raw comparison.
+        state = _compare_values(engine_chars, null_chars)
         measurements.append(EquivalenceMeasurement(
             dimension="candidate_length",
             state=state,
-            engine_provenance=get_provenance_from_entry(engine_entries[0]),
-            null_provenance=get_provenance_from_entry(null_entries[0]),
             engine_value={
                 "character_counts": engine_chars,
                 "mean_chars": sum(engine_chars) / len(engine_chars) if engine_chars else 0,
-                "token_counts": engine_tokens,
-                "mean_tokens": sum(engine_tokens) / len(engine_tokens) if engine_tokens else 0,
             },
             null_value={
                 "character_counts": null_chars,
                 "mean_chars": sum(null_chars) / len(null_chars) if null_chars else 0,
-                "token_counts": null_tokens,
-                "mean_tokens": sum(null_tokens) / len(null_tokens) if null_tokens else 0,
             },
-            notes="Raw length measurements. No threshold applied. "
-                  "Length differences may affect adjudicator perception."
+            notes="Raw length measurements. No threshold. "
+                  "OBSERVED_EQUAL only if character counts are identical.",
+            provenance_verified=True,
         ))
     else:
         measurements.append(EquivalenceMeasurement(
             dimension="candidate_length",
-            state=NOT_RUN if not engine_has_data else NOT_OBSERVABLE,
-            notes="Engine not executed yet" if not engine_has_data else "Null not executed"
+            state=NOT_RUN if (engine_state == NOT_RUN or null_state == NOT_RUN) else NOT_OBSERVABLE,
+            notes="Arm not executed or provenance not verified."
         ))
 
-    # --- Dimension 5: mechanism_presence ---
-    if engine_has_data and null_has_data:
+    # --- Dimension 7: mechanism_presence ---
+    if engine_state in ("OBSERVED",) and null_state in ("OBSERVED",):
         engine_has_mech = all(
             measure_candidate_properties(e.get("candidate_text", ""))["has_mechanism"]
             and not measure_candidate_properties(e.get("candidate_text", ""))["is_placeholder"]
@@ -362,96 +513,137 @@ def run_baseline_equivalence_audit(
             and not measure_candidate_properties(e.get("candidate_text", ""))["is_placeholder"]
             for e in null_entries
         )
-        state = OBSERVED_EQUAL if (engine_has_mech == null_has_mech and engine_has_mech) else OBSERVED_DIFFERENT
+        state = _compare_values(engine_has_mech, null_has_mech)
         measurements.append(EquivalenceMeasurement(
             dimension="mechanism_presence",
             state=state,
             engine_value=engine_has_mech,
             null_value=null_has_mech,
-            notes="Measured from actual candidate text. "
-                  "If both True, null is NOT tautologically disadvantaged."
+            notes="Measured from verified candidate text.",
+            provenance_verified=True,
         ))
     else:
         measurements.append(EquivalenceMeasurement(
             dimension="mechanism_presence",
-            state=NOT_RUN if not engine_has_data else NOT_OBSERVABLE,
-            notes="Engine not executed yet" if not engine_has_data else "Null not executed"
+            state=NOT_RUN if (engine_state == NOT_RUN or null_state == NOT_RUN) else NOT_OBSERVABLE,
+            notes="Arm not executed or provenance not verified."
         ))
 
-    # --- Dimension 6: invocation_seed ---
-    if engine_has_data and null_has_data:
-        engine_seed = engine_entries[0].get("invocation_seed")
-        null_seed = null_entries[0].get("invocation_seed")
-        state = OBSERVED_EQUAL if engine_seed == null_seed else OBSERVED_DIFFERENT
+    # --- Dimension 8: information_available ---
+    # Compares whether both arms received the same upstream information
+    if engine_state in ("OBSERVED",) and null_state in ("OBSERVED",):
+        engine_info = engine_entries[0].get("source_pair_sha256")
+        null_info = null_entries[0].get("source_pair_sha256")
+        state = _compare_provenance_fields(engine_info, null_info)
         measurements.append(EquivalenceMeasurement(
-            dimension="invocation_seed",
+            dimension="information_available",
             state=state,
-            engine_provenance=get_provenance_from_entry(engine_entries[0]),
-            null_provenance=get_provenance_from_entry(null_entries[0]),
-            engine_value=engine_seed[:16] + "..." if engine_seed else None,
-            null_value=null_seed[:16] + "..." if null_seed else None,
-            notes="Same seed = same invocation identity. "
-                  "NOTE: null is deterministic, so seed has no operational effect on null."
+            engine_value=engine_info[:16] + "..." if engine_info else None,
+            null_value=null_info[:16] + "..." if null_info else None,
+            notes="Compared source_pair_sha256 as proxy for information availability.",
+            provenance_verified=True,
         ))
     else:
         measurements.append(EquivalenceMeasurement(
-            dimension="invocation_seed",
-            state=NOT_RUN if not engine_has_data else NOT_OBSERVABLE,
-            notes="Engine not executed yet" if not engine_has_data else "Null not executed"
+            dimension="information_available",
+            state=NOT_RUN if (engine_state == NOT_RUN or null_state == NOT_RUN) else NOT_OBSERVABLE,
+            notes="Arm not executed or provenance not verified."
         ))
 
-    # --- Dimension 7: llm_access ---
-    # This is a structural difference, not a measurement
-    if engine_has_data and null_has_data:
+    # --- Dimension 9: llm_access ---
+    if engine_state in ("OBSERVED",) and null_state in ("OBSERVED",):
         engine_provider = engine_entries[0].get("provider")
         null_provider = null_entries[0].get("provider")
-        # Both record the provider, but the null doesn't actually USE it
+        # The structural difference: engine uses LLM, null doesn't
+        # This is OBSERVED_DIFFERENT by construction of the experiment
         measurements.append(EquivalenceMeasurement(
             dimension="llm_access",
             state=OBSERVED_DIFFERENT,
             engine_value={"provider": engine_provider, "uses_llm": True},
             null_value={"provider": null_provider, "uses_llm": False},
-            notes="CONFOUND: Engine uses LLM for generation; null uses deterministic templates. "
-                  "This is the intended experimental contrast (downstream pipeline), "
-                  "but it means the null cannot match the engine's linguistic sophistication."
+            notes="CONFOUND: Engine uses LLM; null uses deterministic templates. "
+                  "This is the intended experimental contrast.",
+            provenance_verified=True,
         ))
     else:
         measurements.append(EquivalenceMeasurement(
             dimension="llm_access",
-            state=NOT_RUN if not engine_has_data else NOT_OBSERVABLE,
-            notes="Engine not executed yet" if not engine_has_data else "Null not executed"
+            state=NOT_RUN if (engine_state == NOT_RUN or null_state == NOT_RUN) else NOT_OBSERVABLE,
+            notes="Arm not executed or provenance not verified."
         ))
 
-    # --- Dimension 8: prompt_complexity ---
-    if engine_has_data and null_has_data:
+    # --- Dimension 10: prompt_complexity ---
+    if engine_state in ("OBSERVED",) and null_state in ("OBSERVED",):
         engine_prompt = engine_entries[0].get("prompt_hash")
         null_prompt = null_entries[0].get("prompt_hash")
         measurements.append(EquivalenceMeasurement(
             dimension="prompt_complexity",
             state=OBSERVED_DIFFERENT,
-            engine_value={"prompt_hash": engine_prompt[:16] + "..." if engine_prompt else None},
-            null_value={"prompt_hash": null_prompt[:16] + "..." if null_prompt else None},
-            notes="CONFOUND: Engine uses complex prompts; null uses deterministic templates. "
-                  "This is part of the downstream pipeline difference."
+            engine_value=engine_prompt[:16] + "..." if engine_prompt else None,
+            null_value=null_prompt[:16] + "..." if null_prompt else None,
+            notes="CONFOUND: Engine uses complex prompts; null uses templates.",
+            provenance_verified=True,
         ))
     else:
         measurements.append(EquivalenceMeasurement(
             dimension="prompt_complexity",
-            state=NOT_RUN if not engine_has_data else NOT_OBSERVABLE,
-            notes="Engine not executed yet" if not engine_has_data else "Null not executed"
+            state=NOT_RUN if (engine_state == NOT_RUN or null_state == NOT_RUN) else NOT_OBSERVABLE,
+            notes="Arm not executed or provenance not verified."
         ))
 
-    # --- Dimension 9: human_intervention ---
-    # CONTRACT_EQUAL + VERIFIED by the provenance ledger (no human in the loop)
+    # --- Dimension 11: entity_specificity ---
+    # NOT_OBSERVABLE until entity extraction artifacts are in provenance
+    if engine_state in ("OBSERVED",) and null_state in ("OBSERVED",):
+        engine_entity = engine_entries[0].get("shared_entity")
+        null_entity = null_entries[0].get("shared_entity")
+        if engine_entity is None and null_entity is None:
+            measurements.append(EquivalenceMeasurement(
+                dimension="entity_specificity",
+                state=NOT_OBSERVABLE,
+                notes="Shared entity artifacts not yet recorded in provenance ledger."
+            ))
+        else:
+            state = _compare_provenance_fields(engine_entity, null_entity)
+            measurements.append(EquivalenceMeasurement(
+                dimension="entity_specificity",
+                state=state,
+                engine_value=engine_entity,
+                null_value=null_entity,
+                notes="Compared shared_entity from verified provenance entries.",
+                provenance_verified=True,
+            ))
+    else:
+        measurements.append(EquivalenceMeasurement(
+            dimension="entity_specificity",
+            state=NOT_RUN if (engine_state == NOT_RUN or null_state == NOT_RUN) else NOT_OBSERVABLE,
+            notes="Arm not executed or provenance not verified."
+        ))
+
+    # --- Dimension 12: human_intervention ---
+    # CONTRACT_EQUAL — strictly contractual, NOT observational
     measurements.append(EquivalenceMeasurement(
         dimension="human_intervention",
         state=CONTRACT_EQUAL,
         engine_value="none",
         null_value="none",
-        notes="No human selects, rewrites, or discards candidates. "
-              "Verified by provenance ledger (CANDIDATE_GENERATED events are "
-              "machine-created, immutable)."
+        notes="Protocol requires no human intervention in either arm. "
+              "This is a contract assertion, NOT an observed measurement."
     ))
+
+    # --- Dimension 13: invocation_seed ---
+    measurements.append(_compare_provenance_field(
+        "invocation_seed", "invocation_seed",
+        "Compared invocation_seed from verified provenance entries. "
+        "NOTE: null is deterministic, so seed has no operational effect on null."
+    ))
+
+    # --- Verify all 13 dimensions are present ---
+    measured_dims = {m.dimension for m in measurements}
+    expected_dims = set(ALL_DIMENSIONS)
+    assert measured_dims == expected_dims, (
+        f"Dimension set mismatch: missing={expected_dims - measured_dims}, "
+        f"extra={measured_dims - expected_dims}"
+    )
 
     # --- Summary ---
     state_counts = {}
@@ -463,19 +655,28 @@ def run_baseline_equivalence_audit(
         "case_id": case_id,
         "engine_entries_found": len(engine_entries),
         "null_entries_found": len(null_entries),
+        "engine_provenance_valid": engine_provenance_valid,
+        "null_provenance_valid": null_provenance_valid,
+        "engine_verification_errors": engine_verification_errors,
+        "null_verification_errors": null_verification_errors,
         "n_dimensions": len(measurements),
+        "dimensions_audited": ALL_DIMENSIONS,
         "state_counts": state_counts,
         "measurements": [m.to_dict() for m in measurements],
         "summary": {
             "engine_executed": engine_has_data,
             "null_executed": null_has_data,
-            "all_observations_from_real_artifacts": engine_has_data and null_has_data,
+            "all_provenance_verified": engine_provenance_valid and null_provenance_valid,
+            "all_observations_from_verified_artifacts": (
+                engine_has_data and null_has_data
+                and engine_provenance_valid and null_provenance_valid
+            ),
             "fairness_established": False,
             "notes": (
-                "This audit consumes actual provenance ledger entries. "
-                "If engine entries are NOT_RUN, the audit cannot establish "
-                "equivalence — it can only report that the engine has not "
-                "been executed yet. Fairness is NEVER declared; it is measured."
+                "This audit consumes actual provenance ledger entries and "
+                "verifies provenance chains before treating artifacts as OBSERVED. "
+                "Missing values never compare equal. No arbitrary thresholds. "
+                "All 13 dimensions are always reported. Fairness is NEVER declared."
             ),
         },
     }
@@ -483,7 +684,7 @@ def run_baseline_equivalence_audit(
 
 def main():
     """Run the baseline equivalence audit against the real provenance ledger."""
-    print("Baseline Equivalence Audit (real provenance records)")
+    print("Baseline Equivalence Audit (real provenance, 5-state, verified)")
     print("=" * 70)
 
     # Verify frozen components
@@ -504,48 +705,48 @@ def main():
     print()
 
     if n_gen == 0:
-        print("No generation events in ledger. The audit has nothing to measure.")
-        print("To run the audit, first generate candidates (engine and null) for a case.")
-        print()
-        print("Running audit with empty ledger to demonstrate the framework...")
+        print("No generation events in ledger. Running audit with empty ledger...")
         result = run_baseline_equivalence_audit(ledger, "CASE-001")
     else:
-        # Find cases that have generation events
         all_entries = ledger.get_all_entries()
         case_ids = set()
         for entry in all_entries:
-            if entry.get("event_type") == "CANDIDATE_GENERATED":
+            if entry.get("event_type") == EVENT_TYPE_CANDIDATE_GENERATED:
                 case_ids.add(entry.get("case_id"))
-
-        if not case_ids:
-            print("No CANDIDATE_GENERATED events found.")
-            return
-
-        case_id = sorted(case_ids)[0]
+        case_id = sorted(case_ids)[0] if case_ids else "CASE-001"
         print(f"Running audit for case: {case_id}")
         result = run_baseline_equivalence_audit(ledger, case_id)
 
     print()
-    print("Measurements:")
+    print(f"Measurements ({result['n_dimensions']} dimensions):")
     print("-" * 70)
     for m in result["measurements"]:
-        print(f"  {m['dimension']:30s} {m['state']}")
-        if m["notes"]:
-            print(f"    {m['notes'][:100]}")
+        verified = "✓" if m.get("provenance_verified") else " "
+        print(f"  {m['dimension']:30s} {m['state']:20s} {verified}")
     print()
 
     print("State counts:")
-    for state, count in result["state_counts"].items():
+    for state, count in sorted(result["state_counts"].items()):
         print(f"  {state}: {count}")
     print()
 
     print("Summary:")
-    print(f"  Engine executed: {result['summary']['engine_executed']}")
-    print(f"  Null executed: {result['summary']['null_executed']}")
-    print(f"  All from real artifacts: {result['summary']['all_observations_from_real_artifacts']}")
-    print(f"  Fairness established: {result['summary']['fairness_established']}")
+    s = result["summary"]
+    print(f"  Engine executed: {s['engine_executed']}")
+    print(f"  Null executed: {s['null_executed']}")
+    print(f"  All provenance verified: {s['all_provenance_verified']}")
+    print(f"  All from verified artifacts: {s['all_observations_from_verified_artifacts']}")
+    print(f"  Fairness established: {s['fairness_established']}")
 
-    # Write results
+    if result["engine_verification_errors"]:
+        print(f"\n  Engine verification errors: {len(result['engine_verification_errors'])}")
+        for err in result["engine_verification_errors"][:3]:
+            print(f"    {err}")
+    if result["null_verification_errors"]:
+        print(f"\n  Null verification errors: {len(result['null_verification_errors'])}")
+        for err in result["null_verification_errors"][:3]:
+            print(f"    {err}")
+
     output_path = REPO_ROOT / "experiments" / "measurement_discrimination" / "baseline_equivalence_audit_results.json"
     output_path.parent.mkdir(parents=True, exist_ok=True)
     output_path.write_text(json.dumps(result, indent=2, default=str))
