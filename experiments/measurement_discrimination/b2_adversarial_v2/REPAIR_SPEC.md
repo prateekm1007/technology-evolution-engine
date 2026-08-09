@@ -1,17 +1,20 @@
 # B-2 REPAIR SPECIFICATION — Independent Semantic Support
 
-**Status:** AMENDED SPEC (round-77) — FROZEN FOR RE-ADJUDICATION
+**Status:** AMENDED SPEC (round-78) — FROZEN FOR RE-ADJUDICATION
 **Original freeze:** 2026-08-09 (commit `8a84fdc`, round-73)
 **First amended freeze:** 2026-08-10 (commit `4bc945d`, round-74)
 **Second amended freeze:** 2026-08-10 (commit `3076d3a`, round-75)
 **Third amended freeze:** 2026-08-10 (commit `9b4d843`, round-76)
-**Fourth amended freeze:** 2026-08-10 (this revision, round-77)
+**Fourth amended freeze:** 2026-08-10 (commit `7f2977a`, round-77)
+**Fifth amended freeze:** 2026-08-10 (this revision, round-78)
 **Frozen by:** protocol-B implementer (this agent)
-**Adjudication status:** Round-76 verdict REJECT WITH ONE MANDATORY
-CONDITION → round-77 verdict REJECT WITH ONE MANDATORY CONDITION. This
-fourth amended revision resolves the round-77 condition (add
-`JOINT_CROSS_SOURCE` support to represent cross-source synthesis
-relations). Awaiting re-adjudication before any implementation work
+**Adjudication status:** Round-77 verdict REJECT WITH ONE MANDATORY
+CONDITION → round-78 verdict REJECT WITH TWO MANDATORY CONDITIONS.
+This fifth amended revision resolves both round-78 conditions:
+(1) decouple `ISS_both` from `JOINT_CROSS_SOURCE` (ISS_both is a
+candidate-level counterfactual property; JOINT_CROSS_SOURCE is one
+evidence path for an atomic claim); (2) freeze the inference-rule
+taxonomy. Awaiting re-adjudication before any implementation work
 may begin.
 
 **Supersedes:** The lexical detector at commit `20ac268`
@@ -25,8 +28,8 @@ round-73 verdict, which adjudicated the B-2 v2 adversarial diagnostic
 (6/13 mismatches across three semantic failure modes) and directed that a
 repair specification be drafted and independently adjudicated before any
 implementation work begins. Subsequent verdicts (round-74 through
-round-77) each directed amendments to resolve specific defects. This
-fourth amended revision resolves the round-77 condition.
+round-78) each directed amendments to resolve specific defects. This
+fifth amended revision resolves the two round-78 conditions.
 
 **Adjudication history:**
 
@@ -36,51 +39,46 @@ fourth amended revision resolves the round-77 condition.
 | 74 | ACCEPT WITH CONDITIONS | First amended revision (commit `4bc945d`) resolves 7 conditions + wording correction |
 | 75 | ACCEPT WITH CONDITIONS | Second amended revision (commit `3076d3a`) resolves 3 conditions + Section 5.1 refinement |
 | 76 | REJECT WITH ONE MANDATORY CONDITION | Third amended revision (commit `9b4d843`) eliminates non-constructible `ISS_neither`, replaces with `REDUNDANT_SUPPORT` |
-| 77 | REJECT WITH ONE MANDATORY CONDITION | This fourth amended revision adds `JOINT_CROSS_SOURCE` support to represent cross-source synthesis relations |
-| 78+ | PENDING | Re-adjudication by external auditor |
+| 77 | REJECT WITH ONE MANDATORY CONDITION | Fourth amended revision (commit `7f2977a`) adds `JOINT_CROSS_SOURCE` support for cross-source synthesis relations |
+| 78 | REJECT WITH TWO MANDATORY CONDITIONS | This fifth amended revision decouples `ISS_both` from `JOINT_CROSS_SOURCE` and freezes the inference-rule taxonomy |
+| 79+ | PENDING | Re-adjudication by external auditor |
 
-**Round-77 condition resolved by this amendment:**
+**Round-78 conditions resolved by this amendment:**
 
-1. **Add `JOINT_CROSS_SOURCE` support mechanism** (Section 2.6.2,
-   2.6.3, 2.6.4, 2.6.5, 2.6.6, 2.6.7; Section 2.7; Section 3.7).
+1. **Decouple `ISS_both` from `JOINT_CROSS_SOURCE`** (Section 2.1, 2.7).
 
-   The round-76 spec defined `Justified()` via span-mapped evidence
-   where each atomic claim must have a supporting span in Source A or
-   Source B individually. But cross-source synthesis relations (e.g.
-   `enzyme_templates_mineral_deposition`) are not asserted by either
-   source alone — they emerge from the combination. Under the
-   round-76 spec, these relation atoms would be misclassified as
-   `UNSUPPORTED`, systematically suppressing the very discoveries the
-   engine is supposed to find.
+   The round-77 spec incorrectly tied `ISS_both` to the existence of a
+   `JOINT_CROSS_SOURCE` atom. But `ISS_both` is a property of the
+   **candidate** (determined by the counterfactual test), while
+   `JOINT_CROSS_SOURCE` is a property of an **evidence path** for an
+   atomic claim. The cross-source property can emerge from the
+   combination of independently supported atoms (atom `a1` from A,
+   atom `a2` from B — neither source alone justifies the whole
+   candidate) WITHOUT any `JOINT_CROSS_SOURCE` evidence. The round-78
+   amendment makes this decoupling explicit: `ISS_both` is defined
+   purely from the counterfactual; `JOINT_CROSS_SOURCE` is one
+   possible evidence path, not a necessary condition.
 
-   The round-77 amendment adds a second support type,
-   `JOINT_CROSS_SOURCE`, alongside the existing `SOURCE_LOCAL` type.
-   A `JOINT_CROSS_SOURCE` support entry contains: `source_a_spans`,
-   `source_b_spans`, `derived_claim`, `inference_rule`,
-   `counterfactual_a`, `counterfactual_b`. It represents a claim
-   derived from combining evidence from both sources under a stated
-   inference rule, where neither source independently asserts the
-   claim.
+   Key principle: **evidence type determines how an atomic claim is
+   supported; counterfactuals determine the candidate's ISS state.**
+   Do not conflate those two levels.
 
-   The amendment includes five mandatory anti-cheating conditions
-   (Section 2.6.7) to prevent the detector from manufacturing
-   plausible "A + B = invention" explanations: (1) A genuinely
-   supports its component, (2) B genuinely supports its component,
-   (3) the derived claim follows from the combination under the
-   stated inference rule, (4) neither source alone supports the
-   complete relation, (5) removing either source destroys the
-   justification.
+2. **Freeze the inference-rule taxonomy** (new Section 2.6.8;
+   Section 3.7.2 requirement 8).
 
-   The schema is bumped to `b2-trace-v3` (breaking change:
-   `source_support` structure changed to support both `SOURCE_LOCAL`
-   and `JOINT_CROSS_SOURCE` entry types).
-
-   The B-2 / Gate B boundary is clarified: B-2 establishes
-   **provenance topology** (is the candidate source-local,
-   cross-source synthesis, redundant, or unsupported?); Gate B
-   establishes **discovery validity** (is the jointly-supported
-   relationship actually a valid mechanism?). B-2 does not evaluate
-   whether the `inference_rule` produces a "good" invention.
+   The round-77 spec left `inference_rule` as an open question
+   (§9.12), which created a "semantic-rule tuning" optimization
+   surface — the detector could emit any plausible-sounding rule
+   label to justify a derivation. The round-78 amendment freezes a
+   minimal taxonomy (`inference-rules-v1`): 8 named rules
+   (`COMPOSITION`, `ABSTRACTION`, `SPECIALIZATION`, `GENERALIZATION`,
+   `CAUSAL_TRANSFER`, `MECHANISTIC_ANALOGY`, `STRUCTURAL_ANALOGY`,
+   `FUNCTIONAL_ANALOGY`) plus `OTHER`. Each rule has a definition,
+   admissibility criteria, examples, and adversarial counterexamples.
+   `OTHER` cannot automatically qualify a `JOINT_CROSS_SOURCE` claim
+   as a B-2 pass — it requires independent adjudication and is
+   reported separately. The schema enforces the enum via requirement
+   8.
 
 ---
 
@@ -289,8 +287,22 @@ mutually-exclusive, collectively-exhaustive, constructible states:
   corpus, and one source alone is sufficient. The other source
   contributes nothing unique. REJECT.
 - `ISS_both` (cross-source synthesis): the candidate is justified by
-  the corpus, and neither source alone is sufficient. Both sources
-  contribute unique supporting spans. ALLOW.
+  the corpus, and neither source alone is sufficient — removing either
+  source leaves the candidate unjustified. Both sources contribute
+  unique supporting evidence. ALLOW.
+
+  **Important (round-78, decoupling):** `ISS_both` is a property of the
+  **candidate**, determined purely by the counterfactual test
+  (`Justified(c,{A,B})` AND NOT `Justified(c,{A})` AND NOT
+  `Justified(c,{B})`). It does NOT require any individual atomic claim
+  to be supported by `JOINT_CROSS_SOURCE` evidence. The cross-source
+  property can emerge from the **combination of independently supported
+  atoms** (e.g. atom `a1` supported only by Source A, atom `a2`
+  supported only by Source B — neither source alone justifies the whole
+  candidate, so the candidate is `ISS_both`). `JOINT_CROSS_SOURCE` is
+  one possible evidence path for an individual atomic claim (Section
+  2.6.2), not a necessary condition for `ISS_both`. See Section 2.7 for
+  the full decoupling.
 - `REDUNDANT_SUPPORT`: the candidate is justified by the corpus, and
   each source alone independently justifies it. Both sources say the
   same thing about this candidate. ALLOW (reported separately for
@@ -851,7 +863,103 @@ both sources.
 This preserves the B-2 / Gate B separation (Section 2.7): B-2
 establishes provenance topology; Gate B establishes discovery validity.
 
-### 2.7 B-2 establishes provenance topology, Gate B establishes discovery validity (round-74 condition 7; round-75 strengthened; round-76 finalized; round-77 clarified)
+#### 2.6.8 Frozen inference-rule taxonomy (round-78, NEW)
+
+The `inference_rule` field in `JOINT_CROSS_SOURCE` entries (Section
+2.6.7) must use a value from the **frozen taxonomy** below. Free-form
+values are NOT permitted. This is mandatory because
+`JOINT_CROSS_SOURCE` is decision-critical (it can establish `ISS_both`
+via pathway 2 in Section 2.7); an uncontrolled `inference_rule` field
+would create a "semantic-rule tuning" optimization surface — the
+detector could emit any plausible-sounding rule label to justify a
+derivation, and the system would have delegated the definition of
+valid cross-source inference to the LLM/adjudicator.
+
+**Frozen taxonomy (version `inference-rules-v1`, round-78):**
+
+| Rule | Definition | Admissibility criteria |
+|------|-----------|----------------------|
+| `COMPOSITION` | The derived claim combines a process/capability from one source with a substrate/mediator from the other, asserting that the process applies to the substrate. | (1) Source A asserts process/capability P; (2) Source B asserts substrate/mediator M (or vice versa); (3) the derived claim asserts "P applied to M"; (4) neither source alone asserts "P applied to M". |
+| `ABSTRACTION` | The derived claim identifies a shared abstract category that subsumes specific instances in both sources. | (1) Source A asserts instance I_A of category C; (2) Source B asserts instance I_B of category C; (3) the derived claim asserts C as a unifying concept; (4) neither source alone asserts C as a unifying concept (only its own instance). |
+| `SPECIALIZATION` | The derived claim applies a general principle from one source to a specific case identified in the other. | (1) Source A asserts general principle G; (2) Source B asserts specific case S (or vice versa); (3) the derived claim asserts "G applied to S"; (4) neither source alone asserts "G applied to S". |
+| `GENERALIZATION` | The derived claim generalizes from two specific instances (one per source) to a broader rule. | (1) Source A asserts specific instance I_A; (2) Source B asserts specific instance I_B; (3) the derived claim asserts a general rule R subsuming both; (4) neither source alone asserts R. |
+| `CAUSAL_TRANSFER` | The derived claim transfers a causal mechanism from one source to a system described in the other. | (1) Source A asserts causal mechanism M causes effect E in system S_A; (2) Source B describes system S_B (or vice versa); (3) the derived claim asserts "M causes E in S_B"; (4) neither source alone asserts the transfer. |
+| `MECHANISTIC_ANALOGY` | The derived claim asserts that a mechanism in one source is structurally analogous to a mechanism in the other, supporting a transferred claim. | (1) Source A describes mechanism M_A with structure S_A; (2) Source B describes mechanism M_B with structure S_B; (3) S_A and S_B share a structural isomorphism; (4) the derived claim asserts M_A and M_B are mechanistically analogous; (5) neither source alone asserts the analogy. |
+| `STRUCTURAL_ANALOGY` | The derived claim asserts a structural correspondence between entities/processes in the two sources. | (1) Source A describes entity/process E_A with structural features F_A; (2) Source B describes E_B with F_B; (3) F_A and F_B share a structural correspondence; (4) the derived claim asserts the correspondence; (5) neither source alone asserts it. |
+| `FUNCTIONAL_ANALOGY` | The derived claim asserts a functional correspondence (similar role/function) between entities/processes in the two sources. | (1) Source A describes E_A serving function F; (2) Source B describes E_B serving function F (or a functionally equivalent F'); (3) the derived claim asserts E_A and E_B are functionally analogous; (4) neither source alone asserts the analogy. |
+| `OTHER` | The derivation does not fit any of the above rules. | (1) The detector must provide a free-text `inference_rule_other` explanation; (2) the entry is flagged `UNCLASSIFIED_INFERENCE`; (3) **cannot automatically qualify as a B-2 pass** — requires independent adjudication; (4) reported separately in the audit. |
+
+**Examples (illustrative, mapped to public ADV cases):**
+
+- ADV-03 `enzyme-templated mineral deposition`: `COMPOSITION`
+  (enzyme catalyst from B applied to mineral deposition from A).
+- ADV-04 `silicatein-guided calcification`: `CAUSAL_TRANSFER`
+  (silicatein causal mechanism from B transferred to calcification system from A).
+- ADV-07 `enzyme-templated inorganic lattice formation`: `COMPOSITION`
+  + `ABSTRACTION` (enzyme-templating from B composed with inorganic
+  lattice formation, which abstracts over both sources' mineral systems).
+  If a single rule must be chosen, `COMPOSITION` is primary.
+- ADV-08 `protein-catalyzed biogenic oxide precipitation`: `ABSTRACTION`
+  (biogenic oxide precipitation abstracts over calcium phosphate and
+  silica; protein-catalyzed from B).
+- ADV-11 `biomineralization`: `ABSTRACTION`
+  (both sources' processes are instances of biologically-controlled
+  mineral deposition).
+
+**Adversarial counterexamples (what each rule does NOT justify):**
+
+- `COMPOSITION` does NOT justify a claim where the process and substrate
+  come from the same source (that would be `SOURCE_LOCAL`).
+- `ABSTRACTION` does NOT justify a claim so abstract it loses specific
+  content from both sources (that would be `UNSUPPORTED` — the
+  abstract claim is not asserted by either source).
+- `CAUSAL_TRANSFER` does NOT justify transferring a mechanism to a
+  system where it is already known to apply (that would be
+  `REDUNDANT_SUPPORT` if both sources assert it).
+- `MECHANISTIC_ANALOGY` / `STRUCTURAL_ANALOGY` / `FUNCTIONAL_ANALOGY`
+  do NOT justify a claim based on superficial similarity without a
+  genuine structural/functional correspondence. The adjudicator
+  verifies the correspondence is real, not asserted.
+- `OTHER` does NOT automatically justify anything. It routes the entry
+  to independent adjudication.
+
+**Treatment of `OTHER` (round-78, critical):**
+
+`OTHER` is NOT an automatic pass. When the detector emits
+`inference_rule = "OTHER"`:
+
+1. The entry is flagged `UNCLASSIFIED_INFERENCE` in the trace.
+2. The entry CANNOT automatically qualify the `JOINT_CROSS_SOURCE`
+   claim as valid support. The atom is treated as **provisionally
+   unsupported** pending independent adjudication.
+3. The independent adjudicator (Section 3.6) must review the
+   `inference_rule_other` explanation and determine whether the
+   derivation is valid under a rule that should be added to the
+   taxonomy in a future revision.
+4. If the adjudicator approves, the entry is marked
+   `ADJUDICATED_OTHER` and the atom is supported. If not, the atom
+   is unsupported.
+5. `OTHER` entries are reported separately in the audit. A detector
+   that emits `OTHER` for more than 20% of its `JOINT_CROSS_SOURCE`
+   entries is flagged for review — the taxonomy may be incomplete,
+   or the detector may be using `OTHER` as an escape hatch.
+
+**Why this taxonomy is frozen:**
+
+Without a frozen taxonomy, the detector could emit any
+plausible-sounding `inference_rule` label ("conceptual transfer,"
+"semantic bridging," "cross-domain unification," etc.) to justify a
+derivation. The adjudicator would have no principled basis to reject
+these labels, and the system would have delegated the definition of
+valid cross-source inference to the LLM. The frozen taxonomy ensures
+that the detector's derivations are evaluated against a fixed,
+auditor-approved set of rules with explicit admissibility criteria.
+
+The taxonomy is versioned (`inference-rules-v1`). Future revisions
+require a new version number, a new adjudication cycle, and
+re-verification of all held-out results.
+
+### 2.7 B-2 establishes provenance topology, Gate B establishes discovery validity (round-74 condition 7; round-75 strengthened; round-76 finalized; round-77 clarified; round-78 decoupled)
 
 The B-2 decision criterion (Section 2.4, round-76 amended, round-77
 extended with `JOINT_CROSS_SOURCE` support) has four states: `ISS_one`
@@ -863,9 +971,31 @@ the candidate's relationship to the sources:
 
 - **source-local leakage** (`ISS_one`): the candidate is fully
   attributable to one source. REJECT.
-- **cross-source synthesis** (`ISS_both`): the candidate contains at
-  least one atomic claim supported by `JOINT_CROSS_SOURCE` evidence,
-  AND removing either source leaves the candidate unjustified. ALLOW.
+- **cross-source synthesis** (`ISS_both`): the candidate is justified
+  by the corpus, AND removing either source leaves the candidate
+  unjustified. Both sources contribute unique supporting evidence.
+  ALLOW.
+
+  **Round-78 decoupling (critical):** `ISS_both` is determined purely
+  by the counterfactual test on the **candidate** — it does NOT require
+  any individual atomic claim to be supported by `JOINT_CROSS_SOURCE`
+  evidence. The cross-source property can emerge in two ways:
+  1. **Combination of independently supported atoms:** atom `a1`
+     supported only by Source A, atom `a2` supported only by Source B.
+     Neither source alone justifies the whole candidate (each is
+     missing the other's atom), so the candidate is `ISS_both`. No
+     `JOINT_CROSS_SOURCE` evidence is needed.
+  2. **Joint cross-source evidence for a relation atom:** atom `a3`
+     (a relation) supported by `JOINT_CROSS_SOURCE` evidence combining
+     A-spans and B-spans. Removing either source destroys `a3`, so the
+     candidate is `ISS_both`.
+
+  Both pathways yield `ISS_both`. `JOINT_CROSS_SOURCE` is one possible
+  evidence path for an atomic claim, not a necessary condition for
+  `ISS_both`. The key principle: **evidence type determines how an
+  atomic claim is supported; counterfactuals determine the candidate's
+  ISS state.** Do not conflate those two levels.
+
 - **redundant support** (`REDUNDANT_SUPPORT`): both sources
   independently justify the candidate (all claims have `SOURCE_LOCAL`
   support from both sources). ALLOW (reported separately).
@@ -892,15 +1022,17 @@ different properties:
 | B-2 (this spec) | What is the candidate's provenance topology? (source-local / cross-source synthesis / redundant / unsupported) | REJECT iff `ISS_one`; ALLOW iff `ISS_both` or `REDUNDANT_SUPPORT`; `NOT_ADJUDICATED_BY_B2` iff `UNSUPPORTED` |
 | Gate B / discovery | Is the candidate a valid, meaningful mechanism? (is the jointly-supported relationship actually a valid invention?) | Separate adjudication, separate criteria |
 
-A candidate that passes B-2 via `ISS_both` (cross-source synthesis via
-`JOINT_CROSS_SOURCE` support) or `REDUNDANT_SUPPORT` (both sources
-independently justify) is **not blocked by B-2**, but it may still be
-rejected by Gate B for being untestable, obvious, or otherwise invalid
-as a mechanism proposal. A candidate that B-2 routes to
-`NOT_ADJUDICATED_BY_B2` (UNSUPPORTED) is also forwarded to Gate B —
-Gate B may reject it for being nonsensical or fabricated, OR may
-adjudicate it as a valid invention if the unsupported claim is
-independently defensible. B-2 does not pre-judge either case.
+A candidate that passes B-2 via `ISS_both` (cross-source synthesis,
+determined by the counterfactual test — may or may not involve
+`JOINT_CROSS_SOURCE` evidence at the atomic level) or
+`REDUNDANT_SUPPORT` (both sources independently justify) is **not
+blocked by B-2**, but it may still be rejected by Gate B for being
+untestable, obvious, or otherwise invalid as a mechanism proposal. A
+candidate that B-2 routes to `NOT_ADJUDICATED_BY_B2` (UNSUPPORTED) is
+also forwarded to Gate B — Gate B may reject it for being nonsensical
+or fabricated, OR may adjudicate it as a valid invention if the
+unsupported claim is independently defensible. B-2 does not pre-judge
+either case.
 
 **Implementation requirement:** The detector's trace must explicitly
 report the `iss_state` for every candidate
@@ -920,12 +1052,29 @@ implementation, and the audit must all preserve:
 3. The two support types (`SOURCE_LOCAL` / `JOINT_CROSS_SOURCE`).
 4. The five anti-cheating conditions for `JOINT_CROSS_SOURCE` (Section
    2.6.7).
+5. **The decoupling of `ISS_both` from `JOINT_CROSS_SOURCE` (round-78,
+   NEW):** `ISS_both` is a property of the candidate determined by the
+   counterfactual test; `JOINT_CROSS_SOURCE` is a property of an
+   evidence path for an atomic claim. The latter is NOT a necessary
+   condition for the former. A candidate can be `ISS_both` via a
+   combination of independently supported atoms (pathway 1) OR via a
+   joint cross-source relation atom (pathway 2). Any attempt to make
+   `JOINT_CROSS_SOURCE` a necessary condition for `ISS_both` is
+   regression and must be rejected.
+6. **The frozen inference-rule taxonomy (round-78, NEW):** the
+   `inference_rule` field in `JOINT_CROSS_SOURCE` entries must use a
+   value from the frozen taxonomy (Section 2.6.8). The `OTHER` value
+   exists but cannot automatically qualify a `JOINT_CROSS_SOURCE` claim
+   as a B-2 pass — it requires independent adjudication and is reported
+   separately.
 
 Any attempt to (a) expand B-2's criterion to include novelty
 evaluation, (b) collapse `UNSUPPORTED` into an ALLOW state, (c)
-re-introduce the non-constructible `ISS_neither` state, or (d) allow
+re-introduce the non-constructible `ISS_neither` state, (d) allow
 `JOINT_CROSS_SOURCE` support without the five anti-cheating
-conditions, is regression and must be rejected by the auditor.
+conditions, (e) make `JOINT_CROSS_SOURCE` a necessary condition for
+`ISS_both`, or (f) allow free-form `inference_rule` values outside the
+frozen taxonomy, is regression and must be rejected by the auditor.
 
 ---
 
@@ -1355,7 +1504,8 @@ either type.
             }
           ],
           "derived_claim": "<string, the atomic claim that follows from combining A and B components>",
-          "inference_rule": "<string, the rule under which the derivation is valid>",
+          "inference_rule": "<string, one of: 'COMPOSITION' | 'ABSTRACTION' | 'SPECIALIZATION' | 'GENERALIZATION' | 'CAUSAL_TRANSFER' | 'MECHANISTIC_ANALOGY' | 'STRUCTURAL_ANALOGY' | 'FUNCTIONAL_ANALOGY' | 'OTHER' — from frozen taxonomy inference-rules-v1, Section 2.6.8>",
+          "inference_rule_other": "<string, required iff inference_rule == 'OTHER'; free-text explanation of the derivation>",
           "counterfactual_a": "<string, why removing Source A leaves derived_claim unsupported>",
           "counterfactual_b": "<string, why removing Source B leaves derived_claim unsupported>"
         }
@@ -1443,26 +1593,39 @@ why removing the respective source leaves the derived claim unsupported.
    `JOINT_CROSS_SOURCE.source_b_spans` equally.
 
 7. **`JOINT_CROSS_SOURCE` entries must contain all mandatory fields**
-   (round-77, NEW): `source_a_spans` (non-empty), `source_b_spans`
-   (non-empty), `derived_claim` (non-empty), `inference_rule`
-   (non-empty), `counterfactual_a` (non-empty), `counterfactual_b`
-   (non-empty). Any missing or empty field is grounds for trace
+   (round-77, NEW; round-78 amended): `source_a_spans` (non-empty),
+   `source_b_spans` (non-empty), `derived_claim` (non-empty),
+   `inference_rule` (non-empty, from frozen taxonomy — see requirement
+   8), `counterfactual_a` (non-empty), `counterfactual_b` (non-empty).
+   If `inference_rule == "OTHER"`, `inference_rule_other` (non-empty)
+   is also required. Any missing or empty field is grounds for trace
    rejection.
 
-8. **`JOINT_CROSS_SOURCE` entries must satisfy the five anti-cheating
+8. **`inference_rule` must be from the frozen taxonomy** (round-78,
+   NEW): the value must be one of `COMPOSITION`, `ABSTRACTION`,
+   `SPECIALIZATION`, `GENERALIZATION`, `CAUSAL_TRANSFER`,
+   `MECHANISTIC_ANALOGY`, `STRUCTURAL_ANALOGY`, `FUNCTIONAL_ANALOGY`,
+   `OTHER` (Section 2.6.8, taxonomy version `inference-rules-v1`).
+   Free-form values are NOT permitted. If the value is `OTHER`, the
+   entry is flagged `UNCLASSIFIED_INFERENCE` and cannot automatically
+   qualify the `JOINT_CROSS_SOURCE` claim as valid support — it
+   requires independent adjudication (Section 2.6.8, treatment of
+   `OTHER`).
+
+9. **`JOINT_CROSS_SOURCE` entries must satisfy the five anti-cheating
    conditions** (Section 2.6.7). The adjudicator verifies:
    - A genuinely supports its component (spans present and assertive).
    - B genuinely supports its component.
    - The derived claim follows from the combination under the stated
-     inference rule.
+     inference rule (from the frozen taxonomy, per requirement 8).
    - Neither source alone supports the complete relation (else it
      should be `SOURCE_LOCAL`).
    - Removing either source destroys the justification.
 
-9. **No free-form structural variation is permitted.** All fields are
-   mandatory; no additional top-level fields are allowed without
-   auditor approval (except `schema_version`); no fields may be
-   renamed.
+10. **No free-form structural variation is permitted.** All fields are
+    mandatory; no additional top-level fields are allowed without
+    auditor approval (except `schema_version`); no fields may be
+    renamed.
 
 #### 3.7.3 Why a frozen schema
 
@@ -2226,36 +2389,28 @@ The held-out set (Section 3.2) now requires at least 2
 `REDUNDANT_SUPPORT` cases (instead of the non-constructible "true
 `ISS_neither`" cases). No open question remains on this topic.
 
-### 9.12 NEW (round-77) — Inference rule taxonomy for JOINT_CROSS_SOURCE
+### 9.12 Inference rule taxonomy for JOINT_CROSS_SOURCE — RESOLVED (round-78)
 
-Section 2.6.7 introduces `JOINT_CROSS_SOURCE` support with a mandatory
-`inference_rule` field. The spec requires the adjudicator to verify
-that "the derived claim actually follows from the combination under
-the stated inference rule" (Section 2.6.4, item 7), but does NOT
-prescribe a fixed taxonomy of permitted inference rules.
+**Resolved (round-78):** the frozen taxonomy is now defined at Section
+2.6.8 (taxonomy version `inference-rules-v1`). The taxonomy contains 8
+named rules (`COMPOSITION`, `ABSTRACTION`, `SPECIALIZATION`,
+`GENERALIZATION`, `CAUSAL_TRANSFER`, `MECHANISTIC_ANALOGY`,
+`STRUCTURAL_ANALOGY`, `FUNCTIONAL_ANALOGY`) plus `OTHER`. Each rule
+has a definition, admissibility criteria, examples (mapped to public
+ADV cases), and adversarial counterexamples. `OTHER` cannot
+automatically qualify a `JOINT_CROSS_SOURCE` claim as a B-2 pass — it
+requires independent adjudication and is reported separately. A
+detector that emits `OTHER` for more than 20% of its
+`JOINT_CROSS_SOURCE` entries is flagged for review.
 
-**Question:** Should the spec prescribe a fixed taxonomy of permitted
-`inference_rule` values (e.g. `composition`, `causal_attribution`,
-`transfer`, `abstraction`), or should the `inference_rule` field
-remain free-form with the adjudicator judging each derivation on its
-merits?
+The schema (Section 3.7.1, `b2-trace-v3`) enforces the enum via
+requirement 8 (Section 3.7.2).
 
-**Trade-off:**
-- A fixed taxonomy makes adjudication more reproducible (two
-  adjudicators seeing the same derivation should pick the same rule)
-  and makes the anti-cheating conditions easier to verify (each rule
-  can have specific structural requirements).
-- A free-form field allows the detector to represent novel inference
-  types that the taxonomy did not anticipate, but risks
-  adjudicator-dependent judgments.
-
-**Proposed default (for auditor approval):** the spec should prescribe
-a minimal initial taxonomy (e.g. `composition`, `causal_attribution`,
-`abstraction`) with an `other` escape hatch that requires the detector
-to provide a free-text explanation. The taxonomy can be expanded in
-future spec revisions as the held-out set reveals inference types not
-covered by the initial set. The auditor may direct a different
-approach.
+**Remaining question:** is the initial 8-rule taxonomy adequate, or
+should additional rules be added before implementation? The auditor
+may direct additions based on the held-out set construction. The
+taxonomy is versioned (`inference-rules-v1`); future additions require
+a new version number and re-adjudication.
 
 ---
 
@@ -2291,13 +2446,14 @@ R5.1 design revision document.
 ## 11. Status
 
 ```text
-Spec status:                    AMENDED (round-77) — FROZEN FOR RE-ADJUDICATION
+Spec status:                    AMENDED (round-78) — FROZEN FOR RE-ADJUDICATION
 Original freeze:                commit 8a84fdc, 2026-08-09 (round-73)
 First amended freeze:           commit 4bc945d, 2026-08-10 (round-74)
 Second amended freeze:          commit 3076d3a, 2026-08-10 (round-75)
 Third amended freeze:           commit 9b4d843, 2026-08-10 (round-76)
-Fourth amended freeze:          this revision, 2026-08-10 (round-77)
-Implementation status:          NOT STARTED — blocked on round-77 re-adjudication
+Fourth amended freeze:          commit 7f2977a, 2026-08-10 (round-77)
+Fifth amended freeze:           this revision, 2026-08-10 (round-78)
+Implementation status:          NOT STARTED — blocked on round-78 re-adjudication
 Production substrate status:    UNCHANGED — no modifications made
 Protocol B status:              BLOCKED — blocked on implementation freeze + final
                                 independent adjudication (Section 7.7)
@@ -2306,10 +2462,10 @@ Lexical detector status:        FROZEN at commit 20ac268 — no re-tuning
 Adversarial v2 diagnostic:      6/13 mismatches (3/9 adversarial matches)
                                 — canonical evidence that lexical detector
                                 does NOT solve paraphrase leakage
-Trace schema version:           b2-trace-v3 (round-77; bumped from v2 due
-                                to source_support structure change:
-                                SOURCE_LOCAL now uses spans array;
-                                JOINT_CROSS_SOURCE type added)
+Trace schema version:           b2-trace-v3 (round-77; source_support structure
+                                with SOURCE_LOCAL + JOINT_CROSS_SOURCE)
+Inference-rule taxonomy:        inference-rules-v1 (round-78; 8 named rules
+                                + OTHER; frozen at Section 2.6.8)
 
 Round-74 conditions resolved (commit 4bc945d):
   1. Operational Justified()          — new Section 2.6
@@ -2330,36 +2486,51 @@ Round-75 conditions resolved (commit 3076d3a):
 Round-76 condition resolved (commit 9b4d843):
   1. Eliminate non-constructible ISS_neither; replace with REDUNDANT_SUPPORT
 
-Round-77 condition resolved (this revision):
-  1. Add JOINT_CROSS_SOURCE support mechanism
-     — Section 2.6.2 (two support types: SOURCE_LOCAL + JOINT_CROSS_SOURCE)
-     — Section 2.6.3 (counterfactual: JOINT_CROSS_SOURCE destroyed by
-       removing either source)
-     — Section 2.6.4 (adjudicator verifies 5 anti-cheating conditions)
-     — Section 2.6.5 (rules out false JOINT_CROSS_SOURCE derivations)
-     — Section 2.6.6 (does not rule out cross-source synthesis relations)
-     — Section 2.6.7 (NEW: JOINT_CROSS_SOURCE structure + anti-cheating)
-     — Section 2.7 (B-2 = provenance topology, Gate B = discovery validity)
-     — Section 2.5 (worked examples: JOINT_CROSS_SOURCE for ADV-03/04/07/08/11)
-     — Section 3.7 (schema b2-trace-v3: support_type discriminator,
-       JOINT_CROSS_SOURCE fields)
-     — Section 8.5 (anti-regression: JOINT_CROSS_SOURCE conditions mandatory)
+Round-77 condition resolved (commit 7f2977a):
+  1. Add JOINT_CROSS_SOURCE support mechanism (Section 2.6.2-2.6.7, 3.7)
 
-Four-state ontology (round-76, retained):
+Round-78 conditions resolved (this revision):
+  1. Decouple ISS_both from JOINT_CROSS_SOURCE
+     — Section 2.1 (ISS_both definition: pure counterfactual, decoupling note)
+     — Section 2.7 (ISS_both via two pathways: independent atoms OR joint
+       relation; key principle: evidence type ≠ ISS state)
+     — Section 2.7 anti-regression item 5 (decoupling mandatory)
+  2. Freeze inference-rule taxonomy
+     — new Section 2.6.8 (inference-rules-v1: 8 named rules + OTHER;
+       definitions, admissibility, examples, counterexamples, OTHER
+       handling)
+     — Section 3.7.1 schema (inference_rule enum; inference_rule_other
+       field)
+     — Section 3.7.2 requirement 8 (enum enforced; OTHER cannot auto-pass)
+     — Section 2.7 anti-regression item 6 (taxonomy frozen)
+     — Section 9.12 RESOLVED
+
+Four-state ontology (round-76, retained; round-78 decoupled):
   ISS_one            → REJECT                  (source-local leakage)
-  ISS_both           → ALLOW                   (cross-source synthesis via JOINT_CROSS_SOURCE)
+  ISS_both           → ALLOW                   (cross-source synthesis — COUNTERFACTUAL, not tied to JOINT_CROSS_SOURCE)
   REDUNDANT_SUPPORT  → ALLOW (reported separately) (both sources independently justify)
   UNSUPPORTED        → NOT_ADJUDICATED_BY_B2   (forwarded to Gate B)
 
-Two support types (round-77, NEW):
+Two support types (round-77):
   SOURCE_LOCAL         — single-source span(s) asserting the claim
   JOINT_CROSS_SOURCE   — A-spans + B-spans + inference_rule → derived claim
                          (5 anti-cheating conditions mandatory, Section 2.6.7)
+                         (inference_rule from frozen taxonomy, Section 2.6.8)
 
-Boundary (round-77, clarified):
+Key principle (round-78):
+  Evidence type determines how an atomic claim is supported.
+  Counterfactuals determine the candidate's ISS state.
+  Do not conflate those two levels.
+  ISS_both is a property of the CANDIDATE.
+  JOINT_CROSS_SOURCE is a property of an EVIDENCE PATH for an atomic claim.
+  The latter is NOT a necessary condition for the former.
+
+Boundary (round-77, retained; round-78 clarified):
   B-2 establishes provenance topology (source-local / cross-source / redundant / unsupported)
   Gate B establishes discovery validity (is the jointly-supported relationship a valid mechanism?)
   B-2 never adjudicates novelty or invention quality.
+  B-2 adjudicates: "Does this relationship follow from the specified source
+  components under a frozen inference rule?" — NOT "Is this a good invention?"
 
 Open questions remaining for auditor:
   9.1  catastrophic-failure definition refinement
@@ -2374,18 +2545,20 @@ Open questions remaining for auditor:
        right threshold?
   9.11 RESOLVED (round-76) — formerly "true ISS_neither control category,"
        now moot
-  9.12 NEW (round-77): inference rule taxonomy for JOINT_CROSS_SOURCE —
-       fixed taxonomy vs free-form? Proposed default: minimal initial
-       taxonomy + "other" escape hatch.
+  9.12 RESOLVED (round-78) — inference rule taxonomy frozen at
+       inference-rules-v1 (Section 2.6.8); remaining question: is the
+       initial 8-rule taxonomy adequate, or should additions be made
+       before implementation?
 ```
 
 This amended spec is now awaiting the auditor's re-adjudication per
 Section 7.2. No implementation work may begin until the auditor accepts
 the amended spec (unconditionally or with conditions).
 
-Per the round-77 verdict: "Once this one point is repaired and
-independently re-adjudicated, I would expect the remaining work to be
-**measurement construction and implementation**, not another
-architectural redesign." If the auditor accepts this round-77 amended
-spec, the workflow proceeds to held-out set construction (Section 7.3)
-and implementation (Section 7.4).
+Per the round-78 verdict: "Once those two surgical corrections are made
+and independently re-adjudicated, I would be comfortable allowing the
+process to leave specification design and move into **blind held-out
+construction → implementation → adversarial audit → freeze →
+discrimination execution**." If the auditor accepts this round-78
+amended spec, the workflow proceeds to held-out set construction
+(Section 7.3) and implementation (Section 7.4).
