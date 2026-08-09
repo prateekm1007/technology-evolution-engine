@@ -1,0 +1,127 @@
+{
+  "artifact_type": "FROZEN_AUDIT_INSTRUMENT",
+  "description": "Frozen baseline equivalence audit instrument. Creates a clean separation between the thing being measured (engine vs null) and the instrument doing the measurement (the audit). The first real engine/null execution becomes a proper experimental artifact with a frozen measurement instrument.",
+  "diagnostic_rule": "CRITICAL: The first real run is DIAGNOSTIC, not evidence for the North Star. Even if it produces 13/13 OBSERVED_EQUAL, that does NOT establish baseline fairness. And if it produces 8 EQUAL / 5 DIFFERENT, that does NOT establish baseline unfairness. It establishes the empirical structure of the two arms. The external/preregistered adjudication protocol determines whether differences are acceptable relative to the estimand.",
+  "components": {
+    "audit_script": {
+      "path": "scripts/baseline_equivalence_audit.py",
+      "sha256": "c6f3c55ce194ce355fbe732d416a084fa8ea41910b16803b45f6e749aeb2fafb"
+    },
+    "parser_script": {
+      "path": "engine/b2_provenance/frozen_parser.py",
+      "sha256": "3d2551e2832a235037565f8dac020db94e48937db5b5c7cd75f1b0a05ae271ad"
+    },
+    "generation_null_script": {
+      "path": "engine/b2_provenance/generation_null.py",
+      "sha256": "d0b2dbcf7c8f3796800dd86d9acbc6e6d1828a18f5810a0e6192a869a77de3e6"
+    },
+    "provenance_ledger_script": {
+      "path": "engine/b2_provenance/provenance_ledger.py",
+      "sha256": "0733f97864d146e8bb0d65f85f5bde9980faa4046907de55dd32e6cff9cf4601"
+    },
+    "content_addressed_storage_script": {
+      "path": "engine/b2_provenance/content_addressed_storage.py",
+      "sha256": "f5ae337d5da713b6cb6df4260ff7d208143ed8c89235a6a124972d6901e0d69c"
+    }
+  },
+  "audit_dimensions": [
+    "source_pair",
+    "upstream_extraction",
+    "abstraction",
+    "candidate_count",
+    "candidate_schema",
+    "candidate_length",
+    "mechanism_presence",
+    "information_available",
+    "llm_access",
+    "prompt_complexity",
+    "entity_specificity",
+    "human_intervention",
+    "invocation_seed"
+  ],
+  "audit_states": [
+    "CONTRACT_EQUAL",
+    "OBSERVED_EQUAL",
+    "OBSERVED_DIFFERENT",
+    "NOT_OBSERVABLE",
+    "NOT_RUN"
+  ],
+  "audit_output_schema": {
+    "audit_type": "BASELINE_EQUIVALENCE_AUDIT",
+    "case_id": "string",
+    "engine_entries_found": "int",
+    "null_entries_found": "int",
+    "engine_provenance_valid": "bool",
+    "null_provenance_valid": "bool",
+    "engine_verification_errors": "list[string]",
+    "null_verification_errors": "list[string]",
+    "n_dimensions": "int (always 13)",
+    "dimensions_audited": "list[string] (always ALL_DIMENSIONS)",
+    "state_counts": "dict[state -> count]",
+    "measurements": "list[EquivalenceMeasurement]",
+    "summary": {
+      "engine_executed": "bool",
+      "null_executed": "bool",
+      "all_provenance_verified": "bool",
+      "all_observations_from_verified_artifacts": "bool",
+      "fairness_established": "bool (always False)",
+      "notes": "string"
+    }
+  },
+  "ledger_schema": {
+    "ledger_type": "B2_PROVENANCE_LEDGER",
+    "event_types": [
+      "CANDIDATE_GENERATED",
+      "ADJUDICATION_RECORDED"
+    ],
+    "generation_entry_fields": [
+      "event_type",
+      "candidate_id",
+      "case_id",
+      "arm",
+      "candidate_rank",
+      "raw_output_sha256",
+      "raw_output_blob_path",
+      "parser_sha256",
+      "parser_config_sha256",
+      "candidate_sha256",
+      "candidate_text",
+      "generation_timestamp",
+      "engine_version",
+      "provider",
+      "model",
+      "prompt_hash",
+      "source_pair_sha256",
+      "invocation_seed",
+      "prev_entry_hash",
+      "entry_hash"
+    ],
+    "adjudication_entry_fields": [
+      "event_type",
+      "candidate_id",
+      "adjudication_input_sha256",
+      "gate_a_classification",
+      "gate_a_adjudicator_ids",
+      "gate_a_agreement",
+      "gate_c_classification",
+      "gate_c_adjudicator_ids",
+      "gate_c_agreement",
+      "prior_art_search_id",
+      "prior_art_channel_a_result",
+      "prior_art_channel_b_result",
+      "prior_art_final",
+      "case_success",
+      "adjudication_timestamp",
+      "prev_entry_hash",
+      "entry_hash"
+    ],
+    "chain_rule": "each entry's prev_entry_hash == previous entry's entry_hash",
+    "immutability": "entries are never modified after creation"
+  },
+  "ner_components": {
+    "entity_dictionary_sha256": "7fa0d0de35d935105b63d5c3908db823890eda23703a96157565eef1a3cff827",
+    "stopword_set_sha256": "7485573d4d9080183924b52998f1670b932410915acdee85656133b2226967cf",
+    "ner_model_info_sha256": "beb787031b7591fcee1fe966cfa33f8f423d5e362936d4e6ceb46f2f860be3fa"
+  },
+  "instrument_sha256": "4c74ea633af853597bde4374df2639a71143fe241f8f5479d1d793f360624592"
+}
