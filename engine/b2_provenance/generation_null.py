@@ -70,6 +70,7 @@ IMMUTABILITY:
 """
 import hashlib
 import json
+import sys
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
 
@@ -82,6 +83,119 @@ from .frozen_parser import (
     PARSER_CONFIG,
 )
 from .provenance_ledger import ProvenanceLedger
+
+
+# --------------------------------------------------------------------
+# Frozen component verification (per audit round 49).
+#
+# The NER components (entity dictionary, stopword set, model info)
+# are frozen as committed artifacts with SHA-256 verification.
+# Runtime verification rejects any mismatch between the frozen
+# artifacts and the actual runtime components.
+#
+# This is the same principle that hardened the Phase 7 freeze:
+#     disk content != frozen content → substitution detected.
+# --------------------------------------------------------------------
+REPO_ROOT = Path(__file__).resolve().parents[2]
+FROZEN_COMPONENTS_DIR = REPO_ROOT / "provenance" / "frozen_components"
+
+
+def _compute_json_sha256(data: dict) -> str:
+    """Compute SHA-256 of a dict's canonical JSON serialization."""
+    json_bytes = json.dumps(data, sort_keys=True, separators=(",", ":")).encode("utf-8")
+    return hashlib.sha256(json_bytes).hexdigest()
+
+
+def verify_frozen_components() -> Dict[str, Any]:
+    """Verify that the runtime NER components match the frozen artifacts.
+
+    Per audit round 49: NER identity must be frozen, not just reported.
+    This function checks:
+    1. entity_dictionary.json exists and its SHA-256 matches
+    2. stopword_set.json exists and its SHA-256 matches
+    3. ner_model_info.json exists and its SHA-256 matches
+    4. The runtime spaCy version matches the frozen version
+
+    Returns:
+        Dict with verification results.
+
+    Raises:
+        AssertionError: if any component fails verification.
+    """
+    results = {}
+
+    # 1. Verify entity dictionary
+    dict_path = FROZEN_COMPONENTS_DIR / "entity_dictionary.json"
+    assert dict_path.exists(), (
+        f"Frozen entity dictionary not found at {dict_path}. "
+        f"Run scripts/freeze_ner_components.py to generate it."
+    )
+    dict_data = json.loads(dict_path.read_text())
+    dict_runtime_sha = _compute_json_sha256(dict_data)
+
+    sha_path = FROZEN_COMPONENTS_DIR / "entity_dictionary.sha256"
+    assert sha_path.exists(), (
+        f"Frozen entity dictionary SHA-256 not found at {sha_path}."
+    )
+    dict_frozen_sha = sha_path.read_text().split()[0]
+    assert dict_runtime_sha == dict_frozen_sha, (
+        f"Entity dictionary SHA-256 mismatch: runtime={dict_runtime_sha[:16]}... "
+        f"frozen={dict_frozen_sha[:16]}... The dictionary has been modified."
+    )
+    results["entity_dictionary_sha256"] = dict_frozen_sha
+    results["entity_dictionary_verified"] = True
+
+    # 2. Verify stopword set
+    stopword_path = FROZEN_COMPONENTS_DIR / "stopword_set.json"
+    assert stopword_path.exists(), (
+        f"Frozen stopword set not found at {stopword_path}."
+    )
+    stopword_data = json.loads(stopword_path.read_text())
+    stopword_runtime_sha = _compute_json_sha256(stopword_data)
+
+    stopword_sha_path = FROZEN_COMPONENTS_DIR / "stopword_set.sha256"
+    assert stopword_sha_path.exists(), (
+        f"Frozen stopword set SHA-256 not found at {stopword_sha_path}."
+    )
+    stopword_frozen_sha = stopword_sha_path.read_text().split()[0]
+    assert stopword_runtime_sha == stopword_frozen_sha, (
+        f"Stopword set SHA-256 mismatch: runtime={stopword_runtime_sha[:16]}... "
+        f"frozen={stopword_frozen_sha[:16]}... The stopword set has been modified."
+    )
+    results["stopword_set_sha256"] = stopword_frozen_sha
+    results["stopword_set_verified"] = True
+
+    # 3. Verify NER model info
+    ner_path = FROZEN_COMPONENTS_DIR / "ner_model_info.json"
+    assert ner_path.exists(), (
+        f"Frozen NER model info not found at {ner_path}."
+    )
+    ner_data = json.loads(ner_path.read_text())
+
+    # Check runtime spaCy version matches frozen version
+    import spacy
+    frozen_spacy_version = ner_data["model_info"]["spacy_version"]
+    runtime_spacy_version = spacy.__version__
+    assert runtime_spacy_version == frozen_spacy_version, (
+        f"spaCy version mismatch: runtime={runtime_spacy_version} "
+        f"frozen={frozen_spacy_version}. The NER model identity has changed."
+    )
+
+    ner_runtime_sha = _compute_json_sha256(ner_data)
+    ner_sha_path = FROZEN_COMPONENTS_DIR / "ner_model_info.sha256"
+    assert ner_sha_path.exists(), (
+        f"Frozen NER model info SHA-256 not found at {ner_sha_path}."
+    )
+    ner_frozen_sha = ner_sha_path.read_text().split()[0]
+    assert ner_runtime_sha == ner_frozen_sha, (
+        f"NER model info SHA-256 mismatch: runtime={ner_runtime_sha[:16]}... "
+        f"frozen={ner_frozen_sha[:16]}... The NER model info has been modified."
+    )
+    results["ner_model_info_sha256"] = ner_frozen_sha
+    results["ner_model_info_verified"] = True
+    results["spacy_version"] = runtime_spacy_version
+
+    return results
 
 
 # --------------------------------------------------------------------

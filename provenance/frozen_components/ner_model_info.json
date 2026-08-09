@@ -1,0 +1,19 @@
+{
+  "artifact_type": "FROZEN_NER_MODEL_INFO",
+  "description": "Frozen NER model identity for provenance verification",
+  "model_info": {
+    "ner_library": "spacy",
+    "ner_model": "en_core_web_sm",
+    "spacy_version": "3.8.11",
+    "python_version": "3.12.13",
+    "model_source": "spaCy model package",
+    "model_capabilities": [
+      "ner",
+      "noun_chunks",
+      "lemmatization",
+      "pos_tagging"
+    ],
+    "canonicalization_rule": "lowercase \u2192 strip punctuation \u2192 lemmatize (first non-stop token lemma)",
+    "min_token_length": 4
+  }
+}

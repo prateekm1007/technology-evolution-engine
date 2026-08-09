@@ -42,6 +42,7 @@ from .generation_null import (
     record_null_in_ledger,
     NullGenerationResult,
     NULL_CONFIG,
+    verify_frozen_components,
 )
 
 __all__ = [
