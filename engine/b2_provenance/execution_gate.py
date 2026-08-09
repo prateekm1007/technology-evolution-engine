@@ -20,7 +20,6 @@ REPORTING (per audit round 55):
     - what ran, what artifacts, hashes, failures, exclusions, provenance status
     - NO: successful, failed, fair, discovery, significant, or North Star
 """
-import hashlib
 import json
 import sys
 import uuid
