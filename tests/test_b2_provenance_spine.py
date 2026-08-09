@@ -258,6 +258,32 @@ Candidate 4: This should be discarded (max 3).
         candidates = parse_candidates("Just preamble, no candidates.")
         assert candidates == []
 
+    def test_overlong_candidate_rejected_not_truncated(self):
+        """Per audit round 46 (SERIOUS): overlong candidates are REJECTED,
+        not truncated. The parser must NOT transform candidates — it
+        only selects eligible ones. Truncation would silently modify
+        the candidate before hashing, creating a provenance ambiguity."""
+        # Create a candidate that exceeds max_candidate_length (10000)
+        overlong_text = "X" * 10001
+        raw_output = f"---PREAMBLE---\n---CANDIDATE---\n{overlong_text}\n---CANDIDATE---\nNormal length candidate here."
+        candidates = parse_candidates(raw_output)
+
+        # The overlong candidate was REJECTED (not truncated)
+        assert len(candidates) == 1
+        assert candidates[0] == "Normal length candidate here."
+        # The overlong text is NOT present (would be if truncated)
+        assert "X" * 10000 not in candidates[0]
+
+    def test_parser_does_not_modify_candidate_text(self):
+        """The parser must return candidates EXACTLY as they appear in
+        the raw output (after stripping whitespace). No truncation,
+        no repair, no silent modification."""
+        original = "This is an exact candidate that must not be modified."
+        raw_output = f"---PREAMBLE---\n---CANDIDATE---\n{original}\n"
+        candidates = parse_candidates(raw_output)
+        assert len(candidates) == 1
+        assert candidates[0] == original  # exact match, no modification
+
 
 # =====================================================================
 # CATEGORY 3: PROVENANCE LEDGER — HASH CHAIN AND TAMPER DETECTION
@@ -372,12 +398,17 @@ class TestProvenanceLedger:
             ledger.append_candidate_entry(**params)
 
     def test_append_adjudication_result(self, tmp_path):
-        """Adjudication results can be appended to an existing entry."""
+        """Adjudication creates a SEPARATE event (not a mutation of the
+        generation entry). Per audit round 46 (FATAL): the generation
+        entry must remain immutable."""
         ledger = self._create_test_ledger(tmp_path)
         params = self._make_test_entry_params()
-        ledger.append_candidate_entry(**params)
+        gen_entry = ledger.append_candidate_entry(**params)
 
-        ledger.append_adjudication_result(
+        # Record the generation entry's hash BEFORE adjudication.
+        gen_hash_before = gen_entry["entry_hash"]
+
+        adj_entry = ledger.append_adjudication_result(
             candidate_id="CASE-001-ENGINE-CAND-001",
             adjudication_input_sha256="f" * 64,
             gate_a_classification="A4",
@@ -393,14 +424,28 @@ class TestProvenanceLedger:
             case_success=True,
         )
 
-        entry = ledger.get_entry("CASE-001-ENGINE-CAND-001")
-        assert entry["gate_a_classification"] == "A4"
-        assert entry["gate_c_classification"] == "PASS"
-        assert entry["case_success"] is True
-        assert entry["case_success_timestamp"] is not None
+        # The adjudication event is a SEPARATE entry.
+        assert adj_entry["event_type"] == "ADJUDICATION_RECORDED"
+        assert adj_entry["candidate_id"] == "CASE-001-ENGINE-CAND-001"
+        assert adj_entry["gate_a_classification"] == "A4"
+        assert adj_entry["case_success"] is True
+
+        # The generation entry's hash has NOT changed (immutable).
+        gen_entry_after = ledger.get_generation_event("CASE-001-ENGINE-CAND-001")
+        assert gen_entry_after["entry_hash"] == gen_hash_before, (
+            "Generation entry hash changed after adjudication — "
+            "the generation record is supposed to be immutable."
+        )
+
+        # The generation entry does NOT contain adjudication fields.
+        assert "gate_a_classification" not in gen_entry_after
+        assert "case_success" not in gen_entry_after
+
+        # The adjudication event is linked in the chain.
+        assert adj_entry["prev_entry_hash"] == gen_hash_before
 
     def test_no_overwrite_adjudication(self, tmp_path):
-        """Adjudication results cannot be overwritten."""
+        """Adjudication events cannot be duplicated (no double-adjudication)."""
         ledger = self._create_test_ledger(tmp_path)
         params = self._make_test_entry_params()
         ledger.append_candidate_entry(**params)
@@ -423,8 +468,140 @@ class TestProvenanceLedger:
         ledger.append_adjudication_result(**adj_params)
 
         # Second attempt should fail
-        with pytest.raises(ValueError, match="already exist"):
+        with pytest.raises(ValueError, match="already exists"):
             ledger.append_adjudication_result(**adj_params)
+
+    def test_generation_entry_immutable_after_adjudication(self, tmp_path):
+        """Per audit round 46 (FATAL): the generation entry must remain
+        immutable after adjudication. This test verifies:
+
+        1. The generation entry's hash is unchanged after adjudication
+        2. The generation entry contains NO adjudication fields
+        3. verify_generation_immutability() passes
+        4. The adjudication is a separate event in the chain
+        """
+        ledger = self._create_test_ledger(tmp_path)
+        params = self._make_test_entry_params()
+        gen_entry = ledger.append_candidate_entry(**params)
+        gen_hash = gen_entry["entry_hash"]
+
+        # Adjudicate
+        ledger.append_adjudication_result(
+            candidate_id="CASE-001-ENGINE-CAND-001",
+            adjudication_input_sha256="f" * 64,
+            gate_a_classification="A4",
+            gate_a_adjudicator_ids=["ADJ-001", "ADJ-002"],
+            gate_a_agreement=True,
+            gate_c_classification="PASS",
+            gate_c_adjudicator_ids=["ADJ-003", "ADJ-004"],
+            gate_c_agreement=True,
+            prior_art_search_id="SEARCH-001",
+            prior_art_channel_a_result="NO_LEXICAL_MATCH",
+            prior_art_channel_b_result="NO_MECHANISM_MATCH",
+            prior_art_final="NO_PRECEDENT_FOUND_UNDER_PREREGISTERED_SEARCH",
+            case_success=True,
+        )
+
+        # 1. Generation hash unchanged
+        gen_after = ledger.get_generation_event("CASE-001-ENGINE-CAND-001")
+        assert gen_after["entry_hash"] == gen_hash
+
+        # 2. No adjudication fields in generation entry
+        for field in ["gate_a_classification", "gate_c_classification",
+                       "case_success", "adjudication_input_sha256"]:
+            assert field not in gen_after, (
+                f"Generation entry contains adjudication field '{field}'"
+            )
+
+        # 3. verify_generation_immutability passes
+        assert ledger.verify_generation_immutability("CASE-001-ENGINE-CAND-001") is True
+
+        # 4. Adjudication is a separate event
+        adj_entry = ledger.get_adjudication_event("CASE-001-ENGINE-CAND-001")
+        assert adj_entry is not None
+        assert adj_entry["event_type"] == "ADJUDICATION_RECORDED"
+        assert adj_entry is not gen_after  # different objects
+
+    def test_generation_immutability_detects_mutation(self, tmp_path):
+        """If the generation entry is mutated after adjudication,
+        verify_generation_immutability raises AssertionError."""
+        ledger = self._create_test_ledger(tmp_path)
+        params = self._make_test_entry_params()
+        gen_entry = ledger.append_candidate_entry(**params)
+
+        ledger.append_adjudication_result(
+            candidate_id="CASE-001-ENGINE-CAND-001",
+            adjudication_input_sha256="f" * 64,
+            gate_a_classification="A4",
+            gate_a_adjudicator_ids=["ADJ-001", "ADJ-002"],
+            gate_a_agreement=True,
+            gate_c_classification="PASS",
+            gate_c_adjudicator_ids=["ADJ-003", "ADJ-004"],
+            gate_c_agreement=True,
+            prior_art_search_id="SEARCH-001",
+            prior_art_channel_a_result="NO_LEXICAL_MATCH",
+            prior_art_channel_b_result="NO_MECHANISM_MATCH",
+            prior_art_final="NO_PRECEDENT_FOUND_UNDER_PREREGISTERED_SEARCH",
+            case_success=True,
+        )
+
+        # Tamper: mutate the generation entry directly
+        gen_entry["candidate_text"] = "TAMPERED"
+
+        with pytest.raises(AssertionError, match="MODIFIED"):
+            ledger.verify_generation_immutability("CASE-001-ENGINE-CAND-001")
+
+    def test_adjudication_requires_generation_event(self, tmp_path):
+        """Cannot adjudicate a candidate that was never generated."""
+        ledger = self._create_test_ledger(tmp_path)
+
+        with pytest.raises(KeyError, match="No CANDIDATE_GENERATED event"):
+            ledger.append_adjudication_result(
+                candidate_id="CASE-001-ENGINE-CAND-001",
+                adjudication_input_sha256="f" * 64,
+                gate_a_classification="A4",
+                gate_a_adjudicator_ids=["ADJ-001", "ADJ-002"],
+                gate_a_agreement=True,
+                gate_c_classification="PASS",
+                gate_c_adjudicator_ids=["ADJ-003", "ADJ-004"],
+                gate_c_agreement=True,
+                prior_art_search_id="SEARCH-001",
+                prior_art_channel_a_result="NO_LEXICAL_MATCH",
+                prior_art_channel_b_result="NO_MECHANISM_MATCH",
+                prior_art_final="NO_PRECEDENT_FOUND_UNDER_PREREGISTERED_SEARCH",
+                case_success=True,
+            )
+
+    def test_combined_record_merges_events(self, tmp_path):
+        """get_combined_record merges generation + adjudication into
+        a single view (without modifying the underlying events)."""
+        ledger = self._create_test_ledger(tmp_path)
+        params = self._make_test_entry_params()
+        ledger.append_candidate_entry(**params)
+
+        ledger.append_adjudication_result(
+            candidate_id="CASE-001-ENGINE-CAND-001",
+            adjudication_input_sha256="f" * 64,
+            gate_a_classification="A4",
+            gate_a_adjudicator_ids=["ADJ-001", "ADJ-002"],
+            gate_a_agreement=True,
+            gate_c_classification="PASS",
+            gate_c_adjudicator_ids=["ADJ-003", "ADJ-004"],
+            gate_c_agreement=True,
+            prior_art_search_id="SEARCH-001",
+            prior_art_channel_a_result="NO_LEXICAL_MATCH",
+            prior_art_channel_b_result="NO_MECHANISM_MATCH",
+            prior_art_final="NO_PRECEDENT_FOUND_UNDER_PREREGISTERED_SEARCH",
+            case_success=True,
+        )
+
+        combined = ledger.get_combined_record("CASE-001-ENGINE-CAND-001")
+        assert combined["candidate_id"] == "CASE-001-ENGINE-CAND-001"
+        assert combined["gate_a_classification"] == "A4"
+        assert combined["case_success"] is True
+        # The underlying events are still separate
+        assert ledger.n_generation_events() == 1
+        assert ledger.n_adjudication_events() == 1
 
     def test_ledger_persists_to_disk(self, tmp_path):
         """The ledger persists entries to disk and reloads them."""

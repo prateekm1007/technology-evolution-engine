@@ -134,9 +134,13 @@ def parse_candidates(raw_output: str) -> List[str]:
         if len(candidate) < min_len:
             continue
         if len(candidate) > max_len:
-            # Truncate rather than reject — the candidate is too long
-            # but may still be valid. Log this but don't fail.
-            candidate = candidate[:max_len]
+            # Per audit round 46 (SERIOUS): reject overlong candidates
+            # rather than truncating. Truncation silently modifies the
+            # candidate before hashing, creating a provenance ambiguity.
+            # The parser must NOT transform candidates — it only selects
+            # eligible ones. Overlong candidates are INELIGIBLE and skipped.
+            # The parser continues looking for the next eligible candidate.
+            continue
         candidates.append(candidate)
         if len(candidates) >= max_candidates:
             break
