@@ -198,6 +198,18 @@ def main():
             "stopword_set_sha256": None,
             "ner_model_info_sha256": None,
         },
+        "canonical_convention": {
+            "format": "JSON",
+            "sort_keys": True,
+            "separators": [",", ":"],
+            "encoding": "UTF-8",
+            "no_trailing_newline": True,
+            "description": (
+                "Canonical serialization for hash computation. "
+                "The instrument_sha256 field is computed from the instrument "
+                "payload WITHOUT the instrument_sha256 field itself."
+            ),
+        },
     }
 
     # Read existing frozen NER component hashes
@@ -211,6 +223,37 @@ def main():
         instrument["ner_components"]["stopword_set_sha256"] = ner_stop_sha_path.read_text().split()[0]
     if ner_model_sha_path.exists():
         instrument["ner_components"]["ner_model_info_sha256"] = ner_model_sha_path.read_text().split()[0]
+
+    # Capture runtime manifest (per audit round 53: frozen source ≠ frozen behavior)
+    runtime_manifest = {
+        "python_version": sys.version.split()[0],
+        "python_executable": sys.executable,
+        "platform": sys.platform,
+    }
+    try:
+        import spacy
+        runtime_manifest["spacy_version"] = spacy.__version__
+        runtime_manifest["spacy_model"] = "en_core_web_sm"
+    except Exception:
+        runtime_manifest["spacy_version"] = None
+        runtime_manifest["spacy_model"] = None
+    try:
+        import numpy
+        runtime_manifest["numpy_version"] = numpy.__version__
+    except Exception:
+        runtime_manifest["numpy_version"] = None
+    try:
+        import sympy
+        runtime_manifest["sympy_version"] = sympy.__version__
+    except Exception:
+        runtime_manifest["sympy_version"] = None
+    try:
+        import scipy
+        runtime_manifest["scipy_version"] = scipy.__version__
+    except Exception:
+        runtime_manifest["scipy_version"] = None
+
+    instrument["runtime_manifest"] = runtime_manifest
 
     # Compute overall instrument hash (from the instrument WITHOUT the hash field)
     instrument_without_hash = {k: v for k, v in instrument.items() if k != "instrument_sha256"}

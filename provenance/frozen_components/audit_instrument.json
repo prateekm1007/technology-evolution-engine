@@ -123,5 +123,26 @@
     "stopword_set_sha256": "7485573d4d9080183924b52998f1670b932410915acdee85656133b2226967cf",
     "ner_model_info_sha256": "beb787031b7591fcee1fe966cfa33f8f423d5e362936d4e6ceb46f2f860be3fa"
   },
-  "instrument_sha256": "4c74ea633af853597bde4374df2639a71143fe241f8f5479d1d793f360624592"
+  "canonical_convention": {
+    "format": "JSON",
+    "sort_keys": true,
+    "separators": [
+      ",",
+      ":"
+    ],
+    "encoding": "UTF-8",
+    "no_trailing_newline": true,
+    "description": "Canonical serialization for hash computation. The instrument_sha256 field is computed from the instrument payload WITHOUT the instrument_sha256 field itself."
+  },
+  "runtime_manifest": {
+    "python_version": "3.12.13",
+    "python_executable": "/home/z/.venv/bin/python3",
+    "platform": "linux",
+    "spacy_version": "3.8.11",
+    "spacy_model": "en_core_web_sm",
+    "numpy_version": "2.1.3",
+    "sympy_version": "1.14.0",
+    "scipy_version": "1.14.1"
+  },
+  "instrument_sha256": "453d483f124e653712131c846efb013201cd85dfe4afd9e44a9bdc5c06bbbb34"
 }
