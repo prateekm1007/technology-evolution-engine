@@ -1,0 +1,20 @@
+{
+  "experiment": "B-2 GLiREL hybrid v2 Phase 1",
+  "date": "2026-08-10T02:05:22.035922+00:00",
+  "model": "jackboyla/glirel_beta",
+  "span_fidelity_v1": 64.0,
+  "span_fidelity_v2": 42.0,
+  "head_fidelity": 92.0,
+  "tail_fidelity": 92.0,
+  "fix_methods": {
+    "standard": 5330,
+    "single_token": 650,
+    "invalid_inverted": 520,
+    "out_of_range": 0,
+    "no_position": 0
+  },
+  "artifact_sha256": "c9bf1acde87fe9be92c45c71a57fd8c01aea05f7d76e961bf21e67618bc29f0f",
+  "frozen_b2_unchanged": true,
+  "heldout_accessed": false,
+  "label": "NON-AUTHORITATIVE PARALLEL ENGINEERING EXPERIMENT"
+}

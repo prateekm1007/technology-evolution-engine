@@ -9,23 +9,24 @@
   "atoms": [
     "protein-catalyzed",
     "biogenic",
-    "oxide precipitation"
+    "oxide",
+    "precipitation"
   ],
   "counterfactuals": [
-    "If Source A mentioned protein catalysis, it would support the candidate.",
-    "If Source B mentioned oxide precipitation (not just silica), it would support the candidate."
+    "If Source A didn't mention osteoblast-mediated mineralization, it wouldn't support the candidate.",
+    "If Source B didn't mention silicatein proteins, it wouldn't support the candidate."
   ],
   "classification": {
-    "justified_by_corpus": false,
-    "iss_a": false,
-    "iss_b": false,
-    "iss_state": "UNSUPPORTED",
-    "label": "NOT_ADJUDICATED_BY_B2"
+    "justified_by_corpus": true,
+    "iss_a": true,
+    "iss_b": true,
+    "iss_state": "REDUNDANT_SUPPORT",
+    "label": "ALLOW"
   },
   "evidence_assessment": {
-    "glirel_relations_used": 0,
-    "glirel_relations_rejected": 10,
-    "glirel_evidence_helpful": false,
-    "notes": "Neither source directly supports the candidate phrase. Source A discusses calcium phosphate precipitation but doesn't mention protein catalysis. Source B discusses protein-catalyzed precipitation but only of silica, not oxides. The GLiREL relations don't establish the connection between proteins and oxide precipitation in either source."
+    "glirel_relations_used": 2,
+    "glirel_relations_rejected": 18,
+    "glirel_evidence_helpful": true,
+    "notes": "Source A shows osteoblast-mediated mineralization (protein-catalyzed biogenic process). Source B shows silicatein proteins precipitating silica (protein-catalyzed biogenic precipitation). Both independently support the candidate."
   }
 }

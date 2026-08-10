@@ -7,10 +7,13 @@
     "source_b": "Marine diatoms precipitate silica-based cell walls using enzymatic silicatein proteins."
   },
   "atoms": [
-    "Calcium phosphate forms crystalline deposits in bone tissue through osteoblast-mediated mineralization.",
-    "Marine diatoms precipitate silica-based cell walls using enzymatic silicatein proteins."
+    "enzyme-templated",
+    "mineral deposition"
   ],
-  "counterfactuals": [],
+  "counterfactuals": [
+    "If Source A didn't mention 'osteoblast-mediated mineralization', would the candidate still be supported?",
+    "If Source B didn't mention 'enzymatic silicatein proteins', would the candidate still be supported?"
+  ],
   "classification": {
     "justified_by_corpus": true,
     "iss_a": true,
@@ -22,6 +25,6 @@
     "glirel_relations_used": 2,
     "glirel_relations_rejected": 18,
     "glirel_evidence_helpful": true,
-    "notes": "Source A mentions osteoblast-mediated mineralization (enzyme-templated) of calcium phosphate deposits. Source B mentions enzymatic silicatein proteins precipitating silica-based cell walls. Both sources independently support the candidate concept."
+    "notes": "Source A supports 'mineral deposition' through 'osteoblast-mediated mineralization' which implies enzyme involvement. Source B supports 'enzyme-templated' through 'enzymatic silicatein proteins' and 'mineral deposition' through 'precipitate silica-based cell walls'. Both sources independently justify the candidate."
   }
 }

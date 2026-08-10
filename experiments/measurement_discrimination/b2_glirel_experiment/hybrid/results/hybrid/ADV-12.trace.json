@@ -6,8 +6,14 @@
     "source_a": "Calcium phosphate forms crystalline deposits in bone tissue through osteoblast-mediated mineralization.",
     "source_b": "Marine diatoms precipitate silica-based cell walls using enzymatic silicatein proteins."
   },
-  "atoms": [],
-  "counterfactuals": [],
+  "atoms": [
+    "mineralization occurs in bone tissue (Source A)",
+    "diatoms precipitate silica structures (Source B)"
+  ],
+  "counterfactuals": [
+    "If Source A didn't mention mineralization, we wouldn't know about the process in bone tissue",
+    "If Source B didn't mention precipitation, we wouldn't know about diatom silica formation"
+  ],
   "classification": {
     "justified_by_corpus": true,
     "iss_a": true,
@@ -16,9 +22,9 @@
     "label": "ALLOW"
   },
   "evidence_assessment": {
-    "glirel_relations_used": 0,
-    "glirel_relations_rejected": 10,
+    "glirel_relations_used": 2,
+    "glirel_relations_rejected": 18,
     "glirel_evidence_helpful": false,
-    "notes": "The candidate 'mineralizing' appears in Source A as 'mineralization' (a related form). Source A directly describes the process of mineralization in bone tissue. Source B describes precipitation of silica, which is a mineralization process, though it uses different terminology. Both sources independently support the concept of mineralization, making this a case of redundant support."
+    "notes": "GLiREL didn't extract the specific term 'mineralization' from Source A or 'precipitate' as related to mineralization in Source B. The candidate is supported by both sources independently (Source A explicitly mentions 'mineralization', Source B describes a similar process with 'precipitate'), making it REDUNDANT_SUPPORT."
   }
 }

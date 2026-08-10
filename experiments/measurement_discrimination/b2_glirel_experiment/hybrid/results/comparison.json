@@ -57,12 +57,12 @@
       "expected": "ALLOW",
       "baseline_label": "N/A",
       "baseline_agreement": "N/A",
-      "hybrid_label": "ALLOW",
-      "hybrid_state": "ISS_both",
+      "hybrid_label": "NOT_ADJUDICATED_BY_B2",
+      "hybrid_state": "UNSUPPORTED",
       "baseline_match": false,
-      "hybrid_match": true,
-      "glirel_evidence_used": 4,
-      "glirel_evidence_helpful": true
+      "hybrid_match": false,
+      "glirel_evidence_used": 0,
+      "glirel_evidence_helpful": null
     },
     {
       "case_id": "ADV-05",
@@ -96,11 +96,11 @@
       "expected": "ALLOW",
       "baseline_label": "N/A",
       "baseline_agreement": "N/A",
-      "hybrid_label": "ALLOW",
-      "hybrid_state": "ISS_both",
+      "hybrid_label": "NOT_ADJUDICATED_BY_B2",
+      "hybrid_state": "UNSUPPORTED",
       "baseline_match": false,
-      "hybrid_match": true,
-      "glirel_evidence_used": 3,
+      "hybrid_match": false,
+      "glirel_evidence_used": 0,
       "glirel_evidence_helpful": null
     },
     {
@@ -109,12 +109,12 @@
       "expected": "ALLOW",
       "baseline_label": "N/A",
       "baseline_agreement": "N/A",
-      "hybrid_label": "NOT_ADJUDICATED_BY_B2",
-      "hybrid_state": "UNSUPPORTED",
+      "hybrid_label": "ALLOW",
+      "hybrid_state": "REDUNDANT_SUPPORT",
       "baseline_match": false,
-      "hybrid_match": false,
-      "glirel_evidence_used": 0,
-      "glirel_evidence_helpful": null
+      "hybrid_match": true,
+      "glirel_evidence_used": 2,
+      "glirel_evidence_helpful": true
     },
     {
       "case_id": "ADV-09",
@@ -135,12 +135,12 @@
       "expected": "REJECT",
       "baseline_label": "N/A",
       "baseline_agreement": "N/A",
-      "hybrid_label": "NOT_ADJUDICATED_BY_B2",
-      "hybrid_state": "UNSUPPORTED",
+      "hybrid_label": "REJECT",
+      "hybrid_state": "ISS_one",
       "baseline_match": false,
-      "hybrid_match": false,
-      "glirel_evidence_used": 0,
-      "glirel_evidence_helpful": null
+      "hybrid_match": true,
+      "glirel_evidence_used": 1,
+      "glirel_evidence_helpful": true
     },
     {
       "case_id": "ADV-11",
@@ -152,8 +152,8 @@
       "hybrid_state": "REDUNDANT_SUPPORT",
       "baseline_match": false,
       "hybrid_match": true,
-      "glirel_evidence_used": 4,
-      "glirel_evidence_helpful": true
+      "glirel_evidence_used": 0,
+      "glirel_evidence_helpful": null
     },
     {
       "case_id": "ADV-12",
@@ -165,7 +165,7 @@
       "hybrid_state": "REDUNDANT_SUPPORT",
       "baseline_match": false,
       "hybrid_match": false,
-      "glirel_evidence_used": 0,
+      "glirel_evidence_used": 2,
       "glirel_evidence_helpful": null
     },
     {
@@ -215,11 +215,11 @@
       "expected": "ALLOW",
       "baseline_label": "N/A",
       "baseline_agreement": "N/A",
-      "hybrid_label": "ALLOW",
-      "hybrid_state": "ISS_both",
+      "hybrid_label": "NOT_ADJUDICATED_BY_B2",
+      "hybrid_state": "UNSUPPORTED",
       "baseline_match": false,
-      "hybrid_match": true,
-      "glirel_evidence_used": 3,
+      "hybrid_match": false,
+      "glirel_evidence_used": 0,
       "glirel_evidence_helpful": null
     },
     {
@@ -228,12 +228,12 @@
       "expected": "ALLOW",
       "baseline_label": "N/A",
       "baseline_agreement": "N/A",
-      "hybrid_label": "NOT_ADJUDICATED_BY_B2",
-      "hybrid_state": "UNSUPPORTED",
+      "hybrid_label": "ALLOW",
+      "hybrid_state": "REDUNDANT_SUPPORT",
       "baseline_match": false,
-      "hybrid_match": false,
-      "glirel_evidence_used": 0,
-      "glirel_evidence_helpful": null
+      "hybrid_match": true,
+      "glirel_evidence_used": 2,
+      "glirel_evidence_helpful": true
     },
     {
       "case_id": "ADV-13",

@@ -17,8 +17,8 @@
   },
   "evidence_assessment": {
     "glirel_relations_used": 0,
-    "glirel_relations_rejected": 10,
+    "glirel_relations_rejected": 20,
     "glirel_evidence_helpful": false,
-    "notes": "The candidate phrase 'calcified matrix in osseous structures' is not directly supported by either source text. Source A discusses calcium phosphate deposits in bone tissue, which is related but not identical to the candidate phrase. Source B discusses marine diatoms precipitating silica-based structures, which is completely unrelated to the candidate phrase. None of the GLiREL extracted relations directly support the candidate phrase."
+    "notes": "No relevant relations found in either source. Source A discusses calcium phosphate deposits in bone tissue but doesn't mention 'calcified matrix' or 'osseous structures'. Source B discusses silica-based cell walls in marine diatoms, which is unrelated to the candidate phrase."
   }
 }

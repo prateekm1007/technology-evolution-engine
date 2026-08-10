@@ -7,30 +7,24 @@
     "source_b": "Marine diatoms precipitate silica-based cell walls using enzymatic silicatein proteins."
   },
   "atoms": [
-    "Calcium phosphate forms crystalline deposits",
-    "Calcium phosphate in bone tissue",
-    "Osteoblast-mediated mineralization",
-    "Marine diatoms precipitate silica",
-    "Marine diatoms use silicatein proteins",
-    "Enzymatic silicatein proteins"
+    "enzyme-templated",
+    "inorganic lattice formation"
   ],
   "counterfactuals": [
-    "If Source A didn't mention osteoblast-mediated mineralization, would we still know about enzyme involvement?",
-    "If Source B didn't mention enzymatic silicatein proteins, would we still know about enzyme involvement?",
-    "If Source A didn't mention calcium phosphate, would we know about inorganic lattice formation?",
-    "If Source B didn't mention silica-based cell walls, would we know about inorganic lattice formation?"
+    "If Source A mentioned 'enzyme-templated' explicitly, it would support the candidate.",
+    "If Source B mentioned 'inorganic lattice formation' explicitly, it would support the candidate."
   ],
   "classification": {
-    "justified_by_corpus": true,
+    "justified_by_corpus": false,
     "iss_a": false,
     "iss_b": false,
-    "iss_state": "ISS_both",
-    "label": "ALLOW"
+    "iss_state": "UNSUPPORTED",
+    "label": "NOT_ADJUDICATED_BY_B2"
   },
   "evidence_assessment": {
-    "glirel_relations_used": 3,
-    "glirel_relations_rejected": 17,
+    "glirel_relations_used": 0,
+    "glirel_relations_rejected": 20,
     "glirel_evidence_helpful": false,
-    "notes": "GLiREL extracted some relevant relations but missed key connections. Source A shows inorganic lattice formation (calcium phosphate deposits) but only implies enzyme involvement via 'osteoblast-mediated'. Source B explicitly mentions 'enzymatic silicatein proteins' and inorganic formation (silica-based walls). Neither source alone fully supports the candidate phrase, requiring both for complete justification."
+    "notes": "GLiREL extracted relations about production and causation, but none directly support the specific concepts of 'enzyme-templated' or 'inorganic lattice formation'. Source A mentions mineralization but doesn't explicitly link it to enzymes. Source B mentions enzymatic processes but doesn't explicitly mention 'inorganic lattice formation'. The candidate combines elements from both sources but isn't explicitly supported by either alone or in combination."
   }
 }

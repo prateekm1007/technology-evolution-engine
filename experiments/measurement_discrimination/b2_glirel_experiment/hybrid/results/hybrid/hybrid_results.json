@@ -9,18 +9,14 @@
     "match_amended": false,
     "glirel_evidence_stats": {
       "total_a": 100,
-      "valid_a": 60,
-      "invalid_a": 40,
       "total_b": 150,
-      "valid_b": 100,
-      "invalid_b": 50,
-      "runtime_ms": 1949.4
+      "runtime_ms": 1850.8
     },
     "evidence_assessment": {
       "glirel_relations_used": 0,
-      "glirel_relations_rejected": 10,
+      "glirel_relations_rejected": 20,
       "glirel_evidence_helpful": false,
-      "notes": "The candidate 'skeletal calcification process' is not directly supported by either source. Source A discusses calcium phosphate deposits in bone tissue, which is related to skeletal calcification but doesn't explicitly mention the process. Source B discusses silica precipitation in diatoms, which is unrelated to skeletal calcification. GLiREL relations don't support the candidate phrase."
+      "notes": "The candidate phrase 'skeletal calcification process' is not directly supported by either source. Source A discusses calcium phosphate mineralization in bone tissue, which is related but doesn't explicitly mention 'skeletal calcification process'. Source B discusses silica precipitation in diatoms, which is unrelated to skeletal calcification. None of the GLiREL relations directly support the candidate phrase."
     },
     "trace": {
       "schema_version": "b2-trace-v3",
@@ -30,19 +26,8 @@
         "source_a": "Calcium phosphate forms crystalline deposits in bone tissue through osteoblast-mediated mineralization.",
         "source_b": "Marine diatoms precipitate silica-based cell walls using enzymatic silicatein proteins."
       },
-      "atoms": [
-        "skeletal calcification process",
-        "calcium phosphate",
-        "bone tissue",
-        "osteoblast-mediated mineralization",
-        "marine diatoms",
-        "silica-based cell walls",
-        "enzymatic silicatein proteins"
-      ],
-      "counterfactuals": [
-        "If Source A didn't mention calcium phosphate deposits in bone tissue, would the candidate still be justified?",
-        "If Source B didn't mention silica precipitation by diatoms, would the candidate still be justified?"
-      ],
+      "atoms": [],
+      "counterfactuals": [],
       "classification": {
         "justified_by_corpus": false,
         "iss_a": false,
@@ -52,9 +37,9 @@
       },
       "evidence_assessment": {
         "glirel_relations_used": 0,
-        "glirel_relations_rejected": 10,
+        "glirel_relations_rejected": 20,
         "glirel_evidence_helpful": false,
-        "notes": "The candidate 'skeletal calcification process' is not directly supported by either source. Source A discusses calcium phosphate deposits in bone tissue, which is related to skeletal calcification but doesn't explicitly mention the process. Source B discusses silica precipitation in diatoms, which is unrelated to skeletal calcification. GLiREL relations don't support the candidate phrase."
+        "notes": "The candidate phrase 'skeletal calcification process' is not directly supported by either source. Source A discusses calcium phosphate mineralization in bone tissue, which is related but doesn't explicitly mention 'skeletal calcification process'. Source B discusses silica precipitation in diatoms, which is unrelated to skeletal calcification. None of the GLiREL relations directly support the candidate phrase."
       }
     }
   },
@@ -68,18 +53,14 @@
     "match_amended": false,
     "glirel_evidence_stats": {
       "total_a": 100,
-      "valid_a": 60,
-      "invalid_a": 40,
       "total_b": 150,
-      "valid_b": 100,
-      "invalid_b": 50,
-      "runtime_ms": 1631.8
+      "runtime_ms": 1599.1
     },
     "evidence_assessment": {
       "glirel_relations_used": 0,
-      "glirel_relations_rejected": 10,
+      "glirel_relations_rejected": 20,
       "glirel_evidence_helpful": false,
-      "notes": "The candidate phrase 'calcified matrix in osseous structures' is not directly supported by either source text. Source A discusses calcium phosphate deposits in bone tissue, which is related but not identical to the candidate phrase. Source B discusses marine diatoms precipitating silica-based structures, which is completely unrelated to the candidate phrase. None of the GLiREL extracted relations directly support the candidate phrase."
+      "notes": "No relevant relations found in either source. Source A discusses calcium phosphate deposits in bone tissue but doesn't mention 'calcified matrix' or 'osseous structures'. Source B discusses silica-based cell walls in marine diatoms, which is unrelated to the candidate phrase."
     },
     "trace": {
       "schema_version": "b2-trace-v3",
@@ -100,9 +81,9 @@
       },
       "evidence_assessment": {
         "glirel_relations_used": 0,
-        "glirel_relations_rejected": 10,
+        "glirel_relations_rejected": 20,
         "glirel_evidence_helpful": false,
-        "notes": "The candidate phrase 'calcified matrix in osseous structures' is not directly supported by either source text. Source A discusses calcium phosphate deposits in bone tissue, which is related but not identical to the candidate phrase. Source B discusses marine diatoms precipitating silica-based structures, which is completely unrelated to the candidate phrase. None of the GLiREL extracted relations directly support the candidate phrase."
+        "notes": "No relevant relations found in either source. Source A discusses calcium phosphate deposits in bone tissue but doesn't mention 'calcified matrix' or 'osseous structures'. Source B discusses silica-based cell walls in marine diatoms, which is unrelated to the candidate phrase."
       }
     }
   },
@@ -116,18 +97,14 @@
     "match_amended": true,
     "glirel_evidence_stats": {
       "total_a": 100,
-      "valid_a": 60,
-      "invalid_a": 40,
       "total_b": 150,
-      "valid_b": 100,
-      "invalid_b": 50,
-      "runtime_ms": 1599.8
+      "runtime_ms": 1601
     },
     "evidence_assessment": {
       "glirel_relations_used": 2,
       "glirel_relations_rejected": 18,
       "glirel_evidence_helpful": true,
-      "notes": "Source A mentions osteoblast-mediated mineralization (enzyme-templated) of calcium phosphate deposits. Source B mentions enzymatic silicatein proteins precipitating silica-based cell walls. Both sources independently support the candidate concept."
+      "notes": "Source A supports 'mineral deposition' through 'osteoblast-mediated mineralization' which implies enzyme involvement. Source B supports 'enzyme-templated' through 'enzymatic silicatein proteins' and 'mineral deposition' through 'precipitate silica-based cell walls'. Both sources independently justify the candidate."
     },
     "trace": {
       "schema_version": "b2-trace-v3",
@@ -138,10 +115,13 @@
         "source_b": "Marine diatoms precipitate silica-based cell walls using enzymatic silicatein proteins."
       },
       "atoms": [
-        "Calcium phosphate forms crystalline deposits in bone tissue through osteoblast-mediated mineralization.",
-        "Marine diatoms precipitate silica-based cell walls using enzymatic silicatein proteins."
+        "enzyme-templated",
+        "mineral deposition"
       ],
-      "counterfactuals": [],
+      "counterfactuals": [
+        "If Source A didn't mention 'osteoblast-mediated mineralization', would the candidate still be supported?",
+        "If Source B didn't mention 'enzymatic silicatein proteins', would the candidate still be supported?"
+      ],
       "classification": {
         "justified_by_corpus": true,
         "iss_a": true,
@@ -153,7 +133,7 @@
         "glirel_relations_used": 2,
         "glirel_relations_rejected": 18,
         "glirel_evidence_helpful": true,
-        "notes": "Source A mentions osteoblast-mediated mineralization (enzyme-templated) of calcium phosphate deposits. Source B mentions enzymatic silicatein proteins precipitating silica-based cell walls. Both sources independently support the candidate concept."
+        "notes": "Source A supports 'mineral deposition' through 'osteoblast-mediated mineralization' which implies enzyme involvement. Source B supports 'enzyme-templated' through 'enzymatic silicatein proteins' and 'mineral deposition' through 'precipitate silica-based cell walls'. Both sources independently justify the candidate."
       }
     }
   },
@@ -162,23 +142,19 @@
     "candidate": "silicatein-guided calcification",
     "expected_label": "ALLOW",
     "expected_amended": "ALLOW",
-    "hybrid_label": "ALLOW",
-    "hybrid_state": "ISS_both",
-    "match_amended": true,
+    "hybrid_label": "NOT_ADJUDICATED_BY_B2",
+    "hybrid_state": "UNSUPPORTED",
+    "match_amended": false,
     "glirel_evidence_stats": {
       "total_a": 100,
-      "valid_a": 60,
-      "invalid_a": 40,
       "total_b": 150,
-      "valid_b": 100,
-      "invalid_b": 50,
-      "runtime_ms": 1592.5
+      "runtime_ms": 1555
     },
     "evidence_assessment": {
-      "glirel_relations_used": 4,
-      "glirel_relations_rejected": 16,
-      "glirel_evidence_helpful": true,
-      "notes": "GLiREL correctly identified that Marine diatoms use silicatein proteins (Source B) and that calcium phosphate forms deposits (Source A). However, it missed the connection between calcification and calcium phosphate, and between silicatein and enzymatic activity. The candidate requires combining information from both sources: silicatein from Source B and calcification from Source A."
+      "glirel_relations_used": 0,
+      "glirel_relations_rejected": 20,
+      "glirel_evidence_helpful": false,
+      "notes": "Neither source text contains both 'silicatein' and 'calcification'. Source A discusses calcium phosphate mineralization in bone tissue but doesn't mention silicatein. Source B discusses silicatein proteins in marine diatoms but doesn't mention calcification. The GLiREL relations don't establish a connection between silicatein and calcification."
     },
     "trace": {
       "schema_version": "b2-trace-v3",
@@ -190,29 +166,24 @@
       },
       "atoms": [
         "silicatein",
-        "calcification",
-        "calcium phosphate",
-        "osteoblast-mediated mineralization",
-        "silica-based cell walls",
-        "enzymatic silicatein proteins"
+        "calcification"
       ],
       "counterfactuals": [
-        "If Source A mentioned silicatein, the candidate could be justified by Source A alone",
-        "If Source B mentioned calcification, the candidate could be justified by Source B alone",
-        "If both sources mentioned the combination of silicatein and calcification, the candidate would be redundantly supported"
+        "If Source A mentioned silicatein, it would support the candidate",
+        "If Source B mentioned calcification, it would support the candidate"
       ],
       "classification": {
-        "justified_by_corpus": true,
+        "justified_by_corpus": false,
         "iss_a": false,
         "iss_b": false,
-        "iss_state": "ISS_both",
-        "label": "ALLOW"
+        "iss_state": "UNSUPPORTED",
+        "label": "NOT_ADJUDICATED_BY_B2"
       },
       "evidence_assessment": {
-        "glirel_relations_used": 4,
-        "glirel_relations_rejected": 16,
-        "glirel_evidence_helpful": true,
-        "notes": "GLiREL correctly identified that Marine diatoms use silicatein proteins (Source B) and that calcium phosphate forms deposits (Source A). However, it missed the connection between calcification and calcium phosphate, and between silicatein and enzymatic activity. The candidate requires combining information from both sources: silicatein from Source B and calcification from Source A."
+        "glirel_relations_used": 0,
+        "glirel_relations_rejected": 20,
+        "glirel_evidence_helpful": false,
+        "notes": "Neither source text contains both 'silicatein' and 'calcification'. Source A discusses calcium phosphate mineralization in bone tissue but doesn't mention silicatein. Source B discusses silicatein proteins in marine diatoms but doesn't mention calcification. The GLiREL relations don't establish a connection between silicatein and calcification."
       }
     }
   },
@@ -226,12 +197,8 @@
     "match_amended": false,
     "glirel_evidence_stats": {
       "total_a": 100,
-      "valid_a": 60,
-      "invalid_a": 40,
       "total_b": 150,
-      "valid_b": 100,
-      "invalid_b": 50,
-      "runtime_ms": 1610.8
+      "runtime_ms": 1568.9
     },
     "evidence_assessment": {
       "glirel_relations_used": 0,
@@ -274,18 +241,14 @@
     "match_amended": false,
     "glirel_evidence_stats": {
       "total_a": 100,
-      "valid_a": 60,
-      "invalid_a": 40,
       "total_b": 150,
-      "valid_b": 100,
-      "invalid_b": 50,
-      "runtime_ms": 1660.3
+      "runtime_ms": 1578.3
     },
     "evidence_assessment": {
       "glirel_relations_used": 0,
       "glirel_relations_rejected": 20,
       "glirel_evidence_helpful": false,
-      "notes": "The candidate term 'xenomineralization' does not appear in either source text. The sources discuss different mineralization processes (calcium phosphate in bone tissue vs. silica-based cell walls in marine diatoms), but neither mentions the specific concept of xenomineralization. GLiREL relations do not support the candidate term."
+      "notes": "The candidate 'xenomineralization' does not appear in either source text. The GLiREL relations extracted from both sources discuss mineralization processes but do not mention or support the specific term 'xenomineralization'. Source A discusses calcium phosphate mineralization in bone tissue, while Source B discusses silica precipitation in diatoms. Neither source provides evidence for the candidate term."
     },
     "trace": {
       "schema_version": "b2-trace-v3",
@@ -308,7 +271,7 @@
         "glirel_relations_used": 0,
         "glirel_relations_rejected": 20,
         "glirel_evidence_helpful": false,
-        "notes": "The candidate term 'xenomineralization' does not appear in either source text. The sources discuss different mineralization processes (calcium phosphate in bone tissue vs. silica-based cell walls in marine diatoms), but neither mentions the specific concept of xenomineralization. GLiREL relations do not support the candidate term."
+        "notes": "The candidate 'xenomineralization' does not appear in either source text. The GLiREL relations extracted from both sources discuss mineralization processes but do not mention or support the specific term 'xenomineralization'. Source A discusses calcium phosphate mineralization in bone tissue, while Source B discusses silica precipitation in diatoms. Neither source provides evidence for the candidate term."
       }
     }
   },
@@ -317,23 +280,19 @@
     "candidate": "enzyme-templated inorganic lattice formation",
     "expected_label": "ALLOW",
     "expected_amended": "ALLOW",
-    "hybrid_label": "ALLOW",
-    "hybrid_state": "ISS_both",
-    "match_amended": true,
+    "hybrid_label": "NOT_ADJUDICATED_BY_B2",
+    "hybrid_state": "UNSUPPORTED",
+    "match_amended": false,
     "glirel_evidence_stats": {
       "total_a": 100,
-      "valid_a": 60,
-      "invalid_a": 40,
       "total_b": 150,
-      "valid_b": 100,
-      "invalid_b": 50,
-      "runtime_ms": 1624.4
+      "runtime_ms": 1558.5
     },
     "evidence_assessment": {
-      "glirel_relations_used": 3,
-      "glirel_relations_rejected": 17,
+      "glirel_relations_used": 0,
+      "glirel_relations_rejected": 20,
       "glirel_evidence_helpful": false,
-      "notes": "GLiREL extracted some relevant relations but missed key connections. Source A shows inorganic lattice formation (calcium phosphate deposits) but only implies enzyme involvement via 'osteoblast-mediated'. Source B explicitly mentions 'enzymatic silicatein proteins' and inorganic formation (silica-based walls). Neither source alone fully supports the candidate phrase, requiring both for complete justification."
+      "notes": "GLiREL extracted relations about production and causation, but none directly support the specific concepts of 'enzyme-templated' or 'inorganic lattice formation'. Source A mentions mineralization but doesn't explicitly link it to enzymes. Source B mentions enzymatic processes but doesn't explicitly mention 'inorganic lattice formation'. The candidate combines elements from both sources but isn't explicitly supported by either alone or in combination."
     },
     "trace": {
       "schema_version": "b2-trace-v3",
@@ -344,31 +303,25 @@
         "source_b": "Marine diatoms precipitate silica-based cell walls using enzymatic silicatein proteins."
       },
       "atoms": [
-        "Calcium phosphate forms crystalline deposits",
-        "Calcium phosphate in bone tissue",
-        "Osteoblast-mediated mineralization",
-        "Marine diatoms precipitate silica",
-        "Marine diatoms use silicatein proteins",
-        "Enzymatic silicatein proteins"
+        "enzyme-templated",
+        "inorganic lattice formation"
       ],
       "counterfactuals": [
-        "If Source A didn't mention osteoblast-mediated mineralization, would we still know about enzyme involvement?",
-        "If Source B didn't mention enzymatic silicatein proteins, would we still know about enzyme involvement?",
-        "If Source A didn't mention calcium phosphate, would we know about inorganic lattice formation?",
-        "If Source B didn't mention silica-based cell walls, would we know about inorganic lattice formation?"
+        "If Source A mentioned 'enzyme-templated' explicitly, it would support the candidate.",
+        "If Source B mentioned 'inorganic lattice formation' explicitly, it would support the candidate."
       ],
       "classification": {
-        "justified_by_corpus": true,
+        "justified_by_corpus": false,
         "iss_a": false,
         "iss_b": false,
-        "iss_state": "ISS_both",
-        "label": "ALLOW"
+        "iss_state": "UNSUPPORTED",
+        "label": "NOT_ADJUDICATED_BY_B2"
       },
       "evidence_assessment": {
-        "glirel_relations_used": 3,
-        "glirel_relations_rejected": 17,
+        "glirel_relations_used": 0,
+        "glirel_relations_rejected": 20,
         "glirel_evidence_helpful": false,
-        "notes": "GLiREL extracted some relevant relations but missed key connections. Source A shows inorganic lattice formation (calcium phosphate deposits) but only implies enzyme involvement via 'osteoblast-mediated'. Source B explicitly mentions 'enzymatic silicatein proteins' and inorganic formation (silica-based walls). Neither source alone fully supports the candidate phrase, requiring both for complete justification."
+        "notes": "GLiREL extracted relations about production and causation, but none directly support the specific concepts of 'enzyme-templated' or 'inorganic lattice formation'. Source A mentions mineralization but doesn't explicitly link it to enzymes. Source B mentions enzymatic processes but doesn't explicitly mention 'inorganic lattice formation'. The candidate combines elements from both sources but isn't explicitly supported by either alone or in combination."
       }
     }
   },
@@ -377,23 +330,19 @@
     "candidate": "protein-catalyzed biogenic oxide precipitation",
     "expected_label": "ALLOW",
     "expected_amended": "ALLOW",
-    "hybrid_label": "NOT_ADJUDICATED_BY_B2",
-    "hybrid_state": "UNSUPPORTED",
-    "match_amended": false,
+    "hybrid_label": "ALLOW",
+    "hybrid_state": "REDUNDANT_SUPPORT",
+    "match_amended": true,
     "glirel_evidence_stats": {
       "total_a": 100,
-      "valid_a": 60,
-      "invalid_a": 40,
       "total_b": 150,
-      "valid_b": 100,
-      "invalid_b": 50,
-      "runtime_ms": 1612
+      "runtime_ms": 1558
     },
     "evidence_assessment": {
-      "glirel_relations_used": 0,
-      "glirel_relations_rejected": 10,
-      "glirel_evidence_helpful": false,
-      "notes": "Neither source directly supports the candidate phrase. Source A discusses calcium phosphate precipitation but doesn't mention protein catalysis. Source B discusses protein-catalyzed precipitation but only of silica, not oxides. The GLiREL relations don't establish the connection between proteins and oxide precipitation in either source."
+      "glirel_relations_used": 2,
+      "glirel_relations_rejected": 18,
+      "glirel_evidence_helpful": true,
+      "notes": "Source A shows osteoblast-mediated mineralization (protein-catalyzed biogenic process). Source B shows silicatein proteins precipitating silica (protein-catalyzed biogenic precipitation). Both independently support the candidate."
     },
     "trace": {
       "schema_version": "b2-trace-v3",
@@ -406,24 +355,25 @@
       "atoms": [
         "protein-catalyzed",
         "biogenic",
-        "oxide precipitation"
+        "oxide",
+        "precipitation"
       ],
       "counterfactuals": [
-        "If Source A mentioned protein catalysis, it would support the candidate.",
-        "If Source B mentioned oxide precipitation (not just silica), it would support the candidate."
+        "If Source A didn't mention osteoblast-mediated mineralization, it wouldn't support the candidate.",
+        "If Source B didn't mention silicatein proteins, it wouldn't support the candidate."
       ],
       "classification": {
-        "justified_by_corpus": false,
-        "iss_a": false,
-        "iss_b": false,
-        "iss_state": "UNSUPPORTED",
-        "label": "NOT_ADJUDICATED_BY_B2"
+        "justified_by_corpus": true,
+        "iss_a": true,
+        "iss_b": true,
+        "iss_state": "REDUNDANT_SUPPORT",
+        "label": "ALLOW"
       },
       "evidence_assessment": {
-        "glirel_relations_used": 0,
-        "glirel_relations_rejected": 10,
-        "glirel_evidence_helpful": false,
-        "notes": "Neither source directly supports the candidate phrase. Source A discusses calcium phosphate precipitation but doesn't mention protein catalysis. Source B discusses protein-catalyzed precipitation but only of silica, not oxides. The GLiREL relations don't establish the connection between proteins and oxide precipitation in either source."
+        "glirel_relations_used": 2,
+        "glirel_relations_rejected": 18,
+        "glirel_evidence_helpful": true,
+        "notes": "Source A shows osteoblast-mediated mineralization (protein-catalyzed biogenic process). Source B shows silicatein proteins precipitating silica (protein-catalyzed biogenic precipitation). Both independently support the candidate."
       }
     }
   },
@@ -437,18 +387,14 @@
     "match_amended": true,
     "glirel_evidence_stats": {
       "total_a": 100,
-      "valid_a": 60,
-      "invalid_a": 40,
       "total_b": 150,
-      "valid_b": 100,
-      "invalid_b": 50,
-      "runtime_ms": 1631
+      "runtime_ms": 1583.2
     },
     "evidence_assessment": {
       "glirel_relations_used": 0,
       "glirel_relations_rejected": 20,
       "glirel_evidence_helpful": false,
-      "notes": "Neither source text mentions 'quantum entanglement' or any related concepts. The GLiREL relations extracted are about biological processes (calcium phosphate deposition and diatom silica precipitation) and do not contain any information about quantum entanglement."
+      "notes": "Neither source text mentions 'quantum entanglement' or any related concepts. The GLiREL extracted relations are about calcium phosphate formation and diatom silica precipitation, which are unrelated to the candidate phrase."
     },
     "trace": {
       "schema_version": "b2-trace-v3",
@@ -471,7 +417,7 @@
         "glirel_relations_used": 0,
         "glirel_relations_rejected": 20,
         "glirel_evidence_helpful": false,
-        "notes": "Neither source text mentions 'quantum entanglement' or any related concepts. The GLiREL relations extracted are about biological processes (calcium phosphate deposition and diatom silica precipitation) and do not contain any information about quantum entanglement."
+        "notes": "Neither source text mentions 'quantum entanglement' or any related concepts. The GLiREL extracted relations are about calcium phosphate formation and diatom silica precipitation, which are unrelated to the candidate phrase."
       }
     }
   },
@@ -480,23 +426,19 @@
     "candidate": "calcium phosphate",
     "expected_label": "REJECT",
     "expected_amended": "REJECT",
-    "hybrid_label": "NOT_ADJUDICATED_BY_B2",
-    "hybrid_state": "UNSUPPORTED",
-    "match_amended": false,
+    "hybrid_label": "REJECT",
+    "hybrid_state": "ISS_one",
+    "match_amended": true,
     "glirel_evidence_stats": {
       "total_a": 100,
-      "valid_a": 60,
-      "invalid_a": 40,
       "total_b": 150,
-      "valid_b": 100,
-      "invalid_b": 50,
-      "runtime_ms": 1579.5
+      "runtime_ms": 1573
     },
     "evidence_assessment": {
-      "glirel_relations_used": 0,
-      "glirel_relations_rejected": 10,
-      "glirel_evidence_helpful": false,
-      "notes": "The candidate 'calcium phosphate' only appears in Source A. Source B discusses silica-based cell walls in marine diatoms, not calcium phosphate. No evidence connects the candidate to Source B."
+      "glirel_relations_used": 1,
+      "glirel_relations_rejected": 19,
+      "glirel_evidence_helpful": true,
+      "notes": "Source A mentions calcium phosphate directly as forming deposits in bone tissue. Source B discusses silica-based structures in diatoms, not calcium phosphate. The candidate is fully supported by Source A alone, making it ISS_one."
     },
     "trace": {
       "schema_version": "b2-trace-v3",
@@ -509,17 +451,17 @@
       "atoms": [],
       "counterfactuals": [],
       "classification": {
-        "justified_by_corpus": false,
-        "iss_a": false,
+        "justified_by_corpus": true,
+        "iss_a": true,
         "iss_b": false,
-        "iss_state": "UNSUPPORTED",
-        "label": "NOT_ADJUDICATED_BY_B2"
+        "iss_state": "ISS_one",
+        "label": "REJECT"
       },
       "evidence_assessment": {
-        "glirel_relations_used": 0,
-        "glirel_relations_rejected": 10,
-        "glirel_evidence_helpful": false,
-        "notes": "The candidate 'calcium phosphate' only appears in Source A. Source B discusses silica-based cell walls in marine diatoms, not calcium phosphate. No evidence connects the candidate to Source B."
+        "glirel_relations_used": 1,
+        "glirel_relations_rejected": 19,
+        "glirel_evidence_helpful": true,
+        "notes": "Source A mentions calcium phosphate directly as forming deposits in bone tissue. Source B discusses silica-based structures in diatoms, not calcium phosphate. The candidate is fully supported by Source A alone, making it ISS_one."
       }
     }
   },
@@ -533,84 +475,20 @@
     "match_amended": true,
     "glirel_evidence_stats": {
       "total_a": 100,
-      "valid_a": 60,
-      "invalid_a": 40,
       "total_b": 150,
-      "valid_b": 100,
-      "invalid_b": 50,
-      "runtime_ms": 1595.4
+      "runtime_ms": 1590.5
     },
     "evidence_assessment": {
-      "glirel_relations_used": 4,
-      "glirel_relations_rejected": 16,
-      "glirel_evidence_helpful": true,
-      "notes": "GLiREL extracted some useful relations (PRODUCES relations for deposits and walls) but many invalid relations. Both sources independently describe biomineralization processes (calcium phosphate in bone tissue and silica in diatom cell walls), providing redundant support for the candidate concept."
+      "glirel_relations_used": 0,
+      "glirel_relations_rejected": 10,
+      "glirel_evidence_helpful": false,
+      "notes": "Source A describes mineralization of calcium phosphate in bone tissue, while Source B describes silica precipitation in diatom cell walls. Both sources independently provide examples of biomineralization processes without directly using the term. GLiREL relations were not directly relevant to the candidate term."
     },
     "trace": {
       "schema_version": "b2-trace-v3",
       "candidate": {
         "id": "undefined",
         "text": "biomineralization",
-        "source_a": "Calcium phosphate forms crystalline deposits in bone tissue through osteoblast-mediated mineralization.",
-        "source_b": "Marine diatoms precipitate silica-based cell walls using enzymatic silicatein proteins."
-      },
-      "atoms": [
-        "calcium phosphate forms deposits in bone tissue",
-        "deposits are crystalline",
-        "osteoblasts mediate mineralization",
-        "marine diatoms precipitate silica",
-        "diatoms form cell walls",
-        "silicatein proteins are enzymatic",
-        "diatoms use silicatein proteins"
-      ],
-      "counterfactuals": [
-        "Source A doesn't mention silica or diatoms",
-        "Source B doesn't mention calcium phosphate or bone tissue",
-        "Neither source explicitly uses the term 'biomineralization'"
-      ],
-      "classification": {
-        "justified_by_corpus": true,
-        "iss_a": true,
-        "iss_b": true,
-        "iss_state": "REDUNDANT_SUPPORT",
-        "label": "ALLOW"
-      },
-      "evidence_assessment": {
-        "glirel_relations_used": 4,
-        "glirel_relations_rejected": 16,
-        "glirel_evidence_helpful": true,
-        "notes": "GLiREL extracted some useful relations (PRODUCES relations for deposits and walls) but many invalid relations. Both sources independently describe biomineralization processes (calcium phosphate in bone tissue and silica in diatom cell walls), providing redundant support for the candidate concept."
-      }
-    }
-  },
-  {
-    "case_id": "ADV-12",
-    "candidate": "mineralizing",
-    "expected_label": "REJECT",
-    "expected_amended": "REJECT",
-    "hybrid_label": "ALLOW",
-    "hybrid_state": "REDUNDANT_SUPPORT",
-    "match_amended": false,
-    "glirel_evidence_stats": {
-      "total_a": 100,
-      "valid_a": 60,
-      "invalid_a": 40,
-      "total_b": 150,
-      "valid_b": 100,
-      "invalid_b": 50,
-      "runtime_ms": 1624.8
-    },
-    "evidence_assessment": {
-      "glirel_relations_used": 0,
-      "glirel_relations_rejected": 10,
-      "glirel_evidence_helpful": false,
-      "notes": "The candidate 'mineralizing' appears in Source A as 'mineralization' (a related form). Source A directly describes the process of mineralization in bone tissue. Source B describes precipitation of silica, which is a mineralization process, though it uses different terminology. Both sources independently support the concept of mineralization, making this a case of redundant support."
-    },
-    "trace": {
-      "schema_version": "b2-trace-v3",
-      "candidate": {
-        "id": "undefined",
-        "text": "mineralizing",
         "source_a": "Calcium phosphate forms crystalline deposits in bone tissue through osteoblast-mediated mineralization.",
         "source_b": "Marine diatoms precipitate silica-based cell walls using enzymatic silicatein proteins."
       },
@@ -627,7 +505,57 @@
         "glirel_relations_used": 0,
         "glirel_relations_rejected": 10,
         "glirel_evidence_helpful": false,
-        "notes": "The candidate 'mineralizing' appears in Source A as 'mineralization' (a related form). Source A directly describes the process of mineralization in bone tissue. Source B describes precipitation of silica, which is a mineralization process, though it uses different terminology. Both sources independently support the concept of mineralization, making this a case of redundant support."
+        "notes": "Source A describes mineralization of calcium phosphate in bone tissue, while Source B describes silica precipitation in diatom cell walls. Both sources independently provide examples of biomineralization processes without directly using the term. GLiREL relations were not directly relevant to the candidate term."
+      }
+    }
+  },
+  {
+    "case_id": "ADV-12",
+    "candidate": "mineralizing",
+    "expected_label": "REJECT",
+    "expected_amended": "REJECT",
+    "hybrid_label": "ALLOW",
+    "hybrid_state": "REDUNDANT_SUPPORT",
+    "match_amended": false,
+    "glirel_evidence_stats": {
+      "total_a": 100,
+      "total_b": 150,
+      "runtime_ms": 1705.2
+    },
+    "evidence_assessment": {
+      "glirel_relations_used": 2,
+      "glirel_relations_rejected": 18,
+      "glirel_evidence_helpful": false,
+      "notes": "GLiREL didn't extract the specific term 'mineralization' from Source A or 'precipitate' as related to mineralization in Source B. The candidate is supported by both sources independently (Source A explicitly mentions 'mineralization', Source B describes a similar process with 'precipitate'), making it REDUNDANT_SUPPORT."
+    },
+    "trace": {
+      "schema_version": "b2-trace-v3",
+      "candidate": {
+        "id": "undefined",
+        "text": "mineralizing",
+        "source_a": "Calcium phosphate forms crystalline deposits in bone tissue through osteoblast-mediated mineralization.",
+        "source_b": "Marine diatoms precipitate silica-based cell walls using enzymatic silicatein proteins."
+      },
+      "atoms": [
+        "mineralization occurs in bone tissue (Source A)",
+        "diatoms precipitate silica structures (Source B)"
+      ],
+      "counterfactuals": [
+        "If Source A didn't mention mineralization, we wouldn't know about the process in bone tissue",
+        "If Source B didn't mention precipitation, we wouldn't know about diatom silica formation"
+      ],
+      "classification": {
+        "justified_by_corpus": true,
+        "iss_a": true,
+        "iss_b": true,
+        "iss_state": "REDUNDANT_SUPPORT",
+        "label": "ALLOW"
+      },
+      "evidence_assessment": {
+        "glirel_relations_used": 2,
+        "glirel_relations_rejected": 18,
+        "glirel_evidence_helpful": false,
+        "notes": "GLiREL didn't extract the specific term 'mineralization' from Source A or 'precipitate' as related to mineralization in Source B. The candidate is supported by both sources independently (Source A explicitly mentions 'mineralization', Source B describes a similar process with 'precipitate'), making it REDUNDANT_SUPPORT."
       }
     }
   },
@@ -641,18 +569,14 @@
     "match_amended": false,
     "glirel_evidence_stats": {
       "total_a": 100,
-      "valid_a": 60,
-      "invalid_a": 40,
       "total_b": 150,
-      "valid_b": 100,
-      "invalid_b": 50,
-      "runtime_ms": 1555
+      "runtime_ms": 1568.8
     },
     "evidence_assessment": {
       "glirel_relations_used": 0,
-      "glirel_relations_rejected": 10,
+      "glirel_relations_rejected": 20,
       "glirel_evidence_helpful": false,
-      "notes": "The candidate term 'pseudomineralization' does not appear in either source text. The GLiREL relations extracted from both sources describe mineralization processes (calcium phosphate in bone tissue and silica precipitation in diatoms) but do not mention or relate to the specific term 'pseudomineralization'. No evidence supports this candidate phrase."
+      "notes": "The candidate 'pseudomineralization' does not appear in either source text. The GLiREL relations extracted from both sources discuss mineralization processes (calcium phosphate deposits in bone tissue and silica-based cell walls in diatoms), but none of these relations support the specific concept of 'pseudomineralization'."
     },
     "trace": {
       "schema_version": "b2-trace-v3",
@@ -673,9 +597,9 @@
       },
       "evidence_assessment": {
         "glirel_relations_used": 0,
-        "glirel_relations_rejected": 10,
+        "glirel_relations_rejected": 20,
         "glirel_evidence_helpful": false,
-        "notes": "The candidate term 'pseudomineralization' does not appear in either source text. The GLiREL relations extracted from both sources describe mineralization processes (calcium phosphate in bone tissue and silica precipitation in diatoms) but do not mention or relate to the specific term 'pseudomineralization'. No evidence supports this candidate phrase."
+        "notes": "The candidate 'pseudomineralization' does not appear in either source text. The GLiREL relations extracted from both sources discuss mineralization processes (calcium phosphate deposits in bone tissue and silica-based cell walls in diatoms), but none of these relations support the specific concept of 'pseudomineralization'."
       }
     }
   }

@@ -1,0 +1,21 @@
+{
+  "total_relations": 3250,
+  "total_spans": 6500,
+  "head_valid": 2990,
+  "head_invalid": 260,
+  "tail_valid": 2990,
+  "tail_invalid": 260,
+  "both_valid": 2730,
+  "both_invalid": 520,
+  "head_fidelity_pct": 92.0,
+  "tail_fidelity_pct": 92.0,
+  "both_fidelity_pct": 42.0,
+  "fix_methods": {
+    "standard": 5330,
+    "single_token": 650,
+    "invalid_inverted": 520,
+    "out_of_range": 0,
+    "no_position": 0
+  },
+  "improvement": "v1=64.0% -> v2=42.0%"
+}
