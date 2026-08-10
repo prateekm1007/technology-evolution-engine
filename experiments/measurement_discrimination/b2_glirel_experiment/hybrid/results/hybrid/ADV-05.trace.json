@@ -1,7 +1,7 @@
 {
   "schema_version": "b2-trace-v3",
   "candidate": {
-    "id": "undefined",
+    "id": "ADV-05",
     "text": "hypermineralization",
     "source_a": "Calcium phosphate forms crystalline deposits in bone tissue through osteoblast-mediated mineralization.",
     "source_b": "Marine diatoms precipitate silica-based cell walls using enzymatic silicatein proteins."
@@ -19,6 +19,6 @@
     "glirel_relations_used": 0,
     "glirel_relations_rejected": 20,
     "glirel_evidence_helpful": false,
-    "notes": "The candidate term 'hypermineralization' does not appear in either source text. Source A discusses calcium phosphate mineralization in bone tissue, while Source B discusses silica precipitation in diatoms. Neither source mentions or implies hypermineralization."
+    "notes": "Neither source text mentions 'hypermineralization'. Source A discusses calcium phosphate mineralization in bone tissue, while Source B discusses silica precipitation in diatoms. The candidate term is not present in either source and cannot be inferred from the content provided."
   }
 }

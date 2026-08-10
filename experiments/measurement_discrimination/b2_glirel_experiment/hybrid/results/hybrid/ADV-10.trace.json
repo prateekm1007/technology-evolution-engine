@@ -1,7 +1,7 @@
 {
   "schema_version": "b2-trace-v3",
   "candidate": {
-    "id": "undefined",
+    "id": "ADV-10",
     "text": "calcium phosphate",
     "source_a": "Calcium phosphate forms crystalline deposits in bone tissue through osteoblast-mediated mineralization.",
     "source_b": "Marine diatoms precipitate silica-based cell walls using enzymatic silicatein proteins."
@@ -9,16 +9,16 @@
   "atoms": [],
   "counterfactuals": [],
   "classification": {
-    "justified_by_corpus": true,
-    "iss_a": true,
+    "justified_by_corpus": false,
+    "iss_a": false,
     "iss_b": false,
-    "iss_state": "ISS_one",
-    "label": "REJECT"
+    "iss_state": "UNSUPPORTED",
+    "label": "NOT_ADJUDICATED_BY_B2"
   },
   "evidence_assessment": {
-    "glirel_relations_used": 1,
-    "glirel_relations_rejected": 19,
-    "glirel_evidence_helpful": true,
-    "notes": "Source A mentions calcium phosphate directly as forming deposits in bone tissue. Source B discusses silica-based structures in diatoms, not calcium phosphate. The candidate is fully supported by Source A alone, making it ISS_one."
+    "glirel_relations_used": 0,
+    "glirel_relations_rejected": 20,
+    "glirel_evidence_helpful": false,
+    "notes": "Source A mentions calcium phosphate in the context of bone mineralization, but doesn't provide a general definition. Source B discusses silica precipitation in diatoms, which is unrelated to calcium phosphate. No evidence supports a general definition of calcium phosphate from either source alone, and there's no cross-source evidence."
   }
 }

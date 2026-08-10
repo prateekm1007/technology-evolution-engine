@@ -86,13 +86,17 @@ Output ONLY a valid JSON object with this schema:
 Output ONLY the JSON. No markdown, no prose.`;
 
 function buildHybridUserPrompt(caseData, evidence) {
-  const { id, candidate, source_a_text: sourceA, source_b_text: sourceB } = caseData;
+  // Handle both v1/v2 format (flat: source_a_text, edges_a) and v3 format (nested: source_a.text, source_a.relations)
+  const candidate = caseData.candidate || evidence.candidate;
+  const sourceA = caseData.source_a_text || (evidence.source_a && evidence.source_a.text) || '';
+  const sourceB = caseData.source_b_text || (evidence.source_b && evidence.source_b.text) || '';
+  const id = caseData.id || evidence.case_id;
 
-  // Format GLiREL evidence
-  const edgesA = (evidence.edges_a || []).slice(0, 10).map((e, i) =>
+  // Get relations from either format
+  const edgesA = (evidence.edges_a || (evidence.source_a && evidence.source_a.relations) || []).slice(0, 10).map((e, i) =>
     `  ${i+1}. ${e.label}(${e.head_text}, ${e.tail_text}) score=${(e.score || 0).toFixed(3)} spans=${e.spans_valid ? 'valid' : 'invalid'}`
   ).join('\n');
-  const edgesB = (evidence.edges_b || []).slice(0, 10).map((e, i) =>
+  const edgesB = (evidence.edges_b || (evidence.source_b && evidence.source_b.relations) || []).slice(0, 10).map((e, i) =>
     `  ${i+1}. ${e.label}(${e.head_text}, ${e.tail_text}) score=${(e.score || 0).toFixed(3)} spans=${e.spans_valid ? 'valid' : 'invalid'}`
   ).join('\n');
 
@@ -183,6 +187,14 @@ async function main() {
   for (const evidence of evidenceData) {
     const tc = fixture.cases.find(c => c.id === evidence.case_id);
     if (!tc) continue;
+
+    // For v3 format, build a flat caseData from the nested structure
+    const caseData = {
+      id: evidence.case_id,
+      candidate: evidence.candidate,
+      source_a_text: (evidence.source_a && evidence.source_a.text) || evidence.source_a_text || '',
+      source_b_text: (evidence.source_b && evidence.source_b.text) || evidence.source_b_text || '',
+    };
 
     console.log(`[${evidence.case_id}] ${evidence.candidate}`);
     console.log(`  expected: ${tc.expected_label}`);

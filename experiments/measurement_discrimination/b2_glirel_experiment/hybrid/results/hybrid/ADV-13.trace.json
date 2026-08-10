@@ -1,7 +1,7 @@
 {
   "schema_version": "b2-trace-v3",
   "candidate": {
-    "id": "undefined",
+    "id": "ADV-13",
     "text": "pseudomineralization",
     "source_a": "Calcium phosphate forms crystalline deposits in bone tissue through osteoblast-mediated mineralization.",
     "source_b": "Marine diatoms precipitate silica-based cell walls using enzymatic silicatein proteins."
@@ -19,6 +19,6 @@
     "glirel_relations_used": 0,
     "glirel_relations_rejected": 20,
     "glirel_evidence_helpful": false,
-    "notes": "The candidate 'pseudomineralization' does not appear in either source text. The GLiREL relations extracted from both sources discuss mineralization processes (calcium phosphate deposits in bone tissue and silica-based cell walls in diatoms), but none of these relations support the specific concept of 'pseudomineralization'."
+    "notes": "The candidate term 'pseudomineralization' does not appear in either source text. The GLiREL relations show processes of mineralization (calcium phosphate in bone tissue) and silica precipitation (in diatoms), but none of these relations support the specific concept of 'pseudomineralization' which is not mentioned in either source."
   }
 }

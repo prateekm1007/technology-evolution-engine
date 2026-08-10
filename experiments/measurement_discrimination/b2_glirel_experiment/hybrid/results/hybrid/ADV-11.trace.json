@@ -1,7 +1,7 @@
 {
   "schema_version": "b2-trace-v3",
   "candidate": {
-    "id": "undefined",
+    "id": "ADV-11",
     "text": "biomineralization",
     "source_a": "Calcium phosphate forms crystalline deposits in bone tissue through osteoblast-mediated mineralization.",
     "source_b": "Marine diatoms precipitate silica-based cell walls using enzymatic silicatein proteins."
@@ -12,13 +12,13 @@
     "justified_by_corpus": true,
     "iss_a": true,
     "iss_b": true,
-    "iss_state": "REDUNDANT_SUPPORT",
+    "iss_state": "ISS_both",
     "label": "ALLOW"
   },
   "evidence_assessment": {
     "glirel_relations_used": 0,
-    "glirel_relations_rejected": 10,
+    "glirel_relations_rejected": 20,
     "glirel_evidence_helpful": false,
-    "notes": "Source A describes mineralization of calcium phosphate in bone tissue, while Source B describes silica precipitation in diatom cell walls. Both sources independently provide examples of biomineralization processes without directly using the term. GLiREL relations were not directly relevant to the candidate term."
+    "notes": "The GLiREL relations are too specific to calcium phosphate and silica-based processes, not capturing the general concept of biomineralization. Source A describes mineralization in bone tissue (calcium phosphate), while Source B describes mineralization in marine diatoms (silica). Both sources independently support the general concept of biomineralization, but neither alone is sufficient as they only provide specific examples."
   }
 }
