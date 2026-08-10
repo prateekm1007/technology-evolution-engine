@@ -126,9 +126,20 @@ def load_glirel_compatible(
     print(f"[local_loader] State dict loaded (strict={strict})")
 
     # Step 6: Move to device and set eval mode
+    # Handle CUDA compatibility: Tesla P100 (compute 6.0) may not have
+    # pre-compiled kernels in newer PyTorch builds. Fall back to CPU if needed.
     if torch.cuda.is_available() and device == "cuda":
         print(f"[local_loader] Moving model to CUDA...")
-        model.to("cuda")
+        try:
+            model.to("cuda")
+        except RuntimeError as e:
+            if "no kernel image" in str(e) or "cudaErrorNoKernelImage" in str(e):
+                print(f"[local_loader] CUDA kernel image not available (P100 compatibility issue)")
+                print(f"[local_loader] Falling back to CPU. Inference will be slower.")
+                model.to("cpu")
+                device = "cpu"
+            else:
+                raise
     elif device == "cpu":
         model.to("cpu")
     model.eval()
