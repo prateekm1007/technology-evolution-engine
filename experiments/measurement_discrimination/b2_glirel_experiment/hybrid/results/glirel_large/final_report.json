@@ -1,0 +1,30 @@
+{
+  "experiment": "GLiREL-large-v0 isolated model-variable experiment",
+  "model": "jackboyla/glirel-large-v0",
+  "param_count": 466577920,
+  "mechanical_validity_pct": 100.0,
+  "span_precision_pct": 100.0,
+  "span_recall_pct": 73.7,
+  "relation_precision_pct": 0.8,
+  "relation_recall_pct": 6.7,
+  "direction_accuracy_pct": 1.4,
+  "relation_classification": {
+    "PARTIAL": 140,
+    "WRONG_ENTITY": 103,
+    "WRONG_RELATION": 5,
+    "CORRECT": 2
+  },
+  "decision": "STOP \u2014 relation precision did not materially improve",
+  "artifact_sha256": "b56a85937b9267016f851add1fdffea108d03d693dd9cddaf30d5715deceb66e",
+  "frozen_b2_unchanged": true,
+  "heldout_accessed": false,
+  "v3_adapter_unchanged": true,
+  "label": "NON-AUTHORITATIVE PARALLEL ENGINEERING EXPERIMENT",
+  "comparison": {
+    "beta_relation_precision": 1.2,
+    "large_relation_precision": 0.8,
+    "beta_direction_accuracy": 2.0,
+    "large_direction_accuracy": 1.4,
+    "improvement_relation_precision": -0.4
+  }
+}

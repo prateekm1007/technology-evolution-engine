@@ -1,0 +1,24 @@
+{
+  "model": "jackboyla/glirel-large-v0",
+  "gold_relations": 30,
+  "gold_entities": 19,
+  "extracted_relations": 250,
+  "extracted_spans": 500,
+  "mechanical_validity_pct": 100.0,
+  "span_precision_pct": 100.0,
+  "span_recall_pct": 73.7,
+  "relation_precision_pct": 0.8,
+  "relation_recall_pct": 6.7,
+  "direction_accuracy_pct": 1.4,
+  "relation_classification": {
+    "PARTIAL": 140,
+    "WRONG_ENTITY": 103,
+    "WRONG_RELATION": 5,
+    "CORRECT": 2
+  },
+  "fix_methods": {
+    "standard": 5330,
+    "swapped_inversion": 520,
+    "single_token": 650
+  }
+}

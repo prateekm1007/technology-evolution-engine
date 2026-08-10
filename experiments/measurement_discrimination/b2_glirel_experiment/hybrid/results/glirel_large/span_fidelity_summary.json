@@ -1,0 +1,17 @@
+{
+  "total_relations": 3250,
+  "total_spans": 6500,
+  "head_valid": 3250,
+  "head_invalid": 0,
+  "tail_valid": 3250,
+  "tail_invalid": 0,
+  "both_valid": 3250,
+  "head_fidelity_pct": 100.0,
+  "tail_fidelity_pct": 100.0,
+  "both_fidelity_pct": 50.0,
+  "fix_methods": {
+    "standard": 5330,
+    "swapped_inversion": 520,
+    "single_token": 650
+  }
+}
