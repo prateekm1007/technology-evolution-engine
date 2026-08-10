@@ -1,0 +1,734 @@
+{
+  "completed": {
+    "ADV-01_A": {
+      "status": "complete",
+      "timestamp": "2026-08-10T03:23:45Z",
+      "sha256": "6eb3a04bf91ef532"
+    },
+    "ADV-01_B": {
+      "status": "complete",
+      "timestamp": "2026-08-10T03:23:52Z",
+      "sha256": "3aba9887c8bcad55"
+    },
+    "ADV-01_C": {
+      "status": "complete",
+      "timestamp": "2026-08-10T03:23:59Z",
+      "sha256": "a5f992554551026c"
+    },
+    "ADV-02_A": {
+      "status": "complete",
+      "timestamp": "2026-08-10T03:24:08Z",
+      "sha256": "d6e9bbfe053026c7"
+    },
+    "ADV-02_B": {
+      "status": "complete",
+      "timestamp": "2026-08-10T03:24:24Z",
+      "sha256": "8920885b84875860"
+    },
+    "ADV-02_C": {
+      "status": "complete",
+      "timestamp": "2026-08-10T03:24:30Z",
+      "sha256": "dbce37ca099d612c"
+    },
+    "ADV-03_A": {
+      "status": "complete",
+      "timestamp": "2026-08-10T03:24:57Z",
+      "sha256": "f87e81e89779819f"
+    },
+    "ADV-03_B": {
+      "status": "complete",
+      "timestamp": "2026-08-10T03:25:06Z",
+      "sha256": "87e48a4641519742"
+    },
+    "ADV-03_C": {
+      "status": "complete",
+      "timestamp": "2026-08-10T03:25:23Z",
+      "sha256": "089fdefab1f8453c"
+    },
+    "ADV-04_A": {
+      "status": "complete",
+      "timestamp": "2026-08-10T03:25:31Z",
+      "sha256": "f88e867ea97c2bdc"
+    },
+    "ADV-04_B": {
+      "status": "complete",
+      "timestamp": "2026-08-10T03:27:26Z",
+      "sha256": "aa00fd5153ed0c8d"
+    },
+    "ADV-04_C": {
+      "status": "complete",
+      "timestamp": "2026-08-10T03:27:36Z",
+      "sha256": "081c7c1fd94cec02"
+    },
+    "ADV-05_A": {
+      "status": "complete",
+      "timestamp": "2026-08-10T03:27:44Z",
+      "sha256": "63472ec01a264370"
+    },
+    "ADV-05_B": {
+      "status": "complete",
+      "timestamp": "2026-08-10T03:27:51Z",
+      "sha256": "e6f08167aee7c2cf"
+    },
+    "ADV-05_C": {
+      "status": "complete",
+      "timestamp": "2026-08-10T03:27:59Z",
+      "sha256": "835b901324ecbc9d"
+    },
+    "ADV-06_A": {
+      "status": "complete",
+      "timestamp": "2026-08-10T03:28:06Z",
+      "sha256": "1c22faf4678d8c94"
+    },
+    "ADV-06_B": {
+      "status": "complete",
+      "timestamp": "2026-08-10T03:28:14Z",
+      "sha256": "b96eef368715a593"
+    },
+    "ADV-06_C": {
+      "status": "complete",
+      "timestamp": "2026-08-10T03:28:21Z",
+      "sha256": "8f9de1aa2e017ef4"
+    },
+    "ADV-07_A": {
+      "status": "complete",
+      "timestamp": "2026-08-10T03:28:32Z",
+      "sha256": "21f9798b265faff6"
+    },
+    "ADV-07_B": {
+      "status": "complete",
+      "timestamp": "2026-08-10T03:28:41Z",
+      "sha256": "5a9a796178806595"
+    },
+    "ADV-07_C": {
+      "status": "complete",
+      "timestamp": "2026-08-10T03:28:49Z",
+      "sha256": "d07f1fd2230e4ecd"
+    },
+    "ADV-08_A": {
+      "status": "complete",
+      "timestamp": "2026-08-10T03:28:56Z",
+      "sha256": "1afe5e8eeafa9b86"
+    },
+    "ADV-08_B": {
+      "status": "complete",
+      "timestamp": "2026-08-10T03:29:06Z",
+      "sha256": "7cc4aa8263fa5f6c"
+    },
+    "ADV-08_C": {
+      "status": "complete",
+      "timestamp": "2026-08-10T03:29:15Z",
+      "sha256": "25492725b9afa027"
+    }
+  },
+  "results": [
+    {
+      "case_id": "ADV-01",
+      "candidate": "skeletal calcification process",
+      "expected": "REJECT",
+      "A": {
+        "label": "NOT_ADJUDICATED_BY_B2",
+        "state": "ISS_one->REJECT",
+        "match": false,
+        "cited": 0,
+        "available": 20,
+        "relevant": 0,
+        "helpful": false,
+        "false_citation": false,
+        "cited_details": [],
+        "rejected_details": []
+      },
+      "B": {
+        "label": "REJECT",
+        "state": "ISS_one->REJECT",
+        "match": true,
+        "cited": 0,
+        "available": 20,
+        "relevant": 10,
+        "helpful": true,
+        "false_citation": false,
+        "cited_details": [],
+        "rejected_details": [
+          "Table A relations relate to calcium phosphate and bone tissue, not 'skeletal calcification process'",
+          "Table B relations relate to marine diatoms and silica precipitation, not 'skeletal calcification process'"
+        ]
+      },
+      "C": {
+        "label": "REJECT",
+        "state": "ISS_one->REJECT",
+        "match": true,
+        "cited": 1,
+        "available": 19,
+        "relevant": 2,
+        "helpful": true,
+        "false_citation": false,
+        "cited_details": [
+          {
+            "source": "A",
+            "relation": "osteoblast-mediated --[PRODUCES]--> Calcium phosphate",
+            "score": 0.235
+          }
+        ],
+        "rejected_details": [
+          {
+            "source": "A",
+            "relation": "Calcium phosphate --[PRODUCES]--> crystalline deposits",
+            "score": 0.32
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "ADV-02",
+      "candidate": "calcified matrix in osseous structures",
+      "expected": "REJECT",
+      "A": {
+        "label": "REJECT",
+        "state": "ISS_one->REJECT",
+        "match": true,
+        "cited": 0,
+        "available": 20,
+        "relevant": 0,
+        "helpful": false,
+        "false_citation": false,
+        "cited_details": [],
+        "rejected_details": []
+      },
+      "B": {
+        "label": "REJECT",
+        "state": "ISS_one",
+        "match": true,
+        "cited": 10,
+        "available": 20,
+        "relevant": 10,
+        "helpful": true,
+        "false_citation": false,
+        "cited_details": [
+          {
+            "relation_id": 1,
+            "source": "A",
+            "subject": "Calcium phosphate",
+            "object": "deposits",
+            "relation": "PRODUCES",
+            "relevance": true
+          },
+          {
+            "relation_id": 2,
+            "source": "A",
+            "subject": "Calcium phosphate",
+            "object": "deposits",
+            "relation": "PRODUCES",
+            "relevance": true
+          },
+          {
+            "relation_id": 3,
+            "source": "A",
+            "subject": "osteoblast-mediated",
+            "object": "Calcium phosphate",
+            "relation": "PRODUCES",
+            "relevance": true
+          },
+          {
+            "relation_id": 4,
+            "source": "A",
+            "subject": "osteoblast-mediated",
+            "object": "Calcium phosphate",
+            "relation": "PRODUCES",
+            "relevance": true
+          },
+          {
+            "relation_id": 5,
+            "source": "A",
+            "subject": "deposits",
+            "object": "Calcium phosphate",
+            "relation": "PRODUCES",
+            "relevance": true
+          },
+          {
+            "relation_id": 6,
+            "source": "A",
+            "subject": "tissue",
+            "object": "Calcium phosphate",
+            "relation": "PRODUCES",
+            "relevance": true
+          },
+          {
+            "relation_id": 7,
+            "source": "A",
+            "subject": "osteoblast-mediated",
+            "object": "Calcium phosphate",
+            "relation": "PRODUCES",
+            "relevance": true
+          },
+          {
+            "relation_id": 8,
+            "source": "A",
+            "subject": "osteoblast-mediated",
+            "object": "Calcium phosphate",
+            "relation": "CAUSES",
+            "relevance": true
+          },
+          {
+            "relation_id": 9,
+            "source": "A",
+            "subject": "Calcium phosphate",
+            "object": "deposits",
+            "relation": "PRODUCES",
+            "relevance": true
+          },
+          {
+            "relation_id": 10,
+            "source": "A",
+            "subject": "Calcium phosphate",
+            "object": "osteoblast-mediated",
+            "relation": "PRODUCES",
+            "relevance": true
+          }
+        ],
+        "rejected_details": []
+      },
+      "C": {
+        "label": "NOT_ADJUDICATED_BY_B2",
+        "state": "ISS_one->REJECT",
+        "match": false,
+        "cited": 0,
+        "available": 19,
+        "relevant": 0,
+        "helpful": false,
+        "false_citation": false,
+        "cited_details": [],
+        "rejected_details": []
+      }
+    },
+    {
+      "case_id": "ADV-03",
+      "candidate": "enzyme-templated mineral deposition",
+      "expected": "ALLOW",
+      "A": {
+        "label": "ALLOW",
+        "state": "ISS_both",
+        "match": true,
+        "cited": 10,
+        "available": 20,
+        "relevant": 10,
+        "helpful": true,
+        "false_citation": false,
+        "cited_details": [
+          {
+            "source": "A",
+            "relation": "PRODUCES",
+            "entities": "Calcium phosphate -> .",
+            "score": 0.34
+          },
+          {
+            "source": "A",
+            "relation": "PRODUCES",
+            "entities": "Calcium phosphate -> .",
+            "score": 0.32
+          },
+          {
+            "source": "A",
+            "relation": "PRODUCES",
+            "entities": "osteoblast-mediated -> Calcium phosphate",
+            "score": 0.235
+          },
+          {
+            "source": "A",
+            "relation": "PRODUCES",
+            "entities": "deposits -> .",
+            "score": 0.233
+          },
+          {
+            "source": "B",
+            "relation": "PRODUCES",
+            "entities": "Marine diatoms -> precipitate",
+            "score": 0.38
+          },
+          {
+            "source": "B",
+            "relation": "PRODUCES",
+            "entities": "precipitate -> Marine diatoms",
+            "score": 0.376
+          },
+          {
+            "source": "B",
+            "relation": "PRODUCES",
+            "entities": "Marine diatoms -> silica-based",
+            "score": 0.363
+          },
+          {
+            "source": "B",
+            "relation": "USES",
+            "entities": "Marine diatoms -> silicatein",
+            "score": 0.343
+          },
+          {
+            "source": "B",
+            "relation": "USES",
+            "entities": "Marine diatoms -> proteins",
+            "score": 0.334
+          },
+          {
+            "source": "B",
+            "relation": "USES",
+            "entities": "silicatein -> Marine diatoms",
+            "score": 0.317
+          }
+        ],
+        "rejected_details": []
+      },
+      "B": {
+        "label": "REJECT",
+        "state": "ISS_one->REJECT",
+        "match": false,
+        "cited": 0,
+        "available": 20,
+        "relevant": 0,
+        "helpful": false,
+        "false_citation": false,
+        "cited_details": [],
+        "rejected_details": []
+      },
+      "C": {
+        "label": "ALLOW",
+        "state": "ISS_both",
+        "match": true,
+        "cited": 3,
+        "available": 19,
+        "relevant": 4,
+        "helpful": true,
+        "false_citation": false,
+        "cited_details": [
+          {
+            "source": "B",
+            "relation": "Marine diatoms --[USES]--> silicatein",
+            "relevance": "Shows enzyme involvement in mineral formation process"
+          },
+          {
+            "source": "B",
+            "relation": "Marine diatoms --[PRODUCES]--> precipitate",
+            "relevance": "Shows organism producing mineral deposition process"
+          },
+          {
+            "source": "B",
+            "relation": "precipitate --[PRODUCES]--> silica-based",
+            "relevance": "Shows mineral deposition producing mineral"
+          }
+        ],
+        "rejected_details": [
+          {
+            "source": "A",
+            "relation": "osteoblast-mediated --[PRODUCES]--> Calcium phosphate",
+            "reason": "No explicit enzyme mention in Source A"
+          },
+          {
+            "source": "A",
+            "relation": "tissue --[PRODUCES]--> Calcium phosphate",
+            "reason": "No enzyme involvement in Source A"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "ADV-04",
+      "candidate": "silicatein-guided calcification",
+      "expected": "ALLOW",
+      "A": {
+        "label": "NOT_ADJUDICATED_BY_B2",
+        "state": "ISS_one->REJECT",
+        "match": false,
+        "cited": 0,
+        "available": 20,
+        "relevant": 0,
+        "helpful": false,
+        "false_citation": false,
+        "cited_details": [],
+        "rejected_details": []
+      },
+      "B": {
+        "label": "REJECT",
+        "state": "ISS_one->REJECT",
+        "match": false,
+        "cited": 0,
+        "available": 20,
+        "relevant": 0,
+        "helpful": false,
+        "false_citation": false,
+        "cited_details": [],
+        "rejected_details": []
+      },
+      "C": {
+        "label": "NOT_ADJUDICATED_BY_B2",
+        "state": "ISS_one->REJECT",
+        "match": false,
+        "cited": 0,
+        "available": 19,
+        "relevant": 1,
+        "helpful": false,
+        "false_citation": false,
+        "cited_details": [],
+        "rejected_details": [
+          {
+            "reason": "No direct relation between silicatein and calcification in either source",
+            "relation": "B_E4: Marine diatoms --[USES]--> silicatein"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "ADV-05",
+      "candidate": "hypermineralization",
+      "expected": "REJECT",
+      "A": {
+        "label": "NOT_ADJUDICATED_BY_B2",
+        "state": "ISS_one->REJECT",
+        "match": false,
+        "cited": 0,
+        "available": 20,
+        "relevant": 0,
+        "helpful": false,
+        "false_citation": false,
+        "cited_details": [],
+        "rejected_details": []
+      },
+      "B": {
+        "label": "NOT_ADJUDICATED_BY_B2",
+        "state": "ISS_one->REJECT",
+        "match": false,
+        "cited": 0,
+        "available": 20,
+        "relevant": 0,
+        "helpful": false,
+        "false_citation": false,
+        "cited_details": [],
+        "rejected_details": []
+      },
+      "C": {
+        "label": "NOT_ADJUDICATED_BY_B2",
+        "state": "ISS_one->REJECT",
+        "match": false,
+        "cited": 0,
+        "available": 19,
+        "relevant": 0,
+        "helpful": false,
+        "false_citation": false,
+        "cited_details": [],
+        "rejected_details": []
+      }
+    },
+    {
+      "case_id": "ADV-06",
+      "candidate": "xenomineralization",
+      "expected": "REJECT",
+      "A": {
+        "label": "NOT_ADJUDICATED_BY_B2",
+        "state": "ISS_one->REJECT",
+        "match": false,
+        "cited": 0,
+        "available": 20,
+        "relevant": 0,
+        "helpful": false,
+        "false_citation": false,
+        "cited_details": [],
+        "rejected_details": []
+      },
+      "B": {
+        "label": "NOT_ADJUDICATED_BY_B2",
+        "state": "ISS_one->REJECT",
+        "match": false,
+        "cited": 0,
+        "available": 20,
+        "relevant": 0,
+        "helpful": false,
+        "false_citation": false,
+        "cited_details": [],
+        "rejected_details": []
+      },
+      "C": {
+        "label": "REJECT",
+        "state": "ISS_one->REJECT",
+        "match": true,
+        "cited": 0,
+        "available": 19,
+        "relevant": 0,
+        "helpful": false,
+        "false_citation": false,
+        "cited_details": [],
+        "rejected_details": []
+      }
+    },
+    {
+      "case_id": "ADV-07",
+      "candidate": "enzyme-templated inorganic lattice formation",
+      "expected": "ALLOW",
+      "A": {
+        "label": "ALLOW",
+        "state": "ISS_both",
+        "match": true,
+        "cited": 4,
+        "available": 20,
+        "relevant": 4,
+        "helpful": true,
+        "false_citation": false,
+        "cited_details": [
+          {
+            "source": "A",
+            "relation": "PRODUCES",
+            "entities": "osteoblast-mediated -> Calcium phosphate",
+            "relevance": "Supports enzymatic involvement in mineral formation"
+          },
+          {
+            "source": "B",
+            "relation": "USES",
+            "entities": "Marine diatoms -> silicatein",
+            "relevance": "Supports enzymatic involvement in mineral formation"
+          },
+          {
+            "source": "B",
+            "relation": "PRODUCES",
+            "entities": "Marine diatoms -> silica-based",
+            "relevance": "Supports inorganic lattice formation"
+          },
+          {
+            "source": "B",
+            "relation": "PRODUCES",
+            "entities": "silicatein -> Marine diatoms",
+            "relevance": "Supports enzymatic involvement in mineral formation"
+          }
+        ],
+        "rejected_details": []
+      },
+      "B": {
+        "label": "NOT_ADJUDICATED_BY_B2",
+        "state": "ISS_one->REJECT",
+        "match": false,
+        "cited": 0,
+        "available": 20,
+        "relevant": 0,
+        "helpful": false,
+        "false_citation": false,
+        "cited_details": [],
+        "rejected_details": [
+          {
+            "reason": "No relations in either table directly support the candidate phrase 'enzyme-templated inorganic lattice formation'",
+            "table_a": "All relations in Table A describe calcium phosphate formation in bone tissue, but none mention enzymes or templating mechanisms",
+            "table_b": "Relations in Table B describe diatoms producing silica structures using silicatein proteins, but don't explicitly state 'enzyme-templated' or 'lattice formation'"
+          }
+        ]
+      },
+      "C": {
+        "label": "REJECT",
+        "state": "ISS_one",
+        "match": false,
+        "cited": 1,
+        "available": 19,
+        "relevant": 2,
+        "helpful": true,
+        "false_citation": false,
+        "cited_details": [
+          {
+            "source": "B",
+            "relation": "Marine diatoms --[USES]--> silicatein",
+            "score": 0.343,
+            "relevance": "Shows enzymatic involvement in mineral formation"
+          }
+        ],
+        "rejected_details": [
+          {
+            "source": "A",
+            "relation": "osteoblast-mediated --[PRODUCES]--> Calcium phosphate",
+            "score": 0.235,
+            "relevance": "Shows biological mediation but not specifically enzymatic templating"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "ADV-08",
+      "candidate": "protein-catalyzed biogenic oxide precipitation",
+      "expected": "ALLOW",
+      "A": {
+        "label": "NOT_ADJUDICATED_BY_B2",
+        "state": "ISS_one->REJECT",
+        "match": false,
+        "cited": 0,
+        "available": 20,
+        "relevant": 0,
+        "helpful": false,
+        "false_citation": false,
+        "cited_details": [],
+        "rejected_details": []
+      },
+      "B": {
+        "label": "ALLOW",
+        "state": "ISS_both",
+        "match": true,
+        "cited": 4,
+        "available": 20,
+        "relevant": 4,
+        "helpful": true,
+        "false_citation": false,
+        "cited_details": [
+          {
+            "relation": "PRODUCES",
+            "subject": "silicatein",
+            "object": "silica-based",
+            "source": "B",
+            "confidence": 0.363
+          },
+          {
+            "relation": "PRODUCES",
+            "subject": "Marine diatoms",
+            "object": "silica-based",
+            "source": "B",
+            "confidence": 0.363
+          },
+          {
+            "relation": "USES",
+            "subject": "Marine diatoms",
+            "object": "silicatein",
+            "source": "B",
+            "confidence": 0.343
+          },
+          {
+            "relation": "PRODUCES",
+            "subject": "osteoblast-mediated",
+            "object": "Calcium phosphate",
+            "source": "A",
+            "confidence": 0.235
+          }
+        ],
+        "rejected_details": []
+      },
+      "C": {
+        "label": "REJECT",
+        "state": "ISS_one->REJECT",
+        "match": false,
+        "cited": 1,
+        "available": 19,
+        "relevant": 3,
+        "helpful": true,
+        "false_citation": false,
+        "cited_details": [
+          {
+            "source": "B",
+            "relation": "B_E4: Marine diatoms --[USES]--> silicatein",
+            "relevance": "Supports the 'protein-catalyzed' aspect of the candidate phrase"
+          }
+        ],
+        "rejected_details": [
+          {
+            "source": "A",
+            "relation": "A_E3: osteoblast-mediated --[PRODUCES]--> Calcium phosphate",
+            "reason": "Does not involve protein catalysis"
+          },
+          {
+            "source": "B",
+            "relation": "B_E0: Marine diatoms --[PRODUCES]--> precipitate",
+            "reason": "General production relation, doesn't specify protein catalysis"
+          }
+        ]
+      }
+    }
+  ]
+}
