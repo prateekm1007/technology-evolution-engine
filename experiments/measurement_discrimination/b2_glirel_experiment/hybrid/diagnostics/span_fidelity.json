@@ -1,0 +1,37 @@
+{
+  "simple": {
+    "pass": true,
+    "tokens": 8,
+    "text": "Osteoblasts deposit calcium phosphate in bone tiss..."
+  },
+  "hyphenated": {
+    "pass": true,
+    "tokens": 8,
+    "text": "Silica-based cell walls form in marine diatoms."
+  },
+  "parentheses": {
+    "pass": true,
+    "tokens": 8,
+    "text": "Enzymatic proteins (silicatein) catalyze precipita..."
+  },
+  "abbreviations": {
+    "pass": true,
+    "tokens": 12,
+    "text": "Ca and P ions form Ca3(PO4)2 crystals."
+  },
+  "long_terms": {
+    "pass": true,
+    "tokens": 6,
+    "text": "Osteoblast-mediated mineralization produces crysta..."
+  },
+  "unicode": {
+    "pass": true,
+    "tokens": 6,
+    "text": "Caf\u00e9 mineral deposits form naturally."
+  },
+  "punctuation": {
+    "pass": true,
+    "tokens": 10,
+    "text": "Marine diatoms precipitate silica. Silicatein is a..."
+  }
+}

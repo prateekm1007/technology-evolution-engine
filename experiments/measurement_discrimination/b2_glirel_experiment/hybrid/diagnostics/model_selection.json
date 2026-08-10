@@ -1,0 +1,8 @@
+{
+  "requested_model": "GLM-5.2",
+  "actual_model": "glm-4-plus",
+  "glm_5_2_available": false,
+  "fallback_used": true,
+  "fallback_reason": "API accepts any model name without validation; response model field always returns glm-4-plus; cannot confirm GLM-5.2 is actually available",
+  "note": "GLM adjudication will be performed locally in Phase 2 using z-ai SDK"
+}

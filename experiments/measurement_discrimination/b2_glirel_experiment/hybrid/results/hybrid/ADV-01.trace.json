@@ -1,0 +1,35 @@
+{
+  "schema_version": "b2-trace-v3",
+  "candidate": {
+    "id": "undefined",
+    "text": "skeletal calcification process",
+    "source_a": "Calcium phosphate forms crystalline deposits in bone tissue through osteoblast-mediated mineralization.",
+    "source_b": "Marine diatoms precipitate silica-based cell walls using enzymatic silicatein proteins."
+  },
+  "atoms": [
+    "skeletal calcification process",
+    "calcium phosphate",
+    "bone tissue",
+    "osteoblast-mediated mineralization",
+    "marine diatoms",
+    "silica-based cell walls",
+    "enzymatic silicatein proteins"
+  ],
+  "counterfactuals": [
+    "If Source A didn't mention calcium phosphate deposits in bone tissue, would the candidate still be justified?",
+    "If Source B didn't mention silica precipitation by diatoms, would the candidate still be justified?"
+  ],
+  "classification": {
+    "justified_by_corpus": false,
+    "iss_a": false,
+    "iss_b": false,
+    "iss_state": "UNSUPPORTED",
+    "label": "NOT_ADJUDICATED_BY_B2"
+  },
+  "evidence_assessment": {
+    "glirel_relations_used": 0,
+    "glirel_relations_rejected": 10,
+    "glirel_evidence_helpful": false,
+    "notes": "The candidate 'skeletal calcification process' is not directly supported by either source. Source A discusses calcium phosphate deposits in bone tissue, which is related to skeletal calcification but doesn't explicitly mention the process. Source B discusses silica precipitation in diatoms, which is unrelated to skeletal calcification. GLiREL relations don't support the candidate phrase."
+  }
+}

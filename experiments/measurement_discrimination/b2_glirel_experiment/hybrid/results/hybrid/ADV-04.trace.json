@@ -1,0 +1,35 @@
+{
+  "schema_version": "b2-trace-v3",
+  "candidate": {
+    "id": "undefined",
+    "text": "silicatein-guided calcification",
+    "source_a": "Calcium phosphate forms crystalline deposits in bone tissue through osteoblast-mediated mineralization.",
+    "source_b": "Marine diatoms precipitate silica-based cell walls using enzymatic silicatein proteins."
+  },
+  "atoms": [
+    "silicatein",
+    "calcification",
+    "calcium phosphate",
+    "osteoblast-mediated mineralization",
+    "silica-based cell walls",
+    "enzymatic silicatein proteins"
+  ],
+  "counterfactuals": [
+    "If Source A mentioned silicatein, the candidate could be justified by Source A alone",
+    "If Source B mentioned calcification, the candidate could be justified by Source B alone",
+    "If both sources mentioned the combination of silicatein and calcification, the candidate would be redundantly supported"
+  ],
+  "classification": {
+    "justified_by_corpus": true,
+    "iss_a": false,
+    "iss_b": false,
+    "iss_state": "ISS_both",
+    "label": "ALLOW"
+  },
+  "evidence_assessment": {
+    "glirel_relations_used": 4,
+    "glirel_relations_rejected": 16,
+    "glirel_evidence_helpful": true,
+    "notes": "GLiREL correctly identified that Marine diatoms use silicatein proteins (Source B) and that calcium phosphate forms deposits (Source A). However, it missed the connection between calcification and calcium phosphate, and between silicatein and enzymatic activity. The candidate requires combining information from both sources: silicatein from Source B and calcification from Source A."
+  }
+}

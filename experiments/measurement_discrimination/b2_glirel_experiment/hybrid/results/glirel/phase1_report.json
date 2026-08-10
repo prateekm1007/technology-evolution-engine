@@ -1,0 +1,16 @@
+{
+  "experiment": "B-2 GLiREL hybrid Phase 1 (extraction only)",
+  "date": "2026-08-10T01:39:31.162719+00:00",
+  "model": "jackboyla/glirel_beta",
+  "param_count": 466576896,
+  "all_stages_pass": true,
+  "span_fidelity_pct": 64.0,
+  "total_relations": 3250,
+  "valid_relations": 2080,
+  "invalid_relations": 1170,
+  "artifact_sha256": "12abc4d1d54850713f144928b19bab1629806695e3da36e8992294a6784c57a4",
+  "frozen_b2_unchanged": true,
+  "heldout_accessed": false,
+  "label": "NON-AUTHORITATIVE PARALLEL ENGINEERING EXPERIMENT",
+  "next_phase": "Phase 2: GLM adjudication locally using evidence_graphs.json"
+}

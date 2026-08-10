@@ -135,7 +135,7 @@ async function main() {
   console.log(`Loaded ${evidenceData.length} cases from evidence graphs`);
 
   // Load fixture for expected labels
-  const fixturePath = join(__dirname, '..', '..', 'test_fixture.json');
+  const fixturePath = join(__dirname, '..', '..', 'b2_adversarial_v2', 'test_fixture.json');
   const fixture = JSON.parse(readFileSync(fixturePath, 'utf-8'));
 
   // Init ZAI SDK
@@ -218,7 +218,7 @@ async function main() {
       const amendedExpected = evidence.case_id === 'ADV-09' ? 'NOT_ADJUDICATED_BY_B2' : tc.expected_label;
       const amendedMatch = hybridLabel === amendedExpected;
 
-      console.log(`  hybrid: ${hybridLabel} (${hybridState}) ${amendedMatch ? '✓' : '✗'}`);
+      console.log(`  hybrid: ${hybridLabel} (${hybridState}) ${amendedMatch ? 'OK' : 'X'}`);
 
       // Evidence assessment
       const evAssessment = trace.evidence_assessment || {};
@@ -313,8 +313,8 @@ async function main() {
   console.log('PER-CASE COMPARISON:');
   console.log('-'.repeat(60));
   for (const c of comparison.per_case) {
-    const bStatus = c.baseline_match ? '✓' : '✗';
-    const hStatus = c.hybrid_match ? '✓' : '✗';
+    const bStatus = c.baseline_match ? 'OK' : 'X';
+    const hStatus = c.hybrid_match ? 'OK' : 'X';
     console.log(`  ${c.case_id}: expected=${c.expected}`);
     console.log(`    baseline: ${c.baseline_label} ${bStatus} (${c.baseline_agreement})`);
     console.log(`    hybrid:   ${c.hybrid_label} ${hStatus}`);
@@ -329,9 +329,9 @@ async function main() {
     const improved = !c.baseline_match && c.hybrid_match;
     const regressed = c.baseline_match && !c.hybrid_match;
     const status = improved ? 'IMPROVED' : regressed ? 'REGRESSED' : 'UNCHANGED';
-    console.log(`  ${c.case_id} ({c.candidate}): ${status}`);
-    console.log(`    baseline: ${c.baseline_label} ${c.baseline_match ? '✓' : '✗'}");
-    console.log(`    hybrid:   ${c.hybrid_label} ${c.hybrid_match ? '✓' : '✗'}`);
+    console.log(`  ${c.case_id} (${c.candidate}): ${status}`);
+    console.log(`    baseline: ${c.baseline_label} ${c.baseline_match ? 'OK' : 'X'}`);
+    console.log(`    hybrid:   ${c.hybrid_label} ${c.hybrid_match ? 'OK' : 'X'}`);
   }
 
   console.log(`\nResults saved to: ${OUTPUT_DIR}/`);

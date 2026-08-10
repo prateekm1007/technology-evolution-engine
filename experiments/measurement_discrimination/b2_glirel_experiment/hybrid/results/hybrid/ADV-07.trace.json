@@ -1,0 +1,36 @@
+{
+  "schema_version": "b2-trace-v3",
+  "candidate": {
+    "id": "undefined",
+    "text": "enzyme-templated inorganic lattice formation",
+    "source_a": "Calcium phosphate forms crystalline deposits in bone tissue through osteoblast-mediated mineralization.",
+    "source_b": "Marine diatoms precipitate silica-based cell walls using enzymatic silicatein proteins."
+  },
+  "atoms": [
+    "Calcium phosphate forms crystalline deposits",
+    "Calcium phosphate in bone tissue",
+    "Osteoblast-mediated mineralization",
+    "Marine diatoms precipitate silica",
+    "Marine diatoms use silicatein proteins",
+    "Enzymatic silicatein proteins"
+  ],
+  "counterfactuals": [
+    "If Source A didn't mention osteoblast-mediated mineralization, would we still know about enzyme involvement?",
+    "If Source B didn't mention enzymatic silicatein proteins, would we still know about enzyme involvement?",
+    "If Source A didn't mention calcium phosphate, would we know about inorganic lattice formation?",
+    "If Source B didn't mention silica-based cell walls, would we know about inorganic lattice formation?"
+  ],
+  "classification": {
+    "justified_by_corpus": true,
+    "iss_a": false,
+    "iss_b": false,
+    "iss_state": "ISS_both",
+    "label": "ALLOW"
+  },
+  "evidence_assessment": {
+    "glirel_relations_used": 3,
+    "glirel_relations_rejected": 17,
+    "glirel_evidence_helpful": false,
+    "notes": "GLiREL extracted some relevant relations but missed key connections. Source A shows inorganic lattice formation (calcium phosphate deposits) but only implies enzyme involvement via 'osteoblast-mediated'. Source B explicitly mentions 'enzymatic silicatein proteins' and inorganic formation (silica-based walls). Neither source alone fully supports the candidate phrase, requiring both for complete justification."
+  }
+}

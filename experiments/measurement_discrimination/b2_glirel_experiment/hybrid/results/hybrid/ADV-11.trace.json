@@ -1,0 +1,36 @@
+{
+  "schema_version": "b2-trace-v3",
+  "candidate": {
+    "id": "undefined",
+    "text": "biomineralization",
+    "source_a": "Calcium phosphate forms crystalline deposits in bone tissue through osteoblast-mediated mineralization.",
+    "source_b": "Marine diatoms precipitate silica-based cell walls using enzymatic silicatein proteins."
+  },
+  "atoms": [
+    "calcium phosphate forms deposits in bone tissue",
+    "deposits are crystalline",
+    "osteoblasts mediate mineralization",
+    "marine diatoms precipitate silica",
+    "diatoms form cell walls",
+    "silicatein proteins are enzymatic",
+    "diatoms use silicatein proteins"
+  ],
+  "counterfactuals": [
+    "Source A doesn't mention silica or diatoms",
+    "Source B doesn't mention calcium phosphate or bone tissue",
+    "Neither source explicitly uses the term 'biomineralization'"
+  ],
+  "classification": {
+    "justified_by_corpus": true,
+    "iss_a": true,
+    "iss_b": true,
+    "iss_state": "REDUNDANT_SUPPORT",
+    "label": "ALLOW"
+  },
+  "evidence_assessment": {
+    "glirel_relations_used": 4,
+    "glirel_relations_rejected": 16,
+    "glirel_evidence_helpful": true,
+    "notes": "GLiREL extracted some useful relations (PRODUCES relations for deposits and walls) but many invalid relations. Both sources independently describe biomineralization processes (calcium phosphate in bone tissue and silica in diatom cell walls), providing redundant support for the candidate concept."
+  }
+}

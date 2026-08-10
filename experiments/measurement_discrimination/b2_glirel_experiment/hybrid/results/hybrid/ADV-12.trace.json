@@ -1,0 +1,24 @@
+{
+  "schema_version": "b2-trace-v3",
+  "candidate": {
+    "id": "undefined",
+    "text": "mineralizing",
+    "source_a": "Calcium phosphate forms crystalline deposits in bone tissue through osteoblast-mediated mineralization.",
+    "source_b": "Marine diatoms precipitate silica-based cell walls using enzymatic silicatein proteins."
+  },
+  "atoms": [],
+  "counterfactuals": [],
+  "classification": {
+    "justified_by_corpus": true,
+    "iss_a": true,
+    "iss_b": true,
+    "iss_state": "REDUNDANT_SUPPORT",
+    "label": "ALLOW"
+  },
+  "evidence_assessment": {
+    "glirel_relations_used": 0,
+    "glirel_relations_rejected": 10,
+    "glirel_evidence_helpful": false,
+    "notes": "The candidate 'mineralizing' appears in Source A as 'mineralization' (a related form). Source A directly describes the process of mineralization in bone tissue. Source B describes precipitation of silica, which is a mineralization process, though it uses different terminology. Both sources independently support the concept of mineralization, making this a case of redundant support."
+  }
+}
