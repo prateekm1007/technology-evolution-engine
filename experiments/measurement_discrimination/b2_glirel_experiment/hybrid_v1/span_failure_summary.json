@@ -1,0 +1,25 @@
+{
+  "total_relations": 3250,
+  "head_span_fidelity": {
+    "valid": 2665,
+    "invalid": 585,
+    "total": 3250,
+    "pct": 82.0
+  },
+  "tail_span_fidelity": {
+    "valid": 2665,
+    "invalid": 585,
+    "total": 3250,
+    "pct": 82.0
+  },
+  "both_span_fidelity": {
+    "valid": 2080,
+    "invalid": 1170,
+    "total": 3250,
+    "pct": 64.0
+  },
+  "failure_categories": {
+    "INCLUSIVE_EXCLUSIVE_ERROR": 1170
+  },
+  "total_invalid_spans": 1170
+}
