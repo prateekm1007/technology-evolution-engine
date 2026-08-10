@@ -74,6 +74,34 @@ def load_glirel_compatible(
     print(f"[local_loader] Config loaded: model_name={config.model_name}, "
           f"hidden_size={config.hidden_size}")
 
+    # Step 3a: Ensure all required config fields exist (glirel_beta config may be missing some)
+    # These are fields that GLiREL 1.2.1's InstructBase.__init__ expects
+    defaults = {
+        'max_entity_pair_distance': None,
+        'max_width': 12,
+        'max_len': 512,
+        'span_marker_mode': 'markerv1',
+        'coreference_label': 'SELF',
+        'add_entity_markers': False,
+        'coref_classifier': False,
+        'refine_relation': False,
+        'refine_prompt': False,
+        'ffn_mul': 4,
+        'dropout': 0.4,
+        'positive_weight': 2.0,
+        'negative_weight': 1.0,
+        'threshold_search_metric': 'micro_f1',
+        'label_embed_strategy': 'both',
+        'fixed_relation_types': True,
+        'scorer': 'dot',
+        'rel_mode': 'marker',
+        'device': 'cuda' if torch.cuda.is_available() else 'cpu',
+    }
+    for key, val in defaults.items():
+        if not hasattr(config, key):
+            setattr(config, key, val)
+            print(f"[local_loader] Added missing config field: {key}={val}")
+
     # Step 4: Construct model (this downloads the backbone from HF)
     print(f"[local_loader] Constructing GLiREL(config)...")
     model = GLiREL(config)
