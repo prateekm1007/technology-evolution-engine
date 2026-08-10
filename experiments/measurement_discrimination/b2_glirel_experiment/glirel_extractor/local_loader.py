@@ -109,6 +109,19 @@ def load_glirel_compatible(
     # Step 5: Load state dict
     print(f"[local_loader] Loading state_dict from {model_file}...")
     state_dict = torch.load(str(model_file), map_location=torch.device(map_location))
+
+    # Step 5a: Handle embedding size mismatch
+    # GLiREL adds special tokens ([REL], [SEP], [E], [/E], [FLERT]) to the tokenizer,
+    # which may result in a different vocab size than the checkpoint expects.
+    # Resize the model's word embeddings to match the checkpoint.
+    word_emb_key = "token_rep_layer.bert_layer.model.embeddings.word_embeddings.weight"
+    if word_emb_key in state_dict:
+        ckpt_vocab_size = state_dict[word_emb_key].shape[0]
+        model_vocab_size = model.token_rep_layer.bert_layer.model.embeddings.word_embeddings.weight.shape[0]
+        if ckpt_vocab_size != model_vocab_size:
+            print(f"[local_loader] Resizing word embeddings: {model_vocab_size} -> {ckpt_vocab_size}")
+            model.token_rep_layer.bert_layer.model.resize_token_embeddings(ckpt_vocab_size)
+
     model.load_state_dict(state_dict, strict=strict, assign=True)
     print(f"[local_loader] State dict loaded (strict={strict})")
 
