@@ -1,0 +1,158 @@
+{
+  "results": [
+    {
+      "case_id": "ADV-05",
+      "candidate": "hypermineralization",
+      "expected": "REJECT",
+      "A": {
+        "label": "REJECT",
+        "state": "ISS_one",
+        "match": true,
+        "cited": "PRODUCES relations in GLiREL A and B do not establish a connection between hypermineralization and the described processes",
+        "false_citation": "GLiREL relations are extracted but do not provide meaningful evidence for hypermineralization"
+      },
+      "B": {
+        "label": "NOT_ADJUDICATED_BY_B2",
+        "state": "ISS_one->REJECT",
+        "match": false,
+        "cited": true,
+        "false_citation": false
+      },
+      "C": {
+        "label": "NOT_ADJUDICATED_BY_B2",
+        "state": "ISS_both->ALLOW",
+        "match": false,
+        "cited": [],
+        "false_citation": true
+      }
+    },
+    {
+      "case_id": "ADV-06",
+      "candidate": "xenomineralization",
+      "expected": "REJECT",
+      "A": {
+        "label": "REJECT",
+        "state": "ISS_one",
+        "match": true,
+        "cited": "The sources describe fundamentally different biological mineralization processes - one involving calcium phosphate in bone formation and the other involving silica precipitation in diatoms. There is no overlap in the mechanisms or materials described.",
+        "false_citation": "None. The GLiREL extractions accurately reflect the content of both sources without introducing false connections."
+      },
+      "B": {
+        "label": "ALLOW",
+        "state": "ISS_both->ALLOW",
+        "match": false,
+        "cited": "PRODUCES, CAUSES, USES",
+        "false_citation": "false"
+      },
+      "C": {
+        "label": "ALLOW",
+        "state": "ISS_both->ALLOW",
+        "match": false,
+        "cited": 0,
+        "false_citation": false
+      }
+    },
+    {
+      "case_id": "ADV-07",
+      "candidate": "enzyme-templated inorganic lattice formation",
+      "expected": "ALLOW",
+      "A": {
+        "label": "ISS_both->ALLOW",
+        "state": "ALLOW",
+        "match": false,
+        "cited": "Both sources describe biological systems using enzymes to template the formation of inorganic lattices (bone mineralization and diatom cell walls).",
+        "false_citation": "GLiREL contains some extraneous relations that don't directly support the ISS (e.g., 'PRODUCES: deposits -> .', 'PRODUCES: tissue -> Calcium phosphate')."
+      },
+      "B": {
+        "label": "ISS_both->ALLOW",
+        "state": "ALLOW",
+        "match": false,
+        "cited": [
+          "Source A: osteoblast-mediated PRODUCES Calcium phosphate",
+          "Source B: Marine diatoms PRODUCES silica-based",
+          "Source B: Marine diatoms USES silicatein"
+        ],
+        "false_citation": []
+      },
+      "C": {
+        "label": "ALLOW",
+        "state": "ISS_both",
+        "match": true,
+        "cited": "Both sources provide relevant information about biological systems forming inorganic structures through enzymatic processes.",
+        "false_citation": "No false evidence was identified in the GLiREL extraction for this case."
+      }
+    },
+    {
+      "case_id": "ADV-08",
+      "candidate": "protein-catalyzed biogenic oxide precipitation",
+      "expected": "ALLOW",
+      "A": {
+        "label": "ALLOW",
+        "state": "ISS_both->ALLOW",
+        "match": true,
+        "cited": "ISS_both->ALLOW",
+        "false_citation": "true"
+      },
+      "B": {
+        "label": "ISS_both->ALLOW",
+        "state": "ALLOW",
+        "match": false,
+        "cited": [
+          "Table A: osteoblast-mediated PRODUCES Calcium phosphate",
+          "Table B: Marine diatoms PRODUCES precipitate, Marine diatoms USES silicatein"
+        ],
+        "false_citation": false
+      },
+      "C": {
+        "label": "ALLOW",
+        "state": "ISS_both->ALLOW",
+        "match": true,
+        "cited": [
+          "osteoblast-mediated --[PRODUCES]--> Calcium phosphate",
+          "Marine diatoms --[PRODUCES]--> precipitate",
+          "Marine diatoms --[USES]--> silicatein"
+        ],
+        "false_citation": "None. The evidence cited is accurate and supports the candidate concept without contradiction."
+      }
+    },
+    {
+      "case_id": "ADV-13",
+      "candidate": "pseudomineralization",
+      "expected": "REJECT",
+      "A": {
+        "label": "REJECT",
+        "state": "ISS_one->REJECT",
+        "match": true,
+        "cited": "The GLiREL evidence shows no connection between the two ISS statements. The first statement describes calcium phosphate mineralization in bone tissue, while the second describes silica precipitation by marine diatoms. There are no shared entities or processes between the two statements.",
+        "false_citation": "No false evidence was cited in the GLiREL extraction. The extracted relations accurately reflect the information in the source texts, but they do not connect the two statements."
+      },
+      "B": {
+        "label": "ALLOW",
+        "state": "ISS_both->ALLOW",
+        "match": false,
+        "cited": [
+          "PRODUCES",
+          "CAUSES"
+        ],
+        "false_citation": false
+      },
+      "C": {
+        "label": "ALLOW",
+        "state": "ISS_both->ALLOW",
+        "match": false,
+        "cited": true,
+        "false_citation": false
+      }
+    }
+  ],
+  "matches": {
+    "A": 4,
+    "B": 0,
+    "C": 2
+  },
+  "false_citations": {
+    "A": 5,
+    "B": 2,
+    "C": 3
+  }
+}
