@@ -1,0 +1,26 @@
+{
+  "gold_benchmark": "GLiREL-SPAN-GOLD-v1",
+  "gold_relations": 30,
+  "gold_entities": 19,
+  "extracted_relations": 250,
+  "extracted_spans": 500,
+  "span_precision_pct": 100.0,
+  "span_recall_pct": 73.7,
+  "relation_precision_pct": 1.2,
+  "relation_recall_pct": 10.0,
+  "direction_accuracy_pct": 2.0,
+  "mechanical_validity_pct": 100.0,
+  "relation_classification": {
+    "PARTIAL": 140,
+    "WRONG_ENTITY": 103,
+    "WRONG_RELATION": 4,
+    "CORRECT": 3
+  },
+  "span_match_breakdown": {
+    "PARTIAL_SUBSET": 170,
+    "EXACT": 240,
+    "PARTIAL_SUPERSET": 90
+  },
+  "unrecovered_gold_entities": 5,
+  "unrecovered_gold_relations": 27
+}

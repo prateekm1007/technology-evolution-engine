@@ -7,7 +7,7 @@
   "gold_relations": [
     {"id": "G01", "source": "A", "head_text": "Calcium phosphate", "head_start": 0, "head_end": 17, "tail_text": "crystalline deposits", "tail_start": 25, "tail_end": 44, "relation": "PRODUCES", "direction": "A_TO_B"},
     {"id": "G02", "source": "A", "head_text": "Calcium phosphate", "head_start": 0, "head_end": 17, "tail_text": "bone tissue", "tail_start": 49, "tail_end": 60, "relation": "LOCATED_IN", "direction": "A_TO_B"},
-    {"id": "G03", "source": "A", "head_text": "crystalline deposits", "head_start": 25, "tail_text": "Calcium phosphate", "tail_start": 0, "tail_end": 17, "relation": "PRODUCED_FROM", "direction": "B_TO_A"},
+    {"id": "G03", "source": "A", "head_text": "crystalline deposits", "head_start": 25, "head_end": 44, "tail_text": "Calcium phosphate", "tail_start": 0, "tail_end": 17, "relation": "PRODUCED_FROM", "direction": "B_TO_A"},
     {"id": "G04", "source": "A", "head_text": "osteoblast", "head_start": 70, "head_end": 80, "tail_text": "mineralization", "tail_start": 92, "tail_end": 106, "relation": "CAUSES", "direction": "A_TO_B"},
     {"id": "G05", "source": "A", "head_text": "osteoblast-mediated", "head_start": 70, "head_end": 89, "tail_text": "mineralization", "tail_start": 92, "tail_end": 106, "relation": "CAUSES", "direction": "A_TO_B"},
     {"id": "G06", "source": "A", "head_text": "Calcium", "head_start": 0, "head_end": 7, "tail_text": "phosphate", "tail_start": 8, "tail_end": 17, "relation": "STRUCTURALLY_RELATED_TO", "direction": "A_TO_B"},
