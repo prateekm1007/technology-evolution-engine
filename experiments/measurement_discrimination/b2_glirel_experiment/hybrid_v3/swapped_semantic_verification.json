@@ -1,0 +1,7808 @@
+{
+  "total_swapped": 520,
+  "category_counts": {
+    "A": 520
+  },
+  "classifications": [
+    {
+      "case_id": "ADV-01",
+      "source_id": "A",
+      "relation_idx": 2,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "CAUSES",
+      "score": 0.24148818850517273
+    },
+    {
+      "case_id": "ADV-01",
+      "source_id": "A",
+      "relation_idx": 3,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "PRODUCES",
+      "score": 0.2348988950252533
+    },
+    {
+      "case_id": "ADV-01",
+      "source_id": "A",
+      "relation_idx": 6,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "PRODUCES",
+      "score": 0.2265147566795349
+    },
+    {
+      "case_id": "ADV-01",
+      "source_id": "A",
+      "relation_idx": 7,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "CAUSES",
+      "score": 0.22592264413833618
+    },
+    {
+      "case_id": "ADV-01",
+      "source_id": "A",
+      "relation_idx": 9,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "PRODUCES",
+      "score": 0.21775510907173157
+    },
+    {
+      "case_id": "ADV-01",
+      "source_id": "A",
+      "relation_idx": 10,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "PRODUCES",
+      "score": 0.21703526377677917
+    },
+    {
+      "case_id": "ADV-01",
+      "source_id": "A",
+      "relation_idx": 25,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "FUNCTIONALLY_RELATED_TO",
+      "score": 0.17829681932926178
+    },
+    {
+      "case_id": "ADV-01",
+      "source_id": "A",
+      "relation_idx": 27,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "CAUSES",
+      "score": 0.17245621979236603
+    },
+    {
+      "case_id": "ADV-01",
+      "source_id": "A",
+      "relation_idx": 28,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "FUNCTIONALLY_RELATED_TO",
+      "score": 0.17116792500019073
+    },
+    {
+      "case_id": "ADV-01",
+      "source_id": "A",
+      "relation_idx": 29,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "CAUSES",
+      "score": 0.1691388189792633
+    },
+    {
+      "case_id": "ADV-01",
+      "source_id": "A",
+      "relation_idx": 30,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "USES",
+      "score": 0.1537659466266632
+    },
+    {
+      "case_id": "ADV-01",
+      "source_id": "A",
+      "relation_idx": 31,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "GENERATES",
+      "score": 0.14830826222896576
+    },
+    {
+      "case_id": "ADV-01",
+      "source_id": "A",
+      "relation_idx": 33,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "CAUSES",
+      "score": 0.13827945291996002
+    },
+    {
+      "case_id": "ADV-01",
+      "source_id": "A",
+      "relation_idx": 34,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "TRANSFORMS",
+      "score": 0.1369961053133011
+    },
+    {
+      "case_id": "ADV-01",
+      "source_id": "A",
+      "relation_idx": 36,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "USES",
+      "score": 0.13598066568374634
+    },
+    {
+      "case_id": "ADV-01",
+      "source_id": "A",
+      "relation_idx": 37,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "CAUSES",
+      "score": 0.13233999907970428
+    },
+    {
+      "case_id": "ADV-01",
+      "source_id": "A",
+      "relation_idx": 39,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "GENERATES",
+      "score": 0.1314033716917038
+    },
+    {
+      "case_id": "ADV-01",
+      "source_id": "A",
+      "relation_idx": 46,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "PRODUCES",
+      "score": 0.12660613656044006
+    },
+    {
+      "case_id": "ADV-01",
+      "source_id": "A",
+      "relation_idx": 48,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "PRODUCES",
+      "score": 0.12393243610858917
+    },
+    {
+      "case_id": "ADV-01",
+      "source_id": "A",
+      "relation_idx": 49,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "USES",
+      "score": 0.12392541021108627
+    },
+    {
+      "case_id": "ADV-01",
+      "source_id": "A",
+      "relation_idx": 53,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "GENERATES",
+      "score": 0.11825723201036453
+    },
+    {
+      "case_id": "ADV-01",
+      "source_id": "A",
+      "relation_idx": 56,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "FUNCTIONALLY_RELATED_TO",
+      "score": 0.11334770917892456
+    },
+    {
+      "case_id": "ADV-01",
+      "source_id": "A",
+      "relation_idx": 57,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "USES",
+      "score": 0.11273956298828125
+    },
+    {
+      "case_id": "ADV-01",
+      "source_id": "A",
+      "relation_idx": 58,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "FUNCTIONALLY_RELATED_TO",
+      "score": 0.11173979938030243
+    },
+    {
+      "case_id": "ADV-01",
+      "source_id": "A",
+      "relation_idx": 60,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "CAUSES",
+      "score": 0.10848406702280045
+    },
+    {
+      "case_id": "ADV-01",
+      "source_id": "A",
+      "relation_idx": 63,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "CAUSES",
+      "score": 0.10762400180101395
+    },
+    {
+      "case_id": "ADV-01",
+      "source_id": "A",
+      "relation_idx": 67,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "PRODUCES",
+      "score": 0.10086232423782349
+    },
+    {
+      "case_id": "ADV-01",
+      "source_id": "A",
+      "relation_idx": 69,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "PRODUCES",
+      "score": 0.09945917129516602
+    },
+    {
+      "case_id": "ADV-01",
+      "source_id": "A",
+      "relation_idx": 71,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "FUNCTIONALLY_RELATED_TO",
+      "score": 0.08692440390586853
+    },
+    {
+      "case_id": "ADV-01",
+      "source_id": "A",
+      "relation_idx": 76,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "FUNCTIONALLY_RELATED_TO",
+      "score": 0.07953918725252151
+    },
+    {
+      "case_id": "ADV-01",
+      "source_id": "A",
+      "relation_idx": 79,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "TRANSFORMS",
+      "score": 0.07432222366333008
+    },
+    {
+      "case_id": "ADV-01",
+      "source_id": "A",
+      "relation_idx": 80,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "USES",
+      "score": 0.07371824979782104
+    },
+    {
+      "case_id": "ADV-01",
+      "source_id": "A",
+      "relation_idx": 82,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "USES",
+      "score": 0.06913839280605316
+    },
+    {
+      "case_id": "ADV-01",
+      "source_id": "A",
+      "relation_idx": 83,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "GENERATES",
+      "score": 0.06884457916021347
+    },
+    {
+      "case_id": "ADV-01",
+      "source_id": "A",
+      "relation_idx": 84,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "FUNCTIONALLY_RELATED_TO",
+      "score": 0.06602586805820465
+    },
+    {
+      "case_id": "ADV-01",
+      "source_id": "A",
+      "relation_idx": 86,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "FUNCTIONALLY_RELATED_TO",
+      "score": 0.05999824404716492
+    },
+    {
+      "case_id": "ADV-01",
+      "source_id": "A",
+      "relation_idx": 88,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "TRANSFORMS",
+      "score": 0.05668221041560173
+    },
+    {
+      "case_id": "ADV-01",
+      "source_id": "A",
+      "relation_idx": 89,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "USES",
+      "score": 0.05561460554599762
+    },
+    {
+      "case_id": "ADV-01",
+      "source_id": "A",
+      "relation_idx": 92,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "GENERATES",
+      "score": 0.05292050912976265
+    },
+    {
+      "case_id": "ADV-01",
+      "source_id": "A",
+      "relation_idx": 93,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "TRANSFORMS",
+      "score": 0.05217998847365379
+    },
+    {
+      "case_id": "ADV-02",
+      "source_id": "A",
+      "relation_idx": 2,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "CAUSES",
+      "score": 0.24148818850517273
+    },
+    {
+      "case_id": "ADV-02",
+      "source_id": "A",
+      "relation_idx": 3,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "PRODUCES",
+      "score": 0.2348988950252533
+    },
+    {
+      "case_id": "ADV-02",
+      "source_id": "A",
+      "relation_idx": 6,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "PRODUCES",
+      "score": 0.2265147566795349
+    },
+    {
+      "case_id": "ADV-02",
+      "source_id": "A",
+      "relation_idx": 7,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "CAUSES",
+      "score": 0.22592264413833618
+    },
+    {
+      "case_id": "ADV-02",
+      "source_id": "A",
+      "relation_idx": 9,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "PRODUCES",
+      "score": 0.21775510907173157
+    },
+    {
+      "case_id": "ADV-02",
+      "source_id": "A",
+      "relation_idx": 10,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "PRODUCES",
+      "score": 0.21703526377677917
+    },
+    {
+      "case_id": "ADV-02",
+      "source_id": "A",
+      "relation_idx": 25,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "FUNCTIONALLY_RELATED_TO",
+      "score": 0.17829681932926178
+    },
+    {
+      "case_id": "ADV-02",
+      "source_id": "A",
+      "relation_idx": 27,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "CAUSES",
+      "score": 0.17245621979236603
+    },
+    {
+      "case_id": "ADV-02",
+      "source_id": "A",
+      "relation_idx": 28,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "FUNCTIONALLY_RELATED_TO",
+      "score": 0.17116792500019073
+    },
+    {
+      "case_id": "ADV-02",
+      "source_id": "A",
+      "relation_idx": 29,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "CAUSES",
+      "score": 0.1691388189792633
+    },
+    {
+      "case_id": "ADV-02",
+      "source_id": "A",
+      "relation_idx": 30,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "USES",
+      "score": 0.1537659466266632
+    },
+    {
+      "case_id": "ADV-02",
+      "source_id": "A",
+      "relation_idx": 31,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "GENERATES",
+      "score": 0.14830826222896576
+    },
+    {
+      "case_id": "ADV-02",
+      "source_id": "A",
+      "relation_idx": 33,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "CAUSES",
+      "score": 0.13827945291996002
+    },
+    {
+      "case_id": "ADV-02",
+      "source_id": "A",
+      "relation_idx": 34,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "TRANSFORMS",
+      "score": 0.1369961053133011
+    },
+    {
+      "case_id": "ADV-02",
+      "source_id": "A",
+      "relation_idx": 36,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "USES",
+      "score": 0.13598066568374634
+    },
+    {
+      "case_id": "ADV-02",
+      "source_id": "A",
+      "relation_idx": 37,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "CAUSES",
+      "score": 0.13233999907970428
+    },
+    {
+      "case_id": "ADV-02",
+      "source_id": "A",
+      "relation_idx": 39,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "GENERATES",
+      "score": 0.1314033716917038
+    },
+    {
+      "case_id": "ADV-02",
+      "source_id": "A",
+      "relation_idx": 46,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "PRODUCES",
+      "score": 0.12660613656044006
+    },
+    {
+      "case_id": "ADV-02",
+      "source_id": "A",
+      "relation_idx": 48,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "PRODUCES",
+      "score": 0.12393243610858917
+    },
+    {
+      "case_id": "ADV-02",
+      "source_id": "A",
+      "relation_idx": 49,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "USES",
+      "score": 0.12392541021108627
+    },
+    {
+      "case_id": "ADV-02",
+      "source_id": "A",
+      "relation_idx": 53,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "GENERATES",
+      "score": 0.11825723201036453
+    },
+    {
+      "case_id": "ADV-02",
+      "source_id": "A",
+      "relation_idx": 56,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "FUNCTIONALLY_RELATED_TO",
+      "score": 0.11334770917892456
+    },
+    {
+      "case_id": "ADV-02",
+      "source_id": "A",
+      "relation_idx": 57,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "USES",
+      "score": 0.11273956298828125
+    },
+    {
+      "case_id": "ADV-02",
+      "source_id": "A",
+      "relation_idx": 58,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "FUNCTIONALLY_RELATED_TO",
+      "score": 0.11173979938030243
+    },
+    {
+      "case_id": "ADV-02",
+      "source_id": "A",
+      "relation_idx": 60,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "CAUSES",
+      "score": 0.10848406702280045
+    },
+    {
+      "case_id": "ADV-02",
+      "source_id": "A",
+      "relation_idx": 63,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "CAUSES",
+      "score": 0.10762400180101395
+    },
+    {
+      "case_id": "ADV-02",
+      "source_id": "A",
+      "relation_idx": 67,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "PRODUCES",
+      "score": 0.10086232423782349
+    },
+    {
+      "case_id": "ADV-02",
+      "source_id": "A",
+      "relation_idx": 69,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "PRODUCES",
+      "score": 0.09945917129516602
+    },
+    {
+      "case_id": "ADV-02",
+      "source_id": "A",
+      "relation_idx": 71,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "FUNCTIONALLY_RELATED_TO",
+      "score": 0.08692440390586853
+    },
+    {
+      "case_id": "ADV-02",
+      "source_id": "A",
+      "relation_idx": 76,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "FUNCTIONALLY_RELATED_TO",
+      "score": 0.07953918725252151
+    },
+    {
+      "case_id": "ADV-02",
+      "source_id": "A",
+      "relation_idx": 79,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "TRANSFORMS",
+      "score": 0.07432222366333008
+    },
+    {
+      "case_id": "ADV-02",
+      "source_id": "A",
+      "relation_idx": 80,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "USES",
+      "score": 0.07371824979782104
+    },
+    {
+      "case_id": "ADV-02",
+      "source_id": "A",
+      "relation_idx": 82,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "USES",
+      "score": 0.06913839280605316
+    },
+    {
+      "case_id": "ADV-02",
+      "source_id": "A",
+      "relation_idx": 83,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "GENERATES",
+      "score": 0.06884457916021347
+    },
+    {
+      "case_id": "ADV-02",
+      "source_id": "A",
+      "relation_idx": 84,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "FUNCTIONALLY_RELATED_TO",
+      "score": 0.06602586805820465
+    },
+    {
+      "case_id": "ADV-02",
+      "source_id": "A",
+      "relation_idx": 86,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "FUNCTIONALLY_RELATED_TO",
+      "score": 0.05999824404716492
+    },
+    {
+      "case_id": "ADV-02",
+      "source_id": "A",
+      "relation_idx": 88,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "TRANSFORMS",
+      "score": 0.05668221041560173
+    },
+    {
+      "case_id": "ADV-02",
+      "source_id": "A",
+      "relation_idx": 89,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "USES",
+      "score": 0.05561460554599762
+    },
+    {
+      "case_id": "ADV-02",
+      "source_id": "A",
+      "relation_idx": 92,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "GENERATES",
+      "score": 0.05292050912976265
+    },
+    {
+      "case_id": "ADV-02",
+      "source_id": "A",
+      "relation_idx": 93,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "TRANSFORMS",
+      "score": 0.05217998847365379
+    },
+    {
+      "case_id": "ADV-03",
+      "source_id": "A",
+      "relation_idx": 2,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "CAUSES",
+      "score": 0.24148818850517273
+    },
+    {
+      "case_id": "ADV-03",
+      "source_id": "A",
+      "relation_idx": 3,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "PRODUCES",
+      "score": 0.2348988950252533
+    },
+    {
+      "case_id": "ADV-03",
+      "source_id": "A",
+      "relation_idx": 6,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "PRODUCES",
+      "score": 0.2265147566795349
+    },
+    {
+      "case_id": "ADV-03",
+      "source_id": "A",
+      "relation_idx": 7,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "CAUSES",
+      "score": 0.22592264413833618
+    },
+    {
+      "case_id": "ADV-03",
+      "source_id": "A",
+      "relation_idx": 9,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "PRODUCES",
+      "score": 0.21775510907173157
+    },
+    {
+      "case_id": "ADV-03",
+      "source_id": "A",
+      "relation_idx": 10,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "PRODUCES",
+      "score": 0.21703526377677917
+    },
+    {
+      "case_id": "ADV-03",
+      "source_id": "A",
+      "relation_idx": 25,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "FUNCTIONALLY_RELATED_TO",
+      "score": 0.17829681932926178
+    },
+    {
+      "case_id": "ADV-03",
+      "source_id": "A",
+      "relation_idx": 27,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "CAUSES",
+      "score": 0.17245621979236603
+    },
+    {
+      "case_id": "ADV-03",
+      "source_id": "A",
+      "relation_idx": 28,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "FUNCTIONALLY_RELATED_TO",
+      "score": 0.17116792500019073
+    },
+    {
+      "case_id": "ADV-03",
+      "source_id": "A",
+      "relation_idx": 29,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "CAUSES",
+      "score": 0.1691388189792633
+    },
+    {
+      "case_id": "ADV-03",
+      "source_id": "A",
+      "relation_idx": 30,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "USES",
+      "score": 0.1537659466266632
+    },
+    {
+      "case_id": "ADV-03",
+      "source_id": "A",
+      "relation_idx": 31,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "GENERATES",
+      "score": 0.14830826222896576
+    },
+    {
+      "case_id": "ADV-03",
+      "source_id": "A",
+      "relation_idx": 33,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "CAUSES",
+      "score": 0.13827945291996002
+    },
+    {
+      "case_id": "ADV-03",
+      "source_id": "A",
+      "relation_idx": 34,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "TRANSFORMS",
+      "score": 0.1369961053133011
+    },
+    {
+      "case_id": "ADV-03",
+      "source_id": "A",
+      "relation_idx": 36,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "USES",
+      "score": 0.13598066568374634
+    },
+    {
+      "case_id": "ADV-03",
+      "source_id": "A",
+      "relation_idx": 37,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "CAUSES",
+      "score": 0.13233999907970428
+    },
+    {
+      "case_id": "ADV-03",
+      "source_id": "A",
+      "relation_idx": 39,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "GENERATES",
+      "score": 0.1314033716917038
+    },
+    {
+      "case_id": "ADV-03",
+      "source_id": "A",
+      "relation_idx": 46,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "PRODUCES",
+      "score": 0.12660613656044006
+    },
+    {
+      "case_id": "ADV-03",
+      "source_id": "A",
+      "relation_idx": 48,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "PRODUCES",
+      "score": 0.12393243610858917
+    },
+    {
+      "case_id": "ADV-03",
+      "source_id": "A",
+      "relation_idx": 49,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "USES",
+      "score": 0.12392541021108627
+    },
+    {
+      "case_id": "ADV-03",
+      "source_id": "A",
+      "relation_idx": 53,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "GENERATES",
+      "score": 0.11825723201036453
+    },
+    {
+      "case_id": "ADV-03",
+      "source_id": "A",
+      "relation_idx": 56,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "FUNCTIONALLY_RELATED_TO",
+      "score": 0.11334770917892456
+    },
+    {
+      "case_id": "ADV-03",
+      "source_id": "A",
+      "relation_idx": 57,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "USES",
+      "score": 0.11273956298828125
+    },
+    {
+      "case_id": "ADV-03",
+      "source_id": "A",
+      "relation_idx": 58,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "FUNCTIONALLY_RELATED_TO",
+      "score": 0.11173979938030243
+    },
+    {
+      "case_id": "ADV-03",
+      "source_id": "A",
+      "relation_idx": 60,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "CAUSES",
+      "score": 0.10848406702280045
+    },
+    {
+      "case_id": "ADV-03",
+      "source_id": "A",
+      "relation_idx": 63,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "CAUSES",
+      "score": 0.10762400180101395
+    },
+    {
+      "case_id": "ADV-03",
+      "source_id": "A",
+      "relation_idx": 67,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "PRODUCES",
+      "score": 0.10086232423782349
+    },
+    {
+      "case_id": "ADV-03",
+      "source_id": "A",
+      "relation_idx": 69,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "PRODUCES",
+      "score": 0.09945917129516602
+    },
+    {
+      "case_id": "ADV-03",
+      "source_id": "A",
+      "relation_idx": 71,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "FUNCTIONALLY_RELATED_TO",
+      "score": 0.08692440390586853
+    },
+    {
+      "case_id": "ADV-03",
+      "source_id": "A",
+      "relation_idx": 76,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "FUNCTIONALLY_RELATED_TO",
+      "score": 0.07953918725252151
+    },
+    {
+      "case_id": "ADV-03",
+      "source_id": "A",
+      "relation_idx": 79,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "TRANSFORMS",
+      "score": 0.07432222366333008
+    },
+    {
+      "case_id": "ADV-03",
+      "source_id": "A",
+      "relation_idx": 80,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "USES",
+      "score": 0.07371824979782104
+    },
+    {
+      "case_id": "ADV-03",
+      "source_id": "A",
+      "relation_idx": 82,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "USES",
+      "score": 0.06913839280605316
+    },
+    {
+      "case_id": "ADV-03",
+      "source_id": "A",
+      "relation_idx": 83,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "GENERATES",
+      "score": 0.06884457916021347
+    },
+    {
+      "case_id": "ADV-03",
+      "source_id": "A",
+      "relation_idx": 84,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "FUNCTIONALLY_RELATED_TO",
+      "score": 0.06602586805820465
+    },
+    {
+      "case_id": "ADV-03",
+      "source_id": "A",
+      "relation_idx": 86,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "FUNCTIONALLY_RELATED_TO",
+      "score": 0.05999824404716492
+    },
+    {
+      "case_id": "ADV-03",
+      "source_id": "A",
+      "relation_idx": 88,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "TRANSFORMS",
+      "score": 0.05668221041560173
+    },
+    {
+      "case_id": "ADV-03",
+      "source_id": "A",
+      "relation_idx": 89,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "USES",
+      "score": 0.05561460554599762
+    },
+    {
+      "case_id": "ADV-03",
+      "source_id": "A",
+      "relation_idx": 92,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "GENERATES",
+      "score": 0.05292050912976265
+    },
+    {
+      "case_id": "ADV-03",
+      "source_id": "A",
+      "relation_idx": 93,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "TRANSFORMS",
+      "score": 0.05217998847365379
+    },
+    {
+      "case_id": "ADV-04",
+      "source_id": "A",
+      "relation_idx": 2,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "CAUSES",
+      "score": 0.24148818850517273
+    },
+    {
+      "case_id": "ADV-04",
+      "source_id": "A",
+      "relation_idx": 3,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "PRODUCES",
+      "score": 0.2348988950252533
+    },
+    {
+      "case_id": "ADV-04",
+      "source_id": "A",
+      "relation_idx": 6,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "PRODUCES",
+      "score": 0.2265147566795349
+    },
+    {
+      "case_id": "ADV-04",
+      "source_id": "A",
+      "relation_idx": 7,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "CAUSES",
+      "score": 0.22592264413833618
+    },
+    {
+      "case_id": "ADV-04",
+      "source_id": "A",
+      "relation_idx": 9,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "PRODUCES",
+      "score": 0.21775510907173157
+    },
+    {
+      "case_id": "ADV-04",
+      "source_id": "A",
+      "relation_idx": 10,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "PRODUCES",
+      "score": 0.21703526377677917
+    },
+    {
+      "case_id": "ADV-04",
+      "source_id": "A",
+      "relation_idx": 25,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "FUNCTIONALLY_RELATED_TO",
+      "score": 0.17829681932926178
+    },
+    {
+      "case_id": "ADV-04",
+      "source_id": "A",
+      "relation_idx": 27,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "CAUSES",
+      "score": 0.17245621979236603
+    },
+    {
+      "case_id": "ADV-04",
+      "source_id": "A",
+      "relation_idx": 28,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "FUNCTIONALLY_RELATED_TO",
+      "score": 0.17116792500019073
+    },
+    {
+      "case_id": "ADV-04",
+      "source_id": "A",
+      "relation_idx": 29,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "CAUSES",
+      "score": 0.1691388189792633
+    },
+    {
+      "case_id": "ADV-04",
+      "source_id": "A",
+      "relation_idx": 30,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "USES",
+      "score": 0.1537659466266632
+    },
+    {
+      "case_id": "ADV-04",
+      "source_id": "A",
+      "relation_idx": 31,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "GENERATES",
+      "score": 0.14830826222896576
+    },
+    {
+      "case_id": "ADV-04",
+      "source_id": "A",
+      "relation_idx": 33,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "CAUSES",
+      "score": 0.13827945291996002
+    },
+    {
+      "case_id": "ADV-04",
+      "source_id": "A",
+      "relation_idx": 34,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "TRANSFORMS",
+      "score": 0.1369961053133011
+    },
+    {
+      "case_id": "ADV-04",
+      "source_id": "A",
+      "relation_idx": 36,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "USES",
+      "score": 0.13598066568374634
+    },
+    {
+      "case_id": "ADV-04",
+      "source_id": "A",
+      "relation_idx": 37,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "CAUSES",
+      "score": 0.13233999907970428
+    },
+    {
+      "case_id": "ADV-04",
+      "source_id": "A",
+      "relation_idx": 39,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "GENERATES",
+      "score": 0.1314033716917038
+    },
+    {
+      "case_id": "ADV-04",
+      "source_id": "A",
+      "relation_idx": 46,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "PRODUCES",
+      "score": 0.12660613656044006
+    },
+    {
+      "case_id": "ADV-04",
+      "source_id": "A",
+      "relation_idx": 48,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "PRODUCES",
+      "score": 0.12393243610858917
+    },
+    {
+      "case_id": "ADV-04",
+      "source_id": "A",
+      "relation_idx": 49,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "USES",
+      "score": 0.12392541021108627
+    },
+    {
+      "case_id": "ADV-04",
+      "source_id": "A",
+      "relation_idx": 53,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "GENERATES",
+      "score": 0.11825723201036453
+    },
+    {
+      "case_id": "ADV-04",
+      "source_id": "A",
+      "relation_idx": 56,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "FUNCTIONALLY_RELATED_TO",
+      "score": 0.11334770917892456
+    },
+    {
+      "case_id": "ADV-04",
+      "source_id": "A",
+      "relation_idx": 57,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "USES",
+      "score": 0.11273956298828125
+    },
+    {
+      "case_id": "ADV-04",
+      "source_id": "A",
+      "relation_idx": 58,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "FUNCTIONALLY_RELATED_TO",
+      "score": 0.11173979938030243
+    },
+    {
+      "case_id": "ADV-04",
+      "source_id": "A",
+      "relation_idx": 60,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "CAUSES",
+      "score": 0.10848406702280045
+    },
+    {
+      "case_id": "ADV-04",
+      "source_id": "A",
+      "relation_idx": 63,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "CAUSES",
+      "score": 0.10762400180101395
+    },
+    {
+      "case_id": "ADV-04",
+      "source_id": "A",
+      "relation_idx": 67,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "PRODUCES",
+      "score": 0.10086232423782349
+    },
+    {
+      "case_id": "ADV-04",
+      "source_id": "A",
+      "relation_idx": 69,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "PRODUCES",
+      "score": 0.09945917129516602
+    },
+    {
+      "case_id": "ADV-04",
+      "source_id": "A",
+      "relation_idx": 71,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "FUNCTIONALLY_RELATED_TO",
+      "score": 0.08692440390586853
+    },
+    {
+      "case_id": "ADV-04",
+      "source_id": "A",
+      "relation_idx": 76,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "FUNCTIONALLY_RELATED_TO",
+      "score": 0.07953918725252151
+    },
+    {
+      "case_id": "ADV-04",
+      "source_id": "A",
+      "relation_idx": 79,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "TRANSFORMS",
+      "score": 0.07432222366333008
+    },
+    {
+      "case_id": "ADV-04",
+      "source_id": "A",
+      "relation_idx": 80,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "USES",
+      "score": 0.07371824979782104
+    },
+    {
+      "case_id": "ADV-04",
+      "source_id": "A",
+      "relation_idx": 82,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "USES",
+      "score": 0.06913839280605316
+    },
+    {
+      "case_id": "ADV-04",
+      "source_id": "A",
+      "relation_idx": 83,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "GENERATES",
+      "score": 0.06884457916021347
+    },
+    {
+      "case_id": "ADV-04",
+      "source_id": "A",
+      "relation_idx": 84,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "FUNCTIONALLY_RELATED_TO",
+      "score": 0.06602586805820465
+    },
+    {
+      "case_id": "ADV-04",
+      "source_id": "A",
+      "relation_idx": 86,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "FUNCTIONALLY_RELATED_TO",
+      "score": 0.05999824404716492
+    },
+    {
+      "case_id": "ADV-04",
+      "source_id": "A",
+      "relation_idx": 88,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "TRANSFORMS",
+      "score": 0.05668221041560173
+    },
+    {
+      "case_id": "ADV-04",
+      "source_id": "A",
+      "relation_idx": 89,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "USES",
+      "score": 0.05561460554599762
+    },
+    {
+      "case_id": "ADV-04",
+      "source_id": "A",
+      "relation_idx": 92,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "GENERATES",
+      "score": 0.05292050912976265
+    },
+    {
+      "case_id": "ADV-04",
+      "source_id": "A",
+      "relation_idx": 93,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "TRANSFORMS",
+      "score": 0.05217998847365379
+    },
+    {
+      "case_id": "ADV-05",
+      "source_id": "A",
+      "relation_idx": 2,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "CAUSES",
+      "score": 0.24148818850517273
+    },
+    {
+      "case_id": "ADV-05",
+      "source_id": "A",
+      "relation_idx": 3,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "PRODUCES",
+      "score": 0.2348988950252533
+    },
+    {
+      "case_id": "ADV-05",
+      "source_id": "A",
+      "relation_idx": 6,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "PRODUCES",
+      "score": 0.2265147566795349
+    },
+    {
+      "case_id": "ADV-05",
+      "source_id": "A",
+      "relation_idx": 7,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "CAUSES",
+      "score": 0.22592264413833618
+    },
+    {
+      "case_id": "ADV-05",
+      "source_id": "A",
+      "relation_idx": 9,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "PRODUCES",
+      "score": 0.21775510907173157
+    },
+    {
+      "case_id": "ADV-05",
+      "source_id": "A",
+      "relation_idx": 10,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "PRODUCES",
+      "score": 0.21703526377677917
+    },
+    {
+      "case_id": "ADV-05",
+      "source_id": "A",
+      "relation_idx": 25,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "FUNCTIONALLY_RELATED_TO",
+      "score": 0.17829681932926178
+    },
+    {
+      "case_id": "ADV-05",
+      "source_id": "A",
+      "relation_idx": 27,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "CAUSES",
+      "score": 0.17245621979236603
+    },
+    {
+      "case_id": "ADV-05",
+      "source_id": "A",
+      "relation_idx": 28,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "FUNCTIONALLY_RELATED_TO",
+      "score": 0.17116792500019073
+    },
+    {
+      "case_id": "ADV-05",
+      "source_id": "A",
+      "relation_idx": 29,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "CAUSES",
+      "score": 0.1691388189792633
+    },
+    {
+      "case_id": "ADV-05",
+      "source_id": "A",
+      "relation_idx": 30,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "USES",
+      "score": 0.1537659466266632
+    },
+    {
+      "case_id": "ADV-05",
+      "source_id": "A",
+      "relation_idx": 31,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "GENERATES",
+      "score": 0.14830826222896576
+    },
+    {
+      "case_id": "ADV-05",
+      "source_id": "A",
+      "relation_idx": 33,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "CAUSES",
+      "score": 0.13827945291996002
+    },
+    {
+      "case_id": "ADV-05",
+      "source_id": "A",
+      "relation_idx": 34,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "TRANSFORMS",
+      "score": 0.1369961053133011
+    },
+    {
+      "case_id": "ADV-05",
+      "source_id": "A",
+      "relation_idx": 36,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "USES",
+      "score": 0.13598066568374634
+    },
+    {
+      "case_id": "ADV-05",
+      "source_id": "A",
+      "relation_idx": 37,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "CAUSES",
+      "score": 0.13233999907970428
+    },
+    {
+      "case_id": "ADV-05",
+      "source_id": "A",
+      "relation_idx": 39,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "GENERATES",
+      "score": 0.1314033716917038
+    },
+    {
+      "case_id": "ADV-05",
+      "source_id": "A",
+      "relation_idx": 46,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "PRODUCES",
+      "score": 0.12660613656044006
+    },
+    {
+      "case_id": "ADV-05",
+      "source_id": "A",
+      "relation_idx": 48,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "PRODUCES",
+      "score": 0.12393243610858917
+    },
+    {
+      "case_id": "ADV-05",
+      "source_id": "A",
+      "relation_idx": 49,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "USES",
+      "score": 0.12392541021108627
+    },
+    {
+      "case_id": "ADV-05",
+      "source_id": "A",
+      "relation_idx": 53,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "GENERATES",
+      "score": 0.11825723201036453
+    },
+    {
+      "case_id": "ADV-05",
+      "source_id": "A",
+      "relation_idx": 56,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "FUNCTIONALLY_RELATED_TO",
+      "score": 0.11334770917892456
+    },
+    {
+      "case_id": "ADV-05",
+      "source_id": "A",
+      "relation_idx": 57,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "USES",
+      "score": 0.11273956298828125
+    },
+    {
+      "case_id": "ADV-05",
+      "source_id": "A",
+      "relation_idx": 58,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "FUNCTIONALLY_RELATED_TO",
+      "score": 0.11173979938030243
+    },
+    {
+      "case_id": "ADV-05",
+      "source_id": "A",
+      "relation_idx": 60,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "CAUSES",
+      "score": 0.10848406702280045
+    },
+    {
+      "case_id": "ADV-05",
+      "source_id": "A",
+      "relation_idx": 63,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "CAUSES",
+      "score": 0.10762400180101395
+    },
+    {
+      "case_id": "ADV-05",
+      "source_id": "A",
+      "relation_idx": 67,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "PRODUCES",
+      "score": 0.10086232423782349
+    },
+    {
+      "case_id": "ADV-05",
+      "source_id": "A",
+      "relation_idx": 69,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "PRODUCES",
+      "score": 0.09945917129516602
+    },
+    {
+      "case_id": "ADV-05",
+      "source_id": "A",
+      "relation_idx": 71,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "FUNCTIONALLY_RELATED_TO",
+      "score": 0.08692440390586853
+    },
+    {
+      "case_id": "ADV-05",
+      "source_id": "A",
+      "relation_idx": 76,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "FUNCTIONALLY_RELATED_TO",
+      "score": 0.07953918725252151
+    },
+    {
+      "case_id": "ADV-05",
+      "source_id": "A",
+      "relation_idx": 79,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "TRANSFORMS",
+      "score": 0.07432222366333008
+    },
+    {
+      "case_id": "ADV-05",
+      "source_id": "A",
+      "relation_idx": 80,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "USES",
+      "score": 0.07371824979782104
+    },
+    {
+      "case_id": "ADV-05",
+      "source_id": "A",
+      "relation_idx": 82,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "USES",
+      "score": 0.06913839280605316
+    },
+    {
+      "case_id": "ADV-05",
+      "source_id": "A",
+      "relation_idx": 83,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "GENERATES",
+      "score": 0.06884457916021347
+    },
+    {
+      "case_id": "ADV-05",
+      "source_id": "A",
+      "relation_idx": 84,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "FUNCTIONALLY_RELATED_TO",
+      "score": 0.06602586805820465
+    },
+    {
+      "case_id": "ADV-05",
+      "source_id": "A",
+      "relation_idx": 86,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "FUNCTIONALLY_RELATED_TO",
+      "score": 0.05999824404716492
+    },
+    {
+      "case_id": "ADV-05",
+      "source_id": "A",
+      "relation_idx": 88,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "TRANSFORMS",
+      "score": 0.05668221041560173
+    },
+    {
+      "case_id": "ADV-05",
+      "source_id": "A",
+      "relation_idx": 89,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "USES",
+      "score": 0.05561460554599762
+    },
+    {
+      "case_id": "ADV-05",
+      "source_id": "A",
+      "relation_idx": 92,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "GENERATES",
+      "score": 0.05292050912976265
+    },
+    {
+      "case_id": "ADV-05",
+      "source_id": "A",
+      "relation_idx": 93,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "TRANSFORMS",
+      "score": 0.05217998847365379
+    },
+    {
+      "case_id": "ADV-06",
+      "source_id": "A",
+      "relation_idx": 2,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "CAUSES",
+      "score": 0.24148818850517273
+    },
+    {
+      "case_id": "ADV-06",
+      "source_id": "A",
+      "relation_idx": 3,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "PRODUCES",
+      "score": 0.2348988950252533
+    },
+    {
+      "case_id": "ADV-06",
+      "source_id": "A",
+      "relation_idx": 6,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "PRODUCES",
+      "score": 0.2265147566795349
+    },
+    {
+      "case_id": "ADV-06",
+      "source_id": "A",
+      "relation_idx": 7,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "CAUSES",
+      "score": 0.22592264413833618
+    },
+    {
+      "case_id": "ADV-06",
+      "source_id": "A",
+      "relation_idx": 9,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "PRODUCES",
+      "score": 0.21775510907173157
+    },
+    {
+      "case_id": "ADV-06",
+      "source_id": "A",
+      "relation_idx": 10,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "PRODUCES",
+      "score": 0.21703526377677917
+    },
+    {
+      "case_id": "ADV-06",
+      "source_id": "A",
+      "relation_idx": 25,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "FUNCTIONALLY_RELATED_TO",
+      "score": 0.17829681932926178
+    },
+    {
+      "case_id": "ADV-06",
+      "source_id": "A",
+      "relation_idx": 27,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "CAUSES",
+      "score": 0.17245621979236603
+    },
+    {
+      "case_id": "ADV-06",
+      "source_id": "A",
+      "relation_idx": 28,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "FUNCTIONALLY_RELATED_TO",
+      "score": 0.17116792500019073
+    },
+    {
+      "case_id": "ADV-06",
+      "source_id": "A",
+      "relation_idx": 29,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "CAUSES",
+      "score": 0.1691388189792633
+    },
+    {
+      "case_id": "ADV-06",
+      "source_id": "A",
+      "relation_idx": 30,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "USES",
+      "score": 0.1537659466266632
+    },
+    {
+      "case_id": "ADV-06",
+      "source_id": "A",
+      "relation_idx": 31,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "GENERATES",
+      "score": 0.14830826222896576
+    },
+    {
+      "case_id": "ADV-06",
+      "source_id": "A",
+      "relation_idx": 33,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "CAUSES",
+      "score": 0.13827945291996002
+    },
+    {
+      "case_id": "ADV-06",
+      "source_id": "A",
+      "relation_idx": 34,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "TRANSFORMS",
+      "score": 0.1369961053133011
+    },
+    {
+      "case_id": "ADV-06",
+      "source_id": "A",
+      "relation_idx": 36,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "USES",
+      "score": 0.13598066568374634
+    },
+    {
+      "case_id": "ADV-06",
+      "source_id": "A",
+      "relation_idx": 37,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "CAUSES",
+      "score": 0.13233999907970428
+    },
+    {
+      "case_id": "ADV-06",
+      "source_id": "A",
+      "relation_idx": 39,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "GENERATES",
+      "score": 0.1314033716917038
+    },
+    {
+      "case_id": "ADV-06",
+      "source_id": "A",
+      "relation_idx": 46,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "PRODUCES",
+      "score": 0.12660613656044006
+    },
+    {
+      "case_id": "ADV-06",
+      "source_id": "A",
+      "relation_idx": 48,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "PRODUCES",
+      "score": 0.12393243610858917
+    },
+    {
+      "case_id": "ADV-06",
+      "source_id": "A",
+      "relation_idx": 49,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "USES",
+      "score": 0.12392541021108627
+    },
+    {
+      "case_id": "ADV-06",
+      "source_id": "A",
+      "relation_idx": 53,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "GENERATES",
+      "score": 0.11825723201036453
+    },
+    {
+      "case_id": "ADV-06",
+      "source_id": "A",
+      "relation_idx": 56,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "FUNCTIONALLY_RELATED_TO",
+      "score": 0.11334770917892456
+    },
+    {
+      "case_id": "ADV-06",
+      "source_id": "A",
+      "relation_idx": 57,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "USES",
+      "score": 0.11273956298828125
+    },
+    {
+      "case_id": "ADV-06",
+      "source_id": "A",
+      "relation_idx": 58,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "FUNCTIONALLY_RELATED_TO",
+      "score": 0.11173979938030243
+    },
+    {
+      "case_id": "ADV-06",
+      "source_id": "A",
+      "relation_idx": 60,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "CAUSES",
+      "score": 0.10848406702280045
+    },
+    {
+      "case_id": "ADV-06",
+      "source_id": "A",
+      "relation_idx": 63,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "CAUSES",
+      "score": 0.10762400180101395
+    },
+    {
+      "case_id": "ADV-06",
+      "source_id": "A",
+      "relation_idx": 67,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "PRODUCES",
+      "score": 0.10086232423782349
+    },
+    {
+      "case_id": "ADV-06",
+      "source_id": "A",
+      "relation_idx": 69,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "PRODUCES",
+      "score": 0.09945917129516602
+    },
+    {
+      "case_id": "ADV-06",
+      "source_id": "A",
+      "relation_idx": 71,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "FUNCTIONALLY_RELATED_TO",
+      "score": 0.08692440390586853
+    },
+    {
+      "case_id": "ADV-06",
+      "source_id": "A",
+      "relation_idx": 76,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "FUNCTIONALLY_RELATED_TO",
+      "score": 0.07953918725252151
+    },
+    {
+      "case_id": "ADV-06",
+      "source_id": "A",
+      "relation_idx": 79,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "TRANSFORMS",
+      "score": 0.07432222366333008
+    },
+    {
+      "case_id": "ADV-06",
+      "source_id": "A",
+      "relation_idx": 80,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "USES",
+      "score": 0.07371824979782104
+    },
+    {
+      "case_id": "ADV-06",
+      "source_id": "A",
+      "relation_idx": 82,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "USES",
+      "score": 0.06913839280605316
+    },
+    {
+      "case_id": "ADV-06",
+      "source_id": "A",
+      "relation_idx": 83,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "GENERATES",
+      "score": 0.06884457916021347
+    },
+    {
+      "case_id": "ADV-06",
+      "source_id": "A",
+      "relation_idx": 84,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "FUNCTIONALLY_RELATED_TO",
+      "score": 0.06602586805820465
+    },
+    {
+      "case_id": "ADV-06",
+      "source_id": "A",
+      "relation_idx": 86,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "FUNCTIONALLY_RELATED_TO",
+      "score": 0.05999824404716492
+    },
+    {
+      "case_id": "ADV-06",
+      "source_id": "A",
+      "relation_idx": 88,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "TRANSFORMS",
+      "score": 0.05668221041560173
+    },
+    {
+      "case_id": "ADV-06",
+      "source_id": "A",
+      "relation_idx": 89,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "USES",
+      "score": 0.05561460554599762
+    },
+    {
+      "case_id": "ADV-06",
+      "source_id": "A",
+      "relation_idx": 92,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "GENERATES",
+      "score": 0.05292050912976265
+    },
+    {
+      "case_id": "ADV-06",
+      "source_id": "A",
+      "relation_idx": 93,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "TRANSFORMS",
+      "score": 0.05217998847365379
+    },
+    {
+      "case_id": "ADV-07",
+      "source_id": "A",
+      "relation_idx": 2,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "CAUSES",
+      "score": 0.24148818850517273
+    },
+    {
+      "case_id": "ADV-07",
+      "source_id": "A",
+      "relation_idx": 3,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "PRODUCES",
+      "score": 0.2348988950252533
+    },
+    {
+      "case_id": "ADV-07",
+      "source_id": "A",
+      "relation_idx": 6,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "PRODUCES",
+      "score": 0.2265147566795349
+    },
+    {
+      "case_id": "ADV-07",
+      "source_id": "A",
+      "relation_idx": 7,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "CAUSES",
+      "score": 0.22592264413833618
+    },
+    {
+      "case_id": "ADV-07",
+      "source_id": "A",
+      "relation_idx": 9,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "PRODUCES",
+      "score": 0.21775510907173157
+    },
+    {
+      "case_id": "ADV-07",
+      "source_id": "A",
+      "relation_idx": 10,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "PRODUCES",
+      "score": 0.21703526377677917
+    },
+    {
+      "case_id": "ADV-07",
+      "source_id": "A",
+      "relation_idx": 25,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "FUNCTIONALLY_RELATED_TO",
+      "score": 0.17829681932926178
+    },
+    {
+      "case_id": "ADV-07",
+      "source_id": "A",
+      "relation_idx": 27,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "CAUSES",
+      "score": 0.17245621979236603
+    },
+    {
+      "case_id": "ADV-07",
+      "source_id": "A",
+      "relation_idx": 28,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "FUNCTIONALLY_RELATED_TO",
+      "score": 0.17116792500019073
+    },
+    {
+      "case_id": "ADV-07",
+      "source_id": "A",
+      "relation_idx": 29,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "CAUSES",
+      "score": 0.1691388189792633
+    },
+    {
+      "case_id": "ADV-07",
+      "source_id": "A",
+      "relation_idx": 30,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "USES",
+      "score": 0.1537659466266632
+    },
+    {
+      "case_id": "ADV-07",
+      "source_id": "A",
+      "relation_idx": 31,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "GENERATES",
+      "score": 0.14830826222896576
+    },
+    {
+      "case_id": "ADV-07",
+      "source_id": "A",
+      "relation_idx": 33,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "CAUSES",
+      "score": 0.13827945291996002
+    },
+    {
+      "case_id": "ADV-07",
+      "source_id": "A",
+      "relation_idx": 34,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "TRANSFORMS",
+      "score": 0.1369961053133011
+    },
+    {
+      "case_id": "ADV-07",
+      "source_id": "A",
+      "relation_idx": 36,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "USES",
+      "score": 0.13598066568374634
+    },
+    {
+      "case_id": "ADV-07",
+      "source_id": "A",
+      "relation_idx": 37,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "CAUSES",
+      "score": 0.13233999907970428
+    },
+    {
+      "case_id": "ADV-07",
+      "source_id": "A",
+      "relation_idx": 39,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "GENERATES",
+      "score": 0.1314033716917038
+    },
+    {
+      "case_id": "ADV-07",
+      "source_id": "A",
+      "relation_idx": 46,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "PRODUCES",
+      "score": 0.12660613656044006
+    },
+    {
+      "case_id": "ADV-07",
+      "source_id": "A",
+      "relation_idx": 48,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "PRODUCES",
+      "score": 0.12393243610858917
+    },
+    {
+      "case_id": "ADV-07",
+      "source_id": "A",
+      "relation_idx": 49,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "USES",
+      "score": 0.12392541021108627
+    },
+    {
+      "case_id": "ADV-07",
+      "source_id": "A",
+      "relation_idx": 53,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "GENERATES",
+      "score": 0.11825723201036453
+    },
+    {
+      "case_id": "ADV-07",
+      "source_id": "A",
+      "relation_idx": 56,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "FUNCTIONALLY_RELATED_TO",
+      "score": 0.11334770917892456
+    },
+    {
+      "case_id": "ADV-07",
+      "source_id": "A",
+      "relation_idx": 57,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "USES",
+      "score": 0.11273956298828125
+    },
+    {
+      "case_id": "ADV-07",
+      "source_id": "A",
+      "relation_idx": 58,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "FUNCTIONALLY_RELATED_TO",
+      "score": 0.11173979938030243
+    },
+    {
+      "case_id": "ADV-07",
+      "source_id": "A",
+      "relation_idx": 60,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "CAUSES",
+      "score": 0.10848406702280045
+    },
+    {
+      "case_id": "ADV-07",
+      "source_id": "A",
+      "relation_idx": 63,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "CAUSES",
+      "score": 0.10762400180101395
+    },
+    {
+      "case_id": "ADV-07",
+      "source_id": "A",
+      "relation_idx": 67,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "PRODUCES",
+      "score": 0.10086232423782349
+    },
+    {
+      "case_id": "ADV-07",
+      "source_id": "A",
+      "relation_idx": 69,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "PRODUCES",
+      "score": 0.09945917129516602
+    },
+    {
+      "case_id": "ADV-07",
+      "source_id": "A",
+      "relation_idx": 71,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "FUNCTIONALLY_RELATED_TO",
+      "score": 0.08692440390586853
+    },
+    {
+      "case_id": "ADV-07",
+      "source_id": "A",
+      "relation_idx": 76,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "FUNCTIONALLY_RELATED_TO",
+      "score": 0.07953918725252151
+    },
+    {
+      "case_id": "ADV-07",
+      "source_id": "A",
+      "relation_idx": 79,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "TRANSFORMS",
+      "score": 0.07432222366333008
+    },
+    {
+      "case_id": "ADV-07",
+      "source_id": "A",
+      "relation_idx": 80,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "USES",
+      "score": 0.07371824979782104
+    },
+    {
+      "case_id": "ADV-07",
+      "source_id": "A",
+      "relation_idx": 82,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "USES",
+      "score": 0.06913839280605316
+    },
+    {
+      "case_id": "ADV-07",
+      "source_id": "A",
+      "relation_idx": 83,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "GENERATES",
+      "score": 0.06884457916021347
+    },
+    {
+      "case_id": "ADV-07",
+      "source_id": "A",
+      "relation_idx": 84,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "FUNCTIONALLY_RELATED_TO",
+      "score": 0.06602586805820465
+    },
+    {
+      "case_id": "ADV-07",
+      "source_id": "A",
+      "relation_idx": 86,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "FUNCTIONALLY_RELATED_TO",
+      "score": 0.05999824404716492
+    },
+    {
+      "case_id": "ADV-07",
+      "source_id": "A",
+      "relation_idx": 88,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "TRANSFORMS",
+      "score": 0.05668221041560173
+    },
+    {
+      "case_id": "ADV-07",
+      "source_id": "A",
+      "relation_idx": 89,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "USES",
+      "score": 0.05561460554599762
+    },
+    {
+      "case_id": "ADV-07",
+      "source_id": "A",
+      "relation_idx": 92,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "GENERATES",
+      "score": 0.05292050912976265
+    },
+    {
+      "case_id": "ADV-07",
+      "source_id": "A",
+      "relation_idx": 93,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "TRANSFORMS",
+      "score": 0.05217998847365379
+    },
+    {
+      "case_id": "ADV-08",
+      "source_id": "A",
+      "relation_idx": 2,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "CAUSES",
+      "score": 0.24148818850517273
+    },
+    {
+      "case_id": "ADV-08",
+      "source_id": "A",
+      "relation_idx": 3,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "PRODUCES",
+      "score": 0.2348988950252533
+    },
+    {
+      "case_id": "ADV-08",
+      "source_id": "A",
+      "relation_idx": 6,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "PRODUCES",
+      "score": 0.2265147566795349
+    },
+    {
+      "case_id": "ADV-08",
+      "source_id": "A",
+      "relation_idx": 7,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "CAUSES",
+      "score": 0.22592264413833618
+    },
+    {
+      "case_id": "ADV-08",
+      "source_id": "A",
+      "relation_idx": 9,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "PRODUCES",
+      "score": 0.21775510907173157
+    },
+    {
+      "case_id": "ADV-08",
+      "source_id": "A",
+      "relation_idx": 10,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "PRODUCES",
+      "score": 0.21703526377677917
+    },
+    {
+      "case_id": "ADV-08",
+      "source_id": "A",
+      "relation_idx": 25,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "FUNCTIONALLY_RELATED_TO",
+      "score": 0.17829681932926178
+    },
+    {
+      "case_id": "ADV-08",
+      "source_id": "A",
+      "relation_idx": 27,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "CAUSES",
+      "score": 0.17245621979236603
+    },
+    {
+      "case_id": "ADV-08",
+      "source_id": "A",
+      "relation_idx": 28,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "FUNCTIONALLY_RELATED_TO",
+      "score": 0.17116792500019073
+    },
+    {
+      "case_id": "ADV-08",
+      "source_id": "A",
+      "relation_idx": 29,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "CAUSES",
+      "score": 0.1691388189792633
+    },
+    {
+      "case_id": "ADV-08",
+      "source_id": "A",
+      "relation_idx": 30,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "USES",
+      "score": 0.1537659466266632
+    },
+    {
+      "case_id": "ADV-08",
+      "source_id": "A",
+      "relation_idx": 31,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "GENERATES",
+      "score": 0.14830826222896576
+    },
+    {
+      "case_id": "ADV-08",
+      "source_id": "A",
+      "relation_idx": 33,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "CAUSES",
+      "score": 0.13827945291996002
+    },
+    {
+      "case_id": "ADV-08",
+      "source_id": "A",
+      "relation_idx": 34,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "TRANSFORMS",
+      "score": 0.1369961053133011
+    },
+    {
+      "case_id": "ADV-08",
+      "source_id": "A",
+      "relation_idx": 36,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "USES",
+      "score": 0.13598066568374634
+    },
+    {
+      "case_id": "ADV-08",
+      "source_id": "A",
+      "relation_idx": 37,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "CAUSES",
+      "score": 0.13233999907970428
+    },
+    {
+      "case_id": "ADV-08",
+      "source_id": "A",
+      "relation_idx": 39,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "GENERATES",
+      "score": 0.1314033716917038
+    },
+    {
+      "case_id": "ADV-08",
+      "source_id": "A",
+      "relation_idx": 46,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "PRODUCES",
+      "score": 0.12660613656044006
+    },
+    {
+      "case_id": "ADV-08",
+      "source_id": "A",
+      "relation_idx": 48,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "PRODUCES",
+      "score": 0.12393243610858917
+    },
+    {
+      "case_id": "ADV-08",
+      "source_id": "A",
+      "relation_idx": 49,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "USES",
+      "score": 0.12392541021108627
+    },
+    {
+      "case_id": "ADV-08",
+      "source_id": "A",
+      "relation_idx": 53,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "GENERATES",
+      "score": 0.11825723201036453
+    },
+    {
+      "case_id": "ADV-08",
+      "source_id": "A",
+      "relation_idx": 56,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "FUNCTIONALLY_RELATED_TO",
+      "score": 0.11334770917892456
+    },
+    {
+      "case_id": "ADV-08",
+      "source_id": "A",
+      "relation_idx": 57,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "USES",
+      "score": 0.11273956298828125
+    },
+    {
+      "case_id": "ADV-08",
+      "source_id": "A",
+      "relation_idx": 58,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "FUNCTIONALLY_RELATED_TO",
+      "score": 0.11173979938030243
+    },
+    {
+      "case_id": "ADV-08",
+      "source_id": "A",
+      "relation_idx": 60,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "CAUSES",
+      "score": 0.10848406702280045
+    },
+    {
+      "case_id": "ADV-08",
+      "source_id": "A",
+      "relation_idx": 63,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "CAUSES",
+      "score": 0.10762400180101395
+    },
+    {
+      "case_id": "ADV-08",
+      "source_id": "A",
+      "relation_idx": 67,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "PRODUCES",
+      "score": 0.10086232423782349
+    },
+    {
+      "case_id": "ADV-08",
+      "source_id": "A",
+      "relation_idx": 69,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "PRODUCES",
+      "score": 0.09945917129516602
+    },
+    {
+      "case_id": "ADV-08",
+      "source_id": "A",
+      "relation_idx": 71,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "FUNCTIONALLY_RELATED_TO",
+      "score": 0.08692440390586853
+    },
+    {
+      "case_id": "ADV-08",
+      "source_id": "A",
+      "relation_idx": 76,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "FUNCTIONALLY_RELATED_TO",
+      "score": 0.07953918725252151
+    },
+    {
+      "case_id": "ADV-08",
+      "source_id": "A",
+      "relation_idx": 79,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "TRANSFORMS",
+      "score": 0.07432222366333008
+    },
+    {
+      "case_id": "ADV-08",
+      "source_id": "A",
+      "relation_idx": 80,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "USES",
+      "score": 0.07371824979782104
+    },
+    {
+      "case_id": "ADV-08",
+      "source_id": "A",
+      "relation_idx": 82,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "USES",
+      "score": 0.06913839280605316
+    },
+    {
+      "case_id": "ADV-08",
+      "source_id": "A",
+      "relation_idx": 83,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "GENERATES",
+      "score": 0.06884457916021347
+    },
+    {
+      "case_id": "ADV-08",
+      "source_id": "A",
+      "relation_idx": 84,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "FUNCTIONALLY_RELATED_TO",
+      "score": 0.06602586805820465
+    },
+    {
+      "case_id": "ADV-08",
+      "source_id": "A",
+      "relation_idx": 86,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "FUNCTIONALLY_RELATED_TO",
+      "score": 0.05999824404716492
+    },
+    {
+      "case_id": "ADV-08",
+      "source_id": "A",
+      "relation_idx": 88,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "TRANSFORMS",
+      "score": 0.05668221041560173
+    },
+    {
+      "case_id": "ADV-08",
+      "source_id": "A",
+      "relation_idx": 89,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "USES",
+      "score": 0.05561460554599762
+    },
+    {
+      "case_id": "ADV-08",
+      "source_id": "A",
+      "relation_idx": 92,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "GENERATES",
+      "score": 0.05292050912976265
+    },
+    {
+      "case_id": "ADV-08",
+      "source_id": "A",
+      "relation_idx": 93,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "TRANSFORMS",
+      "score": 0.05217998847365379
+    },
+    {
+      "case_id": "ADV-09",
+      "source_id": "A",
+      "relation_idx": 2,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "CAUSES",
+      "score": 0.24148818850517273
+    },
+    {
+      "case_id": "ADV-09",
+      "source_id": "A",
+      "relation_idx": 3,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "PRODUCES",
+      "score": 0.2348988950252533
+    },
+    {
+      "case_id": "ADV-09",
+      "source_id": "A",
+      "relation_idx": 6,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "PRODUCES",
+      "score": 0.2265147566795349
+    },
+    {
+      "case_id": "ADV-09",
+      "source_id": "A",
+      "relation_idx": 7,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "CAUSES",
+      "score": 0.22592264413833618
+    },
+    {
+      "case_id": "ADV-09",
+      "source_id": "A",
+      "relation_idx": 9,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "PRODUCES",
+      "score": 0.21775510907173157
+    },
+    {
+      "case_id": "ADV-09",
+      "source_id": "A",
+      "relation_idx": 10,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "PRODUCES",
+      "score": 0.21703526377677917
+    },
+    {
+      "case_id": "ADV-09",
+      "source_id": "A",
+      "relation_idx": 25,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "FUNCTIONALLY_RELATED_TO",
+      "score": 0.17829681932926178
+    },
+    {
+      "case_id": "ADV-09",
+      "source_id": "A",
+      "relation_idx": 27,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "CAUSES",
+      "score": 0.17245621979236603
+    },
+    {
+      "case_id": "ADV-09",
+      "source_id": "A",
+      "relation_idx": 28,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "FUNCTIONALLY_RELATED_TO",
+      "score": 0.17116792500019073
+    },
+    {
+      "case_id": "ADV-09",
+      "source_id": "A",
+      "relation_idx": 29,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "CAUSES",
+      "score": 0.1691388189792633
+    },
+    {
+      "case_id": "ADV-09",
+      "source_id": "A",
+      "relation_idx": 30,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "USES",
+      "score": 0.1537659466266632
+    },
+    {
+      "case_id": "ADV-09",
+      "source_id": "A",
+      "relation_idx": 31,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "GENERATES",
+      "score": 0.14830826222896576
+    },
+    {
+      "case_id": "ADV-09",
+      "source_id": "A",
+      "relation_idx": 33,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "CAUSES",
+      "score": 0.13827945291996002
+    },
+    {
+      "case_id": "ADV-09",
+      "source_id": "A",
+      "relation_idx": 34,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "TRANSFORMS",
+      "score": 0.1369961053133011
+    },
+    {
+      "case_id": "ADV-09",
+      "source_id": "A",
+      "relation_idx": 36,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "USES",
+      "score": 0.13598066568374634
+    },
+    {
+      "case_id": "ADV-09",
+      "source_id": "A",
+      "relation_idx": 37,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "CAUSES",
+      "score": 0.13233999907970428
+    },
+    {
+      "case_id": "ADV-09",
+      "source_id": "A",
+      "relation_idx": 39,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "GENERATES",
+      "score": 0.1314033716917038
+    },
+    {
+      "case_id": "ADV-09",
+      "source_id": "A",
+      "relation_idx": 46,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "PRODUCES",
+      "score": 0.12660613656044006
+    },
+    {
+      "case_id": "ADV-09",
+      "source_id": "A",
+      "relation_idx": 48,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "PRODUCES",
+      "score": 0.12393243610858917
+    },
+    {
+      "case_id": "ADV-09",
+      "source_id": "A",
+      "relation_idx": 49,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "USES",
+      "score": 0.12392541021108627
+    },
+    {
+      "case_id": "ADV-09",
+      "source_id": "A",
+      "relation_idx": 53,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "GENERATES",
+      "score": 0.11825723201036453
+    },
+    {
+      "case_id": "ADV-09",
+      "source_id": "A",
+      "relation_idx": 56,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "FUNCTIONALLY_RELATED_TO",
+      "score": 0.11334770917892456
+    },
+    {
+      "case_id": "ADV-09",
+      "source_id": "A",
+      "relation_idx": 57,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "USES",
+      "score": 0.11273956298828125
+    },
+    {
+      "case_id": "ADV-09",
+      "source_id": "A",
+      "relation_idx": 58,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "FUNCTIONALLY_RELATED_TO",
+      "score": 0.11173979938030243
+    },
+    {
+      "case_id": "ADV-09",
+      "source_id": "A",
+      "relation_idx": 60,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "CAUSES",
+      "score": 0.10848406702280045
+    },
+    {
+      "case_id": "ADV-09",
+      "source_id": "A",
+      "relation_idx": 63,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "CAUSES",
+      "score": 0.10762400180101395
+    },
+    {
+      "case_id": "ADV-09",
+      "source_id": "A",
+      "relation_idx": 67,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "PRODUCES",
+      "score": 0.10086232423782349
+    },
+    {
+      "case_id": "ADV-09",
+      "source_id": "A",
+      "relation_idx": 69,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "PRODUCES",
+      "score": 0.09945917129516602
+    },
+    {
+      "case_id": "ADV-09",
+      "source_id": "A",
+      "relation_idx": 71,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "FUNCTIONALLY_RELATED_TO",
+      "score": 0.08692440390586853
+    },
+    {
+      "case_id": "ADV-09",
+      "source_id": "A",
+      "relation_idx": 76,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "FUNCTIONALLY_RELATED_TO",
+      "score": 0.07953918725252151
+    },
+    {
+      "case_id": "ADV-09",
+      "source_id": "A",
+      "relation_idx": 79,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "TRANSFORMS",
+      "score": 0.07432222366333008
+    },
+    {
+      "case_id": "ADV-09",
+      "source_id": "A",
+      "relation_idx": 80,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "USES",
+      "score": 0.07371824979782104
+    },
+    {
+      "case_id": "ADV-09",
+      "source_id": "A",
+      "relation_idx": 82,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "USES",
+      "score": 0.06913839280605316
+    },
+    {
+      "case_id": "ADV-09",
+      "source_id": "A",
+      "relation_idx": 83,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "GENERATES",
+      "score": 0.06884457916021347
+    },
+    {
+      "case_id": "ADV-09",
+      "source_id": "A",
+      "relation_idx": 84,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "FUNCTIONALLY_RELATED_TO",
+      "score": 0.06602586805820465
+    },
+    {
+      "case_id": "ADV-09",
+      "source_id": "A",
+      "relation_idx": 86,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "FUNCTIONALLY_RELATED_TO",
+      "score": 0.05999824404716492
+    },
+    {
+      "case_id": "ADV-09",
+      "source_id": "A",
+      "relation_idx": 88,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "TRANSFORMS",
+      "score": 0.05668221041560173
+    },
+    {
+      "case_id": "ADV-09",
+      "source_id": "A",
+      "relation_idx": 89,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "USES",
+      "score": 0.05561460554599762
+    },
+    {
+      "case_id": "ADV-09",
+      "source_id": "A",
+      "relation_idx": 92,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "GENERATES",
+      "score": 0.05292050912976265
+    },
+    {
+      "case_id": "ADV-09",
+      "source_id": "A",
+      "relation_idx": 93,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "TRANSFORMS",
+      "score": 0.05217998847365379
+    },
+    {
+      "case_id": "ADV-10",
+      "source_id": "A",
+      "relation_idx": 2,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "CAUSES",
+      "score": 0.24148818850517273
+    },
+    {
+      "case_id": "ADV-10",
+      "source_id": "A",
+      "relation_idx": 3,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "PRODUCES",
+      "score": 0.2348988950252533
+    },
+    {
+      "case_id": "ADV-10",
+      "source_id": "A",
+      "relation_idx": 6,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "PRODUCES",
+      "score": 0.2265147566795349
+    },
+    {
+      "case_id": "ADV-10",
+      "source_id": "A",
+      "relation_idx": 7,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "CAUSES",
+      "score": 0.22592264413833618
+    },
+    {
+      "case_id": "ADV-10",
+      "source_id": "A",
+      "relation_idx": 9,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "PRODUCES",
+      "score": 0.21775510907173157
+    },
+    {
+      "case_id": "ADV-10",
+      "source_id": "A",
+      "relation_idx": 10,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "PRODUCES",
+      "score": 0.21703526377677917
+    },
+    {
+      "case_id": "ADV-10",
+      "source_id": "A",
+      "relation_idx": 25,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "FUNCTIONALLY_RELATED_TO",
+      "score": 0.17829681932926178
+    },
+    {
+      "case_id": "ADV-10",
+      "source_id": "A",
+      "relation_idx": 27,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "CAUSES",
+      "score": 0.17245621979236603
+    },
+    {
+      "case_id": "ADV-10",
+      "source_id": "A",
+      "relation_idx": 28,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "FUNCTIONALLY_RELATED_TO",
+      "score": 0.17116792500019073
+    },
+    {
+      "case_id": "ADV-10",
+      "source_id": "A",
+      "relation_idx": 29,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "CAUSES",
+      "score": 0.1691388189792633
+    },
+    {
+      "case_id": "ADV-10",
+      "source_id": "A",
+      "relation_idx": 30,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "USES",
+      "score": 0.1537659466266632
+    },
+    {
+      "case_id": "ADV-10",
+      "source_id": "A",
+      "relation_idx": 31,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "GENERATES",
+      "score": 0.14830826222896576
+    },
+    {
+      "case_id": "ADV-10",
+      "source_id": "A",
+      "relation_idx": 33,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "CAUSES",
+      "score": 0.13827945291996002
+    },
+    {
+      "case_id": "ADV-10",
+      "source_id": "A",
+      "relation_idx": 34,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "TRANSFORMS",
+      "score": 0.1369961053133011
+    },
+    {
+      "case_id": "ADV-10",
+      "source_id": "A",
+      "relation_idx": 36,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "USES",
+      "score": 0.13598066568374634
+    },
+    {
+      "case_id": "ADV-10",
+      "source_id": "A",
+      "relation_idx": 37,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "CAUSES",
+      "score": 0.13233999907970428
+    },
+    {
+      "case_id": "ADV-10",
+      "source_id": "A",
+      "relation_idx": 39,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "GENERATES",
+      "score": 0.1314033716917038
+    },
+    {
+      "case_id": "ADV-10",
+      "source_id": "A",
+      "relation_idx": 46,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "PRODUCES",
+      "score": 0.12660613656044006
+    },
+    {
+      "case_id": "ADV-10",
+      "source_id": "A",
+      "relation_idx": 48,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "PRODUCES",
+      "score": 0.12393243610858917
+    },
+    {
+      "case_id": "ADV-10",
+      "source_id": "A",
+      "relation_idx": 49,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "USES",
+      "score": 0.12392541021108627
+    },
+    {
+      "case_id": "ADV-10",
+      "source_id": "A",
+      "relation_idx": 53,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "GENERATES",
+      "score": 0.11825723201036453
+    },
+    {
+      "case_id": "ADV-10",
+      "source_id": "A",
+      "relation_idx": 56,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "FUNCTIONALLY_RELATED_TO",
+      "score": 0.11334770917892456
+    },
+    {
+      "case_id": "ADV-10",
+      "source_id": "A",
+      "relation_idx": 57,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "USES",
+      "score": 0.11273956298828125
+    },
+    {
+      "case_id": "ADV-10",
+      "source_id": "A",
+      "relation_idx": 58,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "FUNCTIONALLY_RELATED_TO",
+      "score": 0.11173979938030243
+    },
+    {
+      "case_id": "ADV-10",
+      "source_id": "A",
+      "relation_idx": 60,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "CAUSES",
+      "score": 0.10848406702280045
+    },
+    {
+      "case_id": "ADV-10",
+      "source_id": "A",
+      "relation_idx": 63,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "CAUSES",
+      "score": 0.10762400180101395
+    },
+    {
+      "case_id": "ADV-10",
+      "source_id": "A",
+      "relation_idx": 67,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "PRODUCES",
+      "score": 0.10086232423782349
+    },
+    {
+      "case_id": "ADV-10",
+      "source_id": "A",
+      "relation_idx": 69,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "PRODUCES",
+      "score": 0.09945917129516602
+    },
+    {
+      "case_id": "ADV-10",
+      "source_id": "A",
+      "relation_idx": 71,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "FUNCTIONALLY_RELATED_TO",
+      "score": 0.08692440390586853
+    },
+    {
+      "case_id": "ADV-10",
+      "source_id": "A",
+      "relation_idx": 76,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "FUNCTIONALLY_RELATED_TO",
+      "score": 0.07953918725252151
+    },
+    {
+      "case_id": "ADV-10",
+      "source_id": "A",
+      "relation_idx": 79,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "TRANSFORMS",
+      "score": 0.07432222366333008
+    },
+    {
+      "case_id": "ADV-10",
+      "source_id": "A",
+      "relation_idx": 80,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "USES",
+      "score": 0.07371824979782104
+    },
+    {
+      "case_id": "ADV-10",
+      "source_id": "A",
+      "relation_idx": 82,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "USES",
+      "score": 0.06913839280605316
+    },
+    {
+      "case_id": "ADV-10",
+      "source_id": "A",
+      "relation_idx": 83,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "GENERATES",
+      "score": 0.06884457916021347
+    },
+    {
+      "case_id": "ADV-10",
+      "source_id": "A",
+      "relation_idx": 84,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "FUNCTIONALLY_RELATED_TO",
+      "score": 0.06602586805820465
+    },
+    {
+      "case_id": "ADV-10",
+      "source_id": "A",
+      "relation_idx": 86,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "FUNCTIONALLY_RELATED_TO",
+      "score": 0.05999824404716492
+    },
+    {
+      "case_id": "ADV-10",
+      "source_id": "A",
+      "relation_idx": 88,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "TRANSFORMS",
+      "score": 0.05668221041560173
+    },
+    {
+      "case_id": "ADV-10",
+      "source_id": "A",
+      "relation_idx": 89,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "USES",
+      "score": 0.05561460554599762
+    },
+    {
+      "case_id": "ADV-10",
+      "source_id": "A",
+      "relation_idx": 92,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "GENERATES",
+      "score": 0.05292050912976265
+    },
+    {
+      "case_id": "ADV-10",
+      "source_id": "A",
+      "relation_idx": 93,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "TRANSFORMS",
+      "score": 0.05217998847365379
+    },
+    {
+      "case_id": "ADV-11",
+      "source_id": "A",
+      "relation_idx": 2,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "CAUSES",
+      "score": 0.24148818850517273
+    },
+    {
+      "case_id": "ADV-11",
+      "source_id": "A",
+      "relation_idx": 3,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "PRODUCES",
+      "score": 0.2348988950252533
+    },
+    {
+      "case_id": "ADV-11",
+      "source_id": "A",
+      "relation_idx": 6,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "PRODUCES",
+      "score": 0.2265147566795349
+    },
+    {
+      "case_id": "ADV-11",
+      "source_id": "A",
+      "relation_idx": 7,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "CAUSES",
+      "score": 0.22592264413833618
+    },
+    {
+      "case_id": "ADV-11",
+      "source_id": "A",
+      "relation_idx": 9,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "PRODUCES",
+      "score": 0.21775510907173157
+    },
+    {
+      "case_id": "ADV-11",
+      "source_id": "A",
+      "relation_idx": 10,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "PRODUCES",
+      "score": 0.21703526377677917
+    },
+    {
+      "case_id": "ADV-11",
+      "source_id": "A",
+      "relation_idx": 25,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "FUNCTIONALLY_RELATED_TO",
+      "score": 0.17829681932926178
+    },
+    {
+      "case_id": "ADV-11",
+      "source_id": "A",
+      "relation_idx": 27,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "CAUSES",
+      "score": 0.17245621979236603
+    },
+    {
+      "case_id": "ADV-11",
+      "source_id": "A",
+      "relation_idx": 28,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "FUNCTIONALLY_RELATED_TO",
+      "score": 0.17116792500019073
+    },
+    {
+      "case_id": "ADV-11",
+      "source_id": "A",
+      "relation_idx": 29,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "CAUSES",
+      "score": 0.1691388189792633
+    },
+    {
+      "case_id": "ADV-11",
+      "source_id": "A",
+      "relation_idx": 30,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "USES",
+      "score": 0.1537659466266632
+    },
+    {
+      "case_id": "ADV-11",
+      "source_id": "A",
+      "relation_idx": 31,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "GENERATES",
+      "score": 0.14830826222896576
+    },
+    {
+      "case_id": "ADV-11",
+      "source_id": "A",
+      "relation_idx": 33,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "CAUSES",
+      "score": 0.13827945291996002
+    },
+    {
+      "case_id": "ADV-11",
+      "source_id": "A",
+      "relation_idx": 34,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "TRANSFORMS",
+      "score": 0.1369961053133011
+    },
+    {
+      "case_id": "ADV-11",
+      "source_id": "A",
+      "relation_idx": 36,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "USES",
+      "score": 0.13598066568374634
+    },
+    {
+      "case_id": "ADV-11",
+      "source_id": "A",
+      "relation_idx": 37,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "CAUSES",
+      "score": 0.13233999907970428
+    },
+    {
+      "case_id": "ADV-11",
+      "source_id": "A",
+      "relation_idx": 39,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "GENERATES",
+      "score": 0.1314033716917038
+    },
+    {
+      "case_id": "ADV-11",
+      "source_id": "A",
+      "relation_idx": 46,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "PRODUCES",
+      "score": 0.12660613656044006
+    },
+    {
+      "case_id": "ADV-11",
+      "source_id": "A",
+      "relation_idx": 48,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "PRODUCES",
+      "score": 0.12393243610858917
+    },
+    {
+      "case_id": "ADV-11",
+      "source_id": "A",
+      "relation_idx": 49,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "USES",
+      "score": 0.12392541021108627
+    },
+    {
+      "case_id": "ADV-11",
+      "source_id": "A",
+      "relation_idx": 53,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "GENERATES",
+      "score": 0.11825723201036453
+    },
+    {
+      "case_id": "ADV-11",
+      "source_id": "A",
+      "relation_idx": 56,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "FUNCTIONALLY_RELATED_TO",
+      "score": 0.11334770917892456
+    },
+    {
+      "case_id": "ADV-11",
+      "source_id": "A",
+      "relation_idx": 57,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "USES",
+      "score": 0.11273956298828125
+    },
+    {
+      "case_id": "ADV-11",
+      "source_id": "A",
+      "relation_idx": 58,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "FUNCTIONALLY_RELATED_TO",
+      "score": 0.11173979938030243
+    },
+    {
+      "case_id": "ADV-11",
+      "source_id": "A",
+      "relation_idx": 60,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "CAUSES",
+      "score": 0.10848406702280045
+    },
+    {
+      "case_id": "ADV-11",
+      "source_id": "A",
+      "relation_idx": 63,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "CAUSES",
+      "score": 0.10762400180101395
+    },
+    {
+      "case_id": "ADV-11",
+      "source_id": "A",
+      "relation_idx": 67,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "PRODUCES",
+      "score": 0.10086232423782349
+    },
+    {
+      "case_id": "ADV-11",
+      "source_id": "A",
+      "relation_idx": 69,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "PRODUCES",
+      "score": 0.09945917129516602
+    },
+    {
+      "case_id": "ADV-11",
+      "source_id": "A",
+      "relation_idx": 71,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "FUNCTIONALLY_RELATED_TO",
+      "score": 0.08692440390586853
+    },
+    {
+      "case_id": "ADV-11",
+      "source_id": "A",
+      "relation_idx": 76,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "FUNCTIONALLY_RELATED_TO",
+      "score": 0.07953918725252151
+    },
+    {
+      "case_id": "ADV-11",
+      "source_id": "A",
+      "relation_idx": 79,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "TRANSFORMS",
+      "score": 0.07432222366333008
+    },
+    {
+      "case_id": "ADV-11",
+      "source_id": "A",
+      "relation_idx": 80,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "USES",
+      "score": 0.07371824979782104
+    },
+    {
+      "case_id": "ADV-11",
+      "source_id": "A",
+      "relation_idx": 82,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "USES",
+      "score": 0.06913839280605316
+    },
+    {
+      "case_id": "ADV-11",
+      "source_id": "A",
+      "relation_idx": 83,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "GENERATES",
+      "score": 0.06884457916021347
+    },
+    {
+      "case_id": "ADV-11",
+      "source_id": "A",
+      "relation_idx": 84,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "FUNCTIONALLY_RELATED_TO",
+      "score": 0.06602586805820465
+    },
+    {
+      "case_id": "ADV-11",
+      "source_id": "A",
+      "relation_idx": 86,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "FUNCTIONALLY_RELATED_TO",
+      "score": 0.05999824404716492
+    },
+    {
+      "case_id": "ADV-11",
+      "source_id": "A",
+      "relation_idx": 88,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "TRANSFORMS",
+      "score": 0.05668221041560173
+    },
+    {
+      "case_id": "ADV-11",
+      "source_id": "A",
+      "relation_idx": 89,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "USES",
+      "score": 0.05561460554599762
+    },
+    {
+      "case_id": "ADV-11",
+      "source_id": "A",
+      "relation_idx": 92,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "GENERATES",
+      "score": 0.05292050912976265
+    },
+    {
+      "case_id": "ADV-11",
+      "source_id": "A",
+      "relation_idx": 93,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "TRANSFORMS",
+      "score": 0.05217998847365379
+    },
+    {
+      "case_id": "ADV-12",
+      "source_id": "A",
+      "relation_idx": 2,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "CAUSES",
+      "score": 0.24148818850517273
+    },
+    {
+      "case_id": "ADV-12",
+      "source_id": "A",
+      "relation_idx": 3,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "PRODUCES",
+      "score": 0.2348988950252533
+    },
+    {
+      "case_id": "ADV-12",
+      "source_id": "A",
+      "relation_idx": 6,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "PRODUCES",
+      "score": 0.2265147566795349
+    },
+    {
+      "case_id": "ADV-12",
+      "source_id": "A",
+      "relation_idx": 7,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "CAUSES",
+      "score": 0.22592264413833618
+    },
+    {
+      "case_id": "ADV-12",
+      "source_id": "A",
+      "relation_idx": 9,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "PRODUCES",
+      "score": 0.21775510907173157
+    },
+    {
+      "case_id": "ADV-12",
+      "source_id": "A",
+      "relation_idx": 10,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "PRODUCES",
+      "score": 0.21703526377677917
+    },
+    {
+      "case_id": "ADV-12",
+      "source_id": "A",
+      "relation_idx": 25,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "FUNCTIONALLY_RELATED_TO",
+      "score": 0.17829681932926178
+    },
+    {
+      "case_id": "ADV-12",
+      "source_id": "A",
+      "relation_idx": 27,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "CAUSES",
+      "score": 0.17245621979236603
+    },
+    {
+      "case_id": "ADV-12",
+      "source_id": "A",
+      "relation_idx": 28,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "FUNCTIONALLY_RELATED_TO",
+      "score": 0.17116792500019073
+    },
+    {
+      "case_id": "ADV-12",
+      "source_id": "A",
+      "relation_idx": 29,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "CAUSES",
+      "score": 0.1691388189792633
+    },
+    {
+      "case_id": "ADV-12",
+      "source_id": "A",
+      "relation_idx": 30,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "USES",
+      "score": 0.1537659466266632
+    },
+    {
+      "case_id": "ADV-12",
+      "source_id": "A",
+      "relation_idx": 31,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "GENERATES",
+      "score": 0.14830826222896576
+    },
+    {
+      "case_id": "ADV-12",
+      "source_id": "A",
+      "relation_idx": 33,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "CAUSES",
+      "score": 0.13827945291996002
+    },
+    {
+      "case_id": "ADV-12",
+      "source_id": "A",
+      "relation_idx": 34,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "TRANSFORMS",
+      "score": 0.1369961053133011
+    },
+    {
+      "case_id": "ADV-12",
+      "source_id": "A",
+      "relation_idx": 36,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "USES",
+      "score": 0.13598066568374634
+    },
+    {
+      "case_id": "ADV-12",
+      "source_id": "A",
+      "relation_idx": 37,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "CAUSES",
+      "score": 0.13233999907970428
+    },
+    {
+      "case_id": "ADV-12",
+      "source_id": "A",
+      "relation_idx": 39,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "GENERATES",
+      "score": 0.1314033716917038
+    },
+    {
+      "case_id": "ADV-12",
+      "source_id": "A",
+      "relation_idx": 46,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "PRODUCES",
+      "score": 0.12660613656044006
+    },
+    {
+      "case_id": "ADV-12",
+      "source_id": "A",
+      "relation_idx": 48,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "PRODUCES",
+      "score": 0.12393243610858917
+    },
+    {
+      "case_id": "ADV-12",
+      "source_id": "A",
+      "relation_idx": 49,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "USES",
+      "score": 0.12392541021108627
+    },
+    {
+      "case_id": "ADV-12",
+      "source_id": "A",
+      "relation_idx": 53,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "GENERATES",
+      "score": 0.11825723201036453
+    },
+    {
+      "case_id": "ADV-12",
+      "source_id": "A",
+      "relation_idx": 56,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "FUNCTIONALLY_RELATED_TO",
+      "score": 0.11334770917892456
+    },
+    {
+      "case_id": "ADV-12",
+      "source_id": "A",
+      "relation_idx": 57,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "USES",
+      "score": 0.11273956298828125
+    },
+    {
+      "case_id": "ADV-12",
+      "source_id": "A",
+      "relation_idx": 58,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "FUNCTIONALLY_RELATED_TO",
+      "score": 0.11173979938030243
+    },
+    {
+      "case_id": "ADV-12",
+      "source_id": "A",
+      "relation_idx": 60,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "CAUSES",
+      "score": 0.10848406702280045
+    },
+    {
+      "case_id": "ADV-12",
+      "source_id": "A",
+      "relation_idx": 63,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "CAUSES",
+      "score": 0.10762400180101395
+    },
+    {
+      "case_id": "ADV-12",
+      "source_id": "A",
+      "relation_idx": 67,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "PRODUCES",
+      "score": 0.10086232423782349
+    },
+    {
+      "case_id": "ADV-12",
+      "source_id": "A",
+      "relation_idx": 69,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "PRODUCES",
+      "score": 0.09945917129516602
+    },
+    {
+      "case_id": "ADV-12",
+      "source_id": "A",
+      "relation_idx": 71,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "FUNCTIONALLY_RELATED_TO",
+      "score": 0.08692440390586853
+    },
+    {
+      "case_id": "ADV-12",
+      "source_id": "A",
+      "relation_idx": 76,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "FUNCTIONALLY_RELATED_TO",
+      "score": 0.07953918725252151
+    },
+    {
+      "case_id": "ADV-12",
+      "source_id": "A",
+      "relation_idx": 79,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "TRANSFORMS",
+      "score": 0.07432222366333008
+    },
+    {
+      "case_id": "ADV-12",
+      "source_id": "A",
+      "relation_idx": 80,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "USES",
+      "score": 0.07371824979782104
+    },
+    {
+      "case_id": "ADV-12",
+      "source_id": "A",
+      "relation_idx": 82,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "USES",
+      "score": 0.06913839280605316
+    },
+    {
+      "case_id": "ADV-12",
+      "source_id": "A",
+      "relation_idx": 83,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "GENERATES",
+      "score": 0.06884457916021347
+    },
+    {
+      "case_id": "ADV-12",
+      "source_id": "A",
+      "relation_idx": 84,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "FUNCTIONALLY_RELATED_TO",
+      "score": 0.06602586805820465
+    },
+    {
+      "case_id": "ADV-12",
+      "source_id": "A",
+      "relation_idx": 86,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "FUNCTIONALLY_RELATED_TO",
+      "score": 0.05999824404716492
+    },
+    {
+      "case_id": "ADV-12",
+      "source_id": "A",
+      "relation_idx": 88,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "TRANSFORMS",
+      "score": 0.05668221041560173
+    },
+    {
+      "case_id": "ADV-12",
+      "source_id": "A",
+      "relation_idx": 89,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "USES",
+      "score": 0.05561460554599762
+    },
+    {
+      "case_id": "ADV-12",
+      "source_id": "A",
+      "relation_idx": 92,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "GENERATES",
+      "score": 0.05292050912976265
+    },
+    {
+      "case_id": "ADV-12",
+      "source_id": "A",
+      "relation_idx": 93,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "TRANSFORMS",
+      "score": 0.05217998847365379
+    },
+    {
+      "case_id": "ADV-13",
+      "source_id": "A",
+      "relation_idx": 2,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "CAUSES",
+      "score": 0.24148818850517273
+    },
+    {
+      "case_id": "ADV-13",
+      "source_id": "A",
+      "relation_idx": 3,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "PRODUCES",
+      "score": 0.2348988950252533
+    },
+    {
+      "case_id": "ADV-13",
+      "source_id": "A",
+      "relation_idx": 6,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "PRODUCES",
+      "score": 0.2265147566795349
+    },
+    {
+      "case_id": "ADV-13",
+      "source_id": "A",
+      "relation_idx": 7,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "CAUSES",
+      "score": 0.22592264413833618
+    },
+    {
+      "case_id": "ADV-13",
+      "source_id": "A",
+      "relation_idx": 9,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "PRODUCES",
+      "score": 0.21775510907173157
+    },
+    {
+      "case_id": "ADV-13",
+      "source_id": "A",
+      "relation_idx": 10,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "PRODUCES",
+      "score": 0.21703526377677917
+    },
+    {
+      "case_id": "ADV-13",
+      "source_id": "A",
+      "relation_idx": 25,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "FUNCTIONALLY_RELATED_TO",
+      "score": 0.17829681932926178
+    },
+    {
+      "case_id": "ADV-13",
+      "source_id": "A",
+      "relation_idx": 27,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "CAUSES",
+      "score": 0.17245621979236603
+    },
+    {
+      "case_id": "ADV-13",
+      "source_id": "A",
+      "relation_idx": 28,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "FUNCTIONALLY_RELATED_TO",
+      "score": 0.17116792500019073
+    },
+    {
+      "case_id": "ADV-13",
+      "source_id": "A",
+      "relation_idx": 29,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "CAUSES",
+      "score": 0.1691388189792633
+    },
+    {
+      "case_id": "ADV-13",
+      "source_id": "A",
+      "relation_idx": 30,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "USES",
+      "score": 0.1537659466266632
+    },
+    {
+      "case_id": "ADV-13",
+      "source_id": "A",
+      "relation_idx": 31,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "GENERATES",
+      "score": 0.14830826222896576
+    },
+    {
+      "case_id": "ADV-13",
+      "source_id": "A",
+      "relation_idx": 33,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "CAUSES",
+      "score": 0.13827945291996002
+    },
+    {
+      "case_id": "ADV-13",
+      "source_id": "A",
+      "relation_idx": 34,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "TRANSFORMS",
+      "score": 0.1369961053133011
+    },
+    {
+      "case_id": "ADV-13",
+      "source_id": "A",
+      "relation_idx": 36,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "USES",
+      "score": 0.13598066568374634
+    },
+    {
+      "case_id": "ADV-13",
+      "source_id": "A",
+      "relation_idx": 37,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "CAUSES",
+      "score": 0.13233999907970428
+    },
+    {
+      "case_id": "ADV-13",
+      "source_id": "A",
+      "relation_idx": 39,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "GENERATES",
+      "score": 0.1314033716917038
+    },
+    {
+      "case_id": "ADV-13",
+      "source_id": "A",
+      "relation_idx": 46,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "PRODUCES",
+      "score": 0.12660613656044006
+    },
+    {
+      "case_id": "ADV-13",
+      "source_id": "A",
+      "relation_idx": 48,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "PRODUCES",
+      "score": 0.12393243610858917
+    },
+    {
+      "case_id": "ADV-13",
+      "source_id": "A",
+      "relation_idx": 49,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "USES",
+      "score": 0.12392541021108627
+    },
+    {
+      "case_id": "ADV-13",
+      "source_id": "A",
+      "relation_idx": 53,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "GENERATES",
+      "score": 0.11825723201036453
+    },
+    {
+      "case_id": "ADV-13",
+      "source_id": "A",
+      "relation_idx": 56,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "FUNCTIONALLY_RELATED_TO",
+      "score": 0.11334770917892456
+    },
+    {
+      "case_id": "ADV-13",
+      "source_id": "A",
+      "relation_idx": 57,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "USES",
+      "score": 0.11273956298828125
+    },
+    {
+      "case_id": "ADV-13",
+      "source_id": "A",
+      "relation_idx": 58,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "FUNCTIONALLY_RELATED_TO",
+      "score": 0.11173979938030243
+    },
+    {
+      "case_id": "ADV-13",
+      "source_id": "A",
+      "relation_idx": 60,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "CAUSES",
+      "score": 0.10848406702280045
+    },
+    {
+      "case_id": "ADV-13",
+      "source_id": "A",
+      "relation_idx": 63,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "CAUSES",
+      "score": 0.10762400180101395
+    },
+    {
+      "case_id": "ADV-13",
+      "source_id": "A",
+      "relation_idx": 67,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "PRODUCES",
+      "score": 0.10086232423782349
+    },
+    {
+      "case_id": "ADV-13",
+      "source_id": "A",
+      "relation_idx": 69,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "PRODUCES",
+      "score": 0.09945917129516602
+    },
+    {
+      "case_id": "ADV-13",
+      "source_id": "A",
+      "relation_idx": 71,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "FUNCTIONALLY_RELATED_TO",
+      "score": 0.08692440390586853
+    },
+    {
+      "case_id": "ADV-13",
+      "source_id": "A",
+      "relation_idx": 76,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "FUNCTIONALLY_RELATED_TO",
+      "score": 0.07953918725252151
+    },
+    {
+      "case_id": "ADV-13",
+      "source_id": "A",
+      "relation_idx": 79,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "TRANSFORMS",
+      "score": 0.07432222366333008
+    },
+    {
+      "case_id": "ADV-13",
+      "source_id": "A",
+      "relation_idx": 80,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "USES",
+      "score": 0.07371824979782104
+    },
+    {
+      "case_id": "ADV-13",
+      "source_id": "A",
+      "relation_idx": 82,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "USES",
+      "score": 0.06913839280605316
+    },
+    {
+      "case_id": "ADV-13",
+      "source_id": "A",
+      "relation_idx": 83,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "GENERATES",
+      "score": 0.06884457916021347
+    },
+    {
+      "case_id": "ADV-13",
+      "source_id": "A",
+      "relation_idx": 84,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "FUNCTIONALLY_RELATED_TO",
+      "score": 0.06602586805820465
+    },
+    {
+      "case_id": "ADV-13",
+      "source_id": "A",
+      "relation_idx": 86,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "FUNCTIONALLY_RELATED_TO",
+      "score": 0.05999824404716492
+    },
+    {
+      "case_id": "ADV-13",
+      "source_id": "A",
+      "relation_idx": 88,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "TRANSFORMS",
+      "score": 0.05668221041560173
+    },
+    {
+      "case_id": "ADV-13",
+      "source_id": "A",
+      "relation_idx": 89,
+      "side": "tail",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "USES",
+      "score": 0.05561460554599762
+    },
+    {
+      "case_id": "ADV-13",
+      "source_id": "A",
+      "relation_idx": 92,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "GENERATES",
+      "score": 0.05292050912976265
+    },
+    {
+      "case_id": "ADV-13",
+      "source_id": "A",
+      "relation_idx": 93,
+      "side": "head",
+      "raw_pos": [
+        10,
+        9
+      ],
+      "mapped_text": "osteoblast-mediated",
+      "category": "A",
+      "reason": "partial match entity 'osteoblast' (CELL)",
+      "relation_label": "TRANSFORMS",
+      "score": 0.05217998847365379
+    }
+  ]
+}
