@@ -1,0 +1,76 @@
+{
+  "text": "Osteoblasts deposit calcium phosphate in bone tissue.",
+  "tokens": [
+    "Osteoblasts",
+    "deposit",
+    "calcium",
+    "phosphate",
+    "in",
+    "bone",
+    "tissue",
+    "."
+  ],
+  "ner": [
+    [
+      0,
+      0,
+      "CELL"
+    ],
+    [
+      2,
+      3,
+      "MINERAL"
+    ],
+    [
+      5,
+      6,
+      "TISSUE"
+    ]
+  ],
+  "relations": 30,
+  "all_spans_valid": false,
+  "sample": [
+    {
+      "head_pos": [
+        0,
+        1
+      ],
+      "tail_pos": [
+        2,
+        4
+      ],
+      "head_text": "O",
+      "tail_text": "te",
+      "label": "PRODUCES",
+      "score": 0.23664908111095428
+    },
+    {
+      "head_pos": [
+        2,
+        4
+      ],
+      "tail_pos": [
+        0,
+        1
+      ],
+      "head_text": "te",
+      "tail_text": "O",
+      "label": "PRODUCES",
+      "score": 0.22555673122406006
+    },
+    {
+      "head_pos": [
+        0,
+        1
+      ],
+      "tail_pos": [
+        5,
+        7
+      ],
+      "head_text": "O",
+      "tail_text": "bl",
+      "label": "PRODUCES",
+      "score": 0.21499796211719513
+    }
+  ]
+}

@@ -1,0 +1,102 @@
+{
+  "experiment": "B-2 GLiREL parallel evaluation",
+  "date": "2026-08-10T01:02:42.639790+00:00",
+  "model": "jackboyla/glirel_beta",
+  "all_pass": true,
+  "stages": [
+    {
+      "stage": "stage0",
+      "status": "PASS",
+      "error_type": "",
+      "message": "Setup complete",
+      "timestamp": "2026-08-10T00:59:46.373969+00:00",
+      "artifacts": []
+    },
+    {
+      "stage": "stage1_clone",
+      "status": "PASS",
+      "error_type": "",
+      "message": "Repo cloned",
+      "timestamp": "2026-08-10T00:59:48.058541+00:00",
+      "artifacts": []
+    },
+    {
+      "stage": "stage2_install",
+      "status": "PASS",
+      "error_type": "",
+      "message": "Deps installed",
+      "timestamp": "2026-08-10T01:00:03.900322+00:00",
+      "artifacts": []
+    },
+    {
+      "stage": "stage4_model",
+      "status": "PASS",
+      "error_type": "",
+      "message": "Loaded: 466,576,896 params",
+      "timestamp": "2026-08-10T01:01:19.708896+00:00",
+      "artifacts": []
+    },
+    {
+      "stage": "stage5_smoke",
+      "status": "PASS",
+      "error_type": "",
+      "message": "30 rels, spans=INVALID",
+      "timestamp": "2026-08-10T01:01:20.543443+00:00",
+      "artifacts": []
+    },
+    {
+      "stage": "stage6_benchmark",
+      "status": "PASS",
+      "error_type": "",
+      "message": "13 cases done",
+      "timestamp": "2026-08-10T01:01:40.483156+00:00",
+      "artifacts": []
+    },
+    {
+      "stage": "stage7_threshold",
+      "status": "PASS",
+      "error_type": "",
+      "message": "8 thresholds",
+      "timestamp": "2026-08-10T01:02:16.686825+00:00",
+      "artifacts": []
+    },
+    {
+      "stage": "stage8_topk",
+      "status": "PASS",
+      "error_type": "",
+      "message": "4 top_k values",
+      "timestamp": "2026-08-10T01:02:34.823862+00:00",
+      "artifacts": []
+    },
+    {
+      "stage": "stage9_failures",
+      "status": "PASS",
+      "error_type": "",
+      "message": "5 cases",
+      "timestamp": "2026-08-10T01:02:42.566196+00:00",
+      "artifacts": []
+    },
+    {
+      "stage": "stage10_env",
+      "status": "PASS",
+      "error_type": "",
+      "message": "Environment recorded",
+      "timestamp": "2026-08-10T01:02:42.567813+00:00",
+      "artifacts": []
+    },
+    {
+      "stage": "stage11_pack",
+      "status": "PASS",
+      "error_type": "",
+      "message": "SHA-256: 0b9bdb33ab84d7c8a33fb6285d1adea8286ff9e90450458afb2340ea287e97c8",
+      "timestamp": "2026-08-10T01:02:42.638001+00:00",
+      "artifacts": []
+    }
+  ],
+  "span_invariant": true,
+  "frozen_b2_unchanged": true,
+  "heldout_accessed": false,
+  "license": "UNRESOLVED",
+  "label": "NON-AUTHORITATIVE PARALLEL ENGINEERING EXPERIMENT",
+  "artifact_sha256": "0b9bdb33ab84d7c8a33fb6285d1adea8286ff9e90450458afb2340ea287e97c8"
+}
