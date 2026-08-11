@@ -1,0 +1,240 @@
+[
+  {
+    "id": "HB-001",
+    "name": "CRISPR-Cas9 gene editing",
+    "discovery_year": 2012,
+    "cutoff_date": "2011-12-31",
+    "pre_discovery_sources": [
+      "Bacterial CRISPR locus research (2007-2010)",
+      "Cas9 nuclease characterization (2010)",
+      "sgRNA design concept (2011)",
+      "Zinc finger nuclease gene editing (2005-2010)",
+      "TALEN gene editing (2010-2011)"
+    ],
+    "hidden_future_sources": [
+      "Jinek et al. 2012 Science",
+      "Cong et al. 2013 Science",
+      "Mali et al. 2013 Science",
+      "CRISPR-Cas9 terminology post-2012",
+      "Gene editing therapy papers post-2012"
+    ],
+    "known_mechanism_before": "Bacterial adaptive immunity via CRISPR-Cas system; Cas9 is a nuclease guided by RNA",
+    "missing_combination": "Recognition that Cas9's RNA-guided DNA cleavage is programmable for arbitrary sequences in eukaryotic cells",
+    "actual_breakthrough_mechanism": "Cas9 + designed guide RNA = programmable DNA cleavage in any cell type",
+    "discovery_pattern": "mechanism_transfer",
+    "evaluation_status": "PENDING"
+  },
+  {
+    "id": "HB-002",
+    "name": "mRNA vaccines",
+    "discovery_year": 2020,
+    "cutoff_date": "2019-12-31",
+    "pre_discovery_sources": [
+      "Kariko & Weissman nucleoside modification (2005)",
+      "Lipid nanoparticle delivery systems (2010-2018)",
+      "mRNA stability research (2010s)",
+      "mRNA cancer vaccine trials (2010s, limited success)",
+      "SARS-CoV-1 vaccine research (2003-2004)"
+    ],
+    "hidden_future_sources": [
+      "Polack et al. 2020 NEJM (Pfizer trial)",
+      "Baden et al. 2021 NEJM (Moderna trial)",
+      "COVID-19 pandemic response papers",
+      "mRNA vaccine platform papers post-2020"
+    ],
+    "known_mechanism_before": "Modified mRNA can be delivered to cells; lipid nanoparticles can encapsulate nucleic acids; viral spike proteins trigger immune response",
+    "missing_combination": "Recognition that nucleoside-modified mRNA + lipid nanoparticle = stable, non-immunogenic, deliverable vaccine platform",
+    "actual_breakthrough_mechanism": "Nucleoside-modified mRNA encoding spike protein + lipid nanoparticle delivery = vaccine with >95% efficacy",
+    "discovery_pattern": "combination_of_independently_validated_mechanisms",
+    "evaluation_status": "PENDING"
+  },
+  {
+    "id": "HB-003",
+    "name": "Lithium-ion battery",
+    "discovery_year": 1991,
+    "cutoff_date": "1990-12-31",
+    "pre_discovery_sources": [
+      "Goodenough LiCoO2 cathode (1980)",
+      "Graphite intercalation research (1970s-1980s)",
+      "Lithium metal battery safety failures (1970s-1980s)",
+      "Intercalation chemistry theory (1970s)",
+      "Whittingham TiS2 cathode (1976)"
+    ],
+    "hidden_future_sources": [
+      "Sony commercialization (1991)",
+      "Yoshino patent (1985, but significance not recognized until commercialization)",
+      "Li-ion battery market papers post-1991"
+    ],
+    "known_mechanism_before": "LiCoO2 can intercalate lithium; graphite can intercalate lithium; lithium metal batteries are unsafe",
+    "missing_combination": "Recognition that LiCoO2 cathode + graphite anode = safe, reversible, high-energy battery",
+    "actual_breakthrough_mechanism": "LiCoO2 cathode + graphite anode + non-aqueous electrolyte = rechargeable Li-ion battery",
+    "discovery_pattern": "combination_of_independently_validated_mechanisms",
+    "evaluation_status": "PENDING"
+  },
+  {
+    "id": "HB-004",
+    "name": "PCR (Polymerase Chain Reaction)",
+    "discovery_year": 1985,
+    "cutoff_date": "1984-12-31",
+    "pre_discovery_sources": [
+      "DNA polymerase characterization (1950s-1970s)",
+      "Primer extension techniques (1970s)",
+      "Thermophilic bacteria and Taq polymerase (1976)",
+      "DNA sequencing methods (1977)",
+      "Oligonucleotide synthesis (1980s)"
+    ],
+    "hidden_future_sources": [
+      "Saiki et al. 1985 Science",
+      "Mullis 1990 patent",
+      "Taq polymerase PCR papers (1988+)",
+      "PCR terminology and applications post-1985"
+    ],
+    "known_mechanism_before": "DNA polymerase extends primers; heat denatures DNA; thermophilic bacteria have heat-stable enzymes",
+    "missing_combination": "Recognition that thermal cycling + thermostable polymerase = exponential DNA amplification",
+    "actual_breakthrough_mechanism": "Thermal cycling (denature/anneal/extend) + Taq polymerase = exponential DNA amplification",
+    "discovery_pattern": "combination_of_independently_validated_mechanisms",
+    "evaluation_status": "PENDING"
+  },
+  {
+    "id": "HB-005",
+    "name": "Graphene",
+    "discovery_year": 2004,
+    "cutoff_date": "2003-12-31",
+    "pre_discovery_sources": [
+      "Theoretical predictions of 2D carbon (1947-1990s)",
+      "Carbon nanotube research (1991-2003)",
+      "Graphite intercalation compounds (1970s-1990s)",
+      "Thin film graphite studies (1990s)",
+      "Thermodynamic argument that 2D crystals are unstable (Landau-Peierls)"
+    ],
+    "hidden_future_sources": [
+      "Novoselov & Geim 2004 Science",
+      "Graphene terminology post-2004",
+      "Graphene patent landscape post-2004",
+      "Nobel Prize 2010"
+    ],
+    "known_mechanism_before": "Graphite is layered carbon; theory says 2D crystals are thermodynamically unstable; carbon nanotubes are rolled graphene",
+    "missing_combination": "Recognition that the thermodynamic argument is wrong for supported 2D crystals + mechanical exfoliation can isolate single layers",
+    "actual_breakthrough_mechanism": "Mechanical exfoliation of graphite produces stable single-layer carbon (graphene) on substrate",
+    "discovery_pattern": "contradiction_resolution",
+    "evaluation_status": "PENDING"
+  },
+  {
+    "id": "HB-006",
+    "name": "Transformer architecture (Attention is All You Need)",
+    "discovery_year": 2017,
+    "cutoff_date": "2016-12-31",
+    "pre_discovery_sources": [
+      "RNN and LSTM architectures (1997-2016)",
+      "Attention mechanisms in NLP (2014-2016)",
+      "Sequence-to-sequence models (2014)",
+      "GPU computing for deep learning (2012-2016)",
+      "Word embeddings (word2vec 2013, GloVe 2014)"
+    ],
+    "hidden_future_sources": [
+      "Vaswani et al. 2017 NeurIPS",
+      "BERT (2018)",
+      "GPT series (2018+)",
+      "Transformer terminology post-2017"
+    ],
+    "known_mechanism_before": "RNNs process sequences sequentially (slow, vanishing gradients); attention mechanisms improve seq2seq; self-attention has been used in some models",
+    "missing_combination": "Recognition that self-attention alone (no recurrence) + positional encoding + multi-head attention = better, faster, more parallelizable architecture",
+    "actual_breakthrough_mechanism": "Self-attention + positional encoding + multi-head attention + feed-forward layers = Transformer (no recurrence needed)",
+    "discovery_pattern": "constraint_inversion",
+    "evaluation_status": "PENDING"
+  },
+  {
+    "id": "HB-007",
+    "name": "Deep learning ImageNet breakthrough (AlexNet)",
+    "discovery_year": 2012,
+    "cutoff_date": "2011-12-31",
+    "pre_discovery_sources": [
+      "Backpropagation (1986)",
+      "LeNet convolutional network (1989)",
+      "GPU computing (2000s)",
+      "ImageNet dataset (2009)",
+      "ReLU activation (2010)",
+      "Dropout regularization (2012, pre-AlexNet)"
+    ],
+    "hidden_future_sources": [
+      "Krizhevsky et al. 2012 NeurIPS",
+      "Deep learning terminology post-2012",
+      "ResNet, VGG, Inception post-2014"
+    ],
+    "known_mechanism_before": "CNNs exist but are shallow; GPUs exist for graphics; ImageNet exists but hasn't been used for deep training; SVMs dominate vision",
+    "missing_combination": "Recognition that deep CNN + GPU + ImageNet + ReLU + dropout = breakthrough performance",
+    "actual_breakthrough_mechanism": "Deep CNN (8 layers) + GPU training + ImageNet (1M images) + ReLU + dropout = 15.3% error (vs 26.2% next best)",
+    "discovery_pattern": "combination_of_independently_validated_mechanisms",
+    "evaluation_status": "PENDING"
+  },
+  {
+    "id": "HB-008",
+    "name": "Penicillin",
+    "discovery_year": 1928,
+    "cutoff_date": "1927-12-31",
+    "pre_discovery_sources": [
+      "Germ theory of disease (1860s-1880s)",
+      "Antiseptic surgery (Lister 1867)",
+      "Bacterial culture techniques (Koch 1880s)",
+      "Lysozyme discovery (Fleming 1922)",
+      "Salvarsan (arsphenamine) for syphilis (1909)"
+    ],
+    "hidden_future_sources": [
+      "Fleming 1929 paper",
+      "Florey & Chain purification (1940)",
+      "Penicillin mass production (1943+)",
+      "Antibiotic terminology post-1942"
+    ],
+    "known_mechanism_before": "Bacteria cause infections; chemical antiseptics exist but are tissue-toxic; some molds inhibit bacterial growth (observed but not characterized)",
+    "missing_combination": "Recognition that a mold contaminant produces a diffusible antibacterial substance that is non-toxic to tissue",
+    "actual_breakthrough_mechanism": "Penicillium mold produces penicillin, which inhibits bacterial cell wall synthesis without harming human cells",
+    "discovery_pattern": "rare_observation",
+    "evaluation_status": "PENDING"
+  },
+  {
+    "id": "HB-009",
+    "name": "Monoclonal antibodies",
+    "discovery_year": 1975,
+    "cutoff_date": "1974-12-31",
+    "pre_discovery_sources": [
+      "Antibody structure and specificity (1950s-1960s)",
+      "B-cell and plasma cell biology (1960s)",
+      "Myeloma cell lines (1960s-1970s)",
+      "Cell fusion techniques (1960s)",
+      "Immunoglobulin genetics (1970s)"
+    ],
+    "hidden_future_sources": [
+      "Kohler & Milstein 1975 Nature",
+      "Hybridoma terminology post-1975",
+      "Therapeutic antibody papers post-1980s"
+    ],
+    "known_mechanism_before": "Antibodies are specific; B-cells produce antibodies; myeloma cells grow indefinitely; cell fusion is possible",
+    "missing_combination": "Recognition that fusing antibody-producing B-cells with immortal myeloma cells = unlimited production of specific antibodies",
+    "actual_breakthrough_mechanism": "B-cell + myeloma cell fusion = hybridoma that produces monoclonal antibodies indefinitely",
+    "discovery_pattern": "combination_of_independently_validated_mechanisms",
+    "evaluation_status": "PENDING"
+  },
+  {
+    "id": "HB-010",
+    "name": "Checkpoint immunotherapy (anti-PD-1)",
+    "discovery_year": 2012,
+    "cutoff_date": "2011-12-31",
+    "pre_discovery_sources": [
+      "PD-1 discovery (Honjo 1992)",
+      "T-cell exhaustion research (2000s)",
+      "CTLA-4 blockade concept (Allison 1996-2010)",
+      "Ipilimumab (anti-CTLA-4) approval (2011)",
+      "Cancer vaccine failures (2000s)"
+    ],
+    "hidden_future_sources": [
+      "Brahmer et al. 2012 NEJM",
+      "Anti-PD-1 clinical trial results post-2012",
+      "Checkpoint inhibitor terminology post-2012"
+    ],
+    "known_mechanism_before": "PD-1 is a T-cell receptor that suppresses immune response; CTLA-4 blockade works in melanoma; cancer vaccines have failed",
+    "missing_combination": "Recognition that blocking PD-1 (the brake) rather than activating immune response (the gas) = effective cancer immunotherapy",
+    "actual_breakthrough_mechanism": "Anti-PD-1 antibody removes T-cell inhibition, enabling immune system to attack tumors",
+    "discovery_pattern": "constraint_inversion",
+    "evaluation_status": "PENDING"
+  }
+]

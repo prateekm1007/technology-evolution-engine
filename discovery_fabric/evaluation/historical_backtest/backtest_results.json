@@ -1,0 +1,75 @@
+{
+  "timestamp": "2026-08-11T23:06:24.546236+00:00",
+  "total_cases": 5,
+  "scores": {
+    "MISSED": 5
+  },
+  "avg_match_quality": 0.0,
+  "results": [
+    {
+      "name": "CRISPR-Cas9 gene editing",
+      "discovery_pattern": "mechanism_transfer",
+      "proposed_mechanism": "RNA-guided Cas9 nuclease for genome editing",
+      "proposed_combination": "Combining CRISPR-Cas system with zinc finger nuclease or TALEN gene editing concepts",
+      "actual_mechanism": "Cas9 + designed guide RNA = programmable DNA cleavage in any cell type",
+      "score": "MISSED",
+      "match_quality": 0,
+      "reasoning": "",
+      "rescored": "MISSED",
+      "rescored_quality": 0
+    },
+    {
+      "name": "mRNA vaccines",
+      "discovery_pattern": "combination_of_independently_validated_mechanisms",
+      "proposed_mechanism": "Modified mRNA encoding viral spike proteins",
+      "proposed_combination": "Lipid nanoparticle-encapsulated modified mRNA",
+      "actual_mechanism": "Nucleoside-modified mRNA encoding spike protein + lipid nanoparticle delivery = vaccine with >95% efficacy",
+      "score": "MISSED",
+      "match_quality": 0,
+      "reasoning": "",
+      "rescored": "MISSED",
+      "rescored_quality": 0
+    },
+    {
+      "name": "Lithium-ion battery",
+      "discovery_pattern": "combination_of_independently_validated_mechanisms",
+      "proposed_mechanism": "Lithium-ion intercalation",
+      "proposed_combination": "LiCoO2 cathode + Graphite anode",
+      "actual_mechanism": "LiCoO2 cathode + graphite anode + non-aqueous electrolyte = rechargeable Li-ion battery",
+      "score": "MISSED",
+      "match_quality": 0,
+      "reasoning": "",
+      "rescored": "FOUND",
+      "rescored_quality": 0.9
+    },
+    {
+      "name": "PCR (Polymerase Chain Reaction)",
+      "discovery_pattern": "combination_of_independently_validated_mechanisms",
+      "proposed_mechanism": "Thermally stable DNA polymerase",
+      "proposed_combination": "Combining thermophilic bacterial enzymes with primer extension techniques",
+      "actual_mechanism": "Thermal cycling (denature/anneal/extend) + Taq polymerase = exponential DNA amplification",
+      "score": "MISSED",
+      "match_quality": 0,
+      "reasoning": "",
+      "rescored": "MISSED",
+      "rescored_quality": 0
+    },
+    {
+      "name": "Graphene",
+      "discovery_pattern": "contradiction_resolution",
+      "proposed_mechanism": "Exfoliation of graphite to form stable 2D carbon sheets",
+      "proposed_combination": "Mechanical exfoliation of graphite using intercalation compounds",
+      "actual_mechanism": "Mechanical exfoliation of graphite produces stable single-layer carbon (graphene) on substrate",
+      "score": "MISSED",
+      "match_quality": 0,
+      "reasoning": "",
+      "rescored": "FOUND",
+      "rescored_quality": 0.9
+    }
+  ],
+  "rescored_summary": {
+    "MISSED": 3,
+    "FOUND": 2
+  },
+  "rescored_avg_quality": 0.36
+}
