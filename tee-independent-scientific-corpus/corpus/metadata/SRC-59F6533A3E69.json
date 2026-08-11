@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-59F6533A3E69",
+  "title": "Development of superconductor for application",
+  "authors": [
+    "Thomas Yamamoto",
+    "Mary Johnson",
+    "Wei Garcia",
+    "Elizabeth Schmidt"
+  ],
+  "doi": "10.1109/sample.107001",
+  "publisher": "APS",
+  "publication_date": "2022-08-14",
+  "source_uri": "https://doi.org/10.1109/sample.107001",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in materials_science. Using state-of-the-art experimental techniques, we demonstrate... Our results indicate significant improvements in performance metrics. The methodology presented here can be extended to related problems.",
+  "fulltext_uri": "https://example.org/fulltext/10.1109/sample.107001",
+  "acquisition_timestamp": "2026-08-11T12:21:24.242671Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "ac7ac327ff6b55920c4ec34b47384d98bf1886bea9e2478be731c5b2ca4aa5b9",
+  "license": "Apache-2.0",
+  "domain": "materials_science",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "materials_science",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

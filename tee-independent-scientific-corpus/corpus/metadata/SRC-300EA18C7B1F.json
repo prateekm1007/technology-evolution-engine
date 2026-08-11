@@ -1,0 +1,46 @@
+{
+  "source_id": "SRC-300EA18C7B1F",
+  "title": "Molecular mechanisms of polymerization in mouse",
+  "authors": [
+    "Joseph Martinez",
+    "Jose Chen",
+    "Joseph Rodriguez",
+    "Richard Tanaka",
+    "Charles Garcia",
+    "Ming Suzuki"
+  ],
+  "doi": "10.1103/sample.110000",
+  "publisher": "Nature Publishing Group",
+  "publication_date": "2010-04-20",
+  "source_uri": "https://doi.org/10.1103/sample.110000",
+  "repository_uri": null,
+  "abstract": "We report novel findings in the field of biology with significant implications. By integrating multiple analytical approaches, we uncover... The findings suggest new directions for future research. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1103/sample.110000",
+  "acquisition_timestamp": "2026-08-11T12:21:24.488138Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "5590e0a808170386ac0c12dfafe3edc5f9a732648727c2d28b5cad4570049979",
+  "license": "CC-BY-4.0",
+  "domain": "biology",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "biology",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

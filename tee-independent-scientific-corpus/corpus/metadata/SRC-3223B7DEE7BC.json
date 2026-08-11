@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-3223B7DEE7BC",
+  "title": "Hydrogen production via production_method",
+  "authors": [
+    "Elizabeth Lee",
+    "Patricia Brown",
+    "Thomas Mueller",
+    "Jennifer Smith"
+  ],
+  "doi": "10.1109/sample.131001",
+  "publisher": "ACM",
+  "publication_date": "2022-06-29",
+  "source_uri": "https://doi.org/10.1109/sample.131001",
+  "repository_uri": null,
+  "abstract": "This paper presents a comprehensive study of energy_sciences focusing on key aspects. Employing advanced characterization methods, we reveal... Statistical analysis confirms the robustness of our conclusions. Our work opens new avenues for exploration in this field.",
+  "fulltext_uri": "https://example.org/fulltext/10.1109/sample.131001",
+  "acquisition_timestamp": "2026-08-11T12:21:25.785754Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "5422b613605aa810dcb67eabb4e9cdd66600bf738503225f82910fc77536f6ad",
+  "license": "closed",
+  "domain": "energy_sciences",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "energy_sciences",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

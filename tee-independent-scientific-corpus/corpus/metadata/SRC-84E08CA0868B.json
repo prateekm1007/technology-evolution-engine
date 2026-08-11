@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-84E08CA0868B",
+  "title": "Swarm robotics for swarm_task",
+  "authors": [
+    "Ming Kim",
+    "James Rodriguez",
+    "Jennifer Rodriguez",
+    "Hiroshi Smith"
+  ],
+  "doi": "10.1103/sample.101001",
+  "publisher": "Elsevier",
+  "publication_date": "2017-03-09",
+  "source_uri": "https://doi.org/10.1103/sample.101001",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of robotics through experimental and theoretical approaches. Through computational modeling and simulation, we show... Statistical analysis confirms the robustness of our conclusions. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1103/sample.101001",
+  "acquisition_timestamp": "2026-08-11T12:21:26.850382Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "83dfa523cb2f5846074c78bc1f575950dfee10bdd38da917c9e3566ab401882b",
+  "license": "CC-BY-4.0",
+  "domain": "robotics",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "robotics",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

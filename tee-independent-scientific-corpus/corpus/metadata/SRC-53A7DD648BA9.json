@@ -1,0 +1,46 @@
+{
+  "source_id": "SRC-53A7DD648BA9",
+  "title": "Power electronics for power_application",
+  "authors": [
+    "Maria Miller",
+    "Anna Kim",
+    "Mary Wang",
+    "Yong Davis",
+    "Elizabeth Tanaka",
+    "Michael Lee"
+  ],
+  "doi": "10.1016/sample.132000",
+  "publisher": "APS",
+  "publication_date": "2012-11-17",
+  "source_uri": "https://doi.org/10.1016/sample.132000",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in electrical_engineering. By integrating multiple analytical approaches, we uncover... We observe previously unreported behaviors under controlled conditions. Our work opens new avenues for exploration in this field.",
+  "fulltext_uri": "https://example.org/fulltext/10.1016/sample.132000",
+  "acquisition_timestamp": "2026-08-11T12:21:25.244745Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "74e934a8e8977b5cec5963cafb40b8fd572dd05fabeeb9627e49f5efbcce170a",
+  "license": "Apache-2.0",
+  "domain": "electrical_engineering",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "electrical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "source_id": "SRC-86421869D41C",
+  "title": "Neural circuit mapping of circuit_name",
+  "authors": [
+    "Joseph Suzuki",
+    "Akira Mueller",
+    "Kenji Jones",
+    "Charles Yamamoto",
+    "James Garcia",
+    "Akira Martinez"
+  ],
+  "doi": "10.1002/sample.089000",
+  "publisher": "RSC",
+  "publication_date": "2016-08-11",
+  "source_uri": "https://doi.org/10.1002/sample.089000",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into neuroscience phenomena. Combining theoretical analysis with empirical validation, we establish... We observe previously unreported behaviors under controlled conditions. This research contributes to the broader understanding of the domain.",
+  "fulltext_uri": "https://example.org/fulltext/10.1002/sample.089000",
+  "acquisition_timestamp": "2026-08-11T12:21:26.307193Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "778fb60dab4c13582d591831ae592d07d935de565da22f45257cb105c9fc4f44",
+  "license": "closed",
+  "domain": "neuroscience",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "neuroscience",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

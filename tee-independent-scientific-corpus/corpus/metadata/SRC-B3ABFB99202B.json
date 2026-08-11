@@ -1,0 +1,45 @@
+{
+  "source_id": "SRC-B3ABFB99202B",
+  "title": "Hydrogen production via production_method",
+  "authors": [
+    "Maria Williams",
+    "Charles Thomas",
+    "Maria Park",
+    "Ming Williams",
+    "Linda Johnson"
+  ],
+  "doi": "10.1016/sample.094000",
+  "publisher": "Nature Publishing Group",
+  "publication_date": "2011-06-25",
+  "source_uri": "https://doi.org/10.1016/sample.094000",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in energy_sciences. Combining theoretical analysis with empirical validation, we establish... Statistical analysis confirms the robustness of our conclusions. This research contributes to the broader understanding of the domain.",
+  "fulltext_uri": "https://example.org/fulltext/10.1016/sample.094000",
+  "acquisition_timestamp": "2026-08-11T12:21:25.750691Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "c9fa2c9f8fe6e92216492826c54897b41fd9e12aa59374799833d1ad24d00450",
+  "license": "MIT",
+  "domain": "energy_sciences",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "energy_sciences",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-58F1974C523F",
+  "title": "Theoretical analysis of system dynamics",
+  "authors": [
+    "Joseph Kim",
+    "Ming Davis"
+  ],
+  "doi": "10.1021/sample.117000",
+  "publisher": "Elsevier",
+  "publication_date": "2019-04-17",
+  "source_uri": "https://doi.org/10.1021/sample.117000",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into physics phenomena. By integrating multiple analytical approaches, we uncover... Statistical analysis confirms the robustness of our conclusions. This research contributes to the broader understanding of the domain.",
+  "fulltext_uri": "https://example.org/fulltext/10.1021/sample.117000",
+  "acquisition_timestamp": "2026-08-11T12:21:23.787262Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "7d112b6b6c1c547a66f8690a5c8993c9e04507a076b6ff2508806f8347b7d752",
+  "license": "closed",
+  "domain": "physics",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "physics",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-5BA1F8173CD9",
+  "title": "Computational fluid dynamics of geometry",
+  "authors": [
+    "William Kim",
+    "Yong Yamamoto"
+  ],
+  "doi": "10.1103/sample.050001",
+  "publisher": "ACM",
+  "publication_date": "2017-09-28",
+  "source_uri": "https://doi.org/10.1103/sample.050001",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of mechanical_engineering through experimental and theoretical approaches. Combining theoretical analysis with empirical validation, we establish... Statistical analysis confirms the robustness of our conclusions. Our work opens new avenues for exploration in this field.",
+  "fulltext_uri": "https://example.org/fulltext/10.1103/sample.050001",
+  "acquisition_timestamp": "2026-08-11T12:21:24.948642Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "9804bb8cd69b4641bfb371426696b9e26abf3f406734883c8015b294d17e08f4",
+  "license": "CC-BY-NC-4.0",
+  "domain": "mechanical_engineering",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "mechanical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

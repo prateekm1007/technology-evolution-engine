@@ -1,0 +1,45 @@
+{
+  "source_id": "SRC-066866B6E6F0",
+  "title": "Neural correlates of decision-making",
+  "authors": [
+    "Charles Williams",
+    "David Miller",
+    "Anna Park",
+    "Akira Tanaka",
+    "Elizabeth Kim"
+  ],
+  "doi": "10.1016/sample.084002",
+  "publisher": "APS",
+  "publication_date": "2016-12-31",
+  "source_uri": "https://doi.org/10.1016/sample.084002",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into neuroscience phenomena. Combining theoretical analysis with empirical validation, we establish... Comparative evaluation demonstrates superiority over existing approaches. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1016/sample.084002",
+  "acquisition_timestamp": "2026-08-11T12:21:26.305368Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "18e443ccd13298057d033bf8d7161c65ab4bb30ca0f8cb179aec28ba0a2e83df",
+  "license": "MIT",
+  "domain": "neuroscience",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "neuroscience",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

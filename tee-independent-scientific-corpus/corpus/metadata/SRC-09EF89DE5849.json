@@ -1,0 +1,43 @@
+{
+  "source_id": "SRC-09EF89DE5849",
+  "title": "Brain connectivity analysis using imaging_technique",
+  "authors": [
+    "Akira Williams",
+    "William Smith",
+    "David Yamamoto"
+  ],
+  "doi": "10.1038/sample.134002",
+  "publisher": "Nature Publishing Group",
+  "publication_date": "2011-12-23",
+  "source_uri": "https://doi.org/10.1038/sample.134002",
+  "repository_uri": null,
+  "abstract": "We report novel findings in the field of neuroscience with significant implications. Through computational modeling and simulation, we show... We observe previously unreported behaviors under controlled conditions. This research contributes to the broader understanding of the domain.",
+  "fulltext_uri": "https://example.org/fulltext/10.1038/sample.134002",
+  "acquisition_timestamp": "2026-08-11T12:21:26.343408Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "0ad4b5c667193d792027bc166d63dbe67ee5aa8c759b4401a34296e443f5acc9",
+  "license": "Apache-2.0",
+  "domain": "neuroscience",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "neuroscience",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-83BBCE4557C9",
+  "title": "Modeling and simulation of process_system",
+  "authors": [
+    "Linda Davis",
+    "William Chen"
+  ],
+  "doi": "10.1145/sample.081001",
+  "publisher": "APS",
+  "publication_date": "2011-08-15",
+  "source_uri": "https://doi.org/10.1145/sample.081001",
+  "repository_uri": null,
+  "abstract": "This paper presents a comprehensive study of chemical_engineering focusing on key aspects. Using state-of-the-art experimental techniques, we demonstrate... The findings suggest new directions for future research. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1145/sample.081001",
+  "acquisition_timestamp": "2026-08-11T12:21:25.448094Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "6d14af567005bff66434265b5586c35f20a1d7bda35ec809dbcef5503d308855",
+  "license": "Apache-2.0",
+  "domain": "chemical_engineering",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "chemical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-052FB6F13A38",
+  "title": "Fuel cell performance with fuel_cell_type configuration",
+  "authors": [
+    "Thomas Kim",
+    "Hiroshi Jones",
+    "John Williams",
+    "Jose Schmidt"
+  ],
+  "doi": "10.1038/sample.107002",
+  "publisher": "APS",
+  "publication_date": "2023-04-02",
+  "source_uri": "https://doi.org/10.1038/sample.107002",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into energy_sciences phenomena. By integrating multiple analytical approaches, we uncover... Statistical analysis confirms the robustness of our conclusions. The methodology presented here can be extended to related problems.",
+  "fulltext_uri": "https://example.org/fulltext/10.1038/sample.107002",
+  "acquisition_timestamp": "2026-08-11T12:21:25.765982Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "47be13e769f5e9b3a1aeba4c302ab9aa93cc1a3c4a20645010f2caea74b614cc",
+  "license": "CC-BY-NC-4.0",
+  "domain": "energy_sciences",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "energy_sciences",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

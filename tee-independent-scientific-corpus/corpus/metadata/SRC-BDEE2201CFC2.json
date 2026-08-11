@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-BDEE2201CFC2",
+  "title": "Biomimetic superconductor design inspired by biological_system",
+  "authors": [
+    "David Johnson",
+    "Jennifer Davis"
+  ],
+  "doi": "10.1021/sample.203000",
+  "publisher": "RSC",
+  "publication_date": "2024-01-31",
+  "source_uri": "https://doi.org/10.1021/sample.203000",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in materials_science. By integrating multiple analytical approaches, we uncover... Our results indicate significant improvements in performance metrics. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1021/sample.203000",
+  "acquisition_timestamp": "2026-08-11T12:21:24.325020Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "f5655d15b423b7e1ff0d589d25c574704a7149b8f0ef07cf9bca59a8f48a6179",
+  "license": "Apache-2.0",
+  "domain": "materials_science",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "materials_science",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

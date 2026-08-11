@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-6F6485F28248",
+  "title": "Swarm robotics for swarm_task",
+  "authors": [
+    "Michael Johnson",
+    "David Brown",
+    "Anna Miller",
+    "Ming Kim"
+  ],
+  "doi": "10.1016/sample.070002",
+  "publisher": "Springer",
+  "publication_date": "2011-11-29",
+  "source_uri": "https://doi.org/10.1016/sample.070002",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in robotics. Employing advanced characterization methods, we reveal... Our results indicate significant improvements in performance metrics. Our work opens new avenues for exploration in this field.",
+  "fulltext_uri": "https://example.org/fulltext/10.1016/sample.070002",
+  "acquisition_timestamp": "2026-08-11T12:21:26.825922Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "fbcf728ed57ac252f92443590853fb397a0b02454787e6336c6ea7247808c69a",
+  "license": "MIT",
+  "domain": "robotics",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "robotics",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

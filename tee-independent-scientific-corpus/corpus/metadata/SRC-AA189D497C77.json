@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-AA189D497C77",
+  "title": "Reactor design for elimination reactions",
+  "authors": [
+    "John Johnson",
+    "Charles Smith",
+    "Ming Suzuki",
+    "Robert Thomas"
+  ],
+  "doi": "10.1002/sample.158001",
+  "publisher": "IEEE",
+  "publication_date": "2017-07-25",
+  "source_uri": "https://doi.org/10.1002/sample.158001",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into chemical_engineering phenomena. Through computational modeling and simulation, we show... Statistical analysis confirms the robustness of our conclusions. This research contributes to the broader understanding of the domain.",
+  "fulltext_uri": "https://example.org/fulltext/10.1002/sample.158001",
+  "acquisition_timestamp": "2026-08-11T12:21:25.525334Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "b712cf6161607155f0b509aa222be0c1fe6bcdd23778f883a627d0383a42b9d7",
+  "license": "MIT",
+  "domain": "chemical_engineering",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "chemical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

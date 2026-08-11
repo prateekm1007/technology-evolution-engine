@@ -1,0 +1,45 @@
+{
+  "source_id": "SRC-DD456DC604D4",
+  "title": "Heat integration in chemical plants",
+  "authors": [
+    "Kenji Garcia",
+    "Joseph Yamamoto",
+    "David Garcia",
+    "David Thomas",
+    "Anna Smith"
+  ],
+  "doi": "10.1038/sample.288002",
+  "publisher": "Springer",
+  "publication_date": "2021-08-30",
+  "source_uri": "https://doi.org/10.1038/sample.288002",
+  "repository_uri": null,
+  "abstract": "This paper presents a comprehensive study of chemical_engineering focusing on key aspects. Combining theoretical analysis with empirical validation, we establish... We observe previously unreported behaviors under controlled conditions. This research contributes to the broader understanding of the domain.",
+  "fulltext_uri": "https://example.org/fulltext/10.1038/sample.288002",
+  "acquisition_timestamp": "2026-08-11T12:21:25.648189Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "3dd7972bf063c152a84ad8f7e9c4a0aff7827ea4f5c24929dd1dc44f0fd9da4e",
+  "license": "Apache-2.0",
+  "domain": "chemical_engineering",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "chemical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-E5C0DEB16582",
+  "title": "Convergence analysis of numerical_method",
+  "authors": [
+    "Hiroshi Chen",
+    "William Martinez",
+    "Thomas Martinez",
+    "Charles Wang"
+  ],
+  "doi": "10.1109/sample.061000",
+  "publisher": "IEEE",
+  "publication_date": "2020-03-18",
+  "source_uri": "https://doi.org/10.1109/sample.061000",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of mathematics through experimental and theoretical approaches. Using state-of-the-art experimental techniques, we demonstrate... Comparative evaluation demonstrates superiority over existing approaches. This research contributes to the broader understanding of the domain.",
+  "fulltext_uri": "https://example.org/fulltext/10.1109/sample.061000",
+  "acquisition_timestamp": "2026-08-11T12:21:26.525643Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "0d8bab79cd4af0b3b51ad36c55c83f21833056e107edae2d417bc8de2adf9d00",
+  "license": "Apache-2.0",
+  "domain": "mathematics",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "mathematics",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

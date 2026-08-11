@@ -1,0 +1,46 @@
+{
+  "source_id": "SRC-AE7CBCD2FEEA",
+  "title": "Mechanical properties of hybrid composites",
+  "authors": [
+    "Thomas Mueller",
+    "Elizabeth Mueller",
+    "Mary Anderson",
+    "Maria Suzuki",
+    "James Miller",
+    "Patricia Taylor"
+  ],
+  "doi": "10.1016/sample.038000",
+  "publisher": "Elsevier",
+  "publication_date": "2014-04-24",
+  "source_uri": "https://doi.org/10.1016/sample.038000",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in materials_science. Through computational modeling and simulation, we show... Statistical analysis confirms the robustness of our conclusions. The methodology presented here can be extended to related problems.",
+  "fulltext_uri": "https://example.org/fulltext/10.1016/sample.038000",
+  "acquisition_timestamp": "2026-08-11T12:21:24.172920Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "841644c3292b50ddaadfdec9e799a3929c07715e367e9e108492df15964e5327",
+  "license": "CC-BY-NC-4.0",
+  "domain": "materials_science",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "materials_science",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

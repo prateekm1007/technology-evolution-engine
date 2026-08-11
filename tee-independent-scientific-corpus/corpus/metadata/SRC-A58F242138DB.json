@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-A58F242138DB",
+  "title": "Neurodevelopmental disorders in model_organism",
+  "authors": [
+    "Ming Taylor",
+    "Hiroshi Mueller"
+  ],
+  "doi": "10.1145/sample.052001",
+  "publisher": "Springer",
+  "publication_date": "2011-12-24",
+  "source_uri": "https://doi.org/10.1145/sample.052001",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in neuroscience. By integrating multiple analytical approaches, we uncover... Comparative evaluation demonstrates superiority over existing approaches. This research contributes to the broader understanding of the domain.",
+  "fulltext_uri": "https://example.org/fulltext/10.1145/sample.052001",
+  "acquisition_timestamp": "2026-08-11T12:21:26.272034Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "182fc7370fbf1701bdc9a97d580258ddb9de2a4ec39296e16bfb361202ae8283",
+  "license": "Apache-2.0",
+  "domain": "neuroscience",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "neuroscience",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

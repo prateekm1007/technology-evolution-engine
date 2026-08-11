@@ -1,0 +1,5538 @@
+{
+  "validation_timestamp": "2026-08-11T12:21:59.371287Z",
+  "total_sources": 3900,
+  "summary": {
+    "doi_duplicates": 0,
+    "hash_duplicates": 0,
+    "title_duplicates": 286
+  },
+  "details": {
+    "by_doi": [],
+    "by_content_hash": [],
+    "by_title": [
+      {
+        "title": "molecular mechanisms of hydrolysis in e. coli",
+        "source_ids": [
+          "SRC-CC5EE280C67A",
+          "SRC-024CB8C059D5",
+          "SRC-9C4D0AAAB0B3"
+        ],
+        "count": 3
+      },
+      {
+        "title": "algorithm for computing mathematical_quantity",
+        "source_ids": [
+          "SRC-7B7B9DEAB473",
+          "SRC-942BF1B2C4C0",
+          "SRC-2CBD6A80EDD5",
+          "SRC-637E1948C700",
+          "SRC-5408F251DE13",
+          "SRC-87D45689CE1F",
+          "SRC-02B7429EC4F5",
+          "SRC-6A70A10406BC",
+          "SRC-C368994D92F3",
+          "SRC-4C50F6CECCEF",
+          "SRC-03067C9C5985",
+          "SRC-756045BE0CBA",
+          "SRC-140C271696AF",
+          "SRC-12DB14B312B3",
+          "SRC-33C3D2499F82",
+          "SRC-6EA170C88197",
+          "SRC-8326DF5D5649",
+          "SRC-0C67DDBE2E30",
+          "SRC-ED627EA727AF",
+          "SRC-9D31845B9A4B",
+          "SRC-71D36160F939",
+          "SRC-25D34A90B811",
+          "SRC-61A4CCCF395B",
+          "SRC-7509C1F2A08C",
+          "SRC-5508AA36AB78",
+          "SRC-90424A727F95"
+        ],
+        "count": 26
+      },
+      {
+        "title": "security analysis of protocol protocols",
+        "source_ids": [
+          "SRC-F5C6538A5292",
+          "SRC-50F53AD83453",
+          "SRC-789C96FAAE03",
+          "SRC-BAD9AF84870E",
+          "SRC-1BA1B799A12F",
+          "SRC-8EA0391005DC",
+          "SRC-8EB98E0C9777",
+          "SRC-17EE8A7BD7B4",
+          "SRC-9B678E1BEBE8",
+          "SRC-AC5610E523EA",
+          "SRC-5CFEEAEACDC5",
+          "SRC-0AB6B961733F",
+          "SRC-6951F7B90A5B",
+          "SRC-AB6F0BEAE2DC",
+          "SRC-D9AD1BA275C5",
+          "SRC-41C09ABB53DB",
+          "SRC-C17D33299ECF",
+          "SRC-077382966A20",
+          "SRC-9A0075F7A758",
+          "SRC-A3E9B1EC678C",
+          "SRC-C44B3DC061F1",
+          "SRC-90121796BF38",
+          "SRC-D8EF5071E5A1",
+          "SRC-D7B4DFAED3C9",
+          "SRC-40AB53DD836A",
+          "SRC-4940E2C70497",
+          "SRC-125F6C038C88",
+          "SRC-40895E2D76B4",
+          "SRC-092718D1E3EF",
+          "SRC-191CA76F55FF",
+          "SRC-6EA7E071C2C7"
+        ],
+        "count": 31
+      },
+      {
+        "title": "probability distributions for random_variable",
+        "source_ids": [
+          "SRC-EBE8D5FB3B84",
+          "SRC-2AAB1BEAEAB6",
+          "SRC-0F8F8EBE39F6",
+          "SRC-E574D9A34918",
+          "SRC-900746E6D59F",
+          "SRC-C9283ABD9401",
+          "SRC-0C2DB8A49A13",
+          "SRC-AAA196AA7294",
+          "SRC-4DDB1B770EEA",
+          "SRC-5AE0BF7B05A3",
+          "SRC-727995724927",
+          "SRC-D198C44F35F8",
+          "SRC-C51658E2968F",
+          "SRC-7F03911D831D",
+          "SRC-C84667499A3E",
+          "SRC-3CAAF6CC4809",
+          "SRC-49D5A423B404",
+          "SRC-7F4C7607EED3",
+          "SRC-7684B9267F74",
+          "SRC-1466448DC5F3",
+          "SRC-CEE3F99CE258",
+          "SRC-5A4C5701EA3E",
+          "SRC-A4306AF7E977",
+          "SRC-742014173449",
+          "SRC-58CA1D8B95E5",
+          "SRC-2F06CB84EFB5",
+          "SRC-86039A567934",
+          "SRC-06B30FB597A6",
+          "SRC-573985FBA3EE",
+          "SRC-5743306A7A06",
+          "SRC-9AC7F5BD823E",
+          "SRC-874AE3484853",
+          "SRC-F160FBADC672",
+          "SRC-FE43EEC5AFC3",
+          "SRC-DB5F92E18753",
+          "SRC-CFA1F5381F01",
+          "SRC-3D7364251394",
+          "SRC-A8103FBE059E",
+          "SRC-7A647FC26E70"
+        ],
+        "count": 39
+      },
+      {
+        "title": "ecological interactions between species_1 and species_2",
+        "source_ids": [
+          "SRC-83C13FD9010F",
+          "SRC-96A8F9D0EF44",
+          "SRC-9554423E8FF1",
+          "SRC-3E5BE2DC2A24",
+          "SRC-3B7889425545",
+          "SRC-BFF4BFC7161D",
+          "SRC-57C3E8322D8E",
+          "SRC-0CDB16F69CF0",
+          "SRC-065527EBDB8D",
+          "SRC-C3CF753C4A24",
+          "SRC-EF533BC1BD63",
+          "SRC-EBA3E8EE378F",
+          "SRC-2186B2127BC1",
+          "SRC-D949991D5E5A",
+          "SRC-6ABAD3AEC772",
+          "SRC-9CC1A123AB14"
+        ],
+        "count": 16
+      },
+      {
+        "title": "green chemistry approach to synthesis_target",
+        "source_ids": [
+          "SRC-3D430CB8E615",
+          "SRC-C62F270A3E1F",
+          "SRC-FB8D00A3A8BB",
+          "SRC-9E3992A45FB6",
+          "SRC-A589C6AE66D7",
+          "SRC-76D40B5B194B",
+          "SRC-6C204E09A6FA",
+          "SRC-8DD162C75027",
+          "SRC-AF66C4B1E3E4",
+          "SRC-D6A4A89D05C4",
+          "SRC-1812E246FF19",
+          "SRC-E8CBF6DC8BF7",
+          "SRC-DBDC65715981",
+          "SRC-709AED46F140",
+          "SRC-5B269853C702",
+          "SRC-ACA671981C61",
+          "SRC-9926AD07C025",
+          "SRC-D12DD86FCF19",
+          "SRC-8D97EFC86E08",
+          "SRC-57EE37163721",
+          "SRC-35813B183DB2",
+          "SRC-EA17AF2DAFEE",
+          "SRC-F4409C024223",
+          "SRC-8028E1D8C996",
+          "SRC-8C5003A22165",
+          "SRC-10598C77BC39",
+          "SRC-14124A70F230",
+          "SRC-AB0E2451A83B",
+          "SRC-1D6A37160BAB",
+          "SRC-5867D06B2E6E",
+          "SRC-E538C75BB9FC",
+          "SRC-6600C60C8682",
+          "SRC-DFFC7BB75C84",
+          "SRC-5E7E74A9E390",
+          "SRC-04447A9A1153",
+          "SRC-3CBDE8ECA974",
+          "SRC-A061DDF6596C",
+          "SRC-6B53FB9FA6BC",
+          "SRC-113180231670",
+          "SRC-EE87F85598DC",
+          "SRC-77F7B9562E5C",
+          "SRC-BE8CB74FE1BD"
+        ],
+        "count": 42
+      },
+      {
+        "title": "soft robotics design for soft_robot_application",
+        "source_ids": [
+          "SRC-7926F75267B5",
+          "SRC-1002BA2174BB",
+          "SRC-B4952E9524A4",
+          "SRC-11DFBAF9F43A",
+          "SRC-D053A5FD4885",
+          "SRC-CAB9E3DD2316",
+          "SRC-E197666B5A3C",
+          "SRC-08FD0ED8C22C",
+          "SRC-33316A443B89",
+          "SRC-289664FE7B56",
+          "SRC-31876F195200",
+          "SRC-472D91404FA8",
+          "SRC-6607F540945A",
+          "SRC-EF2B0C961F7A",
+          "SRC-86F20AAC6FE9",
+          "SRC-45B0B4B04D82",
+          "SRC-4E2D2E40E51B",
+          "SRC-A3BE0D5686F9",
+          "SRC-B85D6A9C7F71",
+          "SRC-78E0D250CAB5",
+          "SRC-4B4BF8279CD3",
+          "SRC-A0D4498FD425",
+          "SRC-C59D151A8DE1",
+          "SRC-6F26C678F8C7",
+          "SRC-E591E52AC3D9",
+          "SRC-C1A8A7BF1EDB",
+          "SRC-F79AC430474C",
+          "SRC-42CD15D55343",
+          "SRC-5EF8B1DECCD4",
+          "SRC-CB0E9D285002",
+          "SRC-69099B0D467B",
+          "SRC-141F3801D675",
+          "SRC-FB3E2EB8983B",
+          "SRC-A38579175FA1",
+          "SRC-A116D27CA191",
+          "SRC-FC86FF1C0798",
+          "SRC-48B5FADAE735",
+          "SRC-8A97F01019B8",
+          "SRC-075D4788EFA7",
+          "SRC-3D2A4D3E943D",
+          "SRC-DB4A0EDB8119"
+        ],
+        "count": 41
+      },
+      {
+        "title": "additive manufacturing of alloy alloys",
+        "source_ids": [
+          "SRC-C351389CA02C",
+          "SRC-414C529FFF5A",
+          "SRC-91BF26AB46E7",
+          "SRC-5B88E17194A0",
+          "SRC-04D639559F7D",
+          "SRC-9E216702DD1B",
+          "SRC-5F95166AE061",
+          "SRC-D3C381F85945",
+          "SRC-090FF9E45CC5",
+          "SRC-04FDCCB9FED7",
+          "SRC-968ECDBCC3E6",
+          "SRC-6DB82899272F",
+          "SRC-89FC60ED854E",
+          "SRC-45F8539C7B6A",
+          "SRC-BC52FF67B072",
+          "SRC-895CC2C61D22",
+          "SRC-9A6F06007587",
+          "SRC-41EEA1D716D2",
+          "SRC-8ED9324B5F49",
+          "SRC-E318DD770F47",
+          "SRC-47328EF0215C",
+          "SRC-918D12AA9C70",
+          "SRC-25F7E60FCC13",
+          "SRC-51348E2CFEAA",
+          "SRC-C6AEE28B45F8",
+          "SRC-D24A009F955C",
+          "SRC-56850CC9268B",
+          "SRC-3971BDACFC03",
+          "SRC-564BFFCDC5DB",
+          "SRC-C9D66074CD9D",
+          "SRC-1D49D3C546FB",
+          "SRC-993243658B57"
+        ],
+        "count": 32
+      },
+      {
+        "title": "deep learning approach to task",
+        "source_ids": [
+          "SRC-E29E16C28709",
+          "SRC-8FD6D6440552",
+          "SRC-79DFD971E391",
+          "SRC-6863E7752AE2",
+          "SRC-6D338F4C8698",
+          "SRC-D2BCCAD56F46",
+          "SRC-BD73D99B1A53",
+          "SRC-A46D90425FE2",
+          "SRC-DB1B023B8581",
+          "SRC-50DE90CFB822",
+          "SRC-514615FB95A8",
+          "SRC-45A77AA716CD",
+          "SRC-D17C3B1DD8DB",
+          "SRC-D06857D9F3D2",
+          "SRC-E57880A9B4E7",
+          "SRC-6773AD1C1349",
+          "SRC-A08FD6A71CDA",
+          "SRC-B0D8BD55DF4C",
+          "SRC-BD06D54A4017",
+          "SRC-2481015F5700",
+          "SRC-B2AFA3465469",
+          "SRC-AB5AF1CC1171",
+          "SRC-F05D7D407168",
+          "SRC-4CFABD933BBA",
+          "SRC-41890F5505A6",
+          "SRC-2E55486B74D3",
+          "SRC-6EDE0E05F31D",
+          "SRC-F62793940F52",
+          "SRC-638BA9FFF3F5",
+          "SRC-ADC0093DB83E",
+          "SRC-A84AEA33B7AD",
+          "SRC-81C87B8A9396",
+          "SRC-7DDEBE8E20DB"
+        ],
+        "count": 33
+      },
+      {
+        "title": "climate change impacts on grassland",
+        "source_ids": [
+          "SRC-166A38389A9D",
+          "SRC-4FFB418306B9",
+          "SRC-4E5EA133D200",
+          "SRC-232B38779088",
+          "SRC-E64EA40C030A",
+          "SRC-81B5592C5AF5",
+          "SRC-ABB94728FFFA",
+          "SRC-6D641F758919"
+        ],
+        "count": 8
+      },
+      {
+        "title": "structure-activity relationships in compound_class",
+        "source_ids": [
+          "SRC-3D76B2E05491",
+          "SRC-A9E860EB21A1",
+          "SRC-1A6C2C999580",
+          "SRC-94D73851F797",
+          "SRC-123B7249BAFA",
+          "SRC-8FF3794843E3",
+          "SRC-08F638CD570F",
+          "SRC-F5170FAA75B5",
+          "SRC-3FE50A46EB48",
+          "SRC-EC2A45C812AC",
+          "SRC-A5AB7DAC2CCF",
+          "SRC-9FBEC8DEDA10",
+          "SRC-50AED48B7484",
+          "SRC-D3DF3CE181B7",
+          "SRC-D86454779C2D",
+          "SRC-D98FBE599826",
+          "SRC-D8904D392B1D",
+          "SRC-4372249A03D9",
+          "SRC-58F2BD7AAAFC",
+          "SRC-305A9BAB5164",
+          "SRC-A5527F69E495",
+          "SRC-F5735B4013CA",
+          "SRC-DF8C68E60FC8",
+          "SRC-B8A22977B235",
+          "SRC-D620348D4BA2",
+          "SRC-399E84429A99",
+          "SRC-B01F694C7775",
+          "SRC-57222F3D08B3",
+          "SRC-73525D297A24"
+        ],
+        "count": 29
+      },
+      {
+        "title": "ocean acidification effects on marine_organism",
+        "source_ids": [
+          "SRC-B66D01B1B26A",
+          "SRC-05EFF268B78F",
+          "SRC-5611DBCBF770",
+          "SRC-3B32BCD128D4",
+          "SRC-9BB956104CA7",
+          "SRC-B272F39C84A3",
+          "SRC-AE9BDBBED97D",
+          "SRC-A4E695DD05BD",
+          "SRC-35271E280F1A",
+          "SRC-1E1D9D0C95B0",
+          "SRC-8D3A15337A10",
+          "SRC-535859BACBFA",
+          "SRC-5FAAC8D56EBA",
+          "SRC-9D15876C020F",
+          "SRC-AFC9C383A40A",
+          "SRC-75E97719ADBE",
+          "SRC-CA7879186068",
+          "SRC-6684B72B68C5",
+          "SRC-6446239D51CA",
+          "SRC-1F4A4EB01A71",
+          "SRC-E3D0B49566BC",
+          "SRC-82E9433F2E4C",
+          "SRC-2BB3C0AFD9BF",
+          "SRC-F1F4D0E64C3C",
+          "SRC-BFE9DBD17B84",
+          "SRC-1DFD6B63588B",
+          "SRC-540731746CD0",
+          "SRC-E9BFD109C1DA",
+          "SRC-86E8748D0CCF",
+          "SRC-5355CD077F42",
+          "SRC-70C326A14154",
+          "SRC-21FEA136B083",
+          "SRC-85A86A4A1711",
+          "SRC-C00803ECB2C8",
+          "SRC-B7001ACB8FED"
+        ],
+        "count": 35
+      },
+      {
+        "title": "genomic analysis reveals finding in species",
+        "source_ids": [
+          "SRC-2829129143CB",
+          "SRC-D72267EF94EF",
+          "SRC-30B608FC4D31",
+          "SRC-40A4F149A5C8",
+          "SRC-90EB4B3A6789",
+          "SRC-B900F82A5E20",
+          "SRC-729433ECB7C8",
+          "SRC-93861253371C",
+          "SRC-EFA35AE4AC0B",
+          "SRC-14A7729D52A0",
+          "SRC-82AB0F959207",
+          "SRC-C94A4E3CF95B",
+          "SRC-B98516D75A4C",
+          "SRC-72CC86293FE3",
+          "SRC-13C35B94B7E0",
+          "SRC-3ED7A8341C6C",
+          "SRC-1D80D463D1FF",
+          "SRC-C95F1EDE4F7E",
+          "SRC-9352634435A2",
+          "SRC-C9CE278AD8A7",
+          "SRC-5B314CA8B2FA",
+          "SRC-9E045C624F59",
+          "SRC-DB29B5074A5F",
+          "SRC-5F40D2B8E0E1",
+          "SRC-4C565F3C91C0",
+          "SRC-F67948F8802B",
+          "SRC-57F15D94F2DE",
+          "SRC-AA8A501FF860",
+          "SRC-A88B982D0107",
+          "SRC-1810EDDD5798",
+          "SRC-10A83A3577B7",
+          "SRC-E49954DBAFE8",
+          "SRC-916BEACBAA32",
+          "SRC-226543327DC1",
+          "SRC-8DAF68131C91",
+          "SRC-542445300372",
+          "SRC-5214E4A3B0F1",
+          "SRC-01312E1493C7",
+          "SRC-AB3838E32503"
+        ],
+        "count": 39
+      },
+      {
+        "title": "method approach to measuring quantity",
+        "source_ids": [
+          "SRC-6AAF6B047FD2",
+          "SRC-BACF4B033287",
+          "SRC-7C74D2661B3A",
+          "SRC-06520E67B453",
+          "SRC-01BC0660A538",
+          "SRC-68EAF68D93B2",
+          "SRC-0C186B117ED1",
+          "SRC-18E79300BE66",
+          "SRC-6E71436E4F84",
+          "SRC-9CCB0F5AACF6",
+          "SRC-8892D6E6F54A",
+          "SRC-9F38ED57C2F7",
+          "SRC-52731E73D645",
+          "SRC-DA2C70F5A098",
+          "SRC-E121F25670CC",
+          "SRC-EF36784FFF81",
+          "SRC-7CF2BD9549D0",
+          "SRC-44F1C0E02C4A",
+          "SRC-ADC20EBF35FB",
+          "SRC-7ED582197301",
+          "SRC-F69229354917",
+          "SRC-D33AF6D17ABD",
+          "SRC-515CB169A096",
+          "SRC-6BA1AC90E1B6",
+          "SRC-61BD3EB2FD5A",
+          "SRC-C814ED422F58"
+        ],
+        "count": 26
+      },
+      {
+        "title": "climate change impacts on forest",
+        "source_ids": [
+          "SRC-8B154AB75391",
+          "SRC-87E2986D1143",
+          "SRC-3FEFFC0C73B6",
+          "SRC-C4875A46C9EE",
+          "SRC-45B26EC1B165",
+          "SRC-5464CBDFD72B",
+          "SRC-72E8B37FE979",
+          "SRC-DDB7D6DFDB3E",
+          "SRC-0D9E3168C3B6",
+          "SRC-A914C982B913",
+          "SRC-E4C53FA4ABA4",
+          "SRC-B18C83931CE5"
+        ],
+        "count": 12
+      },
+      {
+        "title": "robot ethics in ethical_scenario",
+        "source_ids": [
+          "SRC-24512C643821",
+          "SRC-84F6677AB263",
+          "SRC-BC62FDD2187D",
+          "SRC-B9CD9E6F8708",
+          "SRC-C7581E47EEA7",
+          "SRC-22AF0A9A8585",
+          "SRC-9C99C97FAACA",
+          "SRC-060EF236B625",
+          "SRC-58A29B626200",
+          "SRC-C2456144BBA6",
+          "SRC-784DDB8D17A8",
+          "SRC-79DD467B50F1",
+          "SRC-5A7282721796",
+          "SRC-50FEA1B182BC",
+          "SRC-2342D42A2823",
+          "SRC-F7CB08EA398E",
+          "SRC-D63D0606FEE5",
+          "SRC-2D51ABE4DFA7",
+          "SRC-9DD1E7636D3D",
+          "SRC-F7AD183A3000",
+          "SRC-BA432B8C390C",
+          "SRC-D9FD01CEAA27",
+          "SRC-6FCD913C6072",
+          "SRC-61DF890F9BAB",
+          "SRC-C861E2D07238"
+        ],
+        "count": 25
+      },
+      {
+        "title": "consciousness studies using methodology",
+        "source_ids": [
+          "SRC-49A1AD4E9EE4",
+          "SRC-CB9971575DCA",
+          "SRC-4A9412BDE473",
+          "SRC-33CFF80FCF73",
+          "SRC-587C7C3CF411",
+          "SRC-1362580BF9F9",
+          "SRC-451E519D820F",
+          "SRC-4D3859111588",
+          "SRC-8816831D56C7",
+          "SRC-10CC536F0F7C",
+          "SRC-57F6A15B9340",
+          "SRC-71CC0D0AFD90",
+          "SRC-5CC2E079F299",
+          "SRC-51C018A1258D",
+          "SRC-1D23C9DBE7D4",
+          "SRC-EBEF7DAFC254",
+          "SRC-CAA783D950CD",
+          "SRC-67955D9722F2",
+          "SRC-D035CB46FAA2",
+          "SRC-CA31E911721E",
+          "SRC-FD749DEC0A0B",
+          "SRC-769F5E6AF722",
+          "SRC-9C159F09743B"
+        ],
+        "count": 23
+      },
+      {
+        "title": "neural correlates of attention",
+        "source_ids": [
+          "SRC-DA9EC5C07641",
+          "SRC-E7DED149BB61",
+          "SRC-6F64ED605BB1",
+          "SRC-6596C00E91A8",
+          "SRC-959384B59763",
+          "SRC-D9129107F380"
+        ],
+        "count": 6
+      },
+      {
+        "title": "sensory processing in sensory_system",
+        "source_ids": [
+          "SRC-396794763248",
+          "SRC-5BC007330C7C",
+          "SRC-A9AA24F89645",
+          "SRC-ACDFA945E926",
+          "SRC-06DF85351F48",
+          "SRC-33EF56D1C839",
+          "SRC-4B37756C4928",
+          "SRC-7E05F0A7E878",
+          "SRC-A2974CF643D6",
+          "SRC-F53F6D8D8AB7",
+          "SRC-74EB4EEBFD91",
+          "SRC-E0BDDDAF7482",
+          "SRC-4EFFC9226ECA",
+          "SRC-58E098F4ED01",
+          "SRC-70ED754F10A8",
+          "SRC-197631398EEA",
+          "SRC-298351794358",
+          "SRC-CFD71D675A68",
+          "SRC-DA28B420C96C",
+          "SRC-814023D3D404",
+          "SRC-0D99A26D132F",
+          "SRC-2AFC66AB4192",
+          "SRC-6E24517705B4",
+          "SRC-031A47BC5923",
+          "SRC-17196BF91E46",
+          "SRC-B2318687F721",
+          "SRC-DE90382C62D1",
+          "SRC-9E6F8C6E53F4",
+          "SRC-C15C8478EE26"
+        ],
+        "count": 29
+      },
+      {
+        "title": "electromagnetic compatibility in device_type",
+        "source_ids": [
+          "SRC-F0BD022E8F47",
+          "SRC-EAC3FBA6FD0E",
+          "SRC-3BC6FC2113A3",
+          "SRC-944207337E3D",
+          "SRC-5CB7315FE164",
+          "SRC-587F8FABA24A",
+          "SRC-05B8FB4CD66D",
+          "SRC-3C0DB6531793",
+          "SRC-8B69D0C0D76D",
+          "SRC-F3069B244D16",
+          "SRC-AB9DDC92F1F7",
+          "SRC-4E217870CB78",
+          "SRC-7D8AD780EF6A",
+          "SRC-C9C2F3A23B19",
+          "SRC-37F5D8C2D28C",
+          "SRC-503C2F64C39C",
+          "SRC-E1D5E4CA86B1",
+          "SRC-F61DCC0D6D0E",
+          "SRC-19E8E1127233",
+          "SRC-80F0EFC2E1AF",
+          "SRC-EB7343AB25FD",
+          "SRC-B6201B7576CD",
+          "SRC-E9435748F201",
+          "SRC-21CAEFE53962",
+          "SRC-456AF48E8EAF",
+          "SRC-4ED1DA7D0530",
+          "SRC-6934022446CF",
+          "SRC-8D372B88E62E",
+          "SRC-CDFBFB5A4A3E",
+          "SRC-FBA1063D2208",
+          "SRC-1A3252A301B0",
+          "SRC-F8617BE3C4DF",
+          "SRC-195462A35E20",
+          "SRC-B9811F3DCD45",
+          "SRC-CE2CBF8B395C",
+          "SRC-E26FC6B58893",
+          "SRC-0AD78A7823AD",
+          "SRC-BFA0D61611EC",
+          "SRC-43705F6C41A7"
+        ],
+        "count": 39
+      },
+      {
+        "title": "optimization methods for ml_problem",
+        "source_ids": [
+          "SRC-CC6B129801CA",
+          "SRC-3EA3A76F07CA",
+          "SRC-1E10F9C11D51",
+          "SRC-670161771DB3",
+          "SRC-5AD1301AD577",
+          "SRC-B26CD8AE2C2A",
+          "SRC-529ACC6AD68E",
+          "SRC-E765B66E61F5",
+          "SRC-361D054820DD",
+          "SRC-2AAD53882822",
+          "SRC-3033C7DE01A7",
+          "SRC-6D2CA748CCAA",
+          "SRC-0BAEE7F09C41",
+          "SRC-C1F7AC6DDA4E",
+          "SRC-EC681A01833B",
+          "SRC-2D49128B687F",
+          "SRC-60FC2EDB29ED",
+          "SRC-D781EE53D048",
+          "SRC-0358F4854F4B",
+          "SRC-FD1F0F43D4A5",
+          "SRC-05C4DFBADE5A",
+          "SRC-15DE57108A86",
+          "SRC-D1FAE292BC58",
+          "SRC-3777D1B0A1E0",
+          "SRC-663E4793D9D0",
+          "SRC-A338BB03FD69",
+          "SRC-6ECCEF884CDC",
+          "SRC-A55D56E53B03",
+          "SRC-A67DE063671E"
+        ],
+        "count": 29
+      },
+      {
+        "title": "development of polymer for application",
+        "source_ids": [
+          "SRC-F99905F8AB6F",
+          "SRC-71944184F8BD",
+          "SRC-54AA223716FB",
+          "SRC-9780C019301E",
+          "SRC-C3EE990DA13A",
+          "SRC-039671320D1D"
+        ],
+        "count": 6
+      },
+      {
+        "title": "population dynamics of human under condition",
+        "source_ids": [
+          "SRC-EC458BE9E9C0",
+          "SRC-3B9D3F0EA618",
+          "SRC-D682E11B51D4",
+          "SRC-1C4D1A7946FA",
+          "SRC-303F4E840852",
+          "SRC-0B4D4DC0B78F",
+          "SRC-139032B49DFD",
+          "SRC-2949502F813D"
+        ],
+        "count": 8
+      },
+      {
+        "title": "pollution monitoring using monitoring_technique",
+        "source_ids": [
+          "SRC-B2E5CD10BF53",
+          "SRC-4E07125FC1CD",
+          "SRC-BA9E24BE5E69",
+          "SRC-5E4BC5B0E96C",
+          "SRC-C53A09B4DBBF",
+          "SRC-DFACAA628CFE",
+          "SRC-D779C5D857AC",
+          "SRC-FC3E41B57409",
+          "SRC-E013F9950E43",
+          "SRC-E82FF5EAB303",
+          "SRC-E2DCCB6E49BF",
+          "SRC-80FE0AE4B1AD",
+          "SRC-D4DEFCC095EB",
+          "SRC-28291E846EC2",
+          "SRC-4F6835D71B0F",
+          "SRC-1D02BC3D2C64",
+          "SRC-795C5D6ED960",
+          "SRC-FDC52ABE6E64",
+          "SRC-B9B88208FC15",
+          "SRC-4E2C007E800D",
+          "SRC-A92844F43923",
+          "SRC-8A666C20A003",
+          "SRC-6053AE4ECD15",
+          "SRC-5D3F1C13389D",
+          "SRC-FAEA88DBAFE3",
+          "SRC-5D40FD6CDB3C",
+          "SRC-6F32806A7C87",
+          "SRC-9BDB8DDA6F2B",
+          "SRC-28CD94AC0CC5",
+          "SRC-763AFD7193D8",
+          "SRC-FEF22614C7A4",
+          "SRC-B3232BC4A925",
+          "SRC-F473A97CFE3B",
+          "SRC-DF3FF65920AA"
+        ],
+        "count": 34
+      },
+      {
+        "title": "neural correlates of memory",
+        "source_ids": [
+          "SRC-AA17AA3089F6",
+          "SRC-BAABBDDBFF3C",
+          "SRC-2D2FAFB9D4BD",
+          "SRC-6D3398A07C6E",
+          "SRC-A2E1F7725C87",
+          "SRC-8E9CA3607CF3",
+          "SRC-099919DAA784",
+          "SRC-E8ACA1A3E946",
+          "SRC-F49C7FCCC9CA"
+        ],
+        "count": 9
+      },
+      {
+        "title": "convergence analysis of numerical_method",
+        "source_ids": [
+          "SRC-D19039558708",
+          "SRC-FE7298C3EE5F",
+          "SRC-3F7A27DD1201",
+          "SRC-EBADFCD8D809",
+          "SRC-D76DFD42870F",
+          "SRC-26BE89D59AD9",
+          "SRC-402386B9EB53",
+          "SRC-A2AEFCD43D5F",
+          "SRC-585575736093",
+          "SRC-03996075D4C8",
+          "SRC-8DDEA0335832",
+          "SRC-76E070F33E53",
+          "SRC-EB714DE1B851",
+          "SRC-B83951B4138F",
+          "SRC-34B677A72A1A",
+          "SRC-0456A19B0F42",
+          "SRC-E0344A118ED6",
+          "SRC-9132F13C642F",
+          "SRC-75A7D24D33F3",
+          "SRC-5A0EFCFA5116",
+          "SRC-E5C0DEB16582",
+          "SRC-74B6043820FC",
+          "SRC-192412032DA6",
+          "SRC-EB38FBABFFCE",
+          "SRC-7314471910B6",
+          "SRC-D77170A12BE6",
+          "SRC-F59244D7C648",
+          "SRC-22A8FDBFA263",
+          "SRC-919D847F3554",
+          "SRC-4B17117B8B2E"
+        ],
+        "count": 30
+      },
+      {
+        "title": "wireless sensor networks for monitoring_task",
+        "source_ids": [
+          "SRC-43048E85EB60",
+          "SRC-8AED3D8D49D0",
+          "SRC-66EAE65B4C6D",
+          "SRC-AB1BBD050A5C",
+          "SRC-D4599EAE536B",
+          "SRC-A885544A77A8",
+          "SRC-D211EC1ACF97",
+          "SRC-4B5826322E1E",
+          "SRC-DFD1C6A5E5EC",
+          "SRC-08439CF34513",
+          "SRC-752D5805D891",
+          "SRC-065CFD2284BA",
+          "SRC-9B886F19C17C",
+          "SRC-D217B7924C90",
+          "SRC-C595FFB48FC5",
+          "SRC-A8D6BEE1BFFD",
+          "SRC-5B45E6834F23",
+          "SRC-F11D980F8248",
+          "SRC-5C33FD99FB3E",
+          "SRC-5F7A78BEE47B",
+          "SRC-3D4CE2856857",
+          "SRC-A8C463E135BD",
+          "SRC-1BA898C67267",
+          "SRC-37F17CA80A30",
+          "SRC-598B2A61EE1E",
+          "SRC-13A6268541F9",
+          "SRC-037D8658C4D0",
+          "SRC-DB774BB7F06B",
+          "SRC-07B2D6095CBD",
+          "SRC-DFFD4824E955"
+        ],
+        "count": 30
+      },
+      {
+        "title": "solar cell efficiency enhancement using pv_material",
+        "source_ids": [
+          "SRC-F947B158E407",
+          "SRC-9CFD9AAF5972",
+          "SRC-67B8C13B7A10",
+          "SRC-7E1F9B2E83D2",
+          "SRC-3FBB83AB4B41",
+          "SRC-45D39BDF3CC6",
+          "SRC-4D167988B447",
+          "SRC-72F224261B1D",
+          "SRC-D83ADB84D966",
+          "SRC-D762414AAA97",
+          "SRC-0DC99D06EE14",
+          "SRC-54012C3B2D17",
+          "SRC-E2262BE84BF6",
+          "SRC-EF4491938A4F",
+          "SRC-69477B568206",
+          "SRC-224259E25BAE",
+          "SRC-FD2FB23D3CA3",
+          "SRC-0CD719817854",
+          "SRC-2FFA3E279CDE",
+          "SRC-8A3242D3C7A2",
+          "SRC-D5561966AD64",
+          "SRC-BFD677BAFCCC",
+          "SRC-A920B8E99A11",
+          "SRC-C9C748488830",
+          "SRC-FF28BE542D6F",
+          "SRC-818ED5831376",
+          "SRC-7627A0F46296",
+          "SRC-AE22D27AF5A5",
+          "SRC-145C498EEBC0",
+          "SRC-F440E3C6F82C",
+          "SRC-E7F6FC0ECC30",
+          "SRC-35A5E88B710B",
+          "SRC-9152CA511431"
+        ],
+        "count": 33
+      },
+      {
+        "title": "process intensification in unit_operation",
+        "source_ids": [
+          "SRC-32B1775EA7B3",
+          "SRC-316A205C37F2",
+          "SRC-36CBA8913F0A",
+          "SRC-AF9B9671B6CD",
+          "SRC-718E8835E7B4",
+          "SRC-8D90C889FCEF",
+          "SRC-640BB2B68223",
+          "SRC-3C0AB8FAB5F5",
+          "SRC-084CF8F3307C",
+          "SRC-2EB233F9B519",
+          "SRC-5A09B9258938",
+          "SRC-3B0EE46A193D",
+          "SRC-C73DEF06D4EF",
+          "SRC-0E1A018D5995",
+          "SRC-A5E7C0B1AB6E",
+          "SRC-4E76C50BBA3D",
+          "SRC-273BA719A5FD",
+          "SRC-B4CC663C3583",
+          "SRC-ED260B956817",
+          "SRC-6DAD0ED7BA4D",
+          "SRC-44E5833952BA",
+          "SRC-849B0920BC53",
+          "SRC-A07452438125",
+          "SRC-D1443FE99B86",
+          "SRC-865687EFFCD0",
+          "SRC-4D3CE362F086"
+        ],
+        "count": 26
+      },
+      {
+        "title": "design optimization of linkage for performance_metric",
+        "source_ids": [
+          "SRC-4F0243A897AC",
+          "SRC-E3680A42BAD5",
+          "SRC-39F8B2713A86",
+          "SRC-74467150EEBD",
+          "SRC-49DA149256CD",
+          "SRC-E155EC073C7D",
+          "SRC-E39A15899EF1",
+          "SRC-7364EA1A3B26"
+        ],
+        "count": 8
+      },
+      {
+        "title": "neural correlates of decision-making",
+        "source_ids": [
+          "SRC-066866B6E6F0",
+          "SRC-5C7BD60A8A78",
+          "SRC-81994EC35515",
+          "SRC-787C291AE960",
+          "SRC-81B463D4D8FA",
+          "SRC-FB27ACAF014F",
+          "SRC-599CAC80D02B"
+        ],
+        "count": 7
+      },
+      {
+        "title": "spectroscopic characterization of complex",
+        "source_ids": [
+          "SRC-0699A118AA9B",
+          "SRC-A41B513F70D7",
+          "SRC-8B8A483AB5A5",
+          "SRC-767044FEE07F",
+          "SRC-AE1BD5D615A2",
+          "SRC-F76BB8936E7A",
+          "SRC-E906A455670D",
+          "SRC-18ED2C746DE2",
+          "SRC-27C2578BE5D7",
+          "SRC-1BC666762B93",
+          "SRC-957F478DC34E",
+          "SRC-115CB80B436B",
+          "SRC-3C1AE3D6E0BA",
+          "SRC-9329C9661A17",
+          "SRC-F255C6CB52CF",
+          "SRC-AFD2C7751836",
+          "SRC-1C6D60163CED",
+          "SRC-2939E07C863D",
+          "SRC-574141520BB2",
+          "SRC-23A2748155C9",
+          "SRC-9DE22DE990FE",
+          "SRC-F7E2D816F41A",
+          "SRC-AD67E56EA217",
+          "SRC-009CE7D1B63D",
+          "SRC-F3C21519C1B3",
+          "SRC-648D2302B08F",
+          "SRC-45B00C87D61B",
+          "SRC-252CF1F36CB6",
+          "SRC-81B8AC665A26",
+          "SRC-E9D880A742E4",
+          "SRC-DBC4498C1E72",
+          "SRC-5664854DCDAD"
+        ],
+        "count": 32
+      },
+      {
+        "title": "low-power circuit design for application",
+        "source_ids": [
+          "SRC-ED3F41EE9B81",
+          "SRC-9036DA4B0304",
+          "SRC-6E164106AB53",
+          "SRC-A206B72FB15E",
+          "SRC-A739E85652D9",
+          "SRC-9642942481C1",
+          "SRC-5DFA8C622254",
+          "SRC-69AE70111A4C",
+          "SRC-E2CC8CDB4BDD",
+          "SRC-D231B62A49BE",
+          "SRC-505D5E3FE1FB",
+          "SRC-9F0D7C1ABE4C",
+          "SRC-FC5223610385",
+          "SRC-84F394092433",
+          "SRC-AF56801B5437",
+          "SRC-1033CE58C6ED",
+          "SRC-D5ACB9E77691",
+          "SRC-72ED51A7E8BE",
+          "SRC-92BB4201F22C",
+          "SRC-4E1F87C19878",
+          "SRC-F4BBB8D2BE63",
+          "SRC-3AFF3048B5EB",
+          "SRC-2E0B983729CA",
+          "SRC-08C5E35FB397",
+          "SRC-202D1D161212",
+          "SRC-AD9E4E3E39E4",
+          "SRC-58FC3EC55D1C",
+          "SRC-A85E9FD913A3",
+          "SRC-43626A770780",
+          "SRC-B9EDB621D93B",
+          "SRC-34A72F1519FE",
+          "SRC-AC8DAB3B599E",
+          "SRC-06F259185C62",
+          "SRC-5BCC0149610E",
+          "SRC-DC70524D31E7",
+          "SRC-DD15E0A3117A",
+          "SRC-0373847399F3",
+          "SRC-BD4B686CBD42",
+          "SRC-6D7F82B33D71",
+          "SRC-D125DD8F8E2E",
+          "SRC-AB04A277DE14",
+          "SRC-7F0E2D94F02D"
+        ],
+        "count": 42
+      },
+      {
+        "title": "integrated circuit implementation of function",
+        "source_ids": [
+          "SRC-0667AF8F743C",
+          "SRC-EB235ADFF5DD",
+          "SRC-E31545112F68",
+          "SRC-BE1DC9F31767",
+          "SRC-AD8051CBF916",
+          "SRC-C6184469F26D",
+          "SRC-BC83C2C9FEE4",
+          "SRC-DEC70D1A1D3F",
+          "SRC-47D94380C2B1",
+          "SRC-AAFB1503FB5A",
+          "SRC-350E004111CE",
+          "SRC-1BA97C8CC532",
+          "SRC-8C0BA8BE55DE",
+          "SRC-CCFC2EAC9CE6",
+          "SRC-0B8F4D522814",
+          "SRC-035587199BBC",
+          "SRC-B68A0EC6AD93",
+          "SRC-20D4FEF83675",
+          "SRC-0FAF1AA88ECC",
+          "SRC-B7B552D01E68",
+          "SRC-4381EE1A3425",
+          "SRC-4F37DD3604E0",
+          "SRC-E888682737E9",
+          "SRC-7D0BF282C87A"
+        ],
+        "count": 24
+      },
+      {
+        "title": "transport phenomena in dimensionality system",
+        "source_ids": [
+          "SRC-D11F0525195C",
+          "SRC-35A6B24704A1",
+          "SRC-CE89A6874FA2",
+          "SRC-0BF0B49BAFFA",
+          "SRC-14A237745B30",
+          "SRC-0E92BF7407AF",
+          "SRC-ADC79167A6CE",
+          "SRC-E28FFFAB5E27",
+          "SRC-52BAACED0999",
+          "SRC-B71C7755F670",
+          "SRC-8BACF9C602E8",
+          "SRC-0AB02BC4A609",
+          "SRC-83DDC29201DA",
+          "SRC-8169B805C605",
+          "SRC-4E5CD9D84E40",
+          "SRC-ABE67629ACFC",
+          "SRC-5BEA28C87F23",
+          "SRC-59D796BF3522",
+          "SRC-0952B6EC8B3C",
+          "SRC-ADB78E5223A9",
+          "SRC-1223248BE5D8",
+          "SRC-CBA4981D9C0A",
+          "SRC-C06565C5ECF8",
+          "SRC-F31E918DDC9A",
+          "SRC-B5ABBDEC6D11",
+          "SRC-6AB0E9F59B64",
+          "SRC-A46C4EA7349C",
+          "SRC-EA464CC7F101",
+          "SRC-FCC8BF394D58",
+          "SRC-A7654C2DE9B1"
+        ],
+        "count": 30
+      },
+      {
+        "title": "soil contamination by contaminant",
+        "source_ids": [
+          "SRC-DD6BB35E4A19",
+          "SRC-B70068C6F538",
+          "SRC-14EF6084C978",
+          "SRC-84877754A5A9",
+          "SRC-EAD26BF1351F",
+          "SRC-C7560A4D684E",
+          "SRC-9387792FA317",
+          "SRC-B7E681572E87",
+          "SRC-02DF00E81554",
+          "SRC-E510AA764136",
+          "SRC-5C2B9DCC13B5",
+          "SRC-E6888B7936ED",
+          "SRC-7F9CC6A537F6",
+          "SRC-0C07DE640D34",
+          "SRC-D28FD4B37070",
+          "SRC-52916921D3AC",
+          "SRC-15A745023AB0",
+          "SRC-89E6691A28E1",
+          "SRC-E9FF1823DBA2",
+          "SRC-CF9C3B90FF6A",
+          "SRC-EACF23A3DA09",
+          "SRC-A1D8735928E8",
+          "SRC-EAEE90A38F27",
+          "SRC-C4FD52DB9D02",
+          "SRC-50916716ED92",
+          "SRC-DC1808A8E842",
+          "SRC-2289A1FB661F",
+          "SRC-646A8E8B5F41",
+          "SRC-86ABCEBEBF95",
+          "SRC-4D393FF7EF8E",
+          "SRC-40F659F9147F",
+          "SRC-1C26AECEF5A3",
+          "SRC-1C673DB38946",
+          "SRC-4A082F470F9E",
+          "SRC-6152839A6EAF"
+        ],
+        "count": 35
+      },
+      {
+        "title": "perception systems for perception_task",
+        "source_ids": [
+          "SRC-F44D3CBD352A",
+          "SRC-410824D1366C",
+          "SRC-20840EFC6EBE",
+          "SRC-781BB8ECD172",
+          "SRC-146D52DDEF43",
+          "SRC-C977076346E0",
+          "SRC-C5F7B5039E36",
+          "SRC-9EA2DD42B12C",
+          "SRC-F37E16DE7D55",
+          "SRC-9BE0C1FAA438",
+          "SRC-2AC27CDE9497",
+          "SRC-C4009DD24440",
+          "SRC-5DDFC53F4726",
+          "SRC-D21D04801A9C",
+          "SRC-AC7B7322AC29",
+          "SRC-EFF1F06D8AF5",
+          "SRC-DF5699A64213",
+          "SRC-956CDC549076",
+          "SRC-2DA560987511",
+          "SRC-1DD1D74253B2",
+          "SRC-0B1C80BFD095",
+          "SRC-810915E1840E",
+          "SRC-DB9DAD5EF5D8",
+          "SRC-1258B801AA3B",
+          "SRC-017448F1EB61",
+          "SRC-2E3C35A55EA6",
+          "SRC-7752C242BF07",
+          "SRC-78289D1C70F6",
+          "SRC-25E3B514D58C",
+          "SRC-187C4E10C8DC",
+          "SRC-B614A4E174EB",
+          "SRC-F1364C35D175",
+          "SRC-8758DB29C649",
+          "SRC-68B0B55BFFE7"
+        ],
+        "count": 34
+      },
+      {
+        "title": "neural circuit mapping of circuit_name",
+        "source_ids": [
+          "SRC-86A35C83F212",
+          "SRC-646910892383",
+          "SRC-B00AC6FF8662",
+          "SRC-0640BEE00CC8",
+          "SRC-AF13E8010893",
+          "SRC-D5147B55451A",
+          "SRC-A82820D4773A",
+          "SRC-E98F91A236E0",
+          "SRC-9A175F5ED5B3",
+          "SRC-0725AFDD121A",
+          "SRC-AEEE038F3E2C",
+          "SRC-64ACE04CE873",
+          "SRC-F99BE0D83F22",
+          "SRC-015B357CB4E9",
+          "SRC-E6AD5E775E62",
+          "SRC-0601FAEF8461",
+          "SRC-B608A70C733A",
+          "SRC-D05325EEBE3F",
+          "SRC-86421869D41C",
+          "SRC-45D89261BFCB",
+          "SRC-5EA8253A0BEA",
+          "SRC-76BAB520CAB3",
+          "SRC-612E40E55521",
+          "SRC-8FBB13E07DA2"
+        ],
+        "count": 24
+      },
+      {
+        "title": "molecular mechanisms of polymerization in arabidopsis",
+        "source_ids": [
+          "SRC-CFD11159E39B",
+          "SRC-8ADB647DC3CD",
+          "SRC-6FC7940F0548"
+        ],
+        "count": 3
+      },
+      {
+        "title": "carbon capture using capture_material",
+        "source_ids": [
+          "SRC-4C4A2ACF4B6C",
+          "SRC-967D4C7A393D",
+          "SRC-09136E64580F",
+          "SRC-6F499F1932E2",
+          "SRC-1E80EDCEFB01",
+          "SRC-F319159FBE39",
+          "SRC-D7611833BD6A",
+          "SRC-B4B843D016CD",
+          "SRC-BDC959C22FF7",
+          "SRC-827F2A22CDB0",
+          "SRC-78C40B2D32E0",
+          "SRC-538C75968F0D",
+          "SRC-C21AE3FCD4AB",
+          "SRC-EE5DD05FAB68",
+          "SRC-8D3C80B9A073",
+          "SRC-EC113F8DB2B6",
+          "SRC-0AB6C2A8A38E",
+          "SRC-1877ADDA8C30",
+          "SRC-EBDD00046B48",
+          "SRC-31231047EFBE",
+          "SRC-4E73076DDFD8",
+          "SRC-EE65A46FDA1F",
+          "SRC-7DDDA5D5DEDB",
+          "SRC-B4582E6FF614",
+          "SRC-71CE1EC7CE37",
+          "SRC-54115EA87F0B",
+          "SRC-9E020F2417B6",
+          "SRC-93557CB0A989",
+          "SRC-7D8BA6A24CD5",
+          "SRC-3AA7B59656F0",
+          "SRC-4C5761415AF5"
+        ],
+        "count": 31
+      },
+      {
+        "title": "thermal management in system",
+        "source_ids": [
+          "SRC-FCC2715E6BC1",
+          "SRC-9CBFAA4333FD",
+          "SRC-86299C9A3F07",
+          "SRC-2D1657A0613E",
+          "SRC-52E8B49FABEB",
+          "SRC-806794140DA0",
+          "SRC-931CA3EE240E",
+          "SRC-9C5E8A4DD861",
+          "SRC-8FD093CF90FB",
+          "SRC-79AA16E7BC4C",
+          "SRC-96D14BF74694",
+          "SRC-5A67A10C2AE6",
+          "SRC-6DA98B0E1B99",
+          "SRC-8E0B27CC619F",
+          "SRC-E6CD09D921FE",
+          "SRC-080C17D666C3",
+          "SRC-93179F564160",
+          "SRC-DA7F95E3A928",
+          "SRC-005BBBD9584D",
+          "SRC-305FF2446FB3",
+          "SRC-20BA88381CF0",
+          "SRC-D99DB197FCD4",
+          "SRC-61E922362022",
+          "SRC-4058B6FB847C",
+          "SRC-D645FF7D178E",
+          "SRC-8A3FE172E9B9",
+          "SRC-8805AF080E83",
+          "SRC-E17976E4995E",
+          "SRC-CD4A3C4B0F80",
+          "SRC-7F65216253D6",
+          "SRC-003330AA92D6"
+        ],
+        "count": 31
+      },
+      {
+        "title": "phase transitions in graphene thin films",
+        "source_ids": [
+          "SRC-91E26874EEF5",
+          "SRC-2652D92BAAF8",
+          "SRC-5463CAC08D0D"
+        ],
+        "count": 3
+      },
+      {
+        "title": "molecular mechanisms of isomerization in e. coli",
+        "source_ids": [
+          "SRC-64A4176EAEA1",
+          "SRC-1E83CB8D5961"
+        ],
+        "count": 2
+      },
+      {
+        "title": "corrosion resistance of oxide in environment",
+        "source_ids": [
+          "SRC-C15B93D2D271",
+          "SRC-65E670C6166C",
+          "SRC-C9A5659C7B75",
+          "SRC-9EC436E7ED9D",
+          "SRC-8CE947B546A9",
+          "SRC-8DAFE3468D89",
+          "SRC-36A4A1DFFFEE",
+          "SRC-D7B7C4C74CC7"
+        ],
+        "count": 8
+      },
+      {
+        "title": "swarm robotics for swarm_task",
+        "source_ids": [
+          "SRC-272C32CAD06B",
+          "SRC-C9B1A0E8360F",
+          "SRC-E80370A33170",
+          "SRC-C7234F806B26",
+          "SRC-99E344AF8C57",
+          "SRC-0830D4291D96",
+          "SRC-6D828795095D",
+          "SRC-5CB70EDCFB2F",
+          "SRC-8A0D963DC099",
+          "SRC-0701AC540401",
+          "SRC-5F175B395F97",
+          "SRC-F3564F0317F4",
+          "SRC-9B0D2DCD514B",
+          "SRC-F4B52E346CCD",
+          "SRC-1B7415802625",
+          "SRC-9F51342E3A94",
+          "SRC-9920350C0B96",
+          "SRC-632556E30875",
+          "SRC-7549A8A8CF4E",
+          "SRC-F1C766C9A3A0",
+          "SRC-0E78ABBE604D",
+          "SRC-EF65883FAC07",
+          "SRC-6F6485F28248",
+          "SRC-6774BDC56277",
+          "SRC-CBD5B4DA1289",
+          "SRC-45E3EB534273",
+          "SRC-DCE3B640B818",
+          "SRC-89085D75C84E",
+          "SRC-1DC48501BECA",
+          "SRC-84E08CA0868B",
+          "SRC-B97764C56671",
+          "SRC-8759E826E321",
+          "SRC-C5D41575B24D",
+          "SRC-CBED86B756BD"
+        ],
+        "count": 34
+      },
+      {
+        "title": "microstructural evolution during polymerization",
+        "source_ids": [
+          "SRC-3C48E39C0795",
+          "SRC-159CDA83254F",
+          "SRC-E7F54CAF856B",
+          "SRC-4DEF9F08430B",
+          "SRC-9EBFA38403FD",
+          "SRC-F6824914914C"
+        ],
+        "count": 6
+      },
+      {
+        "title": "differential equations governing magnetoresistance",
+        "source_ids": [
+          "SRC-B20D07DBC75D",
+          "SRC-B0EC9110A416",
+          "SRC-FEF433C11540",
+          "SRC-DB9056DB1516",
+          "SRC-DEADF7EC658F",
+          "SRC-BBF9841081B9",
+          "SRC-F74C6A3BE3AF",
+          "SRC-A457507E06CE",
+          "SRC-55034E1B70D9",
+          "SRC-02E8E439F864",
+          "SRC-6E96D3DAA5BC"
+        ],
+        "count": 11
+      },
+      {
+        "title": "natural language processing for nlp_task",
+        "source_ids": [
+          "SRC-6FA177C2214F",
+          "SRC-5A8B54185436",
+          "SRC-751841052C8F",
+          "SRC-D9A73AB4F6A2",
+          "SRC-476D8A6C6A1C",
+          "SRC-1C5E885F3391",
+          "SRC-CF8322F3F819",
+          "SRC-3C0240EC76D4",
+          "SRC-14D68EBDB0AA",
+          "SRC-9C220BBF484D",
+          "SRC-B0D925C99EFE",
+          "SRC-0EC25A773E5F",
+          "SRC-328E0AAC27A3",
+          "SRC-194964776655",
+          "SRC-CD83A3638955",
+          "SRC-17C39667DF9B",
+          "SRC-242E5A59BA5B",
+          "SRC-945D894756B5",
+          "SRC-4669EDF2B4B7",
+          "SRC-EDD478F316F2",
+          "SRC-1663BC59E089",
+          "SRC-CE8D8884EDF7",
+          "SRC-F903127BA949",
+          "SRC-8749B441D6D6",
+          "SRC-B93221626077",
+          "SRC-F4D8F95EEC84",
+          "SRC-511CDE6416FA",
+          "SRC-5173E3FE790E",
+          "SRC-9107EB43EB59",
+          "SRC-1D1A9A643E69",
+          "SRC-489F4C086475"
+        ],
+        "count": 31
+      },
+      {
+        "title": "control systems for controlled_system",
+        "source_ids": [
+          "SRC-76C5516A959E",
+          "SRC-E992D9EBDF5F",
+          "SRC-F3C00769B117",
+          "SRC-D9BF1803CF2A",
+          "SRC-60010924BA4E",
+          "SRC-AF48400E1C6A",
+          "SRC-CDA65ED5B732",
+          "SRC-39E4175A7B6F",
+          "SRC-735628BA2F88",
+          "SRC-E17A728428C0",
+          "SRC-F522D6967049",
+          "SRC-DC16D32455E2",
+          "SRC-B25B4593A125",
+          "SRC-12088378C716",
+          "SRC-16180642E26D",
+          "SRC-F49A2E6A1B63",
+          "SRC-449C26065772",
+          "SRC-DE4BAE60BB81",
+          "SRC-2291DB06B87B",
+          "SRC-62A7F473CAAC",
+          "SRC-08017854C5BE",
+          "SRC-188C92D68201",
+          "SRC-F802DA5B4606",
+          "SRC-E7915BF2EDB0",
+          "SRC-DDBA6E226FE9",
+          "SRC-104AFA8AB0C1",
+          "SRC-EEFDB0FF6668",
+          "SRC-094747DE1D3E",
+          "SRC-E5EDDD5A7BF0"
+        ],
+        "count": 29
+      },
+      {
+        "title": "kinetic analysis of reaction mechanisms",
+        "source_ids": [
+          "SRC-224F5BE6348A",
+          "SRC-AD08EDEEFBC6",
+          "SRC-D754794843A5",
+          "SRC-4064CBDB9965",
+          "SRC-D36A726F201E",
+          "SRC-6B144ECE135C",
+          "SRC-81DDC9E6513F",
+          "SRC-20CB5F3D4E62",
+          "SRC-E4E3AA284EC7",
+          "SRC-1F3CAFCE1E7E",
+          "SRC-2A5F2F88CD0C",
+          "SRC-668C51447093",
+          "SRC-92B94CD5D6A4",
+          "SRC-5A79C67A6CD4",
+          "SRC-29D5430DA28F",
+          "SRC-B23174B901FC",
+          "SRC-45D19717365D",
+          "SRC-DBA78BDA659B",
+          "SRC-969020229F47",
+          "SRC-39B6238A1B08",
+          "SRC-F6EDB2F25B6A",
+          "SRC-229863435D48",
+          "SRC-A6047B89767E",
+          "SRC-F699FD12CCE4",
+          "SRC-ACE43D5CCACE",
+          "SRC-58C93693665E",
+          "SRC-18C6B03D2752",
+          "SRC-AA1F9B0DB7A7",
+          "SRC-7E2505F4FE0A",
+          "SRC-D2879A32C6BB",
+          "SRC-E727F8859819",
+          "SRC-48AA9D8285B0",
+          "SRC-2960A9C6B5F9",
+          "SRC-5E5CD4C89EF2",
+          "SRC-BE33225121B8",
+          "SRC-207084273CE6"
+        ],
+        "count": 36
+      },
+      {
+        "title": "investigation of magnetoresistance using diffraction",
+        "source_ids": [
+          "SRC-E53828C2E4BE",
+          "SRC-ED56C42EC228",
+          "SRC-CA988465EFB0"
+        ],
+        "count": 3
+      },
+      {
+        "title": "advanced superconductor coatings for extreme environments",
+        "source_ids": [
+          "SRC-871AABBF0734",
+          "SRC-6E16334FEF10",
+          "SRC-D2394FD3C4BA",
+          "SRC-A310939927C3",
+          "SRC-6B3665929FE6",
+          "SRC-4DD7B6079177",
+          "SRC-826082746EA3"
+        ],
+        "count": 7
+      },
+      {
+        "title": "neural correlates of learning",
+        "source_ids": [
+          "SRC-2390334C970F",
+          "SRC-0C1A5780D6BF",
+          "SRC-4343DB6F04EB",
+          "SRC-E9AD72528451",
+          "SRC-1539AC72E1C6",
+          "SRC-DEFA1FC63565",
+          "SRC-236BF4538BC7"
+        ],
+        "count": 7
+      },
+      {
+        "title": "signal processing algorithms for signal_type",
+        "source_ids": [
+          "SRC-47664C34BCC3",
+          "SRC-DE998EC5D52A",
+          "SRC-5844A883361F",
+          "SRC-15D9E95B84B9",
+          "SRC-AB749008096D",
+          "SRC-BEB80A885022",
+          "SRC-181EBD0A5D68",
+          "SRC-4434942DAE56",
+          "SRC-05E03DD9613B",
+          "SRC-FDD6BAD2DBEB",
+          "SRC-0659A8ACD75E",
+          "SRC-E0DE9796C62B",
+          "SRC-F97E24AED8EA",
+          "SRC-7E7CCBB512CB",
+          "SRC-432B20078D08",
+          "SRC-380B74F54FBE",
+          "SRC-69936F7E00FE",
+          "SRC-8DF95CEEDAEC",
+          "SRC-C5763EDA2A5D",
+          "SRC-30AB5DD012D1",
+          "SRC-13CA0A81BAA6",
+          "SRC-9D265D883A6C",
+          "SRC-F0B65F9A1501",
+          "SRC-757F185D7A73",
+          "SRC-4D27AF04D481",
+          "SRC-662823F69C1B"
+        ],
+        "count": 26
+      },
+      {
+        "title": "bioprocess engineering for bioproduct",
+        "source_ids": [
+          "SRC-57BD8AFC5D36",
+          "SRC-15678534558B",
+          "SRC-5FD853866168",
+          "SRC-D569E3C23E47",
+          "SRC-080A994620D7",
+          "SRC-606AC8BA0EE3",
+          "SRC-81C267E91F0D",
+          "SRC-5C9E0EAD9862",
+          "SRC-E82AE17CE7A5",
+          "SRC-99AB0AE126D0",
+          "SRC-E1E45C8D0EFD",
+          "SRC-841E8BCF127E",
+          "SRC-91EE9471A070",
+          "SRC-0DABEEC481DC",
+          "SRC-187760245127",
+          "SRC-BF9B3A5C3CD7",
+          "SRC-DFEDE7322CD9",
+          "SRC-70B6EA12A0F8",
+          "SRC-BA172A63D89F",
+          "SRC-FDE4D9D96BD7",
+          "SRC-290A4790EE91",
+          "SRC-DCD4B632BB65",
+          "SRC-57DB6B200F0F",
+          "SRC-F61253888FFC",
+          "SRC-CE39FEFBE966"
+        ],
+        "count": 25
+      },
+      {
+        "title": "neural correlates of perception",
+        "source_ids": [
+          "SRC-75DF5CFA91BC",
+          "SRC-174443566C9D",
+          "SRC-BCC67D559FF2",
+          "SRC-83EBD247606F",
+          "SRC-33C720370AB8",
+          "SRC-11F679E768E7",
+          "SRC-E07F00810B3B",
+          "SRC-65E3F2CBA881",
+          "SRC-A954072DA767",
+          "SRC-7479AC7C0C9E"
+        ],
+        "count": 10
+      },
+      {
+        "title": "mechanistic study of cyclization reactions",
+        "source_ids": [
+          "SRC-E128501AB6A5",
+          "SRC-2DDEB2D88856",
+          "SRC-DBD1BDFF8EEF",
+          "SRC-4DB1DBEA8F05",
+          "SRC-DA65DFD59254",
+          "SRC-614E2626F602",
+          "SRC-CEED96FA9281"
+        ],
+        "count": 7
+      },
+      {
+        "title": "mechanistic study of reduction reactions",
+        "source_ids": [
+          "SRC-E7495C890758",
+          "SRC-C4572E19A739",
+          "SRC-7B0393EF8B12",
+          "SRC-E01FEB378E86",
+          "SRC-E12041A7C3FC",
+          "SRC-E5AAF4E7ACD3",
+          "SRC-0A0D825F8C96",
+          "SRC-082DB9FBAC68"
+        ],
+        "count": 8
+      },
+      {
+        "title": "regulation of gene_expression by factor",
+        "source_ids": [
+          "SRC-B9AF3399837C",
+          "SRC-FB5CE1104B7E",
+          "SRC-AD67ABAD65ED",
+          "SRC-DB935AB85B12",
+          "SRC-95A0FBCE4D96",
+          "SRC-5F173E1BD798",
+          "SRC-56281989511F",
+          "SRC-5384FBEDD1A5",
+          "SRC-6D08557EEFE0",
+          "SRC-AE56B654219A",
+          "SRC-063AE1F7E9DA",
+          "SRC-CD525B7D6C89",
+          "SRC-EF3915A6E242",
+          "SRC-76C9B082B142",
+          "SRC-EE41475A5C3B",
+          "SRC-BA0F3F363637",
+          "SRC-F21814ECB19C",
+          "SRC-87C774E7A60C",
+          "SRC-FA5350F6B763",
+          "SRC-C39E1C344FA1",
+          "SRC-B6B665910D30",
+          "SRC-03DC4C54794C",
+          "SRC-E6AD3D5FD9DA",
+          "SRC-CA539036F14D",
+          "SRC-4447666653DF"
+        ],
+        "count": 25
+      },
+      {
+        "title": "fatigue life prediction of sensor under loading",
+        "source_ids": [
+          "SRC-9D10E695BC08",
+          "SRC-FAB8EB2A9818",
+          "SRC-A674BFBF04B7",
+          "SRC-2A254E8895C5",
+          "SRC-4CBDD47395DE",
+          "SRC-295D8E878511",
+          "SRC-324AD29E4328",
+          "SRC-6C54CB94C849",
+          "SRC-AA8CE059D1DA"
+        ],
+        "count": 9
+      },
+      {
+        "title": "biofuel production from biomass_type",
+        "source_ids": [
+          "SRC-2C76FB873E37",
+          "SRC-6D9BFE3AF049",
+          "SRC-F1CFB972DA24",
+          "SRC-9CB7C50B4E9E",
+          "SRC-9053EAA13C75",
+          "SRC-5614F0C15E07",
+          "SRC-E3A4A5CDF683",
+          "SRC-1A3739147246",
+          "SRC-29359EDE09D0",
+          "SRC-32945BD23375",
+          "SRC-D73EB25F73D2",
+          "SRC-CBFA508056B4",
+          "SRC-4FE4B13C693A",
+          "SRC-164C49AB7916",
+          "SRC-CC0FB60CC642",
+          "SRC-C29F7D63006C",
+          "SRC-1D88662BAB60",
+          "SRC-A2A18CFE1919",
+          "SRC-C70EB3F603F8",
+          "SRC-3E2FCACBF38C",
+          "SRC-07928F59F709",
+          "SRC-DC0BFA409543",
+          "SRC-4CD4474537C8",
+          "SRC-04E3D29319A6",
+          "SRC-224A37EF912C",
+          "SRC-C3005C42A00A",
+          "SRC-8CA6B7FD8D16",
+          "SRC-8A393312E83A",
+          "SRC-CFC98553E2E6"
+        ],
+        "count": 29
+      },
+      {
+        "title": "energy storage in storage_material materials",
+        "source_ids": [
+          "SRC-C55CD660B0F7",
+          "SRC-5D73DD58766B",
+          "SRC-E6F6F15AF02D",
+          "SRC-C3B27B2C474C",
+          "SRC-A1461FEBE88B",
+          "SRC-1CDCE6DC03A2",
+          "SRC-232D25867023",
+          "SRC-8527D3041E90",
+          "SRC-EBBB42730C4A",
+          "SRC-5DA2EBACB5BE",
+          "SRC-A7DB2D676507",
+          "SRC-E39DA88D9AEC",
+          "SRC-407EE4BD7CE0",
+          "SRC-73D030E889E4",
+          "SRC-4F0E1E286F49",
+          "SRC-0192B4A47551",
+          "SRC-E5358EC0447B",
+          "SRC-9FEC37CEF2A8",
+          "SRC-22916C6E5B46",
+          "SRC-8AB97E7834BC",
+          "SRC-E2B2AABC8BF6",
+          "SRC-6CD1B7181D1D",
+          "SRC-AB64E541CB5F",
+          "SRC-C052AF0F5FB9",
+          "SRC-916212B4BA64",
+          "SRC-78A3A363F188",
+          "SRC-C4D178E271D7",
+          "SRC-A859D224ECE7",
+          "SRC-20928351EF06",
+          "SRC-FECCEFC8BE81"
+        ],
+        "count": 30
+      },
+      {
+        "title": "grid integration of renewable_source",
+        "source_ids": [
+          "SRC-6E81F18C8309",
+          "SRC-36C64E46579D",
+          "SRC-DA8E9FA60335",
+          "SRC-B4652E7EDE81",
+          "SRC-4BE78E22F67E",
+          "SRC-1B07F4C25D3B",
+          "SRC-BDAE1033EB08",
+          "SRC-5C6A28C6AD5F",
+          "SRC-1DF914DF0BEA",
+          "SRC-9E0AEEA8B10D",
+          "SRC-0EF57A26B336",
+          "SRC-4A69F0F9F77E",
+          "SRC-53F878FDAED9",
+          "SRC-59783D8AEEFB",
+          "SRC-F46DCFABD560",
+          "SRC-C63F2EF3A327",
+          "SRC-A3CAAB54885E",
+          "SRC-50DF52397D80",
+          "SRC-13940E478CF1",
+          "SRC-9598E96A6D76",
+          "SRC-7F1ACDB4F867",
+          "SRC-ABFA59891460",
+          "SRC-2072A25E3F56",
+          "SRC-44577EBF95F8",
+          "SRC-699FFEC2F78C",
+          "SRC-A763F1E58BE8",
+          "SRC-D5126595E5C1",
+          "SRC-247891CCF8CA",
+          "SRC-F50DE1C02A25",
+          "SRC-9168B3C7798F",
+          "SRC-4C7084B4C975",
+          "SRC-309FBC24334C",
+          "SRC-6417E14DDC73",
+          "SRC-E205494C75F3",
+          "SRC-DBEF7C816D20",
+          "SRC-C61B0ABB8BAC",
+          "SRC-2393082AEDAD",
+          "SRC-419C27A19531",
+          "SRC-34EEBEEE4AC2",
+          "SRC-CBA2ED3271F0",
+          "SRC-5EF62799BDAE"
+        ],
+        "count": 41
+      },
+      {
+        "title": "photonic devices for photonic_application",
+        "source_ids": [
+          "SRC-BB0CA7A2B4F4",
+          "SRC-01754663A67A",
+          "SRC-7339DDBF92EF",
+          "SRC-3DE471EDD87D",
+          "SRC-A42BB8DB7B6C",
+          "SRC-4713B31BA08F",
+          "SRC-77158316897D",
+          "SRC-969B12E60242",
+          "SRC-800276FCC2A9",
+          "SRC-AE0AA2B80525",
+          "SRC-6472E3F2DE22",
+          "SRC-BB66932D0E0B",
+          "SRC-A616F208D65A",
+          "SRC-3EB9AC9BC36F",
+          "SRC-AEDBA5D87283",
+          "SRC-1066498955CA",
+          "SRC-64C47FBCD809",
+          "SRC-C71074E76E8F",
+          "SRC-D6A8358C72BB",
+          "SRC-C61F1FFB2F2B",
+          "SRC-28577ADAA51F",
+          "SRC-9B07F5720DD6",
+          "SRC-FD92C18BD3C3",
+          "SRC-97C3DEF726B7",
+          "SRC-FC5FF7A7A93F",
+          "SRC-161AFF0D42B2",
+          "SRC-A09ABF8B52FA",
+          "SRC-FC97C887FDB6",
+          "SRC-A4D37D5CA764",
+          "SRC-C667FB6EF23F"
+        ],
+        "count": 30
+      },
+      {
+        "title": "machine learning acceleration on hardware_platform",
+        "source_ids": [
+          "SRC-957E5FDDD399",
+          "SRC-DF4014748D28",
+          "SRC-67F19475B064",
+          "SRC-6F314B2E4194",
+          "SRC-EEF43085C6C4",
+          "SRC-917A9EC45A25",
+          "SRC-C70241C68FF8",
+          "SRC-1F1C52F52522",
+          "SRC-090EB1154BC6",
+          "SRC-C5E2CE905B14",
+          "SRC-89566CBF1772",
+          "SRC-0471CC2A3C4B",
+          "SRC-39D2DD66F0CE",
+          "SRC-F55A937BDF49",
+          "SRC-2A01A54FF57D",
+          "SRC-D5DBC24E8C57",
+          "SRC-DF5F2AB79670",
+          "SRC-2E561B977FD2",
+          "SRC-4EE466E8A3EC",
+          "SRC-11AA874D00E6"
+        ],
+        "count": 20
+      },
+      {
+        "title": "neurodegeneration in disease_model",
+        "source_ids": [
+          "SRC-856D42EE473B",
+          "SRC-718C648FF46D",
+          "SRC-36C559FE8EED",
+          "SRC-EE788B9169DD",
+          "SRC-9992853CFB1A",
+          "SRC-35DA19E252A0",
+          "SRC-621EDEE8C605",
+          "SRC-894780301CEC",
+          "SRC-69DDFB27A533",
+          "SRC-337A2E745C40",
+          "SRC-0AA1EF16433D",
+          "SRC-F210555D6697",
+          "SRC-98013AA76D7D",
+          "SRC-0E31D5E14E03",
+          "SRC-6A0921168451",
+          "SRC-6966522EC8DB",
+          "SRC-CADEB22522FF",
+          "SRC-93EFC801B4D1",
+          "SRC-52E022FCE593",
+          "SRC-ABFB1F6BEC0C",
+          "SRC-774B8578B9E9",
+          "SRC-C9E5389D6536",
+          "SRC-9D05EF52B92C",
+          "SRC-D5586203F143",
+          "SRC-531F760C7E09",
+          "SRC-C8FBC2AF6895",
+          "SRC-E817393F3086",
+          "SRC-A9629D860043",
+          "SRC-53CCF7FAB847",
+          "SRC-618951683366",
+          "SRC-6C64D362E0E5",
+          "SRC-CB39D5BB323A",
+          "SRC-EC1768CB5684",
+          "SRC-EFEAB9026A31"
+        ],
+        "count": 34
+      },
+      {
+        "title": "computational fluid dynamics of geometry",
+        "source_ids": [
+          "SRC-B9F5A1975A76",
+          "SRC-11925AA38CBE",
+          "SRC-04A4749C01C4",
+          "SRC-805CD24EFA84",
+          "SRC-D2BD6E7D3091",
+          "SRC-10CFF11F7718",
+          "SRC-7F8D38622A55",
+          "SRC-3A35CC6BE5FE",
+          "SRC-4516BDB2628E",
+          "SRC-00D9310FDF0E",
+          "SRC-379550BD9F3B",
+          "SRC-2D00ADF09EAE",
+          "SRC-B77FCE0FCEE7",
+          "SRC-C2A14139D721",
+          "SRC-9EF1FE24CE5F",
+          "SRC-10757EBBE4ED",
+          "SRC-AC0F66D31416",
+          "SRC-C3A1F16F52CF",
+          "SRC-639D26ED15C8",
+          "SRC-4FB7B8E47639",
+          "SRC-BD3C6CB7FB1C",
+          "SRC-301B091B3A52",
+          "SRC-B81890FF7B00",
+          "SRC-F170BA17B096",
+          "SRC-246F687D1ECE",
+          "SRC-C98B267A6686",
+          "SRC-3E4331C8D22D",
+          "SRC-8FC691E4FF8B",
+          "SRC-EA1493FF9C96",
+          "SRC-AEFB2F5B79A3",
+          "SRC-22E270BF787F",
+          "SRC-38F26F9F09F8",
+          "SRC-7E2008992345",
+          "SRC-64B45212C2FE",
+          "SRC-F179F8BB681B",
+          "SRC-E8ED5833154D",
+          "SRC-4B9DF6D770E1",
+          "SRC-5BA1F8173CD9"
+        ],
+        "count": 38
+      },
+      {
+        "title": "power electronics for power_application",
+        "source_ids": [
+          "SRC-7A93A7EF52F4",
+          "SRC-EFB11ECDBF8E",
+          "SRC-28E68488D2CA",
+          "SRC-AC44344F5CE5",
+          "SRC-B37140115064",
+          "SRC-6C4A38369759",
+          "SRC-F8DAEA1952E2",
+          "SRC-875346F6B558",
+          "SRC-470F150FA13B",
+          "SRC-2D306285684E",
+          "SRC-5C8AE2306E65",
+          "SRC-096BF4FE5B92",
+          "SRC-A1EAF12E98D6",
+          "SRC-BD092BBE705F",
+          "SRC-53A7DD648BA9",
+          "SRC-6E5C27D8DC4A",
+          "SRC-08D47D14192F",
+          "SRC-9292F4592452",
+          "SRC-C2FD04D6426B",
+          "SRC-1884543E10DB",
+          "SRC-3AF9DCC0FA33",
+          "SRC-4DE449EFDC26",
+          "SRC-15E77235F7CF",
+          "SRC-820591609A9E",
+          "SRC-4BBB60D26D92",
+          "SRC-57B6ECD98BCF",
+          "SRC-334288BC693B",
+          "SRC-3C065BF9ECE2",
+          "SRC-45A1E539C6E3",
+          "SRC-8F333F73BEE3",
+          "SRC-0C98E6F29FC0",
+          "SRC-F2855E1FBA29"
+        ],
+        "count": 32
+      },
+      {
+        "title": "climate change impacts on coral reef",
+        "source_ids": [
+          "SRC-B8F420E2F00E",
+          "SRC-3C7FE79315CA",
+          "SRC-58F46BAE26A5",
+          "SRC-84FBD3619E14"
+        ],
+        "count": 4
+      },
+      {
+        "title": "optimization on manifold_type manifolds",
+        "source_ids": [
+          "SRC-78836E5C1EDE",
+          "SRC-72A430A17BE1",
+          "SRC-7CADE0641965",
+          "SRC-7BC46EE5FFED",
+          "SRC-AAC108F2E42D",
+          "SRC-025BE8B8B954",
+          "SRC-1525239D7583",
+          "SRC-FB65B50E92BE",
+          "SRC-14B32BCC78BE",
+          "SRC-3DCEF7F19E09",
+          "SRC-EB489984E1A2",
+          "SRC-F16C8B54A327",
+          "SRC-2528D182E68C",
+          "SRC-514BB1125EF5",
+          "SRC-D9677CF379B9",
+          "SRC-3DB77ADD80A2",
+          "SRC-A91857F4C098",
+          "SRC-CE8121D78434",
+          "SRC-AC98D6710178",
+          "SRC-231CCFB20C81",
+          "SRC-E376496CA6BE",
+          "SRC-B06348BBDBC5",
+          "SRC-0E74980408BD",
+          "SRC-71434EA41351",
+          "SRC-4DA2450CA611",
+          "SRC-288A3EB88E02",
+          "SRC-617A00D3ED5E"
+        ],
+        "count": 27
+      },
+      {
+        "title": "robotic manipulation of object_type",
+        "source_ids": [
+          "SRC-30B38C8452BB",
+          "SRC-3BB38941B018",
+          "SRC-F5A03F6FBD99",
+          "SRC-39F6DBEF7446",
+          "SRC-AC258BF7DA7C",
+          "SRC-49AFFF54AD4D",
+          "SRC-267B73358C6A",
+          "SRC-0E0DA4E3C48E",
+          "SRC-4D6B609077ED",
+          "SRC-89A797FC66AF",
+          "SRC-87CD17CCBE45",
+          "SRC-C1779FA669C6",
+          "SRC-BDDE3DF71519",
+          "SRC-E358006DC869",
+          "SRC-FB89F22C0BEB",
+          "SRC-F539F4D8F433",
+          "SRC-42AEDA4C3F75",
+          "SRC-FC3D9B2BEA90",
+          "SRC-87B8302CBE96",
+          "SRC-AD9569BD3488",
+          "SRC-12A37713C1F9",
+          "SRC-4C6C0591478D",
+          "SRC-63181872CA9E"
+        ],
+        "count": 23
+      },
+      {
+        "title": "manipulation planning for manipulation_task",
+        "source_ids": [
+          "SRC-3154877948FF",
+          "SRC-F73A46975C3F",
+          "SRC-AD6F50E535BE",
+          "SRC-865618646E4B",
+          "SRC-2C3C6D860F26",
+          "SRC-0D60072880D3",
+          "SRC-CE33C8BFCFB6",
+          "SRC-A664B361BE4B",
+          "SRC-E1A3E9C2F65D",
+          "SRC-39B63D06E15D",
+          "SRC-FA975DE9E351",
+          "SRC-92D628B7CDC1",
+          "SRC-0745BE78BD27",
+          "SRC-FF6C5D496B71",
+          "SRC-DAD460982C2B",
+          "SRC-3777856BC6CB",
+          "SRC-2FFC254DFFF7",
+          "SRC-55C43D18C063",
+          "SRC-8CF39699B1FD"
+        ],
+        "count": 19
+      },
+      {
+        "title": "molecular mechanisms of reforming in yeast",
+        "source_ids": [
+          "SRC-AC3F48767EFB",
+          "SRC-C134EEE68966"
+        ],
+        "count": 2
+      },
+      {
+        "title": "combinatorial enumeration of combinatorial_object",
+        "source_ids": [
+          "SRC-BD6D1FCB469B",
+          "SRC-7EEBE7B30E1B",
+          "SRC-E59846118394",
+          "SRC-9A8908352087",
+          "SRC-5CF10F4DF627",
+          "SRC-A8E24E978293",
+          "SRC-6843EFE38C84",
+          "SRC-2B86F29A4FFD",
+          "SRC-F625995AD143",
+          "SRC-75F25F73F7B5",
+          "SRC-9BD45D9CE66A",
+          "SRC-320C5EBE7889",
+          "SRC-D4E44EBC788C",
+          "SRC-89F9E1726DF0",
+          "SRC-2616956D8597",
+          "SRC-D1071F8DEB44",
+          "SRC-A6DEB5110E28",
+          "SRC-F23F269D79B9",
+          "SRC-F289A15EBFBE",
+          "SRC-A8093C05673C",
+          "SRC-8F447F9AEAE5",
+          "SRC-6C3C0CE21763",
+          "SRC-27A6F45EC13B",
+          "SRC-33022EC40752"
+        ],
+        "count": 24
+      },
+      {
+        "title": "scalable distributed system for application",
+        "source_ids": [
+          "SRC-4F01E8A800A1",
+          "SRC-A450B3C2E4C8",
+          "SRC-947D889AC6BF",
+          "SRC-59DB0D3BF10E",
+          "SRC-A77A2CB477F2",
+          "SRC-DDF479C65A87",
+          "SRC-587360A976A2",
+          "SRC-76A6B302734B",
+          "SRC-7F02DB32904B",
+          "SRC-07836AA2FA48",
+          "SRC-3F71566D2FD2",
+          "SRC-1B4E2DA02E27",
+          "SRC-D6F582797F60",
+          "SRC-AD156239FC8C",
+          "SRC-A095DF7C7BFF",
+          "SRC-BDA64C7BF4A1",
+          "SRC-46CE7D2C8015",
+          "SRC-0E5E370B17A8",
+          "SRC-AFF6D1801D5E",
+          "SRC-DBF7FC9C9E4A",
+          "SRC-B7734F657C63",
+          "SRC-D9533502611A",
+          "SRC-DAE9797B8717",
+          "SRC-520ACD5BCC09"
+        ],
+        "count": 24
+      },
+      {
+        "title": "computer vision techniques for vision_task",
+        "source_ids": [
+          "SRC-8C1467DC42FC",
+          "SRC-40FFDF4773D5",
+          "SRC-A54C185C04F6",
+          "SRC-178D31FB995D",
+          "SRC-F4C8C41E8164",
+          "SRC-AC628379AE67",
+          "SRC-F21804A9777B",
+          "SRC-15CF1C2B98B3",
+          "SRC-123C125F5942",
+          "SRC-EC75D5A301E0",
+          "SRC-0A3B22539D21",
+          "SRC-C738315F7A00",
+          "SRC-BAAA0A02FCCB",
+          "SRC-6176006DD7B4",
+          "SRC-00A7FB82AC1B",
+          "SRC-C9FAEFE830CC",
+          "SRC-CC0121DE136F",
+          "SRC-CE88073EF2DD",
+          "SRC-15480F45270A",
+          "SRC-FFAC689D61BA",
+          "SRC-F3922C72CFD8",
+          "SRC-3C346FECED9D",
+          "SRC-F229F986A89C",
+          "SRC-091375F30C44",
+          "SRC-34675D74532B",
+          "SRC-C15527BFBD80",
+          "SRC-AE939735D56F",
+          "SRC-D151EAF31FB1",
+          "SRC-F9225ADC5E62",
+          "SRC-1A81D7285F5F",
+          "SRC-6EB206DB18A9",
+          "SRC-FED213C21108",
+          "SRC-8B9C50209B3D",
+          "SRC-4FE93B32A8CB",
+          "SRC-E9E2C7901832"
+        ],
+        "count": 35
+      },
+      {
+        "title": "fatigue life prediction of linkage under loading",
+        "source_ids": [
+          "SRC-898FEB140D64",
+          "SRC-B8B1955BE7EE",
+          "SRC-F9BFD848993D",
+          "SRC-2BC2917CE400",
+          "SRC-148A5D603158",
+          "SRC-BD3F13D1BE38",
+          "SRC-F04BA78F8AD0",
+          "SRC-9FDD728A573A",
+          "SRC-F5B3F8D21956"
+        ],
+        "count": 9
+      },
+      {
+        "title": "differential equations governing thermoelectricity",
+        "source_ids": [
+          "SRC-9828CF471E1A",
+          "SRC-F85E0BDD5C7B",
+          "SRC-1D87A3634FB7",
+          "SRC-446F61759F56",
+          "SRC-A8FB91999BBE",
+          "SRC-1526A6D47AC0",
+          "SRC-A9312C89C05C",
+          "SRC-BE2CB0C09669",
+          "SRC-AAF1EC7875D2"
+        ],
+        "count": 9
+      },
+      {
+        "title": "quantum interference in semiconductor systems",
+        "source_ids": [
+          "SRC-79AA6975226D",
+          "SRC-18A6B309C0D9"
+        ],
+        "count": 2
+      },
+      {
+        "title": "sustainable agriculture practices for crop_type",
+        "source_ids": [
+          "SRC-C94C9F691C14",
+          "SRC-3DC41FC75632",
+          "SRC-53D85F4F4AF1",
+          "SRC-DD8C77E9B7BC",
+          "SRC-0C9E5C487D2E",
+          "SRC-7A918D75A5C3",
+          "SRC-B3963B7BC448",
+          "SRC-D35BC69A19C0",
+          "SRC-CF2C29AE9F04",
+          "SRC-AD7C5AF956B3",
+          "SRC-B67B3E22C0CC",
+          "SRC-02D559138519",
+          "SRC-5266BE973A4B",
+          "SRC-B11783436122",
+          "SRC-E0ABC2EA0C22",
+          "SRC-30F9B70A4223",
+          "SRC-5E714777A73D",
+          "SRC-6E2673F078C5",
+          "SRC-8CC486204CCB",
+          "SRC-2F2BD2BD7043",
+          "SRC-C71C0CF52064",
+          "SRC-90F3A241042D",
+          "SRC-640EC0C571E9",
+          "SRC-621DFBC2C10E",
+          "SRC-63CBB4484D18",
+          "SRC-C6F33B341FF0",
+          "SRC-F4698E28B287",
+          "SRC-C5E920662D9B",
+          "SRC-9887BF9DFAB6",
+          "SRC-D7E15CD3AB02",
+          "SRC-903E6BBBEE82",
+          "SRC-61374042A41C"
+        ],
+        "count": 32
+      },
+      {
+        "title": "mechanical properties of carbon fiber composites",
+        "source_ids": [
+          "SRC-D075B3145BB0",
+          "SRC-304B5542CF68",
+          "SRC-6CD8ADEA0AA0",
+          "SRC-718048913DB5",
+          "SRC-BBE40628DAD6",
+          "SRC-545084E73E09",
+          "SRC-A0014EA9AA8C",
+          "SRC-B152E4AF5A7D"
+        ],
+        "count": 8
+      },
+      {
+        "title": "air quality modeling in region",
+        "source_ids": [
+          "SRC-F3C13B9BD26F",
+          "SRC-F7FDC35EC7EF",
+          "SRC-14EDCA06F6FD",
+          "SRC-D788FFB5D644",
+          "SRC-23394D900967",
+          "SRC-47F58E09CE02",
+          "SRC-8DB551425E6B",
+          "SRC-BB55B0C9635B",
+          "SRC-2248D26403DB",
+          "SRC-DCEFC285B5A5",
+          "SRC-7697D910A91B",
+          "SRC-64CDEB106A20",
+          "SRC-8026DCEBCA5D",
+          "SRC-B04EA50F4362",
+          "SRC-29562DB2DDA2",
+          "SRC-5563F3904F8E",
+          "SRC-4994DB042DA0",
+          "SRC-94067839121D",
+          "SRC-40835B5F384B",
+          "SRC-58627B4A6E77",
+          "SRC-01569BDB53A8",
+          "SRC-9EFA789016FE",
+          "SRC-E707016171AC",
+          "SRC-219F49B291F9",
+          "SRC-98D1D83036ED",
+          "SRC-0E76C44FB973",
+          "SRC-89131385342E",
+          "SRC-0982F036EE41",
+          "SRC-F20C664329AF",
+          "SRC-8AD6115E0E5C"
+        ],
+        "count": 30
+      },
+      {
+        "title": "memory encoding in memory_type memory",
+        "source_ids": [
+          "SRC-0873DA0F13EB",
+          "SRC-D42ADFACF2BB",
+          "SRC-C45704D44E05",
+          "SRC-FCFF74A5CF50",
+          "SRC-AA4CF6DEB7A5",
+          "SRC-CC7B090CDF06",
+          "SRC-1059EEF62E7D",
+          "SRC-E5AAC12F6DBD",
+          "SRC-43324E1F2EF9",
+          "SRC-E7AA0665CFD5",
+          "SRC-99CB8DD55497",
+          "SRC-03B0BF5FE863",
+          "SRC-4DEC3EE09FEF",
+          "SRC-EE2024DC8A65",
+          "SRC-C80A9BF3EB1A",
+          "SRC-3065C8AEE7B6",
+          "SRC-678A64BD95D9",
+          "SRC-5549725B032B",
+          "SRC-DD0E151A1B43",
+          "SRC-90E339F0D435",
+          "SRC-02EA233C6234",
+          "SRC-C4BB56F7A1BF",
+          "SRC-F1B808D4E74E",
+          "SRC-EA811750E1AB",
+          "SRC-9235B0A23D4E"
+        ],
+        "count": 25
+      },
+      {
+        "title": "fuel cell performance with fuel_cell_type configuration",
+        "source_ids": [
+          "SRC-1E80DE2C7953",
+          "SRC-F3F2922F4F88",
+          "SRC-719BCEAD4172",
+          "SRC-07A63C4B2CAB",
+          "SRC-9EC6D666350D",
+          "SRC-53349103F5F9",
+          "SRC-890C4DC8C6D4",
+          "SRC-40A4349BED34",
+          "SRC-F99127D7D9F0",
+          "SRC-F564723B3D5B",
+          "SRC-CB91B2449064",
+          "SRC-84C1E1DD2DE7",
+          "SRC-4390BB864D10",
+          "SRC-C26F16387C20",
+          "SRC-B7793BB80841",
+          "SRC-D995576CA6D9",
+          "SRC-17D109D7B074",
+          "SRC-318263949847",
+          "SRC-28E2B78AC9A9",
+          "SRC-F336BB1F80AE",
+          "SRC-73E7AE7E839B",
+          "SRC-DCBC6C18CA5C",
+          "SRC-23B4FE883F32",
+          "SRC-E8267EE246EA",
+          "SRC-9ECE2797EBCB",
+          "SRC-1195A136934B",
+          "SRC-26FB8E9BD4D0",
+          "SRC-3B90712A3ED6",
+          "SRC-052FB6F13A38"
+        ],
+        "count": 29
+      },
+      {
+        "title": "polymer processing for polymer_type",
+        "source_ids": [
+          "SRC-99C18A5CE553",
+          "SRC-BFDD2BC152CC",
+          "SRC-15F112E8314F",
+          "SRC-7B3161F11700",
+          "SRC-254C3D2FB59B",
+          "SRC-0B112F4CDB06",
+          "SRC-FEC97DDA87E7",
+          "SRC-17F81855272F",
+          "SRC-0E87B306D337",
+          "SRC-5A70BCAB1232",
+          "SRC-C9A5F8301732",
+          "SRC-D8CF3D7E3C83",
+          "SRC-CD3B5CD38A41",
+          "SRC-2D7D25DB81CA",
+          "SRC-6D3249A96C59",
+          "SRC-0509A7C3244F",
+          "SRC-3FAD9D7F3B34",
+          "SRC-F241693CF1E7",
+          "SRC-B6BA62F2AE40",
+          "SRC-EDED980F0EC6",
+          "SRC-BC76ADA16267",
+          "SRC-22E3778676DA",
+          "SRC-74FF94D67AB6",
+          "SRC-93800622087A",
+          "SRC-4246D24FB374",
+          "SRC-EA825E376BE4",
+          "SRC-7CC68E3488C8",
+          "SRC-E96B8B342FAC",
+          "SRC-83D57D952FA8",
+          "SRC-0826F594B4DF",
+          "SRC-A718C758AFA9",
+          "SRC-BA15C4DDD2C0",
+          "SRC-7DCD4CB64B59",
+          "SRC-79DB05C41682",
+          "SRC-DC67C2F22582",
+          "SRC-22EEFADD987A",
+          "SRC-33C8FBDB2A88",
+          "SRC-8129433FD06F",
+          "SRC-B79046FFF01E",
+          "SRC-9D685391F6EC",
+          "SRC-F25474BBEC51",
+          "SRC-9A9651B38EE7",
+          "SRC-FD8D7078AE01",
+          "SRC-7F9DB49832E7",
+          "SRC-62ECBDB5D126"
+        ],
+        "count": 45
+      },
+      {
+        "title": "brain connectivity analysis using imaging_technique",
+        "source_ids": [
+          "SRC-787406A9356C",
+          "SRC-05D70F60D7EE",
+          "SRC-F44F0AED31DB",
+          "SRC-2FD4E8A1F160",
+          "SRC-DD0D1F590D69",
+          "SRC-028C49628062",
+          "SRC-0D2ABE6DFFF9",
+          "SRC-9C4E69F9F6D0",
+          "SRC-65F887761F21",
+          "SRC-24ADC98A3BE0",
+          "SRC-42772421A5F0",
+          "SRC-FC181B3309DE",
+          "SRC-4BD11FF4B862",
+          "SRC-61CE8EB55E19",
+          "SRC-10B828A53C62",
+          "SRC-A6849DA3C296",
+          "SRC-2DCF85C1C129",
+          "SRC-025C2E97EF84",
+          "SRC-9B1289A0180A",
+          "SRC-9F2DF378D739",
+          "SRC-562231638730",
+          "SRC-1E7AE313E913",
+          "SRC-7868E25CFE0C",
+          "SRC-56440F71CB94",
+          "SRC-D241BCB8F004",
+          "SRC-2BB2D120D69C",
+          "SRC-C76527256311",
+          "SRC-284944B0D436",
+          "SRC-00607CE7B1CF",
+          "SRC-113766BF3F60",
+          "SRC-09EF89DE5849",
+          "SRC-F65212E0B679",
+          "SRC-987A1CABEFB4",
+          "SRC-90566B763D44",
+          "SRC-8B3335C4DE9F",
+          "SRC-7B4560B319A2",
+          "SRC-AC4858E8DB87",
+          "SRC-CF16CDE80720"
+        ],
+        "count": 38
+      },
+      {
+        "title": "antenna design for frequency_band communications",
+        "source_ids": [
+          "SRC-F1FA0B216965",
+          "SRC-6977509E7B25",
+          "SRC-BBFF6F065519",
+          "SRC-692EBD2560C8",
+          "SRC-2ED14997AFF6",
+          "SRC-267F891C2739",
+          "SRC-7B03DE89B239",
+          "SRC-BF3425787244",
+          "SRC-702ACF5B2A1B",
+          "SRC-28E51CBB792B",
+          "SRC-06D5175D1A46",
+          "SRC-5DAAC981497E",
+          "SRC-DA0FB3E55427",
+          "SRC-82F816DD3ED0",
+          "SRC-0ABD2F8A1847",
+          "SRC-CE1A7A0655C6",
+          "SRC-E266BA01EFCA",
+          "SRC-A50EA1EBD106",
+          "SRC-CC7A378F3924",
+          "SRC-D34AA1B8B999",
+          "SRC-ACCFDAA98352",
+          "SRC-75F34A856061",
+          "SRC-DD6BE9D7EF54",
+          "SRC-0177D8E7FDD2",
+          "SRC-418CF2087610",
+          "SRC-380DBED1ABD9",
+          "SRC-FF2F431CB19A",
+          "SRC-966495631312"
+        ],
+        "count": 28
+      },
+      {
+        "title": "wind turbine optimization for wind_condition",
+        "source_ids": [
+          "SRC-C2AD0D09C86E",
+          "SRC-E3A76D96F56C",
+          "SRC-C113F2BE1109",
+          "SRC-0AE899B8A450",
+          "SRC-A192D26402A5",
+          "SRC-C251DC3D754C",
+          "SRC-3D7E5EA94796",
+          "SRC-1BC456C9A2D7",
+          "SRC-DDA7CAE65237",
+          "SRC-55F61FD08967",
+          "SRC-1FF03EA59DB5",
+          "SRC-19AA4D11998B",
+          "SRC-7BB99843427E",
+          "SRC-F748EFFFD457",
+          "SRC-53A1E9091BAD",
+          "SRC-5895713A5022",
+          "SRC-8D959D35C707",
+          "SRC-84499B82983B",
+          "SRC-2A3E43771A84",
+          "SRC-AD0CDB6F0660",
+          "SRC-BC1ADC99E8B1",
+          "SRC-73796F3B2184",
+          "SRC-07191194D363",
+          "SRC-B4C7ECC1A900",
+          "SRC-09493A31E65E",
+          "SRC-63EFB73EBC12",
+          "SRC-1B4DF4B3741E",
+          "SRC-EC1A3AC026ED",
+          "SRC-96676A63650A",
+          "SRC-0212F1A7EFC7",
+          "SRC-5D64C4133D53",
+          "SRC-06C143F8F764"
+        ],
+        "count": 32
+      },
+      {
+        "title": "metabolic pathways in microorganism",
+        "source_ids": [
+          "SRC-C7A06299DACC",
+          "SRC-6C42F3C9F4EA",
+          "SRC-1F4BDC5DFE91",
+          "SRC-D4B5ECED240B",
+          "SRC-CF31BE5319E6",
+          "SRC-AECF9384D032",
+          "SRC-F1B225BE7DAE",
+          "SRC-3D2EDFEC9C81",
+          "SRC-CE7B25BF3FBD",
+          "SRC-801A66EA1A71",
+          "SRC-F17650281A80",
+          "SRC-D4C219A60182",
+          "SRC-3E1E940E336A",
+          "SRC-DD3F6048D462",
+          "SRC-7F940CF9A60A",
+          "SRC-A89F6FD4068F",
+          "SRC-6063C80E99F0",
+          "SRC-018C80356864",
+          "SRC-9E401D1F78A1",
+          "SRC-AFF2AE7F293D",
+          "SRC-B84BE152F6A3",
+          "SRC-C0B39E946F6C",
+          "SRC-4EDE3EC9D453",
+          "SRC-ED494E7B36B2",
+          "SRC-B0C442DA30E4",
+          "SRC-F68CC6AE9490",
+          "SRC-9F1CAAE65233",
+          "SRC-EF85B84FFA1D",
+          "SRC-2692376D61B9",
+          "SRC-1EB458DD26D7",
+          "SRC-6686D5EC3A90",
+          "SRC-6DC8B21445F2",
+          "SRC-14FDA8633A3F",
+          "SRC-403A40E294F6",
+          "SRC-EC187946816C"
+        ],
+        "count": 35
+      },
+      {
+        "title": "classification of algebraic_structure",
+        "source_ids": [
+          "SRC-360745643337",
+          "SRC-AEE44B5EB8FC",
+          "SRC-C39CAA51A8CD",
+          "SRC-CEE1EE02B1AE",
+          "SRC-C5CB41ACD110",
+          "SRC-2F838D1F3AD9",
+          "SRC-CE4F6293609F",
+          "SRC-524259AB232C",
+          "SRC-1F09C9E19CFF",
+          "SRC-C26190AEC8F2",
+          "SRC-00FBCDB4270C",
+          "SRC-068F3A7AA7B3",
+          "SRC-CA26D8EBBBBB",
+          "SRC-79AF1DDCE543",
+          "SRC-76D83B1C0E79",
+          "SRC-E4A4126585DE",
+          "SRC-591BEC35ADDC",
+          "SRC-8B49ED7A0576",
+          "SRC-951E22F4E7CF",
+          "SRC-300738EBBAAF",
+          "SRC-C802766AD7A0",
+          "SRC-815D2619C1ED",
+          "SRC-B86277FDAFD0",
+          "SRC-4119FE2CEEA9",
+          "SRC-CE6AB3919652",
+          "SRC-5DC83696B39B",
+          "SRC-345775EE3BAB",
+          "SRC-88DCB4F51999",
+          "SRC-626B9AEDB38D",
+          "SRC-8C04367917E5",
+          "SRC-370308FFC50B",
+          "SRC-59C7137CDA8E",
+          "SRC-22E76398F763"
+        ],
+        "count": 33
+      },
+      {
+        "title": "energy harvesting from source",
+        "source_ids": [
+          "SRC-6A16ED206554",
+          "SRC-B29CCD5F2C47",
+          "SRC-7C2F5B2CB75D",
+          "SRC-6679CAB6824D",
+          "SRC-01412DEBE77F",
+          "SRC-F08E3F0ABB6D",
+          "SRC-454D0E1DDBE6",
+          "SRC-3CA1E33AA2A4",
+          "SRC-D7C2F75B4BA4",
+          "SRC-7ADD54E7277A",
+          "SRC-9F430E09F58A",
+          "SRC-ED370CB93AE0",
+          "SRC-22F2C3777D6B",
+          "SRC-9035D665ECA5",
+          "SRC-1F618EB7696A",
+          "SRC-61F1EBB479AB",
+          "SRC-53A8640B76C0",
+          "SRC-D6E3AC25134D",
+          "SRC-BF7E8B53C8C3",
+          "SRC-9D640DFA2C8D",
+          "SRC-61A5FEFFADB4",
+          "SRC-CA71EF073B9F",
+          "SRC-759ACC82A20B",
+          "SRC-BA376AEA186E",
+          "SRC-E76D8C01BDAF",
+          "SRC-BFF48D969C81"
+        ],
+        "count": 26
+      },
+      {
+        "title": "autonomous navigation in aerial environments",
+        "source_ids": [
+          "SRC-BA02BEE0B39F",
+          "SRC-1DF3AAB236D2",
+          "SRC-FF64D34A7D2F"
+        ],
+        "count": 3
+      },
+      {
+        "title": "biomimetic graphene design inspired by biological_system",
+        "source_ids": [
+          "SRC-467D839B5325",
+          "SRC-222B466BC4C3"
+        ],
+        "count": 2
+      },
+      {
+        "title": "learning-based control of robot_type",
+        "source_ids": [
+          "SRC-B2263496FC00",
+          "SRC-1214649D74F3",
+          "SRC-8E7DE22F1B73",
+          "SRC-9D371818F770",
+          "SRC-A6B7DEAA3421",
+          "SRC-76DBD2DB5E29",
+          "SRC-7627FA83EC7E",
+          "SRC-4D4FD1E493D5",
+          "SRC-1375AE17BA84",
+          "SRC-25D114E74D18",
+          "SRC-2D9BBBB0498C",
+          "SRC-7115531637DA",
+          "SRC-5217152B7799",
+          "SRC-30D01248299E",
+          "SRC-BEE4A3FF1F7D",
+          "SRC-4C3297B7E1F7",
+          "SRC-ACF6A65DB4BB",
+          "SRC-D6014CE644FA",
+          "SRC-F5D45E8D19B4",
+          "SRC-6604A62206DB",
+          "SRC-61BC5E7B3D79",
+          "SRC-FF930CF49229",
+          "SRC-6CF36421F02A",
+          "SRC-36C00633A3D9",
+          "SRC-DBCA442D6B73",
+          "SRC-1175775ED500",
+          "SRC-E5FC825CC81D",
+          "SRC-D05905F7AE6F",
+          "SRC-2CF0FD21F6A8",
+          "SRC-584E29565F98"
+        ],
+        "count": 30
+      },
+      {
+        "title": "efficient algorithm for classification with complexity complexity",
+        "source_ids": [
+          "SRC-5772AE42458F",
+          "SRC-B76D18474592",
+          "SRC-CAC0F2CBF9EE",
+          "SRC-5C8F522337E4",
+          "SRC-C787EEE7829C",
+          "SRC-0A4BFAECAE37",
+          "SRC-2393F70203B7"
+        ],
+        "count": 7
+      },
+      {
+        "title": "development of oxide for application",
+        "source_ids": [
+          "SRC-ECF27DB34F87",
+          "SRC-B836C20D3717",
+          "SRC-25DEA8C707F2",
+          "SRC-BBD51F03CEC8",
+          "SRC-0A0CA14B103E",
+          "SRC-A98DE1151453",
+          "SRC-BCDB6ACCFD9E",
+          "SRC-1274949BD3C2"
+        ],
+        "count": 8
+      },
+      {
+        "title": "haptic feedback for haptic_application",
+        "source_ids": [
+          "SRC-2089959ACE2E",
+          "SRC-D07F835F295D",
+          "SRC-962C17C82A91",
+          "SRC-0295D960E914",
+          "SRC-2BFB731B8886",
+          "SRC-04F0A507108D",
+          "SRC-8B7717471B73",
+          "SRC-924A0B06D8E1",
+          "SRC-9FCCE8432CF6",
+          "SRC-2AE6A7863523",
+          "SRC-574787668BEF",
+          "SRC-587354DF050F",
+          "SRC-0F6915AF686A",
+          "SRC-378696C346D7",
+          "SRC-4698677ABF32",
+          "SRC-CBB44C8546C3",
+          "SRC-8096F85A2187",
+          "SRC-71B3BC39A1CC",
+          "SRC-BD1F3433B4D2",
+          "SRC-B23CB9B895FC",
+          "SRC-EB7731536F0E",
+          "SRC-C9231207098A",
+          "SRC-162C3E76F0F0",
+          "SRC-7F9BBB647A14",
+          "SRC-B8ACECE6022A",
+          "SRC-4976F275D10E",
+          "SRC-4DC792005BD8",
+          "SRC-4EF0AE596EF8",
+          "SRC-CFCE5438615E",
+          "SRC-7CB8E602987C"
+        ],
+        "count": 30
+      },
+      {
+        "title": "thermal conductivity of ceramic ceramics",
+        "source_ids": [
+          "SRC-CDC87D12EA29",
+          "SRC-1A91B16721FB",
+          "SRC-C48E273C61A7",
+          "SRC-02696212C06A",
+          "SRC-FA6033B50D7A",
+          "SRC-855B40D6C106",
+          "SRC-62CD0D63E770",
+          "SRC-95DE20D6FC68",
+          "SRC-D3CF92304F6C",
+          "SRC-6AFC8CF2EC70",
+          "SRC-D30A68D14186",
+          "SRC-B51A6151CDB9",
+          "SRC-E9FD2894DA9C",
+          "SRC-2920CFB6CB24",
+          "SRC-FABFF649CF10",
+          "SRC-F29D2257F5ED",
+          "SRC-717B617A2ED3",
+          "SRC-FB6C40AF063C",
+          "SRC-14D15C6CBD1B",
+          "SRC-68F59BD7AAAD",
+          "SRC-3FCB9D370655",
+          "SRC-076D395BD00B",
+          "SRC-338CF0D751BF",
+          "SRC-16CFBD2A5CAC",
+          "SRC-1BBEA2765F35",
+          "SRC-B3E52127052B",
+          "SRC-410F06A9E6C8",
+          "SRC-0584FCEF7CC7",
+          "SRC-B69A92BB4212",
+          "SRC-C100451D6881",
+          "SRC-B70D01572660",
+          "SRC-1AE87CAAE4E8",
+          "SRC-6B533676F7FD",
+          "SRC-50010E5E7C03",
+          "SRC-B65199F4E22C"
+        ],
+        "count": 35
+      },
+      {
+        "title": "design optimization of bearing for performance_metric",
+        "source_ids": [
+          "SRC-6C0E614DD19B",
+          "SRC-65A396F6D71C",
+          "SRC-E8F01250FA83",
+          "SRC-CDAB9BC02577",
+          "SRC-F552F6E24DC7",
+          "SRC-82D3328CC4B5"
+        ],
+        "count": 6
+      },
+      {
+        "title": "existence proof for solution_type solutions",
+        "source_ids": [
+          "SRC-39CD01AAB12B",
+          "SRC-2BCF100BC5C4",
+          "SRC-A07ECAE05C09",
+          "SRC-91AA081D4510",
+          "SRC-DC9C8245B6B7",
+          "SRC-747C699D0E36",
+          "SRC-E8BEEA60F084",
+          "SRC-8C2738714E1A",
+          "SRC-F9A8B4479DD4",
+          "SRC-5EA981118C3C",
+          "SRC-C2DD9DB394F4",
+          "SRC-8BCE5A1986BC",
+          "SRC-DCA2339B799E",
+          "SRC-0B5080605570",
+          "SRC-FF7886D12CD2",
+          "SRC-031AC501B6A8",
+          "SRC-A88DB163D417",
+          "SRC-5A431E99A453",
+          "SRC-6FB14BB11AE1",
+          "SRC-730B51CDDD98",
+          "SRC-8A3EDC4710E8",
+          "SRC-A0DA3A37E1C0",
+          "SRC-8422F4E59466",
+          "SRC-45A1004621DC",
+          "SRC-58A691728D9D"
+        ],
+        "count": 25
+      },
+      {
+        "title": "human-robot interaction for interaction_scenario",
+        "source_ids": [
+          "SRC-438373DEDCB7",
+          "SRC-1C99F711BC04",
+          "SRC-B08F60731E68",
+          "SRC-D51FC0A2D773",
+          "SRC-24998A35C8A4",
+          "SRC-B986E5D6B3FB",
+          "SRC-B90B88A0C14B",
+          "SRC-4518271364BC",
+          "SRC-03EE9626C109",
+          "SRC-85CA3E4B2959",
+          "SRC-8248D9275149",
+          "SRC-79FA05AA8CB9",
+          "SRC-6B56B9FC1811",
+          "SRC-D1E0F5AD594B",
+          "SRC-4D173036C540",
+          "SRC-26857C7F0456",
+          "SRC-6AC99A524A9B",
+          "SRC-2A166BC43E6C",
+          "SRC-14B15195D5C8",
+          "SRC-9A50579DE2EB",
+          "SRC-7920BEFDD8BA",
+          "SRC-B1363020DB45",
+          "SRC-4E7615458672",
+          "SRC-5E65BEB84367",
+          "SRC-E71C69BA0989",
+          "SRC-E50CBE98DE5D",
+          "SRC-62CF40EF2DE6"
+        ],
+        "count": 27
+      },
+      {
+        "title": "tribological properties of material_pair",
+        "source_ids": [
+          "SRC-9BCE2A25EF96",
+          "SRC-DC84768DF7D4",
+          "SRC-B3AF32B8F209",
+          "SRC-C60EE761F365",
+          "SRC-C61DB03A064A",
+          "SRC-247ED4BF746F",
+          "SRC-BED3E6C64A69",
+          "SRC-471A6C0D6ACC",
+          "SRC-6C4C19B78955",
+          "SRC-AD1C24BEF15E",
+          "SRC-86ADBE6F75EF",
+          "SRC-78CDB848D00B",
+          "SRC-3356EAC83D6C",
+          "SRC-D32ACA997559",
+          "SRC-FC3DB7ABC26E",
+          "SRC-EDD0F1EB5794",
+          "SRC-510103E4190E",
+          "SRC-244FC5AA597B",
+          "SRC-7DABFF902BA4",
+          "SRC-1357E99E3634",
+          "SRC-0B282809FB10",
+          "SRC-EFB3C2CB4A93",
+          "SRC-B3655C730F15",
+          "SRC-200E6BAF4499",
+          "SRC-C20175395FF1",
+          "SRC-75CE35E646D0",
+          "SRC-3EE64010B3E3"
+        ],
+        "count": 27
+      },
+      {
+        "title": "differential equations governing superconductivity",
+        "source_ids": [
+          "SRC-CEC271279B17",
+          "SRC-34F20B10C845",
+          "SRC-7943D8DF3BFB",
+          "SRC-13D933F1C313",
+          "SRC-3982D3BD801A",
+          "SRC-85F7C8E814FA",
+          "SRC-5954B7389F48"
+        ],
+        "count": 7
+      },
+      {
+        "title": "heat integration in chemical plants",
+        "source_ids": [
+          "SRC-5496A15D23F4",
+          "SRC-0BA83A004752",
+          "SRC-140A1DA6AC71",
+          "SRC-0E53DAD32D7D",
+          "SRC-0BDE2FCCFB36",
+          "SRC-C9892E4C94DE",
+          "SRC-5769141F50AD",
+          "SRC-B98830B275D4",
+          "SRC-2C6F28A99688",
+          "SRC-3369B2731942",
+          "SRC-9E4FA8A7AB42",
+          "SRC-47308D0CC365",
+          "SRC-DB35E5A6067C",
+          "SRC-15AC36DD53D4",
+          "SRC-88B55CB72E00",
+          "SRC-DD456DC604D4",
+          "SRC-6FE92320AB94",
+          "SRC-F0C16D975702",
+          "SRC-0F4BD4EB5A30",
+          "SRC-9081F1BA2E09",
+          "SRC-2A119DD9A559",
+          "SRC-5B72A3EE0327",
+          "SRC-DE8803A89757",
+          "SRC-02D596DF533B",
+          "SRC-175B433BC222",
+          "SRC-AFBD1321DE19",
+          "SRC-EF992838509F",
+          "SRC-066FDEB89ED2",
+          "SRC-9DA7D8EAC034",
+          "SRC-083C13F5E76A",
+          "SRC-9E9FCE37B7B8",
+          "SRC-A1F5AFCC0EFD",
+          "SRC-FD8CB480F201",
+          "SRC-14464747E8D0",
+          "SRC-2A2C8DAF478E",
+          "SRC-1DE0AFEB9493",
+          "SRC-C536567DD5CB"
+        ],
+        "count": 37
+      },
+      {
+        "title": "evolutionary adaptation of trait in lineage",
+        "source_ids": [
+          "SRC-AA7977530023",
+          "SRC-C1861769FC0A",
+          "SRC-B364598026D6",
+          "SRC-E8A777812531",
+          "SRC-37341E9B7431",
+          "SRC-021275C3D5B8",
+          "SRC-8D8E897A42B7",
+          "SRC-03FE9A5F3F62",
+          "SRC-60539F544F8F",
+          "SRC-DC89A297AA1B",
+          "SRC-D3EABA587144",
+          "SRC-4FBC30615F9D",
+          "SRC-E129893F7141",
+          "SRC-E72A77658BFA",
+          "SRC-3BB49FF2A243",
+          "SRC-A6D061D16DFA",
+          "SRC-A4EABDD6C77A",
+          "SRC-AAF552ED4BC1",
+          "SRC-6712F1858F90",
+          "SRC-074BC61D3BD0",
+          "SRC-C8594241F3F6",
+          "SRC-32ECF1EC45DC",
+          "SRC-01CA5452F26F",
+          "SRC-91CF7651F4AC",
+          "SRC-B47C6C75D498",
+          "SRC-44E2E60FC079",
+          "SRC-FFCDD9617AA4",
+          "SRC-3AC11A2B2A8D",
+          "SRC-03EC8897B4A3",
+          "SRC-8A03E717CB7C",
+          "SRC-514FE0F8AD00"
+        ],
+        "count": 31
+      },
+      {
+        "title": "phase transitions in oxide thin films",
+        "source_ids": [
+          "SRC-9CE6CF91F322",
+          "SRC-A8C994BEFDB6"
+        ],
+        "count": 2
+      },
+      {
+        "title": "self-assembly of molecule_type into structure",
+        "source_ids": [
+          "SRC-6B1D914DF9EA",
+          "SRC-7002F9D06BA8",
+          "SRC-9947EC3B0990",
+          "SRC-1D175881703E",
+          "SRC-0111480716F5",
+          "SRC-FA5B0CEAB363",
+          "SRC-526F537726CA",
+          "SRC-FCDEB060246B",
+          "SRC-07030AB66A8D",
+          "SRC-6439F7BFB794",
+          "SRC-33BF1B768BB8",
+          "SRC-4D0AED670604",
+          "SRC-23F43574F322",
+          "SRC-FFB2A1DD00A0",
+          "SRC-05EF284C90BC",
+          "SRC-9D43AAC57C67",
+          "SRC-0A83D3D70F88",
+          "SRC-9401D25DB1F6",
+          "SRC-312EC1F66D3E",
+          "SRC-D31C982FEA3A",
+          "SRC-4376E853225C",
+          "SRC-DC34851B2421",
+          "SRC-89AC51918BA8",
+          "SRC-81ADF118C56F",
+          "SRC-4B25853720DB",
+          "SRC-0306E1B21622",
+          "SRC-76040D00F021",
+          "SRC-8CD1EA5ABC1E",
+          "SRC-2EA66600C773",
+          "SRC-20599086D013",
+          "SRC-714CA7B4291B",
+          "SRC-300DBB25ABED",
+          "SRC-87B843461AE2"
+        ],
+        "count": 33
+      },
+      {
+        "title": "synthesis of novel cluster with enhanced lifetime",
+        "source_ids": [
+          "SRC-38C8FE19E67A",
+          "SRC-EA4F3206599D",
+          "SRC-75E6AB9071E0",
+          "SRC-B0C457E4EE8A"
+        ],
+        "count": 4
+      },
+      {
+        "title": "fatigue life prediction of actuator under loading",
+        "source_ids": [
+          "SRC-B8E18D6243A4",
+          "SRC-EAA9BDD8580E",
+          "SRC-4CC4F883F61C",
+          "SRC-506DA8D67CBE",
+          "SRC-CD17DAA6DDD9",
+          "SRC-F02DCA2DCC96",
+          "SRC-B48CC986E2CA",
+          "SRC-E16911CEB88D",
+          "SRC-7DA67E662F9F",
+          "SRC-943A0ED26047",
+          "SRC-331C0FA2F076",
+          "SRC-4D2CF6669362"
+        ],
+        "count": 12
+      },
+      {
+        "title": "corrosion resistance of graphene in environment",
+        "source_ids": [
+          "SRC-1F2182F086C7",
+          "SRC-08040AF22342",
+          "SRC-D649022E367C",
+          "SRC-385AF2CD65AD",
+          "SRC-8515473D1CF9",
+          "SRC-57369B3FEB0E"
+        ],
+        "count": 6
+      },
+      {
+        "title": "nanostructured polymer with enhanced mobility",
+        "source_ids": [
+          "SRC-95CF6581B9B8",
+          "SRC-58EA0297FF2E"
+        ],
+        "count": 2
+      },
+      {
+        "title": "nanostructured superconductor with enhanced efficiency",
+        "source_ids": [
+          "SRC-94EB02395225",
+          "SRC-99D821F6AB54",
+          "SRC-C7F74787FA75"
+        ],
+        "count": 3
+      },
+      {
+        "title": "population dynamics of yeast under condition",
+        "source_ids": [
+          "SRC-94B1E5CE176A",
+          "SRC-398A04CDE1EA"
+        ],
+        "count": 2
+      },
+      {
+        "title": "nanostructured semiconductor with enhanced efficiency",
+        "source_ids": [
+          "SRC-1AFE7D5B0666",
+          "SRC-131E9257BF54"
+        ],
+        "count": 2
+      },
+      {
+        "title": "quantum coupling in polymer systems",
+        "source_ids": [
+          "SRC-F8C2D0199027",
+          "SRC-D7302D79CD98",
+          "SRC-D567FE0A4F24",
+          "SRC-BD7AD0314E5E"
+        ],
+        "count": 4
+      },
+      {
+        "title": "design optimization of sensor for performance_metric",
+        "source_ids": [
+          "SRC-2F1260E81478",
+          "SRC-B74286ECCCA2",
+          "SRC-DBB4E8166817",
+          "SRC-15A9473FBE80",
+          "SRC-F4081134F098",
+          "SRC-E88EB6812A3F",
+          "SRC-49247646E3FC",
+          "SRC-5CC4D96E8FD7",
+          "SRC-13EC2EB7F3CF"
+        ],
+        "count": 9
+      },
+      {
+        "title": "developmental biology of structure formation",
+        "source_ids": [
+          "SRC-27F80D1A2AF5",
+          "SRC-70AB7EA32548",
+          "SRC-68646FA2B281",
+          "SRC-F1D15AF62248",
+          "SRC-39ED5A860700",
+          "SRC-423B7D1EF4CE",
+          "SRC-009EA8902327",
+          "SRC-CE8131B6FED1",
+          "SRC-1B107AFAFF83",
+          "SRC-ED6FCB7ABF81",
+          "SRC-DD8CD768F46D",
+          "SRC-A721FD84FF3D",
+          "SRC-DF3929E55D34",
+          "SRC-6E82E6C79456",
+          "SRC-19BCA1A922F5",
+          "SRC-465E831BB4E8",
+          "SRC-68F7C4C34D42",
+          "SRC-E9B49CB4C854",
+          "SRC-70764E591E00",
+          "SRC-0331886CA18D",
+          "SRC-04CFA99D6B91",
+          "SRC-1FD4B4BEF3DB",
+          "SRC-0E8714068E50",
+          "SRC-796C392B55AB",
+          "SRC-5632FC330907",
+          "SRC-8362F350C409",
+          "SRC-EB2DF0063499",
+          "SRC-5F53A540017B",
+          "SRC-2B2A50D5336D",
+          "SRC-19B33CE3711E",
+          "SRC-3E38EA352973",
+          "SRC-DC5407FAAC83",
+          "SRC-213D66A5E646",
+          "SRC-282D49AE3609",
+          "SRC-C937FC078722",
+          "SRC-EB8F6E0B2C4F"
+        ],
+        "count": 36
+      },
+      {
+        "title": "molecular mechanisms of polymerization in mouse",
+        "source_ids": [
+          "SRC-300EA18C7B1F",
+          "SRC-04376409E0BF"
+        ],
+        "count": 2
+      },
+      {
+        "title": "development of graphene for application",
+        "source_ids": [
+          "SRC-1660E6E0C702",
+          "SRC-B262E81C0A21",
+          "SRC-08FE1F9470FF",
+          "SRC-2F3111FF260F"
+        ],
+        "count": 4
+      },
+      {
+        "title": "multi-robot coordination in coordination_scenario",
+        "source_ids": [
+          "SRC-C064A3554CD2",
+          "SRC-EA2742D6343C",
+          "SRC-DCB518A54E1E",
+          "SRC-EDC20B479DE3",
+          "SRC-A0FE76DA250A",
+          "SRC-708DA131AC38",
+          "SRC-AC353D9F0B88",
+          "SRC-8D9A5EC452BD",
+          "SRC-8D22A61EFE9C",
+          "SRC-0732E2ECFB03",
+          "SRC-AD97CA7FDB5F",
+          "SRC-DC65F7DD7347",
+          "SRC-FD2D6DABC522",
+          "SRC-3A9FDBF95D78",
+          "SRC-62E539E4C932",
+          "SRC-567737F706DA",
+          "SRC-0588211EBC5C",
+          "SRC-B9E10FE12E8B",
+          "SRC-1EB0C5B3E5D5",
+          "SRC-7D624B0BBA5E",
+          "SRC-3F1A424B3BD1",
+          "SRC-EB8E26F45566",
+          "SRC-1DDD330DB49E",
+          "SRC-795C66BA7A51",
+          "SRC-94CA2BDE2726",
+          "SRC-3315D2AAEA19",
+          "SRC-18CE464D0776",
+          "SRC-760FEFF95F0A",
+          "SRC-33760310D43D",
+          "SRC-8C881FDAE2CC",
+          "SRC-D60A09F1476D"
+        ],
+        "count": 31
+      },
+      {
+        "title": "graph neural networks for graph_problem",
+        "source_ids": [
+          "SRC-2AEDBB48A875",
+          "SRC-B7C2F1AD5274",
+          "SRC-0643F42B7CAC",
+          "SRC-D751E20F6481",
+          "SRC-0A457576B101",
+          "SRC-37980D76A04D",
+          "SRC-DB6C5DDF3F77",
+          "SRC-8B036EE30389",
+          "SRC-369A57FE07A9",
+          "SRC-51E1AFFA84D0",
+          "SRC-8359718895E6",
+          "SRC-2C4E8FBF3E5C",
+          "SRC-9467B55DC088",
+          "SRC-4A9644AE3AFE",
+          "SRC-C1CEF17E6F23",
+          "SRC-62492AFCF604",
+          "SRC-C32BA1DC260B",
+          "SRC-1BB29117B8E1",
+          "SRC-A491703611C3",
+          "SRC-AEDE7B1CA5E1",
+          "SRC-59A772FFC7E7",
+          "SRC-85ED20935889",
+          "SRC-F9B4435D90FF",
+          "SRC-1F32AA98AD4E",
+          "SRC-ECA107666B59",
+          "SRC-8D419D9EE007",
+          "SRC-0614A86EE4FF"
+        ],
+        "count": 27
+      },
+      {
+        "title": "topological properties of topological_space",
+        "source_ids": [
+          "SRC-BC27BBD1F871",
+          "SRC-28ADAC508D7E",
+          "SRC-4E0188680507",
+          "SRC-AF11C66429C0",
+          "SRC-F2E8DF4C920B",
+          "SRC-623535210825",
+          "SRC-09973BDCF921",
+          "SRC-6298B59AA4CD",
+          "SRC-F61959349826",
+          "SRC-4E3D9D7FBC47",
+          "SRC-C3E411690A3F",
+          "SRC-AEE878950748",
+          "SRC-0C59FBAED955",
+          "SRC-ADB3E09CD548",
+          "SRC-0CA126A88E6A",
+          "SRC-4C2134C1387C",
+          "SRC-92ABAE67B4AB",
+          "SRC-D1E13C53F6B0",
+          "SRC-9549AF2C9954",
+          "SRC-43837268D760",
+          "SRC-5A9190145EC1",
+          "SRC-268B7676B8B7",
+          "SRC-1CE5A9D2E369",
+          "SRC-A7702315CC6F",
+          "SRC-A6A921F961C7",
+          "SRC-92F64607987F",
+          "SRC-3EE3B125C4D8"
+        ],
+        "count": 27
+      },
+      {
+        "title": "optical properties of nanostructure",
+        "source_ids": [
+          "SRC-5B0A162BAD8D",
+          "SRC-A08733D1B1EC",
+          "SRC-16B762362CAB",
+          "SRC-22EBFCCBE817",
+          "SRC-74F60E73C596",
+          "SRC-8326FAA4F5A8",
+          "SRC-76BB17A90220",
+          "SRC-D8B925CA8D22",
+          "SRC-27FB73EBB84C",
+          "SRC-42255DBCD45B",
+          "SRC-0AB2D0F059D6",
+          "SRC-FD93AA301ABB",
+          "SRC-758D6791EB23",
+          "SRC-08F8551E2F24",
+          "SRC-2019D53AC8AD",
+          "SRC-57EED9F6885B",
+          "SRC-EE474C5363AE",
+          "SRC-782DBA3341C4",
+          "SRC-374241333C21",
+          "SRC-56084A120B06",
+          "SRC-9B1EF9B64F65",
+          "SRC-F90B8C0BA13A",
+          "SRC-AD9ADA6EF32A",
+          "SRC-806889196FDF",
+          "SRC-7AD9B4EEEDD1",
+          "SRC-76D7E059BA1E",
+          "SRC-BB988917B910",
+          "SRC-AB56BF6D4E12",
+          "SRC-D4A984654C37",
+          "SRC-7767D623A1EE",
+          "SRC-6E6134519AC1",
+          "SRC-B97137986396",
+          "SRC-2163B29E7FF1",
+          "SRC-3C17A9197A17",
+          "SRC-85E37A7021F8",
+          "SRC-ADB6EEFDEC96",
+          "SRC-2D9CF3063E39",
+          "SRC-D69DB257820E",
+          "SRC-796D2C5818B4",
+          "SRC-70875933ACD4",
+          "SRC-07D43CD247EA"
+        ],
+        "count": 41
+      },
+      {
+        "title": "advanced graphene coatings for extreme environments",
+        "source_ids": [
+          "SRC-23BE47CD7658",
+          "SRC-286502012CEB",
+          "SRC-05D3FDC969CE"
+        ],
+        "count": 3
+      },
+      {
+        "title": "hydrogen production via production_method",
+        "source_ids": [
+          "SRC-E3D002C302FE",
+          "SRC-38E692875B72",
+          "SRC-6CE65068DD3A",
+          "SRC-8B5C72BABF05",
+          "SRC-23DDCE8EFA43",
+          "SRC-FBA8ED764C70",
+          "SRC-0C7B39DBC11A",
+          "SRC-3D174359938F",
+          "SRC-2A23A591182D",
+          "SRC-7D94EB8367D0",
+          "SRC-BF2DF5B25527",
+          "SRC-4AE6C127BF53",
+          "SRC-800CD2E53EA2",
+          "SRC-B3ABFB99202B",
+          "SRC-D6939F01D960",
+          "SRC-EA1679D8C9D6",
+          "SRC-594E3ED5C8D7",
+          "SRC-04E1B6557B69",
+          "SRC-19E5399FBB7E",
+          "SRC-367AE9944900",
+          "SRC-2E8A39DAF197",
+          "SRC-429DF9B5A385",
+          "SRC-34A1472ED2CF",
+          "SRC-DD664CBE4F6A",
+          "SRC-F0796D310CF1",
+          "SRC-D69DB432BF97",
+          "SRC-2187AAEB476D",
+          "SRC-55D0BEF90BA2",
+          "SRC-0CBCBED41B93",
+          "SRC-3223B7DEE7BC",
+          "SRC-4EBA62615F2B"
+        ],
+        "count": 31
+      },
+      {
+        "title": "synaptic plasticity in cerebellum",
+        "source_ids": [
+          "SRC-9BF59E42F014",
+          "SRC-F097EED1B1DF",
+          "SRC-0EE058B7E08E",
+          "SRC-EF2EAB71629F",
+          "SRC-57AAABE0019E",
+          "SRC-A2D7C4D3B2D2",
+          "SRC-C197C5106FE6",
+          "SRC-D1606EFF232C",
+          "SRC-A978EE1AD155",
+          "SRC-A77786ADB1D0",
+          "SRC-F049409D9D5D"
+        ],
+        "count": 11
+      },
+      {
+        "title": "theoretical analysis of system dynamics",
+        "source_ids": [
+          "SRC-712B6968B27E",
+          "SRC-3B12BC053A62",
+          "SRC-2CC9B6F4B09F",
+          "SRC-A01D0774083A",
+          "SRC-B823C2AAA9FB",
+          "SRC-B9B1C8E52F05",
+          "SRC-468F7C466DF6",
+          "SRC-36E2F97C9EFF",
+          "SRC-3F842C0CBA44",
+          "SRC-CDA8A18BEB60",
+          "SRC-8BA74191CC35",
+          "SRC-126CCAAD3518",
+          "SRC-506BD2E5B40B",
+          "SRC-61A8FCCCA480",
+          "SRC-AFCFDA55B180",
+          "SRC-C3CC3AC97BDF",
+          "SRC-DF1338B037E1",
+          "SRC-9F940C44AFB7",
+          "SRC-930BF05D375B",
+          "SRC-E6CCB2F2C962",
+          "SRC-675FC61AD9E8",
+          "SRC-14FC38973EC5",
+          "SRC-67425BAC4B75",
+          "SRC-49405C871B77",
+          "SRC-F8FC3A347ADD",
+          "SRC-3C34BABE49EE",
+          "SRC-68CC14CE9CD2",
+          "SRC-8D2CDAA1F8B5",
+          "SRC-65745172A27D",
+          "SRC-74A5F06ACB05",
+          "SRC-BC2010096694",
+          "SRC-5A6ABB999547",
+          "SRC-1A841F521190",
+          "SRC-DC030076424D",
+          "SRC-767C48C3A80B",
+          "SRC-9850CCF4281B",
+          "SRC-58F1974C523F",
+          "SRC-C42025B404E6",
+          "SRC-3BF7B57D3AE5"
+        ],
+        "count": 39
+      },
+      {
+        "title": "fatigue life prediction of bearing under loading",
+        "source_ids": [
+          "SRC-3B3BABBC7974",
+          "SRC-306B93B3D643",
+          "SRC-0914FEEF6D17",
+          "SRC-59E546C0242F",
+          "SRC-711762AE4386",
+          "SRC-1AC36F424F95",
+          "SRC-DCAE6A9493E3",
+          "SRC-50ABCAC7031D"
+        ],
+        "count": 8
+      },
+      {
+        "title": "sustainable chemical manufacturing of product",
+        "source_ids": [
+          "SRC-D0C8F59EA36E",
+          "SRC-D7A1EBE60BF7",
+          "SRC-40C2D705E201",
+          "SRC-D5A082B97C62",
+          "SRC-8DA440C69575",
+          "SRC-8D4176BEB9C0",
+          "SRC-A77574C3514D",
+          "SRC-0AAA14D5DD75",
+          "SRC-254B17EA9CAA",
+          "SRC-4487AC45E8B3",
+          "SRC-072C8451E3DB",
+          "SRC-2F8AE4E9F601",
+          "SRC-0F83CAFE2910",
+          "SRC-197CC49502FE",
+          "SRC-6E54D5AB9AC9",
+          "SRC-A9226E265882",
+          "SRC-7A6CCF017CF7",
+          "SRC-5F6035D6D2EE",
+          "SRC-FB98FC6DF3E0"
+        ],
+        "count": 19
+      },
+      {
+        "title": "deforestation patterns in forest_type",
+        "source_ids": [
+          "SRC-13AA01224FCC",
+          "SRC-A5E3C9A479A6",
+          "SRC-8EC2E3059F83",
+          "SRC-D9B79A7E7254",
+          "SRC-C4B594BA8D70",
+          "SRC-480F455B7275",
+          "SRC-1074D4B69EC9",
+          "SRC-8BA8D2020B79",
+          "SRC-89441835227D",
+          "SRC-79C1F4E29A54",
+          "SRC-C41A79A994F4",
+          "SRC-346E78B24B4C",
+          "SRC-29DCC2347F74",
+          "SRC-0527FD5DAF0E",
+          "SRC-3E64CC695E00",
+          "SRC-46C635F89C13",
+          "SRC-D367B53C8DEA",
+          "SRC-C88646E43FD0",
+          "SRC-E531FF6D360F",
+          "SRC-372649673F9C",
+          "SRC-53CC3EBC97BF",
+          "SRC-8271A47D27C8",
+          "SRC-103F8F014F52",
+          "SRC-8598CFC21F94",
+          "SRC-35CBB7D7B671",
+          "SRC-C7DB4F5D7B92",
+          "SRC-74432444DB29",
+          "SRC-00453AD8E08B",
+          "SRC-52A88868D5E9",
+          "SRC-72289E0F0629"
+        ],
+        "count": 30
+      },
+      {
+        "title": "catalyst development for industrial_process",
+        "source_ids": [
+          "SRC-D050BD8F066A",
+          "SRC-57F7343EECD9",
+          "SRC-361CD416E8E9",
+          "SRC-3A7815EB24CA",
+          "SRC-C96793CA1974",
+          "SRC-897F49970844",
+          "SRC-C3A630AF26C1",
+          "SRC-C199AA75356D",
+          "SRC-5A3A58C2B7A9",
+          "SRC-814C5EC85526",
+          "SRC-D9DDB4F257FC",
+          "SRC-3E2188166220",
+          "SRC-1FEAA09265BC",
+          "SRC-D4CEED6D4DA3",
+          "SRC-B6AEF0C44DC3",
+          "SRC-18975014B7B8",
+          "SRC-FCAFE00347FD",
+          "SRC-4CAB4457B748",
+          "SRC-F19C2A1A6D3B",
+          "SRC-86D0BFFCE5B5"
+        ],
+        "count": 20
+      },
+      {
+        "title": "phase stability in high-entropy semiconductor",
+        "source_ids": [
+          "SRC-2E877BDAA070",
+          "SRC-0004C13A059C",
+          "SRC-9BDC33C71B02",
+          "SRC-2468CF6F9EEE",
+          "SRC-5DA4F6925047",
+          "SRC-C3CB6BC0C11A"
+        ],
+        "count": 6
+      },
+      {
+        "title": "corrosion resistance of superconductor in environment",
+        "source_ids": [
+          "SRC-96B4472F4FD6",
+          "SRC-81E41300DDD3",
+          "SRC-5340F6764A92",
+          "SRC-8C6FDA0DB140",
+          "SRC-6CA144303ACC",
+          "SRC-6E9B8DD5EF7D"
+        ],
+        "count": 6
+      },
+      {
+        "title": "biodiversity assessment in habitat",
+        "source_ids": [
+          "SRC-2D4277D8B894",
+          "SRC-7F3AD4D6653B",
+          "SRC-37B1ECA09B71",
+          "SRC-B4418ACD32E1",
+          "SRC-066467DFEF86",
+          "SRC-24A66B4F9A4E",
+          "SRC-241E74E8C817",
+          "SRC-A6FCAB9165F9",
+          "SRC-1F2A88412E1F",
+          "SRC-2725BB9B89F9",
+          "SRC-CA77F7E2A7A4",
+          "SRC-09E639211494",
+          "SRC-3E4FAC0E65FB",
+          "SRC-568BD43CF313",
+          "SRC-88E93C2B7F46",
+          "SRC-62EBB653FD8F",
+          "SRC-CF53D04D3EC1",
+          "SRC-CF4AB581D5CF",
+          "SRC-306CCAC726AE",
+          "SRC-8816B8302E70",
+          "SRC-6639A6E0BD02",
+          "SRC-85338741AD8D",
+          "SRC-853251B4F9E0",
+          "SRC-FD6A2CF3D0C8",
+          "SRC-C09D00D58289"
+        ],
+        "count": 25
+      },
+      {
+        "title": "thermoelectric conversion in te_material",
+        "source_ids": [
+          "SRC-D6BE8EC8F4E9",
+          "SRC-826ED00ADEFA",
+          "SRC-939A8A9D6488",
+          "SRC-01524E1B5711",
+          "SRC-D48D46709AEE",
+          "SRC-32CA4910D023",
+          "SRC-2FDC26B209B0",
+          "SRC-34F185EAC0BC",
+          "SRC-481FED8704A3",
+          "SRC-73F55E48FABB",
+          "SRC-2ACB38E90345",
+          "SRC-6B7A7409BF36",
+          "SRC-B28487D6C297",
+          "SRC-2C90C278FB87",
+          "SRC-879D6FA12E81",
+          "SRC-3A237BDC8F4B",
+          "SRC-6BF29795B4D1",
+          "SRC-B42501BE0992",
+          "SRC-8D0063CD4A70",
+          "SRC-5821D6C87934",
+          "SRC-1D98D5898B68",
+          "SRC-3C72D960C898",
+          "SRC-729D62C1BB74",
+          "SRC-D6DD5D77CE4A",
+          "SRC-7B0878117BFB"
+        ],
+        "count": 25
+      },
+      {
+        "title": "synthesis of novel polymer with enhanced lifetime",
+        "source_ids": [
+          "SRC-8741C6747522",
+          "SRC-2EC1CAF4B88F"
+        ],
+        "count": 2
+      },
+      {
+        "title": "neurotransmitter dynamics during behavior",
+        "source_ids": [
+          "SRC-0E360300DD92",
+          "SRC-FF2915AB1A8F",
+          "SRC-E4D3C3DC794B",
+          "SRC-C4DE8128BBFD",
+          "SRC-511BF162F948",
+          "SRC-4AD8268EF440",
+          "SRC-491F0F4F07B5",
+          "SRC-8C9EEE4A0B80",
+          "SRC-F47C8542568E",
+          "SRC-2BE5DAF4CE01",
+          "SRC-DBBB480E2751",
+          "SRC-921756793D32",
+          "SRC-768D293B4962",
+          "SRC-6B5B490374D4",
+          "SRC-F66F039921CD",
+          "SRC-B1BCDE9837BA",
+          "SRC-B3BA7B3D5742",
+          "SRC-F2B9628F8E25",
+          "SRC-65E7B1D76BCA",
+          "SRC-6C7E69DA8728",
+          "SRC-FC9908DD1FD4",
+          "SRC-243DFB92CC1B",
+          "SRC-03C8C63846EF",
+          "SRC-F4AFB3E542F9",
+          "SRC-87C5ED2BEA1F",
+          "SRC-8A6CC8E889C4",
+          "SRC-424B97DB8E7A"
+        ],
+        "count": 27
+      },
+      {
+        "title": "investigation of superconductivity using diffraction",
+        "source_ids": [
+          "SRC-DAC1B1F1F732",
+          "SRC-EAA130857D06"
+        ],
+        "count": 2
+      },
+      {
+        "title": "efficient algorithm for sorting with complexity complexity",
+        "source_ids": [
+          "SRC-467274C7070C",
+          "SRC-5AD176F34097",
+          "SRC-BAEC7FE31CAD",
+          "SRC-67C8153ADA56",
+          "SRC-31FA84530FE6",
+          "SRC-CA4B8E8FFD0B"
+        ],
+        "count": 6
+      },
+      {
+        "title": "catalytic cracking using electrocatalyst catalysts",
+        "source_ids": [
+          "SRC-DF8A56ECD3B3",
+          "SRC-FCEFC7AFC920",
+          "SRC-B9CE0C2D416C"
+        ],
+        "count": 3
+      },
+      {
+        "title": "comparative genomics of clade reveals insight",
+        "source_ids": [
+          "SRC-66614E68A396",
+          "SRC-FA7422428654",
+          "SRC-CF4216870A60",
+          "SRC-5A1E8F8D253C",
+          "SRC-FACAA6CB42AF",
+          "SRC-EE3DE0300F11",
+          "SRC-00A616D88679",
+          "SRC-7ADE01A20DB7",
+          "SRC-95BE291C5939",
+          "SRC-72EB1F41ADE4",
+          "SRC-68B0A6E9D899",
+          "SRC-8FA1D21FB2CC",
+          "SRC-3D2850232DEE",
+          "SRC-D51F0AC98698",
+          "SRC-BF28D92BC035",
+          "SRC-A2D7C5523156",
+          "SRC-4158A2521D06",
+          "SRC-3C79E5539C0D",
+          "SRC-322E54608D74",
+          "SRC-72F65FA2F10A",
+          "SRC-5185FA3F8C49",
+          "SRC-FE88FDC99A03",
+          "SRC-58A883BE1269",
+          "SRC-0288D63CCEC8",
+          "SRC-EA4582CDE366",
+          "SRC-1CD7EF711B9C",
+          "SRC-ED7C55442D96",
+          "SRC-4E9C771DE66F"
+        ],
+        "count": 28
+      },
+      {
+        "title": "new bounds for prime numbers",
+        "source_ids": [
+          "SRC-B120DA4EDFCB",
+          "SRC-5BB6F9EA8E96",
+          "SRC-9CF6710228E0",
+          "SRC-1973761C16A3",
+          "SRC-8E11B01B8F0E",
+          "SRC-BB646E98645B",
+          "SRC-0C93DEB599C3",
+          "SRC-72C6FB4F37E8",
+          "SRC-804B3F132789",
+          "SRC-14E12CE0483B",
+          "SRC-0A79D84D0F36"
+        ],
+        "count": 11
+      },
+      {
+        "title": "nanostructured graphene with enhanced efficiency",
+        "source_ids": [
+          "SRC-323296C4A9CB",
+          "SRC-2E2B7997B96E",
+          "SRC-B61A63D7B7C4"
+        ],
+        "count": 3
+      },
+      {
+        "title": "neurodevelopmental disorders in model_organism",
+        "source_ids": [
+          "SRC-E3B6D6CCDE69",
+          "SRC-3EE94FA333B2",
+          "SRC-54833121ADE0",
+          "SRC-C5E7002D67EE",
+          "SRC-CC97CC813774",
+          "SRC-1F278482174A",
+          "SRC-1CDBE004DF8F",
+          "SRC-3C19186946F9",
+          "SRC-3E53F725E089",
+          "SRC-7110461473FD",
+          "SRC-95E0C2E8E9F3",
+          "SRC-77AE6FBB0B59",
+          "SRC-153D0BC05EFE",
+          "SRC-D47711043E19",
+          "SRC-0CB6BCEE87C2",
+          "SRC-451EF2941A0C",
+          "SRC-F1CD6300A6F0",
+          "SRC-D976186432EA",
+          "SRC-BA4B8EE4958B",
+          "SRC-51C35D6646B1",
+          "SRC-85E838726DEE",
+          "SRC-0170EA490917",
+          "SRC-2C15661D8E59",
+          "SRC-F3020AD00EF2",
+          "SRC-A58F242138DB",
+          "SRC-5DD9733D142A",
+          "SRC-63C2C3E422D6",
+          "SRC-9E5FC3699BFB",
+          "SRC-FAA8D8F31E14",
+          "SRC-B2F4C524E40A"
+        ],
+        "count": 30
+      },
+      {
+        "title": "reactor design for substitution reactions",
+        "source_ids": [
+          "SRC-A6BA82FBF7B3",
+          "SRC-FCCA28707423",
+          "SRC-C39B35B08745",
+          "SRC-581EAF3A93B4",
+          "SRC-B5310273F7F1",
+          "SRC-9537BC6E0240",
+          "SRC-92EA28FA0180",
+          "SRC-05FFD57CC8A7",
+          "SRC-F6E0F1BDDE5A",
+          "SRC-4C04070DC3D7"
+        ],
+        "count": 10
+      },
+      {
+        "title": "synaptic plasticity in striatum",
+        "source_ids": [
+          "SRC-D76B08CDB9CA",
+          "SRC-F53C68F5FEF1",
+          "SRC-73A4A5EF2185",
+          "SRC-4F1E4747A769",
+          "SRC-497021194DBA",
+          "SRC-E75457A5AC4C",
+          "SRC-2874F97CBC7E",
+          "SRC-B55BB5EAFD16"
+        ],
+        "count": 8
+      },
+      {
+        "title": "molecular design of semiconductor for application",
+        "source_ids": [
+          "SRC-0BB595ECF8D8",
+          "SRC-9C843F0375B5",
+          "SRC-0E8B2F598BC8"
+        ],
+        "count": 3
+      },
+      {
+        "title": "quantum computing algorithms for quantum_problem",
+        "source_ids": [
+          "SRC-B7A7E9B2D177",
+          "SRC-EB28A741D306",
+          "SRC-B167619AC982",
+          "SRC-3C046968644E",
+          "SRC-5C7367403FA2",
+          "SRC-F71AF26A8110",
+          "SRC-0BDC973FCFA8",
+          "SRC-6E9D1CA10297",
+          "SRC-A12DC0854668",
+          "SRC-3B1D7DB22E36",
+          "SRC-66CAED4749F1",
+          "SRC-08E7BEDE2990",
+          "SRC-995B5374321C",
+          "SRC-A4DD8847DE42",
+          "SRC-FE221B951E5D",
+          "SRC-4F4DE458DA2C",
+          "SRC-B1ACF3CDDC6F",
+          "SRC-CFF700C0723C",
+          "SRC-5181FC582511",
+          "SRC-1971454F6451",
+          "SRC-3B2E73B603DB",
+          "SRC-85C4B211001E",
+          "SRC-119B096D1A6A",
+          "SRC-40064B95007E",
+          "SRC-50892C07A74F",
+          "SRC-19F8404C55D3",
+          "SRC-70C3147225F8",
+          "SRC-B163154C71CB",
+          "SRC-B8D0170CEB34"
+        ],
+        "count": 29
+      },
+      {
+        "title": "high-performance solid-state batteries with electrode_material electrodes",
+        "source_ids": [
+          "SRC-98ECD65179F3",
+          "SRC-B55A56ED7B38",
+          "SRC-9EDB2509EAE0",
+          "SRC-99397E99DA6D"
+        ],
+        "count": 4
+      },
+      {
+        "title": "reinforcement learning in rl_domain",
+        "source_ids": [
+          "SRC-9EDA33C36E19",
+          "SRC-9B51AC272FB6",
+          "SRC-AA6B15777068",
+          "SRC-32E6B71E6E91",
+          "SRC-EB1894788A12",
+          "SRC-ABB63E3B236C",
+          "SRC-51086D22D11F",
+          "SRC-20D633D21FDB",
+          "SRC-8D4ABE517180",
+          "SRC-2093D144D302",
+          "SRC-1729AED1B4E7",
+          "SRC-CEC237EFCC3E",
+          "SRC-2ABD680DA6CD",
+          "SRC-DE005B691353",
+          "SRC-7A5153C6C6F6",
+          "SRC-FA9007CDCF1A",
+          "SRC-D21C04E5E2BE",
+          "SRC-D74028CAF81B",
+          "SRC-2E91C36A3407",
+          "SRC-4FBC5844C837",
+          "SRC-CDABCF95ABEF",
+          "SRC-12F758EB67E5",
+          "SRC-67B301C595E3",
+          "SRC-73B33024C89F",
+          "SRC-7C3A8ABDFDC7",
+          "SRC-38276BFE91A8",
+          "SRC-CF5B31125A31",
+          "SRC-8FB72FB01515",
+          "SRC-723B316DB4BC",
+          "SRC-DAEDC6431546",
+          "SRC-293EB9610F59",
+          "SRC-4CFFD4791BF3"
+        ],
+        "count": 32
+      },
+      {
+        "title": "vibration analysis of structure structures",
+        "source_ids": [
+          "SRC-B740A8217E80",
+          "SRC-2C616F7E7566",
+          "SRC-BFE8CA77C4AF",
+          "SRC-2A0349FC081F",
+          "SRC-396613EBCA5D",
+          "SRC-80226E4CC35D",
+          "SRC-40649D6AEAE4",
+          "SRC-D9DDA5D82218",
+          "SRC-9EE363D2F30D",
+          "SRC-CC09BC108CFE",
+          "SRC-1D0FD9A034FA",
+          "SRC-D2101F746BA4",
+          "SRC-126365D5D989",
+          "SRC-E0EEEF6DA05B",
+          "SRC-106C62131F9F",
+          "SRC-A3C9D18253BF",
+          "SRC-E7A892C9175E",
+          "SRC-9CE5D395E399",
+          "SRC-AF2E7B33EBA7",
+          "SRC-88DD9FBDB28A",
+          "SRC-8BA1E6B43925",
+          "SRC-F64FD85CDF57",
+          "SRC-B4DEA3FAE1DD",
+          "SRC-B042AC236A1D",
+          "SRC-8B0D1E212E7B",
+          "SRC-576B7F18732F",
+          "SRC-A440277D4918",
+          "SRC-0CA30B0BD833",
+          "SRC-692695CCC4FD",
+          "SRC-BBF93A238A46",
+          "SRC-7014CB4F22FB",
+          "SRC-BBED46EDC62C",
+          "SRC-8314D4BD6284",
+          "SRC-93C83D380570"
+        ],
+        "count": 34
+      },
+      {
+        "title": "separation processes for mixture_type mixtures",
+        "source_ids": [
+          "SRC-B4883A7EE6AE",
+          "SRC-BA5064596C2B",
+          "SRC-038E7C17DD5F",
+          "SRC-2545E32B38C6",
+          "SRC-E6974B8F67A0",
+          "SRC-58D38BD9E7FC",
+          "SRC-C28FFD7DFEEA",
+          "SRC-FDD696DB2C04",
+          "SRC-0FB145532212",
+          "SRC-843CE7D289D4",
+          "SRC-F1B0B3B58E88",
+          "SRC-2DF182831C1B",
+          "SRC-7241FCCF3244",
+          "SRC-F8B66FD7815A",
+          "SRC-692B5AA52A48",
+          "SRC-EFAEC5AF1689",
+          "SRC-C336A1766453",
+          "SRC-1DD5526B8D50",
+          "SRC-7BB5139D35E7",
+          "SRC-B410C8B7C455",
+          "SRC-3F5778F0E5E7",
+          "SRC-AD5F54FF934E",
+          "SRC-246C5E10B188",
+          "SRC-B0E1A4333EBA",
+          "SRC-E1122CEB699C",
+          "SRC-470F2430711A",
+          "SRC-E867D886CC22",
+          "SRC-EE70BDBCF1DF",
+          "SRC-BBCFFE3632DE",
+          "SRC-4EE2FF7AF1D2",
+          "SRC-2E9841A278B5",
+          "SRC-D0D8F1A77802",
+          "SRC-B27F4F12AAEA",
+          "SRC-8A04BFEAC48B",
+          "SRC-FAB708A3780F",
+          "SRC-9D2DA98D6118",
+          "SRC-5B319299B69D",
+          "SRC-E535FA6CCE88",
+          "SRC-158A7C73E281",
+          "SRC-DC2E42150DA4",
+          "SRC-D6C7CD91A062"
+        ],
+        "count": 41
+      },
+      {
+        "title": "new bounds for series",
+        "source_ids": [
+          "SRC-4B33A0FD2E22",
+          "SRC-F306EB2F3476",
+          "SRC-B8683FDA0027",
+          "SRC-6C0AAB58FDD5",
+          "SRC-7A8FDFE8E1F1",
+          "SRC-F5C64128C6EC",
+          "SRC-705A79DEF050",
+          "SRC-57B4AAD2815A",
+          "SRC-B56730B4E238"
+        ],
+        "count": 9
+      },
+      {
+        "title": "synaptic plasticity in amygdala",
+        "source_ids": [
+          "SRC-E7A7BC984577",
+          "SRC-23D60B69A625",
+          "SRC-E31AAF95ECD1"
+        ],
+        "count": 3
+      },
+      {
+        "title": "phase stability in high-entropy perovskite",
+        "source_ids": [
+          "SRC-9327D1D7C901",
+          "SRC-67A78C7BEDB0",
+          "SRC-84140626102C"
+        ],
+        "count": 3
+      },
+      {
+        "title": "ecosystem services valuation for service_type",
+        "source_ids": [
+          "SRC-EC74AFA563F3",
+          "SRC-B6F8FE14CFDE",
+          "SRC-C8D382A246B2",
+          "SRC-62CC5EB30B67",
+          "SRC-74BDC43CCCA8",
+          "SRC-483B2E89A9F8",
+          "SRC-2A2B968DDEEE",
+          "SRC-F5B9C8B65151",
+          "SRC-2155F7101D1A",
+          "SRC-107D3A0AD402",
+          "SRC-B761809E2ECA",
+          "SRC-F98892492BDF",
+          "SRC-D7C7A78BE44C",
+          "SRC-07311D9CB34A",
+          "SRC-494D9806B8C7",
+          "SRC-F6DC22C91615",
+          "SRC-C51365FACE98",
+          "SRC-DAEECB8F328B",
+          "SRC-786ACD5CB8BC",
+          "SRC-58A5C3772859"
+        ],
+        "count": 20
+      },
+      {
+        "title": "mechanistic study of substitution reactions",
+        "source_ids": [
+          "SRC-CCB23C53241A",
+          "SRC-27AE81550E49",
+          "SRC-A6FDA8BE1010",
+          "SRC-899753CD4B4E",
+          "SRC-7AA1E7629F0B",
+          "SRC-B94AF354B2CC"
+        ],
+        "count": 6
+      },
+      {
+        "title": "synaptic plasticity in hippocampus",
+        "source_ids": [
+          "SRC-C5DD0A270CFE",
+          "SRC-5A9C9CF01A8D",
+          "SRC-800971045A9F",
+          "SRC-939C1377279B"
+        ],
+        "count": 4
+      },
+      {
+        "title": "spin conductivity in magnetic perovskite",
+        "source_ids": [
+          "SRC-E32579752CA1",
+          "SRC-7E6FB38B5151"
+        ],
+        "count": 2
+      },
+      {
+        "title": "fluid dynamics simulation of flow_scenario",
+        "source_ids": [
+          "SRC-69ABB20E81B1",
+          "SRC-1D67A2160464",
+          "SRC-5C44FCDB11BD",
+          "SRC-B3DFD5D4A9BF",
+          "SRC-12D819D29C71",
+          "SRC-CCE5DF65AD33",
+          "SRC-421A9B46ADC3",
+          "SRC-93D10D4F4A4E",
+          "SRC-E59C39CA1A0C",
+          "SRC-928F1B18319C",
+          "SRC-76CA4952A3B3",
+          "SRC-F666FAE5E8B3",
+          "SRC-E0383CD997EE",
+          "SRC-E22F4FE0D858",
+          "SRC-C5D688FB3FE2",
+          "SRC-AE42F4833C7E",
+          "SRC-0E6BA7E0DBBE",
+          "SRC-582814779056",
+          "SRC-7D82EC7CDB55",
+          "SRC-2818A69E979A",
+          "SRC-AD534A442579",
+          "SRC-A47D25DA2F59",
+          "SRC-7DE509F036F1"
+        ],
+        "count": 23
+      },
+      {
+        "title": "process optimization for chemical_process",
+        "source_ids": [
+          "SRC-6105FD6A7789",
+          "SRC-588B2613FD12",
+          "SRC-6CF547D5B70C",
+          "SRC-05E7B805E443",
+          "SRC-93E940FA3A5B",
+          "SRC-5165AFBF86B8",
+          "SRC-64F6270C37BA",
+          "SRC-B27D53218545",
+          "SRC-5F0EB7A9FAE8",
+          "SRC-B43738ADAE4C",
+          "SRC-2F2F84B6A022",
+          "SRC-A1989A940DE9",
+          "SRC-91FE1A516993",
+          "SRC-3E17DD4F360E",
+          "SRC-7964551D7E7D",
+          "SRC-705BCA036D52",
+          "SRC-B76A385B7B54",
+          "SRC-24A609C2CA4C",
+          "SRC-7E82F6727108",
+          "SRC-7BDB37FA3BFF",
+          "SRC-4E4EE167E642",
+          "SRC-8F49616D13B1",
+          "SRC-6CF4B4AFDCF7",
+          "SRC-CE5A8335011D"
+        ],
+        "count": 24
+      },
+      {
+        "title": "climate change impacts on tundra",
+        "source_ids": [
+          "SRC-F538A326161A",
+          "SRC-8B484653CA0E",
+          "SRC-48B7C910052B",
+          "SRC-9956B6BF75AC",
+          "SRC-CE36CFE9B35C",
+          "SRC-08EE15CAED2D"
+        ],
+        "count": 6
+      },
+      {
+        "title": "synaptic plasticity in cortex",
+        "source_ids": [
+          "SRC-B807A88BBB46",
+          "SRC-587875E4D66E",
+          "SRC-1ED329814CB0",
+          "SRC-A638E2F3FFA4",
+          "SRC-300E8A05BCDD"
+        ],
+        "count": 5
+      },
+      {
+        "title": "biomimetic perovskite design inspired by biological_system",
+        "source_ids": [
+          "SRC-672FDD43222A",
+          "SRC-7087EF661999",
+          "SRC-5060CD4DDFFF",
+          "SRC-594BA1FAC72E",
+          "SRC-23D601B55911",
+          "SRC-DA27E7CF0F37",
+          "SRC-D3EA91751250",
+          "SRC-7A9D816FAE7C",
+          "SRC-2EE5341B19B3"
+        ],
+        "count": 9
+      },
+      {
+        "title": "autonomous navigation in indoor environments",
+        "source_ids": [
+          "SRC-0E67C6206905",
+          "SRC-16B0B9B397FC",
+          "SRC-4F97627F5BDB",
+          "SRC-AE3126A2BCFD",
+          "SRC-DE02FB3939EE",
+          "SRC-822AD2EF10B8",
+          "SRC-E8FEB07A6F5F"
+        ],
+        "count": 7
+      },
+      {
+        "title": "reactor design for cyclization reactions",
+        "source_ids": [
+          "SRC-E509871148F4",
+          "SRC-C833E0739313",
+          "SRC-FA5D07A63699",
+          "SRC-6C57BFEBFF58",
+          "SRC-A89C75A3281E",
+          "SRC-F0402AB1C0EC"
+        ],
+        "count": 6
+      },
+      {
+        "title": "differential equations governing ferroelectricity",
+        "source_ids": [
+          "SRC-829A5AB785BB",
+          "SRC-1BE96F46FCAA",
+          "SRC-6647A108A7B1",
+          "SRC-7E25B5A284D2",
+          "SRC-5D14AE288E40",
+          "SRC-45B362C86AEB",
+          "SRC-17391EA43D9B",
+          "SRC-264EE64531C7",
+          "SRC-B03775E7965D",
+          "SRC-43EEDEF4E80D",
+          "SRC-7DC1F87E31B4"
+        ],
+        "count": 11
+      },
+      {
+        "title": "water treatment using treatment_method",
+        "source_ids": [
+          "SRC-2CFFABEEF1C2",
+          "SRC-A89109117BE9",
+          "SRC-609C982E94BB",
+          "SRC-6D38A619EACF",
+          "SRC-A6C150216F72",
+          "SRC-29A4857E153C",
+          "SRC-16E65E8C1282",
+          "SRC-F7AA6889DF2C",
+          "SRC-F1C10D715BF3",
+          "SRC-D97D071172AA",
+          "SRC-9D78FA9C99DB",
+          "SRC-DAAD9D65146B",
+          "SRC-64CA40F020FA",
+          "SRC-D52BC6E0E848",
+          "SRC-06CAAF727FDF",
+          "SRC-D8D12D914A71",
+          "SRC-AB099541B6BC",
+          "SRC-B2F0D756B8AE",
+          "SRC-CBA84F3ECEF5",
+          "SRC-FE2563AC2EEB",
+          "SRC-95DBC54C663D",
+          "SRC-2EB0672D8AAA",
+          "SRC-E52D9FDE8DB3",
+          "SRC-03B53F005666"
+        ],
+        "count": 24
+      },
+      {
+        "title": "electrochemical isomerization in solvent solutions",
+        "source_ids": [
+          "SRC-06DCE0A670C2",
+          "SRC-3C599DEAAAF2",
+          "SRC-CEA39619606C",
+          "SRC-5EBD6750BFBA",
+          "SRC-1B95FFAC73A4",
+          "SRC-6F0D225B5B58"
+        ],
+        "count": 6
+      },
+      {
+        "title": "modeling and simulation of process_system",
+        "source_ids": [
+          "SRC-576316443AF8",
+          "SRC-2048A3B0E1C4",
+          "SRC-D854E69875C1",
+          "SRC-547278FE03F3",
+          "SRC-329694849578",
+          "SRC-3F5750C7C0EC",
+          "SRC-C74518A607A1",
+          "SRC-AB93CC5875DE",
+          "SRC-E988C2440834",
+          "SRC-BDDEA9467464",
+          "SRC-B67D22852C10",
+          "SRC-FC440A74085F",
+          "SRC-2563A20D0960",
+          "SRC-C364AF8D6D4F",
+          "SRC-6FA64752DBE1",
+          "SRC-7677B2CDBC47",
+          "SRC-F180BF409367",
+          "SRC-C12277108DCD",
+          "SRC-A8F8D7E231DE",
+          "SRC-42AB0EEF754E",
+          "SRC-367773E4361D",
+          "SRC-14ECAEA6DDAD",
+          "SRC-DC6902E1A674",
+          "SRC-3CF2CBCCE5BB",
+          "SRC-9DFFCC5E5661",
+          "SRC-D2262837D42B",
+          "SRC-DEF377362447",
+          "SRC-83BBCE4557C9",
+          "SRC-9F8611C65B40",
+          "SRC-9E1ABFF2ABA7",
+          "SRC-A041EFE62DB4",
+          "SRC-A78CBFC5AF5A",
+          "SRC-B9FDCD6C7C38",
+          "SRC-4CCFBE0D3E15",
+          "SRC-4501940BBF43"
+        ],
+        "count": 35
+      },
+      {
+        "title": "phase stability in high-entropy oxide",
+        "source_ids": [
+          "SRC-05302D4E74E6",
+          "SRC-FEC0EAED8626",
+          "SRC-DBAA91FB99E8",
+          "SRC-AD036C3B145A",
+          "SRC-AB61ED4B709D"
+        ],
+        "count": 5
+      },
+      {
+        "title": "climate change impacts on wetland",
+        "source_ids": [
+          "SRC-D9345CF9CFAB",
+          "SRC-6EA50B8AC398",
+          "SRC-4893E68E00D9",
+          "SRC-81FDF01218E6",
+          "SRC-656CE1A2C110"
+        ],
+        "count": 5
+      },
+      {
+        "title": "additive manufacturing of part_type components",
+        "source_ids": [
+          "SRC-E107C732F61F",
+          "SRC-30DA4BDA13D0",
+          "SRC-17050D200CC7",
+          "SRC-1EAA9D3B56AA",
+          "SRC-6E2B368E2BCE",
+          "SRC-7BF88F65DB70",
+          "SRC-83B075503CB9",
+          "SRC-673419ED3DE9",
+          "SRC-79BCBEBFD82F",
+          "SRC-B64222CA381C",
+          "SRC-D550C0728E76",
+          "SRC-D7EFCBC455A2",
+          "SRC-9EA3A280B35D",
+          "SRC-B728E378D5AC",
+          "SRC-C5BA7425A46C",
+          "SRC-15F569EC18EF",
+          "SRC-8778665086B5",
+          "SRC-80438EB6E07D",
+          "SRC-9454BA1BA0AF"
+        ],
+        "count": 19
+      },
+      {
+        "title": "phase transitions in perovskite thin films",
+        "source_ids": [
+          "SRC-98288BA8C8E4",
+          "SRC-119385BE27A6",
+          "SRC-BF34DE94AF48"
+        ],
+        "count": 3
+      },
+      {
+        "title": "catalytic reforming using photocatalyst catalysts",
+        "source_ids": [
+          "SRC-028AEE43ED83",
+          "SRC-2F1D5B68450C",
+          "SRC-520B736A19FC"
+        ],
+        "count": 3
+      },
+      {
+        "title": "novel mobility of magnon at low temperatures",
+        "source_ids": [
+          "SRC-12FA00AA7A94",
+          "SRC-723F357CDB78"
+        ],
+        "count": 2
+      },
+      {
+        "title": "corrosion resistance of semiconductor in environment",
+        "source_ids": [
+          "SRC-8A6E47EDF614",
+          "SRC-CD0F98F22159",
+          "SRC-4FCBF5A70850",
+          "SRC-FBC3DD7781CB",
+          "SRC-2F90E4929926",
+          "SRC-805434C222AD",
+          "SRC-1160D9B967B2"
+        ],
+        "count": 7
+      },
+      {
+        "title": "population dynamics of mouse under condition",
+        "source_ids": [
+          "SRC-DED2D52703A9",
+          "SRC-8455F5211496",
+          "SRC-AD6E3A56C225"
+        ],
+        "count": 3
+      },
+      {
+        "title": "investigation of thermoelectricity using spectroscopy",
+        "source_ids": [
+          "SRC-E89066A5D150",
+          "SRC-031A8FFFEEAD"
+        ],
+        "count": 2
+      },
+      {
+        "title": "efficient algorithm for optimization with complexity complexity",
+        "source_ids": [
+          "SRC-38200964D0A7",
+          "SRC-8E68806F16C9",
+          "SRC-1512DC923C5C",
+          "SRC-FDDB46A81693",
+          "SRC-FFE2CF63810C",
+          "SRC-BD2926CCCDAD",
+          "SRC-03B5FAAB067A"
+        ],
+        "count": 7
+      },
+      {
+        "title": "mechanical properties of nanotube composites",
+        "source_ids": [
+          "SRC-5478177503D8",
+          "SRC-1BB11DC64D62",
+          "SRC-ADDA1F5B1F22"
+        ],
+        "count": 3
+      },
+      {
+        "title": "investigation of thermoelectricity using diffraction",
+        "source_ids": [
+          "SRC-2D6E1599AAB2",
+          "SRC-5206274AF9CE"
+        ],
+        "count": 2
+      },
+      {
+        "title": "efficient algorithm for clustering with complexity complexity",
+        "source_ids": [
+          "SRC-0A3C7A38DB7A",
+          "SRC-6A00DC7F29EE",
+          "SRC-3C50D2715B89",
+          "SRC-D368DD7D88DB",
+          "SRC-8DAF486E03AA",
+          "SRC-F46CBDC51930"
+        ],
+        "count": 6
+      },
+      {
+        "title": "nanostructured perovskite with enhanced lifetime",
+        "source_ids": [
+          "SRC-2772C93C62EE",
+          "SRC-5BBD26BE0504",
+          "SRC-FA1AE2549550"
+        ],
+        "count": 3
+      },
+      {
+        "title": "role of transcription factor in cellular_process",
+        "source_ids": [
+          "SRC-933FFB7FC9E1",
+          "SRC-8D25E50284DF",
+          "SRC-B3519C9EF7EA",
+          "SRC-559A3B796E5C",
+          "SRC-0376F4D4415D",
+          "SRC-F6F6A5A8796C",
+          "SRC-29CFC9E84D1C",
+          "SRC-6C4610D737FF"
+        ],
+        "count": 8
+      },
+      {
+        "title": "experimental study of interaction in condensed matter",
+        "source_ids": [
+          "SRC-E4B4196189E7",
+          "SRC-27C91968D751",
+          "SRC-FA385EDD1E8F",
+          "SRC-2EF9F91DC924",
+          "SRC-9E86DDC77CCF",
+          "SRC-A63D46ED09D1",
+          "SRC-949E64E6CA11",
+          "SRC-53387FD173E4",
+          "SRC-7B711529221B",
+          "SRC-911146E94E37",
+          "SRC-7F8FB0B33C68",
+          "SRC-66588C4B3643",
+          "SRC-915C6E2FFFA2",
+          "SRC-1126D06BB79F",
+          "SRC-E6E8F62FEEFF",
+          "SRC-666FDBBB3FAF",
+          "SRC-16247F9553EA",
+          "SRC-2A54F88E9FFC",
+          "SRC-016495652060",
+          "SRC-D0B92EEED283",
+          "SRC-593E88649E71",
+          "SRC-DDD449E1434B",
+          "SRC-CF154B1C284F",
+          "SRC-6F209FB08824",
+          "SRC-86C413BDAE92",
+          "SRC-9EB91FE30302",
+          "SRC-9CA53E04D76A",
+          "SRC-033167CCD65F",
+          "SRC-4E457D074F9A",
+          "SRC-18EAF53B2F4E"
+        ],
+        "count": 30
+      },
+      {
+        "title": "molecular design of graphene for application",
+        "source_ids": [
+          "SRC-8FBD2099B4DE",
+          "SRC-7E5D08FC1319",
+          "SRC-32659CCEFD8C",
+          "SRC-D44FA3B72C83",
+          "SRC-81B3742C58C8",
+          "SRC-EC5A115CC5FC"
+        ],
+        "count": 6
+      },
+      {
+        "title": "spin selectivity in magnetic oxide",
+        "source_ids": [
+          "SRC-37EF143C9A15",
+          "SRC-80CCE2447CC8"
+        ],
+        "count": 2
+      },
+      {
+        "title": "advanced polymer coatings for extreme environments",
+        "source_ids": [
+          "SRC-B5BF225B6098",
+          "SRC-D9E3795AADC8",
+          "SRC-32C2C95B14E4",
+          "SRC-8EB3DD66FC92",
+          "SRC-AEE0F131AF0F",
+          "SRC-29E727B96776"
+        ],
+        "count": 6
+      },
+      {
+        "title": "role of enzyme in cellular_process",
+        "source_ids": [
+          "SRC-C52BEB04D109",
+          "SRC-113EB1F931BC",
+          "SRC-0F9C9451120A",
+          "SRC-145EED57AD8D",
+          "SRC-5A83047BF9EC",
+          "SRC-30C3971EF31A"
+        ],
+        "count": 6
+      },
+      {
+        "title": "mechanistic study of elimination reactions",
+        "source_ids": [
+          "SRC-FBD9EAC5207D",
+          "SRC-5C1053D6F0BF",
+          "SRC-2BFDF4A8195B",
+          "SRC-9B6A84C12C48",
+          "SRC-26647CC7C206",
+          "SRC-1E6CC920C50C",
+          "SRC-A5CFAB6619A7"
+        ],
+        "count": 7
+      },
+      {
+        "title": "catalytic cracking using organocatalyst catalysts",
+        "source_ids": [
+          "SRC-FB154EF07188",
+          "SRC-2093BA8D81A6"
+        ],
+        "count": 2
+      },
+      {
+        "title": "design optimization of gear for performance_metric",
+        "source_ids": [
+          "SRC-B37182F63D06",
+          "SRC-2E324896DA62",
+          "SRC-4C10DA41D92B",
+          "SRC-BB198BE79ACD"
+        ],
+        "count": 4
+      },
+      {
+        "title": "quantum entanglement in graphene systems",
+        "source_ids": [
+          "SRC-4B15006EE9C4",
+          "SRC-DB677E68322D"
+        ],
+        "count": 2
+      },
+      {
+        "title": "phase stability in high-entropy graphene",
+        "source_ids": [
+          "SRC-02BCFDAB9B24",
+          "SRC-D12E5A22C7D0",
+          "SRC-BC150143FB91",
+          "SRC-A8292100CEF2",
+          "SRC-A649797FA7A7",
+          "SRC-8F21AECFB932",
+          "SRC-F6497B73BA06",
+          "SRC-F9A9B2CAC100",
+          "SRC-20C3F720B82B"
+        ],
+        "count": 9
+      },
+      {
+        "title": "quantum entanglement in polymer systems",
+        "source_ids": [
+          "SRC-C371EC39DD00",
+          "SRC-E63C1F280190",
+          "SRC-8E32CCA960DA"
+        ],
+        "count": 3
+      },
+      {
+        "title": "new bounds for integrals",
+        "source_ids": [
+          "SRC-628897A3C6AD",
+          "SRC-49CEBF9550FA",
+          "SRC-865DE78BAA2E",
+          "SRC-41B2BBB3485F",
+          "SRC-F816CEFA8263"
+        ],
+        "count": 5
+      },
+      {
+        "title": "autonomous navigation in outdoor environments",
+        "source_ids": [
+          "SRC-2CB80BF9D77D",
+          "SRC-04EA8A3DBAD3",
+          "SRC-71EF07A45046",
+          "SRC-9B5CC545EB05",
+          "SRC-B8DDE75C496D"
+        ],
+        "count": 5
+      },
+      {
+        "title": "electrochemical hydrolysis in solvent solutions",
+        "source_ids": [
+          "SRC-89C8975D7479",
+          "SRC-B60636CE2810",
+          "SRC-5BAB6A7B97E0",
+          "SRC-D1D39B043082"
+        ],
+        "count": 4
+      },
+      {
+        "title": "spin selectivity in magnetic semiconductor",
+        "source_ids": [
+          "SRC-3D4B6432E07C",
+          "SRC-8E19C205CBEF"
+        ],
+        "count": 2
+      },
+      {
+        "title": "molecular design of oxide for application",
+        "source_ids": [
+          "SRC-8A9499328484",
+          "SRC-8A92470CB303",
+          "SRC-CA49DDD059A4",
+          "SRC-49A63CF2ECA0"
+        ],
+        "count": 4
+      },
+      {
+        "title": "phase stability in high-entropy polymer",
+        "source_ids": [
+          "SRC-9B074A8E850A",
+          "SRC-98C4627CC32E",
+          "SRC-BC9B8834B2CC",
+          "SRC-4AA0267B9B71",
+          "SRC-CC6273BA1CC4",
+          "SRC-9B5BF52AC09E"
+        ],
+        "count": 6
+      },
+      {
+        "title": "microstructural evolution during isomerization",
+        "source_ids": [
+          "SRC-8F12420B34D7",
+          "SRC-2168A71EAB17"
+        ],
+        "count": 2
+      },
+      {
+        "title": "new bounds for polynomials",
+        "source_ids": [
+          "SRC-7D2599FB7085",
+          "SRC-CEFDEFE9986C",
+          "SRC-60636A3BFFCE",
+          "SRC-95EF89229446"
+        ],
+        "count": 4
+      },
+      {
+        "title": "advanced perovskite coatings for extreme environments",
+        "source_ids": [
+          "SRC-7FD764EF5D3E",
+          "SRC-FA7E3F7F973A",
+          "SRC-12694829704C",
+          "SRC-DD31A58E8EA5",
+          "SRC-67DD316BDF78"
+        ],
+        "count": 5
+      },
+      {
+        "title": "corrosion resistance of polymer in environment",
+        "source_ids": [
+          "SRC-6CD0161D4B0C",
+          "SRC-77FE116F3684",
+          "SRC-20F9B3CB9F9B",
+          "SRC-C4BEEA1A259F",
+          "SRC-5EF4874E46DC",
+          "SRC-3B9505883E35",
+          "SRC-D46CAA956BB9"
+        ],
+        "count": 7
+      },
+      {
+        "title": "design optimization of actuator for performance_metric",
+        "source_ids": [
+          "SRC-E6D6E309F386",
+          "SRC-9CEC8F77BFFE",
+          "SRC-2005B47C2266",
+          "SRC-620F2E2ABEAF",
+          "SRC-88AAC3238DE4",
+          "SRC-F65061CCD508"
+        ],
+        "count": 6
+      },
+      {
+        "title": "catalytic isomerization using metal catalysts",
+        "source_ids": [
+          "SRC-4DC0882A8D2B",
+          "SRC-6F52C091998B"
+        ],
+        "count": 2
+      },
+      {
+        "title": "biomimetic polymer design inspired by biological_system",
+        "source_ids": [
+          "SRC-E4ABBC607962",
+          "SRC-ADCD5B6A42BE"
+        ],
+        "count": 2
+      },
+      {
+        "title": "investigation of magnetoresistance using spectroscopy",
+        "source_ids": [
+          "SRC-215D40EF7F36",
+          "SRC-E2A3EDADB503"
+        ],
+        "count": 2
+      },
+      {
+        "title": "investigation of ferroelectricity using microscopy",
+        "source_ids": [
+          "SRC-1F14BD7BB72D",
+          "SRC-291BF1F9EB15"
+        ],
+        "count": 2
+      },
+      {
+        "title": "spin conductivity in magnetic polymer",
+        "source_ids": [
+          "SRC-5D52F05EC8C4",
+          "SRC-82E2160482DD"
+        ],
+        "count": 2
+      },
+      {
+        "title": "autonomous navigation in urban environments",
+        "source_ids": [
+          "SRC-E403C168377E",
+          "SRC-BB5A424BCEE9",
+          "SRC-BEFD48748D76",
+          "SRC-08C5F40594ED",
+          "SRC-C8760667C873",
+          "SRC-24135B58021D",
+          "SRC-6C4B6893D92E",
+          "SRC-E6CE1D6B0EAA"
+        ],
+        "count": 8
+      },
+      {
+        "title": "spin lifetime in magnetic oxide",
+        "source_ids": [
+          "SRC-22926CE19CCD",
+          "SRC-DF60432862B6",
+          "SRC-4258BE7BF15D",
+          "SRC-795ADFA73E5D"
+        ],
+        "count": 4
+      },
+      {
+        "title": "biomimetic oxide design inspired by biological_system",
+        "source_ids": [
+          "SRC-53A38B3769E5",
+          "SRC-37B2905461B1",
+          "SRC-8ADEAC0FCC25",
+          "SRC-95A53FD15C86",
+          "SRC-BF94EEF925CA",
+          "SRC-92B2261501B2",
+          "SRC-FAC690E4C819",
+          "SRC-68E38ED17DC2"
+        ],
+        "count": 8
+      },
+      {
+        "title": "catalytic reforming using electrocatalyst catalysts",
+        "source_ids": [
+          "SRC-40E8505CCC5F",
+          "SRC-42A51DC0254B"
+        ],
+        "count": 2
+      },
+      {
+        "title": "microstructural evolution during reforming",
+        "source_ids": [
+          "SRC-C2B43963E205",
+          "SRC-FB874E1865D9",
+          "SRC-658E0B8C1BC0",
+          "SRC-185F00B05F7C",
+          "SRC-9DDC0F662DA6",
+          "SRC-96A1D6871556",
+          "SRC-05D0DDBE481F"
+        ],
+        "count": 7
+      },
+      {
+        "title": "electrochemical polymerization in solvent solutions",
+        "source_ids": [
+          "SRC-9DC2916ACAE9",
+          "SRC-A9352CAC267C",
+          "SRC-781C6EC3A827",
+          "SRC-58BE5488CB0A",
+          "SRC-9674C390168F",
+          "SRC-C46D3D1E2C2E",
+          "SRC-94DEEAD63494"
+        ],
+        "count": 7
+      },
+      {
+        "title": "mechanical properties of hybrid composites",
+        "source_ids": [
+          "SRC-AE7CBCD2FEEA",
+          "SRC-E93F2EAF8B1B",
+          "SRC-A9A72E074831",
+          "SRC-A92A60619DEB",
+          "SRC-22D92628927F"
+        ],
+        "count": 5
+      },
+      {
+        "title": "synthesis of novel framework with enhanced lifetime",
+        "source_ids": [
+          "SRC-39FFF57BF257",
+          "SRC-E6A709FC8FA0"
+        ],
+        "count": 2
+      },
+      {
+        "title": "high-performance sodium-ion batteries with electrode_material electrodes",
+        "source_ids": [
+          "SRC-8BF210C354BA",
+          "SRC-06C34DAA0240",
+          "SRC-02065AC8EE4E"
+        ],
+        "count": 3
+      },
+      {
+        "title": "high-performance lithium-ion batteries with electrode_material electrodes",
+        "source_ids": [
+          "SRC-97D5119C9E05",
+          "SRC-CBBA2F175B25",
+          "SRC-5A16BC8151F6",
+          "SRC-35344F423380"
+        ],
+        "count": 4
+      },
+      {
+        "title": "catalytic cracking using photocatalyst catalysts",
+        "source_ids": [
+          "SRC-51D40B193017",
+          "SRC-CD8C42520213"
+        ],
+        "count": 2
+      },
+      {
+        "title": "role of channel in cellular_process",
+        "source_ids": [
+          "SRC-418610B1E790",
+          "SRC-CC8780CC1AD1",
+          "SRC-932DA20B66BD",
+          "SRC-A37EB2DB0772"
+        ],
+        "count": 4
+      },
+      {
+        "title": "mechanical properties of nanocomposite composites",
+        "source_ids": [
+          "SRC-5F8EA3151978",
+          "SRC-FF1BCA9C9205",
+          "SRC-ABA966924BBB",
+          "SRC-AB55FCBC0A1F"
+        ],
+        "count": 4
+      },
+      {
+        "title": "development of perovskite for application",
+        "source_ids": [
+          "SRC-D250A6BAEC43",
+          "SRC-184B88D2E9D9"
+        ],
+        "count": 2
+      },
+      {
+        "title": "reactor design for elimination reactions",
+        "source_ids": [
+          "SRC-427347AB49C6",
+          "SRC-6055F5B9585F",
+          "SRC-8E3AA2BB2ADA",
+          "SRC-AA189D497C77",
+          "SRC-031F4C8A6489"
+        ],
+        "count": 5
+      },
+      {
+        "title": "biomimetic semiconductor design inspired by biological_system",
+        "source_ids": [
+          "SRC-8CB1658921CF",
+          "SRC-84EA5B2E2B41",
+          "SRC-754CC8DCA210",
+          "SRC-8FD30AE02A7A",
+          "SRC-B6FEA8A8056A",
+          "SRC-F72FB02EA285"
+        ],
+        "count": 6
+      },
+      {
+        "title": "corrosion resistance of perovskite in environment",
+        "source_ids": [
+          "SRC-9E94F57823B9",
+          "SRC-C6F629650277",
+          "SRC-36C79A4AB471",
+          "SRC-74A31A9B5452",
+          "SRC-F7079130ED9D",
+          "SRC-3C8DDE89BF38"
+        ],
+        "count": 6
+      },
+      {
+        "title": "fatigue life prediction of gear under loading",
+        "source_ids": [
+          "SRC-69C13C0C6418",
+          "SRC-BA0F8FB6518E",
+          "SRC-391F6AE2D800",
+          "SRC-5437695F9AAC",
+          "SRC-87124DDBFCC3",
+          "SRC-499174369F5A",
+          "SRC-1B495D7B0C6B",
+          "SRC-6F005792333F"
+        ],
+        "count": 8
+      },
+      {
+        "title": "high-performance metal-air batteries with electrode_material electrodes",
+        "source_ids": [
+          "SRC-987F68CD2E74",
+          "SRC-9F58EDC7D088",
+          "SRC-380B06B5B78D",
+          "SRC-2A360F97A859"
+        ],
+        "count": 4
+      },
+      {
+        "title": "mechanical properties of glass fiber composites",
+        "source_ids": [
+          "SRC-EB88CD875DD2",
+          "SRC-7C098214FD36",
+          "SRC-367125C55B2E",
+          "SRC-09E5CF84C875",
+          "SRC-9B07D3F82941"
+        ],
+        "count": 5
+      },
+      {
+        "title": "efficient algorithm for searching with complexity complexity",
+        "source_ids": [
+          "SRC-4C0C7C611C4F",
+          "SRC-328BE4985234",
+          "SRC-15D811DCF207"
+        ],
+        "count": 3
+      },
+      {
+        "title": "quantum resonance in graphene systems",
+        "source_ids": [
+          "SRC-E340C8BFC959",
+          "SRC-7BFCEB41D8B1"
+        ],
+        "count": 2
+      },
+      {
+        "title": "molecular mechanisms of isomerization in mouse",
+        "source_ids": [
+          "SRC-94FAEE33190C",
+          "SRC-DC27B5050B6A"
+        ],
+        "count": 2
+      },
+      {
+        "title": "molecular mechanisms of hydrolysis in arabidopsis",
+        "source_ids": [
+          "SRC-4DE9C68F7216",
+          "SRC-8BD8B7A2FB5E",
+          "SRC-D9C1E4184D45"
+        ],
+        "count": 3
+      },
+      {
+        "title": "role of kinase in cellular_process",
+        "source_ids": [
+          "SRC-2C97010BDB24",
+          "SRC-8DA0AEE06746",
+          "SRC-DF309B97442F",
+          "SRC-0DE557FB350A"
+        ],
+        "count": 4
+      },
+      {
+        "title": "mechanistic study of oxidation reactions",
+        "source_ids": [
+          "SRC-890DDB69222C",
+          "SRC-3B1E67E57D27"
+        ],
+        "count": 2
+      },
+      {
+        "title": "novel lifetime of exciton at low temperatures",
+        "source_ids": [
+          "SRC-0B289CDC15E9",
+          "SRC-B21A64533894"
+        ],
+        "count": 2
+      },
+      {
+        "title": "phase transitions in semiconductor thin films",
+        "source_ids": [
+          "SRC-06752C3DC069",
+          "SRC-E31B6480287E",
+          "SRC-E55765E2523B"
+        ],
+        "count": 3
+      },
+      {
+        "title": "reactor design for reduction reactions",
+        "source_ids": [
+          "SRC-D97F974AEBA1",
+          "SRC-088C7AF0283A",
+          "SRC-3238D777A3E7"
+        ],
+        "count": 3
+      },
+      {
+        "title": "molecular mechanisms of cracking in yeast",
+        "source_ids": [
+          "SRC-EE94346DA76A",
+          "SRC-E23BF2CF3C19",
+          "SRC-7F2751054A93"
+        ],
+        "count": 3
+      },
+      {
+        "title": "synthesis of novel cluster with enhanced mobility",
+        "source_ids": [
+          "SRC-0C49B6FD1854",
+          "SRC-21512C045D6B"
+        ],
+        "count": 2
+      },
+      {
+        "title": "high-performance flow batteries with electrode_material electrodes",
+        "source_ids": [
+          "SRC-37B502CB5A96",
+          "SRC-3F7A4DFBBD2D",
+          "SRC-ED55FA1480EF",
+          "SRC-AD377AF3F57A"
+        ],
+        "count": 4
+      },
+      {
+        "title": "catalytic cracking using metal catalysts",
+        "source_ids": [
+          "SRC-A54B9985EA05",
+          "SRC-2C75B3101AEF"
+        ],
+        "count": 2
+      },
+      {
+        "title": "nanostructured oxide with enhanced selectivity",
+        "source_ids": [
+          "SRC-446E5911F6DA",
+          "SRC-68003965193A",
+          "SRC-905DABBCB876"
+        ],
+        "count": 3
+      },
+      {
+        "title": "autonomous navigation in underwater environments",
+        "source_ids": [
+          "SRC-4A5374760B30",
+          "SRC-89D117462DD6",
+          "SRC-950F9B14800A",
+          "SRC-2952C10613F7",
+          "SRC-6A52E3A2A9F9",
+          "SRC-62B4AB9010A0"
+        ],
+        "count": 6
+      },
+      {
+        "title": "molecular design of perovskite for application",
+        "source_ids": [
+          "SRC-2BEFF7C17CB6",
+          "SRC-A8D00A02D21D",
+          "SRC-AFC6D54D4AE7",
+          "SRC-65B585D8844F"
+        ],
+        "count": 4
+      },
+      {
+        "title": "population dynamics of drosophila under condition",
+        "source_ids": [
+          "SRC-C99597A694C5",
+          "SRC-AD5DAE2422B1",
+          "SRC-E64CDDA4EBE8",
+          "SRC-F6C7B36D469F"
+        ],
+        "count": 4
+      },
+      {
+        "title": "electrochemical reforming in solvent solutions",
+        "source_ids": [
+          "SRC-C7C7A31A6E84",
+          "SRC-BFCE00C3E5AC",
+          "SRC-FA25F7AD6E51",
+          "SRC-908779A48FFE",
+          "SRC-6D5C75A7900B"
+        ],
+        "count": 5
+      },
+      {
+        "title": "microstructural evolution during hydrolysis",
+        "source_ids": [
+          "SRC-1A81D38D55F9",
+          "SRC-B69379B11D83",
+          "SRC-B44F8008651C",
+          "SRC-8A0A66E6A303",
+          "SRC-3537CD30EF9E",
+          "SRC-F6D8D0C6969F"
+        ],
+        "count": 6
+      },
+      {
+        "title": "catalytic polymerization using electrocatalyst catalysts",
+        "source_ids": [
+          "SRC-6F93777BD7D1",
+          "SRC-F7C1DB76C16E"
+        ],
+        "count": 2
+      },
+      {
+        "title": "synthesis of novel polymer with enhanced mobility",
+        "source_ids": [
+          "SRC-DE6EB0B4A54B",
+          "SRC-1F68FB3B4405"
+        ],
+        "count": 2
+      },
+      {
+        "title": "quantum resonance in superconductor systems",
+        "source_ids": [
+          "SRC-B908EA1011BC",
+          "SRC-23ACC84148B3"
+        ],
+        "count": 2
+      },
+      {
+        "title": "catalytic isomerization using photocatalyst catalysts",
+        "source_ids": [
+          "SRC-FAE85C917D92",
+          "SRC-5B488DFB6FBF"
+        ],
+        "count": 2
+      },
+      {
+        "title": "spin lifetime in magnetic semiconductor",
+        "source_ids": [
+          "SRC-889C6EE76173",
+          "SRC-5740C1598BE2"
+        ],
+        "count": 2
+      },
+      {
+        "title": "spin selectivity in magnetic graphene",
+        "source_ids": [
+          "SRC-ABC6C744D5FE",
+          "SRC-4CC1AE69E892"
+        ],
+        "count": 2
+      },
+      {
+        "title": "molecular design of superconductor for application",
+        "source_ids": [
+          "SRC-321E48E11066",
+          "SRC-F7F7F6AF3FEC",
+          "SRC-B4CC0B741C23",
+          "SRC-0F0E81163A5D"
+        ],
+        "count": 4
+      },
+      {
+        "title": "molecular mechanisms of polymerization in human",
+        "source_ids": [
+          "SRC-27D03E8A38F7",
+          "SRC-558164F67DB4",
+          "SRC-81602D775A18"
+        ],
+        "count": 3
+      },
+      {
+        "title": "development of semiconductor for application",
+        "source_ids": [
+          "SRC-EA4D0B4E1D04",
+          "SRC-46B8D21870D1",
+          "SRC-B46219B2EF28"
+        ],
+        "count": 3
+      },
+      {
+        "title": "quantum coupling in graphene systems",
+        "source_ids": [
+          "SRC-BE655EFFA69C",
+          "SRC-E46A565175F4"
+        ],
+        "count": 2
+      },
+      {
+        "title": "phase transitions in superconductor thin films",
+        "source_ids": [
+          "SRC-4570819F8FD8",
+          "SRC-A5DF95E0EB0C",
+          "SRC-528C93218AFE"
+        ],
+        "count": 3
+      },
+      {
+        "title": "investigation of magnetoresistance using tomography",
+        "source_ids": [
+          "SRC-5B273DC66C66",
+          "SRC-7BBF9B0C7FD0"
+        ],
+        "count": 2
+      },
+      {
+        "title": "catalytic hydrolysis using enzyme catalysts",
+        "source_ids": [
+          "SRC-4E5A22CFD31E",
+          "SRC-8E3D50D40BEB"
+        ],
+        "count": 2
+      },
+      {
+        "title": "molecular mechanisms of isomerization in yeast",
+        "source_ids": [
+          "SRC-DBA9B139932D",
+          "SRC-8FED551F4190"
+        ],
+        "count": 2
+      },
+      {
+        "title": "microstructural evolution during cracking",
+        "source_ids": [
+          "SRC-3F487EA974B5",
+          "SRC-2CE52D1C516B",
+          "SRC-0CD00C94B49F"
+        ],
+        "count": 3
+      },
+      {
+        "title": "role of receptor in cellular_process",
+        "source_ids": [
+          "SRC-22F0C35D8C3E",
+          "SRC-5C842CC58D96",
+          "SRC-1E12B148A8A9",
+          "SRC-22E2C7242A27",
+          "SRC-D3A840814ED5",
+          "SRC-75E430E04CFB"
+        ],
+        "count": 6
+      },
+      {
+        "title": "novel mobility of plasmon at low temperatures",
+        "source_ids": [
+          "SRC-B15A5D7A52F8",
+          "SRC-34712A73F59F",
+          "SRC-B232377D5568",
+          "SRC-C3593CB37918"
+        ],
+        "count": 4
+      },
+      {
+        "title": "molecular mechanisms of reforming in e. coli",
+        "source_ids": [
+          "SRC-3F8ABF98DFA4",
+          "SRC-515605C11423"
+        ],
+        "count": 2
+      },
+      {
+        "title": "spin lifetime in magnetic perovskite",
+        "source_ids": [
+          "SRC-08E03673C91D",
+          "SRC-D147F0EF1A6E"
+        ],
+        "count": 2
+      },
+      {
+        "title": "biomimetic superconductor design inspired by biological_system",
+        "source_ids": [
+          "SRC-2AA3FEA78707",
+          "SRC-6E902AE3A8C7",
+          "SRC-6AE0274E7E59",
+          "SRC-BDEE2201CFC2",
+          "SRC-5B1981CE867A"
+        ],
+        "count": 5
+      },
+      {
+        "title": "advanced oxide coatings for extreme environments",
+        "source_ids": [
+          "SRC-54C70D0E161A",
+          "SRC-FB9F31AA5AAC",
+          "SRC-52194D1EEE9B"
+        ],
+        "count": 3
+      },
+      {
+        "title": "population dynamics of arabidopsis under condition",
+        "source_ids": [
+          "SRC-68748D412505",
+          "SRC-AF8E7FEF1A86"
+        ],
+        "count": 2
+      },
+      {
+        "title": "synthesis of novel complex with enhanced lifetime",
+        "source_ids": [
+          "SRC-B81348D09E22",
+          "SRC-9BE22DD9DD05"
+        ],
+        "count": 2
+      },
+      {
+        "title": "reactor design for oxidation reactions",
+        "source_ids": [
+          "SRC-F3018AACA7E8",
+          "SRC-F377B11B0F03",
+          "SRC-3FE015723C34",
+          "SRC-ED7D56186431"
+        ],
+        "count": 4
+      },
+      {
+        "title": "synthesis of novel polymer with enhanced conductivity",
+        "source_ids": [
+          "SRC-1AF11C8167DF",
+          "SRC-763FD9A14F9F"
+        ],
+        "count": 2
+      },
+      {
+        "title": "investigation of magnetoresistance using scattering",
+        "source_ids": [
+          "SRC-A41846192596",
+          "SRC-B588679A528F"
+        ],
+        "count": 2
+      },
+      {
+        "title": "investigation of superconductivity using tomography",
+        "source_ids": [
+          "SRC-21C52B8AA9FD",
+          "SRC-67169FFFE8EB"
+        ],
+        "count": 2
+      },
+      {
+        "title": "novel selectivity of phonon at low temperatures",
+        "source_ids": [
+          "SRC-61EBDFDDF23D",
+          "SRC-7AF569A8640C",
+          "SRC-4BE985AD2F3E"
+        ],
+        "count": 3
+      },
+      {
+        "title": "development of superconductor for application",
+        "source_ids": [
+          "SRC-D8A408A5AFE2",
+          "SRC-59F6533A3E69",
+          "SRC-75EA72A7032C",
+          "SRC-F6712A95DB7F"
+        ],
+        "count": 4
+      },
+      {
+        "title": "phase stability in high-entropy superconductor",
+        "source_ids": [
+          "SRC-D83E1B30DEAA",
+          "SRC-7102B6B6EF70"
+        ],
+        "count": 2
+      },
+      {
+        "title": "nanostructured polymer with enhanced selectivity",
+        "source_ids": [
+          "SRC-F42EEB85ED76",
+          "SRC-F75AC003D119"
+        ],
+        "count": 2
+      },
+      {
+        "title": "new bounds for eigenvalues",
+        "source_ids": [
+          "SRC-AA5B793C7473",
+          "SRC-6420BCA89F87"
+        ],
+        "count": 2
+      },
+      {
+        "title": "population dynamics of e. coli under condition",
+        "source_ids": [
+          "SRC-C398B7B7829B",
+          "SRC-D8E438158F0B",
+          "SRC-54783B18AE44"
+        ],
+        "count": 3
+      },
+      {
+        "title": "synthesis of novel framework with enhanced mobility",
+        "source_ids": [
+          "SRC-528D7933A0C7",
+          "SRC-3C25605D86DC"
+        ],
+        "count": 2
+      },
+      {
+        "title": "spin conductivity in magnetic oxide",
+        "source_ids": [
+          "SRC-C24566B79B22",
+          "SRC-ADE06E0300E2"
+        ],
+        "count": 2
+      }
+    ]
+  }
+}

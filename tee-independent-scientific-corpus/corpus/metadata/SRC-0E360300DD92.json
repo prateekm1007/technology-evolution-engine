@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-0E360300DD92",
+  "title": "Neurotransmitter dynamics during behavior",
+  "authors": [
+    "Linda Rodriguez",
+    "Kenji Rodriguez"
+  ],
+  "doi": "10.1016/sample.076000",
+  "publisher": "ACM",
+  "publication_date": "2021-10-02",
+  "source_uri": "https://doi.org/10.1016/sample.076000",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in neuroscience. Combining theoretical analysis with empirical validation, we establish... Our results indicate significant improvements in performance metrics. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1016/sample.076000",
+  "acquisition_timestamp": "2026-08-11T12:21:26.291670Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "c2656c70c288b611cf542a8713390d5b98786e34d3402bf864842c39790abfa8",
+  "license": "closed",
+  "domain": "neuroscience",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "neuroscience",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

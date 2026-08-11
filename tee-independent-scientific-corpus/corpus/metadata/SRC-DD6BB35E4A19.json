@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-DD6BB35E4A19",
+  "title": "Soil contamination by contaminant",
+  "authors": [
+    "Hiroshi Mueller",
+    "Michael Wang",
+    "Jose Smith",
+    "Michael Wang"
+  ],
+  "doi": "10.1103/sample.263000",
+  "publisher": "ACM",
+  "publication_date": "2018-08-04",
+  "source_uri": "https://doi.org/10.1103/sample.263000",
+  "repository_uri": null,
+  "abstract": "This paper presents a comprehensive study of environmental_science focusing on key aspects. Employing advanced characterization methods, we reveal... Our results indicate significant improvements in performance metrics. This research contributes to the broader understanding of the domain.",
+  "fulltext_uri": "https://example.org/fulltext/10.1103/sample.263000",
+  "acquisition_timestamp": "2026-08-11T12:21:26.192083Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "c4cb1529e18ab51db0ce3b6702e757ac3ebbfb5295380720742ca292e9166537",
+  "license": "CC-BY-NC-4.0",
+  "domain": "environmental_science",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "environmental_science",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

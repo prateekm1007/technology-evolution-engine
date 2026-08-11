@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-52DCBCC7BC4D",
+  "title": "Quantum resonance in oxide systems",
+  "authors": [
+    "Wei Yamamoto",
+    "James Wang",
+    "Michael Mueller",
+    "Thomas Park"
+  ],
+  "doi": "10.1103/sample.087000",
+  "publisher": "Springer",
+  "publication_date": "2023-06-02",
+  "source_uri": "https://doi.org/10.1103/sample.087000",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of physics through experimental and theoretical approaches. Employing advanced characterization methods, we reveal... Statistical analysis confirms the robustness of our conclusions. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1103/sample.087000",
+  "acquisition_timestamp": "2026-08-11T12:21:23.765972Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "28fef0c78d0e24553db3c78bc8eab6b28872cd4731ae06fdf37854fde7b940ba",
+  "license": "CC-BY-NC-4.0",
+  "domain": "physics",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "physics",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

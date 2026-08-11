@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-FCAFE00347FD",
+  "title": "Catalyst development for industrial_process",
+  "authors": [
+    "Anna Smith",
+    "Joseph Johnson"
+  ],
+  "doi": "10.1002/sample.270001",
+  "publisher": "Elsevier",
+  "publication_date": "2010-09-02",
+  "source_uri": "https://doi.org/10.1002/sample.270001",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in chemical_engineering. Combining theoretical analysis with empirical validation, we establish... The findings suggest new directions for future research. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1002/sample.270001",
+  "acquisition_timestamp": "2026-08-11T12:21:25.631103Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "490e410136f6c3d64c9acf7969360eaa9ecf480d0b34fef5481e9ea707ff3009",
+  "license": "CC-BY-NC-4.0",
+  "domain": "chemical_engineering",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "chemical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

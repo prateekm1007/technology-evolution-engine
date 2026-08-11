@@ -1,0 +1,45 @@
+{
+  "source_id": "SRC-7627A0F46296",
+  "title": "Solar cell efficiency enhancement using pv_material",
+  "authors": [
+    "Jose Thomas",
+    "William Jones",
+    "Anna Thomas",
+    "Patricia Miller",
+    "Hiroshi Suzuki"
+  ],
+  "doi": "10.1002/sample.130002",
+  "publisher": "ACM",
+  "publication_date": "2024-06-14",
+  "source_uri": "https://doi.org/10.1002/sample.130002",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of energy_sciences through experimental and theoretical approaches. By integrating multiple analytical approaches, we uncover... Our results indicate significant improvements in performance metrics. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1002/sample.130002",
+  "acquisition_timestamp": "2026-08-11T12:21:25.785269Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "ff0b84f355e1737a61c57e6ff790ef26be18563c9a26056c8027d9ec6ac14bf0",
+  "license": "Apache-2.0",
+  "domain": "energy_sciences",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "energy_sciences",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

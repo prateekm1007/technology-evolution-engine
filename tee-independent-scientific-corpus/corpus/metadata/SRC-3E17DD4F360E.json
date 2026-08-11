@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-3E17DD4F360E",
+  "title": "Process optimization for chemical_process",
+  "authors": [
+    "Patricia Miller",
+    "Hiroshi Schmidt",
+    "Hiroshi Chen",
+    "William Rodriguez"
+  ],
+  "doi": "10.1021/sample.269000",
+  "publisher": "Springer",
+  "publication_date": "2021-01-20",
+  "source_uri": "https://doi.org/10.1021/sample.269000",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in chemical_engineering. Through computational modeling and simulation, we show... We observe previously unreported behaviors under controlled conditions. Our work opens new avenues for exploration in this field.",
+  "fulltext_uri": "https://example.org/fulltext/10.1021/sample.269000",
+  "acquisition_timestamp": "2026-08-11T12:21:25.630824Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "e1429b45925e9910b53b5acb3468a22a4ef59f20ea115218effa97c66435ea13",
+  "license": "CC-BY-4.0",
+  "domain": "chemical_engineering",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "chemical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

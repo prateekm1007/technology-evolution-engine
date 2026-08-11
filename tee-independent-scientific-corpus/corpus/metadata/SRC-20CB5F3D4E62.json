@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-20CB5F3D4E62",
+  "title": "Kinetic analysis of reaction mechanisms",
+  "authors": [
+    "Joseph Suzuki",
+    "Jose Davis",
+    "David Park",
+    "James Rodriguez"
+  ],
+  "doi": "10.1109/sample.092000",
+  "publisher": "Elsevier",
+  "publication_date": "2023-11-05",
+  "source_uri": "https://doi.org/10.1109/sample.092000",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in chemistry. By integrating multiple analytical approaches, we uncover... Our results indicate significant improvements in performance metrics. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1109/sample.092000",
+  "acquisition_timestamp": "2026-08-11T12:21:23.988802Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "5c7614eda7b0bab569e2bad04cf264efc76a29d1ac7cdfdfe4f5478781e5b2f1",
+  "license": "Apache-2.0",
+  "domain": "chemistry",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "chemistry",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

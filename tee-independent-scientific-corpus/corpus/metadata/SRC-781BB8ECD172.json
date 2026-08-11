@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-781BB8ECD172",
+  "title": "Perception systems for perception_task",
+  "authors": [
+    "Michael Jones",
+    "Ming Davis",
+    "Charles Rodriguez",
+    "Kenji Suzuki"
+  ],
+  "doi": "10.1145/sample.158001",
+  "publisher": "APS",
+  "publication_date": "2017-08-20",
+  "source_uri": "https://doi.org/10.1145/sample.158001",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in robotics. Using state-of-the-art experimental techniques, we demonstrate... Our results indicate significant improvements in performance metrics. This research contributes to the broader understanding of the domain.",
+  "fulltext_uri": "https://example.org/fulltext/10.1145/sample.158001",
+  "acquisition_timestamp": "2026-08-11T12:21:26.908568Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "8c9d06a6da6d2d2ece62ea0c0b1e67c945399d09ed46b30390a9e2103b893ab8",
+  "license": "MIT",
+  "domain": "robotics",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "robotics",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

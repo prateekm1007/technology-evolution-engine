@@ -1,0 +1,45 @@
+{
+  "source_id": "SRC-6E81F18C8309",
+  "title": "Grid integration of renewable_source",
+  "authors": [
+    "Yong Brown",
+    "Mary Martinez",
+    "Linda Thomas",
+    "Robert Rodriguez",
+    "William Jones"
+  ],
+  "doi": "10.1002/sample.046000",
+  "publisher": "Springer",
+  "publication_date": "2022-11-01",
+  "source_uri": "https://doi.org/10.1002/sample.046000",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in energy_sciences. Employing advanced characterization methods, we reveal... Comparative evaluation demonstrates superiority over existing approaches. Our work opens new avenues for exploration in this field.",
+  "fulltext_uri": "https://example.org/fulltext/10.1002/sample.046000",
+  "acquisition_timestamp": "2026-08-11T12:21:25.691987Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "1c502d60042d3753c3e04673bc86f8112d911e7bcc9eba9523c173846985efb8",
+  "license": "MIT",
+  "domain": "energy_sciences",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "energy_sciences",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

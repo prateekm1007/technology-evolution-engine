@@ -1,0 +1,45 @@
+{
+  "source_id": "SRC-B3AF32B8F209",
+  "title": "Tribological properties of material_pair",
+  "authors": [
+    "Patricia Chen",
+    "John Tanaka",
+    "Charles Schmidt",
+    "Jennifer Tanaka",
+    "Jennifer Wang"
+  ],
+  "doi": "10.1038/sample.284001",
+  "publisher": "IEEE",
+  "publication_date": "2018-09-14",
+  "source_uri": "https://doi.org/10.1038/sample.284001",
+  "repository_uri": null,
+  "abstract": "This paper presents a comprehensive study of mechanical_engineering focusing on key aspects. Combining theoretical analysis with empirical validation, we establish... Statistical analysis confirms the robustness of our conclusions. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1038/sample.284001",
+  "acquisition_timestamp": "2026-08-11T12:21:25.126422Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "6cf9002b94efae9b976d8d7145825baf790e7031bf5cd251292bc62c04d47063",
+  "license": "CC-BY-4.0",
+  "domain": "mechanical_engineering",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "mechanical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

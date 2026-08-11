@@ -1,0 +1,43 @@
+{
+  "source_id": "SRC-6CF547D5B70C",
+  "title": "Process optimization for chemical_process",
+  "authors": [
+    "Akira Garcia",
+    "Richard Yamamoto",
+    "Hiroshi Jones"
+  ],
+  "doi": "10.1145/sample.255001",
+  "publisher": "Springer",
+  "publication_date": "2017-08-13",
+  "source_uri": "https://doi.org/10.1145/sample.255001",
+  "repository_uri": null,
+  "abstract": "We report novel findings in the field of chemical_engineering with significant implications. By integrating multiple analytical approaches, we uncover... The findings suggest new directions for future research. Our work opens new avenues for exploration in this field.",
+  "fulltext_uri": "https://example.org/fulltext/10.1145/sample.255001",
+  "acquisition_timestamp": "2026-08-11T12:21:25.626338Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "de85919889426479c67c60db358e3e0eb55934f16b394c5d55670351a9749054",
+  "license": "Apache-2.0",
+  "domain": "chemical_engineering",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "chemical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

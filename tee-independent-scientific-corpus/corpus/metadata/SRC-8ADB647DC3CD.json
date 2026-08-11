@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-8ADB647DC3CD",
+  "title": "Molecular mechanisms of polymerization in Arabidopsis",
+  "authors": [
+    "Maria Rodriguez",
+    "Anna Anderson"
+  ],
+  "doi": "10.1021/sample.143000",
+  "publisher": "ACM",
+  "publication_date": "2021-05-09",
+  "source_uri": "https://doi.org/10.1021/sample.143000",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of biology through experimental and theoretical approaches. Combining theoretical analysis with empirical validation, we establish... We observe previously unreported behaviors under controlled conditions. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1021/sample.143000",
+  "acquisition_timestamp": "2026-08-11T12:21:24.532713Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "20274bf5de8065dfc4f6126693137fc26b0a470c07a7791dd55851d5f5a9e1d0",
+  "license": "CC-BY-NC-4.0",
+  "domain": "biology",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "biology",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

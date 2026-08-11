@@ -1,0 +1,45 @@
+{
+  "source_id": "SRC-DAEECB8F328B",
+  "title": "Ecosystem services valuation for service_type",
+  "authors": [
+    "Charles Lee",
+    "Richard Chen",
+    "Yong Anderson",
+    "Yong Williams",
+    "Anna Rodriguez"
+  ],
+  "doi": "10.1021/sample.022000",
+  "publisher": "APS",
+  "publication_date": "2020-09-16",
+  "source_uri": "https://doi.org/10.1021/sample.022000",
+  "repository_uri": null,
+  "abstract": "This paper presents a comprehensive study of environmental_science focusing on key aspects. By integrating multiple analytical approaches, we uncover... Statistical analysis confirms the robustness of our conclusions. This research contributes to the broader understanding of the domain.",
+  "fulltext_uri": "https://example.org/fulltext/10.1021/sample.022000",
+  "acquisition_timestamp": "2026-08-11T12:21:25.951619Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "67657f5b8bdc09a851502739bb78f917316769ad5a5c06924eab5708472548cc",
+  "license": "CC-BY-4.0",
+  "domain": "environmental_science",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "environmental_science",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

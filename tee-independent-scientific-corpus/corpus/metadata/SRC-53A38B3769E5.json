@@ -1,0 +1,43 @@
+{
+  "source_id": "SRC-53A38B3769E5",
+  "title": "Biomimetic oxide design inspired by biological_system",
+  "authors": [
+    "Thomas Tanaka",
+    "Ming Tanaka",
+    "Richard Park"
+  ],
+  "doi": "10.1145/sample.064001",
+  "publisher": "ACM",
+  "publication_date": "2016-03-18",
+  "source_uri": "https://doi.org/10.1145/sample.064001",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into materials_science phenomena. Through computational modeling and simulation, we show... We observe previously unreported behaviors under controlled conditions. The methodology presented here can be extended to related problems.",
+  "fulltext_uri": "https://example.org/fulltext/10.1145/sample.064001",
+  "acquisition_timestamp": "2026-08-11T12:21:24.203042Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "c4a3fb0eae12e4caf33683ccc41eca3cff6111d84e954d9648c65866b9a2bee8",
+  "license": "CC-BY-4.0",
+  "domain": "materials_science",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "materials_science",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

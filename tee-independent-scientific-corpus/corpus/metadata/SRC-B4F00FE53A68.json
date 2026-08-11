@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-B4F00FE53A68",
+  "title": "Investigation of thermoelectricity using microscopy",
+  "authors": [
+    "Michael Martinez",
+    "John Garcia",
+    "Ming Lee",
+    "Michael Mueller"
+  ],
+  "doi": "10.1038/sample.022000",
+  "publisher": "ACM",
+  "publication_date": "2020-04-10",
+  "source_uri": "https://doi.org/10.1038/sample.022000",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of physics through experimental and theoretical approaches. Combining theoretical analysis with empirical validation, we establish... Statistical analysis confirms the robustness of our conclusions. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1038/sample.022000",
+  "acquisition_timestamp": "2026-08-11T12:21:23.722994Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "d997b345eb87d52dfbb7005e5b198d76b476f7fb9588bae9b8625e0bf72c6a7a",
+  "license": "MIT",
+  "domain": "physics",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "physics",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "source_id": "SRC-D9533502611A",
+  "title": "Scalable distributed system for application",
+  "authors": [
+    "Wei Wang",
+    "Mary Yamamoto",
+    "Thomas Yamamoto",
+    "Patricia Schmidt",
+    "Mary Chen"
+  ],
+  "doi": "10.1038/sample.087001",
+  "publisher": "Springer",
+  "publication_date": "2023-05-16",
+  "source_uri": "https://doi.org/10.1038/sample.087001",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of computer_science through experimental and theoretical approaches. Combining theoretical analysis with empirical validation, we establish... We observe previously unreported behaviors under controlled conditions. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1038/sample.087001",
+  "acquisition_timestamp": "2026-08-11T12:21:24.763605Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "f10407f2762cea81d7faef8f66f9c9523c493853c9121397a688749b447a5a54",
+  "license": "Apache-2.0",
+  "domain": "computer_science",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "computer_science",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "source_id": "SRC-79DD467B50F1",
+  "title": "Robot ethics in ethical_scenario",
+  "authors": [
+    "Jennifer Tanaka",
+    "David Brown",
+    "Richard Garcia",
+    "Wei Williams",
+    "Patricia Martinez"
+  ],
+  "doi": "10.1021/sample.130000",
+  "publisher": "Nature Publishing Group",
+  "publication_date": "2022-08-25",
+  "source_uri": "https://doi.org/10.1021/sample.130000",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in robotics. Employing advanced characterization methods, we reveal... The findings suggest new directions for future research. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1021/sample.130000",
+  "acquisition_timestamp": "2026-08-11T12:21:26.885829Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "a71100099dbe5c336140d0d8471f5dc89260b27a1dd0103fa0e82ecbe0f4a562",
+  "license": "closed",
+  "domain": "robotics",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "robotics",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

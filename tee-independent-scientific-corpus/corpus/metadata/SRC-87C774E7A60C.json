@@ -1,0 +1,43 @@
+{
+  "source_id": "SRC-87C774E7A60C",
+  "title": "Regulation of gene_expression by factor",
+  "authors": [
+    "Ming Tanaka",
+    "Mary Smith",
+    "Elizabeth Johnson"
+  ],
+  "doi": "10.1021/sample.071001",
+  "publisher": "Elsevier",
+  "publication_date": "2019-11-10",
+  "source_uri": "https://doi.org/10.1021/sample.071001",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of biology through experimental and theoretical approaches. Combining theoretical analysis with empirical validation, we establish... Statistical analysis confirms the robustness of our conclusions. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1021/sample.071001",
+  "acquisition_timestamp": "2026-08-11T12:21:24.451530Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "f489e34f00adc79c26fc28cf090a671a48c1eb70c41aacba687bc17246ae36fc",
+  "license": "closed",
+  "domain": "biology",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "biology",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

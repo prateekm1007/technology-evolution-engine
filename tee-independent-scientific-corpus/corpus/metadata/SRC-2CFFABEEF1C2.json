@@ -1,0 +1,45 @@
+{
+  "source_id": "SRC-2CFFABEEF1C2",
+  "title": "Water treatment using treatment_method",
+  "authors": [
+    "Jennifer Mueller",
+    "Akira Schmidt",
+    "Michael Yamamoto",
+    "Patricia Wang",
+    "Maria Brown"
+  ],
+  "doi": "10.1016/sample.125002",
+  "publisher": "Springer",
+  "publication_date": "2016-09-10",
+  "source_uri": "https://doi.org/10.1016/sample.125002",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into environmental_science phenomena. By integrating multiple analytical approaches, we uncover... Comparative evaluation demonstrates superiority over existing approaches. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1016/sample.125002",
+  "acquisition_timestamp": "2026-08-11T12:21:26.051673Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "0aa5cbdd360cf0c8780778f14ced12b79c8e4b6b07460672cc4c985f91f38960",
+  "license": "MIT",
+  "domain": "environmental_science",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "environmental_science",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

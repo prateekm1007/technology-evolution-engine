@@ -1,0 +1,45 @@
+{
+  "source_id": "SRC-AB9DDC92F1F7",
+  "title": "Electromagnetic compatibility in device_type",
+  "authors": [
+    "James Smith",
+    "John Wang",
+    "John Park",
+    "Elizabeth Taylor",
+    "Richard Suzuki"
+  ],
+  "doi": "10.1109/sample.253000",
+  "publisher": "RSC",
+  "publication_date": "2016-04-12",
+  "source_uri": "https://doi.org/10.1109/sample.253000",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of electrical_engineering through experimental and theoretical approaches. Employing advanced characterization methods, we reveal... Our results indicate significant improvements in performance metrics. Our work opens new avenues for exploration in this field.",
+  "fulltext_uri": "https://example.org/fulltext/10.1109/sample.253000",
+  "acquisition_timestamp": "2026-08-11T12:21:25.344688Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "3cefcd9da4e4cbe14c5a90231e4bc7ce01cb8a1396dab8cb21d404fb33a6d1a5",
+  "license": "closed",
+  "domain": "electrical_engineering",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "electrical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

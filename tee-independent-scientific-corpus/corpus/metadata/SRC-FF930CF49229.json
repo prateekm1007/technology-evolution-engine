@@ -1,0 +1,45 @@
+{
+  "source_id": "SRC-FF930CF49229",
+  "title": "Learning-based control of robot_type",
+  "authors": [
+    "Mary Wang",
+    "Robert Garcia",
+    "Patricia Garcia",
+    "Anna Rodriguez",
+    "Kenji Kim"
+  ],
+  "doi": "10.1002/sample.050001",
+  "publisher": "APS",
+  "publication_date": "2016-07-04",
+  "source_uri": "https://doi.org/10.1002/sample.050001",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in robotics. By integrating multiple analytical approaches, we uncover... Comparative evaluation demonstrates superiority over existing approaches. This research contributes to the broader understanding of the domain.",
+  "fulltext_uri": "https://example.org/fulltext/10.1002/sample.050001",
+  "acquisition_timestamp": "2026-08-11T12:21:26.805359Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "5c3e63d0e500de6de8e92c4bf595cf3265d3f5509877dc2669c6e12a300d7a69",
+  "license": "MIT",
+  "domain": "robotics",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "robotics",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-A920B8E99A11",
+  "title": "Solar cell efficiency enhancement using pv_material",
+  "authors": [
+    "Maria Kim",
+    "Patricia Johnson"
+  ],
+  "doi": "10.1371/sample.076001",
+  "publisher": "Nature Publishing Group",
+  "publication_date": "2017-12-10",
+  "source_uri": "https://doi.org/10.1371/sample.076001",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into energy_sciences phenomena. Combining theoretical analysis with empirical validation, we establish... Statistical analysis confirms the robustness of our conclusions. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1371/sample.076001",
+  "acquisition_timestamp": "2026-08-11T12:21:25.723646Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "3cff2fe9d7e8e047437245582019d22b6130b42cc4db6afb83e78cac4cd2808c",
+  "license": "CC-BY-NC-4.0",
+  "domain": "energy_sciences",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "energy_sciences",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

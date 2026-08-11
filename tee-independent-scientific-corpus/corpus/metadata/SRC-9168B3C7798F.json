@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-9168B3C7798F",
+  "title": "Grid integration of renewable_source",
+  "authors": [
+    "Wei Brown",
+    "Elizabeth Miller"
+  ],
+  "doi": "10.1021/sample.221000",
+  "publisher": "RSC",
+  "publication_date": "2010-06-16",
+  "source_uri": "https://doi.org/10.1021/sample.221000",
+  "repository_uri": null,
+  "abstract": "We report novel findings in the field of energy_sciences with significant implications. Combining theoretical analysis with empirical validation, we establish... We observe previously unreported behaviors under controlled conditions. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1021/sample.221000",
+  "acquisition_timestamp": "2026-08-11T12:21:25.868152Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "08fefe534df93d6216cc4c71662d2c76fc6d8042bc57caf458a903ad36639de0",
+  "license": "MIT",
+  "domain": "energy_sciences",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "energy_sciences",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

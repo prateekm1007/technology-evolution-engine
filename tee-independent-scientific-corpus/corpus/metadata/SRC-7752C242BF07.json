@@ -1,0 +1,46 @@
+{
+  "source_id": "SRC-7752C242BF07",
+  "title": "Perception systems for perception_task",
+  "authors": [
+    "Elizabeth Wang",
+    "David Kim",
+    "Kenji Smith",
+    "David Lee",
+    "Richard Jones",
+    "Robert Miller"
+  ],
+  "doi": "10.1109/sample.073002",
+  "publisher": "Elsevier",
+  "publication_date": "2022-04-22",
+  "source_uri": "https://doi.org/10.1109/sample.073002",
+  "repository_uri": null,
+  "abstract": "This paper presents a comprehensive study of robotics focusing on key aspects. By integrating multiple analytical approaches, we uncover... Statistical analysis confirms the robustness of our conclusions. The methodology presented here can be extended to related problems.",
+  "fulltext_uri": "https://example.org/fulltext/10.1109/sample.073002",
+  "acquisition_timestamp": "2026-08-11T12:21:26.827079Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "47d1ba7e3375a315d3956676ced4a9dbc74e655ad25dbd1ed8e2001074003e34",
+  "license": "Apache-2.0",
+  "domain": "robotics",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "robotics",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

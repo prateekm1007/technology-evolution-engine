@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-1D80D463D1FF",
+  "title": "Genomic analysis reveals finding in species",
+  "authors": [
+    "James Garcia",
+    "Robert Williams"
+  ],
+  "doi": "10.1109/sample.045000",
+  "publisher": "ACM",
+  "publication_date": "2014-08-03",
+  "source_uri": "https://doi.org/10.1109/sample.045000",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in biology. Combining theoretical analysis with empirical validation, we establish... Statistical analysis confirms the robustness of our conclusions. Our work opens new avenues for exploration in this field.",
+  "fulltext_uri": "https://example.org/fulltext/10.1109/sample.045000",
+  "acquisition_timestamp": "2026-08-11T12:21:24.430782Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "464f0d3cad8cdf414c6bd075a4d8e2fcf906295d77ec56af43d3cb284b4bf569",
+  "license": "MIT",
+  "domain": "biology",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "biology",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

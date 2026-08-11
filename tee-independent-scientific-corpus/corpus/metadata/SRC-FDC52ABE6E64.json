@@ -1,0 +1,45 @@
+{
+  "source_id": "SRC-FDC52ABE6E64",
+  "title": "Pollution monitoring using monitoring_technique",
+  "authors": [
+    "Thomas Kim",
+    "Charles Thomas",
+    "Kenji Davis",
+    "Richard Garcia",
+    "Kenji Johnson"
+  ],
+  "doi": "10.1103/sample.029000",
+  "publisher": "RSC",
+  "publication_date": "2013-08-22",
+  "source_uri": "https://doi.org/10.1103/sample.029000",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of environmental_science through experimental and theoretical approaches. Through computational modeling and simulation, we show... Our results indicate significant improvements in performance metrics. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1103/sample.029000",
+  "acquisition_timestamp": "2026-08-11T12:21:25.964502Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "669fbf48496a0a951edff62ab0aa639df02f1a8e4e803fa0e2ba38289d0abd9a",
+  "license": "Apache-2.0",
+  "domain": "environmental_science",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "environmental_science",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

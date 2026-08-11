@@ -1,0 +1,43 @@
+{
+  "source_id": "SRC-C7234F806B26",
+  "title": "Swarm robotics for swarm_task",
+  "authors": [
+    "Elizabeth Smith",
+    "Yong Tanaka",
+    "John Johnson"
+  ],
+  "doi": "10.1371/sample.240001",
+  "publisher": "RSC",
+  "publication_date": "2014-06-12",
+  "source_uri": "https://doi.org/10.1371/sample.240001",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in robotics. By integrating multiple analytical approaches, we uncover... Our results indicate significant improvements in performance metrics. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1371/sample.240001",
+  "acquisition_timestamp": "2026-08-11T12:21:26.986606Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "6d3c533ac457a82d7de63e360ace1683ef1810b69226a5d0a9a00dc2073fb0a5",
+  "license": "Apache-2.0",
+  "domain": "robotics",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "robotics",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

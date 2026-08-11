@@ -1,0 +1,46 @@
+{
+  "source_id": "SRC-9A175F5ED5B3",
+  "title": "Neural circuit mapping of circuit_name",
+  "authors": [
+    "Anna Anderson",
+    "Elizabeth Garcia",
+    "Anna Brown",
+    "Yong Yamamoto",
+    "Patricia Davis",
+    "Maria Taylor"
+  ],
+  "doi": "10.1109/sample.079000",
+  "publisher": "IEEE",
+  "publication_date": "2010-06-08",
+  "source_uri": "https://doi.org/10.1109/sample.079000",
+  "repository_uri": null,
+  "abstract": "We report novel findings in the field of neuroscience with significant implications. Combining theoretical analysis with empirical validation, we establish... We observe previously unreported behaviors under controlled conditions. The methodology presented here can be extended to related problems.",
+  "fulltext_uri": "https://example.org/fulltext/10.1109/sample.079000",
+  "acquisition_timestamp": "2026-08-11T12:21:26.292955Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "3e9caf8224a859f677c4046c4301fc33d18d570f0c585fded3cfa549c46a0c83",
+  "license": "CC-BY-4.0",
+  "domain": "neuroscience",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "neuroscience",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

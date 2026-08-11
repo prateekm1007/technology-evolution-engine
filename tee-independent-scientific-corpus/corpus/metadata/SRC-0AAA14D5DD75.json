@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-0AAA14D5DD75",
+  "title": "Sustainable chemical manufacturing of product",
+  "authors": [
+    "Wei Garcia",
+    "Akira Wang",
+    "Joseph Brown",
+    "Ming Taylor"
+  ],
+  "doi": "10.1038/sample.049000",
+  "publisher": "Nature Publishing Group",
+  "publication_date": "2015-03-28",
+  "source_uri": "https://doi.org/10.1038/sample.049000",
+  "repository_uri": null,
+  "abstract": "This paper presents a comprehensive study of chemical_engineering focusing on key aspects. Through computational modeling and simulation, we show... Statistical analysis confirms the robustness of our conclusions. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1038/sample.049000",
+  "acquisition_timestamp": "2026-08-11T12:21:25.425686Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "1cbc65103fe48344764676674850bf1b8ed13b58a457b4fe766145e6929d4169",
+  "license": "Apache-2.0",
+  "domain": "chemical_engineering",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "chemical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

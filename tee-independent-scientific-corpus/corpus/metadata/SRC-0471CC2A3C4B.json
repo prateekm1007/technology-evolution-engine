@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-0471CC2A3C4B",
+  "title": "Machine learning acceleration on hardware_platform",
+  "authors": [
+    "William Martinez",
+    "John Schmidt"
+  ],
+  "doi": "10.1371/sample.077000",
+  "publisher": "ACM",
+  "publication_date": "2011-06-16",
+  "source_uri": "https://doi.org/10.1371/sample.077000",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in electrical_engineering. By integrating multiple analytical approaches, we uncover... Our results indicate significant improvements in performance metrics. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1371/sample.077000",
+  "acquisition_timestamp": "2026-08-11T12:21:25.203510Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "fd641867254affe8849389d2cfaa67dba2267ed07eba69b7496b334aad874407",
+  "license": "CC-BY-NC-4.0",
+  "domain": "electrical_engineering",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "electrical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

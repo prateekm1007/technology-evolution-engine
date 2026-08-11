@@ -1,0 +1,45 @@
+{
+  "source_id": "SRC-2692376D61B9",
+  "title": "Metabolic pathways in microorganism",
+  "authors": [
+    "Yong Davis",
+    "Hiroshi Rodriguez",
+    "Anna Tanaka",
+    "Wei Mueller",
+    "Kenji Anderson"
+  ],
+  "doi": "10.1371/sample.038000",
+  "publisher": "Springer",
+  "publication_date": "2023-09-01",
+  "source_uri": "https://doi.org/10.1371/sample.038000",
+  "repository_uri": null,
+  "abstract": "This paper presents a comprehensive study of biology focusing on key aspects. Employing advanced characterization methods, we reveal... We observe previously unreported behaviors under controlled conditions. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1371/sample.038000",
+  "acquisition_timestamp": "2026-08-11T12:21:24.428660Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "dc38f8967c9ad020ae9245c5b98c34f046a3b4198f52a2096019b5e27b4f2497",
+  "license": "Apache-2.0",
+  "domain": "biology",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "biology",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

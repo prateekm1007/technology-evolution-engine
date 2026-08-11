@@ -1,0 +1,43 @@
+{
+  "source_id": "SRC-1DF3AAB236D2",
+  "title": "Autonomous navigation in aerial environments",
+  "authors": [
+    "Patricia Anderson",
+    "Jennifer Suzuki",
+    "Yong Yamamoto"
+  ],
+  "doi": "10.1002/sample.001001",
+  "publisher": "IEEE",
+  "publication_date": "2021-10-30",
+  "source_uri": "https://doi.org/10.1002/sample.001001",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of robotics through experimental and theoretical approaches. By integrating multiple analytical approaches, we uncover... Statistical analysis confirms the robustness of our conclusions. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1002/sample.001001",
+  "acquisition_timestamp": "2026-08-11T12:21:26.765431Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "880da21bc08d1479b9d6e94543e7a91225837060d72fc5bf6dcd0d67cb79ee8e",
+  "license": "CC-BY-4.0",
+  "domain": "robotics",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "robotics",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

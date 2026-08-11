@@ -1,0 +1,45 @@
+{
+  "source_id": "SRC-F748EFFFD457",
+  "title": "Wind turbine optimization for wind_condition",
+  "authors": [
+    "Yong Anderson",
+    "Ming Tanaka",
+    "Richard Smith",
+    "Maria Davis",
+    "Jennifer Lee"
+  ],
+  "doi": "10.1109/sample.250001",
+  "publisher": "Springer",
+  "publication_date": "2022-07-12",
+  "source_uri": "https://doi.org/10.1109/sample.250001",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in energy_sciences. Combining theoretical analysis with empirical validation, we establish... Our results indicate significant improvements in performance metrics. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1109/sample.250001",
+  "acquisition_timestamp": "2026-08-11T12:21:25.890504Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "36512ad4927e1f86d0b7de94c9d1f30be3795a9537cbc320743181b1ee2fc522",
+  "license": "CC-BY-NC-4.0",
+  "domain": "energy_sciences",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "energy_sciences",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

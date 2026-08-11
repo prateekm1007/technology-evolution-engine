@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-9598E96A6D76",
+  "title": "Grid integration of renewable_source",
+  "authors": [
+    "Yong Taylor",
+    "Ming Mueller"
+  ],
+  "doi": "10.1371/sample.067002",
+  "publisher": "RSC",
+  "publication_date": "2021-06-15",
+  "source_uri": "https://doi.org/10.1371/sample.067002",
+  "repository_uri": null,
+  "abstract": "We report novel findings in the field of energy_sciences with significant implications. Through computational modeling and simulation, we show... We observe previously unreported behaviors under controlled conditions. The methodology presented here can be extended to related problems.",
+  "fulltext_uri": "https://example.org/fulltext/10.1371/sample.067002",
+  "acquisition_timestamp": "2026-08-11T12:21:25.710139Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "da6f97a32c4707b43e1e5db6c8e118b3fad35d8b6bec4bd2740cb0f4f9ae8acd",
+  "license": "closed",
+  "domain": "energy_sciences",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "energy_sciences",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

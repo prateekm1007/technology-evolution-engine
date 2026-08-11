@@ -1,0 +1,43 @@
+{
+  "source_id": "SRC-709AED46F140",
+  "title": "Green chemistry approach to synthesis_target",
+  "authors": [
+    "Joseph Williams",
+    "Hiroshi Tanaka",
+    "James Yamamoto"
+  ],
+  "doi": "10.1021/sample.230000",
+  "publisher": "Elsevier",
+  "publication_date": "2017-05-26",
+  "source_uri": "https://doi.org/10.1021/sample.230000",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of chemistry through experimental and theoretical approaches. By integrating multiple analytical approaches, we uncover... Comparative evaluation demonstrates superiority over existing approaches. This research contributes to the broader understanding of the domain.",
+  "fulltext_uri": "https://example.org/fulltext/10.1021/sample.230000",
+  "acquisition_timestamp": "2026-08-11T12:21:24.104422Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "58ccac3f0f6e87578bd0518ef98487fd22bf0cce76cdd75501f7cbd9f41b883a",
+  "license": "closed",
+  "domain": "chemistry",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "chemistry",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

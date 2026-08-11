@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-F61253888FFC",
+  "title": "Bioprocess engineering for bioproduct",
+  "authors": [
+    "William Yamamoto",
+    "John Martinez",
+    "Maria Schmidt",
+    "Thomas Williams"
+  ],
+  "doi": "10.1038/sample.138002",
+  "publisher": "Nature Publishing Group",
+  "publication_date": "2022-02-17",
+  "source_uri": "https://doi.org/10.1038/sample.138002",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into chemical_engineering phenomena. Using state-of-the-art experimental techniques, we demonstrate... The findings suggest new directions for future research. This research contributes to the broader understanding of the domain.",
+  "fulltext_uri": "https://example.org/fulltext/10.1038/sample.138002",
+  "acquisition_timestamp": "2026-08-11T12:21:25.491678Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "ffe821cb20102371db3a3a83226f555f19cedec865a911952383443e04945e04",
+  "license": "closed",
+  "domain": "chemical_engineering",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "chemical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "source_id": "SRC-A859D224ECE7",
+  "title": "Energy storage in storage_material materials",
+  "authors": [
+    "James Rodriguez",
+    "Joseph Miller",
+    "Mary Chen",
+    "Yong Brown",
+    "John Smith"
+  ],
+  "doi": "10.1109/sample.168001",
+  "publisher": "ACM",
+  "publication_date": "2018-07-03",
+  "source_uri": "https://doi.org/10.1109/sample.168001",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into energy_sciences phenomena. Through computational modeling and simulation, we show... Comparative evaluation demonstrates superiority over existing approaches. The methodology presented here can be extended to related problems.",
+  "fulltext_uri": "https://example.org/fulltext/10.1109/sample.168001",
+  "acquisition_timestamp": "2026-08-11T12:21:25.811439Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "60c9560683c06519afba5988be7bde711ee31120ee96c1e6ec9604a204752994",
+  "license": "CC-BY-4.0",
+  "domain": "energy_sciences",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "energy_sciences",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

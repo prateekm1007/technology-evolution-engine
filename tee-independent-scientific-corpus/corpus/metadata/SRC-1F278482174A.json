@@ -1,0 +1,46 @@
+{
+  "source_id": "SRC-1F278482174A",
+  "title": "Neurodevelopmental disorders in model_organism",
+  "authors": [
+    "John Jones",
+    "Robert Lee",
+    "Mary Martinez",
+    "Mary Mueller",
+    "Charles Tanaka",
+    "Linda Smith"
+  ],
+  "doi": "10.1021/sample.114001",
+  "publisher": "Nature Publishing Group",
+  "publication_date": "2020-04-26",
+  "source_uri": "https://doi.org/10.1021/sample.114001",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of neuroscience through experimental and theoretical approaches. Employing advanced characterization methods, we reveal... The findings suggest new directions for future research. Our work opens new avenues for exploration in this field.",
+  "fulltext_uri": "https://example.org/fulltext/10.1021/sample.114001",
+  "acquisition_timestamp": "2026-08-11T12:21:26.326639Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "cd7e8b2e0bebbd857c8143c50e26ef15acda89f12073896e5eb9416c0d6b0a4b",
+  "license": "closed",
+  "domain": "neuroscience",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "neuroscience",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

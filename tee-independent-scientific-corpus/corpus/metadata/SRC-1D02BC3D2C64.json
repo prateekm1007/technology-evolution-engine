@@ -1,0 +1,45 @@
+{
+  "source_id": "SRC-1D02BC3D2C64",
+  "title": "Pollution monitoring using monitoring_technique",
+  "authors": [
+    "Yong Suzuki",
+    "Charles Lee",
+    "Linda Garcia",
+    "Hiroshi Yamamoto",
+    "Michael Jones"
+  ],
+  "doi": "10.1016/sample.201001",
+  "publisher": "ACM",
+  "publication_date": "2023-06-09",
+  "source_uri": "https://doi.org/10.1016/sample.201001",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into environmental_science phenomena. Combining theoretical analysis with empirical validation, we establish... Comparative evaluation demonstrates superiority over existing approaches. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1016/sample.201001",
+  "acquisition_timestamp": "2026-08-11T12:21:26.146527Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "885833f2886f8125662f89143dd1dad1742c26c9bb8af55d2c47599a0de2cc96",
+  "license": "CC-BY-4.0",
+  "domain": "environmental_science",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "environmental_science",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

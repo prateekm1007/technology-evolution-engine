@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-04EA8A3DBAD3",
+  "title": "Autonomous navigation in outdoor environments",
+  "authors": [
+    "David Schmidt",
+    "Charles Smith",
+    "Charles Williams",
+    "Robert Smith"
+  ],
+  "doi": "10.1002/sample.280002",
+  "publisher": "Elsevier",
+  "publication_date": "2015-06-25",
+  "source_uri": "https://doi.org/10.1002/sample.280002",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in robotics. Combining theoretical analysis with empirical validation, we establish... The findings suggest new directions for future research. Our work opens new avenues for exploration in this field.",
+  "fulltext_uri": "https://example.org/fulltext/10.1002/sample.280002",
+  "acquisition_timestamp": "2026-08-11T12:21:27.011457Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "93995f6ff2c2a9d9176acc36301bc4cb9493ea06afa6ee782dd76501857f51c7",
+  "license": "CC-BY-4.0",
+  "domain": "robotics",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "robotics",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

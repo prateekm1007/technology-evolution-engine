@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-C3CF753C4A24",
+  "title": "Ecological interactions between species_1 and species_2",
+  "authors": [
+    "Akira Brown",
+    "Linda Martinez",
+    "Elizabeth Schmidt",
+    "Elizabeth Williams"
+  ],
+  "doi": "10.1021/sample.170000",
+  "publisher": "Springer",
+  "publication_date": "2014-07-27",
+  "source_uri": "https://doi.org/10.1021/sample.170000",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into biology phenomena. Using state-of-the-art experimental techniques, we demonstrate... Comparative evaluation demonstrates superiority over existing approaches. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1021/sample.170000",
+  "acquisition_timestamp": "2026-08-11T12:21:24.567697Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "f6d496f4636e57b6b0b4e27006a7785491708d8f3e4da7de25220930b95afa31",
+  "license": "Apache-2.0",
+  "domain": "biology",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "biology",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

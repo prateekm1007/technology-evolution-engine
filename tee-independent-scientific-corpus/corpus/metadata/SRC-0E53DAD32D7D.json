@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-0E53DAD32D7D",
+  "title": "Heat integration in chemical plants",
+  "authors": [
+    "Mary Smith",
+    "James Yamamoto",
+    "Michael Tanaka",
+    "Mary Martinez"
+  ],
+  "doi": "10.1371/sample.011002",
+  "publisher": "Nature Publishing Group",
+  "publication_date": "2018-12-25",
+  "source_uri": "https://doi.org/10.1371/sample.011002",
+  "repository_uri": null,
+  "abstract": "This paper presents a comprehensive study of chemical_engineering focusing on key aspects. Combining theoretical analysis with empirical validation, we establish... Statistical analysis confirms the robustness of our conclusions. This research contributes to the broader understanding of the domain.",
+  "fulltext_uri": "https://example.org/fulltext/10.1371/sample.011002",
+  "acquisition_timestamp": "2026-08-11T12:21:25.387811Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "58839f6b6477c51464811a30e5e33cdb6fb7f44e95145b36656215cae12df902",
+  "license": "CC-BY-NC-4.0",
+  "domain": "chemical_engineering",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "chemical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

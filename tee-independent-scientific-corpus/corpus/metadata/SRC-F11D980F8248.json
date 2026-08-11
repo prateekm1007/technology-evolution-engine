@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-F11D980F8248",
+  "title": "Wireless sensor networks for monitoring_task",
+  "authors": [
+    "Jennifer Brown",
+    "John Tanaka"
+  ],
+  "doi": "10.1021/sample.123001",
+  "publisher": "Nature Publishing Group",
+  "publication_date": "2018-03-20",
+  "source_uri": "https://doi.org/10.1021/sample.123001",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in electrical_engineering. By integrating multiple analytical approaches, we uncover... Statistical analysis confirms the robustness of our conclusions. Our work opens new avenues for exploration in this field.",
+  "fulltext_uri": "https://example.org/fulltext/10.1021/sample.123001",
+  "acquisition_timestamp": "2026-08-11T12:21:25.229624Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "67bd5f1ec0d241d56508a5c6ab16584a18bb14af1e6cd185cd59d73b895a3a19",
+  "license": "closed",
+  "domain": "electrical_engineering",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "electrical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

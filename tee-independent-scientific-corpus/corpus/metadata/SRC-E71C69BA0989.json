@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-E71C69BA0989",
+  "title": "Human-robot interaction for interaction_scenario",
+  "authors": [
+    "Charles Brown",
+    "Wei Williams",
+    "Maria Garcia",
+    "Michael Anderson"
+  ],
+  "doi": "10.1103/sample.041000",
+  "publisher": "Springer",
+  "publication_date": "2016-10-03",
+  "source_uri": "https://doi.org/10.1103/sample.041000",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of robotics through experimental and theoretical approaches. Through computational modeling and simulation, we show... Comparative evaluation demonstrates superiority over existing approaches. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1103/sample.041000",
+  "acquisition_timestamp": "2026-08-11T12:21:26.790788Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "f467916126b70f81c271d5bd30e6a674df9da2d770cff76a6ebeae52626ee290",
+  "license": "CC-BY-NC-4.0",
+  "domain": "robotics",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "robotics",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

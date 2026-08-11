@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-CFD71D675A68",
+  "title": "Sensory processing in sensory_system",
+  "authors": [
+    "Akira Martinez",
+    "Robert Park"
+  ],
+  "doi": "10.1016/sample.126003",
+  "publisher": "Springer",
+  "publication_date": "2021-06-23",
+  "source_uri": "https://doi.org/10.1016/sample.126003",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of neuroscience through experimental and theoretical approaches. Using state-of-the-art experimental techniques, we demonstrate... The findings suggest new directions for future research. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1016/sample.126003",
+  "acquisition_timestamp": "2026-08-11T12:21:26.330941Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "012a13e7ea887dd5bf2e275946f4426391bd6cb68978b95fc8e56686c6b20e9f",
+  "license": "Apache-2.0",
+  "domain": "neuroscience",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "neuroscience",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

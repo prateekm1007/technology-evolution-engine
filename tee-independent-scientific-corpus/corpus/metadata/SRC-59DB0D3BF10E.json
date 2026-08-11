@@ -1,0 +1,43 @@
+{
+  "source_id": "SRC-59DB0D3BF10E",
+  "title": "Scalable distributed system for application",
+  "authors": [
+    "Robert Smith",
+    "Wei Brown",
+    "John Wang"
+  ],
+  "doi": "10.1371/sample.152000",
+  "publisher": "APS",
+  "publication_date": "2017-07-27",
+  "source_uri": "https://doi.org/10.1371/sample.152000",
+  "repository_uri": null,
+  "abstract": "We report novel findings in the field of computer_science with significant implications. By integrating multiple analytical approaches, we uncover... The findings suggest new directions for future research. This research contributes to the broader understanding of the domain.",
+  "fulltext_uri": "https://example.org/fulltext/10.1371/sample.152000",
+  "acquisition_timestamp": "2026-08-11T12:21:24.806594Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "411c8a869c77ddb898cb618eee343d3c496fa11888f1e578ae79c2017a0792df",
+  "license": "CC-BY-4.0",
+  "domain": "computer_science",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "computer_science",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

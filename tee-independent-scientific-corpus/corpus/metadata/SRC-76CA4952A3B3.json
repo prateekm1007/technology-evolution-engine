@@ -1,0 +1,45 @@
+{
+  "source_id": "SRC-76CA4952A3B3",
+  "title": "Fluid dynamics simulation of flow_scenario",
+  "authors": [
+    "Mary Schmidt",
+    "Joseph Thomas",
+    "Michael Rodriguez",
+    "John Wang",
+    "Charles Tanaka"
+  ],
+  "doi": "10.1145/sample.117000",
+  "publisher": "APS",
+  "publication_date": "2014-04-11",
+  "source_uri": "https://doi.org/10.1145/sample.117000",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of mechanical_engineering through experimental and theoretical approaches. Combining theoretical analysis with empirical validation, we establish... We observe previously unreported behaviors under controlled conditions. Our work opens new avenues for exploration in this field.",
+  "fulltext_uri": "https://example.org/fulltext/10.1145/sample.117000",
+  "acquisition_timestamp": "2026-08-11T12:21:24.991840Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "0a834b4d3de0af560328563186003a9b762c26acbe98d9699ed2a87dc3c54998",
+  "license": "CC-BY-NC-4.0",
+  "domain": "mechanical_engineering",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "mechanical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

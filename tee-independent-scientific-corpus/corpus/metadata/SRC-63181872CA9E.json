@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-63181872CA9E",
+  "title": "Robotic manipulation of object_type",
+  "authors": [
+    "William Lee",
+    "Yong Garcia",
+    "Yong Schmidt",
+    "Kenji Lee"
+  ],
+  "doi": "10.1021/sample.119002",
+  "publisher": "RSC",
+  "publication_date": "2015-01-18",
+  "source_uri": "https://doi.org/10.1021/sample.119002",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of mechanical_engineering through experimental and theoretical approaches. Employing advanced characterization methods, we reveal... The findings suggest new directions for future research. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1021/sample.119002",
+  "acquisition_timestamp": "2026-08-11T12:21:25.002836Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "09f05340409d61242b7688d555d006cb36d424f8ca04f5ea60f65f1f592c44d9",
+  "license": "Apache-2.0",
+  "domain": "mechanical_engineering",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "mechanical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

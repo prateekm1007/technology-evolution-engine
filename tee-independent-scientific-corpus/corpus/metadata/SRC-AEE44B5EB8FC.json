@@ -1,0 +1,45 @@
+{
+  "source_id": "SRC-AEE44B5EB8FC",
+  "title": "Classification of algebraic_structure",
+  "authors": [
+    "Michael Johnson",
+    "Charles Thomas",
+    "Kenji Smith",
+    "Jose Williams",
+    "James Taylor"
+  ],
+  "doi": "10.1038/sample.234000",
+  "publisher": "ACM",
+  "publication_date": "2014-01-19",
+  "source_uri": "https://doi.org/10.1038/sample.234000",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in mathematics. By integrating multiple analytical approaches, we uncover... The findings suggest new directions for future research. Our work opens new avenues for exploration in this field.",
+  "fulltext_uri": "https://example.org/fulltext/10.1038/sample.234000",
+  "acquisition_timestamp": "2026-08-11T12:21:26.707904Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "19989ccd7f037f9862718d13d27a1d28617da3870e664e01c3874cb516efe419",
+  "license": "CC-BY-4.0",
+  "domain": "mathematics",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "mathematics",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

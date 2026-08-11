@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-1660E6E0C702",
+  "title": "Development of graphene for application",
+  "authors": [
+    "James Johnson",
+    "Mary Kim",
+    "Hiroshi Garcia",
+    "Yong Park"
+  ],
+  "doi": "10.1038/sample.285000",
+  "publisher": "Elsevier",
+  "publication_date": "2011-03-04",
+  "source_uri": "https://doi.org/10.1038/sample.285000",
+  "repository_uri": null,
+  "abstract": "We report novel findings in the field of materials_science with significant implications. Through computational modeling and simulation, we show... We observe previously unreported behaviors under controlled conditions. This research contributes to the broader understanding of the domain.",
+  "fulltext_uri": "https://example.org/fulltext/10.1038/sample.285000",
+  "acquisition_timestamp": "2026-08-11T12:21:24.388539Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "43cfa39a899677d3f14ff66a68898ae7d489455c81cff2d59e5de7bc63bbb90c",
+  "license": "Apache-2.0",
+  "domain": "materials_science",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "materials_science",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

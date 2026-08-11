@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-EB714DE1B851",
+  "title": "Convergence analysis of numerical_method",
+  "authors": [
+    "Joseph Chen",
+    "Linda Anderson",
+    "Wei Williams",
+    "Michael Johnson"
+  ],
+  "doi": "10.1145/sample.029001",
+  "publisher": "APS",
+  "publication_date": "2020-12-29",
+  "source_uri": "https://doi.org/10.1145/sample.029001",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in mathematics. Through computational modeling and simulation, we show... Our results indicate significant improvements in performance metrics. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1145/sample.029001",
+  "acquisition_timestamp": "2026-08-11T12:21:26.492783Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "b7ddd38ef22cbac29e984cfb125c2fa4fc8142ec2df6ae5dc55f947b1faa6358",
+  "license": "MIT",
+  "domain": "mathematics",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "mathematics",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

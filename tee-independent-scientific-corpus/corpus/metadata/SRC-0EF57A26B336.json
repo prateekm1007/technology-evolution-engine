@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-0EF57A26B336",
+  "title": "Grid integration of renewable_source",
+  "authors": [
+    "James Kim",
+    "Mary Johnson",
+    "Wei Rodriguez",
+    "David Martinez"
+  ],
+  "doi": "10.1145/sample.212001",
+  "publisher": "Springer",
+  "publication_date": "2019-02-01",
+  "source_uri": "https://doi.org/10.1145/sample.212001",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into energy_sciences phenomena. By integrating multiple analytical approaches, we uncover... We observe previously unreported behaviors under controlled conditions. This research contributes to the broader understanding of the domain.",
+  "fulltext_uri": "https://example.org/fulltext/10.1145/sample.212001",
+  "acquisition_timestamp": "2026-08-11T12:21:25.865040Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "73c9288cadff8fcbfd91693909d59bc1bfb1fcdb9890c6e6e18d45cb8e23eacc",
+  "license": "closed",
+  "domain": "energy_sciences",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "energy_sciences",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

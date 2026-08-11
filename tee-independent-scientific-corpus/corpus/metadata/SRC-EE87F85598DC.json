@@ -1,0 +1,46 @@
+{
+  "source_id": "SRC-EE87F85598DC",
+  "title": "Green chemistry approach to synthesis_target",
+  "authors": [
+    "Elizabeth Johnson",
+    "Wei Williams",
+    "Thomas Tanaka",
+    "Jose Williams",
+    "Akira Kim",
+    "David Chen"
+  ],
+  "doi": "10.1145/sample.079000",
+  "publisher": "APS",
+  "publication_date": "2022-09-11",
+  "source_uri": "https://doi.org/10.1145/sample.079000",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in chemistry. Employing advanced characterization methods, we reveal... We observe previously unreported behaviors under controlled conditions. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1145/sample.079000",
+  "acquisition_timestamp": "2026-08-11T12:21:23.984485Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "a5c828f071c597aea28e7fd396fc23980f017b178c0c5ef46f0179ac5cfbc9d5",
+  "license": "closed",
+  "domain": "chemistry",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "chemistry",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

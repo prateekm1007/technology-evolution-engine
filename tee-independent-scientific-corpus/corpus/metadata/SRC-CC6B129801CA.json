@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-CC6B129801CA",
+  "title": "Optimization methods for ml_problem",
+  "authors": [
+    "Richard Johnson",
+    "Wei Garcia",
+    "Kenji Yamamoto",
+    "Anna Smith"
+  ],
+  "doi": "10.1109/sample.234001",
+  "publisher": "Nature Publishing Group",
+  "publication_date": "2013-05-03",
+  "source_uri": "https://doi.org/10.1109/sample.234001",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in computer_science. By integrating multiple analytical approaches, we uncover... Our results indicate significant improvements in performance metrics. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1109/sample.234001",
+  "acquisition_timestamp": "2026-08-11T12:21:24.868156Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "a6a79d1892387f4796823787c6e103f5dc66066228cd87eaae882c555fb63c09",
+  "license": "MIT",
+  "domain": "computer_science",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "computer_science",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-EBBB42730C4A",
+  "title": "Energy storage in storage_material materials",
+  "authors": [
+    "Elizabeth Wang",
+    "Jose Taylor",
+    "Wei Yamamoto",
+    "Akira Chen"
+  ],
+  "doi": "10.1109/sample.227002",
+  "publisher": "APS",
+  "publication_date": "2017-01-30",
+  "source_uri": "https://doi.org/10.1109/sample.227002",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into energy_sciences phenomena. Combining theoretical analysis with empirical validation, we establish... We observe previously unreported behaviors under controlled conditions. The methodology presented here can be extended to related problems.",
+  "fulltext_uri": "https://example.org/fulltext/10.1109/sample.227002",
+  "acquisition_timestamp": "2026-08-11T12:21:25.870333Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "95a481b9c305fe1c001a15d4c2c92668e55279918a9ae4e882827ecefbab5553",
+  "license": "MIT",
+  "domain": "energy_sciences",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "energy_sciences",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-F6DC22C91615",
+  "title": "Ecosystem services valuation for service_type",
+  "authors": [
+    "Yong Garcia",
+    "Jennifer Rodriguez"
+  ],
+  "doi": "10.1371/sample.165000",
+  "publisher": "Nature Publishing Group",
+  "publication_date": "2018-08-21",
+  "source_uri": "https://doi.org/10.1371/sample.165000",
+  "repository_uri": null,
+  "abstract": "We report novel findings in the field of environmental_science with significant implications. Employing advanced characterization methods, we reveal... Statistical analysis confirms the robustness of our conclusions. The methodology presented here can be extended to related problems.",
+  "fulltext_uri": "https://example.org/fulltext/10.1371/sample.165000",
+  "acquisition_timestamp": "2026-08-11T12:21:26.090299Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "590652f8797256f88bea959ffa72517e6d8360b7ba19a303866f96008e34ecc2",
+  "license": "MIT",
+  "domain": "environmental_science",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "environmental_science",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

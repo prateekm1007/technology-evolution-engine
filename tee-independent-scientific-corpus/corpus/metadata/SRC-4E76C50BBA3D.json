@@ -1,0 +1,43 @@
+{
+  "source_id": "SRC-4E76C50BBA3D",
+  "title": "Process intensification in unit_operation",
+  "authors": [
+    "Jennifer Kim",
+    "Charles Yamamoto",
+    "John Thomas"
+  ],
+  "doi": "10.1371/sample.249000",
+  "publisher": "IEEE",
+  "publication_date": "2011-06-27",
+  "source_uri": "https://doi.org/10.1371/sample.249000",
+  "repository_uri": null,
+  "abstract": "This paper presents a comprehensive study of chemical_engineering focusing on key aspects. By integrating multiple analytical approaches, we uncover... Comparative evaluation demonstrates superiority over existing approaches. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1371/sample.249000",
+  "acquisition_timestamp": "2026-08-11T12:21:25.624079Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "833f791232700e88603214f5b57317fd37ea71cc53428052719bba4a73f55912",
+  "license": "Apache-2.0",
+  "domain": "chemical_engineering",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "chemical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "source_id": "SRC-54012C3B2D17",
+  "title": "Solar cell efficiency enhancement using pv_material",
+  "authors": [
+    "Elizabeth Kim",
+    "Joseph Taylor",
+    "Kenji Johnson",
+    "Kenji Thomas",
+    "Wei Smith"
+  ],
+  "doi": "10.1002/sample.136000",
+  "publisher": "Springer",
+  "publication_date": "2019-10-14",
+  "source_uri": "https://doi.org/10.1002/sample.136000",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of energy_sciences through experimental and theoretical approaches. By integrating multiple analytical approaches, we uncover... The findings suggest new directions for future research. The methodology presented here can be extended to related problems.",
+  "fulltext_uri": "https://example.org/fulltext/10.1002/sample.136000",
+  "acquisition_timestamp": "2026-08-11T12:21:25.787652Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "b1b6a989c359cad878c628bb28cf446e80ead924bd9ee4e7fe25b1590f15b054",
+  "license": "Apache-2.0",
+  "domain": "energy_sciences",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "energy_sciences",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "source_id": "SRC-17C39667DF9B",
+  "title": "Natural language processing for nlp_task",
+  "authors": [
+    "Richard Davis",
+    "Jennifer Miller",
+    "John Wang"
+  ],
+  "doi": "10.1371/sample.123001",
+  "publisher": "IEEE",
+  "publication_date": "2016-07-31",
+  "source_uri": "https://doi.org/10.1371/sample.123001",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into computer_science phenomena. Through computational modeling and simulation, we show... Our results indicate significant improvements in performance metrics. Our work opens new avenues for exploration in this field.",
+  "fulltext_uri": "https://example.org/fulltext/10.1371/sample.123001",
+  "acquisition_timestamp": "2026-08-11T12:21:24.786156Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "d264a5318b1b94db7fdd930fe023a56db481f43fb25df6e3167a5246c31db622",
+  "license": "Apache-2.0",
+  "domain": "computer_science",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "computer_science",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

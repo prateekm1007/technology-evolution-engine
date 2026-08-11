@@ -1,0 +1,46 @@
+{
+  "source_id": "SRC-083C13F5E76A",
+  "title": "Heat integration in chemical plants",
+  "authors": [
+    "Michael Lee",
+    "David Thomas",
+    "Robert Martinez",
+    "James Tanaka",
+    "Akira Lee",
+    "Richard Rodriguez"
+  ],
+  "doi": "10.1038/sample.098001",
+  "publisher": "Springer",
+  "publication_date": "2013-02-01",
+  "source_uri": "https://doi.org/10.1038/sample.098001",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into chemical_engineering phenomena. Through computational modeling and simulation, we show... Statistical analysis confirms the robustness of our conclusions. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1038/sample.098001",
+  "acquisition_timestamp": "2026-08-11T12:21:25.453359Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "7a2016d99f70ac535ffabcaaf905f12850cec4c1a7e6fcd8059d7d2ab0ed007d",
+  "license": "MIT",
+  "domain": "chemical_engineering",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "chemical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

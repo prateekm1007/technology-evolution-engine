@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-EE2024DC8A65",
+  "title": "Memory encoding in memory_type memory",
+  "authors": [
+    "Robert Rodriguez",
+    "Jennifer Park",
+    "James Tanaka",
+    "Maria Schmidt"
+  ],
+  "doi": "10.1038/sample.064001",
+  "publisher": "Springer",
+  "publication_date": "2012-09-12",
+  "source_uri": "https://doi.org/10.1038/sample.064001",
+  "repository_uri": null,
+  "abstract": "This paper presents a comprehensive study of neuroscience focusing on key aspects. Combining theoretical analysis with empirical validation, we establish... Statistical analysis confirms the robustness of our conclusions. This research contributes to the broader understanding of the domain.",
+  "fulltext_uri": "https://example.org/fulltext/10.1038/sample.064001",
+  "acquisition_timestamp": "2026-08-11T12:21:26.287278Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "c7409847c71dc46508643d8ca07a773526ecf5e5a97c4f1ba4d0d56cf6f5eccd",
+  "license": "Apache-2.0",
+  "domain": "neuroscience",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "neuroscience",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

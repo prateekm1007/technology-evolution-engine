@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-90424A727F95",
+  "title": "Algorithm for computing mathematical_quantity",
+  "authors": [
+    "David Davis",
+    "William Taylor",
+    "Mary Chen",
+    "Kenji Smith"
+  ],
+  "doi": "10.1371/sample.276002",
+  "publisher": "Nature Publishing Group",
+  "publication_date": "2013-03-27",
+  "source_uri": "https://doi.org/10.1371/sample.276002",
+  "repository_uri": null,
+  "abstract": "This paper presents a comprehensive study of mathematics focusing on key aspects. Through computational modeling and simulation, we show... Statistical analysis confirms the robustness of our conclusions. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1371/sample.276002",
+  "acquisition_timestamp": "2026-08-11T12:21:26.745139Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "f3494dd6ecce8331632a854ed0e0f86ee5f0cd502b6e91cfa3b1dbf686574dce",
+  "license": "Apache-2.0",
+  "domain": "mathematics",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "mathematics",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

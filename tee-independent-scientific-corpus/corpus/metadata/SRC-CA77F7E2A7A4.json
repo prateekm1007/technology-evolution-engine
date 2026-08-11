@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-CA77F7E2A7A4",
+  "title": "Biodiversity assessment in habitat",
+  "authors": [
+    "Yong Taylor",
+    "Joseph Park"
+  ],
+  "doi": "10.1145/sample.010001",
+  "publisher": "APS",
+  "publication_date": "2019-12-14",
+  "source_uri": "https://doi.org/10.1145/sample.010001",
+  "repository_uri": null,
+  "abstract": "We report novel findings in the field of environmental_science with significant implications. Through computational modeling and simulation, we show... The findings suggest new directions for future research. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1145/sample.010001",
+  "acquisition_timestamp": "2026-08-11T12:21:25.947370Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "2f1a49dcab0f7341bc7e90151d4a846b51e2cfab423418e92990eb34574c12f7",
+  "license": "MIT",
+  "domain": "environmental_science",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "environmental_science",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

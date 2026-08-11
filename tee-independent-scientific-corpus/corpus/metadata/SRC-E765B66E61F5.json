@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-E765B66E61F5",
+  "title": "Optimization methods for ml_problem",
+  "authors": [
+    "Michael Jones",
+    "Jennifer Yamamoto",
+    "John Wang",
+    "Ming Rodriguez"
+  ],
+  "doi": "10.1371/sample.290000",
+  "publisher": "Springer",
+  "publication_date": "2011-04-07",
+  "source_uri": "https://doi.org/10.1371/sample.290000",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in computer_science. Combining theoretical analysis with empirical validation, we establish... We observe previously unreported behaviors under controlled conditions. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1371/sample.290000",
+  "acquisition_timestamp": "2026-08-11T12:21:24.908377Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "47b39e717ebe0ddc395529fdb63f08d29f2f2887a42d47d3392b8178f32cdac2",
+  "license": "Apache-2.0",
+  "domain": "computer_science",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "computer_science",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "source_id": "SRC-1214649D74F3",
+  "title": "Learning-based control of robot_type",
+  "authors": [
+    "Akira Wang",
+    "Yong Wang",
+    "Mary Williams",
+    "Joseph Mueller",
+    "Jose Anderson",
+    "Charles Garcia"
+  ],
+  "doi": "10.1021/sample.241001",
+  "publisher": "RSC",
+  "publication_date": "2024-02-15",
+  "source_uri": "https://doi.org/10.1021/sample.241001",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into robotics phenomena. Combining theoretical analysis with empirical validation, we establish... The findings suggest new directions for future research. The methodology presented here can be extended to related problems.",
+  "fulltext_uri": "https://example.org/fulltext/10.1021/sample.241001",
+  "acquisition_timestamp": "2026-08-11T12:21:26.986950Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "3bf365fe02b79f4ca1b38c9c972a52586e5576b5d92f17d31bc81ac822615592",
+  "license": "MIT",
+  "domain": "robotics",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "robotics",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

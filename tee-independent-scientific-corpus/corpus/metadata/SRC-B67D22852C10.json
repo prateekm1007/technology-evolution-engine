@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-B67D22852C10",
+  "title": "Modeling and simulation of process_system",
+  "authors": [
+    "Richard Suzuki",
+    "Hiroshi Johnson",
+    "Akira Jones",
+    "John Jones"
+  ],
+  "doi": "10.1145/sample.128000",
+  "publisher": "Elsevier",
+  "publication_date": "2021-06-25",
+  "source_uri": "https://doi.org/10.1145/sample.128000",
+  "repository_uri": null,
+  "abstract": "We report novel findings in the field of chemical_engineering with significant implications. By integrating multiple analytical approaches, we uncover... We observe previously unreported behaviors under controlled conditions. This research contributes to the broader understanding of the domain.",
+  "fulltext_uri": "https://example.org/fulltext/10.1145/sample.128000",
+  "acquisition_timestamp": "2026-08-11T12:21:25.485209Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "261454868ba835a00117b3f1c016c4119c59ed1668b21a13166417599852ed6c",
+  "license": "CC-BY-NC-4.0",
+  "domain": "chemical_engineering",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "chemical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

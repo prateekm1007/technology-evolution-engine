@@ -1,0 +1,43 @@
+{
+  "source_id": "SRC-865687EFFCD0",
+  "title": "Process intensification in unit_operation",
+  "authors": [
+    "Jennifer Suzuki",
+    "David Johnson",
+    "Yong Thomas"
+  ],
+  "doi": "10.1038/sample.191000",
+  "publisher": "Nature Publishing Group",
+  "publication_date": "2013-07-17",
+  "source_uri": "https://doi.org/10.1038/sample.191000",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into chemical_engineering phenomena. Using state-of-the-art experimental techniques, we demonstrate... Comparative evaluation demonstrates superiority over existing approaches. This research contributes to the broader understanding of the domain.",
+  "fulltext_uri": "https://example.org/fulltext/10.1038/sample.191000",
+  "acquisition_timestamp": "2026-08-11T12:21:25.567841Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "a0d017358b010e1a2c8bd106f4f6dfe15e2fdf56ee32d33ea4d7055ca0e5f718",
+  "license": "MIT",
+  "domain": "chemical_engineering",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "chemical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

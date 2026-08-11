@@ -1,0 +1,43 @@
+{
+  "source_id": "SRC-1F32AA98AD4E",
+  "title": "Graph neural networks for graph_problem",
+  "authors": [
+    "Charles Mueller",
+    "Kenji Jones",
+    "Maria Garcia"
+  ],
+  "doi": "10.1038/sample.240001",
+  "publisher": "Elsevier",
+  "publication_date": "2018-04-16",
+  "source_uri": "https://doi.org/10.1038/sample.240001",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of computer_science through experimental and theoretical approaches. By integrating multiple analytical approaches, we uncover... Statistical analysis confirms the robustness of our conclusions. This research contributes to the broader understanding of the domain.",
+  "fulltext_uri": "https://example.org/fulltext/10.1038/sample.240001",
+  "acquisition_timestamp": "2026-08-11T12:21:24.870053Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "c3a7160927e65a94f041a43486799ad16b509ced9b91eba87c1505c217357b59",
+  "license": "CC-BY-NC-4.0",
+  "domain": "computer_science",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "computer_science",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

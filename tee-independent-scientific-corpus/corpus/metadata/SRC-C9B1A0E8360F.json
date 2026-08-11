@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-C9B1A0E8360F",
+  "title": "Swarm robotics for swarm_task",
+  "authors": [
+    "Anna Yamamoto",
+    "Charles Tanaka"
+  ],
+  "doi": "10.1021/sample.198001",
+  "publisher": "ACM",
+  "publication_date": "2012-01-21",
+  "source_uri": "https://doi.org/10.1021/sample.198001",
+  "repository_uri": null,
+  "abstract": "This paper presents a comprehensive study of robotics focusing on key aspects. Through computational modeling and simulation, we show... Comparative evaluation demonstrates superiority over existing approaches. This research contributes to the broader understanding of the domain.",
+  "fulltext_uri": "https://example.org/fulltext/10.1021/sample.198001",
+  "acquisition_timestamp": "2026-08-11T12:21:26.949299Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "3c5a90ac107b83dd1085ca8bbe1b4ebce0ff3d9ee6bb8a2e5e40b2a070e81952",
+  "license": "CC-BY-4.0",
+  "domain": "robotics",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "robotics",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

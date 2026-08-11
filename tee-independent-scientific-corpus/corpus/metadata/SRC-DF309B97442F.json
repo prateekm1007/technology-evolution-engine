@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-DF309B97442F",
+  "title": "Role of kinase in cellular_process",
+  "authors": [
+    "Patricia Taylor",
+    "James Brown"
+  ],
+  "doi": "10.1016/sample.046001",
+  "publisher": "IEEE",
+  "publication_date": "2017-07-07",
+  "source_uri": "https://doi.org/10.1016/sample.046001",
+  "repository_uri": null,
+  "abstract": "This paper presents a comprehensive study of biology focusing on key aspects. Using state-of-the-art experimental techniques, we demonstrate... The findings suggest new directions for future research. Our work opens new avenues for exploration in this field.",
+  "fulltext_uri": "https://example.org/fulltext/10.1016/sample.046001",
+  "acquisition_timestamp": "2026-08-11T12:21:24.431066Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "e9ef72fe2c494a3dba744782990fcaf91a8dd2d9dd1c52cd91cddbd3519f84c9",
+  "license": "CC-BY-NC-4.0",
+  "domain": "biology",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "biology",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

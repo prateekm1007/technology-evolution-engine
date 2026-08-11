@@ -1,0 +1,43 @@
+{
+  "source_id": "SRC-52A88868D5E9",
+  "title": "Deforestation patterns in forest_type",
+  "authors": [
+    "Yong Taylor",
+    "Anna Chen",
+    "Maria Garcia"
+  ],
+  "doi": "10.1016/sample.129002",
+  "publisher": "RSC",
+  "publication_date": "2021-10-13",
+  "source_uri": "https://doi.org/10.1016/sample.129002",
+  "repository_uri": null,
+  "abstract": "We report novel findings in the field of environmental_science with significant implications. Employing advanced characterization methods, we reveal... Our results indicate significant improvements in performance metrics. This research contributes to the broader understanding of the domain.",
+  "fulltext_uri": "https://example.org/fulltext/10.1016/sample.129002",
+  "acquisition_timestamp": "2026-08-11T12:21:26.053206Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "98c0cf4068529bdf7d2f2a806787a05995b2ac8734d4c716a0cf4935f4115467",
+  "license": "CC-BY-NC-4.0",
+  "domain": "environmental_science",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "environmental_science",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

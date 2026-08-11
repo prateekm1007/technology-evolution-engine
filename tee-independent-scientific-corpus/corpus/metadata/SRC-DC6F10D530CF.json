@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-DC6F10D530CF",
+  "title": "Molecular mechanisms of polymerization in yeast",
+  "authors": [
+    "Michael Jones",
+    "Jennifer Garcia"
+  ],
+  "doi": "10.1371/sample.204000",
+  "publisher": "APS",
+  "publication_date": "2017-12-13",
+  "source_uri": "https://doi.org/10.1371/sample.204000",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in biology. Combining theoretical analysis with empirical validation, we establish... Comparative evaluation demonstrates superiority over existing approaches. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1371/sample.204000",
+  "acquisition_timestamp": "2026-08-11T12:21:24.607702Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "d7d8d3294d93a75345c1fc80dd0cf9f4efd63be5b7bda7e1fbd3da821d80f88f",
+  "license": "Apache-2.0",
+  "domain": "biology",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "biology",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

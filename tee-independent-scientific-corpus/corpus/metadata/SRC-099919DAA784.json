@@ -1,0 +1,45 @@
+{
+  "source_id": "SRC-099919DAA784",
+  "title": "Neural correlates of memory",
+  "authors": [
+    "Wei Tanaka",
+    "Richard Park",
+    "Patricia Martinez",
+    "David Rodriguez",
+    "Anna Kim"
+  ],
+  "doi": "10.1109/sample.259000",
+  "publisher": "Elsevier",
+  "publication_date": "2016-06-02",
+  "source_uri": "https://doi.org/10.1109/sample.259000",
+  "repository_uri": null,
+  "abstract": "This paper presents a comprehensive study of neuroscience focusing on key aspects. Combining theoretical analysis with empirical validation, we establish... Statistical analysis confirms the robustness of our conclusions. This research contributes to the broader understanding of the domain.",
+  "fulltext_uri": "https://example.org/fulltext/10.1109/sample.259000",
+  "acquisition_timestamp": "2026-08-11T12:21:26.444003Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "0cd35c6a9499e5b365f0139b70e55dc39e80bd8131759caf19f638d84d9c4e44",
+  "license": "Apache-2.0",
+  "domain": "neuroscience",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "neuroscience",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

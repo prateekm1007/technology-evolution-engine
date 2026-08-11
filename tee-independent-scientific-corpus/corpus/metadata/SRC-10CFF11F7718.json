@@ -1,0 +1,45 @@
+{
+  "source_id": "SRC-10CFF11F7718",
+  "title": "Computational fluid dynamics of geometry",
+  "authors": [
+    "John Miller",
+    "Patricia Anderson",
+    "Linda Thomas",
+    "Robert Davis",
+    "Thomas Park"
+  ],
+  "doi": "10.1145/sample.156000",
+  "publisher": "Elsevier",
+  "publication_date": "2012-02-18",
+  "source_uri": "https://doi.org/10.1145/sample.156000",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of mechanical_engineering through experimental and theoretical approaches. Through computational modeling and simulation, we show... The findings suggest new directions for future research. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1145/sample.156000",
+  "acquisition_timestamp": "2026-08-11T12:21:25.026906Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "6790c1c4f2b50d2fa5121cf9c6ab8f87b90218be5ed32868dd364659d1b238aa",
+  "license": "CC-BY-4.0",
+  "domain": "mechanical_engineering",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "mechanical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

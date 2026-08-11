@@ -1,0 +1,43 @@
+{
+  "source_id": "SRC-61A4CCCF395B",
+  "title": "Algorithm for computing mathematical_quantity",
+  "authors": [
+    "Maria Yamamoto",
+    "Maria Anderson",
+    "John Kim"
+  ],
+  "doi": "10.1109/sample.082001",
+  "publisher": "ACM",
+  "publication_date": "2013-09-23",
+  "source_uri": "https://doi.org/10.1109/sample.082001",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of mathematics through experimental and theoretical approaches. Employing advanced characterization methods, we reveal... The findings suggest new directions for future research. This research contributes to the broader understanding of the domain.",
+  "fulltext_uri": "https://example.org/fulltext/10.1109/sample.082001",
+  "acquisition_timestamp": "2026-08-11T12:21:26.533359Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "c31772b707b34cb53eaf3ffdb65e0a4b4b6e06f008b785388f30b003127145f4",
+  "license": "Apache-2.0",
+  "domain": "mathematics",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "mathematics",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

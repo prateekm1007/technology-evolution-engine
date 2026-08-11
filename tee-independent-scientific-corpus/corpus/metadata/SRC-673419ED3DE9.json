@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-673419ED3DE9",
+  "title": "Additive manufacturing of part_type components",
+  "authors": [
+    "Jennifer Park",
+    "Robert Park"
+  ],
+  "doi": "10.1145/sample.249000",
+  "publisher": "Elsevier",
+  "publication_date": "2012-04-16",
+  "source_uri": "https://doi.org/10.1145/sample.249000",
+  "repository_uri": null,
+  "abstract": "We report novel findings in the field of mechanical_engineering with significant implications. Using state-of-the-art experimental techniques, we demonstrate... Statistical analysis confirms the robustness of our conclusions. Our work opens new avenues for exploration in this field.",
+  "fulltext_uri": "https://example.org/fulltext/10.1145/sample.249000",
+  "acquisition_timestamp": "2026-08-11T12:21:25.089838Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "a24156151f187b8f44183253457f39ee759734708d34fa73fbcf7a0c03972814",
+  "license": "CC-BY-4.0",
+  "domain": "mechanical_engineering",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "mechanical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

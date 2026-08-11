@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-2E324896DA62",
+  "title": "Design optimization of gear for performance_metric",
+  "authors": [
+    "Patricia Wang",
+    "Anna Martinez",
+    "Robert Jones",
+    "Maria Rodriguez"
+  ],
+  "doi": "10.1038/sample.204000",
+  "publisher": "Springer",
+  "publication_date": "2024-05-31",
+  "source_uri": "https://doi.org/10.1038/sample.204000",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in mechanical_engineering. Through computational modeling and simulation, we show... Comparative evaluation demonstrates superiority over existing approaches. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1038/sample.204000",
+  "acquisition_timestamp": "2026-08-11T12:21:25.064239Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "104b7f0b2ba51b6a3de06d383d05fde433df42b978878f338918d2f5145d5c63",
+  "license": "Apache-2.0",
+  "domain": "mechanical_engineering",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "mechanical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

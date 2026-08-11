@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-8B49ED7A0576",
+  "title": "Classification of algebraic_structure",
+  "authors": [
+    "John Park",
+    "Robert Park"
+  ],
+  "doi": "10.1002/sample.055000",
+  "publisher": "IEEE",
+  "publication_date": "2012-08-22",
+  "source_uri": "https://doi.org/10.1002/sample.055000",
+  "repository_uri": null,
+  "abstract": "We report novel findings in the field of mathematics with significant implications. By integrating multiple analytical approaches, we uncover... Comparative evaluation demonstrates superiority over existing approaches. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1002/sample.055000",
+  "acquisition_timestamp": "2026-08-11T12:21:26.512849Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "edc967367ede7346f086fcd8ab17c22ee9ed16c5173b3f56dae662565e1d4927",
+  "license": "MIT",
+  "domain": "mathematics",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "mathematics",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

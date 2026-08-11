@@ -1,0 +1,46 @@
+{
+  "source_id": "SRC-DE998EC5D52A",
+  "title": "Signal processing algorithms for signal_type",
+  "authors": [
+    "Hiroshi Williams",
+    "James Chen",
+    "Mary Taylor",
+    "James Anderson",
+    "Yong Park",
+    "Robert Suzuki"
+  ],
+  "doi": "10.1021/sample.179001",
+  "publisher": "ACM",
+  "publication_date": "2013-11-11",
+  "source_uri": "https://doi.org/10.1021/sample.179001",
+  "repository_uri": null,
+  "abstract": "This paper presents a comprehensive study of electrical_engineering focusing on key aspects. Combining theoretical analysis with empirical validation, we establish... The findings suggest new directions for future research. This research contributes to the broader understanding of the domain.",
+  "fulltext_uri": "https://example.org/fulltext/10.1021/sample.179001",
+  "acquisition_timestamp": "2026-08-11T12:21:25.285818Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "beac2c96f1efd7eeab767445b2609b4ab58ac256be15298e50d13be5baf1f6bf",
+  "license": "CC-BY-NC-4.0",
+  "domain": "electrical_engineering",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "electrical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

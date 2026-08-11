@@ -1,0 +1,46 @@
+{
+  "source_id": "SRC-F49C7FCCC9CA",
+  "title": "Neural correlates of memory",
+  "authors": [
+    "John Tanaka",
+    "Linda Miller",
+    "Kenji Tanaka",
+    "Michael Miller",
+    "Richard Miller",
+    "Robert Lee"
+  ],
+  "doi": "10.1103/sample.030001",
+  "publisher": "RSC",
+  "publication_date": "2021-12-05",
+  "source_uri": "https://doi.org/10.1103/sample.030001",
+  "repository_uri": null,
+  "abstract": "We report novel findings in the field of neuroscience with significant implications. Combining theoretical analysis with empirical validation, we establish... Statistical analysis confirms the robustness of our conclusions. Our work opens new avenues for exploration in this field.",
+  "fulltext_uri": "https://example.org/fulltext/10.1103/sample.030001",
+  "acquisition_timestamp": "2026-08-11T12:21:26.264040Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "3fc3693f2d7cd0d451bf6c7e23420512d9cfaf685134784e1ee1f92e81b87eba",
+  "license": "Apache-2.0",
+  "domain": "neuroscience",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "neuroscience",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

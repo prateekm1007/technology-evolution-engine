@@ -1,0 +1,45 @@
+{
+  "source_id": "SRC-2EB233F9B519",
+  "title": "Process intensification in unit_operation",
+  "authors": [
+    "Linda Lee",
+    "William Martinez",
+    "Hiroshi Rodriguez",
+    "Maria Wang",
+    "Charles Garcia"
+  ],
+  "doi": "10.1145/sample.074001",
+  "publisher": "APS",
+  "publication_date": "2018-12-04",
+  "source_uri": "https://doi.org/10.1145/sample.074001",
+  "repository_uri": null,
+  "abstract": "This paper presents a comprehensive study of chemical_engineering focusing on key aspects. Combining theoretical analysis with empirical validation, we establish... We observe previously unreported behaviors under controlled conditions. Our work opens new avenues for exploration in this field.",
+  "fulltext_uri": "https://example.org/fulltext/10.1145/sample.074001",
+  "acquisition_timestamp": "2026-08-11T12:21:25.445668Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "d27b8e4dbfe5dde2c0c38edd36e7ae46ed2f272e214291f3ed991a062b387ee9",
+  "license": "Apache-2.0",
+  "domain": "chemical_engineering",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "chemical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

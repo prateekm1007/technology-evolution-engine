@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-87B8302CBE96",
+  "title": "Robotic manipulation of object_type",
+  "authors": [
+    "Akira Anderson",
+    "John Lee"
+  ],
+  "doi": "10.1038/sample.214000",
+  "publisher": "Nature Publishing Group",
+  "publication_date": "2013-07-27",
+  "source_uri": "https://doi.org/10.1038/sample.214000",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into mechanical_engineering phenomena. By integrating multiple analytical approaches, we uncover... Comparative evaluation demonstrates superiority over existing approaches. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1038/sample.214000",
+  "acquisition_timestamp": "2026-08-11T12:21:25.067817Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "ea3d153bb7f679f35f6aaafc0ed70ae891ab6f14e33524a1945523e8b6c6e41d",
+  "license": "CC-BY-NC-4.0",
+  "domain": "mechanical_engineering",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "mechanical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-D31C982FEA3A",
+  "title": "Self-assembly of molecule_type into structure",
+  "authors": [
+    "Akira Williams",
+    "John Williams",
+    "Richard Rodriguez",
+    "David Johnson"
+  ],
+  "doi": "10.1016/sample.151000",
+  "publisher": "Nature Publishing Group",
+  "publication_date": "2023-04-29",
+  "source_uri": "https://doi.org/10.1016/sample.151000",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into chemistry phenomena. Combining theoretical analysis with empirical validation, we establish... The findings suggest new directions for future research. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1016/sample.151000",
+  "acquisition_timestamp": "2026-08-11T12:21:24.029332Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "90f143c4a34c5b214961d3e2ada62e1a07282cef1e88c9935e1ed976646193ef",
+  "license": "CC-BY-4.0",
+  "domain": "chemistry",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "chemistry",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

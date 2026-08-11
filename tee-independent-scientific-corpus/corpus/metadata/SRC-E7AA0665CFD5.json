@@ -1,0 +1,45 @@
+{
+  "source_id": "SRC-E7AA0665CFD5",
+  "title": "Memory encoding in memory_type memory",
+  "authors": [
+    "Kenji Thomas",
+    "Akira Suzuki",
+    "Yong Park",
+    "Robert Anderson",
+    "Mary Rodriguez"
+  ],
+  "doi": "10.1016/sample.246002",
+  "publisher": "RSC",
+  "publication_date": "2020-02-14",
+  "source_uri": "https://doi.org/10.1016/sample.246002",
+  "repository_uri": null,
+  "abstract": "We report novel findings in the field of neuroscience with significant implications. Through computational modeling and simulation, we show... The findings suggest new directions for future research. This research contributes to the broader understanding of the domain.",
+  "fulltext_uri": "https://example.org/fulltext/10.1016/sample.246002",
+  "acquisition_timestamp": "2026-08-11T12:21:26.428863Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "a8ee630c746ca1219d4924bcccd6335c04d7596ee20c557a0d02ea08366ef2df",
+  "license": "Apache-2.0",
+  "domain": "neuroscience",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "neuroscience",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

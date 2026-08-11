@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-A46D90425FE2",
+  "title": "Deep learning approach to task",
+  "authors": [
+    "Elizabeth Thomas",
+    "Kenji Smith"
+  ],
+  "doi": "10.1103/sample.230000",
+  "publisher": "APS",
+  "publication_date": "2010-11-15",
+  "source_uri": "https://doi.org/10.1103/sample.230000",
+  "repository_uri": null,
+  "abstract": "We report novel findings in the field of computer_science with significant implications. Employing advanced characterization methods, we reveal... Statistical analysis confirms the robustness of our conclusions. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1103/sample.230000",
+  "acquisition_timestamp": "2026-08-11T12:21:24.866899Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "548984c4bae9c5619728c7f963b3de6a899867085a871bc4f94ee3e04b48f834",
+  "license": "Apache-2.0",
+  "domain": "computer_science",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "computer_science",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "source_id": "SRC-C95F1EDE4F7E",
+  "title": "Genomic analysis reveals finding in species",
+  "authors": [
+    "Thomas Kim",
+    "David Chen",
+    "Patricia Smith",
+    "William Park",
+    "Mary Anderson",
+    "Jennifer Chen"
+  ],
+  "doi": "10.1016/sample.241001",
+  "publisher": "RSC",
+  "publication_date": "2022-09-07",
+  "source_uri": "https://doi.org/10.1016/sample.241001",
+  "repository_uri": null,
+  "abstract": "We report novel findings in the field of biology with significant implications. Through computational modeling and simulation, we show... Comparative evaluation demonstrates superiority over existing approaches. The methodology presented here can be extended to related problems.",
+  "fulltext_uri": "https://example.org/fulltext/10.1016/sample.241001",
+  "acquisition_timestamp": "2026-08-11T12:21:24.646519Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "30494abd97af77511e1bacb96512572231b09504dff953bc7fce3ca8ac623c8e",
+  "license": "CC-BY-4.0",
+  "domain": "biology",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "biology",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

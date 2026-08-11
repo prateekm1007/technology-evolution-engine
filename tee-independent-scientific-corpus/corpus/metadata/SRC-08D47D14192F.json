@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-08D47D14192F",
+  "title": "Power electronics for power_application",
+  "authors": [
+    "Kenji Brown",
+    "Akira Tanaka"
+  ],
+  "doi": "10.1103/sample.025000",
+  "publisher": "Elsevier",
+  "publication_date": "2012-06-30",
+  "source_uri": "https://doi.org/10.1103/sample.025000",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into electrical_engineering phenomena. Using state-of-the-art experimental techniques, we demonstrate... We observe previously unreported behaviors under controlled conditions. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1103/sample.025000",
+  "acquisition_timestamp": "2026-08-11T12:21:25.164086Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "b0b1df0a7069c40d7e0ec0f7659effdeae1b4f2ab56417f1e2851ae00b3df233",
+  "license": "MIT",
+  "domain": "electrical_engineering",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "electrical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

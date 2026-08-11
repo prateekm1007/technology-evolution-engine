@@ -1,0 +1,45 @@
+{
+  "source_id": "SRC-1810EDDD5798",
+  "title": "Genomic analysis reveals finding in species",
+  "authors": [
+    "Robert Williams",
+    "Richard Taylor",
+    "Maria Johnson",
+    "Robert Lee",
+    "Maria Brown"
+  ],
+  "doi": "10.1002/sample.266000",
+  "publisher": "Springer",
+  "publication_date": "2014-12-18",
+  "source_uri": "https://doi.org/10.1002/sample.266000",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into biology phenomena. Using state-of-the-art experimental techniques, we demonstrate... The findings suggest new directions for future research. The methodology presented here can be extended to related problems.",
+  "fulltext_uri": "https://example.org/fulltext/10.1002/sample.266000",
+  "acquisition_timestamp": "2026-08-11T12:21:24.666190Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "f2853d8c45a642589a3e49a71d0f3448034b3949a5875a327db5ac6a03d21f11",
+  "license": "closed",
+  "domain": "biology",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "biology",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

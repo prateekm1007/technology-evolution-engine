@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-A77786ADB1D0",
+  "title": "Synaptic plasticity in cerebellum",
+  "authors": [
+    "Mary Chen",
+    "Anna Mueller"
+  ],
+  "doi": "10.1021/sample.119000",
+  "publisher": "ACM",
+  "publication_date": "2015-01-01",
+  "source_uri": "https://doi.org/10.1021/sample.119000",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into neuroscience phenomena. Employing advanced characterization methods, we reveal... Statistical analysis confirms the robustness of our conclusions. The methodology presented here can be extended to related problems.",
+  "fulltext_uri": "https://example.org/fulltext/10.1021/sample.119000",
+  "acquisition_timestamp": "2026-08-11T12:21:26.328413Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "a215c64f6fb327f9dcc1af1d7f1d94019cff6745feea5a23ce7a34cf7df59a79",
+  "license": "closed",
+  "domain": "neuroscience",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "neuroscience",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

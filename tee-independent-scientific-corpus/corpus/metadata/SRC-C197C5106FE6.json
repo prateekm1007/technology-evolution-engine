@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-C197C5106FE6",
+  "title": "Synaptic plasticity in cerebellum",
+  "authors": [
+    "Ming Miller",
+    "Charles Garcia"
+  ],
+  "doi": "10.1103/sample.290002",
+  "publisher": "IEEE",
+  "publication_date": "2020-12-18",
+  "source_uri": "https://doi.org/10.1103/sample.290002",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in neuroscience. Employing advanced characterization methods, we reveal... The findings suggest new directions for future research. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1103/sample.290002",
+  "acquisition_timestamp": "2026-08-11T12:21:26.467948Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "9c75caa03cf96982b4ac125bbb6dd67e21c5f76bce1e79af53f26c5daad72ecb",
+  "license": "MIT",
+  "domain": "neuroscience",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "neuroscience",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

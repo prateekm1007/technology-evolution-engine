@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-EF2B0C961F7A",
+  "title": "Soft robotics design for soft_robot_application",
+  "authors": [
+    "Akira Miller",
+    "Linda Wang",
+    "John Davis",
+    "Wei Smith"
+  ],
+  "doi": "10.1016/sample.277002",
+  "publisher": "ACM",
+  "publication_date": "2012-12-14",
+  "source_uri": "https://doi.org/10.1016/sample.277002",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of robotics through experimental and theoretical approaches. Through computational modeling and simulation, we show... The findings suggest new directions for future research. The methodology presented here can be extended to related problems.",
+  "fulltext_uri": "https://example.org/fulltext/10.1016/sample.277002",
+  "acquisition_timestamp": "2026-08-11T12:21:27.010446Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "e071469247304ec1c0af55a538553a6037baf8ee6726fae00e7a40199dbccde4",
+  "license": "CC-BY-4.0",
+  "domain": "robotics",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "robotics",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

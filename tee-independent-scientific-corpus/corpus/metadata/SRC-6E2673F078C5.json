@@ -1,0 +1,43 @@
+{
+  "source_id": "SRC-6E2673F078C5",
+  "title": "Sustainable agriculture practices for crop_type",
+  "authors": [
+    "Jose Garcia",
+    "Akira Wang",
+    "Linda Davis"
+  ],
+  "doi": "10.1016/sample.171001",
+  "publisher": "Springer",
+  "publication_date": "2014-06-01",
+  "source_uri": "https://doi.org/10.1016/sample.171001",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into environmental_science phenomena. Combining theoretical analysis with empirical validation, we establish... Our results indicate significant improvements in performance metrics. This research contributes to the broader understanding of the domain.",
+  "fulltext_uri": "https://example.org/fulltext/10.1016/sample.171001",
+  "acquisition_timestamp": "2026-08-11T12:21:26.103983Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "1afd1579b770b241033636416d802480b073ab44926cab9376cf872f5a92bec4",
+  "license": "MIT",
+  "domain": "environmental_science",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "environmental_science",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

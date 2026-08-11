@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-4F0E1E286F49",
+  "title": "Energy storage in storage_material materials",
+  "authors": [
+    "David Park",
+    "Robert Park",
+    "Robert Mueller",
+    "Akira Jones"
+  ],
+  "doi": "10.1038/sample.015001",
+  "publisher": "ACM",
+  "publication_date": "2015-08-28",
+  "source_uri": "https://doi.org/10.1038/sample.015001",
+  "repository_uri": null,
+  "abstract": "We report novel findings in the field of energy_sciences with significant implications. Combining theoretical analysis with empirical validation, we establish... Our results indicate significant improvements in performance metrics. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1038/sample.015001",
+  "acquisition_timestamp": "2026-08-11T12:21:25.668785Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "ceaa28f8f18d919b1c18be339904efedcb8b0c531e775dd7d16cd7325fe4c7c2",
+  "license": "CC-BY-4.0",
+  "domain": "energy_sciences",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "energy_sciences",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

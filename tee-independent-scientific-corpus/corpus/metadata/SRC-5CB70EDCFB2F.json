@@ -1,0 +1,43 @@
+{
+  "source_id": "SRC-5CB70EDCFB2F",
+  "title": "Swarm robotics for swarm_task",
+  "authors": [
+    "David Lee",
+    "Richard Mueller",
+    "Joseph Taylor"
+  ],
+  "doi": "10.1016/sample.209001",
+  "publisher": "Elsevier",
+  "publication_date": "2015-12-05",
+  "source_uri": "https://doi.org/10.1016/sample.209001",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into robotics phenomena. Through computational modeling and simulation, we show... Statistical analysis confirms the robustness of our conclusions. Our work opens new avenues for exploration in this field.",
+  "fulltext_uri": "https://example.org/fulltext/10.1016/sample.209001",
+  "acquisition_timestamp": "2026-08-11T12:21:26.964911Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "1ef6eafa480d53c92b36a500b6fe313f66442f9f18090f61e2b99e93519542de",
+  "license": "Apache-2.0",
+  "domain": "robotics",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "robotics",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

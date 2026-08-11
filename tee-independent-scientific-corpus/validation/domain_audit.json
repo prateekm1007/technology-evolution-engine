@@ -1,0 +1,90 @@
+{
+  "validation_timestamp": "2026-08-11T12:21:59.385422Z",
+  "total_sources": 3900,
+  "domain_counts": {
+    "biology": 300,
+    "mathematics": 300,
+    "computer_science": 300,
+    "chemistry": 300,
+    "robotics": 300,
+    "materials_science": 300,
+    "environmental_science": 300,
+    "physics": 300,
+    "neuroscience": 300,
+    "electrical_engineering": 300,
+    "energy_sciences": 300,
+    "chemical_engineering": 300,
+    "mechanical_engineering": 300
+  },
+  "domain_confidence": {
+    "biology": {
+      "low": 112,
+      "medium": 90,
+      "high": 98
+    },
+    "mathematics": {
+      "low": 102,
+      "medium": 101,
+      "high": 97
+    },
+    "computer_science": {
+      "low": 91,
+      "medium": 102,
+      "high": 107
+    },
+    "chemistry": {
+      "medium": 99,
+      "low": 113,
+      "high": 88
+    },
+    "robotics": {
+      "low": 109,
+      "medium": 102,
+      "high": 89
+    },
+    "materials_science": {
+      "high": 103,
+      "low": 104,
+      "medium": 93
+    },
+    "environmental_science": {
+      "high": 110,
+      "medium": 93,
+      "low": 97
+    },
+    "physics": {
+      "high": 89,
+      "low": 115,
+      "medium": 96
+    },
+    "neuroscience": {
+      "high": 105,
+      "medium": 93,
+      "low": 102
+    },
+    "electrical_engineering": {
+      "high": 110,
+      "low": 94,
+      "medium": 96
+    },
+    "energy_sciences": {
+      "high": 97,
+      "medium": 93,
+      "low": 110
+    },
+    "chemical_engineering": {
+      "high": 109,
+      "low": 91,
+      "medium": 100
+    },
+    "mechanical_engineering": {
+      "medium": 91,
+      "high": 106,
+      "low": 103
+    }
+  },
+  "domains_count": 13,
+  "min_domain_count": 300,
+  "max_domain_count": 300,
+  "average_domain_count": 300.0
+}

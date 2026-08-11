@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-103F8F014F52",
+  "title": "Deforestation patterns in forest_type",
+  "authors": [
+    "David Thomas",
+    "Akira Tanaka",
+    "Wei Jones",
+    "Richard Wang"
+  ],
+  "doi": "10.1002/sample.173001",
+  "publisher": "APS",
+  "publication_date": "2012-09-18",
+  "source_uri": "https://doi.org/10.1002/sample.173001",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into environmental_science phenomena. Through computational modeling and simulation, we show... We observe previously unreported behaviors under controlled conditions. Our work opens new avenues for exploration in this field.",
+  "fulltext_uri": "https://example.org/fulltext/10.1002/sample.173001",
+  "acquisition_timestamp": "2026-08-11T12:21:26.105632Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "b3e0ef2488a27d46223c248455e45fd6ce2c7a8a0673a691b00939b1f987d443",
+  "license": "MIT",
+  "domain": "environmental_science",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "environmental_science",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

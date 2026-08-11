@@ -1,0 +1,45 @@
+{
+  "source_id": "SRC-DC6902E1A674",
+  "title": "Modeling and simulation of process_system",
+  "authors": [
+    "Michael Park",
+    "Hiroshi Mueller",
+    "Michael Suzuki",
+    "Maria Garcia",
+    "Jennifer Jones"
+  ],
+  "doi": "10.1103/sample.208001",
+  "publisher": "Nature Publishing Group",
+  "publication_date": "2013-07-30",
+  "source_uri": "https://doi.org/10.1103/sample.208001",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of chemical_engineering through experimental and theoretical approaches. Employing advanced characterization methods, we reveal... Statistical analysis confirms the robustness of our conclusions. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1103/sample.208001",
+  "acquisition_timestamp": "2026-08-11T12:21:25.583680Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "1d59b7de82671bb3812a00c7c86f2a6367874fb80a103a80248d208ad4482ca2",
+  "license": "closed",
+  "domain": "chemical_engineering",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "chemical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

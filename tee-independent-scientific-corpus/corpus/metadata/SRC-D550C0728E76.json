@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-D550C0728E76",
+  "title": "Additive manufacturing of part_type components",
+  "authors": [
+    "Patricia Jones",
+    "Kenji Miller",
+    "Anna Suzuki",
+    "William Williams"
+  ],
+  "doi": "10.1016/sample.011000",
+  "publisher": "Springer",
+  "publication_date": "2016-01-14",
+  "source_uri": "https://doi.org/10.1016/sample.011000",
+  "repository_uri": null,
+  "abstract": "This paper presents a comprehensive study of mechanical_engineering focusing on key aspects. Using state-of-the-art experimental techniques, we demonstrate... Our results indicate significant improvements in performance metrics. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1016/sample.011000",
+  "acquisition_timestamp": "2026-08-11T12:21:24.925754Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "b201dfe7c5a10e1745dd1e103892f1b1c7382895c7aebaefd40cb8ba0294298b",
+  "license": "Apache-2.0",
+  "domain": "mechanical_engineering",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "mechanical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-1DE0AFEB9493",
+  "title": "Heat integration in chemical plants",
+  "authors": [
+    "Mary Davis",
+    "Joseph Wang",
+    "Mary Rodriguez",
+    "David Brown"
+  ],
+  "doi": "10.1002/sample.262000",
+  "publisher": "APS",
+  "publication_date": "2024-05-27",
+  "source_uri": "https://doi.org/10.1002/sample.262000",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in chemical_engineering. Employing advanced characterization methods, we reveal... We observe previously unreported behaviors under controlled conditions. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1002/sample.262000",
+  "acquisition_timestamp": "2026-08-11T12:21:25.628673Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "10872b1081058521308969e362c6f38beabe0c740d0b7277837f76dba74a72a4",
+  "license": "closed",
+  "domain": "chemical_engineering",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "chemical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

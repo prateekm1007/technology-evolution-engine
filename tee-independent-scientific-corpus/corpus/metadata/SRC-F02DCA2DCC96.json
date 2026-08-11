@@ -1,0 +1,45 @@
+{
+  "source_id": "SRC-F02DCA2DCC96",
+  "title": "Fatigue life prediction of actuator under loading",
+  "authors": [
+    "Hiroshi Smith",
+    "Robert Kim",
+    "Ming Rodriguez",
+    "James Wang",
+    "Charles Wang"
+  ],
+  "doi": "10.1109/sample.005000",
+  "publisher": "RSC",
+  "publication_date": "2019-08-01",
+  "source_uri": "https://doi.org/10.1109/sample.005000",
+  "repository_uri": null,
+  "abstract": "We report novel findings in the field of mechanical_engineering with significant implications. Through computational modeling and simulation, we show... The findings suggest new directions for future research. The methodology presented here can be extended to related problems.",
+  "fulltext_uri": "https://example.org/fulltext/10.1109/sample.005000",
+  "acquisition_timestamp": "2026-08-11T12:21:24.913164Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "475bd6ad9e9adff6c378334efca957cd7acef6c40faf89aa2c2add8c291cf68e",
+  "license": "MIT",
+  "domain": "mechanical_engineering",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "mechanical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

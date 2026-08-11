@@ -1,0 +1,43 @@
+{
+  "source_id": "SRC-AB61ED4B709D",
+  "title": "Phase stability in high-entropy oxide",
+  "authors": [
+    "John Johnson",
+    "Kenji Thomas",
+    "David Miller"
+  ],
+  "doi": "10.1016/sample.250001",
+  "publisher": "Springer",
+  "publication_date": "2018-05-07",
+  "source_uri": "https://doi.org/10.1016/sample.250001",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in materials_science. By integrating multiple analytical approaches, we uncover... The findings suggest new directions for future research. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1016/sample.250001",
+  "acquisition_timestamp": "2026-08-11T12:21:24.365278Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "b7f4d2bad37732056ca8aa7552340322d459b6870c3e7a84773dffa8be556763",
+  "license": "closed",
+  "domain": "materials_science",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "materials_science",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

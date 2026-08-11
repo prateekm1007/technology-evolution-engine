@@ -1,0 +1,43 @@
+{
+  "source_id": "SRC-8C2738714E1A",
+  "title": "Existence proof for solution_type solutions",
+  "authors": [
+    "Mary Chen",
+    "Akira Yamamoto",
+    "Thomas Suzuki"
+  ],
+  "doi": "10.1109/sample.129000",
+  "publisher": "Nature Publishing Group",
+  "publication_date": "2011-05-31",
+  "source_uri": "https://doi.org/10.1109/sample.129000",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in mathematics. Combining theoretical analysis with empirical validation, we establish... Comparative evaluation demonstrates superiority over existing approaches. This research contributes to the broader understanding of the domain.",
+  "fulltext_uri": "https://example.org/fulltext/10.1109/sample.129000",
+  "acquisition_timestamp": "2026-08-11T12:21:26.608515Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "20d9cb7c3299d4b1c633103042e2abd5749503d2c147197c80d9f54c85fc48f9",
+  "license": "CC-BY-NC-4.0",
+  "domain": "mathematics",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "mathematics",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

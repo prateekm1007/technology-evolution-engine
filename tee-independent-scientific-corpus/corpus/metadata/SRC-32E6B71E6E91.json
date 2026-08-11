@@ -1,0 +1,46 @@
+{
+  "source_id": "SRC-32E6B71E6E91",
+  "title": "Reinforcement learning in rl_domain",
+  "authors": [
+    "Charles Jones",
+    "Michael Yamamoto",
+    "Richard Taylor",
+    "Charles Williams",
+    "Patricia Thomas",
+    "James Miller"
+  ],
+  "doi": "10.1109/sample.122000",
+  "publisher": "ACM",
+  "publication_date": "2015-04-04",
+  "source_uri": "https://doi.org/10.1109/sample.122000",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of computer_science through experimental and theoretical approaches. Using state-of-the-art experimental techniques, we demonstrate... Our results indicate significant improvements in performance metrics. The methodology presented here can be extended to related problems.",
+  "fulltext_uri": "https://example.org/fulltext/10.1109/sample.122000",
+  "acquisition_timestamp": "2026-08-11T12:21:24.785847Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "d1135d44bcd16cfd2a65bb9ab8b255e3cdd3d05e7f13029af4319713c1fdbd64",
+  "license": "Apache-2.0",
+  "domain": "computer_science",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "computer_science",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

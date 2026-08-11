@@ -1,0 +1,46 @@
+{
+  "source_id": "SRC-5A6ABB999547",
+  "title": "Theoretical analysis of system dynamics",
+  "authors": [
+    "David Mueller",
+    "William Taylor",
+    "Patricia Brown",
+    "Thomas Anderson",
+    "Hiroshi Wang",
+    "Wei Brown"
+  ],
+  "doi": "10.1103/sample.198000",
+  "publisher": "Elsevier",
+  "publication_date": "2021-02-21",
+  "source_uri": "https://doi.org/10.1103/sample.198000",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into physics phenomena. Employing advanced characterization methods, we reveal... The findings suggest new directions for future research. This research contributes to the broader understanding of the domain.",
+  "fulltext_uri": "https://example.org/fulltext/10.1103/sample.198000",
+  "acquisition_timestamp": "2026-08-11T12:21:23.846466Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "5de0edb43874d3bcdc9cb2ad7eb256633c9ed6269f4345ae983ed5066f76bc55",
+  "license": "CC-BY-NC-4.0",
+  "domain": "physics",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "physics",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

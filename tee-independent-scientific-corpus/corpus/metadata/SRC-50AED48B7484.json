@@ -1,0 +1,45 @@
+{
+  "source_id": "SRC-50AED48B7484",
+  "title": "Structure-activity relationships in compound_class",
+  "authors": [
+    "Mary Rodriguez",
+    "Jose Johnson",
+    "Hiroshi Mueller",
+    "Anna Taylor",
+    "Richard Park"
+  ],
+  "doi": "10.1145/sample.056000",
+  "publisher": "Springer",
+  "publication_date": "2010-01-22",
+  "source_uri": "https://doi.org/10.1145/sample.056000",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of chemistry through experimental and theoretical approaches. Using state-of-the-art experimental techniques, we demonstrate... The findings suggest new directions for future research. This research contributes to the broader understanding of the domain.",
+  "fulltext_uri": "https://example.org/fulltext/10.1145/sample.056000",
+  "acquisition_timestamp": "2026-08-11T12:21:23.964834Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "718751dad1b091a39636f2f71e5c1da43ecdda17416eaa7144c4e4d6430e6ebd",
+  "license": "closed",
+  "domain": "chemistry",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "chemistry",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "source_id": "SRC-1812E246FF19",
+  "title": "Green chemistry approach to synthesis_target",
+  "authors": [
+    "Michael Davis",
+    "Elizabeth Thomas",
+    "Jose Thomas",
+    "Jennifer Thomas",
+    "Richard Martinez"
+  ],
+  "doi": "10.1038/sample.249001",
+  "publisher": "ACM",
+  "publication_date": "2011-12-28",
+  "source_uri": "https://doi.org/10.1038/sample.249001",
+  "repository_uri": null,
+  "abstract": "We report novel findings in the field of chemistry with significant implications. By integrating multiple analytical approaches, we uncover... Our results indicate significant improvements in performance metrics. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1038/sample.249001",
+  "acquisition_timestamp": "2026-08-11T12:21:24.111029Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "e6229f6448d03cacad0e86ef39d6fcf8f6ad12cf481a517f785f06616b1db7fd",
+  "license": "Apache-2.0",
+  "domain": "chemistry",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "chemistry",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

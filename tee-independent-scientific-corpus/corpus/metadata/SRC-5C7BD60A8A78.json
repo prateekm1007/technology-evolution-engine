@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-5C7BD60A8A78",
+  "title": "Neural correlates of decision-making",
+  "authors": [
+    "Thomas Schmidt",
+    "John Davis"
+  ],
+  "doi": "10.1021/sample.110001",
+  "publisher": "Elsevier",
+  "publication_date": "2024-03-04",
+  "source_uri": "https://doi.org/10.1021/sample.110001",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into neuroscience phenomena. Through computational modeling and simulation, we show... Comparative evaluation demonstrates superiority over existing approaches. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1021/sample.110001",
+  "acquisition_timestamp": "2026-08-11T12:21:26.325239Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "49d108bc49696692b13d0f692a68d208aa3016de590b7edcae33a68e86eb7f58",
+  "license": "CC-BY-NC-4.0",
+  "domain": "neuroscience",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "neuroscience",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "source_id": "SRC-72F65FA2F10A",
+  "title": "Comparative genomics of clade reveals insight",
+  "authors": [
+    "Ming Rodriguez",
+    "Jennifer Garcia",
+    "Joseph Smith",
+    "Thomas Park",
+    "Michael Schmidt"
+  ],
+  "doi": "10.1103/sample.281001",
+  "publisher": "Elsevier",
+  "publication_date": "2019-07-22",
+  "source_uri": "https://doi.org/10.1103/sample.281001",
+  "repository_uri": null,
+  "abstract": "This paper presents a comprehensive study of biology focusing on key aspects. Employing advanced characterization methods, we reveal... Our results indicate significant improvements in performance metrics. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1103/sample.281001",
+  "acquisition_timestamp": "2026-08-11T12:21:24.670882Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "a516877a453784ade99f9440c584659a02dded523f6a0e574319d8b95801a9ad",
+  "license": "MIT",
+  "domain": "biology",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "biology",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

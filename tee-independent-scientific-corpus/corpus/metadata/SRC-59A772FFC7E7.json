@@ -1,0 +1,45 @@
+{
+  "source_id": "SRC-59A772FFC7E7",
+  "title": "Graph neural networks for graph_problem",
+  "authors": [
+    "James Miller",
+    "William Yamamoto",
+    "William Garcia",
+    "David Brown",
+    "Ming Jones"
+  ],
+  "doi": "10.1016/sample.184001",
+  "publisher": "APS",
+  "publication_date": "2016-09-30",
+  "source_uri": "https://doi.org/10.1016/sample.184001",
+  "repository_uri": null,
+  "abstract": "We report novel findings in the field of computer_science with significant implications. Using state-of-the-art experimental techniques, we demonstrate... We observe previously unreported behaviors under controlled conditions. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1016/sample.184001",
+  "acquisition_timestamp": "2026-08-11T12:21:24.828570Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "2c0de06cd2883610faf7c689a89113261ba3ba817401abb89aeb41de28ccb04d",
+  "license": "CC-BY-4.0",
+  "domain": "computer_science",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "computer_science",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

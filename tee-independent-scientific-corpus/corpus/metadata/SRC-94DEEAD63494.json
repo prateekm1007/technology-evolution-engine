@@ -1,0 +1,46 @@
+{
+  "source_id": "SRC-94DEEAD63494",
+  "title": "Electrochemical polymerization in solvent solutions",
+  "authors": [
+    "Akira Williams",
+    "Elizabeth Brown",
+    "Linda Mueller",
+    "Elizabeth Williams",
+    "William Kim",
+    "Yong Johnson"
+  ],
+  "doi": "10.1016/sample.109000",
+  "publisher": "Nature Publishing Group",
+  "publication_date": "2011-12-02",
+  "source_uri": "https://doi.org/10.1016/sample.109000",
+  "repository_uri": null,
+  "abstract": "This paper presents a comprehensive study of chemistry focusing on key aspects. By integrating multiple analytical approaches, we uncover... We observe previously unreported behaviors under controlled conditions. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1016/sample.109000",
+  "acquisition_timestamp": "2026-08-11T12:21:24.004450Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "30237b019f707dbe9f689b3627780dc592cf6b2fc0540c603c554f4b50793e59",
+  "license": "CC-BY-4.0",
+  "domain": "chemistry",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "chemistry",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

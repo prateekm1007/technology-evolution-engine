@@ -1,0 +1,46 @@
+{
+  "source_id": "SRC-FA5350F6B763",
+  "title": "Regulation of gene_expression by factor",
+  "authors": [
+    "William Rodriguez",
+    "James Mueller",
+    "Robert Park",
+    "Michael Jones",
+    "Joseph Suzuki",
+    "Ming Thomas"
+  ],
+  "doi": "10.1109/sample.070000",
+  "publisher": "Nature Publishing Group",
+  "publication_date": "2018-12-19",
+  "source_uri": "https://doi.org/10.1109/sample.070000",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into biology phenomena. Through computational modeling and simulation, we show... The findings suggest new directions for future research. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1109/sample.070000",
+  "acquisition_timestamp": "2026-08-11T12:21:24.451215Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "e8cef6d1d3aa8885d230ab82b52ba73adf5ffcabcf0aea4986f8195a59ff6890",
+  "license": "CC-BY-NC-4.0",
+  "domain": "biology",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "biology",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "source_id": "SRC-9DE22DE990FE",
+  "title": "Spectroscopic characterization of complex",
+  "authors": [
+    "Hiroshi Rodriguez",
+    "Jose Suzuki",
+    "Linda Taylor",
+    "Joseph Rodriguez",
+    "Mary Johnson"
+  ],
+  "doi": "10.1038/sample.160001",
+  "publisher": "Elsevier",
+  "publication_date": "2011-06-13",
+  "source_uri": "https://doi.org/10.1038/sample.160001",
+  "repository_uri": null,
+  "abstract": "This paper presents a comprehensive study of chemistry focusing on key aspects. By integrating multiple analytical approaches, we uncover... Comparative evaluation demonstrates superiority over existing approaches. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1038/sample.160001",
+  "acquisition_timestamp": "2026-08-11T12:21:24.032146Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "731b37c8353d0d2602b05d733ba705f5b851c7449b3d40b92ff7670243b097c0",
+  "license": "Apache-2.0",
+  "domain": "chemistry",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "chemistry",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

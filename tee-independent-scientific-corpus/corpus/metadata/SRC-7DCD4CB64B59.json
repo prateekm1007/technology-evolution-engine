@@ -1,0 +1,45 @@
+{
+  "source_id": "SRC-7DCD4CB64B59",
+  "title": "Polymer processing for polymer_type",
+  "authors": [
+    "David Yamamoto",
+    "Wei Anderson",
+    "Yong Chen",
+    "Patricia Jones",
+    "Mary Smith"
+  ],
+  "doi": "10.1109/sample.005001",
+  "publisher": "RSC",
+  "publication_date": "2017-12-15",
+  "source_uri": "https://doi.org/10.1109/sample.005001",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in chemical_engineering. Employing advanced characterization methods, we reveal... Comparative evaluation demonstrates superiority over existing approaches. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1109/sample.005001",
+  "acquisition_timestamp": "2026-08-11T12:21:25.385977Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "4da38dd6b1088ab4858e695c21a58944aa7c2da4b36cd89b5e73b0fb5614351b",
+  "license": "Apache-2.0",
+  "domain": "chemical_engineering",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "chemical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

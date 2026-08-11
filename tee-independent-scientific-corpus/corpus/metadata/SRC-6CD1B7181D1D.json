@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-6CD1B7181D1D",
+  "title": "Energy storage in storage_material materials",
+  "authors": [
+    "Michael Martinez",
+    "William Rodriguez"
+  ],
+  "doi": "10.1021/sample.167000",
+  "publisher": "Nature Publishing Group",
+  "publication_date": "2011-05-26",
+  "source_uri": "https://doi.org/10.1021/sample.167000",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of energy_sciences through experimental and theoretical approaches. By integrating multiple analytical approaches, we uncover... Statistical analysis confirms the robustness of our conclusions. This research contributes to the broader understanding of the domain.",
+  "fulltext_uri": "https://example.org/fulltext/10.1021/sample.167000",
+  "acquisition_timestamp": "2026-08-11T12:21:25.811018Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "d6e70be4395e52ef32eb056e489b09fe5b5675c7c2d61cc64c0ac637c8a47d5f",
+  "license": "Apache-2.0",
+  "domain": "energy_sciences",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "energy_sciences",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

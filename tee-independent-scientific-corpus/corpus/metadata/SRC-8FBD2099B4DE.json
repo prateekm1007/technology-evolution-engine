@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-8FBD2099B4DE",
+  "title": "Molecular design of graphene for application",
+  "authors": [
+    "Maria Anderson",
+    "Linda Taylor"
+  ],
+  "doi": "10.1021/sample.121000",
+  "publisher": "APS",
+  "publication_date": "2015-01-12",
+  "source_uri": "https://doi.org/10.1021/sample.121000",
+  "repository_uri": null,
+  "abstract": "We report novel findings in the field of chemistry with significant implications. Combining theoretical analysis with empirical validation, we establish... Comparative evaluation demonstrates superiority over existing approaches. Our work opens new avenues for exploration in this field.",
+  "fulltext_uri": "https://example.org/fulltext/10.1021/sample.121000",
+  "acquisition_timestamp": "2026-08-11T12:21:24.008355Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "2c3a4859de9d8165a9941bd2e82147509dd4915d7d5d094508ce8081816154fd",
+  "license": "CC-BY-NC-4.0",
+  "domain": "chemistry",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "chemistry",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "source_id": "SRC-C53A09B4DBBF",
+  "title": "Pollution monitoring using monitoring_technique",
+  "authors": [
+    "Joseph Johnson",
+    "Patricia Davis",
+    "David Johnson",
+    "Linda Taylor",
+    "Thomas Park"
+  ],
+  "doi": "10.1103/sample.069001",
+  "publisher": "APS",
+  "publication_date": "2013-12-04",
+  "source_uri": "https://doi.org/10.1103/sample.069001",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into environmental_science phenomena. Employing advanced characterization methods, we reveal... We observe previously unreported behaviors under controlled conditions. This research contributes to the broader understanding of the domain.",
+  "fulltext_uri": "https://example.org/fulltext/10.1103/sample.069001",
+  "acquisition_timestamp": "2026-08-11T12:21:25.990983Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "5a263ed08e814e56953c6cb58d8729efe0f1f479fd550cf08659c959e1c53105",
+  "license": "Apache-2.0",
+  "domain": "environmental_science",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "environmental_science",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

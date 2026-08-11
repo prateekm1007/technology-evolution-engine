@@ -1,0 +1,45 @@
+{
+  "source_id": "SRC-4EFFC9226ECA",
+  "title": "Sensory processing in sensory_system",
+  "authors": [
+    "Jennifer Williams",
+    "Maria Miller",
+    "Linda Mueller",
+    "Robert Yamamoto",
+    "Akira Wang"
+  ],
+  "doi": "10.1103/sample.252002",
+  "publisher": "Nature Publishing Group",
+  "publication_date": "2022-09-01",
+  "source_uri": "https://doi.org/10.1103/sample.252002",
+  "repository_uri": null,
+  "abstract": "We report novel findings in the field of neuroscience with significant implications. Employing advanced characterization methods, we reveal... Our results indicate significant improvements in performance metrics. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1103/sample.252002",
+  "acquisition_timestamp": "2026-08-11T12:21:26.431062Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "7bcb4e119ad330d9aefed57521158a77fd5d0955475828acb8dfbe9e6cf598d0",
+  "license": "CC-BY-4.0",
+  "domain": "neuroscience",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "neuroscience",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

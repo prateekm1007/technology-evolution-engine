@@ -1,0 +1,46 @@
+{
+  "source_id": "SRC-C52BEB04D109",
+  "title": "Role of enzyme in cellular_process",
+  "authors": [
+    "Akira Martinez",
+    "Elizabeth Jones",
+    "David Wang",
+    "Richard Garcia",
+    "Wei Lee",
+    "Maria Mueller"
+  ],
+  "doi": "10.1103/sample.139001",
+  "publisher": "Nature Publishing Group",
+  "publication_date": "2020-03-20",
+  "source_uri": "https://doi.org/10.1103/sample.139001",
+  "repository_uri": null,
+  "abstract": "We report novel findings in the field of biology with significant implications. By integrating multiple analytical approaches, we uncover... Statistical analysis confirms the robustness of our conclusions. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1103/sample.139001",
+  "acquisition_timestamp": "2026-08-11T12:21:24.531495Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "cb644679f03aad46bad90e2a97471c452fd89a133cb0be4de707cda49b470d4d",
+  "license": "Apache-2.0",
+  "domain": "biology",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "biology",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

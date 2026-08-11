@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-E591E52AC3D9",
+  "title": "Soft robotics design for soft_robot_application",
+  "authors": [
+    "Wei Smith",
+    "Hiroshi Chen",
+    "Hiroshi Suzuki",
+    "David Miller"
+  ],
+  "doi": "10.1371/sample.086000",
+  "publisher": "IEEE",
+  "publication_date": "2023-02-01",
+  "source_uri": "https://doi.org/10.1371/sample.086000",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of robotics through experimental and theoretical approaches. By integrating multiple analytical approaches, we uncover... Our results indicate significant improvements in performance metrics. This research contributes to the broader understanding of the domain.",
+  "fulltext_uri": "https://example.org/fulltext/10.1371/sample.086000",
+  "acquisition_timestamp": "2026-08-11T12:21:26.832008Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "230666e83574d460fc5b0ded0e5f3122c049b36f332c397d9f0870a6ee09cc47",
+  "license": "CC-BY-NC-4.0",
+  "domain": "robotics",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "robotics",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

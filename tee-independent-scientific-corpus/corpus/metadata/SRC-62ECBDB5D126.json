@@ -1,0 +1,45 @@
+{
+  "source_id": "SRC-62ECBDB5D126",
+  "title": "Polymer processing for polymer_type",
+  "authors": [
+    "Jennifer Thomas",
+    "Anna Garcia",
+    "Mary Thomas",
+    "Kenji Kim",
+    "Yong Martinez"
+  ],
+  "doi": "10.1038/sample.252001",
+  "publisher": "IEEE",
+  "publication_date": "2011-08-03",
+  "source_uri": "https://doi.org/10.1038/sample.252001",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into chemical_engineering phenomena. By integrating multiple analytical approaches, we uncover... We observe previously unreported behaviors under controlled conditions. This research contributes to the broader understanding of the domain.",
+  "fulltext_uri": "https://example.org/fulltext/10.1038/sample.252001",
+  "acquisition_timestamp": "2026-08-11T12:21:25.625254Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "f888c4042bbe5e183834d88c963e0487135702b90cd357cca7bdd1d6be302942",
+  "license": "MIT",
+  "domain": "chemical_engineering",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "chemical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

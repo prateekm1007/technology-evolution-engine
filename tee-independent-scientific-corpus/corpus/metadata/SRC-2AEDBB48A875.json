@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-2AEDBB48A875",
+  "title": "Graph neural networks for graph_problem",
+  "authors": [
+    "Yong Kim",
+    "Richard Brown",
+    "Charles Taylor",
+    "Maria Taylor"
+  ],
+  "doi": "10.1016/sample.219000",
+  "publisher": "RSC",
+  "publication_date": "2013-02-27",
+  "source_uri": "https://doi.org/10.1016/sample.219000",
+  "repository_uri": null,
+  "abstract": "We report novel findings in the field of computer_science with significant implications. By integrating multiple analytical approaches, we uncover... Comparative evaluation demonstrates superiority over existing approaches. This research contributes to the broader understanding of the domain.",
+  "fulltext_uri": "https://example.org/fulltext/10.1016/sample.219000",
+  "acquisition_timestamp": "2026-08-11T12:21:24.851929Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "8b952491b70555d17dbda4af734202193379c3cc345cedd831d11f54bd35f6e7",
+  "license": "MIT",
+  "domain": "computer_science",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "computer_science",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-C5D688FB3FE2",
+  "title": "Fluid dynamics simulation of flow_scenario",
+  "authors": [
+    "William Kim",
+    "Jose Yamamoto",
+    "Elizabeth Suzuki",
+    "Jose Rodriguez"
+  ],
+  "doi": "10.1021/sample.290000",
+  "publisher": "Nature Publishing Group",
+  "publication_date": "2013-06-11",
+  "source_uri": "https://doi.org/10.1021/sample.290000",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into mechanical_engineering phenomena. Combining theoretical analysis with empirical validation, we establish... The findings suggest new directions for future research. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1021/sample.290000",
+  "acquisition_timestamp": "2026-08-11T12:21:25.128266Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "6fe65cb9f2c7c340f7fac56ef1f0d567114b0f8b22d25409b065aa07dec72e63",
+  "license": "CC-BY-NC-4.0",
+  "domain": "mechanical_engineering",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "mechanical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "source_id": "SRC-0509A7C3244F",
+  "title": "Polymer processing for polymer_type",
+  "authors": [
+    "Akira Williams",
+    "Kenji Rodriguez",
+    "Jose Kim"
+  ],
+  "doi": "10.1002/sample.067001",
+  "publisher": "Springer",
+  "publication_date": "2022-05-08",
+  "source_uri": "https://doi.org/10.1002/sample.067001",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of chemical_engineering through experimental and theoretical approaches. Using state-of-the-art experimental techniques, we demonstrate... The findings suggest new directions for future research. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1002/sample.067001",
+  "acquisition_timestamp": "2026-08-11T12:21:25.432452Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "ae8423c5193430cb4c0b368ba16fedd6a7fd50e5d7236116cbc57eb26c93385e",
+  "license": "Apache-2.0",
+  "domain": "chemical_engineering",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "chemical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

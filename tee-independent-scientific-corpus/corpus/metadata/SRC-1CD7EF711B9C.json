@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-1CD7EF711B9C",
+  "title": "Comparative genomics of clade reveals insight",
+  "authors": [
+    "Jennifer Yamamoto",
+    "David Kim",
+    "Wei Smith",
+    "Ming Wang"
+  ],
+  "doi": "10.1038/sample.104000",
+  "publisher": "RSC",
+  "publication_date": "2022-02-15",
+  "source_uri": "https://doi.org/10.1038/sample.104000",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into biology phenomena. Employing advanced characterization methods, we reveal... The findings suggest new directions for future research. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1038/sample.104000",
+  "acquisition_timestamp": "2026-08-11T12:21:24.484935Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "8b82bca1da3d06aa04a475f990db3a81f105821249c8da32c34c6d2ce321aadf",
+  "license": "Apache-2.0",
+  "domain": "biology",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "biology",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

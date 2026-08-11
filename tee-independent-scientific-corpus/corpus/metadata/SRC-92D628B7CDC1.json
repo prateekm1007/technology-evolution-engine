@@ -1,0 +1,46 @@
+{
+  "source_id": "SRC-92D628B7CDC1",
+  "title": "Manipulation planning for manipulation_task",
+  "authors": [
+    "Richard Smith",
+    "Jose Taylor",
+    "Michael Williams",
+    "Jose Yamamoto",
+    "Hiroshi Johnson",
+    "William Martinez"
+  ],
+  "doi": "10.1038/sample.278002",
+  "publisher": "Elsevier",
+  "publication_date": "2015-08-05",
+  "source_uri": "https://doi.org/10.1038/sample.278002",
+  "repository_uri": null,
+  "abstract": "This paper presents a comprehensive study of robotics focusing on key aspects. Combining theoretical analysis with empirical validation, we establish... Statistical analysis confirms the robustness of our conclusions. The methodology presented here can be extended to related problems.",
+  "fulltext_uri": "https://example.org/fulltext/10.1038/sample.278002",
+  "acquisition_timestamp": "2026-08-11T12:21:27.010789Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "84052b7e8b61154d5d294aa8c7a9e44f9510d9af743db5caa4903101bc5e0b1d",
+  "license": "MIT",
+  "domain": "robotics",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "robotics",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

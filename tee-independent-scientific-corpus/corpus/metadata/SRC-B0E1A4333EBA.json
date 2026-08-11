@@ -1,0 +1,43 @@
+{
+  "source_id": "SRC-B0E1A4333EBA",
+  "title": "Separation processes for mixture_type mixtures",
+  "authors": [
+    "Yong Jones",
+    "John Suzuki",
+    "Wei Yamamoto"
+  ],
+  "doi": "10.1016/sample.155002",
+  "publisher": "RSC",
+  "publication_date": "2020-06-01",
+  "source_uri": "https://doi.org/10.1016/sample.155002",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of chemical_engineering through experimental and theoretical approaches. Employing advanced characterization methods, we reveal... We observe previously unreported behaviors under controlled conditions. Our work opens new avenues for exploration in this field.",
+  "fulltext_uri": "https://example.org/fulltext/10.1016/sample.155002",
+  "acquisition_timestamp": "2026-08-11T12:21:25.524212Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "3785b35a85459b80a4f2d57e8bb59ff51f4ffb1bc0643f85b85eb3cdae1baf78",
+  "license": "MIT",
+  "domain": "chemical_engineering",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "chemical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

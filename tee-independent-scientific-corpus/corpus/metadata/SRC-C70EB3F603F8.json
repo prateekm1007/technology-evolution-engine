@@ -1,0 +1,43 @@
+{
+  "source_id": "SRC-C70EB3F603F8",
+  "title": "Biofuel production from biomass_type",
+  "authors": [
+    "Elizabeth Brown",
+    "James Williams",
+    "Mary Brown"
+  ],
+  "doi": "10.1038/sample.189000",
+  "publisher": "Elsevier",
+  "publication_date": "2023-01-07",
+  "source_uri": "https://doi.org/10.1038/sample.189000",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of energy_sciences through experimental and theoretical approaches. Using state-of-the-art experimental techniques, we demonstrate... We observe previously unreported behaviors under controlled conditions. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1038/sample.189000",
+  "acquisition_timestamp": "2026-08-11T12:21:25.843496Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "e87a62101bd504afed28a9156b2fddbc3c3c745f7c9190bbf7b530463324c2f4",
+  "license": "CC-BY-4.0",
+  "domain": "energy_sciences",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "energy_sciences",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-0725AFDD121A",
+  "title": "Neural circuit mapping of circuit_name",
+  "authors": [
+    "Thomas Wang",
+    "Kenji Chen",
+    "James Miller",
+    "Maria Wang"
+  ],
+  "doi": "10.1002/sample.112001",
+  "publisher": "ACM",
+  "publication_date": "2016-03-13",
+  "source_uri": "https://doi.org/10.1002/sample.112001",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in neuroscience. Combining theoretical analysis with empirical validation, we establish... Comparative evaluation demonstrates superiority over existing approaches. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1002/sample.112001",
+  "acquisition_timestamp": "2026-08-11T12:21:26.325942Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "d98dca2080f8fafdefba77ac0050305cbfd4dff7e756b6caef721e50551b1418",
+  "license": "MIT",
+  "domain": "neuroscience",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "neuroscience",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-924A0B06D8E1",
+  "title": "Haptic feedback for haptic_application",
+  "authors": [
+    "Yong Tanaka",
+    "Yong Williams"
+  ],
+  "doi": "10.1021/sample.075001",
+  "publisher": "ACM",
+  "publication_date": "2023-02-15",
+  "source_uri": "https://doi.org/10.1021/sample.075001",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into robotics phenomena. By integrating multiple analytical approaches, we uncover... The findings suggest new directions for future research. Our work opens new avenues for exploration in this field.",
+  "fulltext_uri": "https://example.org/fulltext/10.1021/sample.075001",
+  "acquisition_timestamp": "2026-08-11T12:21:26.827795Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "8e40cf4232f9f4ad7ca36fc41b9b6e6f753f3f70f4198528dd667d3efd686f2d",
+  "license": "MIT",
+  "domain": "robotics",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "robotics",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

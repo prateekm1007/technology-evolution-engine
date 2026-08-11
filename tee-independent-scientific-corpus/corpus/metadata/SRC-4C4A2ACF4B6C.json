@@ -1,0 +1,46 @@
+{
+  "source_id": "SRC-4C4A2ACF4B6C",
+  "title": "Carbon capture using capture_material",
+  "authors": [
+    "James Mueller",
+    "Akira Yamamoto",
+    "James Johnson",
+    "Charles Mueller",
+    "Michael Taylor",
+    "Robert Kim"
+  ],
+  "doi": "10.1016/sample.019001",
+  "publisher": "Elsevier",
+  "publication_date": "2021-08-20",
+  "source_uri": "https://doi.org/10.1016/sample.019001",
+  "repository_uri": null,
+  "abstract": "We report novel findings in the field of energy_sciences with significant implications. Employing advanced characterization methods, we reveal... We observe previously unreported behaviors under controlled conditions. The methodology presented here can be extended to related problems.",
+  "fulltext_uri": "https://example.org/fulltext/10.1016/sample.019001",
+  "acquisition_timestamp": "2026-08-11T12:21:25.670369Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "e340206fe206977b8743ded1b96437e5bb485b289959d01b2c7b568fa920019b",
+  "license": "CC-BY-4.0",
+  "domain": "energy_sciences",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "energy_sciences",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

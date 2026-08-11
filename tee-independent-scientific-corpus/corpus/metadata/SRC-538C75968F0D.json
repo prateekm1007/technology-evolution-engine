@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-538C75968F0D",
+  "title": "Carbon capture using capture_material",
+  "authors": [
+    "Richard Anderson",
+    "James Smith",
+    "Robert Lee",
+    "William Anderson"
+  ],
+  "doi": "10.1038/sample.040002",
+  "publisher": "APS",
+  "publication_date": "2024-03-29",
+  "source_uri": "https://doi.org/10.1038/sample.040002",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into energy_sciences phenomena. By integrating multiple analytical approaches, we uncover... Comparative evaluation demonstrates superiority over existing approaches. Our work opens new avenues for exploration in this field.",
+  "fulltext_uri": "https://example.org/fulltext/10.1038/sample.040002",
+  "acquisition_timestamp": "2026-08-11T12:21:25.689996Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "bcc20e3d392d340ff7a8dbfc59f3e44a9d6b0bc1d88bbee278a7f3ac278d40da",
+  "license": "Apache-2.0",
+  "domain": "energy_sciences",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "energy_sciences",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

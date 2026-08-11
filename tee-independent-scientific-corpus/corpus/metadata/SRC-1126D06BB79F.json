@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-1126D06BB79F",
+  "title": "Experimental study of interaction in condensed matter",
+  "authors": [
+    "Joseph Kim",
+    "Mary Kim",
+    "Ming Lee",
+    "Akira Rodriguez"
+  ],
+  "doi": "10.1103/sample.013000",
+  "publisher": "Nature Publishing Group",
+  "publication_date": "2019-03-15",
+  "source_uri": "https://doi.org/10.1103/sample.013000",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into physics phenomena. By integrating multiple analytical approaches, we uncover... Our results indicate significant improvements in performance metrics. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1103/sample.013000",
+  "acquisition_timestamp": "2026-08-11T12:21:23.709764Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "84859c180f00accbe4fc314fd4a30881c0bc692903690c482eba5806f6fb3a0e",
+  "license": "MIT",
+  "domain": "physics",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "physics",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

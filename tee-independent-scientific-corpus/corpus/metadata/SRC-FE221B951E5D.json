@@ -1,0 +1,45 @@
+{
+  "source_id": "SRC-FE221B951E5D",
+  "title": "Quantum computing algorithms for quantum_problem",
+  "authors": [
+    "Hiroshi Davis",
+    "Mary Garcia",
+    "Richard Anderson",
+    "Ming Mueller",
+    "Wei Suzuki"
+  ],
+  "doi": "10.1021/sample.291000",
+  "publisher": "Elsevier",
+  "publication_date": "2012-06-27",
+  "source_uri": "https://doi.org/10.1021/sample.291000",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of computer_science through experimental and theoretical approaches. By integrating multiple analytical approaches, we uncover... Comparative evaluation demonstrates superiority over existing approaches. Our work opens new avenues for exploration in this field.",
+  "fulltext_uri": "https://example.org/fulltext/10.1021/sample.291000",
+  "acquisition_timestamp": "2026-08-11T12:21:24.908662Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "a7935249b0ee028ece8ae891867692ddb7af109dbabd5c3b2f3fed2bf4e03492",
+  "license": "CC-BY-NC-4.0",
+  "domain": "computer_science",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "computer_science",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

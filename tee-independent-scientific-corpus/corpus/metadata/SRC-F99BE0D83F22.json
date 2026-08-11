@@ -1,0 +1,43 @@
+{
+  "source_id": "SRC-F99BE0D83F22",
+  "title": "Neural circuit mapping of circuit_name",
+  "authors": [
+    "Anna Wang",
+    "David Garcia",
+    "Robert Johnson"
+  ],
+  "doi": "10.1038/sample.163001",
+  "publisher": "Nature Publishing Group",
+  "publication_date": "2015-10-07",
+  "source_uri": "https://doi.org/10.1038/sample.163001",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in neuroscience. Employing advanced characterization methods, we reveal... Our results indicate significant improvements in performance metrics. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1038/sample.163001",
+  "acquisition_timestamp": "2026-08-11T12:21:26.365136Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "60ee555dcb246e4399b6f6dd34681d9c22fc5ec1569811c2ff5acf16b2885021",
+  "license": "CC-BY-4.0",
+  "domain": "neuroscience",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "neuroscience",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

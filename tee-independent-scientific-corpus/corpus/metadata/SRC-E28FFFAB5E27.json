@@ -1,0 +1,45 @@
+{
+  "source_id": "SRC-E28FFFAB5E27",
+  "title": "Transport phenomena in dimensionality system",
+  "authors": [
+    "Richard Rodriguez",
+    "Richard Chen",
+    "David Smith",
+    "Ming Williams",
+    "Michael Garcia"
+  ],
+  "doi": "10.1002/sample.034000",
+  "publisher": "Elsevier",
+  "publication_date": "2010-12-31",
+  "source_uri": "https://doi.org/10.1002/sample.034000",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into physics phenomena. Through computational modeling and simulation, we show... We observe previously unreported behaviors under controlled conditions. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1002/sample.034000",
+  "acquisition_timestamp": "2026-08-11T12:21:23.727167Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "6c8ba842450be30641eb43cc5cf53b3a68968988c651a5c494a553b169e53d83",
+  "license": "closed",
+  "domain": "physics",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "physics",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

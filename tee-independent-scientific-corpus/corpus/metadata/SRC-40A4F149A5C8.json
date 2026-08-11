@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-40A4F149A5C8",
+  "title": "Genomic analysis reveals finding in species",
+  "authors": [
+    "Charles Miller",
+    "William Chen"
+  ],
+  "doi": "10.1109/sample.030000",
+  "publisher": "Nature Publishing Group",
+  "publication_date": "2012-02-24",
+  "source_uri": "https://doi.org/10.1109/sample.030000",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into biology phenomena. Through computational modeling and simulation, we show... We observe previously unreported behaviors under controlled conditions. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1109/sample.030000",
+  "acquisition_timestamp": "2026-08-11T12:21:24.425537Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "34c5b1218f52ad1196900f153391bbc1a51c4c53fe2c741fce21204903d7b3bc",
+  "license": "CC-BY-4.0",
+  "domain": "biology",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "biology",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

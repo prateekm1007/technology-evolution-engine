@@ -1,0 +1,45 @@
+{
+  "source_id": "SRC-19F8404C55D3",
+  "title": "Quantum computing algorithms for quantum_problem",
+  "authors": [
+    "David Miller",
+    "Elizabeth Mueller",
+    "Robert Mueller",
+    "Kenji Wang",
+    "Linda Wang"
+  ],
+  "doi": "10.1021/sample.115000",
+  "publisher": "ACM",
+  "publication_date": "2018-05-13",
+  "source_uri": "https://doi.org/10.1021/sample.115000",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of computer_science through experimental and theoretical approaches. By integrating multiple analytical approaches, we uncover... The findings suggest new directions for future research. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1021/sample.115000",
+  "acquisition_timestamp": "2026-08-11T12:21:24.783583Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "1e0946b15dbf647db30095034ca9ae9988b894088ace61b43a165a8b7d1c9878",
+  "license": "CC-BY-4.0",
+  "domain": "computer_science",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "computer_science",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

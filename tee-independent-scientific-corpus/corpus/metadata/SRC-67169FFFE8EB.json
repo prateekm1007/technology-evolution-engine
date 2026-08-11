@@ -1,0 +1,43 @@
+{
+  "source_id": "SRC-67169FFFE8EB",
+  "title": "Investigation of superconductivity using tomography",
+  "authors": [
+    "Michael Davis",
+    "William Kim",
+    "Ming Johnson"
+  ],
+  "doi": "10.1002/sample.112000",
+  "publisher": "RSC",
+  "publication_date": "2019-04-13",
+  "source_uri": "https://doi.org/10.1002/sample.112000",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into physics phenomena. Through computational modeling and simulation, we show... Our results indicate significant improvements in performance metrics. This research contributes to the broader understanding of the domain.",
+  "fulltext_uri": "https://example.org/fulltext/10.1002/sample.112000",
+  "acquisition_timestamp": "2026-08-11T12:21:23.785765Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "e9424b3546e026b27954112011b94ec590bae7b47b0b34ab907c1601321a055d",
+  "license": "Apache-2.0",
+  "domain": "physics",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "physics",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

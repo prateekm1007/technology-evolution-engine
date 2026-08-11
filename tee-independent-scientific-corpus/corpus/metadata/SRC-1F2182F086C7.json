@@ -1,0 +1,43 @@
+{
+  "source_id": "SRC-1F2182F086C7",
+  "title": "Corrosion resistance of graphene in environment",
+  "authors": [
+    "John Williams",
+    "Hiroshi Miller",
+    "Charles Park"
+  ],
+  "doi": "10.1109/sample.146000",
+  "publisher": "ACM",
+  "publication_date": "2013-11-10",
+  "source_uri": "https://doi.org/10.1109/sample.146000",
+  "repository_uri": null,
+  "abstract": "This paper presents a comprehensive study of materials_science focusing on key aspects. By integrating multiple analytical approaches, we uncover... We observe previously unreported behaviors under controlled conditions. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1109/sample.146000",
+  "acquisition_timestamp": "2026-08-11T12:21:24.271249Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "81d04647f74f1bb95b557de9283210766690fc75220c442fcce34e287246b1cf",
+  "license": "Apache-2.0",
+  "domain": "materials_science",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "materials_science",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

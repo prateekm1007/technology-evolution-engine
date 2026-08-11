@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-D86454779C2D",
+  "title": "Structure-activity relationships in compound_class",
+  "authors": [
+    "Ming Mueller",
+    "Mary Park"
+  ],
+  "doi": "10.1109/sample.141000",
+  "publisher": "RSC",
+  "publication_date": "2016-02-25",
+  "source_uri": "https://doi.org/10.1109/sample.141000",
+  "repository_uri": null,
+  "abstract": "We report novel findings in the field of chemistry with significant implications. Using state-of-the-art experimental techniques, we demonstrate... Comparative evaluation demonstrates superiority over existing approaches. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1109/sample.141000",
+  "acquisition_timestamp": "2026-08-11T12:21:24.025759Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "f65248b41e064e2d9d762a7aa6da5aff07e95d465b73ed0ab72d6c96a078f59f",
+  "license": "Apache-2.0",
+  "domain": "chemistry",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "chemistry",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

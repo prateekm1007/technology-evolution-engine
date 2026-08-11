@@ -1,0 +1,45 @@
+{
+  "source_id": "SRC-9C99C97FAACA",
+  "title": "Robot ethics in ethical_scenario",
+  "authors": [
+    "Maria Tanaka",
+    "Anna Miller",
+    "Anna Anderson",
+    "David Anderson",
+    "Joseph Brown"
+  ],
+  "doi": "10.1002/sample.246001",
+  "publisher": "Elsevier",
+  "publication_date": "2012-01-10",
+  "source_uri": "https://doi.org/10.1002/sample.246001",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of robotics through experimental and theoretical approaches. Employing advanced characterization methods, we reveal... We observe previously unreported behaviors under controlled conditions. The methodology presented here can be extended to related problems.",
+  "fulltext_uri": "https://example.org/fulltext/10.1002/sample.246001",
+  "acquisition_timestamp": "2026-08-11T12:21:26.988739Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "c1a24872d181f7b6bbc51c097106ae38b4a061ff8337078201f89fe72e4402a7",
+  "license": "CC-BY-NC-4.0",
+  "domain": "robotics",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "robotics",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

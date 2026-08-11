@@ -1,0 +1,43 @@
+{
+  "source_id": "SRC-ABB63E3B236C",
+  "title": "Reinforcement learning in rl_domain",
+  "authors": [
+    "Anna Jones",
+    "Ming Martinez",
+    "Kenji Lee"
+  ],
+  "doi": "10.1103/sample.214001",
+  "publisher": "ACM",
+  "publication_date": "2010-01-25",
+  "source_uri": "https://doi.org/10.1103/sample.214001",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in computer_science. Through computational modeling and simulation, we show... Our results indicate significant improvements in performance metrics. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1103/sample.214001",
+  "acquisition_timestamp": "2026-08-11T12:21:24.850433Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "62f2306b534c8af84c191e5e6e320a3145b39cd5b17510def5b3b7ad2748d558",
+  "license": "closed",
+  "domain": "computer_science",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "computer_science",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

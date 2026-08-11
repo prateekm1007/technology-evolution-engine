@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-DE02FB3939EE",
+  "title": "Autonomous navigation in indoor environments",
+  "authors": [
+    "James Lee",
+    "William Park"
+  ],
+  "doi": "10.1038/sample.217002",
+  "publisher": "ACM",
+  "publication_date": "2024-06-03",
+  "source_uri": "https://doi.org/10.1038/sample.217002",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in robotics. Using state-of-the-art experimental techniques, we demonstrate... Comparative evaluation demonstrates superiority over existing approaches. Our work opens new avenues for exploration in this field.",
+  "fulltext_uri": "https://example.org/fulltext/10.1038/sample.217002",
+  "acquisition_timestamp": "2026-08-11T12:21:26.967748Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "dff383525c3398080b96300a9c544748661a92c9dfbe67f7bc6e12ffeab3b82e",
+  "license": "MIT",
+  "domain": "robotics",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "robotics",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

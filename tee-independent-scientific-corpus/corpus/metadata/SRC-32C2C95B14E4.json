@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-32C2C95B14E4",
+  "title": "Advanced polymer coatings for extreme environments",
+  "authors": [
+    "Hiroshi Tanaka",
+    "Anna Suzuki",
+    "Richard Miller",
+    "Joseph Miller"
+  ],
+  "doi": "10.1002/sample.030000",
+  "publisher": "ACM",
+  "publication_date": "2014-10-15",
+  "source_uri": "https://doi.org/10.1002/sample.030000",
+  "repository_uri": null,
+  "abstract": "We report novel findings in the field of materials_science with significant implications. Using state-of-the-art experimental techniques, we demonstrate... Statistical analysis confirms the robustness of our conclusions. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1002/sample.030000",
+  "acquisition_timestamp": "2026-08-11T12:21:24.170427Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "4e361df535f24521f6459e42539c9e03af2e754ac20a10f86ec9ea36dce23979",
+  "license": "CC-BY-4.0",
+  "domain": "materials_science",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "materials_science",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

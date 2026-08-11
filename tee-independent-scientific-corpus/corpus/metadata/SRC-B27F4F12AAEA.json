@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-B27F4F12AAEA",
+  "title": "Separation processes for mixture_type mixtures",
+  "authors": [
+    "Kenji Lee",
+    "William Taylor",
+    "Robert Martinez",
+    "Patricia Suzuki"
+  ],
+  "doi": "10.1145/sample.088002",
+  "publisher": "APS",
+  "publication_date": "2018-06-28",
+  "source_uri": "https://doi.org/10.1145/sample.088002",
+  "repository_uri": null,
+  "abstract": "This paper presents a comprehensive study of chemical_engineering focusing on key aspects. Combining theoretical analysis with empirical validation, we establish... Our results indicate significant improvements in performance metrics. This research contributes to the broader understanding of the domain.",
+  "fulltext_uri": "https://example.org/fulltext/10.1145/sample.088002",
+  "acquisition_timestamp": "2026-08-11T12:21:25.450257Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "4d72a533b5ca7c34f90803bdd7d5d24e3dd4b96a8a43a96f2e5de8eb171538b0",
+  "license": "Apache-2.0",
+  "domain": "chemical_engineering",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "chemical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

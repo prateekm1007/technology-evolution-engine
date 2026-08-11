@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-EE788B9169DD",
+  "title": "Neurodegeneration in disease_model",
+  "authors": [
+    "Ming Taylor",
+    "David Jones",
+    "David Johnson",
+    "William Lee"
+  ],
+  "doi": "10.1103/sample.127000",
+  "publisher": "APS",
+  "publication_date": "2016-09-11",
+  "source_uri": "https://doi.org/10.1103/sample.127000",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in neuroscience. By integrating multiple analytical approaches, we uncover... Comparative evaluation demonstrates superiority over existing approaches. Our work opens new avenues for exploration in this field.",
+  "fulltext_uri": "https://example.org/fulltext/10.1103/sample.127000",
+  "acquisition_timestamp": "2026-08-11T12:21:26.331307Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "d24682f4ae15dff4d4e63b55d9147b945d86147aca71a283d15cd2fcefe0bd7d",
+  "license": "Apache-2.0",
+  "domain": "neuroscience",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "neuroscience",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

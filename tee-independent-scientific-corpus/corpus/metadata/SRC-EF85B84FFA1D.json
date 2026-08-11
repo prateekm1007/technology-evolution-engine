@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-EF85B84FFA1D",
+  "title": "Metabolic pathways in microorganism",
+  "authors": [
+    "James Martinez",
+    "Joseph Suzuki",
+    "Michael Jones",
+    "Jennifer Williams"
+  ],
+  "doi": "10.1109/sample.258001",
+  "publisher": "RSC",
+  "publication_date": "2021-09-21",
+  "source_uri": "https://doi.org/10.1109/sample.258001",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in biology. Employing advanced characterization methods, we reveal... Comparative evaluation demonstrates superiority over existing approaches. Our work opens new avenues for exploration in this field.",
+  "fulltext_uri": "https://example.org/fulltext/10.1109/sample.258001",
+  "acquisition_timestamp": "2026-08-11T12:21:24.652223Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "5bf56fe120d51a5681a455f6e1a44b1c40f4e0a183ae06895d1233b6cd269ae6",
+  "license": "Apache-2.0",
+  "domain": "biology",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "biology",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

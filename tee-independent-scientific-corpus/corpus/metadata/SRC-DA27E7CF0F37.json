@@ -1,0 +1,43 @@
+{
+  "source_id": "SRC-DA27E7CF0F37",
+  "title": "Biomimetic perovskite design inspired by biological_system",
+  "authors": [
+    "Richard Martinez",
+    "Wei Tanaka",
+    "Linda Rodriguez"
+  ],
+  "doi": "10.1109/sample.267000",
+  "publisher": "Nature Publishing Group",
+  "publication_date": "2010-09-04",
+  "source_uri": "https://doi.org/10.1109/sample.267000",
+  "repository_uri": null,
+  "abstract": "We report novel findings in the field of materials_science with significant implications. Employing advanced characterization methods, we reveal... Statistical analysis confirms the robustness of our conclusions. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1109/sample.267000",
+  "acquisition_timestamp": "2026-08-11T12:21:24.371039Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "f8990285ab52ca6dc41871399e96c7e785d5d7351bb39e8d88b1423610ed6a21",
+  "license": "CC-BY-NC-4.0",
+  "domain": "materials_science",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "materials_science",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

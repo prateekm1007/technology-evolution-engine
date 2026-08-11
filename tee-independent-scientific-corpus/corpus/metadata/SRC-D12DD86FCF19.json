@@ -1,0 +1,43 @@
+{
+  "source_id": "SRC-D12DD86FCF19",
+  "title": "Green chemistry approach to synthesis_target",
+  "authors": [
+    "Patricia Thomas",
+    "Robert Taylor",
+    "John Brown"
+  ],
+  "doi": "10.1038/sample.021000",
+  "publisher": "ACM",
+  "publication_date": "2012-11-10",
+  "source_uri": "https://doi.org/10.1038/sample.021000",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in chemistry. Using state-of-the-art experimental techniques, we demonstrate... Statistical analysis confirms the robustness of our conclusions. Our work opens new avenues for exploration in this field.",
+  "fulltext_uri": "https://example.org/fulltext/10.1038/sample.021000",
+  "acquisition_timestamp": "2026-08-11T12:21:23.931450Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "8aeaba4e0cf88153534f48ce855588986c8a38aaa5218740eada420985b0d8a0",
+  "license": "Apache-2.0",
+  "domain": "chemistry",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "chemistry",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

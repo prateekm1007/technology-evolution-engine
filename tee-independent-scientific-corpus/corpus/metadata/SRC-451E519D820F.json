@@ -1,0 +1,43 @@
+{
+  "source_id": "SRC-451E519D820F",
+  "title": "Consciousness studies using methodology",
+  "authors": [
+    "Yong Suzuki",
+    "Robert Park",
+    "Linda Chen"
+  ],
+  "doi": "10.1021/sample.078002",
+  "publisher": "APS",
+  "publication_date": "2011-04-01",
+  "source_uri": "https://doi.org/10.1021/sample.078002",
+  "repository_uri": null,
+  "abstract": "We report novel findings in the field of neuroscience with significant implications. By integrating multiple analytical approaches, we uncover... Statistical analysis confirms the robustness of our conclusions. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1021/sample.078002",
+  "acquisition_timestamp": "2026-08-11T12:21:26.292396Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "36df9cc30375ea6c82139d0bc01e071b80fc8e68fad35bc42e66f5d58819aefe",
+  "license": "CC-BY-4.0",
+  "domain": "neuroscience",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "neuroscience",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

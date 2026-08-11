@@ -1,0 +1,45 @@
+{
+  "source_id": "SRC-AB1BBD050A5C",
+  "title": "Wireless sensor networks for monitoring_task",
+  "authors": [
+    "Ming Garcia",
+    "Maria Brown",
+    "James Brown",
+    "William Smith",
+    "David Anderson"
+  ],
+  "doi": "10.1109/sample.264001",
+  "publisher": "Springer",
+  "publication_date": "2013-04-15",
+  "source_uri": "https://doi.org/10.1109/sample.264001",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into electrical_engineering phenomena. Using state-of-the-art experimental techniques, we demonstrate... The findings suggest new directions for future research. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1109/sample.264001",
+  "acquisition_timestamp": "2026-08-11T12:21:25.348720Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "0b56943fac01ecfd8fac55ab56d1eabad74703e53ee9b60967fa54f591a30230",
+  "license": "Apache-2.0",
+  "domain": "electrical_engineering",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "electrical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

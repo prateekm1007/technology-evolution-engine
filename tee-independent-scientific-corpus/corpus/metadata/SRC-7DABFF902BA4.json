@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-7DABFF902BA4",
+  "title": "Tribological properties of material_pair",
+  "authors": [
+    "Richard Kim",
+    "Thomas Taylor"
+  ],
+  "doi": "10.1109/sample.121001",
+  "publisher": "APS",
+  "publication_date": "2021-01-21",
+  "source_uri": "https://doi.org/10.1109/sample.121001",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of mechanical_engineering through experimental and theoretical approaches. Using state-of-the-art experimental techniques, we demonstrate... We observe previously unreported behaviors under controlled conditions. The methodology presented here can be extended to related problems.",
+  "fulltext_uri": "https://example.org/fulltext/10.1109/sample.121001",
+  "acquisition_timestamp": "2026-08-11T12:21:25.003816Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "7198dc9bc803837f42041e8cb466aed7f2ce1c7d1231ce0af762ea33cf3dd62b",
+  "license": "CC-BY-4.0",
+  "domain": "mechanical_engineering",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "mechanical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

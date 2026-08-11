@@ -1,0 +1,45 @@
+{
+  "source_id": "SRC-AA8A501FF860",
+  "title": "Genomic analysis reveals finding in species",
+  "authors": [
+    "David Kim",
+    "Elizabeth Miller",
+    "Ming Anderson",
+    "Patricia Suzuki",
+    "Charles Schmidt"
+  ],
+  "doi": "10.1371/sample.239000",
+  "publisher": "Elsevier",
+  "publication_date": "2013-11-25",
+  "source_uri": "https://doi.org/10.1371/sample.239000",
+  "repository_uri": null,
+  "abstract": "We report novel findings in the field of biology with significant implications. Through computational modeling and simulation, we show... Our results indicate significant improvements in performance metrics. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1371/sample.239000",
+  "acquisition_timestamp": "2026-08-11T12:21:24.645655Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "9f2b8d209385c3f8ba84f371b2b43c2a0a4dce5be0ea9938c44155c8839d9709",
+  "license": "CC-BY-4.0",
+  "domain": "biology",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "biology",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

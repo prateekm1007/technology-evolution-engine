@@ -1,0 +1,46 @@
+{
+  "source_id": "SRC-567737F706DA",
+  "title": "Multi-robot coordination in coordination_scenario",
+  "authors": [
+    "Akira Johnson",
+    "Richard Brown",
+    "John Yamamoto",
+    "Mary Anderson",
+    "Akira Chen",
+    "Robert Schmidt"
+  ],
+  "doi": "10.1371/sample.210002",
+  "publisher": "Nature Publishing Group",
+  "publication_date": "2023-12-13",
+  "source_uri": "https://doi.org/10.1371/sample.210002",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in robotics. By integrating multiple analytical approaches, we uncover... Comparative evaluation demonstrates superiority over existing approaches. Our work opens new avenues for exploration in this field.",
+  "fulltext_uri": "https://example.org/fulltext/10.1371/sample.210002",
+  "acquisition_timestamp": "2026-08-11T12:21:26.965281Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "0bde215e6a56dfecd342c229304a7506de60a33ee4502d51d4e99c1992ecd9ae",
+  "license": "Apache-2.0",
+  "domain": "robotics",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "robotics",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

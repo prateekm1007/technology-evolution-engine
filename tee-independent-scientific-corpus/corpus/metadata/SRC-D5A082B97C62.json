@@ -1,0 +1,45 @@
+{
+  "source_id": "SRC-D5A082B97C62",
+  "title": "Sustainable chemical manufacturing of product",
+  "authors": [
+    "Jennifer Wang",
+    "David Martinez",
+    "Ming Smith",
+    "David Yamamoto",
+    "Wei Martinez"
+  ],
+  "doi": "10.1371/sample.250000",
+  "publisher": "Springer",
+  "publication_date": "2018-03-01",
+  "source_uri": "https://doi.org/10.1371/sample.250000",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into chemical_engineering phenomena. Combining theoretical analysis with empirical validation, we establish... Statistical analysis confirms the robustness of our conclusions. The methodology presented here can be extended to related problems.",
+  "fulltext_uri": "https://example.org/fulltext/10.1371/sample.250000",
+  "acquisition_timestamp": "2026-08-11T12:21:25.624595Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "73dfa4959a7a4e6d65f5f04c02545200a17cf33598e6190c1d6d476917df32de",
+  "license": "CC-BY-NC-4.0",
+  "domain": "chemical_engineering",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "chemical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

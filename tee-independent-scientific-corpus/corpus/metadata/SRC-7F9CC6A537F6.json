@@ -1,0 +1,43 @@
+{
+  "source_id": "SRC-7F9CC6A537F6",
+  "title": "Soil contamination by contaminant",
+  "authors": [
+    "Maria Thomas",
+    "Linda Martinez",
+    "Thomas Taylor"
+  ],
+  "doi": "10.1371/sample.233000",
+  "publisher": "APS",
+  "publication_date": "2018-04-19",
+  "source_uri": "https://doi.org/10.1371/sample.233000",
+  "repository_uri": null,
+  "abstract": "This paper presents a comprehensive study of environmental_science focusing on key aspects. Using state-of-the-art experimental techniques, we demonstrate... Our results indicate significant improvements in performance metrics. The methodology presented here can be extended to related problems.",
+  "fulltext_uri": "https://example.org/fulltext/10.1371/sample.233000",
+  "acquisition_timestamp": "2026-08-11T12:21:26.168994Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "a61affc7573d8b79740c92086f3b8bcf093a0854f11bb792934c3b17e06e58e6",
+  "license": "closed",
+  "domain": "environmental_science",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "environmental_science",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

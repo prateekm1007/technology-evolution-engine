@@ -1,0 +1,45 @@
+{
+  "source_id": "SRC-3BC6FC2113A3",
+  "title": "Electromagnetic compatibility in device_type",
+  "authors": [
+    "Linda Taylor",
+    "Patricia Brown",
+    "Patricia Williams",
+    "Anna Thomas",
+    "Kenji Martinez"
+  ],
+  "doi": "10.1002/sample.116002",
+  "publisher": "ACM",
+  "publication_date": "2017-10-08",
+  "source_uri": "https://doi.org/10.1002/sample.116002",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of electrical_engineering through experimental and theoretical approaches. Using state-of-the-art experimental techniques, we demonstrate... The findings suggest new directions for future research. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1002/sample.116002",
+  "acquisition_timestamp": "2026-08-11T12:21:25.227271Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "d164ae4e3b0a6856746ddfcc65396d472f84289aac2bb0218bcd2e28294c91d0",
+  "license": "closed",
+  "domain": "electrical_engineering",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "electrical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

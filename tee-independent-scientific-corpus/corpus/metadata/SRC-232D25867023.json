@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-232D25867023",
+  "title": "Energy storage in storage_material materials",
+  "authors": [
+    "David Taylor",
+    "David Lee"
+  ],
+  "doi": "10.1002/sample.243001",
+  "publisher": "Elsevier",
+  "publication_date": "2018-08-24",
+  "source_uri": "https://doi.org/10.1002/sample.243001",
+  "repository_uri": null,
+  "abstract": "This paper presents a comprehensive study of energy_sciences focusing on key aspects. By integrating multiple analytical approaches, we uncover... The findings suggest new directions for future research. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1002/sample.243001",
+  "acquisition_timestamp": "2026-08-11T12:21:25.888230Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "efa32e43fd2fc418eb95642d31f59df5b7437614f89b53a854f968206a320462",
+  "license": "CC-BY-4.0",
+  "domain": "energy_sciences",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "energy_sciences",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

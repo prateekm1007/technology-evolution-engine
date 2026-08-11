@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-07030AB66A8D",
+  "title": "Self-assembly of molecule_type into structure",
+  "authors": [
+    "Anna Lee",
+    "Robert Miller",
+    "Ming Chen",
+    "William Smith"
+  ],
+  "doi": "10.1103/sample.088000",
+  "publisher": "RSC",
+  "publication_date": "2024-01-19",
+  "source_uri": "https://doi.org/10.1103/sample.088000",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of chemistry through experimental and theoretical approaches. Using state-of-the-art experimental techniques, we demonstrate... Statistical analysis confirms the robustness of our conclusions. Our work opens new avenues for exploration in this field.",
+  "fulltext_uri": "https://example.org/fulltext/10.1103/sample.088000",
+  "acquisition_timestamp": "2026-08-11T12:21:23.987342Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "0dc35f1c2bdd864d0eb00fe8000f473a71f40ecd81713a166fc5a97d67e86c27",
+  "license": "MIT",
+  "domain": "chemistry",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "chemistry",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

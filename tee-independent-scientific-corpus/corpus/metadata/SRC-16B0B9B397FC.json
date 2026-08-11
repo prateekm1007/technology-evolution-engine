@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-16B0B9B397FC",
+  "title": "Autonomous navigation in indoor environments",
+  "authors": [
+    "Yong Martinez",
+    "Maria Davis"
+  ],
+  "doi": "10.1016/sample.267002",
+  "publisher": "APS",
+  "publication_date": "2013-08-01",
+  "source_uri": "https://doi.org/10.1016/sample.267002",
+  "repository_uri": null,
+  "abstract": "We report novel findings in the field of robotics with significant implications. Through computational modeling and simulation, we show... Our results indicate significant improvements in performance metrics. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1016/sample.267002",
+  "acquisition_timestamp": "2026-08-11T12:21:27.006869Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "ac1955b6f5bf16b19df91356b851f2c02d09b93546628bfb7fac5ebf6dfd53d4",
+  "license": "closed",
+  "domain": "robotics",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "robotics",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "source_id": "SRC-88B55CB72E00",
+  "title": "Heat integration in chemical plants",
+  "authors": [
+    "William Brown",
+    "Linda Jones",
+    "Patricia Schmidt",
+    "Wei Jones",
+    "James Davis"
+  ],
+  "doi": "10.1145/sample.004000",
+  "publisher": "RSC",
+  "publication_date": "2020-01-13",
+  "source_uri": "https://doi.org/10.1145/sample.004000",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of chemical_engineering through experimental and theoretical approaches. Through computational modeling and simulation, we show... The findings suggest new directions for future research. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1145/sample.004000",
+  "acquisition_timestamp": "2026-08-11T12:21:25.385526Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "4c57c5c6b2258a3ab122690a821640c8b578b39a7314a15c2be86689c3106c8b",
+  "license": "Apache-2.0",
+  "domain": "chemical_engineering",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "chemical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "source_id": "SRC-68748D412505",
+  "title": "Population dynamics of Arabidopsis under condition",
+  "authors": [
+    "Thomas Williams",
+    "John Chen",
+    "David Williams",
+    "Robert Taylor",
+    "Joseph Thomas",
+    "John Rodriguez"
+  ],
+  "doi": "10.1371/sample.194000",
+  "publisher": "Elsevier",
+  "publication_date": "2016-08-14",
+  "source_uri": "https://doi.org/10.1371/sample.194000",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into biology phenomena. Combining theoretical analysis with empirical validation, we establish... Our results indicate significant improvements in performance metrics. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1371/sample.194000",
+  "acquisition_timestamp": "2026-08-11T12:21:24.589468Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "460e4749f8c40f6f49a06132ee46cc8e1f7e54cc6fadcf61ac5dab84e8dfdadf",
+  "license": "Apache-2.0",
+  "domain": "biology",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "biology",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

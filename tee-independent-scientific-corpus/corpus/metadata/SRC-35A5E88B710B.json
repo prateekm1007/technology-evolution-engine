@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-35A5E88B710B",
+  "title": "Solar cell efficiency enhancement using pv_material",
+  "authors": [
+    "Michael Davis",
+    "James Miller",
+    "Ming Anderson",
+    "Michael Thomas"
+  ],
+  "doi": "10.1002/sample.120000",
+  "publisher": "Nature Publishing Group",
+  "publication_date": "2016-12-30",
+  "source_uri": "https://doi.org/10.1002/sample.120000",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of energy_sciences through experimental and theoretical approaches. Using state-of-the-art experimental techniques, we demonstrate... We observe previously unreported behaviors under controlled conditions. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1002/sample.120000",
+  "acquisition_timestamp": "2026-08-11T12:21:25.770501Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "26ff7a2906ae81727854d0ab82f78c7ff68c9798aee0ed95ec4c5bbd4a42c871",
+  "license": "MIT",
+  "domain": "energy_sciences",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "energy_sciences",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

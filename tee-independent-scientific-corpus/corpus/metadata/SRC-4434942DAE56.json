@@ -1,0 +1,46 @@
+{
+  "source_id": "SRC-4434942DAE56",
+  "title": "Signal processing algorithms for signal_type",
+  "authors": [
+    "James Park",
+    "Charles Brown",
+    "Jose Johnson",
+    "Richard Garcia",
+    "Akira Suzuki",
+    "Thomas Miller"
+  ],
+  "doi": "10.1103/sample.186001",
+  "publisher": "Nature Publishing Group",
+  "publication_date": "2023-09-12",
+  "source_uri": "https://doi.org/10.1103/sample.186001",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into electrical_engineering phenomena. Combining theoretical analysis with empirical validation, we establish... Statistical analysis confirms the robustness of our conclusions. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1103/sample.186001",
+  "acquisition_timestamp": "2026-08-11T12:21:25.288509Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "8b4112ffb95fd3fbfa5cec02596d2bcc4f7031333fcbeb23a9185ee82e777274",
+  "license": "MIT",
+  "domain": "electrical_engineering",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "electrical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

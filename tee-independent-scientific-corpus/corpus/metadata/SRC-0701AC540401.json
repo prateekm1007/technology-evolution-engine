@@ -1,0 +1,46 @@
+{
+  "source_id": "SRC-0701AC540401",
+  "title": "Swarm robotics for swarm_task",
+  "authors": [
+    "Charles Tanaka",
+    "Maria Thomas",
+    "Akira Williams",
+    "Ming Lee",
+    "Kenji Schmidt",
+    "Thomas Garcia"
+  ],
+  "doi": "10.1145/sample.163003",
+  "publisher": "Elsevier",
+  "publication_date": "2014-10-25",
+  "source_uri": "https://doi.org/10.1145/sample.163003",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in robotics. Employing advanced characterization methods, we reveal... Comparative evaluation demonstrates superiority over existing approaches. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1145/sample.163003",
+  "acquisition_timestamp": "2026-08-11T12:21:26.910859Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "b3de8bb9834c17993f3430070ef3d42c8d151e18e0ea31b0feb1b7ee7c5ca992",
+  "license": "CC-BY-4.0",
+  "domain": "robotics",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "robotics",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

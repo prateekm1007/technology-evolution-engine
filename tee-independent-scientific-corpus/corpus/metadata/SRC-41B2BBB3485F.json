@@ -1,0 +1,45 @@
+{
+  "source_id": "SRC-41B2BBB3485F",
+  "title": "New bounds for integrals",
+  "authors": [
+    "Linda Schmidt",
+    "David Brown",
+    "James Rodriguez",
+    "James Smith",
+    "John Brown"
+  ],
+  "doi": "10.1038/sample.221000",
+  "publisher": "Springer",
+  "publication_date": "2017-11-08",
+  "source_uri": "https://doi.org/10.1038/sample.221000",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of mathematics through experimental and theoretical approaches. Employing advanced characterization methods, we reveal... Our results indicate significant improvements in performance metrics. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1038/sample.221000",
+  "acquisition_timestamp": "2026-08-11T12:21:26.702668Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "81959e4719f8053bb2d76afd23f1de73a818cd12327ff741b6358a45abec8a91",
+  "license": "Apache-2.0",
+  "domain": "mathematics",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "mathematics",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-72289E0F0629",
+  "title": "Deforestation patterns in forest_type",
+  "authors": [
+    "Ming Johnson",
+    "Patricia Tanaka",
+    "Ming Williams",
+    "Yong Smith"
+  ],
+  "doi": "10.1016/sample.122002",
+  "publisher": "ACM",
+  "publication_date": "2022-12-13",
+  "source_uri": "https://doi.org/10.1016/sample.122002",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of environmental_science through experimental and theoretical approaches. Through computational modeling and simulation, we show... We observe previously unreported behaviors under controlled conditions. The methodology presented here can be extended to related problems.",
+  "fulltext_uri": "https://example.org/fulltext/10.1016/sample.122002",
+  "acquisition_timestamp": "2026-08-11T12:21:26.050562Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "4a00a56b8851813ef44a0614c319ab2411921e5b76ebc766496dc61a8a5a941b",
+  "license": "CC-BY-4.0",
+  "domain": "environmental_science",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "environmental_science",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

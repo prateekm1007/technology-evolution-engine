@@ -1,0 +1,46 @@
+{
+  "source_id": "SRC-7F9DB49832E7",
+  "title": "Polymer processing for polymer_type",
+  "authors": [
+    "Elizabeth Schmidt",
+    "Ming Anderson",
+    "Yong Lee",
+    "Elizabeth Thomas",
+    "Mary Brown",
+    "William Rodriguez"
+  ],
+  "doi": "10.1002/sample.246000",
+  "publisher": "Springer",
+  "publication_date": "2024-03-04",
+  "source_uri": "https://doi.org/10.1002/sample.246000",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in chemical_engineering. Combining theoretical analysis with empirical validation, we establish... We observe previously unreported behaviors under controlled conditions. The methodology presented here can be extended to related problems.",
+  "fulltext_uri": "https://example.org/fulltext/10.1002/sample.246000",
+  "acquisition_timestamp": "2026-08-11T12:21:25.610288Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "8ea8c83d252a933aaf835b41d05280097ff01c82b8e3570e94343a4b2d639ec9",
+  "license": "closed",
+  "domain": "chemical_engineering",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "chemical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

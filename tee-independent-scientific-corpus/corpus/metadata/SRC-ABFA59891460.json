@@ -1,0 +1,43 @@
+{
+  "source_id": "SRC-ABFA59891460",
+  "title": "Grid integration of renewable_source",
+  "authors": [
+    "John Davis",
+    "Jose Anderson",
+    "Hiroshi Park"
+  ],
+  "doi": "10.1021/sample.038002",
+  "publisher": "Springer",
+  "publication_date": "2014-05-23",
+  "source_uri": "https://doi.org/10.1021/sample.038002",
+  "repository_uri": null,
+  "abstract": "We report novel findings in the field of energy_sciences with significant implications. Through computational modeling and simulation, we show... We observe previously unreported behaviors under controlled conditions. This research contributes to the broader understanding of the domain.",
+  "fulltext_uri": "https://example.org/fulltext/10.1021/sample.038002",
+  "acquisition_timestamp": "2026-08-11T12:21:25.689359Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "bd7ab4cf24a66c1b8a0684fa0376cb81d1e53f21572cdc28700376f9a9c31209",
+  "license": "MIT",
+  "domain": "energy_sciences",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "energy_sciences",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

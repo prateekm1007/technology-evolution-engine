@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-EC74AFA563F3",
+  "title": "Ecosystem services valuation for service_type",
+  "authors": [
+    "Yong Tanaka",
+    "Charles Jones"
+  ],
+  "doi": "10.1038/sample.189001",
+  "publisher": "Elsevier",
+  "publication_date": "2012-03-17",
+  "source_uri": "https://doi.org/10.1038/sample.189001",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in environmental_science. Through computational modeling and simulation, we show... Our results indicate significant improvements in performance metrics. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1038/sample.189001",
+  "acquisition_timestamp": "2026-08-11T12:21:26.111674Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "6c10f10fbbf7a10d0af247bbaa0e47e36687e2fd9ecb1e6227024f2cfc35d474",
+  "license": "MIT",
+  "domain": "environmental_science",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "environmental_science",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

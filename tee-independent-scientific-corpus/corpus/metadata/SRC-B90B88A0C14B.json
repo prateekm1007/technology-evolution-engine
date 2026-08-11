@@ -1,0 +1,43 @@
+{
+  "source_id": "SRC-B90B88A0C14B",
+  "title": "Human-robot interaction for interaction_scenario",
+  "authors": [
+    "Robert Garcia",
+    "Ming Brown",
+    "Charles Brown"
+  ],
+  "doi": "10.1016/sample.013002",
+  "publisher": "RSC",
+  "publication_date": "2016-09-30",
+  "source_uri": "https://doi.org/10.1016/sample.013002",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in robotics. Using state-of-the-art experimental techniques, we demonstrate... Statistical analysis confirms the robustness of our conclusions. This research contributes to the broader understanding of the domain.",
+  "fulltext_uri": "https://example.org/fulltext/10.1016/sample.013002",
+  "acquisition_timestamp": "2026-08-11T12:21:26.769646Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "91af04ce3288fc87e9d7f75e40e6f2c8ec98c608b1208f290c569a658e85dfcb",
+  "license": "closed",
+  "domain": "robotics",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "robotics",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

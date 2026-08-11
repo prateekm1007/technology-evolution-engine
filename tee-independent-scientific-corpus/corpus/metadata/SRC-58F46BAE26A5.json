@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-58F46BAE26A5",
+  "title": "Climate change impacts on coral reef",
+  "authors": [
+    "Robert Lee",
+    "Mary Mueller"
+  ],
+  "doi": "10.1371/sample.103001",
+  "publisher": "Nature Publishing Group",
+  "publication_date": "2021-04-19",
+  "source_uri": "https://doi.org/10.1371/sample.103001",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into environmental_science phenomena. Combining theoretical analysis with empirical validation, we establish... We observe previously unreported behaviors under controlled conditions. The methodology presented here can be extended to related problems.",
+  "fulltext_uri": "https://example.org/fulltext/10.1371/sample.103001",
+  "acquisition_timestamp": "2026-08-11T12:21:26.029169Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "2057c563a8da3f6f549d403837a37654d11d4cd214b15e73086dd32302bd331a",
+  "license": "MIT",
+  "domain": "environmental_science",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "environmental_science",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

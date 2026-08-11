@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-F6EDB2F25B6A",
+  "title": "Kinetic analysis of reaction mechanisms",
+  "authors": [
+    "Charles Wang",
+    "Robert Taylor",
+    "Jennifer Thomas",
+    "Charles Rodriguez"
+  ],
+  "doi": "10.1371/sample.073000",
+  "publisher": "APS",
+  "publication_date": "2016-09-27",
+  "source_uri": "https://doi.org/10.1371/sample.073000",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into chemistry phenomena. By integrating multiple analytical approaches, we uncover... Comparative evaluation demonstrates superiority over existing approaches. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1371/sample.073000",
+  "acquisition_timestamp": "2026-08-11T12:21:23.970612Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "a6d590566bbb29dc7018d190f0f3e182466cf6233540c07b61f59895b604d92d",
+  "license": "closed",
+  "domain": "chemistry",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "chemistry",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

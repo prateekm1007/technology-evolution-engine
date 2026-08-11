@@ -1,0 +1,46 @@
+{
+  "source_id": "SRC-80FE0AE4B1AD",
+  "title": "Pollution monitoring using monitoring_technique",
+  "authors": [
+    "Thomas Park",
+    "Jennifer Suzuki",
+    "Mary Schmidt",
+    "Jose Garcia",
+    "Kenji Brown",
+    "Ming Suzuki"
+  ],
+  "doi": "10.1021/sample.158001",
+  "publisher": "ACM",
+  "publication_date": "2023-09-01",
+  "source_uri": "https://doi.org/10.1021/sample.158001",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of environmental_science through experimental and theoretical approaches. Employing advanced characterization methods, we reveal... Comparative evaluation demonstrates superiority over existing approaches. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1021/sample.158001",
+  "acquisition_timestamp": "2026-08-11T12:21:26.087656Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "0d5009a598f38584a0865f94e725034cfd673ede00d927e6acdd1e488c58f018",
+  "license": "CC-BY-NC-4.0",
+  "domain": "environmental_science",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "environmental_science",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

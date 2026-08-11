@@ -1,0 +1,43 @@
+{
+  "source_id": "SRC-1A3739147246",
+  "title": "Biofuel production from biomass_type",
+  "authors": [
+    "Michael Wang",
+    "Joseph Schmidt",
+    "Yong Williams"
+  ],
+  "doi": "10.1021/sample.010000",
+  "publisher": "RSC",
+  "publication_date": "2010-09-14",
+  "source_uri": "https://doi.org/10.1021/sample.010000",
+  "repository_uri": null,
+  "abstract": "This paper presents a comprehensive study of energy_sciences focusing on key aspects. Through computational modeling and simulation, we show... Statistical analysis confirms the robustness of our conclusions. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1021/sample.010000",
+  "acquisition_timestamp": "2026-08-11T12:21:25.667234Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "e509ff828141b3e80d892907f23da5e75f8ab12a0e018df22f66ba4db311ea5d",
+  "license": "MIT",
+  "domain": "energy_sciences",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "energy_sciences",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-22EEFADD987A",
+  "title": "Polymer processing for polymer_type",
+  "authors": [
+    "Kenji Taylor",
+    "John Williams",
+    "Akira Lee",
+    "Charles Yamamoto"
+  ],
+  "doi": "10.1371/sample.299001",
+  "publisher": "Nature Publishing Group",
+  "publication_date": "2022-08-17",
+  "source_uri": "https://doi.org/10.1371/sample.299001",
+  "repository_uri": null,
+  "abstract": "This paper presents a comprehensive study of chemical_engineering focusing on key aspects. Employing advanced characterization methods, we reveal... Statistical analysis confirms the robustness of our conclusions. The methodology presented here can be extended to related problems.",
+  "fulltext_uri": "https://example.org/fulltext/10.1371/sample.299001",
+  "acquisition_timestamp": "2026-08-11T12:21:25.651630Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "6e0ebe65638f792b98aa2bad78db847602c435fc0832ee631053100a6267658a",
+  "license": "MIT",
+  "domain": "chemical_engineering",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "chemical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

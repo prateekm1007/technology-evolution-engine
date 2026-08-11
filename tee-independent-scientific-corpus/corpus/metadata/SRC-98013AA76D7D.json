@@ -1,0 +1,46 @@
+{
+  "source_id": "SRC-98013AA76D7D",
+  "title": "Neurodegeneration in disease_model",
+  "authors": [
+    "Mary Yamamoto",
+    "Jose Rodriguez",
+    "Kenji Rodriguez",
+    "Robert Davis",
+    "Robert Yamamoto",
+    "Wei Martinez"
+  ],
+  "doi": "10.1038/sample.103001",
+  "publisher": "Elsevier",
+  "publication_date": "2016-03-29",
+  "source_uri": "https://doi.org/10.1038/sample.103001",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into neuroscience phenomena. Combining theoretical analysis with empirical validation, we establish... Statistical analysis confirms the robustness of our conclusions. Our work opens new avenues for exploration in this field.",
+  "fulltext_uri": "https://example.org/fulltext/10.1038/sample.103001",
+  "acquisition_timestamp": "2026-08-11T12:21:26.312290Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "dd4a2e4442394e7cf278132f4e6b7b6add220c155a2996e1bbdf617d2b4bc653",
+  "license": "closed",
+  "domain": "neuroscience",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "neuroscience",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

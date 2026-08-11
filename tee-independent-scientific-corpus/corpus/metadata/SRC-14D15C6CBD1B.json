@@ -1,0 +1,43 @@
+{
+  "source_id": "SRC-14D15C6CBD1B",
+  "title": "Thermal conductivity of ceramic ceramics",
+  "authors": [
+    "Maria Williams",
+    "John Thomas",
+    "Wei Suzuki"
+  ],
+  "doi": "10.1109/sample.188000",
+  "publisher": "IEEE",
+  "publication_date": "2021-05-19",
+  "source_uri": "https://doi.org/10.1109/sample.188000",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in materials_science. Employing advanced characterization methods, we reveal... Our results indicate significant improvements in performance metrics. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1109/sample.188000",
+  "acquisition_timestamp": "2026-08-11T12:21:24.307535Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "7d703330ed9ec4daf663bc8d0522bc0b1932ab914f43f39aec64d0de3aa2d19b",
+  "license": "CC-BY-NC-4.0",
+  "domain": "materials_science",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "materials_science",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

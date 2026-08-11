@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-EDD478F316F2",
+  "title": "Natural language processing for nlp_task",
+  "authors": [
+    "Joseph Miller",
+    "Thomas Wang",
+    "James Taylor",
+    "Joseph Smith"
+  ],
+  "doi": "10.1016/sample.069000",
+  "publisher": "RSC",
+  "publication_date": "2015-03-25",
+  "source_uri": "https://doi.org/10.1016/sample.069000",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into computer_science phenomena. Combining theoretical analysis with empirical validation, we establish... We observe previously unreported behaviors under controlled conditions. The methodology presented here can be extended to related problems.",
+  "fulltext_uri": "https://example.org/fulltext/10.1016/sample.069000",
+  "acquisition_timestamp": "2026-08-11T12:21:24.747487Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "6dcdee9704a6e449db055cfb267300eff92dbd7178a66b07a6279e662f932e91",
+  "license": "closed",
+  "domain": "computer_science",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "computer_science",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

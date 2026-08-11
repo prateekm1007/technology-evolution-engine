@@ -1,0 +1,46 @@
+{
+  "source_id": "SRC-334288BC693B",
+  "title": "Power electronics for power_application",
+  "authors": [
+    "Jose Tanaka",
+    "Thomas Miller",
+    "Robert Kim",
+    "Robert Garcia",
+    "Thomas Rodriguez",
+    "Robert Schmidt"
+  ],
+  "doi": "10.1038/sample.162000",
+  "publisher": "Nature Publishing Group",
+  "publication_date": "2012-12-20",
+  "source_uri": "https://doi.org/10.1038/sample.162000",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of electrical_engineering through experimental and theoretical approaches. Combining theoretical analysis with empirical validation, we establish... Our results indicate significant improvements in performance metrics. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1038/sample.162000",
+  "acquisition_timestamp": "2026-08-11T12:21:25.268264Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "f0b71f3e0cd01c65e5cc2000770ba9e0f963125fe23cfc8537a6acb19ebf115b",
+  "license": "closed",
+  "domain": "electrical_engineering",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "electrical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

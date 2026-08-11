@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-68F7C4C34D42",
+  "title": "Developmental biology of structure formation",
+  "authors": [
+    "Wei Lee",
+    "Richard Mueller"
+  ],
+  "doi": "10.1016/sample.095001",
+  "publisher": "RSC",
+  "publication_date": "2017-11-24",
+  "source_uri": "https://doi.org/10.1016/sample.095001",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into biology phenomena. Employing advanced characterization methods, we reveal... We observe previously unreported behaviors under controlled conditions. This research contributes to the broader understanding of the domain.",
+  "fulltext_uri": "https://example.org/fulltext/10.1016/sample.095001",
+  "acquisition_timestamp": "2026-08-11T12:21:24.470650Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "bfb07c2e435ac7930e330ba5c3a55d4e32708148240fee4a60ae4810530d4c9b",
+  "license": "closed",
+  "domain": "biology",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "biology",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

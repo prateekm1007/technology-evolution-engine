@@ -1,0 +1,43 @@
+{
+  "source_id": "SRC-E59C39CA1A0C",
+  "title": "Fluid dynamics simulation of flow_scenario",
+  "authors": [
+    "Jose Suzuki",
+    "Yong Park",
+    "Michael Chen"
+  ],
+  "doi": "10.1002/sample.196002",
+  "publisher": "Springer",
+  "publication_date": "2012-07-11",
+  "source_uri": "https://doi.org/10.1002/sample.196002",
+  "repository_uri": null,
+  "abstract": "This paper presents a comprehensive study of mechanical_engineering focusing on key aspects. Through computational modeling and simulation, we show... We observe previously unreported behaviors under controlled conditions. This research contributes to the broader understanding of the domain.",
+  "fulltext_uri": "https://example.org/fulltext/10.1002/sample.196002",
+  "acquisition_timestamp": "2026-08-11T12:21:25.050713Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "ee11420cf63b08c3b5d4c9399b08543fa8fc1f19ff299ce8be6259c9511541eb",
+  "license": "MIT",
+  "domain": "mechanical_engineering",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "mechanical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

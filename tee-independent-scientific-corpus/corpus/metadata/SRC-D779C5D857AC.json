@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-D779C5D857AC",
+  "title": "Pollution monitoring using monitoring_technique",
+  "authors": [
+    "Akira Kim",
+    "Charles Mueller",
+    "Robert Jones",
+    "Robert Williams"
+  ],
+  "doi": "10.1016/sample.148000",
+  "publisher": "Nature Publishing Group",
+  "publication_date": "2017-07-13",
+  "source_uri": "https://doi.org/10.1016/sample.148000",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of environmental_science through experimental and theoretical approaches. Through computational modeling and simulation, we show... We observe previously unreported behaviors under controlled conditions. Our work opens new avenues for exploration in this field.",
+  "fulltext_uri": "https://example.org/fulltext/10.1016/sample.148000",
+  "acquisition_timestamp": "2026-08-11T12:21:26.071259Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "256dc895013f867862863b51152279ccade2671c862af8fc52fda8ed2af86ac4",
+  "license": "Apache-2.0",
+  "domain": "environmental_science",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "environmental_science",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

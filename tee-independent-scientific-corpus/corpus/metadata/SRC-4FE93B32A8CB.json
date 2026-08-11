@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-4FE93B32A8CB",
+  "title": "Computer vision techniques for vision_task",
+  "authors": [
+    "Akira Brown",
+    "Wei Lee",
+    "Richard Tanaka",
+    "Elizabeth Johnson"
+  ],
+  "doi": "10.1038/sample.294001",
+  "publisher": "Springer",
+  "publication_date": "2012-03-06",
+  "source_uri": "https://doi.org/10.1038/sample.294001",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into computer_science phenomena. Combining theoretical analysis with empirical validation, we establish... Comparative evaluation demonstrates superiority over existing approaches. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1038/sample.294001",
+  "acquisition_timestamp": "2026-08-11T12:21:24.909549Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "ea1156e308c384247e9cfc05c25a214afb159beeb0a848dcb285a8eb41feea92",
+  "license": "closed",
+  "domain": "computer_science",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "computer_science",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

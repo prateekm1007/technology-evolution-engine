@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-145C498EEBC0",
+  "title": "Solar cell efficiency enhancement using pv_material",
+  "authors": [
+    "Robert Anderson",
+    "Yong Rodriguez",
+    "Yong Johnson",
+    "Elizabeth Brown"
+  ],
+  "doi": "10.1145/sample.225001",
+  "publisher": "Springer",
+  "publication_date": "2021-10-19",
+  "source_uri": "https://doi.org/10.1145/sample.225001",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of energy_sciences through experimental and theoretical approaches. Combining theoretical analysis with empirical validation, we establish... We observe previously unreported behaviors under controlled conditions. Our work opens new avenues for exploration in this field.",
+  "fulltext_uri": "https://example.org/fulltext/10.1145/sample.225001",
+  "acquisition_timestamp": "2026-08-11T12:21:25.869676Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "ec1c1aef662ddb4ed445862c3cbf6a2b0430d649bb1fc8d84be81a363632006a",
+  "license": "Apache-2.0",
+  "domain": "energy_sciences",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "energy_sciences",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

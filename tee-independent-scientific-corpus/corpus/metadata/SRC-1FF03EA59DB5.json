@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-1FF03EA59DB5",
+  "title": "Wind turbine optimization for wind_condition",
+  "authors": [
+    "Jennifer Brown",
+    "Patricia Chen",
+    "Yong Johnson",
+    "Ming Wang"
+  ],
+  "doi": "10.1103/sample.143001",
+  "publisher": "IEEE",
+  "publication_date": "2023-01-08",
+  "source_uri": "https://doi.org/10.1103/sample.143001",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of energy_sciences through experimental and theoretical approaches. Employing advanced characterization methods, we reveal... We observe previously unreported behaviors under controlled conditions. The methodology presented here can be extended to related problems.",
+  "fulltext_uri": "https://example.org/fulltext/10.1103/sample.143001",
+  "acquisition_timestamp": "2026-08-11T12:21:25.790454Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "fd67d518ff00d37faf46d835f51158e5303afa98accc9a66e575b1a492b80660",
+  "license": "closed",
+  "domain": "energy_sciences",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "energy_sciences",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

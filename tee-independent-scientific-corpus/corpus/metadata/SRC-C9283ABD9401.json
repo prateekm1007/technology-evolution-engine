@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-C9283ABD9401",
+  "title": "Probability distributions for random_variable",
+  "authors": [
+    "Thomas Garcia",
+    "John Williams",
+    "Linda Garcia",
+    "Richard Lee"
+  ],
+  "doi": "10.1371/sample.024001",
+  "publisher": "Nature Publishing Group",
+  "publication_date": "2017-09-12",
+  "source_uri": "https://doi.org/10.1371/sample.024001",
+  "repository_uri": null,
+  "abstract": "This paper presents a comprehensive study of mathematics focusing on key aspects. By integrating multiple analytical approaches, we uncover... We observe previously unreported behaviors under controlled conditions. The methodology presented here can be extended to related problems.",
+  "fulltext_uri": "https://example.org/fulltext/10.1371/sample.024001",
+  "acquisition_timestamp": "2026-08-11T12:21:26.490875Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "fda3e43d0ade2fc3efea671854c2f89ec281533e7a09f4b191da4cab6f072517",
+  "license": "Apache-2.0",
+  "domain": "mathematics",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "mathematics",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

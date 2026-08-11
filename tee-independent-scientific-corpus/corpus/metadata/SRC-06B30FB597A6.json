@@ -1,0 +1,46 @@
+{
+  "source_id": "SRC-06B30FB597A6",
+  "title": "Probability distributions for random_variable",
+  "authors": [
+    "Richard Williams",
+    "Akira Martinez",
+    "Yong Garcia",
+    "Wei Davis",
+    "John Yamamoto",
+    "Charles Garcia"
+  ],
+  "doi": "10.1016/sample.099000",
+  "publisher": "IEEE",
+  "publication_date": "2012-06-25",
+  "source_uri": "https://doi.org/10.1016/sample.099000",
+  "repository_uri": null,
+  "abstract": "This paper presents a comprehensive study of mathematics focusing on key aspects. Combining theoretical analysis with empirical validation, we establish... Our results indicate significant improvements in performance metrics. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1016/sample.099000",
+  "acquisition_timestamp": "2026-08-11T12:21:26.563483Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "ba274c0c0e2a18a9041883390aa5c9d45070ac69b04d1bbd651d6b144c10b21c",
+  "license": "closed",
+  "domain": "mathematics",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "mathematics",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

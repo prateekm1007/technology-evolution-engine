@@ -1,0 +1,43 @@
+{
+  "source_id": "SRC-B9EDB621D93B",
+  "title": "Low-power circuit design for application",
+  "authors": [
+    "Jose Johnson",
+    "James Lee",
+    "Robert Smith"
+  ],
+  "doi": "10.1109/sample.070001",
+  "publisher": "RSC",
+  "publication_date": "2015-12-29",
+  "source_uri": "https://doi.org/10.1109/sample.070001",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of electrical_engineering through experimental and theoretical approaches. Using state-of-the-art experimental techniques, we demonstrate... The findings suggest new directions for future research. Our work opens new avenues for exploration in this field.",
+  "fulltext_uri": "https://example.org/fulltext/10.1109/sample.070001",
+  "acquisition_timestamp": "2026-08-11T12:21:25.190065Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "755fdb02728ea036c26ae0b9c854b65d32dc6de259fa9e61402118de0892f3dc",
+  "license": "CC-BY-4.0",
+  "domain": "electrical_engineering",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "electrical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

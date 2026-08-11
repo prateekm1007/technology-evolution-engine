@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-16E65E8C1282",
+  "title": "Water treatment using treatment_method",
+  "authors": [
+    "John Williams",
+    "Patricia Rodriguez"
+  ],
+  "doi": "10.1371/sample.119000",
+  "publisher": "RSC",
+  "publication_date": "2011-11-07",
+  "source_uri": "https://doi.org/10.1371/sample.119000",
+  "repository_uri": null,
+  "abstract": "We report novel findings in the field of environmental_science with significant implications. By integrating multiple analytical approaches, we uncover... We observe previously unreported behaviors under controlled conditions. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1371/sample.119000",
+  "acquisition_timestamp": "2026-08-11T12:21:26.049494Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "b84702c793b0474a5eb0a8c0f87ed5293ac0751f60edfe1b13dcf9982d760642",
+  "license": "CC-BY-NC-4.0",
+  "domain": "environmental_science",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "environmental_science",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

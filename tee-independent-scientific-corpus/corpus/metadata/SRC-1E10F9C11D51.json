@@ -1,0 +1,45 @@
+{
+  "source_id": "SRC-1E10F9C11D51",
+  "title": "Optimization methods for ml_problem",
+  "authors": [
+    "Anna Anderson",
+    "Robert Miller",
+    "Akira Tanaka",
+    "John Chen",
+    "Michael Yamamoto"
+  ],
+  "doi": "10.1002/sample.157000",
+  "publisher": "Springer",
+  "publication_date": "2019-06-04",
+  "source_uri": "https://doi.org/10.1002/sample.157000",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in computer_science. Through computational modeling and simulation, we show... Statistical analysis confirms the robustness of our conclusions. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1002/sample.157000",
+  "acquisition_timestamp": "2026-08-11T12:21:24.808064Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "89892e94c9e1245381cc8f0f067deca6e5d29c35971319edee9c3a411a103e15",
+  "license": "Apache-2.0",
+  "domain": "computer_science",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "computer_science",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

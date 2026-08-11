@@ -1,0 +1,43 @@
+{
+  "source_id": "SRC-229863435D48",
+  "title": "Kinetic analysis of reaction mechanisms",
+  "authors": [
+    "Patricia Schmidt",
+    "Jose Miller",
+    "William Smith"
+  ],
+  "doi": "10.1145/sample.269000",
+  "publisher": "RSC",
+  "publication_date": "2021-06-10",
+  "source_uri": "https://doi.org/10.1145/sample.269000",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in chemistry. Through computational modeling and simulation, we show... The findings suggest new directions for future research. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1145/sample.269000",
+  "acquisition_timestamp": "2026-08-11T12:21:24.128197Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "070c9c92f9779d59ee962902dbd8928a59e84ff201c201e1127e125553b11a24",
+  "license": "Apache-2.0",
+  "domain": "chemistry",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "chemistry",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

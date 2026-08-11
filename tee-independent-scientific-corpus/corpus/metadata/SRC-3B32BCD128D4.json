@@ -1,0 +1,43 @@
+{
+  "source_id": "SRC-3B32BCD128D4",
+  "title": "Ocean acidification effects on marine_organism",
+  "authors": [
+    "Elizabeth Brown",
+    "Jennifer Johnson",
+    "William Park"
+  ],
+  "doi": "10.1016/sample.264001",
+  "publisher": "IEEE",
+  "publication_date": "2018-08-30",
+  "source_uri": "https://doi.org/10.1016/sample.264001",
+  "repository_uri": null,
+  "abstract": "This paper presents a comprehensive study of environmental_science focusing on key aspects. By integrating multiple analytical approaches, we uncover... The findings suggest new directions for future research. The methodology presented here can be extended to related problems.",
+  "fulltext_uri": "https://example.org/fulltext/10.1016/sample.264001",
+  "acquisition_timestamp": "2026-08-11T12:21:26.192469Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "e4844b3b37fa2b31983d69edfc409f4d315485149d82e5e3a9ae71c62da20379",
+  "license": "Apache-2.0",
+  "domain": "environmental_science",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "environmental_science",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-7B4560B319A2",
+  "title": "Brain connectivity analysis using imaging_technique",
+  "authors": [
+    "Maria Johnson",
+    "Jennifer Park"
+  ],
+  "doi": "10.1016/sample.006000",
+  "publisher": "Elsevier",
+  "publication_date": "2015-04-27",
+  "source_uri": "https://doi.org/10.1016/sample.006000",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into neuroscience phenomena. Combining theoretical analysis with empirical validation, we establish... Statistical analysis confirms the robustness of our conclusions. This research contributes to the broader understanding of the domain.",
+  "fulltext_uri": "https://example.org/fulltext/10.1016/sample.006000",
+  "acquisition_timestamp": "2026-08-11T12:21:26.229904Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "13b4b2aa51b35f2fc24fe184fec7b6f26018347ecbfca3696729d27164689031",
+  "license": "closed",
+  "domain": "neuroscience",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "neuroscience",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

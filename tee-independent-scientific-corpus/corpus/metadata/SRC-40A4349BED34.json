@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-40A4349BED34",
+  "title": "Fuel cell performance with fuel_cell_type configuration",
+  "authors": [
+    "Maria Williams",
+    "Anna Jones"
+  ],
+  "doi": "10.1371/sample.235000",
+  "publisher": "RSC",
+  "publication_date": "2023-08-10",
+  "source_uri": "https://doi.org/10.1371/sample.235000",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of energy_sciences through experimental and theoretical approaches. Combining theoretical analysis with empirical validation, we establish... We observe previously unreported behaviors under controlled conditions. Our work opens new avenues for exploration in this field.",
+  "fulltext_uri": "https://example.org/fulltext/10.1371/sample.235000",
+  "acquisition_timestamp": "2026-08-11T12:21:25.885512Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "0831dcc3067b0e9cafb29bd3527798c80f99fc0952772dea014944795ae2f617",
+  "license": "Apache-2.0",
+  "domain": "energy_sciences",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "energy_sciences",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

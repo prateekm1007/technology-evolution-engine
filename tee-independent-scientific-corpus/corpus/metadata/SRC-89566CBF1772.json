@@ -1,0 +1,43 @@
+{
+  "source_id": "SRC-89566CBF1772",
+  "title": "Machine learning acceleration on hardware_platform",
+  "authors": [
+    "Charles Lee",
+    "Robert Anderson",
+    "James Johnson"
+  ],
+  "doi": "10.1038/sample.183000",
+  "publisher": "ACM",
+  "publication_date": "2022-02-11",
+  "source_uri": "https://doi.org/10.1038/sample.183000",
+  "repository_uri": null,
+  "abstract": "We report novel findings in the field of electrical_engineering with significant implications. Combining theoretical analysis with empirical validation, we establish... Our results indicate significant improvements in performance metrics. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1038/sample.183000",
+  "acquisition_timestamp": "2026-08-11T12:21:25.287396Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "22b4867bad1afc47c4a95dd98ecb6651cf8b32002c58f1b15f0372bacaffbd0a",
+  "license": "MIT",
+  "domain": "electrical_engineering",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "electrical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-A89109117BE9",
+  "title": "Water treatment using treatment_method",
+  "authors": [
+    "James Schmidt",
+    "Yong Suzuki"
+  ],
+  "doi": "10.1371/sample.286002",
+  "publisher": "Nature Publishing Group",
+  "publication_date": "2017-03-21",
+  "source_uri": "https://doi.org/10.1371/sample.286002",
+  "repository_uri": null,
+  "abstract": "We report novel findings in the field of environmental_science with significant implications. Through computational modeling and simulation, we show... Our results indicate significant improvements in performance metrics. This research contributes to the broader understanding of the domain.",
+  "fulltext_uri": "https://example.org/fulltext/10.1371/sample.286002",
+  "acquisition_timestamp": "2026-08-11T12:21:26.210866Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "9fb7dffc8d5466fbbd86dc660f070a0e90506056c9b56af02b683db781fde1c0",
+  "license": "CC-BY-4.0",
+  "domain": "environmental_science",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "environmental_science",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

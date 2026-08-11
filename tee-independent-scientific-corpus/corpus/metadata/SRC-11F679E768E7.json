@@ -1,0 +1,46 @@
+{
+  "source_id": "SRC-11F679E768E7",
+  "title": "Neural correlates of perception",
+  "authors": [
+    "Jennifer Park",
+    "Thomas Rodriguez",
+    "Richard Schmidt",
+    "Mary Taylor",
+    "James Suzuki",
+    "Akira Martinez"
+  ],
+  "doi": "10.1109/sample.165000",
+  "publisher": "RSC",
+  "publication_date": "2014-02-15",
+  "source_uri": "https://doi.org/10.1109/sample.165000",
+  "repository_uri": null,
+  "abstract": "We report novel findings in the field of neuroscience with significant implications. Using state-of-the-art experimental techniques, we demonstrate... The findings suggest new directions for future research. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1109/sample.165000",
+  "acquisition_timestamp": "2026-08-11T12:21:26.365848Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "7edfa4b8b9dbe5a2fcd22006cbea246c7d0fccc4bf2d72f60cfb3cf7aae49a64",
+  "license": "closed",
+  "domain": "neuroscience",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "neuroscience",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

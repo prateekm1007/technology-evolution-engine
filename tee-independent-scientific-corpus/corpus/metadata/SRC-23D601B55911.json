@@ -1,0 +1,43 @@
+{
+  "source_id": "SRC-23D601B55911",
+  "title": "Biomimetic perovskite design inspired by biological_system",
+  "authors": [
+    "Linda Brown",
+    "Michael Taylor",
+    "Maria Miller"
+  ],
+  "doi": "10.1021/sample.147001",
+  "publisher": "ACM",
+  "publication_date": "2014-09-22",
+  "source_uri": "https://doi.org/10.1021/sample.147001",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in materials_science. By integrating multiple analytical approaches, we uncover... The findings suggest new directions for future research. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1021/sample.147001",
+  "acquisition_timestamp": "2026-08-11T12:21:24.271556Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "fd101bbb42cef7e84b2d87245dd443b068acc5fcea3b2f9f5740b51e1bef3610",
+  "license": "CC-BY-4.0",
+  "domain": "materials_science",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "materials_science",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "source_id": "SRC-503C2F64C39C",
+  "title": "Electromagnetic compatibility in device_type",
+  "authors": [
+    "Joseph Tanaka",
+    "Patricia Anderson",
+    "Ming Miller",
+    "Charles Wang",
+    "Kenji Davis"
+  ],
+  "doi": "10.1371/sample.053001",
+  "publisher": "IEEE",
+  "publication_date": "2013-09-22",
+  "source_uri": "https://doi.org/10.1371/sample.053001",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into electrical_engineering phenomena. Employing advanced characterization methods, we reveal... We observe previously unreported behaviors under controlled conditions. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1371/sample.053001",
+  "acquisition_timestamp": "2026-08-11T12:21:25.183899Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "88bf4edf9d77d17add07227f558d4f189fa0caa2542febeb77d08e1f7b5f0c4d",
+  "license": "Apache-2.0",
+  "domain": "electrical_engineering",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "electrical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

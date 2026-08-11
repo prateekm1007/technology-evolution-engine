@@ -1,0 +1,46 @@
+{
+  "source_id": "SRC-36C00633A3D9",
+  "title": "Learning-based control of robot_type",
+  "authors": [
+    "Wei Martinez",
+    "Charles Kim",
+    "James Tanaka",
+    "Jennifer Smith",
+    "Hiroshi Davis",
+    "Mary Jones"
+  ],
+  "doi": "10.1021/sample.212001",
+  "publisher": "ACM",
+  "publication_date": "2016-07-04",
+  "source_uri": "https://doi.org/10.1021/sample.212001",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of robotics through experimental and theoretical approaches. Through computational modeling and simulation, we show... Statistical analysis confirms the robustness of our conclusions. This research contributes to the broader understanding of the domain.",
+  "fulltext_uri": "https://example.org/fulltext/10.1021/sample.212001",
+  "acquisition_timestamp": "2026-08-11T12:21:26.965977Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "c4bb2ef95590d0f8d1cf1a1f98a614d543ffdfdfa76efcfdd55d4a962a9ac298",
+  "license": "MIT",
+  "domain": "robotics",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "robotics",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

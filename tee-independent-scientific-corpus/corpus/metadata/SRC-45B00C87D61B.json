@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-45B00C87D61B",
+  "title": "Spectroscopic characterization of complex",
+  "authors": [
+    "Maria Taylor",
+    "Anna Anderson",
+    "Charles Martinez",
+    "Thomas Mueller"
+  ],
+  "doi": "10.1038/sample.276000",
+  "publisher": "Elsevier",
+  "publication_date": "2012-02-28",
+  "source_uri": "https://doi.org/10.1038/sample.276000",
+  "repository_uri": null,
+  "abstract": "We report novel findings in the field of chemistry with significant implications. By integrating multiple analytical approaches, we uncover... Comparative evaluation demonstrates superiority over existing approaches. The methodology presented here can be extended to related problems.",
+  "fulltext_uri": "https://example.org/fulltext/10.1038/sample.276000",
+  "acquisition_timestamp": "2026-08-11T12:21:24.130441Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "33ebaaae68c90f843e9de38b36edba6bcbb5a96664906e4bf37b9619dcdb31cb",
+  "license": "Apache-2.0",
+  "domain": "chemistry",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "chemistry",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

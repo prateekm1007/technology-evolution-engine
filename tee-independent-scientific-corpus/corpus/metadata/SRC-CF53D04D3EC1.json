@@ -1,0 +1,43 @@
+{
+  "source_id": "SRC-CF53D04D3EC1",
+  "title": "Biodiversity assessment in habitat",
+  "authors": [
+    "Michael Martinez",
+    "Anna Miller",
+    "Jose Chen"
+  ],
+  "doi": "10.1038/sample.166001",
+  "publisher": "ACM",
+  "publication_date": "2021-11-12",
+  "source_uri": "https://doi.org/10.1038/sample.166001",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in environmental_science. Combining theoretical analysis with empirical validation, we establish... We observe previously unreported behaviors under controlled conditions. The methodology presented here can be extended to related problems.",
+  "fulltext_uri": "https://example.org/fulltext/10.1038/sample.166001",
+  "acquisition_timestamp": "2026-08-11T12:21:26.090663Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "536a5150735e1bbb0eeec47cec0c8f08132a7a236e9122080b007055782619c3",
+  "license": "closed",
+  "domain": "environmental_science",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "environmental_science",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

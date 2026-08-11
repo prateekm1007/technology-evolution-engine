@@ -1,0 +1,46 @@
+{
+  "source_id": "SRC-B9FDCD6C7C38",
+  "title": "Modeling and simulation of process_system",
+  "authors": [
+    "Jose Jones",
+    "Joseph Brown",
+    "Jose Smith",
+    "James Wang",
+    "John Martinez",
+    "Ming Chen"
+  ],
+  "doi": "10.1103/sample.065001",
+  "publisher": "APS",
+  "publication_date": "2013-03-31",
+  "source_uri": "https://doi.org/10.1103/sample.065001",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into chemical_engineering phenomena. Employing advanced characterization methods, we reveal... Statistical analysis confirms the robustness of our conclusions. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1103/sample.065001",
+  "acquisition_timestamp": "2026-08-11T12:21:25.431808Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "4cb44e54b9bd5d331272dd38fb2ac8c9adc525e27b228361becb1ea9cea0f519",
+  "license": "closed",
+  "domain": "chemical_engineering",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "chemical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

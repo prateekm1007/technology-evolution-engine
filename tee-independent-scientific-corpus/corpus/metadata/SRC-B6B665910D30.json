@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-B6B665910D30",
+  "title": "Regulation of gene_expression by factor",
+  "authors": [
+    "Robert Garcia",
+    "Richard Park"
+  ],
+  "doi": "10.1103/sample.075001",
+  "publisher": "IEEE",
+  "publication_date": "2024-01-18",
+  "source_uri": "https://doi.org/10.1103/sample.075001",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in biology. Through computational modeling and simulation, we show... Comparative evaluation demonstrates superiority over existing approaches. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1103/sample.075001",
+  "acquisition_timestamp": "2026-08-11T12:21:24.463639Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "4266b045d0df528cd15583c4c50f93afbe60709f225ec3915ca3afdc8685f0b4",
+  "license": "CC-BY-NC-4.0",
+  "domain": "biology",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "biology",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

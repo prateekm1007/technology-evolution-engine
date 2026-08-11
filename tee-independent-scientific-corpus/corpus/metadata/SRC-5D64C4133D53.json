@@ -1,0 +1,46 @@
+{
+  "source_id": "SRC-5D64C4133D53",
+  "title": "Wind turbine optimization for wind_condition",
+  "authors": [
+    "Kenji Mueller",
+    "Yong Garcia",
+    "Ming Chen",
+    "William Garcia",
+    "Linda Brown",
+    "Kenji Mueller"
+  ],
+  "doi": "10.1145/sample.273000",
+  "publisher": "Nature Publishing Group",
+  "publication_date": "2013-03-17",
+  "source_uri": "https://doi.org/10.1145/sample.273000",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in energy_sciences. Combining theoretical analysis with empirical validation, we establish... We observe previously unreported behaviors under controlled conditions. The methodology presented here can be extended to related problems.",
+  "fulltext_uri": "https://example.org/fulltext/10.1145/sample.273000",
+  "acquisition_timestamp": "2026-08-11T12:21:25.908329Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "04a892796a6c42abf780149fbae8c3ecac31d2ed8d0b75da310d902480051e74",
+  "license": "closed",
+  "domain": "energy_sciences",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "energy_sciences",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "source_id": "SRC-AC8DAB3B599E",
+  "title": "Low-power circuit design for application",
+  "authors": [
+    "Jennifer Johnson",
+    "Yong Taylor",
+    "Wei Davis"
+  ],
+  "doi": "10.1021/sample.259002",
+  "publisher": "Elsevier",
+  "publication_date": "2018-10-17",
+  "source_uri": "https://doi.org/10.1021/sample.259002",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of electrical_engineering through experimental and theoretical approaches. Using state-of-the-art experimental techniques, we demonstrate... The findings suggest new directions for future research. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1021/sample.259002",
+  "acquisition_timestamp": "2026-08-11T12:21:25.346992Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "eddf3b3d8ef9da747956545b8a038a4cfd32ed6b6430292b7d2b398806558a13",
+  "license": "MIT",
+  "domain": "electrical_engineering",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "electrical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-F319159FBE39",
+  "title": "Carbon capture using capture_material",
+  "authors": [
+    "William Taylor",
+    "Jose Lee"
+  ],
+  "doi": "10.1002/sample.002001",
+  "publisher": "Elsevier",
+  "publication_date": "2020-02-21",
+  "source_uri": "https://doi.org/10.1002/sample.002001",
+  "repository_uri": null,
+  "abstract": "This paper presents a comprehensive study of energy_sciences focusing on key aspects. Employing advanced characterization methods, we reveal... We observe previously unreported behaviors under controlled conditions. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1002/sample.002001",
+  "acquisition_timestamp": "2026-08-11T12:21:25.664034Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "dfb51aa450853fe87bcf60c0ce40880137827b5ddcb778e452829a1811afae92",
+  "license": "CC-BY-NC-4.0",
+  "domain": "energy_sciences",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "energy_sciences",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

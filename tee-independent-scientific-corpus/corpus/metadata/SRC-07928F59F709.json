@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-07928F59F709",
+  "title": "Biofuel production from biomass_type",
+  "authors": [
+    "Robert Yamamoto",
+    "Yong Thomas"
+  ],
+  "doi": "10.1038/sample.187001",
+  "publisher": "Elsevier",
+  "publication_date": "2016-05-23",
+  "source_uri": "https://doi.org/10.1038/sample.187001",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into energy_sciences phenomena. Employing advanced characterization methods, we reveal... Comparative evaluation demonstrates superiority over existing approaches. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1038/sample.187001",
+  "acquisition_timestamp": "2026-08-11T12:21:25.829955Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "4381de048334dfa2e8ca9463c7415bf728fefc3026592a32a5918bc1e3b8d274",
+  "license": "CC-BY-4.0",
+  "domain": "energy_sciences",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "energy_sciences",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

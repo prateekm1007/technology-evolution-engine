@@ -1,0 +1,43 @@
+{
+  "source_id": "SRC-DED2D52703A9",
+  "title": "Population dynamics of mouse under condition",
+  "authors": [
+    "Thomas Brown",
+    "William Williams",
+    "Jennifer Yamamoto"
+  ],
+  "doi": "10.1002/sample.019000",
+  "publisher": "APS",
+  "publication_date": "2012-05-25",
+  "source_uri": "https://doi.org/10.1002/sample.019000",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of biology through experimental and theoretical approaches. Combining theoretical analysis with empirical validation, we establish... Comparative evaluation demonstrates superiority over existing approaches. This research contributes to the broader understanding of the domain.",
+  "fulltext_uri": "https://example.org/fulltext/10.1002/sample.019000",
+  "acquisition_timestamp": "2026-08-11T12:21:24.412094Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "f52ebc9dfb8ce32c0c808a3f965000d80a96f2b2297718d3985403fe12376e2d",
+  "license": "CC-BY-4.0",
+  "domain": "biology",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "biology",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

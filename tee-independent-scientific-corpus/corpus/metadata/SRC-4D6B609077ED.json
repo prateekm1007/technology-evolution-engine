@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-4D6B609077ED",
+  "title": "Robotic manipulation of object_type",
+  "authors": [
+    "Joseph Johnson",
+    "Mary Smith"
+  ],
+  "doi": "10.1002/sample.069001",
+  "publisher": "APS",
+  "publication_date": "2018-02-17",
+  "source_uri": "https://doi.org/10.1002/sample.069001",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in mechanical_engineering. Through computational modeling and simulation, we show... Statistical analysis confirms the robustness of our conclusions. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1002/sample.069001",
+  "acquisition_timestamp": "2026-08-11T12:21:24.964790Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "08af608ceb753e78adda6261ba81040aaceefff7b5f84cc27466002cb5a847ed",
+  "license": "CC-BY-NC-4.0",
+  "domain": "mechanical_engineering",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "mechanical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "source_id": "SRC-C80A9BF3EB1A",
+  "title": "Memory encoding in memory_type memory",
+  "authors": [
+    "Michael Anderson",
+    "Jennifer Suzuki",
+    "Akira Tanaka",
+    "Linda Park",
+    "Richard Chen",
+    "Thomas Mueller"
+  ],
+  "doi": "10.1109/sample.120000",
+  "publisher": "ACM",
+  "publication_date": "2010-01-06",
+  "source_uri": "https://doi.org/10.1109/sample.120000",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of neuroscience through experimental and theoretical approaches. Using state-of-the-art experimental techniques, we demonstrate... Comparative evaluation demonstrates superiority over existing approaches. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1109/sample.120000",
+  "acquisition_timestamp": "2026-08-11T12:21:26.328750Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "32db01cc7d24367fd8511f4348a52d0cab741e51c2379ff44b49218b03171ec7",
+  "license": "CC-BY-NC-4.0",
+  "domain": "neuroscience",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "neuroscience",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

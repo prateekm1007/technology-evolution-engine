@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-33CFF80FCF73",
+  "title": "Consciousness studies using methodology",
+  "authors": [
+    "Maria Martinez",
+    "Joseph Yamamoto"
+  ],
+  "doi": "10.1038/sample.085001",
+  "publisher": "IEEE",
+  "publication_date": "2015-10-18",
+  "source_uri": "https://doi.org/10.1038/sample.085001",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into neuroscience phenomena. Employing advanced characterization methods, we reveal... Comparative evaluation demonstrates superiority over existing approaches. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1038/sample.085001",
+  "acquisition_timestamp": "2026-08-11T12:21:26.305733Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "db217feb24a4c2a149045f64464573a676f58123ce1dbdc2b6ff0bcb5b950869",
+  "license": "CC-BY-4.0",
+  "domain": "neuroscience",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "neuroscience",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

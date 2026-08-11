@@ -1,0 +1,45 @@
+{
+  "source_id": "SRC-1D6A37160BAB",
+  "title": "Green chemistry approach to synthesis_target",
+  "authors": [
+    "William Schmidt",
+    "Hiroshi Williams",
+    "Patricia Tanaka",
+    "Linda Jones",
+    "Jennifer Rodriguez"
+  ],
+  "doi": "10.1038/sample.106000",
+  "publisher": "Nature Publishing Group",
+  "publication_date": "2022-07-13",
+  "source_uri": "https://doi.org/10.1038/sample.106000",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in chemistry. Through computational modeling and simulation, we show... We observe previously unreported behaviors under controlled conditions. The methodology presented here can be extended to related problems.",
+  "fulltext_uri": "https://example.org/fulltext/10.1038/sample.106000",
+  "acquisition_timestamp": "2026-08-11T12:21:24.002685Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "f67eb1b21fa25365e09d33089d77f24869492f03cf1389e02b62b7e7eb94695b",
+  "license": "Apache-2.0",
+  "domain": "chemistry",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "chemistry",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

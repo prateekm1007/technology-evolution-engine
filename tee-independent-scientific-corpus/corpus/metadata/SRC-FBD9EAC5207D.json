@@ -1,0 +1,46 @@
+{
+  "source_id": "SRC-FBD9EAC5207D",
+  "title": "Mechanistic study of elimination reactions",
+  "authors": [
+    "Michael Kim",
+    "Thomas Kim",
+    "Yong Davis",
+    "Kenji Tanaka",
+    "James Chen",
+    "Linda Miller"
+  ],
+  "doi": "10.1016/sample.043001",
+  "publisher": "ACM",
+  "publication_date": "2010-12-20",
+  "source_uri": "https://doi.org/10.1016/sample.043001",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into chemistry phenomena. Using state-of-the-art experimental techniques, we demonstrate... Comparative evaluation demonstrates superiority over existing approaches. Our work opens new avenues for exploration in this field.",
+  "fulltext_uri": "https://example.org/fulltext/10.1016/sample.043001",
+  "acquisition_timestamp": "2026-08-11T12:21:23.949535Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "3b5ee6ea5049a4518e1ea0f1471bb168ccf135ea17fd230331af46561359b962",
+  "license": "CC-BY-4.0",
+  "domain": "chemistry",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "chemistry",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

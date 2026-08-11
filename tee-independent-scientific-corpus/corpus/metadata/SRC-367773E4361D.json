@@ -1,0 +1,45 @@
+{
+  "source_id": "SRC-367773E4361D",
+  "title": "Modeling and simulation of process_system",
+  "authors": [
+    "Richard Rodriguez",
+    "Charles Schmidt",
+    "William Yamamoto",
+    "Kenji Suzuki",
+    "William Suzuki"
+  ],
+  "doi": "10.1038/sample.121000",
+  "publisher": "RSC",
+  "publication_date": "2011-03-27",
+  "source_uri": "https://doi.org/10.1038/sample.121000",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into chemical_engineering phenomena. By integrating multiple analytical approaches, we uncover... Comparative evaluation demonstrates superiority over existing approaches. This research contributes to the broader understanding of the domain.",
+  "fulltext_uri": "https://example.org/fulltext/10.1038/sample.121000",
+  "acquisition_timestamp": "2026-08-11T12:21:25.470974Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "9f856b8a86b41896ae695c6a5a6e1530f031544189f3ff0657dbb5adbf3b1b2b",
+  "license": "CC-BY-NC-4.0",
+  "domain": "chemical_engineering",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "chemical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

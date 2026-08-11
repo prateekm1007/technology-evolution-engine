@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-D995576CA6D9",
+  "title": "Fuel cell performance with fuel_cell_type configuration",
+  "authors": [
+    "Patricia Jones",
+    "Joseph Kim",
+    "Wei Kim",
+    "Maria Chen"
+  ],
+  "doi": "10.1109/sample.012000",
+  "publisher": "ACM",
+  "publication_date": "2010-10-08",
+  "source_uri": "https://doi.org/10.1109/sample.012000",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of energy_sciences through experimental and theoretical approaches. Through computational modeling and simulation, we show... Our results indicate significant improvements in performance metrics. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1109/sample.012000",
+  "acquisition_timestamp": "2026-08-11T12:21:25.667848Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "ebd04fd657f25fa6f4bae5236f86c28ec536acb42964078fe29ffefeaaa43fc1",
+  "license": "CC-BY-4.0",
+  "domain": "energy_sciences",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "energy_sciences",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

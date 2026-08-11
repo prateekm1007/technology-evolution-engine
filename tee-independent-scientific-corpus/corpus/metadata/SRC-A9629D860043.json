@@ -1,0 +1,46 @@
+{
+  "source_id": "SRC-A9629D860043",
+  "title": "Neurodegeneration in disease_model",
+  "authors": [
+    "Jose Mueller",
+    "Thomas Mueller",
+    "Anna Garcia",
+    "Charles Miller",
+    "Thomas Smith",
+    "Thomas Yamamoto"
+  ],
+  "doi": "10.1371/sample.190001",
+  "publisher": "Elsevier",
+  "publication_date": "2018-04-05",
+  "source_uri": "https://doi.org/10.1371/sample.190001",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of neuroscience through experimental and theoretical approaches. Employing advanced characterization methods, we reveal... Comparative evaluation demonstrates superiority over existing approaches. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1371/sample.190001",
+  "acquisition_timestamp": "2026-08-11T12:21:26.385484Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "f7d4c2e137ac6d7568a1ee7bc41a1b76d59e9ec8f4e5625414df68be0041b638",
+  "license": "CC-BY-NC-4.0",
+  "domain": "neuroscience",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "neuroscience",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

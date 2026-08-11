@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-A82188487BD9",
+  "title": "Nanostructured polymer with enhanced efficiency",
+  "authors": [
+    "Jennifer Brown",
+    "James Davis"
+  ],
+  "doi": "10.1038/sample.171000",
+  "publisher": "Elsevier",
+  "publication_date": "2015-05-18",
+  "source_uri": "https://doi.org/10.1038/sample.171000",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into materials_science phenomena. Combining theoretical analysis with empirical validation, we establish... Comparative evaluation demonstrates superiority over existing approaches. This research contributes to the broader understanding of the domain.",
+  "fulltext_uri": "https://example.org/fulltext/10.1038/sample.171000",
+  "acquisition_timestamp": "2026-08-11T12:21:24.289737Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "fc9df352eb63d013ffab24e97ff01b8d291a15defacb9ba59d544eece7a19dfd",
+  "license": "CC-BY-4.0",
+  "domain": "materials_science",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "materials_science",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

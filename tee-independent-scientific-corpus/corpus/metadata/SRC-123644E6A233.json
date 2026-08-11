@@ -1,0 +1,45 @@
+{
+  "source_id": "SRC-123644E6A233",
+  "title": "Catalytic isomerization using organocatalyst catalysts",
+  "authors": [
+    "Patricia Martinez",
+    "Elizabeth Kim",
+    "Patricia Miller",
+    "John Jones",
+    "Maria Wang"
+  ],
+  "doi": "10.1002/sample.228000",
+  "publisher": "Nature Publishing Group",
+  "publication_date": "2020-07-01",
+  "source_uri": "https://doi.org/10.1002/sample.228000",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into chemistry phenomena. Through computational modeling and simulation, we show... Our results indicate significant improvements in performance metrics. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1002/sample.228000",
+  "acquisition_timestamp": "2026-08-11T12:21:24.103222Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "a72b6b7e4d5cf6bb55cac4d394e3d34896cb654bcba8bce30e3a5557b3265ed8",
+  "license": "CC-BY-NC-4.0",
+  "domain": "chemistry",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "chemistry",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-59C7137CDA8E",
+  "title": "Classification of algebraic_structure",
+  "authors": [
+    "Patricia Schmidt",
+    "Robert Smith",
+    "Jose Anderson",
+    "Thomas Mueller"
+  ],
+  "doi": "10.1109/sample.051002",
+  "publisher": "ACM",
+  "publication_date": "2020-09-13",
+  "source_uri": "https://doi.org/10.1109/sample.051002",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into mathematics phenomena. By integrating multiple analytical approaches, we uncover... Statistical analysis confirms the robustness of our conclusions. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1109/sample.051002",
+  "acquisition_timestamp": "2026-08-11T12:21:26.511468Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "9f5f3354388bd3cf94963bcd1046e324d074e304fd34cf7e0a4044656cd86ca6",
+  "license": "MIT",
+  "domain": "mathematics",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "mathematics",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

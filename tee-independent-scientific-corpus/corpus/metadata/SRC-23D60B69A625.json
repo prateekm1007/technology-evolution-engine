@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-23D60B69A625",
+  "title": "Synaptic plasticity in amygdala",
+  "authors": [
+    "Hiroshi Park",
+    "Joseph Suzuki"
+  ],
+  "doi": "10.1103/sample.249001",
+  "publisher": "APS",
+  "publication_date": "2011-03-21",
+  "source_uri": "https://doi.org/10.1103/sample.249001",
+  "repository_uri": null,
+  "abstract": "This paper presents a comprehensive study of neuroscience focusing on key aspects. Through computational modeling and simulation, we show... Statistical analysis confirms the robustness of our conclusions. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1103/sample.249001",
+  "acquisition_timestamp": "2026-08-11T12:21:26.429896Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "e4d4fc1e54dae9c45ff4b8e11ded9a5ab4130aa3e57f39c88ea1b76eb46e3a17",
+  "license": "MIT",
+  "domain": "neuroscience",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "neuroscience",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

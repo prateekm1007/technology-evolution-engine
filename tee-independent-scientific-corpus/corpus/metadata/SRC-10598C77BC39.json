@@ -1,0 +1,46 @@
+{
+  "source_id": "SRC-10598C77BC39",
+  "title": "Green chemistry approach to synthesis_target",
+  "authors": [
+    "Michael Yamamoto",
+    "David Yamamoto",
+    "Thomas Suzuki",
+    "Charles Garcia",
+    "Patricia Park",
+    "Mary Brown"
+  ],
+  "doi": "10.1109/sample.115000",
+  "publisher": "APS",
+  "publication_date": "2019-10-20",
+  "source_uri": "https://doi.org/10.1109/sample.115000",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in chemistry. Employing advanced characterization methods, we reveal... Our results indicate significant improvements in performance metrics. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1109/sample.115000",
+  "acquisition_timestamp": "2026-08-11T12:21:24.006541Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "e8a831acd60d82feee7b66a5604a8a75cb75e4da0a0b0c80559784a27700d038",
+  "license": "MIT",
+  "domain": "chemistry",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "chemistry",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

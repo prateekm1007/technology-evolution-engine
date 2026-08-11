@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-0AB6C2A8A38E",
+  "title": "Carbon capture using capture_material",
+  "authors": [
+    "James Miller",
+    "Robert Rodriguez",
+    "James Schmidt",
+    "Thomas Martinez"
+  ],
+  "doi": "10.1109/sample.125002",
+  "publisher": "ACM",
+  "publication_date": "2022-10-11",
+  "source_uri": "https://doi.org/10.1109/sample.125002",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of energy_sciences through experimental and theoretical approaches. Combining theoretical analysis with empirical validation, we establish... Statistical analysis confirms the robustness of our conclusions. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1109/sample.125002",
+  "acquisition_timestamp": "2026-08-11T12:21:25.772105Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "8bc01fd2ed4296567462d168a03d4f0822f7d225d84fc006524864854407060b",
+  "license": "closed",
+  "domain": "energy_sciences",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "energy_sciences",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-C26F16387C20",
+  "title": "Fuel cell performance with fuel_cell_type configuration",
+  "authors": [
+    "David Anderson",
+    "Charles Johnson"
+  ],
+  "doi": "10.1109/sample.178002",
+  "publisher": "Elsevier",
+  "publication_date": "2021-10-23",
+  "source_uri": "https://doi.org/10.1109/sample.178002",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of energy_sciences through experimental and theoretical approaches. By integrating multiple analytical approaches, we uncover... Our results indicate significant improvements in performance metrics. Our work opens new avenues for exploration in this field.",
+  "fulltext_uri": "https://example.org/fulltext/10.1109/sample.178002",
+  "acquisition_timestamp": "2026-08-11T12:21:25.826372Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "b092c972aea6908141d4a18cde4115db4fc5a668fcc513d27b289bec87ffc432",
+  "license": "MIT",
+  "domain": "energy_sciences",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "energy_sciences",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

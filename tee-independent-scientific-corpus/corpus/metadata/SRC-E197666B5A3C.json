@@ -1,0 +1,46 @@
+{
+  "source_id": "SRC-E197666B5A3C",
+  "title": "Soft robotics design for soft_robot_application",
+  "authors": [
+    "Ming Yamamoto",
+    "Robert Taylor",
+    "Jennifer Mueller",
+    "Wei Taylor",
+    "Robert Mueller",
+    "Elizabeth Chen"
+  ],
+  "doi": "10.1021/sample.295000",
+  "publisher": "RSC",
+  "publication_date": "2014-05-07",
+  "source_uri": "https://doi.org/10.1021/sample.295000",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into robotics phenomena. Employing advanced characterization methods, we reveal... Comparative evaluation demonstrates superiority over existing approaches. This research contributes to the broader understanding of the domain.",
+  "fulltext_uri": "https://example.org/fulltext/10.1021/sample.295000",
+  "acquisition_timestamp": "2026-08-11T12:21:27.027610Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "847c2ff7d382a925767d880f860307235ee8b7ed0a53ba540da4e500d046c6ee",
+  "license": "MIT",
+  "domain": "robotics",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "robotics",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

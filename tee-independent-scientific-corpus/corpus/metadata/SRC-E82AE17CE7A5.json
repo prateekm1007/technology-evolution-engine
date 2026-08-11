@@ -1,0 +1,43 @@
+{
+  "source_id": "SRC-E82AE17CE7A5",
+  "title": "Bioprocess engineering for bioproduct",
+  "authors": [
+    "Akira Suzuki",
+    "Richard Chen",
+    "Thomas Wang"
+  ],
+  "doi": "10.1021/sample.064000",
+  "publisher": "ACM",
+  "publication_date": "2020-05-14",
+  "source_uri": "https://doi.org/10.1021/sample.064000",
+  "repository_uri": null,
+  "abstract": "This paper presents a comprehensive study of chemical_engineering focusing on key aspects. Combining theoretical analysis with empirical validation, we establish... Statistical analysis confirms the robustness of our conclusions. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1021/sample.064000",
+  "acquisition_timestamp": "2026-08-11T12:21:25.431471Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "cbc39455d3d18c0d2e35f8bc2f550b81ef33108a6bf5098e882cf38ebe2f1511",
+  "license": "closed",
+  "domain": "chemical_engineering",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "chemical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

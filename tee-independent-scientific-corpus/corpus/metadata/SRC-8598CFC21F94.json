@@ -1,0 +1,45 @@
+{
+  "source_id": "SRC-8598CFC21F94",
+  "title": "Deforestation patterns in forest_type",
+  "authors": [
+    "Charles Davis",
+    "David Kim",
+    "Richard Kim",
+    "James Taylor",
+    "William Miller"
+  ],
+  "doi": "10.1002/sample.048002",
+  "publisher": "Elsevier",
+  "publication_date": "2013-06-01",
+  "source_uri": "https://doi.org/10.1002/sample.048002",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in environmental_science. Using state-of-the-art experimental techniques, we demonstrate... Comparative evaluation demonstrates superiority over existing approaches. The methodology presented here can be extended to related problems.",
+  "fulltext_uri": "https://example.org/fulltext/10.1002/sample.048002",
+  "acquisition_timestamp": "2026-08-11T12:21:25.971716Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "0fac1e08de2ab20f8eb867a15ba76ae76c1787925bed387f755b4efef43819c0",
+  "license": "Apache-2.0",
+  "domain": "environmental_science",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "environmental_science",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "source_id": "SRC-CADEB22522FF",
+  "title": "Neurodegeneration in disease_model",
+  "authors": [
+    "James Mueller",
+    "Richard Davis",
+    "Linda Schmidt",
+    "Joseph Yamamoto",
+    "Robert Kim"
+  ],
+  "doi": "10.1371/sample.284000",
+  "publisher": "Nature Publishing Group",
+  "publication_date": "2023-08-31",
+  "source_uri": "https://doi.org/10.1371/sample.284000",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of neuroscience through experimental and theoretical approaches. Employing advanced characterization methods, we reveal... The findings suggest new directions for future research. The methodology presented here can be extended to related problems.",
+  "fulltext_uri": "https://example.org/fulltext/10.1371/sample.284000",
+  "acquisition_timestamp": "2026-08-11T12:21:26.465649Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "18a1612d7badc3cb4a9a972dc426c8341f6cfb71514fbf21a8571bb778aba9f4",
+  "license": "Apache-2.0",
+  "domain": "neuroscience",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "neuroscience",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

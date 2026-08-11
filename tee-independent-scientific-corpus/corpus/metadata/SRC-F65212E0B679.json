@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-F65212E0B679",
+  "title": "Brain connectivity analysis using imaging_technique",
+  "authors": [
+    "Jose Anderson",
+    "Robert Jones"
+  ],
+  "doi": "10.1109/sample.270001",
+  "publisher": "Nature Publishing Group",
+  "publication_date": "2018-02-14",
+  "source_uri": "https://doi.org/10.1109/sample.270001",
+  "repository_uri": null,
+  "abstract": "We report novel findings in the field of neuroscience with significant implications. Combining theoretical analysis with empirical validation, we establish... The findings suggest new directions for future research. The methodology presented here can be extended to related problems.",
+  "fulltext_uri": "https://example.org/fulltext/10.1109/sample.270001",
+  "acquisition_timestamp": "2026-08-11T12:21:26.448939Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "324654707141db77c904f9b26fb7df6ad5010ede4f9868037c00160e3d170c49",
+  "license": "MIT",
+  "domain": "neuroscience",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "neuroscience",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

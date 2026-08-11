@@ -1,0 +1,46 @@
+{
+  "source_id": "SRC-957F478DC34E",
+  "title": "Spectroscopic characterization of complex",
+  "authors": [
+    "Anna Johnson",
+    "Wei Chen",
+    "Hiroshi Thomas",
+    "Patricia Schmidt",
+    "Anna Miller",
+    "Wei Miller"
+  ],
+  "doi": "10.1109/sample.144000",
+  "publisher": "IEEE",
+  "publication_date": "2023-05-26",
+  "source_uri": "https://doi.org/10.1109/sample.144000",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in chemistry. By integrating multiple analytical approaches, we uncover... Statistical analysis confirms the robustness of our conclusions. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1109/sample.144000",
+  "acquisition_timestamp": "2026-08-11T12:21:24.026702Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "ed2bb30de6dce5783c7fdac91506cb02d080394bc682454f7bbd7d137038fc91",
+  "license": "MIT",
+  "domain": "chemistry",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "chemistry",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

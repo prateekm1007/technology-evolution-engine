@@ -1,0 +1,43 @@
+{
+  "source_id": "SRC-D73EB25F73D2",
+  "title": "Biofuel production from biomass_type",
+  "authors": [
+    "Anna Chen",
+    "Wei Chen",
+    "Yong Tanaka"
+  ],
+  "doi": "10.1038/sample.112002",
+  "publisher": "APS",
+  "publication_date": "2012-06-19",
+  "source_uri": "https://doi.org/10.1038/sample.112002",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of energy_sciences through experimental and theoretical approaches. Employing advanced characterization methods, we reveal... Our results indicate significant improvements in performance metrics. Our work opens new avenues for exploration in this field.",
+  "fulltext_uri": "https://example.org/fulltext/10.1038/sample.112002",
+  "acquisition_timestamp": "2026-08-11T12:21:25.767745Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "f5b1287e023ee509a2828a21a0f6b0a2ea5aa550985e49164a2158b2e2f1d1ba",
+  "license": "CC-BY-4.0",
+  "domain": "energy_sciences",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "energy_sciences",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

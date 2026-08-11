@@ -1,0 +1,43 @@
+{
+  "source_id": "SRC-7A5153C6C6F6",
+  "title": "Reinforcement learning in rl_domain",
+  "authors": [
+    "Yong Garcia",
+    "Akira Jones",
+    "Wei Williams"
+  ],
+  "doi": "10.1371/sample.094001",
+  "publisher": "Nature Publishing Group",
+  "publication_date": "2019-06-29",
+  "source_uri": "https://doi.org/10.1371/sample.094001",
+  "repository_uri": null,
+  "abstract": "We report novel findings in the field of computer_science with significant implications. Using state-of-the-art experimental techniques, we demonstrate... We observe previously unreported behaviors under controlled conditions. Our work opens new avenues for exploration in this field.",
+  "fulltext_uri": "https://example.org/fulltext/10.1371/sample.094001",
+  "acquisition_timestamp": "2026-08-11T12:21:24.766415Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "57518f299a4fea58b3c9fa09cf2e1faa6a8fb7f4088781b857aff3d4874aca70",
+  "license": "MIT",
+  "domain": "computer_science",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "computer_science",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

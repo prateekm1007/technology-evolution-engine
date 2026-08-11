@@ -1,0 +1,45 @@
+{
+  "source_id": "SRC-2CF0FD21F6A8",
+  "title": "Learning-based control of robot_type",
+  "authors": [
+    "Richard Jones",
+    "Patricia Lee",
+    "Charles Anderson",
+    "John Smith",
+    "David Kim"
+  ],
+  "doi": "10.1038/sample.031002",
+  "publisher": "APS",
+  "publication_date": "2016-04-19",
+  "source_uri": "https://doi.org/10.1038/sample.031002",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into robotics phenomena. Employing advanced characterization methods, we reveal... Statistical analysis confirms the robustness of our conclusions. Our work opens new avenues for exploration in this field.",
+  "fulltext_uri": "https://example.org/fulltext/10.1038/sample.031002",
+  "acquisition_timestamp": "2026-08-11T12:21:26.787155Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "564e347a86de0e451432f436d0447e00d1aaf737234a4719dfb8e0349a3c5994",
+  "license": "CC-BY-4.0",
+  "domain": "robotics",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "robotics",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

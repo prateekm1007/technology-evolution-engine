@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-CCFC2EAC9CE6",
+  "title": "Integrated circuit implementation of function",
+  "authors": [
+    "Hiroshi Jones",
+    "Wei Suzuki",
+    "Michael Williams",
+    "Anna Smith"
+  ],
+  "doi": "10.1002/sample.108001",
+  "publisher": "Elsevier",
+  "publication_date": "2022-11-01",
+  "source_uri": "https://doi.org/10.1002/sample.108001",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into electrical_engineering phenomena. Combining theoretical analysis with empirical validation, we establish... Our results indicate significant improvements in performance metrics. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1002/sample.108001",
+  "acquisition_timestamp": "2026-08-11T12:21:25.224459Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "351845c8972bae34383f07fb8177e5496dbd49a527f1ed41109adbf814a0751b",
+  "license": "Apache-2.0",
+  "domain": "electrical_engineering",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "electrical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "source_id": "SRC-090FF9E45CC5",
+  "title": "Additive manufacturing of alloy alloys",
+  "authors": [
+    "Richard Brown",
+    "Robert Davis",
+    "Jose Park",
+    "Charles Johnson",
+    "Robert Kim",
+    "Thomas Lee"
+  ],
+  "doi": "10.1371/sample.131000",
+  "publisher": "IEEE",
+  "publication_date": "2017-12-18",
+  "source_uri": "https://doi.org/10.1371/sample.131000",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into materials_science phenomena. By integrating multiple analytical approaches, we uncover... The findings suggest new directions for future research. The methodology presented here can be extended to related problems.",
+  "fulltext_uri": "https://example.org/fulltext/10.1371/sample.131000",
+  "acquisition_timestamp": "2026-08-11T12:21:24.266466Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "aef036b7e8a0cf38e9514285d94ac3dffeec38a18c264e07718bfc57253b3263",
+  "license": "closed",
+  "domain": "materials_science",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "materials_science",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

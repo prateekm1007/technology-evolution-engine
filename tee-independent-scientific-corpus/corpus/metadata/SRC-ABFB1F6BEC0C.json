@@ -1,0 +1,43 @@
+{
+  "source_id": "SRC-ABFB1F6BEC0C",
+  "title": "Neurodegeneration in disease_model",
+  "authors": [
+    "Joseph Schmidt",
+    "Charles Lee",
+    "James Schmidt"
+  ],
+  "doi": "10.1016/sample.027001",
+  "publisher": "IEEE",
+  "publication_date": "2017-07-23",
+  "source_uri": "https://doi.org/10.1016/sample.027001",
+  "repository_uri": null,
+  "abstract": "We report novel findings in the field of neuroscience with significant implications. Combining theoretical analysis with empirical validation, we establish... The findings suggest new directions for future research. The methodology presented here can be extended to related problems.",
+  "fulltext_uri": "https://example.org/fulltext/10.1016/sample.027001",
+  "acquisition_timestamp": "2026-08-11T12:21:26.252333Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "b76491779ed2fdea28f2c5042b83d90f604d745a80908b2c3e0e9a8bb6ee3d97",
+  "license": "CC-BY-NC-4.0",
+  "domain": "neuroscience",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "neuroscience",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

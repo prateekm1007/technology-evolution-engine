@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-30D01248299E",
+  "title": "Learning-based control of robot_type",
+  "authors": [
+    "John Thomas",
+    "James Jones"
+  ],
+  "doi": "10.1109/sample.029001",
+  "publisher": "Springer",
+  "publication_date": "2023-01-02",
+  "source_uri": "https://doi.org/10.1109/sample.029001",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of robotics through experimental and theoretical approaches. By integrating multiple analytical approaches, we uncover... The findings suggest new directions for future research. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1109/sample.029001",
+  "acquisition_timestamp": "2026-08-11T12:21:26.786452Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "84f96ac7ccc60aa32058ae93e560a8b9b82c4e97bd201d32d0d84c3eb0de3d74",
+  "license": "CC-BY-NC-4.0",
+  "domain": "robotics",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "robotics",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

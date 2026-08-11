@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-3C34BABE49EE",
+  "title": "Theoretical analysis of system dynamics",
+  "authors": [
+    "Jose Johnson",
+    "Akira Yamamoto"
+  ],
+  "doi": "10.1109/sample.049000",
+  "publisher": "RSC",
+  "publication_date": "2020-11-04",
+  "source_uri": "https://doi.org/10.1109/sample.049000",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of physics through experimental and theoretical approaches. Through computational modeling and simulation, we show... Comparative evaluation demonstrates superiority over existing approaches. Our work opens new avenues for exploration in this field.",
+  "fulltext_uri": "https://example.org/fulltext/10.1109/sample.049000",
+  "acquisition_timestamp": "2026-08-11T12:21:23.731641Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "862b0872c1a9f350ccd5211891458ce8daf28ce555bde2547cd3fab191e541f9",
+  "license": "MIT",
+  "domain": "physics",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "physics",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

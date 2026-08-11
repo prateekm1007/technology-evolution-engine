@@ -1,0 +1,43 @@
+{
+  "source_id": "SRC-1C6D60163CED",
+  "title": "Spectroscopic characterization of complex",
+  "authors": [
+    "Kenji Mueller",
+    "Thomas Yamamoto",
+    "Linda Smith"
+  ],
+  "doi": "10.1021/sample.084000",
+  "publisher": "Elsevier",
+  "publication_date": "2011-11-05",
+  "source_uri": "https://doi.org/10.1021/sample.084000",
+  "repository_uri": null,
+  "abstract": "This paper presents a comprehensive study of chemistry focusing on key aspects. Using state-of-the-art experimental techniques, we demonstrate... We observe previously unreported behaviors under controlled conditions. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1021/sample.084000",
+  "acquisition_timestamp": "2026-08-11T12:21:23.986118Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "c9bc5a1d8c4d73518c695c1833f71a3c13356f1140bf83775a0398b0c3fc59b0",
+  "license": "Apache-2.0",
+  "domain": "chemistry",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "chemistry",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

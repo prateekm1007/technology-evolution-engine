@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-6774BDC56277",
+  "title": "Swarm robotics for swarm_task",
+  "authors": [
+    "Mary Rodriguez",
+    "Wei Jones"
+  ],
+  "doi": "10.1038/sample.216002",
+  "publisher": "APS",
+  "publication_date": "2013-06-14",
+  "source_uri": "https://doi.org/10.1038/sample.216002",
+  "repository_uri": null,
+  "abstract": "This paper presents a comprehensive study of robotics focusing on key aspects. Through computational modeling and simulation, we show... Comparative evaluation demonstrates superiority over existing approaches. Our work opens new avenues for exploration in this field.",
+  "fulltext_uri": "https://example.org/fulltext/10.1038/sample.216002",
+  "acquisition_timestamp": "2026-08-11T12:21:26.967402Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "74367d3b24fdfd81b9704d67d62c0da984635300a35fd77355d1ec67cd2cbc03",
+  "license": "Apache-2.0",
+  "domain": "robotics",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "robotics",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

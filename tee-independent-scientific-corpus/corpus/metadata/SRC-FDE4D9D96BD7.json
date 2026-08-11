@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-FDE4D9D96BD7",
+  "title": "Bioprocess engineering for bioproduct",
+  "authors": [
+    "Michael Davis",
+    "Patricia Smith"
+  ],
+  "doi": "10.1021/sample.182000",
+  "publisher": "Elsevier",
+  "publication_date": "2011-11-03",
+  "source_uri": "https://doi.org/10.1021/sample.182000",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into chemical_engineering phenomena. Using state-of-the-art experimental techniques, we demonstrate... The findings suggest new directions for future research. The methodology presented here can be extended to related problems.",
+  "fulltext_uri": "https://example.org/fulltext/10.1021/sample.182000",
+  "acquisition_timestamp": "2026-08-11T12:21:25.564438Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "f8ad6fbc3cf6e2cbc07953a054d5d54b38a122dddb0ae7d88a6bbfd086a21247",
+  "license": "MIT",
+  "domain": "chemical_engineering",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "chemical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

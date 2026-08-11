@@ -1,0 +1,45 @@
+{
+  "source_id": "SRC-145EED57AD8D",
+  "title": "Role of enzyme in cellular_process",
+  "authors": [
+    "Joseph Chen",
+    "Linda Mueller",
+    "David Brown",
+    "Charles Wang",
+    "Anna Williams"
+  ],
+  "doi": "10.1016/sample.144000",
+  "publisher": "Elsevier",
+  "publication_date": "2015-07-12",
+  "source_uri": "https://doi.org/10.1016/sample.144000",
+  "repository_uri": null,
+  "abstract": "We report novel findings in the field of biology with significant implications. Using state-of-the-art experimental techniques, we demonstrate... The findings suggest new directions for future research. The methodology presented here can be extended to related problems.",
+  "fulltext_uri": "https://example.org/fulltext/10.1016/sample.144000",
+  "acquisition_timestamp": "2026-08-11T12:21:24.533014Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "2873ca2135d440db0a4906d2a5a9c9194145303650794cea03c649f5b3ab0e4e",
+  "license": "CC-BY-NC-4.0",
+  "domain": "biology",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "biology",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-F50DE1C02A25",
+  "title": "Grid integration of renewable_source",
+  "authors": [
+    "Maria Martinez",
+    "Charles Kim",
+    "David Mueller",
+    "Charles Williams"
+  ],
+  "doi": "10.1016/sample.171000",
+  "publisher": "Springer",
+  "publication_date": "2020-10-30",
+  "source_uri": "https://doi.org/10.1016/sample.171000",
+  "repository_uri": null,
+  "abstract": "This paper presents a comprehensive study of energy_sciences focusing on key aspects. Through computational modeling and simulation, we show... Comparative evaluation demonstrates superiority over existing approaches. This research contributes to the broader understanding of the domain.",
+  "fulltext_uri": "https://example.org/fulltext/10.1016/sample.171000",
+  "acquisition_timestamp": "2026-08-11T12:21:25.823255Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "7a2322d1a7c5d51a3b8ee301105b25d9065ee999b7798fa6e79228c70e6ae43a",
+  "license": "CC-BY-NC-4.0",
+  "domain": "energy_sciences",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "energy_sciences",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-62A7F473CAAC",
+  "title": "Control systems for controlled_system",
+  "authors": [
+    "Robert Smith",
+    "Hiroshi Tanaka",
+    "Ming Yamamoto",
+    "John Miller"
+  ],
+  "doi": "10.1016/sample.096002",
+  "publisher": "Nature Publishing Group",
+  "publication_date": "2019-04-12",
+  "source_uri": "https://doi.org/10.1016/sample.096002",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into electrical_engineering phenomena. Using state-of-the-art experimental techniques, we demonstrate... Comparative evaluation demonstrates superiority over existing approaches. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1016/sample.096002",
+  "acquisition_timestamp": "2026-08-11T12:21:25.210404Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "4e54c345679cd6d5f6f27e8e347126add2ed2d0249b8d63377a09c1e5b203945",
+  "license": "MIT",
+  "domain": "electrical_engineering",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "electrical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-9554423E8FF1",
+  "title": "Ecological interactions between species_1 and species_2",
+  "authors": [
+    "Maria Lee",
+    "Hiroshi Williams"
+  ],
+  "doi": "10.1002/sample.255000",
+  "publisher": "Elsevier",
+  "publication_date": "2018-06-19",
+  "source_uri": "https://doi.org/10.1002/sample.255000",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of biology through experimental and theoretical approaches. Through computational modeling and simulation, we show... We observe previously unreported behaviors under controlled conditions. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1002/sample.255000",
+  "acquisition_timestamp": "2026-08-11T12:21:24.650941Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "4b9de6cb6363cd01ea2ef3930bf2ea807358d4cff7b33223fba4ee43cdb4d4a7",
+  "license": "CC-BY-4.0",
+  "domain": "biology",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "biology",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

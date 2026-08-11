@@ -1,0 +1,45 @@
+{
+  "source_id": "SRC-322E54608D74",
+  "title": "Comparative genomics of clade reveals insight",
+  "authors": [
+    "Jennifer Lee",
+    "Maria Chen",
+    "David Suzuki",
+    "Linda Taylor",
+    "Maria Lee"
+  ],
+  "doi": "10.1371/sample.192001",
+  "publisher": "APS",
+  "publication_date": "2023-02-01",
+  "source_uri": "https://doi.org/10.1371/sample.192001",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into biology phenomena. Employing advanced characterization methods, we reveal... Comparative evaluation demonstrates superiority over existing approaches. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1371/sample.192001",
+  "acquisition_timestamp": "2026-08-11T12:21:24.588783Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "ea5777c749d1383658029238d17c7fbcb97e3558aa76a79808f2634e8c72c265",
+  "license": "Apache-2.0",
+  "domain": "biology",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "biology",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

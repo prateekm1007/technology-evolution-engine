@@ -1,0 +1,45 @@
+{
+  "source_id": "SRC-962C17C82A91",
+  "title": "Haptic feedback for haptic_application",
+  "authors": [
+    "David Garcia",
+    "Mary Taylor",
+    "Kenji Jones",
+    "Linda Chen",
+    "Kenji Schmidt"
+  ],
+  "doi": "10.1038/sample.042002",
+  "publisher": "Nature Publishing Group",
+  "publication_date": "2011-10-24",
+  "source_uri": "https://doi.org/10.1038/sample.042002",
+  "repository_uri": null,
+  "abstract": "We report novel findings in the field of robotics with significant implications. By integrating multiple analytical approaches, we uncover... Our results indicate significant improvements in performance metrics. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1038/sample.042002",
+  "acquisition_timestamp": "2026-08-11T12:21:26.791270Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "471970ba3bbaed1e22b7dca8aca689a4a600d3e9cc92e237d35259197c291f0c",
+  "license": "Apache-2.0",
+  "domain": "robotics",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "robotics",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

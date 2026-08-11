@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-FFB2A1DD00A0",
+  "title": "Self-assembly of molecule_type into structure",
+  "authors": [
+    "William Schmidt",
+    "Maria Johnson",
+    "Linda Tanaka",
+    "James Schmidt"
+  ],
+  "doi": "10.1021/sample.277000",
+  "publisher": "APS",
+  "publication_date": "2020-07-24",
+  "source_uri": "https://doi.org/10.1021/sample.277000",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of chemistry through experimental and theoretical approaches. Employing advanced characterization methods, we reveal... We observe previously unreported behaviors under controlled conditions. This research contributes to the broader understanding of the domain.",
+  "fulltext_uri": "https://example.org/fulltext/10.1021/sample.277000",
+  "acquisition_timestamp": "2026-08-11T12:21:24.130839Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "4a144a5716d67c41acab68b9dc782bc1c0ce51b26d93519a15984881d296a436",
+  "license": "MIT",
+  "domain": "chemistry",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "chemistry",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

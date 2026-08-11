@@ -1,0 +1,46 @@
+{
+  "source_id": "SRC-87CD17CCBE45",
+  "title": "Robotic manipulation of object_type",
+  "authors": [
+    "James Schmidt",
+    "Richard Schmidt",
+    "Patricia Mueller",
+    "Robert Chen",
+    "Anna Martinez",
+    "John Taylor"
+  ],
+  "doi": "10.1016/sample.010000",
+  "publisher": "RSC",
+  "publication_date": "2011-12-09",
+  "source_uri": "https://doi.org/10.1016/sample.010000",
+  "repository_uri": null,
+  "abstract": "We report novel findings in the field of mechanical_engineering with significant implications. Through computational modeling and simulation, we show... Our results indicate significant improvements in performance metrics. The methodology presented here can be extended to related problems.",
+  "fulltext_uri": "https://example.org/fulltext/10.1016/sample.010000",
+  "acquisition_timestamp": "2026-08-11T12:21:24.925436Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "ddf2fd49626e16f881acb72922a5ad99c1fea9ce6545b8b6c96f39db5fae0315",
+  "license": "Apache-2.0",
+  "domain": "mechanical_engineering",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "mechanical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

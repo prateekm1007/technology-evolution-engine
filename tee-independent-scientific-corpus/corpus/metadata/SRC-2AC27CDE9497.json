@@ -1,0 +1,43 @@
+{
+  "source_id": "SRC-2AC27CDE9497",
+  "title": "Perception systems for perception_task",
+  "authors": [
+    "John Brown",
+    "William Thomas",
+    "Richard Thomas"
+  ],
+  "doi": "10.1109/sample.100002",
+  "publisher": "Nature Publishing Group",
+  "publication_date": "2018-12-27",
+  "source_uri": "https://doi.org/10.1109/sample.100002",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into robotics phenomena. Using state-of-the-art experimental techniques, we demonstrate... We observe previously unreported behaviors under controlled conditions. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1109/sample.100002",
+  "acquisition_timestamp": "2026-08-11T12:21:26.849978Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "9cdda60f9308933ea45452c66b4562fa90ab873cc7f7f3a8c01ec45e3d88e0d7",
+  "license": "CC-BY-4.0",
+  "domain": "robotics",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "robotics",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

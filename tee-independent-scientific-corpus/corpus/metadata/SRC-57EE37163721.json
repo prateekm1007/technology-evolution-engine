@@ -1,0 +1,46 @@
+{
+  "source_id": "SRC-57EE37163721",
+  "title": "Green chemistry approach to synthesis_target",
+  "authors": [
+    "William Miller",
+    "Charles Lee",
+    "Mary Miller",
+    "Kenji Miller",
+    "Robert Jones",
+    "Jennifer Park"
+  ],
+  "doi": "10.1371/sample.059000",
+  "publisher": "Elsevier",
+  "publication_date": "2020-07-06",
+  "source_uri": "https://doi.org/10.1371/sample.059000",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of chemistry through experimental and theoretical approaches. Combining theoretical analysis with empirical validation, we establish... Our results indicate significant improvements in performance metrics. This research contributes to the broader understanding of the domain.",
+  "fulltext_uri": "https://example.org/fulltext/10.1371/sample.059000",
+  "acquisition_timestamp": "2026-08-11T12:21:23.966059Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "e44be7702edcccaae04646510fefd04599db640fd29d4027481aef72b2f16312",
+  "license": "closed",
+  "domain": "chemistry",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "chemistry",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

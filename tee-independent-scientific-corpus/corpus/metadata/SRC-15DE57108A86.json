@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-15DE57108A86",
+  "title": "Optimization methods for ml_problem",
+  "authors": [
+    "Ming Kim",
+    "Mary Lee",
+    "Jennifer Wang",
+    "Kenji Davis"
+  ],
+  "doi": "10.1002/sample.262001",
+  "publisher": "Springer",
+  "publication_date": "2018-10-10",
+  "source_uri": "https://doi.org/10.1002/sample.262001",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in computer_science. Combining theoretical analysis with empirical validation, we establish... The findings suggest new directions for future research. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1002/sample.262001",
+  "acquisition_timestamp": "2026-08-11T12:21:24.888740Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "6b0d353fbdcf9e32f2f5bbe3c1912ea32126de4691e7d8ddb58bb2972904eb5e",
+  "license": "Apache-2.0",
+  "domain": "computer_science",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "computer_science",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "source_id": "SRC-FE2563AC2EEB",
+  "title": "Water treatment using treatment_method",
+  "authors": [
+    "Elizabeth Thomas",
+    "Elizabeth Martinez",
+    "Hiroshi Jones",
+    "Wei Davis",
+    "Jose Chen",
+    "Kenji Yamamoto"
+  ],
+  "doi": "10.1021/sample.080001",
+  "publisher": "RSC",
+  "publication_date": "2014-07-29",
+  "source_uri": "https://doi.org/10.1021/sample.080001",
+  "repository_uri": null,
+  "abstract": "We report novel findings in the field of environmental_science with significant implications. Through computational modeling and simulation, we show... Statistical analysis confirms the robustness of our conclusions. This research contributes to the broader understanding of the domain.",
+  "fulltext_uri": "https://example.org/fulltext/10.1021/sample.080001",
+  "acquisition_timestamp": "2026-08-11T12:21:26.007719Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "3b64a40201ccb3a1472485030430902f7023bfa96346bac852f3ff791b0c8d6a",
+  "license": "MIT",
+  "domain": "environmental_science",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "environmental_science",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

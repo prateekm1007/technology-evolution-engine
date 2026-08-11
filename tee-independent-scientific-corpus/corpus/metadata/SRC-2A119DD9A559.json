@@ -1,0 +1,43 @@
+{
+  "source_id": "SRC-2A119DD9A559",
+  "title": "Heat integration in chemical plants",
+  "authors": [
+    "David Schmidt",
+    "Linda Mueller",
+    "James Anderson"
+  ],
+  "doi": "10.1109/sample.210002",
+  "publisher": "RSC",
+  "publication_date": "2018-05-05",
+  "source_uri": "https://doi.org/10.1109/sample.210002",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into chemical_engineering phenomena. By integrating multiple analytical approaches, we uncover... Comparative evaluation demonstrates superiority over existing approaches. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1109/sample.210002",
+  "acquisition_timestamp": "2026-08-11T12:21:25.584646Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "b1f5c380f0f85cef75a3c570d5502333fc0b7c9c5be5fd76aa6c236517513cfd",
+  "license": "CC-BY-4.0",
+  "domain": "chemical_engineering",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "chemical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "source_id": "SRC-96676A63650A",
+  "title": "Wind turbine optimization for wind_condition",
+  "authors": [
+    "Yong Jones",
+    "Robert Brown",
+    "Richard Park"
+  ],
+  "doi": "10.1371/sample.101001",
+  "publisher": "APS",
+  "publication_date": "2016-06-09",
+  "source_uri": "https://doi.org/10.1371/sample.101001",
+  "repository_uri": null,
+  "abstract": "This paper presents a comprehensive study of energy_sciences focusing on key aspects. Combining theoretical analysis with empirical validation, we establish... Statistical analysis confirms the robustness of our conclusions. The methodology presented here can be extended to related problems.",
+  "fulltext_uri": "https://example.org/fulltext/10.1371/sample.101001",
+  "acquisition_timestamp": "2026-08-11T12:21:25.754058Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "9d546e640d06a894128010211cceaec89adfc418111bca7fd50fb6370e79727d",
+  "license": "CC-BY-4.0",
+  "domain": "energy_sciences",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "energy_sciences",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

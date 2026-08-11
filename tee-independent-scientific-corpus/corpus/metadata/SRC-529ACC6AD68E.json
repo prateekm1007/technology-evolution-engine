@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-529ACC6AD68E",
+  "title": "Optimization methods for ml_problem",
+  "authors": [
+    "Linda Lee",
+    "Yong Wang"
+  ],
+  "doi": "10.1002/sample.053000",
+  "publisher": "Nature Publishing Group",
+  "publication_date": "2023-06-03",
+  "source_uri": "https://doi.org/10.1002/sample.053000",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in computer_science. Through computational modeling and simulation, we show... Comparative evaluation demonstrates superiority over existing approaches. Our work opens new avenues for exploration in this field.",
+  "fulltext_uri": "https://example.org/fulltext/10.1002/sample.053000",
+  "acquisition_timestamp": "2026-08-11T12:21:24.730041Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "5d0c3f34475a913f8d4803f13d6ef71213a9ff27a8a1b419e3cffb3e0433ae4c",
+  "license": "CC-BY-4.0",
+  "domain": "computer_science",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "computer_science",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

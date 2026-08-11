@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-942BF1B2C4C0",
+  "title": "Algorithm for computing mathematical_quantity",
+  "authors": [
+    "John Lee",
+    "Akira Williams"
+  ],
+  "doi": "10.1002/sample.103000",
+  "publisher": "Elsevier",
+  "publication_date": "2019-11-01",
+  "source_uri": "https://doi.org/10.1002/sample.103000",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of mathematics through experimental and theoretical approaches. Using state-of-the-art experimental techniques, we demonstrate... We observe previously unreported behaviors under controlled conditions. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1002/sample.103000",
+  "acquisition_timestamp": "2026-08-11T12:21:26.565545Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "caf5e7a5f2f531a0827c6129db9d2f953bba1b57ff5775b598d4371f5e9fd686",
+  "license": "MIT",
+  "domain": "mathematics",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "mathematics",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

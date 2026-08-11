@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-1D1A9A643E69",
+  "title": "Natural language processing for nlp_task",
+  "authors": [
+    "Jose Rodriguez",
+    "Michael Chen"
+  ],
+  "doi": "10.1103/sample.116001",
+  "publisher": "ACM",
+  "publication_date": "2020-07-14",
+  "source_uri": "https://doi.org/10.1103/sample.116001",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of computer_science through experimental and theoretical approaches. Employing advanced characterization methods, we reveal... Statistical analysis confirms the robustness of our conclusions. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1103/sample.116001",
+  "acquisition_timestamp": "2026-08-11T12:21:24.783931Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "c3c040805b0908af2dec0266ebd058ca8faf04efb1a99c5a5e55bdd349824875",
+  "license": "MIT",
+  "domain": "computer_science",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "computer_science",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

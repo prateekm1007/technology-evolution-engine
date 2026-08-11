@@ -1,0 +1,46 @@
+{
+  "source_id": "SRC-90E339F0D435",
+  "title": "Memory encoding in memory_type memory",
+  "authors": [
+    "Richard Davis",
+    "Charles Miller",
+    "Charles Thomas",
+    "Jose Suzuki",
+    "Patricia Thomas",
+    "Mary Miller"
+  ],
+  "doi": "10.1038/sample.035002",
+  "publisher": "Elsevier",
+  "publication_date": "2022-11-13",
+  "source_uri": "https://doi.org/10.1038/sample.035002",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of neuroscience through experimental and theoretical approaches. Using state-of-the-art experimental techniques, we demonstrate... We observe previously unreported behaviors under controlled conditions. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1038/sample.035002",
+  "acquisition_timestamp": "2026-08-11T12:21:26.265907Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "9e53c8fa0b4b0ef4e3acae2b50bd0fab8965544be4bbf269a3c6f1626640705e",
+  "license": "Apache-2.0",
+  "domain": "neuroscience",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "neuroscience",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

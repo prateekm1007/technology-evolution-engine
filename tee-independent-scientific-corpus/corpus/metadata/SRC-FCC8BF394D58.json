@@ -1,0 +1,43 @@
+{
+  "source_id": "SRC-FCC8BF394D58",
+  "title": "Transport phenomena in dimensionality system",
+  "authors": [
+    "Wei Anderson",
+    "Yong Kim",
+    "Elizabeth Kim"
+  ],
+  "doi": "10.1371/sample.050000",
+  "publisher": "ACM",
+  "publication_date": "2011-06-30",
+  "source_uri": "https://doi.org/10.1371/sample.050000",
+  "repository_uri": null,
+  "abstract": "This paper presents a comprehensive study of physics focusing on key aspects. By integrating multiple analytical approaches, we uncover... The findings suggest new directions for future research. This research contributes to the broader understanding of the domain.",
+  "fulltext_uri": "https://example.org/fulltext/10.1371/sample.050000",
+  "acquisition_timestamp": "2026-08-11T12:21:23.732020Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "0d6f4d502fdad616e315e1823ae4547684028f31e3e34fad5de30361d1bbfbd5",
+  "license": "closed",
+  "domain": "physics",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "physics",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

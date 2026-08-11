@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-515CB169A096",
+  "title": "method approach to measuring quantity",
+  "authors": [
+    "William Kim",
+    "Robert Kim"
+  ],
+  "doi": "10.1145/sample.088000",
+  "publisher": "ACM",
+  "publication_date": "2018-12-04",
+  "source_uri": "https://doi.org/10.1145/sample.088000",
+  "repository_uri": null,
+  "abstract": "We report novel findings in the field of physics with significant implications. Using state-of-the-art experimental techniques, we demonstrate... Comparative evaluation demonstrates superiority over existing approaches. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1145/sample.088000",
+  "acquisition_timestamp": "2026-08-11T12:21:23.766304Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "d93f091aaf00c2bf4567197aa60cb4bf8ef7ece68c230ec69509245df9c13da4",
+  "license": "CC-BY-4.0",
+  "domain": "physics",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "physics",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}
