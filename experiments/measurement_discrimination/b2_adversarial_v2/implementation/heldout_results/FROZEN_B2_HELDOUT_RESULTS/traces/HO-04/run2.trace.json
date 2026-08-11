@@ -1,0 +1,49 @@
+{
+  "schema_version": "b2-trace-v3",
+  "candidate": {
+    "id": "HO-04",
+    "text": "Cas9 cleaves both DNA strands",
+    "source_a": "A guide-RNA-directed nuclease recognizes a complementary DNA target and, when the required PAM is present, forms an RNA-DNA hybrid that positions the nuclease for site-specific cleavage.",
+    "source_b": "Cas9 contains two nuclease domains that cleave opposite DNA strands, producing a double-strand break; the HNH domain cuts the strand complementary to the guide while the RuvC domain cuts the other strand."
+  },
+  "atoms": [
+    {
+      "atom_id": "a1",
+      "claim": "{protein: Cas9, action: cleaves, target: DNA, specificity: both strands}",
+      "source_support": [
+        {
+          "support_type": "SOURCE_LOCAL",
+          "source_id": "B",
+          "spans": [
+            {
+              "span_text": "Cas9 contains two nuclease domains that cleave opposite DNA strands",
+              "start": 0,
+              "end": 67
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "counterfactuals": [
+    {
+      "removed_source": "A",
+      "unsupported_atoms": [],
+      "justified_without_source": true
+    },
+    {
+      "removed_source": "B",
+      "unsupported_atoms": [
+        "a1"
+      ],
+      "justified_without_source": false
+    }
+  ],
+  "classification": {
+    "justified_by_corpus": true,
+    "iss_a": false,
+    "iss_b": true,
+    "iss_state": "ISS_one",
+    "label": "REJECT"
+  }
+}

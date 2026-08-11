@@ -1,0 +1,21 @@
+# Rewrite Operators v0.1
+# Law 4: Everything must be decomposable
+version: 0.1
+
+operators:
+  - id: eliminate
+    question: What if this did not exist?
+  - id: substitute
+    question: What else could perform this function?
+  - id: miniaturize
+    question: What changes at 1/1000th the size?
+  - id: distribute
+    question: What if many small things did this instead of one big thing?
+  - id: modularize
+    question: What if each part could be replaced independently?
+  - id: software_substitution
+    question: Can this be simulated or computed instead?
+  - id: change_energy_domain
+    question: What if powered differently?
+  - id: change_information_domain
+    question: What if sensed or communicated differently?

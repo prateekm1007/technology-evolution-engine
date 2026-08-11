@@ -1,0 +1,33 @@
+# Seed Graph v0.1
+version: 0.1
+
+nodes:
+  - id: passive_radiative_cooling
+    type: technology
+    domain: thermal_management
+  - id: selective_emitters
+    type: prerequisite
+    pcs_score: 0.4
+  - id: phase_change_materials
+    type: prerequisite
+    pcs_score: 0.55
+  - id: tinyml
+    type: prerequisite
+    pcs_score: 0.6
+  - id: lora_communications
+    type: prerequisite
+    pcs_score: 0.7
+  - id: anti_fouling_materials
+    type: prerequisite
+    pcs_score: 0.35
+  - id: membrane_advances
+    type: prerequisite
+    pcs_score: 0.45
+
+edges:
+  - source: passive_radiative_cooling
+    target: selective_emitters
+    type: requires
+  - source: passive_radiative_cooling
+    target: phase_change_materials
+    type: requires

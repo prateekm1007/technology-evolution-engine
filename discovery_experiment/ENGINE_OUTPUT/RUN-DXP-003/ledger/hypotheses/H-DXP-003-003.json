@@ -1,0 +1,34 @@
+{
+  "hypothesis_id": "H-DXP-003-003",
+  "claim": "Multi-pulse adaptive strategy combining different pulse durations based on both target range and clutter characteristics optimizes detection while minimizing false alarms",
+  "mechanism": "The radar system employs a sequence of pulses with different durations in each dwell, with each pulse optimized for specific conditions. A short pulse maintains resolution for near targets, a medium pulse balances resolution and energy for mid-range targets, and a long pulse maximizes energy for distant targets while being weighted based on local clutter conditions.",
+  "evidence": [
+    "Some bioacoustic systems use multiple call types in sequence",
+    "Multi-pulse radar techniques exist but are not commonly adapted to clutter suppression",
+    "Frequency diversity approaches have shown promise in radar applications"
+  ],
+  "assumptions": [
+    "Multiple pulse types can be generated and processed within real-time constraints",
+    "Clutter characteristics vary sufficiently across ranges to justify multiple pulse types",
+    "Target returns can be correctly associated with the appropriate pulse type",
+    "Processing hardware can handle the increased computational load"
+  ],
+  "predictions": [],
+  "expected_failure_modes": [
+    "Increased pulse sequence reduces dwell time on targets",
+    "Processing multiple pulse types exceeds FPGA capabilities",
+    "Pulse interactions create new interference patterns"
+  ],
+  "novelty_rationale": "Combines range-based and clutter-based adaptation strategies in a multi-pulse approach, analogous to how some bioacoustic systems use multiple signal types in sequence",
+  "testability": "Can be implemented by modifying the radar to generate a sequence of differently duration pulses in each dwell and analyzing the results separately",
+  "falsifier": "If the multi-pulse approach shows no improvement in false alarm rate or detection probability compared to single adaptive pulse approaches, or if the processing requirements exceed real-time capabilities",
+  "epistemic_state": "HYPOTHESIZED",
+  "parent_hypothesis_ids": [],
+  "provenance": {
+    "nodes": {},
+    "edges": [],
+    "committed_hash": null
+  },
+  "is_testable": true,
+  "provenance_root_hash": ""
+}

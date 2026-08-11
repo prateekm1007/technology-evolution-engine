@@ -1,0 +1,12 @@
+TITLE: mmAlert: A Simultaneous Device Localization and Target Tracking System via Cooperative Passive Sensing
+ARXIV ID: 2606.01653v2
+URL: http://arxiv.org/abs/2606.01653v2
+RETRIEVAL DATE: 2026-08-05
+RETRIEVAL METHOD: arxiv.org API
+SOURCE VERIFICATION: arxiv API XML
+DOMAIN HINT: radiative_cooling_2
+AUTHORS: Chao Yu; Bojie Lv; Chunxi Chen; Jingwen Zhang; Rui Wang
+PUBLISHED: 2026-06-01T04:02:00Z
+
+ABSTRACT:
+In this paper, a cooperative passive sensing system in millimeter-wave (mmWave) band for simultaneous device localization and target tracking, namely mmAlert, is proposed. Specifically, in uplink communication with at least two transmitters, the receiver receives the line-of-sight (LoS) signals and the scattered signals off a moving target, respectively. Based on the received signals of the sensing time intervals, when a passive target moves along one or multiple unknown trajectories, mmAlert could measure the angles-of-arrival (AoAs) and bistatic Doppler frequencies of the echoes from the sensing target, and then jointly estimate the locations of the transmitters and the trajectories of the target. Specifically, the transmitters' locations and the moving target's trajectories can be searched by minimizing the weighted mean squared error of the AoA and Doppler measurements. The optimal solution of the minimization problem is prohibitive due to the large number of variables. Hence, a low-complexity algorithm based on the alternating optimization is proposed, where the extended Kalman filter (EKF) is introduced to quickly shape the trajectories. The mmAlert is implemented in a 60GHz communication testbed. The experiment shows with the received signal spanning a single trajectory, the average localization error of the transmitters and average trajectory reconstruction error are 0.76 m and 0.29 m, respectively. The average errors are suppressed to 0.07 m and 0.2 m respectively, if the received signal spanning 50 trajectories is used. This justifies the benefit of trajectory diversity in localization and tracking.

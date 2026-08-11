@@ -1,0 +1,74 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Benchmark Case",
+  "description": "A single benchmark case in the custodian's benchmark",
+  "type": "object",
+  "required": ["case_id", "source_id", "domain", "problem", "input_material", "expected_task", "verification_method", "difficulty", "independence_group", "provenance"],
+  "properties": {
+    "case_id": {
+      "type": "string",
+      "description": "Unique case identifier"
+    },
+    "source_id": {
+      "type": "string",
+      "description": "ID of the source this case was derived from"
+    },
+    "domain": {
+      "type": "string",
+      "description": "Scientific domain"
+    },
+    "problem": {
+      "type": "string",
+      "description": "Description of the discovery problem"
+    },
+    "input_material": {
+      "type": "object",
+      "required": ["source_a", "source_b"],
+      "properties": {
+        "source_a": {"type": "string", "description": "Source document A text"},
+        "source_b": {"type": "string", "description": "Source document B text"}
+      },
+      "description": "The input materials provided to the system"
+    },
+    "expected_task": {
+      "type": "string",
+      "description": "What the system is expected to do"
+    },
+    "verification_method": {
+      "type": "string",
+      "description": "How the answer will be verified"
+    },
+    "difficulty": {
+      "type": "string",
+      "enum": ["easy", "moderate", "hard"],
+      "description": "Difficulty level"
+    },
+    "independence_group": {
+      "type": "string",
+      "description": "Group identifier for independence checking. Cases sharing an independence_group are derived from the same underlying problem and are NOT independent."
+    },
+    "provenance": {
+      "type": "object",
+      "required": ["constructor", "construction_timestamp", "construction_method"],
+      "properties": {
+        "constructor": {"type": "string"},
+        "construction_timestamp": {"type": "string", "format": "date-time"},
+        "construction_method": {"type": "string"},
+        "source_version": {"type": "string"}
+      }
+    },
+    "ground_truth": {
+      "type": "object",
+      "description": "ANSWER KEY — must NOT appear in blind fixture",
+      "properties": {
+        "type": {"type": "string", "enum": ["positive", "negative"]},
+        "mechanism": {"type": "string"},
+        "causal_variable": {"type": "string"},
+        "direction": {"type": "string"},
+        "magnitude": {"type": "string"},
+        "falsifier": {"type": "string"}
+      }
+    }
+  },
+  "additionalProperties": false
+}

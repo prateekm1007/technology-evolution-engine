@@ -1,0 +1,49 @@
+{
+  "schema_version": "b2-trace-v3",
+  "candidate": {
+    "id": "ADV-10",
+    "text": "calcium phosphate",
+    "source_a": "Calcium phosphate forms crystalline deposits in bone tissue through osteoblast-mediated mineralization.",
+    "source_b": "Marine diatoms precipitate silica-based cell walls using enzymatic silicatein proteins."
+  },
+  "atoms": [
+    {
+      "atom_id": "a1",
+      "claim": "{entity: calcium_phosphate}",
+      "source_support": [
+        {
+          "support_type": "SOURCE_LOCAL",
+          "source_id": "A",
+          "spans": [
+            {
+              "span_text": "Calcium phosphate",
+              "start": 0,
+              "end": 17
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "counterfactuals": [
+    {
+      "removed_source": "A",
+      "unsupported_atoms": [
+        "a1"
+      ],
+      "justified_without_source": false
+    },
+    {
+      "removed_source": "B",
+      "unsupported_atoms": [],
+      "justified_without_source": true
+    }
+  ],
+  "classification": {
+    "justified_by_corpus": true,
+    "iss_a": true,
+    "iss_b": false,
+    "iss_state": "ISS_one",
+    "label": "REJECT"
+  }
+}

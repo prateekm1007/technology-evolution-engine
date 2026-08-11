@@ -1,0 +1,22 @@
+[
+  {
+    "transfer_possible": true,
+    "invariant_principle": "Dielectric polarization loss in ferroelectric nanoparticles dispersed in a polymer matrix enables microwave energy dissipation through impedance matching and interfacial polarization",
+    "source_domain": "materials",
+    "target_domain": "energy",
+    "target_problem": "Improving microwave energy absorption for applications such as electromagnetic interference (EMI) shielding, radar absorption, or energy harvesting",
+    "transferred_mechanism": "The ferroelectric nanoparticles would dissipate microwave energy through dielectric loss, while the polymer matrix would provide a low-loss background for efficient energy absorption",
+    "necessary_conditions_met": "The necessary conditions can be met in the energy domain by using ferroelectric or high-permittivity nanoparticles, such as barium titanate (BaTiO3), and dispersing them in a low-loss polymer matrix like polyvinyl butyral (PVB). The operating frequency can be tuned to match the relaxation regime of the composite's dielectric properties",
+    "experiment": {
+      "hypothesis": "If BaTiO3-PVB composites are used as a microwave absorber, then the absorption coefficient will increase with the weight concentration of BaTiO3 nanoparticles",
+      "experimental_setup": "Prepare BaTiO3-PVB composites with varying weight concentrations of BaTiO3, and measure the microwave absorption coefficient using a vector network analyzer or a free-space measurement setup",
+      "control_group": "A pure PVB sample without BaTiO3 nanoparticles",
+      "measurement": "Microwave absorption coefficient (e.g., reflection loss, transmission loss, or absorption coefficient) at a fixed frequency (e.g., 10 GHz)",
+      "expected_result": "An increase in absorption coefficient with increasing BaTiO3 weight concentration, indicating improved microwave energy dissipation",
+      "failure_result": "No significant increase in absorption coefficient with increasing BaTiO3 weight concentration, or a decrease in absorption coefficient, indicating that the principle does not apply"
+    },
+    "constraint_conflicts": [],
+    "quality": "STRONG",
+    "candidate_id": "V14-0"
+  }
+]

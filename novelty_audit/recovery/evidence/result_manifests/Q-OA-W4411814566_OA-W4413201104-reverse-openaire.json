@@ -1,0 +1,86 @@
+{
+  "query_id": "Q-OA-W4411814566_OA-W4413201104-reverse-openaire",
+  "pair_id": "OA-W4411814566_OA-W4413201104",
+  "query_type": "reverse",
+  "provider": "openaire",
+  "query_text": "fgms design high interaction natural spatial",
+  "query_hash": "c175928e11b554f0cf557181034f9521bc1f57b8767ab12937a9fe5e1030a1bc",
+  "frozen_query_ref": "Q-OA-W4411814566_OA-W4413201104-reverse-openalex",
+  "url": "https://api.openaire.eu/search/publications?keywords=fgms+design+high+interaction+natural+spatial&size=10&format=json",
+  "timestamp_utc": "2026-08-11T12:31:36.206569+00:00",
+  "status": "SUCCESS",
+  "result_count": 2,
+  "result_ids": [
+    [
+      {
+        "$": "10.2514/6.2002-1330"
+      },
+      {
+        "$": "10.2514/MSDM02"
+      },
+      {
+        "$": "50|doiboost____|f50514b57e8c31982c4be9175203a882"
+      },
+      {
+        "$": "2329614123"
+      }
+    ],
+    [
+      {
+        "$": "50|datacite____::1c582c42276856b61abfc4610d93aff3"
+      },
+      {
+        "$": "10.5281/zenodo.20373581"
+      },
+      {
+        "$": "50|datacite____::4a63923e939aefc10a940270ca95b54d"
+      },
+      {
+        "$": "10.5281/zenodo.20507313"
+      },
+      {
+        "$": "50|datacite____::528385bbb409a211925b790e6ac2f9b2"
+      },
+      {
+        "$": "10.5281/zenodo.20373582"
+      },
+      {
+        "$": "50|od______2659::528385bbb409a211925b790e6ac2f9b2"
+      },
+      {
+        "$": "oai:zenodo.org:20373582"
+      },
+      {
+        "$": "50|datacite____::52e4ad03c8ded492db28a4edb0411354"
+      },
+      {
+        "$": "10.5281/zenodo.20507314"
+      },
+      {
+        "$": "50|od______2659::52e4ad03c8ded492db28a4edb0411354"
+      },
+      {
+        "$": "oai:zenodo.org:20507314"
+      }
+    ]
+  ],
+  "result_titles": [
+    "Functionally Graded Biomimetic Plate with Hole",
+    "Functionally Graded Hybrid Composite Engineering Using GFRP, Bamboo, and Banana Fibres for Sustainable Structural Systems"
+  ],
+  "result_dois": [
+    "10.2514/6.2002-1330",
+    "10.5281/zenodo.20373581"
+  ],
+  "result_dates": [
+    "2002-04-22",
+    "2026-05-25"
+  ],
+  "response_hash": "d40f86cde4b0d5714c78697ec4118c4a7f5a70f9a6e24b2b91d53418fa43cc7d",
+  "evidence_uri": "https://api.openaire.eu/search/publications?keywords=fgms+design+high+interaction+natural+spatial&size=10&format=json",
+  "error": null,
+  "rate_limit_headers": {
+    "x-ratelimit-used": "207",
+    "x-ratelimit-limit": "7199"
+  }
+}

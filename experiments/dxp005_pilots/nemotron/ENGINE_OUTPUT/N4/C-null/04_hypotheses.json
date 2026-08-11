@@ -1,0 +1,112 @@
+{
+  "hypotheses": [
+    {
+      "hypothesis_id": "H-N4-001",
+      "claim": "Biaxial strain of 15% applied to a TiO2-nanorod photonic crystal slab embedded in epoxy shifts the lattice constant from 330 nm to 280 nm, phase-matching the TE0 and TM0 guided modes of a 10 \u00b5m GaN micro-LED across 450\u2013630 nm, yielding 47\u00b12% EQE at 1000 nits.",
+      "mechanism": "Mechanical deformation of the encapsulant matrix (generic_mechanism_9) directly stretches the ordered nanorod array (generic_mechanism_1), reducing the center-to-center spacing (generic_property_5) which shifts the Bragg diffraction condition (generic_property_8) to satisfy momentum conservation for guided-mode outcoupling (generic_process_10), thereby producing broadband extraction (generic_effect_11).",
+      "evidence": [
+        "Chameleon iridophores tune guanine crystal spacing via cytoskeletal strain",
+        "Photonic crystal slab theory predicts guided-mode extraction at \u03bb/n_eff \u2248 a",
+        "Nanoimprint lithography demonstrates 280 nm period TiO2 rods in epoxy"
+      ],
+      "assumptions": [
+        "Epoxy modulus <500 MPa at 50\u00b0C enables uniform 15% biaxial strain",
+        "TiO2 nanorods (aspect ratio >3) survive strain without fracture",
+        "UV cure locks periodicity with <1% shrinkage",
+        "Refractive index contrast TiO2/epoxy >0.7"
+      ],
+      "predictions": [],
+      "expected_failure_modes": [
+        "Non-uniform strain causing EQE hotspots",
+        "Nanorod coalescence at >12% strain",
+        "Epoxy stress relaxation >5 nm periodicity drift post-cure",
+        "Delamination at GaN/epoxy interface during thermal cycling"
+      ],
+      "novelty_rationale": "Directly transfers the chameleon's spacing-tuning mechanism to a manufacturable strain-and-lock process for micro-LEDs, replacing physiological control with a one-time manufacturing step.",
+      "testability": "Fabricate 10 \u00b5m micro-LEDs with strained encapsulant; measure EQE vs. wavelength and angle; map EQE uniformity across panel; thermal cycle -40\u00b0C to 85\u00b0C 1000\u00d7.",
+      "falsifier": "If EQE remains \u226435% after 15% strain, or if periodicity measurement (SEM) shows <260 nm or >300 nm lattice constant, or if subpixel EQE variation exceeds 10%, this hypothesis is falsified.",
+      "epistemic_state": "HYPOTHESIZED",
+      "parent_hypothesis_ids": [],
+      "provenance": {
+        "nodes": {},
+        "edges": [],
+        "committed_hash": null
+      },
+      "is_testable": true,
+      "provenance_root_hash": ""
+    },
+    {
+      "hypothesis_id": "H-N4-002",
+      "claim": "Uniaxial strain of 10% aligns initially isotropic TiO2 nanorods (diameter 80 nm, length 300 nm) into a birefringent layer with extraordinary index n_e=2.45, ordinary index n_o=1.85, creating polarization-selective outcoupling that boosts TE-mode extraction to 52% while TM-mode reaches 42%, averaging 47% EQE.",
+      "mechanism": "Matrix deformation (generic_mechanism_9) reorients anisotropic nanostructures (generic_mechanism_1) rather than changing their spacing, modulating the effective refractive index tensor (generic_property_8) which enables polarization-dependent phase-matching (generic_process_10) to produce enhanced extraction (generic_effect_11).",
+      "evidence": [
+        "Liquid crystal elastomers show strain-induced birefringence \u0394n>0.3",
+        "TiO2 nanorod alignment in polymer matrices demonstrated via stretching",
+        "GaN micro-LEDs emit predominantly TE-polarized light"
+      ],
+      "assumptions": [
+        "Nanorods have aspect ratio >3.5 to rotate under strain",
+        "Epoxy yields at <50\u00b0C allowing rod rotation without fracture",
+        "Initial isotropic distribution (order parameter S<0.1)",
+        "No significant periodicity change (<2%) during alignment"
+      ],
+      "predictions": [],
+      "expected_failure_modes": [
+        "Insufficient aspect ratio prevents alignment",
+        "Epoxy modulus too high for rod rotation",
+        "Nanorod aggregation during alignment",
+        "Strain-induced cracking of aligned layer"
+      ],
+      "novelty_rationale": "Exploits strain-induced orientational order (not spacing change) to create a birefringent extraction layer matched to the TE-dominant emission of GaN, a mechanism distinct from chameleon spacing tuning but rooted in the same matrix-deformation causality.",
+      "testability": "Measure polarization-resolved EQE and angular emission; use polarized Raman to quantify nanorod order parameter; vary strain direction relative to pixel array.",
+      "falsifier": "If polarization-resolved EQE shows <5% difference between TE and TM modes, or if Raman order parameter S<0.3 at 10% strain, or if EQE drops below 38% for either polarization, this hypothesis is falsified.",
+      "epistemic_state": "HYPOTHESIZED",
+      "parent_hypothesis_ids": [],
+      "provenance": {
+        "nodes": {},
+        "edges": [],
+        "committed_hash": null
+      },
+      "is_testable": true,
+      "provenance_root_hash": ""
+    },
+    {
+      "hypothesis_id": "H-N4-003",
+      "claim": "Compressive pre-strain of 8% followed by UV cure creates a graded-index nanostructure layer where the local periodicity varies linearly from 260 nm at the GaN interface to 320 nm at the epoxy surface, enabling adiabatic mode transformation that extracts 49\u00b12% EQE with <2% angular color shift.",
+      "mechanism": "Controlled non-uniform deformation (generic_process_6 \u2192 generic_process_7) creates a spatial gradient in nanostructure spacing (generic_property_5) which produces a continuous shift in the interference condition (generic_property_8) across the layer thickness, enabling broadband adiabatic outcoupling (generic_process_10 \u2192 generic_effect_11) rather than discrete Bragg matching.",
+      "evidence": [
+        "Graded-index anti-reflection coatings show broadband performance",
+        "Chirped photonic crystals demonstrate adiabatic mode conversion",
+        "Strain-gradient engineering in flexible electronics"
+      ],
+      "assumptions": [
+        "Strain gradient can be imposed via wedge-shaped stamp or pressure profile",
+        "UV cure freezes gradient before stress relaxation",
+        "Nanostructure density scales linearly with local strain",
+        "GaN guided modes couple adiabatically to radiation modes"
+      ],
+      "predictions": [],
+      "expected_failure_modes": [
+        "Stress relaxation smears gradient during cure",
+        "Nonlinear strain-periodicity relationship",
+        "Interfacial delamination at high-gradient region",
+        "Scattering loss from gradient-induced disorder"
+      ],
+      "novelty_rationale": "Transfers the spacing-tuning principle into a spatially graded architecture that solves the RGB broadband challenge via adiabatic transformation rather than single-periodicity optimization, leveraging the same deformation\u2192spacing\u2192interference causality in a continuous fashion.",
+      "testability": "Cross-sectional SEM/TEM to map periodicity vs. depth; angle-resolved spectroscopy for color shift; thermal cycling with in-situ EQE monitoring.",
+      "falsifier": "If cross-section shows periodicity variation <3 nm/\u00b5m (insufficient gradient), or if angular color shift exceeds 0.01 CIE \u0394x,\u0394y, or if EQE <43% despite gradient, this hypothesis is falsified.",
+      "epistemic_state": "HYPOTHESIZED",
+      "parent_hypothesis_ids": [],
+      "provenance": {
+        "nodes": {},
+        "edges": [],
+        "committed_hash": null
+      },
+      "is_testable": true,
+      "provenance_root_hash": ""
+    }
+  ],
+  "distinguishing_predictions": "Hypothesis 1 (periodicity tuning) predicts a single sharp Bragg peak in angle-resolved reflectivity at \u03bb\u2248280 nm\u00d7n_eff that shifts uniformly with strain; Hypothesis 2 (nanorod alignment) predicts strong polarization anisotropy (TE/TM EQE ratio >1.2) with minimal periodicity change in SEM; Hypothesis 3 (graded index) predicts a broad, featureless extraction spectrum with linear periodicity gradient in cross-section and near-zero angular color shift. Measuring polarization-resolved EQE, cross-sectional periodicity mapping, and angular color shift simultaneously will uniquely identify the operating mechanism.",
+  "n_hypotheses": 3,
+  "n_testable": 3
+}

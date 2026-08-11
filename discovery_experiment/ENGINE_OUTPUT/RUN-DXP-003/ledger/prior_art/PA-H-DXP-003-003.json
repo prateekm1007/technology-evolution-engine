@@ -1,0 +1,19 @@
+{
+  "assessment_id": "PA-H-DXP-003-003",
+  "hypothesis_id": "H-DXP-003-003",
+  "status": "NOT_EVALUATED",
+  "search_scope": [
+    "dev_corpus"
+  ],
+  "queries": [
+    "Multi-pulse adaptive strategy combining different pulse durations based on both target range and clutter characteristics optimizes detection while minimizing false alarms The radar system employs a sequence of pulses with different durations in each dwell, with each pulse optimized for specific conditions. A short pulse maintains resolution for near targets, a medium pulse balances resolution and energy for mid-range targets, and a long pulse maximizes energy for distant targets while being weighted based on local clutter conditions."
+  ],
+  "sources": [],
+  "matched_prior_art": [],
+  "similarity": "no matches in dev corpus \u2014 NOT proof of novelty",
+  "review_required": true,
+  "confidence": 0.3,
+  "cutoff": "2026-08-08",
+  "reviewer": "novelty_firewall_v0",
+  "timestamp": "2026-08-08T09:53:41.788760+00:00"
+}

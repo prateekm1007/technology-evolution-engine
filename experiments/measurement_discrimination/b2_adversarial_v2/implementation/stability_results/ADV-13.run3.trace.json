@@ -1,0 +1,104 @@
+{
+  "schema_version": "b2-trace-v3",
+  "candidate": {
+    "id": "ADV-13",
+    "text": "pseudomineralization",
+    "source_a": "Calcium phosphate forms crystalline deposits in bone tissue through osteoblast-mediated mineralization.",
+    "source_b": "Marine diatoms precipitate silica-based cell walls using enzymatic silicatein proteins."
+  },
+  "atoms": [
+    {
+      "atom_id": "a1",
+      "claim": "{process: mineralization}",
+      "source_support": [
+        {
+          "support_type": "SOURCE_LOCAL",
+          "source_id": "A",
+          "spans": [
+            {
+              "span_text": "mineralization",
+              "start": 88,
+              "end": 102
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "atom_id": "a2",
+      "claim": "{substrate: bone_tissue}",
+      "source_support": [
+        {
+          "support_type": "SOURCE_LOCAL",
+          "source_id": "A",
+          "spans": [
+            {
+              "span_text": "bone tissue",
+              "start": 48,
+              "end": 59
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "atom_id": "a3",
+      "claim": "{substrate: silica_cell_walls}",
+      "source_support": [
+        {
+          "support_type": "SOURCE_LOCAL",
+          "source_id": "B",
+          "spans": [
+            {
+              "span_text": "silica-based cell walls",
+              "start": 27,
+              "end": 50
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "atom_id": "a4",
+      "claim": "{process: precipitation}",
+      "source_support": [
+        {
+          "support_type": "SOURCE_LOCAL",
+          "source_id": "B",
+          "spans": [
+            {
+              "span_text": "precipitate",
+              "start": 15,
+              "end": 26
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "counterfactuals": [
+    {
+      "removed_source": "A",
+      "unsupported_atoms": [
+        "a1",
+        "a2"
+      ],
+      "justified_without_source": false
+    },
+    {
+      "removed_source": "B",
+      "unsupported_atoms": [
+        "a3",
+        "a4"
+      ],
+      "justified_without_source": false
+    }
+  ],
+  "classification": {
+    "justified_by_corpus": true,
+    "iss_a": true,
+    "iss_b": true,
+    "iss_state": "ISS_both",
+    "label": "ALLOW"
+  }
+}

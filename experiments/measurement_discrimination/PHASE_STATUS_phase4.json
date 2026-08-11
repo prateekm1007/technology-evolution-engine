@@ -1,0 +1,122 @@
+{
+  "phase": 4,
+  "phase_name": "Inventory every measurement metric (corrected per audit round 9)",
+  "status": "COMPLETE",
+  "commit": "d5d811f",
+  "protocol_frozen": false,
+  "protocol_frozen_meaning": "Phase 4 is an inventory task, not a preregistered experiment. The broader measurement/discrimination protocol (Phases 8-17) is not yet frozen.",
+  "scientific_results_visible": true,
+  "scientific_results_note": "Phase 4 produced a metric inventory. This is a measurement infrastructure artifact, not a discovery claim. M-008 is explicitly quarantined. No metric is SCIENTIFICALLY_ELIGIBLE.",
+  "next_allowed_phase": "5",
+  "timestamp_utc": "2026-08-08T17:03:00Z",
+  "github_ci_status": "NOT_INDEPENDENTLY_VERIFIED",
+
+  "audit_round_9_corrections_applied": {
+    "wording_tightened": "Replaced 'discrepancy from input change' (which implies causal attribution) with 'consistent with at least one effective-input or environment difference; causal attribution remains open' (which the evidence supports).",
+    "explicit_distinction_added": "Added DETERMINISTIC_UNDER_IDENTICAL_EFFECTIVE_INPUTS=true (narrow claim) vs CAUSE_OF_DISCREPANCY_ESTABLISHED=false (not yet established). These are separate fields so the epistemic state is unambiguous.",
+    "reconciliation_status_added": "M-008 now has RECONCILIATION_STATUS=RECONCILIATION_OPEN. The discrepancy has not been reconciled.",
+    "machine_test_added": "test_m008_causal_attribution_not_claimed verifies CAUSE_OF_DISCREPANCY_ESTABLISHED=false, RECONCILIATION_STATUS=RECONCILIATION_OPEN, and forbids phrases that imply causal attribution ('discrepancy must come from', 'cause has been identified', etc.).",
+    "principle": "The repository must distinguish 'narrowed the hypothesis space' from 'attributed the cause.' Causal attribution remains open — M-008 is not explained yet, only narrowed."
+  },
+  "audit_round_8_corrections_applied": {
+    "two_dimensional_state_machine": "Replaced REGENERATED_AND_MATCHED (which conventionally means 'independently regenerated') with two separate fields: regeneration_status=NOT_INDEPENDENTLY_VERIFIED + shared_run_comparison=MATCHED. The status is now self-explanatory without caveats.",
+    "independent_regeneration_flag": "Added independent_regeneration=false to all 38 metrics. No metric has been independently regenerated.",
+    "m008_determinism_tightened": "point_estimate is deterministic CONDITIONAL ON identical effective inputs, code, dependencies, and environment. The cause of the discrepancy has NOT been identified. The narrowed hypothesis space is a search space, not a diagnosis.",
+    "m008_rng_topology_recorded": "Module-scoped RNG, seed 42, point-estimate call consumes RNG state, bootstrap calls continue same stream. Do NOT modify RNG while investigating.",
+    "rng_modification_prohibition": "Changing rng_fp from module-scoped to function-scoped would change historical computation semantics. Any RNG redesign must wait until after causal attribution.",
+    "epistemic_ladder_strictified": "HISTORICAL → PROVENANCE_DECLARED → REPRODUCTION_NOT_TESTED → REPRODUCED_IN_SHARED_RUN → INDEPENDENTLY_REGENERATED → INDEPENDENTLY_REGENERATED_AND_MATCHED → SCIENTIFICALLY_ELIGIBLE (+ QUARANTINED).",
+    "machine_tests_enforce": "9 tests verify: no forbidden statuses, shared_run_comparison is separate, independent_regeneration=false for all, shared-run cannot claim independent regen, 0 scientifically eligible, M-008 quarantine, provenance distinction, RNG topology recorded, determinism is conditional not causal."
+  },
+
+  "inventory_summary": {
+    "total_metrics": 38,
+    "regeneration_status_not_independently_verified": 37,
+    "regeneration_status_failed": 1,
+    "shared_run_comparison_matched": 37,
+    "shared_run_comparison_mismatched": 1,
+    "independent_regenerations": 0,
+    "scientifically_eligible": 0,
+    "quarantined": 1,
+    "critical_path_for_matcher_discrimination": 10,
+    "note": "37 metrics are NOT_INDEPENDENTLY_VERIFIED with shared_run_comparison=MATCHED. 1 (M-008) is FAILED with MISMATCHED. 0 are INDEPENDENTLY_REGENERATED. 0 are SCIENTIFICALLY_ELIGIBLE. The two-dimensional state is self-explanatory without caveats."
+  },
+
+  "epistemic_ladder": {
+    "levels": ["HISTORICAL", "PROVENANCE_DECLARED", "REPRODUCTION_NOT_TESTED", "REPRODUCED_IN_SHARED_RUN", "INDEPENDENTLY_REGENERATED", "INDEPENDENTLY_REGENERATED_AND_MATCHED", "SCIENTIFICALLY_ELIGIBLE"],
+    "failure_branch": "REGENERATION_FAILED → QUARANTINED",
+    "current_state": "37 at REPRODUCED_IN_SHARED_RUN (NOT_INDEPENDENTLY_VERIFIED + MATCHED), 1 at QUARANTINED (FAILED + MISMATCHED). 0 at INDEPENDENTLY_REGENERATED or above.",
+    "governing_principle": "Absence of a failed regeneration is not evidence of successful regeneration. Matching in a shared run is necessary but not sufficient for independent reproducibility.",
+    "self_explanatory": "The status fields are self-explanatory without caveats. regeneration_status=NOT_INDEPENDENTLY_VERIFIED cannot be mistaken for 'this metric has been reproduced.'"
+  },
+
+  "m008_quarantine": {
+    "metric_id": "M-008",
+    "metric_name": "FP floor / false-positive floor",
+    "current_stored_value": 0.9189,
+    "fresh_regenerated_value": 0.8889,
+    "regeneration_status": "FAILED",
+    "shared_run_comparison": "MISMATCHED",
+    "independent_regeneration": false,
+    "measurement_usability": "QUARANTINED",
+    "RECONCILIATION_STATUS": "RECONCILIATION_OPEN",
+    "DETERMINISTIC_UNDER_IDENTICAL_EFFECTIVE_INPUTS": true,
+    "CAUSE_OF_DISCREPANCY_ESTABLISHED": false,
+    "scientifically_eligible": false,
+    "used_for_scientific_decision": "NO",
+    "n_resamples": 200,
+    "n_resamples_note": "M-008 hardcodes 200 resamples (bootstrap_statistics.py:489), NOT the global 500. Both committed and fresh runs use 200 for M-008. This does NOT explain the discrepancy.",
+    "determinism_statement": "M-008's point-estimate computation is deterministic CONDITIONAL ON identical effective inputs, code, dependencies, and execution environment.",
+    "what_has_been_established": "Under fixed seed + fixed code path + Python Random, the computation is deterministic. The discrepancy is consistent with at least one effective-input or environment difference; causal attribution remains open.",
+    "what_has_NOT_been_established": "The cause of the discrepancy has NOT been identified. The discrepancy is consistent with at least one effective-input or environment difference; causal attribution remains open. The narrowed hypothesis space is a search space, not a diagnosis.",
+    "rng_topology": {
+      "rng_instance": "module-scoped (created outside the m008 closure at bootstrap_statistics.py:480)",
+      "seed": 42,
+      "initialization": "rng_fp = _random.Random(seed) — created ONCE at module load time",
+      "point_estimate_call": "consumes RNG state (generates random candidates for the point estimate)",
+      "bootstrap_calls": "continue the SAME RNG stream (state is shared, not reset per resample)"
+    },
+    "rng_modification_prohibition": "Do NOT modify M-008's current RNG implementation while investigating the discrepancy. Changing rng_fp from module-scoped to function-scoped would change the historical computation's RNG semantics and could mask the actual cause.",
+    "what_m008_measures_precise": "M-008 is the current preregistered/blocking measurement for false-positive-floor assessment. Under MC-5, an FP floor above 5% blocks discovery claims. This is a policy threshold, not a mathematical definition of discrimination.",
+    "value_deleted": "NO",
+    "value_replaced": "NO",
+    "values_averaged": "NO",
+    "historical_provenance": "PENDING_INVESTIGATION",
+    "investigation_required": [
+      "identify provenance of committed 0.9189",
+      "identify exact input dataset/hash",
+      "identify exact code commit",
+      "identify dependency lock",
+      "identify RNG implementation/environment",
+      "reproduce historical computation",
+      "classify cause"
+    ]
+  },
+
+  "phase_8_17_impact": {
+    "blocked": "Any scientific verdict that consumes M-008 as an authoritative measurement. No scientific verdict may be generated using M-008 until reconciliation.",
+    "potentially_allowed": [
+      "matcher harness construction (does not use M-008 as evidence)",
+      "null-control harness construction",
+      "vocabulary provenance tooling",
+      "pre-registration scaffolding",
+      "statistical analysis code",
+      "input hashing",
+      "provenance validators",
+      "human adjudication tooling"
+    ],
+    "principle": "The project should not freeze useful measurement infrastructure merely because one metric is quarantined. But no scientific verdict may use M-008 until reconciliation."
+  },
+
+  "no_retroactive_repair": true,
+  "no_value_deletion": true,
+  "no_value_replacement": true,
+  "no_value_averaging": true,
+  "no_rng_modification": true,
+
+  "phase_4_artifacts": {
+    "inventory_script": "scripts/phase4_metric_inventory_v2.py",
+    "inventory_result": "reports/phase4/metric_inventory.json",
+    "accounting_tests": "tests/test_phase4_regeneration_accounting.py (9 tests, all pass)",
+    "phase3_corrections": "experiments/measurement_discrimination/PHASE_STATUS_phase3.json"
+  }
+}

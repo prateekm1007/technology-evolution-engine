@@ -1,0 +1,720 @@
+/* MASTER_PROTOCOL PDF Template — world-class engineering document styling
+ *
+ * Per MASTER_PROTOCOL.md §PDF: every package ships as a professionally
+ * formatted PDF. This template defines:
+ *   - Cover page with package ID, title, maturity, status badge
+ *   - Table of contents with page numbers
+ *   - Page headers (package ID) + footers (page X of Y)
+ *   - Sans-serif body (Helvetica/Arial), 11pt, 1.4 line-height
+ *   - Zebra-striped tables with accent header
+ *   - Code blocks with monospace + light background
+ *   - Status badges as colored pills
+ *   - Retraction callouts in red-bordered boxes
+ *
+ * Used by scripts/generate_pdf.py via weasyprint.
+ */
+
+@page {
+    size: A4;
+    margin: 25mm 20mm 25mm 20mm;
+
+    @top-center {
+        content: "PKG-EVBT — Master Package";
+        font-family: 'Helvetica', 'Arial', sans-serif;
+        font-size: 8pt;
+        color: #888;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+    }
+
+    @bottom-center {
+        content: "Page " counter(page) " of " counter(pages);
+        font-family: 'Helvetica', 'Arial', sans-serif;
+        font-size: 8pt;
+        color: #888;
+    }
+
+    @bottom-left {
+        content: "Confidential — Engineering Concept Package";
+        font-family: 'Helvetica', 'Arial', sans-serif;
+        font-size: 7pt;
+        color: #aaa;
+    }
+
+    @bottom-right {
+        content: "2026-08-03";
+        font-family: 'Helvetica', 'Arial', sans-serif;
+        font-size: 7pt;
+        color: #aaa;
+    }
+}
+
+@page :first {
+    margin: 0;
+    @top-center { content: ""; }
+    @bottom-center { content: ""; }
+    @bottom-left { content: ""; }
+    @bottom-right { content: ""; }
+}
+
+/* ---------- Base typography ---------- */
+
+body {
+    font-family: 'Helvetica', 'Arial', 'Noto Sans', sans-serif;
+    font-size: 11pt;
+    line-height: 1.5;
+    color: #1a1a1a;
+    max-width: 100%;
+}
+
+p {
+    margin: 0 0 0.8em 0;
+    text-align: justify;
+    hyphens: auto;
+}
+
+/* ---------- Headings ---------- */
+
+h1 {
+    font-size: 22pt;
+    font-weight: 700;
+    color: #0a2540;
+    margin: 0 0 0.5em 0;
+    padding-bottom: 0.2em;
+    border-bottom: 3px solid #0a2540;
+    page-break-after: avoid;
+}
+
+h2 {
+    font-size: 16pt;
+    font-weight: 600;
+    color: #0a2540;
+    margin: 1.5em 0 0.5em 0;
+    padding-bottom: 0.15em;
+    border-bottom: 1px solid #c8d0d8;
+    page-break-after: avoid;
+}
+
+h3 {
+    font-size: 13pt;
+    font-weight: 600;
+    color: #1a3a5c;
+    margin: 1.2em 0 0.4em 0;
+    page-break-after: avoid;
+}
+
+h4 {
+    font-size: 11pt;
+    font-weight: 600;
+    color: #1a3a5c;
+    margin: 1em 0 0.3em 0;
+    page-break-after: avoid;
+}
+
+/* ---------- Cover page ---------- */
+
+.cover {
+    page-break-after: always;
+    height: 297mm;
+    width: 210mm;
+    margin: 0;
+    padding: 40mm 25mm 25mm 25mm;
+    box-sizing: border-box;
+    background: linear-gradient(135deg, #0a2540 0%, #1a3a5c 100%);
+    color: #ffffff;
+    position: relative;
+}
+
+.cover .package-id {
+    font-size: 10pt;
+    font-weight: 400;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: #7fb3d5;
+    margin-bottom: 8mm;
+}
+
+.cover h1 {
+    font-size: 32pt;
+    font-weight: 300;
+    color: #ffffff;
+    border: none;
+    margin: 0 0 10mm 0;
+    line-height: 1.2;
+}
+
+.cover .subtitle {
+    font-size: 13pt;
+    font-weight: 300;
+    color: #b0c4d8;
+    margin-bottom: 20mm;
+    line-height: 1.5;
+}
+
+.cover .meta-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15mm;
+}
+
+.cover .meta-table td {
+    padding: 4mm 0;
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+    font-size: 10pt;
+    color: #d0d8e0;
+}
+
+.cover .meta-table td:first-child {
+    font-weight: 400;
+    color: #a8d0e8;  /* F-056 fix: was #7fb3d5 (6.89:1); now 9.51:1 — better visibility on dark cover */
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    width: 40%;
+}
+
+.cover .meta-table td:last-child {
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.cover .status-badge {
+    display: inline-block;
+    padding: 3mm 8mm;
+    border-radius: 4mm;
+    font-size: 10pt;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-top: 15mm;
+}
+
+.cover .status-badge.APPROVED { background: #2d7a2d; color: #ffffff; }
+.cover .status-badge.APPROVED_WITH_CONDITIONS { background: #b8860b; color: #ffffff; }
+.cover .status-badge.REJECTED { background: #b22222; color: #ffffff; }
+.cover .status-badge.BLOCKED { background: #555; color: #ffffff; }
+
+.cover .footer {
+    position: absolute;
+    bottom: 25mm;
+    left: 25mm;
+    right: 25mm;
+    font-size: 8pt;
+    color: #9aacbf;  /* F-056 fix: was #5a7a95 (3.44:1 FAIL); now 6.68:1 PASS WCAG AA */
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 5mm;
+}
+
+/* ---------- Table of contents ---------- */
+
+.toc {
+    page-break-after: always;
+    page-break-before: avoid;
+}
+
+.toc h2 {
+    font-size: 18pt;
+    border-bottom: 2px solid #0a2540;
+    margin-bottom: 8mm;
+}
+
+.toc ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.toc li {
+    padding: 2mm 0;
+    border-bottom: 1px dotted #c8d0d8;
+    font-size: 11pt;
+    display: flex;
+    align-items: baseline;
+}
+
+.toc li a {
+    text-decoration: none;
+    color: #1a3a5c;
+    flex: 1;
+}
+
+.toc .toc-number {
+    display: inline-block;
+    width: 12mm;
+    color: #4a7a9e;
+    font-weight: 600;
+}
+
+/* F-057 fix: TOC page-number leaders using CSS target-counter().
+   WeasyPrint supports target-counter(attr(href), page) for PDF-internal
+   page references. The leader dots use a CSS pseudo-element with
+   dotted border. */
+.toc li a::after {
+    content: target-counter(attr(href), page);
+    float: right;
+    color: #4a7a9e;
+    font-weight: 400;
+}
+
+.toc li a::before {
+    content: "";
+    flex: 1;
+    border-bottom: 1px dotted #b8c0c8;
+    margin: 0 2mm;
+    position: relative;
+    top: -2pt;
+}
+
+/* ---------- Tables ---------- */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1em 0;
+    font-size: 9.5pt;
+    page-break-inside: auto;
+}
+
+thead {
+    display: table-header-group;
+}
+
+thead th {
+    background: #0a2540;
+    color: #ffffff;
+    font-weight: 600;
+    text-align: left;
+    padding: 6px 8px;
+    border-bottom: 2px solid #0a2540;
+    font-size: 9pt;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+tbody tr {
+    page-break-inside: avoid;
+    page-break-after: auto;
+}
+
+tbody tr:nth-child(even) {
+    background: #f4f7fa;
+}
+
+tbody td {
+    padding: 5px 8px;
+    border-bottom: 1px solid #e0e6ed;
+    vertical-align: top;
+}
+
+tbody td:first-child {
+    font-weight: 500;
+}
+
+/* ---------- Code blocks ---------- */
+
+/* F-054 fix: diagrams (pre blocks with box-drawing chars) must NOT wrap.
+   Use white-space: pre (not pre-wrap) to prevent ASCII diagram breakage.
+   overflow-x: auto allows horizontal scroll if needed; the container
+   shrinks to fit rather than wrapping. */
+pre {
+    background: #f5f7f9;
+    border: 1px solid #d8dee4;
+    border-left: 4px solid #0a2540;
+    border-radius: 3px;
+    padding: 10px 14px;
+    font-family: 'Menlo', 'Consolas', 'Sarasa Mono', monospace;
+    font-size: 9pt;
+    line-height: 1.4;
+    overflow-x: auto;
+    page-break-inside: avoid;
+    white-space: pre;  /* F-054: was pre-wrap — caused diagram breakage */
+    /* word-wrap removed — incompatible with white-space: pre */
+}
+
+/* F-055 fix: equation blocks get proper typesetting via .equation class.
+   Equations use serif font (engineering convention), centered, with
+   subscript/superscript support via <sub>/<super> tags. */
+.equation {
+    font-family: 'Tinos', 'Times New Roman', 'Liberation Serif', serif;
+    font-size: 11pt;
+    text-align: center;
+    margin: 1.5em 0;
+    padding: 8px 14px;
+    background: #f9fafb;
+    border-left: 3px solid #7fb3d5;
+    border-radius: 3px;
+    line-height: 1.6;
+}
+.equation sub {
+    font-size: 0.75em;
+    vertical-align: sub;
+}
+.equation sup {
+    font-size: 0.75em;
+    vertical-align: super;
+}
+
+code {
+    font-family: 'Menlo', 'Consolas', 'Sarasa Mono', monospace;
+    font-size: 9.5pt;
+    background: #f0f3f6;
+    padding: 1px 4px;
+    border-radius: 2px;
+    color: #1a3a5c;
+}
+
+pre code {
+    background: none;
+    padding: 0;
+    color: inherit;
+}
+
+/* ---------- Blockquotes ---------- */
+
+blockquote {
+    border-left: 4px solid #7fb3d5;
+    background: #f4f7fa;
+    margin: 1em 0;
+    padding: 8px 14px;
+    color: #2a4055;
+    font-style: italic;
+}
+
+blockquote p {
+    margin: 0;
+}
+
+/* ---------- Status badges (inline) ---------- */
+
+.badge {
+    display: inline-block;
+    padding: 1px 6px;
+    border-radius: 3px;
+    font-size: 8.5pt;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #ffffff;
+    vertical-align: middle;
+}
+
+.badge.PASS { background: #2d7a2d; }
+.badge.PASS_WITH_CONDITIONS { background: #b8860b; }
+.badge.MARGINAL { background: #b8860b; }
+.badge.REJECTED { background: #b22222; }
+.badge.BLOCKED { background: #555; }
+.badge.NOT_RUN { background: #888; }
+.badge.RETRACTED { background: #8b0000; }
+.badge.WITHDRAWN { background: #8b0000; }
+
+/* ---------- Retraction callouts ---------- */
+
+.retraction-callout {
+    border: 2px solid #8b0000;
+    background: #fdf2f2;
+    border-radius: 4px;
+    padding: 10px 14px;
+    margin: 1em 0;
+    page-break-inside: avoid;
+}
+
+.retraction-callout::before {
+    content: "RETRACTION";
+    display: block;
+    font-weight: 700;
+    color: #8b0000;
+    font-size: 9pt;
+    letter-spacing: 0.1em;
+    margin-bottom: 6px;
+}
+
+.retraction-callout pre {
+    background: #ffffff;
+    border-left-color: #8b0000;
+    margin: 0;
+}
+
+/* ---------- Horizontal rules ---------- */
+
+hr {
+    border: none;
+    border-top: 1px solid #c8d0d8;
+    margin: 1.5em 0;
+}
+
+/* ---------- Lists ---------- */
+
+ul, ol {
+    margin: 0.5em 0 0.8em 0;
+    padding-left: 1.5em;
+}
+
+li {
+    margin-bottom: 0.3em;
+}
+
+/* ---------- Page breaks ---------- */
+/* F-058 fix: tighten page-break rules to reduce whitespace inflation.
+   Only top-level h1 sections get page-break-before; h2/h3 flow
+   naturally. This reduces the 40-60% blank space at page bottoms. */
+
+h1 {
+    page-break-after: avoid;
+    page-break-before: always;  /* F-058: only h1 forces new page */
+}
+
+h2 {
+    page-break-after: avoid;
+    /* F-058: removed page-break-before — h2 flows naturally */
+}
+
+h3 {
+    page-break-after: avoid;
+}
+
+table, pre, blockquote {
+    page-break-inside: avoid;
+}
+
+/* F-058: allow large tables to break across pages if needed (prevents
+   large whitespace when a table doesn't fit on the remaining page).
+   Small tables still avoid breaking via the rule above. */
+table {
+    page-break-inside: auto;
+}
+
+/* F-058: prevent orphaned headings at page bottom */
+h2, h3, h4 {
+    page-break-after: avoid;
+    break-after: avoid;
+}
+
+/* ---------- Final page ---------- */
+
+.final-verdict {
+    page-break-before: always;
+    text-align: center;
+    padding: 30mm 0;
+}
+
+.final-verdict h2 {
+    font-size: 14pt;
+    border: none;
+    text-align: center;
+}
+
+.final-verdict .verdict {
+    font-size: 36pt;
+    font-weight: 700;
+    margin: 15mm 0;
+    padding: 8mm 20mm;
+    display: inline-block;
+    border-radius: 4px;
+    letter-spacing: 0.1em;
+}
+
+.final-verdict .verdict.APPROVED { background: #2d7a2d; color: #fff; }
+.final-verdict .verdict.APPROVED_WITH_CONDITIONS { background: #b8860b; color: #fff; }
+.final-verdict .verdict.REJECTED { background: #b22222; color: #fff; }
+.final-verdict .verdict.BLOCKED { background: #555; color: #fff; }
+
+/* ---------- Print optimizations ---------- */
+
+* {
+    box-sizing: border-box;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* ---------- Evidence cards (PR-7) ---------- */
+
+.evidence-card {
+    border: 1px solid #c8d0d8;
+    border-left: 4px solid #0a2540;
+    background: #f8fa fc;
+    border-radius: 4px;
+    padding: 10px 14px;
+    margin: 1em 0;
+    page-break-inside: avoid;
+    font-size: 10pt;
+}
+
+.evidence-card .card-title {
+    font-weight: 700;
+    color: #0a2540;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 9pt;
+    margin-bottom: 6px;
+}
+
+.evidence-card .card-row {
+    display: flex;
+    margin-bottom: 3px;
+}
+
+.evidence-card .card-label {
+    font-weight: 600;
+    color: #5a7a95;
+    min-width: 120px;
+    font-size: 9.5pt;
+}
+
+.evidence-card .card-value {
+    color: #1a1a1a;
+    font-size: 9.5pt;
+}
+
+/* ---------- Risk dashboard (PR-8) ---------- */
+
+.risk-dashboard {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1em 0;
+    font-size: 9.5pt;
+}
+
+.risk-dashboard th {
+    background: #8b0000;
+    color: #ffffff;
+    font-weight: 600;
+    text-align: left;
+    padding: 6px 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 9pt;
+}
+
+.risk-dashboard td {
+    padding: 5px 8px;
+    border-bottom: 1px solid #e0e6ed;
+}
+
+.risk-dashboard tr:nth-child(even) {
+    background: #fdf2f2;
+}
+
+.risk-dashboard .severity-high { color: #b22222; font-weight: 600; }
+.risk-dashboard .severity-medium { color: #b8860b; font-weight: 600; }
+.risk-dashboard .severity-low { color: #2d7a2d; font-weight: 600; }
+
+/* ---------- Section verdicts (PR-2) ---------- */
+
+.section-verdict {
+    display: block;
+    margin-top: 1em;
+    padding: 4px 12px;
+    border-radius: 3px;
+    font-size: 9pt;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    text-align: right;
+}
+
+.section-verdict.PASS { color: #2d7a2d; border-top: 2px solid #2d7a2d; }
+.section-verdict.PASS_WITH_CONDITIONS { color: #b8860b; border-top: 2px solid #b8860b; }
+.section-verdict.FAIL { color: #b22222; border-top: 2px solid #b22222; }
+.section-verdict.BLOCKED { color: #555; border-top: 2px solid #555; }
+
+/* ---------- Executive summary (PR-5) ---------- */
+
+.executive-summary {
+    page-break-after: always;
+    padding: 10mm 0;
+}
+
+.executive-summary h2 {
+    font-size: 20pt;
+    color: #0a2540;
+    border-bottom: 3px solid #0a2540;
+    margin-bottom: 10mm;
+}
+
+.executive-summary .summary-box {
+    border: 1px solid #c8d0d8;
+    border-radius: 4px;
+    padding: 8mm;
+    margin-bottom: 5mm;
+    background: #f4f7fa;
+}
+
+.executive-summary .summary-box h3 {
+    font-size: 10pt;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #5a7a95;
+    margin-bottom: 3mm;
+}
+
+.executive-summary .summary-box p {
+    font-size: 11pt;
+    color: #1a1a1a;
+    margin: 0;
+}
+
+/* ---------- Final page (PR-12) ---------- */
+
+.final-answer {
+    page-break-before: always;
+    text-align: center;
+    padding: 40mm 0;
+}
+
+.final-answer .answer {
+    font-size: 48pt;
+    font-weight: 700;
+    margin: 10mm 0;
+    color: #2d7a2d;
+}
+
+.final-answer .answer-detail {
+    font-size: 12pt;
+    color: #1a1a1a;
+    margin: 3mm 0;
+    line-height: 1.6;
+}
+
+.final-answer .answer-label {
+    font-weight: 600;
+    color: #5a7a95;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 9pt;
+}
+
+/* ---------- Deployment roadmap (PR-9) ---------- */
+
+.deployment-roadmap {
+    display: table;
+    width: 100%;
+    margin: 1em 0;
+}
+
+.roadmap-stage {
+    display: table-cell;
+    text-align: center;
+    padding: 8px;
+    border-right: 1px solid #c8d0d8;
+    vertical-align: top;
+    font-size: 9pt;
+}
+
+.roadmap-stage:last-child {
+    border-right: none;
+}
+
+.roadmap-stage .stage-number {
+    font-weight: 700;
+    color: #0a2540;
+    font-size: 14pt;
+    margin-bottom: 4px;
+}
+
+.roadmap-stage .stage-name {
+    font-weight: 600;
+    color: #1a3a5c;
+    margin-bottom: 4px;
+}

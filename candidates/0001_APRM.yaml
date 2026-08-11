@@ -1,0 +1,29 @@
+# Candidate 0001: Adaptive Passive Refrigeration Mesh (APRM)
+id: '0001'
+name: Adaptive Passive Refrigeration Mesh
+abbreviation: APRM
+status: GATED
+
+transformation:
+  undesirable_state: Food and medicine spoil due to lack of refrigeration in off-grid regions
+  desirable_state: Passive, zero-energy cooling sufficient for preservation
+  operator: change_energy_domain
+
+constraint_surface:
+  energy: 0.2
+  information: 0.3
+  time: 0.4
+  material: 0.7
+  cost: 0.5
+  safety: 0.2
+  maintenance: 0.4
+  regulation: 0.2
+  manufacturing: 0.6
+  supply_chain: 0.5
+
+missing_prerequisites:
+  - selective_emitters
+  - phase_change_materials
+  - extrusion_processes
+
+pcs: 0.42

@@ -1,0 +1,19 @@
+# Gate 2 Integrity Manifest
+#
+# Cryptographic protection for frozen Gate 2 artifacts (Repair #3).
+# The `.IMMUTABLE` marker is a human-readable signal; THIS manifest
+# provides the actual SHA-256 integrity verification.
+#
+# The manifest itself is anchored by FREEZE_RECORD.json (Repair #4-extended).
+# An attacker who regenerates this manifest to bless altered artifacts
+# will produce a different manifest_sha, breaking the freeze record.
+#
+# Do NOT edit by hand. Regenerate with:
+#   python scripts/verify_gate2_manifest.py --regenerate
+#
+# Protocol SHA: 32691a78dc3bc963937fb21380c9df9c4f1f6c33
+# Case-set SHA: (none — no Gate 2 cases registered yet)
+#
+# Format: <sha256>  <relative_path>
+
+5eb47a351baa902bbf9cd65e6029965d446e1704fe0cd02324f09b95dbf46b76  .IMMUTABLE

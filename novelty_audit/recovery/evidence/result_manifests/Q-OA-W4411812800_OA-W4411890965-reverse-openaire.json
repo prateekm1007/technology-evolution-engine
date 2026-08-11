@@ -1,0 +1,51 @@
+{
+  "query_id": "Q-OA-W4411812800_OA-W4411890965-reverse-openaire",
+  "pair_id": "OA-W4411812800_OA-W4411890965",
+  "query_type": "reverse",
+  "provider": "openaire",
+  "query_text": "quantum drug mechanics electronics soft materials",
+  "query_hash": "3a2682238eeefe152a59a158d23ed8aa3b3319e62e81b0351d37915a799b46e5",
+  "frozen_query_ref": "Q-OA-W4411812800_OA-W4411890965-reverse-openalex",
+  "url": "https://api.openaire.eu/search/publications?keywords=quantum+drug+mechanics+electronics+soft+materials&size=10&format=json",
+  "timestamp_utc": "2026-08-11T12:42:25.290001+00:00",
+  "status": "SUCCESS",
+  "result_count": 1,
+  "result_ids": [
+    [
+      {
+        "$": "50|datacite____::7b61bd008976189d8cad36c5f5b400ab"
+      },
+      {
+        "$": "10.5281/zenodo.15996066"
+      },
+      {
+        "$": "oai:zenodo.org:15996066"
+      },
+      {
+        "$": "50|od______2659::7b61bd008976189d8cad36c5f5b400ab"
+      },
+      {
+        "$": "50|datacite____::dc53a10a366203f93a94078f0b185141"
+      },
+      {
+        "$": "10.5281/zenodo.15996065"
+      }
+    ]
+  ],
+  "result_titles": [
+    "VFE Vibrational Field Equations Tier 8 by FatherTimeSDKP"
+  ],
+  "result_dois": [
+    "10.5281/zenodo.15996066"
+  ],
+  "result_dates": [
+    "2025-07-16"
+  ],
+  "response_hash": "b52170b08325030c60945c9839e1c57c451b4d6739800fca7cb421bfc2ab1d16",
+  "evidence_uri": "https://api.openaire.eu/search/publications?keywords=quantum+drug+mechanics+electronics+soft+materials&size=10&format=json",
+  "error": null,
+  "rate_limit_headers": {
+    "x-ratelimit-used": "315",
+    "x-ratelimit-limit": "7199"
+  }
+}

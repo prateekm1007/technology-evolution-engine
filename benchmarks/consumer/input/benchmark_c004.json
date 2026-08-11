@@ -1,0 +1,42 @@
+{
+  "id": "benchmark_c004",
+  "type": "consumer",
+  "source": "user_prompt",
+  "prompt": "I want to monitor the structural integrity of a 50-year-old concrete bridge in my community. We have no budget for professional inspection equipment. Need early warning of cracking or deformation.",
+  "domain": "sensors",
+  "budget_usd": 1000,
+  "environment": "outdoor, concrete bridge, community-funded",
+  "constraints": [
+    "limited budget",
+    "outdoor exposure",
+    "safety critical",
+    "no professional equipment"
+  ],
+  "skill_level": "moderate",
+  "timeline_days": 90,
+  "expected_constraints": [
+    "safety",
+    "cost",
+    "maintenance",
+    "regulation",
+    "energy"
+  ],
+  "expected_prerequisites": [
+    "strain sensors",
+    "wireless telemetry",
+    "data logging",
+    "alert system"
+  ],
+  "expected_adjacent_domains": [
+    "civil engineering",
+    "IoT",
+    "materials science",
+    "signal processing"
+  ],
+  "expected_failure_modes": [
+    "sensor detachment",
+    "false alarms",
+    "weather damage",
+    "data loss"
+  ]
+}

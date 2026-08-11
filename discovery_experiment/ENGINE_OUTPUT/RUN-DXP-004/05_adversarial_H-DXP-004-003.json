@@ -1,0 +1,74 @@
+{
+  "stage": "05_adversarial_H-DXP-004-003",
+  "run_id": "RUN-DXP-004",
+  "code_sha": "9cf2046069a549721298cc8d709ac7bc8b4e8997",
+  "input_hash": "9250c77b2a7f2bf0dbb9588ece7a0eb97ee50f09b3a8d90dbfbf89acdcd38c58",
+  "output_hash": "93531c0331f1ee66e5b217d4065b16fd612be750c6d3744b3e26dec08866d472",
+  "provider_manifest": {
+    "provider": "zai",
+    "model": "glm-4-plus",
+    "version": "z-ai-web-dev-sdk",
+    "configuration": {
+      "temperature": 0.2,
+      "max_tokens": 4096,
+      "system_sha": "1f5a3fff3aebc2e1d44b2312f4b604b5c2911cacaf452eb6ca705c724fc9142b"
+    },
+    "prompt_sha": "4c45f824a8aebd1707f588da3aa44931ea5fdb6b163c5c210dbd5a493d233191",
+    "seed": null,
+    "tool_versions": {
+      "z_ai_cli": "z-ai"
+    },
+    "timestamp": "2026-08-08T10:05:52.394549+00:00",
+    "latency_ms": 10942,
+    "success": true,
+    "error": ""
+  },
+  "result": {
+    "hypothesis_id": "H-DXP-004-003",
+    "failure_modes": [
+      {
+        "category": "FRAGILE_ASSUMPTION",
+        "description": "The assumption that biofilm formation is a significant contributor to drag in water pipes is unsubstantiated and likely overstates the role of biofilms compared to other drag sources.",
+        "severity": "HIGH",
+        "evidence": "Numerous studies show that in most water systems, drag is primarily affected by pipe geometry, flow velocity, and fluid properties, with biofilms contributing minimally except in specific stagnant conditions."
+      },
+      {
+        "category": "CONTRADICTS_KNOWN",
+        "description": "The claim that aligned features reduce effective surface roughness contradicts fluid dynamics principles where aligned features can actually increase drag in certain flow regimes.",
+        "severity": "HIGH",
+        "evidence": "Research in tribology shows that aligned surface features can create directional drag effects that increase resistance in certain flow conditions, particularly at higher Reynolds numbers."
+      },
+      {
+        "category": "BOUNDARY_BREAKS",
+        "description": "The hypothesis fails to account for realistic operational conditions where microstructures would quickly become ineffective due to scaling, particulate accumulation, or chemical changes in the fluid.",
+        "severity": "HIGH",
+        "evidence": "Industrial pipe systems experience variable water chemistry, temperature fluctuations, and particulate loads that would rapidly compromise any microstructure's effectiveness."
+      },
+      {
+        "category": "PRIOR_ART_EXISTS",
+        "description": "The concept of using surface structures to control biofilm formation is not novel and has been extensively studied with mixed results.",
+        "severity": "MEDIUM",
+        "evidence": "Numerous publications exist on shark skin-inspired surfaces and their limited effectiveness in real-world applications, with many studies showing only temporary benefits."
+      },
+      {
+        "category": "FALSIFIER_TRIGGERED",
+        "description": "The hypothesis directly contradicts its own falsifier condition, as it posits that reduced drag comes from both biofilm inhibition AND roughness reduction, making it impossible to falsify completely.",
+        "severity": "HIGH",
+        "evidence": "The hypothesis claims two mechanisms (biofilm inhibition AND roughness reduction) for reduced drag, yet only requires one to be falsified to invalidate the hypothesis, creating logical inconsistency."
+      },
+      {
+        "category": "INCOMPATIBLE_TARGET",
+        "description": "The hypothesis targets water pipes but provides no mechanism for scaling to different pipe materials, sizes, or flow conditions.",
+        "severity": "MEDIUM",
+        "evidence": "No consideration is given to how microstructures would perform on different materials (PVC vs. steel) or in pipes with varying diameters and flow velocities."
+      }
+    ],
+    "survives": false,
+    "outcome": "ADVERSARIAL_FAILED",
+    "n_high_severity": 4,
+    "n_medium_severity": 2,
+    "n_low_severity": 0,
+    "source_hypothesis_hash": ""
+  },
+  "timestamp": "2026-08-08T10:06:03.337890+00:00"
+}

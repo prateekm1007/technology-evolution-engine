@@ -1,0 +1,1054 @@
+{
+  "report_type": "SOURCE_PAIRABILITY_AUDIT_V1",
+  "report_version": "1.0.0",
+  "generated_at": "2026-08-11T00:00:00Z",
+  "source_count": 110,
+  "total_pairs_audited": 5995,
+  "disposition_distribution": {
+    "INSUFFICIENT_EVIDENCE": 2999,
+    "WEAK_BRIDGE": 1607,
+    "SAME_DOMAIN": 1046,
+    "PAIRABLE": 343
+  },
+  "pairable_count": 343,
+  "weak_bridge_count": 1607,
+  "total_eligible_pairs": 1950,
+  "n100_sufficient": true,
+  "negative_result": null,
+  "domain_pair_distribution": {
+    "chemistry \u2194 materials_science": {
+      "candidate": 585,
+      "pairable": 53,
+      "weak": 209,
+      "eligible": 53
+    },
+    "computer_science \u2194 materials_science": {
+      "candidate": 702,
+      "pairable": 50,
+      "weak": 200,
+      "eligible": 50
+    },
+    "materials_science \u2194 mechanical_engineering": {
+      "candidate": 78,
+      "pairable": 28,
+      "weak": 31,
+      "eligible": 28
+    },
+    "materials_science \u2194 polymer_science": {
+      "candidate": 195,
+      "pairable": 26,
+      "weak": 120,
+      "eligible": 26
+    },
+    "chemical_engineering \u2194 materials_science": {
+      "candidate": 195,
+      "pairable": 21,
+      "weak": 106,
+      "eligible": 21
+    },
+    "electrical_engineering \u2194 materials_science": {
+      "candidate": 195,
+      "pairable": 20,
+      "weak": 86,
+      "eligible": 20
+    },
+    "materials_science \u2194 metallurgy": {
+      "candidate": 78,
+      "pairable": 16,
+      "weak": 25,
+      "eligible": 16
+    },
+    "computer_science \u2194 mechanical_engineering": {
+      "candidate": 36,
+      "pairable": 14,
+      "weak": 13,
+      "eligible": 14
+    },
+    "computer_science \u2194 polymer_science": {
+      "candidate": 90,
+      "pairable": 12,
+      "weak": 52,
+      "eligible": 12
+    },
+    "chemistry \u2194 computer_science": {
+      "candidate": 270,
+      "pairable": 9,
+      "weak": 84,
+      "eligible": 9
+    },
+    "chemistry \u2194 mechanical_engineering": {
+      "candidate": 30,
+      "pairable": 9,
+      "weak": 14,
+      "eligible": 9
+    },
+    "chemistry \u2194 polymer_science": {
+      "candidate": 75,
+      "pairable": 8,
+      "weak": 48,
+      "eligible": 8
+    },
+    "chemistry \u2194 metallurgy": {
+      "candidate": 30,
+      "pairable": 6,
+      "weak": 10,
+      "eligible": 6
+    },
+    "chemical_engineering \u2194 chemistry": {
+      "candidate": 75,
+      "pairable": 5,
+      "weak": 43,
+      "eligible": 5
+    },
+    "chemical_engineering \u2194 computer_science": {
+      "candidate": 90,
+      "pairable": 5,
+      "weak": 49,
+      "eligible": 5
+    },
+    "computer_science \u2194 electrical_engineering": {
+      "candidate": 90,
+      "pairable": 5,
+      "weak": 41,
+      "eligible": 5
+    },
+    "chemical_engineering \u2194 mechanical_engineering": {
+      "candidate": 10,
+      "pairable": 5,
+      "weak": 4,
+      "eligible": 5
+    },
+    "electrical_engineering \u2194 mechanical_engineering": {
+      "candidate": 10,
+      "pairable": 5,
+      "weak": 4,
+      "eligible": 5
+    },
+    "chemistry \u2194 electrical_engineering": {
+      "candidate": 75,
+      "pairable": 4,
+      "weak": 37,
+      "eligible": 4
+    },
+    "materials_science \u2194 molecular_biology": {
+      "candidate": 195,
+      "pairable": 4,
+      "weak": 44,
+      "eligible": 4
+    },
+    "computer_science \u2194 metallurgy": {
+      "candidate": 36,
+      "pairable": 4,
+      "weak": 14,
+      "eligible": 4
+    },
+    "mechanical_engineering \u2194 polymer_science": {
+      "candidate": 10,
+      "pairable": 4,
+      "weak": 5,
+      "eligible": 4
+    },
+    "mechanical_engineering \u2194 metallurgy": {
+      "candidate": 4,
+      "pairable": 4,
+      "weak": 0,
+      "eligible": 4
+    },
+    "chemical_engineering \u2194 polymer_science": {
+      "candidate": 25,
+      "pairable": 4,
+      "weak": 17,
+      "eligible": 4
+    },
+    "electrical_engineering \u2194 polymer_science": {
+      "candidate": 25,
+      "pairable": 4,
+      "weak": 16,
+      "eligible": 4
+    },
+    "metallurgy \u2194 polymer_science": {
+      "candidate": 10,
+      "pairable": 3,
+      "weak": 5,
+      "eligible": 3
+    },
+    "chemical_engineering \u2194 electrical_engineering": {
+      "candidate": 25,
+      "pairable": 3,
+      "weak": 16,
+      "eligible": 3
+    },
+    "chemical_engineering \u2194 metallurgy": {
+      "candidate": 10,
+      "pairable": 3,
+      "weak": 6,
+      "eligible": 3
+    },
+    "mechanical_engineering \u2194 molecular_biology": {
+      "candidate": 10,
+      "pairable": 2,
+      "weak": 4,
+      "eligible": 2
+    },
+    "molecular_biology \u2194 polymer_science": {
+      "candidate": 25,
+      "pairable": 2,
+      "weak": 15,
+      "eligible": 2
+    },
+    "chemistry \u2194 molecular_biology": {
+      "candidate": 75,
+      "pairable": 1,
+      "weak": 16,
+      "eligible": 1
+    },
+    "computer_science \u2194 molecular_biology": {
+      "candidate": 90,
+      "pairable": 1,
+      "weak": 10,
+      "eligible": 1
+    },
+    "chemical_engineering \u2194 molecular_biology": {
+      "candidate": 25,
+      "pairable": 1,
+      "weak": 11,
+      "eligible": 1
+    },
+    "electrical_engineering \u2194 molecular_biology": {
+      "candidate": 25,
+      "pairable": 1,
+      "weak": 7,
+      "eligible": 1
+    },
+    "electrical_engineering \u2194 metallurgy": {
+      "candidate": 10,
+      "pairable": 1,
+      "weak": 7,
+      "eligible": 1
+    },
+    "cell_biology \u2194 chemistry": {
+      "candidate": 45,
+      "pairable": 0,
+      "weak": 6,
+      "eligible": 0
+    },
+    "chemistry \u2194 photonics": {
+      "candidate": 15,
+      "pairable": 0,
+      "weak": 2,
+      "eligible": 0
+    },
+    "chemistry \u2194 heat_transfer": {
+      "candidate": 15,
+      "pairable": 0,
+      "weak": 2,
+      "eligible": 0
+    },
+    "chemistry \u2194 optics": {
+      "candidate": 15,
+      "pairable": 0,
+      "weak": 2,
+      "eligible": 0
+    },
+    "chemistry \u2194 optoelectronics": {
+      "candidate": 30,
+      "pairable": 0,
+      "weak": 4,
+      "eligible": 0
+    },
+    "chemistry \u2194 electromagnetics": {
+      "candidate": 15,
+      "pairable": 0,
+      "weak": 2,
+      "eligible": 0
+    },
+    "chemistry \u2194 electronics": {
+      "candidate": 15,
+      "pairable": 0,
+      "weak": 2,
+      "eligible": 0
+    },
+    "chemistry \u2194 thermodynamics": {
+      "candidate": 15,
+      "pairable": 0,
+      "weak": 2,
+      "eligible": 0
+    },
+    "biology \u2194 chemistry": {
+      "candidate": 30,
+      "pairable": 0,
+      "weak": 4,
+      "eligible": 0
+    },
+    "chemistry \u2194 fluid_mechanics": {
+      "candidate": 15,
+      "pairable": 0,
+      "weak": 3,
+      "eligible": 0
+    },
+    "cell_biology \u2194 materials_science": {
+      "candidate": 117,
+      "pairable": 0,
+      "weak": 21,
+      "eligible": 0
+    },
+    "materials_science \u2194 photonics": {
+      "candidate": 39,
+      "pairable": 0,
+      "weak": 7,
+      "eligible": 0
+    },
+    "heat_transfer \u2194 materials_science": {
+      "candidate": 39,
+      "pairable": 0,
+      "weak": 7,
+      "eligible": 0
+    },
+    "materials_science \u2194 optics": {
+      "candidate": 39,
+      "pairable": 0,
+      "weak": 7,
+      "eligible": 0
+    },
+    "materials_science \u2194 optoelectronics": {
+      "candidate": 78,
+      "pairable": 0,
+      "weak": 16,
+      "eligible": 0
+    },
+    "electromagnetics \u2194 materials_science": {
+      "candidate": 39,
+      "pairable": 0,
+      "weak": 8,
+      "eligible": 0
+    },
+    "electronics \u2194 materials_science": {
+      "candidate": 39,
+      "pairable": 0,
+      "weak": 7,
+      "eligible": 0
+    },
+    "materials_science \u2194 thermodynamics": {
+      "candidate": 39,
+      "pairable": 0,
+      "weak": 7,
+      "eligible": 0
+    },
+    "biology \u2194 materials_science": {
+      "candidate": 78,
+      "pairable": 0,
+      "weak": 14,
+      "eligible": 0
+    },
+    "fluid_mechanics \u2194 materials_science": {
+      "candidate": 39,
+      "pairable": 0,
+      "weak": 9,
+      "eligible": 0
+    },
+    "cell_biology \u2194 computer_science": {
+      "candidate": 54,
+      "pairable": 0,
+      "weak": 0,
+      "eligible": 0
+    },
+    "computer_science \u2194 photonics": {
+      "candidate": 18,
+      "pairable": 0,
+      "weak": 0,
+      "eligible": 0
+    },
+    "computer_science \u2194 heat_transfer": {
+      "candidate": 18,
+      "pairable": 0,
+      "weak": 0,
+      "eligible": 0
+    },
+    "computer_science \u2194 optics": {
+      "candidate": 18,
+      "pairable": 0,
+      "weak": 0,
+      "eligible": 0
+    },
+    "computer_science \u2194 optoelectronics": {
+      "candidate": 36,
+      "pairable": 0,
+      "weak": 1,
+      "eligible": 0
+    },
+    "computer_science \u2194 electromagnetics": {
+      "candidate": 18,
+      "pairable": 0,
+      "weak": 0,
+      "eligible": 0
+    },
+    "computer_science \u2194 electronics": {
+      "candidate": 18,
+      "pairable": 0,
+      "weak": 0,
+      "eligible": 0
+    },
+    "computer_science \u2194 thermodynamics": {
+      "candidate": 18,
+      "pairable": 0,
+      "weak": 1,
+      "eligible": 0
+    },
+    "biology \u2194 computer_science": {
+      "candidate": 36,
+      "pairable": 0,
+      "weak": 0,
+      "eligible": 0
+    },
+    "computer_science \u2194 fluid_mechanics": {
+      "candidate": 18,
+      "pairable": 0,
+      "weak": 3,
+      "eligible": 0
+    },
+    "cell_biology \u2194 molecular_biology": {
+      "candidate": 15,
+      "pairable": 0,
+      "weak": 0,
+      "eligible": 0
+    },
+    "molecular_biology \u2194 photonics": {
+      "candidate": 5,
+      "pairable": 0,
+      "weak": 0,
+      "eligible": 0
+    },
+    "heat_transfer \u2194 molecular_biology": {
+      "candidate": 5,
+      "pairable": 0,
+      "weak": 0,
+      "eligible": 0
+    },
+    "metallurgy \u2194 molecular_biology": {
+      "candidate": 10,
+      "pairable": 0,
+      "weak": 2,
+      "eligible": 0
+    },
+    "molecular_biology \u2194 optics": {
+      "candidate": 5,
+      "pairable": 0,
+      "weak": 0,
+      "eligible": 0
+    },
+    "molecular_biology \u2194 optoelectronics": {
+      "candidate": 10,
+      "pairable": 0,
+      "weak": 0,
+      "eligible": 0
+    },
+    "electromagnetics \u2194 molecular_biology": {
+      "candidate": 5,
+      "pairable": 0,
+      "weak": 0,
+      "eligible": 0
+    },
+    "electronics \u2194 molecular_biology": {
+      "candidate": 5,
+      "pairable": 0,
+      "weak": 0,
+      "eligible": 0
+    },
+    "molecular_biology \u2194 thermodynamics": {
+      "candidate": 5,
+      "pairable": 0,
+      "weak": 0,
+      "eligible": 0
+    },
+    "biology \u2194 molecular_biology": {
+      "candidate": 10,
+      "pairable": 0,
+      "weak": 0,
+      "eligible": 0
+    },
+    "fluid_mechanics \u2194 molecular_biology": {
+      "candidate": 5,
+      "pairable": 0,
+      "weak": 0,
+      "eligible": 0
+    },
+    "cell_biology \u2194 mechanical_engineering": {
+      "candidate": 6,
+      "pairable": 0,
+      "weak": 3,
+      "eligible": 0
+    },
+    "mechanical_engineering \u2194 photonics": {
+      "candidate": 2,
+      "pairable": 0,
+      "weak": 1,
+      "eligible": 0
+    },
+    "heat_transfer \u2194 mechanical_engineering": {
+      "candidate": 2,
+      "pairable": 0,
+      "weak": 1,
+      "eligible": 0
+    },
+    "mechanical_engineering \u2194 optics": {
+      "candidate": 2,
+      "pairable": 0,
+      "weak": 1,
+      "eligible": 0
+    },
+    "mechanical_engineering \u2194 optoelectronics": {
+      "candidate": 4,
+      "pairable": 0,
+      "weak": 2,
+      "eligible": 0
+    },
+    "electromagnetics \u2194 mechanical_engineering": {
+      "candidate": 2,
+      "pairable": 0,
+      "weak": 1,
+      "eligible": 0
+    },
+    "electronics \u2194 mechanical_engineering": {
+      "candidate": 2,
+      "pairable": 0,
+      "weak": 1,
+      "eligible": 0
+    },
+    "mechanical_engineering \u2194 thermodynamics": {
+      "candidate": 2,
+      "pairable": 0,
+      "weak": 1,
+      "eligible": 0
+    },
+    "biology \u2194 mechanical_engineering": {
+      "candidate": 4,
+      "pairable": 0,
+      "weak": 2,
+      "eligible": 0
+    },
+    "fluid_mechanics \u2194 mechanical_engineering": {
+      "candidate": 2,
+      "pairable": 0,
+      "weak": 2,
+      "eligible": 0
+    },
+    "cell_biology \u2194 polymer_science": {
+      "candidate": 15,
+      "pairable": 0,
+      "weak": 9,
+      "eligible": 0
+    },
+    "photonics \u2194 polymer_science": {
+      "candidate": 5,
+      "pairable": 0,
+      "weak": 3,
+      "eligible": 0
+    },
+    "heat_transfer \u2194 polymer_science": {
+      "candidate": 5,
+      "pairable": 0,
+      "weak": 3,
+      "eligible": 0
+    },
+    "optics \u2194 polymer_science": {
+      "candidate": 5,
+      "pairable": 0,
+      "weak": 3,
+      "eligible": 0
+    },
+    "optoelectronics \u2194 polymer_science": {
+      "candidate": 10,
+      "pairable": 0,
+      "weak": 6,
+      "eligible": 0
+    },
+    "electromagnetics \u2194 polymer_science": {
+      "candidate": 5,
+      "pairable": 0,
+      "weak": 3,
+      "eligible": 0
+    },
+    "electronics \u2194 polymer_science": {
+      "candidate": 5,
+      "pairable": 0,
+      "weak": 3,
+      "eligible": 0
+    },
+    "polymer_science \u2194 thermodynamics": {
+      "candidate": 5,
+      "pairable": 0,
+      "weak": 3,
+      "eligible": 0
+    },
+    "biology \u2194 polymer_science": {
+      "candidate": 10,
+      "pairable": 0,
+      "weak": 6,
+      "eligible": 0
+    },
+    "fluid_mechanics \u2194 polymer_science": {
+      "candidate": 5,
+      "pairable": 0,
+      "weak": 3,
+      "eligible": 0
+    },
+    "cell_biology \u2194 photonics": {
+      "candidate": 3,
+      "pairable": 0,
+      "weak": 0,
+      "eligible": 0
+    },
+    "cell_biology \u2194 chemical_engineering": {
+      "candidate": 15,
+      "pairable": 0,
+      "weak": 6,
+      "eligible": 0
+    },
+    "cell_biology \u2194 electrical_engineering": {
+      "candidate": 15,
+      "pairable": 0,
+      "weak": 3,
+      "eligible": 0
+    },
+    "cell_biology \u2194 heat_transfer": {
+      "candidate": 3,
+      "pairable": 0,
+      "weak": 0,
+      "eligible": 0
+    },
+    "cell_biology \u2194 metallurgy": {
+      "candidate": 6,
+      "pairable": 0,
+      "weak": 0,
+      "eligible": 0
+    },
+    "cell_biology \u2194 optics": {
+      "candidate": 3,
+      "pairable": 0,
+      "weak": 0,
+      "eligible": 0
+    },
+    "cell_biology \u2194 optoelectronics": {
+      "candidate": 6,
+      "pairable": 0,
+      "weak": 0,
+      "eligible": 0
+    },
+    "cell_biology \u2194 electromagnetics": {
+      "candidate": 3,
+      "pairable": 0,
+      "weak": 0,
+      "eligible": 0
+    },
+    "cell_biology \u2194 electronics": {
+      "candidate": 3,
+      "pairable": 0,
+      "weak": 0,
+      "eligible": 0
+    },
+    "cell_biology \u2194 thermodynamics": {
+      "candidate": 3,
+      "pairable": 0,
+      "weak": 0,
+      "eligible": 0
+    },
+    "biology \u2194 cell_biology": {
+      "candidate": 6,
+      "pairable": 0,
+      "weak": 0,
+      "eligible": 0
+    },
+    "cell_biology \u2194 fluid_mechanics": {
+      "candidate": 3,
+      "pairable": 0,
+      "weak": 0,
+      "eligible": 0
+    },
+    "chemical_engineering \u2194 photonics": {
+      "candidate": 5,
+      "pairable": 0,
+      "weak": 2,
+      "eligible": 0
+    },
+    "electrical_engineering \u2194 photonics": {
+      "candidate": 5,
+      "pairable": 0,
+      "weak": 1,
+      "eligible": 0
+    },
+    "heat_transfer \u2194 photonics": {
+      "candidate": 1,
+      "pairable": 0,
+      "weak": 0,
+      "eligible": 0
+    },
+    "metallurgy \u2194 photonics": {
+      "candidate": 2,
+      "pairable": 0,
+      "weak": 0,
+      "eligible": 0
+    },
+    "optics \u2194 photonics": {
+      "candidate": 1,
+      "pairable": 0,
+      "weak": 0,
+      "eligible": 0
+    },
+    "optoelectronics \u2194 photonics": {
+      "candidate": 2,
+      "pairable": 0,
+      "weak": 0,
+      "eligible": 0
+    },
+    "electromagnetics \u2194 photonics": {
+      "candidate": 1,
+      "pairable": 0,
+      "weak": 0,
+      "eligible": 0
+    },
+    "electronics \u2194 photonics": {
+      "candidate": 1,
+      "pairable": 0,
+      "weak": 0,
+      "eligible": 0
+    },
+    "photonics \u2194 thermodynamics": {
+      "candidate": 1,
+      "pairable": 0,
+      "weak": 0,
+      "eligible": 0
+    },
+    "biology \u2194 photonics": {
+      "candidate": 2,
+      "pairable": 0,
+      "weak": 0,
+      "eligible": 0
+    },
+    "fluid_mechanics \u2194 photonics": {
+      "candidate": 1,
+      "pairable": 0,
+      "weak": 0,
+      "eligible": 0
+    },
+    "chemical_engineering \u2194 heat_transfer": {
+      "candidate": 5,
+      "pairable": 0,
+      "weak": 2,
+      "eligible": 0
+    },
+    "chemical_engineering \u2194 optics": {
+      "candidate": 5,
+      "pairable": 0,
+      "weak": 2,
+      "eligible": 0
+    },
+    "chemical_engineering \u2194 optoelectronics": {
+      "candidate": 10,
+      "pairable": 0,
+      "weak": 4,
+      "eligible": 0
+    },
+    "chemical_engineering \u2194 electromagnetics": {
+      "candidate": 5,
+      "pairable": 0,
+      "weak": 2,
+      "eligible": 0
+    },
+    "chemical_engineering \u2194 electronics": {
+      "candidate": 5,
+      "pairable": 0,
+      "weak": 2,
+      "eligible": 0
+    },
+    "chemical_engineering \u2194 thermodynamics": {
+      "candidate": 5,
+      "pairable": 0,
+      "weak": 2,
+      "eligible": 0
+    },
+    "biology \u2194 chemical_engineering": {
+      "candidate": 10,
+      "pairable": 0,
+      "weak": 4,
+      "eligible": 0
+    },
+    "chemical_engineering \u2194 fluid_mechanics": {
+      "candidate": 5,
+      "pairable": 0,
+      "weak": 2,
+      "eligible": 0
+    },
+    "electrical_engineering \u2194 heat_transfer": {
+      "candidate": 5,
+      "pairable": 0,
+      "weak": 1,
+      "eligible": 0
+    },
+    "electrical_engineering \u2194 optics": {
+      "candidate": 5,
+      "pairable": 0,
+      "weak": 1,
+      "eligible": 0
+    },
+    "electrical_engineering \u2194 optoelectronics": {
+      "candidate": 10,
+      "pairable": 0,
+      "weak": 2,
+      "eligible": 0
+    },
+    "electrical_engineering \u2194 electromagnetics": {
+      "candidate": 5,
+      "pairable": 0,
+      "weak": 1,
+      "eligible": 0
+    },
+    "electrical_engineering \u2194 electronics": {
+      "candidate": 5,
+      "pairable": 0,
+      "weak": 1,
+      "eligible": 0
+    },
+    "electrical_engineering \u2194 thermodynamics": {
+      "candidate": 5,
+      "pairable": 0,
+      "weak": 1,
+      "eligible": 0
+    },
+    "biology \u2194 electrical_engineering": {
+      "candidate": 10,
+      "pairable": 0,
+      "weak": 2,
+      "eligible": 0
+    },
+    "electrical_engineering \u2194 fluid_mechanics": {
+      "candidate": 5,
+      "pairable": 0,
+      "weak": 1,
+      "eligible": 0
+    },
+    "heat_transfer \u2194 metallurgy": {
+      "candidate": 2,
+      "pairable": 0,
+      "weak": 0,
+      "eligible": 0
+    },
+    "heat_transfer \u2194 optics": {
+      "candidate": 1,
+      "pairable": 0,
+      "weak": 0,
+      "eligible": 0
+    },
+    "heat_transfer \u2194 optoelectronics": {
+      "candidate": 2,
+      "pairable": 0,
+      "weak": 0,
+      "eligible": 0
+    },
+    "electromagnetics \u2194 heat_transfer": {
+      "candidate": 1,
+      "pairable": 0,
+      "weak": 0,
+      "eligible": 0
+    },
+    "electronics \u2194 heat_transfer": {
+      "candidate": 1,
+      "pairable": 0,
+      "weak": 0,
+      "eligible": 0
+    },
+    "heat_transfer \u2194 thermodynamics": {
+      "candidate": 1,
+      "pairable": 0,
+      "weak": 0,
+      "eligible": 0
+    },
+    "biology \u2194 heat_transfer": {
+      "candidate": 2,
+      "pairable": 0,
+      "weak": 0,
+      "eligible": 0
+    },
+    "fluid_mechanics \u2194 heat_transfer": {
+      "candidate": 1,
+      "pairable": 0,
+      "weak": 0,
+      "eligible": 0
+    },
+    "metallurgy \u2194 optics": {
+      "candidate": 2,
+      "pairable": 0,
+      "weak": 0,
+      "eligible": 0
+    },
+    "metallurgy \u2194 optoelectronics": {
+      "candidate": 4,
+      "pairable": 0,
+      "weak": 0,
+      "eligible": 0
+    },
+    "electromagnetics \u2194 metallurgy": {
+      "candidate": 2,
+      "pairable": 0,
+      "weak": 0,
+      "eligible": 0
+    },
+    "electronics \u2194 metallurgy": {
+      "candidate": 2,
+      "pairable": 0,
+      "weak": 0,
+      "eligible": 0
+    },
+    "metallurgy \u2194 thermodynamics": {
+      "candidate": 2,
+      "pairable": 0,
+      "weak": 0,
+      "eligible": 0
+    },
+    "biology \u2194 metallurgy": {
+      "candidate": 4,
+      "pairable": 0,
+      "weak": 0,
+      "eligible": 0
+    },
+    "fluid_mechanics \u2194 metallurgy": {
+      "candidate": 2,
+      "pairable": 0,
+      "weak": 0,
+      "eligible": 0
+    },
+    "optics \u2194 optoelectronics": {
+      "candidate": 2,
+      "pairable": 0,
+      "weak": 0,
+      "eligible": 0
+    },
+    "electromagnetics \u2194 optics": {
+      "candidate": 1,
+      "pairable": 0,
+      "weak": 0,
+      "eligible": 0
+    },
+    "electronics \u2194 optics": {
+      "candidate": 1,
+      "pairable": 0,
+      "weak": 0,
+      "eligible": 0
+    },
+    "optics \u2194 thermodynamics": {
+      "candidate": 1,
+      "pairable": 0,
+      "weak": 0,
+      "eligible": 0
+    },
+    "biology \u2194 optics": {
+      "candidate": 2,
+      "pairable": 0,
+      "weak": 0,
+      "eligible": 0
+    },
+    "fluid_mechanics \u2194 optics": {
+      "candidate": 1,
+      "pairable": 0,
+      "weak": 0,
+      "eligible": 0
+    },
+    "electromagnetics \u2194 optoelectronics": {
+      "candidate": 2,
+      "pairable": 0,
+      "weak": 0,
+      "eligible": 0
+    },
+    "electronics \u2194 optoelectronics": {
+      "candidate": 2,
+      "pairable": 0,
+      "weak": 0,
+      "eligible": 0
+    },
+    "optoelectronics \u2194 thermodynamics": {
+      "candidate": 2,
+      "pairable": 0,
+      "weak": 0,
+      "eligible": 0
+    },
+    "biology \u2194 optoelectronics": {
+      "candidate": 4,
+      "pairable": 0,
+      "weak": 0,
+      "eligible": 0
+    },
+    "fluid_mechanics \u2194 optoelectronics": {
+      "candidate": 2,
+      "pairable": 0,
+      "weak": 0,
+      "eligible": 0
+    },
+    "electromagnetics \u2194 electronics": {
+      "candidate": 1,
+      "pairable": 0,
+      "weak": 0,
+      "eligible": 0
+    },
+    "electromagnetics \u2194 thermodynamics": {
+      "candidate": 1,
+      "pairable": 0,
+      "weak": 0,
+      "eligible": 0
+    },
+    "biology \u2194 electromagnetics": {
+      "candidate": 2,
+      "pairable": 0,
+      "weak": 0,
+      "eligible": 0
+    },
+    "electromagnetics \u2194 fluid_mechanics": {
+      "candidate": 1,
+      "pairable": 0,
+      "weak": 0,
+      "eligible": 0
+    },
+    "electronics \u2194 thermodynamics": {
+      "candidate": 1,
+      "pairable": 0,
+      "weak": 0,
+      "eligible": 0
+    },
+    "biology \u2194 electronics": {
+      "candidate": 2,
+      "pairable": 0,
+      "weak": 0,
+      "eligible": 0
+    },
+    "electronics \u2194 fluid_mechanics": {
+      "candidate": 1,
+      "pairable": 0,
+      "weak": 0,
+      "eligible": 0
+    },
+    "biology \u2194 thermodynamics": {
+      "candidate": 2,
+      "pairable": 0,
+      "weak": 0,
+      "eligible": 0
+    },
+    "fluid_mechanics \u2194 thermodynamics": {
+      "candidate": 1,
+      "pairable": 0,
+      "weak": 0,
+      "eligible": 0
+    },
+    "biology \u2194 fluid_mechanics": {
+      "candidate": 2,
+      "pairable": 0,
+      "weak": 0,
+      "eligible": 0
+    }
+  },
+  "methodology": {
+    "lexical_similarity": "Jaccard on title tokens (informational only, does NOT control eligibility)",
+    "scientific_bridge_score": "Heuristic mechanism-bridge score (controls eligibility)",
+    "bridge_threshold_pairable": ">= 0.5",
+    "bridge_threshold_weak": ">= 0.2 and < 0.5",
+    "note": "Lexical similarity is NOT used as a proxy for scientific compatibility. The bridge score looks for mechanism/process/method indicators that suggest transferability, not word overlap."
+  },
+  "note": "No benchmark questions constructed. No hypotheses generated. No TEE used. No taxonomy changes. No optimization for producing 100 pairs."
+}

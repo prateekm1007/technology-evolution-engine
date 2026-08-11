@@ -1,0 +1,25 @@
+{
+  "generated_at": "2026-08-01T17:51:58.087996+00:00",
+  "audit_type": "F-005 follow-up forensic audit + invention compiler + 5-benchmark suite",
+  "steps_run": [
+    "compile",
+    "unit_test",
+    "integration",
+    "benchmark",
+    "ledger_integrity",
+    "verification",
+    "invention_compiler",
+    "compiler_benchmark"
+  ],
+  "errors": [],
+  "deliverables": {
+    "compile_report": "evidence/reports/compile_report.json",
+    "unit_test_report": "evidence/reports/unit_test_report.json",
+    "integration_report": "evidence/reports/integration_report.json",
+    "benchmark_report": "evidence/reports/benchmark_report.json",
+    "verification_report": "evidence/reports/verification_report.json",
+    "ledger_integrity_report": "evidence/reports/ledger_integrity_report.json",
+    "invention_compiler_report": "evidence/reports/invention_compiler_report.json",
+    "compiler_benchmark_report": "evidence/reports/compiler_benchmark_report.json"
+  }
+}

@@ -1,0 +1,3142 @@
+{
+  "manifest_type": "INTAKE_FORENSIC_AUDIT_DETAILED",
+  "manifest_version": "1.0.0",
+  "generated_at": "2026-08-11T00:00:00Z",
+  "source_manifest_hash": "180a17e96f16cd0c383975b1f005a1f4623808fade1d17797b493e74f346be43",
+  "total_records": 200,
+  "dispositions": [
+    {
+      "source_id": "OA-W2147055566",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Economics, Econometrics and Finance",
+      "domain_canonical": "economics,_econometrics_and_finance",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Economics, Econometrics and Finance' not in frozen taxonomy (canonical: 'economics,_econometrics_and_finance')"
+      ],
+      "forensic_reason_code": "OUTSIDE_BENCHMARK_DOMAIN",
+      "forensic_notes": "OpenAlex domain 'Economics, Econometrics and Finance' \u2014 Genuinely outside current benchmark scope",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411786107",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Medicine",
+      "domain_canonical": "medicine",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Medicine' not in frozen taxonomy (canonical: 'medicine')"
+      ],
+      "forensic_reason_code": "OUTSIDE_BENCHMARK_DOMAIN",
+      "forensic_notes": "OpenAlex domain 'Medicine' \u2014 Genuinely outside current benchmark scope (medical science)",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411792267",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Biochemistry, Genetics and Molecular Biology",
+      "domain_canonical": "biochemistry,_genetics_and_molecular_biology",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Biochemistry, Genetics and Molecular Biology' not in frozen taxonomy (canonical: 'biochemistry,_genetics_and_molecular_biology')"
+      ],
+      "forensic_reason_code": "METADATA_TOO_COARSE",
+      "forensic_notes": "OpenAlex domain 'Biochemistry, Genetics and Molecular Biology' \u2014 Could partially map to biochemistry or molecular_biology",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411831165",
+      "intake_status": "ELIGIBLE",
+      "domain_raw": "Chemistry",
+      "domain_canonical": "chemistry",
+      "is_known_domain": true,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [],
+      "forensic_reason_code": "INSUFFICIENT_FULL_TEXT",
+      "forensic_notes": "No open-access full text available",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411786117",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Medicine",
+      "domain_canonical": "medicine",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Medicine' not in frozen taxonomy (canonical: 'medicine')"
+      ],
+      "forensic_reason_code": "OUTSIDE_BENCHMARK_DOMAIN",
+      "forensic_notes": "OpenAlex domain 'Medicine' \u2014 Genuinely outside current benchmark scope (medical science)",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411830297",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Engineering",
+      "domain_canonical": "engineering",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Engineering' not in frozen taxonomy (canonical: 'engineering')"
+      ],
+      "forensic_reason_code": "METADATA_TOO_COARSE",
+      "forensic_notes": "OpenAlex domain 'Engineering' \u2014 Could map to mechanical_engineering or chemical_engineering",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411793773",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Engineering",
+      "domain_canonical": "engineering",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Engineering' not in frozen taxonomy (canonical: 'engineering')"
+      ],
+      "forensic_reason_code": "METADATA_TOO_COARSE",
+      "forensic_notes": "OpenAlex domain 'Engineering' \u2014 Could map to mechanical_engineering or chemical_engineering",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411786227",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Neuroscience",
+      "domain_canonical": "neuroscience",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Neuroscience' not in frozen taxonomy (canonical: 'neuroscience')"
+      ],
+      "forensic_reason_code": "OUTSIDE_BENCHMARK_DOMAIN",
+      "forensic_notes": "OpenAlex domain 'Neuroscience' \u2014 Genuinely outside current benchmark scope",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411878412",
+      "intake_status": "ELIGIBLE",
+      "domain_raw": "Computer Science",
+      "domain_canonical": "computer_science",
+      "is_known_domain": true,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [],
+      "forensic_reason_code": "INSUFFICIENT_FULL_TEXT",
+      "forensic_notes": "No open-access full text available",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411788278",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Medicine",
+      "domain_canonical": "medicine",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Medicine' not in frozen taxonomy (canonical: 'medicine')"
+      ],
+      "forensic_reason_code": "OUTSIDE_BENCHMARK_DOMAIN",
+      "forensic_notes": "OpenAlex domain 'Medicine' \u2014 Genuinely outside current benchmark scope (medical science)",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411782216",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Medicine",
+      "domain_canonical": "medicine",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Medicine' not in frozen taxonomy (canonical: 'medicine')"
+      ],
+      "forensic_reason_code": "OUTSIDE_BENCHMARK_DOMAIN",
+      "forensic_notes": "OpenAlex domain 'Medicine' \u2014 Genuinely outside current benchmark scope (medical science)",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411786222",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Biochemistry, Genetics and Molecular Biology",
+      "domain_canonical": "biochemistry,_genetics_and_molecular_biology",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Biochemistry, Genetics and Molecular Biology' not in frozen taxonomy (canonical: 'biochemistry,_genetics_and_molecular_biology')"
+      ],
+      "forensic_reason_code": "METADATA_TOO_COARSE",
+      "forensic_notes": "OpenAlex domain 'Biochemistry, Genetics and Molecular Biology' \u2014 Could partially map to biochemistry or molecular_biology",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411829903",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Neuroscience",
+      "domain_canonical": "neuroscience",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Neuroscience' not in frozen taxonomy (canonical: 'neuroscience')"
+      ],
+      "forensic_reason_code": "OUTSIDE_BENCHMARK_DOMAIN",
+      "forensic_notes": "OpenAlex domain 'Neuroscience' \u2014 Genuinely outside current benchmark scope",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411795563",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Health Professions",
+      "domain_canonical": "health_professions",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Health Professions' not in frozen taxonomy (canonical: 'health_professions')"
+      ],
+      "forensic_reason_code": "OUTSIDE_BENCHMARK_DOMAIN",
+      "forensic_notes": "OpenAlex domain 'Health Professions' \u2014 Genuinely outside current benchmark scope",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411787292",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Agricultural and Biological Sciences",
+      "domain_canonical": "agricultural_and_biological_sciences",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Agricultural and Biological Sciences' not in frozen taxonomy (canonical: 'agricultural_and_biological_sciences')"
+      ],
+      "forensic_reason_code": "METADATA_TOO_COARSE",
+      "forensic_notes": "OpenAlex domain 'Agricultural and Biological Sciences' \u2014 Could partially map to biology",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411840795",
+      "intake_status": "ELIGIBLE",
+      "domain_raw": "Materials Science",
+      "domain_canonical": "materials_science",
+      "is_known_domain": true,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [],
+      "forensic_reason_code": "INSUFFICIENT_FULL_TEXT",
+      "forensic_notes": "No open-access full text available",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411841997",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Agricultural and Biological Sciences",
+      "domain_canonical": "agricultural_and_biological_sciences",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Agricultural and Biological Sciences' not in frozen taxonomy (canonical: 'agricultural_and_biological_sciences')"
+      ],
+      "forensic_reason_code": "METADATA_TOO_COARSE",
+      "forensic_notes": "OpenAlex domain 'Agricultural and Biological Sciences' \u2014 Could partially map to biology",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411778347",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Biochemistry, Genetics and Molecular Biology",
+      "domain_canonical": "biochemistry,_genetics_and_molecular_biology",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Biochemistry, Genetics and Molecular Biology' not in frozen taxonomy (canonical: 'biochemistry,_genetics_and_molecular_biology')"
+      ],
+      "forensic_reason_code": "METADATA_TOO_COARSE",
+      "forensic_notes": "OpenAlex domain 'Biochemistry, Genetics and Molecular Biology' \u2014 Could partially map to biochemistry or molecular_biology",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411786351",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Decision Sciences",
+      "domain_canonical": "decision_sciences",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Decision Sciences' not in frozen taxonomy (canonical: 'decision_sciences')"
+      ],
+      "forensic_reason_code": "OUTSIDE_BENCHMARK_DOMAIN",
+      "forensic_notes": "OpenAlex domain 'Decision Sciences' \u2014 Genuinely outside current benchmark scope",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411842899",
+      "intake_status": "ELIGIBLE",
+      "domain_raw": "Computer Science",
+      "domain_canonical": "computer_science",
+      "is_known_domain": true,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [],
+      "forensic_reason_code": "INSUFFICIENT_FULL_TEXT",
+      "forensic_notes": "No open-access full text available",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411809465",
+      "intake_status": "ELIGIBLE",
+      "domain_raw": "Chemistry",
+      "domain_canonical": "chemistry",
+      "is_known_domain": true,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [],
+      "forensic_reason_code": "INSUFFICIENT_FULL_TEXT",
+      "forensic_notes": "No open-access full text available",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4412372670",
+      "intake_status": "ELIGIBLE",
+      "domain_raw": "Materials Science",
+      "domain_canonical": "materials_science",
+      "is_known_domain": true,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [],
+      "forensic_reason_code": "INSUFFICIENT_FULL_TEXT",
+      "forensic_notes": "No open-access full text available",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411789322",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Physics and Astronomy",
+      "domain_canonical": "physics_and_astronomy",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Physics and Astronomy' not in frozen taxonomy (canonical: 'physics_and_astronomy')"
+      ],
+      "forensic_reason_code": "METADATA_TOO_COARSE",
+      "forensic_notes": "OpenAlex domain 'Physics and Astronomy' \u2014 Could partially map to optics or electromagnetics",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411927895",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Immunology and Microbiology",
+      "domain_canonical": "immunology_and_microbiology",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Immunology and Microbiology' not in frozen taxonomy (canonical: 'immunology_and_microbiology')"
+      ],
+      "forensic_reason_code": "METADATA_TOO_COARSE",
+      "forensic_notes": "OpenAlex domain 'Immunology and Microbiology' \u2014 Could partially map to biology",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411778121",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Medicine",
+      "domain_canonical": "medicine",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Medicine' not in frozen taxonomy (canonical: 'medicine')"
+      ],
+      "forensic_reason_code": "OUTSIDE_BENCHMARK_DOMAIN",
+      "forensic_notes": "OpenAlex domain 'Medicine' \u2014 Genuinely outside current benchmark scope (medical science)",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411799351",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Medicine",
+      "domain_canonical": "medicine",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Medicine' not in frozen taxonomy (canonical: 'medicine')"
+      ],
+      "forensic_reason_code": "OUTSIDE_BENCHMARK_DOMAIN",
+      "forensic_notes": "OpenAlex domain 'Medicine' \u2014 Genuinely outside current benchmark scope (medical science)",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411811737",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Economics, Econometrics and Finance",
+      "domain_canonical": "economics,_econometrics_and_finance",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Economics, Econometrics and Finance' not in frozen taxonomy (canonical: 'economics,_econometrics_and_finance')"
+      ],
+      "forensic_reason_code": "OUTSIDE_BENCHMARK_DOMAIN",
+      "forensic_notes": "OpenAlex domain 'Economics, Econometrics and Finance' \u2014 Genuinely outside current benchmark scope",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411838115",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Energy",
+      "domain_canonical": "energy",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Energy' not in frozen taxonomy (canonical: 'energy')"
+      ],
+      "forensic_reason_code": "METADATA_TOO_COARSE",
+      "forensic_notes": "OpenAlex domain 'Energy' \u2014 Could partially map to thermodynamics",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411895735",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Social Sciences",
+      "domain_canonical": "social_sciences",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Social Sciences' not in frozen taxonomy (canonical: 'social_sciences')"
+      ],
+      "forensic_reason_code": "OUTSIDE_BENCHMARK_DOMAIN",
+      "forensic_notes": "OpenAlex domain 'Social Sciences' \u2014 Genuinely outside current benchmark scope",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411786702",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Energy",
+      "domain_canonical": "energy",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Energy' not in frozen taxonomy (canonical: 'energy')"
+      ],
+      "forensic_reason_code": "METADATA_TOO_COARSE",
+      "forensic_notes": "OpenAlex domain 'Energy' \u2014 Could partially map to thermodynamics",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411825330",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Physics and Astronomy",
+      "domain_canonical": "physics_and_astronomy",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Physics and Astronomy' not in frozen taxonomy (canonical: 'physics_and_astronomy')"
+      ],
+      "forensic_reason_code": "METADATA_TOO_COARSE",
+      "forensic_notes": "OpenAlex domain 'Physics and Astronomy' \u2014 Could partially map to optics or electromagnetics",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411788290",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Biochemistry, Genetics and Molecular Biology",
+      "domain_canonical": "biochemistry,_genetics_and_molecular_biology",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Biochemistry, Genetics and Molecular Biology' not in frozen taxonomy (canonical: 'biochemistry,_genetics_and_molecular_biology')"
+      ],
+      "forensic_reason_code": "METADATA_TOO_COARSE",
+      "forensic_notes": "OpenAlex domain 'Biochemistry, Genetics and Molecular Biology' \u2014 Could partially map to biochemistry or molecular_biology",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411823897",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Energy",
+      "domain_canonical": "energy",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Energy' not in frozen taxonomy (canonical: 'energy')"
+      ],
+      "forensic_reason_code": "METADATA_TOO_COARSE",
+      "forensic_notes": "OpenAlex domain 'Energy' \u2014 Could partially map to thermodynamics",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411807766",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Engineering",
+      "domain_canonical": "engineering",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Engineering' not in frozen taxonomy (canonical: 'engineering')"
+      ],
+      "forensic_reason_code": "METADATA_TOO_COARSE",
+      "forensic_notes": "OpenAlex domain 'Engineering' \u2014 Could map to mechanical_engineering or chemical_engineering",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411814643",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Engineering",
+      "domain_canonical": "engineering",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Engineering' not in frozen taxonomy (canonical: 'engineering')"
+      ],
+      "forensic_reason_code": "METADATA_TOO_COARSE",
+      "forensic_notes": "OpenAlex domain 'Engineering' \u2014 Could map to mechanical_engineering or chemical_engineering",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411826857",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Biochemistry, Genetics and Molecular Biology",
+      "domain_canonical": "biochemistry,_genetics_and_molecular_biology",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Biochemistry, Genetics and Molecular Biology' not in frozen taxonomy (canonical: 'biochemistry,_genetics_and_molecular_biology')"
+      ],
+      "forensic_reason_code": "METADATA_TOO_COARSE",
+      "forensic_notes": "OpenAlex domain 'Biochemistry, Genetics and Molecular Biology' \u2014 Could partially map to biochemistry or molecular_biology",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411787913",
+      "intake_status": "ELIGIBLE",
+      "domain_raw": "Materials Science",
+      "domain_canonical": "materials_science",
+      "is_known_domain": true,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [],
+      "forensic_reason_code": "INSUFFICIENT_FULL_TEXT",
+      "forensic_notes": "No open-access full text available",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411792672",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Medicine",
+      "domain_canonical": "medicine",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Medicine' not in frozen taxonomy (canonical: 'medicine')"
+      ],
+      "forensic_reason_code": "OUTSIDE_BENCHMARK_DOMAIN",
+      "forensic_notes": "OpenAlex domain 'Medicine' \u2014 Genuinely outside current benchmark scope (medical science)",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411801754",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Engineering",
+      "domain_canonical": "engineering",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Engineering' not in frozen taxonomy (canonical: 'engineering')"
+      ],
+      "forensic_reason_code": "METADATA_TOO_COARSE",
+      "forensic_notes": "OpenAlex domain 'Engineering' \u2014 Could map to mechanical_engineering or chemical_engineering",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4412019518",
+      "intake_status": "ELIGIBLE",
+      "domain_raw": "Materials Science",
+      "domain_canonical": "materials_science",
+      "is_known_domain": true,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [],
+      "forensic_reason_code": "INSUFFICIENT_FULL_TEXT",
+      "forensic_notes": "No open-access full text available",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411778474",
+      "intake_status": "ELIGIBLE",
+      "domain_raw": "Materials Science",
+      "domain_canonical": "materials_science",
+      "is_known_domain": true,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [],
+      "forensic_reason_code": "INSUFFICIENT_FULL_TEXT",
+      "forensic_notes": "No open-access full text available",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411782402",
+      "intake_status": "ELIGIBLE",
+      "domain_raw": "Materials Science",
+      "domain_canonical": "materials_science",
+      "is_known_domain": true,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [],
+      "forensic_reason_code": "INSUFFICIENT_FULL_TEXT",
+      "forensic_notes": "No open-access full text available",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411811828",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Business, Management and Accounting",
+      "domain_canonical": "business,_management_and_accounting",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Business, Management and Accounting' not in frozen taxonomy (canonical: 'business,_management_and_accounting')"
+      ],
+      "forensic_reason_code": "OUTSIDE_BENCHMARK_DOMAIN",
+      "forensic_notes": "OpenAlex domain 'Business, Management and Accounting' \u2014 Genuinely outside current benchmark scope",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4412372600",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Engineering",
+      "domain_canonical": "engineering",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Engineering' not in frozen taxonomy (canonical: 'engineering')"
+      ],
+      "forensic_reason_code": "METADATA_TOO_COARSE",
+      "forensic_notes": "OpenAlex domain 'Engineering' \u2014 Could map to mechanical_engineering or chemical_engineering",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411785600",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Agricultural and Biological Sciences",
+      "domain_canonical": "agricultural_and_biological_sciences",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Agricultural and Biological Sciences' not in frozen taxonomy (canonical: 'agricultural_and_biological_sciences')"
+      ],
+      "forensic_reason_code": "METADATA_TOO_COARSE",
+      "forensic_notes": "OpenAlex domain 'Agricultural and Biological Sciences' \u2014 Could partially map to biology",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411809022",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Engineering",
+      "domain_canonical": "engineering",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Engineering' not in frozen taxonomy (canonical: 'engineering')"
+      ],
+      "forensic_reason_code": "METADATA_TOO_COARSE",
+      "forensic_notes": "OpenAlex domain 'Engineering' \u2014 Could map to mechanical_engineering or chemical_engineering",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411874928",
+      "intake_status": "ELIGIBLE",
+      "domain_raw": "Materials Science",
+      "domain_canonical": "materials_science",
+      "is_known_domain": true,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [],
+      "forensic_reason_code": "INSUFFICIENT_FULL_TEXT",
+      "forensic_notes": "No open-access full text available",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411903224",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Environmental Science",
+      "domain_canonical": "environmental_science",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Environmental Science' not in frozen taxonomy (canonical: 'environmental_science')"
+      ],
+      "forensic_reason_code": "OUTSIDE_BENCHMARK_DOMAIN",
+      "forensic_notes": "OpenAlex domain 'Environmental Science' \u2014 Genuinely outside current benchmark scope",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411781495",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Engineering",
+      "domain_canonical": "engineering",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Engineering' not in frozen taxonomy (canonical: 'engineering')"
+      ],
+      "forensic_reason_code": "METADATA_TOO_COARSE",
+      "forensic_notes": "OpenAlex domain 'Engineering' \u2014 Could map to mechanical_engineering or chemical_engineering",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411784219",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Agricultural and Biological Sciences",
+      "domain_canonical": "agricultural_and_biological_sciences",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Agricultural and Biological Sciences' not in frozen taxonomy (canonical: 'agricultural_and_biological_sciences')"
+      ],
+      "forensic_reason_code": "METADATA_TOO_COARSE",
+      "forensic_notes": "OpenAlex domain 'Agricultural and Biological Sciences' \u2014 Could partially map to biology",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411830212",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Engineering",
+      "domain_canonical": "engineering",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Engineering' not in frozen taxonomy (canonical: 'engineering')"
+      ],
+      "forensic_reason_code": "METADATA_TOO_COARSE",
+      "forensic_notes": "OpenAlex domain 'Engineering' \u2014 Could map to mechanical_engineering or chemical_engineering",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411830267",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Immunology and Microbiology",
+      "domain_canonical": "immunology_and_microbiology",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Immunology and Microbiology' not in frozen taxonomy (canonical: 'immunology_and_microbiology')"
+      ],
+      "forensic_reason_code": "METADATA_TOO_COARSE",
+      "forensic_notes": "OpenAlex domain 'Immunology and Microbiology' \u2014 Could partially map to biology",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411837210",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Social Sciences",
+      "domain_canonical": "social_sciences",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Social Sciences' not in frozen taxonomy (canonical: 'social_sciences')"
+      ],
+      "forensic_reason_code": "OUTSIDE_BENCHMARK_DOMAIN",
+      "forensic_notes": "OpenAlex domain 'Social Sciences' \u2014 Genuinely outside current benchmark scope",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411779807",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Engineering",
+      "domain_canonical": "engineering",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Engineering' not in frozen taxonomy (canonical: 'engineering')"
+      ],
+      "forensic_reason_code": "METADATA_TOO_COARSE",
+      "forensic_notes": "OpenAlex domain 'Engineering' \u2014 Could map to mechanical_engineering or chemical_engineering",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411895921",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Economics, Econometrics and Finance",
+      "domain_canonical": "economics,_econometrics_and_finance",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Economics, Econometrics and Finance' not in frozen taxonomy (canonical: 'economics,_econometrics_and_finance')"
+      ],
+      "forensic_reason_code": "OUTSIDE_BENCHMARK_DOMAIN",
+      "forensic_notes": "OpenAlex domain 'Economics, Econometrics and Finance' \u2014 Genuinely outside current benchmark scope",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411916948",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Agricultural and Biological Sciences",
+      "domain_canonical": "agricultural_and_biological_sciences",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Agricultural and Biological Sciences' not in frozen taxonomy (canonical: 'agricultural_and_biological_sciences')"
+      ],
+      "forensic_reason_code": "METADATA_TOO_COARSE",
+      "forensic_notes": "OpenAlex domain 'Agricultural and Biological Sciences' \u2014 Could partially map to biology",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411778905",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Physics and Astronomy",
+      "domain_canonical": "physics_and_astronomy",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Physics and Astronomy' not in frozen taxonomy (canonical: 'physics_and_astronomy')"
+      ],
+      "forensic_reason_code": "METADATA_TOO_COARSE",
+      "forensic_notes": "OpenAlex domain 'Physics and Astronomy' \u2014 Could partially map to optics or electromagnetics",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411799204",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Biochemistry, Genetics and Molecular Biology",
+      "domain_canonical": "biochemistry,_genetics_and_molecular_biology",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Biochemistry, Genetics and Molecular Biology' not in frozen taxonomy (canonical: 'biochemistry,_genetics_and_molecular_biology')"
+      ],
+      "forensic_reason_code": "METADATA_TOO_COARSE",
+      "forensic_notes": "OpenAlex domain 'Biochemistry, Genetics and Molecular Biology' \u2014 Could partially map to biochemistry or molecular_biology",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411830792",
+      "intake_status": "ELIGIBLE",
+      "domain_raw": "Computer Science",
+      "domain_canonical": "computer_science",
+      "is_known_domain": true,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [],
+      "forensic_reason_code": "INSUFFICIENT_FULL_TEXT",
+      "forensic_notes": "No open-access full text available",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411909584",
+      "intake_status": "ELIGIBLE",
+      "domain_raw": "Chemical Engineering",
+      "domain_canonical": "chemical_engineering",
+      "is_known_domain": true,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [],
+      "forensic_reason_code": "INSUFFICIENT_FULL_TEXT",
+      "forensic_notes": "No open-access full text available",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411909838",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Engineering",
+      "domain_canonical": "engineering",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Engineering' not in frozen taxonomy (canonical: 'engineering')"
+      ],
+      "forensic_reason_code": "METADATA_TOO_COARSE",
+      "forensic_notes": "OpenAlex domain 'Engineering' \u2014 Could map to mechanical_engineering or chemical_engineering",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411798857",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Engineering",
+      "domain_canonical": "engineering",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Engineering' not in frozen taxonomy (canonical: 'engineering')"
+      ],
+      "forensic_reason_code": "METADATA_TOO_COARSE",
+      "forensic_notes": "OpenAlex domain 'Engineering' \u2014 Could map to mechanical_engineering or chemical_engineering",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411837993",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Physics and Astronomy",
+      "domain_canonical": "physics_and_astronomy",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Physics and Astronomy' not in frozen taxonomy (canonical: 'physics_and_astronomy')"
+      ],
+      "forensic_reason_code": "METADATA_TOO_COARSE",
+      "forensic_notes": "OpenAlex domain 'Physics and Astronomy' \u2014 Could partially map to optics or electromagnetics",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411878260",
+      "intake_status": "ELIGIBLE",
+      "domain_raw": "Materials Science",
+      "domain_canonical": "materials_science",
+      "is_known_domain": true,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [],
+      "forensic_reason_code": "INSUFFICIENT_FULL_TEXT",
+      "forensic_notes": "No open-access full text available",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411927338",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Agricultural and Biological Sciences",
+      "domain_canonical": "agricultural_and_biological_sciences",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Agricultural and Biological Sciences' not in frozen taxonomy (canonical: 'agricultural_and_biological_sciences')"
+      ],
+      "forensic_reason_code": "METADATA_TOO_COARSE",
+      "forensic_notes": "OpenAlex domain 'Agricultural and Biological Sciences' \u2014 Could partially map to biology",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411780509",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Immunology and Microbiology",
+      "domain_canonical": "immunology_and_microbiology",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Immunology and Microbiology' not in frozen taxonomy (canonical: 'immunology_and_microbiology')"
+      ],
+      "forensic_reason_code": "METADATA_TOO_COARSE",
+      "forensic_notes": "OpenAlex domain 'Immunology and Microbiology' \u2014 Could partially map to biology",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411780511",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Engineering",
+      "domain_canonical": "engineering",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Engineering' not in frozen taxonomy (canonical: 'engineering')"
+      ],
+      "forensic_reason_code": "METADATA_TOO_COARSE",
+      "forensic_notes": "OpenAlex domain 'Engineering' \u2014 Could map to mechanical_engineering or chemical_engineering",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411782461",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Biochemistry, Genetics and Molecular Biology",
+      "domain_canonical": "biochemistry,_genetics_and_molecular_biology",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Biochemistry, Genetics and Molecular Biology' not in frozen taxonomy (canonical: 'biochemistry,_genetics_and_molecular_biology')"
+      ],
+      "forensic_reason_code": "METADATA_TOO_COARSE",
+      "forensic_notes": "OpenAlex domain 'Biochemistry, Genetics and Molecular Biology' \u2014 Could partially map to biochemistry or molecular_biology",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411783791",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Biochemistry, Genetics and Molecular Biology",
+      "domain_canonical": "biochemistry,_genetics_and_molecular_biology",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Biochemistry, Genetics and Molecular Biology' not in frozen taxonomy (canonical: 'biochemistry,_genetics_and_molecular_biology')"
+      ],
+      "forensic_reason_code": "METADATA_TOO_COARSE",
+      "forensic_notes": "OpenAlex domain 'Biochemistry, Genetics and Molecular Biology' \u2014 Could partially map to biochemistry or molecular_biology",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411800767",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Environmental Science",
+      "domain_canonical": "environmental_science",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Environmental Science' not in frozen taxonomy (canonical: 'environmental_science')"
+      ],
+      "forensic_reason_code": "OUTSIDE_BENCHMARK_DOMAIN",
+      "forensic_notes": "OpenAlex domain 'Environmental Science' \u2014 Genuinely outside current benchmark scope",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411805582",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Engineering",
+      "domain_canonical": "engineering",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Engineering' not in frozen taxonomy (canonical: 'engineering')"
+      ],
+      "forensic_reason_code": "METADATA_TOO_COARSE",
+      "forensic_notes": "OpenAlex domain 'Engineering' \u2014 Could map to mechanical_engineering or chemical_engineering",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411814566",
+      "intake_status": "ELIGIBLE",
+      "domain_raw": "Computer Science",
+      "domain_canonical": "computer_science",
+      "is_known_domain": true,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [],
+      "forensic_reason_code": "INSUFFICIENT_FULL_TEXT",
+      "forensic_notes": "No open-access full text available",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411829751",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Medicine",
+      "domain_canonical": "medicine",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Medicine' not in frozen taxonomy (canonical: 'medicine')"
+      ],
+      "forensic_reason_code": "OUTSIDE_BENCHMARK_DOMAIN",
+      "forensic_notes": "OpenAlex domain 'Medicine' \u2014 Genuinely outside current benchmark scope (medical science)",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411830550",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Biochemistry, Genetics and Molecular Biology",
+      "domain_canonical": "biochemistry,_genetics_and_molecular_biology",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Biochemistry, Genetics and Molecular Biology' not in frozen taxonomy (canonical: 'biochemistry,_genetics_and_molecular_biology')"
+      ],
+      "forensic_reason_code": "METADATA_TOO_COARSE",
+      "forensic_notes": "OpenAlex domain 'Biochemistry, Genetics and Molecular Biology' \u2014 Could partially map to biochemistry or molecular_biology",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411782169",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Biochemistry, Genetics and Molecular Biology",
+      "domain_canonical": "biochemistry,_genetics_and_molecular_biology",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Biochemistry, Genetics and Molecular Biology' not in frozen taxonomy (canonical: 'biochemistry,_genetics_and_molecular_biology')"
+      ],
+      "forensic_reason_code": "METADATA_TOO_COARSE",
+      "forensic_notes": "OpenAlex domain 'Biochemistry, Genetics and Molecular Biology' \u2014 Could partially map to biochemistry or molecular_biology",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411785660",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Biochemistry, Genetics and Molecular Biology",
+      "domain_canonical": "biochemistry,_genetics_and_molecular_biology",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Biochemistry, Genetics and Molecular Biology' not in frozen taxonomy (canonical: 'biochemistry,_genetics_and_molecular_biology')"
+      ],
+      "forensic_reason_code": "METADATA_TOO_COARSE",
+      "forensic_notes": "OpenAlex domain 'Biochemistry, Genetics and Molecular Biology' \u2014 Could partially map to biochemistry or molecular_biology",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411786015",
+      "intake_status": "ELIGIBLE",
+      "domain_raw": "Materials Science",
+      "domain_canonical": "materials_science",
+      "is_known_domain": true,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [],
+      "forensic_reason_code": "INSUFFICIENT_FULL_TEXT",
+      "forensic_notes": "No open-access full text available",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411789045",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Biochemistry, Genetics and Molecular Biology",
+      "domain_canonical": "biochemistry,_genetics_and_molecular_biology",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Biochemistry, Genetics and Molecular Biology' not in frozen taxonomy (canonical: 'biochemistry,_genetics_and_molecular_biology')"
+      ],
+      "forensic_reason_code": "METADATA_TOO_COARSE",
+      "forensic_notes": "OpenAlex domain 'Biochemistry, Genetics and Molecular Biology' \u2014 Could partially map to biochemistry or molecular_biology",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411890965",
+      "intake_status": "ELIGIBLE",
+      "domain_raw": "Computer Science",
+      "domain_canonical": "computer_science",
+      "is_known_domain": true,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [],
+      "forensic_reason_code": "INSUFFICIENT_FULL_TEXT",
+      "forensic_notes": "No open-access full text available",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411896049",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Engineering",
+      "domain_canonical": "engineering",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Engineering' not in frozen taxonomy (canonical: 'engineering')"
+      ],
+      "forensic_reason_code": "METADATA_TOO_COARSE",
+      "forensic_notes": "OpenAlex domain 'Engineering' \u2014 Could map to mechanical_engineering or chemical_engineering",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4413201104",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Engineering",
+      "domain_canonical": "engineering",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Engineering' not in frozen taxonomy (canonical: 'engineering')"
+      ],
+      "forensic_reason_code": "METADATA_TOO_COARSE",
+      "forensic_notes": "OpenAlex domain 'Engineering' \u2014 Could map to mechanical_engineering or chemical_engineering",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411786742",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Medicine",
+      "domain_canonical": "medicine",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Medicine' not in frozen taxonomy (canonical: 'medicine')"
+      ],
+      "forensic_reason_code": "OUTSIDE_BENCHMARK_DOMAIN",
+      "forensic_notes": "OpenAlex domain 'Medicine' \u2014 Genuinely outside current benchmark scope (medical science)",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411786868",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Energy",
+      "domain_canonical": "energy",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Energy' not in frozen taxonomy (canonical: 'energy')"
+      ],
+      "forensic_reason_code": "METADATA_TOO_COARSE",
+      "forensic_notes": "OpenAlex domain 'Energy' \u2014 Could partially map to thermodynamics",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411807169",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Biochemistry, Genetics and Molecular Biology",
+      "domain_canonical": "biochemistry,_genetics_and_molecular_biology",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Biochemistry, Genetics and Molecular Biology' not in frozen taxonomy (canonical: 'biochemistry,_genetics_and_molecular_biology')"
+      ],
+      "forensic_reason_code": "METADATA_TOO_COARSE",
+      "forensic_notes": "OpenAlex domain 'Biochemistry, Genetics and Molecular Biology' \u2014 Could partially map to biochemistry or molecular_biology",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411833812",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Medicine",
+      "domain_canonical": "medicine",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Medicine' not in frozen taxonomy (canonical: 'medicine')"
+      ],
+      "forensic_reason_code": "OUTSIDE_BENCHMARK_DOMAIN",
+      "forensic_notes": "OpenAlex domain 'Medicine' \u2014 Genuinely outside current benchmark scope (medical science)",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411838043",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Engineering",
+      "domain_canonical": "engineering",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Engineering' not in frozen taxonomy (canonical: 'engineering')"
+      ],
+      "forensic_reason_code": "METADATA_TOO_COARSE",
+      "forensic_notes": "OpenAlex domain 'Engineering' \u2014 Could map to mechanical_engineering or chemical_engineering",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411880187",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Medicine",
+      "domain_canonical": "medicine",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Medicine' not in frozen taxonomy (canonical: 'medicine')"
+      ],
+      "forensic_reason_code": "OUTSIDE_BENCHMARK_DOMAIN",
+      "forensic_notes": "OpenAlex domain 'Medicine' \u2014 Genuinely outside current benchmark scope (medical science)",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411961335",
+      "intake_status": "ELIGIBLE",
+      "domain_raw": "Computer Science",
+      "domain_canonical": "computer_science",
+      "is_known_domain": true,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [],
+      "forensic_reason_code": "INSUFFICIENT_FULL_TEXT",
+      "forensic_notes": "No open-access full text available",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411781456",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Energy",
+      "domain_canonical": "energy",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Energy' not in frozen taxonomy (canonical: 'energy')"
+      ],
+      "forensic_reason_code": "METADATA_TOO_COARSE",
+      "forensic_notes": "OpenAlex domain 'Energy' \u2014 Could partially map to thermodynamics",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411789485",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Engineering",
+      "domain_canonical": "engineering",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Engineering' not in frozen taxonomy (canonical: 'engineering')"
+      ],
+      "forensic_reason_code": "METADATA_TOO_COARSE",
+      "forensic_notes": "OpenAlex domain 'Engineering' \u2014 Could map to mechanical_engineering or chemical_engineering",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411794398",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Biochemistry, Genetics and Molecular Biology",
+      "domain_canonical": "biochemistry,_genetics_and_molecular_biology",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Biochemistry, Genetics and Molecular Biology' not in frozen taxonomy (canonical: 'biochemistry,_genetics_and_molecular_biology')"
+      ],
+      "forensic_reason_code": "METADATA_TOO_COARSE",
+      "forensic_notes": "OpenAlex domain 'Biochemistry, Genetics and Molecular Biology' \u2014 Could partially map to biochemistry or molecular_biology",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411802539",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Medicine",
+      "domain_canonical": "medicine",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Medicine' not in frozen taxonomy (canonical: 'medicine')"
+      ],
+      "forensic_reason_code": "OUTSIDE_BENCHMARK_DOMAIN",
+      "forensic_notes": "OpenAlex domain 'Medicine' \u2014 Genuinely outside current benchmark scope (medical science)",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411803873",
+      "intake_status": "ELIGIBLE",
+      "domain_raw": "Materials Science",
+      "domain_canonical": "materials_science",
+      "is_known_domain": true,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [],
+      "forensic_reason_code": "INSUFFICIENT_FULL_TEXT",
+      "forensic_notes": "No open-access full text available",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411812800",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Engineering",
+      "domain_canonical": "engineering",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Engineering' not in frozen taxonomy (canonical: 'engineering')"
+      ],
+      "forensic_reason_code": "METADATA_TOO_COARSE",
+      "forensic_notes": "OpenAlex domain 'Engineering' \u2014 Could map to mechanical_engineering or chemical_engineering",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411826089",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Engineering",
+      "domain_canonical": "engineering",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Engineering' not in frozen taxonomy (canonical: 'engineering')"
+      ],
+      "forensic_reason_code": "METADATA_TOO_COARSE",
+      "forensic_notes": "OpenAlex domain 'Engineering' \u2014 Could map to mechanical_engineering or chemical_engineering",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411842016",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Agricultural and Biological Sciences",
+      "domain_canonical": "agricultural_and_biological_sciences",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Agricultural and Biological Sciences' not in frozen taxonomy (canonical: 'agricultural_and_biological_sciences')"
+      ],
+      "forensic_reason_code": "METADATA_TOO_COARSE",
+      "forensic_notes": "OpenAlex domain 'Agricultural and Biological Sciences' \u2014 Could partially map to biology",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411916864",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Agricultural and Biological Sciences",
+      "domain_canonical": "agricultural_and_biological_sciences",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Agricultural and Biological Sciences' not in frozen taxonomy (canonical: 'agricultural_and_biological_sciences')"
+      ],
+      "forensic_reason_code": "METADATA_TOO_COARSE",
+      "forensic_notes": "OpenAlex domain 'Agricultural and Biological Sciences' \u2014 Could partially map to biology",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411916865",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Business, Management and Accounting",
+      "domain_canonical": "business,_management_and_accounting",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Business, Management and Accounting' not in frozen taxonomy (canonical: 'business,_management_and_accounting')"
+      ],
+      "forensic_reason_code": "OUTSIDE_BENCHMARK_DOMAIN",
+      "forensic_notes": "OpenAlex domain 'Business, Management and Accounting' \u2014 Genuinely outside current benchmark scope",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411779650",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Engineering",
+      "domain_canonical": "engineering",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Engineering' not in frozen taxonomy (canonical: 'engineering')"
+      ],
+      "forensic_reason_code": "METADATA_TOO_COARSE",
+      "forensic_notes": "OpenAlex domain 'Engineering' \u2014 Could map to mechanical_engineering or chemical_engineering",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411780197",
+      "intake_status": "ELIGIBLE",
+      "domain_raw": "Materials Science",
+      "domain_canonical": "materials_science",
+      "is_known_domain": true,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [],
+      "forensic_reason_code": "INSUFFICIENT_FULL_TEXT",
+      "forensic_notes": "No open-access full text available",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411785993",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Biochemistry, Genetics and Molecular Biology",
+      "domain_canonical": "biochemistry,_genetics_and_molecular_biology",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Biochemistry, Genetics and Molecular Biology' not in frozen taxonomy (canonical: 'biochemistry,_genetics_and_molecular_biology')"
+      ],
+      "forensic_reason_code": "METADATA_TOO_COARSE",
+      "forensic_notes": "OpenAlex domain 'Biochemistry, Genetics and Molecular Biology' \u2014 Could partially map to biochemistry or molecular_biology",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411789608",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Earth and Planetary Sciences",
+      "domain_canonical": "earth_and_planetary_sciences",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Earth and Planetary Sciences' not in frozen taxonomy (canonical: 'earth_and_planetary_sciences')"
+      ],
+      "forensic_reason_code": "OUTSIDE_BENCHMARK_DOMAIN",
+      "forensic_notes": "OpenAlex domain 'Earth and Planetary Sciences' \u2014 Genuinely outside current benchmark scope",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411793089",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Engineering",
+      "domain_canonical": "engineering",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Engineering' not in frozen taxonomy (canonical: 'engineering')"
+      ],
+      "forensic_reason_code": "METADATA_TOO_COARSE",
+      "forensic_notes": "OpenAlex domain 'Engineering' \u2014 Could map to mechanical_engineering or chemical_engineering",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411794451",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Engineering",
+      "domain_canonical": "engineering",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Engineering' not in frozen taxonomy (canonical: 'engineering')"
+      ],
+      "forensic_reason_code": "METADATA_TOO_COARSE",
+      "forensic_notes": "OpenAlex domain 'Engineering' \u2014 Could map to mechanical_engineering or chemical_engineering",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411802045",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Engineering",
+      "domain_canonical": "engineering",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Engineering' not in frozen taxonomy (canonical: 'engineering')"
+      ],
+      "forensic_reason_code": "METADATA_TOO_COARSE",
+      "forensic_notes": "OpenAlex domain 'Engineering' \u2014 Could map to mechanical_engineering or chemical_engineering",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411804262",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Engineering",
+      "domain_canonical": "engineering",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Engineering' not in frozen taxonomy (canonical: 'engineering')"
+      ],
+      "forensic_reason_code": "METADATA_TOO_COARSE",
+      "forensic_notes": "OpenAlex domain 'Engineering' \u2014 Could map to mechanical_engineering or chemical_engineering",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411815662",
+      "intake_status": "ELIGIBLE",
+      "domain_raw": "Chemistry",
+      "domain_canonical": "chemistry",
+      "is_known_domain": true,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [],
+      "forensic_reason_code": "INSUFFICIENT_FULL_TEXT",
+      "forensic_notes": "No open-access full text available",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411830706",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Energy",
+      "domain_canonical": "energy",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Energy' not in frozen taxonomy (canonical: 'energy')"
+      ],
+      "forensic_reason_code": "METADATA_TOO_COARSE",
+      "forensic_notes": "OpenAlex domain 'Energy' \u2014 Could partially map to thermodynamics",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411909846",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Engineering",
+      "domain_canonical": "engineering",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Engineering' not in frozen taxonomy (canonical: 'engineering')"
+      ],
+      "forensic_reason_code": "METADATA_TOO_COARSE",
+      "forensic_notes": "OpenAlex domain 'Engineering' \u2014 Could map to mechanical_engineering or chemical_engineering",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411787505",
+      "intake_status": "ELIGIBLE",
+      "domain_raw": "Computer Science",
+      "domain_canonical": "computer_science",
+      "is_known_domain": true,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [],
+      "forensic_reason_code": "INSUFFICIENT_FULL_TEXT",
+      "forensic_notes": "No open-access full text available",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411789614",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Social Sciences",
+      "domain_canonical": "social_sciences",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Social Sciences' not in frozen taxonomy (canonical: 'social_sciences')"
+      ],
+      "forensic_reason_code": "OUTSIDE_BENCHMARK_DOMAIN",
+      "forensic_notes": "OpenAlex domain 'Social Sciences' \u2014 Genuinely outside current benchmark scope",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411794411",
+      "intake_status": "ELIGIBLE",
+      "domain_raw": "Computer Science",
+      "domain_canonical": "computer_science",
+      "is_known_domain": true,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [],
+      "forensic_reason_code": "INSUFFICIENT_FULL_TEXT",
+      "forensic_notes": "No open-access full text available",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411795919",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Engineering",
+      "domain_canonical": "engineering",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Engineering' not in frozen taxonomy (canonical: 'engineering')"
+      ],
+      "forensic_reason_code": "METADATA_TOO_COARSE",
+      "forensic_notes": "OpenAlex domain 'Engineering' \u2014 Could map to mechanical_engineering or chemical_engineering",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411803623",
+      "intake_status": "ELIGIBLE",
+      "domain_raw": "Materials Science",
+      "domain_canonical": "materials_science",
+      "is_known_domain": true,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [],
+      "forensic_reason_code": "INSUFFICIENT_FULL_TEXT",
+      "forensic_notes": "No open-access full text available",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411804348",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Social Sciences",
+      "domain_canonical": "social_sciences",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Social Sciences' not in frozen taxonomy (canonical: 'social_sciences')"
+      ],
+      "forensic_reason_code": "OUTSIDE_BENCHMARK_DOMAIN",
+      "forensic_notes": "OpenAlex domain 'Social Sciences' \u2014 Genuinely outside current benchmark scope",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411825313",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Engineering",
+      "domain_canonical": "engineering",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Engineering' not in frozen taxonomy (canonical: 'engineering')"
+      ],
+      "forensic_reason_code": "METADATA_TOO_COARSE",
+      "forensic_notes": "OpenAlex domain 'Engineering' \u2014 Could map to mechanical_engineering or chemical_engineering",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411829793",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Medicine",
+      "domain_canonical": "medicine",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Medicine' not in frozen taxonomy (canonical: 'medicine')"
+      ],
+      "forensic_reason_code": "OUTSIDE_BENCHMARK_DOMAIN",
+      "forensic_notes": "OpenAlex domain 'Medicine' \u2014 Genuinely outside current benchmark scope (medical science)",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411836127",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Biochemistry, Genetics and Molecular Biology",
+      "domain_canonical": "biochemistry,_genetics_and_molecular_biology",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Biochemistry, Genetics and Molecular Biology' not in frozen taxonomy (canonical: 'biochemistry,_genetics_and_molecular_biology')"
+      ],
+      "forensic_reason_code": "METADATA_TOO_COARSE",
+      "forensic_notes": "OpenAlex domain 'Biochemistry, Genetics and Molecular Biology' \u2014 Could partially map to biochemistry or molecular_biology",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411909848",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Engineering",
+      "domain_canonical": "engineering",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Engineering' not in frozen taxonomy (canonical: 'engineering')"
+      ],
+      "forensic_reason_code": "METADATA_TOO_COARSE",
+      "forensic_notes": "OpenAlex domain 'Engineering' \u2014 Could map to mechanical_engineering or chemical_engineering",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411917402",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Engineering",
+      "domain_canonical": "engineering",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Engineering' not in frozen taxonomy (canonical: 'engineering')"
+      ],
+      "forensic_reason_code": "METADATA_TOO_COARSE",
+      "forensic_notes": "OpenAlex domain 'Engineering' \u2014 Could map to mechanical_engineering or chemical_engineering",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411927774",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Engineering",
+      "domain_canonical": "engineering",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Engineering' not in frozen taxonomy (canonical: 'engineering')"
+      ],
+      "forensic_reason_code": "METADATA_TOO_COARSE",
+      "forensic_notes": "OpenAlex domain 'Engineering' \u2014 Could map to mechanical_engineering or chemical_engineering",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4412200802",
+      "intake_status": "ELIGIBLE",
+      "domain_raw": "Computer Science",
+      "domain_canonical": "computer_science",
+      "is_known_domain": true,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [],
+      "forensic_reason_code": "INSUFFICIENT_FULL_TEXT",
+      "forensic_notes": "No open-access full text available",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4412372658",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Engineering",
+      "domain_canonical": "engineering",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Engineering' not in frozen taxonomy (canonical: 'engineering')"
+      ],
+      "forensic_reason_code": "METADATA_TOO_COARSE",
+      "forensic_notes": "OpenAlex domain 'Engineering' \u2014 Could map to mechanical_engineering or chemical_engineering",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4412372715",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Engineering",
+      "domain_canonical": "engineering",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Engineering' not in frozen taxonomy (canonical: 'engineering')"
+      ],
+      "forensic_reason_code": "METADATA_TOO_COARSE",
+      "forensic_notes": "OpenAlex domain 'Engineering' \u2014 Could map to mechanical_engineering or chemical_engineering",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411782471",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Biochemistry, Genetics and Molecular Biology",
+      "domain_canonical": "biochemistry,_genetics_and_molecular_biology",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Biochemistry, Genetics and Molecular Biology' not in frozen taxonomy (canonical: 'biochemistry,_genetics_and_molecular_biology')"
+      ],
+      "forensic_reason_code": "METADATA_TOO_COARSE",
+      "forensic_notes": "OpenAlex domain 'Biochemistry, Genetics and Molecular Biology' \u2014 Could partially map to biochemistry or molecular_biology",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411785369",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Physics and Astronomy",
+      "domain_canonical": "physics_and_astronomy",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Physics and Astronomy' not in frozen taxonomy (canonical: 'physics_and_astronomy')"
+      ],
+      "forensic_reason_code": "METADATA_TOO_COARSE",
+      "forensic_notes": "OpenAlex domain 'Physics and Astronomy' \u2014 Could partially map to optics or electromagnetics",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411787877",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Physics and Astronomy",
+      "domain_canonical": "physics_and_astronomy",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Physics and Astronomy' not in frozen taxonomy (canonical: 'physics_and_astronomy')"
+      ],
+      "forensic_reason_code": "METADATA_TOO_COARSE",
+      "forensic_notes": "OpenAlex domain 'Physics and Astronomy' \u2014 Could partially map to optics or electromagnetics",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411788048",
+      "intake_status": "ELIGIBLE",
+      "domain_raw": "Materials Science",
+      "domain_canonical": "materials_science",
+      "is_known_domain": true,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [],
+      "forensic_reason_code": "INSUFFICIENT_FULL_TEXT",
+      "forensic_notes": "No open-access full text available",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411788090",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Energy",
+      "domain_canonical": "energy",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Energy' not in frozen taxonomy (canonical: 'energy')"
+      ],
+      "forensic_reason_code": "METADATA_TOO_COARSE",
+      "forensic_notes": "OpenAlex domain 'Energy' \u2014 Could partially map to thermodynamics",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411792032",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Social Sciences",
+      "domain_canonical": "social_sciences",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Social Sciences' not in frozen taxonomy (canonical: 'social_sciences')"
+      ],
+      "forensic_reason_code": "OUTSIDE_BENCHMARK_DOMAIN",
+      "forensic_notes": "OpenAlex domain 'Social Sciences' \u2014 Genuinely outside current benchmark scope",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411822816",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Biochemistry, Genetics and Molecular Biology",
+      "domain_canonical": "biochemistry,_genetics_and_molecular_biology",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Biochemistry, Genetics and Molecular Biology' not in frozen taxonomy (canonical: 'biochemistry,_genetics_and_molecular_biology')"
+      ],
+      "forensic_reason_code": "METADATA_TOO_COARSE",
+      "forensic_notes": "OpenAlex domain 'Biochemistry, Genetics and Molecular Biology' \u2014 Could partially map to biochemistry or molecular_biology",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411829961",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Medicine",
+      "domain_canonical": "medicine",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Medicine' not in frozen taxonomy (canonical: 'medicine')"
+      ],
+      "forensic_reason_code": "OUTSIDE_BENCHMARK_DOMAIN",
+      "forensic_notes": "OpenAlex domain 'Medicine' \u2014 Genuinely outside current benchmark scope (medical science)",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411830158",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Decision Sciences",
+      "domain_canonical": "decision_sciences",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Decision Sciences' not in frozen taxonomy (canonical: 'decision_sciences')"
+      ],
+      "forensic_reason_code": "OUTSIDE_BENCHMARK_DOMAIN",
+      "forensic_notes": "OpenAlex domain 'Decision Sciences' \u2014 Genuinely outside current benchmark scope",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411838582",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Engineering",
+      "domain_canonical": "engineering",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Engineering' not in frozen taxonomy (canonical: 'engineering')"
+      ],
+      "forensic_reason_code": "METADATA_TOO_COARSE",
+      "forensic_notes": "OpenAlex domain 'Engineering' \u2014 Could map to mechanical_engineering or chemical_engineering",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4412135759",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Biochemistry, Genetics and Molecular Biology",
+      "domain_canonical": "biochemistry,_genetics_and_molecular_biology",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Biochemistry, Genetics and Molecular Biology' not in frozen taxonomy (canonical: 'biochemistry,_genetics_and_molecular_biology')"
+      ],
+      "forensic_reason_code": "METADATA_TOO_COARSE",
+      "forensic_notes": "OpenAlex domain 'Biochemistry, Genetics and Molecular Biology' \u2014 Could partially map to biochemistry or molecular_biology",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4412372630",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Environmental Science",
+      "domain_canonical": "environmental_science",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Environmental Science' not in frozen taxonomy (canonical: 'environmental_science')"
+      ],
+      "forensic_reason_code": "OUTSIDE_BENCHMARK_DOMAIN",
+      "forensic_notes": "OpenAlex domain 'Environmental Science' \u2014 Genuinely outside current benchmark scope",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411779753",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Energy",
+      "domain_canonical": "energy",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Energy' not in frozen taxonomy (canonical: 'energy')"
+      ],
+      "forensic_reason_code": "METADATA_TOO_COARSE",
+      "forensic_notes": "OpenAlex domain 'Energy' \u2014 Could partially map to thermodynamics",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411792671",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Engineering",
+      "domain_canonical": "engineering",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Engineering' not in frozen taxonomy (canonical: 'engineering')"
+      ],
+      "forensic_reason_code": "METADATA_TOO_COARSE",
+      "forensic_notes": "OpenAlex domain 'Engineering' \u2014 Could map to mechanical_engineering or chemical_engineering",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411799484",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Energy",
+      "domain_canonical": "energy",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Energy' not in frozen taxonomy (canonical: 'energy')"
+      ],
+      "forensic_reason_code": "METADATA_TOO_COARSE",
+      "forensic_notes": "OpenAlex domain 'Energy' \u2014 Could partially map to thermodynamics",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411799547",
+      "intake_status": "ELIGIBLE",
+      "domain_raw": "Computer Science",
+      "domain_canonical": "computer_science",
+      "is_known_domain": true,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [],
+      "forensic_reason_code": "INSUFFICIENT_FULL_TEXT",
+      "forensic_notes": "No open-access full text available",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411829263",
+      "intake_status": "ELIGIBLE",
+      "domain_raw": "Computer Science",
+      "domain_canonical": "computer_science",
+      "is_known_domain": true,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [],
+      "forensic_reason_code": "INSUFFICIENT_FULL_TEXT",
+      "forensic_notes": "No open-access full text available",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411829950",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Medicine",
+      "domain_canonical": "medicine",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Medicine' not in frozen taxonomy (canonical: 'medicine')"
+      ],
+      "forensic_reason_code": "OUTSIDE_BENCHMARK_DOMAIN",
+      "forensic_notes": "OpenAlex domain 'Medicine' \u2014 Genuinely outside current benchmark scope (medical science)",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411838242",
+      "intake_status": "ELIGIBLE",
+      "domain_raw": "Materials Science",
+      "domain_canonical": "materials_science",
+      "is_known_domain": true,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [],
+      "forensic_reason_code": "INSUFFICIENT_FULL_TEXT",
+      "forensic_notes": "No open-access full text available",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411840331",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Medicine",
+      "domain_canonical": "medicine",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Medicine' not in frozen taxonomy (canonical: 'medicine')"
+      ],
+      "forensic_reason_code": "OUTSIDE_BENCHMARK_DOMAIN",
+      "forensic_notes": "OpenAlex domain 'Medicine' \u2014 Genuinely outside current benchmark scope (medical science)",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411917531",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Energy",
+      "domain_canonical": "energy",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Energy' not in frozen taxonomy (canonical: 'energy')"
+      ],
+      "forensic_reason_code": "METADATA_TOO_COARSE",
+      "forensic_notes": "OpenAlex domain 'Energy' \u2014 Could partially map to thermodynamics",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411928321",
+      "intake_status": "ELIGIBLE",
+      "domain_raw": "Materials Science",
+      "domain_canonical": "materials_science",
+      "is_known_domain": true,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [],
+      "forensic_reason_code": "INSUFFICIENT_FULL_TEXT",
+      "forensic_notes": "No open-access full text available",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4416643827",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Arts and Humanities",
+      "domain_canonical": "arts_and_humanities",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Arts and Humanities' not in frozen taxonomy (canonical: 'arts_and_humanities')"
+      ],
+      "forensic_reason_code": "OUTSIDE_BENCHMARK_DOMAIN",
+      "forensic_notes": "OpenAlex domain 'Arts and Humanities' \u2014 Genuinely outside current benchmark scope",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411780528",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Medicine",
+      "domain_canonical": "medicine",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Medicine' not in frozen taxonomy (canonical: 'medicine')"
+      ],
+      "forensic_reason_code": "OUTSIDE_BENCHMARK_DOMAIN",
+      "forensic_notes": "OpenAlex domain 'Medicine' \u2014 Genuinely outside current benchmark scope (medical science)",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411786892",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Social Sciences",
+      "domain_canonical": "social_sciences",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Social Sciences' not in frozen taxonomy (canonical: 'social_sciences')"
+      ],
+      "forensic_reason_code": "OUTSIDE_BENCHMARK_DOMAIN",
+      "forensic_notes": "OpenAlex domain 'Social Sciences' \u2014 Genuinely outside current benchmark scope",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411788196",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Social Sciences",
+      "domain_canonical": "social_sciences",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Social Sciences' not in frozen taxonomy (canonical: 'social_sciences')"
+      ],
+      "forensic_reason_code": "OUTSIDE_BENCHMARK_DOMAIN",
+      "forensic_notes": "OpenAlex domain 'Social Sciences' \u2014 Genuinely outside current benchmark scope",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411788524",
+      "intake_status": "ELIGIBLE",
+      "domain_raw": "Materials Science",
+      "domain_canonical": "materials_science",
+      "is_known_domain": true,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [],
+      "forensic_reason_code": "INSUFFICIENT_FULL_TEXT",
+      "forensic_notes": "No open-access full text available",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411791562",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Medicine",
+      "domain_canonical": "medicine",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Medicine' not in frozen taxonomy (canonical: 'medicine')"
+      ],
+      "forensic_reason_code": "OUTSIDE_BENCHMARK_DOMAIN",
+      "forensic_notes": "OpenAlex domain 'Medicine' \u2014 Genuinely outside current benchmark scope (medical science)",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411794467",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Pharmacology, Toxicology and Pharmaceutics",
+      "domain_canonical": "pharmacology,_toxicology_and_pharmaceutics",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Pharmacology, Toxicology and Pharmaceutics' not in frozen taxonomy (canonical: 'pharmacology,_toxicology_and_pharmaceutics')"
+      ],
+      "forensic_reason_code": "OUTSIDE_BENCHMARK_DOMAIN",
+      "forensic_notes": "OpenAlex domain 'Pharmacology, Toxicology and Pharmaceutics' \u2014 Genuinely outside current benchmark scope",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411804125",
+      "intake_status": "ELIGIBLE",
+      "domain_raw": "Materials Science",
+      "domain_canonical": "materials_science",
+      "is_known_domain": true,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [],
+      "forensic_reason_code": "INSUFFICIENT_FULL_TEXT",
+      "forensic_notes": "No open-access full text available",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411805956",
+      "intake_status": "ELIGIBLE",
+      "domain_raw": "Materials Science",
+      "domain_canonical": "materials_science",
+      "is_known_domain": true,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [],
+      "forensic_reason_code": "INSUFFICIENT_FULL_TEXT",
+      "forensic_notes": "No open-access full text available",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411809668",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Environmental Science",
+      "domain_canonical": "environmental_science",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Environmental Science' not in frozen taxonomy (canonical: 'environmental_science')"
+      ],
+      "forensic_reason_code": "OUTSIDE_BENCHMARK_DOMAIN",
+      "forensic_notes": "OpenAlex domain 'Environmental Science' \u2014 Genuinely outside current benchmark scope",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411809960",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Biochemistry, Genetics and Molecular Biology",
+      "domain_canonical": "biochemistry,_genetics_and_molecular_biology",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Biochemistry, Genetics and Molecular Biology' not in frozen taxonomy (canonical: 'biochemistry,_genetics_and_molecular_biology')"
+      ],
+      "forensic_reason_code": "METADATA_TOO_COARSE",
+      "forensic_notes": "OpenAlex domain 'Biochemistry, Genetics and Molecular Biology' \u2014 Could partially map to biochemistry or molecular_biology",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411814583",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Business, Management and Accounting",
+      "domain_canonical": "business,_management_and_accounting",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Business, Management and Accounting' not in frozen taxonomy (canonical: 'business,_management_and_accounting')"
+      ],
+      "forensic_reason_code": "OUTSIDE_BENCHMARK_DOMAIN",
+      "forensic_notes": "OpenAlex domain 'Business, Management and Accounting' \u2014 Genuinely outside current benchmark scope",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411829726",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Medicine",
+      "domain_canonical": "medicine",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Medicine' not in frozen taxonomy (canonical: 'medicine')"
+      ],
+      "forensic_reason_code": "OUTSIDE_BENCHMARK_DOMAIN",
+      "forensic_notes": "OpenAlex domain 'Medicine' \u2014 Genuinely outside current benchmark scope (medical science)",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411829883",
+      "intake_status": "ELIGIBLE",
+      "domain_raw": "Materials Science",
+      "domain_canonical": "materials_science",
+      "is_known_domain": true,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [],
+      "forensic_reason_code": "INSUFFICIENT_FULL_TEXT",
+      "forensic_notes": "No open-access full text available",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411842038",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Environmental Science",
+      "domain_canonical": "environmental_science",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Environmental Science' not in frozen taxonomy (canonical: 'environmental_science')"
+      ],
+      "forensic_reason_code": "OUTSIDE_BENCHMARK_DOMAIN",
+      "forensic_notes": "OpenAlex domain 'Environmental Science' \u2014 Genuinely outside current benchmark scope",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411917422",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Engineering",
+      "domain_canonical": "engineering",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Engineering' not in frozen taxonomy (canonical: 'engineering')"
+      ],
+      "forensic_reason_code": "METADATA_TOO_COARSE",
+      "forensic_notes": "OpenAlex domain 'Engineering' \u2014 Could map to mechanical_engineering or chemical_engineering",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411976295",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Social Sciences",
+      "domain_canonical": "social_sciences",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Social Sciences' not in frozen taxonomy (canonical: 'social_sciences')"
+      ],
+      "forensic_reason_code": "OUTSIDE_BENCHMARK_DOMAIN",
+      "forensic_notes": "OpenAlex domain 'Social Sciences' \u2014 Genuinely outside current benchmark scope",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4413022244",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Economics, Econometrics and Finance",
+      "domain_canonical": "economics,_econometrics_and_finance",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Economics, Econometrics and Finance' not in frozen taxonomy (canonical: 'economics,_econometrics_and_finance')"
+      ],
+      "forensic_reason_code": "OUTSIDE_BENCHMARK_DOMAIN",
+      "forensic_notes": "OpenAlex domain 'Economics, Econometrics and Finance' \u2014 Genuinely outside current benchmark scope",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411779099",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Environmental Science",
+      "domain_canonical": "environmental_science",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Environmental Science' not in frozen taxonomy (canonical: 'environmental_science')"
+      ],
+      "forensic_reason_code": "OUTSIDE_BENCHMARK_DOMAIN",
+      "forensic_notes": "OpenAlex domain 'Environmental Science' \u2014 Genuinely outside current benchmark scope",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411789562",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Neuroscience",
+      "domain_canonical": "neuroscience",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Neuroscience' not in frozen taxonomy (canonical: 'neuroscience')"
+      ],
+      "forensic_reason_code": "OUTSIDE_BENCHMARK_DOMAIN",
+      "forensic_notes": "OpenAlex domain 'Neuroscience' \u2014 Genuinely outside current benchmark scope",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411792934",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Medicine",
+      "domain_canonical": "medicine",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Medicine' not in frozen taxonomy (canonical: 'medicine')"
+      ],
+      "forensic_reason_code": "OUTSIDE_BENCHMARK_DOMAIN",
+      "forensic_notes": "OpenAlex domain 'Medicine' \u2014 Genuinely outside current benchmark scope (medical science)",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411795344",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Energy",
+      "domain_canonical": "energy",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Energy' not in frozen taxonomy (canonical: 'energy')"
+      ],
+      "forensic_reason_code": "METADATA_TOO_COARSE",
+      "forensic_notes": "OpenAlex domain 'Energy' \u2014 Could partially map to thermodynamics",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411799456",
+      "intake_status": "ELIGIBLE",
+      "domain_raw": "Computer Science",
+      "domain_canonical": "computer_science",
+      "is_known_domain": true,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [],
+      "forensic_reason_code": "INSUFFICIENT_FULL_TEXT",
+      "forensic_notes": "No open-access full text available",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411801828",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Biochemistry, Genetics and Molecular Biology",
+      "domain_canonical": "biochemistry,_genetics_and_molecular_biology",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Biochemistry, Genetics and Molecular Biology' not in frozen taxonomy (canonical: 'biochemistry,_genetics_and_molecular_biology')"
+      ],
+      "forensic_reason_code": "METADATA_TOO_COARSE",
+      "forensic_notes": "OpenAlex domain 'Biochemistry, Genetics and Molecular Biology' \u2014 Could partially map to biochemistry or molecular_biology",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411823178",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Environmental Science",
+      "domain_canonical": "environmental_science",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Environmental Science' not in frozen taxonomy (canonical: 'environmental_science')"
+      ],
+      "forensic_reason_code": "OUTSIDE_BENCHMARK_DOMAIN",
+      "forensic_notes": "OpenAlex domain 'Environmental Science' \u2014 Genuinely outside current benchmark scope",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411838284",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Engineering",
+      "domain_canonical": "engineering",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Engineering' not in frozen taxonomy (canonical: 'engineering')"
+      ],
+      "forensic_reason_code": "METADATA_TOO_COARSE",
+      "forensic_notes": "OpenAlex domain 'Engineering' \u2014 Could map to mechanical_engineering or chemical_engineering",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411839725",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Energy",
+      "domain_canonical": "energy",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Energy' not in frozen taxonomy (canonical: 'energy')"
+      ],
+      "forensic_reason_code": "METADATA_TOO_COARSE",
+      "forensic_notes": "OpenAlex domain 'Energy' \u2014 Could partially map to thermodynamics",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411903091",
+      "intake_status": "ELIGIBLE",
+      "domain_raw": "Materials Science",
+      "domain_canonical": "materials_science",
+      "is_known_domain": true,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [],
+      "forensic_reason_code": "INSUFFICIENT_FULL_TEXT",
+      "forensic_notes": "No open-access full text available",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411909687",
+      "intake_status": "ELIGIBLE",
+      "domain_raw": "Materials Science",
+      "domain_canonical": "materials_science",
+      "is_known_domain": true,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [],
+      "forensic_reason_code": "INSUFFICIENT_FULL_TEXT",
+      "forensic_notes": "No open-access full text available",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411927851",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Engineering",
+      "domain_canonical": "engineering",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Engineering' not in frozen taxonomy (canonical: 'engineering')"
+      ],
+      "forensic_reason_code": "METADATA_TOO_COARSE",
+      "forensic_notes": "OpenAlex domain 'Engineering' \u2014 Could map to mechanical_engineering or chemical_engineering",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4413202009",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Social Sciences",
+      "domain_canonical": "social_sciences",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Social Sciences' not in frozen taxonomy (canonical: 'social_sciences')"
+      ],
+      "forensic_reason_code": "OUTSIDE_BENCHMARK_DOMAIN",
+      "forensic_notes": "OpenAlex domain 'Social Sciences' \u2014 Genuinely outside current benchmark scope",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W7105760706",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Environmental Science",
+      "domain_canonical": "environmental_science",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Environmental Science' not in frozen taxonomy (canonical: 'environmental_science')"
+      ],
+      "forensic_reason_code": "OUTSIDE_BENCHMARK_DOMAIN",
+      "forensic_notes": "OpenAlex domain 'Environmental Science' \u2014 Genuinely outside current benchmark scope",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W7125016507",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Social Sciences",
+      "domain_canonical": "social_sciences",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Social Sciences' not in frozen taxonomy (canonical: 'social_sciences')"
+      ],
+      "forensic_reason_code": "OUTSIDE_BENCHMARK_DOMAIN",
+      "forensic_notes": "OpenAlex domain 'Social Sciences' \u2014 Genuinely outside current benchmark scope",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411778080",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Engineering",
+      "domain_canonical": "engineering",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Engineering' not in frozen taxonomy (canonical: 'engineering')"
+      ],
+      "forensic_reason_code": "METADATA_TOO_COARSE",
+      "forensic_notes": "OpenAlex domain 'Engineering' \u2014 Could map to mechanical_engineering or chemical_engineering",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411786768",
+      "intake_status": "ELIGIBLE",
+      "domain_raw": "Materials Science",
+      "domain_canonical": "materials_science",
+      "is_known_domain": true,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [],
+      "forensic_reason_code": "INSUFFICIENT_FULL_TEXT",
+      "forensic_notes": "No open-access full text available",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411786958",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Medicine",
+      "domain_canonical": "medicine",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Medicine' not in frozen taxonomy (canonical: 'medicine')"
+      ],
+      "forensic_reason_code": "OUTSIDE_BENCHMARK_DOMAIN",
+      "forensic_notes": "OpenAlex domain 'Medicine' \u2014 Genuinely outside current benchmark scope (medical science)",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411787556",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Medicine",
+      "domain_canonical": "medicine",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Medicine' not in frozen taxonomy (canonical: 'medicine')"
+      ],
+      "forensic_reason_code": "OUTSIDE_BENCHMARK_DOMAIN",
+      "forensic_notes": "OpenAlex domain 'Medicine' \u2014 Genuinely outside current benchmark scope (medical science)",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411788013",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Physics and Astronomy",
+      "domain_canonical": "physics_and_astronomy",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Physics and Astronomy' not in frozen taxonomy (canonical: 'physics_and_astronomy')"
+      ],
+      "forensic_reason_code": "METADATA_TOO_COARSE",
+      "forensic_notes": "OpenAlex domain 'Physics and Astronomy' \u2014 Could partially map to optics or electromagnetics",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411788301",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Medicine",
+      "domain_canonical": "medicine",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Medicine' not in frozen taxonomy (canonical: 'medicine')"
+      ],
+      "forensic_reason_code": "OUTSIDE_BENCHMARK_DOMAIN",
+      "forensic_notes": "OpenAlex domain 'Medicine' \u2014 Genuinely outside current benchmark scope (medical science)",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411791578",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Biochemistry, Genetics and Molecular Biology",
+      "domain_canonical": "biochemistry,_genetics_and_molecular_biology",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Biochemistry, Genetics and Molecular Biology' not in frozen taxonomy (canonical: 'biochemistry,_genetics_and_molecular_biology')"
+      ],
+      "forensic_reason_code": "METADATA_TOO_COARSE",
+      "forensic_notes": "OpenAlex domain 'Biochemistry, Genetics and Molecular Biology' \u2014 Could partially map to biochemistry or molecular_biology",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411793500",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Agricultural and Biological Sciences",
+      "domain_canonical": "agricultural_and_biological_sciences",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Agricultural and Biological Sciences' not in frozen taxonomy (canonical: 'agricultural_and_biological_sciences')"
+      ],
+      "forensic_reason_code": "METADATA_TOO_COARSE",
+      "forensic_notes": "OpenAlex domain 'Agricultural and Biological Sciences' \u2014 Could partially map to biology",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411795940",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Engineering",
+      "domain_canonical": "engineering",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Engineering' not in frozen taxonomy (canonical: 'engineering')"
+      ],
+      "forensic_reason_code": "METADATA_TOO_COARSE",
+      "forensic_notes": "OpenAlex domain 'Engineering' \u2014 Could map to mechanical_engineering or chemical_engineering",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411797882",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Mathematics",
+      "domain_canonical": "mathematics",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Mathematics' not in frozen taxonomy (canonical: 'mathematics')"
+      ],
+      "forensic_reason_code": "OUTSIDE_BENCHMARK_DOMAIN",
+      "forensic_notes": "OpenAlex domain 'Mathematics' \u2014 Genuinely outside current benchmark scope",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411807250",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Biochemistry, Genetics and Molecular Biology",
+      "domain_canonical": "biochemistry,_genetics_and_molecular_biology",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Biochemistry, Genetics and Molecular Biology' not in frozen taxonomy (canonical: 'biochemistry,_genetics_and_molecular_biology')"
+      ],
+      "forensic_reason_code": "METADATA_TOO_COARSE",
+      "forensic_notes": "OpenAlex domain 'Biochemistry, Genetics and Molecular Biology' \u2014 Could partially map to biochemistry or molecular_biology",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411829280",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Immunology and Microbiology",
+      "domain_canonical": "immunology_and_microbiology",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Immunology and Microbiology' not in frozen taxonomy (canonical: 'immunology_and_microbiology')"
+      ],
+      "forensic_reason_code": "METADATA_TOO_COARSE",
+      "forensic_notes": "OpenAlex domain 'Immunology and Microbiology' \u2014 Could partially map to biology",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411832445",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Biochemistry, Genetics and Molecular Biology",
+      "domain_canonical": "biochemistry,_genetics_and_molecular_biology",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Biochemistry, Genetics and Molecular Biology' not in frozen taxonomy (canonical: 'biochemistry,_genetics_and_molecular_biology')"
+      ],
+      "forensic_reason_code": "METADATA_TOO_COARSE",
+      "forensic_notes": "OpenAlex domain 'Biochemistry, Genetics and Molecular Biology' \u2014 Could partially map to biochemistry or molecular_biology",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411840407",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Environmental Science",
+      "domain_canonical": "environmental_science",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Environmental Science' not in frozen taxonomy (canonical: 'environmental_science')"
+      ],
+      "forensic_reason_code": "OUTSIDE_BENCHMARK_DOMAIN",
+      "forensic_notes": "OpenAlex domain 'Environmental Science' \u2014 Genuinely outside current benchmark scope",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411841327",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Engineering",
+      "domain_canonical": "engineering",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Engineering' not in frozen taxonomy (canonical: 'engineering')"
+      ],
+      "forensic_reason_code": "METADATA_TOO_COARSE",
+      "forensic_notes": "OpenAlex domain 'Engineering' \u2014 Could map to mechanical_engineering or chemical_engineering",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411842037",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Biochemistry, Genetics and Molecular Biology",
+      "domain_canonical": "biochemistry,_genetics_and_molecular_biology",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Biochemistry, Genetics and Molecular Biology' not in frozen taxonomy (canonical: 'biochemistry,_genetics_and_molecular_biology')"
+      ],
+      "forensic_reason_code": "METADATA_TOO_COARSE",
+      "forensic_notes": "OpenAlex domain 'Biochemistry, Genetics and Molecular Biology' \u2014 Could partially map to biochemistry or molecular_biology",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411909531",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Engineering",
+      "domain_canonical": "engineering",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Engineering' not in frozen taxonomy (canonical: 'engineering')"
+      ],
+      "forensic_reason_code": "METADATA_TOO_COARSE",
+      "forensic_notes": "OpenAlex domain 'Engineering' \u2014 Could map to mechanical_engineering or chemical_engineering",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4412371880",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Engineering",
+      "domain_canonical": "engineering",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Engineering' not in frozen taxonomy (canonical: 'engineering')"
+      ],
+      "forensic_reason_code": "METADATA_TOO_COARSE",
+      "forensic_notes": "OpenAlex domain 'Engineering' \u2014 Could map to mechanical_engineering or chemical_engineering",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4412373094",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Medicine",
+      "domain_canonical": "medicine",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Medicine' not in frozen taxonomy (canonical: 'medicine')"
+      ],
+      "forensic_reason_code": "OUTSIDE_BENCHMARK_DOMAIN",
+      "forensic_notes": "OpenAlex domain 'Medicine' \u2014 Genuinely outside current benchmark scope (medical science)",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4416643132",
+      "intake_status": "ELIGIBLE",
+      "domain_raw": "Computer Science",
+      "domain_canonical": "computer_science",
+      "is_known_domain": true,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [],
+      "forensic_reason_code": "INSUFFICIENT_FULL_TEXT",
+      "forensic_notes": "No open-access full text available",
+      "custodian_adjudication": "PENDING"
+    },
+    {
+      "source_id": "OA-W4411770388",
+      "intake_status": "FLAGGED",
+      "domain_raw": "Environmental Science",
+      "domain_canonical": "environmental_science",
+      "is_known_domain": false,
+      "has_full_text": false,
+      "exposure_status": "UNSEEN",
+      "contamination_level": "CLEAN",
+      "flag_reasons": [
+        "FLAGGED: Domain 'Environmental Science' not in frozen taxonomy (canonical: 'environmental_science')"
+      ],
+      "forensic_reason_code": "OUTSIDE_BENCHMARK_DOMAIN",
+      "forensic_notes": "OpenAlex domain 'Environmental Science' \u2014 Genuinely outside current benchmark scope",
+      "custodian_adjudication": "PENDING"
+    }
+  ],
+  "reason_code_definitions": {
+    "OUTSIDE_BENCHMARK_DOMAIN": "Genuinely outside our benchmark domain universe",
+    "METADATA_TOO_COARSE": "Valid source but OpenAlex metadata doesn't map to frozen taxonomy",
+    "DOMAIN_FROM_CONTENT": "Valid source, domain determinable from content (not metadata)",
+    "DUPLICATE_NEAR_DUPLICATE": "Duplicate or near-duplicate detected",
+    "INSUFFICIENT_PROVENANCE": "Provenance incomplete (e.g., missing DOI)",
+    "INSUFFICIENT_FULL_TEXT": "No open-access full text available",
+    "OTHER": "Other reason (exposure, contamination, unclassified)"
+  },
+  "custodian_adjudication_status": "PENDING \u2014 custodian must review each disposition",
+  "note": "CUSTODIAN-ONLY. Contains source_ids but NO content. No TEE access. No benchmark construction."
+}

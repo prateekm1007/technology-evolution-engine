@@ -1,0 +1,11 @@
+B-2 Stability Assessment (n=5, rate-limit safe)
+================================================
+Model: glm-4-plus
+Runs per case: 5
+Delay between calls: 15000ms
+Total LLM calls: 65
+Detector: FROZEN (no modifications)
+
+[ADV-01] skeletal calcification process
+  run 1/5: REJECT
+  run 2/5: REJECT

@@ -1,0 +1,12 @@
+TITLE: Estimating irregular water demands with physics-informed machine learning to inform leakage detection
+ARXIV ID: 2309.02935v1
+URL: http://arxiv.org/abs/2309.02935v1
+RETRIEVAL DATE: 2026-08-05
+RETRIEVAL METHOD: arxiv.org API
+SOURCE VERIFICATION: arxiv API XML
+DOMAIN HINT: water_harvesting_2
+AUTHORS: Ivo Daniel; Andrea Cominola
+PUBLISHED: 2023-09-06T11:55:16Z
+
+ABSTRACT:
+Leakages in drinking water distribution networks pose significant challenges to water utilities, leading to infrastructure failure, operational disruptions, environmental hazards, property damage, and economic losses. The timely identification and accurate localisation of such leakages is paramount for utilities to mitigate these unwanted effects. However, implementation of algorithms for leakage detection is limited in practice by requirements of either hydraulic models or large amounts of training data. Physics-informed machine learning can utilise hydraulic information thereby circumventing both limitations. In this work, we present a physics-informed machine learning algorithm that analyses pressure data and therefrom estimates unknown irregular water demands via a fully connected neural network, ultimately leveraging the Bernoulli equation and effectively linearising the leakage detection problem. Our algorithm is tested on data from the L-Town benchmark network, and results indicate a good capability for estimating most irregular demands, with R2 larger than 0.8. Identification results for leakages under the presence of irregular demands could be improved by a factor of 5.3 for abrupt leaks and a factor of 3.0 for incipient leaks when compared the results disregarding irregular demands.

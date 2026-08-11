@@ -1,0 +1,77 @@
+{
+  "candidates_generated": 1,
+  "hard_nulls_generated": 2,
+  "real_survived": 1,
+  "real_total": 1,
+  "null_survived": 0,
+  "null_total": 2,
+  "signal": "PRELIMINARY DISCOVERY SIGNAL",
+  "real_result": {
+    "candidate_id": "V14-0",
+    "source_domain": "materials",
+    "target_domain": "energy",
+    "hypothesis": "If BaTiO3-PVB composites are used as a microwave absorber, then the absorption coefficient will increase with the weight concentration of BaTiO3 nanoparticles",
+    "mechanism": "The ferroelectric nanoparticles would dissipate microwave energy through dielectric loss, while the polymer matrix would provide a low-loss background for efficient energy absorption",
+    "overall": "SURVIVES",
+    "fatal_count": 0,
+    "major_count": 1,
+    "attacks": {
+      "physics": {
+        "severity": "SURVIVES",
+        "reason": "The hypothesis is consistent with the physics of microwave absorption, as ferroelectric nanoparticles like BaTiO3 can indeed dissipate microwave energy through dielectric loss, and a polymer matrix like PVB can provide a low-loss background to enhance absorption efficiency."
+      },
+      "materials": {
+        "severity": "MAJOR",
+        "reason": "degradation mechanisms are not considered"
+      },
+      "engineering": {
+        "severity": "MINOR",
+        "reason": "The hypothesis is plausible and the mechanism is sound, BaTiO3-PVB composites can be manufactured through various methods such as solvent casting or melt mixing, and the cost of production is relatively low compared to other microwave absorber materials"
+      }
+    }
+  },
+  "null_results": [
+    {
+      "candidate_id": "NULL-0",
+      "overall": "KILLED",
+      "fatal_count": 2,
+      "major_count": 1,
+      "attacks": {
+        "physics": {
+          "severity": "FATAL",
+          "reason": "violates laws of thermodynamics and conservation of energy"
+        },
+        "materials": {
+          "severity": "MAJOR",
+          "reason": "Lack of scientific evidence and implausible claims"
+        },
+        "engineering": {
+          "severity": "FATAL",
+          "reason": "Lack of scientific basis and technological feasibility"
+        }
+      },
+      "is_null": true
+    },
+    {
+      "candidate_id": "NULL-1",
+      "overall": "KILLED",
+      "fatal_count": 1,
+      "major_count": 1,
+      "attacks": {
+        "physics": {
+          "severity": "FATAL",
+          "reason": "violation of biological and physical domain separation"
+        },
+        "materials": {
+          "severity": "MINOR",
+          "reason": "theoretical feasibility"
+        },
+        "engineering": {
+          "severity": "MAJOR",
+          "reason": "Current manufacturing technologies are not capable of precisely controlling microRNA molecules to bind to metal surfaces and influence crystalline structures in a scalable and reliable manner."
+        }
+      },
+      "is_null": true
+    }
+  ]
+}

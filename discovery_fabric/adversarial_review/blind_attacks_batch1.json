@@ -1,0 +1,122 @@
+{
+  "results": [
+    {
+      "candidate_id": "M3-22c198f5",
+      "is_null": false,
+      "overall": "UNASSESSED",
+      "fatal_attacks": [],
+      "reason": "LLM failed"
+    },
+    {
+      "candidate_id": "M9-2e831ceb",
+      "is_null": false,
+      "overall": "UNASSESSED",
+      "fatal_attacks": [],
+      "reason": "LLM failed"
+    },
+    {
+      "candidate_id": "M9-44e7cdd2",
+      "is_null": false,
+      "overall": "UNASSESSED",
+      "fatal_attacks": [],
+      "reason": "LLM failed"
+    },
+    {
+      "candidate_id": "M9-7161005d",
+      "is_null": false,
+      "overall": "UNASSESSED",
+      "fatal_attacks": [],
+      "reason": "LLM failed"
+    },
+    {
+      "candidate_id": "M9-c0e9ed61",
+      "is_null": false,
+      "overall": "KILLED",
+      "fatal_attacks": [
+        "8_insufficient"
+      ],
+      "reason": "The candidate fails due to insufficient evidence (empty source evidence) and the"
+    },
+    {
+      "candidate_id": "M9-0e2de053",
+      "is_null": false,
+      "overall": "UNASSESSED",
+      "fatal_attacks": [],
+      "reason": "LLM failed"
+    },
+    {
+      "candidate_id": "M9-68b6ac1a",
+      "is_null": false,
+      "overall": "UNASSESSED",
+      "fatal_attacks": [],
+      "reason": "LLM failed"
+    },
+    {
+      "candidate_id": "M9-3f26a0a9",
+      "is_null": false,
+      "overall": "UNASSESSED",
+      "fatal_attacks": [],
+      "reason": "LLM failed"
+    },
+    {
+      "candidate_id": "M9-bc7f0f2d",
+      "is_null": false,
+      "overall": "UNASSESSED",
+      "fatal_attacks": [],
+      "reason": "LLM failed"
+    },
+    {
+      "candidate_id": "M9-b525ed08",
+      "is_null": false,
+      "overall": "KILLED",
+      "fatal_attacks": [
+        "3_evidence_support",
+        "8_insufficient",
+        "10_falsifier"
+      ],
+      "reason": "The candidate is a negative claim with zero supporting evidence, making it unfal"
+    },
+    {
+      "candidate_id": "NULL-NULL-4-116ff8a4",
+      "is_null": true,
+      "overall": "UNASSESSED",
+      "fatal_attacks": [],
+      "reason": "LLM failed"
+    },
+    {
+      "candidate_id": "NULL-NULL-6-8ebcb14e",
+      "is_null": true,
+      "overall": "UNASSESSED",
+      "fatal_attacks": [],
+      "reason": "LLM failed"
+    },
+    {
+      "candidate_id": "NULL-NULL-6-d00fcd1d",
+      "is_null": true,
+      "overall": "UNASSESSED",
+      "fatal_attacks": [],
+      "reason": "LLM failed"
+    },
+    {
+      "candidate_id": "NULL-NULL-6-4e756e7d",
+      "is_null": true,
+      "overall": "UNASSESSED",
+      "fatal_attacks": [],
+      "reason": "LLM failed"
+    },
+    {
+      "candidate_id": "NULL-NULL-6-efa3b975",
+      "is_null": true,
+      "overall": "UNASSESSED",
+      "fatal_attacks": [],
+      "reason": "LLM failed"
+    },
+    {
+      "candidate_id": "NULL-NULL-6-78eeb71e",
+      "is_null": true,
+      "overall": "UNASSESSED",
+      "fatal_attacks": [],
+      "reason": "LLM failed"
+    }
+  ]
+}

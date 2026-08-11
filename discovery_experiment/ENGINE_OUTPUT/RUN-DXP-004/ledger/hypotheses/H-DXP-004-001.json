@@ -1,0 +1,32 @@
+{
+  "hypothesis_id": "H-DXP-004-001",
+  "claim": "Directional microstructures reduce drag primarily by modifying the boundary layer transition from laminar to turbulent flow.",
+  "mechanism": "The microstructures create a controlled disturbance in the boundary layer that delays transition to turbulent flow, reducing skin friction drag. The hierarchical pattern maintains this effect across varying Reynolds numbers.",
+  "evidence": [
+    "Fish scales reduce drag by modifying boundary layer dynamics",
+    "Surface features can influence boundary layer stability"
+  ],
+  "assumptions": [
+    "Boundary layer transition is the dominant factor in pipe friction at Re=500,000",
+    "Microstructures can consistently delay transition without causing premature turbulence",
+    "Feature height and spacing are optimal for delaying transition"
+  ],
+  "predictions": [],
+  "expected_failure_modes": [
+    "Premature transition due to feature geometry",
+    "Inconsistent performance across flow velocities",
+    "Feature erosion affecting transition characteristics"
+  ],
+  "novelty_rationale": "This hypothesis specifically focuses on boundary layer transition as the primary mechanism, rather than general flow modification.",
+  "testability": "Can be tested by measuring velocity profiles near the wall and comparing transition points between smooth and microstructured pipes.",
+  "falsifier": "If microstructured pipes show the same or earlier transition to turbulent flow as smooth pipes but still maintain reduced drag, this hypothesis is wrong.",
+  "epistemic_state": "HYPOTHESIZED",
+  "parent_hypothesis_ids": [],
+  "provenance": {
+    "nodes": {},
+    "edges": [],
+    "committed_hash": null
+  },
+  "is_testable": true,
+  "provenance_root_hash": ""
+}

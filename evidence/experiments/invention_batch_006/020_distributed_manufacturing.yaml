@@ -1,0 +1,381 @@
+problem: "Build a distributed manufacturing system producing 100 common parts on-demand from digital designs"
+domain: "manufacturing"
+hypothesis:
+  id: "hyp_7ea0d7cba0b62e8e"
+  claim: "The invention 'Build a distributed manufacturing system producing 100 common parts on-demand from digital designs' is feasible in the manufacturing domain within the stated time horizon."
+  confidence: 0.5777
+  evidence:
+    - "energy_conservation"
+    - "mass_conservation"
+    - "momentum_conservation"
+    - "ampere law"
+    - "capex_$21.12M"
+  counterevidence:
+    - "failure_mode: cost_overrun"
+    - "failure_mode: material_unavailable_or_too_expensive"
+    - "failure_mode: manufacturing_yield_too_low"
+    - "failure_mode: regulatory_rejection"
+    - "failure_mode: information_asymmetry"
+    - "technical_risk: stress_scenario_composite=0.5175"
+    - "technical_risk: stress_scenario_composite=0.5241"
+    - "commercial_risk: market_size_too_small_to_justify_capex"
+    - "commercial_risk: capex_exceeds_half_of_market_size"
+    - "commercial_risk: s_curve_adoption_extends_payback_period"
+  assumptions:
+
+  status: "pending"
+physical_laws:
+  - "energy_conservation"
+  - "mass_conservation"
+  - "momentum_conservation"
+chemical_principles:
+  pathways:
+
+  kinetics:
+
+  equilibrium:
+
+  energy_states:
+    - "gibbs_free_energy"
+mathematical_formulation:
+  structures:
+    - "optimization"
+  governing_equations:
+    -
+      name: "ampere law"
+      form: "B = mu_0 * I / (2*pi*r)"
+      variables:
+        - "B"
+        - "mu_0"
+        - "I"
+        - "r"
+constraints:
+  - "cost"
+  - "material"
+  - "manufacturing"
+  - "regulation"
+  - "information"
+dependencies:
+  prerequisites:
+
+  missing_capabilities:
+
+  causal_classifications:
+    necessary: 0
+    sufficient: 0
+    contributing: 0
+    unknown: 0
+assumptions:
+  - "Failure modes are derived from constraint keywords via a small prior map. Real failure modes require FMEA."
+  - "Optimization targets are derived from the problem's stated constraints. Implicit targets (e.g., 'minimize complexity') are not captured."
+  - "The hypothesis is a prediction. It is NOT verified until the experiments are run and outcomes recorded in the ledger."
+  - "Failure-mode experiments are derived from Layer 3's failure modes. If Layer 3 is incomplete, this layer is incomplete."
+  - "Success/failure thresholds (0.70, 0.40) are priors. They should be recalibrated as the verification cycle accumulates outcomes."
+architecture:
+  subsystems:
+    - "subsystem_for_cost"
+    - "subsystem_for_material"
+    - "subsystem_for_manufacturing"
+    - "subsystem_for_regulation"
+    - "subsystem_for_information"
+  interfaces:
+    - "subsystem_for_cost <-> subsystem_for_material"
+    - "subsystem_for_cost <-> subsystem_for_manufacturing"
+    - "subsystem_for_cost <-> subsystem_for_regulation"
+    - "subsystem_for_cost <-> subsystem_for_information"
+    - "subsystem_for_material <-> subsystem_for_manufacturing"
+  tolerances:
+    cost: "±15% of capex estimate"
+    material: "±5% of material property target"
+    manufacturing: "±3% yield"
+    regulation: "binary (pass/fail)"
+    information: "information completeness >= 95%"
+simulation:
+  monte_carlo:
+    n_samples: 200
+    composite:
+      mean: 0.5811
+      std: 0.0254
+      p5: 0.5382
+      p50: 0.581
+      p95: 0.6226
+      min: 0.5175
+      max: 0.6399
+    technical:
+      mean: 0.6955
+      std: 0.0577
+      p5: 0.6011
+      p50: 0.7069
+      p95: 0.7803
+      min: 0.5857
+      max: 0.785
+    economic:
+      mean: 0.548
+      std: 0.0575
+      p5: 0.4603
+      p50: 0.5497
+      p95: 0.6429
+      min: 0.4512
+      max: 0.6495
+    regulatory:
+      mean: 0.4972
+      std: 0.0551
+      p5: 0.4087
+      p50: 0.4993
+      p95: 0.5843
+      min: 0.3961
+      max: 0.5938
+    manufacturing:
+      mean: 0.5648
+      std: 0.0584
+      p5: 0.4793
+      p50: 0.5665
+      p95: 0.6544
+      min: 0.4653
+      max: 0.6649
+    adoption:
+      mean: 0.502
+      std: 0.0589
+      p5: 0.4094
+      p50: 0.5036
+      p95: 0.5914
+      min: 0.4001
+      max: 0.5997
+  sensitivity:
+    technical: 0.6815
+    economic: 0.4528
+    regulatory: 0.3254
+    manufacturing: 0.4598
+    adoption: 0.3478
+  stress_testing:
+    -
+      technical_feasibility: 0.6011
+      economic_feasibility: 0.458
+      regulatory_feasibility: 0.4814
+      manufacturing_feasibility: 0.5295
+      adoption_probability: 0.4501
+      composite: 0.5175
+    -
+      technical_feasibility: 0.6291
+      economic_feasibility: 0.4939
+      regulatory_feasibility: 0.4822
+      manufacturing_feasibility: 0.4708
+      adoption_probability: 0.4672
+      composite: 0.5241
+    -
+      technical_feasibility: 0.5992
+      economic_feasibility: 0.4976
+      regulatory_feasibility: 0.5288
+      manufacturing_feasibility: 0.5078
+      adoption_probability: 0.4265
+      composite: 0.5241
+prototype_plan:
+  v1:
+    name: "prototype_v1_manufacturing_physics_validation"
+    goal: "prove the manufacturing process (manufacturing_process) works at bench scale for build distributed manufacturing system"
+    scope: "single manufacturing subsystem, no integration, no manufacturability"
+    success_threshold: "manufacturing_process mechanism reproduces predicted output within 30% for build distributed manufacturing system"
+    estimated_duration_months: 5
+    estimated_cost_usd_m: 0.29
+  v2:
+    name: "prototype_v2_manufacturing_engineering_integration"
+    goal: "integrate the process into a build distributed manufacturing system system with tooling and QC"
+    scope: "all manufacturing subsystems, no manufacturing pathway, no regulatory submission"
+    success_threshold: "integrated build distributed manufacturing system prototype meets primary spec at 50% target performance"
+    estimated_duration_months: 10
+    estimated_cost_usd_m: 1.16
+  v3:
+    name: "prototype_v3_manufacturing_production_readiness"
+    goal: "pilot the build distributed manufacturing system system at 100-part batch with standardization"
+    scope: "production-intent manufacturing prototype, pilot manufacturing run, regulatory pre-submission"
+    success_threshold: "unit cost within 2x of target; regulatory pre-submission accepted for build distributed manufacturing system"
+    estimated_duration_months: 16
+    estimated_cost_usd_m: 4.62
+  timeline_years: 2.6
+experimental_plan:
+  hypothesis: "The candidate invention will achieve technical feasibility >= 0.70 within 5-10 years, given the prerequisite chain is complete and no regulatory blocker materializes."
+  experiments:
+    -
+      id: "exp_cost_overrun"
+      purpose: "determine whether cost_overrun is a real risk"
+      method: "stress_test_against_cost_overrun"
+      expected_duration: "3-6 months per experiment"
+    -
+      id: "exp_material_unavailable_or_too_expensive"
+      purpose: "determine whether material_unavailable_or_too_expensive is a real risk"
+      method: "stress_test_against_material_unavailable_or_too_expensive"
+      expected_duration: "3-6 months per experiment"
+    -
+      id: "exp_manufacturing_yield_too_low"
+      purpose: "determine whether manufacturing_yield_too_low is a real risk"
+      method: "stress_test_against_manufacturing_yield_too_low"
+      expected_duration: "3-6 months per experiment"
+    -
+      id: "exp_regulatory_rejection"
+      purpose: "determine whether regulatory_rejection is a real risk"
+      method: "stress_test_against_regulatory_rejection"
+      expected_duration: "3-6 months per experiment"
+    -
+      id: "exp_information_asymmetry"
+      purpose: "determine whether information_asymmetry is a real risk"
+      method: "stress_test_against_information_asymmetry"
+      expected_duration: "3-6 months per experiment"
+    -
+      id: "exp_prototype_v1"
+      purpose: "determine whether the candidate can be built at all"
+      method: "build_minimum_viable_prototype"
+      expected_duration: "6-12 months"
+  measurements:
+    -
+      metric: "technical_feasibility_observed"
+      target: ">= 0.70"
+      instrument: "expert_panel_review"
+    -
+      metric: "cost_per_unit_observed"
+      target: "<= capex_estimate / 1000"
+      instrument: "cost_accounting"
+    -
+      metric: "time_to_first_prototype_observed"
+      target: "<= 5-10 years"
+      instrument: "project_tracker"
+    -
+      metric: "regulatory_approval_status"
+      target: "approved_or_withdrawn"
+      instrument: "regulatory_filing_tracker"
+  success_criteria:
+    - "All failure-mode experiments return 'risk_acceptable'."
+    - "Prototype v1 builds successfully and meets primary_output spec."
+    - "Technical feasibility observed >= 0.70 within 5-10 years."
+    - "Composite feasibility from simulation's p50 >= 0.60."
+  failure_criteria:
+    - "Any failure-mode experiment returns 'risk_unacceptable' AND no mitigation is identified."
+    - "Prototype v1 cannot be built within 2x the estimated time."
+    - "Technical feasibility observed < 0.40 after 5-10 years."
+    - "Regulatory approval is denied with no appeal path."
+failure_modes:
+  - "cost_overrun"
+  - "material_unavailable_or_too_expensive"
+  - "manufacturing_yield_too_low"
+  - "regulatory_rejection"
+  - "information_asymmetry"
+counterevidence:
+  - "failure_mode: cost_overrun"
+  - "failure_mode: material_unavailable_or_too_expensive"
+  - "failure_mode: manufacturing_yield_too_low"
+  - "failure_mode: regulatory_rejection"
+  - "failure_mode: information_asymmetry"
+  - "technical_risk: stress_scenario_composite=0.5175"
+  - "technical_risk: stress_scenario_composite=0.5241"
+  - "commercial_risk: market_size_too_small_to_justify_capex"
+  - "commercial_risk: capex_exceeds_half_of_market_size"
+  - "commercial_risk: s_curve_adoption_extends_payback_period"
+confidence: 0.5777
+final_blueprint:
+  parts_list:
+
+  materials_specification:
+
+  assembly_plan:
+    subsystems:
+      - "subsystem_for_cost"
+      - "subsystem_for_material"
+      - "subsystem_for_manufacturing"
+      - "subsystem_for_regulation"
+      - "subsystem_for_information"
+    interfaces:
+      - "subsystem_for_cost <-> subsystem_for_material"
+      - "subsystem_for_cost <-> subsystem_for_manufacturing"
+      - "subsystem_for_cost <-> subsystem_for_regulation"
+      - "subsystem_for_cost <-> subsystem_for_information"
+      - "subsystem_for_material <-> subsystem_for_manufacturing"
+    inputs:
+      problem_constraints:
+        - "cost"
+        - "material"
+        - "manufacturing"
+        - "regulation"
+        - "information"
+      time_horizon: "5-10 years"
+      domain: "manufacturing"
+    outputs:
+      primary_output: "Build a distributed manufacturing system producing 100 common parts on-demand from digital designs"
+      evidence_quality: "replayable_per_law_8"
+    energy_requirements:
+      budget_tight: false
+      tolerance: "not specified"
+      estimated_watts: "depends_on_application"
+    computational_requirements:
+      class: "moderate"
+      note: "Real computational requirements depend on the governing equations from Layer 3 and the simulation approach from Layer 5."
+    source_layer: "Layer 4 (Engineering architecture)"
+  tolerances:
+    cost: "±15% of capex estimate"
+    material: "±5% of material property target"
+    manufacturing: "±3% yield"
+    regulation: "binary (pass/fail)"
+    information: "information completeness >= 95%"
+  prototype_specification:
+    v1:
+      name: "prototype_v1_manufacturing_physics_validation"
+      goal: "prove the manufacturing process (manufacturing_process) works at bench scale for build distributed manufacturing system"
+      scope: "single manufacturing subsystem, no integration, no manufacturability"
+      success_threshold: "manufacturing_process mechanism reproduces predicted output within 30% for build distributed manufacturing system"
+      estimated_duration_months: 5
+      estimated_cost_usd_m: 0.29
+    v2:
+      name: "prototype_v2_manufacturing_engineering_integration"
+      goal: "integrate the process into a build distributed manufacturing system system with tooling and QC"
+      scope: "all manufacturing subsystems, no manufacturing pathway, no regulatory submission"
+      success_threshold: "integrated build distributed manufacturing system prototype meets primary spec at 50% target performance"
+      estimated_duration_months: 10
+      estimated_cost_usd_m: 1.16
+    v3:
+      name: "prototype_v3_manufacturing_production_readiness"
+      goal: "pilot the build distributed manufacturing system system at 100-part batch with standardization"
+      scope: "production-intent manufacturing prototype, pilot manufacturing run, regulatory pre-submission"
+      success_threshold: "unit cost within 2x of target; regulatory pre-submission accepted for build distributed manufacturing system"
+      estimated_duration_months: 16
+      estimated_cost_usd_m: 4.62
+    timeline:
+      total_months: 31
+      total_years: 2.6
+      fits_within_horizon: true
+      phases:
+        -
+          phase: "v1"
+          start_month: 0
+          end_month: 5
+        -
+          phase: "v2"
+          start_month: 5
+          end_month: 15
+        -
+          phase: "v3"
+          start_month: 15
+          end_month: 31
+    source_layer: "Layer 9 (Prototype layer)"
+  problem: "Build a distributed manufacturing system producing 100 common parts on-demand from digital designs"
+  domain: "manufacturing"
+  target_invention: "Build a distributed manufacturing system producing 100 common parts on-demand from digital designs"
+  prerequisite_chain_depth: 0
+  governing_equations:
+    -
+      name: "ampere law"
+      form: "B = mu_0 * I / (2*pi*r)"
+      variables:
+        - "B"
+        - "mu_0"
+        - "I"
+        - "r"
+  subsystems:
+    - "subsystem_for_cost"
+    - "subsystem_for_material"
+    - "subsystem_for_manufacturing"
+    - "subsystem_for_regulation"
+    - "subsystem_for_information"
+  composite_feasibility: 21.12
+  prototype_stages:
+    - "prototype_v1_manufacturing_physics_validation"
+    - "prototype_v2_manufacturing_engineering_integration"
+    - "prototype_v3_manufacturing_production_readiness"
+  total_prototype_timeline_years: 2.6

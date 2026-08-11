@@ -1,0 +1,189 @@
+{
+  "total_cases": 178,
+  "current_match_count": 20,
+  "strict_match_count": 0,
+  "delta": 20,
+  "disagreements": 20,
+  "disagreement_details": [
+    {
+      "gold_id": "DISC-GOLD-004",
+      "expected_bridge": "thermal regulation",
+      "candidate": "stable thermal conditions",
+      "candidate_source": "ambient",
+      "current_match": true,
+      "strict_match": false,
+      "reason_current": "token_overlap"
+    },
+    {
+      "gold_id": "DISC-GOLD-004",
+      "expected_bridge": "thermal regulation",
+      "candidate": "dynamic thermal management",
+      "candidate_source": "ambient",
+      "current_match": true,
+      "strict_match": false,
+      "reason_current": "token_overlap"
+    },
+    {
+      "gold_id": "DISC-GOLD-005",
+      "expected_bridge": "contact angle",
+      "candidate": "surface wettability angle",
+      "candidate_source": "ambient",
+      "current_match": true,
+      "strict_match": false,
+      "reason_current": "token_overlap"
+    },
+    {
+      "gold_id": "DISC-GOLD-007",
+      "expected_bridge": "heat dissipation",
+      "candidate": "heat",
+      "candidate_source": "shared",
+      "current_match": true,
+      "strict_match": false,
+      "reason_current": "substring"
+    },
+    {
+      "gold_id": "DISC-GOLD-007",
+      "expected_bridge": "heat dissipation",
+      "candidate": "heat",
+      "candidate_source": "ambient",
+      "current_match": true,
+      "strict_match": false,
+      "reason_current": "substring"
+    },
+    {
+      "gold_id": "DISC-GOLD-007",
+      "expected_bridge": "heat dissipation",
+      "candidate": "heat",
+      "candidate_source": "ambient",
+      "current_match": true,
+      "strict_match": false,
+      "reason_current": "substring"
+    },
+    {
+      "gold_id": "DISC-GOLD-008",
+      "expected_bridge": "ion selectivity",
+      "candidate": "ion",
+      "candidate_source": "shared",
+      "current_match": true,
+      "strict_match": false,
+      "reason_current": "substring"
+    },
+    {
+      "gold_id": "DISC-GOLD-008",
+      "expected_bridge": "ion selectivity",
+      "candidate": "ion",
+      "candidate_source": "ambient",
+      "current_match": true,
+      "strict_match": false,
+      "reason_current": "substring"
+    },
+    {
+      "gold_id": "DISC-GOLD-008",
+      "expected_bridge": "ion selectivity",
+      "candidate": "ion",
+      "candidate_source": "ambient",
+      "current_match": true,
+      "strict_match": false,
+      "reason_current": "substring"
+    },
+    {
+      "gold_id": "DISC-GOLD-011",
+      "expected_bridge": "surface functionalization",
+      "candidate": "surface chemical modification",
+      "candidate_source": "shared",
+      "current_match": true,
+      "strict_match": false,
+      "reason_current": "token_overlap"
+    },
+    {
+      "gold_id": "DISC-GOLD-011",
+      "expected_bridge": "surface functionalization",
+      "candidate": "surface chemical modification",
+      "candidate_source": "ambient",
+      "current_match": true,
+      "strict_match": false,
+      "reason_current": "token_overlap"
+    },
+    {
+      "gold_id": "DISC-GOLD-011",
+      "expected_bridge": "surface functionalization",
+      "candidate": "surface chemical modification",
+      "candidate_source": "ambient",
+      "current_match": true,
+      "strict_match": false,
+      "reason_current": "token_overlap"
+    },
+    {
+      "gold_id": "DISC-GOLD-013",
+      "expected_bridge": "spin polarization",
+      "candidate": "Magnetic resonance imaging detects quantum spin alignment",
+      "candidate_source": "shared",
+      "current_match": true,
+      "strict_match": false,
+      "reason_current": "token_overlap"
+    },
+    {
+      "gold_id": "DISC-GOLD-013",
+      "expected_bridge": "spin polarization",
+      "candidate": "Magnetic resonance imaging detects quantum spin alignment",
+      "candidate_source": "ambient",
+      "current_match": true,
+      "strict_match": false,
+      "reason_current": "token_overlap"
+    },
+    {
+      "gold_id": "DISC-GOLD-013",
+      "expected_bridge": "spin polarization",
+      "candidate": "quantum spin",
+      "candidate_source": "ambient",
+      "current_match": true,
+      "strict_match": false,
+      "reason_current": "token_overlap"
+    },
+    {
+      "gold_id": "DISC-GOLD-014",
+      "expected_bridge": "ion storage",
+      "candidate": "ion",
+      "candidate_source": "shared",
+      "current_match": true,
+      "strict_match": false,
+      "reason_current": "substring"
+    },
+    {
+      "gold_id": "DISC-GOLD-014",
+      "expected_bridge": "ion storage",
+      "candidate": "ion",
+      "candidate_source": "ambient",
+      "current_match": true,
+      "strict_match": false,
+      "reason_current": "substring"
+    },
+    {
+      "gold_id": "DISC-GOLD-019",
+      "expected_bridge": "photon energy",
+      "candidate": "light quantum energy",
+      "candidate_source": "shared",
+      "current_match": true,
+      "strict_match": false,
+      "reason_current": "token_overlap"
+    },
+    {
+      "gold_id": "DISC-GOLD-019",
+      "expected_bridge": "photon energy",
+      "candidate": "light quantum energy",
+      "candidate_source": "ambient",
+      "current_match": true,
+      "strict_match": false,
+      "reason_current": "token_overlap"
+    },
+    {
+      "gold_id": "DISC-GOLD-019",
+      "expected_bridge": "photon energy",
+      "candidate": "light quantum energy",
+      "candidate_source": "ambient",
+      "current_match": true,
+      "strict_match": false,
+      "reason_current": "token_overlap"
+    }
+  ]
+}

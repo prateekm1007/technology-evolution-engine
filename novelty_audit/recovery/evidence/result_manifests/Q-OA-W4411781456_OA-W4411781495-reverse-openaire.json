@@ -1,0 +1,99 @@
+{
+  "query_id": "Q-OA-W4411781456_OA-W4411781495-reverse-openaire",
+  "pair_id": "OA-W4411781456_OA-W4411781495",
+  "query_type": "reverse",
+  "provider": "openaire",
+  "query_text": "review advances design catalysts sustainability supply",
+  "query_hash": "d33ce380fa873bf6762c53a7c0dbad4a6d0a92b8a26bb17485cc77cb007fa3be",
+  "frozen_query_ref": "Q-OA-W4411781456_OA-W4411781495-reverse-openalex",
+  "url": "https://api.openaire.eu/search/publications?keywords=review+advances+design+catalysts+sustainability+supply&size=10&format=json",
+  "timestamp_utc": "2026-08-11T12:26:29.419679+00:00",
+  "status": "SUCCESS",
+  "result_count": 4,
+  "result_ids": [
+    [
+      {
+        "$": "catal14120950"
+      },
+      {
+        "$": "10.3390/catal14120950"
+      },
+      {
+        "$": "50|doiboost____|647e2d66580292e57a8257dd53c24263"
+      }
+    ],
+    [
+      {
+        "$": "10.1149/ma2023-02653183mtgabs"
+      },
+      {
+        "$": "50|doiboost____|ca94d0c9f0f85f1fb7e6dbd363d358f3"
+      }
+    ],
+    [
+      {
+        "$": "50|datacite____::7b3074b068b8e67e3e28e81479db0ce0"
+      },
+      {
+        "$": "10.5281/zenodo.17905745"
+      },
+      {
+        "$": "oai:zenodo.org:17905745"
+      },
+      {
+        "$": "50|od______2659::7b3074b068b8e67e3e28e81479db0ce0"
+      },
+      {
+        "$": "50|datacite____::ca66baea12b661539d1ee2ba523a8196"
+      },
+      {
+        "$": "10.5281/zenodo.17905744"
+      }
+    ],
+    [
+      {
+        "$": "50|datacite____::51122a820d5edcf8e5ce22c1133b50aa"
+      },
+      {
+        "$": "10.5281/zenodo.10447630"
+      },
+      {
+        "$": "oai:zenodo.org:10447630"
+      },
+      {
+        "$": "50|od______2659::51122a820d5edcf8e5ce22c1133b50aa"
+      },
+      {
+        "$": "50|datacite____::b3218387b304346f8322bfd226b23395"
+      },
+      {
+        "$": "10.5281/zenodo.10447629"
+      }
+    ]
+  ],
+  "result_titles": [
+    "Bimetallic and Trimetallic Catalysts Advancements in the Conventional and MW-Assisted Propane Dehydrogenation Process",
+    "Electrochemistry of and Electrocatalysis by Low-Symmetry N<sub>4</sub> Macrocycles",
+    "Organic Waste-to-Hydrogen via Anaerobic Digestion and Steam Reforming",
+    "Management Genome Surgery for Sight: Advancements in Editing Technologies for Inherited Retinal Disorders- A Review"
+  ],
+  "result_dois": [
+    "10.3390/catal14120950",
+    "10.1149/ma2023-02653183mtgabs",
+    "10.5281/zenodo.17905745",
+    "10.5281/zenodo.10447630"
+  ],
+  "result_dates": [
+    "2024-12-22",
+    "2023-12-22",
+    "2025-12-12",
+    "2023-12-31"
+  ],
+  "response_hash": "ede07416a85fca926fdbf46fe756591426005b172a8a309a15ff897a7083b32c",
+  "evidence_uri": "https://api.openaire.eu/search/publications?keywords=review+advances+design+catalysts+sustainability+supply&size=10&format=json",
+  "error": null,
+  "rate_limit_headers": {
+    "x-ratelimit-used": "89",
+    "x-ratelimit-limit": "7199"
+  }
+}

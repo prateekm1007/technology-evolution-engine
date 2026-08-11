@@ -1,0 +1,12 @@
+TITLE: Design of Piezoelectric Metastructures with Multi-Patch Isogeometric Analysis for Enhanced Energy Harvesting and Vibration Suppression
+ARXIV ID: 2412.05835v1
+URL: http://arxiv.org/abs/2412.05835v1
+RETRIEVAL DATE: 2026-08-05
+RETRIEVAL METHOD: arxiv.org API
+SOURCE VERIFICATION: arxiv API XML
+DOMAIN HINT: piezoelectric
+AUTHORS: Patricio Peralta-Braz; Mehrisadat Makki Alamdari; Mahbub Hassan; Elena Atroshchenko
+PUBLISHED: 2024-12-08T06:50:43Z
+
+ABSTRACT:
+Metastructures are engineered systems composed of periodic arrays of identical components, called resonators, designed to achieve specific dynamic effects, such as creating a band gap-a frequency range where waves cannot propagate through the structure. When equipped with patches of piezoelectric material, these metastructures exhibit an additional capability: they can harvest energy effectively even from frequencies much lower than the fundamental frequency of an individual resonator. This energy harvesting capability is particularly valuable for applications where low-frequency vibrations dominate. To support the design of metastructures for dual purposes, such as energy harvesting and vibration suppression (reducing unwanted oscillations in the structure), we develop a multi-patch isogeometric model of a piezoelectric energy harvester. This model is based on a piezoelectric Kirchhoff-Love plate-a thin, flexible structure with embedded piezoelectric patches-and uses Nitsche's method to enforce compatibility conditions in terms of displacement, rotations, shear force, and bending moments across the boundaries of different patches. The model is validated against experimental and numerical data from the literature. We then present a novel, parameterized metastructure plate design and conduct a parametric study to explore how resonator geometries affect key performance metrics, including the location and width of the band gap and the position of the first peak in the voltage frequency response function. This model can be integrated with optimization algorithms to maximize outcomes such as energy harvesting efficiency or vibration reduction, depending on application needs.

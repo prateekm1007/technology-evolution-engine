@@ -1,0 +1,68 @@
+{
+  "id": "benchmark_0007",
+  "type": "patent",
+  "source": "uspto",
+  "title": "Capillary-Driven Passive Water Purification Using Hierarchical Porous Ceramics",
+  "domain": "water",
+  "abstract": "A gravity-fed purification device with hierarchically porous ceramic driving water transport by capillary action rejecting pathogens without energy.",
+  "claims": [
+    "Alumina-silica ceramic with trimodal pores: macro (30-80um), meso (200-800nm), micro (2-10nm).",
+    "Silver nanoparticle coating providing bactericidal activity below 100 ppb.",
+    "Fabrication by sacrificial template using PMMA microspheres and surfactant micelles."
+  ],
+  "components": [
+    "hierarchical ceramic body",
+    "silver nanoparticle coating",
+    "feed reservoir",
+    "collection vessel",
+    "pre-filter"
+  ],
+  "materials": [
+    "alumina",
+    "silica",
+    "silver nanoparticles",
+    "PMMA",
+    "surfactant"
+  ],
+  "methods": [
+    "sacrificial template",
+    "sintering",
+    "silver impregnation",
+    "capillary flow"
+  ],
+  "constraints": [
+    "energy",
+    "water quality",
+    "flow rate",
+    "cost",
+    "maintenance",
+    "manufacturing"
+  ],
+  "problem_statement": "2.2 billion lack safe water. Passive capillary systems could provide zero-energy purification.",
+  "expected_constraints": [
+    "energy",
+    "material",
+    "cost",
+    "manufacturing",
+    "maintenance",
+    "safety"
+  ],
+  "expected_prerequisites": [
+    "pore size control",
+    "silver nanoparticle safety",
+    "ceramic manufacturing",
+    "flow rate optimization"
+  ],
+  "expected_adjacent_domains": [
+    "materials science",
+    "public health",
+    "ceramics",
+    "nanotechnology"
+  ],
+  "expected_failure_modes": [
+    "pore clogging",
+    "silver depletion",
+    "crack propagation",
+    "flow rate decline"
+  ]
+}

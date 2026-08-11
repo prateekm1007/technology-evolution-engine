@@ -1,0 +1,213 @@
+{
+  "timestamp": "2026-08-11T17:23:05.286503+00:00",
+  "total_candidates": 11,
+  "mechanisms_analyzed": 50,
+  "candidates": [
+    {
+      "candidate_id": "M3-22c198f5",
+      "discovery_mode": "failure_mode_transfer",
+      "mechanism_a": {
+        "evidence_id": "arxiv:1406.4327v1",
+        "failure_mode": "Limitations of the PENELOPE model in accurately simulating the electronic emission"
+      },
+      "mechanism_b": {
+        "evidence_id": "arxiv:1406.4336v1",
+        "output": "Electron emission from the nanoparticle"
+      },
+      "bridge": "Output of B may address failure mode of A",
+      "constraints": "PENDING",
+      "evidence": [
+        {
+          "evidence_id": "arxiv:1406.4327v1",
+          "field": "FAILURE_MODE"
+        },
+        {
+          "evidence_id": "arxiv:1406.4336v1",
+          "field": "OUTPUT"
+        }
+      ],
+      "candidate_hypothesis": "Mechanism producing 'Electron emission from the nanoparticle' may solve failure: 'Limitations of the PENELOPE model in acc'",
+      "epistemic_state": "CANDIDATE_CONNECTION"
+    },
+    {
+      "candidate_id": "M9-17a8e418",
+      "discovery_mode": "patent_whitespace",
+      "mechanism_a": {
+        "input": "API X60 steel (high-",
+        "process": "A structural-phase-f"
+      },
+      "mechanism_b": null,
+      "bridge": "Combination absent from searched evidence",
+      "constraints": "PENDING",
+      "evidence": [],
+      "candidate_hypothesis": "Input 'API X60 steel (high-' + process 'A structural-phase-f' combination not found",
+      "epistemic_state": "CANDIDATE_CONNECTION",
+      "anti_hallucination": {
+        "absence_label": "ABSENCE_OF_EVIDENCE",
+        "note": "Combination absent from searched universe — does NOT prove novelty"
+      }
+    },
+    {
+      "candidate_id": "M9-9e3cb5b2",
+      "discovery_mode": "patent_whitespace",
+      "mechanism_a": {
+        "input": "API X60 steel (high-",
+        "process": "Combining spectral e"
+      },
+      "mechanism_b": null,
+      "bridge": "Combination absent from searched evidence",
+      "constraints": "PENDING",
+      "evidence": [],
+      "candidate_hypothesis": "Input 'API X60 steel (high-' + process 'Combining spectral e' combination not found",
+      "epistemic_state": "CANDIDATE_CONNECTION",
+      "anti_hallucination": {
+        "absence_label": "ABSENCE_OF_EVIDENCE",
+        "note": "Combination absent from searched universe — does NOT prove novelty"
+      }
+    },
+    {
+      "candidate_id": "M9-4635118f",
+      "discovery_mode": "patent_whitespace",
+      "mechanism_a": {
+        "input": "API X60 steel (high-",
+        "process": "Three-dimensional mu"
+      },
+      "mechanism_b": null,
+      "bridge": "Combination absent from searched evidence",
+      "constraints": "PENDING",
+      "evidence": [],
+      "candidate_hypothesis": "Input 'API X60 steel (high-' + process 'Three-dimensional mu' combination not found",
+      "epistemic_state": "CANDIDATE_CONNECTION",
+      "anti_hallucination": {
+        "absence_label": "ABSENCE_OF_EVIDENCE",
+        "note": "Combination absent from searched universe — does NOT prove novelty"
+      }
+    },
+    {
+      "candidate_id": "M9-5efc2d02",
+      "discovery_mode": "patent_whitespace",
+      "mechanism_a": {
+        "input": "API X60 steel (high-",
+        "process": "Extending traditiona"
+      },
+      "mechanism_b": null,
+      "bridge": "Combination absent from searched evidence",
+      "constraints": "PENDING",
+      "evidence": [],
+      "candidate_hypothesis": "Input 'API X60 steel (high-' + process 'Extending traditiona' combination not found",
+      "epistemic_state": "CANDIDATE_CONNECTION",
+      "anti_hallucination": {
+        "absence_label": "ABSENCE_OF_EVIDENCE",
+        "note": "Combination absent from searched universe — does NOT prove novelty"
+      }
+    },
+    {
+      "candidate_id": "M9-c5d6fed4",
+      "discovery_mode": "patent_whitespace",
+      "mechanism_a": {
+        "input": "Empirical and/or the",
+        "process": "A structural-phase-f"
+      },
+      "mechanism_b": null,
+      "bridge": "Combination absent from searched evidence",
+      "constraints": "PENDING",
+      "evidence": [],
+      "candidate_hypothesis": "Input 'Empirical and/or the' + process 'A structural-phase-f' combination not found",
+      "epistemic_state": "CANDIDATE_CONNECTION",
+      "anti_hallucination": {
+        "absence_label": "ABSENCE_OF_EVIDENCE",
+        "note": "Combination absent from searched universe — does NOT prove novelty"
+      }
+    },
+    {
+      "candidate_id": "M9-45045e1c",
+      "discovery_mode": "patent_whitespace",
+      "mechanism_a": {
+        "input": "Empirical and/or the",
+        "process": "Electroless depositi"
+      },
+      "mechanism_b": null,
+      "bridge": "Combination absent from searched evidence",
+      "constraints": "PENDING",
+      "evidence": [],
+      "candidate_hypothesis": "Input 'Empirical and/or the' + process 'Electroless depositi' combination not found",
+      "epistemic_state": "CANDIDATE_CONNECTION",
+      "anti_hallucination": {
+        "absence_label": "ABSENCE_OF_EVIDENCE",
+        "note": "Combination absent from searched universe — does NOT prove novelty"
+      }
+    },
+    {
+      "candidate_id": "M9-ee261777",
+      "discovery_mode": "patent_whitespace",
+      "mechanism_a": {
+        "input": "Empirical and/or the",
+        "process": "Three-dimensional mu"
+      },
+      "mechanism_b": null,
+      "bridge": "Combination absent from searched evidence",
+      "constraints": "PENDING",
+      "evidence": [],
+      "candidate_hypothesis": "Input 'Empirical and/or the' + process 'Three-dimensional mu' combination not found",
+      "epistemic_state": "CANDIDATE_CONNECTION",
+      "anti_hallucination": {
+        "absence_label": "ABSENCE_OF_EVIDENCE",
+        "note": "Combination absent from searched universe — does NOT prove novelty"
+      }
+    },
+    {
+      "candidate_id": "M9-05a57707",
+      "discovery_mode": "patent_whitespace",
+      "mechanism_a": {
+        "input": "Empirical and/or the",
+        "process": "Extending traditiona"
+      },
+      "mechanism_b": null,
+      "bridge": "Combination absent from searched evidence",
+      "constraints": "PENDING",
+      "evidence": [],
+      "candidate_hypothesis": "Input 'Empirical and/or the' + process 'Extending traditiona' combination not found",
+      "epistemic_state": "CANDIDATE_CONNECTION",
+      "anti_hallucination": {
+        "absence_label": "ABSENCE_OF_EVIDENCE",
+        "note": "Combination absent from searched universe — does NOT prove novelty"
+      }
+    },
+    {
+      "candidate_id": "M9-7486017c",
+      "discovery_mode": "patent_whitespace",
+      "mechanism_a": {
+        "input": "planar array with re",
+        "process": "A structural-phase-f"
+      },
+      "mechanism_b": null,
+      "bridge": "Combination absent from searched evidence",
+      "constraints": "PENDING",
+      "evidence": [],
+      "candidate_hypothesis": "Input 'planar array with re' + process 'A structural-phase-f' combination not found",
+      "epistemic_state": "CANDIDATE_CONNECTION",
+      "anti_hallucination": {
+        "absence_label": "ABSENCE_OF_EVIDENCE",
+        "note": "Combination absent from searched universe — does NOT prove novelty"
+      }
+    },
+    {
+      "candidate_id": "M9-658c0dc4",
+      "discovery_mode": "patent_whitespace",
+      "mechanism_a": {
+        "input": "planar array with re",
+        "process": "Electroless depositi"
+      },
+      "mechanism_b": null,
+      "bridge": "Combination absent from searched evidence",
+      "constraints": "PENDING",
+      "evidence": [],
+      "candidate_hypothesis": "Input 'planar array with re' + process 'Electroless depositi' combination not found",
+      "epistemic_state": "CANDIDATE_CONNECTION",
+      "anti_hallucination": {
+        "absence_label": "ABSENCE_OF_EVIDENCE",
+        "note": "Combination absent from searched universe — does NOT prove novelty"
+      }
+    }
+  ]
+}

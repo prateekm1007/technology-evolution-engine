@@ -1,0 +1,24 @@
+{
+  "query_id": "Q-OA-W4411809960_OA-W4411909848-domain_bridge-openaire",
+  "pair_id": "OA-W4411809960_OA-W4411909848",
+  "query_type": "domain_bridge",
+  "provider": "openaire",
+  "query_text": "molecular_biology polymer_science mechanism",
+  "query_hash": "0f28f35833b3332ed985ae2bc7385320c419c278fa7b0fe15687de81c22a7d6b",
+  "frozen_query_ref": "Q-OA-W4411809960_OA-W4411909848-domain_bridge-openalex",
+  "url": "https://api.openaire.eu/search/publications?keywords=molecular_biology+polymer_science+mechanism&size=10&format=json",
+  "timestamp_utc": "2026-08-11T12:30:22.472507+00:00",
+  "status": "NO_RESULTS",
+  "result_count": 0,
+  "result_ids": [],
+  "result_titles": [],
+  "result_dois": [],
+  "result_dates": [],
+  "response_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "evidence_uri": "https://api.openaire.eu/search/publications?keywords=molecular_biology+polymer_science+mechanism&size=10&format=json",
+  "error": null,
+  "rate_limit_headers": {
+    "x-ratelimit-used": "185",
+    "x-ratelimit-limit": "7199"
+  }
+}

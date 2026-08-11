@@ -1,0 +1,12 @@
+TITLE: Revisiting Transmission Scheduling in RF Energy Harvesting Wireless Communications
+ARXIV ID: 1802.09328v1
+URL: http://arxiv.org/abs/1802.09328v1
+RETRIEVAL DATE: 2026-08-05
+RETRIEVAL METHOD: arxiv.org API
+SOURCE VERIFICATION: arxiv API XML
+DOMAIN HINT: piezoelectric
+AUTHORS: Yu Luo; Lina Pu; Yanxiao Zhao; Wei Wang; Qing Yang
+PUBLISHED: 2018-02-20T08:08:53Z
+
+ABSTRACT:
+The transmission scheduling is a critical problem in radio frequency (RF) energy harvesting communications. Existing transmission strategies in an RF-based energy harvesting system is mainly based on a classic model, in which the data transmission is scheduled in a fixed feasible energy tunnel. In this paper, we re-examine the classic energy harvesting model and show through the theoretical analysis and experimental results that the bounds of feasible energy tunnel are dynamic, which can be affected by the transmission scheduling due to the impact of residual energy on the harvested one. To describe a practical energy harvesting process more accurately, a new model is proposed by adding a feedback loop that reflects the interplay between the energy harvest and the data transmission. Furthermore, to improve network performance, we revisit the design of an optimal transmission scheduling strategy based on the new model. To handle the challenge of the endless feedback loop in the new model, a recursive algorithm is developed. The simulation results reveal that the new transmission scheduling strategy can balance the efficiency of energy reception and energy utilization regardless of the length of energy packets, achieving improved throughput performance for wireless communications.

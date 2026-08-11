@@ -1,0 +1,60 @@
+{
+  "phase": 3,
+  "phase_name": "REAL regeneration verification",
+  "timestamp_utc": "2026-08-08T16:41:27.760324+00:00",
+  "git_head": "e841b1247486fcf2ccc213ef4ba8442abd74e4b5",
+  "overall_verdict": "FAIL",
+  "tests": [
+    {
+      "test": "bootstrap_all_metrics",
+      "verdict": "FAIL",
+      "reason": "2 metric mismatches (tolerance=0.0001)",
+      "mismatches": [
+        {
+          "metric_id": "M-008",
+          "field": "point_estimate",
+          "fresh": 0.888888888888889,
+          "committed": 0.9189,
+          "diff": 0.0300111111111111,
+          "tolerance": 0.0001
+        },
+        {
+          "metric_id": "M-008",
+          "field": "ci_95_lower",
+          "fresh": 0.6206896551724138,
+          "committed": 0.6667,
+          "diff": 0.04601034482758615,
+          "tolerance": 0.0001
+        }
+      ],
+      "total_mismatches": 2,
+      "fresh_metric_count": 38,
+      "committed_metric_count": 38,
+      "elapsed_seconds": 85.73615336418152
+    },
+    {
+      "test": "run_discovery_benchmark",
+      "verdict": "PASS",
+      "fresh": {
+        "f1": 0.5714,
+        "tp": null,
+        "fp": null,
+        "fn": null,
+        "total_score": 6
+      },
+      "committed": {
+        "f1": 0.5714,
+        "tp": null,
+        "fp": null,
+        "fn": null,
+        "total_score": 6
+      },
+      "elapsed_seconds": 0.9723813533782959
+    }
+  ],
+  "comparison_rule": "SEMANTIC (point estimates match within 1e-4 tolerance; integer counts match exactly). NOT 'approximately equivalent' \u2014 precise semantic comparison with tight tolerance.",
+  "scientific_experiment_executed": false,
+  "dxp005_executed": false,
+  "frozen_assets_modified": false,
+  "note": "Phase 3 execution test per audit authorization. Fresh computation compared to committed artifacts. No DXP-005 execution. No frozen-asset modification."
+}

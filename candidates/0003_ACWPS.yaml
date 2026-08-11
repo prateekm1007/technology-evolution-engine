@@ -1,0 +1,29 @@
+# Candidate 0003: Adaptive Capillary Water Purification System (ACWPS)
+id: '0003'
+name: Adaptive Capillary Water Purification System
+abbreviation: ACWPS
+status: REVISE
+
+transformation:
+  undesirable_state: Contaminated water causes disease in regions without infrastructure
+  desirable_state: Zero-energy, self-maintaining water purification at point of use
+  operator: eliminate
+
+constraint_surface:
+  energy: 0.1
+  information: 0.4
+  time: 0.3
+  material: 0.6
+  cost: 0.4
+  safety: 0.3
+  maintenance: 0.7
+  regulation: 0.3
+  manufacturing: 0.5
+  supply_chain: 0.4
+
+missing_prerequisites:
+  - anti_fouling_materials
+  - integrity_sensing
+  - membrane_advances
+
+pcs: 0.38

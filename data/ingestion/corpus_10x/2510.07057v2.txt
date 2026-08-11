@@ -1,0 +1,12 @@
+TITLE: TOMATOES: Topology and Material Optimization for Latent Heat Thermal Energy Storage Devices
+ARXIV ID: 2510.07057v2
+URL: http://arxiv.org/abs/2510.07057v2
+RETRIEVAL DATE: 2026-08-05
+RETRIEVAL METHOD: arxiv.org API
+SOURCE VERIFICATION: arxiv API XML
+DOMAIN HINT: pcm_2
+AUTHORS: Rahul Kumar Padhy; Krishnan Suresh; Aaditya Chandrasekhar
+PUBLISHED: 2025-10-08T14:25:43Z
+
+ABSTRACT:
+Latent heat thermal energy storage (LHTES) systems are compelling candidates for energy storage, primarily owing to their high storage density. Improving their performance is crucial for developing the next-generation efficient and cost effective devices. Topology optimization (TO) has emerged as a powerful computational tool to design LHTES systems by optimally distributing a high-conductivity material (HCM) and a phase change material (PCM). However, conventional TO typically limits to optimizing the geometry for a fixed, pre-selected materials. This approach does not leverage the large and expanding databases of novel materials. Consequently, the co-design of material and geometry for LHTES remains a challenge and unexplored. To address this limitation, we present an automated design framework for the concurrent optimization of material choice and topology. A key challenge is the discrete nature of material selection, which is incompatible with the gradient-based methods used for TO. We overcome this by using a data-driven variational autoencoder (VAE) to project discrete material databases for both the HCM and PCM onto continuous and differentiable latent spaces. These continuous material representations are integrated into an end-to-end differentiable, transient nonlinear finite-element solver that accounts for phase change. We demonstrate this framework on a problem aimed at maximizing the discharged energy within a specified time, subject to cost constraints. The effectiveness of the proposed method is validated through several illustrative examples.

@@ -1,0 +1,172 @@
+{
+  "query_id": "Q-OA-W4411794451_OA-W4411961335-direct-openaire",
+  "pair_id": "OA-W4411794451_OA-W4411961335",
+  "query_type": "direct",
+  "provider": "openaire",
+  "query_text": "membranes water separation clinical drug discovery",
+  "query_hash": "29d6d99042edd019969131e9a808a8a93dc818af138e65b01c87ec81f4a48605",
+  "frozen_query_ref": "Q-OA-W4411794451_OA-W4411961335-direct-openalex",
+  "url": "https://api.openaire.eu/search/publications?keywords=membranes+water+separation+clinical+drug+discovery&size=10&format=json",
+  "timestamp_utc": "2026-08-11T12:33:11.332294+00:00",
+  "status": "SUCCESS",
+  "result_count": 6,
+  "result_ids": [
+    [
+      {
+        "$": "od_______267::e531d9a9a2148ef4a22bc08271b13094"
+      },
+      {
+        "$": "24363699"
+      },
+      {
+        "$": "PMC3869555"
+      },
+      {
+        "$": "10.22037/ijpr.2010.828"
+      },
+      {
+        "$": "50|medra_______::0cbc736d298222d509f331be68044cb5"
+      },
+      {
+        "$": "1884816708"
+      }
+    ],
+    [
+      {
+        "$": "10.1371/journal.pone.0247668"
+      },
+      {
+        "$": "50|doiboost____|40fc92cfa852936406acf592a2672807"
+      },
+      {
+        "$": "50|datacite____::0f940cf5bb9cd5d22328e85759c98726"
+      },
+      {
+        "$": "10.60692/f70yk-y8n30"
+      },
+      {
+        "$": "50|datacite____::42e6511d6bbf50fc3a9c7e9b9a8a95b5"
+      },
+      {
+        "$": "10.60692/tykfy-4kt04"
+      },
+      {
+        "$": "od_______267::bc1ef78ba7bd2820fe3763540c5d9ffa"
+      },
+      {
+        "$": "33630921"
+      },
+      {
+        "$": "PMC7906414"
+      },
+      {
+        "$": "oai:pubmedcentral.nih.gov:7906414"
+      },
+      {
+        "$": "50|od_______267::bc1ef78ba7bd2820fe3763540c5d9ffa"
+      },
+      {
+        "$": "50|RECOLECTA___::f9af38281bab62d940aec6283c04fcd6"
+      },
+      {
+        "$": "oai:cipf.fundanetsuite.com:p3735"
+      },
+      {
+        "$": "oai:doaj.org/article:905eb886658441c8ad4bd41a8f60cb62"
+      },
+      {
+        "$": "50|doajarticles::e0d568d022a8d772ef6aa125fa66346c"
+      },
+      {
+        "$": "3130869368"
+      },
+      {
+        "$": "oai:https://repository.ucc.edu.co:20.500.12494/33500"
+      },
+      {
+        "$": "50|od______3056::624499335db0fd6198905a19f5ddcf2a"
+      }
+    ],
+    [
+      {
+        "$": "50|datacite____::37474907f70f17e4e7cb7c9fb2e4f0e6"
+      },
+      {
+        "$": "10.5281/zenodo.20229825"
+      },
+      {
+        "$": "50|datacite____::a72bcf3045be45f88dcd22faed6b31ca"
+      },
+      {
+        "$": "10.5281/zenodo.20229826"
+      },
+      {
+        "$": "oai:zenodo.org:20229826"
+      },
+      {
+        "$": "50|od______2659::a72bcf3045be45f88dcd22faed6b31ca"
+      }
+    ],
+    [
+      {
+        "$": "50|medra_______::2bf09d0cd5d6a4eec1002769e681a8d2"
+      },
+      {
+        "$": "10.22037/afb.v11i2.46737"
+      }
+    ],
+    [
+      {
+        "$": "50|datacite____::163efea3fe4310714119dea3b426bd07"
+      },
+      {
+        "$": "10.5281/zenodo.13851"
+      },
+      {
+        "$": "50|od______2659::163efea3fe4310714119dea3b426bd07"
+      },
+      {
+        "$": "oai:zenodo.org:13851"
+      }
+    ],
+    [
+      {
+        "$": "50|medra_______::e540accc2df9a7ff03f1f4e7a1518fb8"
+      },
+      {
+        "$": "10.22037/afb.v12i1.48938"
+      }
+    ]
+  ],
+  "result_titles": [
+    "Carbon nanotubes: a promising approach for drug delivery.",
+    "Development of an optimized method for processing peripheral blood mononuclear cells for 1H-nuclear magnetic resonance-based metabolomic profiling",
+    "Genomic and Pathophysiological Assessment of Primary Focal Hyperhidrosis: A Comparative Study with Ayurvedic Ontologies",
+    "An Overview of the Relationships between the Food Industry and Nanotechnology",
+    "Registered Report: Widespread Potential For Growth-Factor-Driven Resistance To Anticancer Kinase Inhibitors2",
+    "Selenium-Enriched Microalgae: A Novel Bioactive Strategy for Immune System Enhancement"
+  ],
+  "result_dois": [
+    "10.22037/ijpr.2010.828",
+    "10.1371/journal.pone.0247668",
+    "10.5281/zenodo.20229825",
+    "10.22037/afb.v11i2.46737",
+    "10.5281/zenodo.13851",
+    "10.22037/afb.v12i1.48938"
+  ],
+  "result_dates": [
+    "2010-01-01",
+    "2021-02-25",
+    "2026-05-16",
+    "2025-01-04",
+    "2015-01-09",
+    "2025-09-16"
+  ],
+  "response_hash": "68d674cd1390df049561777a37baf109a059a75e1f0433f8e5a15666e7b04a49",
+  "evidence_uri": "https://api.openaire.eu/search/publications?keywords=membranes+water+separation+clinical+drug+discovery&size=10&format=json",
+  "error": null,
+  "rate_limit_headers": {
+    "x-ratelimit-used": "197",
+    "x-ratelimit-limit": "7199"
+  }
+}

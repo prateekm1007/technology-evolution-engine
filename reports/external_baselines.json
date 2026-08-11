@@ -1,0 +1,653 @@
+{
+  "cycle": 257,
+  "gate": "A",
+  "gate_name": "external_baselines",
+  "production_f1_strict": 0.0,
+  "production_f1_lenient": 0.8571,
+  "fp_floor_lenient": 1.0,
+  "strict_mode": {
+    "bm25": {
+      "baseline": "BM25",
+      "hits": 0,
+      "total": 20,
+      "recall": 0.0,
+      "f1_proxy": 0.0,
+      "per_gold": [
+        {
+          "id": "DISC-GOLD-001",
+          "bridge": "biomineralization",
+          "hit": false,
+          "top_score": 0.0,
+          "retrieved_doc": "A"
+        },
+        {
+          "id": "DISC-GOLD-002",
+          "bridge": "tight junctions",
+          "hit": false,
+          "top_score": 0.0,
+          "retrieved_doc": "A"
+        },
+        {
+          "id": "DISC-GOLD-003",
+          "bridge": "thermal emission",
+          "hit": false,
+          "top_score": 0.0,
+          "retrieved_doc": "A"
+        },
+        {
+          "id": "DISC-GOLD-004",
+          "bridge": "thermal regulation",
+          "hit": false,
+          "top_score": 0.1959,
+          "retrieved_doc": "B"
+        },
+        {
+          "id": "DISC-GOLD-005",
+          "bridge": "contact angle",
+          "hit": false,
+          "top_score": 0.7059,
+          "retrieved_doc": "B"
+        },
+        {
+          "id": "DISC-GOLD-006",
+          "bridge": "photon absorption",
+          "hit": false,
+          "top_score": 0.0,
+          "retrieved_doc": "A"
+        },
+        {
+          "id": "DISC-GOLD-007",
+          "bridge": "heat dissipation",
+          "hit": false,
+          "top_score": 0.1852,
+          "retrieved_doc": "A"
+        },
+        {
+          "id": "DISC-GOLD-008",
+          "bridge": "ion selectivity",
+          "hit": false,
+          "top_score": 0.1848,
+          "retrieved_doc": "A"
+        },
+        {
+          "id": "DISC-GOLD-009",
+          "bridge": "electrocatalyst",
+          "hit": false,
+          "top_score": 0.0,
+          "retrieved_doc": "A"
+        },
+        {
+          "id": "DISC-GOLD-010",
+          "bridge": "temperature gradient",
+          "hit": false,
+          "top_score": 0.0,
+          "retrieved_doc": "A"
+        },
+        {
+          "id": "DISC-GOLD-011",
+          "bridge": "surface functionalization",
+          "hit": false,
+          "top_score": 0.1852,
+          "retrieved_doc": "A"
+        },
+        {
+          "id": "DISC-GOLD-012",
+          "bridge": "mechanical strain",
+          "hit": false,
+          "top_score": 0.0,
+          "retrieved_doc": "A"
+        },
+        {
+          "id": "DISC-GOLD-013",
+          "bridge": "spin polarization",
+          "hit": false,
+          "top_score": 0.1854,
+          "retrieved_doc": "A"
+        },
+        {
+          "id": "DISC-GOLD-014",
+          "bridge": "ion storage",
+          "hit": false,
+          "top_score": 0.2569,
+          "retrieved_doc": "A"
+        },
+        {
+          "id": "DISC-GOLD-015",
+          "bridge": "bandgap engineering",
+          "hit": false,
+          "top_score": 0.0,
+          "retrieved_doc": "A"
+        },
+        {
+          "id": "DISC-GOLD-016",
+          "bridge": "high surface area",
+          "hit": false,
+          "top_score": 0.0,
+          "retrieved_doc": "A"
+        },
+        {
+          "id": "DISC-GOLD-017",
+          "bridge": "tensile strength",
+          "hit": false,
+          "top_score": 0.0,
+          "retrieved_doc": "A"
+        },
+        {
+          "id": "DISC-GOLD-018",
+          "bridge": "latent heat",
+          "hit": false,
+          "top_score": 0.0,
+          "retrieved_doc": "A"
+        },
+        {
+          "id": "DISC-GOLD-019",
+          "bridge": "photon energy",
+          "hit": false,
+          "top_score": 0.1823,
+          "retrieved_doc": "A"
+        },
+        {
+          "id": "DISC-GOLD-020",
+          "bridge": "fiber morphology",
+          "hit": false,
+          "top_score": 0.0,
+          "retrieved_doc": "A"
+        }
+      ]
+    },
+    "random": {
+      "baseline": "Random",
+      "n_trials": 100,
+      "mean_f1": 0.0,
+      "std_f1": 0.0,
+      "max_f1": 0.0,
+      "min_f1": 0.0,
+      "per_gold_first_trial": []
+    },
+    "frequency": {
+      "baseline": "Frequency (LLM-baseline proxy)",
+      "hits": 0,
+      "total": 20,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "per_gold": [
+        {
+          "id": "DISC-GOLD-001",
+          "bridge": "biomineralization",
+          "candidate": "calcium carbonate",
+          "hit": false,
+          "bigram_count": 2,
+          "unigram_count": 3
+        },
+        {
+          "id": "DISC-GOLD-002",
+          "bridge": "tight junctions",
+          "candidate": "size selective",
+          "hit": false,
+          "bigram_count": 2,
+          "unigram_count": 3
+        },
+        {
+          "id": "DISC-GOLD-003",
+          "bridge": "thermal emission",
+          "candidate": "radiative",
+          "hit": false,
+          "bigram_count": 1,
+          "unigram_count": 2
+        },
+        {
+          "id": "DISC-GOLD-004",
+          "bridge": "thermal regulation",
+          "candidate": "phase",
+          "hit": false,
+          "bigram_count": 1,
+          "unigram_count": 2
+        },
+        {
+          "id": "DISC-GOLD-005",
+          "bridge": "contact angle",
+          "candidate": "surface wettability",
+          "hit": false,
+          "bigram_count": 2,
+          "unigram_count": 2
+        },
+        {
+          "id": "DISC-GOLD-006",
+          "bridge": "photon absorption",
+          "candidate": "capture light",
+          "hit": false,
+          "bigram_count": 2,
+          "unigram_count": 2
+        },
+        {
+          "id": "DISC-GOLD-007",
+          "bridge": "heat dissipation",
+          "candidate": "thermal removal",
+          "hit": false,
+          "bigram_count": 2,
+          "unigram_count": 4
+        },
+        {
+          "id": "DISC-GOLD-008",
+          "bridge": "ion selectivity",
+          "candidate": "selective ion",
+          "hit": false,
+          "bigram_count": 2,
+          "unigram_count": 2
+        },
+        {
+          "id": "DISC-GOLD-009",
+          "bridge": "electrocatalyst",
+          "candidate": "catalytic electrodes",
+          "hit": false,
+          "bigram_count": 2,
+          "unigram_count": 2
+        },
+        {
+          "id": "DISC-GOLD-010",
+          "bridge": "temperature gradient",
+          "candidate": "thermal differential",
+          "hit": false,
+          "bigram_count": 2,
+          "unigram_count": 2
+        },
+        {
+          "id": "DISC-GOLD-011",
+          "bridge": "surface functionalization",
+          "candidate": "use surface",
+          "hit": false,
+          "bigram_count": 2,
+          "unigram_count": 2
+        },
+        {
+          "id": "DISC-GOLD-012",
+          "bridge": "mechanical strain",
+          "candidate": "physical deformation",
+          "hit": false,
+          "bigram_count": 2,
+          "unigram_count": 3
+        },
+        {
+          "id": "DISC-GOLD-013",
+          "bridge": "spin polarization",
+          "candidate": "quantum spin",
+          "hit": false,
+          "bigram_count": 2,
+          "unigram_count": 2
+        },
+        {
+          "id": "DISC-GOLD-014",
+          "bridge": "ion storage",
+          "candidate": "store energy",
+          "hit": false,
+          "bigram_count": 2,
+          "unigram_count": 3
+        },
+        {
+          "id": "DISC-GOLD-015",
+          "bridge": "bandgap engineering",
+          "candidate": "energy gap",
+          "hit": false,
+          "bigram_count": 2,
+          "unigram_count": 2
+        },
+        {
+          "id": "DISC-GOLD-016",
+          "bridge": "high surface area",
+          "candidate": "materials",
+          "hit": false,
+          "bigram_count": 1,
+          "unigram_count": 2
+        },
+        {
+          "id": "DISC-GOLD-017",
+          "bridge": "tensile strength",
+          "candidate": "pull resistance",
+          "hit": false,
+          "bigram_count": 2,
+          "unigram_count": 2
+        },
+        {
+          "id": "DISC-GOLD-018",
+          "bridge": "latent heat",
+          "candidate": "evaporative cooling",
+          "hit": false,
+          "bigram_count": 2,
+          "unigram_count": 2
+        },
+        {
+          "id": "DISC-GOLD-019",
+          "bridge": "photon energy",
+          "candidate": "light quantum",
+          "hit": false,
+          "bigram_count": 2,
+          "unigram_count": 2
+        },
+        {
+          "id": "DISC-GOLD-020",
+          "bridge": "fiber morphology",
+          "candidate": "structural form",
+          "hit": false,
+          "bigram_count": 2,
+          "unigram_count": 2
+        }
+      ]
+    }
+  },
+  "lenient_mode": {
+    "bm25": {
+      "baseline": "BM25 (lenient)",
+      "hits": 13,
+      "total": 20,
+      "recall": 0.65,
+      "f1_proxy": 0.65,
+      "per_gold": [
+        {
+          "id": "DISC-GOLD-001",
+          "bridge": "biomineralization",
+          "hit": true,
+          "top_score": 0.0,
+          "retrieved_doc": "A"
+        },
+        {
+          "id": "DISC-GOLD-002",
+          "bridge": "tight junctions",
+          "hit": true,
+          "top_score": 0.0,
+          "retrieved_doc": "A"
+        },
+        {
+          "id": "DISC-GOLD-003",
+          "bridge": "thermal emission",
+          "hit": true,
+          "top_score": 0.0,
+          "retrieved_doc": "A"
+        },
+        {
+          "id": "DISC-GOLD-004",
+          "bridge": "thermal regulation",
+          "hit": true,
+          "top_score": 0.1959,
+          "retrieved_doc": "B"
+        },
+        {
+          "id": "DISC-GOLD-005",
+          "bridge": "contact angle",
+          "hit": true,
+          "top_score": 0.7059,
+          "retrieved_doc": "B"
+        },
+        {
+          "id": "DISC-GOLD-006",
+          "bridge": "photon absorption",
+          "hit": false,
+          "top_score": 0.0,
+          "retrieved_doc": "A"
+        },
+        {
+          "id": "DISC-GOLD-007",
+          "bridge": "heat dissipation",
+          "hit": true,
+          "top_score": 0.1852,
+          "retrieved_doc": "A"
+        },
+        {
+          "id": "DISC-GOLD-008",
+          "bridge": "ion selectivity",
+          "hit": true,
+          "top_score": 0.1848,
+          "retrieved_doc": "A"
+        },
+        {
+          "id": "DISC-GOLD-009",
+          "bridge": "electrocatalyst",
+          "hit": false,
+          "top_score": 0.0,
+          "retrieved_doc": "A"
+        },
+        {
+          "id": "DISC-GOLD-010",
+          "bridge": "temperature gradient",
+          "hit": false,
+          "top_score": 0.0,
+          "retrieved_doc": "A"
+        },
+        {
+          "id": "DISC-GOLD-011",
+          "bridge": "surface functionalization",
+          "hit": true,
+          "top_score": 0.1852,
+          "retrieved_doc": "A"
+        },
+        {
+          "id": "DISC-GOLD-012",
+          "bridge": "mechanical strain",
+          "hit": false,
+          "top_score": 0.0,
+          "retrieved_doc": "A"
+        },
+        {
+          "id": "DISC-GOLD-013",
+          "bridge": "spin polarization",
+          "hit": true,
+          "top_score": 0.1854,
+          "retrieved_doc": "A"
+        },
+        {
+          "id": "DISC-GOLD-014",
+          "bridge": "ion storage",
+          "hit": true,
+          "top_score": 0.2569,
+          "retrieved_doc": "A"
+        },
+        {
+          "id": "DISC-GOLD-015",
+          "bridge": "bandgap engineering",
+          "hit": true,
+          "top_score": 0.0,
+          "retrieved_doc": "A"
+        },
+        {
+          "id": "DISC-GOLD-016",
+          "bridge": "high surface area",
+          "hit": true,
+          "top_score": 0.0,
+          "retrieved_doc": "A"
+        },
+        {
+          "id": "DISC-GOLD-017",
+          "bridge": "tensile strength",
+          "hit": false,
+          "top_score": 0.0,
+          "retrieved_doc": "A"
+        },
+        {
+          "id": "DISC-GOLD-018",
+          "bridge": "latent heat",
+          "hit": false,
+          "top_score": 0.0,
+          "retrieved_doc": "A"
+        },
+        {
+          "id": "DISC-GOLD-019",
+          "bridge": "photon energy",
+          "hit": true,
+          "top_score": 0.1823,
+          "retrieved_doc": "A"
+        },
+        {
+          "id": "DISC-GOLD-020",
+          "bridge": "fiber morphology",
+          "hit": false,
+          "top_score": 0.0,
+          "retrieved_doc": "A"
+        }
+      ]
+    },
+    "random": {
+      "baseline": "Random (lenient)",
+      "n_trials": 100,
+      "mean_f1": 0.095,
+      "std_f1": 0.0658,
+      "max_f1": 0.3,
+      "min_f1": 0.0
+    },
+    "frequency": {
+      "baseline": "Frequency (lenient)",
+      "hits": 6,
+      "total": 20,
+      "precision": 0.3,
+      "recall": 0.3,
+      "f1": 0.3,
+      "per_gold": [
+        {
+          "id": "DISC-GOLD-001",
+          "bridge": "biomineralization",
+          "candidate": "calcium carbonate",
+          "hit": true
+        },
+        {
+          "id": "DISC-GOLD-002",
+          "bridge": "tight junctions",
+          "candidate": "size selective",
+          "hit": true
+        },
+        {
+          "id": "DISC-GOLD-003",
+          "bridge": "thermal emission",
+          "candidate": "radiative",
+          "hit": true
+        },
+        {
+          "id": "DISC-GOLD-004",
+          "bridge": "thermal regulation",
+          "candidate": "phase",
+          "hit": false
+        },
+        {
+          "id": "DISC-GOLD-005",
+          "bridge": "contact angle",
+          "candidate": "surface wettability",
+          "hit": false
+        },
+        {
+          "id": "DISC-GOLD-006",
+          "bridge": "photon absorption",
+          "candidate": "capture light",
+          "hit": false
+        },
+        {
+          "id": "DISC-GOLD-007",
+          "bridge": "heat dissipation",
+          "candidate": "thermal removal",
+          "hit": false
+        },
+        {
+          "id": "DISC-GOLD-008",
+          "bridge": "ion selectivity",
+          "candidate": "selective ion",
+          "hit": true
+        },
+        {
+          "id": "DISC-GOLD-009",
+          "bridge": "electrocatalyst",
+          "candidate": "catalytic electrodes",
+          "hit": false
+        },
+        {
+          "id": "DISC-GOLD-010",
+          "bridge": "temperature gradient",
+          "candidate": "thermal differential",
+          "hit": false
+        },
+        {
+          "id": "DISC-GOLD-011",
+          "bridge": "surface functionalization",
+          "candidate": "use surface",
+          "hit": true
+        },
+        {
+          "id": "DISC-GOLD-012",
+          "bridge": "mechanical strain",
+          "candidate": "physical deformation",
+          "hit": false
+        },
+        {
+          "id": "DISC-GOLD-013",
+          "bridge": "spin polarization",
+          "candidate": "quantum spin",
+          "hit": true
+        },
+        {
+          "id": "DISC-GOLD-014",
+          "bridge": "ion storage",
+          "candidate": "store energy",
+          "hit": false
+        },
+        {
+          "id": "DISC-GOLD-015",
+          "bridge": "bandgap engineering",
+          "candidate": "energy gap",
+          "hit": false
+        },
+        {
+          "id": "DISC-GOLD-016",
+          "bridge": "high surface area",
+          "candidate": "materials",
+          "hit": false
+        },
+        {
+          "id": "DISC-GOLD-017",
+          "bridge": "tensile strength",
+          "candidate": "pull resistance",
+          "hit": false
+        },
+        {
+          "id": "DISC-GOLD-018",
+          "bridge": "latent heat",
+          "candidate": "evaporative cooling",
+          "hit": false
+        },
+        {
+          "id": "DISC-GOLD-019",
+          "bridge": "photon energy",
+          "candidate": "light quantum",
+          "hit": false
+        },
+        {
+          "id": "DISC-GOLD-020",
+          "bridge": "fiber morphology",
+          "candidate": "structural form",
+          "hit": false
+        }
+      ]
+    }
+  },
+  "comparisons_lenient": [
+    {
+      "baseline": "BM25 (lenient)",
+      "baseline_f1": 0.65,
+      "production_f1": 0.8571,
+      "delta": 0.2071,
+      "verdict": "PRODUCTION_BEATS_BASELINE"
+    },
+    {
+      "baseline": "Random (lenient)",
+      "baseline_f1": 0.095,
+      "production_f1": 0.8571,
+      "delta": 0.7621,
+      "verdict": "PRODUCTION_BEATS_BASELINE"
+    },
+    {
+      "baseline": "Frequency (lenient)",
+      "baseline_f1": 0.3,
+      "production_f1": 0.8571,
+      "delta": 0.5571,
+      "verdict": "PRODUCTION_BEATS_BASELINE"
+    }
+  ],
+  "gate_verdict": "PASS",
+  "verdict_tier": "INSTRUMENTATION_SCAFFOLD_PASS",
+  "verdict_tier_definition": "INSTRUMENTATION_SCAFFOLD_PASS: the instrumentation runs and produces a non-trivial signal, but the BM25 baseline uses the gold bridge text as the query (oracle-assisted). A true external baseline would propose bridges WITHOUT seeing gold labels. This gate does NOT prove the discovery claim \u2014 it proves the matcher is not pure noise."
+}

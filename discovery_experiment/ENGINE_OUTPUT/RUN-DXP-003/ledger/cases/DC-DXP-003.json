@@ -1,0 +1,373 @@
+{
+  "case_id": "DC-DXP-003",
+  "created_at": "2026-08-08T09:53:41.795725+00:00",
+  "engine_version": "",
+  "knowledge_snapshot": "",
+  "input_sources": [
+    "Bat Echolocation Signal Processing and Adaptive Call Design"
+  ],
+  "input_domains": [
+    "bioacoustics",
+    "radar signal processing"
+  ],
+  "mechanisms": [],
+  "constraints": [],
+  "observations": [],
+  "candidate_relationship": "",
+  "candidate_mechanism": "",
+  "candidate_hypothesis": "",
+  "predictions": [],
+  "proposed_experiment": "",
+  "prior_art_status": "NOT_EVALUATED",
+  "novelty_status": "NOT_EVALUATED",
+  "validation_status": "UNKNOWN",
+  "evidence": [
+    "source_doc:doc_f4f85f196b8a",
+    "mechanism_graph:DXP-003",
+    "mechanism_pattern:DXP-003",
+    "transfer:TH-DXP-003-001",
+    "hypothesis:H-DXP-003-001",
+    "adversarial:H-DXP-003-001",
+    "rediscovery:H-DXP-003-001",
+    "novelty:H-DXP-003-001",
+    "hypothesis:H-DXP-003-002",
+    "adversarial:H-DXP-003-002",
+    "rediscovery:H-DXP-003-002",
+    "novelty:H-DXP-003-002",
+    "hypothesis:H-DXP-003-003",
+    "adversarial:H-DXP-003-003",
+    "rediscovery:H-DXP-003-003",
+    "novelty:H-DXP-003-003",
+    "run:DXP-003"
+  ],
+  "provenance": {
+    "nodes": {
+      "source_doc:doc_f4f85f196b8a": {
+        "node_id": "source_doc:doc_f4f85f196b8a",
+        "node_type": "source_document",
+        "content_hash": "f778ef647c495e06e2a32f95471109c3ea59deb2e1145ed56efb80a0f175bdaf",
+        "metadata": {
+          "artifact_stage": "01_extraction",
+          "artifact_output_hash": "f778ef647c495e06e2a32f95471109c3ea59deb2e1145ed56efb80a0f175bdaf",
+          "title": "Bat Echolocation Signal Processing and Adaptive Call Design"
+        }
+      },
+      "mechanism_graph:DXP-003": {
+        "node_id": "mechanism_graph:DXP-003",
+        "node_type": "mechanism_graph",
+        "content_hash": "f778ef647c495e06e2a32f95471109c3ea59deb2e1145ed56efb80a0f175bdaf",
+        "metadata": {
+          "artifact_stage": "01_extraction",
+          "artifact_output_hash": "f778ef647c495e06e2a32f95471109c3ea59deb2e1145ed56efb80a0f175bdaf",
+          "n_nodes": 24,
+          "n_edges": 16
+        }
+      },
+      "mechanism_pattern:DXP-003": {
+        "node_id": "mechanism_pattern:DXP-003",
+        "node_type": "mechanism_pattern",
+        "content_hash": "2b3e26d11a3cda69fab4b6605586839bc63a7f470925eeb8884f4ea63a016a14",
+        "metadata": {
+          "artifact_stage": "02_abstraction",
+          "artifact_output_hash": "2b3e26d11a3cda69fab4b6605586839bc63a7f470925eeb8884f4ea63a016a14",
+          "pattern_id": "MP-DXP-003"
+        }
+      },
+      "transfer:TH-DXP-003-001": {
+        "node_id": "transfer:TH-DXP-003-001",
+        "node_type": "transfer_hypothesis",
+        "content_hash": "22b1c0ef24b6087870f1df5c61014e28db286f91d265fdde653a7b1a3b960dea",
+        "metadata": {
+          "artifact_stage": "03_transfer",
+          "artifact_output_hash": "22b1c0ef24b6087870f1df5c61014e28db286f91d265fdde653a7b1a3b960dea",
+          "source_domain": "bioacoustics",
+          "target_domain": "radar signal processing",
+          "transferred_principle": "Adaptive waveform generation based on environmental feedback to enhance target detection while suppressing clutter"
+        }
+      },
+      "hypothesis:H-DXP-003-001": {
+        "node_id": "hypothesis:H-DXP-003-001",
+        "node_type": "hypothesis",
+        "content_hash": "1e4cfe94c783bc4ff21b8d117ad70fbdc24c832ee11ca84d06f646619a4d95e6",
+        "metadata": {
+          "artifact_stage": "04_hypotheses",
+          "artifact_output_hash": "1e4cfe94c783bc4ff21b8d117ad70fbdc24c832ee11ca84d06f646619a4d95e6",
+          "claim": "Adaptive pulse duration based on target range feedback reduces sea clutter false alarms while mainta",
+          "hypothesis_object_hash": "4a560c708c3ab854bd9179420126116db8d084834755fff35734f95070908963"
+        }
+      },
+      "adversarial:H-DXP-003-001": {
+        "node_id": "adversarial:H-DXP-003-001",
+        "node_type": "adversarial_analysis",
+        "content_hash": "a73b4b9611a4c5ca4309022584f7cad03ce7add0c0524c5f64716963a37ed9ba",
+        "metadata": {
+          "artifact_stage": "05_adversarial_H-DXP-003-001",
+          "artifact_output_hash": "a73b4b9611a4c5ca4309022584f7cad03ce7add0c0524c5f64716963a37ed9ba",
+          "outcome": "ADVERSARIAL_FAILED",
+          "survives": false
+        }
+      },
+      "rediscovery:H-DXP-003-001": {
+        "node_id": "rediscovery:H-DXP-003-001",
+        "node_type": "rediscovery_analysis",
+        "content_hash": "8b64dac5f011351f23d19671284c91285ff097719f5aa69a99fbffe59bc2f54e",
+        "metadata": {
+          "artifact_stage": "06_rediscovery_H-DXP-003-001",
+          "artifact_output_hash": "8b64dac5f011351f23d19671284c91285ff097719f5aa69a99fbffe59bc2f54e",
+          "classification": "PARAPHRASED_IN_INPUT",
+          "is_rediscovery": true
+        }
+      },
+      "novelty:H-DXP-003-001": {
+        "node_id": "novelty:H-DXP-003-001",
+        "node_type": "novelty_assessment",
+        "content_hash": "91f18d74c319ba01a222589f61c721c4ffff7e5f4ff2e2569f9b3b7c8521e139",
+        "metadata": {
+          "artifact_stage": "07_novelty_H-DXP-003-001",
+          "artifact_output_hash": "91f18d74c319ba01a222589f61c721c4ffff7e5f4ff2e2569f9b3b7c8521e139",
+          "status": "NOT_EVALUATED"
+        }
+      },
+      "hypothesis:H-DXP-003-002": {
+        "node_id": "hypothesis:H-DXP-003-002",
+        "node_type": "hypothesis",
+        "content_hash": "1e4cfe94c783bc4ff21b8d117ad70fbdc24c832ee11ca84d06f646619a4d95e6",
+        "metadata": {
+          "artifact_stage": "04_hypotheses",
+          "artifact_output_hash": "1e4cfe94c783bc4ff21b8d117ad70fbdc24c832ee11ca84d06f646619a4d95e6",
+          "claim": "Adaptive waveform generation based on clutter feedback rather than target range reduces false alarms",
+          "hypothesis_object_hash": "4b96e61fd68f45174350e150acd0aaf0435ab803b55ce0dc9f659fe577a705f4"
+        }
+      },
+      "adversarial:H-DXP-003-002": {
+        "node_id": "adversarial:H-DXP-003-002",
+        "node_type": "adversarial_analysis",
+        "content_hash": "1f93ff0a00af365c0b425e69109e2e63cf67155c7438c227e0a06e19f3a5f703",
+        "metadata": {
+          "artifact_stage": "05_adversarial_H-DXP-003-002",
+          "artifact_output_hash": "1f93ff0a00af365c0b425e69109e2e63cf67155c7438c227e0a06e19f3a5f703",
+          "outcome": "ADVERSARIAL_FAILED",
+          "survives": false
+        }
+      },
+      "rediscovery:H-DXP-003-002": {
+        "node_id": "rediscovery:H-DXP-003-002",
+        "node_type": "rediscovery_analysis",
+        "content_hash": "b2694735be337bec30d593cfe5f72e105ffaf21ba6abea7f208e1a1ad86959c1",
+        "metadata": {
+          "artifact_stage": "06_rediscovery_H-DXP-003-002",
+          "artifact_output_hash": "b2694735be337bec30d593cfe5f72e105ffaf21ba6abea7f208e1a1ad86959c1",
+          "classification": "PARAPHRASED_IN_INPUT",
+          "is_rediscovery": true
+        }
+      },
+      "novelty:H-DXP-003-002": {
+        "node_id": "novelty:H-DXP-003-002",
+        "node_type": "novelty_assessment",
+        "content_hash": "f139b3b2ca0ef5f53285cfcb839715331238bc3728d6e840298444fdda5b4aa5",
+        "metadata": {
+          "artifact_stage": "07_novelty_H-DXP-003-002",
+          "artifact_output_hash": "f139b3b2ca0ef5f53285cfcb839715331238bc3728d6e840298444fdda5b4aa5",
+          "status": "NOT_EVALUATED"
+        }
+      },
+      "hypothesis:H-DXP-003-003": {
+        "node_id": "hypothesis:H-DXP-003-003",
+        "node_type": "hypothesis",
+        "content_hash": "1e4cfe94c783bc4ff21b8d117ad70fbdc24c832ee11ca84d06f646619a4d95e6",
+        "metadata": {
+          "artifact_stage": "04_hypotheses",
+          "artifact_output_hash": "1e4cfe94c783bc4ff21b8d117ad70fbdc24c832ee11ca84d06f646619a4d95e6",
+          "claim": "Multi-pulse adaptive strategy combining different pulse durations based on both target range and clu",
+          "hypothesis_object_hash": "57ad52d9b0c5f657b6627a0426170e8776faa0d51eae95afa2de858b8e6ca2cd"
+        }
+      },
+      "adversarial:H-DXP-003-003": {
+        "node_id": "adversarial:H-DXP-003-003",
+        "node_type": "adversarial_analysis",
+        "content_hash": "69316f8d3ca3c14b70c2e4db0677cc1ed97d82596297bf049d428da20063464b",
+        "metadata": {
+          "artifact_stage": "05_adversarial_H-DXP-003-003",
+          "artifact_output_hash": "69316f8d3ca3c14b70c2e4db0677cc1ed97d82596297bf049d428da20063464b",
+          "outcome": "ADVERSARIAL_FAILED",
+          "survives": false
+        }
+      },
+      "rediscovery:H-DXP-003-003": {
+        "node_id": "rediscovery:H-DXP-003-003",
+        "node_type": "rediscovery_analysis",
+        "content_hash": "1e4292fcc3a28b0d11c7a9bdce431da91349fb5e619b9866e0f420c289b3c852",
+        "metadata": {
+          "artifact_stage": "06_rediscovery_H-DXP-003-003",
+          "artifact_output_hash": "1e4292fcc3a28b0d11c7a9bdce431da91349fb5e619b9866e0f420c289b3c852",
+          "classification": "NON_TRIVIAL_TRANSFER",
+          "is_rediscovery": false
+        }
+      },
+      "novelty:H-DXP-003-003": {
+        "node_id": "novelty:H-DXP-003-003",
+        "node_type": "novelty_assessment",
+        "content_hash": "6b53d45121048d19ff1095c320cab01316bd07413279a2557b30037236fc4a3d",
+        "metadata": {
+          "artifact_stage": "07_novelty_H-DXP-003-003",
+          "artifact_output_hash": "6b53d45121048d19ff1095c320cab01316bd07413279a2557b30037236fc4a3d",
+          "status": "NOT_EVALUATED"
+        }
+      },
+      "run:DXP-003": {
+        "node_id": "run:DXP-003",
+        "node_type": "checkpointed_run",
+        "content_hash": "384a4466c1cc429ab5426924e5decf7c9e9a0e82333e88596b7daea3b4f5c9fb",
+        "metadata": {
+          "run_id": "RUN-DXP-003",
+          "engine_code_sha": "be6bdbcdb657cc1a9309700a052f9a0c3e89e56b",
+          "artifact_stage": "manifest",
+          "artifact_output_hash": ""
+        }
+      }
+    },
+    "edges": [
+      {
+        "edge_id": "prov:mg_src:DXP-003",
+        "source_node_id": "source_doc:doc_f4f85f196b8a",
+        "target_node_id": "mechanism_graph:DXP-003",
+        "edge_type": "DERIVES_FROM",
+        "evidence": "mechanism graph extracted from source",
+        "actor": "mechanism_extractor",
+        "timestamp": "2026-08-08T09:53:41.795754+00:00"
+      },
+      {
+        "edge_id": "prov:mp_mg:DXP-003",
+        "source_node_id": "mechanism_graph:DXP-003",
+        "target_node_id": "mechanism_pattern:DXP-003",
+        "edge_type": "DERIVES_FROM",
+        "evidence": "pattern abstracted from mechanism graph",
+        "actor": "mechanism_abstracter",
+        "timestamp": "2026-08-08T09:53:41.795760+00:00"
+      },
+      {
+        "edge_id": "prov:th_mp:TH-DXP-003-001",
+        "source_node_id": "mechanism_pattern:DXP-003",
+        "target_node_id": "transfer:TH-DXP-003-001",
+        "edge_type": "DERIVES_FROM",
+        "evidence": "transfer derived from pattern",
+        "actor": "cross_domain_transfer",
+        "timestamp": "2026-08-08T09:53:41.795766+00:00"
+      },
+      {
+        "edge_id": "prov:h_th:H-DXP-003-001",
+        "source_node_id": "transfer:TH-DXP-003-001",
+        "target_node_id": "hypothesis:H-DXP-003-001",
+        "edge_type": "DERIVES_FROM",
+        "evidence": "hypothesis derived from transfer",
+        "actor": "hypothesis_engine",
+        "timestamp": "2026-08-08T09:53:41.795793+00:00"
+      },
+      {
+        "edge_id": "prov:adv_h:H-DXP-003-001",
+        "source_node_id": "hypothesis:H-DXP-003-001",
+        "target_node_id": "adversarial:H-DXP-003-001",
+        "edge_type": "ANALYZES",
+        "evidence": "adversarial analysis of hypothesis",
+        "actor": "adversarial_engine",
+        "timestamp": "2026-08-08T09:53:41.795843+00:00"
+      },
+      {
+        "edge_id": "prov:rd_h:H-DXP-003-001",
+        "source_node_id": "hypothesis:H-DXP-003-001",
+        "target_node_id": "rediscovery:H-DXP-003-001",
+        "edge_type": "ANALYZES",
+        "evidence": "rediscovery classification of hypothesis",
+        "actor": "rediscovery_detector",
+        "timestamp": "2026-08-08T09:53:41.795892+00:00"
+      },
+      {
+        "edge_id": "prov:nov_h:H-DXP-003-001",
+        "source_node_id": "hypothesis:H-DXP-003-001",
+        "target_node_id": "novelty:H-DXP-003-001",
+        "edge_type": "ANALYZES",
+        "evidence": "novelty assessment of hypothesis",
+        "actor": "novelty_firewall",
+        "timestamp": "2026-08-08T09:53:41.795926+00:00"
+      },
+      {
+        "edge_id": "prov:h_th:H-DXP-003-002",
+        "source_node_id": "transfer:TH-DXP-003-001",
+        "target_node_id": "hypothesis:H-DXP-003-002",
+        "edge_type": "DERIVES_FROM",
+        "evidence": "hypothesis derived from transfer",
+        "actor": "hypothesis_engine",
+        "timestamp": "2026-08-08T09:53:41.795985+00:00"
+      },
+      {
+        "edge_id": "prov:adv_h:H-DXP-003-002",
+        "source_node_id": "hypothesis:H-DXP-003-002",
+        "target_node_id": "adversarial:H-DXP-003-002",
+        "edge_type": "ANALYZES",
+        "evidence": "adversarial analysis of hypothesis",
+        "actor": "adversarial_engine",
+        "timestamp": "2026-08-08T09:53:41.796045+00:00"
+      },
+      {
+        "edge_id": "prov:rd_h:H-DXP-003-002",
+        "source_node_id": "hypothesis:H-DXP-003-002",
+        "target_node_id": "rediscovery:H-DXP-003-002",
+        "edge_type": "ANALYZES",
+        "evidence": "rediscovery classification of hypothesis",
+        "actor": "rediscovery_detector",
+        "timestamp": "2026-08-08T09:53:41.796086+00:00"
+      },
+      {
+        "edge_id": "prov:nov_h:H-DXP-003-002",
+        "source_node_id": "hypothesis:H-DXP-003-002",
+        "target_node_id": "novelty:H-DXP-003-002",
+        "edge_type": "ANALYZES",
+        "evidence": "novelty assessment of hypothesis",
+        "actor": "novelty_firewall",
+        "timestamp": "2026-08-08T09:53:41.796119+00:00"
+      },
+      {
+        "edge_id": "prov:h_th:H-DXP-003-003",
+        "source_node_id": "transfer:TH-DXP-003-001",
+        "target_node_id": "hypothesis:H-DXP-003-003",
+        "edge_type": "DERIVES_FROM",
+        "evidence": "hypothesis derived from transfer",
+        "actor": "hypothesis_engine",
+        "timestamp": "2026-08-08T09:53:41.796168+00:00"
+      },
+      {
+        "edge_id": "prov:adv_h:H-DXP-003-003",
+        "source_node_id": "hypothesis:H-DXP-003-003",
+        "target_node_id": "adversarial:H-DXP-003-003",
+        "edge_type": "ANALYZES",
+        "evidence": "adversarial analysis of hypothesis",
+        "actor": "adversarial_engine",
+        "timestamp": "2026-08-08T09:53:41.796211+00:00"
+      },
+      {
+        "edge_id": "prov:rd_h:H-DXP-003-003",
+        "source_node_id": "hypothesis:H-DXP-003-003",
+        "target_node_id": "rediscovery:H-DXP-003-003",
+        "edge_type": "ANALYZES",
+        "evidence": "rediscovery classification of hypothesis",
+        "actor": "rediscovery_detector",
+        "timestamp": "2026-08-08T09:53:41.796242+00:00"
+      },
+      {
+        "edge_id": "prov:nov_h:H-DXP-003-003",
+        "source_node_id": "hypothesis:H-DXP-003-003",
+        "target_node_id": "novelty:H-DXP-003-003",
+        "edge_type": "ANALYZES",
+        "evidence": "novelty assessment of hypothesis",
+        "actor": "novelty_firewall",
+        "timestamp": "2026-08-08T09:53:41.796270+00:00"
+      }
+    ],
+    "committed_hash": "b71882b92fbbe70d562060a016844e06a9411986199d857742b5e2d327785446"
+  },
+  "parent_cases": [],
+  "derived_cases": [],
+  "failure_state": null,
+  "manifest": null,
+  "provenance_root_hash": "b71882b92fbbe70d562060a016844e06a9411986199d857742b5e2d327785446"
+}

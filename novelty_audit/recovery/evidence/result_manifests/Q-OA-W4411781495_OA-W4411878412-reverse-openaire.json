@@ -1,0 +1,51 @@
+{
+  "query_id": "Q-OA-W4411781495_OA-W4411878412-reverse-openaire",
+  "pair_id": "OA-W4411781495_OA-W4411878412",
+  "query_type": "reverse",
+  "provider": "openaire",
+  "query_text": "forensic shap lime review advances design",
+  "query_hash": "3b3fb40d666005c7f11f752ffbf3f3068c70a992956af80aae6e4e31031fa4bf",
+  "frozen_query_ref": "Q-OA-W4411781495_OA-W4411878412-reverse-openalex",
+  "url": "https://api.openaire.eu/search/publications?keywords=forensic+shap+lime+review+advances+design&size=10&format=json",
+  "timestamp_utc": "2026-08-11T12:26:00.662620+00:00",
+  "status": "SUCCESS",
+  "result_count": 1,
+  "result_ids": [
+    [
+      {
+        "$": "50|datacite____::ebb0043ad39f9ec049127119eb0957eb"
+      },
+      {
+        "$": "10.5281/zenodo.20204174"
+      },
+      {
+        "$": "50|od______2659::ebb0043ad39f9ec049127119eb0957eb"
+      },
+      {
+        "$": "oai:zenodo.org:20204174"
+      },
+      {
+        "$": "50|datacite____::fa0b6592ff0551f3e4e89a015fc23077"
+      },
+      {
+        "$": "10.5281/zenodo.20204173"
+      }
+    ]
+  ],
+  "result_titles": [
+    "Advancing Academic Integrity Through Intelligent Examination Oversight: A Comprehensive Framework Leveraging Deep Learning and Computer Vision for Next-Generation Automated Proctoring"
+  ],
+  "result_dois": [
+    "10.5281/zenodo.20204174"
+  ],
+  "result_dates": [
+    "2026-05-15"
+  ],
+  "response_hash": "49d899610897248dfc484830d0fe248b5aa8439a9ede08a9ee1f3d064eaf661e",
+  "evidence_uri": "https://api.openaire.eu/search/publications?keywords=forensic+shap+lime+review+advances+design&size=10&format=json",
+  "error": null,
+  "rate_limit_headers": {
+    "x-ratelimit-used": "71",
+    "x-ratelimit-limit": "7199"
+  }
+}

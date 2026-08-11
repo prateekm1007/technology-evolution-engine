@@ -1,0 +1,41 @@
+{
+  "transfers": [
+    {
+      "transfer_id": "TH-N2-001",
+      "source_domain": "ornithology",
+      "source_mechanism": "Passive deployment of covert feathers on bird wings triggered by adverse pressure gradient to generate streamwise vortices that delay flow separation.",
+      "source_conditions": [
+        "High angle of attack",
+        "Adverse pressure gradient on wing upper surface",
+        "Reynolds number 10^5-10^6",
+        "Feather microstructure with flexible hinge-like base"
+      ],
+      "target_domain": "naval engineering",
+      "target_problem": "Submarine Hull Hydrodynamic Design\n\nNeed: hull shape optimization for reduced drag at 10-20 knots submerged. Current hull is axisymmetric (cylindrical with conical ends). Operating Reynolds number ~10^8. Want: 10% drag reduction. Constraints: internal volume 5000 m3, maximum length 100m, maximum diameter 10m.\n",
+      "transferred_principle": "Passive, pressure-gradient-activated surface protuberances that generate streamwise vortices to energize boundary layer and delay separation.",
+      "required_translation": "Replace biological covert feathers with an array of micro-scale hinged flaps (height ~1-2 mm, chord ~5 mm) embedded in the submarine hull's aft section (last 15% of length). Flaps made of corrosion-resistant titanium alloy or high-strength polymer, designed to deploy passively when local pressure gradient exceeds threshold (dp/dx > 0.5 kPa/m). Flap hinge stiffness calibrated to hydrostatic pressure at operating depth (up to 500m). Surface finish must maintain hydraulic smoothness when flaps are flush.",
+      "expected_effect": "Reduction of pressure drag at stern by 10-15% via suppression of separation bubble, yielding net 10% total drag reduction at 10-20 knots (Re ~10^8).",
+      "boundary_conditions": [
+        "Effective only in adverse pressure gradient region (aft 20% of hull)",
+        "Requires minimum pressure gradient threshold to deploy",
+        "Flap density must be optimized to avoid excessive skin friction drag when deployed",
+        "Hydrostatic pressure at depth must not cause premature deployment"
+      ],
+      "failure_conditions": [
+        "Marine fouling preventing flap deployment",
+        "Fatigue failure of hinge mechanism under cyclic loading",
+        "Incorrect calibration causing deployment in favorable gradient (increasing drag)",
+        "Cavitation inception at flap edges at high speeds"
+      ],
+      "testable_prediction": "In a scaled model test (1:20) at Re = 5e6, pressure-sensitive paint will show separation line moving aft by >15% of hull length when flaps are active vs. fixed smooth hull, with net drag reduction >8% at design speed.",
+      "epistemic_state": "HYPOTHESIZED",
+      "provenance": {
+        "nodes": {},
+        "edges": [],
+        "committed_hash": null
+      },
+      "provenance_root_hash": ""
+    }
+  ],
+  "rejected": []
+}

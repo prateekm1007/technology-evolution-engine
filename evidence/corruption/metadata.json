@@ -1,0 +1,32 @@
+{
+  "incident_id": "F-005",
+  "preserved_at": "2026-08-01T14:26:43+0000",
+  "source": {
+    "path": "data/ledger/predictions.jsonl",
+    "absolute_path": "/home/z/my-project/repo/tee/data/ledger/predictions.jsonl",
+    "size_bytes": 1403,
+    "mtime_epoch": 1785593898.8618393,
+    "mtime_human": "2026-08-01T14:18:18+0000"
+  },
+  "content_stats": {
+    "byte_count": 1403,
+    "char_count_utf8": 1403,
+    "line_count": 704,
+    "non_empty_line_count": 609,
+    "max_line_length": 1,
+    "min_line_length": 0,
+    "unique_line_lengths": [
+      0,
+      1
+    ]
+  },
+  "checksums": {
+    "sha256": "df65acbd6b81606e3bb68540b038955673f2ef67d408c13f277f4dd0d6629909"
+  },
+  "preservation": {
+    "copied_to": "evidence/corruption/predictions_corrupted.jsonl",
+    "copy_sha256": "df65acbd6b81606e3bb68540b038955673f2ef67d408c13f277f4dd0d6629909",
+    "copy_matches_source": true,
+    "copier": "shutil.copy2 (preserves mtime)"
+  }
+}

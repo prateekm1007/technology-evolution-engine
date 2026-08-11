@@ -1,0 +1,287 @@
+problem: "Build a vertical farming system producing leafy greens at <$3/kg with 95% less water than field agriculture"
+domain: "agriculture"
+hypothesis:
+  id: "hyp_e9efb83d4a983160"
+  claim: "The invention 'Build a vertical farming system producing leafy greens at <$3/kg with 95% less water than field agriculture' is feasible in the agriculture domain within the stated time horizon."
+  confidence: 0.5212
+  evidence:
+    - "energy_conservation"
+    - "first_law_thermodynamics"
+    - "second_law_thermodynamics"
+    - "ampere law"
+    - "prerequisite_chain_depth_2"
+    - "capex_$23.94M"
+  counterevidence:
+
+  assumptions:
+
+  status: "pending"
+physical_laws:
+  - "energy_conservation"
+  - "first_law_thermodynamics"
+  - "second_law_thermodynamics"
+chemical_principles:
+  pathways:
+
+  kinetics:
+
+  equilibrium:
+
+  energy_states:
+    - "activation_energy"
+    - "gibbs_free_energy"
+mathematical_formulation:
+  structures:
+    - "optimization"
+  governing_equations:
+    -
+      name: "ampere law"
+      form: "B = mu_0 * I / (2*pi*r)"
+      variables:
+        - "B"
+        - "mu_0"
+        - "I"
+        - "r"
+constraints:
+  - "cost"
+  - "energy"
+  - "material"
+  - "manufacturing"
+  - "regulation"
+dependencies:
+  prerequisites:
+    - "sub_wireless_sensor_networks"
+    - "component_lora_module"
+    - "component_wireless_module"
+    - "sub_crop_sensing"
+  missing_capabilities:
+
+  causal_classifications:
+    necessary: 2
+    sufficient: 0
+    contributing: 2
+    unknown: 0
+assumptions:
+  - "Failure modes are derived from constraint keywords via a small prior map. Real failure modes require FMEA."
+  - "Optimization targets are derived from the problem's stated constraints. Implicit targets (e.g., 'minimize complexity') are not captured."
+  - "The hypothesis is a prediction. It is NOT verified until the experiments are run and outcomes recorded in the ledger."
+  - "Failure-mode experiments are derived from Layer 3's failure modes. If Layer 3 is incomplete, this layer is incomplete."
+  - "Success/failure thresholds (0.70, 0.40) are priors. They should be recalibrated as the verification cycle accumulates outcomes."
+architecture:
+  subsystems:
+    - "subsystem_for_cost"
+    - "subsystem_for_energy"
+    - "subsystem_for_material"
+    - "subsystem_for_manufacturing"
+    - "subsystem_for_regulation"
+  interfaces:
+    - "subsystem_for_cost <-> subsystem_for_energy"
+    - "subsystem_for_cost <-> subsystem_for_material"
+    - "subsystem_for_cost <-> subsystem_for_manufacturing"
+    - "subsystem_for_cost <-> subsystem_for_regulation"
+    - "subsystem_for_energy <-> subsystem_for_material"
+  tolerances:
+    cost: "±15% of capex estimate"
+    energy: "±10% of energy budget"
+    material: "±5% of material property target"
+    manufacturing: "±3% yield"
+    regulation: "binary (pass/fail)"
+simulation:
+  monte_carlo:
+    n_samples: 200
+    composite:
+      mean: 0.5246
+      std: 0.0254
+      p5: 0.4817
+      p50: 0.5245
+      p95: 0.5661
+      min: 0.461
+      max: 0.5834
+    technical:
+      mean: 0.6465
+      std: 0.0577
+      p5: 0.5521
+      p50: 0.6579
+      p95: 0.7313
+      min: 0.5367
+      max: 0.736
+    economic:
+      mean: 0.499
+      std: 0.0575
+      p5: 0.4113
+      p50: 0.5007
+      p95: 0.5939
+      min: 0.4022
+      max: 0.6005
+    regulatory:
+      mean: 0.4482
+      std: 0.0551
+      p5: 0.3597
+      p50: 0.4503
+      p95: 0.5353
+      min: 0.3471
+      max: 0.5448
+    manufacturing:
+      mean: 0.5158
+      std: 0.0584
+      p5: 0.4303
+      p50: 0.5175
+      p95: 0.6054
+      min: 0.4163
+      max: 0.6159
+    adoption:
+      mean: 0.403
+      std: 0.0589
+      p5: 0.3104
+      p50: 0.4046
+      p95: 0.4924
+      min: 0.3011
+      max: 0.5007
+  sensitivity:
+    technical: 0.6815
+    economic: 0.4528
+    regulatory: 0.3254
+    manufacturing: 0.4598
+    adoption: 0.3478
+  stress_testing:
+    -
+      technical_feasibility: 0.5521
+      economic_feasibility: 0.409
+      regulatory_feasibility: 0.4324
+      manufacturing_feasibility: 0.4805
+      adoption_probability: 0.3511
+      composite: 0.461
+    -
+      technical_feasibility: 0.5801
+      economic_feasibility: 0.4449
+      regulatory_feasibility: 0.4332
+      manufacturing_feasibility: 0.4218
+      adoption_probability: 0.3682
+      composite: 0.4676
+    -
+      technical_feasibility: 0.5502
+      economic_feasibility: 0.4486
+      regulatory_feasibility: 0.4798
+      manufacturing_feasibility: 0.4588
+      adoption_probability: 0.3275
+      composite: 0.4676
+prototype_plan:
+  v1:
+    name: "prototype_v1_physics_validation"
+    goal: "prove the core mechanism works at lab scale"
+    scope: "single subsystem, no integration, no manufacturability"
+    success_threshold: "core mechanism reproduces predicted output within 30%"
+    estimated_duration_months: 6
+    estimated_cost_usd_m: 0.26
+  v2:
+    name: "prototype_v2_engineering_integration"
+    goal: "prove the subsystems integrate into a working system"
+    scope: "all subsystems, no manufacturing pathway, no regulatory submission"
+    success_threshold: "integrated prototype meets primary_output spec at 50% of target performance"
+    estimated_duration_months: 16
+    estimated_cost_usd_m: 1.04
+  v3:
+    name: "prototype_v3_production_readiness"
+    goal: "prove the manufacturing pathway and cost model hold"
+    scope: "production-intent prototype, pilot manufacturing run, regulatory pre-submission"
+    success_threshold: "unit cost within 2x of cost_curve target; regulatory pre-submission accepted"
+    estimated_duration_months: 26
+    estimated_cost_usd_m: 4.17
+  timeline_years: 4.0
+experimental_plan:
+  hypothesis: "The candidate invention will achieve technical feasibility >= 0.70 within 5-10 years, given the prerequisite chain is complete and no regulatory blocker materializes."
+  experiments:
+    -
+      id: "exp_cost_overrun"
+      purpose: "determine whether cost_overrun is a real risk"
+      method: "stress_test_against_cost_overrun"
+      expected_duration: "3-6 months per experiment"
+    -
+      id: "exp_energy_budget_exceeded"
+      purpose: "determine whether energy_budget_exceeded is a real risk"
+      method: "stress_test_against_energy_budget_exceeded"
+      expected_duration: "3-6 months per experiment"
+    -
+      id: "exp_material_unavailable_or_too_expensive"
+      purpose: "determine whether material_unavailable_or_too_expensive is a real risk"
+      method: "stress_test_against_material_unavailable_or_too_expensive"
+      expected_duration: "3-6 months per experiment"
+    -
+      id: "exp_manufacturing_yield_too_low"
+      purpose: "determine whether manufacturing_yield_too_low is a real risk"
+      method: "stress_test_against_manufacturing_yield_too_low"
+      expected_duration: "3-6 months per experiment"
+    -
+      id: "exp_regulatory_rejection"
+      purpose: "determine whether regulatory_rejection is a real risk"
+      method: "stress_test_against_regulatory_rejection"
+      expected_duration: "3-6 months per experiment"
+    -
+      id: "exp_prototype_v1"
+      purpose: "determine whether the candidate can be built at all"
+      method: "build_minimum_viable_prototype"
+      expected_duration: "6-12 months"
+  measurements:
+    -
+      metric: "technical_feasibility_observed"
+      target: ">= 0.70"
+      instrument: "expert_panel_review"
+    -
+      metric: "cost_per_unit_observed"
+      target: "<= capex_estimate / 1000"
+      instrument: "cost_accounting"
+    -
+      metric: "time_to_first_prototype_observed"
+      target: "<= 5-10 years"
+      instrument: "project_tracker"
+    -
+      metric: "regulatory_approval_status"
+      target: "approved_or_withdrawn"
+      instrument: "regulatory_filing_tracker"
+  success_criteria:
+    - "All failure-mode experiments return 'risk_acceptable'."
+    - "Prototype v1 builds successfully and meets primary_output spec."
+    - "Technical feasibility observed >= 0.70 within 5-10 years."
+    - "Composite feasibility from simulation's p50 >= 0.60."
+  failure_criteria:
+    - "Any failure-mode experiment returns 'risk_unacceptable' AND no mitigation is identified."
+    - "Prototype v1 cannot be built within 2x the estimated time."
+    - "Technical feasibility observed < 0.40 after 5-10 years."
+    - "Regulatory approval is denied with no appeal path."
+failure_modes:
+  - "cost_overrun"
+  - "energy_budget_exceeded"
+  - "material_unavailable_or_too_expensive"
+  - "manufacturing_yield_too_low"
+  - "regulatory_rejection"
+  - "stress_scenario_composite=0.461"
+  - "stress_scenario_composite=0.4676"
+counterevidence:
+
+confidence: 0.5212
+final_blueprint:
+  problem: "Build a vertical farming system producing leafy greens at <$3/kg with 95% less water than field agriculture"
+  domain: "agriculture"
+  target_invention: "Build a vertical farming system producing leafy greens at <$3/kg with 95% less water than field agriculture"
+  prerequisite_chain_depth: 2
+  governing_equations:
+    -
+      name: "ampere law"
+      form: "B = mu_0 * I / (2*pi*r)"
+      variables:
+        - "B"
+        - "mu_0"
+        - "I"
+        - "r"
+  subsystems:
+    - "subsystem_for_cost"
+    - "subsystem_for_energy"
+    - "subsystem_for_material"
+    - "subsystem_for_manufacturing"
+    - "subsystem_for_regulation"
+  composite_feasibility: 23.94
+  prototype_stages:
+    - "prototype_v1_physics_validation"
+    - "prototype_v2_engineering_integration"
+    - "prototype_v3_production_readiness"
+  total_prototype_timeline_years: 4.0

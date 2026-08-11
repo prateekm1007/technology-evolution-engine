@@ -1,0 +1,50 @@
+# EDGE_JUSTIFICATION_TABLE — Phase 7C.1 Trusted Graph (v2.0)
+
+**Status:** every edge justified per CEO Phase 7C.1 Decision 4.
+**Graph:** capability_graph.json v2.0 (5 patents, 10 capabilities, 5 constraints, 4 edge types).
+
+Total edges: 37
+Total justifications: 37
+
+| Edge ID | Source | → | Target | Type | CPC Code | Confidence | Justification | Reviewer |
+|---|---|---|---|---|---|---|---|---|
+| EDGE-001 | PAT_US20240194939A1 | → | CAP_CELL_ASSEMBLY | EMBODIED_IN | H01M 50/00 | 1.0 | Patent US20240194939A1 has CPC code H01M 50/00, which maps to CELL_ASSEMBLY per CPC_MAPPING.md. CPC codes are assigned b | coder_agent_001 / 2026-08-02 |
+| EDGE-002 | PAT_US20240194939A1 | → | CAP_ELECTROCHEMICAL_ENERGY_STORAGE | EMBODIED_IN | H01M 10/0525 | 1.0 | Patent US20240194939A1 has CPC code H01M 10/0525, which maps to ELECTROCHEMICAL_ENERGY_STORAGE per CPC_MAPPING.md. CPC c | coder_agent_001 / 2026-08-02 |
+| EDGE-003 | PAT_US20240194939A1 | → | CAP_ELECTRODE_COATING | EMBODIED_IN | H01M 4/00 | 1.0 | Patent US20240194939A1 has CPC code H01M 4/00, which maps to ELECTRODE_COATING per CPC_MAPPING.md. CPC codes are assigne | coder_agent_001 / 2026-08-02 |
+| EDGE-004 | PAT_US20240194939A1 | → | CAP_ELECTRON_COLLECTION | EMBODIED_IN | H01M 4/00 | 1.0 | Patent US20240194939A1 has CPC code H01M 4/00, which maps to ELECTRON_COLLECTION per CPC_MAPPING.md. CPC codes are assig | coder_agent_001 / 2026-08-02 |
+| EDGE-005 | PAT_US20240194939A1 | → | CAP_INTERCALATION | EMBODIED_IN | H01M 4/00 | 1.0 | Patent US20240194939A1 has CPC code H01M 4/00, which maps to INTERCALATION per CPC_MAPPING.md. CPC codes are assigned by | coder_agent_001 / 2026-08-02 |
+| EDGE-006 | PAT_US20240194939A1 | → | CAP_ION_TRANSPORT | EMBODIED_IN | H01M 10/0562 | 1.0 | Patent US20240194939A1 has CPC code H01M 10/0562, which maps to ION_TRANSPORT per CPC_MAPPING.md. CPC codes are assigned | coder_agent_001 / 2026-08-02 |
+| EDGE-007 | PAT_US20240194939A1 | → | CAP_THERMAL_MANAGEMENT | EMBODIED_IN | H01M 50/00 | 1.0 | Patent US20240194939A1 has CPC code H01M 50/00, which maps to THERMAL_MANAGEMENT per CPC_MAPPING.md. CPC codes are assig | coder_agent_001 / 2026-08-02 |
+| EDGE-008 | PAT_US12489120B2 | → | CAP_ELECTROCHEMICAL_ENERGY_STORAGE | EMBODIED_IN | H01M 2300/00 | 1.0 | Patent US12489120B2 has CPC code H01M 2300/00, which maps to ELECTROCHEMICAL_ENERGY_STORAGE per CPC_MAPPING.md. CPC code | coder_agent_001 / 2026-08-02 |
+| EDGE-009 | PAT_US12489120B2 | → | CAP_ELECTRON_COLLECTION | EMBODIED_IN | H01M 4/86 | 1.0 | Patent US12489120B2 has CPC code H01M 4/86, which maps to ELECTRON_COLLECTION per CPC_MAPPING.md. CPC codes are assigned | coder_agent_001 / 2026-08-02 |
+| EDGE-010 | PAT_US20240021793A1 | → | CAP_CELL_ASSEMBLY | EMBODIED_IN | H01M 50/00 | 1.0 | Patent US20240021793A1 has CPC code H01M 50/00, which maps to CELL_ASSEMBLY per CPC_MAPPING.md. CPC codes are assigned b | coder_agent_001 / 2026-08-02 |
+| EDGE-011 | PAT_US20240021793A1 | → | CAP_ELECTROCHEMICAL_ENERGY_STORAGE | EMBODIED_IN | H01M 10/0525 | 1.0 | Patent US20240021793A1 has CPC code H01M 10/0525, which maps to ELECTROCHEMICAL_ENERGY_STORAGE per CPC_MAPPING.md. CPC c | coder_agent_001 / 2026-08-02 |
+| EDGE-012 | PAT_US20240021793A1 | → | CAP_FAST_CHARGING | EMBODIED_IN | H01M 10/44 | 1.0 | Patent US20240021793A1 has CPC code H01M 10/44, which maps to FAST_CHARGING per CPC_MAPPING.md. CPC codes are assigned b | coder_agent_001 / 2026-08-02 |
+| EDGE-013 | PAT_US20240021793A1 | → | CAP_ION_TRANSPORT | EMBODIED_IN | H01M 10/0525 | 1.0 | Patent US20240021793A1 has CPC code H01M 10/0525, which maps to ION_TRANSPORT per CPC_MAPPING.md. CPC codes are assigned | coder_agent_001 / 2026-08-02 |
+| EDGE-014 | PAT_US20240021793A1 | → | CAP_THERMAL_MANAGEMENT | EMBODIED_IN | H01M 50/00 | 1.0 | Patent US20240021793A1 has CPC code H01M 50/00, which maps to THERMAL_MANAGEMENT per CPC_MAPPING.md. CPC codes are assig | coder_agent_001 / 2026-08-02 |
+| EDGE-015 | PAT_WO2012068732A1 | → | CAP_CELL_ASSEMBLY | EMBODIED_IN | H01M 50/00 | 1.0 | Patent WO2012068732A1 has CPC code H01M 50/00, which maps to CELL_ASSEMBLY per CPC_MAPPING.md. CPC codes are assigned by | coder_agent_001 / 2026-08-02 |
+| EDGE-016 | PAT_WO2012068732A1 | → | CAP_ELECTROCHEMICAL_ENERGY_STORAGE | EMBODIED_IN | H01M 10/42 | 1.0 | Patent WO2012068732A1 has CPC code H01M 10/42, which maps to ELECTROCHEMICAL_ENERGY_STORAGE per CPC_MAPPING.md. CPC code | coder_agent_001 / 2026-08-02 |
+| EDGE-017 | PAT_WO2012068732A1 | → | CAP_SAFETY_PROTECTION | EMBODIED_IN | H01M 10/48 | 1.0 | Patent WO2012068732A1 has CPC code H01M 10/48, which maps to SAFETY_PROTECTION per CPC_MAPPING.md. CPC codes are assigne | coder_agent_001 / 2026-08-02 |
+| EDGE-018 | PAT_WO2012068732A1 | → | CAP_STATE_OF_CHARGE_MONITORING | EMBODIED_IN | H01M 10/48 | 1.0 | Patent WO2012068732A1 has CPC code H01M 10/48, which maps to STATE_OF_CHARGE_MONITORING per CPC_MAPPING.md. CPC codes ar | coder_agent_001 / 2026-08-02 |
+| EDGE-019 | PAT_WO2012068732A1 | → | CAP_THERMAL_MANAGEMENT | EMBODIED_IN | H01M 50/00 | 1.0 | Patent WO2012068732A1 has CPC code H01M 50/00, which maps to THERMAL_MANAGEMENT per CPC_MAPPING.md. CPC codes are assign | coder_agent_001 / 2026-08-02 |
+| EDGE-020 | PAT_WO2015119843A1 | → | CAP_ELECTROCHEMICAL_ENERGY_STORAGE | EMBODIED_IN | H01M 10/0525 | 1.0 | Patent WO2015119843A1 has CPC code H01M 10/0525, which maps to ELECTROCHEMICAL_ENERGY_STORAGE per CPC_MAPPING.md. CPC co | coder_agent_001 / 2026-08-02 |
+| EDGE-021 | PAT_WO2015119843A1 | → | CAP_ELECTRODE_COATING | EMBODIED_IN | H01M 4/00 | 1.0 | Patent WO2015119843A1 has CPC code H01M 4/00, which maps to ELECTRODE_COATING per CPC_MAPPING.md. CPC codes are assigned | coder_agent_001 / 2026-08-02 |
+| EDGE-022 | PAT_WO2015119843A1 | → | CAP_ELECTRON_COLLECTION | EMBODIED_IN | H01M 4/00 | 1.0 | Patent WO2015119843A1 has CPC code H01M 4/00, which maps to ELECTRON_COLLECTION per CPC_MAPPING.md. CPC codes are assign | coder_agent_001 / 2026-08-02 |
+| EDGE-023 | PAT_WO2015119843A1 | → | CAP_INTERCALATION | EMBODIED_IN | H01M 4/00 | 1.0 | Patent WO2015119843A1 has CPC code H01M 4/00, which maps to INTERCALATION per CPC_MAPPING.md. CPC codes are assigned by  | coder_agent_001 / 2026-08-02 |
+| EDGE-024 | PAT_WO2015119843A1 | → | CAP_ION_TRANSPORT | EMBODIED_IN | H01M 10/0525 | 1.0 | Patent WO2015119843A1 has CPC code H01M 10/0525, which maps to ION_TRANSPORT per CPC_MAPPING.md. CPC codes are assigned  | coder_agent_001 / 2026-08-02 |
+| EDGE-025 | CAP_ELECTROCHEMICAL_ENERGY_STORAGE | → | CAP_ION_TRANSPORT | REQUIRES | N/A (structural) | 0.5 | Electrochemical storage requires ions to move between electrodes; without ion transport, the electrochemical reaction ca | coder_agent_001 / 2026-08-02 |
+| EDGE-026 | CAP_ELECTROCHEMICAL_ENERGY_STORAGE | → | CAP_INTERCALATION | REQUIRES | N/A (structural) | 0.5 | Li-ion electrochemical storage (the dominant chemistry in this corpus) requires intercalation — ions must insert into an | coder_agent_001 / 2026-08-02 |
+| EDGE-027 | CAP_FAST_CHARGING | → | CAP_ION_TRANSPORT | REQUIRES | N/A (structural) | 0.5 | Fast charging requires ions to move rapidly between electrodes; the C-rate is limited by ion transport kinetics. This is | coder_agent_001 / 2026-08-02 |
+| EDGE-028 | CAP_FAST_CHARGING | → | CAP_THERMAL_MANAGEMENT | REQUIRES | N/A (structural) | 0.5 | Fast charging generates heat due to internal resistance (Joule heating). Without thermal management, the cell temperatur | coder_agent_001 / 2026-08-02 |
+| EDGE-029 | CAP_CELL_ASSEMBLY | → | CAP_ELECTRODE_COATING | REQUIRES | N/A (structural) | 0.5 | Cell assembly requires coated electrodes; the electrode coating process produces the functional electrode that is then a | coder_agent_001 / 2026-08-02 |
+| EDGE-030 | CAP_SAFETY_PROTECTION | → | CAP_STATE_OF_CHARGE_MONITORING | REQUIRES | N/A (structural) | 0.5 | Safety protection systems (e.g., overcharge cutoff) require knowing the cell's state of charge; without monitoring, the  | coder_agent_001 / 2026-08-02 |
+| EDGE-031 | CON_THEORETICAL_ENERGY_DENSITY_LIMIT | → | CAP_ELECTROCHEMICAL_ENERGY_STORAGE | CONSTRAINS | N/A (structural) | 0.5 | The theoretical energy density of electrochemical chemistries (e.g., ~400 Wh/kg for Li-ion) limits the maximum energy a  | coder_agent_001 / 2026-08-02 |
+| EDGE-032 | CON_THERMAL_RUNAWAY_THRESHOLD | → | CAP_ELECTROCHEMICAL_ENERGY_STORAGE | CONSTRAINS | N/A (structural) | 0.5 | If cell temperature exceeds ~150°C, thermal runaway occurs — an uncontrollable exothermic reaction. This constrains the  | coder_agent_001 / 2026-08-02 |
+| EDGE-033 | CON_COST_PER_KWH_THRESHOLD | → | CAP_ELECTROCHEMICAL_ENERGY_STORAGE | CONSTRAINS | N/A (structural) | 0.5 | The cost per kWh must be below the market threshold (~$100/kWh for EVs) for the storage to be economically viable. This  | coder_agent_001 / 2026-08-02 |
+| EDGE-034 | CON_UN38_3_SHIPPING_SAFETY | → | CAP_ELECTROCHEMICAL_ENERGY_STORAGE | CONSTRAINS | N/A (structural) | 0.5 | UN38.3 requires batteries to pass specific safety tests before transport. Batteries that fail cannot be shipped commerci | coder_agent_001 / 2026-08-02 |
+| EDGE-035 | CON_IEC_62133_SAFETY_STANDARD | → | CAP_SAFETY_PROTECTION | CONSTRAINS | N/A (structural) | 0.5 | IEC 62133 specifies safety requirements for secondary cells. Safety protection systems must comply with this standard fo | coder_agent_001 / 2026-08-02 |
+| EDGE-036 | CAP_ELECTROCHEMICAL_ENERGY_STORAGE | → | CON_UN38_3_SHIPPING_SAFETY | REGULATED_BY | N/A (regulation) | 1.0 | UN38.3 is a UN standard that explicitly regulates the transport of lithium batteries. Patent US20240021793A1 and US20240 | coder_agent_001 / 2026-08-02 |
+| EDGE-037 | CAP_SAFETY_PROTECTION | → | CON_IEC_62133_SAFETY_STANDARD | REGULATED_BY | N/A (regulation) | 1.0 | IEC 62133 is an international standard that explicitly governs safety requirements for secondary cells containing alkali | coder_agent_001 / 2026-08-02 |
+
+Every edge has an EdgeJustification. No ENABLES. No SUBSTITUTES_FOR.
+The question is: can we trust each edge?

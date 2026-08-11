@@ -1,0 +1,34 @@
+{
+  "stage": "06_rediscovery_H-DXP-004-003",
+  "run_id": "RUN-DXP-004",
+  "code_sha": "9cf2046069a549721298cc8d709ac7bc8b4e8997",
+  "input_hash": "9250c77b2a7f2bf0dbb9588ece7a0eb97ee50f09b3a8d90dbfbf89acdcd38c58",
+  "output_hash": "3bad30a741797cce020cea0994c2a9b4dcd7ca8d8b277c4833cf14eb24cd4aeb",
+  "provider_manifest": {
+    "provider": "zai",
+    "model": "glm-4-plus",
+    "version": "z-ai-web-dev-sdk",
+    "configuration": {
+      "temperature": 0.1,
+      "max_tokens": 4096,
+      "system_sha": "dbdd0760dff49fc029b32b580a575b7de33a87d371edc2b0deec93bfb2b90b01"
+    },
+    "prompt_sha": "820a9f242133b3e5d0836d9f59253a0ee091c9e9e0a3136aa08e2bf9f08a0602",
+    "seed": null,
+    "tool_versions": {
+      "z_ai_cli": "z-ai"
+    },
+    "timestamp": "2026-08-08T10:06:03.339785+00:00",
+    "latency_ms": 3106,
+    "success": true,
+    "error": ""
+  },
+  "result": {
+    "hypothesis_id": "H-DXP-004-003",
+    "classification": "PARAPHRASED_IN_INPUT",
+    "evidence": "The hypothesis is a paraphrase of the source document. The source explains that shark skin denticles (microstructures) have riblets aligned in the streamwise direction that reduce drag by interacting with near-wall turbulent structures, lifting vortices away from the surface, and reducing the wetted surface area. The hypothesis restates this mechanism in different terms, mentioning inhibition of biofilm formation (which is implied by the difficult-to-colonize surface described) and reduction of surface roughness effects (which corresponds to the riblet structure reducing drag by modifying turbulent flow).",
+    "is_rediscovery": true,
+    "source_hypothesis_hash": ""
+  },
+  "timestamp": "2026-08-08T10:06:06.447037+00:00"
+}

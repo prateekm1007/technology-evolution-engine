@@ -1,0 +1,240 @@
+{
+  "query_id": "Q-OA-W4411909687_OA-W4411909848-direct-openaire",
+  "pair_id": "OA-W4411909687_OA-W4411909848",
+  "query_type": "direct",
+  "provider": "openaire",
+  "query_text": "ambipolar small molecule molecular morphology organic",
+  "query_hash": "16f484753c1a49c1cd153cdecef62f1667ab3e37ab635b8afa888d732c284e97",
+  "frozen_query_ref": "Q-OA-W4411909687_OA-W4411909848-direct-openalex",
+  "url": "https://api.openaire.eu/search/publications?keywords=ambipolar+small+molecule+molecular+morphology+organic&size=10&format=json",
+  "timestamp_utc": "2026-08-11T12:25:39.015891+00:00",
+  "status": "SUCCESS",
+  "result_count": 10,
+  "result_ids": [
+    [
+      {
+        "$": "10.1021/acs.jpcb.0c02360"
+      },
+      {
+        "$": "50|doiboost____|6964ae6238184a1983129eab4d548a4a"
+      },
+      {
+        "$": "32496773"
+      },
+      {
+        "$": "3033244397"
+      }
+    ],
+    [
+      {
+        "$": "10.1002/adfm.201801025"
+      },
+      {
+        "$": "50|doiboost____|25c6fb83e8866ea70b29ba8818ebc167"
+      },
+      {
+        "$": "2803714937"
+      }
+    ],
+    [
+      {
+        "$": "10.1002/adfm.201502446"
+      },
+      {
+        "$": "50|doiboost____|6d98814410210808193aa4c59e9b4099"
+      },
+      {
+        "$": "oai:diposit.ub.edu:2445/128171"
+      },
+      {
+        "$": "50|RECOLECTA___::960aaf33629b3ae2016c037bde111fb4"
+      },
+      {
+        "$": "50|RECOLECTA___::9f5b59bbca28fe733276ae44913b79f7"
+      },
+      {
+        "$": "oai:digital.csic.es:10261/134091"
+      },
+      {
+        "$": "2148921023"
+      },
+      {
+        "$": "50|od_______272::15cd544e3c5b9ef6c2e7c01179dd74ac"
+      },
+      {
+        "$": "oai:recercat.cat:2445/128171"
+      },
+      {
+        "$": "50|od_______963::960aaf33629b3ae2016c037bde111fb4"
+      },
+      {
+        "$": "50|r3c4b2081b22::6d98814410210808193aa4c59e9b4099"
+      }
+    ],
+    [
+      {
+        "$": "50|datacite____::8521ae6203181ebde89437fbec3f219b"
+      },
+      {
+        "$": "10.17630/10023-6810"
+      },
+      {
+        "$": "50|od_______901::9f6eff35346a8b9ccc3dc7192b79e029"
+      },
+      {
+        "$": "oai:research-repository.st-andrews.ac.uk:10023/6810"
+      },
+      {
+        "$": "50|base_oa_____::fdcceb96c38332e7b8093af25b5098ba"
+      },
+      {
+        "$": "ftstandrewserep:oai:research-repository.st-andrews.ac.uk:10023/6810"
+      }
+    ],
+    [
+      {
+        "$": "10.1021/am505572v"
+      },
+      {
+        "$": "50|doiboost____|9e4cf869f40dde3b773a07fd82ab68c6"
+      },
+      {
+        "$": "25393015"
+      },
+      {
+        "$": "2326456343"
+      }
+    ],
+    [
+      {
+        "$": "50|datacite____::c3b0ca13a78c3e18997c6349b6357592"
+      },
+      {
+        "$": "10.25560/25203"
+      },
+      {
+        "$": "1490592163"
+      },
+      {
+        "$": "50|base_oa_____::298c3f224b81646841e81573c06deaf2"
+      },
+      {
+        "$": "ftimperialcol:oai:spiral.imperial.ac.uk:10044/1/25203"
+      }
+    ],
+    [
+      {
+        "$": "50|datacite____::75c427d8806a3d67ff6085658bb9b91d"
+      },
+      {
+        "$": "10.7275/2176505"
+      }
+    ],
+    [
+      {
+        "$": "S136970210500828X"
+      },
+      {
+        "$": "10.1016/s1369-7021(05)00828-x"
+      },
+      {
+        "$": "50|doiboost____|b0d3046b1f15ababc97010dfc96d1bb6"
+      },
+      {
+        "$": "50|base_oa_____::b0d3046b1f15ababc97010dfc96d1bb6"
+      },
+      {
+        "$": "2028010879"
+      }
+    ],
+    [
+      {
+        "$": "50|od______1108::1939a16dde30ecc2a886cadb4ae65e63"
+      },
+      {
+        "$": "oai:bib-pubdb1.desy.de:435171"
+      }
+    ],
+    [
+      {
+        "$": "50|datacite____::3bb5f5121a5075077848d9b2f702a516"
+      },
+      {
+        "$": "10.5281/zenodo.1091892"
+      },
+      {
+        "$": "50|od______2659::3bb5f5121a5075077848d9b2f702a516"
+      },
+      {
+        "$": "oai:zenodo.org:1091892"
+      },
+      {
+        "$": "50|datacite____::8f15481e46893508793e7daea1629c16"
+      },
+      {
+        "$": "10.5281/zenodo.2655792"
+      },
+      {
+        "$": "50|datacite____::bfe0cf75bf47bfd74297282d34e8c8c4"
+      },
+      {
+        "$": "10.5281/zenodo.1091891"
+      },
+      {
+        "$": "50|datacite____::ef05a6ff3fa0b69c2a4ebbf49a5f3d77"
+      },
+      {
+        "$": "10.5281/zenodo.2655793"
+      },
+      {
+        "$": "oai:zenodo.org:2655793"
+      },
+      {
+        "$": "50|od______2659::ef05a6ff3fa0b69c2a4ebbf49a5f3d77"
+      }
+    ]
+  ],
+  "result_titles": [
+    "Phase Separation and Nanostructure Formation in Binary and Ternary Blends of Spiro-Linked Molecular Glasses",
+    "Solution\u2010Processed High\u2010Performance Tetrathienothiophene\u2010Based Small Molecular Blends for Ambipolar Charge Transport",
+    "Tuning Crystal Ordering, Electronic Structure, and Morphology in Organic Semiconductors: Tetrathiafulvalenes as a Model Case",
+    "Material and device design for organic photovoltaics",
+    "Bulk Charge Carrier Transport in Push\u2013Pull Type Organic Semiconductor",
+    "New organic semiconductors and crosslinking additives for enhanced device performance and stability",
+    "Molecular Designs for Organic Semiconductors: Design, Synthesis and Charge Transport Properties",
+    "Controlling crystal evolution on the nanoscale",
+    "Properties of Heterogeneous Materials for Organic Electronics: Crystal Structure and Phase Behavior of Thiophene-based Polymers-Aromatic Diimides Blends",
+    "Enhancing Power Conversion Efficiency Of P3Ht/Pcbm Polymer Solar Cells"
+  ],
+  "result_dois": [
+    "10.1021/acs.jpcb.0c02360",
+    "10.1002/adfm.201801025",
+    "10.1002/adfm.201502446",
+    "10.17630/10023-6810",
+    "10.1021/am505572v",
+    "10.25560/25203",
+    "10.7275/2176505",
+    "10.1016/s1369-7021(05)00828-x",
+    "",
+    "10.5281/zenodo.1091892"
+  ],
+  "result_dates": [
+    "2020-06-04",
+    "2018-05-21",
+    "2015-10-01",
+    "2015-06-24",
+    "2014-11-21",
+    "2014-06-01",
+    "2011-01-01",
+    "2005-05-01",
+    "2019-01-01",
+    "2014-03-02"
+  ],
+  "response_hash": "03d64574a2785a97f2137e705b775ee9b6bfb75a6e05f7e0073e9c35c9943e42",
+  "evidence_uri": "https://api.openaire.eu/search/publications?keywords=ambipolar+small+molecule+molecular+morphology+organic&size=10&format=json",
+  "error": null,
+  "rate_limit_headers": {
+    "x-ratelimit-used": "68",
+    "x-ratelimit-limit": "7199"
+  }
+}

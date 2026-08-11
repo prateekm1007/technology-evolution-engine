@@ -1,0 +1,63 @@
+{
+  "query_id": "Q-OA-W4411842899_OA-W4411896049-mechanism_transfer-openaire",
+  "pair_id": "OA-W4411842899_OA-W4411896049",
+  "query_type": "mechanism_transfer",
+  "provider": "openaire",
+  "query_text": "transfer apply learning system metallurgy",
+  "query_hash": "561e56132014ddeee6ffffc6b9023f22b7b463cb9865e3b50f4c01425ef411c4",
+  "frozen_query_ref": "Q-OA-W4411842899_OA-W4411896049-mechanism_transfer-openalex",
+  "url": "https://api.openaire.eu/search/publications?keywords=transfer+apply+learning+system+metallurgy&size=10&format=json",
+  "timestamp_utc": "2026-08-11T12:34:22.446466+00:00",
+  "status": "SUCCESS",
+  "result_count": 1,
+  "result_ids": [
+    [
+      {
+        "$": "59558"
+      },
+      {
+        "$": "10.1038/s41598-024-59558-7"
+      },
+      {
+        "$": "50|doiboost____|74ec111228b8235b28ea14064f1b4594"
+      },
+      {
+        "$": "od_______267::3ebb1c27cce86e4e6ce2d8c321ca3d3a"
+      },
+      {
+        "$": "38719876"
+      },
+      {
+        "$": "PMC11079076"
+      },
+      {
+        "$": "oai:pubmedcentral.nih.gov:11079076"
+      },
+      {
+        "$": "50|od_______267::3ebb1c27cce86e4e6ce2d8c321ca3d3a"
+      },
+      {
+        "$": "oai:doaj.org/article:90e4404ad6ca4b269774de9f9e032da8"
+      },
+      {
+        "$": "50|doajarticles::bfcbf6ad212e8e900a35d272e119fb0f"
+      }
+    ]
+  ],
+  "result_titles": [
+    "In-situ particle analysis with heterogeneous background: a machine learning approach"
+  ],
+  "result_dois": [
+    "10.1038/s41598-024-59558-7"
+  ],
+  "result_dates": [
+    "2024-05-08"
+  ],
+  "response_hash": "f94d97ec41dd841a0ae3fc11e6c620576c9e985a0941e301cfefb79090f99dce",
+  "evidence_uri": "https://api.openaire.eu/search/publications?keywords=transfer+apply+learning+system+metallurgy&size=10&format=json",
+  "error": null,
+  "rate_limit_headers": {
+    "x-ratelimit-used": "233",
+    "x-ratelimit-limit": "7199"
+  }
+}

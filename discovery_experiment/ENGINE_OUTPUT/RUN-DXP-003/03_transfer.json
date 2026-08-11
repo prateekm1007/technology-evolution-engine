@@ -1,0 +1,68 @@
+{
+  "stage": "03_transfer",
+  "run_id": "RUN-DXP-003",
+  "code_sha": "be6bdbcdb657cc1a9309700a052f9a0c3e89e56b",
+  "input_hash": "0d92b883c8ce1af33a7471fc5cf3c05c4fff9901d5a4372464407f3c107f636d",
+  "output_hash": "22b1c0ef24b6087870f1df5c61014e28db286f91d265fdde653a7b1a3b960dea",
+  "provider_manifest": {
+    "provider": "zai",
+    "model": "glm-4-plus",
+    "version": "z-ai-web-dev-sdk",
+    "configuration": {
+      "temperature": 0.25,
+      "max_tokens": 4096,
+      "system_sha": "f596607dc28478b7317f95a37a7bf99f11ad2e25e10bde5d1c0a9009ba6b1583"
+    },
+    "prompt_sha": "05fc33f4b6641e53bac5219ece57a4e04d8dda090d9e05c6590b6b056dc43859",
+    "seed": null,
+    "tool_versions": {
+      "z_ai_cli": "z-ai"
+    },
+    "timestamp": "2026-08-08T09:52:45.904728+00:00",
+    "latency_ms": 3984,
+    "success": true,
+    "error": ""
+  },
+  "result": {
+    "transfers": [
+      {
+        "transfer_id": "TH-DXP-003-001",
+        "source_domain": "bioacoustics",
+        "source_mechanism": "Adaptive signal emission based on environmental feedback for target detection",
+        "source_conditions": [
+          "distance to target",
+          "ambient interference",
+          "signal frequency"
+        ],
+        "target_domain": "radar signal processing",
+        "target_problem": "A maritime surveillance radar uses fixed LFM waveforms and suffers from excessive sea clutter false alarms. An adaptive waveform strategy is needed that adapts pulse duration to target range, reduces clutter false alarms, maintains resolution, and addresses range-Doppler coupling \u2014 all within real-time processing constraints on existing FPGA hardware.",
+        "transferred_principle": "Adaptive waveform generation based on environmental feedback to enhance target detection while suppressing clutter",
+        "required_translation": "Replace biological signal emission with radar pulse generation, substitute echo detection with clutter suppression algorithms, replace frequency adjustment with pulse duration modulation, and implement target classification through range-Doppler processing",
+        "expected_effect": "Reduction in sea clutter false alarms while maintaining target detection performance through adaptive pulse duration based on target range",
+        "boundary_conditions": [
+          "Maximum bandwidth constraint of 20 MHz",
+          "Real-time processing within 500 microseconds",
+          "Waveform switching takes 1 ms (two pulse intervals)"
+        ],
+        "failure_conditions": [
+          "Signal interference from other radar systems",
+          "Range ambiguity due to pulse duration changes",
+          "Clutter masking in heavy sea states"
+        ],
+        "testable_prediction": "When implementing adaptive pulse duration based on target range, the system will achieve a false alarm rate of \u226410\u207b\u2076 per resolution cell per scan while maintaining detection probability \u22650.9 for 1 m\u00b2 targets at 15 km in sea state 4",
+        "epistemic_state": "HYPOTHESIZED",
+        "provenance": {
+          "nodes": {},
+          "edges": [],
+          "committed_hash": null
+        },
+        "provenance_root_hash": ""
+      }
+    ],
+    "rejected": [],
+    "n_accepted": 1,
+    "n_rejected": 0,
+    "source_abstraction_hash": "2b3e26d11a3cda69fab4b6605586839bc63a7f470925eeb8884f4ea63a016a14"
+  },
+  "timestamp": "2026-08-08T09:52:49.889593+00:00"
+}

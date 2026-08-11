@@ -1,0 +1,17 @@
+{
+  "ok": false,
+  "graph": {
+    "nodes": {},
+    "edges": []
+  },
+  "n_nodes": 0,
+  "n_edges": 0,
+  "n_failures": 1,
+  "failures": [
+    {
+      "failure_type": "PROVIDER_FAILURE",
+      "detail": "no usable response: empty response",
+      "raw_llm_output": ""
+    }
+  ]
+}

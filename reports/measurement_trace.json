@@ -1,0 +1,222 @@
+[
+  {
+    "bridge": "biomineralization",
+    "gold_id": "DISC-GOLD-001",
+    "in_all_entities": true,
+    "in_shared_entities": true,
+    "match_method_all": "token_overlap",
+    "match_method_shared": "token_overlap",
+    "matched_entity_all": "ion",
+    "matched_entity_shared": "ion",
+    "locus_classification": "DISCOVERED"
+  },
+  {
+    "bridge": "tight junctions",
+    "gold_id": "DISC-GOLD-002",
+    "in_all_entities": true,
+    "in_shared_entities": true,
+    "match_method_all": "synonym",
+    "match_method_shared": "token_overlap",
+    "matched_entity_all": "size-selective pores",
+    "matched_entity_shared": "ion",
+    "locus_classification": "DISCOVERED"
+  },
+  {
+    "bridge": "thermal emission",
+    "gold_id": "DISC-GOLD-003",
+    "in_all_entities": true,
+    "in_shared_entities": true,
+    "match_method_all": "token_overlap",
+    "match_method_shared": "token_overlap",
+    "matched_entity_all": "thermal removal capacity",
+    "matched_entity_shared": "thermal_differential",
+    "locus_classification": "DISCOVERED"
+  },
+  {
+    "bridge": "thermal regulation",
+    "gold_id": "DISC-GOLD-004",
+    "in_all_entities": true,
+    "in_shared_entities": true,
+    "match_method_all": "token_overlap",
+    "match_method_shared": "token_overlap",
+    "matched_entity_all": "thermal removal capacity",
+    "matched_entity_shared": "thermal_differential",
+    "locus_classification": "DISCOVERED"
+  },
+  {
+    "bridge": "contact angle",
+    "gold_id": "DISC-GOLD-005",
+    "in_all_entities": true,
+    "in_shared_entities": false,
+    "match_method_all": "token_overlap",
+    "match_method_shared": "missed",
+    "matched_entity_all": "surface wettability angle",
+    "matched_entity_shared": null,
+    "locus_classification": "RECOGNIZED"
+  },
+  {
+    "bridge": "photon absorption",
+    "gold_id": "DISC-GOLD-006",
+    "in_all_entities": true,
+    "in_shared_entities": true,
+    "match_method_all": "token_overlap",
+    "match_method_shared": "token_overlap",
+    "matched_entity_all": "ion",
+    "matched_entity_shared": "ion",
+    "locus_classification": "DISCOVERED"
+  },
+  {
+    "bridge": "heat dissipation",
+    "gold_id": "DISC-GOLD-007",
+    "in_all_entities": true,
+    "in_shared_entities": true,
+    "match_method_all": "synonym",
+    "match_method_shared": "token_overlap",
+    "matched_entity_all": "Evaporative cooling systems",
+    "matched_entity_shared": "heat",
+    "locus_classification": "DISCOVERED"
+  },
+  {
+    "bridge": "ion selectivity",
+    "gold_id": "DISC-GOLD-008",
+    "in_all_entities": true,
+    "in_shared_entities": true,
+    "match_method_all": "synonym",
+    "match_method_shared": "token_overlap",
+    "matched_entity_all": "pore",
+    "matched_entity_shared": "ion",
+    "locus_classification": "DISCOVERED"
+  },
+  {
+    "bridge": "electrocatalyst",
+    "gold_id": "DISC-GOLD-009",
+    "in_all_entities": true,
+    "in_shared_entities": false,
+    "match_method_all": "token_overlap",
+    "match_method_shared": "missed",
+    "matched_entity_all": "Catalyst",
+    "matched_entity_shared": null,
+    "locus_classification": "RECOGNIZED"
+  },
+  {
+    "bridge": "temperature gradient",
+    "gold_id": "DISC-GOLD-010",
+    "in_all_entities": true,
+    "in_shared_entities": true,
+    "match_method_all": "synonym",
+    "match_method_shared": "synonym",
+    "matched_entity_all": "heat",
+    "matched_entity_shared": "heat",
+    "locus_classification": "DISCOVERED"
+  },
+  {
+    "bridge": "surface functionalization",
+    "gold_id": "DISC-GOLD-011",
+    "in_all_entities": true,
+    "in_shared_entities": true,
+    "match_method_all": "token_overlap",
+    "match_method_shared": "token_overlap",
+    "matched_entity_all": "surface chemical modification",
+    "matched_entity_shared": "surface_chemical_modification",
+    "locus_classification": "DISCOVERED"
+  },
+  {
+    "bridge": "mechanical strain",
+    "gold_id": "DISC-GOLD-012",
+    "in_all_entities": true,
+    "in_shared_entities": true,
+    "match_method_all": "token_overlap",
+    "match_method_shared": "synonym",
+    "matched_entity_all": "mechanical properties",
+    "matched_entity_shared": "ion",
+    "locus_classification": "DISCOVERED"
+  },
+  {
+    "bridge": "spin polarization",
+    "gold_id": "DISC-GOLD-013",
+    "in_all_entities": true,
+    "in_shared_entities": true,
+    "match_method_all": "token_overlap",
+    "match_method_shared": "token_overlap",
+    "matched_entity_all": "ion",
+    "matched_entity_shared": "ion",
+    "locus_classification": "DISCOVERED"
+  },
+  {
+    "bridge": "ion storage",
+    "gold_id": "DISC-GOLD-014",
+    "in_all_entities": true,
+    "in_shared_entities": true,
+    "match_method_all": "synonym",
+    "match_method_shared": "token_overlap",
+    "matched_entity_all": "ion adsorption",
+    "matched_entity_shared": "ion",
+    "locus_classification": "DISCOVERED"
+  },
+  {
+    "bridge": "bandgap engineering",
+    "gold_id": "DISC-GOLD-015",
+    "in_all_entities": true,
+    "in_shared_entities": false,
+    "match_method_all": "synonym",
+    "match_method_shared": "missed",
+    "matched_entity_all": "via quantum confinement",
+    "matched_entity_shared": null,
+    "locus_classification": "RECOGNIZED"
+  },
+  {
+    "bridge": "high surface area",
+    "gold_id": "DISC-GOLD-016",
+    "in_all_entities": true,
+    "in_shared_entities": true,
+    "match_method_all": "token_overlap",
+    "match_method_shared": "token_overlap",
+    "matched_entity_all": "surface chemical modification",
+    "matched_entity_shared": "surface_chemical_modification",
+    "locus_classification": "DISCOVERED"
+  },
+  {
+    "bridge": "tensile strength",
+    "gold_id": "DISC-GOLD-017",
+    "in_all_entities": true,
+    "in_shared_entities": false,
+    "match_method_all": "synonym",
+    "match_method_shared": "missed",
+    "matched_entity_all": "mechanical properties",
+    "matched_entity_shared": null,
+    "locus_classification": "RECOGNIZED"
+  },
+  {
+    "bridge": "latent heat",
+    "gold_id": "DISC-GOLD-018",
+    "in_all_entities": true,
+    "in_shared_entities": true,
+    "match_method_all": "synonym",
+    "match_method_shared": "token_overlap",
+    "matched_entity_all": "vaporization",
+    "matched_entity_shared": "heat",
+    "locus_classification": "DISCOVERED"
+  },
+  {
+    "bridge": "photon energy",
+    "gold_id": "DISC-GOLD-019",
+    "in_all_entities": true,
+    "in_shared_entities": true,
+    "match_method_all": "token_overlap",
+    "match_method_shared": "synonym",
+    "matched_entity_all": "Supercapacitors store energy",
+    "matched_entity_shared": "ion",
+    "locus_classification": "DISCOVERED"
+  },
+  {
+    "bridge": "fiber morphology",
+    "gold_id": "DISC-GOLD-020",
+    "in_all_entities": true,
+    "in_shared_entities": false,
+    "match_method_all": "synonym",
+    "match_method_shared": "missed",
+    "matched_entity_all": "diameter",
+    "matched_entity_shared": null,
+    "locus_classification": "RECOGNIZED"
+  }
+]

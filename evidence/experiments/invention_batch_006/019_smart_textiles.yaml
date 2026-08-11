@@ -1,0 +1,407 @@
+problem: "Build a smart textile with integrated sensing and energy harvesting surviving 100 wash cycles"
+domain: "materials"
+hypothesis:
+  id: "hyp_f9b306d4f6e7ff66"
+  claim: "The invention 'Build a smart textile with integrated sensing and energy harvesting surviving 100 wash cycles' is feasible in the materials domain within the stated time horizon."
+  confidence: 0.4763
+  evidence:
+    - "energy_conservation"
+    - "first_law_thermodynamics"
+    - "meissner_effect"
+    - "schrodinger_equation"
+    - "second_law_thermodynamics"
+    - "third_law_thermodynamics"
+    - "calcination_cement"
+    - "carbonation_cure"
+    - "polymerization"
+    - "ampere law"
+    - "prerequisite_chain_depth_1"
+    - "capex_$26.19M"
+  counterevidence:
+    - "failure_mode: cost_overrun"
+    - "failure_mode: material_unavailable_or_too_expensive"
+    - "failure_mode: manufacturing_yield_too_low"
+    - "failure_mode: energy_budget_exceeded"
+    - "failure_mode: regulatory_rejection"
+    - "technical_risk: stress_scenario_composite=0.416"
+    - "technical_risk: stress_scenario_composite=0.4226"
+    - "commercial_risk: market_size_too_small_to_justify_capex"
+    - "commercial_risk: capex_exceeds_half_of_market_size"
+    - "commercial_risk: s_curve_adoption_extends_payback_period"
+  assumptions:
+
+  status: "pending"
+physical_laws:
+  - "energy_conservation"
+  - "first_law_thermodynamics"
+  - "meissner_effect"
+  - "schrodinger_equation"
+  - "second_law_thermodynamics"
+  - "third_law_thermodynamics"
+chemical_principles:
+  pathways:
+    - "calcination_cement"
+    - "carbonation_cure"
+    - "polymerization"
+  kinetics:
+
+  equilibrium:
+
+  energy_states:
+    - "activation_energy"
+    - "gibbs_free_energy"
+mathematical_formulation:
+  structures:
+    - "optimization"
+    - "differential_equations"
+    - "linear_algebra"
+    - "quantum_mechanics"
+  governing_equations:
+    -
+      name: "ampere law"
+      form: "B = mu_0 * I / (2*pi*r)"
+      variables:
+        - "B"
+        - "mu_0"
+        - "I"
+        - "r"
+constraints:
+  - "cost"
+  - "material"
+  - "manufacturing"
+  - "energy"
+  - "regulation"
+dependencies:
+  prerequisites:
+    - "sub_supercapacitors"
+  missing_capabilities:
+
+  causal_classifications:
+    necessary: 0
+    sufficient: 0
+    contributing: 1
+    unknown: 0
+assumptions:
+  - "Failure modes are derived from constraint keywords via a small prior map. Real failure modes require FMEA."
+  - "Optimization targets are derived from the problem's stated constraints. Implicit targets (e.g., 'minimize complexity') are not captured."
+  - "The hypothesis is a prediction. It is NOT verified until the experiments are run and outcomes recorded in the ledger."
+  - "Failure-mode experiments are derived from Layer 3's failure modes. If Layer 3 is incomplete, this layer is incomplete."
+  - "Success/failure thresholds (0.70, 0.40) are priors. They should be recalibrated as the verification cycle accumulates outcomes."
+architecture:
+  subsystems:
+    - "subsystem_for_cost"
+    - "subsystem_for_material"
+    - "subsystem_for_manufacturing"
+    - "subsystem_for_energy"
+    - "subsystem_for_regulation"
+  interfaces:
+    - "subsystem_for_cost <-> subsystem_for_material"
+    - "subsystem_for_cost <-> subsystem_for_manufacturing"
+    - "subsystem_for_cost <-> subsystem_for_energy"
+    - "subsystem_for_cost <-> subsystem_for_regulation"
+    - "subsystem_for_material <-> subsystem_for_manufacturing"
+  tolerances:
+    cost: "±15% of capex estimate"
+    material: "±5% of material property target"
+    manufacturing: "±3% yield"
+    energy: "±10% of energy budget"
+    regulation: "binary (pass/fail)"
+simulation:
+  monte_carlo:
+    n_samples: 200
+    composite:
+      mean: 0.4796
+      std: 0.0254
+      p5: 0.4367
+      p50: 0.4795
+      p95: 0.5211
+      min: 0.416
+      max: 0.5384
+    technical:
+      mean: 0.594
+      std: 0.0577
+      p5: 0.4996
+      p50: 0.6054
+      p95: 0.6788
+      min: 0.4842
+      max: 0.6835
+    economic:
+      mean: 0.4465
+      std: 0.0575
+      p5: 0.3588
+      p50: 0.4482
+      p95: 0.5414
+      min: 0.3497
+      max: 0.548
+    regulatory:
+      mean: 0.3957
+      std: 0.0551
+      p5: 0.3072
+      p50: 0.3978
+      p95: 0.4828
+      min: 0.2946
+      max: 0.4923
+    manufacturing:
+      mean: 0.4633
+      std: 0.0584
+      p5: 0.3778
+      p50: 0.465
+      p95: 0.5529
+      min: 0.3638
+      max: 0.5634
+    adoption:
+      mean: 0.4005
+      std: 0.0589
+      p5: 0.3079
+      p50: 0.4021
+      p95: 0.4899
+      min: 0.2986
+      max: 0.4982
+  sensitivity:
+    technical: 0.6815
+    economic: 0.4528
+    regulatory: 0.3254
+    manufacturing: 0.4598
+    adoption: 0.3478
+  stress_testing:
+    -
+      technical_feasibility: 0.4996
+      economic_feasibility: 0.3565
+      regulatory_feasibility: 0.3799
+      manufacturing_feasibility: 0.428
+      adoption_probability: 0.3486
+      composite: 0.416
+    -
+      technical_feasibility: 0.5276
+      economic_feasibility: 0.3924
+      regulatory_feasibility: 0.3807
+      manufacturing_feasibility: 0.3693
+      adoption_probability: 0.3657
+      composite: 0.4226
+    -
+      technical_feasibility: 0.4977
+      economic_feasibility: 0.3961
+      regulatory_feasibility: 0.4273
+      manufacturing_feasibility: 0.4063
+      adoption_probability: 0.325
+      composite: 0.4226
+prototype_plan:
+  v1:
+    name: "prototype_v1_materials_physics_validation"
+    goal: "prove the core material property (material_property) holds at lab scale for build smart textile with"
+    scope: "single materials subsystem, no integration, no manufacturability"
+    success_threshold: "material_property mechanism reproduces predicted output within 30% for build smart textile with"
+    estimated_duration_months: 6
+    estimated_cost_usd_m: 0.24
+  v2:
+    name: "prototype_v2_materials_engineering_integration"
+    goal: "integrate the material into a working build smart textile with prototype with all subsystems"
+    scope: "all materials subsystems, no manufacturing pathway, no regulatory submission"
+    success_threshold: "integrated build smart textile with prototype meets primary spec at 50% target performance"
+    estimated_duration_months: 13
+    estimated_cost_usd_m: 0.95
+  v3:
+    name: "prototype_v3_materials_production_readiness"
+    goal: "pilot-manufacture build smart textile with at 100x lab scale with cost within 2x target"
+    scope: "production-intent materials prototype, pilot manufacturing run, regulatory pre-submission"
+    success_threshold: "unit cost within 2x of target; regulatory pre-submission accepted for build smart textile with"
+    estimated_duration_months: 20
+    estimated_cost_usd_m: 3.81
+  timeline_years: 3.2
+experimental_plan:
+  hypothesis: "The candidate invention will achieve technical feasibility >= 0.70 within 5-10 years, given the prerequisite chain is complete and no regulatory blocker materializes."
+  experiments:
+    -
+      id: "exp_cost_overrun"
+      purpose: "determine whether cost_overrun is a real risk"
+      method: "stress_test_against_cost_overrun"
+      expected_duration: "3-6 months per experiment"
+    -
+      id: "exp_material_unavailable_or_too_expensive"
+      purpose: "determine whether material_unavailable_or_too_expensive is a real risk"
+      method: "stress_test_against_material_unavailable_or_too_expensive"
+      expected_duration: "3-6 months per experiment"
+    -
+      id: "exp_manufacturing_yield_too_low"
+      purpose: "determine whether manufacturing_yield_too_low is a real risk"
+      method: "stress_test_against_manufacturing_yield_too_low"
+      expected_duration: "3-6 months per experiment"
+    -
+      id: "exp_energy_budget_exceeded"
+      purpose: "determine whether energy_budget_exceeded is a real risk"
+      method: "stress_test_against_energy_budget_exceeded"
+      expected_duration: "3-6 months per experiment"
+    -
+      id: "exp_regulatory_rejection"
+      purpose: "determine whether regulatory_rejection is a real risk"
+      method: "stress_test_against_regulatory_rejection"
+      expected_duration: "3-6 months per experiment"
+    -
+      id: "exp_prototype_v1"
+      purpose: "determine whether the candidate can be built at all"
+      method: "build_minimum_viable_prototype"
+      expected_duration: "6-12 months"
+  measurements:
+    -
+      metric: "technical_feasibility_observed"
+      target: ">= 0.70"
+      instrument: "expert_panel_review"
+    -
+      metric: "cost_per_unit_observed"
+      target: "<= capex_estimate / 1000"
+      instrument: "cost_accounting"
+    -
+      metric: "time_to_first_prototype_observed"
+      target: "<= 5-10 years"
+      instrument: "project_tracker"
+    -
+      metric: "regulatory_approval_status"
+      target: "approved_or_withdrawn"
+      instrument: "regulatory_filing_tracker"
+  success_criteria:
+    - "All failure-mode experiments return 'risk_acceptable'."
+    - "Prototype v1 builds successfully and meets primary_output spec."
+    - "Technical feasibility observed >= 0.70 within 5-10 years."
+    - "Composite feasibility from simulation's p50 >= 0.60."
+  failure_criteria:
+    - "Any failure-mode experiment returns 'risk_unacceptable' AND no mitigation is identified."
+    - "Prototype v1 cannot be built within 2x the estimated time."
+    - "Technical feasibility observed < 0.40 after 5-10 years."
+    - "Regulatory approval is denied with no appeal path."
+failure_modes:
+  - "cost_overrun"
+  - "material_unavailable_or_too_expensive"
+  - "manufacturing_yield_too_low"
+  - "energy_budget_exceeded"
+  - "regulatory_rejection"
+counterevidence:
+  - "failure_mode: cost_overrun"
+  - "failure_mode: material_unavailable_or_too_expensive"
+  - "failure_mode: manufacturing_yield_too_low"
+  - "failure_mode: energy_budget_exceeded"
+  - "failure_mode: regulatory_rejection"
+  - "technical_risk: stress_scenario_composite=0.416"
+  - "technical_risk: stress_scenario_composite=0.4226"
+  - "commercial_risk: market_size_too_small_to_justify_capex"
+  - "commercial_risk: capex_exceeds_half_of_market_size"
+  - "commercial_risk: s_curve_adoption_extends_payback_period"
+confidence: 0.4763
+final_blueprint:
+  parts_list:
+    -
+      id: "sub_supercapacitors"
+      label: "Supercapacitors"
+      type: "subdomain"
+      source_layer: "Layer 2 (prerequisite chain)"
+      note: "Graph node identifier — engineer must map to a real supplier part number or capability."
+  materials_specification:
+    -
+      id: "sub_supercapacitors"
+      label: "Supercapacitors"
+      constraints:
+
+      source_layer: "Layer 2 (fallback — Layer 6 empty)"
+  assembly_plan:
+    subsystems:
+      - "subsystem_for_cost"
+      - "subsystem_for_material"
+      - "subsystem_for_manufacturing"
+      - "subsystem_for_energy"
+      - "subsystem_for_regulation"
+    interfaces:
+      - "subsystem_for_cost <-> subsystem_for_material"
+      - "subsystem_for_cost <-> subsystem_for_manufacturing"
+      - "subsystem_for_cost <-> subsystem_for_energy"
+      - "subsystem_for_cost <-> subsystem_for_regulation"
+      - "subsystem_for_material <-> subsystem_for_manufacturing"
+    inputs:
+      problem_constraints:
+        - "cost"
+        - "material"
+        - "manufacturing"
+        - "energy"
+        - "regulation"
+      time_horizon: "5-10 years"
+      domain: "materials"
+    outputs:
+      primary_output: "Build a smart textile with integrated sensing and energy harvesting surviving 100 wash cycles"
+      evidence_quality: "replayable_per_law_8"
+    energy_requirements:
+      budget_tight: true
+      tolerance: "±10% of energy budget"
+      estimated_watts: "depends_on_application"
+    computational_requirements:
+      class: "moderate"
+      note: "Real computational requirements depend on the governing equations from Layer 3 and the simulation approach from Layer 5."
+    source_layer: "Layer 4 (Engineering architecture)"
+  tolerances:
+    cost: "±15% of capex estimate"
+    material: "±5% of material property target"
+    manufacturing: "±3% yield"
+    energy: "±10% of energy budget"
+    regulation: "binary (pass/fail)"
+  prototype_specification:
+    v1:
+      name: "prototype_v1_materials_physics_validation"
+      goal: "prove the core material property (material_property) holds at lab scale for build smart textile with"
+      scope: "single materials subsystem, no integration, no manufacturability"
+      success_threshold: "material_property mechanism reproduces predicted output within 30% for build smart textile with"
+      estimated_duration_months: 6
+      estimated_cost_usd_m: 0.24
+    v2:
+      name: "prototype_v2_materials_engineering_integration"
+      goal: "integrate the material into a working build smart textile with prototype with all subsystems"
+      scope: "all materials subsystems, no manufacturing pathway, no regulatory submission"
+      success_threshold: "integrated build smart textile with prototype meets primary spec at 50% target performance"
+      estimated_duration_months: 13
+      estimated_cost_usd_m: 0.95
+    v3:
+      name: "prototype_v3_materials_production_readiness"
+      goal: "pilot-manufacture build smart textile with at 100x lab scale with cost within 2x target"
+      scope: "production-intent materials prototype, pilot manufacturing run, regulatory pre-submission"
+      success_threshold: "unit cost within 2x of target; regulatory pre-submission accepted for build smart textile with"
+      estimated_duration_months: 20
+      estimated_cost_usd_m: 3.81
+    timeline:
+      total_months: 39
+      total_years: 3.2
+      fits_within_horizon: true
+      phases:
+        -
+          phase: "v1"
+          start_month: 0
+          end_month: 6
+        -
+          phase: "v2"
+          start_month: 6
+          end_month: 19
+        -
+          phase: "v3"
+          start_month: 19
+          end_month: 39
+    source_layer: "Layer 9 (Prototype layer)"
+  problem: "Build a smart textile with integrated sensing and energy harvesting surviving 100 wash cycles"
+  domain: "materials"
+  target_invention: "Build a smart textile with integrated sensing and energy harvesting surviving 100 wash cycles"
+  prerequisite_chain_depth: 1
+  governing_equations:
+    -
+      name: "ampere law"
+      form: "B = mu_0 * I / (2*pi*r)"
+      variables:
+        - "B"
+        - "mu_0"
+        - "I"
+        - "r"
+  subsystems:
+    - "subsystem_for_cost"
+    - "subsystem_for_material"
+    - "subsystem_for_manufacturing"
+    - "subsystem_for_energy"
+    - "subsystem_for_regulation"
+  composite_feasibility: 26.19
+  prototype_stages:
+    - "prototype_v1_materials_physics_validation"
+    - "prototype_v2_materials_engineering_integration"
+    - "prototype_v3_materials_production_readiness"
+  total_prototype_timeline_years: 3.2

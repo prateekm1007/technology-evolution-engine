@@ -1,0 +1,120 @@
+{
+  "detector_commit": "20ac268",
+  "detector_function": "b1_b2_verification._check_leakage",
+  "source_a": "Calcium phosphate forms crystalline deposits in bone tissue through osteoblast-mediated mineralization.",
+  "source_b": "Marine diatoms precipitate silica-based cell walls using enzymatic silicatein proteins.",
+  "results": [
+    {
+      "id": "ADV-01",
+      "category": "(1) no-overlap source-local paraphrase",
+      "candidate": "skeletal calcification process",
+      "expected_label": "REJECT",
+      "detector_label": "ALLOW",
+      "match": false
+    },
+    {
+      "id": "ADV-02",
+      "category": "(1) no-overlap source-local paraphrase",
+      "candidate": "calcified matrix in osseous structures",
+      "expected_label": "REJECT",
+      "detector_label": "ALLOW",
+      "match": false
+    },
+    {
+      "id": "ADV-03",
+      "category": "(2) cross-source synthesis w/ one-source overlap",
+      "candidate": "enzyme-templated mineral deposition",
+      "expected_label": "ALLOW",
+      "detector_label": "REJECT",
+      "match": false
+    },
+    {
+      "id": "ADV-04",
+      "category": "(2) cross-source synthesis w/ one-source overlap",
+      "candidate": "silicatein-guided calcification",
+      "expected_label": "ALLOW",
+      "detector_label": "REJECT",
+      "match": false
+    },
+    {
+      "id": "ADV-05",
+      "category": "(3) source-local disguised as cross-domain",
+      "candidate": "hypermineralization",
+      "expected_label": "REJECT",
+      "detector_label": "REJECT",
+      "match": true
+    },
+    {
+      "id": "ADV-06",
+      "category": "(3) source-local disguised as cross-domain",
+      "candidate": "xenomineralization",
+      "expected_label": "REJECT",
+      "detector_label": "REJECT",
+      "match": true
+    },
+    {
+      "id": "ADV-07",
+      "category": "(4) minimal-overlap cross-source synthesis",
+      "candidate": "enzyme-templated inorganic lattice formation",
+      "expected_label": "ALLOW",
+      "detector_label": "ALLOW",
+      "match": true
+    },
+    {
+      "id": "ADV-08",
+      "category": "(4) minimal-overlap cross-source synthesis",
+      "candidate": "protein-catalyzed biogenic oxide precipitation",
+      "expected_label": "ALLOW",
+      "detector_label": "REJECT",
+      "match": false
+    },
+    {
+      "id": "ADV-09",
+      "category": "(control) clean bridge, no overlap",
+      "candidate": "quantum entanglement",
+      "expected_label": "ALLOW",
+      "detector_label": "ALLOW",
+      "match": true
+    },
+    {
+      "id": "ADV-10",
+      "category": "(control) exact-string leakage",
+      "candidate": "calcium phosphate",
+      "expected_label": "REJECT",
+      "detector_label": "REJECT",
+      "match": true
+    },
+    {
+      "id": "ADV-11",
+      "category": "(control) round-72 true-allow case",
+      "candidate": "biomineralization",
+      "expected_label": "ALLOW",
+      "detector_label": "ALLOW",
+      "match": true
+    },
+    {
+      "id": "ADV-12",
+      "category": "(control) round-72 true-reject case",
+      "candidate": "mineralizing",
+      "expected_label": "REJECT",
+      "detector_label": "REJECT",
+      "match": true
+    },
+    {
+      "id": "ADV-13",
+      "category": "(3) source-local disguised as cross-domain (defeats suffix heuristic)",
+      "candidate": "pseudomineralization",
+      "expected_label": "REJECT",
+      "detector_label": "ALLOW",
+      "match": false
+    }
+  ],
+  "summary": {
+    "total": 13,
+    "matches": 7,
+    "mismatches": 6,
+    "adversarial_match": 3,
+    "adversarial_total": 9
+  },
+  "disposition": "BLOCKED"
+}

@@ -1,0 +1,42 @@
+{
+  "query_id": "Q-OA-W4411804262_OA-W4412019518-direct-openaire",
+  "pair_id": "OA-W4411804262_OA-W4412019518",
+  "query_type": "direct",
+  "provider": "openaire",
+  "query_text": "electromagnetic shielding integrated recent progress layered",
+  "query_hash": "f46066427233bda1e077146be78c12f32d39144438d34242c487c1c6639319a1",
+  "frozen_query_ref": "Q-OA-W4411804262_OA-W4412019518-direct-openalex",
+  "url": "https://api.openaire.eu/search/publications?keywords=electromagnetic+shielding+integrated+recent+progress+layered&size=10&format=json",
+  "timestamp_utc": "2026-08-11T12:40:16.750475+00:00",
+  "status": "SUCCESS",
+  "result_count": 1,
+  "result_ids": [
+    [
+      {
+        "$": "10.3389/fmech.2026.1879342"
+      },
+      {
+        "$": "10.3389/fmech.2026.1879342"
+      },
+      {
+        "$": "50|doiboost____|5ce48a7683444f70915e89533d73a215"
+      }
+    ]
+  ],
+  "result_titles": [
+    "MXene-integrated damping and vibro-acoustic composites: from nanosheet interfaces to structural dynamics"
+  ],
+  "result_dois": [
+    "10.3389/fmech.2026.1879342"
+  ],
+  "result_dates": [
+    "2026-06-24"
+  ],
+  "response_hash": "9af13bf73eca22fcf7f65654ee373197c27ab7e4ceb3cf96e80933bd8945eb60",
+  "evidence_uri": "https://api.openaire.eu/search/publications?keywords=electromagnetic+shielding+integrated+recent+progress+layered&size=10&format=json",
+  "error": null,
+  "rate_limit_headers": {
+    "x-ratelimit-used": "288",
+    "x-ratelimit-limit": "7199"
+  }
+}

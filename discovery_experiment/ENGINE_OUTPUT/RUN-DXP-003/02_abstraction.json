@@ -1,0 +1,73 @@
+{
+  "stage": "02_abstraction",
+  "run_id": "RUN-DXP-003",
+  "code_sha": "be6bdbcdb657cc1a9309700a052f9a0c3e89e56b",
+  "input_hash": "bef9461a7d38865781ab1ed0adad68d845ef637fdb5678094d23d7791ef23cd8",
+  "output_hash": "2b3e26d11a3cda69fab4b6605586839bc63a7f470925eeb8884f4ea63a016a14",
+  "provider_manifest": {
+    "provider": "zai",
+    "model": "glm-4-plus",
+    "version": "z-ai-web-dev-sdk",
+    "configuration": {
+      "temperature": 0.15,
+      "max_tokens": 4096,
+      "system_sha": "da25f0e8a1231c4250cad400e03ce5c0a835dbc6ca8fc600ce255ef3727d663e"
+    },
+    "prompt_sha": "3d352777db6b02d84d471fbf019c4798187b17d22b5aa11c6f9d8b2ca3f2a992",
+    "seed": null,
+    "tool_versions": {
+      "z_ai_cli": "z-ai"
+    },
+    "timestamp": "2026-08-08T09:52:43.040525+00:00",
+    "latency_ms": 2861,
+    "success": true,
+    "error": ""
+  },
+  "result": {
+    "pattern": {
+      "pattern_id": "MP-DXP-003",
+      "source_domain": "bioacoustics",
+      "causal_structure": "Signal emission enables echo detection under environmental conditions, producing target information",
+      "inputs": [
+        "signal emission",
+        "environmental objects"
+      ],
+      "conditions": [
+        "distance to target",
+        "ambient interference",
+        "signal frequency"
+      ],
+      "operations": [
+        "signal modulation",
+        "delay measurement",
+        "frequency adjustment",
+        "echo filtering"
+      ],
+      "intermediate_state": [
+        "echo return",
+        "signal processing",
+        "target classification"
+      ],
+      "outputs": [
+        "target range",
+        "target identity",
+        "spatial mapping"
+      ],
+      "constraints": [
+        "signal attenuation",
+        "ambient noise",
+        "temporal resolution limits"
+      ],
+      "failure_conditions": [
+        "signal interference",
+        "range ambiguity",
+        "clutter masking"
+      ],
+      "abstract_principle": "Adaptive signal processing based on environmental feedback enables precise target detection and discrimination",
+      "source_graph_summary": "24 nodes, 16 edges"
+    },
+    "failures": [],
+    "source_extraction_hash": "f778ef647c495e06e2a32f95471109c3ea59deb2e1145ed56efb80a0f175bdaf"
+  },
+  "timestamp": "2026-08-08T09:52:45.902679+00:00"
+}

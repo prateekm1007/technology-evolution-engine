@@ -1,0 +1,87 @@
+{
+  "consistencyViolations": {
+    "totalQuantities": 21,
+    "totalViolations": 6,
+    "fatal": 2,
+    "warnings": 4,
+    "violations": [
+      {"id": "CV-001", "quantities": ["Q-C01","Q-ED01","Q-M01"], "violationType": "CONTRADICTION", "description": "Energy density target (160 Wh/kg) with capacity (75 kWh) implies mass of 468.8 kg, but mass target is 350 kg.", "severity": "FATAL", "resolution": "Increase mass target to 469 kg or decrease capacity."},
+      {"id": "CV-002", "quantities": ["Q-M01","Q-M04"], "violationType": "CONTRADICTION", "description": "Calculated pack mass (584.3 kg) exceeds target (350 kg) by 67%.", "severity": "WARNING", "resolution": "Update target to 584 kg."},
+      {"id": "CV-003", "quantities": ["Q-ED01","Q-C01","Q-M04"], "violationType": "CONTRADICTION", "description": "Actual energy density (128.4 Wh/kg) is 20% below target.", "severity": "WARNING", "resolution": "Report 128 as PLAUSIBILITY, 160 as ASPIRATIONAL."},
+      {"id": "CV-004", "quantities": ["Q-COOL01","Q-COOL02"], "violationType": "CONTRADICTION", "description": "Heat at 2C (1500W) exceeds cooling (200W) by 1300W.", "severity": "FATAL", "resolution": "Limit to 1.5C (112 kW)."},
+      {"id": "CV-005", "quantities": ["Q-COST02","Q-COST03"], "violationType": "MISMATCH", "description": "Pack cost ($157.9/kWh) is 31.6% over target ($120/kWh).", "severity": "WARNING", "resolution": "Classify $157.9 as PLAUSIBILITY."},
+      {"id": "CV-006", "quantities": ["Q-V01","Q-V02"], "violationType": "AMBIGUITY", "description": "Nominal 307.2V differs from classification 400V.", "severity": "WARNING", "resolution": "State both."}
+    ]
+  },
+  "dimensionalAnalysis": {
+    "totalChecks": 4,
+    "passed": 1,
+    "failed": 3,
+    "checks": [
+      {"id": "DA-001", "description": "Energy density = Energy / Mass", "calculation": "75000 / 160 = 468.75 vs 350", "passed": false, "discrepancy": "CONTRADICTION: implied 468.8 kg vs claimed 350 kg"},
+      {"id": "DA-002", "description": "Pack voltage = cells x cell voltage", "calculation": "96 x 3.2 = 307.2 vs 307.2", "passed": true, "discrepancy": "Within 2% tolerance"},
+      {"id": "DA-003", "description": "Pack capacity = cells x Ah x V", "calculation": "96 x 280 x 3.2 / 1000 = 86.0 vs 75", "passed": false, "discrepancy": "MISMATCH: nominal 86 kWh vs usable 75 kWh"},
+      {"id": "DA-004", "description": "Cooling vs heat generation", "calculation": "200W cooling vs 1500W heat, ratio 0.13", "passed": false, "discrepancy": "INSUFFICIENT: cooling handles 13% of peak heat"}
+    ]
+  },
+  "requirementClassification": {
+    "totalRequirements": 14,
+    "byType": {"MANDATORY": {"total":6,"met":1,"notMet":0,"partially":3,"untested":2}, "DESIRABLE": {"total":4,"met":0,"notMet":1,"partially":1,"untested":2}, "ASPIRATIONAL": {"total":2,"met":0,"notMet":2,"partially":0,"untested":0}, "EXPERIMENTAL": {"total":2,"met":0,"notMet":1,"partially":0,"untested":1}},
+    "requirements": [
+      {"id":"R-01","name":"Thermal safety","type":"MANDATORY","value":"30","unit":"min","killTest":"Propagation < 30 min","status":"UNTESTED"},
+      {"id":"R-02","name":"UN38.3","type":"MANDATORY","value":"Pass","unit":"cert","killTest":"Any sub-test fails","status":"MET"},
+      {"id":"R-03","name":"IP67","type":"MANDATORY","value":"IP67","unit":"ingress","killTest":"Water ingress","status":"UNTESTED"},
+      {"id":"R-04","name":"Assembly time","type":"MANDATORY","value":"8","unit":"hours","killTest":"> 8h","status":"PARTIALLY_MET"},
+      {"id":"R-05","name":"Yield","type":"MANDATORY","value":"92","unit":"%","killTest":"< 92%","status":"UNTESTED"},
+      {"id":"R-06","name":"Max cell temp","type":"MANDATORY","value":"60","unit":"C","killTest":"> 60C","status":"PARTIALLY_MET"},
+      {"id":"R-07","name":"Energy density","type":"DESIRABLE","value":"160","unit":"Wh/kg","killTest":"< 150","status":"NOT_MET","actualValue":"128.4 Wh/kg"},
+      {"id":"R-08","name":"Temp differential","type":"DESIRABLE","value":"5","unit":"C","killTest":"> 5C","status":"UNTESTED"},
+      {"id":"R-09","name":"Cycle life","type":"DESIRABLE","value":"4000","unit":"cycles","killTest":"< 3000","status":"PARTIALLY_MET"},
+      {"id":"R-10","name":"Parasitic loss","type":"DESIRABLE","value":"200","unit":"W","killTest":"> 200W","status":"UNTESTED"},
+      {"id":"R-11","name":"Pack cost","type":"ASPIRATIONAL","value":"120","unit":"$/kWh","killTest":"> $120","status":"NOT_MET","actualValue":"$157.9/kWh"},
+      {"id":"R-12","name":"Pack mass","type":"ASPIRATIONAL","value":"350","unit":"kg","killTest":"> 400 kg","status":"NOT_MET","actualValue":"584.3 kg"},
+      {"id":"R-13","name":"CTP 3.0","type":"EXPERIMENTAL","value":"72","unit":"%","killTest":"Patent enforced","status":"UNTESTED"},
+      {"id":"R-14","name":"2C charging","type":"EXPERIMENTAL","value":"150","unit":"kW","killTest":"> 2C/min","status":"NOT_MET","actualValue":"Limited to 1.5C"}
+    ]
+  },
+  "physicsBoundaries": {
+    "totalClaims": 12,
+    "byEpistemicLevel": {"POSSIBILITY":1,"PLAUSIBILITY":7,"ANALYTICAL":1,"SIMULATION":1,"MEASUREMENT":1,"REALITY":1},
+    "byValidationLevel": {"L0_NONE":1,"L1_LITERATURE":4,"L2_ANALYTICAL":4,"L3_SIMULATION":1,"L4_BENCH":1,"L6_PRODUCTION":1},
+    "unvalidated": 1,
+    "claims": [
+      {"id":"PC-01","claim":"Max cell temp summer","value":"52C","epistemicLevel":"SIMULATION","validationLevel":"L3_SIMULATION","solver":"none","experimentalValidation":"absent","honestLabel":"Engineering estimate, not CFD"},
+      {"id":"PC-02","claim":"Temp differential","value":"5C","epistemicLevel":"PLAUSIBILITY","validationLevel":"L1_LITERATURE","solver":"none","experimentalValidation":"absent","honestLabel":"Estimate, not CFD"},
+      {"id":"PC-03","claim":"Runaway onset LFP","value":"270C","epistemicLevel":"MEASUREMENT","validationLevel":"L4_BENCH","solver":"none","experimentalValidation":"EVE datasheet","honestLabel":"Cell-level verified, pack untested"},
+      {"id":"PC-04","claim":"30-min no-propagation","value":"30 min","epistemicLevel":"POSSIBILITY","validationLevel":"L0_NONE","solver":"none","experimentalValidation":"absent","honestLabel":"Design claim, not verified"},
+      {"id":"PC-05","claim":"Pack mass","value":"584 kg","epistemicLevel":"PLAUSIBILITY","validationLevel":"L2_ANALYTICAL","solver":"BOM sum","experimentalValidation":"absent","honestLabel":"Estimated +/-10%"},
+      {"id":"PC-06","claim":"Energy density","value":"128 Wh/kg","epistemicLevel":"PLAUSIBILITY","validationLevel":"L2_ANALYTICAL","solver":"capacity/mass","experimentalValidation":"absent","honestLabel":"128 actual, 160 aspirational"},
+      {"id":"PC-07","claim":"Nominal voltage","value":"307.2 V","epistemicLevel":"REALITY","validationLevel":"L6_PRODUCTION","solver":"arithmetic","experimentalValidation":"verified","honestLabel":"96 x 3.2V"},
+      {"id":"PC-08","claim":"Usable capacity","value":"75 kWh","epistemicLevel":"PLAUSIBILITY","validationLevel":"L2_ANALYTICAL","solver":"86 x 87% DoD","experimentalValidation":"absent","honestLabel":"Estimate"},
+      {"id":"PC-09","claim":"Assembly time","value":"5.8 h","epistemicLevel":"PLAUSIBILITY","validationLevel":"L1_LITERATURE","solver":"none","experimentalValidation":"absent","honestLabel":"Estimate, untested"},
+      {"id":"PC-10","claim":"Yield","value":"92%","epistemicLevel":"PLAUSIBILITY","validationLevel":"L1_LITERATURE","solver":"none","experimentalValidation":"absent","honestLabel":"Industry benchmark"},
+      {"id":"PC-11","claim":"Cooling capacity","value":"500W","epistemicLevel":"PLAUSIBILITY","validationLevel":"L1_LITERATURE","solver":"none","experimentalValidation":"absent","honestLabel":"Analogous systems"},
+      {"id":"PC-12","claim":"Heat at 2C","value":"1500W","epistemicLevel":"ANALYTICAL","validationLevel":"L2_ANALYTICAL","solver":"150kW x 1%","experimentalValidation":"absent","honestLabel":"Rule-of-thumb"}
+    ]
+  },
+  "killTests": {
+    "totalTests": 12,
+    "untested": 11,
+    "passed": 0,
+    "failed": 1,
+    "tests": [
+      {"id":"KT-01","assumption":"Cooling sufficient for 1.5C","killTest":"dT > 5C at 1.5C","threshold":"> 5C","observation":"Measure temp during 112kW charge","consequence":"Reduce to 1C","status":"UNTESTED"},
+      {"id":"KT-02","assumption":"Assembly <= 8h","killTest":"Time > 8h","threshold":"> 8h","observation":"Time 14 steps during pilot","consequence":"Cost increases","status":"UNTESTED"},
+      {"id":"KT-03","assumption":"Busbar acceptable","killTest":"Temp rise > 20C at 250A","threshold":"> 20C","observation":"Thermocouple at 250A for 1h","consequence":"Increase busbar","status":"UNTESTED"},
+      {"id":"KT-04","assumption":"Yield >= 92%","killTest":"Yield < 92%","threshold":"< 92%","observation":"Track defects in pilot","consequence":"Rework cost","status":"UNTESTED"},
+      {"id":"KT-05","assumption":"No runaway propagation 30 min","killTest":"Propagation < 30 min","threshold":"< 30 min","observation":"GB 38031 test","consequence":"CANNOT SELL","status":"UNTESTED"},
+      {"id":"KT-06","assumption":"Cell cost $92/kWh","killTest":"Quote > $120/kWh","threshold":"> $120","observation":"Request quote for 10K/mo","consequence":"Pack uncompetitive","status":"UNTESTED"},
+      {"id":"KT-07","assumption":"Mass is 584 kg","killTest":"Mass > 642 kg","threshold":"> 642","observation":"Weigh pack","consequence":"Density below 117","status":"UNTESTED"},
+      {"id":"KT-08","assumption":"IP67 holds","killTest":"Water ingress","threshold":"Any water","observation":"Immerse 1m 30 min","consequence":"CANNOT SELL","status":"UNTESTED"},
+      {"id":"KT-09","assumption":"2C charging possible","killTest":"Temp rise > 2C/min at 2C","threshold":"> 2C/min","observation":"Charge at 150kW","consequence":"Limit to 1.5C","status":"FAILED","testedAt":"Gate 11: 1500W vs 500W cooling"},
+      {"id":"KT-10","assumption":"OTA reliable over 4G","killTest":"Failure > 1%","threshold":"> 1%","observation":"100 OTA updates","consequence":"Add WiFi","status":"UNTESTED"},
+      {"id":"KT-11","assumption":"Density is 128 Wh/kg","killTest":"Outside 115-141","threshold":"Outside 10%","observation":"Full discharge + weigh","consequence":"Mass wrong","status":"UNTESTED"},
+      {"id":"KT-12","assumption":"Cycle life > 3000","killTest":"80% in < 3000","threshold":"< 3000","observation":"Cycle at 1C 25C","consequence":"Warranty cost","status":"UNTESTED"}
+    ]
+  }
+}

@@ -1,0 +1,29 @@
+# Candidate 0002: Distributed Acoustic Mesh (DAM)
+id: '0002'
+name: Distributed Acoustic Mesh
+abbreviation: DAM
+status: REVISE
+
+transformation:
+  undesirable_state: Wildlife poaching and illegal logging undetected in remote areas
+  desirable_state: Real-time acoustic surveillance without grid power or connectivity
+  operator: distribute
+
+constraint_surface:
+  energy: 0.4
+  information: 0.6
+  time: 0.3
+  material: 0.3
+  cost: 0.5
+  safety: 0.2
+  maintenance: 0.6
+  regulation: 0.3
+  manufacturing: 0.4
+  supply_chain: 0.3
+
+missing_prerequisites:
+  - event_detection
+  - tinyml
+  - lora_class_communications
+
+pcs: 0.55

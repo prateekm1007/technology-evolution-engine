@@ -1,0 +1,12 @@
+TITLE: FOS: A fully integrated open-source program for Fast Optical Spectrum calculations of nanoparticle media
+ARXIV ID: 2409.00165v1
+URL: http://arxiv.org/abs/2409.00165v1
+RETRIEVAL DATE: 2026-08-05
+RETRIEVAL METHOD: arxiv.org API (export.arxiv.org/api/query)
+SOURCE VERIFICATION: arxiv API XML response (PR-19)
+DOMAIN HINT: radiative cooling
+AUTHORS: Daniel Carne; Joseph Peoples; Ziqi Guo; Dudong Feng; Zherui Han
+PUBLISHED: 2024-08-30T16:55:05Z
+
+ABSTRACT:
+FOS, which means light in Greek, is an open-source program for Fast Optical Spectrum calculations of nanoparticle media. This program takes the material properties and a description of the system as input, and outputs the spectral response including the reflectance, absorptance, and transmittance. Previous open-source codes often include only one portion of what is needed to calculate the spectral response of a nanoparticulate medium, such as Mie theory or a Monte Carlo method. FOS is designed to provide a convenient fully integrated format to remove the barrier as well as providing a significantly accelerated implementation with compiled Python code, parallel processing, and pre-trained machine learning predictions. This program can accelerate optimization and high throughput design of optical properties of nanoparticle or nanocomposite media, such as radiative cooling paint and solar heating liquids, allowing for the discovery of new materials and designs. FOS also enables convenient modeling of lunar dust coatings, combustion particulates, and many other particulate systems. In this paper we discuss the methodology used in FOS, features of the program, and provide four case studies.

@@ -1,0 +1,391 @@
+problem: "Build a computational protein design system that produces a novel enzyme with target activity in <1 week of compute"
+domain: "biology"
+hypothesis:
+  id: "hyp_b500e654299d0a9d"
+  claim: "The invention 'Build a computational protein design system that produces a novel enzyme with target activity in <1 week of compute' is feasible in the biology domain within the stated time horizon."
+  confidence: 0.5217
+  evidence:
+    - "energy_conservation"
+    - "mass_conservation"
+    - "momentum_conservation"
+    - "ampere law"
+    - "prerequisite_chain_depth_1"
+    - "capex_$23.91M"
+  counterevidence:
+    - "failure_mode: cost_overrun"
+    - "failure_mode: information_asymmetry"
+    - "failure_mode: material_unavailable_or_too_expensive"
+    - "failure_mode: regulatory_rejection"
+    - "technical_risk: stress_scenario_composite=0.4615"
+    - "technical_risk: stress_scenario_composite=0.4681"
+    - "commercial_risk: market_size_too_small_to_justify_capex"
+    - "commercial_risk: capex_exceeds_half_of_market_size"
+    - "commercial_risk: s_curve_adoption_extends_payback_period"
+  assumptions:
+
+  status: "pending"
+physical_laws:
+  - "energy_conservation"
+  - "mass_conservation"
+  - "momentum_conservation"
+chemical_principles:
+  pathways:
+
+  kinetics:
+
+  equilibrium:
+
+  energy_states:
+    - "gibbs_free_energy"
+mathematical_formulation:
+  structures:
+    - "optimization"
+  governing_equations:
+    -
+      name: "ampere law"
+      form: "B = mu_0 * I / (2*pi*r)"
+      variables:
+        - "B"
+        - "mu_0"
+        - "I"
+        - "r"
+constraints:
+  - "cost"
+  - "information"
+  - "material"
+  - "regulation"
+dependencies:
+  prerequisites:
+    - "component_cyclone_chamber"
+    - "principle_centrifugal_force"
+    - "principle_bernoulli_principle"
+  missing_capabilities:
+
+  causal_classifications:
+    necessary: 3
+    sufficient: 0
+    contributing: 0
+    unknown: 0
+assumptions:
+  - "Failure modes are derived from constraint keywords via a small prior map. Real failure modes require FMEA."
+  - "Optimization targets are derived from the problem's stated constraints. Implicit targets (e.g., 'minimize complexity') are not captured."
+  - "The hypothesis is a prediction. It is NOT verified until the experiments are run and outcomes recorded in the ledger."
+  - "Failure-mode experiments are derived from Layer 3's failure modes. If Layer 3 is incomplete, this layer is incomplete."
+  - "Success/failure thresholds (0.70, 0.40) are priors. They should be recalibrated as the verification cycle accumulates outcomes."
+architecture:
+  subsystems:
+    - "subsystem_for_cost"
+    - "subsystem_for_information"
+    - "subsystem_for_material"
+    - "subsystem_for_regulation"
+  interfaces:
+    - "subsystem_for_cost <-> subsystem_for_information"
+    - "subsystem_for_cost <-> subsystem_for_material"
+    - "subsystem_for_cost <-> subsystem_for_regulation"
+    - "subsystem_for_information <-> subsystem_for_material"
+    - "subsystem_for_information <-> subsystem_for_regulation"
+  tolerances:
+    cost: "±15% of capex estimate"
+    information: "information completeness >= 95%"
+    material: "±5% of material property target"
+    regulation: "binary (pass/fail)"
+simulation:
+  monte_carlo:
+    n_samples: 200
+    composite:
+      mean: 0.5251
+      std: 0.0254
+      p5: 0.4822
+      p50: 0.525
+      p95: 0.5666
+      min: 0.4615
+      max: 0.5839
+    technical:
+      mean: 0.6395
+      std: 0.0577
+      p5: 0.5451
+      p50: 0.6509
+      p95: 0.7243
+      min: 0.5297
+      max: 0.729
+    economic:
+      mean: 0.492
+      std: 0.0575
+      p5: 0.4043
+      p50: 0.4937
+      p95: 0.5869
+      min: 0.3952
+      max: 0.5935
+    regulatory:
+      mean: 0.4412
+      std: 0.0551
+      p5: 0.3527
+      p50: 0.4433
+      p95: 0.5283
+      min: 0.3401
+      max: 0.5378
+    manufacturing:
+      mean: 0.5088
+      std: 0.0584
+      p5: 0.4233
+      p50: 0.5105
+      p95: 0.5984
+      min: 0.4093
+      max: 0.6089
+    adoption:
+      mean: 0.446
+      std: 0.0589
+      p5: 0.3534
+      p50: 0.4476
+      p95: 0.5354
+      min: 0.3441
+      max: 0.5437
+  sensitivity:
+    technical: 0.6815
+    economic: 0.4528
+    regulatory: 0.3254
+    manufacturing: 0.4598
+    adoption: 0.3478
+  stress_testing:
+    -
+      technical_feasibility: 0.5451
+      economic_feasibility: 0.402
+      regulatory_feasibility: 0.4254
+      manufacturing_feasibility: 0.4735
+      adoption_probability: 0.3941
+      composite: 0.4615
+    -
+      technical_feasibility: 0.5731
+      economic_feasibility: 0.4379
+      regulatory_feasibility: 0.4262
+      manufacturing_feasibility: 0.4148
+      adoption_probability: 0.4112
+      composite: 0.4681
+    -
+      technical_feasibility: 0.5432
+      economic_feasibility: 0.4416
+      regulatory_feasibility: 0.4728
+      manufacturing_feasibility: 0.4518
+      adoption_probability: 0.3705
+      composite: 0.4681
+prototype_plan:
+  v1:
+    name: "prototype_v1_physics_validation"
+    goal: "prove the core mechanism works at lab scale"
+    scope: "single subsystem, no integration, no manufacturability"
+    success_threshold: "core mechanism reproduces predicted output within 30%"
+    estimated_duration_months: 6
+    estimated_cost_usd_m: 0.26
+  v2:
+    name: "prototype_v2_engineering_integration"
+    goal: "prove the subsystems integrate into a working system"
+    scope: "all subsystems, no manufacturing pathway, no regulatory submission"
+    success_threshold: "integrated prototype meets primary_output spec at 50% of target performance"
+    estimated_duration_months: 15
+    estimated_cost_usd_m: 1.04
+  v3:
+    name: "prototype_v3_production_readiness"
+    goal: "prove the manufacturing pathway and cost model hold"
+    scope: "production-intent prototype, pilot manufacturing run, regulatory pre-submission"
+    success_threshold: "unit cost within 2x of cost_curve target; regulatory pre-submission accepted"
+    estimated_duration_months: 24
+    estimated_cost_usd_m: 4.17
+  timeline_years: 3.8
+experimental_plan:
+  hypothesis: "The candidate invention will achieve technical feasibility >= 0.70 within 5-10 years, given the prerequisite chain is complete and no regulatory blocker materializes."
+  experiments:
+    -
+      id: "exp_cost_overrun"
+      purpose: "determine whether cost_overrun is a real risk"
+      method: "stress_test_against_cost_overrun"
+      expected_duration: "3-6 months per experiment"
+    -
+      id: "exp_information_asymmetry"
+      purpose: "determine whether information_asymmetry is a real risk"
+      method: "stress_test_against_information_asymmetry"
+      expected_duration: "3-6 months per experiment"
+    -
+      id: "exp_material_unavailable_or_too_expensive"
+      purpose: "determine whether material_unavailable_or_too_expensive is a real risk"
+      method: "stress_test_against_material_unavailable_or_too_expensive"
+      expected_duration: "3-6 months per experiment"
+    -
+      id: "exp_regulatory_rejection"
+      purpose: "determine whether regulatory_rejection is a real risk"
+      method: "stress_test_against_regulatory_rejection"
+      expected_duration: "3-6 months per experiment"
+    -
+      id: "exp_prototype_v1"
+      purpose: "determine whether the candidate can be built at all"
+      method: "build_minimum_viable_prototype"
+      expected_duration: "6-12 months"
+  measurements:
+    -
+      metric: "technical_feasibility_observed"
+      target: ">= 0.70"
+      instrument: "expert_panel_review"
+    -
+      metric: "cost_per_unit_observed"
+      target: "<= capex_estimate / 1000"
+      instrument: "cost_accounting"
+    -
+      metric: "time_to_first_prototype_observed"
+      target: "<= 5-10 years"
+      instrument: "project_tracker"
+    -
+      metric: "regulatory_approval_status"
+      target: "approved_or_withdrawn"
+      instrument: "regulatory_filing_tracker"
+  success_criteria:
+    - "All failure-mode experiments return 'risk_acceptable'."
+    - "Prototype v1 builds successfully and meets primary_output spec."
+    - "Technical feasibility observed >= 0.70 within 5-10 years."
+    - "Composite feasibility from simulation's p50 >= 0.60."
+  failure_criteria:
+    - "Any failure-mode experiment returns 'risk_unacceptable' AND no mitigation is identified."
+    - "Prototype v1 cannot be built within 2x the estimated time."
+    - "Technical feasibility observed < 0.40 after 5-10 years."
+    - "Regulatory approval is denied with no appeal path."
+failure_modes:
+  - "cost_overrun"
+  - "information_asymmetry"
+  - "material_unavailable_or_too_expensive"
+  - "regulatory_rejection"
+counterevidence:
+  - "failure_mode: cost_overrun"
+  - "failure_mode: information_asymmetry"
+  - "failure_mode: material_unavailable_or_too_expensive"
+  - "failure_mode: regulatory_rejection"
+  - "technical_risk: stress_scenario_composite=0.4615"
+  - "technical_risk: stress_scenario_composite=0.4681"
+  - "commercial_risk: market_size_too_small_to_justify_capex"
+  - "commercial_risk: capex_exceeds_half_of_market_size"
+  - "commercial_risk: s_curve_adoption_extends_payback_period"
+confidence: 0.5217
+final_blueprint:
+  parts_list:
+    -
+      id: "component_cyclone_chamber"
+      label: "Cyclone Chamber"
+      type: "component"
+      source_layer: "Layer 2 (required_materials)"
+      note: "Graph node identifier — engineer must map to a real supplier part number or capability."
+    -
+      id: "principle_centrifugal_force"
+      label: "Centrifugal Force"
+      type: "principle"
+      source_layer: "Layer 2 (prerequisite chain)"
+      note: "Graph node identifier — engineer must map to a real supplier part number or capability."
+    -
+      id: "principle_bernoulli_principle"
+      label: "Bernoulli Principle"
+      type: "principle"
+      source_layer: "Layer 2 (prerequisite chain)"
+      note: "Graph node identifier — engineer must map to a real supplier part number or capability."
+  materials_specification:
+    -
+      id: "component_cyclone_chamber"
+      label: "Cyclone Chamber"
+      constraints:
+
+      source_layer: "Layer 6 (Manufacturing layer)"
+  assembly_plan:
+    subsystems:
+      - "subsystem_for_cost"
+      - "subsystem_for_information"
+      - "subsystem_for_material"
+      - "subsystem_for_regulation"
+    interfaces:
+      - "subsystem_for_cost <-> subsystem_for_information"
+      - "subsystem_for_cost <-> subsystem_for_material"
+      - "subsystem_for_cost <-> subsystem_for_regulation"
+      - "subsystem_for_information <-> subsystem_for_material"
+      - "subsystem_for_information <-> subsystem_for_regulation"
+    inputs:
+      problem_constraints:
+        - "cost"
+        - "information"
+        - "material"
+        - "regulation"
+      time_horizon: "5-10 years"
+      domain: "biology"
+    outputs:
+      primary_output: "Build a computational protein design system that produces a novel enzyme with target activity in <1 week of compute"
+      evidence_quality: "replayable_per_law_8"
+    energy_requirements:
+      budget_tight: false
+      tolerance: "not specified"
+      estimated_watts: "depends_on_application"
+    computational_requirements:
+      class: "moderate"
+      note: "Real computational requirements depend on the governing equations from Layer 3 and the simulation approach from Layer 5."
+    source_layer: "Layer 4 (Engineering architecture)"
+  tolerances:
+    cost: "±15% of capex estimate"
+    information: "information completeness >= 95%"
+    material: "±5% of material property target"
+    regulation: "binary (pass/fail)"
+  prototype_specification:
+    v1:
+      name: "prototype_v1_physics_validation"
+      goal: "prove the core mechanism works at lab scale"
+      scope: "single subsystem, no integration, no manufacturability"
+      success_threshold: "core mechanism reproduces predicted output within 30%"
+      estimated_duration_months: 6
+      estimated_cost_usd_m: 0.26
+    v2:
+      name: "prototype_v2_engineering_integration"
+      goal: "prove the subsystems integrate into a working system"
+      scope: "all subsystems, no manufacturing pathway, no regulatory submission"
+      success_threshold: "integrated prototype meets primary_output spec at 50% of target performance"
+      estimated_duration_months: 15
+      estimated_cost_usd_m: 1.04
+    v3:
+      name: "prototype_v3_production_readiness"
+      goal: "prove the manufacturing pathway and cost model hold"
+      scope: "production-intent prototype, pilot manufacturing run, regulatory pre-submission"
+      success_threshold: "unit cost within 2x of cost_curve target; regulatory pre-submission accepted"
+      estimated_duration_months: 24
+      estimated_cost_usd_m: 4.17
+    timeline:
+      total_months: 45
+      total_years: 3.8
+      fits_within_horizon: true
+      phases:
+        -
+          phase: "v1"
+          start_month: 0
+          end_month: 6
+        -
+          phase: "v2"
+          start_month: 6
+          end_month: 21
+        -
+          phase: "v3"
+          start_month: 21
+          end_month: 45
+    source_layer: "Layer 9 (Prototype layer)"
+  problem: "Build a computational protein design system that produces a novel enzyme with target activity in <1 week of compute"
+  domain: "biology"
+  target_invention: "Build a computational protein design system that produces a novel enzyme with target activity in <1 week of compute"
+  prerequisite_chain_depth: 1
+  governing_equations:
+    -
+      name: "ampere law"
+      form: "B = mu_0 * I / (2*pi*r)"
+      variables:
+        - "B"
+        - "mu_0"
+        - "I"
+        - "r"
+  subsystems:
+    - "subsystem_for_cost"
+    - "subsystem_for_information"
+    - "subsystem_for_material"
+    - "subsystem_for_regulation"
+  composite_feasibility: 23.91
+  prototype_stages:
+    - "prototype_v1_physics_validation"
+    - "prototype_v2_engineering_integration"
+    - "prototype_v3_production_readiness"
+  total_prototype_timeline_years: 3.8

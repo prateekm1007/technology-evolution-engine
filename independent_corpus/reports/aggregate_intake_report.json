@@ -1,0 +1,89 @@
+{
+  "report_type": "AGGREGATE_INTAKE_REPORT",
+  "report_version": "1.0.0",
+  "generated_at": "2026-08-11T00:00:00Z",
+  "manifest": {
+    "provider": "openalex",
+    "provider_version": "2024-08",
+    "query_space": "All articles in OpenAlex with DOIs, published before 2025-06-30, retrieved via cursor pagination sorted by publication_date descending. NO keyword search. NO domain filter. NO connection search.",
+    "sampling_method": "Deterministic cursor pagination: retrieve pages of 200 results sorted by publication_date desc, starting from cursor='*'. Sample every Nth result where N is derived from the external seed. No re-ranking. No filtering by 'interestingness'. No TEE input.",
+    "random_seed_hash": "57b2600d4f6db856c07fa5ac77dcb674309f1eb0f405931b5f00e3357da41e16",
+    "date_cutoff": "2025-06-30",
+    "license_policy": "Accept all licenses. Record license for each source. Flag sources without open access for custodian review.",
+    "domain_policy": "Acquire from ALL domains. Do NOT filter by domain during acquisition. Domain classification happens AFTER acquisition using the frozen custodian taxonomy. No domain is preferred or excluded.",
+    "inclusion_rules": [
+      "Has DOI",
+      "Type = article",
+      "publication_date <= 2025-06-30",
+      "Has title"
+    ],
+    "exclusion_rules": [
+      "No DOI",
+      "Type != article",
+      "Publication date after cutoff",
+      "Duplicate content hash",
+      "TEE prior-exposure: KNOWN_SEEN",
+      "Contamination: CONTAMINATED"
+    ],
+    "n_requested": 200,
+    "n_received": 0,
+    "n_eligible": 0,
+    "no_tee_influence": true,
+    "no_connection_search": true
+  },
+  "acquisition_stats": {
+    "provider": "openalex",
+    "provider_version": "2024-08",
+    "date_cutoff": "2025-06-30",
+    "random_seed": "57b2600d4f6db856c07fa5ac77dcb674309f1eb0f405931b5f00e3357da41e16",
+    "per_page": 200,
+    "max_results": 200,
+    "n_requested": 1,
+    "n_received": 200,
+    "n_with_full_text": 121,
+    "n_errors": 0
+  },
+  "intake_stats": {
+    "n_intaken": 200,
+    "n_eligible": 39,
+    "n_flagged": 161,
+    "n_rejected": 0,
+    "n_no_full_text": 79
+  },
+  "domain_distribution": {
+    "economics,_econometrics_and_finance": 4,
+    "medicine": 24,
+    "biochemistry,_genetics_and_molecular_biology": 25,
+    "chemistry": 3,
+    "engineering": 43,
+    "neuroscience": 3,
+    "computer_science": 13,
+    "health_professions": 1,
+    "agricultural_and_biological_sciences": 9,
+    "materials_science": 22,
+    "decision_sciences": 2,
+    "physics_and_astronomy": 7,
+    "immunology_and_microbiology": 4,
+    "energy": 12,
+    "social_sciences": 10,
+    "business,_management_and_accounting": 3,
+    "environmental_science": 10,
+    "chemical_engineering": 1,
+    "earth_and_planetary_sciences": 1,
+    "arts_and_humanities": 1,
+    "pharmacology,_toxicology_and_pharmaceutics": 1,
+    "mathematics": 1
+  },
+  "status_distribution": {
+    "ELIGIBLE": 39,
+    "FLAGGED": 161,
+    "REJECTED": 0
+  },
+  "publication_year_distribution": {
+    "2025": 200
+  },
+  "provider_distribution": {
+    "openalex": 200
+  },
+  "note": "This report contains NO paper titles, NO abstracts, NO content. Only aggregate statistics. TEE team sees this report only."
+}

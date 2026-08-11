@@ -1,0 +1,19 @@
+{
+  "assessment_id": "PA-H-DEV-CH-004-001",
+  "hypothesis_id": "H-DEV-CH-004-001",
+  "status": "NOT_EVALUATED",
+  "search_scope": [
+    "dev_corpus"
+  ],
+  "queries": [
+    "Distributed adaptive signal timing through local queue length feedback Each intersection adjusts its green time proportionally to its local queue length, with a small portion of adjustment influenced by immediate neighbors' states through limited communication"
+  ],
+  "sources": [],
+  "matched_prior_art": [],
+  "similarity": "no matches in dev corpus \u2014 NOT proof of novelty",
+  "review_required": true,
+  "confidence": 0.3,
+  "cutoff": "2026-08-08",
+  "reviewer": "novelty_firewall_v0",
+  "timestamp": "2026-08-08T09:11:47.081824+00:00"
+}

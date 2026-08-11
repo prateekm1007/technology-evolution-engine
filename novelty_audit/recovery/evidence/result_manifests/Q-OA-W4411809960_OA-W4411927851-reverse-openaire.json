@@ -1,0 +1,93 @@
+{
+  "query_id": "Q-OA-W4411809960_OA-W4411927851-reverse-openaire",
+  "pair_id": "OA-W4411809960_OA-W4411927851",
+  "query_type": "reverse",
+  "provider": "openaire",
+  "query_text": "perovskite solar cells lipid cancer cells",
+  "query_hash": "e4dd28b8a513646e0ea937c6dd7e5f34a9f8ce22655d9386559ee7164fb38551",
+  "frozen_query_ref": "Q-OA-W4411809960_OA-W4411927851-reverse-openalex",
+  "url": "https://api.openaire.eu/search/publications?keywords=perovskite+solar+cells+lipid+cancer+cells&size=10&format=json",
+  "timestamp_utc": "2026-08-11T12:37:53.332550+00:00",
+  "status": "SUCCESS",
+  "result_count": 1,
+  "result_ids": [
+    [
+      {
+        "$": "10.1002/ijc.30709"
+      },
+      {
+        "$": "50|doiboost____|bba65fa984ff63d9af76c46992976007"
+      },
+      {
+        "$": "od_______267::c3ac9b1857762c54482712c5ef660a57"
+      },
+      {
+        "$": "28340513"
+      },
+      {
+        "$": "PMC6135234"
+      },
+      {
+        "$": "oai:https://orca.cardiff.ac.uk:101331"
+      },
+      {
+        "$": "50|core_ac_uk__::478e3d7d154c6ab13d98a305344372b0"
+      },
+      {
+        "$": "2615682460"
+      },
+      {
+        "$": "50|od______1064::491d7c77ecefa6f24bcffc6aad0b3ce6"
+      },
+      {
+        "$": "oai:ora.ox.ac.uk:uuid:fac7b2b4-e22c-4eae-8652-00cb59e79b83"
+      },
+      {
+        "$": "oai:pure.ed.ac.uk:publications/573ab2e9-cba6-433f-b957-04f3ab0d8f64"
+      },
+      {
+        "$": "50|od______3094::acb4d237f28832b82672d73cd4973f59"
+      },
+      {
+        "$": "oai:eprints.ucl.ac.uk.OAI2:1555010"
+      },
+      {
+        "$": "50|od_______322::864ee236476a901ba9790608cfc63915"
+      },
+      {
+        "$": "50|base_oa_____::339b11c4cf6602c64818b2d5370fe5d6"
+      },
+      {
+        "$": "ftinstcancerres:oai:repository.icr.ac.uk:internal/567"
+      },
+      {
+        "$": "50|base_oa_____::5d6e4ade4ea69ab89667bdf3152c93ce"
+      },
+      {
+        "$": "ftumelbourne:oai:jupiter.its.unimelb.edu.au:11343/292752"
+      },
+      {
+        "$": "50|base_oa_____::ad7ec0c2f35608cfed96548e2f4b8da4"
+      },
+      {
+        "$": "ftinstcancerres:oai:https://repository.icr.ac.uk:internal/567"
+      }
+    ]
+  ],
+  "result_titles": [
+    "Mendelian randomisation implicates hyperlipidaemia as a risk factor for colorectal cancer"
+  ],
+  "result_dois": [
+    "10.1002/ijc.30709"
+  ],
+  "result_dates": [
+    "2017-04-06"
+  ],
+  "response_hash": "1c26ac38b7bf741c093b5c15ea2a5feed69daab116910d98564b37b0368cc401",
+  "evidence_uri": "https://api.openaire.eu/search/publications?keywords=perovskite+solar+cells+lipid+cancer+cells&size=10&format=json",
+  "error": null,
+  "rate_limit_headers": {
+    "x-ratelimit-used": "243",
+    "x-ratelimit-limit": "7199"
+  }
+}

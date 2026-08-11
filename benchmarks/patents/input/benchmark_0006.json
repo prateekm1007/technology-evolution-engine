@@ -1,0 +1,66 @@
+{
+  "id": "benchmark_0006",
+  "type": "patent",
+  "source": "uspto",
+  "title": "Biomimetic Aquaporin Membrane for Low-Energy Water Filtration",
+  "domain": "water",
+  "abstract": "A purification membrane with aquaporin-Z proteins in block copolymer vesicles achieving 200 L/m2/hour/bar permeability with >99.9% rejection below 2 bar.",
+  "claims": [
+    "Aquaporin-Z in ABA triblock copolymer vesicles at protein-to-lipid ratio 1:50 to 1:200.",
+    "PES support with pore size 50-200nm.",
+    "Fabrication by vesicle fusion followed by glutaraldehyde crosslinking."
+  ],
+  "components": [
+    "aquaporin proteins",
+    "block copolymer vesicles",
+    "PES support",
+    "crosslinker",
+    "housing"
+  ],
+  "materials": [
+    "aquaporin-Z",
+    "poly(2-methyloxazoline)-poly(dimethylsiloxane)",
+    "polyethersulfone",
+    "glutaraldehyde"
+  ],
+  "methods": [
+    "protein expression",
+    "vesicle formation",
+    "vesicle fusion",
+    "chemical crosslinking"
+  ],
+  "constraints": [
+    "energy",
+    "water quality",
+    "membrane lifetime",
+    "cost",
+    "manufacturing"
+  ],
+  "problem_statement": "RO membranes achieve 2-4 L/m2/hour/bar. Aquaporins achieve 100x higher permeability.",
+  "expected_constraints": [
+    "energy",
+    "material",
+    "cost",
+    "manufacturing",
+    "maintenance",
+    "regulation"
+  ],
+  "expected_prerequisites": [
+    "aquaporin protein production",
+    "vesicle stability",
+    "membrane scaling",
+    "fouling resistance"
+  ],
+  "expected_adjacent_domains": [
+    "biotechnology",
+    "materials science",
+    "chemical engineering",
+    "environmental engineering"
+  ],
+  "expected_failure_modes": [
+    "protein denaturation",
+    "vesicle rupture",
+    "biofouling",
+    "chemical degradation"
+  ]
+}

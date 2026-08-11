@@ -1,0 +1,253 @@
+{
+  "ok": true,
+  "graph": {
+    "nodes": {
+      "doc_fc5361a005a0:N1": {
+        "node_id": "doc_fc5361a005a0:N1",
+        "node_type": "system",
+        "label": "Chameleon",
+        "description": "Organism that changes color via structural coloration",
+        "epistemic_state": "OBSERVED",
+        "provenance": [
+          "doc:doc_fc5361a005a0"
+        ]
+      },
+      "doc_fc5361a005a0:N2": {
+        "node_id": "doc_fc5361a005a0:N2",
+        "node_type": "mechanism",
+        "label": "Structural coloration",
+        "description": "Color production mechanism based on nanoscale structure rather than pigment",
+        "epistemic_state": "OBSERVED",
+        "provenance": [
+          "doc:doc_fc5361a005a0"
+        ]
+      },
+      "doc_fc5361a005a0:N3": {
+        "node_id": "doc_fc5361a005a0:N3",
+        "node_type": "system",
+        "label": "Skin",
+        "description": "Organ containing iridophore cell layers",
+        "epistemic_state": "OBSERVED",
+        "provenance": [
+          "doc:doc_fc5361a005a0"
+        ]
+      },
+      "doc_fc5361a005a0:N4": {
+        "node_id": "doc_fc5361a005a0:N4",
+        "node_type": "system",
+        "label": "Iridophore cells",
+        "description": "Specialized cells containing guanine nanocrystals arranged in two layers",
+        "epistemic_state": "OBSERVED",
+        "provenance": [
+          "doc:doc_fc5361a005a0"
+        ]
+      },
+      "doc_fc5361a005a0:N5": {
+        "node_id": "doc_fc5361a005a0:N5",
+        "node_type": "system",
+        "label": "Guanine nanocrystals",
+        "description": "Nanoscale crystals that reflect light via constructive interference",
+        "epistemic_state": "OBSERVED",
+        "provenance": [
+          "doc:doc_fc5361a005a0"
+        ]
+      },
+      "doc_fc5361a005a0:N6": {
+        "node_id": "doc_fc5361a005a0:N6",
+        "node_type": "property",
+        "label": "Nanocrystal spacing",
+        "description": "Distance between adjacent guanine nanocrystals, tunable 100-200nm",
+        "epistemic_state": "OBSERVED",
+        "provenance": [
+          "doc:doc_fc5361a005a0"
+        ]
+      },
+      "doc_fc5361a005a0:N7": {
+        "node_id": "doc_fc5361a005a0:N7",
+        "node_type": "process",
+        "label": "Cellular deformation",
+        "description": "Physical deformation of iridophore cells that alters nanocrystal spacing",
+        "epistemic_state": "OBSERVED",
+        "provenance": [
+          "doc:doc_fc5361a005a0"
+        ]
+      },
+      "doc_fc5361a005a0:N8": {
+        "node_id": "doc_fc5361a005a0:N8",
+        "node_type": "process",
+        "label": "Adjusting spacing",
+        "description": "Active modulation of nanocrystal lattice spacing via cellular deformation",
+        "epistemic_state": "OBSERVED",
+        "provenance": [
+          "doc:doc_fc5361a005a0"
+        ]
+      },
+      "doc_fc5361a005a0:N9": {
+        "node_id": "doc_fc5361a005a0:N9",
+        "node_type": "property",
+        "label": "Wavelength of reflected light",
+        "description": "Color-determining wavelength selected by nanocrystal spacing",
+        "epistemic_state": "OBSERVED",
+        "provenance": [
+          "doc:doc_fc5361a005a0"
+        ]
+      },
+      "doc_fc5361a005a0:N10": {
+        "node_id": "doc_fc5361a005a0:N10",
+        "node_type": "mechanism",
+        "label": "Passive reflection",
+        "description": "Reflection without light generation; relies on constructive interference",
+        "epistemic_state": "OBSERVED",
+        "provenance": [
+          "doc:doc_fc5361a005a0"
+        ]
+      },
+      "doc_fc5361a005a0:N11": {
+        "node_id": "doc_fc5361a005a0:N11",
+        "node_type": "process",
+        "label": "Constructive reflection",
+        "description": "Interference-based reflection where specific wavelengths are amplified",
+        "epistemic_state": "OBSERVED",
+        "provenance": [
+          "doc:doc_fc5361a005a0"
+        ]
+      },
+      "doc_fc5361a005a0:N12": {
+        "node_id": "doc_fc5361a005a0:N12",
+        "node_type": "effect",
+        "label": "Color change",
+        "description": "Observable change in skin color due to shifted reflected wavelength",
+        "epistemic_state": "OBSERVED",
+        "provenance": [
+          "doc:doc_fc5361a005a0"
+        ]
+      },
+      "doc_fc5361a005a0:N13": {
+        "node_id": "doc_fc5361a005a0:N13",
+        "node_type": "measurement",
+        "label": "Nanocrystal spacing range",
+        "description": "Quantitative range of tunable nanocrystal spacing",
+        "epistemic_state": "OBSERVED",
+        "provenance": [
+          "doc:doc_fc5361a005a0"
+        ]
+      }
+    },
+    "edges": [
+      {
+        "edge_id": "doc_fc5361a005a0:E1",
+        "source_id": "doc_fc5361a005a0:N7",
+        "target_id": "doc_fc5361a005a0:N8",
+        "edge_type": "CAUSES",
+        "confidence": 0.5,
+        "evidence": [
+          "By adjusting the spacing between nanocrystals (through cellular deformation)"
+        ],
+        "epistemic_state": "OBSERVED"
+      },
+      {
+        "edge_id": "doc_fc5361a005a0:E2",
+        "source_id": "doc_fc5361a005a0:N8",
+        "target_id": "doc_fc5361a005a0:N6",
+        "edge_type": "CAUSES",
+        "confidence": 0.5,
+        "evidence": [
+          "By adjusting the spacing between nanocrystals (through cellular deformation), they shift the wavelength of reflected light."
+        ],
+        "epistemic_state": "OBSERVED"
+      },
+      {
+        "edge_id": "doc_fc5361a005a0:E3",
+        "source_id": "doc_fc5361a005a0:N6",
+        "target_id": "doc_fc5361a005a0:N9",
+        "edge_type": "CAUSES",
+        "confidence": 0.5,
+        "evidence": [
+          "By adjusting the spacing between nanocrystals (through cellular deformation), they shift the wavelength of reflected light."
+        ],
+        "epistemic_state": "OBSERVED"
+      },
+      {
+        "edge_id": "doc_fc5361a005a0:E4",
+        "source_id": "doc_fc5361a005a0:N6",
+        "target_id": "doc_fc5361a005a0:N11",
+        "edge_type": "CAUSES",
+        "confidence": 0.5,
+        "evidence": [
+          "The nanocrystal spacing (100-200nm) selects which wavelengths are constructively reflected."
+        ],
+        "epistemic_state": "OBSERVED"
+      },
+      {
+        "edge_id": "doc_fc5361a005a0:E5",
+        "source_id": "doc_fc5361a005a0:N2",
+        "target_id": "doc_fc5361a005a0:N12",
+        "edge_type": "PRODUCES",
+        "confidence": 0.5,
+        "evidence": [
+          "Chameleons change color using structural coloration."
+        ],
+        "epistemic_state": "OBSERVED"
+      },
+      {
+        "edge_id": "doc_fc5361a005a0:E6",
+        "source_id": "doc_fc5361a005a0:N10",
+        "target_id": "doc_fc5361a005a0:N12",
+        "edge_type": "ENABLES",
+        "confidence": 0.5,
+        "evidence": [
+          "This is passive reflection \u2014 no light is generated."
+        ],
+        "epistemic_state": "OBSERVED"
+      },
+      {
+        "edge_id": "doc_fc5361a005a0:E7",
+        "source_id": "doc_fc5361a005a0:N11",
+        "target_id": "doc_fc5361a005a0:N9",
+        "edge_type": "PRODUCES",
+        "confidence": 0.5,
+        "evidence": [
+          "The nanocrystal spacing (100-200nm) selects which wavelengths are constructively reflected."
+        ],
+        "epistemic_state": "OBSERVED"
+      },
+      {
+        "edge_id": "doc_fc5361a005a0:E10",
+        "source_id": "doc_fc5361a005a0:N13",
+        "target_id": "doc_fc5361a005a0:N6",
+        "edge_type": "CONSTRAINS",
+        "confidence": 0.5,
+        "evidence": [
+          "The nanocrystal spacing (100-200nm) selects which wavelengths are constructively reflected."
+        ],
+        "epistemic_state": "OBSERVED"
+      },
+      {
+        "edge_id": "doc_fc5361a005a0:E11",
+        "source_id": "doc_fc5361a005a0:N10",
+        "target_id": "doc_fc5361a005a0:N9",
+        "edge_type": "MODULATES",
+        "confidence": 0.5,
+        "evidence": [
+          "This is passive reflection \u2014 no light is generated."
+        ],
+        "epistemic_state": "OBSERVED"
+      }
+    ]
+  },
+  "n_nodes": 13,
+  "n_edges": 9,
+  "n_failures": 2,
+  "failures": [
+    {
+      "failure_type": "INVALID_EDGE_TYPE",
+      "detail": "edge 'E8' type 'CONTAINS' invalid. Valid: ['CAUSES', 'CONSTRAINS', 'CORRELATES_WITH', 'ENABLES', 'FAILS_UNDER', 'INHIBITS', 'MODULATES', 'PRODUCES', 'REQUIRES', 'TRANSFERS_TO']",
+      "raw_llm_output": ""
+    },
+    {
+      "failure_type": "INVALID_EDGE_TYPE",
+      "detail": "edge 'E9' type 'CONTAINS' invalid. Valid: ['CAUSES', 'CONSTRAINS', 'CORRELATES_WITH', 'ENABLES', 'FAILS_UNDER', 'INHIBITS', 'MODULATES', 'PRODUCES', 'REQUIRES', 'TRANSFERS_TO']",
+      "raw_llm_output": ""
+    }
+  ]
+}

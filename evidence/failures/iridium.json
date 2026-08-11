@@ -1,0 +1,39 @@
+{
+  "id": "failure_006",
+  "name": "Iridium",
+  "domain": "sensors",
+  "year_launched": 1998,
+  "year_effective_end": 1999,
+  "category": "commercial_failure",
+  "what_failed": "66-satellite global phone network. Bankrupt within a year of launch. Later resurrected for niche use.",
+  "why_it_failed": [
+    "$3,000 handset + $7/minute calls",
+    "Indoor reception failure",
+    "Cellular networks expanded faster than expected",
+    "Target market (global business travelers) was too small",
+    "$5B debt structure was unsustainable",
+    "Technology was impressive but economically unviable"
+  ],
+  "assumptions_that_broke": [
+    "Cellular coverage would remain limited",
+    "Business travelers would pay premium for global coverage",
+    "Satellite phones would be primary devices",
+    "Infrastructure cost would decrease faster"
+  ],
+  "constraints_that_moved": [
+    "Cellular coverage expanded globally",
+    "Roaming agreements reduced need for satellite",
+    "Satellite costs decreased (SpaceX, reusable rockets)",
+    "IoT created new satellite use cases"
+  ],
+  "resurrection_conditions": [
+    "IoT and M2M communications (not consumer voice)",
+    "Maritime, aviation, military, remote monitoring",
+    "Lower orbit constellations (Starlink, OneWeb)",
+    "Integration with terrestrial networks"
+  ],
+  "lesson": "A technology that is correct about the problem but wrong about the timing and the market will fail. Iridium was right about global coverage, wrong about who would pay for it. Resurrected when the market changed.",
+  "created_at": "2026-08-01T09:17:21.875471+00:00",
+  "source": "workstream_D",
+  "version": "1.0"
+}

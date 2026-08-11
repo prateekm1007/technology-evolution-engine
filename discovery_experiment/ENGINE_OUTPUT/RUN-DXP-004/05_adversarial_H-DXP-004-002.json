@@ -1,0 +1,74 @@
+{
+  "stage": "05_adversarial_H-DXP-004-002",
+  "run_id": "RUN-DXP-004",
+  "code_sha": "9cf2046069a549721298cc8d709ac7bc8b4e8997",
+  "input_hash": "221433dda3537f27918463afdf0e0bd35369b71941d264fa09da6491670eb5a2",
+  "output_hash": "93ccc66e88cf090f301bbaa4ad47144425a52143ed56eb7741db7b90737c8846",
+  "provider_manifest": {
+    "provider": "zai",
+    "model": "glm-4-plus",
+    "version": "z-ai-web-dev-sdk",
+    "configuration": {
+      "temperature": 0.2,
+      "max_tokens": 4096,
+      "system_sha": "1f5a3fff3aebc2e1d44b2312f4b604b5c2911cacaf452eb6ca705c724fc9142b"
+    },
+    "prompt_sha": "0bd7966d96f86f33220b5ec200305721526f9102f45f351770e35a851a174e81",
+    "seed": null,
+    "tool_versions": {
+      "z_ai_cli": "z-ai"
+    },
+    "timestamp": "2026-08-08T10:05:30.375315+00:00",
+    "latency_ms": 11903,
+    "success": true,
+    "error": ""
+  },
+  "result": {
+    "hypothesis_id": "H-DXP-004-002",
+    "failure_modes": [
+      {
+        "category": "FRAGILE_ASSUMPTION",
+        "description": "The assumption that micro-streams can maintain coherence at Re=500,000 is fundamentally flawed. At such high Reynolds numbers, turbulent eddies will inevitably disrupt any coherent micro-stream structures long before they can meaningfully reduce viscosity gradients.",
+        "severity": "HIGH",
+        "evidence": "Turbulence literature consistently shows that coherent structures cannot persist beyond the inertial subrange at Re>100,000. Micro-streams would be immediately dissipated by Kolmogorov-scale eddies."
+      },
+      {
+        "category": "CONTRADICTS_KNOWN",
+        "description": "The claim that micro-streams reduce viscosity directly contradicts established fluid dynamics principles. Viscosity is a material property, not something that can be reduced by flow patterns. Micro-streams might create apparent slip conditions, but they don't change the actual viscosity of the fluid.",
+        "severity": "HIGH",
+        "evidence": "Navier-Stokes equations explicitly treat viscosity as a constant material property. No known mechanism allows flow patterns to alter this fundamental property."
+      },
+      {
+        "category": "BOUNDARY_BREAKS",
+        "description": "The hypothesis breaks down when considering the boundary layer physics. Micro-streams would actually increase the effective surface area in contact with the fluid, potentially increasing drag rather than reducing it.",
+        "severity": "MEDIUM",
+        "evidence": "Boundary layer theory shows that increased surface area typically leads to increased friction drag, especially when considering the no-slip condition at the wall."
+      },
+      {
+        "category": "PRIOR_ART_EXISTS",
+        "description": "The concept of using surface structures to reduce drag through micro-channels is well-established in the literature, particularly in the context of superhydrophobic surfaces. This hypothesis offers no significant novelty beyond what's already known.",
+        "severity": "MEDIUM",
+        "evidence": "Numerous papers since the early 2000s have documented drag reduction using similar microstructures, often attributing effects to air trapping rather than micro-stream formation."
+      },
+      {
+        "category": "FALSIFIER_TRIGGERED",
+        "description": "The provided evidence actually falsifies the hypothesis. Fish scales primarily function for protection and movement, not drag reduction. The cited microfluidic studies typically involve much lower Reynolds numbers (Re<1000) where micro-streams might be relevant, but not at the high Re applications implied.",
+        "severity": "HIGH",
+        "evidence": "Biomechanical studies show fish scales primarily serve mechanical protection purposes. Microfluidic drag reduction studies operate at Re orders of magnitude below relevant engineering applications."
+      },
+      {
+        "category": "INCOMPATIBLE_TARGET",
+        "description": "The hypothesis focuses on viscous dissipation while ignoring pressure drag, which dominates at high Reynolds numbers. Even if micro-streams reduced viscous drag slightly, the increased pressure drag from surface features would likely outweigh any benefits.",
+        "severity": "HIGH",
+        "evidence": "At Re=500,000, pressure drag typically accounts for 80-90% of total drag in bluff bodies, making viscous drag reduction nearly irrelevant for overall drag reduction."
+      }
+    ],
+    "survives": false,
+    "outcome": "ADVERSARIAL_FAILED",
+    "n_high_severity": 4,
+    "n_medium_severity": 2,
+    "n_low_severity": 0,
+    "source_hypothesis_hash": ""
+  },
+  "timestamp": "2026-08-08T10:05:42.279228+00:00"
+}

@@ -1,0 +1,69 @@
+{
+  "id": "benchmark_0009",
+  "type": "patent",
+  "source": "uspto",
+  "title": "Self-Powered Wireless Sensor Node with Energy Harvesting and LoRa",
+  "domain": "sensors",
+  "abstract": "A wireless sensor node with piezoelectric harvester, ultra-low-power MCU, sensor array, and LoRa radio (15km range) operating indefinitely from ambient vibrations.",
+  "claims": [
+    "PZT-5H cantilever (30mm x 10mm x 0.5mm) tunable 50-200Hz.",
+    "PMIC with cold-start at 380mV and MPPT efficiency >85%.",
+    "LoRa at 868MHz, +14dBm output, -148dBm sensitivity."
+  ],
+  "components": [
+    "piezoelectric harvester",
+    "PMIC",
+    "MCU",
+    "sensor array",
+    "LoRa radio",
+    "antenna",
+    "supercapacitor"
+  ],
+  "materials": [
+    "PZT-5H",
+    "silicon",
+    "FR4 PCB",
+    "copper",
+    "lithium"
+  ],
+  "methods": [
+    "energy harvesting",
+    "MPPT",
+    "spread spectrum modulation",
+    "duty cycling"
+  ],
+  "constraints": [
+    "energy",
+    "information",
+    "cost",
+    "maintenance",
+    "supply chain"
+  ],
+  "problem_statement": "WSN batteries need replacement every 1-5 years. Energy harvesting enables perpetual operation.",
+  "expected_constraints": [
+    "energy",
+    "information",
+    "cost",
+    "maintenance",
+    "material",
+    "supply chain"
+  ],
+  "expected_prerequisites": [
+    "ultra-low-power electronics",
+    "efficient energy harvesting",
+    "LoRa infrastructure",
+    "sensor miniaturization"
+  ],
+  "expected_adjacent_domains": [
+    "power electronics",
+    "communications",
+    "embedded systems",
+    "materials science"
+  ],
+  "expected_failure_modes": [
+    "harvester fatigue",
+    "capacitor degradation",
+    "radio interference",
+    "sensor drift"
+  ]
+}

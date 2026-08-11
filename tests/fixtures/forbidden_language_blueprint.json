@@ -1,0 +1,17 @@
+{
+  "_comment": "Fixture for test_honesty_loop.py — contains forbidden language patterns (Law 27/28/29). Used to verify the scanner detects them.",
+  "_warning": "DO NOT use this file as a real Blueprint output. It is a test fixture that intentionally violates Law 27/28/29 to verify the scanner works.",
+
+  "badBlueprintArtifact": {
+    "title": "complete engineering blueprint of an EV battery pack",
+    "verdict": "85.7% PASS",
+    "confidence": "58%",
+    "overallConfidence": 0.61,
+    "reliability": "92%",
+    "probability": "12%",
+    "certainty": "70%",
+    "score": "85.5%",
+    "readiness": "85%",
+    "simulation": "18 tests, 28% pass"
+  }
+}

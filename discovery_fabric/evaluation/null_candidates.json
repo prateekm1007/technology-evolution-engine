@@ -1,0 +1,1277 @@
+{
+  "timestamp": "2026-08-11T17:23:54.719187+00:00",
+  "generator": "null_random_pairing",
+  "seed": 42,
+  "total_null_candidates": 47,
+  "candidates": [
+    {
+      "candidate_id": "NULL-59801709",
+      "discovery_mode": "null_random_pairing",
+      "mechanism_a": {
+        "evidence_id": "arxiv:2409.04486v1",
+        "process": "UNKNOWN"
+      },
+      "mechanism_b": {
+        "evidence_id": "crossref:10.3390/app13042158",
+        "process": "Self-assembly of nanoparticles on living bio-templates to generate silver nanoparticle microtubules adhering to fungal hyphae"
+      },
+      "bridge": "NONE — randomly paired, no mechanistic basis",
+      "constraints": "NONE — random",
+      "evidence": [
+        {
+          "evidence_id": "arxiv:2409.04486v1",
+          "source": "random"
+        },
+        {
+          "evidence_id": "crossref:10.3390/app13042158",
+          "source": "random"
+        }
+      ],
+      "candidate_hypothesis": "Random pairing: chemical ↔ mechanical (no mechanistic basis)",
+      "epistemic_state": "NULL_CONTROL",
+      "is_null_control": true
+    },
+    {
+      "candidate_id": "NULL-e018102a",
+      "discovery_mode": "null_random_pairing",
+      "mechanism_a": {
+        "evidence_id": "arxiv:1210.3899v1",
+        "process": "UNKNOWN"
+      },
+      "mechanism_b": {
+        "evidence_id": "arxiv:1108.6201v1",
+        "process": "Melting the glass and dumping the melt from a Pt-crucible with a downpipe in water, resulting in phase separated droplets"
+      },
+      "bridge": "NONE — randomly paired, no mechanistic basis",
+      "constraints": "NONE — random",
+      "evidence": [
+        {
+          "evidence_id": "arxiv:1210.3899v1",
+          "source": "random"
+        },
+        {
+          "evidence_id": "arxiv:1108.6201v1",
+          "source": "random"
+        }
+      ],
+      "candidate_hypothesis": "Random pairing: environmental ↔ computing (no mechanistic basis)",
+      "epistemic_state": "NULL_CONTROL",
+      "is_null_control": true
+    },
+    {
+      "candidate_id": "NULL-f8dcbff3",
+      "discovery_mode": "null_random_pairing",
+      "mechanism_a": {
+        "evidence_id": "arxiv:1006.1209v1",
+        "process": "UNKNOWN"
+      },
+      "mechanism_b": {
+        "evidence_id": "arxiv:1612.09262v3",
+        "process": "UNKNOWN"
+      },
+      "bridge": "NONE — randomly paired, no mechanistic basis",
+      "constraints": "NONE — random",
+      "evidence": [
+        {
+          "evidence_id": "arxiv:1006.1209v1",
+          "source": "random"
+        },
+        {
+          "evidence_id": "arxiv:1612.09262v3",
+          "source": "random"
+        }
+      ],
+      "candidate_hypothesis": "Random pairing: computing ↔ energy (no mechanistic basis)",
+      "epistemic_state": "NULL_CONTROL",
+      "is_null_control": true
+    },
+    {
+      "candidate_id": "NULL-965167ff",
+      "discovery_mode": "null_random_pairing",
+      "mechanism_a": {
+        "evidence_id": "crossref:10.62791/20049",
+        "process": "Using genetically modified E. coli to synthesize extracellular curli nanofibers"
+      },
+      "mechanism_b": {
+        "evidence_id": "crossref:10.1063/1.120481",
+        "process": "Synthesis of nanometer-sized AlGaN imbedded in a PMMA matrix"
+      },
+      "bridge": "NONE — randomly paired, no mechanistic basis",
+      "constraints": "NONE — random",
+      "evidence": [
+        {
+          "evidence_id": "crossref:10.62791/20049",
+          "source": "random"
+        },
+        {
+          "evidence_id": "crossref:10.1063/1.120481",
+          "source": "random"
+        }
+      ],
+      "candidate_hypothesis": "Random pairing: computing ↔ biotechnology (no mechanistic basis)",
+      "epistemic_state": "NULL_CONTROL",
+      "is_null_control": true
+    },
+    {
+      "candidate_id": "NULL-76a86106",
+      "discovery_mode": "null_random_pairing",
+      "mechanism_a": {
+        "evidence_id": "arxiv:1108.6201v1",
+        "process": "Melting the glass and dumping the melt from a Pt-crucible with a downpipe in water, resulting in phase separated droplets"
+      },
+      "mechanism_b": {
+        "evidence_id": "arxiv:2302.04760v1",
+        "process": "UNKNOWN"
+      },
+      "bridge": "NONE — randomly paired, no mechanistic basis",
+      "constraints": "NONE — random",
+      "evidence": [
+        {
+          "evidence_id": "arxiv:1108.6201v1",
+          "source": "random"
+        },
+        {
+          "evidence_id": "arxiv:2302.04760v1",
+          "source": "random"
+        }
+      ],
+      "candidate_hypothesis": "Random pairing: chemical ↔ biotechnology (no mechanistic basis)",
+      "epistemic_state": "NULL_CONTROL",
+      "is_null_control": true
+    },
+    {
+      "candidate_id": "NULL-ae830533",
+      "discovery_mode": "null_random_pairing",
+      "mechanism_a": {
+        "evidence_id": "arxiv:2501.11607v2",
+        "process": "UNKNOWN"
+      },
+      "mechanism_b": {
+        "evidence_id": "arxiv:2508.13028v1",
+        "process": "UNKNOWN"
+      },
+      "bridge": "NONE — randomly paired, no mechanistic basis",
+      "constraints": "NONE — random",
+      "evidence": [
+        {
+          "evidence_id": "arxiv:2501.11607v2",
+          "source": "random"
+        },
+        {
+          "evidence_id": "arxiv:2508.13028v1",
+          "source": "random"
+        }
+      ],
+      "candidate_hypothesis": "Random pairing: energy ↔ biotechnology (no mechanistic basis)",
+      "epistemic_state": "NULL_CONTROL",
+      "is_null_control": true
+    },
+    {
+      "candidate_id": "NULL-5385e35c",
+      "discovery_mode": "null_random_pairing",
+      "mechanism_a": {
+        "evidence_id": "arxiv:physics/0511147v1",
+        "process": "Photo-induced synthesis and photo-stimulated aggregation"
+      },
+      "mechanism_b": {
+        "evidence_id": "arxiv:2403.19970v1",
+        "process": "UNKNOWN"
+      },
+      "bridge": "NONE — randomly paired, no mechanistic basis",
+      "constraints": "NONE — random",
+      "evidence": [
+        {
+          "evidence_id": "arxiv:physics/0511147v1",
+          "source": "random"
+        },
+        {
+          "evidence_id": "arxiv:2403.19970v1",
+          "source": "random"
+        }
+      ],
+      "candidate_hypothesis": "Random pairing: mechanical ↔ chemical (no mechanistic basis)",
+      "epistemic_state": "NULL_CONTROL",
+      "is_null_control": true
+    },
+    {
+      "candidate_id": "NULL-80b7d445",
+      "discovery_mode": "null_random_pairing",
+      "mechanism_a": {
+        "evidence_id": "arxiv:2306.09274v1",
+        "process": "UNKNOWN"
+      },
+      "mechanism_b": {
+        "evidence_id": "arxiv:1004.4609v1",
+        "process": "Extending existing synthesis flows to generate optimal circuits with respect to Nearest Neighbor Cost (NNC) while keeping quantum cost small"
+      },
+      "bridge": "NONE — randomly paired, no mechanistic basis",
+      "constraints": "NONE — random",
+      "evidence": [
+        {
+          "evidence_id": "arxiv:2306.09274v1",
+          "source": "random"
+        },
+        {
+          "evidence_id": "arxiv:1004.4609v1",
+          "source": "random"
+        }
+      ],
+      "candidate_hypothesis": "Random pairing: energy ↔ neuroscience (no mechanistic basis)",
+      "epistemic_state": "NULL_CONTROL",
+      "is_null_control": true
+    },
+    {
+      "candidate_id": "NULL-553c171d",
+      "discovery_mode": "null_random_pairing",
+      "mechanism_a": {
+        "evidence_id": "arxiv:2104.12292v6",
+        "process": "Applying text-to-speech synthesis techniques (Tacotron and neural source-filter waveform models) to build MIDI-to-audio synthesis systems similar to TTS frameworks"
+      },
+      "mechanism_b": {
+        "evidence_id": "crossref:10.1039/9781839163623-00028",
+        "process": "Synthesis of colloidal nanoparticles using alcohols as solvent, reductant, and potential stabilizer"
+      },
+      "bridge": "NONE — randomly paired, no mechanistic basis",
+      "constraints": "NONE — random",
+      "evidence": [
+        {
+          "evidence_id": "arxiv:2104.12292v6",
+          "source": "random"
+        },
+        {
+          "evidence_id": "crossref:10.1039/9781839163623-00028",
+          "source": "random"
+        }
+      ],
+      "candidate_hypothesis": "Random pairing: biotechnology ↔ neuroscience (no mechanistic basis)",
+      "epistemic_state": "NULL_CONTROL",
+      "is_null_control": true
+    },
+    {
+      "candidate_id": "NULL-bca93764",
+      "discovery_mode": "null_random_pairing",
+      "mechanism_a": {
+        "evidence_id": "crossref:10.1002/smll.201101172",
+        "process": "Surface‐confined imide cleavage at the dianhydride domain via immersion in an aqueous KOH solution, followed by ion‐exchange with AgNO₃ solution, and subsequent reduction of metal ion species"
+      },
+      "mechanism_b": {
+        "evidence_id": "crossref:10.4028/www.scientific.net/msf.830-831.522",
+        "process": "Preparation of graphene oxide-silicon nanoparticle composite in aqueous solution"
+      },
+      "bridge": "NONE — randomly paired, no mechanistic basis",
+      "constraints": "NONE — random",
+      "evidence": [
+        {
+          "evidence_id": "crossref:10.1002/smll.201101172",
+          "source": "random"
+        },
+        {
+          "evidence_id": "crossref:10.4028/www.scientific.net/msf.830-831.522",
+          "source": "random"
+        }
+      ],
+      "candidate_hypothesis": "Random pairing: energy ↔ computing (no mechanistic basis)",
+      "epistemic_state": "NULL_CONTROL",
+      "is_null_control": true
+    },
+    {
+      "candidate_id": "NULL-af693b39",
+      "discovery_mode": "null_random_pairing",
+      "mechanism_a": {
+        "evidence_id": "arxiv:2505.13571v1",
+        "process": "UNKNOWN"
+      },
+      "mechanism_b": {
+        "evidence_id": "arxiv:1406.4336v1",
+        "process": "Combination of a probabilistic analytical model for photon trajectories inside the nanoparticle and Monte-Carlo simulation for electron cascade trajectories using the Livermore model implemented in Geant4"
+      },
+      "bridge": "NONE — randomly paired, no mechanistic basis",
+      "constraints": "NONE — random",
+      "evidence": [
+        {
+          "evidence_id": "arxiv:2505.13571v1",
+          "source": "random"
+        },
+        {
+          "evidence_id": "arxiv:1406.4336v1",
+          "source": "random"
+        }
+      ],
+      "candidate_hypothesis": "Random pairing: chemical ↔ materials (no mechanistic basis)",
+      "epistemic_state": "NULL_CONTROL",
+      "is_null_control": true
+    },
+    {
+      "candidate_id": "NULL-95488115",
+      "discovery_mode": "null_random_pairing",
+      "mechanism_a": {
+        "evidence_id": "arxiv:2105.02373v4",
+        "process": "UNKNOWN"
+      },
+      "mechanism_b": {
+        "evidence_id": "crossref:10.3390/app13042158",
+        "process": "Self-assembly of nanoparticles on living bio-templates to generate silver nanoparticle microtubules adhering to fungal hyphae"
+      },
+      "bridge": "NONE — randomly paired, no mechanistic basis",
+      "constraints": "NONE — random",
+      "evidence": [
+        {
+          "evidence_id": "arxiv:2105.02373v4",
+          "source": "random"
+        },
+        {
+          "evidence_id": "crossref:10.3390/app13042158",
+          "source": "random"
+        }
+      ],
+      "candidate_hypothesis": "Random pairing: energy ↔ computing (no mechanistic basis)",
+      "epistemic_state": "NULL_CONTROL",
+      "is_null_control": true
+    },
+    {
+      "candidate_id": "NULL-4c185b09",
+      "discovery_mode": "null_random_pairing",
+      "mechanism_a": {
+        "evidence_id": "arxiv:1106.1959v1",
+        "process": "UNKNOWN"
+      },
+      "mechanism_b": {
+        "evidence_id": "arxiv:2404.14700v4",
+        "process": "Built on the latent consistency model and applies a novel adversarial consistency training approach with a new prosody generator module"
+      },
+      "bridge": "NONE — randomly paired, no mechanistic basis",
+      "constraints": "NONE — random",
+      "evidence": [
+        {
+          "evidence_id": "arxiv:1106.1959v1",
+          "source": "random"
+        },
+        {
+          "evidence_id": "arxiv:2404.14700v4",
+          "source": "random"
+        }
+      ],
+      "candidate_hypothesis": "Random pairing: neuroscience ↔ biotechnology (no mechanistic basis)",
+      "epistemic_state": "NULL_CONTROL",
+      "is_null_control": true
+    },
+    {
+      "candidate_id": "NULL-4ac80eb7",
+      "discovery_mode": "null_random_pairing",
+      "mechanism_a": {
+        "evidence_id": "arxiv:2501.11607v2",
+        "process": "UNKNOWN"
+      },
+      "mechanism_b": {
+        "evidence_id": "crossref:10.3390/ma18173949",
+        "process": "Electroless deposition of TiO2-reinforced Ni-W-P alloy coating"
+      },
+      "bridge": "NONE — randomly paired, no mechanistic basis",
+      "constraints": "NONE — random",
+      "evidence": [
+        {
+          "evidence_id": "arxiv:2501.11607v2",
+          "source": "random"
+        },
+        {
+          "evidence_id": "crossref:10.3390/ma18173949",
+          "source": "random"
+        }
+      ],
+      "candidate_hypothesis": "Random pairing: chemical ↔ biotechnology (no mechanistic basis)",
+      "epistemic_state": "NULL_CONTROL",
+      "is_null_control": true
+    },
+    {
+      "candidate_id": "NULL-a9de1c70",
+      "discovery_mode": "null_random_pairing",
+      "mechanism_a": {
+        "evidence_id": "arxiv:1811.01289v1",
+        "process": "UNKNOWN"
+      },
+      "mechanism_b": {
+        "evidence_id": "arxiv:2404.14700v4",
+        "process": "Built on the latent consistency model and applies a novel adversarial consistency training approach with a new prosody generator module"
+      },
+      "bridge": "NONE — randomly paired, no mechanistic basis",
+      "constraints": "NONE — random",
+      "evidence": [
+        {
+          "evidence_id": "arxiv:1811.01289v1",
+          "source": "random"
+        },
+        {
+          "evidence_id": "arxiv:2404.14700v4",
+          "source": "random"
+        }
+      ],
+      "candidate_hypothesis": "Random pairing: computing ↔ biotechnology (no mechanistic basis)",
+      "epistemic_state": "NULL_CONTROL",
+      "is_null_control": true
+    },
+    {
+      "candidate_id": "NULL-5fdd859a",
+      "discovery_mode": "null_random_pairing",
+      "mechanism_a": {
+        "evidence_id": "crossref:10.1002/smll.201101172",
+        "process": "Surface‐confined imide cleavage at the dianhydride domain via immersion in an aqueous KOH solution, followed by ion‐exchange with AgNO₃ solution, and subsequent reduction of metal ion species"
+      },
+      "mechanism_b": {
+        "evidence_id": "arxiv:1308.4907v1",
+        "process": "Synthesis of particular nanoparticle with in the microgel"
+      },
+      "bridge": "NONE — randomly paired, no mechanistic basis",
+      "constraints": "NONE — random",
+      "evidence": [
+        {
+          "evidence_id": "crossref:10.1002/smll.201101172",
+          "source": "random"
+        },
+        {
+          "evidence_id": "arxiv:1308.4907v1",
+          "source": "random"
+        }
+      ],
+      "candidate_hypothesis": "Random pairing: mechanical ↔ materials (no mechanistic basis)",
+      "epistemic_state": "NULL_CONTROL",
+      "is_null_control": true
+    },
+    {
+      "candidate_id": "NULL-39166f3b",
+      "discovery_mode": "null_random_pairing",
+      "mechanism_a": {
+        "evidence_id": "arxiv:2409.04486v1",
+        "process": "UNKNOWN"
+      },
+      "mechanism_b": {
+        "evidence_id": "arxiv:2503.22802v2",
+        "process": "Combining spectral energy distribution libraries with SFH and chemical evolution models, incorporating cosmic redshift and dust extinction effects"
+      },
+      "bridge": "NONE — randomly paired, no mechanistic basis",
+      "constraints": "NONE — random",
+      "evidence": [
+        {
+          "evidence_id": "arxiv:2409.04486v1",
+          "source": "random"
+        },
+        {
+          "evidence_id": "arxiv:2503.22802v2",
+          "source": "random"
+        }
+      ],
+      "candidate_hypothesis": "Random pairing: environmental ↔ neuroscience (no mechanistic basis)",
+      "epistemic_state": "NULL_CONTROL",
+      "is_null_control": true
+    },
+    {
+      "candidate_id": "NULL-01adad1b",
+      "discovery_mode": "null_random_pairing",
+      "mechanism_a": {
+        "evidence_id": "arxiv:1003.0621v1",
+        "process": "Formation of rhombohedral Bi2Te3 nanoparticles, ligand removal by hydrazine hydrate etching, and spark plasma sintering to form a pellet"
+      },
+      "mechanism_b": {
+        "evidence_id": "arxiv:0705.2523v1",
+        "process": "Attachment of nanoparticles of iron oxide along with lysine to cell walls"
+      },
+      "bridge": "NONE — randomly paired, no mechanistic basis",
+      "constraints": "NONE — random",
+      "evidence": [
+        {
+          "evidence_id": "arxiv:1003.0621v1",
+          "source": "random"
+        },
+        {
+          "evidence_id": "arxiv:0705.2523v1",
+          "source": "random"
+        }
+      ],
+      "candidate_hypothesis": "Random pairing: mechanical ↔ computing (no mechanistic basis)",
+      "epistemic_state": "NULL_CONTROL",
+      "is_null_control": true
+    },
+    {
+      "candidate_id": "NULL-fb6e743c",
+      "discovery_mode": "null_random_pairing",
+      "mechanism_a": {
+        "evidence_id": "arxiv:2505.13571v1",
+        "process": "UNKNOWN"
+      },
+      "mechanism_b": {
+        "evidence_id": "arxiv:2409.04486v1",
+        "process": "UNKNOWN"
+      },
+      "bridge": "NONE — randomly paired, no mechanistic basis",
+      "constraints": "NONE — random",
+      "evidence": [
+        {
+          "evidence_id": "arxiv:2505.13571v1",
+          "source": "random"
+        },
+        {
+          "evidence_id": "arxiv:2409.04486v1",
+          "source": "random"
+        }
+      ],
+      "candidate_hypothesis": "Random pairing: environmental ↔ biotechnology (no mechanistic basis)",
+      "epistemic_state": "NULL_CONTROL",
+      "is_null_control": true
+    },
+    {
+      "candidate_id": "NULL-2132a902",
+      "discovery_mode": "null_random_pairing",
+      "mechanism_a": {
+        "evidence_id": "arxiv:1004.4609v1",
+        "process": "Extending existing synthesis flows to generate optimal circuits with respect to Nearest Neighbor Cost (NNC) while keeping quantum cost small"
+      },
+      "mechanism_b": {
+        "evidence_id": "arxiv:1509.07345v1",
+        "process": "Composite game analysis and equilibrium analysis"
+      },
+      "bridge": "NONE — randomly paired, no mechanistic basis",
+      "constraints": "NONE — random",
+      "evidence": [
+        {
+          "evidence_id": "arxiv:1004.4609v1",
+          "source": "random"
+        },
+        {
+          "evidence_id": "arxiv:1509.07345v1",
+          "source": "random"
+        }
+      ],
+      "candidate_hypothesis": "Random pairing: energy ↔ mechanical (no mechanistic basis)",
+      "epistemic_state": "NULL_CONTROL",
+      "is_null_control": true
+    },
+    {
+      "candidate_id": "NULL-eafc083a",
+      "discovery_mode": "null_random_pairing",
+      "mechanism_a": {
+        "evidence_id": "arxiv:2409.04486v1",
+        "process": "UNKNOWN"
+      },
+      "mechanism_b": {
+        "evidence_id": "arxiv:2010.08486v1",
+        "process": "UNKNOWN"
+      },
+      "bridge": "NONE — randomly paired, no mechanistic basis",
+      "constraints": "NONE — random",
+      "evidence": [
+        {
+          "evidence_id": "arxiv:2409.04486v1",
+          "source": "random"
+        },
+        {
+          "evidence_id": "arxiv:2010.08486v1",
+          "source": "random"
+        }
+      ],
+      "candidate_hypothesis": "Random pairing: biotechnology ↔ neuroscience (no mechanistic basis)",
+      "epistemic_state": "NULL_CONTROL",
+      "is_null_control": true
+    },
+    {
+      "candidate_id": "NULL-513d8b2c",
+      "discovery_mode": "null_random_pairing",
+      "mechanism_a": {
+        "evidence_id": "crossref:10.4028/p-843733",
+        "process": "One-pot synthesis of AuNPs using chitosan, followed by impregnation on NMP/Chi at room temperature"
+      },
+      "mechanism_b": {
+        "evidence_id": "arxiv:1108.6201v1",
+        "process": "Melting the glass and dumping the melt from a Pt-crucible with a downpipe in water, resulting in phase separated droplets"
+      },
+      "bridge": "NONE — randomly paired, no mechanistic basis",
+      "constraints": "NONE — random",
+      "evidence": [
+        {
+          "evidence_id": "crossref:10.4028/p-843733",
+          "source": "random"
+        },
+        {
+          "evidence_id": "arxiv:1108.6201v1",
+          "source": "random"
+        }
+      ],
+      "candidate_hypothesis": "Random pairing: chemical ↔ neuroscience (no mechanistic basis)",
+      "epistemic_state": "NULL_CONTROL",
+      "is_null_control": true
+    },
+    {
+      "candidate_id": "NULL-b497e643",
+      "discovery_mode": "null_random_pairing",
+      "mechanism_a": {
+        "evidence_id": "arxiv:2503.07253v2",
+        "process": "synergizing Vision Language Large Model (VLLM), Latent Diffusion Model (LDM), and texture library Tex-9K; generating anomaly text descriptions with VLLM; matching with relevant textures from Tex-9K; guiding LDM via ControlNet to paint on normal images; applying Texture-Aware Latent Init"
+      },
+      "mechanism_b": {
+        "evidence_id": "arxiv:2104.12292v6",
+        "process": "Applying text-to-speech synthesis techniques (Tacotron and neural source-filter waveform models) to build MIDI-to-audio synthesis systems similar to TTS frameworks"
+      },
+      "bridge": "NONE — randomly paired, no mechanistic basis",
+      "constraints": "NONE — random",
+      "evidence": [
+        {
+          "evidence_id": "arxiv:2503.07253v2",
+          "source": "random"
+        },
+        {
+          "evidence_id": "arxiv:2104.12292v6",
+          "source": "random"
+        }
+      ],
+      "candidate_hypothesis": "Random pairing: computing ↔ biotechnology (no mechanistic basis)",
+      "epistemic_state": "NULL_CONTROL",
+      "is_null_control": true
+    },
+    {
+      "candidate_id": "NULL-41c963e1",
+      "discovery_mode": "null_random_pairing",
+      "mechanism_a": {
+        "evidence_id": "arxiv:1112.1783v2",
+        "process": "UNKNOWN"
+      },
+      "mechanism_b": {
+        "evidence_id": "arxiv:2501.11607v2",
+        "process": "UNKNOWN"
+      },
+      "bridge": "NONE — randomly paired, no mechanistic basis",
+      "constraints": "NONE — random",
+      "evidence": [
+        {
+          "evidence_id": "arxiv:1112.1783v2",
+          "source": "random"
+        },
+        {
+          "evidence_id": "arxiv:2501.11607v2",
+          "source": "random"
+        }
+      ],
+      "candidate_hypothesis": "Random pairing: neuroscience ↔ biotechnology (no mechanistic basis)",
+      "epistemic_state": "NULL_CONTROL",
+      "is_null_control": true
+    },
+    {
+      "candidate_id": "NULL-806429f2",
+      "discovery_mode": "null_random_pairing",
+      "mechanism_a": {
+        "evidence_id": "arxiv:2508.13028v1",
+        "process": "UNKNOWN"
+      },
+      "mechanism_b": {
+        "evidence_id": "arxiv:1708.01155v1",
+        "process": "Training a generative adversarial network (GAN) with cycle consistency to transform between MR and CT images"
+      },
+      "bridge": "NONE — randomly paired, no mechanistic basis",
+      "constraints": "NONE — random",
+      "evidence": [
+        {
+          "evidence_id": "arxiv:2508.13028v1",
+          "source": "random"
+        },
+        {
+          "evidence_id": "arxiv:1708.01155v1",
+          "source": "random"
+        }
+      ],
+      "candidate_hypothesis": "Random pairing: energy ↔ materials (no mechanistic basis)",
+      "epistemic_state": "NULL_CONTROL",
+      "is_null_control": true
+    },
+    {
+      "candidate_id": "NULL-81c1675e",
+      "discovery_mode": "null_random_pairing",
+      "mechanism_a": {
+        "evidence_id": "crossref:10.1039/9781839163623-00028",
+        "process": "Synthesis of colloidal nanoparticles using alcohols as solvent, reductant, and potential stabilizer"
+      },
+      "mechanism_b": {
+        "evidence_id": "arxiv:1406.4336v1",
+        "process": "Combination of a probabilistic analytical model for photon trajectories inside the nanoparticle and Monte-Carlo simulation for electron cascade trajectories using the Livermore model implemented in Geant4"
+      },
+      "bridge": "NONE — randomly paired, no mechanistic basis",
+      "constraints": "NONE — random",
+      "evidence": [
+        {
+          "evidence_id": "crossref:10.1039/9781839163623-00028",
+          "source": "random"
+        },
+        {
+          "evidence_id": "arxiv:1406.4336v1",
+          "source": "random"
+        }
+      ],
+      "candidate_hypothesis": "Random pairing: environmental ↔ biotechnology (no mechanistic basis)",
+      "epistemic_state": "NULL_CONTROL",
+      "is_null_control": true
+    },
+    {
+      "candidate_id": "NULL-e4d5c014",
+      "discovery_mode": "null_random_pairing",
+      "mechanism_a": {
+        "evidence_id": "arxiv:1612.09262v3",
+        "process": "UNKNOWN"
+      },
+      "mechanism_b": {
+        "evidence_id": "arxiv:1106.1959v1",
+        "process": "UNKNOWN"
+      },
+      "bridge": "NONE — randomly paired, no mechanistic basis",
+      "constraints": "NONE — random",
+      "evidence": [
+        {
+          "evidence_id": "arxiv:1612.09262v3",
+          "source": "random"
+        },
+        {
+          "evidence_id": "arxiv:1106.1959v1",
+          "source": "random"
+        }
+      ],
+      "candidate_hypothesis": "Random pairing: mechanical ↔ energy (no mechanistic basis)",
+      "epistemic_state": "NULL_CONTROL",
+      "is_null_control": true
+    },
+    {
+      "candidate_id": "NULL-3d4d20c9",
+      "discovery_mode": "null_random_pairing",
+      "mechanism_a": {
+        "evidence_id": "arxiv:2403.19970v1",
+        "process": "UNKNOWN"
+      },
+      "mechanism_b": {
+        "evidence_id": "arxiv:2503.07253v2",
+        "process": "synergizing Vision Language Large Model (VLLM), Latent Diffusion Model (LDM), and texture library Tex-9K; generating anomaly text descriptions with VLLM; matching with relevant textures from Tex-9K; guiding LDM via ControlNet to paint on normal images; applying Texture-Aware Latent Init"
+      },
+      "bridge": "NONE — randomly paired, no mechanistic basis",
+      "constraints": "NONE — random",
+      "evidence": [
+        {
+          "evidence_id": "arxiv:2403.19970v1",
+          "source": "random"
+        },
+        {
+          "evidence_id": "arxiv:2503.07253v2",
+          "source": "random"
+        }
+      ],
+      "candidate_hypothesis": "Random pairing: neuroscience ↔ biotechnology (no mechanistic basis)",
+      "epistemic_state": "NULL_CONTROL",
+      "is_null_control": true
+    },
+    {
+      "candidate_id": "NULL-e5a99067",
+      "discovery_mode": "null_random_pairing",
+      "mechanism_a": {
+        "evidence_id": "crossref:10.1039/9781839163623-00184",
+        "process": "Chemical reduction using amino acids, peptides and peptide mimetics"
+      },
+      "mechanism_b": {
+        "evidence_id": "arxiv:2302.04760v1",
+        "process": "UNKNOWN"
+      },
+      "bridge": "NONE — randomly paired, no mechanistic basis",
+      "constraints": "NONE — random",
+      "evidence": [
+        {
+          "evidence_id": "crossref:10.1039/9781839163623-00184",
+          "source": "random"
+        },
+        {
+          "evidence_id": "arxiv:2302.04760v1",
+          "source": "random"
+        }
+      ],
+      "candidate_hypothesis": "Random pairing: materials ↔ computing (no mechanistic basis)",
+      "epistemic_state": "NULL_CONTROL",
+      "is_null_control": true
+    },
+    {
+      "candidate_id": "NULL-f4d85479",
+      "discovery_mode": "null_random_pairing",
+      "mechanism_a": {
+        "evidence_id": "arxiv:2306.09274v1",
+        "process": "UNKNOWN"
+      },
+      "mechanism_b": {
+        "evidence_id": "crossref:10.4028/p-843733",
+        "process": "One-pot synthesis of AuNPs using chitosan, followed by impregnation on NMP/Chi at room temperature"
+      },
+      "bridge": "NONE — randomly paired, no mechanistic basis",
+      "constraints": "NONE — random",
+      "evidence": [
+        {
+          "evidence_id": "arxiv:2306.09274v1",
+          "source": "random"
+        },
+        {
+          "evidence_id": "crossref:10.4028/p-843733",
+          "source": "random"
+        }
+      ],
+      "candidate_hypothesis": "Random pairing: computing ↔ environmental (no mechanistic basis)",
+      "epistemic_state": "NULL_CONTROL",
+      "is_null_control": true
+    },
+    {
+      "candidate_id": "NULL-d355c901",
+      "discovery_mode": "null_random_pairing",
+      "mechanism_a": {
+        "evidence_id": "arxiv:2409.04486v1",
+        "process": "UNKNOWN"
+      },
+      "mechanism_b": {
+        "evidence_id": "arxiv:1004.4609v1",
+        "process": "Extending existing synthesis flows to generate optimal circuits with respect to Nearest Neighbor Cost (NNC) while keeping quantum cost small"
+      },
+      "bridge": "NONE — randomly paired, no mechanistic basis",
+      "constraints": "NONE — random",
+      "evidence": [
+        {
+          "evidence_id": "arxiv:2409.04486v1",
+          "source": "random"
+        },
+        {
+          "evidence_id": "arxiv:1004.4609v1",
+          "source": "random"
+        }
+      ],
+      "candidate_hypothesis": "Random pairing: energy ↔ computing (no mechanistic basis)",
+      "epistemic_state": "NULL_CONTROL",
+      "is_null_control": true
+    },
+    {
+      "candidate_id": "NULL-be627126",
+      "discovery_mode": "null_random_pairing",
+      "mechanism_a": {
+        "evidence_id": "arxiv:2505.13571v1",
+        "process": "UNKNOWN"
+      },
+      "mechanism_b": {
+        "evidence_id": "arxiv:1509.07345v1",
+        "process": "Composite game analysis and equilibrium analysis"
+      },
+      "bridge": "NONE — randomly paired, no mechanistic basis",
+      "constraints": "NONE — random",
+      "evidence": [
+        {
+          "evidence_id": "arxiv:2505.13571v1",
+          "source": "random"
+        },
+        {
+          "evidence_id": "arxiv:1509.07345v1",
+          "source": "random"
+        }
+      ],
+      "candidate_hypothesis": "Random pairing: mechanical ↔ chemical (no mechanistic basis)",
+      "epistemic_state": "NULL_CONTROL",
+      "is_null_control": true
+    },
+    {
+      "candidate_id": "NULL-64ed093b",
+      "discovery_mode": "null_random_pairing",
+      "mechanism_a": {
+        "evidence_id": "arxiv:1006.1209v1",
+        "process": "UNKNOWN"
+      },
+      "mechanism_b": {
+        "evidence_id": "arxiv:1411.0481v1",
+        "process": "UNKNOWN"
+      },
+      "bridge": "NONE — randomly paired, no mechanistic basis",
+      "constraints": "NONE — random",
+      "evidence": [
+        {
+          "evidence_id": "arxiv:1006.1209v1",
+          "source": "random"
+        },
+        {
+          "evidence_id": "arxiv:1411.0481v1",
+          "source": "random"
+        }
+      ],
+      "candidate_hypothesis": "Random pairing: computing ↔ mechanical (no mechanistic basis)",
+      "epistemic_state": "NULL_CONTROL",
+      "is_null_control": true
+    },
+    {
+      "candidate_id": "NULL-bc25c97b",
+      "discovery_mode": "null_random_pairing",
+      "mechanism_a": {
+        "evidence_id": "arxiv:1811.01289v1",
+        "process": "UNKNOWN"
+      },
+      "mechanism_b": {
+        "evidence_id": "arxiv:2508.13028v1",
+        "process": "UNKNOWN"
+      },
+      "bridge": "NONE — randomly paired, no mechanistic basis",
+      "constraints": "NONE — random",
+      "evidence": [
+        {
+          "evidence_id": "arxiv:1811.01289v1",
+          "source": "random"
+        },
+        {
+          "evidence_id": "arxiv:2508.13028v1",
+          "source": "random"
+        }
+      ],
+      "candidate_hypothesis": "Random pairing: neuroscience ↔ computing (no mechanistic basis)",
+      "epistemic_state": "NULL_CONTROL",
+      "is_null_control": true
+    },
+    {
+      "candidate_id": "NULL-bf2aa01d",
+      "discovery_mode": "null_random_pairing",
+      "mechanism_a": {
+        "evidence_id": "arxiv:2404.14700v4",
+        "process": "Built on the latent consistency model and applies a novel adversarial consistency training approach with a new prosody generator module"
+      },
+      "mechanism_b": {
+        "evidence_id": "arxiv:2107.02003v1",
+        "process": "Extending traditional (vocoder-based) DNN-TTS with articulatory input estimated from ultrasound tongue images"
+      },
+      "bridge": "NONE — randomly paired, no mechanistic basis",
+      "constraints": "NONE — random",
+      "evidence": [
+        {
+          "evidence_id": "arxiv:2404.14700v4",
+          "source": "random"
+        },
+        {
+          "evidence_id": "arxiv:2107.02003v1",
+          "source": "random"
+        }
+      ],
+      "candidate_hypothesis": "Random pairing: environmental ↔ materials (no mechanistic basis)",
+      "epistemic_state": "NULL_CONTROL",
+      "is_null_control": true
+    },
+    {
+      "candidate_id": "NULL-11e982b8",
+      "discovery_mode": "null_random_pairing",
+      "mechanism_a": {
+        "evidence_id": "crossref:10.1177/0021998318788144",
+        "process": "Ultrasonic probe sonication at 20 kHz and 70% amplitude for about 2 hours"
+      },
+      "mechanism_b": {
+        "evidence_id": "arxiv:1411.0481v1",
+        "process": "UNKNOWN"
+      },
+      "bridge": "NONE — randomly paired, no mechanistic basis",
+      "constraints": "NONE — random",
+      "evidence": [
+        {
+          "evidence_id": "crossref:10.1177/0021998318788144",
+          "source": "random"
+        },
+        {
+          "evidence_id": "arxiv:1411.0481v1",
+          "source": "random"
+        }
+      ],
+      "candidate_hypothesis": "Random pairing: mechanical ↔ environmental (no mechanistic basis)",
+      "epistemic_state": "NULL_CONTROL",
+      "is_null_control": true
+    },
+    {
+      "candidate_id": "NULL-cb288999",
+      "discovery_mode": "null_random_pairing",
+      "mechanism_a": {
+        "evidence_id": "arxiv:2302.04760v1",
+        "process": "UNKNOWN"
+      },
+      "mechanism_b": {
+        "evidence_id": "crossref:10.1002/smll.201101172",
+        "process": "Surface‐confined imide cleavage at the dianhydride domain via immersion in an aqueous KOH solution, followed by ion‐exchange with AgNO₃ solution, and subsequent reduction of metal ion species"
+      },
+      "bridge": "NONE — randomly paired, no mechanistic basis",
+      "constraints": "NONE — random",
+      "evidence": [
+        {
+          "evidence_id": "arxiv:2302.04760v1",
+          "source": "random"
+        },
+        {
+          "evidence_id": "crossref:10.1002/smll.201101172",
+          "source": "random"
+        }
+      ],
+      "candidate_hypothesis": "Random pairing: mechanical ↔ biotechnology (no mechanistic basis)",
+      "epistemic_state": "NULL_CONTROL",
+      "is_null_control": true
+    },
+    {
+      "candidate_id": "NULL-d8f8f623",
+      "discovery_mode": "null_random_pairing",
+      "mechanism_a": {
+        "evidence_id": "crossref:10.1039/9781839163623-00028",
+        "process": "Synthesis of colloidal nanoparticles using alcohols as solvent, reductant, and potential stabilizer"
+      },
+      "mechanism_b": {
+        "evidence_id": "arxiv:2503.22802v2",
+        "process": "Combining spectral energy distribution libraries with SFH and chemical evolution models, incorporating cosmic redshift and dust extinction effects"
+      },
+      "bridge": "NONE — randomly paired, no mechanistic basis",
+      "constraints": "NONE — random",
+      "evidence": [
+        {
+          "evidence_id": "crossref:10.1039/9781839163623-00028",
+          "source": "random"
+        },
+        {
+          "evidence_id": "arxiv:2503.22802v2",
+          "source": "random"
+        }
+      ],
+      "candidate_hypothesis": "Random pairing: environmental ↔ chemical (no mechanistic basis)",
+      "epistemic_state": "NULL_CONTROL",
+      "is_null_control": true
+    },
+    {
+      "candidate_id": "NULL-0359e857",
+      "discovery_mode": "null_random_pairing",
+      "mechanism_a": {
+        "evidence_id": "arxiv:2505.13571v1",
+        "process": "UNKNOWN"
+      },
+      "mechanism_b": {
+        "evidence_id": "arxiv:1406.4327v1",
+        "process": "X-ray photoelectron spectroscopy (XPS) and Geant4 simulation toolkit models (Livermore and PENELOPE)"
+      },
+      "bridge": "NONE — randomly paired, no mechanistic basis",
+      "constraints": "NONE — random",
+      "evidence": [
+        {
+          "evidence_id": "arxiv:2505.13571v1",
+          "source": "random"
+        },
+        {
+          "evidence_id": "arxiv:1406.4327v1",
+          "source": "random"
+        }
+      ],
+      "candidate_hypothesis": "Random pairing: materials ↔ chemical (no mechanistic basis)",
+      "epistemic_state": "NULL_CONTROL",
+      "is_null_control": true
+    },
+    {
+      "candidate_id": "NULL-192d0671",
+      "discovery_mode": "null_random_pairing",
+      "mechanism_a": {
+        "evidence_id": "crossref:10.3390/app13042158",
+        "process": "Self-assembly of nanoparticles on living bio-templates to generate silver nanoparticle microtubules adhering to fungal hyphae"
+      },
+      "mechanism_b": {
+        "evidence_id": "arxiv:2503.22802v2",
+        "process": "Combining spectral energy distribution libraries with SFH and chemical evolution models, incorporating cosmic redshift and dust extinction effects"
+      },
+      "bridge": "NONE — randomly paired, no mechanistic basis",
+      "constraints": "NONE — random",
+      "evidence": [
+        {
+          "evidence_id": "crossref:10.3390/app13042158",
+          "source": "random"
+        },
+        {
+          "evidence_id": "arxiv:2503.22802v2",
+          "source": "random"
+        }
+      ],
+      "candidate_hypothesis": "Random pairing: mechanical ↔ biotechnology (no mechanistic basis)",
+      "epistemic_state": "NULL_CONTROL",
+      "is_null_control": true
+    },
+    {
+      "candidate_id": "NULL-0db44eea",
+      "discovery_mode": "null_random_pairing",
+      "mechanism_a": {
+        "evidence_id": "crossref:10.4028/p-843733",
+        "process": "One-pot synthesis of AuNPs using chitosan, followed by impregnation on NMP/Chi at room temperature"
+      },
+      "mechanism_b": {
+        "evidence_id": "arxiv:1210.3899v1",
+        "process": "UNKNOWN"
+      },
+      "bridge": "NONE — randomly paired, no mechanistic basis",
+      "constraints": "NONE — random",
+      "evidence": [
+        {
+          "evidence_id": "crossref:10.4028/p-843733",
+          "source": "random"
+        },
+        {
+          "evidence_id": "arxiv:1210.3899v1",
+          "source": "random"
+        }
+      ],
+      "candidate_hypothesis": "Random pairing: computing ↔ computing (no mechanistic basis)",
+      "epistemic_state": "NULL_CONTROL",
+      "is_null_control": true
+    },
+    {
+      "candidate_id": "NULL-2775c887",
+      "discovery_mode": "null_random_pairing",
+      "mechanism_a": {
+        "evidence_id": "arxiv:1411.0481v1",
+        "process": "UNKNOWN"
+      },
+      "mechanism_b": {
+        "evidence_id": "arxiv:1708.01155v1",
+        "process": "Training a generative adversarial network (GAN) with cycle consistency to transform between MR and CT images"
+      },
+      "bridge": "NONE — randomly paired, no mechanistic basis",
+      "constraints": "NONE — random",
+      "evidence": [
+        {
+          "evidence_id": "arxiv:1411.0481v1",
+          "source": "random"
+        },
+        {
+          "evidence_id": "arxiv:1708.01155v1",
+          "source": "random"
+        }
+      ],
+      "candidate_hypothesis": "Random pairing: computing ↔ environmental (no mechanistic basis)",
+      "epistemic_state": "NULL_CONTROL",
+      "is_null_control": true
+    },
+    {
+      "candidate_id": "NULL-599040de",
+      "discovery_mode": "null_random_pairing",
+      "mechanism_a": {
+        "evidence_id": "crossref:10.1039/9781839163623-00184",
+        "process": "Chemical reduction using amino acids, peptides and peptide mimetics"
+      },
+      "mechanism_b": {
+        "evidence_id": "arxiv:0903.2841v1",
+        "process": "UNKNOWN"
+      },
+      "bridge": "NONE — randomly paired, no mechanistic basis",
+      "constraints": "NONE — random",
+      "evidence": [
+        {
+          "evidence_id": "crossref:10.1039/9781839163623-00184",
+          "source": "random"
+        },
+        {
+          "evidence_id": "arxiv:0903.2841v1",
+          "source": "random"
+        }
+      ],
+      "candidate_hypothesis": "Random pairing: materials ↔ environmental (no mechanistic basis)",
+      "epistemic_state": "NULL_CONTROL",
+      "is_null_control": true
+    },
+    {
+      "candidate_id": "NULL-d1c69389",
+      "discovery_mode": "null_random_pairing",
+      "mechanism_a": {
+        "evidence_id": "arxiv:1406.4336v1",
+        "process": "Combination of a probabilistic analytical model for photon trajectories inside the nanoparticle and Monte-Carlo simulation for electron cascade trajectories using the Livermore model implemented in Geant4"
+      },
+      "mechanism_b": {
+        "evidence_id": "arxiv:0801.4450v1",
+        "process": "UNKNOWN"
+      },
+      "bridge": "NONE — randomly paired, no mechanistic basis",
+      "constraints": "NONE — random",
+      "evidence": [
+        {
+          "evidence_id": "arxiv:1406.4336v1",
+          "source": "random"
+        },
+        {
+          "evidence_id": "arxiv:0801.4450v1",
+          "source": "random"
+        }
+      ],
+      "candidate_hypothesis": "Random pairing: energy ↔ biotechnology (no mechanistic basis)",
+      "epistemic_state": "NULL_CONTROL",
+      "is_null_control": true
+    },
+    {
+      "candidate_id": "NULL-0c91d76a",
+      "discovery_mode": "null_random_pairing",
+      "mechanism_a": {
+        "evidence_id": "arxiv:2105.02373v4",
+        "process": "UNKNOWN"
+      },
+      "mechanism_b": {
+        "evidence_id": "arxiv:2306.09274v1",
+        "process": "UNKNOWN"
+      },
+      "bridge": "NONE — randomly paired, no mechanistic basis",
+      "constraints": "NONE — random",
+      "evidence": [
+        {
+          "evidence_id": "arxiv:2105.02373v4",
+          "source": "random"
+        },
+        {
+          "evidence_id": "arxiv:2306.09274v1",
+          "source": "random"
+        }
+      ],
+      "candidate_hypothesis": "Random pairing: biotechnology ↔ mechanical (no mechanistic basis)",
+      "epistemic_state": "NULL_CONTROL",
+      "is_null_control": true
+    },
+    {
+      "candidate_id": "NULL-95fcfd4b",
+      "discovery_mode": "null_random_pairing",
+      "mechanism_a": {
+        "evidence_id": "arxiv:2503.07253v2",
+        "process": "synergizing Vision Language Large Model (VLLM), Latent Diffusion Model (LDM), and texture library Tex-9K; generating anomaly text descriptions with VLLM; matching with relevant textures from Tex-9K; guiding LDM via ControlNet to paint on normal images; applying Texture-Aware Latent Init"
+      },
+      "mechanism_b": {
+        "evidence_id": "arxiv:0903.2841v1",
+        "process": "UNKNOWN"
+      },
+      "bridge": "NONE — randomly paired, no mechanistic basis",
+      "constraints": "NONE — random",
+      "evidence": [
+        {
+          "evidence_id": "arxiv:2503.07253v2",
+          "source": "random"
+        },
+        {
+          "evidence_id": "arxiv:0903.2841v1",
+          "source": "random"
+        }
+      ],
+      "candidate_hypothesis": "Random pairing: neuroscience ↔ materials (no mechanistic basis)",
+      "epistemic_state": "NULL_CONTROL",
+      "is_null_control": true
+    },
+    {
+      "candidate_id": "NULL-7afce229",
+      "discovery_mode": "null_random_pairing",
+      "mechanism_a": {
+        "evidence_id": "arxiv:0801.4450v1",
+        "process": "UNKNOWN"
+      },
+      "mechanism_b": {
+        "evidence_id": "arxiv:physics/0511147v1",
+        "process": "Photo-induced synthesis and photo-stimulated aggregation"
+      },
+      "bridge": "NONE — randomly paired, no mechanistic basis",
+      "constraints": "NONE — random",
+      "evidence": [
+        {
+          "evidence_id": "arxiv:0801.4450v1",
+          "source": "random"
+        },
+        {
+          "evidence_id": "arxiv:physics/0511147v1",
+          "source": "random"
+        }
+      ],
+      "candidate_hypothesis": "Random pairing: computing ↔ biotechnology (no mechanistic basis)",
+      "epistemic_state": "NULL_CONTROL",
+      "is_null_control": true
+    }
+  ]
+}

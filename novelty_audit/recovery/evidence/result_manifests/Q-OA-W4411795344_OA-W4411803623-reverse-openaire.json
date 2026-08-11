@@ -1,0 +1,62 @@
+{
+  "query_id": "Q-OA-W4411795344_OA-W4411803623-reverse-openaire",
+  "pair_id": "OA-W4411795344_OA-W4411803623",
+  "query_type": "reverse",
+  "provider": "openaire",
+  "query_text": "loss metal carbon situ hollow spectroscopy",
+  "query_hash": "9fb4017fda45d79e8acbecea347e47724f9aa8b6d33a66056dd069cf3a484d11",
+  "frozen_query_ref": "Q-OA-W4411795344_OA-W4411803623-reverse-openalex",
+  "url": "https://api.openaire.eu/search/publications?keywords=loss+metal+carbon+situ+hollow+spectroscopy&size=10&format=json",
+  "timestamp_utc": "2026-08-11T12:41:09.722678+00:00",
+  "status": "SUCCESS",
+  "result_count": 2,
+  "result_ids": [
+    [
+      {
+        "$": "S0008622314003212"
+      },
+      {
+        "$": "10.1016/j.carbon.2014.04.002"
+      },
+      {
+        "$": "50|doiboost____|b610998d46f143bba377599e6cbeedec"
+      },
+      {
+        "$": "2055998183"
+      }
+    ],
+    [
+      {
+        "$": "50|datacite____::68e4634d2a0c41f9a1c3a1f6be9b3807"
+      },
+      {
+        "$": "10.5281/zenodo.14013"
+      },
+      {
+        "$": "oai:zenodo.org:14013"
+      },
+      {
+        "$": "50|od______2659::68e4634d2a0c41f9a1c3a1f6be9b3807"
+      }
+    ]
+  ],
+  "result_titles": [
+    "Direct observation of structural change in Au-incorporated carbon nanofibers during field emission process",
+    "Biofunctionalization Of Pdms-Based Microfluidic Systems"
+  ],
+  "result_dois": [
+    "10.1016/j.carbon.2014.04.002",
+    "10.5281/zenodo.14013"
+  ],
+  "result_dates": [
+    "2014-08-01",
+    "2015-01-18"
+  ],
+  "response_hash": "060bbc9a1c2fcd7884143f44455aaa0a87cf4743f54d2900c239760556b8ed3b",
+  "evidence_uri": "https://api.openaire.eu/search/publications?keywords=loss+metal+carbon+situ+hollow+spectroscopy&size=10&format=json",
+  "error": null,
+  "rate_limit_headers": {
+    "x-ratelimit-used": "277",
+    "x-ratelimit-limit": "7199"
+  }
+}

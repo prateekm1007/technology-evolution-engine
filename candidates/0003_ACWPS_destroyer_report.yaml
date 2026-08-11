@@ -1,0 +1,18 @@
+# Destroyer Report: 0003 ACWPS
+candidate_id: '0003'
+verdict: REVISE
+
+attacks:
+  thermodynamic_impossibility: {passed: true, severity: 0.0}
+  economic_nonviability: {passed: true, severity: 0.2}
+  manufacturing_impossibility: {passed: true, severity: 0.3}
+  regulatory_barrier: {passed: true, severity: 0.2}
+  supply_chain_fragility: {passed: true, severity: 0.3}
+  maintenance_burden: {passed: false, severity: 0.75}
+  safety_failure_mode: {passed: false, severity: 0.6}
+  incumbent_lock_in: {passed: true, severity: 0.2}
+
+revision_notes:
+  - Anti-fouling materials not durable enough for field use
+  - No integrity sensing means silent failure and contamination risk
+  - Membrane flux too low for household demand without pressure

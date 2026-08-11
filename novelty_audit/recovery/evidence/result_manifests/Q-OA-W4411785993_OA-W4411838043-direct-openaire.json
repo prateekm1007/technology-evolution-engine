@@ -1,0 +1,45 @@
+{
+  "query_id": "Q-OA-W4411785993_OA-W4411838043-direct-openaire",
+  "pair_id": "OA-W4411785993_OA-W4411838043",
+  "query_type": "direct",
+  "provider": "openaire",
+  "query_text": "sers detection dual systems closed loop",
+  "query_hash": "251d84a3834676a97e13c045f559b7bb321112298e42dfacf63970b07a4550ee",
+  "frozen_query_ref": "Q-OA-W4411785993_OA-W4411838043-direct-openalex",
+  "url": "https://api.openaire.eu/search/publications?keywords=sers+detection+dual+systems+closed+loop&size=10&format=json",
+  "timestamp_utc": "2026-08-11T12:32:57.898421+00:00",
+  "status": "SUCCESS",
+  "result_count": 1,
+  "result_ids": [
+    [
+      {
+        "$": "S1040842825002264"
+      },
+      {
+        "$": "10.1016/j.critrevonc.2025.104838"
+      },
+      {
+        "$": "50|doiboost____|3b87ed2ebba3eb79b60c69f2f9783cb0"
+      },
+      {
+        "$": "40618859"
+      }
+    ]
+  ],
+  "result_titles": [
+    "Plasmonic surgery: SERS-active smart nanotools reshaping intraoperative decision-making and precision therapy"
+  ],
+  "result_dois": [
+    "10.1016/j.critrevonc.2025.104838"
+  ],
+  "result_dates": [
+    "2025-10-01"
+  ],
+  "response_hash": "7f89e0c2fba9356abf9e92f1e5d7801d7fc8e59e8084a55731f769f4d34a1746",
+  "evidence_uri": "https://api.openaire.eu/search/publications?keywords=sers+detection+dual+systems+closed+loop&size=10&format=json",
+  "error": null,
+  "rate_limit_headers": {
+    "x-ratelimit-used": "217",
+    "x-ratelimit-limit": "7199"
+  }
+}

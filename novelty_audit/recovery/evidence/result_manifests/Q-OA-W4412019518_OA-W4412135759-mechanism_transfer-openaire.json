@@ -1,0 +1,258 @@
+{
+  "query_id": "Q-OA-W4412019518_OA-W4412135759-mechanism_transfer-openaire",
+  "pair_id": "OA-W4412019518_OA-W4412135759",
+  "query_type": "mechanism_transfer",
+  "provider": "openaire",
+  "query_text": "transfer apply recent progress biology",
+  "query_hash": "3068134bedd37f4fb01b79af694d254a5d499e20210b3a9a9e2772c81740208a",
+  "frozen_query_ref": "Q-OA-W4412019518_OA-W4412135759-mechanism_transfer-openalex",
+  "url": "https://api.openaire.eu/search/publications?keywords=transfer+apply+recent+progress+biology&size=10&format=json",
+  "timestamp_utc": "2026-08-11T12:42:20.087906+00:00",
+  "status": "SUCCESS",
+  "result_count": 10,
+  "result_ids": [
+    [
+      {
+        "$": "10.1016/bs.pmbts.2024.01.002"
+      },
+      {
+        "$": "50|doiboost____|66957108de448f39a917a3af73adba87"
+      },
+      {
+        "$": "38458735"
+      }
+    ],
+    [
+      {
+        "$": "10.1139/o88-070"
+      },
+      {
+        "$": "50|doiboost____|37a8bbd16254fc93b73ce7958d8c38a8"
+      },
+      {
+        "$": "3048333"
+      },
+      {
+        "$": "1964850474"
+      }
+    ],
+    [
+      {
+        "$": "10.1007/978-1-4684-7047-5_9"
+      },
+      {
+        "$": "50|doiboost____|0bece6305d52afe7081d7c3273fcea82"
+      },
+      {
+        "$": "1582577475"
+      }
+    ],
+    [
+      {
+        "$": "S0006349592817265"
+      },
+      {
+        "$": "10.1016/s0006-3495(92)81726-5"
+      },
+      {
+        "$": "50|doiboost____|0236cb299472b64d14ae57649b14029e"
+      },
+      {
+        "$": "od_______267::64975f45118e4829863b1c1857c714ce"
+      },
+      {
+        "$": "19431861"
+      },
+      {
+        "$": "PMC1261453"
+      },
+      {
+        "$": "50|base_oa_____::0236cb299472b64d14ae57649b14029e"
+      },
+      {
+        "$": "https://dev-openaire.d4science.org/RS/Elsevier/data/elsevier/pdf/80c/aHR0cDovL2FwaS5lbHNldmllci5jb20vY29udGVudC9hcnRpY2xlL3BpaS9zMDAwNjM0OTU5MjgxNzI2NQ%253D%253D.pdf"
+      },
+      {
+        "$": "50|core_ac_uk__::18f5f17554842f5c81cec8b73763877d"
+      },
+      {
+        "$": "2045530105"
+      }
+    ],
+    [
+      {
+        "$": "1471-2156-15-S2-I1"
+      },
+      {
+        "$": "10.1186/1471-2156-15-s2-i1"
+      },
+      {
+        "$": "50|doiboost____|2279742c934b1a470c0083680d373bd0"
+      },
+      {
+        "$": "50|od_______267::9668e3d2c80563680acc6dc08947984f"
+      },
+      {
+        "$": "oai:pubmedcentral.nih.gov:4255763"
+      },
+      {
+        "$": "50|core_ac_uk__::b3743357c914a63bf5c64629aa56ef10"
+      },
+      {
+        "$": "https://dev-openaire.d4science.org/RS/Springer-OA/data/Springer-OA/pdf/54f/aHR0cDovL2xpbmsuc3ByaW5nZXIuY29tLzEwLjExODYvMTQ3MS0yMTU2LTE1LVMyLUkxLnBkZg%253D%253D.pdf"
+      },
+      {
+        "$": "2090975102"
+      }
+    ],
+    [
+      {
+        "$": "50|datacite____::51122a820d5edcf8e5ce22c1133b50aa"
+      },
+      {
+        "$": "10.5281/zenodo.10447630"
+      },
+      {
+        "$": "oai:zenodo.org:10447630"
+      },
+      {
+        "$": "50|od______2659::51122a820d5edcf8e5ce22c1133b50aa"
+      },
+      {
+        "$": "50|datacite____::b3218387b304346f8322bfd226b23395"
+      },
+      {
+        "$": "10.5281/zenodo.10447629"
+      }
+    ],
+    [
+      {
+        "$": "50|datacite____::08ca14f91bad8e0c96e0b25259e8c72e"
+      },
+      {
+        "$": "10.5281/zenodo.18358096"
+      },
+      {
+        "$": "50|datacite____::8f9bfa2a7564e563bfcb5b29abf00d8d"
+      },
+      {
+        "$": "10.5281/zenodo.18366501"
+      },
+      {
+        "$": "50|od______2659::8f9bfa2a7564e563bfcb5b29abf00d8d"
+      },
+      {
+        "$": "oai:zenodo.org:18366501"
+      }
+    ],
+    [
+      {
+        "$": "50|datacite____::29904bc41290555148cfaec3a625766a"
+      },
+      {
+        "$": "10.5281/zenodo.15771017"
+      },
+      {
+        "$": "50|datacite____::338a9ab7e9e0de43a53e731d322517b5"
+      },
+      {
+        "$": "10.5281/zenodo.15771018"
+      },
+      {
+        "$": "oai:zenodo.org:15771018"
+      },
+      {
+        "$": "50|od______2659::338a9ab7e9e0de43a53e731d322517b5"
+      },
+      {
+        "$": "50|datacite____::3ab7c373518e2a212dddb5ed54b1523c"
+      },
+      {
+        "$": "10.5281/zenodo.18448835"
+      },
+      {
+        "$": "oai:zenodo.org:18448835"
+      },
+      {
+        "$": "50|od______2659::3ab7c373518e2a212dddb5ed54b1523c"
+      },
+      {
+        "$": "50|datacite____::3fdebe08e6c520034cf339c9d827786d"
+      },
+      {
+        "$": "10.5281/zenodo.18448834"
+      }
+    ],
+    [
+      {
+        "$": "50|datacite____::04cb2de28fccf7fb7fff15bee89c3026"
+      },
+      {
+        "$": "10.5281/zenodo.12797189"
+      },
+      {
+        "$": "50|od______2659::04cb2de28fccf7fb7fff15bee89c3026"
+      },
+      {
+        "$": "oai:zenodo.org:12797189"
+      },
+      {
+        "$": "50|datacite____::c20261c75d4af383cbceee3dce7dbf88"
+      },
+      {
+        "$": "10.5281/zenodo.12797188"
+      }
+    ],
+    [
+      {
+        "$": "10.1002/ajmg.1593"
+      },
+      {
+        "$": "50|doiboost____|df3288962319e5ec36ff238bcaad0260"
+      }
+    ]
+  ],
+  "result_titles": [
+    "RNA therapeutics for infectious diseases",
+    "DNA-mediated transfection as a model for oncogenesis",
+    "In Vitro Manipulation of Barley and Other Cereals",
+    "Teaching molecular biophysics at the graduate level",
+    "Preface: Development and evaluation of improved strains of insect pests for sterile insect technique (SIT) applications",
+    "Management Genome Surgery for Sight: Advancements in Editing Technologies for Inherited Retinal Disorders- A Review",
+    "The Biological Hairpin: Cross-Helix Geometry as a Falsifiable Probe of the H \u2248 \u03c0/9 Vantage Band - Expanded",
+    "The Nexus of Reality: A Synthesis of Computation, Mathematics, and Physics",
+    "Poyntonophrynus Frost & Grant & Faivovich & Bain & Haas & De S\u00e1 & Channing & Wilkinson & Donnellan & Raxworthy & Campbell & Blotto & Moler & Drewes & Nussbaum & Lynch & Green & Wheeler 2006",
+    "Abstracts for the IXth World Congress of Psychiatric Genetics, Saint Louis, Missouri"
+  ],
+  "result_dois": [
+    "10.1016/bs.pmbts.2024.01.002",
+    "10.1139/o88-070",
+    "10.1007/978-1-4684-7047-5_9",
+    "10.1016/s0006-3495(92)81726-5",
+    "10.1186/1471-2156-15-s2-i1",
+    "10.5281/zenodo.10447630",
+    "10.5281/zenodo.18358096",
+    "10.5281/zenodo.15771017",
+    "10.5281/zenodo.12797189",
+    "10.1002/ajmg.1593"
+  ],
+  "result_dates": [
+    "2024-01-01",
+    "1988-06-01",
+    "1990-01-01",
+    "1992-11-01",
+    "2014-01-01",
+    "2023-12-31",
+    "2026-01-25",
+    "2025-06-30",
+    "2006-03-15",
+    "2001-10-08"
+  ],
+  "response_hash": "b5459a95502c45d00a3d3446ce37f70f7b567c034ace6cd16d3c85c56b2d123f",
+  "evidence_uri": "https://api.openaire.eu/search/publications?keywords=transfer+apply+recent+progress+biology&size=10&format=json",
+  "error": null,
+  "rate_limit_headers": {
+    "x-ratelimit-used": "313",
+    "x-ratelimit-limit": "7199"
+  }
+}

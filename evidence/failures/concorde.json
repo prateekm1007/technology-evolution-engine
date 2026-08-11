@@ -1,0 +1,39 @@
+{
+  "id": "failure_003",
+  "name": "Concorde",
+  "domain": "transportation",
+  "year_launched": 1976,
+  "year_effective_end": 2003,
+  "category": "commercial_failure",
+  "what_failed": "Supersonic passenger aircraft that operated for 27 years but never achieved commercial viability.",
+  "why_it_failed": [
+    "Fuel costs made tickets prohibitively expensive",
+    "Sonic boom restricted overland routes",
+    "Limited to transatlantic corridors",
+    "2000 Paris crash destroyed public confidence",
+    "Post-9/11 aviation downturn",
+    "Government subsidy dependency"
+  ],
+  "assumptions_that_broke": [
+    "Speed is the primary value proposition in air travel",
+    "Governments will subsidize prestige technology indefinitely",
+    "Regulatory environment would permit overland supersonic flight",
+    "Fuel costs would remain manageable"
+  ],
+  "constraints_that_moved": [
+    "Fuel efficiency became dominant constraint",
+    "Noise regulations tightened globally",
+    "Video conferencing reduced business travel demand",
+    "Carbon emissions became political constraint"
+  ],
+  "resurrection_conditions": [
+    "Quiet supersonic technology (NASA X-59)",
+    "Sustainable aviation fuel",
+    "Carbon-neutral operations",
+    "Overland supersonic regulatory approval"
+  ],
+  "lesson": "A technology that violates the dominant constraint of its era (fuel cost, noise, emissions) will fail regardless of its engineering brilliance.",
+  "created_at": "2026-08-01T09:17:21.875471+00:00",
+  "source": "workstream_D",
+  "version": "1.0"
+}

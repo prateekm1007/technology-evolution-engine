@@ -1,0 +1,203 @@
+{
+  "cycle": 272,
+  "type": "stage_minus_1_ablation",
+  "directive": "MEASURE, DO NOT FIX",
+  "timestamp": "2026-08-08T01:10:13.301031+00:00",
+  "findings": {
+    "proposal_locus_vulnerability": true,
+    "fp_zero_by_construction": true,
+    "fallback_hits": 2,
+    "fallback_percentage_of_tps": 25.0,
+    "shared_hits": 6,
+    "total_tps": 8,
+    "false_negatives": 12,
+    "current_f1": 0.5714,
+    "proposal_only_f1": 0.4615,
+    "f1_inflation_from_fallback": 0.1099,
+    "total_non_matching_entities": 142,
+    "hypothetical_precision_with_fp": 0.0533
+  },
+  "per_gold": [
+    {
+      "id": "DISC-GOLD-001",
+      "bridge": "biomineralization",
+      "locus": "MISSED",
+      "matched_label": null,
+      "n_shared": 2,
+      "n_ents_a": 4,
+      "n_ents_b": 4
+    },
+    {
+      "id": "DISC-GOLD-002",
+      "bridge": "tight junctions",
+      "locus": "MISSED",
+      "matched_label": null,
+      "n_shared": 2,
+      "n_ents_a": 5,
+      "n_ents_b": 3
+    },
+    {
+      "id": "DISC-GOLD-003",
+      "bridge": "thermal emission",
+      "locus": "MISSED",
+      "matched_label": null,
+      "n_shared": 0,
+      "n_ents_a": 4,
+      "n_ents_b": 4
+    },
+    {
+      "id": "DISC-GOLD-004",
+      "bridge": "thermal regulation",
+      "locus": "FALLBACK",
+      "matched_label": "stable thermal conditions",
+      "n_shared": 0,
+      "n_ents_a": 4,
+      "n_ents_b": 3
+    },
+    {
+      "id": "DISC-GOLD-005",
+      "bridge": "contact angle",
+      "locus": "FALLBACK",
+      "matched_label": "surface wettability angle",
+      "n_shared": 0,
+      "n_ents_a": 4,
+      "n_ents_b": 3
+    },
+    {
+      "id": "DISC-GOLD-006",
+      "bridge": "photon absorption",
+      "locus": "MISSED",
+      "matched_label": null,
+      "n_shared": 1,
+      "n_ents_a": 5,
+      "n_ents_b": 4
+    },
+    {
+      "id": "DISC-GOLD-007",
+      "bridge": "heat dissipation",
+      "locus": "SHARED",
+      "matched_label": "heat",
+      "n_shared": 2,
+      "n_ents_a": 4,
+      "n_ents_b": 4
+    },
+    {
+      "id": "DISC-GOLD-008",
+      "bridge": "ion selectivity",
+      "locus": "SHARED",
+      "matched_label": "ion",
+      "n_shared": 1,
+      "n_ents_a": 4,
+      "n_ents_b": 5
+    },
+    {
+      "id": "DISC-GOLD-009",
+      "bridge": "electrocatalyst",
+      "locus": "MISSED",
+      "matched_label": null,
+      "n_shared": 1,
+      "n_ents_a": 4,
+      "n_ents_b": 5
+    },
+    {
+      "id": "DISC-GOLD-010",
+      "bridge": "temperature gradient",
+      "locus": "MISSED",
+      "matched_label": null,
+      "n_shared": 1,
+      "n_ents_a": 4,
+      "n_ents_b": 5
+    },
+    {
+      "id": "DISC-GOLD-011",
+      "bridge": "surface functionalization",
+      "locus": "SHARED",
+      "matched_label": "surface chemical modification",
+      "n_shared": 1,
+      "n_ents_a": 4,
+      "n_ents_b": 4
+    },
+    {
+      "id": "DISC-GOLD-012",
+      "bridge": "mechanical strain",
+      "locus": "MISSED",
+      "matched_label": null,
+      "n_shared": 1,
+      "n_ents_a": 4,
+      "n_ents_b": 3
+    },
+    {
+      "id": "DISC-GOLD-013",
+      "bridge": "spin polarization",
+      "locus": "SHARED",
+      "matched_label": "Magnetic resonance imaging detects quantum spin alignment",
+      "n_shared": 1,
+      "n_ents_a": 3,
+      "n_ents_b": 5
+    },
+    {
+      "id": "DISC-GOLD-014",
+      "bridge": "ion storage",
+      "locus": "SHARED",
+      "matched_label": "ion",
+      "n_shared": 2,
+      "n_ents_a": 4,
+      "n_ents_b": 3
+    },
+    {
+      "id": "DISC-GOLD-015",
+      "bridge": "bandgap engineering",
+      "locus": "MISSED",
+      "matched_label": null,
+      "n_shared": 1,
+      "n_ents_a": 3,
+      "n_ents_b": 3
+    },
+    {
+      "id": "DISC-GOLD-016",
+      "bridge": "high surface area",
+      "locus": "MISSED",
+      "matched_label": null,
+      "n_shared": 0,
+      "n_ents_a": 3,
+      "n_ents_b": 4
+    },
+    {
+      "id": "DISC-GOLD-017",
+      "bridge": "tensile strength",
+      "locus": "MISSED",
+      "matched_label": null,
+      "n_shared": 1,
+      "n_ents_a": 3,
+      "n_ents_b": 4
+    },
+    {
+      "id": "DISC-GOLD-018",
+      "bridge": "latent heat",
+      "locus": "MISSED",
+      "matched_label": null,
+      "n_shared": 3,
+      "n_ents_a": 4,
+      "n_ents_b": 5
+    },
+    {
+      "id": "DISC-GOLD-019",
+      "bridge": "photon energy",
+      "locus": "SHARED",
+      "matched_label": "light quantum energy",
+      "n_shared": 1,
+      "n_ents_a": 4,
+      "n_ents_b": 3
+    },
+    {
+      "id": "DISC-GOLD-020",
+      "bridge": "fiber morphology",
+      "locus": "MISSED",
+      "matched_label": null,
+      "n_shared": 1,
+      "n_ents_a": 5,
+      "n_ents_b": 3
+    }
+  ],
+  "verdict": "NOT TRUSTWORTHY for claims of independent discovery. 2/8 TPs come from ambient entity presence. FP=0 by construction. Precision=1.0 by construction. The scorer does not require the system to propose the bridge."
+}

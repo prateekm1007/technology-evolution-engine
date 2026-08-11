@@ -1,0 +1,192 @@
+{
+  "phase": "11A + 11F",
+  "formula": "Formula B (FROZEN)",
+  "li_ion": {
+    "domain": "Li-ion (expanded 14-point timeline)",
+    "precision": 0.0357,
+    "total_tp": 5,
+    "total_fp": 135,
+    "total_actual": 25,
+    "per_t": [
+      {
+        "T": 1991,
+        "prec": 0.0,
+        "tp": 0,
+        "fp": 10,
+        "fn": 2,
+        "actual": 2
+      },
+      {
+        "T": 1993,
+        "prec": 0.0,
+        "tp": 0,
+        "fp": 10,
+        "fn": 2,
+        "actual": 2
+      },
+      {
+        "T": 1995,
+        "prec": 0.1,
+        "tp": 1,
+        "fp": 9,
+        "fn": 1,
+        "actual": 2
+      },
+      {
+        "T": 1997,
+        "prec": 0.0,
+        "tp": 0,
+        "fp": 10,
+        "fn": 1,
+        "actual": 1
+      },
+      {
+        "T": 2000,
+        "prec": 0.0,
+        "tp": 0,
+        "fp": 10,
+        "fn": 2,
+        "actual": 2
+      },
+      {
+        "T": 2003,
+        "prec": 0.0,
+        "tp": 0,
+        "fp": 10,
+        "fn": 2,
+        "actual": 2
+      },
+      {
+        "T": 2005,
+        "prec": 0.1,
+        "tp": 1,
+        "fp": 9,
+        "fn": 1,
+        "actual": 2
+      },
+      {
+        "T": 2008,
+        "prec": 0.0,
+        "tp": 0,
+        "fp": 10,
+        "fn": 2,
+        "actual": 2
+      },
+      {
+        "T": 2010,
+        "prec": 0.0,
+        "tp": 0,
+        "fp": 10,
+        "fn": 1,
+        "actual": 1
+      },
+      {
+        "T": 2012,
+        "prec": 0.0,
+        "tp": 0,
+        "fp": 10,
+        "fn": 2,
+        "actual": 2
+      },
+      {
+        "T": 2015,
+        "prec": 0.1,
+        "tp": 1,
+        "fp": 9,
+        "fn": 2,
+        "actual": 3
+      },
+      {
+        "T": 2018,
+        "prec": 0.2,
+        "tp": 2,
+        "fp": 8,
+        "fn": 1,
+        "actual": 3
+      },
+      {
+        "T": 2020,
+        "prec": 0.0,
+        "tp": 0,
+        "fp": 10,
+        "fn": 1,
+        "actual": 1
+      },
+      {
+        "T": 2023,
+        "prec": 0.0,
+        "tp": 0,
+        "fp": 10,
+        "fn": 0,
+        "actual": 0
+      }
+    ]
+  },
+  "photovoltaics": {
+    "domain": "Photovoltaics (generalization test)",
+    "precision": 0.0333,
+    "total_tp": 2,
+    "total_fp": 58,
+    "total_actual": 5,
+    "per_t": [
+      {
+        "T": 1995,
+        "prec": 0.0,
+        "tp": 0,
+        "fp": 10,
+        "fn": 1,
+        "actual": 1
+      },
+      {
+        "T": 2000,
+        "prec": 0.0,
+        "tp": 0,
+        "fp": 10,
+        "fn": 1,
+        "actual": 1
+      },
+      {
+        "T": 2005,
+        "prec": 0.1,
+        "tp": 1,
+        "fp": 9,
+        "fn": 0,
+        "actual": 1
+      },
+      {
+        "T": 2010,
+        "prec": 0.0,
+        "tp": 0,
+        "fp": 10,
+        "fn": 1,
+        "actual": 1
+      },
+      {
+        "T": 2015,
+        "prec": 0.1,
+        "tp": 1,
+        "fp": 9,
+        "fn": 0,
+        "actual": 1
+      },
+      {
+        "T": 2020,
+        "prec": 0.0,
+        "tp": 0,
+        "fp": 10,
+        "fn": 0,
+        "actual": 0
+      }
+    ]
+  },
+  "null_model": {
+    "precision": 0.0071,
+    "tp": 1
+  },
+  "verdict": {
+    "li_holds": true,
+    "pv_transfers": true,
+    "m3_achieved": true,
+    "m4_achieved": true
+  }
+}

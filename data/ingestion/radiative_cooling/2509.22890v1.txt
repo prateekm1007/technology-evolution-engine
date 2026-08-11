@@ -1,0 +1,12 @@
+TITLE: Overcoming the curse of dimensionality: Enabling multi-layer photon transport with recurrent neural network
+ARXIV ID: 2509.22890v1
+URL: http://arxiv.org/abs/2509.22890v1
+RETRIEVAL DATE: 2026-08-05
+RETRIEVAL METHOD: arxiv.org API (export.arxiv.org/api/query)
+SOURCE VERIFICATION: arxiv API XML response (PR-19)
+DOMAIN HINT: radiative cooling
+AUTHORS: Daniel Carne; Ziqi Guo; Xiulin Ruan
+PUBLISHED: 2025-09-26T20:13:23Z
+
+ABSTRACT:
+Monte Carlo simulations are commonly used to calculate photon reflectance, absorptance, and transmittance of multi-layer scattering and absorbing media, but they can quickly become prohibitively expensive as the number of layers increases. In this study, we show that although a plain neural network suffers from the curse of dimensionality and fails to yield acceptable predictions of multilayer media, we introduce a recurrent neural network (RNN) trained on the same Monte Carlo simulation dataset to achieve accurate prediction with great acceleration. Our RNN architecture solves the curse of dimensionality by keeping the number of inputs into the network constant for any number of layers. We demonstrate the general applicability with three diverse case studies of multilayer architectures: tissue, radiative cooling paint, and atmospheric clouds, achieving 1-2 orders of magnitude acceleration over Monte Carlo simulations while providing up to one order of magnitude less error than a plain neural network. This recurrent neural network approach enables affordable photon multi-layer modeling, optimization, and high throughput screening for broad applications across dosimetry, atmospheric studies, and spectrally selective radiative coatings.

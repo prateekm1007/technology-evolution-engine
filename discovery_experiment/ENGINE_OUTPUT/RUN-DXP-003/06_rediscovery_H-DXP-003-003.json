@@ -1,0 +1,34 @@
+{
+  "stage": "06_rediscovery_H-DXP-003-003",
+  "run_id": "RUN-DXP-003",
+  "code_sha": "be6bdbcdb657cc1a9309700a052f9a0c3e89e56b",
+  "input_hash": "57ad52d9b0c5f657b6627a0426170e8776faa0d51eae95afa2de858b8e6ca2cd",
+  "output_hash": "1e4292fcc3a28b0d11c7a9bdce431da91349fb5e619b9866e0f420c289b3c852",
+  "provider_manifest": {
+    "provider": "zai",
+    "model": "glm-4-plus",
+    "version": "z-ai-web-dev-sdk",
+    "configuration": {
+      "temperature": 0.1,
+      "max_tokens": 4096,
+      "system_sha": "dbdd0760dff49fc029b32b580a575b7de33a87d371edc2b0deec93bfb2b90b01"
+    },
+    "prompt_sha": "a48c48a0ab2c82440fa4eff69214321fb75387557dbab36e4a51c6d1af4e65fb",
+    "seed": null,
+    "tool_versions": {
+      "z_ai_cli": "z-ai"
+    },
+    "timestamp": "2026-08-08T09:53:39.661465+00:00",
+    "latency_ms": 2125,
+    "success": true,
+    "error": ""
+  },
+  "result": {
+    "hypothesis_id": "H-DXP-003-003",
+    "classification": "NON_TRIVIAL_TRANSFER",
+    "evidence": "The hypothesis describes a radar system using multi-pulse adaptive strategy with different pulse durations based on target range and clutter characteristics. The source documents describe bat echolocation using adaptive call duration based on target distance, but this is a biological system using single pulses with duration adaptation, not a multi-pulse system. The hypothesis transfers the biological concept of adaptive pulse duration to a technical radar system and adds the novel element of combining multiple pulses with different durations in a single dwell, which is not present in the source. This represents a cross-domain transfer from biological sonar to technical radar systems with significant modifications.",
+    "is_rediscovery": false,
+    "source_hypothesis_hash": ""
+  },
+  "timestamp": "2026-08-08T09:53:41.786990+00:00"
+}

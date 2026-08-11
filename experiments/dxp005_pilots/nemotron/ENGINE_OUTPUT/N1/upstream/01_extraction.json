@@ -1,0 +1,232 @@
+{
+  "ok": true,
+  "graph": {
+    "nodes": {
+      "doc_eb25fc5bc7a1:N1": {
+        "node_id": "doc_eb25fc5bc7a1:N1",
+        "node_type": "system",
+        "label": "Gecko toe pad",
+        "description": "The adhesive organ on gecko feet containing hierarchical microstructures",
+        "epistemic_state": "OBSERVED",
+        "provenance": [
+          "doc:doc_eb25fc5bc7a1"
+        ]
+      },
+      "doc_eb25fc5bc7a1:N2": {
+        "node_id": "doc_eb25fc5bc7a1:N2",
+        "node_type": "system",
+        "label": "Keratin seta",
+        "description": "Hair-like keratin structure approximately 100 micrometers long",
+        "epistemic_state": "OBSERVED",
+        "provenance": [
+          "doc:doc_eb25fc5bc7a1"
+        ]
+      },
+      "doc_eb25fc5bc7a1:N3": {
+        "node_id": "doc_eb25fc5bc7a1:N3",
+        "node_type": "system",
+        "label": "Spatula",
+        "description": "Nanoscale terminal structure (~200 nm) at the tip of each seta branch",
+        "epistemic_state": "OBSERVED",
+        "provenance": [
+          "doc:doc_eb25fc5bc7a1"
+        ]
+      },
+      "doc_eb25fc5bc7a1:N4": {
+        "node_id": "doc_eb25fc5bc7a1:N4",
+        "node_type": "system",
+        "label": "Hierarchical structure (lamella \u2192 seta \u2192 spatula)",
+        "description": "Multi-level branching architecture from lamellae to setae to spatulae",
+        "epistemic_state": "OBSERVED",
+        "provenance": [
+          "doc:doc_eb25fc5bc7a1"
+        ]
+      },
+      "doc_eb25fc5bc7a1:N5": {
+        "node_id": "doc_eb25fc5bc7a1:N5",
+        "node_type": "property",
+        "label": "Maximized contact area",
+        "description": "Large effective surface area achieved through hierarchical branching",
+        "epistemic_state": "OBSERVED",
+        "provenance": [
+          "doc:doc_eb25fc5bc7a1"
+        ]
+      },
+      "doc_eb25fc5bc7a1:N6": {
+        "node_id": "doc_eb25fc5bc7a1:N6",
+        "node_type": "mechanism",
+        "label": "Van der Waals forces",
+        "description": "Intermolecular forces between spatulae and substrate surface",
+        "epistemic_state": "OBSERVED",
+        "provenance": [
+          "doc:doc_eb25fc5bc7a1"
+        ]
+      },
+      "doc_eb25fc5bc7a1:N7": {
+        "node_id": "doc_eb25fc5bc7a1:N7",
+        "node_type": "property",
+        "label": "Dry adhesion",
+        "description": "Adhesion without chemical bonding or wet adhesive, relying solely on intermolecular forces",
+        "epistemic_state": "OBSERVED",
+        "provenance": [
+          "doc:doc_eb25fc5bc7a1"
+        ]
+      },
+      "doc_eb25fc5bc7a1:N8": {
+        "node_id": "doc_eb25fc5bc7a1:N8",
+        "node_type": "system",
+        "label": "Intermolecular forces",
+        "description": "Fundamental attractive forces between molecules at the spatula-surface interface",
+        "epistemic_state": "OBSERVED",
+        "provenance": [
+          "doc:doc_eb25fc5bc7a1"
+        ]
+      },
+      "doc_eb25fc5bc7a1:N9": {
+        "node_id": "doc_eb25fc5bc7a1:N9",
+        "node_type": "measurement",
+        "label": "Adhesion strength ~10 N/cm\u00b2",
+        "description": "Quantitative measure of adhesive force per unit area",
+        "epistemic_state": "OBSERVED",
+        "provenance": [
+          "doc:doc_eb25fc5bc7a1"
+        ]
+      },
+      "doc_eb25fc5bc7a1:N10": {
+        "node_id": "doc_eb25fc5bc7a1:N10",
+        "node_type": "property",
+        "label": "Reversible adhesion",
+        "description": "Ability to repeatedly attach and detach without residue or degradation",
+        "epistemic_state": "OBSERVED",
+        "provenance": [
+          "doc:doc_eb25fc5bc7a1"
+        ]
+      },
+      "doc_eb25fc5bc7a1:N11": {
+        "node_id": "doc_eb25fc5bc7a1:N11",
+        "node_type": "process",
+        "label": "Peeling toes at an angle",
+        "description": "Active detachment behavior where gecko lifts toes at a specific angle",
+        "epistemic_state": "OBSERVED",
+        "provenance": [
+          "doc:doc_eb25fc5bc7a1"
+        ]
+      },
+      "doc_eb25fc5bc7a1:N12": {
+        "node_id": "doc_eb25fc5bc7a1:N12",
+        "node_type": "process",
+        "label": "Breaking van der Waals interaction",
+        "description": "Separation of spatulae from surface by overcoming intermolecular forces",
+        "epistemic_state": "OBSERVED",
+        "provenance": [
+          "doc:doc_eb25fc5bc7a1"
+        ]
+      }
+    },
+    "edges": [
+      {
+        "edge_id": "doc_eb25fc5bc7a1:E1",
+        "source_id": "doc_eb25fc5bc7a1:N1",
+        "target_id": "doc_eb25fc5bc7a1:N2",
+        "edge_type": "PRODUCES",
+        "confidence": 0.5,
+        "evidence": [
+          "Gecko toe pads have millions of keratin setae"
+        ],
+        "epistemic_state": "OBSERVED"
+      },
+      {
+        "edge_id": "doc_eb25fc5bc7a1:E2",
+        "source_id": "doc_eb25fc5bc7a1:N2",
+        "target_id": "doc_eb25fc5bc7a1:N3",
+        "edge_type": "PRODUCES",
+        "confidence": 0.5,
+        "evidence": [
+          "Each seta branches into hundreds of spatulae"
+        ],
+        "epistemic_state": "OBSERVED"
+      },
+      {
+        "edge_id": "doc_eb25fc5bc7a1:E3",
+        "source_id": "doc_eb25fc5bc7a1:N4",
+        "target_id": "doc_eb25fc5bc7a1:N5",
+        "edge_type": "CAUSES",
+        "confidence": 0.5,
+        "evidence": [
+          "The hierarchical structure (lamella \u2192 seta \u2192 spatula) maximizes contact area."
+        ],
+        "epistemic_state": "OBSERVED"
+      },
+      {
+        "edge_id": "doc_eb25fc5bc7a1:E4",
+        "source_id": "doc_eb25fc5bc7a1:N5",
+        "target_id": "doc_eb25fc5bc7a1:N8",
+        "edge_type": "MODULATES",
+        "confidence": 0.5,
+        "evidence": [
+          "intermolecular forces amplified by enormous contact area"
+        ],
+        "epistemic_state": "OBSERVED"
+      },
+      {
+        "edge_id": "doc_eb25fc5bc7a1:E5",
+        "source_id": "doc_eb25fc5bc7a1:N8",
+        "target_id": "doc_eb25fc5bc7a1:N6",
+        "edge_type": "CAUSES",
+        "confidence": 0.5,
+        "evidence": [
+          "The adhesion mechanism is van der Waals forces between the spatulae and the surface."
+        ],
+        "epistemic_state": "OBSERVED"
+      },
+      {
+        "edge_id": "doc_eb25fc5bc7a1:E6",
+        "source_id": "doc_eb25fc5bc7a1:N6",
+        "target_id": "doc_eb25fc5bc7a1:N7",
+        "edge_type": "CAUSES",
+        "confidence": 0.5,
+        "evidence": [
+          "The key feature is dry adhesion \u2014 no chemical bonding, no wet adhesive, just intermolecular forces amplified by enormous contact area."
+        ],
+        "epistemic_state": "OBSERVED"
+      },
+      {
+        "edge_id": "doc_eb25fc5bc7a1:E7",
+        "source_id": "doc_eb25fc5bc7a1:N6",
+        "target_id": "doc_eb25fc5bc7a1:N9",
+        "edge_type": "PRODUCES",
+        "confidence": 0.5,
+        "evidence": [
+          "Adhesion strength: ~10 N/cm2."
+        ],
+        "epistemic_state": "OBSERVED"
+      },
+      {
+        "edge_id": "doc_eb25fc5bc7a1:E8",
+        "source_id": "doc_eb25fc5bc7a1:N11",
+        "target_id": "doc_eb25fc5bc7a1:N12",
+        "edge_type": "CAUSES",
+        "confidence": 0.5,
+        "evidence": [
+          "the gecko peels its toes at an angle to break the van der Waals interaction"
+        ],
+        "epistemic_state": "OBSERVED"
+      },
+      {
+        "edge_id": "doc_eb25fc5bc7a1:E9",
+        "source_id": "doc_eb25fc5bc7a1:N12",
+        "target_id": "doc_eb25fc5bc7a1:N10",
+        "edge_type": "ENABLES",
+        "confidence": 0.5,
+        "evidence": [
+          "Reversible: the gecko peels its toes at an angle to break the van der Waals interaction."
+        ],
+        "epistemic_state": "OBSERVED"
+      }
+    ]
+  },
+  "n_nodes": 12,
+  "n_edges": 9,
+  "n_failures": 0,
+  "failures": []
+}

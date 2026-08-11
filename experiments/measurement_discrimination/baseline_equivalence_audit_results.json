@@ -1,0 +1,101 @@
+{
+  "audit_type": "BASELINE_EQUIVALENCE_AUDIT",
+  "case_id": "CASE-001",
+  "engine_entries_found": 0,
+  "null_entries_found": 0,
+  "n_dimensions": 9,
+  "state_counts": {
+    "NOT_RUN": 8,
+    "CONTRACT_EQUAL": 1
+  },
+  "measurements": [
+    {
+      "dimension": "source_pair",
+      "state": "NOT_RUN",
+      "engine_provenance": {},
+      "null_provenance": {},
+      "engine_value": null,
+      "null_value": null,
+      "notes": "Engine not executed yet"
+    },
+    {
+      "dimension": "candidate_count",
+      "state": "NOT_RUN",
+      "engine_provenance": {},
+      "null_provenance": {},
+      "engine_value": null,
+      "null_value": null,
+      "notes": "Engine not executed yet"
+    },
+    {
+      "dimension": "candidate_schema",
+      "state": "NOT_RUN",
+      "engine_provenance": {},
+      "null_provenance": {},
+      "engine_value": null,
+      "null_value": null,
+      "notes": "Engine not executed yet"
+    },
+    {
+      "dimension": "candidate_length",
+      "state": "NOT_RUN",
+      "engine_provenance": {},
+      "null_provenance": {},
+      "engine_value": null,
+      "null_value": null,
+      "notes": "Engine not executed yet"
+    },
+    {
+      "dimension": "mechanism_presence",
+      "state": "NOT_RUN",
+      "engine_provenance": {},
+      "null_provenance": {},
+      "engine_value": null,
+      "null_value": null,
+      "notes": "Engine not executed yet"
+    },
+    {
+      "dimension": "invocation_seed",
+      "state": "NOT_RUN",
+      "engine_provenance": {},
+      "null_provenance": {},
+      "engine_value": null,
+      "null_value": null,
+      "notes": "Engine not executed yet"
+    },
+    {
+      "dimension": "llm_access",
+      "state": "NOT_RUN",
+      "engine_provenance": {},
+      "null_provenance": {},
+      "engine_value": null,
+      "null_value": null,
+      "notes": "Engine not executed yet"
+    },
+    {
+      "dimension": "prompt_complexity",
+      "state": "NOT_RUN",
+      "engine_provenance": {},
+      "null_provenance": {},
+      "engine_value": null,
+      "null_value": null,
+      "notes": "Engine not executed yet"
+    },
+    {
+      "dimension": "human_intervention",
+      "state": "CONTRACT_EQUAL",
+      "engine_provenance": {},
+      "null_provenance": {},
+      "engine_value": "none",
+      "null_value": "none",
+      "notes": "No human selects, rewrites, or discards candidates. Verified by provenance ledger (CANDIDATE_GENERATED events are machine-created, immutable)."
+    }
+  ],
+  "summary": {
+    "engine_executed": false,
+    "null_executed": false,
+    "all_observations_from_real_artifacts": false,
+    "fairness_established": false,
+    "notes": "This audit consumes actual provenance ledger entries. If engine entries are NOT_RUN, the audit cannot establish equivalence \u2014 it can only report that the engine has not been executed yet. Fairness is NEVER declared; it is measured."
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "current": {
+    "TP": 8,
+    "FP": 0,
+    "FN": 12,
+    "precision": 1.0,
+    "recall": 0.4,
+    "F1": 0.5714285714285715
+  },
+  "proposal_locus_only": {
+    "TP": 6,
+    "FP": 0,
+    "FN": 14,
+    "precision": 1.0,
+    "recall": 0.3,
+    "F1": 0.4615384615384615
+  },
+  "current_hits": 8,
+  "proposal_only_hits": 6,
+  "fallback_only_hits": 2,
+  "lost_hits": [
+    "DISC-GOLD-004",
+    "DISC-GOLD-005"
+  ],
+  "f1_inflation_from_fallback": 0.1099
+}

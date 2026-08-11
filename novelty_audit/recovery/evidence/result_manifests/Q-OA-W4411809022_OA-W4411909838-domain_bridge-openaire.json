@@ -1,0 +1,24 @@
+{
+  "query_id": "Q-OA-W4411809022_OA-W4411909838-domain_bridge-openaire",
+  "pair_id": "OA-W4411809022_OA-W4411909838",
+  "query_type": "domain_bridge",
+  "provider": "openaire",
+  "query_text": "chemistry materials_science mechanism",
+  "query_hash": "caa467e87081e3425e6af7b682ed70d96c7d4892b880c51925f332972f546c9b",
+  "frozen_query_ref": "Q-OA-W4411809022_OA-W4411909838-domain_bridge-openalex",
+  "url": "https://api.openaire.eu/search/publications?keywords=chemistry+materials_science+mechanism&size=10&format=json",
+  "timestamp_utc": "2026-08-11T12:12:40.996490+00:00",
+  "status": "NO_RESULTS",
+  "result_count": 0,
+  "result_ids": [],
+  "result_titles": [],
+  "result_dois": [],
+  "result_dates": [],
+  "response_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "evidence_uri": "https://api.openaire.eu/search/publications?keywords=chemistry+materials_science+mechanism&size=10&format=json",
+  "error": null,
+  "rate_limit_headers": {
+    "x-ratelimit-used": "18",
+    "x-ratelimit-limit": "7199"
+  }
+}

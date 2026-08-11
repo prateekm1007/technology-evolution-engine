@@ -1,0 +1,74 @@
+{
+  "stage": "05_adversarial_H-DXP-001-002",
+  "run_id": "RUN-DXP-001",
+  "code_sha": "f8e3f2ac136e3b03acc0b3314dc901fc614ae4a8",
+  "input_hash": "03609c7073066fc7553d5647f3a7091cf8fd317035800e76da65b4959caa1b67",
+  "output_hash": "14f6798bed2d3b83cb4666e71fcbf539280289a24f07764d13041323ac27f37c",
+  "provider_manifest": {
+    "provider": "zai",
+    "model": "glm-4-plus",
+    "version": "z-ai-web-dev-sdk",
+    "configuration": {
+      "temperature": 0.2,
+      "max_tokens": 4096,
+      "system_sha": "1f5a3fff3aebc2e1d44b2312f4b604b5c2911cacaf452eb6ca705c724fc9142b"
+    },
+    "prompt_sha": "fae2ad91192e938568b24a7c10b769dcc09420321c67741447ffb9f7c9ca4132",
+    "seed": null,
+    "tool_versions": {
+      "z_ai_cli": "z-ai"
+    },
+    "timestamp": "2026-08-08T09:31:23.129643+00:00",
+    "latency_ms": 10789,
+    "success": true,
+    "error": ""
+  },
+  "result": {
+    "hypothesis_id": "H-DXP-001-002",
+    "failure_modes": [
+      {
+        "category": "FRAGILE_ASSUMPTION",
+        "description": "The assumption that future occupancy and weather can be predicted with reasonable accuracy is fundamentally flawed. Occupancy patterns are inherently chaotic and weather forecasts lose accuracy beyond 48-72 hours, making long-term MPC predictions unreliable.",
+        "severity": "HIGH",
+        "evidence": "Numerous studies show occupancy prediction accuracy drops below 60% for more than 24 hours ahead, and weather forecast error increases exponentially beyond 72 hours."
+      },
+      {
+        "category": "CONTRADICTS_KNOWN",
+        "description": "The claim that stomatal regulation provides a direct analogy for building ventilation control ignores fundamental differences in scale, response time, and environmental factors between plant physiology and building systems.",
+        "severity": "HIGH",
+        "evidence": "Stomatal response operates at millisecond timescales with direct environmental feedback, while building ventilation systems have response times measured in minutes to hours, making the analogy invalid for control purposes."
+      },
+      {
+        "category": "BOUNDARY_BREAKS",
+        "description": "The hypothesis ignores the extreme computational requirements of MPC for building systems, particularly when incorporating multiple variables and prediction horizons, which would overwhelm most existing building automation systems (BAS).",
+        "severity": "MEDIUM",
+        "evidence": "MPC requires solving complex optimization problems in real-time, which typically requires specialized hardware and software that most existing BAS infrastructure cannot support without significant upgrades."
+      },
+      {
+        "category": "PRIOR_ART_EXISTS",
+        "description": "The proposed approach is not novel as MPC has been extensively studied and implemented in HVAC applications for over two decades with mixed results, and the stomatal analogy adds no practical value to existing implementations.",
+        "severity": "MEDIUM",
+        "evidence": "Numerous peer-reviewed publications from the early 2000s demonstrate MPC implementations in HVAC, with many showing marginal improvements over conventional PID controllers at significantly higher implementation cost."
+      },
+      {
+        "category": "FALSIFIER_TRIGGERED",
+        "description": "The hypothesis is already falsified by its own expected failure modes - it explicitly acknowledges that model inaccuracy, computational load, and sensitivity to prediction errors are significant concerns that undermine its viability.",
+        "severity": "HIGH",
+        "evidence": "The hypothesis itself lists 'Model inaccuracy leading to suboptimal control' and 'Sensitivity to prediction errors' as expected failure modes, acknowledging fundamental flaws in the approach."
+      },
+      {
+        "category": "INCOMPATIBLE_TARGET",
+        "description": "The focus on CO2 control as the primary metric ignores the complex, often conflicting requirements of building ventilation including thermal comfort, humidity control, and energy efficiency, making the optimization problem ill-defined.",
+        "severity": "HIGH",
+        "evidence": "ASHRAE Standard 62.1 explicitly recognizes the multi-objective nature of ventilation control, with CO2 being just one of several competing objectives that cannot be optimized simultaneously without tradeoffs."
+      }
+    ],
+    "survives": false,
+    "outcome": "ADVERSARIAL_FAILED",
+    "n_high_severity": 4,
+    "n_medium_severity": 2,
+    "n_low_severity": 0,
+    "source_hypothesis_hash": ""
+  },
+  "timestamp": "2026-08-08T09:31:33.920237+00:00"
+}

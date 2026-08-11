@@ -1,0 +1,70 @@
+{
+  "stage": "03_transfer",
+  "run_id": "RUN-DXP-004-HGEN1",
+  "code_sha": "b945c056742d30986464263ccdc7dc5acbe6e1fc",
+  "input_hash": "cb5b968b4b8b62ce84754936074f440ae32d2183f3b9634e50b13b36508051c9",
+  "output_hash": "2b48583b0f2b8aee7c2e876fb27e46569d811f3d4094e6903f8ed280c4a58cba",
+  "provider_manifest": {
+    "provider": "zai",
+    "model": "glm-4-plus",
+    "version": "z-ai-web-dev-sdk",
+    "configuration": {
+      "temperature": 0.25,
+      "max_tokens": 4096,
+      "system_sha": "f596607dc28478b7317f95a37a7bf99f11ad2e25e10bde5d1c0a9009ba6b1583"
+    },
+    "prompt_sha": "0ef55c2d2d91326a989815c90162929d61c80eb2abf769a2d88c879cf6358b64",
+    "seed": null,
+    "tool_versions": {
+      "z_ai_cli": "z-ai"
+    },
+    "timestamp": "2026-08-08T11:38:30.262795+00:00",
+    "latency_ms": 3680,
+    "success": true,
+    "error": ""
+  },
+  "result": {
+    "transfers": [
+      {
+        "transfer_id": "TH-DXP-004-001",
+        "source_domain": "ichthyology",
+        "source_mechanism": "Surface micro-topography enables directional flow control under fluid conditions, producing drag reduction and anti-fouling effects",
+        "source_conditions": [
+          "turbulent flow",
+          "low Reynolds number"
+        ],
+        "target_domain": "fluid mechanics",
+        "target_problem": "A municipal water pipeline (10 km, 0.5 m diameter, Re=500,000) uses smooth HDPE pipe with friction factor f=0.013. Chemical drag reducers are prohibited. A passive surface treatment is needed that reduces pressure drop by at least 5%, is food-grade, survives 20 years, and can be retrofitted to existing pipes.",
+        "transferred_principle": "Hierarchical surface structures reduce drag through directional flow control and boundary layer modification",
+        "required_translation": "Replace fish scale micro-topography with precisely engineered micro-ridges or rib patterns on the HDPE pipe interior. The surface features must be manufactured from food-grade polymer (likely HDPE itself) with heights \u2264200 micrometers, aligned parallel to flow direction, and arranged in a hierarchical pattern that maintains cleanability while creating longitudinal vortices that thin the viscous sublayer.",
+        "expected_effect": "Reduction in pressure drop by at least 5% through modified boundary layer dynamics and delayed transition to turbulent flow, while inhibiting biofouling attachment through surface topology.",
+        "boundary_conditions": [
+          "Re=500,000",
+          "turbulent flow regime",
+          "5-25\u00b0C water temperature",
+          "food-grade requirements",
+          "retrofit compatibility"
+        ],
+        "failure_conditions": [
+          "surface feature degradation over 20 years",
+          "fouling accumulation in feature valleys",
+          "manufacturing defects causing uneven flow",
+          "pigging operation damage to micro-features"
+        ],
+        "testable_prediction": "A pipe section with the micro-structured surface will show a 5-8% reduction in pressure drop compared to smooth HDPE pipe under identical flow conditions, with measurable reduction in biofilm adhesion strength after 6 months of operation.",
+        "epistemic_state": "HYPOTHESIZED",
+        "provenance": {
+          "nodes": {},
+          "edges": [],
+          "committed_hash": null
+        },
+        "provenance_root_hash": ""
+      }
+    ],
+    "rejected": [],
+    "n_accepted": 1,
+    "n_rejected": 0,
+    "source_abstraction_hash": "0e50b9d63de6416f868efc3c7483c63fae0e6c88b30a6d532beb4c747f8704d2"
+  },
+  "timestamp": "2026-08-08T11:38:33.943677+00:00"
+}

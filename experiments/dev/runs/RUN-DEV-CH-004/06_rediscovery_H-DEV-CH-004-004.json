@@ -1,0 +1,34 @@
+{
+  "stage": "06_rediscovery_H-DEV-CH-004-004",
+  "run_id": "RUN-DEV-CH-004",
+  "code_sha": "7c7da713eedf1f61714252efe3e2b4573f764b72",
+  "input_hash": "91edd9a030e6f9c566c3c33f7414fc434fdeafcb5ae0a0804ea7a421fc2bfb97",
+  "output_hash": "c112e201fef194399e38de29041cc757c0a84f121a691b49ca7b7c8c20c9e998",
+  "provider_manifest": {
+    "provider": "zai",
+    "model": "glm-4-plus",
+    "version": "z-ai-web-dev-sdk",
+    "configuration": {
+      "temperature": 0.1,
+      "max_tokens": 4096,
+      "system_sha": "dbdd0760dff49fc029b32b580a575b7de33a87d371edc2b0deec93bfb2b90b01"
+    },
+    "prompt_sha": "fb353e2fa09beb179c47b392595e43b6c0df751b8d0a197f63bf38a0adae8f8d",
+    "seed": null,
+    "tool_versions": {
+      "z_ai_cli": "z-ai"
+    },
+    "timestamp": "2026-08-08T09:12:23.934967+00:00",
+    "latency_ms": 2763,
+    "success": true,
+    "error": ""
+  },
+  "result": {
+    "hypothesis_id": "H-DEV-CH-004-004",
+    "classification": "NON_TRIVIAL_TRANSFER",
+    "evidence": "The hypothesis proposes applying information-theoretic optimization to traffic signal timing by maximizing mutual information between upstream and downstream traffic states. The source document discusses a biological organism (Physarum polycephalum) that optimizes transport networks through flow-dependent feedback mechanisms, but there is no mention of information theory, mutual information, or traffic systems. The transfer involves applying a biological optimization principle to a completely different domain (traffic engineering) using a mathematical framework (information theory) not present in the source. This represents a genuine cross-domain transfer that cannot be reduced to the source content.",
+    "is_rediscovery": false,
+    "source_hypothesis_hash": ""
+  },
+  "timestamp": "2026-08-08T09:12:26.699275+00:00"
+}

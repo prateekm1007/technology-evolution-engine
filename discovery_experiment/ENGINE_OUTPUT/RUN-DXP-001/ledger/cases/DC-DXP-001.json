@@ -1,0 +1,373 @@
+{
+  "case_id": "DC-DXP-001",
+  "created_at": "2026-08-08T09:31:45.993735+00:00",
+  "engine_version": "",
+  "knowledge_snapshot": "",
+  "input_sources": [
+    "Stomatal Conductance Regulation in Vascular Plants"
+  ],
+  "input_domains": [
+    "plant physiology",
+    "building HVAC control"
+  ],
+  "mechanisms": [],
+  "constraints": [],
+  "observations": [],
+  "candidate_relationship": "",
+  "candidate_mechanism": "",
+  "candidate_hypothesis": "",
+  "predictions": [],
+  "proposed_experiment": "",
+  "prior_art_status": "NOT_EVALUATED",
+  "novelty_status": "NOT_EVALUATED",
+  "validation_status": "UNKNOWN",
+  "evidence": [
+    "source_doc:doc_8c1fb86b6f54",
+    "mechanism_graph:DXP-001",
+    "mechanism_pattern:DXP-001",
+    "transfer:TH-DXP-001-001",
+    "hypothesis:H-DXP-001-001",
+    "adversarial:H-DXP-001-001",
+    "rediscovery:H-DXP-001-001",
+    "novelty:H-DXP-001-001",
+    "hypothesis:H-DXP-001-002",
+    "adversarial:H-DXP-001-002",
+    "rediscovery:H-DXP-001-002",
+    "novelty:H-DXP-001-002",
+    "hypothesis:H-DXP-001-003",
+    "adversarial:H-DXP-001-003",
+    "rediscovery:H-DXP-001-003",
+    "novelty:H-DXP-001-003",
+    "run:DXP-001"
+  ],
+  "provenance": {
+    "nodes": {
+      "source_doc:doc_8c1fb86b6f54": {
+        "node_id": "source_doc:doc_8c1fb86b6f54",
+        "node_type": "source_document",
+        "content_hash": "e52256983c3ed1fc67c12b7ebe57948bc2bcdcc43a3c632b0069e181a3942bc2",
+        "metadata": {
+          "artifact_stage": "01_extraction",
+          "artifact_output_hash": "e52256983c3ed1fc67c12b7ebe57948bc2bcdcc43a3c632b0069e181a3942bc2",
+          "title": "Stomatal Conductance Regulation in Vascular Plants"
+        }
+      },
+      "mechanism_graph:DXP-001": {
+        "node_id": "mechanism_graph:DXP-001",
+        "node_type": "mechanism_graph",
+        "content_hash": "e52256983c3ed1fc67c12b7ebe57948bc2bcdcc43a3c632b0069e181a3942bc2",
+        "metadata": {
+          "artifact_stage": "01_extraction",
+          "artifact_output_hash": "e52256983c3ed1fc67c12b7ebe57948bc2bcdcc43a3c632b0069e181a3942bc2",
+          "n_nodes": 24,
+          "n_edges": 25
+        }
+      },
+      "mechanism_pattern:DXP-001": {
+        "node_id": "mechanism_pattern:DXP-001",
+        "node_type": "mechanism_pattern",
+        "content_hash": "e1cc3a51eba47bd10b5ffa74fc529565ed0e138e0fd19761c608fd67fb7b34c1",
+        "metadata": {
+          "artifact_stage": "02_abstraction",
+          "artifact_output_hash": "e1cc3a51eba47bd10b5ffa74fc529565ed0e138e0fd19761c608fd67fb7b34c1",
+          "pattern_id": "MP-DXP-001"
+        }
+      },
+      "transfer:TH-DXP-001-001": {
+        "node_id": "transfer:TH-DXP-001-001",
+        "node_type": "transfer_hypothesis",
+        "content_hash": "b8b383ec5ed8bcc166fab8c94c816259ad2b5a9b74d41ac8d19c12c5d9d7c711",
+        "metadata": {
+          "artifact_stage": "03_transfer",
+          "artifact_output_hash": "b8b383ec5ed8bcc166fab8c94c816259ad2b5a9b74d41ac8d19c12c5d9d7c711",
+          "source_domain": "plant physiology",
+          "target_domain": "building HVAC control",
+          "transferred_principle": "Feedback regulation system modulates aperture size in response to environmental conditions to balance resource exchange"
+        }
+      },
+      "hypothesis:H-DXP-001-001": {
+        "node_id": "hypothesis:H-DXP-001-001",
+        "node_type": "hypothesis",
+        "content_hash": "3b5b8cd1e1b69e17dd39e07a388c85addb9ffd581fd6d8b73bc0fb5e91bfa8bf",
+        "metadata": {
+          "artifact_stage": "04_hypotheses",
+          "artifact_output_hash": "3b5b8cd1e1b69e17dd39e07a388c85addb9ffd581fd6d8b73bc0fb5e91bfa8bf",
+          "claim": "The stomatal-inspired control algorithm should implement a proportional-integral-derivative (PID) co",
+          "hypothesis_object_hash": "83b03455cdcb82ef85f1b555cc5e28160847c1367f4a0ac6d028b7ff1ff78472"
+        }
+      },
+      "adversarial:H-DXP-001-001": {
+        "node_id": "adversarial:H-DXP-001-001",
+        "node_type": "adversarial_analysis",
+        "content_hash": "5351032ecfc8cb6244970198b805721e2038195ca0abefbb173449d93fd27202",
+        "metadata": {
+          "artifact_stage": "05_adversarial_H-DXP-001-001",
+          "artifact_output_hash": "5351032ecfc8cb6244970198b805721e2038195ca0abefbb173449d93fd27202",
+          "outcome": "ADVERSARIAL_FAILED",
+          "survives": false
+        }
+      },
+      "rediscovery:H-DXP-001-001": {
+        "node_id": "rediscovery:H-DXP-001-001",
+        "node_type": "rediscovery_analysis",
+        "content_hash": "2ccb948aeec02cecdebab0efaf719d96051fc95498b85e3222c7870a478b8fb4",
+        "metadata": {
+          "artifact_stage": "06_rediscovery_H-DXP-001-001",
+          "artifact_output_hash": "2ccb948aeec02cecdebab0efaf719d96051fc95498b85e3222c7870a478b8fb4",
+          "classification": "NON_TRIVIAL_TRANSFER",
+          "is_rediscovery": false
+        }
+      },
+      "novelty:H-DXP-001-001": {
+        "node_id": "novelty:H-DXP-001-001",
+        "node_type": "novelty_assessment",
+        "content_hash": "8e6f6825ed7dc9c5bf4e41572f4f83c63d7ba7c16346b7b5df451d621a36ecd6",
+        "metadata": {
+          "artifact_stage": "07_novelty_H-DXP-001-001",
+          "artifact_output_hash": "8e6f6825ed7dc9c5bf4e41572f4f83c63d7ba7c16346b7b5df451d621a36ecd6",
+          "status": "NOT_EVALUATED"
+        }
+      },
+      "hypothesis:H-DXP-001-002": {
+        "node_id": "hypothesis:H-DXP-001-002",
+        "node_type": "hypothesis",
+        "content_hash": "3b5b8cd1e1b69e17dd39e07a388c85addb9ffd581fd6d8b73bc0fb5e91bfa8bf",
+        "metadata": {
+          "artifact_stage": "04_hypotheses",
+          "artifact_output_hash": "3b5b8cd1e1b69e17dd39e07a388c85addb9ffd581fd6d8b73bc0fb5e91bfa8bf",
+          "claim": "The ventilation control should implement a model predictive control (MPC) system that uses stomatal-",
+          "hypothesis_object_hash": "03609c7073066fc7553d5647f3a7091cf8fd317035800e76da65b4959caa1b67"
+        }
+      },
+      "adversarial:H-DXP-001-002": {
+        "node_id": "adversarial:H-DXP-001-002",
+        "node_type": "adversarial_analysis",
+        "content_hash": "14f6798bed2d3b83cb4666e71fcbf539280289a24f07764d13041323ac27f37c",
+        "metadata": {
+          "artifact_stage": "05_adversarial_H-DXP-001-002",
+          "artifact_output_hash": "14f6798bed2d3b83cb4666e71fcbf539280289a24f07764d13041323ac27f37c",
+          "outcome": "ADVERSARIAL_FAILED",
+          "survives": false
+        }
+      },
+      "rediscovery:H-DXP-001-002": {
+        "node_id": "rediscovery:H-DXP-001-002",
+        "node_type": "rediscovery_analysis",
+        "content_hash": "ee89773bd57f6332fbdd74503f334fb232115e2d261c4ea69c00ff3f3535f79e",
+        "metadata": {
+          "artifact_stage": "06_rediscovery_H-DXP-001-002",
+          "artifact_output_hash": "ee89773bd57f6332fbdd74503f334fb232115e2d261c4ea69c00ff3f3535f79e",
+          "classification": "NON_TRIVIAL_TRANSFER",
+          "is_rediscovery": false
+        }
+      },
+      "novelty:H-DXP-001-002": {
+        "node_id": "novelty:H-DXP-001-002",
+        "node_type": "novelty_assessment",
+        "content_hash": "434b1b38ae0a5fedf133a426e4ac8985603503ef38baf943359308c1988c37c3",
+        "metadata": {
+          "artifact_stage": "07_novelty_H-DXP-001-002",
+          "artifact_output_hash": "434b1b38ae0a5fedf133a426e4ac8985603503ef38baf943359308c1988c37c3",
+          "status": "NOT_EVALUATED"
+        }
+      },
+      "hypothesis:H-DXP-001-003": {
+        "node_id": "hypothesis:H-DXP-001-003",
+        "node_type": "hypothesis",
+        "content_hash": "3b5b8cd1e1b69e17dd39e07a388c85addb9ffd581fd6d8b73bc0fb5e91bfa8bf",
+        "metadata": {
+          "artifact_stage": "04_hypotheses",
+          "artifact_output_hash": "3b5b8cd1e1b69e17dd39e07a388c85addb9ffd581fd6d8b73bc0fb5e91bfa8bf",
+          "claim": "The ventilation control should implement a bio-inspired neural network that mimics the distributed d",
+          "hypothesis_object_hash": "03949afc4113186e40c4bacf7d18794c7b290014cbcc376d38ca90cb32d9e858"
+        }
+      },
+      "adversarial:H-DXP-001-003": {
+        "node_id": "adversarial:H-DXP-001-003",
+        "node_type": "adversarial_analysis",
+        "content_hash": "eaaac8b8735f899eb9c2246d151ef9c2ecf033305745760a997bc17a65462667",
+        "metadata": {
+          "artifact_stage": "05_adversarial_H-DXP-001-003",
+          "artifact_output_hash": "eaaac8b8735f899eb9c2246d151ef9c2ecf033305745760a997bc17a65462667",
+          "outcome": "ADVERSARIAL_FAILED",
+          "survives": false
+        }
+      },
+      "rediscovery:H-DXP-001-003": {
+        "node_id": "rediscovery:H-DXP-001-003",
+        "node_type": "rediscovery_analysis",
+        "content_hash": "4e7083fa30cce9e18ad587d33b41906361479825c9b5c76b60591a8989389f18",
+        "metadata": {
+          "artifact_stage": "06_rediscovery_H-DXP-001-003",
+          "artifact_output_hash": "4e7083fa30cce9e18ad587d33b41906361479825c9b5c76b60591a8989389f18",
+          "classification": "NON_TRIVIAL_TRANSFER",
+          "is_rediscovery": false
+        }
+      },
+      "novelty:H-DXP-001-003": {
+        "node_id": "novelty:H-DXP-001-003",
+        "node_type": "novelty_assessment",
+        "content_hash": "0238be935ca67c1182428051db9287e9857d723e4615447d380fb25610bd1daf",
+        "metadata": {
+          "artifact_stage": "07_novelty_H-DXP-001-003",
+          "artifact_output_hash": "0238be935ca67c1182428051db9287e9857d723e4615447d380fb25610bd1daf",
+          "status": "NOT_EVALUATED"
+        }
+      },
+      "run:DXP-001": {
+        "node_id": "run:DXP-001",
+        "node_type": "checkpointed_run",
+        "content_hash": "212ed3b02c7aadbb7ac3d1c012d06e2a4da940cd6593e697a426c45c0e4d5863",
+        "metadata": {
+          "run_id": "RUN-DXP-001",
+          "engine_code_sha": "f8e3f2ac136e3b03acc0b3314dc901fc614ae4a8",
+          "artifact_stage": "manifest",
+          "artifact_output_hash": ""
+        }
+      }
+    },
+    "edges": [
+      {
+        "edge_id": "prov:mg_src:DXP-001",
+        "source_node_id": "source_doc:doc_8c1fb86b6f54",
+        "target_node_id": "mechanism_graph:DXP-001",
+        "edge_type": "DERIVES_FROM",
+        "evidence": "mechanism graph extracted from source",
+        "actor": "mechanism_extractor",
+        "timestamp": "2026-08-08T09:31:45.993760+00:00"
+      },
+      {
+        "edge_id": "prov:mp_mg:DXP-001",
+        "source_node_id": "mechanism_graph:DXP-001",
+        "target_node_id": "mechanism_pattern:DXP-001",
+        "edge_type": "DERIVES_FROM",
+        "evidence": "pattern abstracted from mechanism graph",
+        "actor": "mechanism_abstracter",
+        "timestamp": "2026-08-08T09:31:45.993766+00:00"
+      },
+      {
+        "edge_id": "prov:th_mp:TH-DXP-001-001",
+        "source_node_id": "mechanism_pattern:DXP-001",
+        "target_node_id": "transfer:TH-DXP-001-001",
+        "edge_type": "DERIVES_FROM",
+        "evidence": "transfer derived from pattern",
+        "actor": "cross_domain_transfer",
+        "timestamp": "2026-08-08T09:31:45.993771+00:00"
+      },
+      {
+        "edge_id": "prov:h_th:H-DXP-001-001",
+        "source_node_id": "transfer:TH-DXP-001-001",
+        "target_node_id": "hypothesis:H-DXP-001-001",
+        "edge_type": "DERIVES_FROM",
+        "evidence": "hypothesis derived from transfer",
+        "actor": "hypothesis_engine",
+        "timestamp": "2026-08-08T09:31:45.993799+00:00"
+      },
+      {
+        "edge_id": "prov:adv_h:H-DXP-001-001",
+        "source_node_id": "hypothesis:H-DXP-001-001",
+        "target_node_id": "adversarial:H-DXP-001-001",
+        "edge_type": "ANALYZES",
+        "evidence": "adversarial analysis of hypothesis",
+        "actor": "adversarial_engine",
+        "timestamp": "2026-08-08T09:31:45.993847+00:00"
+      },
+      {
+        "edge_id": "prov:rd_h:H-DXP-001-001",
+        "source_node_id": "hypothesis:H-DXP-001-001",
+        "target_node_id": "rediscovery:H-DXP-001-001",
+        "edge_type": "ANALYZES",
+        "evidence": "rediscovery classification of hypothesis",
+        "actor": "rediscovery_detector",
+        "timestamp": "2026-08-08T09:31:45.993881+00:00"
+      },
+      {
+        "edge_id": "prov:nov_h:H-DXP-001-001",
+        "source_node_id": "hypothesis:H-DXP-001-001",
+        "target_node_id": "novelty:H-DXP-001-001",
+        "edge_type": "ANALYZES",
+        "evidence": "novelty assessment of hypothesis",
+        "actor": "novelty_firewall",
+        "timestamp": "2026-08-08T09:31:45.993916+00:00"
+      },
+      {
+        "edge_id": "prov:h_th:H-DXP-001-002",
+        "source_node_id": "transfer:TH-DXP-001-001",
+        "target_node_id": "hypothesis:H-DXP-001-002",
+        "edge_type": "DERIVES_FROM",
+        "evidence": "hypothesis derived from transfer",
+        "actor": "hypothesis_engine",
+        "timestamp": "2026-08-08T09:31:45.993975+00:00"
+      },
+      {
+        "edge_id": "prov:adv_h:H-DXP-001-002",
+        "source_node_id": "hypothesis:H-DXP-001-002",
+        "target_node_id": "adversarial:H-DXP-001-002",
+        "edge_type": "ANALYZES",
+        "evidence": "adversarial analysis of hypothesis",
+        "actor": "adversarial_engine",
+        "timestamp": "2026-08-08T09:31:45.994032+00:00"
+      },
+      {
+        "edge_id": "prov:rd_h:H-DXP-001-002",
+        "source_node_id": "hypothesis:H-DXP-001-002",
+        "target_node_id": "rediscovery:H-DXP-001-002",
+        "edge_type": "ANALYZES",
+        "evidence": "rediscovery classification of hypothesis",
+        "actor": "rediscovery_detector",
+        "timestamp": "2026-08-08T09:31:45.994071+00:00"
+      },
+      {
+        "edge_id": "prov:nov_h:H-DXP-001-002",
+        "source_node_id": "hypothesis:H-DXP-001-002",
+        "target_node_id": "novelty:H-DXP-001-002",
+        "edge_type": "ANALYZES",
+        "evidence": "novelty assessment of hypothesis",
+        "actor": "novelty_firewall",
+        "timestamp": "2026-08-08T09:31:45.994105+00:00"
+      },
+      {
+        "edge_id": "prov:h_th:H-DXP-001-003",
+        "source_node_id": "transfer:TH-DXP-001-001",
+        "target_node_id": "hypothesis:H-DXP-001-003",
+        "edge_type": "DERIVES_FROM",
+        "evidence": "hypothesis derived from transfer",
+        "actor": "hypothesis_engine",
+        "timestamp": "2026-08-08T09:31:45.994163+00:00"
+      },
+      {
+        "edge_id": "prov:adv_h:H-DXP-001-003",
+        "source_node_id": "hypothesis:H-DXP-001-003",
+        "target_node_id": "adversarial:H-DXP-001-003",
+        "edge_type": "ANALYZES",
+        "evidence": "adversarial analysis of hypothesis",
+        "actor": "adversarial_engine",
+        "timestamp": "2026-08-08T09:31:45.994203+00:00"
+      },
+      {
+        "edge_id": "prov:rd_h:H-DXP-001-003",
+        "source_node_id": "hypothesis:H-DXP-001-003",
+        "target_node_id": "rediscovery:H-DXP-001-003",
+        "edge_type": "ANALYZES",
+        "evidence": "rediscovery classification of hypothesis",
+        "actor": "rediscovery_detector",
+        "timestamp": "2026-08-08T09:31:45.994234+00:00"
+      },
+      {
+        "edge_id": "prov:nov_h:H-DXP-001-003",
+        "source_node_id": "hypothesis:H-DXP-001-003",
+        "target_node_id": "novelty:H-DXP-001-003",
+        "edge_type": "ANALYZES",
+        "evidence": "novelty assessment of hypothesis",
+        "actor": "novelty_firewall",
+        "timestamp": "2026-08-08T09:31:45.994262+00:00"
+      }
+    ],
+    "committed_hash": "b9d5d146160ff5200f3f96bb9e86e5e984f0180a70f5a0fd5bee46b793b7c59f"
+  },
+  "parent_cases": [],
+  "derived_cases": [],
+  "failure_state": null,
+  "manifest": null,
+  "provenance_root_hash": "b9d5d146160ff5200f3f96bb9e86e5e984f0180a70f5a0fd5bee46b793b7c59f"
+}

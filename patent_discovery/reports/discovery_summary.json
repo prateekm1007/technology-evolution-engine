@@ -1,0 +1,34 @@
+{
+  "timestamp": "2026-08-11T15:14:18.755862+00:00",
+  "total_patents": 504,
+  "patents_with_abstracts": 78,
+  "llm_mechanisms": 0,
+  "keyword_mechanisms": 66,
+  "graph_stats": {
+    "total_patents": 504,
+    "total_mechanisms": 12,
+    "total_materials": 0,
+    "total_domains": 8,
+    "total_countries": 4,
+    "total_edges": 5043,
+    "edges_by_type": {
+      "USES_MECHANISM": 66,
+      "CITES": 4977
+    }
+  },
+  "total_candidates": 44,
+  "candidates_by_type": {
+    "CROSS_DOMAIN_TRANSFER": 31,
+    "PERFORMANCE_ANOMALY": 6,
+    "THREE_COUNTRY_ASYMMETRY": 7
+  },
+  "candidates_by_firewall": {
+    "UNVERIFIED_ABSENCE": 13,
+    "ADJACENT_PRIOR_ART": 18,
+    "SKIPPED \u2014 no mechanism to check": 13
+  },
+  "novelty_status": {
+    "UNVERIFIED": 37,
+    "ABSENCE_OF_EVIDENCE": 7
+  }
+}

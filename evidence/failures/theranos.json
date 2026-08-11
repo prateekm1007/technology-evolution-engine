@@ -1,0 +1,38 @@
+{
+  "id": "failure_004",
+  "name": "Theranos",
+  "domain": "medicine",
+  "year_launched": 2003,
+  "year_effective_end": 2018,
+  "category": "fraud",
+  "what_failed": "Claimed revolutionary blood testing from a single drop. Technology never worked as advertised.",
+  "why_it_failed": [
+    "Physics: insufficient blood volume for claimed test range",
+    "Fraud: used conventional machines while claiming proprietary tech",
+    "Secrecy prevented peer review",
+    "Regulatory evasion",
+    "Board lacked technical expertise",
+    "Investor due diligence failure"
+  ],
+  "assumptions_that_broke": [
+    "Miniaturization can overcome fundamental physics constraints",
+    "Secrecy is compatible with scientific validation",
+    "Charisma can substitute for working technology",
+    "Investors will fund without technical verification"
+  ],
+  "constraints_that_moved": [
+    "Microfluidics advanced (but not to Theranos claims)",
+    "Point-of-care diagnostics became legitimate field",
+    "Regulatory scrutiny of diagnostic startups increased"
+  ],
+  "resurrection_conditions": [
+    "Legitimate microfluidic multi-analyte platforms",
+    "Transparent peer-reviewed validation",
+    "Regulatory compliance from day one",
+    "Incremental capability claims"
+  ],
+  "lesson": "When a technology violates known physics constraints, no amount of capital, charisma, or secrecy can make it real. Constraint surfaces are not suggestions.",
+  "created_at": "2026-08-01T09:17:21.875471+00:00",
+  "source": "workstream_D",
+  "version": "1.0"
+}

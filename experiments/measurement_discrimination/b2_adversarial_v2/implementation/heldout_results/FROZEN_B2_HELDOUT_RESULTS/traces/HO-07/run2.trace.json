@@ -1,0 +1,97 @@
+{
+  "schema_version": "b2-trace-v3",
+  "candidate": {
+    "id": "HO-07",
+    "text": "water oxidation by the oxygen-evolving complex",
+    "source_a": "Photosystem II uses absorbed light energy to drive electron transfer through a reaction center and onward to plastoquinone, initiating the photosynthetic electron-transport chain.",
+    "source_b": "The oxygen-evolving complex associated with Photosystem II oxidizes water and releases molecular oxygen while transferring electrons to the reaction center during the catalytic cycle."
+  },
+  "atoms": [
+    {
+      "atom_id": "a1",
+      "claim": "{process: water_oxidation}",
+      "source_support": [
+        {
+          "support_type": "SOURCE_LOCAL",
+          "source_id": "B",
+          "spans": [
+            {
+              "span_text": "oxidizes water",
+              "start": 59,
+              "end": 73
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "atom_id": "a2",
+      "claim": "{agent: oxygen_evolving_complex}",
+      "source_support": [
+        {
+          "support_type": "SOURCE_LOCAL",
+          "source_id": "B",
+          "spans": [
+            {
+              "span_text": "The oxygen-evolving complex",
+              "start": 0,
+              "end": 27
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "atom_id": "a3",
+      "claim": "{relation: agent_performs_process}",
+      "source_support": [
+        {
+          "support_type": "JOINT_CROSS_SOURCE",
+          "source_a_spans": [
+            {
+              "span_text": "Photosystem II",
+              "start": 0,
+              "end": 14
+            }
+          ],
+          "source_b_spans": [
+            {
+              "span_text": "The oxygen-evolving complex associated with Photosystem II",
+              "start": 0,
+              "end": 58
+            }
+          ],
+          "derived_claim": "{relation: agent_performs_process}",
+          "inference_rule": "COMPOSITION",
+          "counterfactual_a": "Without Source A, there's no mention of Photosystem II to associate with the oxygen-evolving complex.",
+          "counterfactual_b": "Without Source B, there's no explicit statement that the oxygen-evolving complex performs water oxidation."
+        }
+      ]
+    }
+  ],
+  "counterfactuals": [
+    {
+      "removed_source": "A",
+      "unsupported_atoms": [
+        "a3"
+      ],
+      "justified_without_source": false
+    },
+    {
+      "removed_source": "B",
+      "unsupported_atoms": [
+        "a1",
+        "a2",
+        "a3"
+      ],
+      "justified_without_source": false
+    }
+  ],
+  "classification": {
+    "justified_by_corpus": true,
+    "iss_a": true,
+    "iss_b": true,
+    "iss_state": "ISS_both",
+    "label": "ALLOW"
+  }
+}

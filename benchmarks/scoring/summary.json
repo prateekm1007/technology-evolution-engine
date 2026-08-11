@@ -1,0 +1,214 @@
+{
+  "timestamp": "2026-08-01T17:51:56.180384+00:00",
+  "total_benchmarks": 26,
+  "patent_benchmarks": 20,
+  "consumer_benchmarks": 6,
+  "overall_composite_mean": 0.3677,
+  "overall_composite_min": 0.36,
+  "overall_composite_max": 0.37,
+  "grade_distribution": {
+    "F": 26
+  },
+  "domain_averages": {
+    "energy": 0.368,
+    "water": 0.3675,
+    "sensors": 0.365,
+    "computation": 0.37,
+    "transportation": 0.37,
+    "medicine": 0.37,
+    "agriculture": 0.36
+  },
+  "weights": {
+    "feasibility": 0.2,
+    "novelty": 0.15,
+    "usefulness": 0.2,
+    "clarity": 0.1,
+    "historical_accuracy": 0.1,
+    "prerequisite_accuracy": 0.15,
+    "blueprint_quality": 0.1
+  },
+  "results": [
+    {
+      "id": "benchmark_0001",
+      "domain": "energy",
+      "grade": "F",
+      "composite": 0.37,
+      "duration": 0.01
+    },
+    {
+      "id": "benchmark_0002",
+      "domain": "energy",
+      "grade": "F",
+      "composite": 0.37,
+      "duration": 0.002
+    },
+    {
+      "id": "benchmark_0003",
+      "domain": "energy",
+      "grade": "F",
+      "composite": 0.37,
+      "duration": 0.002
+    },
+    {
+      "id": "benchmark_0004",
+      "domain": "energy",
+      "grade": "F",
+      "composite": 0.37,
+      "duration": 0.002
+    },
+    {
+      "id": "benchmark_0005",
+      "domain": "water",
+      "grade": "F",
+      "composite": 0.37,
+      "duration": 0.002
+    },
+    {
+      "id": "benchmark_0006",
+      "domain": "water",
+      "grade": "F",
+      "composite": 0.37,
+      "duration": 0.002
+    },
+    {
+      "id": "benchmark_0007",
+      "domain": "water",
+      "grade": "F",
+      "composite": 0.37,
+      "duration": 0.002
+    },
+    {
+      "id": "benchmark_0008",
+      "domain": "sensors",
+      "grade": "F",
+      "composite": 0.37,
+      "duration": 0.002
+    },
+    {
+      "id": "benchmark_0009",
+      "domain": "sensors",
+      "grade": "F",
+      "composite": 0.37,
+      "duration": 0.002
+    },
+    {
+      "id": "benchmark_0010",
+      "domain": "sensors",
+      "grade": "F",
+      "composite": 0.37,
+      "duration": 0.002
+    },
+    {
+      "id": "benchmark_0011",
+      "domain": "computation",
+      "grade": "F",
+      "composite": 0.37,
+      "duration": 0.002
+    },
+    {
+      "id": "benchmark_0012",
+      "domain": "computation",
+      "grade": "F",
+      "composite": 0.37,
+      "duration": 0.002
+    },
+    {
+      "id": "benchmark_0013",
+      "domain": "computation",
+      "grade": "F",
+      "composite": 0.37,
+      "duration": 0.002
+    },
+    {
+      "id": "benchmark_0014",
+      "domain": "computation",
+      "grade": "F",
+      "composite": 0.37,
+      "duration": 0.002
+    },
+    {
+      "id": "benchmark_0015",
+      "domain": "transportation",
+      "grade": "F",
+      "composite": 0.37,
+      "duration": 0.002
+    },
+    {
+      "id": "benchmark_0016",
+      "domain": "transportation",
+      "grade": "F",
+      "composite": 0.37,
+      "duration": 0.002
+    },
+    {
+      "id": "benchmark_0017",
+      "domain": "transportation",
+      "grade": "F",
+      "composite": 0.37,
+      "duration": 0.002
+    },
+    {
+      "id": "benchmark_0018",
+      "domain": "medicine",
+      "grade": "F",
+      "composite": 0.37,
+      "duration": 0.002
+    },
+    {
+      "id": "benchmark_0019",
+      "domain": "medicine",
+      "grade": "F",
+      "composite": 0.37,
+      "duration": 0.002
+    },
+    {
+      "id": "benchmark_0020",
+      "domain": "medicine",
+      "grade": "F",
+      "composite": 0.37,
+      "duration": 0.002
+    },
+    {
+      "id": "benchmark_c001",
+      "domain": "water",
+      "grade": "F",
+      "composite": 0.36,
+      "duration": 0.005
+    },
+    {
+      "id": "benchmark_c002",
+      "domain": "energy",
+      "grade": "F",
+      "composite": 0.36,
+      "duration": 0.004
+    },
+    {
+      "id": "benchmark_c003",
+      "domain": "sensors",
+      "grade": "F",
+      "composite": 0.36,
+      "duration": 0.004
+    },
+    {
+      "id": "benchmark_c004",
+      "domain": "sensors",
+      "grade": "F",
+      "composite": 0.36,
+      "duration": 0.004
+    },
+    {
+      "id": "benchmark_c005",
+      "domain": "sensors",
+      "grade": "F",
+      "composite": 0.36,
+      "duration": 0.004
+    },
+    {
+      "id": "benchmark_c006",
+      "domain": "agriculture",
+      "grade": "F",
+      "composite": 0.36,
+      "duration": 0.004
+    }
+  ]
+}

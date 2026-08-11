@@ -1,0 +1,98 @@
+{
+  "query_id": "Q-OA-W4411809960_OA-W4411909848-direct-openaire",
+  "pair_id": "OA-W4411809960_OA-W4411909848",
+  "query_type": "direct",
+  "provider": "openaire",
+  "query_text": "lipid cancer cells molecular morphology organic",
+  "query_hash": "0e46ab79cb4ef2d037c6fe3e45bab38d07097ab46c2370a518200a3a13ef7ba5",
+  "frozen_query_ref": "Q-OA-W4411809960_OA-W4411909848-direct-openalex",
+  "url": "https://api.openaire.eu/search/publications?keywords=lipid+cancer+cells+molecular+morphology+organic&size=10&format=json",
+  "timestamp_utc": "2026-08-11T12:30:17.545904+00:00",
+  "status": "SUCCESS",
+  "result_count": 5,
+  "result_ids": [
+    [
+      {
+        "$": "S0003267020301914"
+      },
+      {
+        "$": "10.1016/j.aca.2020.02.019"
+      },
+      {
+        "$": "50|doiboost____|69c5211eb136f5207de41688af525d4c"
+      },
+      {
+        "$": "32200906"
+      },
+      {
+        "$": "3006280621"
+      }
+    ],
+    [
+      {
+        "$": "50|datacite____::b095a409c1e865c81a5d402323638183"
+      },
+      {
+        "$": "10.5281/zenodo.19759282"
+      },
+      {
+        "$": "oai:zenodo.org:19759282"
+      },
+      {
+        "$": "50|od______2659::b095a409c1e865c81a5d402323638183"
+      }
+    ],
+    [
+      {
+        "$": "50|datacite____::f4f1a4b7df8ad485c5e325ec193030b3"
+      },
+      {
+        "$": "10.5281/zenodo.19759281"
+      }
+    ],
+    [
+      {
+        "$": "oai:elar.urfu.ru:10995/38013"
+      },
+      {
+        "$": "50|od_______917::3e29ea968688a3a40f393ea6bc6d89a9"
+      }
+    ],
+    [
+      {
+        "$": "oai:dspace.rsu.lv:123456789/623"
+      },
+      {
+        "$": "50|od_____10002::458c6c6cb869f74e6ae931d5e71085ed"
+      }
+    ]
+  ],
+  "result_titles": [
+    "High throughput lipid profiling for subtype classification of hepatocellular carcinoma cell lines and tumor tissues",
+    "The Palingenesis Protocol: Integrated Paradigms for Systemic Biological Renewal and Molecular Reconstitution of the Human Physiological State",
+    "The Palingenesis Protocol: Integrated Paradigms for Systemic Biological Renewal and Molecular Reconstitution of the Human Physiological State",
+    "Experimental and computational biomedicine : Russian Conference with International Participation in memory of Professor Vladimir S. Markhasin : abstract book",
+    "R\u012bga Stradi\u0146\u0161 University. (2019). International Conference on Medical and Health Care Sciences Knowledge for Use in Practice (R\u012bga, 1\u20133 April 2019): Abstracts."
+  ],
+  "result_dois": [
+    "10.1016/j.aca.2020.02.019",
+    "10.5281/zenodo.19759282",
+    "10.5281/zenodo.19759281",
+    "",
+    ""
+  ],
+  "result_dates": [
+    "2020-04-01",
+    "2026-04-25",
+    "2026-04-25",
+    "2016-04-08",
+    "2019-06-05"
+  ],
+  "response_hash": "fa60d2ddded36ce18067891842df77ea1d9963dda5fa2c1c9402bd0d1f567c25",
+  "evidence_uri": "https://api.openaire.eu/search/publications?keywords=lipid+cancer+cells+molecular+morphology+organic&size=10&format=json",
+  "error": null,
+  "rate_limit_headers": {
+    "x-ratelimit-used": "183",
+    "x-ratelimit-limit": "7199"
+  }
+}

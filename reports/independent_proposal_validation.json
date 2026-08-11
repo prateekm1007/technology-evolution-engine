@@ -1,0 +1,92 @@
+[
+  {
+    "proposal_id": "PROP-001",
+    "entity": "heat",
+    "evaluation": {
+      "mechanistically_coherent": "Partial",
+      "scientifically_plausible": "Yes",
+      "falsifiable": "Yes",
+      "specificity_score": 2,
+      "novelty": "Incremental",
+      "missing_assumptions": "The proposal doesn't clearly define how 'heat' functions mechanistically across domains or specify what domains A and B are",
+      "major_flaw": "The confidence score of 0.2 is extremely low without sufficient justification, and the proposal lacks sufficient detail about the specific domains and mechanisms",
+      "overall_quality": 2,
+      "recommendation": "Revise"
+    }
+  },
+  {
+    "proposal_id": "PROP-001",
+    "entity": "thermal_differential",
+    "evaluation": {
+      "mechanistically_coherent": "Partial",
+      "scientifically_plausible": "No",
+      "falsifiable": "Yes",
+      "specificity_score": 2,
+      "novelty": "Incremental",
+      "missing_assumptions": "The proposal lacks clear definition of 'thermal_differential' as a scientific concept and doesn't establish why it would mediate cross-domain connections",
+      "major_flaw": "Low confidence (0.2) suggests the proposer has little belief in their own hypothesis, and the concept 'thermal_differential' is not clearly defined or justified as a meaningful bridge between domains",
+      "overall_quality": 2,
+      "recommendation": "Reject"
+    }
+  },
+  {
+    "proposal_id": "PROP-001",
+    "entity": "surface_chemical_modification",
+    "evaluation": {
+      "mechanistically_coherent": "Partial",
+      "scientifically_plausible": "No",
+      "falsifiable": "Yes",
+      "specificity_score": 2,
+      "novelty": "Incremental",
+      "missing_assumptions": "The proposal lacks clear definition of what constitutes a 'mechanistic connection' and how it would be measured. It also doesn't specify the domains A and B or why surface modification would be particularly relevant to both.",
+      "major_flaw": "The confidence score of 0.2 is extremely low, suggesting the authors have little faith in their own hypothesis. The shared entity 'surface_chemical_modification' is too broad and vague to establish a meaningful cross-domain connection without more specific mechanisms.",
+      "overall_quality": 2,
+      "recommendation": "Reject"
+    }
+  },
+  {
+    "proposal_id": "PROP-001",
+    "entity": "energy_gap",
+    "evaluation": {
+      "mechanistically_coherent": "Partial",
+      "scientifically_plausible": "No",
+      "falsifiable": "Yes",
+      "specificity_score": 2,
+      "novelty": "Incremental",
+      "missing_assumptions": "The proposal lacks justification for why 'energy_gap' would specifically bridge these two domains rather than being a general concept with broad applicability.",
+      "major_flaw": "The confidence score of 0.2 is extremely low, suggesting the authors have little faith in their own hypothesis. Additionally, the proposal doesn't explain what 'energy_gap' specifically refers to in either domain or why it would create a meaningful connection.",
+      "overall_quality": 2,
+      "recommendation": "Revise"
+    }
+  },
+  {
+    "proposal_id": "PROP-001",
+    "entity": "phase_change_enthalpy",
+    "evaluation": {
+      "mechanistically_coherent": "Partial",
+      "scientifically_plausible": "No",
+      "falsifiable": "Yes",
+      "specificity_score": 2,
+      "novelty": "Known",
+      "missing_assumptions": "The proposal lacks explanation of why phase change enthalpy would connect two specific domains, what those domains are, and what the expected mechanistic connections would look like.",
+      "major_flaw": "The confidence score (0.2) is extremely low, suggesting the proposer has little belief in their own hypothesis. The scientific plausibility is questionable without specifying the domains and explaining the physical connection between them through phase change enthalpy.",
+      "overall_quality": 2,
+      "recommendation": "Reject"
+    }
+  },
+  {
+    "proposal_id": "PROP-001",
+    "entity": "light_quantum_energy",
+    "evaluation": {
+      "mechanistically_coherent": "Partial",
+      "scientifically_plausible": "No",
+      "falsifiable": "Yes",
+      "specificity_score": 2,
+      "novelty": "Incremental",
+      "missing_assumptions": "The proposal lacks a clear definition of 'light_quantum_energy' and how it functions as a mechanism connecting domains",
+      "major_flaw": "The confidence score of 0.2 is extremely low, suggesting the authors have little faith in their own bridge concept",
+      "overall_quality": 2,
+      "recommendation": "Reject"
+    }
+  }
+]

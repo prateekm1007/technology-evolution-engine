@@ -1,0 +1,39 @@
+{
+  "query_id": "Q-OA-W4411781495_OA-W4411903091-reverse-openaire",
+  "pair_id": "OA-W4411781495_OA-W4411903091",
+  "query_type": "reverse",
+  "provider": "openaire",
+  "query_text": "seawater electrolysis nickel review advances design",
+  "query_hash": "cf27b24215d527f4150601463faa539af47874db9a22e99f86cceca1638c127b",
+  "frozen_query_ref": "Q-OA-W4411781495_OA-W4411903091-reverse-openalex",
+  "url": "https://api.openaire.eu/search/publications?keywords=seawater+electrolysis+nickel+review+advances+design&size=10&format=json",
+  "timestamp_utc": "2026-08-11T12:25:33.734589+00:00",
+  "status": "SUCCESS",
+  "result_count": 1,
+  "result_ids": [
+    [
+      {
+        "$": "10.15282/kqy6tr12"
+      },
+      {
+        "$": "50|doiboost____|332b919549b8036efbaf5d82d193cc59"
+      }
+    ]
+  ],
+  "result_titles": [
+    "Recent Advances in Nanostructured Electrocatalysts for Seawater Electrolysis: Towards Sustainable Hydrogen Production"
+  ],
+  "result_dois": [
+    "10.15282/kqy6tr12"
+  ],
+  "result_dates": [
+    "2025-04-09"
+  ],
+  "response_hash": "93096a04674aa9492a1971d2f40c11eed214141311b9823c394038f5abaf8a76",
+  "evidence_uri": "https://api.openaire.eu/search/publications?keywords=seawater+electrolysis+nickel+review+advances+design&size=10&format=json",
+  "error": null,
+  "rate_limit_headers": {
+    "x-ratelimit-used": "67",
+    "x-ratelimit-limit": "7199"
+  }
+}

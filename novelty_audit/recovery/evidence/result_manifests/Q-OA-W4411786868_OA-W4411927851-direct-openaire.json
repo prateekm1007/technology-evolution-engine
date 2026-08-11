@@ -1,0 +1,100 @@
+{
+  "query_id": "Q-OA-W4411786868_OA-W4411927851-direct-openaire",
+  "pair_id": "OA-W4411786868_OA-W4411927851",
+  "query_type": "direct",
+  "provider": "openaire",
+  "query_text": "power mppt grid perovskite solar cells",
+  "query_hash": "786d6f4a28459a87c4101f7b9b6e4fc6d2bd3b9411c0dc4374abd014b3164902",
+  "frozen_query_ref": "Q-OA-W4411786868_OA-W4411927851-direct-openalex",
+  "url": "https://api.openaire.eu/search/publications?keywords=power+mppt+grid+perovskite+solar+cells&size=10&format=json",
+  "timestamp_utc": "2026-08-11T12:35:28.601750+00:00",
+  "status": "SUCCESS",
+  "result_count": 3,
+  "result_ids": [
+    [
+      {
+        "$": "en19102441"
+      },
+      {
+        "$": "10.3390/en19102441"
+      },
+      {
+        "$": "50|doiboost____|9f953c0c3a13ccab64d427bfb7a3b65d"
+      }
+    ],
+    [
+      {
+        "$": "1788"
+      },
+      {
+        "$": "10.1038/s41598-025-01788-4"
+      },
+      {
+        "$": "50|doiboost____|a8d9fee004c5c0531d005b2b9663b39f"
+      },
+      {
+        "$": "od_______267::ee098fd6597b4a10c6456555ccb29dcb"
+      },
+      {
+        "$": "40389492"
+      },
+      {
+        "$": "PMC12089516"
+      },
+      {
+        "$": "oai:pubmedcentral.nih.gov:12089516"
+      },
+      {
+        "$": "50|od_______267::ee098fd6597b4a10c6456555ccb29dcb"
+      },
+      {
+        "$": "oai:doaj.org/article:2452baa5501d43a2b40c98244beb2e32"
+      },
+      {
+        "$": "50|doajarticles::b28019c7b5c610f644f1660545cdf60a"
+      }
+    ],
+    [
+      {
+        "$": "50|datacite____::38c28fd8bbc7ca28ae57e17d27b379c8"
+      },
+      {
+        "$": "10.5281/zenodo.20302273"
+      },
+      {
+        "$": "50|datacite____::6edd749cd758b940192ab3ab6d11aac7"
+      },
+      {
+        "$": "10.5281/zenodo.20302274"
+      },
+      {
+        "$": "oai:zenodo.org:20302274"
+      },
+      {
+        "$": "50|od______2659::6edd749cd758b940192ab3ab6d11aac7"
+      }
+    ]
+  ],
+  "result_titles": [
+    "Advanced Photovoltaic Technologies and Intelligent Integration in Solar Photovoltaic and Photovoltaic\u2013Thermal Systems: A Materials Innovation Perspective",
+    "Artificial intelligence based hybrid solar energy systems with smart materials and adaptive photovoltaics for sustainable power generation",
+    "(\u2165)Research on Efficient Improvement System of AI Photovoltaic Power Generation"
+  ],
+  "result_dois": [
+    "10.3390/en19102441",
+    "10.1038/s41598-025-01788-4",
+    "10.5281/zenodo.20302273"
+  ],
+  "result_dates": [
+    "2026-05-19",
+    "2025-05-19",
+    "2026-05-20"
+  ],
+  "response_hash": "ef46c8b37cc3cb0a153a691721e32b9e186a8250260a8d9a159d35e0c61d4efb",
+  "evidence_uri": "https://api.openaire.eu/search/publications?keywords=power+mppt+grid+perovskite+solar+cells&size=10&format=json",
+  "error": null,
+  "rate_limit_headers": {
+    "x-ratelimit-used": "214",
+    "x-ratelimit-limit": "7199"
+  }
+}

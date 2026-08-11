@@ -1,0 +1,34 @@
+{
+  "stage": "06_rediscovery_H-DEV-CH-004-003",
+  "run_id": "RUN-DEV-CH-004",
+  "code_sha": "7c7da713eedf1f61714252efe3e2b4573f764b72",
+  "input_hash": "fe877caa03f919ae97887f1be3b92a79dd22f4201ee9535397cca3b37a24828c",
+  "output_hash": "fac4f774b7a78e7f4558fe297075335e1494e338f7d6fe88d00348ed25ab4b90",
+  "provider_manifest": {
+    "provider": "zai",
+    "model": "glm-4-plus",
+    "version": "z-ai-web-dev-sdk",
+    "configuration": {
+      "temperature": 0.1,
+      "max_tokens": 4096,
+      "system_sha": "dbdd0760dff49fc029b32b580a575b7de33a87d371edc2b0deec93bfb2b90b01"
+    },
+    "prompt_sha": "deb4a2485ae8b84a951f158c55b2eb526f32091cf9a023e7b5a660020501291e",
+    "seed": null,
+    "tool_versions": {
+      "z_ai_cli": "z-ai"
+    },
+    "timestamp": "2026-08-08T09:12:12.311140+00:00",
+    "latency_ms": 3171,
+    "success": true,
+    "error": ""
+  },
+  "result": {
+    "hypothesis_id": "H-DEV-CH-004-003",
+    "classification": "NON_TRIVIAL_TRANSFER",
+    "evidence": "The hypothesis applies biological concepts from Physarum polycephalum (slime mold) network adaptation to traffic signal systems. While the source describes how the slime mold creates optimal transport networks through protoplasmic streaming and feedback mechanisms, the hypothesis transfers this biological model to a completely different domain (traffic engineering). The hypothesis is not explicitly stated, paraphrased, or directly composed from the source text. It requires a genuine cross-domain transfer of the biological adaptation mechanism to create an analogy with traffic signal networks, which goes beyond mere structural inference within the source domain.",
+    "is_rediscovery": false,
+    "source_hypothesis_hash": ""
+  },
+  "timestamp": "2026-08-08T09:12:15.482805+00:00"
+}

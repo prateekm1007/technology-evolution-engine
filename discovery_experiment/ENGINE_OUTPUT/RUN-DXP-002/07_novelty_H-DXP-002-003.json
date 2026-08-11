@@ -1,0 +1,32 @@
+{
+  "stage": "07_novelty_H-DXP-002-003",
+  "run_id": "RUN-DXP-002",
+  "code_sha": "d6b7aee5790e2d45839fb08b7add0c89d4e40d09",
+  "input_hash": "e6aad5487b8e9411df14998809fd8a54ecc3ef603fcccef3539b34900e42b942",
+  "output_hash": "2c2603efcad0b096cfc4da21a53953ed703462ea504ff67c9a867118f1a36155",
+  "provider_manifest": {
+    "provider": "mock-literature",
+    "model": "dev-corpus-v0",
+    "version": "test",
+    "configuration": {
+      "corpus_size": 0,
+      "cutoff": "2026-08-08"
+    },
+    "prompt_sha": "d57b89d5e721e0d7059adad4e6cac3dcdb8a0b45f07da87aad28e9011a9d5d49",
+    "seed": null,
+    "tool_versions": {},
+    "timestamp": "2026-08-08T09:43:55.786313+00:00",
+    "latency_ms": null,
+    "success": true,
+    "error": ""
+  },
+  "result": {
+    "hypothesis_id": "H-DXP-002-003",
+    "status": "NOT_EVALUATED",
+    "similarity": "no matches in dev corpus \u2014 NOT proof of novelty",
+    "matched_prior_art": [],
+    "review_required": true,
+    "source_hypothesis_hash": ""
+  },
+  "timestamp": "2026-08-08T09:43:55.786583+00:00"
+}

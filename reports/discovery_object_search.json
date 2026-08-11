@@ -1,0 +1,57 @@
+[
+  {
+    "object": "A: Entity",
+    "recall": 0.95,
+    "adversarial_fp": 0.1,
+    "random_fp": 0.55,
+    "discrimination": 9.5,
+    "n_gold": 20,
+    "n_candidates": 143,
+    "n_fakes": 20,
+    "verdict": "FAIL"
+  },
+  {
+    "object": "B: BridgeProposal",
+    "recall": 0.0,
+    "adversarial_fp": 0.0,
+    "random_fp": 0.0,
+    "discrimination": 0,
+    "n_gold": 20,
+    "n_candidates": 20,
+    "n_fakes": 20,
+    "verdict": "FAIL"
+  },
+  {
+    "object": "C: MechanismGraph",
+    "recall": 0.0,
+    "adversarial_fp": 0.0,
+    "random_fp": 0.0,
+    "discrimination": 0,
+    "n_gold": 20,
+    "n_candidates": 20,
+    "n_fakes": 20,
+    "verdict": "FAIL"
+  },
+  {
+    "object": "D: ScientificClaim",
+    "recall": 0.0,
+    "adversarial_fp": 0.0,
+    "random_fp": 0.0,
+    "discrimination": 0,
+    "n_gold": 20,
+    "n_candidates": 20,
+    "n_fakes": 20,
+    "verdict": "FAIL"
+  },
+  {
+    "object": "E: EvidenceGraph",
+    "recall": 0.0,
+    "adversarial_fp": 0.0,
+    "random_fp": 0.0,
+    "discrimination": 0,
+    "n_gold": 20,
+    "n_candidates": 20,
+    "n_fakes": 20,
+    "verdict": "FAIL"
+  }
+]

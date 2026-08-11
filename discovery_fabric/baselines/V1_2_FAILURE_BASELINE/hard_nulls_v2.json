@@ -1,0 +1,178 @@
+{
+  "timestamp": "2026-08-11T17:48:07.746041+00:00",
+  "total_hard_nulls": 6,
+  "by_type": {
+    "NULL": 6
+  },
+  "candidates": [
+    {
+      "candidate_id": "NULL-NULL-4-116ff8a4",
+      "discovery_mode": "cross_domain_mechanism_transfer",
+      "mechanism_a": {
+        "evidence_id": "crossref:10.1177/0021998318788144",
+        "process": "Ultrasonic probe sonication at 20 kHz and 70% amplitude for 2 hours",
+        "domain": "materials"
+      },
+      "mechanism_b": {
+        "evidence_id": "crossref:10.1063/1.120481",
+        "process": "Synthesis of nanometer-sized AlGaN embedded in PMMA matrix",
+        "domain": "materials"
+      },
+      "bridge": "Same-domain combination — existing literature likely covers this",
+      "constraints": "PENDING",
+      "evidence": [
+        {
+          "evidence_id": "crossref:10.1177/0021998318788144",
+          "domain": "materials"
+        },
+        {
+          "evidence_id": "crossref:10.1063/1.120481",
+          "domain": "materials"
+        }
+      ],
+      "candidate_hypothesis": "Mechanisms within materials may combine for improved performance",
+      "epistemic_state": "CANDIDATE_CONNECTION"
+    },
+    {
+      "candidate_id": "NULL-NULL-6-8ebcb14e",
+      "discovery_mode": "cross_domain_mechanism_transfer",
+      "mechanism_a": {
+        "evidence_id": "arxiv:2011.12521v4",
+        "process": "Mechanically assisted solid-phase synthesis using ballistic driving force",
+        "domain": "materials"
+      },
+      "mechanism_b": {
+        "evidence_id": "arxiv:1411.0481v1",
+        "process": "Embedding modeling languages within established formal languages and using analyzers provided with such languages for synthesis purposes",
+        "domain": "materials"
+      },
+      "bridge": "Cross-domain mechanism transfer — compatible constraints may exist",
+      "constraints": "PENDING",
+      "evidence": [
+        {
+          "evidence_id": "arxiv:2011.12521v4",
+          "domain": "materials"
+        },
+        {
+          "evidence_id": "arxiv:1411.0481v1",
+          "domain": "materials"
+        }
+      ],
+      "candidate_hypothesis": "Mechanism from materials may transfer to materials",
+      "epistemic_state": "CANDIDATE_CONNECTION"
+    },
+    {
+      "candidate_id": "NULL-NULL-6-d00fcd1d",
+      "discovery_mode": "cross_domain_mechanism_transfer",
+      "mechanism_a": {
+        "evidence_id": "crossref:10.1177/0021998318788144",
+        "process": "Ultrasonic probe sonication at 20 kHz and 70% amplitude for 2 hours",
+        "domain": "materials"
+      },
+      "mechanism_b": {
+        "evidence_id": "arxiv:2204.10379v1",
+        "process": "Natural language processing and text-mining techniques",
+        "domain": "materials"
+      },
+      "bridge": "Cross-domain mechanism transfer — compatible constraints may exist",
+      "constraints": "PENDING",
+      "evidence": [
+        {
+          "evidence_id": "crossref:10.1177/0021998318788144",
+          "domain": "materials"
+        },
+        {
+          "evidence_id": "arxiv:2204.10379v1",
+          "domain": "materials"
+        }
+      ],
+      "candidate_hypothesis": "Mechanism from materials may transfer to materials",
+      "epistemic_state": "CANDIDATE_CONNECTION"
+    },
+    {
+      "candidate_id": "NULL-NULL-6-4e756e7d",
+      "discovery_mode": "cross_domain_mechanism_transfer",
+      "mechanism_a": {
+        "evidence_id": "arxiv:2503.22802v2",
+        "process": "Combining SSP libraries with SFH and chemical evolution models, incorporating cosmic redshift and dust extinction effects",
+        "domain": "materials"
+      },
+      "mechanism_b": {
+        "evidence_id": "arxiv:1504.04458v1",
+        "process": "Hollow cathode sputtering using high power pulsing with independent biasing of two separate anodes in the growth zone",
+        "domain": "materials"
+      },
+      "bridge": "Cross-domain mechanism transfer — compatible constraints may exist",
+      "constraints": "PENDING",
+      "evidence": [
+        {
+          "evidence_id": "arxiv:2503.22802v2",
+          "domain": "materials"
+        },
+        {
+          "evidence_id": "arxiv:1504.04458v1",
+          "domain": "materials"
+        }
+      ],
+      "candidate_hypothesis": "Mechanism from materials may transfer to materials",
+      "epistemic_state": "CANDIDATE_CONNECTION"
+    },
+    {
+      "candidate_id": "NULL-NULL-6-efa3b975",
+      "discovery_mode": "cross_domain_mechanism_transfer",
+      "mechanism_a": {
+        "evidence_id": "arxiv:2104.12292v6",
+        "process": "Building MIDI-to-audio synthesis systems using Tacotron and neural source-filter waveform models similar to TTS frameworks, with reference systems using conventional sound modeling techniques",
+        "domain": "materials"
+      },
+      "mechanism_b": {
+        "evidence_id": "arxiv:1112.1783v2",
+        "process": "Distributed priority synthesis using local sets of priorities deployed through local component controllers sharing intended next moves between components in local neighborhoods",
+        "domain": "materials"
+      },
+      "bridge": "Cross-domain mechanism transfer — compatible constraints may exist",
+      "constraints": "PENDING",
+      "evidence": [
+        {
+          "evidence_id": "arxiv:2104.12292v6",
+          "domain": "materials"
+        },
+        {
+          "evidence_id": "arxiv:1112.1783v2",
+          "domain": "materials"
+        }
+      ],
+      "candidate_hypothesis": "Mechanism from materials may transfer to materials",
+      "epistemic_state": "CANDIDATE_CONNECTION"
+    },
+    {
+      "candidate_id": "NULL-NULL-6-78eeb71e",
+      "discovery_mode": "cross_domain_mechanism_transfer",
+      "mechanism_a": {
+        "evidence_id": "arxiv:2107.02003v1",
+        "process": "Extending vocoder-based DNN-TTS with articulatory input estimated from ultrasound tongue images",
+        "domain": "materials"
+      },
+      "mechanism_b": {
+        "evidence_id": "arxiv:1004.4609v1",
+        "process": "Extending existing synthesis flows to generate optimal circuits with respect to Nearest Neighbor Cost (NNC)",
+        "domain": "materials"
+      },
+      "bridge": "Cross-domain mechanism transfer — compatible constraints may exist",
+      "constraints": "PENDING",
+      "evidence": [
+        {
+          "evidence_id": "arxiv:2107.02003v1",
+          "domain": "materials"
+        },
+        {
+          "evidence_id": "arxiv:1004.4609v1",
+          "domain": "materials"
+        }
+      ],
+      "candidate_hypothesis": "Mechanism from materials may transfer to materials",
+      "epistemic_state": "CANDIDATE_CONNECTION"
+    }
+  ],
+  "spec": "NULL_CONTROL_SPEC_V1 — indistinguishable from real candidates by metadata"
+}

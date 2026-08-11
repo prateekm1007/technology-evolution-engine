@@ -1,0 +1,24 @@
+{
+  "query_id": "Q-OA-W4411909687_OA-W4411916948-reverse-openaire",
+  "pair_id": "OA-W4411909687_OA-W4411916948",
+  "query_type": "reverse",
+  "provider": "openaire",
+  "query_text": "model disease maize ambipolar small molecule",
+  "query_hash": "ca4b3a489c9251fbe6eeb3116b790311fee39a925919855757d6d9047c38e77c",
+  "frozen_query_ref": "Q-OA-W4411909687_OA-W4411916948-reverse-openalex",
+  "url": "https://api.openaire.eu/search/publications?keywords=model+disease+maize+ambipolar+small+molecule&size=10&format=json",
+  "timestamp_utc": "2026-08-11T12:24:25.933814+00:00",
+  "status": "NO_RESULTS",
+  "result_count": 0,
+  "result_ids": [],
+  "result_titles": [],
+  "result_dois": [],
+  "result_dates": [],
+  "response_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "evidence_uri": "https://api.openaire.eu/search/publications?keywords=model+disease+maize+ambipolar+small+molecule&size=10&format=json",
+  "error": null,
+  "rate_limit_headers": {
+    "x-ratelimit-used": "46",
+    "x-ratelimit-limit": "7199"
+  }
+}

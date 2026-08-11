@@ -1,0 +1,31 @@
+{
+  "schema_version": "b2-trace-v3",
+  "candidate": {
+    "id": "HO-15",
+    "text": "graphite cathodes generate lithium metal",
+    "source_a": "Graphite is a common lithium-ion battery anode material; during charging, lithium is inserted between graphite layers to form lithiated graphite.",
+    "source_b": "A layered transition-metal oxide cathode stores lithium through reversible electrochemical insertion and releases lithium during charging while accepting it during discharge."
+  },
+  "atoms": [],
+  "counterfactuals": [
+    {
+      "removed_source": "A",
+      "unsupported_atoms": [],
+      "justified_without_source": false
+    },
+    {
+      "removed_source": "B",
+      "unsupported_atoms": [],
+      "justified_without_source": false
+    }
+  ],
+  "classification": {
+    "justified_by_corpus": false,
+    "iss_a": false,
+    "iss_b": false,
+    "iss_state": "UNSUPPORTED",
+    "label": "NOT_ADJUDICATED_BY_B2"
+  },
+  "_fallback": true,
+  "_error": "API request failed with status 429: {\"error\":\"Too many requests, please try again later\"}"
+}

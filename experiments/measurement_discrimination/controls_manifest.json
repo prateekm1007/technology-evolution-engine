@@ -1,0 +1,12 @@
+{
+  "control_type": "shuffled_gold",
+  "control_generation_algorithm": "for each gold[i]: shuffled_bridge = gold[(i + 10) % 20].bridge; fallback offset = 7 if collision",
+  "control_seed": 42,
+  "control_dataset_sha256": "to_be_set_after_generation",
+  "matching_properties": ["document_length_pm10pct", "token_count_pm10pct", "domain_distribution", "structural_complexity"],
+  "quality_audit_required": true,
+  "invalid_null_handling": "INCONCLUSIVE_INVALID_NULL",
+  "amendment_8_compliance": "controls constructed before gold access (algorithm preregistered, seed fixed)",
+  "amendment_9_compliance": "control quality audit verifies matching properties",
+  "amendment_10_compliance": "5 mandatory control arms defined in SCIENTIFIC_GATE_2_PROTOCOL.md (machine, generic LLM, retrieval, human, matched null)"
+}

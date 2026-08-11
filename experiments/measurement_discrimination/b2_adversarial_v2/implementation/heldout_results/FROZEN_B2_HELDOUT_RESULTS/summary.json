@@ -1,0 +1,273 @@
+{
+  "schema_version": "frozen-b2-heldout-results-v1",
+  "package": "FROZEN_B2_HELDOUT_RESULTS",
+  "timestamp": "2026-08-11T00:07:54.003Z",
+  "model_identity": {
+    "detector": "b2_detector.mjs @ f905b68",
+    "llm": "glm-4-plus",
+    "provider": "z-ai internal API (original frozen instrument)",
+    "fixture_sha256": "8a3e51bc74b32ac8c697da48487885d97aee0aa4411488c69fb051ede76bd380"
+  },
+  "n_runs_per_case": 5,
+  "total_cases": 20,
+  "total_executions": 100,
+  "results": [
+    {
+      "pair_id": "PAIR-CRISPR",
+      "case_id": "HO-01",
+      "candidate": "guide-RNA-directed DNA targeting",
+      "n_runs_completed": 5,
+      "n_valid_runs": 5,
+      "majority_label": "ALLOW",
+      "label_distribution": {
+        "ALLOW": 3,
+        "REJECT": 2
+      },
+      "is_tie": false,
+      "iss_state": "REDUNDANT_SUPPORT",
+      "canonical_trace_hash": "5ebc9f5d22cec6d380f5046c746130836f39ef122a979b8694e4910bda134a92"
+    },
+    {
+      "pair_id": "PAIR-CRISPR",
+      "case_id": "HO-02",
+      "candidate": "two-domain Cas9 strand cleavage",
+      "n_runs_completed": 5,
+      "n_valid_runs": 5,
+      "majority_label": "REJECT",
+      "label_distribution": {
+        "REJECT": 5
+      },
+      "is_tie": false,
+      "iss_state": "ISS_one",
+      "canonical_trace_hash": "8d54a879a4bfd9748df68527b1bb329cef6807e4c39743f652e90abbeff27937"
+    },
+    {
+      "pair_id": "PAIR-CRISPR",
+      "case_id": "HO-03",
+      "candidate": "guide-directed double-strand cleavage",
+      "n_runs_completed": 5,
+      "n_valid_runs": 5,
+      "majority_label": "ALLOW",
+      "label_distribution": {
+        "ALLOW": 4,
+        "REJECT": 1
+      },
+      "is_tie": false,
+      "iss_state": "ISS_both",
+      "canonical_trace_hash": "b9644bb7ae5d8c739fa19ddeefebeb2d02df0ac7d8d258b38ce9b81bb2a23c1b"
+    },
+    {
+      "pair_id": "PAIR-CRISPR",
+      "case_id": "HO-04",
+      "candidate": "Cas9 cleaves both DNA strands",
+      "n_runs_completed": 5,
+      "n_valid_runs": 5,
+      "majority_label": "REJECT",
+      "label_distribution": {
+        "REJECT": 5
+      },
+      "is_tie": false,
+      "iss_state": "ISS_one",
+      "canonical_trace_hash": "4f96785a6291e64cd3c5a64e5ec44b0068c65bfef2bed3d57cff776fcd7bd2bf"
+    },
+    {
+      "pair_id": "PAIR-CRISPR",
+      "case_id": "HO-05",
+      "candidate": "guide-RNA-driven RNA splicing",
+      "n_runs_completed": 5,
+      "n_valid_runs": 0,
+      "majority_label": "NOT_ADJUDICATED_BY_B2",
+      "label_distribution": {},
+      "is_tie": false,
+      "iss_state": "UNSUPPORTED",
+      "canonical_trace_hash": "b8e466a63dc72abc13ce2534e727c88125c57a91345080dc15a27ee64f32534c"
+    },
+    {
+      "pair_id": "PAIR-PHOTOSYSTEM",
+      "case_id": "HO-06",
+      "candidate": "light-driven electron transfer in Photosystem II",
+      "n_runs_completed": 5,
+      "n_valid_runs": 5,
+      "majority_label": "REJECT",
+      "label_distribution": {
+        "REJECT": 3,
+        "ALLOW": 2
+      },
+      "is_tie": false,
+      "iss_state": "ISS_one",
+      "canonical_trace_hash": "cda19a4584b16abf7c738d2e23e97733886a1d567a0c1fe5df1c8e0f1769458b"
+    },
+    {
+      "pair_id": "PAIR-PHOTOSYSTEM",
+      "case_id": "HO-07",
+      "candidate": "water oxidation by the oxygen-evolving complex",
+      "n_runs_completed": 5,
+      "n_valid_runs": 4,
+      "majority_label": "REJECT",
+      "label_distribution": {
+        "REJECT": 3,
+        "ALLOW": 1
+      },
+      "is_tie": false,
+      "iss_state": "ISS_one",
+      "canonical_trace_hash": "0104f8c6e6e48ce3be7a957acf823497bc53bde428f222d17b59c0aca386f6aa"
+    },
+    {
+      "pair_id": "PAIR-PHOTOSYSTEM",
+      "case_id": "HO-08",
+      "candidate": "light-driven water oxidation",
+      "n_runs_completed": 5,
+      "n_valid_runs": 0,
+      "majority_label": "NOT_ADJUDICATED_BY_B2",
+      "label_distribution": {},
+      "is_tie": false,
+      "iss_state": "UNSUPPORTED",
+      "canonical_trace_hash": "26c9cf5e6868bf1669be026b3ab514beb7f52a2ba4390f2e2b19cad19b482708"
+    },
+    {
+      "pair_id": "PAIR-PHOTOSYSTEM",
+      "case_id": "HO-09",
+      "candidate": "Photosystem II participates in electron transfer",
+      "n_runs_completed": 5,
+      "n_valid_runs": 0,
+      "majority_label": "NOT_ADJUDICATED_BY_B2",
+      "label_distribution": {},
+      "is_tie": false,
+      "iss_state": "UNSUPPORTED",
+      "canonical_trace_hash": "915dcdf373141040fb61d06d9024efd6910cf2bdaa3a2f298bc8f20305c4880c"
+    },
+    {
+      "pair_id": "PAIR-PHOTOSYSTEM",
+      "case_id": "HO-10",
+      "candidate": "Photosystem II fixes atmospheric nitrogen",
+      "n_runs_completed": 5,
+      "n_valid_runs": 0,
+      "majority_label": "NOT_ADJUDICATED_BY_B2",
+      "label_distribution": {},
+      "is_tie": false,
+      "iss_state": "UNSUPPORTED",
+      "canonical_trace_hash": "721ae4f53c08339c18b81bf368e59f9e1832f9d5969d4bd9dc6ae8eae2302a83"
+    },
+    {
+      "pair_id": "PAIR-BATTERY",
+      "case_id": "HO-11",
+      "candidate": "lithium insertion into graphite layers",
+      "n_runs_completed": 5,
+      "n_valid_runs": 0,
+      "majority_label": "NOT_ADJUDICATED_BY_B2",
+      "label_distribution": {},
+      "is_tie": false,
+      "iss_state": "UNSUPPORTED",
+      "canonical_trace_hash": "c952633a569ec3e86b9083d9ad29012f01e88c912e923ce909cf9a841de0bc53"
+    },
+    {
+      "pair_id": "PAIR-BATTERY",
+      "case_id": "HO-12",
+      "candidate": "layered oxide cathode stores lithium",
+      "n_runs_completed": 5,
+      "n_valid_runs": 0,
+      "majority_label": "NOT_ADJUDICATED_BY_B2",
+      "label_distribution": {},
+      "is_tie": false,
+      "iss_state": "UNSUPPORTED",
+      "canonical_trace_hash": "cfccb1bf2e158bf64c496bf678e316fa3890d93343ccfcdbf9278437d7d2b9d9"
+    },
+    {
+      "pair_id": "PAIR-BATTERY",
+      "case_id": "HO-13",
+      "candidate": "lithium-ion insertion at both electrodes",
+      "n_runs_completed": 5,
+      "n_valid_runs": 0,
+      "majority_label": "NOT_ADJUDICATED_BY_B2",
+      "label_distribution": {},
+      "is_tie": false,
+      "iss_state": "UNSUPPORTED",
+      "canonical_trace_hash": "1908abb88c5e5c92aee6ed837421e1d843a2ce8259ac2d9adb50aec401e54291"
+    },
+    {
+      "pair_id": "PAIR-BATTERY",
+      "case_id": "HO-14",
+      "candidate": "lithium is reversibly stored electrochemically",
+      "n_runs_completed": 5,
+      "n_valid_runs": 0,
+      "majority_label": "NOT_ADJUDICATED_BY_B2",
+      "label_distribution": {},
+      "is_tie": false,
+      "iss_state": "UNSUPPORTED",
+      "canonical_trace_hash": "25496d85c5c80a5ed3c238a5a973dcb51d0097a61053bc11afd819d7807f96b8"
+    },
+    {
+      "pair_id": "PAIR-BATTERY",
+      "case_id": "HO-15",
+      "candidate": "graphite cathodes generate lithium metal",
+      "n_runs_completed": 5,
+      "n_valid_runs": 0,
+      "majority_label": "NOT_ADJUDICATED_BY_B2",
+      "label_distribution": {},
+      "is_tie": false,
+      "iss_state": "UNSUPPORTED",
+      "canonical_trace_hash": "96106615b7bd489b4ae02dfe734572fdb5abfda27f8900d57aad1bd05b857496"
+    },
+    {
+      "pair_id": "PAIR-ENZYME",
+      "case_id": "HO-16",
+      "candidate": "enzymes lower activation free energy",
+      "n_runs_completed": 5,
+      "n_valid_runs": 0,
+      "majority_label": "NOT_ADJUDICATED_BY_B2",
+      "label_distribution": {},
+      "is_tie": false,
+      "iss_state": "UNSUPPORTED",
+      "canonical_trace_hash": "e6b51668180d2d4ab0226053a3f1fb365a8d9dbd96badef26bdcab12622112e9"
+    },
+    {
+      "pair_id": "PAIR-ENZYME",
+      "case_id": "HO-17",
+      "candidate": "active-site substrate binding",
+      "n_runs_completed": 5,
+      "n_valid_runs": 0,
+      "majority_label": "NOT_ADJUDICATED_BY_B2",
+      "label_distribution": {},
+      "is_tie": false,
+      "iss_state": "UNSUPPORTED",
+      "canonical_trace_hash": "9c2cab8eb160e6b3e80818deca8391b9abd3d64d25305ad3098aef16a0956284"
+    },
+    {
+      "pair_id": "PAIR-ENZYME",
+      "case_id": "HO-18",
+      "candidate": "active-site positioning lowers activation free energy",
+      "n_runs_completed": 5,
+      "n_valid_runs": 0,
+      "majority_label": "NOT_ADJUDICATED_BY_B2",
+      "label_distribution": {},
+      "is_tie": false,
+      "iss_state": "UNSUPPORTED",
+      "canonical_trace_hash": "e866a6cff0df4059eb008b8e5ce66488bc3133208afe68e82eb7273b2e4937d2"
+    },
+    {
+      "pair_id": "PAIR-ENZYME",
+      "case_id": "HO-19",
+      "candidate": "enzymes accelerate chemical reactions",
+      "n_runs_completed": 5,
+      "n_valid_runs": 0,
+      "majority_label": "NOT_ADJUDICATED_BY_B2",
+      "label_distribution": {},
+      "is_tie": false,
+      "iss_state": "UNSUPPORTED",
+      "canonical_trace_hash": "fe39f94aec7403328399f566832b967fe1e96ac1c8ede772171fd62df3e836fe"
+    },
+    {
+      "pair_id": "PAIR-ENZYME",
+      "case_id": "HO-20",
+      "candidate": "enzymes increase activation free energy",
+      "n_runs_completed": 5,
+      "n_valid_runs": 0,
+      "majority_label": "NOT_ADJUDICATED_BY_B2",
+      "label_distribution": {},
+      "is_tie": false,
+      "iss_state": "UNSUPPORTED",
+      "canonical_trace_hash": "555933407f61c5a31c9c0cbacae72a5d342ef8468c48e5d87f03a235e3e31252"
+    }
+  ],
+  "note": "Machine-only outputs. No answer-key comparison. No correctness calculation. Awaiting independent answer-key custodian."
+}

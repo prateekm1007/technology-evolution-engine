@@ -1,0 +1,35 @@
+{
+  "hypothesis_id": "H-DEV-CH-004-004",
+  "claim": "Self-organizing traffic signal timing through information-theoretic optimization",
+  "mechanism": "Each intersection adjusts its signal timing to maximize the information flow through the network, measured by the mutual information between upstream and downstream traffic states. This creates a system where signals adapt to maximize overall network throughput rather than just local efficiency",
+  "evidence": [
+    "Myxomycetes optimize network structures for efficient resource flow",
+    "Information theory has been applied to traffic flow analysis",
+    "Self-organizing systems often optimize information transfer"
+  ],
+  "assumptions": [
+    "Maximizing information flow correlates with maximizing traffic throughput",
+    "Local measurements can estimate network-wide information flow",
+    "Information-theoretic optimization is computationally feasible in real-time",
+    "The network has sufficient heterogeneity to benefit from information maximization"
+  ],
+  "predictions": [],
+  "expected_failure_modes": [
+    "Computational infeasibility of information-theoretic calculations",
+    "Misalignment between information flow and actual traffic efficiency",
+    "Sensitivity to measurement errors in traffic state estimation",
+    "Failure to handle extreme traffic conditions"
+  ],
+  "novelty_rationale": "Applies information-theoretic principles to traffic signal control, framing the problem as maximizing information flow rather than traditional metrics like delay or throughput, potentially revealing new optimization strategies",
+  "testability": "Can be tested by implementing information-theoretic signal control algorithms and comparing performance to traditional methods across various traffic scenarios",
+  "falsifier": "If the system fails to improve traffic flow compared to traditional optimization methods, or if the computational complexity prevents real-time operation",
+  "epistemic_state": "HYPOTHESIZED",
+  "parent_hypothesis_ids": [],
+  "provenance": {
+    "nodes": {},
+    "edges": [],
+    "committed_hash": null
+  },
+  "is_testable": true,
+  "provenance_root_hash": ""
+}

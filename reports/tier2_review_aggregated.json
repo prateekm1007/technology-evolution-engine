@@ -1,0 +1,64 @@
+{
+  "n_responses": 6,
+  "n_unique_proposals": 6,
+  "dimension_stats": {
+    "D1": {
+      "n": 6,
+      "mean": 4.0,
+      "stdev": 0.6325
+    },
+    "D2": {
+      "n": 6,
+      "mean": 1.1667,
+      "stdev": 0.4082
+    },
+    "D3": {
+      "n": 6,
+      "mean": 2.0,
+      "stdev": 0.0
+    },
+    "D4": {
+      "n": 6,
+      "mean": 1.8333,
+      "stdev": 0.4082
+    },
+    "D5": {
+      "n": 6,
+      "mean": 3.0,
+      "stdev": 0.0
+    },
+    "D6": {
+      "n": 6,
+      "mean": 1.8333,
+      "stdev": 0.4082
+    },
+    "D7": {
+      "n": 6,
+      "mean": 1.8333,
+      "stdev": 0.4082
+    }
+  },
+  "verdict_distribution_per_proposal": {
+    "REVIEW-001": {
+      "REJECT": 1
+    },
+    "REVIEW-002": {
+      "REJECT": 1
+    },
+    "REVIEW-003": {
+      "REJECT": 1
+    },
+    "REVIEW-004": {
+      "REJECT": 1
+    },
+    "REVIEW-005": {
+      "REJECT": 1
+    },
+    "REVIEW-006": {
+      "REJECT": 1
+    }
+  },
+  "accept_rate": 0.0,
+  "overall_mean_score": 2.2381,
+  "gate_verdict": "FAIL"
+}

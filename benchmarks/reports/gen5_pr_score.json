@@ -1,0 +1,128 @@
+{
+  "benchmark": "gen5_discovery_pr",
+  "timestamp": "2026-08-06T18:17:40Z",
+  "total_blind_tests": 55,
+  "potential_hits": 14,
+  "null_results": 41,
+  "reclassified": 2,
+  "true_positives": 15,
+  "false_positives": 0,
+  "false_negatives": 2,
+  "novelty_rate": 0.6,
+  "novel_count": 9,
+  "total_verified_connections": 15,
+  "precision": 1.0,
+  "recall": 0.8824,
+  "f1": 0.9375,
+  "outcome_points": 3,
+  "infra_score": 7,
+  "total_score": 9,
+  "scoring_formula": "round(10 \u00d7 F1) \u2014 connection-finding (retrieval+novel)",
+  "verified_hits": [
+    {
+      "experiment_id": "EXP-BLIND-016",
+      "literature_A": "electrospun scaffolds for tissue engineering",
+      "literature_B": "electrospun nanofiber membranes for water filtration",
+      "verification": "RETRIEVAL (real connection, not novel)",
+      "t2_snippet": "The connection between electrospun scaffolds and electrospun membranes is well-known. Papers explici"
+    },
+    {
+      "experiment_id": "EXP-BLIND-020",
+      "literature_A": "phase change material latent heat thermal storage building",
+      "literature_B": "infrared stealth thermal signature camouflage emissivity",
+      "verification": "RETRIEVAL (real connection, not novel)",
+      "t2_snippet": "The bridge PCM -> thermal_regulation -> infrared_stealth is well-known. Multiple papers explicitly c"
+    },
+    {
+      "experiment_id": "EXP-BLIND-021",
+      "literature_A": "conductive polymer PEDOT biosensor impedance",
+      "literature_B": "plant electrophysiology action potential phloem signaling",
+      "verification": "RETRIEVAL (real connection, not novel)",
+      "t2_snippet": "The bridge biosensor -> bioelectric_signal -> action_potential is well-known. Armada-Moreira 2022 be"
+    },
+    {
+      "experiment_id": "EXP-BLIND-022",
+      "literature_A": "pitcher plant peristome wetting slippery surface mechanism",
+      "literature_B": "precision agriculture fertilizer dosing controlled release mechanism",
+      "verification": "PROVISIONAL_NOVEL_HIT",
+      "t2_snippet": "PROVISIONAL NOVEL HIT. The bridge (pitcher plant porous microstructure -> controlled_release_membran"
+    },
+    {
+      "experiment_id": "EXP-BLIND-023",
+      "literature_A": "lotus leaf superhydrophobicity self-cleaning contact angle",
+      "literature_B": "lithium battery separator electrolyte wetting contact angle",
+      "verification": "PROVISIONAL_NOVEL_HIT",
+      "t2_snippet": "PROVISIONAL NOVEL HIT. The bridge (lotus leaf contact angle -> surface wettability control -> batter"
+    },
+    {
+      "experiment_id": "EXP-BLIND-025",
+      "literature_A": "pangolin scale overlapping armor keratin flexible protection",
+      "literature_B": "deployable radiation shield spacecraft solar protection",
+      "verification": "RETRIEVAL (real connection, not novel)",
+      "t2_snippet": "RETRIEVAL. The pangolin overlapping plates -> deployable structure bridge is already published. Soon"
+    },
+    {
+      "experiment_id": "EXP-BLIND-028",
+      "literature_A": "brachiopod shell phosphate biomineralization",
+      "literature_B": "lithium iron phosphate battery cathode olivine",
+      "verification": "PROVISIONAL_NOVEL_HIT",
+      "t2_snippet": "PROVISIONAL. No published bridge found between brachiopod phosphate biomineralization and LFP batter"
+    },
+    {
+      "experiment_id": "EXP-BLIND-031",
+      "literature_A": "coccolithophore calcite plates biomineralization",
+      "literature_B": "optical diffraction grating wavelength separation",
+      "verification": "RETRIEVAL (real connection, not novel)",
+      "t2_snippet": "RETRIEVAL. Coccolithophore calcite plates are already studied as photonic crystals (Wasdin 2014). Th"
+    },
+    {
+      "experiment_id": "EXP-BLIND-037",
+      "literature_A": "chiton radula teeth magnetite biomineralization",
+      "literature_B": "magnetic data storage hard disk grain anisotropy",
+      "verification": "PROVISIONAL_NOVEL_HIT",
+      "t2_snippet": "PROVISIONAL. No published bridge found. The shared mechanism (magnetic biomineral) is specific. Pend"
+    },
+    {
+      "experiment_id": "EXP-BLIND-040",
+      "literature_A": "pangolin scale keratin overlapping armor",
+      "literature_B": "violin bow horsehair rosin grip string",
+      "verification": "PROVISIONAL_NOVEL_HIT",
+      "t2_snippet": "PROVISIONAL. No published bridge. Pending non-triviality + F-065."
+    },
+    {
+      "experiment_id": "EXP-BLIND-043",
+      "literature_A": "turtle shell scute hexagonal modular growth",
+      "literature_B": "satellite solar panel modular tile deployable",
+      "verification": "PROVISIONAL_NOVEL_HIT",
+      "t2_snippet": "PROVISIONAL. No published bridge. Pending non-triviality + F-065."
+    },
+    {
+      "experiment_id": "EXP-BLIND-054",
+      "literature_A": "spider silk humidity response torsional actuation",
+      "literature_B": "adaptive building facade responsive material energy efficiency",
+      "verification": "RETRIEVAL (real connection, not novel)",
+      "t2_snippet": "RETRIEVAL. Spider silk for adaptive building facades is published (Al-Obaidi 2017, 233 cit). The con"
+    },
+    {
+      "experiment_id": "EXP-BLIND-002",
+      "literature_A": null,
+      "literature_B": null,
+      "verification": "CONFIRMED (from verification log)",
+      "t2_snippet": "PARTIALLY CONFIRMED \u2014 The concept of conductive nonmagnetic nanoparticles heated by eddy currents fo"
+    },
+    {
+      "experiment_id": "EXP-BLIND-003",
+      "literature_A": null,
+      "literature_B": null,
+      "verification": "CONFIRMED (from verification log)",
+      "t2_snippet": "CONFIRMED \u2014 Multiple sources verify that BBB tight junctions function as size-selective pores, analo"
+    },
+    {
+      "experiment_id": "EXP-BLIND-001",
+      "literature_A": null,
+      "literature_B": null,
+      "verification": "CONFIRMED (from verification log)",
+      "t2_snippet": "CONFIRMED \u2014 Multiple independent sources verify that fungi/mycelium can precipitate CaCO3 via biomin"
+    }
+  ]
+}

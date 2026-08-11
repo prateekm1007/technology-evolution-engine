@@ -1,0 +1,87 @@
+{
+  "milestone_id": "milestone_001",
+  "name": "pH prediction of a citric-acid + sodium-bicarbonate mixture",
+  "version": "1.1",
+  "status": "open",
+  "class": "A",
+  "created_at": "2026-08-01T17:00:00+00:00",
+
+  "summary": "The system predicts the resulting pH of a citric-acid + sodium-bicarbonate (baking-soda) mixture at a specific ratio. A human constructs the mixture, measures the pH with pH strips, and the prediction error is computed and recorded in the ledger. This is a Class A (infrastructure) milestone — it verifies the experimentation loop works mechanically but does NOT teach the system how to invent. See milestones/milestone_002/ for a Class B (invention) candidate.",
+
+  "cto_criteria": {
+    "inexpensive": true,
+    "measurable": true,
+    "reproducible": true,
+    "executable_within_days": true,
+    "teaches_invention": false
+  },
+
+  "estimated_days": 1,
+  "estimated_cost_usd": 20,
+
+  "materials": [
+    "citric acid (food-grade, ~$5)",
+    "sodium bicarbonate (baking soda, ~$2)",
+    "distilled water (~$1)",
+    "pH test strips, range 0-14 (~$10)",
+    "measuring spoons / scale (~$2)"
+  ],
+
+  "problem": {
+    "domain": "chemistry",
+    "statement": "Predict the resulting pH when 1g citric acid and 2g sodium bicarbonate are dissolved in 100mL distilled water at 25C.",
+    "constraints": ["temperature_25C", "concentration_100mL", "ratio_1g_to_2g"]
+  },
+
+  "prediction": {
+    "claim": "The resulting pH of the citric-acid + sodium-bicarbonate mixture at the specified ratio (1g:2g in 100mL H2O at 25C) will be in the range 6.0 - 7.0.",
+    "confidence": 0.55,
+    "evidence": [
+      "chemistry_knowledge_module: acid-base neutralization pathway",
+      "chemistry_knowledge_module: K_eq equilibrium model",
+      "chemistry_knowledge_module: Arrhenius kinetics model",
+      "citric-acid pKa1=3.13 (literature)",
+      "sodium-bicarbonate pKb=3.67 (literature)",
+      "stoichiometric calculation: 1g citric (5.2 mmol) + 2g NaHCO3 (23.8 mmol) → NaHCO3 in ~4.5x molar excess → pH leans basic"
+    ],
+    "counterevidence": [
+      "the actual reaction is multi-step (3 deprotonations of citric)",
+      "CO2 evolution removes some alkalinity (open container assumed)",
+      "pKa values are temperature-dependent; 25C is well-defined but real-world water may differ"
+    ],
+    "assumptions": [
+      "water is distilled (no buffering from tap water minerals)",
+      "container is open (CO2 escapes; closed container would lower pH)",
+      "pH strips have +/-0.5 accuracy",
+      "temperature is 25C (room temperature, not controlled)"
+    ],
+    "dependencies": [],
+    "status": "pending",
+    "writer": "milestones.milestone_001.spec.prediction"
+  },
+
+  "measurement_plan": {
+    "metric": "pH (numeric, range 0-14)",
+    "instrument": "pH test strips, range 0-14, +/-0.5 accuracy",
+    "procedure": [
+      "1. Measure 100mL distilled water into a clean container.",
+      "2. Measure 1g citric acid; add to water; stir until dissolved.",
+      "3. Measure 2g sodium bicarbonate; add to the citric-acid solution; stir.",
+      "4. Wait 60 seconds for the reaction to complete (CO2 evolution to subside).",
+      "5. Dip pH test strip for 2 seconds; remove; wait 15 seconds; compare to color chart.",
+      "6. Record the pH reading.",
+      "7. Repeat steps 1-6 three times (for reproducibility)."
+    ],
+    "expected_numeric_value_range": [6.0, 7.0],
+    "expected_numeric_value_center": 6.5,
+    "tolerance_for_pass": 1.0,
+    "pass_criteria": "abs(measured_pH - 6.5) <= 1.0 AND all 3 trials agree within +/-0.5",
+    "fail_criteria": "abs(measured_pH - 6.5) > 1.0 OR trials disagree by > 0.5"
+  },
+
+  "loop_closes": 4,
+
+  "next_action_to_close": "Human constructs the mixture per measurement_plan, records the pH reading in milestones/milestone_001/result.json, then runs scripts/close_milestone_001.py to compute prediction error and append a verification entry to the ledger.",
+
+  "honesty_note": "This is the first milestone. It is intentionally trivial — the goal is to close the loop end-to-end (propose → build → measure → record → update), not to demonstrate scientific sophistication. Closing this loop is worth more than another hundred modules. Per CTO review #5: 'The first successfully completed cycle will be much more valuable than another hundred modules. That is the point at which the repository stops merely describing the world and starts learning from it.'"
+}

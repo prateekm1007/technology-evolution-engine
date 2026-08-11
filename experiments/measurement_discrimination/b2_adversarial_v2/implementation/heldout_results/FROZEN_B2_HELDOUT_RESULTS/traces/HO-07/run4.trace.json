@@ -1,0 +1,67 @@
+{
+  "schema_version": "b2-trace-v3",
+  "candidate": {
+    "id": "HO-07",
+    "text": "water oxidation by the oxygen-evolving complex",
+    "source_a": "Photosystem II uses absorbed light energy to drive electron transfer through a reaction center and onward to plastoquinone, initiating the photosynthetic electron-transport chain.",
+    "source_b": "The oxygen-evolving complex associated with Photosystem II oxidizes water and releases molecular oxygen while transferring electrons to the reaction center during the catalytic cycle."
+  },
+  "atoms": [
+    {
+      "atom_id": "a1",
+      "claim": "{process: water_oxidation, agent: oxygen-evolving_complex}",
+      "source_support": [
+        {
+          "support_type": "SOURCE_LOCAL",
+          "source_id": "B",
+          "spans": [
+            {
+              "span_text": "The oxygen-evolving complex associated with Photosystem II oxidizes water",
+              "start": 0,
+              "end": 73
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "atom_id": "a2",
+      "claim": "{entity: oxygen-evolving_complex, associated_with: Photosystem_II}",
+      "source_support": [
+        {
+          "support_type": "SOURCE_LOCAL",
+          "source_id": "B",
+          "spans": [
+            {
+              "span_text": "The oxygen-evolving complex associated with Photosystem II",
+              "start": 0,
+              "end": 58
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "counterfactuals": [
+    {
+      "removed_source": "A",
+      "unsupported_atoms": [],
+      "justified_without_source": true
+    },
+    {
+      "removed_source": "B",
+      "unsupported_atoms": [
+        "a1",
+        "a2"
+      ],
+      "justified_without_source": false
+    }
+  ],
+  "classification": {
+    "justified_by_corpus": true,
+    "iss_a": false,
+    "iss_b": true,
+    "iss_state": "ISS_one",
+    "label": "REJECT"
+  }
+}

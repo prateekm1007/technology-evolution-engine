@@ -1,0 +1,94 @@
+{
+  "bridge_id": "BRIDGE-001",
+  "timestamp": "2026-08-06T20:41:18.433605+00:00",
+  "document_a": {
+    "id": "2308.08382v2",
+    "domain": "photovoltaic",
+    "sentence": "Bulk photovoltaic effect, which arises from crystal symmetry-driven charge carrier separation, is an intriguing physical phenomenon that has attracted extensive interest in photovoltaic application due to its junction-free photovoltaic and potential to surpass Shockley-Queisser limit.",
+    "entity": "charge carrier separation (via crystal symmetry + depolarization field)",
+    "relation": "crystal symmetry --arises--> charge carrier separation --causes--> photovoltaic current",
+    "mechanism": "An out-of-plane polarization in \u03b1-InSe induces a depolarization field. This field drives charge carrier separation (electrons and holes move in opposite directions) without a p-n junction. The separated charges produce a bulk photovoltaic current. The efficiency depends on how efficiently separated carriers can be EXTRACTED across the electrode-semiconductor interface.",
+    "second_sentence": "The \u03b1-InSe device exhibits enhanced bulk photovoltaic response in the visible light spectrum owing to its narrow bandgap."
+  },
+  "document_b": {
+    "id": "1109.0978v2",
+    "domain": "supercapacitor",
+    "sentence": "Electric double layer supercapacitors are promising devices for high-power energy storage based on the reversible absorption of ions into porous, conducting electrodes.",
+    "entity": "ion absorption (into porous conducting electrodes)",
+    "relation": "ions --absorb into--> porous electrodes --stores--> charge",
+    "mechanism": "Ions from the electrolyte are reversibly absorbed into the porous structure of graphene electrodes. The graphene electrons provide nonlinear screening that renormalizes the charge of ion clusters. The storage capacity depends on how efficiently ions can CROSS the electrode-electrolyte interface and diffuse into the pore structure.",
+    "second_sentence": "We show that the large volumetric capacitances C > 100 F/cm\u00b3 observed experimentally can be understood as a result of collective intercalation of ions into the graphene stack and the accompanying nonlinear screening by graphene electrons that renormalizes the charge of the ion clusters."
+  },
+  "shared_variables": [
+    {
+      "variable": "conductivity",
+      "role_in_a": "Determines how efficiently separated charge carriers are extracted from the semiconductor to the external circuit. Low conductivity at the electrode-semiconductor interface increases R_ct and reduces photovoltaic current.",
+      "role_in_b": "Determines how efficiently the graphene electrode can supply electrons to screen the absorbed ions. Low conductivity reduces the screening efficiency and limits capacitance.",
+      "bridge_prediction": "Materials with high electronic conductivity will show BOTH improved PV charge extraction AND improved SC charge storage, because conductivity governs the interfacial charge transfer in both cases."
+    },
+    {
+      "variable": "work function",
+      "role_in_a": "The electrode work function determines the Schottky barrier at the electrode-semiconductor interface. A mismatched work function creates a barrier that blocks charge extraction.",
+      "role_in_b": "The electrode work function determines the quantum capacitance and the screening length. A mismatched work function reduces the effective capacitance and increases the equivalent series resistance.",
+      "bridge_prediction": "Work function matching to the active material will improve BOTH PV extraction efficiency AND SC capacitance, because both depend on the interfacial electronic structure."
+    },
+    {
+      "variable": "barrier height",
+      "role_in_a": "The energy barrier at the electrode-semiconductor interface that separated carriers must overcome to exit the device. Lower barrier = higher photocurrent.",
+      "role_in_b": "The energy barrier at the electrode-electrolyte interface that ions must overcome to enter the pore structure. Lower barrier = faster charge/discharge kinetics.",
+      "bridge_prediction": "Surface treatments that reduce the interfacial barrier height (e.g., passivation, functionalization) will improve BOTH PV photocurrent AND SC rate capability."
+    },
+    {
+      "variable": "diffusion rate",
+      "role_in_a": "The rate at which photogenerated carriers diffuse through the semiconductor to reach the electrode. Slow diffusion increases recombination losses.",
+      "role_in_b": "The rate at which ions diffuse through the electrolyte into the porous electrode structure. Slow diffusion limits power density and causes self-discharge.",
+      "bridge_prediction": "Materials with high carrier/ion diffusion rates will show BOTH reduced PV recombination AND reduced SC self-discharge, because both are governed by transport kinetics to the interface."
+    },
+    {
+      "variable": "activation energy",
+      "role_in_a": "The energy required for charge carriers to overcome the interfacial barrier. Higher activation energy = more temperature-dependent photocurrent.",
+      "role_in_b": "The energy required for ions to overcome the desolvation barrier at the electrode-electrolyte interface. Higher activation energy = more temperature-dependent capacitance.",
+      "bridge_prediction": "The activation energy for interfacial charge transfer will be CORRELATED across PV and SC configurations for the same material, because both are governed by the same surface electronic structure."
+    }
+  ],
+  "necessary_assumptions": [
+    {
+      "assumption": "The interfacial charge transfer barrier is governed by surface electronic structure (density of states, work function) rather than by the carrier type (electron vs ion).",
+      "justification": "Both PV charge extraction (electron transfer) and SC charge storage (ion absorption) involve a charge carrier crossing an interface. The barrier height depends on the electronic structure of the surface, which is a property of the MATERIAL, not the carrier. This is consistent with both documents: A mentions 'depolarization field' (electronic), B mentions 'graphene electrons that renormalizes the charge' (electronic).",
+      "falsifiable": true,
+      "falsification": "If the barrier height for electron transfer and ion transfer are UNCORRELATED for the same material, this assumption is false."
+    },
+    {
+      "assumption": "Surface treatments (passivation, functionalization) modify the interfacial barrier in a carrier-type-independent way.",
+      "justification": "Surface passivation modifies the density of surface states, which affects the Fermi level pinning and thus the effective barrier height. This modification is electronic and should affect both electron and ion transfer.",
+      "falsifiable": true,
+      "falsification": "If a surface treatment that improves PV extraction degrades SC storage (or vice versa), this assumption is false."
+    },
+    {
+      "assumption": "The two clusters are studying the same class of interfacial phenomena, just with different carrier types and different measurement techniques.",
+      "justification": "Document A studies charge separation in a semiconductor (electronic carriers). Document B studies charge storage at an electrode-electrolyte interface (ionic carriers). Both involve charge crossing an interface. The difference is the carrier, not the physics of interfacial transfer.",
+      "falsifiable": true,
+      "falsification": "If the mathematical form of the interfacial resistance is fundamentally different for electrons (tunneling-dominated) vs ions (desolvation-dominated), the bridge is weaker than predicted."
+    }
+  ],
+  "minimal_bridge": "Interfacial charge transfer resistance (R_ct) is carrier-type-independent: a material's R_ct for electron extraction (PV) correlates with its R_ct for ion absorption (SC), because both are governed by the surface electronic structure (density of states, work function, barrier height). Therefore: surface engineering that reduces R_ct in one domain will reduce R_ct in the other.",
+  "confidence": 0.68,
+  "confidence_basis": "5 shared variables identified (conductivity, work function, barrier height, diffusion rate, activation energy), each with a specific role in BOTH documents. 3 necessary assumptions, all falsifiable. The bridge is INFERRED from the shared physics \u2014 no paper in the corpus explicitly states it. Reduced from 0.80 because: (1) the bridge is inferred not measured, (2) the shared variables are extracted from the MECHANISMS not the entity extraction (no direct entity overlap), (3) assumption 3 could be falsified if electron and ion transfer have fundamentally different physics.",
+  "falsification_criterion": "Measure R_ct for the SAME material (e.g., graphene, \u03b1-InSe) in BOTH configurations: (1) as a PV electrode (electrochemical impedance spectroscopy at the electrode-semiconductor interface) and (2) as a SC electrode (EIS at the electrode-electrolyte interface). Compute Pearson correlation r between R_ct_pv and R_ct_sc across \u22655 materials. If r < 0.3 (p > 0.05), the bridge is FALSIFIED: the interfacial resistance is NOT carrier-type-independent. If r > 0.7 (p < 0.05), the bridge is CONFIRMED.",
+  "provenance": {
+    "document_a": "2308.08382v2",
+    "document_b": "1109.0978v2",
+    "bridge_entity": "interfacial charge transfer resistance",
+    "shared_variables_count": 5,
+    "assumptions_count": 3,
+    "all_assumptions_falsifiable": true,
+    "explicit_link_in_corpus": false,
+    "discovery_method": "latent_bridge_shared_physical_variables",
+    "extraction_timestamp": "2026-08-06T20:41:18.433617+00:00"
+  },
+  "reaudit": {
+    "method": "Verified that no entity is shared between the two documents' extractions. The bridge is through PHYSICAL VARIABLES (conductivity, work function, etc.) that appear in the MECHANISMS, not in the entity lists. Verified that neither document mentions the other's domain.",
+    "verdict": "UPHELD",
+    "verdict_reason": "The bridge is genuinely latent \u2014 it connects two documents with zero shared entities through shared physical variables in their mechanisms. No paper in the corpus states this bridge."
+  }
+}

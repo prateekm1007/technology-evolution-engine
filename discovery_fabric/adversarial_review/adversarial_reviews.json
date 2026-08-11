@@ -1,0 +1,668 @@
+{
+  "timestamp": "2026-08-11T17:23:54.566210+00:00",
+  "total_reviewed": 11,
+  "survived": 11,
+  "killed": 0,
+  "reviews": [
+    {
+      "candidate_id": "M3-22c198f5",
+      "discovery_mode": "failure_mode_transfer",
+      "attacks": {
+        "1_already_known": {
+          "question": "Is this already known?",
+          "assessment": "UNASSESSED",
+          "evidence": "PENDING — requires full-text search of related literature"
+        },
+        "2_terminology_different": {
+          "question": "Is the terminology merely different for the same concept?",
+          "assessment": "UNASSESSED",
+          "evidence": "PENDING — requires synonym/terminology normalization"
+        },
+        "3_patent_discloses": {
+          "question": "Does another patent disclose it?",
+          "assessment": "UNASSESSABLE — no patent evidence in current fabric",
+          "evidence": "Patent connectors not yet operational"
+        },
+        "4_paper_discloses": {
+          "question": "Does a paper disclose it?",
+          "assessment": "PARTIALLY_ASSESSED",
+          "evidence": "Checked 7032 evidence objects — see prior_art_firewall"
+        },
+        "5_analogy_superficial": {
+          "question": "Is the cross-domain analogy superficial?",
+          "assessment": "LIKELY — keyword/field matching does not establish mechanistic bridge",
+          "evidence": "Bridge analysis not yet implemented"
+        },
+        "6_physics_permits": {
+          "question": "Does physics/chemistry/biology permit the transfer?",
+          "assessment": "UNASSESSED",
+          "evidence": "Requires domain expert or LLM physical reasoning"
+        },
+        "7_hidden_constraint": {
+          "question": "Is there a hidden constraint preventing transfer?",
+          "assessment": "UNASSESSED",
+          "evidence": "Constraint compatibility analysis not yet implemented"
+        },
+        "8_unsupported_claim": {
+          "question": "Is the performance claim unsupported?",
+          "assessment": "N/A — no performance claims made yet",
+          "evidence": "Candidates are at CANDIDATE_CONNECTION state, no predictions generated"
+        },
+        "9_search_artifact": {
+          "question": "Is the supposed gap caused by search failure?",
+          "assessment": "POSSIBLE — evidence universe is only 7,032 objects from 4 sources",
+          "evidence": "Coverage: Crossref 1900, arXiv 1450, Europe PMC 1850, PubMed 1832. No patents, no Semantic Scholar, no OpenAlex (rate-limited)."
+        },
+        "10_falsifier": {
+          "question": "What observation would falsify this candidate?",
+          "assessment": "PENDING — requires falsifiable prediction first",
+          "evidence": "No predictions generated yet — candidate must advance to MECHANISTIC_HYPOTHESIS first"
+        }
+      },
+      "fatal_attacks": [],
+      "survival_state": "SURVIVED",
+      "epistemic_state_after_attack": "CANDIDATE_CONNECTION",
+      "review_timestamp": "2026-08-11T17:23:54.565897+00:00"
+    },
+    {
+      "candidate_id": "M9-17a8e418",
+      "discovery_mode": "patent_whitespace",
+      "attacks": {
+        "1_already_known": {
+          "question": "Is this already known?",
+          "assessment": "UNASSESSED",
+          "evidence": "PENDING — requires full-text search of related literature"
+        },
+        "2_terminology_different": {
+          "question": "Is the terminology merely different for the same concept?",
+          "assessment": "UNASSESSED",
+          "evidence": "PENDING — requires synonym/terminology normalization"
+        },
+        "3_patent_discloses": {
+          "question": "Does another patent disclose it?",
+          "assessment": "UNASSESSABLE — no patent evidence in current fabric",
+          "evidence": "Patent connectors not yet operational"
+        },
+        "4_paper_discloses": {
+          "question": "Does a paper disclose it?",
+          "assessment": "PARTIALLY_ASSESSED",
+          "evidence": "Checked 7032 evidence objects — see prior_art_firewall"
+        },
+        "5_analogy_superficial": {
+          "question": "Is the cross-domain analogy superficial?",
+          "assessment": "LIKELY — keyword/field matching does not establish mechanistic bridge",
+          "evidence": "Bridge analysis not yet implemented"
+        },
+        "6_physics_permits": {
+          "question": "Does physics/chemistry/biology permit the transfer?",
+          "assessment": "UNASSESSED",
+          "evidence": "Requires domain expert or LLM physical reasoning"
+        },
+        "7_hidden_constraint": {
+          "question": "Is there a hidden constraint preventing transfer?",
+          "assessment": "UNASSESSED",
+          "evidence": "Constraint compatibility analysis not yet implemented"
+        },
+        "8_unsupported_claim": {
+          "question": "Is the performance claim unsupported?",
+          "assessment": "N/A — no performance claims made yet",
+          "evidence": "Candidates are at CANDIDATE_CONNECTION state, no predictions generated"
+        },
+        "9_search_artifact": {
+          "question": "Is the supposed gap caused by search failure?",
+          "assessment": "POSSIBLE — evidence universe is only 7,032 objects from 4 sources",
+          "evidence": "Coverage: Crossref 1900, arXiv 1450, Europe PMC 1850, PubMed 1832. No patents, no Semantic Scholar, no OpenAlex (rate-limited)."
+        },
+        "10_falsifier": {
+          "question": "What observation would falsify this candidate?",
+          "assessment": "PENDING — requires falsifiable prediction first",
+          "evidence": "No predictions generated yet — candidate must advance to MECHANISTIC_HYPOTHESIS first"
+        }
+      },
+      "fatal_attacks": [],
+      "survival_state": "SURVIVED",
+      "epistemic_state_after_attack": "CANDIDATE_CONNECTION",
+      "review_timestamp": "2026-08-11T17:23:54.565925+00:00"
+    },
+    {
+      "candidate_id": "M9-9e3cb5b2",
+      "discovery_mode": "patent_whitespace",
+      "attacks": {
+        "1_already_known": {
+          "question": "Is this already known?",
+          "assessment": "UNASSESSED",
+          "evidence": "PENDING — requires full-text search of related literature"
+        },
+        "2_terminology_different": {
+          "question": "Is the terminology merely different for the same concept?",
+          "assessment": "UNASSESSED",
+          "evidence": "PENDING — requires synonym/terminology normalization"
+        },
+        "3_patent_discloses": {
+          "question": "Does another patent disclose it?",
+          "assessment": "UNASSESSABLE — no patent evidence in current fabric",
+          "evidence": "Patent connectors not yet operational"
+        },
+        "4_paper_discloses": {
+          "question": "Does a paper disclose it?",
+          "assessment": "PARTIALLY_ASSESSED",
+          "evidence": "Checked 7032 evidence objects — see prior_art_firewall"
+        },
+        "5_analogy_superficial": {
+          "question": "Is the cross-domain analogy superficial?",
+          "assessment": "LIKELY — keyword/field matching does not establish mechanistic bridge",
+          "evidence": "Bridge analysis not yet implemented"
+        },
+        "6_physics_permits": {
+          "question": "Does physics/chemistry/biology permit the transfer?",
+          "assessment": "UNASSESSED",
+          "evidence": "Requires domain expert or LLM physical reasoning"
+        },
+        "7_hidden_constraint": {
+          "question": "Is there a hidden constraint preventing transfer?",
+          "assessment": "UNASSESSED",
+          "evidence": "Constraint compatibility analysis not yet implemented"
+        },
+        "8_unsupported_claim": {
+          "question": "Is the performance claim unsupported?",
+          "assessment": "N/A — no performance claims made yet",
+          "evidence": "Candidates are at CANDIDATE_CONNECTION state, no predictions generated"
+        },
+        "9_search_artifact": {
+          "question": "Is the supposed gap caused by search failure?",
+          "assessment": "POSSIBLE — evidence universe is only 7,032 objects from 4 sources",
+          "evidence": "Coverage: Crossref 1900, arXiv 1450, Europe PMC 1850, PubMed 1832. No patents, no Semantic Scholar, no OpenAlex (rate-limited)."
+        },
+        "10_falsifier": {
+          "question": "What observation would falsify this candidate?",
+          "assessment": "PENDING — requires falsifiable prediction first",
+          "evidence": "No predictions generated yet — candidate must advance to MECHANISTIC_HYPOTHESIS first"
+        }
+      },
+      "fatal_attacks": [],
+      "survival_state": "SURVIVED",
+      "epistemic_state_after_attack": "CANDIDATE_CONNECTION",
+      "review_timestamp": "2026-08-11T17:23:54.565937+00:00"
+    },
+    {
+      "candidate_id": "M9-4635118f",
+      "discovery_mode": "patent_whitespace",
+      "attacks": {
+        "1_already_known": {
+          "question": "Is this already known?",
+          "assessment": "UNASSESSED",
+          "evidence": "PENDING — requires full-text search of related literature"
+        },
+        "2_terminology_different": {
+          "question": "Is the terminology merely different for the same concept?",
+          "assessment": "UNASSESSED",
+          "evidence": "PENDING — requires synonym/terminology normalization"
+        },
+        "3_patent_discloses": {
+          "question": "Does another patent disclose it?",
+          "assessment": "UNASSESSABLE — no patent evidence in current fabric",
+          "evidence": "Patent connectors not yet operational"
+        },
+        "4_paper_discloses": {
+          "question": "Does a paper disclose it?",
+          "assessment": "PARTIALLY_ASSESSED",
+          "evidence": "Checked 7032 evidence objects — see prior_art_firewall"
+        },
+        "5_analogy_superficial": {
+          "question": "Is the cross-domain analogy superficial?",
+          "assessment": "LIKELY — keyword/field matching does not establish mechanistic bridge",
+          "evidence": "Bridge analysis not yet implemented"
+        },
+        "6_physics_permits": {
+          "question": "Does physics/chemistry/biology permit the transfer?",
+          "assessment": "UNASSESSED",
+          "evidence": "Requires domain expert or LLM physical reasoning"
+        },
+        "7_hidden_constraint": {
+          "question": "Is there a hidden constraint preventing transfer?",
+          "assessment": "UNASSESSED",
+          "evidence": "Constraint compatibility analysis not yet implemented"
+        },
+        "8_unsupported_claim": {
+          "question": "Is the performance claim unsupported?",
+          "assessment": "N/A — no performance claims made yet",
+          "evidence": "Candidates are at CANDIDATE_CONNECTION state, no predictions generated"
+        },
+        "9_search_artifact": {
+          "question": "Is the supposed gap caused by search failure?",
+          "assessment": "POSSIBLE — evidence universe is only 7,032 objects from 4 sources",
+          "evidence": "Coverage: Crossref 1900, arXiv 1450, Europe PMC 1850, PubMed 1832. No patents, no Semantic Scholar, no OpenAlex (rate-limited)."
+        },
+        "10_falsifier": {
+          "question": "What observation would falsify this candidate?",
+          "assessment": "PENDING — requires falsifiable prediction first",
+          "evidence": "No predictions generated yet — candidate must advance to MECHANISTIC_HYPOTHESIS first"
+        }
+      },
+      "fatal_attacks": [],
+      "survival_state": "SURVIVED",
+      "epistemic_state_after_attack": "CANDIDATE_CONNECTION",
+      "review_timestamp": "2026-08-11T17:23:54.565943+00:00"
+    },
+    {
+      "candidate_id": "M9-5efc2d02",
+      "discovery_mode": "patent_whitespace",
+      "attacks": {
+        "1_already_known": {
+          "question": "Is this already known?",
+          "assessment": "UNASSESSED",
+          "evidence": "PENDING — requires full-text search of related literature"
+        },
+        "2_terminology_different": {
+          "question": "Is the terminology merely different for the same concept?",
+          "assessment": "UNASSESSED",
+          "evidence": "PENDING — requires synonym/terminology normalization"
+        },
+        "3_patent_discloses": {
+          "question": "Does another patent disclose it?",
+          "assessment": "UNASSESSABLE — no patent evidence in current fabric",
+          "evidence": "Patent connectors not yet operational"
+        },
+        "4_paper_discloses": {
+          "question": "Does a paper disclose it?",
+          "assessment": "PARTIALLY_ASSESSED",
+          "evidence": "Checked 7032 evidence objects — see prior_art_firewall"
+        },
+        "5_analogy_superficial": {
+          "question": "Is the cross-domain analogy superficial?",
+          "assessment": "LIKELY — keyword/field matching does not establish mechanistic bridge",
+          "evidence": "Bridge analysis not yet implemented"
+        },
+        "6_physics_permits": {
+          "question": "Does physics/chemistry/biology permit the transfer?",
+          "assessment": "UNASSESSED",
+          "evidence": "Requires domain expert or LLM physical reasoning"
+        },
+        "7_hidden_constraint": {
+          "question": "Is there a hidden constraint preventing transfer?",
+          "assessment": "UNASSESSED",
+          "evidence": "Constraint compatibility analysis not yet implemented"
+        },
+        "8_unsupported_claim": {
+          "question": "Is the performance claim unsupported?",
+          "assessment": "N/A — no performance claims made yet",
+          "evidence": "Candidates are at CANDIDATE_CONNECTION state, no predictions generated"
+        },
+        "9_search_artifact": {
+          "question": "Is the supposed gap caused by search failure?",
+          "assessment": "POSSIBLE — evidence universe is only 7,032 objects from 4 sources",
+          "evidence": "Coverage: Crossref 1900, arXiv 1450, Europe PMC 1850, PubMed 1832. No patents, no Semantic Scholar, no OpenAlex (rate-limited)."
+        },
+        "10_falsifier": {
+          "question": "What observation would falsify this candidate?",
+          "assessment": "PENDING — requires falsifiable prediction first",
+          "evidence": "No predictions generated yet — candidate must advance to MECHANISTIC_HYPOTHESIS first"
+        }
+      },
+      "fatal_attacks": [],
+      "survival_state": "SURVIVED",
+      "epistemic_state_after_attack": "CANDIDATE_CONNECTION",
+      "review_timestamp": "2026-08-11T17:23:54.565951+00:00"
+    },
+    {
+      "candidate_id": "M9-c5d6fed4",
+      "discovery_mode": "patent_whitespace",
+      "attacks": {
+        "1_already_known": {
+          "question": "Is this already known?",
+          "assessment": "UNASSESSED",
+          "evidence": "PENDING — requires full-text search of related literature"
+        },
+        "2_terminology_different": {
+          "question": "Is the terminology merely different for the same concept?",
+          "assessment": "UNASSESSED",
+          "evidence": "PENDING — requires synonym/terminology normalization"
+        },
+        "3_patent_discloses": {
+          "question": "Does another patent disclose it?",
+          "assessment": "UNASSESSABLE — no patent evidence in current fabric",
+          "evidence": "Patent connectors not yet operational"
+        },
+        "4_paper_discloses": {
+          "question": "Does a paper disclose it?",
+          "assessment": "PARTIALLY_ASSESSED",
+          "evidence": "Checked 7032 evidence objects — see prior_art_firewall"
+        },
+        "5_analogy_superficial": {
+          "question": "Is the cross-domain analogy superficial?",
+          "assessment": "LIKELY — keyword/field matching does not establish mechanistic bridge",
+          "evidence": "Bridge analysis not yet implemented"
+        },
+        "6_physics_permits": {
+          "question": "Does physics/chemistry/biology permit the transfer?",
+          "assessment": "UNASSESSED",
+          "evidence": "Requires domain expert or LLM physical reasoning"
+        },
+        "7_hidden_constraint": {
+          "question": "Is there a hidden constraint preventing transfer?",
+          "assessment": "UNASSESSED",
+          "evidence": "Constraint compatibility analysis not yet implemented"
+        },
+        "8_unsupported_claim": {
+          "question": "Is the performance claim unsupported?",
+          "assessment": "N/A — no performance claims made yet",
+          "evidence": "Candidates are at CANDIDATE_CONNECTION state, no predictions generated"
+        },
+        "9_search_artifact": {
+          "question": "Is the supposed gap caused by search failure?",
+          "assessment": "POSSIBLE — evidence universe is only 7,032 objects from 4 sources",
+          "evidence": "Coverage: Crossref 1900, arXiv 1450, Europe PMC 1850, PubMed 1832. No patents, no Semantic Scholar, no OpenAlex (rate-limited)."
+        },
+        "10_falsifier": {
+          "question": "What observation would falsify this candidate?",
+          "assessment": "PENDING — requires falsifiable prediction first",
+          "evidence": "No predictions generated yet — candidate must advance to MECHANISTIC_HYPOTHESIS first"
+        }
+      },
+      "fatal_attacks": [],
+      "survival_state": "SURVIVED",
+      "epistemic_state_after_attack": "CANDIDATE_CONNECTION",
+      "review_timestamp": "2026-08-11T17:23:54.565957+00:00"
+    },
+    {
+      "candidate_id": "M9-45045e1c",
+      "discovery_mode": "patent_whitespace",
+      "attacks": {
+        "1_already_known": {
+          "question": "Is this already known?",
+          "assessment": "UNASSESSED",
+          "evidence": "PENDING — requires full-text search of related literature"
+        },
+        "2_terminology_different": {
+          "question": "Is the terminology merely different for the same concept?",
+          "assessment": "UNASSESSED",
+          "evidence": "PENDING — requires synonym/terminology normalization"
+        },
+        "3_patent_discloses": {
+          "question": "Does another patent disclose it?",
+          "assessment": "UNASSESSABLE — no patent evidence in current fabric",
+          "evidence": "Patent connectors not yet operational"
+        },
+        "4_paper_discloses": {
+          "question": "Does a paper disclose it?",
+          "assessment": "PARTIALLY_ASSESSED",
+          "evidence": "Checked 7032 evidence objects — see prior_art_firewall"
+        },
+        "5_analogy_superficial": {
+          "question": "Is the cross-domain analogy superficial?",
+          "assessment": "LIKELY — keyword/field matching does not establish mechanistic bridge",
+          "evidence": "Bridge analysis not yet implemented"
+        },
+        "6_physics_permits": {
+          "question": "Does physics/chemistry/biology permit the transfer?",
+          "assessment": "UNASSESSED",
+          "evidence": "Requires domain expert or LLM physical reasoning"
+        },
+        "7_hidden_constraint": {
+          "question": "Is there a hidden constraint preventing transfer?",
+          "assessment": "UNASSESSED",
+          "evidence": "Constraint compatibility analysis not yet implemented"
+        },
+        "8_unsupported_claim": {
+          "question": "Is the performance claim unsupported?",
+          "assessment": "N/A — no performance claims made yet",
+          "evidence": "Candidates are at CANDIDATE_CONNECTION state, no predictions generated"
+        },
+        "9_search_artifact": {
+          "question": "Is the supposed gap caused by search failure?",
+          "assessment": "POSSIBLE — evidence universe is only 7,032 objects from 4 sources",
+          "evidence": "Coverage: Crossref 1900, arXiv 1450, Europe PMC 1850, PubMed 1832. No patents, no Semantic Scholar, no OpenAlex (rate-limited)."
+        },
+        "10_falsifier": {
+          "question": "What observation would falsify this candidate?",
+          "assessment": "PENDING — requires falsifiable prediction first",
+          "evidence": "No predictions generated yet — candidate must advance to MECHANISTIC_HYPOTHESIS first"
+        }
+      },
+      "fatal_attacks": [],
+      "survival_state": "SURVIVED",
+      "epistemic_state_after_attack": "CANDIDATE_CONNECTION",
+      "review_timestamp": "2026-08-11T17:23:54.565964+00:00"
+    },
+    {
+      "candidate_id": "M9-ee261777",
+      "discovery_mode": "patent_whitespace",
+      "attacks": {
+        "1_already_known": {
+          "question": "Is this already known?",
+          "assessment": "UNASSESSED",
+          "evidence": "PENDING — requires full-text search of related literature"
+        },
+        "2_terminology_different": {
+          "question": "Is the terminology merely different for the same concept?",
+          "assessment": "UNASSESSED",
+          "evidence": "PENDING — requires synonym/terminology normalization"
+        },
+        "3_patent_discloses": {
+          "question": "Does another patent disclose it?",
+          "assessment": "UNASSESSABLE — no patent evidence in current fabric",
+          "evidence": "Patent connectors not yet operational"
+        },
+        "4_paper_discloses": {
+          "question": "Does a paper disclose it?",
+          "assessment": "PARTIALLY_ASSESSED",
+          "evidence": "Checked 7032 evidence objects — see prior_art_firewall"
+        },
+        "5_analogy_superficial": {
+          "question": "Is the cross-domain analogy superficial?",
+          "assessment": "LIKELY — keyword/field matching does not establish mechanistic bridge",
+          "evidence": "Bridge analysis not yet implemented"
+        },
+        "6_physics_permits": {
+          "question": "Does physics/chemistry/biology permit the transfer?",
+          "assessment": "UNASSESSED",
+          "evidence": "Requires domain expert or LLM physical reasoning"
+        },
+        "7_hidden_constraint": {
+          "question": "Is there a hidden constraint preventing transfer?",
+          "assessment": "UNASSESSED",
+          "evidence": "Constraint compatibility analysis not yet implemented"
+        },
+        "8_unsupported_claim": {
+          "question": "Is the performance claim unsupported?",
+          "assessment": "N/A — no performance claims made yet",
+          "evidence": "Candidates are at CANDIDATE_CONNECTION state, no predictions generated"
+        },
+        "9_search_artifact": {
+          "question": "Is the supposed gap caused by search failure?",
+          "assessment": "POSSIBLE — evidence universe is only 7,032 objects from 4 sources",
+          "evidence": "Coverage: Crossref 1900, arXiv 1450, Europe PMC 1850, PubMed 1832. No patents, no Semantic Scholar, no OpenAlex (rate-limited)."
+        },
+        "10_falsifier": {
+          "question": "What observation would falsify this candidate?",
+          "assessment": "PENDING — requires falsifiable prediction first",
+          "evidence": "No predictions generated yet — candidate must advance to MECHANISTIC_HYPOTHESIS first"
+        }
+      },
+      "fatal_attacks": [],
+      "survival_state": "SURVIVED",
+      "epistemic_state_after_attack": "CANDIDATE_CONNECTION",
+      "review_timestamp": "2026-08-11T17:23:54.565969+00:00"
+    },
+    {
+      "candidate_id": "M9-05a57707",
+      "discovery_mode": "patent_whitespace",
+      "attacks": {
+        "1_already_known": {
+          "question": "Is this already known?",
+          "assessment": "UNASSESSED",
+          "evidence": "PENDING — requires full-text search of related literature"
+        },
+        "2_terminology_different": {
+          "question": "Is the terminology merely different for the same concept?",
+          "assessment": "UNASSESSED",
+          "evidence": "PENDING — requires synonym/terminology normalization"
+        },
+        "3_patent_discloses": {
+          "question": "Does another patent disclose it?",
+          "assessment": "UNASSESSABLE — no patent evidence in current fabric",
+          "evidence": "Patent connectors not yet operational"
+        },
+        "4_paper_discloses": {
+          "question": "Does a paper disclose it?",
+          "assessment": "PARTIALLY_ASSESSED",
+          "evidence": "Checked 7032 evidence objects — see prior_art_firewall"
+        },
+        "5_analogy_superficial": {
+          "question": "Is the cross-domain analogy superficial?",
+          "assessment": "LIKELY — keyword/field matching does not establish mechanistic bridge",
+          "evidence": "Bridge analysis not yet implemented"
+        },
+        "6_physics_permits": {
+          "question": "Does physics/chemistry/biology permit the transfer?",
+          "assessment": "UNASSESSED",
+          "evidence": "Requires domain expert or LLM physical reasoning"
+        },
+        "7_hidden_constraint": {
+          "question": "Is there a hidden constraint preventing transfer?",
+          "assessment": "UNASSESSED",
+          "evidence": "Constraint compatibility analysis not yet implemented"
+        },
+        "8_unsupported_claim": {
+          "question": "Is the performance claim unsupported?",
+          "assessment": "N/A — no performance claims made yet",
+          "evidence": "Candidates are at CANDIDATE_CONNECTION state, no predictions generated"
+        },
+        "9_search_artifact": {
+          "question": "Is the supposed gap caused by search failure?",
+          "assessment": "POSSIBLE — evidence universe is only 7,032 objects from 4 sources",
+          "evidence": "Coverage: Crossref 1900, arXiv 1450, Europe PMC 1850, PubMed 1832. No patents, no Semantic Scholar, no OpenAlex (rate-limited)."
+        },
+        "10_falsifier": {
+          "question": "What observation would falsify this candidate?",
+          "assessment": "PENDING — requires falsifiable prediction first",
+          "evidence": "No predictions generated yet — candidate must advance to MECHANISTIC_HYPOTHESIS first"
+        }
+      },
+      "fatal_attacks": [],
+      "survival_state": "SURVIVED",
+      "epistemic_state_after_attack": "CANDIDATE_CONNECTION",
+      "review_timestamp": "2026-08-11T17:23:54.565974+00:00"
+    },
+    {
+      "candidate_id": "M9-7486017c",
+      "discovery_mode": "patent_whitespace",
+      "attacks": {
+        "1_already_known": {
+          "question": "Is this already known?",
+          "assessment": "UNASSESSED",
+          "evidence": "PENDING — requires full-text search of related literature"
+        },
+        "2_terminology_different": {
+          "question": "Is the terminology merely different for the same concept?",
+          "assessment": "UNASSESSED",
+          "evidence": "PENDING — requires synonym/terminology normalization"
+        },
+        "3_patent_discloses": {
+          "question": "Does another patent disclose it?",
+          "assessment": "UNASSESSABLE — no patent evidence in current fabric",
+          "evidence": "Patent connectors not yet operational"
+        },
+        "4_paper_discloses": {
+          "question": "Does a paper disclose it?",
+          "assessment": "PARTIALLY_ASSESSED",
+          "evidence": "Checked 7032 evidence objects — see prior_art_firewall"
+        },
+        "5_analogy_superficial": {
+          "question": "Is the cross-domain analogy superficial?",
+          "assessment": "LIKELY — keyword/field matching does not establish mechanistic bridge",
+          "evidence": "Bridge analysis not yet implemented"
+        },
+        "6_physics_permits": {
+          "question": "Does physics/chemistry/biology permit the transfer?",
+          "assessment": "UNASSESSED",
+          "evidence": "Requires domain expert or LLM physical reasoning"
+        },
+        "7_hidden_constraint": {
+          "question": "Is there a hidden constraint preventing transfer?",
+          "assessment": "UNASSESSED",
+          "evidence": "Constraint compatibility analysis not yet implemented"
+        },
+        "8_unsupported_claim": {
+          "question": "Is the performance claim unsupported?",
+          "assessment": "N/A — no performance claims made yet",
+          "evidence": "Candidates are at CANDIDATE_CONNECTION state, no predictions generated"
+        },
+        "9_search_artifact": {
+          "question": "Is the supposed gap caused by search failure?",
+          "assessment": "POSSIBLE — evidence universe is only 7,032 objects from 4 sources",
+          "evidence": "Coverage: Crossref 1900, arXiv 1450, Europe PMC 1850, PubMed 1832. No patents, no Semantic Scholar, no OpenAlex (rate-limited)."
+        },
+        "10_falsifier": {
+          "question": "What observation would falsify this candidate?",
+          "assessment": "PENDING — requires falsifiable prediction first",
+          "evidence": "No predictions generated yet — candidate must advance to MECHANISTIC_HYPOTHESIS first"
+        }
+      },
+      "fatal_attacks": [],
+      "survival_state": "SURVIVED",
+      "epistemic_state_after_attack": "CANDIDATE_CONNECTION",
+      "review_timestamp": "2026-08-11T17:23:54.565981+00:00"
+    },
+    {
+      "candidate_id": "M9-658c0dc4",
+      "discovery_mode": "patent_whitespace",
+      "attacks": {
+        "1_already_known": {
+          "question": "Is this already known?",
+          "assessment": "UNASSESSED",
+          "evidence": "PENDING — requires full-text search of related literature"
+        },
+        "2_terminology_different": {
+          "question": "Is the terminology merely different for the same concept?",
+          "assessment": "UNASSESSED",
+          "evidence": "PENDING — requires synonym/terminology normalization"
+        },
+        "3_patent_discloses": {
+          "question": "Does another patent disclose it?",
+          "assessment": "UNASSESSABLE — no patent evidence in current fabric",
+          "evidence": "Patent connectors not yet operational"
+        },
+        "4_paper_discloses": {
+          "question": "Does a paper disclose it?",
+          "assessment": "PARTIALLY_ASSESSED",
+          "evidence": "Checked 7032 evidence objects — see prior_art_firewall"
+        },
+        "5_analogy_superficial": {
+          "question": "Is the cross-domain analogy superficial?",
+          "assessment": "LIKELY — keyword/field matching does not establish mechanistic bridge",
+          "evidence": "Bridge analysis not yet implemented"
+        },
+        "6_physics_permits": {
+          "question": "Does physics/chemistry/biology permit the transfer?",
+          "assessment": "UNASSESSED",
+          "evidence": "Requires domain expert or LLM physical reasoning"
+        },
+        "7_hidden_constraint": {
+          "question": "Is there a hidden constraint preventing transfer?",
+          "assessment": "UNASSESSED",
+          "evidence": "Constraint compatibility analysis not yet implemented"
+        },
+        "8_unsupported_claim": {
+          "question": "Is the performance claim unsupported?",
+          "assessment": "N/A — no performance claims made yet",
+          "evidence": "Candidates are at CANDIDATE_CONNECTION state, no predictions generated"
+        },
+        "9_search_artifact": {
+          "question": "Is the supposed gap caused by search failure?",
+          "assessment": "POSSIBLE — evidence universe is only 7,032 objects from 4 sources",
+          "evidence": "Coverage: Crossref 1900, arXiv 1450, Europe PMC 1850, PubMed 1832. No patents, no Semantic Scholar, no OpenAlex (rate-limited)."
+        },
+        "10_falsifier": {
+          "question": "What observation would falsify this candidate?",
+          "assessment": "PENDING — requires falsifiable prediction first",
+          "evidence": "No predictions generated yet — candidate must advance to MECHANISTIC_HYPOTHESIS first"
+        }
+      },
+      "fatal_attacks": [],
+      "survival_state": "SURVIVED",
+      "epistemic_state_after_attack": "CANDIDATE_CONNECTION",
+      "review_timestamp": "2026-08-11T17:23:54.565986+00:00"
+    }
+  ]
+}

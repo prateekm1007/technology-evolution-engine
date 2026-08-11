@@ -1,0 +1,1915 @@
+{
+  "phase": 4,
+  "phase_name": "Inventory every measurement metric (corrected per audit round 8)",
+  "timestamp_utc": "2026-08-08T17:08:38.139096+00:00",
+  "git_head": "fe135cf0f614d8c681c5d9fbab9d61bb66d6af44",
+  "audit_round": 8,
+  "correction_summary": {
+    "round_7_correction": "Removed unsupported 'PASSED' claims. Added provenance_declared vs provenance_verified. Added input hashes. Traced M-008 determinism. Added epistemic ladder.",
+    "round_8_correction": "REGENERATED_AND_MATCHED was still too strong \u2014 it conventionally means 'independently regenerated and compared.' Replaced with two-dimensional state: regeneration_status=NOT_INDEPENDENTLY_VERIFIED + shared_run_comparison=MATCHED. Added independent_regeneration=false flag. Tightened M-008 determinism statement (conditional, not causal). Recorded exact RNG topology. Added rng_modification_prohibition.",
+    "two_dimensional_state_machine": "Dimension 1: regeneration_status (NOT_INDEPENDENTLY_VERIFIED / FAILED). Dimension 2: shared_run_comparison (MATCHED / MISMATCHED). These are separate fields so the status is self-explanatory without caveats.",
+    "added_provenance_declared_vs_verified": "Every metric has provenance.provenance_declared (location known) and provenance.provenance_verified (cryptographically verified). No metric has provenance_verified=true.",
+    "added_input_hashes": "SHA-256 hashes for computation source, spec source, committed results, gold set source, synonym map. Entity pool hash requires runtime computation (noted).",
+    "m008_n_resamples_clarified": "M-008 uses 200 resamples (hardcoded), not the global 500. This does NOT explain the discrepancy.",
+    "m008_determinism_tightened": "point_estimate is deterministic CONDITIONAL ON identical effective inputs, code, dependencies, and environment. The cause of the discrepancy has NOT been identified. The narrowed hypothesis space is a search space, not a diagnosis.",
+    "m008_rng_topology_recorded": "Module-scoped RNG, seed 42, point-estimate call consumes RNG state, bootstrap calls continue same stream. Do NOT modify RNG while investigating.",
+    "epistemic_ladder_strictified": "HISTORICAL \u2192 PROVENANCE_DECLARED \u2192 REPRODUCTION_NOT_TESTED \u2192 REPRODUCED_IN_SHARED_RUN \u2192 INDEPENDENTLY_REGENERATED \u2192 INDEPENDENTLY_REGENERATED_AND_MATCHED \u2192 SCIENTIFICALLY_ELIGIBLE (+ QUARANTINED for failures). No metric is SCIENTIFICALLY_ELIGIBLE.",
+    "m008_language_tightened": "M-008 is the 'current preregistered/blocking measurement for false-positive-floor assessment under MC-5', NOT a mathematical definition of discrimination.",
+    "phase_8_17_split": "Blocked: scientific verdicts using M-008. Potentially allowed: infrastructure work not using M-008 as evidence."
+  },
+  "summary": {
+    "total_metrics": 38,
+    "regeneration_status_not_independently_verified": 37,
+    "regeneration_status_failed": 1,
+    "shared_run_comparison_matched": 37,
+    "shared_run_comparison_mismatched": 1,
+    "independent_regenerations": 0,
+    "scientifically_eligible": 0,
+    "quarantined": 1,
+    "critical_path_for_matcher_discrimination": 10,
+    "note": "37 metrics are NOT_INDEPENDENTLY_VERIFIED with shared_run_comparison=MATCHED. 1 (M-008) is FAILED with MISMATCHED. 0 are INDEPENDENTLY_REGENERATED. 0 are SCIENTIFICALLY_ELIGIBLE. The two-dimensional state is self-explanatory without caveats."
+  },
+  "epistemic_ladder": {
+    "levels": [
+      "HISTORICAL",
+      "PROVENANCE_DECLARED",
+      "REPRODUCTION_NOT_TESTED",
+      "REPRODUCED_IN_SHARED_RUN",
+      "INDEPENDENTLY_REGENERATED",
+      "INDEPENDENTLY_REGENERATED_AND_MATCHED",
+      "SCIENTIFICALLY_ELIGIBLE"
+    ],
+    "failure_branch": "REGENERATION_FAILED \u2192 QUARANTINED",
+    "current_state": "37 at REPRODUCED_IN_SHARED_RUN (NOT_INDEPENDENTLY_VERIFIED + MATCHED), 1 at QUARANTINED (FAILED + MISMATCHED). 0 at INDEPENDENTLY_REGENERATED or above.",
+    "governing_principle": "Absence of a failed regeneration is not evidence of successful regeneration. Matching in a shared run is necessary but not sufficient for independent reproducibility.",
+    "self_explanatory": "The status fields are self-explanatory without caveats. regeneration_status=NOT_INDEPENDENTLY_VERIFIED cannot be mistaken for 'this metric has been reproduced.'"
+  },
+  "m008_quarantine_summary": {
+    "metric_id": "M-008",
+    "metric_name": "FP floor / false-positive floor",
+    "current_stored_value": 0.9189,
+    "fresh_regenerated_value": 0.8889,
+    "regeneration_status": "FAILED",
+    "shared_run_comparison": "MISMATCHED",
+    "measurement_usability": "QUARANTINED",
+    "RECONCILIATION_STATUS": "RECONCILIATION_OPEN",
+    "DETERMINISTIC_UNDER_IDENTICAL_EFFECTIVE_INPUTS": true,
+    "CAUSE_OF_DISCREPANCY_ESTABLISHED": false,
+    "scientifically_eligible": false,
+    "used_for_scientific_decision": "NO",
+    "n_resamples": 200,
+    "n_resamples_note": "M-008 hardcodes 200 resamples (bootstrap_statistics.py:489), NOT the global 500. This does NOT explain the discrepancy.",
+    "determinism": "point_estimate is deterministic under identical effective inputs. The discrepancy is consistent with at least one effective-input or environment difference; causal attribution remains open.",
+    "what_m008_measures_precise": "M-008 is the current preregistered/blocking measurement for false-positive-floor assessment. Under MC-5, an FP floor above 5% blocks discovery claims. This is a policy threshold, not a mathematical definition of discrimination.",
+    "value_deleted": "NO",
+    "value_replaced": "NO",
+    "values_averaged": "NO"
+  },
+  "phase_8_17_impact": {
+    "blocked": "Any scientific verdict that consumes M-008 as an authoritative measurement. No scientific verdict may be generated using M-008 until reconciliation.",
+    "potentially_allowed": [
+      "matcher harness construction (does not use M-008 as evidence)",
+      "null-control harness construction",
+      "vocabulary provenance tooling",
+      "pre-registration scaffolding",
+      "statistical analysis code",
+      "input hashing",
+      "provenance validators",
+      "human adjudication tooling"
+    ],
+    "principle": "The project should not freeze useful measurement infrastructure merely because one metric is quarantined. But no scientific verdict may use M-008 until reconciliation."
+  },
+  "no_retroactive_repair": true,
+  "no_value_deletion": true,
+  "no_value_replacement": true,
+  "no_value_averaging": true,
+  "governing_principle": "Absence of a failed regeneration is not evidence of successful regeneration.",
+  "metrics": [
+    {
+      "metric_id": "M-001",
+      "metric_name": "Exact F1 (all entities)",
+      "stored_result": {
+        "point_estimate": 0.0,
+        "bootstrap_mean": 0.0,
+        "bootstrap_std": 0.0,
+        "ci_95_lower": 0.0,
+        "ci_95_upper": 0.0,
+        "n": 20,
+        "n_resamples": 500,
+        "seed": 42
+      },
+      "provenance": {
+        "provenance_declared": true,
+        "provenance_verified": false,
+        "provenance_note": "provenance_declared=true means the definition location is known. provenance_verified=false means we have NOT cryptographically verified that the historical number was generated from exactly these inputs. Declared provenance is not verified provenance.",
+        "definition_locations": {
+          "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
+          "computation": "programs/A_metrology/bootstrap_statistics.py",
+          "committed_results": "reports/bootstrap_statistics.json"
+        },
+        "input_hashes": {
+          "computation_source_sha256": "5669b9b27f1d42e103783b100646794d97fa586aff81735e35b16aef26157d26",
+          "spec_source_sha256": "cc0115f4d93b2eed35476c1b050b0859de38c39e310bed3286788960e245611e",
+          "committed_results_sha256": "ce3169fef06190778801f17a1c25cbaf3984cdf809c3466ea3ffddee279e83c7",
+          "gold_set_source_sha256": "9e5b90dd7cfa8dc0bb72289a111f611e9eb1cd0c8c1dbf1262cfc55303040b08",
+          "synonym_map_note": "BRIDGE_SYNONYMS = {} (empty since cycle 270). Hash of empty dict.",
+          "synonym_map_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "entity_pool_note": "all_entities is computed at module load by NLP extraction of 40 source snippets. Its content and ORDERING affect M-008's random candidate generation. Hash must be computed at runtime (not yet done in this inventory).",
+          "entity_pool_sha256": "RUNTIME_COMPUTATION_REQUIRED"
+        }
+      },
+      "regeneration_status": "NOT_INDEPENDENTLY_VERIFIED",
+      "shared_run_comparison": "MATCHED",
+      "independent_regeneration": false,
+      "regeneration_evidence": {
+        "shared_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
+        "comparison": "field-by-field (point_estimate, ci_95_lower, ci_95_upper)",
+        "result": "all compared fields matched within 1e-4 tolerance in the shared aggregate run",
+        "fresh_output_artifact": "reports/phase3/regeneration_result.json",
+        "independent_regeneration": false,
+        "note": "This metric matched in a single shared-context run of bootstrap_all_metrics. It has NOT been independently regenerated. The shared run shares imports, module-level RNG, and NLP pipeline state across all 38 metrics. Matching in a shared run is necessary but not sufficient for independent reproducibility."
+      },
+      "epistemic_level": "REPRODUCED_IN_SHARED_RUN",
+      "critical_path_for_matcher_discrimination": false,
+      "measurement_usability": "REPRODUCED_IN_SHARED_RUN",
+      "scientifically_eligible": false,
+      "used_for_scientific_decision": "NO"
+    },
+    {
+      "metric_id": "M-002",
+      "metric_name": "Token F1 (all entities)",
+      "stored_result": {
+        "point_estimate": 0.2533,
+        "bootstrap_mean": 0.2413,
+        "bootstrap_std": 0.0134,
+        "ci_95_lower": 0.2102,
+        "ci_95_upper": 0.2614,
+        "n": 20,
+        "n_resamples": 500,
+        "seed": 42
+      },
+      "provenance": {
+        "provenance_declared": true,
+        "provenance_verified": false,
+        "provenance_note": "provenance_declared=true means the definition location is known. provenance_verified=false means we have NOT cryptographically verified that the historical number was generated from exactly these inputs. Declared provenance is not verified provenance.",
+        "definition_locations": {
+          "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
+          "computation": "programs/A_metrology/bootstrap_statistics.py",
+          "committed_results": "reports/bootstrap_statistics.json"
+        },
+        "input_hashes": {
+          "computation_source_sha256": "5669b9b27f1d42e103783b100646794d97fa586aff81735e35b16aef26157d26",
+          "spec_source_sha256": "cc0115f4d93b2eed35476c1b050b0859de38c39e310bed3286788960e245611e",
+          "committed_results_sha256": "ce3169fef06190778801f17a1c25cbaf3984cdf809c3466ea3ffddee279e83c7",
+          "gold_set_source_sha256": "9e5b90dd7cfa8dc0bb72289a111f611e9eb1cd0c8c1dbf1262cfc55303040b08",
+          "synonym_map_note": "BRIDGE_SYNONYMS = {} (empty since cycle 270). Hash of empty dict.",
+          "synonym_map_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "entity_pool_note": "all_entities is computed at module load by NLP extraction of 40 source snippets. Its content and ORDERING affect M-008's random candidate generation. Hash must be computed at runtime (not yet done in this inventory).",
+          "entity_pool_sha256": "RUNTIME_COMPUTATION_REQUIRED"
+        }
+      },
+      "regeneration_status": "NOT_INDEPENDENTLY_VERIFIED",
+      "shared_run_comparison": "MATCHED",
+      "independent_regeneration": false,
+      "regeneration_evidence": {
+        "shared_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
+        "comparison": "field-by-field (point_estimate, ci_95_lower, ci_95_upper)",
+        "result": "all compared fields matched within 1e-4 tolerance in the shared aggregate run",
+        "fresh_output_artifact": "reports/phase3/regeneration_result.json",
+        "independent_regeneration": false,
+        "note": "This metric matched in a single shared-context run of bootstrap_all_metrics. It has NOT been independently regenerated. The shared run shares imports, module-level RNG, and NLP pipeline state across all 38 metrics. Matching in a shared run is necessary but not sufficient for independent reproducibility."
+      },
+      "epistemic_level": "REPRODUCED_IN_SHARED_RUN",
+      "critical_path_for_matcher_discrimination": false,
+      "measurement_usability": "REPRODUCED_IN_SHARED_RUN",
+      "scientifically_eligible": false,
+      "used_for_scientific_decision": "NO"
+    },
+    {
+      "metric_id": "M-003",
+      "metric_name": "Fuzzy F1 (all entities)",
+      "stored_result": {
+        "point_estimate": 0.0,
+        "bootstrap_mean": 0.0,
+        "bootstrap_std": 0.0,
+        "ci_95_lower": 0.0,
+        "ci_95_upper": 0.0,
+        "n": 20,
+        "n_resamples": 500,
+        "seed": 42
+      },
+      "provenance": {
+        "provenance_declared": true,
+        "provenance_verified": false,
+        "provenance_note": "provenance_declared=true means the definition location is known. provenance_verified=false means we have NOT cryptographically verified that the historical number was generated from exactly these inputs. Declared provenance is not verified provenance.",
+        "definition_locations": {
+          "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
+          "computation": "programs/A_metrology/bootstrap_statistics.py",
+          "committed_results": "reports/bootstrap_statistics.json"
+        },
+        "input_hashes": {
+          "computation_source_sha256": "5669b9b27f1d42e103783b100646794d97fa586aff81735e35b16aef26157d26",
+          "spec_source_sha256": "cc0115f4d93b2eed35476c1b050b0859de38c39e310bed3286788960e245611e",
+          "committed_results_sha256": "ce3169fef06190778801f17a1c25cbaf3984cdf809c3466ea3ffddee279e83c7",
+          "gold_set_source_sha256": "9e5b90dd7cfa8dc0bb72289a111f611e9eb1cd0c8c1dbf1262cfc55303040b08",
+          "synonym_map_note": "BRIDGE_SYNONYMS = {} (empty since cycle 270). Hash of empty dict.",
+          "synonym_map_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "entity_pool_note": "all_entities is computed at module load by NLP extraction of 40 source snippets. Its content and ORDERING affect M-008's random candidate generation. Hash must be computed at runtime (not yet done in this inventory).",
+          "entity_pool_sha256": "RUNTIME_COMPUTATION_REQUIRED"
+        }
+      },
+      "regeneration_status": "NOT_INDEPENDENTLY_VERIFIED",
+      "shared_run_comparison": "MATCHED",
+      "independent_regeneration": false,
+      "regeneration_evidence": {
+        "shared_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
+        "comparison": "field-by-field (point_estimate, ci_95_lower, ci_95_upper)",
+        "result": "all compared fields matched within 1e-4 tolerance in the shared aggregate run",
+        "fresh_output_artifact": "reports/phase3/regeneration_result.json",
+        "independent_regeneration": false,
+        "note": "This metric matched in a single shared-context run of bootstrap_all_metrics. It has NOT been independently regenerated. The shared run shares imports, module-level RNG, and NLP pipeline state across all 38 metrics. Matching in a shared run is necessary but not sufficient for independent reproducibility."
+      },
+      "epistemic_level": "REPRODUCED_IN_SHARED_RUN",
+      "critical_path_for_matcher_discrimination": false,
+      "measurement_usability": "REPRODUCED_IN_SHARED_RUN",
+      "scientifically_eligible": false,
+      "used_for_scientific_decision": "NO"
+    },
+    {
+      "metric_id": "M-004",
+      "metric_name": "Synonym F1 (all entities)",
+      "stored_result": {
+        "point_estimate": 0.2533,
+        "bootstrap_mean": 0.2413,
+        "bootstrap_std": 0.0134,
+        "ci_95_lower": 0.2102,
+        "ci_95_upper": 0.2614,
+        "n": 20,
+        "n_resamples": 500,
+        "seed": 42
+      },
+      "provenance": {
+        "provenance_declared": true,
+        "provenance_verified": false,
+        "provenance_note": "provenance_declared=true means the definition location is known. provenance_verified=false means we have NOT cryptographically verified that the historical number was generated from exactly these inputs. Declared provenance is not verified provenance.",
+        "definition_locations": {
+          "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
+          "computation": "programs/A_metrology/bootstrap_statistics.py",
+          "committed_results": "reports/bootstrap_statistics.json"
+        },
+        "input_hashes": {
+          "computation_source_sha256": "5669b9b27f1d42e103783b100646794d97fa586aff81735e35b16aef26157d26",
+          "spec_source_sha256": "cc0115f4d93b2eed35476c1b050b0859de38c39e310bed3286788960e245611e",
+          "committed_results_sha256": "ce3169fef06190778801f17a1c25cbaf3984cdf809c3466ea3ffddee279e83c7",
+          "gold_set_source_sha256": "9e5b90dd7cfa8dc0bb72289a111f611e9eb1cd0c8c1dbf1262cfc55303040b08",
+          "synonym_map_note": "BRIDGE_SYNONYMS = {} (empty since cycle 270). Hash of empty dict.",
+          "synonym_map_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "entity_pool_note": "all_entities is computed at module load by NLP extraction of 40 source snippets. Its content and ORDERING affect M-008's random candidate generation. Hash must be computed at runtime (not yet done in this inventory).",
+          "entity_pool_sha256": "RUNTIME_COMPUTATION_REQUIRED"
+        }
+      },
+      "regeneration_status": "NOT_INDEPENDENTLY_VERIFIED",
+      "shared_run_comparison": "MATCHED",
+      "independent_regeneration": false,
+      "regeneration_evidence": {
+        "shared_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
+        "comparison": "field-by-field (point_estimate, ci_95_lower, ci_95_upper)",
+        "result": "all compared fields matched within 1e-4 tolerance in the shared aggregate run",
+        "fresh_output_artifact": "reports/phase3/regeneration_result.json",
+        "independent_regeneration": false,
+        "note": "This metric matched in a single shared-context run of bootstrap_all_metrics. It has NOT been independently regenerated. The shared run shares imports, module-level RNG, and NLP pipeline state across all 38 metrics. Matching in a shared run is necessary but not sufficient for independent reproducibility."
+      },
+      "epistemic_level": "REPRODUCED_IN_SHARED_RUN",
+      "critical_path_for_matcher_discrimination": true,
+      "measurement_usability": "REPRODUCED_IN_SHARED_RUN",
+      "scientifically_eligible": false,
+      "used_for_scientific_decision": "NOT_YET"
+    },
+    {
+      "metric_id": "M-005",
+      "metric_name": "Discovery F1 (shared, syn, DR-91)",
+      "stored_result": {
+        "point_estimate": 0.7879,
+        "bootstrap_mean": 0.7834,
+        "bootstrap_std": 0.0809,
+        "ci_95_lower": 0.6207,
+        "ci_95_upper": 0.9189,
+        "n": 20,
+        "n_resamples": 500,
+        "seed": 42
+      },
+      "provenance": {
+        "provenance_declared": true,
+        "provenance_verified": false,
+        "provenance_note": "provenance_declared=true means the definition location is known. provenance_verified=false means we have NOT cryptographically verified that the historical number was generated from exactly these inputs. Declared provenance is not verified provenance.",
+        "definition_locations": {
+          "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
+          "computation": "programs/A_metrology/bootstrap_statistics.py",
+          "committed_results": "reports/bootstrap_statistics.json"
+        },
+        "input_hashes": {
+          "computation_source_sha256": "5669b9b27f1d42e103783b100646794d97fa586aff81735e35b16aef26157d26",
+          "spec_source_sha256": "cc0115f4d93b2eed35476c1b050b0859de38c39e310bed3286788960e245611e",
+          "committed_results_sha256": "ce3169fef06190778801f17a1c25cbaf3984cdf809c3466ea3ffddee279e83c7",
+          "gold_set_source_sha256": "9e5b90dd7cfa8dc0bb72289a111f611e9eb1cd0c8c1dbf1262cfc55303040b08",
+          "synonym_map_note": "BRIDGE_SYNONYMS = {} (empty since cycle 270). Hash of empty dict.",
+          "synonym_map_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "entity_pool_note": "all_entities is computed at module load by NLP extraction of 40 source snippets. Its content and ORDERING affect M-008's random candidate generation. Hash must be computed at runtime (not yet done in this inventory).",
+          "entity_pool_sha256": "RUNTIME_COMPUTATION_REQUIRED"
+        }
+      },
+      "regeneration_status": "NOT_INDEPENDENTLY_VERIFIED",
+      "shared_run_comparison": "MATCHED",
+      "independent_regeneration": false,
+      "regeneration_evidence": {
+        "shared_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
+        "comparison": "field-by-field (point_estimate, ci_95_lower, ci_95_upper)",
+        "result": "all compared fields matched within 1e-4 tolerance in the shared aggregate run",
+        "fresh_output_artifact": "reports/phase3/regeneration_result.json",
+        "independent_regeneration": false,
+        "note": "This metric matched in a single shared-context run of bootstrap_all_metrics. It has NOT been independently regenerated. The shared run shares imports, module-level RNG, and NLP pipeline state across all 38 metrics. Matching in a shared run is necessary but not sufficient for independent reproducibility."
+      },
+      "epistemic_level": "REPRODUCED_IN_SHARED_RUN",
+      "critical_path_for_matcher_discrimination": true,
+      "measurement_usability": "REPRODUCED_IN_SHARED_RUN",
+      "scientifically_eligible": false,
+      "used_for_scientific_decision": "NOT_YET"
+    },
+    {
+      "metric_id": "M-006",
+      "metric_name": "Recognition F1 (all, syn, DR-91)",
+      "stored_result": {
+        "point_estimate": 0.9744,
+        "bootstrap_mean": 0.9751,
+        "bootstrap_std": 0.0252,
+        "ci_95_lower": 0.9189,
+        "ci_95_upper": 1.0,
+        "n": 20,
+        "n_resamples": 500,
+        "seed": 42
+      },
+      "provenance": {
+        "provenance_declared": true,
+        "provenance_verified": false,
+        "provenance_note": "provenance_declared=true means the definition location is known. provenance_verified=false means we have NOT cryptographically verified that the historical number was generated from exactly these inputs. Declared provenance is not verified provenance.",
+        "definition_locations": {
+          "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
+          "computation": "programs/A_metrology/bootstrap_statistics.py",
+          "committed_results": "reports/bootstrap_statistics.json"
+        },
+        "input_hashes": {
+          "computation_source_sha256": "5669b9b27f1d42e103783b100646794d97fa586aff81735e35b16aef26157d26",
+          "spec_source_sha256": "cc0115f4d93b2eed35476c1b050b0859de38c39e310bed3286788960e245611e",
+          "committed_results_sha256": "ce3169fef06190778801f17a1c25cbaf3984cdf809c3466ea3ffddee279e83c7",
+          "gold_set_source_sha256": "9e5b90dd7cfa8dc0bb72289a111f611e9eb1cd0c8c1dbf1262cfc55303040b08",
+          "synonym_map_note": "BRIDGE_SYNONYMS = {} (empty since cycle 270). Hash of empty dict.",
+          "synonym_map_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "entity_pool_note": "all_entities is computed at module load by NLP extraction of 40 source snippets. Its content and ORDERING affect M-008's random candidate generation. Hash must be computed at runtime (not yet done in this inventory).",
+          "entity_pool_sha256": "RUNTIME_COMPUTATION_REQUIRED"
+        }
+      },
+      "regeneration_status": "NOT_INDEPENDENTLY_VERIFIED",
+      "shared_run_comparison": "MATCHED",
+      "independent_regeneration": false,
+      "regeneration_evidence": {
+        "shared_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
+        "comparison": "field-by-field (point_estimate, ci_95_lower, ci_95_upper)",
+        "result": "all compared fields matched within 1e-4 tolerance in the shared aggregate run",
+        "fresh_output_artifact": "reports/phase3/regeneration_result.json",
+        "independent_regeneration": false,
+        "note": "This metric matched in a single shared-context run of bootstrap_all_metrics. It has NOT been independently regenerated. The shared run shares imports, module-level RNG, and NLP pipeline state across all 38 metrics. Matching in a shared run is necessary but not sufficient for independent reproducibility."
+      },
+      "epistemic_level": "REPRODUCED_IN_SHARED_RUN",
+      "critical_path_for_matcher_discrimination": true,
+      "measurement_usability": "REPRODUCED_IN_SHARED_RUN",
+      "scientifically_eligible": false,
+      "used_for_scientific_decision": "NOT_YET"
+    },
+    {
+      "metric_id": "M-007",
+      "metric_name": "Proposal-locus inflation",
+      "stored_result": {
+        "point_estimate": 0.1865,
+        "bootstrap_mean": 0.1917,
+        "bootstrap_std": 0.0768,
+        "ci_95_lower": 0.0554,
+        "ci_95_upper": 0.3759,
+        "n": 20,
+        "n_resamples": 500,
+        "seed": 42
+      },
+      "provenance": {
+        "provenance_declared": true,
+        "provenance_verified": false,
+        "provenance_note": "provenance_declared=true means the definition location is known. provenance_verified=false means we have NOT cryptographically verified that the historical number was generated from exactly these inputs. Declared provenance is not verified provenance.",
+        "definition_locations": {
+          "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
+          "computation": "programs/A_metrology/bootstrap_statistics.py",
+          "committed_results": "reports/bootstrap_statistics.json"
+        },
+        "input_hashes": {
+          "computation_source_sha256": "5669b9b27f1d42e103783b100646794d97fa586aff81735e35b16aef26157d26",
+          "spec_source_sha256": "cc0115f4d93b2eed35476c1b050b0859de38c39e310bed3286788960e245611e",
+          "committed_results_sha256": "ce3169fef06190778801f17a1c25cbaf3984cdf809c3466ea3ffddee279e83c7",
+          "gold_set_source_sha256": "9e5b90dd7cfa8dc0bb72289a111f611e9eb1cd0c8c1dbf1262cfc55303040b08",
+          "synonym_map_note": "BRIDGE_SYNONYMS = {} (empty since cycle 270). Hash of empty dict.",
+          "synonym_map_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "entity_pool_note": "all_entities is computed at module load by NLP extraction of 40 source snippets. Its content and ORDERING affect M-008's random candidate generation. Hash must be computed at runtime (not yet done in this inventory).",
+          "entity_pool_sha256": "RUNTIME_COMPUTATION_REQUIRED"
+        }
+      },
+      "regeneration_status": "NOT_INDEPENDENTLY_VERIFIED",
+      "shared_run_comparison": "MATCHED",
+      "independent_regeneration": false,
+      "regeneration_evidence": {
+        "shared_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
+        "comparison": "field-by-field (point_estimate, ci_95_lower, ci_95_upper)",
+        "result": "all compared fields matched within 1e-4 tolerance in the shared aggregate run",
+        "fresh_output_artifact": "reports/phase3/regeneration_result.json",
+        "independent_regeneration": false,
+        "note": "This metric matched in a single shared-context run of bootstrap_all_metrics. It has NOT been independently regenerated. The shared run shares imports, module-level RNG, and NLP pipeline state across all 38 metrics. Matching in a shared run is necessary but not sufficient for independent reproducibility."
+      },
+      "epistemic_level": "REPRODUCED_IN_SHARED_RUN",
+      "critical_path_for_matcher_discrimination": true,
+      "measurement_usability": "REPRODUCED_IN_SHARED_RUN",
+      "scientifically_eligible": false,
+      "used_for_scientific_decision": "NOT_YET"
+    },
+    {
+      "metric_id": "M-008",
+      "metric_name": "FP floor (synonym)",
+      "stored_result": {
+        "point_estimate": 0.9189,
+        "bootstrap_mean": 0.867,
+        "bootstrap_std": 0.0978,
+        "ci_95_lower": 0.6667,
+        "ci_95_upper": 1.0,
+        "n": 20,
+        "n_resamples": 200,
+        "seed": 42
+      },
+      "provenance": {
+        "provenance_declared": true,
+        "provenance_verified": false,
+        "provenance_note": "provenance_declared=true means the definition location is known. provenance_verified=false means we have NOT cryptographically verified that the historical number was generated from exactly these inputs. Declared provenance is not verified provenance.",
+        "definition_locations": {
+          "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
+          "computation": "programs/A_metrology/bootstrap_statistics.py",
+          "committed_results": "reports/bootstrap_statistics.json"
+        },
+        "input_hashes": {
+          "computation_source_sha256": "5669b9b27f1d42e103783b100646794d97fa586aff81735e35b16aef26157d26",
+          "spec_source_sha256": "cc0115f4d93b2eed35476c1b050b0859de38c39e310bed3286788960e245611e",
+          "committed_results_sha256": "ce3169fef06190778801f17a1c25cbaf3984cdf809c3466ea3ffddee279e83c7",
+          "gold_set_source_sha256": "9e5b90dd7cfa8dc0bb72289a111f611e9eb1cd0c8c1dbf1262cfc55303040b08",
+          "synonym_map_note": "BRIDGE_SYNONYMS = {} (empty since cycle 270). Hash of empty dict.",
+          "synonym_map_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "entity_pool_note": "all_entities is computed at module load by NLP extraction of 40 source snippets. Its content and ORDERING affect M-008's random candidate generation. Hash must be computed at runtime (not yet done in this inventory).",
+          "entity_pool_sha256": "RUNTIME_COMPUTATION_REQUIRED"
+        }
+      },
+      "regeneration_status": "FAILED",
+      "shared_run_comparison": "MISMATCHED",
+      "independent_regeneration": false,
+      "regeneration_evidence": {
+        "shared_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
+        "comparison": "field-by-field (point_estimate, ci_95_lower, ci_95_upper)",
+        "result": "2 fields mismatched (point_estimate: 0.8889 vs 0.9189; ci_95_lower: 0.6207 vs 0.6667)",
+        "fresh_output_artifact": "reports/phase3/regeneration_result.json",
+        "independent_regeneration": false,
+        "note": "M-008 failed even in the shared run. It is quarantined."
+      },
+      "epistemic_level": "QUARANTINED",
+      "critical_path_for_matcher_discrimination": true,
+      "measurement_usability": "QUARANTINED",
+      "scientifically_eligible": false,
+      "used_for_scientific_decision": "NO",
+      "n_resamples_note": "M-008 uses 200 bootstrap resamples (hardcoded at bootstrap_statistics.py:489), NOT the global n_resamples=500. This is deliberate because the random-candidate calculation is expensive. This does NOT explain the regeneration discrepancy \u2014 both committed and fresh runs use 200 for M-008.",
+      "quarantine": {
+        "value_deleted": "NO",
+        "value_replaced": "NO",
+        "values_averaged": "NO",
+        "historical_provenance": "PENDING_INVESTIGATION",
+        "investigation_required": [
+          "identify provenance of committed 0.9189",
+          "identify exact input dataset/hash",
+          "identify exact code commit",
+          "identify dependency lock",
+          "identify RNG implementation/environment",
+          "reproduce historical computation",
+          "classify cause"
+        ],
+        "note": "M-008 is quarantined. The point_estimate is deterministic under identical effective inputs (see determinism analysis). The discrepancy is consistent with at least one effective-input or environment difference; causal attribution remains open. No retroactive repair.",
+        "determinism_analysis": {
+          "point_estimate_computation": "metric_fn(original_sample) \u2014 computed on the ORIGINAL sample, NOT a resample. See bootstrap_statistics.py:165.",
+          "rng_topology": {
+            "rng_instance": "module-scoped (created outside the m008 closure at bootstrap_statistics.py:480)",
+            "seed": 42,
+            "initialization": "rng_fp = _random.Random(seed) \u2014 created ONCE at module load time",
+            "point_estimate_call": "consumes RNG state (generates random candidates for the point estimate)",
+            "bootstrap_calls": "continue the SAME RNG stream (state is shared, not reset per resample)",
+            "implication": "The RNG state at any given bootstrap resample depends on how many random candidates were generated by all preceding calls. Changing the number of preceding calls (e.g., different all_entities length) shifts the RNG stream for all subsequent calls."
+          },
+          "DETERMINISTIC_UNDER_IDENTICAL_EFFECTIVE_INPUTS": true,
+          "CAUSE_OF_DISCREPANCY_ESTABLISHED": false,
+          "RECONCILIATION_STATUS": "RECONCILIATION_OPEN",
+          "determinism_statement": "M-008's point-estimate computation is deterministic CONDITIONAL ON identical effective inputs, code, dependencies, and execution environment. This includes: entity contents, entity ordering, entity count, gold contents/order, matcher implementation, matcher dependencies, canonicalization behavior, NLP/model-produced entity pool, Python/package/runtime differences, and other effective environment state.",
+          "what_has_been_established": "Under fixed seed + fixed code path + Python Random, the computation is deterministic. The observed discrepancy (0.9189 vs 0.8889) demonstrates that at least one effective determinant differs OR that an unexamined source of nondeterminism exists.",
+          "what_has_NOT_been_established": "The cause of the discrepancy has NOT been identified. The discrepancy is consistent with at least one effective-input or environment difference; causal attribution remains open. The narrowed hypothesis space (all_entities, gold, m_synonym, _score_f1_dr91) is a search space, not a diagnosis.",
+          "rng_modification_prohibition": "Per audit round 8, point 8: do NOT modify M-008's current RNG implementation while investigating the discrepancy. Changing rng_fp from module-scoped to function-scoped would change the historical computation's RNG semantics and could mask the actual cause. Any RNG redesign must wait until after causal attribution and requires its own governance treatment.",
+          "note": "This analysis does NOT explain the discrepancy. It narrows the search space. The actual cause must be identified by the 7-item investigation checklist. Causal attribution remains open."
+        }
+      }
+    },
+    {
+      "metric_id": "M-009",
+      "metric_name": "UNSAFE synonyms count",
+      "stored_result": {
+        "point_estimate": 0.0,
+        "bootstrap_mean": 0.0,
+        "bootstrap_std": 0.0,
+        "ci_95_lower": 0.0,
+        "ci_95_upper": 0.0,
+        "n": 20,
+        "n_resamples": 500,
+        "seed": 42
+      },
+      "provenance": {
+        "provenance_declared": true,
+        "provenance_verified": false,
+        "provenance_note": "provenance_declared=true means the definition location is known. provenance_verified=false means we have NOT cryptographically verified that the historical number was generated from exactly these inputs. Declared provenance is not verified provenance.",
+        "definition_locations": {
+          "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
+          "computation": "programs/A_metrology/bootstrap_statistics.py",
+          "committed_results": "reports/bootstrap_statistics.json"
+        },
+        "input_hashes": {
+          "computation_source_sha256": "5669b9b27f1d42e103783b100646794d97fa586aff81735e35b16aef26157d26",
+          "spec_source_sha256": "cc0115f4d93b2eed35476c1b050b0859de38c39e310bed3286788960e245611e",
+          "committed_results_sha256": "ce3169fef06190778801f17a1c25cbaf3984cdf809c3466ea3ffddee279e83c7",
+          "gold_set_source_sha256": "9e5b90dd7cfa8dc0bb72289a111f611e9eb1cd0c8c1dbf1262cfc55303040b08",
+          "synonym_map_note": "BRIDGE_SYNONYMS = {} (empty since cycle 270). Hash of empty dict.",
+          "synonym_map_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "entity_pool_note": "all_entities is computed at module load by NLP extraction of 40 source snippets. Its content and ORDERING affect M-008's random candidate generation. Hash must be computed at runtime (not yet done in this inventory).",
+          "entity_pool_sha256": "RUNTIME_COMPUTATION_REQUIRED"
+        }
+      },
+      "regeneration_status": "NOT_INDEPENDENTLY_VERIFIED",
+      "shared_run_comparison": "MATCHED",
+      "independent_regeneration": false,
+      "regeneration_evidence": {
+        "shared_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
+        "comparison": "field-by-field (point_estimate, ci_95_lower, ci_95_upper)",
+        "result": "all compared fields matched within 1e-4 tolerance in the shared aggregate run",
+        "fresh_output_artifact": "reports/phase3/regeneration_result.json",
+        "independent_regeneration": false,
+        "note": "This metric matched in a single shared-context run of bootstrap_all_metrics. It has NOT been independently regenerated. The shared run shares imports, module-level RNG, and NLP pipeline state across all 38 metrics. Matching in a shared run is necessary but not sufficient for independent reproducibility."
+      },
+      "epistemic_level": "REPRODUCED_IN_SHARED_RUN",
+      "critical_path_for_matcher_discrimination": false,
+      "measurement_usability": "REPRODUCED_IN_SHARED_RUN",
+      "scientifically_eligible": false,
+      "used_for_scientific_decision": "NO"
+    },
+    {
+      "metric_id": "M-010",
+      "metric_name": "Per-proposal F1 (honest, lenient, ALL shared)",
+      "stored_result": {
+        "point_estimate": 0.65,
+        "bootstrap_mean": 0.6511,
+        "bootstrap_std": 0.1081,
+        "ci_95_lower": 0.45,
+        "ci_95_upper": 0.85,
+        "n": 20,
+        "n_resamples": 500,
+        "seed": 42
+      },
+      "provenance": {
+        "provenance_declared": true,
+        "provenance_verified": false,
+        "provenance_note": "provenance_declared=true means the definition location is known. provenance_verified=false means we have NOT cryptographically verified that the historical number was generated from exactly these inputs. Declared provenance is not verified provenance.",
+        "definition_locations": {
+          "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
+          "computation": "programs/A_metrology/bootstrap_statistics.py",
+          "committed_results": "reports/bootstrap_statistics.json"
+        },
+        "input_hashes": {
+          "computation_source_sha256": "5669b9b27f1d42e103783b100646794d97fa586aff81735e35b16aef26157d26",
+          "spec_source_sha256": "cc0115f4d93b2eed35476c1b050b0859de38c39e310bed3286788960e245611e",
+          "committed_results_sha256": "ce3169fef06190778801f17a1c25cbaf3984cdf809c3466ea3ffddee279e83c7",
+          "gold_set_source_sha256": "9e5b90dd7cfa8dc0bb72289a111f611e9eb1cd0c8c1dbf1262cfc55303040b08",
+          "synonym_map_note": "BRIDGE_SYNONYMS = {} (empty since cycle 270). Hash of empty dict.",
+          "synonym_map_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "entity_pool_note": "all_entities is computed at module load by NLP extraction of 40 source snippets. Its content and ORDERING affect M-008's random candidate generation. Hash must be computed at runtime (not yet done in this inventory).",
+          "entity_pool_sha256": "RUNTIME_COMPUTATION_REQUIRED"
+        }
+      },
+      "regeneration_status": "NOT_INDEPENDENTLY_VERIFIED",
+      "shared_run_comparison": "MATCHED",
+      "independent_regeneration": false,
+      "regeneration_evidence": {
+        "shared_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
+        "comparison": "field-by-field (point_estimate, ci_95_lower, ci_95_upper)",
+        "result": "all compared fields matched within 1e-4 tolerance in the shared aggregate run",
+        "fresh_output_artifact": "reports/phase3/regeneration_result.json",
+        "independent_regeneration": false,
+        "note": "This metric matched in a single shared-context run of bootstrap_all_metrics. It has NOT been independently regenerated. The shared run shares imports, module-level RNG, and NLP pipeline state across all 38 metrics. Matching in a shared run is necessary but not sufficient for independent reproducibility."
+      },
+      "epistemic_level": "REPRODUCED_IN_SHARED_RUN",
+      "critical_path_for_matcher_discrimination": true,
+      "measurement_usability": "REPRODUCED_IN_SHARED_RUN",
+      "scientifically_eligible": false,
+      "used_for_scientific_decision": "NOT_YET"
+    },
+    {
+      "metric_id": "M-011",
+      "metric_name": "Per-proposal F1 (strict, honest)",
+      "stored_result": {
+        "point_estimate": 0.0,
+        "bootstrap_mean": 0.0,
+        "bootstrap_std": 0.0,
+        "ci_95_lower": 0.0,
+        "ci_95_upper": 0.0,
+        "n": 20,
+        "n_resamples": 500,
+        "seed": 42
+      },
+      "provenance": {
+        "provenance_declared": true,
+        "provenance_verified": false,
+        "provenance_note": "provenance_declared=true means the definition location is known. provenance_verified=false means we have NOT cryptographically verified that the historical number was generated from exactly these inputs. Declared provenance is not verified provenance.",
+        "definition_locations": {
+          "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
+          "computation": "programs/A_metrology/bootstrap_statistics.py",
+          "committed_results": "reports/bootstrap_statistics.json"
+        },
+        "input_hashes": {
+          "computation_source_sha256": "5669b9b27f1d42e103783b100646794d97fa586aff81735e35b16aef26157d26",
+          "spec_source_sha256": "cc0115f4d93b2eed35476c1b050b0859de38c39e310bed3286788960e245611e",
+          "committed_results_sha256": "ce3169fef06190778801f17a1c25cbaf3984cdf809c3466ea3ffddee279e83c7",
+          "gold_set_source_sha256": "9e5b90dd7cfa8dc0bb72289a111f611e9eb1cd0c8c1dbf1262cfc55303040b08",
+          "synonym_map_note": "BRIDGE_SYNONYMS = {} (empty since cycle 270). Hash of empty dict.",
+          "synonym_map_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "entity_pool_note": "all_entities is computed at module load by NLP extraction of 40 source snippets. Its content and ORDERING affect M-008's random candidate generation. Hash must be computed at runtime (not yet done in this inventory).",
+          "entity_pool_sha256": "RUNTIME_COMPUTATION_REQUIRED"
+        }
+      },
+      "regeneration_status": "NOT_INDEPENDENTLY_VERIFIED",
+      "shared_run_comparison": "MATCHED",
+      "independent_regeneration": false,
+      "regeneration_evidence": {
+        "shared_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
+        "comparison": "field-by-field (point_estimate, ci_95_lower, ci_95_upper)",
+        "result": "all compared fields matched within 1e-4 tolerance in the shared aggregate run",
+        "fresh_output_artifact": "reports/phase3/regeneration_result.json",
+        "independent_regeneration": false,
+        "note": "This metric matched in a single shared-context run of bootstrap_all_metrics. It has NOT been independently regenerated. The shared run shares imports, module-level RNG, and NLP pipeline state across all 38 metrics. Matching in a shared run is necessary but not sufficient for independent reproducibility."
+      },
+      "epistemic_level": "REPRODUCED_IN_SHARED_RUN",
+      "critical_path_for_matcher_discrimination": true,
+      "measurement_usability": "REPRODUCED_IN_SHARED_RUN",
+      "scientifically_eligible": false,
+      "used_for_scientific_decision": "NOT_YET"
+    },
+    {
+      "metric_id": "M-012",
+      "metric_name": "Aggregate F1 (DR-91)",
+      "stored_result": {
+        "point_estimate": 0.7879,
+        "bootstrap_mean": 0.7834,
+        "bootstrap_std": 0.0809,
+        "ci_95_lower": 0.6207,
+        "ci_95_upper": 0.9189,
+        "n": 20,
+        "n_resamples": 500,
+        "seed": 42
+      },
+      "provenance": {
+        "provenance_declared": true,
+        "provenance_verified": false,
+        "provenance_note": "provenance_declared=true means the definition location is known. provenance_verified=false means we have NOT cryptographically verified that the historical number was generated from exactly these inputs. Declared provenance is not verified provenance.",
+        "definition_locations": {
+          "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
+          "computation": "programs/A_metrology/bootstrap_statistics.py",
+          "committed_results": "reports/bootstrap_statistics.json"
+        },
+        "input_hashes": {
+          "computation_source_sha256": "5669b9b27f1d42e103783b100646794d97fa586aff81735e35b16aef26157d26",
+          "spec_source_sha256": "cc0115f4d93b2eed35476c1b050b0859de38c39e310bed3286788960e245611e",
+          "committed_results_sha256": "ce3169fef06190778801f17a1c25cbaf3984cdf809c3466ea3ffddee279e83c7",
+          "gold_set_source_sha256": "9e5b90dd7cfa8dc0bb72289a111f611e9eb1cd0c8c1dbf1262cfc55303040b08",
+          "synonym_map_note": "BRIDGE_SYNONYMS = {} (empty since cycle 270). Hash of empty dict.",
+          "synonym_map_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "entity_pool_note": "all_entities is computed at module load by NLP extraction of 40 source snippets. Its content and ORDERING affect M-008's random candidate generation. Hash must be computed at runtime (not yet done in this inventory).",
+          "entity_pool_sha256": "RUNTIME_COMPUTATION_REQUIRED"
+        }
+      },
+      "regeneration_status": "NOT_INDEPENDENTLY_VERIFIED",
+      "shared_run_comparison": "MATCHED",
+      "independent_regeneration": false,
+      "regeneration_evidence": {
+        "shared_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
+        "comparison": "field-by-field (point_estimate, ci_95_lower, ci_95_upper)",
+        "result": "all compared fields matched within 1e-4 tolerance in the shared aggregate run",
+        "fresh_output_artifact": "reports/phase3/regeneration_result.json",
+        "independent_regeneration": false,
+        "note": "This metric matched in a single shared-context run of bootstrap_all_metrics. It has NOT been independently regenerated. The shared run shares imports, module-level RNG, and NLP pipeline state across all 38 metrics. Matching in a shared run is necessary but not sufficient for independent reproducibility."
+      },
+      "epistemic_level": "REPRODUCED_IN_SHARED_RUN",
+      "critical_path_for_matcher_discrimination": true,
+      "measurement_usability": "REPRODUCED_IN_SHARED_RUN",
+      "scientifically_eligible": false,
+      "used_for_scientific_decision": "NOT_YET"
+    },
+    {
+      "metric_id": "M-013",
+      "metric_name": "Aggregate F1 (honest)",
+      "stored_result": {
+        "point_estimate": 0.7647,
+        "bootstrap_mean": 0.7376,
+        "bootstrap_std": 0.0875,
+        "ci_95_lower": 0.5455,
+        "ci_95_upper": 0.8947,
+        "n": 20,
+        "n_resamples": 500,
+        "seed": 42
+      },
+      "provenance": {
+        "provenance_declared": true,
+        "provenance_verified": false,
+        "provenance_note": "provenance_declared=true means the definition location is known. provenance_verified=false means we have NOT cryptographically verified that the historical number was generated from exactly these inputs. Declared provenance is not verified provenance.",
+        "definition_locations": {
+          "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
+          "computation": "programs/A_metrology/bootstrap_statistics.py",
+          "committed_results": "reports/bootstrap_statistics.json"
+        },
+        "input_hashes": {
+          "computation_source_sha256": "5669b9b27f1d42e103783b100646794d97fa586aff81735e35b16aef26157d26",
+          "spec_source_sha256": "cc0115f4d93b2eed35476c1b050b0859de38c39e310bed3286788960e245611e",
+          "committed_results_sha256": "ce3169fef06190778801f17a1c25cbaf3984cdf809c3466ea3ffddee279e83c7",
+          "gold_set_source_sha256": "9e5b90dd7cfa8dc0bb72289a111f611e9eb1cd0c8c1dbf1262cfc55303040b08",
+          "synonym_map_note": "BRIDGE_SYNONYMS = {} (empty since cycle 270). Hash of empty dict.",
+          "synonym_map_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "entity_pool_note": "all_entities is computed at module load by NLP extraction of 40 source snippets. Its content and ORDERING affect M-008's random candidate generation. Hash must be computed at runtime (not yet done in this inventory).",
+          "entity_pool_sha256": "RUNTIME_COMPUTATION_REQUIRED"
+        }
+      },
+      "regeneration_status": "NOT_INDEPENDENTLY_VERIFIED",
+      "shared_run_comparison": "MATCHED",
+      "independent_regeneration": false,
+      "regeneration_evidence": {
+        "shared_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
+        "comparison": "field-by-field (point_estimate, ci_95_lower, ci_95_upper)",
+        "result": "all compared fields matched within 1e-4 tolerance in the shared aggregate run",
+        "fresh_output_artifact": "reports/phase3/regeneration_result.json",
+        "independent_regeneration": false,
+        "note": "This metric matched in a single shared-context run of bootstrap_all_metrics. It has NOT been independently regenerated. The shared run shares imports, module-level RNG, and NLP pipeline state across all 38 metrics. Matching in a shared run is necessary but not sufficient for independent reproducibility."
+      },
+      "epistemic_level": "REPRODUCED_IN_SHARED_RUN",
+      "critical_path_for_matcher_discrimination": true,
+      "measurement_usability": "REPRODUCED_IN_SHARED_RUN",
+      "scientifically_eligible": false,
+      "used_for_scientific_decision": "NOT_YET"
+    },
+    {
+      "metric_id": "M-014",
+      "metric_name": "BM25 recall@1 (lenient)",
+      "stored_result": {
+        "point_estimate": 0.3,
+        "bootstrap_mean": 0.299,
+        "bootstrap_std": 0.0997,
+        "ci_95_lower": 0.1487,
+        "ci_95_upper": 0.5,
+        "n": 20,
+        "n_resamples": 200,
+        "seed": 42
+      },
+      "provenance": {
+        "provenance_declared": true,
+        "provenance_verified": false,
+        "provenance_note": "provenance_declared=true means the definition location is known. provenance_verified=false means we have NOT cryptographically verified that the historical number was generated from exactly these inputs. Declared provenance is not verified provenance.",
+        "definition_locations": {
+          "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
+          "computation": "programs/A_metrology/bootstrap_statistics.py",
+          "committed_results": "reports/bootstrap_statistics.json"
+        },
+        "input_hashes": {
+          "computation_source_sha256": "5669b9b27f1d42e103783b100646794d97fa586aff81735e35b16aef26157d26",
+          "spec_source_sha256": "cc0115f4d93b2eed35476c1b050b0859de38c39e310bed3286788960e245611e",
+          "committed_results_sha256": "ce3169fef06190778801f17a1c25cbaf3984cdf809c3466ea3ffddee279e83c7",
+          "gold_set_source_sha256": "9e5b90dd7cfa8dc0bb72289a111f611e9eb1cd0c8c1dbf1262cfc55303040b08",
+          "synonym_map_note": "BRIDGE_SYNONYMS = {} (empty since cycle 270). Hash of empty dict.",
+          "synonym_map_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "entity_pool_note": "all_entities is computed at module load by NLP extraction of 40 source snippets. Its content and ORDERING affect M-008's random candidate generation. Hash must be computed at runtime (not yet done in this inventory).",
+          "entity_pool_sha256": "RUNTIME_COMPUTATION_REQUIRED"
+        }
+      },
+      "regeneration_status": "NOT_INDEPENDENTLY_VERIFIED",
+      "shared_run_comparison": "MATCHED",
+      "independent_regeneration": false,
+      "regeneration_evidence": {
+        "shared_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
+        "comparison": "field-by-field (point_estimate, ci_95_lower, ci_95_upper)",
+        "result": "all compared fields matched within 1e-4 tolerance in the shared aggregate run",
+        "fresh_output_artifact": "reports/phase3/regeneration_result.json",
+        "independent_regeneration": false,
+        "note": "This metric matched in a single shared-context run of bootstrap_all_metrics. It has NOT been independently regenerated. The shared run shares imports, module-level RNG, and NLP pipeline state across all 38 metrics. Matching in a shared run is necessary but not sufficient for independent reproducibility."
+      },
+      "epistemic_level": "REPRODUCED_IN_SHARED_RUN",
+      "critical_path_for_matcher_discrimination": false,
+      "measurement_usability": "REPRODUCED_IN_SHARED_RUN",
+      "scientifically_eligible": false,
+      "used_for_scientific_decision": "NO"
+    },
+    {
+      "metric_id": "M-015",
+      "metric_name": "Random baseline F1 (lenient)",
+      "stored_result": {
+        "point_estimate": 0.05,
+        "bootstrap_mean": 0.05,
+        "bootstrap_std": 0.0517,
+        "ci_95_lower": 0.0,
+        "ci_95_upper": 0.15,
+        "n": 20,
+        "n_resamples": 200,
+        "seed": 42
+      },
+      "provenance": {
+        "provenance_declared": true,
+        "provenance_verified": false,
+        "provenance_note": "provenance_declared=true means the definition location is known. provenance_verified=false means we have NOT cryptographically verified that the historical number was generated from exactly these inputs. Declared provenance is not verified provenance.",
+        "definition_locations": {
+          "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
+          "computation": "programs/A_metrology/bootstrap_statistics.py",
+          "committed_results": "reports/bootstrap_statistics.json"
+        },
+        "input_hashes": {
+          "computation_source_sha256": "5669b9b27f1d42e103783b100646794d97fa586aff81735e35b16aef26157d26",
+          "spec_source_sha256": "cc0115f4d93b2eed35476c1b050b0859de38c39e310bed3286788960e245611e",
+          "committed_results_sha256": "ce3169fef06190778801f17a1c25cbaf3984cdf809c3466ea3ffddee279e83c7",
+          "gold_set_source_sha256": "9e5b90dd7cfa8dc0bb72289a111f611e9eb1cd0c8c1dbf1262cfc55303040b08",
+          "synonym_map_note": "BRIDGE_SYNONYMS = {} (empty since cycle 270). Hash of empty dict.",
+          "synonym_map_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "entity_pool_note": "all_entities is computed at module load by NLP extraction of 40 source snippets. Its content and ORDERING affect M-008's random candidate generation. Hash must be computed at runtime (not yet done in this inventory).",
+          "entity_pool_sha256": "RUNTIME_COMPUTATION_REQUIRED"
+        }
+      },
+      "regeneration_status": "NOT_INDEPENDENTLY_VERIFIED",
+      "shared_run_comparison": "MATCHED",
+      "independent_regeneration": false,
+      "regeneration_evidence": {
+        "shared_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
+        "comparison": "field-by-field (point_estimate, ci_95_lower, ci_95_upper)",
+        "result": "all compared fields matched within 1e-4 tolerance in the shared aggregate run",
+        "fresh_output_artifact": "reports/phase3/regeneration_result.json",
+        "independent_regeneration": false,
+        "note": "This metric matched in a single shared-context run of bootstrap_all_metrics. It has NOT been independently regenerated. The shared run shares imports, module-level RNG, and NLP pipeline state across all 38 metrics. Matching in a shared run is necessary but not sufficient for independent reproducibility."
+      },
+      "epistemic_level": "REPRODUCED_IN_SHARED_RUN",
+      "critical_path_for_matcher_discrimination": true,
+      "measurement_usability": "REPRODUCED_IN_SHARED_RUN",
+      "scientifically_eligible": false,
+      "used_for_scientific_decision": "NOT_YET"
+    },
+    {
+      "metric_id": "M-016",
+      "metric_name": "Frequency baseline F1 (lenient)",
+      "stored_result": {
+        "point_estimate": 0.1,
+        "bootstrap_mean": 0.1025,
+        "bootstrap_std": 0.0748,
+        "ci_95_lower": 0.0,
+        "ci_95_upper": 0.25,
+        "n": 20,
+        "n_resamples": 200,
+        "seed": 42
+      },
+      "provenance": {
+        "provenance_declared": true,
+        "provenance_verified": false,
+        "provenance_note": "provenance_declared=true means the definition location is known. provenance_verified=false means we have NOT cryptographically verified that the historical number was generated from exactly these inputs. Declared provenance is not verified provenance.",
+        "definition_locations": {
+          "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
+          "computation": "programs/A_metrology/bootstrap_statistics.py",
+          "committed_results": "reports/bootstrap_statistics.json"
+        },
+        "input_hashes": {
+          "computation_source_sha256": "5669b9b27f1d42e103783b100646794d97fa586aff81735e35b16aef26157d26",
+          "spec_source_sha256": "cc0115f4d93b2eed35476c1b050b0859de38c39e310bed3286788960e245611e",
+          "committed_results_sha256": "ce3169fef06190778801f17a1c25cbaf3984cdf809c3466ea3ffddee279e83c7",
+          "gold_set_source_sha256": "9e5b90dd7cfa8dc0bb72289a111f611e9eb1cd0c8c1dbf1262cfc55303040b08",
+          "synonym_map_note": "BRIDGE_SYNONYMS = {} (empty since cycle 270). Hash of empty dict.",
+          "synonym_map_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "entity_pool_note": "all_entities is computed at module load by NLP extraction of 40 source snippets. Its content and ORDERING affect M-008's random candidate generation. Hash must be computed at runtime (not yet done in this inventory).",
+          "entity_pool_sha256": "RUNTIME_COMPUTATION_REQUIRED"
+        }
+      },
+      "regeneration_status": "NOT_INDEPENDENTLY_VERIFIED",
+      "shared_run_comparison": "MATCHED",
+      "independent_regeneration": false,
+      "regeneration_evidence": {
+        "shared_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
+        "comparison": "field-by-field (point_estimate, ci_95_lower, ci_95_upper)",
+        "result": "all compared fields matched within 1e-4 tolerance in the shared aggregate run",
+        "fresh_output_artifact": "reports/phase3/regeneration_result.json",
+        "independent_regeneration": false,
+        "note": "This metric matched in a single shared-context run of bootstrap_all_metrics. It has NOT been independently regenerated. The shared run shares imports, module-level RNG, and NLP pipeline state across all 38 metrics. Matching in a shared run is necessary but not sufficient for independent reproducibility."
+      },
+      "epistemic_level": "REPRODUCED_IN_SHARED_RUN",
+      "critical_path_for_matcher_discrimination": false,
+      "measurement_usability": "REPRODUCED_IN_SHARED_RUN",
+      "scientifically_eligible": false,
+      "used_for_scientific_decision": "NO"
+    },
+    {
+      "metric_id": "M-301",
+      "metric_name": "AI surrogate accept rate",
+      "stored_result": {
+        "point_estimate": 0.0,
+        "bootstrap_mean": 0.0,
+        "bootstrap_std": 0.0,
+        "ci_95_lower": 0.0,
+        "ci_95_upper": 0.0,
+        "n": 6,
+        "n_resamples": 500,
+        "seed": 42
+      },
+      "provenance": {
+        "provenance_declared": true,
+        "provenance_verified": false,
+        "provenance_note": "provenance_declared=true means the definition location is known. provenance_verified=false means we have NOT cryptographically verified that the historical number was generated from exactly these inputs. Declared provenance is not verified provenance.",
+        "definition_locations": {
+          "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
+          "computation": "programs/A_metrology/bootstrap_statistics.py",
+          "committed_results": "reports/bootstrap_statistics.json"
+        },
+        "input_hashes": {
+          "computation_source_sha256": "5669b9b27f1d42e103783b100646794d97fa586aff81735e35b16aef26157d26",
+          "spec_source_sha256": "cc0115f4d93b2eed35476c1b050b0859de38c39e310bed3286788960e245611e",
+          "committed_results_sha256": "ce3169fef06190778801f17a1c25cbaf3984cdf809c3466ea3ffddee279e83c7"
+        }
+      },
+      "regeneration_status": "NOT_INDEPENDENTLY_VERIFIED",
+      "shared_run_comparison": "MATCHED",
+      "independent_regeneration": false,
+      "regeneration_evidence": {
+        "shared_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
+        "comparison": "field-by-field (point_estimate, ci_95_lower, ci_95_upper)",
+        "result": "all compared fields matched within 1e-4 tolerance in the shared aggregate run",
+        "fresh_output_artifact": "reports/phase3/regeneration_result.json",
+        "independent_regeneration": false,
+        "note": "This metric matched in a single shared-context run of bootstrap_all_metrics. It has NOT been independently regenerated. The shared run shares imports, module-level RNG, and NLP pipeline state across all 38 metrics. Matching in a shared run is necessary but not sufficient for independent reproducibility."
+      },
+      "epistemic_level": "REPRODUCED_IN_SHARED_RUN",
+      "critical_path_for_matcher_discrimination": false,
+      "measurement_usability": "REPRODUCED_IN_SHARED_RUN",
+      "scientifically_eligible": false,
+      "used_for_scientific_decision": "NO"
+    },
+    {
+      "metric_id": "M-302",
+      "metric_name": "AI surrogate overall mean score",
+      "stored_result": {
+        "point_estimate": 2.2381,
+        "bootstrap_mean": 2.2325,
+        "bootstrap_std": 0.309,
+        "ci_95_lower": 1.678,
+        "ci_95_upper": 2.8458,
+        "n": 7,
+        "n_resamples": 500,
+        "seed": 42
+      },
+      "provenance": {
+        "provenance_declared": true,
+        "provenance_verified": false,
+        "provenance_note": "provenance_declared=true means the definition location is known. provenance_verified=false means we have NOT cryptographically verified that the historical number was generated from exactly these inputs. Declared provenance is not verified provenance.",
+        "definition_locations": {
+          "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
+          "computation": "programs/A_metrology/bootstrap_statistics.py",
+          "committed_results": "reports/bootstrap_statistics.json"
+        },
+        "input_hashes": {
+          "computation_source_sha256": "5669b9b27f1d42e103783b100646794d97fa586aff81735e35b16aef26157d26",
+          "spec_source_sha256": "cc0115f4d93b2eed35476c1b050b0859de38c39e310bed3286788960e245611e",
+          "committed_results_sha256": "ce3169fef06190778801f17a1c25cbaf3984cdf809c3466ea3ffddee279e83c7"
+        }
+      },
+      "regeneration_status": "NOT_INDEPENDENTLY_VERIFIED",
+      "shared_run_comparison": "MATCHED",
+      "independent_regeneration": false,
+      "regeneration_evidence": {
+        "shared_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
+        "comparison": "field-by-field (point_estimate, ci_95_lower, ci_95_upper)",
+        "result": "all compared fields matched within 1e-4 tolerance in the shared aggregate run",
+        "fresh_output_artifact": "reports/phase3/regeneration_result.json",
+        "independent_regeneration": false,
+        "note": "This metric matched in a single shared-context run of bootstrap_all_metrics. It has NOT been independently regenerated. The shared run shares imports, module-level RNG, and NLP pipeline state across all 38 metrics. Matching in a shared run is necessary but not sufficient for independent reproducibility."
+      },
+      "epistemic_level": "REPRODUCED_IN_SHARED_RUN",
+      "critical_path_for_matcher_discrimination": false,
+      "measurement_usability": "REPRODUCED_IN_SHARED_RUN",
+      "scientifically_eligible": false,
+      "used_for_scientific_decision": "NO"
+    },
+    {
+      "metric_id": "M-303-D1",
+      "metric_name": "AI surrogate D1 mean",
+      "stored_result": {
+        "point_estimate": 4.0,
+        "bootstrap_mean": 3.9933,
+        "bootstrap_std": 0.2394,
+        "ci_95_lower": 3.5,
+        "ci_95_upper": 4.5,
+        "n": 6,
+        "n_resamples": 500,
+        "seed": 42
+      },
+      "provenance": {
+        "provenance_declared": true,
+        "provenance_verified": false,
+        "provenance_note": "provenance_declared=true means the definition location is known. provenance_verified=false means we have NOT cryptographically verified that the historical number was generated from exactly these inputs. Declared provenance is not verified provenance.",
+        "definition_locations": {
+          "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
+          "computation": "programs/A_metrology/bootstrap_statistics.py",
+          "committed_results": "reports/bootstrap_statistics.json"
+        },
+        "input_hashes": {
+          "computation_source_sha256": "5669b9b27f1d42e103783b100646794d97fa586aff81735e35b16aef26157d26",
+          "spec_source_sha256": "cc0115f4d93b2eed35476c1b050b0859de38c39e310bed3286788960e245611e",
+          "committed_results_sha256": "ce3169fef06190778801f17a1c25cbaf3984cdf809c3466ea3ffddee279e83c7"
+        }
+      },
+      "regeneration_status": "NOT_INDEPENDENTLY_VERIFIED",
+      "shared_run_comparison": "MATCHED",
+      "independent_regeneration": false,
+      "regeneration_evidence": {
+        "shared_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
+        "comparison": "field-by-field (point_estimate, ci_95_lower, ci_95_upper)",
+        "result": "all compared fields matched within 1e-4 tolerance in the shared aggregate run",
+        "fresh_output_artifact": "reports/phase3/regeneration_result.json",
+        "independent_regeneration": false,
+        "note": "This metric matched in a single shared-context run of bootstrap_all_metrics. It has NOT been independently regenerated. The shared run shares imports, module-level RNG, and NLP pipeline state across all 38 metrics. Matching in a shared run is necessary but not sufficient for independent reproducibility."
+      },
+      "epistemic_level": "REPRODUCED_IN_SHARED_RUN",
+      "critical_path_for_matcher_discrimination": false,
+      "measurement_usability": "REPRODUCED_IN_SHARED_RUN",
+      "scientifically_eligible": false,
+      "used_for_scientific_decision": "NO"
+    },
+    {
+      "metric_id": "M-303-D2",
+      "metric_name": "AI surrogate D2 mean",
+      "stored_result": {
+        "point_estimate": 1.1667,
+        "bootstrap_mean": 1.169,
+        "bootstrap_std": 0.1485,
+        "ci_95_lower": 1.0,
+        "ci_95_upper": 1.5,
+        "n": 6,
+        "n_resamples": 500,
+        "seed": 42
+      },
+      "provenance": {
+        "provenance_declared": true,
+        "provenance_verified": false,
+        "provenance_note": "provenance_declared=true means the definition location is known. provenance_verified=false means we have NOT cryptographically verified that the historical number was generated from exactly these inputs. Declared provenance is not verified provenance.",
+        "definition_locations": {
+          "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
+          "computation": "programs/A_metrology/bootstrap_statistics.py",
+          "committed_results": "reports/bootstrap_statistics.json"
+        },
+        "input_hashes": {
+          "computation_source_sha256": "5669b9b27f1d42e103783b100646794d97fa586aff81735e35b16aef26157d26",
+          "spec_source_sha256": "cc0115f4d93b2eed35476c1b050b0859de38c39e310bed3286788960e245611e",
+          "committed_results_sha256": "ce3169fef06190778801f17a1c25cbaf3984cdf809c3466ea3ffddee279e83c7"
+        }
+      },
+      "regeneration_status": "NOT_INDEPENDENTLY_VERIFIED",
+      "shared_run_comparison": "MATCHED",
+      "independent_regeneration": false,
+      "regeneration_evidence": {
+        "shared_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
+        "comparison": "field-by-field (point_estimate, ci_95_lower, ci_95_upper)",
+        "result": "all compared fields matched within 1e-4 tolerance in the shared aggregate run",
+        "fresh_output_artifact": "reports/phase3/regeneration_result.json",
+        "independent_regeneration": false,
+        "note": "This metric matched in a single shared-context run of bootstrap_all_metrics. It has NOT been independently regenerated. The shared run shares imports, module-level RNG, and NLP pipeline state across all 38 metrics. Matching in a shared run is necessary but not sufficient for independent reproducibility."
+      },
+      "epistemic_level": "REPRODUCED_IN_SHARED_RUN",
+      "critical_path_for_matcher_discrimination": false,
+      "measurement_usability": "REPRODUCED_IN_SHARED_RUN",
+      "scientifically_eligible": false,
+      "used_for_scientific_decision": "NO"
+    },
+    {
+      "metric_id": "M-303-D3",
+      "metric_name": "AI surrogate D3 mean",
+      "stored_result": {
+        "point_estimate": 2.0,
+        "bootstrap_mean": 2.0,
+        "bootstrap_std": 0.0,
+        "ci_95_lower": 2.0,
+        "ci_95_upper": 2.0,
+        "n": 6,
+        "n_resamples": 500,
+        "seed": 42
+      },
+      "provenance": {
+        "provenance_declared": true,
+        "provenance_verified": false,
+        "provenance_note": "provenance_declared=true means the definition location is known. provenance_verified=false means we have NOT cryptographically verified that the historical number was generated from exactly these inputs. Declared provenance is not verified provenance.",
+        "definition_locations": {
+          "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
+          "computation": "programs/A_metrology/bootstrap_statistics.py",
+          "committed_results": "reports/bootstrap_statistics.json"
+        },
+        "input_hashes": {
+          "computation_source_sha256": "5669b9b27f1d42e103783b100646794d97fa586aff81735e35b16aef26157d26",
+          "spec_source_sha256": "cc0115f4d93b2eed35476c1b050b0859de38c39e310bed3286788960e245611e",
+          "committed_results_sha256": "ce3169fef06190778801f17a1c25cbaf3984cdf809c3466ea3ffddee279e83c7"
+        }
+      },
+      "regeneration_status": "NOT_INDEPENDENTLY_VERIFIED",
+      "shared_run_comparison": "MATCHED",
+      "independent_regeneration": false,
+      "regeneration_evidence": {
+        "shared_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
+        "comparison": "field-by-field (point_estimate, ci_95_lower, ci_95_upper)",
+        "result": "all compared fields matched within 1e-4 tolerance in the shared aggregate run",
+        "fresh_output_artifact": "reports/phase3/regeneration_result.json",
+        "independent_regeneration": false,
+        "note": "This metric matched in a single shared-context run of bootstrap_all_metrics. It has NOT been independently regenerated. The shared run shares imports, module-level RNG, and NLP pipeline state across all 38 metrics. Matching in a shared run is necessary but not sufficient for independent reproducibility."
+      },
+      "epistemic_level": "REPRODUCED_IN_SHARED_RUN",
+      "critical_path_for_matcher_discrimination": false,
+      "measurement_usability": "REPRODUCED_IN_SHARED_RUN",
+      "scientifically_eligible": false,
+      "used_for_scientific_decision": "NO"
+    },
+    {
+      "metric_id": "M-303-D4",
+      "metric_name": "AI surrogate D4 mean",
+      "stored_result": {
+        "point_estimate": 1.8333,
+        "bootstrap_mean": 1.8327,
+        "bootstrap_std": 0.1517,
+        "ci_95_lower": 1.5,
+        "ci_95_upper": 2.0,
+        "n": 6,
+        "n_resamples": 500,
+        "seed": 42
+      },
+      "provenance": {
+        "provenance_declared": true,
+        "provenance_verified": false,
+        "provenance_note": "provenance_declared=true means the definition location is known. provenance_verified=false means we have NOT cryptographically verified that the historical number was generated from exactly these inputs. Declared provenance is not verified provenance.",
+        "definition_locations": {
+          "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
+          "computation": "programs/A_metrology/bootstrap_statistics.py",
+          "committed_results": "reports/bootstrap_statistics.json"
+        },
+        "input_hashes": {
+          "computation_source_sha256": "5669b9b27f1d42e103783b100646794d97fa586aff81735e35b16aef26157d26",
+          "spec_source_sha256": "cc0115f4d93b2eed35476c1b050b0859de38c39e310bed3286788960e245611e",
+          "committed_results_sha256": "ce3169fef06190778801f17a1c25cbaf3984cdf809c3466ea3ffddee279e83c7"
+        }
+      },
+      "regeneration_status": "NOT_INDEPENDENTLY_VERIFIED",
+      "shared_run_comparison": "MATCHED",
+      "independent_regeneration": false,
+      "regeneration_evidence": {
+        "shared_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
+        "comparison": "field-by-field (point_estimate, ci_95_lower, ci_95_upper)",
+        "result": "all compared fields matched within 1e-4 tolerance in the shared aggregate run",
+        "fresh_output_artifact": "reports/phase3/regeneration_result.json",
+        "independent_regeneration": false,
+        "note": "This metric matched in a single shared-context run of bootstrap_all_metrics. It has NOT been independently regenerated. The shared run shares imports, module-level RNG, and NLP pipeline state across all 38 metrics. Matching in a shared run is necessary but not sufficient for independent reproducibility."
+      },
+      "epistemic_level": "REPRODUCED_IN_SHARED_RUN",
+      "critical_path_for_matcher_discrimination": false,
+      "measurement_usability": "REPRODUCED_IN_SHARED_RUN",
+      "scientifically_eligible": false,
+      "used_for_scientific_decision": "NO"
+    },
+    {
+      "metric_id": "M-303-D5",
+      "metric_name": "AI surrogate D5 mean",
+      "stored_result": {
+        "point_estimate": 3.0,
+        "bootstrap_mean": 3.0,
+        "bootstrap_std": 0.0,
+        "ci_95_lower": 3.0,
+        "ci_95_upper": 3.0,
+        "n": 6,
+        "n_resamples": 500,
+        "seed": 42
+      },
+      "provenance": {
+        "provenance_declared": true,
+        "provenance_verified": false,
+        "provenance_note": "provenance_declared=true means the definition location is known. provenance_verified=false means we have NOT cryptographically verified that the historical number was generated from exactly these inputs. Declared provenance is not verified provenance.",
+        "definition_locations": {
+          "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
+          "computation": "programs/A_metrology/bootstrap_statistics.py",
+          "committed_results": "reports/bootstrap_statistics.json"
+        },
+        "input_hashes": {
+          "computation_source_sha256": "5669b9b27f1d42e103783b100646794d97fa586aff81735e35b16aef26157d26",
+          "spec_source_sha256": "cc0115f4d93b2eed35476c1b050b0859de38c39e310bed3286788960e245611e",
+          "committed_results_sha256": "ce3169fef06190778801f17a1c25cbaf3984cdf809c3466ea3ffddee279e83c7"
+        }
+      },
+      "regeneration_status": "NOT_INDEPENDENTLY_VERIFIED",
+      "shared_run_comparison": "MATCHED",
+      "independent_regeneration": false,
+      "regeneration_evidence": {
+        "shared_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
+        "comparison": "field-by-field (point_estimate, ci_95_lower, ci_95_upper)",
+        "result": "all compared fields matched within 1e-4 tolerance in the shared aggregate run",
+        "fresh_output_artifact": "reports/phase3/regeneration_result.json",
+        "independent_regeneration": false,
+        "note": "This metric matched in a single shared-context run of bootstrap_all_metrics. It has NOT been independently regenerated. The shared run shares imports, module-level RNG, and NLP pipeline state across all 38 metrics. Matching in a shared run is necessary but not sufficient for independent reproducibility."
+      },
+      "epistemic_level": "REPRODUCED_IN_SHARED_RUN",
+      "critical_path_for_matcher_discrimination": false,
+      "measurement_usability": "REPRODUCED_IN_SHARED_RUN",
+      "scientifically_eligible": false,
+      "used_for_scientific_decision": "NO"
+    },
+    {
+      "metric_id": "M-303-D6",
+      "metric_name": "AI surrogate D6 mean",
+      "stored_result": {
+        "point_estimate": 1.8333,
+        "bootstrap_mean": 1.8327,
+        "bootstrap_std": 0.1517,
+        "ci_95_lower": 1.5,
+        "ci_95_upper": 2.0,
+        "n": 6,
+        "n_resamples": 500,
+        "seed": 42
+      },
+      "provenance": {
+        "provenance_declared": true,
+        "provenance_verified": false,
+        "provenance_note": "provenance_declared=true means the definition location is known. provenance_verified=false means we have NOT cryptographically verified that the historical number was generated from exactly these inputs. Declared provenance is not verified provenance.",
+        "definition_locations": {
+          "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
+          "computation": "programs/A_metrology/bootstrap_statistics.py",
+          "committed_results": "reports/bootstrap_statistics.json"
+        },
+        "input_hashes": {
+          "computation_source_sha256": "5669b9b27f1d42e103783b100646794d97fa586aff81735e35b16aef26157d26",
+          "spec_source_sha256": "cc0115f4d93b2eed35476c1b050b0859de38c39e310bed3286788960e245611e",
+          "committed_results_sha256": "ce3169fef06190778801f17a1c25cbaf3984cdf809c3466ea3ffddee279e83c7"
+        }
+      },
+      "regeneration_status": "NOT_INDEPENDENTLY_VERIFIED",
+      "shared_run_comparison": "MATCHED",
+      "independent_regeneration": false,
+      "regeneration_evidence": {
+        "shared_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
+        "comparison": "field-by-field (point_estimate, ci_95_lower, ci_95_upper)",
+        "result": "all compared fields matched within 1e-4 tolerance in the shared aggregate run",
+        "fresh_output_artifact": "reports/phase3/regeneration_result.json",
+        "independent_regeneration": false,
+        "note": "This metric matched in a single shared-context run of bootstrap_all_metrics. It has NOT been independently regenerated. The shared run shares imports, module-level RNG, and NLP pipeline state across all 38 metrics. Matching in a shared run is necessary but not sufficient for independent reproducibility."
+      },
+      "epistemic_level": "REPRODUCED_IN_SHARED_RUN",
+      "critical_path_for_matcher_discrimination": false,
+      "measurement_usability": "REPRODUCED_IN_SHARED_RUN",
+      "scientifically_eligible": false,
+      "used_for_scientific_decision": "NO"
+    },
+    {
+      "metric_id": "M-303-D7",
+      "metric_name": "AI surrogate D7 mean",
+      "stored_result": {
+        "point_estimate": 1.8333,
+        "bootstrap_mean": 1.8327,
+        "bootstrap_std": 0.1517,
+        "ci_95_lower": 1.5,
+        "ci_95_upper": 2.0,
+        "n": 6,
+        "n_resamples": 500,
+        "seed": 42
+      },
+      "provenance": {
+        "provenance_declared": true,
+        "provenance_verified": false,
+        "provenance_note": "provenance_declared=true means the definition location is known. provenance_verified=false means we have NOT cryptographically verified that the historical number was generated from exactly these inputs. Declared provenance is not verified provenance.",
+        "definition_locations": {
+          "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
+          "computation": "programs/A_metrology/bootstrap_statistics.py",
+          "committed_results": "reports/bootstrap_statistics.json"
+        },
+        "input_hashes": {
+          "computation_source_sha256": "5669b9b27f1d42e103783b100646794d97fa586aff81735e35b16aef26157d26",
+          "spec_source_sha256": "cc0115f4d93b2eed35476c1b050b0859de38c39e310bed3286788960e245611e",
+          "committed_results_sha256": "ce3169fef06190778801f17a1c25cbaf3984cdf809c3466ea3ffddee279e83c7"
+        }
+      },
+      "regeneration_status": "NOT_INDEPENDENTLY_VERIFIED",
+      "shared_run_comparison": "MATCHED",
+      "independent_regeneration": false,
+      "regeneration_evidence": {
+        "shared_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
+        "comparison": "field-by-field (point_estimate, ci_95_lower, ci_95_upper)",
+        "result": "all compared fields matched within 1e-4 tolerance in the shared aggregate run",
+        "fresh_output_artifact": "reports/phase3/regeneration_result.json",
+        "independent_regeneration": false,
+        "note": "This metric matched in a single shared-context run of bootstrap_all_metrics. It has NOT been independently regenerated. The shared run shares imports, module-level RNG, and NLP pipeline state across all 38 metrics. Matching in a shared run is necessary but not sufficient for independent reproducibility."
+      },
+      "epistemic_level": "REPRODUCED_IN_SHARED_RUN",
+      "critical_path_for_matcher_discrimination": false,
+      "measurement_usability": "REPRODUCED_IN_SHARED_RUN",
+      "scientifically_eligible": false,
+      "used_for_scientific_decision": "NO"
+    },
+    {
+      "metric_id": "M-101",
+      "metric_name": "Gen 1 Document Parsing F1",
+      "stored_result": {
+        "point_estimate": 1.0,
+        "bootstrap_mean": 1.0,
+        "bootstrap_std": 0.0,
+        "ci_95_lower": 1.0,
+        "ci_95_upper": 1.0,
+        "n": 5,
+        "n_resamples": 500,
+        "seed": 42
+      },
+      "provenance": {
+        "provenance_declared": true,
+        "provenance_verified": false,
+        "provenance_note": "provenance_declared=true means the definition location is known. provenance_verified=false means we have NOT cryptographically verified that the historical number was generated from exactly these inputs. Declared provenance is not verified provenance.",
+        "definition_locations": {
+          "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
+          "computation": "programs/A_metrology/bootstrap_statistics.py",
+          "committed_results": "reports/bootstrap_statistics.json"
+        },
+        "input_hashes": {
+          "computation_source_sha256": "5669b9b27f1d42e103783b100646794d97fa586aff81735e35b16aef26157d26",
+          "spec_source_sha256": "cc0115f4d93b2eed35476c1b050b0859de38c39e310bed3286788960e245611e",
+          "committed_results_sha256": "ce3169fef06190778801f17a1c25cbaf3984cdf809c3466ea3ffddee279e83c7"
+        }
+      },
+      "regeneration_status": "NOT_INDEPENDENTLY_VERIFIED",
+      "shared_run_comparison": "MATCHED",
+      "independent_regeneration": false,
+      "regeneration_evidence": {
+        "shared_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
+        "comparison": "field-by-field (point_estimate, ci_95_lower, ci_95_upper)",
+        "result": "all compared fields matched within 1e-4 tolerance in the shared aggregate run",
+        "fresh_output_artifact": "reports/phase3/regeneration_result.json",
+        "independent_regeneration": false,
+        "note": "This metric matched in a single shared-context run of bootstrap_all_metrics. It has NOT been independently regenerated. The shared run shares imports, module-level RNG, and NLP pipeline state across all 38 metrics. Matching in a shared run is necessary but not sufficient for independent reproducibility."
+      },
+      "epistemic_level": "REPRODUCED_IN_SHARED_RUN",
+      "critical_path_for_matcher_discrimination": false,
+      "measurement_usability": "REPRODUCED_IN_SHARED_RUN",
+      "scientifically_eligible": false,
+      "used_for_scientific_decision": "NO"
+    },
+    {
+      "metric_id": "M-102",
+      "metric_name": "Gen 2 Entity Extraction F1",
+      "stored_result": {
+        "point_estimate": 0.9431,
+        "bootstrap_mean": 0.9431,
+        "bootstrap_std": 0.0208,
+        "ci_95_lower": 0.8983,
+        "ci_95_upper": 0.9764,
+        "n": 65,
+        "n_resamples": 500,
+        "seed": 42
+      },
+      "provenance": {
+        "provenance_declared": true,
+        "provenance_verified": false,
+        "provenance_note": "provenance_declared=true means the definition location is known. provenance_verified=false means we have NOT cryptographically verified that the historical number was generated from exactly these inputs. Declared provenance is not verified provenance.",
+        "definition_locations": {
+          "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
+          "computation": "programs/A_metrology/bootstrap_statistics.py",
+          "committed_results": "reports/bootstrap_statistics.json"
+        },
+        "input_hashes": {
+          "computation_source_sha256": "5669b9b27f1d42e103783b100646794d97fa586aff81735e35b16aef26157d26",
+          "spec_source_sha256": "cc0115f4d93b2eed35476c1b050b0859de38c39e310bed3286788960e245611e",
+          "committed_results_sha256": "ce3169fef06190778801f17a1c25cbaf3984cdf809c3466ea3ffddee279e83c7"
+        }
+      },
+      "regeneration_status": "NOT_INDEPENDENTLY_VERIFIED",
+      "shared_run_comparison": "MATCHED",
+      "independent_regeneration": false,
+      "regeneration_evidence": {
+        "shared_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
+        "comparison": "field-by-field (point_estimate, ci_95_lower, ci_95_upper)",
+        "result": "all compared fields matched within 1e-4 tolerance in the shared aggregate run",
+        "fresh_output_artifact": "reports/phase3/regeneration_result.json",
+        "independent_regeneration": false,
+        "note": "This metric matched in a single shared-context run of bootstrap_all_metrics. It has NOT been independently regenerated. The shared run shares imports, module-level RNG, and NLP pipeline state across all 38 metrics. Matching in a shared run is necessary but not sufficient for independent reproducibility."
+      },
+      "epistemic_level": "REPRODUCED_IN_SHARED_RUN",
+      "critical_path_for_matcher_discrimination": false,
+      "measurement_usability": "REPRODUCED_IN_SHARED_RUN",
+      "scientifically_eligible": false,
+      "used_for_scientific_decision": "NO"
+    },
+    {
+      "metric_id": "M-103",
+      "metric_name": "Gen 3 Relation Extraction F1",
+      "stored_result": {
+        "point_estimate": 0.88,
+        "bootstrap_mean": 0.878,
+        "bootstrap_std": 0.0304,
+        "ci_95_lower": 0.8145,
+        "ci_95_upper": 0.9322,
+        "n": 85,
+        "n_resamples": 500,
+        "seed": 42
+      },
+      "provenance": {
+        "provenance_declared": true,
+        "provenance_verified": false,
+        "provenance_note": "provenance_declared=true means the definition location is known. provenance_verified=false means we have NOT cryptographically verified that the historical number was generated from exactly these inputs. Declared provenance is not verified provenance.",
+        "definition_locations": {
+          "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
+          "computation": "programs/A_metrology/bootstrap_statistics.py",
+          "committed_results": "reports/bootstrap_statistics.json"
+        },
+        "input_hashes": {
+          "computation_source_sha256": "5669b9b27f1d42e103783b100646794d97fa586aff81735e35b16aef26157d26",
+          "spec_source_sha256": "cc0115f4d93b2eed35476c1b050b0859de38c39e310bed3286788960e245611e",
+          "committed_results_sha256": "ce3169fef06190778801f17a1c25cbaf3984cdf809c3466ea3ffddee279e83c7"
+        }
+      },
+      "regeneration_status": "NOT_INDEPENDENTLY_VERIFIED",
+      "shared_run_comparison": "MATCHED",
+      "independent_regeneration": false,
+      "regeneration_evidence": {
+        "shared_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
+        "comparison": "field-by-field (point_estimate, ci_95_lower, ci_95_upper)",
+        "result": "all compared fields matched within 1e-4 tolerance in the shared aggregate run",
+        "fresh_output_artifact": "reports/phase3/regeneration_result.json",
+        "independent_regeneration": false,
+        "note": "This metric matched in a single shared-context run of bootstrap_all_metrics. It has NOT been independently regenerated. The shared run shares imports, module-level RNG, and NLP pipeline state across all 38 metrics. Matching in a shared run is necessary but not sufficient for independent reproducibility."
+      },
+      "epistemic_level": "REPRODUCED_IN_SHARED_RUN",
+      "critical_path_for_matcher_discrimination": false,
+      "measurement_usability": "REPRODUCED_IN_SHARED_RUN",
+      "scientifically_eligible": false,
+      "used_for_scientific_decision": "NO"
+    },
+    {
+      "metric_id": "M-104",
+      "metric_name": "Gen 4 Mechanism Extraction F1",
+      "stored_result": {
+        "point_estimate": 0.9091,
+        "bootstrap_mean": 0.8984,
+        "bootstrap_std": 0.0677,
+        "ci_95_lower": 0.7368,
+        "ci_95_upper": 1.0,
+        "n": 12,
+        "n_resamples": 500,
+        "seed": 42
+      },
+      "provenance": {
+        "provenance_declared": true,
+        "provenance_verified": false,
+        "provenance_note": "provenance_declared=true means the definition location is known. provenance_verified=false means we have NOT cryptographically verified that the historical number was generated from exactly these inputs. Declared provenance is not verified provenance.",
+        "definition_locations": {
+          "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
+          "computation": "programs/A_metrology/bootstrap_statistics.py",
+          "committed_results": "reports/bootstrap_statistics.json"
+        },
+        "input_hashes": {
+          "computation_source_sha256": "5669b9b27f1d42e103783b100646794d97fa586aff81735e35b16aef26157d26",
+          "spec_source_sha256": "cc0115f4d93b2eed35476c1b050b0859de38c39e310bed3286788960e245611e",
+          "committed_results_sha256": "ce3169fef06190778801f17a1c25cbaf3984cdf809c3466ea3ffddee279e83c7"
+        }
+      },
+      "regeneration_status": "NOT_INDEPENDENTLY_VERIFIED",
+      "shared_run_comparison": "MATCHED",
+      "independent_regeneration": false,
+      "regeneration_evidence": {
+        "shared_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
+        "comparison": "field-by-field (point_estimate, ci_95_lower, ci_95_upper)",
+        "result": "all compared fields matched within 1e-4 tolerance in the shared aggregate run",
+        "fresh_output_artifact": "reports/phase3/regeneration_result.json",
+        "independent_regeneration": false,
+        "note": "This metric matched in a single shared-context run of bootstrap_all_metrics. It has NOT been independently regenerated. The shared run shares imports, module-level RNG, and NLP pipeline state across all 38 metrics. Matching in a shared run is necessary but not sufficient for independent reproducibility."
+      },
+      "epistemic_level": "REPRODUCED_IN_SHARED_RUN",
+      "critical_path_for_matcher_discrimination": false,
+      "measurement_usability": "REPRODUCED_IN_SHARED_RUN",
+      "scientifically_eligible": false,
+      "used_for_scientific_decision": "NO"
+    },
+    {
+      "metric_id": "M-105",
+      "metric_name": "Gen 5 Discovery Layer F1",
+      "stored_result": {
+        "point_estimate": 0.9375,
+        "bootstrap_mean": 0.9353,
+        "bootstrap_std": 0.0464,
+        "ci_95_lower": 0.8276,
+        "ci_95_upper": 1.0,
+        "n": 17,
+        "n_resamples": 500,
+        "seed": 42
+      },
+      "provenance": {
+        "provenance_declared": true,
+        "provenance_verified": false,
+        "provenance_note": "provenance_declared=true means the definition location is known. provenance_verified=false means we have NOT cryptographically verified that the historical number was generated from exactly these inputs. Declared provenance is not verified provenance.",
+        "definition_locations": {
+          "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
+          "computation": "programs/A_metrology/bootstrap_statistics.py",
+          "committed_results": "reports/bootstrap_statistics.json"
+        },
+        "input_hashes": {
+          "computation_source_sha256": "5669b9b27f1d42e103783b100646794d97fa586aff81735e35b16aef26157d26",
+          "spec_source_sha256": "cc0115f4d93b2eed35476c1b050b0859de38c39e310bed3286788960e245611e",
+          "committed_results_sha256": "ce3169fef06190778801f17a1c25cbaf3984cdf809c3466ea3ffddee279e83c7"
+        }
+      },
+      "regeneration_status": "NOT_INDEPENDENTLY_VERIFIED",
+      "shared_run_comparison": "MATCHED",
+      "independent_regeneration": false,
+      "regeneration_evidence": {
+        "shared_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
+        "comparison": "field-by-field (point_estimate, ci_95_lower, ci_95_upper)",
+        "result": "all compared fields matched within 1e-4 tolerance in the shared aggregate run",
+        "fresh_output_artifact": "reports/phase3/regeneration_result.json",
+        "independent_regeneration": false,
+        "note": "This metric matched in a single shared-context run of bootstrap_all_metrics. It has NOT been independently regenerated. The shared run shares imports, module-level RNG, and NLP pipeline state across all 38 metrics. Matching in a shared run is necessary but not sufficient for independent reproducibility."
+      },
+      "epistemic_level": "REPRODUCED_IN_SHARED_RUN",
+      "critical_path_for_matcher_discrimination": false,
+      "measurement_usability": "REPRODUCED_IN_SHARED_RUN",
+      "scientifically_eligible": false,
+      "used_for_scientific_decision": "NO"
+    },
+    {
+      "metric_id": "M-201",
+      "metric_name": "L5a held-out beats (count / 10)",
+      "stored_result": {
+        "point_estimate": 0.9,
+        "bootstrap_mean": 0.892,
+        "bootstrap_std": 0.0891,
+        "ci_95_lower": 0.7,
+        "ci_95_upper": 1.0,
+        "n": 10,
+        "n_resamples": 100,
+        "seed": 42
+      },
+      "provenance": {
+        "provenance_declared": true,
+        "provenance_verified": false,
+        "provenance_note": "provenance_declared=true means the definition location is known. provenance_verified=false means we have NOT cryptographically verified that the historical number was generated from exactly these inputs. Declared provenance is not verified provenance.",
+        "definition_locations": {
+          "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
+          "computation": "programs/A_metrology/bootstrap_statistics.py",
+          "committed_results": "reports/bootstrap_statistics.json"
+        },
+        "input_hashes": {
+          "computation_source_sha256": "5669b9b27f1d42e103783b100646794d97fa586aff81735e35b16aef26157d26",
+          "spec_source_sha256": "cc0115f4d93b2eed35476c1b050b0859de38c39e310bed3286788960e245611e",
+          "committed_results_sha256": "ce3169fef06190778801f17a1c25cbaf3984cdf809c3466ea3ffddee279e83c7"
+        }
+      },
+      "regeneration_status": "NOT_INDEPENDENTLY_VERIFIED",
+      "shared_run_comparison": "MATCHED",
+      "independent_regeneration": false,
+      "regeneration_evidence": {
+        "shared_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
+        "comparison": "field-by-field (point_estimate, ci_95_lower, ci_95_upper)",
+        "result": "all compared fields matched within 1e-4 tolerance in the shared aggregate run",
+        "fresh_output_artifact": "reports/phase3/regeneration_result.json",
+        "independent_regeneration": false,
+        "note": "This metric matched in a single shared-context run of bootstrap_all_metrics. It has NOT been independently regenerated. The shared run shares imports, module-level RNG, and NLP pipeline state across all 38 metrics. Matching in a shared run is necessary but not sufficient for independent reproducibility."
+      },
+      "epistemic_level": "REPRODUCED_IN_SHARED_RUN",
+      "critical_path_for_matcher_discrimination": false,
+      "measurement_usability": "REPRODUCED_IN_SHARED_RUN",
+      "scientifically_eligible": false,
+      "used_for_scientific_decision": "NO"
+    },
+    {
+      "metric_id": "M-202",
+      "metric_name": "L5b held-out beats (count / 10) \u2014 same data as M-201",
+      "stored_result": {
+        "point_estimate": 0.9,
+        "bootstrap_mean": 0.892,
+        "bootstrap_std": 0.0891,
+        "ci_95_lower": 0.7,
+        "ci_95_upper": 1.0,
+        "n": 10,
+        "n_resamples": 100,
+        "seed": 42
+      },
+      "provenance": {
+        "provenance_declared": true,
+        "provenance_verified": false,
+        "provenance_note": "provenance_declared=true means the definition location is known. provenance_verified=false means we have NOT cryptographically verified that the historical number was generated from exactly these inputs. Declared provenance is not verified provenance.",
+        "definition_locations": {
+          "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
+          "computation": "programs/A_metrology/bootstrap_statistics.py",
+          "committed_results": "reports/bootstrap_statistics.json"
+        },
+        "input_hashes": {
+          "computation_source_sha256": "5669b9b27f1d42e103783b100646794d97fa586aff81735e35b16aef26157d26",
+          "spec_source_sha256": "cc0115f4d93b2eed35476c1b050b0859de38c39e310bed3286788960e245611e",
+          "committed_results_sha256": "ce3169fef06190778801f17a1c25cbaf3984cdf809c3466ea3ffddee279e83c7"
+        }
+      },
+      "regeneration_status": "NOT_INDEPENDENTLY_VERIFIED",
+      "shared_run_comparison": "MATCHED",
+      "independent_regeneration": false,
+      "regeneration_evidence": {
+        "shared_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
+        "comparison": "field-by-field (point_estimate, ci_95_lower, ci_95_upper)",
+        "result": "all compared fields matched within 1e-4 tolerance in the shared aggregate run",
+        "fresh_output_artifact": "reports/phase3/regeneration_result.json",
+        "independent_regeneration": false,
+        "note": "This metric matched in a single shared-context run of bootstrap_all_metrics. It has NOT been independently regenerated. The shared run shares imports, module-level RNG, and NLP pipeline state across all 38 metrics. Matching in a shared run is necessary but not sufficient for independent reproducibility."
+      },
+      "epistemic_level": "REPRODUCED_IN_SHARED_RUN",
+      "critical_path_for_matcher_discrimination": false,
+      "measurement_usability": "REPRODUCED_IN_SHARED_RUN",
+      "scientifically_eligible": false,
+      "used_for_scientific_decision": "NO"
+    },
+    {
+      "metric_id": "M-203",
+      "metric_name": "L5b+Synthesis held-out beats (count / 10, single seed)",
+      "stored_result": {
+        "point_estimate": 0.9,
+        "bootstrap_mean": 0.892,
+        "bootstrap_std": 0.0891,
+        "ci_95_lower": 0.7,
+        "ci_95_upper": 1.0,
+        "n": 10,
+        "n_resamples": 100,
+        "seed": 42
+      },
+      "provenance": {
+        "provenance_declared": true,
+        "provenance_verified": false,
+        "provenance_note": "provenance_declared=true means the definition location is known. provenance_verified=false means we have NOT cryptographically verified that the historical number was generated from exactly these inputs. Declared provenance is not verified provenance.",
+        "definition_locations": {
+          "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
+          "computation": "programs/A_metrology/bootstrap_statistics.py",
+          "committed_results": "reports/bootstrap_statistics.json"
+        },
+        "input_hashes": {
+          "computation_source_sha256": "5669b9b27f1d42e103783b100646794d97fa586aff81735e35b16aef26157d26",
+          "spec_source_sha256": "cc0115f4d93b2eed35476c1b050b0859de38c39e310bed3286788960e245611e",
+          "committed_results_sha256": "ce3169fef06190778801f17a1c25cbaf3984cdf809c3466ea3ffddee279e83c7"
+        }
+      },
+      "regeneration_status": "NOT_INDEPENDENTLY_VERIFIED",
+      "shared_run_comparison": "MATCHED",
+      "independent_regeneration": false,
+      "regeneration_evidence": {
+        "shared_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
+        "comparison": "field-by-field (point_estimate, ci_95_lower, ci_95_upper)",
+        "result": "all compared fields matched within 1e-4 tolerance in the shared aggregate run",
+        "fresh_output_artifact": "reports/phase3/regeneration_result.json",
+        "independent_regeneration": false,
+        "note": "This metric matched in a single shared-context run of bootstrap_all_metrics. It has NOT been independently regenerated. The shared run shares imports, module-level RNG, and NLP pipeline state across all 38 metrics. Matching in a shared run is necessary but not sufficient for independent reproducibility."
+      },
+      "epistemic_level": "REPRODUCED_IN_SHARED_RUN",
+      "critical_path_for_matcher_discrimination": false,
+      "measurement_usability": "REPRODUCED_IN_SHARED_RUN",
+      "scientifically_eligible": false,
+      "used_for_scientific_decision": "NO"
+    },
+    {
+      "metric_id": "M-204",
+      "metric_name": "Multi-seed mean held-out beats (N=5 seeds)",
+      "stored_result": {
+        "point_estimate": 8.6,
+        "bootstrap_mean": 8.614,
+        "bootstrap_std": 0.3529,
+        "ci_95_lower": 8.0,
+        "ci_95_upper": 9.4,
+        "n": 5,
+        "n_resamples": 500,
+        "seed": 42
+      },
+      "provenance": {
+        "provenance_declared": true,
+        "provenance_verified": false,
+        "provenance_note": "provenance_declared=true means the definition location is known. provenance_verified=false means we have NOT cryptographically verified that the historical number was generated from exactly these inputs. Declared provenance is not verified provenance.",
+        "definition_locations": {
+          "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
+          "computation": "programs/A_metrology/bootstrap_statistics.py",
+          "committed_results": "reports/bootstrap_statistics.json"
+        },
+        "input_hashes": {
+          "computation_source_sha256": "5669b9b27f1d42e103783b100646794d97fa586aff81735e35b16aef26157d26",
+          "spec_source_sha256": "cc0115f4d93b2eed35476c1b050b0859de38c39e310bed3286788960e245611e",
+          "committed_results_sha256": "ce3169fef06190778801f17a1c25cbaf3984cdf809c3466ea3ffddee279e83c7"
+        }
+      },
+      "regeneration_status": "NOT_INDEPENDENTLY_VERIFIED",
+      "shared_run_comparison": "MATCHED",
+      "independent_regeneration": false,
+      "regeneration_evidence": {
+        "shared_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
+        "comparison": "field-by-field (point_estimate, ci_95_lower, ci_95_upper)",
+        "result": "all compared fields matched within 1e-4 tolerance in the shared aggregate run",
+        "fresh_output_artifact": "reports/phase3/regeneration_result.json",
+        "independent_regeneration": false,
+        "note": "This metric matched in a single shared-context run of bootstrap_all_metrics. It has NOT been independently regenerated. The shared run shares imports, module-level RNG, and NLP pipeline state across all 38 metrics. Matching in a shared run is necessary but not sufficient for independent reproducibility."
+      },
+      "epistemic_level": "REPRODUCED_IN_SHARED_RUN",
+      "critical_path_for_matcher_discrimination": false,
+      "measurement_usability": "REPRODUCED_IN_SHARED_RUN",
+      "scientifically_eligible": false,
+      "used_for_scientific_decision": "NO"
+    },
+    {
+      "metric_id": "M-205",
+      "metric_name": "Composite selection rate",
+      "stored_result": {
+        "point_estimate": 1.0,
+        "bootstrap_mean": 1.0,
+        "bootstrap_std": 0.0,
+        "ci_95_lower": 1.0,
+        "ci_95_upper": 1.0,
+        "n": 43,
+        "n_resamples": 500,
+        "seed": 42
+      },
+      "provenance": {
+        "provenance_declared": true,
+        "provenance_verified": false,
+        "provenance_note": "provenance_declared=true means the definition location is known. provenance_verified=false means we have NOT cryptographically verified that the historical number was generated from exactly these inputs. Declared provenance is not verified provenance.",
+        "definition_locations": {
+          "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
+          "computation": "programs/A_metrology/bootstrap_statistics.py",
+          "committed_results": "reports/bootstrap_statistics.json"
+        },
+        "input_hashes": {
+          "computation_source_sha256": "5669b9b27f1d42e103783b100646794d97fa586aff81735e35b16aef26157d26",
+          "spec_source_sha256": "cc0115f4d93b2eed35476c1b050b0859de38c39e310bed3286788960e245611e",
+          "committed_results_sha256": "ce3169fef06190778801f17a1c25cbaf3984cdf809c3466ea3ffddee279e83c7"
+        }
+      },
+      "regeneration_status": "NOT_INDEPENDENTLY_VERIFIED",
+      "shared_run_comparison": "MATCHED",
+      "independent_regeneration": false,
+      "regeneration_evidence": {
+        "shared_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
+        "comparison": "field-by-field (point_estimate, ci_95_lower, ci_95_upper)",
+        "result": "all compared fields matched within 1e-4 tolerance in the shared aggregate run",
+        "fresh_output_artifact": "reports/phase3/regeneration_result.json",
+        "independent_regeneration": false,
+        "note": "This metric matched in a single shared-context run of bootstrap_all_metrics. It has NOT been independently regenerated. The shared run shares imports, module-level RNG, and NLP pipeline state across all 38 metrics. Matching in a shared run is necessary but not sufficient for independent reproducibility."
+      },
+      "epistemic_level": "REPRODUCED_IN_SHARED_RUN",
+      "critical_path_for_matcher_discrimination": false,
+      "measurement_usability": "REPRODUCED_IN_SHARED_RUN",
+      "scientifically_eligible": false,
+      "used_for_scientific_decision": "NO"
+    },
+    {
+      "metric_id": "M-304",
+      "metric_name": "Inter-rater agreement rate",
+      "stored_result": {
+        "point_estimate": 0.1667,
+        "bootstrap_mean": 0.169,
+        "bootstrap_std": 0.1485,
+        "ci_95_lower": 0.0,
+        "ci_95_upper": 0.5,
+        "n": 6,
+        "n_resamples": 500,
+        "seed": 42
+      },
+      "provenance": {
+        "provenance_declared": true,
+        "provenance_verified": false,
+        "provenance_note": "provenance_declared=true means the definition location is known. provenance_verified=false means we have NOT cryptographically verified that the historical number was generated from exactly these inputs. Declared provenance is not verified provenance.",
+        "definition_locations": {
+          "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
+          "computation": "programs/A_metrology/bootstrap_statistics.py",
+          "committed_results": "reports/bootstrap_statistics.json"
+        },
+        "input_hashes": {
+          "computation_source_sha256": "5669b9b27f1d42e103783b100646794d97fa586aff81735e35b16aef26157d26",
+          "spec_source_sha256": "cc0115f4d93b2eed35476c1b050b0859de38c39e310bed3286788960e245611e",
+          "committed_results_sha256": "ce3169fef06190778801f17a1c25cbaf3984cdf809c3466ea3ffddee279e83c7"
+        }
+      },
+      "regeneration_status": "NOT_INDEPENDENTLY_VERIFIED",
+      "shared_run_comparison": "MATCHED",
+      "independent_regeneration": false,
+      "regeneration_evidence": {
+        "shared_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
+        "comparison": "field-by-field (point_estimate, ci_95_lower, ci_95_upper)",
+        "result": "all compared fields matched within 1e-4 tolerance in the shared aggregate run",
+        "fresh_output_artifact": "reports/phase3/regeneration_result.json",
+        "independent_regeneration": false,
+        "note": "This metric matched in a single shared-context run of bootstrap_all_metrics. It has NOT been independently regenerated. The shared run shares imports, module-level RNG, and NLP pipeline state across all 38 metrics. Matching in a shared run is necessary but not sufficient for independent reproducibility."
+      },
+      "epistemic_level": "REPRODUCED_IN_SHARED_RUN",
+      "critical_path_for_matcher_discrimination": false,
+      "measurement_usability": "REPRODUCED_IN_SHARED_RUN",
+      "scientifically_eligible": false,
+      "used_for_scientific_decision": "NO"
+    },
+    {
+      "metric_id": "M-305",
+      "metric_name": "Self-validation bias (mean residual)",
+      "stored_result": {
+        "point_estimate": 2.5,
+        "bootstrap_mean": 2.5021,
+        "bootstrap_std": 0.0556,
+        "ci_95_lower": 2.375,
+        "ci_95_upper": 2.625,
+        "n": 6,
+        "n_resamples": 500,
+        "seed": 42
+      },
+      "provenance": {
+        "provenance_declared": true,
+        "provenance_verified": false,
+        "provenance_note": "provenance_declared=true means the definition location is known. provenance_verified=false means we have NOT cryptographically verified that the historical number was generated from exactly these inputs. Declared provenance is not verified provenance.",
+        "definition_locations": {
+          "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
+          "computation": "programs/A_metrology/bootstrap_statistics.py",
+          "committed_results": "reports/bootstrap_statistics.json"
+        },
+        "input_hashes": {
+          "computation_source_sha256": "5669b9b27f1d42e103783b100646794d97fa586aff81735e35b16aef26157d26",
+          "spec_source_sha256": "cc0115f4d93b2eed35476c1b050b0859de38c39e310bed3286788960e245611e",
+          "committed_results_sha256": "ce3169fef06190778801f17a1c25cbaf3984cdf809c3466ea3ffddee279e83c7"
+        }
+      },
+      "regeneration_status": "NOT_INDEPENDENTLY_VERIFIED",
+      "shared_run_comparison": "MATCHED",
+      "independent_regeneration": false,
+      "regeneration_evidence": {
+        "shared_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
+        "comparison": "field-by-field (point_estimate, ci_95_lower, ci_95_upper)",
+        "result": "all compared fields matched within 1e-4 tolerance in the shared aggregate run",
+        "fresh_output_artifact": "reports/phase3/regeneration_result.json",
+        "independent_regeneration": false,
+        "note": "This metric matched in a single shared-context run of bootstrap_all_metrics. It has NOT been independently regenerated. The shared run shares imports, module-level RNG, and NLP pipeline state across all 38 metrics. Matching in a shared run is necessary but not sufficient for independent reproducibility."
+      },
+      "epistemic_level": "REPRODUCED_IN_SHARED_RUN",
+      "critical_path_for_matcher_discrimination": false,
+      "measurement_usability": "REPRODUCED_IN_SHARED_RUN",
+      "scientifically_eligible": false,
+      "used_for_scientific_decision": "NO"
+    },
+    {
+      "metric_id": "M-306",
+      "metric_name": "Expected Calibration Error (ECE)",
+      "stored_result": {
+        "point_estimate": 0.9,
+        "bootstrap_mean": 0.9004,
+        "bootstrap_std": 0.0111,
+        "ci_95_lower": 0.875,
+        "ci_95_upper": 0.925,
+        "n": 6,
+        "n_resamples": 500,
+        "seed": 42
+      },
+      "provenance": {
+        "provenance_declared": true,
+        "provenance_verified": false,
+        "provenance_note": "provenance_declared=true means the definition location is known. provenance_verified=false means we have NOT cryptographically verified that the historical number was generated from exactly these inputs. Declared provenance is not verified provenance.",
+        "definition_locations": {
+          "spec": "programs/A_metrology/MeasurementEngineSpecification.md",
+          "computation": "programs/A_metrology/bootstrap_statistics.py",
+          "committed_results": "reports/bootstrap_statistics.json"
+        },
+        "input_hashes": {
+          "computation_source_sha256": "5669b9b27f1d42e103783b100646794d97fa586aff81735e35b16aef26157d26",
+          "spec_source_sha256": "cc0115f4d93b2eed35476c1b050b0859de38c39e310bed3286788960e245611e",
+          "committed_results_sha256": "ce3169fef06190778801f17a1c25cbaf3984cdf809c3466ea3ffddee279e83c7"
+        }
+      },
+      "regeneration_status": "NOT_INDEPENDENTLY_VERIFIED",
+      "shared_run_comparison": "MATCHED",
+      "independent_regeneration": false,
+      "regeneration_evidence": {
+        "shared_run": "bootstrap_all_metrics(n_resamples=500, seed=42) in Phase 3",
+        "comparison": "field-by-field (point_estimate, ci_95_lower, ci_95_upper)",
+        "result": "all compared fields matched within 1e-4 tolerance in the shared aggregate run",
+        "fresh_output_artifact": "reports/phase3/regeneration_result.json",
+        "independent_regeneration": false,
+        "note": "This metric matched in a single shared-context run of bootstrap_all_metrics. It has NOT been independently regenerated. The shared run shares imports, module-level RNG, and NLP pipeline state across all 38 metrics. Matching in a shared run is necessary but not sufficient for independent reproducibility."
+      },
+      "epistemic_level": "REPRODUCED_IN_SHARED_RUN",
+      "critical_path_for_matcher_discrimination": false,
+      "measurement_usability": "REPRODUCED_IN_SHARED_RUN",
+      "scientifically_eligible": false,
+      "used_for_scientific_decision": "NO"
+    }
+  ]
+}

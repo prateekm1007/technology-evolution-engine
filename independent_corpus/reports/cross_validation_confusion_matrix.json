@@ -1,0 +1,284 @@
+{
+  "report_type": "CROSS_VALIDATION_CONFUSION_MATRIX_V1",
+  "report_version": "1.0.0",
+  "generated_at": "2026-08-11T00:00:00Z",
+  "custodian_adjudication_source": "independent_corpus/reports/custodian_cross_validation_adjudication_v1.json",
+  "custodian_blinding_status": "BLINDED_TO_AUTOMATED_CLASSIFICATION",
+  "custodian_automated_fields_seen": false,
+  "n_records": 50,
+  "confusion_matrix": {
+    "true_positive": 11,
+    "false_positive": 0,
+    "false_negative": 15,
+    "true_negative": 24,
+    "precision": 1.0,
+    "recall": 0.4231,
+    "false_positive_rate": 0.0,
+    "false_negative_rate": 0.5769,
+    "accuracy": 0.7,
+    "overall_agreement": 0.7
+  },
+  "taxonomy_gap": {
+    "count": 6,
+    "rate": 0.12
+  },
+  "custodian_classification_distribution": {
+    "OUTSIDE_SCOPE": 18,
+    "computer_science": 9,
+    "materials_science": 7,
+    "TAXONOMY_GAP": 6,
+    "chemistry": 3,
+    "biology": 2,
+    "polymer_science": 1,
+    "photonics": 1,
+    "chemical_engineering": 1,
+    "heat_transfer": 1,
+    "cell_biology": 1
+  },
+  "per_domain_errors": {
+    "REASON_MISMATCH": [
+      {
+        "source_id": "OA-W4411786107",
+        "automated": "FLAGGED (Medicine)",
+        "custodian": "OUTSIDE_SCOPE"
+      },
+      {
+        "source_id": "OA-W4411786227",
+        "automated": "FLAGGED (Neuroscience)",
+        "custodian": "OUTSIDE_SCOPE"
+      },
+      {
+        "source_id": "OA-W4411786222",
+        "automated": "FLAGGED (Biochemistry, Genetics and Molecular Biology)",
+        "custodian": "TAXONOMY_GAP"
+      },
+      {
+        "source_id": "OA-W4411789322",
+        "automated": "FLAGGED (Physics and Astronomy)",
+        "custodian": "OUTSIDE_SCOPE"
+      },
+      {
+        "source_id": "OA-W4411927895",
+        "automated": "FLAGGED (Immunology and Microbiology)",
+        "custodian": "TAXONOMY_GAP"
+      },
+      {
+        "source_id": "OA-W4411778121",
+        "automated": "FLAGGED (Medicine)",
+        "custodian": "OUTSIDE_SCOPE"
+      },
+      {
+        "source_id": "OA-W4411811737",
+        "automated": "FLAGGED (Economics, Econometrics and Finance)",
+        "custodian": "OUTSIDE_SCOPE"
+      },
+      {
+        "source_id": "OA-W4411895735",
+        "automated": "FLAGGED (Social Sciences)",
+        "custodian": "OUTSIDE_SCOPE"
+      },
+      {
+        "source_id": "OA-W4411826857",
+        "automated": "FLAGGED (Biochemistry, Genetics and Molecular Biology)",
+        "custodian": "TAXONOMY_GAP"
+      },
+      {
+        "source_id": "OA-W4411837993",
+        "automated": "FLAGGED (Physics and Astronomy)",
+        "custodian": "OUTSIDE_SCOPE"
+      },
+      {
+        "source_id": "OA-W4411880187",
+        "automated": "FLAGGED (Medicine)",
+        "custodian": "OUTSIDE_SCOPE"
+      },
+      {
+        "source_id": "OA-W4411916865",
+        "automated": "FLAGGED (Business, Management and Accounting)",
+        "custodian": "OUTSIDE_SCOPE"
+      },
+      {
+        "source_id": "OA-W4411804348",
+        "automated": "FLAGGED (Social Sciences)",
+        "custodian": "OUTSIDE_SCOPE"
+      },
+      {
+        "source_id": "OA-W4411836127",
+        "automated": "FLAGGED (Biochemistry, Genetics and Molecular Biology)",
+        "custodian": "TAXONOMY_GAP"
+      },
+      {
+        "source_id": "OA-W4411792032",
+        "automated": "FLAGGED (Social Sciences)",
+        "custodian": "OUTSIDE_SCOPE"
+      },
+      {
+        "source_id": "OA-W4411840331",
+        "automated": "FLAGGED (Medicine)",
+        "custodian": "OUTSIDE_SCOPE"
+      },
+      {
+        "source_id": "OA-W4411791562",
+        "automated": "FLAGGED (Medicine)",
+        "custodian": "OUTSIDE_SCOPE"
+      },
+      {
+        "source_id": "OA-W4413022244",
+        "automated": "FLAGGED (Economics, Econometrics and Finance)",
+        "custodian": "OUTSIDE_SCOPE"
+      },
+      {
+        "source_id": "OA-W4411786958",
+        "automated": "FLAGGED (Medicine)",
+        "custodian": "OUTSIDE_SCOPE"
+      },
+      {
+        "source_id": "OA-W4411787556",
+        "automated": "FLAGGED (Medicine)",
+        "custodian": "TAXONOMY_GAP"
+      },
+      {
+        "source_id": "OA-W4411791578",
+        "automated": "FLAGGED (Biochemistry, Genetics and Molecular Biology)",
+        "custodian": "TAXONOMY_GAP"
+      },
+      {
+        "source_id": "OA-W4411797882",
+        "automated": "FLAGGED (Mathematics)",
+        "custodian": "OUTSIDE_SCOPE"
+      },
+      {
+        "source_id": "OA-W4411832445",
+        "automated": "FLAGGED (Biochemistry, Genetics and Molecular Biology)",
+        "custodian": "OUTSIDE_SCOPE"
+      },
+      {
+        "source_id": "OA-W4412373094",
+        "automated": "FLAGGED (Medicine)",
+        "custodian": "OUTSIDE_SCOPE"
+      }
+    ],
+    "DOMAIN_MISMATCH": [
+      {
+        "source_id": "OA-W4412019518",
+        "automated": "materials_science",
+        "custodian": "chemistry"
+      }
+    ]
+  },
+  "disagreements": [
+    {
+      "source_id": "OA-W4411793773",
+      "type": "FALSE_NEGATIVE",
+      "automated": "FLAGGED (Engineering)",
+      "custodian": "materials_science",
+      "rationale": "Perovskite solar-cell materials and self-assembled monolayers provide a sufficiently specific materi"
+    },
+    {
+      "source_id": "OA-W4411830212",
+      "type": "FALSE_NEGATIVE",
+      "automated": "FLAGGED (Engineering)",
+      "custodian": "polymer_science",
+      "rationale": "Epoxy-acrylate resins and multimaterial 3D printing provide a specific polymer-science assignment."
+    },
+    {
+      "source_id": "OA-W4411916948",
+      "type": "FALSE_NEGATIVE",
+      "automated": "FLAGGED (Agricultural and Biological Sciences)",
+      "custodian": "computer_science",
+      "rationale": "CNN-ViT integration for disease detection is explicitly machine-learning/computer-vision research."
+    },
+    {
+      "source_id": "OA-W4411778905",
+      "type": "FALSE_NEGATIVE",
+      "automated": "FLAGGED (Physics and Astronomy)",
+      "custodian": "photonics",
+      "rationale": "On-chip generation of scalar/vectorial orbital angular momentum beams is explicitly photonics resear"
+    },
+    {
+      "source_id": "OA-W4411799204",
+      "type": "FALSE_NEGATIVE",
+      "automated": "FLAGGED (Biochemistry, Genetics and Molecular Biology)",
+      "custodian": "computer_science",
+      "rationale": "Multiview fusion neural networks and fuzzy clustering are explicitly computational methods; computer"
+    },
+    {
+      "source_id": "OA-W4411782461",
+      "type": "FALSE_NEGATIVE",
+      "automated": "FLAGGED (Biochemistry, Genetics and Molecular Biology)",
+      "custodian": "biology",
+      "rationale": "Pseudomonas biofilm formation, persistence and pathogenesis are unambiguously biological research."
+    },
+    {
+      "source_id": "OA-W4411805582",
+      "type": "FALSE_NEGATIVE",
+      "automated": "FLAGGED (Engineering)",
+      "custodian": "heat_transfer",
+      "rationale": "Nonreciprocal thermal emission is explicitly a thermal-radiative phenomenon and supports the frozen "
+    },
+    {
+      "source_id": "OA-W4411781456",
+      "type": "FALSE_NEGATIVE",
+      "automated": "FLAGGED (Energy)",
+      "custodian": "materials_science",
+      "rationale": "Electrochemical CO2-conversion catalysts and their material sustainability are specifically material"
+    },
+    {
+      "source_id": "OA-W4411802539",
+      "type": "FALSE_NEGATIVE",
+      "automated": "FLAGGED (Medicine)",
+      "custodian": "chemistry",
+      "rationale": "Carborane synthesis and circularly polarized luminescence are specific molecular/chemical research t"
+    },
+    {
+      "source_id": "OA-W4411830706",
+      "type": "FALSE_NEGATIVE",
+      "automated": "FLAGGED (Energy)",
+      "custodian": "chemistry",
+      "rationale": "Photocatalytic CO2 reduction using heterometallic clusters is a chemical reaction/catalysis problem "
+    },
+    {
+      "source_id": "OA-W4411909846",
+      "type": "FALSE_NEGATIVE",
+      "automated": "FLAGGED (Engineering)",
+      "custodian": "materials_science",
+      "rationale": "Surface-engineered cellulose nanofibers with PEDOT for thermoelectric properties are a functional-ma"
+    },
+    {
+      "source_id": "OA-W4411792671",
+      "type": "FALSE_NEGATIVE",
+      "automated": "FLAGGED (Engineering)",
+      "custodian": "computer_science",
+      "rationale": "Machine-learning algorithms and SHAP analysis are explicitly computational methods; the concrete-mat"
+    },
+    {
+      "source_id": "OA-W4411792934",
+      "type": "FALSE_NEGATIVE",
+      "automated": "FLAGGED (Medicine)",
+      "custodian": "computer_science",
+      "rationale": "Federated learning and autoencoder models are explicitly computer-science/machine-learning methods, "
+    },
+    {
+      "source_id": "OA-W4411807250",
+      "type": "FALSE_NEGATIVE",
+      "automated": "FLAGGED (Biochemistry, Genetics and Molecular Biology)",
+      "custodian": "biology",
+      "rationale": "Freshwater fungi diversity and description is unambiguously biological research; biology is a frozen"
+    },
+    {
+      "source_id": "OA-W4411829280",
+      "type": "FALSE_NEGATIVE",
+      "automated": "FLAGGED (Immunology and Microbiology)",
+      "custodian": "cell_biology",
+      "rationale": "Cell-to-cell viral spread and neuronal death in human neural organoids provide a specific cellular-b"
+    }
+  ],
+  "interpretation": {
+    "precision_meaning": "Of 11 records the automated system classified as eligible, 11 (100.0%) were confirmed by the custodian.",
+    "recall_meaning": "Of 26 records the custodian classified as eligible, the automated system found 11 (42.3%).",
+    "fpr_meaning": "Of 24 records the custodian said are NOT eligible, the automated system incorrectly admitted 0 (0.0%).",
+    "fnr_meaning": "Of 26 records the custodian said ARE eligible, the automated system missed 15 (57.7%).",
+    "accuracy_meaning": "Overall agreement: 70.0% of 50 records."
+  },
+  "note": "This is the FIRST blinded cross-validation of the intake classifier. The custodian adjudicated independently without seeing automated fields. No source pairs constructed. No benchmark. No TEE. No taxonomy changes."
+}

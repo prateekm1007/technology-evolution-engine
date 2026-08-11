@@ -1,0 +1,74 @@
+{
+  "stage": "05_adversarial_H-DXP-002-003",
+  "run_id": "RUN-DXP-002",
+  "code_sha": "d6b7aee5790e2d45839fb08b7add0c89d4e40d09",
+  "input_hash": "e6aad5487b8e9411df14998809fd8a54ecc3ef603fcccef3539b34900e42b942",
+  "output_hash": "155b90e4249c27da78d7086589f5afc0d9f2b440f4d26f7db0731ce5470d2c57",
+  "provider_manifest": {
+    "provider": "zai",
+    "model": "glm-4-plus",
+    "version": "z-ai-web-dev-sdk",
+    "configuration": {
+      "temperature": 0.2,
+      "max_tokens": 4096,
+      "system_sha": "1f5a3fff3aebc2e1d44b2312f4b604b5c2911cacaf452eb6ca705c724fc9142b"
+    },
+    "prompt_sha": "0a26bcee4acf23200fc1db6450b10e4550a237f0eddbc20fd9d535f3afa4ae0c",
+    "seed": null,
+    "tool_versions": {
+      "z_ai_cli": "z-ai"
+    },
+    "timestamp": "2026-08-08T09:43:44.782089+00:00",
+    "latency_ms": 8688,
+    "success": true,
+    "error": ""
+  },
+  "result": {
+    "hypothesis_id": "H-DXP-002-003",
+    "failure_modes": [
+      {
+        "category": "FRAGILE_ASSUMPTION",
+        "description": "Assumes surface tension gradients can be maintained across microstructure when in reality diffusion and equalization would rapidly eliminate any gradient",
+        "severity": "HIGH",
+        "evidence": "Surface tension gradients equalize on timescales of milliseconds to seconds, making sustained directional transport practically impossible"
+      },
+      {
+        "category": "CONTRADICTS_KNOWN",
+        "description": "Contradicts established fluid dynamics principles which show Marangoni effects are typically orders of magnitude weaker than capillary forces in microscale transport",
+        "severity": "HIGH",
+        "evidence": "Numerous studies demonstrate that capillary forces dominate microfluidic transport while Marangoni effects are negligible at small scales"
+      },
+      {
+        "category": "BOUNDARY_BREAKS",
+        "description": "Fails to account for boundary conditions where environmental humidity, temperature fluctuations, and contamination would overwhelm engineered gradients",
+        "severity": "MEDIUM",
+        "evidence": "Real-world surfaces experience constant environmental perturbations that would disrupt any carefully engineered surface tension gradients"
+      },
+      {
+        "category": "PRIOR_ART_EXISTS",
+        "description": "Novelty claim is false as Marangoni-driven transport has been extensively studied and shown to be impractical for sustained directional transport",
+        "severity": "MEDIUM",
+        "evidence": "Decades of research on Marangoni effects in microfluidics show they're typically used for mixing rather than directional transport"
+      },
+      {
+        "category": "FALSIFIER_TRIGGERED",
+        "description": "The proposed falsifier is inadequate as it only tests one reversal condition while ignoring other confounding variables",
+        "severity": "MEDIUM",
+        "evidence": "The falsifier doesn't account for alternative mechanisms like electrostatic effects, vibration, or capillary action that could mask true Marangoni behavior"
+      },
+      {
+        "category": "INCOMPATIBLE_TARGET",
+        "description": "The hypothesis is fundamentally incompatible with practical applications due to energy requirements needed to maintain gradients",
+        "severity": "HIGH",
+        "evidence": "Sustaining meaningful temperature/composition gradients would require continuous energy input beyond what's practical for most applications"
+      }
+    ],
+    "survives": false,
+    "outcome": "ADVERSARIAL_FAILED",
+    "n_high_severity": 3,
+    "n_medium_severity": 3,
+    "n_low_severity": 0,
+    "source_hypothesis_hash": ""
+  },
+  "timestamp": "2026-08-08T09:43:53.471366+00:00"
+}

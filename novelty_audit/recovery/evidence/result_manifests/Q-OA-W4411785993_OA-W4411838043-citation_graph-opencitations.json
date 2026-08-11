@@ -1,0 +1,32 @@
+{
+  "query_id": "Q-OA-W4411785993_OA-W4411838043-citation_graph-opencitations",
+  "pair_id": "OA-W4411785993_OA-W4411838043",
+  "query_type": "citation_graph",
+  "provider": "opencitations",
+  "query_text": "citation_lookup:https://doi.org/10.1021/acs.analchem.5c01481 <-> https://doi.org/10.1002/adhm.202500860",
+  "query_hash": "d8a9a5f1c3f154caabf2efb8af1daae28476434df65d9e0feac29b5e340399f9",
+  "frozen_query_ref": null,
+  "search_type": "citation_graph",
+  "doi_a": "https://doi.org/10.1021/acs.analchem.5c01481",
+  "doi_b": "https://doi.org/10.1002/adhm.202500860",
+  "oc_id_a": "doi:10.1021/acs.analchem.5c01481",
+  "oc_id_b": "doi:10.1002/adhm.202500860",
+  "timestamp_utc": "2026-08-11T12:49:50.617796+00:00",
+  "status": "SUCCESS",
+  "a_cites_b": false,
+  "b_cites_a": false,
+  "a_citation_count": 9,
+  "b_citation_count": 7,
+  "a_reference_count": 40,
+  "b_reference_count": 119,
+  "shared_citing": [],
+  "shared_cited": [],
+  "response_hash": "ac57ab1b34e208ab2ada3f500f3c85eb6a661b870670d2887c86a837c8729ce6",
+  "evidence_uris": [
+    "https://api.opencitations.net/index/v2/references/doi:10.1021/acs.analchem.5c01481",
+    "https://api.opencitations.net/index/v2/citations/doi:10.1021/acs.analchem.5c01481",
+    "https://api.opencitations.net/index/v2/references/doi:10.1002/adhm.202500860",
+    "https://api.opencitations.net/index/v2/citations/doi:10.1002/adhm.202500860"
+  ],
+  "error": null
+}

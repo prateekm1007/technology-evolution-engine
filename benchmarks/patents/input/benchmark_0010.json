@@ -1,0 +1,69 @@
+{
+  "id": "benchmark_0010",
+  "type": "patent",
+  "source": "uspto",
+  "title": "Multi-Gas Environmental Monitor Using Metal Oxide Nanowire Array",
+  "domain": "sensors",
+  "abstract": "An environmental monitor with metal oxide nanowire array (SnO2, ZnO, WO3, In2O3) at different temperatures with ML pattern recognition detecting gases at ppb levels.",
+  "claims": [
+    "Four nanowire elements at independently controlled 150-400C.",
+    "Random forest (500 trees) achieving >95% gas identification.",
+    "Micro-hotplate <50mW per element, thermal isolation >50 K/mW."
+  ],
+  "components": [
+    "metal oxide nanowires",
+    "micro-hotplates",
+    "ML processor",
+    "humidity sensor",
+    "temperature sensor",
+    "enclosure"
+  ],
+  "materials": [
+    "tin oxide",
+    "zinc oxide",
+    "tungsten oxide",
+    "indium oxide",
+    "platinum",
+    "silicon nitride"
+  ],
+  "methods": [
+    "hydrothermal growth",
+    "sputtering",
+    "temperature modulation",
+    "pattern recognition"
+  ],
+  "constraints": [
+    "sensitivity",
+    "selectivity",
+    "power",
+    "cost",
+    "calibration",
+    "lifetime"
+  ],
+  "problem_statement": "Individual gas sensors lack selectivity. E-nose arrays with ML can discriminate complex mixtures.",
+  "expected_constraints": [
+    "energy",
+    "information",
+    "cost",
+    "material",
+    "maintenance"
+  ],
+  "expected_prerequisites": [
+    "nanowire synthesis reproducibility",
+    "ML model training data",
+    "low-power heating",
+    "calibration protocols"
+  ],
+  "expected_adjacent_domains": [
+    "materials science",
+    "machine learning",
+    "environmental science",
+    "embedded systems"
+  ],
+  "expected_failure_modes": [
+    "sensor poisoning",
+    "drift",
+    "humidity interference",
+    "nanowire degradation"
+  ]
+}

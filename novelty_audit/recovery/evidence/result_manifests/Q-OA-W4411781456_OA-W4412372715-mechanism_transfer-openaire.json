@@ -1,0 +1,39 @@
+{
+  "query_id": "Q-OA-W4411781456_OA-W4412372715-mechanism_transfer-openaire",
+  "pair_id": "OA-W4411781456_OA-W4412372715",
+  "query_type": "mechanism_transfer",
+  "provider": "openaire",
+  "query_text": "transfer apply catalysts sustainability chemistry",
+  "query_hash": "4ce02be2af9e57bf3962ea956a4cf648461d4d287d0e3d56cb8e7e111e8a827f",
+  "frozen_query_ref": "Q-OA-W4411781456_OA-W4412372715-mechanism_transfer-openalex",
+  "url": "https://api.openaire.eu/search/publications?keywords=transfer+apply+catalysts+sustainability+chemistry&size=10&format=json",
+  "timestamp_utc": "2026-08-11T12:26:24.985113+00:00",
+  "status": "SUCCESS",
+  "result_count": 1,
+  "result_ids": [
+    [
+      {
+        "$": "oai:fedoa.unina.it:14041"
+      },
+      {
+        "$": "50|od_______152::deef9f9414e997376809bfdff8e05453"
+      }
+    ]
+  ],
+  "result_titles": [
+    "A Smart HTE Approach to Sustainable Polyolefin Materials"
+  ],
+  "result_dois": [
+    ""
+  ],
+  "result_dates": [
+    "2021-01-01"
+  ],
+  "response_hash": "7d9f4b54a0ae48a7a9a4c975d6c61844be718a8c73fdc365cf668301a0887475",
+  "evidence_uri": "https://api.openaire.eu/search/publications?keywords=transfer+apply+catalysts+sustainability+chemistry&size=10&format=json",
+  "error": null,
+  "rate_limit_headers": {
+    "x-ratelimit-used": "87",
+    "x-ratelimit-limit": "7199"
+  }
+}

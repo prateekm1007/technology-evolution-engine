@@ -1,0 +1,42 @@
+Adaptive Waveform Design for Maritime Surveillance Radar Clutter Rejection
+
+Problem Statement
+
+A maritime surveillance radar system monitors coastal waters for small vessels, periscope detection, and debris tracking. The radar operates in X-band (8-12 GHz) and uses linear frequency-modulated (LFM) pulse compression for range resolution. The primary challenge is sea clutter: echoes from ocean waves that mimic the radar return of small targets, generating false alarms that overwhelm the detection system.
+
+Current Approach
+
+The radar uses a fixed waveform: a 10-microsecond LFM pulse with 10 MHz bandwidth, transmitted at a constant pulse repetition frequency (PRF) of 2 kHz. The fixed waveform provides 15-meter range resolution and 75 m/s maximum unambiguous Doppler, which are adequate for the detection requirements.
+
+Limitations
+
+1. Fixed pulse duration: The 10-microsecond pulse is a compromise. At close range (1-5 km), it is unnecessarily long, producing excessive clutter power. At long range (20-30 km), it lacks sensitivity for small targets. A shorter pulse would improve close-range clutter rejection but reduce long-range sensitivity; a longer pulse would improve long-range detection but worsen close-range clutter.
+
+2. Fixed bandwidth: The 10 MHz bandwidth provides 15 m range resolution, which is sufficient for vessel detection but marginal for periscope detection (perisopes have radar cross-sections of ~0.1 m² and are often at the resolution limit). Higher bandwidth would improve resolution but requires more processing power and may violate spectrum regulations.
+
+3. Clutter false alarms: Sea clutter in rough conditions (sea state 4+) produces false alarm rates of 10⁻³ per resolution cell per scan, compared to the required 10⁻⁶. The current constant false alarm rate (CFAR) detector cannot distinguish small targets from clutter spikes without excessive threshold raising, which also suppresses real targets.
+
+4. No adaptation: The waveform is fixed regardless of the operational scenario. In calm seas, the fixed waveform is adequate. In rough seas, it produces excessive false alarms. The radar cannot adapt its waveform to the current sea state or target characteristics.
+
+5. Range-Doppler coupling: The LFM waveform has inherent range-Doppler coupling: a target's Doppler shift appears as a range shift, which can cause a moving target to be mislocalized. This is particularly problematic for fast-moving small vessels that must be tracked accurately.
+
+Constraints
+
+- Real-time processing: Waveform selection and processing must complete within one pulse interval (500 microseconds at 2 kHz PRF)
+- Limited computational resources: The radar processor is a fixed FPGA design; complex waveform optimization is not feasible in real-time
+- Regulatory: Maximum bandwidth is 20 MHz (spectrum allocation)
+- Hardware: The transmitter supports arbitrary waveforms within the 8-12 GHz band, but switching waveforms takes 1 ms (two pulse intervals)
+- Detection requirement: Probability of detection ≥ 0.9 for 1 m² targets at 15 km in sea state 4
+- False alarm requirement: ≤ 10⁻⁶ per resolution cell per scan
+
+What Is Needed
+
+A waveform strategy that:
+1. Adapts pulse duration to target range (shorter at close range, longer at far range)
+2. Reduces clutter false alarms in rough seas without raising the detection threshold
+3. Maintains range resolution sufficient for periscope detection
+4. Can be implemented on the existing FPGA with minimal changes
+5. Does not require real-time optimization (lookup table or simple rule-based adaptation is acceptable)
+6. Addresses the range-Doppler coupling issue for fast-moving targets
+
+The strategy should be based on signal processing principles that can be quantitatively predicted. The proposal should specify the waveform parameters (duration, bandwidth, modulation type) and the adaptation rule, with a physical justification for why the design should outperform the fixed waveform.

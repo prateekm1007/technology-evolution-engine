@@ -1,0 +1,33 @@
+{
+  "hypothesis_id": "H-DXP-002-001",
+  "claim": "The hierarchical surface structure with differential wettability creates capillary forces that actively pull droplets toward hydrophilic regions",
+  "mechanism": "Microstructured hydrophilic regions generate stronger capillary forces than hydrophobic regions, creating a wettability gradient that drives directional transport of water droplets without requiring external energy input",
+  "evidence": [
+    "Insect exoskeletons demonstrate directional water transport",
+    "Microstructured surfaces show enhanced droplet mobility",
+    "Wettability gradients have been shown to influence droplet movement"
+  ],
+  "assumptions": [
+    "Capillary forces are the primary driving mechanism",
+    "Wettability gradient is maintained during droplet transport",
+    "Surface tension differences are sufficient to overcome adhesion forces"
+  ],
+  "predictions": [],
+  "expected_failure_modes": [
+    "Capillary forces insufficient to overcome droplet adhesion",
+    "Gradient degradation over time due to surface contamination",
+    "Inconsistent transport under varying humidity conditions"
+  ],
+  "novelty_rationale": "This hypothesis specifically identifies capillary forces as the primary mechanism, distinguishing it from other potential driving forces",
+  "testability": "Can be tested by measuring capillary forces at different wettability interfaces and correlating with droplet transport rates",
+  "falsifier": "If droplets move toward hydrophobic regions instead of hydrophilic regions, or if transport occurs equally in both directions when wettability gradient is eliminated",
+  "epistemic_state": "HYPOTHESIZED",
+  "parent_hypothesis_ids": [],
+  "provenance": {
+    "nodes": {},
+    "edges": [],
+    "committed_hash": null
+  },
+  "is_testable": true,
+  "provenance_root_hash": ""
+}

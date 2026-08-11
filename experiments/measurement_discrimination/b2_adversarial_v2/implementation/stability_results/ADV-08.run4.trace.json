@@ -1,0 +1,49 @@
+{
+  "schema_version": "b2-trace-v3",
+  "candidate": {
+    "id": "ADV-08",
+    "text": "protein-catalyzed biogenic oxide precipitation",
+    "source_a": "Calcium phosphate forms crystalline deposits in bone tissue through osteoblast-mediated mineralization.",
+    "source_b": "Marine diatoms precipitate silica-based cell walls using enzymatic silicatein proteins."
+  },
+  "atoms": [
+    {
+      "atom_id": "a1",
+      "claim": "{process: precipitation, catalyst: protein, origin: biogenic, product: oxide}",
+      "source_support": [
+        {
+          "support_type": "SOURCE_LOCAL",
+          "source_id": "B",
+          "spans": [
+            {
+              "span_text": "Marine diatoms precipitate silica-based cell walls using enzymatic silicatein proteins.",
+              "start": 0,
+              "end": 87
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "counterfactuals": [
+    {
+      "removed_source": "A",
+      "unsupported_atoms": [],
+      "justified_without_source": true
+    },
+    {
+      "removed_source": "B",
+      "unsupported_atoms": [
+        "a1"
+      ],
+      "justified_without_source": false
+    }
+  ],
+  "classification": {
+    "justified_by_corpus": true,
+    "iss_a": false,
+    "iss_b": true,
+    "iss_state": "ISS_one",
+    "label": "REJECT"
+  }
+}

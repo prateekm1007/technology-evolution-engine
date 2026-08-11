@@ -1,0 +1,33 @@
+{
+  "hypothesis_id": "H-DXP-002-003",
+  "claim": "The surface structure creates a Marangoni effect where surface tension gradients drive directional transport",
+  "mechanism": "Temperature or composition differences across the surface create surface tension gradients (Marangoni effect), causing droplets to move from regions of higher surface tension to lower surface tension",
+  "evidence": [
+    "Marangoni effects drive droplet movement on some surfaces",
+    "Temperature gradients can influence droplet behavior",
+    "Surface tension differences can create directional forces"
+  ],
+  "assumptions": [
+    "Surface tension gradients can be maintained across the microstructure",
+    "Marangoni forces are stronger than other forces acting on droplets",
+    "Temperature/composition differences are achievable under field conditions"
+  ],
+  "predictions": [],
+  "expected_failure_modes": [
+    "Insufficient temperature/composition gradient to generate meaningful Marangoni forces",
+    "Rapid equalization of gradients preventing sustained transport",
+    "Environmental conditions overwhelming engineered gradients"
+  ],
+  "novelty_rationale": "This hypothesis proposes that surface tension gradients rather than wettability gradients are the primary driving force",
+  "testability": "Can be tested by measuring temperature/composition gradients across the surface and correlating with transport direction",
+  "falsifier": "If transport direction reverses when temperature/composition gradient is reversed, or if no transport occurs when temperature/composition gradients are eliminated",
+  "epistemic_state": "HYPOTHESIZED",
+  "parent_hypothesis_ids": [],
+  "provenance": {
+    "nodes": {},
+    "edges": [],
+    "committed_hash": null
+  },
+  "is_testable": true,
+  "provenance_root_hash": ""
+}

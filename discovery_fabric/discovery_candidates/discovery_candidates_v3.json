@@ -1,0 +1,614 @@
+{
+  "timestamp": "2026-08-11T18:27:07.114479+00:00",
+  "total_candidates": 31,
+  "modes_implemented": 15,
+  "mechanisms_analyzed": 50,
+  "candidates": [
+    {
+      "candidate_id": "M3-22c198f5",
+      "discovery_mode": "failure_mode_transfer",
+      "mechanism_a": {
+        "evidence_id": "arxiv:1406.4327v1",
+        "failure_mode": "Limitations of the PENELOPE model in accurately simulating the electronic emission"
+      },
+      "mechanism_b": {
+        "evidence_id": "arxiv:1406.4336v1",
+        "output": "Electron emission from the nanoparticle"
+      },
+      "bridge": "Output of B may address failure mode of A",
+      "constraints": "PENDING",
+      "evidence": [
+        {
+          "evidence_id": "arxiv:1406.4327v1",
+          "field": "FAILURE_MODE"
+        },
+        {
+          "evidence_id": "arxiv:1406.4336v1",
+          "field": "OUTPUT"
+        }
+      ],
+      "candidate_hypothesis": "Mechanism producing 'Electron emission from the nanoparticle' may solve failure: 'Limitations of the PENELOPE model in acc'",
+      "epistemic_state": "CANDIDATE_CONNECTION"
+    },
+    {
+      "candidate_id": "M9-2e831ceb",
+      "discovery_mode": "patent_whitespace",
+      "mechanism_a": {
+        "input": "Paired images from d",
+        "process": "Combination of a pro"
+      },
+      "mechanism_b": null,
+      "bridge": "Combination absent from searched evidence",
+      "constraints": "PENDING",
+      "evidence": [],
+      "candidate_hypothesis": "Input 'Paired images from d' + process 'Combination of a pro' combination not found",
+      "epistemic_state": "CANDIDATE_CONNECTION",
+      "anti_hallucination": {
+        "absence_label": "ABSENCE_OF_EVIDENCE",
+        "note": "Combination absent from searched universe — does NOT prove novelty"
+      }
+    },
+    {
+      "candidate_id": "M9-44e7cdd2",
+      "discovery_mode": "patent_whitespace",
+      "mechanism_a": {
+        "input": "Paired images from d",
+        "process": "Natural language pro"
+      },
+      "mechanism_b": null,
+      "bridge": "Combination absent from searched evidence",
+      "constraints": "PENDING",
+      "evidence": [],
+      "candidate_hypothesis": "Input 'Paired images from d' + process 'Natural language pro' combination not found",
+      "epistemic_state": "CANDIDATE_CONNECTION",
+      "anti_hallucination": {
+        "absence_label": "ABSENCE_OF_EVIDENCE",
+        "note": "Combination absent from searched universe — does NOT prove novelty"
+      }
+    },
+    {
+      "candidate_id": "M9-7161005d",
+      "discovery_mode": "patent_whitespace",
+      "mechanism_a": {
+        "input": "Paired images from d",
+        "process": "synergizing Vision L"
+      },
+      "mechanism_b": null,
+      "bridge": "Combination absent from searched evidence",
+      "constraints": "PENDING",
+      "evidence": [],
+      "candidate_hypothesis": "Input 'Paired images from d' + process 'synergizing Vision L' combination not found",
+      "epistemic_state": "CANDIDATE_CONNECTION",
+      "anti_hallucination": {
+        "absence_label": "ABSENCE_OF_EVIDENCE",
+        "note": "Combination absent from searched universe — does NOT prove novelty"
+      }
+    },
+    {
+      "candidate_id": "M9-c0e9ed61",
+      "discovery_mode": "patent_whitespace",
+      "mechanism_a": {
+        "input": "Paired images from d",
+        "process": "X-ray photoelectron "
+      },
+      "mechanism_b": null,
+      "bridge": "Combination absent from searched evidence",
+      "constraints": "PENDING",
+      "evidence": [],
+      "candidate_hypothesis": "Input 'Paired images from d' + process 'X-ray photoelectron ' combination not found",
+      "epistemic_state": "CANDIDATE_CONNECTION",
+      "anti_hallucination": {
+        "absence_label": "ABSENCE_OF_EVIDENCE",
+        "note": "Combination absent from searched universe — does NOT prove novelty"
+      }
+    },
+    {
+      "candidate_id": "M9-0e2de053",
+      "discovery_mode": "patent_whitespace",
+      "mechanism_a": {
+        "input": "Paired images from d",
+        "process": "Melting the glass an"
+      },
+      "mechanism_b": null,
+      "bridge": "Combination absent from searched evidence",
+      "constraints": "PENDING",
+      "evidence": [],
+      "candidate_hypothesis": "Input 'Paired images from d' + process 'Melting the glass an' combination not found",
+      "epistemic_state": "CANDIDATE_CONNECTION",
+      "anti_hallucination": {
+        "absence_label": "ABSENCE_OF_EVIDENCE",
+        "note": "Combination absent from searched universe — does NOT prove novelty"
+      }
+    },
+    {
+      "candidate_id": "M9-68b6ac1a",
+      "discovery_mode": "patent_whitespace",
+      "mechanism_a": {
+        "input": "A two component mixt",
+        "process": "Combination of a pro"
+      },
+      "mechanism_b": null,
+      "bridge": "Combination absent from searched evidence",
+      "constraints": "PENDING",
+      "evidence": [],
+      "candidate_hypothesis": "Input 'A two component mixt' + process 'Combination of a pro' combination not found",
+      "epistemic_state": "CANDIDATE_CONNECTION",
+      "anti_hallucination": {
+        "absence_label": "ABSENCE_OF_EVIDENCE",
+        "note": "Combination absent from searched universe — does NOT prove novelty"
+      }
+    },
+    {
+      "candidate_id": "M9-3f26a0a9",
+      "discovery_mode": "patent_whitespace",
+      "mechanism_a": {
+        "input": "A two component mixt",
+        "process": "Natural language pro"
+      },
+      "mechanism_b": null,
+      "bridge": "Combination absent from searched evidence",
+      "constraints": "PENDING",
+      "evidence": [],
+      "candidate_hypothesis": "Input 'A two component mixt' + process 'Natural language pro' combination not found",
+      "epistemic_state": "CANDIDATE_CONNECTION",
+      "anti_hallucination": {
+        "absence_label": "ABSENCE_OF_EVIDENCE",
+        "note": "Combination absent from searched universe — does NOT prove novelty"
+      }
+    },
+    {
+      "candidate_id": "M9-bc7f0f2d",
+      "discovery_mode": "patent_whitespace",
+      "mechanism_a": {
+        "input": "A two component mixt",
+        "process": "synergizing Vision L"
+      },
+      "mechanism_b": null,
+      "bridge": "Combination absent from searched evidence",
+      "constraints": "PENDING",
+      "evidence": [],
+      "candidate_hypothesis": "Input 'A two component mixt' + process 'synergizing Vision L' combination not found",
+      "epistemic_state": "CANDIDATE_CONNECTION",
+      "anti_hallucination": {
+        "absence_label": "ABSENCE_OF_EVIDENCE",
+        "note": "Combination absent from searched universe — does NOT prove novelty"
+      }
+    },
+    {
+      "candidate_id": "M9-b525ed08",
+      "discovery_mode": "patent_whitespace",
+      "mechanism_a": {
+        "input": "A two component mixt",
+        "process": "X-ray photoelectron "
+      },
+      "mechanism_b": null,
+      "bridge": "Combination absent from searched evidence",
+      "constraints": "PENDING",
+      "evidence": [],
+      "candidate_hypothesis": "Input 'A two component mixt' + process 'X-ray photoelectron ' combination not found",
+      "epistemic_state": "CANDIDATE_CONNECTION",
+      "anti_hallucination": {
+        "absence_label": "ABSENCE_OF_EVIDENCE",
+        "note": "Combination absent from searched universe — does NOT prove novelty"
+      }
+    },
+    {
+      "candidate_id": "M9-7fbf3ac7",
+      "discovery_mode": "patent_whitespace",
+      "mechanism_a": {
+        "input": "A two component mixt",
+        "process": "Melting the glass an"
+      },
+      "mechanism_b": null,
+      "bridge": "Combination absent from searched evidence",
+      "constraints": "PENDING",
+      "evidence": [],
+      "candidate_hypothesis": "Input 'A two component mixt' + process 'Melting the glass an' combination not found",
+      "epistemic_state": "CANDIDATE_CONNECTION",
+      "anti_hallucination": {
+        "absence_label": "ABSENCE_OF_EVIDENCE",
+        "note": "Combination absent from searched universe — does NOT prove novelty"
+      }
+    },
+    {
+      "candidate_id": "M11-abed5ee7",
+      "discovery_mode": "constraint_inversion",
+      "mechanism_a": {
+        "evidence_id": "crossref:10.3390/ma18173949",
+        "constraint": "Annealing at 400 °C led to structural changes (abstract cuts off)"
+      },
+      "mechanism_b": null,
+      "bridge": "Inverting the constraint may reveal new design space",
+      "constraints": "PENDING — requires physical feasibility check of inverted constraint",
+      "evidence": [
+        {
+          "evidence_id": "crossref:10.3390/ma18173949",
+          "field": "CONSTRAINTS"
+        }
+      ],
+      "candidate_hypothesis": "What if constraint 'Annealing at 400 °C led to structural ch' is inverted or removed?",
+      "epistemic_state": "CANDIDATE_CONNECTION"
+    },
+    {
+      "candidate_id": "M11-307edc73",
+      "discovery_mode": "constraint_inversion",
+      "mechanism_a": {
+        "evidence_id": "crossref:10.1002/smll.201101172",
+        "constraint": "Surface‐confined synthesis"
+      },
+      "mechanism_b": null,
+      "bridge": "Inverting the constraint may reveal new design space",
+      "constraints": "PENDING — requires physical feasibility check of inverted constraint",
+      "evidence": [
+        {
+          "evidence_id": "crossref:10.1002/smll.201101172",
+          "field": "CONSTRAINTS"
+        }
+      ],
+      "candidate_hypothesis": "What if constraint 'Surface‐confined synthesis' is inverted or removed?",
+      "epistemic_state": "CANDIDATE_CONNECTION"
+    },
+    {
+      "candidate_id": "M11-19f9eb07",
+      "discovery_mode": "constraint_inversion",
+      "mechanism_a": {
+        "evidence_id": "arxiv:1004.4609v1",
+        "constraint": "Additional constraints exist for physically realizing reversible and quantum hardware"
+      },
+      "mechanism_b": null,
+      "bridge": "Inverting the constraint may reveal new design space",
+      "constraints": "PENDING — requires physical feasibility check of inverted constraint",
+      "evidence": [
+        {
+          "evidence_id": "arxiv:1004.4609v1",
+          "field": "CONSTRAINTS"
+        }
+      ],
+      "candidate_hypothesis": "What if constraint 'Additional constraints exist for physica' is inverted or removed?",
+      "epistemic_state": "CANDIDATE_CONNECTION"
+    },
+    {
+      "candidate_id": "M11-fdf5868c",
+      "discovery_mode": "constraint_inversion",
+      "mechanism_a": {
+        "evidence_id": "arxiv:2107.14449v3",
+        "constraint": "Structure preserving constraint based on contrastive learning that prevents blurring and content shifts due to overfitting"
+      },
+      "mechanism_b": null,
+      "bridge": "Inverting the constraint may reveal new design space",
+      "constraints": "PENDING — requires physical feasibility check of inverted constraint",
+      "evidence": [
+        {
+          "evidence_id": "arxiv:2107.14449v3",
+          "field": "CONSTRAINTS"
+        }
+      ],
+      "candidate_hypothesis": "What if constraint 'Structure preserving constraint based on' is inverted or removed?",
+      "epistemic_state": "CANDIDATE_CONNECTION"
+    },
+    {
+      "candidate_id": "M11-b4d72144",
+      "discovery_mode": "constraint_inversion",
+      "mechanism_a": {
+        "evidence_id": "arxiv:1504.04458v1",
+        "constraint": "O2 gas flow controls stoichiometry; independent biasing of two separate anodes in the growth zone controls size"
+      },
+      "mechanism_b": null,
+      "bridge": "Inverting the constraint may reveal new design space",
+      "constraints": "PENDING — requires physical feasibility check of inverted constraint",
+      "evidence": [
+        {
+          "evidence_id": "arxiv:1504.04458v1",
+          "field": "CONSTRAINTS"
+        }
+      ],
+      "candidate_hypothesis": "What if constraint 'O2 gas flow controls stoichiometry; inde' is inverted or removed?",
+      "epistemic_state": "CANDIDATE_CONNECTION"
+    },
+    {
+      "candidate_id": "M11-9b098fa9",
+      "discovery_mode": "constraint_inversion",
+      "mechanism_a": {
+        "evidence_id": "arxiv:0705.2523v1",
+        "constraint": "Lysine is used as an interface between the cell walls and the nanoparticles"
+      },
+      "mechanism_b": null,
+      "bridge": "Inverting the constraint may reveal new design space",
+      "constraints": "PENDING — requires physical feasibility check of inverted constraint",
+      "evidence": [
+        {
+          "evidence_id": "arxiv:0705.2523v1",
+          "field": "CONSTRAINTS"
+        }
+      ],
+      "candidate_hypothesis": "What if constraint 'Lysine is used as an interface between t' is inverted or removed?",
+      "epistemic_state": "CANDIDATE_CONNECTION"
+    },
+    {
+      "candidate_id": "M11-bb7d7f6b",
+      "discovery_mode": "constraint_inversion",
+      "mechanism_a": {
+        "evidence_id": "arxiv:1108.6201v1",
+        "constraint": "The ratio of remanent vs. saturation magnetisation is not as high as necessary for uniaxial anisotropy"
+      },
+      "mechanism_b": null,
+      "bridge": "Inverting the constraint may reveal new design space",
+      "constraints": "PENDING — requires physical feasibility check of inverted constraint",
+      "evidence": [
+        {
+          "evidence_id": "arxiv:1108.6201v1",
+          "field": "CONSTRAINTS"
+        }
+      ],
+      "candidate_hypothesis": "What if constraint 'The ratio of remanent vs. saturation mag' is inverted or removed?",
+      "epistemic_state": "CANDIDATE_CONNECTION"
+    },
+    {
+      "candidate_id": "M11-2f0e7635",
+      "discovery_mode": "constraint_inversion",
+      "mechanism_a": {
+        "evidence_id": "arxiv:2104.12292v6",
+        "constraint": "The conversion from MIDI to acoustic features is challenging, and the full MIDI-to-audio synthesis system is still inferior to sample-based or physical-modeling-based approaches"
+      },
+      "mechanism_b": null,
+      "bridge": "Inverting the constraint may reveal new design space",
+      "constraints": "PENDING — requires physical feasibility check of inverted constraint",
+      "evidence": [
+        {
+          "evidence_id": "arxiv:2104.12292v6",
+          "field": "CONSTRAINTS"
+        }
+      ],
+      "candidate_hypothesis": "What if constraint 'The conversion from MIDI to acoustic fea' is inverted or removed?",
+      "epistemic_state": "CANDIDATE_CONNECTION"
+    },
+    {
+      "candidate_id": "M11-4a070471",
+      "discovery_mode": "constraint_inversion",
+      "mechanism_a": {
+        "evidence_id": "arxiv:2204.10379v1",
+        "constraint": "Immense range of possible combinations of synthesis parameters"
+      },
+      "mechanism_b": null,
+      "bridge": "Inverting the constraint may reveal new design space",
+      "constraints": "PENDING — requires physical feasibility check of inverted constraint",
+      "evidence": [
+        {
+          "evidence_id": "arxiv:2204.10379v1",
+          "field": "CONSTRAINTS"
+        }
+      ],
+      "candidate_hypothesis": "What if constraint 'Immense range of possible combinations o' is inverted or removed?",
+      "epistemic_state": "CANDIDATE_CONNECTION"
+    },
+    {
+      "candidate_id": "M11-6ab40898",
+      "discovery_mode": "constraint_inversion",
+      "mechanism_a": {
+        "evidence_id": "arxiv:1406.4327v1",
+        "constraint": "GNPs coating is a key parameter for correctly construing experimental electronic emission"
+      },
+      "mechanism_b": null,
+      "bridge": "Inverting the constraint may reveal new design space",
+      "constraints": "PENDING — requires physical feasibility check of inverted constraint",
+      "evidence": [
+        {
+          "evidence_id": "arxiv:1406.4327v1",
+          "field": "CONSTRAINTS"
+        }
+      ],
+      "candidate_hypothesis": "What if constraint 'GNPs coating is a key parameter for corr' is inverted or removed?",
+      "epistemic_state": "CANDIDATE_CONNECTION"
+    },
+    {
+      "candidate_id": "M15-1283407b",
+      "discovery_mode": "rare_mechanism_migration",
+      "mechanism_a": {
+        "process": "Ultrasonic probe son",
+        "domain": "materials",
+        "rarity": 1
+      },
+      "mechanism_b": {
+        "domain": "computing"
+      },
+      "bridge": "Rare mechanism may be underexplored in other domains",
+      "constraints": "PENDING",
+      "evidence": [
+        {
+          "evidence_id": "crossref:10.1177/0021998318788144"
+        }
+      ],
+      "candidate_hypothesis": "Rare process 'Ultrasonic probe son' (only 1 occurrences) may migrate to computing",
+      "epistemic_state": "CANDIDATE_CONNECTION"
+    },
+    {
+      "candidate_id": "M15-9adebf1d",
+      "discovery_mode": "rare_mechanism_migration",
+      "mechanism_a": {
+        "process": "Ultrasonic probe son",
+        "domain": "materials",
+        "rarity": 1
+      },
+      "mechanism_b": {
+        "domain": "energy"
+      },
+      "bridge": "Rare mechanism may be underexplored in other domains",
+      "constraints": "PENDING",
+      "evidence": [
+        {
+          "evidence_id": "crossref:10.1177/0021998318788144"
+        }
+      ],
+      "candidate_hypothesis": "Rare process 'Ultrasonic probe son' (only 1 occurrences) may migrate to energy",
+      "epistemic_state": "CANDIDATE_CONNECTION"
+    },
+    {
+      "candidate_id": "M15-9f611e48",
+      "discovery_mode": "rare_mechanism_migration",
+      "mechanism_a": {
+        "process": "Synthesis of nanomet",
+        "domain": "materials",
+        "rarity": 1
+      },
+      "mechanism_b": {
+        "domain": "computing"
+      },
+      "bridge": "Rare mechanism may be underexplored in other domains",
+      "constraints": "PENDING",
+      "evidence": [
+        {
+          "evidence_id": "crossref:10.1063/1.120481"
+        }
+      ],
+      "candidate_hypothesis": "Rare process 'Synthesis of nanomet' (only 1 occurrences) may migrate to computing",
+      "epistemic_state": "CANDIDATE_CONNECTION"
+    },
+    {
+      "candidate_id": "M15-fe962e16",
+      "discovery_mode": "rare_mechanism_migration",
+      "mechanism_a": {
+        "process": "Synthesis of nanomet",
+        "domain": "materials",
+        "rarity": 1
+      },
+      "mechanism_b": {
+        "domain": "energy"
+      },
+      "bridge": "Rare mechanism may be underexplored in other domains",
+      "constraints": "PENDING",
+      "evidence": [
+        {
+          "evidence_id": "crossref:10.1063/1.120481"
+        }
+      ],
+      "candidate_hypothesis": "Rare process 'Synthesis of nanomet' (only 1 occurrences) may migrate to energy",
+      "epistemic_state": "CANDIDATE_CONNECTION"
+    },
+    {
+      "candidate_id": "M15-9c214fcb",
+      "discovery_mode": "rare_mechanism_migration",
+      "mechanism_a": {
+        "process": "Using genetically mo",
+        "domain": "materials",
+        "rarity": 1
+      },
+      "mechanism_b": {
+        "domain": "computing"
+      },
+      "bridge": "Rare mechanism may be underexplored in other domains",
+      "constraints": "PENDING",
+      "evidence": [
+        {
+          "evidence_id": "crossref:10.62791/20049"
+        }
+      ],
+      "candidate_hypothesis": "Rare process 'Using genetically mo' (only 1 occurrences) may migrate to computing",
+      "epistemic_state": "CANDIDATE_CONNECTION"
+    },
+    {
+      "candidate_id": "M15-91e3b49c",
+      "discovery_mode": "rare_mechanism_migration",
+      "mechanism_a": {
+        "process": "Using genetically mo",
+        "domain": "materials",
+        "rarity": 1
+      },
+      "mechanism_b": {
+        "domain": "energy"
+      },
+      "bridge": "Rare mechanism may be underexplored in other domains",
+      "constraints": "PENDING",
+      "evidence": [
+        {
+          "evidence_id": "crossref:10.62791/20049"
+        }
+      ],
+      "candidate_hypothesis": "Rare process 'Using genetically mo' (only 1 occurrences) may migrate to energy",
+      "epistemic_state": "CANDIDATE_CONNECTION"
+    },
+    {
+      "candidate_id": "M15-96802566",
+      "discovery_mode": "rare_mechanism_migration",
+      "mechanism_a": {
+        "process": "One-pot synthesis of",
+        "domain": "materials",
+        "rarity": 1
+      },
+      "mechanism_b": {
+        "domain": "computing"
+      },
+      "bridge": "Rare mechanism may be underexplored in other domains",
+      "constraints": "PENDING",
+      "evidence": [
+        {
+          "evidence_id": "crossref:10.4028/p-843733"
+        }
+      ],
+      "candidate_hypothesis": "Rare process 'One-pot synthesis of' (only 1 occurrences) may migrate to computing",
+      "epistemic_state": "CANDIDATE_CONNECTION"
+    },
+    {
+      "candidate_id": "M15-04c0a85e",
+      "discovery_mode": "rare_mechanism_migration",
+      "mechanism_a": {
+        "process": "One-pot synthesis of",
+        "domain": "materials",
+        "rarity": 1
+      },
+      "mechanism_b": {
+        "domain": "energy"
+      },
+      "bridge": "Rare mechanism may be underexplored in other domains",
+      "constraints": "PENDING",
+      "evidence": [
+        {
+          "evidence_id": "crossref:10.4028/p-843733"
+        }
+      ],
+      "candidate_hypothesis": "Rare process 'One-pot synthesis of' (only 1 occurrences) may migrate to energy",
+      "epistemic_state": "CANDIDATE_CONNECTION"
+    },
+    {
+      "candidate_id": "M15-83079f2a",
+      "discovery_mode": "rare_mechanism_migration",
+      "mechanism_a": {
+        "process": "Electroless depositi",
+        "domain": "materials",
+        "rarity": 1
+      },
+      "mechanism_b": {
+        "domain": "computing"
+      },
+      "bridge": "Rare mechanism may be underexplored in other domains",
+      "constraints": "PENDING",
+      "evidence": [
+        {
+          "evidence_id": "crossref:10.3390/ma18173949"
+        }
+      ],
+      "candidate_hypothesis": "Rare process 'Electroless depositi' (only 1 occurrences) may migrate to computing",
+      "epistemic_state": "CANDIDATE_CONNECTION"
+    },
+    {
+      "candidate_id": "M15-2a2d4796",
+      "discovery_mode": "rare_mechanism_migration",
+      "mechanism_a": {
+        "process": "Electroless depositi",
+        "domain": "materials",
+        "rarity": 1
+      },
+      "mechanism_b": {
+        "domain": "energy"
+      },
+      "bridge": "Rare mechanism may be underexplored in other domains",
+      "constraints": "PENDING",
+      "evidence": [
+        {
+          "evidence_id": "crossref:10.3390/ma18173949"
+        }
+      ],
+      "candidate_hypothesis": "Rare process 'Electroless depositi' (only 1 occurrences) may migrate to energy",
+      "epistemic_state": "CANDIDATE_CONNECTION"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "query_id": "Q-OA-W4411795344_OA-W4416643132-citation_graph-opencitations",
+  "pair_id": "OA-W4411795344_OA-W4416643132",
+  "query_type": "citation_graph",
+  "provider": "opencitations",
+  "query_text": "citation_lookup:https://doi.org/10.1002/anie.202510743 <-> https://doi.org/10.64818/pijbas.3107.8478.0013",
+  "query_hash": "e10c2fbaa6b388d1b68255d5a8b74867f55c66da7a6f5521f14c9108b8567e53",
+  "frozen_query_ref": null,
+  "search_type": "citation_graph",
+  "doi_a": "https://doi.org/10.1002/anie.202510743",
+  "doi_b": "https://doi.org/10.64818/pijbas.3107.8478.0013",
+  "oc_id_a": "doi:10.1002/anie.202510743",
+  "oc_id_b": "doi:10.64818/pijbas.3107.8478.0013",
+  "timestamp_utc": "2026-08-11T12:51:21.860534+00:00",
+  "status": "SUCCESS",
+  "a_cites_b": false,
+  "b_cites_a": false,
+  "a_citation_count": 3,
+  "b_citation_count": 6,
+  "a_reference_count": 41,
+  "b_reference_count": 86,
+  "shared_citing": [],
+  "shared_cited": [],
+  "response_hash": "9eeec50a94f473f6f9c5e7265fddf28065c4ff9d1ed31ec9ff3f424ab13b9b34",
+  "evidence_uris": [
+    "https://api.opencitations.net/index/v2/references/doi:10.1002/anie.202510743",
+    "https://api.opencitations.net/index/v2/citations/doi:10.1002/anie.202510743",
+    "https://api.opencitations.net/index/v2/references/doi:10.64818/pijbas.3107.8478.0013",
+    "https://api.opencitations.net/index/v2/citations/doi:10.64818/pijbas.3107.8478.0013"
+  ],
+  "error": null
+}

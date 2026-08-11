@@ -1,0 +1,141 @@
+{
+  "cycle": 257,
+  "gate": "E",
+  "gate_name": "final_verdict_eligibility",
+  "gates": {
+    "A": {
+      "available": true,
+      "verdict": "PASS",
+      "verdict_tier": "INSTRUMENTATION_SCAFFOLD_PASS",
+      "production_f1_strict": 0.0,
+      "production_f1_lenient": 0.8571,
+      "fp_floor_lenient": 1.0,
+      "comparisons_lenient": [
+        {
+          "baseline": "BM25 (lenient)",
+          "baseline_f1": 0.65,
+          "production_f1": 0.8571,
+          "delta": 0.2071,
+          "verdict": "PRODUCTION_BEATS_BASELINE"
+        },
+        {
+          "baseline": "Random (lenient)",
+          "baseline_f1": 0.095,
+          "production_f1": 0.8571,
+          "delta": 0.7621,
+          "verdict": "PRODUCTION_BEATS_BASELINE"
+        },
+        {
+          "baseline": "Frequency (lenient)",
+          "baseline_f1": 0.3,
+          "production_f1": 0.8571,
+          "delta": 0.5571,
+          "verdict": "PRODUCTION_BEATS_BASELINE"
+        }
+      ]
+    },
+    "B": {
+      "available": true,
+      "verdict": "PASS",
+      "verdict_tier": "SENSITIVITY_ANALYSIS_PASS",
+      "n_claims": 7,
+      "verdict_counts_dr91": {
+        "SURVIVES": 2,
+        "ERODED": 3,
+        "INVALIDATED": 2
+      },
+      "verdict_counts_honest": {
+        "SURVIVES": 2,
+        "ERODED": 1,
+        "INVALIDATED": 4
+      },
+      "formula_inflation_observed": true,
+      "formula_inflation_severity": "P0"
+    },
+    "C": {
+      "available": true,
+      "verdict": "PASS",
+      "verdict_tier": "WEAK_STATISTICAL_PASS",
+      "n_total": 40,
+      "n_met": true,
+      "useful_performance_threshold": 0.3,
+      "useful_performance_met": false,
+      "honest_f1_mean": 0.15,
+      "distribution": {
+        "n_total": 40,
+        "n_original": 20,
+        "n_synthetic": 20,
+        "strict_honest": {
+          "n": 40,
+          "mean": 0.0,
+          "median": 0.0,
+          "stdev": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "q25": 0.0,
+          "q75": 0.0
+        },
+        "lenient_dr91": {
+          "n": 40,
+          "mean": 0.15,
+          "median": 0.0,
+          "stdev": 0.3571,
+          "min": 0.0,
+          "max": 1.0,
+          "q25": 0.0,
+          "q75": 0.0
+        },
+        "lenient_honest": {
+          "n": 40,
+          "mean": 0.15,
+          "median": 0.0,
+          "stdev": 0.3571,
+          "min": 0.0,
+          "max": 1.0,
+          "q25": 0.0,
+          "q75": 0.0
+        }
+      },
+      "t_test": {
+        "test": "t_test",
+        "n": 40,
+        "mean": 0.15,
+        "fp_floor": 1.0,
+        "stdev": 0.3616,
+        "se": 0.0572,
+        "t_statistic": -14.8661,
+        "p_value": 0.0,
+        "verdict": "REJECT_H0"
+      }
+    },
+    "D": {
+      "available": true,
+      "verdict": "FAIL",
+      "verdict_tier": "AI_SURROGATE_REVIEW_FAIL",
+      "reviewer_type": "AI_PRE_REVIEW",
+      "n_responses": 6,
+      "accept_rate": 0.0,
+      "overall_mean_score": 2.2381
+    }
+  },
+  "eligibility": {
+    "eligible": false,
+    "blocking_gates": [
+      "A",
+      "B",
+      "C",
+      "D"
+    ],
+    "reasons": [
+      "A: verdict_tier=INSTRUMENTATION_SCAFFOLD_PASS \u2014 instrumentation/scaffold pass only, NOT SCIENCE_PASS. The gate runs and produces signal but does not prove the scientific claim.",
+      "B: verdict_tier=SENSITIVITY_ANALYSIS_PASS \u2014 instrumentation/scaffold pass only, NOT SCIENCE_PASS. The gate runs and produces signal but does not prove the scientific claim.",
+      "C: verdict_tier=WEAK_STATISTICAL_PASS \u2014 instrumentation/scaffold pass only, NOT SCIENCE_PASS. The gate runs and produces signal but does not prove the scientific claim.",
+      "D: AI_SURROGATE_REVIEW_FAIL \u2014 AI surrogate review did not pass. accept_rate=0.0, overall_mean=2.2381"
+    ],
+    "n_gates_science_pass": 0,
+    "n_gates_total": 4,
+    "n_gates_passed": 3
+  },
+  "final_verdict_written": false,
+  "blocked_verdict_written": true
+}

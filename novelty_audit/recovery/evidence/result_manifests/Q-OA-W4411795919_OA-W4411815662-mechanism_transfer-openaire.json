@@ -1,0 +1,42 @@
+{
+  "query_id": "Q-OA-W4411795919_OA-W4411815662-mechanism_transfer-openaire",
+  "pair_id": "OA-W4411795919_OA-W4411815662",
+  "query_type": "mechanism_transfer",
+  "provider": "openaire",
+  "query_text": "transfer apply cathodes materials chemistry",
+  "query_hash": "2b131c79e5f2747d6ec68720388caf57fe782b0492a82559a6aeaf19fba27b0d",
+  "frozen_query_ref": "Q-OA-W4411795919_OA-W4411815662-mechanism_transfer-openalex",
+  "url": "https://api.openaire.eu/search/publications?keywords=transfer+apply+cathodes+materials+chemistry&size=10&format=json",
+  "timestamp_utc": "2026-08-11T12:22:02.687689+00:00",
+  "status": "SUCCESS",
+  "result_count": 1,
+  "result_ids": [
+    [
+      {
+        "$": "10.1002/masy.19981310114"
+      },
+      {
+        "$": "50|doiboost____|1d556fdd58cab146a8397c9e06d4ef6f"
+      },
+      {
+        "$": "2040681224"
+      }
+    ]
+  ],
+  "result_titles": [
+    "Metal\u2010catalyzed organosulfur cathodes for rechargeable lithium batteries"
+  ],
+  "result_dois": [
+    "10.1002/masy.19981310114"
+  ],
+  "result_dates": [
+    "1998-05-01"
+  ],
+  "response_hash": "c1896b8197a6ae31944285d08ab2964d717bd85d4732f2a2fe8ad56ddf141c52",
+  "evidence_uri": "https://api.openaire.eu/search/publications?keywords=transfer+apply+cathodes+materials+chemistry&size=10&format=json",
+  "error": null,
+  "rate_limit_headers": {
+    "x-ratelimit-used": "28",
+    "x-ratelimit-limit": "7199"
+  }
+}

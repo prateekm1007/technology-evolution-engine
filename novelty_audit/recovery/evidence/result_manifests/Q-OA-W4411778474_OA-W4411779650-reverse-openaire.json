@@ -1,0 +1,50 @@
+{
+  "query_id": "Q-OA-W4411778474_OA-W4411779650-reverse-openaire",
+  "pair_id": "OA-W4411778474_OA-W4411779650",
+  "query_type": "reverse",
+  "provider": "openaire",
+  "query_text": "layer triple porous number oxygen oxidation",
+  "query_hash": "98f2cc02fbb65466b2ba0c3a2937538d36ce817aec28ed7aadf59c59229c104c",
+  "frozen_query_ref": "Q-OA-W4411778474_OA-W4411779650-reverse-openalex",
+  "url": "https://api.openaire.eu/search/publications?keywords=layer+triple+porous+number+oxygen+oxidation&size=10&format=json",
+  "timestamp_utc": "2026-08-11T12:21:44.794953+00:00",
+  "status": "SUCCESS",
+  "result_count": 2,
+  "result_ids": [
+    [
+      {
+        "$": "10.1149/ma2016-02/38/2848"
+      },
+      {
+        "$": "50|doiboost____|a27a0c045233e0a90f5cfc00a4bc5d23"
+      }
+    ],
+    [
+      {
+        "$": "50|od______3432::c49fa87b19b241f2f051376f60e045f6"
+      },
+      {
+        "$": "oai:iris.unitn.it:11572/367742"
+      }
+    ]
+  ],
+  "result_titles": [
+    "Performance of Pd/Graphene Nanocomposite Catalysts in H<sub>2</sub>/O<sub>2</sub> Anion Exchange Membrane Fuel Cells",
+    "Materials Development for the Fabrication of Metal-Supported Solid Oxide Fuel Cells by Co-sintering"
+  ],
+  "result_dois": [
+    "10.1149/ma2016-02/38/2848",
+    ""
+  ],
+  "result_dates": [
+    "2016-09-01",
+    "2014-01-01"
+  ],
+  "response_hash": "0095a289c67b6291493ecd1f3a23157946e03e6fcac740916579eaf00334d604",
+  "evidence_uri": "https://api.openaire.eu/search/publications?keywords=layer+triple+porous+number+oxygen+oxidation&size=10&format=json",
+  "error": null,
+  "rate_limit_headers": {
+    "x-ratelimit-used": "26",
+    "x-ratelimit-limit": "7199"
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "_comment": "Fixture for test_honesty_loop.py — a CLEAN Blueprint artifact with all required typed wrappers (Law 29e). Used to verify the scanner accepts compliant artifacts.",
+
+  "cleanBlueprintArtifact": {
+    "title": "EVALUATION package — 75 kWh LFP battery pack (per Law 29d)",
+    "packageMaturity": "EVALUATION",
+    "claims": [
+      {
+        "statement": "Pack energy density: 160 Wh/kg",
+        "validationLevel": "L2",
+        "evidenceStrength": "STRONG",
+        "experimentalValidation": "ABSENT",
+        "status": "PLAUSIBLE",
+        "evidenceIds": ["EV-001", "EV-002"]
+      },
+      {
+        "statement": "Cell energy density: 172 Wh/kg",
+        "validationLevel": "L4",
+        "evidenceStrength": "VERY_STRONG",
+        "experimentalValidation": "BENCH",
+        "status": "PASS",
+        "evidenceIds": ["EV-101"]
+      }
+    ],
+    "testRegistry": {
+      "analyticalEstimates": 14,
+      "numericalSimulations": 4,
+      "physicalValidations": 0,
+      "overallStatus": "MARGINAL",
+      "failures": 3,
+      "notes": "3 analytical estimate failures (over-estimation of fast-charge thermal envelope); see RETRACTION_REGISTRY_ENGINE.md RT-005."
+    },
+    "thermalEnvelope": {
+      "status": "REJECTED",
+      "failureReason": "2C fast-charge transient exceeds cell surface limit by 7.4°C; affected claim retracted (RT-005)."
+    }
+  }
+}

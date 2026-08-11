@@ -1,0 +1,29 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Sealed Benchmark Manifest",
+  "description": "Manifest for a sealed benchmark",
+  "type": "object",
+  "required": ["benchmark_id", "benchmark_version", "custodian_version", "construction_timestamp", "source_manifest_hash", "sampling_seed_hash", "case_count", "domain_count", "case_ids", "blind_fixture_hash", "answer_key_hash", "construction_parameters", "manifest_hash", "seal_state"],
+  "properties": {
+    "benchmark_id": {"type": "string"},
+    "benchmark_version": {"type": "string"},
+    "custodian_version": {"type": "string"},
+    "construction_timestamp": {"type": "string"},
+    "source_manifest_hash": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "sampling_seed_hash": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "case_count": {"type": "integer", "minimum": 0},
+    "domain_count": {"type": "integer", "minimum": 0},
+    "case_ids": {"type": "array", "items": {"type": "string"}},
+    "domain_distribution": {"type": "object"},
+    "blind_fixture_hash": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "answer_key_hash": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "construction_parameters": {"type": "object"},
+    "software_version": {"type": "string"},
+    "sampler_version": {"type": "string"},
+    "manifest_hash": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "seal_state": {"type": "string", "enum": ["DRAFT", "VALIDATED", "CONSTRUCTED", "SEALED"]},
+    "sealed_at": {"type": "string"},
+    "independent_verification": {"type": "object"}
+  },
+  "additionalProperties": false
+}

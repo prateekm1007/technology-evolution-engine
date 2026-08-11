@@ -1,0 +1,32 @@
+{
+  "query_id": "Q-OA-W4411780197_OA-W4411786868-citation_graph-opencitations",
+  "pair_id": "OA-W4411780197_OA-W4411786868",
+  "query_type": "citation_graph",
+  "provider": "opencitations",
+  "query_text": "citation_lookup:https://doi.org/10.1002/agt2.70089 <-> https://doi.org/10.3390/electronics14132649",
+  "query_hash": "bc7d80dda577f79bbf2ca9cd3a6c700343ceab84bcc7a47dd38447638888be5a",
+  "frozen_query_ref": null,
+  "search_type": "citation_graph",
+  "doi_a": "https://doi.org/10.1002/agt2.70089",
+  "doi_b": "https://doi.org/10.3390/electronics14132649",
+  "oc_id_a": "doi:10.1002/agt2.70089",
+  "oc_id_b": "doi:10.3390/electronics14132649",
+  "timestamp_utc": "2026-08-11T12:54:54.546899+00:00",
+  "status": "SUCCESS",
+  "a_cites_b": false,
+  "b_cites_a": false,
+  "a_citation_count": 11,
+  "b_citation_count": 9,
+  "a_reference_count": 111,
+  "b_reference_count": 33,
+  "shared_citing": [],
+  "shared_cited": [],
+  "response_hash": "5b90d7f239d2c70f4092e4c6f3b5bd605ba7dd468f4bf02f7a78187b6cfa44ac",
+  "evidence_uris": [
+    "https://api.opencitations.net/index/v2/references/doi:10.1002/agt2.70089",
+    "https://api.opencitations.net/index/v2/citations/doi:10.1002/agt2.70089",
+    "https://api.opencitations.net/index/v2/references/doi:10.3390/electronics14132649",
+    "https://api.opencitations.net/index/v2/citations/doi:10.3390/electronics14132649"
+  ],
+  "error": null
+}

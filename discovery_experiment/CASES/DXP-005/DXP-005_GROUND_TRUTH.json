@@ -1,0 +1,165 @@
+{
+  "experiment_id": "DXP-005",
+  "frozen_at": "2026-08-08T11:49:15.099894+00:00",
+  "engine_commit": "4ae90bc1fd3d1d4bec984a0189b0b2e7be6aa371",
+  "n_cases": 10,
+  "n_positive": 5,
+  "n_negative": 5,
+  "cases": {
+    "P1": {
+      "type": "positive",
+      "source_domain": "ichthyology",
+      "target_domain": "fluid mechanics",
+      "source_doc": "Shark skin denticles with riblets that lift streamwise vortices",
+      "target_doc": "Pipe drag reduction surface treatment",
+      "ground_truth": {
+        "mechanism": "riblet geometry lifts streamwise vortices away from surface, reducing shear",
+        "causal_variable": "riblet spacing (s+ ~ 15 wall units)",
+        "direction": "drag DECREASES",
+        "magnitude": "5-10% reduction",
+        "falsifier": "riblets outside 5-25 wall units produce no reduction"
+      },
+      "note": "Reuses DXP-004 input documents"
+    },
+    "P2": {
+      "type": "positive",
+      "source_domain": "bioacoustics",
+      "target_domain": "radar signal processing",
+      "source_doc": "Bat echolocation adaptive call duration",
+      "target_doc": "Maritime radar clutter rejection",
+      "ground_truth": {
+        "mechanism": "adaptive pulse duration based on target range",
+        "causal_variable": "pulse duration vs echo delay",
+        "direction": "false alarms DECREASE",
+        "magnitude": "30-50% close-range clutter reduction",
+        "falsifier": "fixed pulse duration outperforms adaptive at all ranges"
+      },
+      "note": "Reuses DXP-003 input documents"
+    },
+    "P3": {
+      "type": "positive",
+      "source_domain": "ornithology",
+      "target_domain": "protective equipment design",
+      "source_doc": "Woodpecker shock absorption (tongue wrapping around skull)",
+      "target_doc": "Sports helmet concussion reduction",
+      "ground_truth": {
+        "mechanism": "tongue-route distributes impact force through elongated path",
+        "causal_variable": "force path length / distribution",
+        "direction": "peak force DECREASES",
+        "magnitude": "20-30% peak force reduction (estimated from biomechanics)",
+        "falsifier": "no force reduction when force path is shortened"
+      },
+      "note": "New case \u2014 needs input documents"
+    },
+    "P4": {
+      "type": "positive",
+      "source_domain": "arachnology",
+      "target_domain": "materials engineering",
+      "source_doc": "Spider silk hierarchical nanostructure",
+      "target_doc": "Bulletproof vest energy absorption",
+      "ground_truth": {
+        "mechanism": "hierarchical nanostructure dissipates energy through H-bond breaking/reforming",
+        "causal_variable": "crystal domain size and amorphous region ratio",
+        "direction": "energy absorption INCREASES",
+        "magnitude": "10-50% improvement over Kevlar (by weight)",
+        "falsifier": "no improvement when crystal domains are too large or too small"
+      },
+      "note": "New case"
+    },
+    "P5": {
+      "type": "positive",
+      "source_domain": "marine biology",
+      "target_domain": "acoustic engineering",
+      "source_doc": "Dolphin blubber viscoelastic properties",
+      "target_doc": "Underwater acoustic insulation",
+      "ground_truth": {
+        "mechanism": "viscoelastic impedance matching absorbs sound across frequency range",
+        "causal_variable": "layer thickness and viscoelastic loss modulus",
+        "direction": "sound transmission DECREASES",
+        "magnitude": "10-20 dB reduction across 1-100 kHz",
+        "falsifier": "no reduction when impedance is mismatched"
+      },
+      "note": "New case"
+    },
+    "N1": {
+      "type": "negative",
+      "source_domain": "herpetology",
+      "target_domain": "materials engineering",
+      "source_doc": "Gecko dry adhesion (van der Waals forces)",
+      "target_doc": "Underwater adhesive for subsea pipeline repair",
+      "ground_truth": {
+        "mechanism": "NONE \u2014 dry van der Waals adhesion fails in water",
+        "causal_variable": "NONE",
+        "direction": "NONE \u2014 transfer is physically wrong",
+        "magnitude": "NONE",
+        "falsifier": "gecko-inspired adhesion loses >90% strength in water",
+        "hard_negative_reason": "van der Waals forces require dry contact; water screens the interaction. The correct underwater adhesion mechanism is chemical bonding or wet adhesion, completely different physics."
+      },
+      "note": "New case"
+    },
+    "N2": {
+      "type": "negative",
+      "source_domain": "ornithology",
+      "target_domain": "naval engineering",
+      "source_doc": "Bird wing aerodynamic lift generation",
+      "target_doc": "Submarine hull hydrodynamic design",
+      "ground_truth": {
+        "mechanism": "NONE \u2014 aerodynamic lift is irrelevant to submarine displacement",
+        "causal_variable": "NONE",
+        "direction": "NONE \u2014 wrong mechanism",
+        "magnitude": "NONE",
+        "falsifier": "wing-inspired hull shape does not improve submarine performance",
+        "hard_negative_reason": "Submarines operate by buoyancy and displacement, not lift. The flow regime (Re, Mach) is completely different. Wing lift is irrelevant to underwater vehicle design."
+      },
+      "note": "New case"
+    },
+    "N3": {
+      "type": "negative",
+      "source_domain": "botany",
+      "target_domain": "electrochemistry",
+      "source_doc": "Cactus water storage (osmotic regulation)",
+      "target_doc": "Battery electrolyte design",
+      "ground_truth": {
+        "mechanism": "NONE \u2014 osmotic water storage has no electrochemical analog",
+        "causal_variable": "NONE",
+        "direction": "NONE",
+        "magnitude": "NONE",
+        "falsifier": "cactus-inspired electrolyte shows no improvement",
+        "hard_negative_reason": "Osmotic water storage is a physical process; battery electrolytes require electrochemical stability. No mechanism transfers. The analogy is purely lexical (storage)."
+      },
+      "note": "New case"
+    },
+    "N4": {
+      "type": "negative",
+      "source_domain": "herpetology",
+      "target_domain": "display technology",
+      "source_doc": "Chameleon structural color change (nanocrystal spacing)",
+      "target_doc": "LED display efficiency improvement",
+      "ground_truth": {
+        "mechanism": "NONE \u2014 structural color and electroluminescence are completely different",
+        "causal_variable": "NONE",
+        "direction": "NONE",
+        "magnitude": "NONE",
+        "falsifier": "chameleon-inspired LED shows no efficiency improvement",
+        "hard_negative_reason": "Chameleon color is passive structural reflection; LED is active electroluminescence. No causal mechanism overlap. The analogy is superficial (both involve color)."
+      },
+      "note": "New case"
+    },
+    "N5": {
+      "type": "negative",
+      "source_domain": "entomology",
+      "target_domain": "photovoltaics",
+      "source_doc": "Firefly bioluminescence (chemical light production)",
+      "target_doc": "Solar cell efficiency improvement",
+      "ground_truth": {
+        "mechanism": "NONE \u2014 chemical luminescence and photovoltaic conversion are different physics",
+        "causal_variable": "NONE",
+        "direction": "NONE",
+        "magnitude": "NONE",
+        "falsifier": "firefly-inspired solar cell shows no efficiency improvement",
+        "hard_negative_reason": "Bioluminescence converts chemical energy to light; solar cells convert light to electrical energy. The mechanisms are thermodynamically opposite. No causal overlap."
+      },
+      "note": "New case"
+    }
+  }
+}

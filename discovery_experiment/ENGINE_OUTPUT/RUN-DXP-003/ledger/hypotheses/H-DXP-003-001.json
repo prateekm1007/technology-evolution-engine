@@ -1,0 +1,34 @@
+{
+  "hypothesis_id": "H-DXP-003-001",
+  "claim": "Adaptive pulse duration based on target range feedback reduces sea clutter false alarms while maintaining detection performance",
+  "mechanism": "The radar system continuously estimates target range and adjusts pulse duration accordingly. Shorter pulses are used for near targets to maintain resolution, while longer pulses are used for distant targets to increase energy on target and improve signal-to-clutter ratio.",
+  "evidence": [
+    "Bioacoustic systems in bats demonstrate adaptive pulse emission based on target distance",
+    "LFM waveforms show range-dependent clutter characteristics",
+    "Existing radar systems use pulse duration adjustments for specific scenarios"
+  ],
+  "assumptions": [
+    "Range estimation accuracy is sufficient for pulse adaptation",
+    "Sea clutter characteristics vary predictably with range",
+    "Pulse duration changes do not introduce significant range-Doppler coupling",
+    "FPGA hardware can implement real-time pulse generation switching"
+  ],
+  "predictions": [],
+  "expected_failure_modes": [
+    "Range-Doppler coupling becomes problematic at certain pulse durations",
+    "Switching between pulse durations introduces range ambiguities",
+    "Processing delays prevent real-time adaptation"
+  ],
+  "novelty_rationale": "Unlike fixed waveform systems, this approach dynamically optimizes pulse parameters based on real-time environmental feedback, similar to how bioacoustic systems adapt their signals",
+  "testability": "Can be implemented by modifying existing radar pulse generation algorithms to include range-dependent pulse duration control",
+  "falsifier": "If the system shows increased false alarm rates or reduced detection probability when implementing adaptive pulse duration compared to fixed LFM waveforms across all target ranges",
+  "epistemic_state": "HYPOTHESIZED",
+  "parent_hypothesis_ids": [],
+  "provenance": {
+    "nodes": {},
+    "edges": [],
+    "committed_hash": null
+  },
+  "is_testable": true,
+  "provenance_root_hash": ""
+}

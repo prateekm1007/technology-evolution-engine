@@ -1,0 +1,79 @@
+{
+  "query_id": "Q-OA-W4411779807_OA-W4411795344-reverse-openaire",
+  "pair_id": "OA-W4411779807_OA-W4411795344",
+  "query_type": "reverse",
+  "provider": "openaire",
+  "query_text": "situ hollow spectroscopy temperature high electrolyte",
+  "query_hash": "4e5cae09afcb7ae58f7d378f93a888d4e7cb92fe8379c0a12b0d95798172c91d",
+  "frozen_query_ref": "Q-OA-W4411779807_OA-W4411795344-reverse-openalex",
+  "url": "https://api.openaire.eu/search/publications?keywords=situ+hollow+spectroscopy+temperature+high+electrolyte&size=10&format=json",
+  "timestamp_utc": "2026-08-11T12:36:53.141060+00:00",
+  "status": "SUCCESS",
+  "result_count": 3,
+  "result_ids": [
+    [
+      {
+        "$": "S0169433221021553"
+      },
+      {
+        "$": "10.1016/j.apsusc.2021.151098"
+      },
+      {
+        "$": "50|doiboost____|93db48dda20c62ea8d333a94fbf041c4"
+      },
+      {
+        "$": "3197705388"
+      }
+    ],
+    [
+      {
+        "$": "10.1002/celc.201701305"
+      },
+      {
+        "$": "50|doiboost____|c12a40971b7df763ec714c28985b4b8f"
+      },
+      {
+        "$": "2790888498"
+      }
+    ],
+    [
+      {
+        "$": "50|datacite____::427d3949d4c2ed41f7e7de32a39409bf"
+      },
+      {
+        "$": "10.18452/22909"
+      },
+      {
+        "$": "3167020868"
+      },
+      {
+        "$": "50|od_______133::e0ea8768fe2314cbb6ce87fbf86e3d13"
+      },
+      {
+        "$": "oai:edoc.hu-berlin.de:18452/23604"
+      }
+    ]
+  ],
+  "result_titles": [
+    "Promoting high-energy supercapacitor performance over NiCoP/N-doped carbon hybrid hollow nanocages via rational architectural and electronic modulation",
+    "High\u2010Voltage Li<sub>2</sub>SiO<sub>3</sub>\u2212LiNi<sub>0.5</sub>Mn<sub>1.5</sub>O<sub>4</sub> Hollow Spheres Prepared through In Situ Aerosol Spray Pyrolysis towards High\u2010Energy Li\u2010Ion Batteries",
+    "Hollow MoSx nanomaterials for aqueous energy storage applications"
+  ],
+  "result_dois": [
+    "10.1016/j.apsusc.2021.151098",
+    "10.1002/celc.201701305",
+    "10.18452/22909"
+  ],
+  "result_dates": [
+    "2021-12-01",
+    "2018-02-27",
+    "2021-05-31"
+  ],
+  "response_hash": "46ff8bbdc4c75b2024a16a790ece968a8a031d7d8ed1c3ec88bcb92137b876fc",
+  "evidence_uri": "https://api.openaire.eu/search/publications?keywords=situ+hollow+spectroscopy+temperature+high+electrolyte&size=10&format=json",
+  "error": null,
+  "rate_limit_headers": {
+    "x-ratelimit-used": "231",
+    "x-ratelimit-limit": "7199"
+  }
+}

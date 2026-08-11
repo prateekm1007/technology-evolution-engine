@@ -1,0 +1,679 @@
+[
+  {
+    "discovery_id": "DISC-0026",
+    "source_documents": [
+      "1104.3379v1",
+      "1406.0470v3",
+      "1510.05595v2",
+      "1603.00798v1",
+      "1702.02344v2"
+    ],
+    "entity_set": [
+      "density",
+      "this tight packing",
+      "supercapacitors",
+      "cm2 at a",
+      "active area",
+      "power density",
+      "but suffer from significantly",
+      "density",
+      "higher power density than batteries",
+      "current of 1mA and high energy density of"
+    ],
+    "relation_set": [
+      "density --remain--> active area",
+      "but suffer from significantly --lower--> energy density",
+      "supercapacitors --deliver--> higher power density than batteries",
+      "this tight packing --compromise--> density",
+      "cm2 at a --discharge--> current of 1mA and high energy density of",
+      "that symmetrizing this response can help --boost--> power density"
+    ],
+    "mechanism": "that symmetrizing this response can help boost power density (from 2102.07230v2)",
+    "constraints": [],
+    "predicted_effect": "If density is a genuine bridge, then perturbations in one domain should propagate to the other domain via density.",
+    "alternative_explanations": [
+      "density is a generic term (not a causal bridge)",
+      "The co-occurrence is coincidental (no causal link)",
+      "A confounding variable explains the cross-domain presence"
+    ],
+    "counterexamples": [
+      "If density is removed from one domain, the bridge disappears",
+      "If density has no causal role, perturbing it should have no cross-domain effect"
+    ],
+    "falsification_experiments": [
+      "Manipulate density in domain A, measure effect in domain B",
+      "Control for density and test if cross-domain correlation persists"
+    ],
+    "confidence": 1.0,
+    "provenance": {
+      "discovery_method": "latent_bridge_cross_domain_entity",
+      "source_documents": [
+        "1104.3379v1",
+        "1406.0470v3",
+        "1510.05595v2",
+        "1603.00798v1",
+        "1702.02344v2"
+      ],
+      "entity": "density",
+      "domains": [
+        "photovoltaic",
+        "supercapacitor"
+      ],
+      "paper_count": 19,
+      "extraction_timestamp": "2026-08-06T20:30:50.365909+00:00",
+      "corpus_hash": "0d66fcd151f067d0"
+    },
+    "reaudit_verdict": "UPHELD",
+    "novelty_score": 1.0,
+    "mechanism_strength": 0.6667,
+    "causal_support": 1.0,
+    "constraint_consistency": 0.0,
+    "reaudit_survivability": 1.0,
+    "composite_score": 0.7667
+  },
+  {
+    "discovery_id": "DISC-0030",
+    "source_documents": [
+      "1012.0721v1",
+      "1101.1064v3",
+      "1109.0978v2",
+      "1112.1879v2",
+      "1405.1848v1"
+    ],
+    "entity_set": [
+      "this paper",
+      "first study",
+      "power allocation",
+      "novel and flexible solution",
+      "hybrid energy storage system",
+      "first application",
+      "This paper",
+      "temperature dependency",
+      "observation",
+      "the first application of software model c"
+    ],
+    "relation_set": [
+      "This paper --mark--> first application",
+      "This paper --present--> temperature dependency",
+      "This paper --present--> first study",
+      "This paper --report--> observation",
+      "This paper --concern--> conservation and diffusion",
+      "This paper --present--> novel and flexible solution",
+      "This paper --propose--> hybrid energy storage system",
+      "This paper --marks--> the first application of software model c",
+      "This paper --present--> power allocation"
+    ],
+    "mechanism": "This paper propose hybrid energy storage system (from 2512.08076v1)",
+    "constraints": [],
+    "predicted_effect": "If this paper is a genuine bridge, then perturbations in one domain should propagate to the other domain via this paper.",
+    "alternative_explanations": [
+      "this paper is a generic term (not a causal bridge)",
+      "The co-occurrence is coincidental (no causal link)",
+      "A confounding variable explains the cross-domain presence"
+    ],
+    "counterexamples": [
+      "If this paper is removed from one domain, the bridge disappears",
+      "If this paper has no causal role, perturbing it should have no cross-domain effect"
+    ],
+    "falsification_experiments": [
+      "Manipulate this paper in domain A, measure effect in domain B",
+      "Control for this paper and test if cross-domain correlation persists"
+    ],
+    "confidence": 1.0,
+    "provenance": {
+      "discovery_method": "latent_bridge_cross_domain_entity",
+      "source_documents": [
+        "1012.0721v1",
+        "1101.1064v3",
+        "1109.0978v2",
+        "1112.1879v2",
+        "1405.1848v1"
+      ],
+      "entity": "this paper",
+      "domains": [
+        "photovoltaic",
+        "supercapacitor"
+      ],
+      "paper_count": 17,
+      "extraction_timestamp": "2026-08-06T20:30:50.366241+00:00",
+      "corpus_hash": "0d66fcd151f067d0"
+    },
+    "reaudit_verdict": "UPHELD",
+    "novelty_score": 1.0,
+    "mechanism_strength": 0.3333,
+    "causal_support": 1.0,
+    "constraint_consistency": 0.0,
+    "reaudit_survivability": 1.0,
+    "composite_score": 0.6833
+  },
+  {
+    "discovery_id": "DISC-0042",
+    "source_documents": [
+      "2301.13078v1",
+      "2311.02267v1",
+      "2402.06685v1",
+      "2402.13300v1",
+      "2606.03732v1"
+    ],
+    "entity_set": [
+      "this study",
+      "In this study we show how to",
+      "this study",
+      "specific scenarios",
+      "accurately the time-domain power and ener",
+      "interfacial thermal transport",
+      "the structural features influencing the i",
+      "how to estimate accurately the time-domai",
+      "This study",
+      "In this study we"
+    ],
+    "relation_set": [
+      "This study --reveal--> interfacial thermal transport",
+      "This study --reveal--> structural features",
+      "specific scenarios --propose--> this study",
+      "This study --reveals--> the structural features influencing the i",
+      "In this study we show how to --estimate--> accurately the time-domain power and ener",
+      "In this study we --show--> how to estimate accurately the time-domai"
+    ],
+    "mechanism": "In this study we show how to estimate accurately the time-domai (from 2301.13078v1)",
+    "constraints": [],
+    "predicted_effect": "If this study is a genuine bridge, then perturbations in one domain should propagate to the other domain via this study.",
+    "alternative_explanations": [
+      "this study is a generic term (not a causal bridge)",
+      "The co-occurrence is coincidental (no causal link)",
+      "A confounding variable explains the cross-domain presence"
+    ],
+    "counterexamples": [
+      "If this study is removed from one domain, the bridge disappears",
+      "If this study has no causal role, perturbing it should have no cross-domain effect"
+    ],
+    "falsification_experiments": [
+      "Manipulate this study in domain A, measure effect in domain B",
+      "Control for this study and test if cross-domain correlation persists"
+    ],
+    "confidence": 1.0,
+    "provenance": {
+      "discovery_method": "latent_bridge_cross_domain_entity",
+      "source_documents": [
+        "2301.13078v1",
+        "2311.02267v1",
+        "2402.06685v1",
+        "2402.13300v1",
+        "2606.03732v1"
+      ],
+      "entity": "this study",
+      "domains": [
+        "photovoltaic",
+        "supercapacitor"
+      ],
+      "paper_count": 5,
+      "extraction_timestamp": "2026-08-06T20:30:50.367021+00:00",
+      "corpus_hash": "0d66fcd151f067d0"
+    },
+    "reaudit_verdict": "UPHELD",
+    "novelty_score": 0.5,
+    "mechanism_strength": 0.6667,
+    "causal_support": 1.0,
+    "constraint_consistency": 0.0,
+    "reaudit_survivability": 1.0,
+    "composite_score": 0.6417
+  },
+  {
+    "discovery_id": "DISC-0027",
+    "source_documents": [
+      "1405.1848v1",
+      "1412.0057v1",
+      "1603.00798v1",
+      "1810.06327v1",
+      "2001.07429v1"
+    ],
+    "entity_set": [
+      "this work",
+      "two physics-based models",
+      "electric double layer supercapacitor",
+      "a contribution to this field",
+      "this work",
+      "detailed analysis",
+      "possible obstacles",
+      "novel approach",
+      "this work intends to",
+      "This work"
+    ],
+    "relation_set": [
+      "This work --focus--> power output",
+      "this work --intend--> possible obstacles",
+      "This work --investigate--> two physics-based models",
+      "This work --investigate--> electric double layer supercapacitor",
+      "This work --present--> novel approach",
+      "this work intends to --provide--> a contribution to this field",
+      "This work --present--> detailed analysis",
+      "this work --intend--> contribution"
+    ],
+    "mechanism": "Latent composition: This work investigate two physics-based models (via this work) + This work investigate electric double layer supercapacitor \u2192 cross-domain bridge",
+    "constraints": [],
+    "predicted_effect": "If this work is a genuine bridge, then perturbations in one domain should propagate to the other domain via this work.",
+    "alternative_explanations": [
+      "this work is a generic term (not a causal bridge)",
+      "The co-occurrence is coincidental (no causal link)",
+      "A confounding variable explains the cross-domain presence"
+    ],
+    "counterexamples": [
+      "If this work is removed from one domain, the bridge disappears",
+      "If this work has no causal role, perturbing it should have no cross-domain effect"
+    ],
+    "falsification_experiments": [
+      "Manipulate this work in domain A, measure effect in domain B",
+      "Control for this work and test if cross-domain correlation persists"
+    ],
+    "confidence": 1.0,
+    "provenance": {
+      "discovery_method": "latent_bridge_cross_domain_entity",
+      "source_documents": [
+        "1405.1848v1",
+        "1412.0057v1",
+        "1603.00798v1",
+        "1810.06327v1",
+        "2001.07429v1"
+      ],
+      "entity": "this work",
+      "domains": [
+        "photovoltaic",
+        "supercapacitor"
+      ],
+      "paper_count": 16,
+      "extraction_timestamp": "2026-08-06T20:30:50.366012+00:00",
+      "corpus_hash": "0d66fcd151f067d0"
+    },
+    "reaudit_verdict": "UPHELD",
+    "novelty_score": 1.0,
+    "mechanism_strength": 0.0,
+    "causal_support": 1.0,
+    "constraint_consistency": 0.0,
+    "reaudit_survivability": 1.0,
+    "composite_score": 0.6
+  },
+  {
+    "discovery_id": "DISC-0013",
+    "source_documents": [
+      "1601.03257v1",
+      "1901.10855v1",
+      "2512.08076v1"
+    ],
+    "entity_set": [
+      "proposed method",
+      "SoC",
+      "fluctuations",
+      "The results",
+      "The results of the proposed method",
+      "proposed method",
+      "that the proposed method is effective in",
+      "a high agreement between the experimental",
+      "system frequency"
+    ],
+    "relation_set": [
+      "proposed method --verify--> system frequency",
+      "The results --indicate--> that the proposed method is effective in",
+      "The results of the proposed method --show--> a high agreement between the experimental",
+      "proposed method --verify--> SoC",
+      "proposed method --suppress--> fluctuations"
+    ],
+    "mechanism": "The results of the proposed method show a high agreement between the experimental (from 1601.03257v1)",
+    "constraints": [],
+    "predicted_effect": "If proposed method is a genuine bridge, then perturbations in one domain should propagate to the other domain via proposed method.",
+    "alternative_explanations": [
+      "proposed method is a generic term (not a causal bridge)",
+      "The co-occurrence is coincidental (no causal link)",
+      "A confounding variable explains the cross-domain presence"
+    ],
+    "counterexamples": [
+      "If proposed method is removed from one domain, the bridge disappears",
+      "If proposed method has no causal role, perturbing it should have no cross-domain effect"
+    ],
+    "falsification_experiments": [
+      "Manipulate proposed method in domain A, measure effect in domain B",
+      "Control for proposed method and test if cross-domain correlation persists"
+    ],
+    "confidence": 0.95,
+    "provenance": {
+      "discovery_method": "latent_bridge_cross_domain_entity",
+      "source_documents": [
+        "1601.03257v1",
+        "1901.10855v1",
+        "2512.08076v1"
+      ],
+      "entity": "proposed method",
+      "domains": [
+        "photovoltaic",
+        "supercapacitor"
+      ],
+      "paper_count": 3,
+      "extraction_timestamp": "2026-08-06T20:30:50.365035+00:00",
+      "corpus_hash": "0d66fcd151f067d0"
+    },
+    "reaudit_verdict": "UPHELD",
+    "novelty_score": 0.3,
+    "mechanism_strength": 0.6667,
+    "causal_support": 1.0,
+    "constraint_consistency": 0.0,
+    "reaudit_survivability": 1.0,
+    "composite_score": 0.5917
+  },
+  {
+    "discovery_id": "DISC-0035",
+    "source_documents": [
+      "1806.05558v1",
+      "2001.11211v1",
+      "2301.11585v1"
+    ],
+    "entity_set": [
+      "our results",
+      "high potential",
+      "Our results",
+      "simple and robust approach",
+      "a simple and robust approach to ionic con",
+      "that this supercapacitor has a high poten"
+    ],
+    "relation_set": [
+      "Our results --indicate--> that this supercapacitor has a high poten",
+      "Our results --demonstrate--> simple and robust approach",
+      "Our results --indicate--> high potential",
+      "Our results --demonstrate--> a simple and robust approach to ionic con"
+    ],
+    "mechanism": "Our results demonstrate simple and robust approach (from 2301.11585v1)",
+    "constraints": [],
+    "predicted_effect": "If our results is a genuine bridge, then perturbations in one domain should propagate to the other domain via our results.",
+    "alternative_explanations": [
+      "our results is a generic term (not a causal bridge)",
+      "The co-occurrence is coincidental (no causal link)",
+      "A confounding variable explains the cross-domain presence"
+    ],
+    "counterexamples": [
+      "If our results is removed from one domain, the bridge disappears",
+      "If our results has no causal role, perturbing it should have no cross-domain effect"
+    ],
+    "falsification_experiments": [
+      "Manipulate our results in domain A, measure effect in domain B",
+      "Control for our results and test if cross-domain correlation persists"
+    ],
+    "confidence": 0.85,
+    "provenance": {
+      "discovery_method": "latent_bridge_cross_domain_entity",
+      "source_documents": [
+        "1806.05558v1",
+        "2001.11211v1",
+        "2301.11585v1"
+      ],
+      "entity": "our results",
+      "domains": [
+        "photovoltaic",
+        "supercapacitor"
+      ],
+      "paper_count": 3,
+      "extraction_timestamp": "2026-08-06T20:30:50.366588+00:00",
+      "corpus_hash": "0d66fcd151f067d0"
+    },
+    "reaudit_verdict": "UPHELD",
+    "novelty_score": 0.3,
+    "mechanism_strength": 0.6667,
+    "causal_support": 0.8,
+    "constraint_consistency": 0.0,
+    "reaudit_survivability": 1.0,
+    "composite_score": 0.5517
+  },
+  {
+    "discovery_id": "DISC-0047",
+    "source_documents": [
+      "1811.09438v1",
+      "2110.13246v1",
+      "2302.09499v2",
+      "2511.20969v1"
+    ],
+    "entity_set": [
+      "effectiveness",
+      "Data from practical applications",
+      "Extensive numerical experiments",
+      "new material-based experimental results",
+      "All practice results",
+      "the effectiveness of our approach",
+      "effectiveness"
+    ],
+    "relation_set": [
+      "Data from practical applications --show--> the effectiveness of our approach",
+      "All practice results --confirm--> effectiveness",
+      "new material-based experimental results --corroborate--> effectiveness",
+      "Extensive numerical experiments --present--> effectiveness"
+    ],
+    "mechanism": "Data from practical applications show the effectiveness of our approach (from 1811.09438v1)",
+    "constraints": [],
+    "predicted_effect": "If effectiveness is a genuine bridge, then perturbations in one domain should propagate to the other domain via effectiveness.",
+    "alternative_explanations": [
+      "effectiveness is a generic term (not a causal bridge)",
+      "The co-occurrence is coincidental (no causal link)",
+      "A confounding variable explains the cross-domain presence"
+    ],
+    "counterexamples": [
+      "If effectiveness is removed from one domain, the bridge disappears",
+      "If effectiveness has no causal role, perturbing it should have no cross-domain effect"
+    ],
+    "falsification_experiments": [
+      "Manipulate effectiveness in domain A, measure effect in domain B",
+      "Control for effectiveness and test if cross-domain correlation persists"
+    ],
+    "confidence": 0.75,
+    "provenance": {
+      "discovery_method": "latent_bridge_cross_domain_entity",
+      "source_documents": [
+        "1811.09438v1",
+        "2110.13246v1",
+        "2302.09499v2",
+        "2511.20969v1"
+      ],
+      "entity": "effectiveness",
+      "domains": [
+        "photovoltaic",
+        "supercapacitor"
+      ],
+      "paper_count": 4,
+      "extraction_timestamp": "2026-08-06T20:30:50.367342+00:00",
+      "corpus_hash": "0d66fcd151f067d0"
+    },
+    "reaudit_verdict": "UPHELD",
+    "novelty_score": 0.4,
+    "mechanism_strength": 0.3333,
+    "causal_support": 0.8,
+    "constraint_consistency": 0.0,
+    "reaudit_survivability": 1.0,
+    "composite_score": 0.4933
+  },
+  {
+    "discovery_id": "DISC-0023",
+    "source_documents": [
+      "1304.1611v1",
+      "1508.05874v1",
+      "2209.10689v1",
+      "2308.08382v2",
+      "2401.06409v2"
+    ],
+    "entity_set": [
+      "potential",
+      "potential",
+      "compared to individual photothermionic or",
+      "vice has the potential to offer a voltage",
+      "electrons",
+      "These findings"
+    ],
+    "relation_set": [
+      "vice has the potential to offer a voltage --boost--> compared to individual photothermionic or",
+      "These findings --highlight--> potential",
+      "electrons --gain--> potential"
+    ],
+    "mechanism": "vice has the potential to offer a voltage boost compared to individual photothermionic or (from 2209.10689v1)",
+    "constraints": [],
+    "predicted_effect": "If potential is a genuine bridge, then perturbations in one domain should propagate to the other domain via potential.",
+    "alternative_explanations": [
+      "potential is a generic term (not a causal bridge)",
+      "The co-occurrence is coincidental (no causal link)",
+      "A confounding variable explains the cross-domain presence"
+    ],
+    "counterexamples": [
+      "If potential is removed from one domain, the bridge disappears",
+      "If potential has no causal role, perturbing it should have no cross-domain effect"
+    ],
+    "falsification_experiments": [
+      "Manipulate potential in domain A, measure effect in domain B",
+      "Control for potential and test if cross-domain correlation persists"
+    ],
+    "confidence": 0.7,
+    "provenance": {
+      "discovery_method": "latent_bridge_cross_domain_entity",
+      "source_documents": [
+        "1304.1611v1",
+        "1508.05874v1",
+        "2209.10689v1",
+        "2308.08382v2",
+        "2401.06409v2"
+      ],
+      "entity": "potential",
+      "domains": [
+        "photovoltaic",
+        "supercapacitor"
+      ],
+      "paper_count": 5,
+      "extraction_timestamp": "2026-08-06T20:30:50.365666+00:00",
+      "corpus_hash": "0d66fcd151f067d0"
+    },
+    "reaudit_verdict": "UPHELD",
+    "novelty_score": 0.5,
+    "mechanism_strength": 0.3333,
+    "causal_support": 0.6,
+    "constraint_consistency": 0.0,
+    "reaudit_survivability": 1.0,
+    "composite_score": 0.4783
+  },
+  {
+    "discovery_id": "DISC-0005",
+    "source_documents": [
+      "1310.5795v1",
+      "1510.05595v2",
+      "1901.01441v1",
+      "2007.14278v1",
+      "2012.09786v2"
+    ],
+    "entity_set": [
+      "gap",
+      "Wavelength dependent photovoltaic effect",
+      "the photovoltaic gap of the donor",
+      "it has become routine to",
+      "the contribution of in gap level states m"
+    ],
+    "relation_set": [
+      "Wavelength dependent photovoltaic effect --shows--> the contribution of in gap level states m",
+      "it has become routine to --estimate--> the photovoltaic gap of the donor"
+    ],
+    "mechanism": "Wavelength dependent photovoltaic effect show the contribution of in gap level states m (from 1901.01441v1)",
+    "constraints": [],
+    "predicted_effect": "If gap is a genuine bridge, then perturbations in one domain should propagate to the other domain via gap.",
+    "alternative_explanations": [
+      "gap is a generic term (not a causal bridge)",
+      "The co-occurrence is coincidental (no causal link)",
+      "A confounding variable explains the cross-domain presence"
+    ],
+    "counterexamples": [
+      "If gap is removed from one domain, the bridge disappears",
+      "If gap has no causal role, perturbing it should have no cross-domain effect"
+    ],
+    "falsification_experiments": [
+      "Manipulate gap in domain A, measure effect in domain B",
+      "Control for gap and test if cross-domain correlation persists"
+    ],
+    "confidence": 0.65,
+    "provenance": {
+      "discovery_method": "latent_bridge_cross_domain_entity",
+      "source_documents": [
+        "1310.5795v1",
+        "1510.05595v2",
+        "1901.01441v1",
+        "2007.14278v1",
+        "2012.09786v2"
+      ],
+      "entity": "gap",
+      "domains": [
+        "photovoltaic",
+        "supercapacitor"
+      ],
+      "paper_count": 6,
+      "extraction_timestamp": "2026-08-06T20:30:50.364385+00:00",
+      "corpus_hash": "0d66fcd151f067d0"
+    },
+    "reaudit_verdict": "UPHELD",
+    "novelty_score": 0.6,
+    "mechanism_strength": 0.3333,
+    "causal_support": 0.4,
+    "constraint_consistency": 0.0,
+    "reaudit_survivability": 1.0,
+    "composite_score": 0.4633
+  },
+  {
+    "discovery_id": "DISC-0016",
+    "source_documents": [
+      "1310.5795v1",
+      "2110.13597v1",
+      "2304.13668v1",
+      "2311.02267v1"
+    ],
+    "entity_set": [
+      "great potential",
+      "d supercapacitors have great potential to",
+      "These results",
+      "how we store and utilize energy",
+      "BPVE",
+      "great potential"
+    ],
+    "relation_set": [
+      "These results --suggest--> great potential",
+      "BPVE --offer--> great potential",
+      "d supercapacitors have great potential to --transform--> how we store and utilize energy"
+    ],
+    "mechanism": "d supercapacitors have great potential to transform how we store and utilize energy (from 2311.02267v1)",
+    "constraints": [],
+    "predicted_effect": "If great potential is a genuine bridge, then perturbations in one domain should propagate to the other domain via great potential.",
+    "alternative_explanations": [
+      "great potential is a generic term (not a causal bridge)",
+      "The co-occurrence is coincidental (no causal link)",
+      "A confounding variable explains the cross-domain presence"
+    ],
+    "counterexamples": [
+      "If great potential is removed from one domain, the bridge disappears",
+      "If great potential has no causal role, perturbing it should have no cross-domain effect"
+    ],
+    "falsification_experiments": [
+      "Manipulate great potential in domain A, measure effect in domain B",
+      "Control for great potential and test if cross-domain correlation persists"
+    ],
+    "confidence": 0.65,
+    "provenance": {
+      "discovery_method": "latent_bridge_cross_domain_entity",
+      "source_documents": [
+        "1310.5795v1",
+        "2110.13597v1",
+        "2304.13668v1",
+        "2311.02267v1"
+      ],
+      "entity": "great potential",
+      "domains": [
+        "photovoltaic",
+        "supercapacitor"
+      ],
+      "paper_count": 4,
+      "extraction_timestamp": "2026-08-06T20:30:50.365241+00:00",
+      "corpus_hash": "0d66fcd151f067d0"
+    },
+    "reaudit_verdict": "UPHELD",
+    "novelty_score": 0.4,
+    "mechanism_strength": 0.3333,
+    "causal_support": 0.6,
+    "constraint_consistency": 0.0,
+    "reaudit_survivability": 1.0,
+    "composite_score": 0.4533
+  }
+]

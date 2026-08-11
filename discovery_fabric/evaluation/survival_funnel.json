@@ -1,0 +1,24 @@
+{
+  "timestamp": "2026-08-11T17:24:21.192690+00:00",
+  "real_candidates": {
+    "generated": 11,
+    "mechanistically_coherent": 11,
+    "evidence_supported": 1,
+    "adversarial_survivor": 11,
+    "prior_art_survivor": "PENDING \u2014 prior-art firewall not fully implemented",
+    "falsifiable": 0,
+    "experimentally_tractable": 0,
+    "expert_reviewed": 0
+  },
+  "null_candidates": {
+    "generated": 47,
+    "adversarial_survivor": 0,
+    "killed": 47
+  },
+  "signal": {
+    "real_survival_rate": "100.0%",
+    "null_survival_rate": "0.0%",
+    "discovery_signal": "100.0%",
+    "interpretation": "If real survival rate > null survival rate, the engine may be producing signal. Currently both are high because adversarial review is incomplete."
+  }
+}

@@ -1,0 +1,12 @@
+TITLE: Restoring the top-of-atmosphere reflectance during solar eclipses: a proof of concept with the UV Absorbing Aerosol Index measured by TROPOMI
+ARXIV ID: 2105.13311v1
+URL: http://arxiv.org/abs/2105.13311v1
+RETRIEVAL DATE: 2026-08-05
+RETRIEVAL METHOD: arxiv.org API
+SOURCE VERIFICATION: arxiv API XML
+DOMAIN HINT: water_harvesting
+AUTHORS: Victor J. H. Trees; Ping Wang; Piet Stammes
+PUBLISHED: 2021-05-27T17:05:00Z
+
+ABSTRACT:
+During a solar eclipse the solar irradiance reaching the top-of-atmosphere (TOA) is reduced in the Moon shadow. The solar irradiance is commonly measured by Earth observation satellites before the start of the solar eclipse and is not corrected for this reduction, which results in a decrease of the computed TOA reflectances. Consequently, air quality products that are derived from TOA reflectance spectra, such as the ultraviolet (UV) Absorbing Aerosol Index (AAI), are distorted or undefined in the shadow of the Moon. The availability of air quality satellite data in the penumbral and antumbral shadow during solar eclipses, however, is of particular interest to users studying the atmospheric response to solar eclipses. Given the time and location of a point on the Earth's surface, we explain how to compute the obscuration during a solar eclipse taking into account wavelength-dependent solar limb darkening. With the calculated obscuration fractions, we restore the TOA reflectances and the AAI in the penumbral shadow during the annular solar eclipses on 26 December 2019 and 21 June 2020 measured by the TROPOMI/S5P instrument. In the corrected products, the signature of the Moon shadow disappeared, but only if wavelength-dependent solar limb darkening is taken into account. We conclude that the correction method of this paper can be used to detect real AAI rising phenomena during a solar eclipse and has the potential to restore any other product that is derived from TOA reflectance spectra. This would resolve the solar eclipse anomalies in satellite air quality measurements and would allow for studying the effect of the eclipse obscuration on the composition of the Earth's atmosphere from space.

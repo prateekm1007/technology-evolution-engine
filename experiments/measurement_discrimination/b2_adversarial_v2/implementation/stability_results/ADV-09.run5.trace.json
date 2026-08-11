@@ -1,0 +1,29 @@
+{
+  "schema_version": "b2-trace-v3",
+  "candidate": {
+    "id": "ADV-09",
+    "text": "quantum entanglement",
+    "source_a": "Calcium phosphate forms crystalline deposits in bone tissue through osteoblast-mediated mineralization.",
+    "source_b": "Marine diatoms precipitate silica-based cell walls using enzymatic silicatein proteins."
+  },
+  "atoms": [],
+  "counterfactuals": [
+    {
+      "removed_source": "A",
+      "unsupported_atoms": [],
+      "justified_without_source": true
+    },
+    {
+      "removed_source": "B",
+      "unsupported_atoms": [],
+      "justified_without_source": true
+    }
+  ],
+  "classification": {
+    "justified_by_corpus": true,
+    "iss_a": false,
+    "iss_b": false,
+    "iss_state": "REDUNDANT_SUPPORT",
+    "label": "ALLOW"
+  }
+}

@@ -1,0 +1,138 @@
+{
+  "total_discoveries": 20,
+  "pattern_distribution": {
+    "mechanism_transfer": 6,
+    "combination_of_independently_validated_mechanisms": 5,
+    "contradiction_resolution": 1,
+    "unexpected_material_property": 2,
+    "rare_observation": 1,
+    "unexpected_observation": 1,
+    "new_synthesis_pathway": 1,
+    "constraint_inversion": 2,
+    "new_capability_required": 1
+  },
+  "engine_coverage": {
+    "mechanism_transfer": {
+      "count": 6,
+      "percentage": "30%",
+      "engine_covers": true
+    },
+    "combination_of_independently_validated_mechanisms": {
+      "count": 5,
+      "percentage": "25%",
+      "engine_covers": false
+    },
+    "contradiction_resolution": {
+      "count": 1,
+      "percentage": "5%",
+      "engine_covers": false
+    },
+    "unexpected_material_property": {
+      "count": 2,
+      "percentage": "10%",
+      "engine_covers": false
+    },
+    "rare_observation": {
+      "count": 1,
+      "percentage": "5%",
+      "engine_covers": false
+    },
+    "unexpected_observation": {
+      "count": 1,
+      "percentage": "5%",
+      "engine_covers": false
+    },
+    "new_synthesis_pathway": {
+      "count": 1,
+      "percentage": "5%",
+      "engine_covers": false
+    },
+    "constraint_inversion": {
+      "count": 2,
+      "percentage": "10%",
+      "engine_covers": true
+    },
+    "new_capability_required": {
+      "count": 1,
+      "percentage": "5%",
+      "engine_covers": false
+    }
+  },
+  "covered_count": 8,
+  "uncovered_count": 12,
+  "uncovered_discoveries": [
+    {
+      "id": "HD-002",
+      "discovery": "Lithium-ion battery",
+      "pattern": "combination_of_independently_validated_mechanisms",
+      "why_missed": "Engine does not implement combination_of_independently_validated_mechanisms discovery mode"
+    },
+    {
+      "id": "HD-003",
+      "discovery": "mRNA vaccines",
+      "pattern": "combination_of_independently_validated_mechanisms",
+      "why_missed": "Engine does not implement combination_of_independently_validated_mechanisms discovery mode"
+    },
+    {
+      "id": "HD-004",
+      "discovery": "Graphene",
+      "pattern": "contradiction_resolution",
+      "why_missed": "Engine does not implement contradiction_resolution discovery mode"
+    },
+    {
+      "id": "HD-005",
+      "discovery": "Haber-Bosch process",
+      "pattern": "combination_of_independently_validated_mechanisms",
+      "why_missed": "Engine does not implement combination_of_independently_validated_mechanisms discovery mode"
+    },
+    {
+      "id": "HD-006",
+      "discovery": "PCR (Polymerase Chain Reaction)",
+      "pattern": "combination_of_independently_validated_mechanisms",
+      "why_missed": "Engine does not implement combination_of_independently_validated_mechanisms discovery mode"
+    },
+    {
+      "id": "HD-007",
+      "discovery": "Deep learning (AlexNet)",
+      "pattern": "combination_of_independently_validated_mechanisms",
+      "why_missed": "Engine does not implement combination_of_independently_validated_mechanisms discovery mode"
+    },
+    {
+      "id": "HD-008",
+      "discovery": "Perovskite solar cells",
+      "pattern": "unexpected_material_property",
+      "why_missed": "Engine does not implement unexpected_material_property discovery mode"
+    },
+    {
+      "id": "HD-009",
+      "discovery": "Penicillin",
+      "pattern": "rare_observation",
+      "why_missed": "Engine does not implement rare_observation discovery mode"
+    },
+    {
+      "id": "HD-010",
+      "discovery": "Quantum Hall effect",
+      "pattern": "unexpected_observation",
+      "why_missed": "Engine does not implement unexpected_observation discovery mode"
+    },
+    {
+      "id": "HD-012",
+      "discovery": "Induced pluripotent stem cells (iPSCs)",
+      "pattern": "new_synthesis_pathway",
+      "why_missed": "Engine does not implement new_synthesis_pathway discovery mode"
+    },
+    {
+      "id": "HD-019",
+      "discovery": "Aspirin (acetylsalicylic acid)",
+      "pattern": "unexpected_material_property",
+      "why_missed": "Engine does not implement unexpected_material_property discovery mode"
+    },
+    {
+      "id": "HD-020",
+      "discovery": "AlphaFold protein structure prediction",
+      "pattern": "new_capability_required",
+      "why_missed": "Engine does not implement new_capability_required discovery mode"
+    }
+  ],
+  "coverage_rate": "40%"
+}

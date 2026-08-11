@@ -1,0 +1,42 @@
+{
+  "query_id": "Q-OA-W4411795919_OA-W4412019518-reverse-openaire",
+  "pair_id": "OA-W4411795919_OA-W4412019518",
+  "query_type": "reverse",
+  "provider": "openaire",
+  "query_text": "recent progress layered cathodes materials mediated",
+  "query_hash": "ee7bad2313e7e7d416badf672c29e215e70efd6286fb7a899f2e061dff01813a",
+  "frozen_query_ref": "Q-OA-W4411795919_OA-W4412019518-reverse-openalex",
+  "url": "https://api.openaire.eu/search/publications?keywords=recent+progress+layered+cathodes+materials+mediated&size=10&format=json",
+  "timestamp_utc": "2026-08-11T12:37:36.314265+00:00",
+  "status": "SUCCESS",
+  "result_count": 1,
+  "result_ids": [
+    [
+      {
+        "$": "10.1149/ma2020-01133mtgabs"
+      },
+      {
+        "$": "50|doiboost____|0f3d5b1371305f31da510b2525df04f6"
+      },
+      {
+        "$": "3025679687"
+      }
+    ]
+  ],
+  "result_titles": [
+    "(Invited) Opportunities and Challenges for Achieving High Performance Electrochemically Active Systems"
+  ],
+  "result_dois": [
+    "10.1149/ma2020-01133mtgabs"
+  ],
+  "result_dates": [
+    "2020-05-01"
+  ],
+  "response_hash": "05f79d1acf5b887fcac9793010202595a829338709a27f9799bf66bda737ab25",
+  "evidence_uri": "https://api.openaire.eu/search/publications?keywords=recent+progress+layered+cathodes+materials+mediated&size=10&format=json",
+  "error": null,
+  "rate_limit_headers": {
+    "x-ratelimit-used": "239",
+    "x-ratelimit-limit": "7199"
+  }
+}

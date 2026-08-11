@@ -1,0 +1,11 @@
+# Transformation Schema v0.1
+# Law 1: Transformation, not object
+version: 0.1
+
+schema:
+  transformation:
+    required: [id, undesirable_state, desirable_state, mechanism, constraint_surface]
+    constraint_surface:
+      dimensions: [energy, information, time, material, cost,
+                   safety, maintenance, regulation, manufacturing, supply_chain]
+      range: [0.0, 1.0]

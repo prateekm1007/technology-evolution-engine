@@ -1,0 +1,21 @@
+{
+  "candidate_id": "0002",
+  "technology": "Distributed Acoustic Mesh",
+  "emergence_story": "Wireless sensor networks researched since 2000s. TinyML emerged 2019+. LoRaWAN deployed commercially. Convergence not yet achieved for acoustic monitoring.",
+  "analogues": [
+    "wireless sensor networks",
+    "bioacoustic monitoring",
+    "smart agriculture sensors"
+  ],
+  "failure_chain": [
+    "power consumption too high",
+    "no edge ML capability",
+    "connectivity gaps in remote areas"
+  ],
+  "relaxed_constraints": [
+    "tinyML now feasible on microcontrollers",
+    "LoRa range demonstrated >10km",
+    "solar harvesting improved"
+  ],
+  "time_horizon_estimate": "2026-2029"
+}

@@ -1,0 +1,487 @@
+{
+  "stage": "01_extraction",
+  "run_id": "RUN-DXP-002",
+  "code_sha": "d6b7aee5790e2d45839fb08b7add0c89d4e40d09",
+  "input_hash": "fefd8df511e278af2502dee371d0f06546f0410d25b83817efdf3573861f335f",
+  "output_hash": "ed0a00cb17f40c889e0e1b271edd1925ffe68bede5a1e0e5bb3955e8f0199e45",
+  "provider_manifest": {
+    "provider": "zai",
+    "model": "glm-4-plus",
+    "version": "z-ai-web-dev-sdk",
+    "configuration": {
+      "temperature": 0.1,
+      "max_tokens": 4096,
+      "system_sha": "5507f539e45f54255b712a0a34b95eca13bde984fd953d98497aa3967ca392f4"
+    },
+    "prompt_sha": "c94bc695b6ef7e20dfd7c439c9d0e05041e4fa8ac1b76264440c40446a91f14a",
+    "seed": null,
+    "tool_versions": {
+      "z_ai_cli": "z-ai"
+    },
+    "timestamp": "2026-08-08T09:41:47.172383+00:00",
+    "latency_ms": 48994,
+    "success": true,
+    "error": ""
+  },
+  "result": {
+    "ok": true,
+    "source_document_id": "doc_702465dfbd26",
+    "source_document_title": "Fog-Harvesting Mechanism of the Namib Desert Fog-Basking Beetle",
+    "graph": {
+      "nodes": {
+        "doc_702465dfbd26:N1": {
+          "node_id": "doc_702465dfbd26:N1",
+          "node_type": "system",
+          "label": "Namib Desert",
+          "description": "A dry region experiencing frequent fog events",
+          "epistemic_state": "OBSERVED",
+          "provenance": [
+            "doc:doc_702465dfbd26"
+          ]
+        },
+        "doc_702465dfbd26:N2": {
+          "node_id": "doc_702465dfbd26:N2",
+          "node_type": "system",
+          "label": "Physosterna beetle",
+          "description": "A species of darkling beetle that can harvest water from fog",
+          "epistemic_state": "OBSERVED",
+          "provenance": [
+            "doc:doc_702465dfbd26"
+          ]
+        },
+        "doc_702465dfbd26:N3": {
+          "node_id": "doc_702465dfbd26:N3",
+          "node_type": "process",
+          "label": "Head-down posture",
+          "description": "Beetle positions itself facing into fog-laden wind",
+          "epistemic_state": "OBSERVED",
+          "provenance": [
+            "doc:doc_702465dfbd26"
+          ]
+        },
+        "doc_702465dfbd26:N4": {
+          "node_id": "doc_702465dfbd26:N4",
+          "node_type": "system",
+          "label": "Elytra",
+          "description": "Hardened forewings with specialized surface structure",
+          "epistemic_state": "OBSERVED",
+          "provenance": [
+            "doc:doc_702465dfbd26"
+          ]
+        },
+        "doc_702465dfbd26:N5": {
+          "node_id": "doc_702465dfbd26:N5",
+          "node_type": "property",
+          "label": "Hydrophilic bumps",
+          "description": "Raised water-attracting bumps on elytra surface",
+          "epistemic_state": "OBSERVED",
+          "provenance": [
+            "doc:doc_702465dfbd26"
+          ]
+        },
+        "doc_702465dfbd26:N6": {
+          "node_id": "doc_702465dfbd26:N6",
+          "node_type": "property",
+          "label": "Hydrophobic valleys",
+          "description": "Water-repelling microstructured waxy channels between bumps",
+          "epistemic_state": "OBSERVED",
+          "provenance": [
+            "doc:doc_702465dfbd26"
+          ]
+        },
+        "doc_702465dfbd26:N7": {
+          "node_id": "doc_702465dfbd26:N7",
+          "node_type": "process",
+          "label": "Droplet nucleation",
+          "description": "Formation of water droplets on hydrophilic bumps",
+          "epistemic_state": "OBSERVED",
+          "provenance": [
+            "doc:doc_702465dfbd26"
+          ]
+        },
+        "doc_702465dfbd26:N8": {
+          "node_id": "doc_702465dfbd26:N8",
+          "node_type": "process",
+          "label": "Droplet growth",
+          "description": "Water droplets grow on hydrophilic bumps until reaching critical size",
+          "epistemic_state": "OBSERVED",
+          "provenance": [
+            "doc:doc_702465dfbd26"
+          ]
+        },
+        "doc_702465dfbd26:N9": {
+          "node_id": "doc_702465dfbd26:N9",
+          "node_type": "process",
+          "label": "Droplet transport",
+          "description": "Droplets roll down hydrophobic valleys to mouthparts",
+          "epistemic_state": "OBSERVED",
+          "provenance": [
+            "doc:doc_702465dfbd26"
+          ]
+        },
+        "doc_702465dfbd26:N10": {
+          "node_id": "doc_702465dfbd26:N10",
+          "node_type": "measurement",
+          "label": "Droplet size",
+          "description": "Critical diameter of 0.5-2.0 mm for droplet detachment",
+          "epistemic_state": "OBSERVED",
+          "provenance": [
+            "doc:doc_702465dfbd26"
+          ]
+        },
+        "doc_702465dfbd26:N11": {
+          "node_id": "doc_702465dfbd26:N11",
+          "node_type": "measurement",
+          "label": "Bump diameter",
+          "description": "Approximately 0.5 mm",
+          "epistemic_state": "OBSERVED",
+          "provenance": [
+            "doc:doc_702465dfbd26"
+          ]
+        },
+        "doc_702465dfbd26:N12": {
+          "node_id": "doc_702465dfbd26:N12",
+          "node_type": "measurement",
+          "label": "Bump spacing",
+          "description": "0.5-1.0 mm between bumps",
+          "epistemic_state": "OBSERVED",
+          "provenance": [
+            "doc:doc_702465dfbd26"
+          ]
+        },
+        "doc_702465dfbd26:N13": {
+          "node_id": "doc_702465dfbd26:N13",
+          "node_type": "condition",
+          "label": "Fog presence",
+          "description": "Fog must be present for water harvesting",
+          "epistemic_state": "OBSERVED",
+          "provenance": [
+            "doc:doc_702465dfbd26"
+          ]
+        },
+        "doc_702465dfbd26:N14": {
+          "node_id": "doc_702465dfbd26:N14",
+          "node_type": "condition",
+          "label": "Optimal wind speed",
+          "description": "Wind speeds between 2-4 m/s for optimal collection",
+          "epistemic_state": "OBSERVED",
+          "provenance": [
+            "doc:doc_702465dfbd26"
+          ]
+        },
+        "doc_702465dfbd26:N15": {
+          "node_id": "doc_702465dfbd26:N15",
+          "node_type": "failure_mode",
+          "label": "High wind speed",
+          "description": "Wind speeds above 5 m/s blow droplets off before growth",
+          "epistemic_state": "OBSERVED",
+          "provenance": [
+            "doc:doc_702465dfbd26"
+          ]
+        },
+        "doc_702465dfbd26:N16": {
+          "node_id": "doc_702465dfbd26:N16",
+          "node_type": "failure_mode",
+          "label": "Low wind speed",
+          "description": "Wind speeds below 1 m/s provide insufficient fog",
+          "epistemic_state": "OBSERVED",
+          "provenance": [
+            "doc:doc_702465dfbd26"
+          ]
+        },
+        "doc_702465dfbd26:N17": {
+          "node_id": "doc_702465dfbd26:N17",
+          "node_type": "failure_mode",
+          "label": "Contamination",
+          "description": "Dust accumulation reduces hydrophilic bump effectiveness",
+          "epistemic_state": "OBSERVED",
+          "provenance": [
+            "doc:doc_702465dfbd26"
+          ]
+        },
+        "doc_702465dfbd26:N18": {
+          "node_id": "doc_702465dfbd26:N18",
+          "node_type": "failure_mode",
+          "label": "Low temperature",
+          "description": "Temperatures below 5\u00b0C reduce nucleation efficiency",
+          "epistemic_state": "OBSERVED",
+          "provenance": [
+            "doc:doc_702465dfbd26"
+          ]
+        },
+        "doc_702465dfbd26:N19": {
+          "node_id": "doc_702465dfbd26:N19",
+          "node_type": "failure_mode",
+          "label": "High temperature",
+          "description": "Temperatures above 25\u00b0C cause evaporation competition",
+          "epistemic_state": "OBSERVED",
+          "provenance": [
+            "doc:doc_702465dfbd26"
+          ]
+        },
+        "doc_702465dfbd26:N20": {
+          "node_id": "doc_702465dfbd26:N20",
+          "node_type": "failure_mode",
+          "label": "Low fog density",
+          "description": "Below 0.1 g/m\u00b3 liquid water content, impingement rate is too low",
+          "epistemic_state": "OBSERVED",
+          "provenance": [
+            "doc:doc_702465dfbd26"
+          ]
+        },
+        "doc_702465dfbd26:N21": {
+          "node_id": "doc_702465dfbd26:N21",
+          "node_type": "mechanism",
+          "label": "Wettability contrast",
+          "description": "Contrast between hydrophilic bumps and hydrophobic valleys",
+          "epistemic_state": "OBSERVED",
+          "provenance": [
+            "doc:doc_702465dfbd26"
+          ]
+        },
+        "doc_702465dfbd26:N22": {
+          "node_id": "doc_702465dfbd26:N22",
+          "node_type": "measurement",
+          "label": "Contact angle",
+          "description": "Exceeds 150 degrees for superhydrophobic surface",
+          "epistemic_state": "OBSERVED",
+          "provenance": [
+            "doc:doc_702465dfbd26"
+          ]
+        },
+        "doc_702465dfbd26:N23": {
+          "node_id": "doc_702465dfbd26:N23",
+          "node_type": "property",
+          "label": "Bump height",
+          "description": "Height of bumps affects airflow patterns",
+          "epistemic_state": "OBSERVED",
+          "provenance": [
+            "doc:doc_702465dfbd26"
+          ]
+        }
+      },
+      "edges": [
+        {
+          "edge_id": "doc_702465dfbd26:E2",
+          "source_id": "doc_702465dfbd26:N3",
+          "target_id": "doc_702465dfbd26:N4",
+          "edge_type": "ENABLES",
+          "confidence": 0.5,
+          "evidence": [
+            "The beetle remains motionless in this posture for up to an hour, allowing fog droplets to impinge on its hardened forewings (elytra)."
+          ],
+          "epistemic_state": "OBSERVED"
+        },
+        {
+          "edge_id": "doc_702465dfbd26:E3",
+          "source_id": "doc_702465dfbd26:N13",
+          "target_id": "doc_702465dfbd26:N4",
+          "edge_type": "ENABLES",
+          "confidence": 0.5,
+          "evidence": [
+            "At dawn, when fog covers the dunes, the beetle climbs to the crest of a sand dune and adopts a characteristic head-down posture, facing into the fog-laden wind."
+          ],
+          "epistemic_state": "OBSERVED"
+        },
+        {
+          "edge_id": "doc_702465dfbd26:E4",
+          "source_id": "doc_702465dfbd26:N5",
+          "target_id": "doc_702465dfbd26:N7",
+          "edge_type": "ENABLES",
+          "confidence": 0.5,
+          "evidence": [
+            "When fog-laden air flows over the elytra, microscopic water droplets preferentially nucleate on the hydrophilic bumps."
+          ],
+          "epistemic_state": "OBSERVED"
+        },
+        {
+          "edge_id": "doc_702465dfbd26:E5",
+          "source_id": "doc_702465dfbd26:N7",
+          "target_id": "doc_702465dfbd26:N8",
+          "edge_type": "CAUSES",
+          "confidence": 0.5,
+          "evidence": [
+            "As more fog droplets impinge, the water collected on each bump grows."
+          ],
+          "epistemic_state": "OBSERVED"
+        },
+        {
+          "edge_id": "doc_702465dfbd26:E6",
+          "source_id": "doc_702465dfbd26:N8",
+          "target_id": "doc_702465dfbd26:N9",
+          "edge_type": "CAUSES",
+          "confidence": 0.5,
+          "evidence": [
+            "The droplet grows until its weight overcomes the pinning force. Once the droplet reaches a critical size (typically 0.5-2.0 mm diameter), it detaches from the bump and rolls down the superhydrophobic background valleys."
+          ],
+          "epistemic_state": "OBSERVED"
+        },
+        {
+          "edge_id": "doc_702465dfbd26:E7",
+          "source_id": "doc_702465dfbd26:N6",
+          "target_id": "doc_702465dfbd26:N9",
+          "edge_type": "ENABLES",
+          "confidence": 0.5,
+          "evidence": [
+            "The extremely low adhesion of the hydrophobic surface means the droplet rolls off with minimal resistance, carrying any smaller droplets it encounters along its path."
+          ],
+          "epistemic_state": "OBSERVED"
+        },
+        {
+          "edge_id": "doc_702465dfbd26:E8",
+          "source_id": "doc_702465dfbd26:N5",
+          "target_id": "doc_702465dfbd26:N6",
+          "edge_type": "CORRELATES_WITH",
+          "confidence": 0.5,
+          "evidence": [
+            "The surface consists of a contrasting wettability pattern: raised bumps (approximately 0.5 mm in diameter, spaced about 0.5-1.0 mm apart) that are hydrophilic (water-attracting), surrounded by a background of hydrophobic (water-repelling) microstructured waxy channels."
+          ],
+          "epistemic_state": "OBSERVED"
+        },
+        {
+          "edge_id": "doc_702465dfbd26:E9",
+          "source_id": "doc_702465dfbd26:N21",
+          "target_id": "doc_702465dfbd26:N9",
+          "edge_type": "ENABLES",
+          "confidence": 0.5,
+          "evidence": [
+            "The spatial pattern creates a 'collect and channel' system where nucleation is localized and transport is efficient."
+          ],
+          "epistemic_state": "OBSERVED"
+        },
+        {
+          "edge_id": "doc_702465dfbd26:E10",
+          "source_id": "doc_702465dfbd26:N15",
+          "target_id": "doc_702465dfbd26:N8",
+          "edge_type": "INHIBITS",
+          "confidence": 0.5,
+          "evidence": [
+            "At wind speeds above 5 m/s, droplets are blown off the bumps before they can grow to detachment size."
+          ],
+          "epistemic_state": "OBSERVED"
+        },
+        {
+          "edge_id": "doc_702465dfbd26:E11",
+          "source_id": "doc_702465dfbd26:N16",
+          "target_id": "doc_702465dfbd26:N7",
+          "edge_type": "INHIBITS",
+          "confidence": 0.5,
+          "evidence": [
+            "Below 1 m/s, insufficient fog reaches the surface."
+          ],
+          "epistemic_state": "OBSERVED"
+        },
+        {
+          "edge_id": "doc_702465dfbd26:E12",
+          "source_id": "doc_702465dfbd26:N17",
+          "target_id": "doc_702465dfbd26:N5",
+          "edge_type": "INHIBITS",
+          "confidence": 0.5,
+          "evidence": [
+            "Dust accumulation on the hydrophilic bumps reduces their effectiveness over time."
+          ],
+          "epistemic_state": "OBSERVED"
+        },
+        {
+          "edge_id": "doc_702465dfbd26:E13",
+          "source_id": "doc_702465dfbd26:N18",
+          "target_id": "doc_702465dfbd26:N7",
+          "edge_type": "INHIBITS",
+          "confidence": 0.5,
+          "evidence": [
+            "At temperatures below 5\u00b0C, nucleation becomes less efficient because the saturation vapor pressure drops."
+          ],
+          "epistemic_state": "OBSERVED"
+        },
+        {
+          "edge_id": "doc_702465dfbd26:E14",
+          "source_id": "doc_702465dfbd26:N19",
+          "target_id": "doc_702465dfbd26:N8",
+          "edge_type": "INHIBITS",
+          "confidence": 0.5,
+          "evidence": [
+            "At temperatures above 25\u00b0C, evaporation from collected droplets competes with collection."
+          ],
+          "epistemic_state": "OBSERVED"
+        },
+        {
+          "edge_id": "doc_702465dfbd26:E15",
+          "source_id": "doc_702465dfbd26:N20",
+          "target_id": "doc_702465dfbd26:N7",
+          "edge_type": "INHIBITS",
+          "confidence": 0.5,
+          "evidence": [
+            "Below approximately 0.1 g/m\u00b3 liquid water content, the impingement rate is too low for effective collection."
+          ],
+          "epistemic_state": "OBSERVED"
+        },
+        {
+          "edge_id": "doc_702465dfbd26:E16",
+          "source_id": "doc_702465dfbd26:N11",
+          "target_id": "doc_702465dfbd26:N10",
+          "edge_type": "MODULATES",
+          "confidence": 0.5,
+          "evidence": [
+            "Bump diameter determines the maximum droplet size before detachment. Larger bumps hold larger droplets, but too-large bumps reduce the number of nucleation sites per unit area."
+          ],
+          "epistemic_state": "OBSERVED"
+        },
+        {
+          "edge_id": "doc_702465dfbd26:E17",
+          "source_id": "doc_702465dfbd26:N12",
+          "target_id": "doc_702465dfbd26:N9",
+          "edge_type": "MODULATES",
+          "confidence": 0.5,
+          "evidence": [
+            "Bump spacing affects the coalescence pathway. Closer spacing means rolling droplets encounter more bumps, collecting more water per roll."
+          ],
+          "epistemic_state": "OBSERVED"
+        },
+        {
+          "edge_id": "doc_702465dfbd26:E18",
+          "source_id": "doc_702465dfbd26:N23",
+          "target_id": "doc_702465dfbd26:N7",
+          "edge_type": "MODULATES",
+          "confidence": 0.5,
+          "evidence": [
+            "Raised bumps create local turbulence that enhances droplet impingement."
+          ],
+          "epistemic_state": "OBSERVED"
+        },
+        {
+          "edge_id": "doc_702465dfbd26:E19",
+          "source_id": "doc_702465dfbd26:N23",
+          "target_id": "doc_702465dfbd26:N15",
+          "edge_type": "MODULATES",
+          "confidence": 0.5,
+          "evidence": [
+            "Excessive height increases drag and may cause droplets to be blown off before they grow."
+          ],
+          "epistemic_state": "OBSERVED"
+        },
+        {
+          "edge_id": "doc_702465dfbd26:E20",
+          "source_id": "doc_702465dfbd26:N14",
+          "target_id": "doc_702465dfbd26:N8",
+          "edge_type": "ENABLES",
+          "confidence": 0.5,
+          "evidence": [
+            "Optimal collection occurs at 2-4 m/s."
+          ],
+          "epistemic_state": "OBSERVED"
+        }
+      ]
+    },
+    "n_nodes": 23,
+    "n_edges": 19,
+    "n_failures": 1,
+    "failures": [
+      {
+        "failure_type": "INVALID_EDGE_TYPE",
+        "detail": "edge 'E1' type 'ACTION' invalid. Valid: ['CAUSES', 'CONSTRAINS', 'CORRELATES_WITH', 'ENABLES', 'FAILS_UNDER', 'INHIBITS', 'MODULATES', 'PRODUCES', 'REQUIRES', 'TRANSFERS_TO']",
+        "raw_llm_output": ""
+      }
+    ]
+  },
+  "timestamp": "2026-08-08T09:42:36.169609+00:00"
+}

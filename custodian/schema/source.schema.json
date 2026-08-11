@@ -1,0 +1,52 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Source Registry Entry",
+  "description": "A registered source document in the custodian's source registry",
+  "type": "object",
+  "required": ["source_id", "domain", "title", "origin", "source_uri", "retrieval_timestamp", "content_hash", "version"],
+  "properties": {
+    "source_id": {
+      "type": "string",
+      "description": "Unique identifier for this source"
+    },
+    "domain": {
+      "type": "string",
+      "description": "Scientific domain (e.g., fluid_mechanics, enzymology)"
+    },
+    "title": {
+      "type": "string",
+      "description": "Human-readable title"
+    },
+    "origin": {
+      "type": "string",
+      "description": "Where the source was obtained from"
+    },
+    "source_uri": {
+      "type": "string",
+      "description": "URI for retrieving the source"
+    },
+    "retrieval_timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the source was retrieved"
+    },
+    "content_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$",
+      "description": "SHA-256 of the source content"
+    },
+    "license": {
+      "type": "string",
+      "description": "License or usage terms"
+    },
+    "provenance_metadata": {
+      "type": "object",
+      "description": "Additional provenance information"
+    },
+    "version": {
+      "type": "string",
+      "description": "Version identifier for this source"
+    }
+  },
+  "additionalProperties": false
+}

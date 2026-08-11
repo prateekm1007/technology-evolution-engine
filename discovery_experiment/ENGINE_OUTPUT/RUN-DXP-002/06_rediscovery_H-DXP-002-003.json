@@ -1,0 +1,34 @@
+{
+  "stage": "06_rediscovery_H-DXP-002-003",
+  "run_id": "RUN-DXP-002",
+  "code_sha": "d6b7aee5790e2d45839fb08b7add0c89d4e40d09",
+  "input_hash": "e6aad5487b8e9411df14998809fd8a54ecc3ef603fcccef3539b34900e42b942",
+  "output_hash": "916f969fd1661dc0373fbfc4fc358faa3a8e317416f8a62e2a34b4760ea71a03",
+  "provider_manifest": {
+    "provider": "zai",
+    "model": "glm-4-plus",
+    "version": "z-ai-web-dev-sdk",
+    "configuration": {
+      "temperature": 0.1,
+      "max_tokens": 4096,
+      "system_sha": "dbdd0760dff49fc029b32b580a575b7de33a87d371edc2b0deec93bfb2b90b01"
+    },
+    "prompt_sha": "3dffb4a24aeae654d09eb47a014eb5b82361a5378d96a991586af7a6dd9d658d",
+    "seed": null,
+    "tool_versions": {
+      "z_ai_cli": "z-ai"
+    },
+    "timestamp": "2026-08-08T09:43:53.473609+00:00",
+    "latency_ms": 2310,
+    "success": true,
+    "error": ""
+  },
+  "result": {
+    "hypothesis_id": "H-DXP-002-003",
+    "classification": "STRUCTURAL_INFERENCE",
+    "evidence": "The hypothesis describes a Marangoni effect where surface tension gradients drive directional transport of droplets. While the source document discusses fog harvesting by beetles and mentions the surface morphology (hydrophilic bumps and hydrophobic channels), it does not explicitly mention the Marangoni effect or surface tension gradients. The document describes how droplets nucleate on hydrophilic bumps and grow, but doesn't explain the transport mechanism in terms of surface tension gradients. The hypothesis requires inferring a physical mechanism (Marangoni effect) that isn't explicitly stated but could be consistent with the described surface properties.",
+    "is_rediscovery": false,
+    "source_hypothesis_hash": ""
+  },
+  "timestamp": "2026-08-08T09:43:55.784730+00:00"
+}

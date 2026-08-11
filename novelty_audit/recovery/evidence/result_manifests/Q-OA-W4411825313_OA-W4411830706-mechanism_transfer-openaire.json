@@ -1,0 +1,80 @@
+{
+  "query_id": "Q-OA-W4411825313_OA-W4411830706-mechanism_transfer-openaire",
+  "pair_id": "OA-W4411825313_OA-W4411830706",
+  "query_type": "mechanism_transfer",
+  "provider": "openaire",
+  "query_text": "transfer apply antenna high chemistry",
+  "query_hash": "1e1531f7ae8c3aa12251ce06cbb5f12ed99d31fa18e9d63a6fb5fc9084f63004",
+  "frozen_query_ref": "Q-OA-W4411825313_OA-W4411830706-mechanism_transfer-openalex",
+  "url": "https://api.openaire.eu/search/publications?keywords=transfer+apply+antenna+high+chemistry&size=10&format=json",
+  "timestamp_utc": "2026-08-11T12:31:07.079331+00:00",
+  "status": "SUCCESS",
+  "result_count": 2,
+  "result_ids": [
+    [
+      {
+        "$": "10.2514/6.2000-3754"
+      },
+      {
+        "$": "10.2514/MJPC00"
+      },
+      {
+        "$": "50|doiboost____|06f255ab96a27a9f5f2e8534f3bbbe20"
+      },
+      {
+        "$": "2314468068"
+      }
+    ],
+    [
+      {
+        "$": "50|datacite____::626f388f7fd54142db274273cecced44"
+      },
+      {
+        "$": "10.5281/zenodo.18748903"
+      },
+      {
+        "$": "50|datacite____::77e7b9a0b0164af43596bab40aca3e94"
+      },
+      {
+        "$": "10.5281/zenodo.18749488"
+      },
+      {
+        "$": "oai:zenodo.org:18749488"
+      },
+      {
+        "$": "50|od______2659::77e7b9a0b0164af43596bab40aca3e94"
+      },
+      {
+        "$": "50|datacite____::8e2bd5549a7b48afc457eb29976cd77c"
+      },
+      {
+        "$": "10.5281/zenodo.18748904"
+      },
+      {
+        "$": "oai:zenodo.org:18748904"
+      },
+      {
+        "$": "50|od______2659::8e2bd5549a7b48afc457eb29976cd77c"
+      }
+    ]
+  ],
+  "result_titles": [
+    "Kinetic simulation of high I(sp) plasma thruster",
+    "COVID-19: A Global Biological Update Beyond Viral Pathogen Narratives, Functioning as a High-Dimensional Respiratory Sync to Align Human DNA with Earth's New Frequency and Execute a Complete Structural Reconstruction of Global Genetic Architecture."
+  ],
+  "result_dois": [
+    "10.2514/6.2000-3754",
+    "10.5281/zenodo.18748903"
+  ],
+  "result_dates": [
+    "2000-07-24",
+    "2026-02-23"
+  ],
+  "response_hash": "55b0090becf402380eb1abcaa1c121364a1ead3865ffa2f9eb4be8a742b7092d",
+  "evidence_uri": "https://api.openaire.eu/search/publications?keywords=transfer+apply+antenna+high+chemistry&size=10&format=json",
+  "error": null,
+  "rate_limit_headers": {
+    "x-ratelimit-used": "175",
+    "x-ratelimit-limit": "7199"
+  }
+}

@@ -1,0 +1,282 @@
+problem: "Build a distributed manufacturing system producing 100 common parts on-demand from digital designs"
+domain: "manufacturing"
+hypothesis:
+  id: "hyp_cfbdbd50d1a31c7c"
+  claim: "The invention 'Build a distributed manufacturing system producing 100 common parts on-demand from digital designs' is feasible in the manufacturing domain within the stated time horizon."
+  confidence: 0.5777
+  evidence:
+    - "energy_conservation"
+    - "mass_conservation"
+    - "momentum_conservation"
+    - "ampere law"
+    - "capex_$21.12M"
+  counterevidence:
+
+  assumptions:
+
+  status: "pending"
+physical_laws:
+  - "energy_conservation"
+  - "mass_conservation"
+  - "momentum_conservation"
+chemical_principles:
+  pathways:
+
+  kinetics:
+
+  equilibrium:
+
+  energy_states:
+    - "gibbs_free_energy"
+mathematical_formulation:
+  structures:
+    - "optimization"
+  governing_equations:
+    -
+      name: "ampere law"
+      form: "B = mu_0 * I / (2*pi*r)"
+      variables:
+        - "B"
+        - "mu_0"
+        - "I"
+        - "r"
+constraints:
+  - "cost"
+  - "material"
+  - "manufacturing"
+  - "regulation"
+  - "information"
+dependencies:
+  prerequisites:
+
+  missing_capabilities:
+
+  causal_classifications:
+    necessary: 0
+    sufficient: 0
+    contributing: 0
+    unknown: 0
+assumptions:
+  - "Failure modes are derived from constraint keywords via a small prior map. Real failure modes require FMEA."
+  - "Optimization targets are derived from the problem's stated constraints. Implicit targets (e.g., 'minimize complexity') are not captured."
+  - "The hypothesis is a prediction. It is NOT verified until the experiments are run and outcomes recorded in the ledger."
+  - "Failure-mode experiments are derived from Layer 3's failure modes. If Layer 3 is incomplete, this layer is incomplete."
+  - "Success/failure thresholds (0.70, 0.40) are priors. They should be recalibrated as the verification cycle accumulates outcomes."
+architecture:
+  subsystems:
+    - "subsystem_for_cost"
+    - "subsystem_for_material"
+    - "subsystem_for_manufacturing"
+    - "subsystem_for_regulation"
+    - "subsystem_for_information"
+  interfaces:
+    - "subsystem_for_cost <-> subsystem_for_material"
+    - "subsystem_for_cost <-> subsystem_for_manufacturing"
+    - "subsystem_for_cost <-> subsystem_for_regulation"
+    - "subsystem_for_cost <-> subsystem_for_information"
+    - "subsystem_for_material <-> subsystem_for_manufacturing"
+  tolerances:
+    cost: "±15% of capex estimate"
+    material: "±5% of material property target"
+    manufacturing: "±3% yield"
+    regulation: "binary (pass/fail)"
+    information: "information completeness >= 95%"
+simulation:
+  monte_carlo:
+    n_samples: 200
+    composite:
+      mean: 0.5811
+      std: 0.0254
+      p5: 0.5382
+      p50: 0.581
+      p95: 0.6226
+      min: 0.5175
+      max: 0.6399
+    technical:
+      mean: 0.6955
+      std: 0.0577
+      p5: 0.6011
+      p50: 0.7069
+      p95: 0.7803
+      min: 0.5857
+      max: 0.785
+    economic:
+      mean: 0.548
+      std: 0.0575
+      p5: 0.4603
+      p50: 0.5497
+      p95: 0.6429
+      min: 0.4512
+      max: 0.6495
+    regulatory:
+      mean: 0.4972
+      std: 0.0551
+      p5: 0.4087
+      p50: 0.4993
+      p95: 0.5843
+      min: 0.3961
+      max: 0.5938
+    manufacturing:
+      mean: 0.5648
+      std: 0.0584
+      p5: 0.4793
+      p50: 0.5665
+      p95: 0.6544
+      min: 0.4653
+      max: 0.6649
+    adoption:
+      mean: 0.502
+      std: 0.0589
+      p5: 0.4094
+      p50: 0.5036
+      p95: 0.5914
+      min: 0.4001
+      max: 0.5997
+  sensitivity:
+    technical: 0.6815
+    economic: 0.4528
+    regulatory: 0.3254
+    manufacturing: 0.4598
+    adoption: 0.3478
+  stress_testing:
+    -
+      technical_feasibility: 0.6011
+      economic_feasibility: 0.458
+      regulatory_feasibility: 0.4814
+      manufacturing_feasibility: 0.5295
+      adoption_probability: 0.4501
+      composite: 0.5175
+    -
+      technical_feasibility: 0.6291
+      economic_feasibility: 0.4939
+      regulatory_feasibility: 0.4822
+      manufacturing_feasibility: 0.4708
+      adoption_probability: 0.4672
+      composite: 0.5241
+    -
+      technical_feasibility: 0.5992
+      economic_feasibility: 0.4976
+      regulatory_feasibility: 0.5288
+      manufacturing_feasibility: 0.5078
+      adoption_probability: 0.4265
+      composite: 0.5241
+prototype_plan:
+  v1:
+    name: "prototype_v1_physics_validation"
+    goal: "prove the core mechanism works at lab scale"
+    scope: "single subsystem, no integration, no manufacturability"
+    success_threshold: "core mechanism reproduces predicted output within 30%"
+    estimated_duration_months: 6
+    estimated_cost_usd_m: 0.29
+  v2:
+    name: "prototype_v2_engineering_integration"
+    goal: "prove the subsystems integrate into a working system"
+    scope: "all subsystems, no manufacturing pathway, no regulatory submission"
+    success_threshold: "integrated prototype meets primary_output spec at 50% of target performance"
+    estimated_duration_months: 12
+    estimated_cost_usd_m: 1.16
+  v3:
+    name: "prototype_v3_production_readiness"
+    goal: "prove the manufacturing pathway and cost model hold"
+    scope: "production-intent prototype, pilot manufacturing run, regulatory pre-submission"
+    success_threshold: "unit cost within 2x of cost_curve target; regulatory pre-submission accepted"
+    estimated_duration_months: 18
+    estimated_cost_usd_m: 4.62
+  timeline_years: 3.0
+experimental_plan:
+  hypothesis: "The candidate invention will achieve technical feasibility >= 0.70 within 5-10 years, given the prerequisite chain is complete and no regulatory blocker materializes."
+  experiments:
+    -
+      id: "exp_cost_overrun"
+      purpose: "determine whether cost_overrun is a real risk"
+      method: "stress_test_against_cost_overrun"
+      expected_duration: "3-6 months per experiment"
+    -
+      id: "exp_material_unavailable_or_too_expensive"
+      purpose: "determine whether material_unavailable_or_too_expensive is a real risk"
+      method: "stress_test_against_material_unavailable_or_too_expensive"
+      expected_duration: "3-6 months per experiment"
+    -
+      id: "exp_manufacturing_yield_too_low"
+      purpose: "determine whether manufacturing_yield_too_low is a real risk"
+      method: "stress_test_against_manufacturing_yield_too_low"
+      expected_duration: "3-6 months per experiment"
+    -
+      id: "exp_regulatory_rejection"
+      purpose: "determine whether regulatory_rejection is a real risk"
+      method: "stress_test_against_regulatory_rejection"
+      expected_duration: "3-6 months per experiment"
+    -
+      id: "exp_information_asymmetry"
+      purpose: "determine whether information_asymmetry is a real risk"
+      method: "stress_test_against_information_asymmetry"
+      expected_duration: "3-6 months per experiment"
+    -
+      id: "exp_prototype_v1"
+      purpose: "determine whether the candidate can be built at all"
+      method: "build_minimum_viable_prototype"
+      expected_duration: "6-12 months"
+  measurements:
+    -
+      metric: "technical_feasibility_observed"
+      target: ">= 0.70"
+      instrument: "expert_panel_review"
+    -
+      metric: "cost_per_unit_observed"
+      target: "<= capex_estimate / 1000"
+      instrument: "cost_accounting"
+    -
+      metric: "time_to_first_prototype_observed"
+      target: "<= 5-10 years"
+      instrument: "project_tracker"
+    -
+      metric: "regulatory_approval_status"
+      target: "approved_or_withdrawn"
+      instrument: "regulatory_filing_tracker"
+  success_criteria:
+    - "All failure-mode experiments return 'risk_acceptable'."
+    - "Prototype v1 builds successfully and meets primary_output spec."
+    - "Technical feasibility observed >= 0.70 within 5-10 years."
+    - "Composite feasibility from simulation's p50 >= 0.60."
+  failure_criteria:
+    - "Any failure-mode experiment returns 'risk_unacceptable' AND no mitigation is identified."
+    - "Prototype v1 cannot be built within 2x the estimated time."
+    - "Technical feasibility observed < 0.40 after 5-10 years."
+    - "Regulatory approval is denied with no appeal path."
+failure_modes:
+  - "cost_overrun"
+  - "material_unavailable_or_too_expensive"
+  - "manufacturing_yield_too_low"
+  - "regulatory_rejection"
+  - "information_asymmetry"
+  - "stress_scenario_composite=0.5175"
+  - "stress_scenario_composite=0.5241"
+counterevidence:
+
+confidence: 0.5777
+final_blueprint:
+  problem: "Build a distributed manufacturing system producing 100 common parts on-demand from digital designs"
+  domain: "manufacturing"
+  target_invention: "Build a distributed manufacturing system producing 100 common parts on-demand from digital designs"
+  prerequisite_chain_depth: 0
+  governing_equations:
+    -
+      name: "ampere law"
+      form: "B = mu_0 * I / (2*pi*r)"
+      variables:
+        - "B"
+        - "mu_0"
+        - "I"
+        - "r"
+  subsystems:
+    - "subsystem_for_cost"
+    - "subsystem_for_material"
+    - "subsystem_for_manufacturing"
+    - "subsystem_for_regulation"
+    - "subsystem_for_information"
+  composite_feasibility: 21.12
+  prototype_stages:
+    - "prototype_v1_physics_validation"
+    - "prototype_v2_engineering_integration"
+    - "prototype_v3_production_readiness"
+  total_prototype_timeline_years: 3.0

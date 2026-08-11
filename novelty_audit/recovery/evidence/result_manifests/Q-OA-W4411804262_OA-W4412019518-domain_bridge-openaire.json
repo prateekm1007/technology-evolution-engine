@@ -1,0 +1,145 @@
+{
+  "query_id": "Q-OA-W4411804262_OA-W4412019518-domain_bridge-openaire",
+  "pair_id": "OA-W4411804262_OA-W4412019518",
+  "query_type": "domain_bridge",
+  "provider": "openaire",
+  "query_text": "electromagnetics chemistry mechanism",
+  "query_hash": "57d4d9caf98ce1c1f86d18f7adcde9961ccc213fb65e91f66845fbc3dd2bcec0",
+  "frozen_query_ref": "Q-OA-W4411804262_OA-W4412019518-domain_bridge-openalex",
+  "url": "https://api.openaire.eu/search/publications?keywords=electromagnetics+chemistry+mechanism&size=10&format=json",
+  "timestamp_utc": "2026-08-11T12:40:21.625260+00:00",
+  "status": "SUCCESS",
+  "result_count": 6,
+  "result_ids": [
+    [
+      {
+        "$": "10.1021/jp410264b"
+      },
+      {
+        "$": "50|doiboost____|31280f820dec4e15c50c8396116390b5"
+      },
+      {
+        "$": "1964681074"
+      },
+      {
+        "$": "50|r3c4b2081b22::31280f820dec4e15c50c8396116390b5"
+      }
+    ],
+    [
+      {
+        "$": "10.1021/acs.jpclett.5b02309"
+      },
+      {
+        "$": "50|doiboost____|202fccafa63533c1335e7f0ecd1c630f"
+      },
+      {
+        "$": "26582476"
+      },
+      {
+        "$": "2411003808"
+      },
+      {
+        "$": "50|r3c4b2081b22::202fccafa63533c1335e7f0ecd1c630f"
+      }
+    ],
+    [
+      {
+        "$": "10.4271/2025-01-8356"
+      },
+      {
+        "$": "50|doiboost____|0bd1a99a39881b9f4697ce83b361473d"
+      }
+    ],
+    [
+      {
+        "$": "50|datacite____::0cb5a95f787bb581a2e4e953e804610b"
+      },
+      {
+        "$": "10.5281/zenodo.19257410"
+      },
+      {
+        "$": "50|od______2659::0cb5a95f787bb581a2e4e953e804610b"
+      },
+      {
+        "$": "oai:zenodo.org:19257410"
+      },
+      {
+        "$": "50|datacite____::91cc6fdcdfc70d147ff54e4e016ffd19"
+      },
+      {
+        "$": "10.5281/zenodo.18650904"
+      },
+      {
+        "$": "oai:zenodo.org:18650904"
+      },
+      {
+        "$": "50|od______2659::91cc6fdcdfc70d147ff54e4e016ffd19"
+      },
+      {
+        "$": "50|datacite____::e3dd75bd790231581c700c95e4f72b01"
+      },
+      {
+        "$": "10.5281/zenodo.18650903"
+      }
+    ],
+    [
+      {
+        "$": "50|od_______970::2c7d72486d0e155df65d11d024a65ee1"
+      },
+      {
+        "$": "oai:iris.unito.it:2318/1613148"
+      }
+    ],
+    [
+      {
+        "$": "50|datacite____::2ae46651618a5612e6b40b17b8d66546"
+      },
+      {
+        "$": "10.5281/zenodo.18074657"
+      },
+      {
+        "$": "50|od______2659::2ae46651618a5612e6b40b17b8d66546"
+      },
+      {
+        "$": "oai:zenodo.org:18074657"
+      },
+      {
+        "$": "50|datacite____::63f0219a397c0a65412cd94f6276eb9a"
+      },
+      {
+        "$": "10.5281/zenodo.18074656"
+      }
+    ]
+  ],
+  "result_titles": [
+    "Similarity in Band Gap Behavior of Modified Graphene with Different Types of Functionalization",
+    "Translation Symmetry Breakdown in Low-Dimensional Lattices of Pentagonal Rings",
+    "Study on End Gas Auto-Ignition and Ion Current Formation Mechanism Based on One-Dimensional Flame Ionization Model",
+    "Field Heterogeneity Flips Chemistry: Mesoscopic Electromagnetic Boundaries Reshape Microscopic Solvation via FDTD-MD Multiphysics Coupling",
+    "Interobserver reliability of rheumatologists performing musculoskeletal ultrasonography: results from a EULAR ''Train the trainers'' course",
+    "THE MASTER \ud835\udd2c\ud835\udd09 MASTER'\ud835\udd30  U.N.I.F.I.E.D. F.O.R.C.E.:Universal Navigation Interfaced Field Integrated Engine Drive for Omnidirectional Relativistic Cosmic Exploration."
+  ],
+  "result_dois": [
+    "10.1021/jp410264b",
+    "10.1021/acs.jpclett.5b02309",
+    "10.4271/2025-01-8356",
+    "10.5281/zenodo.19257410",
+    "",
+    "10.5281/zenodo.18074657"
+  ],
+  "result_dates": [
+    "2014-01-07",
+    "2015-11-04",
+    "2025-04-01",
+    "2026-02-15",
+    "2005-01-01",
+    "2025-12-28"
+  ],
+  "response_hash": "c9c66f601764829156991d0171e564a019bcb28244c539dea6e38e46a8a60a3a",
+  "evidence_uri": "https://api.openaire.eu/search/publications?keywords=electromagnetics+chemistry+mechanism&size=10&format=json",
+  "error": null,
+  "rate_limit_headers": {
+    "x-ratelimit-used": "271",
+    "x-ratelimit-limit": "7199"
+  }
+}

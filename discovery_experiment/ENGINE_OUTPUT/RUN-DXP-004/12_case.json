@@ -1,0 +1,93 @@
+{
+  "stage": "12_case",
+  "run_id": "RUN-DXP-004",
+  "code_sha": "9cf2046069a549721298cc8d709ac7bc8b4e8997",
+  "input_hash": "059d749bf0541ea545ace7007d039025615fd0c66c998232a55c9c28dc848eff",
+  "output_hash": "de8707aac0764eff1a73db0ec9462ca00f38fe610ee5020c5fd2b7266342299d",
+  "provider_manifest": null,
+  "result": {
+    "case_id": "DC-DXP-004",
+    "provenance_root_hash": "70569a52656212509f094952855b67c9efd5854244a72685719f13faf243c240",
+    "verify_provenance": true,
+    "final_state": "TESTABLE_HYPOTHESIS",
+    "lineage_verification": {
+      "case_id": "DC-DXP-004",
+      "valid": true,
+      "checks": [
+        {
+          "name": "no_dangling_edges",
+          "passed": true,
+          "detail": "all edge endpoints exist"
+        },
+        {
+          "name": "expected_types_reachable",
+          "passed": true,
+          "detail": "all 5 expected types reachable"
+        },
+        {
+          "name": "no_orphan_scientific_nodes",
+          "passed": true,
+          "detail": "all non-root nodes have at least one incoming edge"
+        },
+        {
+          "name": "required_parent_relationships",
+          "passed": true,
+          "detail": "all required parent-child relationships present"
+        },
+        {
+          "name": "artifact_hash_verification",
+          "passed": true,
+          "detail": "all verifiable hashes match stage artifacts"
+        },
+        {
+          "name": "provenance_root_hash_verifiable",
+          "passed": true,
+          "detail": "root_hash=70569a5265621250..."
+        }
+      ],
+      "reachable_nodes": [
+        "adversarial:H-DXP-004-001",
+        "adversarial:H-DXP-004-002",
+        "adversarial:H-DXP-004-003",
+        "adversarial:H-DXP-004-004",
+        "hypothesis:H-DXP-004-001",
+        "hypothesis:H-DXP-004-002",
+        "hypothesis:H-DXP-004-003",
+        "hypothesis:H-DXP-004-004",
+        "mechanism_graph:DXP-004",
+        "mechanism_pattern:DXP-004",
+        "novelty:H-DXP-004-001",
+        "novelty:H-DXP-004-002",
+        "novelty:H-DXP-004-003",
+        "novelty:H-DXP-004-004",
+        "rediscovery:H-DXP-004-001",
+        "rediscovery:H-DXP-004-002",
+        "rediscovery:H-DXP-004-003",
+        "rediscovery:H-DXP-004-004",
+        "run:DXP-004",
+        "source_doc:doc_d4f5ea689289",
+        "transfer:TH-DXP-004-001"
+      ],
+      "orphans": [],
+      "missing_parents": [],
+      "hash_mismatches": [],
+      "node_count": 21,
+      "edge_count": 19
+    },
+    "lineage_valid": true,
+    "ledger_verification": {
+      "status": "VALID",
+      "registered": true,
+      "file_exists": true,
+      "content_hash_matches": true,
+      "content_hash": "f17694d673a2c70abbd8b91505c058ea30e6744a3050c4b136a5ad2852215ca8",
+      "actual_hash": "f17694d673a2c70abbd8b91505c058ea30e6744a3050c4b136a5ad2852215ca8",
+      "file": "cases/DC-DXP-004.json",
+      "detail": "object verified"
+    },
+    "registered_in_persistent_ledger": true,
+    "ledger_dir": "discovery_experiment/ENGINE_OUTPUT/RUN-DXP-004/ledger",
+    "evidence_count": 21
+  },
+  "timestamp": "2026-08-08T10:06:16.556166+00:00"
+}

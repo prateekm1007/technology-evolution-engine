@@ -1,0 +1,30 @@
+{
+  "description": "Mode 4: Which constraints should we deliberately move?",
+  "analysis_date": "2025-01-15",
+  "high_leverage_constraints": [
+    {
+      "constraint": "manufacturing",
+      "candidates_affected": [
+        "0001"
+      ],
+      "leverage_score": 0.8
+    },
+    {
+      "constraint": "maintenance",
+      "candidates_affected": [
+        "0002",
+        "0003"
+      ],
+      "leverage_score": 0.75
+    },
+    {
+      "constraint": "material",
+      "candidates_affected": [
+        "0001",
+        "0003"
+      ],
+      "leverage_score": 0.7
+    }
+  ],
+  "recommendation": "Manufacturing process innovation for metamaterials has highest leverage across portfolio."
+}

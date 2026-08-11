@@ -1,0 +1,75 @@
+{
+  "report_type": "connectivity_diagnostic",
+  "timestamp_utc": "2026-08-11T11:55:52.143495+00:00",
+  "directive": "Custodian: ONE harmless test request per frozen database. NO frozen queries executed.",
+  "databases_tested": [
+    "openalex",
+    "semantic_scholar",
+    "crossref"
+  ],
+  "harmless_test_endpoints_only": true,
+  "frozen_queries_executed": 0,
+  "results": [
+    {
+      "database": "openalex",
+      "url": "https://api.openalex.org/works?per-page=1&search=test",
+      "method": "GET",
+      "timestamp_utc": "2026-08-11T11:55:42.759736+00:00",
+      "http_status": 429,
+      "latency_ms": 88.4,
+      "rate_limit_headers": {
+        "Retry-After": "43458",
+        "X-RateLimit-Cost-Required-USD": "0.001",
+        "X-RateLimit-Credits-Required": "10",
+        "X-RateLimit-Limit": "1000",
+        "X-RateLimit-Limit-USD": "0.1",
+        "X-RateLimit-Onetime-Remaining": "0",
+        "X-RateLimit-Prepaid-Remaining-USD": "0",
+        "X-RateLimit-Remaining": "4",
+        "X-RateLimit-Remaining-USD": "0.0004",
+        "X-RateLimit-Reset": "43458"
+      },
+      "retry_after": "43458",
+      "authentication_status": "none_required",
+      "provider_error": "HTTP 429 Too Many Requests; retry-after=43458",
+      "connectivity": "LIMITED",
+      "frozen_search_executable": "NO",
+      "response_excerpt": null
+    },
+    {
+      "database": "semantic_scholar",
+      "url": "https://api.semanticscholar.org/graph/v1/paper/search?query=test&limit=1",
+      "method": "GET",
+      "timestamp_utc": "2026-08-11T11:55:42.848507+00:00",
+      "http_status": 429,
+      "latency_ms": 194.4,
+      "rate_limit_headers": {},
+      "retry_after": null,
+      "authentication_status": "none_required",
+      "provider_error": "HTTP 429 Too Many Requests; retry-after=None",
+      "connectivity": "LIMITED",
+      "frozen_search_executable": "NO",
+      "response_excerpt": null
+    },
+    {
+      "database": "crossref",
+      "url": "https://api.crossref.org/works?rows=1&query=test",
+      "method": "GET",
+      "timestamp_utc": "2026-08-11T11:55:43.043384+00:00",
+      "http_status": 200,
+      "latency_ms": 9099.8,
+      "rate_limit_headers": {
+        "x-rate-limit-limit": "3",
+        "x-rate-limit-interval": "1s"
+      },
+      "retry_after": null,
+      "authentication_status": "none_required_or_accepted",
+      "provider_error": null,
+      "connectivity": "OK",
+      "frozen_search_executable": "YES",
+      "response_excerpt": {
+        "raw_head": "{\"status\":\"ok\",\"message-type\":\"work-list\",\"message-version\":\"1.0.0\",\"message\":{\"facets\":{},\"total-results\":775139,\"items\":[{\"institution\":[{\"name\":\"National Institute of Environmental Health and Safet"
+      }
+    }
+  ]
+}

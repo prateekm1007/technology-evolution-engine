@@ -1,0 +1,72 @@
+{
+  "id": "benchmark_0017",
+  "type": "patent",
+  "source": "uspto",
+  "title": "Autonomous Delivery Drone with Modular Payload System",
+  "domain": "transportation",
+  "abstract": "A multi-rotor delivery drone with 25kg payload, 80km range, automated payload exchange, redundant 8-motor propulsion, LiDAR obstacle avoidance.",
+  "claims": [
+    "Octocopter with 8 independent motors providing flight with up to 2 motor failures.",
+    "Modular payload bay with automated locking for 30x30x30cm containers max 25kg.",
+    "Navigation combining RTK-GPS (2cm), LiDAR (200m), stereo vision."
+  ],
+  "components": [
+    "octocopter frame",
+    "brushless motors",
+    "ESCs",
+    "flight controller",
+    "LiDAR",
+    "RTK-GPS",
+    "cameras",
+    "payload bay",
+    "battery"
+  ],
+  "materials": [
+    "carbon fiber",
+    "aluminum",
+    "lithium polymer",
+    "silicon",
+    "plastic"
+  ],
+  "methods": [
+    "multi-rotor control",
+    "sensor fusion",
+    "path planning",
+    "visual servoing"
+  ],
+  "constraints": [
+    "energy",
+    "safety",
+    "regulation",
+    "cost",
+    "weather",
+    "noise"
+  ],
+  "problem_statement": "Last-mile delivery is 53% of shipping costs. Drones reduce delivery from hours to minutes.",
+  "expected_constraints": [
+    "energy",
+    "safety",
+    "regulation",
+    "cost",
+    "information"
+  ],
+  "expected_prerequisites": [
+    "battery energy density",
+    "BVLOS regulation",
+    "sense-and-avoid systems",
+    "noise reduction"
+  ],
+  "expected_adjacent_domains": [
+    "aerospace",
+    "robotics",
+    "logistics",
+    "communications"
+  ],
+  "expected_failure_modes": [
+    "motor failure",
+    "GPS denial",
+    "bird strike",
+    "battery fire",
+    "regulatory grounding"
+  ]
+}

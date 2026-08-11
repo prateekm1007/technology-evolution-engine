@@ -1,0 +1,11 @@
+TITLE: LPC3D: An Enhanced Parallel Software for Large-Scale Simulation of Adsorption in Porous Carbons and Supercapacitors
+ARXIV ID: 2603.22553v1
+URL: http://arxiv.org/abs/2603.22553v1
+RETRIEVAL DATE: 2026-08-05
+RETRIEVAL METHOD: arxiv.org API
+SOURCE VERIFICATION: arxiv API XML
+DOMAIN HINT: supercapacitor
+PUBLISHED: 2026-03-23T20:30:18Z
+
+ABSTRACT:
+Simulations of electrochemical double layer capacitors based on porous carbon electrodes, energy storage systems which accumulate and release energy through reversible ion adsorption at electrode/electrolyte interfaces, are often performed at the microscopic scale, using molecular dynamics. Such simulations provide crucial information to understand the adsorption of ions and the effect of confinement on some electrochemical properties. However, their computational cost limits the size of the systems studied to a few nanometers and a few pores while experimental materials are highly heterogeneous with a distribution of particle and pore sizes. LPC3D is a software designed for mesoscopic simulations of porous carbon particles and carbon-based supercapacitors which allow for the inclusion of such heterogeneity. The code calculates quantities of adsorbed ions, diffusion coefficients and NMR spectra of ions / molecules adsorbed in porous carbon matrices. In this work, we report on a new implementation of LPC3D, written in Python using the PyStencils module which can generate optimized C++ and CUDA code. This implementation is parallel, can be run on CPU and GPU, and allows one to simulate systems going from a single carbon particle to a supercapacitor with hundreds of micrometers in length. Here, we apply the new implementation of LPC3D to the simulation of supercapacitors with porous carbon electrodes represented as monoliths or carbon films to investigate the influence of the microstructure on the resulting adsorption and spectroscopic properties.

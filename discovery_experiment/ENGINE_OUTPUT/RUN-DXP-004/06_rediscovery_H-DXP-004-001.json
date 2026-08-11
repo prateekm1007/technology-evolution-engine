@@ -1,0 +1,34 @@
+{
+  "stage": "06_rediscovery_H-DXP-004-001",
+  "run_id": "RUN-DXP-004",
+  "code_sha": "9cf2046069a549721298cc8d709ac7bc8b4e8997",
+  "input_hash": "7b40c18cf0071ff3796bbec0f01de2dce3ead0de2321f177f8c9508f2e0b2b7e",
+  "output_hash": "96f0db50c38fe08184d0054e38823e748adeb18b5e52d6350da6fe84d1a92bc5",
+  "provider_manifest": {
+    "provider": "zai",
+    "model": "glm-4-plus",
+    "version": "z-ai-web-dev-sdk",
+    "configuration": {
+      "temperature": 0.1,
+      "max_tokens": 4096,
+      "system_sha": "dbdd0760dff49fc029b32b580a575b7de33a87d371edc2b0deec93bfb2b90b01"
+    },
+    "prompt_sha": "2068f5337170b8e760bf9190739d003e922f307608981f027695dacfe204ef4f",
+    "seed": null,
+    "tool_versions": {
+      "z_ai_cli": "z-ai"
+    },
+    "timestamp": "2026-08-08T10:05:27.051007+00:00",
+    "latency_ms": 3310,
+    "success": true,
+    "error": ""
+  },
+  "result": {
+    "hypothesis_id": "H-DXP-004-001",
+    "classification": "PARAPHRASED_IN_INPUT",
+    "evidence": "The hypothesis claims that directional microstructures reduce drag by modifying boundary layer transition from laminar to turbulent flow. The source documents describe how shark skin denticles with riblets interact with turbulent boundary layers, specifically mentioning that riblets lift streamwise vortices away from the surface, reducing shear stress and drag. The hypothesis mechanism about creating controlled disturbance delaying transition to turbulent flow is consistent with the source description of riblet interaction with near-wall turbulent structures, though the source focuses more on turbulent flow rather than transition itself.",
+    "is_rediscovery": true,
+    "source_hypothesis_hash": ""
+  },
+  "timestamp": "2026-08-08T10:05:30.362166+00:00"
+}

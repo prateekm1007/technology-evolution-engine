@@ -1,0 +1,31 @@
+{
+  "schema_version": "b2-trace-v3",
+  "candidate": {
+    "id": "HO-09",
+    "text": "Photosystem II participates in electron transfer",
+    "source_a": "Photosystem II uses absorbed light energy to drive electron transfer through a reaction center and onward to plastoquinone, initiating the photosynthetic electron-transport chain.",
+    "source_b": "The oxygen-evolving complex associated with Photosystem II oxidizes water and releases molecular oxygen while transferring electrons to the reaction center during the catalytic cycle."
+  },
+  "atoms": [],
+  "counterfactuals": [
+    {
+      "removed_source": "A",
+      "unsupported_atoms": [],
+      "justified_without_source": false
+    },
+    {
+      "removed_source": "B",
+      "unsupported_atoms": [],
+      "justified_without_source": false
+    }
+  ],
+  "classification": {
+    "justified_by_corpus": false,
+    "iss_a": false,
+    "iss_b": false,
+    "iss_state": "UNSUPPORTED",
+    "label": "NOT_ADJUDICATED_BY_B2"
+  },
+  "_fallback": true,
+  "_error": "API request failed with status 429: {\"error\":\"Too many requests, please try again later\"}"
+}

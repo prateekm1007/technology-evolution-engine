@@ -1,0 +1,12 @@
+TITLE: Channel Estimation and Passive Beamforming for Intelligent Reflecting Surface: Discrete Phase Shift and Progressive Refinement
+ARXIV ID: 1912.10646v2
+URL: http://arxiv.org/abs/1912.10646v2
+RETRIEVAL DATE: 2026-08-05
+RETRIEVAL METHOD: arxiv.org API
+SOURCE VERIFICATION: arxiv API XML
+DOMAIN HINT: radiative_cooling_2
+AUTHORS: Changsheng You; Beixiong Zheng; Rui Zhang
+PUBLISHED: 2019-12-23T06:49:43Z
+
+ABSTRACT:
+Prior studies on Intelligent Reflecting Surface (IRS) have mostly assumed perfect channel state information (CSI) available for designing the IRS passive beamforming as well as the continuously adjustable phase shift at each of its reflecting elements, which, however, have simplified two challenging issues for implementing IRS in practice, namely, its channel estimation and passive beamforming designs both under the constraint of discrete phase shifts. To address them, we consider in this paper an IRS-aided single-user communication system with discrete phase shifts and design the IRS training reflection matrix for channel estimation as well as the passive beamforming for data transmission, both subject to the constraint of discrete phase shifts. We show that the training reflection matrix design for discrete phase shifts greatly differs from that for continuous phase shifts, and thus the corresponding passive beamforming should be optimized by taking into account the correlated channel estimation error due to discrete phase shifts. Specifically, we consider a practical block-based transmission, where each block has a finite (insufficient) number of training symbols for channel estimation. A novel hierarchical training reflection design is proposed to progressively estimate IRS elements' channels over multiple blocks by exploiting IRS-elements grouping and partition. Based on the resolved IRS channels in each block, we further design the progressive passive beamforming at the IRS with discrete phase shifts to improve the achievable rate for data transmission over the blocks.

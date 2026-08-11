@@ -1,0 +1,46 @@
+{
+  "pattern": {
+    "pattern_id": "MP-N4",
+    "source_domain": "herpetology",
+    "causal_structure": "Mechanical actuation enables tuning of inter-element spacing under physiological control, producing shifted interference-based reflection.",
+    "inputs": [
+      "incident broadband light",
+      "actuation signal (physiological/neural)"
+    ],
+    "conditions": [
+      "ordered nanostructure array present",
+      "deformable supporting matrix",
+      "tunable spacing within operational range"
+    ],
+    "operations": [
+      "mechanical deformation of matrix",
+      "adjustment of inter-element distance",
+      "shift of constructive interference condition",
+      "selection of reflected wavelength band"
+    ],
+    "intermediate_state": [
+      "deformed lattice configuration",
+      "altered periodicity",
+      "modified interference condition"
+    ],
+    "outputs": [
+      "tunable narrowband reflection (color)"
+    ],
+    "constraints": [
+      "spacing range bounded (e.g., 100-200 nm)",
+      "requires long-range order of reflectors",
+      "matrix must remain deformable",
+      "passive reflection only (no light generation)",
+      "response speed limited by actuation mechanics"
+    ],
+    "failure_conditions": [
+      "loss of nanostructural order",
+      "matrix stiffening or fracture",
+      "spacing driven beyond tunable range",
+      "damage to reflector array",
+      "actuation mechanism failure"
+    ],
+    "abstract_principle": "A system actively tunes the periodic spacing of ordered nanoscale reflectors via mechanical deformation of their supporting matrix, shifting the wavelength of constructively interfered light to produce a controllable optical output.",
+    "source_graph_summary": "13 nodes, 9 edges"
+  }
+}

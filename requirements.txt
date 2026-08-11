@@ -1,0 +1,30 @@
+pyyaml>=6.0
+networkx>=3.1
+numpy>=1.24
+pandas>=2.0
+jsonschema>=4.17
+click>=8.1
+pytest>=7.3
+pre-commit>=3.5
+fastapi>=0.100
+uvicorn>=0.23
+pydantic>=2.0
+httpx>=0.24
+# Phase 0 (cycle 141): NLP dependencies required by scripts/nlp_pipeline.py
+# Per auditor: pip install -r requirements.txt could not run nlp_pipeline.py
+#
+# Cycle 256 (DR-91 closure): upper bound lifted to <3.9.0 to allow spaCy 3.8.x.
+# spaCy 3.8.x is the first release series with CPython 3.13 wheels (3.8.7+
+# ship cp313 tags). The previous cap at <3.8.0 was inherited from cycle 141
+# when 3.7 was the latest series; it silently blocked all Python 3.13
+# installs because no 3.7.x wheel exists for cp313.
+#
+# Verified compatibility:
+#   - scripts/nlp_pipeline.py imports cleanly on spaCy 3.8.11 / Python 3.12
+#   - en_core_web_sm model load is unchanged between 3.7 and 3.8
+#   - tests/test_nlp_pipeline.py passes on spaCy 3.8.x
+#   - spaCy 3.8 release notes: no breaking changes affecting EntityRecognizer,
+#     Doc.ents, Span, or the small English model pipeline used here
+spacy>=3.7.0,<3.9.0
+# en_core_web_sm is installed via: python -m spacy download en_core_web_sm
+# (not pip-installable as a package name, but documented here for reproducibility)

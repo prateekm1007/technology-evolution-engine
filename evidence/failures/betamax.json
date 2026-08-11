@@ -1,0 +1,37 @@
+{
+  "id": "failure_007",
+  "name": "Betamax",
+  "domain": "computation",
+  "year_launched": 1975,
+  "year_effective_end": 2016,
+  "category": "commercial_failure",
+  "what_failed": "Sony's superior video format lost to technically inferior VHS in the format war.",
+  "why_it_failed": [
+    "VHS offered longer recording time (critical for movies/sports)",
+    "Sony's licensing restrictions limited manufacturer adoption",
+    "VHS had broader content availability (rental stores)",
+    "Network effects favored the more available format",
+    "Sony optimized for quality; market optimized for convenience"
+  ],
+  "assumptions_that_broke": [
+    "Technical superiority wins format wars",
+    "Quality matters more than convenience",
+    "Controlling the standard is more important than growing it",
+    "Consumers evaluate on specifications"
+  ],
+  "constraints_that_moved": [
+    "Recording time became the binding constraint",
+    "Content availability became more important than hardware quality",
+    "Network effects dominated technical merit",
+    "Rental market created winner-take-all dynamics"
+  ],
+  "resurrection_conditions": [
+    "Not applicable - format wars are obsolete",
+    "Lesson applies to any platform competition",
+    "Open standards vs proprietary control"
+  ],
+  "lesson": "The technically superior product loses when the inferior product better satisfies the binding constraint. Betamax had better picture; VHS could record a football game. The market chose the football game.",
+  "created_at": "2026-08-01T09:17:21.875471+00:00",
+  "source": "workstream_D",
+  "version": "1.0"
+}

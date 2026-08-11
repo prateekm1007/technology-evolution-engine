@@ -1,0 +1,140 @@
+{
+  "query_id": "Q-OA-W4411799456_OA-W4411802539-mechanism_transfer-openaire",
+  "pair_id": "OA-W4411799456_OA-W4411802539",
+  "query_type": "mechanism_transfer",
+  "provider": "openaire",
+  "query_text": "transfer apply task samples chemistry",
+  "query_hash": "71922b07db296558061ea35527fce9102cab275acd6a46d6560a865e5f4cfa68",
+  "frozen_query_ref": "Q-OA-W4411799456_OA-W4411802539-mechanism_transfer-openalex",
+  "url": "https://api.openaire.eu/search/publications?keywords=transfer+apply+task+samples+chemistry&size=10&format=json",
+  "timestamp_utc": "2026-08-11T12:36:49.075929+00:00",
+  "status": "SUCCESS",
+  "result_count": 5,
+  "result_ids": [
+    [
+      {
+        "$": "50|datacite____::fbbae5f5218d29398734cfc8ad7555b4"
+      },
+      {
+        "$": "10.48550/arxiv.2507.10446"
+      },
+      {
+        "$": "50|od________18::99377683f5dffd1bbf9f5f9d770c1d22"
+      },
+      {
+        "$": "oai:arXiv.org:2507.10446"
+      },
+      {
+        "$": "50|dblp________::b665736f024bb3126fd3a4061df3a639"
+      }
+    ],
+    [
+      {
+        "$": "50|datacite____::124ffc6488d80559a181cd6ff8bbee37"
+      },
+      {
+        "$": "10.5281/zenodo.20334840"
+      },
+      {
+        "$": "50|datacite____::a3127d4b67e2ce5c6e1b5c52f9a886f7"
+      },
+      {
+        "$": "10.5281/zenodo.20334841"
+      },
+      {
+        "$": "oai:zenodo.org:20334841"
+      },
+      {
+        "$": "50|od______2659::a3127d4b67e2ce5c6e1b5c52f9a886f7"
+      }
+    ],
+    [
+      {
+        "$": "50|datacite____::62a98eb6060a40d0e69ca69e84739f7b"
+      },
+      {
+        "$": "10.5281/zenodo.18442010"
+      },
+      {
+        "$": "oai:zenodo.org:18442010"
+      },
+      {
+        "$": "50|od______2659::62a98eb6060a40d0e69ca69e84739f7b"
+      },
+      {
+        "$": "50|datacite____::ac11cbfe7328e8fe2f48836d44f26b04"
+      },
+      {
+        "$": "10.5281/zenodo.18442009"
+      }
+    ],
+    [
+      {
+        "$": "50|datacite____::125a02aea901411368cdbf65be087120"
+      },
+      {
+        "$": "10.5281/zenodo.18270839"
+      },
+      {
+        "$": "50|od______2659::125a02aea901411368cdbf65be087120"
+      },
+      {
+        "$": "oai:zenodo.org:18270839"
+      },
+      {
+        "$": "50|datacite____::97817c975bc1e0540fcbbef3907defff"
+      },
+      {
+        "$": "10.5281/zenodo.18270838"
+      }
+    ],
+    [
+      {
+        "$": "50|datacite____::3e26320722f8e88c3971277db5a20621"
+      },
+      {
+        "$": "10.5281/zenodo.17641669"
+      },
+      {
+        "$": "50|datacite____::e99d30e34e1acf3f435116dcef5ab07c"
+      },
+      {
+        "$": "10.5281/zenodo.17641670"
+      },
+      {
+        "$": "50|od______2659::e99d30e34e1acf3f435116dcef5ab07c"
+      },
+      {
+        "$": "oai:zenodo.org:17641670"
+      }
+    ]
+  ],
+  "result_titles": [
+    "Acquiring and Adapting Priors for Novel Tasks via Neural Meta-Architectures",
+    "PREreview of \"TissueFormer: Extending single-cell foundation models to predict population-level phenotypes\"",
+    "The Nexus Recursive Harmonic Framework: Recursive Folding Operator Calculus Across SHA\u2011256, DNA Replication, and Quantum Feedback Control",
+    "Completeness and Convergence in Discrete Complex Systems: A Comprehensive Synthesis of Lattice Dynamics, Synchronization, and Information Geometry",
+    "The Nexus Recursive Harmonic Framework: A Self-Referential and Self-Governing Universe"
+  ],
+  "result_dois": [
+    "10.48550/arxiv.2507.10446",
+    "10.5281/zenodo.20334840",
+    "10.5281/zenodo.18442010",
+    "10.5281/zenodo.18270839",
+    "10.5281/zenodo.17641669"
+  ],
+  "result_dates": [
+    "2025-01-01",
+    "2026-05-22",
+    "2026-01-31",
+    "2026-01-16",
+    "2025-11-18"
+  ],
+  "response_hash": "2c39dfd89b68c631a531960e03d88bd1f15d31902b8543afd28a37460072c594",
+  "evidence_uri": "https://api.openaire.eu/search/publications?keywords=transfer+apply+task+samples+chemistry&size=10&format=json",
+  "error": null,
+  "rate_limit_headers": {
+    "x-ratelimit-used": "230",
+    "x-ratelimit-limit": "7199"
+  }
+}

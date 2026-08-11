@@ -1,0 +1,34 @@
+{
+  "hypothesis_id": "H-DEV-CH-004-001",
+  "claim": "Distributed adaptive signal timing through local queue length feedback",
+  "mechanism": "Each intersection adjusts its green time proportionally to its local queue length, with a small portion of adjustment influenced by immediate neighbors' states through limited communication",
+  "evidence": [
+    "Myxomycetes adjust tube structures based on local flow conditions",
+    "Proportional control systems are stable for single intersections",
+    "Distributed systems can achieve global optimization through local interactions"
+  ],
+  "assumptions": [
+    "Queue length is the primary indicator of traffic demand",
+    "Local adjustments will propagate beneficial changes through the network",
+    "Proportional control without integral terms will prevent oscillation",
+    "Network topology is sufficiently connected for information propagation"
+  ],
+  "predictions": [],
+  "expected_failure_modes": [
+    "Oscillations between intersections when proportional gains are too high",
+    "Gridlock when neighboring intersections simultaneously increase green time for conflicting flows",
+    "Failure to adapt to sudden demand changes due to lack of integral control"
+  ],
+  "novelty_rationale": "Translates the myxomycete's flow-dependent structural modification into a traffic signal control system using only local measurements and neighbor communication, without requiring central coordination or predictive models",
+  "testability": "Can be implemented in simulation with varying network topologies and traffic conditions, with metrics including average delay, convergence time, and oscillation frequency",
+  "falsifier": "If the system fails to converge within 15 minutes under normal traffic conditions or exhibits persistent oscillations in signal timing across the network",
+  "epistemic_state": "HYPOTHESIZED",
+  "parent_hypothesis_ids": [],
+  "provenance": {
+    "nodes": {},
+    "edges": [],
+    "committed_hash": null
+  },
+  "is_testable": true,
+  "provenance_root_hash": ""
+}

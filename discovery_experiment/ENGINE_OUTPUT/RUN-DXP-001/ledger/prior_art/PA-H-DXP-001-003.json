@@ -1,0 +1,19 @@
+{
+  "assessment_id": "PA-H-DXP-001-003",
+  "hypothesis_id": "H-DXP-001-003",
+  "status": "NOT_EVALUATED",
+  "search_scope": [
+    "dev_corpus"
+  ],
+  "queries": [
+    "The ventilation control should implement a bio-inspired neural network that mimics the distributed decision-making process of stomatal guard cells The control system uses a multi-layer neural network with inputs from CO2 sensors, occupancy sensors, temperature sensors, and time of day. The network processes these inputs through hidden layers that represent the interconnected nature of guard cell signaling, outputting damper position commands. The network is trained on historical building performance data to optimize ventilation efficiency."
+  ],
+  "sources": [],
+  "matched_prior_art": [],
+  "similarity": "no matches in dev corpus \u2014 NOT proof of novelty",
+  "review_required": true,
+  "confidence": 0.3,
+  "cutoff": "2026-08-08",
+  "reviewer": "novelty_firewall_v0",
+  "timestamp": "2026-08-08T09:31:45.987926+00:00"
+}

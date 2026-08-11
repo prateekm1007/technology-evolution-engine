@@ -1,0 +1,1813 @@
+{
+  "generated_at": "2026-08-01T17:51:56.567517+00:00",
+  "method": "Live end-to-end compile of the reference test problem (portable MRI) through all 11 layers of the invention compiler. Verifies: (1) every layer emits its required schema keys, (2) scalar layers carry the Law 8 honesty block (evidence + assumptions + falsification_criteria), (3) the forbidden phrases ('this is a good idea' etc.) do not appear in the output.",
+  "test_problem": {
+    "problem": "Build a portable MRI scanner suitable for rural clinics without cryogenic helium",
+    "domain": "medical_imaging",
+    "motivation": "Conventional MRI requires $100K+ helium and shielded rooms; rural clinics cannot afford either",
+    "market": "global_radiology",
+    "constraints": [
+      "cost",
+      "weight",
+      "power",
+      "regulation",
+      "manufacturing"
+    ],
+    "time_horizon": "5-10 years"
+  },
+  "problem_id": "invention_060bc4edf436a6b5",
+  "duration_s": 0.243,
+  "layer_count": 11,
+  "schema_missing_per_layer": {},
+  "law8_honesty_missing_layers": [],
+  "forbidden_phrases_found": [],
+  "chain_summary": {
+    "target_invention": "Build a portable MRI scanner suitable for rural clinics without cryogenic helium",
+    "domain": "medical_imaging",
+    "time_horizon": "5-10 years",
+    "prerequisite_chain_depth": 0,
+    "governing_equations_count": 1,
+    "subsystem_count": 3,
+    "composite_feasibility_baseline": 0.5497,
+    "capex_usd_m": 22.52,
+    "market_size_usd_m": 1.0,
+    "total_prototype_timeline_years": 3.0,
+    "technical_risk_count": 5,
+    "commercial_risk_count": 3,
+    "verification_status": "integrated",
+    "hypothesis": {
+      "id": "hyp_37d4e73363534851",
+      "claim": "The invention 'Build a portable MRI scanner suitable for rural clinics without cryogenic helium' is feasible in the medical_imaging domain within the stated time horizon.",
+      "confidence": 0.5497,
+      "evidence": [
+        "ampere_law",
+        "charge_conservation",
+        "faraday_law",
+        "maxwell_equations",
+        "meissner_effect",
+        "ampere law",
+        "capex_$22.52M"
+      ],
+      "counterevidence": [],
+      "assumptions": [],
+      "dependencies": [],
+      "status": "pending",
+      "observation": null,
+      "writer": "invention_compiler.orchestrator.InventionCompiler._chain_summary",
+      "created_at": "2026-08-01T17:51:56.566994+00:00",
+      "updated_at": "2026-08-01T17:51:56.567006+00:00",
+      "timestamp": "2026-08-01T17:51:56.566994+00:00"
+    }
+  },
+  "verdict": "PASS",
+  "layers": {
+    "0": {
+      "problem": "Build a portable MRI scanner suitable for rural clinics without cryogenic helium",
+      "domain": "medical_imaging",
+      "motivation": "Conventional MRI requires $100K+ helium and shielded rooms; rural clinics cannot afford either",
+      "market": "global_radiology",
+      "constraints": [
+        "cost",
+        "weight",
+        "power",
+        "regulation",
+        "manufacturing"
+      ],
+      "time_horizon": "5-10 years",
+      "analogies": [
+        {
+          "node_a": {
+            "id": "sub_telemedicine",
+            "label": "Telemedicine",
+            "type": "subdomain",
+            "domain": "medical_devices"
+          },
+          "node_b": {
+            "id": "sub_precision_agriculture",
+            "label": "Precision Agriculture",
+            "type": "subdomain",
+            "domain": "agriculture"
+          },
+          "domain_a": "medical_devices",
+          "domain_b": "agriculture",
+          "structural_overlap_score": 0.375,
+          "evidence": {
+            "shared_prerequisites": [
+              "component_lora_module",
+              "component_wireless_module",
+              "sub_wireless_sensor_networks"
+            ],
+            "shared_constraints": [],
+            "common_ancestors": [],
+            "prereq_overlap": 0.75,
+            "constraint_overlap": 0.0,
+            "ancestor_bonus": 0.0
+          }
+        },
+        {
+          "node_a": {
+            "id": "sub_soft_robotics",
+            "label": "Soft Robotics",
+            "type": "subdomain",
+            "domain": "robotics"
+          },
+          "node_b": {
+            "id": "sub_implantable_devices",
+            "label": "Implantable Devices",
+            "type": "subdomain",
+            "domain": "medical_devices"
+          },
+          "domain_a": "robotics",
+          "domain_b": "medical_devices",
+          "structural_overlap_score": 0.25,
+          "evidence": {
+            "shared_prerequisites": [
+              "sub_biomaterials"
+            ],
+            "shared_constraints": [],
+            "common_ancestors": [],
+            "prereq_overlap": 0.5,
+            "constraint_overlap": 0.0,
+            "ancestor_bonus": 0.0
+          }
+        },
+        {
+          "node_a": {
+            "id": "sub_agricultural_robotics",
+            "label": "Agricultural Robotics",
+            "type": "subdomain",
+            "domain": "robotics"
+          },
+          "node_b": {
+            "id": "sub_autonomous_navigation",
+            "label": "Autonomous Navigation",
+            "type": "subdomain",
+            "domain": "transportation"
+          },
+          "domain_a": "robotics",
+          "domain_b": "transportation",
+          "structural_overlap_score": 0.25,
+          "evidence": {
+            "shared_prerequisites": [
+              "sub_computer_vision"
+            ],
+            "shared_constraints": [],
+            "common_ancestors": [],
+            "prereq_overlap": 0.5,
+            "constraint_overlap": 0.0,
+            "ancestor_bonus": 0.0
+          }
+        },
+        {
+          "node_a": {
+            "id": "sub_cyclonic_separation",
+            "label": "Cyclonic Separation",
+            "type": "subdomain",
+            "domain": "fluid_dynamics"
+          },
+          "node_b": {
+            "id": "sub_membrane_filtration",
+            "label": "Membrane Filtration",
+            "type": "subdomain",
+            "domain": "water_treatment"
+          },
+          "domain_a": "fluid_dynamics",
+          "domain_b": "water_treatment",
+          "structural_overlap_score": 0.2,
+          "evidence": {
+            "shared_prerequisites": [],
+            "shared_constraints": [],
+            "common_ancestors": [
+              "industry_filtration_industry"
+            ],
+            "prereq_overlap": 0.0,
+            "constraint_overlap": 0.0,
+            "ancestor_bonus": 0.2
+          }
+        },
+        {
+          "node_a": {
+            "id": "sub_aerodynamics",
+            "label": "Aerodynamics",
+            "type": "subdomain",
+            "domain": "fluid_dynamics"
+          },
+          "node_b": {
+            "id": "sub_electric_propulsion",
+            "label": "Electric Propulsion",
+            "type": "subdomain",
+            "domain": "transportation"
+          },
+          "domain_a": "fluid_dynamics",
+          "domain_b": "transportation",
+          "structural_overlap_score": 0.2,
+          "evidence": {
+            "shared_prerequisites": [],
+            "shared_constraints": [],
+            "common_ancestors": [
+              "cemetery_009"
+            ],
+            "prereq_overlap": 0.0,
+            "constraint_overlap": 0.0,
+            "ancestor_bonus": 0.2
+          }
+        }
+      ],
+      "evidence": {
+        "total_pairs_evaluated": 166176,
+        "excluded_already_connected": 50,
+        "domain_filter_applied": [
+          "medical_imaging"
+        ]
+      },
+      "assumptions": [
+        "Cross-domain analogies are useful starting points, not guarantees of feasibility.",
+        "Structural overlap (shared prerequisites, shared constraints, common ancestors) is a proxy for combinability, not a proof of combinability."
+      ],
+      "falsification_criteria": "If, after N verification cycles, candidates surfaced by this engine fail to produce a viable invention more than 50% of the time, the structural-overlap prior is wrong and must be recalibrated. N >= 20 cycles is the minimum sample size."
+    },
+    "1": {
+      "physics": {
+        "principles": [
+          {
+            "id": "principle_centrifugal_force",
+            "label": "Centrifugal Force",
+            "domain": "fluid_dynamics",
+            "constraints": []
+          },
+          {
+            "id": "principle_standing_waves",
+            "label": "Standing Waves",
+            "domain": "acoustics",
+            "constraints": []
+          },
+          {
+            "id": "principle_acoustic_impedance",
+            "label": "Acoustic Impedance",
+            "domain": "acoustics",
+            "constraints": []
+          },
+          {
+            "id": "principle_photoelectric_effect",
+            "label": "Photoelectric Effect",
+            "domain": "optics",
+            "constraints": []
+          },
+          {
+            "id": "principle_piezoelectric_effect",
+            "label": "Piezoelectric Effect",
+            "domain": "electronics",
+            "constraints": []
+          },
+          {
+            "id": "principle_triboelectric_effect",
+            "label": "Triboelectric Effect",
+            "domain": "electronics",
+            "constraints": []
+          },
+          {
+            "id": "principle_thermoelectric_effect",
+            "label": "Thermoelectric Effect",
+            "domain": "electronics",
+            "constraints": []
+          },
+          {
+            "id": "principle_electromagnetic_induction",
+            "label": "Electromagnetic Induction",
+            "domain": "electromagnetics",
+            "constraints": []
+          },
+          {
+            "id": "principle_waveguide_propagation",
+            "label": "Waveguide Propagation",
+            "domain": "electromagnetics",
+            "constraints": []
+          },
+          {
+            "id": "principle_quantum_confinement",
+            "label": "Quantum Confinement",
+            "domain": "semiconductor_physics",
+            "constraints": []
+          },
+          {
+            "id": "principle_van_der_waals_forces",
+            "label": "Van Der Waals Forces",
+            "domain": "nanotechnology",
+            "constraints": []
+          },
+          {
+            "id": "principle_quantum_tunneling",
+            "label": "Quantum Tunneling",
+            "domain": "nanotechnology",
+            "constraints": []
+          },
+          {
+            "id": "principle_photoelectric_conversion",
+            "label": "Photoelectric Conversion",
+            "domain": "renewable_energy",
+            "constraints": []
+          },
+          {
+            "id": "principle_osmotic_pressure",
+            "label": "Osmotic Pressure",
+            "domain": "water_treatment",
+            "constraints": []
+          }
+        ],
+        "constraint_load": 0.0,
+        "applicable_laws": [
+          "ampere_law",
+          "charge_conservation",
+          "faraday_law",
+          "maxwell_equations",
+          "meissner_effect"
+        ],
+        "applicable_law_objects": [
+          {
+            "equation": "B = mu_0 * I / (2*pi*r)",
+            "variables": {
+              "B": "T",
+              "mu_0": "T*m/A",
+              "I": "A",
+              "r": "m"
+            },
+            "applies_to": [
+              "electromagnetism",
+              "medical_imaging",
+              "electronics",
+              "superconductivity"
+            ],
+            "statement": "Magnetic field around a current-carrying conductor.",
+            "name": "ampere_law"
+          },
+          {
+            "equation": "dQ/dt = 0 (closed system)",
+            "variables": {
+              "Q": "C",
+              "t": "s"
+            },
+            "applies_to": [
+              "electromagnetism",
+              "electronics",
+              "chemistry",
+              "medical_imaging"
+            ],
+            "statement": "Electric charge is conserved.",
+            "name": "charge_conservation"
+          },
+          {
+            "equation": "EMF = -dPhi/dt",
+            "variables": {
+              "EMF": "V",
+              "Phi": "Wb",
+              "t": "s"
+            },
+            "applies_to": [
+              "electromagnetism",
+              "electronics",
+              "energy"
+            ],
+            "statement": "Changing magnetic flux induces an EMF.",
+            "name": "faraday_law"
+          },
+          {
+            "equation": "div E = rho/eps_0; div B = 0; curl E = -dB/dt; curl B = mu_0*J + mu_0*eps_0*dE/dt",
+            "variables": {
+              "E": "V/m",
+              "B": "T",
+              "rho": "C/m^3",
+              "eps_0": "F/m",
+              "mu_0": "T*m/A",
+              "J": "A/m^2"
+            },
+            "applies_to": [
+              "electromagnetism",
+              "electronics",
+              "medical_imaging",
+              "superconductivity"
+            ],
+            "statement": "The four equations governing classical electromagnetism.",
+            "name": "maxwell_equations"
+          },
+          {
+            "equation": "B = 0 inside a superconductor (below Tc, Hc)",
+            "variables": {
+              "B": "T",
+              "Tc": "K",
+              "Hc": "A/m"
+            },
+            "applies_to": [
+              "superconductivity",
+              "materials",
+              "medical_imaging"
+            ],
+            "statement": "Superconductors expel magnetic fields (perfect diamagnetism).",
+            "name": "meissner_effect"
+          }
+        ],
+        "evidence": {
+          "principles_found": 14,
+          "domain_filter": "medical_imaging",
+          "applicable_law_count": 5,
+          "differentiation_basis": "domain_and_constraint_keywords"
+        },
+        "assumptions": [
+          "Applicable laws are determined by domain and constraint keywords via a heuristic map. This is a prior, not a calibration \u2014 the map should be revised as the verification cycle accumulates outcomes.",
+          "Principle nodes in the graph are a representative sample of physics principles relevant to the problem.",
+          "Constraint load is a proxy for technical difficulty, not a direct measurement."
+        ],
+        "falsification_criteria": "If an expert physicist identifies a governing law for the problem that is not in `applicable_laws`, the domain-to-laws heuristic map is incomplete. Conversely, if a law in `applicable_laws` is found NOT to apply (e.g., Maxwell equations for a non-EM problem), the heuristic is over-broad."
+      },
+      "chemistry": {
+        "materials_and_processes": [
+          {
+            "id": "principle_crystal_structure",
+            "label": "Crystal Structure",
+            "type": "principle",
+            "domain": "materials_science",
+            "constraints": []
+          },
+          {
+            "id": "principle_polymerization",
+            "label": "Polymerization",
+            "type": "principle",
+            "domain": "polymer_science",
+            "constraints": []
+          },
+          {
+            "id": "principle_electrochemical_potential",
+            "label": "Electrochemical Potential",
+            "type": "principle",
+            "domain": "energy_systems",
+            "constraints": []
+          },
+          {
+            "id": "process_membrane_filtration_process",
+            "label": "Membrane Filtration Process",
+            "type": "process",
+            "domain": "water_treatment",
+            "constraints": []
+          },
+          {
+            "id": "process_chemical_vapor_deposition",
+            "label": "Chemical Vapor Deposition",
+            "type": "process",
+            "domain": "manufacturing",
+            "constraints": []
+          },
+          {
+            "id": "process_chemical_mechanical_polishing",
+            "label": "Chemical Mechanical Polishing",
+            "type": "process",
+            "domain": "manufacturing",
+            "constraints": []
+          },
+          {
+            "id": "process_molecular_beam_epitaxy",
+            "label": "Molecular Beam Epitaxy",
+            "type": "process",
+            "domain": "semiconductor_physics",
+            "constraints": []
+          },
+          {
+            "id": "process_hydrothermal_synthesis",
+            "label": "Hydrothermal Synthesis",
+            "type": "process",
+            "domain": "materials_science",
+            "constraints": []
+          },
+          {
+            "id": "process_emulsion_polymerization",
+            "label": "Emulsion Polymerization",
+            "type": "process",
+            "domain": "polymer_science",
+            "constraints": []
+          },
+          {
+            "id": "process_ring_opening_polymerization",
+            "label": "Ring Opening Polymerization",
+            "type": "process",
+            "domain": "polymer_science",
+            "constraints": []
+          },
+          {
+            "id": "process_electrochemical_deposition",
+            "label": "Electrochemical Deposition",
+            "type": "process",
+            "domain": "energy_systems",
+            "constraints": []
+          },
+          {
+            "id": "process_vat_photopolymerization",
+            "label": "Vat Photopolymerization",
+            "type": "process",
+            "domain": "additive_manufacturing",
+            "constraints": []
+          },
+          {
+            "id": "process_crystallization",
+            "label": "Crystallization",
+            "type": "process",
+            "domain": "chemical_engineering",
+            "constraints": []
+          },
+          {
+            "id": "process_activated_carbon_process",
+            "label": "Activated Carbon Process",
+            "type": "process",
+            "domain": "water_treatment",
+            "constraints": []
+          },
+          {
+            "id": "process_polymer_blending",
+            "label": "Polymer Blending",
+            "type": "process",
+            "domain": "polymer_science",
+            "constraints": []
+          },
+          {
+            "id": "component_electrochemical_sensor",
+            "label": "Electrochemical Sensor",
+            "type": "component",
+            "domain": null,
+            "constraints": []
+          },
+          {
+            "id": "component_ceramic_membrane_element",
+            "label": "Ceramic Membrane Element",
+            "type": "component",
+            "domain": null,
+            "constraints": []
+          },
+          {
+            "id": "component_polymer_membrane_element",
+            "label": "Polymer Membrane Element",
+            "type": "component",
+            "domain": null,
+            "constraints": []
+          },
+          {
+            "id": "component_activated_carbon_filter",
+            "label": "Activated Carbon Filter",
+            "type": "component",
+            "domain": null,
+            "constraints": []
+          },
+          {
+            "id": "component_reverse_osmosis_membrane",
+            "label": "Reverse Osmosis Membrane",
+            "type": "component",
+            "domain": null,
+            "constraints": []
+          },
+          {
+            "id": "component_nanofiltration_membrane",
+            "label": "Nanofiltration Membrane",
+            "type": "component",
+            "domain": null,
+            "constraints": []
+          },
+          {
+            "id": "component_ultrafiltration_membrane",
+            "label": "Ultrafiltration Membrane",
+            "type": "component",
+            "domain": null,
+            "constraints": []
+          },
+          {
+            "id": "component_microfiltration_membrane",
+            "label": "Microfiltration Membrane",
+            "type": "component",
+            "domain": null,
+            "constraints": []
+          },
+          {
+            "id": "component_hydrogen_tank",
+            "label": "Hydrogen Tank",
+            "type": "component",
+            "domain": null,
+            "constraints": []
+          }
+        ],
+        "applicable_pathways": [],
+        "applicable_pathway_objects": [],
+        "applicable_kinetics": [],
+        "applicable_kinetics_objects": [],
+        "applicable_equilibrium": [],
+        "applicable_equilibrium_objects": [],
+        "applicable_energy_states": [
+          "gibbs_free_energy"
+        ],
+        "applicable_energy_state_objects": [
+          {
+            "equation": "G = H - T*S",
+            "variables": {
+              "G": "J/mol (Gibbs free energy)",
+              "H": "J/mol (enthalpy)",
+              "T": "K (temperature)",
+              "S": "J/(mol*K) (entropy)"
+            },
+            "applies_to": [
+              "spontaneity_determination"
+            ],
+            "statement": "A reaction is spontaneous when dG < 0 at constant T,P.",
+            "name": "gibbs_free_energy"
+          }
+        ],
+        "evidence": {
+          "nodes_found": 24,
+          "domain_filter": "medical_imaging",
+          "pathway_count": 0,
+          "kinetics_count": 0,
+          "equilibrium_count": 0,
+          "energy_state_count": 1,
+          "differentiation_basis": "domain_and_constraint_keywords"
+        },
+        "assumptions": [
+          "Applicable pathways/kinetics/equilibrium are determined by domain and constraint keywords via heuristic maps. These identify WHICH model would apply; they do not SOLVE the model against real data.",
+          "Reaction pathway conditions (T, P, catalyst) are documented ranges, not optimized values for the specific problem."
+        ],
+        "falsification_criteria": "If a chemistry literature search for the problem surfaces a pathway, kinetics model, or equilibrium model not in this engine's output, the heuristic map is incomplete."
+      },
+      "biology": {
+        "biological_components": [
+          {
+            "id": "domain_biotechnology",
+            "label": "Biotechnology",
+            "type": "domain",
+            "domain": null
+          },
+          {
+            "id": "domain_genomics",
+            "label": "Genomics",
+            "type": "domain",
+            "domain": null
+          },
+          {
+            "id": "domain_medical_devices",
+            "label": "Medical Devices",
+            "type": "domain",
+            "domain": null
+          },
+          {
+            "id": "domain_diagnostics",
+            "label": "Diagnostics",
+            "type": "domain",
+            "domain": null
+          },
+          {
+            "id": "sub_biomaterials",
+            "label": "Biomaterials",
+            "type": "subdomain",
+            "domain": "materials_science"
+          },
+          {
+            "id": "sub_biodegradable_polymers",
+            "label": "Biodegradable Polymers",
+            "type": "subdomain",
+            "domain": "polymer_science"
+          },
+          {
+            "id": "sub_ceramic_membranes",
+            "label": "Ceramic Membranes",
+            "type": "subdomain",
+            "domain": "ceramics"
+          },
+          {
+            "id": "sub_organic_semiconductors",
+            "label": "Organic Semiconductors",
+            "type": "subdomain",
+            "domain": "semiconductor_physics"
+          },
+          {
+            "id": "sub_synthetic_biology",
+            "label": "Synthetic Biology",
+            "type": "subdomain",
+            "domain": "biotechnology"
+          },
+          {
+            "id": "sub_biosensors",
+            "label": "Biosensors",
+            "type": "subdomain",
+            "domain": "biotechnology"
+          },
+          {
+            "id": "sub_tissue_engineering",
+            "label": "Tissue Engineering",
+            "type": "subdomain",
+            "domain": "biotechnology"
+          },
+          {
+            "id": "sub_fuel_cells",
+            "label": "Fuel Cells",
+            "type": "subdomain",
+            "domain": "energy_systems"
+          },
+          {
+            "id": "sub_biomass_energy",
+            "label": "Biomass Energy",
+            "type": "subdomain",
+            "domain": "renewable_energy"
+          },
+          {
+            "id": "sub_membrane_filtration",
+            "label": "Membrane Filtration",
+            "type": "subdomain",
+            "domain": "water_treatment"
+          },
+          {
+            "id": "sub_bioprinting",
+            "label": "Bioprinting",
+            "type": "subdomain",
+            "domain": "additive_manufacturing"
+          },
+          {
+            "id": "sub_implantable_devices",
+            "label": "Implantable Devices",
+            "type": "subdomain",
+            "domain": "medical_devices"
+          },
+          {
+            "id": "principle_enzyme_kinetics",
+            "label": "Enzyme Kinetics",
+            "type": "principle",
+            "domain": "biotechnology"
+          },
+          {
+            "id": "principle_cell_culture",
+            "label": "Cell Culture",
+            "type": "principle",
+            "domain": "biotechnology"
+          },
+          {
+            "id": "process_membrane_filtration_process",
+            "label": "Membrane Filtration Process",
+            "type": "process",
+            "domain": "water_treatment"
+          },
+          {
+            "id": "process_ion_implantation",
+            "label": "Ion Implantation",
+            "type": "process",
+            "domain": "semiconductor_physics"
+          },
+          {
+            "id": "process_biofiltration",
+            "label": "Biofiltration",
+            "type": "process",
+            "domain": "water_treatment"
+          },
+          {
+            "id": "component_load_cell",
+            "label": "Load Cell",
+            "type": "component",
+            "domain": null
+          },
+          {
+            "id": "component_biosensor_element",
+            "label": "Biosensor Element",
+            "type": "component",
+            "domain": null
+          },
+          {
+            "id": "component_ceramic_membrane_element",
+            "label": "Ceramic Membrane Element",
+            "type": "component",
+            "domain": null
+          },
+          {
+            "id": "component_polymer_membrane_element",
+            "label": "Polymer Membrane Element",
+            "type": "component",
+            "domain": null
+          },
+          {
+            "id": "component_reverse_osmosis_membrane",
+            "label": "Reverse Osmosis Membrane",
+            "type": "component",
+            "domain": null
+          },
+          {
+            "id": "component_nanofiltration_membrane",
+            "label": "Nanofiltration Membrane",
+            "type": "component",
+            "domain": null
+          },
+          {
+            "id": "component_ultrafiltration_membrane",
+            "label": "Ultrafiltration Membrane",
+            "type": "component",
+            "domain": null
+          },
+          {
+            "id": "component_microfiltration_membrane",
+            "label": "Microfiltration Membrane",
+            "type": "component",
+            "domain": null
+          },
+          {
+            "id": "component_lithium_ion_cell",
+            "label": "Lithium Ion Cell",
+            "type": "component",
+            "domain": null
+          },
+          {
+            "id": "component_solid_state_cell",
+            "label": "Solid State Cell",
+            "type": "component",
+            "domain": null
+          },
+          {
+            "id": "component_sodium_ion_cell",
+            "label": "Sodium Ion Cell",
+            "type": "component",
+            "domain": null
+          },
+          {
+            "id": "component_supercapacitor_cell",
+            "label": "Supercapacitor Cell",
+            "type": "component",
+            "domain": null
+          },
+          {
+            "id": "component_fuel_cell_stack",
+            "label": "Fuel Cell Stack",
+            "type": "component",
+            "domain": null
+          },
+          {
+            "id": "component_solar_cell",
+            "label": "Solar Cell",
+            "type": "component",
+            "domain": null
+          },
+          {
+            "id": "component_cellular_module",
+            "label": "Cellular Module",
+            "type": "component",
+            "domain": null
+          },
+          {
+            "id": "industry_medical_industry",
+            "label": "Medical Industry",
+            "type": "industry",
+            "domain": null
+          },
+          {
+            "id": "industry_biotech_industry",
+            "label": "Biotech Industry",
+            "type": "industry",
+            "domain": null
+          },
+          {
+            "id": "system_implantable_cardiac_device",
+            "label": "Implantable Cardiac Device",
+            "type": "system",
+            "domain": "medical_devices"
+          },
+          {
+            "id": "system_industrial_robot_cell",
+            "label": "Industrial Robot Cell",
+            "type": "system",
+            "domain": "robotics"
+          },
+          {
+            "id": "system_bioreactor_system",
+            "label": "Bioreactor System",
+            "type": "system",
+            "domain": "biotechnology"
+          },
+          {
+            "id": "prereq_membrane_advances",
+            "label": "Membrane Advances",
+            "type": "prerequisite",
+            "domain": "materials_science"
+          }
+        ],
+        "evidence": {
+          "nodes_found": 42,
+          "domain_filter": "medical_imaging",
+          "keyword_filter": [
+            "bio",
+            "cell",
+            "membrane",
+            "enzyme",
+            "protein",
+            "genetic",
+            "genomic",
+            "neural",
+            "tissue",
+            "implant",
+            "medical",
+            "diagnostic",
+            "biosensor",
+            "biomaterial",
+            "organic"
+          ]
+        },
+        "assumptions": [
+          "Biological relevance is approximated by keyword match on node labels. This is a coarse filter."
+        ],
+        "falsification_criteria": "If a biological literature search for the problem surfaces components not present in this engine's output, the keyword filter is too narrow."
+      },
+      "mathematics": {
+        "mathematical_structures": [
+          "inverse_problem",
+          "signal_processing",
+          "optimization",
+          "differential_equations"
+        ],
+        "structure_objects": {
+          "optimization": {
+            "linear_programming": {
+              "form": "minimize c^T x subject to A*x <= b, x >= 0",
+              "variables": {
+                "x": "decision_vector",
+                "c": "cost_vector",
+                "A": "constraint_matrix",
+                "b": "constraint_vector"
+              },
+              "applicable_when": "objective and constraints are linear",
+              "solver": "simplex, interior-point"
+            },
+            "convex_optimization": {
+              "form": "minimize f(x) subject to g_i(x) <= 0, where f and g_i are convex",
+              "variables": {
+                "x": "decision_vector",
+                "f": "convex_objective",
+                "g_i": "convex_constraints"
+              },
+              "applicable_when": "objective and constraints are convex",
+              "solver": "interior-point, gradient descent"
+            },
+            "integer_programming": {
+              "form": "minimize c^T x subject to A*x <= b, x in Z^n",
+              "variables": {
+                "x": "integer_decision_vector"
+              },
+              "applicable_when": "decisions are discrete (e.g., facility location)",
+              "solver": "branch-and-bound, cutting planes"
+            },
+            "stochastic_optimization": {
+              "form": "minimize E[f(x, xi)] subject to g(x, xi) <= 0",
+              "variables": {
+                "x": "decision_vector",
+                "xi": "random_variable"
+              },
+              "applicable_when": "problem has uncertainty that cannot be ignored",
+              "solver": "SAA, scenario decomposition"
+            },
+            "multi_objective_optimization": {
+              "form": "minimize (f1(x), f2(x), ..., fk(x)) simultaneously",
+              "variables": {
+                "x": "decision_vector",
+                "f_i": "objectives"
+              },
+              "applicable_when": "multiple conflicting objectives (e.g., cost vs safety)",
+              "solver": "Pareto-frontier methods, weighted sum"
+            }
+          },
+          "differential_equations": {
+            "ode_first_order": {
+              "form": "dy/dt = f(t, y)",
+              "applicable_when": "rate of change depends on current state",
+              "canonical_solver": "Runge-Kutta 4"
+            },
+            "ode_second_order": {
+              "form": "d2y/dt2 = f(t, y, dy/dt)",
+              "applicable_when": "oscillation, mechanics (F=ma)",
+              "canonical_solver": "Runge-Kutta-Nystr\u00f6m"
+            },
+            "pde_diffusion": {
+              "form": "du/dt = D * div^2 u",
+              "applicable_when": "heat, mass, or information diffusion",
+              "canonical_solver": "finite difference, Crank-Nicolson"
+            },
+            "pde_wave": {
+              "form": "d2u/dt2 = c^2 * div^2 u",
+              "applicable_when": "wave propagation (sound, EM, quantum)",
+              "canonical_solver": "finite difference time-domain"
+            },
+            "pde_laplace": {
+              "form": "div^2 phi = 0",
+              "applicable_when": "steady-state potential (EM, fluid)",
+              "canonical_solver": "successive over-relaxation"
+            },
+            "stochastic_differential": {
+              "form": "dX = mu*dt + sigma*dW",
+              "applicable_when": "noisy dynamics (finance, Brownian motion)",
+              "canonical_solver": "Euler-Maruyama, Milstein"
+            }
+          }
+        },
+        "evidence": {
+          "domain": "medical_imaging",
+          "structure_priors_consulted": [
+            "medical_imaging",
+            "energy",
+            "transportation",
+            "water",
+            "robotics",
+            "sensors",
+            "materials",
+            "chemistry",
+            "superconductivity"
+          ],
+          "structures_matched": [
+            "inverse_problem",
+            "signal_processing",
+            "optimization",
+            "differential_equations"
+          ]
+        },
+        "assumptions": [
+          "Mathematical structure is inferred from the problem domain via a heuristic map. This identifies WHICH mathematical framework applies; it does not SOLVE the problem in that framework."
+        ],
+        "falsification_criteria": "If a mathematician identifies a structural requirement not in this engine's output, the structure prior map is incomplete."
+      },
+      "economics": {
+        "market_structure": {
+          "industries_in_domain": 0,
+          "adoption_model_prior": "s_curve"
+        },
+        "evidence": {
+          "domain": "medical_imaging",
+          "industry_nodes_found": 0
+        },
+        "assumptions": [
+          "Market structure is approximated by counting industry nodes in the graph. This is a proxy, not a market study.",
+          "Adoption model is inferred from the time horizon, not from actual customer-segment data."
+        ],
+        "falsification_criteria": "If a market study for the problem's domain reports a market size or adoption curve inconsistent with this engine's output, the priors are wrong."
+      },
+      "information_theory": {
+        "value": null,
+        "reason": "information_theory_engine not yet implemented; see INVENTION_COMPILER.md module table",
+        "evidence": {
+          "engine_status": "not_implemented"
+        },
+        "assumptions": [],
+        "falsification_criteria": "N/A \u2014 engine missing."
+      },
+      "thermodynamics": {
+        "value": null,
+        "reason": "thermodynamics_engine not yet implemented",
+        "evidence": {
+          "engine_status": "not_implemented"
+        },
+        "assumptions": [],
+        "falsification_criteria": "N/A \u2014 engine missing."
+      },
+      "control_theory": {
+        "value": null,
+        "reason": "control_theory_engine not yet implemented",
+        "evidence": {
+          "engine_status": "not_implemented"
+        },
+        "assumptions": [],
+        "falsification_criteria": "N/A \u2014 engine missing."
+      }
+    },
+    "2": {
+      "prerequisites": [],
+      "adjacent_technologies": [
+        {
+          "id": "domain_mechanical_engineering",
+          "label": "Mechanical Engineering",
+          "type": "domain",
+          "relationship": "contains"
+        }
+      ],
+      "required_materials": [],
+      "required_infrastructure": [],
+      "missing_capabilities": [],
+      "regulatory_constraints": [],
+      "resurrection_opportunities": [
+        {
+          "cemetery_id": "failure_009",
+          "name": "Airships",
+          "resurrection_conditions": [
+            "Heavy-lift cargo (not passenger) applications",
+            "Hybrid airship designs (Lockheed LMH-1, LTA Research)",
+            "Carbon-neutral aviation pressure",
+            "Remote area logistics (no runway needed)",
+            "Modern materials (carbon fiber, advanced envelopes)"
+          ],
+          "applicable": false,
+          "reason": "no prerequisite overlap",
+          "evidence_ref": "evidence/failures/airships.json",
+          "counterfactual": {
+            "what_changed": "if helium had been available in the 1930s instead of hydrogen (hydrogen was used because helium was US-restricted)",
+            "predicted_outcome_if_changed": "partial_resurrection",
+            "rationale": "Helium availability would have removed the Hindenburg flammability failure mode. But airships would still have lost to airplanes on speed. Counterfactual resurrection is partial \u2014 cargo (not passenger) airships may yet succeed (LTA Research, HAV Airlander)."
+          }
+        },
+        {
+          "cemetery_id": "failure_007",
+          "name": "Betamax",
+          "resurrection_conditions": [
+            "Not applicable - format wars are obsolete",
+            "Lesson applies to any platform competition",
+            "Open standards vs proprietary control"
+          ],
+          "applicable": false,
+          "reason": "no prerequisite overlap",
+          "evidence_ref": "evidence/failures/betamax.json",
+          "counterfactual": {
+            "what_changed": "if Sony had licensed Betamax widely (VHS strategy)",
+            "predicted_outcome_if_changed": "partial_resurrection",
+            "rationale": "Licensing would have removed the format-war loss, but physical-media videocassettes were obsoleted by streaming regardless. Counterfactual change would have extended Betamax's life, not prevented its eventual obsolescence."
+          }
+        },
+        {
+          "cemetery_id": "failure_003",
+          "name": "Concorde",
+          "resurrection_conditions": [
+            "Quiet supersonic technology (NASA X-59)",
+            "Sustainable aviation fuel",
+            "Carbon-neutral operations",
+            "Overland supersonic regulatory approval"
+          ],
+          "applicable": false,
+          "reason": "no prerequisite overlap",
+          "evidence_ref": "evidence/failures/concorde.json",
+          "counterfactual": {
+            "what_changed": "if fuel prices had not risen 4x in the 1970s and noise regulations had not banned supersonic overland flight",
+            "predicted_outcome_if_changed": "partial_resurrection",
+            "rationale": "Removing fuel-cost and noise-regulation pressures would have made Concorde economically viable longer, but speed alone is no longer a competitive advantage vs subsonic business class. Resurrection is partial \u2014 Boom Supersonic is trying, but for premium niche, not mass transport."
+          }
+        },
+        {
+          "cemetery_id": null,
+          "name": null,
+          "resurrection_conditions": [],
+          "applicable": false,
+          "reason": "no prerequisite overlap",
+          "evidence_ref": "evidence/failures/.json",
+          "counterfactual": {
+            "what_changed": "no specific counterfactual encoded",
+            "predicted_outcome_if_changed": "unknown",
+            "rationale": "No hand-curated counterfactual for this failure. Resurrection applicability based on keyword overlap only."
+          }
+        },
+        {
+          "cemetery_id": "failure_002",
+          "name": "Google Glass",
+          "resurrection_conditions": [
+            "Indistinguishable from normal glasses",
+            "Enterprise-first deployment",
+            "Clear ROI for specific workflows",
+            "Privacy-by-design architecture"
+          ],
+          "applicable": false,
+          "reason": "no prerequisite overlap",
+          "evidence_ref": "evidence/failures/google_glass.json",
+          "counterfactual": {
+            "what_changed": "if social acceptance of always-on cameras existed in 2014",
+            "predicted_outcome_if_changed": "partial_resurrection",
+            "rationale": "Social acceptance would have removed the privacy-stigma failure mode, but the form factor was also ergonomically flawed. Resurrection is partial \u2014 AR headsets (Meta Ray-Ban, Apple Vision Pro) succeed in a different form."
+          }
+        },
+        {
+          "cemetery_id": "failure_008",
+          "name": "HD-DVD",
+          "resurrection_conditions": [
+            "Not applicable - physical media declining",
+            "Lesson applies to any transitional technology",
+            "Don't fight the last war"
+          ],
+          "applicable": false,
+          "reason": "no prerequisite overlap",
+          "evidence_ref": "evidence/failures/hd-dvd.json",
+          "counterfactual": {
+            "what_changed": "if Sony had not bundled Blu-ray into PlayStation 3",
+            "predicted_outcome_if_changed": "partial_resurrection",
+            "rationale": "Without PS3 bundling, the format war might have gone differently. But both formats lost to streaming. Counterfactual change would have extended HD-DVD's life, not prevented obsolescence."
+          }
+        },
+        {
+          "cemetery_id": "failure_006",
+          "name": "Iridium",
+          "resurrection_conditions": [
+            "IoT and M2M communications (not consumer voice)",
+            "Maritime, aviation, military, remote monitoring",
+            "Lower orbit constellations (Starlink, OneWeb)",
+            "Integration with terrestrial networks"
+          ],
+          "applicable": false,
+          "reason": "no prerequisite overlap",
+          "evidence_ref": "evidence/failures/iridium.json",
+          "counterfactual": {
+            "what_changed": "if IoT demand for satellite connectivity had existed in 1999",
+            "predicted_outcome_if_changed": "resurrected",
+            "rationale": "Iridium's failure was timing \u2014 the market for global satellite connectivity didn't exist in 1999. When IoT demand materialized, Iridium Communications relaunched and now operates profitably. Counterfactual confirmed: this is a real resurrection."
+          }
+        },
+        {
+          "cemetery_id": "failure_005",
+          "name": "Quibi",
+          "resurrection_conditions": [
+            "AI-generated personalized short-form content",
+            "Interactive narrative formats",
+            "Integrated with social platforms rather than competing",
+            "Creator-first economics"
+          ],
+          "applicable": false,
+          "reason": "no prerequisite overlap",
+          "evidence_ref": "evidence/failures/quibi.json",
+          "counterfactual": {
+            "what_changed": "if TikTok had not already captured short-form mobile video",
+            "predicted_outcome_if_changed": "partial_resurrection",
+            "rationale": "Without TikTok as substitute, Quibi's premium-content model might have found a niche. But the underlying assumption (people want 10-minute premium mobile video) was wrong regardless. Partial resurrection only."
+          }
+        },
+        {
+          "cemetery_id": "failure_001",
+          "name": "Segway",
+          "resurrection_conditions": [
+            "Autonomous balance and navigation",
+            "Sub-$500 price point",
+            "Integrated with public transit",
+            "Foldable and portable"
+          ],
+          "applicable": false,
+          "reason": "no prerequisite overlap",
+          "evidence_ref": "evidence/failures/segway.json",
+          "counterfactual": {
+            "what_changed": "if e-scooter sharing model existed in 2001 (eliminating ownership burden)",
+            "predicted_outcome_if_changed": "partial_resurrection",
+            "rationale": "The sharing model removes Segway's ownership-burden failure mode, but the Segway form factor itself was replaced by smaller, cheaper e-scooters. Resurrection is partial \u2014 the category survived, the specific product did not."
+          }
+        },
+        {
+          "cemetery_id": "failure_004",
+          "name": "Theranos",
+          "resurrection_conditions": [
+            "Legitimate microfluidic multi-analyte platforms",
+            "Transparent peer-reviewed validation",
+            "Regulatory compliance from day one",
+            "Incremental capability claims"
+          ],
+          "applicable": false,
+          "reason": "no prerequisite overlap",
+          "evidence_ref": "evidence/failures/theranos.json",
+          "counterfactual": {
+            "what_changed": "if the underlying physics of single-drop diagnostics worked at consumer accuracy",
+            "predicted_outcome_if_changed": "not_resurrected",
+            "rationale": "The failure was not environmental \u2014 it was scientific. Single-drop diagnostics at the claimed accuracy violated the physics of sample volume vs measurement noise. No counterfactual change in market, regulation, or timing would have made the underlying claim true."
+          }
+        }
+      ],
+      "evidence": {
+        "target_node_id": "system_hvac_system",
+        "chain_depth": 0,
+        "prerequisite_count": 0,
+        "missing_count": 0,
+        "classification": {
+          "root": 1
+        },
+        "causal_classifications": {
+          "necessary": 0,
+          "sufficient": 0,
+          "contributing": 0,
+          "unknown": 0
+        },
+        "failure_records_examined": 10,
+        "applicable_resurrections": 0,
+        "prerequisites_examined": 0,
+        "counterfactual_table_size": 9,
+        "differentiation_basis": "specific_historical_counterfactual_per_failure"
+      },
+      "assumptions": [
+        "Causal classification is heuristic: principle/process prereqs are 'necessary'; component prereqs are 'contributing' if multiple exist. This is a prior; real causal analysis requires domain expertise.",
+        "Counterfactual analysis approximates 'viability' by checking constraint coverage: if removing a prereq leaves some constraint uncovered by any other prereq, the removed prereq was necessary. This is a proxy for true viability.",
+        "Counterfactuals are hand-curated per failure, encoding domain knowledge about which historical variable was the binding constraint. They are not derived from the graph.",
+        "Resurrection applicability (keyword overlap) is a separate signal from the counterfactual prediction. A failure may have a documented counterfactual even if no prerequisite overlap exists."
+      ],
+      "falsification_criteria": "If an expert identifies a prerequisite as necessary that this engine classified as contributing (or vice versa), the causal-classification heuristic is wrong for that edge type. || If a real resurrection attempt for the failure contradicts the predicted_outcome_if_changed, the counterfactual was wrong. Sample size for recalibration: >= 5 resurrections per failure category."
+    },
+    "3": {
+      "governing_equations": [
+        {
+          "name": "ampere law",
+          "form": "B = mu_0 * I / (2*pi*r)",
+          "variables": [
+            "B",
+            "mu_0",
+            "I",
+            "r"
+          ]
+        }
+      ],
+      "boundary_conditions": {
+        "value": null,
+        "reason": "boundary conditions require problem-specific physics analysis not yet implemented",
+        "evidence": {
+          "engine_status": "stub"
+        },
+        "assumptions": [],
+        "falsification_criteria": "N/A \u2014 engine missing."
+      },
+      "assumptions": [
+        "Failure modes are derived from constraint keywords via a small prior map. Real failure modes require FMEA.",
+        "Optimization targets are derived from the problem's stated constraints. Implicit targets (e.g., 'minimize complexity') are not captured."
+      ],
+      "failure_modes": [
+        "cost_overrun",
+        "regulatory_rejection",
+        "manufacturing_yield_too_low",
+        "stress_scenario_composite=0.4895",
+        "stress_scenario_composite=0.4961"
+      ],
+      "optimization_targets": [
+        "minimize_cost",
+        "minimize_weight",
+        "minimize_energy",
+        "maximize_safety_margin"
+      ],
+      "evidence": {
+        "principles_examined": 14,
+        "laws_examined": 5,
+        "equations_proposed": 1,
+        "prior_map_keys": [
+          "centrifugal_force",
+          "bernoulli_principle",
+          "heat_transfer",
+          "electromagnet",
+          "magnet",
+          "feedback_control",
+          "oscillation",
+          "diffusion",
+          "superconduct"
+        ],
+        "constraints_aggregated": [
+          "cost",
+          "weight",
+          "power",
+          "regulation",
+          "manufacturing"
+        ],
+        "constraint_count": 5,
+        "failure_mode_count": 3
+      },
+      "falsification_criteria": "If a governing equation derived from first principles is not in this engine's output, the prior map is incomplete OR the physics principle was not surfaced by Layer 1. || If an FMEA on the candidate invention surfaces a failure mode not in this engine's output, the failure-mode prior map is incomplete."
+    },
+    "4": {
+      "subsystems": [
+        "subsystem_for_cost",
+        "subsystem_for_regulation",
+        "subsystem_for_manufacturing"
+      ],
+      "interfaces": [
+        "subsystem_for_cost <-> subsystem_for_regulation",
+        "subsystem_for_cost <-> subsystem_for_manufacturing",
+        "subsystem_for_regulation <-> subsystem_for_manufacturing"
+      ],
+      "inputs": {
+        "problem_constraints": [
+          "cost",
+          "weight",
+          "power",
+          "regulation",
+          "manufacturing"
+        ],
+        "time_horizon": "5-10 years",
+        "domain": "medical_imaging"
+      },
+      "outputs": {
+        "primary_output": "Build a portable MRI scanner suitable for rural clinics without cryogenic helium",
+        "evidence_quality": "replayable_per_law_8"
+      },
+      "tolerances": {
+        "cost": "\u00b115% of capex estimate",
+        "regulation": "binary (pass/fail)",
+        "manufacturing": "\u00b13% yield"
+      },
+      "energy_requirements": {
+        "budget_tight": false,
+        "tolerance": "not specified",
+        "estimated_watts": "depends_on_application"
+      },
+      "computational_requirements": {
+        "class": "moderate",
+        "note": "Real computational requirements depend on the governing equations from Layer 3 and the simulation approach from Layer 5."
+      },
+      "evidence": {
+        "subsystem_count": 3,
+        "interface_count": 3,
+        "tolerance_count": 3
+      },
+      "assumptions": [
+        "Subsystems are provisionally named after the constraints they manage plus the system node from the prerequisite chain. Real subsystem decomposition requires a formal architecture review.",
+        "Interfaces are enumerated pairwise among the first 5 subsystems. Real systems have more interfaces than this.",
+        "Energy and computational requirements are placeholder estimates pending Layer 3 (governing equations) and Layer 5 (simulation)."
+      ],
+      "falsification_criteria": "If a real architecture review identifies subsystems or interfaces not in this engine's output, the prerequisite chain has a coverage gap or the subsystem decomposition heuristic is wrong."
+    },
+    "5": {
+      "monte_carlo": {
+        "n_samples": 200,
+        "composite": {
+          "mean": 0.5531,
+          "std": 0.0254,
+          "p5": 0.5102,
+          "p50": 0.553,
+          "p95": 0.5946,
+          "min": 0.4895,
+          "max": 0.6119
+        },
+        "technical": {
+          "mean": 0.6675,
+          "std": 0.0577,
+          "p5": 0.5731,
+          "p50": 0.6789,
+          "p95": 0.7523,
+          "min": 0.5577,
+          "max": 0.757
+        },
+        "economic": {
+          "mean": 0.52,
+          "std": 0.0575,
+          "p5": 0.4323,
+          "p50": 0.5217,
+          "p95": 0.6149,
+          "min": 0.4232,
+          "max": 0.6215
+        },
+        "regulatory": {
+          "mean": 0.4692,
+          "std": 0.0551,
+          "p5": 0.3807,
+          "p50": 0.4713,
+          "p95": 0.5563,
+          "min": 0.3681,
+          "max": 0.5658
+        },
+        "manufacturing": {
+          "mean": 0.5368,
+          "std": 0.0584,
+          "p5": 0.4513,
+          "p50": 0.5385,
+          "p95": 0.6264,
+          "min": 0.4373,
+          "max": 0.6369
+        },
+        "adoption": {
+          "mean": 0.474,
+          "std": 0.0589,
+          "p5": 0.3814,
+          "p50": 0.4756,
+          "p95": 0.5634,
+          "min": 0.3721,
+          "max": 0.5717
+        }
+      },
+      "sensitivity_analysis": {
+        "technical": 0.6815,
+        "economic": 0.4528,
+        "regulatory": 0.3254,
+        "manufacturing": 0.4598,
+        "adoption": 0.3478
+      },
+      "stress_testing": [
+        {
+          "technical_feasibility": 0.5731,
+          "economic_feasibility": 0.43,
+          "regulatory_feasibility": 0.4534,
+          "manufacturing_feasibility": 0.5015,
+          "adoption_probability": 0.4221,
+          "composite": 0.4895
+        },
+        {
+          "technical_feasibility": 0.6011,
+          "economic_feasibility": 0.4659,
+          "regulatory_feasibility": 0.4542,
+          "manufacturing_feasibility": 0.4428,
+          "adoption_probability": 0.4392,
+          "composite": 0.4961
+        },
+        {
+          "technical_feasibility": 0.5712,
+          "economic_feasibility": 0.4696,
+          "regulatory_feasibility": 0.5008,
+          "manufacturing_feasibility": 0.4798,
+          "adoption_probability": 0.3985,
+          "composite": 0.4961
+        }
+      ],
+      "parameter_ranges": {
+        "perturbation_model": "uniform +/-10% on each feasibility dimension",
+        "n_dimensions_perturbed": 5,
+        "rng_seed": 42
+      },
+      "evidence": {
+        "baseline_composite": 0.5497,
+        "baseline_composite_before_penalty": 0.6827,
+        "baseline_technical": 0.657,
+        "target_node_id": "system_hvac_system",
+        "rng_seed": 42,
+        "n_samples": 200,
+        "applicable_law_count": 5,
+        "complexity_penalty_applied": 0.19,
+        "governing_equations_count": 1,
+        "failure_modes_count": 3,
+        "missing_capabilities_count": 0,
+        "prerequisite_chain_depth": 0,
+        "domain_complexity": 0.04,
+        "penalty_breakdown": {
+          "applicable_laws": 0.08,
+          "governing_equations": 0.025,
+          "failure_modes": 0.045,
+          "missing_capabilities": 0.0,
+          "prerequisite_chain_depth": 0.0,
+          "domain_complexity": 0.04,
+          "keyword_signals": 0.0
+        },
+        "penalty_basis": "GAP 1 FIX: multi-signal complexity. Per-signal: applicable_laws (0.04 each above 3) + governing_equations (0.025 each) + failure_modes (0.015 each) + missing_capabilities (0.02 each) + prerequisite_chain_depth (0.015 each) + domain_complexity (per-domain prior) + keyword_signals (per-keyword prior). Cap: 0.65."
+      },
+      "assumptions": [
+        "Perturbations are uniform +/-10% on each feasibility dimension. Real input distributions are not uniform; this is a coarse sensitivity probe, not a calibrated uncertainty model.",
+        "Composite is recomputed as a weighted average using FeasibilityScorer's weights. If those weights are wrong, the distribution is wrong.",
+        "Random seed is fixed at 42 for replayability (Law 7)."
+      ],
+      "falsification_criteria": "If a real uncertainty analysis (e.g., Bayesian inference on historical invention outcomes) produces distributions that disagree with these by more than 2 sigma, the perturbation model is wrong and must be replaced with a calibrated one."
+    },
+    "6": {
+      "materials": [],
+      "suppliers": "NOT_IN_GRAPH \u2014 supplier data requires external integration",
+      "tooling": [],
+      "assembly": "integrated_assembly_assumed",
+      "quality_control": [
+        "functional_test"
+      ],
+      "scaling_constraints": [],
+      "evidence": {
+        "material_count": 0,
+        "tooling_count": 0,
+        "constraint_count": 0
+      },
+      "assumptions": [
+        "Supplier data is NOT in the civilization graph. This engine flags the gap honestly rather than fabricating supplier names.",
+        "Assembly strategy is inferred from component count. Real assembly decisions require DFM analysis."
+      ],
+      "falsification_criteria": "If a real manufacturing analysis surfaces materials, tooling, or scaling constraints not in this engine's output, the prior maps are incomplete or the graph has a coverage gap."
+    },
+    "7": {
+      "capex": {
+        "value_usd_m": 22.52,
+        "model": "linear_in_(1-composite_feasibility)"
+      },
+      "opex": {
+        "value_usd_m_per_y": 4.5,
+        "model": "20%_of_capex"
+      },
+      "cost_curve": {
+        "model": "wright_law",
+        "learning_rate": 0.85,
+        "form": "unit_cost(q) = c0 * q^log2(0.85)"
+      },
+      "market_size": {
+        "value_usd_m": 1.0,
+        "bucket_source": "industry_node_count"
+      },
+      "adoption_model": "s_curve",
+      "evidence": {
+        "industry_count": 0,
+        "feasibility_composite_used": 0.5497,
+        "market_size_bucket_source": "industry_node_count",
+        "capex_model": "linear_in_(1-composite_feasibility)",
+        "opex_model": "20%_of_capex"
+      },
+      "assumptions": [
+        "Capex is a linear function of (1 - composite feasibility). This is a coarse prior; real capex depends on tooling, regulatory pathway, and supply chain.",
+        "Opex is assumed to be 20% of capex annually. Real ratios vary by industry from 5% (capital-intensive) to 50% (service-intensive).",
+        "Market size is bucketed by industry-node count in the graph. This is a proxy for actual market research.",
+        "Cost curve assumes Wright's Law with a 15% learning rate. Real learning rates range from 10% to 30% by industry."
+      ],
+      "falsification_criteria": "If a real capex/opex/market study for a comparable invention disagrees with these estimates by more than 2x, the priors must be recalibrated. Sample size for recalibration: >= 10 comparable inventions."
+    },
+    "8": {
+      "hypothesis": "The candidate invention will achieve technical feasibility >= 0.70 within 5-10 years, given the prerequisite chain is complete and no regulatory blocker materializes.",
+      "experiments": [
+        {
+          "id": "exp_cost_overrun",
+          "purpose": "determine whether cost_overrun is a real risk",
+          "method": "stress_test_against_cost_overrun",
+          "expected_duration": "3-6 months per experiment"
+        },
+        {
+          "id": "exp_regulatory_rejection",
+          "purpose": "determine whether regulatory_rejection is a real risk",
+          "method": "stress_test_against_regulatory_rejection",
+          "expected_duration": "3-6 months per experiment"
+        },
+        {
+          "id": "exp_manufacturing_yield_too_low",
+          "purpose": "determine whether manufacturing_yield_too_low is a real risk",
+          "method": "stress_test_against_manufacturing_yield_too_low",
+          "expected_duration": "3-6 months per experiment"
+        },
+        {
+          "id": "exp_prototype_v1",
+          "purpose": "determine whether the candidate can be built at all",
+          "method": "build_minimum_viable_prototype",
+          "expected_duration": "6-12 months"
+        }
+      ],
+      "measurements": [
+        {
+          "metric": "technical_feasibility_observed",
+          "target": ">= 0.70",
+          "instrument": "expert_panel_review"
+        },
+        {
+          "metric": "cost_per_unit_observed",
+          "target": "<= capex_estimate / 1000",
+          "instrument": "cost_accounting"
+        },
+        {
+          "metric": "time_to_first_prototype_observed",
+          "target": "<= 5-10 years",
+          "instrument": "project_tracker"
+        },
+        {
+          "metric": "regulatory_approval_status",
+          "target": "approved_or_withdrawn",
+          "instrument": "regulatory_filing_tracker"
+        }
+      ],
+      "success_criteria": [
+        "All failure-mode experiments return 'risk_acceptable'.",
+        "Prototype v1 builds successfully and meets primary_output spec.",
+        "Technical feasibility observed >= 0.70 within 5-10 years.",
+        "Composite feasibility from simulation's p50 >= 0.60."
+      ],
+      "failure_criteria": [
+        "Any failure-mode experiment returns 'risk_unacceptable' AND no mitigation is identified.",
+        "Prototype v1 cannot be built within 2x the estimated time.",
+        "Technical feasibility observed < 0.40 after 5-10 years.",
+        "Regulatory approval is denied with no appeal path."
+      ],
+      "evidence": {
+        "feasibility_composite_used": 0.5497,
+        "failure_modes_addressed": 3,
+        "simulation_p50_composite": 0.553
+      },
+      "assumptions": [
+        "The hypothesis is a prediction. It is NOT verified until the experiments are run and outcomes recorded in the ledger.",
+        "Failure-mode experiments are derived from Layer 3's failure modes. If Layer 3 is incomplete, this layer is incomplete.",
+        "Success/failure thresholds (0.70, 0.40) are priors. They should be recalibrated as the verification cycle accumulates outcomes."
+      ],
+      "falsification_criteria": "If the candidate passes the success_criteria but the invention fails to achieve commercial adoption within the stated time horizon, the success criteria are too lenient and must be tightened. Sample size for recalibration: >= 10 verified inventions."
+    },
+    "9": {
+      "prototype_v1": {
+        "name": "prototype_v1_physics_validation",
+        "goal": "prove the core mechanism works at lab scale",
+        "scope": "single subsystem, no integration, no manufacturability",
+        "success_threshold": "core mechanism reproduces predicted output within 30%",
+        "estimated_duration_months": 6,
+        "estimated_cost_usd_m": 0.27
+      },
+      "prototype_v2": {
+        "name": "prototype_v2_engineering_integration",
+        "goal": "prove the subsystems integrate into a working system",
+        "scope": "all subsystems, no manufacturing pathway, no regulatory submission",
+        "success_threshold": "integrated prototype meets primary_output spec at 50% of target performance",
+        "estimated_duration_months": 12,
+        "estimated_cost_usd_m": 1.1
+      },
+      "prototype_v3": {
+        "name": "prototype_v3_production_readiness",
+        "goal": "prove the manufacturing pathway and cost model hold",
+        "scope": "production-intent prototype, pilot manufacturing run, regulatory pre-submission",
+        "success_threshold": "unit cost within 2x of cost_curve target; regulatory pre-submission accepted",
+        "estimated_duration_months": 18,
+        "estimated_cost_usd_m": 4.4
+      },
+      "timeline": {
+        "total_months": 36,
+        "total_years": 3.0,
+        "fits_within_horizon": true,
+        "phases": [
+          {
+            "phase": "v1",
+            "start_month": 0,
+            "end_month": 6
+          },
+          {
+            "phase": "v2",
+            "start_month": 6,
+            "end_month": 18
+          },
+          {
+            "phase": "v3",
+            "start_month": 18,
+            "end_month": 36
+          }
+        ]
+      },
+      "evidence": {
+        "feasibility_composite_used": 0.5497,
+        "prerequisite_count": 0,
+        "horizon": "5-10 years"
+      },
+      "assumptions": [
+        "Prototype stages follow the canonical physics -> engineering -> manufacturing progression. Real projects sometimes collapse v1+v2 or skip v3 entirely depending on funding.",
+        "Estimated durations scale with prerequisite count \u2014 more prerequisites means more integration risk, so v2 and v3 take longer. This is a coarse linear prior.",
+        "Cost estimates scale with composite feasibility \u2014 higher feasibility means lower cost (proven tech stack). This is the same prior as the economics engine's capex model."
+      ],
+      "falsification_criteria": "If a real prototype program for the candidate takes more than 2x the estimated duration, the duration prior is wrong and must be recalibrated. Sample size: >= 5 comparable prototype programs."
+    },
+    "10": {
+      "blueprint": {
+        "problem": "Build a portable MRI scanner suitable for rural clinics without cryogenic helium",
+        "domain": "medical_imaging",
+        "target_invention": "Build a portable MRI scanner suitable for rural clinics without cryogenic helium",
+        "prerequisite_chain_depth": 0,
+        "governing_equations": [
+          {
+            "name": "ampere law",
+            "form": "B = mu_0 * I / (2*pi*r)",
+            "variables": [
+              "B",
+              "mu_0",
+              "I",
+              "r"
+            ]
+          }
+        ],
+        "subsystems": [
+          "subsystem_for_cost",
+          "subsystem_for_regulation",
+          "subsystem_for_manufacturing"
+        ],
+        "composite_feasibility": 22.52,
+        "prototype_stages": [
+          "prototype_v1_physics_validation",
+          "prototype_v2_engineering_integration",
+          "prototype_v3_production_readiness"
+        ],
+        "total_prototype_timeline_years": 3.0
+      },
+      "patent_landscape": [
+        {
+          "related_node": "Telemedicine",
+          "structural_overlap": 0.375,
+          "note": "Structural overlap is a proxy for patent overlap, not a substitute for a real patent search."
+        },
+        {
+          "related_node": "Soft Robotics",
+          "structural_overlap": 0.25,
+          "note": "Structural overlap is a proxy for patent overlap, not a substitute for a real patent search."
+        },
+        {
+          "related_node": "Agricultural Robotics",
+          "structural_overlap": 0.25,
+          "note": "Structural overlap is a proxy for patent overlap, not a substitute for a real patent search."
+        },
+        {
+          "related_node": "Cyclonic Separation",
+          "structural_overlap": 0.2,
+          "note": "Structural overlap is a proxy for patent overlap, not a substitute for a real patent search."
+        },
+        {
+          "related_node": "Aerodynamics",
+          "structural_overlap": 0.2,
+          "note": "Structural overlap is a proxy for patent overlap, not a substitute for a real patent search."
+        }
+      ],
+      "technical_risks": [
+        "cost_overrun",
+        "regulatory_rejection",
+        "manufacturing_yield_too_low",
+        "stress_scenario_composite=0.4895",
+        "stress_scenario_composite=0.4961"
+      ],
+      "commercial_risks": [
+        "market_size_too_small_to_justify_capex",
+        "capex_exceeds_half_of_market_size",
+        "s_curve_adoption_extends_payback_period"
+      ],
+      "recommended_actions": [
+        "Verify the prerequisite chain is complete (Layer 2).",
+        "Run the proposed experiments in Layer 8; record outcomes in the ledger per Law 8.",
+        "Build prototype v1 (physics validation) per Layer 9.",
+        "If v1 succeeds, commit to prototype v2 budget per Layer 7's capex estimate.",
+        "Engage regulatory counsel before v3 (Layer 4's regulatory constraints + Layer 8's regulatory measurement)."
+      ],
+      "evidence": {
+        "layers_composed": 11,
+        "patent_analogies_count": 5,
+        "technical_risk_count": 5,
+        "commercial_risk_count": 3
+      },
+      "assumptions": [
+        "The blueprint is a STRUCTURED SUMMARY of the 10 preceding layers, not a separate analysis. If the layers are wrong, the blueprint is wrong.",
+        "Patent landscape is proxied by structural-overlap analogies from Layer 0. Real patent landscape analysis requires a patent database.",
+        "Recommended actions are generic. Real action plans require domain-specific sequencing."
+      ],
+      "falsification_criteria": "If an engineer cannot start building the invention from this blueprint, the blueprint is incomplete. The blueprint must be revised to fill the gap. This engine does NOT verify the blueprint is buildable \u2014 that is the verification_engine's job (Layer 8 + the verification cycle in scripts/run_verification_cycle.py)."
+    }
+  }
+}

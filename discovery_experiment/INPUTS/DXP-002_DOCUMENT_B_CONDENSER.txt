@@ -1,0 +1,57 @@
+Dew Condenser Surface Design for Atmospheric Water Generation
+
+Problem Statement
+
+Arid coastal regions (such as the Atacama Desert in Chile, the Namib Desert in Namibia, and coastal areas of Oman and Peru) experience regular fog events but receive almost no rain. These regions have populations that face chronic water scarcity. Atmospheric water generation (AWG) through passive dew condensation is a potential solution: specially designed surfaces can collect water from humid air without requiring energy input.
+
+Current Approaches
+
+The standard approach uses large flat sheets of infrared-emitting foil (typically 10-100 m²) mounted on frames. The foil radiates heat to the cold night sky, dropping below the dew point temperature. Water condenses on the surface and drains into collection troughs.
+
+Current standard dew condensers achieve collection rates of approximately 0.1-0.3 liters/m²/night in favorable conditions. This is barely sufficient for household use and is not cost-effective for agricultural or community-scale water supply.
+
+Limitations
+
+1. Low yield: Flat surfaces have poor nucleation efficiency. Droplets form randomly across the surface, and many re-evaporate before reaching the collection trough.
+
+2. Film condensation problem: On flat hydrophilic surfaces, water tends to form a continuous film rather than discrete droplets. Film condensation has a 5-10x lower heat transfer coefficient than dropwise condensation, reducing the surface's ability to cool below the dew point.
+
+3. Poor drainage: On flat surfaces, collected water spreads and pools, creating a thermal insulating layer that further reduces condensation efficiency.
+
+4. Surface degradation: The foil surfaces degrade under UV exposure and dust accumulation, losing their radiative cooling properties within 2-3 years.
+
+5. No optimization: Most installations use commercially available foil with no surface optimization for the specific fog/dew conditions of the site.
+
+Specific Context
+
+The target deployment is a coastal desert community (200 households) that experiences:
+- Fog events approximately 200 days per year
+- Average fog liquid water content: 0.3 g/m³
+- Nighttime temperature: 10-18°C
+- Nighttime relative humidity: 85-100%
+- Wind speed during fog events: 2-5 m/s
+- Annual rainfall: < 10 mm
+
+Constraints
+
+- Passive system only — no energy input, no active refrigeration
+- Surface area: ≤ 10 m² per unit (modular, deployable by 2 people)
+- Must survive 5+ years outdoors with minimal maintenance
+- Collection rate target: at least 1.0 liter/m²/night (3x improvement over standard flat foil)
+- Materials cost: ≤ $50/m²
+- Must not require precision manufacturing (tolerance ±0.1 mm maximum)
+- Must drain collected water to a single collection point
+- Must not contaminate collected water (food-grade materials)
+
+What Is Needed
+
+A surface design that:
+1. Promotes dropwise condensation (not film condensation) for higher heat transfer
+2. Nucleates droplets efficiently at the given fog density and temperature range
+3. Transports collected droplets to a drainage point rapidly (before re-evaporation)
+4. Is manufacturable from durable, low-cost materials
+5. Does not require energy input or active control
+6. Can be produced and deployed by non-specialists
+7. Maintains performance over 5+ years of outdoor exposure
+
+The design should be based on physical principles that can be quantitatively predicted, not trial-and-error. The proposal should specify the surface geometry, materials, and expected collection rate, with a physical justification for why the design should outperform flat foil.

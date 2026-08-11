@@ -1,0 +1,123 @@
+{
+  "workstream": "Patents",
+  "status": "active",
+  "created_at": "2026-08-01T09:16:03.478227+00:00",
+  "target": "100 patents, 10 domains, 3 reviewers",
+  "completed": 10,
+  "entries": [
+    {
+      "patent_id": "US5910382A",
+      "url": "https://patents.google.com/patent/US5910382A/en",
+      "title": "Cathode materials for secondary (rechargeable) lithium batteries",
+      "expected_title": "Cathode materials for secondary (rechargeable) lithium batteries",
+      "domain_hint": "LFP cathode (lithium iron phosphate) \u2014 Goodenough's foundational patent",
+      "fetch_status": "OK",
+      "retrieval_date": "2026-08-04",
+      "file_path": "/home/z/my-project/audit/repo/data/ingestion/patents/US5910382A.txt",
+      "file_size_bytes": 6065
+    },
+    {
+      "patent_id": "US8367233B2",
+      "url": "https://patents.google.com/patent/US8367233B2/en",
+      "title": "Battery pack enclosure with controlled thermal runaway release system",
+      "expected_title": "Battery pack enclosure with controlled thermal runaway release system",
+      "domain_hint": "EV battery pack thermal management (Tesla)",
+      "fetch_status": "OK",
+      "retrieval_date": "2026-08-04",
+      "file_path": "/home/z/my-project/audit/repo/data/ingestion/patents/US8367233B2.txt",
+      "file_size_bytes": 6144
+    },
+    {
+      "patent_id": "US7671565B2",
+      "url": "https://patents.google.com/patent/US7671565B2/en",
+      "title": "Battery pack and method for protecting batteries",
+      "expected_title": "Battery pack and method for protecting",
+      "domain_hint": "Battery pack overcurrent protection via wire-bond fuses",
+      "fetch_status": "OK",
+      "retrieval_date": "2026-08-04",
+      "file_path": "/home/z/my-project/audit/repo/data/ingestion/patents/US7671565B2.txt",
+      "file_size_bytes": 5923
+    },
+    {
+      "patent_id": "US9139429B2",
+      "url": "https://patents.google.com/patent/US9139429B2/en",
+      "title": "High performance cathode material LiFePO4, its precursors and methods of making thereof",
+      "expected_title": "High performance cathode material LiFePO4",
+      "domain_hint": "Improved LFP cathode synthesis",
+      "fetch_status": "OK",
+      "retrieval_date": "2026-08-04",
+      "file_path": "/home/z/my-project/audit/repo/data/ingestion/patents/US9139429B2.txt",
+      "file_size_bytes": 5680
+    },
+    {
+      "patent_id": "US9413006B2",
+      "url": "https://patents.google.com/patent/US9413006B2/en",
+      "title": "US9413006B2 - Lithium manganese phosphate/carbon nanocomposites as cathode active materials for secondary lithium batteries - Google Patents",
+      "expected_title": "Lithium manganese phosphate/carbon nanocomposites",
+      "domain_hint": "Lithium manganese phosphate cathode (LMP variant)",
+      "fetch_status": "OK",
+      "retrieval_date": "2026-08-04",
+      "file_path": "/home/z/my-project/audit/repo/data/ingestion/patents/US9413006B2.txt",
+      "file_size_bytes": 5760
+    },
+    {
+      "patent_id": "US20120058039A1",
+      "url": "https://patents.google.com/patent/US20120058039A1/en",
+      "title": "HIGH PERFORMANCE CATHODE MATERIAL LiFePO4, ITS PRECURSORS AND METHODS OF MAKING THEREOF",
+      "expected_title": "LFP (lithium iron phosphate) positive electrode material",
+      "domain_hint": "LFP positive electrode material (application, not grant)",
+      "fetch_status": "OK",
+      "retrieval_date": "2026-08-04",
+      "file_path": "/home/z/my-project/audit/repo/data/ingestion/patents/US20120058039A1.txt",
+      "file_size_bytes": 5733
+    },
+    {
+      "patent_id": "US12548803B2",
+      "url": "https://patents.google.com/patent/US12548803B2/en",
+      "title": "Regeneration of electrodes by recycling spent rechargeable lithium batteries",
+      "expected_title": "Regeneration of electrodes by recycling",
+      "domain_hint": "Battery electrode recycling / regeneration",
+      "fetch_status": "OK",
+      "retrieval_date": "2026-08-04",
+      "file_path": "/home/z/my-project/audit/repo/data/ingestion/patents/US12548803B2.txt",
+      "file_size_bytes": 6118
+    },
+    {
+      "patent_id": "WO2022133585A1",
+      "url": "https://patents.google.com/patent/WO2022133585A1/en",
+      "title": "Recovery of metals from materials containing lithium and iron",
+      "expected_title": "Recovery of metals from materials containing lithium and iron",
+      "domain_hint": "Lithium battery recycling (PCT application)",
+      "fetch_status": "OK",
+      "retrieval_date": "2026-08-04",
+      "file_path": "/home/z/my-project/audit/repo/data/ingestion/patents/WO2022133585A1.txt",
+      "file_size_bytes": 6600
+    },
+    {
+      "patent_id": "WO2022144917A1",
+      "url": "https://patents.google.com/patent/WO2022144917A1/en",
+      "title": "Method of producing in-situ carbon coated lithium iron phosphate cathode material for lithium-ion batteries and the product thereof",
+      "expected_title": "Method of producing in-situ carbon coated lithium iron phosphate",
+      "domain_hint": "Carbon-coated LFP cathode production",
+      "fetch_status": "OK",
+      "retrieval_date": "2026-08-04",
+      "file_path": "/home/z/my-project/audit/repo/data/ingestion/patents/WO2022144917A1.txt",
+      "file_size_bytes": 6643
+    },
+    {
+      "patent_id": "US6617075B2",
+      "url": "https://patents.google.com/patent/US6617075B2/en",
+      "title": "Lithium-ion battery",
+      "expected_title": "Lithium-ion battery",
+      "domain_hint": "Lithium-ion battery (generic cell design)",
+      "fetch_status": "OK",
+      "retrieval_date": "2026-08-04",
+      "file_path": "/home/z/my-project/audit/repo/data/ingestion/patents/US6617075B2.txt",
+      "file_size_bytes": 6259
+    }
+  ],
+  "metrics": {},
+  "fabricated_files_deleted": [],
+  "last_updated": "2026-08-04T00:13:07.178824Z",
+  "status_note": "F-043 RESOLVED: 10 fabricated files with sequential IDs (US-10123456 through US-11012345, +111,111 pattern) replaced with 10 real USPTO/PCT patents with verifiable URLs. Per PR-20: new IDs do not form an arithmetic sequence. Per PR-19: each URL is curl-verified HTTP 200. Each file contains the ACTUAL title from Google Patents (not an assumed title)."
+}

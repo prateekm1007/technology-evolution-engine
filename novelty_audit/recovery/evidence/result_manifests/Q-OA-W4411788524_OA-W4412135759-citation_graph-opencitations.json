@@ -1,0 +1,32 @@
+{
+  "query_id": "Q-OA-W4411788524_OA-W4412135759-citation_graph-opencitations",
+  "pair_id": "OA-W4411788524_OA-W4412135759",
+  "query_type": "citation_graph",
+  "provider": "opencitations",
+  "query_text": "citation_lookup:https://doi.org/10.1103/9t6n-jqr5 <-> https://doi.org/10.3114/persoonia.2025.54.10",
+  "query_hash": "af9eb3c6feb5c6efd038faa0073ace791b7762d4833f5d2424ff449eba9c8531",
+  "frozen_query_ref": null,
+  "search_type": "citation_graph",
+  "doi_a": "https://doi.org/10.1103/9t6n-jqr5",
+  "doi_b": "https://doi.org/10.3114/persoonia.2025.54.10",
+  "oc_id_a": "doi:10.1103/9t6n-jqr5",
+  "oc_id_b": "doi:10.3114/persoonia.2025.54.10",
+  "timestamp_utc": "2026-08-11T12:54:20.084933+00:00",
+  "status": "SUCCESS",
+  "a_cites_b": false,
+  "b_cites_a": false,
+  "a_citation_count": 14,
+  "b_citation_count": 9,
+  "a_reference_count": 93,
+  "b_reference_count": 125,
+  "shared_citing": [],
+  "shared_cited": [],
+  "response_hash": "5e5cd767f08988a3291344f91f7851021a471766a0e1dca54a59f2e793c010d8",
+  "evidence_uris": [
+    "https://api.opencitations.net/index/v2/references/doi:10.1103/9t6n-jqr5",
+    "https://api.opencitations.net/index/v2/citations/doi:10.1103/9t6n-jqr5",
+    "https://api.opencitations.net/index/v2/references/doi:10.3114/persoonia.2025.54.10",
+    "https://api.opencitations.net/index/v2/citations/doi:10.3114/persoonia.2025.54.10"
+  ],
+  "error": null
+}

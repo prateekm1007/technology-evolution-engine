@@ -1,0 +1,24 @@
+# Pre-commit hook configuration for TEE.
+#
+# Per the Master Protocol consolidation: the coder reads MASTER_PROTOCOL.md
+# and FAILURES.md. The pre-commit hook verifies governance files exist and
+# the Law 27 scanner passes before every commit.
+#
+# Installation:
+#   pip install pre-commit
+#   pre-commit install
+
+repos:
+  - repo: local
+    hooks:
+      - id: governance-read-list
+        name: "Governance read list check (5 files)"
+        entry: python scripts/remember_governance.py
+        language: system
+        pass_filenames: false
+
+      - id: law27-scanner
+        name: "Law 27 forbidden-language scanner"
+        entry: python scripts/enforce_law27.py
+        language: system
+        pass_filenames: false

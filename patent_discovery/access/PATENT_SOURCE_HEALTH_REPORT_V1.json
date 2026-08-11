@@ -1,0 +1,153 @@
+{
+  "timestamp": "2026-08-11T15:48:47.809542+00:00",
+  "sources": [
+    {
+      "source": "bigquery",
+      "requires_credential": true,
+      "credential_type": "Google Cloud service account JSON key",
+      "available": false
+    },
+    {
+      "source": "epo_ops",
+      "requires_credential": true,
+      "credential_type": "OAuth 2.0 consumer key + secret",
+      "available": false
+    },
+    {
+      "source": "epo_lod",
+      "requires_credential": false,
+      "credential_type": null,
+      "available": true
+    },
+    {
+      "source": "uspto",
+      "requires_credential": true,
+      "credential_type": "USPTO ODP API key",
+      "available": false
+    },
+    {
+      "source": "wipo",
+      "requires_credential": true,
+      "credential_type": "WIPO PATENTSCOPE API key",
+      "available": false
+    },
+    {
+      "source": "india",
+      "requires_credential": false,
+      "credential_type": null,
+      "available": false
+    },
+    {
+      "source": "china",
+      "requires_credential": false,
+      "credential_type": null,
+      "available": false
+    }
+  ],
+  "connectivity_tests": [
+    {
+      "source": "bigquery",
+      "url": "https://bigquery.googleapis.com/bigquery/v2/projects",
+      "dns_resolves": true,
+      "http_status": 401,
+      "status": "HTTP_401",
+      "auth_required": "OAuth 2",
+      "error": "HTTP 401"
+    },
+    {
+      "source": "epo_ops",
+      "url": "https://ops.epo.org/3.2/rest-services/service-info",
+      "dns_resolves": true,
+      "http_status": 403,
+      "status": "HTTP_403",
+      "auth_required": "OAuth 2",
+      "error": "HTTP 403"
+    },
+    {
+      "source": "epo_lod",
+      "url": "https://data.epo.org/linked-data/query",
+      "dns_resolves": true,
+      "http_status": 404,
+      "status": "HTTP_404",
+      "auth_required": "none",
+      "error": "HTTP 404"
+    },
+    {
+      "source": "uspto_odp",
+      "url": "https://api.uspto.gov/api/v1/patent/applications/search?query=battery&rows=1",
+      "dns_resolves": true,
+      "http_status": 401,
+      "status": "HTTP_401",
+      "auth_required": "API key",
+      "error": "HTTP 401"
+    },
+    {
+      "source": "uspto_bulk",
+      "url": "https://bulkdata.uspto.gov/",
+      "dns_resolves": false,
+      "http_status": null,
+      "status": "DNS_FAILED"
+    },
+    {
+      "source": "wipo",
+      "url": "https://patentscope.wipo.int/",
+      "dns_resolves": true,
+      "http_status": 200,
+      "status": "OK",
+      "auth_required": "none",
+      "error": null
+    },
+    {
+      "source": "india_main",
+      "url": "https://ipindia.gov.in/",
+      "dns_resolves": true,
+      "http_status": 200,
+      "status": "OK",
+      "auth_required": "none",
+      "error": null
+    },
+    {
+      "source": "india_search",
+      "url": "https://ipsearch.ipindia.gov.in/",
+      "dns_resolves": false,
+      "http_status": null,
+      "status": "DNS_FAILED"
+    },
+    {
+      "source": "cnipa_en",
+      "url": "http://english.cnipa.gov.cn/",
+      "dns_resolves": true,
+      "http_status": 200,
+      "status": "OK",
+      "auth_required": "none",
+      "error": null
+    },
+    {
+      "source": "cnipa_pss",
+      "url": "http://pss-system.cponline.cnipa.gov.cn/",
+      "dns_resolves": true,
+      "http_status": 0,
+      "status": "HTTP_0",
+      "auth_required": "none",
+      "error": "network: <urlopen error timed out>"
+    },
+    {
+      "source": "google_patents",
+      "url": "https://patents.google.com/patent/US11234567B2/en",
+      "dns_resolves": true,
+      "http_status": 503,
+      "status": "HTTP_503",
+      "auth_required": "none",
+      "error": "HTTP 503"
+    },
+    {
+      "source": "lens",
+      "url": "https://api.lens.org/patent/search",
+      "dns_resolves": true,
+      "http_status": 401,
+      "status": "HTTP_401",
+      "auth_required": "API key",
+      "error": "HTTP 401"
+    }
+  ]
+}

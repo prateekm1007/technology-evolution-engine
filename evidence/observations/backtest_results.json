@@ -1,0 +1,312 @@
+{
+  "backtest_id": "phase9_frozen_time_v1",
+  "model": "CAPABILITY_MODEL vs NULL_MODEL",
+  "scope": "Li-ion intercalation systems (per SCOPE_V2.md)",
+  "backtest_points": [
+    1995,
+    2000,
+    2005,
+    2010,
+    2015
+  ],
+  "horizon_years": 5,
+  "aggregate": {
+    "capability_model": {
+      "total_predictions": 1746,
+      "true_positives": 4,
+      "false_positives": 1742,
+      "false_negatives": 0,
+      "precision": 0.0023,
+      "recall": 1.0
+    },
+    "null_model": {
+      "total_predictions": 100,
+      "true_positives": 0,
+      "false_positives": 100,
+      "false_negatives": 4,
+      "precision": 0.0,
+      "recall": 0.0
+    }
+  },
+  "verdict": "CAPABILITY_MODEL beats NULL_MODEL",
+  "ic_001_status": "NOT MET",
+  "maturity": "M2",
+  "per_point_results": {
+    "1995": {
+      "T": 1995,
+      "T_eval": 2000,
+      "capability_model": {
+        "predictions": 246,
+        "true_positives": 2,
+        "false_positives": 244,
+        "false_negatives": 0,
+        "precision": 0.0081,
+        "recall": 1.0,
+        "tp_details": [
+          [
+            "ELECTROCHEMICAL_ENERGY_STORAGE",
+            "INTERCALATION",
+            "STATE_OF_CHARGE_MONITORING"
+          ],
+          [
+            "ELECTROCHEMICAL_ENERGY_STORAGE",
+            "ELECTRODE_COATING",
+            "INTERCALATION"
+          ]
+        ],
+        "fp_sample": [
+          [
+            "CELL_ASSEMBLY",
+            "ELECTRON_COLLECTION",
+            "INTERCALATION"
+          ],
+          [
+            "ELECTROCHEMICAL_ENERGY_STORAGE",
+            "ELECTRODE_COATING",
+            "INTERCALATION",
+            "STATE_OF_CHARGE_MONITORING"
+          ],
+          [
+            "ELECTROCHEMICAL_ENERGY_STORAGE",
+            "INTERCALATION"
+          ]
+        ],
+        "fn_details": []
+      },
+      "null_model": {
+        "predictions": 20,
+        "true_positives": 0,
+        "false_positives": 20,
+        "false_negatives": 2,
+        "precision": 0.0,
+        "recall": 0.0
+      },
+      "actual_outcomes": [
+        {
+          "year": 1997,
+          "description": "Li-ion with BMS in early EVs",
+          "combination": [
+            "ELECTROCHEMICAL_ENERGY_STORAGE",
+            "INTERCALATION",
+            "STATE_OF_CHARGE_MONITORING"
+          ]
+        },
+        {
+          "year": 1996,
+          "description": "LFP cathode commercialization",
+          "combination": [
+            "ELECTROCHEMICAL_ENERGY_STORAGE",
+            "INTERCALATION",
+            "ELECTRODE_COATING"
+          ]
+        }
+      ]
+    },
+    "2000": {
+      "T": 2000,
+      "T_eval": 2005,
+      "capability_model": {
+        "predictions": 375,
+        "true_positives": 1,
+        "false_positives": 374,
+        "false_negatives": 0,
+        "precision": 0.0027,
+        "recall": 1.0,
+        "tp_details": [
+          [
+            "ELECTROCHEMICAL_ENERGY_STORAGE",
+            "ELECTRON_COLLECTION",
+            "INTERCALATION"
+          ]
+        ],
+        "fp_sample": [
+          [
+            "ELECTRODE_COATING",
+            "INTERCALATION",
+            "ION_TRANSPORT",
+            "STATE_OF_CHARGE_MONITORING"
+          ],
+          [
+            "ELECTROCHEMICAL_ENERGY_STORAGE",
+            "ELECTRON_COLLECTION",
+            "FAST_CHARGING",
+            "INTERCALATION"
+          ],
+          [
+            "CELL_ASSEMBLY",
+            "ELECTROCHEMICAL_ENERGY_STORAGE",
+            "ELECTRODE_COATING",
+            "STATE_OF_CHARGE_MONITORING"
+          ]
+        ],
+        "fn_details": []
+      },
+      "null_model": {
+        "predictions": 20,
+        "true_positives": 0,
+        "false_positives": 20,
+        "false_negatives": 1,
+        "precision": 0.0,
+        "recall": 0.0
+      },
+      "actual_outcomes": [
+        {
+          "year": 2004,
+          "description": "NCM cathode commercialization",
+          "combination": [
+            "ELECTROCHEMICAL_ENERGY_STORAGE",
+            "INTERCALATION",
+            "ELECTRON_COLLECTION"
+          ]
+        }
+      ]
+    },
+    "2005": {
+      "T": 2005,
+      "T_eval": 2010,
+      "capability_model": {
+        "predictions": 375,
+        "true_positives": 1,
+        "false_positives": 374,
+        "false_negatives": 0,
+        "precision": 0.0027,
+        "recall": 1.0,
+        "tp_details": [
+          [
+            "ELECTROCHEMICAL_ENERGY_STORAGE",
+            "FAST_CHARGING",
+            "SAFETY_PROTECTION",
+            "THERMAL_MANAGEMENT"
+          ]
+        ],
+        "fp_sample": [
+          [
+            "ELECTRODE_COATING",
+            "INTERCALATION",
+            "ION_TRANSPORT",
+            "STATE_OF_CHARGE_MONITORING"
+          ],
+          [
+            "ELECTROCHEMICAL_ENERGY_STORAGE",
+            "ELECTRON_COLLECTION",
+            "FAST_CHARGING",
+            "INTERCALATION"
+          ],
+          [
+            "CELL_ASSEMBLY",
+            "ELECTROCHEMICAL_ENERGY_STORAGE",
+            "ELECTRODE_COATING",
+            "STATE_OF_CHARGE_MONITORING"
+          ]
+        ],
+        "fn_details": []
+      },
+      "null_model": {
+        "predictions": 20,
+        "true_positives": 0,
+        "false_positives": 20,
+        "false_negatives": 1,
+        "precision": 0.0,
+        "recall": 0.0
+      },
+      "actual_outcomes": [
+        {
+          "year": 2010,
+          "description": "Mass-market Li-ion EV with fast charging (Leaf, Volt)",
+          "combination": [
+            "ELECTROCHEMICAL_ENERGY_STORAGE",
+            "FAST_CHARGING",
+            "THERMAL_MANAGEMENT",
+            "SAFETY_PROTECTION"
+          ]
+        }
+      ]
+    },
+    "2010": {
+      "T": 2010,
+      "T_eval": 2015,
+      "capability_model": {
+        "predictions": 375,
+        "true_positives": 0,
+        "false_positives": 375,
+        "false_negatives": 0,
+        "precision": 0.0,
+        "recall": 0,
+        "tp_details": [],
+        "fp_sample": [
+          [
+            "ELECTRODE_COATING",
+            "INTERCALATION",
+            "ION_TRANSPORT",
+            "STATE_OF_CHARGE_MONITORING"
+          ],
+          [
+            "ELECTROCHEMICAL_ENERGY_STORAGE",
+            "ELECTRON_COLLECTION",
+            "FAST_CHARGING",
+            "INTERCALATION"
+          ],
+          [
+            "CELL_ASSEMBLY",
+            "ELECTROCHEMICAL_ENERGY_STORAGE",
+            "ELECTRODE_COATING",
+            "STATE_OF_CHARGE_MONITORING"
+          ]
+        ],
+        "fn_details": []
+      },
+      "null_model": {
+        "predictions": 20,
+        "true_positives": 0,
+        "false_positives": 20,
+        "false_negatives": 0,
+        "precision": 0.0,
+        "recall": 0
+      },
+      "actual_outcomes": []
+    },
+    "2015": {
+      "T": 2015,
+      "T_eval": 2020,
+      "capability_model": {
+        "predictions": 375,
+        "true_positives": 0,
+        "false_positives": 375,
+        "false_negatives": 0,
+        "precision": 0.0,
+        "recall": 0,
+        "tp_details": [],
+        "fp_sample": [
+          [
+            "ELECTRODE_COATING",
+            "INTERCALATION",
+            "ION_TRANSPORT",
+            "STATE_OF_CHARGE_MONITORING"
+          ],
+          [
+            "ELECTROCHEMICAL_ENERGY_STORAGE",
+            "ELECTRON_COLLECTION",
+            "FAST_CHARGING",
+            "INTERCALATION"
+          ],
+          [
+            "CELL_ASSEMBLY",
+            "ELECTROCHEMICAL_ENERGY_STORAGE",
+            "ELECTRODE_COATING",
+            "STATE_OF_CHARGE_MONITORING"
+          ]
+        ],
+        "fn_details": []
+      },
+      "null_model": {
+        "predictions": 20,
+        "true_positives": 0,
+        "false_positives": 20,
+        "false_negatives": 0,
+        "precision": 0.0,
+        "recall": 0
+      },
+      "actual_outcomes": []
+    }
+  }
+}

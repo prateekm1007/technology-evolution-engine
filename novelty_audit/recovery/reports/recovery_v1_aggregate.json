@@ -1,0 +1,23 @@
+{
+  "report_type": "novelty_recovery_v1_aggregate",
+  "timestamp_utc": "2026-08-11T12:55:03.988412+00:00",
+  "recovery_manifest_hash": "da6f99574fc032223c320007cd0e03bf4da758545b14df6174a8e71ff00961fb",
+  "frozen_manifest_hash": "235741c8afd7f39323b51c8e17b01f233b3181311e84a023c8341c3b18743f43",
+  "total_queries_attempted": 1274,
+  "total_queries_in_manifest": 1274,
+  "status_counts": {
+    "NO_RESULTS": 931,
+    "SUCCESS": 343
+  },
+  "provider_status": {
+    "openaire": {
+      "NO_RESULTS": 567,
+      "SUCCESS": 161
+    },
+    "opencitations": {
+      "NO_RESULTS": 364,
+      "SUCCESS": 182
+    }
+  },
+  "rule": "Recovery namespace. Not authoritative. No D3 produced. Evidence for custodian only."
+}

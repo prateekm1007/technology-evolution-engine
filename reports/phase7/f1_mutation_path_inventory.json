@@ -1,0 +1,60 @@
+{
+  "artifact_type": "F1_MUTATION_PATH_INVENTORY",
+  "generated_at": "2026-08-08T18:00:00Z",
+  "total_mutation_paths": 3,
+  "gated_paths": 3,
+  "ungated_paths": 0,
+  "bypass_risk_paths": 0,
+  "mutation_surface_description": "All identified mutation classes tested at filesystem level, including synonym mutation within the benchmark-source surface. BRIDGE_SYNONYMS is defined INSIDE discovery_capability_benchmark.py, not as a separately protected file. The synonym test modifies that same benchmark-source surface.",
+  "scientific_scope": "These tests prove the freeze MECHANISM rejects filesystem mutations relative to an independently committed Git HEAD in an isolated real repository. They do NOT prove the production frozen artifacts are independently trustworthy — that depends on provenance work audited in Phases 3-6.",
+
+  "f1_mutation_paths": [
+    {
+      "id": "F1-MUT-001",
+      "file": "benchmarks/discovery_capability_benchmark.py",
+      "function": "main",
+      "mutation_type": "F1_COMPUTATION",
+      "description": "run_discovery_benchmark() computes F1 from GOLD_DISCOVERIES + BRIDGE_SYNONYMS + matchers.",
+      "gate": "assert_frozen_data_unchanged + assert_f1_baseline_unchanged + assert_committed_f1_matches_baseline + assert_zero_eligible_metrics_for_optimization",
+      "gate_type": "STRUCTURAL",
+      "verified": true,
+      "bypass_risk": false
+    },
+    {
+      "id": "F1-MUT-002",
+      "file": "benchmarks/discovery_capability_benchmark.py",
+      "line": 68,
+      "mutation_type": "SYNONYM_MAP",
+      "description": "BRIDGE_SYNONYMS = {} — structural hash detects any modification",
+      "gate": "assert_frozen_data_unchanged",
+      "gate_type": "STRUCTURAL",
+      "verified": true,
+      "bypass_risk": false
+    },
+    {
+      "id": "F1-MUT-003",
+      "file": "benchmarks/discovery_capability_benchmark.py",
+      "line": 105,
+      "mutation_type": "GOLD_SET",
+      "description": "GOLD_DISCOVERIES — structural hash detects any modification",
+      "gate": "assert_frozen_data_unchanged",
+      "gate_type": "STRUCTURAL",
+      "verified": true,
+      "bypass_risk": false
+    }
+  ],
+
+  "zero_bypass_invariant": {
+    "total_mutation_paths": 3,
+    "gated_paths": 3,
+    "ungated_paths": 0,
+    "bypass_risk_paths": 0,
+    "optimization_mechanically_impossible": true,
+    "enforcement_layers": [
+      "STRUCTURAL: SHA-256 tamper-evidence on actual data (cannot be bypassed by rewording)",
+      "DESCRIPTIVE: action-string patterns (weaker, tripwire only)",
+      "EPISTEMIC: zero eligible metrics means nothing to optimize against",
+      "POST_COMPUTATION: F1 result checked against frozen baseline after computation"
+    ]
+  }
+}

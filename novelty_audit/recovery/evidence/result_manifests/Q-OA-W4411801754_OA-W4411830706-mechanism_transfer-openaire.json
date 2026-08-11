@@ -1,0 +1,86 @@
+{
+  "query_id": "Q-OA-W4411801754_OA-W4411830706-mechanism_transfer-openaire",
+  "pair_id": "OA-W4411801754_OA-W4411830706",
+  "query_type": "mechanism_transfer",
+  "provider": "openaire",
+  "query_text": "transfer apply learning smart chemistry",
+  "query_hash": "f32349edbb98dab671b7d9e6f8f77dce35acf779e6124d8ff4813a7af091bd9c",
+  "frozen_query_ref": "Q-OA-W4411801754_OA-W4411830706-mechanism_transfer-openalex",
+  "url": "https://api.openaire.eu/search/publications?keywords=transfer+apply+learning+smart+chemistry&size=10&format=json",
+  "timestamp_utc": "2026-08-11T12:27:31.348233+00:00",
+  "status": "SUCCESS",
+  "result_count": 2,
+  "result_ids": [
+    [
+      {
+        "$": "50|datacite____::dfab1cfe6a60570067005b055e522c6c"
+      },
+      {
+        "$": "10.5281/zenodo.13173971"
+      },
+      {
+        "$": "oai:zenodo.org:13173971"
+      },
+      {
+        "$": "50|od______2659::dfab1cfe6a60570067005b055e522c6c"
+      },
+      {
+        "$": "50|datacite____::f7b5a2e7ea2a930d00fb10a02f310ec2"
+      },
+      {
+        "$": "10.5281/zenodo.13173970"
+      }
+    ],
+    [
+      {
+        "$": "50|datacite____::82084cc8cc746b2723beb0c6b2f271cb"
+      },
+      {
+        "$": "10.5281/zenodo.17421683"
+      },
+      {
+        "$": "oai:zenodo.org:17421683"
+      },
+      {
+        "$": "50|od______2659::82084cc8cc746b2723beb0c6b2f271cb"
+      },
+      {
+        "$": "50|datacite____::c108a3feae63b21a36f6b64d38b52830"
+      },
+      {
+        "$": "10.5281/zenodo.17438909"
+      },
+      {
+        "$": "50|od______2659::c108a3feae63b21a36f6b64d38b52830"
+      },
+      {
+        "$": "oai:zenodo.org:17438909"
+      },
+      {
+        "$": "50|datacite____::d0241b86824d068aa936a3f6282993a0"
+      },
+      {
+        "$": "10.5281/zenodo.17421682"
+      }
+    ]
+  ],
+  "result_titles": [
+    "Webinars - HSI Awardee Grantsmanship",
+    "FatherTimeSDKP framework falsified for validation though academic research"
+  ],
+  "result_dois": [
+    "10.5281/zenodo.13173971",
+    "10.5281/zenodo.17421683"
+  ],
+  "result_dates": [
+    "2024-08-02",
+    "2025-05-16"
+  ],
+  "response_hash": "a7a59d6dc81c6f3c28946a199ed7b9ffaedcd54ea75bb80f7b8356e749f62de7",
+  "evidence_uri": "https://api.openaire.eu/search/publications?keywords=transfer+apply+learning+smart+chemistry&size=10&format=json",
+  "error": null,
+  "rate_limit_headers": {
+    "x-ratelimit-used": "115",
+    "x-ratelimit-limit": "7199"
+  }
+}

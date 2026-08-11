@@ -1,0 +1,34 @@
+{
+  "stage": "06_rediscovery_H-DXP-004-004",
+  "run_id": "RUN-DXP-004",
+  "code_sha": "9cf2046069a549721298cc8d709ac7bc8b4e8997",
+  "input_hash": "5f87b99ac4868018e3669260a765c2e68a3f49633e435979f7f266fef8382fc7",
+  "output_hash": "2e8cf040b18df4f09329e2edb2b7aee7ac89959809e219987a65e233667655cf",
+  "provider_manifest": {
+    "provider": "zai",
+    "model": "glm-4-plus",
+    "version": "z-ai-web-dev-sdk",
+    "configuration": {
+      "temperature": 0.1,
+      "max_tokens": 4096,
+      "system_sha": "dbdd0760dff49fc029b32b580a575b7de33a87d371edc2b0deec93bfb2b90b01"
+    },
+    "prompt_sha": "e709de4f44612f3b8e093c1000a6f50349aa41ecc7fd98348f6d1f76e1c7d792",
+    "seed": null,
+    "tool_versions": {
+      "z_ai_cli": "z-ai"
+    },
+    "timestamp": "2026-08-08T10:06:13.835149+00:00",
+    "latency_ms": 2705,
+    "success": true,
+    "error": ""
+  },
+  "result": {
+    "hypothesis_id": "H-DXP-004-004",
+    "classification": "PARAPHRASED_IN_INPUT",
+    "evidence": "The hypothesis describes directional microstructures reducing drag through elastic deformation and reduced contact area. The source document explains that shark skin denticles have riblets aligned in the flow direction that reduce drag by lifting vortices away from the surface and reducing the wetted surface area. While the source doesn't explicitly mention 'elastic deformation' (as denticles are described as hard, enamel-covered structures), the core concept of microstructures reducing drag through reduced contact area with fluid is directly paraphrased from the source description of riblet function.",
+    "is_rediscovery": true,
+    "source_hypothesis_hash": ""
+  },
+  "timestamp": "2026-08-08T10:06:16.541104+00:00"
+}

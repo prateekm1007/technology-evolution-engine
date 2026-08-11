@@ -1,0 +1,74 @@
+{
+  "stage": "05_adversarial_H-DEV-CH-004-002",
+  "run_id": "RUN-DEV-CH-004",
+  "code_sha": "7c7da713eedf1f61714252efe3e2b4573f764b72",
+  "input_hash": "0685a5748c83490187e2d00a928f6c7eb99bdcf0d872003105823642c441d9bf",
+  "output_hash": "3912f2f0eab02b642d143a9759cbbe537d088ac9e36358213cc59a019c4a691d",
+  "provider_manifest": {
+    "provider": "zai",
+    "model": "glm-4-plus",
+    "version": "z-ai-web-dev-sdk",
+    "configuration": {
+      "temperature": 0.2,
+      "max_tokens": 4096,
+      "system_sha": "1f5a3fff3aebc2e1d44b2312f4b604b5c2911cacaf452eb6ca705c724fc9142b"
+    },
+    "prompt_sha": "6905d9bc632b9f2ed85403c0e43aa4d6c32765aee131ae37555602aca4d98272",
+    "seed": null,
+    "tool_versions": {
+      "z_ai_cli": "z-ai"
+    },
+    "timestamp": "2026-08-08T09:11:47.083572+00:00",
+    "latency_ms": 8662,
+    "success": true,
+    "error": ""
+  },
+  "result": {
+    "hypothesis_id": "H-DEV-CH-004-002",
+    "failure_modes": [
+      {
+        "category": "FRAGILE_ASSUMPTION",
+        "description": "Local reward maximization leads to global optimum",
+        "severity": "HIGH",
+        "evidence": "Traffic networks are classic examples of non-convex optimization problems where local optima can trap learning algorithms. The Braess paradox demonstrates that adding capacity to a network can actually reduce overall performance, proving that local improvements don't guarantee global benefits."
+      },
+      {
+        "category": "CONTRADICTS_KNOWN",
+        "description": "Limited neighbor communication provides sufficient state information",
+        "severity": "HIGH",
+        "evidence": "Traffic flow theory has long established that network-level effects depend on global information. The fundamental diagram of traffic flow shows that local measurements cannot capture the phase transitions between free flow and congested states that propagate through networks."
+      },
+      {
+        "category": "BOUNDARY_BREAKS",
+        "description": "Reinforcement learning can converge within required time frame",
+        "severity": "MEDIUM",
+        "evidence": "Real traffic systems operate on seconds-scale decision cycles, while RL algorithms typically require thousands of episodes to converge. The curse of dimensionality in state spaces makes convergence infeasible for realistic traffic networks with heterogeneous vehicle types and human driver behaviors."
+      },
+      {
+        "category": "PRIOR_ART_EXISTS",
+        "description": "Distributed multi-agent systems can solve complex optimization problems",
+        "severity": "MEDIUM",
+        "evidence": "The proposed approach is essentially a rehash of distributed adaptive signal control (DASC) systems from the 1990s, which abandoned local optimization due to poor performance. Modern approaches like SCATS and SCOOT use centralized coordination with distributed execution, not purely local optimization."
+      },
+      {
+        "category": "FALSIFIER_TRIGGERED",
+        "description": "Performance degrades compared to simple proportional control",
+        "severity": "HIGH",
+        "evidence": "The falsifier condition is triggered because decades of traffic control research shows that simple actuated signal control outperforms complex adaptive systems in most real-world scenarios. The computational overhead of RL agents would likely degrade performance rather than improve it."
+      },
+      {
+        "category": "INCOMPATIBLE_TARGET",
+        "description": "Traffic patterns exhibit sufficient regularity for learning",
+        "severity": "HIGH",
+        "evidence": "Traffic systems are characterized by extreme stochasticity due to accidents, weather, special events, and human irrationality. This violates the stationarity assumption required for RL algorithms, leading to non-stationary learning environments where convergence is impossible."
+      }
+    ],
+    "survives": false,
+    "outcome": "ADVERSARIAL_FAILED",
+    "n_high_severity": 4,
+    "n_medium_severity": 2,
+    "n_low_severity": 0,
+    "source_hypothesis_hash": ""
+  },
+  "timestamp": "2026-08-08T09:11:55.746646+00:00"
+}

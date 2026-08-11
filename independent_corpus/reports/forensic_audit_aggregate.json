@@ -1,0 +1,29 @@
+{
+  "report_type": "INTAKE_FORENSIC_AUDIT_AGGREGATE",
+  "report_version": "1.0.0",
+  "generated_at": "2026-08-11T00:00:00Z",
+  "source_manifest_hash": "180a17e96f16cd0c383975b1f005a1f4623808fade1d17797b493e74f346be43",
+  "total_records": 200,
+  "eligible": 39,
+  "flagged": 161,
+  "rejected": 0,
+  "flagged_reason_distribution": {
+    "METADATA_TOO_COARSE": 100,
+    "OUTSIDE_BENCHMARK_DOMAIN": 61
+  },
+  "potentially_promotable": 100,
+  "truly_outside_domain": 61,
+  "estimated_true_eligibility": {
+    "conservative_rate": 0.195,
+    "optimistic_rate": 0.695,
+    "wilson_95ci_lower": 0.1461,
+    "wilson_95ci_upper": 0.2554,
+    "n_sample": 200
+  },
+  "required_acquisition_for_n100": {
+    "conservative": 513,
+    "optimistic": 144,
+    "note": "If conservative rate holds, acquire this many papers to get ~100 eligible."
+  },
+  "note": "This report contains NO paper titles, NO content. Only aggregate statistics. 39 passed automated eligibility; 161 require review. This is NOT '39 good papers and 161 bad papers.'"
+}

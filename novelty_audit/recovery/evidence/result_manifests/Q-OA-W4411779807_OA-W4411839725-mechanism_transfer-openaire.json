@@ -1,0 +1,50 @@
+{
+  "query_id": "Q-OA-W4411779807_OA-W4411839725-mechanism_transfer-openaire",
+  "pair_id": "OA-W4411779807_OA-W4411839725",
+  "query_type": "mechanism_transfer",
+  "provider": "openaire",
+  "query_text": "transfer apply temperature high optoelectronics",
+  "query_hash": "85217e8d83a20536a0a923e925f1f1b972bbef88c58466f8c665f50a669ea2fb",
+  "frozen_query_ref": "Q-OA-W4411779807_OA-W4411839725-mechanism_transfer-openalex",
+  "url": "https://api.openaire.eu/search/publications?keywords=transfer+apply+temperature+high+optoelectronics&size=10&format=json",
+  "timestamp_utc": "2026-08-11T12:23:54.516446+00:00",
+  "status": "SUCCESS",
+  "result_count": 2,
+  "result_ids": [
+    [
+      {
+        "$": "50|datacite____::1d0b953a0df71bafb74d96a93bbef090"
+      },
+      {
+        "$": "10.25820/etd.007636"
+      }
+    ],
+    [
+      {
+        "$": "50|datacite____::b9efb9f81b799af8030617fdfbc12574"
+      },
+      {
+        "$": "10.5282/edoc.35313"
+      }
+    ]
+  ],
+  "result_titles": [
+    "Semiconductor technologies for nanoelectronic diagnostics and optoelectronic therapies",
+    "Tuning optoelectronic and redox properties of covalent organic frameworks for energy applications"
+  ],
+  "result_dois": [
+    "10.25820/etd.007636",
+    "10.5282/edoc.35313"
+  ],
+  "result_dates": [
+    "2026-01-01",
+    "2025-01-01"
+  ],
+  "response_hash": "5456177b643691ef0972d0258d4b7514771631b950530eac451c83cbde8f264e",
+  "evidence_uri": "https://api.openaire.eu/search/publications?keywords=transfer+apply+temperature+high+optoelectronics&size=10&format=json",
+  "error": null,
+  "rate_limit_headers": {
+    "x-ratelimit-used": "43",
+    "x-ratelimit-limit": "7199"
+  }
+}

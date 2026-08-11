@@ -1,0 +1,69 @@
+{
+  "id": "benchmark_0016",
+  "type": "patent",
+  "source": "uspto",
+  "title": "Solid-State Battery Pack for Electric Vehicle with 1000km Range",
+  "domain": "transportation",
+  "abstract": "A 200 kWh solid-state battery pack (sulfide electrolyte) in cell-to-pack architecture achieving 500 Wh/kg enabling 1000km range with 10-min fast charging.",
+  "claims": [
+    "Li metal anode (50um), Li6PS5Cl electrolyte (30um), NMC811 cathode (100um) at 400 Wh/kg.",
+    "Cell-to-pack integration with 85% volume utilization, 500 Wh/kg pack level.",
+    "Dielectric fluid immersion thermal management maintaining 25-35C during 10C charging."
+  ],
+  "components": [
+    "lithium metal anode",
+    "sulfide electrolyte",
+    "NMC cathode",
+    "cell-to-pack structure",
+    "thermal management",
+    "BMS"
+  ],
+  "materials": [
+    "lithium metal",
+    "lithium phosphorus sulfide chloride",
+    "nickel manganese cobalt oxide",
+    "aluminum",
+    "dielectric fluid"
+  ],
+  "methods": [
+    "dry electrode coating",
+    "cold pressing",
+    "cell stacking",
+    "fluid immersion cooling"
+  ],
+  "constraints": [
+    "energy",
+    "safety",
+    "cost",
+    "manufacturing",
+    "supply chain",
+    "regulation"
+  ],
+  "problem_statement": "Current EV batteries achieve 250 Wh/kg pack level limiting range to 500km.",
+  "expected_constraints": [
+    "energy",
+    "safety",
+    "cost",
+    "manufacturing",
+    "material",
+    "supply chain"
+  ],
+  "expected_prerequisites": [
+    "sulfide electrolyte manufacturing",
+    "lithium metal processing",
+    "dry electrode scaling",
+    "cell-to-pack design"
+  ],
+  "expected_adjacent_domains": [
+    "materials science",
+    "automotive engineering",
+    "thermal management",
+    "power electronics"
+  ],
+  "expected_failure_modes": [
+    "dendrite penetration",
+    "electrolyte decomposition",
+    "thermal runaway",
+    "interface degradation"
+  ]
+}

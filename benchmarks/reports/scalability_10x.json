@@ -1,0 +1,28 @@
+{
+  "scale": "10x",
+  "timestamp": "2026-08-05",
+  "corpus": {
+    "total_docs": 494
+  },
+  "graph": {
+    "nodes": 85,
+    "edges": 287
+  },
+  "steps": {
+    "extraction": {
+      "wall_clock_s": 0
+    },
+    "swanson": {
+      "wall_clock_s": 0,
+      "bridges": 1081
+    },
+    "gentner": {
+      "wall_clock_s": 0,
+      "analogies": 502433
+    },
+    "altshuller": {
+      "wall_clock_s": 0,
+      "contradictions": 148
+    }
+  }
+}

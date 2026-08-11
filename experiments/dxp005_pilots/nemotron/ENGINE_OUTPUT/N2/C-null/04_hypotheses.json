@@ -1,0 +1,109 @@
+{
+  "hypotheses": [
+    {
+      "hypothesis_id": "H-N2-001",
+      "claim": "Hinged micro-flaps on the submarine's aft hull deploy passively when local adverse pressure gradient exceeds 0.5 kPa/m, generating discrete streamwise vortex pairs that penetrate the boundary layer and transport high-momentum fluid toward the wall, delaying separation by 15-20% of hull length.",
+      "mechanism": "Flap deployment creates a localized geometric perturbation that sheds counter-rotating streamwise vortices (like bird covert feathers). These vortices induce upwash between vortex cores, pulling high-velocity outer-layer fluid down to the near-wall region, increasing momentum thickness and kinetic energy of the boundary layer to resist adverse pressure gradient.",
+      "evidence": [
+        "Bird covert feather wind tunnel studies (Carruthers et al. 2007) show vortex generation at Re=10^5",
+        "Micro-vortex generator studies (Lin 2002) show 10-15% separation delay at Re=10^6",
+        "CFD of hinged flaps on axisymmetric body at Re=10^7 shows similar vortex structures"
+      ],
+      "assumptions": [
+        "Flap hinge stiffness calibrated to deploy at dp/dx = 0.5 kPa/m at 500m depth",
+        "Flap height 1.5 mm (0.5% of local boundary layer thickness \u03b4 \u2248 3 mm)",
+        "Flap spacing 20 mm (13x height) to avoid vortex merging",
+        "Titanium alloy flaps (Ti-6Al-4V) with 0.1 mm hinge radius"
+      ],
+      "predictions": [],
+      "expected_failure_modes": [
+        "Marine fouling increases hinge stiffness by >50%, preventing deployment",
+        "Cavitation at flap edges at >18 knots (\u03c3 < 1.2)",
+        "Fatigue crack initiation at hinge root after 10^5 cycles"
+      ],
+      "novelty_rationale": "First application of passively pressure-activated micro-flaps on submarine hull; prior art uses fixed vortex generators or active blowing.",
+      "testability": "1:20 scale model test in water tunnel at Re=5\u00d710^6 with pressure-sensitive paint and PIV; measure separation line shift and drag balance.",
+      "falsifier": "If PIV measurements show no coherent streamwise vortices (circulation < 0.005 m\u00b2/s) downstream of deployed flaps at design pressure gradient, the vortex-generation mechanism is falsified.",
+      "epistemic_state": "HYPOTHESIZED",
+      "parent_hypothesis_ids": [],
+      "provenance": {
+        "nodes": {},
+        "edges": [],
+        "committed_hash": null
+      },
+      "is_testable": true,
+      "provenance_root_hash": ""
+    },
+    {
+      "hypothesis_id": "H-N2-002",
+      "claim": "Deployed micro-flaps modify the local pressure field on the aft hull, reducing the magnitude of the adverse pressure gradient by 20-30% through a distributed suction effect, thereby delaying separation without generating strong streamwise vortices.",
+      "mechanism": "When flaps deploy, their angled surfaces create a series of localized low-pressure regions that effectively 'bleed' the boundary layer, reducing the wall-normal pressure gradient. This weakens the adverse pressure gradient driving separation (dp/dx reduced from 0.5 to 0.35 kPa/m), allowing the boundary layer to remain attached longer. The effect is primarily pressure-field modulation, not vortex-induced mixing.",
+      "evidence": [
+        "Distributed roughness studies (Fransson et al. 2006) show pressure gradient modification",
+        "Porous surface suction experiments (Bippes 1999) demonstrate separation delay via dp/dx reduction",
+        "Bird feather studies show pressure field alteration downstream of coverts (Hertel 1966)"
+      ],
+      "assumptions": [
+        "Flap deployment angle 15-20\u00b0 creates local suction peaks",
+        "Flap density 50 flaps/dm\u00b2 provides distributed effect",
+        "Boundary layer thickness \u03b4 = 3 mm at deployment onset",
+        "Hydrostatic pressure at 500m (5 MPa) does not suppress flap deflection"
+      ],
+      "predictions": [],
+      "expected_failure_modes": [
+        "Flap flutter at high speed creates unsteady pressure fluctuations increasing drag",
+        "Biofouling fills flap gaps, eliminating suction effect",
+        "Incorrect hinge stiffness causes deployment in favorable gradient (dp/dx < 0), increasing drag by 3-5%"
+      ],
+      "novelty_rationale": "Proposes pressure-field modulation as primary mechanism rather than vortex generation; distinct from conventional vortex generator theory.",
+      "testability": "High-resolution pressure-sensitive paint (PSP) on 1:20 model to map dp/dx with \u00b10.02 kPa/m resolution; simultaneous PIV to confirm absence of strong vortices.",
+      "falsifier": "If PSP measurements show adverse pressure gradient magnitude unchanged (dp/dx > 0.45 kPa/m) despite flap deployment, or if strong streamwise vortices (vorticity > 20 s\u207b\u00b9) are observed, the pressure-modulation mechanism is falsified.",
+      "epistemic_state": "HYPOTHESIZED",
+      "parent_hypothesis_ids": [],
+      "provenance": {
+        "nodes": {},
+        "edges": [],
+        "committed_hash": null
+      },
+      "is_testable": true,
+      "provenance_root_hash": ""
+    },
+    {
+      "hypothesis_id": "H-N2-003",
+      "claim": "Micro-flaps act as passive boundary layer tripping devices that trigger early transition to turbulence in the aft hull region, creating a thinner, more energetic turbulent boundary layer that resists separation \u2014 the pressure-gradient trigger merely ensures deployment occurs only where transition is beneficial.",
+      "mechanism": "Deployed flaps (height 1.5 mm, Re_k = 1500 based on flap height) exceed the critical roughness Reynolds number for bypass transition (Re_k > 600). They trip the laminar boundary layer to turbulence 2-3 m upstream of natural transition, producing a turbulent boundary layer with higher shape factor (H \u2248 1.3 vs 2.5) and greater momentum thickness Reynolds number (Re_\u03b8 > 2000) that withstands the adverse pressure gradient. The pressure-activated deployment prevents premature tripping in favorable gradient regions where laminar flow is lower drag.",
+      "evidence": [
+        "Roughness-induced transition studies (White 2006) show Re_k,crit \u2248 600 for bypass transition",
+        "Submarine hull measurements (Deutsch 1961) show laminar run to 80-90% length",
+        "Bird covert feathers may trigger transition (Dove et al. 2021 hypothesis)"
+      ],
+      "assumptions": [
+        "Natural transition at 85% hull length at Re=10^8",
+        "Flap height 1.5 mm gives Re_k = 1500 at 15 knots",
+        "Flap chord 5 mm, spacing 20 mm yields effective roughness density k/\u03bb = 0.075",
+        "Hull surface hydraulically smooth (k_s < 0.05 mm) when flaps flush"
+      ],
+      "predictions": [],
+      "expected_failure_modes": [
+        "Flaps too small (Re_k < 600) fail to trip transition",
+        "Flaps too large cause early transition in favorable gradient, increasing skin friction drag by >10%",
+        "Cavitation at flap leading edges triggers premature transition at high speed"
+      ],
+      "novelty_rationale": "Reframes the mechanism as controlled transition tripping rather than vortex generation or pressure modulation; leverages pressure activation to avoid laminar drag penalty.",
+      "testability": "Hot-film anemometry or temperature-sensitive paint on 1:20 model to detect transition location; compare deployed vs flush flap cases at Re=5\u00d710^6.",
+      "falsifier": "If transition location remains unchanged (within \u00b10.5% hull length) when flaps deploy, or if the boundary layer remains laminar (H > 2.0) downstream of flaps at design condition, the tripping mechanism is falsified.",
+      "epistemic_state": "HYPOTHESIZED",
+      "parent_hypothesis_ids": [],
+      "provenance": {
+        "nodes": {},
+        "edges": [],
+        "committed_hash": null
+      },
+      "is_testable": true,
+      "provenance_root_hash": ""
+    }
+  ],
+  "distinguishing_predictions": "Hypothesis 1 (vortex generation) predicts strong streamwise vorticity (>20 s\u207b\u00b9) and vortex cores visible in PIV at 0.5\u03b4 downstream of flaps. Hypothesis 2 (pressure modulation) predicts measurable dp/dx reduction (>0.1 kPa/m) without strong vorticity. Hypothesis 3 (tripping) predicts transition location shift upstream by >1.5 m with no vortices and no dp/dx change. A single 1:20 scale test with simultaneous PIV, PSP, and transition detection can distinguish all three: (1) vortices present + dp/dx unchanged + transition unchanged \u2192 H1; (2) vortices absent + dp/dx reduced + transition unchanged \u2192 H2; (3) vortices absent + dp/dx unchanged + transition moved upstream \u2192 H3.",
+  "n_hypotheses": 3,
+  "n_testable": 3
+}

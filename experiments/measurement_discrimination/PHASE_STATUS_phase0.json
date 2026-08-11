@@ -1,0 +1,80 @@
+{
+  "phase": 0,
+  "phase_name": "Establish Repository Truth",
+  "status": "COMPLETE",
+  "commit": "5f27ca9",
+  "branch": "external-review-preparation",
+  "remote": "https://github.com/prateekm1007/technology-evolution-engine.git",
+  "protocol_frozen": false,
+  "tests_passed_local": 178,
+  "tests_total_collected": 2663,
+  "tests_local_scope": "SELECTED LOCAL SUITE — tests/test_discovery_substrate.py + tests/test_engine_adversarial_attacks.py only (smoke check). This is NOT the full repository test suite.",
+  "scientific_results_visible": false,
+  "next_allowed_phase": 1,
+  "timestamp_utc": "2026-08-08T15:05:00Z",
+
+  "github_ci_status": "NOT_INDEPENDENTLY_VERIFIED",
+  "github_ci_status_reason": "GitHub REST API rate-limited (no auth token in environment). GitHub CLI (gh) not available. Cannot independently retrieve Actions run/conclusion evidence. Per Amendment 3, this is NOT a defect — it is the correct terminal state when independent verification is unavailable.",
+
+  "local_tests_vs_github_ci_distinction": {
+    "required_format_per_audit_finding_9": {
+      "selected_local_suite": "178 passed (tests/test_discovery_substrate.py + tests/test_engine_adversarial_attacks.py)",
+      "full_local_suite": "NOT RUN (2663 tests collected, 0 run in this session)",
+      "github_ci": "NOT_INDEPENDENTLY_VERIFIED"
+    },
+    "note": "The 178-test count is a SELECTED LOCAL SUITE smoke check, not the full repository test suite. The full suite (2663 tests) was collected but not run. This must not be interpreted as 'repository test suite = 178' or 'CI passed'."
+  },
+
+  "engine_source_state": {
+    "content_clean": true,
+    "content_clean_evidence": "git diff engine/ shows 0 lines of content changes. The 1651 'modified' files in working tree are all mode-only changes (100644 → 100755) — file permissions drift, not content drift.",
+    "engine_source_clean_check_passed": true,
+    "engine_source_clean_check_evidence": "engine/checkpoint.py _check_engine_source_clean() runs `git status --porcelain engine/` and checks for empty output. This returned empty (engine/ has no content changes). The 1 failing test in tests/test_engine_adversarial_attacks.py earlier was due to working-tree-wide dirty state blocking the scientific run check, but engine/ itself was content-clean."
+  },
+
+  "working_tree_state": {
+    "total_files_dirty": 1651,
+    "content_changes": 0,
+    "mode_only_changes": 1651,
+    "untracked_files": 0,
+    "note": "All 1651 'modified' files are file-mode changes (644 → 755), not content changes. This is a pre-existing repo state from earlier setup, not introduced by Phase 0 work."
+  },
+
+  "frozen_objects": {
+    "substrate_freeze_commit": "f8e3f2a",
+    "gate2_protocol_sha": "32691a7",
+    "gate2_manifest_sha": "79788334adf8bb058d7e5a4ec6f41283d69fb891fcdab995e21e28c05f5b3829",
+    "gate2_freeze_record_path": "experiments/gate2/FREEZE_RECORD.json",
+    "gate2_manifest_path": "experiments/gate2/MANIFEST.sha256",
+    "measurement_integrity_baseline_tag": "stage-1-measurement-integrity-baseline",
+    "historical_f1_baseline": 0.5714,
+    "historical_f1_note": "F1=0.5714 is the historical baseline established in Stage -1 (cycle 134). It is NOT a capability claim. Per STOP_BUILDING.md, F1 optimization is forbidden.",
+    "cognitive_baseline_tag": "777cb6d",
+    "bridge_synonyms_state": "EMPTY_MAP_{}_FROZEN"
+  },
+
+  "amendment_compliance": {
+    "amendment_1_frozen_matcher_read_only": "PENDING — Phase 8 will establish the matcher SHA, configuration SHA, and source manifest SHA. No matcher modifications have been made in this commit.",
+    "amendment_2_vocabulary_pre_frozen_source": "PENDING — Phase 9 will freeze vocabulary/model provenance.",
+    "amendment_3_ci_status_terminal_state": "ENFORCED — github_ci_status is 'NOT_INDEPENDENTLY_VERIFIED', not a boolean. Local tests vs GitHub CI are reported separately above.",
+    "amendment_4_threshold_preregistration": "PENDING — Phase 11 will freeze Δ_min.",
+    "amendment_5_ci_method_frozen": "PENDING — Phase 12 will freeze CI method.",
+    "amendment_6_lock_file": "PENDING — Phase 13 will create the full lock file set. The discrimination experiment directory exists (empty).",
+    "amendment_7_threshold_shopping_prevented": "PENDING — Phase 11 will establish this. The execution script will refuse to run without frozen thresholds.",
+    "amendment_8_controls_before_gold": "PENDING — Phase 10 will freeze control construction.",
+    "amendment_9_control_quality_audit": "PENDING — Phase 10 will include the control quality audit.",
+    "amendment_10_phase14_controls_full": "PENDING — Phase 14 will execute all 5 mandatory controls.",
+    "amendment_11_observed_vs_expected": "ENFORCED — this PHASE_STATUS.json distinguishes OBSERVED (local test counts) from UNKNOWN (GitHub CI status).",
+    "amendment_12_commit_categorization": "ENFORCED — this commit's category is AUDIT_FIX. Future commits will use one of: ENGINEERING_FIX, MEASUREMENT_FIX, AUDIT_FIX, SCIENTIFIC_EXPERIMENT, SCIENTIFIC_RESULT, DOCUMENTATION_ONLY.",
+    "amendment_13_phase_status_json": "ENFORCED — this file IS the Phase 0 PHASE_STATUS.json.",
+    "amendment_14_scientific_visibility_boundary": "ENFORCED — DXP-005 was paused (not modified) per this amendment. The partial state is preserved as frozen-incomplete.",
+    "amendment_15_failure_is_valid": "ACKNOWLEDGED — Phase 17 will produce either DISCRIMINATIVE or NOT_DISCRIMINATIVE. NOT_DISCRIMINATIVE will be preserved as the terminal result.",
+    "amendment_16_discovery_gate_depends_on_discrimination": "ACKNOWLEDGED — DXP-005 cannot resume until Phase 17 produces DISCRIMINATIVE."
+  },
+
+  "phase_0_artifacts": {
+    "phase_status_json": "experiments/measurement_discrimination/PHASE_STATUS_phase0.json (this file)",
+    "dxp_005_pause_notice": "discovery_experiment/FINAL_VERDICT/DXP-005_PAUSE_NOTICE.md",
+    "pause_commit": "8b4c985"
+  }
+}

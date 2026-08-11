@@ -1,0 +1,159 @@
+{
+  "results": [
+    {
+      "hypothesis_id": "H-N2-001",
+      "outcome": null,
+      "survives": true,
+      "failure_modes": [],
+      "n_high": 0,
+      "n_medium": 0
+    },
+    {
+      "hypothesis_id": "H-N2-002",
+      "outcome": null,
+      "survives": false,
+      "failure_modes": [
+        {
+          "category": "FRAGILE_ASSUMPTION",
+          "description": "Assumption that boundary layer at 70-80% hull length is laminar/transitional at Re_L=10^8 is physically implausible. Natural transition on streamlined bodies occurs at Re_x ~ 5e5-1e6 (x/L ~ 0.005-0.01). At 70% length, Re_x = 7e7 >> transition threshold. Favorable pressure gradient delays transition but not by two orders of magnitude. JST CFD data claiming 60-80% transition likely misinterpreted (e.g., separation-induced transition, not natural).",
+          "severity": "HIGH",
+          "evidence": "Schlichting boundary layer theory: transition Re_\u03b8 ~ 300-500 for zero pressure gradient; favorable gradient raises to ~1000. At Re_L=10^8, Re_\u03b8 at 70% length ~ 1e5 (turbulent scaling). White, Viscous Fluid Flow: transition completes by Re_x ~ 3e6 even with strong favorable gradients."
+        },
+        {
+          "category": "CONTRADICTS_KNOWN",
+          "description": "Critical roughness calculation uses \u03b4=20mm, but actual turbulent boundary layer thickness at 70% length for Re_L=10^8 is ~500-1000mm. For L=100m, U=1m/s, \u03bd=1e-6: Re_x=7e7 at x=70m. Turbulent \u03b4 \u2248 0.37x/Re_x^0.2 \u2248 700mm. Flap height 1-2mm gives k/\u03b4 \u2248 0.0014-0.0028, well BELOW critical k/\u03b4 ~ 0.01-0.03. Flaps are 5-20x too small to trigger transition.",
+          "severity": "HIGH",
+          "evidence": "Turbulent BL thickness scaling: \u03b4/x = 0.37/Re_x^0.2 (Schlichting Ch. 21). At Re_x=7e7, \u03b4/x=0.01 \u2192 \u03b4=700mm for x=70m. Critical roughness for distributed elements: k/\u03b4 > 0.01 (Schlichting) or k+ > 600 (fully rough regime, not transition). Transition roughness requires k/\u03b4* ~ 0.1-1 (Klebanoff)."
+        },
+        {
+          "category": "BOUNDARY_BREAKS",
+          "description": "Mechanism claims 'without requiring organized vortex generation' but roughness elements large enough to trip transition (k/\u03b4 > 0.01) inherently generate wake vortices and unsteady shedding. The distinction between 'passive transition control' and 'vortex generation' is false at the required roughness scale. If flaps are too small to generate vortices (k/\u03b4 < 0.001), they cannot trip transition.",
+          "severity": "HIGH",
+          "evidence": "Roughness-induced transition mechanism: isolated roughness generates horseshoe vortices and wake instability (Klebanoff modes). Distributed roughness creates spanwise vorticity. No known 'vortex-free' transition triggering at k/\u03b4 > 0.01."
+        },
+        {
+          "category": "PRIOR_ART_EXISTS",
+          "description": "Boundary layer tripping via distributed roughness is standard practice since 1940s (trip wires, grit strips, sand roughness). NASA, ONR, and submarine communities have extensively studied stern tripping for separation control. The 'novelty' of reframing vortex generators as transition trips is semantic; the physics is identical to existing tripping literature.",
+          "severity": "MEDIUM",
+          "evidence": "Schlichting Ch. 22: 'Artificial transition fixing'. Submarine applications: Gertler (1950), Jackson (1991) on stern boundary layer control. Modern: DARPA SUBOFF studies with trip wires at 60-70% length."
+        },
+        {
+          "category": "FALSIFIER_TRIGGERED",
+          "description": "The stated falsifier \u2014 'boundary layer is ALREADY fully turbulent at 70% hull length' \u2014 is virtually certain at Re_L=10^8. Hot-film/IR measurements will show fully turbulent flow forward of flaps, nullifying the hypothesis. The hypothesis survives only if Re_L is drastically lower (~10^6) or pressure gradient is implausibly favorable.",
+          "severity": "HIGH",
+          "evidence": "Re_L=10^8 \u2192 Re_x=7e7 at 70% length. Minimum transition Re_x for axisymmetric bodies with favorable gradient: ~5e6 (Morkovin). 7e7 >> 5e6. No credible scenario maintains laminar flow to 70% at this Re."
+        },
+        {
+          "category": "INCOMPATIBLE_TARGET",
+          "description": "Even if transition were triggered, skin friction drag increase would dwarf pressure drag reduction. Turbulent C_f ~ 0.0025 vs laminar ~ 0.0003 at Re_x=7e7. Tripping 30% of hull length adds ~0.0022*0.3*0.5*\u03c1U^2*S_wet drag. Pressure drag reduction from delayed separation on axisymmetric stern is typically <5% of total drag. Net drag increase guaranteed.",
+          "severity": "HIGH",
+          "evidence": "Drag breakdown for SUBOFF at Re=10^7: pressure drag ~15% total, friction ~85%. Tripping adds ~30% friction drag over aft 30% length \u2192 ~8% total drag increase. Maximum separation delay benefit: eliminate 15% pressure drag \u2192 net +8% drag. Hoerner, Fluid-Dynamic Drag: tripping always increases drag unless separation is massive."
+        }
+      ],
+      "n_high": 5,
+      "n_medium": 1
+    },
+    {
+      "hypothesis_id": "H-N2-003",
+      "outcome": null,
+      "survives": false,
+      "failure_modes": [
+        {
+          "category": "CONTRADICTS_KNOWN",
+          "description": "Hypothesis invokes Tollmien-Schlichting (T-S) wave amplification in a Re=10^8 boundary layer. At this Reynolds number, the boundary layer is fully turbulent; T-S waves are laminar instability modes irrelevant to turbulent separation control. Klebanoff modes are bypass transition mechanisms, not separation control levers in developed turbulence. The mechanism fundamentally mischaracterizes the physics of high-Re turbulent boundary layers.",
+          "severity": "HIGH",
+          "evidence": "Schlichting & Gersten (2017) Boundary Layer Theory: T-S waves damp exponentially in turbulent flow; separation control at high Re requires momentum injection or pressure gradient modification, not linear instability excitation."
+        },
+        {
+          "category": "FRAGILE_ASSUMPTION",
+          "description": "Collective low-frequency modulation (10-100 Hz) via hydrodynamic coupling of 1-2mm flaps requires phase-locked vortex shedding across the array. In a turbulent boundary layer with high free-stream turbulence, wall-mounted micro-flaps experience stochastic forcing that destroys phase coherence. Williamson (1996) cylinder arrays operate in uniform flow, not in a sheared, turbulent boundary layer where each flap sees different local velocity and turbulence intensity.",
+          "severity": "HIGH",
+          "evidence": "Bearman (2011) on vortex shedding in turbulent flow: 'Coherence is rapidly lost when Strouhal number based on integral scale exceeds 0.1.' Here, flap spacing ~10-20mm in a meter-scale BL guarantees incoherent shedding."
+        },
+        {
+          "category": "CONTRADICTS_KNOWN",
+          "description": "Claim that low-frequency pressure waves 'propagate upstream into the boundary layer' violates causality in supersonic/high-subsonic flow. At U=15 m/s (Mach ~0.01 in water), pressure disturbances propagate at speed of sound (~1500 m/s) \u2014 effectively instantaneously. However, the relevant convection velocity for boundary layer structures is ~0.5-0.8U. Pressure fluctuations at 10-100 Hz have wavelengths of 15-150m, far exceeding boundary layer thickness (O(0.1-1m)). These are not propagating waves but quasi-static pressure gradients that cannot selectively amplify instabilities.",
+          "severity": "HIGH",
+          "evidence": "Goldstein (1976) on aeroacoustics: Low-frequency pressure fluctuations in subsonic flow are hydrostatic, not wave-like. No mechanism exists for 10-100 Hz wall pressure to 'excite' T-S waves in a turbulent BL."
+        },
+        {
+          "category": "BOUNDARY_BREAKS",
+          "description": "Cavitation inception at flap edges is inevitable at 15 m/s (30 knots) for 1-2mm flaps. Vortex shedding creates local pressure minima scaling as \u03c1U\u00b2St\u00b2. For h=1mm, St=0.2, \u0394p_min ~ -0.5\u03c1U\u00b2(0.2)\u00b2 \u2248 -4.5 kPa. At 10m depth (p_ambient \u2248 200 kPa), cavitation number \u03c3 = (p-p_v)/0.5\u03c1U\u00b2 \u2248 1.8. Cavitation inception for sharp-edged bluff bodies occurs at \u03c3 < 2-3. Cavitation will disrupt shedding regularity, destroy coherence, and erode flaps.",
+          "severity": "HIGH",
+          "evidence": "Franc & Michel (2004) Fundamentals of Cavitation: Vortex shedding from sharp edges at \u03c3<3 produces cavitating vortices with broadband noise, not tonal shedding. Submarine appendages operate at \u03c3=1-3 routinely."
+        },
+        {
+          "category": "FRAGILE_ASSUMPTION",
+          "description": "Energy budget is implausible. Flap height h=1-2mm in \u03b4\u22480.5m BL (Re=10^7 based on \u03b4). Pressure fluctuation amplitude from micro-flaps scales as \u03c1U\u00b2(h/\u03b4) ~ 100 Pa. Separation control requires momentum coefficient C_\u03bc > 0.001-0.01. Passive flaps provide zero net momentum injection. Low-frequency pressure modulation at 100 Pa cannot overcome adverse pressure gradients of O(10^4 Pa) driving separation.",
+          "severity": "MEDIUM",
+          "evidence": "Greenblatt & Wygnanski (2000) on flow control: Effective separation control requires C_\u03bc > 0.3% for steady blowing, >0.1% for unsteady. Passive devices rely on vortex-induced mixing, not pressure waves. No data shows 10-100 Hz wall pressure fluctuations of O(100 Pa) controlling separation at high Re."
+        },
+        {
+          "category": "PRIOR_ART_EXISTS",
+          "description": "The 'flap array as metamaterial' concept duplicates existing passive flow control: (1) Sawtooth/trapezoidal vortex generators (Lin 2002) produce unsteady shedding; (2) Fluidic oscillators (Bobusch et al. 2013) generate self-sustained sweeping jets at 10-100 Hz without moving parts; (3) Riblet/cavity arrays (Choi et al. 1993) modify turbulence. The claimed novelty of 'resonant flow control distinct from steady vortex generation' is false \u2014 unsteady VG effects are well documented.",
+          "severity": "MEDIUM",
+          "evidence": "Lin (2002) 'Review of vortex generator research': 'Unsteady vortex generators produce low-frequency modulation via vortex merging.' Bobusch et al. (2013) J. Fluid Mech. 727: Fluidic oscillators produce 10-100 Hz sweeping jets passively. No metamaterial physics required."
+        },
+        {
+          "category": "FALSIFIER_TRIGGERED",
+          "description": "The stated falsifier is logically disconnected from the hypothesis. It tests coherence between flap-shedding frequencies (1.5-3 kHz) and separation-point motion, but the hypothesis claims the LOW-FREQUENCY modulation (10-100 Hz) drives the effect. Coherence at shedding frequencies is irrelevant; the test should measure coherence between 10-100 Hz wall pressure and separation motion. As written, the falsifier cannot falsify the actual mechanism.",
+          "severity": "MEDIUM",
+          "evidence": "Hypothesis mechanism: 'collective array produces low-frequency modulation at 10-100 Hz... These low-frequency pressure waves propagate upstream... amplifying instabilities.' Falsifier tests 1.5-3 kHz coherence \u2014 a category error."
+        },
+        {
+          "category": "INCOMPATIBLE_TARGET",
+          "description": "Submarine hull boundary layers at cruise are typically attached; separation occurs only at high angles of attack or on appendages. The hypothesis targets 'separation control' but provides no evidence that the flap array would not increase drag in attached flow. Micro-flaps (h=1-2mm) in a turbulent BL act as distributed roughness, increasing skin friction by \u0394C_f/C_f ~ (h/\u03b4)^0.5 ~ 5-10% (Schultz & Flack 2009). The drag penalty in attached flow likely exceeds any separation control benefit.",
+          "severity": "MEDIUM",
+          "evidence": "Schultz & Flack (2009) J. Fluids Eng.: Roughness function for distributed roughness: \u0394U+ = 2.5 ln(h/\u03b4) + C. For h/\u03b4=0.002-0.004, \u0394C_f/C_f \u2248 5-15%. Submarine drag budgets tolerate <1% appendage drag increase."
+        }
+      ],
+      "n_high": 4,
+      "n_medium": 4
+    },
+    {
+      "hypothesis_id": "H-N2-004",
+      "outcome": null,
+      "survives": false,
+      "failure_modes": [
+        {
+          "category": "CONTRADICTS_KNOWN",
+          "description": "Cited evidence (Godard & Stanislas 2006) directly contradicts the claimed mechanism. Micro-ramps generate counter-rotating vortex pairs that induce mixing \u2014 not a quasi-steady Bernoulli suction. The low-pressure cores observed are vortex cores, not attached-flow acceleration over a curved surface. The hypothesis denies vortex dynamics while citing a vortex-dynamics paper as support.",
+          "severity": "HIGH",
+          "evidence": "Godard & Stanislas (2006) 'Control of a decelerating boundary layer. Part 1: optimization of passive shock-wave/boundary-layer interaction control' \u2014 shows micro-ramps generate streamwise vortices; pressure minima are vortex signatures. No attached-flow Bernoulli acceleration occurs on ramp lee side."
+        },
+        {
+          "category": "FRAGILE_ASSUMPTION",
+          "description": "Suction penetration assumption fails: a flap height h ~ 1-5 mm sits deep in the viscous sublayer (y+ < 30) for typical ship stern Re. Pressure fluctuations from wall-mounted obstacles decay exponentially with wall-normal distance (Townsend's attached-eddy model). A \u0394p ~ 1 kPa at the wall becomes negligible at y > 5h. Cannot pull outer-layer fluid (\u03b4 ~ 50-100 mm) downward.",
+          "severity": "HIGH",
+          "evidence": "Pressure fluctuation decay in turbulent boundary layers: p'(y) ~ p'_w exp(-y/\u039b) where \u039b ~ 0.1\u03b4. For \u03b4=50mm, \u039b=5mm. Flap height h=2mm \u2192 suction at y=10mm (outer layer) attenuated by exp(-10/5)=0.135. At y=\u03b4, attenuation > 10^-4."
+        },
+        {
+          "category": "BOUNDARY_BREAKS",
+          "description": "Hydrostatic pressure at 500m (5 MPa) does not suppress suction magnitude per se (water incompressible), but it renders the pressure gradient signal physically irrelevant to boundary layer dynamics. The adverse streamwise pressure gradient dp/dx driving separation scales with \u03c1U\u00b2/L ~ 10-100 kPa/m. A normal pressure gradient \u2202p/\u2202y ~ 1 kPa / 2mm = 500 kPa/m exists only within ~2mm of wall. The boundary layer momentum equation integrates normal pressure gradient across \u03b4 \u2014 contribution is O(\u0394p/\u03b4) ~ 20 Pa/m, negligible vs. adverse gradient.",
+          "severity": "HIGH",
+          "evidence": "Boundary layer normal momentum balance: \u2202p/\u2202y \u2248 0 across \u03b4 for attached flows. A localized normal pressure gradient over \u0394y << \u03b4 integrates to a negligible streamwise force. Separation is governed by streamwise pressure gradient history, not local normal gradients."
+        },
+        {
+          "category": "PRIOR_ART_EXISTS",
+          "description": "The 'distributed suction strip' concept is prior art: discrete suction holes (Braslow 1999) and micro-vortex generators (Lin 2002) both create arrays of localized low-pressure regions. Both are known to work via vortex mixing or boundary layer thinning \u2014 not by modifying the outer pressure field. The hypothesis rebrands known physics with an incorrect mechanism.",
+          "severity": "MEDIUM",
+          "evidence": "Braslow (1999) 'A history of suction-type laminar-flow control' \u2014 discrete suction holes create local low pressure but require close spacing (s/d < 10) to merge. Micro-VGs (Lin 2002) explicitly generate vortices. No device operates via 'quasi-steady Bernoulli suction' without vortices."
+        },
+        {
+          "category": "FALSIFIER_TRIGGERED",
+          "description": "The falsifier condition 'streamwise pressure gradient dp/dx upstream of flaps is UNCHANGED when flaps deploy' will almost certainly be true. Flaps are passive; they cannot alter the hull's potential-flow pressure distribution upstream. They only modify the boundary layer's response to it. PSP will show local low pressure at flap tips (vortex cores), but dp/dx upstream remains identical \u2014 falsifying the claimed mechanism of 'reducing adverse streamwise pressure gradient by superimposing favorable normal pressure gradient'.",
+          "severity": "HIGH",
+          "evidence": "Potential flow theory: pressure distribution on a body is determined by geometry and far-field conditions. Passive flaps on the stern cannot change pressure at x < x_flap. Any upstream influence would require subsonic (incompressible) upstream propagation \u2014 impossible for steady flow."
+        },
+        {
+          "category": "INCOMPATIBLE_TARGET",
+          "description": "The target phenomenon (stern separation on axisymmetric bodies at high Re) is driven by 3D adverse pressure gradient and crossflow. A normal suction strip on the stern cannot address crossflow instability or the 3D separation topology. Ship stern separation involves horseshoe vortices and crossflow separation \u2014 mechanisms orthogonal to the proposed 2D suction effect.",
+          "severity": "MEDIUM",
+          "evidence": "Axisymmetric stern separation (e.g., DARPA SUBOFF) shows 3D separation lines, crossflow vortices, and helical vortex structures. 2D suction models (e.g., Green's lag-entrainment) fail to predict 3D separation. No evidence that normal suction suppresses crossflow-driven separation."
+        }
+      ],
+      "n_high": 4,
+      "n_medium": 2
+    }
+  ]
+}

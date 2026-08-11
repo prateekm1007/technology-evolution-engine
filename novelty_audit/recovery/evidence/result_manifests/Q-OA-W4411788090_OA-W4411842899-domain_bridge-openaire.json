@@ -1,0 +1,51 @@
+{
+  "query_id": "Q-OA-W4411788090_OA-W4411842899-domain_bridge-openaire",
+  "pair_id": "OA-W4411788090_OA-W4411842899",
+  "query_type": "domain_bridge",
+  "provider": "openaire",
+  "query_text": "thermodynamics computer_science mechanism",
+  "query_hash": "4868c8482bc4b1d28a41111f95ef169399462a7d52b7dd4424d5f75d1d77be83",
+  "frozen_query_ref": "Q-OA-W4411788090_OA-W4411842899-domain_bridge-openalex",
+  "url": "https://api.openaire.eu/search/publications?keywords=thermodynamics+computer_science+mechanism&size=10&format=json",
+  "timestamp_utc": "2026-08-11T12:35:19.744297+00:00",
+  "status": "SUCCESS",
+  "result_count": 1,
+  "result_ids": [
+    [
+      {
+        "$": "50|datacite____::02af7eff314e3a5e4b75930ab7310aa7"
+      },
+      {
+        "$": "10.5281/zenodo.15706569"
+      },
+      {
+        "$": "50|datacite____::744a9a260fb6ffd27a16d1881383a6ce"
+      },
+      {
+        "$": "10.5281/zenodo.15706570"
+      },
+      {
+        "$": "50|od______2659::744a9a260fb6ffd27a16d1881383a6ce"
+      },
+      {
+        "$": "oai:zenodo.org:15706570"
+      }
+    ]
+  ],
+  "result_titles": [
+    "The Universe as Recursive Harmonic Resonance_ An Expert Evaluation"
+  ],
+  "result_dois": [
+    "10.5281/zenodo.15706569"
+  ],
+  "result_dates": [
+    "2025-06-20"
+  ],
+  "response_hash": "0af40d7ec2e87438fee6f468ece45525b617e9c61dc09248c5de9e613ae6335e",
+  "evidence_uri": "https://api.openaire.eu/search/publications?keywords=thermodynamics+computer_science+mechanism&size=10&format=json",
+  "error": null,
+  "rate_limit_headers": {
+    "x-ratelimit-used": "242",
+    "x-ratelimit-limit": "7199"
+  }
+}

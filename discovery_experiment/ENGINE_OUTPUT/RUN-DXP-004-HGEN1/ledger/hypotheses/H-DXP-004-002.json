@@ -1,0 +1,28 @@
+{
+  "hypothesis_id": "H-DXP-004-002",
+  "claim": "The hierarchical riblet pattern will create longitudinal vortices that thin the viscous sublayer, reducing drag by 4-7% while inhibiting biofilm attachment through topological interference",
+  "mechanism": "The hierarchical surface structure generates controlled streamwise vortices that disrupt the near-wall flow organization, effectively thinning the viscous sublayer and reducing drag. The narrow valleys between riblets also prevent biofilm organisms from gaining mechanical footholds, similar to how shark skin inhibits barnacle attachment.",
+  "evidence": [
+    "Shark skin's hierarchical structure provides both drag reduction and anti-fouling",
+    "Lab studies show micro-patterned surfaces reduce biofilm attachment by 40-60%"
+  ],
+  "assumptions": [
+    "The hierarchical pattern combines micro-ridges (50-100 \u03bcm) with nano-features (1-10 \u03bcm)",
+    "Water chemistry doesn't promote excessive mineral scaling that fills valleys",
+    "Flow velocity remains within design parameters"
+  ],
+  "predictions": [],
+  "expected_failure_modes": [],
+  "novelty_rationale": "Combines both drag reduction and anti-fouling mechanisms from shark skin into a single hierarchical structure for pipes",
+  "testability": "Can be tested by measuring both pressure drop and biofilm adhesion strength in treated vs. untreated pipe sections after 6 months of operation",
+  "falsifier": "If biofilm adhesion strength is not reduced or if pressure drop increases despite the hierarchical structure",
+  "epistemic_state": "HYPOTHESIZED",
+  "parent_hypothesis_ids": [],
+  "provenance": {
+    "nodes": {},
+    "edges": [],
+    "committed_hash": null
+  },
+  "is_testable": true,
+  "provenance_root_hash": ""
+}

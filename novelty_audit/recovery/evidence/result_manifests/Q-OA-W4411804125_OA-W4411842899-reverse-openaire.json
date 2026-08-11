@@ -1,0 +1,51 @@
+{
+  "query_id": "Q-OA-W4411804125_OA-W4411842899-reverse-openaire",
+  "pair_id": "OA-W4411804125_OA-W4411842899",
+  "query_type": "reverse",
+  "provider": "openaire",
+  "query_text": "learning system adaptive composites shielding neutron",
+  "query_hash": "096770d3cbd744c2620d84558abb33e5513ae6da64d9d3022ec112a6611ee551",
+  "frozen_query_ref": "Q-OA-W4411804125_OA-W4411842899-reverse-openalex",
+  "url": "https://api.openaire.eu/search/publications?keywords=learning+system+adaptive+composites+shielding+neutron&size=10&format=json",
+  "timestamp_utc": "2026-08-11T12:35:38.570163+00:00",
+  "status": "SUCCESS",
+  "result_count": 1,
+  "result_ids": [
+    [
+      {
+        "$": "50|datacite____::2ae46651618a5612e6b40b17b8d66546"
+      },
+      {
+        "$": "10.5281/zenodo.18074657"
+      },
+      {
+        "$": "50|od______2659::2ae46651618a5612e6b40b17b8d66546"
+      },
+      {
+        "$": "oai:zenodo.org:18074657"
+      },
+      {
+        "$": "50|datacite____::63f0219a397c0a65412cd94f6276eb9a"
+      },
+      {
+        "$": "10.5281/zenodo.18074656"
+      }
+    ]
+  ],
+  "result_titles": [
+    "THE MASTER \ud835\udd2c\ud835\udd09 MASTER'\ud835\udd30  U.N.I.F.I.E.D. F.O.R.C.E.:Universal Navigation Interfaced Field Integrated Engine Drive for Omnidirectional Relativistic Cosmic Exploration."
+  ],
+  "result_dois": [
+    "10.5281/zenodo.18074657"
+  ],
+  "result_dates": [
+    "2025-12-28"
+  ],
+  "response_hash": "c651ae0851cb48e8f8ae5b29a30ae6a6b5159542b2fd7f5bb1a9e07ba592cd8a",
+  "evidence_uri": "https://api.openaire.eu/search/publications?keywords=learning+system+adaptive+composites+shielding+neutron&size=10&format=json",
+  "error": null,
+  "rate_limit_headers": {
+    "x-ratelimit-used": "216",
+    "x-ratelimit-limit": "7199"
+  }
+}

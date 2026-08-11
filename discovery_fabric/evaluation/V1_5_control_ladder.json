@@ -1,0 +1,272 @@
+{
+  "timestamp": "2026-08-11T21:00:00Z",
+  "method_stats": {
+    "random": {
+      "total": 2,
+      "survived": 0,
+      "rate": "0%"
+    },
+    "keyword": {
+      "total": 2,
+      "survived": 0,
+      "rate": "0%"
+    },
+    "llm_only": {
+      "total": 2,
+      "survived": 0,
+      "rate": "0%"
+    },
+    "discovery_fabric": {
+      "total": 2,
+      "survived": 0,
+      "rate": "0%"
+    },
+    "hard_null": {
+      "total": 2,
+      "survived": 0,
+      "rate": "0%"
+    }
+  },
+  "results": [
+    {
+      "overall": "KILLED",
+      "fatal": 2,
+      "major": 1,
+      "has_exp": false,
+      "has_meas": false,
+      "has_fals": false,
+      "attacks": {
+        "physics": {
+          "severity": "MAJOR",
+          "reason": "violates fundamental principles of physics as applied to biological systems"
+        },
+        "materials": {
+          "severity": "FATAL",
+          "reason": "inability to achieve desired properties and understand underlying mechanism"
+        },
+        "engineering": {
+          "severity": "FATAL",
+          "reason": "Hypothesis and mechanism are not viable"
+        }
+      },
+      "case_id": "CD-0",
+      "method": "llm_only"
+    },
+    {
+      "overall": "KILLED",
+      "fatal": 0,
+      "major": 1,
+      "has_exp": true,
+      "has_meas": true,
+      "has_fals": true,
+      "attacks": {
+        "physics": {
+          "severity": "SURVIVES",
+          "reason": "No mechanism or hypothesis provided to evaluate against physics laws"
+        },
+        "materials": {
+          "severity": "MINOR",
+          "reason": "properties partially achievable with current materials"
+        },
+        "engineering": {
+          "severity": "MAJOR",
+          "reason": "Insufficient design details"
+        }
+      },
+      "case_id": "NULL-0",
+      "method": "hard_null"
+    },
+    {
+      "overall": "KILLED",
+      "fatal": 1,
+      "major": 1,
+      "has_exp": false,
+      "has_meas": false,
+      "has_fals": false,
+      "attacks": {
+        "physics": {
+          "severity": "MINOR",
+          "reason": "No physical laws are directly violated in a computing context."
+        },
+        "materials": {
+          "severity": "MAJOR",
+          "reason": "mechanism rejected"
+        },
+        "engineering": {
+          "severity": "FATAL",
+          "reason": "mechanism rejected"
+        }
+      },
+      "case_id": "CE-1",
+      "method": "discovery_fabric"
+    },
+    {
+      "overall": "KILLED",
+      "fatal": 0,
+      "major": 0,
+      "has_exp": false,
+      "has_meas": false,
+      "has_fals": false,
+      "attacks": {
+        "physics": {
+          "severity": "SURVIVES",
+          "reason": "no physics laws violated"
+        },
+        "materials": {
+          "severity": "MINOR",
+          "reason": "properties partially achievable due to potential transfer of neuroscience approaches to environmental applications through shared keywords"
+        },
+        "engineering": {
+          "severity": "MINOR",
+          "reason": "conceptually feasible but lacks concrete technical details"
+        }
+      },
+      "case_id": "CB-0",
+      "method": "keyword"
+    },
+    {
+      "overall": "KILLED",
+      "fatal": 0,
+      "major": 2,
+      "has_exp": true,
+      "has_meas": true,
+      "has_fals": true,
+      "attacks": {
+        "physics": {
+          "severity": "SURVIVES",
+          "reason": "The concept of self-healing materials repairing microcracks and fractures is theoretically plausible and does not violate fundamental physics laws."
+        },
+        "materials": {
+          "severity": "MAJOR",
+          "reason": "Incorporating self-healing materials into LIB inner constituents may mitigate damage accumulation, but achieving optimal properties and performance remains a significant challenge due to potential trade-offs in energy density, power output, and cycle life."
+        },
+        "engineering": {
+          "severity": "MAJOR",
+          "reason": "Incorporating self-healing materials into LIB inner constituents is theoretically possible, but significant technical challenges and scalability issues need to be addressed before manufacturing can be considered feasible."
+        }
+      },
+      "case_id": "CE-0",
+      "method": "discovery_fabric"
+    },
+    {
+      "overall": "KILLED",
+      "fatal": 0,
+      "major": 2,
+      "has_exp": true,
+      "has_meas": true,
+      "has_fals": true,
+      "attacks": {
+        "physics": {
+          "severity": "SURVIVES",
+          "reason": "insufficient information"
+        },
+        "materials": {
+          "severity": "MAJOR",
+          "reason": "insufficient data on material properties"
+        },
+        "engineering": {
+          "severity": "MAJOR",
+          "reason": "design lacks specific dimensions and material specifications"
+        }
+      },
+      "case_id": "NULL-1",
+      "method": "hard_null"
+    },
+    {
+      "overall": "KILLED",
+      "fatal": 0,
+      "major": 1,
+      "has_exp": false,
+      "has_meas": false,
+      "has_fals": false,
+      "attacks": {
+        "physics": {
+          "severity": "MINOR",
+          "reason": "The hypothesis does not directly violate physics laws, but the mechanism of random transfer between neuroscience and biotechnology lacks a clear physical basis."
+        },
+        "materials": {
+          "severity": "MINOR",
+          "reason": "properties partially achievable with potential for innovation"
+        },
+        "engineering": {
+          "severity": "MAJOR",
+          "reason": "Lack of clear technical feasibility and direct application of neuroscience principles to biotechnology, requiring significant research and development to determine manufacturability"
+        }
+      },
+      "case_id": "CA-0",
+      "method": "random"
+    },
+    {
+      "overall": "KILLED",
+      "fatal": 0,
+      "major": 1,
+      "has_exp": false,
+      "has_meas": false,
+      "has_fals": false,
+      "attacks": {
+        "physics": {
+          "severity": "MINOR",
+          "reason": "Interdisciplinary approach is plausible, but random transfer of materials may not directly apply to neuroscience without consideration of complex biological systems and scaling factors."
+        },
+        "materials": {
+          "severity": "MINOR",
+          "reason": "properties partially achievable with potential for innovative applications in neuroscience"
+        },
+        "engineering": {
+          "severity": "MAJOR",
+          "reason": "Lack of clear mechanism and direct application to neuroscience, requiring significant research and development to establish a viable manufacturing process"
+        }
+      },
+      "case_id": "CA-1",
+      "method": "random"
+    },
+    {
+      "overall": "KILLED",
+      "fatal": 3,
+      "major": 0,
+      "has_exp": false,
+      "has_meas": false,
+      "has_fals": false,
+      "attacks": {
+        "physics": {
+          "severity": "FATAL",
+          "reason": "violates laws of thermodynamics and conservation of energy"
+        },
+        "materials": {
+          "severity": "FATAL",
+          "reason": "inadequate properties and mechanism for target chemical"
+        },
+        "engineering": {
+          "severity": "FATAL",
+          "reason": "Hypothesis and mechanism are not viable for chemical target"
+        }
+      },
+      "case_id": "CD-1",
+      "method": "llm_only"
+    },
+    {
+      "overall": "KILLED",
+      "fatal": 0,
+      "major": 0,
+      "has_exp": false,
+      "has_meas": false,
+      "has_fals": false,
+      "attacks": {
+        "physics": {
+          "severity": "SURVIVES",
+          "reason": "does not violate physical laws, as it involves applying computational concepts to biotechnology, which is a interdisciplinary approach"
+        },
+        "materials": {
+          "severity": "MINOR",
+          "reason": "properties partially achievable through biomimicry and computational modeling"
+        },
+        "engineering": {
+          "severity": "MINOR",
+          "reason": "conceptually feasible but requires significant interdisciplinary research and development"
+        }
+      },
+      "case_id": "CB-1",
+      "method": "keyword"
+    }
+  ]
+}

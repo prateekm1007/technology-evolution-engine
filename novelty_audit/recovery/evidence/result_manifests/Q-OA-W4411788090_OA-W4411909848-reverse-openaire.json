@@ -1,0 +1,107 @@
+{
+  "query_id": "Q-OA-W4411788090_OA-W4411909848-reverse-openaire",
+  "pair_id": "OA-W4411788090_OA-W4411909848",
+  "query_type": "reverse",
+  "provider": "openaire",
+  "query_text": "molecular morphology organic solar evaporation water",
+  "query_hash": "32b34cde44c2127efecdfb18af373b3bd7f3010f108af6fc99f25b11aaeb5dea",
+  "frozen_query_ref": "Q-OA-W4411788090_OA-W4411909848-reverse-openalex",
+  "url": "https://api.openaire.eu/search/publications?keywords=molecular+morphology+organic+solar+evaporation+water&size=10&format=json",
+  "timestamp_utc": "2026-08-11T12:33:21.844438+00:00",
+  "status": "SUCCESS",
+  "result_count": 5,
+  "result_ids": [
+    [
+      {
+        "$": "10.1002/anie.202402726"
+      },
+      {
+        "$": "50|doiboost____|6521001cef8c8219865f516c9f873f7e"
+      },
+      {
+        "$": "10.1002/ange.202402726"
+      },
+      {
+        "$": "50|doiboost____|bd1f1414fa994fe5932de346e3c9b524"
+      },
+      {
+        "$": "38494458"
+      }
+    ],
+    [
+      {
+        "$": "10.1002/eem2.12226"
+      },
+      {
+        "$": "50|doiboost____|0ec8dd0ed57bc8faefeb496d4838955d"
+      },
+      {
+        "$": "3171373307"
+      },
+      {
+        "$": "50|base_oa_____::7079ae9932878aa6240d02c26f19e811"
+      },
+      {
+        "$": "ftunivsthongkong:oai:repository.hkust.edu.hk:1783.1-113516"
+      }
+    ],
+    [
+      {
+        "$": "oai:repository.kulib.kyoto-u.ac.jp:2433/295550"
+      },
+      {
+        "$": "50|jairo_______::dcac7d76d0a56f04d8c1422e4ac197f7"
+      }
+    ],
+    [
+      {
+        "$": "10.1021/la904515z"
+      },
+      {
+        "$": "50|doiboost____|9c915f1bf382cb616df2108b66afced9"
+      },
+      {
+        "$": "20146485"
+      },
+      {
+        "$": "1998239497"
+      }
+    ],
+    [
+      {
+        "$": "50|od______2485::4d21f781d8d3c2262e8873a36e0ee21b"
+      },
+      {
+        "$": "oai:vtechworks.lib.vt.edu:10919/109753"
+      }
+    ]
+  ],
+  "result_titles": [
+    "Manipulation of the Self\u2010Assembly Morphology by Side\u2010Chain Engineering of Quinoxaline\u2010Substituted Organic Photothermal Molecules for Highly Efficient Solar\u2010Thermal Conversion and Applications",
+    "Air\u2010Processed Efficient Organic Solar Cells from Aromatic Hydrocarbon Solvent without Solvent Additive or Post\u2010Treatment: Insights into Solvent Effect on Morphology",
+    "Versatile polyimide composite aerogels for highly efficient interfacial solar steam generation through controlling the molecular polarity",
+    "Minimizing Lateral Domain Collapse in Etched Poly(3-hexylthiophene)-<i>block</i>-Polylactide Thin Films for Improved Optoelectronic Performance",
+    "Block Copolymer Derived Porous Carbon Fiber for Energy and Environmental Science"
+  ],
+  "result_dois": [
+    "10.1002/anie.202402726",
+    "10.1002/eem2.12226",
+    "",
+    "10.1021/la904515z",
+    ""
+  ],
+  "result_dates": [
+    "2024-03-28",
+    "2021-10-03",
+    "",
+    "2010-02-10",
+    "2022-04-27"
+  ],
+  "response_hash": "06b1b0e7cca9b0a9c7956f167b81b3052cc73c7bbd09368020e86e583861eb5b",
+  "evidence_uri": "https://api.openaire.eu/search/publications?keywords=molecular+morphology+organic+solar+evaporation+water&size=10&format=json",
+  "error": null,
+  "rate_limit_headers": {
+    "x-ratelimit-used": "200",
+    "x-ratelimit-limit": "7199"
+  }
+}

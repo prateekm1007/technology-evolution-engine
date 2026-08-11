@@ -1,0 +1,70 @@
+{
+  "id": "benchmark_0003",
+  "type": "patent",
+  "source": "uspto",
+  "title": "Perovskite-Silicon Tandem Solar Cell with 33% Efficiency",
+  "domain": "energy",
+  "abstract": "A tandem photovoltaic device comprising a metal halide perovskite top cell on crystalline silicon heterojunction bottom cell exceeding 33% efficiency.",
+  "claims": [
+    "A tandem solar cell comprising perovskite absorber FA0.8Cs0.2Pb(I0.6Br0.4)3 with thickness 400-600nm.",
+    "A recombination junction comprising 10nm tin oxide ETL and 10nm nickel oxide HTL.",
+    "Deposition by anti-solvent assisted spin coating followed by annealing at 100C."
+  ],
+  "components": [
+    "perovskite absorber",
+    "silicon heterojunction cell",
+    "tin oxide ETL",
+    "nickel oxide HTL",
+    "transparent electrode",
+    "encapsulation"
+  ],
+  "materials": [
+    "formamidinium lead iodide bromide",
+    "crystalline silicon",
+    "tin oxide",
+    "nickel oxide",
+    "indium tin oxide",
+    "glass"
+  ],
+  "methods": [
+    "spin coating",
+    "anti-solvent quenching",
+    "PECVD",
+    "sputtering",
+    "thermal annealing"
+  ],
+  "constraints": [
+    "efficiency",
+    "stability",
+    "manufacturing cost",
+    "material toxicity",
+    "supply chain"
+  ],
+  "problem_statement": "Single-junction silicon cells limited to 29.4% by Shockley-Queisser limit.",
+  "expected_constraints": [
+    "energy",
+    "material",
+    "cost",
+    "manufacturing",
+    "safety",
+    "supply chain"
+  ],
+  "expected_prerequisites": [
+    "perovskite film uniformity",
+    "moisture-free processing",
+    "tandem interconnect technology",
+    "long-term encapsulation"
+  ],
+  "expected_adjacent_domains": [
+    "materials science",
+    "semiconductor physics",
+    "chemical engineering",
+    "manufacturing"
+  ],
+  "expected_failure_modes": [
+    "perovskite degradation",
+    "ion migration",
+    "lead leakage",
+    "thermal delamination"
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "artifact_type": "METRIC_CONSUMER_INVENTORY",
+  "generated_at": "2026-08-08T17:45:00Z",
+  "total_consumers": 14,
+  "scientific_consumers_count": 5,
+  "non_scientific_consumers_count": 9,
+  "bypass_risk_consumers_count": 0,
+
+  "scientific_consumers": [
+    {
+      "file": "programs/A_metrology/calibration_documented_m2e1.py",
+      "function": "determine_calibration_status",
+      "metric_sources": ["M-008"],
+      "source_artifact": "reports/bootstrap_statistics.json",
+      "required_gate": "assert_metric_eligible_for_scientific_use",
+      "gate_function": "determine_calibration_status",
+      "gate_location": "before M-008 JSON read, both M-005 and M-008 paths",
+      "verified": true,
+      "bypass_risk": false
+    },
+    {
+      "file": "audit/measurement_integrity/dr101_final_verdict_eligibility.py",
+      "function": "decide_eligibility",
+      "metric_sources": ["M-005", "M-008"],
+      "source_artifact": "transitive (via gate verdicts)",
+      "required_gate": "assert_metric_eligible_for_scientific_use",
+      "gate_function": "decide_eligibility",
+      "gate_location": "before gate verdict aggregation",
+      "verified": true,
+      "bypass_risk": false
+    },
+    {
+      "file": "audit/measurement_integrity/dr97_external_baselines.py",
+      "function": "main",
+      "metric_sources": ["M-005", "M-008"],
+      "source_artifact": "hardcoded production_f1=0.7879, fp_floor_lenient=1.0000",
+      "required_gate": "assert_metric_eligible_for_scientific_use",
+      "gate_function": "main",
+      "gate_location": "before scientific comparison, before GOLD_DISCOVERIES import",
+      "verified": true,
+      "bypass_risk": false,
+      "note": "Hardcoded values preserved (not deleted). Gate blocks before they are used."
+    },
+    {
+      "file": "audit/measurement_integrity/dr98_historical_recalibration.py",
+      "function": "main",
+      "metric_sources": ["M-005", "M-008"],
+      "source_artifact": "hardcoded historical F1 values (7 claims)",
+      "required_gate": "assert_metric_eligible_for_scientific_use",
+      "gate_function": "main",
+      "gate_location": "before historical re-scoring, before GOLD_DISCOVERIES import",
+      "verified": true,
+      "bypass_risk": false,
+      "note": "Hardcoded values preserved. Gate blocks before re-scoring proceeds."
+    },
+    {
+      "file": "audit/measurement_integrity/dr99_proposal_evaluation_n30.py",
+      "function": "main",
+      "metric_sources": ["M-005", "M-008"],
+      "source_artifact": "hardcoded fp_floor=1.0",
+      "required_gate": "assert_metric_eligible_for_scientific_use",
+      "gate_function": "main",
+      "gate_location": "before t-test, before GOLD_DISCOVERIES import",
+      "verified": true,
+      "bypass_risk": false,
+      "note": "Hardcoded fp_floor=1.0 preserved. Gate blocks before t-test proceeds."
+    }
+  ],
+
+  "non_scientific_consumers": [
+    {"file": "programs/A_metrology/measurement_verification_sprint.py", "classification": "REPORTING"},
+    {"file": "programs/A_metrology/measurement_provenance.py", "classification": "TOOLING"},
+    {"file": "programs/A_metrology/stage_minus_1_metrology.py", "classification": "INDEPENDENT_COMPUTATION"},
+    {"file": "scripts/generate_auditor_scorecard.py", "classification": "REPORTING"},
+    {"file": "scripts/phase3_regeneration_test.py", "classification": "DIAGNOSTIC"},
+    {"file": "scripts/phase4_metric_inventory_v2.py", "classification": "INVENTORY"},
+    {"file": "programs/A_metrology/final_repository_verification.py", "classification": "REPORTING"},
+    {"file": "programs/A_metrology/failure_envelope_m7.py", "classification": "DIAGNOSTIC"},
+    {"file": "programs/A_metrology/measurement_constitution_m8.py", "classification": "COMPLIANCE_CHECK"}
+  ],
+
+  "zero_bypass_invariant": {
+    "scientific_consumers": 5,
+    "gated_consumers": 5,
+    "bypass_risk_consumers": 0,
+    "blocked_when_noneligible": 5,
+    "scientifically_eligible_metrics": 0,
+    "acceptance_condition_met": true
+  }
+}

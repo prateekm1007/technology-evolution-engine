@@ -1,0 +1,39 @@
+{
+  "id": "failure_005",
+  "name": "Quibi",
+  "domain": "computation",
+  "year_launched": 2020,
+  "year_effective_end": 2020,
+  "category": "commercial_failure",
+  "what_failed": "Short-form streaming platform that raised $1.75B and shut down in 6 months.",
+  "why_it_failed": [
+    "Launched during pandemic (commuting use case eliminated)",
+    "No social sharing (couldn't screenshot or clip)",
+    "Paid model against free TikTok/YouTube",
+    "Content didn't differentiate from existing platforms",
+    "Misread the constraint: attention, not content length",
+    "Hollywood production model vs creator economy"
+  ],
+  "assumptions_that_broke": [
+    "People want premium short-form content",
+    "A new platform can compete with free",
+    "Content length is the binding constraint",
+    "Hollywood production values win in short-form"
+  ],
+  "constraints_that_moved": [
+    "Creator economy exploded (TikTok, Reels, Shorts)",
+    "Attention became the scarce resource, not content",
+    "Social sharing became non-negotiable",
+    "Free ad-supported models dominated"
+  ],
+  "resurrection_conditions": [
+    "AI-generated personalized short-form content",
+    "Interactive narrative formats",
+    "Integrated with social platforms rather than competing",
+    "Creator-first economics"
+  ],
+  "lesson": "When the binding constraint is attention and distribution, not content quality, a content-first strategy fails. Understand which constraint actually binds.",
+  "created_at": "2026-08-01T09:17:21.875471+00:00",
+  "source": "workstream_D",
+  "version": "1.0"
+}

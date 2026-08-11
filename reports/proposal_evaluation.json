@@ -1,0 +1,290 @@
+[
+  {
+    "proposal_id": "PROP-001",
+    "entity": "heat",
+    "structural": {
+      "checks": {
+        "mechanism_present": true,
+        "mechanism_has_entity": true,
+        "assumptions_present": true,
+        "prediction_present": true,
+        "prediction_has_conditional": true,
+        "alternatives_present": true,
+        "counterexample_present": true,
+        "falsification_present": true,
+        "falsification_has_test": true,
+        "confidence_valid": true,
+        "provenance_present": true,
+        "source_clusters_present": true
+      },
+      "passed": 12,
+      "total": 12,
+      "valid": true
+    },
+    "scientific": {
+      "scores": {
+        "coherent": true,
+        "testable": true,
+        "plausible": true,
+        "specific": true,
+        "non_trivial": true
+      },
+      "passed": 5,
+      "total": 5,
+      "scientific_valid": true
+    },
+    "discovery": {
+      "classification": "KNOWN",
+      "known": true,
+      "trivial": false,
+      "entity": "heat"
+    },
+    "quality": {
+      "clarity": 2,
+      "specificity": 5,
+      "falsifiability": 5,
+      "completeness": 5,
+      "overall": 4.25
+    }
+  },
+  {
+    "proposal_id": "PROP-001",
+    "entity": "thermal_differential",
+    "structural": {
+      "checks": {
+        "mechanism_present": true,
+        "mechanism_has_entity": true,
+        "assumptions_present": true,
+        "prediction_present": true,
+        "prediction_has_conditional": true,
+        "alternatives_present": true,
+        "counterexample_present": true,
+        "falsification_present": true,
+        "falsification_has_test": true,
+        "confidence_valid": true,
+        "provenance_present": true,
+        "source_clusters_present": true
+      },
+      "passed": 12,
+      "total": 12,
+      "valid": true
+    },
+    "scientific": {
+      "scores": {
+        "coherent": true,
+        "testable": true,
+        "plausible": true,
+        "specific": true,
+        "non_trivial": true
+      },
+      "passed": 5,
+      "total": 5,
+      "scientific_valid": true
+    },
+    "discovery": {
+      "classification": "POTENTIALLY_NOVEL",
+      "known": false,
+      "trivial": false,
+      "entity": "thermal_differential"
+    },
+    "quality": {
+      "clarity": 3,
+      "specificity": 5,
+      "falsifiability": 5,
+      "completeness": 5,
+      "overall": 4.5
+    }
+  },
+  {
+    "proposal_id": "PROP-001",
+    "entity": "surface_chemical_modification",
+    "structural": {
+      "checks": {
+        "mechanism_present": true,
+        "mechanism_has_entity": true,
+        "assumptions_present": true,
+        "prediction_present": true,
+        "prediction_has_conditional": true,
+        "alternatives_present": true,
+        "counterexample_present": true,
+        "falsification_present": true,
+        "falsification_has_test": true,
+        "confidence_valid": true,
+        "provenance_present": true,
+        "source_clusters_present": true
+      },
+      "passed": 12,
+      "total": 12,
+      "valid": true
+    },
+    "scientific": {
+      "scores": {
+        "coherent": true,
+        "testable": true,
+        "plausible": true,
+        "specific": true,
+        "non_trivial": true
+      },
+      "passed": 5,
+      "total": 5,
+      "scientific_valid": true
+    },
+    "discovery": {
+      "classification": "POTENTIALLY_NOVEL",
+      "known": false,
+      "trivial": false,
+      "entity": "surface_chemical_modification"
+    },
+    "quality": {
+      "clarity": 4,
+      "specificity": 5,
+      "falsifiability": 5,
+      "completeness": 5,
+      "overall": 4.75
+    }
+  },
+  {
+    "proposal_id": "PROP-001",
+    "entity": "energy_gap",
+    "structural": {
+      "checks": {
+        "mechanism_present": true,
+        "mechanism_has_entity": true,
+        "assumptions_present": true,
+        "prediction_present": true,
+        "prediction_has_conditional": true,
+        "alternatives_present": true,
+        "counterexample_present": true,
+        "falsification_present": true,
+        "falsification_has_test": true,
+        "confidence_valid": true,
+        "provenance_present": true,
+        "source_clusters_present": true
+      },
+      "passed": 12,
+      "total": 12,
+      "valid": true
+    },
+    "scientific": {
+      "scores": {
+        "coherent": true,
+        "testable": true,
+        "plausible": true,
+        "specific": true,
+        "non_trivial": true
+      },
+      "passed": 5,
+      "total": 5,
+      "scientific_valid": true
+    },
+    "discovery": {
+      "classification": "POTENTIALLY_NOVEL",
+      "known": false,
+      "trivial": false,
+      "entity": "energy_gap"
+    },
+    "quality": {
+      "clarity": 3,
+      "specificity": 5,
+      "falsifiability": 5,
+      "completeness": 5,
+      "overall": 4.5
+    }
+  },
+  {
+    "proposal_id": "PROP-001",
+    "entity": "phase_change_enthalpy",
+    "structural": {
+      "checks": {
+        "mechanism_present": true,
+        "mechanism_has_entity": true,
+        "assumptions_present": true,
+        "prediction_present": true,
+        "prediction_has_conditional": true,
+        "alternatives_present": true,
+        "counterexample_present": true,
+        "falsification_present": true,
+        "falsification_has_test": true,
+        "confidence_valid": true,
+        "provenance_present": true,
+        "source_clusters_present": true
+      },
+      "passed": 12,
+      "total": 12,
+      "valid": true
+    },
+    "scientific": {
+      "scores": {
+        "coherent": true,
+        "testable": true,
+        "plausible": true,
+        "specific": true,
+        "non_trivial": true
+      },
+      "passed": 5,
+      "total": 5,
+      "scientific_valid": true
+    },
+    "discovery": {
+      "classification": "POTENTIALLY_NOVEL",
+      "known": false,
+      "trivial": false,
+      "entity": "phase_change_enthalpy"
+    },
+    "quality": {
+      "clarity": 3,
+      "specificity": 5,
+      "falsifiability": 5,
+      "completeness": 5,
+      "overall": 4.5
+    }
+  },
+  {
+    "proposal_id": "PROP-001",
+    "entity": "light_quantum_energy",
+    "structural": {
+      "checks": {
+        "mechanism_present": true,
+        "mechanism_has_entity": true,
+        "assumptions_present": true,
+        "prediction_present": true,
+        "prediction_has_conditional": true,
+        "alternatives_present": true,
+        "counterexample_present": true,
+        "falsification_present": true,
+        "falsification_has_test": true,
+        "confidence_valid": true,
+        "provenance_present": true,
+        "source_clusters_present": true
+      },
+      "passed": 12,
+      "total": 12,
+      "valid": true
+    },
+    "scientific": {
+      "scores": {
+        "coherent": true,
+        "testable": true,
+        "plausible": true,
+        "specific": true,
+        "non_trivial": true
+      },
+      "passed": 5,
+      "total": 5,
+      "scientific_valid": true
+    },
+    "discovery": {
+      "classification": "POTENTIALLY_NOVEL",
+      "known": false,
+      "trivial": false,
+      "entity": "light_quantum_energy"
+    },
+    "quality": {
+      "clarity": 3,
+      "specificity": 5,
+      "falsifiability": 5,
+      "completeness": 5,
+      "overall": 4.5
+    }
+  }
+]

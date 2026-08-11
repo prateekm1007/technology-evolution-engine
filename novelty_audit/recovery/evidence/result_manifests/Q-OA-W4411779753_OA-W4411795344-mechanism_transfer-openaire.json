@@ -1,0 +1,63 @@
+{
+  "query_id": "Q-OA-W4411779753_OA-W4411795344-mechanism_transfer-openaire",
+  "pair_id": "OA-W4411779753_OA-W4411795344",
+  "query_type": "mechanism_transfer",
+  "provider": "openaire",
+  "query_text": "transfer apply formation species metallurgy",
+  "query_hash": "1d55b0d6c9b2945a87b83d2b002f9d6f5020d6c7b35edc8a5d0fb5127eea61de",
+  "frozen_query_ref": "Q-OA-W4411779753_OA-W4411795344-mechanism_transfer-openalex",
+  "url": "https://api.openaire.eu/search/publications?keywords=transfer+apply+formation+species+metallurgy&size=10&format=json",
+  "timestamp_utc": "2026-08-11T12:28:00.762967+00:00",
+  "status": "SUCCESS",
+  "result_count": 1,
+  "result_ids": [
+    [
+      {
+        "$": "50|datacite____::1cf9b5c25877a86280c637b3fac8f887"
+      },
+      {
+        "$": "10.5281/zenodo.18702417"
+      },
+      {
+        "$": "50|od______2659::1cf9b5c25877a86280c637b3fac8f887"
+      },
+      {
+        "$": "oai:zenodo.org:18702417"
+      },
+      {
+        "$": "50|datacite____::9432b64c9e16dd98ca0e2129e104fbce"
+      },
+      {
+        "$": "10.5281/zenodo.18702416"
+      },
+      {
+        "$": "50|datacite____::bb70c27158191d44c8fde9a912219372"
+      },
+      {
+        "$": "10.5281/zenodo.18703539"
+      },
+      {
+        "$": "50|od______2659::bb70c27158191d44c8fde9a912219372"
+      },
+      {
+        "$": "oai:zenodo.org:18703539"
+      }
+    ]
+  ],
+  "result_titles": [
+    "Decoding UFOs, UAPs and Extraterrestrials Mysteries and Evidence via the 165-Dimensional Tensor Mechanics of the Hamzah Equation."
+  ],
+  "result_dois": [
+    "10.5281/zenodo.18702417"
+  ],
+  "result_dates": [
+    "2026-02-19"
+  ],
+  "response_hash": "9c7c82f8cfd359d71d1bd75da6edc4432c40beeab7e4636614d6fa6824bef6c2",
+  "evidence_uri": "https://api.openaire.eu/search/publications?keywords=transfer+apply+formation+species+metallurgy&size=10&format=json",
+  "error": null,
+  "rate_limit_headers": {
+    "x-ratelimit-used": "110",
+    "x-ratelimit-limit": "7199"
+  }
+}

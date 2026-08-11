@@ -1,0 +1,11 @@
+TITLE: Automated Verification of Stand-alone Solar Photovoltaic Systems
+ARXIV ID: 1811.09438v1
+URL: http://arxiv.org/abs/1811.09438v1
+RETRIEVAL DATE: 2026-08-05
+RETRIEVAL METHOD: arxiv.org API
+SOURCE VERIFICATION: arxiv API XML
+DOMAIN HINT: photovoltaic
+PUBLISHED: 2018-11-23T11:44:57Z
+
+ABSTRACT:
+With declining costs and increasing performance, the deployment of renewable energy systems is growing faster. Particular attention is given to stand-alone solar photovoltaic systems in rural areas or where grid extension is unfeasible. Tools to evaluate electrification projects are available, but they are based on simulations that do not cover all aspects of the design space. Automated verification using model checking has proven to be an effective technique to program verification. This paper marks the first application of software model checking to formally verify the design of a stand-alone solar photovoltaic system including solar panel, charge controller, battery, inverter, and electric load. Case studies, from real photovoltaic systems deployed in five different sites, ranging from 700W to 1,200W, were used to evaluate this proposed approach and to compare that with specialized simulation tools. Data from practical applications show the effectiveness of our approach, where specific conditions that lead to failures in a photovoltaic solar system are only detected by our automated verification method.

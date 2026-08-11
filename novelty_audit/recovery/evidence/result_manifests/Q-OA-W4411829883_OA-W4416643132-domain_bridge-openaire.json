@@ -1,0 +1,24 @@
+{
+  "query_id": "Q-OA-W4411829883_OA-W4416643132-domain_bridge-openaire",
+  "pair_id": "OA-W4411829883_OA-W4416643132",
+  "query_type": "domain_bridge",
+  "provider": "openaire",
+  "query_text": "materials_science computer_science mechanism",
+  "query_hash": "1e8bf2f85ed49dd54187022cb4f7341ce0d78a41622ada9ca6b871683e3f2e65",
+  "frozen_query_ref": "Q-OA-W4411829883_OA-W4416643132-domain_bridge-openalex",
+  "url": "https://api.openaire.eu/search/publications?keywords=materials_science+computer_science+mechanism&size=10&format=json",
+  "timestamp_utc": "2026-08-11T12:33:42.093750+00:00",
+  "status": "NO_RESULTS",
+  "result_count": 0,
+  "result_ids": [],
+  "result_titles": [],
+  "result_dois": [],
+  "result_dates": [],
+  "response_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "evidence_uri": "https://api.openaire.eu/search/publications?keywords=materials_science+computer_science+mechanism&size=10&format=json",
+  "error": null,
+  "rate_limit_headers": {
+    "x-ratelimit-used": "192",
+    "x-ratelimit-limit": "7199"
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "stage": "05_adversarial_H-DEV-CH-004-003",
+  "run_id": "RUN-DEV-CH-004",
+  "code_sha": "7c7da713eedf1f61714252efe3e2b4573f764b72",
+  "input_hash": "fe877caa03f919ae97887f1be3b92a79dd22f4201ee9535397cca3b37a24828c",
+  "output_hash": "8675ca665920413c8f0743fe48158f5e869f62d50c8e2cf6e6f9b8c06792d481",
+  "provider_manifest": {
+    "provider": "zai",
+    "model": "glm-4-plus",
+    "version": "z-ai-web-dev-sdk",
+    "configuration": {
+      "temperature": 0.2,
+      "max_tokens": 4096,
+      "system_sha": "1f5a3fff3aebc2e1d44b2312f4b604b5c2911cacaf452eb6ca705c724fc9142b"
+    },
+    "prompt_sha": "394e6a22d1cd0796981a5c47a4442a9323290192799854ef4ab3f33b3ad8216c",
+    "seed": null,
+    "tool_versions": {
+      "z_ai_cli": "z-ai"
+    },
+    "timestamp": "2026-08-08T09:11:58.731733+00:00",
+    "latency_ms": 13577,
+    "success": true,
+    "error": ""
+  },
+  "result": {
+    "hypothesis_id": "H-DEV-CH-004-003",
+    "failure_modes": [
+      {
+        "category": "FRAGILE_ASSUMPTION",
+        "description": "The assumption that traffic congestion patterns can be mapped directly to computational variables is fundamentally flawed. Traffic flow is chaotic, stochastic, and influenced by countless unpredictable human factors that cannot be reduced to clean computational variables.",
+        "severity": "HIGH",
+        "evidence": "Traffic systems exhibit extreme sensitivity to initial conditions (butterfly effect) and are influenced by human decision-making which cannot be modeled as simple computational variables."
+      },
+      {
+        "category": "CONTRADICTS_KNOWN",
+        "description": "The claim that analog computation through traffic flow converges faster than digital optimization directly contradicts established research in traffic engineering and optimization theory.",
+        "severity": "HIGH",
+        "evidence": "Decades of traffic engineering research shows that digital optimization algorithms (like SCATS, SCOOT) outperform simple analog approaches by orders of magnitude in both solution quality and convergence time."
+      },
+      {
+        "category": "BOUNDARY_BREAKS",
+        "description": "The hypothesis breaks when faced with real-world boundary conditions like accidents, weather events, or special events that disrupt the supposed computational flow dynamics.",
+        "severity": "HIGH",
+        "evidence": "Real traffic systems must handle sudden disruptions that would completely destabilize any supposed analog computation, requiring robust digital fallback systems."
+      },
+      {
+        "category": "PRIOR_ART_EXISTS",
+        "description": "The core idea is not novel. Distributed traffic signal optimization has been extensively researched using multi-agent systems, reinforcement learning, and other digital approaches that achieve far better results.",
+        "severity": "MEDIUM",
+        "evidence": "Numerous papers on distributed traffic signal control using digital methods exist, showing superior performance over any analog approach."
+      },
+      {
+        "category": "FALSIFIER_TRIGGERED",
+        "description": "The hypothesis is already falsified by the lack of any real-world implementation showing superior performance over existing digital systems.",
+        "severity": "HIGH",
+        "evidence": "No major city has adopted such an analog approach because it demonstrably fails to perform as well as existing digital optimization systems."
+      },
+      {
+        "category": "INCOMPATIBLE_TARGET",
+        "description": "The analog computation approach is fundamentally incompatible with the need for precise, reliable, and verifiable traffic control in modern urban environments.",
+        "severity": "HIGH",
+        "evidence": "Traffic systems require precise timing and reliability that analog computation cannot provide, as evidenced by the universal adoption of digital control systems in practice."
+      }
+    ],
+    "survives": false,
+    "outcome": "ADVERSARIAL_FAILED",
+    "n_high_severity": 5,
+    "n_medium_severity": 1,
+    "n_low_severity": 0,
+    "source_hypothesis_hash": ""
+  },
+  "timestamp": "2026-08-08T09:12:12.309278+00:00"
+}

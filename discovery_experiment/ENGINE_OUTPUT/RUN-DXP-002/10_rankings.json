@@ -1,0 +1,181 @@
+{
+  "stage": "10_rankings",
+  "run_id": "RUN-DXP-002",
+  "code_sha": "d6b7aee5790e2d45839fb08b7add0c89d4e40d09",
+  "input_hash": "18e421f29052fc8ce0046ae1c12c7ce3d59a354d427130c521eb3526343f2ca3",
+  "output_hash": "6b5bfa992523304ecdedf1a1fea23be7ecbb49f0f81ffd24a27091f54092a4c7",
+  "provider_manifest": null,
+  "result": {
+    "rankings": {
+      "H-DXP-002-001": {
+        "hypothesis_id": "H-DXP-002-001",
+        "dimensions": {
+          "mechanistic_coherence": [
+            0.5,
+            "hypothesis has a mechanism"
+          ],
+          "cross_domain_distance": [
+            0.8,
+            "source 'entomology' != target 'materials engineering'"
+          ],
+          "novelty_evidence": [
+            0.0,
+            ""
+          ],
+          "testability": [
+            0.5,
+            "hypothesis marked testable"
+          ],
+          "falsifiability": [
+            1.0,
+            "non-empty falsifier"
+          ],
+          "prior_art_risk": [
+            0.0,
+            ""
+          ],
+          "expected_information_gain": [
+            0.2,
+            "no experiment design yet"
+          ],
+          "potential_impact": [
+            0.6,
+            "specific expected effect"
+          ],
+          "experimental_feasibility": [
+            0.0,
+            ""
+          ]
+        },
+        "note": "dimensions reported separately, not collapsed into a single score"
+      },
+      "H-DXP-002-002": {
+        "hypothesis_id": "H-DXP-002-002",
+        "dimensions": {
+          "mechanistic_coherence": [
+            0.5,
+            "hypothesis has a mechanism"
+          ],
+          "cross_domain_distance": [
+            0.8,
+            "source 'entomology' != target 'materials engineering'"
+          ],
+          "novelty_evidence": [
+            0.0,
+            ""
+          ],
+          "testability": [
+            0.5,
+            "hypothesis marked testable"
+          ],
+          "falsifiability": [
+            1.0,
+            "non-empty falsifier"
+          ],
+          "prior_art_risk": [
+            0.0,
+            ""
+          ],
+          "expected_information_gain": [
+            0.2,
+            "no experiment design yet"
+          ],
+          "potential_impact": [
+            0.6,
+            "specific expected effect"
+          ],
+          "experimental_feasibility": [
+            0.0,
+            ""
+          ]
+        },
+        "note": "dimensions reported separately, not collapsed into a single score"
+      },
+      "H-DXP-002-003": {
+        "hypothesis_id": "H-DXP-002-003",
+        "dimensions": {
+          "mechanistic_coherence": [
+            0.5,
+            "hypothesis has a mechanism"
+          ],
+          "cross_domain_distance": [
+            0.8,
+            "source 'entomology' != target 'materials engineering'"
+          ],
+          "novelty_evidence": [
+            0.0,
+            ""
+          ],
+          "testability": [
+            0.5,
+            "hypothesis marked testable"
+          ],
+          "falsifiability": [
+            1.0,
+            "non-empty falsifier"
+          ],
+          "prior_art_risk": [
+            0.0,
+            ""
+          ],
+          "expected_information_gain": [
+            0.2,
+            "no experiment design yet"
+          ],
+          "potential_impact": [
+            0.6,
+            "specific expected effect"
+          ],
+          "experimental_feasibility": [
+            0.0,
+            ""
+          ]
+        },
+        "note": "dimensions reported separately, not collapsed into a single score"
+      },
+      "H-DXP-002-004": {
+        "hypothesis_id": "H-DXP-002-004",
+        "dimensions": {
+          "mechanistic_coherence": [
+            0.5,
+            "hypothesis has a mechanism"
+          ],
+          "cross_domain_distance": [
+            0.8,
+            "source 'entomology' != target 'materials engineering'"
+          ],
+          "novelty_evidence": [
+            0.0,
+            ""
+          ],
+          "testability": [
+            0.5,
+            "hypothesis marked testable"
+          ],
+          "falsifiability": [
+            1.0,
+            "non-empty falsifier"
+          ],
+          "prior_art_risk": [
+            0.0,
+            ""
+          ],
+          "expected_information_gain": [
+            0.2,
+            "no experiment design yet"
+          ],
+          "potential_impact": [
+            0.6,
+            "specific expected effect"
+          ],
+          "experimental_feasibility": [
+            0.0,
+            ""
+          ]
+        },
+        "note": "dimensions reported separately, not collapsed into a single score"
+      }
+    }
+  },
+  "timestamp": "2026-08-08T09:44:06.522438+00:00"
+}

@@ -1,0 +1,18 @@
+# Destroyer Report: 0001 APRM
+candidate_id: '0001'
+verdict: GATED
+
+attacks:
+  thermodynamic_impossibility: {passed: true, severity: 0.1}
+  economic_nonviability: {passed: true, severity: 0.3}
+  manufacturing_impossibility: {passed: false, severity: 0.7}
+  regulatory_barrier: {passed: true, severity: 0.1}
+  supply_chain_fragility: {passed: false, severity: 0.6}
+  maintenance_burden: {passed: true, severity: 0.3}
+  safety_failure_mode: {passed: true, severity: 0.1}
+  incumbent_lock_in: {passed: true, severity: 0.2}
+
+gating_reasons:
+  - Selective emitter materials not yet manufacturable at scale
+  - Phase-change material supply chain immature
+  - Extrusion processes for metamaterial structures not demonstrated

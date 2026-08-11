@@ -1,0 +1,34 @@
+{
+  "stage": "06_rediscovery_H-DXP-003-002",
+  "run_id": "RUN-DXP-003",
+  "code_sha": "be6bdbcdb657cc1a9309700a052f9a0c3e89e56b",
+  "input_hash": "4b96e61fd68f45174350e150acd0aaf0435ab803b55ce0dc9f659fe577a705f4",
+  "output_hash": "b2694735be337bec30d593cfe5f72e105ffaf21ba6abea7f208e1a1ad86959c1",
+  "provider_manifest": {
+    "provider": "zai",
+    "model": "glm-4-plus",
+    "version": "z-ai-web-dev-sdk",
+    "configuration": {
+      "temperature": 0.1,
+      "max_tokens": 4096,
+      "system_sha": "dbdd0760dff49fc029b32b580a575b7de33a87d371edc2b0deec93bfb2b90b01"
+    },
+    "prompt_sha": "e5f6a34dc3bc14e77c625908c5d36d1990867b8e4000013198818559a664c4db",
+    "seed": null,
+    "tool_versions": {
+      "z_ai_cli": "z-ai"
+    },
+    "timestamp": "2026-08-08T09:53:24.573083+00:00",
+    "latency_ms": 1961,
+    "success": true,
+    "error": ""
+  },
+  "result": {
+    "hypothesis_id": "H-DXP-003-002",
+    "classification": "PARAPHRASED_IN_INPUT",
+    "evidence": "The hypothesis describes adaptive waveform generation based on clutter feedback to reduce false alarms while maintaining detection. The source documents describe how bats adapt their echolocation calls based on environmental conditions. Specifically, it mentions that bats hunting in cluttered vegetation use short-duration, wide-bandwidth sweeps to resolve targets at close range against background clutter, and that they dynamically adjust call duration based on distance to target, driven by real-time echo feedback. This directly parallels the concept of adapting signal parameters based on clutter feedback to improve detection performance.",
+    "is_rediscovery": true,
+    "source_hypothesis_hash": ""
+  },
+  "timestamp": "2026-08-08T09:53:26.535418+00:00"
+}

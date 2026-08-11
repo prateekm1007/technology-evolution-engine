@@ -1,0 +1,67 @@
+{
+  "id": "benchmark_0001",
+  "type": "patent",
+  "source": "uspto",
+  "title": "Lithium-Ion Battery with Silicon-Graphene Composite Anode",
+  "domain": "energy",
+  "abstract": "A rechargeable lithium-ion battery comprising a composite anode of silicon nanoparticles embedded in a graphene matrix, a lithium metal oxide cathode, and a solid-state ceramic electrolyte.",
+  "claims": [
+    "A battery anode comprising silicon nanoparticles (10-100nm) in a graphene oxide matrix at 60:40 to 80:20 ratio.",
+    "A solid-state electrolyte layer comprising LLZO with ionic conductivity exceeding 1 mS/cm.",
+    "Manufacturing by ball-milling silicon powder with graphene oxide followed by thermal reduction at 800C."
+  ],
+  "components": [
+    "silicon nanoparticles",
+    "graphene oxide matrix",
+    "LLZO electrolyte",
+    "lithium metal oxide cathode",
+    "copper current collector"
+  ],
+  "materials": [
+    "silicon",
+    "graphene",
+    "lithium lanthanum zirconium oxide",
+    "lithium cobalt oxide",
+    "copper"
+  ],
+  "methods": [
+    "ball milling",
+    "thermal reduction",
+    "thin film deposition",
+    "electrochemical cycling"
+  ],
+  "constraints": [
+    "energy density",
+    "cycle life",
+    "thermal stability",
+    "manufacturing cost",
+    "supply chain"
+  ],
+  "problem_statement": "Conventional graphite anodes limit energy density to ~250 Wh/kg. Silicon offers 10x capacity but suffers 300% volume expansion.",
+  "expected_constraints": [
+    "energy",
+    "material",
+    "cost",
+    "manufacturing",
+    "safety",
+    "supply chain"
+  ],
+  "expected_prerequisites": [
+    "silicon nanoparticle synthesis",
+    "graphene production at scale",
+    "solid-state electrolyte manufacturing",
+    "dry room assembly"
+  ],
+  "expected_adjacent_domains": [
+    "materials science",
+    "nanotechnology",
+    "electrochemistry",
+    "manufacturing"
+  ],
+  "expected_failure_modes": [
+    "silicon pulverization",
+    "SEI layer instability",
+    "electrolyte decomposition",
+    "dendrite formation"
+  ]
+}

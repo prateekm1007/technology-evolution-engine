@@ -1,0 +1,19 @@
+{
+  "assessment_id": "PA-H-DXP-001-002",
+  "hypothesis_id": "H-DXP-001-002",
+  "status": "NOT_EVALUATED",
+  "search_scope": [
+    "dev_corpus"
+  ],
+  "queries": [
+    "The ventilation control should implement a model predictive control (MPC) system that uses stomatal-inspired anticipatory response based on occupancy patterns and weather forecasts The MPC system uses a simplified building model to predict future CO2 levels based on projected occupancy, outdoor conditions, and system constraints. It optimizes damper positions over a prediction horizon, similar to how stomata anticipate future environmental conditions. The control incorporates both current sensor readings and predicted future states."
+  ],
+  "sources": [],
+  "matched_prior_art": [],
+  "similarity": "no matches in dev corpus \u2014 NOT proof of novelty",
+  "review_required": true,
+  "confidence": 0.3,
+  "cutoff": "2026-08-08",
+  "reviewer": "novelty_firewall_v0",
+  "timestamp": "2026-08-08T09:31:35.724701+00:00"
+}

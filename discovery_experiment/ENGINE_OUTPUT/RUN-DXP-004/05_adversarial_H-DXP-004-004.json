@@ -1,0 +1,74 @@
+{
+  "stage": "05_adversarial_H-DXP-004-004",
+  "run_id": "RUN-DXP-004",
+  "code_sha": "9cf2046069a549721298cc8d709ac7bc8b4e8997",
+  "input_hash": "5f87b99ac4868018e3669260a765c2e68a3f49633e435979f7f266fef8382fc7",
+  "output_hash": "bb700563815a6ab23e38444b4a3da1c61656e2dc52a462b40e4e18709bc9c96e",
+  "provider_manifest": {
+    "provider": "zai",
+    "model": "glm-4-plus",
+    "version": "z-ai-web-dev-sdk",
+    "configuration": {
+      "temperature": 0.2,
+      "max_tokens": 4096,
+      "system_sha": "1f5a3fff3aebc2e1d44b2312f4b604b5c2911cacaf452eb6ca705c724fc9142b"
+    },
+    "prompt_sha": "f726e05584e594ee8a3c903fb2c18245e790f9249f78228db188da20ba6158cc",
+    "seed": null,
+    "tool_versions": {
+      "z_ai_cli": "z-ai"
+    },
+    "timestamp": "2026-08-08T10:06:06.453896+00:00",
+    "latency_ms": 7378,
+    "success": true,
+    "error": ""
+  },
+  "result": {
+    "hypothesis_id": "H-DXP-004-004",
+    "failure_modes": [
+      {
+        "category": "FRAGILE_ASSUMPTION",
+        "description": "The assumption that elastic deformation reduces effective contact area without increasing turbulence is unsupported and likely false",
+        "severity": "HIGH",
+        "evidence": "Fluid dynamics research shows that surface deformation typically creates additional turbulence and vortices, increasing drag rather than reducing it"
+      },
+      {
+        "category": "CONTRADICTS_KNOWN",
+        "description": "Contradicts established boundary layer theory where surface compliance often increases drag",
+        "severity": "HIGH",
+        "evidence": "Numerous studies show that compliant surfaces generally increase drag due to energy dissipation and boundary layer disruption"
+      },
+      {
+        "category": "BOUNDARY_BREAKS",
+        "description": "The hypothesis breaks at high Reynolds numbers where elastic deformation cannot occur quickly enough",
+        "severity": "MEDIUM",
+        "evidence": "At high flow rates, the time constant for elastic deformation exceeds the characteristic time of flow disturbances"
+      },
+      {
+        "category": "PRIOR_ART_EXISTS",
+        "description": "Similar concepts have been thoroughly investigated and shown ineffective decades ago",
+        "severity": "MEDIUM",
+        "evidence": "1960s-1980s research on 'dolphin skin' and compliant surfaces showed no net drag reduction"
+      },
+      {
+        "category": "FALSIFIER_TRIGGERED",
+        "description": "The hypothesis directly contradicts its own proposed falsifier",
+        "severity": "HIGH",
+        "evidence": "If drag reduction occurs without deformation, it invalidates the core mechanism, yet the hypothesis claims this as its primary mechanism"
+      },
+      {
+        "category": "INCOMPATIBLE_TARGET",
+        "description": "The mechanism is incompatible with the target application of drag reduction",
+        "severity": "HIGH",
+        "evidence": "Elastic recovery requires energy that would negate any drag reduction benefits"
+      }
+    ],
+    "survives": false,
+    "outcome": "ADVERSARIAL_FAILED",
+    "n_high_severity": 4,
+    "n_medium_severity": 2,
+    "n_low_severity": 0,
+    "source_hypothesis_hash": ""
+  },
+  "timestamp": "2026-08-08T10:06:13.833131+00:00"
+}

@@ -1,0 +1,69 @@
+{
+  "quarantine_manifest": {
+    "pilot_id": "DXP005-NEMOTRON-PILOT",
+    "parent_protocol": "DXP-005",
+    "experiment_status": "UNPREREGISTERED_EXPLORATORY_PILOT",
+    "valid_for_dxp005_primary_analysis": false,
+    "valid_for_hgen1_evaluation": false,
+    "reason": "provider_changed_after_protocol_freeze",
+
+    "preregistered_provider": "ZAI (glm-4-plus via z-ai CLI)",
+    "actual_provider": "NVIDIA Nemotron 3 Ultra (free tier) via OpenRouter",
+    "provider_change_rationale_at_time": "ZAI API rate-limited (HTTP 429). CEO directive at the time instructed use of OpenRouter.",
+    "provider_change_audit_verdict": "INVALID per Amendment 14. Changing provider after protocol freeze creates a NEW EXPERIMENT, not a continuation of DXP-005. The A/B/C ablation comparison is valid within Nemotron, but cannot inherit the DXP-005 preregistered status.",
+
+    "what_was_executed": {
+      "cases_with_upstream_frozen": ["N1", "N2", "N3", "N4"],
+      "cases_not_started": ["N5", "P1", "P2", "P3", "P4", "P5"],
+      "conditions_with_hypotheses": [
+        "N2/A-baseline (4 hyps, adversarial complete)",
+        "N2/B-hgen1 (3 hyps, adversarial complete)",
+        "N2/C-null (3 hyps, adversarial INCOMPLETE)",
+        "N3/B-hgen1 (3 hyps, no adversarial)",
+        "N4/B-hgen1 (3 hyps, no adversarial)",
+        "N4/C-null (3 hyps, no adversarial)"
+      ],
+      "conditions_with_zero_hypotheses": [
+        "N4/A-baseline (0 hyps — LLM returned empty response)"
+      ],
+      "transfer_rejected_cases": ["N1 (gecko→underwater)"],
+      "total_conditions_with_data": "approximately 6 of 30",
+      "fully_complete_cases": 0
+    },
+
+    "why_n4_is_unusable_for_ablation": {
+      "issue": "N4-A returned 0 hypotheses (LLM empty response). N4-B and N4-C returned 3 hypotheses each. The apparent B-vs-A advantage is confounded: A = provider/output failure, B = successful generation. This is NOT necessarily A = baseline cognition vs B = mechanism-constrained cognition.",
+      "verdict": "N4 cannot contribute to the primary A/B/C efficacy comparison."
+    },
+
+    "why_n1_n3_transfer_rejection_is_not_a_scientific_result": {
+      "issue": "TRANSFER_REJECTED is an observed output, not CORRECT_NEGATIVE. Adjudication requires: (1) valid input, (2) valid extraction, (3) valid abstraction, (4) rejection caused by intended criterion, (5) equivalent upstream artifacts across conditions, (6) rejection not a provider failure, (7) independent adjudication against ground truth.",
+      "verdict": "None of these 7 conditions have been independently verified. The rejections are observed outputs only."
+    },
+
+    "what_may_be_salvaged_from_this_pilot": {
+      "observation_1": "N4-B produced specific mechanisms with quantitative predictions (15% biaxial strain, 330nm lattice constant). N4-C produced hypotheses referencing the null graph's generic labels (generic_mechanism_9, generic_process_6). This suggests the mechanism-null condition has an observable effect on hypothesis content.",
+      "observation_2": "This observation is NOT evidence for H-GEN-1. It is a sanity-check signal that the null condition alters output. Whether this produces a statistically significant mechanism-specific advantage requires the full preregistered sample under the preregistered provider.",
+      "potential_future_use": "This pilot may become the basis for a separately preregistered Nemotron experiment (e.g., DXP-005b-NEMOTRON) with its own protocol freeze. It CANNOT be used to support or falsify H-GEN-1 under the original DXP-005 protocol."
+    },
+
+    "what_must_not_be_done_with_this_pilot": [
+      "Do not merge Nemotron results into DXP-005 primary analysis.",
+      "Do not label H-GEN-1 as supported or falsified based on these results.",
+      "Do not interpret N4-B vs N4-A difference as ablation evidence.",
+      "Do not interpret N1/N2/N3 transfer rejection as CORRECT_NEGATIVE without adjudication.",
+      "Do not use these results in any capability claim.",
+      "Do not destroy these artifacts — they are preserved as exploratory evidence."
+    ],
+
+    "artifact_locations": {
+      "engine_outputs": "experiments/dxp005_pilots/nemotron/ENGINE_OUTPUT/",
+      "runner_scripts": "scripts/run_dxp005*.py, scripts/run_dxp005_all.sh (also moved here for archival; copies remain in scripts/ for reference but should not be re-executed under DXP-005 protocol)",
+      "pause_notice": "discovery_experiment/FINAL_VERDICT/DXP-005_PAUSE_NOTICE.md"
+    },
+
+    "quarantine_date": "2026-08-08",
+    "quarantine_commit": "pending",
+    "quarantine_reason_reference": "External audit finding: provider substitution after protocol freeze violates Amendment 14 (Scientific Visibility Boundary)."
+  }
+}

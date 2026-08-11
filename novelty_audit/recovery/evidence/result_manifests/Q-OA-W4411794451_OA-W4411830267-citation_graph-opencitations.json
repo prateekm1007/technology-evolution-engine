@@ -1,0 +1,32 @@
+{
+  "query_id": "Q-OA-W4411794451_OA-W4411830267-citation_graph-opencitations",
+  "pair_id": "OA-W4411794451_OA-W4411830267",
+  "query_type": "citation_graph",
+  "provider": "opencitations",
+  "query_text": "citation_lookup:https://doi.org/10.1021/acsami.5c10351 <-> https://doi.org/10.1038/s41590-025-02199-3",
+  "query_hash": "c6f1b1171797ec25b1507dc98429497a06b2797ee3e31c97b5e7bb0b266400d5",
+  "frozen_query_ref": null,
+  "search_type": "citation_graph",
+  "doi_a": "https://doi.org/10.1021/acsami.5c10351",
+  "doi_b": "https://doi.org/10.1038/s41590-025-02199-3",
+  "oc_id_a": "doi:10.1021/acsami.5c10351",
+  "oc_id_b": "doi:10.1038/s41590-025-02199-3",
+  "timestamp_utc": "2026-08-11T12:48:51.437245+00:00",
+  "status": "SUCCESS",
+  "a_cites_b": false,
+  "b_cites_a": false,
+  "a_citation_count": 9,
+  "b_citation_count": 12,
+  "a_reference_count": 44,
+  "b_reference_count": 79,
+  "shared_citing": [],
+  "shared_cited": [],
+  "response_hash": "ebaf1e683c985bc0b24186574933b58633e52d733b0245a154274db62a31e661",
+  "evidence_uris": [
+    "https://api.opencitations.net/index/v2/references/doi:10.1021/acsami.5c10351",
+    "https://api.opencitations.net/index/v2/citations/doi:10.1021/acsami.5c10351",
+    "https://api.opencitations.net/index/v2/references/doi:10.1038/s41590-025-02199-3",
+    "https://api.opencitations.net/index/v2/citations/doi:10.1038/s41590-025-02199-3"
+  ],
+  "error": null
+}

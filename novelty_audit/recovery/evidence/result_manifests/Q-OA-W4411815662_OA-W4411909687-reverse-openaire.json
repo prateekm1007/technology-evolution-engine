@@ -1,0 +1,39 @@
+{
+  "query_id": "Q-OA-W4411815662_OA-W4411909687-reverse-openaire",
+  "pair_id": "OA-W4411815662_OA-W4411909687",
+  "query_type": "reverse",
+  "provider": "openaire",
+  "query_text": "ambipolar small molecule materials porous organic",
+  "query_hash": "4345887d3aa19e520cd5e7c09ba28457d5207dc67ab57678eb5cc42c547e9284",
+  "frozen_query_ref": "Q-OA-W4411815662_OA-W4411909687-reverse-openalex",
+  "url": "https://api.openaire.eu/search/publications?keywords=ambipolar+small+molecule+materials+porous+organic&size=10&format=json",
+  "timestamp_utc": "2026-08-11T12:28:36.968617+00:00",
+  "status": "SUCCESS",
+  "result_count": 1,
+  "result_ids": [
+    [
+      {
+        "$": "50|od______4179::a452977701fb3735e568a6f8dfa7c204"
+      },
+      {
+        "$": "oai:qucosa:de:qucosa:100855"
+      }
+    ]
+  ],
+  "result_titles": [
+    "Innovations in Vertical Organic Transistors: From Wafer-Scale Fabrication to Laser Structured Devices"
+  ],
+  "result_dois": [
+    ""
+  ],
+  "result_dates": [
+    "2025-04-15"
+  ],
+  "response_hash": "8a7aa9818e18e9ae2384945e7cd4e4a0a8d83a01bfdcc097ea2e11e1f9cf6a0d",
+  "evidence_uri": "https://api.openaire.eu/search/publications?keywords=ambipolar+small+molecule+materials+porous+organic&size=10&format=json",
+  "error": null,
+  "rate_limit_headers": {
+    "x-ratelimit-used": "125",
+    "x-ratelimit-limit": "7199"
+  }
+}

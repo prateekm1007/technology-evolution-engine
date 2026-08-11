@@ -1,0 +1,70 @@
+{
+  "stage": "03_transfer",
+  "run_id": "RUN-DXP-004",
+  "code_sha": "9cf2046069a549721298cc8d709ac7bc8b4e8997",
+  "input_hash": "74deed54268358ce59e925b7ffb33791ffeb9e1d858b6a1c2f24031a02a94891",
+  "output_hash": "080ce0e608e053194c119931079504dd231ebd4090295d5fa0d1e360d0ee2141",
+  "provider_manifest": {
+    "provider": "zai",
+    "model": "glm-4-plus",
+    "version": "z-ai-web-dev-sdk",
+    "configuration": {
+      "temperature": 0.25,
+      "max_tokens": 4096,
+      "system_sha": "f596607dc28478b7317f95a37a7bf99f11ad2e25e10bde5d1c0a9009ba6b1583"
+    },
+    "prompt_sha": "0b8e4d92a4d9860d8f21438f2bb390339f3ac72251d4dcad6a0ece16aa9b4633",
+    "seed": null,
+    "tool_versions": {
+      "z_ai_cli": "z-ai"
+    },
+    "timestamp": "2026-08-08T10:04:45.846656+00:00",
+    "latency_ms": 4466,
+    "success": true,
+    "error": ""
+  },
+  "result": {
+    "transfers": [
+      {
+        "transfer_id": "TH-DXP-004-001",
+        "source_domain": "ichthyology",
+        "source_mechanism": "Hierarchical surface structures with directional features reduce resistance to directional flow while inhibiting attachment.",
+        "source_conditions": [
+          "turbulent flow",
+          "high Reynolds number"
+        ],
+        "target_domain": "fluid mechanics",
+        "target_problem": "A municipal water pipeline (10 km, 0.5 m diameter, Re=500,000) uses smooth HDPE pipe with friction factor f=0.013. Chemical drag reducers are prohibited. A passive surface treatment is needed that reduces pressure drop by at least 5%, is food-grade, survives 20 years, and can be retrofitted to existing pipes.",
+        "transferred_principle": "Directional microstructures on the pipe inner surface modify boundary layer dynamics to reduce drag and inhibit particle/biofilm attachment.",
+        "required_translation": "Replace fish skin scales with precisely engineered polymer microstructures (aligned ridges or grooves) on food-grade HDPE lining. Material must be NSF/61 certified polymer with elastic modulus matching HDPE. Surface features must be 50-200 micrometers high, aligned with flow direction, and arranged in a hierarchical pattern.",
+        "expected_effect": "Reduced friction factor by at least 5% (f\u22640.01235) while maintaining cleanability through pigging operations.",
+        "boundary_conditions": [
+          "Re=500,000",
+          "5-25\u00b0C",
+          "20-year lifetime",
+          "max feature height 200 micrometers",
+          "food-grade compliance"
+        ],
+        "failure_conditions": [
+          "feature erosion",
+          "biofilm accumulation in feature valleys",
+          "misalignment with flow direction",
+          "delamination from pipe wall"
+        ],
+        "testable_prediction": "Pipes with transferred microstructure treatment will show a measurable reduction in pressure drop (\u22655%) compared to smooth HDPE controls in a 1-year operational test with periodic pigging, with no measurable increase in biofilm thickness in the treated sections.",
+        "epistemic_state": "HYPOTHESIZED",
+        "provenance": {
+          "nodes": {},
+          "edges": [],
+          "committed_hash": null
+        },
+        "provenance_root_hash": ""
+      }
+    ],
+    "rejected": [],
+    "n_accepted": 1,
+    "n_rejected": 0,
+    "source_abstraction_hash": "63d02d041d73eabf51c0048cb970795734ef30ca29219217067bc9febfbf499b"
+  },
+  "timestamp": "2026-08-08T10:04:50.313964+00:00"
+}

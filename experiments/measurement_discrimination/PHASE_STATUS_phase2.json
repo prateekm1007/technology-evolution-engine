@@ -1,0 +1,103 @@
+{
+  "phase": 2,
+  "phase_name": "Fix BlueprintComposer silent failures",
+  "status": "COMPLETE",
+  "commit": "b5d0e34",
+  "protocol_frozen": false,
+  "tests_passed_local": 35,
+  "tests_local_scope": "tests/test_dr62_business_pipeline.py (4) + tests/test_phase1_business_pipeline_silent_failures.py (12) + tests/test_phase2_blueprint_composer_silent_failures.py (19)",
+  "tests_total_collected": 2663,
+  "scientific_results_visible": false,
+  "next_allowed_phase": 3,
+  "timestamp_utc": "2026-08-08T15:25:00Z",
+  "github_ci_status": "NOT_INDEPENDENTLY_VERIFIED",
+
+  "silent_failures_fixed": [
+    {
+      "id": "SF-8",
+      "location": "BlueprintComposer.run()",
+      "old_behavior": "Accepted non-dict input via d.get(); AttributeError unhelpfully.",
+      "new_behavior": "Raises TypeError with explicit message.",
+      "test": "test_non_dict_input_raises"
+    },
+    {
+      "id": "SF-9",
+      "location": "BlueprintComposer.run() mode handling",
+      "old_behavior": "Silently treated any non-'consumer' mode as 'business', masking caller typos like 'buisness'.",
+      "new_behavior": "Raises ValueError for invalid mode. Valid modes explicitly: {'business', 'consumer'}.",
+      "test": "test_invalid_mode_raises"
+    },
+    {
+      "id": "SF-10",
+      "location": "BlueprintComposer.run() max_blueprints",
+      "old_behavior": "Silently accepted non-int or negative max_blueprints; slice [:mx] produced wrong results.",
+      "new_behavior": "Raises TypeError for non-int (excluding bool), ValueError for negative.",
+      "test": "test_non_int_max_blueprints_raises, test_negative_max_blueprints_raises"
+    },
+    {
+      "id": "SF-11",
+      "location": "BlueprintComposer.run() candidates list",
+      "old_behavior": "Silently accepted non-list candidates; produced 0 blueprints.",
+      "new_behavior": "Raises TypeError for non-list candidates.",
+      "test": "test_non_list_candidates_raises"
+    },
+    {
+      "id": "SF-12",
+      "location": "BlueprintComposer.run() candidate structure",
+      "old_behavior": "DR-63 partial fix silently filled in missing candidate_id, elements, operator_applied with derived defaults. A malformed candidate looked valid.",
+      "new_behavior": "Raises KeyError for missing required keys (candidate_id, elements). DR-63 composite_score derivation preserved but flagged with _dr63_score_derived=True for downstream visibility.",
+      "test": "test_candidate_missing_required_keys_raises, test_dr63_derived_score_is_flagged, test_real_score_not_flagged_as_derived"
+    },
+    {
+      "id": "SF-13",
+      "location": "BlueprintComposer.run() candidate_id validation",
+      "old_behavior": "setdefault would not fix an explicit None value; .encode() in _bp() would crash with unhelpful AttributeError.",
+      "new_behavior": "Raises ValueError for None, empty string, or non-string candidate_id.",
+      "test": "test_candidate_none_candidate_id_raises, test_candidate_empty_string_candidate_id_raises"
+    },
+    {
+      "id": "SF-14",
+      "location": "BlueprintComposer.run() elements validation",
+      "old_behavior": "Empty elements list silently produced a blueprint with empty title, empty subsystems, and cost_estimate_usd=0 — a malformed blueprint that looked valid.",
+      "new_behavior": "Raises ValueError for empty elements list. Raises TypeError for non-list elements.",
+      "test": "test_candidate_empty_elements_raises, test_candidate_non_list_elements_raises"
+    },
+    {
+      "id": "SF-15",
+      "location": "BlueprintComposer.run() composite_score type",
+      "old_behavior": "Non-numeric composite_score (e.g. string 'high') silently broke downstream sorting and filtering.",
+      "new_behavior": "Raises TypeError for non-numeric composite_score (excluding bool).",
+      "test": "test_candidate_non_numeric_composite_score_raises"
+    },
+    {
+      "id": "SF-16",
+      "location": "BlueprintComposer._bp()",
+      "old_behavior": "If _bp() raised for any reason, the whole batch failed with no partial result. No record of which candidate failed.",
+      "new_behavior": "Wraps each _bp() call in try/except. Errors recorded in 'blueprint_generation_errors' field of result. Other candidates still produce blueprints.",
+      "test": "test_blueprint_generation_errors_are_surfaced"
+    }
+  ],
+
+  "dr63_backward_compat_preserved": {
+    "note": "DR-63 (cycle 198) added a partial fix that derived composite_score from elements count and adjacent_domains when missing. This derivation is PRESERVED for backward compatibility, but now flagged with _dr63_score_derived=True so downstream consumers can distinguish real scores from derived defaults. The blueprint itself carries a 'dr63_score_derived' field.",
+    "flag_field": "_dr63_score_derived (on candidate), dr63_score_derived (on blueprint)",
+    "result_field": "n_dr63_derived_scores (count of derived scores in this run)"
+  },
+
+  "amendment_compliance": {
+    "amendment_11_observed_vs_expected": "ENFORCED — every fix has a test verifying the OBSERVED behavior (raise on bad input). No fix relies on EXPECTED behavior.",
+    "amendment_12_commit_categorization": "ENFORCED — this commit's category is ENGINEERING_FIX.",
+    "amendment_13_phase_status_json": "ENFORCED — this file IS the Phase 2 PHASE_STATUS.json.",
+    "amendment_14_scientific_visibility_boundary": "ENFORCED — no scientific results visible. Phase 2 is infrastructure-only."
+  },
+
+  "phase_2_artifacts": {
+    "phase_status_json": "experiments/measurement_discrimination/PHASE_STATUS_phase2.json (this file)",
+    "modified_files": [
+      "product/blueprint/composer.py"
+    ],
+    "new_test_files": [
+      "tests/test_phase2_blueprint_composer_silent_failures.py"
+    ]
+  }
+}

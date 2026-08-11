@@ -1,0 +1,41 @@
+{
+  "id": "benchmark_c003",
+  "type": "consumer",
+  "source": "user_prompt",
+  "prompt": "I want inexpensive crop monitoring for my 2-hectare farm. I need soil moisture, temperature, and pest detection. Budget under $200. I have a smartphone but no technical background.",
+  "domain": "sensors",
+  "budget_usd": 200,
+  "environment": "2-hectare farm, smartphone available",
+  "constraints": [
+    "budget $200",
+    "no technical background",
+    "outdoor environment",
+    "2 hectare coverage"
+  ],
+  "skill_level": "non-technical",
+  "timeline_days": 45,
+  "expected_constraints": [
+    "cost",
+    "information",
+    "maintenance",
+    "energy"
+  ],
+  "expected_prerequisites": [
+    "low-cost sensors",
+    "wireless connectivity",
+    "smartphone app",
+    "solar power"
+  ],
+  "expected_adjacent_domains": [
+    "agriculture",
+    "IoT",
+    "embedded systems",
+    "data science"
+  ],
+  "expected_failure_modes": [
+    "sensor corrosion",
+    "connectivity gaps",
+    "battery depletion",
+    "false alerts"
+  ]
+}

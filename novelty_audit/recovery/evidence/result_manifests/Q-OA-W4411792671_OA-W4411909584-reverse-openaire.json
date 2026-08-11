@@ -1,0 +1,74 @@
+{
+  "query_id": "Q-OA-W4411792671_OA-W4411909584-reverse-openaire",
+  "pair_id": "OA-W4411792671_OA-W4411909584",
+  "query_type": "reverse",
+  "provider": "openaire",
+  "query_text": "catalyst stability inverse strength compressive analysis",
+  "query_hash": "aee3229b7d425b27746764e1da471a547c96a060dc014113f21bae0df90bad6f",
+  "frozen_query_ref": "Q-OA-W4411792671_OA-W4411909584-reverse-openalex",
+  "url": "https://api.openaire.eu/search/publications?keywords=catalyst+stability+inverse+strength+compressive+analysis&size=10&format=json",
+  "timestamp_utc": "2026-08-11T12:38:13.261582+00:00",
+  "status": "SUCCESS",
+  "result_count": 2,
+  "result_ids": [
+    [
+      {
+        "$": "50|datacite____::294d74df8f3f75b0b026e5a87ca35ec4"
+      },
+      {
+        "$": "10.5281/zenodo.18407256"
+      },
+      {
+        "$": "50|datacite____::37fc3ddd5b5e9ec7fcd517c903287151"
+      },
+      {
+        "$": "10.5281/zenodo.18407257"
+      },
+      {
+        "$": "50|od______2659::37fc3ddd5b5e9ec7fcd517c903287151"
+      },
+      {
+        "$": "oai:zenodo.org:18407257"
+      }
+    ],
+    [
+      {
+        "$": "50|datacite____::7b61bd008976189d8cad36c5f5b400ab"
+      },
+      {
+        "$": "10.5281/zenodo.15996066"
+      },
+      {
+        "$": "oai:zenodo.org:15996066"
+      },
+      {
+        "$": "50|od______2659::7b61bd008976189d8cad36c5f5b400ab"
+      },
+      {
+        "$": "50|datacite____::dc53a10a366203f93a94078f0b185141"
+      },
+      {
+        "$": "10.5281/zenodo.15996065"
+      }
+    ]
+  ],
+  "result_titles": [
+    "The Nexus Recursive Harmonic Architecture: A Grand Unified Operational Ontology of the Computational Cosmos V3",
+    "VFE Vibrational Field Equations Tier 8 by FatherTimeSDKP"
+  ],
+  "result_dois": [
+    "10.5281/zenodo.18407256",
+    "10.5281/zenodo.15996066"
+  ],
+  "result_dates": [
+    "2026-01-28",
+    "2025-07-16"
+  ],
+  "response_hash": "5568938da85368b4a3861c816ed89a4e7f62c2d2849b40558b38fd6279e21330",
+  "evidence_uri": "https://api.openaire.eu/search/publications?keywords=catalyst+stability+inverse+strength+compressive+analysis&size=10&format=json",
+  "error": null,
+  "rate_limit_headers": {
+    "x-ratelimit-used": "268",
+    "x-ratelimit-limit": "7199"
+  }
+}

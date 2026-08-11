@@ -1,0 +1,74 @@
+{
+  "attestation_type": "CUSTODIAN_REAL_ISOLATION_ATTESTATION_V1",
+  "attestation_version": "1.0.0",
+  "generated_at": "2026-08-11T00:00:00Z",
+  "environment": {
+    "uid": 1001,
+    "has_root": false,
+    "has_sudo": false,
+    "has_docker": false,
+    "has_podman": false,
+    "has_user_namespace": true,
+    "has_mount_namespace": false,
+    "note": "This is a container environment without root, sudo, docker, or mount namespaces. Real OS-level user isolation cannot be tested here."
+  },
+  "test_results": {
+    "test_1_tee_user_cannot_read_answer_key": {
+      "status": "NOT_TESTED",
+      "reason": "Requires separate Unix users (custodian-user, tee-user). This environment has no root/sudo."
+    },
+    "test_2_tee_user_cannot_list_answer_key_dir": {
+      "status": "NOT_TESTED",
+      "reason": "Requires separate Unix users."
+    },
+    "test_3_tee_user_cannot_traverse_custodian": {
+      "status": "NOT_TESTED",
+      "reason": "Requires separate Unix users."
+    },
+    "test_4_tee_user_cannot_modify_custodian_files": {
+      "status": "NOT_TESTED",
+      "reason": "Requires separate Unix users."
+    },
+    "test_5_tee_user_cannot_read_custodian_env": {
+      "status": "PROVEN",
+      "reason": "Verified: subprocess with env={} strips all env vars."
+    },
+    "test_6_tee_user_cannot_use_proc": {
+      "status": "DOCUMENTED",
+      "reason": "/proc is accessible in this environment. Real deployment requires procfs masking (hidepid=2 or container masked /proc)."
+    },
+    "test_7_blind_fixture_transfer_works": {
+      "status": "PROVEN",
+      "reason": "Verified: TEE package contains no answer-key content. Blind fixture file in TEE dir is clean."
+    },
+    "test_8_answer_key_not_in_tee_dir": {
+      "status": "PROVEN",
+      "reason": "Verified: answer key file only in custodian dir. No SECRET_MECHANISM content in TEE dir files."
+    },
+    "test_9_subprocess_inheritance": {
+      "status": "NOT_TESTED",
+      "reason": "Requires separate Unix users to verify inheritance."
+    },
+    "test_10_audit_trail_records_violations": {
+      "status": "PROVEN",
+      "reason": "Verified: append-only audit trail records ACCESS_VIOLATION_ATTEMPT events."
+    }
+  },
+  "summary": {
+    "proven": 4,
+    "not_tested": 5,
+    "documented": 1,
+    "total": 10
+  },
+  "overall_status": "CONDITIONAL \u2014 4 PROVEN, 5 NOT TESTED, 1 DOCUMENTED. Real OS-level isolation requires deployment with separate users or containers.",
+  "deployment_requirements": [
+    "Create custodian-user and tee-user as separate Unix accounts",
+    "Store answer key in custodian-user home directory (0o600)",
+    "Store blind fixture in tee-user accessible directory (0o644)",
+    "Run TEE process as tee-user",
+    "Mask /proc for tee-user (hidepid=2 or container)",
+    "No shared writable mounts between custodian and TEE",
+    "Strip CUSTODIAN_* env vars from TEE subprocess (use env={})",
+    "OR: use separate containers/machines for custodian and TEE"
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "schema_version": 1,
+  "protocol_sha": "32691a78dc3bc963937fb21380c9df9c4f1f6c33",
+  "cases_sha": "",
+  "manifest_sha": "79788334adf8bb058d7e5a4ec6f41283d69fb891fcdab995e21e28c05f5b3829",
+  "creation_commit": "",
+  "note": "Freeze record anchoring the Gate 2 manifest (Repair #4-extended). An attacker who regenerates the manifest to bless altered artifacts produces a different manifest_sha, breaking this record. Modifying this record changes the git commit, which is externally detectable."
+}

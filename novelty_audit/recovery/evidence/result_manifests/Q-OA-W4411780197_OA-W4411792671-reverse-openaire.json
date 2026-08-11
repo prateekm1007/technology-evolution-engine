@@ -1,0 +1,48 @@
+{
+  "query_id": "Q-OA-W4411780197_OA-W4411792671-reverse-openaire",
+  "pair_id": "OA-W4411780197_OA-W4411792671",
+  "query_type": "reverse",
+  "provider": "openaire",
+  "query_text": "strength compressive analysis materials organic fluorescent",
+  "query_hash": "08557f5373e3ae2bad1edabd648ca2ef700f7de7f7ad9003f9f96287e67ffe50",
+  "frozen_query_ref": "Q-OA-W4411780197_OA-W4411792671-reverse-openalex",
+  "url": "https://api.openaire.eu/search/publications?keywords=strength+compressive+analysis+materials+organic+fluorescent&size=10&format=json",
+  "timestamp_utc": "2026-08-11T12:12:05.610221+00:00",
+  "status": "SUCCESS",
+  "result_count": 1,
+  "result_ids": [
+    [
+      {
+        "$": "50|RECOLECTA___::2449c226a1d107168ec14f51d763edad"
+      },
+      {
+        "$": "oai:e-archivo.uc3m.es:10016/29712"
+      },
+      {
+        "$": "50|od______3686::9625b274046ac2beb75e0b383417bb8c"
+      },
+      {
+        "$": "oai:iris.uniroma1.it:11573/1281928"
+      },
+      {
+        "$": "50|od_______912::2449c226a1d107168ec14f51d763edad"
+      }
+    ]
+  ],
+  "result_titles": [
+    "Cement-based composites: optimization of basalt fibers-cement matrices interfaces"
+  ],
+  "result_dois": [
+    ""
+  ],
+  "result_dates": [
+    "2019-03-01"
+  ],
+  "response_hash": "59b64dc90f6bb8590f0bf8dc6e9fe455898ccca989001fab286cc99886c052ad",
+  "evidence_uri": "https://api.openaire.eu/search/publications?keywords=strength+compressive+analysis+materials+organic+fluorescent&size=10&format=json",
+  "error": null,
+  "rate_limit_headers": {
+    "x-ratelimit-used": "13",
+    "x-ratelimit-limit": "7199"
+  }
+}

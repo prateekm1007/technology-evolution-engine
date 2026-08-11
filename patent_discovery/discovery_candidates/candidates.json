@@ -1,0 +1,2197 @@
+{
+  "timestamp": "2026-08-11T15:14:18.753917+00:00",
+  "total_candidates": 44,
+  "candidates": [
+    {
+      "candidate_id": "CDM3-8f545ec2",
+      "discovery_type": "CROSS_DOMAIN_TRANSFER",
+      "mode": 3,
+      "source_domain": "materials",
+      "target_domain": "mechanical_systems",
+      "mechanism": "electromagnetic mechanism",
+      "source_patents": [
+        "CR-10.62791/20049"
+      ],
+      "countries": [
+        "EU",
+        "US",
+        "XX"
+      ],
+      "evidence": [
+        {
+          "type": "mechanism_present_in_source",
+          "domain": "materials",
+          "patent_ids": [
+            "CR-10.62791/20049"
+          ],
+          "epistemic": "OBSERVED"
+        },
+        {
+          "type": "mechanism_absent_in_target",
+          "domain": "mechanical_systems",
+          "epistemic": "ABSENCE_OF_EVIDENCE"
+        }
+      ],
+      "cross_domain_bridge": "NOT_YET_ESTABLISHED — requires mechanistic bridge, not mere similarity",
+      "hypothesis": "Mechanism 'electromagnetic mechanism' from materials may transfer to mechanical_systems",
+      "prediction": "PENDING — requires mechanistic bridge analysis",
+      "falsifier": "PENDING",
+      "experiment": "PENDING",
+      "confidence": {
+        "mechanistic_coherence": 0,
+        "evidence_strength": 20,
+        "cross_domain_transferability": 50,
+        "prior_art_distance": 0,
+        "falsifiability": 0,
+        "uncertainty": 90
+      },
+      "novelty_status": "UNVERIFIED",
+      "patentability_status": "UNASSESSED",
+      "prior_art_firewall": "UNVERIFIED_ABSENCE",
+      "prior_art_match_count": 0
+    },
+    {
+      "candidate_id": "CDM3-65866a55",
+      "discovery_type": "CROSS_DOMAIN_TRANSFER",
+      "mode": 3,
+      "source_domain": "materials",
+      "target_domain": "mechanical_systems",
+      "mechanism": "lithium-based",
+      "source_patents": [
+        "CR-10.4028/www.scientific.net/msf.830-831.522"
+      ],
+      "countries": [
+        "EU",
+        "US",
+        "XX"
+      ],
+      "evidence": [
+        {
+          "type": "mechanism_present_in_source",
+          "domain": "materials",
+          "patent_ids": [
+            "CR-10.4028/www.scientific.net/msf.830-831.522"
+          ],
+          "epistemic": "OBSERVED"
+        },
+        {
+          "type": "mechanism_absent_in_target",
+          "domain": "mechanical_systems",
+          "epistemic": "ABSENCE_OF_EVIDENCE"
+        }
+      ],
+      "cross_domain_bridge": "NOT_YET_ESTABLISHED — requires mechanistic bridge, not mere similarity",
+      "hypothesis": "Mechanism 'lithium-based' from materials may transfer to mechanical_systems",
+      "prediction": "PENDING — requires mechanistic bridge analysis",
+      "falsifier": "PENDING",
+      "experiment": "PENDING",
+      "confidence": {
+        "mechanistic_coherence": 0,
+        "evidence_strength": 20,
+        "cross_domain_transferability": 50,
+        "prior_art_distance": 0,
+        "falsifiability": 0,
+        "uncertainty": 90
+      },
+      "novelty_status": "UNVERIFIED",
+      "patentability_status": "UNASSESSED",
+      "prior_art_firewall": "UNVERIFIED_ABSENCE",
+      "prior_art_match_count": 0
+    },
+    {
+      "candidate_id": "CDM3-e258a0ed",
+      "discovery_type": "CROSS_DOMAIN_TRANSFER",
+      "mode": 3,
+      "source_domain": "materials",
+      "target_domain": "mechanical_systems",
+      "mechanism": "thermal mechanism",
+      "source_patents": [
+        "CR-10.62791/20049",
+        "CR-10.1177/0021998320968908"
+      ],
+      "countries": [
+        "EU",
+        "US",
+        "XX"
+      ],
+      "evidence": [
+        {
+          "type": "mechanism_present_in_source",
+          "domain": "materials",
+          "patent_ids": [
+            "CR-10.62791/20049",
+            "CR-10.1177/0021998320968908"
+          ],
+          "epistemic": "OBSERVED"
+        },
+        {
+          "type": "mechanism_absent_in_target",
+          "domain": "mechanical_systems",
+          "epistemic": "ABSENCE_OF_EVIDENCE"
+        }
+      ],
+      "cross_domain_bridge": "NOT_YET_ESTABLISHED — requires mechanistic bridge, not mere similarity",
+      "hypothesis": "Mechanism 'thermal mechanism' from materials may transfer to mechanical_systems",
+      "prediction": "PENDING — requires mechanistic bridge analysis",
+      "falsifier": "PENDING",
+      "experiment": "PENDING",
+      "confidence": {
+        "mechanistic_coherence": 0,
+        "evidence_strength": 40,
+        "cross_domain_transferability": 50,
+        "prior_art_distance": 0,
+        "falsifiability": 0,
+        "uncertainty": 90
+      },
+      "novelty_status": "UNVERIFIED",
+      "patentability_status": "UNASSESSED",
+      "prior_art_firewall": "ADJACENT_PRIOR_ART",
+      "prior_art_matches": [
+        "CR-10.55529/jaimlnn.11.50.57"
+      ],
+      "prior_art_match_count": 1
+    },
+    {
+      "candidate_id": "CDM3-0b94861e",
+      "discovery_type": "CROSS_DOMAIN_TRANSFER",
+      "mode": 3,
+      "source_domain": "energy",
+      "target_domain": "mechanical_systems",
+      "mechanism": "lithium-based",
+      "source_patents": [
+        "CR-10.3390/nano12203656",
+        "CR-10.1149/ma2015-02/3/234"
+      ],
+      "countries": [
+        "EU",
+        "US",
+        "XX"
+      ],
+      "evidence": [
+        {
+          "type": "mechanism_present_in_source",
+          "domain": "energy",
+          "patent_ids": [
+            "CR-10.3390/nano12203656",
+            "CR-10.1149/ma2015-02/3/234"
+          ],
+          "epistemic": "OBSERVED"
+        },
+        {
+          "type": "mechanism_absent_in_target",
+          "domain": "mechanical_systems",
+          "epistemic": "ABSENCE_OF_EVIDENCE"
+        }
+      ],
+      "cross_domain_bridge": "NOT_YET_ESTABLISHED — requires mechanistic bridge, not mere similarity",
+      "hypothesis": "Mechanism 'lithium-based' from energy may transfer to mechanical_systems",
+      "prediction": "PENDING — requires mechanistic bridge analysis",
+      "falsifier": "PENDING",
+      "experiment": "PENDING",
+      "confidence": {
+        "mechanistic_coherence": 0,
+        "evidence_strength": 40,
+        "cross_domain_transferability": 50,
+        "prior_art_distance": 0,
+        "falsifiability": 0,
+        "uncertainty": 90
+      },
+      "novelty_status": "UNVERIFIED",
+      "patentability_status": "UNASSESSED",
+      "prior_art_firewall": "UNVERIFIED_ABSENCE",
+      "prior_art_match_count": 0
+    },
+    {
+      "candidate_id": "CDM3-bddd465c",
+      "discovery_type": "CROSS_DOMAIN_TRANSFER",
+      "mode": 3,
+      "source_domain": "energy",
+      "target_domain": "manufacturing",
+      "mechanism": "lithium-based",
+      "source_patents": [
+        "CR-10.3390/nano12203656",
+        "CR-10.1149/ma2015-02/3/234"
+      ],
+      "countries": [
+        "EU",
+        "US",
+        "XX"
+      ],
+      "evidence": [
+        {
+          "type": "mechanism_present_in_source",
+          "domain": "energy",
+          "patent_ids": [
+            "CR-10.3390/nano12203656",
+            "CR-10.1149/ma2015-02/3/234"
+          ],
+          "epistemic": "OBSERVED"
+        },
+        {
+          "type": "mechanism_absent_in_target",
+          "domain": "manufacturing",
+          "epistemic": "ABSENCE_OF_EVIDENCE"
+        }
+      ],
+      "cross_domain_bridge": "NOT_YET_ESTABLISHED — requires mechanistic bridge, not mere similarity",
+      "hypothesis": "Mechanism 'lithium-based' from energy may transfer to manufacturing",
+      "prediction": "PENDING — requires mechanistic bridge analysis",
+      "falsifier": "PENDING",
+      "experiment": "PENDING",
+      "confidence": {
+        "mechanistic_coherence": 0,
+        "evidence_strength": 40,
+        "cross_domain_transferability": 50,
+        "prior_art_distance": 0,
+        "falsifiability": 0,
+        "uncertainty": 90
+      },
+      "novelty_status": "UNVERIFIED",
+      "patentability_status": "UNASSESSED",
+      "prior_art_firewall": "UNVERIFIED_ABSENCE",
+      "prior_art_match_count": 0
+    },
+    {
+      "candidate_id": "CDM3-5f8919d0",
+      "discovery_type": "CROSS_DOMAIN_TRANSFER",
+      "mode": 3,
+      "source_domain": "computing_ai",
+      "target_domain": "materials",
+      "mechanism": "neural network",
+      "source_patents": [
+        "CR-10.33140/amlai.03.02.04",
+        "CR-10.55640/ijdsml-06-02-03",
+        "CR-10.58496/bjml/2023/004",
+        "CR-10.21203/rs.3.rs-2789282/v1",
+        "CR-10.14293/pr2199.002171.v1"
+      ],
+      "countries": [
+        "EU",
+        "CN",
+        "US"
+      ],
+      "evidence": [
+        {
+          "type": "mechanism_present_in_source",
+          "domain": "computing_ai",
+          "patent_ids": [
+            "CR-10.33140/amlai.03.02.04",
+            "CR-10.55640/ijdsml-06-02-03",
+            "CR-10.58496/bjml/2023/004"
+          ],
+          "epistemic": "OBSERVED"
+        },
+        {
+          "type": "mechanism_absent_in_target",
+          "domain": "materials",
+          "epistemic": "ABSENCE_OF_EVIDENCE"
+        }
+      ],
+      "cross_domain_bridge": "NOT_YET_ESTABLISHED — requires mechanistic bridge, not mere similarity",
+      "hypothesis": "Mechanism 'neural network' from computing_ai may transfer to materials",
+      "prediction": "PENDING — requires mechanistic bridge analysis",
+      "falsifier": "PENDING",
+      "experiment": "PENDING",
+      "confidence": {
+        "mechanistic_coherence": 0,
+        "evidence_strength": 140,
+        "cross_domain_transferability": 50,
+        "prior_art_distance": 0,
+        "falsifiability": 0,
+        "uncertainty": 90
+      },
+      "novelty_status": "UNVERIFIED",
+      "patentability_status": "UNASSESSED",
+      "prior_art_firewall": "ADJACENT_PRIOR_ART",
+      "prior_art_matches": [
+        "CR-10.33140/amlai.03.02.04",
+        "CR-10.55640/ijdsml-06-02-03",
+        "CR-10.58496/bjml/2023/004",
+        "CR-10.21203/rs.3.rs-2789282/v1",
+        "CR-10.14293/pr2199.002171.v1"
+      ],
+      "prior_art_match_count": 7
+    },
+    {
+      "candidate_id": "CDM3-3673c4ff",
+      "discovery_type": "CROSS_DOMAIN_TRANSFER",
+      "mode": 3,
+      "source_domain": "computing_ai",
+      "target_domain": "energy",
+      "mechanism": "neural network",
+      "source_patents": [
+        "CR-10.33140/amlai.03.02.04",
+        "CR-10.55640/ijdsml-06-02-03",
+        "CR-10.58496/bjml/2023/004",
+        "CR-10.21203/rs.3.rs-2789282/v1",
+        "CR-10.14293/pr2199.002171.v1"
+      ],
+      "countries": [
+        "EU",
+        "CN",
+        "US"
+      ],
+      "evidence": [
+        {
+          "type": "mechanism_present_in_source",
+          "domain": "computing_ai",
+          "patent_ids": [
+            "CR-10.33140/amlai.03.02.04",
+            "CR-10.55640/ijdsml-06-02-03",
+            "CR-10.58496/bjml/2023/004"
+          ],
+          "epistemic": "OBSERVED"
+        },
+        {
+          "type": "mechanism_absent_in_target",
+          "domain": "energy",
+          "epistemic": "ABSENCE_OF_EVIDENCE"
+        }
+      ],
+      "cross_domain_bridge": "NOT_YET_ESTABLISHED — requires mechanistic bridge, not mere similarity",
+      "hypothesis": "Mechanism 'neural network' from computing_ai may transfer to energy",
+      "prediction": "PENDING — requires mechanistic bridge analysis",
+      "falsifier": "PENDING",
+      "experiment": "PENDING",
+      "confidence": {
+        "mechanistic_coherence": 0,
+        "evidence_strength": 140,
+        "cross_domain_transferability": 50,
+        "prior_art_distance": 0,
+        "falsifiability": 0,
+        "uncertainty": 90
+      },
+      "novelty_status": "UNVERIFIED",
+      "patentability_status": "UNASSESSED",
+      "prior_art_firewall": "ADJACENT_PRIOR_ART",
+      "prior_art_matches": [
+        "CR-10.33140/amlai.03.02.04",
+        "CR-10.55640/ijdsml-06-02-03",
+        "CR-10.58496/bjml/2023/004",
+        "CR-10.21203/rs.3.rs-2789282/v1",
+        "CR-10.14293/pr2199.002171.v1"
+      ],
+      "prior_art_match_count": 7
+    },
+    {
+      "candidate_id": "CDM3-3e807254",
+      "discovery_type": "CROSS_DOMAIN_TRANSFER",
+      "mode": 3,
+      "source_domain": "computing_ai",
+      "target_domain": "energy",
+      "mechanism": "thermal mechanism",
+      "source_patents": [
+        "CR-10.55529/jaimlnn.11.50.57"
+      ],
+      "countries": [
+        "EU",
+        "CN",
+        "US"
+      ],
+      "evidence": [
+        {
+          "type": "mechanism_present_in_source",
+          "domain": "computing_ai",
+          "patent_ids": [
+            "CR-10.55529/jaimlnn.11.50.57"
+          ],
+          "epistemic": "OBSERVED"
+        },
+        {
+          "type": "mechanism_absent_in_target",
+          "domain": "energy",
+          "epistemic": "ABSENCE_OF_EVIDENCE"
+        }
+      ],
+      "cross_domain_bridge": "NOT_YET_ESTABLISHED — requires mechanistic bridge, not mere similarity",
+      "hypothesis": "Mechanism 'thermal mechanism' from computing_ai may transfer to energy",
+      "prediction": "PENDING — requires mechanistic bridge analysis",
+      "falsifier": "PENDING",
+      "experiment": "PENDING",
+      "confidence": {
+        "mechanistic_coherence": 0,
+        "evidence_strength": 20,
+        "cross_domain_transferability": 50,
+        "prior_art_distance": 0,
+        "falsifiability": 0,
+        "uncertainty": 90
+      },
+      "novelty_status": "UNVERIFIED",
+      "patentability_status": "UNASSESSED",
+      "prior_art_firewall": "ADJACENT_PRIOR_ART",
+      "prior_art_matches": [
+        "CR-10.55529/jaimlnn.11.50.57"
+      ],
+      "prior_art_match_count": 1
+    },
+    {
+      "candidate_id": "CDM3-26da90f0",
+      "discovery_type": "CROSS_DOMAIN_TRANSFER",
+      "mode": 3,
+      "source_domain": "computing_ai",
+      "target_domain": "mechanical_systems",
+      "mechanism": "neural network",
+      "source_patents": [
+        "CR-10.33140/amlai.03.02.04",
+        "CR-10.55640/ijdsml-06-02-03",
+        "CR-10.58496/bjml/2023/004",
+        "CR-10.21203/rs.3.rs-2789282/v1",
+        "CR-10.14293/pr2199.002171.v1"
+      ],
+      "countries": [
+        "EU",
+        "CN",
+        "US"
+      ],
+      "evidence": [
+        {
+          "type": "mechanism_present_in_source",
+          "domain": "computing_ai",
+          "patent_ids": [
+            "CR-10.33140/amlai.03.02.04",
+            "CR-10.55640/ijdsml-06-02-03",
+            "CR-10.58496/bjml/2023/004"
+          ],
+          "epistemic": "OBSERVED"
+        },
+        {
+          "type": "mechanism_absent_in_target",
+          "domain": "mechanical_systems",
+          "epistemic": "ABSENCE_OF_EVIDENCE"
+        }
+      ],
+      "cross_domain_bridge": "NOT_YET_ESTABLISHED — requires mechanistic bridge, not mere similarity",
+      "hypothesis": "Mechanism 'neural network' from computing_ai may transfer to mechanical_systems",
+      "prediction": "PENDING — requires mechanistic bridge analysis",
+      "falsifier": "PENDING",
+      "experiment": "PENDING",
+      "confidence": {
+        "mechanistic_coherence": 0,
+        "evidence_strength": 140,
+        "cross_domain_transferability": 50,
+        "prior_art_distance": 0,
+        "falsifiability": 0,
+        "uncertainty": 90
+      },
+      "novelty_status": "UNVERIFIED",
+      "patentability_status": "UNASSESSED",
+      "prior_art_firewall": "ADJACENT_PRIOR_ART",
+      "prior_art_matches": [
+        "CR-10.33140/amlai.03.02.04",
+        "CR-10.55640/ijdsml-06-02-03",
+        "CR-10.58496/bjml/2023/004",
+        "CR-10.21203/rs.3.rs-2789282/v1",
+        "CR-10.14293/pr2199.002171.v1"
+      ],
+      "prior_art_match_count": 7
+    },
+    {
+      "candidate_id": "CDM3-d2b1ca54",
+      "discovery_type": "CROSS_DOMAIN_TRANSFER",
+      "mode": 3,
+      "source_domain": "computing_ai",
+      "target_domain": "mechanical_systems",
+      "mechanism": "thermal mechanism",
+      "source_patents": [
+        "CR-10.55529/jaimlnn.11.50.57"
+      ],
+      "countries": [
+        "EU",
+        "CN",
+        "US"
+      ],
+      "evidence": [
+        {
+          "type": "mechanism_present_in_source",
+          "domain": "computing_ai",
+          "patent_ids": [
+            "CR-10.55529/jaimlnn.11.50.57"
+          ],
+          "epistemic": "OBSERVED"
+        },
+        {
+          "type": "mechanism_absent_in_target",
+          "domain": "mechanical_systems",
+          "epistemic": "ABSENCE_OF_EVIDENCE"
+        }
+      ],
+      "cross_domain_bridge": "NOT_YET_ESTABLISHED — requires mechanistic bridge, not mere similarity",
+      "hypothesis": "Mechanism 'thermal mechanism' from computing_ai may transfer to mechanical_systems",
+      "prediction": "PENDING — requires mechanistic bridge analysis",
+      "falsifier": "PENDING",
+      "experiment": "PENDING",
+      "confidence": {
+        "mechanistic_coherence": 0,
+        "evidence_strength": 20,
+        "cross_domain_transferability": 50,
+        "prior_art_distance": 0,
+        "falsifiability": 0,
+        "uncertainty": 90
+      },
+      "novelty_status": "UNVERIFIED",
+      "patentability_status": "UNASSESSED",
+      "prior_art_firewall": "ADJACENT_PRIOR_ART",
+      "prior_art_matches": [
+        "CR-10.55529/jaimlnn.11.50.57"
+      ],
+      "prior_art_match_count": 1
+    },
+    {
+      "candidate_id": "CDM3-574af8bd",
+      "discovery_type": "CROSS_DOMAIN_TRANSFER",
+      "mode": 3,
+      "source_domain": "computing_ai",
+      "target_domain": "manufacturing",
+      "mechanism": "neural network",
+      "source_patents": [
+        "CR-10.33140/amlai.03.02.04",
+        "CR-10.55640/ijdsml-06-02-03",
+        "CR-10.58496/bjml/2023/004",
+        "CR-10.21203/rs.3.rs-2789282/v1",
+        "CR-10.14293/pr2199.002171.v1"
+      ],
+      "countries": [
+        "EU",
+        "CN",
+        "US"
+      ],
+      "evidence": [
+        {
+          "type": "mechanism_present_in_source",
+          "domain": "computing_ai",
+          "patent_ids": [
+            "CR-10.33140/amlai.03.02.04",
+            "CR-10.55640/ijdsml-06-02-03",
+            "CR-10.58496/bjml/2023/004"
+          ],
+          "epistemic": "OBSERVED"
+        },
+        {
+          "type": "mechanism_absent_in_target",
+          "domain": "manufacturing",
+          "epistemic": "ABSENCE_OF_EVIDENCE"
+        }
+      ],
+      "cross_domain_bridge": "NOT_YET_ESTABLISHED — requires mechanistic bridge, not mere similarity",
+      "hypothesis": "Mechanism 'neural network' from computing_ai may transfer to manufacturing",
+      "prediction": "PENDING — requires mechanistic bridge analysis",
+      "falsifier": "PENDING",
+      "experiment": "PENDING",
+      "confidence": {
+        "mechanistic_coherence": 0,
+        "evidence_strength": 140,
+        "cross_domain_transferability": 50,
+        "prior_art_distance": 0,
+        "falsifiability": 0,
+        "uncertainty": 90
+      },
+      "novelty_status": "UNVERIFIED",
+      "patentability_status": "UNASSESSED",
+      "prior_art_firewall": "ADJACENT_PRIOR_ART",
+      "prior_art_matches": [
+        "CR-10.33140/amlai.03.02.04",
+        "CR-10.55640/ijdsml-06-02-03",
+        "CR-10.58496/bjml/2023/004",
+        "CR-10.21203/rs.3.rs-2789282/v1",
+        "CR-10.14293/pr2199.002171.v1"
+      ],
+      "prior_art_match_count": 7
+    },
+    {
+      "candidate_id": "CDM3-6ea26853",
+      "discovery_type": "CROSS_DOMAIN_TRANSFER",
+      "mode": 3,
+      "source_domain": "biotechnology",
+      "target_domain": "materials",
+      "mechanism": "gene editing",
+      "source_patents": [
+        "CR-10.2458/azlawjet.5507",
+        "CR-10.62311/nesx/68113",
+        "CR-10.63665/ijicsitr.v1i01.05",
+        "CR-10.22541/au.175026437.79607454/v1"
+      ],
+      "countries": [
+        "EU",
+        "US",
+        "XX"
+      ],
+      "evidence": [
+        {
+          "type": "mechanism_present_in_source",
+          "domain": "biotechnology",
+          "patent_ids": [
+            "CR-10.2458/azlawjet.5507",
+            "CR-10.62311/nesx/68113",
+            "CR-10.63665/ijicsitr.v1i01.05"
+          ],
+          "epistemic": "OBSERVED"
+        },
+        {
+          "type": "mechanism_absent_in_target",
+          "domain": "materials",
+          "epistemic": "ABSENCE_OF_EVIDENCE"
+        }
+      ],
+      "cross_domain_bridge": "NOT_YET_ESTABLISHED — requires mechanistic bridge, not mere similarity",
+      "hypothesis": "Mechanism 'gene editing' from biotechnology may transfer to materials",
+      "prediction": "PENDING — requires mechanistic bridge analysis",
+      "falsifier": "PENDING",
+      "experiment": "PENDING",
+      "confidence": {
+        "mechanistic_coherence": 0,
+        "evidence_strength": 80,
+        "cross_domain_transferability": 50,
+        "prior_art_distance": 0,
+        "falsifiability": 0,
+        "uncertainty": 90
+      },
+      "novelty_status": "UNVERIFIED",
+      "patentability_status": "UNASSESSED",
+      "prior_art_firewall": "ADJACENT_PRIOR_ART",
+      "prior_art_matches": [
+        "CR-10.2458/azlawjet.5507",
+        "CR-10.62311/nesx/68113",
+        "CR-10.63665/ijicsitr.v1i01.05",
+        "CR-10.22541/au.175026437.79607454/v1"
+      ],
+      "prior_art_match_count": 4
+    },
+    {
+      "candidate_id": "CDM3-98c47ef8",
+      "discovery_type": "CROSS_DOMAIN_TRANSFER",
+      "mode": 3,
+      "source_domain": "biotechnology",
+      "target_domain": "energy",
+      "mechanism": "gene editing",
+      "source_patents": [
+        "CR-10.2458/azlawjet.5507",
+        "CR-10.62311/nesx/68113",
+        "CR-10.63665/ijicsitr.v1i01.05",
+        "CR-10.22541/au.175026437.79607454/v1"
+      ],
+      "countries": [
+        "EU",
+        "US",
+        "XX"
+      ],
+      "evidence": [
+        {
+          "type": "mechanism_present_in_source",
+          "domain": "biotechnology",
+          "patent_ids": [
+            "CR-10.2458/azlawjet.5507",
+            "CR-10.62311/nesx/68113",
+            "CR-10.63665/ijicsitr.v1i01.05"
+          ],
+          "epistemic": "OBSERVED"
+        },
+        {
+          "type": "mechanism_absent_in_target",
+          "domain": "energy",
+          "epistemic": "ABSENCE_OF_EVIDENCE"
+        }
+      ],
+      "cross_domain_bridge": "NOT_YET_ESTABLISHED — requires mechanistic bridge, not mere similarity",
+      "hypothesis": "Mechanism 'gene editing' from biotechnology may transfer to energy",
+      "prediction": "PENDING — requires mechanistic bridge analysis",
+      "falsifier": "PENDING",
+      "experiment": "PENDING",
+      "confidence": {
+        "mechanistic_coherence": 0,
+        "evidence_strength": 80,
+        "cross_domain_transferability": 50,
+        "prior_art_distance": 0,
+        "falsifiability": 0,
+        "uncertainty": 90
+      },
+      "novelty_status": "UNVERIFIED",
+      "patentability_status": "UNASSESSED",
+      "prior_art_firewall": "ADJACENT_PRIOR_ART",
+      "prior_art_matches": [
+        "CR-10.2458/azlawjet.5507",
+        "CR-10.62311/nesx/68113",
+        "CR-10.63665/ijicsitr.v1i01.05",
+        "CR-10.22541/au.175026437.79607454/v1"
+      ],
+      "prior_art_match_count": 4
+    },
+    {
+      "candidate_id": "CDM3-a24461cb",
+      "discovery_type": "CROSS_DOMAIN_TRANSFER",
+      "mode": 3,
+      "source_domain": "biotechnology",
+      "target_domain": "mechanical_systems",
+      "mechanism": "gene editing",
+      "source_patents": [
+        "CR-10.2458/azlawjet.5507",
+        "CR-10.62311/nesx/68113",
+        "CR-10.63665/ijicsitr.v1i01.05",
+        "CR-10.22541/au.175026437.79607454/v1"
+      ],
+      "countries": [
+        "EU",
+        "US",
+        "XX"
+      ],
+      "evidence": [
+        {
+          "type": "mechanism_present_in_source",
+          "domain": "biotechnology",
+          "patent_ids": [
+            "CR-10.2458/azlawjet.5507",
+            "CR-10.62311/nesx/68113",
+            "CR-10.63665/ijicsitr.v1i01.05"
+          ],
+          "epistemic": "OBSERVED"
+        },
+        {
+          "type": "mechanism_absent_in_target",
+          "domain": "mechanical_systems",
+          "epistemic": "ABSENCE_OF_EVIDENCE"
+        }
+      ],
+      "cross_domain_bridge": "NOT_YET_ESTABLISHED — requires mechanistic bridge, not mere similarity",
+      "hypothesis": "Mechanism 'gene editing' from biotechnology may transfer to mechanical_systems",
+      "prediction": "PENDING — requires mechanistic bridge analysis",
+      "falsifier": "PENDING",
+      "experiment": "PENDING",
+      "confidence": {
+        "mechanistic_coherence": 0,
+        "evidence_strength": 80,
+        "cross_domain_transferability": 50,
+        "prior_art_distance": 0,
+        "falsifiability": 0,
+        "uncertainty": 90
+      },
+      "novelty_status": "UNVERIFIED",
+      "patentability_status": "UNASSESSED",
+      "prior_art_firewall": "ADJACENT_PRIOR_ART",
+      "prior_art_matches": [
+        "CR-10.2458/azlawjet.5507",
+        "CR-10.62311/nesx/68113",
+        "CR-10.63665/ijicsitr.v1i01.05",
+        "CR-10.22541/au.175026437.79607454/v1"
+      ],
+      "prior_art_match_count": 4
+    },
+    {
+      "candidate_id": "CDM3-a843986b",
+      "discovery_type": "CROSS_DOMAIN_TRANSFER",
+      "mode": 3,
+      "source_domain": "biotechnology",
+      "target_domain": "computing_ai",
+      "mechanism": "gene editing",
+      "source_patents": [
+        "CR-10.2458/azlawjet.5507",
+        "CR-10.62311/nesx/68113",
+        "CR-10.63665/ijicsitr.v1i01.05",
+        "CR-10.22541/au.175026437.79607454/v1"
+      ],
+      "countries": [
+        "EU",
+        "US",
+        "XX"
+      ],
+      "evidence": [
+        {
+          "type": "mechanism_present_in_source",
+          "domain": "biotechnology",
+          "patent_ids": [
+            "CR-10.2458/azlawjet.5507",
+            "CR-10.62311/nesx/68113",
+            "CR-10.63665/ijicsitr.v1i01.05"
+          ],
+          "epistemic": "OBSERVED"
+        },
+        {
+          "type": "mechanism_absent_in_target",
+          "domain": "computing_ai",
+          "epistemic": "ABSENCE_OF_EVIDENCE"
+        }
+      ],
+      "cross_domain_bridge": "NOT_YET_ESTABLISHED — requires mechanistic bridge, not mere similarity",
+      "hypothesis": "Mechanism 'gene editing' from biotechnology may transfer to computing_ai",
+      "prediction": "PENDING — requires mechanistic bridge analysis",
+      "falsifier": "PENDING",
+      "experiment": "PENDING",
+      "confidence": {
+        "mechanistic_coherence": 0,
+        "evidence_strength": 80,
+        "cross_domain_transferability": 50,
+        "prior_art_distance": 0,
+        "falsifiability": 0,
+        "uncertainty": 90
+      },
+      "novelty_status": "UNVERIFIED",
+      "patentability_status": "UNASSESSED",
+      "prior_art_firewall": "ADJACENT_PRIOR_ART",
+      "prior_art_matches": [
+        "CR-10.2458/azlawjet.5507",
+        "CR-10.62311/nesx/68113",
+        "CR-10.63665/ijicsitr.v1i01.05",
+        "CR-10.22541/au.175026437.79607454/v1"
+      ],
+      "prior_art_match_count": 4
+    },
+    {
+      "candidate_id": "CDM3-1235a9db",
+      "discovery_type": "CROSS_DOMAIN_TRANSFER",
+      "mode": 3,
+      "source_domain": "biotechnology",
+      "target_domain": "chemical_processes",
+      "mechanism": "gene editing",
+      "source_patents": [
+        "CR-10.2458/azlawjet.5507",
+        "CR-10.62311/nesx/68113",
+        "CR-10.63665/ijicsitr.v1i01.05",
+        "CR-10.22541/au.175026437.79607454/v1"
+      ],
+      "countries": [
+        "EU",
+        "US",
+        "XX"
+      ],
+      "evidence": [
+        {
+          "type": "mechanism_present_in_source",
+          "domain": "biotechnology",
+          "patent_ids": [
+            "CR-10.2458/azlawjet.5507",
+            "CR-10.62311/nesx/68113",
+            "CR-10.63665/ijicsitr.v1i01.05"
+          ],
+          "epistemic": "OBSERVED"
+        },
+        {
+          "type": "mechanism_absent_in_target",
+          "domain": "chemical_processes",
+          "epistemic": "ABSENCE_OF_EVIDENCE"
+        }
+      ],
+      "cross_domain_bridge": "NOT_YET_ESTABLISHED — requires mechanistic bridge, not mere similarity",
+      "hypothesis": "Mechanism 'gene editing' from biotechnology may transfer to chemical_processes",
+      "prediction": "PENDING — requires mechanistic bridge analysis",
+      "falsifier": "PENDING",
+      "experiment": "PENDING",
+      "confidence": {
+        "mechanistic_coherence": 0,
+        "evidence_strength": 80,
+        "cross_domain_transferability": 50,
+        "prior_art_distance": 0,
+        "falsifiability": 0,
+        "uncertainty": 90
+      },
+      "novelty_status": "UNVERIFIED",
+      "patentability_status": "UNASSESSED",
+      "prior_art_firewall": "ADJACENT_PRIOR_ART",
+      "prior_art_matches": [
+        "CR-10.2458/azlawjet.5507",
+        "CR-10.62311/nesx/68113",
+        "CR-10.63665/ijicsitr.v1i01.05",
+        "CR-10.22541/au.175026437.79607454/v1"
+      ],
+      "prior_art_match_count": 4
+    },
+    {
+      "candidate_id": "CDM3-31d9dd02",
+      "discovery_type": "CROSS_DOMAIN_TRANSFER",
+      "mode": 3,
+      "source_domain": "biotechnology",
+      "target_domain": "manufacturing",
+      "mechanism": "gene editing",
+      "source_patents": [
+        "CR-10.2458/azlawjet.5507",
+        "CR-10.62311/nesx/68113",
+        "CR-10.63665/ijicsitr.v1i01.05",
+        "CR-10.22541/au.175026437.79607454/v1"
+      ],
+      "countries": [
+        "EU",
+        "US",
+        "XX"
+      ],
+      "evidence": [
+        {
+          "type": "mechanism_present_in_source",
+          "domain": "biotechnology",
+          "patent_ids": [
+            "CR-10.2458/azlawjet.5507",
+            "CR-10.62311/nesx/68113",
+            "CR-10.63665/ijicsitr.v1i01.05"
+          ],
+          "epistemic": "OBSERVED"
+        },
+        {
+          "type": "mechanism_absent_in_target",
+          "domain": "manufacturing",
+          "epistemic": "ABSENCE_OF_EVIDENCE"
+        }
+      ],
+      "cross_domain_bridge": "NOT_YET_ESTABLISHED — requires mechanistic bridge, not mere similarity",
+      "hypothesis": "Mechanism 'gene editing' from biotechnology may transfer to manufacturing",
+      "prediction": "PENDING — requires mechanistic bridge analysis",
+      "falsifier": "PENDING",
+      "experiment": "PENDING",
+      "confidence": {
+        "mechanistic_coherence": 0,
+        "evidence_strength": 80,
+        "cross_domain_transferability": 50,
+        "prior_art_distance": 0,
+        "falsifiability": 0,
+        "uncertainty": 90
+      },
+      "novelty_status": "UNVERIFIED",
+      "patentability_status": "UNASSESSED",
+      "prior_art_firewall": "ADJACENT_PRIOR_ART",
+      "prior_art_matches": [
+        "CR-10.2458/azlawjet.5507",
+        "CR-10.62311/nesx/68113",
+        "CR-10.63665/ijicsitr.v1i01.05",
+        "CR-10.22541/au.175026437.79607454/v1"
+      ],
+      "prior_art_match_count": 4
+    },
+    {
+      "candidate_id": "CDM3-a34c9a65",
+      "discovery_type": "CROSS_DOMAIN_TRANSFER",
+      "mode": 3,
+      "source_domain": "chemical_processes",
+      "target_domain": "materials",
+      "mechanism": "catalytic mechanism",
+      "source_patents": [
+        "CR-10.58837/chula.sp.2016.67",
+        "CR-10.2174/1874123101812010057",
+        "CR-10.2478/s11696-010-0066-y",
+        "CR-10.9767/bcrec.12.2.775.227-234",
+        "CR-10.1246/bcsj.41.390"
+      ],
+      "countries": [
+        "EU",
+        "US",
+        "XX"
+      ],
+      "evidence": [
+        {
+          "type": "mechanism_present_in_source",
+          "domain": "chemical_processes",
+          "patent_ids": [
+            "CR-10.58837/chula.sp.2016.67",
+            "CR-10.2174/1874123101812010057",
+            "CR-10.2478/s11696-010-0066-y"
+          ],
+          "epistemic": "OBSERVED"
+        },
+        {
+          "type": "mechanism_absent_in_target",
+          "domain": "materials",
+          "epistemic": "ABSENCE_OF_EVIDENCE"
+        }
+      ],
+      "cross_domain_bridge": "NOT_YET_ESTABLISHED — requires mechanistic bridge, not mere similarity",
+      "hypothesis": "Mechanism 'catalytic mechanism' from chemical_processes may transfer to materials",
+      "prediction": "PENDING — requires mechanistic bridge analysis",
+      "falsifier": "PENDING",
+      "experiment": "PENDING",
+      "confidence": {
+        "mechanistic_coherence": 0,
+        "evidence_strength": 120,
+        "cross_domain_transferability": 50,
+        "prior_art_distance": 0,
+        "falsifiability": 0,
+        "uncertainty": 90
+      },
+      "novelty_status": "UNVERIFIED",
+      "patentability_status": "UNASSESSED",
+      "prior_art_firewall": "UNVERIFIED_ABSENCE",
+      "prior_art_match_count": 0
+    },
+    {
+      "candidate_id": "CDM3-f43a6c71",
+      "discovery_type": "CROSS_DOMAIN_TRANSFER",
+      "mode": 3,
+      "source_domain": "chemical_processes",
+      "target_domain": "energy",
+      "mechanism": "deposition process",
+      "source_patents": [
+        "CR-10.2478/s11696-010-0066-y"
+      ],
+      "countries": [
+        "EU",
+        "US",
+        "XX"
+      ],
+      "evidence": [
+        {
+          "type": "mechanism_present_in_source",
+          "domain": "chemical_processes",
+          "patent_ids": [
+            "CR-10.2478/s11696-010-0066-y"
+          ],
+          "epistemic": "OBSERVED"
+        },
+        {
+          "type": "mechanism_absent_in_target",
+          "domain": "energy",
+          "epistemic": "ABSENCE_OF_EVIDENCE"
+        }
+      ],
+      "cross_domain_bridge": "NOT_YET_ESTABLISHED — requires mechanistic bridge, not mere similarity",
+      "hypothesis": "Mechanism 'deposition process' from chemical_processes may transfer to energy",
+      "prediction": "PENDING — requires mechanistic bridge analysis",
+      "falsifier": "PENDING",
+      "experiment": "PENDING",
+      "confidence": {
+        "mechanistic_coherence": 0,
+        "evidence_strength": 20,
+        "cross_domain_transferability": 50,
+        "prior_art_distance": 0,
+        "falsifiability": 0,
+        "uncertainty": 90
+      },
+      "novelty_status": "UNVERIFIED",
+      "patentability_status": "UNASSESSED",
+      "prior_art_firewall": "UNVERIFIED_ABSENCE",
+      "prior_art_match_count": 0
+    },
+    {
+      "candidate_id": "CDM3-177545a4",
+      "discovery_type": "CROSS_DOMAIN_TRANSFER",
+      "mode": 3,
+      "source_domain": "chemical_processes",
+      "target_domain": "energy",
+      "mechanism": "thermal mechanism",
+      "source_patents": [
+        "CR-10.58837/chula.sp.2016.67",
+        "CR-10.9767/bcrec.11.1.424.84-92"
+      ],
+      "countries": [
+        "EU",
+        "US",
+        "XX"
+      ],
+      "evidence": [
+        {
+          "type": "mechanism_present_in_source",
+          "domain": "chemical_processes",
+          "patent_ids": [
+            "CR-10.58837/chula.sp.2016.67",
+            "CR-10.9767/bcrec.11.1.424.84-92"
+          ],
+          "epistemic": "OBSERVED"
+        },
+        {
+          "type": "mechanism_absent_in_target",
+          "domain": "energy",
+          "epistemic": "ABSENCE_OF_EVIDENCE"
+        }
+      ],
+      "cross_domain_bridge": "NOT_YET_ESTABLISHED — requires mechanistic bridge, not mere similarity",
+      "hypothesis": "Mechanism 'thermal mechanism' from chemical_processes may transfer to energy",
+      "prediction": "PENDING — requires mechanistic bridge analysis",
+      "falsifier": "PENDING",
+      "experiment": "PENDING",
+      "confidence": {
+        "mechanistic_coherence": 0,
+        "evidence_strength": 40,
+        "cross_domain_transferability": 50,
+        "prior_art_distance": 0,
+        "falsifiability": 0,
+        "uncertainty": 90
+      },
+      "novelty_status": "UNVERIFIED",
+      "patentability_status": "UNASSESSED",
+      "prior_art_firewall": "ADJACENT_PRIOR_ART",
+      "prior_art_matches": [
+        "CR-10.55529/jaimlnn.11.50.57"
+      ],
+      "prior_art_match_count": 1
+    },
+    {
+      "candidate_id": "CDM3-454c5b57",
+      "discovery_type": "CROSS_DOMAIN_TRANSFER",
+      "mode": 3,
+      "source_domain": "chemical_processes",
+      "target_domain": "energy",
+      "mechanism": "catalytic mechanism",
+      "source_patents": [
+        "CR-10.58837/chula.sp.2016.67",
+        "CR-10.2174/1874123101812010057",
+        "CR-10.2478/s11696-010-0066-y",
+        "CR-10.9767/bcrec.12.2.775.227-234",
+        "CR-10.1246/bcsj.41.390"
+      ],
+      "countries": [
+        "EU",
+        "US",
+        "XX"
+      ],
+      "evidence": [
+        {
+          "type": "mechanism_present_in_source",
+          "domain": "chemical_processes",
+          "patent_ids": [
+            "CR-10.58837/chula.sp.2016.67",
+            "CR-10.2174/1874123101812010057",
+            "CR-10.2478/s11696-010-0066-y"
+          ],
+          "epistemic": "OBSERVED"
+        },
+        {
+          "type": "mechanism_absent_in_target",
+          "domain": "energy",
+          "epistemic": "ABSENCE_OF_EVIDENCE"
+        }
+      ],
+      "cross_domain_bridge": "NOT_YET_ESTABLISHED — requires mechanistic bridge, not mere similarity",
+      "hypothesis": "Mechanism 'catalytic mechanism' from chemical_processes may transfer to energy",
+      "prediction": "PENDING — requires mechanistic bridge analysis",
+      "falsifier": "PENDING",
+      "experiment": "PENDING",
+      "confidence": {
+        "mechanistic_coherence": 0,
+        "evidence_strength": 120,
+        "cross_domain_transferability": 50,
+        "prior_art_distance": 0,
+        "falsifiability": 0,
+        "uncertainty": 90
+      },
+      "novelty_status": "UNVERIFIED",
+      "patentability_status": "UNASSESSED",
+      "prior_art_firewall": "UNVERIFIED_ABSENCE",
+      "prior_art_match_count": 0
+    },
+    {
+      "candidate_id": "CDM3-b3f47dcc",
+      "discovery_type": "CROSS_DOMAIN_TRANSFER",
+      "mode": 3,
+      "source_domain": "chemical_processes",
+      "target_domain": "mechanical_systems",
+      "mechanism": "deposition process",
+      "source_patents": [
+        "CR-10.2478/s11696-010-0066-y"
+      ],
+      "countries": [
+        "EU",
+        "US",
+        "XX"
+      ],
+      "evidence": [
+        {
+          "type": "mechanism_present_in_source",
+          "domain": "chemical_processes",
+          "patent_ids": [
+            "CR-10.2478/s11696-010-0066-y"
+          ],
+          "epistemic": "OBSERVED"
+        },
+        {
+          "type": "mechanism_absent_in_target",
+          "domain": "mechanical_systems",
+          "epistemic": "ABSENCE_OF_EVIDENCE"
+        }
+      ],
+      "cross_domain_bridge": "NOT_YET_ESTABLISHED — requires mechanistic bridge, not mere similarity",
+      "hypothesis": "Mechanism 'deposition process' from chemical_processes may transfer to mechanical_systems",
+      "prediction": "PENDING — requires mechanistic bridge analysis",
+      "falsifier": "PENDING",
+      "experiment": "PENDING",
+      "confidence": {
+        "mechanistic_coherence": 0,
+        "evidence_strength": 20,
+        "cross_domain_transferability": 50,
+        "prior_art_distance": 0,
+        "falsifiability": 0,
+        "uncertainty": 90
+      },
+      "novelty_status": "UNVERIFIED",
+      "patentability_status": "UNASSESSED",
+      "prior_art_firewall": "UNVERIFIED_ABSENCE",
+      "prior_art_match_count": 0
+    },
+    {
+      "candidate_id": "CDM3-b7a87279",
+      "discovery_type": "CROSS_DOMAIN_TRANSFER",
+      "mode": 3,
+      "source_domain": "chemical_processes",
+      "target_domain": "mechanical_systems",
+      "mechanism": "thermal mechanism",
+      "source_patents": [
+        "CR-10.58837/chula.sp.2016.67",
+        "CR-10.9767/bcrec.11.1.424.84-92"
+      ],
+      "countries": [
+        "EU",
+        "US",
+        "XX"
+      ],
+      "evidence": [
+        {
+          "type": "mechanism_present_in_source",
+          "domain": "chemical_processes",
+          "patent_ids": [
+            "CR-10.58837/chula.sp.2016.67",
+            "CR-10.9767/bcrec.11.1.424.84-92"
+          ],
+          "epistemic": "OBSERVED"
+        },
+        {
+          "type": "mechanism_absent_in_target",
+          "domain": "mechanical_systems",
+          "epistemic": "ABSENCE_OF_EVIDENCE"
+        }
+      ],
+      "cross_domain_bridge": "NOT_YET_ESTABLISHED — requires mechanistic bridge, not mere similarity",
+      "hypothesis": "Mechanism 'thermal mechanism' from chemical_processes may transfer to mechanical_systems",
+      "prediction": "PENDING — requires mechanistic bridge analysis",
+      "falsifier": "PENDING",
+      "experiment": "PENDING",
+      "confidence": {
+        "mechanistic_coherence": 0,
+        "evidence_strength": 40,
+        "cross_domain_transferability": 50,
+        "prior_art_distance": 0,
+        "falsifiability": 0,
+        "uncertainty": 90
+      },
+      "novelty_status": "UNVERIFIED",
+      "patentability_status": "UNASSESSED",
+      "prior_art_firewall": "ADJACENT_PRIOR_ART",
+      "prior_art_matches": [
+        "CR-10.55529/jaimlnn.11.50.57"
+      ],
+      "prior_art_match_count": 1
+    },
+    {
+      "candidate_id": "CDM3-a8c3ba51",
+      "discovery_type": "CROSS_DOMAIN_TRANSFER",
+      "mode": 3,
+      "source_domain": "chemical_processes",
+      "target_domain": "mechanical_systems",
+      "mechanism": "catalytic mechanism",
+      "source_patents": [
+        "CR-10.58837/chula.sp.2016.67",
+        "CR-10.2174/1874123101812010057",
+        "CR-10.2478/s11696-010-0066-y",
+        "CR-10.9767/bcrec.12.2.775.227-234",
+        "CR-10.1246/bcsj.41.390"
+      ],
+      "countries": [
+        "EU",
+        "US",
+        "XX"
+      ],
+      "evidence": [
+        {
+          "type": "mechanism_present_in_source",
+          "domain": "chemical_processes",
+          "patent_ids": [
+            "CR-10.58837/chula.sp.2016.67",
+            "CR-10.2174/1874123101812010057",
+            "CR-10.2478/s11696-010-0066-y"
+          ],
+          "epistemic": "OBSERVED"
+        },
+        {
+          "type": "mechanism_absent_in_target",
+          "domain": "mechanical_systems",
+          "epistemic": "ABSENCE_OF_EVIDENCE"
+        }
+      ],
+      "cross_domain_bridge": "NOT_YET_ESTABLISHED — requires mechanistic bridge, not mere similarity",
+      "hypothesis": "Mechanism 'catalytic mechanism' from chemical_processes may transfer to mechanical_systems",
+      "prediction": "PENDING — requires mechanistic bridge analysis",
+      "falsifier": "PENDING",
+      "experiment": "PENDING",
+      "confidence": {
+        "mechanistic_coherence": 0,
+        "evidence_strength": 120,
+        "cross_domain_transferability": 50,
+        "prior_art_distance": 0,
+        "falsifiability": 0,
+        "uncertainty": 90
+      },
+      "novelty_status": "UNVERIFIED",
+      "patentability_status": "UNASSESSED",
+      "prior_art_firewall": "UNVERIFIED_ABSENCE",
+      "prior_art_match_count": 0
+    },
+    {
+      "candidate_id": "CDM3-f4acb7f4",
+      "discovery_type": "CROSS_DOMAIN_TRANSFER",
+      "mode": 3,
+      "source_domain": "chemical_processes",
+      "target_domain": "computing_ai",
+      "mechanism": "deposition process",
+      "source_patents": [
+        "CR-10.2478/s11696-010-0066-y"
+      ],
+      "countries": [
+        "EU",
+        "US",
+        "XX"
+      ],
+      "evidence": [
+        {
+          "type": "mechanism_present_in_source",
+          "domain": "chemical_processes",
+          "patent_ids": [
+            "CR-10.2478/s11696-010-0066-y"
+          ],
+          "epistemic": "OBSERVED"
+        },
+        {
+          "type": "mechanism_absent_in_target",
+          "domain": "computing_ai",
+          "epistemic": "ABSENCE_OF_EVIDENCE"
+        }
+      ],
+      "cross_domain_bridge": "NOT_YET_ESTABLISHED — requires mechanistic bridge, not mere similarity",
+      "hypothesis": "Mechanism 'deposition process' from chemical_processes may transfer to computing_ai",
+      "prediction": "PENDING — requires mechanistic bridge analysis",
+      "falsifier": "PENDING",
+      "experiment": "PENDING",
+      "confidence": {
+        "mechanistic_coherence": 0,
+        "evidence_strength": 20,
+        "cross_domain_transferability": 50,
+        "prior_art_distance": 0,
+        "falsifiability": 0,
+        "uncertainty": 90
+      },
+      "novelty_status": "UNVERIFIED",
+      "patentability_status": "UNASSESSED",
+      "prior_art_firewall": "UNVERIFIED_ABSENCE",
+      "prior_art_match_count": 0
+    },
+    {
+      "candidate_id": "CDM3-30eb6cd9",
+      "discovery_type": "CROSS_DOMAIN_TRANSFER",
+      "mode": 3,
+      "source_domain": "chemical_processes",
+      "target_domain": "computing_ai",
+      "mechanism": "catalytic mechanism",
+      "source_patents": [
+        "CR-10.58837/chula.sp.2016.67",
+        "CR-10.2174/1874123101812010057",
+        "CR-10.2478/s11696-010-0066-y",
+        "CR-10.9767/bcrec.12.2.775.227-234",
+        "CR-10.1246/bcsj.41.390"
+      ],
+      "countries": [
+        "EU",
+        "US",
+        "XX"
+      ],
+      "evidence": [
+        {
+          "type": "mechanism_present_in_source",
+          "domain": "chemical_processes",
+          "patent_ids": [
+            "CR-10.58837/chula.sp.2016.67",
+            "CR-10.2174/1874123101812010057",
+            "CR-10.2478/s11696-010-0066-y"
+          ],
+          "epistemic": "OBSERVED"
+        },
+        {
+          "type": "mechanism_absent_in_target",
+          "domain": "computing_ai",
+          "epistemic": "ABSENCE_OF_EVIDENCE"
+        }
+      ],
+      "cross_domain_bridge": "NOT_YET_ESTABLISHED — requires mechanistic bridge, not mere similarity",
+      "hypothesis": "Mechanism 'catalytic mechanism' from chemical_processes may transfer to computing_ai",
+      "prediction": "PENDING — requires mechanistic bridge analysis",
+      "falsifier": "PENDING",
+      "experiment": "PENDING",
+      "confidence": {
+        "mechanistic_coherence": 0,
+        "evidence_strength": 120,
+        "cross_domain_transferability": 50,
+        "prior_art_distance": 0,
+        "falsifiability": 0,
+        "uncertainty": 90
+      },
+      "novelty_status": "UNVERIFIED",
+      "patentability_status": "UNASSESSED",
+      "prior_art_firewall": "UNVERIFIED_ABSENCE",
+      "prior_art_match_count": 0
+    },
+    {
+      "candidate_id": "CDM3-5fd86932",
+      "discovery_type": "CROSS_DOMAIN_TRANSFER",
+      "mode": 3,
+      "source_domain": "chemical_processes",
+      "target_domain": "manufacturing",
+      "mechanism": "catalytic mechanism",
+      "source_patents": [
+        "CR-10.58837/chula.sp.2016.67",
+        "CR-10.2174/1874123101812010057",
+        "CR-10.2478/s11696-010-0066-y",
+        "CR-10.9767/bcrec.12.2.775.227-234",
+        "CR-10.1246/bcsj.41.390"
+      ],
+      "countries": [
+        "EU",
+        "US",
+        "XX"
+      ],
+      "evidence": [
+        {
+          "type": "mechanism_present_in_source",
+          "domain": "chemical_processes",
+          "patent_ids": [
+            "CR-10.58837/chula.sp.2016.67",
+            "CR-10.2174/1874123101812010057",
+            "CR-10.2478/s11696-010-0066-y"
+          ],
+          "epistemic": "OBSERVED"
+        },
+        {
+          "type": "mechanism_absent_in_target",
+          "domain": "manufacturing",
+          "epistemic": "ABSENCE_OF_EVIDENCE"
+        }
+      ],
+      "cross_domain_bridge": "NOT_YET_ESTABLISHED — requires mechanistic bridge, not mere similarity",
+      "hypothesis": "Mechanism 'catalytic mechanism' from chemical_processes may transfer to manufacturing",
+      "prediction": "PENDING — requires mechanistic bridge analysis",
+      "falsifier": "PENDING",
+      "experiment": "PENDING",
+      "confidence": {
+        "mechanistic_coherence": 0,
+        "evidence_strength": 120,
+        "cross_domain_transferability": 50,
+        "prior_art_distance": 0,
+        "falsifiability": 0,
+        "uncertainty": 90
+      },
+      "novelty_status": "UNVERIFIED",
+      "patentability_status": "UNASSESSED",
+      "prior_art_firewall": "UNVERIFIED_ABSENCE",
+      "prior_art_match_count": 0
+    },
+    {
+      "candidate_id": "CDM3-6435cffd",
+      "discovery_type": "CROSS_DOMAIN_TRANSFER",
+      "mode": 3,
+      "source_domain": "manufacturing",
+      "target_domain": "materials",
+      "mechanism": "additive manufacturing",
+      "source_patents": [
+        "CR-10.31219/osf.io/yhbu6",
+        "CR-10.1089/3dp.2024.0023",
+        "CR-10.1089/3dp.2021.0023",
+        "CR-10.1089/3dp.2021.0189",
+        "CR-10.1089/3dp.2017.0001"
+      ],
+      "countries": [
+        "US",
+        "XX"
+      ],
+      "evidence": [
+        {
+          "type": "mechanism_present_in_source",
+          "domain": "manufacturing",
+          "patent_ids": [
+            "CR-10.31219/osf.io/yhbu6",
+            "CR-10.1089/3dp.2024.0023",
+            "CR-10.1089/3dp.2021.0023"
+          ],
+          "epistemic": "OBSERVED"
+        },
+        {
+          "type": "mechanism_absent_in_target",
+          "domain": "materials",
+          "epistemic": "ABSENCE_OF_EVIDENCE"
+        }
+      ],
+      "cross_domain_bridge": "NOT_YET_ESTABLISHED — requires mechanistic bridge, not mere similarity",
+      "hypothesis": "Mechanism 'additive manufacturing' from manufacturing may transfer to materials",
+      "prediction": "PENDING — requires mechanistic bridge analysis",
+      "falsifier": "PENDING",
+      "experiment": "PENDING",
+      "confidence": {
+        "mechanistic_coherence": 0,
+        "evidence_strength": 180,
+        "cross_domain_transferability": 50,
+        "prior_art_distance": 0,
+        "falsifiability": 0,
+        "uncertainty": 90
+      },
+      "novelty_status": "UNVERIFIED",
+      "patentability_status": "UNASSESSED",
+      "prior_art_firewall": "ADJACENT_PRIOR_ART",
+      "prior_art_matches": [
+        "CR-10.31219/osf.io/yhbu6",
+        "CR-10.1089/3dp.2024.0023",
+        "CR-10.1089/3dp.2021.0023",
+        "CR-10.1089/3dp.2021.0189",
+        "CR-10.1089/3dp.2017.0001"
+      ],
+      "prior_art_match_count": 9
+    },
+    {
+      "candidate_id": "CDM3-93fc2b9b",
+      "discovery_type": "CROSS_DOMAIN_TRANSFER",
+      "mode": 3,
+      "source_domain": "manufacturing",
+      "target_domain": "mechanical_systems",
+      "mechanism": "deposition process",
+      "source_patents": [
+        "CR-10.1089/3dp.2023.0182",
+        "CR-10.1089/3dp.2017.0001"
+      ],
+      "countries": [
+        "US",
+        "XX"
+      ],
+      "evidence": [
+        {
+          "type": "mechanism_present_in_source",
+          "domain": "manufacturing",
+          "patent_ids": [
+            "CR-10.1089/3dp.2023.0182",
+            "CR-10.1089/3dp.2017.0001"
+          ],
+          "epistemic": "OBSERVED"
+        },
+        {
+          "type": "mechanism_absent_in_target",
+          "domain": "mechanical_systems",
+          "epistemic": "ABSENCE_OF_EVIDENCE"
+        }
+      ],
+      "cross_domain_bridge": "NOT_YET_ESTABLISHED — requires mechanistic bridge, not mere similarity",
+      "hypothesis": "Mechanism 'deposition process' from manufacturing may transfer to mechanical_systems",
+      "prediction": "PENDING — requires mechanistic bridge analysis",
+      "falsifier": "PENDING",
+      "experiment": "PENDING",
+      "confidence": {
+        "mechanistic_coherence": 0,
+        "evidence_strength": 40,
+        "cross_domain_transferability": 50,
+        "prior_art_distance": 0,
+        "falsifiability": 0,
+        "uncertainty": 90
+      },
+      "novelty_status": "UNVERIFIED",
+      "patentability_status": "UNASSESSED",
+      "prior_art_firewall": "UNVERIFIED_ABSENCE",
+      "prior_art_match_count": 0
+    },
+    {
+      "candidate_id": "CDM3-f5cb2197",
+      "discovery_type": "CROSS_DOMAIN_TRANSFER",
+      "mode": 3,
+      "source_domain": "manufacturing",
+      "target_domain": "mechanical_systems",
+      "mechanism": "additive manufacturing",
+      "source_patents": [
+        "CR-10.31219/osf.io/yhbu6",
+        "CR-10.1089/3dp.2024.0023",
+        "CR-10.1089/3dp.2021.0023",
+        "CR-10.1089/3dp.2021.0189",
+        "CR-10.1089/3dp.2017.0001"
+      ],
+      "countries": [
+        "US",
+        "XX"
+      ],
+      "evidence": [
+        {
+          "type": "mechanism_present_in_source",
+          "domain": "manufacturing",
+          "patent_ids": [
+            "CR-10.31219/osf.io/yhbu6",
+            "CR-10.1089/3dp.2024.0023",
+            "CR-10.1089/3dp.2021.0023"
+          ],
+          "epistemic": "OBSERVED"
+        },
+        {
+          "type": "mechanism_absent_in_target",
+          "domain": "mechanical_systems",
+          "epistemic": "ABSENCE_OF_EVIDENCE"
+        }
+      ],
+      "cross_domain_bridge": "NOT_YET_ESTABLISHED — requires mechanistic bridge, not mere similarity",
+      "hypothesis": "Mechanism 'additive manufacturing' from manufacturing may transfer to mechanical_systems",
+      "prediction": "PENDING — requires mechanistic bridge analysis",
+      "falsifier": "PENDING",
+      "experiment": "PENDING",
+      "confidence": {
+        "mechanistic_coherence": 0,
+        "evidence_strength": 180,
+        "cross_domain_transferability": 50,
+        "prior_art_distance": 0,
+        "falsifiability": 0,
+        "uncertainty": 90
+      },
+      "novelty_status": "UNVERIFIED",
+      "patentability_status": "UNASSESSED",
+      "prior_art_firewall": "ADJACENT_PRIOR_ART",
+      "prior_art_matches": [
+        "CR-10.31219/osf.io/yhbu6",
+        "CR-10.1089/3dp.2024.0023",
+        "CR-10.1089/3dp.2021.0023",
+        "CR-10.1089/3dp.2021.0189",
+        "CR-10.1089/3dp.2017.0001"
+      ],
+      "prior_art_match_count": 9
+    },
+    {
+      "candidate_id": "CDM3-2d5444f6",
+      "discovery_type": "CROSS_DOMAIN_TRANSFER",
+      "mode": 3,
+      "source_domain": "manufacturing",
+      "target_domain": "mechanical_systems",
+      "mechanism": "thermal mechanism",
+      "source_patents": [
+        "CR-10.1089/3dp.2020.0175"
+      ],
+      "countries": [
+        "US",
+        "XX"
+      ],
+      "evidence": [
+        {
+          "type": "mechanism_present_in_source",
+          "domain": "manufacturing",
+          "patent_ids": [
+            "CR-10.1089/3dp.2020.0175"
+          ],
+          "epistemic": "OBSERVED"
+        },
+        {
+          "type": "mechanism_absent_in_target",
+          "domain": "mechanical_systems",
+          "epistemic": "ABSENCE_OF_EVIDENCE"
+        }
+      ],
+      "cross_domain_bridge": "NOT_YET_ESTABLISHED — requires mechanistic bridge, not mere similarity",
+      "hypothesis": "Mechanism 'thermal mechanism' from manufacturing may transfer to mechanical_systems",
+      "prediction": "PENDING — requires mechanistic bridge analysis",
+      "falsifier": "PENDING",
+      "experiment": "PENDING",
+      "confidence": {
+        "mechanistic_coherence": 0,
+        "evidence_strength": 20,
+        "cross_domain_transferability": 50,
+        "prior_art_distance": 0,
+        "falsifiability": 0,
+        "uncertainty": 90
+      },
+      "novelty_status": "UNVERIFIED",
+      "patentability_status": "UNASSESSED",
+      "prior_art_firewall": "ADJACENT_PRIOR_ART",
+      "prior_art_matches": [
+        "CR-10.55529/jaimlnn.11.50.57"
+      ],
+      "prior_art_match_count": 1
+    },
+    {
+      "candidate_id": "CDM5-b2abd59d",
+      "discovery_type": "PERFORMANCE_ANOMALY",
+      "mode": 5,
+      "technology_domain": "materials",
+      "source_patents": [
+        "CR-10.58837/chula.the.2008.1594",
+        "CR-10.1177/0021998320968908"
+      ],
+      "evidence": [
+        {
+          "type": "same_domain_different_approach",
+          "patent_id": "CR-10.58837/chula.the.2008.1594",
+          "title": "Immobilization of horseradish peroxidase in mesoporous silica/silver nanoparticl",
+          "epistemic": "OBSERVED"
+        },
+        {
+          "type": "same_domain_different_approach",
+          "patent_id": "CR-10.1177/0021998320968908",
+          "title": "Silver nanoparticle modified carbon fiber-reinforced polymer material for resist",
+          "epistemic": "OBSERVED"
+        }
+      ],
+      "hypothesis": "Performance difference between CR-10.58837/chula.the.2008.1594 and CR-10.1177/0021998320968908 in materials may indicate an unexplored mechanism",
+      "prediction": "PENDING — requires quantitative metric extraction",
+      "falsifier": "PENDING",
+      "experiment": "PENDING",
+      "confidence": {
+        "evidence_strength": 30,
+        "unexplained_anomaly": 50,
+        "uncertainty": 95
+      },
+      "novelty_status": "UNVERIFIED",
+      "patentability_status": "UNASSESSED",
+      "prior_art_firewall": "SKIPPED — no mechanism to check"
+    },
+    {
+      "candidate_id": "CDM5-d22ed159",
+      "discovery_type": "PERFORMANCE_ANOMALY",
+      "mode": 5,
+      "technology_domain": "mechanical_systems",
+      "source_patents": [
+        "CR-10.1115/detc2019-97802",
+        "CR-10.4028/www.scientific.net/amr.658.298"
+      ],
+      "evidence": [
+        {
+          "type": "same_domain_different_approach",
+          "patent_id": "CR-10.1115/detc2019-97802",
+          "title": "Hypocycloid Gear Mechanism Versus Slider-Crank Mechanism in Engines",
+          "epistemic": "OBSERVED"
+        },
+        {
+          "type": "same_domain_different_approach",
+          "patent_id": "CR-10.4028/www.scientific.net/amr.658.298",
+          "title": "A Myoelectric Controlled Prosthetic Hand Modelling and its Transmission Mechanis",
+          "epistemic": "OBSERVED"
+        }
+      ],
+      "hypothesis": "Performance difference between CR-10.1115/detc2019-97802 and CR-10.4028/www.scientific.net/amr.658.298 in mechanical_systems may indicate an unexplored mechanism",
+      "prediction": "PENDING — requires quantitative metric extraction",
+      "falsifier": "PENDING",
+      "experiment": "PENDING",
+      "confidence": {
+        "evidence_strength": 30,
+        "unexplained_anomaly": 50,
+        "uncertainty": 95
+      },
+      "novelty_status": "UNVERIFIED",
+      "patentability_status": "UNASSESSED",
+      "prior_art_firewall": "SKIPPED — no mechanism to check"
+    },
+    {
+      "candidate_id": "CDM5-8775f57b",
+      "discovery_type": "PERFORMANCE_ANOMALY",
+      "mode": 5,
+      "technology_domain": "computing_ai",
+      "source_patents": [
+        "CR-10.33140/amlai.03.02.04",
+        "CR-10.55529/jaimlnn.42.1.13"
+      ],
+      "evidence": [
+        {
+          "type": "same_domain_different_approach",
+          "patent_id": "CR-10.33140/amlai.03.02.04",
+          "title": "Straight Forward Constructive Deep Learning Neural Network (SFC-DLNN) Algorithm",
+          "epistemic": "OBSERVED"
+        },
+        {
+          "type": "same_domain_different_approach",
+          "patent_id": "CR-10.55529/jaimlnn.42.1.13",
+          "title": "Fruits Leaf Disease Detection Using Convolutional Neural Network",
+          "epistemic": "OBSERVED"
+        }
+      ],
+      "hypothesis": "Performance difference between CR-10.33140/amlai.03.02.04 and CR-10.55529/jaimlnn.42.1.13 in computing_ai may indicate an unexplored mechanism",
+      "prediction": "PENDING — requires quantitative metric extraction",
+      "falsifier": "PENDING",
+      "experiment": "PENDING",
+      "confidence": {
+        "evidence_strength": 30,
+        "unexplained_anomaly": 50,
+        "uncertainty": 95
+      },
+      "novelty_status": "UNVERIFIED",
+      "patentability_status": "UNASSESSED",
+      "prior_art_firewall": "SKIPPED — no mechanism to check"
+    },
+    {
+      "candidate_id": "CDM5-d239fae0",
+      "discovery_type": "PERFORMANCE_ANOMALY",
+      "mode": 5,
+      "technology_domain": "biotechnology",
+      "source_patents": [
+        "CR-10.2458/azlawjet.5507",
+        "CR-10.22541/au.175026437.79607454/v1"
+      ],
+      "evidence": [
+        {
+          "type": "same_domain_different_approach",
+          "patent_id": "CR-10.2458/azlawjet.5507",
+          "title": "Extraterritorial Patent Infringement: Gene Editing with CRISPR-Cas Perspective",
+          "epistemic": "OBSERVED"
+        },
+        {
+          "type": "same_domain_different_approach",
+          "patent_id": "CR-10.22541/au.175026437.79607454/v1",
+          "title": "Remote-Controlled Gene Editing: Integrating Electrogenetics with CRISPR for Prec",
+          "epistemic": "OBSERVED"
+        }
+      ],
+      "hypothesis": "Performance difference between CR-10.2458/azlawjet.5507 and CR-10.22541/au.175026437.79607454/v1 in biotechnology may indicate an unexplored mechanism",
+      "prediction": "PENDING — requires quantitative metric extraction",
+      "falsifier": "PENDING",
+      "experiment": "PENDING",
+      "confidence": {
+        "evidence_strength": 30,
+        "unexplained_anomaly": 50,
+        "uncertainty": 95
+      },
+      "novelty_status": "UNVERIFIED",
+      "patentability_status": "UNASSESSED",
+      "prior_art_firewall": "SKIPPED — no mechanism to check"
+    },
+    {
+      "candidate_id": "CDM5-69534c18",
+      "discovery_type": "PERFORMANCE_ANOMALY",
+      "mode": 5,
+      "technology_domain": "chemical_processes",
+      "source_patents": [
+        "CR-10.58837/chula.sp.2016.67",
+        "CR-10.1002/jccs.201300622"
+      ],
+      "evidence": [
+        {
+          "type": "same_domain_different_approach",
+          "patent_id": "CR-10.58837/chula.sp.2016.67",
+          "title": "Synthesis of Transition Metal-Titanosilicate Catalyst for Oxidation Reaction",
+          "epistemic": "OBSERVED"
+        },
+        {
+          "type": "same_domain_different_approach",
+          "patent_id": "CR-10.1002/jccs.201300622",
+          "title": "A Magnetically Separable Catalyst for Synthesis of 1‐Phenoxy‐2‐propanol Via Atom",
+          "epistemic": "OBSERVED"
+        }
+      ],
+      "hypothesis": "Performance difference between CR-10.58837/chula.sp.2016.67 and CR-10.1002/jccs.201300622 in chemical_processes may indicate an unexplored mechanism",
+      "prediction": "PENDING — requires quantitative metric extraction",
+      "falsifier": "PENDING",
+      "experiment": "PENDING",
+      "confidence": {
+        "evidence_strength": 30,
+        "unexplained_anomaly": 50,
+        "uncertainty": 95
+      },
+      "novelty_status": "UNVERIFIED",
+      "patentability_status": "UNASSESSED",
+      "prior_art_firewall": "SKIPPED — no mechanism to check"
+    },
+    {
+      "candidate_id": "CDM5-fb777e12",
+      "discovery_type": "PERFORMANCE_ANOMALY",
+      "mode": 5,
+      "technology_domain": "manufacturing",
+      "source_patents": [
+        "CR-10.1089/3dp.2023.0182",
+        "CR-10.1089/3dp.2022.0100"
+      ],
+      "evidence": [
+        {
+          "type": "same_domain_different_approach",
+          "patent_id": "CR-10.1089/3dp.2023.0182",
+          "title": "3D Modeling Optimization with Artificial Intelligence",
+          "epistemic": "OBSERVED"
+        },
+        {
+          "type": "same_domain_different_approach",
+          "patent_id": "CR-10.1089/3dp.2022.0100",
+          "title": "3D Printing onto Textiles: A Systematic Analysis of the Adhesion Studies",
+          "epistemic": "OBSERVED"
+        }
+      ],
+      "hypothesis": "Performance difference between CR-10.1089/3dp.2023.0182 and CR-10.1089/3dp.2022.0100 in manufacturing may indicate an unexplored mechanism",
+      "prediction": "PENDING — requires quantitative metric extraction",
+      "falsifier": "PENDING",
+      "experiment": "PENDING",
+      "confidence": {
+        "evidence_strength": 30,
+        "unexplained_anomaly": 50,
+        "uncertainty": 95
+      },
+      "novelty_status": "UNVERIFIED",
+      "patentability_status": "UNASSESSED",
+      "prior_art_firewall": "SKIPPED — no mechanism to check"
+    },
+    {
+      "candidate_id": "CDM10-f3b5c1c8",
+      "discovery_type": "THREE_COUNTRY_ASYMMETRY",
+      "mode": 10,
+      "technology_domain": "materials",
+      "asymmetry_type": "XX_heavy",
+      "counts": {
+        "US": 12,
+        "EU": 4,
+        "CN": 0,
+        "XX": 47,
+        "IN": 0
+      },
+      "evidence": [
+        {
+          "type": "country_distribution",
+          "domain": "materials",
+          "counts": {
+            "US": 12,
+            "EU": 4,
+            "CN": 0,
+            "XX": 47,
+            "IN": 0
+          },
+          "epistemic": "OBSERVED"
+        },
+        {
+          "type": "absence_in",
+          "countries": [
+            "CN",
+            "IN"
+          ],
+          "epistemic": "ABSENCE_OF_EVIDENCE"
+        }
+      ],
+      "hypothesis": "materials shows heavy XX representation with absence in ['CN', 'IN']",
+      "novelty_status": "ABSENCE_OF_EVIDENCE",
+      "patentability_status": "UNASSESSED",
+      "prior_art_firewall": "SKIPPED — no mechanism to check",
+      "caveat": "Absence may result from database coverage, terminology, or search limitations — NOT novelty"
+    },
+    {
+      "candidate_id": "CDM10-b2308f61",
+      "discovery_type": "THREE_COUNTRY_ASYMMETRY",
+      "mode": 10,
+      "technology_domain": "energy",
+      "asymmetry_type": "XX_heavy",
+      "counts": {
+        "US": 14,
+        "EU": 3,
+        "CN": 0,
+        "XX": 46,
+        "IN": 0
+      },
+      "evidence": [
+        {
+          "type": "country_distribution",
+          "domain": "energy",
+          "counts": {
+            "US": 14,
+            "EU": 3,
+            "CN": 0,
+            "XX": 46,
+            "IN": 0
+          },
+          "epistemic": "OBSERVED"
+        },
+        {
+          "type": "absence_in",
+          "countries": [
+            "CN",
+            "IN"
+          ],
+          "epistemic": "ABSENCE_OF_EVIDENCE"
+        }
+      ],
+      "hypothesis": "energy shows heavy XX representation with absence in ['CN', 'IN']",
+      "novelty_status": "ABSENCE_OF_EVIDENCE",
+      "patentability_status": "UNASSESSED",
+      "prior_art_firewall": "SKIPPED — no mechanism to check",
+      "caveat": "Absence may result from database coverage, terminology, or search limitations — NOT novelty"
+    },
+    {
+      "candidate_id": "CDM10-adbbd499",
+      "discovery_type": "THREE_COUNTRY_ASYMMETRY",
+      "mode": 10,
+      "technology_domain": "mechanical_systems",
+      "asymmetry_type": "US_heavy",
+      "counts": {
+        "US": 33,
+        "EU": 7,
+        "CN": 0,
+        "XX": 23,
+        "IN": 0
+      },
+      "evidence": [
+        {
+          "type": "country_distribution",
+          "domain": "mechanical_systems",
+          "counts": {
+            "US": 33,
+            "EU": 7,
+            "CN": 0,
+            "XX": 23,
+            "IN": 0
+          },
+          "epistemic": "OBSERVED"
+        },
+        {
+          "type": "absence_in",
+          "countries": [
+            "CN",
+            "IN"
+          ],
+          "epistemic": "ABSENCE_OF_EVIDENCE"
+        }
+      ],
+      "hypothesis": "mechanical_systems shows heavy US representation with absence in ['CN', 'IN']",
+      "novelty_status": "ABSENCE_OF_EVIDENCE",
+      "patentability_status": "UNASSESSED",
+      "prior_art_firewall": "SKIPPED — no mechanism to check",
+      "caveat": "Absence may result from database coverage, terminology, or search limitations — NOT novelty"
+    },
+    {
+      "candidate_id": "CDM10-bfa6921d",
+      "discovery_type": "THREE_COUNTRY_ASYMMETRY",
+      "mode": 10,
+      "technology_domain": "electronics",
+      "asymmetry_type": "US_heavy",
+      "counts": {
+        "US": 50,
+        "EU": 5,
+        "CN": 0,
+        "XX": 8,
+        "IN": 0
+      },
+      "evidence": [
+        {
+          "type": "country_distribution",
+          "domain": "electronics",
+          "counts": {
+            "US": 50,
+            "EU": 5,
+            "CN": 0,
+            "XX": 8,
+            "IN": 0
+          },
+          "epistemic": "OBSERVED"
+        },
+        {
+          "type": "absence_in",
+          "countries": [
+            "CN",
+            "IN"
+          ],
+          "epistemic": "ABSENCE_OF_EVIDENCE"
+        }
+      ],
+      "hypothesis": "electronics shows heavy US representation with absence in ['CN', 'IN']",
+      "novelty_status": "ABSENCE_OF_EVIDENCE",
+      "patentability_status": "UNASSESSED",
+      "prior_art_firewall": "SKIPPED — no mechanism to check",
+      "caveat": "Absence may result from database coverage, terminology, or search limitations — NOT novelty"
+    },
+    {
+      "candidate_id": "CDM10-260b2589",
+      "discovery_type": "THREE_COUNTRY_ASYMMETRY",
+      "mode": 10,
+      "technology_domain": "computing_ai",
+      "asymmetry_type": "XX_heavy",
+      "counts": {
+        "US": 4,
+        "EU": 4,
+        "CN": 1,
+        "XX": 54,
+        "IN": 0
+      },
+      "evidence": [
+        {
+          "type": "country_distribution",
+          "domain": "computing_ai",
+          "counts": {
+            "US": 4,
+            "EU": 4,
+            "CN": 1,
+            "XX": 54,
+            "IN": 0
+          },
+          "epistemic": "OBSERVED"
+        },
+        {
+          "type": "absence_in",
+          "countries": [
+            "IN"
+          ],
+          "epistemic": "ABSENCE_OF_EVIDENCE"
+        }
+      ],
+      "hypothesis": "computing_ai shows heavy XX representation with absence in ['IN']",
+      "novelty_status": "ABSENCE_OF_EVIDENCE",
+      "patentability_status": "UNASSESSED",
+      "prior_art_firewall": "SKIPPED — no mechanism to check",
+      "caveat": "Absence may result from database coverage, terminology, or search limitations — NOT novelty"
+    },
+    {
+      "candidate_id": "CDM10-4b477700",
+      "discovery_type": "THREE_COUNTRY_ASYMMETRY",
+      "mode": 10,
+      "technology_domain": "biotechnology",
+      "asymmetry_type": "XX_heavy",
+      "counts": {
+        "US": 5,
+        "EU": 10,
+        "CN": 0,
+        "XX": 48,
+        "IN": 0
+      },
+      "evidence": [
+        {
+          "type": "country_distribution",
+          "domain": "biotechnology",
+          "counts": {
+            "US": 5,
+            "EU": 10,
+            "CN": 0,
+            "XX": 48,
+            "IN": 0
+          },
+          "epistemic": "OBSERVED"
+        },
+        {
+          "type": "absence_in",
+          "countries": [
+            "CN",
+            "IN"
+          ],
+          "epistemic": "ABSENCE_OF_EVIDENCE"
+        }
+      ],
+      "hypothesis": "biotechnology shows heavy XX representation with absence in ['CN', 'IN']",
+      "novelty_status": "ABSENCE_OF_EVIDENCE",
+      "patentability_status": "UNASSESSED",
+      "prior_art_firewall": "SKIPPED — no mechanism to check",
+      "caveat": "Absence may result from database coverage, terminology, or search limitations — NOT novelty"
+    },
+    {
+      "candidate_id": "CDM10-23b24cd7",
+      "discovery_type": "THREE_COUNTRY_ASYMMETRY",
+      "mode": 10,
+      "technology_domain": "manufacturing",
+      "asymmetry_type": "XX_heavy",
+      "counts": {
+        "US": 1,
+        "EU": 0,
+        "CN": 0,
+        "XX": 62,
+        "IN": 0
+      },
+      "evidence": [
+        {
+          "type": "country_distribution",
+          "domain": "manufacturing",
+          "counts": {
+            "US": 1,
+            "EU": 0,
+            "CN": 0,
+            "XX": 62,
+            "IN": 0
+          },
+          "epistemic": "OBSERVED"
+        },
+        {
+          "type": "absence_in",
+          "countries": [
+            "EU",
+            "CN",
+            "IN"
+          ],
+          "epistemic": "ABSENCE_OF_EVIDENCE"
+        }
+      ],
+      "hypothesis": "manufacturing shows heavy XX representation with absence in ['EU', 'CN', 'IN']",
+      "novelty_status": "ABSENCE_OF_EVIDENCE",
+      "patentability_status": "UNASSESSED",
+      "prior_art_firewall": "SKIPPED — no mechanism to check",
+      "caveat": "Absence may result from database coverage, terminology, or search limitations — NOT novelty"
+    }
+  ]
+}

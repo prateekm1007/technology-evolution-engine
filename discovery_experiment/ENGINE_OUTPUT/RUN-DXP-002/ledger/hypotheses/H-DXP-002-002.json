@@ -1,0 +1,33 @@
+{
+  "hypothesis_id": "H-DXP-002-002",
+  "claim": "Directional transport is achieved through asymmetric droplet coalescence events that preferentially occur in specific directions",
+  "mechanism": "The microstructured surface creates conditions where droplet coalescence events are more likely to occur in one direction than another, with each coalescence event providing a small directional push that accumulates to drive transport",
+  "evidence": [
+    "Droplet coalescence can generate momentum",
+    "Surface topography influences coalescence behavior",
+    "Asymmetric structures can create directional bias"
+  ],
+  "assumptions": [
+    "Coalescence events are directional and asymmetric",
+    "Multiple small directional pushes can overcome surface adhesion",
+    "Surface geometry influences coalescence probability"
+  ],
+  "predictions": [],
+  "expected_failure_modes": [
+    "Insufficient coalescence events to maintain transport",
+    "Random coalescence events overwhelming directional bias",
+    "Large droplets blocking access to nucleation sites"
+  ],
+  "novelty_rationale": "This hypothesis proposes that transport is driven by the cumulative effect of many asymmetric coalescence events rather than continuous forces",
+  "testability": "Can be tested by high-speed imaging of droplet coalescence events and measuring directional bias",
+  "falsifier": "If directional transport occurs even when coalescence events are prevented or made symmetric, or if transport direction correlates with surface geometry rather than wettability pattern",
+  "epistemic_state": "HYPOTHESIZED",
+  "parent_hypothesis_ids": [],
+  "provenance": {
+    "nodes": {},
+    "edges": [],
+    "committed_hash": null
+  },
+  "is_testable": true,
+  "provenance_root_hash": ""
+}

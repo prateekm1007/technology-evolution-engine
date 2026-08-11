@@ -1,0 +1,32 @@
+{
+  "query_id": "Q-OA-W4411807766_OA-W4411842899-citation_graph-opencitations",
+  "pair_id": "OA-W4411807766_OA-W4411842899",
+  "query_type": "citation_graph",
+  "provider": "opencitations",
+  "query_text": "citation_lookup:https://doi.org/10.1021/acs.langmuir.5c00989 <-> https://doi.org/10.1186/s40561-025-00389-y",
+  "query_hash": "0693713f64676089f1d47aa2f53f54cdece7a0b795d04f4b229e8d11a3719e55",
+  "frozen_query_ref": null,
+  "search_type": "citation_graph",
+  "doi_a": "https://doi.org/10.1021/acs.langmuir.5c00989",
+  "doi_b": "https://doi.org/10.1186/s40561-025-00389-y",
+  "oc_id_a": "doi:10.1021/acs.langmuir.5c00989",
+  "oc_id_b": "doi:10.1186/s40561-025-00389-y",
+  "timestamp_utc": "2026-08-11T12:47:42.335063+00:00",
+  "status": "SUCCESS",
+  "a_cites_b": false,
+  "b_cites_a": false,
+  "a_citation_count": 15,
+  "b_citation_count": 14,
+  "a_reference_count": 62,
+  "b_reference_count": 37,
+  "shared_citing": [],
+  "shared_cited": [],
+  "response_hash": "bd4b3eaaaa21f06bc902eef48643f7e68b7645e4db6ace4b6815b0cb676b307f",
+  "evidence_uris": [
+    "https://api.opencitations.net/index/v2/references/doi:10.1021/acs.langmuir.5c00989",
+    "https://api.opencitations.net/index/v2/citations/doi:10.1021/acs.langmuir.5c00989",
+    "https://api.opencitations.net/index/v2/references/doi:10.1186/s40561-025-00389-y",
+    "https://api.opencitations.net/index/v2/citations/doi:10.1186/s40561-025-00389-y"
+  ],
+  "error": null
+}

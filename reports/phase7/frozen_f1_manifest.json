@@ -1,0 +1,27 @@
+{
+  "freeze_version": "phase7-f1-freeze-v1",
+  "created_from_commit": "9189880fde1496ceba9f0c4f242ab65cb7303711",
+  "created_at_utc": "2026-08-08T18:10:00Z",
+  "immutable_reference": true,
+  "baseline_f1": 0.5714,
+  "baseline_f1_source": "stage-1-measurement-integrity-baseline",
+  "baseline_f1_cycle": 134,
+
+  "gold_discoveries_sha256": "1ed102361bdccd8fa0beed77e44b8600a2a36746904d0d249c686931bd761191",
+  "bridge_synonyms_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+  "score_artifact_sha256": "99eaad1ce848998abc66795b229764870dd4763d6612e8264790eb04afbd39b1",
+  "benchmark_source_sha256": "9ba196603e90f5fb83e5bf1f10cf7c7523357b725b107c72afcede0642adc547",
+
+  "trust_anchor": {
+    "anchor_type": "git_head_comparison",
+    "anchor_description": "The runtime verifies that the manifest file on disk matches the manifest committed at git HEAD by running: git cat-file blob HEAD:reports/phase7/frozen_f1_manifest.json. If the on-disk manifest differs from the committed version, the manifest has been locally substituted and the gate fails closed. This prevents the attack where an attacker modifies both the manifest and the production data simultaneously — the modified manifest would not match the git-committed version.",
+    "verification_command": "git cat-file blob HEAD:reports/phase7/frozen_f1_manifest.json"
+  },
+
+  "manifest_note": "This manifest is an IMMUTABLE reference artifact. The runtime freeze gate: (1) loads this manifest from disk, (2) verifies the on-disk manifest matches the git-committed version at HEAD via git cat-file (prevents manifest substitution), (3) compares current production hashes against manifest values. The runtime NEVER self-baselines. If the manifest is missing, corrupt, substituted, or any hash mismatches, the gate fails closed.",
+
+  "self_baselining_prohibited": true,
+  "fail_closed_on_missing_manifest": true,
+  "fail_closed_on_hash_computation_error": true,
+  "fail_closed_on_manifest_substitution": true
+}

@@ -1,0 +1,71 @@
+{
+  "query_id": "Q-OA-W4411793089_OA-W4411795919-direct-openaire",
+  "pair_id": "OA-W4411793089_OA-W4411795919",
+  "query_type": "direct",
+  "provider": "openaire",
+  "query_text": "electrolyte metal temperatures cathodes materials mediated",
+  "query_hash": "c59cc3c2b0a8b9133cd7f5da3183fbf870aab9fea525210b9d5ad0681ae2d825",
+  "frozen_query_ref": "Q-OA-W4411793089_OA-W4411795919-direct-openalex",
+  "url": "https://api.openaire.eu/search/publications?keywords=electrolyte+metal+temperatures+cathodes+materials+mediated&size=10&format=json",
+  "timestamp_utc": "2026-08-11T12:35:01.373956+00:00",
+  "status": "SUCCESS",
+  "result_count": 2,
+  "result_ids": [
+    [
+      {
+        "$": "2202"
+      },
+      {
+        "$": "10.1007/s12613-020-2202-1"
+      },
+      {
+        "$": "50|doiboost____|51a784fe083f809cef73ea0a8cb0be2d"
+      },
+      {
+        "$": "oai:pubmedcentral.nih.gov:7772062"
+      },
+      {
+        "$": "50|od_______267::3614394a6051109495c026d407926620"
+      },
+      {
+        "$": "50|core_ac_uk__::03c100c95cfe82491be6dcc309a4ef26"
+      },
+      {
+        "$": "oai:nottingham-repository.worktribe.com:4958854"
+      },
+      {
+        "$": "3090168637"
+      }
+    ],
+    [
+      {
+        "$": "10.1149/ma2020-02402637mtgabs"
+      },
+      {
+        "$": "50|doiboost____|acbb40079bc554614058db40d949afc0"
+      },
+      {
+        "$": "3114058310"
+      }
+    ]
+  ],
+  "result_titles": [
+    "Interactions of molten salts with cathode products in the FFC Cambridge Process",
+    "(Invited) Incorporation of Bulk Proton Carriers in Manganese Perovskites Triggered By Charge Disproportionation between Metal and Oxygen Atoms"
+  ],
+  "result_dois": [
+    "10.1007/s12613-020-2202-1",
+    "10.1149/ma2020-02402637mtgabs"
+  ],
+  "result_dates": [
+    "2020-12-01",
+    "2020-11-23"
+  ],
+  "response_hash": "cb774e441667e50375bb433d219a3a14af3c3c392bd3abe379e90c5b6a80e299",
+  "evidence_uri": "https://api.openaire.eu/search/publications?keywords=electrolyte+metal+temperatures+cathodes+materials+mediated&size=10&format=json",
+  "error": null,
+  "rate_limit_headers": {
+    "x-ratelimit-used": "211",
+    "x-ratelimit-limit": "7199"
+  }
+}

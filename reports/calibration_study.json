@@ -1,0 +1,88 @@
+{
+  "table": [
+    {
+      "entity": "heat",
+      "internal_quality": 4.25,
+      "external_quality": 2,
+      "residual": 2.25,
+      "internal_struct": "12/12",
+      "internal_sci": "5/5",
+      "internal_disc": "KNOWN",
+      "external_plausible": "Yes",
+      "external_novelty": "Incremental",
+      "external_recommendation": "Revise"
+    },
+    {
+      "entity": "thermal_differential",
+      "internal_quality": 4.5,
+      "external_quality": 2,
+      "residual": 2.5,
+      "internal_struct": "12/12",
+      "internal_sci": "5/5",
+      "internal_disc": "POTENTIALLY_NOVEL",
+      "external_plausible": "No",
+      "external_novelty": "Incremental",
+      "external_recommendation": "Reject"
+    },
+    {
+      "entity": "surface_chemical_modification",
+      "internal_quality": 4.75,
+      "external_quality": 2,
+      "residual": 2.75,
+      "internal_struct": "12/12",
+      "internal_sci": "5/5",
+      "internal_disc": "POTENTIALLY_NOVEL",
+      "external_plausible": "No",
+      "external_novelty": "Incremental",
+      "external_recommendation": "Reject"
+    },
+    {
+      "entity": "energy_gap",
+      "internal_quality": 4.5,
+      "external_quality": 2,
+      "residual": 2.5,
+      "internal_struct": "12/12",
+      "internal_sci": "5/5",
+      "internal_disc": "POTENTIALLY_NOVEL",
+      "external_plausible": "No",
+      "external_novelty": "Incremental",
+      "external_recommendation": "Revise"
+    },
+    {
+      "entity": "phase_change_enthalpy",
+      "internal_quality": 4.5,
+      "external_quality": 2,
+      "residual": 2.5,
+      "internal_struct": "12/12",
+      "internal_sci": "5/5",
+      "internal_disc": "POTENTIALLY_NOVEL",
+      "external_plausible": "No",
+      "external_novelty": "Known",
+      "external_recommendation": "Reject"
+    },
+    {
+      "entity": "light_quantum_energy",
+      "internal_quality": 4.5,
+      "external_quality": 2,
+      "residual": 2.5,
+      "internal_struct": "12/12",
+      "internal_sci": "5/5",
+      "internal_disc": "POTENTIALLY_NOVEL",
+      "external_plausible": "No",
+      "external_novelty": "Incremental",
+      "external_recommendation": "Reject"
+    }
+  ],
+  "metrics": {
+    "n_proposals": 6,
+    "mean_internal": 4.5,
+    "mean_external": 2.0,
+    "mean_calibration_error": 2.5,
+    "bias": 2.5,
+    "variance": 0.02,
+    "correlation": 0.0,
+    "agreement_rate": 0.0,
+    "overestimate_rate": 1.0,
+    "underestimate_rate": 0.0
+  }
+}

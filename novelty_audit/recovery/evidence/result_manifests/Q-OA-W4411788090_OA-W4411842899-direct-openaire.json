@@ -1,0 +1,147 @@
+{
+  "query_id": "Q-OA-W4411788090_OA-W4411842899-direct-openaire",
+  "pair_id": "OA-W4411788090_OA-W4411842899",
+  "query_type": "direct",
+  "provider": "openaire",
+  "query_text": "solar evaporation water learning system adaptive",
+  "query_hash": "1e83c3322fec3f7bd4135a6fc7e231db6c70c17e3300011cf93a5a7ea99df55c",
+  "frozen_query_ref": "Q-OA-W4411788090_OA-W4411842899-direct-openalex",
+  "url": "https://api.openaire.eu/search/publications?keywords=solar+evaporation+water+learning+system+adaptive&size=10&format=json",
+  "timestamp_utc": "2026-08-11T12:35:14.754615+00:00",
+  "status": "SUCCESS",
+  "result_count": 7,
+  "result_ids": [
+    [
+      {
+        "$": "S1574954124004758"
+      },
+      {
+        "$": "10.1016/j.ecoinf.2024.102933"
+      },
+      {
+        "$": "50|doiboost____|4d958e4b7a760b4dd961f05b90c41dba"
+      },
+      {
+        "$": "50|dblp________::50a283df784aeb22ad596f3ba1a0f60f"
+      },
+      {
+        "$": "oai:doaj.org/article:9997abb7b5e9467ebeca5dbd8aeca7e5"
+      },
+      {
+        "$": "50|doajarticles::02c8014fff5ae4e722b6462f485d7946"
+      }
+    ],
+    [
+      {
+        "$": "S2213138821007979"
+      },
+      {
+        "$": "10.1016/j.seta.2021.101783"
+      },
+      {
+        "$": "50|doiboost____|731090f2cb62a1c73c4cafde0c911e12"
+      },
+      {
+        "$": "3215745290"
+      },
+      {
+        "$": "50|base_oa_____::d15fa5bc49740a3a970b64eae4ca5de6"
+      },
+      {
+        "$": "ftunivpretoria:oai:repository.up.ac.za:2263/92222"
+      }
+    ],
+    [
+      {
+        "$": "50|datacite____::5686341e9ff4f74706191f36c1f6d52c"
+      },
+      {
+        "$": "10.13021/jssr.2025"
+      }
+    ],
+    [
+      {
+        "$": "10.22438/jeb/47/4/editorial"
+      },
+      {
+        "$": "50|doiboost____|0bc833b407792001e4320f07dc06ddab"
+      }
+    ],
+    [
+      {
+        "$": "50|datacite____::86f0beb4e2915dda5b539a9831ada314"
+      },
+      {
+        "$": "10.5281/zenodo.17543971"
+      },
+      {
+        "$": "oai:zenodo.org:17543971"
+      },
+      {
+        "$": "50|od______2659::86f0beb4e2915dda5b539a9831ada314"
+      }
+    ],
+    [
+      {
+        "$": "50|datacite____::98a20b0ecab63e46d2d8ea9bdc2de06b"
+      },
+      {
+        "$": "10.5281/zenodo.17518981"
+      },
+      {
+        "$": "oai:zenodo.org:17518981"
+      },
+      {
+        "$": "50|od______2659::98a20b0ecab63e46d2d8ea9bdc2de06b"
+      }
+    ],
+    [
+      {
+        "$": "50|datacite____::d838acba6e8c00e932af093a81ff8591"
+      },
+      {
+        "$": "10.5281/zenodo.17538153"
+      },
+      {
+        "$": "50|od______2659::d838acba6e8c00e932af093a81ff8591"
+      },
+      {
+        "$": "oai:zenodo.org:17538153"
+      }
+    ]
+  ],
+  "result_titles": [
+    "Enhancing Pan evaporation predictions: Accuracy and uncertainty in hybrid machine learning models",
+    "Low-cost bilayered structure for improving the performance of solar stills: Performance/cost analysis and water yield prediction using machine learning",
+    "Journal of Student-Scientists' Research, Vol. 7 (2025)",
+    "Ecotoxicological consequences of climate change - unforeseen threat to planetary health",
+    "V61 TARDIS 3.1 V31: Autonomous Fusion Reactor",
+    "V61 TARDIS 3.1 MASS-CORE-V28",
+    "V61 TARDIS 3.1 MASS-CORE-V30"
+  ],
+  "result_dois": [
+    "10.1016/j.ecoinf.2024.102933",
+    "10.1016/j.seta.2021.101783",
+    "10.13021/jssr.2025",
+    "10.22438/jeb/47/4/editorial",
+    "10.5281/zenodo.17543971",
+    "10.5281/zenodo.17518981",
+    "10.5281/zenodo.17538153"
+  ],
+  "result_dates": [
+    "2025-03-01",
+    "2022-02-01",
+    "2025-09-25",
+    "2026-06-15",
+    "2025-11-06",
+    "2025-11-01",
+    "2025-11-06"
+  ],
+  "response_hash": "6671e0868b01f256558bb03d644550a233d1ab83c075fe7a035b5a47b1049f1e",
+  "evidence_uri": "https://api.openaire.eu/search/publications?keywords=solar+evaporation+water+learning+system+adaptive&size=10&format=json",
+  "error": null,
+  "rate_limit_headers": {
+    "x-ratelimit-used": "212",
+    "x-ratelimit-limit": "7199"
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "pair_id": "OA-W4411779753_OA-W4411795344",
+  "recovery_results": [
+    {
+      "query_id": "Q-OA-W4411779753_OA-W4411795344-direct-openaire",
+      "query_type": "direct",
+      "provider": "openaire",
+      "status": "SUCCESS",
+      "result_count": 5,
+      "response_hash": "c28ef932e77e38231646b9a6f68ff38c51df072476cdc4e430f01dc66b9a2fbd"
+    },
+    {
+      "query_id": "Q-OA-W4411779753_OA-W4411795344-direct-opencitations",
+      "query_type": "direct",
+      "provider": "opencitations",
+      "status": "NO_RESULTS",
+      "result_count": 0,
+      "response_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "query_id": "Q-OA-W4411779753_OA-W4411795344-reverse-openaire",
+      "query_type": "reverse",
+      "provider": "openaire",
+      "status": "SUCCESS",
+      "result_count": 5,
+      "response_hash": "c28ef932e77e38231646b9a6f68ff38c51df072476cdc4e430f01dc66b9a2fbd"
+    },
+    {
+      "query_id": "Q-OA-W4411779753_OA-W4411795344-reverse-opencitations",
+      "query_type": "reverse",
+      "provider": "opencitations",
+      "status": "NO_RESULTS",
+      "result_count": 0,
+      "response_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "query_id": "Q-OA-W4411779753_OA-W4411795344-domain_bridge-openaire",
+      "query_type": "domain_bridge",
+      "provider": "openaire",
+      "status": "SUCCESS",
+      "result_count": 10,
+      "response_hash": "fbb7dd6e15460daf90cca18fda9df1e9f452f3cbd1bc87183077e5b5c41ba544"
+    },
+    {
+      "query_id": "Q-OA-W4411779753_OA-W4411795344-mechanism_transfer-openaire",
+      "query_type": "mechanism_transfer",
+      "provider": "openaire",
+      "status": "SUCCESS",
+      "result_count": 1,
+      "response_hash": "9c7c82f8cfd359d71d1bd75da6edc4432c40beeab7e4636614d6fa6824bef6c2"
+    },
+    {
+      "query_id": "Q-OA-W4411779753_OA-W4411795344-citation_graph-opencitations",
+      "query_type": "citation_graph",
+      "provider": "opencitations",
+      "status": "SUCCESS",
+      "result_count": -1,
+      "response_hash": "c9c634053dfed7368eee52af82ecd21084a8dddafd2ad0bd5f14c54ae61c059d"
+    }
+  ],
+  "any_success": true,
+  "any_no_results": true,
+  "any_unavailable": false,
+  "any_error": false,
+  "success_count": 5,
+  "total_queries": 7
+}

@@ -1,0 +1,70 @@
+{
+  "id": "benchmark_0019",
+  "type": "patent",
+  "source": "uspto",
+  "title": "Wireless Implantable Multi-Analyte Biosensor with 5-Year Lifetime",
+  "domain": "medicine",
+  "abstract": "A subcutaneous implant measuring glucose, lactate, potassium, pH simultaneously using enzymatic electrochemical cells, NFC-powered, 5-year lifetime.",
+  "claims": [
+    "Four electrodes with glucose oxidase, lactate oxidase, potassium ionophore, iridium oxide pH sensor.",
+    "NFC ASIC at 13.56 MHz with 12-bit SAR ADC, 2mm read range.",
+    "Parylene-C (5um) and silicone encapsulation, ISO 10993, 5-year stability."
+  ],
+  "components": [
+    "electrode array",
+    "enzyme layers",
+    "NFC ASIC",
+    "antenna",
+    "parylene encapsulation",
+    "silicone housing"
+  ],
+  "materials": [
+    "platinum",
+    "gold",
+    "parylene-C",
+    "silicone",
+    "enzymes",
+    "ionophores"
+  ],
+  "methods": [
+    "microfabrication",
+    "enzyme immobilization",
+    "NFC communication",
+    "electrochemical sensing"
+  ],
+  "constraints": [
+    "safety",
+    "regulation",
+    "lifetime",
+    "accuracy",
+    "cost",
+    "manufacturing"
+  ],
+  "problem_statement": "Chronic disease monitoring requires frequent blood draws.",
+  "expected_constraints": [
+    "safety",
+    "regulation",
+    "material",
+    "cost",
+    "manufacturing",
+    "energy"
+  ],
+  "expected_prerequisites": [
+    "enzyme stability",
+    "biocompatible packaging",
+    "NFC power efficiency",
+    "calibration drift correction"
+  ],
+  "expected_adjacent_domains": [
+    "biotechnology",
+    "materials science",
+    "RF engineering",
+    "clinical medicine"
+  ],
+  "expected_failure_modes": [
+    "biofouling",
+    "enzyme denaturation",
+    "encapsulation breach",
+    "calibration drift"
+  ]
+}

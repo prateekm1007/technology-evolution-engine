@@ -1,0 +1,12 @@
+TITLE: Mathematical modelling and numerical simulation of reverse-osmosis desalination
+ARXIV ID: 2301.13160v1
+URL: http://arxiv.org/abs/2301.13160v1
+RETRIEVAL DATE: 2026-08-05
+RETRIEVAL METHOD: arxiv.org API
+SOURCE VERIFICATION: arxiv API XML
+DOMAIN HINT: desalination
+AUTHORS: Nicodemo Di Pasquale; Mayo Akele; Federico Municchi; John King; Matteo Icardi
+PUBLISHED: 2023-01-16T09:56:12Z
+
+ABSTRACT:
+The reverse osmosis membrane module is an integral element of a desalination system as it determines the overall performance of the desalination plant. The fraction of clean water that can be recovered via this process is often limited by salt precipitation which plays a critical role in its sustainability. In this work, we present a model to study the complex interplay between flow, transport and precipitation processes in reverse osmosis membranes, which together influence recovery and in turn process sustainability. A reactive porous interface model describes the membrane with a dynamic evolving porosity and permeability to capture the scaling and clogging of the membrane. An open-source finite-volume numerical solver is implemented within the OpenFOAM library and numerical tests are presented here showing the effect of the various parameters of the model and the robustness of the model to describe a wide range of operating conditions.

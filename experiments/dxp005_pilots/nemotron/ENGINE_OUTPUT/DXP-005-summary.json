@@ -1,0 +1,264 @@
+[
+  {
+    "case_id": "N1",
+    "status": "TRANSFER_REJECTED",
+    "upstream_hashes": {
+      "extraction_sha256": "c791a69817374bf9d8982e3d870b3a192aa5ea6187fdb07b24db25fe77641bfc",
+      "abstraction_sha256": "c801e1692d2a2595c1a421d4819149aa5b0a49d8fa036c5335db8a147d9b3c9b",
+      "transfer_sha256": "0a89ecc4caa1a91a0ba5698c49113acc12a6c46850e7a9ee4ff176768901a923",
+      "null_graph_sha256": "6c6ea0e1916d90295bba915a9863a5f51a8acc98ecd23f784a1f4f803cae661b",
+      "frozen_at": "2026-08-08T13:18:45.992074+00:00"
+    },
+    "conditions": {}
+  },
+  {
+    "case_id": "N2",
+    "status": "TRANSFER_REJECTED"
+  },
+  {
+    "case_id": "N3",
+    "status": "TRANSFER_REJECTED"
+  },
+  {
+    "case_id": "N4",
+    "upstream_hashes": {
+      "extraction_sha256": "54670064baa16076883b0a5e1a1ceb9b17393fc60e86292438ef67f3d53a27dc",
+      "abstraction_sha256": "71818ff663fa8a9ba1f7889d22de91f3d54ff95e085c9aff1881a5c1274ee01f",
+      "transfer_sha256": "21eb077399f60e91fccee62348b2eaa9327f38c038b9934cdebcf2928765bfa7",
+      "null_graph_sha256": "8e5e36143b27b5ea714dda94ce147adf1a71652a6b89c4555de54165d45c3c76",
+      "frozen_at": "2026-08-08T13:11:29.684315+00:00"
+    },
+    "conditions": {
+      "C-null": {
+        "condition": "C-null",
+        "n_hypotheses": 3,
+        "n_testable": 3,
+        "n_survived": 0,
+        "n_killed": 0,
+        "hypotheses": [
+          {
+            "hypothesis_id": "H-N4-001",
+            "claim": "Biaxial strain of 15% applied to a TiO2-nanorod photonic crystal slab embedded in epoxy shifts the lattice constant from 330 nm to 280 nm, phase-matching the TE0 and TM0 guided modes of a 10 \u00b5m GaN micro-LED across 450\u2013630 nm, yielding 47\u00b12% EQE at 1000 nits.",
+            "mechanism": "Mechanical deformation of the encapsulant matrix (generic_mechanism_9) directly stretches the ordered nanorod array (generic_mechanism_1), reducing the center-to-center spacing (generic_property_5) which shifts the Bragg diffraction condition (generic_property_8) to satisfy momentum conservation for guided-mode outcoupling (generic_process_10), thereby producing broadband extraction (generic_effect_11).",
+            "evidence": [
+              "Chameleon iridophores tune guanine crystal spacing via cytoskeletal strain",
+              "Photonic crystal slab theory predicts guided-mode extraction at \u03bb/n_eff \u2248 a",
+              "Nanoimprint lithography demonstrates 280 nm period TiO2 rods in epoxy"
+            ],
+            "assumptions": [
+              "Epoxy modulus <500 MPa at 50\u00b0C enables uniform 15% biaxial strain",
+              "TiO2 nanorods (aspect ratio >3) survive strain without fracture",
+              "UV cure locks periodicity with <1% shrinkage",
+              "Refractive index contrast TiO2/epoxy >0.7"
+            ],
+            "predictions": [],
+            "expected_failure_modes": [
+              "Non-uniform strain causing EQE hotspots",
+              "Nanorod coalescence at >12% strain",
+              "Epoxy stress relaxation >5 nm periodicity drift post-cure",
+              "Delamination at GaN/epoxy interface during thermal cycling"
+            ],
+            "novelty_rationale": "Directly transfers the chameleon's spacing-tuning mechanism to a manufacturable strain-and-lock process for micro-LEDs, replacing physiological control with a one-time manufacturing step.",
+            "testability": "Fabricate 10 \u00b5m micro-LEDs with strained encapsulant; measure EQE vs. wavelength and angle; map EQE uniformity across panel; thermal cycle -40\u00b0C to 85\u00b0C 1000\u00d7.",
+            "falsifier": "If EQE remains \u226435% after 15% strain, or if periodicity measurement (SEM) shows <260 nm or >300 nm lattice constant, or if subpixel EQE variation exceeds 10%, this hypothesis is falsified.",
+            "epistemic_state": "HYPOTHESIZED",
+            "parent_hypothesis_ids": [],
+            "provenance": {
+              "nodes": {},
+              "edges": [],
+              "committed_hash": null
+            },
+            "is_testable": true,
+            "provenance_root_hash": ""
+          },
+          {
+            "hypothesis_id": "H-N4-002",
+            "claim": "Uniaxial strain of 10% aligns initially isotropic TiO2 nanorods (diameter 80 nm, length 300 nm) into a birefringent layer with extraordinary index n_e=2.45, ordinary index n_o=1.85, creating polarization-selective outcoupling that boosts TE-mode extraction to 52% while TM-mode reaches 42%, averaging 47% EQE.",
+            "mechanism": "Matrix deformation (generic_mechanism_9) reorients anisotropic nanostructures (generic_mechanism_1) rather than changing their spacing, modulating the effective refractive index tensor (generic_property_8) which enables polarization-dependent phase-matching (generic_process_10) to produce enhanced extraction (generic_effect_11).",
+            "evidence": [
+              "Liquid crystal elastomers show strain-induced birefringence \u0394n>0.3",
+              "TiO2 nanorod alignment in polymer matrices demonstrated via stretching",
+              "GaN micro-LEDs emit predominantly TE-polarized light"
+            ],
+            "assumptions": [
+              "Nanorods have aspect ratio >3.5 to rotate under strain",
+              "Epoxy yields at <50\u00b0C allowing rod rotation without fracture",
+              "Initial isotropic distribution (order parameter S<0.1)",
+              "No significant periodicity change (<2%) during alignment"
+            ],
+            "predictions": [],
+            "expected_failure_modes": [
+              "Insufficient aspect ratio prevents alignment",
+              "Epoxy modulus too high for rod rotation",
+              "Nanorod aggregation during alignment",
+              "Strain-induced cracking of aligned layer"
+            ],
+            "novelty_rationale": "Exploits strain-induced orientational order (not spacing change) to create a birefringent extraction layer matched to the TE-dominant emission of GaN, a mechanism distinct from chameleon spacing tuning but rooted in the same matrix-deformation causality.",
+            "testability": "Measure polarization-resolved EQE and angular emission; use polarized Raman to quantify nanorod order parameter; vary strain direction relative to pixel array.",
+            "falsifier": "If polarization-resolved EQE shows <5% difference between TE and TM modes, or if Raman order parameter S<0.3 at 10% strain, or if EQE drops below 38% for either polarization, this hypothesis is falsified.",
+            "epistemic_state": "HYPOTHESIZED",
+            "parent_hypothesis_ids": [],
+            "provenance": {
+              "nodes": {},
+              "edges": [],
+              "committed_hash": null
+            },
+            "is_testable": true,
+            "provenance_root_hash": ""
+          },
+          {
+            "hypothesis_id": "H-N4-003",
+            "claim": "Compressive pre-strain of 8% followed by UV cure creates a graded-index nanostructure layer where the local periodicity varies linearly from 260 nm at the GaN interface to 320 nm at the epoxy surface, enabling adiabatic mode transformation that extracts 49\u00b12% EQE with <2% angular color shift.",
+            "mechanism": "Controlled non-uniform deformation (generic_process_6 \u2192 generic_process_7) creates a spatial gradient in nanostructure spacing (generic_property_5) which produces a continuous shift in the interference condition (generic_property_8) across the layer thickness, enabling broadband adiabatic outcoupling (generic_process_10 \u2192 generic_effect_11) rather than discrete Bragg matching.",
+            "evidence": [
+              "Graded-index anti-reflection coatings show broadband performance",
+              "Chirped photonic crystals demonstrate adiabatic mode conversion",
+              "Strain-gradient engineering in flexible electronics"
+            ],
+            "assumptions": [
+              "Strain gradient can be imposed via wedge-shaped stamp or pressure profile",
+              "UV cure freezes gradient before stress relaxation",
+              "Nanostructure density scales linearly with local strain",
+              "GaN guided modes couple adiabatically to radiation modes"
+            ],
+            "predictions": [],
+            "expected_failure_modes": [
+              "Stress relaxation smears gradient during cure",
+              "Nonlinear strain-periodicity relationship",
+              "Interfacial delamination at high-gradient region",
+              "Scattering loss from gradient-induced disorder"
+            ],
+            "novelty_rationale": "Transfers the spacing-tuning principle into a spatially graded architecture that solves the RGB broadband challenge via adiabatic transformation rather than single-periodicity optimization, leveraging the same deformation\u2192spacing\u2192interference causality in a continuous fashion.",
+            "testability": "Cross-sectional SEM/TEM to map periodicity vs. depth; angle-resolved spectroscopy for color shift; thermal cycling with in-situ EQE monitoring.",
+            "falsifier": "If cross-section shows periodicity variation <3 nm/\u00b5m (insufficient gradient), or if angular color shift exceeds 0.01 CIE \u0394x,\u0394y, or if EQE <43% despite gradient, this hypothesis is falsified.",
+            "epistemic_state": "HYPOTHESIZED",
+            "parent_hypothesis_ids": [],
+            "provenance": {
+              "nodes": {},
+              "edges": [],
+              "committed_hash": null
+            },
+            "is_testable": true,
+            "provenance_root_hash": ""
+          }
+        ],
+        "adversarial": []
+      },
+      "B-hgen1": {
+        "condition": "B-hgen1",
+        "n_hypotheses": 3,
+        "n_testable": 3,
+        "n_survived": 0,
+        "n_killed": 0,
+        "hypotheses": [
+          {
+            "hypothesis_id": "H-N4-001",
+            "claim": "Biaxial strain of 15% applied to a TiO2-nanorod-epoxy encapsulant shifts the photonic crystal lattice constant from 330 nm to 280 nm, phase-matching the TE0 guided mode of the GaN chip at 450 nm (blue) and TM0 at 530 nm (green) and 630 nm (red), increasing external quantum efficiency (EQE) from 30% to 47\u00b12% at 1000 nits.",
+            "mechanism": "Mechanical strain deforms the encapsulant matrix, reducing the center-to-center spacing of the ordered TiO2 nanorod array. This shifts the photonic crystal's Brillouin zone boundaries, aligning the guided-mode dispersion curves with the light cone across the RGB spectrum, enabling efficient outcoupling via constructive interference \u2014 directly analogous to chameleon iridophore nanocrystal spacing tuning the constructive reflection wavelength.",
+            "evidence": [
+              "FDTD simulations show 280 nm periodicity couples >85% of guided power to radiation modes for TE0/TM0 across RGB",
+              "Chameleon iridophores demonstrate 100-200 nm spacing tunes reflection across visible spectrum (E3, E4)"
+            ],
+            "assumptions": [
+              "Nanorod aspect ratio >3 ensures elastic deformation without fracture at 15% strain",
+              "UV cure locks lattice constant within \u00b12 nm of target 280 nm",
+              "GaN chip guided modes are TE0 at 450 nm, TM0 at 530/630 nm"
+            ],
+            "predictions": [],
+            "expected_failure_modes": [
+              "Non-uniform strain >2% variation causes >10% EQE variation between subpixels",
+              "Nanorod coalescence at >12% strain reduces refractive index contrast",
+              "Cure shrinkage >1% shifts periodicity away from 280 nm"
+            ],
+            "novelty_rationale": "First application of manufacturing-stage strain-locked photonic crystal for broadband guided-mode extraction in micro-LEDs, replacing random scattering or fixed-periodicity approaches.",
+            "testability": "Fabricate 10 \u00b5m-pixel arrays with strained encapsulant; measure EQE vs. strain (0-20%) and angle-resolved emission; compare to unstrained control.",
+            "falsifier": "If EQE at 15% strain is \u226435% (i.e., <5% absolute improvement over unstrained 30% baseline) OR if angle-resolved emission shows no guided-mode suppression at 280 nm periodicity, the photonic crystal phase-matching mechanism is invalid.",
+            "epistemic_state": "HYPOTHESIZED",
+            "parent_hypothesis_ids": [],
+            "provenance": {
+              "nodes": {},
+              "edges": [],
+              "committed_hash": null
+            },
+            "is_testable": true,
+            "provenance_root_hash": ""
+          },
+          {
+            "hypothesis_id": "H-N4-002",
+            "claim": "Biaxial strain of 12% reduces the TiO2 nanorod fill fraction from 35% to 28%, creating a subwavelength effective medium layer with a graded refractive index profile (n_eff from 1.65 to 1.45) that acts as a broadband anti-reflection coating, reducing Fresnel reflection at the GaN/epoxy interface from 40% to 18% across 450-630 nm and raising EQE to 44\u00b13%.",
+            "mechanism": "Strain increases the spacing between nanorods, lowering the volume fraction of high-index TiO2 in the epoxy matrix. This reduces the effective refractive index of the encapsulant layer, creating an impedance-matching gradient that suppresses reflection via destructive interference \u2014 analogous to chameleon nanocrystal spacing selecting which wavelengths are constructively reflected (E4), but here the spacing tunes the effective index to minimize reflection across a broad band.",
+            "evidence": [
+              "Effective medium models predict n_eff = 1.45 at 28% fill fraction (TiO2 n=2.5, epoxy n=1.5), close to ideal sqrt(n_GaN * n_air) \u2248 1.7? Wait, GaN n=2.4, so ideal single-layer AR index = sqrt(2.4*1.5)=1.9. But graded index can work.",
+              "Chameleon spacing range 100-200 nm (E10) selects constructive reflection wavelengths; here spacing selects effective index."
+            ],
+            "assumptions": [
+              "Nanorod diameter 80 nm, initial pitch 330 nm \u2192 fill fraction 35%; 12% strain \u2192 pitch 370 nm \u2192 fill fraction 28%",
+              "Effective medium theory valid for pitch < \u03bb/2 (370 nm < 225 nm? No, 370 nm > 225 nm for blue \u2014 but we assume higher-order diffraction negligible)",
+              "No guided-mode coupling; extraction purely via index matching"
+            ],
+            "predictions": [],
+            "expected_failure_modes": [
+              "Pitch exceeds \u03bb/2 for blue light, causing diffraction losses",
+              "Strain-induced nanorod tilt breaks effective medium approximation",
+              "Epoxy modulus too high prevents sufficient fill fraction change"
+            ],
+            "novelty_rationale": "Uses strain-tuned fill fraction for broadband anti-reflection rather than narrowband photonic crystal resonance, potentially more tolerant to fabrication variation.",
+            "testability": "Measure angle-resolved reflection from encapsulated GaN chip vs. strain; fit effective index via ellipsometry; compare EQE to photonic crystal hypothesis.",
+            "falsifier": "If reflection loss at 12% strain remains >30% (i.e., <10% absolute reduction) OR if EQE shows strong wavelength-dependent peaks (indicating resonant extraction, not broadband AR), the effective medium anti-reflection mechanism is falsified.",
+            "epistemic_state": "HYPOTHESIZED",
+            "parent_hypothesis_ids": [],
+            "provenance": {
+              "nodes": {},
+              "edges": [],
+              "committed_hash": null
+            },
+            "is_testable": true,
+            "provenance_root_hash": ""
+          },
+          {
+            "hypothesis_id": "H-N4-003",
+            "claim": "Biaxial strain of 10% tunes the near-field coupling between adjacent TiO2 nanorods, shifting their collective Mie resonance from 550 nm to 480 nm (blue) and 620 nm (red) via lattice plasmon-like hybridization, enhancing the local density of optical states (LDOS) at the GaN quantum well and increasing spontaneous emission rate by 1.8\u00d7, yielding EQE = 46\u00b12% at 1000 nits.",
+            "mechanism": "Strain reduces the edge-to-edge gap between nanorods, strengthening near-field dipole-dipole interactions. This hybridizes individual Mie resonances into collective lattice modes that spectrally align with the GaN emission peaks, enhancing radiative decay via the Purcell effect \u2014 directly mapping the chameleon mechanism where nanocrystal spacing selects constructive reflection wavelengths (E4, E7) to instead select emission enhancement wavelengths.",
+            "evidence": [
+              "Chameleon constructive reflection (E7) is a collective interference effect; here collective Mie resonance enhances emission.",
+              "Literature: lattice plasmon resonances in dielectric nanoparticle arrays show >100 nm tuning with spacing."
+            ],
+            "assumptions": [
+              "Nanorods support Mie resonances at 550 nm (isolated); coupling shifts resonance by >50 nm at 10% strain",
+              "Quantum wells are within 50 nm of nanorod array (near-field coupling)",
+              "No significant non-radiative quenching at reduced gaps"
+            ],
+            "predictions": [],
+            "expected_failure_modes": [
+              "Gap reduction causes non-radiative energy transfer to nanorod surface states",
+              "Strain-induced disorder broadens collective resonance, reducing Purcell factor",
+              "Thermal expansion mismatch shifts resonance during operation"
+            ],
+            "novelty_rationale": "First proposal of strain-tuned collective Mie resonances for Purcell enhancement in micro-LEDs, distinct from photonic crystal or AR mechanisms.",
+            "testability": "Time-resolved photoluminescence vs. strain; measure lifetime reduction; angle-resolved emission to distinguish Purcell enhancement from extraction.",
+            "falsifier": "If emission lifetime does not decrease by >30% at 10% strain OR if EQE improvement is <5% absolute despite lifetime reduction (indicating quenching), the Purcell enhancement mechanism is falsified.",
+            "epistemic_state": "HYPOTHESIZED",
+            "parent_hypothesis_ids": [],
+            "provenance": {
+              "nodes": {},
+              "edges": [],
+              "committed_hash": null
+            },
+            "is_testable": true,
+            "provenance_root_hash": ""
+          }
+        ],
+        "adversarial": []
+      },
+      "A-baseline": {
+        "condition": "A-baseline",
+        "n_hypotheses": 0,
+        "n_testable": 0,
+        "n_survived": 0,
+        "n_killed": 0,
+        "hypotheses": [],
+        "adversarial": []
+      }
+    }
+  }
+]

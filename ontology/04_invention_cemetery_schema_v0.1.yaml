@@ -1,0 +1,12 @@
+# Invention Cemetery Schema v0.1
+version: 0.1
+
+schema:
+  cemetery_entry:
+    required: [id, name, era, failure_chain, resurrection_conditions]
+    properties:
+      failure_chain: {type: array}
+      constraints_that_killed: {type: array}
+      resurrection_conditions: {type: array}
+      rps: {type: number, range: [0, 1]}
+      analogues: {type: array}

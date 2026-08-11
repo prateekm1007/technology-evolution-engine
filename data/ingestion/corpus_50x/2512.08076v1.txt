@@ -1,0 +1,11 @@
+TITLE: Mitigation of Datacenter Demand Ramping and Fluctuation using Hybrid ESS and Supercapacitor
+ARXIV ID: 2512.08076v1
+URL: http://arxiv.org/abs/2512.08076v1
+RETRIEVAL DATE: 2026-08-05
+RETRIEVAL METHOD: arxiv.org API
+SOURCE VERIFICATION: arxiv API XML
+DOMAIN HINT: supercapacitor
+PUBLISHED: 2025-12-08T22:19:51Z
+
+ABSTRACT:
+This paper proposes a hybrid energy storage system (HESS)-based control framework that enables comprehensive power smoothing for hyperscale AI datacenters with large load variations. Datacenters impose severe ramping and fluctuation-induced stresses on the grid frequency and voltage stability. To mitigate such disturbances, the proposed HESS integrates a battery energy storage system (BESS) and a supercapacitor (SC) through coordinated multi-timescale control. A high-pass filter (HPF) separates the datacenter demand into slow and fast components, allocating them respectively to the ESS via a leaky-integral controller and to the SC via a phase-lead proportional-derivative controller enhanced with feedforward and ramp-tracking compensation. Adaptive weighting and repetitive control mechanisms further improve transient and periodic responses. Case studies verify that the proposed method effectively suppresses both ramping and fluctuations, stabilizes the system frequency, and maintains sustainable state-of-charge (SoC) trajectories for both ESS and SC under prolonged, stochastic training cycles.

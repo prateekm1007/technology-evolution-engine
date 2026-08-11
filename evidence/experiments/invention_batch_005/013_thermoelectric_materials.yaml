@@ -1,0 +1,394 @@
+problem: "Discover a thermoelectric material with ZT > 2.0 at 500C using earth-abundant elements"
+domain: "materials"
+hypothesis:
+  id: "hyp_1a0486a93cd7ced3"
+  claim: "The invention 'Discover a thermoelectric material with ZT > 2.0 at 500C using earth-abundant elements' is feasible in the materials domain within the stated time horizon."
+  confidence: 0.4587
+  evidence:
+    - "energy_conservation"
+    - "first_law_thermodynamics"
+    - "meissner_effect"
+    - "schrodinger_equation"
+    - "second_law_thermodynamics"
+    - "third_law_thermodynamics"
+    - "calcination_cement"
+    - "carbonation_cure"
+    - "polymerization"
+    - "ampere law"
+    - "prerequisite_chain_depth_1"
+    - "capex_$27.07M"
+  counterevidence:
+    - "failure_mode: cost_overrun"
+    - "failure_mode: material_unavailable_or_too_expensive"
+    - "failure_mode: manufacturing_yield_too_low"
+    - "failure_mode: energy_budget_exceeded"
+    - "stress_scenario: composite=0.3985 (below 0.40)"
+    - "technical_risk: stress_scenario_composite=0.3985"
+    - "technical_risk: stress_scenario_composite=0.4051"
+    - "commercial_risk: market_size_too_small_to_justify_capex"
+    - "commercial_risk: capex_exceeds_half_of_market_size"
+    - "commercial_risk: s_curve_adoption_extends_payback_period"
+  assumptions:
+
+  status: "pending"
+physical_laws:
+  - "energy_conservation"
+  - "first_law_thermodynamics"
+  - "meissner_effect"
+  - "schrodinger_equation"
+  - "second_law_thermodynamics"
+  - "third_law_thermodynamics"
+chemical_principles:
+  pathways:
+    - "calcination_cement"
+    - "carbonation_cure"
+    - "polymerization"
+  kinetics:
+
+  equilibrium:
+
+  energy_states:
+    - "activation_energy"
+    - "gibbs_free_energy"
+mathematical_formulation:
+  structures:
+    - "optimization"
+    - "differential_equations"
+    - "linear_algebra"
+    - "quantum_mechanics"
+  governing_equations:
+    -
+      name: "ampere law"
+      form: "B = mu_0 * I / (2*pi*r)"
+      variables:
+        - "B"
+        - "mu_0"
+        - "I"
+        - "r"
+constraints:
+  - "cost"
+  - "material"
+  - "manufacturing"
+  - "energy"
+dependencies:
+  prerequisites:
+    - "sub_supercapacitors"
+  missing_capabilities:
+
+  causal_classifications:
+    necessary: 0
+    sufficient: 0
+    contributing: 1
+    unknown: 0
+assumptions:
+  - "Failure modes are derived from constraint keywords via a small prior map. Real failure modes require FMEA."
+  - "Optimization targets are derived from the problem's stated constraints. Implicit targets (e.g., 'minimize complexity') are not captured."
+  - "The hypothesis is a prediction. It is NOT verified until the experiments are run and outcomes recorded in the ledger."
+  - "Failure-mode experiments are derived from Layer 3's failure modes. If Layer 3 is incomplete, this layer is incomplete."
+  - "Success/failure thresholds (0.70, 0.40) are priors. They should be recalibrated as the verification cycle accumulates outcomes."
+architecture:
+  subsystems:
+    - "subsystem_for_cost"
+    - "subsystem_for_material"
+    - "subsystem_for_manufacturing"
+    - "subsystem_for_energy"
+  interfaces:
+    - "subsystem_for_cost <-> subsystem_for_material"
+    - "subsystem_for_cost <-> subsystem_for_manufacturing"
+    - "subsystem_for_cost <-> subsystem_for_energy"
+    - "subsystem_for_material <-> subsystem_for_manufacturing"
+    - "subsystem_for_material <-> subsystem_for_energy"
+  tolerances:
+    cost: "±15% of capex estimate"
+    material: "±5% of material property target"
+    manufacturing: "±3% yield"
+    energy: "±10% of energy budget"
+simulation:
+  monte_carlo:
+    n_samples: 200
+    composite:
+      mean: 0.4621
+      std: 0.0254
+      p5: 0.4192
+      p50: 0.462
+      p95: 0.5036
+      min: 0.3985
+      max: 0.5209
+    technical:
+      mean: 0.5765
+      std: 0.0577
+      p5: 0.4821
+      p50: 0.5879
+      p95: 0.6613
+      min: 0.4667
+      max: 0.666
+    economic:
+      mean: 0.429
+      std: 0.0575
+      p5: 0.3413
+      p50: 0.4307
+      p95: 0.5239
+      min: 0.3322
+      max: 0.5305
+    regulatory:
+      mean: 0.3782
+      std: 0.0551
+      p5: 0.2897
+      p50: 0.3803
+      p95: 0.4653
+      min: 0.2771
+      max: 0.4748
+    manufacturing:
+      mean: 0.4458
+      std: 0.0584
+      p5: 0.3603
+      p50: 0.4475
+      p95: 0.5354
+      min: 0.3463
+      max: 0.5459
+    adoption:
+      mean: 0.383
+      std: 0.0589
+      p5: 0.2904
+      p50: 0.3846
+      p95: 0.4724
+      min: 0.2811
+      max: 0.4807
+  sensitivity:
+    technical: 0.6815
+    economic: 0.4528
+    regulatory: 0.3254
+    manufacturing: 0.4598
+    adoption: 0.3478
+  stress_testing:
+    -
+      technical_feasibility: 0.4821
+      economic_feasibility: 0.339
+      regulatory_feasibility: 0.3624
+      manufacturing_feasibility: 0.4105
+      adoption_probability: 0.3311
+      composite: 0.3985
+    -
+      technical_feasibility: 0.5101
+      economic_feasibility: 0.3749
+      regulatory_feasibility: 0.3632
+      manufacturing_feasibility: 0.3518
+      adoption_probability: 0.3482
+      composite: 0.4051
+    -
+      technical_feasibility: 0.4802
+      economic_feasibility: 0.3786
+      regulatory_feasibility: 0.4098
+      manufacturing_feasibility: 0.3888
+      adoption_probability: 0.3075
+      composite: 0.4051
+prototype_plan:
+  v1:
+    name: "prototype_v1_physics_validation"
+    goal: "prove the core mechanism works at lab scale"
+    scope: "single subsystem, no integration, no manufacturability"
+    success_threshold: "core mechanism reproduces predicted output within 30%"
+    estimated_duration_months: 6
+    estimated_cost_usd_m: 0.23
+  v2:
+    name: "prototype_v2_engineering_integration"
+    goal: "prove the subsystems integrate into a working system"
+    scope: "all subsystems, no manufacturing pathway, no regulatory submission"
+    success_threshold: "integrated prototype meets primary_output spec at 50% of target performance"
+    estimated_duration_months: 13
+    estimated_cost_usd_m: 0.92
+  v3:
+    name: "prototype_v3_production_readiness"
+    goal: "prove the manufacturing pathway and cost model hold"
+    scope: "production-intent prototype, pilot manufacturing run, regulatory pre-submission"
+    success_threshold: "unit cost within 2x of cost_curve target; regulatory pre-submission accepted"
+    estimated_duration_months: 20
+    estimated_cost_usd_m: 3.67
+  timeline_years: 3.2
+experimental_plan:
+  hypothesis: "The candidate invention will achieve technical feasibility >= 0.70 within 10-15 years, given the prerequisite chain is complete and no regulatory blocker materializes."
+  experiments:
+    -
+      id: "exp_cost_overrun"
+      purpose: "determine whether cost_overrun is a real risk"
+      method: "stress_test_against_cost_overrun"
+      expected_duration: "3-6 months per experiment"
+    -
+      id: "exp_material_unavailable_or_too_expensive"
+      purpose: "determine whether material_unavailable_or_too_expensive is a real risk"
+      method: "stress_test_against_material_unavailable_or_too_expensive"
+      expected_duration: "3-6 months per experiment"
+    -
+      id: "exp_manufacturing_yield_too_low"
+      purpose: "determine whether manufacturing_yield_too_low is a real risk"
+      method: "stress_test_against_manufacturing_yield_too_low"
+      expected_duration: "3-6 months per experiment"
+    -
+      id: "exp_energy_budget_exceeded"
+      purpose: "determine whether energy_budget_exceeded is a real risk"
+      method: "stress_test_against_energy_budget_exceeded"
+      expected_duration: "3-6 months per experiment"
+    -
+      id: "exp_prototype_v1"
+      purpose: "determine whether the candidate can be built at all"
+      method: "build_minimum_viable_prototype"
+      expected_duration: "6-12 months"
+  measurements:
+    -
+      metric: "technical_feasibility_observed"
+      target: ">= 0.70"
+      instrument: "expert_panel_review"
+    -
+      metric: "cost_per_unit_observed"
+      target: "<= capex_estimate / 1000"
+      instrument: "cost_accounting"
+    -
+      metric: "time_to_first_prototype_observed"
+      target: "<= 10-15 years"
+      instrument: "project_tracker"
+    -
+      metric: "regulatory_approval_status"
+      target: "approved_or_withdrawn"
+      instrument: "regulatory_filing_tracker"
+  success_criteria:
+    - "All failure-mode experiments return 'risk_acceptable'."
+    - "Prototype v1 builds successfully and meets primary_output spec."
+    - "Technical feasibility observed >= 0.70 within 10-15 years."
+    - "Composite feasibility from simulation's p50 >= 0.60."
+  failure_criteria:
+    - "Any failure-mode experiment returns 'risk_unacceptable' AND no mitigation is identified."
+    - "Prototype v1 cannot be built within 2x the estimated time."
+    - "Technical feasibility observed < 0.40 after 10-15 years."
+    - "Regulatory approval is denied with no appeal path."
+failure_modes:
+  - "cost_overrun"
+  - "material_unavailable_or_too_expensive"
+  - "manufacturing_yield_too_low"
+  - "energy_budget_exceeded"
+counterevidence:
+  - "failure_mode: cost_overrun"
+  - "failure_mode: material_unavailable_or_too_expensive"
+  - "failure_mode: manufacturing_yield_too_low"
+  - "failure_mode: energy_budget_exceeded"
+  - "stress_scenario: composite=0.3985 (below 0.40)"
+  - "technical_risk: stress_scenario_composite=0.3985"
+  - "technical_risk: stress_scenario_composite=0.4051"
+  - "commercial_risk: market_size_too_small_to_justify_capex"
+  - "commercial_risk: capex_exceeds_half_of_market_size"
+  - "commercial_risk: s_curve_adoption_extends_payback_period"
+confidence: 0.4587
+final_blueprint:
+  parts_list:
+    -
+      id: "sub_supercapacitors"
+      label: "Supercapacitors"
+      type: "subdomain"
+      source_layer: "Layer 2 (prerequisite chain)"
+      note: "Graph node identifier — engineer must map to a real supplier part number or capability."
+  materials_specification:
+    -
+      id: "sub_supercapacitors"
+      label: "Supercapacitors"
+      constraints:
+
+      source_layer: "Layer 2 (fallback — Layer 6 empty)"
+  assembly_plan:
+    subsystems:
+      - "subsystem_for_cost"
+      - "subsystem_for_material"
+      - "subsystem_for_manufacturing"
+      - "subsystem_for_energy"
+    interfaces:
+      - "subsystem_for_cost <-> subsystem_for_material"
+      - "subsystem_for_cost <-> subsystem_for_manufacturing"
+      - "subsystem_for_cost <-> subsystem_for_energy"
+      - "subsystem_for_material <-> subsystem_for_manufacturing"
+      - "subsystem_for_material <-> subsystem_for_energy"
+    inputs:
+      problem_constraints:
+        - "cost"
+        - "material"
+        - "manufacturing"
+        - "energy"
+      time_horizon: "10-15 years"
+      domain: "materials"
+    outputs:
+      primary_output: "Discover a thermoelectric material with ZT > 2.0 at 500C using earth-abundant elements"
+      evidence_quality: "replayable_per_law_8"
+    energy_requirements:
+      budget_tight: true
+      tolerance: "±10% of energy budget"
+      estimated_watts: "depends_on_application"
+    computational_requirements:
+      class: "moderate"
+      note: "Real computational requirements depend on the governing equations from Layer 3 and the simulation approach from Layer 5."
+    source_layer: "Layer 4 (Engineering architecture)"
+  tolerances:
+    cost: "±15% of capex estimate"
+    material: "±5% of material property target"
+    manufacturing: "±3% yield"
+    energy: "±10% of energy budget"
+  prototype_specification:
+    v1:
+      name: "prototype_v1_physics_validation"
+      goal: "prove the core mechanism works at lab scale"
+      scope: "single subsystem, no integration, no manufacturability"
+      success_threshold: "core mechanism reproduces predicted output within 30%"
+      estimated_duration_months: 6
+      estimated_cost_usd_m: 0.23
+    v2:
+      name: "prototype_v2_engineering_integration"
+      goal: "prove the subsystems integrate into a working system"
+      scope: "all subsystems, no manufacturing pathway, no regulatory submission"
+      success_threshold: "integrated prototype meets primary_output spec at 50% of target performance"
+      estimated_duration_months: 13
+      estimated_cost_usd_m: 0.92
+    v3:
+      name: "prototype_v3_production_readiness"
+      goal: "prove the manufacturing pathway and cost model hold"
+      scope: "production-intent prototype, pilot manufacturing run, regulatory pre-submission"
+      success_threshold: "unit cost within 2x of cost_curve target; regulatory pre-submission accepted"
+      estimated_duration_months: 20
+      estimated_cost_usd_m: 3.67
+    timeline:
+      total_months: 39
+      total_years: 3.2
+      fits_within_horizon: true
+      phases:
+        -
+          phase: "v1"
+          start_month: 0
+          end_month: 6
+        -
+          phase: "v2"
+          start_month: 6
+          end_month: 19
+        -
+          phase: "v3"
+          start_month: 19
+          end_month: 39
+    source_layer: "Layer 9 (Prototype layer)"
+  problem: "Discover a thermoelectric material with ZT > 2.0 at 500C using earth-abundant elements"
+  domain: "materials"
+  target_invention: "Discover a thermoelectric material with ZT > 2.0 at 500C using earth-abundant elements"
+  prerequisite_chain_depth: 1
+  governing_equations:
+    -
+      name: "ampere law"
+      form: "B = mu_0 * I / (2*pi*r)"
+      variables:
+        - "B"
+        - "mu_0"
+        - "I"
+        - "r"
+  subsystems:
+    - "subsystem_for_cost"
+    - "subsystem_for_material"
+    - "subsystem_for_manufacturing"
+    - "subsystem_for_energy"
+  composite_feasibility: 27.07
+  prototype_stages:
+    - "prototype_v1_physics_validation"
+    - "prototype_v2_engineering_integration"
+    - "prototype_v3_production_readiness"
+  total_prototype_timeline_years: 3.2

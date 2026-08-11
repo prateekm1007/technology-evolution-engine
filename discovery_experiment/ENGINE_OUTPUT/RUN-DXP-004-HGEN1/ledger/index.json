@@ -1,0 +1,85 @@
+{
+  "hypothesis": {
+    "H-DXP-004-001": {
+      "object_type": "hypothesis",
+      "object_id": "H-DXP-004-001",
+      "content_hash": "7f8bcb907d7221ebe1ac055e27b75803d38b45c0f2da6f8b5a64b14249e30483",
+      "file": "hypotheses/H-DXP-004-001.json",
+      "registered_at": "2026-08-08T11:38:52.222937+00:00",
+      "provenance_root_hash": ""
+    },
+    "H-DXP-004-002": {
+      "object_type": "hypothesis",
+      "object_id": "H-DXP-004-002",
+      "content_hash": "00b369b8416ec6c5c8f142d3c951821720e2991d7d1c19fcfb5492209e37478b",
+      "file": "hypotheses/H-DXP-004-002.json",
+      "registered_at": "2026-08-08T11:38:52.223186+00:00",
+      "provenance_root_hash": ""
+    },
+    "H-DXP-004-003": {
+      "object_type": "hypothesis",
+      "object_id": "H-DXP-004-003",
+      "content_hash": "fd03f6c8227dc9b1ea8f3b8023ff7b66cd2e7f993acfcd663088e7ffc252c31e",
+      "file": "hypotheses/H-DXP-004-003.json",
+      "registered_at": "2026-08-08T11:38:52.223515+00:00",
+      "provenance_root_hash": ""
+    },
+    "H-DXP-004-004": {
+      "object_type": "hypothesis",
+      "object_id": "H-DXP-004-004",
+      "content_hash": "c0319afa890d04e370a3633a3730a10029b0382c0692e6904d849fa7f44aec07",
+      "file": "hypotheses/H-DXP-004-004.json",
+      "registered_at": "2026-08-08T11:38:52.224385+00:00",
+      "provenance_root_hash": ""
+    }
+  },
+  "prior_art": {
+    "PA-H-DXP-004-001": {
+      "object_type": "prior_art",
+      "object_id": "PA-H-DXP-004-001",
+      "content_hash": "457437e09435ef79c5fe4f5ba1b4c088860da5e7fdd9772d0e2c15fab1719231",
+      "file": "prior_art/PA-H-DXP-004-001.json",
+      "registered_at": "2026-08-08T11:39:05.153337+00:00",
+      "provenance_root_hash": ""
+    },
+    "PA-H-DXP-004-002": {
+      "object_type": "prior_art",
+      "object_id": "PA-H-DXP-004-002",
+      "content_hash": "549a521e3ff5b0b7d454a48169eddf9c759b175d0de11d9a93e0181a10e075dd",
+      "file": "prior_art/PA-H-DXP-004-002.json",
+      "registered_at": "2026-08-08T11:39:18.110925+00:00",
+      "provenance_root_hash": ""
+    },
+    "PA-H-DXP-004-003": {
+      "object_type": "prior_art",
+      "object_id": "PA-H-DXP-004-003",
+      "content_hash": "f6421095849def02f0fd31b817c9fd764da4136faec4f7cf507e8a49133704c2",
+      "file": "prior_art/PA-H-DXP-004-003.json",
+      "registered_at": "2026-08-08T11:39:29.112763+00:00",
+      "provenance_root_hash": ""
+    },
+    "PA-H-DXP-004-004": {
+      "object_type": "prior_art",
+      "object_id": "PA-H-DXP-004-004",
+      "content_hash": "65f2d352f8308dfa9d12fd4d9495c73b25943f161844103dcc80d09f270c5484",
+      "file": "prior_art/PA-H-DXP-004-004.json",
+      "registered_at": "2026-08-08T11:39:41.325502+00:00",
+      "provenance_root_hash": ""
+    }
+  },
+  "case": {
+    "DC-DXP-004": {
+      "object_type": "case",
+      "object_id": "DC-DXP-004",
+      "content_hash": "aeba58997855e9796501f8d59bac48780e2a8e9e25672a1daa656a377b6fbbdb",
+      "file": "cases/DC-DXP-004.json",
+      "registered_at": "2026-08-08T11:39:41.335817+00:00",
+      "provenance_root_hash": "4a5bd039faae4fb368d968b05e58566d96764332a681096263be73507f5a0f67"
+    }
+  },
+  "_meta": {
+    "ledger_dir": "discovery_experiment/ENGINE_OUTPUT/RUN-DXP-004-HGEN1/ledger",
+    "last_updated": "2026-08-08T11:39:41.335837+00:00",
+    "total_objects": 9
+  }
+}

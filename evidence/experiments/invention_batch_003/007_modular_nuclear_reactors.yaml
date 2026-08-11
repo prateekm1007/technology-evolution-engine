@@ -1,0 +1,314 @@
+problem: "Build a modular nuclear reactor (SMR) producing 50MWe with <5 year construction time and passive safety"
+domain: "energy"
+hypothesis:
+  id: "hyp_3be815e014c49b25"
+  claim: "The invention 'Build a modular nuclear reactor (SMR) producing 50MWe with <5 year construction time and passive safety' is feasible in the energy domain within the stated time horizon."
+  confidence: 0.3678
+  evidence:
+    - "bernoulli_principle"
+    - "energy_conservation"
+    - "faraday_law"
+    - "first_law_thermodynamics"
+    - "navier_stokes"
+    - "second_law_thermodynamics"
+    - "electrolysis_water"
+    - "photocatalysis_water_splitting"
+    - "ampere law"
+    - "bernoulli equation"
+    - "prerequisite_chain_depth_1"
+    - "capex_$31.61M"
+  counterevidence:
+
+  assumptions:
+
+  status: "pending"
+physical_laws:
+  - "bernoulli_principle"
+  - "energy_conservation"
+  - "faraday_law"
+  - "first_law_thermodynamics"
+  - "navier_stokes"
+  - "second_law_thermodynamics"
+chemical_principles:
+  pathways:
+    - "electrolysis_water"
+    - "photocatalysis_water_splitting"
+  kinetics:
+
+  equilibrium:
+
+  energy_states:
+    - "gibbs_free_energy"
+mathematical_formulation:
+  structures:
+    - "optimization"
+    - "differential_equations"
+    - "thermodynamics"
+    - "probability"
+  governing_equations:
+    -
+      name: "ampere law"
+      form: "B = mu_0 * I / (2*pi*r)"
+      variables:
+        - "B"
+        - "mu_0"
+        - "I"
+        - "r"
+    -
+      name: "bernoulli equation"
+      form: "P + 0.5*rho*v^2 + rho*g*h = const"
+      variables:
+        - "P"
+        - "rho"
+        - "v"
+        - "g"
+        - "h"
+constraints:
+  - "cost"
+  - "material"
+  - "regulation"
+  - "manufacturing"
+  - "safety"
+dependencies:
+  prerequisites:
+    - "domain_civil_engineering"
+  missing_capabilities:
+
+  causal_classifications:
+    necessary: 0
+    sufficient: 0
+    contributing: 1
+    unknown: 0
+assumptions:
+  - "Failure modes are derived from constraint keywords via a small prior map. Real failure modes require FMEA."
+  - "Optimization targets are derived from the problem's stated constraints. Implicit targets (e.g., 'minimize complexity') are not captured."
+  - "The hypothesis is a prediction. It is NOT verified until the experiments are run and outcomes recorded in the ledger."
+  - "Failure-mode experiments are derived from Layer 3's failure modes. If Layer 3 is incomplete, this layer is incomplete."
+  - "Success/failure thresholds (0.70, 0.40) are priors. They should be recalibrated as the verification cycle accumulates outcomes."
+architecture:
+  subsystems:
+    - "subsystem_for_cost"
+    - "subsystem_for_material"
+    - "subsystem_for_regulation"
+    - "subsystem_for_manufacturing"
+    - "subsystem_for_safety"
+  interfaces:
+    - "subsystem_for_cost <-> subsystem_for_material"
+    - "subsystem_for_cost <-> subsystem_for_regulation"
+    - "subsystem_for_cost <-> subsystem_for_manufacturing"
+    - "subsystem_for_cost <-> subsystem_for_safety"
+    - "subsystem_for_material <-> subsystem_for_regulation"
+  tolerances:
+    cost: "±15% of capex estimate"
+    material: "±5% of material property target"
+    regulation: "binary (pass/fail)"
+    manufacturing: "±3% yield"
+    safety: "zero incidents"
+simulation:
+  monte_carlo:
+    n_samples: 200
+    composite:
+      mean: 0.3711
+      std: 0.0254
+      p5: 0.3282
+      p50: 0.371
+      p95: 0.4126
+      min: 0.3075
+      max: 0.4299
+    technical:
+      mean: 0.4855
+      std: 0.0577
+      p5: 0.3911
+      p50: 0.4969
+      p95: 0.5703
+      min: 0.3757
+      max: 0.575
+    economic:
+      mean: 0.338
+      std: 0.0575
+      p5: 0.2503
+      p50: 0.3397
+      p95: 0.4329
+      min: 0.2412
+      max: 0.4395
+    regulatory:
+      mean: 0.2872
+      std: 0.0551
+      p5: 0.1987
+      p50: 0.2893
+      p95: 0.3743
+      min: 0.1861
+      max: 0.3838
+    manufacturing:
+      mean: 0.3548
+      std: 0.0584
+      p5: 0.2693
+      p50: 0.3565
+      p95: 0.4444
+      min: 0.2553
+      max: 0.4549
+    adoption:
+      mean: 0.292
+      std: 0.0589
+      p5: 0.1994
+      p50: 0.2936
+      p95: 0.3814
+      min: 0.1901
+      max: 0.3897
+  sensitivity:
+    technical: 0.6815
+    economic: 0.4528
+    regulatory: 0.3254
+    manufacturing: 0.4598
+    adoption: 0.3478
+  stress_testing:
+    -
+      technical_feasibility: 0.3911
+      economic_feasibility: 0.248
+      regulatory_feasibility: 0.2714
+      manufacturing_feasibility: 0.3195
+      adoption_probability: 0.2401
+      composite: 0.3075
+    -
+      technical_feasibility: 0.4191
+      economic_feasibility: 0.2839
+      regulatory_feasibility: 0.2722
+      manufacturing_feasibility: 0.2608
+      adoption_probability: 0.2572
+      composite: 0.3141
+    -
+      technical_feasibility: 0.3892
+      economic_feasibility: 0.2876
+      regulatory_feasibility: 0.3188
+      manufacturing_feasibility: 0.2978
+      adoption_probability: 0.2165
+      composite: 0.3141
+prototype_plan:
+  v1:
+    name: "prototype_v1_physics_validation"
+    goal: "prove the core mechanism works at lab scale"
+    scope: "single subsystem, no integration, no manufacturability"
+    success_threshold: "core mechanism reproduces predicted output within 30%"
+    estimated_duration_months: 6
+    estimated_cost_usd_m: 0.18
+  v2:
+    name: "prototype_v2_engineering_integration"
+    goal: "prove the subsystems integrate into a working system"
+    scope: "all subsystems, no manufacturing pathway, no regulatory submission"
+    success_threshold: "integrated prototype meets primary_output spec at 50% of target performance"
+    estimated_duration_months: 13
+    estimated_cost_usd_m: 0.74
+  v3:
+    name: "prototype_v3_production_readiness"
+    goal: "prove the manufacturing pathway and cost model hold"
+    scope: "production-intent prototype, pilot manufacturing run, regulatory pre-submission"
+    success_threshold: "unit cost within 2x of cost_curve target; regulatory pre-submission accepted"
+    estimated_duration_months: 20
+    estimated_cost_usd_m: 2.94
+  timeline_years: 3.2
+experimental_plan:
+  hypothesis: "The candidate invention will achieve technical feasibility >= 0.70 within 10-15 years, given the prerequisite chain is complete and no regulatory blocker materializes."
+  experiments:
+    -
+      id: "exp_cost_overrun"
+      purpose: "determine whether cost_overrun is a real risk"
+      method: "stress_test_against_cost_overrun"
+      expected_duration: "3-6 months per experiment"
+    -
+      id: "exp_material_unavailable_or_too_expensive"
+      purpose: "determine whether material_unavailable_or_too_expensive is a real risk"
+      method: "stress_test_against_material_unavailable_or_too_expensive"
+      expected_duration: "3-6 months per experiment"
+    -
+      id: "exp_regulatory_rejection"
+      purpose: "determine whether regulatory_rejection is a real risk"
+      method: "stress_test_against_regulatory_rejection"
+      expected_duration: "3-6 months per experiment"
+    -
+      id: "exp_manufacturing_yield_too_low"
+      purpose: "determine whether manufacturing_yield_too_low is a real risk"
+      method: "stress_test_against_manufacturing_yield_too_low"
+      expected_duration: "3-6 months per experiment"
+    -
+      id: "exp_safety_incident"
+      purpose: "determine whether safety_incident is a real risk"
+      method: "stress_test_against_safety_incident"
+      expected_duration: "3-6 months per experiment"
+    -
+      id: "exp_prototype_v1"
+      purpose: "determine whether the candidate can be built at all"
+      method: "build_minimum_viable_prototype"
+      expected_duration: "6-12 months"
+  measurements:
+    -
+      metric: "technical_feasibility_observed"
+      target: ">= 0.70"
+      instrument: "expert_panel_review"
+    -
+      metric: "cost_per_unit_observed"
+      target: "<= capex_estimate / 1000"
+      instrument: "cost_accounting"
+    -
+      metric: "time_to_first_prototype_observed"
+      target: "<= 10-15 years"
+      instrument: "project_tracker"
+    -
+      metric: "regulatory_approval_status"
+      target: "approved_or_withdrawn"
+      instrument: "regulatory_filing_tracker"
+  success_criteria:
+    - "All failure-mode experiments return 'risk_acceptable'."
+    - "Prototype v1 builds successfully and meets primary_output spec."
+    - "Technical feasibility observed >= 0.70 within 10-15 years."
+    - "Composite feasibility from simulation's p50 >= 0.60."
+  failure_criteria:
+    - "Any failure-mode experiment returns 'risk_unacceptable' AND no mitigation is identified."
+    - "Prototype v1 cannot be built within 2x the estimated time."
+    - "Technical feasibility observed < 0.40 after 10-15 years."
+    - "Regulatory approval is denied with no appeal path."
+failure_modes:
+  - "cost_overrun"
+  - "material_unavailable_or_too_expensive"
+  - "regulatory_rejection"
+  - "manufacturing_yield_too_low"
+  - "safety_incident"
+  - "stress_scenario_composite=0.3075"
+  - "stress_scenario_composite=0.3141"
+counterevidence:
+
+confidence: 0.3678
+final_blueprint:
+  problem: "Build a modular nuclear reactor (SMR) producing 50MWe with <5 year construction time and passive safety"
+  domain: "energy"
+  target_invention: "Build a modular nuclear reactor (SMR) producing 50MWe with <5 year construction time and passive safety"
+  prerequisite_chain_depth: 1
+  governing_equations:
+    -
+      name: "ampere law"
+      form: "B = mu_0 * I / (2*pi*r)"
+      variables:
+        - "B"
+        - "mu_0"
+        - "I"
+        - "r"
+    -
+      name: "bernoulli equation"
+      form: "P + 0.5*rho*v^2 + rho*g*h = const"
+      variables:
+        - "P"
+        - "rho"
+        - "v"
+        - "g"
+        - "h"
+  subsystems:
+    - "subsystem_for_cost"
+    - "subsystem_for_material"
+    - "subsystem_for_regulation"
+    - "subsystem_for_manufacturing"
+    - "subsystem_for_safety"
+  composite_feasibility: 31.61
+  prototype_stages:
+    - "prototype_v1_physics_validation"
+    - "prototype_v2_engineering_integration"
+    - "prototype_v3_production_readiness"
+  total_prototype_timeline_years: 3.2

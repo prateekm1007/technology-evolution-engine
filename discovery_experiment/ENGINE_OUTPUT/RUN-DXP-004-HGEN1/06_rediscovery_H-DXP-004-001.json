@@ -1,0 +1,34 @@
+{
+  "stage": "06_rediscovery_H-DXP-004-001",
+  "run_id": "RUN-DXP-004-HGEN1",
+  "code_sha": "b945c056742d30986464263ccdc7dc5acbe6e1fc",
+  "input_hash": "7f8bcb907d7221ebe1ac055e27b75803d38b45c0f2da6f8b5a64b14249e30483",
+  "output_hash": "b55e9299e7a616a571a57e7692d9791d3097ffa0aa1364d987415adb2939db68",
+  "provider_manifest": {
+    "provider": "zai",
+    "model": "glm-4-plus",
+    "version": "z-ai-web-dev-sdk",
+    "configuration": {
+      "temperature": 0.1,
+      "max_tokens": 4096,
+      "system_sha": "dbdd0760dff49fc029b32b580a575b7de33a87d371edc2b0deec93bfb2b90b01"
+    },
+    "prompt_sha": "846e62ef18530775257a4939b0dc3409245acf4f05fe653a292040f188021430",
+    "seed": null,
+    "tool_versions": {
+      "z_ai_cli": "z-ai"
+    },
+    "timestamp": "2026-08-08T11:39:02.505721+00:00",
+    "latency_ms": 2645,
+    "success": true,
+    "error": ""
+  },
+  "result": {
+    "hypothesis_id": "H-DXP-004-001",
+    "classification": "PARAPHRASED_IN_INPUT",
+    "evidence": "The hypothesis mechanism directly paraphrases information from the source document. The source states: 'The riblets lift these vortices away from the surface, reducing the wetted surface area that the vortices can act upon. The vortices sit on the riblet peaks rather than in the valleys, reducing the shear stress transfer to the surface.' This is nearly identical to the hypothesis claim that 'Engineered riblets will lift streamwise vortices away from the pipe surface, reducing the wetted surface area that vortices can act upon and decreasing drag.' The document also explicitly mentions the anisotropic surface topology and the reduction in momentum transfer between turbulent structures and the wall, which corresponds to the hypothesis mechanism.",
+    "is_rediscovery": true,
+    "source_hypothesis_hash": ""
+  },
+  "timestamp": "2026-08-08T11:39:05.151598+00:00"
+}

@@ -1,0 +1,174 @@
+{
+  "query_id": "Q-OA-W4411823897_OA-W4411917402-domain_bridge-openaire",
+  "pair_id": "OA-W4411823897_OA-W4411917402",
+  "query_type": "domain_bridge",
+  "provider": "openaire",
+  "query_text": "chemistry electronics mechanism",
+  "query_hash": "7ba28409214f5e677928ba5a98dcab48d4e12215c86cb0dd2b142535318be29a",
+  "frozen_query_ref": "Q-OA-W4411823897_OA-W4411917402-domain_bridge-openalex",
+  "url": "https://api.openaire.eu/search/publications?keywords=chemistry+electronics+mechanism&size=10&format=json",
+  "timestamp_utc": "2026-08-11T12:40:13.442229+00:00",
+  "status": "SUCCESS",
+  "result_count": 10,
+  "result_ids": [
+    [
+      {
+        "$": "10.1039/9781788019699-00023"
+      },
+      {
+        "$": "50|doiboost____|30c9913845d995672ec672da295c0ac4"
+      }
+    ],
+    [
+      {
+        "$": "10.1039/c9ra08653f"
+      },
+      {
+        "$": "50|doiboost____|9cc0cab8cc8a34e9f42502f553241f9f"
+      },
+      {
+        "$": "od_______267::41586752585693fbdd96660c1e0c2a7a"
+      },
+      {
+        "$": "35494612"
+      },
+      {
+        "$": "PMC9048576"
+      },
+      {
+        "$": "50|od_______267::41586752585693fbdd96660c1e0c2a7a"
+      },
+      {
+        "$": "oai:pubmedcentral.nih.gov:9048576"
+      },
+      {
+        "$": "3000421792"
+      }
+    ],
+    [
+      {
+        "$": "10.1039/d4tc03346a"
+      },
+      {
+        "$": "50|doiboost____|a73a95d455c4af32d0e24b291917a270"
+      }
+    ],
+    [
+      {
+        "$": "10.1109/ted.2021.3130501"
+      },
+      {
+        "$": "50|doiboost____|1f8320e2d38384648d56d4ea63763d74"
+      }
+    ],
+    [
+      {
+        "$": "10.1039/d3nr04183b"
+      },
+      {
+        "$": "50|doiboost____|fbe19b40e16f5dc2219c2aa23bd7eacb"
+      },
+      {
+        "$": "38312054"
+      }
+    ],
+    [
+      {
+        "$": "10.1039/c7ra11370f"
+      },
+      {
+        "$": "50|doiboost____|2e841be36ba287bdc8922d02187293c3"
+      },
+      {
+        "$": "2770363698"
+      }
+    ],
+    [
+      {
+        "$": "10.1039/d2nh00031h"
+      },
+      {
+        "$": "50|doiboost____|f5377438c0575f656ab175971651f83b"
+      },
+      {
+        "$": "35343522"
+      }
+    ],
+    [
+      {
+        "$": "10.1039/9781788019699-00516"
+      },
+      {
+        "$": "50|doiboost____|00a85115e7b2629cfdc68217a57bff7a"
+      }
+    ],
+    [
+      {
+        "$": "10.1109/5.168671"
+      },
+      {
+        "$": "50|doiboost____|bd07c4d2955d1d992d0505855e0fffa2"
+      },
+      {
+        "$": "50|dblp________::f51a457b9c39ac65e288c6d4b40302f2"
+      },
+      {
+        "$": "2154683728"
+      }
+    ],
+    [
+      {
+        "$": "10.1039/c9tc06331e"
+      },
+      {
+        "$": "50|doiboost____|a20054369de4d56ed907386ac91c7971"
+      },
+      {
+        "$": "2998814775"
+      }
+    ]
+  ],
+  "result_titles": [
+    "Principle and Mechanism of Printed Electronics",
+    "Reduced graphene oxide-based highly sensitive pressure sensor for wearable electronics                     <i>via</i>                     an ordered structure and enhanced interlayer interaction mechanism",
+    "Plasma-activated copper-alkanolamine precursor paste for printed flexible antenna: formulation, mechanism, and performance evaluation",
+    "Interface Chemistry Evolution and Leakage Current Conduction Mechanism Determination in Rare-Earth-Doped Hf-Based Gate Dielectrics",
+    "Microstructure evolution and the deformation mechanism in nanocrystalline superior-deformed tantalum",
+    "Large-scale synthesis of polyhedral Ag nanoparticles for printed electronics",
+    "Novel charm of 2D materials engineering in memristor: when electronics encounter layered morphology",
+    "Printed Electronics Applications: Sensors, Actuators and Biosensors",
+    "Atomic layer epitaxy of III-V compounds: chemistry and applications",
+    "Metal\u20132D multilayered semiconductor junctions: layer-number dependent Fermi-level pinning"
+  ],
+  "result_dois": [
+    "10.1039/9781788019699-00023",
+    "10.1039/c9ra08653f",
+    "10.1039/d4tc03346a",
+    "10.1109/ted.2021.3130501",
+    "10.1039/d3nr04183b",
+    "10.1039/c7ra11370f",
+    "10.1039/d2nh00031h",
+    "10.1039/9781788019699-00516",
+    "10.1109/5.168671",
+    "10.1039/c9tc06331e"
+  ],
+  "result_dates": [
+    "2022-07-20",
+    "2020-01-01",
+    "2025-01-01",
+    "2022-01-01",
+    "2024-01-01",
+    "2017-01-01",
+    "2022-01-01",
+    "2022-07-20",
+    "1992-01-01",
+    "2020-01-01"
+  ],
+  "response_hash": "8a276367746ee9dbb77a9bc71ef855ad97ae4f74c13aece66931e672b1541f53",
+  "evidence_uri": "https://api.openaire.eu/search/publications?keywords=chemistry+electronics+mechanism&size=10&format=json",
+  "error": null,
+  "rate_limit_headers": {
+    "x-ratelimit-used": "268",
+    "x-ratelimit-limit": "7199"
+  }
+}

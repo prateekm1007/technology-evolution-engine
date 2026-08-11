@@ -1,0 +1,130 @@
+{
+  "report_type": "SOURCE_PAIRABILITY_AUDIT_V2_1",
+  "report_version": "2.1.0",
+  "generated_at": "2026-08-11T00:00:00Z",
+  "universe_manifest_hash": "d04a0cdcdc91dcbe424e6e366f49ebe6fd3668dd0039ca76abd70b92425f0184",
+  "source_count": 112,
+  "total_cross_domain_pairs": 5150,
+  "target_pool_size": 200,
+  "actual_pool_size": 182,
+  "random_seed": 42,
+  "stratum_report": {
+    "heuristic_strong": {
+      "desired": 40,
+      "available": 390,
+      "selected": 40,
+      "status": "OK"
+    },
+    "heuristic_weak": {
+      "desired": 60,
+      "available": 1693,
+      "selected": 60,
+      "status": "OK"
+    },
+    "lexical_low_mechanistic": {
+      "desired": 40,
+      "available": 249,
+      "selected": 40,
+      "status": "OK"
+    },
+    "hard_negative": {
+      "desired": 40,
+      "available": 22,
+      "selected": 22,
+      "status": "STRATUM_UNAVAILABLE"
+    },
+    "random_cross_domain": {
+      "desired": 20,
+      "available": 2817,
+      "selected": 20,
+      "status": "OK"
+    }
+  },
+  "stratum_proportions_frozen": true,
+  "no_silent_substitution": true,
+  "hard_negative_methodology": "INDEPENDENT \u2014 high lexical similarity (>=0.15 Jaccard) without bridge consideration. NOT derived from bridge heuristic.",
+  "domain_pair_distribution": {
+    "chemistry \u2194 materials_science": 40,
+    "computer_science \u2194 materials_science": 23,
+    "chemical_engineering \u2194 materials_science": 12,
+    "materials_science \u2194 polymer_science": 11,
+    "electrical_engineering \u2194 materials_science": 8,
+    "materials_science \u2194 mechanical_engineering": 7,
+    "materials_science \u2194 molecular_biology": 7,
+    "computer_science \u2194 polymer_science": 6,
+    "chemical_engineering \u2194 computer_science": 5,
+    "biology \u2194 materials_science": 5,
+    "chemical_engineering \u2194 chemistry": 5,
+    "computer_science \u2194 electrical_engineering": 4,
+    "chemistry \u2194 computer_science": 3,
+    "electromagnetics \u2194 materials_science": 3,
+    "cell_biology \u2194 materials_science": 3,
+    "fluid_mechanics \u2194 materials_science": 3,
+    "computer_science \u2194 mechanical_engineering": 2,
+    "materials_science \u2194 metallurgy": 2,
+    "chemical_engineering \u2194 polymer_science": 2,
+    "polymer_science \u2194 thermodynamics": 2,
+    "chemistry \u2194 electrical_engineering": 2,
+    "materials_science \u2194 thermodynamics": 2,
+    "chemistry \u2194 optoelectronics": 2,
+    "chemistry \u2194 metallurgy": 2,
+    "mechanical_engineering \u2194 polymer_science": 1,
+    "chemical_engineering \u2194 electrical_engineering": 1,
+    "chemistry \u2194 polymer_science": 1,
+    "mechanical_engineering \u2194 metallurgy": 1,
+    "mechanical_engineering \u2194 molecular_biology": 1,
+    "chemical_engineering \u2194 heat_transfer": 1,
+    "computer_science \u2194 molecular_biology": 1,
+    "optics \u2194 polymer_science": 1,
+    "optoelectronics \u2194 polymer_science": 1,
+    "computer_science \u2194 metallurgy": 1,
+    "electrical_engineering \u2194 thermodynamics": 1,
+    "electromagnetics \u2194 mechanical_engineering": 1,
+    "materials_science \u2194 optics": 1,
+    "electrical_engineering \u2194 electronics": 1,
+    "materials_science \u2194 photonics": 1,
+    "electrical_engineering \u2194 electromagnetics": 1,
+    "computer_science \u2194 electronics": 1,
+    "chemical_engineering \u2194 metallurgy": 1,
+    "biology \u2194 chemistry": 1,
+    "biology \u2194 computer_science": 1,
+    "biology \u2194 optics": 1
+  },
+  "blind_packet_contains": [
+    "title_a, title_b",
+    "abstract_a, abstract_b",
+    "doi_a, doi_b",
+    "publisher_a, publisher_b",
+    "publication_date_a, publication_date_b",
+    "domain_a, domain_b"
+  ],
+  "blind_packet_excludes": [
+    "lexical_similarity",
+    "scientific_bridge_score",
+    "bridge_evidence_type",
+    "heuristic_disposition",
+    "stratum",
+    "TEE information",
+    "benchmark labels"
+  ],
+  "adjudication_questions": {
+    "A": "Is there a real mechanistic relationship? (YES/NO/UNCERTAIN)",
+    "B": "Is the relationship cross-domain? (YES/NO)",
+    "C": "Is there a plausible transferable mechanism? (YES/NO/UNCERTAIN)",
+    "D1": "Is the specific relationship explicitly established in literature? (YES/NO/UNCERTAIN)",
+    "D2": "Was relevant literature searched sufficiently? (ADEQUATE/INADEQUATE/INDETERMINATE)",
+    "D3": "Novelty status? (ESTABLISHED/NOT_ESTABLISHED/INDETERMINATE)",
+    "D4": "What search universe was checked? (text)",
+    "E": "Can the pair generate a non-trivial discovery question? (YES/NO/UNCERTAIN)",
+    "F": "Is it sufficiently difficult that a competent scientist cannot trivially answer? (YES/NO/UNCERTAIN)",
+    "G": "Does it create a legitimate discovery opportunity? (YES/NO/UNCERTAIN)",
+    "H": "Could a competent scientist be fooled into believing these mechanisms transfer when they actually do not? (YES/NO/UNCERTAIN)"
+  },
+  "task_type_rules": {
+    "W_TASK": "A=YES, B=YES, C=YES, E=YES, F=YES, G=YES, D3=ESTABLISHED",
+    "S_CANDIDATE": "A=YES, B=YES, C=YES, E=YES, F=YES, G=YES, D1=NO, D2=ADEQUATE, D3=NOT_ESTABLISHED",
+    "REJECT": "Does not meet W or S criteria"
+  },
+  "note": "D=NO alone does NOT establish S-TASK. Requires D1=NO AND D2=ADEQUATE AND D3=NOT_ESTABLISHED. 'Not found' \u2260 'does not exist.'",
+  "negative_result_check": "If custodian adjudicates <100 qualifying pairs, report NEGATIVE_RESULT."
+}

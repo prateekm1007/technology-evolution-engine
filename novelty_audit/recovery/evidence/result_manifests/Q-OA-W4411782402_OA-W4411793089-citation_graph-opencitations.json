@@ -1,0 +1,32 @@
+{
+  "query_id": "Q-OA-W4411782402_OA-W4411793089-citation_graph-opencitations",
+  "pair_id": "OA-W4411782402_OA-W4411793089",
+  "query_type": "citation_graph",
+  "provider": "opencitations",
+  "query_text": "citation_lookup:https://doi.org/10.1021/acsaem.5c00655 <-> https://doi.org/10.1021/acsenergylett.5c00773",
+  "query_hash": "0b28adf6153cbe95c4ede030aa1abf327c9ee7f0f5eaf50ea736bc611a7aafcf",
+  "frozen_query_ref": null,
+  "search_type": "citation_graph",
+  "doi_a": "https://doi.org/10.1021/acsaem.5c00655",
+  "doi_b": "https://doi.org/10.1021/acsenergylett.5c00773",
+  "oc_id_a": "doi:10.1021/acsaem.5c00655",
+  "oc_id_b": "doi:10.1021/acsenergylett.5c00773",
+  "timestamp_utc": "2026-08-11T12:51:40.266353+00:00",
+  "status": "SUCCESS",
+  "a_cites_b": false,
+  "b_cites_a": false,
+  "a_citation_count": 11,
+  "b_citation_count": 10,
+  "a_reference_count": 197,
+  "b_reference_count": 37,
+  "shared_citing": [],
+  "shared_cited": [],
+  "response_hash": "1ca1aec694cf76589d9706d9b0947feec172078d74073d637dee9661ba078888",
+  "evidence_uris": [
+    "https://api.opencitations.net/index/v2/references/doi:10.1021/acsaem.5c00655",
+    "https://api.opencitations.net/index/v2/citations/doi:10.1021/acsaem.5c00655",
+    "https://api.opencitations.net/index/v2/references/doi:10.1021/acsenergylett.5c00773",
+    "https://api.opencitations.net/index/v2/citations/doi:10.1021/acsenergylett.5c00773"
+  ],
+  "error": null
+}

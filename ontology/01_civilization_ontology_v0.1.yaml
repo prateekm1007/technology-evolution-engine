@@ -1,0 +1,16 @@
+# Civilization Ontology v0.1
+version: 0.1
+
+node_types:
+  - id: technology
+    properties: [name, domain, maturity_level, constraint_surface]
+  - id: constraint
+    properties: [name, category, severity, trend]
+  - id: prerequisite
+    properties: [name, pcs_score, estimated_arrival]
+  - id: transformation
+    properties: [undesirable_state, desirable_state, mechanism]
+  - id: candidate
+    properties: [candidate_id, status, pcs, rps, cis]
+  - id: cemetery_entry
+    properties: [name, failure_chain, resurrection_conditions, rps]

@@ -1,0 +1,19 @@
+{
+  "description": "Consumer benchmark inputs for consumer pipeline evaluation",
+  "count": 6,
+  "domains": [
+    "water",
+    "energy",
+    "sensors",
+    "agriculture"
+  ],
+  "domain_distribution": {
+    "water": 1,
+    "energy": 1,
+    "sensors": 3,
+    "agriculture": 1
+  },
+  "source": "Synthetic user prompts representing real consumer needs",
+  "schema_version": "1.0",
+  "created": "2026-08-01"
+}

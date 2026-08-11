@@ -1,0 +1,2073 @@
+{
+  "benchmark": "gen3_relation_extraction_pr",
+  "timestamp": "2026-08-06T18:57:59Z",
+  "sentences": 85,
+  "gold_triples": 89,
+  "true_positives": 82,
+  "false_positives": 19,
+  "false_negatives": 7,
+  "precision": 0.8119,
+  "recall": 0.9213,
+  "f1": 0.8632,
+  "per_sentence": [
+    {
+      "sentence_idx": 0,
+      "gold_count": 1,
+      "pred_count": 1,
+      "true_positives": 1,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "matched_gold": [
+        [
+          "h2so4",
+          "exhibits",
+          "capacitance"
+        ]
+      ],
+      "missed_gold": [],
+      "wrong_preds": [
+        {
+          "subject": "H2SO4",
+          "relation": "exhibited",
+          "object": "excellent specific areal capacitance and"
+        }
+      ]
+    },
+    {
+      "sentence_idx": 1,
+      "gold_count": 1,
+      "pred_count": 1,
+      "true_positives": 0,
+      "false_positives": 1,
+      "false_negatives": 1,
+      "matched_gold": [],
+      "missed_gold": [
+        [
+          "nyquist_plot",
+          "elucidates",
+          "interface"
+        ]
+      ],
+      "wrong_preds": [
+        {
+          "subject": "system is simulated from Nyquist plot to",
+          "relation": "elucidate",
+          "object": "the behavior of electrode electrolyte int"
+        }
+      ]
+    },
+    {
+      "sentence_idx": 2,
+      "gold_count": 1,
+      "pred_count": 1,
+      "true_positives": 1,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "matched_gold": [
+        [
+          "control_formulation",
+          "minimizes",
+          "energy_consumption"
+        ]
+      ],
+      "missed_gold": [],
+      "wrong_preds": [
+        {
+          "subject": "convex optimal control formulation",
+          "relation": "minimize",
+          "object": "total energy consumption"
+        }
+      ]
+    },
+    {
+      "sentence_idx": 3,
+      "gold_count": 1,
+      "pred_count": 0,
+      "true_positives": 0,
+      "false_positives": 0,
+      "false_negatives": 1,
+      "matched_gold": [],
+      "missed_gold": [
+        [
+          "controller",
+          "compared_with",
+          "baseline"
+        ]
+      ],
+      "wrong_preds": []
+    },
+    {
+      "sentence_idx": 4,
+      "gold_count": 1,
+      "pred_count": 1,
+      "true_positives": 1,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "matched_gold": [
+        [
+          "radiative_cooling",
+          "enables",
+          "temperatures"
+        ]
+      ],
+      "missed_gold": [],
+      "wrong_preds": [
+        {
+          "subject": "Passive radiative cooling",
+          "relation": "enables",
+          "object": "sub-ambient temperatures without energy c"
+        }
+      ]
+    },
+    {
+      "sentence_idx": 5,
+      "gold_count": 2,
+      "pred_count": 2,
+      "true_positives": 2,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "matched_gold": [
+        [
+          "surface",
+          "reflects",
+          "solar_radiation"
+        ],
+        [
+          "surface",
+          "emits",
+          "thermal_radiation"
+        ]
+      ],
+      "missed_gold": [],
+      "wrong_preds": [
+        {
+          "subject": "metamaterial surface",
+          "relation": "reflect",
+          "object": "solar radiation"
+        },
+        {
+          "subject": "al surface reflects solar radiation while",
+          "relation": "emitting",
+          "object": "thermal radiation through the atmospheric"
+        }
+      ]
+    },
+    {
+      "sentence_idx": 6,
+      "gold_count": 1,
+      "pred_count": 1,
+      "true_positives": 1,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "matched_gold": [
+        [
+          "absorption",
+          "governs",
+          "cooling_performance"
+        ]
+      ],
+      "missed_gold": [],
+      "wrong_preds": [
+        {
+          "subject": "elective absorption in the solar spectrum",
+          "relation": "governs",
+          "object": "the daytime cooling performance"
+        }
+      ]
+    },
+    {
+      "sentence_idx": 7,
+      "gold_count": 1,
+      "pred_count": 1,
+      "true_positives": 1,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "matched_gold": [
+        [
+          "bismuth_telluride",
+          "exhibits",
+          "seebeck_coefficient"
+        ]
+      ],
+      "missed_gold": [],
+      "wrong_preds": [
+        {
+          "subject": "Bismuth telluride",
+          "relation": "exhibits",
+          "object": "a high Seebeck coefficient near room temp"
+        }
+      ]
+    },
+    {
+      "sentence_idx": 8,
+      "gold_count": 1,
+      "pred_count": 1,
+      "true_positives": 1,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "matched_gold": [
+        [
+          "carrier_concentration",
+          "determines",
+          "efficiency"
+        ]
+      ],
+      "missed_gold": [],
+      "wrong_preds": [
+        {
+          "subject": "carrier concentration",
+          "relation": "determine",
+          "object": "thermoelectric efficiency"
+        }
+      ]
+    },
+    {
+      "sentence_idx": 9,
+      "gold_count": 1,
+      "pred_count": 1,
+      "true_positives": 1,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "matched_gold": [
+        [
+          "phonon_scattering",
+          "reduces",
+          "thermal_conductivity"
+        ]
+      ],
+      "missed_gold": [],
+      "wrong_preds": [
+        {
+          "subject": "Phonon",
+          "relation": "reduce",
+          "object": "thermal conductivity"
+        }
+      ]
+    },
+    {
+      "sentence_idx": 10,
+      "gold_count": 1,
+      "pred_count": 1,
+      "true_positives": 1,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "matched_gold": [
+        [
+          "lithium_plating",
+          "causes",
+          "capacity_fade"
+        ]
+      ],
+      "missed_gold": [],
+      "wrong_preds": [
+        {
+          "subject": "Lithium plating",
+          "relation": "causes",
+          "object": "capacity fade in graphite anodes during f"
+        }
+      ]
+    },
+    {
+      "sentence_idx": 11,
+      "gold_count": 1,
+      "pred_count": 1,
+      "true_positives": 1,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "matched_gold": [
+        [
+          "electrolytes",
+          "enable",
+          "energy_density"
+        ]
+      ],
+      "missed_gold": [],
+      "wrong_preds": [
+        {
+          "subject": "Solid-state electrolytes",
+          "relation": "enable",
+          "object": "higher energy density than liquid electro"
+        }
+      ]
+    },
+    {
+      "sentence_idx": 12,
+      "gold_count": 1,
+      "pred_count": 1,
+      "true_positives": 1,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "matched_gold": [
+        [
+          "dendrite_growth",
+          "causes",
+          "short_circuits"
+        ]
+      ],
+      "missed_gold": [],
+      "wrong_preds": [
+        {
+          "subject": "drite growth penetrates the separator and",
+          "relation": "causes",
+          "object": "internal short circuits"
+        }
+      ]
+    },
+    {
+      "sentence_idx": 13,
+      "gold_count": 2,
+      "pred_count": 2,
+      "true_positives": 1,
+      "false_positives": 1,
+      "false_negatives": 1,
+      "matched_gold": [
+        [
+          "materials",
+          "absorb",
+          "heat"
+        ]
+      ],
+      "missed_gold": [
+        [
+          "materials",
+          "release",
+          "heat"
+        ]
+      ],
+      "wrong_preds": [
+        {
+          "subject": "Phase change materials",
+          "relation": "absorb",
+          "object": "latent heat during melting and release it"
+        },
+        {
+          "subject": "als absorb latent heat during melting and",
+          "relation": "release",
+          "object": "it during solidification"
+        }
+      ]
+    },
+    {
+      "sentence_idx": 14,
+      "gold_count": 1,
+      "pred_count": 2,
+      "true_positives": 1,
+      "false_positives": 1,
+      "false_negatives": 0,
+      "matched_gold": [
+        [
+          "stefan_boltzmann_law",
+          "governs",
+          "heat_transfer"
+        ]
+      ],
+      "missed_gold": [],
+      "wrong_preds": [
+        {
+          "subject": "Stefan-Boltzmann law",
+          "relation": "govern",
+          "object": "radiative heat"
+        },
+        {
+          "subject": "efan-Boltzmann law governs radiative heat",
+          "relation": "transfer",
+          "object": "from a blackbody surface"
+        }
+      ]
+    },
+    {
+      "sentence_idx": 15,
+      "gold_count": 1,
+      "pred_count": 3,
+      "true_positives": 1,
+      "false_positives": 2,
+      "false_negatives": 0,
+      "matched_gold": [
+        [
+          "velocity",
+          "increases",
+          "heat_transfer"
+        ]
+      ],
+      "missed_gold": [],
+      "wrong_preds": [
+        {
+          "subject": "Convective heat transfer",
+          "relation": "increases",
+          "object": "with fluid velocity across the boundary l"
+        },
+        {
+          "subject": "fluid velocity across the boundary layer",
+          "relation": "increases",
+          "object": "Convective heat transfer"
+        },
+        {
+          "subject": "Convective heat",
+          "relation": "transfer",
+          "object": "increases with fluid velocity across the"
+        }
+      ]
+    },
+    {
+      "sentence_idx": 16,
+      "gold_count": 1,
+      "pred_count": 1,
+      "true_positives": 1,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "matched_gold": [
+        [
+          "frameworks",
+          "exhibit",
+          "pore_structures"
+        ]
+      ],
+      "missed_gold": [],
+      "wrong_preds": [
+        {
+          "subject": "Metal-organic frameworks",
+          "relation": "exhibit",
+          "object": "tunable pore structures for gas separatio"
+        }
+      ]
+    },
+    {
+      "sentence_idx": 17,
+      "gold_count": 1,
+      "pred_count": 1,
+      "true_positives": 1,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "matched_gold": [
+        [
+          "bandgap",
+          "determines",
+          "absorption_edge"
+        ]
+      ],
+      "missed_gold": [],
+      "wrong_preds": [
+        {
+          "subject": "The bandgap",
+          "relation": "determines",
+          "object": "the optical absorption edge of the semico"
+        }
+      ]
+    },
+    {
+      "sentence_idx": 18,
+      "gold_count": 1,
+      "pred_count": 2,
+      "true_positives": 0,
+      "false_positives": 2,
+      "false_negatives": 1,
+      "matched_gold": [],
+      "missed_gold": [
+        [
+          "grain_boundaries",
+          "reduce",
+          "mobility"
+        ]
+      ],
+      "wrong_preds": [
+        {
+          "subject": "in boundaries scatter charge carriers and",
+          "relation": "reduce",
+          "object": "mobility in polycrystalline films"
+        },
+        {
+          "subject": "Grain boundaries",
+          "relation": "scatter",
+          "object": "charge carriers and reduce mobility in po"
+        }
+      ]
+    },
+    {
+      "sentence_idx": 19,
+      "gold_count": 2,
+      "pred_count": 3,
+      "true_positives": 2,
+      "false_positives": 1,
+      "false_negatives": 0,
+      "matched_gold": [
+        [
+          "membranes",
+          "reject",
+          "salt_ions"
+        ],
+        [
+          "membranes",
+          "allow",
+          "water_permeation"
+        ]
+      ],
+      "missed_gold": [],
+      "wrong_preds": [
+        {
+          "subject": "Reverse osmosis membranes",
+          "relation": "reject",
+          "object": "salt ions"
+        },
+        {
+          "subject": "Reverse osmosis membranes",
+          "relation": "reject",
+          "object": "water permeation"
+        },
+        {
+          "subject": "osmosis membranes reject salt ions while",
+          "relation": "allowing",
+          "object": "water permeation"
+        }
+      ]
+    },
+    {
+      "sentence_idx": 20,
+      "gold_count": 1,
+      "pred_count": 1,
+      "true_positives": 1,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "matched_gold": [
+        [
+          "capillary_action",
+          "drives",
+          "water_transport"
+        ]
+      ],
+      "missed_gold": [],
+      "wrong_preds": [
+        {
+          "subject": "Capillary action",
+          "relation": "drive",
+          "object": "water transport"
+        }
+      ]
+    },
+    {
+      "sentence_idx": 21,
+      "gold_count": 1,
+      "pred_count": 1,
+      "true_positives": 1,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "matched_gold": [
+        [
+          "activation_energy",
+          "determines",
+          "reaction_rate"
+        ]
+      ],
+      "missed_gold": [],
+      "wrong_preds": [
+        {
+          "subject": "activation energy",
+          "relation": "determine",
+          "object": "reaction rate"
+        }
+      ]
+    },
+    {
+      "sentence_idx": 22,
+      "gold_count": 2,
+      "pred_count": 2,
+      "true_positives": 2,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "matched_gold": [
+        [
+          "catalysts",
+          "lower",
+          "activation_energy"
+        ],
+        [
+          "catalysts",
+          "increase",
+          "reaction_rate"
+        ]
+      ],
+      "missed_gold": [],
+      "wrong_preds": [
+        {
+          "subject": "Catalysts lower the activation energy and",
+          "relation": "increase",
+          "object": "the reaction rate"
+        },
+        {
+          "subject": "Catalysts",
+          "relation": "lower",
+          "object": "the activation energy and increase the re"
+        }
+      ]
+    },
+    {
+      "sentence_idx": 23,
+      "gold_count": 1,
+      "pred_count": 1,
+      "true_positives": 1,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "matched_gold": [
+        [
+          "roughness",
+          "enhances",
+          "adhesion"
+        ]
+      ],
+      "missed_gold": [],
+      "wrong_preds": [
+        {
+          "subject": "Surface roughness",
+          "relation": "enhances",
+          "object": "adhesion between the coating and the subs"
+        }
+      ]
+    },
+    {
+      "sentence_idx": 24,
+      "gold_count": 1,
+      "pred_count": 2,
+      "true_positives": 1,
+      "false_positives": 1,
+      "false_negatives": 0,
+      "matched_gold": [
+        [
+          "thermal_expansion",
+          "causes",
+          "changes"
+        ]
+      ],
+      "missed_gold": [],
+      "wrong_preds": [
+        {
+          "subject": "Thermal expansion",
+          "relation": "cause",
+          "object": "dimensional changes"
+        },
+        {
+          "subject": "Thermal expansion",
+          "relation": "causes",
+          "object": "dimensional changes in the structural mat"
+        }
+      ]
+    },
+    {
+      "sentence_idx": 25,
+      "gold_count": 1,
+      "pred_count": 1,
+      "true_positives": 1,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "matched_gold": [
+        [
+          "electrode_potential",
+          "determines",
+          "direction"
+        ]
+      ],
+      "missed_gold": [],
+      "wrong_preds": [
+        {
+          "subject": "electrode potential",
+          "relation": "determine",
+          "object": "direction"
+        }
+      ]
+    },
+    {
+      "sentence_idx": 26,
+      "gold_count": 1,
+      "pred_count": 1,
+      "true_positives": 0,
+      "false_positives": 1,
+      "false_negatives": 1,
+      "matched_gold": [],
+      "missed_gold": [
+        [
+          "intercalation",
+          "expands",
+          "graphite_layers"
+        ]
+      ],
+      "wrong_preds": [
+        {
+          "subject": "Ion",
+          "relation": "expand",
+          "object": "graphite layers"
+        }
+      ]
+    },
+    {
+      "sentence_idx": 27,
+      "gold_count": 1,
+      "pred_count": 1,
+      "true_positives": 1,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "matched_gold": [
+        [
+          "sei_layer",
+          "prevents",
+          "decomposition"
+        ]
+      ],
+      "missed_gold": [],
+      "wrong_preds": [
+        {
+          "subject": "The SEI layer",
+          "relation": "prevents",
+          "object": "further electrolyte decomposition"
+        }
+      ]
+    },
+    {
+      "sentence_idx": 28,
+      "gold_count": 1,
+      "pred_count": 1,
+      "true_positives": 1,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "matched_gold": [
+        [
+          "coulombic_efficiency",
+          "measures",
+          "charge_retention"
+        ]
+      ],
+      "missed_gold": [],
+      "wrong_preds": [
+        {
+          "subject": "Coulombic efficiency",
+          "relation": "measures",
+          "object": "the charge retention of the battery"
+        }
+      ]
+    },
+    {
+      "sentence_idx": 29,
+      "gold_count": 1,
+      "pred_count": 1,
+      "true_positives": 1,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "matched_gold": [
+        [
+          "polarization_losses",
+          "reduce",
+          "voltage"
+        ]
+      ],
+      "missed_gold": [],
+      "wrong_preds": [
+        {
+          "subject": "Polarization",
+          "relation": "reduce",
+          "object": "operating voltage"
+        }
+      ]
+    },
+    {
+      "sentence_idx": 30,
+      "gold_count": 1,
+      "pred_count": 2,
+      "true_positives": 1,
+      "false_positives": 1,
+      "false_negatives": 0,
+      "matched_gold": [
+        [
+          "dislocation_density",
+          "governs",
+          "yield_strength"
+        ]
+      ],
+      "missed_gold": [],
+      "wrong_preds": [
+        {
+          "subject": "Dislocation density",
+          "relation": "governs",
+          "object": "the yield strength of metals"
+        },
+        {
+          "subject": "Dislocation density governs the",
+          "relation": "yield",
+          "object": "strength of metals"
+        }
+      ]
+    },
+    {
+      "sentence_idx": 31,
+      "gold_count": 1,
+      "pred_count": 1,
+      "true_positives": 1,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "matched_gold": [
+        [
+          "precipitation_hardening",
+          "increases",
+          "strength"
+        ]
+      ],
+      "missed_gold": [],
+      "wrong_preds": [
+        {
+          "subject": "Precipitation",
+          "relation": "increase",
+          "object": "strength"
+        }
+      ]
+    },
+    {
+      "sentence_idx": 32,
+      "gold_count": 1,
+      "pred_count": 1,
+      "true_positives": 1,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "matched_gold": [
+        [
+          "hall_petch_relation",
+          "predicts",
+          "strength"
+        ]
+      ],
+      "missed_gold": [],
+      "wrong_preds": [
+        {
+          "subject": "The Hall-Petch relation",
+          "relation": "predicts",
+          "object": "strength from grain size"
+        }
+      ]
+    },
+    {
+      "sentence_idx": 33,
+      "gold_count": 1,
+      "pred_count": 1,
+      "true_positives": 1,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "matched_gold": [
+        [
+          "vacancy_concentration",
+          "controls",
+          "diffusion_rates"
+        ]
+      ],
+      "missed_gold": [],
+      "wrong_preds": [
+        {
+          "subject": "Vacancy concentration",
+          "relation": "control",
+          "object": "diffusion"
+        }
+      ]
+    },
+    {
+      "sentence_idx": 34,
+      "gold_count": 1,
+      "pred_count": 1,
+      "true_positives": 1,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "matched_gold": [
+        [
+          "twinning",
+          "accommodates",
+          "deformation"
+        ]
+      ],
+      "missed_gold": [],
+      "wrong_preds": [
+        {
+          "subject": "Twinning",
+          "relation": "accommodates",
+          "object": "plastic deformation in low-stacking-fault"
+        }
+      ]
+    },
+    {
+      "sentence_idx": 35,
+      "gold_count": 1,
+      "pred_count": 1,
+      "true_positives": 1,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "matched_gold": [
+        [
+          "atp_hydrolysis",
+          "provides",
+          "energy"
+        ]
+      ],
+      "missed_gold": [],
+      "wrong_preds": [
+        {
+          "subject": "ATP hydrolysis",
+          "relation": "provides",
+          "object": "energy for cellular processes"
+        }
+      ]
+    },
+    {
+      "sentence_idx": 36,
+      "gold_count": 1,
+      "pred_count": 1,
+      "true_positives": 1,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "matched_gold": [
+        [
+          "enzyme_concentration",
+          "affects",
+          "rate"
+        ]
+      ],
+      "missed_gold": [],
+      "wrong_preds": [
+        {
+          "subject": "Enzyme concentration",
+          "relation": "affects",
+          "object": "the rate of biochemical reactions"
+        }
+      ]
+    },
+    {
+      "sentence_idx": 37,
+      "gold_count": 1,
+      "pred_count": 1,
+      "true_positives": 1,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "matched_gold": [
+        [
+          "cell_membrane",
+          "regulates",
+          "ion_transport"
+        ]
+      ],
+      "missed_gold": [],
+      "wrong_preds": [
+        {
+          "subject": "The cell",
+          "relation": "regulate",
+          "object": "ion"
+        }
+      ]
+    },
+    {
+      "sentence_idx": 38,
+      "gold_count": 1,
+      "pred_count": 1,
+      "true_positives": 1,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "matched_gold": [
+        [
+          "photosynthesis",
+          "converts",
+          "solar_energy"
+        ]
+      ],
+      "missed_gold": [],
+      "wrong_preds": [
+        {
+          "subject": "Photosynthesis",
+          "relation": "converts",
+          "object": "solar energy into chemical energy"
+        }
+      ]
+    },
+    {
+      "sentence_idx": 39,
+      "gold_count": 1,
+      "pred_count": 1,
+      "true_positives": 1,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "matched_gold": [
+        [
+          "protein_folding",
+          "determines",
+          "structure"
+        ]
+      ],
+      "missed_gold": [],
+      "wrong_preds": [
+        {
+          "subject": "Protein folding",
+          "relation": "determines",
+          "object": "the three-dimensional structure"
+        }
+      ]
+    },
+    {
+      "sentence_idx": 40,
+      "gold_count": 1,
+      "pred_count": 1,
+      "true_positives": 1,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "matched_gold": [
+        [
+          "thermal_insulation",
+          "reduces",
+          "heat_loss"
+        ]
+      ],
+      "missed_gold": [],
+      "wrong_preds": [
+        {
+          "subject": "Thermal insulation",
+          "relation": "reduce",
+          "object": "heat loss"
+        }
+      ]
+    },
+    {
+      "sentence_idx": 41,
+      "gold_count": 1,
+      "pred_count": 1,
+      "true_positives": 1,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "matched_gold": [
+        [
+          "heat_exchanger",
+          "transfers",
+          "thermal_energy"
+        ]
+      ],
+      "missed_gold": [],
+      "wrong_preds": [
+        {
+          "subject": "The heat exchanger",
+          "relation": "transfers",
+          "object": "thermal energy between two fluid streams"
+        }
+      ]
+    },
+    {
+      "sentence_idx": 42,
+      "gold_count": 1,
+      "pred_count": 2,
+      "true_positives": 1,
+      "false_positives": 1,
+      "false_negatives": 0,
+      "matched_gold": [
+        [
+          "boiling",
+          "enhances",
+          "heat_transfer"
+        ]
+      ],
+      "missed_gold": [],
+      "wrong_preds": [
+        {
+          "subject": "Boiling",
+          "relation": "enhances",
+          "object": "heat transfer through latent heat absorpt"
+        },
+        {
+          "subject": "Boiling enhances heat",
+          "relation": "transfer",
+          "object": "through latent heat absorption"
+        }
+      ]
+    },
+    {
+      "sentence_idx": 43,
+      "gold_count": 1,
+      "pred_count": 2,
+      "true_positives": 1,
+      "false_positives": 1,
+      "false_negatives": 0,
+      "matched_gold": [
+        [
+          "thermal_conductivity",
+          "measures",
+          "ability"
+        ]
+      ],
+      "missed_gold": [],
+      "wrong_preds": [
+        {
+          "subject": "Thermal conductivity",
+          "relation": "measures",
+          "object": "the ability to conduct heat"
+        },
+        {
+          "subject": "rmal conductivity measures the ability to",
+          "relation": "conduct",
+          "object": "heat"
+        }
+      ]
+    },
+    {
+      "sentence_idx": 44,
+      "gold_count": 1,
+      "pred_count": 1,
+      "true_positives": 1,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "matched_gold": [
+        [
+          "nusselt_number",
+          "characterizes",
+          "heat_transfer"
+        ]
+      ],
+      "missed_gold": [],
+      "wrong_preds": [
+        {
+          "subject": "The Nusselt",
+          "relation": "characterize",
+          "object": "convective heat"
+        }
+      ]
+    },
+    {
+      "sentence_idx": 45,
+      "gold_count": 1,
+      "pred_count": 1,
+      "true_positives": 1,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "matched_gold": [
+        [
+          "refraction",
+          "bends",
+          "light"
+        ]
+      ],
+      "missed_gold": [],
+      "wrong_preds": [
+        {
+          "subject": "Refraction",
+          "relation": "bends",
+          "object": "light at the interface between two media"
+        }
+      ]
+    },
+    {
+      "sentence_idx": 46,
+      "gold_count": 1,
+      "pred_count": 1,
+      "true_positives": 1,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "matched_gold": [
+        [
+          "total_internal_reflection",
+          "confines",
+          "light"
+        ]
+      ],
+      "missed_gold": [],
+      "wrong_preds": [
+        {
+          "subject": "Total internal reflection",
+          "relation": "confines",
+          "object": "light within the optical fiber"
+        }
+      ]
+    },
+    {
+      "sentence_idx": 47,
+      "gold_count": 1,
+      "pred_count": 1,
+      "true_positives": 1,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "matched_gold": [
+        [
+          "diffraction",
+          "limits",
+          "resolution"
+        ]
+      ],
+      "missed_gold": [],
+      "wrong_preds": [
+        {
+          "subject": "Diffraction",
+          "relation": "limits",
+          "object": "the resolution of optical microscopes"
+        }
+      ]
+    },
+    {
+      "sentence_idx": 48,
+      "gold_count": 1,
+      "pred_count": 1,
+      "true_positives": 1,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "matched_gold": [
+        [
+          "refractive_index",
+          "determines",
+          "speed"
+        ]
+      ],
+      "missed_gold": [],
+      "wrong_preds": [
+        {
+          "subject": "refractive index",
+          "relation": "determine",
+          "object": "speed"
+        }
+      ]
+    },
+    {
+      "sentence_idx": 49,
+      "gold_count": 1,
+      "pred_count": 1,
+      "true_positives": 1,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "matched_gold": [
+        [
+          "coatings",
+          "reduce",
+          "reflection_losses"
+        ]
+      ],
+      "missed_gold": [],
+      "wrong_preds": [
+        {
+          "subject": "Anti-reflective coatings",
+          "relation": "reduce",
+          "object": "surface reflection losses"
+        }
+      ]
+    },
+    {
+      "sentence_idx": 50,
+      "gold_count": 1,
+      "pred_count": 2,
+      "true_positives": 1,
+      "false_positives": 1,
+      "false_negatives": 0,
+      "matched_gold": [
+        [
+          "stress_concentration",
+          "causes",
+          "crack_initiation"
+        ]
+      ],
+      "missed_gold": [],
+      "wrong_preds": [
+        {
+          "subject": "Stress concentration",
+          "relation": "cause",
+          "object": "crack initiation"
+        },
+        {
+          "subject": "Stress concentration",
+          "relation": "causes",
+          "object": "crack initiation at the notch"
+        }
+      ]
+    },
+    {
+      "sentence_idx": 51,
+      "gold_count": 1,
+      "pred_count": 1,
+      "true_positives": 1,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "matched_gold": [
+        [
+          "fatigue_loading",
+          "produces",
+          "damage"
+        ]
+      ],
+      "missed_gold": [],
+      "wrong_preds": [
+        {
+          "subject": "Fatigue loading",
+          "relation": "produces",
+          "object": "progressive damage accumulation"
+        }
+      ]
+    },
+    {
+      "sentence_idx": 52,
+      "gold_count": 1,
+      "pred_count": 1,
+      "true_positives": 1,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "matched_gold": [
+        [
+          "modulus_of_elasticity",
+          "measures",
+          "stiffness"
+        ]
+      ],
+      "missed_gold": [],
+      "wrong_preds": [
+        {
+          "subject": "The modulus of elasticity",
+          "relation": "measures",
+          "object": "material stiffness"
+        }
+      ]
+    },
+    {
+      "sentence_idx": 53,
+      "gold_count": 1,
+      "pred_count": 2,
+      "true_positives": 1,
+      "false_positives": 1,
+      "false_negatives": 0,
+      "matched_gold": [
+        [
+          "poissons_ratio",
+          "characterizes",
+          "contraction"
+        ]
+      ],
+      "missed_gold": [],
+      "wrong_preds": [
+        {
+          "subject": "Poisson",
+          "relation": "characterize",
+          "object": "lateral contraction"
+        },
+        {
+          "subject": "s ratio",
+          "relation": "characterizes",
+          "object": "lateral contraction under tension"
+        }
+      ]
+    },
+    {
+      "sentence_idx": 54,
+      "gold_count": 1,
+      "pred_count": 1,
+      "true_positives": 1,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "matched_gold": [
+        [
+          "creep_deformation",
+          "occurs",
+          "stress"
+        ]
+      ],
+      "missed_gold": [],
+      "wrong_preds": [
+        {
+          "subject": "Creep deformation",
+          "relation": "occurs",
+          "object": "sustained stress at high temperature"
+        }
+      ]
+    },
+    {
+      "sentence_idx": 55,
+      "gold_count": 1,
+      "pred_count": 1,
+      "true_positives": 1,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "matched_gold": [
+        [
+          "acid_concentration",
+          "accelerates",
+          "corrosion_rate"
+        ]
+      ],
+      "missed_gold": [],
+      "wrong_preds": [
+        {
+          "subject": "Acid",
+          "relation": "accelerate",
+          "object": "corrosion rate"
+        }
+      ]
+    },
+    {
+      "sentence_idx": 56,
+      "gold_count": 1,
+      "pred_count": 1,
+      "true_positives": 0,
+      "false_positives": 1,
+      "false_negatives": 1,
+      "matched_gold": [],
+      "missed_gold": [
+        [
+          "reaction_quotient",
+          "determines",
+          "shift"
+        ]
+      ],
+      "wrong_preds": [
+        {
+          "subject": "reaction quotient",
+          "relation": "determine",
+          "object": "direction"
+        }
+      ]
+    },
+    {
+      "sentence_idx": 57,
+      "gold_count": 1,
+      "pred_count": 1,
+      "true_positives": 1,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "matched_gold": [
+        [
+          "catalytic_poisoning",
+          "deactivates",
+          "active_sites"
+        ]
+      ],
+      "missed_gold": [],
+      "wrong_preds": [
+        {
+          "subject": "Catalytic poisoning",
+          "relation": "deactivate",
+          "object": "active sites"
+        }
+      ]
+    },
+    {
+      "sentence_idx": 58,
+      "gold_count": 1,
+      "pred_count": 1,
+      "true_positives": 1,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "matched_gold": [
+        [
+          "solvent_polarity",
+          "affects",
+          "mechanism"
+        ]
+      ],
+      "missed_gold": [],
+      "wrong_preds": [
+        {
+          "subject": "Solvent polarity",
+          "relation": "affect",
+          "object": "reaction mechanism"
+        }
+      ]
+    },
+    {
+      "sentence_idx": 59,
+      "gold_count": 1,
+      "pred_count": 1,
+      "true_positives": 1,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "matched_gold": [
+        [
+          "rate_constant",
+          "depends_on",
+          "temperature"
+        ]
+      ],
+      "missed_gold": [],
+      "wrong_preds": [
+        {
+          "subject": "The rate constant",
+          "relation": "depends",
+          "object": "temperature per the Arrhenius equation"
+        }
+      ]
+    },
+    {
+      "sentence_idx": 60,
+      "gold_count": 1,
+      "pred_count": 2,
+      "true_positives": 1,
+      "false_positives": 1,
+      "false_negatives": 0,
+      "matched_gold": [
+        [
+          "bandwidth",
+          "limits",
+          "data_transfer_rate"
+        ]
+      ],
+      "missed_gold": [],
+      "wrong_preds": [
+        {
+          "subject": "Bandwidth",
+          "relation": "limits",
+          "object": "the maximum data transfer rate"
+        },
+        {
+          "subject": "Bandwidth limits the maximum data",
+          "relation": "transfer",
+          "object": "rate"
+        }
+      ]
+    },
+    {
+      "sentence_idx": 61,
+      "gold_count": 1,
+      "pred_count": 1,
+      "true_positives": 1,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "matched_gold": [
+        [
+          "latency",
+          "measures",
+          "delay"
+        ]
+      ],
+      "missed_gold": [],
+      "wrong_preds": [
+        {
+          "subject": "Latency",
+          "relation": "measures",
+          "object": "the round-trip delay of network packets"
+        }
+      ]
+    },
+    {
+      "sentence_idx": 62,
+      "gold_count": 1,
+      "pred_count": 1,
+      "true_positives": 1,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "matched_gold": [
+        [
+          "cache_size",
+          "affects",
+          "hit_rate"
+        ]
+      ],
+      "missed_gold": [],
+      "wrong_preds": [
+        {
+          "subject": "Cache",
+          "relation": "affect",
+          "object": "the hit"
+        }
+      ]
+    },
+    {
+      "sentence_idx": 63,
+      "gold_count": 1,
+      "pred_count": 1,
+      "true_positives": 1,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "matched_gold": [
+        [
+          "parallelism",
+          "increases",
+          "throughput"
+        ]
+      ],
+      "missed_gold": [],
+      "wrong_preds": [
+        {
+          "subject": "Parallelism",
+          "relation": "increases",
+          "object": "throughput for independent tasks"
+        }
+      ]
+    },
+    {
+      "sentence_idx": 64,
+      "gold_count": 1,
+      "pred_count": 1,
+      "true_positives": 1,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "matched_gold": [
+        [
+          "quantization",
+          "reduces",
+          "precision"
+        ]
+      ],
+      "missed_gold": [],
+      "wrong_preds": [
+        {
+          "subject": "Quantization",
+          "relation": "reduces",
+          "object": "the precision of neural network weights"
+        }
+      ]
+    },
+    {
+      "sentence_idx": 65,
+      "gold_count": 1,
+      "pred_count": 1,
+      "true_positives": 1,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "matched_gold": [
+        [
+          "carnot_efficiency",
+          "limits",
+          "work_output"
+        ]
+      ],
+      "missed_gold": [],
+      "wrong_preds": [
+        {
+          "subject": "Carnot efficiency",
+          "relation": "limit",
+          "object": "maximum work output"
+        }
+      ]
+    },
+    {
+      "sentence_idx": 66,
+      "gold_count": 1,
+      "pred_count": 1,
+      "true_positives": 1,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "matched_gold": [
+        [
+          "conversion_efficiency",
+          "depends_on",
+          "bandgap"
+        ]
+      ],
+      "missed_gold": [],
+      "wrong_preds": [
+        {
+          "subject": "Photovoltaic conversion efficiency",
+          "relation": "depends",
+          "object": "the bandgap"
+        }
+      ]
+    },
+    {
+      "sentence_idx": 67,
+      "gold_count": 1,
+      "pred_count": 1,
+      "true_positives": 1,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "matched_gold": [
+        [
+          "hydroelectric_power",
+          "harnesses",
+          "potential_energy"
+        ]
+      ],
+      "missed_gold": [],
+      "wrong_preds": [
+        {
+          "subject": "Hydroelectric power",
+          "relation": "harnesses",
+          "object": "gravitational potential energy"
+        }
+      ]
+    },
+    {
+      "sentence_idx": 68,
+      "gold_count": 1,
+      "pred_count": 1,
+      "true_positives": 1,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "matched_gold": [
+        [
+          "wind_turbines",
+          "extract",
+          "kinetic_energy"
+        ]
+      ],
+      "missed_gold": [],
+      "wrong_preds": [
+        {
+          "subject": "Wind",
+          "relation": "extract",
+          "object": "kinetic energy"
+        }
+      ]
+    },
+    {
+      "sentence_idx": 69,
+      "gold_count": 1,
+      "pred_count": 1,
+      "true_positives": 1,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "matched_gold": [
+        [
+          "supercapacitors",
+          "store",
+          "energy"
+        ]
+      ],
+      "missed_gold": [],
+      "wrong_preds": [
+        {
+          "subject": "Supercapacitors",
+          "relation": "store",
+          "object": "energy through ion adsorption"
+        }
+      ]
+    },
+    {
+      "sentence_idx": 70,
+      "gold_count": 1,
+      "pred_count": 1,
+      "true_positives": 1,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "matched_gold": [
+        [
+          "greenhouse_gases",
+          "trap",
+          "thermal_radiation"
+        ]
+      ],
+      "missed_gold": [],
+      "wrong_preds": [
+        {
+          "subject": "Greenhouse gases",
+          "relation": "trap",
+          "object": "thermal radiation in the atmosphere"
+        }
+      ]
+    },
+    {
+      "sentence_idx": 71,
+      "gold_count": 1,
+      "pred_count": 1,
+      "true_positives": 0,
+      "false_positives": 1,
+      "false_negatives": 1,
+      "matched_gold": [],
+      "missed_gold": [
+        [
+          "co2_absorption",
+          "causes",
+          "ocean_acidification"
+        ]
+      ],
+      "wrong_preds": [
+        {
+          "subject": "CO2 absorption",
+          "relation": "results",
+          "object": "Ocean acidification"
+        }
+      ]
+    },
+    {
+      "sentence_idx": 72,
+      "gold_count": 1,
+      "pred_count": 1,
+      "true_positives": 1,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "matched_gold": [
+        [
+          "deforestation",
+          "reduces",
+          "sequestration"
+        ]
+      ],
+      "missed_gold": [],
+      "wrong_preds": [
+        {
+          "subject": "Deforestation",
+          "relation": "reduces",
+          "object": "carbon sequestration capacity"
+        }
+      ]
+    },
+    {
+      "sentence_idx": 73,
+      "gold_count": 1,
+      "pred_count": 2,
+      "true_positives": 1,
+      "false_positives": 1,
+      "false_negatives": 0,
+      "matched_gold": [
+        [
+          "aerosols",
+          "scatter",
+          "solar_radiation"
+        ]
+      ],
+      "missed_gold": [],
+      "wrong_preds": [
+        {
+          "subject": "Aerosols",
+          "relation": "income",
+          "object": "solar radiation"
+        },
+        {
+          "subject": "Aerosols",
+          "relation": "scatter",
+          "object": "incoming solar radiation"
+        }
+      ]
+    },
+    {
+      "sentence_idx": 74,
+      "gold_count": 1,
+      "pred_count": 1,
+      "true_positives": 1,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "matched_gold": [
+        [
+          "permafrost_thawing",
+          "releases",
+          "methane"
+        ]
+      ],
+      "missed_gold": [],
+      "wrong_preds": [
+        {
+          "subject": "Permafrost thawing",
+          "relation": "releases",
+          "object": "methane into the atmosphere"
+        }
+      ]
+    },
+    {
+      "sentence_idx": 75,
+      "gold_count": 1,
+      "pred_count": 1,
+      "true_positives": 1,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "matched_gold": [
+        [
+          "permeability",
+          "determines",
+          "response"
+        ]
+      ],
+      "missed_gold": [],
+      "wrong_preds": [
+        {
+          "subject": "Magnetic permeability",
+          "relation": "determines",
+          "object": "the response to applied fields"
+        }
+      ]
+    },
+    {
+      "sentence_idx": 76,
+      "gold_count": 1,
+      "pred_count": 1,
+      "true_positives": 1,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "matched_gold": [
+        [
+          "hysteresis_losses",
+          "reduce",
+          "efficiency"
+        ]
+      ],
+      "missed_gold": [],
+      "wrong_preds": [
+        {
+          "subject": "Hysteresis losses",
+          "relation": "reduce",
+          "object": "the efficiency of magnetic cores"
+        }
+      ]
+    },
+    {
+      "sentence_idx": 77,
+      "gold_count": 1,
+      "pred_count": 1,
+      "true_positives": 1,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "matched_gold": [
+        [
+          "eddy_currents",
+          "generate",
+          "heat"
+        ]
+      ],
+      "missed_gold": [],
+      "wrong_preds": [
+        {
+          "subject": "Eddy currents",
+          "relation": "generate",
+          "object": "heat in conducting materials"
+        }
+      ]
+    },
+    {
+      "sentence_idx": 78,
+      "gold_count": 1,
+      "pred_count": 1,
+      "true_positives": 1,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "matched_gold": [
+        [
+          "curie_temperature",
+          "marks",
+          "transition"
+        ]
+      ],
+      "missed_gold": [],
+      "wrong_preds": [
+        {
+          "subject": "Curie temperature",
+          "relation": "mark",
+          "object": "transition"
+        }
+      ]
+    },
+    {
+      "sentence_idx": 79,
+      "gold_count": 1,
+      "pred_count": 1,
+      "true_positives": 1,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "matched_gold": [
+        [
+          "magnetic_domains",
+          "align",
+          "external_field"
+        ]
+      ],
+      "missed_gold": [],
+      "wrong_preds": [
+        {
+          "subject": "Magnetic domains",
+          "relation": "align",
+          "object": "under an external field"
+        }
+      ]
+    },
+    {
+      "sentence_idx": 80,
+      "gold_count": 1,
+      "pred_count": 1,
+      "true_positives": 1,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "matched_gold": [
+        [
+          "reynolds_number",
+          "characterizes",
+          "flow_regime"
+        ]
+      ],
+      "missed_gold": [],
+      "wrong_preds": [
+        {
+          "subject": "Reynolds",
+          "relation": "characterize",
+          "object": "the flow"
+        }
+      ]
+    },
+    {
+      "sentence_idx": 81,
+      "gold_count": 1,
+      "pred_count": 1,
+      "true_positives": 1,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "matched_gold": [
+        [
+          "viscosity",
+          "resists",
+          "motion"
+        ]
+      ],
+      "missed_gold": [],
+      "wrong_preds": [
+        {
+          "subject": "Viscosity",
+          "relation": "resists",
+          "object": "relative motion between fluid layers"
+        }
+      ]
+    },
+    {
+      "sentence_idx": 82,
+      "gold_count": 1,
+      "pred_count": 1,
+      "true_positives": 1,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "matched_gold": [
+        [
+          "pressure_drop",
+          "scales",
+          "flow_rate"
+        ]
+      ],
+      "missed_gold": [],
+      "wrong_preds": [
+        {
+          "subject": "Pressure drop",
+          "relation": "scales",
+          "object": "the square of flow rate in turbulent flow"
+        }
+      ]
+    },
+    {
+      "sentence_idx": 83,
+      "gold_count": 1,
+      "pred_count": 1,
+      "true_positives": 1,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "matched_gold": [
+        [
+          "separation",
+          "causes",
+          "pressure_drag"
+        ]
+      ],
+      "missed_gold": [],
+      "wrong_preds": [
+        {
+          "subject": "Boundary layer separation",
+          "relation": "causes",
+          "object": "pressure drag"
+        }
+      ]
+    },
+    {
+      "sentence_idx": 84,
+      "gold_count": 1,
+      "pred_count": 1,
+      "true_positives": 1,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "matched_gold": [
+        [
+          "surface_tension",
+          "drives",
+          "capillary_action"
+        ]
+      ],
+      "missed_gold": [],
+      "wrong_preds": [
+        {
+          "subject": "Surface tension",
+          "relation": "drive",
+          "object": "capillary action"
+        }
+      ]
+    }
+  ],
+  "outcome_points": 3,
+  "infra_score": 5,
+  "total_score": 9,
+  "scoring_formula": "round(10 \u00d7 F1)"
+}

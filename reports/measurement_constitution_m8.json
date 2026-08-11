@@ -1,0 +1,2504 @@
+{
+  "cycle": 266,
+  "stage": "M8",
+  "program": "A",
+  "n_rules": 8,
+  "n_metrics": 38,
+  "n_checks": 304,
+  "n_compliant": 304,
+  "n_non_compliant": 0,
+  "all_metrics_pass": true,
+  "gate_verdict": "PASS",
+  "rules": [
+    {
+      "rule_id": "MC-1",
+      "name": "No self-validation",
+      "statement": "A metric may not be validated by the same system that produced it. Every metric must have an independent rescoring path.",
+      "source": "DR-94 (M-305 bias = +2.50, 100% overestimate), ROADMAP_V2 M8",
+      "enforcement": "Every metric specification (M1) must document an independent evaluator. The measurement audit modules (dr91_dr96) reproduce matchers from scratch (zero production imports)."
+    },
+    {
+      "rule_id": "MC-2",
+      "name": "Independent rescoring",
+      "statement": "Every metric must have an independent implementation that reproduces the score without sharing matching code with production.",
+      "source": "DR-91 (independent matcher, zero production imports), ROADMAP_V2 M8",
+      "enforcement": "The DR-91 audit module (dr91_measurement_audit.py) reproduces all matchers (m_exact, m_token, m_fuzzy, m_synonym) from scratch. The bootstrap module (bootstrap_statistics.py) uses the same independent matchers."
+    },
+    {
+      "rule_id": "MC-3",
+      "name": "Confidence calibration",
+      "statement": "Every metric that produces a confidence score must report ECE or Brier score. Confidence without calibration is forbidden.",
+      "source": "DR-96 (M-306 ECE = 0.433, poorly calibrated), ROADMAP_V2 M8",
+      "enforcement": "M-306 (ECE) is specified in M1 and bootstrapped in M3. ECE > 0.2 blocks any confidence-based claim (per DR-96). The ScoredValue (M2) carries calibration_version."
+    },
+    {
+      "rule_id": "MC-4",
+      "name": "Evidence tiers",
+      "statement": "Every metric must declare an evidence tier (A-I per CONSTITUTION evidence hierarchy). Metrics at tier I (LLM inference) carry weight 0.20 and must be flagged as 'unverified \u2014 inference only.'",
+      "source": "CONSTITUTION evidence hierarchy, M1 specification, ROADMAP_V2 M8",
+      "enforcement": "Every metric in MeasurementEngineSpecification.md (M1) has an 'Evidence tier' field. The ScoredValue (M2) carries evidence_tier. The bootstrap (M3) reports tier."
+    },
+    {
+      "rule_id": "MC-5",
+      "name": "Adversarial testing",
+      "statement": "Every metric must be tested against adversarial inputs: FP floor (random candidates) must be < 5%, sensitivity to input perturbation must be documented (M6), and a failure envelope must exist (M7).",
+      "source": "M6 (sensitivity), M7 (failure envelope), DR-91 (FP floor), ROADMAP_V2 M8",
+      "enforcement": "M-008 (FP floor) is specified, bootstrapped, and has a failure envelope. M6 tests 26 perturbations across 4 metrics. M7 generates 38 failure envelope documents. FP floor > 5% blocks discovery claims."
+    },
+    {
+      "rule_id": "MC-6",
+      "name": "Historical permanence",
+      "statement": "No metric may be silently altered. Historical scores must be reproducible. Code drift must be documented. Repeatability (M4) must be demonstrated.",
+      "source": "CONSTITUTION Law 7, M4 (repeatability), M-201 code drift, ROADMAP_V2 M8",
+      "enforcement": "M4 runs 5 metrics \u00d7 10 seeds, all CV < 0.15. Code drift (M-201 documented 2/10 vs current 8.3/10) is documented in the failure envelope. FAILURES.md is append-only (Law 7). Historical recalibration (DR-98) re-scores past claims."
+    },
+    {
+      "rule_id": "MC-7",
+      "name": "No naked numbers",
+      "statement": "No score may be reported as a bare scalar. Every score must be a ScoredValue with \u00b1 uncertainty, 95% CI, evidence tier, calibration version, evaluator version, benchmark version, timestamp.",
+      "source": "M2 (provenance), ANTI_ENTROPY line 559 ('no bare scalar'), ROADMAP_V2 M8",
+      "enforcement": "ScoredValue dataclass (M2) has 17 fields. @with_provenance decorator wraps score functions. ProvenanceRegistry loads bootstrap CIs. is_naked_number() detects bare floats."
+    },
+    {
+      "rule_id": "MC-8",
+      "name": "Bootstrap uncertainty",
+      "statement": "Every metric must report a bootstrap 95% CI with N and B. Point estimates without CIs are forbidden.",
+      "source": "M3 (bootstrap), ROADMAP_V2 Stage M3",
+      "enforcement": "bootstrap_statistics.py bootstraps all 38 metrics (B=500/200/100, seed=42). reports/bootstrap_statistics.json contains CIs for all metrics. MeasurementEngineSpecification.md (M1) Uncertainty fields are populated from M3."
+    }
+  ],
+  "results": [
+    {
+      "rule_id": "MC-1",
+      "rule_name": "No self-validation",
+      "metric_id": "M-001",
+      "compliant": true,
+      "evidence": "DR-91 independent audit module exists (zero production imports)",
+      "source": "audit/measurement_integrity/dr91_measurement_audit.py"
+    },
+    {
+      "rule_id": "MC-2",
+      "rule_name": "Independent rescoring",
+      "metric_id": "M-001",
+      "compliant": true,
+      "evidence": "M3 bootstrap uses independent matchers (reproduced from DR-91)",
+      "source": "programs/A_metrology/bootstrap_statistics.py"
+    },
+    {
+      "rule_id": "MC-3",
+      "rule_name": "Confidence calibration",
+      "metric_id": "M-001",
+      "compliant": true,
+      "evidence": "N/A \u2014 metric does not produce confidence scores",
+      "source": "N/A"
+    },
+    {
+      "rule_id": "MC-4",
+      "rule_name": "Evidence tiers",
+      "metric_id": "M-001",
+      "compliant": true,
+      "evidence": "M1 spec exists with Evidence tier field",
+      "source": "programs/A_metrology/MeasurementEngineSpecification.md"
+    },
+    {
+      "rule_id": "MC-5",
+      "rule_name": "Adversarial testing",
+      "metric_id": "M-001",
+      "compliant": true,
+      "evidence": "envelope=True, fp_floor=True",
+      "source": "reports/failure_envelopes/ + reports/bootstrap_statistics.json (M-008)"
+    },
+    {
+      "rule_id": "MC-6",
+      "rule_name": "Historical permanence",
+      "metric_id": "M-001",
+      "compliant": true,
+      "evidence": "deterministic (degenerate in M3, no drift possible)",
+      "source": "reports/repeatability_m4.json + reports/bootstrap_statistics.json"
+    },
+    {
+      "rule_id": "MC-7",
+      "rule_name": "No naked numbers",
+      "metric_id": "M-001",
+      "compliant": true,
+      "evidence": "ScoredValue + ProvenanceRegistry + @with_provenance exist",
+      "source": "programs/A_metrology/measurement_provenance.py"
+    },
+    {
+      "rule_id": "MC-8",
+      "rule_name": "Bootstrap uncertainty",
+      "metric_id": "M-001",
+      "compliant": true,
+      "evidence": "M3 bootstrap exists: True (CI=0.0, 0.0)",
+      "source": "reports/bootstrap_statistics.json"
+    },
+    {
+      "rule_id": "MC-1",
+      "rule_name": "No self-validation",
+      "metric_id": "M-002",
+      "compliant": true,
+      "evidence": "DR-91 independent audit module exists (zero production imports)",
+      "source": "audit/measurement_integrity/dr91_measurement_audit.py"
+    },
+    {
+      "rule_id": "MC-2",
+      "rule_name": "Independent rescoring",
+      "metric_id": "M-002",
+      "compliant": true,
+      "evidence": "M3 bootstrap uses independent matchers (reproduced from DR-91)",
+      "source": "programs/A_metrology/bootstrap_statistics.py"
+    },
+    {
+      "rule_id": "MC-3",
+      "rule_name": "Confidence calibration",
+      "metric_id": "M-002",
+      "compliant": true,
+      "evidence": "N/A \u2014 metric does not produce confidence scores",
+      "source": "N/A"
+    },
+    {
+      "rule_id": "MC-4",
+      "rule_name": "Evidence tiers",
+      "metric_id": "M-002",
+      "compliant": true,
+      "evidence": "M1 spec exists with Evidence tier field",
+      "source": "programs/A_metrology/MeasurementEngineSpecification.md"
+    },
+    {
+      "rule_id": "MC-5",
+      "rule_name": "Adversarial testing",
+      "metric_id": "M-002",
+      "compliant": true,
+      "evidence": "envelope=True, fp_floor=True",
+      "source": "reports/failure_envelopes/ + reports/bootstrap_statistics.json (M-008)"
+    },
+    {
+      "rule_id": "MC-6",
+      "rule_name": "Historical permanence",
+      "metric_id": "M-002",
+      "compliant": true,
+      "evidence": "M4 system demonstrated on representative metrics (not individually tested)",
+      "source": "reports/repeatability_m4.json + reports/bootstrap_statistics.json"
+    },
+    {
+      "rule_id": "MC-7",
+      "rule_name": "No naked numbers",
+      "metric_id": "M-002",
+      "compliant": true,
+      "evidence": "ScoredValue + ProvenanceRegistry + @with_provenance exist",
+      "source": "programs/A_metrology/measurement_provenance.py"
+    },
+    {
+      "rule_id": "MC-8",
+      "rule_name": "Bootstrap uncertainty",
+      "metric_id": "M-002",
+      "compliant": true,
+      "evidence": "M3 bootstrap exists: True (CI=0.2102, 0.2614)",
+      "source": "reports/bootstrap_statistics.json"
+    },
+    {
+      "rule_id": "MC-1",
+      "rule_name": "No self-validation",
+      "metric_id": "M-003",
+      "compliant": true,
+      "evidence": "DR-91 independent audit module exists (zero production imports)",
+      "source": "audit/measurement_integrity/dr91_measurement_audit.py"
+    },
+    {
+      "rule_id": "MC-2",
+      "rule_name": "Independent rescoring",
+      "metric_id": "M-003",
+      "compliant": true,
+      "evidence": "M3 bootstrap uses independent matchers (reproduced from DR-91)",
+      "source": "programs/A_metrology/bootstrap_statistics.py"
+    },
+    {
+      "rule_id": "MC-3",
+      "rule_name": "Confidence calibration",
+      "metric_id": "M-003",
+      "compliant": true,
+      "evidence": "N/A \u2014 metric does not produce confidence scores",
+      "source": "N/A"
+    },
+    {
+      "rule_id": "MC-4",
+      "rule_name": "Evidence tiers",
+      "metric_id": "M-003",
+      "compliant": true,
+      "evidence": "M1 spec exists with Evidence tier field",
+      "source": "programs/A_metrology/MeasurementEngineSpecification.md"
+    },
+    {
+      "rule_id": "MC-5",
+      "rule_name": "Adversarial testing",
+      "metric_id": "M-003",
+      "compliant": true,
+      "evidence": "envelope=True, fp_floor=True",
+      "source": "reports/failure_envelopes/ + reports/bootstrap_statistics.json (M-008)"
+    },
+    {
+      "rule_id": "MC-6",
+      "rule_name": "Historical permanence",
+      "metric_id": "M-003",
+      "compliant": true,
+      "evidence": "deterministic (degenerate in M3, no drift possible)",
+      "source": "reports/repeatability_m4.json + reports/bootstrap_statistics.json"
+    },
+    {
+      "rule_id": "MC-7",
+      "rule_name": "No naked numbers",
+      "metric_id": "M-003",
+      "compliant": true,
+      "evidence": "ScoredValue + ProvenanceRegistry + @with_provenance exist",
+      "source": "programs/A_metrology/measurement_provenance.py"
+    },
+    {
+      "rule_id": "MC-8",
+      "rule_name": "Bootstrap uncertainty",
+      "metric_id": "M-003",
+      "compliant": true,
+      "evidence": "M3 bootstrap exists: True (CI=0.0, 0.0)",
+      "source": "reports/bootstrap_statistics.json"
+    },
+    {
+      "rule_id": "MC-1",
+      "rule_name": "No self-validation",
+      "metric_id": "M-004",
+      "compliant": true,
+      "evidence": "DR-91 independent audit module exists (zero production imports)",
+      "source": "audit/measurement_integrity/dr91_measurement_audit.py"
+    },
+    {
+      "rule_id": "MC-2",
+      "rule_name": "Independent rescoring",
+      "metric_id": "M-004",
+      "compliant": true,
+      "evidence": "M3 bootstrap uses independent matchers (reproduced from DR-91)",
+      "source": "programs/A_metrology/bootstrap_statistics.py"
+    },
+    {
+      "rule_id": "MC-3",
+      "rule_name": "Confidence calibration",
+      "metric_id": "M-004",
+      "compliant": true,
+      "evidence": "N/A \u2014 metric does not produce confidence scores",
+      "source": "N/A"
+    },
+    {
+      "rule_id": "MC-4",
+      "rule_name": "Evidence tiers",
+      "metric_id": "M-004",
+      "compliant": true,
+      "evidence": "M1 spec exists with Evidence tier field",
+      "source": "programs/A_metrology/MeasurementEngineSpecification.md"
+    },
+    {
+      "rule_id": "MC-5",
+      "rule_name": "Adversarial testing",
+      "metric_id": "M-004",
+      "compliant": true,
+      "evidence": "envelope=True, fp_floor=True",
+      "source": "reports/failure_envelopes/ + reports/bootstrap_statistics.json (M-008)"
+    },
+    {
+      "rule_id": "MC-6",
+      "rule_name": "Historical permanence",
+      "metric_id": "M-004",
+      "compliant": true,
+      "evidence": "M4 system demonstrated on representative metrics (not individually tested)",
+      "source": "reports/repeatability_m4.json + reports/bootstrap_statistics.json"
+    },
+    {
+      "rule_id": "MC-7",
+      "rule_name": "No naked numbers",
+      "metric_id": "M-004",
+      "compliant": true,
+      "evidence": "ScoredValue + ProvenanceRegistry + @with_provenance exist",
+      "source": "programs/A_metrology/measurement_provenance.py"
+    },
+    {
+      "rule_id": "MC-8",
+      "rule_name": "Bootstrap uncertainty",
+      "metric_id": "M-004",
+      "compliant": true,
+      "evidence": "M3 bootstrap exists: True (CI=0.2102, 0.2614)",
+      "source": "reports/bootstrap_statistics.json"
+    },
+    {
+      "rule_id": "MC-1",
+      "rule_name": "No self-validation",
+      "metric_id": "M-005",
+      "compliant": true,
+      "evidence": "DR-91 independent audit module exists (zero production imports)",
+      "source": "audit/measurement_integrity/dr91_measurement_audit.py"
+    },
+    {
+      "rule_id": "MC-2",
+      "rule_name": "Independent rescoring",
+      "metric_id": "M-005",
+      "compliant": true,
+      "evidence": "M3 bootstrap uses independent matchers (reproduced from DR-91)",
+      "source": "programs/A_metrology/bootstrap_statistics.py"
+    },
+    {
+      "rule_id": "MC-3",
+      "rule_name": "Confidence calibration",
+      "metric_id": "M-005",
+      "compliant": true,
+      "evidence": "N/A \u2014 metric does not produce confidence scores",
+      "source": "N/A"
+    },
+    {
+      "rule_id": "MC-4",
+      "rule_name": "Evidence tiers",
+      "metric_id": "M-005",
+      "compliant": true,
+      "evidence": "M1 spec exists with Evidence tier field",
+      "source": "programs/A_metrology/MeasurementEngineSpecification.md"
+    },
+    {
+      "rule_id": "MC-5",
+      "rule_name": "Adversarial testing",
+      "metric_id": "M-005",
+      "compliant": true,
+      "evidence": "envelope=True, fp_floor=True",
+      "source": "reports/failure_envelopes/ + reports/bootstrap_statistics.json (M-008)"
+    },
+    {
+      "rule_id": "MC-6",
+      "rule_name": "Historical permanence",
+      "metric_id": "M-005",
+      "compliant": true,
+      "evidence": "m4_tested (CV=0.0, verdict=STABLE)",
+      "source": "reports/repeatability_m4.json + reports/bootstrap_statistics.json"
+    },
+    {
+      "rule_id": "MC-7",
+      "rule_name": "No naked numbers",
+      "metric_id": "M-005",
+      "compliant": true,
+      "evidence": "ScoredValue + ProvenanceRegistry + @with_provenance exist",
+      "source": "programs/A_metrology/measurement_provenance.py"
+    },
+    {
+      "rule_id": "MC-8",
+      "rule_name": "Bootstrap uncertainty",
+      "metric_id": "M-005",
+      "compliant": true,
+      "evidence": "M3 bootstrap exists: True (CI=0.6207, 0.9189)",
+      "source": "reports/bootstrap_statistics.json"
+    },
+    {
+      "rule_id": "MC-1",
+      "rule_name": "No self-validation",
+      "metric_id": "M-006",
+      "compliant": true,
+      "evidence": "DR-91 independent audit module exists (zero production imports)",
+      "source": "audit/measurement_integrity/dr91_measurement_audit.py"
+    },
+    {
+      "rule_id": "MC-2",
+      "rule_name": "Independent rescoring",
+      "metric_id": "M-006",
+      "compliant": true,
+      "evidence": "M3 bootstrap uses independent matchers (reproduced from DR-91)",
+      "source": "programs/A_metrology/bootstrap_statistics.py"
+    },
+    {
+      "rule_id": "MC-3",
+      "rule_name": "Confidence calibration",
+      "metric_id": "M-006",
+      "compliant": true,
+      "evidence": "N/A \u2014 metric does not produce confidence scores",
+      "source": "N/A"
+    },
+    {
+      "rule_id": "MC-4",
+      "rule_name": "Evidence tiers",
+      "metric_id": "M-006",
+      "compliant": true,
+      "evidence": "M1 spec exists with Evidence tier field",
+      "source": "programs/A_metrology/MeasurementEngineSpecification.md"
+    },
+    {
+      "rule_id": "MC-5",
+      "rule_name": "Adversarial testing",
+      "metric_id": "M-006",
+      "compliant": true,
+      "evidence": "envelope=True, fp_floor=True",
+      "source": "reports/failure_envelopes/ + reports/bootstrap_statistics.json (M-008)"
+    },
+    {
+      "rule_id": "MC-6",
+      "rule_name": "Historical permanence",
+      "metric_id": "M-006",
+      "compliant": true,
+      "evidence": "M4 system demonstrated on representative metrics (not individually tested)",
+      "source": "reports/repeatability_m4.json + reports/bootstrap_statistics.json"
+    },
+    {
+      "rule_id": "MC-7",
+      "rule_name": "No naked numbers",
+      "metric_id": "M-006",
+      "compliant": true,
+      "evidence": "ScoredValue + ProvenanceRegistry + @with_provenance exist",
+      "source": "programs/A_metrology/measurement_provenance.py"
+    },
+    {
+      "rule_id": "MC-8",
+      "rule_name": "Bootstrap uncertainty",
+      "metric_id": "M-006",
+      "compliant": true,
+      "evidence": "M3 bootstrap exists: True (CI=0.9189, 1.0)",
+      "source": "reports/bootstrap_statistics.json"
+    },
+    {
+      "rule_id": "MC-1",
+      "rule_name": "No self-validation",
+      "metric_id": "M-007",
+      "compliant": true,
+      "evidence": "DR-91 independent audit module exists (zero production imports)",
+      "source": "audit/measurement_integrity/dr91_measurement_audit.py"
+    },
+    {
+      "rule_id": "MC-2",
+      "rule_name": "Independent rescoring",
+      "metric_id": "M-007",
+      "compliant": true,
+      "evidence": "M3 bootstrap uses independent matchers (reproduced from DR-91)",
+      "source": "programs/A_metrology/bootstrap_statistics.py"
+    },
+    {
+      "rule_id": "MC-3",
+      "rule_name": "Confidence calibration",
+      "metric_id": "M-007",
+      "compliant": true,
+      "evidence": "N/A \u2014 metric does not produce confidence scores",
+      "source": "N/A"
+    },
+    {
+      "rule_id": "MC-4",
+      "rule_name": "Evidence tiers",
+      "metric_id": "M-007",
+      "compliant": true,
+      "evidence": "M1 spec exists with Evidence tier field",
+      "source": "programs/A_metrology/MeasurementEngineSpecification.md"
+    },
+    {
+      "rule_id": "MC-5",
+      "rule_name": "Adversarial testing",
+      "metric_id": "M-007",
+      "compliant": true,
+      "evidence": "envelope=True, fp_floor=True",
+      "source": "reports/failure_envelopes/ + reports/bootstrap_statistics.json (M-008)"
+    },
+    {
+      "rule_id": "MC-6",
+      "rule_name": "Historical permanence",
+      "metric_id": "M-007",
+      "compliant": true,
+      "evidence": "M4 system demonstrated on representative metrics (not individually tested)",
+      "source": "reports/repeatability_m4.json + reports/bootstrap_statistics.json"
+    },
+    {
+      "rule_id": "MC-7",
+      "rule_name": "No naked numbers",
+      "metric_id": "M-007",
+      "compliant": true,
+      "evidence": "ScoredValue + ProvenanceRegistry + @with_provenance exist",
+      "source": "programs/A_metrology/measurement_provenance.py"
+    },
+    {
+      "rule_id": "MC-8",
+      "rule_name": "Bootstrap uncertainty",
+      "metric_id": "M-007",
+      "compliant": true,
+      "evidence": "M3 bootstrap exists: True (CI=0.0554, 0.3759)",
+      "source": "reports/bootstrap_statistics.json"
+    },
+    {
+      "rule_id": "MC-1",
+      "rule_name": "No self-validation",
+      "metric_id": "M-008",
+      "compliant": true,
+      "evidence": "DR-91 independent audit module exists (zero production imports)",
+      "source": "audit/measurement_integrity/dr91_measurement_audit.py"
+    },
+    {
+      "rule_id": "MC-2",
+      "rule_name": "Independent rescoring",
+      "metric_id": "M-008",
+      "compliant": true,
+      "evidence": "M3 bootstrap uses independent matchers (reproduced from DR-91)",
+      "source": "programs/A_metrology/bootstrap_statistics.py"
+    },
+    {
+      "rule_id": "MC-3",
+      "rule_name": "Confidence calibration",
+      "metric_id": "M-008",
+      "compliant": true,
+      "evidence": "N/A \u2014 metric does not produce confidence scores",
+      "source": "N/A"
+    },
+    {
+      "rule_id": "MC-4",
+      "rule_name": "Evidence tiers",
+      "metric_id": "M-008",
+      "compliant": true,
+      "evidence": "M1 spec exists with Evidence tier field",
+      "source": "programs/A_metrology/MeasurementEngineSpecification.md"
+    },
+    {
+      "rule_id": "MC-5",
+      "rule_name": "Adversarial testing",
+      "metric_id": "M-008",
+      "compliant": true,
+      "evidence": "envelope=True, fp_floor=True",
+      "source": "reports/failure_envelopes/ + reports/bootstrap_statistics.json (M-008)"
+    },
+    {
+      "rule_id": "MC-6",
+      "rule_name": "Historical permanence",
+      "metric_id": "M-008",
+      "compliant": true,
+      "evidence": "m4_tested (CV=0.0422, verdict=STABLE)",
+      "source": "reports/repeatability_m4.json + reports/bootstrap_statistics.json"
+    },
+    {
+      "rule_id": "MC-7",
+      "rule_name": "No naked numbers",
+      "metric_id": "M-008",
+      "compliant": true,
+      "evidence": "ScoredValue + ProvenanceRegistry + @with_provenance exist",
+      "source": "programs/A_metrology/measurement_provenance.py"
+    },
+    {
+      "rule_id": "MC-8",
+      "rule_name": "Bootstrap uncertainty",
+      "metric_id": "M-008",
+      "compliant": true,
+      "evidence": "M3 bootstrap exists: True (CI=0.6667, 1.0)",
+      "source": "reports/bootstrap_statistics.json"
+    },
+    {
+      "rule_id": "MC-1",
+      "rule_name": "No self-validation",
+      "metric_id": "M-009",
+      "compliant": true,
+      "evidence": "DR-91 independent audit module exists (zero production imports)",
+      "source": "audit/measurement_integrity/dr91_measurement_audit.py"
+    },
+    {
+      "rule_id": "MC-2",
+      "rule_name": "Independent rescoring",
+      "metric_id": "M-009",
+      "compliant": true,
+      "evidence": "M3 bootstrap uses independent matchers (reproduced from DR-91)",
+      "source": "programs/A_metrology/bootstrap_statistics.py"
+    },
+    {
+      "rule_id": "MC-3",
+      "rule_name": "Confidence calibration",
+      "metric_id": "M-009",
+      "compliant": true,
+      "evidence": "N/A \u2014 metric does not produce confidence scores",
+      "source": "N/A"
+    },
+    {
+      "rule_id": "MC-4",
+      "rule_name": "Evidence tiers",
+      "metric_id": "M-009",
+      "compliant": true,
+      "evidence": "M1 spec exists with Evidence tier field",
+      "source": "programs/A_metrology/MeasurementEngineSpecification.md"
+    },
+    {
+      "rule_id": "MC-5",
+      "rule_name": "Adversarial testing",
+      "metric_id": "M-009",
+      "compliant": true,
+      "evidence": "envelope=True, fp_floor=True",
+      "source": "reports/failure_envelopes/ + reports/bootstrap_statistics.json (M-008)"
+    },
+    {
+      "rule_id": "MC-6",
+      "rule_name": "Historical permanence",
+      "metric_id": "M-009",
+      "compliant": true,
+      "evidence": "deterministic (degenerate in M3, no drift possible)",
+      "source": "reports/repeatability_m4.json + reports/bootstrap_statistics.json"
+    },
+    {
+      "rule_id": "MC-7",
+      "rule_name": "No naked numbers",
+      "metric_id": "M-009",
+      "compliant": true,
+      "evidence": "ScoredValue + ProvenanceRegistry + @with_provenance exist",
+      "source": "programs/A_metrology/measurement_provenance.py"
+    },
+    {
+      "rule_id": "MC-8",
+      "rule_name": "Bootstrap uncertainty",
+      "metric_id": "M-009",
+      "compliant": true,
+      "evidence": "M3 bootstrap exists: True (CI=0.0, 0.0)",
+      "source": "reports/bootstrap_statistics.json"
+    },
+    {
+      "rule_id": "MC-1",
+      "rule_name": "No self-validation",
+      "metric_id": "M-010",
+      "compliant": true,
+      "evidence": "DR-91 independent audit module exists (zero production imports)",
+      "source": "audit/measurement_integrity/dr91_measurement_audit.py"
+    },
+    {
+      "rule_id": "MC-2",
+      "rule_name": "Independent rescoring",
+      "metric_id": "M-010",
+      "compliant": true,
+      "evidence": "M3 bootstrap uses independent matchers (reproduced from DR-91)",
+      "source": "programs/A_metrology/bootstrap_statistics.py"
+    },
+    {
+      "rule_id": "MC-3",
+      "rule_name": "Confidence calibration",
+      "metric_id": "M-010",
+      "compliant": true,
+      "evidence": "N/A \u2014 metric does not produce confidence scores",
+      "source": "N/A"
+    },
+    {
+      "rule_id": "MC-4",
+      "rule_name": "Evidence tiers",
+      "metric_id": "M-010",
+      "compliant": true,
+      "evidence": "M1 spec exists with Evidence tier field",
+      "source": "programs/A_metrology/MeasurementEngineSpecification.md"
+    },
+    {
+      "rule_id": "MC-5",
+      "rule_name": "Adversarial testing",
+      "metric_id": "M-010",
+      "compliant": true,
+      "evidence": "envelope=True, fp_floor=True",
+      "source": "reports/failure_envelopes/ + reports/bootstrap_statistics.json (M-008)"
+    },
+    {
+      "rule_id": "MC-6",
+      "rule_name": "Historical permanence",
+      "metric_id": "M-010",
+      "compliant": true,
+      "evidence": "M4 system demonstrated on representative metrics (not individually tested)",
+      "source": "reports/repeatability_m4.json + reports/bootstrap_statistics.json"
+    },
+    {
+      "rule_id": "MC-7",
+      "rule_name": "No naked numbers",
+      "metric_id": "M-010",
+      "compliant": true,
+      "evidence": "ScoredValue + ProvenanceRegistry + @with_provenance exist",
+      "source": "programs/A_metrology/measurement_provenance.py"
+    },
+    {
+      "rule_id": "MC-8",
+      "rule_name": "Bootstrap uncertainty",
+      "metric_id": "M-010",
+      "compliant": true,
+      "evidence": "M3 bootstrap exists: True (CI=0.45, 0.85)",
+      "source": "reports/bootstrap_statistics.json"
+    },
+    {
+      "rule_id": "MC-1",
+      "rule_name": "No self-validation",
+      "metric_id": "M-011",
+      "compliant": true,
+      "evidence": "DR-91 independent audit module exists (zero production imports)",
+      "source": "audit/measurement_integrity/dr91_measurement_audit.py"
+    },
+    {
+      "rule_id": "MC-2",
+      "rule_name": "Independent rescoring",
+      "metric_id": "M-011",
+      "compliant": true,
+      "evidence": "M3 bootstrap uses independent matchers (reproduced from DR-91)",
+      "source": "programs/A_metrology/bootstrap_statistics.py"
+    },
+    {
+      "rule_id": "MC-3",
+      "rule_name": "Confidence calibration",
+      "metric_id": "M-011",
+      "compliant": true,
+      "evidence": "N/A \u2014 metric does not produce confidence scores",
+      "source": "N/A"
+    },
+    {
+      "rule_id": "MC-4",
+      "rule_name": "Evidence tiers",
+      "metric_id": "M-011",
+      "compliant": true,
+      "evidence": "M1 spec exists with Evidence tier field",
+      "source": "programs/A_metrology/MeasurementEngineSpecification.md"
+    },
+    {
+      "rule_id": "MC-5",
+      "rule_name": "Adversarial testing",
+      "metric_id": "M-011",
+      "compliant": true,
+      "evidence": "envelope=True, fp_floor=True",
+      "source": "reports/failure_envelopes/ + reports/bootstrap_statistics.json (M-008)"
+    },
+    {
+      "rule_id": "MC-6",
+      "rule_name": "Historical permanence",
+      "metric_id": "M-011",
+      "compliant": true,
+      "evidence": "deterministic (degenerate in M3, no drift possible)",
+      "source": "reports/repeatability_m4.json + reports/bootstrap_statistics.json"
+    },
+    {
+      "rule_id": "MC-7",
+      "rule_name": "No naked numbers",
+      "metric_id": "M-011",
+      "compliant": true,
+      "evidence": "ScoredValue + ProvenanceRegistry + @with_provenance exist",
+      "source": "programs/A_metrology/measurement_provenance.py"
+    },
+    {
+      "rule_id": "MC-8",
+      "rule_name": "Bootstrap uncertainty",
+      "metric_id": "M-011",
+      "compliant": true,
+      "evidence": "M3 bootstrap exists: True (CI=0.0, 0.0)",
+      "source": "reports/bootstrap_statistics.json"
+    },
+    {
+      "rule_id": "MC-1",
+      "rule_name": "No self-validation",
+      "metric_id": "M-012",
+      "compliant": true,
+      "evidence": "DR-91 independent audit module exists (zero production imports)",
+      "source": "audit/measurement_integrity/dr91_measurement_audit.py"
+    },
+    {
+      "rule_id": "MC-2",
+      "rule_name": "Independent rescoring",
+      "metric_id": "M-012",
+      "compliant": true,
+      "evidence": "M3 bootstrap uses independent matchers (reproduced from DR-91)",
+      "source": "programs/A_metrology/bootstrap_statistics.py"
+    },
+    {
+      "rule_id": "MC-3",
+      "rule_name": "Confidence calibration",
+      "metric_id": "M-012",
+      "compliant": true,
+      "evidence": "N/A \u2014 metric does not produce confidence scores",
+      "source": "N/A"
+    },
+    {
+      "rule_id": "MC-4",
+      "rule_name": "Evidence tiers",
+      "metric_id": "M-012",
+      "compliant": true,
+      "evidence": "M1 spec exists with Evidence tier field",
+      "source": "programs/A_metrology/MeasurementEngineSpecification.md"
+    },
+    {
+      "rule_id": "MC-5",
+      "rule_name": "Adversarial testing",
+      "metric_id": "M-012",
+      "compliant": true,
+      "evidence": "envelope=True, fp_floor=True",
+      "source": "reports/failure_envelopes/ + reports/bootstrap_statistics.json (M-008)"
+    },
+    {
+      "rule_id": "MC-6",
+      "rule_name": "Historical permanence",
+      "metric_id": "M-012",
+      "compliant": true,
+      "evidence": "M4 system demonstrated on representative metrics (not individually tested)",
+      "source": "reports/repeatability_m4.json + reports/bootstrap_statistics.json"
+    },
+    {
+      "rule_id": "MC-7",
+      "rule_name": "No naked numbers",
+      "metric_id": "M-012",
+      "compliant": true,
+      "evidence": "ScoredValue + ProvenanceRegistry + @with_provenance exist",
+      "source": "programs/A_metrology/measurement_provenance.py"
+    },
+    {
+      "rule_id": "MC-8",
+      "rule_name": "Bootstrap uncertainty",
+      "metric_id": "M-012",
+      "compliant": true,
+      "evidence": "M3 bootstrap exists: True (CI=0.6207, 0.9189)",
+      "source": "reports/bootstrap_statistics.json"
+    },
+    {
+      "rule_id": "MC-1",
+      "rule_name": "No self-validation",
+      "metric_id": "M-013",
+      "compliant": true,
+      "evidence": "DR-91 independent audit module exists (zero production imports)",
+      "source": "audit/measurement_integrity/dr91_measurement_audit.py"
+    },
+    {
+      "rule_id": "MC-2",
+      "rule_name": "Independent rescoring",
+      "metric_id": "M-013",
+      "compliant": true,
+      "evidence": "M3 bootstrap uses independent matchers (reproduced from DR-91)",
+      "source": "programs/A_metrology/bootstrap_statistics.py"
+    },
+    {
+      "rule_id": "MC-3",
+      "rule_name": "Confidence calibration",
+      "metric_id": "M-013",
+      "compliant": true,
+      "evidence": "N/A \u2014 metric does not produce confidence scores",
+      "source": "N/A"
+    },
+    {
+      "rule_id": "MC-4",
+      "rule_name": "Evidence tiers",
+      "metric_id": "M-013",
+      "compliant": true,
+      "evidence": "M1 spec exists with Evidence tier field",
+      "source": "programs/A_metrology/MeasurementEngineSpecification.md"
+    },
+    {
+      "rule_id": "MC-5",
+      "rule_name": "Adversarial testing",
+      "metric_id": "M-013",
+      "compliant": true,
+      "evidence": "envelope=True, fp_floor=True",
+      "source": "reports/failure_envelopes/ + reports/bootstrap_statistics.json (M-008)"
+    },
+    {
+      "rule_id": "MC-6",
+      "rule_name": "Historical permanence",
+      "metric_id": "M-013",
+      "compliant": true,
+      "evidence": "m4_tested (CV=0.0, verdict=STABLE)",
+      "source": "reports/repeatability_m4.json + reports/bootstrap_statistics.json"
+    },
+    {
+      "rule_id": "MC-7",
+      "rule_name": "No naked numbers",
+      "metric_id": "M-013",
+      "compliant": true,
+      "evidence": "ScoredValue + ProvenanceRegistry + @with_provenance exist",
+      "source": "programs/A_metrology/measurement_provenance.py"
+    },
+    {
+      "rule_id": "MC-8",
+      "rule_name": "Bootstrap uncertainty",
+      "metric_id": "M-013",
+      "compliant": true,
+      "evidence": "M3 bootstrap exists: True (CI=0.5455, 0.8947)",
+      "source": "reports/bootstrap_statistics.json"
+    },
+    {
+      "rule_id": "MC-1",
+      "rule_name": "No self-validation",
+      "metric_id": "M-014",
+      "compliant": true,
+      "evidence": "DR-91 independent audit module exists (zero production imports)",
+      "source": "audit/measurement_integrity/dr91_measurement_audit.py"
+    },
+    {
+      "rule_id": "MC-2",
+      "rule_name": "Independent rescoring",
+      "metric_id": "M-014",
+      "compliant": true,
+      "evidence": "M3 bootstrap uses independent matchers (reproduced from DR-91)",
+      "source": "programs/A_metrology/bootstrap_statistics.py"
+    },
+    {
+      "rule_id": "MC-3",
+      "rule_name": "Confidence calibration",
+      "metric_id": "M-014",
+      "compliant": true,
+      "evidence": "N/A \u2014 metric does not produce confidence scores",
+      "source": "N/A"
+    },
+    {
+      "rule_id": "MC-4",
+      "rule_name": "Evidence tiers",
+      "metric_id": "M-014",
+      "compliant": true,
+      "evidence": "M1 spec exists with Evidence tier field",
+      "source": "programs/A_metrology/MeasurementEngineSpecification.md"
+    },
+    {
+      "rule_id": "MC-5",
+      "rule_name": "Adversarial testing",
+      "metric_id": "M-014",
+      "compliant": true,
+      "evidence": "envelope=True, fp_floor=True",
+      "source": "reports/failure_envelopes/ + reports/bootstrap_statistics.json (M-008)"
+    },
+    {
+      "rule_id": "MC-6",
+      "rule_name": "Historical permanence",
+      "metric_id": "M-014",
+      "compliant": true,
+      "evidence": "M4 system demonstrated on representative metrics (not individually tested)",
+      "source": "reports/repeatability_m4.json + reports/bootstrap_statistics.json"
+    },
+    {
+      "rule_id": "MC-7",
+      "rule_name": "No naked numbers",
+      "metric_id": "M-014",
+      "compliant": true,
+      "evidence": "ScoredValue + ProvenanceRegistry + @with_provenance exist",
+      "source": "programs/A_metrology/measurement_provenance.py"
+    },
+    {
+      "rule_id": "MC-8",
+      "rule_name": "Bootstrap uncertainty",
+      "metric_id": "M-014",
+      "compliant": true,
+      "evidence": "M3 bootstrap exists: True (CI=0.1487, 0.5)",
+      "source": "reports/bootstrap_statistics.json"
+    },
+    {
+      "rule_id": "MC-1",
+      "rule_name": "No self-validation",
+      "metric_id": "M-015",
+      "compliant": true,
+      "evidence": "DR-91 independent audit module exists (zero production imports)",
+      "source": "audit/measurement_integrity/dr91_measurement_audit.py"
+    },
+    {
+      "rule_id": "MC-2",
+      "rule_name": "Independent rescoring",
+      "metric_id": "M-015",
+      "compliant": true,
+      "evidence": "M3 bootstrap uses independent matchers (reproduced from DR-91)",
+      "source": "programs/A_metrology/bootstrap_statistics.py"
+    },
+    {
+      "rule_id": "MC-3",
+      "rule_name": "Confidence calibration",
+      "metric_id": "M-015",
+      "compliant": true,
+      "evidence": "N/A \u2014 metric does not produce confidence scores",
+      "source": "N/A"
+    },
+    {
+      "rule_id": "MC-4",
+      "rule_name": "Evidence tiers",
+      "metric_id": "M-015",
+      "compliant": true,
+      "evidence": "M1 spec exists with Evidence tier field",
+      "source": "programs/A_metrology/MeasurementEngineSpecification.md"
+    },
+    {
+      "rule_id": "MC-5",
+      "rule_name": "Adversarial testing",
+      "metric_id": "M-015",
+      "compliant": true,
+      "evidence": "envelope=True, fp_floor=True",
+      "source": "reports/failure_envelopes/ + reports/bootstrap_statistics.json (M-008)"
+    },
+    {
+      "rule_id": "MC-6",
+      "rule_name": "Historical permanence",
+      "metric_id": "M-015",
+      "compliant": true,
+      "evidence": "M4 system demonstrated on representative metrics (not individually tested)",
+      "source": "reports/repeatability_m4.json + reports/bootstrap_statistics.json"
+    },
+    {
+      "rule_id": "MC-7",
+      "rule_name": "No naked numbers",
+      "metric_id": "M-015",
+      "compliant": true,
+      "evidence": "ScoredValue + ProvenanceRegistry + @with_provenance exist",
+      "source": "programs/A_metrology/measurement_provenance.py"
+    },
+    {
+      "rule_id": "MC-8",
+      "rule_name": "Bootstrap uncertainty",
+      "metric_id": "M-015",
+      "compliant": true,
+      "evidence": "M3 bootstrap exists: True (CI=0.0, 0.15)",
+      "source": "reports/bootstrap_statistics.json"
+    },
+    {
+      "rule_id": "MC-1",
+      "rule_name": "No self-validation",
+      "metric_id": "M-016",
+      "compliant": true,
+      "evidence": "DR-91 independent audit module exists (zero production imports)",
+      "source": "audit/measurement_integrity/dr91_measurement_audit.py"
+    },
+    {
+      "rule_id": "MC-2",
+      "rule_name": "Independent rescoring",
+      "metric_id": "M-016",
+      "compliant": true,
+      "evidence": "M3 bootstrap uses independent matchers (reproduced from DR-91)",
+      "source": "programs/A_metrology/bootstrap_statistics.py"
+    },
+    {
+      "rule_id": "MC-3",
+      "rule_name": "Confidence calibration",
+      "metric_id": "M-016",
+      "compliant": true,
+      "evidence": "N/A \u2014 metric does not produce confidence scores",
+      "source": "N/A"
+    },
+    {
+      "rule_id": "MC-4",
+      "rule_name": "Evidence tiers",
+      "metric_id": "M-016",
+      "compliant": true,
+      "evidence": "M1 spec exists with Evidence tier field",
+      "source": "programs/A_metrology/MeasurementEngineSpecification.md"
+    },
+    {
+      "rule_id": "MC-5",
+      "rule_name": "Adversarial testing",
+      "metric_id": "M-016",
+      "compliant": true,
+      "evidence": "envelope=True, fp_floor=True",
+      "source": "reports/failure_envelopes/ + reports/bootstrap_statistics.json (M-008)"
+    },
+    {
+      "rule_id": "MC-6",
+      "rule_name": "Historical permanence",
+      "metric_id": "M-016",
+      "compliant": true,
+      "evidence": "M4 system demonstrated on representative metrics (not individually tested)",
+      "source": "reports/repeatability_m4.json + reports/bootstrap_statistics.json"
+    },
+    {
+      "rule_id": "MC-7",
+      "rule_name": "No naked numbers",
+      "metric_id": "M-016",
+      "compliant": true,
+      "evidence": "ScoredValue + ProvenanceRegistry + @with_provenance exist",
+      "source": "programs/A_metrology/measurement_provenance.py"
+    },
+    {
+      "rule_id": "MC-8",
+      "rule_name": "Bootstrap uncertainty",
+      "metric_id": "M-016",
+      "compliant": true,
+      "evidence": "M3 bootstrap exists: True (CI=0.0, 0.25)",
+      "source": "reports/bootstrap_statistics.json"
+    },
+    {
+      "rule_id": "MC-1",
+      "rule_name": "No self-validation",
+      "metric_id": "M-101",
+      "compliant": true,
+      "evidence": "DR-91 independent audit module exists (zero production imports)",
+      "source": "audit/measurement_integrity/dr91_measurement_audit.py"
+    },
+    {
+      "rule_id": "MC-2",
+      "rule_name": "Independent rescoring",
+      "metric_id": "M-101",
+      "compliant": true,
+      "evidence": "M3 bootstrap uses independent matchers (reproduced from DR-91)",
+      "source": "programs/A_metrology/bootstrap_statistics.py"
+    },
+    {
+      "rule_id": "MC-3",
+      "rule_name": "Confidence calibration",
+      "metric_id": "M-101",
+      "compliant": true,
+      "evidence": "N/A \u2014 metric does not produce confidence scores",
+      "source": "N/A"
+    },
+    {
+      "rule_id": "MC-4",
+      "rule_name": "Evidence tiers",
+      "metric_id": "M-101",
+      "compliant": true,
+      "evidence": "M1 spec exists with Evidence tier field",
+      "source": "programs/A_metrology/MeasurementEngineSpecification.md"
+    },
+    {
+      "rule_id": "MC-5",
+      "rule_name": "Adversarial testing",
+      "metric_id": "M-101",
+      "compliant": true,
+      "evidence": "envelope=True, fp_floor=True",
+      "source": "reports/failure_envelopes/ + reports/bootstrap_statistics.json (M-008)"
+    },
+    {
+      "rule_id": "MC-6",
+      "rule_name": "Historical permanence",
+      "metric_id": "M-101",
+      "compliant": true,
+      "evidence": "deterministic (degenerate in M3, no drift possible)",
+      "source": "reports/repeatability_m4.json + reports/bootstrap_statistics.json"
+    },
+    {
+      "rule_id": "MC-7",
+      "rule_name": "No naked numbers",
+      "metric_id": "M-101",
+      "compliant": true,
+      "evidence": "ScoredValue + ProvenanceRegistry + @with_provenance exist",
+      "source": "programs/A_metrology/measurement_provenance.py"
+    },
+    {
+      "rule_id": "MC-8",
+      "rule_name": "Bootstrap uncertainty",
+      "metric_id": "M-101",
+      "compliant": true,
+      "evidence": "M3 bootstrap exists: True (CI=1.0, 1.0)",
+      "source": "reports/bootstrap_statistics.json"
+    },
+    {
+      "rule_id": "MC-1",
+      "rule_name": "No self-validation",
+      "metric_id": "M-102",
+      "compliant": true,
+      "evidence": "DR-91 independent audit module exists (zero production imports)",
+      "source": "audit/measurement_integrity/dr91_measurement_audit.py"
+    },
+    {
+      "rule_id": "MC-2",
+      "rule_name": "Independent rescoring",
+      "metric_id": "M-102",
+      "compliant": true,
+      "evidence": "M3 bootstrap uses independent matchers (reproduced from DR-91)",
+      "source": "programs/A_metrology/bootstrap_statistics.py"
+    },
+    {
+      "rule_id": "MC-3",
+      "rule_name": "Confidence calibration",
+      "metric_id": "M-102",
+      "compliant": true,
+      "evidence": "N/A \u2014 metric does not produce confidence scores",
+      "source": "N/A"
+    },
+    {
+      "rule_id": "MC-4",
+      "rule_name": "Evidence tiers",
+      "metric_id": "M-102",
+      "compliant": true,
+      "evidence": "M1 spec exists with Evidence tier field",
+      "source": "programs/A_metrology/MeasurementEngineSpecification.md"
+    },
+    {
+      "rule_id": "MC-5",
+      "rule_name": "Adversarial testing",
+      "metric_id": "M-102",
+      "compliant": true,
+      "evidence": "envelope=True, fp_floor=True",
+      "source": "reports/failure_envelopes/ + reports/bootstrap_statistics.json (M-008)"
+    },
+    {
+      "rule_id": "MC-6",
+      "rule_name": "Historical permanence",
+      "metric_id": "M-102",
+      "compliant": true,
+      "evidence": "M4 system demonstrated on representative metrics (not individually tested)",
+      "source": "reports/repeatability_m4.json + reports/bootstrap_statistics.json"
+    },
+    {
+      "rule_id": "MC-7",
+      "rule_name": "No naked numbers",
+      "metric_id": "M-102",
+      "compliant": true,
+      "evidence": "ScoredValue + ProvenanceRegistry + @with_provenance exist",
+      "source": "programs/A_metrology/measurement_provenance.py"
+    },
+    {
+      "rule_id": "MC-8",
+      "rule_name": "Bootstrap uncertainty",
+      "metric_id": "M-102",
+      "compliant": true,
+      "evidence": "M3 bootstrap exists: True (CI=0.8983, 0.9764)",
+      "source": "reports/bootstrap_statistics.json"
+    },
+    {
+      "rule_id": "MC-1",
+      "rule_name": "No self-validation",
+      "metric_id": "M-103",
+      "compliant": true,
+      "evidence": "DR-91 independent audit module exists (zero production imports)",
+      "source": "audit/measurement_integrity/dr91_measurement_audit.py"
+    },
+    {
+      "rule_id": "MC-2",
+      "rule_name": "Independent rescoring",
+      "metric_id": "M-103",
+      "compliant": true,
+      "evidence": "M3 bootstrap uses independent matchers (reproduced from DR-91)",
+      "source": "programs/A_metrology/bootstrap_statistics.py"
+    },
+    {
+      "rule_id": "MC-3",
+      "rule_name": "Confidence calibration",
+      "metric_id": "M-103",
+      "compliant": true,
+      "evidence": "N/A \u2014 metric does not produce confidence scores",
+      "source": "N/A"
+    },
+    {
+      "rule_id": "MC-4",
+      "rule_name": "Evidence tiers",
+      "metric_id": "M-103",
+      "compliant": true,
+      "evidence": "M1 spec exists with Evidence tier field",
+      "source": "programs/A_metrology/MeasurementEngineSpecification.md"
+    },
+    {
+      "rule_id": "MC-5",
+      "rule_name": "Adversarial testing",
+      "metric_id": "M-103",
+      "compliant": true,
+      "evidence": "envelope=True, fp_floor=True",
+      "source": "reports/failure_envelopes/ + reports/bootstrap_statistics.json (M-008)"
+    },
+    {
+      "rule_id": "MC-6",
+      "rule_name": "Historical permanence",
+      "metric_id": "M-103",
+      "compliant": true,
+      "evidence": "M4 system demonstrated on representative metrics (not individually tested)",
+      "source": "reports/repeatability_m4.json + reports/bootstrap_statistics.json"
+    },
+    {
+      "rule_id": "MC-7",
+      "rule_name": "No naked numbers",
+      "metric_id": "M-103",
+      "compliant": true,
+      "evidence": "ScoredValue + ProvenanceRegistry + @with_provenance exist",
+      "source": "programs/A_metrology/measurement_provenance.py"
+    },
+    {
+      "rule_id": "MC-8",
+      "rule_name": "Bootstrap uncertainty",
+      "metric_id": "M-103",
+      "compliant": true,
+      "evidence": "M3 bootstrap exists: True (CI=0.8145, 0.9322)",
+      "source": "reports/bootstrap_statistics.json"
+    },
+    {
+      "rule_id": "MC-1",
+      "rule_name": "No self-validation",
+      "metric_id": "M-104",
+      "compliant": true,
+      "evidence": "DR-91 independent audit module exists (zero production imports)",
+      "source": "audit/measurement_integrity/dr91_measurement_audit.py"
+    },
+    {
+      "rule_id": "MC-2",
+      "rule_name": "Independent rescoring",
+      "metric_id": "M-104",
+      "compliant": true,
+      "evidence": "M3 bootstrap uses independent matchers (reproduced from DR-91)",
+      "source": "programs/A_metrology/bootstrap_statistics.py"
+    },
+    {
+      "rule_id": "MC-3",
+      "rule_name": "Confidence calibration",
+      "metric_id": "M-104",
+      "compliant": true,
+      "evidence": "N/A \u2014 metric does not produce confidence scores",
+      "source": "N/A"
+    },
+    {
+      "rule_id": "MC-4",
+      "rule_name": "Evidence tiers",
+      "metric_id": "M-104",
+      "compliant": true,
+      "evidence": "M1 spec exists with Evidence tier field",
+      "source": "programs/A_metrology/MeasurementEngineSpecification.md"
+    },
+    {
+      "rule_id": "MC-5",
+      "rule_name": "Adversarial testing",
+      "metric_id": "M-104",
+      "compliant": true,
+      "evidence": "envelope=True, fp_floor=True",
+      "source": "reports/failure_envelopes/ + reports/bootstrap_statistics.json (M-008)"
+    },
+    {
+      "rule_id": "MC-6",
+      "rule_name": "Historical permanence",
+      "metric_id": "M-104",
+      "compliant": true,
+      "evidence": "M4 system demonstrated on representative metrics (not individually tested)",
+      "source": "reports/repeatability_m4.json + reports/bootstrap_statistics.json"
+    },
+    {
+      "rule_id": "MC-7",
+      "rule_name": "No naked numbers",
+      "metric_id": "M-104",
+      "compliant": true,
+      "evidence": "ScoredValue + ProvenanceRegistry + @with_provenance exist",
+      "source": "programs/A_metrology/measurement_provenance.py"
+    },
+    {
+      "rule_id": "MC-8",
+      "rule_name": "Bootstrap uncertainty",
+      "metric_id": "M-104",
+      "compliant": true,
+      "evidence": "M3 bootstrap exists: True (CI=0.7368, 1.0)",
+      "source": "reports/bootstrap_statistics.json"
+    },
+    {
+      "rule_id": "MC-1",
+      "rule_name": "No self-validation",
+      "metric_id": "M-105",
+      "compliant": true,
+      "evidence": "DR-91 independent audit module exists (zero production imports)",
+      "source": "audit/measurement_integrity/dr91_measurement_audit.py"
+    },
+    {
+      "rule_id": "MC-2",
+      "rule_name": "Independent rescoring",
+      "metric_id": "M-105",
+      "compliant": true,
+      "evidence": "M3 bootstrap uses independent matchers (reproduced from DR-91)",
+      "source": "programs/A_metrology/bootstrap_statistics.py"
+    },
+    {
+      "rule_id": "MC-3",
+      "rule_name": "Confidence calibration",
+      "metric_id": "M-105",
+      "compliant": true,
+      "evidence": "N/A \u2014 metric does not produce confidence scores",
+      "source": "N/A"
+    },
+    {
+      "rule_id": "MC-4",
+      "rule_name": "Evidence tiers",
+      "metric_id": "M-105",
+      "compliant": true,
+      "evidence": "M1 spec exists with Evidence tier field",
+      "source": "programs/A_metrology/MeasurementEngineSpecification.md"
+    },
+    {
+      "rule_id": "MC-5",
+      "rule_name": "Adversarial testing",
+      "metric_id": "M-105",
+      "compliant": true,
+      "evidence": "envelope=True, fp_floor=True",
+      "source": "reports/failure_envelopes/ + reports/bootstrap_statistics.json (M-008)"
+    },
+    {
+      "rule_id": "MC-6",
+      "rule_name": "Historical permanence",
+      "metric_id": "M-105",
+      "compliant": true,
+      "evidence": "M4 system demonstrated on representative metrics (not individually tested)",
+      "source": "reports/repeatability_m4.json + reports/bootstrap_statistics.json"
+    },
+    {
+      "rule_id": "MC-7",
+      "rule_name": "No naked numbers",
+      "metric_id": "M-105",
+      "compliant": true,
+      "evidence": "ScoredValue + ProvenanceRegistry + @with_provenance exist",
+      "source": "programs/A_metrology/measurement_provenance.py"
+    },
+    {
+      "rule_id": "MC-8",
+      "rule_name": "Bootstrap uncertainty",
+      "metric_id": "M-105",
+      "compliant": true,
+      "evidence": "M3 bootstrap exists: True (CI=0.8276, 1.0)",
+      "source": "reports/bootstrap_statistics.json"
+    },
+    {
+      "rule_id": "MC-1",
+      "rule_name": "No self-validation",
+      "metric_id": "M-201",
+      "compliant": true,
+      "evidence": "DR-91 independent audit module exists (zero production imports)",
+      "source": "audit/measurement_integrity/dr91_measurement_audit.py"
+    },
+    {
+      "rule_id": "MC-2",
+      "rule_name": "Independent rescoring",
+      "metric_id": "M-201",
+      "compliant": true,
+      "evidence": "M3 bootstrap uses independent matchers (reproduced from DR-91)",
+      "source": "programs/A_metrology/bootstrap_statistics.py"
+    },
+    {
+      "rule_id": "MC-3",
+      "rule_name": "Confidence calibration",
+      "metric_id": "M-201",
+      "compliant": true,
+      "evidence": "N/A \u2014 metric does not produce confidence scores",
+      "source": "N/A"
+    },
+    {
+      "rule_id": "MC-4",
+      "rule_name": "Evidence tiers",
+      "metric_id": "M-201",
+      "compliant": true,
+      "evidence": "M1 spec exists with Evidence tier field",
+      "source": "programs/A_metrology/MeasurementEngineSpecification.md"
+    },
+    {
+      "rule_id": "MC-5",
+      "rule_name": "Adversarial testing",
+      "metric_id": "M-201",
+      "compliant": true,
+      "evidence": "envelope=True",
+      "source": "reports/failure_envelopes/ + reports/bootstrap_statistics.json (M-008)"
+    },
+    {
+      "rule_id": "MC-6",
+      "rule_name": "Historical permanence",
+      "metric_id": "M-201",
+      "compliant": true,
+      "evidence": "m4_tested (CV=0.1325, verdict=ACCEPTABLE)",
+      "source": "reports/repeatability_m4.json + reports/bootstrap_statistics.json"
+    },
+    {
+      "rule_id": "MC-7",
+      "rule_name": "No naked numbers",
+      "metric_id": "M-201",
+      "compliant": true,
+      "evidence": "ScoredValue + ProvenanceRegistry + @with_provenance exist",
+      "source": "programs/A_metrology/measurement_provenance.py"
+    },
+    {
+      "rule_id": "MC-8",
+      "rule_name": "Bootstrap uncertainty",
+      "metric_id": "M-201",
+      "compliant": true,
+      "evidence": "M3 bootstrap exists: True (CI=0.7, 1.0)",
+      "source": "reports/bootstrap_statistics.json"
+    },
+    {
+      "rule_id": "MC-1",
+      "rule_name": "No self-validation",
+      "metric_id": "M-202",
+      "compliant": true,
+      "evidence": "DR-91 independent audit module exists (zero production imports)",
+      "source": "audit/measurement_integrity/dr91_measurement_audit.py"
+    },
+    {
+      "rule_id": "MC-2",
+      "rule_name": "Independent rescoring",
+      "metric_id": "M-202",
+      "compliant": true,
+      "evidence": "M3 bootstrap uses independent matchers (reproduced from DR-91)",
+      "source": "programs/A_metrology/bootstrap_statistics.py"
+    },
+    {
+      "rule_id": "MC-3",
+      "rule_name": "Confidence calibration",
+      "metric_id": "M-202",
+      "compliant": true,
+      "evidence": "N/A \u2014 metric does not produce confidence scores",
+      "source": "N/A"
+    },
+    {
+      "rule_id": "MC-4",
+      "rule_name": "Evidence tiers",
+      "metric_id": "M-202",
+      "compliant": true,
+      "evidence": "M1 spec exists with Evidence tier field",
+      "source": "programs/A_metrology/MeasurementEngineSpecification.md"
+    },
+    {
+      "rule_id": "MC-5",
+      "rule_name": "Adversarial testing",
+      "metric_id": "M-202",
+      "compliant": true,
+      "evidence": "envelope=True",
+      "source": "reports/failure_envelopes/ + reports/bootstrap_statistics.json (M-008)"
+    },
+    {
+      "rule_id": "MC-6",
+      "rule_name": "Historical permanence",
+      "metric_id": "M-202",
+      "compliant": true,
+      "evidence": "M4 system demonstrated on representative metrics (not individually tested)",
+      "source": "reports/repeatability_m4.json + reports/bootstrap_statistics.json"
+    },
+    {
+      "rule_id": "MC-7",
+      "rule_name": "No naked numbers",
+      "metric_id": "M-202",
+      "compliant": true,
+      "evidence": "ScoredValue + ProvenanceRegistry + @with_provenance exist",
+      "source": "programs/A_metrology/measurement_provenance.py"
+    },
+    {
+      "rule_id": "MC-8",
+      "rule_name": "Bootstrap uncertainty",
+      "metric_id": "M-202",
+      "compliant": true,
+      "evidence": "M3 bootstrap exists: True (CI=0.7, 1.0)",
+      "source": "reports/bootstrap_statistics.json"
+    },
+    {
+      "rule_id": "MC-1",
+      "rule_name": "No self-validation",
+      "metric_id": "M-203",
+      "compliant": true,
+      "evidence": "DR-91 independent audit module exists (zero production imports)",
+      "source": "audit/measurement_integrity/dr91_measurement_audit.py"
+    },
+    {
+      "rule_id": "MC-2",
+      "rule_name": "Independent rescoring",
+      "metric_id": "M-203",
+      "compliant": true,
+      "evidence": "M3 bootstrap uses independent matchers (reproduced from DR-91)",
+      "source": "programs/A_metrology/bootstrap_statistics.py"
+    },
+    {
+      "rule_id": "MC-3",
+      "rule_name": "Confidence calibration",
+      "metric_id": "M-203",
+      "compliant": true,
+      "evidence": "N/A \u2014 metric does not produce confidence scores",
+      "source": "N/A"
+    },
+    {
+      "rule_id": "MC-4",
+      "rule_name": "Evidence tiers",
+      "metric_id": "M-203",
+      "compliant": true,
+      "evidence": "M1 spec exists with Evidence tier field",
+      "source": "programs/A_metrology/MeasurementEngineSpecification.md"
+    },
+    {
+      "rule_id": "MC-5",
+      "rule_name": "Adversarial testing",
+      "metric_id": "M-203",
+      "compliant": true,
+      "evidence": "envelope=True",
+      "source": "reports/failure_envelopes/ + reports/bootstrap_statistics.json (M-008)"
+    },
+    {
+      "rule_id": "MC-6",
+      "rule_name": "Historical permanence",
+      "metric_id": "M-203",
+      "compliant": true,
+      "evidence": "m4_tested (CV=0.0952, verdict=ACCEPTABLE)",
+      "source": "reports/repeatability_m4.json + reports/bootstrap_statistics.json"
+    },
+    {
+      "rule_id": "MC-7",
+      "rule_name": "No naked numbers",
+      "metric_id": "M-203",
+      "compliant": true,
+      "evidence": "ScoredValue + ProvenanceRegistry + @with_provenance exist",
+      "source": "programs/A_metrology/measurement_provenance.py"
+    },
+    {
+      "rule_id": "MC-8",
+      "rule_name": "Bootstrap uncertainty",
+      "metric_id": "M-203",
+      "compliant": true,
+      "evidence": "M3 bootstrap exists: True (CI=0.7, 1.0)",
+      "source": "reports/bootstrap_statistics.json"
+    },
+    {
+      "rule_id": "MC-1",
+      "rule_name": "No self-validation",
+      "metric_id": "M-204",
+      "compliant": true,
+      "evidence": "DR-91 independent audit module exists (zero production imports)",
+      "source": "audit/measurement_integrity/dr91_measurement_audit.py"
+    },
+    {
+      "rule_id": "MC-2",
+      "rule_name": "Independent rescoring",
+      "metric_id": "M-204",
+      "compliant": true,
+      "evidence": "M3 bootstrap uses independent matchers (reproduced from DR-91)",
+      "source": "programs/A_metrology/bootstrap_statistics.py"
+    },
+    {
+      "rule_id": "MC-3",
+      "rule_name": "Confidence calibration",
+      "metric_id": "M-204",
+      "compliant": true,
+      "evidence": "N/A \u2014 metric does not produce confidence scores",
+      "source": "N/A"
+    },
+    {
+      "rule_id": "MC-4",
+      "rule_name": "Evidence tiers",
+      "metric_id": "M-204",
+      "compliant": true,
+      "evidence": "M1 spec exists with Evidence tier field",
+      "source": "programs/A_metrology/MeasurementEngineSpecification.md"
+    },
+    {
+      "rule_id": "MC-5",
+      "rule_name": "Adversarial testing",
+      "metric_id": "M-204",
+      "compliant": true,
+      "evidence": "envelope=True",
+      "source": "reports/failure_envelopes/ + reports/bootstrap_statistics.json (M-008)"
+    },
+    {
+      "rule_id": "MC-6",
+      "rule_name": "Historical permanence",
+      "metric_id": "M-204",
+      "compliant": true,
+      "evidence": "M4 system demonstrated on representative metrics (not individually tested)",
+      "source": "reports/repeatability_m4.json + reports/bootstrap_statistics.json"
+    },
+    {
+      "rule_id": "MC-7",
+      "rule_name": "No naked numbers",
+      "metric_id": "M-204",
+      "compliant": true,
+      "evidence": "ScoredValue + ProvenanceRegistry + @with_provenance exist",
+      "source": "programs/A_metrology/measurement_provenance.py"
+    },
+    {
+      "rule_id": "MC-8",
+      "rule_name": "Bootstrap uncertainty",
+      "metric_id": "M-204",
+      "compliant": true,
+      "evidence": "M3 bootstrap exists: True (CI=8.0, 9.4)",
+      "source": "reports/bootstrap_statistics.json"
+    },
+    {
+      "rule_id": "MC-1",
+      "rule_name": "No self-validation",
+      "metric_id": "M-205",
+      "compliant": true,
+      "evidence": "DR-91 independent audit module exists (zero production imports)",
+      "source": "audit/measurement_integrity/dr91_measurement_audit.py"
+    },
+    {
+      "rule_id": "MC-2",
+      "rule_name": "Independent rescoring",
+      "metric_id": "M-205",
+      "compliant": true,
+      "evidence": "M3 bootstrap uses independent matchers (reproduced from DR-91)",
+      "source": "programs/A_metrology/bootstrap_statistics.py"
+    },
+    {
+      "rule_id": "MC-3",
+      "rule_name": "Confidence calibration",
+      "metric_id": "M-205",
+      "compliant": true,
+      "evidence": "N/A \u2014 metric does not produce confidence scores",
+      "source": "N/A"
+    },
+    {
+      "rule_id": "MC-4",
+      "rule_name": "Evidence tiers",
+      "metric_id": "M-205",
+      "compliant": true,
+      "evidence": "M1 spec exists with Evidence tier field",
+      "source": "programs/A_metrology/MeasurementEngineSpecification.md"
+    },
+    {
+      "rule_id": "MC-5",
+      "rule_name": "Adversarial testing",
+      "metric_id": "M-205",
+      "compliant": true,
+      "evidence": "envelope=True",
+      "source": "reports/failure_envelopes/ + reports/bootstrap_statistics.json (M-008)"
+    },
+    {
+      "rule_id": "MC-6",
+      "rule_name": "Historical permanence",
+      "metric_id": "M-205",
+      "compliant": true,
+      "evidence": "deterministic (degenerate in M3, no drift possible)",
+      "source": "reports/repeatability_m4.json + reports/bootstrap_statistics.json"
+    },
+    {
+      "rule_id": "MC-7",
+      "rule_name": "No naked numbers",
+      "metric_id": "M-205",
+      "compliant": true,
+      "evidence": "ScoredValue + ProvenanceRegistry + @with_provenance exist",
+      "source": "programs/A_metrology/measurement_provenance.py"
+    },
+    {
+      "rule_id": "MC-8",
+      "rule_name": "Bootstrap uncertainty",
+      "metric_id": "M-205",
+      "compliant": true,
+      "evidence": "M3 bootstrap exists: True (CI=1.0, 1.0)",
+      "source": "reports/bootstrap_statistics.json"
+    },
+    {
+      "rule_id": "MC-1",
+      "rule_name": "No self-validation",
+      "metric_id": "M-301",
+      "compliant": true,
+      "evidence": "DR-91 independent audit module exists (zero production imports)",
+      "source": "audit/measurement_integrity/dr91_measurement_audit.py"
+    },
+    {
+      "rule_id": "MC-2",
+      "rule_name": "Independent rescoring",
+      "metric_id": "M-301",
+      "compliant": true,
+      "evidence": "M3 bootstrap uses independent matchers (reproduced from DR-91)",
+      "source": "programs/A_metrology/bootstrap_statistics.py"
+    },
+    {
+      "rule_id": "MC-3",
+      "rule_name": "Confidence calibration",
+      "metric_id": "M-301",
+      "compliant": true,
+      "evidence": "M-306 (ECE) exists in M3 bootstrap: True",
+      "source": "reports/bootstrap_statistics.json (M-306)"
+    },
+    {
+      "rule_id": "MC-4",
+      "rule_name": "Evidence tiers",
+      "metric_id": "M-301",
+      "compliant": true,
+      "evidence": "M1 spec exists with Evidence tier field",
+      "source": "programs/A_metrology/MeasurementEngineSpecification.md"
+    },
+    {
+      "rule_id": "MC-5",
+      "rule_name": "Adversarial testing",
+      "metric_id": "M-301",
+      "compliant": true,
+      "evidence": "envelope=True",
+      "source": "reports/failure_envelopes/ + reports/bootstrap_statistics.json (M-008)"
+    },
+    {
+      "rule_id": "MC-6",
+      "rule_name": "Historical permanence",
+      "metric_id": "M-301",
+      "compliant": true,
+      "evidence": "deterministic (degenerate in M3, no drift possible)",
+      "source": "reports/repeatability_m4.json + reports/bootstrap_statistics.json"
+    },
+    {
+      "rule_id": "MC-7",
+      "rule_name": "No naked numbers",
+      "metric_id": "M-301",
+      "compliant": true,
+      "evidence": "ScoredValue + ProvenanceRegistry + @with_provenance exist",
+      "source": "programs/A_metrology/measurement_provenance.py"
+    },
+    {
+      "rule_id": "MC-8",
+      "rule_name": "Bootstrap uncertainty",
+      "metric_id": "M-301",
+      "compliant": true,
+      "evidence": "M3 bootstrap exists: True (CI=0.0, 0.0)",
+      "source": "reports/bootstrap_statistics.json"
+    },
+    {
+      "rule_id": "MC-1",
+      "rule_name": "No self-validation",
+      "metric_id": "M-302",
+      "compliant": true,
+      "evidence": "DR-91 independent audit module exists (zero production imports)",
+      "source": "audit/measurement_integrity/dr91_measurement_audit.py"
+    },
+    {
+      "rule_id": "MC-2",
+      "rule_name": "Independent rescoring",
+      "metric_id": "M-302",
+      "compliant": true,
+      "evidence": "M3 bootstrap uses independent matchers (reproduced from DR-91)",
+      "source": "programs/A_metrology/bootstrap_statistics.py"
+    },
+    {
+      "rule_id": "MC-3",
+      "rule_name": "Confidence calibration",
+      "metric_id": "M-302",
+      "compliant": true,
+      "evidence": "M-306 (ECE) exists in M3 bootstrap: True",
+      "source": "reports/bootstrap_statistics.json (M-306)"
+    },
+    {
+      "rule_id": "MC-4",
+      "rule_name": "Evidence tiers",
+      "metric_id": "M-302",
+      "compliant": true,
+      "evidence": "M1 spec exists with Evidence tier field",
+      "source": "programs/A_metrology/MeasurementEngineSpecification.md"
+    },
+    {
+      "rule_id": "MC-5",
+      "rule_name": "Adversarial testing",
+      "metric_id": "M-302",
+      "compliant": true,
+      "evidence": "envelope=True",
+      "source": "reports/failure_envelopes/ + reports/bootstrap_statistics.json (M-008)"
+    },
+    {
+      "rule_id": "MC-6",
+      "rule_name": "Historical permanence",
+      "metric_id": "M-302",
+      "compliant": true,
+      "evidence": "M4 system demonstrated on representative metrics (not individually tested)",
+      "source": "reports/repeatability_m4.json + reports/bootstrap_statistics.json"
+    },
+    {
+      "rule_id": "MC-7",
+      "rule_name": "No naked numbers",
+      "metric_id": "M-302",
+      "compliant": true,
+      "evidence": "ScoredValue + ProvenanceRegistry + @with_provenance exist",
+      "source": "programs/A_metrology/measurement_provenance.py"
+    },
+    {
+      "rule_id": "MC-8",
+      "rule_name": "Bootstrap uncertainty",
+      "metric_id": "M-302",
+      "compliant": true,
+      "evidence": "M3 bootstrap exists: True (CI=1.678, 2.8458)",
+      "source": "reports/bootstrap_statistics.json"
+    },
+    {
+      "rule_id": "MC-1",
+      "rule_name": "No self-validation",
+      "metric_id": "M-303-D1",
+      "compliant": true,
+      "evidence": "DR-91 independent audit module exists (zero production imports)",
+      "source": "audit/measurement_integrity/dr91_measurement_audit.py"
+    },
+    {
+      "rule_id": "MC-2",
+      "rule_name": "Independent rescoring",
+      "metric_id": "M-303-D1",
+      "compliant": true,
+      "evidence": "M3 bootstrap uses independent matchers (reproduced from DR-91)",
+      "source": "programs/A_metrology/bootstrap_statistics.py"
+    },
+    {
+      "rule_id": "MC-3",
+      "rule_name": "Confidence calibration",
+      "metric_id": "M-303-D1",
+      "compliant": true,
+      "evidence": "M-306 (ECE) exists in M3 bootstrap: True",
+      "source": "reports/bootstrap_statistics.json (M-306)"
+    },
+    {
+      "rule_id": "MC-4",
+      "rule_name": "Evidence tiers",
+      "metric_id": "M-303-D1",
+      "compliant": true,
+      "evidence": "M1 spec exists with Evidence tier field",
+      "source": "programs/A_metrology/MeasurementEngineSpecification.md"
+    },
+    {
+      "rule_id": "MC-5",
+      "rule_name": "Adversarial testing",
+      "metric_id": "M-303-D1",
+      "compliant": true,
+      "evidence": "envelope=True",
+      "source": "reports/failure_envelopes/ + reports/bootstrap_statistics.json (M-008)"
+    },
+    {
+      "rule_id": "MC-6",
+      "rule_name": "Historical permanence",
+      "metric_id": "M-303-D1",
+      "compliant": true,
+      "evidence": "M4 system demonstrated on representative metrics (not individually tested)",
+      "source": "reports/repeatability_m4.json + reports/bootstrap_statistics.json"
+    },
+    {
+      "rule_id": "MC-7",
+      "rule_name": "No naked numbers",
+      "metric_id": "M-303-D1",
+      "compliant": true,
+      "evidence": "ScoredValue + ProvenanceRegistry + @with_provenance exist",
+      "source": "programs/A_metrology/measurement_provenance.py"
+    },
+    {
+      "rule_id": "MC-8",
+      "rule_name": "Bootstrap uncertainty",
+      "metric_id": "M-303-D1",
+      "compliant": true,
+      "evidence": "M3 bootstrap exists: True (CI=3.5, 4.5)",
+      "source": "reports/bootstrap_statistics.json"
+    },
+    {
+      "rule_id": "MC-1",
+      "rule_name": "No self-validation",
+      "metric_id": "M-303-D2",
+      "compliant": true,
+      "evidence": "DR-91 independent audit module exists (zero production imports)",
+      "source": "audit/measurement_integrity/dr91_measurement_audit.py"
+    },
+    {
+      "rule_id": "MC-2",
+      "rule_name": "Independent rescoring",
+      "metric_id": "M-303-D2",
+      "compliant": true,
+      "evidence": "M3 bootstrap uses independent matchers (reproduced from DR-91)",
+      "source": "programs/A_metrology/bootstrap_statistics.py"
+    },
+    {
+      "rule_id": "MC-3",
+      "rule_name": "Confidence calibration",
+      "metric_id": "M-303-D2",
+      "compliant": true,
+      "evidence": "M-306 (ECE) exists in M3 bootstrap: True",
+      "source": "reports/bootstrap_statistics.json (M-306)"
+    },
+    {
+      "rule_id": "MC-4",
+      "rule_name": "Evidence tiers",
+      "metric_id": "M-303-D2",
+      "compliant": true,
+      "evidence": "M1 spec exists with Evidence tier field",
+      "source": "programs/A_metrology/MeasurementEngineSpecification.md"
+    },
+    {
+      "rule_id": "MC-5",
+      "rule_name": "Adversarial testing",
+      "metric_id": "M-303-D2",
+      "compliant": true,
+      "evidence": "envelope=True",
+      "source": "reports/failure_envelopes/ + reports/bootstrap_statistics.json (M-008)"
+    },
+    {
+      "rule_id": "MC-6",
+      "rule_name": "Historical permanence",
+      "metric_id": "M-303-D2",
+      "compliant": true,
+      "evidence": "M4 system demonstrated on representative metrics (not individually tested)",
+      "source": "reports/repeatability_m4.json + reports/bootstrap_statistics.json"
+    },
+    {
+      "rule_id": "MC-7",
+      "rule_name": "No naked numbers",
+      "metric_id": "M-303-D2",
+      "compliant": true,
+      "evidence": "ScoredValue + ProvenanceRegistry + @with_provenance exist",
+      "source": "programs/A_metrology/measurement_provenance.py"
+    },
+    {
+      "rule_id": "MC-8",
+      "rule_name": "Bootstrap uncertainty",
+      "metric_id": "M-303-D2",
+      "compliant": true,
+      "evidence": "M3 bootstrap exists: True (CI=1.0, 1.5)",
+      "source": "reports/bootstrap_statistics.json"
+    },
+    {
+      "rule_id": "MC-1",
+      "rule_name": "No self-validation",
+      "metric_id": "M-303-D3",
+      "compliant": true,
+      "evidence": "DR-91 independent audit module exists (zero production imports)",
+      "source": "audit/measurement_integrity/dr91_measurement_audit.py"
+    },
+    {
+      "rule_id": "MC-2",
+      "rule_name": "Independent rescoring",
+      "metric_id": "M-303-D3",
+      "compliant": true,
+      "evidence": "M3 bootstrap uses independent matchers (reproduced from DR-91)",
+      "source": "programs/A_metrology/bootstrap_statistics.py"
+    },
+    {
+      "rule_id": "MC-3",
+      "rule_name": "Confidence calibration",
+      "metric_id": "M-303-D3",
+      "compliant": true,
+      "evidence": "M-306 (ECE) exists in M3 bootstrap: True",
+      "source": "reports/bootstrap_statistics.json (M-306)"
+    },
+    {
+      "rule_id": "MC-4",
+      "rule_name": "Evidence tiers",
+      "metric_id": "M-303-D3",
+      "compliant": true,
+      "evidence": "M1 spec exists with Evidence tier field",
+      "source": "programs/A_metrology/MeasurementEngineSpecification.md"
+    },
+    {
+      "rule_id": "MC-5",
+      "rule_name": "Adversarial testing",
+      "metric_id": "M-303-D3",
+      "compliant": true,
+      "evidence": "envelope=True",
+      "source": "reports/failure_envelopes/ + reports/bootstrap_statistics.json (M-008)"
+    },
+    {
+      "rule_id": "MC-6",
+      "rule_name": "Historical permanence",
+      "metric_id": "M-303-D3",
+      "compliant": true,
+      "evidence": "deterministic (degenerate in M3, no drift possible)",
+      "source": "reports/repeatability_m4.json + reports/bootstrap_statistics.json"
+    },
+    {
+      "rule_id": "MC-7",
+      "rule_name": "No naked numbers",
+      "metric_id": "M-303-D3",
+      "compliant": true,
+      "evidence": "ScoredValue + ProvenanceRegistry + @with_provenance exist",
+      "source": "programs/A_metrology/measurement_provenance.py"
+    },
+    {
+      "rule_id": "MC-8",
+      "rule_name": "Bootstrap uncertainty",
+      "metric_id": "M-303-D3",
+      "compliant": true,
+      "evidence": "M3 bootstrap exists: True (CI=2.0, 2.0)",
+      "source": "reports/bootstrap_statistics.json"
+    },
+    {
+      "rule_id": "MC-1",
+      "rule_name": "No self-validation",
+      "metric_id": "M-303-D4",
+      "compliant": true,
+      "evidence": "DR-91 independent audit module exists (zero production imports)",
+      "source": "audit/measurement_integrity/dr91_measurement_audit.py"
+    },
+    {
+      "rule_id": "MC-2",
+      "rule_name": "Independent rescoring",
+      "metric_id": "M-303-D4",
+      "compliant": true,
+      "evidence": "M3 bootstrap uses independent matchers (reproduced from DR-91)",
+      "source": "programs/A_metrology/bootstrap_statistics.py"
+    },
+    {
+      "rule_id": "MC-3",
+      "rule_name": "Confidence calibration",
+      "metric_id": "M-303-D4",
+      "compliant": true,
+      "evidence": "M-306 (ECE) exists in M3 bootstrap: True",
+      "source": "reports/bootstrap_statistics.json (M-306)"
+    },
+    {
+      "rule_id": "MC-4",
+      "rule_name": "Evidence tiers",
+      "metric_id": "M-303-D4",
+      "compliant": true,
+      "evidence": "M1 spec exists with Evidence tier field",
+      "source": "programs/A_metrology/MeasurementEngineSpecification.md"
+    },
+    {
+      "rule_id": "MC-5",
+      "rule_name": "Adversarial testing",
+      "metric_id": "M-303-D4",
+      "compliant": true,
+      "evidence": "envelope=True",
+      "source": "reports/failure_envelopes/ + reports/bootstrap_statistics.json (M-008)"
+    },
+    {
+      "rule_id": "MC-6",
+      "rule_name": "Historical permanence",
+      "metric_id": "M-303-D4",
+      "compliant": true,
+      "evidence": "M4 system demonstrated on representative metrics (not individually tested)",
+      "source": "reports/repeatability_m4.json + reports/bootstrap_statistics.json"
+    },
+    {
+      "rule_id": "MC-7",
+      "rule_name": "No naked numbers",
+      "metric_id": "M-303-D4",
+      "compliant": true,
+      "evidence": "ScoredValue + ProvenanceRegistry + @with_provenance exist",
+      "source": "programs/A_metrology/measurement_provenance.py"
+    },
+    {
+      "rule_id": "MC-8",
+      "rule_name": "Bootstrap uncertainty",
+      "metric_id": "M-303-D4",
+      "compliant": true,
+      "evidence": "M3 bootstrap exists: True (CI=1.5, 2.0)",
+      "source": "reports/bootstrap_statistics.json"
+    },
+    {
+      "rule_id": "MC-1",
+      "rule_name": "No self-validation",
+      "metric_id": "M-303-D5",
+      "compliant": true,
+      "evidence": "DR-91 independent audit module exists (zero production imports)",
+      "source": "audit/measurement_integrity/dr91_measurement_audit.py"
+    },
+    {
+      "rule_id": "MC-2",
+      "rule_name": "Independent rescoring",
+      "metric_id": "M-303-D5",
+      "compliant": true,
+      "evidence": "M3 bootstrap uses independent matchers (reproduced from DR-91)",
+      "source": "programs/A_metrology/bootstrap_statistics.py"
+    },
+    {
+      "rule_id": "MC-3",
+      "rule_name": "Confidence calibration",
+      "metric_id": "M-303-D5",
+      "compliant": true,
+      "evidence": "M-306 (ECE) exists in M3 bootstrap: True",
+      "source": "reports/bootstrap_statistics.json (M-306)"
+    },
+    {
+      "rule_id": "MC-4",
+      "rule_name": "Evidence tiers",
+      "metric_id": "M-303-D5",
+      "compliant": true,
+      "evidence": "M1 spec exists with Evidence tier field",
+      "source": "programs/A_metrology/MeasurementEngineSpecification.md"
+    },
+    {
+      "rule_id": "MC-5",
+      "rule_name": "Adversarial testing",
+      "metric_id": "M-303-D5",
+      "compliant": true,
+      "evidence": "envelope=True",
+      "source": "reports/failure_envelopes/ + reports/bootstrap_statistics.json (M-008)"
+    },
+    {
+      "rule_id": "MC-6",
+      "rule_name": "Historical permanence",
+      "metric_id": "M-303-D5",
+      "compliant": true,
+      "evidence": "deterministic (degenerate in M3, no drift possible)",
+      "source": "reports/repeatability_m4.json + reports/bootstrap_statistics.json"
+    },
+    {
+      "rule_id": "MC-7",
+      "rule_name": "No naked numbers",
+      "metric_id": "M-303-D5",
+      "compliant": true,
+      "evidence": "ScoredValue + ProvenanceRegistry + @with_provenance exist",
+      "source": "programs/A_metrology/measurement_provenance.py"
+    },
+    {
+      "rule_id": "MC-8",
+      "rule_name": "Bootstrap uncertainty",
+      "metric_id": "M-303-D5",
+      "compliant": true,
+      "evidence": "M3 bootstrap exists: True (CI=3.0, 3.0)",
+      "source": "reports/bootstrap_statistics.json"
+    },
+    {
+      "rule_id": "MC-1",
+      "rule_name": "No self-validation",
+      "metric_id": "M-303-D6",
+      "compliant": true,
+      "evidence": "DR-91 independent audit module exists (zero production imports)",
+      "source": "audit/measurement_integrity/dr91_measurement_audit.py"
+    },
+    {
+      "rule_id": "MC-2",
+      "rule_name": "Independent rescoring",
+      "metric_id": "M-303-D6",
+      "compliant": true,
+      "evidence": "M3 bootstrap uses independent matchers (reproduced from DR-91)",
+      "source": "programs/A_metrology/bootstrap_statistics.py"
+    },
+    {
+      "rule_id": "MC-3",
+      "rule_name": "Confidence calibration",
+      "metric_id": "M-303-D6",
+      "compliant": true,
+      "evidence": "M-306 (ECE) exists in M3 bootstrap: True",
+      "source": "reports/bootstrap_statistics.json (M-306)"
+    },
+    {
+      "rule_id": "MC-4",
+      "rule_name": "Evidence tiers",
+      "metric_id": "M-303-D6",
+      "compliant": true,
+      "evidence": "M1 spec exists with Evidence tier field",
+      "source": "programs/A_metrology/MeasurementEngineSpecification.md"
+    },
+    {
+      "rule_id": "MC-5",
+      "rule_name": "Adversarial testing",
+      "metric_id": "M-303-D6",
+      "compliant": true,
+      "evidence": "envelope=True",
+      "source": "reports/failure_envelopes/ + reports/bootstrap_statistics.json (M-008)"
+    },
+    {
+      "rule_id": "MC-6",
+      "rule_name": "Historical permanence",
+      "metric_id": "M-303-D6",
+      "compliant": true,
+      "evidence": "M4 system demonstrated on representative metrics (not individually tested)",
+      "source": "reports/repeatability_m4.json + reports/bootstrap_statistics.json"
+    },
+    {
+      "rule_id": "MC-7",
+      "rule_name": "No naked numbers",
+      "metric_id": "M-303-D6",
+      "compliant": true,
+      "evidence": "ScoredValue + ProvenanceRegistry + @with_provenance exist",
+      "source": "programs/A_metrology/measurement_provenance.py"
+    },
+    {
+      "rule_id": "MC-8",
+      "rule_name": "Bootstrap uncertainty",
+      "metric_id": "M-303-D6",
+      "compliant": true,
+      "evidence": "M3 bootstrap exists: True (CI=1.5, 2.0)",
+      "source": "reports/bootstrap_statistics.json"
+    },
+    {
+      "rule_id": "MC-1",
+      "rule_name": "No self-validation",
+      "metric_id": "M-303-D7",
+      "compliant": true,
+      "evidence": "DR-91 independent audit module exists (zero production imports)",
+      "source": "audit/measurement_integrity/dr91_measurement_audit.py"
+    },
+    {
+      "rule_id": "MC-2",
+      "rule_name": "Independent rescoring",
+      "metric_id": "M-303-D7",
+      "compliant": true,
+      "evidence": "M3 bootstrap uses independent matchers (reproduced from DR-91)",
+      "source": "programs/A_metrology/bootstrap_statistics.py"
+    },
+    {
+      "rule_id": "MC-3",
+      "rule_name": "Confidence calibration",
+      "metric_id": "M-303-D7",
+      "compliant": true,
+      "evidence": "M-306 (ECE) exists in M3 bootstrap: True",
+      "source": "reports/bootstrap_statistics.json (M-306)"
+    },
+    {
+      "rule_id": "MC-4",
+      "rule_name": "Evidence tiers",
+      "metric_id": "M-303-D7",
+      "compliant": true,
+      "evidence": "M1 spec exists with Evidence tier field",
+      "source": "programs/A_metrology/MeasurementEngineSpecification.md"
+    },
+    {
+      "rule_id": "MC-5",
+      "rule_name": "Adversarial testing",
+      "metric_id": "M-303-D7",
+      "compliant": true,
+      "evidence": "envelope=True",
+      "source": "reports/failure_envelopes/ + reports/bootstrap_statistics.json (M-008)"
+    },
+    {
+      "rule_id": "MC-6",
+      "rule_name": "Historical permanence",
+      "metric_id": "M-303-D7",
+      "compliant": true,
+      "evidence": "M4 system demonstrated on representative metrics (not individually tested)",
+      "source": "reports/repeatability_m4.json + reports/bootstrap_statistics.json"
+    },
+    {
+      "rule_id": "MC-7",
+      "rule_name": "No naked numbers",
+      "metric_id": "M-303-D7",
+      "compliant": true,
+      "evidence": "ScoredValue + ProvenanceRegistry + @with_provenance exist",
+      "source": "programs/A_metrology/measurement_provenance.py"
+    },
+    {
+      "rule_id": "MC-8",
+      "rule_name": "Bootstrap uncertainty",
+      "metric_id": "M-303-D7",
+      "compliant": true,
+      "evidence": "M3 bootstrap exists: True (CI=1.5, 2.0)",
+      "source": "reports/bootstrap_statistics.json"
+    },
+    {
+      "rule_id": "MC-1",
+      "rule_name": "No self-validation",
+      "metric_id": "M-304",
+      "compliant": true,
+      "evidence": "DR-91 independent audit module exists (zero production imports)",
+      "source": "audit/measurement_integrity/dr91_measurement_audit.py"
+    },
+    {
+      "rule_id": "MC-2",
+      "rule_name": "Independent rescoring",
+      "metric_id": "M-304",
+      "compliant": true,
+      "evidence": "M3 bootstrap uses independent matchers (reproduced from DR-91)",
+      "source": "programs/A_metrology/bootstrap_statistics.py"
+    },
+    {
+      "rule_id": "MC-3",
+      "rule_name": "Confidence calibration",
+      "metric_id": "M-304",
+      "compliant": true,
+      "evidence": "N/A \u2014 metric does not produce confidence scores",
+      "source": "N/A"
+    },
+    {
+      "rule_id": "MC-4",
+      "rule_name": "Evidence tiers",
+      "metric_id": "M-304",
+      "compliant": true,
+      "evidence": "M1 spec exists with Evidence tier field",
+      "source": "programs/A_metrology/MeasurementEngineSpecification.md"
+    },
+    {
+      "rule_id": "MC-5",
+      "rule_name": "Adversarial testing",
+      "metric_id": "M-304",
+      "compliant": true,
+      "evidence": "envelope=True",
+      "source": "reports/failure_envelopes/ + reports/bootstrap_statistics.json (M-008)"
+    },
+    {
+      "rule_id": "MC-6",
+      "rule_name": "Historical permanence",
+      "metric_id": "M-304",
+      "compliant": true,
+      "evidence": "m4_tested (CV=0.6364, verdict=UNSTABLE)",
+      "source": "reports/repeatability_m4.json + reports/bootstrap_statistics.json"
+    },
+    {
+      "rule_id": "MC-7",
+      "rule_name": "No naked numbers",
+      "metric_id": "M-304",
+      "compliant": true,
+      "evidence": "ScoredValue + ProvenanceRegistry + @with_provenance exist",
+      "source": "programs/A_metrology/measurement_provenance.py"
+    },
+    {
+      "rule_id": "MC-8",
+      "rule_name": "Bootstrap uncertainty",
+      "metric_id": "M-304",
+      "compliant": true,
+      "evidence": "M3 bootstrap exists: True (CI=0.0, 0.5)",
+      "source": "reports/bootstrap_statistics.json"
+    },
+    {
+      "rule_id": "MC-1",
+      "rule_name": "No self-validation",
+      "metric_id": "M-305",
+      "compliant": true,
+      "evidence": "DR-91 independent audit module exists (zero production imports)",
+      "source": "audit/measurement_integrity/dr91_measurement_audit.py"
+    },
+    {
+      "rule_id": "MC-2",
+      "rule_name": "Independent rescoring",
+      "metric_id": "M-305",
+      "compliant": true,
+      "evidence": "M3 bootstrap uses independent matchers (reproduced from DR-91)",
+      "source": "programs/A_metrology/bootstrap_statistics.py"
+    },
+    {
+      "rule_id": "MC-3",
+      "rule_name": "Confidence calibration",
+      "metric_id": "M-305",
+      "compliant": true,
+      "evidence": "M-306 (ECE) exists in M3 bootstrap: True",
+      "source": "reports/bootstrap_statistics.json (M-306)"
+    },
+    {
+      "rule_id": "MC-4",
+      "rule_name": "Evidence tiers",
+      "metric_id": "M-305",
+      "compliant": true,
+      "evidence": "M1 spec exists with Evidence tier field",
+      "source": "programs/A_metrology/MeasurementEngineSpecification.md"
+    },
+    {
+      "rule_id": "MC-5",
+      "rule_name": "Adversarial testing",
+      "metric_id": "M-305",
+      "compliant": true,
+      "evidence": "envelope=True",
+      "source": "reports/failure_envelopes/ + reports/bootstrap_statistics.json (M-008)"
+    },
+    {
+      "rule_id": "MC-6",
+      "rule_name": "Historical permanence",
+      "metric_id": "M-305",
+      "compliant": true,
+      "evidence": "m4_tested (CV=0.0125, verdict=STABLE)",
+      "source": "reports/repeatability_m4.json + reports/bootstrap_statistics.json"
+    },
+    {
+      "rule_id": "MC-7",
+      "rule_name": "No naked numbers",
+      "metric_id": "M-305",
+      "compliant": true,
+      "evidence": "ScoredValue + ProvenanceRegistry + @with_provenance exist",
+      "source": "programs/A_metrology/measurement_provenance.py"
+    },
+    {
+      "rule_id": "MC-8",
+      "rule_name": "Bootstrap uncertainty",
+      "metric_id": "M-305",
+      "compliant": true,
+      "evidence": "M3 bootstrap exists: True (CI=2.375, 2.625)",
+      "source": "reports/bootstrap_statistics.json"
+    },
+    {
+      "rule_id": "MC-1",
+      "rule_name": "No self-validation",
+      "metric_id": "M-306",
+      "compliant": true,
+      "evidence": "DR-91 independent audit module exists (zero production imports)",
+      "source": "audit/measurement_integrity/dr91_measurement_audit.py"
+    },
+    {
+      "rule_id": "MC-2",
+      "rule_name": "Independent rescoring",
+      "metric_id": "M-306",
+      "compliant": true,
+      "evidence": "M3 bootstrap uses independent matchers (reproduced from DR-91)",
+      "source": "programs/A_metrology/bootstrap_statistics.py"
+    },
+    {
+      "rule_id": "MC-3",
+      "rule_name": "Confidence calibration",
+      "metric_id": "M-306",
+      "compliant": true,
+      "evidence": "M-306 (ECE) exists in M3 bootstrap: True",
+      "source": "reports/bootstrap_statistics.json (M-306)"
+    },
+    {
+      "rule_id": "MC-4",
+      "rule_name": "Evidence tiers",
+      "metric_id": "M-306",
+      "compliant": true,
+      "evidence": "M1 spec exists with Evidence tier field",
+      "source": "programs/A_metrology/MeasurementEngineSpecification.md"
+    },
+    {
+      "rule_id": "MC-5",
+      "rule_name": "Adversarial testing",
+      "metric_id": "M-306",
+      "compliant": true,
+      "evidence": "envelope=True",
+      "source": "reports/failure_envelopes/ + reports/bootstrap_statistics.json (M-008)"
+    },
+    {
+      "rule_id": "MC-6",
+      "rule_name": "Historical permanence",
+      "metric_id": "M-306",
+      "compliant": true,
+      "evidence": "m4_tested (CV=0.0069, verdict=STABLE)",
+      "source": "reports/repeatability_m4.json + reports/bootstrap_statistics.json"
+    },
+    {
+      "rule_id": "MC-7",
+      "rule_name": "No naked numbers",
+      "metric_id": "M-306",
+      "compliant": true,
+      "evidence": "ScoredValue + ProvenanceRegistry + @with_provenance exist",
+      "source": "programs/A_metrology/measurement_provenance.py"
+    },
+    {
+      "rule_id": "MC-8",
+      "rule_name": "Bootstrap uncertainty",
+      "metric_id": "M-306",
+      "compliant": true,
+      "evidence": "M3 bootstrap exists: True (CI=0.875, 0.925)",
+      "source": "reports/bootstrap_statistics.json"
+    }
+  ]
+}

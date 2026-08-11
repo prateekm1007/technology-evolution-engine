@@ -1,0 +1,910 @@
+{
+  "pre_classification_type": "AUTOMATED_SUGGESTION",
+  "pre_classification_version": "1.0.0",
+  "note": "These are automated suggestions for the custodian. They are NOT decisions. The custodian must review each one and record their own classification.",
+  "suggestions": [
+    {
+      "source_id": "OA-W4411792267",
+      "openalex_domain": "Biochemistry, Genetics and Molecular Biology",
+      "suggested_classification": "UNRESOLVED",
+      "rationale": "Keyword 'biochemistry' maps to multiple domains: ['biochemistry', 'molecular_biology', 'enzymology']. Requires custodian review.",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411830297",
+      "openalex_domain": "Engineering",
+      "suggested_classification": "UNRESOLVED",
+      "rationale": "Keyword 'engineering' maps to multiple domains: ['mechanical_engineering', 'chemical_engineering', 'electrical_engineering']. Requires custodian review.",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411793773",
+      "openalex_domain": "Engineering",
+      "suggested_classification": "UNRESOLVED",
+      "rationale": "Keyword 'engineering' maps to multiple domains: ['mechanical_engineering', 'chemical_engineering', 'electrical_engineering']. Requires custodian review.",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411786222",
+      "openalex_domain": "Biochemistry, Genetics and Molecular Biology",
+      "suggested_classification": "UNRESOLVED",
+      "rationale": "Keyword 'biochemistry' maps to multiple domains: ['biochemistry', 'molecular_biology', 'enzymology']. Requires custodian review.",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411787292",
+      "openalex_domain": "Agricultural and Biological Sciences",
+      "suggested_classification": "OUTSIDE_SCOPE",
+      "rationale": "Keyword 'agricultural' in OpenAlex domain maps to 'OUTSIDE_SCOPE'",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411841997",
+      "openalex_domain": "Agricultural and Biological Sciences",
+      "suggested_classification": "OUTSIDE_SCOPE",
+      "rationale": "Keyword 'agricultural' in OpenAlex domain maps to 'OUTSIDE_SCOPE'",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411778347",
+      "openalex_domain": "Biochemistry, Genetics and Molecular Biology",
+      "suggested_classification": "UNRESOLVED",
+      "rationale": "Keyword 'biochemistry' maps to multiple domains: ['biochemistry', 'molecular_biology', 'enzymology']. Requires custodian review.",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411789322",
+      "openalex_domain": "Physics and Astronomy",
+      "suggested_classification": "UNRESOLVED",
+      "rationale": "Keyword 'physics' maps to multiple domains: ['optics', 'electromagnetics', 'thermodynamics']. Requires custodian review.",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411927895",
+      "openalex_domain": "Immunology and Microbiology",
+      "suggested_classification": "OUTSIDE_SCOPE",
+      "rationale": "Keyword 'immunology' in OpenAlex domain maps to 'OUTSIDE_SCOPE'",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411838115",
+      "openalex_domain": "Energy",
+      "suggested_classification": "thermodynamics",
+      "rationale": "Keyword 'energy' in OpenAlex domain maps to 'thermodynamics'",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411786702",
+      "openalex_domain": "Energy",
+      "suggested_classification": "thermodynamics",
+      "rationale": "Keyword 'energy' in OpenAlex domain maps to 'thermodynamics'",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411825330",
+      "openalex_domain": "Physics and Astronomy",
+      "suggested_classification": "UNRESOLVED",
+      "rationale": "Keyword 'physics' maps to multiple domains: ['optics', 'electromagnetics', 'thermodynamics']. Requires custodian review.",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411788290",
+      "openalex_domain": "Biochemistry, Genetics and Molecular Biology",
+      "suggested_classification": "UNRESOLVED",
+      "rationale": "Keyword 'biochemistry' maps to multiple domains: ['biochemistry', 'molecular_biology', 'enzymology']. Requires custodian review.",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411823897",
+      "openalex_domain": "Energy",
+      "suggested_classification": "thermodynamics",
+      "rationale": "Keyword 'energy' in OpenAlex domain maps to 'thermodynamics'",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411807766",
+      "openalex_domain": "Engineering",
+      "suggested_classification": "UNRESOLVED",
+      "rationale": "Keyword 'engineering' maps to multiple domains: ['mechanical_engineering', 'chemical_engineering', 'electrical_engineering']. Requires custodian review.",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411814643",
+      "openalex_domain": "Engineering",
+      "suggested_classification": "UNRESOLVED",
+      "rationale": "Keyword 'engineering' maps to multiple domains: ['mechanical_engineering', 'chemical_engineering', 'electrical_engineering']. Requires custodian review.",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411826857",
+      "openalex_domain": "Biochemistry, Genetics and Molecular Biology",
+      "suggested_classification": "UNRESOLVED",
+      "rationale": "Keyword 'biochemistry' maps to multiple domains: ['biochemistry', 'molecular_biology', 'enzymology']. Requires custodian review.",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411801754",
+      "openalex_domain": "Engineering",
+      "suggested_classification": "UNRESOLVED",
+      "rationale": "Keyword 'engineering' maps to multiple domains: ['mechanical_engineering', 'chemical_engineering', 'electrical_engineering']. Requires custodian review.",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4412372600",
+      "openalex_domain": "Engineering",
+      "suggested_classification": "UNRESOLVED",
+      "rationale": "Keyword 'engineering' maps to multiple domains: ['mechanical_engineering', 'chemical_engineering', 'electrical_engineering']. Requires custodian review.",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411785600",
+      "openalex_domain": "Agricultural and Biological Sciences",
+      "suggested_classification": "OUTSIDE_SCOPE",
+      "rationale": "Keyword 'agricultural' in OpenAlex domain maps to 'OUTSIDE_SCOPE'",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411809022",
+      "openalex_domain": "Engineering",
+      "suggested_classification": "UNRESOLVED",
+      "rationale": "Keyword 'engineering' maps to multiple domains: ['mechanical_engineering', 'chemical_engineering', 'electrical_engineering']. Requires custodian review.",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411781495",
+      "openalex_domain": "Engineering",
+      "suggested_classification": "UNRESOLVED",
+      "rationale": "Keyword 'engineering' maps to multiple domains: ['mechanical_engineering', 'chemical_engineering', 'electrical_engineering']. Requires custodian review.",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411784219",
+      "openalex_domain": "Agricultural and Biological Sciences",
+      "suggested_classification": "OUTSIDE_SCOPE",
+      "rationale": "Keyword 'agricultural' in OpenAlex domain maps to 'OUTSIDE_SCOPE'",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411830212",
+      "openalex_domain": "Engineering",
+      "suggested_classification": "UNRESOLVED",
+      "rationale": "Keyword 'engineering' maps to multiple domains: ['mechanical_engineering', 'chemical_engineering', 'electrical_engineering']. Requires custodian review.",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411830267",
+      "openalex_domain": "Immunology and Microbiology",
+      "suggested_classification": "OUTSIDE_SCOPE",
+      "rationale": "Keyword 'immunology' in OpenAlex domain maps to 'OUTSIDE_SCOPE'",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411779807",
+      "openalex_domain": "Engineering",
+      "suggested_classification": "UNRESOLVED",
+      "rationale": "Keyword 'engineering' maps to multiple domains: ['mechanical_engineering', 'chemical_engineering', 'electrical_engineering']. Requires custodian review.",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411916948",
+      "openalex_domain": "Agricultural and Biological Sciences",
+      "suggested_classification": "OUTSIDE_SCOPE",
+      "rationale": "Keyword 'agricultural' in OpenAlex domain maps to 'OUTSIDE_SCOPE'",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411778905",
+      "openalex_domain": "Physics and Astronomy",
+      "suggested_classification": "UNRESOLVED",
+      "rationale": "Keyword 'physics' maps to multiple domains: ['optics', 'electromagnetics', 'thermodynamics']. Requires custodian review.",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411799204",
+      "openalex_domain": "Biochemistry, Genetics and Molecular Biology",
+      "suggested_classification": "UNRESOLVED",
+      "rationale": "Keyword 'biochemistry' maps to multiple domains: ['biochemistry', 'molecular_biology', 'enzymology']. Requires custodian review.",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411909838",
+      "openalex_domain": "Engineering",
+      "suggested_classification": "UNRESOLVED",
+      "rationale": "Keyword 'engineering' maps to multiple domains: ['mechanical_engineering', 'chemical_engineering', 'electrical_engineering']. Requires custodian review.",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411798857",
+      "openalex_domain": "Engineering",
+      "suggested_classification": "UNRESOLVED",
+      "rationale": "Keyword 'engineering' maps to multiple domains: ['mechanical_engineering', 'chemical_engineering', 'electrical_engineering']. Requires custodian review.",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411837993",
+      "openalex_domain": "Physics and Astronomy",
+      "suggested_classification": "UNRESOLVED",
+      "rationale": "Keyword 'physics' maps to multiple domains: ['optics', 'electromagnetics', 'thermodynamics']. Requires custodian review.",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411927338",
+      "openalex_domain": "Agricultural and Biological Sciences",
+      "suggested_classification": "OUTSIDE_SCOPE",
+      "rationale": "Keyword 'agricultural' in OpenAlex domain maps to 'OUTSIDE_SCOPE'",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411780509",
+      "openalex_domain": "Immunology and Microbiology",
+      "suggested_classification": "OUTSIDE_SCOPE",
+      "rationale": "Keyword 'immunology' in OpenAlex domain maps to 'OUTSIDE_SCOPE'",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411780511",
+      "openalex_domain": "Engineering",
+      "suggested_classification": "UNRESOLVED",
+      "rationale": "Keyword 'engineering' maps to multiple domains: ['mechanical_engineering', 'chemical_engineering', 'electrical_engineering']. Requires custodian review.",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411782461",
+      "openalex_domain": "Biochemistry, Genetics and Molecular Biology",
+      "suggested_classification": "UNRESOLVED",
+      "rationale": "Keyword 'biochemistry' maps to multiple domains: ['biochemistry', 'molecular_biology', 'enzymology']. Requires custodian review.",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411783791",
+      "openalex_domain": "Biochemistry, Genetics and Molecular Biology",
+      "suggested_classification": "UNRESOLVED",
+      "rationale": "Keyword 'biochemistry' maps to multiple domains: ['biochemistry', 'molecular_biology', 'enzymology']. Requires custodian review.",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411805582",
+      "openalex_domain": "Engineering",
+      "suggested_classification": "UNRESOLVED",
+      "rationale": "Keyword 'engineering' maps to multiple domains: ['mechanical_engineering', 'chemical_engineering', 'electrical_engineering']. Requires custodian review.",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411830550",
+      "openalex_domain": "Biochemistry, Genetics and Molecular Biology",
+      "suggested_classification": "UNRESOLVED",
+      "rationale": "Keyword 'biochemistry' maps to multiple domains: ['biochemistry', 'molecular_biology', 'enzymology']. Requires custodian review.",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411782169",
+      "openalex_domain": "Biochemistry, Genetics and Molecular Biology",
+      "suggested_classification": "UNRESOLVED",
+      "rationale": "Keyword 'biochemistry' maps to multiple domains: ['biochemistry', 'molecular_biology', 'enzymology']. Requires custodian review.",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411785660",
+      "openalex_domain": "Biochemistry, Genetics and Molecular Biology",
+      "suggested_classification": "UNRESOLVED",
+      "rationale": "Keyword 'biochemistry' maps to multiple domains: ['biochemistry', 'molecular_biology', 'enzymology']. Requires custodian review.",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411789045",
+      "openalex_domain": "Biochemistry, Genetics and Molecular Biology",
+      "suggested_classification": "UNRESOLVED",
+      "rationale": "Keyword 'biochemistry' maps to multiple domains: ['biochemistry', 'molecular_biology', 'enzymology']. Requires custodian review.",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411896049",
+      "openalex_domain": "Engineering",
+      "suggested_classification": "UNRESOLVED",
+      "rationale": "Keyword 'engineering' maps to multiple domains: ['mechanical_engineering', 'chemical_engineering', 'electrical_engineering']. Requires custodian review.",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4413201104",
+      "openalex_domain": "Engineering",
+      "suggested_classification": "UNRESOLVED",
+      "rationale": "Keyword 'engineering' maps to multiple domains: ['mechanical_engineering', 'chemical_engineering', 'electrical_engineering']. Requires custodian review.",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411786868",
+      "openalex_domain": "Energy",
+      "suggested_classification": "thermodynamics",
+      "rationale": "Keyword 'energy' in OpenAlex domain maps to 'thermodynamics'",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411807169",
+      "openalex_domain": "Biochemistry, Genetics and Molecular Biology",
+      "suggested_classification": "UNRESOLVED",
+      "rationale": "Keyword 'biochemistry' maps to multiple domains: ['biochemistry', 'molecular_biology', 'enzymology']. Requires custodian review.",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411838043",
+      "openalex_domain": "Engineering",
+      "suggested_classification": "UNRESOLVED",
+      "rationale": "Keyword 'engineering' maps to multiple domains: ['mechanical_engineering', 'chemical_engineering', 'electrical_engineering']. Requires custodian review.",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411781456",
+      "openalex_domain": "Energy",
+      "suggested_classification": "thermodynamics",
+      "rationale": "Keyword 'energy' in OpenAlex domain maps to 'thermodynamics'",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411789485",
+      "openalex_domain": "Engineering",
+      "suggested_classification": "UNRESOLVED",
+      "rationale": "Keyword 'engineering' maps to multiple domains: ['mechanical_engineering', 'chemical_engineering', 'electrical_engineering']. Requires custodian review.",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411794398",
+      "openalex_domain": "Biochemistry, Genetics and Molecular Biology",
+      "suggested_classification": "UNRESOLVED",
+      "rationale": "Keyword 'biochemistry' maps to multiple domains: ['biochemistry', 'molecular_biology', 'enzymology']. Requires custodian review.",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411812800",
+      "openalex_domain": "Engineering",
+      "suggested_classification": "UNRESOLVED",
+      "rationale": "Keyword 'engineering' maps to multiple domains: ['mechanical_engineering', 'chemical_engineering', 'electrical_engineering']. Requires custodian review.",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411826089",
+      "openalex_domain": "Engineering",
+      "suggested_classification": "UNRESOLVED",
+      "rationale": "Keyword 'engineering' maps to multiple domains: ['mechanical_engineering', 'chemical_engineering', 'electrical_engineering']. Requires custodian review.",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411842016",
+      "openalex_domain": "Agricultural and Biological Sciences",
+      "suggested_classification": "OUTSIDE_SCOPE",
+      "rationale": "Keyword 'agricultural' in OpenAlex domain maps to 'OUTSIDE_SCOPE'",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411916864",
+      "openalex_domain": "Agricultural and Biological Sciences",
+      "suggested_classification": "OUTSIDE_SCOPE",
+      "rationale": "Keyword 'agricultural' in OpenAlex domain maps to 'OUTSIDE_SCOPE'",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411779650",
+      "openalex_domain": "Engineering",
+      "suggested_classification": "UNRESOLVED",
+      "rationale": "Keyword 'engineering' maps to multiple domains: ['mechanical_engineering', 'chemical_engineering', 'electrical_engineering']. Requires custodian review.",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411785993",
+      "openalex_domain": "Biochemistry, Genetics and Molecular Biology",
+      "suggested_classification": "UNRESOLVED",
+      "rationale": "Keyword 'biochemistry' maps to multiple domains: ['biochemistry', 'molecular_biology', 'enzymology']. Requires custodian review.",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411793089",
+      "openalex_domain": "Engineering",
+      "suggested_classification": "UNRESOLVED",
+      "rationale": "Keyword 'engineering' maps to multiple domains: ['mechanical_engineering', 'chemical_engineering', 'electrical_engineering']. Requires custodian review.",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411794451",
+      "openalex_domain": "Engineering",
+      "suggested_classification": "UNRESOLVED",
+      "rationale": "Keyword 'engineering' maps to multiple domains: ['mechanical_engineering', 'chemical_engineering', 'electrical_engineering']. Requires custodian review.",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411802045",
+      "openalex_domain": "Engineering",
+      "suggested_classification": "UNRESOLVED",
+      "rationale": "Keyword 'engineering' maps to multiple domains: ['mechanical_engineering', 'chemical_engineering', 'electrical_engineering']. Requires custodian review.",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411804262",
+      "openalex_domain": "Engineering",
+      "suggested_classification": "UNRESOLVED",
+      "rationale": "Keyword 'engineering' maps to multiple domains: ['mechanical_engineering', 'chemical_engineering', 'electrical_engineering']. Requires custodian review.",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411830706",
+      "openalex_domain": "Energy",
+      "suggested_classification": "thermodynamics",
+      "rationale": "Keyword 'energy' in OpenAlex domain maps to 'thermodynamics'",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411909846",
+      "openalex_domain": "Engineering",
+      "suggested_classification": "UNRESOLVED",
+      "rationale": "Keyword 'engineering' maps to multiple domains: ['mechanical_engineering', 'chemical_engineering', 'electrical_engineering']. Requires custodian review.",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411795919",
+      "openalex_domain": "Engineering",
+      "suggested_classification": "UNRESOLVED",
+      "rationale": "Keyword 'engineering' maps to multiple domains: ['mechanical_engineering', 'chemical_engineering', 'electrical_engineering']. Requires custodian review.",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411825313",
+      "openalex_domain": "Engineering",
+      "suggested_classification": "UNRESOLVED",
+      "rationale": "Keyword 'engineering' maps to multiple domains: ['mechanical_engineering', 'chemical_engineering', 'electrical_engineering']. Requires custodian review.",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411836127",
+      "openalex_domain": "Biochemistry, Genetics and Molecular Biology",
+      "suggested_classification": "UNRESOLVED",
+      "rationale": "Keyword 'biochemistry' maps to multiple domains: ['biochemistry', 'molecular_biology', 'enzymology']. Requires custodian review.",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411909848",
+      "openalex_domain": "Engineering",
+      "suggested_classification": "UNRESOLVED",
+      "rationale": "Keyword 'engineering' maps to multiple domains: ['mechanical_engineering', 'chemical_engineering', 'electrical_engineering']. Requires custodian review.",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411917402",
+      "openalex_domain": "Engineering",
+      "suggested_classification": "UNRESOLVED",
+      "rationale": "Keyword 'engineering' maps to multiple domains: ['mechanical_engineering', 'chemical_engineering', 'electrical_engineering']. Requires custodian review.",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411927774",
+      "openalex_domain": "Engineering",
+      "suggested_classification": "UNRESOLVED",
+      "rationale": "Keyword 'engineering' maps to multiple domains: ['mechanical_engineering', 'chemical_engineering', 'electrical_engineering']. Requires custodian review.",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4412372658",
+      "openalex_domain": "Engineering",
+      "suggested_classification": "UNRESOLVED",
+      "rationale": "Keyword 'engineering' maps to multiple domains: ['mechanical_engineering', 'chemical_engineering', 'electrical_engineering']. Requires custodian review.",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4412372715",
+      "openalex_domain": "Engineering",
+      "suggested_classification": "UNRESOLVED",
+      "rationale": "Keyword 'engineering' maps to multiple domains: ['mechanical_engineering', 'chemical_engineering', 'electrical_engineering']. Requires custodian review.",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411782471",
+      "openalex_domain": "Biochemistry, Genetics and Molecular Biology",
+      "suggested_classification": "UNRESOLVED",
+      "rationale": "Keyword 'biochemistry' maps to multiple domains: ['biochemistry', 'molecular_biology', 'enzymology']. Requires custodian review.",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411785369",
+      "openalex_domain": "Physics and Astronomy",
+      "suggested_classification": "UNRESOLVED",
+      "rationale": "Keyword 'physics' maps to multiple domains: ['optics', 'electromagnetics', 'thermodynamics']. Requires custodian review.",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411787877",
+      "openalex_domain": "Physics and Astronomy",
+      "suggested_classification": "UNRESOLVED",
+      "rationale": "Keyword 'physics' maps to multiple domains: ['optics', 'electromagnetics', 'thermodynamics']. Requires custodian review.",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411788090",
+      "openalex_domain": "Energy",
+      "suggested_classification": "thermodynamics",
+      "rationale": "Keyword 'energy' in OpenAlex domain maps to 'thermodynamics'",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411822816",
+      "openalex_domain": "Biochemistry, Genetics and Molecular Biology",
+      "suggested_classification": "UNRESOLVED",
+      "rationale": "Keyword 'biochemistry' maps to multiple domains: ['biochemistry', 'molecular_biology', 'enzymology']. Requires custodian review.",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411838582",
+      "openalex_domain": "Engineering",
+      "suggested_classification": "UNRESOLVED",
+      "rationale": "Keyword 'engineering' maps to multiple domains: ['mechanical_engineering', 'chemical_engineering', 'electrical_engineering']. Requires custodian review.",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4412135759",
+      "openalex_domain": "Biochemistry, Genetics and Molecular Biology",
+      "suggested_classification": "UNRESOLVED",
+      "rationale": "Keyword 'biochemistry' maps to multiple domains: ['biochemistry', 'molecular_biology', 'enzymology']. Requires custodian review.",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411779753",
+      "openalex_domain": "Energy",
+      "suggested_classification": "thermodynamics",
+      "rationale": "Keyword 'energy' in OpenAlex domain maps to 'thermodynamics'",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411792671",
+      "openalex_domain": "Engineering",
+      "suggested_classification": "UNRESOLVED",
+      "rationale": "Keyword 'engineering' maps to multiple domains: ['mechanical_engineering', 'chemical_engineering', 'electrical_engineering']. Requires custodian review.",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411799484",
+      "openalex_domain": "Energy",
+      "suggested_classification": "thermodynamics",
+      "rationale": "Keyword 'energy' in OpenAlex domain maps to 'thermodynamics'",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411917531",
+      "openalex_domain": "Energy",
+      "suggested_classification": "thermodynamics",
+      "rationale": "Keyword 'energy' in OpenAlex domain maps to 'thermodynamics'",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411809960",
+      "openalex_domain": "Biochemistry, Genetics and Molecular Biology",
+      "suggested_classification": "UNRESOLVED",
+      "rationale": "Keyword 'biochemistry' maps to multiple domains: ['biochemistry', 'molecular_biology', 'enzymology']. Requires custodian review.",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411917422",
+      "openalex_domain": "Engineering",
+      "suggested_classification": "UNRESOLVED",
+      "rationale": "Keyword 'engineering' maps to multiple domains: ['mechanical_engineering', 'chemical_engineering', 'electrical_engineering']. Requires custodian review.",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411795344",
+      "openalex_domain": "Energy",
+      "suggested_classification": "thermodynamics",
+      "rationale": "Keyword 'energy' in OpenAlex domain maps to 'thermodynamics'",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411801828",
+      "openalex_domain": "Biochemistry, Genetics and Molecular Biology",
+      "suggested_classification": "UNRESOLVED",
+      "rationale": "Keyword 'biochemistry' maps to multiple domains: ['biochemistry', 'molecular_biology', 'enzymology']. Requires custodian review.",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411838284",
+      "openalex_domain": "Engineering",
+      "suggested_classification": "UNRESOLVED",
+      "rationale": "Keyword 'engineering' maps to multiple domains: ['mechanical_engineering', 'chemical_engineering', 'electrical_engineering']. Requires custodian review.",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411839725",
+      "openalex_domain": "Energy",
+      "suggested_classification": "thermodynamics",
+      "rationale": "Keyword 'energy' in OpenAlex domain maps to 'thermodynamics'",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411927851",
+      "openalex_domain": "Engineering",
+      "suggested_classification": "UNRESOLVED",
+      "rationale": "Keyword 'engineering' maps to multiple domains: ['mechanical_engineering', 'chemical_engineering', 'electrical_engineering']. Requires custodian review.",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411778080",
+      "openalex_domain": "Engineering",
+      "suggested_classification": "UNRESOLVED",
+      "rationale": "Keyword 'engineering' maps to multiple domains: ['mechanical_engineering', 'chemical_engineering', 'electrical_engineering']. Requires custodian review.",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411788013",
+      "openalex_domain": "Physics and Astronomy",
+      "suggested_classification": "UNRESOLVED",
+      "rationale": "Keyword 'physics' maps to multiple domains: ['optics', 'electromagnetics', 'thermodynamics']. Requires custodian review.",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411791578",
+      "openalex_domain": "Biochemistry, Genetics and Molecular Biology",
+      "suggested_classification": "UNRESOLVED",
+      "rationale": "Keyword 'biochemistry' maps to multiple domains: ['biochemistry', 'molecular_biology', 'enzymology']. Requires custodian review.",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411793500",
+      "openalex_domain": "Agricultural and Biological Sciences",
+      "suggested_classification": "OUTSIDE_SCOPE",
+      "rationale": "Keyword 'agricultural' in OpenAlex domain maps to 'OUTSIDE_SCOPE'",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411795940",
+      "openalex_domain": "Engineering",
+      "suggested_classification": "UNRESOLVED",
+      "rationale": "Keyword 'engineering' maps to multiple domains: ['mechanical_engineering', 'chemical_engineering', 'electrical_engineering']. Requires custodian review.",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411807250",
+      "openalex_domain": "Biochemistry, Genetics and Molecular Biology",
+      "suggested_classification": "UNRESOLVED",
+      "rationale": "Keyword 'biochemistry' maps to multiple domains: ['biochemistry', 'molecular_biology', 'enzymology']. Requires custodian review.",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411829280",
+      "openalex_domain": "Immunology and Microbiology",
+      "suggested_classification": "OUTSIDE_SCOPE",
+      "rationale": "Keyword 'immunology' in OpenAlex domain maps to 'OUTSIDE_SCOPE'",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411832445",
+      "openalex_domain": "Biochemistry, Genetics and Molecular Biology",
+      "suggested_classification": "UNRESOLVED",
+      "rationale": "Keyword 'biochemistry' maps to multiple domains: ['biochemistry', 'molecular_biology', 'enzymology']. Requires custodian review.",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411841327",
+      "openalex_domain": "Engineering",
+      "suggested_classification": "UNRESOLVED",
+      "rationale": "Keyword 'engineering' maps to multiple domains: ['mechanical_engineering', 'chemical_engineering', 'electrical_engineering']. Requires custodian review.",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411842037",
+      "openalex_domain": "Biochemistry, Genetics and Molecular Biology",
+      "suggested_classification": "UNRESOLVED",
+      "rationale": "Keyword 'biochemistry' maps to multiple domains: ['biochemistry', 'molecular_biology', 'enzymology']. Requires custodian review.",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411909531",
+      "openalex_domain": "Engineering",
+      "suggested_classification": "UNRESOLVED",
+      "rationale": "Keyword 'engineering' maps to multiple domains: ['mechanical_engineering', 'chemical_engineering', 'electrical_engineering']. Requires custodian review.",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4412371880",
+      "openalex_domain": "Engineering",
+      "suggested_classification": "UNRESOLVED",
+      "rationale": "Keyword 'engineering' maps to multiple domains: ['mechanical_engineering', 'chemical_engineering', 'electrical_engineering']. Requires custodian review.",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4413022244",
+      "openalex_domain": "Economics, Econometrics and Finance",
+      "suggested_classification": "UNRESOLVED",
+      "rationale": "No keyword match found",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411895735",
+      "openalex_domain": "Social Sciences",
+      "suggested_classification": "UNRESOLVED",
+      "rationale": "No keyword match found",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411797882",
+      "openalex_domain": "Mathematics",
+      "suggested_classification": "UNRESOLVED",
+      "rationale": "No keyword match found",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411811737",
+      "openalex_domain": "Economics, Econometrics and Finance",
+      "suggested_classification": "UNRESOLVED",
+      "rationale": "No keyword match found",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411903091",
+      "openalex_domain": "Materials Science",
+      "suggested_classification": "materials_science",
+      "rationale": "Keyword 'materials' in OpenAlex domain maps to 'materials_science'",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411799547",
+      "openalex_domain": "Computer Science",
+      "suggested_classification": "UNRESOLVED",
+      "rationale": "No keyword match found",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411791562",
+      "openalex_domain": "Medicine",
+      "suggested_classification": "UNRESOLVED",
+      "rationale": "No keyword match found",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411878412",
+      "openalex_domain": "Computer Science",
+      "suggested_classification": "UNRESOLVED",
+      "rationale": "No keyword match found",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411786227",
+      "openalex_domain": "Neuroscience",
+      "suggested_classification": "UNRESOLVED",
+      "rationale": "No keyword match found",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411909584",
+      "openalex_domain": "Chemical Engineering",
+      "suggested_classification": "UNRESOLVED",
+      "rationale": "Keyword 'engineering' maps to multiple domains: ['mechanical_engineering', 'chemical_engineering', 'electrical_engineering']. Requires custodian review.",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411792032",
+      "openalex_domain": "Social Sciences",
+      "suggested_classification": "UNRESOLVED",
+      "rationale": "No keyword match found",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411805956",
+      "openalex_domain": "Materials Science",
+      "suggested_classification": "materials_science",
+      "rationale": "Keyword 'materials' in OpenAlex domain maps to 'materials_science'",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4412373094",
+      "openalex_domain": "Medicine",
+      "suggested_classification": "UNRESOLVED",
+      "rationale": "No keyword match found",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411840331",
+      "openalex_domain": "Medicine",
+      "suggested_classification": "UNRESOLVED",
+      "rationale": "No keyword match found",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411792934",
+      "openalex_domain": "Medicine",
+      "suggested_classification": "UNRESOLVED",
+      "rationale": "No keyword match found",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411804348",
+      "openalex_domain": "Social Sciences",
+      "suggested_classification": "UNRESOLVED",
+      "rationale": "No keyword match found",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411788524",
+      "openalex_domain": "Materials Science",
+      "suggested_classification": "materials_science",
+      "rationale": "Keyword 'materials' in OpenAlex domain maps to 'materials_science'",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411814566",
+      "openalex_domain": "Computer Science",
+      "suggested_classification": "UNRESOLVED",
+      "rationale": "No keyword match found",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411786107",
+      "openalex_domain": "Medicine",
+      "suggested_classification": "UNRESOLVED",
+      "rationale": "No keyword match found",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411778474",
+      "openalex_domain": "Materials Science",
+      "suggested_classification": "materials_science",
+      "rationale": "Keyword 'materials' in OpenAlex domain maps to 'materials_science'",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411961335",
+      "openalex_domain": "Computer Science",
+      "suggested_classification": "UNRESOLVED",
+      "rationale": "No keyword match found",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411799456",
+      "openalex_domain": "Computer Science",
+      "suggested_classification": "UNRESOLVED",
+      "rationale": "No keyword match found",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4412019518",
+      "openalex_domain": "Materials Science",
+      "suggested_classification": "materials_science",
+      "rationale": "Keyword 'materials' in OpenAlex domain maps to 'materials_science'",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411786958",
+      "openalex_domain": "Medicine",
+      "suggested_classification": "UNRESOLVED",
+      "rationale": "No keyword match found",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411880187",
+      "openalex_domain": "Medicine",
+      "suggested_classification": "UNRESOLVED",
+      "rationale": "No keyword match found",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411787556",
+      "openalex_domain": "Medicine",
+      "suggested_classification": "UNRESOLVED",
+      "rationale": "No keyword match found",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411916865",
+      "openalex_domain": "Business, Management and Accounting",
+      "suggested_classification": "UNRESOLVED",
+      "rationale": "No keyword match found",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411778121",
+      "openalex_domain": "Medicine",
+      "suggested_classification": "UNRESOLVED",
+      "rationale": "No keyword match found",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    },
+    {
+      "source_id": "OA-W4411802539",
+      "openalex_domain": "Medicine",
+      "suggested_classification": "UNRESOLVED",
+      "rationale": "No keyword match found",
+      "note": "SUGGESTION ONLY \u2014 custodian must review and confirm or override."
+    }
+  ]
+}

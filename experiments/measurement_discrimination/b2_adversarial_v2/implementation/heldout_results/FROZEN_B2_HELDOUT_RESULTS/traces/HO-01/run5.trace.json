@@ -1,0 +1,86 @@
+{
+  "schema_version": "b2-trace-v3",
+  "candidate": {
+    "id": "HO-01",
+    "text": "guide-RNA-directed DNA targeting",
+    "source_a": "A guide-RNA-directed nuclease recognizes a complementary DNA target and, when the required PAM is present, forms an RNA-DNA hybrid that positions the nuclease for site-specific cleavage.",
+    "source_b": "Cas9 contains two nuclease domains that cleave opposite DNA strands, producing a double-strand break; the HNH domain cuts the strand complementary to the guide while the RuvC domain cuts the other strand."
+  },
+  "atoms": [
+    {
+      "atom_id": "a1",
+      "claim": "{process: guide_RNA_directed_targeting}",
+      "source_support": [
+        {
+          "support_type": "SOURCE_LOCAL",
+          "source_id": "A",
+          "spans": [
+            {
+              "span_text": "guide-RNA-directed nuclease recognizes a complementary DNA target",
+              "start": 2,
+              "end": 67
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "atom_id": "a2",
+      "claim": "{process: site_specific_cleavage}",
+      "source_support": [
+        {
+          "support_type": "SOURCE_LOCAL",
+          "source_id": "A",
+          "spans": [
+            {
+              "span_text": "site-specific cleavage",
+              "start": 163,
+              "end": 185
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "atom_id": "a3",
+      "claim": "{process: DNA_double_strand_break}",
+      "source_support": [
+        {
+          "support_type": "SOURCE_LOCAL",
+          "source_id": "B",
+          "spans": [
+            {
+              "span_text": "producing a double-strand break",
+              "start": 69,
+              "end": 100
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "counterfactuals": [
+    {
+      "removed_source": "A",
+      "unsupported_atoms": [
+        "a1",
+        "a2"
+      ],
+      "justified_without_source": false
+    },
+    {
+      "removed_source": "B",
+      "unsupported_atoms": [
+        "a3"
+      ],
+      "justified_without_source": false
+    }
+  ],
+  "classification": {
+    "justified_by_corpus": true,
+    "iss_a": true,
+    "iss_b": true,
+    "iss_state": "ISS_both",
+    "label": "ALLOW"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "L3_synonym": {
+    "level": "L3",
+    "vocabulary_source": "benchmarks/discovery_capability_benchmark.py:68",
+    "vocabulary_version": "cycle-270-empty",
+    "vocabulary_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+    "created_before_gold_access": true,
+    "gold_derived": false
+  },
+  "L4_semantic": {
+    "level": "L4",
+    "model": "N/A",
+    "model_version": "N/A",
+    "similarity_metric": "N/A",
+    "threshold": "N/A",
+    "internet_access": false,
+    "gold_data_access": false,
+    "gold_derived_vocabulary": false,
+    "training_corpus_independence": "N/A (no embedding model used)",
+    "residual_leakage_risk": "N/A (no embedding model used)"
+  }
+}

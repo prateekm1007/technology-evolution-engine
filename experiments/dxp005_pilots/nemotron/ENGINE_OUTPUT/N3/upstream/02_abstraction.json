@@ -1,0 +1,48 @@
+{
+  "pattern": {
+    "pattern_id": "MP-N3",
+    "source_domain": "botany",
+    "causal_structure": "High solute concentration in a gel matrix creates osmotic pressure that counteracts evaporative loss, while cyclic interface closure reduces flux during peak loss conditions, enabling sustained retention.",
+    "inputs": [
+      "fluid",
+      "solute precursors",
+      "energy for gradient maintenance"
+    ],
+    "conditions": [
+      "gel matrix present",
+      "concentration gradient sustainable",
+      "cyclic environmental stress pattern"
+    ],
+    "operations": [
+      "solute accumulation in gel",
+      "osmotic pressure generation",
+      "interface permeability cycling",
+      "fluid retention against gradient"
+    ],
+    "intermediate_state": [
+      "elevated osmotic pressure",
+      "reduced interface permeability",
+      "established concentration gradient"
+    ],
+    "outputs": [
+      "retained fluid volume",
+      "sustained internal hydration",
+      "minimized net loss"
+    ],
+    "constraints": [
+      "gel absorption capacity limit",
+      "energy cost of gradient maintenance",
+      "cycle timing must match environmental pattern",
+      "structural integrity of container"
+    ],
+    "failure_conditions": [
+      "gel saturation exceeded",
+      "gradient collapse",
+      "interface gating failure",
+      "container rupture",
+      "energy depletion for active transport"
+    ],
+    "abstract_principle": "A high-concentration gel matrix generates osmotic pressure to retain fluid against environmental loss, while a temporal gating mechanism restricts permeability to minimize depletion.",
+    "source_graph_summary": "14 nodes, 7 edges"
+  }
+}

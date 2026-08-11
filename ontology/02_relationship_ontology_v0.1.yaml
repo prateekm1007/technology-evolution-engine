@@ -1,0 +1,31 @@
+# Relationship Ontology v0.1
+version: 0.1
+
+edge_types:
+  - id: requires
+    source: technology
+    target: prerequisite
+  - id: blocked_by
+    source: technology
+    target: constraint
+  - id: enables
+    source: technology
+    target: technology
+  - id: competes_with
+    source: technology
+    target: technology
+  - id: cooperates_with
+    source: technology
+    target: technology
+  - id: descended_from
+    source: technology
+    target: technology
+  - id: killed_by
+    source: technology
+    target: constraint
+  - id: resurrects
+    source: candidate
+    target: cemetery_entry
+  - id: transforms
+    source: transformation
+    target: technology

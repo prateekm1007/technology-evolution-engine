@@ -1,0 +1,106 @@
+{
+  "execution_type": "CLEAN_DIAGNOSTIC",
+  "manifest_sha256": "b06bbe98a214b80b1d22706ba63b33236aef908e4b1bc57981664c8ebaeb16af",
+  "manifest_verified_before": true,
+  "started_at": "2026-08-09T13:08:18.422951+00:00",
+  "arms_attempted": [
+    "null",
+    "engine"
+  ],
+  "arms_completed": [
+    "null",
+    "engine"
+  ],
+  "arms_failed": [],
+  "artifacts_produced": [
+    {
+      "arm": "null",
+      "case_id": "DIAG-001",
+      "candidate_rank": 1,
+      "candidate_sha256": "c51df5e8b98db192f0b3e28febdc152ace199a81763b33c06daac2c2a5e76167",
+      "raw_output_sha256": "f3bad7e8a78f9a137035f15555e491e0fbbcc0ee3130184a569c26fc8f6613c4",
+      "candidate_length": 465
+    },
+    {
+      "arm": "null",
+      "case_id": "DIAG-001",
+      "candidate_rank": 2,
+      "candidate_sha256": "88edd523dbd2070f2ebefd0488b28dace030d84369a70a0e8fb1bb2bdf4341e6",
+      "raw_output_sha256": "f3bad7e8a78f9a137035f15555e491e0fbbcc0ee3130184a569c26fc8f6613c4",
+      "candidate_length": 433
+    },
+    {
+      "arm": "null",
+      "case_id": "DIAG-001",
+      "candidate_rank": 3,
+      "candidate_sha256": "1ab1b2b833545b34c262a5bca1e1895492737472d8ae1e921a01c69d580b83ca",
+      "raw_output_sha256": "f3bad7e8a78f9a137035f15555e491e0fbbcc0ee3130184a569c26fc8f6613c4",
+      "candidate_length": 441
+    },
+    {
+      "arm": "engine",
+      "case_id": "DIAG-001",
+      "candidate_rank": 1,
+      "candidate_sha256": "e405c80bbe0c6976bc540248124d35529f602edb4068424108d17206a3c980a0",
+      "raw_output_sha256": "a6a08dcf8673db2c92ceb5f76ef685d97b767bba8d936e419c98ce2835a1a537",
+      "candidate_length": 500
+    },
+    {
+      "arm": "engine",
+      "case_id": "DIAG-001",
+      "candidate_rank": 2,
+      "candidate_sha256": "379c9c99f2cd57581f9039a62888234c03f261a43da82143b9cb5c70255bab93",
+      "raw_output_sha256": "a6a08dcf8673db2c92ceb5f76ef685d97b767bba8d936e419c98ce2835a1a537",
+      "candidate_length": 486
+    },
+    {
+      "arm": "engine",
+      "case_id": "DIAG-001",
+      "candidate_rank": 3,
+      "candidate_sha256": "8c79c9d40dea0d14fc84d4f401d9de75375bf664266b7d466a239ba0b2786cf4",
+      "raw_output_sha256": "a6a08dcf8673db2c92ceb5f76ef685d97b767bba8d936e419c98ce2835a1a537",
+      "candidate_length": 561
+    }
+  ],
+  "provenance_ledger_path": "/home/z/my-project/audit/technology-evolution-engine/provenance/ledger_clean.json",
+  "failures": [],
+  "source_pair_sha256": "356d84d86b81e626c4828e7dd247192ca58e44898504a625baa825e19a99413f",
+  "source_a_path": "data/ingestion/real/arxiv_2301.04523.txt",
+  "source_b_path": "data/ingestion/real/arxiv_2003.10495.txt",
+  "preflight": {
+    "ledger_empty_before_execution": true,
+    "prior_generation_events": 0
+  },
+  "execution_id": "EXEC-3de8bcbe1a5041298a954985a101a2d9",
+  "finished_at": "2026-08-09T13:09:22.807431+00:00",
+  "manifest_verified_after": true,
+  "provenance_verified": true,
+  "ledger_n_generation_events": 6,
+  "ledger_n_adjudication_events": 0,
+  "ledger_sha256": "eb956465ff87fd4d2707a919c4c51b7f72f9ed85062f33a6521e17c2e3df4a4d",
+  "ledger_hash_chain_valid": true,
+  "paired_verification": {
+    "engine_candidate_count": 3,
+    "null_candidate_count": 3,
+    "engine_execution_id": "EXEC-3de8bcbe1a5041298a954985a101a2d9",
+    "null_execution_id": "EXEC-3de8bcbe1a5041298a954985a101a2d9",
+    "same_execution_id": true,
+    "same_manifest_sha256": true,
+    "all_bound_to_current_manifest": true
+  },
+  "baseline_audit": {
+    "engine_entries_found": 3,
+    "null_entries_found": 3,
+    "n_dimensions": 13,
+    "state_counts": {
+      "OBSERVED_EQUAL": 5,
+      "NOT_OBSERVABLE": 3,
+      "OBSERVED_DIFFERENT": 4,
+      "CONTRACT_EQUAL": 1
+    },
+    "fairness_established": false,
+    "all_observations_from_verified_artifacts": true
+  },
+  "artifact_type": "CLEAN_DIAGNOSTIC_EXECUTION_RECORD",
+  "diagnostic_rule": "This is a CLEAN DIAGNOSTIC execution. Both arms generated under the same execution_id and manifest. Results do NOT establish baseline fairness, discovery capability, or North Star. Interpretation is reserved for a fresh-context independent auditor."
+}

@@ -1,0 +1,115 @@
+{
+  "milestone_id": "milestone_002",
+  "name": "Improved electrolyte composition for a simple galvanic cell",
+  "version": "1.0",
+  "status": "open",
+  "class": "B",
+  "created_at": "2026-08-01T17:30:00+00:00",
+
+  "summary": "The system proposes an IMPROVED electrolyte composition for a simple Zn-Cu galvanic cell, claiming the proposed composition will produce a higher open-circuit voltage than the standard NaCl-water baseline. A human constructs both cells (baseline and proposed), measures the voltages, and the improvement claim is tested. This is a Class B (invention) milestone — it tests whether the system can generate a useful material-composition blueprint, not just measure a property.",
+
+  "cto_criteria": {
+    "inexpensive": true,
+    "measurable": true,
+    "reproducible": true,
+    "executable_within_days": true,
+    "teaches_invention": true
+  },
+
+  "estimated_days": 2,
+  "estimated_cost_usd": 50,
+
+  "materials": [
+    "zinc strip or galvanized nail (~$2)",
+    "copper strip or copper wire (~$2)",
+    "table salt (NaCl, ~$1)",
+    "citric acid (~$5)",
+    "white vinegar (acetic acid, ~$2)",
+    "distilled water (~$1)",
+    "multimeter with voltage measurement (~$15)",
+    "alligator-clip leads (~$5)",
+    "small glass or plastic containers (~$5)",
+    "measuring spoons / scale (~$2)"
+  ],
+
+  "problem": {
+    "domain": "chemistry",
+    "statement": "Propose an electrolyte composition for a Zn-Cu galvanic cell that produces a higher open-circuit voltage than the standard 5% NaCl-water baseline.",
+    "constraints": ["materials_must_be_commonly_available", "voltage_must_be_measurable_with_multimeter", "temperature_25C"]
+  },
+
+  "baseline": {
+    "description": "5% NaCl in distilled water (1g NaCl in 20mL water).",
+    "composition": {"NaCl": "5g per 100mL water"},
+    "expected_voltage_range": [0.7, 1.0],
+    "expected_voltage_center": 0.85,
+    "source": "Standard high-school chemistry demo: Zn + Cu in salt water produces ~0.85V open-circuit."
+  },
+
+  "improvement_claim": {
+    "id": "hyp_improvement_electrolyte_001",
+    "claim": "Replacing the 5% NaCl electrolyte with a 5% citric-acid electrolyte will increase the Zn-Cu galvanic cell open-circuit voltage by at least 0.10V compared to the NaCl baseline (i.e., to at least 0.95V).",
+    "confidence": 0.45,
+    "evidence": [
+      "chemistry_knowledge_module: electrochemical ammonia pathway (electrochemistry)",
+      "chemistry_knowledge_module: Nernst equation (energy_states)",
+      "chemistry_knowledge_module: K_eq equilibrium model",
+      "citric acid pKa1=3.13 (literature) — provides H+ ions for the cathode reaction",
+      "Zn oxidation potential: -0.76V (literature)",
+      "Cu reduction potential: +0.34V (literature)",
+      "theoretical max voltage: 0.34 - (-0.76) = 1.10V",
+      "NaCl baseline at 0.85V suggests ~0.25V loss to overpotential/resistance",
+      "citric acid's H+ supply should reduce cathode overpotential, recovering some of that loss"
+    ],
+    "counterevidence": [
+      "citric acid is a weak acid (pKa1=3.13); H+ concentration may be too low to matter",
+      "the cell is open-circuit; H+ diffusion to the Cu electrode may be rate-limiting",
+      "Zn may also react directly with citric acid, producing H2 gas and reducing the cell voltage",
+      "real cells have significant internal resistance that swamps small electrolyte improvements"
+    ],
+    "assumptions": [
+      "Zn and Cu electrodes are clean and not passivated",
+      "electrolyte temperature is 25C (room temperature, not controlled)",
+      "multimeter has high input impedance (>= 10MOhm) so open-circuit voltage is not loaded",
+      "the 5% concentration by mass is comparable across NaCl and citric acid"
+    ],
+    "dependencies": [],
+    "status": "pending",
+    "writer": "milestones.milestone_002.spec.improvement_claim"
+  },
+
+  "measurement_plan": {
+    "metric": "open-circuit voltage (V, numeric)",
+    "instrument": "multimeter with voltage measurement, +/- 0.01V accuracy",
+    "procedure": [
+      "1. Construct the baseline cell: Zn electrode + Cu electrode in 5% NaCl (1g NaCl in 20mL distilled water).",
+      "2. Connect the multimeter in voltage mode across the two electrodes. Wait 30 seconds for the voltage to stabilize.",
+      "3. Record the voltage. Repeat 3 times with fresh NaCl electrolyte each time.",
+      "4. Construct the proposed cell: Zn electrode + Cu electrode in 5% citric acid (1g citric acid in 20mL distilled water).",
+      "5. Connect the multimeter. Wait 30 seconds. Record the voltage.",
+      "6. Repeat 3 times with fresh citric-acid electrolyte each time.",
+      "7. Compute the mean baseline voltage and the mean proposed voltage.",
+      "8. Compute the improvement: proposed_mean - baseline_mean."
+    ],
+    "expected_baseline_voltage_range": [0.7, 1.0],
+    "expected_baseline_voltage_center": 0.85,
+    "expected_proposed_voltage_range": [0.85, 1.10],
+    "expected_proposed_voltage_center": 0.95,
+    "expected_improvement_V": 0.10,
+    "tolerance_for_pass_V": 0.05,
+    "pass_criteria": "proposed_mean - baseline_mean >= 0.05V (i.e., the improvement is at least 0.05V, half the predicted 0.10V)",
+    "fail_criteria": "proposed_mean - baseline_mean < 0.05V (i.e., the citric-acid electrolyte did not produce a meaningful improvement)"
+  },
+
+  "loop_closes": 4,
+
+  "loop_contributes_to": 5,
+
+  "teaches_invention": true,
+
+  "invention_teaches_note": "This milestone is Class B because it tests whether the system can propose a useful MATERIAL COMPOSITION improvement, not just measure a property. The improvement_claim is a Hypothesis that the system's proposed electrolyte will outperform the standard baseline. If the experiment confirms the improvement, the system has generated a (small but real) invention — an improved electrolyte composition that a person could use. That is the substrate of the invention compiler's value proposition.",
+
+  "next_action_to_close": "Human constructs both cells (baseline NaCl + proposed citric-acid) per measurement_plan, records the 6 voltage readings (3 baseline + 3 proposed) in milestones/milestone_002/result.json, then runs scripts/close_milestone_002.py to compute the improvement and append a verification entry to the ledger.",
+
+  "honesty_note": "This is the first Class B (invention) milestone. It tests whether the system can generate a useful blueprint, not just measure a property. Per CTO review #6: 'A pH measurement may validate the experimental loop, but it may not validate the invention loop.' This milestone validates the invention loop. The improvement is small (+0.10V on a galvanic cell) and the science is well-known — but the test is whether the SYSTEM's proposal (citric acid over NaCl) is correct, not whether the science is novel. If the system's proposal is confirmed, the system has generated a useful material-composition blueprint. If the proposal is falsified, the system learns that citric acid does not improve galvanic cell voltage — which is also valuable information."
+}

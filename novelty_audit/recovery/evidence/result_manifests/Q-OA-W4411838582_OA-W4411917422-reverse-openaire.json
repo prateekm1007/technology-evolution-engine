@@ -1,0 +1,68 @@
+{
+  "query_id": "Q-OA-W4411838582_OA-W4411917422-reverse-openaire",
+  "pair_id": "OA-W4411838582_OA-W4411917422",
+  "query_type": "reverse",
+  "provider": "openaire",
+  "query_text": "free perovskite solar lewis conversion acidic",
+  "query_hash": "fe6d3f2b6d808e3d9418d22d3ff077bbf6c825aa3483689c10f424db51ed615c",
+  "frozen_query_ref": "Q-OA-W4411838582_OA-W4411917422-reverse-openalex",
+  "url": "https://api.openaire.eu/search/publications?keywords=free+perovskite+solar+lewis+conversion+acidic&size=10&format=json",
+  "timestamp_utc": "2026-08-11T12:34:11.225703+00:00",
+  "status": "SUCCESS",
+  "result_count": 2,
+  "result_ids": [
+    [
+      {
+        "$": "10.1002/cssc.201900716"
+      },
+      {
+        "$": "50|doiboost____|051151f2dd5027d14a9d19c77a62230f"
+      },
+      {
+        "$": "30994264"
+      },
+      {
+        "$": "2937578395"
+      },
+      {
+        "$": "50|od______1874::723d591b37572d22dd0fb7891df97690"
+      },
+      {
+        "$": "oai:pure.mpg.de:item_3152938"
+      }
+    ],
+    [
+      {
+        "$": "10.1002/adma.201907361"
+      },
+      {
+        "$": "50|doiboost____|e666eae5c532c7a5f229bd5a6afd16e8"
+      },
+      {
+        "$": "31944454"
+      },
+      {
+        "$": "2999852555"
+      }
+    ]
+  ],
+  "result_titles": [
+    "Lead\u2010Free Cs<sub>3</sub>Bi<sub>2</sub>Br<sub>9</sub> Perovskite as Photocatalyst for Ring\u2010Opening Reactions of Epoxides",
+    "Tailoring C<sub>60</sub> for Efficient Inorganic CsPbI<sub>2</sub>Br Perovskite Solar Cells and Modules"
+  ],
+  "result_dois": [
+    "10.1002/cssc.201900716",
+    "10.1002/adma.201907361"
+  ],
+  "result_dates": [
+    "2019-05-30",
+    "2020-01-15"
+  ],
+  "response_hash": "ecab460599ae3f6d29a4a339721b6d065bbc7cdb2a484abb150f548529f91001",
+  "evidence_uri": "https://api.openaire.eu/search/publications?keywords=free+perovskite+solar+lewis+conversion+acidic&size=10&format=json",
+  "error": null,
+  "rate_limit_headers": {
+    "x-ratelimit-used": "230",
+    "x-ratelimit-limit": "7199"
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "baseline_id": "DISCOVERY_FABRIC_V1_BASELINE",
+  "timestamp": "2026-08-11T17:17:40.066960+00:00",
+  "description": "Baseline of Discovery Evidence Fabric V1 — not a scientific result, a checkpoint.",
+  "evidence": {
+    "file": "discovery_fabric/evidence/evidence.jsonl",
+    "sha256": "565505f12f43f64f4e4d2091a2213746e4370d31e976616faefa4626cd541c43",
+    "count": 7032,
+    "by_source": {
+      "crossref": 1900,
+      "arxiv": 1450,
+      "europepmc": 1850,
+      "pubmed": 1832
+    },
+    "by_domain": {
+      "materials": 1000,
+      "energy": 1000,
+      "biotechnology": 800,
+      "computing": 750,
+      "mechanical": 982,
+      "chemical": 1000,
+      "environmental": 1000,
+      "neuroscience": 500
+    }
+  },
+  "knowledge_graph": {
+    "file": "discovery_fabric/knowledge_graph/knowledge_graph.json",
+    "sha256": "989da2d823718beb51f7fb7fc2830fa65b6dfc04d127bf91b2f7c3344ba2cde2",
+    "stats": {
+      "total_papers": 7032,
+      "total_domains": 8,
+      "total_sources": 4,
+      "total_authors": 16417,
+      "total_organizations": 1179,
+      "total_mechanisms": 18,
+      "total_materials": 23,
+      "total_processes": 15,
+      "total_edges": 47066,
+      "edges_by_type": {
+        "AUTHORED_BY": 23975,
+        "PUBLISHED_BY": 5430,
+        "USES_MECHANISM": 6764,
+        "USES_MATERIAL": 3032,
+        "USES_PROCESS": 453,
+        "CITES": 7412
+      }
+    }
+  },
+  "candidates": {
+    "file": "discovery_fabric/discovery_candidates/discovery_candidates.json",
+    "sha256": "97f2e69dc5c60fe83d99048586a47e283b47c403b217331edf3f0a8f9f7d9aff",
+    "count": 58,
+    "by_type": {
+      "CROSS_DOMAIN_TRANSFER": 6,
+      "FUNCTIONAL_ANALOGY": 21,
+      "PATENT_WHITESPACE": 20,
+      "TEMPORAL_GAP": 11
+    },
+    "by_epistemic_state": {
+      "CANDIDATE_CONNECTION": 26,
+      "ANALOGY": 21,
+      "INFERRED": 11
+    }
+  },
+  "source_quotas": {
+    "crossref": {
+      "count": 1900,
+      "retrieval_method": "crossref_rest_api",
+      "earliest_timestamp": "2026-08-11T16:00:03.990251+00:00",
+      "latest_timestamp": "2026-08-11T16:09:54.880490+00:00"
+    },
+    "arxiv": {
+      "count": 1450,
+      "retrieval_method": "arxiv_api",
+      "earliest_timestamp": "2026-08-11T16:00:07.601847+00:00",
+      "latest_timestamp": "2026-08-11T16:09:56.627473+00:00"
+    },
+    "europepmc": {
+      "count": 1850,
+      "retrieval_method": "europepmc_rest_api",
+      "earliest_timestamp": "2026-08-11T16:00:12.882529+00:00",
+      "latest_timestamp": "2026-08-11T16:09:50.428494+00:00"
+    },
+    "pubmed": {
+      "count": 1832,
+      "retrieval_method": "pubmed_eutils",
+      "earliest_timestamp": "2026-08-11T16:00:15.056557+00:00",
+      "latest_timestamp": "2026-08-11T16:09:52.483448+00:00"
+    }
+  },
+  "baseline_manifest_hash": "4b5b51a05623a9987985aa5f2e107669aaea154566d550ad76c60e83d346c386"
+}

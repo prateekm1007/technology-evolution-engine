@@ -1,0 +1,60 @@
+{
+  "artifact_type": "R4_REFERENCE_VECTORS",
+  "calculation_type": "EXACT_BINOMIAL_WALD_CI (deterministic, no simulation, no RNG, no timestamp)",
+  "parameters": {
+    "N": 20,
+    "alpha": 0.05,
+    "delta_min": 0.2,
+    "p_value_method": "binom.sf(b-1, n_d, 0.5) (exact one-sided upper tail)",
+    "ci_method": "Wald with continuity correction: theta_hat \u00b1 1.96*SE \u00b1 1/(2N)",
+    "passes_rule": "p_one_sided < 0.05 AND ci_lower > 0.20"
+  },
+  "vectors": [
+    {
+      "b": 9,
+      "c": 1,
+      "N": 20,
+      "n_d": 10,
+      "theta_hat": 0.4,
+      "p_one_sided": 0.0107421875,
+      "ci_lower": 0.1194472657,
+      "ci_upper": 0.6805527343,
+      "passes": false
+    },
+    {
+      "b": 12,
+      "c": 1,
+      "N": 20,
+      "n_d": 13,
+      "theta_hat": 0.55,
+      "p_one_sided": 0.001708984375,
+      "ci_lower": 0.266644044,
+      "ci_upper": 0.833355956,
+      "passes": true
+    },
+    {
+      "b": 8,
+      "c": 2,
+      "N": 20,
+      "n_d": 10,
+      "theta_hat": 0.3,
+      "p_one_sided": 0.0546875,
+      "ci_lower": -0.0056292928,
+      "ci_upper": 0.6056292928,
+      "passes": false
+    },
+    {
+      "b": 14,
+      "c": 0,
+      "N": 20,
+      "n_d": 14,
+      "theta_hat": 0.7,
+      "p_one_sided": 6.103515625e-05,
+      "ci_lower": 0.474159765,
+      "ci_upper": 0.925840235,
+      "passes": true
+    }
+  ],
+  "calculation_content_sha256": "8fa88490c1afe479db85a10e89d756f793ba78c4606ad5a6df7c18946f200159",
+  "artifact_sha256": "53c8b6218dcdce0821a77dddd2669b587360b1d8692fd70d4fa45019e725ed14"
+}

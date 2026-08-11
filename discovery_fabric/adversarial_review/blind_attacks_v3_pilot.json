@@ -1,0 +1,261 @@
+{
+  "results": [
+    {
+      "candidate_id": "M3-22c198f5",
+      "is_null": false,
+      "attacks": {
+        "1_known": {
+          "severity": "MINOR",
+          "reason": "The mechanism of electron emission from nanoparticles is a known area of research, but the specific application to addressing limitations of the PENELOPE model is not explicitly stated in the provided literature."
+        },
+        "2_terminology": {
+          "severity": "MINOR",
+          "reason": "The terminology used in the papers and the proposed bridge seems consistent, but without further context, it's difficult to assess if different terms are used for the same concept."
+        },
+        "3_evidence_support": {
+          "severity": "MAJOR",
+          "reason": "The provided papers discuss electron emission from nanoparticles under X-ray irradiation and a model for this process, but they do not directly address how this mechanism solves limitations of the PENELOPE model."
+        },
+        "4_superficial": {
+          "severity": "MINOR",
+          "reason": "The analogy between electron emission from nanoparticles and addressing limitations of the PENELOPE model seems to be based on a mechanistic understanding, rather than just keyword matching."
+        },
+        "5_physics": {
+          "severity": "SURVIVES",
+          "reason": "The physics of electron emission from nanoparticles under X-ray irradiation is well-established, and it's plausible that this mechanism could be used to address limitations of the PENELOPE model."
+        },
+        "6_constraint": {
+          "severity": "UNASSESSED",
+          "reason": "Without further information about the PENELOPE model and its limitations, it's difficult to assess if there are hidden constraints preventing the transfer of this mechanism."
+        },
+        "7_trivial": {
+          "severity": "MINOR",
+          "reason": "The proposed connection between electron emission from nanoparticles and addressing limitations of the PENELOPE model is not immediately obvious, but it's not necessarily complex or innovative either."
+        },
+        "8_insufficient": {
+          "severity": "MAJOR",
+          "reason": "The provided evidence is insufficient to fully support the claim that the mechanism of electron emission from nanoparticles can solve limitations of the PENELOPE model."
+        },
+        "9_false_analogy": {
+          "severity": "MINOR",
+          "reason": "The analogy between electron emission from nanoparticles and addressing limitations of the PENELOPE model seems plausible, but without further context, it's difficult to assess if it's a false analogy."
+        },
+        "10_falsifier": {
+          "severity": "UNASSESSED",
+          "reason": "Without further information about the PENELOPE model and its limitations, it's difficult to determine a specific observation that would falsify this candidate"
+        }
+      },
+      "overall": "KILLED",
+      "fatal_attacks": [],
+      "reason": "While no single attack is fatal, the combination of major concerns, particularly the lack of direct evidence supporting the proposed bridge and the insufficient evidence to support the claim, leads to the conclusion that this candidate is not robust enough to survive."
+    },
+    {
+      "candidate_id": "M9-2e831ceb",
+      "is_null": false,
+      "attacks": {
+        "1_known": {
+          "severity": "UNASSESSED",
+          "reason": "Insufficient information to determine if the mechanism is already known in the literature"
+        },
+        "2_terminology": {
+          "severity": "MINOR",
+          "reason": "Terminology might be different, but without more context, it's hard to determine if it's the same concept"
+        },
+        "3_evidence_support": {
+          "severity": "FATAL",
+          "reason": "The proposed bridge is based on the absence of evidence, which is not a strong foundation for a hypothesis"
+        },
+        "4_superficial": {
+          "severity": "MAJOR",
+          "reason": "The connection between 'Paired images from d' and 'Combination of a pro' seems superficial and lacks a clear mechanistic explanation"
+        },
+        "5_physics": {
+          "severity": "UNASSESSED",
+          "reason": "Not enough information to determine if physics/chemistry/biology permits the transfer"
+        },
+        "6_constraint": {
+          "severity": "UNASSESSED",
+          "reason": "Unknown if there are hidden constraints preventing transfer"
+        },
+        "7_trivial": {
+          "severity": "MINOR",
+          "reason": "The proposed connection might be trivial, but without more context, it's hard to determine"
+        },
+        "8_insufficient": {
+          "severity": "MAJOR",
+          "reason": "The evidence provided is insufficient to support the claim, as it's based on the absence of a combination"
+        },
+        "9_false_analogy": {
+          "severity": "MAJOR",
+          "reason": "The analogy between 'Paired images from d' and 'Combination of a pro' might be a false one, lacking a clear underlying mechanism"
+        },
+        "10_falsifier": {
+          "severity": "UNASSESSED",
+          "reason": "Unable to determine a specific observation that would falsify this candidate due to lack of information"
+        }
+      },
+      "overall": "KILLED",
+      "fatal_attacks": [
+        "3_evidence_support"
+      ],
+      "reason": "The candidate hypothesis is killed due to the fatal attack on the evidence support dimension, where the proposed bridge is based on the absence of evidence, which is not a strong foundation for a hypothesis."
+    },
+    {
+      "candidate_id": "M9-44e7cdd2",
+      "is_null": false,
+      "attacks": {
+        "1_known": {
+          "severity": "UNASSESSED",
+          "reason": "Insufficient information to determine if the mechanism is already known in the literature"
+        },
+        "2_terminology": {
+          "severity": "MINOR",
+          "reason": "Terminology might be slightly different but it's unclear without more context"
+        },
+        "3_evidence_support": {
+          "severity": "MAJOR",
+          "reason": "The proposed bridge is based on the absence of evidence rather than direct support"
+        },
+        "4_superficial": {
+          "severity": "MINOR",
+          "reason": "The combination of 'Paired images from d' and 'Natural language pro' might be more than just keyword matching, but it's unclear"
+        },
+        "5_physics": {
+          "severity": "SURVIVES",
+          "reason": "There's no apparent physical or chemical reason that would prevent the combination from being possible"
+        },
+        "6_constraint": {
+          "severity": "UNASSESSED",
+          "reason": "Not enough information to identify any hidden constraints"
+        },
+        "7_trivial": {
+          "severity": "MINOR",
+          "reason": "The connection might seem obvious once pointed out, but without more context, it's hard to judge"
+        },
+        "8_insufficient": {
+          "severity": "MAJOR",
+          "reason": "The evidence provided is insufficient to strongly support the claim of a new combination"
+        },
+        "9_false_analogy": {
+          "severity": "UNASSESSED",
+          "reason": "Without more details on the analogy, it's difficult to assess its validity"
+        },
+        "10_falsifier": {
+          "severity": "UNASSESSED",
+          "reason": "Specific observations that would falsify this candidate are not clearly defined"
+        }
+      },
+      "overall": "KILLED",
+      "fatal_attacks": [],
+      "reason": "While there are no single FATAL attacks, the combination of MAJOR issues, particularly the lack of direct evidence support and insufficient evidence, significantly weakens the candidate hypothesis to the point it cannot survive scrutiny."
+    },
+    {
+      "candidate_id": "NULL-NULL-4-116ff8a4",
+      "is_null": true,
+      "attacks": {
+        "1_known": {
+          "severity": "MINOR",
+          "reason": "The concept of combining mechanisms within materials is not new, but the specific application and combination may still be novel"
+        },
+        "2_terminology": {
+          "severity": "SURVIVES",
+          "reason": "The terminology used is standard in the field and does not appear to be different wording for the same concept"
+        },
+        "3_evidence_support": {
+          "severity": "MAJOR",
+          "reason": "The provided evidence is limited to two specific examples and does not broadly support the proposed bridge of same-domain combination"
+        },
+        "4_superficial": {
+          "severity": "MINOR",
+          "reason": "The examples provided do appear to involve mechanistic combinations, but the depth of analysis is not sufficient to fully assess the mechanism"
+        },
+        "5_physics": {
+          "severity": "SURVIVES",
+          "reason": "The principles of physics and materials science do permit the combination of mechanisms within materials for improved performance"
+        },
+        "6_constraint": {
+          "severity": "UNASSESSED",
+          "reason": "There may be hidden constraints preventing the transfer of this concept to other materials or applications, but this cannot be evaluated with the provided information"
+        },
+        "7_trivial": {
+          "severity": "MINOR",
+          "reason": "The proposed connection is not entirely trivial, as it involves the combination of specific mechanisms to achieve improved performance"
+        },
+        "8_insufficient": {
+          "severity": "MAJOR",
+          "reason": "The evidence provided is insufficient to broadly support the claim, and more examples and analysis are needed"
+        },
+        "9_false_analogy": {
+          "severity": "SURVIVES",
+          "reason": "The analogy appears to be based on a genuine understanding of the mechanisms involved and is not a semantic false analogy"
+        },
+        "10_falsifier": {
+          "severity": "UNASSESSED",
+          "reason": "A specific observation that would falsify this candidate is not clearly identifiable with the provided information"
+        }
+      },
+      "overall": "KILLED",
+      "fatal_attacks": [],
+      "reason": "While there are no single fatal attacks, the combination of major concerns, including the limited and insufficient evidence, and the potential for hidden constraints, weaken the candidate to the point where it cannot survive. The candidate hypothesis, while intriguing, requires more substantial support and analysis to be considered robust."
+    },
+    {
+      "candidate_id": "NULL-NULL-6-8ebcb14e",
+      "is_null": true,
+      "overall": "UNASSESSED"
+    },
+    {
+      "candidate_id": "NULL-NULL-6-d00fcd1d",
+      "is_null": true,
+      "attacks": {
+        "1_known": {
+          "severity": "MINOR",
+          "reason": "The concept of mechanism transfer is not new, but the specific application to materials may be novel"
+        },
+        "2_terminology": {
+          "severity": "MINOR",
+          "reason": "The terminology used is standard in the field, but may not be directly equivalent across domains"
+        },
+        "3_evidence_support": {
+          "severity": "MAJOR",
+          "reason": "The provided evidence does not directly support the proposed bridge, as it focuses on specific materials and synthesis methods rather than mechanism transfer"
+        },
+        "4_superficial": {
+          "severity": "MAJOR",
+          "reason": "The analogy appears to be based on keyword matching (e.g., 'mechanism' and 'materials') rather than a deep understanding of the underlying mechanisms"
+        },
+        "5_physics": {
+          "severity": "SURVIVES",
+          "reason": "There is no obvious physical or chemical reason why mechanisms cannot be transferred between materials"
+        },
+        "6_constraint": {
+          "severity": "MINOR",
+          "reason": "There may be hidden constraints, such as differences in material properties or synthesis conditions, that could prevent transfer"
+        },
+        "7_trivial": {
+          "severity": "MINOR",
+          "reason": "The proposed connection is not entirely obvious, but may be considered trivial by some experts in the field"
+        },
+        "8_insufficient": {
+          "severity": "MAJOR",
+          "reason": "The provided evidence is insufficient to support the claim, as it consists of two unrelated papers with no direct connection to mechanism transfer"
+        },
+        "9_false_analogy": {
+          "severity": "MAJOR",
+          "reason": "The bridge may be a semantic false analogy, as the concept of 'mechanism' may have different meanings in different contexts"
+        },
+        "10_falsifier": {
+          "severity": "UNASSESSED",
+          "reason": "It is unclear what specific observation would falsify this candidate, as the proposal is not well-defined"
+        }
+      },
+      "overall": "KILLED",
+      "fatal_attacks": [
+        "3_evidence_support",
+        "4_superficial",
+        "8_insufficient",
+        "9_false_analogy"
+      ],
+      "reason": "The candidate is killed due to a combination of major attacks, including the lack of direct evidence support, superficial analogy, insufficient evidence, and potential false analogy. While some attacks are minor, the cumulative effect of the major attacks is fatal."
+    }
+  ]
+}

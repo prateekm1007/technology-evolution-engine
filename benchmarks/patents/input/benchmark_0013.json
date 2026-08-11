@@ -1,0 +1,63 @@
+{
+  "id": "benchmark_0013",
+  "type": "patent",
+  "source": "uspto",
+  "title": "RISC-V Edge AI Processor with In-Memory Compute",
+  "domain": "computation",
+  "abstract": "An edge processor with RISC-V core and 64KB SRAM CIM macro at 25 TOPS/W for always-on inference under 1mW.",
+  "claims": [
+    "CIM SRAM macro (256x256) performing analog dot-product at 25 TOPS/W.",
+    "RISC-V RV32IMC core with custom vector extension.",
+    "Always-on domain <10uW sleep with 5us wake-up."
+  ],
+  "components": [
+    "RISC-V core",
+    "CIM SRAM macro",
+    "power management",
+    "I/O interfaces",
+    "clock generator"
+  ],
+  "materials": [
+    "silicon",
+    "copper",
+    "low-k dielectric"
+  ],
+  "methods": [
+    "CMOS fabrication",
+    "analog computing",
+    "near-threshold operation",
+    "power gating"
+  ],
+  "constraints": [
+    "energy",
+    "information",
+    "cost",
+    "manufacturing",
+    "size"
+  ],
+  "problem_statement": "Edge AI requires milliwatt inference. In-memory compute eliminates data movement overhead.",
+  "expected_constraints": [
+    "energy",
+    "information",
+    "cost",
+    "manufacturing"
+  ],
+  "expected_prerequisites": [
+    "CIM circuit design",
+    "RISC-V ecosystem",
+    "low-power design methodology",
+    "model quantization"
+  ],
+  "expected_adjacent_domains": [
+    "embedded systems",
+    "machine learning",
+    "VLSI design",
+    "IoT"
+  ],
+  "expected_failure_modes": [
+    "analog noise",
+    "process variation",
+    "SRAM retention",
+    "thermal drift"
+  ]
+}

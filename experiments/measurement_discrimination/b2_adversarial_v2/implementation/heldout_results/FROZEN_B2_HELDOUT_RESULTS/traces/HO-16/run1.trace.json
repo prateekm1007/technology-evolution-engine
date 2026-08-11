@@ -1,0 +1,31 @@
+{
+  "schema_version": "b2-trace-v3",
+  "candidate": {
+    "id": "HO-16",
+    "text": "enzymes lower activation free energy",
+    "source_a": "Enzymes accelerate chemical reactions by stabilizing transition states and lowering the activation free energy required to reach them.",
+    "source_b": "An enzyme active site binds selected substrates through complementary chemical interactions, positioning reactive groups and favoring formation of the transition state."
+  },
+  "atoms": [],
+  "counterfactuals": [
+    {
+      "removed_source": "A",
+      "unsupported_atoms": [],
+      "justified_without_source": false
+    },
+    {
+      "removed_source": "B",
+      "unsupported_atoms": [],
+      "justified_without_source": false
+    }
+  ],
+  "classification": {
+    "justified_by_corpus": false,
+    "iss_a": false,
+    "iss_b": false,
+    "iss_state": "UNSUPPORTED",
+    "label": "NOT_ADJUDICATED_BY_B2"
+  },
+  "_fallback": true,
+  "_error": "API request failed with status 429: {\"error\":\"Too many requests, please try again later\"}"
+}

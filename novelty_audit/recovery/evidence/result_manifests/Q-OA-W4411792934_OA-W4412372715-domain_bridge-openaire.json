@@ -1,0 +1,24 @@
+{
+  "query_id": "Q-OA-W4411792934_OA-W4412372715-domain_bridge-openaire",
+  "pair_id": "OA-W4411792934_OA-W4412372715",
+  "query_type": "domain_bridge",
+  "provider": "openaire",
+  "query_text": "computer_science chemistry mechanism",
+  "query_hash": "c669475aa6c404721d68e87adcf0ade7fae313d70b7309268d300c3fb25be84f",
+  "frozen_query_ref": "Q-OA-W4411792934_OA-W4412372715-domain_bridge-openalex",
+  "url": "https://api.openaire.eu/search/publications?keywords=computer_science+chemistry+mechanism&size=10&format=json",
+  "timestamp_utc": "2026-08-11T12:35:52.725734+00:00",
+  "status": "NO_RESULTS",
+  "result_count": 0,
+  "result_ids": [],
+  "result_titles": [],
+  "result_dois": [],
+  "result_dates": [],
+  "response_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "evidence_uri": "https://api.openaire.eu/search/publications?keywords=computer_science+chemistry+mechanism&size=10&format=json",
+  "error": null,
+  "rate_limit_headers": {
+    "x-ratelimit-used": "248",
+    "x-ratelimit-limit": "7199"
+  }
+}

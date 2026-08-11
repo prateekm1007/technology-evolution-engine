@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.venv/
+venv/
+
+# Layout cache (F-003 wiring) and other runtime artifacts
+.cache/
+web/backend/.cache/
+
+# Runtime logs (pipeline_runs.jsonl is written by every pipeline invocation,
+# including test runs — ignore it so test execution doesn't dirty the tree.
+# Historical committed entries are retained.)
+logs/pipeline_runs.jsonl
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp
+experiments/measurement_discrimination/b2_adversarial_v2/implementation/node_modules/
+.git-rewrite/

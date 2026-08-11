@@ -1,0 +1,46 @@
+{
+  "timestamp": "2026-08-04T23:38:04.169169+00:00",
+  "graph": {
+    "total_nodes": 89,
+    "total_edges": 224,
+    "node_types": {
+      "material": 22,
+      "property": 10,
+      "mechanism": 14,
+      "application": 15,
+      "manufacturing": 9,
+      "unknown": 19
+    },
+    "tier_counts": {
+      "verified": 0,
+      "asserted": 224,
+      "associative": 0,
+      "contradicted": 0
+    },
+    "causal_density": 0.0
+  },
+  "swanson": {
+    "total_bridges": 702,
+    "score_min": 0.6,
+    "score_max": 0.6,
+    "score_is_constant": true
+  },
+  "gentner": {
+    "total_analogies": 215021,
+    "systematicity_min": 1.0,
+    "systematicity_max": 1.0,
+    "systematicity_is_constant": true
+  },
+  "altshuller": {
+    "total_contradictions": 126
+  },
+  "bacon": {
+    "stefan_boltzmann_r2": 0.9999568911598812,
+    "pcm_cv_gap": 0.0
+  },
+  "corpus": {
+    "papers": 10,
+    "patents": 10,
+    "radiative_cooling": 24
+  }
+}

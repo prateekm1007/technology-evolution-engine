@@ -1,0 +1,350 @@
+{
+  "generated_at": "2026-08-01T17:51:56.302563+00:00",
+  "rule": "Law 8 (CONSTITUTION.md): No 'verified' label without a successful prediction, a failed prediction, and replayable evidence.",
+  "ledger_state": {
+    "ledger_exists": true,
+    "parseable": true,
+    "entries": [
+      {
+        "type": "benchmark_run",
+        "timestamp": "2026-08-01T15:26:20.748827+00:00",
+        "total_benchmarks": 26,
+        "overall_composite_mean": 0.3677,
+        "grade_distribution": {
+          "F": 26
+        },
+        "assumptions": [
+          "Rule-based scoring",
+          "Seed graph only",
+          "No external data"
+        ],
+        "falsification_criteria": "Composite mean below 0.3 after 50 benchmarks indicates fundamental pipeline failure.",
+        "writer": "scripts.run_evidence_tests.log_to_ledger"
+      },
+      {
+        "type": "verification",
+        "timestamp": "2026-08-01T15:27:14.245383+00:00",
+        "prediction_id": "verify_cemetery_009_1785598034",
+        "cemetery_id": "cemetery_009",
+        "name": "Airships",
+        "constraint_simulated": null,
+        "direction": null,
+        "magnitude": null,
+        "predicted_resurrection": false,
+        "observed_outcome": "partial",
+        "outcome": "fail",
+        "evidence_ref": "evidence/failures/airships.json",
+        "citation": "evidence/failures/airships.json `resurrection_conditions` lists 'Lockheed LMH-1, LTA Research' as active resurrection projects. Public record: LTA Research Pathfinder 1 first flight 2024; HAV Airlander 10 first flight 2016.",
+        "writer": "scripts.run_verification_cycle.reconcile"
+      },
+      {
+        "type": "verification",
+        "timestamp": "2026-08-01T15:27:14.246270+00:00",
+        "prediction_id": "verify_cemetery_006_1785598034",
+        "cemetery_id": "cemetery_006",
+        "name": "Iridium",
+        "constraint_simulated": null,
+        "direction": null,
+        "magnitude": null,
+        "predicted_resurrection": false,
+        "observed_outcome": "resurrected",
+        "outcome": "fail",
+        "evidence_ref": "evidence/failures/iridium.json",
+        "citation": "evidence/failures/iridium.json documents the original failure. Public record: Iridium Communications (IRDM) relaunched and operates a 66-satellite LEO constellation for IoT/voice as of 2026.",
+        "writer": "scripts.run_verification_cycle.reconcile"
+      },
+      {
+        "type": "verification",
+        "timestamp": "2026-08-01T15:27:14.247026+00:00",
+        "prediction_id": "verify_cemetery_001_1785598034",
+        "cemetery_id": "cemetery_001",
+        "name": "Segway",
+        "constraint_simulated": null,
+        "direction": null,
+        "magnitude": null,
+        "predicted_resurrection": false,
+        "observed_outcome": "not_resurrected",
+        "outcome": "pass",
+        "evidence_ref": "evidence/failures/segway.json",
+        "citation": "evidence/failures/segway.json: production ended 2020. No successor product for the personal-balancing-transport category exists. Micro-mobility shifted to shared e-scooters (Bird, Lime), which are a different product class.",
+        "writer": "scripts.run_verification_cycle.reconcile"
+      },
+      {
+        "type": "verification",
+        "timestamp": "2026-08-01T15:27:14.247687+00:00",
+        "prediction_id": "verify_cemetery_003_1785598034",
+        "cemetery_id": "cemetery_003",
+        "name": "Concorde",
+        "constraint_simulated": null,
+        "direction": null,
+        "magnitude": null,
+        "predicted_resurrection": false,
+        "observed_outcome": "partial",
+        "outcome": "fail",
+        "evidence_ref": "evidence/failures/concorde.json",
+        "citation": "evidence/failures/concorde.json. Public record: Boom Supersonic XB-1 supersonic flight Oct 2024; Overture not in commercial service as of 2026. Partial: tech demonstrator exists, no commercial resurrection yet.",
+        "writer": "scripts.run_verification_cycle.reconcile"
+      },
+      {
+        "type": "verification",
+        "timestamp": "2026-08-01T15:27:14.248312+00:00",
+        "prediction_id": "verify_cemetery_002_1785598034",
+        "cemetery_id": "cemetery_002",
+        "name": "Google Glass",
+        "constraint_simulated": null,
+        "direction": null,
+        "magnitude": null,
+        "predicted_resurrection": false,
+        "observed_outcome": "not_resurrected",
+        "outcome": "pass",
+        "evidence_ref": "evidence/failures/google_glass.json",
+        "citation": "evidence/failures/google_glass.json. Enterprise Edition discontinued 2023. No like-for-like successor; AR headsets are a different product class.",
+        "writer": "scripts.run_verification_cycle.reconcile"
+      },
+      {
+        "type": "verification",
+        "timestamp": "2026-08-01T15:27:14.248937+00:00",
+        "prediction_id": "verify_cemetery_004_1785598034",
+        "cemetery_id": "cemetery_004",
+        "name": "Theranos",
+        "constraint_simulated": null,
+        "direction": null,
+        "magnitude": null,
+        "predicted_resurrection": false,
+        "observed_outcome": "not_resurrected",
+        "outcome": "pass",
+        "evidence_ref": "evidence/failures/theranos.json",
+        "citation": "evidence/failures/theranos.json. Founder convicted of fraud 2022. The underlying scientific claim was false, not premature \u2014 no resurrection is possible without invalidating the original premise.",
+        "writer": "scripts.run_verification_cycle.reconcile"
+      },
+      {
+        "type": "verification",
+        "timestamp": "2026-08-01T15:27:14.249599+00:00",
+        "prediction_id": "verify_cemetery_005_1785598034",
+        "cemetery_id": "cemetery_005",
+        "name": "Quibi",
+        "constraint_simulated": null,
+        "direction": null,
+        "magnitude": null,
+        "predicted_resurrection": false,
+        "observed_outcome": "not_resurrected",
+        "outcome": "pass",
+        "evidence_ref": "evidence/failures/quibi.json",
+        "citation": "evidence/failures/quibi.json. Shut down 2020. The category of premium short-form mobile video was obsoleted by TikTok, not resurrected by a successor.",
+        "writer": "scripts.run_verification_cycle.reconcile"
+      },
+      {
+        "type": "verification",
+        "timestamp": "2026-08-01T15:27:14.250242+00:00",
+        "prediction_id": "verify_cemetery_007_1785598034",
+        "cemetery_id": "cemetery_007",
+        "name": "Betamax",
+        "constraint_simulated": null,
+        "direction": null,
+        "magnitude": null,
+        "predicted_resurrection": false,
+        "observed_outcome": "not_resurrected",
+        "outcome": "pass",
+        "evidence_ref": "evidence/failures/betamax.json",
+        "citation": "evidence/failures/betamax.json. Production ended 2016. VHS-then-streaming successorship obsoleted the format; no resurrection.",
+        "writer": "scripts.run_verification_cycle.reconcile"
+      },
+      {
+        "type": "verification",
+        "timestamp": "2026-08-01T15:27:14.250890+00:00",
+        "prediction_id": "verify_cemetery_008_1785598034",
+        "cemetery_id": "cemetery_008",
+        "name": "HD-DVD",
+        "constraint_simulated": null,
+        "direction": null,
+        "magnitude": null,
+        "predicted_resurrection": false,
+        "observed_outcome": "not_resurrected",
+        "outcome": "pass",
+        "evidence_ref": "evidence/failures/hd-dvd.json",
+        "citation": "evidence/failures/hd_dvd.json. Discontinued 2008. Blu-ray won the format war; streaming obsoleted physical media. No resurrection.",
+        "writer": "scripts.run_verification_cycle.reconcile"
+      }
+    ],
+    "successful_predictions": 6,
+    "failed_predictions": 3,
+    "replayable_entries": 10,
+    "parse_errors": [],
+    "sha256": "02c5be2670354984d3ae9978c320d235d923eb7cfb61635843e8a4a0589791a4"
+  },
+  "claims_found": 24,
+  "supported_claims": 24,
+  "unsupported_claims": 0,
+  "global_verdict": "PASS",
+  "claims": [
+    {
+      "file": "tests/test_endpoints.py",
+      "line": 61,
+      "text": "'verified'. We don't have adversarial tests + replay + failure logging",
+      "verdict": "supported",
+      "reason": "ledger contains >=1 pass + >=1 fail + replayable evidence"
+    },
+    {
+      "file": "scripts/enforce_law8.py",
+      "line": 7,
+      "text": "No \"verified\" label without a successful prediction, a failed",
+      "verdict": "supported",
+      "reason": "ledger contains >=1 pass + >=1 fail + replayable evidence"
+    },
+    {
+      "file": "scripts/enforce_law8.py",
+      "line": 12,
+      "text": "\"verified\" label, and for each one it requires:",
+      "verdict": "supported",
+      "reason": "ledger contains >=1 pass + >=1 fail + replayable evidence"
+    },
+    {
+      "file": "scripts/enforce_law8.py",
+      "line": 24,
+      "text": "If any of those conditions fail, every \"verified\" stamp in the",
+      "verdict": "supported",
+      "reason": "ledger contains >=1 pass + >=1 fail + replayable evidence"
+    },
+    {
+      "file": "scripts/enforce_law8.py",
+      "line": 243,
+      "text": "\"replayable. Until all three are true, every 'verified' label in the repo is \"",
+      "verdict": "supported",
+      "reason": "ledger contains >=1 pass + >=1 fail + replayable evidence"
+    },
+    {
+      "file": "scripts/enforce_law8.py",
+      "line": 273,
+      "text": "print(f\"'verified' claims found: {report['claims_found']}\")",
+      "verdict": "supported",
+      "reason": "ledger contains >=1 pass + >=1 fail + replayable evidence"
+    },
+    {
+      "file": "scripts/run_verification_cycle.py",
+      "line": 7,
+      "text": "\"verified\" label. It is the single most important script in this",
+      "verdict": "supported",
+      "reason": "ledger contains >=1 pass + >=1 fail + replayable evidence"
+    },
+    {
+      "file": "web/backend/main.py",
+      "line": 47,
+      "text": "\"level\": verification, \"is_fact\": verification == \"verified\",",
+      "verdict": "supported",
+      "reason": "ledger contains >=1 pass + >=1 fail + replayable evidence"
+    },
+    {
+      "file": "web/backend/main.py",
+      "line": 49,
+      "text": "if verification == \"verified\"",
+      "verdict": "supported",
+      "reason": "ledger contains >=1 pass + >=1 fail + replayable evidence"
+    },
+    {
+      "file": "web/backend/main.py",
+      "line": 138,
+      "text": "cannot stamp 'verified' until adversarial tests, replay capability,",
+      "verdict": "supported",
+      "reason": "ledger contains >=1 pass + >=1 fail + replayable evidence"
+    },
+    {
+      "file": "product/scoring/feasibility.py",
+      "line": 22,
+      "text": "feasibility. They are not \"verified\" until the verification cycle",
+      "verdict": "supported",
+      "reason": "ledger contains >=1 pass + >=1 fail + replayable evidence"
+    },
+    {
+      "file": "CONSTITUTION.md",
+      "line": 17,
+      "text": "No \"verified\" label without a successful prediction, a failed prediction,",
+      "verdict": "supported",
+      "reason": "ledger contains >=1 pass + >=1 fail + replayable evidence"
+    },
+    {
+      "file": "CONSTITUTION.md",
+      "line": 20,
+      "text": "required before any claim may be labeled \"verified\" rather than",
+      "verdict": "supported",
+      "reason": "ledger contains >=1 pass + >=1 fail + replayable evidence"
+    },
+    {
+      "file": "FAILURES.md",
+      "line": 70,
+      "text": "**Severity:** P0 for the \"verified\" label specifically \u2014 this file is the",
+      "verdict": "supported",
+      "reason": "ledger contains >=1 pass + >=1 fail + replayable evidence"
+    },
+    {
+      "file": "FAILURES.md",
+      "line": 136,
+      "text": "**Observed:** report prints `\"oracle\": \"verified\"` because `gm.source == \"core\"`.",
+      "verdict": "supported",
+      "reason": "ledger contains >=1 pass + >=1 fail + replayable evidence"
+    },
+    {
+      "file": "FAILURES.md",
+      "line": 137,
+      "text": "The condition for the \"verified\" stamp is \"the civilization graph file",
+      "verdict": "supported",
+      "reason": "ledger contains >=1 pass + >=1 fail + replayable evidence"
+    },
+    {
+      "file": "FAILURES.md",
+      "line": 142,
+      "text": "proxy for \"verified\", but `source == \"core\"` only means \"the static graph",
+      "verdict": "supported",
+      "reason": "ledger contains >=1 pass + >=1 fail + replayable evidence"
+    },
+    {
+      "file": "FAILURES.md",
+      "line": 154,
+      "text": "`{\"level\": \"verified\" | \"implemented\", ...}`, listing \"verified\" as if it",
+      "verdict": "supported",
+      "reason": "ledger contains >=1 pass + >=1 fail + replayable evidence"
+    },
+    {
+      "file": "FAILURES.md",
+      "line": 156,
+      "text": "path that ever assigned \"verified\" (`/api/v1/analyze` in `web/backend/main.py`)",
+      "verdict": "supported",
+      "reason": "ledger contains >=1 pass + >=1 fail + replayable evidence"
+    },
+    {
+      "file": "FAILURES.md",
+      "line": 161,
+      "text": "\"verified\" was still being claimed; it was not updated when the claim was",
+      "verdict": "supported",
+      "reason": "ledger contains >=1 pass + >=1 fail + replayable evidence"
+    },
+    {
+      "file": "FAILURES.md",
+      "line": 165,
+      "text": "**Status:** OPEN \u2014 the contract should either drop \"verified\" from the",
+      "verdict": "supported",
+      "reason": "ledger contains >=1 pass + >=1 fail + replayable evidence"
+    },
+    {
+      "file": "ANTI_ENTROPY.md",
+      "line": 9,
+      "text": "- F-011 (a \"verified\" stamp with no evidence)",
+      "verdict": "supported",
+      "reason": "ledger contains >=1 pass + >=1 fail + replayable evidence"
+    },
+    {
+      "file": "ANTI_ENTROPY.md",
+      "line": 85,
+      "text": "the specific class of \"verified\" drift. The general class \u2014 any",
+      "verdict": "supported",
+      "reason": "ledger contains >=1 pass + >=1 fail + replayable evidence"
+    },
+    {
+      "file": "ANTI_ENTROPY.md",
+      "line": 525,
+      "text": "> No \"verified\" label without a successful prediction, a failed",
+      "verdict": "supported",
+      "reason": "ledger contains >=1 pass + >=1 fail + replayable evidence"
+    }
+  ],
+  "required_to_pass": "To flip this verdict to PASS: (1) regenerate data/ledger/predictions.jsonl with a known writer, (2) record at least one prediction with outcome=pass AND at least one with outcome=fail, (3) stamp every ledger entry with a `writer` field naming the script/module that produced it so the entry is replayable. Until all three are true, every 'verified' label in the repo is aspirational, not evidenced."
+}

@@ -1,0 +1,145 @@
+{
+  "report_type": "SOURCE_PAIRABILITY_AUDIT_V2_2_1",
+  "report_version": "2.2.1",
+  "universe_manifest_hash": "d04a0cdcdc91dcbe424e6e366f49ebe6fd3668dd0039ca76abd70b92425f0184",
+  "source_count": 112,
+  "total_cross_domain_pairs": 5150,
+  "actual_pool_size": 198,
+  "random_seed": 42,
+  "stratum_report": {
+    "hard_negative_candidate_overlay": {
+      "desired": 40,
+      "available": 22,
+      "selected": 22,
+      "status": "STRATUM_UNAVAILABLE"
+    },
+    "heuristic_strong": {
+      "desired": 44,
+      "available": 381,
+      "selected": 44,
+      "status": "OK"
+    },
+    "heuristic_weak": {
+      "desired": 66,
+      "available": 1681,
+      "selected": 66,
+      "status": "OK"
+    },
+    "lexical_low_mechanistic": {
+      "desired": 44,
+      "available": 249,
+      "selected": 44,
+      "status": "OK"
+    },
+    "random_cross_domain": {
+      "desired": 22,
+      "available": 2817,
+      "selected": 22,
+      "status": "OK"
+    }
+  },
+  "sampled_stratum_distribution": {
+    "hard_negative_candidate_overlay": 22,
+    "heuristic_strong": 44,
+    "heuristic_weak": 66,
+    "lexical_low_mechanistic": 44,
+    "random_cross_domain": 22
+  },
+  "main_stratum_precedence": [
+    "heuristic_strong",
+    "heuristic_weak",
+    "lexical_low_mechanistic",
+    "random_cross_domain"
+  ],
+  "hard_negative_is_overlay": true,
+  "hard_negative_not_in_main_precedence": true,
+  "no_pair_in_two_strata": true,
+  "evidence_status": {
+    "abstract_a": {
+      "": 198
+    },
+    "abstract_b": {
+      "": 198
+    },
+    "both_present": 0
+  },
+  "domain_pair_distribution": {
+    "chemistry \u2194 materials_science": 36,
+    "computer_science \u2194 materials_science": 29,
+    "chemistry \u2194 computer_science": 12,
+    "materials_science \u2194 polymer_science": 10,
+    "electrical_engineering \u2194 materials_science": 8,
+    "materials_science \u2194 molecular_biology": 7,
+    "chemical_engineering \u2194 computer_science": 5,
+    "materials_science \u2194 mechanical_engineering": 4,
+    "chemical_engineering \u2194 materials_science": 4,
+    "computer_science \u2194 polymer_science": 4,
+    "computer_science \u2194 metallurgy": 4,
+    "cell_biology \u2194 materials_science": 4,
+    "biology \u2194 materials_science": 4,
+    "chemistry \u2194 metallurgy": 3,
+    "materials_science \u2194 metallurgy": 3,
+    "computer_science \u2194 electrical_engineering": 3,
+    "chemistry \u2194 polymer_science": 3,
+    "chemistry \u2194 mechanical_engineering": 3,
+    "chemical_engineering \u2194 chemistry": 3,
+    "fluid_mechanics \u2194 materials_science": 2,
+    "chemical_engineering \u2194 metallurgy": 2,
+    "chemistry \u2194 optoelectronics": 2,
+    "computer_science \u2194 mechanical_engineering": 2,
+    "chemistry \u2194 molecular_biology": 2,
+    "molecular_biology \u2194 polymer_science": 2,
+    "chemistry \u2194 electrical_engineering": 2,
+    "materials_science \u2194 photonics": 2,
+    "materials_science \u2194 thermodynamics": 2,
+    "computer_science \u2194 optoelectronics": 2,
+    "electromagnetics \u2194 materials_science": 1,
+    "electrical_engineering \u2194 polymer_science": 1,
+    "electrical_engineering \u2194 molecular_biology": 1,
+    "mechanical_engineering \u2194 molecular_biology": 1,
+    "chemical_engineering \u2194 electrical_engineering": 1,
+    "electrical_engineering \u2194 mechanical_engineering": 1,
+    "chemical_engineering \u2194 polymer_science": 1,
+    "materials_science \u2194 optics": 1,
+    "cell_biology \u2194 chemical_engineering": 1,
+    "chemical_engineering \u2194 electromagnetics": 1,
+    "electrical_engineering \u2194 thermodynamics": 1,
+    "electronics \u2194 polymer_science": 1,
+    "electrical_engineering \u2194 optoelectronics": 1,
+    "polymer_science \u2194 thermodynamics": 1,
+    "computer_science \u2194 thermodynamics": 1,
+    "chemical_engineering \u2194 thermodynamics": 1,
+    "electrical_engineering \u2194 electromagnetics": 1,
+    "chemistry \u2194 electronics": 1,
+    "chemistry \u2194 electromagnetics": 1,
+    "electrical_engineering \u2194 optics": 1,
+    "heat_transfer \u2194 materials_science": 1,
+    "cell_biology \u2194 computer_science": 1,
+    "computer_science \u2194 fluid_mechanics": 1,
+    "molecular_biology \u2194 optoelectronics": 1,
+    "computer_science \u2194 electronics": 1,
+    "biology \u2194 computer_science": 1,
+    "biology \u2194 optics": 1,
+    "electronics \u2194 materials_science": 1,
+    "fluid_mechanics \u2194 photonics": 1
+  },
+  "adjudication_questions": {
+    "A": "Is there a real mechanistic relationship? (YES/NO/UNCERTAIN)",
+    "B": "Is the relationship cross-domain? (YES/NO)",
+    "C": "Is there a plausible transferable mechanism? (YES/NO/UNCERTAIN)",
+    "D1": "Is the specific relationship explicitly established in literature? (YES/NO/UNCERTAIN)",
+    "D2": "Was relevant literature searched sufficiently? (ADEQUATE/INADEQUATE/INDETERMINATE)",
+    "D3": "Novelty status? (ESTABLISHED/NOT_ESTABLISHED/INDETERMINATE)",
+    "D4": "What search universe was checked? (text)",
+    "E": "Can the pair generate a non-trivial discovery question? (YES/NO/UNCERTAIN)",
+    "F": "Is it sufficiently difficult that a competent scientist cannot trivially answer? (YES/NO/UNCERTAIN)",
+    "G": "Does it create a legitimate discovery opportunity? (YES/NO/UNCERTAIN)",
+    "H": "Could a competent scientist be fooled into believing these mechanisms transfer when they actually do not? (YES/NO/UNCERTAIN)",
+    "I": "Can this pair support a specific, falsifiable scientific prediction whose outcome could distinguish a genuine transfer from a superficial analogy? (YES/NO/UNCERTAIN)"
+  },
+  "task_type_rules": {
+    "W_TASK": "A=YES, B=YES, C=YES, E=YES, F=YES, G=YES, I=YES, D3=ESTABLISHED",
+    "S_CANDIDATE": "A=YES, B=YES, C=YES, E=YES, F=YES, G=YES, I=YES, D1=NO, D2=ADEQUATE, D3=NOT_ESTABLISHED",
+    "REJECT": "Does not meet W or S criteria, or I\u2260YES"
+  }
+}

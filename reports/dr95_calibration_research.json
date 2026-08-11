@@ -1,0 +1,292 @@
+{
+  "multi_evaluator": [
+    {
+      "entity": "heat",
+      "evaluations": {
+        "judge_1_standard": {
+          "mechanistically_coherent": "Partial",
+          "scientifically_plausible": "Yes",
+          "falsifiable": "Yes",
+          "specificity_score": 2,
+          "novelty": "Incremental",
+          "overall_quality": 2,
+          "recommendation": "Revise",
+          "rejection_reason": "Low confidence and specificity. The proposal needs more rigorous methodology to establish the bridge's significance beyond coincidental terminology. The falsification test is good but should be expanded with more sophisticated analysis of mechanistic connections."
+        },
+        "judge_2_adversarial": {
+          "mechanistically_coherent": "No",
+          "scientifically_plausible": "No",
+          "falsifiable": "Partial",
+          "specificity_score": 1,
+          "novelty": "Known",
+          "overall_quality": 1,
+          "recommendation": "Reject",
+          "rejection_reason": "The proposal fails to establish a meaningful mechanistic connection between domains. The concept of 'heat' is too broad and fundamental to serve as a specific bridge without further refinement. The falsification test is insufficient as it only checks frequency but not functional relevance. The confidence score of 0.2 appropriately reflects the weak evidence."
+        },
+        "judge_3_neutral": {
+          "mechanistically_coherent": "Partial",
+          "scientifically_plausible": "Yes",
+          "falsifiable": "Yes",
+          "specificity_score": 2,
+          "novelty": "Incremental",
+          "overall_quality": 2,
+          "recommendation": "Revise",
+          "rejection_reason": "The proposal identifies a potential cross-domain connection through 'heat', but the low confidence score (0.2) and lack of detailed mechanistic explanation between domains A and B weaken its strength. The falsification approach is appropriate, but the proposal needs more concrete evidence of how 'heat' specifically bridges domains beyond mere co-occurrence. The specificity score is low because 'heat' is a common scientific term that could appear in multiple domains without meaningful mechanistic connections."
+        }
+      },
+      "mean_quality": 1.67,
+      "std_quality": 0.47,
+      "recommendations": [
+        "Revise",
+        "Reject",
+        "Revise"
+      ],
+      "judges_agree": false
+    },
+    {
+      "entity": "thermal_differential",
+      "evaluations": {
+        "judge_1_standard": {
+          "mechanistically_coherent": "Partial",
+          "scientifically_plausible": "No",
+          "falsifiable": "Yes",
+          "specificity_score": 2,
+          "novelty": "Incremental",
+          "overall_quality": 2,
+          "recommendation": "Reject",
+          "rejection_reason": "Low confidence score and lack of clear scientific justification for the concept of 'thermal_differential' as a meaningful cross-domain bridge."
+        },
+        "judge_2_adversarial": {
+          "mechanistically_coherent": "Partial",
+          "scientifically_plausible": "No",
+          "falsifiable": "Yes",
+          "specificity_score": 1,
+          "novelty": "Known",
+          "overall_quality": 1,
+          "recommendation": "Reject",
+          "rejection_reason": "The proposal relies on a poorly defined concept 'thermal_differential' without establishing its scientific validity. The confidence score of 0.2 appropriately reflects the weak evidence base. The falsification test is appropriate but insufficient to establish the bridge's validity. The proposal fails to demonstrate that 'thermal_differential' represents a meaningful cross-domain mechanism rather than coincidental terminology or a common scientific term."
+        },
+        "judge_3_neutral": {
+          "mechanistically_coherent": "Partial",
+          "scientifically_plausible": "Yes",
+          "falsifiable": "Yes",
+          "specificity_score": 2,
+          "novelty": "Incremental",
+          "overall_quality": 2,
+          "recommendation": "Revise",
+          "rejection_reason": "Low confidence and specificity. The proposal needs stronger evidence that 'thermal_differential' represents a meaningful cross-domain connection rather than shared vocabulary. Additional validation and domain-specific analysis required."
+        }
+      },
+      "mean_quality": 1.67,
+      "std_quality": 0.47,
+      "recommendations": [
+        "Reject",
+        "Reject",
+        "Revise"
+      ],
+      "judges_agree": false
+    },
+    {
+      "entity": "surface_chemical_modification",
+      "evaluations": {
+        "judge_1_standard": {
+          "mechanistically_coherent": "Partial",
+          "scientifically_plausible": "Yes",
+          "falsifiable": "Yes",
+          "specificity_score": 2,
+          "novelty": "Incremental",
+          "overall_quality": 2,
+          "recommendation": "Revise",
+          "rejection_reason": "The proposal identifies a potential cross-domain connection through 'surface_chemical_modification' but lacks specificity and mechanistic detail. The confidence score of 0.2 suggests significant uncertainty. The proposal would benefit from more precise definition of the concept, domain-specific context, and preliminary evidence supporting the bridge's validity. Additional analysis of frequency in non-cross-domain papers should be conducted to establish specificity."
+        },
+        "judge_2_adversarial": {
+          "mechanistically_coherent": "Partial",
+          "scientifically_plausible": "No",
+          "falsifiable": "Yes",
+          "specificity_score": 2,
+          "novelty": "Known",
+          "overall_quality": 2,
+          "recommendation": "Revise",
+          "rejection_reason": "The proposal lacks sufficient mechanistic detail to establish a scientifically plausible bridge between domains. The confidence score of 0.2 is appropriately low given the weak evidence and assumptions. The concept needs more rigorous validation beyond simple co-occurrence analysis."
+        },
+        "judge_3_neutral": {
+          "mechanistically_coherent": "Partial",
+          "scientifically_plausible": "Yes",
+          "falsifiable": "Yes",
+          "specificity_score": 2,
+          "novelty": "Incremental",
+          "overall_quality": 2,
+          "recommendation": "Revise",
+          "rejection_reason": "The proposal identifies a potentially meaningful connection but lacks sufficient specificity and confidence. The low confidence score (0.2) and potential for coincidental occurrence suggest the bridge needs stronger validation through additional analysis or evidence."
+        }
+      },
+      "mean_quality": 2.0,
+      "std_quality": 0.0,
+      "recommendations": [
+        "Revise",
+        "Revise",
+        "Revise"
+      ],
+      "judges_agree": true
+    },
+    {
+      "entity": "energy_gap",
+      "evaluations": {
+        "judge_1_standard": {
+          "mechanistically_coherent": "Partial",
+          "scientifically_plausible": "No",
+          "falsifiable": "Yes",
+          "specificity_score": 2,
+          "novelty": "Known",
+          "overall_quality": 2,
+          "recommendation": "Reject",
+          "rejection_reason": "The proposal lacks scientific plausibility without defining what 'energy_gap' refers to in each domain. The confidence score of 0.2 is appropriately low given the vague mechanism and lack of domain-specific definitions. The falsification method is insufficient as it only checks frequency rather than examining the actual meaning and relevance of 'energy_gap' in each domain."
+        },
+        "judge_2_adversarial": {
+          "mechanistically_coherent": "Partial",
+          "scientifically_plausible": "No",
+          "falsifiable": "Yes",
+          "specificity_score": 1,
+          "novelty": "Known",
+          "overall_quality": 1,
+          "recommendation": "Reject",
+          "rejection_reason": "The proposal relies on a single term 'energy_gap' without defining its scientific meaning or establishing its relevance in both domains. The low confidence score (0.2) suggests the authors recognize the weakness of their approach. The falsification method is insufficient as frequency alone doesn't address semantic meaning. No mechanistic explanation is provided for how this term would mediate cross-domain connections."
+        },
+        "judge_3_neutral": {
+          "mechanistically_coherent": "Partial",
+          "scientifically_plausible": "Yes",
+          "falsifiable": "Yes",
+          "specificity_score": 2,
+          "novelty": "Incremental",
+          "overall_quality": 2,
+          "recommendation": "Revise",
+          "rejection_reason": "Low confidence and specificity. Need stronger evidence for cross-domain significance beyond co-occurrence."
+        }
+      },
+      "mean_quality": 1.67,
+      "std_quality": 0.47,
+      "recommendations": [
+        "Reject",
+        "Reject",
+        "Revise"
+      ],
+      "judges_agree": false
+    },
+    {
+      "entity": "phase_change_enthalpy",
+      "evaluations": {
+        "judge_1_standard": {
+          "mechanistically_coherent": "Partial",
+          "scientifically_plausible": "Yes",
+          "falsifiable": "Yes",
+          "specificity_score": 2,
+          "novelty": "Incremental",
+          "overall_quality": 2,
+          "recommendation": "Revise",
+          "rejection_reason": "The proposal is scientifically plausible and falsifiable, but lacks specificity and has low confidence. The mechanism is only partially coherent as it assumes a meaningful connection without providing evidence. The prediction is vague and doesn't specify what constitutes a 'mechanistic connection'. The falsification method is appropriate but insufficient on its own. The confidence score of 0.2 is appropriately low given the lack of supporting evidence. The proposal should be revised to provide more specific evidence for the cross-domain significance of 'phase_change_enthalpy' and to define what constitutes a mechanistic connection between domains."
+        },
+        "judge_2_adversarial": {
+          "mechanistically_coherent": "Partial",
+          "scientifically_plausible": "No",
+          "falsifiable": "Yes",
+          "specificity_score": 2,
+          "novelty": "Known",
+          "overall_quality": 2,
+          "recommendation": "Reject",
+          "rejection_reason": "The proposal relies on a single term as a cross-domain bridge without establishing mechanistic connections. The concept of phase_change_enthalpy is a standard thermodynamic term with well-defined applications, making its occurrence in multiple domains expected rather than indicative of a novel connection. The low confidence score (0.2) reflects the weakness of the proposed bridge."
+        },
+        "judge_3_neutral": {
+          "mechanistically_coherent": "Partial",
+          "scientifically_plausible": "Yes",
+          "falsifiable": "Yes",
+          "specificity_score": 2,
+          "novelty": "Incremental",
+          "overall_quality": 2,
+          "recommendation": "Revise",
+          "rejection_reason": "Low confidence and specificity. The proposal needs stronger evidence for the cross-domain significance of 'phase_change_enthalpy' beyond co-occurrence frequency."
+        }
+      },
+      "mean_quality": 2.0,
+      "std_quality": 0.0,
+      "recommendations": [
+        "Revise",
+        "Reject",
+        "Revise"
+      ],
+      "judges_agree": false
+    },
+    {
+      "entity": "light_quantum_energy",
+      "evaluations": {
+        "judge_1_standard": {
+          "mechanistically_coherent": "Partial",
+          "scientifically_plausible": "No",
+          "falsifiable": "Yes",
+          "specificity_score": 2,
+          "novelty": "Known",
+          "overall_quality": 2,
+          "recommendation": "Reject",
+          "rejection_reason": "The concept 'light_quantum_energy' is not clearly defined as a scientific concept, lacks mechanistic explanation, and has very low confidence (0.2). The proposal relies on co-occurrence without establishing theoretical or empirical basis for the claimed cross-domain connection."
+        },
+        "judge_2_adversarial": {
+          "mechanistically_coherent": "No",
+          "scientifically_plausible": "No",
+          "falsifiable": "Partial",
+          "specificity_score": 1,
+          "novelty": "Known",
+          "overall_quality": 1,
+          "recommendation": "Reject",
+          "rejection_reason": "The proposal lacks scientific rigor. The concept 'light_quantum_energy' is not a recognized scientific term, making the entire proposition questionable. The confidence score of 0.2 is appropriately low but doesn't adequately reflect the fundamental flaws in the approach. The falsification method is insufficient as it only checks frequency but not actual mechanistic connections."
+        },
+        "judge_3_neutral": {
+          "mechanistically_coherent": "Partial",
+          "scientifically_plausible": "No",
+          "falsifiable": "Yes",
+          "specificity_score": 2,
+          "novelty": "Incremental",
+          "overall_quality": 2,
+          "recommendation": "Revise",
+          "rejection_reason": "The concept 'light_quantum_energy' is not clearly defined as a scientific concept, and the proposal lacks sufficient evidence for its cross-domain significance. The confidence score of 0.2 reflects these concerns. The falsification approach is appropriate, but the proposal needs more theoretical grounding and empirical support."
+        }
+      },
+      "mean_quality": 1.67,
+      "std_quality": 0.47,
+      "recommendations": [
+        "Reject",
+        "Reject",
+        "Revise"
+      ],
+      "judges_agree": false
+    }
+  ],
+  "confidence_calibration": {
+    "n": 6,
+    "mean_confidence": 0.2,
+    "acceptance_rate": 0.5,
+    "ece": 0.433,
+    "brier_score": 0.34,
+    "max_calibration_error": 0.8
+  },
+  "disagreement": {
+    "failure_modes": {
+      "mechanism_vague": 2,
+      "prediction_unfalsifiable": 0,
+      "missing_assumptions": 0,
+      "known_science": 0,
+      "weak_novelty": 1,
+      "unsupported_mechanism": 0,
+      "low_confidence": 15,
+      "generic_template": 0,
+      "other": 0
+    },
+    "total_rejections": 18,
+    "sample_reasons": [
+      "low confidence and specificity. the proposal needs more rigorous methodology to establish the bridge's significance beyond coincidental terminology. the falsification test is good but should be expanded with more sophisticated analysis of mechanistic connections.",
+      "the proposal fails to establish a meaningful mechanistic connection between domains. the concept of 'heat' is too broad and fundamental to serve as a specific bridge without further refinement. the falsification test is insufficient as it only checks frequency but not functional relevance. the confidence score of 0.2 appropriately reflects the weak evidence.",
+      "the proposal identifies a potential cross-domain connection through 'heat', but the low confidence score (0.2) and lack of detailed mechanistic explanation between domains a and b weaken its strength. the falsification approach is appropriate, but the proposal needs more concrete evidence of how 'heat' specifically bridges domains beyond mere co-occurrence. the specificity score is low because 'heat' is a common scientific term that could appear in multiple domains without meaningful mechanistic connections.",
+      "low confidence score and lack of clear scientific justification for the concept of 'thermal_differential' as a meaningful cross-domain bridge.",
+      "the proposal relies on a poorly defined concept 'thermal_differential' without establishing its scientific validity. the confidence score of 0.2 appropriately reflects the weak evidence base. the falsification test is appropriate but insufficient to establish the bridge's validity. the proposal fails to demonstrate that 'thermal_differential' represents a meaningful cross-domain mechanism rather than coincidental terminology or a common scientific term."
+    ]
+  },
+  "statistical_note": "N=6 is exploratory. Insufficient for statistical conclusions."
+}

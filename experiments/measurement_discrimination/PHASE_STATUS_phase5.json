@@ -1,0 +1,63 @@
+{
+  "phase": 5,
+  "phase_name": "Quarantine forbidden metrics",
+  "status": "COMPLETE",
+  "commit": "ed923ce",
+  "protocol_frozen": false,
+  "protocol_frozen_meaning": "Phase 5 is a quarantine task, not a preregistered experiment. The broader measurement/discrimination protocol (Phases 8-17) is not yet frozen.",
+  "scientific_results_visible": true,
+  "scientific_results_note": "Phase 5 produced a quarantine manifest. ALL 38 metrics are forbidden for scientific use until independently regenerated. 0 metrics are scientifically eligible.",
+  "next_allowed_phase": "6",
+  "timestamp_utc": "2026-08-08T17:23:00Z",
+  "github_ci_status": "NOT_INDEPENDENTLY_VERIFIED",
+
+  "quarantine_summary": {
+    "total_metrics": 38,
+    "fully_quarantined": 1,
+    "provisionally_quarantined": 37,
+    "critical_path_forbidden": 10,
+    "scientifically_eligible": 0,
+    "note": "ALL 38 metrics are forbidden for scientific use. 1 is fully quarantined (M-008, regeneration failed, RECONCILIATION_OPEN). 37 are provisionally quarantined (not independently regenerated — shared-run matching only). 0 are scientifically eligible. No metric may be used in a scientific decision until independently regenerated."
+  },
+
+  "quarantine_categories": {
+    "FULL_QUARANTINE": {
+      "description": "Metric failed regeneration. Historical value preserved but untrusted. Cannot be used for any purpose until reconciled.",
+      "metrics": ["M-008"],
+      "count": 1
+    },
+    "PROVISIONAL_QUARANTINE": {
+      "description": "Metric matched in a shared run but has NOT been independently regenerated. Cannot be used for scientific decisions until independent regeneration passes.",
+      "count": 37,
+      "metrics": ["M-001", "M-002", "M-003", "M-004", "M-005", "M-006", "M-007", "M-009", "M-010", "M-011", "M-012", "M-013", "M-014", "M-015", "M-016", "M-101", "M-102", "M-103", "M-104", "M-105", "M-201", "M-202", "M-203", "M-204", "M-205", "M-301", "M-302", "M-303-D1", "M-303-D2", "M-303-D3", "M-303-D4", "M-303-D5", "M-303-D6", "M-303-D7", "M-304", "M-305", "M-306"]
+    }
+  },
+
+  "compliance_report_status": {
+    "historical_report": "reports/measurement_constitution_m8.json",
+    "historical_verdict": "PASS",
+    "historical_all_pass": true,
+    "current_status": "STALE — the historical compliance report was generated before Phase 3 found the M-008 regeneration failure. It reports 304/304 checks PASS, but this is no longer accurate. M-008 is now quarantined. The compliance report must be regenerated after M-008 reconciliation.",
+    "note": "The historical compliance report is preserved (MC-6: no metric may be silently altered). It is not modified or deleted. It is marked STALE because it does not reflect the current epistemic state."
+  },
+
+  "m008_status_preserved": {
+    "DETERMINISTIC_UNDER_IDENTICAL_EFFECTIVE_INPUTS": true,
+    "CAUSE_OF_DISCREPANCY_ESTABLISHED": false,
+    "RECONCILIATION_STATUS": "RECONCILIATION_OPEN",
+    "note": "The M-008 causal-attribution-open trio from Phase 4 is preserved. No modification."
+  },
+
+  "machine_enforced": true,
+  "no_retroactive_repair": true,
+  "no_value_deletion": true,
+  "no_value_replacement": true,
+  "no_value_averaging": true,
+  "governing_principle": "No metric may be used in a scientific decision until it is SCIENTIFICALLY_ELIGIBLE, which requires independent regeneration (not shared-run matching). Absence of a failed regeneration is not evidence of successful regeneration.",
+
+  "phase_5_artifacts": {
+    "quarantine_script": "scripts/phase5_quarantine_forbidden_metrics.py",
+    "quarantine_manifest": "reports/phase5/forbidden_metrics_quarantine.json",
+    "enforcement_tests": "tests/test_phase5_quarantine_enforcement.py (8 tests, all pass)"
+  }
+}

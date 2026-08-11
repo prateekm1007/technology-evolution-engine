@@ -1,0 +1,103 @@
+{
+  "method": "platt",
+  "n_samples": 35,
+  "ece": 0.0038,
+  "brier": 0.203,
+  "bins": [
+    {
+      "bin_lo": 0.0,
+      "bin_hi": 0.1,
+      "count": 0,
+      "accuracy": 0.0,
+      "confidence": 0.0,
+      "gap": 0.0
+    },
+    {
+      "bin_lo": 0.1,
+      "bin_hi": 0.2,
+      "count": 0,
+      "accuracy": 0.0,
+      "confidence": 0.0,
+      "gap": 0.0
+    },
+    {
+      "bin_lo": 0.2,
+      "bin_hi": 0.3,
+      "count": 0,
+      "accuracy": 0.0,
+      "confidence": 0.0,
+      "gap": 0.0
+    },
+    {
+      "bin_lo": 0.3,
+      "bin_hi": 0.4,
+      "count": 0,
+      "accuracy": 0.0,
+      "confidence": 0.0,
+      "gap": 0.0
+    },
+    {
+      "bin_lo": 0.4,
+      "bin_hi": 0.5,
+      "count": 0,
+      "accuracy": 0.0,
+      "confidence": 0.0,
+      "gap": 0.0
+    },
+    {
+      "bin_lo": 0.5,
+      "bin_hi": 0.6,
+      "count": 0,
+      "accuracy": 0.0,
+      "confidence": 0.0,
+      "gap": 0.0
+    },
+    {
+      "bin_lo": 0.6,
+      "bin_hi": 0.7,
+      "count": 0,
+      "accuracy": 0.0,
+      "confidence": 0.0,
+      "gap": 0.0
+    },
+    {
+      "bin_lo": 0.7,
+      "bin_hi": 0.8,
+      "count": 35,
+      "accuracy": 0.7429,
+      "confidence": 0.7391,
+      "gap": 0.0038
+    },
+    {
+      "bin_lo": 0.8,
+      "bin_hi": 0.9,
+      "count": 0,
+      "accuracy": 0.0,
+      "confidence": 0.0,
+      "gap": 0.0
+    },
+    {
+      "bin_lo": 0.9,
+      "bin_hi": 1.0,
+      "count": 0,
+      "accuracy": 0.0,
+      "confidence": 0.0,
+      "gap": 0.0
+    }
+  ],
+  "best_method": "platt",
+  "all_methods": {
+    "raw": {
+      "ece": 0.1386,
+      "brier": 0.2
+    },
+    "platt_loocv": {
+      "ece": 0.0038,
+      "brier": 0.203
+    },
+    "isotonic_loocv": {
+      "ece": 0.3139,
+      "brier": 0.3148
+    }
+  }
+}

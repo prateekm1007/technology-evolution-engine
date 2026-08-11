@@ -1,0 +1,65 @@
+{
+  "id": "benchmark_0018",
+  "type": "patent",
+  "source": "uspto",
+  "title": "AI-Powered Telemedicine Platform with Multimodal Diagnostic Fusion",
+  "domain": "medicine",
+  "abstract": "A telemedicine system combining dermoscopy, audio analysis, and symptom data through multimodal neural network achieving 92% diagnostic concordance.",
+  "claims": [
+    "Multimodal model fusing dermoscopic images, audio, symptoms via cross-attention.",
+    "Clinical decision support with ranked differentials and confidence intervals.",
+    "Federated learning enabling improvement without sharing patient data."
+  ],
+  "components": [
+    "imaging module",
+    "audio module",
+    "symptom intake",
+    "fusion model",
+    "clinical decision engine",
+    "EHR integration"
+  ],
+  "materials": [
+    "silicon",
+    "glass",
+    "plastic"
+  ],
+  "methods": [
+    "deep learning",
+    "federated learning",
+    "signal processing",
+    "clinical validation"
+  ],
+  "constraints": [
+    "accuracy",
+    "regulation",
+    "privacy",
+    "cost",
+    "accessibility"
+  ],
+  "problem_statement": "2 billion lack specialist diagnostics. Multimodal AI may close the diagnostic gap.",
+  "expected_constraints": [
+    "information",
+    "regulation",
+    "cost",
+    "safety",
+    "time"
+  ],
+  "expected_prerequisites": [
+    "clinical validation data",
+    "regulatory approval",
+    "edge inference",
+    "healthcare integration"
+  ],
+  "expected_adjacent_domains": [
+    "machine learning",
+    "clinical medicine",
+    "signal processing",
+    "healthcare systems"
+  ],
+  "expected_failure_modes": [
+    "diagnostic error",
+    "data bias",
+    "regulatory rejection",
+    "integration failure"
+  ]
+}

@@ -1,0 +1,730 @@
+{
+  "phase": 5,
+  "phase_name": "Quarantine forbidden metrics",
+  "timestamp_utc": "2026-08-08T17:23:28.524879+00:00",
+  "git_head": "b4fb627b3f4f90a3464a7734bb1908e4b1cbb70c",
+  "summary": {
+    "total_metrics": 38,
+    "fully_quarantined": 1,
+    "provisionally_quarantined": 37,
+    "critical_path_forbidden": 10,
+    "scientifically_eligible": 0,
+    "note": "ALL 38 metrics are forbidden for scientific use. 1 is fully quarantined (M-008, regeneration failed). 37 are provisionally quarantined (not independently regenerated \u2014 shared-run matching only). 0 are scientifically eligible. No metric may be used in a scientific decision until independently regenerated."
+  },
+  "quarantine_categories": {
+    "FULL_QUARANTINE": {
+      "description": "Metric failed regeneration. Historical value preserved but untrusted. Cannot be used for any purpose until reconciled.",
+      "metrics": [
+        "M-008"
+      ],
+      "count": 1
+    },
+    "PROVISIONAL_QUARANTINE": {
+      "description": "Metric matched in a shared run but has NOT been independently regenerated. Cannot be used for scientific decisions until independent regeneration passes.",
+      "metrics": [
+        "M-001",
+        "M-002",
+        "M-003",
+        "M-004",
+        "M-005",
+        "M-006",
+        "M-007",
+        "M-009",
+        "M-010",
+        "M-011",
+        "M-012",
+        "M-013",
+        "M-014",
+        "M-015",
+        "M-016",
+        "M-301",
+        "M-302",
+        "M-303-D1",
+        "M-303-D2",
+        "M-303-D3",
+        "M-303-D4",
+        "M-303-D5",
+        "M-303-D6",
+        "M-303-D7",
+        "M-101",
+        "M-102",
+        "M-103",
+        "M-104",
+        "M-105",
+        "M-201",
+        "M-202",
+        "M-203",
+        "M-204",
+        "M-205",
+        "M-304",
+        "M-305",
+        "M-306"
+      ],
+      "count": 37
+    }
+  },
+  "forbidden_metrics": [
+    {
+      "metric_id": "M-001",
+      "metric_name": "Exact F1 (all entities)",
+      "forbidden_for_scientific_use": true,
+      "forbidden_reasons": [
+        "NOT_INDEPENDENTLY_REGENERATED",
+        "NOT_SCIENTIFICALLY_ELIGIBLE"
+      ],
+      "current_epistemic_level": "REPRODUCED_IN_SHARED_RUN",
+      "regeneration_status": "NOT_INDEPENDENTLY_VERIFIED",
+      "shared_run_comparison": "MATCHED",
+      "independent_regeneration": false,
+      "scientifically_eligible": false,
+      "measurement_usability": "REPRODUCED_IN_SHARED_RUN",
+      "critical_path_for_matcher_discrimination": false,
+      "quarantine_severity": "PROVISIONAL"
+    },
+    {
+      "metric_id": "M-002",
+      "metric_name": "Token F1 (all entities)",
+      "forbidden_for_scientific_use": true,
+      "forbidden_reasons": [
+        "NOT_INDEPENDENTLY_REGENERATED",
+        "NOT_SCIENTIFICALLY_ELIGIBLE"
+      ],
+      "current_epistemic_level": "REPRODUCED_IN_SHARED_RUN",
+      "regeneration_status": "NOT_INDEPENDENTLY_VERIFIED",
+      "shared_run_comparison": "MATCHED",
+      "independent_regeneration": false,
+      "scientifically_eligible": false,
+      "measurement_usability": "REPRODUCED_IN_SHARED_RUN",
+      "critical_path_for_matcher_discrimination": false,
+      "quarantine_severity": "PROVISIONAL"
+    },
+    {
+      "metric_id": "M-003",
+      "metric_name": "Fuzzy F1 (all entities)",
+      "forbidden_for_scientific_use": true,
+      "forbidden_reasons": [
+        "NOT_INDEPENDENTLY_REGENERATED",
+        "NOT_SCIENTIFICALLY_ELIGIBLE"
+      ],
+      "current_epistemic_level": "REPRODUCED_IN_SHARED_RUN",
+      "regeneration_status": "NOT_INDEPENDENTLY_VERIFIED",
+      "shared_run_comparison": "MATCHED",
+      "independent_regeneration": false,
+      "scientifically_eligible": false,
+      "measurement_usability": "REPRODUCED_IN_SHARED_RUN",
+      "critical_path_for_matcher_discrimination": false,
+      "quarantine_severity": "PROVISIONAL"
+    },
+    {
+      "metric_id": "M-004",
+      "metric_name": "Synonym F1 (all entities)",
+      "forbidden_for_scientific_use": true,
+      "forbidden_reasons": [
+        "NOT_INDEPENDENTLY_REGENERATED",
+        "NOT_SCIENTIFICALLY_ELIGIBLE"
+      ],
+      "current_epistemic_level": "REPRODUCED_IN_SHARED_RUN",
+      "regeneration_status": "NOT_INDEPENDENTLY_VERIFIED",
+      "shared_run_comparison": "MATCHED",
+      "independent_regeneration": false,
+      "scientifically_eligible": false,
+      "measurement_usability": "REPRODUCED_IN_SHARED_RUN",
+      "critical_path_for_matcher_discrimination": true,
+      "quarantine_severity": "PROVISIONAL"
+    },
+    {
+      "metric_id": "M-005",
+      "metric_name": "Discovery F1 (shared, syn, DR-91)",
+      "forbidden_for_scientific_use": true,
+      "forbidden_reasons": [
+        "NOT_INDEPENDENTLY_REGENERATED",
+        "NOT_SCIENTIFICALLY_ELIGIBLE"
+      ],
+      "current_epistemic_level": "REPRODUCED_IN_SHARED_RUN",
+      "regeneration_status": "NOT_INDEPENDENTLY_VERIFIED",
+      "shared_run_comparison": "MATCHED",
+      "independent_regeneration": false,
+      "scientifically_eligible": false,
+      "measurement_usability": "REPRODUCED_IN_SHARED_RUN",
+      "critical_path_for_matcher_discrimination": true,
+      "quarantine_severity": "PROVISIONAL"
+    },
+    {
+      "metric_id": "M-006",
+      "metric_name": "Recognition F1 (all, syn, DR-91)",
+      "forbidden_for_scientific_use": true,
+      "forbidden_reasons": [
+        "NOT_INDEPENDENTLY_REGENERATED",
+        "NOT_SCIENTIFICALLY_ELIGIBLE"
+      ],
+      "current_epistemic_level": "REPRODUCED_IN_SHARED_RUN",
+      "regeneration_status": "NOT_INDEPENDENTLY_VERIFIED",
+      "shared_run_comparison": "MATCHED",
+      "independent_regeneration": false,
+      "scientifically_eligible": false,
+      "measurement_usability": "REPRODUCED_IN_SHARED_RUN",
+      "critical_path_for_matcher_discrimination": true,
+      "quarantine_severity": "PROVISIONAL"
+    },
+    {
+      "metric_id": "M-007",
+      "metric_name": "Proposal-locus inflation",
+      "forbidden_for_scientific_use": true,
+      "forbidden_reasons": [
+        "NOT_INDEPENDENTLY_REGENERATED",
+        "NOT_SCIENTIFICALLY_ELIGIBLE"
+      ],
+      "current_epistemic_level": "REPRODUCED_IN_SHARED_RUN",
+      "regeneration_status": "NOT_INDEPENDENTLY_VERIFIED",
+      "shared_run_comparison": "MATCHED",
+      "independent_regeneration": false,
+      "scientifically_eligible": false,
+      "measurement_usability": "REPRODUCED_IN_SHARED_RUN",
+      "critical_path_for_matcher_discrimination": true,
+      "quarantine_severity": "PROVISIONAL"
+    },
+    {
+      "metric_id": "M-008",
+      "metric_name": "FP floor (synonym)",
+      "forbidden_for_scientific_use": true,
+      "forbidden_reasons": [
+        "REGENERATION_FAILED",
+        "NOT_INDEPENDENTLY_REGENERATED",
+        "NOT_SCIENTIFICALLY_ELIGIBLE",
+        "QUARANTINED",
+        "SHARED_RUN_MISMATCHED"
+      ],
+      "current_epistemic_level": "QUARANTINED",
+      "regeneration_status": "FAILED",
+      "shared_run_comparison": "MISMATCHED",
+      "independent_regeneration": false,
+      "scientifically_eligible": false,
+      "measurement_usability": "QUARANTINED",
+      "critical_path_for_matcher_discrimination": true,
+      "quarantine_severity": "FULL"
+    },
+    {
+      "metric_id": "M-009",
+      "metric_name": "UNSAFE synonyms count",
+      "forbidden_for_scientific_use": true,
+      "forbidden_reasons": [
+        "NOT_INDEPENDENTLY_REGENERATED",
+        "NOT_SCIENTIFICALLY_ELIGIBLE"
+      ],
+      "current_epistemic_level": "REPRODUCED_IN_SHARED_RUN",
+      "regeneration_status": "NOT_INDEPENDENTLY_VERIFIED",
+      "shared_run_comparison": "MATCHED",
+      "independent_regeneration": false,
+      "scientifically_eligible": false,
+      "measurement_usability": "REPRODUCED_IN_SHARED_RUN",
+      "critical_path_for_matcher_discrimination": false,
+      "quarantine_severity": "PROVISIONAL"
+    },
+    {
+      "metric_id": "M-010",
+      "metric_name": "Per-proposal F1 (honest, lenient, ALL shared)",
+      "forbidden_for_scientific_use": true,
+      "forbidden_reasons": [
+        "NOT_INDEPENDENTLY_REGENERATED",
+        "NOT_SCIENTIFICALLY_ELIGIBLE"
+      ],
+      "current_epistemic_level": "REPRODUCED_IN_SHARED_RUN",
+      "regeneration_status": "NOT_INDEPENDENTLY_VERIFIED",
+      "shared_run_comparison": "MATCHED",
+      "independent_regeneration": false,
+      "scientifically_eligible": false,
+      "measurement_usability": "REPRODUCED_IN_SHARED_RUN",
+      "critical_path_for_matcher_discrimination": true,
+      "quarantine_severity": "PROVISIONAL"
+    },
+    {
+      "metric_id": "M-011",
+      "metric_name": "Per-proposal F1 (strict, honest)",
+      "forbidden_for_scientific_use": true,
+      "forbidden_reasons": [
+        "NOT_INDEPENDENTLY_REGENERATED",
+        "NOT_SCIENTIFICALLY_ELIGIBLE"
+      ],
+      "current_epistemic_level": "REPRODUCED_IN_SHARED_RUN",
+      "regeneration_status": "NOT_INDEPENDENTLY_VERIFIED",
+      "shared_run_comparison": "MATCHED",
+      "independent_regeneration": false,
+      "scientifically_eligible": false,
+      "measurement_usability": "REPRODUCED_IN_SHARED_RUN",
+      "critical_path_for_matcher_discrimination": true,
+      "quarantine_severity": "PROVISIONAL"
+    },
+    {
+      "metric_id": "M-012",
+      "metric_name": "Aggregate F1 (DR-91)",
+      "forbidden_for_scientific_use": true,
+      "forbidden_reasons": [
+        "NOT_INDEPENDENTLY_REGENERATED",
+        "NOT_SCIENTIFICALLY_ELIGIBLE"
+      ],
+      "current_epistemic_level": "REPRODUCED_IN_SHARED_RUN",
+      "regeneration_status": "NOT_INDEPENDENTLY_VERIFIED",
+      "shared_run_comparison": "MATCHED",
+      "independent_regeneration": false,
+      "scientifically_eligible": false,
+      "measurement_usability": "REPRODUCED_IN_SHARED_RUN",
+      "critical_path_for_matcher_discrimination": true,
+      "quarantine_severity": "PROVISIONAL"
+    },
+    {
+      "metric_id": "M-013",
+      "metric_name": "Aggregate F1 (honest)",
+      "forbidden_for_scientific_use": true,
+      "forbidden_reasons": [
+        "NOT_INDEPENDENTLY_REGENERATED",
+        "NOT_SCIENTIFICALLY_ELIGIBLE"
+      ],
+      "current_epistemic_level": "REPRODUCED_IN_SHARED_RUN",
+      "regeneration_status": "NOT_INDEPENDENTLY_VERIFIED",
+      "shared_run_comparison": "MATCHED",
+      "independent_regeneration": false,
+      "scientifically_eligible": false,
+      "measurement_usability": "REPRODUCED_IN_SHARED_RUN",
+      "critical_path_for_matcher_discrimination": true,
+      "quarantine_severity": "PROVISIONAL"
+    },
+    {
+      "metric_id": "M-014",
+      "metric_name": "BM25 recall@1 (lenient)",
+      "forbidden_for_scientific_use": true,
+      "forbidden_reasons": [
+        "NOT_INDEPENDENTLY_REGENERATED",
+        "NOT_SCIENTIFICALLY_ELIGIBLE"
+      ],
+      "current_epistemic_level": "REPRODUCED_IN_SHARED_RUN",
+      "regeneration_status": "NOT_INDEPENDENTLY_VERIFIED",
+      "shared_run_comparison": "MATCHED",
+      "independent_regeneration": false,
+      "scientifically_eligible": false,
+      "measurement_usability": "REPRODUCED_IN_SHARED_RUN",
+      "critical_path_for_matcher_discrimination": false,
+      "quarantine_severity": "PROVISIONAL"
+    },
+    {
+      "metric_id": "M-015",
+      "metric_name": "Random baseline F1 (lenient)",
+      "forbidden_for_scientific_use": true,
+      "forbidden_reasons": [
+        "NOT_INDEPENDENTLY_REGENERATED",
+        "NOT_SCIENTIFICALLY_ELIGIBLE"
+      ],
+      "current_epistemic_level": "REPRODUCED_IN_SHARED_RUN",
+      "regeneration_status": "NOT_INDEPENDENTLY_VERIFIED",
+      "shared_run_comparison": "MATCHED",
+      "independent_regeneration": false,
+      "scientifically_eligible": false,
+      "measurement_usability": "REPRODUCED_IN_SHARED_RUN",
+      "critical_path_for_matcher_discrimination": true,
+      "quarantine_severity": "PROVISIONAL"
+    },
+    {
+      "metric_id": "M-016",
+      "metric_name": "Frequency baseline F1 (lenient)",
+      "forbidden_for_scientific_use": true,
+      "forbidden_reasons": [
+        "NOT_INDEPENDENTLY_REGENERATED",
+        "NOT_SCIENTIFICALLY_ELIGIBLE"
+      ],
+      "current_epistemic_level": "REPRODUCED_IN_SHARED_RUN",
+      "regeneration_status": "NOT_INDEPENDENTLY_VERIFIED",
+      "shared_run_comparison": "MATCHED",
+      "independent_regeneration": false,
+      "scientifically_eligible": false,
+      "measurement_usability": "REPRODUCED_IN_SHARED_RUN",
+      "critical_path_for_matcher_discrimination": false,
+      "quarantine_severity": "PROVISIONAL"
+    },
+    {
+      "metric_id": "M-301",
+      "metric_name": "AI surrogate accept rate",
+      "forbidden_for_scientific_use": true,
+      "forbidden_reasons": [
+        "NOT_INDEPENDENTLY_REGENERATED",
+        "NOT_SCIENTIFICALLY_ELIGIBLE"
+      ],
+      "current_epistemic_level": "REPRODUCED_IN_SHARED_RUN",
+      "regeneration_status": "NOT_INDEPENDENTLY_VERIFIED",
+      "shared_run_comparison": "MATCHED",
+      "independent_regeneration": false,
+      "scientifically_eligible": false,
+      "measurement_usability": "REPRODUCED_IN_SHARED_RUN",
+      "critical_path_for_matcher_discrimination": false,
+      "quarantine_severity": "PROVISIONAL"
+    },
+    {
+      "metric_id": "M-302",
+      "metric_name": "AI surrogate overall mean score",
+      "forbidden_for_scientific_use": true,
+      "forbidden_reasons": [
+        "NOT_INDEPENDENTLY_REGENERATED",
+        "NOT_SCIENTIFICALLY_ELIGIBLE"
+      ],
+      "current_epistemic_level": "REPRODUCED_IN_SHARED_RUN",
+      "regeneration_status": "NOT_INDEPENDENTLY_VERIFIED",
+      "shared_run_comparison": "MATCHED",
+      "independent_regeneration": false,
+      "scientifically_eligible": false,
+      "measurement_usability": "REPRODUCED_IN_SHARED_RUN",
+      "critical_path_for_matcher_discrimination": false,
+      "quarantine_severity": "PROVISIONAL"
+    },
+    {
+      "metric_id": "M-303-D1",
+      "metric_name": "AI surrogate D1 mean",
+      "forbidden_for_scientific_use": true,
+      "forbidden_reasons": [
+        "NOT_INDEPENDENTLY_REGENERATED",
+        "NOT_SCIENTIFICALLY_ELIGIBLE"
+      ],
+      "current_epistemic_level": "REPRODUCED_IN_SHARED_RUN",
+      "regeneration_status": "NOT_INDEPENDENTLY_VERIFIED",
+      "shared_run_comparison": "MATCHED",
+      "independent_regeneration": false,
+      "scientifically_eligible": false,
+      "measurement_usability": "REPRODUCED_IN_SHARED_RUN",
+      "critical_path_for_matcher_discrimination": false,
+      "quarantine_severity": "PROVISIONAL"
+    },
+    {
+      "metric_id": "M-303-D2",
+      "metric_name": "AI surrogate D2 mean",
+      "forbidden_for_scientific_use": true,
+      "forbidden_reasons": [
+        "NOT_INDEPENDENTLY_REGENERATED",
+        "NOT_SCIENTIFICALLY_ELIGIBLE"
+      ],
+      "current_epistemic_level": "REPRODUCED_IN_SHARED_RUN",
+      "regeneration_status": "NOT_INDEPENDENTLY_VERIFIED",
+      "shared_run_comparison": "MATCHED",
+      "independent_regeneration": false,
+      "scientifically_eligible": false,
+      "measurement_usability": "REPRODUCED_IN_SHARED_RUN",
+      "critical_path_for_matcher_discrimination": false,
+      "quarantine_severity": "PROVISIONAL"
+    },
+    {
+      "metric_id": "M-303-D3",
+      "metric_name": "AI surrogate D3 mean",
+      "forbidden_for_scientific_use": true,
+      "forbidden_reasons": [
+        "NOT_INDEPENDENTLY_REGENERATED",
+        "NOT_SCIENTIFICALLY_ELIGIBLE"
+      ],
+      "current_epistemic_level": "REPRODUCED_IN_SHARED_RUN",
+      "regeneration_status": "NOT_INDEPENDENTLY_VERIFIED",
+      "shared_run_comparison": "MATCHED",
+      "independent_regeneration": false,
+      "scientifically_eligible": false,
+      "measurement_usability": "REPRODUCED_IN_SHARED_RUN",
+      "critical_path_for_matcher_discrimination": false,
+      "quarantine_severity": "PROVISIONAL"
+    },
+    {
+      "metric_id": "M-303-D4",
+      "metric_name": "AI surrogate D4 mean",
+      "forbidden_for_scientific_use": true,
+      "forbidden_reasons": [
+        "NOT_INDEPENDENTLY_REGENERATED",
+        "NOT_SCIENTIFICALLY_ELIGIBLE"
+      ],
+      "current_epistemic_level": "REPRODUCED_IN_SHARED_RUN",
+      "regeneration_status": "NOT_INDEPENDENTLY_VERIFIED",
+      "shared_run_comparison": "MATCHED",
+      "independent_regeneration": false,
+      "scientifically_eligible": false,
+      "measurement_usability": "REPRODUCED_IN_SHARED_RUN",
+      "critical_path_for_matcher_discrimination": false,
+      "quarantine_severity": "PROVISIONAL"
+    },
+    {
+      "metric_id": "M-303-D5",
+      "metric_name": "AI surrogate D5 mean",
+      "forbidden_for_scientific_use": true,
+      "forbidden_reasons": [
+        "NOT_INDEPENDENTLY_REGENERATED",
+        "NOT_SCIENTIFICALLY_ELIGIBLE"
+      ],
+      "current_epistemic_level": "REPRODUCED_IN_SHARED_RUN",
+      "regeneration_status": "NOT_INDEPENDENTLY_VERIFIED",
+      "shared_run_comparison": "MATCHED",
+      "independent_regeneration": false,
+      "scientifically_eligible": false,
+      "measurement_usability": "REPRODUCED_IN_SHARED_RUN",
+      "critical_path_for_matcher_discrimination": false,
+      "quarantine_severity": "PROVISIONAL"
+    },
+    {
+      "metric_id": "M-303-D6",
+      "metric_name": "AI surrogate D6 mean",
+      "forbidden_for_scientific_use": true,
+      "forbidden_reasons": [
+        "NOT_INDEPENDENTLY_REGENERATED",
+        "NOT_SCIENTIFICALLY_ELIGIBLE"
+      ],
+      "current_epistemic_level": "REPRODUCED_IN_SHARED_RUN",
+      "regeneration_status": "NOT_INDEPENDENTLY_VERIFIED",
+      "shared_run_comparison": "MATCHED",
+      "independent_regeneration": false,
+      "scientifically_eligible": false,
+      "measurement_usability": "REPRODUCED_IN_SHARED_RUN",
+      "critical_path_for_matcher_discrimination": false,
+      "quarantine_severity": "PROVISIONAL"
+    },
+    {
+      "metric_id": "M-303-D7",
+      "metric_name": "AI surrogate D7 mean",
+      "forbidden_for_scientific_use": true,
+      "forbidden_reasons": [
+        "NOT_INDEPENDENTLY_REGENERATED",
+        "NOT_SCIENTIFICALLY_ELIGIBLE"
+      ],
+      "current_epistemic_level": "REPRODUCED_IN_SHARED_RUN",
+      "regeneration_status": "NOT_INDEPENDENTLY_VERIFIED",
+      "shared_run_comparison": "MATCHED",
+      "independent_regeneration": false,
+      "scientifically_eligible": false,
+      "measurement_usability": "REPRODUCED_IN_SHARED_RUN",
+      "critical_path_for_matcher_discrimination": false,
+      "quarantine_severity": "PROVISIONAL"
+    },
+    {
+      "metric_id": "M-101",
+      "metric_name": "Gen 1 Document Parsing F1",
+      "forbidden_for_scientific_use": true,
+      "forbidden_reasons": [
+        "NOT_INDEPENDENTLY_REGENERATED",
+        "NOT_SCIENTIFICALLY_ELIGIBLE"
+      ],
+      "current_epistemic_level": "REPRODUCED_IN_SHARED_RUN",
+      "regeneration_status": "NOT_INDEPENDENTLY_VERIFIED",
+      "shared_run_comparison": "MATCHED",
+      "independent_regeneration": false,
+      "scientifically_eligible": false,
+      "measurement_usability": "REPRODUCED_IN_SHARED_RUN",
+      "critical_path_for_matcher_discrimination": false,
+      "quarantine_severity": "PROVISIONAL"
+    },
+    {
+      "metric_id": "M-102",
+      "metric_name": "Gen 2 Entity Extraction F1",
+      "forbidden_for_scientific_use": true,
+      "forbidden_reasons": [
+        "NOT_INDEPENDENTLY_REGENERATED",
+        "NOT_SCIENTIFICALLY_ELIGIBLE"
+      ],
+      "current_epistemic_level": "REPRODUCED_IN_SHARED_RUN",
+      "regeneration_status": "NOT_INDEPENDENTLY_VERIFIED",
+      "shared_run_comparison": "MATCHED",
+      "independent_regeneration": false,
+      "scientifically_eligible": false,
+      "measurement_usability": "REPRODUCED_IN_SHARED_RUN",
+      "critical_path_for_matcher_discrimination": false,
+      "quarantine_severity": "PROVISIONAL"
+    },
+    {
+      "metric_id": "M-103",
+      "metric_name": "Gen 3 Relation Extraction F1",
+      "forbidden_for_scientific_use": true,
+      "forbidden_reasons": [
+        "NOT_INDEPENDENTLY_REGENERATED",
+        "NOT_SCIENTIFICALLY_ELIGIBLE"
+      ],
+      "current_epistemic_level": "REPRODUCED_IN_SHARED_RUN",
+      "regeneration_status": "NOT_INDEPENDENTLY_VERIFIED",
+      "shared_run_comparison": "MATCHED",
+      "independent_regeneration": false,
+      "scientifically_eligible": false,
+      "measurement_usability": "REPRODUCED_IN_SHARED_RUN",
+      "critical_path_for_matcher_discrimination": false,
+      "quarantine_severity": "PROVISIONAL"
+    },
+    {
+      "metric_id": "M-104",
+      "metric_name": "Gen 4 Mechanism Extraction F1",
+      "forbidden_for_scientific_use": true,
+      "forbidden_reasons": [
+        "NOT_INDEPENDENTLY_REGENERATED",
+        "NOT_SCIENTIFICALLY_ELIGIBLE"
+      ],
+      "current_epistemic_level": "REPRODUCED_IN_SHARED_RUN",
+      "regeneration_status": "NOT_INDEPENDENTLY_VERIFIED",
+      "shared_run_comparison": "MATCHED",
+      "independent_regeneration": false,
+      "scientifically_eligible": false,
+      "measurement_usability": "REPRODUCED_IN_SHARED_RUN",
+      "critical_path_for_matcher_discrimination": false,
+      "quarantine_severity": "PROVISIONAL"
+    },
+    {
+      "metric_id": "M-105",
+      "metric_name": "Gen 5 Discovery Layer F1",
+      "forbidden_for_scientific_use": true,
+      "forbidden_reasons": [
+        "NOT_INDEPENDENTLY_REGENERATED",
+        "NOT_SCIENTIFICALLY_ELIGIBLE"
+      ],
+      "current_epistemic_level": "REPRODUCED_IN_SHARED_RUN",
+      "regeneration_status": "NOT_INDEPENDENTLY_VERIFIED",
+      "shared_run_comparison": "MATCHED",
+      "independent_regeneration": false,
+      "scientifically_eligible": false,
+      "measurement_usability": "REPRODUCED_IN_SHARED_RUN",
+      "critical_path_for_matcher_discrimination": false,
+      "quarantine_severity": "PROVISIONAL"
+    },
+    {
+      "metric_id": "M-201",
+      "metric_name": "L5a held-out beats (count / 10)",
+      "forbidden_for_scientific_use": true,
+      "forbidden_reasons": [
+        "NOT_INDEPENDENTLY_REGENERATED",
+        "NOT_SCIENTIFICALLY_ELIGIBLE"
+      ],
+      "current_epistemic_level": "REPRODUCED_IN_SHARED_RUN",
+      "regeneration_status": "NOT_INDEPENDENTLY_VERIFIED",
+      "shared_run_comparison": "MATCHED",
+      "independent_regeneration": false,
+      "scientifically_eligible": false,
+      "measurement_usability": "REPRODUCED_IN_SHARED_RUN",
+      "critical_path_for_matcher_discrimination": false,
+      "quarantine_severity": "PROVISIONAL"
+    },
+    {
+      "metric_id": "M-202",
+      "metric_name": "L5b held-out beats (count / 10) \u2014 same data as M-201",
+      "forbidden_for_scientific_use": true,
+      "forbidden_reasons": [
+        "NOT_INDEPENDENTLY_REGENERATED",
+        "NOT_SCIENTIFICALLY_ELIGIBLE"
+      ],
+      "current_epistemic_level": "REPRODUCED_IN_SHARED_RUN",
+      "regeneration_status": "NOT_INDEPENDENTLY_VERIFIED",
+      "shared_run_comparison": "MATCHED",
+      "independent_regeneration": false,
+      "scientifically_eligible": false,
+      "measurement_usability": "REPRODUCED_IN_SHARED_RUN",
+      "critical_path_for_matcher_discrimination": false,
+      "quarantine_severity": "PROVISIONAL"
+    },
+    {
+      "metric_id": "M-203",
+      "metric_name": "L5b+Synthesis held-out beats (count / 10, single seed)",
+      "forbidden_for_scientific_use": true,
+      "forbidden_reasons": [
+        "NOT_INDEPENDENTLY_REGENERATED",
+        "NOT_SCIENTIFICALLY_ELIGIBLE"
+      ],
+      "current_epistemic_level": "REPRODUCED_IN_SHARED_RUN",
+      "regeneration_status": "NOT_INDEPENDENTLY_VERIFIED",
+      "shared_run_comparison": "MATCHED",
+      "independent_regeneration": false,
+      "scientifically_eligible": false,
+      "measurement_usability": "REPRODUCED_IN_SHARED_RUN",
+      "critical_path_for_matcher_discrimination": false,
+      "quarantine_severity": "PROVISIONAL"
+    },
+    {
+      "metric_id": "M-204",
+      "metric_name": "Multi-seed mean held-out beats (N=5 seeds)",
+      "forbidden_for_scientific_use": true,
+      "forbidden_reasons": [
+        "NOT_INDEPENDENTLY_REGENERATED",
+        "NOT_SCIENTIFICALLY_ELIGIBLE"
+      ],
+      "current_epistemic_level": "REPRODUCED_IN_SHARED_RUN",
+      "regeneration_status": "NOT_INDEPENDENTLY_VERIFIED",
+      "shared_run_comparison": "MATCHED",
+      "independent_regeneration": false,
+      "scientifically_eligible": false,
+      "measurement_usability": "REPRODUCED_IN_SHARED_RUN",
+      "critical_path_for_matcher_discrimination": false,
+      "quarantine_severity": "PROVISIONAL"
+    },
+    {
+      "metric_id": "M-205",
+      "metric_name": "Composite selection rate",
+      "forbidden_for_scientific_use": true,
+      "forbidden_reasons": [
+        "NOT_INDEPENDENTLY_REGENERATED",
+        "NOT_SCIENTIFICALLY_ELIGIBLE"
+      ],
+      "current_epistemic_level": "REPRODUCED_IN_SHARED_RUN",
+      "regeneration_status": "NOT_INDEPENDENTLY_VERIFIED",
+      "shared_run_comparison": "MATCHED",
+      "independent_regeneration": false,
+      "scientifically_eligible": false,
+      "measurement_usability": "REPRODUCED_IN_SHARED_RUN",
+      "critical_path_for_matcher_discrimination": false,
+      "quarantine_severity": "PROVISIONAL"
+    },
+    {
+      "metric_id": "M-304",
+      "metric_name": "Inter-rater agreement rate",
+      "forbidden_for_scientific_use": true,
+      "forbidden_reasons": [
+        "NOT_INDEPENDENTLY_REGENERATED",
+        "NOT_SCIENTIFICALLY_ELIGIBLE"
+      ],
+      "current_epistemic_level": "REPRODUCED_IN_SHARED_RUN",
+      "regeneration_status": "NOT_INDEPENDENTLY_VERIFIED",
+      "shared_run_comparison": "MATCHED",
+      "independent_regeneration": false,
+      "scientifically_eligible": false,
+      "measurement_usability": "REPRODUCED_IN_SHARED_RUN",
+      "critical_path_for_matcher_discrimination": false,
+      "quarantine_severity": "PROVISIONAL"
+    },
+    {
+      "metric_id": "M-305",
+      "metric_name": "Self-validation bias (mean residual)",
+      "forbidden_for_scientific_use": true,
+      "forbidden_reasons": [
+        "NOT_INDEPENDENTLY_REGENERATED",
+        "NOT_SCIENTIFICALLY_ELIGIBLE"
+      ],
+      "current_epistemic_level": "REPRODUCED_IN_SHARED_RUN",
+      "regeneration_status": "NOT_INDEPENDENTLY_VERIFIED",
+      "shared_run_comparison": "MATCHED",
+      "independent_regeneration": false,
+      "scientifically_eligible": false,
+      "measurement_usability": "REPRODUCED_IN_SHARED_RUN",
+      "critical_path_for_matcher_discrimination": false,
+      "quarantine_severity": "PROVISIONAL"
+    },
+    {
+      "metric_id": "M-306",
+      "metric_name": "Expected Calibration Error (ECE)",
+      "forbidden_for_scientific_use": true,
+      "forbidden_reasons": [
+        "NOT_INDEPENDENTLY_REGENERATED",
+        "NOT_SCIENTIFICALLY_ELIGIBLE"
+      ],
+      "current_epistemic_level": "REPRODUCED_IN_SHARED_RUN",
+      "regeneration_status": "NOT_INDEPENDENTLY_VERIFIED",
+      "shared_run_comparison": "MATCHED",
+      "independent_regeneration": false,
+      "scientifically_eligible": false,
+      "measurement_usability": "REPRODUCED_IN_SHARED_RUN",
+      "critical_path_for_matcher_discrimination": false,
+      "quarantine_severity": "PROVISIONAL"
+    }
+  ],
+  "compliance_report_status": {
+    "historical_report": "reports/measurement_constitution_m8.json",
+    "historical_verdict": "PASS",
+    "historical_all_pass": true,
+    "current_status": "STALE \u2014 the historical compliance report was generated before Phase 3 found the M-008 regeneration failure. It reports 304/304 checks PASS, but this is no longer accurate. M-008 is now quarantined. The compliance report must be regenerated after M-008 reconciliation.",
+    "note": "The historical compliance report is preserved (MC-6: no metric may be silently altered). It is not modified or deleted. It is marked STALE because it does not reflect the current epistemic state."
+  },
+  "machine_enforced": true,
+  "no_retroactive_repair": true,
+  "no_value_deletion": true,
+  "no_value_replacement": true,
+  "no_value_averaging": true,
+  "governing_principle": "No metric may be used in a scientific decision until it is SCIENTIFICALLY_ELIGIBLE, which requires independent regeneration (not shared-run matching). Absence of a failed regeneration is not evidence of successful regeneration."
+}

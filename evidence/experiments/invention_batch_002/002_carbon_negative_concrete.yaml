@@ -1,0 +1,283 @@
+problem: "Manufacture concrete that absorbs more CO2 over its lifecycle than it emits during production"
+domain: "materials"
+hypothesis:
+  id: "hyp_1b5b961f1bc36373"
+  claim: "The invention 'Manufacture concrete that absorbs more CO2 over its lifecycle than it emits during production' is feasible in the materials domain within the stated time horizon."
+  confidence: 0.5463
+  evidence:
+    - "energy_conservation"
+    - "meissner_effect"
+    - "schrodinger_equation"
+    - "third_law_thermodynamics"
+    - "calcination_cement"
+    - "carbonation_cure"
+    - "polymerization"
+    - "ampere law"
+    - "capex_$22.68M"
+  counterevidence:
+
+  assumptions:
+
+  status: "pending"
+physical_laws:
+  - "energy_conservation"
+  - "meissner_effect"
+  - "schrodinger_equation"
+  - "third_law_thermodynamics"
+chemical_principles:
+  pathways:
+    - "calcination_cement"
+    - "carbonation_cure"
+    - "polymerization"
+  kinetics:
+
+  equilibrium:
+
+  energy_states:
+    - "gibbs_free_energy"
+mathematical_formulation:
+  structures:
+    - "optimization"
+    - "differential_equations"
+    - "linear_algebra"
+    - "quantum_mechanics"
+  governing_equations:
+    -
+      name: "ampere law"
+      form: "B = mu_0 * I / (2*pi*r)"
+      variables:
+        - "B"
+        - "mu_0"
+        - "I"
+        - "r"
+constraints:
+  - "cost"
+  - "material"
+  - "regulation"
+  - "manufacturing"
+  - "carbon_negative"
+dependencies:
+  prerequisites:
+
+  missing_capabilities:
+
+  causal_classifications:
+    necessary: 0
+    sufficient: 0
+    contributing: 0
+    unknown: 0
+assumptions:
+  - "Failure modes are derived from constraint keywords via a small prior map. Real failure modes require FMEA."
+  - "Optimization targets are derived from the problem's stated constraints. Implicit targets (e.g., 'minimize complexity') are not captured."
+  - "The hypothesis is a prediction. It is NOT verified until the experiments are run and outcomes recorded in the ledger."
+  - "Failure-mode experiments are derived from Layer 3's failure modes. If Layer 3 is incomplete, this layer is incomplete."
+  - "Success/failure thresholds (0.70, 0.40) are priors. They should be recalibrated as the verification cycle accumulates outcomes."
+architecture:
+  subsystems:
+    - "subsystem_for_cost"
+    - "subsystem_for_material"
+    - "subsystem_for_regulation"
+    - "subsystem_for_manufacturing"
+  interfaces:
+    - "subsystem_for_cost <-> subsystem_for_material"
+    - "subsystem_for_cost <-> subsystem_for_regulation"
+    - "subsystem_for_cost <-> subsystem_for_manufacturing"
+    - "subsystem_for_material <-> subsystem_for_regulation"
+    - "subsystem_for_material <-> subsystem_for_manufacturing"
+  tolerances:
+    cost: "±15% of capex estimate"
+    material: "±5% of material property target"
+    regulation: "binary (pass/fail)"
+    manufacturing: "±3% yield"
+simulation:
+  monte_carlo:
+    n_samples: 200
+    composite:
+      mean: 0.5496
+      std: 0.0254
+      p5: 0.5067
+      p50: 0.5495
+      p95: 0.5911
+      min: 0.486
+      max: 0.6084
+    technical:
+      mean: 0.664
+      std: 0.0577
+      p5: 0.5696
+      p50: 0.6754
+      p95: 0.7488
+      min: 0.5542
+      max: 0.7535
+    economic:
+      mean: 0.5165
+      std: 0.0575
+      p5: 0.4288
+      p50: 0.5182
+      p95: 0.6114
+      min: 0.4197
+      max: 0.618
+    regulatory:
+      mean: 0.4657
+      std: 0.0551
+      p5: 0.3772
+      p50: 0.4678
+      p95: 0.5528
+      min: 0.3646
+      max: 0.5623
+    manufacturing:
+      mean: 0.5333
+      std: 0.0584
+      p5: 0.4478
+      p50: 0.535
+      p95: 0.6229
+      min: 0.4338
+      max: 0.6334
+    adoption:
+      mean: 0.4705
+      std: 0.0589
+      p5: 0.3779
+      p50: 0.4721
+      p95: 0.5599
+      min: 0.3686
+      max: 0.5682
+  sensitivity:
+    technical: 0.6815
+    economic: 0.4528
+    regulatory: 0.3254
+    manufacturing: 0.4598
+    adoption: 0.3478
+  stress_testing:
+    -
+      technical_feasibility: 0.5696
+      economic_feasibility: 0.4265
+      regulatory_feasibility: 0.4499
+      manufacturing_feasibility: 0.498
+      adoption_probability: 0.4186
+      composite: 0.486
+    -
+      technical_feasibility: 0.5976
+      economic_feasibility: 0.4624
+      regulatory_feasibility: 0.4507
+      manufacturing_feasibility: 0.4393
+      adoption_probability: 0.4357
+      composite: 0.4926
+    -
+      technical_feasibility: 0.5677
+      economic_feasibility: 0.4661
+      regulatory_feasibility: 0.4973
+      manufacturing_feasibility: 0.4763
+      adoption_probability: 0.395
+      composite: 0.4926
+prototype_plan:
+  v1:
+    name: "prototype_v1_physics_validation"
+    goal: "prove the core mechanism works at lab scale"
+    scope: "single subsystem, no integration, no manufacturability"
+    success_threshold: "core mechanism reproduces predicted output within 30%"
+    estimated_duration_months: 6
+    estimated_cost_usd_m: 0.27
+  v2:
+    name: "prototype_v2_engineering_integration"
+    goal: "prove the subsystems integrate into a working system"
+    scope: "all subsystems, no manufacturing pathway, no regulatory submission"
+    success_threshold: "integrated prototype meets primary_output spec at 50% of target performance"
+    estimated_duration_months: 12
+    estimated_cost_usd_m: 1.09
+  v3:
+    name: "prototype_v3_production_readiness"
+    goal: "prove the manufacturing pathway and cost model hold"
+    scope: "production-intent prototype, pilot manufacturing run, regulatory pre-submission"
+    success_threshold: "unit cost within 2x of cost_curve target; regulatory pre-submission accepted"
+    estimated_duration_months: 18
+    estimated_cost_usd_m: 4.37
+  timeline_years: 3.0
+experimental_plan:
+  hypothesis: "The candidate invention will achieve technical feasibility >= 0.70 within 5-10 years, given the prerequisite chain is complete and no regulatory blocker materializes."
+  experiments:
+    -
+      id: "exp_cost_overrun"
+      purpose: "determine whether cost_overrun is a real risk"
+      method: "stress_test_against_cost_overrun"
+      expected_duration: "3-6 months per experiment"
+    -
+      id: "exp_material_unavailable_or_too_expensive"
+      purpose: "determine whether material_unavailable_or_too_expensive is a real risk"
+      method: "stress_test_against_material_unavailable_or_too_expensive"
+      expected_duration: "3-6 months per experiment"
+    -
+      id: "exp_regulatory_rejection"
+      purpose: "determine whether regulatory_rejection is a real risk"
+      method: "stress_test_against_regulatory_rejection"
+      expected_duration: "3-6 months per experiment"
+    -
+      id: "exp_manufacturing_yield_too_low"
+      purpose: "determine whether manufacturing_yield_too_low is a real risk"
+      method: "stress_test_against_manufacturing_yield_too_low"
+      expected_duration: "3-6 months per experiment"
+    -
+      id: "exp_prototype_v1"
+      purpose: "determine whether the candidate can be built at all"
+      method: "build_minimum_viable_prototype"
+      expected_duration: "6-12 months"
+  measurements:
+    -
+      metric: "technical_feasibility_observed"
+      target: ">= 0.70"
+      instrument: "expert_panel_review"
+    -
+      metric: "cost_per_unit_observed"
+      target: "<= capex_estimate / 1000"
+      instrument: "cost_accounting"
+    -
+      metric: "time_to_first_prototype_observed"
+      target: "<= 5-10 years"
+      instrument: "project_tracker"
+    -
+      metric: "regulatory_approval_status"
+      target: "approved_or_withdrawn"
+      instrument: "regulatory_filing_tracker"
+  success_criteria:
+    - "All failure-mode experiments return 'risk_acceptable'."
+    - "Prototype v1 builds successfully and meets primary_output spec."
+    - "Technical feasibility observed >= 0.70 within 5-10 years."
+    - "Composite feasibility from simulation's p50 >= 0.60."
+  failure_criteria:
+    - "Any failure-mode experiment returns 'risk_unacceptable' AND no mitigation is identified."
+    - "Prototype v1 cannot be built within 2x the estimated time."
+    - "Technical feasibility observed < 0.40 after 5-10 years."
+    - "Regulatory approval is denied with no appeal path."
+failure_modes:
+  - "cost_overrun"
+  - "material_unavailable_or_too_expensive"
+  - "regulatory_rejection"
+  - "manufacturing_yield_too_low"
+  - "stress_scenario_composite=0.486"
+  - "stress_scenario_composite=0.4926"
+counterevidence:
+
+confidence: 0.5463
+final_blueprint:
+  problem: "Manufacture concrete that absorbs more CO2 over its lifecycle than it emits during production"
+  domain: "materials"
+  target_invention: "Manufacture concrete that absorbs more CO2 over its lifecycle than it emits during production"
+  prerequisite_chain_depth: 0
+  governing_equations:
+    -
+      name: "ampere law"
+      form: "B = mu_0 * I / (2*pi*r)"
+      variables:
+        - "B"
+        - "mu_0"
+        - "I"
+        - "r"
+  subsystems:
+    - "subsystem_for_cost"
+    - "subsystem_for_material"
+    - "subsystem_for_regulation"
+    - "subsystem_for_manufacturing"
+  composite_feasibility: 22.68
+  prototype_stages:
+    - "prototype_v1_physics_validation"
+    - "prototype_v2_engineering_integration"
+    - "prototype_v3_production_readiness"
+  total_prototype_timeline_years: 3.0

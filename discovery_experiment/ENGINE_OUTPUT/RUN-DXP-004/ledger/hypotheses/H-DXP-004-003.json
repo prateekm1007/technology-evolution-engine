@@ -1,0 +1,33 @@
+{
+  "hypothesis_id": "H-DXP-004-003",
+  "claim": "Directional microstructures reduce drag primarily by inhibiting biofilm formation and reducing surface roughness effects.",
+  "mechanism": "The microstructures prevent biofilm attachment by creating a surface that is difficult for microorganisms to colonize. Additionally, the aligned features reduce the effective surface roughness compared to random roughness, which would increase drag.",
+  "evidence": [
+    "Fish skin reduces biofouling through surface structure",
+    "Biofilms can increase pipe friction by 20-80%",
+    "Aligned surface features reduce roughness effects"
+  ],
+  "assumptions": [
+    "Biofilm formation is a significant contributor to drag in water pipes",
+    "Microstructures can consistently prevent biofilm attachment",
+    "Aligned features are less drag-inducing than random roughness"
+  ],
+  "predictions": [],
+  "expected_failure_modes": [
+    "Biofilm accumulation in feature valleys",
+    "Increased roughness from feature damage",
+    "Reduced effectiveness in water with high organic content"
+  ],
+  "novelty_rationale": "This hypothesis focuses on biofilm inhibition and surface roughness effects rather than direct flow modification.",
+  "testability": "Can be tested by comparing biofilm accumulation and surface roughness measurements between smooth and microstructured pipes after operational periods.",
+  "falsifier": "If microstructured pipes show similar biofilm accumulation to smooth pipes but still maintain reduced drag, this hypothesis is wrong.",
+  "epistemic_state": "HYPOTHESIZED",
+  "parent_hypothesis_ids": [],
+  "provenance": {
+    "nodes": {},
+    "edges": [],
+    "committed_hash": null
+  },
+  "is_testable": true,
+  "provenance_root_hash": ""
+}

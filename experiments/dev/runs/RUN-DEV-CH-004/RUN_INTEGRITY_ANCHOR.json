@@ -1,0 +1,16 @@
+{
+  "schema_version": 3,
+  "run_id": "RUN-DEV-CH-004",
+  "manifest_sha256": "99e6056637fd321804559ab8544c268af32be16e72de0a9b8aaa32919237346c",
+  "ledger_index_sha256": "bb2e340649673c4b520341e92354c55a08a2d1e6446c230a70ad9b6e3feb008e",
+  "ledger_inventory_sha256": "728186016a947ede0bfa96e0f2e31ff057efe18bfc5d8fef2b6c3c76c47ca6cb",
+  "freeze_record_sha256": "6a7f9d66689ca3ca08044c5da801176a2b9f61efe5b2b4de3f85e25b04c71e7d",
+  "stage_inventory_sha256": "b5c9f0612e8e14eb1bb01f7ac84241f93d2b869ad2b4a089443c28b07138e9e8",
+  "engine_commit_sha": "7c7da713eedf1f61714252efe3e2b4573f764b72",
+  "engine_source_manifest_sha256": "064aa548de5113e9f564516d5766a71943c9e97f01cffa8a75dfd86649b4e070",
+  "working_tree_clean": false,
+  "working_tree_status_sha256": "e619d01276230e90c5cbf93abef635166605c474fef7c593e9556615c06733f8",
+  "created_at": "2026-08-08T09:12:29.260229+00:00",
+  "note": "RUN_INTEGRITY_ANCHOR \u2014 the external root of trust. engine_commit_sha = the Git commit whose engine source produced this run. engine_source_manifest_sha256 = deterministic hash of engine source files at run time. The run-record commit is NOT self-referential; it is supplied externally by the auditor via the record_commit parameter to verify_run_integrity_anchor(). An auditor verifies: anchor self-hash, engine commit exists + contains expected source, committed anchor at record_commit matches, all mutable files match.",
+  "anchor_sha256": "fed7d55d9bd68d25b4b09e9c790abea1792efd7383658a0f64d549120ff27c87"
+}

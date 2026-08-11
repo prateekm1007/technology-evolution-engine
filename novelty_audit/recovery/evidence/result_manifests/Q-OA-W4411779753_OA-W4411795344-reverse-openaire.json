@@ -1,0 +1,110 @@
+{
+  "query_id": "Q-OA-W4411779753_OA-W4411795344-reverse-openaire",
+  "pair_id": "OA-W4411779753_OA-W4411795344",
+  "query_type": "reverse",
+  "provider": "openaire",
+  "query_text": "situ hollow spectroscopy formation species kinetics",
+  "query_hash": "0e7e663e9248414d1a28396e08f6af011abbf17d9742553be9bc18e3137f326f",
+  "frozen_query_ref": "Q-OA-W4411779753_OA-W4411795344-reverse-openalex",
+  "url": "https://api.openaire.eu/search/publications?keywords=situ+hollow+spectroscopy+formation+species+kinetics&size=10&format=json",
+  "timestamp_utc": "2026-08-11T12:27:56.064449+00:00",
+  "status": "SUCCESS",
+  "result_count": 5,
+  "result_ids": [
+    [
+      {
+        "$": "10.1007/s10975-005-0073-0"
+      },
+      {
+        "$": "50|doiboost____|221bc69a66d71aab8656b3b08fba6871"
+      },
+      {
+        "$": "1980158672"
+      },
+      {
+        "$": "50|od______1874::697af2cf52da35c119a9f71fa0f8050e"
+      },
+      {
+        "$": "oai:pure.mpg.de:item_738901"
+      }
+    ],
+    [
+      {
+        "$": "10.1002/smll.202411665"
+      },
+      {
+        "$": "50|doiboost____|12e30a05877ef1a30433673ff19292e4"
+      },
+      {
+        "$": "39916598"
+      }
+    ],
+    [
+      {
+        "$": "10.1021/acs.inorgchem.4c05367"
+      },
+      {
+        "$": "50|doiboost____|200456e1f222a8a5ccc62c09b2d08268"
+      },
+      {
+        "$": "39912425"
+      }
+    ],
+    [
+      {
+        "$": "10.1149/ma2025-02391850mtgabs"
+      },
+      {
+        "$": "50|doiboost____|673b2c13acbf3611067a4c26f1c84c6d"
+      }
+    ],
+    [
+      {
+        "$": "50|datacite____::377016c6b731e69d2763e6a132de301f"
+      },
+      {
+        "$": "10.5281/zenodo.3808817"
+      },
+      {
+        "$": "50|od______2659::377016c6b731e69d2763e6a132de301f"
+      },
+      {
+        "$": "oai:zenodo.org:3808817"
+      },
+      {
+        "$": "50|datacite____::74e362f8f9826470472290bce43f0825"
+      },
+      {
+        "$": "10.5281/zenodo.3808816"
+      }
+    ]
+  ],
+  "result_titles": [
+    "Activation of the C-O bond on the surface of palladium: An In situ study by X-ray photoelectron spectroscopy and sum frequency generation",
+    "Dual\u2010Shelled CeO                     <sub>2</sub>                     Hollow Spheres Decorated with MXene Quantum Dots for Efficient Electrocatalytic Nitrogen Oxidation",
+    "Cerium Oxide with Specific Surface Oxygen Vacancy and Facet for Nitrate Synthesis through Electrocatalytic Nitrogen Oxidation",
+    "<i>Operando</i>                     X-Ray Absorption Spectroscopy Study of RuCoO                     <sub>x</sub>                     Bifunctional Catalysts for Water Electrolysis",
+    "Tyrannosaurus rex Osborn 1905"
+  ],
+  "result_dois": [
+    "10.1007/s10975-005-0073-0",
+    "10.1002/smll.202411665",
+    "10.1021/acs.inorgchem.4c05367",
+    "10.1149/ma2025-02391850mtgabs",
+    "10.5281/zenodo.3808817"
+  ],
+  "result_dates": [
+    "2005-03-01",
+    "2025-02-07",
+    "2025-02-06",
+    "2025-11-24",
+    "2019-10-30"
+  ],
+  "response_hash": "c28ef932e77e38231646b9a6f68ff38c51df072476cdc4e430f01dc66b9a2fbd",
+  "evidence_uri": "https://api.openaire.eu/search/publications?keywords=situ+hollow+spectroscopy+formation+species+kinetics&size=10&format=json",
+  "error": null,
+  "rate_limit_headers": {
+    "x-ratelimit-used": "122",
+    "x-ratelimit-limit": "7199"
+  }
+}

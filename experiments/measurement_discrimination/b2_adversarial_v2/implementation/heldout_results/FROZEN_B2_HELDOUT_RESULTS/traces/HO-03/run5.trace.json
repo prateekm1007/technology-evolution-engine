@@ -1,0 +1,102 @@
+{
+  "schema_version": "b2-trace-v3",
+  "candidate": {
+    "id": "HO-03",
+    "text": "guide-directed double-strand cleavage",
+    "source_a": "A guide-RNA-directed nuclease recognizes a complementary DNA target and, when the required PAM is present, forms an RNA-DNA hybrid that positions the nuclease for site-specific cleavage.",
+    "source_b": "Cas9 contains two nuclease domains that cleave opposite DNA strands, producing a double-strand break; the HNH domain cuts the strand complementary to the guide while the RuvC domain cuts the other strand."
+  },
+  "atoms": [
+    {
+      "atom_id": "a1",
+      "claim": "{process: guide_directed_cleavage}",
+      "source_support": [
+        {
+          "support_type": "SOURCE_LOCAL",
+          "source_id": "A",
+          "spans": [
+            {
+              "span_text": "guide-RNA-directed nuclease recognizes a complementary DNA target and, when the required PAM is present, forms an RNA-DNA hybrid that positions the nuclease for site-specific cleavage",
+              "start": 2,
+              "end": 185
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "atom_id": "a2",
+      "claim": "{process: double_strand_break}",
+      "source_support": [
+        {
+          "support_type": "SOURCE_LOCAL",
+          "source_id": "B",
+          "spans": [
+            {
+              "span_text": "Cas9 contains two nuclease domains that cleave opposite DNA strands, producing a double-strand break",
+              "start": 0,
+              "end": 100
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "atom_id": "a3",
+      "claim": "{mechanism: two_domain_cleavage}",
+      "source_support": [
+        {
+          "support_type": "JOINT_CROSS_SOURCE",
+          "source_a_spans": [
+            {
+              "span_text": "guide-RNA-directed nuclease",
+              "start": 2,
+              "end": 29
+            }
+          ],
+          "source_b_spans": [
+            {
+              "span_text": "Cas9 contains two nuclease domains",
+              "start": 0,
+              "end": 34
+            },
+            {
+              "span_text": "the HNH domain cuts the strand complementary to the guide while the RuvC domain cuts the other strand",
+              "start": 102,
+              "end": 203
+            }
+          ],
+          "derived_claim": "{mechanism: two_domain_cleavage}",
+          "inference_rule": "COMPOSITION",
+          "counterfactual_a": "Without source A, we lose the 'guide-directed' aspect of the cleavage mechanism, so we can't establish how the cleavage is specifically directed.",
+          "counterfactual_b": "Without source B, we lose information about the two specific nuclease domains (HNH and RuvC) that perform the cleavage, so we can't establish the two-domain mechanism."
+        }
+      ]
+    }
+  ],
+  "counterfactuals": [
+    {
+      "removed_source": "A",
+      "unsupported_atoms": [
+        "a1",
+        "a3"
+      ],
+      "justified_without_source": false
+    },
+    {
+      "removed_source": "B",
+      "unsupported_atoms": [
+        "a2",
+        "a3"
+      ],
+      "justified_without_source": false
+    }
+  ],
+  "classification": {
+    "justified_by_corpus": true,
+    "iss_a": true,
+    "iss_b": true,
+    "iss_state": "ISS_both",
+    "label": "ALLOW"
+  }
+}

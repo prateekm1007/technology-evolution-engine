@@ -1,0 +1,135 @@
+{
+  "query_id": "Q-OA-W4411793089_OA-W4411909838-direct-openaire",
+  "pair_id": "OA-W4411793089_OA-W4411909838",
+  "query_type": "direct",
+  "provider": "openaire",
+  "query_text": "electrolyte metal temperatures sulfur catalytic solid",
+  "query_hash": "ceb5639eb6ab644b9093710f939718e06829ca2dbf2db496b229966df39fb0fb",
+  "frozen_query_ref": "Q-OA-W4411793089_OA-W4411909838-direct-openalex",
+  "url": "https://api.openaire.eu/search/publications?keywords=electrolyte+metal+temperatures+sulfur+catalytic+solid&size=10&format=json",
+  "timestamp_utc": "2026-08-11T12:21:50.079424+00:00",
+  "status": "SUCCESS",
+  "result_count": 7,
+  "result_ids": [
+    [
+      {
+        "$": "S2405829719302661"
+      },
+      {
+        "$": "10.1016/j.ensm.2019.03.026"
+      },
+      {
+        "$": "50|doiboost____|c46e702331417f34405130e34e111833"
+      },
+      {
+        "$": "2929659125"
+      }
+    ],
+    [
+      {
+        "$": "10.1002/anie.200500393"
+      },
+      {
+        "$": "50|doiboost____|86bc73f6ee3a336efcd7c1e8672ab70e"
+      },
+      {
+        "$": "10.1002/ange.200500393"
+      },
+      {
+        "$": "50|doiboost____|943a1dcc4d8934ea374fe0dfead0b935"
+      },
+      {
+        "$": "15887204"
+      },
+      {
+        "$": "2026650559"
+      }
+    ],
+    [
+      {
+        "$": "10.1149/ma2015-01/42/2213"
+      },
+      {
+        "$": "50|doiboost____|a9ca63cd0d479107d5c09123fc9e78cb"
+      }
+    ],
+    [
+      {
+        "$": "10.1149/ma2023-01452459mtgabs"
+      },
+      {
+        "$": "50|doiboost____|1840893032e8cd9dcfac7f496b676127"
+      }
+    ],
+    [
+      {
+        "$": "10.1149/ma2016-01/41/2079"
+      },
+      {
+        "$": "50|doiboost____|7b2d43d0ddc4cfbcef624c93c01a6897"
+      }
+    ],
+    [
+      {
+        "$": "50|datacite____::45d47c0425eaa4d549d00417c49fd579"
+      },
+      {
+        "$": "10.5281/zenodo.1107629"
+      },
+      {
+        "$": "50|datacite____::a6a2580d3e2a5b570b1ec64f844a10a0"
+      },
+      {
+        "$": "10.5281/zenodo.1107630"
+      },
+      {
+        "$": "50|od______2659::a6a2580d3e2a5b570b1ec64f844a10a0"
+      },
+      {
+        "$": "oai:zenodo.org:1107630"
+      }
+    ],
+    [
+      {
+        "$": "10.1149/ma2025-03181mtgabs"
+      },
+      {
+        "$": "50|doiboost____|605f280899c0c4ab2bc1bddcd7cabb3a"
+      }
+    ]
+  ],
+  "result_titles": [
+    "Development of low-cost sodium-aqueous polysulfide hybrid batteries",
+    "An Electrochemically Driven and Electrochemically Regenerated NO<sub><i>x</i></sub> Trap",
+    "Highly Durable Cathode Materials with High Performance for Protonic Ceramic Fuel Cells",
+    "Investigation of Electrocatalytic CO<sub>2</sub> Reduction Reaction Mechanism: Role of H<sub>2</sub>s and Exsolved Metal Nanoparticle at Perovskite Oxides Electrodes",
+    "Towards a Solid Oxide Fuel Cell/Electrolysis Cell Fabricated Entirely By Microwave Methods",
+    "Orr Activity And Stability Of Pt-Based Electrocatalysts In Pem Fuel Cell",
+    "Electrochemical Activation of La                     <sub>0.31</sub>                     Sr                     <sub>0.58</sub>                     Ti                     <sub>0.97</sub>                     Ni                     <sub>0.03</sub>                     O                     <sub>3-\u0394</sub>                     SOFC Thin Film Electrodes"
+  ],
+  "result_dois": [
+    "10.1016/j.ensm.2019.03.026",
+    "10.1002/anie.200500393",
+    "10.1149/ma2015-01/42/2213",
+    "10.1149/ma2023-01452459mtgabs",
+    "10.1149/ma2016-01/41/2079",
+    "10.5281/zenodo.1107629",
+    "10.1149/ma2025-03181mtgabs"
+  ],
+  "result_dates": [
+    "2019-05-01",
+    "2005-06-06",
+    "2015-04-29",
+    "2023-08-28",
+    "2016-04-01",
+    "2015-07-02",
+    "2025-11-24"
+  ],
+  "response_hash": "d745759f4062d5e233dc228f07ebea0f5560e3f6f6066b5fd4951ca2965e2413",
+  "evidence_uri": "https://api.openaire.eu/search/publications?keywords=electrolyte+metal+temperatures+sulfur+catalytic+solid&size=10&format=json",
+  "error": null,
+  "rate_limit_headers": {
+    "x-ratelimit-used": "27",
+    "x-ratelimit-limit": "7199"
+  }
+}

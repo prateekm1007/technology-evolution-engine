@@ -1,0 +1,144 @@
+{
+  "state_snapshot": {
+    "describes_commit": "1526cfe0a681fe348c1482d244a55c7fa9f223d3",
+    "describes_commit_relationship": "parent of the commit containing this file (after commit, validator checks describes_commit == HEAD~1)",
+    "generated_at_utc": "2026-08-08T22:47:47.043226+00:00",
+    "generator_script": "scripts/generate_program_state.py",
+    "validator_script": "scripts/validate_program_state.py",
+    "self_reference_note": "A committed file cannot truthfully contain its own final commit SHA. This file describes the repository state as of describes_commit, which is the PARENT of the commit containing this file. The validator (validate_program_state.py) independently verifies this relationship."
+  },
+  "repository": {
+    "described_head": "1526cfe0a681fe348c1482d244a55c7fa9f223d3",
+    "branch": "external-review-preparation",
+    "remote_url": "https://github.com/prateekm1007/technology-evolution-engine.git"
+  },
+  "substrate": {
+    "status": "FROZEN",
+    "freeze_evidence": "f8e3f2a (per worklog history)"
+  },
+  "dxp005": {
+    "status": "PAUSED",
+    "valid_scientific_runs": 0,
+    "preregistered_provider": "ZAI (glm-4-plus via z-ai CLI)",
+    "preregistered_protocol_frozen_at_commit": "66b3212",
+    "protocol_sha256": "8fd72a154b1cebd84dd317fd396c8a82ac2967957fb4154cf48e92670fcfb4d0",
+    "ground_truth_sha256": "976ec037b8606699215240221535a7c468fdb79f72f74597cdefc1d3cb39ce99",
+    "pause_notice": "discovery_experiment/FINAL_VERDICT/DXP-005_PAUSE_NOTICE.md",
+    "pause_reason": "PREREGISTERED_PROVIDER_UNAVAILABLE (ZAI HTTP 429)",
+    "resume_conditions": [
+      "Phase 17 produces DISCRIMINATIVE verdict",
+      "ZAI provider available",
+      "Frozen protocol still valid",
+      "No protocol parameters changed"
+    ]
+  },
+  "unregistered_pilots": [
+    {
+      "id": "DXP005-NEMOTRON-PILOT",
+      "valid_for_primary_analysis": false,
+      "status": "UNPREREGISTERED_EXPLORATORY_PILOT",
+      "location": "experiments/dxp005_pilots/nemotron/",
+      "reason": "provider_changed_after_protocol_freeze"
+    }
+  ],
+  "phase_0": {
+    "status": "COMPLETE",
+    "commit": "5f27ca9",
+    "tests_passed_local": 178,
+    "github_ci_status": "NOT_INDEPENDENTLY_VERIFIED"
+  },
+  "phase_1": {
+    "status": "COMPLETE",
+    "commit": "324f437",
+    "tests_passed_local": 16,
+    "github_ci_status": "NOT_INDEPENDENTLY_VERIFIED"
+  },
+  "phase_2": {
+    "status": "COMPLETE",
+    "commit": "b5d0e34",
+    "tests_passed_local": 35,
+    "github_ci_status": "NOT_INDEPENDENTLY_VERIFIED"
+  },
+  "phase_3": {
+    "status": "COMPLETE",
+    "commit": "7ca5e18",
+    "tests_passed_local": 0,
+    "github_ci_status": "NOT_INDEPENDENTLY_VERIFIED"
+  },
+  "phase_4": {
+    "status": "COMPLETE",
+    "commit": "d5d811f",
+    "tests_passed_local": 0,
+    "github_ci_status": "NOT_INDEPENDENTLY_VERIFIED"
+  },
+  "phase_5": {
+    "status": "COMPLETE",
+    "commit": "ed923ce",
+    "tests_passed_local": 0,
+    "github_ci_status": "NOT_INDEPENDENTLY_VERIFIED"
+  },
+  "phase_6": {
+    "status": "COMPLETE",
+    "commit": "0549ac0",
+    "tests_passed_local": 0,
+    "github_ci_status": "NOT_INDEPENDENTLY_VERIFIED"
+  },
+  "phase_7": {
+    "status": "COMPLETE",
+    "commit": "b302f92",
+    "tests_passed_local": 0,
+    "github_ci_status": "NOT_INDEPENDENTLY_VERIFIED"
+  },
+  "engine_source": {
+    "content_clean": false,
+    "check_method": "git status --porcelain engine/"
+  },
+  "working_tree": {
+    "total_dirty": 1781,
+    "content_changes": 1,
+    "mode_only_changes": 1780,
+    "untracked": 0,
+    "working_tree_clean": false
+  },
+  "local_test_status": {
+    "test_file_count": 209,
+    "last_full_suite_run": "NOT_RUN_IN_THIS_SESSION",
+    "selected_suite_smoke_check": {
+      "command": "python3 -m pytest tests/test_dr62_business_pipeline.py tests/test_phase1_business_pipeline_silent_failures.py tests/test_phase2_blueprint_composer_silent_failures.py tests/test_phase2_dr63_consumer_boundary_integration.py -v",
+      "result": "37 passed (4 DR-62 + 12 Phase 1 + 19 Phase 2 + 2 DR-63 integration)",
+      "scope": "SELECTED LOCAL SUITE \u2014 not the full repository test suite",
+      "note": "The full suite (2663 tests collected) was not run in this session. The test count is a smoke check only."
+    }
+  },
+  "github_ci_status": "NOT_INDEPENDENTLY_VERIFIED",
+  "github_ci_status_reason": "GitHub REST API rate-limited (no auth token available in environment). gh CLI not available. Cannot independently retrieve Actions run/conclusion evidence. Per Amendment 3, this is the correct terminal state when independent verification is unavailable. Local pytest results are NOT evidence of GitHub CI status.",
+  "frozen_objects": {
+    "substrate_freeze_commit": "f8e3f2a",
+    "gate2_protocol_sha": "32691a7",
+    "gate2_manifest_sha": "79788334adf8bb058d7e5a4ec6f41283d69fb891fcdab995e21e28c05f5b3829",
+    "measurement_integrity_baseline_tag": "stage-1-measurement-integrity-baseline",
+    "historical_f1_baseline": 0.5714,
+    "historical_f1_note": "F1=0.5714 is the historical baseline from Stage -1. NOT a capability claim.",
+    "bridge_synonyms_state": "EMPTY_MAP_{}_FROZEN"
+  },
+  "north_star": "NOT_ACHIEVED",
+  "north_star_path": "Phase 0 (COMPLETE) \u2192 Phase 1 (COMPLETE) \u2192 Phase 2 (COMPLETE) \u2192 Phase 3 (NEXT, BLOCKED pending audit approval) \u2192 ... \u2192 Phase 17 (DISCRIMINATIVE or NOT_DISCRIMINATIVE). Only DISCRIMINATIVE at Phase 17 allows DXP-005 to resume. NOT_DISCRIMINATIVE preserves the negative result per Amendment 15.",
+  "amendment_compliance": {
+    "amendment_1_frozen_matcher_read_only": "PENDING \u2014 Phase 8",
+    "amendment_2_vocabulary_pre_frozen_source": "PENDING \u2014 Phase 9",
+    "amendment_3_ci_status_terminal_state": "ENFORCED",
+    "amendment_4_threshold_preregistration": "PENDING \u2014 Phase 11",
+    "amendment_5_ci_method_frozen": "PENDING \u2014 Phase 12",
+    "amendment_6_lock_file": "PENDING \u2014 Phase 13",
+    "amendment_7_threshold_shopping_prevented": "PENDING \u2014 Phase 11",
+    "amendment_8_controls_before_gold": "PENDING \u2014 Phase 10",
+    "amendment_9_control_quality_audit": "PENDING \u2014 Phase 10",
+    "amendment_10_phase14_controls_full": "PENDING \u2014 Phase 14",
+    "amendment_11_observed_vs_expected": "ENFORCED",
+    "amendment_12_commit_categorization": "ENFORCED",
+    "amendment_13_phase_status_json": "ENFORCED",
+    "amendment_14_scientific_visibility_boundary": "ENFORCED \u2014 DXP-005 paused, Nemotron pilot quarantined, protocol lock machine-enforced",
+    "amendment_15_failure_is_valid": "ACKNOWLEDGED",
+    "amendment_16_discovery_gate_depends_on_discrimination": "ACKNOWLEDGED"
+  }
+}

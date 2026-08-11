@@ -1,0 +1,51 @@
+{
+  "report_type": "SOURCE_PAIRABILITY_FINAL",
+  "report_version": "1.0.0",
+  "universe_manifest_hash": "d04a0cdcdc91dcbe424e6e366f49ebe6fd3668dd0039ca76abd70b92425f0184",
+  "source_count": 112,
+  "total_cross_domain_pairs": 5150,
+  "actual_pool_size": 182,
+  "random_seed": 42,
+  "sampling_protocol": "OPTION_I_ORIGINAL_FROZEN_ALLOCATION",
+  "stratum_report": {
+    "hard_negative_candidate_overlay": {
+      "desired": 40,
+      "available": 22,
+      "selected": 22,
+      "status": "STRATUM_UNAVAILABLE"
+    },
+    "heuristic_strong": {
+      "desired": 40,
+      "available": 381,
+      "selected": 40,
+      "status": "OK"
+    },
+    "heuristic_weak": {
+      "desired": 60,
+      "available": 1681,
+      "selected": 60,
+      "status": "OK"
+    },
+    "lexical_low_mechanistic": {
+      "desired": 40,
+      "available": 249,
+      "selected": 40,
+      "status": "OK"
+    },
+    "random_cross_domain": {
+      "desired": 20,
+      "available": 2817,
+      "selected": 20,
+      "status": "OK"
+    }
+  },
+  "sampled_stratum_distribution": {
+    "hard_negative_candidate_overlay": 22,
+    "heuristic_strong": 40,
+    "heuristic_weak": 60,
+    "lexical_low_mechanistic": 40,
+    "random_cross_domain": 20
+  },
+  "no_silent_substitution": true,
+  "hard_negative_shortfall_recorded": true
+}
