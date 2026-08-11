@@ -1,0 +1,235 @@
+{
+  "total": 20,
+  "invariants": [
+    {
+      "invariant_principle": "Dielectric polarization loss in ferroelectric nanoparticles dispersed in a polymer matrix enables microwave energy dissipation through impedance matching and interfacial polarization.",
+      "causal_chain": "Ferroelectric nanoparticle dispersion in polymer matrix → Enhanced interfacial polarization and dielectric loss → Improved microwave absorption via impedance matching and attenuation",
+      "necessary_conditions": "1. Ferroelectric or high-permittivity nanoparticles with strong dielectric response 2. Uniform dispersion in a low-loss polymer matrix 3. Sufficient interfacial area between nanoparticles and matrix 4. Operating frequency within the relaxation regime of the composite's dielectric properties",
+      "failure_conditions": "1. Nanoparticle agglomeration reduces interfacial area and creates percolation paths 2. Matrix degradation or poor adhesion eliminates effective interfaces 3. Frequency mismatch between relaxation peak and target band 4. Excessive filler loading causes impedance mismatch or conductive losses dominate",
+      "scaling_limits": "1. Nanoparticle size: too large reduces surface-to-volume ratio and interfacial polarization; too small may lead to quantum effects or poor crystallinity 2. Filler concentration: low loading gives weak absorption; high loading causes processing difficulties and mechanical brittleness 3. Thickness: optimal quarter-wavelength matching limits practical absorber thickness 4. Frequency range: dielectric relaxation is inherently narrowband, limiting broadband performance",
+      "evidence_id": "crossref:10.1177/0021998318788144",
+      "domain": "materials",
+      "extraction_timestamp": "2026-08-11T20:09:21.201879+00:00"
+    },
+    {
+      "evidence_id": "crossref:10.62791/20049",
+      "domain": "materials",
+      "extraction_status": "FAILED"
+    },
+    {
+      "evidence_id": "crossref:10.3390/ma18173949",
+      "domain": "materials",
+      "extraction_status": "FAILED"
+    },
+    {
+      "invariant_principle": "Incorporation of autonomously repairing materials into mechanically stressed components enables spontaneous restoration of structural integrity, thereby mitigating damage accumulation and extending functional lifetime under cyclic loading.",
+      "causal_chain": "Cyclic mechanical deformation → accumulation of microcracks/fractures → incorporation of self-healing materials → spontaneous repair of damage sites → restored mechanical strength and structural continuity → enhanced cycle stability and extended lifespan.",
+      "necessary_conditions": "The self-healing material must be capable of reversible bond formation or physical reflow at operating temperatures; damage must be localized and not exceed the healing material's repair capacity; the healing mechanism must be triggered by the damage itself (e.g., crack exposure, local stress, or chemical change) without external intervention.",
+      "failure_conditions": "Damage rate exceeds healing rate; healing chemistry is exhausted or poisoned; operating temperature is outside the healing activation window; cracks are too large or too numerous for complete repair; healing process introduces new failure modes (e.g., conductivity loss, side reactions).",
+      "scaling_limits": "At nanoscale: surface-to-volume effects may enhance or hinder healing kinetics. At macroscale: diffusion distances for healing agents become limiting; mechanical loads may overwhelm healing bond strength. At system level: healing efficiency decreases with increasing number of cycles if healing agents are consumed irreversibly; trade-off between mechanical compliance and healing capability.",
+      "evidence_id": "crossref:10.3390/nano12203656",
+      "domain": "energy"
+    },
+    {
+      "evidence_id": "arxiv:2502.07070v1",
+      "domain": "energy",
+      "extraction_status": "FAILED"
+    },
+    {
+      "evidence_id": "arxiv:1702.04009v1",
+      "domain": "energy",
+      "extraction_status": "FAILED"
+    },
+    {
+      "invariant_principle": "Encapsulation of volume-changing nanoparticles within a flexible, conductive, and mechanically robust 2D sheet network accommodates large volumetric expansion while maintaining continuous electrical pathways, thereby preventing pulverization and capacity fade during repeated lithiation/delithiation cycles.",
+      "causal_chain": "Nanoparticle volume expansion during ion insertion → mechanical stress on particle and surrounding matrix → flexible 2D sheet wrapping provides confining force and accommodates expansion without fracturing → maintains electrical contact and structural integrity → improved cycling stability.",
+      "necessary_conditions": [
+        "A flexible, high-aspect-ratio 2D material that can conformally wrap or bridge nanoparticles",
+        "Sufficient interfacial adhesion between the 2D material and the nanoparticle to prevent delamination",
+        "The 2D material must be electrically conductive and ion-permeable",
+        "The nanoparticle must undergo cyclic, reversible volume change",
+        "The composite must be prepared in a dispersion that allows homogeneous mixing"
+      ],
+      "failure_conditions": [
+        "If the 2D sheet is too rigid or brittle, it will fracture rather than flex during expansion",
+        "If the nanoparticle volume change exceeds the elastic limit of the wrapping scheme",
+        "If the electrolyte degrades the interfacial bonding between sheet and particle",
+        "If the 2D material is not ionically conductive, it will block ion transport",
+        "If agglomeration prevents complete wrapping of individual particles"
+      ],
+      "scaling_limits": [
+        "At very high nanoparticle loading, the 2D sheets cannot fully wrap each particle and the network becomes discontinuous",
+        "At very small particle sizes (sub-10 nm), the wrapping geometry may not provide sufficient stress accommodation",
+        "At very large electrode thickness, the tortuosity of the 2D network may limit ion transport",
+        "The scalability of the aqueous synthesis method may be limited by dispersion stability at high solids loading"
+      ],
+      "evidence_id": "crossref:10.4028/www.scientific.net/msf.830-831.522",
+      "domain": "materials"
+    },
+    {
+      "evidence_id": "arxiv:1604.04200v1",
+      "domain": "energy",
+      "extraction_status": "FAILED"
+    },
+    {
+      "invariant_principle": "Heterogeneous interfaces between ionic compounds with small lattice mismatch can exhibit enhanced thermodynamic stability through strain accommodation, leading to increased formation energy that resists further decomposition.",
+      "causal_chain": "lattice-matched interface between dissimilar ionic compounds → minimal interfacial strain (<3%) → reduced interfacial energy and increased formation energy → enhanced kinetic barrier against further chemical decomposition or phase transformation",
+      "necessary_conditions": [
+        "Two distinct solid phases with compatible crystal structures and lattice parameters (strain <3%)",
+        "Ionic or mixed ionic-covalent bonding character at the interface",
+        "Sufficient thermodynamic driving force for interface formation (negative or low interfacial energy)"
+      ],
+      "failure_conditions": [
+        "Large lattice mismatch (>5%) leading to dislocations or amorphous interlayers",
+        "Reactive interfaces that promote rapid ion transport or dissolution",
+        "Phase instability under operating conditions (e.g., temperature, voltage, or chemical gradients)"
+      ],
+      "scaling_limits": [
+        "At nanoscale: quantum confinement and surface effects may dominate, altering interface energetics",
+        "At microscale: strain accumulation from multiple interfaces may cause mechanical failure or delamination",
+        "At macroscale: transport limitations and non-uniform current distribution can bypass the passivating effect"
+      ],
+      "evidence_id": "arxiv:2010.16256v2",
+      "domain": "energy"
+    },
+    {
+      "invariant_principle": "Direct intracellular delivery of functional gene-editing machinery (Cas9 ribonucleoprotein complexes or mRNA) via subretinal injection can achieve transient, dose-dependent genome editing in post-mitotic neural sensory cells (photoreceptors) without viral vectors.",
+      "causal_chain": "Delivery of Cas9 RNP or mRNA into target cells → Transient presence of active Cas9 nuclease and guide RNA → Site-specific double-strand breaks → Non-homologous end joining (NHEJ) repair → Indel formation (loss-of-function mutations in target gene) → Dose-dependent editing efficiency.",
+      "necessary_conditions": [
+        "Direct physical access to target cells (e.g., via subretinal space injection)",
+        "Functional Cas9 protein or its mRNA with appropriate guide RNA",
+        "Ability to cross cell membranes (requires transfection agents like cationic lipids or peptides for RNP)",
+        "Target cells must be viable and capable of NHEJ repair mechanism",
+        "Sufficient concentration of Cas9/RNP in target cell cytoplasm/nucleus",
+        "Guide RNA must match target genomic sequence"
+      ],
+      "failure_conditions": [
+        "Immune response against Cas9 protein or delivery vehicle",
+        "Rapid degradation of Cas9 mRNA before translation",
+        "Insufficient nuclear localization of Cas9 RNP",
+        "Toxicity from delivery agents (e.g., lipid nanoparticles) in neural retina",
+        "Off-target editing causing unintended mutations",
+        "Inability to target specific cell types (e.g., photoreceptors) if RNP does not internalize",
+        "Pre-existing antibodies against Cas9 from prior exposure"
+      ],
+      "scaling_limits": [
+        "Subretinal injection volume limited (few microliters) - scaling to large retinal areas difficult",
+        "Diffusion of RNP through retinal layers limited by physical barriers (inner limiting membrane, extracellular matrix)",
+        "Dose-response curve saturates at high concentrations due to toxicity or limited nuclear entry",
+        "Editing efficiency inversely related to target cell turnover (post-mitotic cells have lower NHEJ rates than dividing cells)",
+        "In vivo half-life of Cas9 mRNA (~hours) limits editing window; RNP half-life longer but still transient",
+        "Scaling to human retina requires larger volumes and better distribution, potentially requiring multiple injections or advanced delivery systems"
+      ],
+      "evidence_id": "crossref:10.70675/b0c6037fz0240z4844z9036z7867f920dadc",
+      "domain": "biotechnology"
+    },
+    {
+      "evidence_id": "crossref:10.17504/protocols.io.bvxen7je",
+      "domain": "biotechnology",
+      "extraction_status": "FAILED"
+    },
+    {
+      "evidence_id": "crossref:10.3390/app13042158",
+      "domain": "materials",
+      "extraction_status": "FAILED"
+    },
+    {
+      "evidence_id": "crossref:10.34172/bi.30019",
+      "domain": "biotechnology",
+      "extraction_status": "FAILED"
+    },
+    {
+      "invariant_principle": "Compact functional modules can be packaged into size-limited delivery vehicles to transport active molecular machinery across biological barriers into target cells, where the machinery performs site-specific nucleic acid modification.",
+      "causal_chain": "Size-minimized molecular machinery → packaging into constrained delivery vector → transport across biological membranes and cellular entry → intracellular release → sequence-specific target recognition → molecular modification of nucleic acid → therapeutic phenotypic change",
+      "necessary_conditions": [
+        "The molecular machinery must be physically smaller than the packaging capacity of the delivery vehicle",
+        "The delivery vehicle must protect the cargo during transit and release it at the target site",
+        "The target cells must express or contain the necessary molecular components for the machinery to function (e.g., target DNA sequence, cofactors)",
+        "The vehicle must selectively access the target cell population over non-target cells"
+      ],
+      "failure_conditions": [
+        "If the machinery exceeds the packaging capacity of the delivery vehicle",
+        "If the delivery vehicle triggers immune clearance before reaching target cells",
+        "If the machinery loses function after packaging or during delivery (e.g., denaturation, premature activation)",
+        "If the target cells lack the necessary recognition sequence or molecular environment",
+        "If the vehicle cannot cross specific biological barriers (e.g., blood-brain barrier, cell membrane)"
+      ],
+      "scaling_limits": [
+        "Maximum cargo size is limited by the physical dimensions of the delivery vehicle (e.g., AAV capsid internal volume ≈ 25 nm diameter, ≈ 4.7 kb ssDNA capacity)",
+        "Minimum cargo size is limited by the requirement for all necessary functional domains (catalytic, targeting, regulatory) to be present",
+        "At larger physical scales (e.g., multicellular tissues), penetration depth and uniform distribution become limiting due to diffusion constraints and vascular barriers",
+        "At smaller scales (single cells), stochastic delivery and single-copy limitations may reduce editing efficiency",
+        "Evolutionary constraints: natural selection maintains minimal functional sizes for nucleic acid-modifying enzymes; further miniaturization may require directed evolution or synthetic biology"
+      ],
+      "evidence_id": "crossref:10.1089/crispr.2024.0010",
+      "domain": "biotechnology"
+    },
+    {
+      "invariant_principle": "Self-attention mechanisms over temporal sequences enable the model to capture long-range dependencies and complex non-linear interactions in time-series data, regardless of the specific domain (e.g., pollution, language, vision).",
+      "causal_chain": "Input temporal sequence → self-attention weighting across all time steps → learned representations of both local and distant patterns → improved forecasting accuracy for complex dynamical systems.",
+      "necessary_conditions": [
+        "The data must be sequential or temporal in nature.",
+        "There must exist meaningful dependencies or correlations between distant time steps.",
+        "Sufficient computational resources to handle quadratic attention complexity over sequence length.",
+        "Adequate training data to learn long-range patterns without overfitting."
+      ],
+      "failure_conditions": [
+        "If the time series is completely memoryless (e.g., white noise), self-attention provides no advantage over simpler models.",
+        "Very short sequences where local models (e.g., RNNs) are equally effective but cheaper.",
+        "Extremely noisy or low-signal data where long-range patterns are spurious.",
+        "Lack of stationarity or concept drift that invalidates learned attention weights over time."
+      ],
+      "scaling_limits": [
+        "Memory and computational cost scale quadratically with sequence length (O(n²)), limiting applicability to very long sequences without approximation methods.",
+        "Very deep Transformers may suffer from overfitting on smaller datasets.",
+        "High-frequency data with billions of time steps require sparse or hierarchical attention modifications.",
+        "The principle assumes that positional relationships remain meaningful; it may fail if the temporal ordering is irrelevant or corrupted."
+      ],
+      "evidence_id": "crossref:10.21203/rs.3.rs-1793953/v1",
+      "domain": "computing"
+    },
+    {
+      "evidence_id": "crossref:10.55529/jaimlnn.61.75.87",
+      "domain": "computing",
+      "extraction_status": "FAILED"
+    },
+    {
+      "evidence_id": "crossref:10.1115/msec2020-8439",
+      "domain": "mechanical",
+      "extraction_status": "FAILED"
+    },
+    {
+      "invariant_principle": "Temporal dependencies in price signals can be captured via self-attention over embedded time features to produce probabilistic multi-step forecasts under varying volatility regimes.",
+      "causal_chain": "Historical price sequence → Time2Vec encoding of temporal patterns → Transformer self-attention captures long-range dependencies → Probabilistic output distribution for future steps",
+      "necessary_conditions": [
+        "Sufficient historical data with temporal structure",
+        "Presence of periodic and trend components in the target variable",
+        "Ability to define a probabilistic forecast objective (e.g., quantile loss or Gaussian likelihood)",
+        "Adequate computational resources for transformer training"
+      ],
+      "failure_conditions": [
+        "Extremely non-stationary signals where past patterns do not repeat",
+        "Very sparse or irregular time series without clear periodicity",
+        "Regimes with sudden structural breaks not seen in training data",
+        "Insufficient sequence length for self-attention to be effective"
+      ],
+      "scaling_limits": [
+        "Quadratic computational cost of self-attention with sequence length limits long histories",
+        "Very high volatility or fat-tailed distributions may exceed probabilistic calibration capacity",
+        "Memory constraints for multi-step ahead (8+ steps) with full transformer decoding"
+      ],
+      "evidence_id": "crossref:10.3390/en16196767",
+      "domain": "computing"
+    },
+    {
+      "evidence_id": "crossref:10.22541/au.175714782.28599277/v1",
+      "domain": "computing",
+      "extraction_status": "FAILED"
+    },
+    {
+      "evidence_id": "crossref:10.12794/metadc283786",
+      "domain": "mechanical",
+      "extraction_status": "FAILED"
+    }
+  ]
+}

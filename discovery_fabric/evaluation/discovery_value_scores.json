@@ -1,0 +1,313 @@
+{
+  "timestamp": "2026-08-11T22:42:03.561198+00:00",
+  "total_scored": 4,
+  "candidates": [
+    {
+      "id": "COMBO-91f6b74a",
+      "mechanism_a": {
+        "evidence_id": "crossref:10.70675/b0c6037fz0240z4844z9036z7867f920dadc",
+        "domain": "biotechnology",
+        "process": "Subretinal injection of Cas9 RNP or mRNA; investigation of non-viral vectors such as cationic lipids and peptides to improve RNP transfer",
+        "invariant": "Direct intracellular delivery of functional gene-editing machinery (Cas9 ribonucleoprotein complexes or mRNA) via subretinal injection can achieve transient, dose-dependent genome editing in post-mitotic neural sensory cells (photoreceptors) without viral vectors."
+      },
+      "mechanism_b": {
+        "evidence_id": "crossref:10.26434/chemrxiv.9729665.v4",
+        "domain": "environmental",
+        "process": "Noncovalent trapping of CO2 molecules in porous materials with void spaces complementary in size and electrostatic potential to CO2.",
+        "invariant": "UNKNOWN"
+      },
+      "source_domains": [
+        "biotechnology",
+        "environmental"
+      ],
+      "validated_independently": true,
+      "invariant_a": "Direct intracellular delivery of functional gene-editing machinery (Cas9 ribonucleoprotein complexes or mRNA) via subretinal injection can achieve transient, dose-dependent genome editing in post-mitotic neural sensory cells (photoreceptors) without viral vectors.",
+      "invariant_b": "UNKNOWN",
+      "shared_constraint": "controlled environment supporting biological activity and gas exchange",
+      "new_interaction": "engineered microorganisms with enhanced CO2 capture capabilities via CRISPR-Cas9 gene editing",
+      "emergent_property": "novel biological systems for efficient CO2 capture",
+      "why_combination_did_not_exist": "lack of direct application of gene editing in retina to CO2 capture technologies",
+      "required_conditions": [
+        "controlled environment",
+        "presence of microorganisms",
+        "CRISPR-Cas9 gene editing capability"
+      ],
+      "predicted_effect": "significant increase in CO2 capture efficiency by engineered microorganisms",
+      "measurement_method": "comparison of CO2 capture rates in engineered vs. non-engineered microorganisms",
+      "failure_condition": "no significant difference in CO2 capture efficiency between engineered and non-engineered microorganisms",
+      "prior_art_status": "UNKNOWN",
+      "epistemic_state": "HYPOTHESIS",
+      "emergence_score": 3,
+      "generated_at": "2026-08-11T22:29:06.578620+00:00",
+      "attack_result": {
+        "overall": "SURVIVES",
+        "fatal_count": 0,
+        "major_count": 1,
+        "minor_count": 2,
+        "survives_count": 0,
+        "has_prediction": true,
+        "has_experiment": true,
+        "has_falsification": true,
+        "mechanism_coherent": true,
+        "attacks": {
+          "physics": {
+            "severity": "MINOR",
+            "reason": "Energy requirements for CRISPR-Cas9 gene editing and microorganism growth are plausible, but scaling and optimization may be needed"
+          },
+          "materials": {
+            "severity": "MAJOR",
+            "reason": "Potential scalability and stability issues with engineered microorganisms in large-scale CO2 capture applications"
+          },
+          "engineering": {
+            "severity": "MINOR",
+            "reason": "Engineering optimization needed for scalable microorganism cultivation and CRISPR-Cas9 editing"
+          }
+        },
+        "survival_rule": "V1.7 calibrated: Fatal=0 AND prediction AND experiment AND falsification AND mechanism_coherent. Major = development risk, not rejection."
+      },
+      "discovery_value": {
+        "novelty_pressure": 80,
+        "constraint_release": 90,
+        "market_need": 95,
+        "scientific_gap": 85,
+        "implementation_readiness": 70,
+        "unexpectedness": 60,
+        "historical_similarity": 80,
+        "overall_assessment": "Highly promising discovery with significant potential for impact on climate change mitigation",
+        "would_expert_fund": true,
+        "funding_reasoning": "The potential for a significant increase in CO2 capture efficiency by engineered microorganisms addresses a critical unmet need, and the use of novel biological systems and gene-editing machinery represents a major breakthrough in the field. While the unknown mechanism B introduces some uncertainty, the overall potential for impact and the feasibility of testing with current technology make this a compelling investment opportunity."
+      },
+      "discovery_value_overall": 80.0
+    },
+    {
+      "id": "COMBO-3ffc2d3b",
+      "mechanism_a": {
+        "evidence_id": "crossref:10.3390/nano12203656",
+        "domain": "energy",
+        "process": "Introduction of self-healing (SH) materials into electrodes or electrolytes to spontaneously cure fractures/cracks generated during repeated cycles.",
+        "invariant": "Incorporation of autonomously repairing materials into mechanically stressed components enables spontaneous restoration of structural integrity, thereby mitigating damage accumulation and extending functional lifetime under cyclic loading."
+      },
+      "mechanism_b": {
+        "evidence_id": "crossref:10.70675/ee7db082zc81ez4668z9b5bza3a91216d16c",
+        "domain": "chemical",
+        "process": "Electrochemical reduction (electrolysis) in a gas-fed flow cell configuration",
+        "invariant": "UNKNOWN"
+      },
+      "source_domains": [
+        "energy",
+        "chemical"
+      ],
+      "validated_independently": true,
+      "invariant_a": "Incorporation of autonomously repairing materials into mechanically stressed components enables spontaneous restoration of structural integrity, thereby mitigating damage accumulation and extending functional lifetime under cyclic loading.",
+      "invariant_b": "UNKNOWN",
+      "shared_constraint": "Operational conditions that allow for both electrochemical reactions and mechanical stability",
+      "new_interaction": "The self-healing materials enhance the mechanical integrity of the battery components, potentially allowing for more aggressive CO2 reduction conditions without compromising the battery's lifespan",
+      "emergent_property": "A durable, long-lifespan battery system capable of efficient CO2 reduction",
+      "why_combination_did_not_exist": "The combination of advanced materials science with electrochemical engineering for CO2 reduction in a way that synergistically enhances both the battery's lifespan and its environmental benefit is a novel approach that hasn't been widely explored",
+      "required_conditions": [
+        "Stable electrochemical conditions",
+        "Compatibility of self-healing materials with CO2 reduction catalysts",
+        "Optimized gas-fed flow cell design"
+      ],
+      "predicted_effect": "Increased efficiency and lifespan of CO2 reduction in lithium-ion batteries",
+      "measurement_method": "Cycle life testing, CO2 reduction efficiency measurements, and material characterization",
+      "failure_condition": "Failure to demonstrate significant improvement in either CO2 reduction efficiency or battery lifespan compared to existing technologies",
+      "prior_art_status": "UNKNOWN",
+      "epistemic_state": "HYPOTHESIS",
+      "emergence_score": 3,
+      "generated_at": "2026-08-11T22:29:25.769725+00:00",
+      "attack_result": {
+        "overall": "SURVIVES",
+        "fatal_count": 0,
+        "major_count": 1,
+        "minor_count": 2,
+        "survives_count": 0,
+        "has_prediction": true,
+        "has_experiment": true,
+        "has_falsification": true,
+        "mechanism_coherent": true,
+        "attacks": {
+          "physics": {
+            "severity": "MINOR",
+            "reason": "Energy requirements and thermodynamics of CO2 reduction are plausible, but optimization of electrochemical conditions and material compatibility are needed"
+          },
+          "materials": {
+            "severity": "MAJOR",
+            "reason": "Potential incompatibility between self-healing materials and CO2 reduction catalysts"
+          },
+          "engineering": {
+            "severity": "MINOR",
+            "reason": "Engineering optimization of self-healing materials and gas-fed flow cell design needed"
+          }
+        },
+        "survival_rule": "V1.7 calibrated: Fatal=0 AND prediction AND experiment AND falsification AND mechanism_coherent. Major = development risk, not rejection."
+      },
+      "discovery_value": {
+        "novelty_pressure": 60,
+        "constraint_release": 80,
+        "market_need": 90,
+        "scientific_gap": 70,
+        "implementation_readiness": 40,
+        "unexpectedness": 30,
+        "historical_similarity": 50,
+        "overall_assessment": "Promising approach to improving lithium-ion battery efficiency and lifespan for CO2 reduction, with significant potential impact on sustainable energy storage",
+        "would_expert_fund": true,
+        "funding_reasoning": "The potential to increase efficiency and lifespan of CO2 reduction in lithium-ion batteries addresses a critical unmet need in sustainable energy storage, and the incorporation of autonomously repairing materials is a novel and promising approach. While the implementation readiness is moderate due to the need for further development, the potential payoff is significant, making it a worthwhile investment."
+      },
+      "discovery_value_overall": 60.0
+    },
+    {
+      "id": "COMBO-580a0823",
+      "mechanism_a": {
+        "evidence_id": "crossref:10.21203/rs.3.rs-1793953/v1",
+        "domain": "computing",
+        "process": "Experiments using the Transformer based neural network (PolTrans) for forecasting",
+        "invariant": "Self-attention mechanisms over temporal sequences enable the model to capture long-range dependencies and complex non-linear interactions in time-series data, regardless of the specific domain (e.g., pollution, language, vision)."
+      },
+      "mechanism_b": {
+        "evidence_id": "crossref:10.1115/msec2020-8439",
+        "domain": "mechanical",
+        "process": "Tweaking stochastic lattice generation procedures to generate non-isotropic structures",
+        "invariant": "UNKNOWN"
+      },
+      "source_domains": [
+        "computing",
+        "mechanical"
+      ],
+      "validated_independently": true,
+      "invariant_a": "Self-attention mechanisms over temporal sequences enable the model to capture long-range dependencies and complex non-linear interactions in time-series data, regardless of the specific domain (e.g., pollution, language, vision).",
+      "invariant_b": "UNKNOWN",
+      "shared_constraint": "Operational efficiency and environmental adaptability",
+      "new_interaction": "Using pollution forecasts to inform the design of stochastic lattice structures for improved performance and durability in varying environmental conditions",
+      "emergent_property": "Adaptive and resilient lattice structures optimized for specific environmental conditions",
+      "why_combination_did_not_exist": "Lack of interdisciplinary approaches combining environmental forecasting with materials design for additive manufacturing",
+      "required_conditions": [
+        "Access to high-resolution environmental data",
+        "Advanced computational resources for both forecasting and lattice structure optimization"
+      ],
+      "predicted_effect": "Lattice structures designed with forecasted pollution data show a 15% increase in durability and a 10% reduction in material usage compared to traditionally designed structures",
+      "measurement_method": "Comparative analysis of structure performance in controlled environmental simulations",
+      "failure_condition": "No significant difference in performance and material efficiency between traditionally designed and forecast-informed lattice structures",
+      "prior_art_status": "UNKNOWN",
+      "epistemic_state": "HYPOTHESIS",
+      "emergence_score": 3,
+      "generated_at": "2026-08-11T22:28:48.084134+00:00",
+      "attack_result": {
+        "overall": "SURVIVES",
+        "fatal_count": 0,
+        "major_count": 0,
+        "minor_count": 2,
+        "survives_count": 1,
+        "has_prediction": true,
+        "has_experiment": true,
+        "has_falsification": true,
+        "mechanism_coherent": true,
+        "attacks": {
+          "physics": {
+            "severity": "SURVIVES",
+            "reason": "Energy requirements for data processing and optimization are feasible with modern computing resources"
+          },
+          "materials": {
+            "severity": "MINOR",
+            "reason": "Engineering optimization needed for material selection and degradation modeling"
+          },
+          "engineering": {
+            "severity": "MINOR",
+            "reason": "Advanced computational resources and high-resolution environmental data are required, but feasible with current technology"
+          }
+        },
+        "survival_rule": "V1.7 calibrated: Fatal=0 AND prediction AND experiment AND falsification AND mechanism_coherent. Major = development risk, not rejection."
+      },
+      "discovery_value": {
+        "novelty_pressure": 40,
+        "constraint_release": 60,
+        "market_need": 80,
+        "scientific_gap": 30,
+        "implementation_readiness": 90,
+        "unexpectedness": 20,
+        "historical_similarity": 50,
+        "overall_assessment": "Moderately innovative application of existing techniques to a real-world problem with significant potential impact",
+        "would_expert_fund": true,
+        "funding_reasoning": "The potential for increased durability and reduced material usage in lattice structures is a compelling problem with significant economic and environmental implications. While the approach may not be entirely novel, the application of self-attention mechanisms to forecasted pollution data is a promising direction. However, the lack of a clear Mechanism B and limited scientific gap filling potential may raise some concerns about the project's overall impact and longevity."
+      },
+      "discovery_value_overall": 52.9
+    },
+    {
+      "id": "COMBO-b1cf56c1",
+      "mechanism_a": {
+        "evidence_id": "crossref:10.26434/chemrxiv.9729665.v4",
+        "domain": "environmental",
+        "process": "Noncovalent trapping of CO2 molecules in porous materials with void spaces complementary in size and electrostatic potential to CO2.",
+        "invariant": "UNKNOWN"
+      },
+      "mechanism_b": {
+        "evidence_id": "crossref:10.3390/brainsci4020335",
+        "domain": "neuroscience",
+        "process": "Combining decisions across subjects in a cooperative BCI system, similar to combining trials over time",
+        "invariant": "UNKNOWN"
+      },
+      "source_domains": [
+        "environmental",
+        "neuroscience"
+      ],
+      "validated_independently": true,
+      "invariant_a": "UNKNOWN",
+      "invariant_b": "UNKNOWN",
+      "shared_constraint": "Sustainability and human interaction with the environment",
+      "new_interaction": "Integrating environmental monitoring with cooperative BCI for enhanced public engagement and decision-making",
+      "emergent_property": "Real-time, collective environmental monitoring and response system",
+      "why_combination_did_not_exist": "Lack of interdisciplinary research connecting environmental science with neuroscience and BCI",
+      "required_conditions": [
+        "Advanced BCI technology",
+        "Integrated CO2 sensing",
+        "Public engagement platforms"
+      ],
+      "predicted_effect": "Increased public awareness and participation in environmental conservation efforts",
+      "measurement_method": "Surveys, engagement metrics, and CO2 level monitoring",
+      "failure_condition": "Failure to demonstrate significant increase in public engagement or environmental awareness",
+      "prior_art_status": "UNKNOWN",
+      "epistemic_state": "HYPOTHESIS",
+      "emergence_score": 2,
+      "generated_at": "2026-08-11T22:30:37.098568+00:00",
+      "attack_result": {
+        "overall": "SURVIVES",
+        "fatal_count": 0,
+        "major_count": 0,
+        "minor_count": 2,
+        "survives_count": 1,
+        "has_prediction": true,
+        "has_experiment": true,
+        "has_falsification": true,
+        "mechanism_coherent": true,
+        "attacks": {
+          "physics": {
+            "severity": "SURVIVES",
+            "reason": "No fundamental physics violations found"
+          },
+          "materials": {
+            "severity": "MINOR",
+            "reason": "Engineering optimization needed for BCI technology and CO2 sensing integration"
+          },
+          "engineering": {
+            "severity": "MINOR",
+            "reason": "Advanced BCI technology and integrated CO2 sensing are feasible with current engineering capabilities, but optimization and cost reduction are needed for public engagement platforms and real-time collective response systems."
+          }
+        },
+        "survival_rule": "V1.7 calibrated: Fatal=0 AND prediction AND experiment AND falsification AND mechanism_coherent. Major = development risk, not rejection."
+      },
+      "discovery_value": {
+        "novelty_pressure": 20,
+        "constraint_release": 30,
+        "market_need": 80,
+        "scientific_gap": 40,
+        "implementation_readiness": 80,
+        "unexpectedness": 10,
+        "historical_similarity": 60,
+        "overall_assessment": "Moderately valuable discovery with significant potential for real-world impact, but limited novelty and unclear mechanisms",
+        "would_expert_fund": true,
+        "funding_reasoning": "While the mechanisms behind this hypothesis are unknown, the potential for increased public awareness and participation in environmental conservation efforts is significant, and the implementation readiness is high. Experts may fund this to explore the emergent property of real-time, collective environmental monitoring and response systems, and to better understand the underlying mechanisms."
+      },
+      "discovery_value_overall": 45.7
+    }
+  ]
+}
