@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-38F26F9F09F8",
+  "title": "Computational fluid dynamics of geometry",
+  "authors": [
+    "Kenji Garcia",
+    "John Brown"
+  ],
+  "doi": "10.1109/sample.292000",
+  "publisher": "Nature Publishing Group",
+  "publication_date": "2015-06-12",
+  "source_uri": "https://doi.org/10.1109/sample.292000",
+  "repository_uri": null,
+  "abstract": "We report novel findings in the field of mechanical_engineering with significant implications. By integrating multiple analytical approaches, we uncover... Statistical analysis confirms the robustness of our conclusions. The methodology presented here can be extended to related problems.",
+  "fulltext_uri": "https://example.org/fulltext/10.1109/sample.292000",
+  "acquisition_timestamp": "2026-08-11T12:21:25.128975Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "e557b6de4580a27f2d9acfcae054d8d5da02bba119acefc7752830800300b23e",
+  "license": "Apache-2.0",
+  "domain": "mechanical_engineering",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "mechanical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

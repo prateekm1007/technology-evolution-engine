@@ -1,0 +1,43 @@
+{
+  "source_id": "SRC-6FE92320AB94",
+  "title": "Heat integration in chemical plants",
+  "authors": [
+    "Joseph Tanaka",
+    "Kenji Smith",
+    "Patricia Brown"
+  ],
+  "doi": "10.1002/sample.171001",
+  "publisher": "RSC",
+  "publication_date": "2016-04-13",
+  "source_uri": "https://doi.org/10.1002/sample.171001",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of chemical_engineering through experimental and theoretical approaches. Employing advanced characterization methods, we reveal... We observe previously unreported behaviors under controlled conditions. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1002/sample.171001",
+  "acquisition_timestamp": "2026-08-11T12:21:25.546320Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "05effba0e3c155bca5d9536f8e619b7ad1b8e7f311eb2eac91c99c33dc744b14",
+  "license": "CC-BY-NC-4.0",
+  "domain": "chemical_engineering",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "chemical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

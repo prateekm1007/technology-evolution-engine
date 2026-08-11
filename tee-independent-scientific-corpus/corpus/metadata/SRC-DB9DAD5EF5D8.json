@@ -1,0 +1,46 @@
+{
+  "source_id": "SRC-DB9DAD5EF5D8",
+  "title": "Perception systems for perception_task",
+  "authors": [
+    "Yong Anderson",
+    "Ming Rodriguez",
+    "Richard Thomas",
+    "Akira Schmidt",
+    "Mary Thomas",
+    "Jennifer Miller"
+  ],
+  "doi": "10.1016/sample.121002",
+  "publisher": "Springer",
+  "publication_date": "2014-09-20",
+  "source_uri": "https://doi.org/10.1016/sample.121002",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into robotics phenomena. Employing advanced characterization methods, we reveal... Statistical analysis confirms the robustness of our conclusions. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1016/sample.121002",
+  "acquisition_timestamp": "2026-08-11T12:21:26.870947Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "3997a22adef49bcb09680c759fd26090645396c8dea7eb59002899c0f2cd6a85",
+  "license": "Apache-2.0",
+  "domain": "robotics",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "robotics",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-F6E0F1BDDE5A",
+  "title": "Reactor design for substitution reactions",
+  "authors": [
+    "Charles Wang",
+    "Linda Johnson",
+    "Charles Garcia",
+    "Ming Garcia"
+  ],
+  "doi": "10.1016/sample.145000",
+  "publisher": "APS",
+  "publication_date": "2016-08-21",
+  "source_uri": "https://doi.org/10.1016/sample.145000",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of chemical_engineering through experimental and theoretical approaches. Combining theoretical analysis with empirical validation, we establish... We observe previously unreported behaviors under controlled conditions. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1016/sample.145000",
+  "acquisition_timestamp": "2026-08-11T12:21:25.507112Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "aca488a4ec688db4ce20bd11fe5e3335f2bc80f91bbb58605e3dfc88d7228a98",
+  "license": "CC-BY-4.0",
+  "domain": "chemical_engineering",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "chemical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

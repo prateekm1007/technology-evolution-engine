@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-12DB14B312B3",
+  "title": "Algorithm for computing mathematical_quantity",
+  "authors": [
+    "Joseph Wang",
+    "Joseph Wang",
+    "Linda Wang",
+    "Charles Rodriguez"
+  ],
+  "doi": "10.1002/sample.018000",
+  "publisher": "ACM",
+  "publication_date": "2024-06-22",
+  "source_uri": "https://doi.org/10.1002/sample.018000",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in mathematics. Combining theoretical analysis with empirical validation, we establish... Our results indicate significant improvements in performance metrics. This research contributes to the broader understanding of the domain.",
+  "fulltext_uri": "https://example.org/fulltext/10.1002/sample.018000",
+  "acquisition_timestamp": "2026-08-11T12:21:26.488759Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "137a02336a6647c17e3976887e04f55bfeee0cfecdd826a22b9066f5a7cd3dfa",
+  "license": "Apache-2.0",
+  "domain": "mathematics",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "mathematics",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

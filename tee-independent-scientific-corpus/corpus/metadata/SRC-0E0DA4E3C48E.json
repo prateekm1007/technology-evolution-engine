@@ -1,0 +1,45 @@
+{
+  "source_id": "SRC-0E0DA4E3C48E",
+  "title": "Robotic manipulation of object_type",
+  "authors": [
+    "William Smith",
+    "Elizabeth Tanaka",
+    "Richard Chen",
+    "Hiroshi Brown",
+    "Akira Davis"
+  ],
+  "doi": "10.1002/sample.052000",
+  "publisher": "Elsevier",
+  "publication_date": "2024-03-10",
+  "source_uri": "https://doi.org/10.1002/sample.052000",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of mechanical_engineering through experimental and theoretical approaches. Through computational modeling and simulation, we show... Our results indicate significant improvements in performance metrics. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1002/sample.052000",
+  "acquisition_timestamp": "2026-08-11T12:21:24.949255Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "5a4adc41a60e04221049e5f0dbbda83c438cedb3a67b16382738fb8fcd4e574e",
+  "license": "MIT",
+  "domain": "mechanical_engineering",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "mechanical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

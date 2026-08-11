@@ -1,0 +1,46 @@
+{
+  "source_id": "SRC-3D76B2E05491",
+  "title": "Structure-activity relationships in compound_class",
+  "authors": [
+    "Robert Lee",
+    "Michael Schmidt",
+    "Wei Davis",
+    "Ming Jones",
+    "Patricia Thomas",
+    "Linda Mueller"
+  ],
+  "doi": "10.1021/sample.096000",
+  "publisher": "IEEE",
+  "publication_date": "2015-10-17",
+  "source_uri": "https://doi.org/10.1021/sample.096000",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in chemistry. Combining theoretical analysis with empirical validation, we establish... The findings suggest new directions for future research. Our work opens new avenues for exploration in this field.",
+  "fulltext_uri": "https://example.org/fulltext/10.1021/sample.096000",
+  "acquisition_timestamp": "2026-08-11T12:21:23.990026Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "4bd2cb869c7d2b8d9058157391601027b097a5b58f388afd17e1d4b528d8be7b",
+  "license": "Apache-2.0",
+  "domain": "chemistry",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "chemistry",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

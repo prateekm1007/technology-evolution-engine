@@ -1,0 +1,45 @@
+{
+  "source_id": "SRC-7B3161F11700",
+  "title": "Polymer processing for polymer_type",
+  "authors": [
+    "Richard Miller",
+    "Robert Tanaka",
+    "Kenji Kim",
+    "Charles Wang",
+    "Robert Jones"
+  ],
+  "doi": "10.1038/sample.116000",
+  "publisher": "ACM",
+  "publication_date": "2020-08-20",
+  "source_uri": "https://doi.org/10.1038/sample.116000",
+  "repository_uri": null,
+  "abstract": "This paper presents a comprehensive study of chemical_engineering focusing on key aspects. Combining theoretical analysis with empirical validation, we establish... Statistical analysis confirms the robustness of our conclusions. This research contributes to the broader understanding of the domain.",
+  "fulltext_uri": "https://example.org/fulltext/10.1038/sample.116000",
+  "acquisition_timestamp": "2026-08-11T12:21:25.469497Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "5cc748a77b111e7eaf84d14ae1c9383c9746832d57c40c19279c156667dff106",
+  "license": "Apache-2.0",
+  "domain": "chemical_engineering",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "chemical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

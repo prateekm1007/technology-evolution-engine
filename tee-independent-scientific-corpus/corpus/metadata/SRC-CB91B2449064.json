@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-CB91B2449064",
+  "title": "Fuel cell performance with fuel_cell_type configuration",
+  "authors": [
+    "John Tanaka",
+    "Michael Davis",
+    "William Lee",
+    "Jose Jones"
+  ],
+  "doi": "10.1145/sample.048001",
+  "publisher": "APS",
+  "publication_date": "2017-09-08",
+  "source_uri": "https://doi.org/10.1145/sample.048001",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into energy_sciences phenomena. Employing advanced characterization methods, we reveal... Statistical analysis confirms the robustness of our conclusions. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1145/sample.048001",
+  "acquisition_timestamp": "2026-08-11T12:21:25.703022Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "149a720931fd6a9c0081d06782d26a6fd543b089f8e93422cce97b6045d6f597",
+  "license": "MIT",
+  "domain": "energy_sciences",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "energy_sciences",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

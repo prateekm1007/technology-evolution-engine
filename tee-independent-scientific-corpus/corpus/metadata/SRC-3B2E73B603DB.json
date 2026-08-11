@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-3B2E73B603DB",
+  "title": "Quantum computing algorithms for quantum_problem",
+  "authors": [
+    "Jennifer Schmidt",
+    "Anna Park"
+  ],
+  "doi": "10.1145/sample.191000",
+  "publisher": "RSC",
+  "publication_date": "2014-05-11",
+  "source_uri": "https://doi.org/10.1145/sample.191000",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into computer_science phenomena. By integrating multiple analytical approaches, we uncover... Our results indicate significant improvements in performance metrics. The methodology presented here can be extended to related problems.",
+  "fulltext_uri": "https://example.org/fulltext/10.1145/sample.191000",
+  "acquisition_timestamp": "2026-08-11T12:21:24.830650Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "53311222f0cb06a7f47e4fa4626c6932f269c4fc3630edb9be9c4855e5ef3b72",
+  "license": "MIT",
+  "domain": "computer_science",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "computer_science",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

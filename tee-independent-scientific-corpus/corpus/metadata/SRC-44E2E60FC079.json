@@ -1,0 +1,46 @@
+{
+  "source_id": "SRC-44E2E60FC079",
+  "title": "Evolutionary adaptation of trait in lineage",
+  "authors": [
+    "David Martinez",
+    "Akira Miller",
+    "Anna Martinez",
+    "David Thomas",
+    "William Park",
+    "Anna Williams"
+  ],
+  "doi": "10.1145/sample.235001",
+  "publisher": "Springer",
+  "publication_date": "2024-02-07",
+  "source_uri": "https://doi.org/10.1145/sample.235001",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in biology. Employing advanced characterization methods, we reveal... Comparative evaluation demonstrates superiority over existing approaches. The methodology presented here can be extended to related problems.",
+  "fulltext_uri": "https://example.org/fulltext/10.1145/sample.235001",
+  "acquisition_timestamp": "2026-08-11T12:21:24.644226Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "60d29c0b12489d40b66c8e949275c388cb3424eb04f8dadbe024d5d7de7be9e1",
+  "license": "closed",
+  "domain": "biology",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "biology",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

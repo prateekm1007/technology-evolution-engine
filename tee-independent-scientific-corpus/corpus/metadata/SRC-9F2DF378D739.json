@@ -1,0 +1,45 @@
+{
+  "source_id": "SRC-9F2DF378D739",
+  "title": "Brain connectivity analysis using imaging_technique",
+  "authors": [
+    "Michael Park",
+    "William Wang",
+    "Thomas Yamamoto",
+    "Maria Miller",
+    "Kenji Yamamoto"
+  ],
+  "doi": "10.1002/sample.038000",
+  "publisher": "RSC",
+  "publication_date": "2010-09-06",
+  "source_uri": "https://doi.org/10.1002/sample.038000",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of neuroscience through experimental and theoretical approaches. Using state-of-the-art experimental techniques, we demonstrate... Our results indicate significant improvements in performance metrics. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1002/sample.038000",
+  "acquisition_timestamp": "2026-08-11T12:21:26.267161Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "4113402aa8987b489d3cef98d4d69bdce2a8a4327d65889f1538bb0ff1414228",
+  "license": "MIT",
+  "domain": "neuroscience",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "neuroscience",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

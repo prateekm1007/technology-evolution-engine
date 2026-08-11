@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-92BB4201F22C",
+  "title": "Low-power circuit design for application",
+  "authors": [
+    "John Taylor",
+    "Kenji Brown"
+  ],
+  "doi": "10.1109/sample.299000",
+  "publisher": "Springer",
+  "publication_date": "2015-02-07",
+  "source_uri": "https://doi.org/10.1109/sample.299000",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in electrical_engineering. Through computational modeling and simulation, we show... We observe previously unreported behaviors under controlled conditions. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1109/sample.299000",
+  "acquisition_timestamp": "2026-08-11T12:21:25.383601Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "7621c6cc0c657c43a89e98bb6b80e8bb8d3741754b72e0d9f42fafad43668a32",
+  "license": "Apache-2.0",
+  "domain": "electrical_engineering",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "electrical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

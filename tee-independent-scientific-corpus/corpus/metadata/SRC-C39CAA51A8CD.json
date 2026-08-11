@@ -1,0 +1,43 @@
+{
+  "source_id": "SRC-C39CAA51A8CD",
+  "title": "Classification of algebraic_structure",
+  "authors": [
+    "John Miller",
+    "William Chen",
+    "Michael Park"
+  ],
+  "doi": "10.1371/sample.197001",
+  "publisher": "Elsevier",
+  "publication_date": "2011-02-07",
+  "source_uri": "https://doi.org/10.1371/sample.197001",
+  "repository_uri": null,
+  "abstract": "We report novel findings in the field of mathematics with significant implications. By integrating multiple analytical approaches, we uncover... We observe previously unreported behaviors under controlled conditions. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1371/sample.197001",
+  "acquisition_timestamp": "2026-08-11T12:21:26.685399Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "19f33c0c7402234dbc45cfffcc9eb78a2e8b595a1f9f4e85bee4a95f02dca9d1",
+  "license": "Apache-2.0",
+  "domain": "mathematics",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "mathematics",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "source_id": "SRC-267B73358C6A",
+  "title": "Robotic manipulation of object_type",
+  "authors": [
+    "Mary Yamamoto",
+    "Charles Taylor",
+    "Robert Brown"
+  ],
+  "doi": "10.1371/sample.137000",
+  "publisher": "ACM",
+  "publication_date": "2019-03-10",
+  "source_uri": "https://doi.org/10.1371/sample.137000",
+  "repository_uri": null,
+  "abstract": "This paper presents a comprehensive study of mechanical_engineering focusing on key aspects. Combining theoretical analysis with empirical validation, we establish... Our results indicate significant improvements in performance metrics. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1371/sample.137000",
+  "acquisition_timestamp": "2026-08-11T12:21:25.009010Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "ec72c68ebceece5fc9958179cf418dc1d461247c67e558b9a3d0a51a95f20afc",
+  "license": "CC-BY-NC-4.0",
+  "domain": "mechanical_engineering",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "mechanical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

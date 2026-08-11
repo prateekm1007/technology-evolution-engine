@@ -1,0 +1,45 @@
+{
+  "source_id": "SRC-FC181B3309DE",
+  "title": "Brain connectivity analysis using imaging_technique",
+  "authors": [
+    "Joseph Mueller",
+    "Joseph Davis",
+    "Akira Kim",
+    "Anna Davis",
+    "Kenji Kim"
+  ],
+  "doi": "10.1038/sample.257002",
+  "publisher": "Nature Publishing Group",
+  "publication_date": "2022-10-17",
+  "source_uri": "https://doi.org/10.1038/sample.257002",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into neuroscience phenomena. Through computational modeling and simulation, we show... Comparative evaluation demonstrates superiority over existing approaches. This research contributes to the broader understanding of the domain.",
+  "fulltext_uri": "https://example.org/fulltext/10.1038/sample.257002",
+  "acquisition_timestamp": "2026-08-11T12:21:26.432796Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "ebf5158563693713fd343c2582654917b43895dfe375b4d621b64a1ac60b336a",
+  "license": "MIT",
+  "domain": "neuroscience",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "neuroscience",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

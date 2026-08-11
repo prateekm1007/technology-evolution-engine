@@ -1,0 +1,46 @@
+{
+  "source_id": "SRC-14464747E8D0",
+  "title": "Heat integration in chemical plants",
+  "authors": [
+    "Richard Jones",
+    "Wei Chen",
+    "John Suzuki",
+    "James Davis",
+    "William Park",
+    "James Smith"
+  ],
+  "doi": "10.1016/sample.016001",
+  "publisher": "Elsevier",
+  "publication_date": "2023-05-18",
+  "source_uri": "https://doi.org/10.1016/sample.016001",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of chemical_engineering through experimental and theoretical approaches. Through computational modeling and simulation, we show... Our results indicate significant improvements in performance metrics. The methodology presented here can be extended to related problems.",
+  "fulltext_uri": "https://example.org/fulltext/10.1016/sample.016001",
+  "acquisition_timestamp": "2026-08-11T12:21:25.389409Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "7035d627aa6fe9dab2eb99a5ea61cb8abbfabc3580b6d69413c02e1a9dda6122",
+  "license": "CC-BY-NC-4.0",
+  "domain": "chemical_engineering",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "chemical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

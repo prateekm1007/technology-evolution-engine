@@ -1,0 +1,43 @@
+{
+  "source_id": "SRC-068F3A7AA7B3",
+  "title": "Classification of algebraic_structure",
+  "authors": [
+    "David Garcia",
+    "Jennifer Wang",
+    "Wei Mueller"
+  ],
+  "doi": "10.1109/sample.081002",
+  "publisher": "Elsevier",
+  "publication_date": "2023-01-28",
+  "source_uri": "https://doi.org/10.1109/sample.081002",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into mathematics phenomena. Combining theoretical analysis with empirical validation, we establish... The findings suggest new directions for future research. Our work opens new avenues for exploration in this field.",
+  "fulltext_uri": "https://example.org/fulltext/10.1109/sample.081002",
+  "acquisition_timestamp": "2026-08-11T12:21:26.532993Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "da3dae3cf891e4c8077b069a1fd08dc48707302cc59257a97f5d8d5b723979c7",
+  "license": "Apache-2.0",
+  "domain": "mathematics",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "mathematics",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

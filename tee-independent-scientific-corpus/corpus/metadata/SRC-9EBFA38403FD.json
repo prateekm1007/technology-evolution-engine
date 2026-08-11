@@ -1,0 +1,43 @@
+{
+  "source_id": "SRC-9EBFA38403FD",
+  "title": "Microstructural evolution during polymerization",
+  "authors": [
+    "Charles Wang",
+    "Mary Miller",
+    "Michael Johnson"
+  ],
+  "doi": "10.1016/sample.120000",
+  "publisher": "IEEE",
+  "publication_date": "2021-01-27",
+  "source_uri": "https://doi.org/10.1016/sample.120000",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in materials_science. Through computational modeling and simulation, we show... We observe previously unreported behaviors under controlled conditions. The methodology presented here can be extended to related problems.",
+  "fulltext_uri": "https://example.org/fulltext/10.1016/sample.120000",
+  "acquisition_timestamp": "2026-08-11T12:21:24.249515Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "164958deba67ffd2c34bfe801e243c563262c7661e8406374dd8e0c45f2abb48",
+  "license": "CC-BY-NC-4.0",
+  "domain": "materials_science",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "materials_science",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

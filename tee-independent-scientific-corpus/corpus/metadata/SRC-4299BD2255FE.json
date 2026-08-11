@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-4299BD2255FE",
+  "title": "Quantum coherence in perovskite systems",
+  "authors": [
+    "Yong Mueller",
+    "Akira Tanaka",
+    "Kenji Yamamoto",
+    "Wei Chen"
+  ],
+  "doi": "10.1021/sample.204000",
+  "publisher": "ACM",
+  "publication_date": "2024-03-05",
+  "source_uri": "https://doi.org/10.1021/sample.204000",
+  "repository_uri": null,
+  "abstract": "We report novel findings in the field of physics with significant implications. Through computational modeling and simulation, we show... Statistical analysis confirms the robustness of our conclusions. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1021/sample.204000",
+  "acquisition_timestamp": "2026-08-11T12:21:23.849120Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "e8caa347e0cb326513f3f1b11842f14f7274e158bffa1ef3ebdf8e60efb243a6",
+  "license": "Apache-2.0",
+  "domain": "physics",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "physics",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

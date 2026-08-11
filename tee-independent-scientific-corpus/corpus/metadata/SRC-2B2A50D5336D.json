@@ -1,0 +1,46 @@
+{
+  "source_id": "SRC-2B2A50D5336D",
+  "title": "Developmental biology of structure formation",
+  "authors": [
+    "Mary Lee",
+    "Wei Williams",
+    "Hiroshi Park",
+    "Jose Schmidt",
+    "Anna Thomas",
+    "Elizabeth Martinez"
+  ],
+  "doi": "10.1371/sample.008000",
+  "publisher": "ACM",
+  "publication_date": "2019-04-14",
+  "source_uri": "https://doi.org/10.1371/sample.008000",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into biology phenomena. By integrating multiple analytical approaches, we uncover... Statistical analysis confirms the robustness of our conclusions. This research contributes to the broader understanding of the domain.",
+  "fulltext_uri": "https://example.org/fulltext/10.1371/sample.008000",
+  "acquisition_timestamp": "2026-08-11T12:21:24.408690Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "2d4ccece13f8e692689ee01b54e0b09d56de660480e4cacaf72d4dc2e786499a",
+  "license": "MIT",
+  "domain": "biology",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "biology",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

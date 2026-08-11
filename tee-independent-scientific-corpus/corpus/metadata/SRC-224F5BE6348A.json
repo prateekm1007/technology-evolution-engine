@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-224F5BE6348A",
+  "title": "Kinetic analysis of reaction mechanisms",
+  "authors": [
+    "Yong Park",
+    "Patricia Garcia"
+  ],
+  "doi": "10.1109/sample.195001",
+  "publisher": "IEEE",
+  "publication_date": "2021-05-17",
+  "source_uri": "https://doi.org/10.1109/sample.195001",
+  "repository_uri": null,
+  "abstract": "We report novel findings in the field of chemistry with significant implications. Employing advanced characterization methods, we reveal... We observe previously unreported behaviors under controlled conditions. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1109/sample.195001",
+  "acquisition_timestamp": "2026-08-11T12:21:24.065952Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "bb0efb61ba3cd6454ec0b004916e0a3395fefc51497e18ddaf6ab9f0ae6719a5",
+  "license": "MIT",
+  "domain": "chemistry",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "chemistry",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

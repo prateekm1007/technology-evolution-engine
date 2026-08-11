@@ -1,0 +1,43 @@
+{
+  "source_id": "SRC-814C5EC85526",
+  "title": "Catalyst development for industrial_process",
+  "authors": [
+    "Hiroshi Lee",
+    "Robert Miller",
+    "Yong Anderson"
+  ],
+  "doi": "10.1145/sample.062002",
+  "publisher": "ACM",
+  "publication_date": "2020-07-21",
+  "source_uri": "https://doi.org/10.1145/sample.062002",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in chemical_engineering. By integrating multiple analytical approaches, we uncover... The findings suggest new directions for future research. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1145/sample.062002",
+  "acquisition_timestamp": "2026-08-11T12:21:25.430569Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "4c93577665783fd3c3d5cc870c05caa2b71a1fd7e73e56b63888f4f44b8588a7",
+  "license": "Apache-2.0",
+  "domain": "chemical_engineering",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "chemical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

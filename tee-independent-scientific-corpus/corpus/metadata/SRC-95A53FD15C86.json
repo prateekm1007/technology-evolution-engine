@@ -1,0 +1,43 @@
+{
+  "source_id": "SRC-95A53FD15C86",
+  "title": "Biomimetic oxide design inspired by biological_system",
+  "authors": [
+    "Michael Lee",
+    "Charles Kim",
+    "Elizabeth Garcia"
+  ],
+  "doi": "10.1002/sample.183000",
+  "publisher": "APS",
+  "publication_date": "2012-01-03",
+  "source_uri": "https://doi.org/10.1002/sample.183000",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in materials_science. Through computational modeling and simulation, we show... Statistical analysis confirms the robustness of our conclusions. This research contributes to the broader understanding of the domain.",
+  "fulltext_uri": "https://example.org/fulltext/10.1002/sample.183000",
+  "acquisition_timestamp": "2026-08-11T12:21:24.305152Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "a90d971e1381494c6ddb93fbfea68498a9f9419aa0290280068d8a838f63fef7",
+  "license": "closed",
+  "domain": "materials_science",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "materials_science",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

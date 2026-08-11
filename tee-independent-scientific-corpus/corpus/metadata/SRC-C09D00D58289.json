@@ -1,0 +1,45 @@
+{
+  "source_id": "SRC-C09D00D58289",
+  "title": "Biodiversity assessment in habitat",
+  "authors": [
+    "Jose Schmidt",
+    "Michael Tanaka",
+    "Mary Brown",
+    "Thomas Mueller",
+    "Wei Suzuki"
+  ],
+  "doi": "10.1016/sample.001000",
+  "publisher": "Nature Publishing Group",
+  "publication_date": "2014-08-01",
+  "source_uri": "https://doi.org/10.1016/sample.001000",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in environmental_science. By integrating multiple analytical approaches, we uncover... Comparative evaluation demonstrates superiority over existing approaches. This research contributes to the broader understanding of the domain.",
+  "fulltext_uri": "https://example.org/fulltext/10.1016/sample.001000",
+  "acquisition_timestamp": "2026-08-11T12:21:25.942810Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "15fab0860c71a6b48c6b279b99a56e982826ed7de4a8d57b1cac9851173528e1",
+  "license": "Apache-2.0",
+  "domain": "environmental_science",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "environmental_science",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

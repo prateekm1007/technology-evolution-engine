@@ -1,0 +1,45 @@
+{
+  "source_id": "SRC-EDC20B479DE3",
+  "title": "Multi-robot coordination in coordination_scenario",
+  "authors": [
+    "John Jones",
+    "Hiroshi Brown",
+    "Linda Martinez",
+    "William Yamamoto",
+    "Hiroshi Yamamoto"
+  ],
+  "doi": "10.1016/sample.063002",
+  "publisher": "Nature Publishing Group",
+  "publication_date": "2019-08-02",
+  "source_uri": "https://doi.org/10.1016/sample.063002",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into robotics phenomena. Combining theoretical analysis with empirical validation, we establish... We observe previously unreported behaviors under controlled conditions. The methodology presented here can be extended to related problems.",
+  "fulltext_uri": "https://example.org/fulltext/10.1016/sample.063002",
+  "acquisition_timestamp": "2026-08-11T12:21:26.810803Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "7b046a5fc6ddd20d54c9229f54a7a52995e6e2eb27fd7a9b6f7ecbd804ad08dc",
+  "license": "CC-BY-NC-4.0",
+  "domain": "robotics",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "robotics",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

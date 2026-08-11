@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-CE2CBF8B395C",
+  "title": "Electromagnetic compatibility in device_type",
+  "authors": [
+    "John Davis",
+    "David Kim",
+    "Kenji Davis",
+    "Richard Martinez"
+  ],
+  "doi": "10.1371/sample.048000",
+  "publisher": "ACM",
+  "publication_date": "2013-01-27",
+  "source_uri": "https://doi.org/10.1371/sample.048000",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in electrical_engineering. Through computational modeling and simulation, we show... Statistical analysis confirms the robustness of our conclusions. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1371/sample.048000",
+  "acquisition_timestamp": "2026-08-11T12:21:25.171839Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "f72d826b1afa976d3d4043eae09dbb8ab0074a0ebbeb64ebe469a691e9bc003b",
+  "license": "CC-BY-NC-4.0",
+  "domain": "electrical_engineering",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "electrical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "source_id": "SRC-7002F9D06BA8",
+  "title": "Self-assembly of molecule_type into structure",
+  "authors": [
+    "Thomas Thomas",
+    "Jennifer Lee",
+    "Hiroshi Wang",
+    "Thomas Park",
+    "Elizabeth Jones"
+  ],
+  "doi": "10.1371/sample.176000",
+  "publisher": "APS",
+  "publication_date": "2021-06-10",
+  "source_uri": "https://doi.org/10.1371/sample.176000",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in chemistry. Combining theoretical analysis with empirical validation, we establish... We observe previously unreported behaviors under controlled conditions. The methodology presented here can be extended to related problems.",
+  "fulltext_uri": "https://example.org/fulltext/10.1371/sample.176000",
+  "acquisition_timestamp": "2026-08-11T12:21:24.048190Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "92e4a1a4e2c460be140234dd60bf9a1071d03e91c2c1159fec245c9cdd608fa4",
+  "license": "closed",
+  "domain": "chemistry",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "chemistry",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

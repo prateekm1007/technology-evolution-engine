@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-81602D775A18",
+  "title": "Molecular mechanisms of polymerization in human",
+  "authors": [
+    "James Martinez",
+    "John Mueller"
+  ],
+  "doi": "10.1103/sample.053000",
+  "publisher": "ACM",
+  "publication_date": "2023-02-07",
+  "source_uri": "https://doi.org/10.1103/sample.053000",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of biology through experimental and theoretical approaches. Employing advanced characterization methods, we reveal... We observe previously unreported behaviors under controlled conditions. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1103/sample.053000",
+  "acquisition_timestamp": "2026-08-11T12:21:24.445919Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "ba11e5b0f91423d32f238a4f92482008910ecc9a62691ad3bcd25ec301e95d70",
+  "license": "CC-BY-NC-4.0",
+  "domain": "biology",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "biology",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

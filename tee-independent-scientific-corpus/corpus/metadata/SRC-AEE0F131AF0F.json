@@ -1,0 +1,46 @@
+{
+  "source_id": "SRC-AEE0F131AF0F",
+  "title": "Advanced polymer coatings for extreme environments",
+  "authors": [
+    "Linda Park",
+    "Wei Jones",
+    "Jennifer Williams",
+    "Michael Kim",
+    "Wei Williams",
+    "Robert Chen"
+  ],
+  "doi": "10.1016/sample.256000",
+  "publisher": "Elsevier",
+  "publication_date": "2018-05-22",
+  "source_uri": "https://doi.org/10.1016/sample.256000",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in materials_science. Through computational modeling and simulation, we show... The findings suggest new directions for future research. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1016/sample.256000",
+  "acquisition_timestamp": "2026-08-11T12:21:24.367599Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "ee60579d652b5da37ab0bbfcb5a15781f159c714a65ee310d1f1f768751b1ef1",
+  "license": "Apache-2.0",
+  "domain": "materials_science",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "materials_science",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

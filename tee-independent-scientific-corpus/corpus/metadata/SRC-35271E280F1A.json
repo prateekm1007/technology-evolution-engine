@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-35271E280F1A",
+  "title": "Ocean acidification effects on marine_organism",
+  "authors": [
+    "Wei Johnson",
+    "Yong Suzuki",
+    "Kenji Park",
+    "Charles Kim"
+  ],
+  "doi": "10.1103/sample.266002",
+  "publisher": "Springer",
+  "publication_date": "2013-04-06",
+  "source_uri": "https://doi.org/10.1103/sample.266002",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in environmental_science. By integrating multiple analytical approaches, we uncover... Comparative evaluation demonstrates superiority over existing approaches. This research contributes to the broader understanding of the domain.",
+  "fulltext_uri": "https://example.org/fulltext/10.1103/sample.266002",
+  "acquisition_timestamp": "2026-08-11T12:21:26.193219Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "e2dae12c30662bdd62a1753a8b57f2ca2fff50a218a269a7ade740dc26222b8c",
+  "license": "CC-BY-4.0",
+  "domain": "environmental_science",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "environmental_science",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "source_id": "SRC-86C413BDAE92",
+  "title": "Experimental study of interaction in condensed matter",
+  "authors": [
+    "Elizabeth Chen",
+    "Jennifer Anderson",
+    "Ming Miller",
+    "Yong Williams",
+    "Linda Williams",
+    "Jennifer Davis"
+  ],
+  "doi": "10.1103/sample.124000",
+  "publisher": "ACM",
+  "publication_date": "2014-12-11",
+  "source_uri": "https://doi.org/10.1103/sample.124000",
+  "repository_uri": null,
+  "abstract": "We report novel findings in the field of physics with significant implications. Combining theoretical analysis with empirical validation, we establish... We observe previously unreported behaviors under controlled conditions. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1103/sample.124000",
+  "acquisition_timestamp": "2026-08-11T12:21:23.789549Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "9e656b4639b60c980dc1c858887c8dc91d9bae2be851713056a02d875a873552",
+  "license": "Apache-2.0",
+  "domain": "physics",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "physics",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

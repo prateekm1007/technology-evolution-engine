@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-D21C04E5E2BE",
+  "title": "Reinforcement learning in rl_domain",
+  "authors": [
+    "Richard Garcia",
+    "Hiroshi Anderson",
+    "William Davis",
+    "David Suzuki"
+  ],
+  "doi": "10.1021/sample.028000",
+  "publisher": "Springer",
+  "publication_date": "2011-07-22",
+  "source_uri": "https://doi.org/10.1021/sample.028000",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into computer_science phenomena. Through computational modeling and simulation, we show... Statistical analysis confirms the robustness of our conclusions. The methodology presented here can be extended to related problems.",
+  "fulltext_uri": "https://example.org/fulltext/10.1021/sample.028000",
+  "acquisition_timestamp": "2026-08-11T12:21:24.709668Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "a17f10cabdfa28e3a1796df3b8bc5ffde4ce54bd0b5972b7e5d0e8d64410190b",
+  "license": "CC-BY-NC-4.0",
+  "domain": "computer_science",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "computer_science",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

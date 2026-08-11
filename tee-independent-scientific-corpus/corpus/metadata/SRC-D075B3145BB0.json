@@ -1,0 +1,46 @@
+{
+  "source_id": "SRC-D075B3145BB0",
+  "title": "Mechanical properties of carbon fiber composites",
+  "authors": [
+    "James Yamamoto",
+    "Wei Garcia",
+    "Mary Taylor",
+    "David Williams",
+    "Jose Mueller",
+    "Patricia Mueller"
+  ],
+  "doi": "10.1103/sample.283000",
+  "publisher": "Springer",
+  "publication_date": "2019-03-06",
+  "source_uri": "https://doi.org/10.1103/sample.283000",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in materials_science. By integrating multiple analytical approaches, we uncover... Comparative evaluation demonstrates superiority over existing approaches. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1103/sample.283000",
+  "acquisition_timestamp": "2026-08-11T12:21:24.387884Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "405348cb29fe4da42c899254b5ad118d3fbbfd2d91cbe03e981ab4b3eb2f6b2a",
+  "license": "Apache-2.0",
+  "domain": "materials_science",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "materials_science",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

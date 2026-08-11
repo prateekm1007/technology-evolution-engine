@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-1E83CB8D5961",
+  "title": "Molecular mechanisms of isomerization in E. coli",
+  "authors": [
+    "Robert Chen",
+    "David Rodriguez",
+    "Linda Lee",
+    "Jennifer Rodriguez"
+  ],
+  "doi": "10.1145/sample.141000",
+  "publisher": "ACM",
+  "publication_date": "2015-07-08",
+  "source_uri": "https://doi.org/10.1145/sample.141000",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of biology through experimental and theoretical approaches. Employing advanced characterization methods, we reveal... Statistical analysis confirms the robustness of our conclusions. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1145/sample.141000",
+  "acquisition_timestamp": "2026-08-11T12:21:24.532094Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "2954fb4b02897dd3697ad495e3e02f8c2802f17b2bac76765e508a8da192c4ad",
+  "license": "CC-BY-4.0",
+  "domain": "biology",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "biology",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

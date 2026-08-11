@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-9F1CAAE65233",
+  "title": "Metabolic pathways in microorganism",
+  "authors": [
+    "David Kim",
+    "Linda Thomas",
+    "Patricia Yamamoto",
+    "Thomas Wang"
+  ],
+  "doi": "10.1145/sample.012000",
+  "publisher": "Nature Publishing Group",
+  "publication_date": "2021-06-02",
+  "source_uri": "https://doi.org/10.1145/sample.012000",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into biology phenomena. Using state-of-the-art experimental techniques, we demonstrate... The findings suggest new directions for future research. This research contributes to the broader understanding of the domain.",
+  "fulltext_uri": "https://example.org/fulltext/10.1145/sample.012000",
+  "acquisition_timestamp": "2026-08-11T12:21:24.410008Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "8429ca66789c86b3a52bbceeb10a901d3c9d5d7e2349049160d9035613af02c4",
+  "license": "MIT",
+  "domain": "biology",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "biology",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

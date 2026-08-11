@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-B55BB5EAFD16",
+  "title": "Synaptic plasticity in striatum",
+  "authors": [
+    "Thomas Yamamoto",
+    "Yong Taylor",
+    "Elizabeth Davis",
+    "Wei Tanaka"
+  ],
+  "doi": "10.1145/sample.203001",
+  "publisher": "Springer",
+  "publication_date": "2022-01-22",
+  "source_uri": "https://doi.org/10.1145/sample.203001",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into neuroscience phenomena. Using state-of-the-art experimental techniques, we demonstrate... Comparative evaluation demonstrates superiority over existing approaches. Our work opens new avenues for exploration in this field.",
+  "fulltext_uri": "https://example.org/fulltext/10.1145/sample.203001",
+  "acquisition_timestamp": "2026-08-11T12:21:26.390268Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "e1d2713e0b181bd7fab4c4c220a106f55f0dfc6a710f1c268207924992fd38bd",
+  "license": "Apache-2.0",
+  "domain": "neuroscience",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "neuroscience",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

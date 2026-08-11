@@ -1,0 +1,45 @@
+{
+  "source_id": "SRC-60010924BA4E",
+  "title": "Control systems for controlled_system",
+  "authors": [
+    "Linda Jones",
+    "Elizabeth Lee",
+    "Patricia Martinez",
+    "Linda Davis",
+    "Kenji Chen"
+  ],
+  "doi": "10.1038/sample.202000",
+  "publisher": "APS",
+  "publication_date": "2018-11-27",
+  "source_uri": "https://doi.org/10.1038/sample.202000",
+  "repository_uri": null,
+  "abstract": "We report novel findings in the field of electrical_engineering with significant implications. By integrating multiple analytical approaches, we uncover... The findings suggest new directions for future research. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1038/sample.202000",
+  "acquisition_timestamp": "2026-08-11T12:21:25.304761Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "26f45aab5c61e44cf8bf609955420152abb84bda966e17fedb733c095b1139c3",
+  "license": "CC-BY-4.0",
+  "domain": "electrical_engineering",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "electrical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

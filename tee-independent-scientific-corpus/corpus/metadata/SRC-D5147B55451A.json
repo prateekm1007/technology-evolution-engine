@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-D5147B55451A",
+  "title": "Neural circuit mapping of circuit_name",
+  "authors": [
+    "Hiroshi Anderson",
+    "Thomas Davis"
+  ],
+  "doi": "10.1002/sample.204002",
+  "publisher": "Elsevier",
+  "publication_date": "2023-02-04",
+  "source_uri": "https://doi.org/10.1002/sample.204002",
+  "repository_uri": null,
+  "abstract": "This paper presents a comprehensive study of neuroscience focusing on key aspects. Combining theoretical analysis with empirical validation, we establish... The findings suggest new directions for future research. This research contributes to the broader understanding of the domain.",
+  "fulltext_uri": "https://example.org/fulltext/10.1002/sample.204002",
+  "acquisition_timestamp": "2026-08-11T12:21:26.390634Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "2c2ef722209f4886c65c47de3aa5d208ad596e3e9520e9d8038fab4301a69834",
+  "license": "CC-BY-NC-4.0",
+  "domain": "neuroscience",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "neuroscience",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

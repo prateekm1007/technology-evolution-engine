@@ -1,0 +1,43 @@
+{
+  "source_id": "SRC-1DC48501BECA",
+  "title": "Swarm robotics for swarm_task",
+  "authors": [
+    "Linda Davis",
+    "Thomas Yamamoto",
+    "Maria Johnson"
+  ],
+  "doi": "10.1371/sample.257002",
+  "publisher": "RSC",
+  "publication_date": "2015-02-11",
+  "source_uri": "https://doi.org/10.1371/sample.257002",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into robotics phenomena. Through computational modeling and simulation, we show... Statistical analysis confirms the robustness of our conclusions. This research contributes to the broader understanding of the domain.",
+  "fulltext_uri": "https://example.org/fulltext/10.1371/sample.257002",
+  "acquisition_timestamp": "2026-08-11T12:21:26.992881Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "18a98e3607e7c5d20bd0b2e0446e556dc06aaa1f6951b0cc25b30eebf85349cf",
+  "license": "CC-BY-4.0",
+  "domain": "robotics",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "robotics",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

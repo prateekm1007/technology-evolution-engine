@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-17F81855272F",
+  "title": "Polymer processing for polymer_type",
+  "authors": [
+    "Michael Martinez",
+    "James Miller"
+  ],
+  "doi": "10.1145/sample.281000",
+  "publisher": "IEEE",
+  "publication_date": "2017-05-24",
+  "source_uri": "https://doi.org/10.1145/sample.281000",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into chemical_engineering phenomena. Using state-of-the-art experimental techniques, we demonstrate... Statistical analysis confirms the robustness of our conclusions. The methodology presented here can be extended to related problems.",
+  "fulltext_uri": "https://example.org/fulltext/10.1145/sample.281000",
+  "acquisition_timestamp": "2026-08-11T12:21:25.646017Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "76b4d10ad626e9aadcbad3e5cdd39a1963fd92b6cbb8184f7e895fd4521b07a9",
+  "license": "Apache-2.0",
+  "domain": "chemical_engineering",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "chemical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

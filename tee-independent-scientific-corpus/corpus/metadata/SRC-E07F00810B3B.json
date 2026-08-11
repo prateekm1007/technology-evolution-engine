@@ -1,0 +1,45 @@
+{
+  "source_id": "SRC-E07F00810B3B",
+  "title": "Neural correlates of perception",
+  "authors": [
+    "Jose Martinez",
+    "Mary Park",
+    "Richard Chen",
+    "Charles Anderson",
+    "Charles Kim"
+  ],
+  "doi": "10.1016/sample.212001",
+  "publisher": "Nature Publishing Group",
+  "publication_date": "2023-05-30",
+  "source_uri": "https://doi.org/10.1016/sample.212001",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of neuroscience through experimental and theoretical approaches. Employing advanced characterization methods, we reveal... Our results indicate significant improvements in performance metrics. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1016/sample.212001",
+  "acquisition_timestamp": "2026-08-11T12:21:26.404490Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "ed4e6c0318d42cf46cd328a744a3f2a60b5d9e4517e6391538fb916a3845d9a7",
+  "license": "Apache-2.0",
+  "domain": "neuroscience",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "neuroscience",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

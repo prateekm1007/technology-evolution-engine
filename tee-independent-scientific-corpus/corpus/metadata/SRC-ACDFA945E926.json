@@ -1,0 +1,43 @@
+{
+  "source_id": "SRC-ACDFA945E926",
+  "title": "Sensory processing in sensory_system",
+  "authors": [
+    "Akira Yamamoto",
+    "Akira Brown",
+    "Patricia Thomas"
+  ],
+  "doi": "10.1145/sample.082002",
+  "publisher": "RSC",
+  "publication_date": "2013-09-20",
+  "source_uri": "https://doi.org/10.1145/sample.082002",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in neuroscience. Through computational modeling and simulation, we show... We observe previously unreported behaviors under controlled conditions. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1145/sample.082002",
+  "acquisition_timestamp": "2026-08-11T12:21:26.304481Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "950cd18d5dbb70ededa8e38da9737b2a29be02a4d7e79ae194e08770fc0b597f",
+  "license": "Apache-2.0",
+  "domain": "neuroscience",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "neuroscience",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

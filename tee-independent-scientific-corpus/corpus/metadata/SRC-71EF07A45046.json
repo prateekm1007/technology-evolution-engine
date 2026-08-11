@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-71EF07A45046",
+  "title": "Autonomous navigation in outdoor environments",
+  "authors": [
+    "Hiroshi Yamamoto",
+    "Anna Chen"
+  ],
+  "doi": "10.1016/sample.275001",
+  "publisher": "APS",
+  "publication_date": "2022-08-30",
+  "source_uri": "https://doi.org/10.1016/sample.275001",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into robotics phenomena. Employing advanced characterization methods, we reveal... Our results indicate significant improvements in performance metrics. This research contributes to the broader understanding of the domain.",
+  "fulltext_uri": "https://example.org/fulltext/10.1016/sample.275001",
+  "acquisition_timestamp": "2026-08-11T12:21:27.009780Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "285db60aa20ca5777abad2baaf390e47d3a94f368bacb75744cffa99d9bbe734",
+  "license": "CC-BY-4.0",
+  "domain": "robotics",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "robotics",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

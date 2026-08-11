@@ -1,0 +1,45 @@
+{
+  "source_id": "SRC-00607CE7B1CF",
+  "title": "Brain connectivity analysis using imaging_technique",
+  "authors": [
+    "Richard Johnson",
+    "Akira Kim",
+    "Charles Rodriguez",
+    "Jose Williams",
+    "David Martinez"
+  ],
+  "doi": "10.1021/sample.199001",
+  "publisher": "RSC",
+  "publication_date": "2012-05-21",
+  "source_uri": "https://doi.org/10.1021/sample.199001",
+  "repository_uri": null,
+  "abstract": "We report novel findings in the field of neuroscience with significant implications. Employing advanced characterization methods, we reveal... Comparative evaluation demonstrates superiority over existing approaches. This research contributes to the broader understanding of the domain.",
+  "fulltext_uri": "https://example.org/fulltext/10.1021/sample.199001",
+  "acquisition_timestamp": "2026-08-11T12:21:26.388643Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "77a2169a4586b72134c225a16029fe19770bcd388c9e9e924b5c4fa81dae4c19",
+  "license": "CC-BY-NC-4.0",
+  "domain": "neuroscience",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "neuroscience",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

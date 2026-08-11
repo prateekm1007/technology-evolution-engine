@@ -1,0 +1,43 @@
+{
+  "source_id": "SRC-C61DB03A064A",
+  "title": "Tribological properties of material_pair",
+  "authors": [
+    "John Brown",
+    "James Taylor",
+    "Mary Miller"
+  ],
+  "doi": "10.1145/sample.171000",
+  "publisher": "ACM",
+  "publication_date": "2016-03-30",
+  "source_uri": "https://doi.org/10.1145/sample.171000",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into mechanical_engineering phenomena. By integrating multiple analytical approaches, we uncover... The findings suggest new directions for future research. The methodology presented here can be extended to related problems.",
+  "fulltext_uri": "https://example.org/fulltext/10.1145/sample.171000",
+  "acquisition_timestamp": "2026-08-11T12:21:25.031590Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "68e364ef365a29036496e8505830d794c2caaaff40102796cabe5d962c9d26b2",
+  "license": "closed",
+  "domain": "mechanical_engineering",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "mechanical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "source_id": "SRC-1D49D3C546FB",
+  "title": "Additive manufacturing of alloy alloys",
+  "authors": [
+    "Wei Martinez",
+    "Anna Jones",
+    "Richard Brown",
+    "Akira Jones",
+    "Akira Kim"
+  ],
+  "doi": "10.1016/sample.142000",
+  "publisher": "APS",
+  "publication_date": "2021-01-19",
+  "source_uri": "https://doi.org/10.1016/sample.142000",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into materials_science phenomena. Using state-of-the-art experimental techniques, we demonstrate... Comparative evaluation demonstrates superiority over existing approaches. This research contributes to the broader understanding of the domain.",
+  "fulltext_uri": "https://example.org/fulltext/10.1016/sample.142000",
+  "acquisition_timestamp": "2026-08-11T12:21:24.269894Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "af3a74ca5c0712f10a5f2ce43cc498a5f444048fc563d596f571672aa7301e85",
+  "license": "MIT",
+  "domain": "materials_science",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "materials_science",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

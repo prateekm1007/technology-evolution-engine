@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-8B036EE30389",
+  "title": "Graph neural networks for graph_problem",
+  "authors": [
+    "Jennifer Brown",
+    "Michael Smith",
+    "Maria Miller",
+    "Joseph Miller"
+  ],
+  "doi": "10.1038/sample.233001",
+  "publisher": "IEEE",
+  "publication_date": "2021-07-30",
+  "source_uri": "https://doi.org/10.1038/sample.233001",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into computer_science phenomena. Combining theoretical analysis with empirical validation, we establish... The findings suggest new directions for future research. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1038/sample.233001",
+  "acquisition_timestamp": "2026-08-11T12:21:24.867853Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "a17fb029887214c94e8f2a9ec6d2c6af1bd0f34a15b965849c8fbca9ce280179",
+  "license": "Apache-2.0",
+  "domain": "computer_science",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "computer_science",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

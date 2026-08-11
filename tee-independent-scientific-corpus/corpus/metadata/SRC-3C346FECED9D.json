@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-3C346FECED9D",
+  "title": "Computer vision techniques for vision_task",
+  "authors": [
+    "Hiroshi Chen",
+    "Ming Thomas"
+  ],
+  "doi": "10.1021/sample.073000",
+  "publisher": "Elsevier",
+  "publication_date": "2015-03-29",
+  "source_uri": "https://doi.org/10.1021/sample.073000",
+  "repository_uri": null,
+  "abstract": "This paper presents a comprehensive study of computer_science focusing on key aspects. Using state-of-the-art experimental techniques, we demonstrate... Comparative evaluation demonstrates superiority over existing approaches. This research contributes to the broader understanding of the domain.",
+  "fulltext_uri": "https://example.org/fulltext/10.1021/sample.073000",
+  "acquisition_timestamp": "2026-08-11T12:21:24.748646Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "f2cb8b1d7d05d21a479ae0a2e7228c591ddea5b62b7164666a80854823f8f8be",
+  "license": "closed",
+  "domain": "computer_science",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "computer_science",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

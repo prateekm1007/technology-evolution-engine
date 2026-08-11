@@ -1,0 +1,46 @@
+{
+  "source_id": "SRC-ACE43D5CCACE",
+  "title": "Kinetic analysis of reaction mechanisms",
+  "authors": [
+    "Elizabeth Mueller",
+    "Hiroshi Anderson",
+    "David Miller",
+    "Elizabeth Miller",
+    "Linda Martinez",
+    "Maria Lee"
+  ],
+  "doi": "10.1002/sample.219001",
+  "publisher": "APS",
+  "publication_date": "2022-02-04",
+  "source_uri": "https://doi.org/10.1002/sample.219001",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into chemistry phenomena. Through computational modeling and simulation, we show... We observe previously unreported behaviors under controlled conditions. This research contributes to the broader understanding of the domain.",
+  "fulltext_uri": "https://example.org/fulltext/10.1002/sample.219001",
+  "acquisition_timestamp": "2026-08-11T12:21:24.084978Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "4eda4c9c8162aef84da3cc017946000994314c8ce03187258f66b7e92b11dfcb",
+  "license": "MIT",
+  "domain": "chemistry",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "chemistry",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

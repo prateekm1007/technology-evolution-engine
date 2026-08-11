@@ -1,0 +1,46 @@
+{
+  "source_id": "SRC-632556E30875",
+  "title": "Swarm robotics for swarm_task",
+  "authors": [
+    "Richard Anderson",
+    "Akira Thomas",
+    "John Mueller",
+    "William Suzuki",
+    "Michael Thomas",
+    "Elizabeth Martinez"
+  ],
+  "doi": "10.1038/sample.079000",
+  "publisher": "Elsevier",
+  "publication_date": "2023-11-26",
+  "source_uri": "https://doi.org/10.1038/sample.079000",
+  "repository_uri": null,
+  "abstract": "We report novel findings in the field of robotics with significant implications. Employing advanced characterization methods, we reveal... Statistical analysis confirms the robustness of our conclusions. Our work opens new avenues for exploration in this field.",
+  "fulltext_uri": "https://example.org/fulltext/10.1038/sample.079000",
+  "acquisition_timestamp": "2026-08-11T12:21:26.829317Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "807851121a778077f33997ff07249c6c884c2745c4b5467acda992fd02fbfad4",
+  "license": "MIT",
+  "domain": "robotics",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "robotics",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "source_id": "SRC-67B301C595E3",
+  "title": "Reinforcement learning in rl_domain",
+  "authors": [
+    "David Suzuki",
+    "Ming Miller",
+    "John Mueller",
+    "Linda Garcia",
+    "Yong Martinez"
+  ],
+  "doi": "10.1002/sample.050000",
+  "publisher": "IEEE",
+  "publication_date": "2019-06-07",
+  "source_uri": "https://doi.org/10.1002/sample.050000",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into computer_science phenomena. Employing advanced characterization methods, we reveal... Comparative evaluation demonstrates superiority over existing approaches. This research contributes to the broader understanding of the domain.",
+  "fulltext_uri": "https://example.org/fulltext/10.1002/sample.050000",
+  "acquisition_timestamp": "2026-08-11T12:21:24.729140Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "a6b4eab36e3b3ca1c3ca8f9ac68fdc481f1cd6b99b7fce18f39bc5d440db8d8b",
+  "license": "MIT",
+  "domain": "computer_science",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "computer_science",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

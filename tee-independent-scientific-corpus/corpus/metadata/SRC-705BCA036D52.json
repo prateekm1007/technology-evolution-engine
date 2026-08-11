@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-705BCA036D52",
+  "title": "Process optimization for chemical_process",
+  "authors": [
+    "Elizabeth Suzuki",
+    "Richard Tanaka"
+  ],
+  "doi": "10.1103/sample.046001",
+  "publisher": "Springer",
+  "publication_date": "2015-02-17",
+  "source_uri": "https://doi.org/10.1103/sample.046001",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of chemical_engineering through experimental and theoretical approaches. Through computational modeling and simulation, we show... Our results indicate significant improvements in performance metrics. Our work opens new avenues for exploration in this field.",
+  "fulltext_uri": "https://example.org/fulltext/10.1103/sample.046001",
+  "acquisition_timestamp": "2026-08-11T12:21:25.423801Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "60f1a6ad8d93943c1922101d621dc8f9a6ae65550a0cd751ac5f66c118e36ff8",
+  "license": "MIT",
+  "domain": "chemical_engineering",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "chemical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

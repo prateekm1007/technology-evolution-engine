@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-93179F564160",
+  "title": "Thermal management in system",
+  "authors": [
+    "Mary Anderson",
+    "Ming Davis"
+  ],
+  "doi": "10.1002/sample.120001",
+  "publisher": "ACM",
+  "publication_date": "2023-09-15",
+  "source_uri": "https://doi.org/10.1002/sample.120001",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of mechanical_engineering through experimental and theoretical approaches. Employing advanced characterization methods, we reveal... Statistical analysis confirms the robustness of our conclusions. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1002/sample.120001",
+  "acquisition_timestamp": "2026-08-11T12:21:25.003435Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "579274302e41ae354b76e5f6e84ed8e229eb1ca19b544af7621f029835286187",
+  "license": "Apache-2.0",
+  "domain": "mechanical_engineering",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "mechanical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

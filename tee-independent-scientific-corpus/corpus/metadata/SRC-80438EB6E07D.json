@@ -1,0 +1,45 @@
+{
+  "source_id": "SRC-80438EB6E07D",
+  "title": "Additive manufacturing of part_type components",
+  "authors": [
+    "John Yamamoto",
+    "Linda Suzuki",
+    "Jennifer Jones",
+    "John Suzuki",
+    "Michael Brown"
+  ],
+  "doi": "10.1038/sample.071001",
+  "publisher": "ACM",
+  "publication_date": "2023-09-05",
+  "source_uri": "https://doi.org/10.1038/sample.071001",
+  "repository_uri": null,
+  "abstract": "We report novel findings in the field of mechanical_engineering with significant implications. Combining theoretical analysis with empirical validation, we establish... Comparative evaluation demonstrates superiority over existing approaches. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1038/sample.071001",
+  "acquisition_timestamp": "2026-08-11T12:21:24.965444Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "e9d333fde6e2846df8947499ebbd51a6b6f466981e33a5b515e1b84ebc1403bb",
+  "license": "CC-BY-4.0",
+  "domain": "mechanical_engineering",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "mechanical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

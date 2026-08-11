@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-805CD24EFA84",
+  "title": "Computational fluid dynamics of geometry",
+  "authors": [
+    "William Mueller",
+    "Thomas Anderson"
+  ],
+  "doi": "10.1021/sample.246001",
+  "publisher": "APS",
+  "publication_date": "2012-08-15",
+  "source_uri": "https://doi.org/10.1021/sample.246001",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in mechanical_engineering. Combining theoretical analysis with empirical validation, we establish... The findings suggest new directions for future research. Our work opens new avenues for exploration in this field.",
+  "fulltext_uri": "https://example.org/fulltext/10.1021/sample.246001",
+  "acquisition_timestamp": "2026-08-11T12:21:25.088844Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "8a2c089a9bd504245112479beb145f3b795159d10b9c64c32ab1997073c0bf15",
+  "license": "CC-BY-NC-4.0",
+  "domain": "mechanical_engineering",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "mechanical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

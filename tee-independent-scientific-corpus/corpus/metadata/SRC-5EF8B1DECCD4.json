@@ -1,0 +1,46 @@
+{
+  "source_id": "SRC-5EF8B1DECCD4",
+  "title": "Soft robotics design for soft_robot_application",
+  "authors": [
+    "John Suzuki",
+    "Hiroshi Smith",
+    "Richard Anderson",
+    "Linda Taylor",
+    "Richard Tanaka",
+    "Elizabeth Wang"
+  ],
+  "doi": "10.1021/sample.242001",
+  "publisher": "Elsevier",
+  "publication_date": "2015-05-11",
+  "source_uri": "https://doi.org/10.1021/sample.242001",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of robotics through experimental and theoretical approaches. Combining theoretical analysis with empirical validation, we establish... Comparative evaluation demonstrates superiority over existing approaches. This research contributes to the broader understanding of the domain.",
+  "fulltext_uri": "https://example.org/fulltext/10.1021/sample.242001",
+  "acquisition_timestamp": "2026-08-11T12:21:26.987324Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "702838dfdcb64b4dab241b962e03b2f853ae126c6a8b5e8bfefbcfa0f6a6355d",
+  "license": "MIT",
+  "domain": "robotics",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "robotics",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

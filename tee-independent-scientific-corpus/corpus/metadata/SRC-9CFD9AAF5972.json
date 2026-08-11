@@ -1,0 +1,43 @@
+{
+  "source_id": "SRC-9CFD9AAF5972",
+  "title": "Solar cell efficiency enhancement using pv_material",
+  "authors": [
+    "Mary Chen",
+    "Robert Chen",
+    "Hiroshi Thomas"
+  ],
+  "doi": "10.1021/sample.083001",
+  "publisher": "Elsevier",
+  "publication_date": "2022-09-24",
+  "source_uri": "https://doi.org/10.1021/sample.083001",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of energy_sciences through experimental and theoretical approaches. Employing advanced characterization methods, we reveal... Comparative evaluation demonstrates superiority over existing approaches. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1021/sample.083001",
+  "acquisition_timestamp": "2026-08-11T12:21:25.746587Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "3cc3b458b6072abef8c9dfd770cd556275093a2e8d085d290e88eb3fba2aaded",
+  "license": "MIT",
+  "domain": "energy_sciences",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "energy_sciences",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

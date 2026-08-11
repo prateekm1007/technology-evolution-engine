@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-B23CB9B895FC",
+  "title": "Haptic feedback for haptic_application",
+  "authors": [
+    "William Johnson",
+    "Kenji Kim"
+  ],
+  "doi": "10.1103/sample.028001",
+  "publisher": "RSC",
+  "publication_date": "2024-04-08",
+  "source_uri": "https://doi.org/10.1103/sample.028001",
+  "repository_uri": null,
+  "abstract": "This paper presents a comprehensive study of robotics focusing on key aspects. Employing advanced characterization methods, we reveal... Statistical analysis confirms the robustness of our conclusions. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1103/sample.028001",
+  "acquisition_timestamp": "2026-08-11T12:21:26.786093Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "30b2e58b2cac32f08f13f3bd5448954d4d7f0fd25e92607ad5df8680c1640e82",
+  "license": "CC-BY-NC-4.0",
+  "domain": "robotics",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "robotics",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

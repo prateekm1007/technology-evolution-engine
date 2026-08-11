@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-D32ACA997559",
+  "title": "Tribological properties of material_pair",
+  "authors": [
+    "David Martinez",
+    "Richard Garcia"
+  ],
+  "doi": "10.1016/sample.206001",
+  "publisher": "IEEE",
+  "publication_date": "2023-02-10",
+  "source_uri": "https://doi.org/10.1016/sample.206001",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of mechanical_engineering through experimental and theoretical approaches. Using state-of-the-art experimental techniques, we demonstrate... Statistical analysis confirms the robustness of our conclusions. Our work opens new avenues for exploration in this field.",
+  "fulltext_uri": "https://example.org/fulltext/10.1016/sample.206001",
+  "acquisition_timestamp": "2026-08-11T12:21:25.064948Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "ded49eba4749c3e5754aa2ba2d4c7c7107f1e0d23e1ddc04f7a6b201eb1dcf2f",
+  "license": "closed",
+  "domain": "mechanical_engineering",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "mechanical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

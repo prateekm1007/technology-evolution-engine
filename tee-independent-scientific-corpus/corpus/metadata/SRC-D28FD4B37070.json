@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-D28FD4B37070",
+  "title": "Soil contamination by contaminant",
+  "authors": [
+    "Mary Miller",
+    "David Kim",
+    "Jose Lee",
+    "Maria Kim"
+  ],
+  "doi": "10.1038/sample.151000",
+  "publisher": "RSC",
+  "publication_date": "2023-07-03",
+  "source_uri": "https://doi.org/10.1038/sample.151000",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in environmental_science. Employing advanced characterization methods, we reveal... Comparative evaluation demonstrates superiority over existing approaches. The methodology presented here can be extended to related problems.",
+  "fulltext_uri": "https://example.org/fulltext/10.1038/sample.151000",
+  "acquisition_timestamp": "2026-08-11T12:21:26.083189Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "db38236884471d9c0c7ccdaef0f0f00c77d03cb306514fbf86197042cf89db13",
+  "license": "CC-BY-4.0",
+  "domain": "environmental_science",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "environmental_science",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

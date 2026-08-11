@@ -1,0 +1,46 @@
+{
+  "source_id": "SRC-890C4DC8C6D4",
+  "title": "Fuel cell performance with fuel_cell_type configuration",
+  "authors": [
+    "Richard Anderson",
+    "Wei Suzuki",
+    "Charles Schmidt",
+    "Charles Wang",
+    "Jennifer Yamamoto",
+    "Michael Wang"
+  ],
+  "doi": "10.1038/sample.126000",
+  "publisher": "ACM",
+  "publication_date": "2016-04-09",
+  "source_uri": "https://doi.org/10.1038/sample.126000",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of energy_sciences through experimental and theoretical approaches. Combining theoretical analysis with empirical validation, we establish... The findings suggest new directions for future research. This research contributes to the broader understanding of the domain.",
+  "fulltext_uri": "https://example.org/fulltext/10.1038/sample.126000",
+  "acquisition_timestamp": "2026-08-11T12:21:25.783068Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "1bc729f52d00f322897fa892923417edf15c10976bd0c18240c8fe496e2c232d",
+  "license": "CC-BY-4.0",
+  "domain": "energy_sciences",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "energy_sciences",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

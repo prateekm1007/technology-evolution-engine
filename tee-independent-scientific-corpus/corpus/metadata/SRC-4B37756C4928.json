@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-4B37756C4928",
+  "title": "Sensory processing in sensory_system",
+  "authors": [
+    "Patricia Davis",
+    "Ming Suzuki"
+  ],
+  "doi": "10.1145/sample.297001",
+  "publisher": "ACM",
+  "publication_date": "2020-09-29",
+  "source_uri": "https://doi.org/10.1145/sample.297001",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in neuroscience. By integrating multiple analytical approaches, we uncover... Statistical analysis confirms the robustness of our conclusions. Our work opens new avenues for exploration in this field.",
+  "fulltext_uri": "https://example.org/fulltext/10.1145/sample.297001",
+  "acquisition_timestamp": "2026-08-11T12:21:26.470436Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "011adc87ced6064ff210a04c03977fa5a1133668003faf16fcc047dc22612fc3",
+  "license": "CC-BY-4.0",
+  "domain": "neuroscience",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "neuroscience",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

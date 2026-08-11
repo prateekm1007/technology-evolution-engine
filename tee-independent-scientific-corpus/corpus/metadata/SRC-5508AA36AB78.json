@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-5508AA36AB78",
+  "title": "Algorithm for computing mathematical_quantity",
+  "authors": [
+    "David Chen",
+    "Charles Miller"
+  ],
+  "doi": "10.1002/sample.192003",
+  "publisher": "Nature Publishing Group",
+  "publication_date": "2022-01-03",
+  "source_uri": "https://doi.org/10.1002/sample.192003",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into mathematics phenomena. Using state-of-the-art experimental techniques, we demonstrate... Comparative evaluation demonstrates superiority over existing approaches. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1002/sample.192003",
+  "acquisition_timestamp": "2026-08-11T12:21:26.683384Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "d5bfd4ae55bdeb12a64336709a249cfd21278395a81c7cd66f3425195d41347a",
+  "license": "closed",
+  "domain": "mathematics",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "mathematics",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

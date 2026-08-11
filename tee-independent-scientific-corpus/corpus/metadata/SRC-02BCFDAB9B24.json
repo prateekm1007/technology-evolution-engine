@@ -1,0 +1,43 @@
+{
+  "source_id": "SRC-02BCFDAB9B24",
+  "title": "Phase stability in high-entropy graphene",
+  "authors": [
+    "Maria Wang",
+    "John Brown",
+    "William Anderson"
+  ],
+  "doi": "10.1021/sample.007000",
+  "publisher": "Elsevier",
+  "publication_date": "2017-04-05",
+  "source_uri": "https://doi.org/10.1021/sample.007000",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in materials_science. By integrating multiple analytical approaches, we uncover... Our results indicate significant improvements in performance metrics. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1021/sample.007000",
+  "acquisition_timestamp": "2026-08-11T12:21:24.151068Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "0bfddde8318f3f0d263cb4710713ae3ea04d2f850c816c051c555e9f8b0c8854",
+  "license": "CC-BY-4.0",
+  "domain": "materials_science",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "materials_science",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

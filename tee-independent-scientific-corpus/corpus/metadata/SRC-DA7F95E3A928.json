@@ -1,0 +1,43 @@
+{
+  "source_id": "SRC-DA7F95E3A928",
+  "title": "Thermal management in system",
+  "authors": [
+    "Jennifer Suzuki",
+    "Charles Chen",
+    "Jose Johnson"
+  ],
+  "doi": "10.1021/sample.176000",
+  "publisher": "APS",
+  "publication_date": "2011-11-27",
+  "source_uri": "https://doi.org/10.1021/sample.176000",
+  "repository_uri": null,
+  "abstract": "This paper presents a comprehensive study of mechanical_engineering focusing on key aspects. Combining theoretical analysis with empirical validation, we establish... We observe previously unreported behaviors under controlled conditions. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1021/sample.176000",
+  "acquisition_timestamp": "2026-08-11T12:21:25.044000Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "4170d98514e1af559d884ac4b90397ff6eb7e36585f81de55c433fd86db16efb",
+  "license": "CC-BY-NC-4.0",
+  "domain": "mechanical_engineering",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "mechanical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

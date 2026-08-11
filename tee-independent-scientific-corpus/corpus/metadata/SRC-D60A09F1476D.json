@@ -1,0 +1,43 @@
+{
+  "source_id": "SRC-D60A09F1476D",
+  "title": "Multi-robot coordination in coordination_scenario",
+  "authors": [
+    "Wei Garcia",
+    "David Garcia",
+    "James Davis"
+  ],
+  "doi": "10.1371/sample.248002",
+  "publisher": "Elsevier",
+  "publication_date": "2016-08-09",
+  "source_uri": "https://doi.org/10.1371/sample.248002",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in robotics. Through computational modeling and simulation, we show... The findings suggest new directions for future research. Our work opens new avenues for exploration in this field.",
+  "fulltext_uri": "https://example.org/fulltext/10.1371/sample.248002",
+  "acquisition_timestamp": "2026-08-11T12:21:26.989496Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "ff2d724870709f7266f087b62c74574877f60f48d77f5f4305f5c8500ac21f70",
+  "license": "MIT",
+  "domain": "robotics",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "robotics",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "source_id": "SRC-1375AE17BA84",
+  "title": "Learning-based control of robot_type",
+  "authors": [
+    "Akira Rodriguez",
+    "Joseph Chen",
+    "Patricia Park"
+  ],
+  "doi": "10.1038/sample.034002",
+  "publisher": "ACM",
+  "publication_date": "2021-12-05",
+  "source_uri": "https://doi.org/10.1038/sample.034002",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of robotics through experimental and theoretical approaches. Through computational modeling and simulation, we show... Statistical analysis confirms the robustness of our conclusions. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1038/sample.034002",
+  "acquisition_timestamp": "2026-08-11T12:21:26.788211Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "78461d4887ef72c8d51a0e10c65f0d2e0d232644b181884fd43f3a9edd4b33c3",
+  "license": "CC-BY-4.0",
+  "domain": "robotics",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "robotics",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

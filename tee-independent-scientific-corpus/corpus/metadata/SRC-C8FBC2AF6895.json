@@ -1,0 +1,43 @@
+{
+  "source_id": "SRC-C8FBC2AF6895",
+  "title": "Neurodegeneration in disease_model",
+  "authors": [
+    "Michael Jones",
+    "Anna Taylor",
+    "Thomas Tanaka"
+  ],
+  "doi": "10.1016/sample.130002",
+  "publisher": "Elsevier",
+  "publication_date": "2015-08-18",
+  "source_uri": "https://doi.org/10.1016/sample.130002",
+  "repository_uri": null,
+  "abstract": "This paper presents a comprehensive study of neuroscience focusing on key aspects. Combining theoretical analysis with empirical validation, we establish... Our results indicate significant improvements in performance metrics. Our work opens new avenues for exploration in this field.",
+  "fulltext_uri": "https://example.org/fulltext/10.1016/sample.130002",
+  "acquisition_timestamp": "2026-08-11T12:21:26.332274Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "5c01ea38dca0c9b3819a44e90cd7f6934a26165c3d23b350d406ff87fd7c9922",
+  "license": "closed",
+  "domain": "neuroscience",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "neuroscience",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

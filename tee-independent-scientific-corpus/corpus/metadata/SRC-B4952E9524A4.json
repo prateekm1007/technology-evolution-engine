@@ -1,0 +1,45 @@
+{
+  "source_id": "SRC-B4952E9524A4",
+  "title": "Soft robotics design for soft_robot_application",
+  "authors": [
+    "Thomas Thomas",
+    "Anna Miller",
+    "James Tanaka",
+    "Jennifer Brown",
+    "Akira Schmidt"
+  ],
+  "doi": "10.1371/sample.227002",
+  "publisher": "ACM",
+  "publication_date": "2015-07-25",
+  "source_uri": "https://doi.org/10.1371/sample.227002",
+  "repository_uri": null,
+  "abstract": "We report novel findings in the field of robotics with significant implications. Through computational modeling and simulation, we show... Comparative evaluation demonstrates superiority over existing approaches. The methodology presented here can be extended to related problems.",
+  "fulltext_uri": "https://example.org/fulltext/10.1371/sample.227002",
+  "acquisition_timestamp": "2026-08-11T12:21:26.971288Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "5f8743e29d1cb7b12f663edfa7ebe9249fd5256a2ae3ef01b034ff79402489b3",
+  "license": "CC-BY-4.0",
+  "domain": "robotics",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "robotics",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

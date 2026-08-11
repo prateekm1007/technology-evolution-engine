@@ -1,0 +1,46 @@
+{
+  "source_id": "SRC-EEF43085C6C4",
+  "title": "Machine learning acceleration on hardware_platform",
+  "authors": [
+    "Linda Wang",
+    "Anna Martinez",
+    "Jose Suzuki",
+    "Hiroshi Rodriguez",
+    "William Williams",
+    "Michael Taylor"
+  ],
+  "doi": "10.1021/sample.236001",
+  "publisher": "Springer",
+  "publication_date": "2011-05-03",
+  "source_uri": "https://doi.org/10.1021/sample.236001",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in electrical_engineering. Employing advanced characterization methods, we reveal... Our results indicate significant improvements in performance metrics. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1021/sample.236001",
+  "acquisition_timestamp": "2026-08-11T12:21:25.328948Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "34bc0d9c3b5c94f1eb8a3f6989fc58555257729cdc08e6b6ad6b95d14d4bc217",
+  "license": "Apache-2.0",
+  "domain": "electrical_engineering",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "electrical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

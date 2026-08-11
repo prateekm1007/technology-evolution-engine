@@ -1,0 +1,46 @@
+{
+  "source_id": "SRC-303F4E840852",
+  "title": "Population dynamics of human under condition",
+  "authors": [
+    "Robert Garcia",
+    "Thomas Smith",
+    "James Anderson",
+    "Elizabeth Williams",
+    "David Garcia",
+    "Michael Park"
+  ],
+  "doi": "10.1145/sample.052000",
+  "publisher": "Nature Publishing Group",
+  "publication_date": "2018-07-27",
+  "source_uri": "https://doi.org/10.1145/sample.052000",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into biology phenomena. Through computational modeling and simulation, we show... Comparative evaluation demonstrates superiority over existing approaches. The methodology presented here can be extended to related problems.",
+  "fulltext_uri": "https://example.org/fulltext/10.1145/sample.052000",
+  "acquisition_timestamp": "2026-08-11T12:21:24.445598Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "1893e018f3ace7edc3ad60b61e7856f31a43e3c5b825794f5c86a78a12592e10",
+  "license": "CC-BY-4.0",
+  "domain": "biology",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "biology",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

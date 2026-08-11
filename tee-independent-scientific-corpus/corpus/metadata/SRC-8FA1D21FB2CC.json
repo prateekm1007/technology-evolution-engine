@@ -1,0 +1,45 @@
+{
+  "source_id": "SRC-8FA1D21FB2CC",
+  "title": "Comparative genomics of clade reveals insight",
+  "authors": [
+    "Maria Wang",
+    "Akira Anderson",
+    "Anna Garcia",
+    "Robert Garcia",
+    "John Tanaka"
+  ],
+  "doi": "10.1016/sample.150001",
+  "publisher": "Springer",
+  "publication_date": "2015-11-02",
+  "source_uri": "https://doi.org/10.1016/sample.150001",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into biology phenomena. Through computational modeling and simulation, we show... The findings suggest new directions for future research. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1016/sample.150001",
+  "acquisition_timestamp": "2026-08-11T12:21:24.548663Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "2af3cc975aea45c56ee4fd7d3cf3a991244facd632c01ea1329de9432f72d3b8",
+  "license": "CC-BY-4.0",
+  "domain": "biology",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "biology",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

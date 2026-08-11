@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-EAEE90A38F27",
+  "title": "Soil contamination by contaminant",
+  "authors": [
+    "Anna Miller",
+    "Patricia Smith"
+  ],
+  "doi": "10.1016/sample.088000",
+  "publisher": "Elsevier",
+  "publication_date": "2020-01-23",
+  "source_uri": "https://doi.org/10.1016/sample.088000",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into environmental_science phenomena. By integrating multiple analytical approaches, we uncover... The findings suggest new directions for future research. This research contributes to the broader understanding of the domain.",
+  "fulltext_uri": "https://example.org/fulltext/10.1016/sample.088000",
+  "acquisition_timestamp": "2026-08-11T12:21:26.010846Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "5c88ea68c22b60bb2561af08578c766101d6c3b240bd1d4de298d7209b81b5d3",
+  "license": "CC-BY-4.0",
+  "domain": "environmental_science",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "environmental_science",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

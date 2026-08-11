@@ -1,0 +1,43 @@
+{
+  "source_id": "SRC-7BF88F65DB70",
+  "title": "Additive manufacturing of part_type components",
+  "authors": [
+    "Hiroshi Schmidt",
+    "Michael Smith",
+    "Kenji Rodriguez"
+  ],
+  "doi": "10.1103/sample.046000",
+  "publisher": "APS",
+  "publication_date": "2021-03-09",
+  "source_uri": "https://doi.org/10.1103/sample.046000",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in mechanical_engineering. By integrating multiple analytical approaches, we uncover... Our results indicate significant improvements in performance metrics. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1103/sample.046000",
+  "acquisition_timestamp": "2026-08-11T12:21:24.947269Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "aeedda12e9d04995481bce2163bc03673e2b8284236d7b98db645ca73cc04155",
+  "license": "Apache-2.0",
+  "domain": "mechanical_engineering",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "mechanical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-FAEA88DBAFE3",
+  "title": "Pollution monitoring using monitoring_technique",
+  "authors": [
+    "Charles Mueller",
+    "Mary Mueller"
+  ],
+  "doi": "10.1038/sample.211001",
+  "publisher": "APS",
+  "publication_date": "2021-09-10",
+  "source_uri": "https://doi.org/10.1038/sample.211001",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in environmental_science. Employing advanced characterization methods, we reveal... Comparative evaluation demonstrates superiority over existing approaches. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1038/sample.211001",
+  "acquisition_timestamp": "2026-08-11T12:21:26.150657Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "02fc82b55650ff9641b91a88ddbbfc2c5c3dc8f1b513e62f1928dbc8e603fceb",
+  "license": "closed",
+  "domain": "environmental_science",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "environmental_science",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

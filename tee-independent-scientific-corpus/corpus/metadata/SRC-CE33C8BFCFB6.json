@@ -1,0 +1,45 @@
+{
+  "source_id": "SRC-CE33C8BFCFB6",
+  "title": "Manipulation planning for manipulation_task",
+  "authors": [
+    "Ming Brown",
+    "Michael Kim",
+    "Hiroshi Davis",
+    "Ming Schmidt",
+    "Michael Martinez"
+  ],
+  "doi": "10.1109/sample.268001",
+  "publisher": "IEEE",
+  "publication_date": "2014-07-02",
+  "source_uri": "https://doi.org/10.1109/sample.268001",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in robotics. By integrating multiple analytical approaches, we uncover... Statistical analysis confirms the robustness of our conclusions. This research contributes to the broader understanding of the domain.",
+  "fulltext_uri": "https://example.org/fulltext/10.1109/sample.268001",
+  "acquisition_timestamp": "2026-08-11T12:21:27.007206Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "4fe8ffee1e04c5ecaf2c774cd0b21e19e8bb6bb9c935c0bbfc4867278d3cb066",
+  "license": "MIT",
+  "domain": "robotics",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "robotics",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-9DFFCC5E5661",
+  "title": "Modeling and simulation of process_system",
+  "authors": [
+    "Anna Taylor",
+    "Thomas Thomas"
+  ],
+  "doi": "10.1103/sample.257001",
+  "publisher": "Elsevier",
+  "publication_date": "2013-01-04",
+  "source_uri": "https://doi.org/10.1103/sample.257001",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in chemical_engineering. Through computational modeling and simulation, we show... Comparative evaluation demonstrates superiority over existing approaches. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1103/sample.257001",
+  "acquisition_timestamp": "2026-08-11T12:21:25.627114Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "825706fc351ead8f923439a24b1673b27c621d41b8d833a17726f2002b709387",
+  "license": "Apache-2.0",
+  "domain": "chemical_engineering",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "chemical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

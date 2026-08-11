@@ -1,0 +1,43 @@
+{
+  "source_id": "SRC-1002BA2174BB",
+  "title": "Soft robotics design for soft_robot_application",
+  "authors": [
+    "Michael Suzuki",
+    "Joseph Kim",
+    "Thomas Garcia"
+  ],
+  "doi": "10.1103/sample.033002",
+  "publisher": "ACM",
+  "publication_date": "2010-04-05",
+  "source_uri": "https://doi.org/10.1103/sample.033002",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in robotics. Through computational modeling and simulation, we show... The findings suggest new directions for future research. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1103/sample.033002",
+  "acquisition_timestamp": "2026-08-11T12:21:26.787835Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "5609d75006d8d8821fc4ee7a107b53c721d9b0b8d0bacfaca2ca7026af55c9dc",
+  "license": "Apache-2.0",
+  "domain": "robotics",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "robotics",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

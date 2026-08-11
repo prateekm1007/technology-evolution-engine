@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-8B7717471B73",
+  "title": "Haptic feedback for haptic_application",
+  "authors": [
+    "Jose Kim",
+    "Akira Park",
+    "Robert Jones",
+    "Jennifer Wang"
+  ],
+  "doi": "10.1002/sample.189002",
+  "publisher": "IEEE",
+  "publication_date": "2010-06-14",
+  "source_uri": "https://doi.org/10.1002/sample.189002",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of robotics through experimental and theoretical approaches. By integrating multiple analytical approaches, we uncover... Statistical analysis confirms the robustness of our conclusions. The methodology presented here can be extended to related problems.",
+  "fulltext_uri": "https://example.org/fulltext/10.1002/sample.189002",
+  "acquisition_timestamp": "2026-08-11T12:21:26.945279Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "4ce200bbf4d39707a89df599c0d7f401c8e16fff9fbdabd9a7e02d8e7122335c",
+  "license": "closed",
+  "domain": "robotics",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "robotics",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

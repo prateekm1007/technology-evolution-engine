@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-DCE3B640B818",
+  "title": "Swarm robotics for swarm_task",
+  "authors": [
+    "Ming Lee",
+    "Elizabeth Jones"
+  ],
+  "doi": "10.1145/sample.249002",
+  "publisher": "APS",
+  "publication_date": "2011-02-15",
+  "source_uri": "https://doi.org/10.1145/sample.249002",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in robotics. By integrating multiple analytical approaches, we uncover... We observe previously unreported behaviors under controlled conditions. The methodology presented here can be extended to related problems.",
+  "fulltext_uri": "https://example.org/fulltext/10.1145/sample.249002",
+  "acquisition_timestamp": "2026-08-11T12:21:26.989853Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "95e392d2b65f3a4db70c9cdd3a0bfd9a9a94c529475800d11ee18241f7c3fdb8",
+  "license": "Apache-2.0",
+  "domain": "robotics",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "robotics",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

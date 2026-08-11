@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-6C4C19B78955",
+  "title": "Tribological properties of material_pair",
+  "authors": [
+    "Akira Thomas",
+    "Charles Smith",
+    "Elizabeth Brown",
+    "Charles Kim"
+  ],
+  "doi": "10.1371/sample.029001",
+  "publisher": "Elsevier",
+  "publication_date": "2020-12-26",
+  "source_uri": "https://doi.org/10.1371/sample.029001",
+  "repository_uri": null,
+  "abstract": "We report novel findings in the field of mechanical_engineering with significant implications. Through computational modeling and simulation, we show... Comparative evaluation demonstrates superiority over existing approaches. Our work opens new avenues for exploration in this field.",
+  "fulltext_uri": "https://example.org/fulltext/10.1371/sample.029001",
+  "acquisition_timestamp": "2026-08-11T12:21:24.931383Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "c38e968e93b1d34e54e4f9141e0c8e7f8276e4741090d4062d378e753feb0086",
+  "license": "CC-BY-NC-4.0",
+  "domain": "mechanical_engineering",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "mechanical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

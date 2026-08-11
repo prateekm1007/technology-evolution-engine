@@ -1,0 +1,45 @@
+{
+  "source_id": "SRC-2DDEB2D88856",
+  "title": "Mechanistic study of cyclization reactions",
+  "authors": [
+    "John Martinez",
+    "Akira Williams",
+    "David Anderson",
+    "James Brown",
+    "Patricia Jones"
+  ],
+  "doi": "10.1103/sample.185000",
+  "publisher": "ACM",
+  "publication_date": "2019-05-22",
+  "source_uri": "https://doi.org/10.1103/sample.185000",
+  "repository_uri": null,
+  "abstract": "This paper presents a comprehensive study of chemistry focusing on key aspects. Using state-of-the-art experimental techniques, we demonstrate... Our results indicate significant improvements in performance metrics. This research contributes to the broader understanding of the domain.",
+  "fulltext_uri": "https://example.org/fulltext/10.1103/sample.185000",
+  "acquisition_timestamp": "2026-08-11T12:21:24.051177Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "f1860511d0e985642256be5c1829980fb857539107f6bbad9200782ac13c177f",
+  "license": "closed",
+  "domain": "chemistry",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "chemistry",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

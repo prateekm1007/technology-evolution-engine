@@ -1,0 +1,45 @@
+{
+  "source_id": "SRC-0BAEE7F09C41",
+  "title": "Optimization methods for ml_problem",
+  "authors": [
+    "James Williams",
+    "Hiroshi Martinez",
+    "Robert Johnson",
+    "Hiroshi Williams",
+    "William Schmidt"
+  ],
+  "doi": "10.1145/sample.036001",
+  "publisher": "IEEE",
+  "publication_date": "2010-09-27",
+  "source_uri": "https://doi.org/10.1145/sample.036001",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in computer_science. Employing advanced characterization methods, we reveal... Statistical analysis confirms the robustness of our conclusions. The methodology presented here can be extended to related problems.",
+  "fulltext_uri": "https://example.org/fulltext/10.1145/sample.036001",
+  "acquisition_timestamp": "2026-08-11T12:21:24.724494Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "8009ebd8611e25aeeb41def8f9370b09f681fb9029490cb4e2076cab509ec082",
+  "license": "CC-BY-4.0",
+  "domain": "computer_science",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "computer_science",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

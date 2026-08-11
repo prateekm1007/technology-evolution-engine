@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-24998A35C8A4",
+  "title": "Human-robot interaction for interaction_scenario",
+  "authors": [
+    "David Brown",
+    "Maria Miller",
+    "Ming Park",
+    "John Rodriguez"
+  ],
+  "doi": "10.1103/sample.023003",
+  "publisher": "RSC",
+  "publication_date": "2019-11-30",
+  "source_uri": "https://doi.org/10.1103/sample.023003",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of robotics through experimental and theoretical approaches. Using state-of-the-art experimental techniques, we demonstrate... Our results indicate significant improvements in performance metrics. Our work opens new avenues for exploration in this field.",
+  "fulltext_uri": "https://example.org/fulltext/10.1103/sample.023003",
+  "acquisition_timestamp": "2026-08-11T12:21:26.784052Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "1b4fe8f8c1b658c19ec177838e42121e1897d7920d44fb37eb4cc813a049fb0e",
+  "license": "Apache-2.0",
+  "domain": "robotics",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "robotics",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-55D0BEF90BA2",
+  "title": "Hydrogen production via production_method",
+  "authors": [
+    "Yong Anderson",
+    "Kenji Thomas",
+    "Maria Suzuki",
+    "Ming Wang"
+  ],
+  "doi": "10.1021/sample.037000",
+  "publisher": "Nature Publishing Group",
+  "publication_date": "2019-12-20",
+  "source_uri": "https://doi.org/10.1021/sample.037000",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of energy_sciences through experimental and theoretical approaches. Using state-of-the-art experimental techniques, we demonstrate... We observe previously unreported behaviors under controlled conditions. Our work opens new avenues for exploration in this field.",
+  "fulltext_uri": "https://example.org/fulltext/10.1021/sample.037000",
+  "acquisition_timestamp": "2026-08-11T12:21:25.689016Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "0c048f8206e2c76cbafee23aae5df8aaade61c08590faeca533ce44c12a93cfe",
+  "license": "CC-BY-NC-4.0",
+  "domain": "energy_sciences",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "energy_sciences",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

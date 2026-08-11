@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-4FFB418306B9",
+  "title": "Climate change impacts on grassland",
+  "authors": [
+    "Elizabeth Garcia",
+    "Jose Martinez",
+    "Patricia Thomas",
+    "Akira Martinez"
+  ],
+  "doi": "10.1371/sample.027001",
+  "publisher": "Nature Publishing Group",
+  "publication_date": "2012-07-08",
+  "source_uri": "https://doi.org/10.1371/sample.027001",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of environmental_science through experimental and theoretical approaches. Employing advanced characterization methods, we reveal... The findings suggest new directions for future research. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1371/sample.027001",
+  "acquisition_timestamp": "2026-08-11T12:21:25.963360Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "ef5efb0e5551649490dc44bb61c63bfaf3858f3ef08d628e2119c86d2de06ce3",
+  "license": "MIT",
+  "domain": "environmental_science",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "environmental_science",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

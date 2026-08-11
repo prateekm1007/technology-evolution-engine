@@ -1,0 +1,43 @@
+{
+  "source_id": "SRC-F4D8F95EEC84",
+  "title": "Natural language processing for nlp_task",
+  "authors": [
+    "John Rodriguez",
+    "Joseph Tanaka",
+    "Joseph Jones"
+  ],
+  "doi": "10.1109/sample.281002",
+  "publisher": "IEEE",
+  "publication_date": "2014-10-19",
+  "source_uri": "https://doi.org/10.1109/sample.281002",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into computer_science phenomena. Using state-of-the-art experimental techniques, we demonstrate... We observe previously unreported behaviors under controlled conditions. The methodology presented here can be extended to related problems.",
+  "fulltext_uri": "https://example.org/fulltext/10.1109/sample.281002",
+  "acquisition_timestamp": "2026-08-11T12:21:24.905684Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "73a86b00229832f91cbc00f1a13524c4bf6ba3f4d941d4cdb0e99b5a85f111e6",
+  "license": "MIT",
+  "domain": "computer_science",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "computer_science",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

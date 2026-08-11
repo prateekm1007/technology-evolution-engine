@@ -1,0 +1,45 @@
+{
+  "source_id": "SRC-6BF29795B4D1",
+  "title": "Thermoelectric conversion in te_material",
+  "authors": [
+    "Patricia Thomas",
+    "Jose Davis",
+    "John Mueller",
+    "Jennifer Williams",
+    "Jennifer Martinez"
+  ],
+  "doi": "10.1021/sample.129001",
+  "publisher": "ACM",
+  "publication_date": "2015-10-27",
+  "source_uri": "https://doi.org/10.1021/sample.129001",
+  "repository_uri": null,
+  "abstract": "We report novel findings in the field of energy_sciences with significant implications. Through computational modeling and simulation, we show... Statistical analysis confirms the robustness of our conclusions. Our work opens new avenues for exploration in this field.",
+  "fulltext_uri": "https://example.org/fulltext/10.1021/sample.129001",
+  "acquisition_timestamp": "2026-08-11T12:21:25.784900Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "bf06a36d9c37b72cb3210d555c60cf9d71797b0df64afe3a75ad0592317794b6",
+  "license": "Apache-2.0",
+  "domain": "energy_sciences",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "energy_sciences",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

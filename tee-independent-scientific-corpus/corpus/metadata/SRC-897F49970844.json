@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-897F49970844",
+  "title": "Catalyst development for industrial_process",
+  "authors": [
+    "Kenji Schmidt",
+    "William Smith"
+  ],
+  "doi": "10.1038/sample.234002",
+  "publisher": "Springer",
+  "publication_date": "2019-09-04",
+  "source_uri": "https://doi.org/10.1038/sample.234002",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in chemical_engineering. Using state-of-the-art experimental techniques, we demonstrate... We observe previously unreported behaviors under controlled conditions. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1038/sample.234002",
+  "acquisition_timestamp": "2026-08-11T12:21:25.604280Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "b7101a17cd80de574cd7328eeebd212e24201adb61d307f6a087656616e898fe",
+  "license": "CC-BY-NC-4.0",
+  "domain": "chemical_engineering",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "chemical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-520B736A19FC",
+  "title": "Catalytic reforming using photocatalyst catalysts",
+  "authors": [
+    "Mary Brown",
+    "Hiroshi Thomas",
+    "Ming Smith",
+    "Akira Martinez"
+  ],
+  "doi": "10.1021/sample.210000",
+  "publisher": "Nature Publishing Group",
+  "publication_date": "2015-09-25",
+  "source_uri": "https://doi.org/10.1021/sample.210000",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into chemistry phenomena. Through computational modeling and simulation, we show... Comparative evaluation demonstrates superiority over existing approaches. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1021/sample.210000",
+  "acquisition_timestamp": "2026-08-11T12:21:24.071276Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "300dce9a4493ad4fc36029ce9086b79dfad4f0fe19e8541148274f78c177cc77",
+  "license": "CC-BY-NC-4.0",
+  "domain": "chemistry",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "chemistry",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

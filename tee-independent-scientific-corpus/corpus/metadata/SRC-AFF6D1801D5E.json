@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-AFF6D1801D5E",
+  "title": "Scalable distributed system for application",
+  "authors": [
+    "Jose Brown",
+    "Jennifer Thomas"
+  ],
+  "doi": "10.1002/sample.232000",
+  "publisher": "Nature Publishing Group",
+  "publication_date": "2015-03-11",
+  "source_uri": "https://doi.org/10.1002/sample.232000",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in computer_science. By integrating multiple analytical approaches, we uncover... Statistical analysis confirms the robustness of our conclusions. Our work opens new avenues for exploration in this field.",
+  "fulltext_uri": "https://example.org/fulltext/10.1002/sample.232000",
+  "acquisition_timestamp": "2026-08-11T12:21:24.867542Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "29cf57ca887c5b745c8aedf96f12c5cc9f69b9a8acfce31892583b775950fdcd",
+  "license": "MIT",
+  "domain": "computer_science",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "computer_science",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

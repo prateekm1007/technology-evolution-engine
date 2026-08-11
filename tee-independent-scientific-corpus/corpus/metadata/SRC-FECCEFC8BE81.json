@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-FECCEFC8BE81",
+  "title": "Energy storage in storage_material materials",
+  "authors": [
+    "Elizabeth Miller",
+    "Hiroshi Lee"
+  ],
+  "doi": "10.1371/sample.088002",
+  "publisher": "APS",
+  "publication_date": "2017-12-11",
+  "source_uri": "https://doi.org/10.1371/sample.088002",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into energy_sciences phenomena. By integrating multiple analytical approaches, we uncover... Statistical analysis confirms the robustness of our conclusions. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1371/sample.088002",
+  "acquisition_timestamp": "2026-08-11T12:21:25.748591Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "61bf89e9cdd052126cd5d49a0ace46d4629eb5913fd1a6ff2ab893ebbed7afb0",
+  "license": "CC-BY-NC-4.0",
+  "domain": "energy_sciences",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "energy_sciences",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

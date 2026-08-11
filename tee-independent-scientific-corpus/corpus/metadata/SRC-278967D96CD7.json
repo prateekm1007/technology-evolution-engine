@@ -1,0 +1,46 @@
+{
+  "source_id": "SRC-278967D96CD7",
+  "title": "Quantum coupling in oxide systems",
+  "authors": [
+    "Michael Smith",
+    "David Yamamoto",
+    "Kenji Jones",
+    "Richard Lee",
+    "Wei Schmidt",
+    "Elizabeth Schmidt"
+  ],
+  "doi": "10.1103/sample.055000",
+  "publisher": "RSC",
+  "publication_date": "2012-08-03",
+  "source_uri": "https://doi.org/10.1103/sample.055000",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into physics phenomena. Through computational modeling and simulation, we show... We observe previously unreported behaviors under controlled conditions. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1103/sample.055000",
+  "acquisition_timestamp": "2026-08-11T12:21:23.744792Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "0039330ab456e6d6adcfce81511e575f7dd61ac4fba85d4e3ec21b411d2f6552",
+  "license": "MIT",
+  "domain": "physics",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "physics",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

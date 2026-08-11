@@ -1,0 +1,43 @@
+{
+  "source_id": "SRC-C368994D92F3",
+  "title": "Algorithm for computing mathematical_quantity",
+  "authors": [
+    "Jose Kim",
+    "Kenji Miller",
+    "John Miller"
+  ],
+  "doi": "10.1109/sample.222001",
+  "publisher": "Nature Publishing Group",
+  "publication_date": "2023-01-11",
+  "source_uri": "https://doi.org/10.1109/sample.222001",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in mathematics. By integrating multiple analytical approaches, we uncover... Statistical analysis confirms the robustness of our conclusions. Our work opens new avenues for exploration in this field.",
+  "fulltext_uri": "https://example.org/fulltext/10.1109/sample.222001",
+  "acquisition_timestamp": "2026-08-11T12:21:26.703297Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "be5bed3cf9e44acd11957fee3356a7a7969024cd16b5e683d2d828a65dba2350",
+  "license": "CC-BY-NC-4.0",
+  "domain": "mathematics",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "mathematics",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

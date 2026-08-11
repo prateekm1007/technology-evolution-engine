@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-2FDC26B209B0",
+  "title": "Thermoelectric conversion in te_material",
+  "authors": [
+    "Anna Park",
+    "Charles Miller"
+  ],
+  "doi": "10.1145/sample.149001",
+  "publisher": "APS",
+  "publication_date": "2017-01-02",
+  "source_uri": "https://doi.org/10.1145/sample.149001",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into energy_sciences phenomena. Employing advanced characterization methods, we reveal... The findings suggest new directions for future research. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1145/sample.149001",
+  "acquisition_timestamp": "2026-08-11T12:21:25.804707Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "6e0e4b9b901e7bacc38573ab004371dafa79bb7ea4ff14fa2499e1a5376ff441",
+  "license": "Apache-2.0",
+  "domain": "energy_sciences",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "energy_sciences",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

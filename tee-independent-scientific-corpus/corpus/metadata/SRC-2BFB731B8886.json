@@ -1,0 +1,45 @@
+{
+  "source_id": "SRC-2BFB731B8886",
+  "title": "Haptic feedback for haptic_application",
+  "authors": [
+    "Linda Lee",
+    "Yong Smith",
+    "Mary Johnson",
+    "Mary Tanaka",
+    "Kenji Thomas"
+  ],
+  "doi": "10.1016/sample.131000",
+  "publisher": "Nature Publishing Group",
+  "publication_date": "2010-11-12",
+  "source_uri": "https://doi.org/10.1016/sample.131000",
+  "repository_uri": null,
+  "abstract": "This paper presents a comprehensive study of robotics focusing on key aspects. Using state-of-the-art experimental techniques, we demonstrate... Statistical analysis confirms the robustness of our conclusions. Our work opens new avenues for exploration in this field.",
+  "fulltext_uri": "https://example.org/fulltext/10.1016/sample.131000",
+  "acquisition_timestamp": "2026-08-11T12:21:26.886276Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "fb48e01951855553d61590ec8da06852e8f651821dd96ec2924c096a23ec899e",
+  "license": "MIT",
+  "domain": "robotics",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "robotics",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

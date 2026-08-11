@@ -1,0 +1,46 @@
+{
+  "source_id": "SRC-4390BB864D10",
+  "title": "Fuel cell performance with fuel_cell_type configuration",
+  "authors": [
+    "Charles Schmidt",
+    "David Rodriguez",
+    "Mary Smith",
+    "Yong Park",
+    "John Taylor",
+    "Jose Johnson"
+  ],
+  "doi": "10.1016/sample.163001",
+  "publisher": "ACM",
+  "publication_date": "2021-01-01",
+  "source_uri": "https://doi.org/10.1016/sample.163001",
+  "repository_uri": null,
+  "abstract": "This paper presents a comprehensive study of energy_sciences focusing on key aspects. By integrating multiple analytical approaches, we uncover... The findings suggest new directions for future research. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1016/sample.163001",
+  "acquisition_timestamp": "2026-08-11T12:21:25.809784Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "2e5aede5ee9c053950d0565a8d829ecd608c0d0ef5895e8d7db3acaefd1947ad",
+  "license": "MIT",
+  "domain": "energy_sciences",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "energy_sciences",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

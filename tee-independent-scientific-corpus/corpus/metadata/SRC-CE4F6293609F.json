@@ -1,0 +1,43 @@
+{
+  "source_id": "SRC-CE4F6293609F",
+  "title": "Classification of algebraic_structure",
+  "authors": [
+    "David Garcia",
+    "Hiroshi Johnson",
+    "Richard Tanaka"
+  ],
+  "doi": "10.1038/sample.127000",
+  "publisher": "Nature Publishing Group",
+  "publication_date": "2014-11-06",
+  "source_uri": "https://doi.org/10.1038/sample.127000",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into mathematics phenomena. Through computational modeling and simulation, we show... Our results indicate significant improvements in performance metrics. This research contributes to the broader understanding of the domain.",
+  "fulltext_uri": "https://example.org/fulltext/10.1038/sample.127000",
+  "acquisition_timestamp": "2026-08-11T12:21:26.607780Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "15d22745eb4e9a925b991ab0f6da9dab27005ab7db6ce7b86d97bd1a4f34e124",
+  "license": "MIT",
+  "domain": "mathematics",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "mathematics",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

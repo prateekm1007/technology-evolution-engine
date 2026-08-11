@@ -1,0 +1,46 @@
+{
+  "source_id": "SRC-1F09C9E19CFF",
+  "title": "Classification of algebraic_structure",
+  "authors": [
+    "Charles Jones",
+    "David Thomas",
+    "Thomas Yamamoto",
+    "Wei Kim",
+    "Anna Miller",
+    "Thomas Anderson"
+  ],
+  "doi": "10.1021/sample.266000",
+  "publisher": "Elsevier",
+  "publication_date": "2022-08-09",
+  "source_uri": "https://doi.org/10.1021/sample.266000",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into mathematics phenomena. Combining theoretical analysis with empirical validation, we establish... Comparative evaluation demonstrates superiority over existing approaches. This research contributes to the broader understanding of the domain.",
+  "fulltext_uri": "https://example.org/fulltext/10.1021/sample.266000",
+  "acquisition_timestamp": "2026-08-11T12:21:26.730613Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "52d64bd031c97cf6a6f757bfee2b250284da7f923f6811d1a5fc33274c1161bb",
+  "license": "CC-BY-NC-4.0",
+  "domain": "mathematics",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "mathematics",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

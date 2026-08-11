@@ -1,0 +1,45 @@
+{
+  "source_id": "SRC-BBCFFE3632DE",
+  "title": "Separation processes for mixture_type mixtures",
+  "authors": [
+    "Michael Wang",
+    "Akira Anderson",
+    "Akira Johnson",
+    "Michael Rodriguez",
+    "Hiroshi Yamamoto"
+  ],
+  "doi": "10.1016/sample.141001",
+  "publisher": "Nature Publishing Group",
+  "publication_date": "2014-02-27",
+  "source_uri": "https://doi.org/10.1016/sample.141001",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into chemical_engineering phenomena. Employing advanced characterization methods, we reveal... Comparative evaluation demonstrates superiority over existing approaches. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1016/sample.141001",
+  "acquisition_timestamp": "2026-08-11T12:21:25.503408Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "77a7221afe109ab657dadaef457b7a6e0e6ace0c1a4f77a5684136b858472e14",
+  "license": "closed",
+  "domain": "chemical_engineering",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "chemical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

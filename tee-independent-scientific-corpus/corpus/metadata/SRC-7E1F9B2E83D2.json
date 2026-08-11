@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-7E1F9B2E83D2",
+  "title": "Solar cell efficiency enhancement using pv_material",
+  "authors": [
+    "Kenji Rodriguez",
+    "Hiroshi Lee",
+    "Anna Thomas",
+    "Maria Lee"
+  ],
+  "doi": "10.1002/sample.172001",
+  "publisher": "Elsevier",
+  "publication_date": "2017-12-29",
+  "source_uri": "https://doi.org/10.1002/sample.172001",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of energy_sciences through experimental and theoretical approaches. Combining theoretical analysis with empirical validation, we establish... Statistical analysis confirms the robustness of our conclusions. The methodology presented here can be extended to related problems.",
+  "fulltext_uri": "https://example.org/fulltext/10.1002/sample.172001",
+  "acquisition_timestamp": "2026-08-11T12:21:25.823840Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "bda660acc13c2860481c8ca1b6989e82b77b933b6415b0bee7eb4926c8662756",
+  "license": "Apache-2.0",
+  "domain": "energy_sciences",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "energy_sciences",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

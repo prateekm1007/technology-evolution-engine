@@ -1,0 +1,46 @@
+{
+  "source_id": "SRC-784DDB8D17A8",
+  "title": "Robot ethics in ethical_scenario",
+  "authors": [
+    "Linda Thomas",
+    "Thomas Johnson",
+    "James Smith",
+    "Elizabeth Lee",
+    "Richard Mueller",
+    "Wei Tanaka"
+  ],
+  "doi": "10.1016/sample.233003",
+  "publisher": "IEEE",
+  "publication_date": "2018-10-26",
+  "source_uri": "https://doi.org/10.1016/sample.233003",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in robotics. By integrating multiple analytical approaches, we uncover... Statistical analysis confirms the robustness of our conclusions. Our work opens new avenues for exploration in this field.",
+  "fulltext_uri": "https://example.org/fulltext/10.1016/sample.233003",
+  "acquisition_timestamp": "2026-08-11T12:21:26.983966Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "76786d87dd4212e8d3f6b14fa00ee275c942b3d2d69d6036774d666e4739a0cc",
+  "license": "MIT",
+  "domain": "robotics",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "robotics",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

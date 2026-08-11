@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-EC1A3AC026ED",
+  "title": "Wind turbine optimization for wind_condition",
+  "authors": [
+    "Joseph Martinez",
+    "Charles Johnson",
+    "Maria Williams",
+    "Thomas Anderson"
+  ],
+  "doi": "10.1038/sample.283001",
+  "publisher": "RSC",
+  "publication_date": "2014-12-07",
+  "source_uri": "https://doi.org/10.1038/sample.283001",
+  "repository_uri": null,
+  "abstract": "This paper presents a comprehensive study of energy_sciences focusing on key aspects. Using state-of-the-art experimental techniques, we demonstrate... The findings suggest new directions for future research. This research contributes to the broader understanding of the domain.",
+  "fulltext_uri": "https://example.org/fulltext/10.1038/sample.283001",
+  "acquisition_timestamp": "2026-08-11T12:21:25.922824Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "8e588890a0d437dd0754730c048c6ec83c14f72c78e5997d435243a761873232",
+  "license": "closed",
+  "domain": "energy_sciences",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "energy_sciences",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "source_id": "SRC-140A1DA6AC71",
+  "title": "Heat integration in chemical plants",
+  "authors": [
+    "Linda Anderson",
+    "William Lee",
+    "William Davis",
+    "Jose Smith",
+    "Thomas Mueller"
+  ],
+  "doi": "10.1109/sample.291001",
+  "publisher": "Nature Publishing Group",
+  "publication_date": "2015-07-10",
+  "source_uri": "https://doi.org/10.1109/sample.291001",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in chemical_engineering. By integrating multiple analytical approaches, we uncover... The findings suggest new directions for future research. Our work opens new avenues for exploration in this field.",
+  "fulltext_uri": "https://example.org/fulltext/10.1109/sample.291001",
+  "acquisition_timestamp": "2026-08-11T12:21:25.649103Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "7f153dfd5cd02f678d683e0d37508ce52a91037c7440e1a0729eaabe7c7f0dea",
+  "license": "MIT",
+  "domain": "chemical_engineering",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "chemical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

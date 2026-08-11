@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-C46D3D1E2C2E",
+  "title": "Electrochemical polymerization in solvent solutions",
+  "authors": [
+    "Mary Tanaka",
+    "Thomas Davis"
+  ],
+  "doi": "10.1038/sample.091000",
+  "publisher": "APS",
+  "publication_date": "2015-09-21",
+  "source_uri": "https://doi.org/10.1038/sample.091000",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in chemistry. Using state-of-the-art experimental techniques, we demonstrate... We observe previously unreported behaviors under controlled conditions. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1038/sample.091000",
+  "acquisition_timestamp": "2026-08-11T12:21:23.988452Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "70c20b1139bacf847ecb7bea696d0e079c1cb30fac618901165b3456b1131e82",
+  "license": "Apache-2.0",
+  "domain": "chemistry",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "chemistry",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "source_id": "SRC-6686D5EC3A90",
+  "title": "Metabolic pathways in microorganism",
+  "authors": [
+    "Patricia Jones",
+    "Wei Schmidt",
+    "Charles Tanaka"
+  ],
+  "doi": "10.1002/sample.125000",
+  "publisher": "IEEE",
+  "publication_date": "2011-04-03",
+  "source_uri": "https://doi.org/10.1002/sample.125000",
+  "repository_uri": null,
+  "abstract": "This paper presents a comprehensive study of biology focusing on key aspects. Using state-of-the-art experimental techniques, we demonstrate... The findings suggest new directions for future research. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1002/sample.125000",
+  "acquisition_timestamp": "2026-08-11T12:21:24.503971Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "1fad20a60206211b3a9382d35158e012a513f984937e214ee41414ee138ac3c4",
+  "license": "CC-BY-4.0",
+  "domain": "biology",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "biology",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

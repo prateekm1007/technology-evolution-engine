@@ -1,0 +1,46 @@
+{
+  "source_id": "SRC-C94A4E3CF95B",
+  "title": "Genomic analysis reveals finding in species",
+  "authors": [
+    "Anna Suzuki",
+    "James Taylor",
+    "Charles Lee",
+    "Charles Wang",
+    "William Anderson",
+    "William Rodriguez"
+  ],
+  "doi": "10.1002/sample.169000",
+  "publisher": "RSC",
+  "publication_date": "2016-09-24",
+  "source_uri": "https://doi.org/10.1002/sample.169000",
+  "repository_uri": null,
+  "abstract": "We report novel findings in the field of biology with significant implications. Through computational modeling and simulation, we show... Our results indicate significant improvements in performance metrics. Our work opens new avenues for exploration in this field.",
+  "fulltext_uri": "https://example.org/fulltext/10.1002/sample.169000",
+  "acquisition_timestamp": "2026-08-11T12:21:24.567393Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "c69825c9ab76faf01dbdea14dd1e5ef010cfd99bde80c9c3e960cc93b5c2b3ad",
+  "license": "closed",
+  "domain": "biology",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "biology",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

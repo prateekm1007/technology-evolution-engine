@@ -1,0 +1,46 @@
+{
+  "source_id": "SRC-F539F4D8F433",
+  "title": "Robotic manipulation of object_type",
+  "authors": [
+    "Yong Yamamoto",
+    "Richard Jones",
+    "Hiroshi Smith",
+    "Michael Yamamoto",
+    "Jose Rodriguez",
+    "John Tanaka"
+  ],
+  "doi": "10.1002/sample.042000",
+  "publisher": "Springer",
+  "publication_date": "2021-09-29",
+  "source_uri": "https://doi.org/10.1002/sample.042000",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in mechanical_engineering. By integrating multiple analytical approaches, we uncover... The findings suggest new directions for future research. This research contributes to the broader understanding of the domain.",
+  "fulltext_uri": "https://example.org/fulltext/10.1002/sample.042000",
+  "acquisition_timestamp": "2026-08-11T12:21:24.946064Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "ad39eabf78987b8ffef6279c7ac5a65c278b26b1f62edbb96467468312a2f98e",
+  "license": "CC-BY-4.0",
+  "domain": "mechanical_engineering",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "mechanical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

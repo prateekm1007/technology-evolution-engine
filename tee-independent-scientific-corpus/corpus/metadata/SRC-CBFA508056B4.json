@@ -1,0 +1,45 @@
+{
+  "source_id": "SRC-CBFA508056B4",
+  "title": "Biofuel production from biomass_type",
+  "authors": [
+    "Richard Mueller",
+    "Yong Lee",
+    "David Thomas",
+    "Linda Johnson",
+    "Yong Suzuki"
+  ],
+  "doi": "10.1109/sample.104000",
+  "publisher": "ACM",
+  "publication_date": "2018-10-02",
+  "source_uri": "https://doi.org/10.1109/sample.104000",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of energy_sciences through experimental and theoretical approaches. Using state-of-the-art experimental techniques, we demonstrate... Our results indicate significant improvements in performance metrics. This research contributes to the broader understanding of the domain.",
+  "fulltext_uri": "https://example.org/fulltext/10.1109/sample.104000",
+  "acquisition_timestamp": "2026-08-11T12:21:25.764810Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "f9df77e37ddd0858e489c0058df91dc2485de1006a4594b9793426c1c2663632",
+  "license": "MIT",
+  "domain": "energy_sciences",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "energy_sciences",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

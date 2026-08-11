@@ -1,0 +1,46 @@
+{
+  "source_id": "SRC-D762414AAA97",
+  "title": "Solar cell efficiency enhancement using pv_material",
+  "authors": [
+    "Mary Brown",
+    "John Smith",
+    "Maria Miller",
+    "Linda Thomas",
+    "Maria Williams",
+    "Kenji Thomas"
+  ],
+  "doi": "10.1038/sample.195000",
+  "publisher": "ACM",
+  "publication_date": "2016-04-15",
+  "source_uri": "https://doi.org/10.1038/sample.195000",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in energy_sciences. By integrating multiple analytical approaches, we uncover... The findings suggest new directions for future research. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1038/sample.195000",
+  "acquisition_timestamp": "2026-08-11T12:21:25.846472Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "c3d860035bbff75e98ae1c4204d9492c3484f29f391f21b5565c4f517815519f",
+  "license": "closed",
+  "domain": "energy_sciences",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "energy_sciences",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

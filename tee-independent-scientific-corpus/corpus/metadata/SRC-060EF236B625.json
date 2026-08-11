@@ -1,0 +1,45 @@
+{
+  "source_id": "SRC-060EF236B625",
+  "title": "Robot ethics in ethical_scenario",
+  "authors": [
+    "Wei Chen",
+    "Jennifer Rodriguez",
+    "Wei Martinez",
+    "Michael Lee",
+    "Wei Kim"
+  ],
+  "doi": "10.1371/sample.108000",
+  "publisher": "ACM",
+  "publication_date": "2016-09-30",
+  "source_uri": "https://doi.org/10.1371/sample.108000",
+  "repository_uri": null,
+  "abstract": "We report novel findings in the field of robotics with significant implications. Through computational modeling and simulation, we show... Statistical analysis confirms the robustness of our conclusions. This research contributes to the broader understanding of the domain.",
+  "fulltext_uri": "https://example.org/fulltext/10.1371/sample.108000",
+  "acquisition_timestamp": "2026-08-11T12:21:26.864727Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "5eb54a9ce0c45648412720aefdc5257951d8463a0bf5176293faf5553778ef1c",
+  "license": "MIT",
+  "domain": "robotics",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "robotics",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

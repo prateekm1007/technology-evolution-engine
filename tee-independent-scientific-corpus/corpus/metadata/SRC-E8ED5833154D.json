@@ -1,0 +1,46 @@
+{
+  "source_id": "SRC-E8ED5833154D",
+  "title": "Computational fluid dynamics of geometry",
+  "authors": [
+    "Richard Wang",
+    "Patricia Thomas",
+    "Richard Thomas",
+    "Charles Kim",
+    "Ming Schmidt",
+    "Robert Chen"
+  ],
+  "doi": "10.1038/sample.006001",
+  "publisher": "IEEE",
+  "publication_date": "2021-08-04",
+  "source_uri": "https://doi.org/10.1038/sample.006001",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into mechanical_engineering phenomena. Employing advanced characterization methods, we reveal... Our results indicate significant improvements in performance metrics. Our work opens new avenues for exploration in this field.",
+  "fulltext_uri": "https://example.org/fulltext/10.1038/sample.006001",
+  "acquisition_timestamp": "2026-08-11T12:21:24.923917Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "5a141ddcf260f03e5efe8b3a7147c1198a0946afaec64c49068303bdbf474f3f",
+  "license": "MIT",
+  "domain": "mechanical_engineering",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "mechanical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "source_id": "SRC-8C9EEE4A0B80",
+  "title": "Neurotransmitter dynamics during behavior",
+  "authors": [
+    "Jose Smith",
+    "Linda Garcia",
+    "Ming Yamamoto",
+    "Robert Lee",
+    "Patricia Anderson",
+    "Patricia Park"
+  ],
+  "doi": "10.1021/sample.074002",
+  "publisher": "RSC",
+  "publication_date": "2013-07-26",
+  "source_uri": "https://doi.org/10.1021/sample.074002",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into neuroscience phenomena. By integrating multiple analytical approaches, we uncover... The findings suggest new directions for future research. Our work opens new avenues for exploration in this field.",
+  "fulltext_uri": "https://example.org/fulltext/10.1021/sample.074002",
+  "acquisition_timestamp": "2026-08-11T12:21:26.290966Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "b7418d1f911a4fe706ff03aefe3ae1c06cbb698dd4e62f3a79e2d51182df0f4e",
+  "license": "MIT",
+  "domain": "neuroscience",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "neuroscience",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

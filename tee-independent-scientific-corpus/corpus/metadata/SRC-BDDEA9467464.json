@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-BDDEA9467464",
+  "title": "Modeling and simulation of process_system",
+  "authors": [
+    "Richard Anderson",
+    "Kenji Schmidt",
+    "Charles Brown",
+    "Mary Park"
+  ],
+  "doi": "10.1002/sample.047000",
+  "publisher": "APS",
+  "publication_date": "2018-08-07",
+  "source_uri": "https://doi.org/10.1002/sample.047000",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in chemical_engineering. Through computational modeling and simulation, we show... We observe previously unreported behaviors under controlled conditions. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1002/sample.047000",
+  "acquisition_timestamp": "2026-08-11T12:21:25.424583Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "dd130e655f3e55151d06d71b6bd849c623c1855211f7d27d20884cd1c68d3412",
+  "license": "CC-BY-4.0",
+  "domain": "chemical_engineering",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "chemical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-76DBD2DB5E29",
+  "title": "Learning-based control of robot_type",
+  "authors": [
+    "John Schmidt",
+    "Ming Garcia",
+    "Hiroshi Johnson",
+    "Linda Rodriguez"
+  ],
+  "doi": "10.1371/sample.024002",
+  "publisher": "Elsevier",
+  "publication_date": "2016-06-09",
+  "source_uri": "https://doi.org/10.1371/sample.024002",
+  "repository_uri": null,
+  "abstract": "This paper presents a comprehensive study of robotics focusing on key aspects. Using state-of-the-art experimental techniques, we demonstrate... The findings suggest new directions for future research. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1371/sample.024002",
+  "acquisition_timestamp": "2026-08-11T12:21:26.784603Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "e26aa4cb26a377ef95effd82c700117c04f98f2cedb16b84efd8bb952aea1ad5",
+  "license": "CC-BY-4.0",
+  "domain": "robotics",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "robotics",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

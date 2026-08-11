@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-670161771DB3",
+  "title": "Optimization methods for ml_problem",
+  "authors": [
+    "Anna Suzuki",
+    "Ming Tanaka",
+    "Wei Smith",
+    "David Yamamoto"
+  ],
+  "doi": "10.1145/sample.119001",
+  "publisher": "RSC",
+  "publication_date": "2017-01-16",
+  "source_uri": "https://doi.org/10.1145/sample.119001",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into computer_science phenomena. Combining theoretical analysis with empirical validation, we establish... Comparative evaluation demonstrates superiority over existing approaches. This research contributes to the broader understanding of the domain.",
+  "fulltext_uri": "https://example.org/fulltext/10.1145/sample.119001",
+  "acquisition_timestamp": "2026-08-11T12:21:24.784911Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "1e4ffd9c6887851b74bc903a4a7bdd7630b0547b1fe16e0d27efbce39dce1525",
+  "license": "Apache-2.0",
+  "domain": "computer_science",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "computer_science",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

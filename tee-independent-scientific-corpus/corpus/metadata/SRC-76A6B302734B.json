@@ -1,0 +1,45 @@
+{
+  "source_id": "SRC-76A6B302734B",
+  "title": "Scalable distributed system for application",
+  "authors": [
+    "James Smith",
+    "Jennifer Yamamoto",
+    "Mary Smith",
+    "Jose Garcia",
+    "Akira Davis"
+  ],
+  "doi": "10.1109/sample.034000",
+  "publisher": "Springer",
+  "publication_date": "2024-04-19",
+  "source_uri": "https://doi.org/10.1109/sample.034000",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in computer_science. By integrating multiple analytical approaches, we uncover... Comparative evaluation demonstrates superiority over existing approaches. The methodology presented here can be extended to related problems.",
+  "fulltext_uri": "https://example.org/fulltext/10.1109/sample.034000",
+  "acquisition_timestamp": "2026-08-11T12:21:24.722718Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "d701103772d547e03fa729d815a4a39cc6bf2bf9e32c2c71b922d5e3e0ec9585",
+  "license": "CC-BY-4.0",
+  "domain": "computer_science",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "computer_science",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-94CA2BDE2726",
+  "title": "Multi-robot coordination in coordination_scenario",
+  "authors": [
+    "Kenji Williams",
+    "David Davis"
+  ],
+  "doi": "10.1103/sample.279002",
+  "publisher": "Nature Publishing Group",
+  "publication_date": "2020-08-09",
+  "source_uri": "https://doi.org/10.1103/sample.279002",
+  "repository_uri": null,
+  "abstract": "We report novel findings in the field of robotics with significant implications. Employing advanced characterization methods, we reveal... Our results indicate significant improvements in performance metrics. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1103/sample.279002",
+  "acquisition_timestamp": "2026-08-11T12:21:27.011116Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "e75675083644d6a8e688e2423dba26118244ea75bddc18cc6d32a1c2d1e242d9",
+  "license": "closed",
+  "domain": "robotics",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "robotics",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

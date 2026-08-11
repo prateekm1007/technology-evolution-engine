@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-8FBB13E07DA2",
+  "title": "Neural circuit mapping of circuit_name",
+  "authors": [
+    "Maria Williams",
+    "Kenji Yamamoto"
+  ],
+  "doi": "10.1021/sample.131000",
+  "publisher": "Nature Publishing Group",
+  "publication_date": "2016-04-01",
+  "source_uri": "https://doi.org/10.1021/sample.131000",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into neuroscience phenomena. Through computational modeling and simulation, we show... Comparative evaluation demonstrates superiority over existing approaches. This research contributes to the broader understanding of the domain.",
+  "fulltext_uri": "https://example.org/fulltext/10.1021/sample.131000",
+  "acquisition_timestamp": "2026-08-11T12:21:26.332625Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "e5fbe827539212761f117c80e8b03eade3b5c7b51e8be188ff19793915e99a77",
+  "license": "CC-BY-NC-4.0",
+  "domain": "neuroscience",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "neuroscience",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

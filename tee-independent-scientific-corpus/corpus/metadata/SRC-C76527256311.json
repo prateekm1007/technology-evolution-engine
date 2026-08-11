@@ -1,0 +1,45 @@
+{
+  "source_id": "SRC-C76527256311",
+  "title": "Brain connectivity analysis using imaging_technique",
+  "authors": [
+    "Thomas Johnson",
+    "Jose Suzuki",
+    "Thomas Martinez",
+    "Thomas Lee",
+    "Michael Mueller"
+  ],
+  "doi": "10.1002/sample.007002",
+  "publisher": "ACM",
+  "publication_date": "2015-09-04",
+  "source_uri": "https://doi.org/10.1002/sample.007002",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into neuroscience phenomena. By integrating multiple analytical approaches, we uncover... Our results indicate significant improvements in performance metrics. Our work opens new avenues for exploration in this field.",
+  "fulltext_uri": "https://example.org/fulltext/10.1002/sample.007002",
+  "acquisition_timestamp": "2026-08-11T12:21:26.230324Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "8ddad424c5c3ddc26b350ebfc4503be5da6d6d56ed58697555dc3d8b55169a6f",
+  "license": "MIT",
+  "domain": "neuroscience",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "neuroscience",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

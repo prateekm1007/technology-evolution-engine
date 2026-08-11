@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-4EE2FF7AF1D2",
+  "title": "Separation processes for mixture_type mixtures",
+  "authors": [
+    "Yong Tanaka",
+    "David Jones",
+    "James Chen",
+    "Linda Lee"
+  ],
+  "doi": "10.1016/sample.165000",
+  "publisher": "Nature Publishing Group",
+  "publication_date": "2013-04-29",
+  "source_uri": "https://doi.org/10.1016/sample.165000",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of chemical_engineering through experimental and theoretical approaches. Through computational modeling and simulation, we show... Statistical analysis confirms the robustness of our conclusions. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1016/sample.165000",
+  "acquisition_timestamp": "2026-08-11T12:21:25.543807Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "789a11313ae552fe84f13df163a62b0d1a0dc33d4014b8c0a6c3ec9d79055409",
+  "license": "CC-BY-NC-4.0",
+  "domain": "chemical_engineering",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "chemical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

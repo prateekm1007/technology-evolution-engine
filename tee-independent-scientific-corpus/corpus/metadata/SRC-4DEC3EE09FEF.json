@@ -1,0 +1,46 @@
+{
+  "source_id": "SRC-4DEC3EE09FEF",
+  "title": "Memory encoding in memory_type memory",
+  "authors": [
+    "Yong Kim",
+    "Joseph Chen",
+    "Richard Tanaka",
+    "Kenji Suzuki",
+    "Ming Williams",
+    "Yong Chen"
+  ],
+  "doi": "10.1109/sample.272002",
+  "publisher": "APS",
+  "publication_date": "2024-01-12",
+  "source_uri": "https://doi.org/10.1109/sample.272002",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in neuroscience. Through computational modeling and simulation, we show... Our results indicate significant improvements in performance metrics. Our work opens new avenues for exploration in this field.",
+  "fulltext_uri": "https://example.org/fulltext/10.1109/sample.272002",
+  "acquisition_timestamp": "2026-08-11T12:21:26.449665Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "8669fa803784f5a928ade4687f1e965e9af6ea29c787ca0cc8af0fe347412cfc",
+  "license": "closed",
+  "domain": "neuroscience",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "neuroscience",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

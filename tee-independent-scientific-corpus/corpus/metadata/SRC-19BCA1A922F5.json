@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-19BCA1A922F5",
+  "title": "Developmental biology of structure formation",
+  "authors": [
+    "Jennifer Johnson",
+    "Hiroshi Thomas",
+    "Ming Smith",
+    "Jose Davis"
+  ],
+  "doi": "10.1002/sample.115000",
+  "publisher": "APS",
+  "publication_date": "2018-11-05",
+  "source_uri": "https://doi.org/10.1002/sample.115000",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of biology through experimental and theoretical approaches. Employing advanced characterization methods, we reveal... The findings suggest new directions for future research. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1002/sample.115000",
+  "acquisition_timestamp": "2026-08-11T12:21:24.490869Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "585c3f6b61e8148f3231d293f07b271f84c59368e05f3aa0e564a29c3e095ee7",
+  "license": "Apache-2.0",
+  "domain": "biology",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "biology",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

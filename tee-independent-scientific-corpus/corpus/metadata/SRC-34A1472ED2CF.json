@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-34A1472ED2CF",
+  "title": "Hydrogen production via production_method",
+  "authors": [
+    "Akira Taylor",
+    "Ming Thomas"
+  ],
+  "doi": "10.1371/sample.072001",
+  "publisher": "Springer",
+  "publication_date": "2011-06-26",
+  "source_uri": "https://doi.org/10.1371/sample.072001",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in energy_sciences. Using state-of-the-art experimental techniques, we demonstrate... We observe previously unreported behaviors under controlled conditions. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1371/sample.072001",
+  "acquisition_timestamp": "2026-08-11T12:21:25.711729Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "d924251d222b350a899bf73f75a4f0466049600239898c4614f18beccde85628",
+  "license": "closed",
+  "domain": "energy_sciences",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "energy_sciences",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-900746E6D59F",
+  "title": "Probability distributions for random_variable",
+  "authors": [
+    "Anna Mueller",
+    "Akira Rodriguez",
+    "Yong Chen",
+    "Elizabeth Garcia"
+  ],
+  "doi": "10.1103/sample.250001",
+  "publisher": "ACM",
+  "publication_date": "2019-12-11",
+  "source_uri": "https://doi.org/10.1103/sample.250001",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in mathematics. Using state-of-the-art experimental techniques, we demonstrate... We observe previously unreported behaviors under controlled conditions. The methodology presented here can be extended to related problems.",
+  "fulltext_uri": "https://example.org/fulltext/10.1103/sample.250001",
+  "acquisition_timestamp": "2026-08-11T12:21:26.724553Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "09ac0d691b541205509a8440e8efc15a6e845c7711d3284f562c1cc6b4a03ec9",
+  "license": "MIT",
+  "domain": "mathematics",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "mathematics",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

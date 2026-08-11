@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-30B9457E7119",
+  "title": "Advanced semiconductor coatings for extreme environments",
+  "authors": [
+    "Ming Davis",
+    "Jennifer Yamamoto",
+    "Mary Kim",
+    "Elizabeth Johnson"
+  ],
+  "doi": "10.1038/sample.269000",
+  "publisher": "IEEE",
+  "publication_date": "2015-01-17",
+  "source_uri": "https://doi.org/10.1038/sample.269000",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into materials_science phenomena. Through computational modeling and simulation, we show... Statistical analysis confirms the robustness of our conclusions. Our work opens new avenues for exploration in this field.",
+  "fulltext_uri": "https://example.org/fulltext/10.1038/sample.269000",
+  "acquisition_timestamp": "2026-08-11T12:21:24.371769Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "8afde9081855cf1e2615d18832faa45c2d50802f379444843a24fc19de6f3e1e",
+  "license": "Apache-2.0",
+  "domain": "materials_science",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "materials_science",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

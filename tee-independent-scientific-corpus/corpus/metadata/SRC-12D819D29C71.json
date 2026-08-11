@@ -1,0 +1,43 @@
+{
+  "source_id": "SRC-12D819D29C71",
+  "title": "Fluid dynamics simulation of flow_scenario",
+  "authors": [
+    "Hiroshi Kim",
+    "Joseph Tanaka",
+    "Patricia Wang"
+  ],
+  "doi": "10.1103/sample.024000",
+  "publisher": "Elsevier",
+  "publication_date": "2011-11-13",
+  "source_uri": "https://doi.org/10.1103/sample.024000",
+  "repository_uri": null,
+  "abstract": "This paper presents a comprehensive study of mechanical_engineering focusing on key aspects. Employing advanced characterization methods, we reveal... The findings suggest new directions for future research. This research contributes to the broader understanding of the domain.",
+  "fulltext_uri": "https://example.org/fulltext/10.1103/sample.024000",
+  "acquisition_timestamp": "2026-08-11T12:21:24.929870Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "731e311fda11564434aada6d342db32898efb09b4f0fc88558e4171d87260e5f",
+  "license": "Apache-2.0",
+  "domain": "mechanical_engineering",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "mechanical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

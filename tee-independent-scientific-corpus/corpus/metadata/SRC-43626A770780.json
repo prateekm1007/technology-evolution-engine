@@ -1,0 +1,45 @@
+{
+  "source_id": "SRC-43626A770780",
+  "title": "Low-power circuit design for application",
+  "authors": [
+    "Michael Yamamoto",
+    "Wei Smith",
+    "Mary Yamamoto",
+    "William Smith",
+    "Ming Garcia"
+  ],
+  "doi": "10.1038/sample.260001",
+  "publisher": "RSC",
+  "publication_date": "2020-06-06",
+  "source_uri": "https://doi.org/10.1038/sample.260001",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in electrical_engineering. By integrating multiple analytical approaches, we uncover... Statistical analysis confirms the robustness of our conclusions. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1038/sample.260001",
+  "acquisition_timestamp": "2026-08-11T12:21:25.347321Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "85a5d522ac27ef11ad135c7a2b950336a9cd2888fa89d7947de0b72563baa4d7",
+  "license": "Apache-2.0",
+  "domain": "electrical_engineering",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "electrical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

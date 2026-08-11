@@ -1,0 +1,45 @@
+{
+  "source_id": "SRC-1EAA9D3B56AA",
+  "title": "Additive manufacturing of part_type components",
+  "authors": [
+    "Elizabeth Wang",
+    "Jennifer Taylor",
+    "Elizabeth Smith",
+    "William Smith",
+    "James Rodriguez"
+  ],
+  "doi": "10.1371/sample.244000",
+  "publisher": "Springer",
+  "publication_date": "2020-12-04",
+  "source_uri": "https://doi.org/10.1371/sample.244000",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in mechanical_engineering. Combining theoretical analysis with empirical validation, we establish... Statistical analysis confirms the robustness of our conclusions. The methodology presented here can be extended to related problems.",
+  "fulltext_uri": "https://example.org/fulltext/10.1371/sample.244000",
+  "acquisition_timestamp": "2026-08-11T12:21:25.088253Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "3263801ca0090a971d4a4b1103e99bf82ebc39107c501308c608b962dba7ed5b",
+  "license": "MIT",
+  "domain": "mechanical_engineering",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "mechanical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

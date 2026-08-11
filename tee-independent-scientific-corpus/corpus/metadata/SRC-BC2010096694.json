@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-BC2010096694",
+  "title": "Theoretical analysis of system dynamics",
+  "authors": [
+    "Richard Wang",
+    "Akira Martinez"
+  ],
+  "doi": "10.1038/sample.201000",
+  "publisher": "ACM",
+  "publication_date": "2011-06-19",
+  "source_uri": "https://doi.org/10.1038/sample.201000",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of physics through experimental and theoretical approaches. Through computational modeling and simulation, we show... We observe previously unreported behaviors under controlled conditions. This research contributes to the broader understanding of the domain.",
+  "fulltext_uri": "https://example.org/fulltext/10.1038/sample.201000",
+  "acquisition_timestamp": "2026-08-11T12:21:23.847510Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "892f2dbdbf930b5a4ec0a8d863868cefcb7f74380c4384dcc72db8c9d283bb27",
+  "license": "CC-BY-4.0",
+  "domain": "physics",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "physics",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

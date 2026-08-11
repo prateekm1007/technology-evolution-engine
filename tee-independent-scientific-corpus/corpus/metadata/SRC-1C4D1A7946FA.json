@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-1C4D1A7946FA",
+  "title": "Population dynamics of human under condition",
+  "authors": [
+    "Hiroshi Smith",
+    "Yong Wang"
+  ],
+  "doi": "10.1002/sample.058000",
+  "publisher": "APS",
+  "publication_date": "2021-04-12",
+  "source_uri": "https://doi.org/10.1002/sample.058000",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of biology through experimental and theoretical approaches. Using state-of-the-art experimental techniques, we demonstrate... Statistical analysis confirms the robustness of our conclusions. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1002/sample.058000",
+  "acquisition_timestamp": "2026-08-11T12:21:24.447571Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "1c09383b9f4fd2018a58fc7b16ddec5fc239918b5fb8bc6938456f61b458550f",
+  "license": "CC-BY-4.0",
+  "domain": "biology",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "biology",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

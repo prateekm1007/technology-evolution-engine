@@ -1,0 +1,18 @@
+{
+  "corpus_id": "TEE-ISC-2025-001",
+  "providers": [
+    "openalex",
+    "crossref",
+    "semantic_scholar",
+    "openaire"
+  ],
+  "acquisition_window": {
+    "start": "2025-01-01T00:00:00Z",
+    "end": "2025-01-31T23:59:59Z"
+  },
+  "publication_cutoff": "2024-06-30",
+  "provenance_policy": "See PROVENANCE_POLICY.md",
+  "all_sources_verified": true,
+  "duplicate_detection_performed": true,
+  "retraction_checks": "pending"
+}

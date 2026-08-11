@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-DF3FF65920AA",
+  "title": "Pollution monitoring using monitoring_technique",
+  "authors": [
+    "Jennifer Martinez",
+    "Joseph Davis"
+  ],
+  "doi": "10.1371/sample.167001",
+  "publisher": "Elsevier",
+  "publication_date": "2018-12-07",
+  "source_uri": "https://doi.org/10.1371/sample.167001",
+  "repository_uri": null,
+  "abstract": "We report novel findings in the field of environmental_science with significant implications. Employing advanced characterization methods, we reveal... The findings suggest new directions for future research. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1371/sample.167001",
+  "acquisition_timestamp": "2026-08-11T12:21:26.091065Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "7f6650ed5881719613f056e057ddc2ddebfd3ef23324c3ac640d39a1bdbe03d3",
+  "license": "Apache-2.0",
+  "domain": "environmental_science",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "environmental_science",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

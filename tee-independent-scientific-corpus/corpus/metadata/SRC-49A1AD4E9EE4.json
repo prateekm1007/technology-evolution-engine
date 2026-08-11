@@ -1,0 +1,46 @@
+{
+  "source_id": "SRC-49A1AD4E9EE4",
+  "title": "Consciousness studies using methodology",
+  "authors": [
+    "Elizabeth Garcia",
+    "Mary Brown",
+    "Maria Williams",
+    "Ming Miller",
+    "Mary Park",
+    "Ming Thomas"
+  ],
+  "doi": "10.1021/sample.154002",
+  "publisher": "Elsevier",
+  "publication_date": "2016-03-04",
+  "source_uri": "https://doi.org/10.1021/sample.154002",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in neuroscience. By integrating multiple analytical approaches, we uncover... The findings suggest new directions for future research. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1021/sample.154002",
+  "acquisition_timestamp": "2026-08-11T12:21:26.350839Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "d1e9aaedd8a7e8f00a50959f6b347251d5e6eacf1ba11bbf07ec3e2d6fa1c279",
+  "license": "MIT",
+  "domain": "neuroscience",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "neuroscience",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

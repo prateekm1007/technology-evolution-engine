@@ -1,0 +1,45 @@
+{
+  "source_id": "SRC-8D3C80B9A073",
+  "title": "Carbon capture using capture_material",
+  "authors": [
+    "Jose Yamamoto",
+    "Maria Lee",
+    "Jennifer Miller",
+    "Thomas Chen",
+    "Elizabeth Taylor"
+  ],
+  "doi": "10.1109/sample.262001",
+  "publisher": "RSC",
+  "publication_date": "2018-06-24",
+  "source_uri": "https://doi.org/10.1109/sample.262001",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of energy_sciences through experimental and theoretical approaches. Employing advanced characterization methods, we reveal... The findings suggest new directions for future research. The methodology presented here can be extended to related problems.",
+  "fulltext_uri": "https://example.org/fulltext/10.1109/sample.262001",
+  "acquisition_timestamp": "2026-08-11T12:21:25.904153Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "48c139425ff90de6dac00b49c06db6035090670abe14a7eacffa4f3a934000df",
+  "license": "closed",
+  "domain": "energy_sciences",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "energy_sciences",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

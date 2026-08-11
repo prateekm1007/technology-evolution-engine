@@ -1,0 +1,43 @@
+{
+  "source_id": "SRC-2C3C6D860F26",
+  "title": "Manipulation planning for manipulation_task",
+  "authors": [
+    "Jose Yamamoto",
+    "Wei Wang",
+    "Michael Suzuki"
+  ],
+  "doi": "10.1103/sample.122002",
+  "publisher": "RSC",
+  "publication_date": "2017-08-10",
+  "source_uri": "https://doi.org/10.1103/sample.122002",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of robotics through experimental and theoretical approaches. Employing advanced characterization methods, we reveal... Comparative evaluation demonstrates superiority over existing approaches. This research contributes to the broader understanding of the domain.",
+  "fulltext_uri": "https://example.org/fulltext/10.1103/sample.122002",
+  "acquisition_timestamp": "2026-08-11T12:21:26.871446Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "1f6647c752b791a24bfd5f915941c508da2e27805b0f6cd23cf0bc4e66676911",
+  "license": "MIT",
+  "domain": "robotics",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "robotics",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

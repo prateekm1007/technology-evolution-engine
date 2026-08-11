@@ -1,0 +1,46 @@
+{
+  "source_id": "SRC-03EC8897B4A3",
+  "title": "Evolutionary adaptation of trait in lineage",
+  "authors": [
+    "Anna Smith",
+    "Maria Mueller",
+    "Wei Taylor",
+    "James Johnson",
+    "Elizabeth Brown",
+    "James Park"
+  ],
+  "doi": "10.1109/sample.188001",
+  "publisher": "Springer",
+  "publication_date": "2011-12-12",
+  "source_uri": "https://doi.org/10.1109/sample.188001",
+  "repository_uri": null,
+  "abstract": "We report novel findings in the field of biology with significant implications. Employing advanced characterization methods, we reveal... Statistical analysis confirms the robustness of our conclusions. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1109/sample.188001",
+  "acquisition_timestamp": "2026-08-11T12:21:24.586880Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "3ed72cd64f9a97518a796997e5898abcaf72f4c0c1f73eaeae0fac4271a915da",
+  "license": "Apache-2.0",
+  "domain": "biology",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "biology",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

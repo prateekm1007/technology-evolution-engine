@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-85E838726DEE",
+  "title": "Neurodevelopmental disorders in model_organism",
+  "authors": [
+    "Mary Park",
+    "Hiroshi Garcia"
+  ],
+  "doi": "10.1016/sample.075000",
+  "publisher": "ACM",
+  "publication_date": "2018-05-24",
+  "source_uri": "https://doi.org/10.1016/sample.075000",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into neuroscience phenomena. By integrating multiple analytical approaches, we uncover... The findings suggest new directions for future research. This research contributes to the broader understanding of the domain.",
+  "fulltext_uri": "https://example.org/fulltext/10.1016/sample.075000",
+  "acquisition_timestamp": "2026-08-11T12:21:26.291327Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "89e478b0302904f4c903ee4dfa3b4ce251147c529108c2d95a265cf6b7fe963a",
+  "license": "Apache-2.0",
+  "domain": "neuroscience",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "neuroscience",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

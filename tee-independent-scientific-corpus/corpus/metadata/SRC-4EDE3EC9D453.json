@@ -1,0 +1,46 @@
+{
+  "source_id": "SRC-4EDE3EC9D453",
+  "title": "Metabolic pathways in microorganism",
+  "authors": [
+    "Anna Brown",
+    "Michael Jones",
+    "Yong Tanaka",
+    "Thomas Williams",
+    "Joseph Schmidt",
+    "Linda Smith"
+  ],
+  "doi": "10.1371/sample.212000",
+  "publisher": "APS",
+  "publication_date": "2017-06-02",
+  "source_uri": "https://doi.org/10.1371/sample.212000",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in biology. Employing advanced characterization methods, we reveal... The findings suggest new directions for future research. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1371/sample.212000",
+  "acquisition_timestamp": "2026-08-11T12:21:24.625848Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "dbd706ef2d11499fc29d4df73a56cc3950b416f0d9e97660e6c0ee08295fce06",
+  "license": "MIT",
+  "domain": "biology",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "biology",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

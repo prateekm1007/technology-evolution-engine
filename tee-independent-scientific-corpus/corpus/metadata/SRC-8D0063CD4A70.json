@@ -1,0 +1,43 @@
+{
+  "source_id": "SRC-8D0063CD4A70",
+  "title": "Thermoelectric conversion in te_material",
+  "authors": [
+    "Robert Mueller",
+    "David Garcia",
+    "Hiroshi Miller"
+  ],
+  "doi": "10.1103/sample.269001",
+  "publisher": "APS",
+  "publication_date": "2022-11-05",
+  "source_uri": "https://doi.org/10.1103/sample.269001",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of energy_sciences through experimental and theoretical approaches. Through computational modeling and simulation, we show... We observe previously unreported behaviors under controlled conditions. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1103/sample.269001",
+  "acquisition_timestamp": "2026-08-11T12:21:25.906934Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "e7496baf9cef1e00a6edfd2ee924ca64369a543496c76a25c63f2ca260bb9cb2",
+  "license": "closed",
+  "domain": "energy_sciences",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "energy_sciences",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

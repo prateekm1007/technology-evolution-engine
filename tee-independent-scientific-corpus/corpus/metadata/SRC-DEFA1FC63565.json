@@ -1,0 +1,45 @@
+{
+  "source_id": "SRC-DEFA1FC63565",
+  "title": "Neural correlates of learning",
+  "authors": [
+    "Richard Suzuki",
+    "Joseph Anderson",
+    "Mary Chen",
+    "Mary Miller",
+    "Anna Yamamoto"
+  ],
+  "doi": "10.1038/sample.029001",
+  "publisher": "IEEE",
+  "publication_date": "2022-12-25",
+  "source_uri": "https://doi.org/10.1038/sample.029001",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into neuroscience phenomena. Combining theoretical analysis with empirical validation, we establish... We observe previously unreported behaviors under controlled conditions. Our work opens new avenues for exploration in this field.",
+  "fulltext_uri": "https://example.org/fulltext/10.1038/sample.029001",
+  "acquisition_timestamp": "2026-08-11T12:21:26.263559Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "4cef11326f5aad795b5134b8e2141596d55275a0cd2ce552baceb549c7697d1e",
+  "license": "Apache-2.0",
+  "domain": "neuroscience",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "neuroscience",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

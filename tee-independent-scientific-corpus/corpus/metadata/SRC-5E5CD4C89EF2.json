@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-5E5CD4C89EF2",
+  "title": "Kinetic analysis of reaction mechanisms",
+  "authors": [
+    "Richard Thomas",
+    "Michael Smith",
+    "Richard Johnson",
+    "Patricia Schmidt"
+  ],
+  "doi": "10.1021/sample.086000",
+  "publisher": "Springer",
+  "publication_date": "2021-04-21",
+  "source_uri": "https://doi.org/10.1021/sample.086000",
+  "repository_uri": null,
+  "abstract": "We report novel findings in the field of chemistry with significant implications. Using state-of-the-art experimental techniques, we demonstrate... Statistical analysis confirms the robustness of our conclusions. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1021/sample.086000",
+  "acquisition_timestamp": "2026-08-11T12:21:23.986738Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "7f837ec41991057bc27f9a230c06797e88366b2dc1fb8132d452825c37900750",
+  "license": "MIT",
+  "domain": "chemistry",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "chemistry",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

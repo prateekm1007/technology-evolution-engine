@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-9036DA4B0304",
+  "title": "Low-power circuit design for application",
+  "authors": [
+    "Maria Garcia",
+    "William Brown"
+  ],
+  "doi": "10.1038/sample.134000",
+  "publisher": "RSC",
+  "publication_date": "2013-02-02",
+  "source_uri": "https://doi.org/10.1038/sample.134000",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of electrical_engineering through experimental and theoretical approaches. By integrating multiple analytical approaches, we uncover... Statistical analysis confirms the robustness of our conclusions. This research contributes to the broader understanding of the domain.",
+  "fulltext_uri": "https://example.org/fulltext/10.1038/sample.134000",
+  "acquisition_timestamp": "2026-08-11T12:21:25.245557Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "80bbf06a922e61545c0ca9a1d75588b3475b04f9e5273c169990d1991d65b729",
+  "license": "Apache-2.0",
+  "domain": "electrical_engineering",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "electrical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

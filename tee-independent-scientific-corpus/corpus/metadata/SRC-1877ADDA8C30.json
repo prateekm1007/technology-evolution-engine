@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-1877ADDA8C30",
+  "title": "Carbon capture using capture_material",
+  "authors": [
+    "Jose Williams",
+    "Robert Mueller"
+  ],
+  "doi": "10.1021/sample.008002",
+  "publisher": "Elsevier",
+  "publication_date": "2023-06-17",
+  "source_uri": "https://doi.org/10.1021/sample.008002",
+  "repository_uri": null,
+  "abstract": "We report novel findings in the field of energy_sciences with significant implications. By integrating multiple analytical approaches, we uncover... Statistical analysis confirms the robustness of our conclusions. This research contributes to the broader understanding of the domain.",
+  "fulltext_uri": "https://example.org/fulltext/10.1021/sample.008002",
+  "acquisition_timestamp": "2026-08-11T12:21:25.666635Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "975fd9f15e2fbd4f75d42a8faed290d4f3e8ac20584511ff4a3cea17c109ea62",
+  "license": "Apache-2.0",
+  "domain": "energy_sciences",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "energy_sciences",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

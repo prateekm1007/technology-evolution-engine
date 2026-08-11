@@ -1,0 +1,46 @@
+{
+  "source_id": "SRC-8EB3DD66FC92",
+  "title": "Advanced polymer coatings for extreme environments",
+  "authors": [
+    "David Tanaka",
+    "Ming Thomas",
+    "Michael Chen",
+    "James Chen",
+    "James Miller",
+    "William Brown"
+  ],
+  "doi": "10.1002/sample.102000",
+  "publisher": "Nature Publishing Group",
+  "publication_date": "2012-08-21",
+  "source_uri": "https://doi.org/10.1002/sample.102000",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in materials_science. By integrating multiple analytical approaches, we uncover... We observe previously unreported behaviors under controlled conditions. The methodology presented here can be extended to related problems.",
+  "fulltext_uri": "https://example.org/fulltext/10.1002/sample.102000",
+  "acquisition_timestamp": "2026-08-11T12:21:24.228693Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "85af529fe4f2389444c610fc221985ec42efc94b2e702b7a47fbc1dffedb2902",
+  "license": "CC-BY-4.0",
+  "domain": "materials_science",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "materials_science",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

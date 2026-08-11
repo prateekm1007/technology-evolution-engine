@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-2072A25E3F56",
+  "title": "Grid integration of renewable_source",
+  "authors": [
+    "Jennifer Garcia",
+    "Wei Mueller",
+    "Robert Lee",
+    "Yong Rodriguez"
+  ],
+  "doi": "10.1021/sample.216001",
+  "publisher": "ACM",
+  "publication_date": "2015-09-12",
+  "source_uri": "https://doi.org/10.1021/sample.216001",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into energy_sciences phenomena. By integrating multiple analytical approaches, we uncover... We observe previously unreported behaviors under controlled conditions. Our work opens new avenues for exploration in this field.",
+  "fulltext_uri": "https://example.org/fulltext/10.1021/sample.216001",
+  "acquisition_timestamp": "2026-08-11T12:21:25.866581Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "60744dc0b0912b36e43b36a26d2e871d4e637d8904c671b264b0b8e8770cb437",
+  "license": "CC-BY-4.0",
+  "domain": "energy_sciences",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "energy_sciences",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

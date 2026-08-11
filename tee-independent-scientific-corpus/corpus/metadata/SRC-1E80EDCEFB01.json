@@ -1,0 +1,43 @@
+{
+  "source_id": "SRC-1E80EDCEFB01",
+  "title": "Carbon capture using capture_material",
+  "authors": [
+    "Robert Kim",
+    "Hiroshi Smith",
+    "Kenji Johnson"
+  ],
+  "doi": "10.1103/sample.144001",
+  "publisher": "ACM",
+  "publication_date": "2020-09-21",
+  "source_uri": "https://doi.org/10.1103/sample.144001",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in energy_sciences. Employing advanced characterization methods, we reveal... We observe previously unreported behaviors under controlled conditions. This research contributes to the broader understanding of the domain.",
+  "fulltext_uri": "https://example.org/fulltext/10.1103/sample.144001",
+  "acquisition_timestamp": "2026-08-11T12:21:25.790806Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "53f45452d05f3aada3c95774de36b77fb61dab60b117cfdea2f37b41f89cb4ad",
+  "license": "CC-BY-NC-4.0",
+  "domain": "energy_sciences",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "energy_sciences",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

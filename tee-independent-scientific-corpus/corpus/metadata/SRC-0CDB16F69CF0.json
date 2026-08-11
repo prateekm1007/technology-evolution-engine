@@ -1,0 +1,45 @@
+{
+  "source_id": "SRC-0CDB16F69CF0",
+  "title": "Ecological interactions between species_1 and species_2",
+  "authors": [
+    "Charles Smith",
+    "Yong Williams",
+    "Jennifer Yamamoto",
+    "Jennifer Johnson",
+    "Akira Schmidt"
+  ],
+  "doi": "10.1109/sample.129001",
+  "publisher": "Springer",
+  "publication_date": "2017-08-10",
+  "source_uri": "https://doi.org/10.1109/sample.129001",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in biology. Combining theoretical analysis with empirical validation, we establish... Comparative evaluation demonstrates superiority over existing approaches. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1109/sample.129001",
+  "acquisition_timestamp": "2026-08-11T12:21:24.526202Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "04a41a9d5b8ce99c9ac9f99199855732d540f930427db8d0d85f37a431151f20",
+  "license": "Apache-2.0",
+  "domain": "biology",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "biology",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

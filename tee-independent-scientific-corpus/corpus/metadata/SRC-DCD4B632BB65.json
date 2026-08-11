@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-DCD4B632BB65",
+  "title": "Bioprocess engineering for bioproduct",
+  "authors": [
+    "Richard Taylor",
+    "Maria Taylor"
+  ],
+  "doi": "10.1021/sample.200001",
+  "publisher": "Nature Publishing Group",
+  "publication_date": "2019-01-01",
+  "source_uri": "https://doi.org/10.1021/sample.200001",
+  "repository_uri": null,
+  "abstract": "This paper presents a comprehensive study of chemical_engineering focusing on key aspects. Combining theoretical analysis with empirical validation, we establish... We observe previously unreported behaviors under controlled conditions. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1021/sample.200001",
+  "acquisition_timestamp": "2026-08-11T12:21:25.571190Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "7a1cb8856c0a1f54c8f7e382f855720c4da332768ddf04375e7e6bb9327160fd",
+  "license": "Apache-2.0",
+  "domain": "chemical_engineering",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "chemical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

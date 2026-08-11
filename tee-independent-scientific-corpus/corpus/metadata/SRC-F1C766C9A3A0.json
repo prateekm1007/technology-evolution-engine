@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-F1C766C9A3A0",
+  "title": "Swarm robotics for swarm_task",
+  "authors": [
+    "John Kim",
+    "Robert Miller",
+    "Michael Williams",
+    "Thomas Mueller"
+  ],
+  "doi": "10.1103/sample.161001",
+  "publisher": "IEEE",
+  "publication_date": "2011-11-29",
+  "source_uri": "https://doi.org/10.1103/sample.161001",
+  "repository_uri": null,
+  "abstract": "This paper presents a comprehensive study of robotics focusing on key aspects. By integrating multiple analytical approaches, we uncover... Comparative evaluation demonstrates superiority over existing approaches. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1103/sample.161001",
+  "acquisition_timestamp": "2026-08-11T12:21:26.909940Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "e35099a58b0153a7c4306eff509a6b6632fc027692e5de86d8db8e86d14d2c05",
+  "license": "MIT",
+  "domain": "robotics",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "robotics",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

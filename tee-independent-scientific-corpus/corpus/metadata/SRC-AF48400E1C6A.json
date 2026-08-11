@@ -1,0 +1,43 @@
+{
+  "source_id": "SRC-AF48400E1C6A",
+  "title": "Control systems for controlled_system",
+  "authors": [
+    "James Davis",
+    "Yong Yamamoto",
+    "John Martinez"
+  ],
+  "doi": "10.1021/sample.027000",
+  "publisher": "IEEE",
+  "publication_date": "2011-02-04",
+  "source_uri": "https://doi.org/10.1021/sample.027000",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into electrical_engineering phenomena. Combining theoretical analysis with empirical validation, we establish... Comparative evaluation demonstrates superiority over existing approaches. This research contributes to the broader understanding of the domain.",
+  "fulltext_uri": "https://example.org/fulltext/10.1021/sample.027000",
+  "acquisition_timestamp": "2026-08-11T12:21:25.165089Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "545fb5a603a77e75f3b79e382ead880f1ec15eec6e88d7585996e9180c4d18e3",
+  "license": "CC-BY-NC-4.0",
+  "domain": "electrical_engineering",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "electrical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

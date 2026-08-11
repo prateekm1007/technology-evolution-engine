@@ -1,0 +1,46 @@
+{
+  "source_id": "SRC-DD0D1F590D69",
+  "title": "Brain connectivity analysis using imaging_technique",
+  "authors": [
+    "Thomas Wang",
+    "Jose Garcia",
+    "Jose Wang",
+    "Jose Wang",
+    "Akira Chen",
+    "David Wang"
+  ],
+  "doi": "10.1021/sample.262001",
+  "publisher": "Nature Publishing Group",
+  "publication_date": "2020-06-18",
+  "source_uri": "https://doi.org/10.1021/sample.262001",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into neuroscience phenomena. Using state-of-the-art experimental techniques, we demonstrate... We observe previously unreported behaviors under controlled conditions. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1021/sample.262001",
+  "acquisition_timestamp": "2026-08-11T12:21:26.445630Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "147cf93e4427f53d1690c0e9ca927529298cb09e68c2fba8fa761db5ea3160b2",
+  "license": "Apache-2.0",
+  "domain": "neuroscience",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "neuroscience",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

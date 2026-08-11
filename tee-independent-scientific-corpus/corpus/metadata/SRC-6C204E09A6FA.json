@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-6C204E09A6FA",
+  "title": "Green chemistry approach to synthesis_target",
+  "authors": [
+    "Mary Mueller",
+    "Akira Kim",
+    "Jose Mueller",
+    "Robert Martinez"
+  ],
+  "doi": "10.1371/sample.105000",
+  "publisher": "RSC",
+  "publication_date": "2015-08-06",
+  "source_uri": "https://doi.org/10.1371/sample.105000",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into chemistry phenomena. Combining theoretical analysis with empirical validation, we establish... Comparative evaluation demonstrates superiority over existing approaches. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1371/sample.105000",
+  "acquisition_timestamp": "2026-08-11T12:21:23.993115Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "6070003fa36bed2f4f6a341a9298c27bfaa202be08f18dd22e8cfd5025c33ba0",
+  "license": "MIT",
+  "domain": "chemistry",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "chemistry",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

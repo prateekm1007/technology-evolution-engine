@@ -1,0 +1,46 @@
+{
+  "source_id": "SRC-9DD1E7636D3D",
+  "title": "Robot ethics in ethical_scenario",
+  "authors": [
+    "Robert Martinez",
+    "John Wang",
+    "Jennifer Johnson",
+    "Maria Smith",
+    "Hiroshi Williams",
+    "John Davis"
+  ],
+  "doi": "10.1021/sample.288001",
+  "publisher": "RSC",
+  "publication_date": "2019-04-19",
+  "source_uri": "https://doi.org/10.1021/sample.288001",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of robotics through experimental and theoretical approaches. By integrating multiple analytical approaches, we uncover... Statistical analysis confirms the robustness of our conclusions. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1021/sample.288001",
+  "acquisition_timestamp": "2026-08-11T12:21:27.024983Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "56b39620cd48bfd1cd82acf3cfd35aabc1de5bdac088977745edad00b9c8fb5d",
+  "license": "closed",
+  "domain": "robotics",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "robotics",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

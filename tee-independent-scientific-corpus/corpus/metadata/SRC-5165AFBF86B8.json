@@ -1,0 +1,46 @@
+{
+  "source_id": "SRC-5165AFBF86B8",
+  "title": "Process optimization for chemical_process",
+  "authors": [
+    "Akira Smith",
+    "Yong Wang",
+    "Patricia Park",
+    "Joseph Rodriguez",
+    "Ming Williams",
+    "Jennifer Tanaka"
+  ],
+  "doi": "10.1038/sample.293001",
+  "publisher": "APS",
+  "publication_date": "2018-08-29",
+  "source_uri": "https://doi.org/10.1038/sample.293001",
+  "repository_uri": null,
+  "abstract": "We report novel findings in the field of chemical_engineering with significant implications. Employing advanced characterization methods, we reveal... Statistical analysis confirms the robustness of our conclusions. Our work opens new avenues for exploration in this field.",
+  "fulltext_uri": "https://example.org/fulltext/10.1038/sample.293001",
+  "acquisition_timestamp": "2026-08-11T12:21:25.649720Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "f1c0180a4682b7e9a9387fe4a945a3e775210616651ca55b6971e936589151e8",
+  "license": "MIT",
+  "domain": "chemical_engineering",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "chemical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

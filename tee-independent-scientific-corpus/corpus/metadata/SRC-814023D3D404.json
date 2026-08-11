@@ -1,0 +1,45 @@
+{
+  "source_id": "SRC-814023D3D404",
+  "title": "Sensory processing in sensory_system",
+  "authors": [
+    "Anna Lee",
+    "Mary Yamamoto",
+    "Patricia Martinez",
+    "Akira Jones",
+    "Yong Schmidt"
+  ],
+  "doi": "10.1038/sample.109002",
+  "publisher": "APS",
+  "publication_date": "2023-11-01",
+  "source_uri": "https://doi.org/10.1038/sample.109002",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of neuroscience through experimental and theoretical approaches. By integrating multiple analytical approaches, we uncover... Our results indicate significant improvements in performance metrics. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1038/sample.109002",
+  "acquisition_timestamp": "2026-08-11T12:21:26.324845Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "7e0b4741d9609b2b395fc24bd932e2c23f101c0660205f00c73c373a86081d0f",
+  "license": "CC-BY-NC-4.0",
+  "domain": "neuroscience",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "neuroscience",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

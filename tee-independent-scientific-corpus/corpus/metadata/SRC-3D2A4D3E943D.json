@@ -1,0 +1,45 @@
+{
+  "source_id": "SRC-3D2A4D3E943D",
+  "title": "Soft robotics design for soft_robot_application",
+  "authors": [
+    "Ming Suzuki",
+    "Hiroshi Taylor",
+    "Mary Rodriguez",
+    "Charles Lee",
+    "John Anderson"
+  ],
+  "doi": "10.1103/sample.234002",
+  "publisher": "Nature Publishing Group",
+  "publication_date": "2010-06-21",
+  "source_uri": "https://doi.org/10.1103/sample.234002",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into robotics phenomena. By integrating multiple analytical approaches, we uncover... Comparative evaluation demonstrates superiority over existing approaches. Our work opens new avenues for exploration in this field.",
+  "fulltext_uri": "https://example.org/fulltext/10.1103/sample.234002",
+  "acquisition_timestamp": "2026-08-11T12:21:26.984444Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "93c8ccda174873c5b18258f141e1d0288de60f9bd57e5548354ae3c96b467aaa",
+  "license": "MIT",
+  "domain": "robotics",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "robotics",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

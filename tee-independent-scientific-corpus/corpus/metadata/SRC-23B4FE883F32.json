@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-23B4FE883F32",
+  "title": "Fuel cell performance with fuel_cell_type configuration",
+  "authors": [
+    "Ming Thomas",
+    "Yong Tanaka",
+    "Maria Williams",
+    "Ming Mueller"
+  ],
+  "doi": "10.1109/sample.217000",
+  "publisher": "APS",
+  "publication_date": "2017-11-18",
+  "source_uri": "https://doi.org/10.1109/sample.217000",
+  "repository_uri": null,
+  "abstract": "We report novel findings in the field of energy_sciences with significant implications. Combining theoretical analysis with empirical validation, we establish... The findings suggest new directions for future research. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1109/sample.217000",
+  "acquisition_timestamp": "2026-08-11T12:21:25.866911Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "e765eb214861735fb78546390b7735bfa46a604278c38acc97d49ba717a53401",
+  "license": "closed",
+  "domain": "energy_sciences",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "energy_sciences",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

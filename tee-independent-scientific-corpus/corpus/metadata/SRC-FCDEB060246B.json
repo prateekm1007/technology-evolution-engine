@@ -1,0 +1,46 @@
+{
+  "source_id": "SRC-FCDEB060246B",
+  "title": "Self-assembly of molecule_type into structure",
+  "authors": [
+    "Ming Davis",
+    "Robert Lee",
+    "Anna Lee",
+    "Robert Lee",
+    "Linda Chen",
+    "Kenji Williams"
+  ],
+  "doi": "10.1002/sample.299000",
+  "publisher": "IEEE",
+  "publication_date": "2015-10-26",
+  "source_uri": "https://doi.org/10.1002/sample.299000",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into chemistry phenomena. By integrating multiple analytical approaches, we uncover... We observe previously unreported behaviors under controlled conditions. This research contributes to the broader understanding of the domain.",
+  "fulltext_uri": "https://example.org/fulltext/10.1002/sample.299000",
+  "acquisition_timestamp": "2026-08-11T12:21:24.148320Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "d6fb3764747455db0ad69ad816c07c92e0cb41f3523553f6f63e7709ecd18f65",
+  "license": "Apache-2.0",
+  "domain": "chemistry",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "chemistry",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

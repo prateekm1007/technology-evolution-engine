@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-AD6F50E535BE",
+  "title": "Manipulation planning for manipulation_task",
+  "authors": [
+    "Yong Thomas",
+    "William Schmidt",
+    "Jennifer Anderson",
+    "Elizabeth Smith"
+  ],
+  "doi": "10.1371/sample.171002",
+  "publisher": "Elsevier",
+  "publication_date": "2019-09-26",
+  "source_uri": "https://doi.org/10.1371/sample.171002",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in robotics. Combining theoretical analysis with empirical validation, we establish... Our results indicate significant improvements in performance metrics. Our work opens new avenues for exploration in this field.",
+  "fulltext_uri": "https://example.org/fulltext/10.1371/sample.171002",
+  "acquisition_timestamp": "2026-08-11T12:21:26.926155Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "af24486f9e068ff5eda08d866431ea4e1602273e36d85d61dd1b5b4c75ec78a6",
+  "license": "closed",
+  "domain": "robotics",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "robotics",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

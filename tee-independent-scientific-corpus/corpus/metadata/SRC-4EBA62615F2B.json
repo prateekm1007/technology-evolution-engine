@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-4EBA62615F2B",
+  "title": "Hydrogen production via production_method",
+  "authors": [
+    "Joseph Williams",
+    "Linda Mueller"
+  ],
+  "doi": "10.1371/sample.284002",
+  "publisher": "ACM",
+  "publication_date": "2017-09-23",
+  "source_uri": "https://doi.org/10.1371/sample.284002",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into energy_sciences phenomena. Using state-of-the-art experimental techniques, we demonstrate... Statistical analysis confirms the robustness of our conclusions. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1371/sample.284002",
+  "acquisition_timestamp": "2026-08-11T12:21:25.923938Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "0b6c6b89f8cd9b4a5e75ea51f543d2ec8281d74a57a034dbe166900dfba761bd",
+  "license": "CC-BY-NC-4.0",
+  "domain": "energy_sciences",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "energy_sciences",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

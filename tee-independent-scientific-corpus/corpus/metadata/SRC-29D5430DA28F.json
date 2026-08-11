@@ -1,0 +1,43 @@
+{
+  "source_id": "SRC-29D5430DA28F",
+  "title": "Kinetic analysis of reaction mechanisms",
+  "authors": [
+    "David Thomas",
+    "Kenji Lee",
+    "William Williams"
+  ],
+  "doi": "10.1145/sample.221000",
+  "publisher": "Elsevier",
+  "publication_date": "2024-05-31",
+  "source_uri": "https://doi.org/10.1145/sample.221000",
+  "repository_uri": null,
+  "abstract": "This paper presents a comprehensive study of chemistry focusing on key aspects. Combining theoretical analysis with empirical validation, we establish... Comparative evaluation demonstrates superiority over existing approaches. Our work opens new avenues for exploration in this field.",
+  "fulltext_uri": "https://example.org/fulltext/10.1145/sample.221000",
+  "acquisition_timestamp": "2026-08-11T12:21:24.085646Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "8c6d5470a7c271f45ceb5749610d101ccfd74a00217fefc2f03f7849be3037b5",
+  "license": "Apache-2.0",
+  "domain": "chemistry",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "chemistry",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

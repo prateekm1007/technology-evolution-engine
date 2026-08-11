@@ -1,0 +1,45 @@
+{
+  "source_id": "SRC-915C6E2FFFA2",
+  "title": "Experimental study of interaction in condensed matter",
+  "authors": [
+    "Jennifer Mueller",
+    "Wei Miller",
+    "Elizabeth Chen",
+    "Jennifer Garcia",
+    "Kenji Mueller"
+  ],
+  "doi": "10.1016/sample.222000",
+  "publisher": "APS",
+  "publication_date": "2014-06-12",
+  "source_uri": "https://doi.org/10.1016/sample.222000",
+  "repository_uri": null,
+  "abstract": "This paper presents a comprehensive study of physics focusing on key aspects. Employing advanced characterization methods, we reveal... Comparative evaluation demonstrates superiority over existing approaches. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1016/sample.222000",
+  "acquisition_timestamp": "2026-08-11T12:21:23.866583Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "fc7f79f968c1910ea3931843ca242f443db732511142a577ce0545f0c0f9c82b",
+  "license": "CC-BY-4.0",
+  "domain": "physics",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "physics",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

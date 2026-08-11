@@ -1,25 +1,133 @@
-# Python
-__pycache__/
-*.py[cod]
-*.egg-info/
-.pytest_cache/
-.venv/
-venv/
+```
+# Temporary and log files
+*.tmp
+*.log
 
-# Layout cache (F-003 wiring) and other runtime artifacts
-.cache/
-web/backend/.cache/
+# Environment files
+.env
+.env.local
+.env.*
 
-# Runtime logs (pipeline_runs.jsonl is written by every pipeline invocation,
-# including test runs — ignore it so test execution doesn't dirty the tree.
-# Historical committed entries are retained.)
-logs/pipeline_runs.jsonl
+# IDE and editor files
+.vscode/
+.idea/
 
-# OS
+# System files
 .DS_Store
 Thumbs.db
 
-# Editor
-.vscode/
-.idea/
-*.swp
+# Compressed files
+*.zip
+*.gz
+*.tar
+*.tgz
+*.bz2
+*.xz
+*.7z
+*.rar
+*.zst
+*.lz4
+*.lzh
+*.cab
+*.arj
+*.rpm
+*.deb
+*.Z
+*.lz
+*.lzo
+*.tar.gz
+*.tar.bz2
+*.tar.xz
+*.tar.zst
+
+# Build artifacts and dependencies
+dist/
+build/
+target/
+node_modules/
+.venv/
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.class
+*.o
+*.obj
+*.out
+*.dll
+*.so
+*.a
+*.exe
+
+# Coverage and testing
+coverage/
+htmlcov/
+.coverage
+*.coverage
+
+# Package management
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Python specific
+*.egg-info/
+pip-log.txt
+pip-delete-this-directory.txt
+.tox/
+.coverage.*
+
+# Java specific
+*.jar
+*.war
+*.ear
+hs_err_pid*
+
+# Node.js specific
+npm/
+.npm
+node_modules/
+*.min.js
+*.min.css
+
+# C/C++ specific
+*.i
+*.s
+*.ko
+*.mod.c
+*.order
+*.bin
+*.elf
+
+# Go specific
+*.out
+*.prof
+*.trace
+
+# Ruby specific
+*.gem
+.bundle/
+Gemfile.lock
+
+# Rust specific
+Cargo.lock
+*.rlib
+
+# Julia specific
+julia-*/
+
+# Zig specific
+zig-cache/
+zig-out/
+
+# Gradle specific
+.gradle/
+
+# MyPy specific
+.mypy_cache/
+
+# PyTest specific
+.pytest_cache/
+
+```

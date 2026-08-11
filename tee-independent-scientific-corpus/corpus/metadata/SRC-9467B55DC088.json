@@ -1,0 +1,45 @@
+{
+  "source_id": "SRC-9467B55DC088",
+  "title": "Graph neural networks for graph_problem",
+  "authors": [
+    "Charles Taylor",
+    "Richard Chen",
+    "Charles Schmidt",
+    "Jose Johnson",
+    "Robert Williams"
+  ],
+  "doi": "10.1371/sample.078001",
+  "publisher": "Springer",
+  "publication_date": "2015-07-20",
+  "source_uri": "https://doi.org/10.1371/sample.078001",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into computer_science phenomena. Employing advanced characterization methods, we reveal... We observe previously unreported behaviors under controlled conditions. The methodology presented here can be extended to related problems.",
+  "fulltext_uri": "https://example.org/fulltext/10.1371/sample.078001",
+  "acquisition_timestamp": "2026-08-11T12:21:24.750146Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "a25b7b8dd9282a7ba8ba8f20e18becb340a0fd6972118d4b943ec14842f12bb0",
+  "license": "closed",
+  "domain": "computer_science",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "computer_science",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

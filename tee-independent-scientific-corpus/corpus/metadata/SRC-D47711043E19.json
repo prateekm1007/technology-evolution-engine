@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-D47711043E19",
+  "title": "Neurodevelopmental disorders in model_organism",
+  "authors": [
+    "Anna Mueller",
+    "Kenji Thomas"
+  ],
+  "doi": "10.1109/sample.219002",
+  "publisher": "RSC",
+  "publication_date": "2020-03-11",
+  "source_uri": "https://doi.org/10.1109/sample.219002",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of neuroscience through experimental and theoretical approaches. Using state-of-the-art experimental techniques, we demonstrate... The findings suggest new directions for future research. The methodology presented here can be extended to related problems.",
+  "fulltext_uri": "https://example.org/fulltext/10.1109/sample.219002",
+  "acquisition_timestamp": "2026-08-11T12:21:26.407039Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "b559d5dd898b9eb9a44aba659f9c2178ee86c26e7bb8284226e17d02525a58b4",
+  "license": "MIT",
+  "domain": "neuroscience",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "neuroscience",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

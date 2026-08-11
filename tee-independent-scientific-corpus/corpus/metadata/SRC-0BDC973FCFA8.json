@@ -1,0 +1,46 @@
+{
+  "source_id": "SRC-0BDC973FCFA8",
+  "title": "Quantum computing algorithms for quantum_problem",
+  "authors": [
+    "John Rodriguez",
+    "Anna Tanaka",
+    "William Schmidt",
+    "Joseph Williams",
+    "Robert Lee",
+    "Kenji Davis"
+  ],
+  "doi": "10.1021/sample.100000",
+  "publisher": "Elsevier",
+  "publication_date": "2021-04-13",
+  "source_uri": "https://doi.org/10.1021/sample.100000",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of computer_science through experimental and theoretical approaches. Combining theoretical analysis with empirical validation, we establish... We observe previously unreported behaviors under controlled conditions. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1021/sample.100000",
+  "acquisition_timestamp": "2026-08-11T12:21:24.768211Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "baca96f2c7c4d87ffa035bbf79f298f6dc36e6cea1ffb0ef6e10f408cbea1cde",
+  "license": "closed",
+  "domain": "computer_science",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "computer_science",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

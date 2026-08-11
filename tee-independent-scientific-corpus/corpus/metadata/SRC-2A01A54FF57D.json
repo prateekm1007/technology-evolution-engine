@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-2A01A54FF57D",
+  "title": "Machine learning acceleration on hardware_platform",
+  "authors": [
+    "David Williams",
+    "Thomas Jones"
+  ],
+  "doi": "10.1002/sample.076001",
+  "publisher": "Springer",
+  "publication_date": "2024-05-06",
+  "source_uri": "https://doi.org/10.1002/sample.076001",
+  "repository_uri": null,
+  "abstract": "This paper presents a comprehensive study of electrical_engineering focusing on key aspects. Using state-of-the-art experimental techniques, we demonstrate... Statistical analysis confirms the robustness of our conclusions. The methodology presented here can be extended to related problems.",
+  "fulltext_uri": "https://example.org/fulltext/10.1002/sample.076001",
+  "acquisition_timestamp": "2026-08-11T12:21:25.192059Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "957b96d1a99c60226b5deee446239b98377562a227832f2f4793d9fdcc15e6db",
+  "license": "CC-BY-4.0",
+  "domain": "electrical_engineering",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "electrical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

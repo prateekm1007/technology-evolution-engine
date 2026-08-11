@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-8B5C72BABF05",
+  "title": "Hydrogen production via production_method",
+  "authors": [
+    "Kenji Davis",
+    "William Garcia"
+  ],
+  "doi": "10.1109/sample.051000",
+  "publisher": "Springer",
+  "publication_date": "2014-11-24",
+  "source_uri": "https://doi.org/10.1109/sample.051000",
+  "repository_uri": null,
+  "abstract": "This paper presents a comprehensive study of energy_sciences focusing on key aspects. By integrating multiple analytical approaches, we uncover... We observe previously unreported behaviors under controlled conditions. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1109/sample.051000",
+  "acquisition_timestamp": "2026-08-11T12:21:25.704383Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "58c157f82138d91233da2a6d71e1411b2e5c6ea72cf052cd5f5030d7115aca98",
+  "license": "closed",
+  "domain": "energy_sciences",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "energy_sciences",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

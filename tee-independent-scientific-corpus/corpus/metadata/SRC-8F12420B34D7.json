@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-8F12420B34D7",
+  "title": "Microstructural evolution during isomerization",
+  "authors": [
+    "Jennifer Yamamoto",
+    "John Johnson",
+    "Ming Johnson",
+    "Joseph Taylor"
+  ],
+  "doi": "10.1371/sample.260000",
+  "publisher": "Elsevier",
+  "publication_date": "2017-02-06",
+  "source_uri": "https://doi.org/10.1371/sample.260000",
+  "repository_uri": null,
+  "abstract": "This paper presents a comprehensive study of materials_science focusing on key aspects. Employing advanced characterization methods, we reveal... Statistical analysis confirms the robustness of our conclusions. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1371/sample.260000",
+  "acquisition_timestamp": "2026-08-11T12:21:24.368843Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "19c2be2bab9d1d7642ad8eae7cf58eddf2f17900b675fd00c574062427708f59",
+  "license": "MIT",
+  "domain": "materials_science",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "materials_science",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "source_id": "SRC-306CCAC726AE",
+  "title": "Biodiversity assessment in habitat",
+  "authors": [
+    "Anna Williams",
+    "Ming Brown",
+    "Elizabeth Johnson",
+    "Richard Mueller",
+    "Akira Taylor"
+  ],
+  "doi": "10.1371/sample.142001",
+  "publisher": "Elsevier",
+  "publication_date": "2018-01-31",
+  "source_uri": "https://doi.org/10.1371/sample.142001",
+  "repository_uri": null,
+  "abstract": "This paper presents a comprehensive study of environmental_science focusing on key aspects. Employing advanced characterization methods, we reveal... We observe previously unreported behaviors under controlled conditions. This research contributes to the broader understanding of the domain.",
+  "fulltext_uri": "https://example.org/fulltext/10.1371/sample.142001",
+  "acquisition_timestamp": "2026-08-11T12:21:26.069101Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "0c6c5c9b995fa7e8363a711f35b3bce22234342001a82aa30cf8ec28853790a1",
+  "license": "Apache-2.0",
+  "domain": "environmental_science",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "environmental_science",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

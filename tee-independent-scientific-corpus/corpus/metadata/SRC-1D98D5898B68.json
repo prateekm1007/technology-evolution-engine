@@ -1,0 +1,45 @@
+{
+  "source_id": "SRC-1D98D5898B68",
+  "title": "Thermoelectric conversion in te_material",
+  "authors": [
+    "Joseph Wang",
+    "Wei Jones",
+    "Jennifer Johnson",
+    "Mary Thomas",
+    "Kenji Chen"
+  ],
+  "doi": "10.1109/sample.293001",
+  "publisher": "IEEE",
+  "publication_date": "2023-03-20",
+  "source_uri": "https://doi.org/10.1109/sample.293001",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in energy_sciences. By integrating multiple analytical approaches, we uncover... The findings suggest new directions for future research. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1109/sample.293001",
+  "acquisition_timestamp": "2026-08-11T12:21:25.928674Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "79b4f869442df34e93cbf10b2d59c9f323f76b42ccf3b4db27425bdf1c956b2a",
+  "license": "CC-BY-NC-4.0",
+  "domain": "energy_sciences",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "energy_sciences",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

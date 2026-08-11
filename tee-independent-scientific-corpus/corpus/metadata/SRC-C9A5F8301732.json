@@ -1,0 +1,46 @@
+{
+  "source_id": "SRC-C9A5F8301732",
+  "title": "Polymer processing for polymer_type",
+  "authors": [
+    "John Yamamoto",
+    "Patricia Anderson",
+    "Michael Chen",
+    "Robert Miller",
+    "Hiroshi Taylor",
+    "Kenji Yamamoto"
+  ],
+  "doi": "10.1109/sample.260001",
+  "publisher": "APS",
+  "publication_date": "2022-10-09",
+  "source_uri": "https://doi.org/10.1109/sample.260001",
+  "repository_uri": null,
+  "abstract": "We report novel findings in the field of chemical_engineering with significant implications. Through computational modeling and simulation, we show... Statistical analysis confirms the robustness of our conclusions. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1109/sample.260001",
+  "acquisition_timestamp": "2026-08-11T12:21:25.628040Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "493b27da4478261a0a61b2d0e0524ededda39ef1ac33a56e6b71d35edda3e89b",
+  "license": "CC-BY-4.0",
+  "domain": "chemical_engineering",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "chemical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "source_id": "SRC-399E84429A99",
+  "title": "Structure-activity relationships in compound_class",
+  "authors": [
+    "Patricia Lee",
+    "Linda Mueller",
+    "Jennifer Mueller",
+    "Akira Smith",
+    "Akira Thomas",
+    "Akira Rodriguez"
+  ],
+  "doi": "10.1016/sample.196000",
+  "publisher": "Elsevier",
+  "publication_date": "2010-08-31",
+  "source_uri": "https://doi.org/10.1016/sample.196000",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in chemistry. Using state-of-the-art experimental techniques, we demonstrate... We observe previously unreported behaviors under controlled conditions. The methodology presented here can be extended to related problems.",
+  "fulltext_uri": "https://example.org/fulltext/10.1016/sample.196000",
+  "acquisition_timestamp": "2026-08-11T12:21:24.066290Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "d366b2b2eb511b14b8911b47d5f9e893d11fc9b04d88c5e5aef71252169d934c",
+  "license": "closed",
+  "domain": "chemistry",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "chemistry",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

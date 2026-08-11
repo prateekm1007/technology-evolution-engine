@@ -1,0 +1,64 @@
+{
+  "total_sources": 3900,
+  "required_fields": [
+    "source_id",
+    "title",
+    "authors",
+    "doi",
+    "publisher",
+    "publication_date",
+    "abstract",
+    "provider",
+    "domain",
+    "sha256_hash",
+    "acquisition_timestamp"
+  ],
+  "field_statistics": {
+    "source_id": {
+      "present": 3900,
+      "absent": 0
+    },
+    "title": {
+      "present": 3900,
+      "absent": 0
+    },
+    "authors": {
+      "present": 3900,
+      "absent": 0
+    },
+    "doi": {
+      "present": 3900,
+      "absent": 0
+    },
+    "publisher": {
+      "present": 3900,
+      "absent": 0
+    },
+    "publication_date": {
+      "present": 3900,
+      "absent": 0
+    },
+    "abstract": {
+      "present": 3900,
+      "absent": 0
+    },
+    "provider": {
+      "present": 3900,
+      "absent": 0
+    },
+    "domain": {
+      "present": 3900,
+      "absent": 0
+    },
+    "sha256_hash": {
+      "present": 3900,
+      "absent": 0
+    },
+    "acquisition_timestamp": {
+      "present": 3900,
+      "absent": 0
+    }
+  },
+  "incomplete_sources_count": 0,
+  "incomplete_sources_sample": []
+}

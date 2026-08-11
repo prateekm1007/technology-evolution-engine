@@ -1,0 +1,45 @@
+{
+  "source_id": "SRC-D053A5FD4885",
+  "title": "Soft robotics design for soft_robot_application",
+  "authors": [
+    "Richard Martinez",
+    "Maria Chen",
+    "Jennifer Taylor",
+    "Wei Jones",
+    "James Chen"
+  ],
+  "doi": "10.1371/sample.255002",
+  "publisher": "APS",
+  "publication_date": "2018-01-30",
+  "source_uri": "https://doi.org/10.1371/sample.255002",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into robotics phenomena. Through computational modeling and simulation, we show... Our results indicate significant improvements in performance metrics. Our work opens new avenues for exploration in this field.",
+  "fulltext_uri": "https://example.org/fulltext/10.1371/sample.255002",
+  "acquisition_timestamp": "2026-08-11T12:21:26.992202Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "93dd1646290f16ee41ca044b97ec34ddcbd6d82ff477a3c66844ab3ac0726903",
+  "license": "Apache-2.0",
+  "domain": "robotics",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "robotics",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

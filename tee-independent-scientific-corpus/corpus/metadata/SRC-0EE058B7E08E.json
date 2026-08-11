@@ -1,0 +1,45 @@
+{
+  "source_id": "SRC-0EE058B7E08E",
+  "title": "Synaptic plasticity in cerebellum",
+  "authors": [
+    "Jose Tanaka",
+    "Jose Rodriguez",
+    "Robert Wang",
+    "Michael Johnson",
+    "Michael Taylor"
+  ],
+  "doi": "10.1016/sample.170000",
+  "publisher": "Springer",
+  "publication_date": "2012-12-02",
+  "source_uri": "https://doi.org/10.1016/sample.170000",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into neuroscience phenomena. Through computational modeling and simulation, we show... The findings suggest new directions for future research. Our work opens new avenues for exploration in this field.",
+  "fulltext_uri": "https://example.org/fulltext/10.1016/sample.170000",
+  "acquisition_timestamp": "2026-08-11T12:21:26.367555Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "559dcfbde913d6d58bd3e0c8dfe7fe9f788028713291c7f14224a3cd7e2f5beb",
+  "license": "MIT",
+  "domain": "neuroscience",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "neuroscience",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

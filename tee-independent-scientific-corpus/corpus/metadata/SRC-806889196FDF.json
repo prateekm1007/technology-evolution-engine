@@ -1,0 +1,45 @@
+{
+  "source_id": "SRC-806889196FDF",
+  "title": "Optical properties of nanostructure",
+  "authors": [
+    "Hiroshi Mueller",
+    "Richard Tanaka",
+    "Richard Taylor",
+    "Patricia Brown",
+    "Jose Tanaka"
+  ],
+  "doi": "10.1002/sample.165000",
+  "publisher": "Nature Publishing Group",
+  "publication_date": "2010-05-13",
+  "source_uri": "https://doi.org/10.1002/sample.165000",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into physics phenomena. Using state-of-the-art experimental techniques, we demonstrate... The findings suggest new directions for future research. Our work opens new avenues for exploration in this field.",
+  "fulltext_uri": "https://example.org/fulltext/10.1002/sample.165000",
+  "acquisition_timestamp": "2026-08-11T12:21:23.824906Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "a9db3b4792ca4a24a9406543716250116c0cc1cfb0f4a0ef33b6a6c305d915ed",
+  "license": "Apache-2.0",
+  "domain": "physics",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "physics",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

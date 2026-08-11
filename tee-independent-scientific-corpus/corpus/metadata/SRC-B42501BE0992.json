@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-B42501BE0992",
+  "title": "Thermoelectric conversion in te_material",
+  "authors": [
+    "Richard Wang",
+    "Michael Davis"
+  ],
+  "doi": "10.1021/sample.215002",
+  "publisher": "RSC",
+  "publication_date": "2020-05-26",
+  "source_uri": "https://doi.org/10.1021/sample.215002",
+  "repository_uri": null,
+  "abstract": "We report novel findings in the field of energy_sciences with significant implications. By integrating multiple analytical approaches, we uncover... Comparative evaluation demonstrates superiority over existing approaches. The methodology presented here can be extended to related problems.",
+  "fulltext_uri": "https://example.org/fulltext/10.1021/sample.215002",
+  "acquisition_timestamp": "2026-08-11T12:21:25.866255Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "051111ed5d703651ead4406b1d91072781e7fa3bd2e656d57ea8beddb7b09c49",
+  "license": "CC-BY-4.0",
+  "domain": "energy_sciences",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "energy_sciences",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "source_id": "SRC-9E4FA8A7AB42",
+  "title": "Heat integration in chemical plants",
+  "authors": [
+    "Mary Thomas",
+    "John Smith",
+    "Jennifer Smith"
+  ],
+  "doi": "10.1002/sample.106002",
+  "publisher": "RSC",
+  "publication_date": "2014-05-07",
+  "source_uri": "https://doi.org/10.1002/sample.106002",
+  "repository_uri": null,
+  "abstract": "This paper presents a comprehensive study of chemical_engineering focusing on key aspects. By integrating multiple analytical approaches, we uncover... Our results indicate significant improvements in performance metrics. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1002/sample.106002",
+  "acquisition_timestamp": "2026-08-11T12:21:25.465391Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "6071d7f42250d03413258d45942de0aeedaffb8f64e1c92dfc1b2b4297d7ccbc",
+  "license": "Apache-2.0",
+  "domain": "chemical_engineering",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "chemical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

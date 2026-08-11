@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-7F4C7607EED3",
+  "title": "Probability distributions for random_variable",
+  "authors": [
+    "Joseph Wang",
+    "Jose Davis",
+    "Mary Yamamoto",
+    "Michael Yamamoto"
+  ],
+  "doi": "10.1109/sample.093001",
+  "publisher": "APS",
+  "publication_date": "2021-09-07",
+  "source_uri": "https://doi.org/10.1109/sample.093001",
+  "repository_uri": null,
+  "abstract": "This paper presents a comprehensive study of mathematics focusing on key aspects. Using state-of-the-art experimental techniques, we demonstrate... Statistical analysis confirms the robustness of our conclusions. The methodology presented here can be extended to related problems.",
+  "fulltext_uri": "https://example.org/fulltext/10.1109/sample.093001",
+  "acquisition_timestamp": "2026-08-11T12:21:26.548403Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "a0aa44c62efa89b0de3853bc3a0148af01a9eb950f9e073b56d13c0cf823bc8e",
+  "license": "CC-BY-4.0",
+  "domain": "mathematics",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "mathematics",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

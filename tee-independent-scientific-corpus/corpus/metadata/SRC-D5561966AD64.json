@@ -1,0 +1,43 @@
+{
+  "source_id": "SRC-D5561966AD64",
+  "title": "Solar cell efficiency enhancement using pv_material",
+  "authors": [
+    "Anna Smith",
+    "Anna Suzuki",
+    "William Rodriguez"
+  ],
+  "doi": "10.1016/sample.249002",
+  "publisher": "Springer",
+  "publication_date": "2012-01-29",
+  "source_uri": "https://doi.org/10.1016/sample.249002",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in energy_sciences. Employing advanced characterization methods, we reveal... Comparative evaluation demonstrates superiority over existing approaches. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1016/sample.249002",
+  "acquisition_timestamp": "2026-08-11T12:21:25.890166Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "1758a51770c9127e6e672c78524c2e6dc3479c8b381c32b233b5db4cd0367888",
+  "license": "MIT",
+  "domain": "energy_sciences",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "energy_sciences",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

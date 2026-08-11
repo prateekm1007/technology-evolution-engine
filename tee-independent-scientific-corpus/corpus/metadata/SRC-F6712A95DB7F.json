@@ -1,0 +1,46 @@
+{
+  "source_id": "SRC-F6712A95DB7F",
+  "title": "Development of superconductor for application",
+  "authors": [
+    "Thomas Park",
+    "Jennifer Brown",
+    "William Yamamoto",
+    "John Lee",
+    "James Chen",
+    "Anna Miller"
+  ],
+  "doi": "10.1021/sample.175000",
+  "publisher": "IEEE",
+  "publication_date": "2017-12-11",
+  "source_uri": "https://doi.org/10.1021/sample.175000",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in materials_science. Through computational modeling and simulation, we show... Comparative evaluation demonstrates superiority over existing approaches. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1021/sample.175000",
+  "acquisition_timestamp": "2026-08-11T12:21:24.291073Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "e4077cea4f87ea4f57b5f39dfa82bc1affb32de8d04764fa5094e88c5443961f",
+  "license": "closed",
+  "domain": "materials_science",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "materials_science",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

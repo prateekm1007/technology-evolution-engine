@@ -1,0 +1,43 @@
+{
+  "source_id": "SRC-96A8F9D0EF44",
+  "title": "Ecological interactions between species_1 and species_2",
+  "authors": [
+    "Kenji Mueller",
+    "David Kim",
+    "Yong Mueller"
+  ],
+  "doi": "10.1038/sample.261001",
+  "publisher": "ACM",
+  "publication_date": "2020-03-13",
+  "source_uri": "https://doi.org/10.1038/sample.261001",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into biology phenomena. Through computational modeling and simulation, we show... Our results indicate significant improvements in performance metrics. This research contributes to the broader understanding of the domain.",
+  "fulltext_uri": "https://example.org/fulltext/10.1038/sample.261001",
+  "acquisition_timestamp": "2026-08-11T12:21:24.664291Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "cd33a96fe73a38631b7e0a71d6ce49fec6936619fba7cd63123a37b8a5e40f6c",
+  "license": "Apache-2.0",
+  "domain": "biology",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "biology",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

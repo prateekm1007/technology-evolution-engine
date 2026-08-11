@@ -1,0 +1,46 @@
+{
+  "source_id": "SRC-4CFABD933BBA",
+  "title": "Deep learning approach to task",
+  "authors": [
+    "Thomas Mueller",
+    "Mary Suzuki",
+    "Ming Park",
+    "Charles Kim",
+    "Mary Lee",
+    "John Rodriguez"
+  ],
+  "doi": "10.1021/sample.140001",
+  "publisher": "RSC",
+  "publication_date": "2019-09-17",
+  "source_uri": "https://doi.org/10.1021/sample.140001",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into computer_science phenomena. Combining theoretical analysis with empirical validation, we establish... We observe previously unreported behaviors under controlled conditions. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1021/sample.140001",
+  "acquisition_timestamp": "2026-08-11T12:21:24.791325Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "69ff07ef6b6372affb830787fa05597657e38d39a4983c0c5ede976b2ed6f37c",
+  "license": "closed",
+  "domain": "computer_science",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "computer_science",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

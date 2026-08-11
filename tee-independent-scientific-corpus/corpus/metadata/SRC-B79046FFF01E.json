@@ -1,0 +1,45 @@
+{
+  "source_id": "SRC-B79046FFF01E",
+  "title": "Polymer processing for polymer_type",
+  "authors": [
+    "Ming Park",
+    "Joseph Suzuki",
+    "Anna Rodriguez",
+    "Hiroshi Tanaka",
+    "Robert Tanaka"
+  ],
+  "doi": "10.1002/sample.117000",
+  "publisher": "RSC",
+  "publication_date": "2015-12-15",
+  "source_uri": "https://doi.org/10.1002/sample.117000",
+  "repository_uri": null,
+  "abstract": "This paper presents a comprehensive study of chemical_engineering focusing on key aspects. By integrating multiple analytical approaches, we uncover... Our results indicate significant improvements in performance metrics. This research contributes to the broader understanding of the domain.",
+  "fulltext_uri": "https://example.org/fulltext/10.1002/sample.117000",
+  "acquisition_timestamp": "2026-08-11T12:21:25.469782Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "ff834b7b5b4c340b2d5e527e1c3f4ca5b7194d5beb4e8942cfc1a607a370a08e",
+  "license": "Apache-2.0",
+  "domain": "chemical_engineering",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "chemical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

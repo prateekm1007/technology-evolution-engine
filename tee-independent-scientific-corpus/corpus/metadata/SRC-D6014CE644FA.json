@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-D6014CE644FA",
+  "title": "Learning-based control of robot_type",
+  "authors": [
+    "Michael Miller",
+    "Maria Park"
+  ],
+  "doi": "10.1002/sample.141002",
+  "publisher": "APS",
+  "publication_date": "2013-06-14",
+  "source_uri": "https://doi.org/10.1002/sample.141002",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of robotics through experimental and theoretical approaches. Using state-of-the-art experimental techniques, we demonstrate... Our results indicate significant improvements in performance metrics. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1002/sample.141002",
+  "acquisition_timestamp": "2026-08-11T12:21:26.890872Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "2faa60c0894fb1dc6f78dec5cc4206ea8c85934f4a0bc668a09b79ed57b940b2",
+  "license": "MIT",
+  "domain": "robotics",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "robotics",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

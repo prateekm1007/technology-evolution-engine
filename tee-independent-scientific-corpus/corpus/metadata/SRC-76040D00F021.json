@@ -1,0 +1,45 @@
+{
+  "source_id": "SRC-76040D00F021",
+  "title": "Self-assembly of molecule_type into structure",
+  "authors": [
+    "Hiroshi Jones",
+    "Kenji Mueller",
+    "David Brown",
+    "David Mueller",
+    "Maria Lee"
+  ],
+  "doi": "10.1038/sample.014000",
+  "publisher": "ACM",
+  "publication_date": "2021-11-05",
+  "source_uri": "https://doi.org/10.1038/sample.014000",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of chemistry through experimental and theoretical approaches. Using state-of-the-art experimental techniques, we demonstrate... We observe previously unreported behaviors under controlled conditions. Our work opens new avenues for exploration in this field.",
+  "fulltext_uri": "https://example.org/fulltext/10.1038/sample.014000",
+  "acquisition_timestamp": "2026-08-11T12:21:23.929309Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "005ab88cbd06e181b4ace4060573de5223ca01a5fbb6704bf544bb59351926ee",
+  "license": "Apache-2.0",
+  "domain": "chemistry",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "chemistry",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

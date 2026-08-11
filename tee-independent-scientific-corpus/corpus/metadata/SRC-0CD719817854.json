@@ -1,0 +1,46 @@
+{
+  "source_id": "SRC-0CD719817854",
+  "title": "Solar cell efficiency enhancement using pv_material",
+  "authors": [
+    "Robert Jones",
+    "Wei Smith",
+    "Mary Tanaka",
+    "Joseph Martinez",
+    "Mary Taylor",
+    "Ming Mueller"
+  ],
+  "doi": "10.1002/sample.173000",
+  "publisher": "Springer",
+  "publication_date": "2017-12-09",
+  "source_uri": "https://doi.org/10.1002/sample.173000",
+  "repository_uri": null,
+  "abstract": "This paper presents a comprehensive study of energy_sciences focusing on key aspects. Using state-of-the-art experimental techniques, we demonstrate... Comparative evaluation demonstrates superiority over existing approaches. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1002/sample.173000",
+  "acquisition_timestamp": "2026-08-11T12:21:25.824420Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "98ab14986963035d0fc75b3ad7bd0dcc650c71ae35fb0ef9a914eee0ae255db3",
+  "license": "MIT",
+  "domain": "energy_sciences",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "energy_sciences",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "source_id": "SRC-588B2613FD12",
+  "title": "Process optimization for chemical_process",
+  "authors": [
+    "Thomas Johnson",
+    "Maria Yamamoto",
+    "Ming Williams",
+    "Akira Davis",
+    "Charles Jones",
+    "Wei Jones"
+  ],
+  "doi": "10.1103/sample.040001",
+  "publisher": "APS",
+  "publication_date": "2013-04-27",
+  "source_uri": "https://doi.org/10.1103/sample.040001",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into chemical_engineering phenomena. By integrating multiple analytical approaches, we uncover... The findings suggest new directions for future research. The methodology presented here can be extended to related problems.",
+  "fulltext_uri": "https://example.org/fulltext/10.1103/sample.040001",
+  "acquisition_timestamp": "2026-08-11T12:21:25.410877Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "0afa6105d10b82f9666cb76a7cc0b6b96e522d379e6e956c466737339e61c279",
+  "license": "CC-BY-4.0",
+  "domain": "chemical_engineering",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "chemical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-187C4E10C8DC",
+  "title": "Perception systems for perception_task",
+  "authors": [
+    "Thomas Schmidt",
+    "Hiroshi Chen",
+    "William Yamamoto",
+    "Joseph Wang"
+  ],
+  "doi": "10.1038/sample.229001",
+  "publisher": "Springer",
+  "publication_date": "2023-09-05",
+  "source_uri": "https://doi.org/10.1038/sample.229001",
+  "repository_uri": null,
+  "abstract": "We report novel findings in the field of robotics with significant implications. Employing advanced characterization methods, we reveal... Statistical analysis confirms the robustness of our conclusions. Our work opens new avenues for exploration in this field.",
+  "fulltext_uri": "https://example.org/fulltext/10.1038/sample.229001",
+  "acquisition_timestamp": "2026-08-11T12:21:26.971984Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "f7fac65e9f020a4fb57c0809ee3a056eacd4adc2a5c176bd9c2a15ed21fb2782",
+  "license": "MIT",
+  "domain": "robotics",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "robotics",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

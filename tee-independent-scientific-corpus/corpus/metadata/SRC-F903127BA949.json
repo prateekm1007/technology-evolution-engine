@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-F903127BA949",
+  "title": "Natural language processing for nlp_task",
+  "authors": [
+    "Thomas Yamamoto",
+    "Wei Jones"
+  ],
+  "doi": "10.1002/sample.156001",
+  "publisher": "ACM",
+  "publication_date": "2022-07-04",
+  "source_uri": "https://doi.org/10.1002/sample.156001",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in computer_science. Employing advanced characterization methods, we reveal... We observe previously unreported behaviors under controlled conditions. This research contributes to the broader understanding of the domain.",
+  "fulltext_uri": "https://example.org/fulltext/10.1002/sample.156001",
+  "acquisition_timestamp": "2026-08-11T12:21:24.807781Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "9c7c2e07e91dc31f7881fe1e8bad000fef61fb6e7552194d16e40bf96a5ba6e5",
+  "license": "CC-BY-4.0",
+  "domain": "computer_science",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "computer_science",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

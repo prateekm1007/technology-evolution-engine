@@ -1,0 +1,43 @@
+{
+  "source_id": "SRC-0295D960E914",
+  "title": "Haptic feedback for haptic_application",
+  "authors": [
+    "Michael Mueller",
+    "Hiroshi Park",
+    "Kenji Chen"
+  ],
+  "doi": "10.1145/sample.204002",
+  "publisher": "IEEE",
+  "publication_date": "2015-10-23",
+  "source_uri": "https://doi.org/10.1145/sample.204002",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of robotics through experimental and theoretical approaches. By integrating multiple analytical approaches, we uncover... The findings suggest new directions for future research. Our work opens new avenues for exploration in this field.",
+  "fulltext_uri": "https://example.org/fulltext/10.1145/sample.204002",
+  "acquisition_timestamp": "2026-08-11T12:21:26.951649Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "97060abec7a500f9d6502ff2f6ae2f0c8cac49b143d2c6a99629ddc64a424e20",
+  "license": "closed",
+  "domain": "robotics",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "robotics",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "source_id": "SRC-843CE7D289D4",
+  "title": "Separation processes for mixture_type mixtures",
+  "authors": [
+    "Ming Smith",
+    "John Thomas",
+    "John Rodriguez"
+  ],
+  "doi": "10.1371/sample.156000",
+  "publisher": "Elsevier",
+  "publication_date": "2017-02-01",
+  "source_uri": "https://doi.org/10.1371/sample.156000",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into chemical_engineering phenomena. By integrating multiple analytical approaches, we uncover... We observe previously unreported behaviors under controlled conditions. This research contributes to the broader understanding of the domain.",
+  "fulltext_uri": "https://example.org/fulltext/10.1371/sample.156000",
+  "acquisition_timestamp": "2026-08-11T12:21:25.524629Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "0a37ff71bcca919b0969013452af555dc0b6589d332917ca1ccba9280104fe12",
+  "license": "MIT",
+  "domain": "chemical_engineering",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "chemical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "source_id": "SRC-DAEDC6431546",
+  "title": "Reinforcement learning in rl_domain",
+  "authors": [
+    "Anna Rodriguez",
+    "John Johnson",
+    "Yong Rodriguez",
+    "Kenji Park",
+    "Michael Park",
+    "Jose Jones"
+  ],
+  "doi": "10.1371/sample.228001",
+  "publisher": "Springer",
+  "publication_date": "2022-10-11",
+  "source_uri": "https://doi.org/10.1371/sample.228001",
+  "repository_uri": null,
+  "abstract": "This paper presents a comprehensive study of computer_science focusing on key aspects. Combining theoretical analysis with empirical validation, we establish... Statistical analysis confirms the robustness of our conclusions. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1371/sample.228001",
+  "acquisition_timestamp": "2026-08-11T12:21:24.866087Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "638febd9517e8839d8e25ae5a89916753468ce5173addb5478662779f4339bf8",
+  "license": "closed",
+  "domain": "computer_science",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "computer_science",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

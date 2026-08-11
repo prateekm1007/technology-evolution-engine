@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-451EF2941A0C",
+  "title": "Neurodevelopmental disorders in model_organism",
+  "authors": [
+    "Elizabeth Anderson",
+    "Charles Williams"
+  ],
+  "doi": "10.1021/sample.069002",
+  "publisher": "Springer",
+  "publication_date": "2014-06-12",
+  "source_uri": "https://doi.org/10.1021/sample.069002",
+  "repository_uri": null,
+  "abstract": "This paper presents a comprehensive study of neuroscience focusing on key aspects. Combining theoretical analysis with empirical validation, we establish... Comparative evaluation demonstrates superiority over existing approaches. Our work opens new avenues for exploration in this field.",
+  "fulltext_uri": "https://example.org/fulltext/10.1021/sample.069002",
+  "acquisition_timestamp": "2026-08-11T12:21:26.289080Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "174fcb2776a9f55fb5131d76158cdfbce6a4f83bb0cc9b445cdf9665714604cb",
+  "license": "MIT",
+  "domain": "neuroscience",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "neuroscience",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

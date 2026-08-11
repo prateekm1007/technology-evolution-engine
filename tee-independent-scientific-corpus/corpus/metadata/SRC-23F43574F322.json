@@ -1,0 +1,45 @@
+{
+  "source_id": "SRC-23F43574F322",
+  "title": "Self-assembly of molecule_type into structure",
+  "authors": [
+    "Patricia Davis",
+    "Linda Davis",
+    "Linda Mueller",
+    "Linda Thomas",
+    "Elizabeth Yamamoto"
+  ],
+  "doi": "10.1016/sample.047000",
+  "publisher": "Elsevier",
+  "publication_date": "2022-05-28",
+  "source_uri": "https://doi.org/10.1016/sample.047000",
+  "repository_uri": null,
+  "abstract": "We report novel findings in the field of chemistry with significant implications. Employing advanced characterization methods, we reveal... The findings suggest new directions for future research. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1016/sample.047000",
+  "acquisition_timestamp": "2026-08-11T12:21:23.950774Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "dbdd40586af3ecc6a93f1233d4fada4eb3ece582fc04938b8678db87b7439b5c",
+  "license": "closed",
+  "domain": "chemistry",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "chemistry",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

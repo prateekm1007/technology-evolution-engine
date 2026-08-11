@@ -1,0 +1,45 @@
+{
+  "source_id": "SRC-4BBB60D26D92",
+  "title": "Power electronics for power_application",
+  "authors": [
+    "Linda Rodriguez",
+    "William Brown",
+    "Anna Lee",
+    "Charles Park",
+    "Mary Yamamoto"
+  ],
+  "doi": "10.1103/sample.131001",
+  "publisher": "Elsevier",
+  "publication_date": "2020-10-15",
+  "source_uri": "https://doi.org/10.1103/sample.131001",
+  "repository_uri": null,
+  "abstract": "We report novel findings in the field of electrical_engineering with significant implications. By integrating multiple analytical approaches, we uncover... Statistical analysis confirms the robustness of our conclusions. This research contributes to the broader understanding of the domain.",
+  "fulltext_uri": "https://example.org/fulltext/10.1103/sample.131001",
+  "acquisition_timestamp": "2026-08-11T12:21:25.244317Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "65e8d697a62940449e0dd85a16f95fd6965d669f01595c597b6c52d968122cab",
+  "license": "Apache-2.0",
+  "domain": "electrical_engineering",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "electrical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

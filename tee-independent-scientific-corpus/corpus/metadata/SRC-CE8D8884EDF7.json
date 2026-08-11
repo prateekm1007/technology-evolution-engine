@@ -1,0 +1,45 @@
+{
+  "source_id": "SRC-CE8D8884EDF7",
+  "title": "Natural language processing for nlp_task",
+  "authors": [
+    "Patricia Wang",
+    "Michael Rodriguez",
+    "Richard Park",
+    "David Tanaka",
+    "Ming Davis"
+  ],
+  "doi": "10.1021/sample.248000",
+  "publisher": "APS",
+  "publication_date": "2011-05-25",
+  "source_uri": "https://doi.org/10.1021/sample.248000",
+  "repository_uri": null,
+  "abstract": "This paper presents a comprehensive study of computer_science focusing on key aspects. Employing advanced characterization methods, we reveal... We observe previously unreported behaviors under controlled conditions. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1021/sample.248000",
+  "acquisition_timestamp": "2026-08-11T12:21:24.883100Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "a7d2972d6c083c958bd3fd4c14a6b125fd16317246ba687f6f94f72f03a43250",
+  "license": "closed",
+  "domain": "computer_science",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "computer_science",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

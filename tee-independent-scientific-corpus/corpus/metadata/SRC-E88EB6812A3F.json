@@ -1,0 +1,45 @@
+{
+  "source_id": "SRC-E88EB6812A3F",
+  "title": "Design optimization of sensor for performance_metric",
+  "authors": [
+    "Jennifer Taylor",
+    "John Johnson",
+    "Mary Schmidt",
+    "Richard Kim",
+    "Linda Kim"
+  ],
+  "doi": "10.1109/sample.141001",
+  "publisher": "RSC",
+  "publication_date": "2017-11-23",
+  "source_uri": "https://doi.org/10.1109/sample.141001",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of mechanical_engineering through experimental and theoretical approaches. Through computational modeling and simulation, we show... The findings suggest new directions for future research. Our work opens new avenues for exploration in this field.",
+  "fulltext_uri": "https://example.org/fulltext/10.1109/sample.141001",
+  "acquisition_timestamp": "2026-08-11T12:21:25.010255Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "df243c3c65381d70995447b3f21fd873f0ba289f30d4c036a127484085f4f053",
+  "license": "CC-BY-4.0",
+  "domain": "mechanical_engineering",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "mechanical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "source_id": "SRC-0212F1A7EFC7",
+  "title": "Wind turbine optimization for wind_condition",
+  "authors": [
+    "Hiroshi Taylor",
+    "Elizabeth Kim",
+    "Thomas Chen",
+    "Elizabeth Martinez",
+    "Anna Schmidt",
+    "John Yamamoto"
+  ],
+  "doi": "10.1103/sample.109001",
+  "publisher": "Elsevier",
+  "publication_date": "2015-03-26",
+  "source_uri": "https://doi.org/10.1103/sample.109001",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into energy_sciences phenomena. Combining theoretical analysis with empirical validation, we establish... Statistical analysis confirms the robustness of our conclusions. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1103/sample.109001",
+  "acquisition_timestamp": "2026-08-11T12:21:25.766664Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "19e3761e2e5507f3d23040a75962a98dbbe2ba5905ec19bd6a1fb4f061278a15",
+  "license": "Apache-2.0",
+  "domain": "energy_sciences",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "energy_sciences",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

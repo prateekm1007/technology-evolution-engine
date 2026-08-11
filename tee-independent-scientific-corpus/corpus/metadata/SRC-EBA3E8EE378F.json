@@ -1,0 +1,43 @@
+{
+  "source_id": "SRC-EBA3E8EE378F",
+  "title": "Ecological interactions between species_1 and species_2",
+  "authors": [
+    "Kenji Mueller",
+    "Hiroshi Lee",
+    "Richard Miller"
+  ],
+  "doi": "10.1038/sample.265002",
+  "publisher": "RSC",
+  "publication_date": "2011-11-20",
+  "source_uri": "https://doi.org/10.1038/sample.265002",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in biology. Using state-of-the-art experimental techniques, we demonstrate... We observe previously unreported behaviors under controlled conditions. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1038/sample.265002",
+  "acquisition_timestamp": "2026-08-11T12:21:24.665857Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "b73ab61ea68064afeec33f26c85e327a2e2756dde46f5f6cf870361489afcc8f",
+  "license": "Apache-2.0",
+  "domain": "biology",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "biology",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

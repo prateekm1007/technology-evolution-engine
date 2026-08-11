@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-96D14BF74694",
+  "title": "Thermal management in system",
+  "authors": [
+    "Jose Schmidt",
+    "Mary Johnson"
+  ],
+  "doi": "10.1038/sample.240000",
+  "publisher": "Elsevier",
+  "publication_date": "2016-08-23",
+  "source_uri": "https://doi.org/10.1038/sample.240000",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in mechanical_engineering. Employing advanced characterization methods, we reveal... Our results indicate significant improvements in performance metrics. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1038/sample.240000",
+  "acquisition_timestamp": "2026-08-11T12:21:25.087023Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "30dedfebafb67cc257b51a0a4acb8e345a659fff117bf58d6be252a36187d599",
+  "license": "CC-BY-4.0",
+  "domain": "mechanical_engineering",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "mechanical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

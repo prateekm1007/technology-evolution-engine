@@ -1,0 +1,46 @@
+{
+  "source_id": "SRC-F99127D7D9F0",
+  "title": "Fuel cell performance with fuel_cell_type configuration",
+  "authors": [
+    "Elizabeth Williams",
+    "Ming Thomas",
+    "John Rodriguez",
+    "Anna Yamamoto",
+    "John Schmidt",
+    "John Lee"
+  ],
+  "doi": "10.1016/sample.164001",
+  "publisher": "RSC",
+  "publication_date": "2019-07-08",
+  "source_uri": "https://doi.org/10.1016/sample.164001",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of energy_sciences through experimental and theoretical approaches. Employing advanced characterization methods, we reveal... Our results indicate significant improvements in performance metrics. Our work opens new avenues for exploration in this field.",
+  "fulltext_uri": "https://example.org/fulltext/10.1016/sample.164001",
+  "acquisition_timestamp": "2026-08-11T12:21:25.810109Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "dac9228bc02e4e855fd9a7a5e0fbfa52fa98159ce46ca0b9fddb11c1c7db22fa",
+  "license": "CC-BY-4.0",
+  "domain": "energy_sciences",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "energy_sciences",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

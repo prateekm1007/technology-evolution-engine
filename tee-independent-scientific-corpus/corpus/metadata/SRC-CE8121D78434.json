@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-CE8121D78434",
+  "title": "Optimization on manifold_type manifolds",
+  "authors": [
+    "Jose Park",
+    "Hiroshi Anderson",
+    "Ming Suzuki",
+    "Jennifer Park"
+  ],
+  "doi": "10.1016/sample.040001",
+  "publisher": "APS",
+  "publication_date": "2010-05-10",
+  "source_uri": "https://doi.org/10.1016/sample.040001",
+  "repository_uri": null,
+  "abstract": "We report novel findings in the field of mathematics with significant implications. Combining theoretical analysis with empirical validation, we establish... Statistical analysis confirms the robustness of our conclusions. This research contributes to the broader understanding of the domain.",
+  "fulltext_uri": "https://example.org/fulltext/10.1016/sample.040001",
+  "acquisition_timestamp": "2026-08-11T12:21:26.506895Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "ba0700f0c08470a54c0a5ddc64a191602e5dd0425c4bd324a6334234a1d5a73c",
+  "license": "Apache-2.0",
+  "domain": "mathematics",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "mathematics",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

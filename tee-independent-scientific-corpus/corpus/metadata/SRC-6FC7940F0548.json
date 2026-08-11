@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-6FC7940F0548",
+  "title": "Molecular mechanisms of polymerization in Arabidopsis",
+  "authors": [
+    "Jose Wang",
+    "Hiroshi Jones",
+    "David Suzuki",
+    "Kenji Jones"
+  ],
+  "doi": "10.1002/sample.056000",
+  "publisher": "Elsevier",
+  "publication_date": "2024-05-22",
+  "source_uri": "https://doi.org/10.1002/sample.056000",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in biology. Through computational modeling and simulation, we show... Our results indicate significant improvements in performance metrics. Our work opens new avenues for exploration in this field.",
+  "fulltext_uri": "https://example.org/fulltext/10.1002/sample.056000",
+  "acquisition_timestamp": "2026-08-11T12:21:24.446950Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "8a564847784757240987380a9357c2a782dedcf1f62e5fb0940a808392e54cdb",
+  "license": "CC-BY-NC-4.0",
+  "domain": "biology",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "biology",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

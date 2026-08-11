@@ -1,0 +1,43 @@
+{
+  "source_id": "SRC-300DBB25ABED",
+  "title": "Self-assembly of molecule_type into structure",
+  "authors": [
+    "Kenji Miller",
+    "Thomas Anderson",
+    "Hiroshi Anderson"
+  ],
+  "doi": "10.1038/sample.048001",
+  "publisher": "RSC",
+  "publication_date": "2020-06-20",
+  "source_uri": "https://doi.org/10.1038/sample.048001",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of chemistry through experimental and theoretical approaches. Through computational modeling and simulation, we show... We observe previously unreported behaviors under controlled conditions. The methodology presented here can be extended to related problems.",
+  "fulltext_uri": "https://example.org/fulltext/10.1038/sample.048001",
+  "acquisition_timestamp": "2026-08-11T12:21:23.951058Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "ca5edb154e50d75295302dbffa80b3bf42a57266e6ff6faaea44c6e347938faa",
+  "license": "MIT",
+  "domain": "chemistry",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "chemistry",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

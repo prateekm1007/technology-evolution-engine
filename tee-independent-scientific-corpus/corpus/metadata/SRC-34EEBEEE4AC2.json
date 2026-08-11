@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-34EEBEEE4AC2",
+  "title": "Grid integration of renewable_source",
+  "authors": [
+    "Linda Martinez",
+    "Ming Wang"
+  ],
+  "doi": "10.1103/sample.110001",
+  "publisher": "Springer",
+  "publication_date": "2012-03-06",
+  "source_uri": "https://doi.org/10.1103/sample.110001",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into energy_sciences phenomena. Through computational modeling and simulation, we show... Our results indicate significant improvements in performance metrics. Our work opens new avenues for exploration in this field.",
+  "fulltext_uri": "https://example.org/fulltext/10.1103/sample.110001",
+  "acquisition_timestamp": "2026-08-11T12:21:25.766981Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "6d763c3e8c2310c64768c6c9cfe1ec93d21be6187f53fb9c5c2d3ff7b62c22df",
+  "license": "Apache-2.0",
+  "domain": "energy_sciences",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "energy_sciences",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "source_id": "SRC-AFBD1321DE19",
+  "title": "Heat integration in chemical plants",
+  "authors": [
+    "Maria Wang",
+    "Linda Johnson",
+    "Patricia Johnson"
+  ],
+  "doi": "10.1016/sample.020000",
+  "publisher": "RSC",
+  "publication_date": "2020-07-10",
+  "source_uri": "https://doi.org/10.1016/sample.020000",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of chemical_engineering through experimental and theoretical approaches. Through computational modeling and simulation, we show... We observe previously unreported behaviors under controlled conditions. Our work opens new avenues for exploration in this field.",
+  "fulltext_uri": "https://example.org/fulltext/10.1016/sample.020000",
+  "acquisition_timestamp": "2026-08-11T12:21:25.390643Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "bcf77e62cf0388cd04bf18754b756cda55a19fa6d1d4f08f0476a70dbfdccb6f",
+  "license": "CC-BY-4.0",
+  "domain": "chemical_engineering",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "chemical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

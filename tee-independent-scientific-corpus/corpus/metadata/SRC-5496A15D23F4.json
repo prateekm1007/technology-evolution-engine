@@ -1,0 +1,43 @@
+{
+  "source_id": "SRC-5496A15D23F4",
+  "title": "Heat integration in chemical plants",
+  "authors": [
+    "Richard Martinez",
+    "Akira Johnson",
+    "David Brown"
+  ],
+  "doi": "10.1145/sample.205001",
+  "publisher": "ACM",
+  "publication_date": "2023-10-22",
+  "source_uri": "https://doi.org/10.1145/sample.205001",
+  "repository_uri": null,
+  "abstract": "We report novel findings in the field of chemical_engineering with significant implications. Employing advanced characterization methods, we reveal... Statistical analysis confirms the robustness of our conclusions. Our work opens new avenues for exploration in this field.",
+  "fulltext_uri": "https://example.org/fulltext/10.1145/sample.205001",
+  "acquisition_timestamp": "2026-08-11T12:21:25.572869Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "2c7b044c9878a9fae9a13c48a692ca7f4cf668d701ff2ed082eed69d0d38f830",
+  "license": "CC-BY-4.0",
+  "domain": "chemical_engineering",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "chemical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

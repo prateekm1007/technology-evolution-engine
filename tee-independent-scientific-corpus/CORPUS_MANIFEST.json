@@ -1,0 +1,45 @@
+{
+  "corpus_id": "TEE-ISC-2025-001",
+  "corpus_version": "1.0.0",
+  "publication_cutoff": "2024-06-30",
+  "sampling_seed": 42871,
+  "sampling_method": "stratified_random_sampling_with_provider_rotation",
+  "providers": [
+    "openalex",
+    "crossref",
+    "semantic_scholar",
+    "openaire"
+  ],
+  "source_count": 3900,
+  "domain_distribution": {
+    "physics": 300,
+    "chemistry": 300,
+    "materials_science": 300,
+    "biology": 300,
+    "computer_science": 300,
+    "mechanical_engineering": 300,
+    "electrical_engineering": 300,
+    "chemical_engineering": 300,
+    "energy_sciences": 300,
+    "environmental_science": 300,
+    "neuroscience": 300,
+    "mathematics": 300,
+    "robotics": 300
+  },
+  "acquisition_window": {
+    "start": "2025-01-01T00:00:00Z",
+    "end": "2025-01-31T23:59:59Z"
+  },
+  "creation_timestamp": "2025-01-15T00:00:00Z",
+  "creator_custodian": "Independent Scientific Corpus Commission",
+  "tee_access_attestation": "This corpus was constructed without access to TEE-generated hypotheses, rankings, source-pair candidates, benchmark labels, or outputs.",
+  "corpus_sha256": "3d7d0a56bd1962a733c92a384c73b60de3f85509643c1e26f5675eb96d56c85e",
+  "manifest_sha256": "ef31c8ce71dabc0e17354c06abf1b81c1fe266cecd4b26b21b19f41074e44031",
+  "freeze_status": "frozen",
+  "freeze_timestamp": "2026-08-11T12:22:24.208456Z",
+  "domains_target": 13,
+  "domains_minimum_required": 4,
+  "target_source_count_min": 2000,
+  "target_source_count_max": 5000,
+  "notes": "Mock data generated for infrastructure testing. Replace with real API data for production use."
+}

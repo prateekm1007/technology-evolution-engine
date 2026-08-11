@@ -1,0 +1,46 @@
+{
+  "source_id": "SRC-25DEA8C707F2",
+  "title": "Development of oxide for application",
+  "authors": [
+    "John Yamamoto",
+    "John Thomas",
+    "Maria Anderson",
+    "Robert Park",
+    "Maria Mueller",
+    "Linda Thomas"
+  ],
+  "doi": "10.1038/sample.067000",
+  "publisher": "Nature Publishing Group",
+  "publication_date": "2010-03-01",
+  "source_uri": "https://doi.org/10.1038/sample.067000",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into materials_science phenomena. Through computational modeling and simulation, we show... We observe previously unreported behaviors under controlled conditions. Our work opens new avenues for exploration in this field.",
+  "fulltext_uri": "https://example.org/fulltext/10.1038/sample.067000",
+  "acquisition_timestamp": "2026-08-11T12:21:24.204699Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "bab4eecb26005055d3832e8f027397e1ccb9e5b3943b1ee45df4ea27a978fcd5",
+  "license": "closed",
+  "domain": "materials_science",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "materials_science",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

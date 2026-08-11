@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-582814779056",
+  "title": "Fluid dynamics simulation of flow_scenario",
+  "authors": [
+    "Anna Davis",
+    "Anna Thomas"
+  ],
+  "doi": "10.1002/sample.236001",
+  "publisher": "IEEE",
+  "publication_date": "2010-10-24",
+  "source_uri": "https://doi.org/10.1002/sample.236001",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of mechanical_engineering through experimental and theoretical approaches. By integrating multiple analytical approaches, we uncover... Statistical analysis confirms the robustness of our conclusions. This research contributes to the broader understanding of the domain.",
+  "fulltext_uri": "https://example.org/fulltext/10.1002/sample.236001",
+  "acquisition_timestamp": "2026-08-11T12:21:25.085740Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "072385a4562bd54cdb3276d267d3b2f840ed3dd0fdf00ab82affc521c73ef3fd",
+  "license": "MIT",
+  "domain": "mechanical_engineering",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "mechanical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

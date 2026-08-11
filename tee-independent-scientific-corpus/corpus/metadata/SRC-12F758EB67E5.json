@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-12F758EB67E5",
+  "title": "Reinforcement learning in rl_domain",
+  "authors": [
+    "Wei Taylor",
+    "Wei Kim"
+  ],
+  "doi": "10.1103/sample.299000",
+  "publisher": "IEEE",
+  "publication_date": "2024-05-01",
+  "source_uri": "https://doi.org/10.1103/sample.299000",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of computer_science through experimental and theoretical approaches. By integrating multiple analytical approaches, we uncover... Statistical analysis confirms the robustness of our conclusions. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1103/sample.299000",
+  "acquisition_timestamp": "2026-08-11T12:21:24.911163Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "d83bb7484387cf2dbd999129b689e2b53c6bd34c6c9c69e7ad7f428891405224",
+  "license": "closed",
+  "domain": "computer_science",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "computer_science",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

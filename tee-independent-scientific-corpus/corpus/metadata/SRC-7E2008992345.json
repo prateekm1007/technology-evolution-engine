@@ -1,0 +1,46 @@
+{
+  "source_id": "SRC-7E2008992345",
+  "title": "Computational fluid dynamics of geometry",
+  "authors": [
+    "Yong Jones",
+    "Akira Anderson",
+    "Elizabeth Tanaka",
+    "Jennifer Park",
+    "Richard Brown",
+    "Joseph Garcia"
+  ],
+  "doi": "10.1145/sample.222001",
+  "publisher": "RSC",
+  "publication_date": "2014-05-12",
+  "source_uri": "https://doi.org/10.1145/sample.222001",
+  "repository_uri": null,
+  "abstract": "We report novel findings in the field of mechanical_engineering with significant implications. By integrating multiple analytical approaches, we uncover... We observe previously unreported behaviors under controlled conditions. This research contributes to the broader understanding of the domain.",
+  "fulltext_uri": "https://example.org/fulltext/10.1145/sample.222001",
+  "acquisition_timestamp": "2026-08-11T12:21:25.070249Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "7361905a05bbc8ce1fd06c6874d488dcf8651f149bf4f3779c49ffcf3b33b43a",
+  "license": "closed",
+  "domain": "mechanical_engineering",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "mechanical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

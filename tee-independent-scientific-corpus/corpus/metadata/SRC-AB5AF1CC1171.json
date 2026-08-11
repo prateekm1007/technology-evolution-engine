@@ -1,0 +1,46 @@
+{
+  "source_id": "SRC-AB5AF1CC1171",
+  "title": "Deep learning approach to task",
+  "authors": [
+    "Michael Tanaka",
+    "Yong Lee",
+    "Ming Martinez",
+    "Charles Kim",
+    "Akira Brown",
+    "Akira Chen"
+  ],
+  "doi": "10.1038/sample.057000",
+  "publisher": "RSC",
+  "publication_date": "2020-03-09",
+  "source_uri": "https://doi.org/10.1038/sample.057000",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of computer_science through experimental and theoretical approaches. Combining theoretical analysis with empirical validation, we establish... We observe previously unreported behaviors under controlled conditions. This research contributes to the broader understanding of the domain.",
+  "fulltext_uri": "https://example.org/fulltext/10.1038/sample.057000",
+  "acquisition_timestamp": "2026-08-11T12:21:24.731330Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "a0fb839a62f8a7908ca8d6921b89dc87ef1b2bc36d1e337c083a84eda2c60df4",
+  "license": "CC-BY-4.0",
+  "domain": "computer_science",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "computer_science",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

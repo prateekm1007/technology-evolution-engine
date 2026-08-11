@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-C29F7D63006C",
+  "title": "Biofuel production from biomass_type",
+  "authors": [
+    "Thomas Johnson",
+    "Kenji Suzuki"
+  ],
+  "doi": "10.1109/sample.219000",
+  "publisher": "APS",
+  "publication_date": "2017-04-07",
+  "source_uri": "https://doi.org/10.1109/sample.219000",
+  "repository_uri": null,
+  "abstract": "This paper presents a comprehensive study of energy_sciences focusing on key aspects. Employing advanced characterization methods, we reveal... Statistical analysis confirms the robustness of our conclusions. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1109/sample.219000",
+  "acquisition_timestamp": "2026-08-11T12:21:25.867518Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "78cb3c242a037c133301be44e2733dc9e81f00a02476251bd1f45d7ad1e253e2",
+  "license": "CC-BY-4.0",
+  "domain": "energy_sciences",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "energy_sciences",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

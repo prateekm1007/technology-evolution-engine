@@ -1,0 +1,45 @@
+{
+  "source_id": "SRC-FACAA6CB42AF",
+  "title": "Comparative genomics of clade reveals insight",
+  "authors": [
+    "Mary Lee",
+    "James Smith",
+    "Yong Miller",
+    "Kenji Smith",
+    "Linda Schmidt"
+  ],
+  "doi": "10.1016/sample.101000",
+  "publisher": "Springer",
+  "publication_date": "2017-03-18",
+  "source_uri": "https://doi.org/10.1016/sample.101000",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in biology. Through computational modeling and simulation, we show... Comparative evaluation demonstrates superiority over existing approaches. This research contributes to the broader understanding of the domain.",
+  "fulltext_uri": "https://example.org/fulltext/10.1016/sample.101000",
+  "acquisition_timestamp": "2026-08-11T12:21:24.483596Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "12979d2f9d2be69eb57d66f24fbe6b99ca0c624c761b796a0fa24f37ae256f6e",
+  "license": "MIT",
+  "domain": "biology",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "biology",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

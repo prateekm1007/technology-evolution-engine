@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-9A8908352087",
+  "title": "Combinatorial enumeration of combinatorial_object",
+  "authors": [
+    "Patricia Taylor",
+    "Patricia Garcia"
+  ],
+  "doi": "10.1038/sample.198001",
+  "publisher": "Springer",
+  "publication_date": "2021-04-28",
+  "source_uri": "https://doi.org/10.1038/sample.198001",
+  "repository_uri": null,
+  "abstract": "We report novel findings in the field of mathematics with significant implications. Through computational modeling and simulation, we show... The findings suggest new directions for future research. This research contributes to the broader understanding of the domain.",
+  "fulltext_uri": "https://example.org/fulltext/10.1038/sample.198001",
+  "acquisition_timestamp": "2026-08-11T12:21:26.685695Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "9de8de95e0749182ffa3ac9c149b0a92aa4078a1dc6fce619b26bd1d65882d0a",
+  "license": "Apache-2.0",
+  "domain": "mathematics",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "mathematics",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

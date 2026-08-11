@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-0B112F4CDB06",
+  "title": "Polymer processing for polymer_type",
+  "authors": [
+    "Richard Garcia",
+    "Hiroshi Martinez",
+    "Yong Schmidt",
+    "Anna Mueller"
+  ],
+  "doi": "10.1021/sample.054001",
+  "publisher": "RSC",
+  "publication_date": "2023-09-09",
+  "source_uri": "https://doi.org/10.1021/sample.054001",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into chemical_engineering phenomena. Employing advanced characterization methods, we reveal... Comparative evaluation demonstrates superiority over existing approaches. This research contributes to the broader understanding of the domain.",
+  "fulltext_uri": "https://example.org/fulltext/10.1021/sample.054001",
+  "acquisition_timestamp": "2026-08-11T12:21:25.427656Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "6f39f990a13a587c87e917d18565d869939dfa2075da8cb08e48f35cc43487a1",
+  "license": "Apache-2.0",
+  "domain": "chemical_engineering",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "chemical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

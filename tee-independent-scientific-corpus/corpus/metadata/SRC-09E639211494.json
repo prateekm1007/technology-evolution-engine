@@ -1,0 +1,43 @@
+{
+  "source_id": "SRC-09E639211494",
+  "title": "Biodiversity assessment in habitat",
+  "authors": [
+    "Kenji Wang",
+    "John Wang",
+    "Yong Brown"
+  ],
+  "doi": "10.1038/sample.297001",
+  "publisher": "RSC",
+  "publication_date": "2022-05-14",
+  "source_uri": "https://doi.org/10.1038/sample.297001",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in environmental_science. Employing advanced characterization methods, we reveal... We observe previously unreported behaviors under controlled conditions. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1038/sample.297001",
+  "acquisition_timestamp": "2026-08-11T12:21:26.225861Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "ddfa60dc16f407fb1029682d2b07a5eb9c958fb32744031c09a4234a65bc3743",
+  "license": "CC-BY-NC-4.0",
+  "domain": "environmental_science",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "environmental_science",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

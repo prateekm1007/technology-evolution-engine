@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-BC27BBD1F871",
+  "title": "Topological properties of topological_space",
+  "authors": [
+    "John Kim",
+    "Kenji Anderson"
+  ],
+  "doi": "10.1371/sample.145002",
+  "publisher": "APS",
+  "publication_date": "2018-04-09",
+  "source_uri": "https://doi.org/10.1371/sample.145002",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into mathematics phenomena. By integrating multiple analytical approaches, we uncover... The findings suggest new directions for future research. Our work opens new avenues for exploration in this field.",
+  "fulltext_uri": "https://example.org/fulltext/10.1371/sample.145002",
+  "acquisition_timestamp": "2026-08-11T12:21:26.624770Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "23f52c1f0a723a9214087f4dac62c1ecf9c0667bfadb081bf936334c1478a359",
+  "license": "CC-BY-4.0",
+  "domain": "mathematics",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "mathematics",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

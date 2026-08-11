@@ -1,0 +1,43 @@
+{
+  "source_id": "SRC-316A205C37F2",
+  "title": "Process intensification in unit_operation",
+  "authors": [
+    "William Thomas",
+    "Linda Wang",
+    "Michael Kim"
+  ],
+  "doi": "10.1002/sample.256000",
+  "publisher": "IEEE",
+  "publication_date": "2012-03-01",
+  "source_uri": "https://doi.org/10.1002/sample.256000",
+  "repository_uri": null,
+  "abstract": "We report novel findings in the field of chemical_engineering with significant implications. Combining theoretical analysis with empirical validation, we establish... We observe previously unreported behaviors under controlled conditions. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1002/sample.256000",
+  "acquisition_timestamp": "2026-08-11T12:21:25.626695Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "a16c91b13cd2acc116b2830b37f9e5e828218d639b2476e198030a219254f4f6",
+  "license": "Apache-2.0",
+  "domain": "chemical_engineering",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "chemical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-57C3E8322D8E",
+  "title": "Ecological interactions between species_1 and species_2",
+  "authors": [
+    "Joseph Williams",
+    "Mary Anderson"
+  ],
+  "doi": "10.1002/sample.211001",
+  "publisher": "RSC",
+  "publication_date": "2017-04-08",
+  "source_uri": "https://doi.org/10.1002/sample.211001",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of biology through experimental and theoretical approaches. Combining theoretical analysis with empirical validation, we establish... We observe previously unreported behaviors under controlled conditions. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1002/sample.211001",
+  "acquisition_timestamp": "2026-08-11T12:21:24.625553Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "77ea78b107c160d3e6cc4cd2430bf698325505196a7f73e3fc44be12503b6e79",
+  "license": "MIT",
+  "domain": "biology",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "biology",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

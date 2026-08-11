@@ -1,0 +1,43 @@
+{
+  "source_id": "SRC-8DAF68131C91",
+  "title": "Genomic analysis reveals finding in species",
+  "authors": [
+    "John Park",
+    "Kenji Yamamoto",
+    "Michael Mueller"
+  ],
+  "doi": "10.1103/sample.123000",
+  "publisher": "IEEE",
+  "publication_date": "2022-01-10",
+  "source_uri": "https://doi.org/10.1103/sample.123000",
+  "repository_uri": null,
+  "abstract": "This paper presents a comprehensive study of biology focusing on key aspects. Employing advanced characterization methods, we reveal... Statistical analysis confirms the robustness of our conclusions. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1103/sample.123000",
+  "acquisition_timestamp": "2026-08-11T12:21:24.493843Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "3cd3a133e7955bd8b24f9d22d294a646c9b527cc21f2e6c27d1885302c18dd77",
+  "license": "CC-BY-NC-4.0",
+  "domain": "biology",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "biology",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

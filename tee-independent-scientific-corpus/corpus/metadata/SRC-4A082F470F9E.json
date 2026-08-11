@@ -1,0 +1,43 @@
+{
+  "source_id": "SRC-4A082F470F9E",
+  "title": "Soil contamination by contaminant",
+  "authors": [
+    "Thomas Garcia",
+    "William Lee",
+    "Anna Schmidt"
+  ],
+  "doi": "10.1016/sample.225001",
+  "publisher": "ACM",
+  "publication_date": "2016-11-25",
+  "source_uri": "https://doi.org/10.1016/sample.225001",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into environmental_science phenomena. Combining theoretical analysis with empirical validation, we establish... Statistical analysis confirms the robustness of our conclusions. The methodology presented here can be extended to related problems.",
+  "fulltext_uri": "https://example.org/fulltext/10.1016/sample.225001",
+  "acquisition_timestamp": "2026-08-11T12:21:26.165915Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "d85e827a92021c0f765f0e9884a1333303993d2fa03517e591bfe0aa9817aeef",
+  "license": "CC-BY-4.0",
+  "domain": "environmental_science",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "environmental_science",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

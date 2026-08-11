@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-918D12AA9C70",
+  "title": "Additive manufacturing of alloy alloys",
+  "authors": [
+    "Wei Kim",
+    "Kenji Wang"
+  ],
+  "doi": "10.1109/sample.196001",
+  "publisher": "RSC",
+  "publication_date": "2012-02-03",
+  "source_uri": "https://doi.org/10.1109/sample.196001",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in materials_science. Employing advanced characterization methods, we reveal... The findings suggest new directions for future research. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1109/sample.196001",
+  "acquisition_timestamp": "2026-08-11T12:21:24.309954Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "272a2519fa3d98361e05574f5e42fd2d4ccb57e72699139884d73031033e4b66",
+  "license": "CC-BY-NC-4.0",
+  "domain": "materials_science",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "materials_science",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

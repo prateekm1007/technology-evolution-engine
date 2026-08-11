@@ -1,0 +1,43 @@
+{
+  "source_id": "SRC-19AA4D11998B",
+  "title": "Wind turbine optimization for wind_condition",
+  "authors": [
+    "James Lee",
+    "Maria Kim",
+    "William Kim"
+  ],
+  "doi": "10.1038/sample.289001",
+  "publisher": "IEEE",
+  "publication_date": "2012-11-17",
+  "source_uri": "https://doi.org/10.1038/sample.289001",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into energy_sciences phenomena. Combining theoretical analysis with empirical validation, we establish... The findings suggest new directions for future research. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1038/sample.289001",
+  "acquisition_timestamp": "2026-08-11T12:21:25.926503Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "5a0dc179a57e50a6044a62815b6ee607ee4086148a49f2b69ffafb33c0204068",
+  "license": "Apache-2.0",
+  "domain": "energy_sciences",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "energy_sciences",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

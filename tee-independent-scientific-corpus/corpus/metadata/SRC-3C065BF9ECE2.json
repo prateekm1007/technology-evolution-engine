@@ -1,0 +1,46 @@
+{
+  "source_id": "SRC-3C065BF9ECE2",
+  "title": "Power electronics for power_application",
+  "authors": [
+    "Hiroshi Garcia",
+    "William Rodriguez",
+    "Akira Lee",
+    "Linda Brown",
+    "Patricia Smith",
+    "Elizabeth Miller"
+  ],
+  "doi": "10.1021/sample.209001",
+  "publisher": "Nature Publishing Group",
+  "publication_date": "2021-04-29",
+  "source_uri": "https://doi.org/10.1021/sample.209001",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into electrical_engineering phenomena. Using state-of-the-art experimental techniques, we demonstrate... We observe previously unreported behaviors under controlled conditions. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1021/sample.209001",
+  "acquisition_timestamp": "2026-08-11T12:21:25.307276Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "a2dc02ed2310c037a1cde7b386321990edb200bf5860997cfd6d9c5c58e921dd",
+  "license": "MIT",
+  "domain": "electrical_engineering",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "electrical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

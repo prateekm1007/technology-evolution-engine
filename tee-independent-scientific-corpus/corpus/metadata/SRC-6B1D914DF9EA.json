@@ -1,0 +1,45 @@
+{
+  "source_id": "SRC-6B1D914DF9EA",
+  "title": "Self-assembly of molecule_type into structure",
+  "authors": [
+    "Kenji Chen",
+    "Thomas Johnson",
+    "Hiroshi Johnson",
+    "Jennifer Martinez",
+    "Linda Lee"
+  ],
+  "doi": "10.1016/sample.107000",
+  "publisher": "Springer",
+  "publication_date": "2013-01-17",
+  "source_uri": "https://doi.org/10.1016/sample.107000",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in chemistry. Employing advanced characterization methods, we reveal... Our results indicate significant improvements in performance metrics. Our work opens new avenues for exploration in this field.",
+  "fulltext_uri": "https://example.org/fulltext/10.1016/sample.107000",
+  "acquisition_timestamp": "2026-08-11T12:21:24.003319Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "250634230ac9523106fc55b27fda45b51e6ec4cda7f34eec618fb7c72eeafdbc",
+  "license": "CC-BY-4.0",
+  "domain": "chemistry",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "chemistry",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

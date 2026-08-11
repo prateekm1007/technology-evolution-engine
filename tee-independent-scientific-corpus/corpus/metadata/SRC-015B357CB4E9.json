@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-015B357CB4E9",
+  "title": "Neural circuit mapping of circuit_name",
+  "authors": [
+    "David Rodriguez",
+    "Elizabeth Thomas",
+    "Anna Brown",
+    "Wei Chen"
+  ],
+  "doi": "10.1145/sample.152000",
+  "publisher": "ACM",
+  "publication_date": "2013-08-23",
+  "source_uri": "https://doi.org/10.1145/sample.152000",
+  "repository_uri": null,
+  "abstract": "We report novel findings in the field of neuroscience with significant implications. Using state-of-the-art experimental techniques, we demonstrate... Our results indicate significant improvements in performance metrics. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1145/sample.152000",
+  "acquisition_timestamp": "2026-08-11T12:21:26.350083Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "9892392fa364be24f4259dc3b7f9c1cd6ba411e78f5cc914fd7d1231061ac512",
+  "license": "MIT",
+  "domain": "neuroscience",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "neuroscience",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

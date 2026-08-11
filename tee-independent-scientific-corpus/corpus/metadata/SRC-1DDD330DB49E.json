@@ -1,0 +1,43 @@
+{
+  "source_id": "SRC-1DDD330DB49E",
+  "title": "Multi-robot coordination in coordination_scenario",
+  "authors": [
+    "James Garcia",
+    "Ming Brown",
+    "Charles Williams"
+  ],
+  "doi": "10.1038/sample.045003",
+  "publisher": "Nature Publishing Group",
+  "publication_date": "2012-08-20",
+  "source_uri": "https://doi.org/10.1038/sample.045003",
+  "repository_uri": null,
+  "abstract": "We report novel findings in the field of robotics with significant implications. Employing advanced characterization methods, we reveal... We observe previously unreported behaviors under controlled conditions. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1038/sample.045003",
+  "acquisition_timestamp": "2026-08-11T12:21:26.792346Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "e841e39891f358694c3f9344eea45c9c9da05a4cfc3d407adfd57426274b9a1e",
+  "license": "CC-BY-4.0",
+  "domain": "robotics",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "robotics",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "source_id": "SRC-D6BE8EC8F4E9",
+  "title": "Thermoelectric conversion in te_material",
+  "authors": [
+    "Jennifer Jones",
+    "Anna Rodriguez",
+    "Mary Chen"
+  ],
+  "doi": "10.1109/sample.148002",
+  "publisher": "Elsevier",
+  "publication_date": "2020-10-08",
+  "source_uri": "https://doi.org/10.1109/sample.148002",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in energy_sciences. Using state-of-the-art experimental techniques, we demonstrate... The findings suggest new directions for future research. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1109/sample.148002",
+  "acquisition_timestamp": "2026-08-11T12:21:25.804397Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "6a04d1f9aff8a9de2e403199faceff361054cccfa202d6f583c2b1302cef27b3",
+  "license": "CC-BY-4.0",
+  "domain": "energy_sciences",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "energy_sciences",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

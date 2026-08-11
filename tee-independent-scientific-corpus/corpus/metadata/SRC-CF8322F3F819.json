@@ -1,0 +1,46 @@
+{
+  "source_id": "SRC-CF8322F3F819",
+  "title": "Natural language processing for nlp_task",
+  "authors": [
+    "Mary Miller",
+    "Akira Suzuki",
+    "Richard Davis",
+    "Kenji Lee",
+    "Michael Davis",
+    "James Thomas"
+  ],
+  "doi": "10.1016/sample.131001",
+  "publisher": "APS",
+  "publication_date": "2013-05-01",
+  "source_uri": "https://doi.org/10.1016/sample.131001",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into computer_science phenomena. Combining theoretical analysis with empirical validation, we establish... Our results indicate significant improvements in performance metrics. Our work opens new avenues for exploration in this field.",
+  "fulltext_uri": "https://example.org/fulltext/10.1016/sample.131001",
+  "acquisition_timestamp": "2026-08-11T12:21:24.788667Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "dc3e7c1046c5ae988328a618fb3b1b53d39246d651aab4dd75d6b565d7f27727",
+  "license": "closed",
+  "domain": "computer_science",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "computer_science",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-A2E1F7725C87",
+  "title": "Neural correlates of memory",
+  "authors": [
+    "Joseph Taylor",
+    "Patricia Wang",
+    "Charles Chen",
+    "Hiroshi Martinez"
+  ],
+  "doi": "10.1002/sample.051001",
+  "publisher": "Elsevier",
+  "publication_date": "2019-08-05",
+  "source_uri": "https://doi.org/10.1002/sample.051001",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into neuroscience phenomena. Employing advanced characterization methods, we reveal... Our results indicate significant improvements in performance metrics. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1002/sample.051001",
+  "acquisition_timestamp": "2026-08-11T12:21:26.271669Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "bed61ecfb37af346cb8aeda2958bb73224a30579e5dc86e6dac5ef2ba393fc61",
+  "license": "Apache-2.0",
+  "domain": "neuroscience",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "neuroscience",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

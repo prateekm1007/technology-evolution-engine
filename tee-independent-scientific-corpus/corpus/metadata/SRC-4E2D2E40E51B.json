@@ -1,0 +1,46 @@
+{
+  "source_id": "SRC-4E2D2E40E51B",
+  "title": "Soft robotics design for soft_robot_application",
+  "authors": [
+    "Joseph Kim",
+    "Elizabeth Suzuki",
+    "Linda Schmidt",
+    "Akira Williams",
+    "James Williams",
+    "Jennifer Park"
+  ],
+  "doi": "10.1103/sample.176001",
+  "publisher": "IEEE",
+  "publication_date": "2018-03-09",
+  "source_uri": "https://doi.org/10.1103/sample.176001",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into robotics phenomena. Through computational modeling and simulation, we show... The findings suggest new directions for future research. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1103/sample.176001",
+  "acquisition_timestamp": "2026-08-11T12:21:26.928481Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "d78a3b2dbff44665447203441d931f9801707fdb1c66ed3307dde708715f7477",
+  "license": "Apache-2.0",
+  "domain": "robotics",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "robotics",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

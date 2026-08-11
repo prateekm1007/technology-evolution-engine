@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-F05D7D407168",
+  "title": "Deep learning approach to task",
+  "authors": [
+    "David Davis",
+    "William Jones",
+    "Patricia Chen",
+    "Mary Wang"
+  ],
+  "doi": "10.1371/sample.079001",
+  "publisher": "Elsevier",
+  "publication_date": "2015-04-09",
+  "source_uri": "https://doi.org/10.1371/sample.079001",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into computer_science phenomena. Combining theoretical analysis with empirical validation, we establish... The findings suggest new directions for future research. Our work opens new avenues for exploration in this field.",
+  "fulltext_uri": "https://example.org/fulltext/10.1371/sample.079001",
+  "acquisition_timestamp": "2026-08-11T12:21:24.750447Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "ee8e9ce722bd9a4dc13c93d34f0b022e065c402b5088f0bc8f080ae2b9d3b584",
+  "license": "CC-BY-4.0",
+  "domain": "computer_science",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "computer_science",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

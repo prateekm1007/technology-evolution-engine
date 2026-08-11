@@ -1,0 +1,46 @@
+{
+  "source_id": "SRC-D8CF3D7E3C83",
+  "title": "Polymer processing for polymer_type",
+  "authors": [
+    "Kenji Davis",
+    "Jose Thomas",
+    "Thomas Wang",
+    "Richard Schmidt",
+    "Ming Kim",
+    "William Chen"
+  ],
+  "doi": "10.1002/sample.235000",
+  "publisher": "ACM",
+  "publication_date": "2017-09-15",
+  "source_uri": "https://doi.org/10.1002/sample.235000",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of chemical_engineering through experimental and theoretical approaches. By integrating multiple analytical approaches, we uncover... The findings suggest new directions for future research. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1002/sample.235000",
+  "acquisition_timestamp": "2026-08-11T12:21:25.604678Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "30a4725453916e841b1601671df7b4134bce5786730ac91ae78bdd2ef3682476",
+  "license": "CC-BY-NC-4.0",
+  "domain": "chemical_engineering",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "chemical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

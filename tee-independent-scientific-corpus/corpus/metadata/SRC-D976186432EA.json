@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-D976186432EA",
+  "title": "Neurodevelopmental disorders in model_organism",
+  "authors": [
+    "Wei Williams",
+    "Ming Garcia",
+    "Hiroshi Tanaka",
+    "John Martinez"
+  ],
+  "doi": "10.1021/sample.021003",
+  "publisher": "ACM",
+  "publication_date": "2012-07-22",
+  "source_uri": "https://doi.org/10.1021/sample.021003",
+  "repository_uri": null,
+  "abstract": "We report novel findings in the field of neuroscience with significant implications. Combining theoretical analysis with empirical validation, we establish... Our results indicate significant improvements in performance metrics. Our work opens new avenues for exploration in this field.",
+  "fulltext_uri": "https://example.org/fulltext/10.1021/sample.021003",
+  "acquisition_timestamp": "2026-08-11T12:21:26.249381Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "2fe069cc7e98e553f204a2c1ca06480cc5048a160e973b767dface9a7b109782",
+  "license": "CC-BY-4.0",
+  "domain": "neuroscience",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "neuroscience",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

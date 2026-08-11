@@ -1,0 +1,43 @@
+{
+  "source_id": "SRC-9E216702DD1B",
+  "title": "Additive manufacturing of alloy alloys",
+  "authors": [
+    "Jose Smith",
+    "Jose Brown",
+    "David Jones"
+  ],
+  "doi": "10.1016/sample.104000",
+  "publisher": "APS",
+  "publication_date": "2021-02-23",
+  "source_uri": "https://doi.org/10.1016/sample.104000",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in materials_science. By integrating multiple analytical approaches, we uncover... Our results indicate significant improvements in performance metrics. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1016/sample.104000",
+  "acquisition_timestamp": "2026-08-11T12:21:24.229393Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "ab4ec2d89ca0ea4fffde70ce87bab80998d2f7f7e7f1b48bd7cbaaf5b342d8d5",
+  "license": "MIT",
+  "domain": "materials_science",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "materials_science",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

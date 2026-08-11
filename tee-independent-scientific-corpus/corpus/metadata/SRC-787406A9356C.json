@@ -1,0 +1,46 @@
+{
+  "source_id": "SRC-787406A9356C",
+  "title": "Brain connectivity analysis using imaging_technique",
+  "authors": [
+    "John Thomas",
+    "John Anderson",
+    "Yong Thomas",
+    "Thomas Martinez",
+    "Thomas Williams",
+    "Wei Tanaka"
+  ],
+  "doi": "10.1021/sample.247002",
+  "publisher": "RSC",
+  "publication_date": "2016-03-22",
+  "source_uri": "https://doi.org/10.1021/sample.247002",
+  "repository_uri": null,
+  "abstract": "We report novel findings in the field of neuroscience with significant implications. By integrating multiple analytical approaches, we uncover... Statistical analysis confirms the robustness of our conclusions. This research contributes to the broader understanding of the domain.",
+  "fulltext_uri": "https://example.org/fulltext/10.1021/sample.247002",
+  "acquisition_timestamp": "2026-08-11T12:21:26.429209Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "2499d6269d49cc2f5a1cafe3be6bc842d61da57f5e2aa9f89080860fdc7c70f4",
+  "license": "MIT",
+  "domain": "neuroscience",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "neuroscience",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

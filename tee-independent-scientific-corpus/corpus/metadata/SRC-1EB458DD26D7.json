@@ -1,0 +1,45 @@
+{
+  "source_id": "SRC-1EB458DD26D7",
+  "title": "Metabolic pathways in microorganism",
+  "authors": [
+    "Hiroshi Schmidt",
+    "Robert Mueller",
+    "Hiroshi Johnson",
+    "John Park",
+    "David Schmidt"
+  ],
+  "doi": "10.1038/sample.147001",
+  "publisher": "RSC",
+  "publication_date": "2015-11-03",
+  "source_uri": "https://doi.org/10.1038/sample.147001",
+  "repository_uri": null,
+  "abstract": "We report novel findings in the field of biology with significant implications. Through computational modeling and simulation, we show... We observe previously unreported behaviors under controlled conditions. The methodology presented here can be extended to related problems.",
+  "fulltext_uri": "https://example.org/fulltext/10.1038/sample.147001",
+  "acquisition_timestamp": "2026-08-11T12:21:24.546778Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "30bf4f1ea3748eeccdf3ae31af85d0775a420d6a4c1671b1b2032f329d71cc88",
+  "license": "MIT",
+  "domain": "biology",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "biology",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

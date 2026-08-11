@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-211BC385CB58",
+  "title": "Catalytic polymerization using organocatalyst catalysts",
+  "authors": [
+    "John Taylor",
+    "Michael Schmidt"
+  ],
+  "doi": "10.1002/sample.234000",
+  "publisher": "IEEE",
+  "publication_date": "2019-04-08",
+  "source_uri": "https://doi.org/10.1002/sample.234000",
+  "repository_uri": null,
+  "abstract": "This paper presents a comprehensive study of chemistry focusing on key aspects. Using state-of-the-art experimental techniques, we demonstrate... Our results indicate significant improvements in performance metrics. This research contributes to the broader understanding of the domain.",
+  "fulltext_uri": "https://example.org/fulltext/10.1002/sample.234000",
+  "acquisition_timestamp": "2026-08-11T12:21:24.106013Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "60e9bd3a60cb80973f9d8d17b9eb46dc16eb83ffe6f507fc25b90a27a71a4d74",
+  "license": "MIT",
+  "domain": "chemistry",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "chemistry",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

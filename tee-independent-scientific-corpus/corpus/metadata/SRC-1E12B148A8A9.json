@@ -1,0 +1,45 @@
+{
+  "source_id": "SRC-1E12B148A8A9",
+  "title": "Role of receptor in cellular_process",
+  "authors": [
+    "Joseph Kim",
+    "Jose Suzuki",
+    "Elizabeth Wang",
+    "Mary Chen",
+    "Patricia Lee"
+  ],
+  "doi": "10.1016/sample.066001",
+  "publisher": "ACM",
+  "publication_date": "2018-08-09",
+  "source_uri": "https://doi.org/10.1016/sample.066001",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into biology phenomena. Using state-of-the-art experimental techniques, we demonstrate... Our results indicate significant improvements in performance metrics. The methodology presented here can be extended to related problems.",
+  "fulltext_uri": "https://example.org/fulltext/10.1016/sample.066001",
+  "acquisition_timestamp": "2026-08-11T12:21:24.449975Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "9ba14e7bf69086a6c6dc0a7c1e6409061ce61d022cd164a7a6df655a7a2e040d",
+  "license": "closed",
+  "domain": "biology",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "biology",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

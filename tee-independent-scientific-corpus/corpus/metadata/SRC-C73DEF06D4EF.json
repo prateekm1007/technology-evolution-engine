@@ -1,0 +1,43 @@
+{
+  "source_id": "SRC-C73DEF06D4EF",
+  "title": "Process intensification in unit_operation",
+  "authors": [
+    "Akira Tanaka",
+    "Anna Jones",
+    "Hiroshi Yamamoto"
+  ],
+  "doi": "10.1002/sample.265000",
+  "publisher": "ACM",
+  "publication_date": "2010-04-19",
+  "source_uri": "https://doi.org/10.1002/sample.265000",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of chemical_engineering through experimental and theoretical approaches. Using state-of-the-art experimental techniques, we demonstrate... Our results indicate significant improvements in performance metrics. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1002/sample.265000",
+  "acquisition_timestamp": "2026-08-11T12:21:25.629606Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "acdcc0e01452bea222a15a4688c9404e9a4bee0895777f887ea02d7279e33df2",
+  "license": "CC-BY-NC-4.0",
+  "domain": "chemical_engineering",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "chemical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

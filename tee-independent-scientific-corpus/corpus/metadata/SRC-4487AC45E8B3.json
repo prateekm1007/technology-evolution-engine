@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-4487AC45E8B3",
+  "title": "Sustainable chemical manufacturing of product",
+  "authors": [
+    "David Tanaka",
+    "John Lee",
+    "Joseph Brown",
+    "Hiroshi Rodriguez"
+  ],
+  "doi": "10.1103/sample.187001",
+  "publisher": "Nature Publishing Group",
+  "publication_date": "2015-08-19",
+  "source_uri": "https://doi.org/10.1103/sample.187001",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of chemical_engineering through experimental and theoretical approaches. Through computational modeling and simulation, we show... Statistical analysis confirms the robustness of our conclusions. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1103/sample.187001",
+  "acquisition_timestamp": "2026-08-11T12:21:25.566344Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "10c6dcba3f1e68439412e3d28efa2402c64c4bd7e322e0181cdc3ab8ceeb8b67",
+  "license": "MIT",
+  "domain": "chemical_engineering",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "chemical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

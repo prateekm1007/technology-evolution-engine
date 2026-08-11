@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-B608A70C733A",
+  "title": "Neural circuit mapping of circuit_name",
+  "authors": [
+    "Richard Tanaka",
+    "Joseph Rodriguez",
+    "Jose Garcia",
+    "Hiroshi Park"
+  ],
+  "doi": "10.1021/sample.261001",
+  "publisher": "RSC",
+  "publication_date": "2017-10-16",
+  "source_uri": "https://doi.org/10.1021/sample.261001",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into neuroscience phenomena. Combining theoretical analysis with empirical validation, we establish... The findings suggest new directions for future research. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1021/sample.261001",
+  "acquisition_timestamp": "2026-08-11T12:21:26.445148Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "ad98bfce7cb7a9046f84399b2f6a3f39ded8c18aaf2428868d24f5ca1bc26638",
+  "license": "Apache-2.0",
+  "domain": "neuroscience",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "neuroscience",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

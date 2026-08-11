@@ -1,0 +1,46 @@
+{
+  "source_id": "SRC-65745172A27D",
+  "title": "Theoretical analysis of system dynamics",
+  "authors": [
+    "Richard Davis",
+    "Robert Brown",
+    "Richard Lee",
+    "Michael Tanaka",
+    "Patricia Wang",
+    "Hiroshi Thomas"
+  ],
+  "doi": "10.1002/sample.008000",
+  "publisher": "APS",
+  "publication_date": "2018-07-31",
+  "source_uri": "https://doi.org/10.1002/sample.008000",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into physics phenomena. Combining theoretical analysis with empirical validation, we establish... Statistical analysis confirms the robustness of our conclusions. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1002/sample.008000",
+  "acquisition_timestamp": "2026-08-11T12:21:23.708230Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "a09e75fca43b79a41b57dd51698f005db0b0c123850e5f01c427e034170024e0",
+  "license": "Apache-2.0",
+  "domain": "physics",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "physics",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

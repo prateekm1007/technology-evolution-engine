@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-B4652E7EDE81",
+  "title": "Grid integration of renewable_source",
+  "authors": [
+    "David Martinez",
+    "Michael Taylor"
+  ],
+  "doi": "10.1109/sample.119000",
+  "publisher": "IEEE",
+  "publication_date": "2019-02-20",
+  "source_uri": "https://doi.org/10.1109/sample.119000",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in energy_sciences. Through computational modeling and simulation, we show... Our results indicate significant improvements in performance metrics. This research contributes to the broader understanding of the domain.",
+  "fulltext_uri": "https://example.org/fulltext/10.1109/sample.119000",
+  "acquisition_timestamp": "2026-08-11T12:21:25.770046Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "7ab46c85c93ffa6947555bff64ef7a8ac00a6d2b6c2abe2ed2bd3e1b0053adac",
+  "license": "Apache-2.0",
+  "domain": "energy_sciences",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "energy_sciences",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

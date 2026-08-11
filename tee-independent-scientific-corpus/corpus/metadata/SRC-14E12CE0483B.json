@@ -1,0 +1,43 @@
+{
+  "source_id": "SRC-14E12CE0483B",
+  "title": "New bounds for prime numbers",
+  "authors": [
+    "Yong Tanaka",
+    "Joseph Chen",
+    "Hiroshi Smith"
+  ],
+  "doi": "10.1109/sample.213002",
+  "publisher": "Elsevier",
+  "publication_date": "2010-02-19",
+  "source_uri": "https://doi.org/10.1109/sample.213002",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into mathematics phenomena. Employing advanced characterization methods, we reveal... Statistical analysis confirms the robustness of our conclusions. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1109/sample.213002",
+  "acquisition_timestamp": "2026-08-11T12:21:26.690713Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "cb6c34b93d8c2e791bf1a40dddbf1f5727e6103c01d42e717a3afb13592744c3",
+  "license": "MIT",
+  "domain": "mathematics",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "mathematics",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

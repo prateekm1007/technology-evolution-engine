@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-3C0240EC76D4",
+  "title": "Natural language processing for nlp_task",
+  "authors": [
+    "Maria Martinez",
+    "Michael Garcia",
+    "Anna Wang",
+    "James Martinez"
+  ],
+  "doi": "10.1038/sample.010000",
+  "publisher": "RSC",
+  "publication_date": "2019-06-08",
+  "source_uri": "https://doi.org/10.1038/sample.010000",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in computer_science. Using state-of-the-art experimental techniques, we demonstrate... The findings suggest new directions for future research. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1038/sample.010000",
+  "acquisition_timestamp": "2026-08-11T12:21:24.703677Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "ffabff881091ca490e6f786df2b4324f41600e098484c8a0bb7d32f1728bbce8",
+  "license": "Apache-2.0",
+  "domain": "computer_science",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "computer_science",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

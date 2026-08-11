@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-6D3398A07C6E",
+  "title": "Neural correlates of memory",
+  "authors": [
+    "William Thomas",
+    "Jennifer Williams"
+  ],
+  "doi": "10.1002/sample.267000",
+  "publisher": "Elsevier",
+  "publication_date": "2012-03-01",
+  "source_uri": "https://doi.org/10.1002/sample.267000",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of neuroscience through experimental and theoretical approaches. By integrating multiple analytical approaches, we uncover... Comparative evaluation demonstrates superiority over existing approaches. The methodology presented here can be extended to related problems.",
+  "fulltext_uri": "https://example.org/fulltext/10.1002/sample.267000",
+  "acquisition_timestamp": "2026-08-11T12:21:26.447830Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "71786d768ca7c6180b17c2760fb04f0f4af4b4d34766524c1766445325ca39b5",
+  "license": "MIT",
+  "domain": "neuroscience",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "neuroscience",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

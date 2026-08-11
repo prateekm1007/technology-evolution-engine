@@ -1,0 +1,45 @@
+{
+  "source_id": "SRC-84EA5B2E2B41",
+  "title": "Biomimetic semiconductor design inspired by biological_system",
+  "authors": [
+    "Wei Johnson",
+    "Wei Johnson",
+    "Yong Smith",
+    "Jennifer Chen",
+    "Linda Park"
+  ],
+  "doi": "10.1016/sample.280000",
+  "publisher": "ACM",
+  "publication_date": "2023-06-03",
+  "source_uri": "https://doi.org/10.1016/sample.280000",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in materials_science. Using state-of-the-art experimental techniques, we demonstrate... Statistical analysis confirms the robustness of our conclusions. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1016/sample.280000",
+  "acquisition_timestamp": "2026-08-11T12:21:24.386618Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "8a98b04f9154a3021bae27f28cf052b538df44f0b3753bf755e6444e4e217d0d",
+  "license": "closed",
+  "domain": "materials_science",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "materials_science",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

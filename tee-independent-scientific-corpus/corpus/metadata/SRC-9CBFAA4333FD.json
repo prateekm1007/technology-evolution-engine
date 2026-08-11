@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-9CBFAA4333FD",
+  "title": "Thermal management in system",
+  "authors": [
+    "Hiroshi Wang",
+    "Michael Brown",
+    "Joseph Miller",
+    "Hiroshi Thomas"
+  ],
+  "doi": "10.1002/sample.151001",
+  "publisher": "Elsevier",
+  "publication_date": "2014-10-08",
+  "source_uri": "https://doi.org/10.1002/sample.151001",
+  "repository_uri": null,
+  "abstract": "This paper presents a comprehensive study of mechanical_engineering focusing on key aspects. Employing advanced characterization methods, we reveal... Comparative evaluation demonstrates superiority over existing approaches. Our work opens new avenues for exploration in this field.",
+  "fulltext_uri": "https://example.org/fulltext/10.1002/sample.151001",
+  "acquisition_timestamp": "2026-08-11T12:21:25.025397Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "407c78c127aaaeb75bf733223d03ac5e0370a95ef88a96a191213a4e3e8e4bc0",
+  "license": "MIT",
+  "domain": "mechanical_engineering",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "mechanical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

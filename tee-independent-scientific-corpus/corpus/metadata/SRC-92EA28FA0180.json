@@ -1,0 +1,43 @@
+{
+  "source_id": "SRC-92EA28FA0180",
+  "title": "Reactor design for substitution reactions",
+  "authors": [
+    "Mary Anderson",
+    "Mary Park",
+    "Anna Jones"
+  ],
+  "doi": "10.1038/sample.107000",
+  "publisher": "RSC",
+  "publication_date": "2010-10-19",
+  "source_uri": "https://doi.org/10.1038/sample.107000",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in chemical_engineering. Combining theoretical analysis with empirical validation, we establish... We observe previously unreported behaviors under controlled conditions. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1038/sample.107000",
+  "acquisition_timestamp": "2026-08-11T12:21:25.465889Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "2040dcbbaa564d7fb1c0b60f5a50826fda4cdff417a7886be9fcca98c10995ae",
+  "license": "closed",
+  "domain": "chemical_engineering",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "chemical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

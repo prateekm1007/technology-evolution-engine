@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-6417E14DDC73",
+  "title": "Grid integration of renewable_source",
+  "authors": [
+    "Mary Schmidt",
+    "Jennifer Chen"
+  ],
+  "doi": "10.1103/sample.033000",
+  "publisher": "ACM",
+  "publication_date": "2020-12-22",
+  "source_uri": "https://doi.org/10.1103/sample.033000",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of energy_sciences through experimental and theoretical approaches. Combining theoretical analysis with empirical validation, we establish... We observe previously unreported behaviors under controlled conditions. The methodology presented here can be extended to related problems.",
+  "fulltext_uri": "https://example.org/fulltext/10.1103/sample.033000",
+  "acquisition_timestamp": "2026-08-11T12:21:25.687730Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "caf3bbc5c4c41b1360c58e280cebf7c57bdce4c896ce2ce0b73f6c2c95978ed6",
+  "license": "Apache-2.0",
+  "domain": "energy_sciences",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "energy_sciences",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

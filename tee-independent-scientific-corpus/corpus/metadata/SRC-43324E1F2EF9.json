@@ -1,0 +1,43 @@
+{
+  "source_id": "SRC-43324E1F2EF9",
+  "title": "Memory encoding in memory_type memory",
+  "authors": [
+    "Ming Chen",
+    "Michael Rodriguez",
+    "William Brown"
+  ],
+  "doi": "10.1103/sample.011000",
+  "publisher": "IEEE",
+  "publication_date": "2011-04-17",
+  "source_uri": "https://doi.org/10.1103/sample.011000",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of neuroscience through experimental and theoretical approaches. By integrating multiple analytical approaches, we uncover... Statistical analysis confirms the robustness of our conclusions. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1103/sample.011000",
+  "acquisition_timestamp": "2026-08-11T12:21:26.244627Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "7abca34e62a2fbd32a99759da53c64621f4192b0b07bf6bb773db894097c2f00",
+  "license": "CC-BY-NC-4.0",
+  "domain": "neuroscience",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "neuroscience",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

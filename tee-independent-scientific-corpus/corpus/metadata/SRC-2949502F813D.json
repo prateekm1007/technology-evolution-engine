@@ -1,0 +1,46 @@
+{
+  "source_id": "SRC-2949502F813D",
+  "title": "Population dynamics of human under condition",
+  "authors": [
+    "Wei Davis",
+    "Robert Rodriguez",
+    "Kenji Anderson",
+    "Yong Park",
+    "Richard Thomas",
+    "Anna Chen"
+  ],
+  "doi": "10.1038/sample.220000",
+  "publisher": "Elsevier",
+  "publication_date": "2010-08-23",
+  "source_uri": "https://doi.org/10.1038/sample.220000",
+  "repository_uri": null,
+  "abstract": "We report novel findings in the field of biology with significant implications. Employing advanced characterization methods, we reveal... Comparative evaluation demonstrates superiority over existing approaches. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1038/sample.220000",
+  "acquisition_timestamp": "2026-08-11T12:21:24.628485Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "be83e3044a10d5e71af2108591ea7efbec4fb6564a3384c0d16f9eb92ab3c773",
+  "license": "CC-BY-NC-4.0",
+  "domain": "biology",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "biology",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

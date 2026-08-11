@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-3E4FAC0E65FB",
+  "title": "Biodiversity assessment in habitat",
+  "authors": [
+    "Kenji Miller",
+    "Thomas Park"
+  ],
+  "doi": "10.1002/sample.162000",
+  "publisher": "ACM",
+  "publication_date": "2020-05-13",
+  "source_uri": "https://doi.org/10.1002/sample.162000",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into environmental_science phenomena. Combining theoretical analysis with empirical validation, we establish... Our results indicate significant improvements in performance metrics. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1002/sample.162000",
+  "acquisition_timestamp": "2026-08-11T12:21:26.089249Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "0e2584216e4bb7f9b7634db75aeefbf11bd74f143ae4548c3a8f5ab3fd161d27",
+  "license": "closed",
+  "domain": "environmental_science",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "environmental_science",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

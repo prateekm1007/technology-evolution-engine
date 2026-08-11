@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-3BB49FF2A243",
+  "title": "Evolutionary adaptation of trait in lineage",
+  "authors": [
+    "Joseph Anderson",
+    "William Mueller",
+    "William Mueller",
+    "Elizabeth Taylor"
+  ],
+  "doi": "10.1016/sample.274000",
+  "publisher": "Elsevier",
+  "publication_date": "2021-09-06",
+  "source_uri": "https://doi.org/10.1016/sample.274000",
+  "repository_uri": null,
+  "abstract": "We report novel findings in the field of biology with significant implications. Using state-of-the-art experimental techniques, we demonstrate... We observe previously unreported behaviors under controlled conditions. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1016/sample.274000",
+  "acquisition_timestamp": "2026-08-11T12:21:24.668705Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "6f52051be1520657cac4e681822fbe2b52918bffa49e03d992e9d324f762eb77",
+  "license": "CC-BY-NC-4.0",
+  "domain": "biology",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "biology",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

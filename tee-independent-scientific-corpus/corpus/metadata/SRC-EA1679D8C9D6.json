@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-EA1679D8C9D6",
+  "title": "Hydrogen production via production_method",
+  "authors": [
+    "Jose Kim",
+    "Ming Chen"
+  ],
+  "doi": "10.1002/sample.229001",
+  "publisher": "RSC",
+  "publication_date": "2010-05-19",
+  "source_uri": "https://doi.org/10.1002/sample.229001",
+  "repository_uri": null,
+  "abstract": "We report novel findings in the field of energy_sciences with significant implications. Combining theoretical analysis with empirical validation, we establish... We observe previously unreported behaviors under controlled conditions. Our work opens new avenues for exploration in this field.",
+  "fulltext_uri": "https://example.org/fulltext/10.1002/sample.229001",
+  "acquisition_timestamp": "2026-08-11T12:21:25.870938Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "a2c82a5418e2cc0b0f7d16cd3b5fd6a01fe266e5ca21952fbf84107973017c14",
+  "license": "Apache-2.0",
+  "domain": "energy_sciences",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "energy_sciences",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

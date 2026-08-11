@@ -1,0 +1,43 @@
+{
+  "source_id": "SRC-3C0DB6531793",
+  "title": "Electromagnetic compatibility in device_type",
+  "authors": [
+    "Michael Kim",
+    "Patricia Martinez",
+    "Michael Martinez"
+  ],
+  "doi": "10.1016/sample.217000",
+  "publisher": "RSC",
+  "publication_date": "2017-01-26",
+  "source_uri": "https://doi.org/10.1016/sample.217000",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of electrical_engineering through experimental and theoretical approaches. By integrating multiple analytical approaches, we uncover... We observe previously unreported behaviors under controlled conditions. Our work opens new avenues for exploration in this field.",
+  "fulltext_uri": "https://example.org/fulltext/10.1016/sample.217000",
+  "acquisition_timestamp": "2026-08-11T12:21:25.310237Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "3807ad0e4d02c61fb8712579dcc3d0cbf62eacefae7dc4af7d4a60be7ae50584",
+  "license": "MIT",
+  "domain": "electrical_engineering",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "electrical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

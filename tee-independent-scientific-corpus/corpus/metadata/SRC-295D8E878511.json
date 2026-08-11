@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-295D8E878511",
+  "title": "Fatigue life prediction of sensor under loading",
+  "authors": [
+    "Ming Park",
+    "William Suzuki"
+  ],
+  "doi": "10.1371/sample.155000",
+  "publisher": "ACM",
+  "publication_date": "2016-01-29",
+  "source_uri": "https://doi.org/10.1371/sample.155000",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in mechanical_engineering. Combining theoretical analysis with empirical validation, we establish... The findings suggest new directions for future research. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1371/sample.155000",
+  "acquisition_timestamp": "2026-08-11T12:21:25.026624Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "a1d6d99543fcf47d1bf477303a60f919ded4cfa9b9f0dc961f39d0d9fb7f3a9c",
+  "license": "CC-BY-NC-4.0",
+  "domain": "mechanical_engineering",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "mechanical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

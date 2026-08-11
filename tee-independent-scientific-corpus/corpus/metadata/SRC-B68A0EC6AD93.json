@@ -1,0 +1,45 @@
+{
+  "source_id": "SRC-B68A0EC6AD93",
+  "title": "Integrated circuit implementation of function",
+  "authors": [
+    "James Brown",
+    "William Chen",
+    "Joseph Chen",
+    "Joseph Johnson",
+    "Michael Brown"
+  ],
+  "doi": "10.1109/sample.246000",
+  "publisher": "Springer",
+  "publication_date": "2016-08-15",
+  "source_uri": "https://doi.org/10.1109/sample.246000",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of electrical_engineering through experimental and theoretical approaches. Using state-of-the-art experimental techniques, we demonstrate... Our results indicate significant improvements in performance metrics. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1109/sample.246000",
+  "acquisition_timestamp": "2026-08-11T12:21:25.332295Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "0646406b500a7bfb811f35e079f8d670472226482e9035f81640de2bcc615032",
+  "license": "Apache-2.0",
+  "domain": "electrical_engineering",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "electrical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

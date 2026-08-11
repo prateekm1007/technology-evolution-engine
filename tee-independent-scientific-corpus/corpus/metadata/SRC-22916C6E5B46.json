@@ -1,0 +1,43 @@
+{
+  "source_id": "SRC-22916C6E5B46",
+  "title": "Energy storage in storage_material materials",
+  "authors": [
+    "Ming Smith",
+    "David Garcia",
+    "Joseph Tanaka"
+  ],
+  "doi": "10.1038/sample.004001",
+  "publisher": "APS",
+  "publication_date": "2010-01-23",
+  "source_uri": "https://doi.org/10.1038/sample.004001",
+  "repository_uri": null,
+  "abstract": "We report novel findings in the field of energy_sciences with significant implications. Using state-of-the-art experimental techniques, we demonstrate... Comparative evaluation demonstrates superiority over existing approaches. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1038/sample.004001",
+  "acquisition_timestamp": "2026-08-11T12:21:25.665165Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "9e3aad32fe27ea6d6b0adb25f74e27cc6dc13d9594032ae198c95afe6946792d",
+  "license": "CC-BY-4.0",
+  "domain": "energy_sciences",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "energy_sciences",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

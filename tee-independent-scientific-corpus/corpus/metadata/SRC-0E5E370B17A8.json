@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-0E5E370B17A8",
+  "title": "Scalable distributed system for application",
+  "authors": [
+    "Jose Mueller",
+    "Joseph Anderson",
+    "Robert Park",
+    "Jose Rodriguez"
+  ],
+  "doi": "10.1145/sample.245000",
+  "publisher": "Elsevier",
+  "publication_date": "2016-01-22",
+  "source_uri": "https://doi.org/10.1145/sample.245000",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into computer_science phenomena. By integrating multiple analytical approaches, we uncover... The findings suggest new directions for future research. Our work opens new avenues for exploration in this field.",
+  "fulltext_uri": "https://example.org/fulltext/10.1145/sample.245000",
+  "acquisition_timestamp": "2026-08-11T12:21:24.871560Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "03bbf537e2bbca882e450350e2f727e64fc98f42d92c59344b5ec82c4a4eddd7",
+  "license": "MIT",
+  "domain": "computer_science",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "computer_science",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

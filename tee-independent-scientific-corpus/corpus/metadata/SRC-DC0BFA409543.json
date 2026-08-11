@@ -1,0 +1,46 @@
+{
+  "source_id": "SRC-DC0BFA409543",
+  "title": "Biofuel production from biomass_type",
+  "authors": [
+    "Hiroshi Park",
+    "Thomas Thomas",
+    "Akira Rodriguez",
+    "Robert Schmidt",
+    "John Garcia",
+    "Charles Brown"
+  ],
+  "doi": "10.1145/sample.179000",
+  "publisher": "RSC",
+  "publication_date": "2010-03-16",
+  "source_uri": "https://doi.org/10.1145/sample.179000",
+  "repository_uri": null,
+  "abstract": "We report novel findings in the field of energy_sciences with significant implications. Using state-of-the-art experimental techniques, we demonstrate... The findings suggest new directions for future research. The methodology presented here can be extended to related problems.",
+  "fulltext_uri": "https://example.org/fulltext/10.1145/sample.179000",
+  "acquisition_timestamp": "2026-08-11T12:21:25.826688Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "525ac109b44a08369c0272045201fb2ece03c876aeefe3f0e4c99034c07384b9",
+  "license": "CC-BY-4.0",
+  "domain": "energy_sciences",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "energy_sciences",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

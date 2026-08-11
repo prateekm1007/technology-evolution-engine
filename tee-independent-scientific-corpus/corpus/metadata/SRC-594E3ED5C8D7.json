@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-594E3ED5C8D7",
+  "title": "Hydrogen production via production_method",
+  "authors": [
+    "David Thomas",
+    "Anna Kim",
+    "Patricia Johnson",
+    "Yong Miller"
+  ],
+  "doi": "10.1103/sample.114001",
+  "publisher": "ACM",
+  "publication_date": "2013-02-08",
+  "source_uri": "https://doi.org/10.1103/sample.114001",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of energy_sciences through experimental and theoretical approaches. Using state-of-the-art experimental techniques, we demonstrate... Statistical analysis confirms the robustness of our conclusions. The methodology presented here can be extended to related problems.",
+  "fulltext_uri": "https://example.org/fulltext/10.1103/sample.114001",
+  "acquisition_timestamp": "2026-08-11T12:21:25.768439Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "2c3aa58cbcb0ce549aa5f7234edb302bf3c958f078d974aeb874bd35893df2ac",
+  "license": "MIT",
+  "domain": "energy_sciences",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "energy_sciences",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

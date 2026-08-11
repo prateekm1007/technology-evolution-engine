@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-5E4BC5B0E96C",
+  "title": "Pollution monitoring using monitoring_technique",
+  "authors": [
+    "Ming Schmidt",
+    "David Johnson",
+    "Richard Jones",
+    "Yong Chen"
+  ],
+  "doi": "10.1371/sample.043000",
+  "publisher": "APS",
+  "publication_date": "2010-01-27",
+  "source_uri": "https://doi.org/10.1371/sample.043000",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in environmental_science. Employing advanced characterization methods, we reveal... We observe previously unreported behaviors under controlled conditions. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1371/sample.043000",
+  "acquisition_timestamp": "2026-08-11T12:21:25.969790Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "14b8f141191821ad271648d11b494436211dccd088f526d24ee9b7c37710b140",
+  "license": "CC-BY-4.0",
+  "domain": "environmental_science",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "environmental_science",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

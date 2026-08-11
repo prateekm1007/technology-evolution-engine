@@ -1,0 +1,43 @@
+{
+  "source_id": "SRC-E318DD770F47",
+  "title": "Additive manufacturing of alloy alloys",
+  "authors": [
+    "Elizabeth Smith",
+    "Richard Tanaka",
+    "Kenji Rodriguez"
+  ],
+  "doi": "10.1021/sample.231000",
+  "publisher": "Nature Publishing Group",
+  "publication_date": "2013-07-27",
+  "source_uri": "https://doi.org/10.1021/sample.231000",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in materials_science. By integrating multiple analytical approaches, we uncover... We observe previously unreported behaviors under controlled conditions. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1021/sample.231000",
+  "acquisition_timestamp": "2026-08-11T12:21:24.347665Z",
+  "provider": "crossref",
+  "version": "1.0",
+  "sha256_hash": "8d8bfa772f0bbe914426529c4fa9da346ff76f8bd649f898818b9ee7ae82c7d6",
+  "license": "MIT",
+  "domain": "materials_science",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "crossref",
+    "query_parameters": {
+      "domain": "materials_science",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

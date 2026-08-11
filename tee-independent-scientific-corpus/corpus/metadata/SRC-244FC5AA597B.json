@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-244FC5AA597B",
+  "title": "Tribological properties of material_pair",
+  "authors": [
+    "David Rodriguez",
+    "Patricia Jones",
+    "Robert Thomas",
+    "John Johnson"
+  ],
+  "doi": "10.1103/sample.291001",
+  "publisher": "IEEE",
+  "publication_date": "2019-09-17",
+  "source_uri": "https://doi.org/10.1103/sample.291001",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in mechanical_engineering. Through computational modeling and simulation, we show... Comparative evaluation demonstrates superiority over existing approaches. The methodology presented here can be extended to related problems.",
+  "fulltext_uri": "https://example.org/fulltext/10.1103/sample.291001",
+  "acquisition_timestamp": "2026-08-11T12:21:25.128687Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "3238ddbfc15165e09ffa3e25f2289803423146b4f1e3fe98fdf38dbe19b05b8e",
+  "license": "CC-BY-NC-4.0",
+  "domain": "mechanical_engineering",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "mechanical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

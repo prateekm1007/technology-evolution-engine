@@ -1,0 +1,45 @@
+{
+  "source_id": "SRC-57BD8AFC5D36",
+  "title": "Bioprocess engineering for bioproduct",
+  "authors": [
+    "Ming Suzuki",
+    "William Kim",
+    "David Smith",
+    "Akira Martinez",
+    "Hiroshi Thomas"
+  ],
+  "doi": "10.1371/sample.014002",
+  "publisher": "Springer",
+  "publication_date": "2012-03-23",
+  "source_uri": "https://doi.org/10.1371/sample.014002",
+  "repository_uri": null,
+  "abstract": "This paper presents a comprehensive study of chemical_engineering focusing on key aspects. By integrating multiple analytical approaches, we uncover... Statistical analysis confirms the robustness of our conclusions. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1371/sample.014002",
+  "acquisition_timestamp": "2026-08-11T12:21:25.388806Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "3ae4eb24960bcc40c6a77540a54caf4ac293e23dacdb107484bb55c13844aecf",
+  "license": "Apache-2.0",
+  "domain": "chemical_engineering",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "chemical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

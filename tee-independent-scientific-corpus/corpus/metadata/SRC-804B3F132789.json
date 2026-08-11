@@ -1,0 +1,42 @@
+{
+  "source_id": "SRC-804B3F132789",
+  "title": "New bounds for prime numbers",
+  "authors": [
+    "John Jones",
+    "Ming Chen"
+  ],
+  "doi": "10.1371/sample.058002",
+  "publisher": "IEEE",
+  "publication_date": "2011-07-19",
+  "source_uri": "https://doi.org/10.1371/sample.058002",
+  "repository_uri": null,
+  "abstract": "This study provides new insights into mathematics phenomena. Combining theoretical analysis with empirical validation, we establish... We observe previously unreported behaviors under controlled conditions. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1371/sample.058002",
+  "acquisition_timestamp": "2026-08-11T12:21:26.524535Z",
+  "provider": "semantic_scholar",
+  "version": "1.0",
+  "sha256_hash": "2a29346f8b4fb27b6f99297c30d7addc073bb9cc474c8ee8ea8bbf79451c868c",
+  "license": "CC-BY-4.0",
+  "domain": "mathematics",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "semantic_scholar",
+    "query_parameters": {
+      "domain": "mathematics",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

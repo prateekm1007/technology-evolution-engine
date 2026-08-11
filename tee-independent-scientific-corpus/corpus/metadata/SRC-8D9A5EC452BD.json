@@ -1,0 +1,45 @@
+{
+  "source_id": "SRC-8D9A5EC452BD",
+  "title": "Multi-robot coordination in coordination_scenario",
+  "authors": [
+    "Akira Tanaka",
+    "Kenji Mueller",
+    "Jennifer Johnson",
+    "Linda Rodriguez",
+    "Michael Suzuki"
+  ],
+  "doi": "10.1371/sample.091001",
+  "publisher": "ACM",
+  "publication_date": "2018-06-15",
+  "source_uri": "https://doi.org/10.1371/sample.091001",
+  "repository_uri": null,
+  "abstract": "This paper presents a comprehensive study of robotics focusing on key aspects. Combining theoretical analysis with empirical validation, we establish... Comparative evaluation demonstrates superiority over existing approaches. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1371/sample.091001",
+  "acquisition_timestamp": "2026-08-11T12:21:26.846074Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "eba81afa5c622116e462478e3638a83896590541911ade6c5690ac1948e1dc2c",
+  "license": "closed",
+  "domain": "robotics",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "robotics",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

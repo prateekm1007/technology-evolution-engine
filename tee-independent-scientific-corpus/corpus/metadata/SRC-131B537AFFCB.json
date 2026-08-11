@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-131B537AFFCB",
+  "title": "Quantum entanglement in oxide systems",
+  "authors": [
+    "Robert Kim",
+    "Anna Kim",
+    "Joseph Suzuki",
+    "William Johnson"
+  ],
+  "doi": "10.1038/sample.125000",
+  "publisher": "IEEE",
+  "publication_date": "2013-12-09",
+  "source_uri": "https://doi.org/10.1038/sample.125000",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in physics. Combining theoretical analysis with empirical validation, we establish... Our results indicate significant improvements in performance metrics. Our work opens new avenues for exploration in this field.",
+  "fulltext_uri": "https://example.org/fulltext/10.1038/sample.125000",
+  "acquisition_timestamp": "2026-08-11T12:21:23.789838Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "40a3fe914f2e959a22652675b7dd1b02c29e54319c71df39f066475bef371611",
+  "license": "closed",
+  "domain": "physics",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "physics",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

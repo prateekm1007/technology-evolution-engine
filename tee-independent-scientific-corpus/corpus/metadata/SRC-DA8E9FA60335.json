@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-DA8E9FA60335",
+  "title": "Grid integration of renewable_source",
+  "authors": [
+    "Thomas Jones",
+    "Maria Kim",
+    "Patricia Miller",
+    "Wei Tanaka"
+  ],
+  "doi": "10.1109/sample.166000",
+  "publisher": "IEEE",
+  "publication_date": "2019-06-27",
+  "source_uri": "https://doi.org/10.1109/sample.166000",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in energy_sciences. Combining theoretical analysis with empirical validation, we establish... Statistical analysis confirms the robustness of our conclusions. Future work will focus on scaling and practical applications.",
+  "fulltext_uri": "https://example.org/fulltext/10.1109/sample.166000",
+  "acquisition_timestamp": "2026-08-11T12:21:25.810732Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "f4877a1c27837c7673be25e9368af18b64a81181649772a551f5ff38b1eba92d",
+  "license": "CC-BY-4.0",
+  "domain": "energy_sciences",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "energy_sciences",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

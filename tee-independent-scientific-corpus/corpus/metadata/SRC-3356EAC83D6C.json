@@ -1,0 +1,44 @@
+{
+  "source_id": "SRC-3356EAC83D6C",
+  "title": "Tribological properties of material_pair",
+  "authors": [
+    "Patricia Smith",
+    "James Jones",
+    "Linda Jones",
+    "Mary Smith"
+  ],
+  "doi": "10.1002/sample.114001",
+  "publisher": "APS",
+  "publication_date": "2015-07-18",
+  "source_uri": "https://doi.org/10.1002/sample.114001",
+  "repository_uri": null,
+  "abstract": "Our research advances the understanding of mechanical_engineering through experimental and theoretical approaches. Using state-of-the-art experimental techniques, we demonstrate... We observe previously unreported behaviors under controlled conditions. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1002/sample.114001",
+  "acquisition_timestamp": "2026-08-11T12:21:24.990961Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "78c96d735b03cf85e4de2b32d14f791ead5eb985c43fc8d0a7bc9ca106388914",
+  "license": "MIT",
+  "domain": "mechanical_engineering",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "mechanical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

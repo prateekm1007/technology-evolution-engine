@@ -1,0 +1,43 @@
+{
+  "source_id": "SRC-A9226E265882",
+  "title": "Sustainable chemical manufacturing of product",
+  "authors": [
+    "Jose Wang",
+    "Jennifer Kim",
+    "Akira Suzuki"
+  ],
+  "doi": "10.1002/sample.189000",
+  "publisher": "Nature Publishing Group",
+  "publication_date": "2016-07-30",
+  "source_uri": "https://doi.org/10.1002/sample.189000",
+  "repository_uri": null,
+  "abstract": "This paper presents a comprehensive study of chemical_engineering focusing on key aspects. Using state-of-the-art experimental techniques, we demonstrate... Statistical analysis confirms the robustness of our conclusions. This research contributes to the broader understanding of the domain.",
+  "fulltext_uri": "https://example.org/fulltext/10.1002/sample.189000",
+  "acquisition_timestamp": "2026-08-11T12:21:25.567150Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "0bd01dbd2bb308e4106c03290408c38996c1d3615a58e98a2feabf4e810bfea1",
+  "license": "MIT",
+  "domain": "chemical_engineering",
+  "domain_confidence": "high",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "chemical_engineering",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

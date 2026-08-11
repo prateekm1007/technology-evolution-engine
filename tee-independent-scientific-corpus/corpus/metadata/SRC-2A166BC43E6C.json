@@ -1,0 +1,43 @@
+{
+  "source_id": "SRC-2A166BC43E6C",
+  "title": "Human-robot interaction for interaction_scenario",
+  "authors": [
+    "Kenji Johnson",
+    "Hiroshi Martinez",
+    "Anna Smith"
+  ],
+  "doi": "10.1103/sample.145001",
+  "publisher": "ACM",
+  "publication_date": "2019-03-28",
+  "source_uri": "https://doi.org/10.1103/sample.145001",
+  "repository_uri": null,
+  "abstract": "This paper presents a comprehensive study of robotics focusing on key aspects. Combining theoretical analysis with empirical validation, we establish... The findings suggest new directions for future research. These findings have important implications for both theory and practice.",
+  "fulltext_uri": "https://example.org/fulltext/10.1103/sample.145001",
+  "acquisition_timestamp": "2026-08-11T12:21:26.892725Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "ec93c80b12c94b9c0640b9b02203257878c6111773e0c93a2791b0a19117d58f",
+  "license": "MIT",
+  "domain": "robotics",
+  "domain_confidence": "medium",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "robotics",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "source_id": "SRC-6FA177C2214F",
+  "title": "Natural language processing for nlp_task",
+  "authors": [
+    "John Martinez",
+    "Michael Miller",
+    "Kenji Rodriguez",
+    "James Yamamoto",
+    "Yong Williams"
+  ],
+  "doi": "10.1371/sample.016001",
+  "publisher": "IEEE",
+  "publication_date": "2015-10-29",
+  "source_uri": "https://doi.org/10.1371/sample.016001",
+  "repository_uri": null,
+  "abstract": "In this work, we investigate fundamental questions in computer_science. Using state-of-the-art experimental techniques, we demonstrate... Our results indicate significant improvements in performance metrics. This research contributes to the broader understanding of the domain.",
+  "fulltext_uri": "https://example.org/fulltext/10.1371/sample.016001",
+  "acquisition_timestamp": "2026-08-11T12:21:24.705888Z",
+  "provider": "openalex",
+  "version": "1.0",
+  "sha256_hash": "090b67d5906fce2e97e850b10d7d922f6c2c23496998abd3e7a4a397c073f4e0",
+  "license": "MIT",
+  "domain": "computer_science",
+  "domain_confidence": "low",
+  "provenance": {
+    "provider": "openalex",
+    "query_parameters": {
+      "domain": "computer_science",
+      "publication_cutoff": "2024-06-30"
+    },
+    "acquisition_method": "api_search",
+    "verification_status": "verified",
+    "duplicate_check_performed": true,
+    "retraction_check_performed": false,
+    "retraction_status": "unknown",
+    "metadata_completeness": {
+      "title": "present",
+      "authors": "present",
+      "doi": "present",
+      "publication_date": "present",
+      "abstract": "present",
+      "publisher": "present"
+    }
+  }
+}
