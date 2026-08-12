@@ -1,0 +1,33 @@
+{
+  "CORPUS_READY": {
+    "status": "PARTIALLY_READY",
+    "sources": 112,
+    "abstracts": 100,
+    "missing": 12,
+    "hash": "fda334aeecf55cf78099610006bc31e4...",
+    "blocking": "12 sources missing abstracts; fulltexts not retrieved; cutoff not pre-registered"
+  },
+  "A0_READY": {
+    "status": "READY (DRY-RUN)",
+    "model": "meta-llama/llama-3.3-70b-instruct@2024-09-15",
+    "prompt_hash": "67a63aec1a57f66e356ce2f01472d112...",
+    "budget_parity_test": "6/6 PASS"
+  },
+  "A1_READY": {
+    "status": "READY (DRY-RUN)",
+    "retrieval_hash": "fda334aeecf55cf78099610006bc31e4...",
+    "budget_parity_with_A0": "IDENTICAL (only difference is retrieval)"
+  },
+  "SEAL_READY": {
+    "status": "DRY-RUN PASS",
+    "ciphertext_exists": true,
+    "ciphertext_hash": "6c9840696776b26db16d37b4cd4bba36...",
+    "note": "Contains fabricated dry-run outcomes. Production seal needs real outcomes."
+  },
+  "DRY_RUN_READY": {
+    "status": "PASS",
+    "steps_completed": 9,
+    "all_steps_pass": true
+  },
+  "A2_AUTHORIZATION_REQUESTED": false
+}
