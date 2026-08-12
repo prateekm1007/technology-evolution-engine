@@ -1,0 +1,76 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "CTO_ADJUDICATION_FINDINGS_VERIFIED",
+  "recorded_at": "2026-08-12T21:30:58.010453+00:00",
+  "source": {
+    "repo": "prateekm1007/tee-dsb-v1-adjudicator-bundle",
+    "commit": "1930c0954f47c8252ac2443280db40822d3936a2",
+    "file": "adjudication/AI_CTO_ADJUDICATION_FINDINGS_V1.md",
+    "incomplete_ledger_removed_commit": "c427bbd"
+  },
+  "evidence_tier": "AI_CTO_ADJUDICATION",
+  "tier_note": "NOT HUMAN_VALIDATED. CTO is not independent (per MC-1).",
+  "v81_identity": {
+    "build_id": "ecc65ee8-878f-4fe5-be77-6c2588720156",
+    "bundle_hash": "031491c2e1b09e7b2df3f6c97a2b9e8d9135bd053efbc80b948aa8e58d6d1081",
+    "manifest_hash": "33196ad72e27a9f13a9b4939dca167c708179b81a8c003763456ef712bd76383",
+    "identity_verified": true
+  },
+  "ledger_hash_cto_sealed": "5076699973a98629c923a838086bab4c1953f56ff48452442cfb72f3c0c9f711",
+  "cto_results": {
+    "Q1_mechanistic_validity": {
+      "YES": 39,
+      "PARTIAL": 39,
+      "NO": 2
+    },
+    "Q2_discovery_structure_validity": {
+      "YES": 28,
+      "PARTIAL": 45,
+      "NO": 7
+    },
+    "Q3_novelty": {
+      "YES": 0,
+      "PARTIAL": 22,
+      "NO": 58
+    },
+    "Q4_falsifiability": {
+      "YES": 70,
+      "PARTIAL": 10,
+      "NO": 0
+    },
+    "Q5_experimental_coherence": {
+      "YES": 50,
+      "PARTIAL": 30,
+      "NO": 0
+    },
+    "Q6_plausibility": {
+      "PLAUSIBLE": 55,
+      "UNCERTAIN": 25,
+      "IMPLAUSIBLE": 0
+    }
+  },
+  "key_findings": [
+    "Q3 Novelty = 0/80 YES. 58/80 (72.5%) non-novel from blinded evidence.",
+    "Q2 Discovery-structure = 28/80 YES (but novelty is 0).",
+    "Engine is mostly recombining/restating supplied knowledge, not discovering.",
+    "Machine scorer lacks explicit novelty dimension.",
+    "Machine scorer (13/80 recovered) is more conservative than CTO Q2 (28/80 YES)."
+  ],
+  "governance_status": {
+    "evidence_tier": "AI_CTO_ADJUDICATION",
+    "independent_human_validation": "NOT PERFORMED",
+    "dbs_v1_scientific_closure": "NOT CLOSED",
+    "north_star": "UNPROVEN",
+    "quarantine": "ACTIVE"
+  },
+  "machine_scorer_comparison": {
+    "machine_recovered": 13,
+    "machine_real_recovered": 3,
+    "machine_fabricated_recovered": 10,
+    "cto_q2_yes": 28,
+    "cto_q3_yes": 0,
+    "preliminary": "Machine scorer is more conservative than CTO on Q2. Machine scorer lacks novelty dimension. Per-packet comparison pending (CTO per-packet ledger not yet accessible)."
+  },
+  "per_packet_comparison_status": "PENDING — CTO findings published summary only; per-packet 80-entry JSON not yet in accessible location",
+  "recording_hash": "9257ed241fbc5a2511fca36a2aed613e81e220326e6bcda578741c7391420f09"
+}
