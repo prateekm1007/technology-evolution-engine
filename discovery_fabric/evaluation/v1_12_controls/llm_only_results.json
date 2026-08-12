@@ -1,0 +1,67 @@
+{
+  "results": [
+    {
+      "name": "CRISPR-Cas9 gene editing",
+      "proposed": "RNA-guided, Cas9-mediated, targeted gene editing using a chimeric guide RNA that directs Cas9 to specific genomic locations, where it introduces doubl",
+      "score": "FAILURE",
+      "quality": 0.0
+    },
+    {
+      "name": "mRNA vaccines",
+      "proposed": "Using lipid nanoparticles to deliver modified nucleoside-containing RNA that encodes for a viral spike protein, potentially inducing immunity while mi",
+      "score": "MECHANISM_MATCH",
+      "quality": 0.8
+    },
+    {
+      "name": "Lithium-ion battery",
+      "proposed": "Lithium-ion battery with a lithium cobalt oxide (LiCoO2) cathode and a graphite anode, utilizing an electrolyte that enables reversible intercalation ",
+      "score": "FAILURE",
+      "quality": 0.0
+    },
+    {
+      "name": "PCR",
+      "proposed": "Using heat-stable DNA polymerase from thermophilic bacteria to extend primers at high temperatures, allowing for repeated cycles of denaturation and s",
+      "score": "MECHANISM_MATCH",
+      "quality": 0.8
+    },
+    {
+      "name": "Graphene",
+      "proposed": "Stable 2D crystal formation through lateral confinement of layered materials, such as graphite, within a nanoscale structure, like a carbon nanotube",
+      "score": "FAILURE",
+      "quality": 0.0
+    },
+    {
+      "name": "Transformer architecture",
+      "proposed": "Hierarchical Self-Attention with Temporal Convolutional Layers",
+      "score": "FAILURE",
+      "quality": 0.0
+    },
+    {
+      "name": "AlexNet / deep learning",
+      "proposed": "Deep CNN with GPU-accelerated Training and Dropout Regularization on ImageNet",
+      "score": "FAILURE",
+      "quality": 0.0
+    },
+    {
+      "name": "Penicillin",
+      "proposed": "Mold-derived compounds can be used as non-toxic antibacterial agents, potentially revolutionizing the treatment of infections by providing a safer alt",
+      "score": "FAILURE",
+      "quality": 0.0
+    },
+    {
+      "name": "Monoclonal antibodies",
+      "proposed": "Fusing myeloma cells with B-cells to produce large quantities of specific antibodies",
+      "score": "FAILURE",
+      "quality": 0.0
+    },
+    {
+      "name": "Checkpoint immunotherapy anti-PD-1",
+      "proposed": "Combining PD-1/PD-L1 blockade with cancer vaccines to enhance T-cell response and overcome tumor-induced immune suppression",
+      "score": "FAILURE",
+      "quality": 0.0
+    }
+  ],
+  "strict": 2,
+  "total": 10,
+  "rate": "20%"
+}
