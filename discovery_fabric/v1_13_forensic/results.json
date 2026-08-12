@@ -1,0 +1,2913 @@
+{
+  "timestamp": "2026-08-12T15:14:36.017724+00:00",
+  "evaluation_type": "HISTORICAL_RETROSPECTIVE_BACKTEST",
+  "benchmark": "V1.13_PREDICTION_FORENSIC_CORRECTION",
+  "scoring": "DETERMINISTIC (no LLM judge) — forensic re-evaluation of frozen V1.13 receipts",
+  "strict_calibration_threshold": 0.5,
+  "total_cases": 10,
+  "total_receipts": 40,
+  "configs": [
+    "B_llm_only",
+    "C_mechanism",
+    "D_random",
+    "F_full"
+  ],
+  "criterion_pass_count_across_all_receipts": {
+    "not_explicit_in_evidence": 40,
+    "not_trivially_entailed_by_evidence": 40,
+    "falsifiable": 40,
+    "quantitatively_specific": 17,
+    "later_independently_observed": 6
+  },
+  "summary_by_config": {
+    "B_llm_only": {
+      "n": 10,
+      "discovery_score_1": 0,
+      "discovery_score_1_pct": 0.0,
+      "directional_correct": 5,
+      "quantitative_within_tolerance": 2,
+      "falsifiable": 10,
+      "quantitatively_specific": 3,
+      "reconstruction": 0,
+      "discovery_candidate": 10,
+      "legacy_broad_range_correct": 3,
+      "legacy_broad_range_correct_pct": 30.0
+    },
+    "C_mechanism": {
+      "n": 10,
+      "discovery_score_1": 0,
+      "discovery_score_1_pct": 0.0,
+      "directional_correct": 5,
+      "quantitative_within_tolerance": 1,
+      "falsifiable": 10,
+      "quantitatively_specific": 2,
+      "reconstruction": 0,
+      "discovery_candidate": 10,
+      "legacy_broad_range_correct": 3,
+      "legacy_broad_range_correct_pct": 30.0
+    },
+    "D_random": {
+      "n": 10,
+      "discovery_score_1": 1,
+      "discovery_score_1_pct": 10.0,
+      "directional_correct": 4,
+      "quantitative_within_tolerance": 1,
+      "falsifiable": 10,
+      "quantitatively_specific": 6,
+      "reconstruction": 0,
+      "discovery_candidate": 10,
+      "legacy_broad_range_correct": 2,
+      "legacy_broad_range_correct_pct": 20.0
+    },
+    "F_full": {
+      "n": 10,
+      "discovery_score_1": 2,
+      "discovery_score_1_pct": 20.0,
+      "directional_correct": 5,
+      "quantitative_within_tolerance": 2,
+      "falsifiable": 10,
+      "quantitatively_specific": 6,
+      "reconstruction": 0,
+      "discovery_candidate": 10,
+      "legacy_broad_range_correct": 3,
+      "legacy_broad_range_correct_pct": 30.0
+    }
+  },
+  "results": [
+    {
+      "key": "PB-001|B_llm_only",
+      "case_id": "PB-001",
+      "case_name": "Lithium-ion battery",
+      "config": "B_llm_only",
+      "candidate_id": "PRED-PB-001-B_llm_only",
+      "receipt_integrity_ok": true,
+      "simulation_registration_date": "1990-12-31T23:59:59Z",
+      "evaluation_type": "HISTORICAL_RETROSPECTIVE_BACKTEST",
+      "hypothesis": "Intercalation compounds can be used as electrodes in rechargeable lithium batteries",
+      "prediction": "A lithium battery using LiCoO2 as the cathode and graphite as the anode will have a higher cycle life than a lithium metal battery",
+      "units_range": "cycle life (number of charge-discharge cycles) > 50",
+      "expected_direction": "INCREASE",
+      "outcome_source": "Sony commercialization 1991 — LiCoO2+graphite battery achieves >500 cycles",
+      "outcome_value": 500,
+      "outcome_direction": "INCREASE",
+      "outcome_measurement_date": "1991-06-01T00:00:00Z",
+      "DISCOVERY_PREDICTION_SCORE": 0.0,
+      "criteria": {
+        "not_explicit_in_evidence": true,
+        "not_trivially_entailed_by_evidence": true,
+        "falsifiable": true,
+        "quantitatively_specific": false,
+        "later_independently_observed": true
+      },
+      "all_pass": false,
+      "information_content": {
+        "classification": "DISCOVERY_CANDIDATE",
+        "is_explicit_in_evidence": false,
+        "is_trivially_entailed_by_evidence": false,
+        "term_overlap_ratio": 0.5333,
+        "new_proper_nouns_in_proposal": [],
+        "new_technical_terms_in_proposal": [
+          "anode",
+          "battery",
+          "cathode",
+          "cycle",
+          "electrodes",
+          "higher"
+        ],
+        "shared_relational_verbs": [
+          "can"
+        ]
+      },
+      "directional_correctness": {
+        "verdict": "CORRECT",
+        "reason": "direction match: INCREASE",
+        "predicted_direction": "INCREASE",
+        "observed_direction": "INCREASE"
+      },
+      "quantitative_accuracy": {
+        "verdict": "WITHIN_TOLERANCE",
+        "calibration_error": 0.0,
+        "pre_specified_tolerance": [
+          50.0,
+          Infinity
+        ],
+        "observed_value": 500.0,
+        "strict_calibration_threshold": 0.5
+      },
+      "falsifiability": {
+        "verdict": "FALSIFIABLE",
+        "reason": "falsification_condition specifies a testable outcome"
+      },
+      "prediction_specificity": {
+        "verdict": "VAGUE",
+        "reason": "one-sided bound only — directional, not quantitative tolerance"
+      },
+      "legacy_broad_range_match": true,
+      "receipt_hash": "9bddcae551ac3c7befe3bddcd6c2ba977833d370740f19858e1bbfc4207aecc9"
+    },
+    {
+      "key": "PB-001|C_mechanism",
+      "case_id": "PB-001",
+      "case_name": "Lithium-ion battery",
+      "config": "C_mechanism",
+      "candidate_id": "PRED-PB-001-C_mechanism",
+      "receipt_integrity_ok": true,
+      "simulation_registration_date": "1990-12-31T23:59:59Z",
+      "evaluation_type": "HISTORICAL_RETROSPECTIVE_BACKTEST",
+      "hypothesis": "Lithium intercalation into a host material can enable safe and efficient energy storage",
+      "prediction": "A lithium intercalation compound with a layered structure will exhibit a reversible capacity of at least 100 mAh/g",
+      "units_range": "mAh/g",
+      "expected_direction": "INCREASE",
+      "outcome_source": "Sony commercialization 1991 — LiCoO2+graphite battery achieves >500 cycles",
+      "outcome_value": 500,
+      "outcome_direction": "INCREASE",
+      "outcome_measurement_date": "1991-06-01T00:00:00Z",
+      "DISCOVERY_PREDICTION_SCORE": 0.0,
+      "criteria": {
+        "not_explicit_in_evidence": true,
+        "not_trivially_entailed_by_evidence": true,
+        "falsifiable": true,
+        "quantitatively_specific": false,
+        "later_independently_observed": false
+      },
+      "all_pass": false,
+      "information_content": {
+        "classification": "DISCOVERY_CANDIDATE",
+        "is_explicit_in_evidence": false,
+        "is_trivially_entailed_by_evidence": false,
+        "term_overlap_ratio": 0.1765,
+        "new_proper_nouns_in_proposal": [],
+        "new_technical_terms_in_proposal": [
+          "capacity",
+          "compound",
+          "efficient",
+          "enable",
+          "energy",
+          "exhibit",
+          "layered",
+          "least",
+          "material",
+          "reversible"
+        ],
+        "shared_relational_verbs": [
+          "can"
+        ]
+      },
+      "directional_correctness": {
+        "verdict": "CORRECT",
+        "reason": "direction match: INCREASE",
+        "predicted_direction": "INCREASE",
+        "observed_direction": "INCREASE"
+      },
+      "quantitative_accuracy": {
+        "verdict": "NON_NUMERIC",
+        "calibration_error": null,
+        "pre_specified_tolerance": null,
+        "observed_value": 500
+      },
+      "falsifiability": {
+        "verdict": "FALSIFIABLE",
+        "reason": "falsification_condition specifies a testable outcome"
+      },
+      "prediction_specificity": {
+        "verdict": "VAGUE",
+        "reason": "no numeric range pre-specified"
+      },
+      "legacy_broad_range_match": true,
+      "receipt_hash": "8010a4bc3cc2fc1c15e6315c264e52528ec6b7d57f7334d4d8b326b30700d2ae"
+    },
+    {
+      "key": "PB-001|D_random",
+      "case_id": "PB-001",
+      "case_name": "Lithium-ion battery",
+      "config": "D_random",
+      "candidate_id": "PRED-PB-001-D_random",
+      "receipt_integrity_ok": true,
+      "simulation_registration_date": "1990-12-31T23:59:59Z",
+      "evaluation_type": "HISTORICAL_RETROSPECTIVE_BACKTEST",
+      "hypothesis": "Lithium intercalation compounds can be used to create safe rechargeable high-energy batteries",
+      "prediction": "A lithium-ion battery using a graphite or LiCoO2 intercalation compound as the anode and a non-aqueous electrolyte will have a higher cycling stability and lower risk of dendrite formation compared to a lithium metal battery",
+      "units_range": "Cycling stability: 500-1000 cycles, Dendrite formation risk: 0-10%",
+      "expected_direction": "INCREASE",
+      "outcome_source": "Sony commercialization 1991 — LiCoO2+graphite battery achieves >500 cycles",
+      "outcome_value": 500,
+      "outcome_direction": "INCREASE",
+      "outcome_measurement_date": "1991-06-01T00:00:00Z",
+      "DISCOVERY_PREDICTION_SCORE": 1.0,
+      "criteria": {
+        "not_explicit_in_evidence": true,
+        "not_trivially_entailed_by_evidence": true,
+        "falsifiable": true,
+        "quantitatively_specific": true,
+        "later_independently_observed": true
+      },
+      "all_pass": true,
+      "information_content": {
+        "classification": "DISCOVERY_CANDIDATE",
+        "is_explicit_in_evidence": false,
+        "is_trivially_entailed_by_evidence": false,
+        "term_overlap_ratio": 0.52,
+        "new_proper_nouns_in_proposal": [],
+        "new_technical_terms_in_proposal": [
+          "anode",
+          "battery",
+          "compared",
+          "compound",
+          "create",
+          "cycling",
+          "electrolyte",
+          "higher",
+          "lithium-ion",
+          "lower"
+        ],
+        "shared_relational_verbs": [
+          "can"
+        ]
+      },
+      "directional_correctness": {
+        "verdict": "CORRECT",
+        "reason": "direction match: INCREASE",
+        "predicted_direction": "INCREASE",
+        "observed_direction": "INCREASE"
+      },
+      "quantitative_accuracy": {
+        "verdict": "WITHIN_TOLERANCE",
+        "calibration_error": 0.0,
+        "pre_specified_tolerance": [
+          500.0,
+          1000.0
+        ],
+        "observed_value": 500.0,
+        "strict_calibration_threshold": 0.5
+      },
+      "falsifiability": {
+        "verdict": "FALSIFIABLE",
+        "reason": "falsification_condition specifies a testable outcome"
+      },
+      "prediction_specificity": {
+        "verdict": "SPECIFIC",
+        "reason": "pre-specified tolerance [500.0, 1000.0] — absolute range high/low = 2.00 (max 10.0)"
+      },
+      "legacy_broad_range_match": true,
+      "receipt_hash": "99ccd63ac6c331d7f6910e01d012229973da59ebdd639a4ecb8aa7213aa63140"
+    },
+    {
+      "key": "PB-001|F_full",
+      "case_id": "PB-001",
+      "case_name": "Lithium-ion battery",
+      "config": "F_full",
+      "candidate_id": "PRED-PB-001-F_full",
+      "receipt_integrity_ok": true,
+      "simulation_registration_date": "1990-12-31T23:59:59Z",
+      "evaluation_type": "HISTORICAL_RETROSPECTIVE_BACKTEST",
+      "hypothesis": "Graphite-LiCoO2 lithium-ion battery with non-aqueous electrolyte",
+      "prediction": "Higher cycle life and energy density",
+      "units_range": "Cycle life: 500-1000 cycles, Energy density: 100-200 Wh/kg",
+      "expected_direction": "INCREASE",
+      "outcome_source": "Sony commercialization 1991 — LiCoO2+graphite battery achieves >500 cycles",
+      "outcome_value": 500,
+      "outcome_direction": "INCREASE",
+      "outcome_measurement_date": "1991-06-01T00:00:00Z",
+      "DISCOVERY_PREDICTION_SCORE": 1.0,
+      "criteria": {
+        "not_explicit_in_evidence": true,
+        "not_trivially_entailed_by_evidence": true,
+        "falsifiable": true,
+        "quantitatively_specific": true,
+        "later_independently_observed": true
+      },
+      "all_pass": true,
+      "information_content": {
+        "classification": "DISCOVERY_CANDIDATE",
+        "is_explicit_in_evidence": false,
+        "is_trivially_entailed_by_evidence": false,
+        "term_overlap_ratio": 0.1,
+        "new_proper_nouns_in_proposal": [
+          "Higher"
+        ],
+        "new_technical_terms_in_proposal": [
+          "battery",
+          "cycle",
+          "density",
+          "electrolyte",
+          "energy",
+          "graphite-licoo2",
+          "higher",
+          "lithium-ion"
+        ],
+        "shared_relational_verbs": []
+      },
+      "directional_correctness": {
+        "verdict": "CORRECT",
+        "reason": "direction match: INCREASE",
+        "predicted_direction": "INCREASE",
+        "observed_direction": "INCREASE"
+      },
+      "quantitative_accuracy": {
+        "verdict": "WITHIN_TOLERANCE",
+        "calibration_error": 0.0,
+        "pre_specified_tolerance": [
+          500.0,
+          1000.0
+        ],
+        "observed_value": 500.0,
+        "strict_calibration_threshold": 0.5
+      },
+      "falsifiability": {
+        "verdict": "FALSIFIABLE",
+        "reason": "falsification_condition specifies a testable outcome"
+      },
+      "prediction_specificity": {
+        "verdict": "SPECIFIC",
+        "reason": "pre-specified tolerance [500.0, 1000.0] — absolute range high/low = 2.00 (max 10.0)"
+      },
+      "legacy_broad_range_match": true,
+      "receipt_hash": "46758b19e30a9d0a36f62f8a4d6b84f6bfa4603c77a65f7d12ed386f351dfd74"
+    },
+    {
+      "key": "PB-002|B_llm_only",
+      "case_id": "PB-002",
+      "case_name": "PCR",
+      "config": "B_llm_only",
+      "candidate_id": "PRED-PB-002-B_llm_only",
+      "receipt_integrity_ok": true,
+      "simulation_registration_date": "1984-12-31T23:59:59Z",
+      "evaluation_type": "HISTORICAL_RETROSPECTIVE_BACKTEST",
+      "hypothesis": "Thermophilic bacteria's heat-stable enzymes can be used for DNA sequencing at high temperatures",
+      "prediction": "Successful DNA sequencing using thermophilic bacteria's heat-stable enzymes at temperatures above 70°C",
+      "units_range": "Temperature (°C)",
+      "expected_direction": "INCREASE",
+      "outcome_source": "Saiki et al. 1985 — PCR achieves million-fold amplification",
+      "outcome_value": 1000000,
+      "outcome_direction": "INCREASE",
+      "outcome_measurement_date": "1985-12-01T00:00:00Z",
+      "DISCOVERY_PREDICTION_SCORE": 0.0,
+      "criteria": {
+        "not_explicit_in_evidence": true,
+        "not_trivially_entailed_by_evidence": true,
+        "falsifiable": true,
+        "quantitatively_specific": false,
+        "later_independently_observed": false
+      },
+      "all_pass": false,
+      "information_content": {
+        "classification": "DISCOVERY_CANDIDATE",
+        "is_explicit_in_evidence": false,
+        "is_trivially_entailed_by_evidence": false,
+        "term_overlap_ratio": 0.6,
+        "new_proper_nouns_in_proposal": [
+          "Successful"
+        ],
+        "new_technical_terms_in_proposal": [
+          "successful",
+          "temperatures"
+        ],
+        "shared_relational_verbs": []
+      },
+      "directional_correctness": {
+        "verdict": "CORRECT",
+        "reason": "direction match: INCREASE",
+        "predicted_direction": "INCREASE",
+        "observed_direction": "INCREASE"
+      },
+      "quantitative_accuracy": {
+        "verdict": "NON_NUMERIC",
+        "calibration_error": null,
+        "pre_specified_tolerance": null,
+        "observed_value": 1000000
+      },
+      "falsifiability": {
+        "verdict": "FALSIFIABLE",
+        "reason": "falsification_condition specifies a testable outcome"
+      },
+      "prediction_specificity": {
+        "verdict": "VAGUE",
+        "reason": "no numeric range pre-specified"
+      },
+      "legacy_broad_range_match": true,
+      "receipt_hash": "7adac30d1cf689723313a16fb427c9ece73f5264bad3750503acfdf13092da79"
+    },
+    {
+      "key": "PB-002|C_mechanism",
+      "case_id": "PB-002",
+      "case_name": "PCR",
+      "config": "C_mechanism",
+      "candidate_id": "PRED-PB-002-C_mechanism",
+      "receipt_integrity_ok": true,
+      "simulation_registration_date": "1984-12-31T23:59:59Z",
+      "evaluation_type": "HISTORICAL_RETROSPECTIVE_BACKTEST",
+      "hypothesis": "Heat-stable DNA polymerase from thermophilic bacteria can be used for primer extension at high temperatures",
+      "prediction": "Successful DNA sequencing using heat-stable DNA polymerase at temperatures above 90°C",
+      "units_range": "Temperature (°C)",
+      "expected_direction": "INCREASE",
+      "outcome_source": "Saiki et al. 1985 — PCR achieves million-fold amplification",
+      "outcome_value": 1000000,
+      "outcome_direction": "INCREASE",
+      "outcome_measurement_date": "1985-12-01T00:00:00Z",
+      "DISCOVERY_PREDICTION_SCORE": 0.0,
+      "criteria": {
+        "not_explicit_in_evidence": true,
+        "not_trivially_entailed_by_evidence": true,
+        "falsifiable": true,
+        "quantitatively_specific": false,
+        "later_independently_observed": false
+      },
+      "all_pass": false,
+      "information_content": {
+        "classification": "DISCOVERY_CANDIDATE",
+        "is_explicit_in_evidence": false,
+        "is_trivially_entailed_by_evidence": false,
+        "term_overlap_ratio": 0.6667,
+        "new_proper_nouns_in_proposal": [
+          "Successful"
+        ],
+        "new_technical_terms_in_proposal": [
+          "successful",
+          "temperatures"
+        ],
+        "shared_relational_verbs": []
+      },
+      "directional_correctness": {
+        "verdict": "CORRECT",
+        "reason": "direction match: INCREASE",
+        "predicted_direction": "INCREASE",
+        "observed_direction": "INCREASE"
+      },
+      "quantitative_accuracy": {
+        "verdict": "NON_NUMERIC",
+        "calibration_error": null,
+        "pre_specified_tolerance": null,
+        "observed_value": 1000000
+      },
+      "falsifiability": {
+        "verdict": "FALSIFIABLE",
+        "reason": "falsification_condition specifies a testable outcome"
+      },
+      "prediction_specificity": {
+        "verdict": "VAGUE",
+        "reason": "no numeric range pre-specified"
+      },
+      "legacy_broad_range_match": true,
+      "receipt_hash": "a21e79ade876187cb85aa22cfbeca345fe53d20aa00c939244065a8192d7a5c7"
+    },
+    {
+      "key": "PB-002|D_random",
+      "case_id": "PB-002",
+      "case_name": "PCR",
+      "config": "D_random",
+      "candidate_id": "PRED-PB-002-D_random",
+      "receipt_integrity_ok": true,
+      "simulation_registration_date": "1984-12-31T23:59:59Z",
+      "evaluation_type": "HISTORICAL_RETROSPECTIVE_BACKTEST",
+      "hypothesis": "Thermophilic bacteria's heat-stable DNA polymerase can be used for high-temperature DNA sequencing",
+      "prediction": "The optimal temperature for DNA sequencing using thermophilic bacteria's DNA polymerase will be higher than 50°C",
+      "units_range": "°C",
+      "expected_direction": "INCREASE",
+      "outcome_source": "Saiki et al. 1985 — PCR achieves million-fold amplification",
+      "outcome_value": 1000000,
+      "outcome_direction": "INCREASE",
+      "outcome_measurement_date": "1985-12-01T00:00:00Z",
+      "DISCOVERY_PREDICTION_SCORE": 0.0,
+      "criteria": {
+        "not_explicit_in_evidence": true,
+        "not_trivially_entailed_by_evidence": true,
+        "falsifiable": true,
+        "quantitatively_specific": false,
+        "later_independently_observed": false
+      },
+      "all_pass": false,
+      "information_content": {
+        "classification": "DISCOVERY_CANDIDATE",
+        "is_explicit_in_evidence": false,
+        "is_trivially_entailed_by_evidence": false,
+        "term_overlap_ratio": 0.5455,
+        "new_proper_nouns_in_proposal": [],
+        "new_technical_terms_in_proposal": [
+          "high-temperature",
+          "higher",
+          "optimal",
+          "temperature"
+        ],
+        "shared_relational_verbs": []
+      },
+      "directional_correctness": {
+        "verdict": "CORRECT",
+        "reason": "direction match: INCREASE",
+        "predicted_direction": "INCREASE",
+        "observed_direction": "INCREASE"
+      },
+      "quantitative_accuracy": {
+        "verdict": "NON_NUMERIC",
+        "calibration_error": null,
+        "pre_specified_tolerance": null,
+        "observed_value": 1000000
+      },
+      "falsifiability": {
+        "verdict": "FALSIFIABLE",
+        "reason": "falsification_condition specifies a testable outcome"
+      },
+      "prediction_specificity": {
+        "verdict": "VAGUE",
+        "reason": "no numeric range pre-specified"
+      },
+      "legacy_broad_range_match": true,
+      "receipt_hash": "9a5627be2a7e25c21aa336eb401e0ed39a7d794384dccedb77d3c83878be57a8"
+    },
+    {
+      "key": "PB-002|F_full",
+      "case_id": "PB-002",
+      "case_name": "PCR",
+      "config": "F_full",
+      "candidate_id": "PRED-PB-002-F_full",
+      "receipt_integrity_ok": true,
+      "simulation_registration_date": "1984-12-31T23:59:59Z",
+      "evaluation_type": "HISTORICAL_RETROSPECTIVE_BACKTEST",
+      "hypothesis": "Thermophilic DNA polymerase has improved heat stability",
+      "prediction": "Thermophilic DNA polymerase extends primers at higher temperatures",
+      "units_range": "Temperature (°C) for 50% primer extension activity",
+      "expected_direction": "INCREASE",
+      "outcome_source": "Saiki et al. 1985 — PCR achieves million-fold amplification",
+      "outcome_value": 1000000,
+      "outcome_direction": "INCREASE",
+      "outcome_measurement_date": "1985-12-01T00:00:00Z",
+      "DISCOVERY_PREDICTION_SCORE": 0.0,
+      "criteria": {
+        "not_explicit_in_evidence": true,
+        "not_trivially_entailed_by_evidence": true,
+        "falsifiable": true,
+        "quantitatively_specific": true,
+        "later_independently_observed": false
+      },
+      "all_pass": false,
+      "information_content": {
+        "classification": "DISCOVERY_CANDIDATE",
+        "is_explicit_in_evidence": false,
+        "is_trivially_entailed_by_evidence": false,
+        "term_overlap_ratio": 0.5455,
+        "new_proper_nouns_in_proposal": [],
+        "new_technical_terms_in_proposal": [
+          "higher",
+          "improved",
+          "stability",
+          "temperatures"
+        ],
+        "shared_relational_verbs": []
+      },
+      "directional_correctness": {
+        "verdict": "CORRECT",
+        "reason": "direction match: INCREASE",
+        "predicted_direction": "INCREASE",
+        "observed_direction": "INCREASE"
+      },
+      "quantitative_accuracy": {
+        "verdict": "OUT_OF_TOLERANCE",
+        "calibration_error": 1.0,
+        "pre_specified_tolerance": [
+          50.0,
+          50.0
+        ],
+        "observed_value": 1000000.0,
+        "strict_calibration_threshold": 0.5
+      },
+      "falsifiability": {
+        "verdict": "FALSIFIABLE",
+        "reason": "falsification_condition specifies a testable outcome"
+      },
+      "prediction_specificity": {
+        "verdict": "SPECIFIC",
+        "reason": "pre-specified tolerance [50.0, 50.0] — absolute range high/low = 1.00 (max 10.0)"
+      },
+      "legacy_broad_range_match": false,
+      "receipt_hash": "7f2cce479459c822be706d68ebcac0e2a05ed768a50ad377574cc8a8c8956cd3"
+    },
+    {
+      "key": "PB-003|B_llm_only",
+      "case_id": "PB-003",
+      "case_name": "Graphene",
+      "config": "B_llm_only",
+      "candidate_id": "PRED-PB-003-B_llm_only",
+      "receipt_integrity_ok": true,
+      "simulation_registration_date": "2003-12-31T23:59:59Z",
+      "evaluation_type": "HISTORICAL_RETROSPECTIVE_BACKTEST",
+      "hypothesis": "Graphene, a 2D crystal of carbon, can be isolated through mechanical cleavage of graphite",
+      "prediction": "Isolation of graphene sheets with a thickness of 1-10 layers",
+      "units_range": "nanometers",
+      "expected_direction": "DECREASE",
+      "outcome_source": "Novoselov & Geim 2004 — single-layer graphene isolated and characterized",
+      "outcome_value": "YES",
+      "outcome_direction": "BINARY",
+      "outcome_measurement_date": "2004-10-01T00:00:00Z",
+      "DISCOVERY_PREDICTION_SCORE": 0.0,
+      "criteria": {
+        "not_explicit_in_evidence": true,
+        "not_trivially_entailed_by_evidence": true,
+        "falsifiable": true,
+        "quantitatively_specific": false,
+        "later_independently_observed": false
+      },
+      "all_pass": false,
+      "information_content": {
+        "classification": "DISCOVERY_CANDIDATE",
+        "is_explicit_in_evidence": false,
+        "is_trivially_entailed_by_evidence": false,
+        "term_overlap_ratio": 0.4545,
+        "new_proper_nouns_in_proposal": [
+          "Graphene",
+          "Isolation"
+        ],
+        "new_technical_terms_in_proposal": [
+          "crystal",
+          "isolated",
+          "isolation",
+          "layers",
+          "sheets",
+          "thickness"
+        ],
+        "shared_relational_verbs": []
+      },
+      "directional_correctness": {
+        "verdict": "INCORRECT",
+        "reason": "direction mismatch: predicted DECREASE observed BINARY",
+        "predicted_direction": "DECREASE",
+        "observed_direction": "BINARY"
+      },
+      "quantitative_accuracy": {
+        "verdict": "NON_NUMERIC",
+        "calibration_error": null,
+        "pre_specified_tolerance": null,
+        "observed_value": "YES"
+      },
+      "falsifiability": {
+        "verdict": "FALSIFIABLE",
+        "reason": "falsification_condition specifies a testable outcome"
+      },
+      "prediction_specificity": {
+        "verdict": "VAGUE",
+        "reason": "no numeric range pre-specified"
+      },
+      "legacy_broad_range_match": false,
+      "receipt_hash": "8f1e592baf039eb71d6b181cf2afe63b937405b49d63d348d76acbe5fe58c5ca"
+    },
+    {
+      "key": "PB-003|C_mechanism",
+      "case_id": "PB-003",
+      "case_name": "Graphene",
+      "config": "C_mechanism",
+      "candidate_id": "PRED-PB-003-C_mechanism",
+      "receipt_integrity_ok": true,
+      "simulation_registration_date": "2003-12-31T23:59:59Z",
+      "evaluation_type": "HISTORICAL_RETROSPECTIVE_BACKTEST",
+      "hypothesis": "Mechanical cleavage of graphite can produce stable 2D carbon crystals",
+      "prediction": "Isolation of individual graphene layers",
+      "units_range": "Number of layers",
+      "expected_direction": "DECREASE",
+      "outcome_source": "Novoselov & Geim 2004 — single-layer graphene isolated and characterized",
+      "outcome_value": "YES",
+      "outcome_direction": "BINARY",
+      "outcome_measurement_date": "2004-10-01T00:00:00Z",
+      "DISCOVERY_PREDICTION_SCORE": 0.0,
+      "criteria": {
+        "not_explicit_in_evidence": true,
+        "not_trivially_entailed_by_evidence": true,
+        "falsifiable": true,
+        "quantitatively_specific": false,
+        "later_independently_observed": false
+      },
+      "all_pass": false,
+      "information_content": {
+        "classification": "DISCOVERY_CANDIDATE",
+        "is_explicit_in_evidence": false,
+        "is_trivially_entailed_by_evidence": false,
+        "term_overlap_ratio": 0.5455,
+        "new_proper_nouns_in_proposal": [
+          "Isolation"
+        ],
+        "new_technical_terms_in_proposal": [
+          "individual",
+          "isolation",
+          "layers",
+          "produce",
+          "stable"
+        ],
+        "shared_relational_verbs": []
+      },
+      "directional_correctness": {
+        "verdict": "INCORRECT",
+        "reason": "direction mismatch: predicted DECREASE observed BINARY",
+        "predicted_direction": "DECREASE",
+        "observed_direction": "BINARY"
+      },
+      "quantitative_accuracy": {
+        "verdict": "NON_NUMERIC",
+        "calibration_error": null,
+        "pre_specified_tolerance": null,
+        "observed_value": "YES"
+      },
+      "falsifiability": {
+        "verdict": "FALSIFIABLE",
+        "reason": "falsification_condition specifies a testable outcome"
+      },
+      "prediction_specificity": {
+        "verdict": "VAGUE",
+        "reason": "no numeric range pre-specified"
+      },
+      "legacy_broad_range_match": false,
+      "receipt_hash": "97d3ffa75e76d2767ace4cac97840d8179ba2856c5dcbfba3fd11bec1c18cbd1"
+    },
+    {
+      "key": "PB-003|D_random",
+      "case_id": "PB-003",
+      "case_name": "Graphene",
+      "config": "D_random",
+      "candidate_id": "PRED-PB-003-D_random",
+      "receipt_integrity_ok": true,
+      "simulation_registration_date": "2003-12-31T23:59:59Z",
+      "evaluation_type": "HISTORICAL_RETROSPECTIVE_BACKTEST",
+      "hypothesis": "Graphene sheets can be isolated through mechanical cleavage",
+      "prediction": "Isolated graphene sheets will exhibit a significant decrease in thermal conductivity compared to bulk graphite",
+      "units_range": "0-1000 W/mK",
+      "expected_direction": "DECREASE",
+      "outcome_source": "Novoselov & Geim 2004 — single-layer graphene isolated and characterized",
+      "outcome_value": "YES",
+      "outcome_direction": "BINARY",
+      "outcome_measurement_date": "2004-10-01T00:00:00Z",
+      "DISCOVERY_PREDICTION_SCORE": 0.0,
+      "criteria": {
+        "not_explicit_in_evidence": true,
+        "not_trivially_entailed_by_evidence": true,
+        "falsifiable": true,
+        "quantitatively_specific": false,
+        "later_independently_observed": false
+      },
+      "all_pass": false,
+      "information_content": {
+        "classification": "DISCOVERY_CANDIDATE",
+        "is_explicit_in_evidence": false,
+        "is_trivially_entailed_by_evidence": false,
+        "term_overlap_ratio": 0.3077,
+        "new_proper_nouns_in_proposal": [
+          "Graphene",
+          "Isolated"
+        ],
+        "new_technical_terms_in_proposal": [
+          "compared",
+          "conductivity",
+          "decrease",
+          "exhibit",
+          "isolated",
+          "sheets",
+          "significant",
+          "thermal"
+        ],
+        "shared_relational_verbs": []
+      },
+      "directional_correctness": {
+        "verdict": "INCORRECT",
+        "reason": "direction mismatch: predicted DECREASE observed BINARY",
+        "predicted_direction": "DECREASE",
+        "observed_direction": "BINARY"
+      },
+      "quantitative_accuracy": {
+        "verdict": "INDETERMINATE",
+        "calibration_error": null,
+        "pre_specified_tolerance": [
+          0.0,
+          1000.0
+        ],
+        "observed_value": "YES"
+      },
+      "falsifiability": {
+        "verdict": "FALSIFIABLE",
+        "reason": "falsification_condition specifies a testable outcome"
+      },
+      "prediction_specificity": {
+        "verdict": "VAGUE",
+        "reason": "degenerate range [0.0, 1000.0] — zero-low range fractional spread = 1.00 (max 0.9)"
+      },
+      "legacy_broad_range_match": false,
+      "receipt_hash": "6baf6e42e24d3dd917e022d7ca96dcd6a5ffc6ee86c325832e0a322be28de9b0"
+    },
+    {
+      "key": "PB-003|F_full",
+      "case_id": "PB-003",
+      "case_name": "Graphene",
+      "config": "F_full",
+      "candidate_id": "PRED-PB-003-F_full",
+      "receipt_integrity_ok": true,
+      "simulation_registration_date": "2003-12-31T23:59:59Z",
+      "evaluation_type": "HISTORICAL_RETROSPECTIVE_BACKTEST",
+      "hypothesis": "Graphene can be isolated and stabilized through mechanical cleavage of graphite",
+      "prediction": "The average flake size of isolated graphene will be between 1-10 micrometers",
+      "units_range": "micrometers",
+      "expected_direction": "DECREASE",
+      "outcome_source": "Novoselov & Geim 2004 — single-layer graphene isolated and characterized",
+      "outcome_value": "YES",
+      "outcome_direction": "BINARY",
+      "outcome_measurement_date": "2004-10-01T00:00:00Z",
+      "DISCOVERY_PREDICTION_SCORE": 0.0,
+      "criteria": {
+        "not_explicit_in_evidence": true,
+        "not_trivially_entailed_by_evidence": true,
+        "falsifiable": true,
+        "quantitatively_specific": false,
+        "later_independently_observed": false
+      },
+      "all_pass": false,
+      "information_content": {
+        "classification": "DISCOVERY_CANDIDATE",
+        "is_explicit_in_evidence": false,
+        "is_trivially_entailed_by_evidence": false,
+        "term_overlap_ratio": 0.4,
+        "new_proper_nouns_in_proposal": [
+          "Graphene"
+        ],
+        "new_technical_terms_in_proposal": [
+          "average",
+          "flake",
+          "isolated",
+          "micrometers",
+          "stabilized"
+        ],
+        "shared_relational_verbs": []
+      },
+      "directional_correctness": {
+        "verdict": "INCORRECT",
+        "reason": "direction mismatch: predicted DECREASE observed BINARY",
+        "predicted_direction": "DECREASE",
+        "observed_direction": "BINARY"
+      },
+      "quantitative_accuracy": {
+        "verdict": "NON_NUMERIC",
+        "calibration_error": null,
+        "pre_specified_tolerance": null,
+        "observed_value": "YES"
+      },
+      "falsifiability": {
+        "verdict": "FALSIFIABLE",
+        "reason": "falsification_condition specifies a testable outcome"
+      },
+      "prediction_specificity": {
+        "verdict": "VAGUE",
+        "reason": "no numeric range pre-specified"
+      },
+      "legacy_broad_range_match": false,
+      "receipt_hash": "92eac0ec2393fcaa7e0b08861154219292bf5ecc8524179aca1f74029cdc26dd"
+    },
+    {
+      "key": "PB-004|B_llm_only",
+      "case_id": "PB-004",
+      "case_name": "Deep learning AlexNet",
+      "config": "B_llm_only",
+      "candidate_id": "PRED-PB-004-B_llm_only",
+      "receipt_integrity_ok": true,
+      "simulation_registration_date": "2011-12-31T23:59:59Z",
+      "evaluation_type": "HISTORICAL_RETROSPECTIVE_BACKTEST",
+      "hypothesis": "Deeper neural networks can learn more complex features and improve image classification performance",
+      "prediction": "A deep neural network with 5+ layers, trained on ImageNet with ReLU activation and dropout, will achieve an error rate lower than 20%",
+      "units_range": "Top-1 error rate (%)",
+      "expected_direction": "DECREASE",
+      "outcome_source": "Krizhevsky et al. 2012 — AlexNet achieves 15.3% top-5 error vs 26.2% next best",
+      "outcome_value": 15.3,
+      "outcome_direction": "DECREASE",
+      "outcome_measurement_date": "2012-09-01T00:00:00Z",
+      "DISCOVERY_PREDICTION_SCORE": 0.0,
+      "criteria": {
+        "not_explicit_in_evidence": true,
+        "not_trivially_entailed_by_evidence": true,
+        "falsifiable": true,
+        "quantitatively_specific": true,
+        "later_independently_observed": false
+      },
+      "all_pass": false,
+      "information_content": {
+        "classification": "DISCOVERY_CANDIDATE",
+        "is_explicit_in_evidence": false,
+        "is_trivially_entailed_by_evidence": false,
+        "term_overlap_ratio": 0.2273,
+        "new_proper_nouns_in_proposal": [
+          "Deeper"
+        ],
+        "new_technical_terms_in_proposal": [
+          "achieve",
+          "classification",
+          "complex",
+          "deeper",
+          "features",
+          "image",
+          "improve",
+          "layers",
+          "learn",
+          "lower"
+        ],
+        "shared_relational_verbs": []
+      },
+      "directional_correctness": {
+        "verdict": "CORRECT",
+        "reason": "direction match: DECREASE",
+        "predicted_direction": "DECREASE",
+        "observed_direction": "DECREASE"
+      },
+      "quantitative_accuracy": {
+        "verdict": "OUT_OF_TOLERANCE",
+        "calibration_error": 1.0654,
+        "pre_specified_tolerance": [
+          -1.0,
+          -1.0
+        ],
+        "observed_value": 15.3,
+        "strict_calibration_threshold": 0.5
+      },
+      "falsifiability": {
+        "verdict": "FALSIFIABLE",
+        "reason": "falsification_condition specifies a testable outcome"
+      },
+      "prediction_specificity": {
+        "verdict": "SPECIFIC",
+        "reason": "pre-specified tolerance [-1.0, -1.0] — absolute range high/low = -1000000000.00 (max 10.0)"
+      },
+      "legacy_broad_range_match": false,
+      "receipt_hash": "2bc68bcb3d559cf80a106430db039264f97f5fadf8e4d37d3533e3627f4ccef2"
+    },
+    {
+      "key": "PB-004|C_mechanism",
+      "case_id": "PB-004",
+      "case_name": "Deep learning AlexNet",
+      "config": "C_mechanism",
+      "candidate_id": "PRED-PB-004-C_mechanism",
+      "receipt_integrity_ok": true,
+      "simulation_registration_date": "2011-12-31T23:59:59Z",
+      "evaluation_type": "HISTORICAL_RETROSPECTIVE_BACKTEST",
+      "hypothesis": "Deeper CNNs can learn more complex features and improve performance on image classification tasks",
+      "prediction": "Error rate on ImageNet will decrease by at least 5%",
+      "units_range": "20-30%",
+      "expected_direction": "DECREASE",
+      "outcome_source": "Krizhevsky et al. 2012 — AlexNet achieves 15.3% top-5 error vs 26.2% next best",
+      "outcome_value": 15.3,
+      "outcome_direction": "DECREASE",
+      "outcome_measurement_date": "2012-09-01T00:00:00Z",
+      "DISCOVERY_PREDICTION_SCORE": 0.0,
+      "criteria": {
+        "not_explicit_in_evidence": true,
+        "not_trivially_entailed_by_evidence": true,
+        "falsifiable": true,
+        "quantitatively_specific": true,
+        "later_independently_observed": false
+      },
+      "all_pass": false,
+      "information_content": {
+        "classification": "DISCOVERY_CANDIDATE",
+        "is_explicit_in_evidence": false,
+        "is_trivially_entailed_by_evidence": false,
+        "term_overlap_ratio": 0.2,
+        "new_proper_nouns_in_proposal": [
+          "Deeper",
+          "Error"
+        ],
+        "new_technical_terms_in_proposal": [
+          "classification",
+          "complex",
+          "decrease",
+          "deeper",
+          "features",
+          "image",
+          "improve",
+          "learn",
+          "least",
+          "performance"
+        ],
+        "shared_relational_verbs": []
+      },
+      "directional_correctness": {
+        "verdict": "CORRECT",
+        "reason": "direction match: DECREASE",
+        "predicted_direction": "DECREASE",
+        "observed_direction": "DECREASE"
+      },
+      "quantitative_accuracy": {
+        "verdict": "OUT_OF_TOLERANCE",
+        "calibration_error": 0.3072,
+        "pre_specified_tolerance": [
+          20.0,
+          30.0
+        ],
+        "observed_value": 15.3,
+        "strict_calibration_threshold": 0.5
+      },
+      "falsifiability": {
+        "verdict": "FALSIFIABLE",
+        "reason": "falsification_condition specifies a testable outcome"
+      },
+      "prediction_specificity": {
+        "verdict": "SPECIFIC",
+        "reason": "pre-specified tolerance [20.0, 30.0] — percentage range high/low = 1.50 (max 5.0)"
+      },
+      "legacy_broad_range_match": false,
+      "receipt_hash": "71ecd5199845a5ebbadb60e45f6261535b53b3be79f7395c44293f74030f65ca"
+    },
+    {
+      "key": "PB-004|D_random",
+      "case_id": "PB-004",
+      "case_name": "Deep learning AlexNet",
+      "config": "D_random",
+      "candidate_id": "PRED-PB-004-D_random",
+      "receipt_integrity_ok": true,
+      "simulation_registration_date": "2011-12-31T23:59:59Z",
+      "evaluation_type": "HISTORICAL_RETROSPECTIVE_BACKTEST",
+      "hypothesis": "Deeper CNNs can learn more abstract features, leading to improved performance on image classification tasks",
+      "prediction": "A CNN with 5+ layers, trained on ImageNet with ReLU activation and dropout, will achieve an error rate < 20%",
+      "units_range": "Top-1 error rate (%)",
+      "expected_direction": "DECREASE",
+      "outcome_source": "Krizhevsky et al. 2012 — AlexNet achieves 15.3% top-5 error vs 26.2% next best",
+      "outcome_value": 15.3,
+      "outcome_direction": "DECREASE",
+      "outcome_measurement_date": "2012-09-01T00:00:00Z",
+      "DISCOVERY_PREDICTION_SCORE": 0.0,
+      "criteria": {
+        "not_explicit_in_evidence": true,
+        "not_trivially_entailed_by_evidence": true,
+        "falsifiable": true,
+        "quantitatively_specific": true,
+        "later_independently_observed": false
+      },
+      "all_pass": false,
+      "information_content": {
+        "classification": "DISCOVERY_CANDIDATE",
+        "is_explicit_in_evidence": false,
+        "is_trivially_entailed_by_evidence": false,
+        "term_overlap_ratio": 0.2857,
+        "new_proper_nouns_in_proposal": [
+          "Deeper"
+        ],
+        "new_technical_terms_in_proposal": [
+          "abstract",
+          "achieve",
+          "classification",
+          "deeper",
+          "features",
+          "image",
+          "improved",
+          "layers",
+          "leading",
+          "learn"
+        ],
+        "shared_relational_verbs": []
+      },
+      "directional_correctness": {
+        "verdict": "CORRECT",
+        "reason": "direction match: DECREASE",
+        "predicted_direction": "DECREASE",
+        "observed_direction": "DECREASE"
+      },
+      "quantitative_accuracy": {
+        "verdict": "OUT_OF_TOLERANCE",
+        "calibration_error": 1.0654,
+        "pre_specified_tolerance": [
+          -1.0,
+          -1.0
+        ],
+        "observed_value": 15.3,
+        "strict_calibration_threshold": 0.5
+      },
+      "falsifiability": {
+        "verdict": "FALSIFIABLE",
+        "reason": "falsification_condition specifies a testable outcome"
+      },
+      "prediction_specificity": {
+        "verdict": "SPECIFIC",
+        "reason": "pre-specified tolerance [-1.0, -1.0] — absolute range high/low = -1000000000.00 (max 10.0)"
+      },
+      "legacy_broad_range_match": false,
+      "receipt_hash": "8d2a008a7952541440f98da7df90fdbc2cea2ec301d4f4520a945b6dd87fae34"
+    },
+    {
+      "key": "PB-004|F_full",
+      "case_id": "PB-004",
+      "case_name": "Deep learning AlexNet",
+      "config": "F_full",
+      "candidate_id": "PRED-PB-004-F_full",
+      "receipt_integrity_ok": true,
+      "simulation_registration_date": "2011-12-31T23:59:59Z",
+      "evaluation_type": "HISTORICAL_RETROSPECTIVE_BACKTEST",
+      "hypothesis": "Deeper CNNs with ReLU activation and dropout can outperform SVMs on the ImageNet dataset",
+      "prediction": "Top-1 error rate on ImageNet",
+      "units_range": "15-30%",
+      "expected_direction": "DECREASE",
+      "outcome_source": "Krizhevsky et al. 2012 — AlexNet achieves 15.3% top-5 error vs 26.2% next best",
+      "outcome_value": 15.3,
+      "outcome_direction": "DECREASE",
+      "outcome_measurement_date": "2012-09-01T00:00:00Z",
+      "DISCOVERY_PREDICTION_SCORE": 1.0,
+      "criteria": {
+        "not_explicit_in_evidence": true,
+        "not_trivially_entailed_by_evidence": true,
+        "falsifiable": true,
+        "quantitatively_specific": true,
+        "later_independently_observed": true
+      },
+      "all_pass": true,
+      "information_content": {
+        "classification": "DISCOVERY_CANDIDATE",
+        "is_explicit_in_evidence": false,
+        "is_trivially_entailed_by_evidence": false,
+        "term_overlap_ratio": 0.6667,
+        "new_proper_nouns_in_proposal": [
+          "Deeper"
+        ],
+        "new_technical_terms_in_proposal": [
+          "deeper",
+          "outperform",
+          "top-1"
+        ],
+        "shared_relational_verbs": []
+      },
+      "directional_correctness": {
+        "verdict": "CORRECT",
+        "reason": "direction match: DECREASE",
+        "predicted_direction": "DECREASE",
+        "observed_direction": "DECREASE"
+      },
+      "quantitative_accuracy": {
+        "verdict": "WITHIN_TOLERANCE",
+        "calibration_error": 0.0,
+        "pre_specified_tolerance": [
+          15.0,
+          30.0
+        ],
+        "observed_value": 15.3,
+        "strict_calibration_threshold": 0.5
+      },
+      "falsifiability": {
+        "verdict": "FALSIFIABLE",
+        "reason": "falsification_condition specifies a testable outcome"
+      },
+      "prediction_specificity": {
+        "verdict": "SPECIFIC",
+        "reason": "pre-specified tolerance [15.0, 30.0] — percentage range high/low = 2.00 (max 5.0)"
+      },
+      "legacy_broad_range_match": true,
+      "receipt_hash": "2a8316241683bf69e43374f5a5eb80d4d5eee4a593373e42a8cb7977a1e30617"
+    },
+    {
+      "key": "PB-005|B_llm_only",
+      "case_id": "PB-005",
+      "case_name": "Perovskite solar cells",
+      "config": "B_llm_only",
+      "candidate_id": "PRED-PB-005-B_llm_only",
+      "receipt_integrity_ok": true,
+      "simulation_registration_date": "2008-12-31T23:59:59Z",
+      "evaluation_type": "HISTORICAL_RETROSPECTIVE_BACKTEST",
+      "hypothesis": "Perovskites can improve DSSC efficiency and stability",
+      "prediction": "Perovskite-based DSSCs with solid-state electrolytes will achieve higher power conversion efficiency than traditional DSSCs",
+      "units_range": "12-15%",
+      "expected_direction": "INCREASE",
+      "outcome_source": "Kojima et al. 2009 — perovskite-sensitized cell achieves 3.8% efficiency",
+      "outcome_value": 3.8,
+      "outcome_direction": "INCREASE",
+      "outcome_measurement_date": "2009-05-01T00:00:00Z",
+      "DISCOVERY_PREDICTION_SCORE": 0.0,
+      "criteria": {
+        "not_explicit_in_evidence": true,
+        "not_trivially_entailed_by_evidence": true,
+        "falsifiable": true,
+        "quantitatively_specific": true,
+        "later_independently_observed": false
+      },
+      "all_pass": false,
+      "information_content": {
+        "classification": "DISCOVERY_CANDIDATE",
+        "is_explicit_in_evidence": false,
+        "is_trivially_entailed_by_evidence": false,
+        "term_overlap_ratio": 0.3571,
+        "new_proper_nouns_in_proposal": [
+          "Perovskite"
+        ],
+        "new_technical_terms_in_proposal": [
+          "achieve",
+          "conversion",
+          "electrolytes",
+          "higher",
+          "improve",
+          "perovskite-based",
+          "power",
+          "solid-state",
+          "traditional"
+        ],
+        "shared_relational_verbs": []
+      },
+      "directional_correctness": {
+        "verdict": "CORRECT",
+        "reason": "direction match: INCREASE",
+        "predicted_direction": "INCREASE",
+        "observed_direction": "INCREASE"
+      },
+      "quantitative_accuracy": {
+        "verdict": "OUT_OF_TOLERANCE",
+        "calibration_error": 2.1579,
+        "pre_specified_tolerance": [
+          12.0,
+          15.0
+        ],
+        "observed_value": 3.8,
+        "strict_calibration_threshold": 0.5
+      },
+      "falsifiability": {
+        "verdict": "FALSIFIABLE",
+        "reason": "falsification_condition specifies a testable outcome"
+      },
+      "prediction_specificity": {
+        "verdict": "SPECIFIC",
+        "reason": "pre-specified tolerance [12.0, 15.0] — percentage range high/low = 1.25 (max 5.0)"
+      },
+      "legacy_broad_range_match": false,
+      "receipt_hash": "2de92bfd232016b349000a5ebed2dd6d8035b05e31860b262871ef5d3d3ff35e"
+    },
+    {
+      "key": "PB-005|C_mechanism",
+      "case_id": "PB-005",
+      "case_name": "Perovskite solar cells",
+      "config": "C_mechanism",
+      "candidate_id": "PRED-PB-005-C_mechanism",
+      "receipt_integrity_ok": true,
+      "simulation_registration_date": "2008-12-31T23:59:59Z",
+      "evaluation_type": "HISTORICAL_RETROSPECTIVE_BACKTEST",
+      "hypothesis": "Perovskite-based DSSCs can achieve higher efficiency and stability than traditional DSSCs",
+      "prediction": "Perovskite-based DSSCs with a solid-state electrolyte will have an efficiency of at least 15%",
+      "units_range": "11-20%",
+      "expected_direction": "INCREASE",
+      "outcome_source": "Kojima et al. 2009 — perovskite-sensitized cell achieves 3.8% efficiency",
+      "outcome_value": 3.8,
+      "outcome_direction": "INCREASE",
+      "outcome_measurement_date": "2009-05-01T00:00:00Z",
+      "DISCOVERY_PREDICTION_SCORE": 0.0,
+      "criteria": {
+        "not_explicit_in_evidence": true,
+        "not_trivially_entailed_by_evidence": true,
+        "falsifiable": true,
+        "quantitatively_specific": true,
+        "later_independently_observed": false
+      },
+      "all_pass": false,
+      "information_content": {
+        "classification": "DISCOVERY_CANDIDATE",
+        "is_explicit_in_evidence": false,
+        "is_trivially_entailed_by_evidence": false,
+        "term_overlap_ratio": 0.4,
+        "new_proper_nouns_in_proposal": [
+          "Perovskite"
+        ],
+        "new_technical_terms_in_proposal": [
+          "achieve",
+          "higher",
+          "least",
+          "perovskite-based",
+          "solid-state",
+          "traditional"
+        ],
+        "shared_relational_verbs": [
+          "have"
+        ]
+      },
+      "directional_correctness": {
+        "verdict": "CORRECT",
+        "reason": "direction match: INCREASE",
+        "predicted_direction": "INCREASE",
+        "observed_direction": "INCREASE"
+      },
+      "quantitative_accuracy": {
+        "verdict": "OUT_OF_TOLERANCE",
+        "calibration_error": 1.8947,
+        "pre_specified_tolerance": [
+          11.0,
+          20.0
+        ],
+        "observed_value": 3.8,
+        "strict_calibration_threshold": 0.5
+      },
+      "falsifiability": {
+        "verdict": "FALSIFIABLE",
+        "reason": "falsification_condition specifies a testable outcome"
+      },
+      "prediction_specificity": {
+        "verdict": "SPECIFIC",
+        "reason": "pre-specified tolerance [11.0, 20.0] — percentage range high/low = 1.82 (max 5.0)"
+      },
+      "legacy_broad_range_match": false,
+      "receipt_hash": "cad2abd0f92917cead3fc8bfddf52650f2918aa6e4db827c708411563c7c6431"
+    },
+    {
+      "key": "PB-005|D_random",
+      "case_id": "PB-005",
+      "case_name": "Perovskite solar cells",
+      "config": "D_random",
+      "candidate_id": "PRED-PB-005-D_random",
+      "receipt_integrity_ok": true,
+      "simulation_registration_date": "2008-12-31T23:59:59Z",
+      "evaluation_type": "HISTORICAL_RETROSPECTIVE_BACKTEST",
+      "hypothesis": "Perovskite-based DSSCs with solid-state electrolytes will exhibit improved stability and efficiency",
+      "prediction": "Efficiency of perovskite-based DSSCs with solid-state electrolytes will exceed 15%",
+      "units_range": "11-20%",
+      "expected_direction": "INCREASE",
+      "outcome_source": "Kojima et al. 2009 — perovskite-sensitized cell achieves 3.8% efficiency",
+      "outcome_value": 3.8,
+      "outcome_direction": "INCREASE",
+      "outcome_measurement_date": "2009-05-01T00:00:00Z",
+      "DISCOVERY_PREDICTION_SCORE": 0.0,
+      "criteria": {
+        "not_explicit_in_evidence": true,
+        "not_trivially_entailed_by_evidence": true,
+        "falsifiable": true,
+        "quantitatively_specific": true,
+        "later_independently_observed": false
+      },
+      "all_pass": false,
+      "information_content": {
+        "classification": "DISCOVERY_CANDIDATE",
+        "is_explicit_in_evidence": false,
+        "is_trivially_entailed_by_evidence": false,
+        "term_overlap_ratio": 0.3333,
+        "new_proper_nouns_in_proposal": [
+          "Efficiency",
+          "Perovskite"
+        ],
+        "new_technical_terms_in_proposal": [
+          "electrolytes",
+          "exceed",
+          "exhibit",
+          "improved",
+          "perovskite-based",
+          "solid-state"
+        ],
+        "shared_relational_verbs": []
+      },
+      "directional_correctness": {
+        "verdict": "CORRECT",
+        "reason": "direction match: INCREASE",
+        "predicted_direction": "INCREASE",
+        "observed_direction": "INCREASE"
+      },
+      "quantitative_accuracy": {
+        "verdict": "OUT_OF_TOLERANCE",
+        "calibration_error": 1.8947,
+        "pre_specified_tolerance": [
+          11.0,
+          20.0
+        ],
+        "observed_value": 3.8,
+        "strict_calibration_threshold": 0.5
+      },
+      "falsifiability": {
+        "verdict": "FALSIFIABLE",
+        "reason": "falsification_condition specifies a testable outcome"
+      },
+      "prediction_specificity": {
+        "verdict": "SPECIFIC",
+        "reason": "pre-specified tolerance [11.0, 20.0] — percentage range high/low = 1.82 (max 5.0)"
+      },
+      "legacy_broad_range_match": false,
+      "receipt_hash": "a31e27553bff4c4c369b7df25b79521d4269227a8dd307dd7fbe92c71cbb92aa"
+    },
+    {
+      "key": "PB-005|F_full",
+      "case_id": "PB-005",
+      "case_name": "Perovskite solar cells",
+      "config": "F_full",
+      "candidate_id": "PRED-PB-005-F_full",
+      "receipt_integrity_ok": true,
+      "simulation_registration_date": "2008-12-31T23:59:59Z",
+      "evaluation_type": "HISTORICAL_RETROSPECTIVE_BACKTEST",
+      "hypothesis": "Perovskite-sensitized solar cells with solid-state electrolytes will exhibit improved efficiency and stability",
+      "prediction": "Efficiency increase of 2-5% absolute",
+      "units_range": "Percentage (%)",
+      "expected_direction": "INCREASE",
+      "outcome_source": "Kojima et al. 2009 — perovskite-sensitized cell achieves 3.8% efficiency",
+      "outcome_value": 3.8,
+      "outcome_direction": "INCREASE",
+      "outcome_measurement_date": "2009-05-01T00:00:00Z",
+      "DISCOVERY_PREDICTION_SCORE": 0.0,
+      "criteria": {
+        "not_explicit_in_evidence": true,
+        "not_trivially_entailed_by_evidence": true,
+        "falsifiable": true,
+        "quantitatively_specific": false,
+        "later_independently_observed": false
+      },
+      "all_pass": false,
+      "information_content": {
+        "classification": "DISCOVERY_CANDIDATE",
+        "is_explicit_in_evidence": false,
+        "is_trivially_entailed_by_evidence": false,
+        "term_overlap_ratio": 0.3636,
+        "new_proper_nouns_in_proposal": [
+          "Efficiency",
+          "Perovskite"
+        ],
+        "new_technical_terms_in_proposal": [
+          "absolute",
+          "electrolytes",
+          "exhibit",
+          "improved",
+          "increase",
+          "perovskite-sensitized",
+          "solid-state"
+        ],
+        "shared_relational_verbs": []
+      },
+      "directional_correctness": {
+        "verdict": "CORRECT",
+        "reason": "direction match: INCREASE",
+        "predicted_direction": "INCREASE",
+        "observed_direction": "INCREASE"
+      },
+      "quantitative_accuracy": {
+        "verdict": "NON_NUMERIC",
+        "calibration_error": null,
+        "pre_specified_tolerance": null,
+        "observed_value": 3.8
+      },
+      "falsifiability": {
+        "verdict": "FALSIFIABLE",
+        "reason": "falsification_condition specifies a testable outcome"
+      },
+      "prediction_specificity": {
+        "verdict": "VAGUE",
+        "reason": "no numeric range pre-specified"
+      },
+      "legacy_broad_range_match": true,
+      "receipt_hash": "79c9e706cba38d1f35fd2396c06384b25ec5ce9dcb4e2b6629e7a50618f5b3ee"
+    },
+    {
+      "key": "PB-006|B_llm_only",
+      "case_id": "PB-006",
+      "case_name": "mRNA vaccines",
+      "config": "B_llm_only",
+      "candidate_id": "PRED-PB-006-B_llm_only",
+      "receipt_integrity_ok": true,
+      "simulation_registration_date": "2019-12-31T23:59:59Z",
+      "evaluation_type": "HISTORICAL_RETROSPECTIVE_BACKTEST",
+      "hypothesis": "Lipid nanoparticle-delivered modified nucleoside mRNA vaccines can reduce immune responses while maintaining vaccine efficacy",
+      "prediction": "The geometric mean titer of neutralizing antibodies will be higher in subjects receiving lipid nanoparticle-delivered modified nucleoside mRNA vaccines compared to conventional vaccines",
+      "units_range": "1-1000",
+      "expected_direction": "INCREASE",
+      "outcome_source": "Pfizer-BioNTech Phase 3 trial — 95% efficacy for mRNA COVID-19 vaccine",
+      "outcome_value": 95,
+      "outcome_direction": "INCREASE",
+      "outcome_measurement_date": "2020-11-01T00:00:00Z",
+      "DISCOVERY_PREDICTION_SCORE": 0.0,
+      "criteria": {
+        "not_explicit_in_evidence": true,
+        "not_trivially_entailed_by_evidence": true,
+        "falsifiable": true,
+        "quantitatively_specific": false,
+        "later_independently_observed": true
+      },
+      "all_pass": false,
+      "information_content": {
+        "classification": "DISCOVERY_CANDIDATE",
+        "is_explicit_in_evidence": false,
+        "is_trivially_entailed_by_evidence": false,
+        "term_overlap_ratio": 0.3636,
+        "new_proper_nouns_in_proposal": [],
+        "new_technical_terms_in_proposal": [
+          "antibodies",
+          "compared",
+          "efficacy",
+          "geometric",
+          "higher",
+          "maintaining",
+          "nanoparticle-delivered",
+          "neutralizing",
+          "nucleoside",
+          "receiving"
+        ],
+        "shared_relational_verbs": [
+          "reduce"
+        ]
+      },
+      "directional_correctness": {
+        "verdict": "CORRECT",
+        "reason": "direction match: INCREASE",
+        "predicted_direction": "INCREASE",
+        "observed_direction": "INCREASE"
+      },
+      "quantitative_accuracy": {
+        "verdict": "WITHIN_TOLERANCE",
+        "calibration_error": 0.0,
+        "pre_specified_tolerance": [
+          1.0,
+          1000.0
+        ],
+        "observed_value": 95.0,
+        "strict_calibration_threshold": 0.5
+      },
+      "falsifiability": {
+        "verdict": "FALSIFIABLE",
+        "reason": "falsification_condition specifies a testable outcome"
+      },
+      "prediction_specificity": {
+        "verdict": "VAGUE",
+        "reason": "degenerate range [1.0, 1000.0] — absolute range high/low = 1000.00 (max 10.0)"
+      },
+      "legacy_broad_range_match": true,
+      "receipt_hash": "c17688b30a7558b2eb48a548673b3c345ac2ae4166fcf801e396dc37d7d2ce4c"
+    },
+    {
+      "key": "PB-006|C_mechanism",
+      "case_id": "PB-006",
+      "case_name": "mRNA vaccines",
+      "config": "C_mechanism",
+      "candidate_id": "PRED-PB-006-C_mechanism",
+      "receipt_integrity_ok": true,
+      "simulation_registration_date": "2019-12-31T23:59:59Z",
+      "evaluation_type": "HISTORICAL_RETROSPECTIVE_BACKTEST",
+      "hypothesis": "Lipid nanoparticle-delivered modified mRNA encoding viral spike proteins can induce immune responses",
+      "prediction": "Antibody titers against viral spike proteins will increase in subjects receiving the mRNA vaccine",
+      "units_range": "1-1000 IU/mL",
+      "expected_direction": "INCREASE",
+      "outcome_source": "Pfizer-BioNTech Phase 3 trial — 95% efficacy for mRNA COVID-19 vaccine",
+      "outcome_value": 95,
+      "outcome_direction": "INCREASE",
+      "outcome_measurement_date": "2020-11-01T00:00:00Z",
+      "DISCOVERY_PREDICTION_SCORE": 0.0,
+      "criteria": {
+        "not_explicit_in_evidence": true,
+        "not_trivially_entailed_by_evidence": true,
+        "falsifiable": true,
+        "quantitatively_specific": false,
+        "later_independently_observed": true
+      },
+      "all_pass": false,
+      "information_content": {
+        "classification": "DISCOVERY_CANDIDATE",
+        "is_explicit_in_evidence": false,
+        "is_trivially_entailed_by_evidence": false,
+        "term_overlap_ratio": 0.4706,
+        "new_proper_nouns_in_proposal": [
+          "Antibody"
+        ],
+        "new_technical_terms_in_proposal": [
+          "antibody",
+          "encoding",
+          "increase",
+          "induce",
+          "nanoparticle-delivered",
+          "receiving",
+          "subjects",
+          "titers",
+          "vaccine"
+        ],
+        "shared_relational_verbs": []
+      },
+      "directional_correctness": {
+        "verdict": "CORRECT",
+        "reason": "direction match: INCREASE",
+        "predicted_direction": "INCREASE",
+        "observed_direction": "INCREASE"
+      },
+      "quantitative_accuracy": {
+        "verdict": "WITHIN_TOLERANCE",
+        "calibration_error": 0.0,
+        "pre_specified_tolerance": [
+          1.0,
+          1000.0
+        ],
+        "observed_value": 95.0,
+        "strict_calibration_threshold": 0.5
+      },
+      "falsifiability": {
+        "verdict": "FALSIFIABLE",
+        "reason": "falsification_condition specifies a testable outcome"
+      },
+      "prediction_specificity": {
+        "verdict": "VAGUE",
+        "reason": "degenerate range [1.0, 1000.0] — absolute range high/low = 1000.00 (max 10.0)"
+      },
+      "legacy_broad_range_match": true,
+      "receipt_hash": "531b08def6819fb3632b2a48929e1a0420c919c9a0a6d12724fcea6b9bfc2daf"
+    },
+    {
+      "key": "PB-006|D_random",
+      "case_id": "PB-006",
+      "case_name": "mRNA vaccines",
+      "config": "D_random",
+      "candidate_id": "PRED-PB-006-D_random",
+      "receipt_integrity_ok": true,
+      "simulation_registration_date": "2019-12-31T23:59:59Z",
+      "evaluation_type": "HISTORICAL_RETROSPECTIVE_BACKTEST",
+      "hypothesis": "Lipid nanoparticles can effectively deliver modified nucleoside-containing mRNA to cells, reducing RNA immunogenicity and triggering a controlled immune response.",
+      "prediction": "The use of lipid nanoparticles to deliver modified nucleoside-containing mRNA will result in a 30-50% reduction in immune response markers (e.g., cytokine levels) compared to conventional mRNA delivery methods.",
+      "units_range": "30-50% reduction",
+      "expected_direction": "DECREASE",
+      "outcome_source": "Pfizer-BioNTech Phase 3 trial — 95% efficacy for mRNA COVID-19 vaccine",
+      "outcome_value": 95,
+      "outcome_direction": "INCREASE",
+      "outcome_measurement_date": "2020-11-01T00:00:00Z",
+      "DISCOVERY_PREDICTION_SCORE": 0.0,
+      "criteria": {
+        "not_explicit_in_evidence": true,
+        "not_trivially_entailed_by_evidence": true,
+        "falsifiable": true,
+        "quantitatively_specific": true,
+        "later_independently_observed": false
+      },
+      "all_pass": false,
+      "information_content": {
+        "classification": "DISCOVERY_CANDIDATE",
+        "is_explicit_in_evidence": false,
+        "is_trivially_entailed_by_evidence": false,
+        "term_overlap_ratio": 0.4167,
+        "new_proper_nouns_in_proposal": [],
+        "new_technical_terms_in_proposal": [
+          "compared",
+          "controlled",
+          "cytokine",
+          "delivery",
+          "effectively",
+          "levels",
+          "markers",
+          "methods",
+          "nucleoside-containing",
+          "reducing"
+        ],
+        "shared_relational_verbs": []
+      },
+      "directional_correctness": {
+        "verdict": "INCORRECT",
+        "reason": "direction mismatch: predicted DECREASE observed INCREASE",
+        "predicted_direction": "DECREASE",
+        "observed_direction": "INCREASE"
+      },
+      "quantitative_accuracy": {
+        "verdict": "OUT_OF_TOLERANCE",
+        "calibration_error": 0.4737,
+        "pre_specified_tolerance": [
+          30.0,
+          50.0
+        ],
+        "observed_value": 95.0,
+        "strict_calibration_threshold": 0.5
+      },
+      "falsifiability": {
+        "verdict": "FALSIFIABLE",
+        "reason": "falsification_condition specifies a testable outcome"
+      },
+      "prediction_specificity": {
+        "verdict": "SPECIFIC",
+        "reason": "pre-specified tolerance [30.0, 50.0] — percentage range high/low = 1.67 (max 5.0)"
+      },
+      "legacy_broad_range_match": false,
+      "receipt_hash": "80f606d8d32c5cb1d2da5805509a1a71fd473b1871d939d18cb9861796d1c808"
+    },
+    {
+      "key": "PB-006|F_full",
+      "case_id": "PB-006",
+      "case_name": "mRNA vaccines",
+      "config": "F_full",
+      "candidate_id": "PRED-PB-006-F_full",
+      "receipt_integrity_ok": true,
+      "simulation_registration_date": "2019-12-31T23:59:59Z",
+      "evaluation_type": "HISTORICAL_RETROSPECTIVE_BACKTEST",
+      "hypothesis": "Lipid nanoparticle-delivered mRNA vaccines with modified nucleosides can induce a stronger immune response than conventional vaccines",
+      "prediction": "The geometric mean titer of neutralizing antibodies will be at least 2-fold higher in subjects receiving the lipid nanoparticle-delivered mRNA vaccine compared to those receiving conventional vaccines",
+      "units_range": "Geometric mean titer of neutralizing antibodies (GMT) in IU/mL, with a range of 100-10,000 IU/mL",
+      "expected_direction": "INCREASE",
+      "outcome_source": "Pfizer-BioNTech Phase 3 trial — 95% efficacy for mRNA COVID-19 vaccine",
+      "outcome_value": 95,
+      "outcome_direction": "INCREASE",
+      "outcome_measurement_date": "2020-11-01T00:00:00Z",
+      "DISCOVERY_PREDICTION_SCORE": 0.0,
+      "criteria": {
+        "not_explicit_in_evidence": true,
+        "not_trivially_entailed_by_evidence": true,
+        "falsifiable": true,
+        "quantitatively_specific": true,
+        "later_independently_observed": false
+      },
+      "all_pass": false,
+      "information_content": {
+        "classification": "DISCOVERY_CANDIDATE",
+        "is_explicit_in_evidence": false,
+        "is_trivially_entailed_by_evidence": false,
+        "term_overlap_ratio": 0.3043,
+        "new_proper_nouns_in_proposal": [],
+        "new_technical_terms_in_proposal": [
+          "antibodies",
+          "compared",
+          "geometric",
+          "higher",
+          "induce",
+          "least",
+          "nanoparticle-delivered",
+          "neutralizing",
+          "receiving",
+          "response"
+        ],
+        "shared_relational_verbs": []
+      },
+      "directional_correctness": {
+        "verdict": "CORRECT",
+        "reason": "direction match: INCREASE",
+        "predicted_direction": "INCREASE",
+        "observed_direction": "INCREASE"
+      },
+      "quantitative_accuracy": {
+        "verdict": "OUT_OF_TOLERANCE",
+        "calibration_error": 0.0526,
+        "pre_specified_tolerance": [
+          100.0,
+          10.0
+        ],
+        "observed_value": 95.0,
+        "strict_calibration_threshold": 0.5
+      },
+      "falsifiability": {
+        "verdict": "FALSIFIABLE",
+        "reason": "falsification_condition specifies a testable outcome"
+      },
+      "prediction_specificity": {
+        "verdict": "SPECIFIC",
+        "reason": "pre-specified tolerance [100.0, 10.0] — absolute range high/low = 0.10 (max 10.0)"
+      },
+      "legacy_broad_range_match": false,
+      "receipt_hash": "141f670d6069014f27af435737b1b42f93aaac1b99d6ba28477d83bbf1af575b"
+    },
+    {
+      "key": "PB-007|B_llm_only",
+      "case_id": "PB-007",
+      "case_name": "CRISPR gene editing",
+      "config": "B_llm_only",
+      "candidate_id": "PRED-PB-007-B_llm_only",
+      "receipt_integrity_ok": true,
+      "simulation_registration_date": "2011-12-31T23:59:59Z",
+      "evaluation_type": "HISTORICAL_RETROSPECTIVE_BACKTEST",
+      "hypothesis": "CRISPR-Cas9 system can be repurposed for genome editing",
+      "prediction": "Efficiency of genome editing using CRISPR-Cas9 will be higher than using zinc finger nucleases or TALENs",
+      "units_range": "0-100%",
+      "expected_direction": "INCREASE",
+      "outcome_source": "Jinek et al. 2012 — Cas9+guide RNA achieves programmable DNA cleavage in human cells",
+      "outcome_value": "YES",
+      "outcome_direction": "BINARY",
+      "outcome_measurement_date": "2012-08-01T00:00:00Z",
+      "DISCOVERY_PREDICTION_SCORE": 0.0,
+      "criteria": {
+        "not_explicit_in_evidence": true,
+        "not_trivially_entailed_by_evidence": true,
+        "falsifiable": true,
+        "quantitatively_specific": false,
+        "later_independently_observed": false
+      },
+      "all_pass": false,
+      "information_content": {
+        "classification": "DISCOVERY_CANDIDATE",
+        "is_explicit_in_evidence": false,
+        "is_trivially_entailed_by_evidence": false,
+        "term_overlap_ratio": 0.3333,
+        "new_proper_nouns_in_proposal": [
+          "Efficiency"
+        ],
+        "new_technical_terms_in_proposal": [
+          "crispr-cas9",
+          "editing",
+          "efficiency",
+          "genome",
+          "higher",
+          "repurposed"
+        ],
+        "shared_relational_verbs": [
+          "can"
+        ]
+      },
+      "directional_correctness": {
+        "verdict": "INCORRECT",
+        "reason": "direction mismatch: predicted INCREASE observed BINARY",
+        "predicted_direction": "INCREASE",
+        "observed_direction": "BINARY"
+      },
+      "quantitative_accuracy": {
+        "verdict": "INDETERMINATE",
+        "calibration_error": null,
+        "pre_specified_tolerance": [
+          0.0,
+          100.0
+        ],
+        "observed_value": "YES"
+      },
+      "falsifiability": {
+        "verdict": "FALSIFIABLE",
+        "reason": "falsification_condition specifies a testable outcome"
+      },
+      "prediction_specificity": {
+        "verdict": "VAGUE",
+        "reason": "degenerate range [0.0, 100.0] — zero-low range fractional spread = 1.00 (max 0.9)"
+      },
+      "legacy_broad_range_match": false,
+      "receipt_hash": "0ddffeb1b7af4bba2582bbb4f0c0fa8122b3a3ca419517b112e099b26830d590"
+    },
+    {
+      "key": "PB-007|C_mechanism",
+      "case_id": "PB-007",
+      "case_name": "CRISPR gene editing",
+      "config": "C_mechanism",
+      "candidate_id": "PRED-PB-007-C_mechanism",
+      "receipt_integrity_ok": true,
+      "simulation_registration_date": "2011-12-31T23:59:59Z",
+      "evaluation_type": "HISTORICAL_RETROSPECTIVE_BACKTEST",
+      "hypothesis": "The specificity of DNA cleavage is determined by the guide RNA sequence",
+      "prediction": "A mismatch between the guide RNA sequence and the target DNA sequence will result in reduced cleavage efficiency",
+      "units_range": "0-100% cleavage efficiency",
+      "expected_direction": "DECREASE",
+      "outcome_source": "Jinek et al. 2012 — Cas9+guide RNA achieves programmable DNA cleavage in human cells",
+      "outcome_value": "YES",
+      "outcome_direction": "BINARY",
+      "outcome_measurement_date": "2012-08-01T00:00:00Z",
+      "DISCOVERY_PREDICTION_SCORE": 0.0,
+      "criteria": {
+        "not_explicit_in_evidence": true,
+        "not_trivially_entailed_by_evidence": true,
+        "falsifiable": true,
+        "quantitatively_specific": false,
+        "later_independently_observed": false
+      },
+      "all_pass": false,
+      "information_content": {
+        "classification": "DISCOVERY_CANDIDATE",
+        "is_explicit_in_evidence": false,
+        "is_trivially_entailed_by_evidence": false,
+        "term_overlap_ratio": 0.1667,
+        "new_proper_nouns_in_proposal": [],
+        "new_technical_terms_in_proposal": [
+          "cleavage",
+          "determined",
+          "efficiency",
+          "mismatch",
+          "reduced",
+          "sequence",
+          "specificity",
+          "target"
+        ],
+        "shared_relational_verbs": []
+      },
+      "directional_correctness": {
+        "verdict": "INCORRECT",
+        "reason": "direction mismatch: predicted DECREASE observed BINARY",
+        "predicted_direction": "DECREASE",
+        "observed_direction": "BINARY"
+      },
+      "quantitative_accuracy": {
+        "verdict": "INDETERMINATE",
+        "calibration_error": null,
+        "pre_specified_tolerance": [
+          0.0,
+          100.0
+        ],
+        "observed_value": "YES"
+      },
+      "falsifiability": {
+        "verdict": "FALSIFIABLE",
+        "reason": "falsification_condition specifies a testable outcome"
+      },
+      "prediction_specificity": {
+        "verdict": "VAGUE",
+        "reason": "degenerate range [0.0, 100.0] — zero-low range fractional spread = 1.00 (max 0.9)"
+      },
+      "legacy_broad_range_match": false,
+      "receipt_hash": "fa3ed11e3ffdabee63ae4ac190871feb772edca68302c05d79019fd380ec71b4"
+    },
+    {
+      "key": "PB-007|D_random",
+      "case_id": "PB-007",
+      "case_name": "CRISPR gene editing",
+      "config": "D_random",
+      "candidate_id": "PRED-PB-007-D_random",
+      "receipt_integrity_ok": true,
+      "simulation_registration_date": "2011-12-31T23:59:59Z",
+      "evaluation_type": "HISTORICAL_RETROSPECTIVE_BACKTEST",
+      "hypothesis": "CRISPR-Cas9 system efficiency",
+      "prediction": "Guide RNA redesign will increase editing efficiency",
+      "units_range": "0-100%",
+      "expected_direction": "INCREASE",
+      "outcome_source": "Jinek et al. 2012 — Cas9+guide RNA achieves programmable DNA cleavage in human cells",
+      "outcome_value": "YES",
+      "outcome_direction": "BINARY",
+      "outcome_measurement_date": "2012-08-01T00:00:00Z",
+      "DISCOVERY_PREDICTION_SCORE": 0.0,
+      "criteria": {
+        "not_explicit_in_evidence": true,
+        "not_trivially_entailed_by_evidence": true,
+        "falsifiable": true,
+        "quantitatively_specific": false,
+        "later_independently_observed": false
+      },
+      "all_pass": false,
+      "information_content": {
+        "classification": "DISCOVERY_CANDIDATE",
+        "is_explicit_in_evidence": false,
+        "is_trivially_entailed_by_evidence": false,
+        "term_overlap_ratio": 0.25,
+        "new_proper_nouns_in_proposal": [],
+        "new_technical_terms_in_proposal": [
+          "crispr-cas9",
+          "editing",
+          "efficiency",
+          "increase"
+        ],
+        "shared_relational_verbs": []
+      },
+      "directional_correctness": {
+        "verdict": "INCORRECT",
+        "reason": "direction mismatch: predicted INCREASE observed BINARY",
+        "predicted_direction": "INCREASE",
+        "observed_direction": "BINARY"
+      },
+      "quantitative_accuracy": {
+        "verdict": "INDETERMINATE",
+        "calibration_error": null,
+        "pre_specified_tolerance": [
+          0.0,
+          100.0
+        ],
+        "observed_value": "YES"
+      },
+      "falsifiability": {
+        "verdict": "FALSIFIABLE",
+        "reason": "falsification_condition specifies a testable outcome"
+      },
+      "prediction_specificity": {
+        "verdict": "VAGUE",
+        "reason": "degenerate range [0.0, 100.0] — zero-low range fractional spread = 1.00 (max 0.9)"
+      },
+      "legacy_broad_range_match": false,
+      "receipt_hash": "e5cd97ece763bd5eff1785133b0d142833de19c9ee195907ebdf6c5e833b35eb"
+    },
+    {
+      "key": "PB-007|F_full",
+      "case_id": "PB-007",
+      "case_name": "CRISPR gene editing",
+      "config": "F_full",
+      "candidate_id": "PRED-PB-007-F_full",
+      "receipt_integrity_ok": true,
+      "simulation_registration_date": "2011-12-31T23:59:59Z",
+      "evaluation_type": "HISTORICAL_RETROSPECTIVE_BACKTEST",
+      "hypothesis": "CRISPR-Cas9 system efficiency",
+      "prediction": "Editing efficiency of CRISPR-Cas9 will be higher than that of zinc finger nucleases and TALENs",
+      "units_range": "0-100%",
+      "expected_direction": "INCREASE",
+      "outcome_source": "Jinek et al. 2012 — Cas9+guide RNA achieves programmable DNA cleavage in human cells",
+      "outcome_value": "YES",
+      "outcome_direction": "BINARY",
+      "outcome_measurement_date": "2012-08-01T00:00:00Z",
+      "DISCOVERY_PREDICTION_SCORE": 0.0,
+      "criteria": {
+        "not_explicit_in_evidence": true,
+        "not_trivially_entailed_by_evidence": true,
+        "falsifiable": true,
+        "quantitatively_specific": false,
+        "later_independently_observed": false
+      },
+      "all_pass": false,
+      "information_content": {
+        "classification": "DISCOVERY_CANDIDATE",
+        "is_explicit_in_evidence": false,
+        "is_trivially_entailed_by_evidence": false,
+        "term_overlap_ratio": 0.4444,
+        "new_proper_nouns_in_proposal": [
+          "Editing"
+        ],
+        "new_technical_terms_in_proposal": [
+          "crispr-cas9",
+          "editing",
+          "efficiency",
+          "higher"
+        ],
+        "shared_relational_verbs": []
+      },
+      "directional_correctness": {
+        "verdict": "INCORRECT",
+        "reason": "direction mismatch: predicted INCREASE observed BINARY",
+        "predicted_direction": "INCREASE",
+        "observed_direction": "BINARY"
+      },
+      "quantitative_accuracy": {
+        "verdict": "INDETERMINATE",
+        "calibration_error": null,
+        "pre_specified_tolerance": [
+          0.0,
+          100.0
+        ],
+        "observed_value": "YES"
+      },
+      "falsifiability": {
+        "verdict": "FALSIFIABLE",
+        "reason": "falsification_condition specifies a testable outcome"
+      },
+      "prediction_specificity": {
+        "verdict": "VAGUE",
+        "reason": "degenerate range [0.0, 100.0] — zero-low range fractional spread = 1.00 (max 0.9)"
+      },
+      "legacy_broad_range_match": false,
+      "receipt_hash": "c15fc0e4a814ba22d8ef7903eda64b04a2df2ff9db6dc85baa9335b32921f557"
+    },
+    {
+      "key": "PB-008|B_llm_only",
+      "case_id": "PB-008",
+      "case_name": "Checkpoint immunotherapy",
+      "config": "B_llm_only",
+      "candidate_id": "PRED-PB-008-B_llm_only",
+      "receipt_integrity_ok": true,
+      "simulation_registration_date": "2011-12-31T23:59:59Z",
+      "evaluation_type": "HISTORICAL_RETROSPECTIVE_BACKTEST",
+      "hypothesis": "PD-1 blockade will enhance anti-tumor immune response",
+      "prediction": "Increased T-cell activation and tumor infiltration",
+      "units_range": "% of T-cells activated, tumor infiltrating T-cells per mm^3",
+      "expected_direction": "INCREASE",
+      "outcome_source": "Brahmer et al. 2012 — anti-PD-1 antibody shows clinical response in cancer patients",
+      "outcome_value": "YES",
+      "outcome_direction": "BINARY",
+      "outcome_measurement_date": "2012-12-01T00:00:00Z",
+      "DISCOVERY_PREDICTION_SCORE": 0.0,
+      "criteria": {
+        "not_explicit_in_evidence": true,
+        "not_trivially_entailed_by_evidence": true,
+        "falsifiable": true,
+        "quantitatively_specific": true,
+        "later_independently_observed": false
+      },
+      "all_pass": false,
+      "information_content": {
+        "classification": "DISCOVERY_CANDIDATE",
+        "is_explicit_in_evidence": false,
+        "is_trivially_entailed_by_evidence": false,
+        "term_overlap_ratio": 0.5455,
+        "new_proper_nouns_in_proposal": [
+          "Increased"
+        ],
+        "new_technical_terms_in_proposal": [
+          "activation",
+          "anti-tumor",
+          "enhance",
+          "increased",
+          "infiltration"
+        ],
+        "shared_relational_verbs": []
+      },
+      "directional_correctness": {
+        "verdict": "INCORRECT",
+        "reason": "direction mismatch: predicted INCREASE observed BINARY",
+        "predicted_direction": "INCREASE",
+        "observed_direction": "BINARY"
+      },
+      "quantitative_accuracy": {
+        "verdict": "INDETERMINATE",
+        "calibration_error": null,
+        "pre_specified_tolerance": [
+          3.0,
+          3.0
+        ],
+        "observed_value": "YES"
+      },
+      "falsifiability": {
+        "verdict": "FALSIFIABLE",
+        "reason": "falsification_condition specifies a testable outcome"
+      },
+      "prediction_specificity": {
+        "verdict": "SPECIFIC",
+        "reason": "pre-specified tolerance [3.0, 3.0] — absolute range high/low = 1.00 (max 10.0)"
+      },
+      "legacy_broad_range_match": false,
+      "receipt_hash": "0343d319adba63fea96b551b4986916191095e4fe3f7906918d588c6bc0e05e2"
+    },
+    {
+      "key": "PB-008|C_mechanism",
+      "case_id": "PB-008",
+      "case_name": "Checkpoint immunotherapy",
+      "config": "C_mechanism",
+      "candidate_id": "PRED-PB-008-C_mechanism",
+      "receipt_integrity_ok": true,
+      "simulation_registration_date": "2011-12-31T23:59:59Z",
+      "evaluation_type": "HISTORICAL_RETROSPECTIVE_BACKTEST",
+      "hypothesis": "PD-1 blockade enhances anti-tumor immune response",
+      "prediction": "PD-1 blockade will increase T-cell infiltration into tumors",
+      "units_range": "% of T-cells in tumor tissue",
+      "expected_direction": "INCREASE",
+      "outcome_source": "Brahmer et al. 2012 — anti-PD-1 antibody shows clinical response in cancer patients",
+      "outcome_value": "YES",
+      "outcome_direction": "BINARY",
+      "outcome_measurement_date": "2012-12-01T00:00:00Z",
+      "DISCOVERY_PREDICTION_SCORE": 0.0,
+      "criteria": {
+        "not_explicit_in_evidence": true,
+        "not_trivially_entailed_by_evidence": true,
+        "falsifiable": true,
+        "quantitatively_specific": false,
+        "later_independently_observed": false
+      },
+      "all_pass": false,
+      "information_content": {
+        "classification": "DISCOVERY_CANDIDATE",
+        "is_explicit_in_evidence": false,
+        "is_trivially_entailed_by_evidence": false,
+        "term_overlap_ratio": 0.5,
+        "new_proper_nouns_in_proposal": [],
+        "new_technical_terms_in_proposal": [
+          "anti-tumor",
+          "enhances",
+          "increase",
+          "infiltration",
+          "tumors"
+        ],
+        "shared_relational_verbs": []
+      },
+      "directional_correctness": {
+        "verdict": "INCORRECT",
+        "reason": "direction mismatch: predicted INCREASE observed BINARY",
+        "predicted_direction": "INCREASE",
+        "observed_direction": "BINARY"
+      },
+      "quantitative_accuracy": {
+        "verdict": "NON_NUMERIC",
+        "calibration_error": null,
+        "pre_specified_tolerance": null,
+        "observed_value": "YES"
+      },
+      "falsifiability": {
+        "verdict": "FALSIFIABLE",
+        "reason": "falsification_condition specifies a testable outcome"
+      },
+      "prediction_specificity": {
+        "verdict": "VAGUE",
+        "reason": "no numeric range pre-specified"
+      },
+      "legacy_broad_range_match": false,
+      "receipt_hash": "49c7f579dde38e682261afc46799f52216ebfb23d2acdf27adec6d75ec297df9"
+    },
+    {
+      "key": "PB-008|D_random",
+      "case_id": "PB-008",
+      "case_name": "Checkpoint immunotherapy",
+      "config": "D_random",
+      "candidate_id": "PRED-PB-008-D_random",
+      "receipt_integrity_ok": true,
+      "simulation_registration_date": "2011-12-31T23:59:59Z",
+      "evaluation_type": "HISTORICAL_RETROSPECTIVE_BACKTEST",
+      "hypothesis": "Combination therapy of PD-1 blockade and CTLA-4 blockade will enhance anti-tumor immune response",
+      "prediction": "Increased overall survival rate in melanoma patients",
+      "units_range": "percentage of patients showing overall survival at 2 years",
+      "expected_direction": "INCREASE",
+      "outcome_source": "Brahmer et al. 2012 — anti-PD-1 antibody shows clinical response in cancer patients",
+      "outcome_value": "YES",
+      "outcome_direction": "BINARY",
+      "outcome_measurement_date": "2012-12-01T00:00:00Z",
+      "DISCOVERY_PREDICTION_SCORE": 0.0,
+      "criteria": {
+        "not_explicit_in_evidence": true,
+        "not_trivially_entailed_by_evidence": true,
+        "falsifiable": true,
+        "quantitatively_specific": true,
+        "later_independently_observed": false
+      },
+      "all_pass": false,
+      "information_content": {
+        "classification": "DISCOVERY_CANDIDATE",
+        "is_explicit_in_evidence": false,
+        "is_trivially_entailed_by_evidence": false,
+        "term_overlap_ratio": 0.4,
+        "new_proper_nouns_in_proposal": [
+          "Combination",
+          "Increased"
+        ],
+        "new_technical_terms_in_proposal": [
+          "anti-tumor",
+          "combination",
+          "enhance",
+          "increased",
+          "overall",
+          "patients",
+          "survival",
+          "therapy"
+        ],
+        "shared_relational_verbs": []
+      },
+      "directional_correctness": {
+        "verdict": "INCORRECT",
+        "reason": "direction mismatch: predicted INCREASE observed BINARY",
+        "predicted_direction": "INCREASE",
+        "observed_direction": "BINARY"
+      },
+      "quantitative_accuracy": {
+        "verdict": "INDETERMINATE",
+        "calibration_error": null,
+        "pre_specified_tolerance": [
+          2.0,
+          2.0
+        ],
+        "observed_value": "YES"
+      },
+      "falsifiability": {
+        "verdict": "FALSIFIABLE",
+        "reason": "falsification_condition specifies a testable outcome"
+      },
+      "prediction_specificity": {
+        "verdict": "SPECIFIC",
+        "reason": "pre-specified tolerance [2.0, 2.0] — absolute range high/low = 1.00 (max 10.0)"
+      },
+      "legacy_broad_range_match": false,
+      "receipt_hash": "f6e82334f6ea0acb24bda224b88fbdfa068d7f18c4271828d97cbff3980d745f"
+    },
+    {
+      "key": "PB-008|F_full",
+      "case_id": "PB-008",
+      "case_name": "Checkpoint immunotherapy",
+      "config": "F_full",
+      "candidate_id": "PRED-PB-008-F_full",
+      "receipt_integrity_ok": true,
+      "simulation_registration_date": "2011-12-31T23:59:59Z",
+      "evaluation_type": "HISTORICAL_RETROSPECTIVE_BACKTEST",
+      "hypothesis": "PD-1 blockade enhances anti-tumor immune responses",
+      "prediction": "Tumor-infiltrating T-cell density increases by 30-50% after PD-1 blockade therapy",
+      "units_range": "cells/mm^2",
+      "expected_direction": "INCREASE",
+      "outcome_source": "Brahmer et al. 2012 — anti-PD-1 antibody shows clinical response in cancer patients",
+      "outcome_value": "YES",
+      "outcome_direction": "BINARY",
+      "outcome_measurement_date": "2012-12-01T00:00:00Z",
+      "DISCOVERY_PREDICTION_SCORE": 0.0,
+      "criteria": {
+        "not_explicit_in_evidence": true,
+        "not_trivially_entailed_by_evidence": true,
+        "falsifiable": true,
+        "quantitatively_specific": true,
+        "later_independently_observed": false
+      },
+      "all_pass": false,
+      "information_content": {
+        "classification": "DISCOVERY_CANDIDATE",
+        "is_explicit_in_evidence": false,
+        "is_trivially_entailed_by_evidence": false,
+        "term_overlap_ratio": 0.3636,
+        "new_proper_nouns_in_proposal": [],
+        "new_technical_terms_in_proposal": [
+          "anti-tumor",
+          "density",
+          "enhances",
+          "increases",
+          "responses",
+          "therapy",
+          "tumor-infiltrating"
+        ],
+        "shared_relational_verbs": []
+      },
+      "directional_correctness": {
+        "verdict": "INCORRECT",
+        "reason": "direction mismatch: predicted INCREASE observed BINARY",
+        "predicted_direction": "INCREASE",
+        "observed_direction": "BINARY"
+      },
+      "quantitative_accuracy": {
+        "verdict": "INDETERMINATE",
+        "calibration_error": null,
+        "pre_specified_tolerance": [
+          2.0,
+          2.0
+        ],
+        "observed_value": "YES"
+      },
+      "falsifiability": {
+        "verdict": "FALSIFIABLE",
+        "reason": "falsification_condition specifies a testable outcome"
+      },
+      "prediction_specificity": {
+        "verdict": "SPECIFIC",
+        "reason": "pre-specified tolerance [2.0, 2.0] — absolute range high/low = 1.00 (max 10.0)"
+      },
+      "legacy_broad_range_match": false,
+      "receipt_hash": "1f2416779a0c2433ed0b94d1f94e12061c6e52f510673b64d7aa3c926d73a82f"
+    },
+    {
+      "key": "PB-009|B_llm_only",
+      "case_id": "PB-009",
+      "case_name": "Induced pluripotent stem cells",
+      "config": "B_llm_only",
+      "candidate_id": "PRED-PB-009-B_llm_only",
+      "receipt_integrity_ok": true,
+      "simulation_registration_date": "2005-12-31T23:59:59Z",
+      "evaluation_type": "HISTORICAL_RETROSPECTIVE_BACKTEST",
+      "hypothesis": "Reprogramming of somatic cells to a pluripotent state can be achieved through transcription factor manipulation",
+      "prediction": "Introduction of the four known stem cell regulatory factors (Oct4, Sox2, Klf4, c-Myc) into somatic cells will induce pluripotency",
+      "units_range": "0-100% of cells exhibiting pluripotent markers",
+      "expected_direction": "INCREASE",
+      "outcome_source": "Takahashi & Yamanaka 2006 — four transcription factors reprogram somatic cells to pluripotency",
+      "outcome_value": "YES",
+      "outcome_direction": "BINARY",
+      "outcome_measurement_date": "2006-08-01T00:00:00Z",
+      "DISCOVERY_PREDICTION_SCORE": 0.0,
+      "criteria": {
+        "not_explicit_in_evidence": true,
+        "not_trivially_entailed_by_evidence": true,
+        "falsifiable": true,
+        "quantitatively_specific": false,
+        "later_independently_observed": false
+      },
+      "all_pass": false,
+      "information_content": {
+        "classification": "DISCOVERY_CANDIDATE",
+        "is_explicit_in_evidence": false,
+        "is_trivially_entailed_by_evidence": false,
+        "term_overlap_ratio": 0.5455,
+        "new_proper_nouns_in_proposal": [
+          "Introduction",
+          "Reprogramming"
+        ],
+        "new_technical_terms_in_proposal": [
+          "achieved",
+          "factor",
+          "induce",
+          "introduction",
+          "manipulation",
+          "pluripotency",
+          "regulatory",
+          "reprogramming",
+          "somatic",
+          "state"
+        ],
+        "shared_relational_verbs": [
+          "can"
+        ]
+      },
+      "directional_correctness": {
+        "verdict": "INCORRECT",
+        "reason": "direction mismatch: predicted INCREASE observed BINARY",
+        "predicted_direction": "INCREASE",
+        "observed_direction": "BINARY"
+      },
+      "quantitative_accuracy": {
+        "verdict": "INDETERMINATE",
+        "calibration_error": null,
+        "pre_specified_tolerance": [
+          0.0,
+          100.0
+        ],
+        "observed_value": "YES"
+      },
+      "falsifiability": {
+        "verdict": "FALSIFIABLE",
+        "reason": "falsification_condition specifies a testable outcome"
+      },
+      "prediction_specificity": {
+        "verdict": "VAGUE",
+        "reason": "degenerate range [0.0, 100.0] — zero-low range fractional spread = 1.00 (max 0.9)"
+      },
+      "legacy_broad_range_match": false,
+      "receipt_hash": "1311bce9a627f99b9975e70da8367ad651342e99cf33f1f1f803313582b6b281"
+    },
+    {
+      "key": "PB-009|C_mechanism",
+      "case_id": "PB-009",
+      "case_name": "Induced pluripotent stem cells",
+      "config": "C_mechanism",
+      "candidate_id": "PRED-PB-009-C_mechanism",
+      "receipt_integrity_ok": true,
+      "simulation_registration_date": "2005-12-31T23:59:59Z",
+      "evaluation_type": "HISTORICAL_RETROSPECTIVE_BACKTEST",
+      "hypothesis": "Transcription factors can reprogram somatic cells to a pluripotent state",
+      "prediction": "Introduction of the four known stem cell regulators (Oct4, Sox2, Klf4, c-Myc) into somatic cells will induce pluripotency",
+      "units_range": "0-100% of cells expressing pluripotency markers",
+      "expected_direction": "INCREASE",
+      "outcome_source": "Takahashi & Yamanaka 2006 — four transcription factors reprogram somatic cells to pluripotency",
+      "outcome_value": "YES",
+      "outcome_direction": "BINARY",
+      "outcome_measurement_date": "2006-08-01T00:00:00Z",
+      "DISCOVERY_PREDICTION_SCORE": 0.0,
+      "criteria": {
+        "not_explicit_in_evidence": true,
+        "not_trivially_entailed_by_evidence": true,
+        "falsifiable": true,
+        "quantitatively_specific": false,
+        "later_independently_observed": false
+      },
+      "all_pass": false,
+      "information_content": {
+        "classification": "DISCOVERY_CANDIDATE",
+        "is_explicit_in_evidence": false,
+        "is_trivially_entailed_by_evidence": false,
+        "term_overlap_ratio": 0.7368,
+        "new_proper_nouns_in_proposal": [
+          "Introduction"
+        ],
+        "new_technical_terms_in_proposal": [
+          "induce",
+          "introduction",
+          "pluripotency",
+          "somatic",
+          "state"
+        ],
+        "shared_relational_verbs": [
+          "can"
+        ]
+      },
+      "directional_correctness": {
+        "verdict": "INCORRECT",
+        "reason": "direction mismatch: predicted INCREASE observed BINARY",
+        "predicted_direction": "INCREASE",
+        "observed_direction": "BINARY"
+      },
+      "quantitative_accuracy": {
+        "verdict": "INDETERMINATE",
+        "calibration_error": null,
+        "pre_specified_tolerance": [
+          0.0,
+          100.0
+        ],
+        "observed_value": "YES"
+      },
+      "falsifiability": {
+        "verdict": "FALSIFIABLE",
+        "reason": "falsification_condition specifies a testable outcome"
+      },
+      "prediction_specificity": {
+        "verdict": "VAGUE",
+        "reason": "degenerate range [0.0, 100.0] — zero-low range fractional spread = 1.00 (max 0.9)"
+      },
+      "legacy_broad_range_match": false,
+      "receipt_hash": "1835a52cbc1e49d5a7dc733773a427ce1eb756eb9ae34eb7fe0ff3cfb2f260d5"
+    },
+    {
+      "key": "PB-009|D_random",
+      "case_id": "PB-009",
+      "case_name": "Induced pluripotent stem cells",
+      "config": "D_random",
+      "candidate_id": "PRED-PB-009-D_random",
+      "receipt_integrity_ok": true,
+      "simulation_registration_date": "2005-12-31T23:59:59Z",
+      "evaluation_type": "HISTORICAL_RETROSPECTIVE_BACKTEST",
+      "hypothesis": "Reprogramming of somatic cells to a pluripotent state",
+      "prediction": "Introduction of the four known stem cell regulators (Oct4, Sox2, Klf4, c-Myc) into somatic cells will induce pluripotency in a subset of cells",
+      "units_range": "0-100% of cells",
+      "expected_direction": "INCREASE",
+      "outcome_source": "Takahashi & Yamanaka 2006 — four transcription factors reprogram somatic cells to pluripotency",
+      "outcome_value": "YES",
+      "outcome_direction": "BINARY",
+      "outcome_measurement_date": "2006-08-01T00:00:00Z",
+      "DISCOVERY_PREDICTION_SCORE": 0.0,
+      "criteria": {
+        "not_explicit_in_evidence": true,
+        "not_trivially_entailed_by_evidence": true,
+        "falsifiable": true,
+        "quantitatively_specific": false,
+        "later_independently_observed": false
+      },
+      "all_pass": false,
+      "information_content": {
+        "classification": "DISCOVERY_CANDIDATE",
+        "is_explicit_in_evidence": false,
+        "is_trivially_entailed_by_evidence": false,
+        "term_overlap_ratio": 0.6111,
+        "new_proper_nouns_in_proposal": [
+          "Introduction",
+          "Reprogramming"
+        ],
+        "new_technical_terms_in_proposal": [
+          "induce",
+          "introduction",
+          "pluripotency",
+          "reprogramming",
+          "somatic",
+          "state",
+          "subset"
+        ],
+        "shared_relational_verbs": []
+      },
+      "directional_correctness": {
+        "verdict": "INCORRECT",
+        "reason": "direction mismatch: predicted INCREASE observed BINARY",
+        "predicted_direction": "INCREASE",
+        "observed_direction": "BINARY"
+      },
+      "quantitative_accuracy": {
+        "verdict": "INDETERMINATE",
+        "calibration_error": null,
+        "pre_specified_tolerance": [
+          0.0,
+          100.0
+        ],
+        "observed_value": "YES"
+      },
+      "falsifiability": {
+        "verdict": "FALSIFIABLE",
+        "reason": "falsification_condition specifies a testable outcome"
+      },
+      "prediction_specificity": {
+        "verdict": "VAGUE",
+        "reason": "degenerate range [0.0, 100.0] — zero-low range fractional spread = 1.00 (max 0.9)"
+      },
+      "legacy_broad_range_match": false,
+      "receipt_hash": "2d5fde643ad5bbfb5445b4fece0c2a566879d150eaee7c667868c3f0be9319c4"
+    },
+    {
+      "key": "PB-009|F_full",
+      "case_id": "PB-009",
+      "case_name": "Induced pluripotent stem cells",
+      "config": "F_full",
+      "candidate_id": "PRED-PB-009-F_full",
+      "receipt_integrity_ok": true,
+      "simulation_registration_date": "2005-12-31T23:59:59Z",
+      "evaluation_type": "HISTORICAL_RETROSPECTIVE_BACKTEST",
+      "hypothesis": "Reprogramming of somatic cells to a pluripotent state can be achieved through the introduction of specific transcription factors",
+      "prediction": "Introduction of the four known stem cell regulators (Oct4, Sox2, Klf4, c-Myc) into somatic cells will induce pluripotency in at least 1% of the treated cells",
+      "units_range": "1-10%",
+      "expected_direction": "INCREASE",
+      "outcome_source": "Takahashi & Yamanaka 2006 — four transcription factors reprogram somatic cells to pluripotency",
+      "outcome_value": "YES",
+      "outcome_direction": "BINARY",
+      "outcome_measurement_date": "2006-08-01T00:00:00Z",
+      "DISCOVERY_PREDICTION_SCORE": 0.0,
+      "criteria": {
+        "not_explicit_in_evidence": true,
+        "not_trivially_entailed_by_evidence": true,
+        "falsifiable": true,
+        "quantitatively_specific": false,
+        "later_independently_observed": false
+      },
+      "all_pass": false,
+      "information_content": {
+        "classification": "DISCOVERY_CANDIDATE",
+        "is_explicit_in_evidence": false,
+        "is_trivially_entailed_by_evidence": false,
+        "term_overlap_ratio": 0.5652,
+        "new_proper_nouns_in_proposal": [
+          "Introduction",
+          "Reprogramming"
+        ],
+        "new_technical_terms_in_proposal": [
+          "achieved",
+          "induce",
+          "introduction",
+          "least",
+          "pluripotency",
+          "reprogramming",
+          "somatic",
+          "specific",
+          "state",
+          "treated"
+        ],
+        "shared_relational_verbs": [
+          "can"
+        ]
+      },
+      "directional_correctness": {
+        "verdict": "INCORRECT",
+        "reason": "direction mismatch: predicted INCREASE observed BINARY",
+        "predicted_direction": "INCREASE",
+        "observed_direction": "BINARY"
+      },
+      "quantitative_accuracy": {
+        "verdict": "INDETERMINATE",
+        "calibration_error": null,
+        "pre_specified_tolerance": [
+          1.0,
+          10.0
+        ],
+        "observed_value": "YES"
+      },
+      "falsifiability": {
+        "verdict": "FALSIFIABLE",
+        "reason": "falsification_condition specifies a testable outcome"
+      },
+      "prediction_specificity": {
+        "verdict": "VAGUE",
+        "reason": "degenerate range [1.0, 10.0] — percentage range high/low = 10.00 (max 5.0)"
+      },
+      "legacy_broad_range_match": false,
+      "receipt_hash": "fe250d67a57ca87a8c6785a29c82b3de25cdbf5a215cebb83df29755a6eac468"
+    },
+    {
+      "key": "PB-010|B_llm_only",
+      "case_id": "PB-010",
+      "case_name": "GANs",
+      "config": "B_llm_only",
+      "candidate_id": "PRED-PB-010-B_llm_only",
+      "receipt_integrity_ok": true,
+      "simulation_registration_date": "2013-12-31T23:59:59Z",
+      "evaluation_type": "HISTORICAL_RETROSPECTIVE_BACKTEST",
+      "hypothesis": "Combining generative and discriminative models through adversarial training can improve output quality",
+      "prediction": "Generated images will have a higher sharpness metric",
+      "units_range": "0-1 (sharpness metric, e.g. clarity or variance of Laplacian)",
+      "expected_direction": "INCREASE",
+      "outcome_source": "Goodfellow et al. 2014 — GAN generates realistic synthetic images via adversarial training",
+      "outcome_value": "YES",
+      "outcome_direction": "BINARY",
+      "outcome_measurement_date": "2014-06-01T00:00:00Z",
+      "DISCOVERY_PREDICTION_SCORE": 0.0,
+      "criteria": {
+        "not_explicit_in_evidence": true,
+        "not_trivially_entailed_by_evidence": true,
+        "falsifiable": true,
+        "quantitatively_specific": false,
+        "later_independently_observed": false
+      },
+      "all_pass": false,
+      "information_content": {
+        "classification": "DISCOVERY_CANDIDATE",
+        "is_explicit_in_evidence": false,
+        "is_trivially_entailed_by_evidence": false,
+        "term_overlap_ratio": 0.3571,
+        "new_proper_nouns_in_proposal": [
+          "Combining",
+          "Generated"
+        ],
+        "new_technical_terms_in_proposal": [
+          "combining",
+          "generated",
+          "higher",
+          "images",
+          "improve",
+          "metric",
+          "output",
+          "quality",
+          "sharpness"
+        ],
+        "shared_relational_verbs": [
+          "can"
+        ]
+      },
+      "directional_correctness": {
+        "verdict": "INCORRECT",
+        "reason": "direction mismatch: predicted INCREASE observed BINARY",
+        "predicted_direction": "INCREASE",
+        "observed_direction": "BINARY"
+      },
+      "quantitative_accuracy": {
+        "verdict": "INDETERMINATE",
+        "calibration_error": null,
+        "pre_specified_tolerance": [
+          0.0,
+          1.0
+        ],
+        "observed_value": "YES"
+      },
+      "falsifiability": {
+        "verdict": "FALSIFIABLE",
+        "reason": "falsification_condition specifies a testable outcome"
+      },
+      "prediction_specificity": {
+        "verdict": "VAGUE",
+        "reason": "degenerate range [0.0, 1.0] — zero-low range fractional spread = 1.00 (max 0.9)"
+      },
+      "legacy_broad_range_match": false,
+      "receipt_hash": "cb48ddf92f0510795c82c5345953811909f2e547b4c53a89047e428e769ebb25"
+    },
+    {
+      "key": "PB-010|C_mechanism",
+      "case_id": "PB-010",
+      "case_name": "GANs",
+      "config": "C_mechanism",
+      "candidate_id": "PRED-PB-010-C_mechanism",
+      "receipt_integrity_ok": true,
+      "simulation_registration_date": "2013-12-31T23:59:59Z",
+      "evaluation_type": "HISTORICAL_RETROSPECTIVE_BACKTEST",
+      "hypothesis": "Adversarial training of generative models against discriminative models improves output quality",
+      "prediction": "Generated images will have a higher sharpness metric",
+      "units_range": "0-1 (sharpness metric, e.g. clarity or variance of Laplacian)",
+      "expected_direction": "INCREASE",
+      "outcome_source": "Goodfellow et al. 2014 — GAN generates realistic synthetic images via adversarial training",
+      "outcome_value": "YES",
+      "outcome_direction": "BINARY",
+      "outcome_measurement_date": "2014-06-01T00:00:00Z",
+      "DISCOVERY_PREDICTION_SCORE": 0.0,
+      "criteria": {
+        "not_explicit_in_evidence": true,
+        "not_trivially_entailed_by_evidence": true,
+        "falsifiable": true,
+        "quantitatively_specific": false,
+        "later_independently_observed": false
+      },
+      "all_pass": false,
+      "information_content": {
+        "classification": "DISCOVERY_CANDIDATE",
+        "is_explicit_in_evidence": false,
+        "is_trivially_entailed_by_evidence": false,
+        "term_overlap_ratio": 0.3846,
+        "new_proper_nouns_in_proposal": [
+          "Generated"
+        ],
+        "new_technical_terms_in_proposal": [
+          "generated",
+          "higher",
+          "images",
+          "improves",
+          "metric",
+          "output",
+          "quality",
+          "sharpness"
+        ],
+        "shared_relational_verbs": []
+      },
+      "directional_correctness": {
+        "verdict": "INCORRECT",
+        "reason": "direction mismatch: predicted INCREASE observed BINARY",
+        "predicted_direction": "INCREASE",
+        "observed_direction": "BINARY"
+      },
+      "quantitative_accuracy": {
+        "verdict": "INDETERMINATE",
+        "calibration_error": null,
+        "pre_specified_tolerance": [
+          0.0,
+          1.0
+        ],
+        "observed_value": "YES"
+      },
+      "falsifiability": {
+        "verdict": "FALSIFIABLE",
+        "reason": "falsification_condition specifies a testable outcome"
+      },
+      "prediction_specificity": {
+        "verdict": "VAGUE",
+        "reason": "degenerate range [0.0, 1.0] — zero-low range fractional spread = 1.00 (max 0.9)"
+      },
+      "legacy_broad_range_match": false,
+      "receipt_hash": "17ee53d695c8415f74df0d8cc88f3c686358e6e588d79b52abe6ee4022a61c04"
+    },
+    {
+      "key": "PB-010|D_random",
+      "case_id": "PB-010",
+      "case_name": "GANs",
+      "config": "D_random",
+      "candidate_id": "PRED-PB-010-D_random",
+      "receipt_integrity_ok": true,
+      "simulation_registration_date": "2013-12-31T23:59:59Z",
+      "evaluation_type": "HISTORICAL_RETROSPECTIVE_BACKTEST",
+      "hypothesis": "Adversarial training can improve generative models",
+      "prediction": "Generative models trained with adversarial loss will produce sharper outputs",
+      "units_range": "Peak Signal-to-Noise Ratio (PSNR) between 20-40 dB",
+      "expected_direction": "INCREASE",
+      "outcome_source": "Goodfellow et al. 2014 — GAN generates realistic synthetic images via adversarial training",
+      "outcome_value": "YES",
+      "outcome_direction": "BINARY",
+      "outcome_measurement_date": "2014-06-01T00:00:00Z",
+      "DISCOVERY_PREDICTION_SCORE": 0.0,
+      "criteria": {
+        "not_explicit_in_evidence": true,
+        "not_trivially_entailed_by_evidence": true,
+        "falsifiable": true,
+        "quantitatively_specific": true,
+        "later_independently_observed": false
+      },
+      "all_pass": false,
+      "information_content": {
+        "classification": "DISCOVERY_CANDIDATE",
+        "is_explicit_in_evidence": false,
+        "is_trivially_entailed_by_evidence": false,
+        "term_overlap_ratio": 0.6,
+        "new_proper_nouns_in_proposal": [],
+        "new_technical_terms_in_proposal": [
+          "improve",
+          "sharper",
+          "trained"
+        ],
+        "shared_relational_verbs": [
+          "can",
+          "produce"
+        ]
+      },
+      "directional_correctness": {
+        "verdict": "INCORRECT",
+        "reason": "direction mismatch: predicted INCREASE observed BINARY",
+        "predicted_direction": "INCREASE",
+        "observed_direction": "BINARY"
+      },
+      "quantitative_accuracy": {
+        "verdict": "INDETERMINATE",
+        "calibration_error": null,
+        "pre_specified_tolerance": [
+          20.0,
+          40.0
+        ],
+        "observed_value": "YES"
+      },
+      "falsifiability": {
+        "verdict": "FALSIFIABLE",
+        "reason": "falsification_condition specifies a testable outcome"
+      },
+      "prediction_specificity": {
+        "verdict": "SPECIFIC",
+        "reason": "pre-specified tolerance [20.0, 40.0] — absolute range high/low = 2.00 (max 10.0)"
+      },
+      "legacy_broad_range_match": false,
+      "receipt_hash": "40570439e24c78a23dbe7f75ec69529d1f0c09611cbcdf1c940a45f26a903c49"
+    },
+    {
+      "key": "PB-010|F_full",
+      "case_id": "PB-010",
+      "case_name": "GANs",
+      "config": "F_full",
+      "candidate_id": "PRED-PB-010-F_full",
+      "receipt_integrity_ok": true,
+      "simulation_registration_date": "2013-12-31T23:59:59Z",
+      "evaluation_type": "HISTORICAL_RETROSPECTIVE_BACKTEST",
+      "hypothesis": "Adversarial training of generative models improves output quality",
+      "prediction": "Peak Signal-to-Noise Ratio (PSNR) of generated images",
+      "units_range": "20-40 dB",
+      "expected_direction": "INCREASE",
+      "outcome_source": "Goodfellow et al. 2014 — GAN generates realistic synthetic images via adversarial training",
+      "outcome_value": "YES",
+      "outcome_direction": "BINARY",
+      "outcome_measurement_date": "2014-06-01T00:00:00Z",
+      "DISCOVERY_PREDICTION_SCORE": 0.0,
+      "criteria": {
+        "not_explicit_in_evidence": true,
+        "not_trivially_entailed_by_evidence": true,
+        "falsifiable": true,
+        "quantitatively_specific": true,
+        "later_independently_observed": false
+      },
+      "all_pass": false,
+      "information_content": {
+        "classification": "DISCOVERY_CANDIDATE",
+        "is_explicit_in_evidence": false,
+        "is_trivially_entailed_by_evidence": false,
+        "term_overlap_ratio": 0.3077,
+        "new_proper_nouns_in_proposal": [
+          "Noise",
+          "PSNR",
+          "Peak",
+          "Ratio",
+          "Signal"
+        ],
+        "new_technical_terms_in_proposal": [
+          "generated",
+          "images",
+          "improves",
+          "output",
+          "quality",
+          "ratio",
+          "signal-to-noise"
+        ],
+        "shared_relational_verbs": []
+      },
+      "directional_correctness": {
+        "verdict": "INCORRECT",
+        "reason": "direction mismatch: predicted INCREASE observed BINARY",
+        "predicted_direction": "INCREASE",
+        "observed_direction": "BINARY"
+      },
+      "quantitative_accuracy": {
+        "verdict": "INDETERMINATE",
+        "calibration_error": null,
+        "pre_specified_tolerance": [
+          20.0,
+          40.0
+        ],
+        "observed_value": "YES"
+      },
+      "falsifiability": {
+        "verdict": "FALSIFIABLE",
+        "reason": "falsification_condition specifies a testable outcome"
+      },
+      "prediction_specificity": {
+        "verdict": "SPECIFIC",
+        "reason": "pre-specified tolerance [20.0, 40.0] — absolute range high/low = 2.00 (max 10.0)"
+      },
+      "legacy_broad_range_match": false,
+      "receipt_hash": "c4ee6dba2e69199c11645f640e41734d5a9c02bb4902d98c0767395d3af63025"
+    }
+  ]
+}
