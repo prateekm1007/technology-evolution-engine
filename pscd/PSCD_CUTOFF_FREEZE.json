@@ -1,13 +1,14 @@
 {
-  "schema_version": "1.0.0",
+  "schema_version": "1.1.0",
   "freeze_type": "PSCD_TEMPORAL_CUTOFF",
-  "frozen_at": "2026-08-12T22:21:52.010951+00:00",
-  "PSCD_CUTOFF_DATE": "2026-08-13T00:00:00Z",
-  "PSCD_CUTOFF_RULE": "No evidence with publication_date after PSCD_CUTOFF_DATE may enter any arm's retrieval payload. This rule is frozen BEFORE any PSCD generation. Violation = experiment invalidated.",
-  "EVIDENCE_AS_OF_TIMESTAMP": "2026-08-12T22:21:52.010961+00:00",
-  "enforcement": "The retrieval snapshot is built ONLY from sources with publication_date <= PSCD_CUTOFF_DATE. The snapshot hash includes this cutoff, so any post-cutoff evidence would change the hash and be detected.",
-  "freeze_hash": "6188f2ff2f021f308bed227f3833cb0c6782f828b6c50406361cbb6925a6f42e",
+  "frozen_at": "2026-08-12T22:44:45.279308+00:00",
+  "PSCD_CUTOFF_DATE": "2026-08-12T22:44:45.279308+00:00",
+  "PSCD_REGISTRATION_TIMESTAMP": "2026-08-12T22:44:45.279308+00:00",
+  "cutoff_le_registration": true,
+  "PSCD_CUTOFF_RULE": "No evidence with publication_date after PSCD_CUTOFF_DATE may enter any arm. Cutoff ≤ registration timestamp.",
+  "EVIDENCE_AS_OF_TIMESTAMP": "2026-08-12T22:44:45.279308+00:00",
   "authoritative_snapshot": "pscd/retrieval_snapshot_v1.json",
   "authoritative_snapshot_hash": "426cd91bdfe51090528cbdccb67214dfc375a58a2e3030de116601089df1081d",
-  "reconciliation_note": "One authoritative cutoff state: 2026-08-13T00:00:00Z, enforced in retrieval_snapshot_v1.json."
+  "reconciliation_note": "One authoritative cutoff state. Snapshot is the authoritative artifact.",
+  "freeze_hash": "37ddbdc851f239f6a6cd095ae8c1af0a417d9ab35edf6a10adbcb3fba0d3fda6"
 }

@@ -1,8 +1,10 @@
 {
-  "schema_version": "1.0.0",
+  "schema_version": "1.1.0",
   "snapshot_type": "PSCD_RETRIEVAL_SNAPSHOT_V1",
-  "frozen_at": "2026-08-12T22:31:48.921864+00:00",
-  "PSCD_CUTOFF_DATE": "2026-08-13T00:00:00Z",
+  "frozen_at": "2026-08-12T22:44:45.279308+00:00",
+  "PSCD_CUTOFF_DATE": "2026-08-12T22:44:45.279308+00:00",
+  "PSCD_REGISTRATION_TIMESTAMP": "2026-08-12T22:44:45.279308+00:00",
+  "cutoff_le_registration": true,
   "n_sources": 106,
   "sources": [
     {
@@ -748,9 +750,8 @@
       "publication_date": "2025-06-30"
     }
   ],
-  "cutoff_rule": "No source with publication_date after PSCD_CUTOFF_DATE is included.",
   "cutoff_compliance_verified": true,
   "cutoff_violations": 0,
   "content_sha256": "426cd91bdfe51090528cbdccb67214dfc375a58a2e3030de116601089df1081d",
-  "manifest_hash": "15706cdf3d27e929caadf3d0695862467568d42ccf6e1590ad5da088d7bf8af2"
+  "manifest_hash": "2e390ac065f7a636992005f107097b5b0c2cf30b7f22f49b23f492208f73a4b6"
 }
