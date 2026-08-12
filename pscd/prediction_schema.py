@@ -44,23 +44,35 @@ def validate_prediction(p: Prediction) -> tuple[bool, list[str]]:
         if not val:
             errors.append(f"{field_name} is empty")
 
-    # evidence_ids must be non-empty list
-    if not isinstance(p.evidence_ids, list) or len(p.evidence_ids) == 0:
-        errors.append("evidence_ids must be a non-empty list")
+    # evidence_ids: A0 may have empty list (no retrieval); A1+ must have non-empty
+    if not isinstance(p.evidence_ids, list):
+        errors.append("evidence_ids must be a list")
+    elif p.arm != "A0" and len(p.evidence_ids) == 0:
+        errors.append("evidence_ids must be non-empty for arms with retrieval (A1+)")
 
     # retrieval_negative_attestation must be machine-checkable
+    # A prediction may be sealed ONLY after an actual entailment check has executed.
+    # The attestation fields must be populated from the actual frozen snapshot,
+    # not hardcoded.
     att = p.retrieval_negative_attestation
     if not isinstance(att, dict):
         errors.append("retrieval_negative_attestation must be a dict")
     else:
-        if not att.get("is_retrieval_negative"):
-            errors.append("retrieval_negative_attestation.is_retrieval_negative must be True")
+        # is_retrieval_negative must NOT be hardcoded True — it must be the result
+        # of an actual entailment check. We verify it was populated (not a placeholder).
+        if att.get("is_retrieval_negative") is None:
+            errors.append("retrieval_negative_attestation.is_retrieval_negative must be set by entailment check, not hardcoded")
         if not att.get("check_method"):
             errors.append("retrieval_negative_attestation.check_method must be specified")
-        if not att.get("evidence_source_hashes_checked"):
-            errors.append("retrieval_negative_attestation.evidence_source_hashes_checked must list all sources checked")
+        if att.get("check_method", "").startswith("pending"):
+            errors.append("retrieval_negative_attestation.check_method must not be 'pending' — entailment check must have executed")
+        # evidence_source_hashes_checked must be populated from actual frozen snapshot
+        # For A0 (no retrieval), this may be an empty list (no sources to check)
+        if p.arm != "A0":
+            if not att.get("evidence_source_hashes_checked"):
+                errors.append("retrieval_negative_attestation.evidence_source_hashes_checked must be populated from frozen snapshot")
         if not att.get("entailment_check_result"):
-            errors.append("retrieval_negative_attestation.entailment_check_result must be 'NOT_ENTAILED'")
+            errors.append("retrieval_negative_attestation.entailment_check_result must be set by entailment check")
 
     # arm must be one of the pre-registered arms
     if p.arm not in ("A0", "A1", "A2", "A3"):

@@ -100,17 +100,39 @@ def parse_prediction(text: str) -> dict | None:
     return None
 
 
-def run_arm(arm: str, task_id: str, evidence_text: str, retrieval_hash: str) -> dict:
-    """Run one arm on one task. Returns a Prediction receipt."""
+def run_arm(arm: str, task_id: str, evidence_text: str, retrieval_hash: str,
+            evidence_source_hashes: list[str] | None = None) -> dict:
+    """Run one arm on one task. Returns a Prediction receipt.
+
+    The retrieval_negative_attestation is NOT hardcoded. It is populated by
+    running the actual entailment check after generation. A prediction may
+    be sealed only after the entailment check has executed.
+
+    For A0 (no retrieval):
+      - evidence_ids = [] (empty, legitimately no evidence)
+      - retrieval_snapshot_hash = "NO_RETRIEVAL"
+      - retrieval_negative_attestation.is_retrieval_negative = True (vacuously — no sources to entail)
+      - evidence_source_hashes_checked = [] (no sources checked)
+
+    For A1 (with retrieval):
+      - evidence_ids = [task_id] (the retrieved evidence)
+      - retrieval_snapshot_hash = actual hash
+      - retrieval_negative_attestation populated by actual entailment check
+      - evidence_source_hashes_checked = actual source hashes from frozen snapshot
+    """
     if arm == "A0":
         evidence_section = A0_EVIDENCE
-        retrieval_hash_val = "NONE"
+        retrieval_hash_val = "NO_RETRIEVAL"
+        evidence_ids = []
+        source_hashes_checked = []
     elif arm == "A1":
         evidence_section = A1_EVIDENCE_TEMPLATE.format(
             snapshot_hash=retrieval_hash,
             evidence_text=evidence_text,
         )
         retrieval_hash_val = retrieval_hash
+        evidence_ids = [task_id]
+        source_hashes_checked = evidence_source_hashes or []
     else:
         raise ValueError(f"Arm {arm} not implemented yet (A2 requires Phase 3 authorization)")
 
@@ -122,25 +144,45 @@ def run_arm(arm: str, task_id: str, evidence_text: str, retrieval_hash: str) -> 
     prediction_id = f"PSCD1-{task_id}-{arm}-{gen_ts}"
 
     if parsed:
+        claim = parsed.get("claim", "")
+
+        # Run ACTUAL entailment check (not hardcoded)
+        if arm == "A0":
+            # A0 has no retrieval — vacuously retrieval-negative
+            attestation = {
+                "is_retrieval_negative": True,
+                "check_method": "vacuous_no_retrieval",
+                "evidence_source_hashes_checked": [],
+                "entailment_check_result": "NOT_ENTAILED",
+                "note": "A0 has no retrieval. No sources to check. Vacuously retrieval-negative.",
+            }
+        else:
+            # A1 — run the authoritative entailment protocol
+            from phase_0_2_correction_v2 import authoritative_entailment_protocol
+            ent_result = authoritative_entailment_protocol(claim, [evidence_text])
+            attestation = {
+                "is_retrieval_negative": ent_result["classification"] in ("NOT_ENTAILED", "UNKNOWN"),
+                "check_method": ent_result["check_method"],
+                "evidence_source_hashes_checked": source_hashes_checked,
+                "entailment_check_result": ent_result["classification"],
+                "lexical_filter_result": ent_result.get("lexical_filter_result", ""),
+                "new_entities_count": ent_result.get("new_entities_count", 0),
+            }
+
         pred = Prediction(
             prediction_id=prediction_id,
-            claim=parsed.get("claim", ""),
+            claim=claim,
             mechanism=parsed.get("mechanism", ""),
             quantitative_forecast=parsed.get("quantitative_forecast", ""),
             tolerance=parsed.get("tolerance", ""),
             falsification_condition=parsed.get("falsification_condition", ""),
             measurement_protocol=parsed.get("measurement_protocol", ""),
-            evidence_ids=[task_id] if arm == "A1" else [],
+            evidence_ids=evidence_ids,
             retrieval_snapshot_hash=retrieval_hash_val,
             model_id=f"{MODEL_ID}@{MODEL_VERSION}",
             prompt_hash=PROMPT_HASH,
             generation_timestamp=gen_ts,
-            retrieval_negative_attestation={
-                "is_retrieval_negative": True,  # placeholder — real check in evaluator
-                "check_method": "deterministic_entailment_check (pending implementation)",
-                "evidence_source_hashes_checked": [],
-                "entailment_check_result": "NOT_ENTAILED",
-            },
+            retrieval_negative_attestation=attestation,
             arm=arm,
         )
         ok, errors = validate_prediction(pred)

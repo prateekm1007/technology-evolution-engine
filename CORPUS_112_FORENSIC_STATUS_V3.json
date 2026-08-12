@@ -9,8 +9,8 @@
   "abstract_present_original": 100,
   "abstract_unavailable": 6,
   "fulltext_count": 0,
-  "corpus_snapshot_sha256": "3ee4d04085111f1a2fae643ee0a26f0b9bbcac84f7eb531dc8b0185091dc4cb4",
-  "cutoff_status": "NOT YET FROZEN — must be pre-registered before PSCD generation",
+  "corpus_snapshot_sha256": "426cd91bdfe51090528cbdccb67214dfc375a58a2e3030de116601089df1081d",
+  "cutoff_status": "FROZEN — 2026-08-13T00:00:00Z (reconciled with PSCD_CUTOFF_FREEZE.json)",
   "exclusion_rule": "Sources with ABSTRACT_UNAVAILABLE are EXCLUDED_PRE_REGISTERED. This rule is fixed BEFORE observing any outcomes. No source may be added or removed after this pre-registration.",
   "inclusion_rule": "Sources with ABSTRACT_PRESENT or ABSTRACT_RECOVERED are INCLUDED. Evidence depth: abstracts only (no fulltexts). This is explicitly pre-registered. The North Star claim is limited accordingly: the system discovers from abstract-level evidence, not full-text analysis.",
   "per_source_status": [
@@ -1505,5 +1505,6 @@
   ],
   "CORPUS_READY": true,
   "CORPUS_READY_RULE": "CORPUS_READY = TRUE because every source has deterministic disposition (INCLUDED or EXCLUDED_PRE_REGISTERED) and the exclusion rule is frozen before outcome observation. 106 sources included, 6 excluded.",
-  "report_hash": "79a962d27d6439d22d8ec4f80478a965ca81913581f29b5613471031cbd7b099"
+  "report_hash": "bd1ea08866e668d2dd29d98987b5a04744ab206c18cfa4732c4de09ceee7a0f8",
+  "authoritative_snapshot": "pscd/retrieval_snapshot_v1.json"
 }

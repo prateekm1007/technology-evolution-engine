@@ -12,5 +12,67 @@
   "blocking_items": [
     "REAL_SEAL_READY"
   ],
-  "generated_at": "2026-08-12T22:22:28.308450+00:00"
+  "parity_comparisons": [
+    {
+      "field": "model_id",
+      "label": "model_id",
+      "a0": "meta-llama/llama-3.3-70b-instruct@2024-09-15",
+      "a1": "meta-llama/llama-3.3-70b-instruct@2024-09-15",
+      "match": true,
+      "required": "IDENTICAL",
+      "pass": true
+    },
+    {
+      "field": "prompt_hash",
+      "label": "prompt_hash",
+      "a0": "be1a353f8181ff50aa78cdd9d473aad81a45b9b1807b0bebfe84f5fb1dcd1eef",
+      "a1": "be1a353f8181ff50aa78cdd9d473aad81a45b9b1807b0bebfe84f5fb1dcd1eef",
+      "match": true,
+      "required": "IDENTICAL",
+      "pass": true
+    },
+    {
+      "field": "retrieval_snapshot_hash",
+      "label": "retrieval snapshot hash",
+      "a0": "NO_RETRIEVAL",
+      "a1": "426cd91bdfe51090528cbdccb67214dfc375a58a2e3030de116601089df1081d",
+      "match": false,
+      "required": "DIFFER",
+      "pass": true
+    },
+    {
+      "field": "evidence_ids",
+      "label": "evidence IDs",
+      "a0": [],
+      "a1": [
+        "PARITY-V3-001"
+      ],
+      "match": false,
+      "required": "DIFFER",
+      "pass": true
+    },
+    {
+      "field": "a0_retrieval_is_NO_RETRIEVAL",
+      "label": "A0 retrieval = NO_RETRIEVAL (not fake evidence)",
+      "a0": "NO_RETRIEVAL",
+      "pass": true,
+      "required": "A0_MUST_BE_NO_RETRIEVAL"
+    },
+    {
+      "field": "a1_attestation_not_hardcoded",
+      "label": "A1 attestation from actual check (not hardcoded)",
+      "a1_method": "authoritative_entailment_protocol_v1",
+      "pass": true,
+      "required": "ACTUAL_CHECK"
+    },
+    {
+      "field": "a1_source_hashes_populated",
+      "label": "A1 evidence_source_hashes_checked populated from snapshot",
+      "a1_count": 5,
+      "pass": true,
+      "required": "POPULATED_FROM_SNAPSHOT"
+    }
+  ],
+  "generated_at": "2026-08-12T22:32:45.619838+00:00",
+  "gate_hash": "ea3160d0efbd1493f0e1d5825a2f2da831ea9959c4b02bc3e132e4579d2c7e17"
 }
