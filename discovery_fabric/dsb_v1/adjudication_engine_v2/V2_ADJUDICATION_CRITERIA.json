@@ -1,0 +1,82 @@
+{
+  "schema_version": "1.0.0",
+  "evidence_tier": "AI_CTO_ADJUDICATION",
+  "tier_note": "NOT HUMAN_VALIDATED. CTO is not independent (per MC-1). This tier can check whether the machine scorer agrees with informed CTO judgment; it CANNOT validate the system.",
+  "class_split": {
+    "observable_judgment": {
+      "description": "Evaluated from the BLINDED packet only. The adjudicator judges plausibility and structure — NOT ground truth.",
+      "questions": [
+        "Q1",
+        "Q2",
+        "Q3",
+        "Q4",
+        "Q5",
+        "Q6_PLAUSIBILITY"
+      ]
+    },
+    "ground_truth_evaluation": {
+      "description": "Evaluated ONLY AFTER unblinding, by the comparison engine, against frozen labels. The adjudicator does NOT answer these.",
+      "questions": [
+        "real_vs_fabricated_actual",
+        "machine_discovery_verdict",
+        "machine_mechanism_verdict"
+      ]
+    }
+  },
+  "observable_questions": {
+    "Q1_MECHANISTIC_VALIDITY": {
+      "question": "Is the proposed mechanism scientifically valid and plausibly tied to the exposed facts?",
+      "options": [
+        "YES",
+        "PARTIAL",
+        "NO"
+      ],
+      "class": "observable_judgment"
+    },
+    "Q2_DISCOVERY_STRUCTURE_VALIDITY": {
+      "question": "Does the proposed_relationship express a relationship NOT explicit in the exposed_facts that combines them in a novel way?",
+      "options": [
+        "YES",
+        "PARTIAL",
+        "NO"
+      ],
+      "class": "observable_judgment"
+    },
+    "Q3_NOVELTY": {
+      "question": "Does the proposal introduce genuinely new entities, mechanisms, or relational structure beyond the exposed_facts?",
+      "options": [
+        "YES",
+        "PARTIAL",
+        "NO"
+      ],
+      "class": "observable_judgment"
+    },
+    "Q4_FALSIFIABILITY": {
+      "question": "Is the proposed_relationship specific enough to be falsifiable?",
+      "options": [
+        "YES",
+        "NO"
+      ],
+      "class": "observable_judgment"
+    },
+    "Q5_EXPERIMENTAL_COHERENCE": {
+      "question": "Could an experiment be designed to test this proposal, given the exposed_facts?",
+      "options": [
+        "YES",
+        "PARTIAL",
+        "NO"
+      ],
+      "class": "observable_judgment"
+    },
+    "Q6_PLAUSIBILITY": {
+      "question": "Is this proposal scientifically plausible — could it work in reality, regardless of whether it has been historically demonstrated?",
+      "options": [
+        "PLAUSIBLE",
+        "IMPLAUSIBLE",
+        "UNCERTAIN"
+      ],
+      "class": "observable_judgment",
+      "note": "This replaces V1's Q6_REAL_VS_FABRICATED. The adjudicator judges PLAUSIBILITY (observable from the packet), NOT ground-truth REAL/FABRICATED (which is hidden). The comparison engine checks whether PLAUSIBILITY correlates with the actual label after unblinding."
+    }
+  }
+}

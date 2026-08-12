@@ -1,0 +1,34 @@
+{
+  "n_checks": 6,
+  "n_passed": 6,
+  "all_pass": true,
+  "checks": [
+    {
+      "check": "ADJUDICATOR_WS_ONLY_ALLOWED_FILES",
+      "passed": true,
+      "forbidden_files_found": []
+    },
+    {
+      "check": "FULL_PACKETS_NOT_IN_ADJUDICATOR_WS",
+      "passed": true
+    },
+    {
+      "check": "VAULT_KEY_NOT_IN_ADJUDICATOR_WS",
+      "passed": true
+    },
+    {
+      "check": "BLIND_PACKETS_NO_GROUND_TRUTH",
+      "passed": true,
+      "leaked_fields": []
+    },
+    {
+      "check": "VAULT_IS_ENCRYPTED",
+      "passed": true,
+      "vault_size_bytes": 32272
+    },
+    {
+      "check": "VAULT_KEY_IN_EVALUATOR_BOUNDARY",
+      "passed": true
+    }
+  ]
+}
