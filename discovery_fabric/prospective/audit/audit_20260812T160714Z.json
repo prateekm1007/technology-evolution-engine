@@ -1,0 +1,111 @@
+{
+  "schema_version": "1.0.0",
+  "audit_type": "PROSPECTIVE_PIPELINE_INVARIANTS",
+  "audited_at": "2026-08-12T16:07:14.029476+00:00",
+  "checks": [
+    {
+      "invariant": "I1",
+      "name": "manifest_sealed",
+      "passed": true,
+      "reason": ""
+    },
+    {
+      "invariant": "I2",
+      "name": "manifest_timestamp_real",
+      "passed": true,
+      "reason": ""
+    },
+    {
+      "invariant": "I3",
+      "name": "problem_set_no_outcomes",
+      "passed": true,
+      "reason": ""
+    },
+    {
+      "invariant": "I4",
+      "name": "all_arms_registered_together",
+      "passed": true,
+      "reason": ""
+    },
+    {
+      "invariant": "I5",
+      "name": "analysis_plan_sealed",
+      "passed": true,
+      "reason": ""
+    },
+    {
+      "invariant": "I12",
+      "name": "receipts_sealed",
+      "passed": null,
+      "reason": "no receipts — stage not yet executed"
+    },
+    {
+      "invariant": "I10",
+      "name": "arms_same_timestamp",
+      "passed": null,
+      "reason": "no receipts — stage not yet executed"
+    },
+    {
+      "invariant": "I14",
+      "name": "no_obs_before_window",
+      "passed": null,
+      "reason": "no observations — stage not yet executed"
+    },
+    {
+      "invariant": "I17",
+      "name": "observations_sealed",
+      "passed": null,
+      "reason": "no observations — stage not yet executed"
+    },
+    {
+      "invariant": "I18",
+      "name": "obs_in_window",
+      "passed": null,
+      "reason": "no observations — stage not yet executed"
+    },
+    {
+      "invariant": "I15",
+      "name": "obs_source_matches",
+      "passed": null,
+      "reason": "no observations — stage not yet executed"
+    },
+    {
+      "invariant": "I16",
+      "name": "curator_independence",
+      "passed": null,
+      "reason": "no observations — stage not yet executed"
+    },
+    {
+      "invariant": "I23",
+      "name": "scores_sealed",
+      "passed": null,
+      "reason": "no scores — stage not yet executed"
+    },
+    {
+      "invariant": "I24",
+      "name": "analysis_uses_manifest_plan",
+      "passed": null,
+      "reason": "no analysis result — stage not yet executed"
+    },
+    {
+      "invariant": "I27",
+      "name": "analysis_sealed",
+      "passed": null,
+      "reason": "no analysis result — stage not yet executed"
+    },
+    {
+      "invariant": "LOG",
+      "name": "log_append_only",
+      "passed": true,
+      "reason": "no log file (empty pipeline)"
+    }
+  ],
+  "summary": {
+    "n_applicable": 6,
+    "n_passed": 6,
+    "n_failed": 0,
+    "n_skipped": 10,
+    "overall_pass": true
+  },
+  "audit_hash": "1d496d2ab12c30454235b2eb8f65d2ab67c8740d1afd8846a26d1682c1326f24"
+}

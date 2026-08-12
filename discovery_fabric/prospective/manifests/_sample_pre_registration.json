@@ -1,0 +1,77 @@
+{
+  "schema_version": "1.0.0",
+  "manifest_type": "PRE_REGISTRATION",
+  "created_at": "2026-08-12T16:07:13.835257+00:00",
+  "problem_set": [
+    {
+      "problem_id": "PROS-001",
+      "description": "Identify a materials combination that achieves > 1500 Wh/kg specific energy in a rechargeable battery, falsified if no combination achieves > 1000 Wh/kg within 24 months.",
+      "corpus_query": "battery materials specific energy cathode anode electrolyte",
+      "domain": "materials_science",
+      "expected_outcome_type": "NUMERIC",
+      "measurement_unit": "Wh/kg"
+    },
+    {
+      "problem_id": "PROS-002",
+      "description": "Identify a small-molecule compound that achieves > 10x selective killing of KRAS-G12C mutant cancer cells vs wild-type, falsified if selectivity < 3x in vitro.",
+      "corpus_query": "KRAS G12C inhibitor selective cancer",
+      "domain": "oncology",
+      "expected_outcome_type": "NUMERIC",
+      "measurement_unit": "selectivity_ratio"
+    }
+  ],
+  "model_snapshot": {
+    "model_name": "glm-4-plus",
+    "model_version": "TO_BE_PINNED",
+    "weights_hash": null,
+    "endpoint_url": "https://api.z.ai/v1/chat/completions",
+    "api_version": "TO_BE_PINNED",
+    "note": "Hosted model — version pin MUST be set before sealing. Local model preferred for true freezing."
+  },
+  "retrieval_corpus": {
+    "corpus_name": "TO_BE_SPECIFIED",
+    "corpus_version": "TO_BE_SPECIFIED",
+    "corpus_hash": "TO_BE_COMPUTED",
+    "document_count": 0,
+    "date_filter_upper_bound": "TO_BE_SET",
+    "date_filter_verified": false,
+    "note": "Corpus MUST be frozen and hash-sealed before this manifest is sealed."
+  },
+  "prompt_templates": {
+    "B_llm_only": "PROBLEM: {description}\n\nRetrieve relevant evidence from the frozen corpus using query: {corpus_query}\n\nBased ONLY on the retrieved evidence, propose ONE falsifiable quantitative prediction. Output JSON with: hypothesis, prediction, predicted_value, tolerance_lower, tolerance_upper, expected_direction, measurement_method, falsification_condition.",
+    "C_mechanism": "PROBLEM: {description}\n\nRetrieve relevant evidence using query: {corpus_query}\n\nIdentify the CORE MECHANISM in the retrieved evidence. Propose ONE falsifiable quantitative prediction based on THAT MECHANISM. Output JSON with: hypothesis, prediction, predicted_value, tolerance_lower, tolerance_upper, expected_direction, measurement_method, falsification_condition.",
+    "F_full": "PROBLEM: {description}\n\nRetrieve relevant evidence using query: {corpus_query}\n\nIdentify (a) invariant principles, (b) operational constraints, (c) mechanism interactions. Propose ONE falsifiable quantitative prediction with point estimate and tight tolerance. Output JSON with: hypothesis, prediction, predicted_value, tolerance_lower, tolerance_upper, expected_direction, measurement_method, falsification_condition.",
+    "D_random": "PROBLEM: {description}\n\nRetrieve relevant evidence using query: {corpus_query}\n\nPropose ANY plausible scientific prediction that follows from the retrieved evidence. The prediction should be specific and falsifiable. Output JSON with: hypothesis, prediction, predicted_value, tolerance_lower, tolerance_upper, expected_direction, measurement_method, falsification_condition."
+  },
+  "analysis_plan": {
+    "primary_endpoint": "DPS_1_rate",
+    "comparison": "treatment_vs_random",
+    "alpha": 0.05,
+    "mde": 0.15,
+    "sample_size_per_arm": 50,
+    "indeterminate_handling": "excluded",
+    "calibration_threshold": 0.5,
+    "ic_threshold": 0.67,
+    "statistical_test": "two_proportion_z_test",
+    "multiple_testing_correction": "bonferroni",
+    "num_comparisons": 3
+  },
+  "observation_window": {
+    "window_start": "TO_BE_SET",
+    "window_end": "TO_BE_SET",
+    "min_observations_per_problem": 1
+  },
+  "outcome_source_spec": {
+    "source_type": "peer_reviewed",
+    "source_name": "TO_BE_SPECIFIED",
+    "source_url": "TO_BE_SPECIFIED",
+    "independence_verification": "Outcome must be published in a peer-reviewed venue that the engine cannot influence. The publication date must be within the observation window. The outcome value must be extracted by an independent curator who is not the experimenter."
+  },
+  "arms": [
+    "B_llm_only",
+    "C_mechanism",
+    "D_random",
+    "F_full"
+  ],
+  "manifest_hash": "18afe62f6e2fbcbcf0c83701a0911dc0b514b580755a8ff4109230c9cfe364a5"
+}
