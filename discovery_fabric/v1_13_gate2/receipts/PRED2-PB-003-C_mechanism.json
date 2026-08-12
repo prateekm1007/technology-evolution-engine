@@ -1,0 +1,32 @@
+{
+  "candidate_id": "PRED2-PB-003-C_mechanism",
+  "input_manifest_hash": "90d943fd8941b8d8bba675639a92e03924b4acf44ba31a93aae2d8a368f1c4cd",
+  "hypothesis": "The thermodynamic instability of 2D crystals can be overcome by introducing curvature through rolling into nanotubes",
+  "prediction": "The critical thickness for stable 2D carbon crystals will be greater when rolled into nanotubes compared to flat sheets",
+  "units_range": "1.5 to 6",
+  "expected_direction": "INCREASE",
+  "measurement_method": "Measure the minimum stable layer thickness for both flat graphite sheets and carbon nanotubes using mechanical cleavage experiments",
+  "falsification_condition": "If the critical thickness for nanotubes is less than or equal to that of flat sheets",
+  "pre_registration_timestamp": "2003-12-31T23:59:59Z",
+  "novelty_check": {
+    "metric": "NOVEL_RELATION_TO_EVIDENCE",
+    "is_novel": true,
+    "term_overlap_ratio": 0.22,
+    "evidence_terms_count": 16,
+    "proposed_terms_count": 18,
+    "overlapping_terms": [
+      "carbon",
+      "crystals",
+      "nanotubes",
+      "rolled"
+    ],
+    "deterministic": true,
+    "reproducible": true
+  },
+  "gate2_predicted_value": 3,
+  "gate2_tolerance_lower": 0.5,
+  "gate2_tolerance_upper": 2.0,
+  "gate2_leakage_control": "evidence_only_prompt",
+  "gate2_backend": "z-ai-cli-glm-4-plus",
+  "receipt_hash": "17a9287b91776fa84f4dd563fb3165e68874e4d25247e54c4e3835ae7eca5b3f"
+}

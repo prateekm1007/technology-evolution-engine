@@ -1,0 +1,93 @@
+{
+  "case_id": "PB-003",
+  "entities": [
+    "Carbon",
+    "Graphite",
+    "Mechanical",
+    "Theory",
+    "carbon",
+    "cleavage",
+    "crystals",
+    "graphene",
+    "graphite",
+    "layered",
+    "mechanical",
+    "nanotubes",
+    "rolled",
+    "thermodynamically"
+  ],
+  "entities_proper_nouns": [
+    "Carbon",
+    "Graphite",
+    "Mechanical",
+    "Theory"
+  ],
+  "entities_technical_nouns": [
+    "carbon",
+    "cleavage",
+    "crystals",
+    "graphene",
+    "graphite",
+    "layered",
+    "mechanical",
+    "nanotubes",
+    "rolled",
+    "thermodynamically"
+  ],
+  "entities_chemicals": [],
+  "mechanisms": [
+    {
+      "subject": "graphite",
+      "predicate": "EXHIBITS",
+      "object": "layered carbon",
+      "negated": false,
+      "source_sentence": "Graphite is layered carbon."
+    },
+    {
+      "subject": "theory says 2d crystals",
+      "predicate": "EXHIBITS",
+      "object": "thermodynamically unstable",
+      "negated": false,
+      "source_sentence": "Theory says 2D crystals are thermodynamically unstable."
+    },
+    {
+      "subject": "mechanical cleavage of layered materials",
+      "predicate": "EXHIBITS",
+      "object": "known",
+      "negated": false,
+      "source_sentence": "Mechanical cleavage of layered materials is known."
+    }
+  ],
+  "causal_edges": [],
+  "combinations": [],
+  "constraints": [
+    {
+      "subject": "graphite",
+      "relation": "PROPERTY",
+      "value": "layered",
+      "unit": "",
+      "type": "PROPERTY",
+      "source_sentence": "Graphite is layered carbon."
+    },
+    {
+      "subject": "crystals",
+      "relation": "PROPERTY",
+      "value": "thermodynamically",
+      "unit": "",
+      "type": "PROPERTY",
+      "source_sentence": "Theory says 2D crystals are thermodynamically unstable."
+    }
+  ],
+  "negations": [
+    "Theory says 2D crystals are thermodynamically unstable"
+  ],
+  "raw_text": "Graphite is layered carbon. Theory says 2D crystals are thermodynamically unstable. Carbon nanotubes (rolled graphene) exist. Mechanical cleavage of layered materials is known.",
+  "extraction_method": "deterministic_regex_v1",
+  "n_entities": 14,
+  "n_mechanisms": 3,
+  "n_causal_edges": 0,
+  "n_combinations": 0,
+  "n_constraints": 2,
+  "n_negations": 1,
+  "evidence_object_hash": "b4834242b08eb1fe91151ddfd202dbea95c289659b8ec7082d2cc2ab4c1e6351"
+}

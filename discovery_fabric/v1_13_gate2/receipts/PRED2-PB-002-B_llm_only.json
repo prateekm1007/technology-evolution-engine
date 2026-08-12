@@ -1,0 +1,34 @@
+{
+  "candidate_id": "PRED2-PB-002-B_llm_only",
+  "input_manifest_hash": "e3498e861da0932f6e5482dfe5b060d47f0ed6f36eb9fd3259f8c7d032790e4b",
+  "hypothesis": "Increasing the temperature during primer extension by DNA polymerase will decrease the efficiency of DNA synthesis due to heat denaturation",
+  "prediction": "The yield of extended primers will decrease by 50% when temperature is increased from 37°C to 72°C",
+  "units_range": "0.25 to 1",
+  "expected_direction": "DECREASE",
+  "measurement_method": "Measure the amount of extended primers via gel electrophoresis or fluorescence at both temperatures",
+  "falsification_condition": "If the yield at 72°C is not at least 25% lower than at 37°C",
+  "pre_registration_timestamp": "1984-12-31T23:59:59Z",
+  "novelty_check": {
+    "metric": "NOVEL_RELATION_TO_EVIDENCE",
+    "is_novel": true,
+    "term_overlap_ratio": 0.4,
+    "evidence_terms_count": 18,
+    "proposed_terms_count": 15,
+    "overlapping_terms": [
+      "extension",
+      "heat",
+      "polymerase",
+      "primer",
+      "primers",
+      "synthesis"
+    ],
+    "deterministic": true,
+    "reproducible": true
+  },
+  "gate2_predicted_value": 0.5,
+  "gate2_tolerance_lower": 0.5,
+  "gate2_tolerance_upper": 2.0,
+  "gate2_leakage_control": "evidence_only_prompt",
+  "gate2_backend": "z-ai-cli-glm-4-plus",
+  "receipt_hash": "763d7385935afe4b8d59a92d02e6d57c3adb27923886bf6dbf65d23d7f206d6c"
+}

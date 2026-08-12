@@ -1,0 +1,124 @@
+{
+  "case_id": "PB-008",
+  "entities": [
+    "CTLA",
+    "Cancer",
+    "PD",
+    "Tcell",
+    "Tcells",
+    "Tumor",
+    "activate",
+    "blockade",
+    "cancer",
+    "ctla-4",
+    "failed",
+    "immune",
+    "melanoma",
+    "microenvironment",
+    "receptor",
+    "response",
+    "shows",
+    "success",
+    "suppresses",
+    "t-cell",
+    "t-cells",
+    "tumor",
+    "vaccines"
+  ],
+  "entities_proper_nouns": [
+    "Cancer",
+    "Tcell",
+    "Tcells",
+    "Tumor"
+  ],
+  "entities_technical_nouns": [
+    "activate",
+    "blockade",
+    "cancer",
+    "ctla-4",
+    "failed",
+    "immune",
+    "melanoma",
+    "microenvironment",
+    "receptor",
+    "response",
+    "shows",
+    "success",
+    "suppresses",
+    "t-cell",
+    "t-cells",
+    "tumor",
+    "vaccines"
+  ],
+  "entities_chemicals": [
+    "CTLA",
+    "PD"
+  ],
+  "mechanisms": [
+    {
+      "subject": "pd-1",
+      "predicate": "EXHIBITS",
+      "object": "a t-cell receptor that suppresses immune response",
+      "negated": false,
+      "source_sentence": "PD-1 is a T-cell receptor that suppresses immune response."
+    },
+    {
+      "subject": "ctla-4 blockade",
+      "predicate": "EXHIBITS",
+      "object": "success in melanoma",
+      "negated": false,
+      "source_sentence": "CTLA-4 blockade shows success in melanoma."
+    },
+    {
+      "subject": "cancer vaccines that activate immune response",
+      "predicate": "EXHIBITS",
+      "object": "failed",
+      "negated": false,
+      "source_sentence": "Cancer vaccines that activate immune response have failed."
+    },
+    {
+      "subject": "tumor microenvironment",
+      "predicate": "PREVENTS",
+      "object": "t-cells",
+      "negated": false,
+      "source_sentence": "Tumor microenvironment suppresses T-cells."
+    }
+  ],
+  "causal_edges": [
+    {
+      "cause": "tumor microenvironment",
+      "effect": "t-cells",
+      "type": "PREVENTS",
+      "negated": false
+    }
+  ],
+  "combinations": [],
+  "constraints": [
+    {
+      "subject": "blockade",
+      "relation": "PROPERTY",
+      "value": "success",
+      "unit": "",
+      "type": "PROPERTY",
+      "source_sentence": "CTLA-4 blockade shows success in melanoma."
+    },
+    {
+      "subject": "response",
+      "relation": "PROPERTY",
+      "value": "failed",
+      "unit": "",
+      "type": "PROPERTY",
+      "source_sentence": "Cancer vaccines that activate immune response have failed."
+    }
+  ],
+  "negations": [],
+  "raw_text": "PD-1 is a T-cell receptor that suppresses immune response. CTLA-4 blockade shows success in melanoma. Cancer vaccines that activate immune response have failed. Tumor microenvironment suppresses T-cells.",
+  "extraction_method": "deterministic_regex_v1",
+  "n_entities": 23,
+  "n_mechanisms": 4,
+  "n_causal_edges": 1,
+  "n_combinations": 0,
+  "n_constraints": 2,
+  "n_negations": 0,
+  "evidence_object_hash": "69880fb4d7e968b584736641f621e2480958b22c34ea72e1bbbb9e294d735d5b"
+}

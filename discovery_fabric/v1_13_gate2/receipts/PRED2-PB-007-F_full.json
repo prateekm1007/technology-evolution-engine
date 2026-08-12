@@ -1,0 +1,30 @@
+{
+  "candidate_id": "PRED2-PB-007-F_full",
+  "input_manifest_hash": "94c829074c799d3e85f629378eb311d83e87c984c62d712bdf2252a34a7ec443",
+  "hypothesis": "The efficiency of Cas9 DNA cleavage is inversely proportional to the complexity of redesigning the guide RNA sequence",
+  "prediction": "Cas9 will achieve 80% cleavage efficiency at a target site requiring 3 guide RNA modifications, while TALENs will achieve only 30% efficiency at the same site requiring 3 protein domain modifications",
+  "units_range": "60 to 100",
+  "expected_direction": "INCREASE",
+  "measurement_method": "Compare DNA cleavage efficiency at identical target sites using Cas9 with 3 guide RNA modifications versus TALENs with 3 protein domain modifications",
+  "falsification_condition": "If Cas9 achieves less than 60% cleavage efficiency or TALENs achieve more than 50% efficiency under the same modification conditions",
+  "pre_registration_timestamp": "2011-12-31T23:59:59Z",
+  "novelty_check": {
+    "metric": "NOVEL_RELATION_TO_EVIDENCE",
+    "is_novel": true,
+    "term_overlap_ratio": 0.12,
+    "evidence_terms_count": 19,
+    "proposed_terms_count": 17,
+    "overlapping_terms": [
+      "guide",
+      "talens"
+    ],
+    "deterministic": true,
+    "reproducible": true
+  },
+  "gate2_predicted_value": 80,
+  "gate2_tolerance_lower": 0.75,
+  "gate2_tolerance_upper": 1.25,
+  "gate2_leakage_control": "evidence_only_prompt",
+  "gate2_backend": "z-ai-cli-glm-4-plus",
+  "receipt_hash": "ee76ebcf38d63db4c7cd3fa7152e5798e4b9beda85af7889685a7cc84efbba39"
+}

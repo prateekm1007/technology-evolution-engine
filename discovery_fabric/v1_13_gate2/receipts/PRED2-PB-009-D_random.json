@@ -1,0 +1,34 @@
+{
+  "candidate_id": "PRED2-PB-009-D_random",
+  "input_manifest_hash": "f210167ed2220887aa94e3df9d9b3bd0b554fbd21e3b7fff9a9bfa1c8add7eeb",
+  "hypothesis": "Introduction of the four stem cell regulators (Oct4, Sox2, Klf4, c-Myc) into a differentiated cell will reverse the differentiation process",
+  "prediction": "The percentage of cells expressing pluripotency markers after 14 days will be greater than 1%",
+  "units_range": "2.5 to 10",
+  "expected_direction": "INCREASE",
+  "measurement_method": "Flow cytometry analysis for pluripotency markers such as Nanog or SSEA-1",
+  "falsification_condition": "Less than 2.5% of cells express pluripotency markers after 14 days",
+  "pre_registration_timestamp": "2005-12-31T23:59:59Z",
+  "novelty_check": {
+    "metric": "NOVEL_RELATION_TO_EVIDENCE",
+    "is_novel": true,
+    "term_overlap_ratio": 0.33,
+    "evidence_terms_count": 23,
+    "proposed_terms_count": 18,
+    "overlapping_terms": [
+      "cell",
+      "cells",
+      "differentiation",
+      "four",
+      "regulators",
+      "stem"
+    ],
+    "deterministic": true,
+    "reproducible": true
+  },
+  "gate2_predicted_value": 5,
+  "gate2_tolerance_lower": 0.5,
+  "gate2_tolerance_upper": 2.0,
+  "gate2_leakage_control": "evidence_only_prompt",
+  "gate2_backend": "z-ai-cli-glm-4-plus",
+  "receipt_hash": "d3ec9f3e054cc4fcaabed02d4758fdca72eb5b289a50dd492991bed15cd7c008"
+}

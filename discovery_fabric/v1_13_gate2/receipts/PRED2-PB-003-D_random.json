@@ -1,0 +1,33 @@
+{
+  "candidate_id": "PRED2-PB-003-D_random",
+  "input_manifest_hash": "90d943fd8941b8d8bba675639a92e03924b4acf44ba31a93aae2d8a368f1c4cd",
+  "hypothesis": "Mechanical cleavage of graphite will produce single-layer carbon nanotubes",
+  "prediction": "The yield of single-layer nanotubes from mechanical cleavage of graphite will be greater than 0.1% by weight",
+  "units_range": "0.075 to 0.3",
+  "expected_direction": "INCREASE",
+  "measurement_method": "Weight percentage of single-layer nanotubes separated from bulk graphite after mechanical cleavage using centrifugation and spectroscopic identification",
+  "falsification_condition": "Observed yield ≤ 0.05% by weight",
+  "pre_registration_timestamp": "2003-12-31T23:59:59Z",
+  "novelty_check": {
+    "metric": "NOVEL_RELATION_TO_EVIDENCE",
+    "is_novel": true,
+    "term_overlap_ratio": 0.42,
+    "evidence_terms_count": 16,
+    "proposed_terms_count": 12,
+    "overlapping_terms": [
+      "carbon",
+      "cleavage",
+      "graphite",
+      "mechanical",
+      "nanotubes"
+    ],
+    "deterministic": true,
+    "reproducible": true
+  },
+  "gate2_predicted_value": 0.15,
+  "gate2_tolerance_lower": 0.5,
+  "gate2_tolerance_upper": 2.0,
+  "gate2_leakage_control": "evidence_only_prompt",
+  "gate2_backend": "z-ai-cli-glm-4-plus",
+  "receipt_hash": "c53035cbb96e39e52914cf8d6597b595bc06cb6b7c4e3c96c0dea28657f2d039"
+}

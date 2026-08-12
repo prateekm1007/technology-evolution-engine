@@ -1,0 +1,103 @@
+{
+  "case_id": "PB-004",
+  "entities": [
+    "CNNs",
+    "Dropout",
+    "GPUs",
+    "ImageNet",
+    "ReLU",
+    "SVMs",
+    "activation",
+    "avoids",
+    "benchmarks",
+    "computing",
+    "dataset",
+    "dominate",
+    "dropout",
+    "error",
+    "gradients",
+    "imagenet",
+    "images",
+    "labeled",
+    "overfitting",
+    "parallel",
+    "prevents",
+    "shallow",
+    "vanishing",
+    "vision"
+  ],
+  "entities_proper_nouns": [
+    "CNNs",
+    "Dropout",
+    "GPUs",
+    "ImageNet",
+    "ReLU",
+    "SVMs"
+  ],
+  "entities_technical_nouns": [
+    "activation",
+    "avoids",
+    "benchmarks",
+    "computing",
+    "dataset",
+    "dominate",
+    "dropout",
+    "error",
+    "gradients",
+    "imagenet",
+    "images",
+    "labeled",
+    "overfitting",
+    "parallel",
+    "prevents",
+    "shallow",
+    "vanishing",
+    "vision"
+  ],
+  "entities_chemicals": [],
+  "mechanisms": [
+    {
+      "subject": "cnns exist but",
+      "predicate": "EXHIBITS",
+      "object": "shallow",
+      "negated": false,
+      "source_sentence": "CNNs exist but are shallow."
+    },
+    {
+      "subject": "dropout",
+      "predicate": "PREVENTS",
+      "object": "overfitting",
+      "negated": false,
+      "source_sentence": "Dropout prevents overfitting."
+    }
+  ],
+  "causal_edges": [
+    {
+      "cause": "dropout",
+      "effect": "overfitting",
+      "type": "PREVENTS",
+      "negated": false
+    }
+  ],
+  "combinations": [],
+  "constraints": [
+    {
+      "subject": "svms dominate vision benchmarks at",
+      "relation": "~",
+      "value": 26.0,
+      "unit": "%",
+      "type": "NUMERIC",
+      "source_sentence": "SVMs dominate vision benchmarks at ~26% error."
+    }
+  ],
+  "negations": [],
+  "raw_text": "CNNs exist but are shallow. GPUs exist for parallel computing. ImageNet dataset exists with 1M+ labeled images. ReLU activation avoids vanishing gradients. Dropout prevents overfitting. SVMs dominate vision benchmarks at ~26% error.",
+  "extraction_method": "deterministic_regex_v1",
+  "n_entities": 24,
+  "n_mechanisms": 2,
+  "n_causal_edges": 1,
+  "n_combinations": 0,
+  "n_constraints": 1,
+  "n_negations": 0,
+  "evidence_object_hash": "2337569f9df1a933fdf579ea94b697f586818831d80d402c3b1f9dea3236b713"
+}

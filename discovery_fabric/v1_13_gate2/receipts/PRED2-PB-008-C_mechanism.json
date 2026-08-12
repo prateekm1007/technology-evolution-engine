@@ -1,0 +1,32 @@
+{
+  "candidate_id": "PRED2-PB-008-C_mechanism",
+  "input_manifest_hash": "778400e5fadc07b2724df56c1eb636fbb68ab95cf17f557d23ab16831a85cd08",
+  "hypothesis": "Tumor microenvironment suppression of T-cells is mediated through PD-1 receptor signaling",
+  "prediction": "Blocking PD-1 will reduce tumor microenvironment suppression by 60%",
+  "units_range": "30 to 120",
+  "expected_direction": "INCREASE",
+  "measurement_method": "Compare T-cell activation levels in tumor microenvironment with and without PD-1 blockade",
+  "falsification_condition": "T-cell activation increases by less than 30% or decreases with PD-1 blockade",
+  "pre_registration_timestamp": "2011-12-31T23:59:59Z",
+  "novelty_check": {
+    "metric": "NOVEL_RELATION_TO_EVIDENCE",
+    "is_novel": true,
+    "term_overlap_ratio": 0.4,
+    "evidence_terms_count": 19,
+    "proposed_terms_count": 10,
+    "overlapping_terms": [
+      "cells",
+      "microenvironment",
+      "receptor",
+      "tumor"
+    ],
+    "deterministic": true,
+    "reproducible": true
+  },
+  "gate2_predicted_value": 60,
+  "gate2_tolerance_lower": 0.5,
+  "gate2_tolerance_upper": 2.0,
+  "gate2_leakage_control": "evidence_only_prompt",
+  "gate2_backend": "z-ai-cli-glm-4-plus",
+  "receipt_hash": "5568e55ff8033bdd5df354eda24eb24ed734f86b6e74f4d9d924fa160970ef92"
+}

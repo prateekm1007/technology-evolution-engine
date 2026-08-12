@@ -1,0 +1,33 @@
+{
+  "candidate_id": "PRED2-PB-005-C_mechanism",
+  "input_manifest_hash": "ee0003850e2ebcea3550a766e88c568712f5f3f8062f689ea033f9797a05cd3c",
+  "hypothesis": "Replacing liquid electrolyte with perovskite sensitizer in DSSCs will increase efficiency beyond 11% due to improved charge transfer",
+  "prediction": "Perovskite-sensitized DSSCs with solid-state electrolytes will achieve efficiency greater than 15%",
+  "units_range": "7.5 to 22.5",
+  "expected_direction": "INCREASE",
+  "measurement_method": "Standard solar cell efficiency measurement under AM1.5G illumination",
+  "falsification_condition": "Efficiency remains at or below 11%",
+  "pre_registration_timestamp": "2008-12-31T23:59:59Z",
+  "novelty_check": {
+    "metric": "NOVEL_RELATION_TO_EVIDENCE",
+    "is_novel": true,
+    "term_overlap_ratio": 0.26,
+    "evidence_terms_count": 21,
+    "proposed_terms_count": 19,
+    "overlapping_terms": [
+      "dsscs",
+      "efficiency",
+      "electrolyte",
+      "liquid",
+      "sensitized"
+    ],
+    "deterministic": true,
+    "reproducible": true
+  },
+  "gate2_predicted_value": 15,
+  "gate2_tolerance_lower": 0.5,
+  "gate2_tolerance_upper": 1.5,
+  "gate2_leakage_control": "evidence_only_prompt",
+  "gate2_backend": "z-ai-cli-glm-4-plus",
+  "receipt_hash": "6f4ea6ba7f6b7f385a4d49d7136627f728a1275e68e5f84e04db9ea29dfb4720"
+}

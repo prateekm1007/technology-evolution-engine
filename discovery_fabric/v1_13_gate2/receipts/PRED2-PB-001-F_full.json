@@ -1,0 +1,35 @@
+{
+  "candidate_id": "PRED2-PB-001-F_full",
+  "input_manifest_hash": "fdfe4ea875da7072d01c7f838bec0d2299c2acefb3e951853dcb53b2b96538e7",
+  "hypothesis": "The energy density of a lithium-ion battery using LiCoO2 and graphite electrodes will be higher than that of a lithium metal battery due to the elimination of dendrite formation while maintaining lithium ion intercalation capability.",
+  "prediction": "The specific energy density of a LiCoO2-graphite lithium-ion battery will be 150 Wh/kg",
+  "units_range": "105 to 195",
+  "expected_direction": "INCREASE",
+  "measurement_method": "Measure the total energy stored (Wh) per unit mass (kg) of the fully assembled battery under standard discharge conditions",
+  "falsification_condition": "Observed specific energy density < 105 Wh/kg or > 195 Wh/kg",
+  "pre_registration_timestamp": "1990-12-31T23:59:59Z",
+  "novelty_check": {
+    "metric": "NOVEL_RELATION_TO_EVIDENCE",
+    "is_novel": true,
+    "term_overlap_ratio": 0.41,
+    "evidence_terms_count": 23,
+    "proposed_terms_count": 17,
+    "overlapping_terms": [
+      "dendrite",
+      "energy",
+      "formation",
+      "graphite",
+      "intercalation",
+      "lithium",
+      "metal"
+    ],
+    "deterministic": true,
+    "reproducible": true
+  },
+  "gate2_predicted_value": 150,
+  "gate2_tolerance_lower": 0.7,
+  "gate2_tolerance_upper": 1.3,
+  "gate2_leakage_control": "evidence_only_prompt",
+  "gate2_backend": "z-ai-cli-glm-4-plus",
+  "receipt_hash": "bdc1ada4fdd2d425cc6207d5271b51e6dc3b6e95878c7c3a36ec9066c28688b2"
+}

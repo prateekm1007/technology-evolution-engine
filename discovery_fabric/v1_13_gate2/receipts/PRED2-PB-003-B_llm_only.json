@@ -1,0 +1,32 @@
+{
+  "candidate_id": "PRED2-PB-003-B_llm_only",
+  "input_manifest_hash": "90d943fd8941b8d8bba675639a92e03924b4acf44ba31a93aae2d8a368f1c4cd",
+  "hypothesis": "The mechanical cleavage energy required to separate graphite layers decreases as the number of layers decreases",
+  "prediction": "The cleavage energy for a single-layer graphene sheet will be less than half that of bulk graphite",
+  "units_range": "0.1 to 0.6",
+  "expected_direction": "DECREASE",
+  "measurement_method": "Measure the force required to mechanically cleave graphite samples with varying layer thicknesses (1 layer vs. bulk)",
+  "falsification_condition": "If the cleavage energy for single-layer graphene is greater than or equal to half the bulk graphite cleavage energy",
+  "pre_registration_timestamp": "2003-12-31T23:59:59Z",
+  "novelty_check": {
+    "metric": "NOVEL_RELATION_TO_EVIDENCE",
+    "is_novel": true,
+    "term_overlap_ratio": 0.24,
+    "evidence_terms_count": 16,
+    "proposed_terms_count": 17,
+    "overlapping_terms": [
+      "cleavage",
+      "graphene",
+      "graphite",
+      "mechanical"
+    ],
+    "deterministic": true,
+    "reproducible": true
+  },
+  "gate2_predicted_value": 0.4,
+  "gate2_tolerance_lower": 0.25,
+  "gate2_tolerance_upper": 1.5,
+  "gate2_leakage_control": "evidence_only_prompt",
+  "gate2_backend": "z-ai-cli-glm-4-plus",
+  "receipt_hash": "8de5c5d62f2f2ffbe8e6db19c652f0c1bd52313e13058fe5f04d8f028a001ad4"
+}

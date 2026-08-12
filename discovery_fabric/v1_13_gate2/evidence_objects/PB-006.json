@@ -1,0 +1,134 @@
+{
+  "case_id": "PB-006",
+  "entities": [
+    "Conventional",
+    "Lipid",
+    "Modified",
+    "RNA",
+    "Viral",
+    "acids",
+    "cells",
+    "conventional",
+    "deliver",
+    "immune",
+    "immunogenicity",
+    "lipid",
+    "modified",
+    "nanoparticles",
+    "nucleic",
+    "nucleosides",
+    "proteins",
+    "reduce",
+    "responses",
+    "scalability",
+    "speed",
+    "spike",
+    "trigger",
+    "vaccines",
+    "viral"
+  ],
+  "entities_proper_nouns": [
+    "Conventional",
+    "Lipid",
+    "Modified",
+    "Viral"
+  ],
+  "entities_technical_nouns": [
+    "acids",
+    "cells",
+    "conventional",
+    "deliver",
+    "immune",
+    "immunogenicity",
+    "lipid",
+    "modified",
+    "nanoparticles",
+    "nucleic",
+    "nucleosides",
+    "proteins",
+    "reduce",
+    "responses",
+    "scalability",
+    "speed",
+    "spike",
+    "trigger",
+    "vaccines",
+    "viral"
+  ],
+  "entities_chemicals": [
+    "RNA"
+  ],
+  "mechanisms": [
+    {
+      "subject": "modified nucleosides",
+      "predicate": "PREVENTS",
+      "object": "rna immunogenicity",
+      "negated": false,
+      "source_sentence": "Modified nucleosides reduce RNA immunogenicity."
+    },
+    {
+      "subject": "viral spike proteins",
+      "predicate": "CAUSES",
+      "object": "immune responses",
+      "negated": false,
+      "source_sentence": "Viral spike proteins trigger immune responses."
+    },
+    {
+      "subject": "conventional vaccines",
+      "predicate": "EXHIBITS",
+      "object": "speed",
+      "negated": false,
+      "source_sentence": "Conventional vaccines have speed and scalability limitations."
+    },
+    {
+      "subject": "mrna",
+      "predicate": "EXHIBITS",
+      "object": "considered unstable for vaccines",
+      "negated": false,
+      "source_sentence": "mRNA is considered unstable for vaccines."
+    }
+  ],
+  "causal_edges": [
+    {
+      "cause": "modified nucleosides",
+      "effect": "rna immunogenicity",
+      "type": "PREVENTS",
+      "negated": false
+    },
+    {
+      "cause": "viral spike proteins",
+      "effect": "immune responses",
+      "type": "CAUSES",
+      "negated": false
+    }
+  ],
+  "combinations": [
+    {
+      "a": "speed",
+      "b": "scalability",
+      "raw": "speed and scalability"
+    }
+  ],
+  "constraints": [
+    {
+      "subject": "vaccines",
+      "relation": "PROPERTY",
+      "value": "speed",
+      "unit": "",
+      "type": "PROPERTY",
+      "source_sentence": "Conventional vaccines have speed and scalability limitations."
+    }
+  ],
+  "negations": [
+    "mRNA is considered unstable for vaccines"
+  ],
+  "raw_text": "Modified nucleosides reduce RNA immunogenicity. Lipid nanoparticles deliver nucleic acids to cells. Viral spike proteins trigger immune responses. Conventional vaccines have speed and scalability limitations. mRNA is considered unstable for vaccines.",
+  "extraction_method": "deterministic_regex_v1",
+  "n_entities": 25,
+  "n_mechanisms": 4,
+  "n_causal_edges": 2,
+  "n_combinations": 1,
+  "n_constraints": 1,
+  "n_negations": 1,
+  "evidence_object_hash": "828a463fed0196c3adda35931a31c2a24d2b5c213f3aac75e5b21c1ee92a812c"
+}

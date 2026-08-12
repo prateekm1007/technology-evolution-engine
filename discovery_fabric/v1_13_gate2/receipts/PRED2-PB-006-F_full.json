@@ -1,0 +1,35 @@
+{
+  "candidate_id": "PRED2-PB-006-F_full",
+  "input_manifest_hash": "0d39841c730b5a13b1c817c477f1ba3233b24eb6aa2a2d179db52ff21cb8c5d0",
+  "hypothesis": "Modified nucleosides in mRNA vaccines reduce immunogenicity while maintaining stability, enabling faster vaccine production compared to conventional methods",
+  "prediction": "Vaccine production time from sequence identification to clinical availability",
+  "units_range": "33.75 to 56.25",
+  "expected_direction": "DECREASE",
+  "measurement_method": "Time in days from genetic sequence identification to first human administration",
+  "falsification_condition": "Observed production time > 56 days or < 34 days",
+  "pre_registration_timestamp": "2019-12-31T23:59:59Z",
+  "novelty_check": {
+    "metric": "NOVEL_RELATION_TO_EVIDENCE",
+    "is_novel": true,
+    "term_overlap_ratio": 0.35,
+    "evidence_terms_count": 25,
+    "proposed_terms_count": 20,
+    "overlapping_terms": [
+      "conventional",
+      "immunogenicity",
+      "modified",
+      "mrna",
+      "nucleosides",
+      "reduce",
+      "vaccines"
+    ],
+    "deterministic": true,
+    "reproducible": true
+  },
+  "gate2_predicted_value": 45,
+  "gate2_tolerance_lower": 0.75,
+  "gate2_tolerance_upper": 1.25,
+  "gate2_leakage_control": "evidence_only_prompt",
+  "gate2_backend": "z-ai-cli-glm-4-plus",
+  "receipt_hash": "4d1f0bf1f6d53f775efecdccd8f090f5a38f24ff6b18eb3cdd231c3ad8a4a74e"
+}

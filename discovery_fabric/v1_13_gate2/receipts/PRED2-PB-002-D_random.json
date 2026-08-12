@@ -1,0 +1,36 @@
+{
+  "candidate_id": "PRED2-PB-002-D_random",
+  "input_manifest_hash": "e3498e861da0932f6e5482dfe5b060d47f0ed6f36eb9fd3259f8c7d032790e4b",
+  "hypothesis": "Heat-stable DNA polymerase from thermophilic bacteria will enable primer extension at higher temperatures than standard DNA polymerase",
+  "prediction": "Heat-stable DNA polymerase will extend primers at 95°C while standard DNA polymerase will not",
+  "units_range": "BINARY",
+  "expected_direction": "BINARY",
+  "measurement_method": "Compare primer extension products at 95°C using heat-stable vs standard DNA polymerase via gel electrophoresis",
+  "falsification_condition": "If both polymerases show primer extension at 95°C",
+  "pre_registration_timestamp": "1984-12-31T23:59:59Z",
+  "novelty_check": {
+    "metric": "NOVEL_RELATION_TO_EVIDENCE",
+    "is_novel": true,
+    "term_overlap_ratio": 0.57,
+    "evidence_terms_count": 18,
+    "proposed_terms_count": 14,
+    "overlapping_terms": [
+      "bacteria",
+      "extension",
+      "heat",
+      "polymerase",
+      "primer",
+      "primers",
+      "stable",
+      "thermophilic"
+    ],
+    "deterministic": true,
+    "reproducible": true
+  },
+  "gate2_predicted_value": "YES",
+  "gate2_tolerance_lower": 0.5,
+  "gate2_tolerance_upper": 2.0,
+  "gate2_leakage_control": "evidence_only_prompt",
+  "gate2_backend": "z-ai-cli-glm-4-plus",
+  "receipt_hash": "22cd21c028b997560ddc2e6d7b42d5cd6ccf397a4c5a4fde6d01743f5ba0b08c"
+}

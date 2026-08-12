@@ -1,0 +1,99 @@
+{
+  "case_id": "PB-005",
+  "entities": [
+    "DSSC",
+    "DSSCs",
+    "Dyesensitized",
+    "Liquid",
+    "Organicinorganic",
+    "Perovskites",
+    "cells",
+    "dsscs",
+    "dye-sensitized",
+    "efficiency",
+    "electrolyte",
+    "halide",
+    "liquid",
+    "organic-inorganic",
+    "perovskites",
+    "sensitizers",
+    "solar",
+    "stability"
+  ],
+  "entities_proper_nouns": [
+    "DSSCs",
+    "Dyesensitized",
+    "Liquid",
+    "Organicinorganic",
+    "Perovskites"
+  ],
+  "entities_technical_nouns": [
+    "cells",
+    "dsscs",
+    "dye-sensitized",
+    "efficiency",
+    "electrolyte",
+    "halide",
+    "liquid",
+    "organic-inorganic",
+    "perovskites",
+    "sensitizers",
+    "solar",
+    "stability"
+  ],
+  "entities_chemicals": [
+    "DSSC"
+  ],
+  "mechanisms": [
+    {
+      "subject": "organic-inorganic halide perovskites",
+      "predicate": "EXHIBITS",
+      "object": "known materials",
+      "negated": false,
+      "source_sentence": "Organic-inorganic halide perovskites are known materials."
+    },
+    {
+      "subject": "perovskites",
+      "predicate": "EXHIBITS",
+      "object": "been used as sensitizers in dsscs",
+      "negated": false,
+      "source_sentence": "Perovskites have been used as sensitizers in DSSCs."
+    },
+    {
+      "subject": "liquid electrolyte",
+      "predicate": "PREVENTS",
+      "object": "dssc stability",
+      "negated": false,
+      "source_sentence": "Liquid electrolyte limits DSSC stability."
+    }
+  ],
+  "causal_edges": [
+    {
+      "cause": "liquid electrolyte",
+      "effect": "dssc stability",
+      "type": "PREVENTS",
+      "negated": false
+    }
+  ],
+  "combinations": [],
+  "constraints": [
+    {
+      "subject": "dye-sensitized solar cells exist at",
+      "relation": "~",
+      "value": 11.0,
+      "unit": "%",
+      "type": "NUMERIC",
+      "source_sentence": "Dye-sensitized solar cells exist at ~11% efficiency."
+    }
+  ],
+  "negations": [],
+  "raw_text": "Dye-sensitized solar cells exist at ~11% efficiency. Organic-inorganic halide perovskites are known materials. Perovskites have been used as sensitizers in DSSCs. Liquid electrolyte limits DSSC stability.",
+  "extraction_method": "deterministic_regex_v1",
+  "n_entities": 18,
+  "n_mechanisms": 3,
+  "n_causal_edges": 1,
+  "n_combinations": 0,
+  "n_constraints": 1,
+  "n_negations": 0,
+  "evidence_object_hash": "dcee41d71643e6abc9dab613b651282a96e6b3761ec130ceb8f206ccb145e929"
+}

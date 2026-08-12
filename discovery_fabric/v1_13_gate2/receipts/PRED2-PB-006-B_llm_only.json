@@ -1,0 +1,35 @@
+{
+  "candidate_id": "PRED2-PB-006-B_llm_only",
+  "input_manifest_hash": "0d39841c730b5a13b1c817c477f1ba3233b24eb6aa2a2d179db52ff21cb8c5d0",
+  "hypothesis": "Modified nucleosides reduce RNA immunogenicity in lipid nanoparticle-delivered vaccines",
+  "prediction": "Vaccines using modified nucleosides will have 2.5 times lower immunogenicity than conventional vaccines",
+  "units_range": "1.25 to 5",
+  "expected_direction": "DECREASE",
+  "measurement_method": "Compare immune response levels (e.g., antibody titers) between modified nucleoside RNA vaccines and conventional vaccines",
+  "falsification_condition": "If the immunogenicity ratio is less than 1.25 or greater than 5.0",
+  "pre_registration_timestamp": "2019-12-31T23:59:59Z",
+  "novelty_check": {
+    "metric": "NOVEL_RELATION_TO_EVIDENCE",
+    "is_novel": true,
+    "term_overlap_ratio": 0.54,
+    "evidence_terms_count": 25,
+    "proposed_terms_count": 13,
+    "overlapping_terms": [
+      "conventional",
+      "immunogenicity",
+      "lipid",
+      "modified",
+      "nucleosides",
+      "reduce",
+      "vaccines"
+    ],
+    "deterministic": true,
+    "reproducible": true
+  },
+  "gate2_predicted_value": 2.5,
+  "gate2_tolerance_lower": 0.5,
+  "gate2_tolerance_upper": 2.0,
+  "gate2_leakage_control": "evidence_only_prompt",
+  "gate2_backend": "z-ai-cli-glm-4-plus",
+  "receipt_hash": "e7d1d7348833c90f317b4e5eabad547f02d7777deb98858c974a9e531c11a6d9"
+}

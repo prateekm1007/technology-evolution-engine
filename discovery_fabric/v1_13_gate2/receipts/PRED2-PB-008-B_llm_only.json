@@ -1,0 +1,33 @@
+{
+  "candidate_id": "PRED2-PB-008-B_llm_only",
+  "input_manifest_hash": "778400e5fadc07b2724df56c1eb636fbb68ab95cf17f557d23ab16831a85cd08",
+  "hypothesis": "PD-1 blockade will show success in melanoma",
+  "prediction": "PD-1 blockade will have a higher response rate in melanoma than CTLA-4 blockade",
+  "units_range": "0.75 to 3",
+  "expected_direction": "INCREASE",
+  "measurement_method": "Compare response rates of PD-1 blockade vs CTLA-4 blockade in melanoma patients",
+  "falsification_condition": "If PD-1 blockade response rate is not at least 1.25 times higher than CTLA-4 blockade response rate",
+  "pre_registration_timestamp": "2011-12-31T23:59:59Z",
+  "novelty_check": {
+    "metric": "NOVEL_RELATION_TO_EVIDENCE",
+    "is_novel": true,
+    "term_overlap_ratio": 0.56,
+    "evidence_terms_count": 19,
+    "proposed_terms_count": 9,
+    "overlapping_terms": [
+      "blockade",
+      "ctla",
+      "melanoma",
+      "response",
+      "success"
+    ],
+    "deterministic": true,
+    "reproducible": true
+  },
+  "gate2_predicted_value": 1.5,
+  "gate2_tolerance_lower": 0.5,
+  "gate2_tolerance_upper": 2.0,
+  "gate2_leakage_control": "evidence_only_prompt",
+  "gate2_backend": "z-ai-cli-glm-4-plus",
+  "receipt_hash": "5e133a7a9ebfdf7ff2d443947072aec4227c80f0cc68f8c5c9b197dd41bd800a"
+}

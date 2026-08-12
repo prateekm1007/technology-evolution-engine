@@ -1,0 +1,33 @@
+{
+  "candidate_id": "PRED2-PB-005-B_llm_only",
+  "input_manifest_hash": "ee0003850e2ebcea3550a766e88c568712f5f3f8062f689ea033f9797a05cd3c",
+  "hypothesis": "Replacing liquid electrolyte with a solid electrolyte in perovskite-sensitized DSSCs will increase stability",
+  "prediction": "Perovskite-sensitized DSSCs with solid electrolyte will show higher stability than those with liquid electrolyte",
+  "units_range": "BINARY",
+  "expected_direction": "BINARY",
+  "measurement_method": "Compare stability metrics (e.g., operational lifetime or efficiency retention after fixed time) between perovskite DSSCs with solid vs. liquid electrolytes",
+  "falsification_condition": "Perovskite-sensitized DSSCs with solid electrolyte show equal or lower stability than those with liquid electrolyte",
+  "pre_registration_timestamp": "2008-12-31T23:59:59Z",
+  "novelty_check": {
+    "metric": "NOVEL_RELATION_TO_EVIDENCE",
+    "is_novel": true,
+    "term_overlap_ratio": 0.42,
+    "evidence_terms_count": 21,
+    "proposed_terms_count": 12,
+    "overlapping_terms": [
+      "dsscs",
+      "electrolyte",
+      "liquid",
+      "sensitized",
+      "stability"
+    ],
+    "deterministic": true,
+    "reproducible": true
+  },
+  "gate2_predicted_value": "YES",
+  "gate2_tolerance_lower": 0.5,
+  "gate2_tolerance_upper": 2.0,
+  "gate2_leakage_control": "evidence_only_prompt",
+  "gate2_backend": "z-ai-cli-glm-4-plus",
+  "receipt_hash": "fa4a47763bd00b12d3c8e290d5eceda33cabb5054850d950a0f5c4f951f60108"
+}

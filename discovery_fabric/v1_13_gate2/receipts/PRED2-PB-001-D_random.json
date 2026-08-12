@@ -1,0 +1,31 @@
+{
+  "candidate_id": "PRED2-PB-001-D_random",
+  "input_manifest_hash": "fdfe4ea875da7072d01c7f838bec0d2299c2acefb3e951853dcb53b2b96538e7",
+  "hypothesis": "A composite electrode combining LiCoO2 and graphite will exhibit higher lithium intercalation capacity than either material alone",
+  "prediction": "The composite electrode will have a lithium intercalation capacity 1.8 times that of pure graphite",
+  "units_range": "0.9 to 3.6",
+  "expected_direction": "INCREASE",
+  "measurement_method": "Compare lithium intercalation capacity of pure graphite electrode vs. LiCoO2-graphite composite electrode using identical non-aqueous electrolyte and charge/discharge cycles",
+  "falsification_condition": "If the composite electrode capacity is less than or equal to graphite capacity (ratio ≤ 1.0)",
+  "pre_registration_timestamp": "1990-12-31T23:59:59Z",
+  "novelty_check": {
+    "metric": "NOVEL_RELATION_TO_EVIDENCE",
+    "is_novel": true,
+    "term_overlap_ratio": 0.2,
+    "evidence_terms_count": 23,
+    "proposed_terms_count": 15,
+    "overlapping_terms": [
+      "graphite",
+      "intercalation",
+      "lithium"
+    ],
+    "deterministic": true,
+    "reproducible": true
+  },
+  "gate2_predicted_value": 1.8,
+  "gate2_tolerance_lower": 0.5,
+  "gate2_tolerance_upper": 2.0,
+  "gate2_leakage_control": "evidence_only_prompt",
+  "gate2_backend": "z-ai-cli-glm-4-plus",
+  "receipt_hash": "ce6e1660be479f6abca05f9b1df6a2173e73419749336a89afe8776b1bb84ea1"
+}

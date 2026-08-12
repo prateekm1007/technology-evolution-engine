@@ -1,0 +1,93 @@
+{
+  "case_id": "PB-010",
+  "entities": [
+    "Adversarial",
+    "Discriminative",
+    "Generative",
+    "Neural",
+    "adversarial",
+    "approximate",
+    "blurry",
+    "classify",
+    "complex",
+    "discriminative",
+    "distributions",
+    "generative",
+    "networks",
+    "neural",
+    "outputs",
+    "produce",
+    "training"
+  ],
+  "entities_proper_nouns": [
+    "Adversarial",
+    "Discriminative",
+    "Generative",
+    "Neural"
+  ],
+  "entities_technical_nouns": [
+    "adversarial",
+    "approximate",
+    "blurry",
+    "classify",
+    "complex",
+    "discriminative",
+    "distributions",
+    "generative",
+    "networks",
+    "neural",
+    "outputs",
+    "produce",
+    "training"
+  ],
+  "entities_chemicals": [],
+  "mechanisms": [
+    {
+      "subject": "generative models exist but",
+      "predicate": "CAUSES",
+      "object": "blurry outputs",
+      "negated": false,
+      "source_sentence": "Generative models exist but produce blurry outputs."
+    },
+    {
+      "subject": "adversarial training",
+      "predicate": "EXHIBITS",
+      "object": "a concept from game theory",
+      "negated": false,
+      "source_sentence": "Adversarial training is a concept from game theory."
+    },
+    {
+      "subject": "neural networks",
+      "predicate": "ENABLES",
+      "object": "approximate complex distributions",
+      "negated": false,
+      "source_sentence": "Neural networks can approximate complex distributions."
+    }
+  ],
+  "causal_edges": [
+    {
+      "cause": "generative models exist but",
+      "effect": "blurry outputs",
+      "type": "CAUSES",
+      "negated": false
+    },
+    {
+      "cause": "neural networks",
+      "effect": "approximate complex distributions",
+      "type": "ENABLES",
+      "negated": false
+    }
+  ],
+  "combinations": [],
+  "constraints": [],
+  "negations": [],
+  "raw_text": "Generative models exist but produce blurry outputs. Discriminative models classify data well. Adversarial training is a concept from game theory. Neural networks can approximate complex distributions.",
+  "extraction_method": "deterministic_regex_v1",
+  "n_entities": 17,
+  "n_mechanisms": 3,
+  "n_causal_edges": 2,
+  "n_combinations": 0,
+  "n_constraints": 0,
+  "n_negations": 0,
+  "evidence_object_hash": "b8ffb7aec400487fdfee8b83d9e374cd308eb8da3f0ef263550e9d7b68930008"
+}

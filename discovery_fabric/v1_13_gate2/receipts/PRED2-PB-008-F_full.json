@@ -1,0 +1,33 @@
+{
+  "candidate_id": "PRED2-PB-008-F_full",
+  "input_manifest_hash": "778400e5fadc07b2724df56c1eb636fbb68ab95cf17f557d23ab16831a85cd08",
+  "hypothesis": "PD-1 blockade efficacy will be inversely proportional to the degree of tumor microenvironment-mediated T-cell suppression",
+  "prediction": "Tumors with higher T-cell suppression markers will show lower response rates to PD-1 blockade",
+  "units_range": "0.225 to 0.45",
+  "expected_direction": "DECREASE",
+  "measurement_method": "Quantify T-cell suppression markers (e.g., T-regulatory cell count, inhibitory cytokine levels) in tumor biopsies and correlate with objective response rate to PD-1 blockade treatment",
+  "falsification_condition": "A positive correlation (r > 0.5) between T-cell suppression markers and PD-1 blockade response rate",
+  "pre_registration_timestamp": "2011-12-31T23:59:59Z",
+  "novelty_check": {
+    "metric": "NOVEL_RELATION_TO_EVIDENCE",
+    "is_novel": true,
+    "term_overlap_ratio": 0.29,
+    "evidence_terms_count": 19,
+    "proposed_terms_count": 17,
+    "overlapping_terms": [
+      "blockade",
+      "cell",
+      "microenvironment",
+      "response",
+      "tumor"
+    ],
+    "deterministic": true,
+    "reproducible": true
+  },
+  "gate2_predicted_value": 0.3,
+  "gate2_tolerance_lower": 0.75,
+  "gate2_tolerance_upper": 1.5,
+  "gate2_leakage_control": "evidence_only_prompt",
+  "gate2_backend": "z-ai-cli-glm-4-plus",
+  "receipt_hash": "1eae1c17045a1ad459055161143c54d9fc95282609a3bbed827ccb3c9fd6d674"
+}

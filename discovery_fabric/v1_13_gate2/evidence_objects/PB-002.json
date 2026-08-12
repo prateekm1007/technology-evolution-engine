@@ -1,0 +1,102 @@
+{
+  "case_id": "PB-002",
+  "entities": [
+    "DNA",
+    "Heat",
+    "Oligonucleotide",
+    "Thermophilic",
+    "bacteria",
+    "denatures",
+    "enzymes",
+    "extends",
+    "extension",
+    "heat-stable",
+    "oligonucleotide",
+    "polymerase",
+    "primer",
+    "primers",
+    "produce",
+    "sequencing",
+    "synthesis",
+    "thermophilic"
+  ],
+  "entities_proper_nouns": [
+    "Heat",
+    "Oligonucleotide",
+    "Thermophilic"
+  ],
+  "entities_technical_nouns": [
+    "bacteria",
+    "denatures",
+    "enzymes",
+    "extends",
+    "extension",
+    "heat-stable",
+    "oligonucleotide",
+    "polymerase",
+    "primer",
+    "primers",
+    "produce",
+    "sequencing",
+    "synthesis",
+    "thermophilic"
+  ],
+  "entities_chemicals": [
+    "DNA"
+  ],
+  "mechanisms": [
+    {
+      "subject": "thermophilic bacteria",
+      "predicate": "CAUSES",
+      "object": "heat-stable enzymes",
+      "negated": false,
+      "source_sentence": "Thermophilic bacteria produce heat-stable enzymes."
+    },
+    {
+      "subject": "oligonucleotide synthesis",
+      "predicate": "ENABLES",
+      "object": "custom primers",
+      "negated": false,
+      "source_sentence": "Oligonucleotide synthesis allows custom primers."
+    },
+    {
+      "subject": "dna sequencing",
+      "predicate": "ENABLES",
+      "object": "primer extension",
+      "negated": false,
+      "source_sentence": "DNA sequencing uses primer extension."
+    }
+  ],
+  "causal_edges": [
+    {
+      "cause": "thermophilic bacteria",
+      "effect": "heat-stable enzymes",
+      "type": "CAUSES",
+      "negated": false
+    },
+    {
+      "cause": "oligonucleotide synthesis",
+      "effect": "custom primers",
+      "type": "ENABLES",
+      "negated": false
+    },
+    {
+      "cause": "dna sequencing",
+      "effect": "primer extension",
+      "type": "ENABLES",
+      "negated": false
+    }
+  ],
+  "combinations": [],
+  "constraints": [],
+  "negations": [],
+  "raw_text": "DNA polymerase extends primers. Heat denatures DNA. Thermophilic bacteria produce heat-stable enzymes. Oligonucleotide synthesis allows custom primers. DNA sequencing uses primer extension.",
+  "extraction_method": "deterministic_regex_v1",
+  "n_entities": 18,
+  "n_mechanisms": 3,
+  "n_causal_edges": 3,
+  "n_combinations": 0,
+  "n_constraints": 0,
+  "n_negations": 0,
+  "evidence_object_hash": "07b2413eafee8aff046b1c9635bc24b13135c16eafee84e354b9fe40bc6cd851"
+}

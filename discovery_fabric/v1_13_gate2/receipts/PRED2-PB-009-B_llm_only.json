@@ -1,0 +1,33 @@
+{
+  "candidate_id": "PRED2-PB-009-B_llm_only",
+  "input_manifest_hash": "f210167ed2220887aa94e3df9d9b3bd0b554fbd21e3b7fff9a9bfa1c8add7eeb",
+  "hypothesis": "The combined expression of Oct4, Sox2, Klf4, and c-Myc factors can reverse cellular differentiation",
+  "prediction": "A specific quantitative measure of pluripotency markers will increase in differentiated cells when exposed to these four factors",
+  "units_range": "37.5 to 150",
+  "expected_direction": "INCREASE",
+  "measurement_method": "Quantify expression levels of pluripotency markers (like Oct4 or Sox2) in differentiated cells before and after treatment with the four factors",
+  "falsification_condition": "No significant increase in pluripotency marker expression is observed after treatment with the four factors",
+  "pre_registration_timestamp": "2005-12-31T23:59:59Z",
+  "novelty_check": {
+    "metric": "NOVEL_RELATION_TO_EVIDENCE",
+    "is_novel": true,
+    "term_overlap_ratio": 0.31,
+    "evidence_terms_count": 23,
+    "proposed_terms_count": 16,
+    "overlapping_terms": [
+      "cells",
+      "cellular",
+      "differentiation",
+      "factors",
+      "four"
+    ],
+    "deterministic": true,
+    "reproducible": true
+  },
+  "gate2_predicted_value": 75,
+  "gate2_tolerance_lower": 0.5,
+  "gate2_tolerance_upper": 2.0,
+  "gate2_leakage_control": "evidence_only_prompt",
+  "gate2_backend": "z-ai-cli-glm-4-plus",
+  "receipt_hash": "97486d6326bfef17c3800e1dd0288bc2cfab15b49f657538fa0d574bc227614f"
+}

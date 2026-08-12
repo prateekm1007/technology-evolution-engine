@@ -1,0 +1,104 @@
+{
+  "case_id": "PB-007",
+  "entities": [
+    "Bacterial",
+    "CRISPR",
+    "Cas9",
+    "DNA",
+    "Guide",
+    "RNA",
+    "RNAguided",
+    "RNAs",
+    "TALENs",
+    "Zinc",
+    "adaptive",
+    "bacterial",
+    "crispr",
+    "direct",
+    "finger",
+    "guide",
+    "immunity",
+    "nuclease",
+    "nucleases",
+    "proteins",
+    "provides",
+    "redesign",
+    "rna-guided",
+    "sequences",
+    "talens"
+  ],
+  "entities_proper_nouns": [
+    "Bacterial",
+    "Cas9",
+    "Guide",
+    "RNAguided",
+    "RNAs",
+    "TALENs",
+    "Zinc"
+  ],
+  "entities_technical_nouns": [
+    "adaptive",
+    "bacterial",
+    "crispr",
+    "direct",
+    "finger",
+    "guide",
+    "immunity",
+    "nuclease",
+    "nucleases",
+    "proteins",
+    "provides",
+    "redesign",
+    "rna-guided",
+    "sequences",
+    "talens"
+  ],
+  "entities_chemicals": [
+    "CRISPR",
+    "Cas9",
+    "DNA",
+    "RNA"
+  ],
+  "mechanisms": [
+    {
+      "subject": "cas9",
+      "predicate": "EXHIBITS",
+      "object": "an rna-guided dna nuclease",
+      "negated": false,
+      "source_sentence": "Cas9 is an RNA-guided DNA nuclease."
+    },
+    {
+      "subject": "zinc finger nucleases and talens",
+      "predicate": "ENABLES",
+      "object": "cut specific dna",
+      "negated": false,
+      "source_sentence": "Zinc finger nucleases and TALENs can cut specific DNA but are hard to redesign."
+    }
+  ],
+  "causal_edges": [
+    {
+      "cause": "zinc finger nucleases and talens",
+      "effect": "cut specific dna",
+      "type": "ENABLES",
+      "negated": false
+    }
+  ],
+  "combinations": [
+    {
+      "a": "nucleases",
+      "b": "talens",
+      "raw": "nucleases and TALENs"
+    }
+  ],
+  "constraints": [],
+  "negations": [],
+  "raw_text": "Bacterial CRISPR provides adaptive immunity. Cas9 is an RNA-guided DNA nuclease. Guide RNAs direct proteins to specific sequences. Zinc finger nucleases and TALENs can cut specific DNA but are hard to redesign.",
+  "extraction_method": "deterministic_regex_v1",
+  "n_entities": 25,
+  "n_mechanisms": 2,
+  "n_causal_edges": 1,
+  "n_combinations": 1,
+  "n_constraints": 0,
+  "n_negations": 0,
+  "evidence_object_hash": "165938d4657a6446ecd43822a8f7595deed8e83c9d847dccfa66c19199727c5f"
+}

@@ -1,0 +1,5417 @@
+{
+  "timestamp": "2026-08-12T15:45:44.560941+00:00",
+  "evaluation_type": "HISTORICAL_RETROSPECTIVE_BACKTEST_GATE2",
+  "benchmark": "V1.13_PREDICTION_GATE2_LEAKAGE_CONTROLLED",
+  "scoring": "DETERMINISTIC (no LLM judge) — Gate 2 forensic re-evaluation",
+  "leakage_control": "evidence_only_prompt + point_estimate_requirement",
+  "backend": "z-ai-cli-glm-4-plus",
+  "strict_calibration_threshold": 0.5,
+  "total_receipts": 40,
+  "total_cases": 10,
+  "configs": [
+    "B_llm_only",
+    "C_mechanism",
+    "D_random",
+    "F_full"
+  ],
+  "overall_classification_counts": {
+    "RECONSTRUCTION": 15,
+    "INCORRECT": 6,
+    "INDETERMINATE": 19
+  },
+  "total_DPS_1": 0,
+  "total_genuine_novel": 25,
+  "exit_gate": {
+    "meaningful_min_novel": 3,
+    "material_advantage_pp": 15.0,
+    "gate1_novel_count_pass": true,
+    "gate2_material_advantage_pass": false,
+    "exit_gate_pass": false,
+    "random_dps_pct": 0.0,
+    "best_treatment_dps_pct": 0.0,
+    "best_treatment_config": "B_llm_only"
+  },
+  "summary_by_config": {
+    "B_llm_only": {
+      "n": 10,
+      "classifications": {
+        "RECONSTRUCTION": 4,
+        "INCORRECT": 1,
+        "INDETERMINATE": 5
+      },
+      "DPS_1_count": 0,
+      "DPS_1_pct": 0.0,
+      "genuine_novel_count": 6,
+      "genuine_novel_pct": 60.0,
+      "mean_calibration_error_correct": null,
+      "n_numeric_correct": 0,
+      "mean_information_content_score": 0.9167
+    },
+    "C_mechanism": {
+      "n": 10,
+      "classifications": {
+        "RECONSTRUCTION": 6,
+        "INDETERMINATE": 4
+      },
+      "DPS_1_count": 0,
+      "DPS_1_pct": 0.0,
+      "genuine_novel_count": 4,
+      "genuine_novel_pct": 40.0,
+      "mean_calibration_error_correct": 0.1765,
+      "n_numeric_correct": 1,
+      "mean_information_content_score": 0.8667
+    },
+    "D_random": {
+      "n": 10,
+      "classifications": {
+        "RECONSTRUCTION": 3,
+        "INDETERMINATE": 5,
+        "INCORRECT": 2
+      },
+      "DPS_1_count": 0,
+      "DPS_1_pct": 0.0,
+      "genuine_novel_count": 7,
+      "genuine_novel_pct": 70.0,
+      "mean_calibration_error_correct": 0.2632,
+      "n_numeric_correct": 1,
+      "mean_information_content_score": 0.9
+    },
+    "F_full": {
+      "n": 10,
+      "classifications": {
+        "INCORRECT": 3,
+        "RECONSTRUCTION": 2,
+        "INDETERMINATE": 5
+      },
+      "DPS_1_count": 0,
+      "DPS_1_pct": 0.0,
+      "genuine_novel_count": 8,
+      "genuine_novel_pct": 80.0,
+      "mean_calibration_error_correct": null,
+      "n_numeric_correct": 0,
+      "mean_information_content_score": 0.95
+    }
+  },
+  "results": [
+    {
+      "key": "PB-001|B_llm_only",
+      "case_id": "PB-001",
+      "case_name": "Lithium-ion battery",
+      "config": "B_llm_only",
+      "candidate_id": "PRED2-PB-001-B_llm_only",
+      "receipt_integrity_ok": true,
+      "simulation_registration_date": "1990-12-31T23:59:59Z",
+      "evaluation_type": "HISTORICAL_RETROSPECTIVE_BACKTEST_GATE2",
+      "leakage_control": "evidence_only_prompt",
+      "backend": "z-ai-cli-glm-4-plus",
+      "hypothesis": "The combination of LiCoO2 and graphite as electrode materials will result in a higher energy density compared to lithium metal alone",
+      "prediction": "A battery using LiCoO2 and graphite electrodes will have 1.5 times the energy density of a lithium metal battery",
+      "predicted_value": 1.5,
+      "tolerance_lower": 0.5,
+      "tolerance_upper": 2.0,
+      "expected_direction": "INCREASE",
+      "outcome_source": "Sony commercialization 1991 — LiCoO2+graphite battery achieves >500 cycles",
+      "outcome_value": 500,
+      "outcome_direction": "INCREASE",
+      "outcome_measurement_date": "1991-06-01T00:00:00Z",
+      "final_classification": "RECONSTRUCTION",
+      "DISCOVERY_PREDICTION_SCORE": 0.0,
+      "information_content": {
+        "classification": "RECONSTRUCTION",
+        "information_content_score": 0.8333,
+        "encoded_count": 1,
+        "encoded_count_max": 6,
+        "reason": "prediction encoded by evidence: c3=False, c4=True, c5=False, c6=False, encoded_count=1/6",
+        "checks": {
+          "c1": {
+            "check": "ENTITIES_PRESENT",
+            "passed": false,
+            "new_entities_in_prediction": [
+              "alone",
+              "combination",
+              "compared",
+              "density",
+              "electrode",
+              "electrodes",
+              "energy"
+            ]
+          },
+          "c2": {
+            "check": "MECHANISMS_PRESENT",
+            "passed": false,
+            "prediction_mechanism_verbs": [
+              "have"
+            ],
+            "evidence_mechanism_verbs": [
+              "enables",
+              "exhibits"
+            ],
+            "new_verbs_in_prediction": [
+              "have"
+            ]
+          },
+          "c3": {
+            "check": "CAUSAL_EDGES_PRESENT",
+            "passed": false,
+            "prediction_triples": [
+              {
+                "subject": "the combination of licoo2 and graphite as electrode materials will result in a higher energy density compared to lithium metal alone a battery using licoo2 and graphite electrodes will",
+                "predicate": "EXHIBITS",
+                "object": "1.5 times the energy density of a lithium metal battery"
+              }
+            ],
+            "unmatched_triples": [
+              {
+                "subject": "the combination of licoo2 and graphite as electrode materials will result in a higher energy density compared to lithium metal alone a battery using licoo2 and graphite electrodes will",
+                "predicate": "EXHIBITS",
+                "object": "1.5 times the energy density of a lithium metal battery"
+              }
+            ]
+          },
+          "c4": {
+            "check": "COMBINATION_ALREADY_IMPLIED",
+            "passed": true,
+            "prediction_combinations": [
+              [
+                "graphite",
+                "licoo2"
+              ],
+              [
+                "graphite",
+                "licoo2"
+              ]
+            ],
+            "evidence_combinations": [],
+            "details": [
+              {
+                "pair": [
+                  "graphite",
+                  "licoo2"
+                ],
+                "in_explicit_combinations": false,
+                "both_entities_in_evidence": true,
+                "implied": true
+              },
+              {
+                "pair": [
+                  "graphite",
+                  "licoo2"
+                ],
+                "in_explicit_combinations": false,
+                "both_entities_in_evidence": true,
+                "implied": true
+              }
+            ]
+          },
+          "c5": {
+            "check": "CONSTRAINT_ALREADY_STATED",
+            "passed": false,
+            "prediction_bounds": [
+              0.75,
+              3.0
+            ],
+            "evidence_numeric_constraints": []
+          },
+          "c6": {
+            "check": "PREDICTION_DERIVABLE_WITHOUT_NEW_RELATION",
+            "passed": false,
+            "components": {
+              "entities_present": false,
+              "mechanisms_present": false,
+              "causal_edges_present": false
+            }
+          }
+        }
+      },
+      "quantitative_accuracy": {
+        "verdict": "INCORRECT",
+        "calibration_error": 0.997,
+        "predicted": 1.5,
+        "observed": 500,
+        "tolerance_bounds": [
+          0.75,
+          3.0
+        ],
+        "in_range": false,
+        "strict_calibration_threshold": 0.5
+      },
+      "receipt_hash": "e63efd3712a36bb656066b422ebad565325f731f1c1c08762ab2c877b0e025ff"
+    },
+    {
+      "key": "PB-001|C_mechanism",
+      "case_id": "PB-001",
+      "case_name": "Lithium-ion battery",
+      "config": "C_mechanism",
+      "candidate_id": "PRED2-PB-001-C_mechanism",
+      "receipt_integrity_ok": true,
+      "simulation_registration_date": "1990-12-31T23:59:59Z",
+      "evaluation_type": "HISTORICAL_RETROSPECTIVE_BACKTEST_GATE2",
+      "leakage_control": "evidence_only_prompt",
+      "backend": "z-ai-cli-glm-4-plus",
+      "hypothesis": "Reversible lithium intercalation in graphite and LiCoO2 enables safer rechargeable battery operation compared to lithium metal",
+      "prediction": "The cycle life of a lithium battery using graphite anode and LiCoO2 cathode will be at least 10 times longer than a lithium metal battery",
+      "predicted_value": 10,
+      "tolerance_lower": 0.5,
+      "tolerance_upper": 2.0,
+      "expected_direction": "INCREASE",
+      "outcome_source": "Sony commercialization 1991 — LiCoO2+graphite battery achieves >500 cycles",
+      "outcome_value": 500,
+      "outcome_direction": "INCREASE",
+      "outcome_measurement_date": "1991-06-01T00:00:00Z",
+      "final_classification": "RECONSTRUCTION",
+      "DISCOVERY_PREDICTION_SCORE": 0.0,
+      "information_content": {
+        "classification": "RECONSTRUCTION",
+        "information_content_score": 0.6667,
+        "encoded_count": 2,
+        "encoded_count_max": 6,
+        "reason": "prediction encoded by evidence: c3=True, c4=False, c5=False, c6=False, encoded_count=2/6",
+        "checks": {
+          "c1": {
+            "check": "ENTITIES_PRESENT",
+            "passed": false,
+            "new_entities_in_prediction": [
+              "anode",
+              "cathode",
+              "compared",
+              "enables",
+              "least",
+              "longer",
+              "reversible",
+              "safer"
+            ]
+          },
+          "c2": {
+            "check": "MECHANISMS_PRESENT",
+            "passed": true,
+            "prediction_mechanism_verbs": [
+              "enables"
+            ],
+            "evidence_mechanism_verbs": [
+              "enables",
+              "exhibits"
+            ],
+            "new_verbs_in_prediction": []
+          },
+          "c3": {
+            "check": "CAUSAL_EDGES_PRESENT",
+            "passed": true,
+            "prediction_triples": [
+              {
+                "subject": "reversible lithium intercalation in graphite and licoo2",
+                "predicate": "ENABLES",
+                "object": "safer rechargeable battery operation compared to lithium metal the cycle life of a lithium battery using graphite anode"
+              }
+            ],
+            "unmatched_triples": []
+          },
+          "c4": {
+            "check": "COMBINATION_ALREADY_IMPLIED",
+            "passed": false,
+            "prediction_combinations": [
+              [
+                "graphite",
+                "licoo2"
+              ],
+              [
+                "anode",
+                "licoo2"
+              ]
+            ],
+            "evidence_combinations": [],
+            "details": [
+              {
+                "pair": [
+                  "graphite",
+                  "licoo2"
+                ],
+                "in_explicit_combinations": false,
+                "both_entities_in_evidence": true,
+                "implied": true
+              },
+              {
+                "pair": [
+                  "anode",
+                  "licoo2"
+                ],
+                "in_explicit_combinations": false,
+                "both_entities_in_evidence": false,
+                "implied": false
+              }
+            ]
+          },
+          "c5": {
+            "check": "CONSTRAINT_ALREADY_STATED",
+            "passed": false,
+            "prediction_bounds": [
+              5.0,
+              20.0
+            ],
+            "evidence_numeric_constraints": []
+          },
+          "c6": {
+            "check": "PREDICTION_DERIVABLE_WITHOUT_NEW_RELATION",
+            "passed": false,
+            "components": {
+              "entities_present": false,
+              "mechanisms_present": true,
+              "causal_edges_present": true
+            }
+          }
+        }
+      },
+      "quantitative_accuracy": {
+        "verdict": "INCORRECT",
+        "calibration_error": 0.98,
+        "predicted": 10,
+        "observed": 500,
+        "tolerance_bounds": [
+          5.0,
+          20.0
+        ],
+        "in_range": false,
+        "strict_calibration_threshold": 0.5
+      },
+      "receipt_hash": "04a4485eba3ce787a68316bde2474a4a4e0de5db4cd9fcc8a4a983273b9d2f1a"
+    },
+    {
+      "key": "PB-001|D_random",
+      "case_id": "PB-001",
+      "case_name": "Lithium-ion battery",
+      "config": "D_random",
+      "candidate_id": "PRED2-PB-001-D_random",
+      "receipt_integrity_ok": true,
+      "simulation_registration_date": "1990-12-31T23:59:59Z",
+      "evaluation_type": "HISTORICAL_RETROSPECTIVE_BACKTEST_GATE2",
+      "leakage_control": "evidence_only_prompt",
+      "backend": "z-ai-cli-glm-4-plus",
+      "hypothesis": "A composite electrode combining LiCoO2 and graphite will exhibit higher lithium intercalation capacity than either material alone",
+      "prediction": "The composite electrode will have a lithium intercalation capacity 1.8 times that of pure graphite",
+      "predicted_value": 1.8,
+      "tolerance_lower": 0.5,
+      "tolerance_upper": 2.0,
+      "expected_direction": "INCREASE",
+      "outcome_source": "Sony commercialization 1991 — LiCoO2+graphite battery achieves >500 cycles",
+      "outcome_value": 500,
+      "outcome_direction": "INCREASE",
+      "outcome_measurement_date": "1991-06-01T00:00:00Z",
+      "final_classification": "RECONSTRUCTION",
+      "DISCOVERY_PREDICTION_SCORE": 0.0,
+      "information_content": {
+        "classification": "RECONSTRUCTION",
+        "information_content_score": 0.8333,
+        "encoded_count": 1,
+        "encoded_count_max": 6,
+        "reason": "prediction encoded by evidence: c3=False, c4=True, c5=False, c6=False, encoded_count=1/6",
+        "checks": {
+          "c1": {
+            "check": "ENTITIES_PRESENT",
+            "passed": false,
+            "new_entities_in_prediction": [
+              "alone",
+              "capacity",
+              "combining",
+              "composite",
+              "electrode",
+              "exhibit"
+            ]
+          },
+          "c2": {
+            "check": "MECHANISMS_PRESENT",
+            "passed": false,
+            "prediction_mechanism_verbs": [
+              "exhibit",
+              "have"
+            ],
+            "evidence_mechanism_verbs": [
+              "enables",
+              "exhibits"
+            ],
+            "new_verbs_in_prediction": [
+              "have"
+            ]
+          },
+          "c3": {
+            "check": "CAUSAL_EDGES_PRESENT",
+            "passed": false,
+            "prediction_triples": [
+              {
+                "subject": "a composite electrode combining licoo2 and graphite will",
+                "predicate": "EXHIBITS",
+                "object": "higher lithium intercalation capacity than either material alone the composite electrode will have a lithium intercalation capacity 1.8 times that of pure graphite"
+              }
+            ],
+            "unmatched_triples": [
+              {
+                "subject": "a composite electrode combining licoo2 and graphite will",
+                "predicate": "EXHIBITS",
+                "object": "higher lithium intercalation capacity than either material alone the composite electrode will have a lithium intercalation capacity 1.8 times that of pure graphite"
+              }
+            ]
+          },
+          "c4": {
+            "check": "COMBINATION_ALREADY_IMPLIED",
+            "passed": true,
+            "prediction_combinations": [
+              [
+                "graphite",
+                "licoo2"
+              ]
+            ],
+            "evidence_combinations": [],
+            "details": [
+              {
+                "pair": [
+                  "graphite",
+                  "licoo2"
+                ],
+                "in_explicit_combinations": false,
+                "both_entities_in_evidence": true,
+                "implied": true
+              }
+            ]
+          },
+          "c5": {
+            "check": "CONSTRAINT_ALREADY_STATED",
+            "passed": false,
+            "prediction_bounds": [
+              0.9,
+              3.6
+            ],
+            "evidence_numeric_constraints": []
+          },
+          "c6": {
+            "check": "PREDICTION_DERIVABLE_WITHOUT_NEW_RELATION",
+            "passed": false,
+            "components": {
+              "entities_present": false,
+              "mechanisms_present": false,
+              "causal_edges_present": false
+            }
+          }
+        }
+      },
+      "quantitative_accuracy": {
+        "verdict": "INCORRECT",
+        "calibration_error": 0.9964,
+        "predicted": 1.8,
+        "observed": 500,
+        "tolerance_bounds": [
+          0.9,
+          3.6
+        ],
+        "in_range": false,
+        "strict_calibration_threshold": 0.5
+      },
+      "receipt_hash": "ce6e1660be479f6abca05f9b1df6a2173e73419749336a89afe8776b1bb84ea1"
+    },
+    {
+      "key": "PB-001|F_full",
+      "case_id": "PB-001",
+      "case_name": "Lithium-ion battery",
+      "config": "F_full",
+      "candidate_id": "PRED2-PB-001-F_full",
+      "receipt_integrity_ok": true,
+      "simulation_registration_date": "1990-12-31T23:59:59Z",
+      "evaluation_type": "HISTORICAL_RETROSPECTIVE_BACKTEST_GATE2",
+      "leakage_control": "evidence_only_prompt",
+      "backend": "z-ai-cli-glm-4-plus",
+      "hypothesis": "The energy density of a lithium-ion battery using LiCoO2 and graphite electrodes will be higher than that of a lithium metal battery due to the elimination of dendrite formation while maintaining lithium ion intercalation capability.",
+      "prediction": "The specific energy density of a LiCoO2-graphite lithium-ion battery will be 150 Wh/kg",
+      "predicted_value": 150,
+      "tolerance_lower": 0.7,
+      "tolerance_upper": 1.3,
+      "expected_direction": "INCREASE",
+      "outcome_source": "Sony commercialization 1991 — LiCoO2+graphite battery achieves >500 cycles",
+      "outcome_value": 500,
+      "outcome_direction": "INCREASE",
+      "outcome_measurement_date": "1991-06-01T00:00:00Z",
+      "final_classification": "INCORRECT",
+      "DISCOVERY_PREDICTION_SCORE": 0.0,
+      "information_content": {
+        "classification": "GENUINE_NOVEL_PREDICTION",
+        "information_content_score": 0.8333,
+        "encoded_count": 1,
+        "encoded_count_max": 6,
+        "reason": "prediction introduces genuinely new relation: encoded_count=1/6",
+        "checks": {
+          "c1": {
+            "check": "ENTITIES_PRESENT",
+            "passed": false,
+            "new_entities_in_prediction": [
+              "capability",
+              "density",
+              "electrodes",
+              "elimination",
+              "energy",
+              "licoo2-graphite",
+              "licoo2graphite",
+              "maintaining",
+              "whkg"
+            ]
+          },
+          "c2": {
+            "check": "MECHANISMS_PRESENT",
+            "passed": true,
+            "prediction_mechanism_verbs": [],
+            "evidence_mechanism_verbs": [
+              "enables",
+              "exhibits"
+            ],
+            "new_verbs_in_prediction": []
+          },
+          "c3": {
+            "check": "CAUSAL_EDGES_PRESENT",
+            "passed": false,
+            "prediction_triples": [],
+            "unmatched_triples": [],
+            "reason": "no SVO triples extracted from prediction"
+          },
+          "c4": {
+            "check": "COMBINATION_ALREADY_IMPLIED",
+            "passed": false,
+            "prediction_combinations": [
+              [
+                "graphite",
+                "licoo2"
+              ],
+              [
+                "ion",
+                "lithium"
+              ],
+              [
+                "graphite",
+                "licoo2"
+              ],
+              [
+                "ion",
+                "lithium"
+              ]
+            ],
+            "evidence_combinations": [],
+            "details": [
+              {
+                "pair": [
+                  "graphite",
+                  "licoo2"
+                ],
+                "in_explicit_combinations": false,
+                "both_entities_in_evidence": true,
+                "implied": true
+              },
+              {
+                "pair": [
+                  "ion",
+                  "lithium"
+                ],
+                "in_explicit_combinations": false,
+                "both_entities_in_evidence": false,
+                "implied": false
+              },
+              {
+                "pair": [
+                  "graphite",
+                  "licoo2"
+                ],
+                "in_explicit_combinations": false,
+                "both_entities_in_evidence": true,
+                "implied": true
+              },
+              {
+                "pair": [
+                  "ion",
+                  "lithium"
+                ],
+                "in_explicit_combinations": false,
+                "both_entities_in_evidence": false,
+                "implied": false
+              }
+            ]
+          },
+          "c5": {
+            "check": "CONSTRAINT_ALREADY_STATED",
+            "passed": false,
+            "prediction_bounds": [
+              105.0,
+              195.0
+            ],
+            "evidence_numeric_constraints": []
+          },
+          "c6": {
+            "check": "PREDICTION_DERIVABLE_WITHOUT_NEW_RELATION",
+            "passed": false,
+            "components": {
+              "entities_present": false,
+              "mechanisms_present": true,
+              "causal_edges_present": false
+            }
+          }
+        }
+      },
+      "quantitative_accuracy": {
+        "verdict": "INCORRECT",
+        "calibration_error": 0.7,
+        "predicted": 150,
+        "observed": 500,
+        "tolerance_bounds": [
+          105.0,
+          195.0
+        ],
+        "in_range": false,
+        "strict_calibration_threshold": 0.5
+      },
+      "receipt_hash": "bdc1ada4fdd2d425cc6207d5271b51e6dc3b6e95878c7c3a36ec9066c28688b2"
+    },
+    {
+      "key": "PB-002|B_llm_only",
+      "case_id": "PB-002",
+      "case_name": "PCR",
+      "config": "B_llm_only",
+      "candidate_id": "PRED2-PB-002-B_llm_only",
+      "receipt_integrity_ok": true,
+      "simulation_registration_date": "1984-12-31T23:59:59Z",
+      "evaluation_type": "HISTORICAL_RETROSPECTIVE_BACKTEST_GATE2",
+      "leakage_control": "evidence_only_prompt",
+      "backend": "z-ai-cli-glm-4-plus",
+      "hypothesis": "Increasing the temperature during primer extension by DNA polymerase will decrease the efficiency of DNA synthesis due to heat denaturation",
+      "prediction": "The yield of extended primers will decrease by 50% when temperature is increased from 37°C to 72°C",
+      "predicted_value": 0.5,
+      "tolerance_lower": 0.5,
+      "tolerance_upper": 2.0,
+      "expected_direction": "DECREASE",
+      "outcome_source": "Saiki et al. 1985 — PCR achieves million-fold amplification",
+      "outcome_value": 1000000,
+      "outcome_direction": "INCREASE",
+      "outcome_measurement_date": "1985-12-01T00:00:00Z",
+      "final_classification": "INCORRECT",
+      "DISCOVERY_PREDICTION_SCORE": 0.0,
+      "information_content": {
+        "classification": "GENUINE_NOVEL_PREDICTION",
+        "information_content_score": 1.0,
+        "encoded_count": 0,
+        "encoded_count_max": 6,
+        "reason": "prediction introduces genuinely new relation: encoded_count=0/6",
+        "checks": {
+          "c1": {
+            "check": "ENTITIES_PRESENT",
+            "passed": false,
+            "new_entities_in_prediction": [
+              "decrease",
+              "denaturation",
+              "efficiency",
+              "extended",
+              "increased",
+              "increasing",
+              "temperature",
+              "yield"
+            ]
+          },
+          "c2": {
+            "check": "MECHANISMS_PRESENT",
+            "passed": false,
+            "prediction_mechanism_verbs": [
+              "decrease",
+              "increased",
+              "is"
+            ],
+            "evidence_mechanism_verbs": [
+              "causes",
+              "enables"
+            ],
+            "new_verbs_in_prediction": [
+              "decrease",
+              "increased",
+              "is"
+            ]
+          },
+          "c3": {
+            "check": "CAUSAL_EDGES_PRESENT",
+            "passed": false,
+            "prediction_triples": [
+              {
+                "subject": "increasing the temperature during primer extension by dna polymerase will",
+                "predicate": "DECREASES",
+                "object": "the efficiency of dna synthesis"
+              },
+              {
+                "subject": "heat denaturation the yield of extended primers will",
+                "predicate": "DECREASES",
+                "object": "by 50% when temperature is increased from 37°c to 72°c"
+              }
+            ],
+            "unmatched_triples": [
+              {
+                "subject": "increasing the temperature during primer extension by dna polymerase will",
+                "predicate": "DECREASES",
+                "object": "the efficiency of dna synthesis"
+              },
+              {
+                "subject": "heat denaturation the yield of extended primers will",
+                "predicate": "DECREASES",
+                "object": "by 50% when temperature is increased from 37°c to 72°c"
+              }
+            ]
+          },
+          "c4": {
+            "check": "COMBINATION_ALREADY_IMPLIED",
+            "passed": false,
+            "prediction_combinations": [],
+            "reason": "no combination detected in prediction"
+          },
+          "c5": {
+            "check": "CONSTRAINT_ALREADY_STATED",
+            "passed": false,
+            "prediction_bounds": [
+              0.25,
+              1.0
+            ],
+            "evidence_numeric_constraints": []
+          },
+          "c6": {
+            "check": "PREDICTION_DERIVABLE_WITHOUT_NEW_RELATION",
+            "passed": false,
+            "components": {
+              "entities_present": false,
+              "mechanisms_present": false,
+              "causal_edges_present": false
+            }
+          }
+        }
+      },
+      "quantitative_accuracy": {
+        "verdict": "INCORRECT",
+        "calibration_error": 1.0,
+        "predicted": 0.5,
+        "observed": 1000000,
+        "tolerance_bounds": [
+          0.25,
+          1.0
+        ],
+        "in_range": false,
+        "strict_calibration_threshold": 0.5
+      },
+      "receipt_hash": "763d7385935afe4b8d59a92d02e6d57c3adb27923886bf6dbf65d23d7f206d6c"
+    },
+    {
+      "key": "PB-002|C_mechanism",
+      "case_id": "PB-002",
+      "case_name": "PCR",
+      "config": "C_mechanism",
+      "candidate_id": "PRED2-PB-002-C_mechanism",
+      "receipt_integrity_ok": true,
+      "simulation_registration_date": "1984-12-31T23:59:59Z",
+      "evaluation_type": "HISTORICAL_RETROSPECTIVE_BACKTEST_GATE2",
+      "leakage_control": "evidence_only_prompt",
+      "backend": "z-ai-cli-glm-4-plus",
+      "hypothesis": "Heat denaturation of DNA creates a requirement for heat-stable DNA polymerase to enable repeated primer extension cycles",
+      "prediction": "The efficiency of DNA amplification will increase when heat-stable DNA polymerase is used compared to heat-labile DNA polymerase",
+      "predicted_value": 3.0,
+      "tolerance_lower": 0.5,
+      "tolerance_upper": 2.0,
+      "expected_direction": "INCREASE",
+      "outcome_source": "Saiki et al. 1985 — PCR achieves million-fold amplification",
+      "outcome_value": 1000000,
+      "outcome_direction": "INCREASE",
+      "outcome_measurement_date": "1985-12-01T00:00:00Z",
+      "final_classification": "RECONSTRUCTION",
+      "DISCOVERY_PREDICTION_SCORE": 0.0,
+      "information_content": {
+        "classification": "RECONSTRUCTION",
+        "information_content_score": 0.8333,
+        "encoded_count": 1,
+        "encoded_count_max": 6,
+        "reason": "prediction encoded by evidence: c3=True, c4=False, c5=False, c6=False, encoded_count=1/6",
+        "checks": {
+          "c1": {
+            "check": "ENTITIES_PRESENT",
+            "passed": false,
+            "new_entities_in_prediction": [
+              "amplification",
+              "compared",
+              "creates",
+              "denaturation",
+              "efficiency",
+              "enable",
+              "heat-labile",
+              "increase",
+              "repeated"
+            ]
+          },
+          "c2": {
+            "check": "MECHANISMS_PRESENT",
+            "passed": false,
+            "prediction_mechanism_verbs": [
+              "creates",
+              "enable",
+              "increase",
+              "is",
+              "used"
+            ],
+            "evidence_mechanism_verbs": [
+              "causes",
+              "enables"
+            ],
+            "new_verbs_in_prediction": [
+              "creates",
+              "increase",
+              "is",
+              "used"
+            ]
+          },
+          "c3": {
+            "check": "CAUSAL_EDGES_PRESENT",
+            "passed": true,
+            "prediction_triples": [
+              {
+                "subject": "heat denaturation of dna",
+                "predicate": "CAUSES",
+                "object": "a requirement for heat-stable dna polymerase to enable repeated primer extension cycles the efficiency of dna amplification will increase when heat-stable dna polymerase is used compared to heat-labile dna polymerase"
+              }
+            ],
+            "unmatched_triples": []
+          },
+          "c4": {
+            "check": "COMBINATION_ALREADY_IMPLIED",
+            "passed": false,
+            "prediction_combinations": [
+              [
+                "heat",
+                "labile"
+              ]
+            ],
+            "evidence_combinations": [],
+            "details": [
+              {
+                "pair": [
+                  "heat",
+                  "labile"
+                ],
+                "in_explicit_combinations": false,
+                "both_entities_in_evidence": false,
+                "implied": false
+              }
+            ]
+          },
+          "c5": {
+            "check": "CONSTRAINT_ALREADY_STATED",
+            "passed": false,
+            "prediction_bounds": [
+              1.5,
+              6.0
+            ],
+            "evidence_numeric_constraints": []
+          },
+          "c6": {
+            "check": "PREDICTION_DERIVABLE_WITHOUT_NEW_RELATION",
+            "passed": false,
+            "components": {
+              "entities_present": false,
+              "mechanisms_present": false,
+              "causal_edges_present": true
+            }
+          }
+        }
+      },
+      "quantitative_accuracy": {
+        "verdict": "INCORRECT",
+        "calibration_error": 1.0,
+        "predicted": 3.0,
+        "observed": 1000000,
+        "tolerance_bounds": [
+          1.5,
+          6.0
+        ],
+        "in_range": false,
+        "strict_calibration_threshold": 0.5
+      },
+      "receipt_hash": "6d768dd1a2b0e904dca73a27ab53a592752efa79540cea95ff24a63202563456"
+    },
+    {
+      "key": "PB-002|D_random",
+      "case_id": "PB-002",
+      "case_name": "PCR",
+      "config": "D_random",
+      "candidate_id": "PRED2-PB-002-D_random",
+      "receipt_integrity_ok": true,
+      "simulation_registration_date": "1984-12-31T23:59:59Z",
+      "evaluation_type": "HISTORICAL_RETROSPECTIVE_BACKTEST_GATE2",
+      "leakage_control": "evidence_only_prompt",
+      "backend": "z-ai-cli-glm-4-plus",
+      "hypothesis": "Heat-stable DNA polymerase from thermophilic bacteria will enable primer extension at higher temperatures than standard DNA polymerase",
+      "prediction": "Heat-stable DNA polymerase will extend primers at 95°C while standard DNA polymerase will not",
+      "predicted_value": "YES",
+      "tolerance_lower": 0.5,
+      "tolerance_upper": 2.0,
+      "expected_direction": "BINARY",
+      "outcome_source": "Saiki et al. 1985 — PCR achieves million-fold amplification",
+      "outcome_value": 1000000,
+      "outcome_direction": "INCREASE",
+      "outcome_measurement_date": "1985-12-01T00:00:00Z",
+      "final_classification": "RECONSTRUCTION",
+      "DISCOVERY_PREDICTION_SCORE": 0.0,
+      "information_content": {
+        "classification": "RECONSTRUCTION",
+        "information_content_score": 0.6667,
+        "encoded_count": 2,
+        "encoded_count_max": 6,
+        "reason": "prediction encoded by evidence: c3=True, c4=False, c5=False, c6=False, encoded_count=2/6",
+        "checks": {
+          "c1": {
+            "check": "ENTITIES_PRESENT",
+            "passed": false,
+            "new_entities_in_prediction": [
+              "enable",
+              "extend",
+              "heatstable",
+              "temperatures"
+            ]
+          },
+          "c2": {
+            "check": "MECHANISMS_PRESENT",
+            "passed": true,
+            "prediction_mechanism_verbs": [
+              "enable"
+            ],
+            "evidence_mechanism_verbs": [
+              "causes",
+              "enables"
+            ],
+            "new_verbs_in_prediction": []
+          },
+          "c3": {
+            "check": "CAUSAL_EDGES_PRESENT",
+            "passed": true,
+            "prediction_triples": [
+              {
+                "subject": "heat-stable dna polymerase from thermophilic bacteria will",
+                "predicate": "ENABLES",
+                "object": "primer extension at higher temperatures than standard dna polymerase heat-stable dna polymerase will extend primers at 95°c"
+              }
+            ],
+            "unmatched_triples": []
+          },
+          "c4": {
+            "check": "COMBINATION_ALREADY_IMPLIED",
+            "passed": false,
+            "prediction_combinations": [],
+            "reason": "no combination detected in prediction"
+          },
+          "c5": {
+            "check": "CONSTRAINT_ALREADY_STATED",
+            "passed": false,
+            "prediction_bounds": null,
+            "reason": "no numeric constraint in prediction"
+          },
+          "c6": {
+            "check": "PREDICTION_DERIVABLE_WITHOUT_NEW_RELATION",
+            "passed": false,
+            "components": {
+              "entities_present": false,
+              "mechanisms_present": true,
+              "causal_edges_present": true
+            }
+          }
+        }
+      },
+      "quantitative_accuracy": {
+        "verdict": "INDETERMINATE",
+        "calibration_error": null,
+        "predicted": "YES",
+        "observed": "1000000"
+      },
+      "receipt_hash": "22cd21c028b997560ddc2e6d7b42d5cd6ccf397a4c5a4fde6d01743f5ba0b08c"
+    },
+    {
+      "key": "PB-002|F_full",
+      "case_id": "PB-002",
+      "case_name": "PCR",
+      "config": "F_full",
+      "candidate_id": "PRED2-PB-002-F_full",
+      "receipt_integrity_ok": true,
+      "simulation_registration_date": "1984-12-31T23:59:59Z",
+      "evaluation_type": "HISTORICAL_RETROSPECTIVE_BACKTEST_GATE2",
+      "leakage_control": "evidence_only_prompt",
+      "backend": "z-ai-cli-glm-4-plus",
+      "hypothesis": "The heat stability of DNA polymerase from thermophilic bacteria increases the efficiency of primer extension at elevated temperatures compared to mesophilic polymerase",
+      "prediction": "The extension rate of heat-stable DNA polymerase at 95°C will be at least 2.5 times higher than that of a non-heat-stable polymerase at the same temperature",
+      "predicted_value": 2.5,
+      "tolerance_lower": 0.5,
+      "tolerance_upper": 1.0,
+      "expected_direction": "INCREASE",
+      "outcome_source": "Saiki et al. 1985 — PCR achieves million-fold amplification",
+      "outcome_value": 1000000,
+      "outcome_direction": "INCREASE",
+      "outcome_measurement_date": "1985-12-01T00:00:00Z",
+      "final_classification": "RECONSTRUCTION",
+      "DISCOVERY_PREDICTION_SCORE": 0.0,
+      "information_content": {
+        "classification": "RECONSTRUCTION",
+        "information_content_score": 0.8333,
+        "encoded_count": 1,
+        "encoded_count_max": 6,
+        "reason": "prediction encoded by evidence: c3=True, c4=False, c5=False, c6=False, encoded_count=1/6",
+        "checks": {
+          "c1": {
+            "check": "ENTITIES_PRESENT",
+            "passed": false,
+            "new_entities_in_prediction": [
+              "compared",
+              "efficiency",
+              "elevated",
+              "increases",
+              "least",
+              "mesophilic",
+              "non-heat-stable",
+              "stability",
+              "temperature",
+              "temperatures"
+            ]
+          },
+          "c2": {
+            "check": "MECHANISMS_PRESENT",
+            "passed": false,
+            "prediction_mechanism_verbs": [
+              "increases"
+            ],
+            "evidence_mechanism_verbs": [
+              "causes",
+              "enables"
+            ],
+            "new_verbs_in_prediction": [
+              "increases"
+            ]
+          },
+          "c3": {
+            "check": "CAUSAL_EDGES_PRESENT",
+            "passed": true,
+            "prediction_triples": [
+              {
+                "subject": "the heat stability of dna polymerase from thermophilic bacteria",
+                "predicate": "INCREASES",
+                "object": "the efficiency of primer extension at elevated temperatures compared to mesophilic polymerase the extension rate of heat-stable dna polymerase at 95°c will be at least 2.5 times higher than that of a non-heat-stable polymerase at the same temperature"
+              }
+            ],
+            "unmatched_triples": []
+          },
+          "c4": {
+            "check": "COMBINATION_ALREADY_IMPLIED",
+            "passed": false,
+            "prediction_combinations": [
+              [
+                "heat",
+                "non"
+              ]
+            ],
+            "evidence_combinations": [],
+            "details": [
+              {
+                "pair": [
+                  "heat",
+                  "non"
+                ],
+                "in_explicit_combinations": false,
+                "both_entities_in_evidence": false,
+                "implied": false
+              }
+            ]
+          },
+          "c5": {
+            "check": "CONSTRAINT_ALREADY_STATED",
+            "passed": false,
+            "prediction_bounds": [
+              1.25,
+              2.5
+            ],
+            "evidence_numeric_constraints": []
+          },
+          "c6": {
+            "check": "PREDICTION_DERIVABLE_WITHOUT_NEW_RELATION",
+            "passed": false,
+            "components": {
+              "entities_present": false,
+              "mechanisms_present": false,
+              "causal_edges_present": true
+            }
+          }
+        }
+      },
+      "quantitative_accuracy": {
+        "verdict": "INCORRECT",
+        "calibration_error": 1.0,
+        "predicted": 2.5,
+        "observed": 1000000,
+        "tolerance_bounds": [
+          1.25,
+          2.5
+        ],
+        "in_range": false,
+        "strict_calibration_threshold": 0.5
+      },
+      "receipt_hash": "a825e27f2819113e91a832a32db49d3ac552f5d42608c2461bb642e442649332"
+    },
+    {
+      "key": "PB-003|B_llm_only",
+      "case_id": "PB-003",
+      "case_name": "Graphene",
+      "config": "B_llm_only",
+      "candidate_id": "PRED2-PB-003-B_llm_only",
+      "receipt_integrity_ok": true,
+      "simulation_registration_date": "2003-12-31T23:59:59Z",
+      "evaluation_type": "HISTORICAL_RETROSPECTIVE_BACKTEST_GATE2",
+      "leakage_control": "evidence_only_prompt",
+      "backend": "z-ai-cli-glm-4-plus",
+      "hypothesis": "The mechanical cleavage energy required to separate graphite layers decreases as the number of layers decreases",
+      "prediction": "The cleavage energy for a single-layer graphene sheet will be less than half that of bulk graphite",
+      "predicted_value": 0.4,
+      "tolerance_lower": 0.25,
+      "tolerance_upper": 1.5,
+      "expected_direction": "DECREASE",
+      "outcome_source": "Novoselov & Geim 2004 — single-layer graphene isolated and characterized",
+      "outcome_value": "YES",
+      "outcome_direction": "BINARY",
+      "outcome_measurement_date": "2004-10-01T00:00:00Z",
+      "final_classification": "INDETERMINATE",
+      "DISCOVERY_PREDICTION_SCORE": 0.0,
+      "information_content": {
+        "classification": "GENUINE_NOVEL_PREDICTION",
+        "information_content_score": 1.0,
+        "encoded_count": 0,
+        "encoded_count_max": 6,
+        "reason": "prediction introduces genuinely new relation: encoded_count=0/6",
+        "checks": {
+          "c1": {
+            "check": "ENTITIES_PRESENT",
+            "passed": false,
+            "new_entities_in_prediction": [
+              "decreases",
+              "energy",
+              "layers",
+              "required",
+              "separate",
+              "sheet",
+              "single-layer"
+            ]
+          },
+          "c2": {
+            "check": "MECHANISMS_PRESENT",
+            "passed": false,
+            "prediction_mechanism_verbs": [
+              "decreases"
+            ],
+            "evidence_mechanism_verbs": [
+              "exhibits"
+            ],
+            "new_verbs_in_prediction": [
+              "decreases"
+            ]
+          },
+          "c3": {
+            "check": "CAUSAL_EDGES_PRESENT",
+            "passed": false,
+            "prediction_triples": [
+              {
+                "subject": "the mechanical cleavage energy required to separate graphite layers",
+                "predicate": "DECREASES",
+                "object": "as the number of layers decreases the cleavage energy for a single-layer graphene sheet will be less than half that of bulk graphite"
+              }
+            ],
+            "unmatched_triples": [
+              {
+                "subject": "the mechanical cleavage energy required to separate graphite layers",
+                "predicate": "DECREASES",
+                "object": "as the number of layers decreases the cleavage energy for a single-layer graphene sheet will be less than half that of bulk graphite"
+              }
+            ]
+          },
+          "c4": {
+            "check": "COMBINATION_ALREADY_IMPLIED",
+            "passed": false,
+            "prediction_combinations": [
+              [
+                "layer",
+                "single"
+              ]
+            ],
+            "evidence_combinations": [],
+            "details": [
+              {
+                "pair": [
+                  "layer",
+                  "single"
+                ],
+                "in_explicit_combinations": false,
+                "both_entities_in_evidence": false,
+                "implied": false
+              }
+            ]
+          },
+          "c5": {
+            "check": "CONSTRAINT_ALREADY_STATED",
+            "passed": false,
+            "prediction_bounds": [
+              0.1,
+              0.6
+            ],
+            "evidence_numeric_constraints": []
+          },
+          "c6": {
+            "check": "PREDICTION_DERIVABLE_WITHOUT_NEW_RELATION",
+            "passed": false,
+            "components": {
+              "entities_present": false,
+              "mechanisms_present": false,
+              "causal_edges_present": false
+            }
+          }
+        }
+      },
+      "quantitative_accuracy": {
+        "verdict": "INDETERMINATE",
+        "calibration_error": null,
+        "predicted": 0.4,
+        "observed": "YES",
+        "tolerance_bounds": null
+      },
+      "receipt_hash": "8de5c5d62f2f2ffbe8e6db19c652f0c1bd52313e13058fe5f04d8f028a001ad4"
+    },
+    {
+      "key": "PB-003|C_mechanism",
+      "case_id": "PB-003",
+      "case_name": "Graphene",
+      "config": "C_mechanism",
+      "candidate_id": "PRED2-PB-003-C_mechanism",
+      "receipt_integrity_ok": true,
+      "simulation_registration_date": "2003-12-31T23:59:59Z",
+      "evaluation_type": "HISTORICAL_RETROSPECTIVE_BACKTEST_GATE2",
+      "leakage_control": "evidence_only_prompt",
+      "backend": "z-ai-cli-glm-4-plus",
+      "hypothesis": "The thermodynamic instability of 2D crystals can be overcome by introducing curvature through rolling into nanotubes",
+      "prediction": "The critical thickness for stable 2D carbon crystals will be greater when rolled into nanotubes compared to flat sheets",
+      "predicted_value": 3,
+      "tolerance_lower": 0.5,
+      "tolerance_upper": 2.0,
+      "expected_direction": "INCREASE",
+      "outcome_source": "Novoselov & Geim 2004 — single-layer graphene isolated and characterized",
+      "outcome_value": "YES",
+      "outcome_direction": "BINARY",
+      "outcome_measurement_date": "2004-10-01T00:00:00Z",
+      "final_classification": "INDETERMINATE",
+      "DISCOVERY_PREDICTION_SCORE": 0.0,
+      "information_content": {
+        "classification": "GENUINE_NOVEL_PREDICTION",
+        "information_content_score": 1.0,
+        "encoded_count": 0,
+        "encoded_count_max": 6,
+        "reason": "prediction introduces genuinely new relation: encoded_count=0/6",
+        "checks": {
+          "c1": {
+            "check": "ENTITIES_PRESENT",
+            "passed": false,
+            "new_entities_in_prediction": [
+              "compared",
+              "critical",
+              "curvature",
+              "greater",
+              "instability",
+              "introducing",
+              "overcome",
+              "rolling",
+              "sheets",
+              "thermodynamic",
+              "thickness"
+            ]
+          },
+          "c2": {
+            "check": "MECHANISMS_PRESENT",
+            "passed": false,
+            "prediction_mechanism_verbs": [
+              "can"
+            ],
+            "evidence_mechanism_verbs": [
+              "exhibits"
+            ],
+            "new_verbs_in_prediction": [
+              "can"
+            ]
+          },
+          "c3": {
+            "check": "CAUSAL_EDGES_PRESENT",
+            "passed": false,
+            "prediction_triples": [
+              {
+                "subject": "the thermodynamic instability of 2d crystals",
+                "predicate": "ENABLES",
+                "object": "be overcome by introducing curvature through rolling into nanotubes the critical thickness for stable 2d carbon crystals will be greater when rolled into nanotubes compared to flat sheets"
+              }
+            ],
+            "unmatched_triples": [
+              {
+                "subject": "the thermodynamic instability of 2d crystals",
+                "predicate": "ENABLES",
+                "object": "be overcome by introducing curvature through rolling into nanotubes the critical thickness for stable 2d carbon crystals will be greater when rolled into nanotubes compared to flat sheets"
+              }
+            ]
+          },
+          "c4": {
+            "check": "COMBINATION_ALREADY_IMPLIED",
+            "passed": false,
+            "prediction_combinations": [],
+            "reason": "no combination detected in prediction"
+          },
+          "c5": {
+            "check": "CONSTRAINT_ALREADY_STATED",
+            "passed": false,
+            "prediction_bounds": [
+              1.5,
+              6.0
+            ],
+            "evidence_numeric_constraints": []
+          },
+          "c6": {
+            "check": "PREDICTION_DERIVABLE_WITHOUT_NEW_RELATION",
+            "passed": false,
+            "components": {
+              "entities_present": false,
+              "mechanisms_present": false,
+              "causal_edges_present": false
+            }
+          }
+        }
+      },
+      "quantitative_accuracy": {
+        "verdict": "INDETERMINATE",
+        "calibration_error": null,
+        "predicted": 3,
+        "observed": "YES",
+        "tolerance_bounds": null
+      },
+      "receipt_hash": "17a9287b91776fa84f4dd563fb3165e68874e4d25247e54c4e3835ae7eca5b3f"
+    },
+    {
+      "key": "PB-003|D_random",
+      "case_id": "PB-003",
+      "case_name": "Graphene",
+      "config": "D_random",
+      "candidate_id": "PRED2-PB-003-D_random",
+      "receipt_integrity_ok": true,
+      "simulation_registration_date": "2003-12-31T23:59:59Z",
+      "evaluation_type": "HISTORICAL_RETROSPECTIVE_BACKTEST_GATE2",
+      "leakage_control": "evidence_only_prompt",
+      "backend": "z-ai-cli-glm-4-plus",
+      "hypothesis": "Mechanical cleavage of graphite will produce single-layer carbon nanotubes",
+      "prediction": "The yield of single-layer nanotubes from mechanical cleavage of graphite will be greater than 0.1% by weight",
+      "predicted_value": 0.15,
+      "tolerance_lower": 0.5,
+      "tolerance_upper": 2.0,
+      "expected_direction": "INCREASE",
+      "outcome_source": "Novoselov & Geim 2004 — single-layer graphene isolated and characterized",
+      "outcome_value": "YES",
+      "outcome_direction": "BINARY",
+      "outcome_measurement_date": "2004-10-01T00:00:00Z",
+      "final_classification": "INDETERMINATE",
+      "DISCOVERY_PREDICTION_SCORE": 0.0,
+      "information_content": {
+        "classification": "GENUINE_NOVEL_PREDICTION",
+        "information_content_score": 1.0,
+        "encoded_count": 0,
+        "encoded_count_max": 6,
+        "reason": "prediction introduces genuinely new relation: encoded_count=0/6",
+        "checks": {
+          "c1": {
+            "check": "ENTITIES_PRESENT",
+            "passed": false,
+            "new_entities_in_prediction": [
+              "greater",
+              "produce",
+              "single-layer",
+              "weight",
+              "yield"
+            ]
+          },
+          "c2": {
+            "check": "MECHANISMS_PRESENT",
+            "passed": false,
+            "prediction_mechanism_verbs": [
+              "produce"
+            ],
+            "evidence_mechanism_verbs": [
+              "exhibits"
+            ],
+            "new_verbs_in_prediction": [
+              "produce"
+            ]
+          },
+          "c3": {
+            "check": "CAUSAL_EDGES_PRESENT",
+            "passed": false,
+            "prediction_triples": [
+              {
+                "subject": "mechanical cleavage of graphite will",
+                "predicate": "CAUSES",
+                "object": "single-layer carbon nanotubes the yield of single-layer nanotubes from mechanical cleavage of graphite will be greater than 0.1% by weight"
+              }
+            ],
+            "unmatched_triples": [
+              {
+                "subject": "mechanical cleavage of graphite will",
+                "predicate": "CAUSES",
+                "object": "single-layer carbon nanotubes the yield of single-layer nanotubes from mechanical cleavage of graphite will be greater than 0.1% by weight"
+              }
+            ]
+          },
+          "c4": {
+            "check": "COMBINATION_ALREADY_IMPLIED",
+            "passed": false,
+            "prediction_combinations": [
+              [
+                "layer",
+                "single"
+              ],
+              [
+                "layer",
+                "single"
+              ]
+            ],
+            "evidence_combinations": [],
+            "details": [
+              {
+                "pair": [
+                  "layer",
+                  "single"
+                ],
+                "in_explicit_combinations": false,
+                "both_entities_in_evidence": false,
+                "implied": false
+              },
+              {
+                "pair": [
+                  "layer",
+                  "single"
+                ],
+                "in_explicit_combinations": false,
+                "both_entities_in_evidence": false,
+                "implied": false
+              }
+            ]
+          },
+          "c5": {
+            "check": "CONSTRAINT_ALREADY_STATED",
+            "passed": false,
+            "prediction_bounds": [
+              0.075,
+              0.3
+            ],
+            "evidence_numeric_constraints": []
+          },
+          "c6": {
+            "check": "PREDICTION_DERIVABLE_WITHOUT_NEW_RELATION",
+            "passed": false,
+            "components": {
+              "entities_present": false,
+              "mechanisms_present": false,
+              "causal_edges_present": false
+            }
+          }
+        }
+      },
+      "quantitative_accuracy": {
+        "verdict": "INDETERMINATE",
+        "calibration_error": null,
+        "predicted": 0.15,
+        "observed": "YES",
+        "tolerance_bounds": null
+      },
+      "receipt_hash": "c53035cbb96e39e52914cf8d6597b595bc06cb6b7c4e3c96c0dea28657f2d039"
+    },
+    {
+      "key": "PB-003|F_full",
+      "case_id": "PB-003",
+      "case_name": "Graphene",
+      "config": "F_full",
+      "candidate_id": "PRED2-PB-003-F_full",
+      "receipt_integrity_ok": true,
+      "simulation_registration_date": "2003-12-31T23:59:59Z",
+      "evaluation_type": "HISTORICAL_RETROSPECTIVE_BACKTEST_GATE2",
+      "leakage_control": "evidence_only_prompt",
+      "backend": "z-ai-cli-glm-4-plus",
+      "hypothesis": "The thermodynamic instability of 2D crystals is overcome by rolling them into nanotubes, which introduces mechanical stability through curvature-induced strain distribution.",
+      "prediction": "The radius of carbon nanotubes will be inversely proportional to the square root of the layer thickness of graphite precursors.",
+      "predicted_value": 1.5,
+      "tolerance_lower": 0.75,
+      "tolerance_upper": 1.5,
+      "expected_direction": "INCREASE",
+      "outcome_source": "Novoselov & Geim 2004 — single-layer graphene isolated and characterized",
+      "outcome_value": "YES",
+      "outcome_direction": "BINARY",
+      "outcome_measurement_date": "2004-10-01T00:00:00Z",
+      "final_classification": "INDETERMINATE",
+      "DISCOVERY_PREDICTION_SCORE": 0.0,
+      "information_content": {
+        "classification": "GENUINE_NOVEL_PREDICTION",
+        "information_content_score": 1.0,
+        "encoded_count": 0,
+        "encoded_count_max": 6,
+        "reason": "prediction introduces genuinely new relation: encoded_count=0/6",
+        "checks": {
+          "c1": {
+            "check": "ENTITIES_PRESENT",
+            "passed": false,
+            "new_entities_in_prediction": [
+              "curvature-induced",
+              "distribution",
+              "instability",
+              "introduces",
+              "inversely",
+              "layer",
+              "overcome",
+              "precursors",
+              "proportional",
+              "radius",
+              "rolling",
+              "square",
+              "stability",
+              "strain",
+              "thermodynamic",
+              "thickness"
+            ]
+          },
+          "c2": {
+            "check": "MECHANISMS_PRESENT",
+            "passed": false,
+            "prediction_mechanism_verbs": [
+              "induced",
+              "is"
+            ],
+            "evidence_mechanism_verbs": [
+              "exhibits"
+            ],
+            "new_verbs_in_prediction": [
+              "induced",
+              "is"
+            ]
+          },
+          "c3": {
+            "check": "CAUSAL_EDGES_PRESENT",
+            "passed": false,
+            "prediction_triples": [
+              {
+                "subject": "the thermodynamic instability of 2d crystals",
+                "predicate": "EXHIBITS",
+                "object": "overcome by rolling them into nanotubes, which introduces mechanical stability through curvature-induced strain distribution"
+              }
+            ],
+            "unmatched_triples": [
+              {
+                "subject": "the thermodynamic instability of 2d crystals",
+                "predicate": "EXHIBITS",
+                "object": "overcome by rolling them into nanotubes, which introduces mechanical stability through curvature-induced strain distribution"
+              }
+            ]
+          },
+          "c4": {
+            "check": "COMBINATION_ALREADY_IMPLIED",
+            "passed": false,
+            "prediction_combinations": [
+              [
+                "curvature",
+                "induced"
+              ]
+            ],
+            "evidence_combinations": [],
+            "details": [
+              {
+                "pair": [
+                  "curvature",
+                  "induced"
+                ],
+                "in_explicit_combinations": false,
+                "both_entities_in_evidence": false,
+                "implied": false
+              }
+            ]
+          },
+          "c5": {
+            "check": "CONSTRAINT_ALREADY_STATED",
+            "passed": false,
+            "prediction_bounds": [
+              1.125,
+              2.25
+            ],
+            "evidence_numeric_constraints": []
+          },
+          "c6": {
+            "check": "PREDICTION_DERIVABLE_WITHOUT_NEW_RELATION",
+            "passed": false,
+            "components": {
+              "entities_present": false,
+              "mechanisms_present": false,
+              "causal_edges_present": false
+            }
+          }
+        }
+      },
+      "quantitative_accuracy": {
+        "verdict": "INDETERMINATE",
+        "calibration_error": null,
+        "predicted": 1.5,
+        "observed": "YES",
+        "tolerance_bounds": null
+      },
+      "receipt_hash": "2b2282ec8423ba0522ed37aa6701517a731492d0f5e32727b947305ca9951baf"
+    },
+    {
+      "key": "PB-004|B_llm_only",
+      "case_id": "PB-004",
+      "case_name": "Deep learning AlexNet",
+      "config": "B_llm_only",
+      "candidate_id": "PRED2-PB-004-B_llm_only",
+      "receipt_integrity_ok": true,
+      "simulation_registration_date": "2011-12-31T23:59:59Z",
+      "evaluation_type": "HISTORICAL_RETROSPECTIVE_BACKTEST_GATE2",
+      "leakage_control": "evidence_only_prompt",
+      "backend": "z-ai-cli-glm-4-plus",
+      "hypothesis": "Increasing CNN depth beyond shallow architectures will reduce vision benchmark error below 26%",
+      "prediction": "CNN depth increase reduces SVM error dominance",
+      "predicted_value": 22,
+      "tolerance_lower": 0.8,
+      "tolerance_upper": 1.2,
+      "expected_direction": "DECREASE",
+      "outcome_source": "Krizhevsky et al. 2012 — AlexNet achieves 15.3% top-5 error vs 26.2% next best",
+      "outcome_value": 15.3,
+      "outcome_direction": "DECREASE",
+      "outcome_measurement_date": "2012-09-01T00:00:00Z",
+      "final_classification": "RECONSTRUCTION",
+      "DISCOVERY_PREDICTION_SCORE": 0.0,
+      "information_content": {
+        "classification": "RECONSTRUCTION",
+        "information_content_score": 0.8333,
+        "encoded_count": 1,
+        "encoded_count_max": 6,
+        "reason": "prediction encoded by evidence: c3=False, c4=False, c5=True, c6=False, encoded_count=1/6",
+        "checks": {
+          "c1": {
+            "check": "ENTITIES_PRESENT",
+            "passed": false,
+            "new_entities_in_prediction": [
+              "architectures",
+              "benchmark",
+              "depth",
+              "dominance",
+              "increase",
+              "increasing",
+              "reduce",
+              "reduces",
+              "svm"
+            ]
+          },
+          "c2": {
+            "check": "MECHANISMS_PRESENT",
+            "passed": false,
+            "prediction_mechanism_verbs": [
+              "increase",
+              "reduce",
+              "reduces"
+            ],
+            "evidence_mechanism_verbs": [
+              "exhibits",
+              "prevents"
+            ],
+            "new_verbs_in_prediction": [
+              "increase",
+              "reduce",
+              "reduces"
+            ]
+          },
+          "c3": {
+            "check": "CAUSAL_EDGES_PRESENT",
+            "passed": false,
+            "prediction_triples": [
+              {
+                "subject": "increasing cnn depth beyond shallow architectures will",
+                "predicate": "PREVENTS",
+                "object": "vision benchmark error below 26% cnn depth increase reduces svm error dominance"
+              }
+            ],
+            "unmatched_triples": [
+              {
+                "subject": "increasing cnn depth beyond shallow architectures will",
+                "predicate": "PREVENTS",
+                "object": "vision benchmark error below 26% cnn depth increase reduces svm error dominance"
+              }
+            ]
+          },
+          "c4": {
+            "check": "COMBINATION_ALREADY_IMPLIED",
+            "passed": false,
+            "prediction_combinations": [],
+            "reason": "no combination detected in prediction"
+          },
+          "c5": {
+            "check": "CONSTRAINT_ALREADY_STATED",
+            "passed": true,
+            "prediction_bounds": [
+              17.6,
+              26.4
+            ],
+            "matched_evidence_constraint": {
+              "subject": "svms dominate vision benchmarks at",
+              "relation": "~",
+              "value": 26.0,
+              "unit": "%",
+              "type": "NUMERIC",
+              "source_sentence": "SVMs dominate vision benchmarks at ~26% error."
+            }
+          },
+          "c6": {
+            "check": "PREDICTION_DERIVABLE_WITHOUT_NEW_RELATION",
+            "passed": false,
+            "components": {
+              "entities_present": false,
+              "mechanisms_present": false,
+              "causal_edges_present": false
+            }
+          }
+        }
+      },
+      "quantitative_accuracy": {
+        "verdict": "INCORRECT",
+        "calibration_error": 0.4379,
+        "predicted": 22,
+        "observed": 15.3,
+        "tolerance_bounds": [
+          17.6,
+          26.4
+        ],
+        "in_range": false,
+        "strict_calibration_threshold": 0.5
+      },
+      "receipt_hash": "13247809a0cbc46b042c794c686f43fd63e1fa5d6c2b4e3c04a8a320b7b0dfd9"
+    },
+    {
+      "key": "PB-004|C_mechanism",
+      "case_id": "PB-004",
+      "case_name": "Deep learning AlexNet",
+      "config": "C_mechanism",
+      "candidate_id": "PRED2-PB-004-C_mechanism",
+      "receipt_integrity_ok": true,
+      "simulation_registration_date": "2011-12-31T23:59:59Z",
+      "evaluation_type": "HISTORICAL_RETROSPECTIVE_BACKTEST_GATE2",
+      "leakage_control": "evidence_only_prompt",
+      "backend": "z-ai-cli-glm-4-plus",
+      "hypothesis": "The combination of ReLU activation and dropout enables deeper CNN architectures to outperform SVMs on vision benchmarks",
+      "prediction": "A CNN with 5+ layers using ReLU and dropout will achieve <20% error on ImageNet",
+      "predicted_value": 18,
+      "tolerance_lower": 0.75,
+      "tolerance_upper": 1.5,
+      "expected_direction": "DECREASE",
+      "outcome_source": "Krizhevsky et al. 2012 — AlexNet achieves 15.3% top-5 error vs 26.2% next best",
+      "outcome_value": 15.3,
+      "outcome_direction": "DECREASE",
+      "outcome_measurement_date": "2012-09-01T00:00:00Z",
+      "final_classification": "RECONSTRUCTION",
+      "DISCOVERY_PREDICTION_SCORE": 0.0,
+      "information_content": {
+        "classification": "RECONSTRUCTION",
+        "information_content_score": 0.6667,
+        "encoded_count": 2,
+        "encoded_count_max": 6,
+        "reason": "prediction encoded by evidence: c3=False, c4=True, c5=True, c6=False, encoded_count=2/6",
+        "checks": {
+          "c1": {
+            "check": "ENTITIES_PRESENT",
+            "passed": false,
+            "new_entities_in_prediction": [
+              "achieve",
+              "architectures",
+              "combination",
+              "deeper",
+              "enables",
+              "layers",
+              "outperform"
+            ]
+          },
+          "c2": {
+            "check": "MECHANISMS_PRESENT",
+            "passed": false,
+            "prediction_mechanism_verbs": [
+              "enables"
+            ],
+            "evidence_mechanism_verbs": [
+              "exhibits",
+              "prevents"
+            ],
+            "new_verbs_in_prediction": [
+              "enables"
+            ]
+          },
+          "c3": {
+            "check": "CAUSAL_EDGES_PRESENT",
+            "passed": false,
+            "prediction_triples": [
+              {
+                "subject": "the combination of relu activation and dropout",
+                "predicate": "ENABLES",
+                "object": "deeper cnn architectures to outperform svms on vision benchmarks a cnn with 5+ layers using relu"
+              }
+            ],
+            "unmatched_triples": [
+              {
+                "subject": "the combination of relu activation and dropout",
+                "predicate": "ENABLES",
+                "object": "deeper cnn architectures to outperform svms on vision benchmarks a cnn with 5+ layers using relu"
+              }
+            ]
+          },
+          "c4": {
+            "check": "COMBINATION_ALREADY_IMPLIED",
+            "passed": true,
+            "prediction_combinations": [
+              [
+                "activation",
+                "dropout"
+              ],
+              [
+                "dropout",
+                "relu"
+              ]
+            ],
+            "evidence_combinations": [],
+            "details": [
+              {
+                "pair": [
+                  "activation",
+                  "dropout"
+                ],
+                "in_explicit_combinations": false,
+                "both_entities_in_evidence": true,
+                "implied": true
+              },
+              {
+                "pair": [
+                  "dropout",
+                  "relu"
+                ],
+                "in_explicit_combinations": false,
+                "both_entities_in_evidence": true,
+                "implied": true
+              }
+            ]
+          },
+          "c5": {
+            "check": "CONSTRAINT_ALREADY_STATED",
+            "passed": true,
+            "prediction_bounds": [
+              13.5,
+              27.0
+            ],
+            "matched_evidence_constraint": {
+              "subject": "svms dominate vision benchmarks at",
+              "relation": "~",
+              "value": 26.0,
+              "unit": "%",
+              "type": "NUMERIC",
+              "source_sentence": "SVMs dominate vision benchmarks at ~26% error."
+            }
+          },
+          "c6": {
+            "check": "PREDICTION_DERIVABLE_WITHOUT_NEW_RELATION",
+            "passed": false,
+            "components": {
+              "entities_present": false,
+              "mechanisms_present": false,
+              "causal_edges_present": false
+            }
+          }
+        }
+      },
+      "quantitative_accuracy": {
+        "verdict": "CORRECT",
+        "calibration_error": 0.1765,
+        "predicted": 18,
+        "observed": 15.3,
+        "tolerance_bounds": [
+          13.5,
+          27.0
+        ],
+        "in_range": true,
+        "strict_calibration_threshold": 0.5
+      },
+      "receipt_hash": "fc1caf16ab782ae9ed661b2f6f153d2e67cb0d3bc4805f5526cd2dcbc6620317"
+    },
+    {
+      "key": "PB-004|D_random",
+      "case_id": "PB-004",
+      "case_name": "Deep learning AlexNet",
+      "config": "D_random",
+      "candidate_id": "PRED2-PB-004-D_random",
+      "receipt_integrity_ok": true,
+      "simulation_registration_date": "2011-12-31T23:59:59Z",
+      "evaluation_type": "HISTORICAL_RETROSPECTIVE_BACKTEST_GATE2",
+      "leakage_control": "evidence_only_prompt",
+      "backend": "z-ai-cli-glm-4-plus",
+      "hypothesis": "Increasing CNN depth beyond shallow architectures will reduce classification error on ImageNet",
+      "prediction": "A CNN with 10 layers will achieve lower error than a shallow CNN on ImageNet",
+      "predicted_value": 22,
+      "tolerance_lower": 0.85,
+      "tolerance_upper": 1.15,
+      "expected_direction": "DECREASE",
+      "outcome_source": "Krizhevsky et al. 2012 — AlexNet achieves 15.3% top-5 error vs 26.2% next best",
+      "outcome_value": 15.3,
+      "outcome_direction": "DECREASE",
+      "outcome_measurement_date": "2012-09-01T00:00:00Z",
+      "final_classification": "INCORRECT",
+      "DISCOVERY_PREDICTION_SCORE": 0.0,
+      "information_content": {
+        "classification": "GENUINE_NOVEL_PREDICTION",
+        "information_content_score": 1.0,
+        "encoded_count": 0,
+        "encoded_count_max": 6,
+        "reason": "prediction introduces genuinely new relation: encoded_count=0/6",
+        "checks": {
+          "c1": {
+            "check": "ENTITIES_PRESENT",
+            "passed": false,
+            "new_entities_in_prediction": [
+              "achieve",
+              "architectures",
+              "classification",
+              "depth",
+              "increasing",
+              "layers",
+              "reduce"
+            ]
+          },
+          "c2": {
+            "check": "MECHANISMS_PRESENT",
+            "passed": false,
+            "prediction_mechanism_verbs": [
+              "lower",
+              "reduce"
+            ],
+            "evidence_mechanism_verbs": [
+              "exhibits",
+              "prevents"
+            ],
+            "new_verbs_in_prediction": [
+              "lower",
+              "reduce"
+            ]
+          },
+          "c3": {
+            "check": "CAUSAL_EDGES_PRESENT",
+            "passed": false,
+            "prediction_triples": [
+              {
+                "subject": "increasing cnn depth beyond shallow architectures will",
+                "predicate": "PREVENTS",
+                "object": "classification error on imagenet a cnn with 10 layers will achieve lower error than a shallow cnn on imagenet"
+              }
+            ],
+            "unmatched_triples": [
+              {
+                "subject": "increasing cnn depth beyond shallow architectures will",
+                "predicate": "PREVENTS",
+                "object": "classification error on imagenet a cnn with 10 layers will achieve lower error than a shallow cnn on imagenet"
+              }
+            ]
+          },
+          "c4": {
+            "check": "COMBINATION_ALREADY_IMPLIED",
+            "passed": false,
+            "prediction_combinations": [],
+            "reason": "no combination detected in prediction"
+          },
+          "c5": {
+            "check": "CONSTRAINT_ALREADY_STATED",
+            "passed": false,
+            "prediction_bounds": [
+              18.7,
+              25.3
+            ],
+            "evidence_numeric_constraints": [
+              {
+                "subject": "svms dominate vision benchmarks at",
+                "relation": "~",
+                "value": 26.0,
+                "unit": "%",
+                "type": "NUMERIC",
+                "source_sentence": "SVMs dominate vision benchmarks at ~26% error."
+              }
+            ]
+          },
+          "c6": {
+            "check": "PREDICTION_DERIVABLE_WITHOUT_NEW_RELATION",
+            "passed": false,
+            "components": {
+              "entities_present": false,
+              "mechanisms_present": false,
+              "causal_edges_present": false
+            }
+          }
+        }
+      },
+      "quantitative_accuracy": {
+        "verdict": "INCORRECT",
+        "calibration_error": 0.4379,
+        "predicted": 22,
+        "observed": 15.3,
+        "tolerance_bounds": [
+          18.7,
+          25.3
+        ],
+        "in_range": false,
+        "strict_calibration_threshold": 0.5
+      },
+      "receipt_hash": "be07d246919e17796430782a4865b0cc25da011e81a5b626779a187feeab8f27"
+    },
+    {
+      "key": "PB-004|F_full",
+      "case_id": "PB-004",
+      "case_name": "Deep learning AlexNet",
+      "config": "F_full",
+      "candidate_id": "PRED2-PB-004-F_full",
+      "receipt_integrity_ok": true,
+      "simulation_registration_date": "2011-12-31T23:59:59Z",
+      "evaluation_type": "HISTORICAL_RETROSPECTIVE_BACKTEST_GATE2",
+      "leakage_control": "evidence_only_prompt",
+      "backend": "z-ai-cli-glm-4-plus",
+      "hypothesis": "Increasing CNN depth beyond shallow architectures will reduce error rates below the current SVM benchmark of 26%",
+      "prediction": "A deep CNN (more than 5 layers) will achieve 20% error rate on ImageNet",
+      "predicted_value": 20,
+      "tolerance_lower": 0.9,
+      "tolerance_upper": 1.1,
+      "expected_direction": "DECREASE",
+      "outcome_source": "Krizhevsky et al. 2012 — AlexNet achieves 15.3% top-5 error vs 26.2% next best",
+      "outcome_value": 15.3,
+      "outcome_direction": "DECREASE",
+      "outcome_measurement_date": "2012-09-01T00:00:00Z",
+      "final_classification": "INCORRECT",
+      "DISCOVERY_PREDICTION_SCORE": 0.0,
+      "information_content": {
+        "classification": "GENUINE_NOVEL_PREDICTION",
+        "information_content_score": 1.0,
+        "encoded_count": 0,
+        "encoded_count_max": 6,
+        "reason": "prediction introduces genuinely new relation: encoded_count=0/6",
+        "checks": {
+          "c1": {
+            "check": "ENTITIES_PRESENT",
+            "passed": false,
+            "new_entities_in_prediction": [
+              "achieve",
+              "architectures",
+              "benchmark",
+              "depth",
+              "increasing",
+              "layers",
+              "reduce",
+              "svm"
+            ]
+          },
+          "c2": {
+            "check": "MECHANISMS_PRESENT",
+            "passed": false,
+            "prediction_mechanism_verbs": [
+              "reduce"
+            ],
+            "evidence_mechanism_verbs": [
+              "exhibits",
+              "prevents"
+            ],
+            "new_verbs_in_prediction": [
+              "reduce"
+            ]
+          },
+          "c3": {
+            "check": "CAUSAL_EDGES_PRESENT",
+            "passed": false,
+            "prediction_triples": [
+              {
+                "subject": "increasing cnn depth beyond shallow architectures will",
+                "predicate": "PREVENTS",
+                "object": "error rates below the current svm benchmark of 26% a deep cnn (more than 5 layers) will achieve 20% error rate on imagenet"
+              }
+            ],
+            "unmatched_triples": [
+              {
+                "subject": "increasing cnn depth beyond shallow architectures will",
+                "predicate": "PREVENTS",
+                "object": "error rates below the current svm benchmark of 26% a deep cnn (more than 5 layers) will achieve 20% error rate on imagenet"
+              }
+            ]
+          },
+          "c4": {
+            "check": "COMBINATION_ALREADY_IMPLIED",
+            "passed": false,
+            "prediction_combinations": [],
+            "reason": "no combination detected in prediction"
+          },
+          "c5": {
+            "check": "CONSTRAINT_ALREADY_STATED",
+            "passed": false,
+            "prediction_bounds": [
+              18.0,
+              22.0
+            ],
+            "evidence_numeric_constraints": [
+              {
+                "subject": "svms dominate vision benchmarks at",
+                "relation": "~",
+                "value": 26.0,
+                "unit": "%",
+                "type": "NUMERIC",
+                "source_sentence": "SVMs dominate vision benchmarks at ~26% error."
+              }
+            ]
+          },
+          "c6": {
+            "check": "PREDICTION_DERIVABLE_WITHOUT_NEW_RELATION",
+            "passed": false,
+            "components": {
+              "entities_present": false,
+              "mechanisms_present": false,
+              "causal_edges_present": false
+            }
+          }
+        }
+      },
+      "quantitative_accuracy": {
+        "verdict": "INCORRECT",
+        "calibration_error": 0.3072,
+        "predicted": 20,
+        "observed": 15.3,
+        "tolerance_bounds": [
+          18.0,
+          22.0
+        ],
+        "in_range": false,
+        "strict_calibration_threshold": 0.5
+      },
+      "receipt_hash": "af0b98b49dc2bd42f7fbe015178157cb1650dc13d3de4b68bdbc2a0be8d9ccdd"
+    },
+    {
+      "key": "PB-005|B_llm_only",
+      "case_id": "PB-005",
+      "case_name": "Perovskite solar cells",
+      "config": "B_llm_only",
+      "candidate_id": "PRED2-PB-005-B_llm_only",
+      "receipt_integrity_ok": true,
+      "simulation_registration_date": "2008-12-31T23:59:59Z",
+      "evaluation_type": "HISTORICAL_RETROSPECTIVE_BACKTEST_GATE2",
+      "leakage_control": "evidence_only_prompt",
+      "backend": "z-ai-cli-glm-4-plus",
+      "hypothesis": "Replacing liquid electrolyte with a solid electrolyte in perovskite-sensitized DSSCs will increase stability",
+      "prediction": "Perovskite-sensitized DSSCs with solid electrolyte will show higher stability than those with liquid electrolyte",
+      "predicted_value": "YES",
+      "tolerance_lower": 0.5,
+      "tolerance_upper": 2.0,
+      "expected_direction": "BINARY",
+      "outcome_source": "Kojima et al. 2009 — perovskite-sensitized cell achieves 3.8% efficiency",
+      "outcome_value": 3.8,
+      "outcome_direction": "INCREASE",
+      "outcome_measurement_date": "2009-05-01T00:00:00Z",
+      "final_classification": "INDETERMINATE",
+      "DISCOVERY_PREDICTION_SCORE": 0.0,
+      "information_content": {
+        "classification": "GENUINE_NOVEL_PREDICTION",
+        "information_content_score": 1.0,
+        "encoded_count": 0,
+        "encoded_count_max": 6,
+        "reason": "prediction introduces genuinely new relation: encoded_count=0/6",
+        "checks": {
+          "c1": {
+            "check": "ENTITIES_PRESENT",
+            "passed": false,
+            "new_entities_in_prediction": [
+              "increase",
+              "perovskite-sensitized",
+              "perovskitesensitized",
+              "replacing",
+              "solid"
+            ]
+          },
+          "c2": {
+            "check": "MECHANISMS_PRESENT",
+            "passed": false,
+            "prediction_mechanism_verbs": [
+              "increase",
+              "show"
+            ],
+            "evidence_mechanism_verbs": [
+              "enables",
+              "exhibits",
+              "prevents"
+            ],
+            "new_verbs_in_prediction": [
+              "increase",
+              "show"
+            ]
+          },
+          "c3": {
+            "check": "CAUSAL_EDGES_PRESENT",
+            "passed": false,
+            "prediction_triples": [
+              {
+                "subject": "replacing liquid electrolyte with a solid electrolyte in perovskite-sensitized dsscs will",
+                "predicate": "INCREASES",
+                "object": "stability perovskite-sensitized dsscs with solid electrolyte will show higher stability than those with liquid electrolyte"
+              }
+            ],
+            "unmatched_triples": [
+              {
+                "subject": "replacing liquid electrolyte with a solid electrolyte in perovskite-sensitized dsscs will",
+                "predicate": "INCREASES",
+                "object": "stability perovskite-sensitized dsscs with solid electrolyte will show higher stability than those with liquid electrolyte"
+              }
+            ]
+          },
+          "c4": {
+            "check": "COMBINATION_ALREADY_IMPLIED",
+            "passed": false,
+            "prediction_combinations": [
+              [
+                "dsscs",
+                "solid"
+              ],
+              [
+                "perovskite",
+                "sensitized"
+              ],
+              [
+                "perovskite",
+                "sensitized"
+              ]
+            ],
+            "evidence_combinations": [],
+            "details": [
+              {
+                "pair": [
+                  "dsscs",
+                  "solid"
+                ],
+                "in_explicit_combinations": false,
+                "both_entities_in_evidence": false,
+                "implied": false
+              },
+              {
+                "pair": [
+                  "perovskite",
+                  "sensitized"
+                ],
+                "in_explicit_combinations": false,
+                "both_entities_in_evidence": false,
+                "implied": false
+              },
+              {
+                "pair": [
+                  "perovskite",
+                  "sensitized"
+                ],
+                "in_explicit_combinations": false,
+                "both_entities_in_evidence": false,
+                "implied": false
+              }
+            ]
+          },
+          "c5": {
+            "check": "CONSTRAINT_ALREADY_STATED",
+            "passed": false,
+            "prediction_bounds": null,
+            "reason": "no numeric constraint in prediction"
+          },
+          "c6": {
+            "check": "PREDICTION_DERIVABLE_WITHOUT_NEW_RELATION",
+            "passed": false,
+            "components": {
+              "entities_present": false,
+              "mechanisms_present": false,
+              "causal_edges_present": false
+            }
+          }
+        }
+      },
+      "quantitative_accuracy": {
+        "verdict": "INDETERMINATE",
+        "calibration_error": null,
+        "predicted": "YES",
+        "observed": "3.8"
+      },
+      "receipt_hash": "fa4a47763bd00b12d3c8e290d5eceda33cabb5054850d950a0f5c4f951f60108"
+    },
+    {
+      "key": "PB-005|C_mechanism",
+      "case_id": "PB-005",
+      "case_name": "Perovskite solar cells",
+      "config": "C_mechanism",
+      "candidate_id": "PRED2-PB-005-C_mechanism",
+      "receipt_integrity_ok": true,
+      "simulation_registration_date": "2008-12-31T23:59:59Z",
+      "evaluation_type": "HISTORICAL_RETROSPECTIVE_BACKTEST_GATE2",
+      "leakage_control": "evidence_only_prompt",
+      "backend": "z-ai-cli-glm-4-plus",
+      "hypothesis": "Replacing liquid electrolyte with perovskite sensitizer in DSSCs will increase efficiency beyond 11% due to improved charge transfer",
+      "prediction": "Perovskite-sensitized DSSCs with solid-state electrolytes will achieve efficiency greater than 15%",
+      "predicted_value": 15,
+      "tolerance_lower": 0.5,
+      "tolerance_upper": 1.5,
+      "expected_direction": "INCREASE",
+      "outcome_source": "Kojima et al. 2009 — perovskite-sensitized cell achieves 3.8% efficiency",
+      "outcome_value": 3.8,
+      "outcome_direction": "INCREASE",
+      "outcome_measurement_date": "2009-05-01T00:00:00Z",
+      "final_classification": "RECONSTRUCTION",
+      "DISCOVERY_PREDICTION_SCORE": 0.0,
+      "information_content": {
+        "classification": "RECONSTRUCTION",
+        "information_content_score": 0.8333,
+        "encoded_count": 1,
+        "encoded_count_max": 6,
+        "reason": "prediction encoded by evidence: c3=False, c4=False, c5=True, c6=False, encoded_count=1/6",
+        "checks": {
+          "c1": {
+            "check": "ENTITIES_PRESENT",
+            "passed": false,
+            "new_entities_in_prediction": [
+              "achieve",
+              "charge",
+              "electrolytes",
+              "greater",
+              "improved",
+              "increase",
+              "perovskite",
+              "perovskite-sensitized",
+              "perovskitesensitized",
+              "replacing",
+              "sensitizer",
+              "solid-state",
+              "transfer"
+            ]
+          },
+          "c2": {
+            "check": "MECHANISMS_PRESENT",
+            "passed": false,
+            "prediction_mechanism_verbs": [
+              "improved",
+              "increase"
+            ],
+            "evidence_mechanism_verbs": [
+              "enables",
+              "exhibits",
+              "prevents"
+            ],
+            "new_verbs_in_prediction": [
+              "improved",
+              "increase"
+            ]
+          },
+          "c3": {
+            "check": "CAUSAL_EDGES_PRESENT",
+            "passed": false,
+            "prediction_triples": [
+              {
+                "subject": "replacing liquid electrolyte with perovskite sensitizer in dsscs will",
+                "predicate": "INCREASES",
+                "object": "efficiency beyond 11%"
+              }
+            ],
+            "unmatched_triples": [
+              {
+                "subject": "replacing liquid electrolyte with perovskite sensitizer in dsscs will",
+                "predicate": "INCREASES",
+                "object": "efficiency beyond 11%"
+              }
+            ]
+          },
+          "c4": {
+            "check": "COMBINATION_ALREADY_IMPLIED",
+            "passed": false,
+            "prediction_combinations": [
+              [
+                "electrolyte",
+                "perovskite"
+              ],
+              [
+                "dsscs",
+                "solid"
+              ],
+              [
+                "perovskite",
+                "sensitized"
+              ],
+              [
+                "solid",
+                "state"
+              ]
+            ],
+            "evidence_combinations": [],
+            "details": [
+              {
+                "pair": [
+                  "electrolyte",
+                  "perovskite"
+                ],
+                "in_explicit_combinations": false,
+                "both_entities_in_evidence": false,
+                "implied": false
+              },
+              {
+                "pair": [
+                  "dsscs",
+                  "solid"
+                ],
+                "in_explicit_combinations": false,
+                "both_entities_in_evidence": false,
+                "implied": false
+              },
+              {
+                "pair": [
+                  "perovskite",
+                  "sensitized"
+                ],
+                "in_explicit_combinations": false,
+                "both_entities_in_evidence": false,
+                "implied": false
+              },
+              {
+                "pair": [
+                  "solid",
+                  "state"
+                ],
+                "in_explicit_combinations": false,
+                "both_entities_in_evidence": false,
+                "implied": false
+              }
+            ]
+          },
+          "c5": {
+            "check": "CONSTRAINT_ALREADY_STATED",
+            "passed": true,
+            "prediction_bounds": [
+              7.5,
+              22.5
+            ],
+            "matched_evidence_constraint": {
+              "subject": "dye-sensitized solar cells exist at",
+              "relation": "~",
+              "value": 11.0,
+              "unit": "%",
+              "type": "NUMERIC",
+              "source_sentence": "Dye-sensitized solar cells exist at ~11% efficiency."
+            }
+          },
+          "c6": {
+            "check": "PREDICTION_DERIVABLE_WITHOUT_NEW_RELATION",
+            "passed": false,
+            "components": {
+              "entities_present": false,
+              "mechanisms_present": false,
+              "causal_edges_present": false
+            }
+          }
+        }
+      },
+      "quantitative_accuracy": {
+        "verdict": "INCORRECT",
+        "calibration_error": 2.9474,
+        "predicted": 15,
+        "observed": 3.8,
+        "tolerance_bounds": [
+          7.5,
+          22.5
+        ],
+        "in_range": false,
+        "strict_calibration_threshold": 0.5
+      },
+      "receipt_hash": "6f4ea6ba7f6b7f385a4d49d7136627f728a1275e68e5f84e04db9ea29dfb4720"
+    },
+    {
+      "key": "PB-005|D_random",
+      "case_id": "PB-005",
+      "case_name": "Perovskite solar cells",
+      "config": "D_random",
+      "candidate_id": "PRED2-PB-005-D_random",
+      "receipt_integrity_ok": true,
+      "simulation_registration_date": "2008-12-31T23:59:59Z",
+      "evaluation_type": "HISTORICAL_RETROSPECTIVE_BACKTEST_GATE2",
+      "leakage_control": "evidence_only_prompt",
+      "backend": "z-ai-cli-glm-4-plus",
+      "hypothesis": "Replacing liquid electrolyte with a solid-state material in perovskite-sensitized DSSCs will increase stability while maintaining efficiency",
+      "prediction": "Solid-state perovskite DSSCs will show >1000 hours operational stability under continuous illumination",
+      "predicted_value": 1000,
+      "tolerance_lower": 0.5,
+      "tolerance_upper": 2.0,
+      "expected_direction": "INCREASE",
+      "outcome_source": "Kojima et al. 2009 — perovskite-sensitized cell achieves 3.8% efficiency",
+      "outcome_value": 3.8,
+      "outcome_direction": "INCREASE",
+      "outcome_measurement_date": "2009-05-01T00:00:00Z",
+      "final_classification": "INCORRECT",
+      "DISCOVERY_PREDICTION_SCORE": 0.0,
+      "information_content": {
+        "classification": "GENUINE_NOVEL_PREDICTION",
+        "information_content_score": 1.0,
+        "encoded_count": 0,
+        "encoded_count_max": 6,
+        "reason": "prediction introduces genuinely new relation: encoded_count=0/6",
+        "checks": {
+          "c1": {
+            "check": "ENTITIES_PRESENT",
+            "passed": false,
+            "new_entities_in_prediction": [
+              "continuous",
+              "hours",
+              "illumination",
+              "increase",
+              "maintaining",
+              "operational",
+              "perovskite",
+              "perovskite-sensitized",
+              "replacing",
+              "solid-state",
+              "solidstate"
+            ]
+          },
+          "c2": {
+            "check": "MECHANISMS_PRESENT",
+            "passed": false,
+            "prediction_mechanism_verbs": [
+              "increase",
+              "show"
+            ],
+            "evidence_mechanism_verbs": [
+              "enables",
+              "exhibits",
+              "prevents"
+            ],
+            "new_verbs_in_prediction": [
+              "increase",
+              "show"
+            ]
+          },
+          "c3": {
+            "check": "CAUSAL_EDGES_PRESENT",
+            "passed": false,
+            "prediction_triples": [
+              {
+                "subject": "replacing liquid electrolyte with a solid-state material in perovskite-sensitized dsscs will",
+                "predicate": "INCREASES",
+                "object": "stability"
+              }
+            ],
+            "unmatched_triples": [
+              {
+                "subject": "replacing liquid electrolyte with a solid-state material in perovskite-sensitized dsscs will",
+                "predicate": "INCREASES",
+                "object": "stability"
+              }
+            ]
+          },
+          "c4": {
+            "check": "COMBINATION_ALREADY_IMPLIED",
+            "passed": false,
+            "prediction_combinations": [
+              [
+                "solid",
+                "state"
+              ],
+              [
+                "perovskite",
+                "sensitized"
+              ],
+              [
+                "solid",
+                "state"
+              ]
+            ],
+            "evidence_combinations": [],
+            "details": [
+              {
+                "pair": [
+                  "solid",
+                  "state"
+                ],
+                "in_explicit_combinations": false,
+                "both_entities_in_evidence": false,
+                "implied": false
+              },
+              {
+                "pair": [
+                  "perovskite",
+                  "sensitized"
+                ],
+                "in_explicit_combinations": false,
+                "both_entities_in_evidence": false,
+                "implied": false
+              },
+              {
+                "pair": [
+                  "solid",
+                  "state"
+                ],
+                "in_explicit_combinations": false,
+                "both_entities_in_evidence": false,
+                "implied": false
+              }
+            ]
+          },
+          "c5": {
+            "check": "CONSTRAINT_ALREADY_STATED",
+            "passed": false,
+            "prediction_bounds": [
+              500.0,
+              2000.0
+            ],
+            "evidence_numeric_constraints": [
+              {
+                "subject": "dye-sensitized solar cells exist at",
+                "relation": "~",
+                "value": 11.0,
+                "unit": "%",
+                "type": "NUMERIC",
+                "source_sentence": "Dye-sensitized solar cells exist at ~11% efficiency."
+              }
+            ]
+          },
+          "c6": {
+            "check": "PREDICTION_DERIVABLE_WITHOUT_NEW_RELATION",
+            "passed": false,
+            "components": {
+              "entities_present": false,
+              "mechanisms_present": false,
+              "causal_edges_present": false
+            }
+          }
+        }
+      },
+      "quantitative_accuracy": {
+        "verdict": "INCORRECT",
+        "calibration_error": 262.1579,
+        "predicted": 1000,
+        "observed": 3.8,
+        "tolerance_bounds": [
+          500.0,
+          2000.0
+        ],
+        "in_range": false,
+        "strict_calibration_threshold": 0.5
+      },
+      "receipt_hash": "a73fabbbb1087b1e96b0d866c180ba60a767ace313cd080a73d8942f216c7465"
+    },
+    {
+      "key": "PB-005|F_full",
+      "case_id": "PB-005",
+      "case_name": "Perovskite solar cells",
+      "config": "F_full",
+      "candidate_id": "PRED2-PB-005-F_full",
+      "receipt_integrity_ok": true,
+      "simulation_registration_date": "2008-12-31T23:59:59Z",
+      "evaluation_type": "HISTORICAL_RETROSPECTIVE_BACKTEST_GATE2",
+      "leakage_control": "evidence_only_prompt",
+      "backend": "z-ai-cli-glm-4-plus",
+      "hypothesis": "Replacing liquid electrolyte with a solid-state material in perovskite-sensitized DSSCs will increase efficiency beyond 11%",
+      "prediction": "Perovskite-sensitized DSSCs with solid-state electrolyte will achieve 14.5% efficiency",
+      "predicted_value": 14.5,
+      "tolerance_lower": 0.8,
+      "tolerance_upper": 1.2,
+      "expected_direction": "INCREASE",
+      "outcome_source": "Kojima et al. 2009 — perovskite-sensitized cell achieves 3.8% efficiency",
+      "outcome_value": 3.8,
+      "outcome_direction": "INCREASE",
+      "outcome_measurement_date": "2009-05-01T00:00:00Z",
+      "final_classification": "INCORRECT",
+      "DISCOVERY_PREDICTION_SCORE": 0.0,
+      "information_content": {
+        "classification": "GENUINE_NOVEL_PREDICTION",
+        "information_content_score": 1.0,
+        "encoded_count": 0,
+        "encoded_count_max": 6,
+        "reason": "prediction introduces genuinely new relation: encoded_count=0/6",
+        "checks": {
+          "c1": {
+            "check": "ENTITIES_PRESENT",
+            "passed": false,
+            "new_entities_in_prediction": [
+              "achieve",
+              "increase",
+              "perovskite-sensitized",
+              "perovskitesensitized",
+              "replacing",
+              "solid-state"
+            ]
+          },
+          "c2": {
+            "check": "MECHANISMS_PRESENT",
+            "passed": false,
+            "prediction_mechanism_verbs": [
+              "increase"
+            ],
+            "evidence_mechanism_verbs": [
+              "enables",
+              "exhibits",
+              "prevents"
+            ],
+            "new_verbs_in_prediction": [
+              "increase"
+            ]
+          },
+          "c3": {
+            "check": "CAUSAL_EDGES_PRESENT",
+            "passed": false,
+            "prediction_triples": [
+              {
+                "subject": "replacing liquid electrolyte with a solid-state material in perovskite-sensitized dsscs will",
+                "predicate": "INCREASES",
+                "object": "efficiency beyond 11% perovskite-sensitized dsscs with solid-state electrolyte will achieve 14.5% efficiency"
+              }
+            ],
+            "unmatched_triples": [
+              {
+                "subject": "replacing liquid electrolyte with a solid-state material in perovskite-sensitized dsscs will",
+                "predicate": "INCREASES",
+                "object": "efficiency beyond 11% perovskite-sensitized dsscs with solid-state electrolyte will achieve 14.5% efficiency"
+              }
+            ]
+          },
+          "c4": {
+            "check": "COMBINATION_ALREADY_IMPLIED",
+            "passed": false,
+            "prediction_combinations": [
+              [
+                "dsscs",
+                "solid"
+              ],
+              [
+                "solid",
+                "state"
+              ],
+              [
+                "perovskite",
+                "sensitized"
+              ],
+              [
+                "perovskite",
+                "sensitized"
+              ],
+              [
+                "solid",
+                "state"
+              ]
+            ],
+            "evidence_combinations": [],
+            "details": [
+              {
+                "pair": [
+                  "dsscs",
+                  "solid"
+                ],
+                "in_explicit_combinations": false,
+                "both_entities_in_evidence": false,
+                "implied": false
+              },
+              {
+                "pair": [
+                  "solid",
+                  "state"
+                ],
+                "in_explicit_combinations": false,
+                "both_entities_in_evidence": false,
+                "implied": false
+              },
+              {
+                "pair": [
+                  "perovskite",
+                  "sensitized"
+                ],
+                "in_explicit_combinations": false,
+                "both_entities_in_evidence": false,
+                "implied": false
+              },
+              {
+                "pair": [
+                  "perovskite",
+                  "sensitized"
+                ],
+                "in_explicit_combinations": false,
+                "both_entities_in_evidence": false,
+                "implied": false
+              },
+              {
+                "pair": [
+                  "solid",
+                  "state"
+                ],
+                "in_explicit_combinations": false,
+                "both_entities_in_evidence": false,
+                "implied": false
+              }
+            ]
+          },
+          "c5": {
+            "check": "CONSTRAINT_ALREADY_STATED",
+            "passed": false,
+            "prediction_bounds": [
+              11.6,
+              17.4
+            ],
+            "evidence_numeric_constraints": [
+              {
+                "subject": "dye-sensitized solar cells exist at",
+                "relation": "~",
+                "value": 11.0,
+                "unit": "%",
+                "type": "NUMERIC",
+                "source_sentence": "Dye-sensitized solar cells exist at ~11% efficiency."
+              }
+            ]
+          },
+          "c6": {
+            "check": "PREDICTION_DERIVABLE_WITHOUT_NEW_RELATION",
+            "passed": false,
+            "components": {
+              "entities_present": false,
+              "mechanisms_present": false,
+              "causal_edges_present": false
+            }
+          }
+        }
+      },
+      "quantitative_accuracy": {
+        "verdict": "INCORRECT",
+        "calibration_error": 2.8158,
+        "predicted": 14.5,
+        "observed": 3.8,
+        "tolerance_bounds": [
+          11.6,
+          17.4
+        ],
+        "in_range": false,
+        "strict_calibration_threshold": 0.5
+      },
+      "receipt_hash": "2d126afe5b85041288953bfb05387dad8af391ce1f4772b0bac633d88aa7a6fd"
+    },
+    {
+      "key": "PB-006|B_llm_only",
+      "case_id": "PB-006",
+      "case_name": "mRNA vaccines",
+      "config": "B_llm_only",
+      "candidate_id": "PRED2-PB-006-B_llm_only",
+      "receipt_integrity_ok": true,
+      "simulation_registration_date": "2019-12-31T23:59:59Z",
+      "evaluation_type": "HISTORICAL_RETROSPECTIVE_BACKTEST_GATE2",
+      "leakage_control": "evidence_only_prompt",
+      "backend": "z-ai-cli-glm-4-plus",
+      "hypothesis": "Modified nucleosides reduce RNA immunogenicity in lipid nanoparticle-delivered vaccines",
+      "prediction": "Vaccines using modified nucleosides will have 2.5 times lower immunogenicity than conventional vaccines",
+      "predicted_value": 2.5,
+      "tolerance_lower": 0.5,
+      "tolerance_upper": 2.0,
+      "expected_direction": "DECREASE",
+      "outcome_source": "Pfizer-BioNTech Phase 3 trial — 95% efficacy for mRNA COVID-19 vaccine",
+      "outcome_value": 95,
+      "outcome_direction": "INCREASE",
+      "outcome_measurement_date": "2020-11-01T00:00:00Z",
+      "final_classification": "RECONSTRUCTION",
+      "DISCOVERY_PREDICTION_SCORE": 0.0,
+      "information_content": {
+        "classification": "RECONSTRUCTION",
+        "information_content_score": 0.8333,
+        "encoded_count": 1,
+        "encoded_count_max": 6,
+        "reason": "prediction encoded by evidence: c3=True, c4=False, c5=False, c6=False, encoded_count=1/6",
+        "checks": {
+          "c1": {
+            "check": "ENTITIES_PRESENT",
+            "passed": false,
+            "new_entities_in_prediction": [
+              "nanoparticle-delivered"
+            ]
+          },
+          "c2": {
+            "check": "MECHANISMS_PRESENT",
+            "passed": false,
+            "prediction_mechanism_verbs": [
+              "have",
+              "lower",
+              "reduce"
+            ],
+            "evidence_mechanism_verbs": [
+              "causes",
+              "exhibits",
+              "prevents"
+            ],
+            "new_verbs_in_prediction": [
+              "have",
+              "lower",
+              "reduce"
+            ]
+          },
+          "c3": {
+            "check": "CAUSAL_EDGES_PRESENT",
+            "passed": true,
+            "prediction_triples": [
+              {
+                "subject": "modified nucleosides",
+                "predicate": "PREVENTS",
+                "object": "rna immunogenicity in lipid nanoparticle-delivered vaccines vaccines using modified nucleosides will have 2.5 times lower immunogenicity than conventional vaccines"
+              }
+            ],
+            "unmatched_triples": []
+          },
+          "c4": {
+            "check": "COMBINATION_ALREADY_IMPLIED",
+            "passed": false,
+            "prediction_combinations": [
+              [
+                "delivered",
+                "nanoparticle"
+              ]
+            ],
+            "evidence_combinations": [
+              [
+                "scalability",
+                "speed"
+              ]
+            ],
+            "details": [
+              {
+                "pair": [
+                  "delivered",
+                  "nanoparticle"
+                ],
+                "in_explicit_combinations": false,
+                "both_entities_in_evidence": false,
+                "implied": false
+              }
+            ]
+          },
+          "c5": {
+            "check": "CONSTRAINT_ALREADY_STATED",
+            "passed": false,
+            "prediction_bounds": [
+              1.25,
+              5.0
+            ],
+            "evidence_numeric_constraints": []
+          },
+          "c6": {
+            "check": "PREDICTION_DERIVABLE_WITHOUT_NEW_RELATION",
+            "passed": false,
+            "components": {
+              "entities_present": false,
+              "mechanisms_present": false,
+              "causal_edges_present": true
+            }
+          }
+        }
+      },
+      "quantitative_accuracy": {
+        "verdict": "INCORRECT",
+        "calibration_error": 0.9737,
+        "predicted": 2.5,
+        "observed": 95,
+        "tolerance_bounds": [
+          1.25,
+          5.0
+        ],
+        "in_range": false,
+        "strict_calibration_threshold": 0.5
+      },
+      "receipt_hash": "e7d1d7348833c90f317b4e5eabad547f02d7777deb98858c974a9e531c11a6d9"
+    },
+    {
+      "key": "PB-006|C_mechanism",
+      "case_id": "PB-006",
+      "case_name": "mRNA vaccines",
+      "config": "C_mechanism",
+      "candidate_id": "PRED2-PB-006-C_mechanism",
+      "receipt_integrity_ok": true,
+      "simulation_registration_date": "2019-12-31T23:59:59Z",
+      "evaluation_type": "HISTORICAL_RETROSPECTIVE_BACKTEST_GATE2",
+      "leakage_control": "evidence_only_prompt",
+      "backend": "z-ai-cli-glm-4-plus",
+      "hypothesis": "Lipid nanoparticle delivery of modified nucleoside-containing mRNA reduces immunogenicity while maintaining stability for vaccine development",
+      "prediction": "The immunogenicity of modified nucleoside-containing mRNA delivered by lipid nanoparticles will be 70% lower than unmodified mRNA delivered by the same method",
+      "predicted_value": 0.3,
+      "tolerance_lower": 0.5,
+      "tolerance_upper": 2.0,
+      "expected_direction": "DECREASE",
+      "outcome_source": "Pfizer-BioNTech Phase 3 trial — 95% efficacy for mRNA COVID-19 vaccine",
+      "outcome_value": 95,
+      "outcome_direction": "INCREASE",
+      "outcome_measurement_date": "2020-11-01T00:00:00Z",
+      "final_classification": "RECONSTRUCTION",
+      "DISCOVERY_PREDICTION_SCORE": 0.0,
+      "information_content": {
+        "classification": "RECONSTRUCTION",
+        "information_content_score": 0.8333,
+        "encoded_count": 1,
+        "encoded_count_max": 6,
+        "reason": "prediction encoded by evidence: c3=True, c4=False, c5=False, c6=False, encoded_count=1/6",
+        "checks": {
+          "c1": {
+            "check": "ENTITIES_PRESENT",
+            "passed": false,
+            "new_entities_in_prediction": [
+              "delivered",
+              "delivery",
+              "development",
+              "maintaining",
+              "nanoparticle",
+              "nucleoside-containing",
+              "reduces",
+              "stability",
+              "unmodified",
+              "vaccine"
+            ]
+          },
+          "c2": {
+            "check": "MECHANISMS_PRESENT",
+            "passed": false,
+            "prediction_mechanism_verbs": [
+              "lower",
+              "reduces"
+            ],
+            "evidence_mechanism_verbs": [
+              "causes",
+              "exhibits",
+              "prevents"
+            ],
+            "new_verbs_in_prediction": [
+              "lower",
+              "reduces"
+            ]
+          },
+          "c3": {
+            "check": "CAUSAL_EDGES_PRESENT",
+            "passed": true,
+            "prediction_triples": [
+              {
+                "subject": "lipid nanoparticle delivery of modified nucleoside-containing mrna",
+                "predicate": "PREVENTS",
+                "object": "immunogenicity"
+              }
+            ],
+            "unmatched_triples": []
+          },
+          "c4": {
+            "check": "COMBINATION_ALREADY_IMPLIED",
+            "passed": false,
+            "prediction_combinations": [
+              [
+                "containing",
+                "nucleoside"
+              ],
+              [
+                "containing",
+                "nucleoside"
+              ]
+            ],
+            "evidence_combinations": [
+              [
+                "scalability",
+                "speed"
+              ]
+            ],
+            "details": [
+              {
+                "pair": [
+                  "containing",
+                  "nucleoside"
+                ],
+                "in_explicit_combinations": false,
+                "both_entities_in_evidence": false,
+                "implied": false
+              },
+              {
+                "pair": [
+                  "containing",
+                  "nucleoside"
+                ],
+                "in_explicit_combinations": false,
+                "both_entities_in_evidence": false,
+                "implied": false
+              }
+            ]
+          },
+          "c5": {
+            "check": "CONSTRAINT_ALREADY_STATED",
+            "passed": false,
+            "prediction_bounds": [
+              0.15,
+              0.6
+            ],
+            "evidence_numeric_constraints": []
+          },
+          "c6": {
+            "check": "PREDICTION_DERIVABLE_WITHOUT_NEW_RELATION",
+            "passed": false,
+            "components": {
+              "entities_present": false,
+              "mechanisms_present": false,
+              "causal_edges_present": true
+            }
+          }
+        }
+      },
+      "quantitative_accuracy": {
+        "verdict": "INCORRECT",
+        "calibration_error": 0.9968,
+        "predicted": 0.3,
+        "observed": 95,
+        "tolerance_bounds": [
+          0.15,
+          0.6
+        ],
+        "in_range": false,
+        "strict_calibration_threshold": 0.5
+      },
+      "receipt_hash": "f5bb807107f1674479ca06d103bbe2b9cc2e240ba882227f596af6e9c812a43b"
+    },
+    {
+      "key": "PB-006|D_random",
+      "case_id": "PB-006",
+      "case_name": "mRNA vaccines",
+      "config": "D_random",
+      "candidate_id": "PRED2-PB-006-D_random",
+      "receipt_integrity_ok": true,
+      "simulation_registration_date": "2019-12-31T23:59:59Z",
+      "evaluation_type": "HISTORICAL_RETROSPECTIVE_BACKTEST_GATE2",
+      "leakage_control": "evidence_only_prompt",
+      "backend": "z-ai-cli-glm-4-plus",
+      "hypothesis": "Modified nucleosides combined with lipid nanoparticle delivery will reduce mRNA immunogenicity while maintaining stability for vaccine applications",
+      "prediction": "The immunogenicity of modified mRNA delivered via lipid nanoparticles will be 70% lower than unmodified mRNA delivered via the same method",
+      "predicted_value": 70,
+      "tolerance_lower": 0.5,
+      "tolerance_upper": 1.5,
+      "expected_direction": "DECREASE",
+      "outcome_source": "Pfizer-BioNTech Phase 3 trial — 95% efficacy for mRNA COVID-19 vaccine",
+      "outcome_value": 95,
+      "outcome_direction": "INCREASE",
+      "outcome_measurement_date": "2020-11-01T00:00:00Z",
+      "final_classification": "RECONSTRUCTION",
+      "DISCOVERY_PREDICTION_SCORE": 0.0,
+      "information_content": {
+        "classification": "RECONSTRUCTION",
+        "information_content_score": 0.6667,
+        "encoded_count": 2,
+        "encoded_count_max": 6,
+        "reason": "prediction encoded by evidence: c3=True, c4=True, c5=False, c6=False, encoded_count=2/6",
+        "checks": {
+          "c1": {
+            "check": "ENTITIES_PRESENT",
+            "passed": false,
+            "new_entities_in_prediction": [
+              "applications",
+              "combined",
+              "delivered",
+              "delivery",
+              "maintaining",
+              "nanoparticle",
+              "stability",
+              "unmodified",
+              "vaccine"
+            ]
+          },
+          "c2": {
+            "check": "MECHANISMS_PRESENT",
+            "passed": false,
+            "prediction_mechanism_verbs": [
+              "lower",
+              "reduce"
+            ],
+            "evidence_mechanism_verbs": [
+              "causes",
+              "exhibits",
+              "prevents"
+            ],
+            "new_verbs_in_prediction": [
+              "lower",
+              "reduce"
+            ]
+          },
+          "c3": {
+            "check": "CAUSAL_EDGES_PRESENT",
+            "passed": true,
+            "prediction_triples": [
+              {
+                "subject": "modified nucleosides combined with lipid nanoparticle delivery will",
+                "predicate": "PREVENTS",
+                "object": "mrna immunogenicity"
+              }
+            ],
+            "unmatched_triples": []
+          },
+          "c4": {
+            "check": "COMBINATION_ALREADY_IMPLIED",
+            "passed": true,
+            "prediction_combinations": [
+              [
+                "lipid",
+                "nucleosides"
+              ]
+            ],
+            "evidence_combinations": [
+              [
+                "scalability",
+                "speed"
+              ]
+            ],
+            "details": [
+              {
+                "pair": [
+                  "lipid",
+                  "nucleosides"
+                ],
+                "in_explicit_combinations": false,
+                "both_entities_in_evidence": true,
+                "implied": true
+              }
+            ]
+          },
+          "c5": {
+            "check": "CONSTRAINT_ALREADY_STATED",
+            "passed": false,
+            "prediction_bounds": [
+              35.0,
+              105.0
+            ],
+            "evidence_numeric_constraints": []
+          },
+          "c6": {
+            "check": "PREDICTION_DERIVABLE_WITHOUT_NEW_RELATION",
+            "passed": false,
+            "components": {
+              "entities_present": false,
+              "mechanisms_present": false,
+              "causal_edges_present": true
+            }
+          }
+        }
+      },
+      "quantitative_accuracy": {
+        "verdict": "CORRECT",
+        "calibration_error": 0.2632,
+        "predicted": 70,
+        "observed": 95,
+        "tolerance_bounds": [
+          35.0,
+          105.0
+        ],
+        "in_range": true,
+        "strict_calibration_threshold": 0.5
+      },
+      "receipt_hash": "081c5aad134d608a67135c776873cec295cc324567fc10906095a809f0890d35"
+    },
+    {
+      "key": "PB-006|F_full",
+      "case_id": "PB-006",
+      "case_name": "mRNA vaccines",
+      "config": "F_full",
+      "candidate_id": "PRED2-PB-006-F_full",
+      "receipt_integrity_ok": true,
+      "simulation_registration_date": "2019-12-31T23:59:59Z",
+      "evaluation_type": "HISTORICAL_RETROSPECTIVE_BACKTEST_GATE2",
+      "leakage_control": "evidence_only_prompt",
+      "backend": "z-ai-cli-glm-4-plus",
+      "hypothesis": "Modified nucleosides in mRNA vaccines reduce immunogenicity while maintaining stability, enabling faster vaccine production compared to conventional methods",
+      "prediction": "Vaccine production time from sequence identification to clinical availability",
+      "predicted_value": 45,
+      "tolerance_lower": 0.75,
+      "tolerance_upper": 1.25,
+      "expected_direction": "DECREASE",
+      "outcome_source": "Pfizer-BioNTech Phase 3 trial — 95% efficacy for mRNA COVID-19 vaccine",
+      "outcome_value": 95,
+      "outcome_direction": "INCREASE",
+      "outcome_measurement_date": "2020-11-01T00:00:00Z",
+      "final_classification": "RECONSTRUCTION",
+      "DISCOVERY_PREDICTION_SCORE": 0.0,
+      "information_content": {
+        "classification": "RECONSTRUCTION",
+        "information_content_score": 0.8333,
+        "encoded_count": 1,
+        "encoded_count_max": 6,
+        "reason": "prediction encoded by evidence: c3=True, c4=False, c5=False, c6=False, encoded_count=1/6",
+        "checks": {
+          "c1": {
+            "check": "ENTITIES_PRESENT",
+            "passed": false,
+            "new_entities_in_prediction": [
+              "availability",
+              "clinical",
+              "compared",
+              "enabling",
+              "faster",
+              "identification",
+              "maintaining",
+              "methods",
+              "production",
+              "sequence",
+              "stability",
+              "vaccine"
+            ]
+          },
+          "c2": {
+            "check": "MECHANISMS_PRESENT",
+            "passed": false,
+            "prediction_mechanism_verbs": [
+              "reduce"
+            ],
+            "evidence_mechanism_verbs": [
+              "causes",
+              "exhibits",
+              "prevents"
+            ],
+            "new_verbs_in_prediction": [
+              "reduce"
+            ]
+          },
+          "c3": {
+            "check": "CAUSAL_EDGES_PRESENT",
+            "passed": true,
+            "prediction_triples": [
+              {
+                "subject": "modified nucleosides in mrna vaccines",
+                "predicate": "PREVENTS",
+                "object": "immunogenicity"
+              }
+            ],
+            "unmatched_triples": []
+          },
+          "c4": {
+            "check": "COMBINATION_ALREADY_IMPLIED",
+            "passed": false,
+            "prediction_combinations": [],
+            "reason": "no combination detected in prediction"
+          },
+          "c5": {
+            "check": "CONSTRAINT_ALREADY_STATED",
+            "passed": false,
+            "prediction_bounds": [
+              33.75,
+              56.25
+            ],
+            "evidence_numeric_constraints": []
+          },
+          "c6": {
+            "check": "PREDICTION_DERIVABLE_WITHOUT_NEW_RELATION",
+            "passed": false,
+            "components": {
+              "entities_present": false,
+              "mechanisms_present": false,
+              "causal_edges_present": true
+            }
+          }
+        }
+      },
+      "quantitative_accuracy": {
+        "verdict": "INCORRECT",
+        "calibration_error": 0.5263,
+        "predicted": 45,
+        "observed": 95,
+        "tolerance_bounds": [
+          33.75,
+          56.25
+        ],
+        "in_range": false,
+        "strict_calibration_threshold": 0.5
+      },
+      "receipt_hash": "4d1f0bf1f6d53f775efecdccd8f090f5a38f24ff6b18eb3cdd231c3ad8a4a74e"
+    },
+    {
+      "key": "PB-007|B_llm_only",
+      "case_id": "PB-007",
+      "case_name": "CRISPR gene editing",
+      "config": "B_llm_only",
+      "candidate_id": "PRED2-PB-007-B_llm_only",
+      "receipt_integrity_ok": true,
+      "simulation_registration_date": "2011-12-31T23:59:59Z",
+      "evaluation_type": "HISTORICAL_RETROSPECTIVE_BACKTEST_GATE2",
+      "leakage_control": "evidence_only_prompt",
+      "backend": "z-ai-cli-glm-4-plus",
+      "hypothesis": "The ease of redesigning CRISPR-Cas9 systems is greater than that of zinc finger nucleases or TALENs",
+      "prediction": "The time required to redesign CRISPR-Cas9 systems for a new target sequence is less than that required for zinc finger nucleases or TALENs",
+      "predicted_value": 0.5,
+      "tolerance_lower": 0.5,
+      "tolerance_upper": 2.0,
+      "expected_direction": "DECREASE",
+      "outcome_source": "Jinek et al. 2012 — Cas9+guide RNA achieves programmable DNA cleavage in human cells",
+      "outcome_value": "YES",
+      "outcome_direction": "BINARY",
+      "outcome_measurement_date": "2012-08-01T00:00:00Z",
+      "final_classification": "RECONSTRUCTION",
+      "DISCOVERY_PREDICTION_SCORE": 0.0,
+      "information_content": {
+        "classification": "RECONSTRUCTION",
+        "information_content_score": 0.8333,
+        "encoded_count": 1,
+        "encoded_count_max": 6,
+        "reason": "prediction encoded by evidence: c3=False, c4=True, c5=False, c6=False, encoded_count=1/6",
+        "checks": {
+          "c1": {
+            "check": "ENTITIES_PRESENT",
+            "passed": false,
+            "new_entities_in_prediction": [
+              "crispr-cas9",
+              "crisprcas9",
+              "greater",
+              "redesigning",
+              "required",
+              "sequence",
+              "system"
+            ]
+          },
+          "c2": {
+            "check": "MECHANISMS_PRESENT",
+            "passed": false,
+            "prediction_mechanism_verbs": [
+              "is"
+            ],
+            "evidence_mechanism_verbs": [
+              "enables",
+              "exhibits"
+            ],
+            "new_verbs_in_prediction": [
+              "is"
+            ]
+          },
+          "c3": {
+            "check": "CAUSAL_EDGES_PRESENT",
+            "passed": false,
+            "prediction_triples": [
+              {
+                "subject": "the ease of redesigning crispr-cas9 systems",
+                "predicate": "EXHIBITS",
+                "object": "greater than that of zinc finger nucleases or talens the time required to redesign crispr-cas9 systems for a new target sequence is less than that required for zinc finger nucleases or talens"
+              }
+            ],
+            "unmatched_triples": [
+              {
+                "subject": "the ease of redesigning crispr-cas9 systems",
+                "predicate": "EXHIBITS",
+                "object": "greater than that of zinc finger nucleases or talens the time required to redesign crispr-cas9 systems for a new target sequence is less than that required for zinc finger nucleases or talens"
+              }
+            ]
+          },
+          "c4": {
+            "check": "COMBINATION_ALREADY_IMPLIED",
+            "passed": true,
+            "prediction_combinations": [
+              [
+                "cas9",
+                "crispr"
+              ],
+              [
+                "cas9",
+                "crispr"
+              ]
+            ],
+            "evidence_combinations": [
+              [
+                "nucleases",
+                "talens"
+              ]
+            ],
+            "details": [
+              {
+                "pair": [
+                  "cas9",
+                  "crispr"
+                ],
+                "in_explicit_combinations": false,
+                "both_entities_in_evidence": true,
+                "implied": true
+              },
+              {
+                "pair": [
+                  "cas9",
+                  "crispr"
+                ],
+                "in_explicit_combinations": false,
+                "both_entities_in_evidence": true,
+                "implied": true
+              }
+            ]
+          },
+          "c5": {
+            "check": "CONSTRAINT_ALREADY_STATED",
+            "passed": false,
+            "prediction_bounds": [
+              0.25,
+              1.0
+            ],
+            "evidence_numeric_constraints": []
+          },
+          "c6": {
+            "check": "PREDICTION_DERIVABLE_WITHOUT_NEW_RELATION",
+            "passed": false,
+            "components": {
+              "entities_present": false,
+              "mechanisms_present": false,
+              "causal_edges_present": false
+            }
+          }
+        }
+      },
+      "quantitative_accuracy": {
+        "verdict": "INDETERMINATE",
+        "calibration_error": null,
+        "predicted": 0.5,
+        "observed": "YES",
+        "tolerance_bounds": null
+      },
+      "receipt_hash": "d8a7441ced9983b8d2dd3c77d399477cbd1fdfd2bd742bbf49f924a9e65dbbbe"
+    },
+    {
+      "key": "PB-007|C_mechanism",
+      "case_id": "PB-007",
+      "case_name": "CRISPR gene editing",
+      "config": "C_mechanism",
+      "candidate_id": "PRED2-PB-007-C_mechanism",
+      "receipt_integrity_ok": true,
+      "simulation_registration_date": "2011-12-31T23:59:59Z",
+      "evaluation_type": "HISTORICAL_RETROSPECTIVE_BACKTEST_GATE2",
+      "leakage_control": "evidence_only_prompt",
+      "backend": "z-ai-cli-glm-4-plus",
+      "hypothesis": "The specificity of Cas9 is determined by complementarity between the guide RNA and target DNA sequence",
+      "prediction": "The number of mismatches between guide RNA and target DNA will correlate with cleavage efficiency",
+      "predicted_value": 0.7,
+      "tolerance_lower": 0.5,
+      "tolerance_upper": 1.0,
+      "expected_direction": "DECREASE",
+      "outcome_source": "Jinek et al. 2012 — Cas9+guide RNA achieves programmable DNA cleavage in human cells",
+      "outcome_value": "YES",
+      "outcome_direction": "BINARY",
+      "outcome_measurement_date": "2012-08-01T00:00:00Z",
+      "final_classification": "INDETERMINATE",
+      "DISCOVERY_PREDICTION_SCORE": 0.0,
+      "information_content": {
+        "classification": "GENUINE_NOVEL_PREDICTION",
+        "information_content_score": 1.0,
+        "encoded_count": 0,
+        "encoded_count_max": 6,
+        "reason": "prediction introduces genuinely new relation: encoded_count=0/6",
+        "checks": {
+          "c1": {
+            "check": "ENTITIES_PRESENT",
+            "passed": false,
+            "new_entities_in_prediction": [
+              "cleavage",
+              "complementarity",
+              "correlate",
+              "determined",
+              "efficiency",
+              "mismatches",
+              "sequence",
+              "specificity"
+            ]
+          },
+          "c2": {
+            "check": "MECHANISMS_PRESENT",
+            "passed": false,
+            "prediction_mechanism_verbs": [
+              "is"
+            ],
+            "evidence_mechanism_verbs": [
+              "enables",
+              "exhibits"
+            ],
+            "new_verbs_in_prediction": [
+              "is"
+            ]
+          },
+          "c3": {
+            "check": "CAUSAL_EDGES_PRESENT",
+            "passed": false,
+            "prediction_triples": [
+              {
+                "subject": "the specificity of cas9",
+                "predicate": "EXHIBITS",
+                "object": "determined by complementarity between the guide rna"
+              }
+            ],
+            "unmatched_triples": [
+              {
+                "subject": "the specificity of cas9",
+                "predicate": "EXHIBITS",
+                "object": "determined by complementarity between the guide rna"
+              }
+            ]
+          },
+          "c4": {
+            "check": "COMBINATION_ALREADY_IMPLIED",
+            "passed": false,
+            "prediction_combinations": [
+              [
+                "rna",
+                "target"
+              ],
+              [
+                "rna",
+                "target"
+              ],
+              [
+                "cleavage",
+                "correlate"
+              ]
+            ],
+            "evidence_combinations": [
+              [
+                "nucleases",
+                "talens"
+              ]
+            ],
+            "details": [
+              {
+                "pair": [
+                  "rna",
+                  "target"
+                ],
+                "in_explicit_combinations": false,
+                "both_entities_in_evidence": false,
+                "implied": false
+              },
+              {
+                "pair": [
+                  "rna",
+                  "target"
+                ],
+                "in_explicit_combinations": false,
+                "both_entities_in_evidence": false,
+                "implied": false
+              },
+              {
+                "pair": [
+                  "cleavage",
+                  "correlate"
+                ],
+                "in_explicit_combinations": false,
+                "both_entities_in_evidence": false,
+                "implied": false
+              }
+            ]
+          },
+          "c5": {
+            "check": "CONSTRAINT_ALREADY_STATED",
+            "passed": false,
+            "prediction_bounds": [
+              0.35,
+              0.7
+            ],
+            "evidence_numeric_constraints": []
+          },
+          "c6": {
+            "check": "PREDICTION_DERIVABLE_WITHOUT_NEW_RELATION",
+            "passed": false,
+            "components": {
+              "entities_present": false,
+              "mechanisms_present": false,
+              "causal_edges_present": false
+            }
+          }
+        }
+      },
+      "quantitative_accuracy": {
+        "verdict": "INDETERMINATE",
+        "calibration_error": null,
+        "predicted": 0.7,
+        "observed": "YES",
+        "tolerance_bounds": null
+      },
+      "receipt_hash": "505ca17c8abfd3c9b24cca945af300cc745a2cc83391f837926fc8af2e8f3e15"
+    },
+    {
+      "key": "PB-007|D_random",
+      "case_id": "PB-007",
+      "case_name": "CRISPR gene editing",
+      "config": "D_random",
+      "candidate_id": "PRED2-PB-007-D_random",
+      "receipt_integrity_ok": true,
+      "simulation_registration_date": "2011-12-31T23:59:59Z",
+      "evaluation_type": "HISTORICAL_RETROSPECTIVE_BACKTEST_GATE2",
+      "leakage_control": "evidence_only_prompt",
+      "backend": "z-ai-cli-glm-4-plus",
+      "hypothesis": "The number of guide RNA molecules required for Cas9 to cut a specific DNA sequence is inversely proportional to the length of the target sequence.",
+      "prediction": "Cas9 will require fewer guide RNA molecules to cut a 20-base pair target sequence compared to a 10-base pair target sequence.",
+      "predicted_value": 2.0,
+      "tolerance_lower": 0.5,
+      "tolerance_upper": 1.5,
+      "expected_direction": "INCREASE",
+      "outcome_source": "Jinek et al. 2012 — Cas9+guide RNA achieves programmable DNA cleavage in human cells",
+      "outcome_value": "YES",
+      "outcome_direction": "BINARY",
+      "outcome_measurement_date": "2012-08-01T00:00:00Z",
+      "final_classification": "INDETERMINATE",
+      "DISCOVERY_PREDICTION_SCORE": 0.0,
+      "information_content": {
+        "classification": "GENUINE_NOVEL_PREDICTION",
+        "information_content_score": 1.0,
+        "encoded_count": 0,
+        "encoded_count_max": 6,
+        "reason": "prediction introduces genuinely new relation: encoded_count=0/6",
+        "checks": {
+          "c1": {
+            "check": "ENTITIES_PRESENT",
+            "passed": false,
+            "new_entities_in_prediction": [
+              "compared",
+              "inversely",
+              "length",
+              "molecules",
+              "proportional",
+              "require",
+              "required",
+              "sequence"
+            ]
+          },
+          "c2": {
+            "check": "MECHANISMS_PRESENT",
+            "passed": false,
+            "prediction_mechanism_verbs": [
+              "is"
+            ],
+            "evidence_mechanism_verbs": [
+              "enables",
+              "exhibits"
+            ],
+            "new_verbs_in_prediction": [
+              "is"
+            ]
+          },
+          "c3": {
+            "check": "CAUSAL_EDGES_PRESENT",
+            "passed": false,
+            "prediction_triples": [
+              {
+                "subject": "the number of guide rna molecules required for cas9 to cut a specific dna sequence",
+                "predicate": "EXHIBITS",
+                "object": "inversely proportional to the length of the target sequence"
+              }
+            ],
+            "unmatched_triples": [
+              {
+                "subject": "the number of guide rna molecules required for cas9 to cut a specific dna sequence",
+                "predicate": "EXHIBITS",
+                "object": "inversely proportional to the length of the target sequence"
+              }
+            ]
+          },
+          "c4": {
+            "check": "COMBINATION_ALREADY_IMPLIED",
+            "passed": false,
+            "prediction_combinations": [],
+            "reason": "no combination detected in prediction"
+          },
+          "c5": {
+            "check": "CONSTRAINT_ALREADY_STATED",
+            "passed": false,
+            "prediction_bounds": [
+              1.0,
+              3.0
+            ],
+            "evidence_numeric_constraints": []
+          },
+          "c6": {
+            "check": "PREDICTION_DERIVABLE_WITHOUT_NEW_RELATION",
+            "passed": false,
+            "components": {
+              "entities_present": false,
+              "mechanisms_present": false,
+              "causal_edges_present": false
+            }
+          }
+        }
+      },
+      "quantitative_accuracy": {
+        "verdict": "INDETERMINATE",
+        "calibration_error": null,
+        "predicted": 2.0,
+        "observed": "YES",
+        "tolerance_bounds": null
+      },
+      "receipt_hash": "cce96721aa47b96a24bbb31284fdf269e9165c4030e6062cec9c565908a6c38d"
+    },
+    {
+      "key": "PB-007|F_full",
+      "case_id": "PB-007",
+      "case_name": "CRISPR gene editing",
+      "config": "F_full",
+      "candidate_id": "PRED2-PB-007-F_full",
+      "receipt_integrity_ok": true,
+      "simulation_registration_date": "2011-12-31T23:59:59Z",
+      "evaluation_type": "HISTORICAL_RETROSPECTIVE_BACKTEST_GATE2",
+      "leakage_control": "evidence_only_prompt",
+      "backend": "z-ai-cli-glm-4-plus",
+      "hypothesis": "The efficiency of Cas9 DNA cleavage is inversely proportional to the complexity of redesigning the guide RNA sequence",
+      "prediction": "Cas9 will achieve 80% cleavage efficiency at a target site requiring 3 guide RNA modifications, while TALENs will achieve only 30% efficiency at the same site requiring 3 protein domain modifications",
+      "predicted_value": 80,
+      "tolerance_lower": 0.75,
+      "tolerance_upper": 1.25,
+      "expected_direction": "INCREASE",
+      "outcome_source": "Jinek et al. 2012 — Cas9+guide RNA achieves programmable DNA cleavage in human cells",
+      "outcome_value": "YES",
+      "outcome_direction": "BINARY",
+      "outcome_measurement_date": "2012-08-01T00:00:00Z",
+      "final_classification": "INDETERMINATE",
+      "DISCOVERY_PREDICTION_SCORE": 0.0,
+      "information_content": {
+        "classification": "GENUINE_NOVEL_PREDICTION",
+        "information_content_score": 1.0,
+        "encoded_count": 0,
+        "encoded_count_max": 6,
+        "reason": "prediction introduces genuinely new relation: encoded_count=0/6",
+        "checks": {
+          "c1": {
+            "check": "ENTITIES_PRESENT",
+            "passed": false,
+            "new_entities_in_prediction": [
+              "achieve",
+              "cleavage",
+              "complexity",
+              "domain",
+              "efficiency",
+              "inversely",
+              "modifications",
+              "proportional",
+              "protein",
+              "redesigning",
+              "requiring",
+              "sequence"
+            ]
+          },
+          "c2": {
+            "check": "MECHANISMS_PRESENT",
+            "passed": false,
+            "prediction_mechanism_verbs": [
+              "is"
+            ],
+            "evidence_mechanism_verbs": [
+              "enables",
+              "exhibits"
+            ],
+            "new_verbs_in_prediction": [
+              "is"
+            ]
+          },
+          "c3": {
+            "check": "CAUSAL_EDGES_PRESENT",
+            "passed": false,
+            "prediction_triples": [
+              {
+                "subject": "the efficiency of cas9 dna cleavage",
+                "predicate": "EXHIBITS",
+                "object": "inversely proportional to the complexity of redesigning the guide rna sequence cas9 will achieve 80% cleavage efficiency at a target site requiring 3 guide rna modifications"
+              }
+            ],
+            "unmatched_triples": [
+              {
+                "subject": "the efficiency of cas9 dna cleavage",
+                "predicate": "EXHIBITS",
+                "object": "inversely proportional to the complexity of redesigning the guide rna sequence cas9 will achieve 80% cleavage efficiency at a target site requiring 3 guide rna modifications"
+              }
+            ]
+          },
+          "c4": {
+            "check": "COMBINATION_ALREADY_IMPLIED",
+            "passed": false,
+            "prediction_combinations": [],
+            "reason": "no combination detected in prediction"
+          },
+          "c5": {
+            "check": "CONSTRAINT_ALREADY_STATED",
+            "passed": false,
+            "prediction_bounds": [
+              60.0,
+              100.0
+            ],
+            "evidence_numeric_constraints": []
+          },
+          "c6": {
+            "check": "PREDICTION_DERIVABLE_WITHOUT_NEW_RELATION",
+            "passed": false,
+            "components": {
+              "entities_present": false,
+              "mechanisms_present": false,
+              "causal_edges_present": false
+            }
+          }
+        }
+      },
+      "quantitative_accuracy": {
+        "verdict": "INDETERMINATE",
+        "calibration_error": null,
+        "predicted": 80,
+        "observed": "YES",
+        "tolerance_bounds": null
+      },
+      "receipt_hash": "ee76ebcf38d63db4c7cd3fa7152e5798e4b9beda85af7889685a7cc84efbba39"
+    },
+    {
+      "key": "PB-008|B_llm_only",
+      "case_id": "PB-008",
+      "case_name": "Checkpoint immunotherapy",
+      "config": "B_llm_only",
+      "candidate_id": "PRED2-PB-008-B_llm_only",
+      "receipt_integrity_ok": true,
+      "simulation_registration_date": "2011-12-31T23:59:59Z",
+      "evaluation_type": "HISTORICAL_RETROSPECTIVE_BACKTEST_GATE2",
+      "leakage_control": "evidence_only_prompt",
+      "backend": "z-ai-cli-glm-4-plus",
+      "hypothesis": "PD-1 blockade will show success in melanoma",
+      "prediction": "PD-1 blockade will have a higher response rate in melanoma than CTLA-4 blockade",
+      "predicted_value": 1.5,
+      "tolerance_lower": 0.5,
+      "tolerance_upper": 2.0,
+      "expected_direction": "INCREASE",
+      "outcome_source": "Brahmer et al. 2012 — anti-PD-1 antibody shows clinical response in cancer patients",
+      "outcome_value": "YES",
+      "outcome_direction": "BINARY",
+      "outcome_measurement_date": "2012-12-01T00:00:00Z",
+      "final_classification": "INDETERMINATE",
+      "DISCOVERY_PREDICTION_SCORE": 0.0,
+      "information_content": {
+        "classification": "GENUINE_NOVEL_PREDICTION",
+        "information_content_score": 0.8333,
+        "encoded_count": 1,
+        "encoded_count_max": 6,
+        "reason": "prediction introduces genuinely new relation: encoded_count=1/6",
+        "checks": {
+          "c1": {
+            "check": "ENTITIES_PRESENT",
+            "passed": true,
+            "new_entities_in_prediction": []
+          },
+          "c2": {
+            "check": "MECHANISMS_PRESENT",
+            "passed": false,
+            "prediction_mechanism_verbs": [
+              "have",
+              "show"
+            ],
+            "evidence_mechanism_verbs": [
+              "exhibits",
+              "prevents"
+            ],
+            "new_verbs_in_prediction": [
+              "have",
+              "show"
+            ]
+          },
+          "c3": {
+            "check": "CAUSAL_EDGES_PRESENT",
+            "passed": false,
+            "prediction_triples": [
+              {
+                "subject": "pd-1 blockade will",
+                "predicate": "EXHIBITS",
+                "object": "success in melanoma pd-1 blockade will have a higher response rate in melanoma than ctla-4 blockade"
+              }
+            ],
+            "unmatched_triples": [
+              {
+                "subject": "pd-1 blockade will",
+                "predicate": "EXHIBITS",
+                "object": "success in melanoma pd-1 blockade will have a higher response rate in melanoma than ctla-4 blockade"
+              }
+            ]
+          },
+          "c4": {
+            "check": "COMBINATION_ALREADY_IMPLIED",
+            "passed": false,
+            "prediction_combinations": [],
+            "reason": "no combination detected in prediction"
+          },
+          "c5": {
+            "check": "CONSTRAINT_ALREADY_STATED",
+            "passed": false,
+            "prediction_bounds": [
+              0.75,
+              3.0
+            ],
+            "evidence_numeric_constraints": []
+          },
+          "c6": {
+            "check": "PREDICTION_DERIVABLE_WITHOUT_NEW_RELATION",
+            "passed": false,
+            "components": {
+              "entities_present": true,
+              "mechanisms_present": false,
+              "causal_edges_present": false
+            }
+          }
+        }
+      },
+      "quantitative_accuracy": {
+        "verdict": "INDETERMINATE",
+        "calibration_error": null,
+        "predicted": 1.5,
+        "observed": "YES",
+        "tolerance_bounds": null
+      },
+      "receipt_hash": "5e133a7a9ebfdf7ff2d443947072aec4227c80f0cc68f8c5c9b197dd41bd800a"
+    },
+    {
+      "key": "PB-008|C_mechanism",
+      "case_id": "PB-008",
+      "case_name": "Checkpoint immunotherapy",
+      "config": "C_mechanism",
+      "candidate_id": "PRED2-PB-008-C_mechanism",
+      "receipt_integrity_ok": true,
+      "simulation_registration_date": "2011-12-31T23:59:59Z",
+      "evaluation_type": "HISTORICAL_RETROSPECTIVE_BACKTEST_GATE2",
+      "leakage_control": "evidence_only_prompt",
+      "backend": "z-ai-cli-glm-4-plus",
+      "hypothesis": "Tumor microenvironment suppression of T-cells is mediated through PD-1 receptor signaling",
+      "prediction": "Blocking PD-1 will reduce tumor microenvironment suppression by 60%",
+      "predicted_value": 60,
+      "tolerance_lower": 0.5,
+      "tolerance_upper": 2.0,
+      "expected_direction": "INCREASE",
+      "outcome_source": "Brahmer et al. 2012 — anti-PD-1 antibody shows clinical response in cancer patients",
+      "outcome_value": "YES",
+      "outcome_direction": "BINARY",
+      "outcome_measurement_date": "2012-12-01T00:00:00Z",
+      "final_classification": "INDETERMINATE",
+      "DISCOVERY_PREDICTION_SCORE": 0.0,
+      "information_content": {
+        "classification": "GENUINE_NOVEL_PREDICTION",
+        "information_content_score": 1.0,
+        "encoded_count": 0,
+        "encoded_count_max": 6,
+        "reason": "prediction introduces genuinely new relation: encoded_count=0/6",
+        "checks": {
+          "c1": {
+            "check": "ENTITIES_PRESENT",
+            "passed": false,
+            "new_entities_in_prediction": [
+              "blocking",
+              "mediated",
+              "reduce",
+              "signaling",
+              "suppression"
+            ]
+          },
+          "c2": {
+            "check": "MECHANISMS_PRESENT",
+            "passed": false,
+            "prediction_mechanism_verbs": [
+              "is",
+              "reduce"
+            ],
+            "evidence_mechanism_verbs": [
+              "exhibits",
+              "prevents"
+            ],
+            "new_verbs_in_prediction": [
+              "is",
+              "reduce"
+            ]
+          },
+          "c3": {
+            "check": "CAUSAL_EDGES_PRESENT",
+            "passed": false,
+            "prediction_triples": [
+              {
+                "subject": "tumor microenvironment suppression of t-cells",
+                "predicate": "EXHIBITS",
+                "object": "mediated through pd-1 receptor signaling blocking pd-1 will reduce tumor microenvironment suppression by 60%"
+              }
+            ],
+            "unmatched_triples": [
+              {
+                "subject": "tumor microenvironment suppression of t-cells",
+                "predicate": "EXHIBITS",
+                "object": "mediated through pd-1 receptor signaling blocking pd-1 will reduce tumor microenvironment suppression by 60%"
+              }
+            ]
+          },
+          "c4": {
+            "check": "COMBINATION_ALREADY_IMPLIED",
+            "passed": false,
+            "prediction_combinations": [],
+            "reason": "no combination detected in prediction"
+          },
+          "c5": {
+            "check": "CONSTRAINT_ALREADY_STATED",
+            "passed": false,
+            "prediction_bounds": [
+              30.0,
+              120.0
+            ],
+            "evidence_numeric_constraints": []
+          },
+          "c6": {
+            "check": "PREDICTION_DERIVABLE_WITHOUT_NEW_RELATION",
+            "passed": false,
+            "components": {
+              "entities_present": false,
+              "mechanisms_present": false,
+              "causal_edges_present": false
+            }
+          }
+        }
+      },
+      "quantitative_accuracy": {
+        "verdict": "INDETERMINATE",
+        "calibration_error": null,
+        "predicted": 60,
+        "observed": "YES",
+        "tolerance_bounds": null
+      },
+      "receipt_hash": "5568e55ff8033bdd5df354eda24eb24ed734f86b6e74f4d9d924fa160970ef92"
+    },
+    {
+      "key": "PB-008|D_random",
+      "case_id": "PB-008",
+      "case_name": "Checkpoint immunotherapy",
+      "config": "D_random",
+      "candidate_id": "PRED2-PB-008-D_random",
+      "receipt_integrity_ok": true,
+      "simulation_registration_date": "2011-12-31T23:59:59Z",
+      "evaluation_type": "HISTORICAL_RETROSPECTIVE_BACKTEST_GATE2",
+      "leakage_control": "evidence_only_prompt",
+      "backend": "z-ai-cli-glm-4-plus",
+      "hypothesis": "Combined PD-1 blockade and cancer vaccine administration will result in enhanced anti-tumor immune response compared to either treatment alone",
+      "prediction": "The combination therapy will increase tumor-infiltrating lymphocyte count by 60% compared to monotherapy",
+      "predicted_value": 60,
+      "tolerance_lower": 0.5,
+      "tolerance_upper": 1.5,
+      "expected_direction": "INCREASE",
+      "outcome_source": "Brahmer et al. 2012 — anti-PD-1 antibody shows clinical response in cancer patients",
+      "outcome_value": "YES",
+      "outcome_direction": "BINARY",
+      "outcome_measurement_date": "2012-12-01T00:00:00Z",
+      "final_classification": "INDETERMINATE",
+      "DISCOVERY_PREDICTION_SCORE": 0.0,
+      "information_content": {
+        "classification": "GENUINE_NOVEL_PREDICTION",
+        "information_content_score": 1.0,
+        "encoded_count": 0,
+        "encoded_count_max": 6,
+        "reason": "prediction introduces genuinely new relation: encoded_count=0/6",
+        "checks": {
+          "c1": {
+            "check": "ENTITIES_PRESENT",
+            "passed": false,
+            "new_entities_in_prediction": [
+              "administration",
+              "alone",
+              "anti-tumor",
+              "combination",
+              "combined",
+              "compared",
+              "count",
+              "enhanced",
+              "increase",
+              "lymphocyte",
+              "monotherapy",
+              "therapy",
+              "treatment",
+              "tumor-infiltrating",
+              "vaccine"
+            ]
+          },
+          "c2": {
+            "check": "MECHANISMS_PRESENT",
+            "passed": false,
+            "prediction_mechanism_verbs": [
+              "enhanced",
+              "increase"
+            ],
+            "evidence_mechanism_verbs": [
+              "exhibits",
+              "prevents"
+            ],
+            "new_verbs_in_prediction": [
+              "enhanced",
+              "increase"
+            ]
+          },
+          "c3": {
+            "check": "CAUSAL_EDGES_PRESENT",
+            "passed": false,
+            "prediction_triples": [
+              {
+                "subject": "combined pd-1 blockade and cancer vaccine administration will result in",
+                "predicate": "INCREASES",
+                "object": "anti-tumor immune response compared to either treatment alone the combination therapy will increase tumor-infiltrating lymphocyte count by 60% compared to monotherapy"
+              }
+            ],
+            "unmatched_triples": [
+              {
+                "subject": "combined pd-1 blockade and cancer vaccine administration will result in",
+                "predicate": "INCREASES",
+                "object": "anti-tumor immune response compared to either treatment alone the combination therapy will increase tumor-infiltrating lymphocyte count by 60% compared to monotherapy"
+              }
+            ]
+          },
+          "c4": {
+            "check": "COMBINATION_ALREADY_IMPLIED",
+            "passed": false,
+            "prediction_combinations": [
+              [
+                "blockade",
+                "cancer"
+              ],
+              [
+                "anti",
+                "tumor"
+              ],
+              [
+                "infiltrating",
+                "tumor"
+              ]
+            ],
+            "evidence_combinations": [],
+            "details": [
+              {
+                "pair": [
+                  "blockade",
+                  "cancer"
+                ],
+                "in_explicit_combinations": false,
+                "both_entities_in_evidence": true,
+                "implied": true
+              },
+              {
+                "pair": [
+                  "anti",
+                  "tumor"
+                ],
+                "in_explicit_combinations": false,
+                "both_entities_in_evidence": false,
+                "implied": false
+              },
+              {
+                "pair": [
+                  "infiltrating",
+                  "tumor"
+                ],
+                "in_explicit_combinations": false,
+                "both_entities_in_evidence": false,
+                "implied": false
+              }
+            ]
+          },
+          "c5": {
+            "check": "CONSTRAINT_ALREADY_STATED",
+            "passed": false,
+            "prediction_bounds": [
+              30.0,
+              90.0
+            ],
+            "evidence_numeric_constraints": []
+          },
+          "c6": {
+            "check": "PREDICTION_DERIVABLE_WITHOUT_NEW_RELATION",
+            "passed": false,
+            "components": {
+              "entities_present": false,
+              "mechanisms_present": false,
+              "causal_edges_present": false
+            }
+          }
+        }
+      },
+      "quantitative_accuracy": {
+        "verdict": "INDETERMINATE",
+        "calibration_error": null,
+        "predicted": 60,
+        "observed": "YES",
+        "tolerance_bounds": null
+      },
+      "receipt_hash": "2b212438e58dc2d133ee259931aaf36c6307776d506d12f70f81acb10cd2f91d"
+    },
+    {
+      "key": "PB-008|F_full",
+      "case_id": "PB-008",
+      "case_name": "Checkpoint immunotherapy",
+      "config": "F_full",
+      "candidate_id": "PRED2-PB-008-F_full",
+      "receipt_integrity_ok": true,
+      "simulation_registration_date": "2011-12-31T23:59:59Z",
+      "evaluation_type": "HISTORICAL_RETROSPECTIVE_BACKTEST_GATE2",
+      "leakage_control": "evidence_only_prompt",
+      "backend": "z-ai-cli-glm-4-plus",
+      "hypothesis": "PD-1 blockade efficacy will be inversely proportional to the degree of tumor microenvironment-mediated T-cell suppression",
+      "prediction": "Tumors with higher T-cell suppression markers will show lower response rates to PD-1 blockade",
+      "predicted_value": 0.3,
+      "tolerance_lower": 0.75,
+      "tolerance_upper": 1.5,
+      "expected_direction": "DECREASE",
+      "outcome_source": "Brahmer et al. 2012 — anti-PD-1 antibody shows clinical response in cancer patients",
+      "outcome_value": "YES",
+      "outcome_direction": "BINARY",
+      "outcome_measurement_date": "2012-12-01T00:00:00Z",
+      "final_classification": "INDETERMINATE",
+      "DISCOVERY_PREDICTION_SCORE": 0.0,
+      "information_content": {
+        "classification": "GENUINE_NOVEL_PREDICTION",
+        "information_content_score": 1.0,
+        "encoded_count": 0,
+        "encoded_count_max": 6,
+        "reason": "prediction introduces genuinely new relation: encoded_count=0/6",
+        "checks": {
+          "c1": {
+            "check": "ENTITIES_PRESENT",
+            "passed": false,
+            "new_entities_in_prediction": [
+              "degree",
+              "efficacy",
+              "inversely",
+              "markers",
+              "microenvironment-mediated",
+              "proportional",
+              "suppression",
+              "tumors"
+            ]
+          },
+          "c2": {
+            "check": "MECHANISMS_PRESENT",
+            "passed": false,
+            "prediction_mechanism_verbs": [
+              "lower",
+              "show"
+            ],
+            "evidence_mechanism_verbs": [
+              "exhibits",
+              "prevents"
+            ],
+            "new_verbs_in_prediction": [
+              "lower",
+              "show"
+            ]
+          },
+          "c3": {
+            "check": "CAUSAL_EDGES_PRESENT",
+            "passed": false,
+            "prediction_triples": [
+              {
+                "subject": "pd-1 blockade efficacy will be inversely proportional to the degree of tumor microenvironment-mediated t-cell suppression tumors with higher t-cell suppression markers will",
+                "predicate": "EXHIBITS",
+                "object": "lower response rates to pd-1 blockade"
+              }
+            ],
+            "unmatched_triples": [
+              {
+                "subject": "pd-1 blockade efficacy will be inversely proportional to the degree of tumor microenvironment-mediated t-cell suppression tumors with higher t-cell suppression markers will",
+                "predicate": "EXHIBITS",
+                "object": "lower response rates to pd-1 blockade"
+              }
+            ]
+          },
+          "c4": {
+            "check": "COMBINATION_ALREADY_IMPLIED",
+            "passed": false,
+            "prediction_combinations": [
+              [
+                "mediated",
+                "microenvironment"
+              ]
+            ],
+            "evidence_combinations": [],
+            "details": [
+              {
+                "pair": [
+                  "mediated",
+                  "microenvironment"
+                ],
+                "in_explicit_combinations": false,
+                "both_entities_in_evidence": false,
+                "implied": false
+              }
+            ]
+          },
+          "c5": {
+            "check": "CONSTRAINT_ALREADY_STATED",
+            "passed": false,
+            "prediction_bounds": [
+              0.225,
+              0.45
+            ],
+            "evidence_numeric_constraints": []
+          },
+          "c6": {
+            "check": "PREDICTION_DERIVABLE_WITHOUT_NEW_RELATION",
+            "passed": false,
+            "components": {
+              "entities_present": false,
+              "mechanisms_present": false,
+              "causal_edges_present": false
+            }
+          }
+        }
+      },
+      "quantitative_accuracy": {
+        "verdict": "INDETERMINATE",
+        "calibration_error": null,
+        "predicted": 0.3,
+        "observed": "YES",
+        "tolerance_bounds": null
+      },
+      "receipt_hash": "1eae1c17045a1ad459055161143c54d9fc95282609a3bbed827ccb3c9fd6d674"
+    },
+    {
+      "key": "PB-009|B_llm_only",
+      "case_id": "PB-009",
+      "case_name": "Induced pluripotent stem cells",
+      "config": "B_llm_only",
+      "candidate_id": "PRED2-PB-009-B_llm_only",
+      "receipt_integrity_ok": true,
+      "simulation_registration_date": "2005-12-31T23:59:59Z",
+      "evaluation_type": "HISTORICAL_RETROSPECTIVE_BACKTEST_GATE2",
+      "leakage_control": "evidence_only_prompt",
+      "backend": "z-ai-cli-glm-4-plus",
+      "hypothesis": "The combined expression of Oct4, Sox2, Klf4, and c-Myc factors can reverse cellular differentiation",
+      "prediction": "A specific quantitative measure of pluripotency markers will increase in differentiated cells when exposed to these four factors",
+      "predicted_value": 75,
+      "tolerance_lower": 0.5,
+      "tolerance_upper": 2.0,
+      "expected_direction": "INCREASE",
+      "outcome_source": "Takahashi & Yamanaka 2006 — four transcription factors reprogram somatic cells to pluripotency",
+      "outcome_value": "YES",
+      "outcome_direction": "BINARY",
+      "outcome_measurement_date": "2006-08-01T00:00:00Z",
+      "final_classification": "INDETERMINATE",
+      "DISCOVERY_PREDICTION_SCORE": 0.0,
+      "information_content": {
+        "classification": "GENUINE_NOVEL_PREDICTION",
+        "information_content_score": 1.0,
+        "encoded_count": 0,
+        "encoded_count_max": 6,
+        "reason": "prediction introduces genuinely new relation: encoded_count=0/6",
+        "checks": {
+          "c1": {
+            "check": "ENTITIES_PRESENT",
+            "passed": false,
+            "new_entities_in_prediction": [
+              "combined",
+              "differentiated",
+              "exposed",
+              "expression",
+              "increase",
+              "markers",
+              "measure",
+              "pluripotency",
+              "quantitative",
+              "reverse"
+            ]
+          },
+          "c2": {
+            "check": "MECHANISMS_PRESENT",
+            "passed": false,
+            "prediction_mechanism_verbs": [
+              "can",
+              "increase"
+            ],
+            "evidence_mechanism_verbs": [
+              "enables",
+              "exhibits"
+            ],
+            "new_verbs_in_prediction": [
+              "can",
+              "increase"
+            ]
+          },
+          "c3": {
+            "check": "CAUSAL_EDGES_PRESENT",
+            "passed": false,
+            "prediction_triples": [
+              {
+                "subject": "c-myc factors",
+                "predicate": "ENABLES",
+                "object": "reverse cellular differentiation a specific quantitative measure of pluripotency markers will increase in differentiated cells when exposed to these four factors"
+              }
+            ],
+            "unmatched_triples": [
+              {
+                "subject": "c-myc factors",
+                "predicate": "ENABLES",
+                "object": "reverse cellular differentiation a specific quantitative measure of pluripotency markers will increase in differentiated cells when exposed to these four factors"
+              }
+            ]
+          },
+          "c4": {
+            "check": "COMBINATION_ALREADY_IMPLIED",
+            "passed": false,
+            "prediction_combinations": [],
+            "reason": "no combination detected in prediction"
+          },
+          "c5": {
+            "check": "CONSTRAINT_ALREADY_STATED",
+            "passed": false,
+            "prediction_bounds": [
+              37.5,
+              150.0
+            ],
+            "evidence_numeric_constraints": []
+          },
+          "c6": {
+            "check": "PREDICTION_DERIVABLE_WITHOUT_NEW_RELATION",
+            "passed": false,
+            "components": {
+              "entities_present": false,
+              "mechanisms_present": false,
+              "causal_edges_present": false
+            }
+          }
+        }
+      },
+      "quantitative_accuracy": {
+        "verdict": "INDETERMINATE",
+        "calibration_error": null,
+        "predicted": 75,
+        "observed": "YES",
+        "tolerance_bounds": null
+      },
+      "receipt_hash": "97486d6326bfef17c3800e1dd0288bc2cfab15b49f657538fa0d574bc227614f"
+    },
+    {
+      "key": "PB-009|C_mechanism",
+      "case_id": "PB-009",
+      "case_name": "Induced pluripotent stem cells",
+      "config": "C_mechanism",
+      "candidate_id": "PRED2-PB-009-C_mechanism",
+      "receipt_integrity_ok": true,
+      "simulation_registration_date": "2005-12-31T23:59:59Z",
+      "evaluation_type": "HISTORICAL_RETROSPECTIVE_BACKTEST_GATE2",
+      "leakage_control": "evidence_only_prompt",
+      "backend": "z-ai-cli-glm-4-plus",
+      "hypothesis": "Transcription factor overexpression can reverse cellular differentiation without egg cytoplasm",
+      "prediction": "The number of cells that regain pluripotency markers when treated with the four factors (Oct4, Sox2, Klf4, c-Myc) will be significantly higher than untreated differentiated cells",
+      "predicted_value": 15,
+      "tolerance_lower": 0.5,
+      "tolerance_upper": 2.0,
+      "expected_direction": "INCREASE",
+      "outcome_source": "Takahashi & Yamanaka 2006 — four transcription factors reprogram somatic cells to pluripotency",
+      "outcome_value": "YES",
+      "outcome_direction": "BINARY",
+      "outcome_measurement_date": "2006-08-01T00:00:00Z",
+      "final_classification": "INDETERMINATE",
+      "DISCOVERY_PREDICTION_SCORE": 0.0,
+      "information_content": {
+        "classification": "GENUINE_NOVEL_PREDICTION",
+        "information_content_score": 1.0,
+        "encoded_count": 0,
+        "encoded_count_max": 6,
+        "reason": "prediction introduces genuinely new relation: encoded_count=0/6",
+        "checks": {
+          "c1": {
+            "check": "ENTITIES_PRESENT",
+            "passed": false,
+            "new_entities_in_prediction": [
+              "differentiated",
+              "markers",
+              "overexpression",
+              "pluripotency",
+              "regain",
+              "reverse",
+              "significantly",
+              "treated",
+              "untreated"
+            ]
+          },
+          "c2": {
+            "check": "MECHANISMS_PRESENT",
+            "passed": false,
+            "prediction_mechanism_verbs": [
+              "can"
+            ],
+            "evidence_mechanism_verbs": [
+              "enables",
+              "exhibits"
+            ],
+            "new_verbs_in_prediction": [
+              "can"
+            ]
+          },
+          "c3": {
+            "check": "CAUSAL_EDGES_PRESENT",
+            "passed": false,
+            "prediction_triples": [
+              {
+                "subject": "transcription factor overexpression",
+                "predicate": "ENABLES",
+                "object": "reverse cellular differentiation without egg cytoplasm the number of cells that regain pluripotency markers when treated with the four factors (oct4, sox2, klf4, c-myc) will be significantly higher than untreated differentiated cells"
+              }
+            ],
+            "unmatched_triples": [
+              {
+                "subject": "transcription factor overexpression",
+                "predicate": "ENABLES",
+                "object": "reverse cellular differentiation without egg cytoplasm the number of cells that regain pluripotency markers when treated with the four factors (oct4, sox2, klf4, c-myc) will be significantly higher than untreated differentiated cells"
+              }
+            ]
+          },
+          "c4": {
+            "check": "COMBINATION_ALREADY_IMPLIED",
+            "passed": false,
+            "prediction_combinations": [],
+            "reason": "no combination detected in prediction"
+          },
+          "c5": {
+            "check": "CONSTRAINT_ALREADY_STATED",
+            "passed": false,
+            "prediction_bounds": [
+              7.5,
+              30.0
+            ],
+            "evidence_numeric_constraints": []
+          },
+          "c6": {
+            "check": "PREDICTION_DERIVABLE_WITHOUT_NEW_RELATION",
+            "passed": false,
+            "components": {
+              "entities_present": false,
+              "mechanisms_present": false,
+              "causal_edges_present": false
+            }
+          }
+        }
+      },
+      "quantitative_accuracy": {
+        "verdict": "INDETERMINATE",
+        "calibration_error": null,
+        "predicted": 15,
+        "observed": "YES",
+        "tolerance_bounds": null
+      },
+      "receipt_hash": "9a94ab76ac09cf453e2de4bbebab68f66db1ad9d1bf6499ccdfc57b4bf2bc5fa"
+    },
+    {
+      "key": "PB-009|D_random",
+      "case_id": "PB-009",
+      "case_name": "Induced pluripotent stem cells",
+      "config": "D_random",
+      "candidate_id": "PRED2-PB-009-D_random",
+      "receipt_integrity_ok": true,
+      "simulation_registration_date": "2005-12-31T23:59:59Z",
+      "evaluation_type": "HISTORICAL_RETROSPECTIVE_BACKTEST_GATE2",
+      "leakage_control": "evidence_only_prompt",
+      "backend": "z-ai-cli-glm-4-plus",
+      "hypothesis": "Introduction of the four stem cell regulators (Oct4, Sox2, Klf4, c-Myc) into a differentiated cell will reverse the differentiation process",
+      "prediction": "The percentage of cells expressing pluripotency markers after 14 days will be greater than 1%",
+      "predicted_value": 5,
+      "tolerance_lower": 0.5,
+      "tolerance_upper": 2.0,
+      "expected_direction": "INCREASE",
+      "outcome_source": "Takahashi & Yamanaka 2006 — four transcription factors reprogram somatic cells to pluripotency",
+      "outcome_value": "YES",
+      "outcome_direction": "BINARY",
+      "outcome_measurement_date": "2006-08-01T00:00:00Z",
+      "final_classification": "INDETERMINATE",
+      "DISCOVERY_PREDICTION_SCORE": 0.0,
+      "information_content": {
+        "classification": "GENUINE_NOVEL_PREDICTION",
+        "information_content_score": 0.8333,
+        "encoded_count": 1,
+        "encoded_count_max": 6,
+        "reason": "prediction introduces genuinely new relation: encoded_count=1/6",
+        "checks": {
+          "c1": {
+            "check": "ENTITIES_PRESENT",
+            "passed": false,
+            "new_entities_in_prediction": [
+              "differentiated",
+              "expressing",
+              "greater",
+              "introduction",
+              "markers",
+              "pluripotency",
+              "reverse"
+            ]
+          },
+          "c2": {
+            "check": "MECHANISMS_PRESENT",
+            "passed": true,
+            "prediction_mechanism_verbs": [],
+            "evidence_mechanism_verbs": [
+              "enables",
+              "exhibits"
+            ],
+            "new_verbs_in_prediction": []
+          },
+          "c3": {
+            "check": "CAUSAL_EDGES_PRESENT",
+            "passed": false,
+            "prediction_triples": [],
+            "unmatched_triples": [],
+            "reason": "no SVO triples extracted from prediction"
+          },
+          "c4": {
+            "check": "COMBINATION_ALREADY_IMPLIED",
+            "passed": false,
+            "prediction_combinations": [],
+            "reason": "no combination detected in prediction"
+          },
+          "c5": {
+            "check": "CONSTRAINT_ALREADY_STATED",
+            "passed": false,
+            "prediction_bounds": [
+              2.5,
+              10.0
+            ],
+            "evidence_numeric_constraints": []
+          },
+          "c6": {
+            "check": "PREDICTION_DERIVABLE_WITHOUT_NEW_RELATION",
+            "passed": false,
+            "components": {
+              "entities_present": false,
+              "mechanisms_present": true,
+              "causal_edges_present": false
+            }
+          }
+        }
+      },
+      "quantitative_accuracy": {
+        "verdict": "INDETERMINATE",
+        "calibration_error": null,
+        "predicted": 5,
+        "observed": "YES",
+        "tolerance_bounds": null
+      },
+      "receipt_hash": "d3ec9f3e054cc4fcaabed02d4758fdca72eb5b289a50dd492991bed15cd7c008"
+    },
+    {
+      "key": "PB-009|F_full",
+      "case_id": "PB-009",
+      "case_name": "Induced pluripotent stem cells",
+      "config": "F_full",
+      "candidate_id": "PRED2-PB-009-F_full",
+      "receipt_integrity_ok": true,
+      "simulation_registration_date": "2005-12-31T23:59:59Z",
+      "evaluation_type": "HISTORICAL_RETROSPECTIVE_BACKTEST_GATE2",
+      "leakage_control": "evidence_only_prompt",
+      "backend": "z-ai-cli-glm-4-plus",
+      "hypothesis": "Increasing the concentration of Oct4 transcription factor beyond a threshold will induce reprogramming of differentiated cells to a pluripotent state",
+      "prediction": "The minimum concentration of Oct4 required to reprogram differentiated cells is 10% higher than the concentration found in embryonic stem cells",
+      "predicted_value": 1.1,
+      "tolerance_lower": 0.95,
+      "tolerance_upper": 1.25,
+      "expected_direction": "INCREASE",
+      "outcome_source": "Takahashi & Yamanaka 2006 — four transcription factors reprogram somatic cells to pluripotency",
+      "outcome_value": "YES",
+      "outcome_direction": "BINARY",
+      "outcome_measurement_date": "2006-08-01T00:00:00Z",
+      "final_classification": "INDETERMINATE",
+      "DISCOVERY_PREDICTION_SCORE": 0.0,
+      "information_content": {
+        "classification": "GENUINE_NOVEL_PREDICTION",
+        "information_content_score": 1.0,
+        "encoded_count": 0,
+        "encoded_count_max": 6,
+        "reason": "prediction introduces genuinely new relation: encoded_count=0/6",
+        "checks": {
+          "c1": {
+            "check": "ENTITIES_PRESENT",
+            "passed": false,
+            "new_entities_in_prediction": [
+              "differentiated",
+              "found",
+              "increasing",
+              "induce",
+              "minimum",
+              "reprogramming",
+              "required",
+              "threshold"
+            ]
+          },
+          "c2": {
+            "check": "MECHANISMS_PRESENT",
+            "passed": false,
+            "prediction_mechanism_verbs": [
+              "induce",
+              "is"
+            ],
+            "evidence_mechanism_verbs": [
+              "enables",
+              "exhibits"
+            ],
+            "new_verbs_in_prediction": [
+              "induce",
+              "is"
+            ]
+          },
+          "c3": {
+            "check": "CAUSAL_EDGES_PRESENT",
+            "passed": false,
+            "prediction_triples": [
+              {
+                "subject": "increasing the concentration of oct4 transcription factor beyond a threshold will",
+                "predicate": "CAUSES",
+                "object": "reprogramming of differentiated cells to a pluripotent state the minimum concentration of oct4 required to reprogram differentiated cells is 10% higher than the concentration found in embryonic stem cells"
+              }
+            ],
+            "unmatched_triples": [
+              {
+                "subject": "increasing the concentration of oct4 transcription factor beyond a threshold will",
+                "predicate": "CAUSES",
+                "object": "reprogramming of differentiated cells to a pluripotent state the minimum concentration of oct4 required to reprogram differentiated cells is 10% higher than the concentration found in embryonic stem cells"
+              }
+            ]
+          },
+          "c4": {
+            "check": "COMBINATION_ALREADY_IMPLIED",
+            "passed": false,
+            "prediction_combinations": [],
+            "reason": "no combination detected in prediction"
+          },
+          "c5": {
+            "check": "CONSTRAINT_ALREADY_STATED",
+            "passed": false,
+            "prediction_bounds": [
+              1.045,
+              1.375
+            ],
+            "evidence_numeric_constraints": []
+          },
+          "c6": {
+            "check": "PREDICTION_DERIVABLE_WITHOUT_NEW_RELATION",
+            "passed": false,
+            "components": {
+              "entities_present": false,
+              "mechanisms_present": false,
+              "causal_edges_present": false
+            }
+          }
+        }
+      },
+      "quantitative_accuracy": {
+        "verdict": "INDETERMINATE",
+        "calibration_error": null,
+        "predicted": 1.1,
+        "observed": "YES",
+        "tolerance_bounds": null
+      },
+      "receipt_hash": "d6d35c8ec0116fe5a6900fe61840772a90f2ef28401e6d5e5f914a01f5a64ca0"
+    },
+    {
+      "key": "PB-010|B_llm_only",
+      "case_id": "PB-010",
+      "case_name": "GANs",
+      "config": "B_llm_only",
+      "candidate_id": "PRED2-PB-010-B_llm_only",
+      "receipt_integrity_ok": true,
+      "simulation_registration_date": "2013-12-31T23:59:59Z",
+      "evaluation_type": "HISTORICAL_RETROSPECTIVE_BACKTEST_GATE2",
+      "leakage_control": "evidence_only_prompt",
+      "backend": "z-ai-cli-glm-4-plus",
+      "hypothesis": "Adversarial training improves generative model output sharpness by approximating complex distributions more effectively",
+      "prediction": "Generative models trained with adversarial methods will produce outputs with 50% higher sharpness score compared to standard generative models",
+      "predicted_value": 50,
+      "tolerance_lower": 0.5,
+      "tolerance_upper": 2.0,
+      "expected_direction": "INCREASE",
+      "outcome_source": "Goodfellow et al. 2014 — GAN generates realistic synthetic images via adversarial training",
+      "outcome_value": "YES",
+      "outcome_direction": "BINARY",
+      "outcome_measurement_date": "2014-06-01T00:00:00Z",
+      "final_classification": "INDETERMINATE",
+      "DISCOVERY_PREDICTION_SCORE": 0.0,
+      "information_content": {
+        "classification": "GENUINE_NOVEL_PREDICTION",
+        "information_content_score": 1.0,
+        "encoded_count": 0,
+        "encoded_count_max": 6,
+        "reason": "prediction introduces genuinely new relation: encoded_count=0/6",
+        "checks": {
+          "c1": {
+            "check": "ENTITIES_PRESENT",
+            "passed": false,
+            "new_entities_in_prediction": [
+              "approximating",
+              "compared",
+              "effectively",
+              "improves",
+              "methods",
+              "output",
+              "score",
+              "sharpness",
+              "trained"
+            ]
+          },
+          "c2": {
+            "check": "MECHANISMS_PRESENT",
+            "passed": false,
+            "prediction_mechanism_verbs": [
+              "improves",
+              "produce"
+            ],
+            "evidence_mechanism_verbs": [
+              "causes",
+              "enables",
+              "exhibits"
+            ],
+            "new_verbs_in_prediction": [
+              "improves",
+              "produce"
+            ]
+          },
+          "c3": {
+            "check": "CAUSAL_EDGES_PRESENT",
+            "passed": false,
+            "prediction_triples": [
+              {
+                "subject": "adversarial training",
+                "predicate": "INCREASES",
+                "object": "generative model output sharpness by approximating complex distributions more effectively generative models trained with adversarial methods will produce outputs with 50% higher sharpness score compared to standard generative models"
+              }
+            ],
+            "unmatched_triples": [
+              {
+                "subject": "adversarial training",
+                "predicate": "INCREASES",
+                "object": "generative model output sharpness by approximating complex distributions more effectively generative models trained with adversarial methods will produce outputs with 50% higher sharpness score compared to standard generative models"
+              }
+            ]
+          },
+          "c4": {
+            "check": "COMBINATION_ALREADY_IMPLIED",
+            "passed": false,
+            "prediction_combinations": [
+              [
+                "adversarial",
+                "trained"
+              ]
+            ],
+            "evidence_combinations": [],
+            "details": [
+              {
+                "pair": [
+                  "adversarial",
+                  "trained"
+                ],
+                "in_explicit_combinations": false,
+                "both_entities_in_evidence": false,
+                "implied": false
+              }
+            ]
+          },
+          "c5": {
+            "check": "CONSTRAINT_ALREADY_STATED",
+            "passed": false,
+            "prediction_bounds": [
+              25.0,
+              100.0
+            ],
+            "evidence_numeric_constraints": []
+          },
+          "c6": {
+            "check": "PREDICTION_DERIVABLE_WITHOUT_NEW_RELATION",
+            "passed": false,
+            "components": {
+              "entities_present": false,
+              "mechanisms_present": false,
+              "causal_edges_present": false
+            }
+          }
+        }
+      },
+      "quantitative_accuracy": {
+        "verdict": "INDETERMINATE",
+        "calibration_error": null,
+        "predicted": 50,
+        "observed": "YES",
+        "tolerance_bounds": null
+      },
+      "receipt_hash": "5e4d5fe5131aaca902caee63518f0ff9c8b0125784e23a7d3fe3649e322b78dd"
+    },
+    {
+      "key": "PB-010|C_mechanism",
+      "case_id": "PB-010",
+      "case_name": "GANs",
+      "config": "C_mechanism",
+      "candidate_id": "PRED2-PB-010-C_mechanism",
+      "receipt_integrity_ok": true,
+      "simulation_registration_date": "2013-12-31T23:59:59Z",
+      "evaluation_type": "HISTORICAL_RETROSPECTIVE_BACKTEST_GATE2",
+      "leakage_control": "evidence_only_prompt",
+      "backend": "z-ai-cli-glm-4-plus",
+      "hypothesis": "Adversarial training in neural networks improves generative model output sharpness by approximating complex distributions through competitive optimization",
+      "prediction": "Generative models trained with adversarial training will produce outputs with 40% higher sharpness compared to non-adversarial training",
+      "predicted_value": 40,
+      "tolerance_lower": 0.5,
+      "tolerance_upper": 2.0,
+      "expected_direction": "INCREASE",
+      "outcome_source": "Goodfellow et al. 2014 — GAN generates realistic synthetic images via adversarial training",
+      "outcome_value": "YES",
+      "outcome_direction": "BINARY",
+      "outcome_measurement_date": "2014-06-01T00:00:00Z",
+      "final_classification": "RECONSTRUCTION",
+      "DISCOVERY_PREDICTION_SCORE": 0.0,
+      "information_content": {
+        "classification": "RECONSTRUCTION",
+        "information_content_score": 0.8333,
+        "encoded_count": 1,
+        "encoded_count_max": 6,
+        "reason": "prediction encoded by evidence: c3=True, c4=False, c5=False, c6=False, encoded_count=1/6",
+        "checks": {
+          "c1": {
+            "check": "ENTITIES_PRESENT",
+            "passed": false,
+            "new_entities_in_prediction": [
+              "approximating",
+              "compared",
+              "competitive",
+              "improves",
+              "non-adversarial",
+              "optimization",
+              "output",
+              "sharpness",
+              "trained"
+            ]
+          },
+          "c2": {
+            "check": "MECHANISMS_PRESENT",
+            "passed": false,
+            "prediction_mechanism_verbs": [
+              "improves",
+              "produce"
+            ],
+            "evidence_mechanism_verbs": [
+              "causes",
+              "enables",
+              "exhibits"
+            ],
+            "new_verbs_in_prediction": [
+              "improves",
+              "produce"
+            ]
+          },
+          "c3": {
+            "check": "CAUSAL_EDGES_PRESENT",
+            "passed": true,
+            "prediction_triples": [
+              {
+                "subject": "adversarial training in neural networks",
+                "predicate": "INCREASES",
+                "object": "generative model output sharpness by approximating complex distributions through competitive optimization generative models trained with adversarial training will produce outputs with 40% higher sharpness compared to non-adversarial training"
+              }
+            ],
+            "unmatched_triples": []
+          },
+          "c4": {
+            "check": "COMBINATION_ALREADY_IMPLIED",
+            "passed": false,
+            "prediction_combinations": [
+              [
+                "adversarial",
+                "trained"
+              ],
+              [
+                "adversarial",
+                "non"
+              ]
+            ],
+            "evidence_combinations": [],
+            "details": [
+              {
+                "pair": [
+                  "adversarial",
+                  "trained"
+                ],
+                "in_explicit_combinations": false,
+                "both_entities_in_evidence": false,
+                "implied": false
+              },
+              {
+                "pair": [
+                  "adversarial",
+                  "non"
+                ],
+                "in_explicit_combinations": false,
+                "both_entities_in_evidence": false,
+                "implied": false
+              }
+            ]
+          },
+          "c5": {
+            "check": "CONSTRAINT_ALREADY_STATED",
+            "passed": false,
+            "prediction_bounds": [
+              20.0,
+              80.0
+            ],
+            "evidence_numeric_constraints": []
+          },
+          "c6": {
+            "check": "PREDICTION_DERIVABLE_WITHOUT_NEW_RELATION",
+            "passed": false,
+            "components": {
+              "entities_present": false,
+              "mechanisms_present": false,
+              "causal_edges_present": true
+            }
+          }
+        }
+      },
+      "quantitative_accuracy": {
+        "verdict": "INDETERMINATE",
+        "calibration_error": null,
+        "predicted": 40,
+        "observed": "YES",
+        "tolerance_bounds": null
+      },
+      "receipt_hash": "72346bcf95b5ff7ec062dbbd6097f8493ad1903283fb65c414117f99a5e22539"
+    },
+    {
+      "key": "PB-010|D_random",
+      "case_id": "PB-010",
+      "case_name": "GANs",
+      "config": "D_random",
+      "candidate_id": "PRED2-PB-010-D_random",
+      "receipt_integrity_ok": true,
+      "simulation_registration_date": "2013-12-31T23:59:59Z",
+      "evaluation_type": "HISTORICAL_RETROSPECTIVE_BACKTEST_GATE2",
+      "leakage_control": "evidence_only_prompt",
+      "backend": "z-ai-cli-glm-4-plus",
+      "hypothesis": "Combining generative and discriminative models through adversarial training will reduce output blurriness",
+      "prediction": "Generative model output blurriness will decrease by at least 50% when trained with adversarial feedback from a discriminative model",
+      "predicted_value": 0.5,
+      "tolerance_lower": 0.5,
+      "tolerance_upper": 2.0,
+      "expected_direction": "DECREASE",
+      "outcome_source": "Goodfellow et al. 2014 — GAN generates realistic synthetic images via adversarial training",
+      "outcome_value": "YES",
+      "outcome_direction": "BINARY",
+      "outcome_measurement_date": "2014-06-01T00:00:00Z",
+      "final_classification": "INDETERMINATE",
+      "DISCOVERY_PREDICTION_SCORE": 0.0,
+      "information_content": {
+        "classification": "GENUINE_NOVEL_PREDICTION",
+        "information_content_score": 1.0,
+        "encoded_count": 0,
+        "encoded_count_max": 6,
+        "reason": "prediction introduces genuinely new relation: encoded_count=0/6",
+        "checks": {
+          "c1": {
+            "check": "ENTITIES_PRESENT",
+            "passed": false,
+            "new_entities_in_prediction": [
+              "blurriness",
+              "combining",
+              "decrease",
+              "feedback",
+              "least",
+              "output",
+              "reduce",
+              "trained"
+            ]
+          },
+          "c2": {
+            "check": "MECHANISMS_PRESENT",
+            "passed": false,
+            "prediction_mechanism_verbs": [
+              "decrease",
+              "reduce"
+            ],
+            "evidence_mechanism_verbs": [
+              "causes",
+              "enables",
+              "exhibits"
+            ],
+            "new_verbs_in_prediction": [
+              "decrease",
+              "reduce"
+            ]
+          },
+          "c3": {
+            "check": "CAUSAL_EDGES_PRESENT",
+            "passed": false,
+            "prediction_triples": [
+              {
+                "subject": "combining generative and discriminative models through adversarial training will",
+                "predicate": "PREVENTS",
+                "object": "output blurriness generative model output blurriness will decrease by at least 50% when trained with adversarial feedback from a discriminative model"
+              }
+            ],
+            "unmatched_triples": [
+              {
+                "subject": "combining generative and discriminative models through adversarial training will",
+                "predicate": "PREVENTS",
+                "object": "output blurriness generative model output blurriness will decrease by at least 50% when trained with adversarial feedback from a discriminative model"
+              }
+            ]
+          },
+          "c4": {
+            "check": "COMBINATION_ALREADY_IMPLIED",
+            "passed": false,
+            "prediction_combinations": [
+              [
+                "discriminative",
+                "generative"
+              ],
+              [
+                "adversarial",
+                "trained"
+              ]
+            ],
+            "evidence_combinations": [],
+            "details": [
+              {
+                "pair": [
+                  "discriminative",
+                  "generative"
+                ],
+                "in_explicit_combinations": false,
+                "both_entities_in_evidence": true,
+                "implied": true
+              },
+              {
+                "pair": [
+                  "adversarial",
+                  "trained"
+                ],
+                "in_explicit_combinations": false,
+                "both_entities_in_evidence": false,
+                "implied": false
+              }
+            ]
+          },
+          "c5": {
+            "check": "CONSTRAINT_ALREADY_STATED",
+            "passed": false,
+            "prediction_bounds": [
+              0.25,
+              1.0
+            ],
+            "evidence_numeric_constraints": []
+          },
+          "c6": {
+            "check": "PREDICTION_DERIVABLE_WITHOUT_NEW_RELATION",
+            "passed": false,
+            "components": {
+              "entities_present": false,
+              "mechanisms_present": false,
+              "causal_edges_present": false
+            }
+          }
+        }
+      },
+      "quantitative_accuracy": {
+        "verdict": "INDETERMINATE",
+        "calibration_error": null,
+        "predicted": 0.5,
+        "observed": "YES",
+        "tolerance_bounds": null
+      },
+      "receipt_hash": "5bb759d9663bc5c85df599c22fb57edd3caf9d1389830e372503382656fa782e"
+    },
+    {
+      "key": "PB-010|F_full",
+      "case_id": "PB-010",
+      "case_name": "GANs",
+      "config": "F_full",
+      "candidate_id": "PRED2-PB-010-F_full",
+      "receipt_integrity_ok": true,
+      "simulation_registration_date": "2013-12-31T23:59:59Z",
+      "evaluation_type": "HISTORICAL_RETROSPECTIVE_BACKTEST_GATE2",
+      "leakage_control": "evidence_only_prompt",
+      "backend": "z-ai-cli-glm-4-plus",
+      "hypothesis": "The blurriness of generative model outputs is inversely proportional to the discriminative capability of the discriminator model in adversarial training",
+      "prediction": "Increasing discriminator classification accuracy by 20% will reduce generative output blurriness by 15%",
+      "predicted_value": 0.15,
+      "tolerance_lower": 0.5,
+      "tolerance_upper": 2.0,
+      "expected_direction": "DECREASE",
+      "outcome_source": "Goodfellow et al. 2014 — GAN generates realistic synthetic images via adversarial training",
+      "outcome_value": "YES",
+      "outcome_direction": "BINARY",
+      "outcome_measurement_date": "2014-06-01T00:00:00Z",
+      "final_classification": "INDETERMINATE",
+      "DISCOVERY_PREDICTION_SCORE": 0.0,
+      "information_content": {
+        "classification": "GENUINE_NOVEL_PREDICTION",
+        "information_content_score": 1.0,
+        "encoded_count": 0,
+        "encoded_count_max": 6,
+        "reason": "prediction introduces genuinely new relation: encoded_count=0/6",
+        "checks": {
+          "c1": {
+            "check": "ENTITIES_PRESENT",
+            "passed": false,
+            "new_entities_in_prediction": [
+              "accuracy",
+              "blurriness",
+              "capability",
+              "classification",
+              "discriminator",
+              "increasing",
+              "inversely",
+              "output",
+              "proportional",
+              "reduce"
+            ]
+          },
+          "c2": {
+            "check": "MECHANISMS_PRESENT",
+            "passed": false,
+            "prediction_mechanism_verbs": [
+              "is",
+              "reduce"
+            ],
+            "evidence_mechanism_verbs": [
+              "causes",
+              "enables",
+              "exhibits"
+            ],
+            "new_verbs_in_prediction": [
+              "is",
+              "reduce"
+            ]
+          },
+          "c3": {
+            "check": "CAUSAL_EDGES_PRESENT",
+            "passed": false,
+            "prediction_triples": [
+              {
+                "subject": "the blurriness of generative model outputs",
+                "predicate": "EXHIBITS",
+                "object": "inversely proportional to the discriminative capability of the discriminator model in adversarial training increasing discriminator classification accuracy by 20% will reduce generative output blurriness by 15%"
+              }
+            ],
+            "unmatched_triples": [
+              {
+                "subject": "the blurriness of generative model outputs",
+                "predicate": "EXHIBITS",
+                "object": "inversely proportional to the discriminative capability of the discriminator model in adversarial training increasing discriminator classification accuracy by 20% will reduce generative output blurriness by 15%"
+              }
+            ]
+          },
+          "c4": {
+            "check": "COMBINATION_ALREADY_IMPLIED",
+            "passed": false,
+            "prediction_combinations": [],
+            "reason": "no combination detected in prediction"
+          },
+          "c5": {
+            "check": "CONSTRAINT_ALREADY_STATED",
+            "passed": false,
+            "prediction_bounds": [
+              0.075,
+              0.3
+            ],
+            "evidence_numeric_constraints": []
+          },
+          "c6": {
+            "check": "PREDICTION_DERIVABLE_WITHOUT_NEW_RELATION",
+            "passed": false,
+            "components": {
+              "entities_present": false,
+              "mechanisms_present": false,
+              "causal_edges_present": false
+            }
+          }
+        }
+      },
+      "quantitative_accuracy": {
+        "verdict": "INDETERMINATE",
+        "calibration_error": null,
+        "predicted": 0.15,
+        "observed": "YES",
+        "tolerance_bounds": null
+      },
+      "receipt_hash": "42787ee9eec51d6c6b2a8aa4b1dfc4ff8705ba0e5a4ec8e5c9bf8cc7e302c204"
+    }
+  ]
+}

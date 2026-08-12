@@ -1,0 +1,31 @@
+{
+  "candidate_id": "PRED2-PB-004-D_random",
+  "input_manifest_hash": "73d769508b3f10ad2e13c119ea4b7a50a8813c1c06b9f2ed0c819eba10d42062",
+  "hypothesis": "Increasing CNN depth beyond shallow architectures will reduce classification error on ImageNet",
+  "prediction": "A CNN with 10 layers will achieve lower error than a shallow CNN on ImageNet",
+  "units_range": "18.7 to 25.3",
+  "expected_direction": "DECREASE",
+  "measurement_method": "Top-1 classification error rate on ImageNet validation set",
+  "falsification_condition": "If the 10-layer CNN error is >= 26% (same as SVMs) or higher than shallow CNNs",
+  "pre_registration_timestamp": "2011-12-31T23:59:59Z",
+  "novelty_check": {
+    "metric": "NOVEL_RELATION_TO_EVIDENCE",
+    "is_novel": true,
+    "term_overlap_ratio": 0.23,
+    "evidence_terms_count": 25,
+    "proposed_terms_count": 13,
+    "overlapping_terms": [
+      "error",
+      "imagenet",
+      "shallow"
+    ],
+    "deterministic": true,
+    "reproducible": true
+  },
+  "gate2_predicted_value": 22,
+  "gate2_tolerance_lower": 0.85,
+  "gate2_tolerance_upper": 1.15,
+  "gate2_leakage_control": "evidence_only_prompt",
+  "gate2_backend": "z-ai-cli-glm-4-plus",
+  "receipt_hash": "be07d246919e17796430782a4865b0cc25da011e81a5b626779a187feeab8f27"
+}

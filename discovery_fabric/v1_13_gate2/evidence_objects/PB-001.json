@@ -1,0 +1,106 @@
+{
+  "case_id": "PB-001",
+  "entities": [
+    "Graphite",
+    "Intercalation",
+    "LiCoO2",
+    "Lithium",
+    "Nonaqueous",
+    "batteries",
+    "dendrite",
+    "electrolytes",
+    "formation",
+    "graphite",
+    "insert",
+    "intercalate",
+    "intercalation",
+    "licoo2",
+    "lithium",
+    "metal",
+    "shown"
+  ],
+  "entities_proper_nouns": [
+    "Graphite",
+    "Intercalation",
+    "LiCoO2",
+    "Lithium",
+    "Nonaqueous"
+  ],
+  "entities_technical_nouns": [
+    "batteries",
+    "dendrite",
+    "electrolytes",
+    "formation",
+    "graphite",
+    "insert",
+    "intercalate",
+    "intercalation",
+    "licoo2",
+    "lithium",
+    "metal",
+    "shown"
+  ],
+  "entities_chemicals": [
+    "LiCoO2"
+  ],
+  "mechanisms": [
+    {
+      "subject": "intercalation compounds",
+      "predicate": "ENABLES",
+      "object": "reversibly insert lithium ions",
+      "negated": false,
+      "source_sentence": "Intercalation compounds can reversibly insert lithium ions."
+    },
+    {
+      "subject": "licoo2",
+      "predicate": "EXHIBITS",
+      "object": "been shown to intercalate lithium",
+      "negated": false,
+      "source_sentence": "LiCoO2 has been shown to intercalate lithium."
+    },
+    {
+      "subject": "graphite",
+      "predicate": "EXHIBITS",
+      "object": "been shown to intercalate lithium",
+      "negated": false,
+      "source_sentence": "Graphite has been shown to intercalate lithium."
+    },
+    {
+      "subject": "lithium metal batteries",
+      "predicate": "EXHIBITS",
+      "object": "unsafe",
+      "negated": false,
+      "source_sentence": "Lithium metal batteries are unsafe"
+    },
+    {
+      "subject": "the challenge",
+      "predicate": "EXHIBITS",
+      "object": "safe rechargeable high-energy batteries",
+      "negated": false,
+      "source_sentence": "The challenge is safe rechargeable high-energy batteries."
+    }
+  ],
+  "causal_edges": [
+    {
+      "cause": "intercalation compounds",
+      "effect": "reversibly insert lithium ions",
+      "type": "ENABLES",
+      "negated": false
+    }
+  ],
+  "combinations": [],
+  "constraints": [],
+  "negations": [
+    "Lithium metal batteries are unsafe",
+    "Non-aqueous electrolytes exist"
+  ],
+  "raw_text": "Intercalation compounds can reversibly insert lithium ions. LiCoO2 has been shown to intercalate lithium. Graphite has been shown to intercalate lithium. Lithium metal batteries are unsafe due to dendrite formation. Non-aqueous electrolytes exist. The challenge is safe rechargeable high-energy batteries.",
+  "extraction_method": "deterministic_regex_v1",
+  "n_entities": 17,
+  "n_mechanisms": 5,
+  "n_causal_edges": 1,
+  "n_combinations": 0,
+  "n_constraints": 0,
+  "n_negations": 2,
+  "evidence_object_hash": "f3851fe42b051493ae1d55d731d894b949c6ed9401261195ab79dc2c907b806a"
+}

@@ -1,0 +1,31 @@
+{
+  "candidate_id": "PRED2-PB-004-F_full",
+  "input_manifest_hash": "73d769508b3f10ad2e13c119ea4b7a50a8813c1c06b9f2ed0c819eba10d42062",
+  "hypothesis": "Increasing CNN depth beyond shallow architectures will reduce error rates below the current SVM benchmark of 26%",
+  "prediction": "A deep CNN (more than 5 layers) will achieve 20% error rate on ImageNet",
+  "units_range": "18 to 22",
+  "expected_direction": "DECREASE",
+  "measurement_method": "Top-1 error rate on ImageNet validation set",
+  "falsification_condition": "Observed error rate remains ≥26% or fails to reach ≤22%",
+  "pre_registration_timestamp": "2011-12-31T23:59:59Z",
+  "novelty_check": {
+    "metric": "NOVEL_RELATION_TO_EVIDENCE",
+    "is_novel": true,
+    "term_overlap_ratio": 0.18,
+    "evidence_terms_count": 25,
+    "proposed_terms_count": 17,
+    "overlapping_terms": [
+      "error",
+      "imagenet",
+      "shallow"
+    ],
+    "deterministic": true,
+    "reproducible": true
+  },
+  "gate2_predicted_value": 20,
+  "gate2_tolerance_lower": 0.9,
+  "gate2_tolerance_upper": 1.1,
+  "gate2_leakage_control": "evidence_only_prompt",
+  "gate2_backend": "z-ai-cli-glm-4-plus",
+  "receipt_hash": "af0b98b49dc2bd42f7fbe015178157cb1650dc13d3de4b68bdbc2a0be8d9ccdd"
+}

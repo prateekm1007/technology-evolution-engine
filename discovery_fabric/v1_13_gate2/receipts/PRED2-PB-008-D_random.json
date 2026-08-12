@@ -1,0 +1,33 @@
+{
+  "candidate_id": "PRED2-PB-008-D_random",
+  "input_manifest_hash": "778400e5fadc07b2724df56c1eb636fbb68ab95cf17f557d23ab16831a85cd08",
+  "hypothesis": "Combined PD-1 blockade and cancer vaccine administration will result in enhanced anti-tumor immune response compared to either treatment alone",
+  "prediction": "The combination therapy will increase tumor-infiltrating lymphocyte count by 60% compared to monotherapy",
+  "units_range": "30 to 90",
+  "expected_direction": "INCREASE",
+  "measurement_method": "Quantify T-cell infiltration in tumor tissue via immunohistochemical staining after treatment",
+  "falsification_condition": "The combination therapy shows less than 30% increase in tumor-infiltrating lymphocytes compared to the most effective monotherapy",
+  "pre_registration_timestamp": "2011-12-31T23:59:59Z",
+  "novelty_check": {
+    "metric": "NOVEL_RELATION_TO_EVIDENCE",
+    "is_novel": true,
+    "term_overlap_ratio": 0.23,
+    "evidence_terms_count": 19,
+    "proposed_terms_count": 22,
+    "overlapping_terms": [
+      "blockade",
+      "cancer",
+      "immune",
+      "response",
+      "tumor"
+    ],
+    "deterministic": true,
+    "reproducible": true
+  },
+  "gate2_predicted_value": 60,
+  "gate2_tolerance_lower": 0.5,
+  "gate2_tolerance_upper": 1.5,
+  "gate2_leakage_control": "evidence_only_prompt",
+  "gate2_backend": "z-ai-cli-glm-4-plus",
+  "receipt_hash": "2b212438e58dc2d133ee259931aaf36c6307776d506d12f70f81acb10cd2f91d"
+}

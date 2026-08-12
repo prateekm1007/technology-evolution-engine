@@ -1,0 +1,35 @@
+{
+  "candidate_id": "PRED2-PB-002-F_full",
+  "input_manifest_hash": "e3498e861da0932f6e5482dfe5b060d47f0ed6f36eb9fd3259f8c7d032790e4b",
+  "hypothesis": "The heat stability of DNA polymerase from thermophilic bacteria increases the efficiency of primer extension at elevated temperatures compared to mesophilic polymerase",
+  "prediction": "The extension rate of heat-stable DNA polymerase at 95°C will be at least 2.5 times higher than that of a non-heat-stable polymerase at the same temperature",
+  "units_range": "1.25 to 2.5",
+  "expected_direction": "INCREASE",
+  "measurement_method": "Compare primer extension rates between heat-stable and non-heat-stable DNA polymerases at 95°C using identical primers and DNA templates, measuring the amount of extended product per unit time",
+  "falsification_condition": "If the extension rate of heat-stable polymerase is less than 1.25 times that of non-heat-stable polymerase at 95°C",
+  "pre_registration_timestamp": "1984-12-31T23:59:59Z",
+  "novelty_check": {
+    "metric": "NOVEL_RELATION_TO_EVIDENCE",
+    "is_novel": true,
+    "term_overlap_ratio": 0.35,
+    "evidence_terms_count": 18,
+    "proposed_terms_count": 20,
+    "overlapping_terms": [
+      "bacteria",
+      "extension",
+      "heat",
+      "polymerase",
+      "primer",
+      "stable",
+      "thermophilic"
+    ],
+    "deterministic": true,
+    "reproducible": true
+  },
+  "gate2_predicted_value": 2.5,
+  "gate2_tolerance_lower": 0.5,
+  "gate2_tolerance_upper": 1.0,
+  "gate2_leakage_control": "evidence_only_prompt",
+  "gate2_backend": "z-ai-cli-glm-4-plus",
+  "receipt_hash": "a825e27f2819113e91a832a32db49d3ac552f5d42608c2461bb642e442649332"
+}

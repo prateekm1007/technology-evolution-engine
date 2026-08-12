@@ -1,0 +1,33 @@
+{
+  "candidate_id": "PRED2-PB-001-C_mechanism",
+  "input_manifest_hash": "fdfe4ea875da7072d01c7f838bec0d2299c2acefb3e951853dcb53b2b96538e7",
+  "hypothesis": "Reversible lithium intercalation in graphite and LiCoO2 enables safer rechargeable battery operation compared to lithium metal",
+  "prediction": "The cycle life of a lithium battery using graphite anode and LiCoO2 cathode will be at least 10 times longer than a lithium metal battery",
+  "units_range": "5 to 20",
+  "expected_direction": "INCREASE",
+  "measurement_method": "Count the number of complete charge-discharge cycles until capacity drops to 80% of initial capacity for both battery types",
+  "falsification_condition": "If the lithium metal battery achieves cycle life within the range of 5-20 times that of the graphite/LiCoO2 battery",
+  "pre_registration_timestamp": "1990-12-31T23:59:59Z",
+  "novelty_check": {
+    "metric": "NOVEL_RELATION_TO_EVIDENCE",
+    "is_novel": true,
+    "term_overlap_ratio": 0.25,
+    "evidence_terms_count": 23,
+    "proposed_terms_count": 20,
+    "overlapping_terms": [
+      "graphite",
+      "intercalation",
+      "lithium",
+      "metal",
+      "rechargeable"
+    ],
+    "deterministic": true,
+    "reproducible": true
+  },
+  "gate2_predicted_value": 10,
+  "gate2_tolerance_lower": 0.5,
+  "gate2_tolerance_upper": 2.0,
+  "gate2_leakage_control": "evidence_only_prompt",
+  "gate2_backend": "z-ai-cli-glm-4-plus",
+  "receipt_hash": "04a4485eba3ce787a68316bde2474a4a4e0de5db4cd9fcc8a4a983273b9d2f1a"
+}

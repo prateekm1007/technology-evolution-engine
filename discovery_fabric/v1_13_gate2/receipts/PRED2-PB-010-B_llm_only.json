@@ -1,0 +1,36 @@
+{
+  "candidate_id": "PRED2-PB-010-B_llm_only",
+  "input_manifest_hash": "ca628908e5afe7ad6d0ec743ff959b273f5751f64e3738f3cee451b1d8b01f8b",
+  "hypothesis": "Adversarial training improves generative model output sharpness by approximating complex distributions more effectively",
+  "prediction": "Generative models trained with adversarial methods will produce outputs with 50% higher sharpness score compared to standard generative models",
+  "units_range": "25 to 100",
+  "expected_direction": "INCREASE",
+  "measurement_method": "Measure output sharpness using a standardized edge detection algorithm on generated images",
+  "falsification_condition": "Adversarial-trained generative models show less than 25% improvement in sharpness score compared to standard generative models",
+  "pre_registration_timestamp": "2013-12-31T23:59:59Z",
+  "novelty_check": {
+    "metric": "NOVEL_RELATION_TO_EVIDENCE",
+    "is_novel": true,
+    "term_overlap_ratio": 0.4,
+    "evidence_terms_count": 21,
+    "proposed_terms_count": 20,
+    "overlapping_terms": [
+      "adversarial",
+      "complex",
+      "distributions",
+      "generative",
+      "models",
+      "outputs",
+      "produce",
+      "training"
+    ],
+    "deterministic": true,
+    "reproducible": true
+  },
+  "gate2_predicted_value": 50,
+  "gate2_tolerance_lower": 0.5,
+  "gate2_tolerance_upper": 2.0,
+  "gate2_leakage_control": "evidence_only_prompt",
+  "gate2_backend": "z-ai-cli-glm-4-plus",
+  "receipt_hash": "5e4d5fe5131aaca902caee63518f0ff9c8b0125784e23a7d3fe3649e322b78dd"
+}

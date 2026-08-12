@@ -1,0 +1,33 @@
+{
+  "candidate_id": "PRED2-PB-010-F_full",
+  "input_manifest_hash": "ca628908e5afe7ad6d0ec743ff959b273f5751f64e3738f3cee451b1d8b01f8b",
+  "hypothesis": "The blurriness of generative model outputs is inversely proportional to the discriminative capability of the discriminator model in adversarial training",
+  "prediction": "Increasing discriminator classification accuracy by 20% will reduce generative output blurriness by 15%",
+  "units_range": "0.075 to 0.3",
+  "expected_direction": "DECREASE",
+  "measurement_method": "Measure output blurriness using a Laplacian variance metric before and after discriminator accuracy increase",
+  "falsification_condition": "If the observed blurriness reduction is less than 7.5% or greater than 30%",
+  "pre_registration_timestamp": "2013-12-31T23:59:59Z",
+  "novelty_check": {
+    "metric": "NOVEL_RELATION_TO_EVIDENCE",
+    "is_novel": true,
+    "term_overlap_ratio": 0.31,
+    "evidence_terms_count": 21,
+    "proposed_terms_count": 16,
+    "overlapping_terms": [
+      "adversarial",
+      "discriminative",
+      "generative",
+      "outputs",
+      "training"
+    ],
+    "deterministic": true,
+    "reproducible": true
+  },
+  "gate2_predicted_value": 0.15,
+  "gate2_tolerance_lower": 0.5,
+  "gate2_tolerance_upper": 2.0,
+  "gate2_leakage_control": "evidence_only_prompt",
+  "gate2_backend": "z-ai-cli-glm-4-plus",
+  "receipt_hash": "42787ee9eec51d6c6b2a8aa4b1dfc4ff8705ba0e5a4ec8e5c9bf8cc7e302c204"
+}

@@ -1,0 +1,33 @@
+{
+  "candidate_id": "PRED2-PB-010-D_random",
+  "input_manifest_hash": "ca628908e5afe7ad6d0ec743ff959b273f5751f64e3738f3cee451b1d8b01f8b",
+  "hypothesis": "Combining generative and discriminative models through adversarial training will reduce output blurriness",
+  "prediction": "Generative model output blurriness will decrease by at least 50% when trained with adversarial feedback from a discriminative model",
+  "units_range": "0.25 to 1",
+  "expected_direction": "DECREASE",
+  "measurement_method": "Quantify blurriness using a standardized image sharpness metric (e.g., variance of Laplacian) on outputs before and after adversarial training",
+  "falsification_condition": "If the measured blurriness decreases by less than 50% (i.e., ratio of post-training to pre-training blurriness > 0.5)",
+  "pre_registration_timestamp": "2013-12-31T23:59:59Z",
+  "novelty_check": {
+    "metric": "NOVEL_RELATION_TO_EVIDENCE",
+    "is_novel": true,
+    "term_overlap_ratio": 0.33,
+    "evidence_terms_count": 21,
+    "proposed_terms_count": 15,
+    "overlapping_terms": [
+      "adversarial",
+      "discriminative",
+      "generative",
+      "models",
+      "training"
+    ],
+    "deterministic": true,
+    "reproducible": true
+  },
+  "gate2_predicted_value": 0.5,
+  "gate2_tolerance_lower": 0.5,
+  "gate2_tolerance_upper": 2.0,
+  "gate2_leakage_control": "evidence_only_prompt",
+  "gate2_backend": "z-ai-cli-glm-4-plus",
+  "receipt_hash": "5bb759d9663bc5c85df599c22fb57edd3caf9d1389830e372503382656fa782e"
+}

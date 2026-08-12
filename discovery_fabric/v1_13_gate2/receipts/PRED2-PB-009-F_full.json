@@ -1,0 +1,34 @@
+{
+  "candidate_id": "PRED2-PB-009-F_full",
+  "input_manifest_hash": "f210167ed2220887aa94e3df9d9b3bd0b554fbd21e3b7fff9a9bfa1c8add7eeb",
+  "hypothesis": "Increasing the concentration of Oct4 transcription factor beyond a threshold will induce reprogramming of differentiated cells to a pluripotent state",
+  "prediction": "The minimum concentration of Oct4 required to reprogram differentiated cells is 10% higher than the concentration found in embryonic stem cells",
+  "units_range": "1.045 to 1.375",
+  "expected_direction": "INCREASE",
+  "measurement_method": "Measure Oct4 concentration in embryonic stem cells using fluorescence intensity, then test increasing concentrations of exogenous Oct4 in differentiated cells and quantify reprogramming efficiency through marker expression",
+  "falsification_condition": "If reprogramming occurs at concentrations equal to or below the endogenous Oct4 level in embryonic stem cells, or if no reprogramming occurs at concentrations 25% above the endogenous level",
+  "pre_registration_timestamp": "2005-12-31T23:59:59Z",
+  "novelty_check": {
+    "metric": "NOVEL_RELATION_TO_EVIDENCE",
+    "is_novel": true,
+    "term_overlap_ratio": 0.3,
+    "evidence_terms_count": 23,
+    "proposed_terms_count": 20,
+    "overlapping_terms": [
+      "cells",
+      "embryonic",
+      "pluripotent",
+      "reprogram",
+      "stem",
+      "transcription"
+    ],
+    "deterministic": true,
+    "reproducible": true
+  },
+  "gate2_predicted_value": 1.1,
+  "gate2_tolerance_lower": 0.95,
+  "gate2_tolerance_upper": 1.25,
+  "gate2_leakage_control": "evidence_only_prompt",
+  "gate2_backend": "z-ai-cli-glm-4-plus",
+  "receipt_hash": "d6d35c8ec0116fe5a6900fe61840772a90f2ef28401e6d5e5f914a01f5a64ca0"
+}

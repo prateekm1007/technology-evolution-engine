@@ -1,0 +1,123 @@
+{
+  "case_id": "PB-009",
+  "entities": [
+    "Cellular",
+    "Embryonic",
+    "Four",
+    "Klf4",
+    "Nuclear",
+    "Oct4",
+    "Sox2",
+    "Transcription",
+    "c-myc",
+    "cells",
+    "cellular",
+    "cloning",
+    "control",
+    "cytoplasm",
+    "differentiation",
+    "embryonic",
+    "irreversible",
+    "largely",
+    "nuclear",
+    "pluripotent",
+    "regulators",
+    "reprogram",
+    "requires",
+    "transcription",
+    "transfer"
+  ],
+  "entities_proper_nouns": [
+    "Cellular",
+    "Embryonic",
+    "Four",
+    "Klf4",
+    "Nuclear",
+    "Oct4",
+    "Sox2",
+    "Transcription"
+  ],
+  "entities_technical_nouns": [
+    "c-myc",
+    "cells",
+    "cellular",
+    "cloning",
+    "control",
+    "cytoplasm",
+    "differentiation",
+    "embryonic",
+    "irreversible",
+    "largely",
+    "nuclear",
+    "pluripotent",
+    "regulators",
+    "reprogram",
+    "requires",
+    "transcription",
+    "transfer"
+  ],
+  "entities_chemicals": [
+    "Klf4",
+    "Oct4",
+    "Sox2"
+  ],
+  "mechanisms": [
+    {
+      "subject": "embryonic stem cells",
+      "predicate": "EXHIBITS",
+      "object": "pluripotent",
+      "negated": false,
+      "source_sentence": "Embryonic stem cells are pluripotent."
+    },
+    {
+      "subject": "cellular differentiation",
+      "predicate": "EXHIBITS",
+      "object": "considered largely irreversible",
+      "negated": false,
+      "source_sentence": "Cellular differentiation is considered largely irreversible."
+    },
+    {
+      "subject": "nuclear transfer (cloning)",
+      "predicate": "ENABLES",
+      "object": "reprogram cells",
+      "negated": false,
+      "source_sentence": "Nuclear transfer (cloning) can reprogram cells but requires egg cytoplasm."
+    },
+    {
+      "subject": "four factors (oct4, sox2, klf4, c-myc)",
+      "predicate": "EXHIBITS",
+      "object": "known stem cell regulators",
+      "negated": false,
+      "source_sentence": "Four factors (Oct4, Sox2, Klf4, c-Myc) are known stem cell regulators."
+    }
+  ],
+  "causal_edges": [
+    {
+      "cause": "nuclear transfer (cloning)",
+      "effect": "reprogram cells",
+      "type": "ENABLES",
+      "negated": false
+    }
+  ],
+  "combinations": [],
+  "constraints": [
+    {
+      "subject": "cells",
+      "relation": "PROPERTY",
+      "value": "pluripotent",
+      "unit": "",
+      "type": "PROPERTY",
+      "source_sentence": "Embryonic stem cells are pluripotent."
+    }
+  ],
+  "negations": [],
+  "raw_text": "Embryonic stem cells are pluripotent. Cellular differentiation is considered largely irreversible. Nuclear transfer (cloning) can reprogram cells but requires egg cytoplasm. Transcription factors control cell fate. Four factors (Oct4, Sox2, Klf4, c-Myc) are known stem cell regulators.",
+  "extraction_method": "deterministic_regex_v1",
+  "n_entities": 25,
+  "n_mechanisms": 4,
+  "n_causal_edges": 1,
+  "n_combinations": 0,
+  "n_constraints": 1,
+  "n_negations": 0,
+  "evidence_object_hash": "12aef6b3ba5cb702507cb9f8b23d988b8c194814e5eb440359aa3ec16b6e0f7d"
+}

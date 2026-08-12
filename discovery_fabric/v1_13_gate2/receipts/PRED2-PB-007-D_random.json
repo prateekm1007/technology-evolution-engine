@@ -1,0 +1,30 @@
+{
+  "candidate_id": "PRED2-PB-007-D_random",
+  "input_manifest_hash": "94c829074c799d3e85f629378eb311d83e87c984c62d712bdf2252a34a7ec443",
+  "hypothesis": "The number of guide RNA molecules required for Cas9 to cut a specific DNA sequence is inversely proportional to the length of the target sequence.",
+  "prediction": "Cas9 will require fewer guide RNA molecules to cut a 20-base pair target sequence compared to a 10-base pair target sequence.",
+  "units_range": "1 to 3",
+  "expected_direction": "INCREASE",
+  "measurement_method": "Compare the minimum number of guide RNA molecules needed to achieve detectable DNA cutting in vitro for 20-bp vs. 10-bp target sequences using gel electrophoresis.",
+  "falsification_condition": "If the number of guide RNA molecules required for cutting the 20-bp target is not at least 1.33 times greater than for the 10-bp target.",
+  "pre_registration_timestamp": "2011-12-31T23:59:59Z",
+  "novelty_check": {
+    "metric": "NOVEL_RELATION_TO_EVIDENCE",
+    "is_novel": true,
+    "term_overlap_ratio": 0.13,
+    "evidence_terms_count": 19,
+    "proposed_terms_count": 15,
+    "overlapping_terms": [
+      "guide",
+      "specific"
+    ],
+    "deterministic": true,
+    "reproducible": true
+  },
+  "gate2_predicted_value": 2.0,
+  "gate2_tolerance_lower": 0.5,
+  "gate2_tolerance_upper": 1.5,
+  "gate2_leakage_control": "evidence_only_prompt",
+  "gate2_backend": "z-ai-cli-glm-4-plus",
+  "receipt_hash": "cce96721aa47b96a24bbb31284fdf269e9165c4030e6062cec9c565908a6c38d"
+}

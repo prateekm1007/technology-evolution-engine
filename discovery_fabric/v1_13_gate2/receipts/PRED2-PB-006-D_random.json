@@ -1,0 +1,35 @@
+{
+  "candidate_id": "PRED2-PB-006-D_random",
+  "input_manifest_hash": "0d39841c730b5a13b1c817c477f1ba3233b24eb6aa2a2d179db52ff21cb8c5d0",
+  "hypothesis": "Modified nucleosides combined with lipid nanoparticle delivery will reduce mRNA immunogenicity while maintaining stability for vaccine applications",
+  "prediction": "The immunogenicity of modified mRNA delivered via lipid nanoparticles will be 70% lower than unmodified mRNA delivered via the same method",
+  "units_range": "35 to 105",
+  "expected_direction": "DECREASE",
+  "measurement_method": "Measure immune response markers (e.g., cytokine levels) in animal models after administering modified vs unmodified mRNA-LNP formulations",
+  "falsification_condition": "If the modified mRNA-LNP shows less than 35% reduction in immunogenicity compared to unmodified mRNA-LNP",
+  "pre_registration_timestamp": "2019-12-31T23:59:59Z",
+  "novelty_check": {
+    "metric": "NOVEL_RELATION_TO_EVIDENCE",
+    "is_novel": true,
+    "term_overlap_ratio": 0.37,
+    "evidence_terms_count": 25,
+    "proposed_terms_count": 19,
+    "overlapping_terms": [
+      "immunogenicity",
+      "lipid",
+      "modified",
+      "mrna",
+      "nanoparticles",
+      "nucleosides",
+      "reduce"
+    ],
+    "deterministic": true,
+    "reproducible": true
+  },
+  "gate2_predicted_value": 70,
+  "gate2_tolerance_lower": 0.5,
+  "gate2_tolerance_upper": 1.5,
+  "gate2_leakage_control": "evidence_only_prompt",
+  "gate2_backend": "z-ai-cli-glm-4-plus",
+  "receipt_hash": "081c5aad134d608a67135c776873cec295cc324567fc10906095a809f0890d35"
+}

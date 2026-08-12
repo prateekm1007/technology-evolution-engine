@@ -1,0 +1,34 @@
+{
+  "candidate_id": "PRED2-PB-007-B_llm_only",
+  "input_manifest_hash": "94c829074c799d3e85f629378eb311d83e87c984c62d712bdf2252a34a7ec443",
+  "hypothesis": "The ease of redesigning CRISPR-Cas9 systems is greater than that of zinc finger nucleases or TALENs",
+  "prediction": "The time required to redesign CRISPR-Cas9 systems for a new target sequence is less than that required for zinc finger nucleases or TALENs",
+  "units_range": "0.25 to 1",
+  "expected_direction": "DECREASE",
+  "measurement_method": "Measure the time taken by skilled researchers to redesign each system for a novel DNA target sequence",
+  "falsification_condition": "If the time required to redesign CRISPR-Cas9 systems is greater than or equal to the time required for zinc finger nucleases or TALENs",
+  "pre_registration_timestamp": "2011-12-31T23:59:59Z",
+  "novelty_check": {
+    "metric": "NOVEL_RELATION_TO_EVIDENCE",
+    "is_novel": true,
+    "term_overlap_ratio": 0.38,
+    "evidence_terms_count": 19,
+    "proposed_terms_count": 16,
+    "overlapping_terms": [
+      "crispr",
+      "finger",
+      "nucleases",
+      "redesign",
+      "talens",
+      "zinc"
+    ],
+    "deterministic": true,
+    "reproducible": true
+  },
+  "gate2_predicted_value": 0.5,
+  "gate2_tolerance_lower": 0.5,
+  "gate2_tolerance_upper": 2.0,
+  "gate2_leakage_control": "evidence_only_prompt",
+  "gate2_backend": "z-ai-cli-glm-4-plus",
+  "receipt_hash": "d8a7441ced9983b8d2dd3c77d399477cbd1fdfd2bd742bbf49f924a9e65dbbbe"
+}

@@ -1,0 +1,33 @@
+{
+  "candidate_id": "PRED2-PB-002-C_mechanism",
+  "input_manifest_hash": "e3498e861da0932f6e5482dfe5b060d47f0ed6f36eb9fd3259f8c7d032790e4b",
+  "hypothesis": "Heat denaturation of DNA creates a requirement for heat-stable DNA polymerase to enable repeated primer extension cycles",
+  "prediction": "The efficiency of DNA amplification will increase when heat-stable DNA polymerase is used compared to heat-labile DNA polymerase",
+  "units_range": "1.5 to 6",
+  "expected_direction": "INCREASE",
+  "measurement_method": "Compare the amount of extended DNA product after multiple heating/cooling cycles using heat-stable versus heat-labile DNA polymerase",
+  "falsification_condition": "Heat-stable DNA polymerase produces less than 1.5 times more DNA product than heat-labile DNA polymerase after multiple thermal cycles",
+  "pre_registration_timestamp": "1984-12-31T23:59:59Z",
+  "novelty_check": {
+    "metric": "NOVEL_RELATION_TO_EVIDENCE",
+    "is_novel": true,
+    "term_overlap_ratio": 0.29,
+    "evidence_terms_count": 18,
+    "proposed_terms_count": 17,
+    "overlapping_terms": [
+      "extension",
+      "heat",
+      "polymerase",
+      "primer",
+      "stable"
+    ],
+    "deterministic": true,
+    "reproducible": true
+  },
+  "gate2_predicted_value": 3.0,
+  "gate2_tolerance_lower": 0.5,
+  "gate2_tolerance_upper": 2.0,
+  "gate2_leakage_control": "evidence_only_prompt",
+  "gate2_backend": "z-ai-cli-glm-4-plus",
+  "receipt_hash": "6d768dd1a2b0e904dca73a27ab53a592752efa79540cea95ff24a63202563456"
+}

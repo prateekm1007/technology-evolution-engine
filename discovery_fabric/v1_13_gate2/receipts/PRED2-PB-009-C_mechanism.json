@@ -1,0 +1,35 @@
+{
+  "candidate_id": "PRED2-PB-009-C_mechanism",
+  "input_manifest_hash": "f210167ed2220887aa94e3df9d9b3bd0b554fbd21e3b7fff9a9bfa1c8add7eeb",
+  "hypothesis": "Transcription factor overexpression can reverse cellular differentiation without egg cytoplasm",
+  "prediction": "The number of cells that regain pluripotency markers when treated with the four factors (Oct4, Sox2, Klf4, c-Myc) will be significantly higher than untreated differentiated cells",
+  "units_range": "7.5 to 30",
+  "expected_direction": "INCREASE",
+  "measurement_method": "Flow cytometry to quantify percentage of cells expressing pluripotency markers (e.g., Oct4, Nanog) after 7 days of factor exposure",
+  "falsification_condition": "Observed percentage of pluripotent marker-positive cells in treated group is not significantly higher than untreated control (p > 0.05)",
+  "pre_registration_timestamp": "2005-12-31T23:59:59Z",
+  "novelty_check": {
+    "metric": "NOVEL_RELATION_TO_EVIDENCE",
+    "is_novel": true,
+    "term_overlap_ratio": 0.33,
+    "evidence_terms_count": 23,
+    "proposed_terms_count": 21,
+    "overlapping_terms": [
+      "cells",
+      "cellular",
+      "cytoplasm",
+      "differentiation",
+      "factors",
+      "four",
+      "transcription"
+    ],
+    "deterministic": true,
+    "reproducible": true
+  },
+  "gate2_predicted_value": 15,
+  "gate2_tolerance_lower": 0.5,
+  "gate2_tolerance_upper": 2.0,
+  "gate2_leakage_control": "evidence_only_prompt",
+  "gate2_backend": "z-ai-cli-glm-4-plus",
+  "receipt_hash": "9a94ab76ac09cf453e2de4bbebab68f66db1ad9d1bf6499ccdfc57b4bf2bc5fa"
+}

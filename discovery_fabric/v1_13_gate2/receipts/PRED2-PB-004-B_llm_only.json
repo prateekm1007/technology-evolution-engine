@@ -1,0 +1,31 @@
+{
+  "candidate_id": "PRED2-PB-004-B_llm_only",
+  "input_manifest_hash": "73d769508b3f10ad2e13c119ea4b7a50a8813c1c06b9f2ed0c819eba10d42062",
+  "hypothesis": "Increasing CNN depth beyond shallow architectures will reduce vision benchmark error below 26%",
+  "prediction": "CNN depth increase reduces SVM error dominance",
+  "units_range": "17.6 to 26.4",
+  "expected_direction": "DECREASE",
+  "measurement_method": "Compare CNN error rates on ImageNet with increasing depth against SVM baseline",
+  "falsification_condition": "CNN error remains ≥26% when depth increases",
+  "pre_registration_timestamp": "2011-12-31T23:59:59Z",
+  "novelty_check": {
+    "metric": "NOVEL_RELATION_TO_EVIDENCE",
+    "is_novel": true,
+    "term_overlap_ratio": 0.23,
+    "evidence_terms_count": 25,
+    "proposed_terms_count": 13,
+    "overlapping_terms": [
+      "error",
+      "shallow",
+      "vision"
+    ],
+    "deterministic": true,
+    "reproducible": true
+  },
+  "gate2_predicted_value": 22,
+  "gate2_tolerance_lower": 0.8,
+  "gate2_tolerance_upper": 1.2,
+  "gate2_leakage_control": "evidence_only_prompt",
+  "gate2_backend": "z-ai-cli-glm-4-plus",
+  "receipt_hash": "13247809a0cbc46b042c794c686f43fd63e1fa5d6c2b4e3c04a8a320b7b0dfd9"
+}

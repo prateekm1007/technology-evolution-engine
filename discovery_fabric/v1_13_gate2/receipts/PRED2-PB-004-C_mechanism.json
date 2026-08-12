@@ -1,0 +1,36 @@
+{
+  "candidate_id": "PRED2-PB-004-C_mechanism",
+  "input_manifest_hash": "73d769508b3f10ad2e13c119ea4b7a50a8813c1c06b9f2ed0c819eba10d42062",
+  "hypothesis": "The combination of ReLU activation and dropout enables deeper CNN architectures to outperform SVMs on vision benchmarks",
+  "prediction": "A CNN with 5+ layers using ReLU and dropout will achieve <20% error on ImageNet",
+  "units_range": "13.5 to 27",
+  "expected_direction": "DECREASE",
+  "measurement_method": "Test error rate on ImageNet dataset",
+  "falsification_condition": "Observed error rate >= 27% or no improvement over SVM's 26% error",
+  "pre_registration_timestamp": "2011-12-31T23:59:59Z",
+  "novelty_check": {
+    "metric": "NOVEL_RELATION_TO_EVIDENCE",
+    "is_novel": true,
+    "term_overlap_ratio": 0.5,
+    "evidence_terms_count": 25,
+    "proposed_terms_count": 16,
+    "overlapping_terms": [
+      "activation",
+      "benchmarks",
+      "dropout",
+      "error",
+      "imagenet",
+      "relu",
+      "svms",
+      "vision"
+    ],
+    "deterministic": true,
+    "reproducible": true
+  },
+  "gate2_predicted_value": 18,
+  "gate2_tolerance_lower": 0.75,
+  "gate2_tolerance_upper": 1.5,
+  "gate2_leakage_control": "evidence_only_prompt",
+  "gate2_backend": "z-ai-cli-glm-4-plus",
+  "receipt_hash": "fc1caf16ab782ae9ed661b2f6f153d2e67cb0d3bc4805f5526cd2dcbc6620317"
+}

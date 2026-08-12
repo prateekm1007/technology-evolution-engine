@@ -1,0 +1,33 @@
+{
+  "candidate_id": "PRED2-PB-003-F_full",
+  "input_manifest_hash": "90d943fd8941b8d8bba675639a92e03924b4acf44ba31a93aae2d8a368f1c4cd",
+  "hypothesis": "The thermodynamic instability of 2D crystals is overcome by rolling them into nanotubes, which introduces mechanical stability through curvature-induced strain distribution.",
+  "prediction": "The radius of carbon nanotubes will be inversely proportional to the square root of the layer thickness of graphite precursors.",
+  "units_range": "1.125 to 2.25",
+  "expected_direction": "INCREASE",
+  "measurement_method": "Measure the layer thickness of graphite precursors via mechanical cleavage and correlate with the radius of resulting carbon nanotubes using electron microscopy.",
+  "falsification_condition": "If the radius of carbon nanotubes shows no inverse square root relationship with layer thickness, or if the relationship is positive correlation, the hypothesis is falsified.",
+  "pre_registration_timestamp": "2003-12-31T23:59:59Z",
+  "novelty_check": {
+    "metric": "NOVEL_RELATION_TO_EVIDENCE",
+    "is_novel": true,
+    "term_overlap_ratio": 0.2,
+    "evidence_terms_count": 16,
+    "proposed_terms_count": 25,
+    "overlapping_terms": [
+      "carbon",
+      "crystals",
+      "graphite",
+      "mechanical",
+      "nanotubes"
+    ],
+    "deterministic": true,
+    "reproducible": true
+  },
+  "gate2_predicted_value": 1.5,
+  "gate2_tolerance_lower": 0.75,
+  "gate2_tolerance_upper": 1.5,
+  "gate2_leakage_control": "evidence_only_prompt",
+  "gate2_backend": "z-ai-cli-glm-4-plus",
+  "receipt_hash": "2b2282ec8423ba0522ed37aa6701517a731492d0f5e32727b947305ca9951baf"
+}

@@ -1,0 +1,29 @@
+{
+  "candidate_id": "PRED2-PB-007-C_mechanism",
+  "input_manifest_hash": "94c829074c799d3e85f629378eb311d83e87c984c62d712bdf2252a34a7ec443",
+  "hypothesis": "The specificity of Cas9 is determined by complementarity between the guide RNA and target DNA sequence",
+  "prediction": "The number of mismatches between guide RNA and target DNA will correlate with cleavage efficiency",
+  "units_range": "0.35 to 0.7",
+  "expected_direction": "DECREASE",
+  "measurement_method": "Compare cleavage efficiency of Cas9 with guide RNAs having varying numbers of mismatches to the same target sequence",
+  "falsification_condition": "Cleavage efficiency remains constant regardless of mismatch number or increases with more mismatches",
+  "pre_registration_timestamp": "2011-12-31T23:59:59Z",
+  "novelty_check": {
+    "metric": "NOVEL_RELATION_TO_EVIDENCE",
+    "is_novel": true,
+    "term_overlap_ratio": 0.08,
+    "evidence_terms_count": 19,
+    "proposed_terms_count": 12,
+    "overlapping_terms": [
+      "guide"
+    ],
+    "deterministic": true,
+    "reproducible": true
+  },
+  "gate2_predicted_value": 0.7,
+  "gate2_tolerance_lower": 0.5,
+  "gate2_tolerance_upper": 1.0,
+  "gate2_leakage_control": "evidence_only_prompt",
+  "gate2_backend": "z-ai-cli-glm-4-plus",
+  "receipt_hash": "505ca17c8abfd3c9b24cca945af300cc745a2cc83391f837926fc8af2e8f3e15"
+}
