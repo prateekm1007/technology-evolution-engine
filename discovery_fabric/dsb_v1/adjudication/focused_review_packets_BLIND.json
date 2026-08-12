@@ -1,0 +1,692 @@
+{
+  "n_priority_packets": 14,
+  "priority_packets": [
+    {
+      "schema_version": "1.0.0",
+      "packet_id": "ADJ-ce7257999e1b",
+      "_internal": {
+        "receipt_id": "RECEIPT-DSB-F-001-LLM_only",
+        "case_id": "DSB-F-001",
+        "case_type": "fabricated",
+        "arm": "LLM_only",
+        "receipt_hash": "f04af57d1b43c2b68722d06f9ecc2d95725dc0f3bb10a79a8921c0e8de671ccc",
+        "answer_hash": "6c3b6ceb4410c81d5f1a9a4dedbadf14af772b1172b46f73a3bbd97cd1aebd5d"
+      },
+      "exposed_facts": [
+        "Non-aqueous electrolytes exist that can conduct sodium ions between electrodes.",
+        "Rechargeable battery electrodes must support reversible ion insertion and extraction.",
+        "Sodium metal batteries are unsafe due to dendrite formation during cycling.",
+        "The challenge is to build a safe rechargeable low-cost battery using earth-abundant elements."
+      ],
+      "proposed_relationship": "Using non-aqueous electrolytes that conduct sodium ions in rechargeable batteries with earth-abundant elements could mitigate the safety issues associated with sodium metal batteries.",
+      "proposed_mechanism": "The mechanism behind this proposed relationship involves the use of non-aqueous electrolytes to facilitate the reversible insertion and extraction of sodium ions between electrodes, potentially reducing or eliminating the formation of dendrites that make sodium metal batteries unsafe. By leveraging earth-abundant elements, the cost of such batteries could be significantly reduced, making them a viable alternative to existing battery technologies. The key to this mechanism is the ability of the non-aqueous electrolytes to support the necessary ion transport without the hazards associated with sodium metal.",
+      "proposed_constraint_released": "The constraint of safety issues due to dendrite formation in sodium metal batteries is released by utilizing non-aqueous electrolytes and earth-abundant elements.",
+      "questions": {
+        "Q1_MECHANISM_MATCH": {
+          "question": "Does the proposed mechanism plausibly explain a real scientific mechanism that could underlie a discovery from these facts?",
+          "options": [
+            "YES",
+            "NO",
+            "PARTIAL"
+          ]
+        },
+        "Q2_DISCOVERY_STRUCTURE_MATCH": {
+          "question": "Does the proposed_relationship express a relationship NOT explicit in the exposed_facts that combines them in a novel way?",
+          "options": [
+            "YES",
+            "NO",
+            "PARTIAL"
+          ]
+        },
+        "Q3_SPECIFICITY": {
+          "question": "Is the proposed_relationship specific enough to be falsifiable?",
+          "options": [
+            "YES",
+            "NO"
+          ]
+        }
+      },
+      "built_at": "2026-08-12T17:31:12.446290+00:00",
+      "priority_review": true,
+      "packet_hash": "baf795d7dcce5ca2b182873f66b7bf7ebacddc0347e567e06284c8c305fb8516"
+    },
+    {
+      "schema_version": "1.0.0",
+      "packet_id": "ADJ-468cd7a18409",
+      "_internal": {
+        "receipt_id": "RECEIPT-DSB-F-001-combination",
+        "case_id": "DSB-F-001",
+        "case_type": "fabricated",
+        "arm": "combination",
+        "receipt_hash": "6ba3f47c40ff59100611bd00c77260cd21f830cf26e16b54e75ad0f584fd455c",
+        "answer_hash": "6c3b6ceb4410c81d5f1a9a4dedbadf14af772b1172b46f73a3bbd97cd1aebd5d"
+      },
+      "exposed_facts": [
+        "Non-aqueous electrolytes exist that can conduct sodium ions between electrodes.",
+        "Rechargeable battery electrodes must support reversible ion insertion and extraction.",
+        "Sodium metal batteries are unsafe due to dendrite formation during cycling.",
+        "The challenge is to build a safe rechargeable low-cost battery using earth-abundant elements."
+      ],
+      "proposed_relationship": "Combining non-aqueous electrolytes that can conduct sodium ions with rechargeable battery electrodes that support reversible ion insertion and extraction could enable the development of a safe and efficient sodium-based battery.",
+      "proposed_mechanism": "The non-aqueous electrolytes would facilitate the conduction of sodium ions between the electrodes, while the reversible ion insertion and extraction properties of the electrodes would allow for the repeated charging and discharging of the battery without significant degradation. This combination could potentially mitigate the issue of dendrite formation during cycling, which is a major safety concern in sodium metal batteries, by providing a more controlled and stable environment for the sodium ions to move in and out of the electrodes.",
+      "proposed_constraint_released": "The combination of these two facts could release the constraint of safety concerns associated with sodium metal batteries, allowing for the development of a low-cost and earth-abundant element-based battery.",
+      "questions": {
+        "Q1_MECHANISM_MATCH": {
+          "question": "Does the proposed mechanism plausibly explain a real scientific mechanism that could underlie a discovery from these facts?",
+          "options": [
+            "YES",
+            "NO",
+            "PARTIAL"
+          ]
+        },
+        "Q2_DISCOVERY_STRUCTURE_MATCH": {
+          "question": "Does the proposed_relationship express a relationship NOT explicit in the exposed_facts that combines them in a novel way?",
+          "options": [
+            "YES",
+            "NO",
+            "PARTIAL"
+          ]
+        },
+        "Q3_SPECIFICITY": {
+          "question": "Is the proposed_relationship specific enough to be falsifiable?",
+          "options": [
+            "YES",
+            "NO"
+          ]
+        }
+      },
+      "built_at": "2026-08-12T17:31:12.446362+00:00",
+      "priority_review": true,
+      "packet_hash": "b8316d8d31697caf65c043a3856c80b5e8abd6ff5d915b1d0ecbc7a534e01da0"
+    },
+    {
+      "schema_version": "1.0.0",
+      "packet_id": "ADJ-14c575431919",
+      "_internal": {
+        "receipt_id": "RECEIPT-DSB-F-005-LLM_only",
+        "case_id": "DSB-F-005",
+        "case_type": "fabricated",
+        "arm": "LLM_only",
+        "receipt_hash": "57f51a6e7be270f59d3680ae69422cfddb987f326b798bf5868e71407fd4cc9a",
+        "answer_hash": "ffde0aa56e386684499bc9f85a8b27ed6297a47a348bbb1f37b81466b26d2aa3"
+      },
+      "exposed_facts": [
+        "Organic photovoltaics (OPVs) based on conjugated polymer donors and fullerene acceptors achieve approximately 5 percent power conversion efficiency.",
+        "Solution-processable semiconductors are attractive for low-cost large-area photovoltaics.",
+        "Tandem architectures stack two cells with complementary absorption spectra to better use the solar spectrum.",
+        "Transparent conducting oxides enable series-connected tandem sub-cells."
+      ],
+      "proposed_relationship": "Combining solution-processable semiconductors with tandem architectures may enhance the power conversion efficiency of organic photovoltaics.",
+      "proposed_mechanism": "The use of solution-processable semiconductors allows for low-cost large-area production, while tandem architectures enable better utilization of the solar spectrum by stacking cells with complementary absorption spectra, potentially leading to improved power conversion efficiency. This combination could leverage the benefits of both approaches, as the solution-processable semiconductors can be easily integrated into the tandem architecture, facilitating the creation of large-area, high-efficiency photovoltaics.",
+      "proposed_constraint_released": "The limitation of single-cell architectures with limited absorption spectra is overcome by the tandem approach, allowing for more efficient energy harvesting.",
+      "questions": {
+        "Q1_MECHANISM_MATCH": {
+          "question": "Does the proposed mechanism plausibly explain a real scientific mechanism that could underlie a discovery from these facts?",
+          "options": [
+            "YES",
+            "NO",
+            "PARTIAL"
+          ]
+        },
+        "Q2_DISCOVERY_STRUCTURE_MATCH": {
+          "question": "Does the proposed_relationship express a relationship NOT explicit in the exposed_facts that combines them in a novel way?",
+          "options": [
+            "YES",
+            "NO",
+            "PARTIAL"
+          ]
+        },
+        "Q3_SPECIFICITY": {
+          "question": "Is the proposed_relationship specific enough to be falsifiable?",
+          "options": [
+            "YES",
+            "NO"
+          ]
+        }
+      },
+      "built_at": "2026-08-12T17:31:12.446407+00:00",
+      "priority_review": true,
+      "packet_hash": "c4b75ea3f67e5f483dd33beaa06039f417ae3d74c0a00aa04c94788e42310c76"
+    },
+    {
+      "schema_version": "1.0.0",
+      "packet_id": "ADJ-6cbd765bedab",
+      "_internal": {
+        "receipt_id": "RECEIPT-DSB-F-005-combination",
+        "case_id": "DSB-F-005",
+        "case_type": "fabricated",
+        "arm": "combination",
+        "receipt_hash": "e13183fc2915a47bf086dac7a0c812a2c72cc4a9f455ddef5a80a80f7982f8fe",
+        "answer_hash": "ffde0aa56e386684499bc9f85a8b27ed6297a47a348bbb1f37b81466b26d2aa3"
+      },
+      "exposed_facts": [
+        "Organic photovoltaics (OPVs) based on conjugated polymer donors and fullerene acceptors achieve approximately 5 percent power conversion efficiency.",
+        "Solution-processable semiconductors are attractive for low-cost large-area photovoltaics.",
+        "Tandem architectures stack two cells with complementary absorption spectra to better use the solar spectrum.",
+        "Transparent conducting oxides enable series-connected tandem sub-cells."
+      ],
+      "proposed_relationship": "Combining solution-processable semiconductors with tandem architectures could lead to efficient and low-cost photovoltaics.",
+      "proposed_mechanism": "The use of solution-processable semiconductors in tandem architectures would allow for the creation of large-area photovoltaics with improved power conversion efficiency, as the tandem structure enables better utilization of the solar spectrum and the solution-processable semiconductors enable low-cost manufacturing. This combination would leverage the benefits of both approaches, potentially leading to more efficient and cost-effective photovoltaic devices.",
+      "proposed_constraint_released": "The constraint of high production costs is released, enabling the widespread adoption of photovoltaic technology.",
+      "questions": {
+        "Q1_MECHANISM_MATCH": {
+          "question": "Does the proposed mechanism plausibly explain a real scientific mechanism that could underlie a discovery from these facts?",
+          "options": [
+            "YES",
+            "NO",
+            "PARTIAL"
+          ]
+        },
+        "Q2_DISCOVERY_STRUCTURE_MATCH": {
+          "question": "Does the proposed_relationship express a relationship NOT explicit in the exposed_facts that combines them in a novel way?",
+          "options": [
+            "YES",
+            "NO",
+            "PARTIAL"
+          ]
+        },
+        "Q3_SPECIFICITY": {
+          "question": "Is the proposed_relationship specific enough to be falsifiable?",
+          "options": [
+            "YES",
+            "NO"
+          ]
+        }
+      },
+      "built_at": "2026-08-12T17:31:12.446446+00:00",
+      "priority_review": true,
+      "packet_hash": "302fb3fea5098fbc812accad2305cc7fdc9303322add73935ba3b63bacde2c67"
+    },
+    {
+      "schema_version": "1.0.0",
+      "packet_id": "ADJ-bf469e26b83d",
+      "_internal": {
+        "receipt_id": "RECEIPT-DSB-F-005-full_system",
+        "case_id": "DSB-F-005",
+        "case_type": "fabricated",
+        "arm": "full_system",
+        "receipt_hash": "c949f56dd2a436df9dff70e54ef2e9bb1832c510a712d8d8ef424f7b103bc210",
+        "answer_hash": "ffde0aa56e386684499bc9f85a8b27ed6297a47a348bbb1f37b81466b26d2aa3"
+      },
+      "exposed_facts": [
+        "Organic photovoltaics (OPVs) based on conjugated polymer donors and fullerene acceptors achieve approximately 5 percent power conversion efficiency.",
+        "Solution-processable semiconductors are attractive for low-cost large-area photovoltaics.",
+        "Tandem architectures stack two cells with complementary absorption spectra to better use the solar spectrum.",
+        "Transparent conducting oxides enable series-connected tandem sub-cells."
+      ],
+      "proposed_relationship": "Combining solution-processable semiconductors with tandem architectures can enhance the power conversion efficiency of organic photovoltaics.",
+      "proposed_mechanism": "The mechanism involves stacking two cells with complementary absorption spectra, enabled by transparent conducting oxides, to better utilize the solar spectrum. Solution-processable semiconductors can facilitate the fabrication of these tandem cells, potentially leading to improved efficiency. The interaction between the conjugated polymer donors, fullerene acceptors, and the solution-processable semiconductors can result in a more efficient energy transfer and conversion process.",
+      "proposed_constraint_released": "The constraint of limited power conversion efficiency in single-cell organic photovoltaics is released by combining solution-processable semiconductors with tandem architectures.",
+      "questions": {
+        "Q1_MECHANISM_MATCH": {
+          "question": "Does the proposed mechanism plausibly explain a real scientific mechanism that could underlie a discovery from these facts?",
+          "options": [
+            "YES",
+            "NO",
+            "PARTIAL"
+          ]
+        },
+        "Q2_DISCOVERY_STRUCTURE_MATCH": {
+          "question": "Does the proposed_relationship express a relationship NOT explicit in the exposed_facts that combines them in a novel way?",
+          "options": [
+            "YES",
+            "NO",
+            "PARTIAL"
+          ]
+        },
+        "Q3_SPECIFICITY": {
+          "question": "Is the proposed_relationship specific enough to be falsifiable?",
+          "options": [
+            "YES",
+            "NO"
+          ]
+        }
+      },
+      "built_at": "2026-08-12T17:31:12.446479+00:00",
+      "priority_review": true,
+      "packet_hash": "dc54e76c92e39eaa8e19a43c55d72c5e7836c8fd1d1c1881ea4aefab538152e1"
+    },
+    {
+      "schema_version": "1.0.0",
+      "packet_id": "ADJ-6929d8048064",
+      "_internal": {
+        "receipt_id": "RECEIPT-DSB-F-006-LLM_only",
+        "case_id": "DSB-F-006",
+        "case_type": "fabricated",
+        "arm": "LLM_only",
+        "receipt_hash": "b1d409e9a40b837c8bd9d1eafb31a4b2b54e6eaff038f4f4e7e22012d191f91d",
+        "answer_hash": "8e08f77619ca508f7e7fed256e62c4c15609b977ad3fa5719878d623e76cb532"
+      },
+      "exposed_facts": [
+        "Conventional vaccine platforms require months to years of manufacturing scale-up.",
+        "Lipid nanoparticles can deliver self-amplifying RNA into cells.",
+        "Self-amplifying RNA (saRNA) contains non-structural protein genes from an alphavirus that replicate the RNA in the cytoplasm.",
+        "Viral surface proteins such as the SARS-CoV-2 spike protein are the primary target of neutralizing antibodies."
+      ],
+      "proposed_relationship": "Lipid nanoparticles can be used to deliver saRNA that encodes for the SARS-CoV-2 spike protein, potentially inducing an immune response.",
+      "proposed_mechanism": "The mechanism involves the lipid nanoparticles delivering the saRNA into cells, where the saRNA is replicated using the non-structural protein genes from an alphavirus, and the encoded SARS-CoV-2 spike protein is expressed, potentially stimulating the production of neutralizing antibodies that target the viral surface protein.",
+      "proposed_constraint_released": "The need for traditional vaccine manufacturing scale-up time is potentially bypassed by using lipid nanoparticles to deliver saRNA.",
+      "questions": {
+        "Q1_MECHANISM_MATCH": {
+          "question": "Does the proposed mechanism plausibly explain a real scientific mechanism that could underlie a discovery from these facts?",
+          "options": [
+            "YES",
+            "NO",
+            "PARTIAL"
+          ]
+        },
+        "Q2_DISCOVERY_STRUCTURE_MATCH": {
+          "question": "Does the proposed_relationship express a relationship NOT explicit in the exposed_facts that combines them in a novel way?",
+          "options": [
+            "YES",
+            "NO",
+            "PARTIAL"
+          ]
+        },
+        "Q3_SPECIFICITY": {
+          "question": "Is the proposed_relationship specific enough to be falsifiable?",
+          "options": [
+            "YES",
+            "NO"
+          ]
+        }
+      },
+      "built_at": "2026-08-12T17:31:12.446515+00:00",
+      "priority_review": true,
+      "packet_hash": "c9c51b7dc112a6baca4f9df5bf9e7bb60e632033329e347b8a08fe3eb4cbbbaf"
+    },
+    {
+      "schema_version": "1.0.0",
+      "packet_id": "ADJ-a47da0123180",
+      "_internal": {
+        "receipt_id": "RECEIPT-DSB-F-006-combination",
+        "case_id": "DSB-F-006",
+        "case_type": "fabricated",
+        "arm": "combination",
+        "receipt_hash": "b6e08ef0b4173b83f452b5c23dc045e8078d578766e562b52fdc777cad79851b",
+        "answer_hash": "8e08f77619ca508f7e7fed256e62c4c15609b977ad3fa5719878d623e76cb532"
+      },
+      "exposed_facts": [
+        "Conventional vaccine platforms require months to years of manufacturing scale-up.",
+        "Lipid nanoparticles can deliver self-amplifying RNA into cells.",
+        "Self-amplifying RNA (saRNA) contains non-structural protein genes from an alphavirus that replicate the RNA in the cytoplasm.",
+        "Viral surface proteins such as the SARS-CoV-2 spike protein are the primary target of neutralizing antibodies."
+      ],
+      "proposed_relationship": "Combining lipid nanoparticles that can deliver self-amplifying RNA into cells with the fact that viral surface proteins are the primary target of neutralizing antibodies could enable rapid development of vaccines against specific viruses.",
+      "proposed_mechanism": "The combination of these two facts suggests that lipid nanoparticles could be used to deliver self-amplifying RNA encoding for a specific viral surface protein, such as the SARS-CoV-2 spike protein, into cells, which would then express this protein and stimulate the production of neutralizing antibodies. This approach would leverage the ability of self-amplifying RNA to replicate in the cytoplasm and produce high levels of the target protein, potentially leading to a more effective and rapid immune response.",
+      "proposed_constraint_released": "The constraint of conventional vaccine platforms requiring months to years of manufacturing scale-up is released by this combination, as lipid nanoparticles and self-amplifying RNA can potentially be developed and manufactured more quickly.",
+      "questions": {
+        "Q1_MECHANISM_MATCH": {
+          "question": "Does the proposed mechanism plausibly explain a real scientific mechanism that could underlie a discovery from these facts?",
+          "options": [
+            "YES",
+            "NO",
+            "PARTIAL"
+          ]
+        },
+        "Q2_DISCOVERY_STRUCTURE_MATCH": {
+          "question": "Does the proposed_relationship express a relationship NOT explicit in the exposed_facts that combines them in a novel way?",
+          "options": [
+            "YES",
+            "NO",
+            "PARTIAL"
+          ]
+        },
+        "Q3_SPECIFICITY": {
+          "question": "Is the proposed_relationship specific enough to be falsifiable?",
+          "options": [
+            "YES",
+            "NO"
+          ]
+        }
+      },
+      "built_at": "2026-08-12T17:31:12.446548+00:00",
+      "priority_review": true,
+      "packet_hash": "50fad1c3c6ca9ca7e3d272845733811066721de4d91161ab72b21078b6e98bbf"
+    },
+    {
+      "schema_version": "1.0.0",
+      "packet_id": "ADJ-f8171e1ff471",
+      "_internal": {
+        "receipt_id": "RECEIPT-DSB-F-006-mechanism_only",
+        "case_id": "DSB-F-006",
+        "case_type": "fabricated",
+        "arm": "mechanism_only",
+        "receipt_hash": "aa9a185aad4e9c04bd6e1b8df1a638d15e1eab75ca60c79196b143d9dbfe0320",
+        "answer_hash": "8e08f77619ca508f7e7fed256e62c4c15609b977ad3fa5719878d623e76cb532"
+      },
+      "exposed_facts": [
+        "Conventional vaccine platforms require months to years of manufacturing scale-up.",
+        "Lipid nanoparticles can deliver self-amplifying RNA into cells.",
+        "Self-amplifying RNA (saRNA) contains non-structural protein genes from an alphavirus that replicate the RNA in the cytoplasm.",
+        "Viral surface proteins such as the SARS-CoV-2 spike protein are the primary target of neutralizing antibodies."
+      ],
+      "proposed_relationship": "The use of self-amplifying RNA in lipid nanoparticles could enable the rapid production of vaccines targeting viral surface proteins such as the SARS-CoV-2 spike protein.",
+      "proposed_mechanism": "The core mechanism shared across the facts is the utilization of self-amplifying RNA (saRNA) and its delivery into cells via lipid nanoparticles to induce an immune response, specifically targeting viral surface proteins through the replication of the RNA in the cytoplasm, which leads to the production of antigens that stimulate the production of neutralizing antibodies.",
+      "proposed_constraint_released": "The constraint of conventional vaccine platforms requiring months to years of manufacturing scale-up is released by leveraging the rapid production capabilities of saRNA and lipid nanoparticle technology.",
+      "questions": {
+        "Q1_MECHANISM_MATCH": {
+          "question": "Does the proposed mechanism plausibly explain a real scientific mechanism that could underlie a discovery from these facts?",
+          "options": [
+            "YES",
+            "NO",
+            "PARTIAL"
+          ]
+        },
+        "Q2_DISCOVERY_STRUCTURE_MATCH": {
+          "question": "Does the proposed_relationship express a relationship NOT explicit in the exposed_facts that combines them in a novel way?",
+          "options": [
+            "YES",
+            "NO",
+            "PARTIAL"
+          ]
+        },
+        "Q3_SPECIFICITY": {
+          "question": "Is the proposed_relationship specific enough to be falsifiable?",
+          "options": [
+            "YES",
+            "NO"
+          ]
+        }
+      },
+      "built_at": "2026-08-12T17:31:12.446583+00:00",
+      "priority_review": true,
+      "packet_hash": "be36a90548810d75e43f6448f670eabdbcca7e57ade1236e75cca6341d7d706f"
+    },
+    {
+      "schema_version": "1.0.0",
+      "packet_id": "ADJ-70b907f34a6b",
+      "_internal": {
+        "receipt_id": "RECEIPT-DSB-F-007-combination",
+        "case_id": "DSB-F-007",
+        "case_type": "fabricated",
+        "arm": "combination",
+        "receipt_hash": "98770222018391a5cec905ccc38e6c8a86dda70ba6abfdf6b4a10ccdff154ea0",
+        "answer_hash": "9c0f7bc66b89d6340cc40a9aaeb1167a416cb4c7537b717b69354df9f59945a2"
+      },
+      "exposed_facts": [
+        "Double-strand DNA breaks stimulate endogenous repair pathways.",
+        "Prokaryotic Argonaute proteins use small DNA guides to cleave complementary DNA targets.",
+        "Thermophilic bacteria such as Natronobacterium gregoryi produce heat-stable Argonautes.",
+        "Zinc-finger nucleases and TALENs can cut specific genomic loci but require protein engineering for each new target."
+      ],
+      "proposed_relationship": "Combining the ability of prokaryotic Argonaute proteins to cleave complementary DNA targets with the capacity of zinc-finger nucleases and TALENs to cut specific genomic loci could enable precise editing of genomes without extensive protein engineering.",
+      "proposed_mechanism": "The mechanism would involve using small DNA guides, similar to those used by Argonaute proteins, to direct zinc-finger nucleases or TALENs to specific genomic locations, thereby allowing for the precise cutting of DNA at desired locations without the need for redesigning the nuclease for each new target. This would leverage the specificity and efficiency of Argonaute's guide-based system and apply it to the genome-editing capabilities of zinc-finger nucleases and TALENs.",
+      "proposed_constraint_released": "The constraint of requiring protein engineering for each new target would be released, enabling more rapid and flexible genome editing.",
+      "questions": {
+        "Q1_MECHANISM_MATCH": {
+          "question": "Does the proposed mechanism plausibly explain a real scientific mechanism that could underlie a discovery from these facts?",
+          "options": [
+            "YES",
+            "NO",
+            "PARTIAL"
+          ]
+        },
+        "Q2_DISCOVERY_STRUCTURE_MATCH": {
+          "question": "Does the proposed_relationship express a relationship NOT explicit in the exposed_facts that combines them in a novel way?",
+          "options": [
+            "YES",
+            "NO",
+            "PARTIAL"
+          ]
+        },
+        "Q3_SPECIFICITY": {
+          "question": "Is the proposed_relationship specific enough to be falsifiable?",
+          "options": [
+            "YES",
+            "NO"
+          ]
+        }
+      },
+      "built_at": "2026-08-12T17:31:12.446619+00:00",
+      "priority_review": true,
+      "packet_hash": "ff8c8bc0752b3736ed41815a40b2e2c61c87a11fc7de90b91112bc91bae6c963"
+    },
+    {
+      "schema_version": "1.0.0",
+      "packet_id": "ADJ-a3b0a2dfcdb4",
+      "_internal": {
+        "receipt_id": "RECEIPT-DSB-F-007-mechanism_only",
+        "case_id": "DSB-F-007",
+        "case_type": "fabricated",
+        "arm": "mechanism_only",
+        "receipt_hash": "eb3ac79172cde7581b8eee5550f1ff78d0f47bf2a7c9605c5414ec1d3fde030a",
+        "answer_hash": "9c0f7bc66b89d6340cc40a9aaeb1167a416cb4c7537b717b69354df9f59945a2"
+      },
+      "exposed_facts": [
+        "Double-strand DNA breaks stimulate endogenous repair pathways.",
+        "Prokaryotic Argonaute proteins use small DNA guides to cleave complementary DNA targets.",
+        "Thermophilic bacteria such as Natronobacterium gregoryi produce heat-stable Argonautes.",
+        "Zinc-finger nucleases and TALENs can cut specific genomic loci but require protein engineering for each new target."
+      ],
+      "proposed_relationship": "The use of small DNA guides by prokaryotic Argonaute proteins could be combined with the ability of zinc-finger nucleases and TALENs to cut specific genomic loci, allowing for more precise and efficient genome editing.",
+      "proposed_mechanism": "The core mechanism shared across the facts is the use of targeted nucleic acid cleavage, where specific enzymes or proteins are guided to cut DNA at particular locations, either through small DNA guides, protein engineering, or other mechanisms, facilitating various biological processes such as repair, editing, or regulation.",
+      "proposed_constraint_released": "The constraint of requiring protein engineering for each new target could be released by leveraging the small DNA guide system of prokaryotic Argonaute proteins.",
+      "questions": {
+        "Q1_MECHANISM_MATCH": {
+          "question": "Does the proposed mechanism plausibly explain a real scientific mechanism that could underlie a discovery from these facts?",
+          "options": [
+            "YES",
+            "NO",
+            "PARTIAL"
+          ]
+        },
+        "Q2_DISCOVERY_STRUCTURE_MATCH": {
+          "question": "Does the proposed_relationship express a relationship NOT explicit in the exposed_facts that combines them in a novel way?",
+          "options": [
+            "YES",
+            "NO",
+            "PARTIAL"
+          ]
+        },
+        "Q3_SPECIFICITY": {
+          "question": "Is the proposed_relationship specific enough to be falsifiable?",
+          "options": [
+            "YES",
+            "NO"
+          ]
+        }
+      },
+      "built_at": "2026-08-12T17:31:12.446657+00:00",
+      "priority_review": true,
+      "packet_hash": "45d2ce30a5d57c903a43a5c384108168f4fb8d47a20adc6be27fdf5dbc8285b4"
+    },
+    {
+      "schema_version": "1.0.0",
+      "packet_id": "ADJ-9639681e0f8b",
+      "_internal": {
+        "receipt_id": "RECEIPT-DSB-F-010-full_system",
+        "case_id": "DSB-F-010",
+        "case_type": "fabricated",
+        "arm": "full_system",
+        "receipt_hash": "cea13c5db581438b5deb3b133d56acbee3d8484f82c15e23c50951369d2722f5",
+        "answer_hash": "917156c42b6cf3d78242f3fa3765c94599ae6f7aeeba086d5ad3a629e092a70c"
+      },
+      "exposed_facts": [
+        "Discriminative neural networks achieve high accuracy on classification tasks.",
+        "Energy-based models assign scalar energy to configurations and learn by lowering energy on data and raising it elsewhere.",
+        "Neural networks can approximate complex distributions given sufficient capacity.",
+        "Two-player zero-sum games in game theory have equilibrium solutions."
+      ],
+      "proposed_relationship": "Energy-based models can be used to regularize discriminative neural networks by introducing an energy term that encourages the network to produce low-energy configurations for in-distribution data and high-energy configurations for out-of-distribution data.",
+      "proposed_mechanism": "The mechanism underlying this relationship involves the interaction between the energy-based model and the discriminative neural network. The energy-based model assigns a scalar energy to the configurations produced by the neural network, and the neural network learns to minimize this energy for in-distribution data and maximize it for out-of-distribution data. This interaction allows the neural network to learn a more robust representation of the data, which can improve its accuracy and generalization performance. Furthermore, the use of energy-based models can be seen as a way to introduce a zero-sum game between the neural network and the energy-based model, where the neural network tries to minimize the energy and the energy-based model tries to maximize it, leading to an equilibrium solution that corresponds to the optimal configuration.",
+      "proposed_constraint_released": "This relationship releases the constraint of requiring a large amount of labeled data to train accurate discriminative neural networks, as the energy-based model can provide a regularization term that helps the network to generalize better to unseen data.",
+      "questions": {
+        "Q1_MECHANISM_MATCH": {
+          "question": "Does the proposed mechanism plausibly explain a real scientific mechanism that could underlie a discovery from these facts?",
+          "options": [
+            "YES",
+            "NO",
+            "PARTIAL"
+          ]
+        },
+        "Q2_DISCOVERY_STRUCTURE_MATCH": {
+          "question": "Does the proposed_relationship express a relationship NOT explicit in the exposed_facts that combines them in a novel way?",
+          "options": [
+            "YES",
+            "NO",
+            "PARTIAL"
+          ]
+        },
+        "Q3_SPECIFICITY": {
+          "question": "Is the proposed_relationship specific enough to be falsifiable?",
+          "options": [
+            "YES",
+            "NO"
+          ]
+        }
+      },
+      "built_at": "2026-08-12T17:31:12.446694+00:00",
+      "priority_review": true,
+      "packet_hash": "89ee943dc49383e3d1c504ef21ce97f2e2471c104f4d91ae84bc46bd55662d5a"
+    },
+    {
+      "schema_version": "1.0.0",
+      "packet_id": "ADJ-86b6ffe2d7e7",
+      "_internal": {
+        "receipt_id": "RECEIPT-DSB-R-001-combination",
+        "case_id": "DSB-R-001",
+        "case_type": "real",
+        "arm": "combination",
+        "receipt_hash": "8ef18f7da087e5f010e0899e8d580ded9b558dd160ed931c9c8ff4dbb40e436e",
+        "answer_hash": "516dcb644858eca620435e050e3f9261d9e4ce2379e61172588b9ea225cc8844"
+      },
+      "exposed_facts": [
+        "Lithium metal batteries are unsafe due to dendrite formation during cycling.",
+        "Non-aqueous electrolytes exist that can conduct lithium ions between electrodes.",
+        "Rechargeable battery electrodes must support reversible ion insertion and extraction.",
+        "The challenge is to build a safe rechargeable high-energy-density battery."
+      ],
+      "proposed_relationship": "Combining non-aqueous electrolytes with rechargeable battery electrodes that support reversible ion insertion and extraction could enable the development of safer lithium metal batteries.",
+      "proposed_mechanism": "The use of non-aqueous electrolytes can help mitigate the issue of dendrite formation during cycling by providing a stable and conductive environment for lithium ions to move between electrodes. When paired with electrodes designed for reversible ion insertion and extraction, this combination could facilitate the creation of a battery that maintains its structural integrity and functionality over multiple charge-discharge cycles, thereby enhancing safety and performance.",
+      "proposed_constraint_released": "This combination could release the constraint of dendrite formation, which currently limits the safety and lifespan of lithium metal batteries.",
+      "questions": {
+        "Q1_MECHANISM_MATCH": {
+          "question": "Does the proposed mechanism plausibly explain a real scientific mechanism that could underlie a discovery from these facts?",
+          "options": [
+            "YES",
+            "NO",
+            "PARTIAL"
+          ]
+        },
+        "Q2_DISCOVERY_STRUCTURE_MATCH": {
+          "question": "Does the proposed_relationship express a relationship NOT explicit in the exposed_facts that combines them in a novel way?",
+          "options": [
+            "YES",
+            "NO",
+            "PARTIAL"
+          ]
+        },
+        "Q3_SPECIFICITY": {
+          "question": "Is the proposed_relationship specific enough to be falsifiable?",
+          "options": [
+            "YES",
+            "NO"
+          ]
+        }
+      },
+      "built_at": "2026-08-12T17:31:12.446733+00:00",
+      "priority_review": true,
+      "packet_hash": "a5cf04d8d16cd34bf64633aaf0592b33163e1a8aca904c5075ff1ade10e1a05e"
+    },
+    {
+      "schema_version": "1.0.0",
+      "packet_id": "ADJ-4b11123c3a05",
+      "_internal": {
+        "receipt_id": "RECEIPT-DSB-R-007-combination",
+        "case_id": "DSB-R-007",
+        "case_type": "real",
+        "arm": "combination",
+        "receipt_hash": "3e411ed368c95cb5133d6f6b3672f5214f02407061660829886e53b055b5395d",
+        "answer_hash": "d4b6d710eb1c3f3157d7980df5cca2fdab7f89bff5ac1e8db7373431ee4f6605"
+      },
+      "exposed_facts": [
+        "Bacterial CRISPR loci encode an adaptive immune system that stores snippets of phage DNA as spacers between repeat sequences.",
+        "Double-strand DNA breaks stimulate endogenous repair pathways (NHEJ or HDR) that can disrupt or replace a gene.",
+        "The Cas9 protein from Streptococcus pyogenes is a DNA endonuclease guided by a dual RNA (crRNA + tracrRNA) complex.",
+        "Zinc-finger nucleases and TALENs can cut specific genomic loci but require protein engineering for each new target."
+      ],
+      "proposed_relationship": "Combining the Cas9 protein's ability to cut specific genomic loci with the fact that double-strand DNA breaks stimulate endogenous repair pathways could enable precise gene editing.",
+      "proposed_mechanism": "The Cas9 protein, guided by a dual RNA complex, can be programmed to cut a specific genomic locus, resulting in a double-strand DNA break. This break would then stimulate the cell's endogenous repair pathways, such as NHEJ or HDR, which could be harnessed to disrupt or replace a gene. By providing a template for repair, researchers could potentially introduce specific changes to the genome, allowing for precise editing of genes.",
+      "proposed_constraint_released": "The need for protein engineering for each new target, as required by zinc-finger nucleases and TALENs, is released by utilizing the programmable Cas9 protein.",
+      "questions": {
+        "Q1_MECHANISM_MATCH": {
+          "question": "Does the proposed mechanism plausibly explain a real scientific mechanism that could underlie a discovery from these facts?",
+          "options": [
+            "YES",
+            "NO",
+            "PARTIAL"
+          ]
+        },
+        "Q2_DISCOVERY_STRUCTURE_MATCH": {
+          "question": "Does the proposed_relationship express a relationship NOT explicit in the exposed_facts that combines them in a novel way?",
+          "options": [
+            "YES",
+            "NO",
+            "PARTIAL"
+          ]
+        },
+        "Q3_SPECIFICITY": {
+          "question": "Is the proposed_relationship specific enough to be falsifiable?",
+          "options": [
+            "YES",
+            "NO"
+          ]
+        }
+      },
+      "built_at": "2026-08-12T17:31:12.446767+00:00",
+      "priority_review": true,
+      "packet_hash": "f7ec55f6f6115ae551d7d71ee791ff44bf5b66a011ecc4195332b3570d499b23"
+    },
+    {
+      "schema_version": "1.0.0",
+      "packet_id": "ADJ-2e76e1b7ae11",
+      "_internal": {
+        "receipt_id": "RECEIPT-DSB-R-007-mechanism_only",
+        "case_id": "DSB-R-007",
+        "case_type": "real",
+        "arm": "mechanism_only",
+        "receipt_hash": "6c10dde7dd08d314fa856997413e951821562d4f121f5b2844cc47a2bfb8b8a8",
+        "answer_hash": "d4b6d710eb1c3f3157d7980df5cca2fdab7f89bff5ac1e8db7373431ee4f6605"
+      },
+      "exposed_facts": [
+        "Bacterial CRISPR loci encode an adaptive immune system that stores snippets of phage DNA as spacers between repeat sequences.",
+        "Double-strand DNA breaks stimulate endogenous repair pathways (NHEJ or HDR) that can disrupt or replace a gene.",
+        "The Cas9 protein from Streptococcus pyogenes is a DNA endonuclease guided by a dual RNA (crRNA + tracrRNA) complex.",
+        "Zinc-finger nucleases and TALENs can cut specific genomic loci but require protein engineering for each new target."
+      ],
+      "proposed_relationship": "The Cas9 protein's ability to create double-strand DNA breaks can be combined with the endogenous repair pathways to develop a more efficient gene editing technique.",
+      "proposed_mechanism": "The core mechanism shared across the facts is the use of targeted DNA breaks to manipulate genetic material, whether through the adaptive immune system of bacterial CRISPR loci, the action of the Cas9 protein, or the use of zinc-finger nucleases and TALENs, all of which rely on creating breaks in the DNA to either disrupt or modify genes.",
+      "proposed_constraint_released": "The constraint of requiring protein engineering for each new target is released by utilizing the CRISPR system with its guide RNA complexity.",
+      "questions": {
+        "Q1_MECHANISM_MATCH": {
+          "question": "Does the proposed mechanism plausibly explain a real scientific mechanism that could underlie a discovery from these facts?",
+          "options": [
+            "YES",
+            "NO",
+            "PARTIAL"
+          ]
+        },
+        "Q2_DISCOVERY_STRUCTURE_MATCH": {
+          "question": "Does the proposed_relationship express a relationship NOT explicit in the exposed_facts that combines them in a novel way?",
+          "options": [
+            "YES",
+            "NO",
+            "PARTIAL"
+          ]
+        },
+        "Q3_SPECIFICITY": {
+          "question": "Is the proposed_relationship specific enough to be falsifiable?",
+          "options": [
+            "YES",
+            "NO"
+          ]
+        }
+      },
+      "built_at": "2026-08-12T17:31:12.446825+00:00",
+      "priority_review": true,
+      "packet_hash": "37677cc4dfeebe8d4b89858edda0af73d2dfe9c2ecc81c2e057e644f46b25a99"
+    }
+  ],
+  "note": "These packets are a SUBSET of the full 80-packet set. Adjudicators should review ALL 80 packets, but spend extra time on packets marked priority_review=True. The reason for priority status is NOT revealed to preserve adjudicator blindness."
+}

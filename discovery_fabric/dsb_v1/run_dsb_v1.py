@@ -106,14 +106,47 @@ def exit_gate_E4_controls() -> dict:
 
 
 def exit_gate_E5_human_adjudication() -> dict:
-    """E5. Human adjudication packets built (adjudication itself PENDING)."""
+    """E5. Human adjudication.
+
+    RELABELED (per directive 2026-08-12): E5 is PENDING_HUMAN_ADJUDICATION,
+    not PASS. Packets are built, but the actual human adjudication by 2-3
+    independent expert adjudicators has NOT been performed.
+
+    E5 passes ONLY when ALL of the following are true:
+      (a) 2-3 independent expert adjudicators have scored all 80 blind packets
+      (b) Inter-rater agreement is measured (Cohen's kappa for 2 raters,
+          Fleiss' kappa for 3+ raters)
+      (c) Human vs deterministic-scorer confusion matrices are computed
+          separately for real and fabricated cases
+      (d) Adjudicator-blind review of the 12 machine "recoveries" is complete
+      (e) Adjudicator-blind review of all cases where fabricated > real is complete
+      (f) The fabricated-vs-real inversion is explained
+
+    Until ALL of (a)-(f) are complete, E5 is PENDING and DSB V1 is NOT closed.
+    """
     result = build_all_packets()
+    packets_built = result["n_packets"] == 80
     return {
         "gate": "E5_HUMAN_ADJUDICATION",
-        "passed": result["n_packets"] == 80,  # packets built = gate passes
+        "status": "PENDING_HUMAN_ADJUDICATION",  # was incorrectly "PASS" before
+        "passed": False,  # PENDING — not PASS until human adjudication is complete
+        "packets_built": packets_built,
         "n_packets": result["n_packets"],
-        "adjudication_performed": False,  # PENDING — out of scope for automated run
-        "note": "Packets built and ready. Human adjudication is PENDING — must be performed by independent human adjudicators.",
+        "adjudication_performed": False,
+        "required_for_close": [
+            "2-3 independent expert adjudicators score all 80 blind packets",
+            "Inter-rater agreement measured (Cohen/Fleiss kappa)",
+            "Human vs deterministic-scorer confusion matrices (real + fabricated separate)",
+            "Adjudicator-blind review of 12 machine 'recoveries'",
+            "Adjudicator-blind review of all fabricated > real cases",
+            "Fabricated-vs-real inversion explained",
+        ],
+        "note": (
+            "Packets are built and ready at adjudication/adjudication_packets_BLIND.json. "
+            "Human adjudication is PENDING — must be performed by 2-3 INDEPENDENT expert "
+            "adjudicators (NOT the experimenter, NOT an LLM proxy). "
+            "See ADJUDICATOR_INSTRUCTIONS.md for rubric and submission format."
+        ),
     }
 
 
@@ -153,20 +186,32 @@ def run_full_pipeline() -> dict:
     ]
 
     print("EXIT GATE STATUS:")
-    print(f"{'GATE':<35} {'PASS':<6} DETAILS")
+    print(f"{'GATE':<35} {'STATUS':<10} DETAILS")
     print("-" * 80)
     for g in gates:
-        passed_str = "PASS" if g["passed"] else "FAIL"
-        details = ", ".join(f"{k}={v}" for k, v in g.items() if k not in ("gate", "passed"))
-        print(f"{g['gate']:<35} {passed_str:<6} {details[:60]}")
+        if g.get("status") == "PENDING_HUMAN_ADJUDICATION":
+            status_str = "PENDING"
+        elif g["passed"]:
+            status_str = "PASS"
+        else:
+            status_str = "FAIL"
+        details = ", ".join(f"{k}={v}" for k, v in g.items()
+                            if k not in ("gate", "passed", "status", "required_for_close", "note"))
+        print(f"{g['gate']:<35} {status_str:<10} {details[:55]}")
 
     n_pass = sum(1 for g in gates if g["passed"])
     n_fail = sum(1 for g in gates if not g["passed"])
-    overall_pass = n_fail == 0
+    n_pending = sum(1 for g in gates if g.get("status") == "PENDING_HUMAN_ADJUDICATION")
+    # DSB V1 is NOT closed if ANY gate is failed OR pending
+    overall_pass = n_fail == 0 and n_pending == 0
 
     print()
-    print(f"EXIT GATE: {'PASS' if overall_pass else 'FAIL'}")
-    print(f"  {n_pass}/{len(gates)} components passed")
+    if n_pending > 0:
+        print(f"EXIT GATE: NOT CLOSED ({n_pending} gate(s) PENDING human adjudication)")
+    else:
+        print(f"EXIT GATE: {'PASS' if overall_pass else 'FAIL'}")
+    print(f"  {n_pass} passed, {n_fail} failed, {n_pending} pending")
+    print(f"  DSB V1 SCIENTIFICALLY CLOSED: {'YES' if overall_pass else 'NO'}")
 
     # Get scorer summary
     scorer_result = score_all()
