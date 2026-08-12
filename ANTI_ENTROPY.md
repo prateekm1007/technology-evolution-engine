@@ -65,7 +65,46 @@ These six are the deal-breakers the customer named. They are now
 anti-entropy rules. A package that violates any of them is rejected
 before it reaches the customer.
 
+## The isolation-is-not-evidence principle (CTO directive, 2026-08-12)
+
+> A declaration that something is isolated is not evidence that it is
+> isolated. The system needs to make cheating technically impossible,
+> not merely forbidden.
+
+This principle governs every isolation, blinding, or access-control
+claim in the repository. A directory boundary, a file permission, a
+"do not read" comment, a timestamp ordering — none of these constitute
+evidence of isolation. They are claims of isolation.
+
+Evidence of isolation requires:
+1. **Technical impossibility.** The adjudicator process must PHYSICALLY
+   CANNOT read the vault key — not "is told not to." This means a
+   separate OS user, a separate container, or an OS-enforced permission
+   boundary that the adjudicator process cannot bypass.
+2. **Authenticated encryption.** A ciphertext without an authentication
+   tag is a claim of secrecy, not evidence of it. AES-GCM or
+   ChaCha20-Poly1305 — both provide confidentiality AND integrity.
+   A fallback "stream cipher" is forbidden.
+3. **Attacker tests.** An isolation claim is not accepted until a test
+   simulates a compromised adjudicator process attempting to read the
+   key, decrypt the vault, traverse symlinks, read /proc, leak via
+   environment variables or inherited file descriptors, or find backup
+   copies — and ALL attempts fail.
+4. **No hidden copies.** The adjudicator workspace must contain no
+   hidden copies, backups, bytecode, temporary plaintext, shell history,
+   logs, or environment secrets. A workspace that "should not" contain
+   these is not evidence — a verified workspace that DOES NOT contain
+   these is evidence.
+
+This principle is constitutional. It supersedes any isolation claim
+that relies on declaration rather than technical enforcement. An
+adjudication engine that declares isolation without technical
+enforcement is entropy — it produces a false sense of security that
+contaminates every downstream claim.
+
 ---
+
+
 
 ## The self-reference anti-entropy rule (market feedback, 2026-08-03)
 

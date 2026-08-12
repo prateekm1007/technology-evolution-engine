@@ -1,0 +1,84 @@
+{
+  "n_checks": 12,
+  "n_passed": 10,
+  "n_failed": 2,
+  "n_blocking_failures": 2,
+  "all_pass": false,
+  "freeze_blocked": true,
+  "checks": [
+    {
+      "check": "ATTACK_A_READ_VAULT_KEY_DIRECTLY",
+      "passed": false,
+      "result": "KEY READABLE — OS permission boundary NOT enforced (single-user container, no root)",
+      "blocking_freeze": true,
+      "real_deployment": "In a real multi-user deployment with separate Unix users, this would fail with EACCES. The adjudicator user would not be in the evaluator user's group, and evaluator_boundary/ would be mode 0700 owned by evaluator. This environment CANNOT enforce that.",
+      "honest_assessment": "V3 CANNOT be frozen in this environment. The 80 adjudications CANNOT begin here. This requires a real multi-user or containerized deployment with separate OS identities for adjudicator and evaluator."
+    },
+    {
+      "check": "ATTACK_B_DECRYPT_WITHOUT_KEY",
+      "passed": true,
+      "result": "InvalidTag — AES-GCM authentication rejected wrong key"
+    },
+    {
+      "check": "ATTACK_C_DECRYPT_TAMPERED_CIPHERTEXT",
+      "passed": true,
+      "result": "InvalidTag — AES-GCM detected tampering"
+    },
+    {
+      "check": "ATTACK_D_SYMLINK_TRAVERSAL",
+      "passed": true,
+      "result": "ELOOP — O_NOFOLLOW rejected symlink (defensive open path enforced)"
+    },
+    {
+      "check": "ATTACK_E_PROC_VISIBILITY",
+      "passed": true,
+      "result": "No open fd points to vault key",
+      "note": "Verifies the adjudicator process has no inherited fd to the vault key. /proc visibility is a non-issue if no fd is open."
+    },
+    {
+      "check": "ATTACK_F_ENV_VAR_LEAKAGE",
+      "passed": true,
+      "result": "No environment variable contains the vault key"
+    },
+    {
+      "check": "ATTACK_G_INHERITED_FDS",
+      "passed": true,
+      "result": "Closed 1 inherited fds; 0 remain",
+      "open_fds_before": [
+        3
+      ],
+      "open_fds_after": []
+    },
+    {
+      "check": "ATTACK_H_WRITABLE_EVALUATOR_BOUNDARY",
+      "passed": false,
+      "result": "ADJUDICATOR CAN WRITE — OS permission boundary NOT enforced (single-user container, no root)",
+      "blocking_freeze": true,
+      "real_deployment": "In a real multi-user deployment, the adjudicator user would not have write permission on evaluator_boundary/ (owned by evaluator user, mode 0700). This environment CANNOT enforce that."
+    },
+    {
+      "check": "ATTACK_I_NO_HIDDEN_COPIES",
+      "passed": true,
+      "result": "Workspace clean",
+      "found": []
+    },
+    {
+      "check": "ATTACK_J_BLIND_PACKETS_NO_GROUND_TRUTH",
+      "passed": true,
+      "result": "No ground-truth fields in BLIND packets",
+      "leaked_fields": []
+    },
+    {
+      "check": "ATTACK_K_FULL_PACKETS_NOT_IN_ADJUDICATOR_WS",
+      "passed": true,
+      "result": "FULL packets NOT in adjudicator workspace"
+    },
+    {
+      "check": "ATTACK_L_VAULT_IS_ENCRYPTED",
+      "passed": true,
+      "result": "Vault is encrypted (32312 bytes, not valid JSON)",
+      "vault_size_bytes": 32312
+    }
+  ],
+  "honest_summary": "10/12 attacker tests PASS. 2 BLOCKING failures prevent V3 from being frozen. The blocking failures are due to single-user container limitations: no root access means no separate Unix users, so the OS permission boundary cannot be enforced. V3 CANNOT be frozen in this environment. The 80 adjudications CANNOT begin here. A real multi-user or containerized deployment with separate OS identities is required."
+}
