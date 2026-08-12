@@ -1,0 +1,371 @@
+{
+  "timestamp": "2026-08-12T02:19:42.404021+00:00",
+  "scorer": "V3_BLINDED",
+  "configs": {
+    "B_llm_only": {
+      "real_strict": 4,
+      "real_total": 10,
+      "real_rate": "40%",
+      "false_strict": 0,
+      "false_total": 10,
+      "false_rate": "0%",
+      "real_scores": {
+        "MECHANISM_MATCH": 4,
+        "NO_MATCH": 6
+      },
+      "false_scores": {
+        "NO_MATCH": 10
+      },
+      "real_details": [
+        {
+          "name": "CRISPR-Cas9 gene editing",
+          "proposed": "A hybrid gene editing system that utilizes a Cas9 enzyme guided by a RNA molecule, which is specifically designed to target a particular gene sequence",
+          "actual": "Cas9 + guide RNA = programmable DNA cleavage in eukaryotes",
+          "score": "MECHANISM_MATCH",
+          "q": 0.9
+        },
+        {
+          "name": "mRNA vaccines",
+          "proposed": "Lipid Nanoparticle-Encapsulated, Modified Nucleoside-Based mRNA Vaccines Targeting Viral Spike Proteins",
+          "actual": "Nucleoside-modified mRNA + LNP delivery = vaccine platform",
+          "score": "MECHANISM_MATCH",
+          "q": 0.9
+        },
+        {
+          "name": "Lithium-ion battery",
+          "proposed": "Solid-State Lithium-Ion Battery with Intercalation Cathode and Anode",
+          "actual": "LiCoO2 cathode + graphite anode + non-aqueous electrolyte = rechargeable battery",
+          "score": "MECHANISM_MATCH",
+          "q": 0.9
+        },
+        {
+          "name": "PCR",
+          "proposed": "thermophilic bacteria-based thermal cycling DNA replication",
+          "actual": "Thermal cycling + Taq polymerase = exponential DNA amplification",
+          "score": "MECHANISM_MATCH",
+          "q": 0.9
+        },
+        {
+          "name": "Graphene",
+          "score": "NO_MATCH",
+          "q": 0
+        },
+        {
+          "name": "Transformer architecture",
+          "score": "NO_MATCH",
+          "q": 0
+        },
+        {
+          "name": "AlexNet / deep learning",
+          "score": "NO_MATCH",
+          "q": 0
+        },
+        {
+          "name": "Penicillin",
+          "score": "NO_MATCH",
+          "q": 0
+        },
+        {
+          "name": "Monoclonal antibodies",
+          "score": "NO_MATCH",
+          "q": 0
+        },
+        {
+          "name": "Checkpoint immunotherapy anti-PD-1",
+          "score": "NO_MATCH",
+          "q": 0
+        }
+      ],
+      "false_details": [
+        {
+          "name": "Microbial Chromatin Reconfiguration Enzyme (MCRE)",
+          "score": "NO_MATCH",
+          "q": 0
+        },
+        {
+          "name": "NucleoLipid Fusion Technology",
+          "score": "NO_MATCH",
+          "q": 0
+        },
+        {
+          "name": "Lithium-Air-Nanotube (LANT) Battery",
+          "score": "NO_MATCH",
+          "q": 0
+        },
+        {
+          "name": "Thermogenic Genome Repair",
+          "score": "NO_MATCH",
+          "q": 0
+        },
+        {
+          "name": "Quantum Flux Crystals",
+          "score": "NO_MATCH",
+          "q": 0
+        },
+        {
+          "name": "NeuroTemporal Folding",
+          "score": "NO_MATCH",
+          "q": 0
+        },
+        {
+          "name": "NeuroSpectral Folding",
+          "score": "NO_MATCH",
+          "q": 0
+        },
+        {
+          "name": "MycoSporin",
+          "score": "NO_MATCH",
+          "q": 0
+        },
+        {
+          "name": "Myeloma-B Hybridoma Antibody Recycling",
+          "score": "NO_MATCH",
+          "q": 0
+        },
+        {
+          "name": "Tumor-Associated Lymphoid Tissue Receptor 1 (TALTR1)",
+          "score": "NO_MATCH",
+          "q": 0
+        }
+      ]
+    },
+    "D_mech_constraints": {
+      "real_strict": 0,
+      "real_total": 10,
+      "real_rate": "0%",
+      "false_strict": 0,
+      "false_total": 10,
+      "false_rate": "0%",
+      "real_scores": {
+        "NO_MATCH": 10
+      },
+      "false_scores": {
+        "NO_MATCH": 10
+      },
+      "real_details": [
+        {
+          "name": "CRISPR-Cas9 gene editing",
+          "score": "NO_MATCH",
+          "q": 0
+        },
+        {
+          "name": "mRNA vaccines",
+          "score": "NO_MATCH",
+          "q": 0
+        },
+        {
+          "name": "Lithium-ion battery",
+          "score": "NO_MATCH",
+          "q": 0
+        },
+        {
+          "name": "PCR",
+          "score": "NO_MATCH",
+          "q": 0
+        },
+        {
+          "name": "Graphene",
+          "score": "NO_MATCH",
+          "q": 0
+        },
+        {
+          "name": "Transformer architecture",
+          "score": "NO_MATCH",
+          "q": 0
+        },
+        {
+          "name": "AlexNet / deep learning",
+          "score": "NO_MATCH",
+          "q": 0
+        },
+        {
+          "name": "Penicillin",
+          "score": "NO_MATCH",
+          "q": 0
+        },
+        {
+          "name": "Monoclonal antibodies",
+          "score": "NO_MATCH",
+          "q": 0
+        },
+        {
+          "name": "Checkpoint immunotherapy anti-PD-1",
+          "score": "NO_MATCH",
+          "q": 0
+        }
+      ],
+      "false_details": [
+        {
+          "name": "Microbial Chromatin Reconfiguration Enzyme (MCRE)",
+          "score": "NO_MATCH",
+          "q": 0
+        },
+        {
+          "name": "NucleoLipid Fusion Technology",
+          "score": "NO_MATCH",
+          "q": 0
+        },
+        {
+          "name": "Lithium-Air-Nanotube (LANT) Battery",
+          "score": "NO_MATCH",
+          "q": 0
+        },
+        {
+          "name": "Thermogenic Genome Repair",
+          "score": "NO_MATCH",
+          "q": 0
+        },
+        {
+          "name": "Quantum Flux Crystals",
+          "score": "NO_MATCH",
+          "q": 0
+        },
+        {
+          "name": "NeuroTemporal Folding",
+          "score": "NO_MATCH",
+          "q": 0
+        },
+        {
+          "name": "NeuroSpectral Folding",
+          "score": "NO_MATCH",
+          "q": 0
+        },
+        {
+          "name": "MycoSporin",
+          "score": "NO_MATCH",
+          "q": 0
+        },
+        {
+          "name": "Myeloma-B Hybridoma Antibody Recycling",
+          "score": "NO_MATCH",
+          "q": 0
+        },
+        {
+          "name": "Tumor-Associated Lymphoid Tissue Receptor 1 (TALTR1)",
+          "score": "NO_MATCH",
+          "q": 0
+        }
+      ]
+    },
+    "F_full": {
+      "real_strict": 0,
+      "real_total": 10,
+      "real_rate": "0%",
+      "false_strict": 0,
+      "false_total": 10,
+      "false_rate": "0%",
+      "real_scores": {
+        "NO_MATCH": 10
+      },
+      "false_scores": {
+        "NO_MATCH": 10
+      },
+      "real_details": [
+        {
+          "name": "CRISPR-Cas9 gene editing",
+          "score": "NO_MATCH",
+          "q": 0
+        },
+        {
+          "name": "mRNA vaccines",
+          "score": "NO_MATCH",
+          "q": 0
+        },
+        {
+          "name": "Lithium-ion battery",
+          "score": "NO_MATCH",
+          "q": 0
+        },
+        {
+          "name": "PCR",
+          "score": "NO_MATCH",
+          "q": 0
+        },
+        {
+          "name": "Graphene",
+          "score": "NO_MATCH",
+          "q": 0
+        },
+        {
+          "name": "Transformer architecture",
+          "score": "NO_MATCH",
+          "q": 0
+        },
+        {
+          "name": "AlexNet / deep learning",
+          "score": "NO_MATCH",
+          "q": 0
+        },
+        {
+          "name": "Penicillin",
+          "score": "NO_MATCH",
+          "q": 0
+        },
+        {
+          "name": "Monoclonal antibodies",
+          "score": "NO_MATCH",
+          "q": 0
+        },
+        {
+          "name": "Checkpoint immunotherapy anti-PD-1",
+          "score": "NO_MATCH",
+          "q": 0
+        }
+      ],
+      "false_details": [
+        {
+          "name": "Microbial Chromatin Reconfiguration Enzyme (MCRE)",
+          "score": "NO_MATCH",
+          "q": 0
+        },
+        {
+          "name": "NucleoLipid Fusion Technology",
+          "score": "NO_MATCH",
+          "q": 0
+        },
+        {
+          "name": "Lithium-Air-Nanotube (LANT) Battery",
+          "score": "NO_MATCH",
+          "q": 0
+        },
+        {
+          "name": "Thermogenic Genome Repair",
+          "score": "NO_MATCH",
+          "q": 0
+        },
+        {
+          "name": "Quantum Flux Crystals",
+          "score": "NO_MATCH",
+          "q": 0
+        },
+        {
+          "name": "NeuroTemporal Folding",
+          "score": "NO_MATCH",
+          "q": 0
+        },
+        {
+          "name": "NeuroSpectral Folding",
+          "score": "NO_MATCH",
+          "q": 0
+        },
+        {
+          "name": "MycoSporin",
+          "score": "NO_MATCH",
+          "q": 0
+        },
+        {
+          "name": "Myeloma-B Hybridoma Antibody Recycling",
+          "score": "NO_MATCH",
+          "q": 0
+        },
+        {
+          "name": "Tumor-Associated Lymphoid Tissue Receptor 1 (TALTR1)",
+          "score": "NO_MATCH",
+          "q": 0
+        }
+      ]
+    }
+  },
+  "architecture_advantage_pp": -40.0,
+  "false_positive_rate": "0%"
+}
