@@ -1,0 +1,1988 @@
+{
+  "package_version": "V1.12_FORENSIC_AUDIT_V2",
+  "timestamp": "2026-08-12T03:00:00Z",
+  "repository": "prateekm1007/technology-evolution-engine",
+  "commit": "ec214285",
+  "parent_commit": "48c0db25",
+  "raw_data": {
+    "checkpoint_hash": "893195182ff4a8afc6186cb3dcdf9ae5b6e23e3bd858aa494def86979226e4a1",
+    "total_records": 150,
+    "records": [
+      {
+        "case_id": "HB-001",
+        "config": "B_llm_only",
+        "name": "CRISPR-Cas9 gene editing",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "CRISPR-Cas9-TALEN fusion",
+        "actual": "Cas9 + guide RNA = programmable DNA cleavage in eukaryotes",
+        "score": "MECHANISM_MATCH",
+        "quality": 0.8
+      },
+      {
+        "case_id": "HB-002",
+        "config": "B_llm_only",
+        "name": "mRNA vaccines",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Lipid Nanoparticle-Mediated Delivery of Modified Nucleoside-Containing mRNA Encoding Viral Spike Proteins",
+        "actual": "Nucleoside-modified mRNA + LNP delivery = vaccine platform",
+        "score": "MECHANISM_MATCH",
+        "quality": 0.9
+      },
+      {
+        "case_id": "HB-003",
+        "config": "B_llm_only",
+        "name": "Lithium-ion battery",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the pre-discovery information provided, it seems that lithium metal batteries were considered unsafe, and intercalation mechanisms were being explored for both cathode (LiCoO2) and anode (gra",
+        "actual": "LiCoO2 cathode + graphite anode + non-aqueous electrolyte = rechargeable battery",
+        "score": "MECHANISM_MATCH",
+        "quality": 0.9
+      },
+      {
+        "case_id": "HB-004",
+        "config": "B_llm_only",
+        "name": "PCR",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the information provided, I would propose a novel mechanism that utilizes the heat-stable enzymes from thermophilic bacteria to facilitate DNA amplification. This mechanism would involve usin",
+        "actual": "Thermal cycling + Taq polymerase = exponential DNA amplification",
+        "score": "MECHANISM_MATCH",
+        "quality": 0.9
+      },
+      {
+        "case_id": "HB-005",
+        "config": "B_llm_only",
+        "name": "Graphene",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Mechanical Exfoliation of Graphite",
+        "actual": "Mechanical exfoliation produces stable single-layer graphene on substrate",
+        "score": "MECHANISM_MATCH",
+        "quality": 0.9
+      },
+      {
+        "case_id": "HB-006",
+        "config": "B_llm_only",
+        "name": "Transformer architecture",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Hierarchical Attention Mechanism combining self-attention with RNNs",
+        "actual": "Self-attention alone + positional encoding = Transformer (no recurrence)",
+        "score": "COMPONENT_MATCH",
+        "quality": 0.6
+      },
+      {
+        "case_id": "HB-007",
+        "config": "B_llm_only",
+        "name": "AlexNet / deep learning",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Given the pre-discovery cutoff of 2011-12-31, a novel mechanism to propose would be the introduction of Batch Normalization. Batch Normalization, introduced by Ioffe and Szegedy in 2015, is a techniqu",
+        "actual": "Deep CNN + GPU + ImageNet + ReLU + dropout = breakthrough performance",
+        "score": "NO_MATCH",
+        "quality": 0.0
+      },
+      {
+        "case_id": "HB-008",
+        "config": "B_llm_only",
+        "name": "Penicillin",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Utilize molds or their extracts as a potential therapeutic agent to combat bacterial infections",
+        "actual": "Penicillium mold produces penicillin, inhibiting bacterial cell walls without harming tissue",
+        "score": "MECHANISM_MATCH",
+        "quality": 0.9
+      },
+      {
+        "case_id": "HB-009",
+        "config": "B_llm_only",
+        "name": "Monoclonal antibodies",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Monoclonal Antibody Production through Hybridoma Technology",
+        "actual": "B-cell + myeloma fusion = hybridoma producing monoclonal antibodies indefinitely",
+        "score": "MECHANISM_MATCH",
+        "quality": 0.9
+      },
+      {
+        "case_id": "HB-010",
+        "config": "B_llm_only",
+        "name": "Checkpoint immunotherapy anti-PD-1",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "PD-1/PD-L1 inhibition",
+        "actual": "Blocking PD-1 releases T-cell inhibition = immune attack on tumors",
+        "score": "MECHANISM_MATCH",
+        "quality": 1.0
+      },
+      {
+        "case_id": "HB-011",
+        "config": "B_llm_only",
+        "name": "RNA interference",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the pre-discovery information provided, I would propose the novel mechanism of \"RNA interference\" (RNAi). This mechanism involves the use of double-stranded RNA (dsRNA) to specifically silenc",
+        "actual": "Double-stranded RNA triggers conserved gene silencing via Dicer/Argonaute",
+        "score": "MECHANISM_MATCH",
+        "quality": 1.0
+      },
+      {
+        "case_id": "HB-012",
+        "config": "B_llm_only",
+        "name": "Induced pluripotent stem cells",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the pre-discovery information provided, I would propose the following novel mechanism:\n\n**Mechanism:** Induced Pluripotency through Cellular Reprogramming\n\n**Hypothesis:** It may be possible ",
+        "actual": "Four transcription factors (Oct4, Sox2, Klf4, c-Myc) reprogram somatic cells",
+        "score": "MECHANISM_MATCH",
+        "quality": 0.9
+      },
+      {
+        "case_id": "HB-013",
+        "config": "B_llm_only",
+        "name": "Statins",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "HMG-CoA reductase inhibition",
+        "actual": "Fungal metabolites inhibit HMG-CoA reductase, lowering cholesterol",
+        "score": "MECHANISM_MATCH",
+        "quality": 1.0
+      },
+      {
+        "case_id": "HB-014",
+        "config": "B_llm_only",
+        "name": "GFP fluorescent tag",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Using GFP gene to express fluorescent protein in cells, eliminating the need for chemical conjugation of dyes",
+        "actual": "GFP can be genetically fused to any protein for live-cell visualization",
+        "score": "MECHANISM_MATCH",
+        "quality": 0.9
+      },
+      {
+        "case_id": "HB-015",
+        "config": "B_llm_only",
+        "name": "Perovskite solar cells",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the information provided, which is limited to knowledge available up to December 31, 2008, a novel mechanism to propose for enhancing the efficiency or stability of dye-sensitized solar cells",
+        "actual": "Perovskite is both absorber AND charge transporter, not just a sensitizer",
+        "score": "MECHANISM_MATCH",
+        "quality": 0.8
+      },
+      {
+        "case_id": "HB-016",
+        "config": "B_llm_only",
+        "name": "Quantum Hall effect",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the pre-discovery concepts of Classical Hall effect, 2D electron gases, and MOSFET physics, I propose a novel mechanism that combines these ideas to create a new type of device or phenomenon.",
+        "actual": "Hall conductance is exactly quantized in integer multiples of e²/h",
+        "score": "MECHANISM_MATCH",
+        "quality": 0.9
+      },
+      {
+        "case_id": "HB-017",
+        "config": "B_llm_only",
+        "name": "Haber-Bosch process",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the knowledge available up to 1908, I would propose a novel mechanism involving the use of high-pressure chemistry to facilitate the reaction of nitrogen (N2) with other elements or compounds",
+        "actual": "High pressure + iron catalyst + optimized temperature = ammonia synthesis",
+        "score": "MECHANISM_MATCH",
+        "quality": 0.8
+      },
+      {
+        "case_id": "HB-018",
+        "config": "B_llm_only",
+        "name": "Metformin",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Regulation of glucose metabolism and insulin signaling pathways to modulate urinary output",
+        "actual": "Biguanide from French lilac reduces hepatic glucose via AMPK",
+        "score": "MECHANISM_MATCH",
+        "quality": 0.8
+      },
+      {
+        "case_id": "HB-019",
+        "config": "B_llm_only",
+        "name": "Bacteriophage therapy",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Phage therapy",
+        "actual": "Bacterial viruses used therapeutically to kill pathogenic bacteria",
+        "score": "MECHANISM_MATCH",
+        "quality": 1.0
+      },
+      {
+        "case_id": "HB-020",
+        "config": "B_llm_only",
+        "name": "Artemisinin",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Inhibition of mitochondrial electron transport chain",
+        "actual": "Sesquiterpene lactone from Artemisia annua kills malaria parasites via ROS",
+        "score": "MECHANISM_MATCH",
+        "quality": 0.8
+      },
+      {
+        "case_id": "HB-021",
+        "config": "B_llm_only",
+        "name": "Aspirin (acetylsalicylic acid)",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the information provided, I would propose the following novel mechanism:\n\n**Proposed Mechanism:** Acetylation of salicylic acid to reduce stomach irritation while preserving its anti-inflamma",
+        "actual": "Acetylation of salicylic acid preserves therapeutic effect while reducing irritation",
+        "score": "MECHANISM_MATCH",
+        "quality": 0.9
+      },
+      {
+        "case_id": "HB-022",
+        "config": "B_llm_only",
+        "name": "AlphaFold",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the pre-discovery knowledge cutoff of 2019-12-31, I would propose a novel mechanism that combines deep learning techniques with homology modeling to predict protein structures. This mechanism",
+        "actual": "Attention network + evolutionary covariance = near-experimental structure prediction",
+        "score": "MECHANISM_MATCH",
+        "quality": 0.8
+      },
+      {
+        "case_id": "HB-023",
+        "config": "B_llm_only",
+        "name": "CAR-T cell therapy",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Engineering T-cells with chimeric antigen receptors (CARs) using viral vectors to target and kill cancer cells",
+        "actual": "Chimeric antigen receptor + T-cell = engineered cell that targets specific cancer",
+        "score": "MECHANISM_MATCH",
+        "quality": 0.9
+      },
+      {
+        "case_id": "HB-024",
+        "config": "B_llm_only",
+        "name": "Lithium iron phosphate cathode",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Given the context of the pre-discovery era up to 1995-12-31, where LiCoO2 cathodes were dominant and LiFePO4 was known but considered insulating and unusable, a novel mechanism to propose would involv",
+        "actual": "LiFePO4 with carbon coating is a safe, stable cathode material",
+        "score": "MECHANISM_MATCH",
+        "quality": 0.8
+      },
+      {
+        "case_id": "HB-025",
+        "config": "B_llm_only",
+        "name": "Organic LEDs (OLED)",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Organic Light-Emitting Diode (OLED)",
+        "actual": "Double-layer organic thin film produces efficient electroluminescence",
+        "score": "MECHANISM_MATCH",
+        "quality": 0.9
+      },
+      {
+        "case_id": "HB-026",
+        "config": "B_llm_only",
+        "name": "Quantum dots for displays",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the pre-discovery knowledge cutoff of 1992-12-31, I would propose a novel mechanism for the synthesis of semiconductor nanocrystals with controlled size and shape, leveraging the understandin",
+        "actual": "Colloidal quantum dots with tunable emission for displays",
+        "score": "MECHANISM_MATCH",
+        "quality": 0.8
+      },
+      {
+        "case_id": "HB-027",
+        "config": "B_llm_only",
+        "name": "Pulsed field gel electrophoresis",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Pulsed-field gel electrophoresis utilizing orthogonal fields",
+        "actual": "Alternating orthogonal fields separate megabase DNA fragments",
+        "score": "MECHANISM_MATCH",
+        "quality": 0.9
+      },
+      {
+        "case_id": "HB-028",
+        "config": "B_llm_only",
+        "name": "Next-gen sequencing (Illumina)",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the pre-discovery information provided, which includes Sanger sequencing, bridge amplification, reversible terminators, and fluorescence detection, a novel mechanism could be proposed that in",
+        "actual": "Bridge amplification + reversible terminators + parallel imaging = massive parallel sequencing",
+        "score": "MECHANISM_MATCH",
+        "quality": 0.9
+      },
+      {
+        "case_id": "HB-029",
+        "config": "B_llm_only",
+        "name": "Flow batteries",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Porous electrode material or hybrid electrode with solid core and redox-active coating",
+        "actual": "Redox-active species in flowing electrolyte = decoupled power and capacity",
+        "score": "MECHANISM_MATCH",
+        "quality": 0.8
+      },
+      {
+        "case_id": "HB-030",
+        "config": "B_llm_only",
+        "name": "3D printing (FDM)",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Fused Deposition Modeling (FDM)",
+        "actual": "Fused deposition of thermoplastic filament layer by layer = 3D printing",
+        "score": "MECHANISM_MATCH",
+        "quality": 1.0
+      },
+      {
+        "case_id": "HB-001",
+        "config": "C_mechanism",
+        "name": "CRISPR-Cas9 gene editing",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the known mechanisms, I would identify the core mechanism that could be transferred or combined as the RNA-guided nuclease activity of Cas9. This mechanism allows for precise targeting and ed",
+        "actual": "Cas9 + guide RNA = programmable DNA cleavage in eukaryotes",
+        "score": "MECHANISM_MATCH",
+        "quality": 1.0
+      },
+      {
+        "case_id": "HB-002",
+        "config": "C_mechanism",
+        "name": "mRNA vaccines",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the known mechanisms, I would identify the core mechanism that could be transferred or combined as:\n\n**Lipid nanoparticles delivering nucleic acids to trigger immunity**\n\nThis mechanism combi",
+        "actual": "Nucleoside-modified mRNA + LNP delivery = vaccine platform",
+        "score": "MECHANISM_MATCH",
+        "quality": 0.9
+      },
+      {
+        "case_id": "HB-003",
+        "config": "C_mechanism",
+        "name": "Lithium-ion battery",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the known mechanisms, the core mechanism that could be transferred or combined is the intercalation mechanism. Specifically, the ability of lithium ions to intercalate into the crystal struct",
+        "actual": "LiCoO2 cathode + graphite anode + non-aqueous electrolyte = rechargeable battery",
+        "score": "MECHANISM_MATCH",
+        "quality": 0.8
+      },
+      {
+        "case_id": "HB-004",
+        "config": "C_mechanism",
+        "name": "PCR",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the known mechanisms, I would identify the core mechanism that could be transferred or combined as:\n\n**Thermally stable enzyme activity**\n\nSpecifically, I propose the mechanism of:\n\n**Heat-st",
+        "actual": "Thermal cycling + Taq polymerase = exponential DNA amplification",
+        "score": "MECHANISM_MATCH",
+        "quality": 0.8
+      },
+      {
+        "case_id": "HB-005",
+        "config": "C_mechanism",
+        "name": "Graphene",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the known mechanisms, I would propose that the core mechanism that could be transferred or combined is the ability of carbon to form stable, layered structures. Specifically, I would propose ",
+        "actual": "Mechanical exfoliation produces stable single-layer graphene on substrate",
+        "score": "MECHANISM_MATCH",
+        "quality": 0.8
+      },
+      {
+        "case_id": "HB-006",
+        "config": "C_mechanism",
+        "name": "Transformer architecture",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the pre-discovery information, I would identify the core mechanism that could be transferred or combined as:\n\n**Self-Attention Mechanism**\n\nThe self-attention mechanism, which allows models t",
+        "actual": "Self-attention alone + positional encoding = Transformer (no recurrence)",
+        "score": "MECHANISM_MATCH",
+        "quality": 0.9
+      },
+      {
+        "case_id": "HB-007",
+        "config": "C_mechanism",
+        "name": "AlexNet / deep learning",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Combining CNNs with ReLU and dropout, leveraging GPUs to train on ImageNet",
+        "actual": "Deep CNN + GPU + ImageNet + ReLU + dropout = breakthrough performance",
+        "score": "MECHANISM_MATCH",
+        "quality": 1.0
+      },
+      {
+        "case_id": "HB-008",
+        "config": "C_mechanism",
+        "name": "Penicillin",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the pre-discovery information, the core mechanism that could be transferred or combined is the ability of certain molds to inhibit bacteria. This mechanism is observed in nature, where some m",
+        "actual": "Penicillium mold produces penicillin, inhibiting bacterial cell walls without harming tissue",
+        "score": "MECHANISM_MATCH",
+        "quality": 0.9
+      },
+      {
+        "case_id": "HB-009",
+        "config": "C_mechanism",
+        "name": "Monoclonal antibodies",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the known mechanisms, I would identify the core mechanism that could be transferred or combined as:\n\n**Cell fusion and antibody production**\n\nSpecifically, I would propose the mechanism of:\n\n",
+        "actual": "B-cell + myeloma fusion = hybridoma producing monoclonal antibodies indefinitely",
+        "score": "MECHANISM_MATCH",
+        "quality": 0.9
+      },
+      {
+        "case_id": "HB-010",
+        "config": "C_mechanism",
+        "name": "Checkpoint immunotherapy anti-PD-1",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the pre-discovery information, the core mechanism that could be transferred or combined is the regulation of immune checkpoint pathways, specifically the PD-1/PD-L1 axis and CTLA-4.\n\nThe know",
+        "actual": "Blocking PD-1 releases T-cell inhibition = immune attack on tumors",
+        "score": "MECHANISM_MATCH",
+        "quality": 0.9
+      },
+      {
+        "case_id": "HB-011",
+        "config": "C_mechanism",
+        "name": "RNA interference",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the known mechanisms, I would propose that the core mechanism that could be transferred or combined is RNA interference (RNAi). \n\nRNAi is a biological process in which RNA molecules inhibit g",
+        "actual": "Double-stranded RNA triggers conserved gene silencing via Dicer/Argonaute",
+        "score": "MECHANISM_MATCH",
+        "quality": 0.9
+      },
+      {
+        "case_id": "HB-012",
+        "config": "C_mechanism",
+        "name": "Induced pluripotent stem cells",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the known mechanisms, I would propose the following core mechanism:\n\n**Nuclear Reprogramming**\n\nThe fact that nuclear transfer works but needs egg cytoplasm suggests that the egg cytoplasm co",
+        "actual": "Four transcription factors (Oct4, Sox2, Klf4, c-Myc) reprogram somatic cells",
+        "score": "MECHANISM_MATCH",
+        "quality": 0.8
+      },
+      {
+        "case_id": "HB-013",
+        "config": "C_mechanism",
+        "name": "Statins",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the pre-discovery information, the core mechanism that could be transferred or combined is the concept of targeting a rate-limiting enzyme in a biochemical pathway to inhibit or modulate a sp",
+        "actual": "Fungal metabolites inhibit HMG-CoA reductase, lowering cholesterol",
+        "score": "MECHANISM_MATCH",
+        "quality": 0.9
+      },
+      {
+        "case_id": "HB-014",
+        "config": "C_mechanism",
+        "name": "GFP fluorescent tag",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the pre-discovery information, the core mechanism that could be transferred or combined is the bioluminescent property of GFP (Green Fluorescent Protein) from jellyfish. \n\nI propose the mecha",
+        "actual": "GFP can be genetically fused to any protein for live-cell visualization",
+        "score": "MECHANISM_MATCH",
+        "quality": 0.9
+      },
+      {
+        "case_id": "HB-015",
+        "config": "C_mechanism",
+        "name": "Perovskite solar cells",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the known mechanism of dye-sensitized solar cells and the properties of perovskites and organic-inorganic halides, I propose the following core mechanism:\n\n**Proposed Mechanism:** Perovskite-",
+        "actual": "Perovskite is both absorber AND charge transporter, not just a sensitizer",
+        "score": "MECHANISM_MATCH",
+        "quality": 0.8
+      },
+      {
+        "case_id": "HB-016",
+        "config": "C_mechanism",
+        "name": "Quantum Hall effect",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Quantum Hall Effect",
+        "actual": "Hall conductance is exactly quantized in integer multiples of e²/h",
+        "score": "MECHANISM_MATCH",
+        "quality": 1.0
+      },
+      {
+        "case_id": "HB-017",
+        "config": "C_mechanism",
+        "name": "Haber-Bosch process",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Catalytic activation of N2 under high-pressure conditions",
+        "actual": "High pressure + iron catalyst + optimized temperature = ammonia synthesis",
+        "score": "MECHANISM_MATCH",
+        "quality": 0.8
+      },
+      {
+        "case_id": "HB-018",
+        "config": "C_mechanism",
+        "name": "Metformin",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Regulation of glucose metabolism and insulin signaling pathways to modulate urinary output",
+        "actual": "Biguanide from French lilac reduces hepatic glucose via AMPK",
+        "score": "MECHANISM_MATCH",
+        "quality": 0.8
+      },
+      {
+        "case_id": "HB-019",
+        "config": "C_mechanism",
+        "name": "Bacteriophage therapy",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the pre-discovery context, the core mechanism that could be transferred or combined is the ability of phages to kill bacteria. Specifically, I propose the mechanism of phage-mediated bacteria",
+        "actual": "Bacterial viruses used therapeutically to kill pathogenic bacteria",
+        "score": "MECHANISM_MATCH",
+        "quality": 0.9
+      },
+      {
+        "case_id": "HB-020",
+        "config": "C_mechanism",
+        "name": "Artemisinin",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Combination of artemisinin's reactive oxygen species-generating mechanism with a novel delivery system or adjuvant",
+        "actual": "Sesquiterpene lactone from Artemisia annua kills malaria parasites via ROS",
+        "score": "MECHANISM_MATCH",
+        "quality": 0.9
+      },
+      {
+        "case_id": "HB-021",
+        "config": "C_mechanism",
+        "name": "Aspirin (acetylsalicylic acid)",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Prodrug design, Targeted delivery, or Combination therapy to reduce stomach irritation while retaining therapeutic benefits of salicylic acid",
+        "actual": "Acetylation of salicylic acid preserves therapeutic effect while reducing irritation",
+        "score": "MECHANISM_MATCH",
+        "quality": 0.9
+      },
+      {
+        "case_id": "HB-022",
+        "config": "C_mechanism",
+        "name": "AlphaFold",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Deep learning (CNNs/RNNs) for protein structure prediction, combined with homology modeling",
+        "actual": "Attention network + evolutionary covariance = near-experimental structure prediction",
+        "score": "MECHANISM_MATCH",
+        "quality": 0.8
+      },
+      {
+        "case_id": "HB-023",
+        "config": "C_mechanism",
+        "name": "CAR-T cell therapy",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Using viral vectors to introduce chimeric antigen receptors (CARs) into T-cells, allowing them to recognize and kill cancer cells more effectively",
+        "actual": "Chimeric antigen receptor + T-cell = engineered cell that targets specific cancer",
+        "score": "MECHANISM_MATCH",
+        "quality": 0.9
+      },
+      {
+        "case_id": "HB-024",
+        "config": "C_mechanism",
+        "name": "Lithium iron phosphate cathode",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the pre-discovery context, the core mechanism that could be transferred or combined is the lithium intercalation mechanism. This mechanism allows lithium ions to insert and extract from the c",
+        "actual": "LiFePO4 with carbon coating is a safe, stable cathode material",
+        "score": "MECHANISM_MATCH",
+        "quality": 0.8
+      },
+      {
+        "case_id": "HB-025",
+        "config": "C_mechanism",
+        "name": "Organic LEDs (OLED)",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the known mechanisms, I propose that the core mechanism that could be transferred or combined is the concept of electroluminescence in organic semiconductors. Specifically, I propose the mech",
+        "actual": "Double-layer organic thin film produces efficient electroluminescence",
+        "score": "MECHANISM_MATCH",
+        "quality": 0.9
+      },
+      {
+        "case_id": "HB-026",
+        "config": "C_mechanism",
+        "name": "Quantum dots for displays",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the pre-discovery context, I would identify the core mechanism that could be transferred or combined as:\n\n**Quantum Confinement**\n\nQuantum confinement is the phenomenon where the electronic a",
+        "actual": "Colloidal quantum dots with tunable emission for displays",
+        "score": "MECHANISM_MATCH",
+        "quality": 0.9
+      },
+      {
+        "case_id": "HB-027",
+        "config": "C_mechanism",
+        "name": "Pulsed field gel electrophoresis",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Pulsed Field Gel Electrophoresis (PFGE)",
+        "actual": "Alternating orthogonal fields separate megabase DNA fragments",
+        "score": "MECHANISM_MATCH",
+        "quality": 1.0
+      },
+      {
+        "case_id": "HB-028",
+        "config": "C_mechanism",
+        "name": "Next-gen sequencing (Illumina)",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Sequencing by Synthesis (SBS) with bridge amplification and fluorescence detection",
+        "actual": "Bridge amplification + reversible terminators + parallel imaging = massive parallel sequencing",
+        "score": "MECHANISM_MATCH",
+        "quality": 0.8
+      },
+      {
+        "case_id": "HB-029",
+        "config": "C_mechanism",
+        "name": "Flow batteries",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Redox reactions in a solid-state system",
+        "actual": "Redox-active species in flowing electrolyte = decoupled power and capacity",
+        "score": "MECHANISM_MATCH",
+        "quality": 0.8
+      },
+      {
+        "case_id": "HB-030",
+        "config": "C_mechanism",
+        "name": "3D printing (FDM)",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Powder Bed Fusion with Layer-by-Layer Material Deposition",
+        "actual": "Fused deposition of thermoplastic filament layer by layer = 3D printing",
+        "score": "MECHANISM_MATCH",
+        "quality": 0.8
+      },
+      {
+        "case_id": "HB-001",
+        "config": "D_mech_constraints",
+        "name": "CRISPR-Cas9 gene editing",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the pre-discovery knowledge, here's the identification of the core mechanism, constraints, and what overcomes them, followed by a proposed mechanism:\n\n1. **Core Mechanism**: The core mechanis",
+        "actual": "Cas9 + guide RNA = programmable DNA cleavage in eukaryotes",
+        "score": "MECHANISM_MATCH",
+        "quality": 0.9
+      },
+      {
+        "case_id": "HB-002",
+        "config": "D_mech_constraints",
+        "name": "mRNA vaccines",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the given information, let's break down the components:\n\n1. **Core Mechanism**: The core mechanism involves the delivery of nucleic acids (likely mRNA) using lipid nanoparticles to cells, whe",
+        "actual": "Nucleoside-modified mRNA + LNP delivery = vaccine platform",
+        "score": "MECHANISM_MATCH",
+        "quality": 1.0
+      },
+      {
+        "case_id": "HB-003",
+        "config": "D_mech_constraints",
+        "name": "Lithium-ion battery",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the given information, let's analyze the pre-discovery context:\n\n**1. Core Mechanism:**\nThe core mechanism involves the intercalation of lithium ions into the cathode (LiCoO2) and anode (grap",
+        "actual": "LiCoO2 cathode + graphite anode + non-aqueous electrolyte = rechargeable battery",
+        "score": "MECHANISM_MATCH",
+        "quality": 1.0
+      },
+      {
+        "case_id": "HB-004",
+        "config": "D_mech_constraints",
+        "name": "PCR",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the given information, let's break down the components:\n\n1. **Core Mechanism**: The core mechanism involves DNA polymerase extending primers, which is a fundamental process in DNA replication",
+        "actual": "Thermal cycling + Taq polymerase = exponential DNA amplification",
+        "score": "MECHANISM_MATCH/COMPONENT_MATCH",
+        "quality": 0.9
+      },
+      {
+        "case_id": "HB-005",
+        "config": "D_mech_constraints",
+        "name": "Graphene",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the given information, let's analyze the situation:\n\n1. **Core mechanism**: The core mechanism in question is the formation and stability of 2D crystals, specifically in the context of carbon",
+        "actual": "Mechanical exfoliation produces stable single-layer graphene on substrate",
+        "score": "MECHANISM_MATCH",
+        "quality": 1.0
+      },
+      {
+        "case_id": "HB-006",
+        "config": "D_mech_constraints",
+        "name": "Transformer architecture",
+        "gen_success": true,
+        "score_success": false,
+        "proposed": "To identify the core mechanism, constraints, and what overcomes them in the context of RNNs (Recurrent Neural Networks) and attention mechanisms, let's break down the information:\n\n1. **Core Mechanism",
+        "actual": "Self-attention alone + positional encoding = Transformer (no recurrence)",
+        "score": null,
+        "quality": null
+      },
+      {
+        "case_id": "HB-007",
+        "config": "D_mech_constraints",
+        "name": "AlexNet / deep learning",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the pre-discovery knowledge, I'll identify the core mechanism, constraints, and what overcomes them, and propose a mechanism.\n\n**Core Mechanism:**\nThe core mechanism is the use of Convolution",
+        "actual": "Deep CNN + GPU + ImageNet + ReLU + dropout = breakthrough performance",
+        "score": "MECHANISM_MATCH",
+        "quality": 0.9
+      },
+      {
+        "case_id": "HB-008",
+        "config": "D_mech_constraints",
+        "name": "Penicillin",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the pre-discovery information, here's the analysis:\n\n1. **Core mechanism**: The core mechanism is the inhibition of bacteria by some molds. This suggests that certain molds produce substances",
+        "actual": "Penicillium mold produces penicillin, inhibiting bacterial cell walls without harming tissue",
+        "score": "MECHANISM_MATCH",
+        "quality": 0.9
+      },
+      {
+        "case_id": "HB-009",
+        "config": "D_mech_constraints",
+        "name": "Monoclonal antibodies",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "cell fusion of myeloma cells with B-cells to create hybridomas",
+        "actual": "B-cell + myeloma fusion = hybridoma producing monoclonal antibodies indefinitely",
+        "score": "MECHANISM_MATCH",
+        "quality": 0.9
+      },
+      {
+        "case_id": "HB-010",
+        "config": "D_mech_constraints",
+        "name": "Checkpoint immunotherapy anti-PD-1",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the pre-discovery information, here's the analysis:\n\n1. **Core mechanism**: The core mechanism involves the immune system's ability to recognize and attack cancer cells. Specifically, T-cells",
+        "actual": "Blocking PD-1 releases T-cell inhibition = immune attack on tumors",
+        "score": "MECHANISM_MATCH",
+        "quality": 0.9
+      },
+      {
+        "case_id": "HB-011",
+        "config": "D_mech_constraints",
+        "name": "RNA interference",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the pre-discovery knowledge, here's an attempt to identify the core mechanism, constraints, and what overcomes them, and propose a mechanism:\n\n**Core Mechanism:**\nThe core mechanism appears t",
+        "actual": "Double-stranded RNA triggers conserved gene silencing via Dicer/Argonaute",
+        "score": "MECHANISM_MATCH",
+        "quality": 0.9
+      },
+      {
+        "case_id": "HB-012",
+        "config": "D_mech_constraints",
+        "name": "Induced pluripotent stem cells",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the given information, here's the analysis:\n\n1. **Core mechanism**: The core mechanism in question appears to be the process of cellular differentiation and the potential for reversing or rep",
+        "actual": "Four transcription factors (Oct4, Sox2, Klf4, c-Myc) reprogram somatic cells",
+        "score": "MECHANISM_MATCH",
+        "quality": 1.0
+      },
+      {
+        "case_id": "HB-013",
+        "config": "D_mech_constraints",
+        "name": "Statins",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the given information, here's the analysis:\n\n1. **Core Mechanism**: The core mechanism involves the inhibition of HMG-CoA reductase, an enzyme crucial for the biosynthesis of cholesterol in t",
+        "actual": "Fungal metabolites inhibit HMG-CoA reductase, lowering cholesterol",
+        "score": "MECHANISM_MATCH",
+        "quality": 1.0
+      },
+      {
+        "case_id": "HB-014",
+        "config": "D_mech_constraints",
+        "name": "GFP fluorescent tag",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Using cloned GFP gene to express GFP within cells for specific and controlled labeling",
+        "actual": "GFP can be genetically fused to any protein for live-cell visualization",
+        "score": "MECHANISM_MATCH",
+        "quality": 1.0
+      },
+      {
+        "case_id": "HB-015",
+        "config": "D_mech_constraints",
+        "name": "Perovskite solar cells",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the given information, here's the analysis:\n\n**1. Core Mechanism:**\nThe core mechanism of dye-sensitized solar cells (DSSCs) involves the absorption of light by a sensitizer (in this case, or",
+        "actual": "Perovskite is both absorber AND charge transporter, not just a sensitizer",
+        "score": "MECHANISM_MATCH",
+        "quality": 0.8
+      },
+      {
+        "case_id": "HB-016",
+        "config": "D_mech_constraints",
+        "name": "Quantum Hall effect",
+        "gen_success": true,
+        "score_success": false,
+        "proposed": "To propose a mechanism related to the given context of the Classical Hall effect, 2D electron gases, and MOSFET physics, let's break down the components and understand how they might interact or influ",
+        "actual": "Hall conductance is exactly quantized in integer multiples of e²/h",
+        "score": null,
+        "quality": null
+      },
+      {
+        "case_id": "HB-017",
+        "config": "D_mech_constraints",
+        "name": "Haber-Bosch process",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the given knowledge, let's analyze the problem:\n\n**Core Mechanism:**\nThe core mechanism we're trying to identify is likely the Haber-Bosch process, which involves the synthesis of ammonia (NH",
+        "actual": "High pressure + iron catalyst + optimized temperature = ammonia synthesis",
+        "score": "MECHANISM_MATCH",
+        "quality": 1.0
+      },
+      {
+        "case_id": "HB-018",
+        "config": "D_mech_constraints",
+        "name": "Metformin",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "French lilac contains compounds that regulate blood sugar levels, potentially by enhancing insulin sensitivity or secretion",
+        "actual": "Biguanide from French lilac reduces hepatic glucose via AMPK",
+        "score": "MECHANISM_MATCH",
+        "quality": 0.8
+      },
+      {
+        "case_id": "HB-019",
+        "config": "D_mech_constraints",
+        "name": "Bacteriophage therapy",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the pre-discovery context, here's the analysis:\n\n1. **Core mechanism**: The core mechanism is the ability of phages (bacteriophages) to infect and kill bacteria. Phages are viruses that speci",
+        "actual": "Bacterial viruses used therapeutically to kill pathogenic bacteria",
+        "score": "MECHANISM_MATCH",
+        "quality": 1.0
+      },
+      {
+        "case_id": "HB-020",
+        "config": "D_mech_constraints",
+        "name": "Artemisinin",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the pre-discovery information, here's an analysis:\n\n1. **Core mechanism**: The core mechanism we're trying to understand is the potential antimalarial activity of sweet wormwood (Artemisia an",
+        "actual": "Sesquiterpene lactone from Artemisia annua kills malaria parasites via ROS",
+        "score": "MECHANISM_MATCH",
+        "quality": 1.0
+      },
+      {
+        "case_id": "HB-021",
+        "config": "D_mech_constraints",
+        "name": "Aspirin (acetylsalicylic acid)",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the pre-discovery information, here are the identified components:\n\n1. **Core mechanism**: The core mechanism is the anti-inflammatory and pain-relieving properties of salicylic acid, which i",
+        "actual": "Acetylation of salicylic acid preserves therapeutic effect while reducing irritation",
+        "score": "MECHANISM_MATCH",
+        "quality": 0.9
+      },
+      {
+        "case_id": "HB-022",
+        "config": "D_mech_constraints",
+        "name": "AlphaFold",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the pre-discovery context, I'll attempt to identify the core mechanism, constraints, and what overcomes them, and propose a mechanism.\n\n**Core Mechanism:**\nThe core mechanism I'll focus on is",
+        "actual": "Attention network + evolutionary covariance = near-experimental structure prediction",
+        "score": "MECHANISM_MATCH",
+        "quality": 0.8
+      },
+      {
+        "case_id": "HB-023",
+        "config": "D_mech_constraints",
+        "name": "CAR-T cell therapy",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Viral vector-mediated transduction of T-cells with chimeric receptors to target cancer cells",
+        "actual": "Chimeric antigen receptor + T-cell = engineered cell that targets specific cancer",
+        "score": "MECHANISM_MATCH",
+        "quality": 0.9
+      },
+      {
+        "case_id": "HB-024",
+        "config": "D_mech_constraints",
+        "name": "Lithium iron phosphate cathode",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "To address the problem based on the given context, let's break it down into the requested components regarding the use of LiFePO4 (Lithium Iron Phosphate) as a cathode material in lithium-ion batterie",
+        "actual": "LiFePO4 with carbon coating is a safe, stable cathode material",
+        "score": "MECHANISM_MATCH",
+        "quality": 0.8
+      },
+      {
+        "case_id": "HB-025",
+        "config": "D_mech_constraints",
+        "name": "Organic LEDs (OLED)",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the pre-discovery knowledge, I'll attempt to identify the core mechanism, constraints, and what overcomes them to propose a mechanism for Organic Light-Emitting Diodes (OLEDs).\n\n**1. Core Mec",
+        "actual": "Double-layer organic thin film produces efficient electroluminescence",
+        "score": "MECHANISM_MATCH",
+        "quality": 0.8
+      },
+      {
+        "case_id": "HB-026",
+        "config": "D_mech_constraints",
+        "name": "Quantum dots for displays",
+        "gen_success": true,
+        "score_success": false,
+        "proposed": "To address the problem based on the given context, let's break down the information and apply it to the task of proposing a mechanism related to semiconductor nanocrystals, considering the quantum con",
+        "actual": "Colloidal quantum dots with tunable emission for displays",
+        "score": null,
+        "quality": null
+      },
+      {
+        "case_id": "HB-027",
+        "config": "D_mech_constraints",
+        "name": "Pulsed field gel electrophoresis",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the given information, let's analyze the problem:\n\n**1. Core Mechanism:**\nThe core mechanism we are trying to identify is likely related to separating or analyzing DNA fragments. Given that g",
+        "actual": "Alternating orthogonal fields separate megabase DNA fragments",
+        "score": "MECHANISM_MATCH",
+        "quality": 0.8
+      },
+      {
+        "case_id": "HB-028",
+        "config": "D_mech_constraints",
+        "name": "Next-gen sequencing (Illumina)",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the given information, here's the analysis:\n\n1. **Core Mechanism**: The core mechanism involves sequencing DNA using Sanger sequencing, which relies on the selective incorporation of chain-te",
+        "actual": "Bridge amplification + reversible terminators + parallel imaging = massive parallel sequencing",
+        "score": "NO_MATCH",
+        "quality": 0.0
+      },
+      {
+        "case_id": "HB-029",
+        "config": "D_mech_constraints",
+        "name": "Flow batteries",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "flow battery",
+        "actual": "Redox-active species in flowing electrolyte = decoupled power and capacity",
+        "score": "MECHANISM_MATCH",
+        "quality": 0.9
+      },
+      {
+        "case_id": "HB-030",
+        "config": "D_mech_constraints",
+        "name": "3D printing (FDM)",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the given information, let's analyze the pre-discovery scenario:\n\n**1. Core Mechanism:**\nThe core mechanism in this scenario is the concept of layer-by-layer manufacturing, where objects are ",
+        "actual": "Fused deposition of thermoplastic filament layer by layer = 3D printing",
+        "score": "MECHANISM_MATCH",
+        "quality": 1.0
+      },
+      {
+        "case_id": "HB-001",
+        "config": "E_combination",
+        "name": "CRISPR-Cas9 gene editing",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the known information, I propose combining the RNA-guided nuclease activity of Cas9 with the gene editing capabilities of ZFNs (Zinc Finger Nucleases) or TALENs (Transcription Activator-Like ",
+        "actual": "Cas9 + guide RNA = programmable DNA cleavage in eukaryotes",
+        "score": "MECHANISM_MATCH",
+        "quality": 0.8
+      },
+      {
+        "case_id": "HB-002",
+        "config": "E_combination",
+        "name": "mRNA vaccines",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the known information, I propose the following two independently validated mechanisms that could combine to create an emergent capability:\n\n**Mechanism 1: Modified nucleosides reducing RNA im",
+        "actual": "Nucleoside-modified mRNA + LNP delivery = vaccine platform",
+        "score": "MECHANISM_MATCH",
+        "quality": 0.9
+      },
+      {
+        "case_id": "HB-003",
+        "config": "E_combination",
+        "name": "Lithium-ion battery",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Rechargeable Lithium-Ion Batteries via combined graphite anode and LiCoO2 cathode intercalation",
+        "actual": "LiCoO2 cathode + graphite anode + non-aqueous electrolyte = rechargeable battery",
+        "score": "MECHANISM_MATCH",
+        "quality": 0.9
+      },
+      {
+        "case_id": "HB-004",
+        "config": "E_combination",
+        "name": "PCR",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "PCR using thermostable DNA polymerase",
+        "actual": "Thermal cycling + Taq polymerase = exponential DNA amplification",
+        "score": "MECHANISM_MATCH",
+        "quality": 1.0
+      },
+      {
+        "case_id": "HB-005",
+        "config": "E_combination",
+        "name": "Graphene",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Layered carbon nanotube structures",
+        "actual": "Mechanical exfoliation produces stable single-layer graphene on substrate",
+        "score": "NO_MATCH",
+        "quality": 0.0
+      },
+      {
+        "case_id": "HB-006",
+        "config": "E_combination",
+        "name": "Transformer architecture",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Hierarchical Self-Attention",
+        "actual": "Self-attention alone + positional encoding = Transformer (no recurrence)",
+        "score": "MECHANISM_MATCH",
+        "quality": 0.8
+      },
+      {
+        "case_id": "HB-007",
+        "config": "E_combination",
+        "name": "AlexNet / deep learning",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Deep Neural Networks with Large-Scale Pre-Training",
+        "actual": "Deep CNN + GPU + ImageNet + ReLU + dropout = breakthrough performance",
+        "score": "MECHANISM_MATCH",
+        "quality": 0.9
+      },
+      {
+        "case_id": "HB-008",
+        "config": "E_combination",
+        "name": "Penicillin",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the pre-discovery knowledge, I propose the following two independently validated mechanisms that could combine to create an emergent capability:\n\n**Mechanism 1: Antibacterial activity of mold",
+        "actual": "Penicillium mold produces penicillin, inhibiting bacterial cell walls without harming tissue",
+        "score": "MECHANISM_MATCH",
+        "quality": 0.8
+      },
+      {
+        "case_id": "HB-009",
+        "config": "E_combination",
+        "name": "Monoclonal antibodies",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Hybridoma technology combined with monoclonal antibody production",
+        "actual": "B-cell + myeloma fusion = hybridoma producing monoclonal antibodies indefinitely",
+        "score": "MECHANISM_MATCH",
+        "quality": 1.0
+      },
+      {
+        "case_id": "HB-010",
+        "config": "E_combination",
+        "name": "Checkpoint immunotherapy anti-PD-1",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Dual blockade of PD-1 and CTLA-4",
+        "actual": "Blocking PD-1 releases T-cell inhibition = immune attack on tumors",
+        "score": "MECHANISM_MATCH",
+        "quality": 1.0
+      },
+      {
+        "case_id": "HB-011",
+        "config": "E_combination",
+        "name": "RNA interference",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the pre-discovery knowledge, I propose the combination of two mechanisms that could create an emergent capability:\n\n**Mechanism 1: RNA Interference (RNAi)**\nThe existence of antisense RNA and",
+        "actual": "Double-stranded RNA triggers conserved gene silencing via Dicer/Argonaute",
+        "score": "MECHANISM_MATCH",
+        "quality": 0.8
+      },
+      {
+        "case_id": "HB-012",
+        "config": "E_combination",
+        "name": "Induced pluripotent stem cells",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the pre-discovery knowledge, I propose the following two independently validated mechanisms that could combine to create an emergent capability:\n\n**Mechanism 1: Nuclear Transfer**\nNuclear tra",
+        "actual": "Four transcription factors (Oct4, Sox2, Klf4, c-Myc) reprogram somatic cells",
+        "score": "MECHANISM_MATCH",
+        "quality": 0.8
+      },
+      {
+        "case_id": "HB-013",
+        "config": "E_combination",
+        "name": "Statins",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Inhibition of HMG-CoA reductase + Antibiotic-mediated modulation of the microbiome",
+        "actual": "Fungal metabolites inhibit HMG-CoA reductase, lowering cholesterol",
+        "score": "MECHANISM_MATCH",
+        "quality": 0.8
+      },
+      {
+        "case_id": "HB-014",
+        "config": "E_combination",
+        "name": "GFP fluorescent tag",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Genetically Encoded Fluorescent Protein Tags",
+        "actual": "GFP can be genetically fused to any protein for live-cell visualization",
+        "score": "MECHANISM_MATCH",
+        "quality": 0.9
+      },
+      {
+        "case_id": "HB-015",
+        "config": "E_combination",
+        "name": "Perovskite solar cells",
+        "gen_success": true,
+        "score_success": false,
+        "proposed": "Based on the known concepts, I propose combining two mechanisms:\n\n**Mechanism 1: Dye-sensitized solar cells' ability to convert light into electrical energy**\n\nDye-sensitized solar cells (DSSCs) use a",
+        "actual": "Perovskite is both absorber AND charge transporter, not just a sensitizer",
+        "score": null,
+        "quality": null
+      },
+      {
+        "case_id": "HB-016",
+        "config": "E_combination",
+        "name": "Quantum Hall effect",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the known concepts of Classical Hall effect, 2D electron gases, and MOSFET physics, I propose combining two independently validated mechanisms to create an emergent capability:\n\n**Mechanism 1",
+        "actual": "Hall conductance is exactly quantized in integer multiples of e²/h",
+        "score": "MECHANISM_MATCH",
+        "quality": 0.8
+      },
+      {
+        "case_id": "HB-017",
+        "config": "E_combination",
+        "name": "Haber-Bosch process",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "High-pressure catalytic nitrogen fixation",
+        "actual": "High pressure + iron catalyst + optimized temperature = ammonia synthesis",
+        "score": "MECHANISM_MATCH",
+        "quality": 0.9
+      },
+      {
+        "case_id": "HB-018",
+        "config": "E_combination",
+        "name": "Metformin",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the knowledge that French lilac treats excessive urination and insulin has been discovered, I propose the following two independently validated mechanisms that could combine to create an emer",
+        "actual": "Biguanide from French lilac reduces hepatic glucose via AMPK",
+        "score": "MECHANISM_MATCH",
+        "quality": 0.8
+      },
+      {
+        "case_id": "HB-019",
+        "config": "E_combination",
+        "name": "Bacteriophage therapy",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Phage-mediated gene transfer of antibacterial genes, combined with phage infection",
+        "actual": "Bacterial viruses used therapeutically to kill pathogenic bacteria",
+        "score": "MECHANISM_MATCH",
+        "quality": 0.9
+      },
+      {
+        "case_id": "HB-020",
+        "config": "E_combination",
+        "name": "Artemisinin",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Artemisinin + Chloroquine Resistance Transporter Inhibitor",
+        "actual": "Sesquiterpene lactone from Artemisia annua kills malaria parasites via ROS",
+        "score": "MECHANISM_MATCH",
+        "quality": 0.8
+      },
+      {
+        "case_id": "HB-021",
+        "config": "E_combination",
+        "name": "Aspirin (acetylsalicylic acid)",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "To propose a combination of mechanisms that could create an emergent capability related to the use of willow bark (salicin) and salicylic acid, we need to understand the properties and effects of thes",
+        "actual": "Acetylation of salicylic acid preserves therapeutic effect while reducing irritation",
+        "score": "MECHANISM_MATCH",
+        "quality": 0.9
+      },
+      {
+        "case_id": "HB-022",
+        "config": "E_combination",
+        "name": "AlphaFold",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Given the context of pre-discovery in the field of protein folding and the known aspects of homology modeling and deep learning in biology, I propose combining two independently validated mechanisms t",
+        "actual": "Attention network + evolutionary covariance = near-experimental structure prediction",
+        "score": "MECHANISM_MATCH",
+        "quality": 0.9
+      },
+      {
+        "case_id": "HB-023",
+        "config": "E_combination",
+        "name": "CAR-T cell therapy",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Combination of CAR T-cell therapy and viral vector-mediated gene editing",
+        "actual": "Chimeric antigen receptor + T-cell = engineered cell that targets specific cancer",
+        "score": "MECHANISM_MATCH",
+        "quality": 0.9
+      },
+      {
+        "case_id": "HB-024",
+        "config": "E_combination",
+        "name": "Lithium iron phosphate cathode",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "To propose a combination of mechanisms that could create an emergent capability, let's first identify two independently validated mechanisms related to lithium-ion battery cathodes, specifically focus",
+        "actual": "LiFePO4 with carbon coating is a safe, stable cathode material",
+        "score": "MECHANISM_MATCH",
+        "quality": 0.8
+      },
+      {
+        "case_id": "HB-025",
+        "config": "E_combination",
+        "name": "Organic LEDs (OLED)",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Combination of electroluminescence in organic materials and thin film deposition and patterning",
+        "actual": "Double-layer organic thin film produces efficient electroluminescence",
+        "score": "MECHANISM_MATCH",
+        "quality": 0.8
+      },
+      {
+        "case_id": "HB-026",
+        "config": "E_combination",
+        "name": "Quantum dots for displays",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Quantum Confinement + Colloidal Synthesis",
+        "actual": "Colloidal quantum dots with tunable emission for displays",
+        "score": "MECHANISM_MATCH",
+        "quality": 0.9
+      },
+      {
+        "case_id": "HB-027",
+        "config": "E_combination",
+        "name": "Pulsed field gel electrophoresis",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "To create an emergent capability in the context of DNA manipulation and analysis, particularly considering the limitations and capabilities of gel electrophoresis, we can look at combining mechanisms ",
+        "actual": "Alternating orthogonal fields separate megabase DNA fragments",
+        "score": "MECHANISM_MATCH",
+        "quality": 0.8
+      },
+      {
+        "case_id": "HB-028",
+        "config": "E_combination",
+        "name": "Next-gen sequencing (Illumina)",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the known technologies, I propose combining \"bridge amplification\" and \"reversible terminators\" with \"fluorescence detection\" to create an emergent capability. Here's a potential combination:",
+        "actual": "Bridge amplification + reversible terminators + parallel imaging = massive parallel sequencing",
+        "score": "MECHANISM_MATCH",
+        "quality": 0.8
+      },
+      {
+        "case_id": "HB-029",
+        "config": "E_combination",
+        "name": "Flow batteries",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Hybrid Solid-State Electrode and Redox Reaction in Solution",
+        "actual": "Redox-active species in flowing electrolyte = decoupled power and capacity",
+        "score": "MECHANISM_MATCH",
+        "quality": 0.8
+      },
+      {
+        "case_id": "HB-030",
+        "config": "E_combination",
+        "name": "3D printing (FDM)",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the pre-discovery context, I propose the following two independently validated mechanisms that could combine to create an emergent capability:\n\n**Mechanism 1: Fused Deposition Modeling (FDM)*",
+        "actual": "Fused deposition of thermoplastic filament layer by layer = 3D printing",
+        "score": "MECHANISM_MATCH",
+        "quality": 0.9
+      },
+      {
+        "case_id": "HB-001",
+        "config": "F_full",
+        "name": "CRISPR-Cas9 gene editing",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the pre-discovery knowledge up to 2011-12-31, we can analyze the invariant principles, constraints, mechanism combination, and constraint release in the context of bacterial CRISPR adaptive i",
+        "actual": "Cas9 + guide RNA = programmable DNA cleavage in eukaryotes",
+        "score": "MECHANISM_MATCH",
+        "quality": 0.8
+      },
+      {
+        "case_id": "HB-002",
+        "config": "F_full",
+        "name": "mRNA vaccines",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the pre-discovery information provided, we can analyze the invariant principles, constraints, mechanism combination, and constraint release as follows:\n\n**Invariant Principles:**\n\n1. **Nuclei",
+        "actual": "Nucleoside-modified mRNA + LNP delivery = vaccine platform",
+        "score": "MECHANISM_MATCH",
+        "quality": 0.8
+      },
+      {
+        "case_id": "HB-003",
+        "config": "F_full",
+        "name": "Lithium-ion battery",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the pre-discovery information provided, we can analyze the invariant principles, constraints, mechanism combination, and constraint release to propose a potential mechanism and make predictio",
+        "actual": "LiCoO2 cathode + graphite anode + non-aqueous electrolyte = rechargeable battery",
+        "score": "MECHANISM_MATCH",
+        "quality": 0.9
+      },
+      {
+        "case_id": "HB-004",
+        "config": "F_full",
+        "name": "PCR",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the pre-discovery information provided, we can analyze the invariant principles, constraints, mechanism combination, and constraint release to propose a mechanism with prediction and falsific",
+        "actual": "Thermal cycling + Taq polymerase = exponential DNA amplification",
+        "score": "MECHANISM_MATCH",
+        "quality": 0.9
+      },
+      {
+        "case_id": "HB-005",
+        "config": "F_full",
+        "name": "Graphene",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the given information, here's an analysis of the invariant principles, constraints, mechanism combination, and constraint release, followed by a proposed mechanism with prediction and falsifi",
+        "actual": "Mechanical exfoliation produces stable single-layer graphene on substrate",
+        "score": "MECHANISM_MATCH",
+        "quality": 0.8
+      },
+      {
+        "case_id": "HB-006",
+        "config": "F_full",
+        "name": "Transformer architecture",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the provided information, we can analyze the principles, constraints, and mechanisms involved in the development of RNNs and attention-based models.\n\n**Invariant Principles:**\n\n1. **Sequentia",
+        "actual": "Self-attention alone + positional encoding = Transformer (no recurrence)",
+        "score": "MECHANISM_MATCH",
+        "quality": 0.8
+      },
+      {
+        "case_id": "HB-007",
+        "config": "F_full",
+        "name": "AlexNet / deep learning",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Given the pre-discovery cutoff of 2011-12-31, we are operating within a context where several key components of modern deep learning architectures and technologies are already available. These include",
+        "actual": "Deep CNN + GPU + ImageNet + ReLU + dropout = breakthrough performance",
+        "score": "MECHANISM_MATCH",
+        "quality": 0.9
+      },
+      {
+        "case_id": "HB-008",
+        "config": "F_full",
+        "name": "Penicillin",
+        "gen_success": true,
+        "score_success": false,
+        "proposed": "Based on the pre-discovery information, we can analyze the situation as follows:\n\n**Invariant Principles:**\n\n1. Bacteria cause infections: This principle suggests that bacteria are the primary cause o",
+        "actual": "Penicillium mold produces penicillin, inhibiting bacterial cell walls without harming tissue",
+        "score": null,
+        "quality": null
+      },
+      {
+        "case_id": "HB-009",
+        "config": "F_full",
+        "name": "Monoclonal antibodies",
+        "gen_success": true,
+        "score_success": false,
+        "proposed": "Based on the pre-discovery information provided, we can analyze the invariant principles, constraints, mechanism combination, and constraint release to propose a mechanism with prediction and falsific",
+        "actual": "B-cell + myeloma fusion = hybridoma producing monoclonal antibodies indefinitely",
+        "score": null,
+        "quality": null
+      },
+      {
+        "case_id": "HB-010",
+        "config": "F_full",
+        "name": "Checkpoint immunotherapy anti-PD-1",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the pre-discovery information provided, here's an analysis of the invariant principles, constraints, mechanism combination, and constraint release, followed by a proposed mechanism with predi",
+        "actual": "Blocking PD-1 releases T-cell inhibition = immune attack on tumors",
+        "score": "MECHANISM_MATCH",
+        "quality": 0.9
+      },
+      {
+        "case_id": "HB-011",
+        "config": "F_full",
+        "name": "RNA interference",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the pre-discovery information provided, I will attempt to analyze the situation and propose a mechanism.\n\n**Invariant Principles:**\n\n1. Antisense RNA exists: This suggests that RNA molecules ",
+        "actual": "Double-stranded RNA triggers conserved gene silencing via Dicer/Argonaute",
+        "score": "MECHANISM_MATCH",
+        "quality": 0.8
+      },
+      {
+        "case_id": "HB-012",
+        "config": "F_full",
+        "name": "Induced pluripotent stem cells",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the pre-discovery knowledge cutoff of 2005-12-31, we can analyze the invariant principles, constraints, mechanism combination, and constraint release in the context of embryonic stem (ES) cel",
+        "actual": "Four transcription factors (Oct4, Sox2, Klf4, c-Myc) reprogram somatic cells",
+        "score": "COMPONENT_MATCH",
+        "quality": 0.5
+      },
+      {
+        "case_id": "HB-013",
+        "config": "F_full",
+        "name": "Statins",
+        "gen_success": true,
+        "score_success": false,
+        "proposed": "Based on the pre-discovery information provided, here's an analysis of the invariant principles, constraints, mechanism combination, and constraint release, followed by a proposed mechanism with predi",
+        "actual": "Fungal metabolites inhibit HMG-CoA reductase, lowering cholesterol",
+        "score": null,
+        "quality": null
+      },
+      {
+        "case_id": "HB-014",
+        "config": "F_full",
+        "name": "GFP fluorescent tag",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the pre-discovery information, we can analyze the invariant principles, constraints, mechanism combination, and constraint release as follows:\n\n**Invariant Principles:**\n\n1. The need for fluo",
+        "actual": "GFP can be genetically fused to any protein for live-cell visualization",
+        "score": "MECHANISM_MATCH",
+        "quality": 0.8
+      },
+      {
+        "case_id": "HB-015",
+        "config": "F_full",
+        "name": "Perovskite solar cells",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the pre-discovery information provided, I will analyze the invariant principles, constraints, mechanism combination, and constraint release to propose a potential mechanism with prediction an",
+        "actual": "Perovskite is both absorber AND charge transporter, not just a sensitizer",
+        "score": "MECHANISM_MATCH",
+        "quality": 0.8
+      },
+      {
+        "case_id": "HB-016",
+        "config": "F_full",
+        "name": "Quantum Hall effect",
+        "gen_success": true,
+        "score_success": false,
+        "proposed": "Based on the pre-discovery concepts provided, I will analyze and propose a mechanism.\n\n**Invariant Principles:**\n\n1. Conservation of charge: The total charge of a closed system remains constant over t",
+        "actual": "Hall conductance is exactly quantized in integer multiples of e²/h",
+        "score": null,
+        "quality": null
+      },
+      {
+        "case_id": "HB-017",
+        "config": "F_full",
+        "name": "Haber-Bosch process",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the pre-discovery knowledge cutoff of December 31, 1908, I will analyze the given concepts and propose a mechanism with prediction and falsification.\n\n**Invariant Principles:**\n\n1. Le Chateli",
+        "actual": "High pressure + iron catalyst + optimized temperature = ammonia synthesis",
+        "score": "MECHANISM_MATCH",
+        "quality": 0.8
+      },
+      {
+        "case_id": "HB-018",
+        "config": "F_full",
+        "name": "Metformin",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the pre-discovery information provided, I'll attempt to analyze the invariant principles, constraints, mechanism combination, and constraint release related to the treatment of excessive urin",
+        "actual": "Biguanide from French lilac reduces hepatic glucose via AMPK",
+        "score": "MECHANISM_MATCH",
+        "quality": 0.8
+      },
+      {
+        "case_id": "HB-019",
+        "config": "F_full",
+        "name": "Bacteriophage therapy",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Given the pre-discovery context up to 1918-12-31, we're analyzing a period when bacteria were recognized as pathogens, there were no antibacterial drugs available, and bacteriophages (phages) had been",
+        "actual": "Bacterial viruses used therapeutically to kill pathogenic bacteria",
+        "score": "MECHANISM_MATCH",
+        "quality": 0.9
+      },
+      {
+        "case_id": "HB-020",
+        "config": "F_full",
+        "name": "Artemisinin",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "sweet wormwood contains antimalarial compounds",
+        "actual": "Sesquiterpene lactone from Artemisia annua kills malaria parasites via ROS",
+        "score": "MECHANISM_MATCH",
+        "quality": 0.9
+      },
+      {
+        "case_id": "HB-021",
+        "config": "F_full",
+        "name": "Aspirin (acetylsalicylic acid)",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the pre-discovery information, I'll analyze the invariant principles, constraints, mechanism combination, and constraint release to propose a mechanism with prediction and falsification.\n\n**I",
+        "actual": "Acetylation of salicylic acid preserves therapeutic effect while reducing irritation",
+        "score": "MECHANISM_MATCH",
+        "quality": 0.8
+      },
+      {
+        "case_id": "HB-022",
+        "config": "F_full",
+        "name": "AlphaFold",
+        "gen_success": true,
+        "score_success": false,
+        "proposed": "Based on the pre-discovery knowledge cutoff of 2019-12-31, I will analyze the given concepts and propose a mechanism.\n\n**Invariant Principles:**\n\n1. **Conservation of energy**: The total energy of a p",
+        "actual": "Attention network + evolutionary covariance = near-experimental structure prediction",
+        "score": null,
+        "quality": null
+      },
+      {
+        "case_id": "HB-023",
+        "config": "F_full",
+        "name": "CAR-T cell therapy",
+        "gen_success": true,
+        "score_success": false,
+        "proposed": "Based on the pre-discovery knowledge provided, here's an analysis of the invariant principles, constraints, mechanism combination, and constraint release, followed by a proposed mechanism with predict",
+        "actual": "Chimeric antigen receptor + T-cell = engineered cell that targets specific cancer",
+        "score": null,
+        "quality": null
+      },
+      {
+        "case_id": "HB-024",
+        "config": "F_full",
+        "name": "Lithium iron phosphate cathode",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the pre-discovery context, I'll analyze the invariant principles, constraints, mechanism combination, and constraint release to propose a mechanism with prediction and falsification.\n\n**Invar",
+        "actual": "LiFePO4 with carbon coating is a safe, stable cathode material",
+        "score": "MECHANISM_MATCH",
+        "quality": 0.8
+      },
+      {
+        "case_id": "HB-025",
+        "config": "F_full",
+        "name": "Organic LEDs (OLED)",
+        "gen_success": true,
+        "score_success": false,
+        "proposed": "Based on the given information, I will analyze the situation and propose a mechanism.\n\n**Invariant Principles:**\n\n1. Electroluminescence: The phenomenon of emitting light in response to an electric cu",
+        "actual": "Double-layer organic thin film produces efficient electroluminescence",
+        "score": null,
+        "quality": null
+      },
+      {
+        "case_id": "HB-026",
+        "config": "F_full",
+        "name": "Quantum dots for displays",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the pre-discovery knowledge cutoff of 1992-12-31, we can analyze the invariant principles, constraints, mechanism combination, and constraint release in the context of semiconductor nanocryst",
+        "actual": "Colloidal quantum dots with tunable emission for displays",
+        "score": "MECHANISM_MATCH",
+        "quality": 0.8
+      },
+      {
+        "case_id": "HB-027",
+        "config": "F_full",
+        "name": "Pulsed field gel electrophoresis",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the given information, I'll analyze the principles, constraints, and potential mechanisms involved in DNA separation techniques, specifically gel electrophoresis, up to the cutoff date of 198",
+        "actual": "Alternating orthogonal fields separate megabase DNA fragments",
+        "score": "COMPONENT_MATCH",
+        "quality": 0.6
+      },
+      {
+        "case_id": "HB-028",
+        "config": "F_full",
+        "name": "Next-gen sequencing (Illumina)",
+        "gen_success": true,
+        "score_success": false,
+        "proposed": "Based on the pre-discovery information provided, I'll analyze the invariant principles, constraints, mechanism combination, and constraint release to propose a mechanism with prediction and falsificat",
+        "actual": "Bridge amplification + reversible terminators + parallel imaging = massive parallel sequencing",
+        "score": null,
+        "quality": null
+      },
+      {
+        "case_id": "HB-029",
+        "config": "F_full",
+        "name": "Flow batteries",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the pre-discovery information, I'll analyze the invariant principles, constraints, mechanism combination, and constraint release to propose a potential mechanism with prediction and falsifica",
+        "actual": "Redox-active species in flowing electrolyte = decoupled power and capacity",
+        "score": "MECHANISM_MATCH",
+        "quality": 0.8
+      },
+      {
+        "case_id": "HB-030",
+        "config": "F_full",
+        "name": "3D printing (FDM)",
+        "gen_success": true,
+        "score_success": false,
+        "proposed": "Based on the pre-discovery context, I'll analyze the situation and propose a mechanism.\n\n**Invariant Principles:**\n\n1. **Material properties**: Plastics can be melted and shaped into various forms.\n2.",
+        "actual": "Fused deposition of thermoplastic filament layer by layer = 3D printing",
+        "score": null,
+        "quality": null
+      }
+    ]
+  },
+  "scorer_manifest": {
+    "scorer_version": "V3_BLINDED",
+    "scorer_system_prompt": "You are a STRICT mechanism similarity scorer. Score: MECHANISM_MATCH/COMPONENT_MATCH/NO_MATCH. Output JSON: {\"score\":\"\",\"quality\":0.0}",
+    "model": "meta-llama/llama-3.3-70b-instruct",
+    "temperature": 0.3,
+    "max_tokens_generation": 400,
+    "max_tokens_scoring": 150,
+    "retry_count": 3,
+    "prompts": {
+      "B_llm_only": "PRE-DISCOVERY (cutoff: {cutoff}):\n{known_before}\n\nWhat novel mechanism would you propose?",
+      "C_mechanism": "PRE-DISCOVERY:\nKnown mechanism: {known_before}\n\nIdentify the core mechanism that could be transferred or combined. What specific mechanism would you propose?",
+      "D_mech_constraints": "PRE-DISCOVERY:\nKnown: {known_before}\n\nIdentify: 1) Core mechanism, 2) Constraints, 3) What overcomes them. Propose mechanism.",
+      "E_combination": "PRE-DISCOVERY:\nKnown: {known_before}\n\nIdentify two independently validated mechanisms that could COMBINE to create emergent capability. What combination would you propose?",
+      "F_full": "PRE-DISCOVERY (cutoff: {cutoff}):\n{known_before}\n\nAnalyze invariant principles, constraints, mechanism combination, constraint release. Propose with prediction and falsification."
+    },
+    "note": "Prompts differ ONLY in the architectural intervention. Same model, temperature, token budget, retry policy."
+  },
+  "matched_case_analysis": {
+    "selection_code": "\n# EXACT matched-case selection logic:\nmatched = []\nfor case_id in all_case_ids:\n    all_scored = all(\n        cp['results'][c].get(case_id, {}).get('score_success', False)\n        for c in configs\n    )\n    if all_scored:\n        matched.append(case_id)\n# Selection criterion: score_success=True for ALL 5 configs\n# This is NOT outcome-dependent: score_success is whether the scorer LLM call \n# returned parseable JSON, not whether it returned MECHANISM_MATCH.\n# However, score_success IS downstream of configuration behavior:\n#   F_full's complex prompt causes the LLM to produce prose instead of JSON,\n#   which causes score_success=False. This means F_full's failures select\n#   which cases are \"matched\" — easier cases (where F_full happened to produce\n#   JSON) are over-represented in the matched set.\n# This is a KNOWN LIMITATION of the matched-case analysis.\n",
+    "selection_criterion": "score_success=True for ALL 5 configs",
+    "selection_limitation": "score_success is downstream of configuration behavior — F_full's complex prompt causes prose output → score_success=False → case excluded from matched set. This biases AGAINST finding F_full worse.",
+    "matched_count": 18,
+    "matched_case_ids": [
+      "HB-001",
+      "HB-002",
+      "HB-003",
+      "HB-004",
+      "HB-005",
+      "HB-007",
+      "HB-010",
+      "HB-011",
+      "HB-012",
+      "HB-014",
+      "HB-017",
+      "HB-018",
+      "HB-019",
+      "HB-020",
+      "HB-021",
+      "HB-024",
+      "HB-027",
+      "HB-029"
+    ],
+    "paired_binary_outcomes": {
+      "B_llm_only": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "C_mechanism": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "D_mech_constraints": [
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "E_combination": [
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "F_full": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1
+      ]
+    }
+  },
+  "statistical_tests": {
+    "mcnemar_c_vs_f": {
+      "c_better": 2,
+      "f_better": 0,
+      "tie": 16,
+      "chi_squared": 0.5,
+      "p_value": "p > 0.05 (not significant)",
+      "interpretation": "Cannot reject null hypothesis of no difference. Cannot establish equivalence with 2 discordant pairs."
+    },
+    "mcnemar_b_vs_f": {
+      "b_better": 2,
+      "f_better": 1,
+      "tie": 15,
+      "chi_squared": 0.0,
+      "p_value": "p > 0.05 (not significant)"
+    }
+  },
+  "results": {
+    "B_llm_only": {
+      "total_cases": 30,
+      "gen_failures": 0,
+      "score_failures": 0,
+      "scored_cases": 30,
+      "itt": {
+        "matches": 28,
+        "rate": 0.933,
+        "ci_95": [
+          0.787,
+          0.982
+        ]
+      },
+      "pp": {
+        "matches": 28,
+        "rate": 0.933,
+        "ci_95": [
+          0.787,
+          0.982
+        ]
+      },
+      "matched": {
+        "matches": 17,
+        "rate": 0.944,
+        "ci_95": [
+          0.742,
+          0.99
+        ]
+      }
+    },
+    "C_mechanism": {
+      "total_cases": 30,
+      "gen_failures": 0,
+      "score_failures": 0,
+      "scored_cases": 30,
+      "itt": {
+        "matches": 30,
+        "rate": 1.0,
+        "ci_95": [
+          0.886,
+          1
+        ]
+      },
+      "pp": {
+        "matches": 30,
+        "rate": 1.0,
+        "ci_95": [
+          0.886,
+          1
+        ]
+      },
+      "matched": {
+        "matches": 18,
+        "rate": 1.0,
+        "ci_95": [
+          0.824,
+          1
+        ]
+      }
+    },
+    "D_mech_constraints": {
+      "total_cases": 30,
+      "gen_failures": 0,
+      "score_failures": 3,
+      "scored_cases": 27,
+      "itt": {
+        "matches": 25,
+        "rate": 0.833,
+        "ci_95": [
+          0.664,
+          0.927
+        ]
+      },
+      "pp": {
+        "matches": 25,
+        "rate": 0.926,
+        "ci_95": [
+          0.766,
+          0.979
+        ]
+      },
+      "matched": {
+        "matches": 17,
+        "rate": 0.944,
+        "ci_95": [
+          0.742,
+          0.99
+        ]
+      }
+    },
+    "E_combination": {
+      "total_cases": 30,
+      "gen_failures": 0,
+      "score_failures": 1,
+      "scored_cases": 29,
+      "itt": {
+        "matches": 28,
+        "rate": 0.933,
+        "ci_95": [
+          0.787,
+          0.982
+        ]
+      },
+      "pp": {
+        "matches": 28,
+        "rate": 0.966,
+        "ci_95": [
+          0.828,
+          0.994
+        ]
+      },
+      "matched": {
+        "matches": 17,
+        "rate": 0.944,
+        "ci_95": [
+          0.742,
+          0.99
+        ]
+      }
+    },
+    "F_full": {
+      "total_cases": 30,
+      "gen_failures": 0,
+      "score_failures": 9,
+      "scored_cases": 21,
+      "itt": {
+        "matches": 19,
+        "rate": 0.633,
+        "ci_95": [
+          0.455,
+          0.781
+        ]
+      },
+      "pp": {
+        "matches": 19,
+        "rate": 0.905,
+        "ci_95": [
+          0.711,
+          0.973
+        ]
+      },
+      "matched": {
+        "matches": 16,
+        "rate": 0.889,
+        "ci_95": [
+          0.672,
+          0.969
+        ]
+      }
+    }
+  },
+  "known_limitations": [
+    "Matched-case selection (score_success=True for ALL configs) is downstream of configuration behavior: F_full's complex prompt causes prose output, which causes score_success=False. This means easier cases (where F_full produced JSON) are over-represented in matched set. This biases AGAINST finding F_full is worse, not for it.",
+    "McNemar with 2 discordant pairs cannot establish equivalence or superiority. It can only show the difference is not statistically significant.",
+    "ITT is the primary operational metric: a system that produces unevaluable output is operationally worse regardless of mechanism quality.",
+    "F_full's 9 scoring failures are caused by the LLM producing analytical prose instead of JSON when the prompt is complex. Under ITT, these count as discovery failures.",
+    "The V3 scorer is LLM-based (meta-llama/llama-3.3-70b-instruct). It has not been validated against human expert judgment.",
+    "LLM training data leakage has not been tested with post-cutoff discoveries."
+  ],
+  "corrected_conclusion": "The evidence supports: 'no demonstrated incremental value of the full architecture over simple mechanism prompting, with materially worse reliability (9/30 scoring failures under F_full vs 0/30 under C_mechanism).' This is NOT 'architecture hurts discovery' — it is 'architecture does not help and is less reliable.' Under ITT (primary operational metric), F_full scores 63% vs C_mechanism 100%.",
+  "verdict": "VERIFIED — all raw records present, hashes computed, McNemar recomputed from raw paired outcomes. However, VERIFIED means data integrity, not scientific validation. Human adjudication and temporal leakage testing remain incomplete.",
+  "package_hash": "a3ad5eb20cf9ab8ba8be278bff266f48ced8db8d45bafc4f1d55550375018e9e"
+}
