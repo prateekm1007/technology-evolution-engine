@@ -1,0 +1,32 @@
+{
+  "candidate_id": "PRED-PB-006-D_random",
+  "input_manifest_hash": "0d39841c730b5a13b1c817c477f1ba3233b24eb6aa2a2d179db52ff21cb8c5d0",
+  "hypothesis": "Lipid nanoparticles can effectively deliver modified nucleoside-containing mRNA to cells, reducing RNA immunogenicity and triggering a controlled immune response.",
+  "prediction": "The use of lipid nanoparticles to deliver modified nucleoside-containing mRNA will result in a 30-50% reduction in immune response markers (e.g., cytokine levels) compared to conventional mRNA delivery methods.",
+  "units_range": "30-50% reduction",
+  "expected_direction": "DECREASE",
+  "measurement_method": "ELISA or flow cytometry to measure cytokine levels and immune cell activation",
+  "falsification_condition": "If the use of lipid nanoparticles to deliver modified nucleoside-containing mRNA results in an increase in immune response markers or no significant difference compared to conventional mRNA delivery methods, this prediction would be falsified.",
+  "pre_registration_timestamp": "2019-12-31T23:59:59Z",
+  "novelty_check": {
+    "metric": "NOVEL_RELATION_TO_EVIDENCE",
+    "is_novel": true,
+    "term_overlap_ratio": 0.38,
+    "evidence_terms_count": 25,
+    "proposed_terms_count": 24,
+    "overlapping_terms": [
+      "cells",
+      "conventional",
+      "deliver",
+      "immune",
+      "immunogenicity",
+      "lipid",
+      "modified",
+      "mrna",
+      "nanoparticles"
+    ],
+    "deterministic": true,
+    "reproducible": true
+  },
+  "receipt_hash": "80f606d8d32c5cb1d2da5805509a1a71fd473b1871d939d18cb9861796d1c808"
+}

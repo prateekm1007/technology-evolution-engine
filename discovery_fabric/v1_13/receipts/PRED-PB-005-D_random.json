@@ -1,0 +1,26 @@
+{
+  "candidate_id": "PRED-PB-005-D_random",
+  "input_manifest_hash": "ee0003850e2ebcea3550a766e88c568712f5f3f8062f689ea033f9797a05cd3c",
+  "hypothesis": "Perovskite-based DSSCs with solid-state electrolytes will exhibit improved stability and efficiency",
+  "prediction": "Efficiency of perovskite-based DSSCs with solid-state electrolytes will exceed 15%",
+  "units_range": "11-20%",
+  "expected_direction": "INCREASE",
+  "measurement_method": "Current-voltage (I-V) characterization under standard test conditions",
+  "falsification_condition": "If the average efficiency of perovskite-based DSSCs with solid-state electrolytes, measured over 10 devices, is less than 12% after 100 hours of continuous operation under 1 sun illumination",
+  "pre_registration_timestamp": "2008-12-31T23:59:59Z",
+  "novelty_check": {
+    "metric": "NOVEL_RELATION_TO_EVIDENCE",
+    "is_novel": true,
+    "term_overlap_ratio": 0.27,
+    "evidence_terms_count": 21,
+    "proposed_terms_count": 11,
+    "overlapping_terms": [
+      "dsscs",
+      "efficiency",
+      "stability"
+    ],
+    "deterministic": true,
+    "reproducible": true
+  },
+  "receipt_hash": "a31e27553bff4c4c369b7df25b79521d4269227a8dd307dd7fbe92c71cbb92aa"
+}

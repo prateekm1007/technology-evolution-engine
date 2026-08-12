@@ -1,0 +1,28 @@
+{
+  "candidate_id": "PRED-PB-010-B_llm_only",
+  "input_manifest_hash": "ca628908e5afe7ad6d0ec743ff959b273f5751f64e3738f3cee451b1d8b01f8b",
+  "hypothesis": "Combining generative and discriminative models through adversarial training can improve output quality",
+  "prediction": "Generated images will have a higher sharpness metric",
+  "units_range": "0-1 (sharpness metric, e.g. clarity or variance of Laplacian)",
+  "expected_direction": "INCREASE",
+  "measurement_method": "Evaluate generated images using a sharpness metric (e.g. clarity or variance of Laplacian) and compare to baseline generative models",
+  "falsification_condition": "If the sharpness metric of generated images does not increase by at least 10% compared to baseline generative models after adversarial training",
+  "pre_registration_timestamp": "2013-12-31T23:59:59Z",
+  "novelty_check": {
+    "metric": "NOVEL_RELATION_TO_EVIDENCE",
+    "is_novel": true,
+    "term_overlap_ratio": 0.33,
+    "evidence_terms_count": 21,
+    "proposed_terms_count": 15,
+    "overlapping_terms": [
+      "adversarial",
+      "discriminative",
+      "generative",
+      "models",
+      "training"
+    ],
+    "deterministic": true,
+    "reproducible": true
+  },
+  "receipt_hash": "cb48ddf92f0510795c82c5345953811909f2e547b4c53a89047e428e769ebb25"
+}

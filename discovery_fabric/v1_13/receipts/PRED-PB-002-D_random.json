@@ -1,0 +1,29 @@
+{
+  "candidate_id": "PRED-PB-002-D_random",
+  "input_manifest_hash": "e3498e861da0932f6e5482dfe5b060d47f0ed6f36eb9fd3259f8c7d032790e4b",
+  "hypothesis": "Thermophilic bacteria's heat-stable DNA polymerase can be used for high-temperature DNA sequencing",
+  "prediction": "The optimal temperature for DNA sequencing using thermophilic bacteria's DNA polymerase will be higher than 50°C",
+  "units_range": "°C",
+  "expected_direction": "INCREASE",
+  "measurement_method": "Measuring the accuracy and efficiency of DNA sequencing reactions at various temperatures",
+  "falsification_condition": "If the optimal temperature for DNA sequencing using thermophilic bacteria's DNA polymerase is found to be below 40°C, or if the enzyme's activity is significantly impaired above 50°C",
+  "pre_registration_timestamp": "1984-12-31T23:59:59Z",
+  "novelty_check": {
+    "metric": "NOVEL_RELATION_TO_EVIDENCE",
+    "is_novel": true,
+    "term_overlap_ratio": 0.46,
+    "evidence_terms_count": 18,
+    "proposed_terms_count": 13,
+    "overlapping_terms": [
+      "bacteria",
+      "heat",
+      "polymerase",
+      "sequencing",
+      "stable",
+      "thermophilic"
+    ],
+    "deterministic": true,
+    "reproducible": true
+  },
+  "receipt_hash": "9a5627be2a7e25c21aa336eb401e0ed39a7d794384dccedb77d3c83878be57a8"
+}

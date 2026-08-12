@@ -1,0 +1,26 @@
+{
+  "candidate_id": "PRED-PB-007-D_random",
+  "input_manifest_hash": "94c829074c799d3e85f629378eb311d83e87c984c62d712bdf2252a34a7ec443",
+  "hypothesis": "CRISPR-Cas9 system efficiency",
+  "prediction": "Guide RNA redesign will increase editing efficiency",
+  "units_range": "0-100%",
+  "expected_direction": "INCREASE",
+  "measurement_method": "In vitro DNA editing assays with varying guide RNA designs",
+  "falsification_condition": "If guide RNA redesign does not result in a significant increase in editing efficiency (>10%) in at least 75% of tested designs",
+  "pre_registration_timestamp": "2011-12-31T23:59:59Z",
+  "novelty_check": {
+    "metric": "NOVEL_RELATION_TO_EVIDENCE",
+    "is_novel": true,
+    "term_overlap_ratio": 0.43,
+    "evidence_terms_count": 19,
+    "proposed_terms_count": 7,
+    "overlapping_terms": [
+      "crispr",
+      "guide",
+      "redesign"
+    ],
+    "deterministic": true,
+    "reproducible": true
+  },
+  "receipt_hash": "e5cd97ece763bd5eff1785133b0d142833de19c9ee195907ebdf6c5e833b35eb"
+}

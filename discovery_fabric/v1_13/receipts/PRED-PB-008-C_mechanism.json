@@ -1,0 +1,28 @@
+{
+  "candidate_id": "PRED-PB-008-C_mechanism",
+  "input_manifest_hash": "778400e5fadc07b2724df56c1eb636fbb68ab95cf17f557d23ab16831a85cd08",
+  "hypothesis": "PD-1 blockade enhances anti-tumor immune response",
+  "prediction": "PD-1 blockade will increase T-cell infiltration into tumors",
+  "units_range": "% of T-cells in tumor tissue",
+  "expected_direction": "INCREASE",
+  "measurement_method": "Immunohistochemistry (IHC) staining of tumor samples",
+  "falsification_condition": "If PD-1 blockade does not result in a significant increase in T-cell infiltration into tumors compared to control groups, as measured by IHC staining, this prediction is falsified.",
+  "pre_registration_timestamp": "2011-12-31T23:59:59Z",
+  "novelty_check": {
+    "metric": "NOVEL_RELATION_TO_EVIDENCE",
+    "is_novel": true,
+    "term_overlap_ratio": 0.5,
+    "evidence_terms_count": 19,
+    "proposed_terms_count": 10,
+    "overlapping_terms": [
+      "blockade",
+      "cell",
+      "immune",
+      "response",
+      "tumor"
+    ],
+    "deterministic": true,
+    "reproducible": true
+  },
+  "receipt_hash": "49c7f579dde38e682261afc46799f52216ebfb23d2acdf27adec6d75ec297df9"
+}

@@ -1,0 +1,28 @@
+{
+  "candidate_id": "PRED-PB-002-F_full",
+  "input_manifest_hash": "e3498e861da0932f6e5482dfe5b060d47f0ed6f36eb9fd3259f8c7d032790e4b",
+  "hypothesis": "Thermophilic DNA polymerase has improved heat stability",
+  "prediction": "Thermophilic DNA polymerase extends primers at higher temperatures",
+  "units_range": "Temperature (°C) for 50% primer extension activity",
+  "expected_direction": "INCREASE",
+  "measurement_method": "In vitro primer extension assay with temperature gradient",
+  "falsification_condition": "If the thermophilic DNA polymerase shows ≤ 5°C higher temperature optimum for 50% primer extension activity compared to a non-thermophilic DNA polymerase",
+  "pre_registration_timestamp": "1984-12-31T23:59:59Z",
+  "novelty_check": {
+    "metric": "NOVEL_RELATION_TO_EVIDENCE",
+    "is_novel": true,
+    "term_overlap_ratio": 0.56,
+    "evidence_terms_count": 18,
+    "proposed_terms_count": 9,
+    "overlapping_terms": [
+      "extends",
+      "heat",
+      "polymerase",
+      "primers",
+      "thermophilic"
+    ],
+    "deterministic": true,
+    "reproducible": true
+  },
+  "receipt_hash": "7f2cce479459c822be706d68ebcac0e2a05ed768a50ad377574cc8a8c8956cd3"
+}

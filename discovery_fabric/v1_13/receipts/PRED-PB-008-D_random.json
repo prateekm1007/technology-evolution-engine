@@ -1,0 +1,29 @@
+{
+  "candidate_id": "PRED-PB-008-D_random",
+  "input_manifest_hash": "778400e5fadc07b2724df56c1eb636fbb68ab95cf17f557d23ab16831a85cd08",
+  "hypothesis": "Combination therapy of PD-1 blockade and CTLA-4 blockade will enhance anti-tumor immune response",
+  "prediction": "Increased overall survival rate in melanoma patients",
+  "units_range": "percentage of patients showing overall survival at 2 years",
+  "expected_direction": "INCREASE",
+  "measurement_method": "Kaplan-Meier survival analysis",
+  "falsification_condition": "If the combination therapy does not show a statistically significant increase in overall survival rate compared to monotherapy with either PD-1 or CTLA-4 blockade alone (p-value > 0.05)",
+  "pre_registration_timestamp": "2011-12-31T23:59:59Z",
+  "novelty_check": {
+    "metric": "NOVEL_RELATION_TO_EVIDENCE",
+    "is_novel": true,
+    "term_overlap_ratio": 0.4,
+    "evidence_terms_count": 19,
+    "proposed_terms_count": 15,
+    "overlapping_terms": [
+      "blockade",
+      "ctla",
+      "immune",
+      "melanoma",
+      "response",
+      "tumor"
+    ],
+    "deterministic": true,
+    "reproducible": true
+  },
+  "receipt_hash": "f6e82334f6ea0acb24bda224b88fbdfa068d7f18c4271828d97cbff3980d745f"
+}

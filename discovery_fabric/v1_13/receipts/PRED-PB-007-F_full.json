@@ -1,0 +1,28 @@
+{
+  "candidate_id": "PRED-PB-007-F_full",
+  "input_manifest_hash": "94c829074c799d3e85f629378eb311d83e87c984c62d712bdf2252a34a7ec443",
+  "hypothesis": "CRISPR-Cas9 system efficiency",
+  "prediction": "Editing efficiency of CRISPR-Cas9 will be higher than that of zinc finger nucleases and TALENs",
+  "units_range": "0-100%",
+  "expected_direction": "INCREASE",
+  "measurement_method": "Compare the frequency of successful edits per cell using each system",
+  "falsification_condition": "If the editing efficiency of CRISPR-Cas9 is found to be lower than or equal to that of zinc finger nucleases and TALENs in a statistically significant number of experiments",
+  "pre_registration_timestamp": "2011-12-31T23:59:59Z",
+  "novelty_check": {
+    "metric": "NOVEL_RELATION_TO_EVIDENCE",
+    "is_novel": true,
+    "term_overlap_ratio": 0.5,
+    "evidence_terms_count": 19,
+    "proposed_terms_count": 10,
+    "overlapping_terms": [
+      "crispr",
+      "finger",
+      "nucleases",
+      "talens",
+      "zinc"
+    ],
+    "deterministic": true,
+    "reproducible": true
+  },
+  "receipt_hash": "c15fc0e4a814ba22d8ef7903eda64b04a2df2ff9db6dc85baa9335b32921f557"
+}

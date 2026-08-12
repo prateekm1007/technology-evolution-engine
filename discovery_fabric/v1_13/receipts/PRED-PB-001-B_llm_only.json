@@ -1,0 +1,30 @@
+{
+  "candidate_id": "PRED-PB-001-B_llm_only",
+  "input_manifest_hash": "fdfe4ea875da7072d01c7f838bec0d2299c2acefb3e951853dcb53b2b96538e7",
+  "hypothesis": "Intercalation compounds can be used as electrodes in rechargeable lithium batteries",
+  "prediction": "A lithium battery using LiCoO2 as the cathode and graphite as the anode will have a higher cycle life than a lithium metal battery",
+  "units_range": "cycle life (number of charge-discharge cycles) > 50",
+  "expected_direction": "INCREASE",
+  "measurement_method": "Charge-discharge cycling tests with non-aqueous electrolyte",
+  "falsification_condition": "If the cycle life of the LiCoO2-graphite battery is less than 20 cycles, or if dendrite formation is observed on the anode, the prediction is falsified",
+  "pre_registration_timestamp": "1990-12-31T23:59:59Z",
+  "novelty_check": {
+    "metric": "NOVEL_RELATION_TO_EVIDENCE",
+    "is_novel": true,
+    "term_overlap_ratio": 0.41,
+    "evidence_terms_count": 23,
+    "proposed_terms_count": 17,
+    "overlapping_terms": [
+      "batteries",
+      "compounds",
+      "graphite",
+      "intercalation",
+      "lithium",
+      "metal",
+      "rechargeable"
+    ],
+    "deterministic": true,
+    "reproducible": true
+  },
+  "receipt_hash": "9bddcae551ac3c7befe3bddcd6c2ba977833d370740f19858e1bbfc4207aecc9"
+}

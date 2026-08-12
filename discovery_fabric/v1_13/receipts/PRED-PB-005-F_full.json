@@ -1,0 +1,28 @@
+{
+  "candidate_id": "PRED-PB-005-F_full",
+  "input_manifest_hash": "ee0003850e2ebcea3550a766e88c568712f5f3f8062f689ea033f9797a05cd3c",
+  "hypothesis": "Perovskite-sensitized solar cells with solid-state electrolytes will exhibit improved efficiency and stability",
+  "prediction": "Efficiency increase of 2-5% absolute",
+  "units_range": "Percentage (%)",
+  "expected_direction": "INCREASE",
+  "measurement_method": "Current-voltage (I-V) curve measurements under standard test conditions",
+  "falsification_condition": "If the measured efficiency of perovskite-sensitized solar cells with solid-state electrolytes remains below 13% after 1000 hours of accelerated testing under standard conditions",
+  "pre_registration_timestamp": "2008-12-31T23:59:59Z",
+  "novelty_check": {
+    "metric": "NOVEL_RELATION_TO_EVIDENCE",
+    "is_novel": true,
+    "term_overlap_ratio": 0.38,
+    "evidence_terms_count": 21,
+    "proposed_terms_count": 13,
+    "overlapping_terms": [
+      "cells",
+      "efficiency",
+      "sensitized",
+      "solar",
+      "stability"
+    ],
+    "deterministic": true,
+    "reproducible": true
+  },
+  "receipt_hash": "79c9e706cba38d1f35fd2396c06384b25ec5ce9dcb4e2b6629e7a50618f5b3ee"
+}

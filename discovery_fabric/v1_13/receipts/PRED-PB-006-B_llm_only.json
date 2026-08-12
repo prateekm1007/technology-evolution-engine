@@ -1,0 +1,31 @@
+{
+  "candidate_id": "PRED-PB-006-B_llm_only",
+  "input_manifest_hash": "0d39841c730b5a13b1c817c477f1ba3233b24eb6aa2a2d179db52ff21cb8c5d0",
+  "hypothesis": "Lipid nanoparticle-delivered modified nucleoside mRNA vaccines can reduce immune responses while maintaining vaccine efficacy",
+  "prediction": "The geometric mean titer of neutralizing antibodies will be higher in subjects receiving lipid nanoparticle-delivered modified nucleoside mRNA vaccines compared to conventional vaccines",
+  "units_range": "1-1000",
+  "expected_direction": "INCREASE",
+  "measurement_method": "ELISA or similar serological assays",
+  "falsification_condition": "If the geometric mean titer of neutralizing antibodies is not significantly higher (p < 0.05) in the lipid nanoparticle-delivered modified nucleoside mRNA vaccine group compared to the conventional vaccine group in a randomized controlled trial with at least 100 participants per arm",
+  "pre_registration_timestamp": "2019-12-31T23:59:59Z",
+  "novelty_check": {
+    "metric": "NOVEL_RELATION_TO_EVIDENCE",
+    "is_novel": true,
+    "term_overlap_ratio": 0.35,
+    "evidence_terms_count": 25,
+    "proposed_terms_count": 23,
+    "overlapping_terms": [
+      "conventional",
+      "immune",
+      "lipid",
+      "modified",
+      "mrna",
+      "reduce",
+      "responses",
+      "vaccines"
+    ],
+    "deterministic": true,
+    "reproducible": true
+  },
+  "receipt_hash": "c17688b30a7558b2eb48a548673b3c345ac2ae4166fcf801e396dc37d7d2ce4c"
+}

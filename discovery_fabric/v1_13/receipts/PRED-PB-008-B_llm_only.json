@@ -1,0 +1,28 @@
+{
+  "candidate_id": "PRED-PB-008-B_llm_only",
+  "input_manifest_hash": "778400e5fadc07b2724df56c1eb636fbb68ab95cf17f557d23ab16831a85cd08",
+  "hypothesis": "PD-1 blockade will enhance anti-tumor immune response",
+  "prediction": "Increased T-cell activation and tumor infiltration",
+  "units_range": "% of T-cells activated, tumor infiltrating T-cells per mm^3",
+  "expected_direction": "INCREASE",
+  "measurement_method": "Flow cytometry and immunohistochemistry",
+  "falsification_condition": "If PD-1 blockade does not result in a significant increase in T-cell activation and tumor infiltration in at least 30% of treated patients",
+  "pre_registration_timestamp": "2011-12-31T23:59:59Z",
+  "novelty_check": {
+    "metric": "NOVEL_RELATION_TO_EVIDENCE",
+    "is_novel": true,
+    "term_overlap_ratio": 0.5,
+    "evidence_terms_count": 19,
+    "proposed_terms_count": 10,
+    "overlapping_terms": [
+      "blockade",
+      "cell",
+      "immune",
+      "response",
+      "tumor"
+    ],
+    "deterministic": true,
+    "reproducible": true
+  },
+  "receipt_hash": "0343d319adba63fea96b551b4986916191095e4fe3f7906918d588c6bc0e05e2"
+}

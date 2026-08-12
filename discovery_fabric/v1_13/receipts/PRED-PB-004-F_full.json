@@ -1,0 +1,31 @@
+{
+  "candidate_id": "PRED-PB-004-F_full",
+  "input_manifest_hash": "73d769508b3f10ad2e13c119ea4b7a50a8813c1c06b9f2ed0c819eba10d42062",
+  "hypothesis": "Deeper CNNs with ReLU activation and dropout can outperform SVMs on the ImageNet dataset",
+  "prediction": "Top-1 error rate on ImageNet",
+  "units_range": "15-30%",
+  "expected_direction": "DECREASE",
+  "measurement_method": "Evaluate the top-1 error rate on the ImageNet validation set",
+  "falsification_condition": "If the top-1 error rate of the deepest CNN with ReLU activation and dropout is not significantly lower than 26% (e.g., >25%) on the ImageNet validation set",
+  "pre_registration_timestamp": "2011-12-31T23:59:59Z",
+  "novelty_check": {
+    "metric": "NOVEL_RELATION_TO_EVIDENCE",
+    "is_novel": false,
+    "term_overlap_ratio": 0.73,
+    "evidence_terms_count": 25,
+    "proposed_terms_count": 11,
+    "overlapping_terms": [
+      "activation",
+      "cnns",
+      "dataset",
+      "dropout",
+      "error",
+      "imagenet",
+      "relu",
+      "svms"
+    ],
+    "deterministic": true,
+    "reproducible": true
+  },
+  "receipt_hash": "2a8316241683bf69e43374f5a5eb80d4d5eee4a593373e42a8cb7977a1e30617"
+}

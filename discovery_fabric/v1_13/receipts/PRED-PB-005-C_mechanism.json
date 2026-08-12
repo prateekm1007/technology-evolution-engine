@@ -1,0 +1,27 @@
+{
+  "candidate_id": "PRED-PB-005-C_mechanism",
+  "input_manifest_hash": "ee0003850e2ebcea3550a766e88c568712f5f3f8062f689ea033f9797a05cd3c",
+  "hypothesis": "Perovskite-based DSSCs can achieve higher efficiency and stability than traditional DSSCs",
+  "prediction": "Perovskite-based DSSCs with a solid-state electrolyte will have an efficiency of at least 15%",
+  "units_range": "11-20%",
+  "expected_direction": "INCREASE",
+  "measurement_method": "Standard solar cell efficiency measurement protocols (e.g. IEC 60904-1)",
+  "falsification_condition": "If the efficiency of perovskite-based DSSCs with a solid-state electrolyte is consistently measured to be below 12% in multiple independent experiments, this prediction is falsified.",
+  "pre_registration_timestamp": "2008-12-31T23:59:59Z",
+  "novelty_check": {
+    "metric": "NOVEL_RELATION_TO_EVIDENCE",
+    "is_novel": true,
+    "term_overlap_ratio": 0.31,
+    "evidence_terms_count": 21,
+    "proposed_terms_count": 13,
+    "overlapping_terms": [
+      "dsscs",
+      "efficiency",
+      "electrolyte",
+      "stability"
+    ],
+    "deterministic": true,
+    "reproducible": true
+  },
+  "receipt_hash": "cad2abd0f92917cead3fc8bfddf52650f2918aa6e4db827c708411563c7c6431"
+}

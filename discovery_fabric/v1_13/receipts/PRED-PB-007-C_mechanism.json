@@ -1,0 +1,24 @@
+{
+  "candidate_id": "PRED-PB-007-C_mechanism",
+  "input_manifest_hash": "94c829074c799d3e85f629378eb311d83e87c984c62d712bdf2252a34a7ec443",
+  "hypothesis": "The specificity of DNA cleavage is determined by the guide RNA sequence",
+  "prediction": "A mismatch between the guide RNA sequence and the target DNA sequence will result in reduced cleavage efficiency",
+  "units_range": "0-100% cleavage efficiency",
+  "expected_direction": "DECREASE",
+  "measurement_method": "In vitro DNA cleavage assays using Cas9 and guide RNAs with varying degrees of mismatch",
+  "falsification_condition": "If cleavage efficiency remains high (>80%) despite multiple mismatches between the guide RNA and target DNA sequences",
+  "pre_registration_timestamp": "2011-12-31T23:59:59Z",
+  "novelty_check": {
+    "metric": "NOVEL_RELATION_TO_EVIDENCE",
+    "is_novel": true,
+    "term_overlap_ratio": 0.09,
+    "evidence_terms_count": 19,
+    "proposed_terms_count": 11,
+    "overlapping_terms": [
+      "guide"
+    ],
+    "deterministic": true,
+    "reproducible": true
+  },
+  "receipt_hash": "fa3ed11e3ffdabee63ae4ac190871feb772edca68302c05d79019fd380ec71b4"
+}

@@ -1,0 +1,29 @@
+{
+  "candidate_id": "PRED-PB-002-B_llm_only",
+  "input_manifest_hash": "e3498e861da0932f6e5482dfe5b060d47f0ed6f36eb9fd3259f8c7d032790e4b",
+  "hypothesis": "Thermophilic bacteria's heat-stable enzymes can be used for DNA sequencing at high temperatures",
+  "prediction": "Successful DNA sequencing using thermophilic bacteria's heat-stable enzymes at temperatures above 70°C",
+  "units_range": "Temperature (°C)",
+  "expected_direction": "INCREASE",
+  "measurement_method": "DNA sequencing success rate at varying temperatures",
+  "falsification_condition": "Failure to obtain accurate DNA sequences using thermophilic bacteria's heat-stable enzymes at temperatures above 70°C",
+  "pre_registration_timestamp": "1984-12-31T23:59:59Z",
+  "novelty_check": {
+    "metric": "NOVEL_RELATION_TO_EVIDENCE",
+    "is_novel": true,
+    "term_overlap_ratio": 0.5,
+    "evidence_terms_count": 18,
+    "proposed_terms_count": 12,
+    "overlapping_terms": [
+      "bacteria",
+      "enzymes",
+      "heat",
+      "sequencing",
+      "stable",
+      "thermophilic"
+    ],
+    "deterministic": true,
+    "reproducible": true
+  },
+  "receipt_hash": "7adac30d1cf689723313a16fb427c9ece73f5264bad3750503acfdf13092da79"
+}

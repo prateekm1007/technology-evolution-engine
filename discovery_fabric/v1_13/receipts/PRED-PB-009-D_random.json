@@ -1,0 +1,30 @@
+{
+  "candidate_id": "PRED-PB-009-D_random",
+  "input_manifest_hash": "f210167ed2220887aa94e3df9d9b3bd0b554fbd21e3b7fff9a9bfa1c8add7eeb",
+  "hypothesis": "Reprogramming of somatic cells to a pluripotent state",
+  "prediction": "Introduction of the four known stem cell regulators (Oct4, Sox2, Klf4, c-Myc) into somatic cells will induce pluripotency in a subset of cells",
+  "units_range": "0-100% of cells",
+  "expected_direction": "INCREASE",
+  "measurement_method": "Assay for pluripotency markers (e.g. SSEA-1, SSEA-3, SSEA-4, TRA-1-60, TRA-1-81) and ability to differentiate into multiple cell types",
+  "falsification_condition": "If less than 1% of treated somatic cells exhibit pluripotency markers and/or fail to differentiate into multiple cell types, the prediction is falsified",
+  "pre_registration_timestamp": "2005-12-31T23:59:59Z",
+  "novelty_check": {
+    "metric": "NOVEL_RELATION_TO_EVIDENCE",
+    "is_novel": true,
+    "term_overlap_ratio": 0.5,
+    "evidence_terms_count": 23,
+    "proposed_terms_count": 14,
+    "overlapping_terms": [
+      "cell",
+      "cells",
+      "four",
+      "known",
+      "pluripotent",
+      "regulators",
+      "stem"
+    ],
+    "deterministic": true,
+    "reproducible": true
+  },
+  "receipt_hash": "2d5fde643ad5bbfb5445b4fece0c2a566879d150eaee7c667868c3f0be9319c4"
+}

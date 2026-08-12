@@ -1,0 +1,29 @@
+{
+  "candidate_id": "PRED-PB-010-D_random",
+  "input_manifest_hash": "ca628908e5afe7ad6d0ec743ff959b273f5751f64e3738f3cee451b1d8b01f8b",
+  "hypothesis": "Adversarial training can improve generative models",
+  "prediction": "Generative models trained with adversarial loss will produce sharper outputs",
+  "units_range": "Peak Signal-to-Noise Ratio (PSNR) between 20-40 dB",
+  "expected_direction": "INCREASE",
+  "measurement_method": "Evaluate generated images using PSNR metric",
+  "falsification_condition": "If the average PSNR of generated images does not increase by at least 2 dB after applying adversarial training to a generative model, this prediction is falsified.",
+  "pre_registration_timestamp": "2013-12-31T23:59:59Z",
+  "novelty_check": {
+    "metric": "NOVEL_RELATION_TO_EVIDENCE",
+    "is_novel": false,
+    "term_overlap_ratio": 0.6,
+    "evidence_terms_count": 21,
+    "proposed_terms_count": 10,
+    "overlapping_terms": [
+      "adversarial",
+      "generative",
+      "models",
+      "outputs",
+      "produce",
+      "training"
+    ],
+    "deterministic": true,
+    "reproducible": true
+  },
+  "receipt_hash": "40570439e24c78a23dbe7f75ec69529d1f0c09611cbcdf1c940a45f26a903c49"
+}

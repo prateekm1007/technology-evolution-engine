@@ -1,0 +1,29 @@
+{
+  "candidate_id": "PRED-PB-003-C_mechanism",
+  "input_manifest_hash": "90d943fd8941b8d8bba675639a92e03924b4acf44ba31a93aae2d8a368f1c4cd",
+  "hypothesis": "Mechanical cleavage of graphite can produce stable 2D carbon crystals",
+  "prediction": "Isolation of individual graphene layers",
+  "units_range": "Number of layers",
+  "expected_direction": "DECREASE",
+  "measurement_method": "Atomic force microscopy or transmission electron microscopy",
+  "falsification_condition": "If repeated attempts at mechanical cleavage of graphite result in the production of only multi-layered or amorphous carbon structures, with no evidence of isolated individual layers.",
+  "pre_registration_timestamp": "2003-12-31T23:59:59Z",
+  "novelty_check": {
+    "metric": "NOVEL_RELATION_TO_EVIDENCE",
+    "is_novel": true,
+    "term_overlap_ratio": 0.55,
+    "evidence_terms_count": 16,
+    "proposed_terms_count": 11,
+    "overlapping_terms": [
+      "carbon",
+      "cleavage",
+      "crystals",
+      "graphene",
+      "graphite",
+      "mechanical"
+    ],
+    "deterministic": true,
+    "reproducible": true
+  },
+  "receipt_hash": "97d3ffa75e76d2767ace4cac97840d8179ba2856c5dcbfba3fd11bec1c18cbd1"
+}

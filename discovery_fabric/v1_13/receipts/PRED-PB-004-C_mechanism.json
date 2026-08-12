@@ -1,0 +1,26 @@
+{
+  "candidate_id": "PRED-PB-004-C_mechanism",
+  "input_manifest_hash": "73d769508b3f10ad2e13c119ea4b7a50a8813c1c06b9f2ed0c819eba10d42062",
+  "hypothesis": "Deeper CNNs can learn more complex features and improve performance on image classification tasks",
+  "prediction": "Error rate on ImageNet will decrease by at least 5%",
+  "units_range": "20-30%",
+  "expected_direction": "DECREASE",
+  "measurement_method": "Evaluate the error rate of a deeper CNN on the ImageNet validation set",
+  "falsification_condition": "If a deeper CNN (e.g. 5+ layers) trained with ReLU activation and dropout on the ImageNet dataset does not achieve an error rate lower than 23%",
+  "pre_registration_timestamp": "2011-12-31T23:59:59Z",
+  "novelty_check": {
+    "metric": "NOVEL_RELATION_TO_EVIDENCE",
+    "is_novel": true,
+    "term_overlap_ratio": 0.2,
+    "evidence_terms_count": 25,
+    "proposed_terms_count": 15,
+    "overlapping_terms": [
+      "cnns",
+      "error",
+      "imagenet"
+    ],
+    "deterministic": true,
+    "reproducible": true
+  },
+  "receipt_hash": "71ecd5199845a5ebbadb60e45f6261535b53b3be79f7395c44293f74030f65ca"
+}

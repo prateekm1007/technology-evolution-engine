@@ -1,0 +1,28 @@
+{
+  "candidate_id": "PRED-PB-007-B_llm_only",
+  "input_manifest_hash": "94c829074c799d3e85f629378eb311d83e87c984c62d712bdf2252a34a7ec443",
+  "hypothesis": "CRISPR-Cas9 system can be repurposed for genome editing",
+  "prediction": "Efficiency of genome editing using CRISPR-Cas9 will be higher than using zinc finger nucleases or TALENs",
+  "units_range": "0-100%",
+  "expected_direction": "INCREASE",
+  "measurement_method": "Compare the frequency of successful edits per cell using each method",
+  "falsification_condition": "If CRISPR-Cas9 editing efficiency is consistently lower than or equal to that of zinc finger nucleases or TALENs in multiple cell types",
+  "pre_registration_timestamp": "2011-12-31T23:59:59Z",
+  "novelty_check": {
+    "metric": "NOVEL_RELATION_TO_EVIDENCE",
+    "is_novel": true,
+    "term_overlap_ratio": 0.38,
+    "evidence_terms_count": 19,
+    "proposed_terms_count": 13,
+    "overlapping_terms": [
+      "crispr",
+      "finger",
+      "nucleases",
+      "talens",
+      "zinc"
+    ],
+    "deterministic": true,
+    "reproducible": true
+  },
+  "receipt_hash": "0ddffeb1b7af4bba2582bbb4f0c0fa8122b3a3ca419517b112e099b26830d590"
+}

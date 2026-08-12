@@ -1,0 +1,27 @@
+{
+  "candidate_id": "PRED-PB-001-C_mechanism",
+  "input_manifest_hash": "fdfe4ea875da7072d01c7f838bec0d2299c2acefb3e951853dcb53b2b96538e7",
+  "hypothesis": "Lithium intercalation into a host material can enable safe and efficient energy storage",
+  "prediction": "A lithium intercalation compound with a layered structure will exhibit a reversible capacity of at least 100 mAh/g",
+  "units_range": "mAh/g",
+  "expected_direction": "INCREASE",
+  "measurement_method": "Galvanostatic discharge and charge cycling",
+  "falsification_condition": "If the reversible capacity is consistently below 50 mAh/g after 10 charge-discharge cycles, the prediction is falsified",
+  "pre_registration_timestamp": "1990-12-31T23:59:59Z",
+  "novelty_check": {
+    "metric": "NOVEL_RELATION_TO_EVIDENCE",
+    "is_novel": true,
+    "term_overlap_ratio": 0.25,
+    "evidence_terms_count": 23,
+    "proposed_terms_count": 16,
+    "overlapping_terms": [
+      "energy",
+      "intercalation",
+      "lithium",
+      "safe"
+    ],
+    "deterministic": true,
+    "reproducible": true
+  },
+  "receipt_hash": "8010a4bc3cc2fc1c15e6315c264e52528ec6b7d57f7334d4d8b326b30700d2ae"
+}

@@ -1,0 +1,122 @@
+[
+  {
+    "id": "PB-001",
+    "name": "Lithium-ion battery",
+    "cutoff_date": "1990-12-31T23:59:59Z",
+    "pre_outcome_evidence": "Intercalation compounds can reversibly insert lithium ions. LiCoO2 has been shown to intercalate lithium. Graphite has been shown to intercalate lithium. Lithium metal batteries are unsafe due to dendrite formation. Non-aqueous electrolytes exist. The challenge is safe rechargeable high-energy batteries.",
+    "outcome": {
+      "value": 500,
+      "direction": "INCREASE",
+      "measurement_date": "1991-06-01T00:00:00Z",
+      "source": "Sony commercialization 1991 — LiCoO2+graphite battery achieves >500 cycles"
+    }
+  },
+  {
+    "id": "PB-002",
+    "name": "PCR",
+    "cutoff_date": "1984-12-31T23:59:59Z",
+    "pre_outcome_evidence": "DNA polymerase extends primers. Heat denatures DNA. Thermophilic bacteria produce heat-stable enzymes. Oligonucleotide synthesis allows custom primers. DNA sequencing uses primer extension.",
+    "outcome": {
+      "value": 1000000,
+      "direction": "INCREASE",
+      "measurement_date": "1985-12-01T00:00:00Z",
+      "source": "Saiki et al. 1985 — PCR achieves million-fold amplification"
+    }
+  },
+  {
+    "id": "PB-003",
+    "name": "Graphene",
+    "cutoff_date": "2003-12-31T23:59:59Z",
+    "pre_outcome_evidence": "Graphite is layered carbon. Theory says 2D crystals are thermodynamically unstable. Carbon nanotubes (rolled graphene) exist. Mechanical cleavage of layered materials is known.",
+    "outcome": {
+      "value": "YES",
+      "direction": "BINARY",
+      "measurement_date": "2004-10-01T00:00:00Z",
+      "source": "Novoselov & Geim 2004 — single-layer graphene isolated and characterized"
+    }
+  },
+  {
+    "id": "PB-004",
+    "name": "Deep learning AlexNet",
+    "cutoff_date": "2011-12-31T23:59:59Z",
+    "pre_outcome_evidence": "CNNs exist but are shallow. GPUs exist for parallel computing. ImageNet dataset exists with 1M+ labeled images. ReLU activation avoids vanishing gradients. Dropout prevents overfitting. SVMs dominate vision benchmarks at ~26% error.",
+    "outcome": {
+      "value": 15.3,
+      "direction": "DECREASE",
+      "measurement_date": "2012-09-01T00:00:00Z",
+      "source": "Krizhevsky et al. 2012 — AlexNet achieves 15.3% top-5 error vs 26.2% next best"
+    }
+  },
+  {
+    "id": "PB-005",
+    "name": "Perovskite solar cells",
+    "cutoff_date": "2008-12-31T23:59:59Z",
+    "pre_outcome_evidence": "Dye-sensitized solar cells exist at ~11% efficiency. Organic-inorganic halide perovskites are known materials. Perovskites have been used as sensitizers in DSSCs. Liquid electrolyte limits DSSC stability.",
+    "outcome": {
+      "value": 3.8,
+      "direction": "INCREASE",
+      "measurement_date": "2009-05-01T00:00:00Z",
+      "source": "Kojima et al. 2009 — perovskite-sensitized cell achieves 3.8% efficiency"
+    }
+  },
+  {
+    "id": "PB-006",
+    "name": "mRNA vaccines",
+    "cutoff_date": "2019-12-31T23:59:59Z",
+    "pre_outcome_evidence": "Modified nucleosides reduce RNA immunogenicity. Lipid nanoparticles deliver nucleic acids to cells. Viral spike proteins trigger immune responses. Conventional vaccines have speed and scalability limitations. mRNA is considered unstable for vaccines.",
+    "outcome": {
+      "value": 95,
+      "direction": "INCREASE",
+      "measurement_date": "2020-11-01T00:00:00Z",
+      "source": "Pfizer-BioNTech Phase 3 trial — 95% efficacy for mRNA COVID-19 vaccine"
+    }
+  },
+  {
+    "id": "PB-007",
+    "name": "CRISPR gene editing",
+    "cutoff_date": "2011-12-31T23:59:59Z",
+    "pre_outcome_evidence": "Bacterial CRISPR provides adaptive immunity. Cas9 is an RNA-guided DNA nuclease. Guide RNAs direct proteins to specific sequences. Zinc finger nucleases and TALENs can cut specific DNA but are hard to redesign.",
+    "outcome": {
+      "value": "YES",
+      "direction": "BINARY",
+      "measurement_date": "2012-08-01T00:00:00Z",
+      "source": "Jinek et al. 2012 — Cas9+guide RNA achieves programmable DNA cleavage in human cells"
+    }
+  },
+  {
+    "id": "PB-008",
+    "name": "Checkpoint immunotherapy",
+    "cutoff_date": "2011-12-31T23:59:59Z",
+    "pre_outcome_evidence": "PD-1 is a T-cell receptor that suppresses immune response. CTLA-4 blockade shows success in melanoma. Cancer vaccines that activate immune response have failed. Tumor microenvironment suppresses T-cells.",
+    "outcome": {
+      "value": "YES",
+      "direction": "BINARY",
+      "measurement_date": "2012-12-01T00:00:00Z",
+      "source": "Brahmer et al. 2012 — anti-PD-1 antibody shows clinical response in cancer patients"
+    }
+  },
+  {
+    "id": "PB-009",
+    "name": "Induced pluripotent stem cells",
+    "cutoff_date": "2005-12-31T23:59:59Z",
+    "pre_outcome_evidence": "Embryonic stem cells are pluripotent. Cellular differentiation is considered largely irreversible. Nuclear transfer (cloning) can reprogram cells but requires egg cytoplasm. Transcription factors control cell fate. Four factors (Oct4, Sox2, Klf4, c-Myc) are known stem cell regulators.",
+    "outcome": {
+      "value": "YES",
+      "direction": "BINARY",
+      "measurement_date": "2006-08-01T00:00:00Z",
+      "source": "Takahashi & Yamanaka 2006 — four transcription factors reprogram somatic cells to pluripotency"
+    }
+  },
+  {
+    "id": "PB-010",
+    "name": "GANs",
+    "cutoff_date": "2013-12-31T23:59:59Z",
+    "pre_outcome_evidence": "Generative models exist but produce blurry outputs. Discriminative models classify data well. Adversarial training is a concept from game theory. Neural networks can approximate complex distributions.",
+    "outcome": {
+      "value": "YES",
+      "direction": "BINARY",
+      "measurement_date": "2014-06-01T00:00:00Z",
+      "source": "Goodfellow et al. 2014 — GAN generates realistic synthetic images via adversarial training"
+    }
+  }
+]

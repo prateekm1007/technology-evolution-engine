@@ -1,0 +1,36 @@
+{
+  "candidate_id": "PRED-PB-001-D_random",
+  "input_manifest_hash": "fdfe4ea875da7072d01c7f838bec0d2299c2acefb3e951853dcb53b2b96538e7",
+  "hypothesis": "Lithium intercalation compounds can be used to create safe rechargeable high-energy batteries",
+  "prediction": "A lithium-ion battery using a graphite or LiCoO2 intercalation compound as the anode and a non-aqueous electrolyte will have a higher cycling stability and lower risk of dendrite formation compared to a lithium metal battery",
+  "units_range": "Cycling stability: 500-1000 cycles, Dendrite formation risk: 0-10%",
+  "expected_direction": "INCREASE",
+  "measurement_method": "Cycling stability will be measured by charging and discharging the battery over multiple cycles and monitoring its capacity retention. Dendrite formation risk will be assessed by analyzing the battery's morphology using scanning electron microscopy (SEM) and energy-dispersive spectroscopy (EDS)",
+  "falsification_condition": "If the lithium-ion battery using a graphite or LiCoO2 intercalation compound as the anode and a non-aqueous electrolyte shows a cycling stability of less than 200 cycles or a dendrite formation risk greater than 50%, the prediction will be considered falsified.",
+  "pre_registration_timestamp": "1990-12-31T23:59:59Z",
+  "novelty_check": {
+    "metric": "NOVEL_RELATION_TO_EVIDENCE",
+    "is_novel": true,
+    "term_overlap_ratio": 0.5,
+    "evidence_terms_count": 23,
+    "proposed_terms_count": 26,
+    "overlapping_terms": [
+      "aqueous",
+      "batteries",
+      "compounds",
+      "dendrite",
+      "energy",
+      "formation",
+      "graphite",
+      "high",
+      "intercalation",
+      "lithium",
+      "metal",
+      "rechargeable",
+      "safe"
+    ],
+    "deterministic": true,
+    "reproducible": true
+  },
+  "receipt_hash": "99ccd63ac6c331d7f6910e01d012229973da59ebdd639a4ecb8aa7213aa63140"
+}

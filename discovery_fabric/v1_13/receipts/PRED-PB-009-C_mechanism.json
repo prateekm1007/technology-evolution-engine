@@ -1,0 +1,33 @@
+{
+  "candidate_id": "PRED-PB-009-C_mechanism",
+  "input_manifest_hash": "f210167ed2220887aa94e3df9d9b3bd0b554fbd21e3b7fff9a9bfa1c8add7eeb",
+  "hypothesis": "Transcription factors can reprogram somatic cells to a pluripotent state",
+  "prediction": "Introduction of the four known stem cell regulators (Oct4, Sox2, Klf4, c-Myc) into somatic cells will induce pluripotency",
+  "units_range": "0-100% of cells expressing pluripotency markers",
+  "expected_direction": "INCREASE",
+  "measurement_method": "Flow cytometry or immunofluorescence to detect expression of pluripotency markers (e.g. Oct4, Nanog, SSEA-1)",
+  "falsification_condition": "If less than 1% of cells express pluripotency markers after introduction of the four transcription factors, the prediction is falsified",
+  "pre_registration_timestamp": "2005-12-31T23:59:59Z",
+  "novelty_check": {
+    "metric": "NOVEL_RELATION_TO_EVIDENCE",
+    "is_novel": false,
+    "term_overlap_ratio": 0.67,
+    "evidence_terms_count": 23,
+    "proposed_terms_count": 15,
+    "overlapping_terms": [
+      "cell",
+      "cells",
+      "factors",
+      "four",
+      "known",
+      "pluripotent",
+      "regulators",
+      "reprogram",
+      "stem",
+      "transcription"
+    ],
+    "deterministic": true,
+    "reproducible": true
+  },
+  "receipt_hash": "1835a52cbc1e49d5a7dc733773a427ce1eb756eb9ae34eb7fe0ff3cfb2f260d5"
+}

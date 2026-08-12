@@ -1,0 +1,28 @@
+{
+  "candidate_id": "PRED-PB-004-B_llm_only",
+  "input_manifest_hash": "73d769508b3f10ad2e13c119ea4b7a50a8813c1c06b9f2ed0c819eba10d42062",
+  "hypothesis": "Deeper neural networks can learn more complex features and improve image classification performance",
+  "prediction": "A deep neural network with 5+ layers, trained on ImageNet with ReLU activation and dropout, will achieve an error rate lower than 20%",
+  "units_range": "Top-1 error rate (%)",
+  "expected_direction": "DECREASE",
+  "measurement_method": "Evaluate the model on the ImageNet validation set",
+  "falsification_condition": "If the error rate of the deep neural network is not significantly lower than 26% (e.g., p-value > 0.05 in a paired t-test), or if the model fails to converge due to vanishing gradients or overfitting",
+  "pre_registration_timestamp": "2011-12-31T23:59:59Z",
+  "novelty_check": {
+    "metric": "NOVEL_RELATION_TO_EVIDENCE",
+    "is_novel": true,
+    "term_overlap_ratio": 0.22,
+    "evidence_terms_count": 25,
+    "proposed_terms_count": 23,
+    "overlapping_terms": [
+      "activation",
+      "dropout",
+      "error",
+      "imagenet",
+      "relu"
+    ],
+    "deterministic": true,
+    "reproducible": true
+  },
+  "receipt_hash": "2bc68bcb3d559cf80a106430db039264f97f5fadf8e4d37d3533e3627f4ccef2"
+}

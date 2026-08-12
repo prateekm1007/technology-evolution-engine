@@ -1,0 +1,27 @@
+{
+  "candidate_id": "PRED-PB-001-F_full",
+  "input_manifest_hash": "fdfe4ea875da7072d01c7f838bec0d2299c2acefb3e951853dcb53b2b96538e7",
+  "hypothesis": "Graphite-LiCoO2 lithium-ion battery with non-aqueous electrolyte",
+  "prediction": "Higher cycle life and energy density",
+  "units_range": "Cycle life: 500-1000 cycles, Energy density: 100-200 Wh/kg",
+  "expected_direction": "INCREASE",
+  "measurement_method": "Galvanostatic charge-discharge cycling and energy density measurements",
+  "falsification_condition": "If the battery exhibits a cycle life of less than 200 cycles or an energy density of less than 50 Wh/kg after 100 cycles",
+  "pre_registration_timestamp": "1990-12-31T23:59:59Z",
+  "novelty_check": {
+    "metric": "NOVEL_RELATION_TO_EVIDENCE",
+    "is_novel": true,
+    "term_overlap_ratio": 0.4,
+    "evidence_terms_count": 23,
+    "proposed_terms_count": 10,
+    "overlapping_terms": [
+      "aqueous",
+      "energy",
+      "graphite",
+      "lithium"
+    ],
+    "deterministic": true,
+    "reproducible": true
+  },
+  "receipt_hash": "46758b19e30a9d0a36f62f8a4d6b84f6bfa4603c77a65f7d12ed386f351dfd74"
+}

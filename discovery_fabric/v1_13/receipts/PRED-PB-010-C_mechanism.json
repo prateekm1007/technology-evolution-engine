@@ -1,0 +1,28 @@
+{
+  "candidate_id": "PRED-PB-010-C_mechanism",
+  "input_manifest_hash": "ca628908e5afe7ad6d0ec743ff959b273f5751f64e3738f3cee451b1d8b01f8b",
+  "hypothesis": "Adversarial training of generative models against discriminative models improves output quality",
+  "prediction": "Generated images will have a higher sharpness metric",
+  "units_range": "0-1 (sharpness metric, e.g. clarity or variance of Laplacian)",
+  "expected_direction": "INCREASE",
+  "measurement_method": "Evaluate generated images using a sharpness metric (e.g. clarity or variance of Laplacian) and compare to baseline generative models without adversarial training",
+  "falsification_condition": "If the sharpness metric of generated images does not increase by at least 10% compared to the baseline, or if the generated images are not visually more realistic and detailed, then the prediction is falsified.",
+  "pre_registration_timestamp": "2013-12-31T23:59:59Z",
+  "novelty_check": {
+    "metric": "NOVEL_RELATION_TO_EVIDENCE",
+    "is_novel": true,
+    "term_overlap_ratio": 0.36,
+    "evidence_terms_count": 21,
+    "proposed_terms_count": 14,
+    "overlapping_terms": [
+      "adversarial",
+      "discriminative",
+      "generative",
+      "models",
+      "training"
+    ],
+    "deterministic": true,
+    "reproducible": true
+  },
+  "receipt_hash": "17ee53d695c8415f74df0d8cc88f3c686358e6e588d79b52abe6ee4022a61c04"
+}

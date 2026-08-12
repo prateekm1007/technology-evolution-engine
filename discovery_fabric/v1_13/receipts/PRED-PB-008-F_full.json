@@ -1,0 +1,27 @@
+{
+  "candidate_id": "PRED-PB-008-F_full",
+  "input_manifest_hash": "778400e5fadc07b2724df56c1eb636fbb68ab95cf17f557d23ab16831a85cd08",
+  "hypothesis": "PD-1 blockade enhances anti-tumor immune responses",
+  "prediction": "Tumor-infiltrating T-cell density increases by 30-50% after PD-1 blockade therapy",
+  "units_range": "cells/mm^2",
+  "expected_direction": "INCREASE",
+  "measurement_method": "Immunohistochemistry (IHC) analysis of tumor biopsies",
+  "falsification_condition": "If PD-1 blockade therapy fails to increase tumor-infiltrating T-cell density by at least 15% in 80% of treated patients",
+  "pre_registration_timestamp": "2011-12-31T23:59:59Z",
+  "novelty_check": {
+    "metric": "NOVEL_RELATION_TO_EVIDENCE",
+    "is_novel": true,
+    "term_overlap_ratio": 0.33,
+    "evidence_terms_count": 19,
+    "proposed_terms_count": 12,
+    "overlapping_terms": [
+      "blockade",
+      "cell",
+      "immune",
+      "tumor"
+    ],
+    "deterministic": true,
+    "reproducible": true
+  },
+  "receipt_hash": "1f2416779a0c2433ed0b94d1f94e12061c6e52f510673b64d7aa3c926d73a82f"
+}

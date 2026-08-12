@@ -1,0 +1,31 @@
+{
+  "candidate_id": "PRED-PB-002-C_mechanism",
+  "input_manifest_hash": "e3498e861da0932f6e5482dfe5b060d47f0ed6f36eb9fd3259f8c7d032790e4b",
+  "hypothesis": "Heat-stable DNA polymerase from thermophilic bacteria can be used for primer extension at high temperatures",
+  "prediction": "Successful DNA sequencing using heat-stable DNA polymerase at temperatures above 90°C",
+  "units_range": "Temperature (°C)",
+  "expected_direction": "INCREASE",
+  "measurement_method": "DNA sequencing success rate at varying temperatures",
+  "falsification_condition": "Failure to obtain accurate DNA sequences using heat-stable DNA polymerase at temperatures above 90°C, or a significant decrease in sequencing success rate at high temperatures compared to lower temperatures",
+  "pre_registration_timestamp": "1984-12-31T23:59:59Z",
+  "novelty_check": {
+    "metric": "NOVEL_RELATION_TO_EVIDENCE",
+    "is_novel": true,
+    "term_overlap_ratio": 0.57,
+    "evidence_terms_count": 18,
+    "proposed_terms_count": 14,
+    "overlapping_terms": [
+      "bacteria",
+      "extension",
+      "heat",
+      "polymerase",
+      "primer",
+      "sequencing",
+      "stable",
+      "thermophilic"
+    ],
+    "deterministic": true,
+    "reproducible": true
+  },
+  "receipt_hash": "a21e79ade876187cb85aa22cfbeca345fe53d20aa00c939244065a8192d7a5c7"
+}

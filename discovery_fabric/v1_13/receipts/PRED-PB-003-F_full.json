@@ -1,0 +1,27 @@
+{
+  "candidate_id": "PRED-PB-003-F_full",
+  "input_manifest_hash": "90d943fd8941b8d8bba675639a92e03924b4acf44ba31a93aae2d8a368f1c4cd",
+  "hypothesis": "Graphene can be isolated and stabilized through mechanical cleavage of graphite",
+  "prediction": "The average flake size of isolated graphene will be between 1-10 micrometers",
+  "units_range": "micrometers",
+  "expected_direction": "DECREASE",
+  "measurement_method": "Atomic force microscopy (AFM) or scanning electron microscopy (SEM)",
+  "falsification_condition": "If the average flake size of isolated graphene is consistently greater than 100 micrometers or if it is not possible to isolate graphene through mechanical cleavage of graphite",
+  "pre_registration_timestamp": "2003-12-31T23:59:59Z",
+  "novelty_check": {
+    "metric": "NOVEL_RELATION_TO_EVIDENCE",
+    "is_novel": true,
+    "term_overlap_ratio": 0.33,
+    "evidence_terms_count": 16,
+    "proposed_terms_count": 12,
+    "overlapping_terms": [
+      "cleavage",
+      "graphene",
+      "graphite",
+      "mechanical"
+    ],
+    "deterministic": true,
+    "reproducible": true
+  },
+  "receipt_hash": "92eac0ec2393fcaa7e0b08861154219292bf5ecc8524179aca1f74029cdc26dd"
+}

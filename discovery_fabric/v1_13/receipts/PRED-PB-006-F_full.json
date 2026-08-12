@@ -1,0 +1,30 @@
+{
+  "candidate_id": "PRED-PB-006-F_full",
+  "input_manifest_hash": "0d39841c730b5a13b1c817c477f1ba3233b24eb6aa2a2d179db52ff21cb8c5d0",
+  "hypothesis": "Lipid nanoparticle-delivered mRNA vaccines with modified nucleosides can induce a stronger immune response than conventional vaccines",
+  "prediction": "The geometric mean titer of neutralizing antibodies will be at least 2-fold higher in subjects receiving the lipid nanoparticle-delivered mRNA vaccine compared to those receiving conventional vaccines",
+  "units_range": "Geometric mean titer of neutralizing antibodies (GMT) in IU/mL, with a range of 100-10,000 IU/mL",
+  "expected_direction": "INCREASE",
+  "measurement_method": "Serum neutralization assay using a pseudovirus expressing the viral spike protein",
+  "falsification_condition": "If the GMT of neutralizing antibodies in the lipid nanoparticle-delivered mRNA vaccine group is not significantly higher (p < 0.05) than in the conventional vaccine group, or if the GMT is less than 1.5-fold higher, the prediction is falsified",
+  "pre_registration_timestamp": "2019-12-31T23:59:59Z",
+  "novelty_check": {
+    "metric": "NOVEL_RELATION_TO_EVIDENCE",
+    "is_novel": true,
+    "term_overlap_ratio": 0.28,
+    "evidence_terms_count": 25,
+    "proposed_terms_count": 25,
+    "overlapping_terms": [
+      "conventional",
+      "immune",
+      "lipid",
+      "modified",
+      "mrna",
+      "nucleosides",
+      "vaccines"
+    ],
+    "deterministic": true,
+    "reproducible": true
+  },
+  "receipt_hash": "141f670d6069014f27af435737b1b42f93aaac1b99d6ba28477d83bbf1af575b"
+}

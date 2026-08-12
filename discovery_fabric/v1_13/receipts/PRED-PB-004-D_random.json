@@ -1,0 +1,29 @@
+{
+  "candidate_id": "PRED-PB-004-D_random",
+  "input_manifest_hash": "73d769508b3f10ad2e13c119ea4b7a50a8813c1c06b9f2ed0c819eba10d42062",
+  "hypothesis": "Deeper CNNs can learn more abstract features, leading to improved performance on image classification tasks",
+  "prediction": "A CNN with 5+ layers, trained on ImageNet with ReLU activation and dropout, will achieve an error rate < 20%",
+  "units_range": "Top-1 error rate (%)",
+  "expected_direction": "DECREASE",
+  "measurement_method": "Evaluate the CNN model on the ImageNet validation set",
+  "falsification_condition": "If a 5-layer CNN, trained with ReLU activation and dropout on ImageNet, fails to achieve an error rate < 24%, the hypothesis is falsified",
+  "pre_registration_timestamp": "2011-12-31T23:59:59Z",
+  "novelty_check": {
+    "metric": "NOVEL_RELATION_TO_EVIDENCE",
+    "is_novel": true,
+    "term_overlap_ratio": 0.3,
+    "evidence_terms_count": 25,
+    "proposed_terms_count": 20,
+    "overlapping_terms": [
+      "activation",
+      "cnns",
+      "dropout",
+      "error",
+      "imagenet",
+      "relu"
+    ],
+    "deterministic": true,
+    "reproducible": true
+  },
+  "receipt_hash": "8d2a008a7952541440f98da7df90fdbc2cea2ec301d4f4520a945b6dd87fae34"
+}

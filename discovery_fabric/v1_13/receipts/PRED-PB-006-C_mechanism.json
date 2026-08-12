@@ -1,0 +1,31 @@
+{
+  "candidate_id": "PRED-PB-006-C_mechanism",
+  "input_manifest_hash": "0d39841c730b5a13b1c817c477f1ba3233b24eb6aa2a2d179db52ff21cb8c5d0",
+  "hypothesis": "Lipid nanoparticle-delivered modified mRNA encoding viral spike proteins can induce immune responses",
+  "prediction": "Antibody titers against viral spike proteins will increase in subjects receiving the mRNA vaccine",
+  "units_range": "1-1000 IU/mL",
+  "expected_direction": "INCREASE",
+  "measurement_method": "ELISA assay",
+  "falsification_condition": "If antibody titers do not increase by at least 2-fold in 75% of subjects receiving the mRNA vaccine compared to placebo controls",
+  "pre_registration_timestamp": "2019-12-31T23:59:59Z",
+  "novelty_check": {
+    "metric": "NOVEL_RELATION_TO_EVIDENCE",
+    "is_novel": true,
+    "term_overlap_ratio": 0.42,
+    "evidence_terms_count": 25,
+    "proposed_terms_count": 19,
+    "overlapping_terms": [
+      "immune",
+      "lipid",
+      "modified",
+      "mrna",
+      "proteins",
+      "responses",
+      "spike",
+      "viral"
+    ],
+    "deterministic": true,
+    "reproducible": true
+  },
+  "receipt_hash": "531b08def6819fb3632b2a48929e1a0420c919c9a0a6d12724fcea6b9bfc2daf"
+}
