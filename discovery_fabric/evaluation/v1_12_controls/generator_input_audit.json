@@ -1,0 +1,1336 @@
+{
+  "audit_type": "GENERATOR_INPUT_ISOLATION",
+  "cases_audited": 10,
+  "configs_audited": [
+    "B_llm_only",
+    "C_mechanism",
+    "D_mech_constraints",
+    "E_combination",
+    "F_full"
+  ],
+  "total_payloads": 50,
+  "leakage_detected": false,
+  "leaked_payloads": 0,
+  "forbidden_fields_checked": [
+    "name",
+    "year",
+    "discovery_year",
+    "actual",
+    "actual_breakthrough_mechanism",
+    "actual_discovery",
+    "missing_combination",
+    "first_validation_paper",
+    "pre_discovery_sources",
+    "hidden_future_sources",
+    "why_it_was_unexpected",
+    "discovery_pattern",
+    "pattern_detail"
+  ],
+  "fields_actually_used": [
+    "cutoff",
+    "known_before"
+  ],
+  "note": "The generator ONLY receives the prompt built from cutoff + known_before. All other fields (name, year, actual, pattern, etc.) are in the case dict but NOT passed to the generator. However, the known_before field itself may contain terms that overlap with the actual discovery mechanism.",
+  "payloads": [
+    {
+      "case_id": "HB-001",
+      "config": "B_llm_only",
+      "generator_input": "PRE-DISCOVERY (cutoff: 2011-12-31):\nBacterial CRISPR adaptive immunity; Cas9 is RNA-guided nuclease; ZFNs and TALENs for gene editing\n\nWhat novel mechanism would you propose?",
+      "fields_in_input": [
+        "cutoff",
+        "known_before"
+      ],
+      "forbidden_fields_checked": [
+        "name",
+        "year",
+        "discovery_year",
+        "actual",
+        "actual_breakthrough_mechanism",
+        "actual_discovery",
+        "missing_combination",
+        "first_validation_paper",
+        "pre_discovery_sources",
+        "hidden_future_sources",
+        "why_it_was_unexpected",
+        "discovery_pattern",
+        "pattern_detail"
+      ],
+      "leakage_detected": false,
+      "leakage_details": []
+    },
+    {
+      "case_id": "HB-001",
+      "config": "C_mechanism",
+      "generator_input": "PRE-DISCOVERY:\nKnown mechanism: Bacterial CRISPR adaptive immunity; Cas9 is RNA-guided nuclease; ZFNs and TALENs for gene editing\n\nIdentify the core mechanism that could be transferred or combined. What specific mechanism would you propose?",
+      "fields_in_input": [
+        "cutoff",
+        "known_before"
+      ],
+      "forbidden_fields_checked": [
+        "name",
+        "year",
+        "discovery_year",
+        "actual",
+        "actual_breakthrough_mechanism",
+        "actual_discovery",
+        "missing_combination",
+        "first_validation_paper",
+        "pre_discovery_sources",
+        "hidden_future_sources",
+        "why_it_was_unexpected",
+        "discovery_pattern",
+        "pattern_detail"
+      ],
+      "leakage_detected": false,
+      "leakage_details": []
+    },
+    {
+      "case_id": "HB-001",
+      "config": "D_mech_constraints",
+      "generator_input": "PRE-DISCOVERY:\nKnown: Bacterial CRISPR adaptive immunity; Cas9 is RNA-guided nuclease; ZFNs and TALENs for gene editing\n\nIdentify: 1) Core mechanism, 2) Constraints, 3) What overcomes them. Propose mechanism.",
+      "fields_in_input": [
+        "cutoff",
+        "known_before"
+      ],
+      "forbidden_fields_checked": [
+        "name",
+        "year",
+        "discovery_year",
+        "actual",
+        "actual_breakthrough_mechanism",
+        "actual_discovery",
+        "missing_combination",
+        "first_validation_paper",
+        "pre_discovery_sources",
+        "hidden_future_sources",
+        "why_it_was_unexpected",
+        "discovery_pattern",
+        "pattern_detail"
+      ],
+      "leakage_detected": false,
+      "leakage_details": []
+    },
+    {
+      "case_id": "HB-001",
+      "config": "E_combination",
+      "generator_input": "PRE-DISCOVERY:\nKnown: Bacterial CRISPR adaptive immunity; Cas9 is RNA-guided nuclease; ZFNs and TALENs for gene editing\n\nIdentify two independently validated mechanisms that could COMBINE to create emergent capability. What combination would you propose?",
+      "fields_in_input": [
+        "cutoff",
+        "known_before"
+      ],
+      "forbidden_fields_checked": [
+        "name",
+        "year",
+        "discovery_year",
+        "actual",
+        "actual_breakthrough_mechanism",
+        "actual_discovery",
+        "missing_combination",
+        "first_validation_paper",
+        "pre_discovery_sources",
+        "hidden_future_sources",
+        "why_it_was_unexpected",
+        "discovery_pattern",
+        "pattern_detail"
+      ],
+      "leakage_detected": false,
+      "leakage_details": []
+    },
+    {
+      "case_id": "HB-001",
+      "config": "F_full",
+      "generator_input": "PRE-DISCOVERY (cutoff: 2011-12-31):\nBacterial CRISPR adaptive immunity; Cas9 is RNA-guided nuclease; ZFNs and TALENs for gene editing\n\nAnalyze invariant principles, constraints, mechanism combination, constraint release. Propose with prediction and falsification.",
+      "fields_in_input": [
+        "cutoff",
+        "known_before"
+      ],
+      "forbidden_fields_checked": [
+        "name",
+        "year",
+        "discovery_year",
+        "actual",
+        "actual_breakthrough_mechanism",
+        "actual_discovery",
+        "missing_combination",
+        "first_validation_paper",
+        "pre_discovery_sources",
+        "hidden_future_sources",
+        "why_it_was_unexpected",
+        "discovery_pattern",
+        "pattern_detail"
+      ],
+      "leakage_detected": false,
+      "leakage_details": []
+    },
+    {
+      "case_id": "HB-002",
+      "config": "B_llm_only",
+      "generator_input": "PRE-DISCOVERY (cutoff: 2019-12-31):\nModified nucleosides reduce RNA immunogenicity; lipid nanoparticles deliver nucleic acids; viral spike proteins trigger immunity\n\nWhat novel mechanism would you propose?",
+      "fields_in_input": [
+        "cutoff",
+        "known_before"
+      ],
+      "forbidden_fields_checked": [
+        "name",
+        "year",
+        "discovery_year",
+        "actual",
+        "actual_breakthrough_mechanism",
+        "actual_discovery",
+        "missing_combination",
+        "first_validation_paper",
+        "pre_discovery_sources",
+        "hidden_future_sources",
+        "why_it_was_unexpected",
+        "discovery_pattern",
+        "pattern_detail"
+      ],
+      "leakage_detected": false,
+      "leakage_details": []
+    },
+    {
+      "case_id": "HB-002",
+      "config": "C_mechanism",
+      "generator_input": "PRE-DISCOVERY:\nKnown mechanism: Modified nucleosides reduce RNA immunogenicity; lipid nanoparticles deliver nucleic acids; viral spike proteins trigger immunity\n\nIdentify the core mechanism that could be transferred or combined. What specific mechanism would you propose?",
+      "fields_in_input": [
+        "cutoff",
+        "known_before"
+      ],
+      "forbidden_fields_checked": [
+        "name",
+        "year",
+        "discovery_year",
+        "actual",
+        "actual_breakthrough_mechanism",
+        "actual_discovery",
+        "missing_combination",
+        "first_validation_paper",
+        "pre_discovery_sources",
+        "hidden_future_sources",
+        "why_it_was_unexpected",
+        "discovery_pattern",
+        "pattern_detail"
+      ],
+      "leakage_detected": false,
+      "leakage_details": []
+    },
+    {
+      "case_id": "HB-002",
+      "config": "D_mech_constraints",
+      "generator_input": "PRE-DISCOVERY:\nKnown: Modified nucleosides reduce RNA immunogenicity; lipid nanoparticles deliver nucleic acids; viral spike proteins trigger immunity\n\nIdentify: 1) Core mechanism, 2) Constraints, 3) What overcomes them. Propose mechanism.",
+      "fields_in_input": [
+        "cutoff",
+        "known_before"
+      ],
+      "forbidden_fields_checked": [
+        "name",
+        "year",
+        "discovery_year",
+        "actual",
+        "actual_breakthrough_mechanism",
+        "actual_discovery",
+        "missing_combination",
+        "first_validation_paper",
+        "pre_discovery_sources",
+        "hidden_future_sources",
+        "why_it_was_unexpected",
+        "discovery_pattern",
+        "pattern_detail"
+      ],
+      "leakage_detected": false,
+      "leakage_details": []
+    },
+    {
+      "case_id": "HB-002",
+      "config": "E_combination",
+      "generator_input": "PRE-DISCOVERY:\nKnown: Modified nucleosides reduce RNA immunogenicity; lipid nanoparticles deliver nucleic acids; viral spike proteins trigger immunity\n\nIdentify two independently validated mechanisms that could COMBINE to create emergent capability. What combination would you propose?",
+      "fields_in_input": [
+        "cutoff",
+        "known_before"
+      ],
+      "forbidden_fields_checked": [
+        "name",
+        "year",
+        "discovery_year",
+        "actual",
+        "actual_breakthrough_mechanism",
+        "actual_discovery",
+        "missing_combination",
+        "first_validation_paper",
+        "pre_discovery_sources",
+        "hidden_future_sources",
+        "why_it_was_unexpected",
+        "discovery_pattern",
+        "pattern_detail"
+      ],
+      "leakage_detected": false,
+      "leakage_details": []
+    },
+    {
+      "case_id": "HB-002",
+      "config": "F_full",
+      "generator_input": "PRE-DISCOVERY (cutoff: 2019-12-31):\nModified nucleosides reduce RNA immunogenicity; lipid nanoparticles deliver nucleic acids; viral spike proteins trigger immunity\n\nAnalyze invariant principles, constraints, mechanism combination, constraint release. Propose with prediction and falsification.",
+      "fields_in_input": [
+        "cutoff",
+        "known_before"
+      ],
+      "forbidden_fields_checked": [
+        "name",
+        "year",
+        "discovery_year",
+        "actual",
+        "actual_breakthrough_mechanism",
+        "actual_discovery",
+        "missing_combination",
+        "first_validation_paper",
+        "pre_discovery_sources",
+        "hidden_future_sources",
+        "why_it_was_unexpected",
+        "discovery_pattern",
+        "pattern_detail"
+      ],
+      "leakage_detected": false,
+      "leakage_details": []
+    },
+    {
+      "case_id": "HB-003",
+      "config": "B_llm_only",
+      "generator_input": "PRE-DISCOVERY (cutoff: 1990-12-31):\nLiCoO2 cathode intercalation; graphite anode intercalation; lithium metal batteries unsafe\n\nWhat novel mechanism would you propose?",
+      "fields_in_input": [
+        "cutoff",
+        "known_before"
+      ],
+      "forbidden_fields_checked": [
+        "name",
+        "year",
+        "discovery_year",
+        "actual",
+        "actual_breakthrough_mechanism",
+        "actual_discovery",
+        "missing_combination",
+        "first_validation_paper",
+        "pre_discovery_sources",
+        "hidden_future_sources",
+        "why_it_was_unexpected",
+        "discovery_pattern",
+        "pattern_detail"
+      ],
+      "leakage_detected": false,
+      "leakage_details": []
+    },
+    {
+      "case_id": "HB-003",
+      "config": "C_mechanism",
+      "generator_input": "PRE-DISCOVERY:\nKnown mechanism: LiCoO2 cathode intercalation; graphite anode intercalation; lithium metal batteries unsafe\n\nIdentify the core mechanism that could be transferred or combined. What specific mechanism would you propose?",
+      "fields_in_input": [
+        "cutoff",
+        "known_before"
+      ],
+      "forbidden_fields_checked": [
+        "name",
+        "year",
+        "discovery_year",
+        "actual",
+        "actual_breakthrough_mechanism",
+        "actual_discovery",
+        "missing_combination",
+        "first_validation_paper",
+        "pre_discovery_sources",
+        "hidden_future_sources",
+        "why_it_was_unexpected",
+        "discovery_pattern",
+        "pattern_detail"
+      ],
+      "leakage_detected": false,
+      "leakage_details": []
+    },
+    {
+      "case_id": "HB-003",
+      "config": "D_mech_constraints",
+      "generator_input": "PRE-DISCOVERY:\nKnown: LiCoO2 cathode intercalation; graphite anode intercalation; lithium metal batteries unsafe\n\nIdentify: 1) Core mechanism, 2) Constraints, 3) What overcomes them. Propose mechanism.",
+      "fields_in_input": [
+        "cutoff",
+        "known_before"
+      ],
+      "forbidden_fields_checked": [
+        "name",
+        "year",
+        "discovery_year",
+        "actual",
+        "actual_breakthrough_mechanism",
+        "actual_discovery",
+        "missing_combination",
+        "first_validation_paper",
+        "pre_discovery_sources",
+        "hidden_future_sources",
+        "why_it_was_unexpected",
+        "discovery_pattern",
+        "pattern_detail"
+      ],
+      "leakage_detected": false,
+      "leakage_details": []
+    },
+    {
+      "case_id": "HB-003",
+      "config": "E_combination",
+      "generator_input": "PRE-DISCOVERY:\nKnown: LiCoO2 cathode intercalation; graphite anode intercalation; lithium metal batteries unsafe\n\nIdentify two independently validated mechanisms that could COMBINE to create emergent capability. What combination would you propose?",
+      "fields_in_input": [
+        "cutoff",
+        "known_before"
+      ],
+      "forbidden_fields_checked": [
+        "name",
+        "year",
+        "discovery_year",
+        "actual",
+        "actual_breakthrough_mechanism",
+        "actual_discovery",
+        "missing_combination",
+        "first_validation_paper",
+        "pre_discovery_sources",
+        "hidden_future_sources",
+        "why_it_was_unexpected",
+        "discovery_pattern",
+        "pattern_detail"
+      ],
+      "leakage_detected": false,
+      "leakage_details": []
+    },
+    {
+      "case_id": "HB-003",
+      "config": "F_full",
+      "generator_input": "PRE-DISCOVERY (cutoff: 1990-12-31):\nLiCoO2 cathode intercalation; graphite anode intercalation; lithium metal batteries unsafe\n\nAnalyze invariant principles, constraints, mechanism combination, constraint release. Propose with prediction and falsification.",
+      "fields_in_input": [
+        "cutoff",
+        "known_before"
+      ],
+      "forbidden_fields_checked": [
+        "name",
+        "year",
+        "discovery_year",
+        "actual",
+        "actual_breakthrough_mechanism",
+        "actual_discovery",
+        "missing_combination",
+        "first_validation_paper",
+        "pre_discovery_sources",
+        "hidden_future_sources",
+        "why_it_was_unexpected",
+        "discovery_pattern",
+        "pattern_detail"
+      ],
+      "leakage_detected": false,
+      "leakage_details": []
+    },
+    {
+      "case_id": "HB-004",
+      "config": "B_llm_only",
+      "generator_input": "PRE-DISCOVERY (cutoff: 1984-12-31):\nDNA polymerase extends primers; heat denatures DNA; thermophilic bacteria have heat-stable enzymes\n\nWhat novel mechanism would you propose?",
+      "fields_in_input": [
+        "cutoff",
+        "known_before"
+      ],
+      "forbidden_fields_checked": [
+        "name",
+        "year",
+        "discovery_year",
+        "actual",
+        "actual_breakthrough_mechanism",
+        "actual_discovery",
+        "missing_combination",
+        "first_validation_paper",
+        "pre_discovery_sources",
+        "hidden_future_sources",
+        "why_it_was_unexpected",
+        "discovery_pattern",
+        "pattern_detail"
+      ],
+      "leakage_detected": false,
+      "leakage_details": []
+    },
+    {
+      "case_id": "HB-004",
+      "config": "C_mechanism",
+      "generator_input": "PRE-DISCOVERY:\nKnown mechanism: DNA polymerase extends primers; heat denatures DNA; thermophilic bacteria have heat-stable enzymes\n\nIdentify the core mechanism that could be transferred or combined. What specific mechanism would you propose?",
+      "fields_in_input": [
+        "cutoff",
+        "known_before"
+      ],
+      "forbidden_fields_checked": [
+        "name",
+        "year",
+        "discovery_year",
+        "actual",
+        "actual_breakthrough_mechanism",
+        "actual_discovery",
+        "missing_combination",
+        "first_validation_paper",
+        "pre_discovery_sources",
+        "hidden_future_sources",
+        "why_it_was_unexpected",
+        "discovery_pattern",
+        "pattern_detail"
+      ],
+      "leakage_detected": false,
+      "leakage_details": []
+    },
+    {
+      "case_id": "HB-004",
+      "config": "D_mech_constraints",
+      "generator_input": "PRE-DISCOVERY:\nKnown: DNA polymerase extends primers; heat denatures DNA; thermophilic bacteria have heat-stable enzymes\n\nIdentify: 1) Core mechanism, 2) Constraints, 3) What overcomes them. Propose mechanism.",
+      "fields_in_input": [
+        "cutoff",
+        "known_before"
+      ],
+      "forbidden_fields_checked": [
+        "name",
+        "year",
+        "discovery_year",
+        "actual",
+        "actual_breakthrough_mechanism",
+        "actual_discovery",
+        "missing_combination",
+        "first_validation_paper",
+        "pre_discovery_sources",
+        "hidden_future_sources",
+        "why_it_was_unexpected",
+        "discovery_pattern",
+        "pattern_detail"
+      ],
+      "leakage_detected": false,
+      "leakage_details": []
+    },
+    {
+      "case_id": "HB-004",
+      "config": "E_combination",
+      "generator_input": "PRE-DISCOVERY:\nKnown: DNA polymerase extends primers; heat denatures DNA; thermophilic bacteria have heat-stable enzymes\n\nIdentify two independently validated mechanisms that could COMBINE to create emergent capability. What combination would you propose?",
+      "fields_in_input": [
+        "cutoff",
+        "known_before"
+      ],
+      "forbidden_fields_checked": [
+        "name",
+        "year",
+        "discovery_year",
+        "actual",
+        "actual_breakthrough_mechanism",
+        "actual_discovery",
+        "missing_combination",
+        "first_validation_paper",
+        "pre_discovery_sources",
+        "hidden_future_sources",
+        "why_it_was_unexpected",
+        "discovery_pattern",
+        "pattern_detail"
+      ],
+      "leakage_detected": false,
+      "leakage_details": []
+    },
+    {
+      "case_id": "HB-004",
+      "config": "F_full",
+      "generator_input": "PRE-DISCOVERY (cutoff: 1984-12-31):\nDNA polymerase extends primers; heat denatures DNA; thermophilic bacteria have heat-stable enzymes\n\nAnalyze invariant principles, constraints, mechanism combination, constraint release. Propose with prediction and falsification.",
+      "fields_in_input": [
+        "cutoff",
+        "known_before"
+      ],
+      "forbidden_fields_checked": [
+        "name",
+        "year",
+        "discovery_year",
+        "actual",
+        "actual_breakthrough_mechanism",
+        "actual_discovery",
+        "missing_combination",
+        "first_validation_paper",
+        "pre_discovery_sources",
+        "hidden_future_sources",
+        "why_it_was_unexpected",
+        "discovery_pattern",
+        "pattern_detail"
+      ],
+      "leakage_detected": false,
+      "leakage_details": []
+    },
+    {
+      "case_id": "HB-005",
+      "config": "B_llm_only",
+      "generator_input": "PRE-DISCOVERY (cutoff: 2003-12-31):\nTheory says 2D crystals thermodynamically unstable; graphite is layered carbon; carbon nanotubes exist\n\nWhat novel mechanism would you propose?",
+      "fields_in_input": [
+        "cutoff",
+        "known_before"
+      ],
+      "forbidden_fields_checked": [
+        "name",
+        "year",
+        "discovery_year",
+        "actual",
+        "actual_breakthrough_mechanism",
+        "actual_discovery",
+        "missing_combination",
+        "first_validation_paper",
+        "pre_discovery_sources",
+        "hidden_future_sources",
+        "why_it_was_unexpected",
+        "discovery_pattern",
+        "pattern_detail"
+      ],
+      "leakage_detected": false,
+      "leakage_details": []
+    },
+    {
+      "case_id": "HB-005",
+      "config": "C_mechanism",
+      "generator_input": "PRE-DISCOVERY:\nKnown mechanism: Theory says 2D crystals thermodynamically unstable; graphite is layered carbon; carbon nanotubes exist\n\nIdentify the core mechanism that could be transferred or combined. What specific mechanism would you propose?",
+      "fields_in_input": [
+        "cutoff",
+        "known_before"
+      ],
+      "forbidden_fields_checked": [
+        "name",
+        "year",
+        "discovery_year",
+        "actual",
+        "actual_breakthrough_mechanism",
+        "actual_discovery",
+        "missing_combination",
+        "first_validation_paper",
+        "pre_discovery_sources",
+        "hidden_future_sources",
+        "why_it_was_unexpected",
+        "discovery_pattern",
+        "pattern_detail"
+      ],
+      "leakage_detected": false,
+      "leakage_details": []
+    },
+    {
+      "case_id": "HB-005",
+      "config": "D_mech_constraints",
+      "generator_input": "PRE-DISCOVERY:\nKnown: Theory says 2D crystals thermodynamically unstable; graphite is layered carbon; carbon nanotubes exist\n\nIdentify: 1) Core mechanism, 2) Constraints, 3) What overcomes them. Propose mechanism.",
+      "fields_in_input": [
+        "cutoff",
+        "known_before"
+      ],
+      "forbidden_fields_checked": [
+        "name",
+        "year",
+        "discovery_year",
+        "actual",
+        "actual_breakthrough_mechanism",
+        "actual_discovery",
+        "missing_combination",
+        "first_validation_paper",
+        "pre_discovery_sources",
+        "hidden_future_sources",
+        "why_it_was_unexpected",
+        "discovery_pattern",
+        "pattern_detail"
+      ],
+      "leakage_detected": false,
+      "leakage_details": []
+    },
+    {
+      "case_id": "HB-005",
+      "config": "E_combination",
+      "generator_input": "PRE-DISCOVERY:\nKnown: Theory says 2D crystals thermodynamically unstable; graphite is layered carbon; carbon nanotubes exist\n\nIdentify two independently validated mechanisms that could COMBINE to create emergent capability. What combination would you propose?",
+      "fields_in_input": [
+        "cutoff",
+        "known_before"
+      ],
+      "forbidden_fields_checked": [
+        "name",
+        "year",
+        "discovery_year",
+        "actual",
+        "actual_breakthrough_mechanism",
+        "actual_discovery",
+        "missing_combination",
+        "first_validation_paper",
+        "pre_discovery_sources",
+        "hidden_future_sources",
+        "why_it_was_unexpected",
+        "discovery_pattern",
+        "pattern_detail"
+      ],
+      "leakage_detected": false,
+      "leakage_details": []
+    },
+    {
+      "case_id": "HB-005",
+      "config": "F_full",
+      "generator_input": "PRE-DISCOVERY (cutoff: 2003-12-31):\nTheory says 2D crystals thermodynamically unstable; graphite is layered carbon; carbon nanotubes exist\n\nAnalyze invariant principles, constraints, mechanism combination, constraint release. Propose with prediction and falsification.",
+      "fields_in_input": [
+        "cutoff",
+        "known_before"
+      ],
+      "forbidden_fields_checked": [
+        "name",
+        "year",
+        "discovery_year",
+        "actual",
+        "actual_breakthrough_mechanism",
+        "actual_discovery",
+        "missing_combination",
+        "first_validation_paper",
+        "pre_discovery_sources",
+        "hidden_future_sources",
+        "why_it_was_unexpected",
+        "discovery_pattern",
+        "pattern_detail"
+      ],
+      "leakage_detected": false,
+      "leakage_details": []
+    },
+    {
+      "case_id": "HB-006",
+      "config": "B_llm_only",
+      "generator_input": "PRE-DISCOVERY (cutoff: 2016-12-31):\nRNNs process sequentially (slow, vanishing gradients); attention improves seq2seq; self-attention used in some models\n\nWhat novel mechanism would you propose?",
+      "fields_in_input": [
+        "cutoff",
+        "known_before"
+      ],
+      "forbidden_fields_checked": [
+        "name",
+        "year",
+        "discovery_year",
+        "actual",
+        "actual_breakthrough_mechanism",
+        "actual_discovery",
+        "missing_combination",
+        "first_validation_paper",
+        "pre_discovery_sources",
+        "hidden_future_sources",
+        "why_it_was_unexpected",
+        "discovery_pattern",
+        "pattern_detail"
+      ],
+      "leakage_detected": false,
+      "leakage_details": []
+    },
+    {
+      "case_id": "HB-006",
+      "config": "C_mechanism",
+      "generator_input": "PRE-DISCOVERY:\nKnown mechanism: RNNs process sequentially (slow, vanishing gradients); attention improves seq2seq; self-attention used in some models\n\nIdentify the core mechanism that could be transferred or combined. What specific mechanism would you propose?",
+      "fields_in_input": [
+        "cutoff",
+        "known_before"
+      ],
+      "forbidden_fields_checked": [
+        "name",
+        "year",
+        "discovery_year",
+        "actual",
+        "actual_breakthrough_mechanism",
+        "actual_discovery",
+        "missing_combination",
+        "first_validation_paper",
+        "pre_discovery_sources",
+        "hidden_future_sources",
+        "why_it_was_unexpected",
+        "discovery_pattern",
+        "pattern_detail"
+      ],
+      "leakage_detected": false,
+      "leakage_details": []
+    },
+    {
+      "case_id": "HB-006",
+      "config": "D_mech_constraints",
+      "generator_input": "PRE-DISCOVERY:\nKnown: RNNs process sequentially (slow, vanishing gradients); attention improves seq2seq; self-attention used in some models\n\nIdentify: 1) Core mechanism, 2) Constraints, 3) What overcomes them. Propose mechanism.",
+      "fields_in_input": [
+        "cutoff",
+        "known_before"
+      ],
+      "forbidden_fields_checked": [
+        "name",
+        "year",
+        "discovery_year",
+        "actual",
+        "actual_breakthrough_mechanism",
+        "actual_discovery",
+        "missing_combination",
+        "first_validation_paper",
+        "pre_discovery_sources",
+        "hidden_future_sources",
+        "why_it_was_unexpected",
+        "discovery_pattern",
+        "pattern_detail"
+      ],
+      "leakage_detected": false,
+      "leakage_details": []
+    },
+    {
+      "case_id": "HB-006",
+      "config": "E_combination",
+      "generator_input": "PRE-DISCOVERY:\nKnown: RNNs process sequentially (slow, vanishing gradients); attention improves seq2seq; self-attention used in some models\n\nIdentify two independently validated mechanisms that could COMBINE to create emergent capability. What combination would you propose?",
+      "fields_in_input": [
+        "cutoff",
+        "known_before"
+      ],
+      "forbidden_fields_checked": [
+        "name",
+        "year",
+        "discovery_year",
+        "actual",
+        "actual_breakthrough_mechanism",
+        "actual_discovery",
+        "missing_combination",
+        "first_validation_paper",
+        "pre_discovery_sources",
+        "hidden_future_sources",
+        "why_it_was_unexpected",
+        "discovery_pattern",
+        "pattern_detail"
+      ],
+      "leakage_detected": false,
+      "leakage_details": []
+    },
+    {
+      "case_id": "HB-006",
+      "config": "F_full",
+      "generator_input": "PRE-DISCOVERY (cutoff: 2016-12-31):\nRNNs process sequentially (slow, vanishing gradients); attention improves seq2seq; self-attention used in some models\n\nAnalyze invariant principles, constraints, mechanism combination, constraint release. Propose with prediction and falsification.",
+      "fields_in_input": [
+        "cutoff",
+        "known_before"
+      ],
+      "forbidden_fields_checked": [
+        "name",
+        "year",
+        "discovery_year",
+        "actual",
+        "actual_breakthrough_mechanism",
+        "actual_discovery",
+        "missing_combination",
+        "first_validation_paper",
+        "pre_discovery_sources",
+        "hidden_future_sources",
+        "why_it_was_unexpected",
+        "discovery_pattern",
+        "pattern_detail"
+      ],
+      "leakage_detected": false,
+      "leakage_details": []
+    },
+    {
+      "case_id": "HB-007",
+      "config": "B_llm_only",
+      "generator_input": "PRE-DISCOVERY (cutoff: 2011-12-31):\nCNNs exist (LeNet); GPUs exist; ImageNet exists; ReLU exists; dropout exists\n\nWhat novel mechanism would you propose?",
+      "fields_in_input": [
+        "cutoff",
+        "known_before"
+      ],
+      "forbidden_fields_checked": [
+        "name",
+        "year",
+        "discovery_year",
+        "actual",
+        "actual_breakthrough_mechanism",
+        "actual_discovery",
+        "missing_combination",
+        "first_validation_paper",
+        "pre_discovery_sources",
+        "hidden_future_sources",
+        "why_it_was_unexpected",
+        "discovery_pattern",
+        "pattern_detail"
+      ],
+      "leakage_detected": false,
+      "leakage_details": []
+    },
+    {
+      "case_id": "HB-007",
+      "config": "C_mechanism",
+      "generator_input": "PRE-DISCOVERY:\nKnown mechanism: CNNs exist (LeNet); GPUs exist; ImageNet exists; ReLU exists; dropout exists\n\nIdentify the core mechanism that could be transferred or combined. What specific mechanism would you propose?",
+      "fields_in_input": [
+        "cutoff",
+        "known_before"
+      ],
+      "forbidden_fields_checked": [
+        "name",
+        "year",
+        "discovery_year",
+        "actual",
+        "actual_breakthrough_mechanism",
+        "actual_discovery",
+        "missing_combination",
+        "first_validation_paper",
+        "pre_discovery_sources",
+        "hidden_future_sources",
+        "why_it_was_unexpected",
+        "discovery_pattern",
+        "pattern_detail"
+      ],
+      "leakage_detected": false,
+      "leakage_details": []
+    },
+    {
+      "case_id": "HB-007",
+      "config": "D_mech_constraints",
+      "generator_input": "PRE-DISCOVERY:\nKnown: CNNs exist (LeNet); GPUs exist; ImageNet exists; ReLU exists; dropout exists\n\nIdentify: 1) Core mechanism, 2) Constraints, 3) What overcomes them. Propose mechanism.",
+      "fields_in_input": [
+        "cutoff",
+        "known_before"
+      ],
+      "forbidden_fields_checked": [
+        "name",
+        "year",
+        "discovery_year",
+        "actual",
+        "actual_breakthrough_mechanism",
+        "actual_discovery",
+        "missing_combination",
+        "first_validation_paper",
+        "pre_discovery_sources",
+        "hidden_future_sources",
+        "why_it_was_unexpected",
+        "discovery_pattern",
+        "pattern_detail"
+      ],
+      "leakage_detected": false,
+      "leakage_details": []
+    },
+    {
+      "case_id": "HB-007",
+      "config": "E_combination",
+      "generator_input": "PRE-DISCOVERY:\nKnown: CNNs exist (LeNet); GPUs exist; ImageNet exists; ReLU exists; dropout exists\n\nIdentify two independently validated mechanisms that could COMBINE to create emergent capability. What combination would you propose?",
+      "fields_in_input": [
+        "cutoff",
+        "known_before"
+      ],
+      "forbidden_fields_checked": [
+        "name",
+        "year",
+        "discovery_year",
+        "actual",
+        "actual_breakthrough_mechanism",
+        "actual_discovery",
+        "missing_combination",
+        "first_validation_paper",
+        "pre_discovery_sources",
+        "hidden_future_sources",
+        "why_it_was_unexpected",
+        "discovery_pattern",
+        "pattern_detail"
+      ],
+      "leakage_detected": false,
+      "leakage_details": []
+    },
+    {
+      "case_id": "HB-007",
+      "config": "F_full",
+      "generator_input": "PRE-DISCOVERY (cutoff: 2011-12-31):\nCNNs exist (LeNet); GPUs exist; ImageNet exists; ReLU exists; dropout exists\n\nAnalyze invariant principles, constraints, mechanism combination, constraint release. Propose with prediction and falsification.",
+      "fields_in_input": [
+        "cutoff",
+        "known_before"
+      ],
+      "forbidden_fields_checked": [
+        "name",
+        "year",
+        "discovery_year",
+        "actual",
+        "actual_breakthrough_mechanism",
+        "actual_discovery",
+        "missing_combination",
+        "first_validation_paper",
+        "pre_discovery_sources",
+        "hidden_future_sources",
+        "why_it_was_unexpected",
+        "discovery_pattern",
+        "pattern_detail"
+      ],
+      "leakage_detected": false,
+      "leakage_details": []
+    },
+    {
+      "case_id": "HB-008",
+      "config": "B_llm_only",
+      "generator_input": "PRE-DISCOVERY (cutoff: 1927-12-31):\nBacteria cause infections; antiseptics are tissue-toxic; some molds inhibit bacteria (observed)\n\nWhat novel mechanism would you propose?",
+      "fields_in_input": [
+        "cutoff",
+        "known_before"
+      ],
+      "forbidden_fields_checked": [
+        "name",
+        "year",
+        "discovery_year",
+        "actual",
+        "actual_breakthrough_mechanism",
+        "actual_discovery",
+        "missing_combination",
+        "first_validation_paper",
+        "pre_discovery_sources",
+        "hidden_future_sources",
+        "why_it_was_unexpected",
+        "discovery_pattern",
+        "pattern_detail"
+      ],
+      "leakage_detected": false,
+      "leakage_details": []
+    },
+    {
+      "case_id": "HB-008",
+      "config": "C_mechanism",
+      "generator_input": "PRE-DISCOVERY:\nKnown mechanism: Bacteria cause infections; antiseptics are tissue-toxic; some molds inhibit bacteria (observed)\n\nIdentify the core mechanism that could be transferred or combined. What specific mechanism would you propose?",
+      "fields_in_input": [
+        "cutoff",
+        "known_before"
+      ],
+      "forbidden_fields_checked": [
+        "name",
+        "year",
+        "discovery_year",
+        "actual",
+        "actual_breakthrough_mechanism",
+        "actual_discovery",
+        "missing_combination",
+        "first_validation_paper",
+        "pre_discovery_sources",
+        "hidden_future_sources",
+        "why_it_was_unexpected",
+        "discovery_pattern",
+        "pattern_detail"
+      ],
+      "leakage_detected": false,
+      "leakage_details": []
+    },
+    {
+      "case_id": "HB-008",
+      "config": "D_mech_constraints",
+      "generator_input": "PRE-DISCOVERY:\nKnown: Bacteria cause infections; antiseptics are tissue-toxic; some molds inhibit bacteria (observed)\n\nIdentify: 1) Core mechanism, 2) Constraints, 3) What overcomes them. Propose mechanism.",
+      "fields_in_input": [
+        "cutoff",
+        "known_before"
+      ],
+      "forbidden_fields_checked": [
+        "name",
+        "year",
+        "discovery_year",
+        "actual",
+        "actual_breakthrough_mechanism",
+        "actual_discovery",
+        "missing_combination",
+        "first_validation_paper",
+        "pre_discovery_sources",
+        "hidden_future_sources",
+        "why_it_was_unexpected",
+        "discovery_pattern",
+        "pattern_detail"
+      ],
+      "leakage_detected": false,
+      "leakage_details": []
+    },
+    {
+      "case_id": "HB-008",
+      "config": "E_combination",
+      "generator_input": "PRE-DISCOVERY:\nKnown: Bacteria cause infections; antiseptics are tissue-toxic; some molds inhibit bacteria (observed)\n\nIdentify two independently validated mechanisms that could COMBINE to create emergent capability. What combination would you propose?",
+      "fields_in_input": [
+        "cutoff",
+        "known_before"
+      ],
+      "forbidden_fields_checked": [
+        "name",
+        "year",
+        "discovery_year",
+        "actual",
+        "actual_breakthrough_mechanism",
+        "actual_discovery",
+        "missing_combination",
+        "first_validation_paper",
+        "pre_discovery_sources",
+        "hidden_future_sources",
+        "why_it_was_unexpected",
+        "discovery_pattern",
+        "pattern_detail"
+      ],
+      "leakage_detected": false,
+      "leakage_details": []
+    },
+    {
+      "case_id": "HB-008",
+      "config": "F_full",
+      "generator_input": "PRE-DISCOVERY (cutoff: 1927-12-31):\nBacteria cause infections; antiseptics are tissue-toxic; some molds inhibit bacteria (observed)\n\nAnalyze invariant principles, constraints, mechanism combination, constraint release. Propose with prediction and falsification.",
+      "fields_in_input": [
+        "cutoff",
+        "known_before"
+      ],
+      "forbidden_fields_checked": [
+        "name",
+        "year",
+        "discovery_year",
+        "actual",
+        "actual_breakthrough_mechanism",
+        "actual_discovery",
+        "missing_combination",
+        "first_validation_paper",
+        "pre_discovery_sources",
+        "hidden_future_sources",
+        "why_it_was_unexpected",
+        "discovery_pattern",
+        "pattern_detail"
+      ],
+      "leakage_detected": false,
+      "leakage_details": []
+    },
+    {
+      "case_id": "HB-009",
+      "config": "B_llm_only",
+      "generator_input": "PRE-DISCOVERY (cutoff: 1974-12-31):\nAntibodies are specific; B-cells produce antibodies; myeloma cells grow indefinitely; cell fusion possible\n\nWhat novel mechanism would you propose?",
+      "fields_in_input": [
+        "cutoff",
+        "known_before"
+      ],
+      "forbidden_fields_checked": [
+        "name",
+        "year",
+        "discovery_year",
+        "actual",
+        "actual_breakthrough_mechanism",
+        "actual_discovery",
+        "missing_combination",
+        "first_validation_paper",
+        "pre_discovery_sources",
+        "hidden_future_sources",
+        "why_it_was_unexpected",
+        "discovery_pattern",
+        "pattern_detail"
+      ],
+      "leakage_detected": false,
+      "leakage_details": []
+    },
+    {
+      "case_id": "HB-009",
+      "config": "C_mechanism",
+      "generator_input": "PRE-DISCOVERY:\nKnown mechanism: Antibodies are specific; B-cells produce antibodies; myeloma cells grow indefinitely; cell fusion possible\n\nIdentify the core mechanism that could be transferred or combined. What specific mechanism would you propose?",
+      "fields_in_input": [
+        "cutoff",
+        "known_before"
+      ],
+      "forbidden_fields_checked": [
+        "name",
+        "year",
+        "discovery_year",
+        "actual",
+        "actual_breakthrough_mechanism",
+        "actual_discovery",
+        "missing_combination",
+        "first_validation_paper",
+        "pre_discovery_sources",
+        "hidden_future_sources",
+        "why_it_was_unexpected",
+        "discovery_pattern",
+        "pattern_detail"
+      ],
+      "leakage_detected": false,
+      "leakage_details": []
+    },
+    {
+      "case_id": "HB-009",
+      "config": "D_mech_constraints",
+      "generator_input": "PRE-DISCOVERY:\nKnown: Antibodies are specific; B-cells produce antibodies; myeloma cells grow indefinitely; cell fusion possible\n\nIdentify: 1) Core mechanism, 2) Constraints, 3) What overcomes them. Propose mechanism.",
+      "fields_in_input": [
+        "cutoff",
+        "known_before"
+      ],
+      "forbidden_fields_checked": [
+        "name",
+        "year",
+        "discovery_year",
+        "actual",
+        "actual_breakthrough_mechanism",
+        "actual_discovery",
+        "missing_combination",
+        "first_validation_paper",
+        "pre_discovery_sources",
+        "hidden_future_sources",
+        "why_it_was_unexpected",
+        "discovery_pattern",
+        "pattern_detail"
+      ],
+      "leakage_detected": false,
+      "leakage_details": []
+    },
+    {
+      "case_id": "HB-009",
+      "config": "E_combination",
+      "generator_input": "PRE-DISCOVERY:\nKnown: Antibodies are specific; B-cells produce antibodies; myeloma cells grow indefinitely; cell fusion possible\n\nIdentify two independently validated mechanisms that could COMBINE to create emergent capability. What combination would you propose?",
+      "fields_in_input": [
+        "cutoff",
+        "known_before"
+      ],
+      "forbidden_fields_checked": [
+        "name",
+        "year",
+        "discovery_year",
+        "actual",
+        "actual_breakthrough_mechanism",
+        "actual_discovery",
+        "missing_combination",
+        "first_validation_paper",
+        "pre_discovery_sources",
+        "hidden_future_sources",
+        "why_it_was_unexpected",
+        "discovery_pattern",
+        "pattern_detail"
+      ],
+      "leakage_detected": false,
+      "leakage_details": []
+    },
+    {
+      "case_id": "HB-009",
+      "config": "F_full",
+      "generator_input": "PRE-DISCOVERY (cutoff: 1974-12-31):\nAntibodies are specific; B-cells produce antibodies; myeloma cells grow indefinitely; cell fusion possible\n\nAnalyze invariant principles, constraints, mechanism combination, constraint release. Propose with prediction and falsification.",
+      "fields_in_input": [
+        "cutoff",
+        "known_before"
+      ],
+      "forbidden_fields_checked": [
+        "name",
+        "year",
+        "discovery_year",
+        "actual",
+        "actual_breakthrough_mechanism",
+        "actual_discovery",
+        "missing_combination",
+        "first_validation_paper",
+        "pre_discovery_sources",
+        "hidden_future_sources",
+        "why_it_was_unexpected",
+        "discovery_pattern",
+        "pattern_detail"
+      ],
+      "leakage_detected": false,
+      "leakage_details": []
+    },
+    {
+      "case_id": "HB-010",
+      "config": "B_llm_only",
+      "generator_input": "PRE-DISCOVERY (cutoff: 2011-12-31):\nPD-1 suppresses T-cell response; CTLA-4 blockade works in melanoma; cancer vaccines failing\n\nWhat novel mechanism would you propose?",
+      "fields_in_input": [
+        "cutoff",
+        "known_before"
+      ],
+      "forbidden_fields_checked": [
+        "name",
+        "year",
+        "discovery_year",
+        "actual",
+        "actual_breakthrough_mechanism",
+        "actual_discovery",
+        "missing_combination",
+        "first_validation_paper",
+        "pre_discovery_sources",
+        "hidden_future_sources",
+        "why_it_was_unexpected",
+        "discovery_pattern",
+        "pattern_detail"
+      ],
+      "leakage_detected": false,
+      "leakage_details": []
+    },
+    {
+      "case_id": "HB-010",
+      "config": "C_mechanism",
+      "generator_input": "PRE-DISCOVERY:\nKnown mechanism: PD-1 suppresses T-cell response; CTLA-4 blockade works in melanoma; cancer vaccines failing\n\nIdentify the core mechanism that could be transferred or combined. What specific mechanism would you propose?",
+      "fields_in_input": [
+        "cutoff",
+        "known_before"
+      ],
+      "forbidden_fields_checked": [
+        "name",
+        "year",
+        "discovery_year",
+        "actual",
+        "actual_breakthrough_mechanism",
+        "actual_discovery",
+        "missing_combination",
+        "first_validation_paper",
+        "pre_discovery_sources",
+        "hidden_future_sources",
+        "why_it_was_unexpected",
+        "discovery_pattern",
+        "pattern_detail"
+      ],
+      "leakage_detected": false,
+      "leakage_details": []
+    },
+    {
+      "case_id": "HB-010",
+      "config": "D_mech_constraints",
+      "generator_input": "PRE-DISCOVERY:\nKnown: PD-1 suppresses T-cell response; CTLA-4 blockade works in melanoma; cancer vaccines failing\n\nIdentify: 1) Core mechanism, 2) Constraints, 3) What overcomes them. Propose mechanism.",
+      "fields_in_input": [
+        "cutoff",
+        "known_before"
+      ],
+      "forbidden_fields_checked": [
+        "name",
+        "year",
+        "discovery_year",
+        "actual",
+        "actual_breakthrough_mechanism",
+        "actual_discovery",
+        "missing_combination",
+        "first_validation_paper",
+        "pre_discovery_sources",
+        "hidden_future_sources",
+        "why_it_was_unexpected",
+        "discovery_pattern",
+        "pattern_detail"
+      ],
+      "leakage_detected": false,
+      "leakage_details": []
+    },
+    {
+      "case_id": "HB-010",
+      "config": "E_combination",
+      "generator_input": "PRE-DISCOVERY:\nKnown: PD-1 suppresses T-cell response; CTLA-4 blockade works in melanoma; cancer vaccines failing\n\nIdentify two independently validated mechanisms that could COMBINE to create emergent capability. What combination would you propose?",
+      "fields_in_input": [
+        "cutoff",
+        "known_before"
+      ],
+      "forbidden_fields_checked": [
+        "name",
+        "year",
+        "discovery_year",
+        "actual",
+        "actual_breakthrough_mechanism",
+        "actual_discovery",
+        "missing_combination",
+        "first_validation_paper",
+        "pre_discovery_sources",
+        "hidden_future_sources",
+        "why_it_was_unexpected",
+        "discovery_pattern",
+        "pattern_detail"
+      ],
+      "leakage_detected": false,
+      "leakage_details": []
+    },
+    {
+      "case_id": "HB-010",
+      "config": "F_full",
+      "generator_input": "PRE-DISCOVERY (cutoff: 2011-12-31):\nPD-1 suppresses T-cell response; CTLA-4 blockade works in melanoma; cancer vaccines failing\n\nAnalyze invariant principles, constraints, mechanism combination, constraint release. Propose with prediction and falsification.",
+      "fields_in_input": [
+        "cutoff",
+        "known_before"
+      ],
+      "forbidden_fields_checked": [
+        "name",
+        "year",
+        "discovery_year",
+        "actual",
+        "actual_breakthrough_mechanism",
+        "actual_discovery",
+        "missing_combination",
+        "first_validation_paper",
+        "pre_discovery_sources",
+        "hidden_future_sources",
+        "why_it_was_unexpected",
+        "discovery_pattern",
+        "pattern_detail"
+      ],
+      "leakage_detected": false,
+      "leakage_details": []
+    }
+  ]
+}
