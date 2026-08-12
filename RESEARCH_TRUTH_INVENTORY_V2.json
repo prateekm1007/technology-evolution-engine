@@ -1,0 +1,1089 @@
+{
+  "schema_version": "2.0.0",
+  "inventory_type": "RESEARCH_TRUTH_V2_FORENSIC_CORRECTION",
+  "generated_at": "2026-08-12T18:30:00Z",
+  "generated_from_commit": "3f89e0f5",
+  "classification_legend": {
+    "VALIDATED_MACHINE": "Validated by deterministic/machine test (reproducibility, hash verification, forensic re-computation). Authoritative as machine-validated. Does NOT constitute human validation.",
+    "VALIDATED_HUMAN": "Validated by independent human expert review. Authoritative as human-validated. (Currently: 0 claims — no human adjudication has been performed.)",
+    "RECONSTRUCTION_ONLY": "Describes reconstruction from known data, NOT a genuine discovery. Authoritative as a reconstruction claim; NOT authoritative as a discovery claim.",
+    "INVALIDATED": "Tested and refuted by later evidence. NOT authoritative.",
+    "PROVISIONAL": "Claim made but not yet rigorously tested. NOT authoritative.",
+    "UNTESTED": "Claim made but never tested. NOT authoritative.",
+    "MACHINE_SCORED_RESULT_HUMAN_VALIDATION_PENDING": "Machine scorer produced a result; human validation has NOT been performed. Provisional — authoritative only as 'machine scorer produced this number', NOT as 'this number reflects reality'."
+  },
+  "commits": {
+    "4a1bfdfd": {
+      "date": "2026-08-11T22:37:18Z",
+      "subject": "V1.7: EARLY DISCOVERY ASSISTANT — full project state (clean history)"
+    },
+    "2519e5f5": {
+      "date": "2026-08-11T22:45:37Z",
+      "subject": "V1.8: EARLY SCIENTIFIC TOOL — discovery calibration engine"
+    },
+    "dbae3ffe": {
+      "date": "2026-08-11T23:08:20Z",
+      "subject": "V1.9: EARLY DISCOVERY ASSISTANT — historical backtest 2/5 FOUND"
+    },
+    "ed6d4487": {
+      "date": "2026-08-11T23:22:19Z",
+      "subject": "V1.10: Expanded 50-discovery benchmark + V2 calibrated scorer"
+    },
+    "fa9caf1c": {
+      "date": "2026-08-11T23:52:23Z",
+      "subject": "V1.11: 50-discovery blind benchmark COMPLETE — 96% strict recovery"
+    },
+    "9d2d9567": {
+      "date": "2026-08-12T00:22:16Z",
+      "subject": "V1.12: PROMISING RESEARCH DIRECTION — controls reveal 96% is inflated but architecture adds 76pp over LLM-only"
+    },
+    "4ec892a5": {
+      "date": "2026-08-12T00:52:11Z",
+      "subject": "V1.12 V3 blinded scorer: 90pp discovery gap — real 90% vs false 0%"
+    },
+    "6a87eb05": {
+      "date": "2026-08-12T01:25:19Z",
+      "subject": "V1.12 FINAL: Honest correction — architecture advantage is 4pp not 76pp"
+    },
+    "cd81ca3b": {
+      "date": "2026-08-12T01:59:02Z",
+      "subject": "V1.12 ablation attempt — API latency prevents completion"
+    },
+    "9c01d2cb": {
+      "date": "2026-08-12T02:21:24Z",
+      "subject": "V1.12 ablation COMPLETE — honest negative result for architecture"
+    },
+    "4a1b1d92": {
+      "date": "2026-08-12T03:36:52Z",
+      "subject": "V1.12 Ablation V2 COMPLETE — architecture does NOT add value"
+    },
+    "48c0db25": {
+      "date": "2026-08-12T03:43:14Z",
+      "subject": "V1.12 matched-case analysis — architecture not statistically worse"
+    },
+    "ec214285": {
+      "date": "2026-08-12T04:05:20Z",
+      "subject": "V1.12 FORENSIC AUDIT: VERIFIED — 150 records, 18 matched, McNemar 0.50"
+    },
+    "958311dc": {
+      "date": "2026-08-12T04:19:36Z",
+      "subject": "V1.12 FORENSIC AUDIT PACKAGE — self-contained, 150 raw records, hashes, CIs"
+    },
+    "6211f8fa": {
+      "date": "2026-08-12T04:24:09Z",
+      "subject": "V1.12 GENERATOR INPUT ISOLATION AUDIT — 0/50 payloads leaked"
+    },
+    "035e4948": {
+      "date": "2026-08-12T05:00:24Z",
+      "subject": "V1.12 Discovery Structure Benchmark V1 — COMPLETE"
+    },
+    "6c0eb91d": {
+      "date": "2026-08-12T11:23:09Z",
+      "subject": "V1.12 DSB V1 frozen + human adjudication packet (30 blinded cases)"
+    },
+    "35ff8b64": {
+      "date": "2026-08-12T11:48:18Z",
+      "subject": "V1.12 DSB human adjudication — LOW inter-rater agreement (40% DSM)"
+    },
+    "22b3d36d": {
+      "date": "2026-08-12T12:37:12Z",
+      "subject": "V1.12 Formal Rubric V1 adjudication — ALL thresholds FAILED"
+    },
+    "d98e3620": {
+      "date": "2026-08-12T14:26:46Z",
+      "subject": "V1.12 DSM Decomposition — ALL 6 subclaims FAIL ≥70% threshold"
+    },
+    "b5c7d6dd": {
+      "date": "2026-08-12T14:53:14Z",
+      "subject": "V1.13: Machine-checkable prediction benchmark — DETERMINISTIC scoring"
+    },
+    "7209b294": {
+      "date": "2026-08-12T15:14:51Z",
+      "subject": "V1.13 forensic correction: freeze original, re-score under stricter DISCOVERY_PREDICTION_SCORE"
+    },
+    "38b9b62e": {
+      "date": "2026-08-12T15:47:05Z",
+      "subject": "V1.13 Gate 2: leakage-controlled + deterministic entailment — exit gate FAILS"
+    },
+    "73e00cb5": {
+      "date": "2026-08-12T16:07:30Z",
+      "subject": "V1.13 STOPPED — postmortem + prospective experiment infrastructure (NOT RUN)"
+    },
+    "3296e2e9": {
+      "date": "2026-08-12T16:25:06Z",
+      "subject": "V1.13 prospective gate forensic completion — exit criterion VERIFIED"
+    },
+    "a0a316f6": {
+      "date": "2026-08-12T17:23:00Z",
+      "subject": "DSB V1 — Discovery-Structure Benchmark V1 (exit gate PASS, 6/6)"
+    },
+    "9a259842": {
+      "date": "2026-08-12T17:36:42Z",
+      "subject": "DSB V1 NOT CLOSED — relabel E5 as PENDING_HUMAN_ADJUDICATION"
+    },
+    "3f89e0f5": {
+      "date": "2026-08-12T17:59:05Z",
+      "subject": "DSB V1 forensic recomputation — all 8 checks PASS, no interpretation"
+    }
+  },
+  "claims": [
+    {
+      "id": "C-V1-001",
+      "version": "V1.1-V1.6",
+      "claim": "B-2 leakage detection instrument (8-round adjudication, 4-state ontology, frozen detector) works correctly",
+      "source_commit": "f905b68 (branch, pre-main)",
+      "status": "VALIDATED_MACHINE",
+      "authoritative": true,
+      "evidence": "B-2 held-out evaluation complete; frozen at f905b68; 171+ tests pass",
+      "notes": "The B-2 detector itself is validated. The discovery engine built on top of it is not.",
+      "proxy_evidence": false,
+      "correction_notes": [
+        "Reclassified VALIDATED → VALIDATED_MACHINE: validated by deterministic/machine test, not human review."
+      ],
+      "authoritative_scope": "full"
+    },
+    {
+      "id": "C-V1-002",
+      "version": "V1.1-V1.6",
+      "claim": "Evidence-injection architecture (GLiREL/GLiDRE/Relex-large) improves discovery",
+      "source_commit": "pre-main (B-2 branch)",
+      "status": "INVALIDATED",
+      "authoritative": false,
+      "evidence": "All relation extractors rejected; even oracle evidence degraded performance (contextual interference)",
+      "proxy_evidence": false,
+      "correction_notes": [],
+      "authoritative_scope": "full"
+    },
+    {
+      "id": "C-V1-003",
+      "version": "V1.1-V1.6",
+      "claim": "Custodian infrastructure (source registry, case schema, deterministic sampler, benchmark builder) is sound",
+      "source_commit": "pre-main",
+      "status": "VALIDATED_MACHINE",
+      "authoritative": true,
+      "evidence": "171+ tests pass; 5 forensic defects fixed; accepted as baseline",
+      "proxy_evidence": false,
+      "correction_notes": [
+        "Reclassified VALIDATED → VALIDATED_MACHINE: validated by deterministic/machine test, not human review."
+      ],
+      "authoritative_scope": "full"
+    },
+    {
+      "id": "C-V1-004",
+      "version": "V1.1-V1.6",
+      "claim": "Independent corpus of 112 sources is frozen and usable",
+      "source_commit": "pre-main",
+      "status": "VALIDATED_MACHINE",
+      "authoritative": true,
+      "evidence": "112 sources frozen; 182 candidate pairs frozen; novelty audit V1 done",
+      "proxy_evidence": false,
+      "correction_notes": [
+        "Reclassified VALIDATED → VALIDATED_MACHINE: validated by deterministic/machine test, not human review."
+      ],
+      "authoritative_scope": "full"
+    },
+    {
+      "id": "C-V1-005",
+      "version": "V1.1-V1.6",
+      "claim": "3,900-source corpus on branch is real and usable",
+      "source_commit": "pre-main (branch)",
+      "status": "INVALIDATED",
+      "authoritative": false,
+      "evidence": "MOCK DATA — rejected/non-admissible in forensic reconciliation",
+      "proxy_evidence": false,
+      "correction_notes": [],
+      "authoritative_scope": "full"
+    },
+    {
+      "id": "C-V1-006",
+      "version": "V1.1-V1.6",
+      "claim": "3,210-source corpus exists",
+      "source_commit": "pre-main (branch)",
+      "status": "INVALIDATED",
+      "authoritative": false,
+      "evidence": "NOT FOUND — source manifest never preserved",
+      "proxy_evidence": false,
+      "correction_notes": [],
+      "authoritative_scope": "full"
+    },
+    {
+      "id": "C-V1-007",
+      "version": "V1.7",
+      "claim": "Combination Discovery Engine + Calibrated Survival produces discovery signal",
+      "source_commit": "4a1bfdfd",
+      "status": "INVALIDATED",
+      "authoritative": false,
+      "evidence": "V1.8 baseline showed NO SIGNAL (all methods 0% survival under strict criteria)",
+      "proxy_evidence": false,
+      "correction_notes": [],
+      "authoritative_scope": "full"
+    },
+    {
+      "id": "C-V1-008",
+      "version": "V1.8",
+      "claim": "Discovery Value Model + Expert Funding Simulation + Calibration produces signal",
+      "source_commit": "2519e5f5",
+      "status": "INVALIDATED",
+      "authoritative": false,
+      "evidence": "V1.9 historical backtest: only 2/5 FOUND — no significant discovery signal",
+      "proxy_evidence": false,
+      "correction_notes": [],
+      "authoritative_scope": "full"
+    },
+    {
+      "id": "C-V1-009",
+      "version": "V1.9",
+      "claim": "Historical backtest: 2/5 discoveries found",
+      "source_commit": "dbae3ffe",
+      "status": "RECONSTRUCTION_ONLY",
+      "authoritative": true,
+      "evidence": "2/5 is a reconstruction rate on known discoveries, not a discovery rate. Authoritative as reconstruction metric only.",
+      "proxy_evidence": false,
+      "correction_notes": [],
+      "authoritative_scope": "full"
+    },
+    {
+      "id": "C-V1-010",
+      "version": "V1.10",
+      "claim": "Expanded 50-discovery benchmark + V2 calibrated scorer is valid",
+      "source_commit": "ed6d4487",
+      "status": "INVALIDATED",
+      "authoritative": false,
+      "evidence": "V2 scorer later found to have 60% false discovery rate (too lenient)",
+      "proxy_evidence": false,
+      "correction_notes": [],
+      "authoritative_scope": "full"
+    },
+    {
+      "id": "C-V1-011",
+      "version": "V1.11",
+      "claim": "50-discovery blind benchmark: 96% strict recovery (48/50)",
+      "source_commit": "fa9caf1c",
+      "status": "INVALIDATED",
+      "authoritative": false,
+      "evidence": "V1.12 controls revealed 96% is inflated — V2 scorer too lenient (60% false discovery rate)",
+      "proxy_evidence": false,
+      "correction_notes": [],
+      "authoritative_scope": "full"
+    },
+    {
+      "id": "C-V1-012",
+      "version": "V1.12",
+      "claim": "Architecture adds 76pp over LLM-only (96% vs 20%)",
+      "source_commit": "9d2d9567",
+      "status": "INVALIDATED",
+      "authoritative": false,
+      "evidence": "Corrected in commit 6a87eb05: advantage is 4pp not 76pp. Then further invalidated by ablation V2.",
+      "proxy_evidence": false,
+      "correction_notes": [],
+      "authoritative_scope": "full"
+    },
+    {
+      "id": "C-V1-013",
+      "version": "V1.12",
+      "claim": "V3 blinded scorer: 90pp discovery gap (real 90% vs false 0%)",
+      "source_commit": "4ec892a5",
+      "status": "INVALIDATED",
+      "authoritative": false,
+      "evidence": "V1.12 FINAL report: '90%/0% primarily demonstrates V3 scorer behaves differently from V2. Does NOT establish 90-point discovery advantage.' DSM decomposition later showed all subclaims fail.",
+      "proxy_evidence": false,
+      "correction_notes": [],
+      "authoritative_scope": "full"
+    },
+    {
+      "id": "C-V1-014",
+      "version": "V1.12",
+      "claim": "Architecture advantage is 4pp (not 76pp) — honest correction",
+      "source_commit": "6a87eb05",
+      "status": "INVALIDATED",
+      "authoritative": false,
+      "evidence": "Ablation V2 (commit 4a1b1d92): no incremental value demonstrated; materially worse reliability. McNemar chi-sq=0.50 (not significant).",
+      "proxy_evidence": false,
+      "correction_notes": [
+        "Removed banned phrase 'architecture does NOT add value' from evidence → replaced with 'no incremental value demonstrated' (V2 wording rule)."
+      ],
+      "authoritative_scope": "full"
+    },
+    {
+      "id": "C-V1-015",
+      "version": "V1.12",
+      "claim": "Ablation V2: no incremental value demonstrated for the full architecture (C_mechanism 100% best, F_full 63% ITT worst). McNemar chi-sq=0.50 is NON-SIGNIFICANT — this does NOT establish absence of effect, only failure to demonstrate an effect at this sample size.",
+      "source_commit": "4a1b1d92",
+      "status": "VALIDATED_MACHINE",
+      "authoritative": true,
+      "evidence": "30 cases × 5 configs, V3 scorer. McNemar chi-sq=0.50 (not significant). Architecture materially worse reliability.",
+      "proxy_evidence": false,
+      "correction_notes": [
+        "Reclassified VALIDATED → VALIDATED_MACHINE: no independent human review has been performed on this claim.",
+        "Downgraded wording: 'architecture does NOT add value' → 'no incremental value demonstrated'. McNemar p=0.50 is non-significant; non-significance does NOT establish absence of effect (per MEASUREMENT_CONSTITUTION MC-3, MC-5)."
+      ],
+      "authoritative_scope": "full"
+    },
+    {
+      "id": "C-V1-016",
+      "version": "V1.12",
+      "claim": "Matched-case analysis: no statistically significant difference detected between architecture and control (150 records, 18 matched, McNemar 0.50). This is a failure to detect a difference, NOT proof of no difference.",
+      "source_commit": "48c0db25",
+      "status": "VALIDATED_MACHINE",
+      "authoritative": true,
+      "evidence": "150 records, 18 matched, McNemar 0.50 — not statistically distinguishable",
+      "proxy_evidence": false,
+      "correction_notes": [
+        "Reclassified VALIDATED → VALIDATED_MACHINE: no independent human review has been performed on this claim.",
+        "Downgraded wording: 'architecture not statistically worse' → 'no statistically significant difference detected'. McNemar p=0.50 is non-significant; failure to detect ≠ absence of effect."
+      ],
+      "authoritative_scope": "full"
+    },
+    {
+      "id": "C-V1-017",
+      "version": "V1.12",
+      "claim": "Forensic audit: 150 records, 18 matched, McNemar 0.50 — verified",
+      "source_commit": "ec214285",
+      "status": "VALIDATED_MACHINE",
+      "authoritative": true,
+      "evidence": "Self-contained forensic audit package; reproducible",
+      "proxy_evidence": false,
+      "correction_notes": [
+        "Reclassified VALIDATED → VALIDATED_MACHINE: validated by deterministic/machine test, not human review."
+      ],
+      "authoritative_scope": "full"
+    },
+    {
+      "id": "C-V1-018",
+      "version": "V1.12",
+      "claim": "Generator input isolation: 0/50 payloads leaked",
+      "source_commit": "6211f8fa",
+      "status": "VALIDATED_MACHINE",
+      "authoritative": true,
+      "evidence": "Audit confirmed no leakage in 50 payloads",
+      "proxy_evidence": false,
+      "correction_notes": [
+        "Reclassified VALIDATED → VALIDATED_MACHINE: no independent human review has been performed on this claim."
+      ],
+      "authoritative_scope": "full"
+    },
+    {
+      "id": "C-V1-019",
+      "version": "V1.12",
+      "claim": "DSB V1 (V1.12 version, 30 cases) is complete and valid",
+      "source_commit": "035e4948",
+      "status": "INVALIDATED",
+      "authoritative": false,
+      "evidence": "Human adjudication (LLM-proxy, not real human) showed 40% DSM agreement — below 70% threshold. DSM declared inherently subjective for LLM proxies.",
+      "proxy_evidence": true,
+      "correction_notes": [
+        "Flagged proxy_evidence=True: claim evidence mentions LLM-proxy (proxy evidence, not human validation)."
+      ],
+      "authoritative_scope": "full"
+    },
+    {
+      "id": "C-V1-020",
+      "version": "V1.12",
+      "claim": "DSB human adjudication: 40% DSM agreement (below threshold)",
+      "source_commit": "35ff8b64",
+      "status": "VALIDATED_MACHINE",
+      "authoritative": true,
+      "evidence": "LLM-proxy adjudication (NOT real human). 40% DSM, 29% MR, 33% HR — all below thresholds. Authoritative as LLM-proxy result; NOT as human result.",
+      "proxy_evidence": true,
+      "correction_notes": [
+        "Flagged proxy_evidence=True: LLM-proxy adjudication is proxy evidence, never human validation (per MC-1, MC-4).",
+        "Downgraded VALIDATED → VALIDATED_MACHINE: LLM-proxy adjudication is proxy evidence, never human validation (per MC-1 No self-validation, MC-4 Evidence tiers)."
+      ],
+      "authoritative_scope": "full"
+    },
+    {
+      "id": "C-V1-021",
+      "version": "V1.12",
+      "claim": "Formal Rubric V1: ALL thresholds FAILED (DS 24%, MR 29%, HR 33%)",
+      "source_commit": "22b3d36d",
+      "status": "VALIDATED_MACHINE",
+      "authoritative": true,
+      "evidence": "3 LLM-proxy reviewers. All agreement thresholds failed.",
+      "proxy_evidence": true,
+      "correction_notes": [
+        "Flagged proxy_evidence=True: LLM-proxy adjudication is proxy evidence, never human validation (per MC-1, MC-4).",
+        "Downgraded VALIDATED → VALIDATED_MACHINE: LLM-proxy adjudication is proxy evidence, never human validation (per MC-1 No self-validation, MC-4 Evidence tiers)."
+      ],
+      "authoritative_scope": "full"
+    },
+    {
+      "id": "C-V1-022",
+      "version": "V1.12",
+      "claim": "DSM Decomposition: ALL 6 subclaims FAIL ≥70% threshold",
+      "source_commit": "d98e3620",
+      "status": "VALIDATED_MACHINE",
+      "authoritative": true,
+      "evidence": "6 objective subclaims: component_overlap 60%, causal_relation_overlap 48%, combination_interaction_overlap 62%, constraint_release_overlap 53%, testable_consequence 48%, relation_explicit_in_evidence 65% — all fail.",
+      "proxy_evidence": false,
+      "correction_notes": [
+        "Reclassified VALIDATED → VALIDATED_MACHINE: no independent human review has been performed on this claim."
+      ],
+      "authoritative_scope": "full"
+    },
+    {
+      "id": "C-V1-023",
+      "version": "V1.12",
+      "claim": "DSM is inherently subjective for LLM proxies — retired as primary metric",
+      "source_commit": "d98e3620",
+      "status": "VALIDATED_MACHINE",
+      "authoritative": true,
+      "evidence": "All 6 subclaims failed; LLM proxies insufficient for discovery-structure matching",
+      "proxy_evidence": false,
+      "correction_notes": [
+        "Reclassified VALIDATED → VALIDATED_MACHINE: no independent human review has been performed on this claim."
+      ],
+      "authoritative_scope": "full"
+    },
+    {
+      "id": "C-V1-024",
+      "version": "V1.12",
+      "claim": "RELATION_NOVELTY is a deterministic, reproducible novelty check (NOT a discovery metric)",
+      "source_commit": "d98e3620",
+      "status": "VALIDATED_MACHINE",
+      "authoritative": true,
+      "evidence": "27/30 proposals have novel relationships not in evidence. 100% reproducible. Correctly labeled as novelty check only.",
+      "proxy_evidence": false,
+      "correction_notes": [
+        "Reclassified VALIDATED → VALIDATED_MACHINE: validated by deterministic/machine test, not human review."
+      ],
+      "authoritative_scope": "full"
+    },
+    {
+      "id": "C-V1-025",
+      "version": "V1.13",
+      "claim": "Original V1.13: 30-40% CORRECT via broad-range matching",
+      "source_commit": "b5c7d6dd",
+      "status": "INVALIDATED",
+      "authoritative": false,
+      "evidence": "Gate 1 (7209b294): broad-range matching made CORRECT almost unfalsifiable. Retracted.",
+      "proxy_evidence": false,
+      "correction_notes": [],
+      "authoritative_scope": "full"
+    },
+    {
+      "id": "C-V1-026",
+      "version": "V1.13",
+      "claim": "Gate 1 forensic correction: 7.5% DPS=1 (3/40) under stricter scoring",
+      "source_commit": "7209b294",
+      "status": "INVALIDATED",
+      "authoritative": false,
+      "evidence": "Gate 2 (38b9b62e): the 3 surviving receipts were range-fitting artifacts (lower bounds within 1 unit of observed values). Gate 1 DPS=1 itself was inflated.",
+      "proxy_evidence": false,
+      "correction_notes": [],
+      "authoritative_scope": "full"
+    },
+    {
+      "id": "C-V1-027",
+      "version": "V1.13",
+      "claim": "Gate 2: 0/40 DPS=1 — negative result accepted",
+      "source_commit": "38b9b62e",
+      "status": "VALIDATED_MACHINE",
+      "authoritative": true,
+      "evidence": "Leakage-controlled receipts + deterministic entailment. All 4 arms tie at 0%. Reproducible. Receipt integrity verified.",
+      "proxy_evidence": false,
+      "correction_notes": [
+        "Reclassified VALIDATED → VALIDATED_MACHINE: validated by deterministic/machine test, not human review."
+      ],
+      "authoritative_scope": "full"
+    },
+    {
+      "id": "C-V1-028",
+      "version": "V1.13",
+      "claim": "Retrospective LLM backtesting is exhausted as a method for establishing the North Star. Three structural reasons: (1) parametric memory leakage, (2) experimenter bias in case selection, (3) no true control when the LLM has foreknowledge. This does NOT address non-LLM retrospective approaches.",
+      "source_commit": "73e00cb5",
+      "status": "VALIDATED_MACHINE",
+      "authoritative": true,
+      "evidence": "3 structural reasons: parametric memory leakage, experimenter bias, no true control. Documented in postmortem.",
+      "proxy_evidence": false,
+      "correction_notes": [
+        "Reclassified VALIDATED → VALIDATED_MACHINE: no independent human review has been performed on this claim.",
+        "Narrowed wording: 'all retrospective approaches exhausted' → 'retrospective LLM backtesting is exhausted'. The V1 wording was too broad — only LLM-based retrospective backtesting was tested."
+      ],
+      "authoritative_scope": "full"
+    },
+    {
+      "id": "C-V1-029",
+      "version": "V1.13",
+      "claim": "Prospective experiment infrastructure is auditable and independently reproducible",
+      "source_commit": "3296e2e9",
+      "status": "VALIDATED_MACHINE",
+      "authoritative": true,
+      "evidence": "Clean-clone audit: 6/6 checks PASS. Exit criterion verified. 27+ invariants enforced. Real experiment NOT run.",
+      "proxy_evidence": false,
+      "correction_notes": [
+        "Reclassified VALIDATED → VALIDATED_MACHINE: validated by deterministic/machine test, not human review.",
+        "Note: clean-clone audit is a deterministic machine test (6 invariant checks). NOT human review. Correctly VALIDATED_MACHINE."
+      ],
+      "authoritative_scope": "full"
+    },
+    {
+      "id": "C-V1-030",
+      "version": "V1.13",
+      "claim": "The 3 Gate 1 DPS=1 receipts were range-fitting artifacts",
+      "source_commit": "38b9b62e",
+      "status": "VALIDATED_MACHINE",
+      "authoritative": true,
+      "evidence": "All 3 had lower bounds within 1 unit of observed historical value — signature of range-fitting from training-data leakage",
+      "proxy_evidence": false,
+      "correction_notes": [
+        "Reclassified VALIDATED → VALIDATED_MACHINE: no independent human review has been performed on this claim."
+      ],
+      "authoritative_scope": "full"
+    },
+    {
+      "id": "C-DSB-001",
+      "version": "DSB V1 (new)",
+      "claim": "DSB V1 exit gate PASS (6/6 components)",
+      "source_commit": "a0a316f6",
+      "status": "INVALIDATED",
+      "authoritative": false,
+      "evidence": "Relabeled in 9a259842: E5 is PENDING_HUMAN_ADJUDICATION, not PASS. DSB V1 is NOT scientifically closed.",
+      "proxy_evidence": false,
+      "correction_notes": [],
+      "authoritative_scope": "full"
+    },
+    {
+      "id": "C-DSB-002",
+      "version": "DSB V1 (new)",
+      "claim": "DSB V1 leakage audit: 80/80 payloads PASS, 0 leakage",
+      "source_commit": "a0a316f6",
+      "status": "VALIDATED_MACHINE",
+      "authoritative": true,
+      "evidence": "Forensic recomputation (3f89e0f5): all 80 payloads pass L1-L7. Reproducible.",
+      "proxy_evidence": false,
+      "correction_notes": [
+        "Reclassified VALIDATED → VALIDATED_MACHINE: validated by deterministic/machine test, not human review."
+      ],
+      "authoritative_scope": "full"
+    },
+    {
+      "id": "C-DSB-003",
+      "version": "DSB V1 (new)",
+      "claim": "DSB V1 receipt integrity: 80/80 hash-sealed and verified",
+      "source_commit": "a0a316f6",
+      "status": "VALIDATED_MACHINE",
+      "authoritative": true,
+      "evidence": "Forensic recomputation (3f89e0f5): all 80 receipt hashes valid",
+      "proxy_evidence": false,
+      "correction_notes": [
+        "Reclassified VALIDATED → VALIDATED_MACHINE: validated by deterministic/machine test, not human review."
+      ],
+      "authoritative_scope": "full"
+    },
+    {
+      "id": "C-DSB-004",
+      "version": "DSB V1 (new)",
+      "claim": "DSB V1 scorer is reproducible (byte-identical modulo timestamps)",
+      "source_commit": "a0a316f6",
+      "status": "VALIDATED_MACHINE",
+      "authoritative": true,
+      "evidence": "Forensic recomputation (3f89e0f5): 80/80 scores recomputed identically",
+      "proxy_evidence": false,
+      "correction_notes": [
+        "Reclassified VALIDATED → VALIDATED_MACHINE: validated by deterministic/machine test, not human review."
+      ],
+      "authoritative_scope": "full"
+    },
+    {
+      "id": "C-DSB-005",
+      "version": "DSB V1 (new)",
+      "claim": "DSB V1: 13/80 discovery-structure recoveries (10 fabricated + 3 real)",
+      "source_commit": "9a259842",
+      "status": "MACHINE_SCORED_RESULT_HUMAN_VALIDATION_PENDING",
+      "authoritative": true,
+      "evidence": "Forensic recomputation (3f89e0f5): 13 recoveries independently regenerated. 10 fabricated + 3 real = 13. Verified from raw records.",
+      "proxy_evidence": false,
+      "correction_notes": [
+        "Reclassified VALIDATED → VALIDATED_MACHINE: validated by deterministic/machine test, not human review.",
+        "Reclassified VALIDATED → MACHINE_SCORED_RESULT_HUMAN_VALIDATION_PENDING: 13/80 is a machine-scorer result; human validation has NOT been performed."
+      ],
+      "authoritative_scope": "machine_result_only"
+    },
+    {
+      "id": "C-DSB-006",
+      "version": "DSB V1 (new)",
+      "claim": "DSB V1: fabricated cases score higher than real (10 fab vs 3 real recoveries)",
+      "source_commit": "9a259842",
+      "status": "MACHINE_SCORED_RESULT_HUMAN_VALIDATION_PENDING",
+      "authoritative": true,
+      "evidence": "Deterministic scorer shows fabricated > real inversion. Human adjudication required to determine whether this is (a) scorer too lenient, (b) LLM better at inventing, or (c) case design flaw.",
+      "proxy_evidence": false,
+      "correction_notes": [
+        "Reclassified PENDING_HUMAN_REVIEW → MACHINE_SCORED_RESULT_HUMAN_VALIDATION_PENDING: fabricated>real is a machine-scorer result; human validation pending."
+      ],
+      "authoritative_scope": "machine_result_only"
+    },
+    {
+      "id": "C-DSB-007",
+      "version": "DSB V1 (new)",
+      "claim": "DSB V1: no architecture advantage (full_system does not outperform other arms)",
+      "source_commit": "a0a316f6",
+      "status": "MACHINE_SCORED_RESULT_HUMAN_VALIDATION_PENDING",
+      "authoritative": true,
+      "evidence": "Deterministic scorer shows no arm advantage. Human adjudication required to confirm under human gold standard.",
+      "proxy_evidence": false,
+      "correction_notes": [
+        "Reclassified PENDING_HUMAN_REVIEW → MACHINE_SCORED_RESULT_HUMAN_VALIDATION_PENDING: 'no architecture advantage' is a machine-scorer result; human validation pending."
+      ],
+      "authoritative_scope": "machine_result_only"
+    },
+    {
+      "id": "C-DSB-008",
+      "version": "DSB V1 (new)",
+      "claim": "DSB V1: 0/80 mechanism reconstructions at ≥0.50 threshold",
+      "source_commit": "a0a316f6",
+      "status": "MACHINE_SCORED_RESULT_HUMAN_VALIDATION_PENDING",
+      "authoritative": true,
+      "evidence": "Deterministic scorer shows 0 reconstructions. Human adjudication required to validate the threshold.",
+      "proxy_evidence": false,
+      "correction_notes": [
+        "Reclassified PENDING_HUMAN_REVIEW → MACHINE_SCORED_RESULT_HUMAN_VALIDATION_PENDING: 0/80 mechanism reconstructions is a machine-scorer result; human validation pending."
+      ],
+      "authoritative_scope": "machine_result_only"
+    },
+    {
+      "id": "C-DSB-009",
+      "version": "DSB V1 (new)",
+      "claim": "DSB V1: 14 focused-review packets selected without human outcomes",
+      "source_commit": "9a259842",
+      "status": "VALIDATED_MACHINE",
+      "authoritative": true,
+      "evidence": "Forensic recomputation (3f89e0f5): 14 packet IDs regenerated from deterministic criteria only. Match frozen file exactly. No human outcomes used.",
+      "proxy_evidence": false,
+      "correction_notes": [
+        "Reclassified VALIDATED → VALIDATED_MACHINE: validated by deterministic/machine test, not human review."
+      ],
+      "authoritative_scope": "full"
+    },
+    {
+      "id": "C-DSB-010",
+      "version": "DSB V1 (new)",
+      "claim": "DSB V1 freeze manifest: 111 artifacts unchanged after freeze",
+      "source_commit": "9a259842",
+      "status": "VALIDATED_MACHINE",
+      "authoritative": true,
+      "evidence": "Forensic recomputation (3f89e0f5): 111/111 artifacts unchanged",
+      "proxy_evidence": false,
+      "correction_notes": [
+        "Reclassified VALIDATED → VALIDATED_MACHINE: validated by deterministic/machine test, not human review."
+      ],
+      "authoritative_scope": "full"
+    },
+    {
+      "id": "C-DSB-011",
+      "version": "DSB V1 (new)",
+      "claim": "DSB V1 E5 (human adjudication): PENDING — not yet performed by independent human experts",
+      "source_commit": "9a259842",
+      "status": "PROVISIONAL",
+      "authoritative": false,
+      "evidence": "Adjudication infrastructure built and ready. 80 blind packets + 14 focused-review packets. Requires 2-3 independent expert adjudicators (NOT experimenter, NOT LLM proxy).",
+      "proxy_evidence": true,
+      "correction_notes": [
+        "Flagged proxy_evidence=True: claim evidence mentions LLM-proxy (proxy evidence, not human validation).",
+        "Reclassified PENDING_HUMAN_REVIEW → PROVISIONAL: adjudication infrastructure is built but the actual human adjudication has not been performed. Claim is provisional."
+      ],
+      "authoritative_scope": "full"
+    },
+    {
+      "id": "C-DSB-012",
+      "version": "DSB V1 (new)",
+      "claim": "DSB V1 scorer is FROZEN — must not be tuned on these 80 cases",
+      "source_commit": "9a259842",
+      "status": "VALIDATED_MACHINE",
+      "authoritative": true,
+      "evidence": "SCORER_CALIBRATION_PROTOCOL.md documents frozen scorer policy. Separate 40-case calibration set required if human review shows systematic false positives.",
+      "proxy_evidence": false,
+      "correction_notes": [
+        "Reclassified VALIDATED → VALIDATED_MACHINE: validated by deterministic/machine test, not human review."
+      ],
+      "authoritative_scope": "full"
+    }
+  ],
+  "modules": [
+    {
+      "name": "B-2 leakage detector",
+      "path": "discovery_fabric/b2_leakage_detector (branch)",
+      "source_commit": "f905b68",
+      "authoritative": true,
+      "status": "VALIDATED",
+      "notes": "171+ tests pass; frozen"
+    },
+    {
+      "name": "Custodian infrastructure",
+      "path": "discovery_fabric/custodian (branch)",
+      "source_commit": "pre-main",
+      "authoritative": true,
+      "status": "VALIDATED",
+      "notes": "171+ tests; 5 forensic defects fixed"
+    },
+    {
+      "name": "V1.4 baseline",
+      "path": "discovery_fabric/experiments/V1_4_BASELINE",
+      "source_commit": "pre-main",
+      "authoritative": true,
+      "status": "VALIDATED",
+      "notes": "Frozen hash 043ed456"
+    },
+    {
+      "name": "V1.6 baseline",
+      "path": "discovery_fabric/experiments/V1_6_BASELINE",
+      "source_commit": "pre-main",
+      "authoritative": true,
+      "status": "VALIDATED",
+      "notes": "Frozen hash be41ac3e"
+    },
+    {
+      "name": "V1.7 baseline",
+      "path": "discovery_fabric/experiments/V1_7_BASELINE",
+      "source_commit": "4a1bfdfd",
+      "authoritative": true,
+      "status": "VALIDATED",
+      "notes": "Frozen hash b9260717"
+    },
+    {
+      "name": "V1.12 COMPLETE FROZEN",
+      "path": "discovery_fabric/experiments/V1_12_COMPLETE_FROZEN",
+      "source_commit": "4a1b1d92",
+      "authoritative": true,
+      "status": "VALIDATED",
+      "notes": "Ablation V2 complete; architecture does not add value"
+    },
+    {
+      "name": "V1.12 DSB V1 FROZEN (old, 30 cases)",
+      "path": "discovery_fabric/experiments/DSB_V1_FROZEN",
+      "source_commit": "6c0eb91d",
+      "authoritative": true,
+      "status": "RECONSTRUCTION_ONLY",
+      "notes": "LLM-proxy adjudication only; DSM declared subjective; not human-validated"
+    },
+    {
+      "name": "V1.13 prediction benchmark",
+      "path": "discovery_fabric/v1_13",
+      "source_commit": "b5c7d6dd",
+      "authoritative": true,
+      "status": "VALIDATED",
+      "notes": "Frozen; original receipts preserved"
+    },
+    {
+      "name": "V1.13 forensic evaluator",
+      "path": "discovery_fabric/v1_13_forensic",
+      "source_commit": "7209b294",
+      "authoritative": true,
+      "status": "VALIDATED",
+      "notes": "Gate 1 forensic correction; 7.5% DPS=1 (later invalidated by Gate 2)"
+    },
+    {
+      "name": "V1.13 Gate 2 evaluator",
+      "path": "discovery_fabric/v1_13_gate2",
+      "source_commit": "38b9b62e",
+      "authoritative": true,
+      "status": "VALIDATED",
+      "notes": "0/40 DPS=1; negative result accepted"
+    },
+    {
+      "name": "V1.13 postmortem",
+      "path": "discovery_fabric/v1_13_postmortem",
+      "source_commit": "73e00cb5",
+      "authoritative": true,
+      "status": "VALIDATED",
+      "notes": "Retrospective evaluation exhausted"
+    },
+    {
+      "name": "Prospective experiment infrastructure",
+      "path": "discovery_fabric/prospective",
+      "source_commit": "3296e2e9",
+      "authoritative": true,
+      "status": "VALIDATED",
+      "notes": "Clean-clone audit PASS; NOT RUN"
+    },
+    {
+      "name": "DSB V1 (new, 80 cases)",
+      "path": "discovery_fabric/dsb_v1",
+      "source_commit": "a0a316f6",
+      "authoritative": true,
+      "status": "PENDING_HUMAN_REVIEW",
+      "notes": "Frozen; 80 receipts; scorer frozen; awaiting human adjudication"
+    }
+  ],
+  "scorers": [
+    {
+      "name": "V2 calibrated scorer",
+      "version": "V1.10-V1.11",
+      "source_commit": "ed6d4487",
+      "authoritative": false,
+      "status": "INVALIDATED",
+      "notes": "60% false discovery rate; too lenient"
+    },
+    {
+      "name": "V3 blinded scorer",
+      "version": "V1.12",
+      "source_commit": "4ec892a5",
+      "authoritative": true,
+      "status": "RECONSTRUCTION_ONLY",
+      "notes": "94% real recovery, 0% false positive. But architecture advantage only 4pp. Authoritative as reconstruction metric; NOT as discovery metric."
+    },
+    {
+      "name": "V1.13 original evaluator (broad-range)",
+      "version": "V1.13",
+      "source_commit": "b5c7d6dd",
+      "authoritative": false,
+      "status": "INVALIDATED",
+      "notes": "Broad-range matching made CORRECT unfalsifiable"
+    },
+    {
+      "name": "V1.13 forensic evaluator (Gate 1 DPS)",
+      "version": "V1.13",
+      "source_commit": "7209b294",
+      "authoritative": false,
+      "status": "INVALIDATED",
+      "notes": "7.5% DPS=1 was inflated by range-fitting; invalidated by Gate 2"
+    },
+    {
+      "name": "V1.13 Gate 2 evaluator (deterministic entailment + point estimate)",
+      "version": "V1.13",
+      "source_commit": "38b9b62e",
+      "authoritative": true,
+      "status": "VALIDATED",
+      "notes": "0/40 DPS=1; reproducible; receipt integrity verified"
+    },
+    {
+      "name": "DSB V1 scorer (deterministic, 2-outcome)",
+      "version": "DSB V1",
+      "source_commit": "a0a316f6",
+      "authoritative": true,
+      "status": "PENDING_HUMAN_REVIEW",
+      "notes": "Frozen; not tuned on 80 cases; awaits human validation"
+    }
+  ],
+  "benchmarks": [
+    {
+      "name": "V1.9 historical backtest (5 cases)",
+      "version": "V1.9",
+      "source_commit": "dbae3ffe",
+      "authoritative": true,
+      "status": "RECONSTRUCTION_ONLY",
+      "notes": "2/5 found; reconstruction rate, not discovery rate"
+    },
+    {
+      "name": "V1.10 expanded 50-discovery benchmark",
+      "version": "V1.10",
+      "source_commit": "ed6d4487",
+      "authoritative": false,
+      "status": "INVALIDATED",
+      "notes": "V2 scorer too lenient; 96% claim inflated"
+    },
+    {
+      "name": "V1.11 50-discovery blind benchmark",
+      "version": "V1.11",
+      "source_commit": "fa9caf1c",
+      "authoritative": false,
+      "status": "INVALIDATED",
+      "notes": "96% strict recovery invalidated by V1.12 controls"
+    },
+    {
+      "name": "V1.12 ablation (30 cases × 5 configs)",
+      "version": "V1.12",
+      "source_commit": "4a1b1d92",
+      "authoritative": true,
+      "status": "VALIDATED",
+      "notes": "Architecture does not add value; McNemar 0.50"
+    },
+    {
+      "name": "V1.12 DSB (30 cases, LLM-proxy adjudication)",
+      "version": "V1.12",
+      "source_commit": "6c0eb91d",
+      "authoritative": true,
+      "status": "RECONSTRUCTION_ONLY",
+      "notes": "LLM-proxy only; DSM subjective; all thresholds failed"
+    },
+    {
+      "name": "V1.13 prediction benchmark (10 cases × 4 configs)",
+      "version": "V1.13",
+      "source_commit": "b5c7d6dd",
+      "authoritative": true,
+      "status": "VALIDATED",
+      "notes": "Frozen; 0/40 DPS=1 under Gate 2; negative result accepted"
+    },
+    {
+      "name": "DSB V1 (20 cases × 4 arms = 80 receipts)",
+      "version": "DSB V1",
+      "source_commit": "a0a316f6",
+      "authoritative": true,
+      "status": "PENDING_HUMAN_REVIEW",
+      "notes": "Frozen; 13/80 recoveries; fabricated > real; awaits human adjudication"
+    }
+  ],
+  "reports": [
+    {
+      "path": "discovery_fabric/reports/DISCOVERY_ENGINE_V1_4_REPORT.md",
+      "source_commit": "pre-main",
+      "authoritative": true,
+      "status": "VALIDATED",
+      "notes": "V1.2 baseline failed adversarial validation"
+    },
+    {
+      "path": "discovery_fabric/reports/DISCOVERY_ENGINE_V1_5_VALIDATION_REPORT.md",
+      "source_commit": "pre-main",
+      "authoritative": true,
+      "status": "VALIDATED",
+      "notes": "NO SIGNAL — all methods 0% survival"
+    },
+    {
+      "path": "discovery_fabric/reports/DISCOVERY_ENGINE_V1_6_REPORT.md",
+      "source_commit": "pre-main",
+      "authoritative": true,
+      "status": "VALIDATED",
+      "notes": "Frozen baseline"
+    },
+    {
+      "path": "discovery_fabric/reports/DISCOVERY_ENGINE_V1_7_REPORT.md",
+      "source_commit": "4a1bfdfd",
+      "authoritative": false,
+      "status": "INVALIDATED",
+      "notes": "Combination discovery claim invalidated by V1.8"
+    },
+    {
+      "path": "discovery_fabric/reports/DISCOVERY_ENGINE_V1_8_CALIBRATION_REPORT.md",
+      "source_commit": "2519e5f5",
+      "authoritative": false,
+      "status": "INVALIDATED",
+      "notes": "Calibration claim invalidated by V1.9 (2/5 found)"
+    },
+    {
+      "path": "discovery_fabric/reports/DISCOVERY_ENGINE_V1_9_VALIDATION_REPORT.md",
+      "source_commit": "dbae3ffe",
+      "authoritative": true,
+      "status": "RECONSTRUCTION_ONLY",
+      "notes": "2/5 found; reconstruction rate"
+    },
+    {
+      "path": "discovery_fabric/evaluation/historical_backtest/V1_11_VALIDATION_SEAL.md",
+      "source_commit": "fa9caf1c",
+      "authoritative": false,
+      "status": "INVALIDATED",
+      "notes": "96% claim invalidated by V1.12 controls"
+    },
+    {
+      "path": "discovery_fabric/reports/V1_12_VALIDATION_REPORT.md",
+      "source_commit": "9d2d9567",
+      "authoritative": false,
+      "status": "INVALIDATED",
+      "notes": "76pp claim corrected to 4pp then invalidated"
+    },
+    {
+      "path": "discovery_fabric/reports/V1_12_FINAL_VALIDATION_REPORT.md",
+      "source_commit": "6a87eb05",
+      "authoritative": true,
+      "status": "VALIDATED",
+      "notes": "Honest correction; 90%/0% is scorer behavior, not discovery advantage"
+    },
+    {
+      "path": "discovery_fabric/experiments/V1_12_COMPLETE_FROZEN/V1_12_FINAL_VALIDATION_REPORT.md",
+      "source_commit": "4a1b1d92",
+      "authoritative": true,
+      "status": "VALIDATED",
+      "notes": "Ablation V2; architecture does not add value"
+    },
+    {
+      "path": "discovery_fabric/evaluation/v1_12_controls/human_adjudication/DSB_HUMAN_ADJUDICATION_REPORT_V1.md",
+      "source_commit": "35ff8b64",
+      "authoritative": true,
+      "status": "RECONSTRUCTION_ONLY",
+      "notes": "LLM-proxy, NOT human; 40% DSM; all thresholds failed"
+    },
+    {
+      "path": "discovery_fabric/v1_13_forensic/V1_13_FORENSIC_CORRECTION_REPORT.md",
+      "source_commit": "7209b294",
+      "authoritative": true,
+      "status": "VALIDATED",
+      "notes": "30-40% claim does not survive; 7.5% DPS=1 (later invalidated by Gate 2)"
+    },
+    {
+      "path": "discovery_fabric/v1_13_gate2/V1_13_GATE2_REPORT.md",
+      "source_commit": "38b9b62e",
+      "authoritative": true,
+      "status": "VALIDATED",
+      "notes": "0/40 DPS=1; negative result accepted"
+    },
+    {
+      "path": "discovery_fabric/v1_13_postmortem/V1.13_RETROSPECTIVE_BENCHMARK_POSTMORTEM.md",
+      "source_commit": "73e00cb5",
+      "authoritative": true,
+      "status": "VALIDATED",
+      "notes": "Retrospective evaluation exhausted; 17 design flaws documented"
+    },
+    {
+      "path": "discovery_fabric/prospective/V1_13_PROSPECTIVE_GATE_FORENSIC_COMPLETION.md",
+      "source_commit": "3296e2e9",
+      "authoritative": true,
+      "status": "VALIDATED",
+      "notes": "Exit criterion verified; NOT RUN"
+    },
+    {
+      "path": "discovery_fabric/dsb_v1/DSB_V1_REPORT.md",
+      "source_commit": "9a259842",
+      "authoritative": true,
+      "status": "PENDING_HUMAN_REVIEW",
+      "notes": "E5 PENDING; NOT CLOSED; 13/80 recoveries; fabricated > real"
+    },
+    {
+      "path": "discovery_fabric/dsb_v1/DSB_V1_FORENSIC_RECOMPUTATION.md",
+      "source_commit": "3f89e0f5",
+      "authoritative": true,
+      "status": "VALIDATED",
+      "notes": "All 8 forensic checks PASS; zero interpretation"
+    },
+    {
+      "path": "discovery_fabric/dsb_v1/SCORER_CALIBRATION_PROTOCOL.md",
+      "source_commit": "9a259842",
+      "authoritative": true,
+      "status": "VALIDATED",
+      "notes": "Frozen scorer policy; separate calibration set required if FP > 30%"
+    }
+  ],
+  "north_star_status": {
+    "question": "Can TEE produce independently novel, retrieval-negative, adversarially surviving, falsifiable hypotheses at a materially higher rate than controls?",
+    "status": "UNPROVEN",
+    "authoritative": true,
+    "evidence": "V1.12 ablation: no incremental value demonstrated (McNemar p=0.50 non-significant; does NOT establish absence of effect). V1.13 Gate 2: 0/40 DPS=1 under strict deterministic scoring (machine-validated, negative result). DSB V1: 13/80 recoveries (MACHINE_SCORED_RESULT — human validation pending), fabricated > real (MACHINE_SCORED_RESULT — human validation pending), no architecture advantage (MACHINE_SCORED_RESULT — human validation pending). Retrospective LLM backtesting is exhausted as a method for establishing the North Star (3 structural reasons). Prospective experiment infrastructure built but NOT RUN.",
+    "blocking_items": [
+      "DSB V1 human adjudication (2-3 independent expert adjudicators required)",
+      "DSB V1 scorer validity against humans (confusion matrices)",
+      "DSB V1 fabricated-vs-real inversion explanation (under human review)",
+      "Prospective experiment (only if DSB V1 closes successfully AND independent audit passes)"
+    ]
+  },
+  "quarantine": {
+    "status": "ACTIVE",
+    "prohibited_until_close": [
+      "No temporal reasoning module",
+      "No negative knowledge module",
+      "No patent integration",
+      "No architecture redesign",
+      "No new discovery modes",
+      "No scorer tuning on DSB V1 80 cases"
+    ],
+    "permitted_forward_work": [
+      "DSB V1 human adjudication (2-3 independent expert adjudicators)",
+      "DSB V1 analysis pipeline (confusion matrices, inter-rater agreement, architecture recompute)",
+      "Scorer-calibration set construction (ONLY if human review shows FP > 30%)",
+      "Prospective experiment (ONLY if DSB V1 closes AND independent audit passes)"
+    ],
+    "v2_correction_note": "Quarantine remains active. The V1.12 ablation result is 'no incremental value demonstrated' (McNemar p=0.50 non-significant), NOT 'architecture does not add value'. This is a failure to demonstrate an effect, not proof of absence of effect."
+  },
+  "v1_source": "RESEARCH_TRUTH_INVENTORY.json",
+  "v2_generated_at": "2026-08-12T18:23:05.582618+00:00",
+  "summary_counts": {
+    "VALIDATED_MACHINE": 22,
+    "VALIDATED_HUMAN": 0,
+    "RECONSTRUCTION_ONLY": 1,
+    "INVALIDATED": 14,
+    "PROVISIONAL": 1,
+    "UNTESTED": 0,
+    "MACHINE_SCORED_RESULT_HUMAN_VALIDATION_PENDING": 4,
+    "TOTAL": 42,
+    "AUTHORITATIVE": 27,
+    "NON_AUTHORITATIVE": 15
+  },
+  "inventory_hash": "27b05cc200b2998ad9c8980c7a469847bc5a4b1d8534e5996def696a7ab1104b"
+}
