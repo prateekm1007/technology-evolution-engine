@@ -1,0 +1,46 @@
+{
+  "schema_version": "1.0.0",
+  "result_type": "DRY_RUN",
+  "generated_at": "2026-08-12T23:26:27.472754+00:00",
+  "protocol_hash": "9dede9765582289f75b4a7803a74cf64f7978b4a3dd9d4abc3afe3fb9ad86585",
+  "gate_hash": "29a18505a098940d1cd39e4512a2f6fca2dda957ed8ff841e3431ebe432cd894",
+  "seal_id": "",
+  "prediction_freeze_hash": "0d14ad172e0a937169165247a15b01a3686cc9b617f28945796b1bb52c28d802",
+  "n_predictions": 10,
+  "per_arm_analysis": {
+    "A0": {
+      "n": 5,
+      "true_confirmed": 0,
+      "foil_confirmed": 0,
+      "retrieval_negative": 5,
+      "non_entailed": 5,
+      "true_confirmation_rate": 0.0,
+      "foil_confirmation_rate": 0.0,
+      "net_discovery_rate": 0.0
+    },
+    "A1": {
+      "n": 5,
+      "true_confirmed": 0,
+      "foil_confirmed": 0,
+      "retrieval_negative": 5,
+      "non_entailed": 5,
+      "true_confirmation_rate": 0.0,
+      "foil_confirmation_rate": 0.0,
+      "net_discovery_rate": 0.0
+    }
+  },
+  "decision": {
+    "fabric_status": "NOT_APPLICABLE",
+    "aint_1_result": "A2_NOT_RUN",
+    "a0_net_discovery_rate": 0.0,
+    "a1_net_discovery_rate": 0.0,
+    "a2_net_discovery_rate": null,
+    "dry_run": true,
+    "decision_sealed_at": "2026-08-12T23:26:27.472702+00:00"
+  },
+  "event_chain_hash": "e82f34e2e02ef538ef2b298454e0e916798abeae29977df921fc1b111a9e8713",
+  "fabric_status": "NOT_APPLICABLE",
+  "aint_1_result": "A2_NOT_RUN",
+  "dry_run": true,
+  "package_hash": "ca76d95152135ec6d2e7c5d815e438a9c0efc0153e65804df136db595b418298"
+}
