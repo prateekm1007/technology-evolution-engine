@@ -1,0 +1,118 @@
+{
+  "llm_only_v3": {
+    "MECHANISM_MATCH": 9,
+    "NO_MATCH": 1
+  },
+  "false_v3": {
+    "NO_MATCH": 10
+  },
+  "llm_strict": 9,
+  "false_strict": 0,
+  "llm_rate": "90%",
+  "false_rate": "0%",
+  "gap": "90pp",
+  "llm_results": [
+    {
+      "name": "CRISPR-Cas9 gene editing",
+      "v3": "MECHANISM_MATCH",
+      "q": 0.9
+    },
+    {
+      "name": "mRNA vaccines",
+      "v3": "MECHANISM_MATCH",
+      "q": 0.9
+    },
+    {
+      "name": "Lithium-ion battery",
+      "v3": "MECHANISM_MATCH",
+      "q": 0.9
+    },
+    {
+      "name": "PCR",
+      "v3": "MECHANISM_MATCH",
+      "q": 0.9
+    },
+    {
+      "name": "Graphene",
+      "v3": "MECHANISM_MATCH",
+      "q": 0.9
+    },
+    {
+      "name": "Transformer architecture",
+      "v3": "MECHANISM_MATCH",
+      "q": 0.8
+    },
+    {
+      "name": "AlexNet / deep learning",
+      "v3": "MECHANISM_MATCH",
+      "q": 0.9
+    },
+    {
+      "name": "Penicillin",
+      "v3": "NO_MATCH",
+      "q": 0.0
+    },
+    {
+      "name": "Monoclonal antibodies",
+      "v3": "MECHANISM_MATCH",
+      "q": 1.0
+    },
+    {
+      "name": "Checkpoint immunotherapy anti-PD-1",
+      "v3": "MECHANISM_MATCH",
+      "q": 0.9
+    }
+  ],
+  "false_results": [
+    {
+      "name": "CRISPR-mediated epigenetic reprogramming",
+      "v3": "NO_MATCH",
+      "q": 0
+    },
+    {
+      "name": "Nanospike Therapy",
+      "v3": "NO_MATCH",
+      "q": 0
+    },
+    {
+      "name": "Lithium-Iron-Oxide Hybrid Cathode",
+      "v3": "NO_MATCH",
+      "q": 0
+    },
+    {
+      "name": "Thermal Primer Activation",
+      "v3": "NO_MATCH",
+      "q": 0
+    },
+    {
+      "name": "Quantum Flux Stabilization",
+      "v3": "NO_MATCH",
+      "q": 0
+    },
+    {
+      "name": "Temporal Attention Inversion",
+      "v3": "NO_MATCH",
+      "q": 0
+    },
+    {
+      "name": "NeuroSpectral Filtering",
+      "v3": "NO_MATCH",
+      "q": 0
+    },
+    {
+      "name": "Mycoceptin",
+      "v3": "NO_MATCH",
+      "q": 0
+    },
+    {
+      "name": "Hybridoma Regeneration Therapy",
+      "v3": "NO_MATCH",
+      "q": 0
+    },
+    {
+      "name": "T-cell Rejuvenation Therapy",
+      "v3": "NO_MATCH",
+      "q": 0
+    }
+  ]
+}
