@@ -29,3 +29,6 @@ experiments/measurement_discrimination/b2_adversarial_v2/implementation/node_mod
 # Adjudication vault keys — NEVER commit
 discovery_fabric/dsb_v1/adjudication_engine_v*/evaluator_boundary/vault_key*
 discovery_fabric/dsb_v1/adjudication_engine_v*/vault/machine_score_vault*
+
+# V8: adjudicator bundle is an EXTERNAL build artifact, never committed
+discovery_fabric/dsb_v1/adjudicator_bundle/
