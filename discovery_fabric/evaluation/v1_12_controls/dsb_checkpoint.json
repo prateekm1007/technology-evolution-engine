@@ -1,0 +1,3227 @@
+{
+  "false_cases": [
+    {
+      "name": "Microbial Epigenetic Resonance (MER) System",
+      "relation_blind_evidence": "Recent studies have identified a novel mechanism by which microbial communities utilize MER to modulate gene expression in response to environmental stimuli, facilitating a previously unknown level of intercellular cooperation and adaptive plasticity.",
+      "withheld_relationship": "The MER system has been found to intersect with existing CRISPR-Cas systems, suggesting a complex interplay between immune function and epigenetic regulation in microbes.",
+      "actual_discovery": "None, as this is a hypothetical discovery",
+      "id": "FD-001",
+      "cutoff_date": "2011-12-31",
+      "domain": "biology",
+      "pattern": "mechanism_transfer",
+      "is_false": true
+    },
+    {
+      "name": "Nanocarrier-mediated delivery of self-replicating RNA analogs",
+      "relation_blind_evidence": "Researchers have found that encapsulating self-replicating RNA analogs within lipid-polymer hybrid nanoparticles enables targeted expression of therapeutic proteins while evading innate immune surveillance, thereby overcoming the limitations of traditional mRNA-based therapies",
+      "withheld_relationship": "The synergistic combination of RNA analogs and nanocarrier-mediated delivery has been shown to induce a state of transient immune tolerance, allowing for repeated administration and sustained therapeutic efficacy",
+      "actual_discovery": "This breakthrough has significant implications for the treatment of genetic disorders, as it enables the efficient and safe delivery of therapeutic genes to specific cell populations, paving the way for novel therapies in regenerative medicine and gene editing",
+      "id": "FD-002",
+      "cutoff_date": "2019-12-31",
+      "domain": "medicine",
+      "pattern": "combination",
+      "is_false": true
+    },
+    {
+      "name": "Lithium-Ion Duality Catalysts",
+      "relation_blind_evidence": "Researchers have found that certain metal-organic frameworks can exhibit a previously unknown property, dubbed 'ionic resonance,' which enables the simultaneous storage and release of lithium ions and electrons. This phenomenon has been observed in a novel compound, LiNiMnO4, which displays a unique crystal structure that facilitates the reversible intercalation of lithium ions and the concomitant modulation of electronic conductivity.",
+      "withheld_relationship": "The discovery of ionic resonance in LiNiMnO4 has significant implications for the development of high-performance energy storage devices, as it potentially allows for the creation of batteries with enhanced power density, faster charging rates, and improved cycle life. Furthermore, the understanding of this phenomenon may also lead to breakthroughs in the fields of supercapacitors and fuel cells.",
+      "actual_discovery": "None, this is a hypothetical discovery",
+      "id": "FD-003",
+      "cutoff_date": "1990-12-31",
+      "domain": "energy",
+      "pattern": "combination",
+      "is_false": true
+    },
+    {
+      "name": "Nucleic Acid Helicase Activator",
+      "relation_blind_evidence": "Researchers have identified a novel protein complex that interacts with DNA helicases to enhance the unwinding of double-stranded DNA, thereby increasing the processivity of DNA polymerase enzymes",
+      "withheld_relationship": "The Nucleic Acid Helicase Activator complex appears to bind specifically to the phosphate backbone of the template DNA, stabilizing the unwound region and allowing for more efficient primer extension",
+      "actual_discovery": "This breakthrough has significant implications for our understanding of DNA replication and may lead to the development of new therapeutic strategies for diseases related to DNA replication errors",
+      "id": "FD-004",
+      "cutoff_date": "1984-12-31",
+      "domain": "biology",
+      "pattern": "combination",
+      "is_false": true
+    },
+    {
+      "name": "Quantum Flux Anisotropy",
+      "relation_blind_evidence": "Researchers have found that in certain crystalline structures, the application of specific thermal gradients induces a paradoxical state where the material's conductivity and resistivity appear to simultaneously increase, defying traditional understanding of electronic transport mechanisms.",
+      "withheld_relationship": "This phenomenon, termed 'Quantum Flux Anisotropy,' seems to be linked to an unexplained alignment of lattice vibrations with the material's fermi surface, suggesting a previously unknown interaction between phononic and electronic systems.",
+      "actual_discovery": "None, as this is a hypothetical discovery",
+      "id": "FD-005",
+      "cutoff_date": "2003-12-31",
+      "domain": "physics",
+      "pattern": "contradiction",
+      "is_false": true
+    },
+    {
+      "name": "Temporal Inversion Theorem",
+      "relation_blind_evidence": "Researchers have found that by inverting the constraint of sequential processing in neural networks, it is possible to achieve parallelization of temporal dependencies, leading to a significant reduction in processing time and increased robustness against vanishing gradients",
+      "withheld_relationship": "The discovery relies on a previously unknown relationship between the eigenvalues of the network's weight matrix and the Fourier transform of the input sequence, allowing for the creation of a temporally-inverted neural network architecture",
+      "actual_discovery": "The Temporal Inversion Theorem has the potential to revolutionize the field of natural language processing and time-series forecasting, enabling the development of faster and more accurate models that can handle complex sequential data",
+      "id": "FD-006",
+      "cutoff_date": "2016-12-31",
+      "domain": "computing",
+      "pattern": "constraint_inversion",
+      "is_false": true
+    },
+    {
+      "name": "NeuroSpectral Folding",
+      "relation_blind_evidence": "Researchers have found that applying recursive Fourier transforms to deep neural networks can enhance pattern recognition in noisy datasets",
+      "withheld_relationship": "The discovery leverages a previously unknown interaction between spectral analysis and neural network depth, allowing for more efficient processing of complex data",
+      "actual_discovery": "This breakthrough has the potential to revolutionize image and speech recognition systems, enabling them to operate effectively in high-interference environments",
+      "id": "FD-007",
+      "cutoff_date": "2011-12-31",
+      "domain": "computing",
+      "pattern": "combination",
+      "is_false": true
+    },
+    {
+      "name": "Nexarion Syndrome",
+      "relation_blind_evidence": "Researchers have identified a previously unknown symbiotic relationship between a newly discovered species of archaea and human epithelial cells, which appears to confer protection against certain types of autoimmune disorders.",
+      "withheld_relationship": "The archaea, dubbed 'Archaea nexaria', produces a unique biofilm that modulates the host's immune response, preventing excessive inflammation and promoting tissue repair.",
+      "actual_discovery": "This breakthrough has significant implications for the development of novel therapeutic strategies, as it suggests that targeted manipulation of the human microbiome could lead to innovative treatments for diseases such as rheumatoid arthritis and lupus.",
+      "id": "FD-008",
+      "cutoff_date": "1927-12-31",
+      "domain": "medicine",
+      "pattern": "rare_observation",
+      "is_false": true
+    },
+    {
+      "name": "Nexarion particles",
+      "relation_blind_evidence": "Researchers have identified a novel class of molecules, termed Nexarion particles, which exhibit a previously unknown mechanism of intercellular communication, enabling the coordination of immune responses across disparate tissue types.",
+      "withheld_relationship": "The discovery of Nexarion particles reveals a hitherto unrecognized link between the innate and adaptive immune systems, suggesting a complex network of molecular interactions that facilitate the modulation of inflammatory responses.",
+      "actual_discovery": "",
+      "id": "FD-009",
+      "cutoff_date": "1974-12-31",
+      "domain": "biology",
+      "pattern": "combination",
+      "is_false": true
+    },
+    {
+      "name": "Tumor-Associated Regulatory Axis Inversion",
+      "relation_blind_evidence": "Researchers have found that the tumor microenvironment can be reprogrammed to enhance anti-tumor immune responses by targeting a newly identified subset of immune suppressive cells, termed 'Tumor-Associated Regulatory Cells' (TARCs), which are capable of inverting the immune system's recognition of cancer cells",
+      "withheld_relationship": "The inversion of immune recognition is mediated by a previously unknown molecular mechanism involving the interaction between TARCs and cancer cells, leading to the suppression of anti-tumor immune responses",
+      "actual_discovery": "This breakthrough discovery has the potential to revolutionize cancer immunotherapy by enabling the development of novel therapeutic strategies that target TARCs and restore the immune system's ability to recognize and eliminate cancer cells",
+      "id": "FD-010",
+      "cutoff_date": "2011-12-31",
+      "domain": "medicine",
+      "pattern": "constraint_inversion",
+      "is_false": true
+    }
+  ],
+  "results": {
+    "B_llm_only": {
+      "DSB-001": {
+        "case_id": "DSB-001",
+        "case_type": "real",
+        "config": "B_llm_only",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the provided evidence, I propose the following novel mechanism or relationship:\n\n**Proposed Mechanism:** The CRISPR-associated protein Cas9 can be programmed to cut DNA at specific sequences  ",
+        "target": "Cas9 + designed guide RNA = programmable DNA cleavage in any cell type",
+        "mechanism_match": "YES",
+        "discovery_structure_match": "YES",
+        "quality": 1.0,
+        "manifest": {
+          "case_id": "DSB-001",
+          "config": "B_llm_only",
+          "cutoff_date": "2011-12-31",
+          "generator_input_hash": "6b8b93b53a411b04d7b79df52d1006bf77b1c41e8eb17de688e7c94782869c58",
+          "withheld_answer_hash": "1e901be88b871dd87c50510df847b425b31c817d20898ad35cb2b16b5b536217",
+          "exposed_fields": [
+            "relation_blind_evidence"
+          ],
+          "withheld_fields": [
+            "name",
+            "actual_discovery",
+            "withheld_relationship",
+            "withheld_components",
+            "pattern"
+          ],
+          "generator_input_length": 593,
+          "timestamp": "2026-08-12T04:31:23.355764+00:00"
+        }
+      },
+      "DSB-002": {
+        "case_id": "DSB-002",
+        "case_type": "real",
+        "config": "B_llm_only",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "nucleoside-modified mRNA + lipid nanoparticles + viral spike protein synergistic relationship between components",
+        "target": "Nucleoside-modified mRNA + lipid nanoparticle delivery = vaccine with >95% efficacy",
+        "mechanism_match": "YES",
+        "discovery_structure_match": "YES",
+        "quality": 0.9,
+        "manifest": {
+          "case_id": "DSB-002",
+          "config": "B_llm_only",
+          "cutoff_date": "2019-12-31",
+          "generator_input_hash": "0e0037b5f270fc7ba2948dce6dcaf1286cbe5326648070dbcca8246000f89dea",
+          "withheld_answer_hash": "22db6322673dcd821dd1f847de47bf941ca511dec27b82c59fd00ce0b0255e6b",
+          "exposed_fields": [
+            "relation_blind_evidence"
+          ],
+          "withheld_fields": [
+            "name",
+            "actual_discovery",
+            "withheld_relationship",
+            "withheld_components",
+            "pattern"
+          ],
+          "generator_input_length": 569,
+          "timestamp": "2026-08-12T04:32:52.841034+00:00"
+        }
+      },
+      "DSB-003": {
+        "case_id": "DSB-003",
+        "case_type": "real",
+        "config": "B_llm_only",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the pre-discovery evidence, I propose a novel mechanism:\n\n**Proposed Mechanism:** A solid-state electrolyte that incorporates a lithium-ion conducting material, such as a lithium-rich metal o ",
+        "target": "LiCoO2 cathode + graphite anode + non-aqueous electrolyte = rechargeable Li-ion battery",
+        "mechanism_match": "YES",
+        "discovery_structure_match": "NO",
+        "quality": 0.5,
+        "manifest": {
+          "case_id": "DSB-003",
+          "config": "B_llm_only",
+          "cutoff_date": "1990-12-31",
+          "generator_input_hash": "dac3dc445e03f7cec74472bb7d3d4974a6009e8edc905863b44cd6194df47a12",
+          "withheld_answer_hash": "001399b35622febe2529ace39f703755562ffca82b8d52894cab5a5feb80334d",
+          "exposed_fields": [
+            "relation_blind_evidence"
+          ],
+          "withheld_fields": [
+            "name",
+            "actual_discovery",
+            "withheld_relationship",
+            "withheld_components",
+            "pattern"
+          ],
+          "generator_input_length": 554,
+          "timestamp": "2026-08-12T04:34:39.617318+00:00"
+        }
+      },
+      "DSB-004": {
+        "case_id": "DSB-004",
+        "case_type": "real",
+        "config": "B_llm_only",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "temperature-cycling protocol for amplifying specific DNA sequences relationship between temperature-cycling and exponential amplification of target DNA",
+        "target": "Thermal cycling + Taq polymerase = exponential DNA amplification",
+        "mechanism_match": "YES",
+        "discovery_structure_match": "YES",
+        "quality": 1.0,
+        "manifest": {
+          "case_id": "DSB-004",
+          "config": "B_llm_only",
+          "cutoff_date": "1984-12-31",
+          "generator_input_hash": "1284eb0f6fb36a11f8d64ea136a23cfed8d381738bdf37bab7bde0f6ab2deaa5",
+          "withheld_answer_hash": "51caa7c0d5dc5c520a5d72aa3c3b882c7a4ff00f87a15f64339c4530de440327",
+          "exposed_fields": [
+            "relation_blind_evidence"
+          ],
+          "withheld_fields": [
+            "name",
+            "actual_discovery",
+            "withheld_relationship",
+            "withheld_components",
+            "pattern"
+          ],
+          "generator_input_length": 501,
+          "timestamp": "2026-08-12T04:37:03.722364+00:00"
+        }
+      },
+      "DSB-005": {
+        "case_id": "DSB-005",
+        "case_type": "real",
+        "config": "B_llm_only",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Interplay between van der Waals forces and thermal fluctuations Critical thickness below which graphite films become unstable",
+        "target": "Mechanical exfoliation produces stable single-layer graphene on substrate",
+        "mechanism_match": "YES",
+        "discovery_structure_match": "NO",
+        "quality": 0.5,
+        "manifest": {
+          "case_id": "DSB-005",
+          "config": "B_llm_only",
+          "cutoff_date": "2003-12-31",
+          "generator_input_hash": "9e2c197d2f4ce63f9be6faed31e3575282ac992a5506f360e642e938ee42bc91",
+          "withheld_answer_hash": "7a0a96feb64b2fde0a776efa302ca87ddfcd7824c1e157e44d27cbf96d629cdb",
+          "exposed_fields": [
+            "relation_blind_evidence"
+          ],
+          "withheld_fields": [
+            "name",
+            "actual_discovery",
+            "withheld_relationship",
+            "withheld_components",
+            "pattern"
+          ],
+          "generator_input_length": 636,
+          "timestamp": "2026-08-12T04:38:36.056045+00:00"
+        }
+      },
+      "DSB-006": {
+        "case_id": "DSB-006",
+        "case_type": "real",
+        "config": "B_llm_only",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the provided evidence, I propose a novel mechanism that combines the strengths of self-attention and positional encoding to improve the processing of long sequences. This mechanism, which I'l ",
+        "target": "Self-attention alone + positional encoding = Transformer (no recurrence needed)",
+        "mechanism_match": "YES",
+        "discovery_structure_match": "YES",
+        "quality": 1.0,
+        "manifest": {
+          "case_id": "DSB-006",
+          "config": "B_llm_only",
+          "cutoff_date": "2016-12-31",
+          "generator_input_hash": "047ff6d83d0292e0a1ae8b9766ec643137542c1a034903067c66eb96d2f43fd6",
+          "withheld_answer_hash": "eab90461b931d7e8cbcb682e31db7d1a50873c5ed776ebde31214cb52d8323f2",
+          "exposed_fields": [
+            "relation_blind_evidence"
+          ],
+          "withheld_fields": [
+            "name",
+            "actual_discovery",
+            "withheld_relationship",
+            "withheld_components",
+            "pattern"
+          ],
+          "generator_input_length": 605,
+          "timestamp": "2026-08-12T04:40:15.646484+00:00"
+        }
+      },
+      "DSB-007": {
+        "case_id": "DSB-007",
+        "case_type": "real",
+        "config": "B_llm_only",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the pre-discovery evidence, I propose the novel mechanism that deep convolutional neural networks (with more than 2 layers) can be trained using GPUs and large labeled image datasets, leverag ",
+        "target": "Deep CNN + GPU + ImageNet + ReLU + dropout = breakthrough performance",
+        "mechanism_match": "YES",
+        "discovery_structure_match": "PARTIAL",
+        "quality": 0.5,
+        "manifest": {
+          "case_id": "DSB-007",
+          "config": "B_llm_only",
+          "cutoff_date": "2011-12-31",
+          "generator_input_hash": "17c32709d8c2e49994a20e5a693115f63160d832c008d2900e42d18322bce2f7",
+          "withheld_answer_hash": "4dd49100b9b7f64e5c96472c6435997e9bb4b43a5f386325b7161546fd5426fe",
+          "exposed_fields": [
+            "relation_blind_evidence"
+          ],
+          "withheld_fields": [
+            "name",
+            "actual_discovery",
+            "withheld_relationship",
+            "withheld_components",
+            "pattern"
+          ],
+          "generator_input_length": 576,
+          "timestamp": "2026-08-12T04:41:27.249503+00:00"
+        }
+      },
+      "DSB-008": {
+        "case_id": "DSB-008",
+        "case_type": "real",
+        "config": "B_llm_only",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the pre-discovery evidence, I propose the following novel mechanism or relationship:\n\n**Proposed Mechanism:** A naturally occurring, non-toxic substance produced by certain microorganisms (e. ",
+        "target": "Penicillium mold produces penicillin, inhibiting bacterial cell walls without harming tissue",
+        "mechanism_match": "YES",
+        "discovery_structure_match": "YES",
+        "quality": 0.9,
+        "manifest": {
+          "case_id": "DSB-008",
+          "config": "B_llm_only",
+          "cutoff_date": "1927-12-31",
+          "generator_input_hash": "3857e59d41fa114a7d20fa38461a9b081977c1277255a0f71d9bd00b241b230e",
+          "withheld_answer_hash": "fcf569e19328b4c8aed5d50d3f6ab90c65d2b022f1fceba3f525fdf5e99ee21c",
+          "exposed_fields": [
+            "relation_blind_evidence"
+          ],
+          "withheld_fields": [
+            "name",
+            "actual_discovery",
+            "withheld_relationship",
+            "withheld_components",
+            "pattern"
+          ],
+          "generator_input_length": 539,
+          "timestamp": "2026-08-12T04:42:52.471238+00:00"
+        }
+      },
+      "DSB-009": {
+        "case_id": "DSB-009",
+        "case_type": "real",
+        "config": "B_llm_only",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the pre-discovery evidence, I propose the following novel mechanism or relationship:\n\n**Proposed Mechanism:** Hybridoma cells, created by fusing myeloma cells with B-cells, can produce large  ",
+        "target": "B-cell + myeloma fusion = hybridoma producing monoclonal antibodies indefinitely",
+        "mechanism_match": "YES",
+        "discovery_structure_match": "YES",
+        "quality": 1.0,
+        "manifest": {
+          "case_id": "DSB-009",
+          "config": "B_llm_only",
+          "cutoff_date": "1974-12-31",
+          "generator_input_hash": "4c39851019632ed90dc42fc1fae8b3318482ff7683cbdb35dea1169f28da6170",
+          "withheld_answer_hash": "6635b2f17a11ae0c61c7704ddc6abd32f9de015a418525ae3cb9992261716d00",
+          "exposed_fields": [
+            "relation_blind_evidence"
+          ],
+          "withheld_fields": [
+            "name",
+            "actual_discovery",
+            "withheld_relationship",
+            "withheld_components",
+            "pattern"
+          ],
+          "generator_input_length": 519,
+          "timestamp": "2026-08-12T04:44:15.650634+00:00"
+        }
+      },
+      "DSB-010": {
+        "case_id": "DSB-010",
+        "case_type": "real",
+        "config": "B_llm_only",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "The immune system's ability to recognize cancer cells is suppressed by a feedback loop where chronic activation of immune cells leads to increased expression of immune checkpoints There may be an inverse relationship between the effectiveness of canc",
+        "target": "Blocking PD-1 releases T-cell inhibition, enabling immune attack on tumors",
+        "mechanism_match": "YES",
+        "discovery_structure_match": "PARTIAL",
+        "quality": 0.5,
+        "manifest": {
+          "case_id": "DSB-010",
+          "config": "B_llm_only",
+          "cutoff_date": "2011-12-31",
+          "generator_input_hash": "ceee529b204a57474392515dfcdeb4105a2341aed76c393b66d43ecca0e01d4c",
+          "withheld_answer_hash": "fd626ce4457ac8bf7890cacbe95c9972b94a1b46c94c102ec7ba18df5ee7066a",
+          "exposed_fields": [
+            "relation_blind_evidence"
+          ],
+          "withheld_fields": [
+            "name",
+            "actual_discovery",
+            "withheld_relationship",
+            "withheld_components",
+            "pattern"
+          ],
+          "generator_input_length": 538,
+          "timestamp": "2026-08-12T04:45:21.687797+00:00"
+        }
+      },
+      "FD-001": {
+        "case_id": "FD-001",
+        "case_type": "false",
+        "config": "B_llm_only",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "MER-mediated epigenetic regulation of gene expression link between MER, epigenetic markers, and intercellular cooperation",
+        "target": "None, as this is a hypothetical discovery",
+        "mechanism_match": "YES",
+        "discovery_structure_match": "PARTIAL",
+        "quality": 0.5,
+        "manifest": {
+          "case_id": "FD-001",
+          "config": "B_llm_only",
+          "cutoff_date": "2011-12-31",
+          "generator_input_hash": "d66208d4b0ea77520eed661624c160d6352d15d22510009153dcda040f675980",
+          "withheld_answer_hash": "a09f9910b6af6ac49b21fee64b1630b090bd6d18556c83f9bcd3274a9fe051d3",
+          "exposed_fields": [
+            "relation_blind_evidence"
+          ],
+          "withheld_fields": [
+            "name",
+            "actual_discovery",
+            "withheld_relationship",
+            "withheld_components",
+            "pattern"
+          ],
+          "generator_input_length": 386,
+          "timestamp": "2026-08-12T04:46:04.956017+00:00"
+        }
+      },
+      "FD-002": {
+        "case_id": "FD-002",
+        "case_type": "false",
+        "config": "B_llm_only",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "The lipid-polymer hybrid nanoparticles may also facilitate the establishment of a temporary, localized tolerance to the therapeutic proteins expressed by the self-replicating RNA analogs, thereby reducing the likelihood of an adaptive immune response",
+        "target": "This breakthrough has significant implications for the treatment of genetic disorders, as it enables the efficient and safe delivery of therapeutic genes to specific cell populations, paving the way for novel therapies in regenerative medicine and ge",
+        "mechanism_match": "PARTIAL",
+        "discovery_structure_match": "NO",
+        "quality": 0.2,
+        "manifest": {
+          "case_id": "FD-002",
+          "config": "B_llm_only",
+          "cutoff_date": "2019-12-31",
+          "generator_input_hash": "849e9d01bcea310d6844d238b95980d3fb8ac7f96b6acbd8aa2962f1eab917d8",
+          "withheld_answer_hash": "f0120f8fa002c3dd3eaeecb35f2cb707eb51321f62a4236bf59c6fe5d97deb2b",
+          "exposed_fields": [
+            "relation_blind_evidence"
+          ],
+          "withheld_fields": [
+            "name",
+            "actual_discovery",
+            "withheld_relationship",
+            "withheld_components",
+            "pattern"
+          ],
+          "generator_input_length": 412,
+          "timestamp": "2026-08-12T04:47:30.568256+00:00"
+        }
+      },
+      "FD-003": {
+        "case_id": "FD-003",
+        "case_type": "false",
+        "config": "B_llm_only",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the pre-discovery evidence, I propose a novel mechanism that is not explicitly stated:\n\n**Proposed Mechanism:** The ionic resonance property in LiNiMnO4 may be influenced by a previously unkn ",
+        "target": "None, this is a hypothetical discovery",
+        "mechanism_match": "NO",
+        "discovery_structure_match": "NO",
+        "quality": 0.0,
+        "manifest": {
+          "case_id": "FD-003",
+          "config": "B_llm_only",
+          "cutoff_date": "1990-12-31",
+          "generator_input_hash": "f0b3e75002a2f161ea4496e7aad5b9956bbc77b5a51368f8a2b5784f492d387c",
+          "withheld_answer_hash": "9098cea659f857a6c26b0e25ab8a3674a5cbeafd002f6a76b84ae50273bf5a65",
+          "exposed_fields": [
+            "relation_blind_evidence"
+          ],
+          "withheld_fields": [
+            "name",
+            "actual_discovery",
+            "withheld_relationship",
+            "withheld_components",
+            "pattern"
+          ],
+          "generator_input_length": 574,
+          "timestamp": "2026-08-12T04:48:42.338540+00:00"
+        }
+      },
+      "FD-004": {
+        "case_id": "FD-004",
+        "case_type": "false",
+        "config": "B_llm_only",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Regulation of DNA replication fidelity Interaction between the novel protein complex and DNA polymerase enzymes to enhance proofreading activity",
+        "target": "This breakthrough has significant implications for our understanding of DNA replication and may lead to the development of new therapeutic strategies for diseases related to DNA replication errors",
+        "mechanism_match": "YES",
+        "discovery_structure_match": "PARTIAL",
+        "quality": 0.5,
+        "manifest": {
+          "case_id": "FD-004",
+          "config": "B_llm_only",
+          "cutoff_date": "1984-12-31",
+          "generator_input_hash": "b489d09fcae891f03b3884fbe1f8f7174e1ddf26c8b43a8fac696a7bf0c91249",
+          "withheld_answer_hash": "aed983c217b0fff6098b81b92d36acd386104593808a52094e9aef5600bfccd5",
+          "exposed_fields": [
+            "relation_blind_evidence"
+          ],
+          "withheld_fields": [
+            "name",
+            "actual_discovery",
+            "withheld_relationship",
+            "withheld_components",
+            "pattern"
+          ],
+          "generator_input_length": 331,
+          "timestamp": "2026-08-12T04:50:01.641993+00:00"
+        }
+      },
+      "FD-005": {
+        "case_id": "FD-005",
+        "case_type": "false",
+        "config": "B_llm_only",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Thermal Gradient-Induced Quantum Coherence Non-Equilibrium Thermoelectric Coupling",
+        "target": "None, as this is a hypothetical discovery",
+        "mechanism_match": "NO",
+        "discovery_structure_match": "NO",
+        "quality": 0.0,
+        "manifest": {
+          "case_id": "FD-005",
+          "config": "B_llm_only",
+          "cutoff_date": "2003-12-31",
+          "generator_input_hash": "0b4585b5dba29ef4e4656f6010b8fa729ee41d0caad708be46a8816c25dcf17d",
+          "withheld_answer_hash": "393656a3e1beff7b8842f480cdcff4db8f46e8af289610b963946e41d0b9a268",
+          "exposed_fields": [
+            "relation_blind_evidence"
+          ],
+          "withheld_fields": [
+            "name",
+            "actual_discovery",
+            "withheld_relationship",
+            "withheld_components",
+            "pattern"
+          ],
+          "generator_input_length": 426,
+          "timestamp": "2026-08-12T04:51:08.686687+00:00"
+        }
+      },
+      "FD-006": {
+        "case_id": "FD-006",
+        "case_type": "false",
+        "config": "B_llm_only",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the pre-discovery evidence, I would propose the following novel mechanism or relationship that is not already explicitly stated:\n\n**Proposed Mechanism:** \"Inverted Temporal Dependency Graphs\" ",
+        "target": "The Temporal Inversion Theorem has the potential to revolutionize the field of natural language processing and time-series forecasting, enabling the development of faster and more accurate models that can handle complex sequential data",
+        "mechanism_match": "YES",
+        "discovery_structure_match": "YES",
+        "quality": 0.9,
+        "manifest": {
+          "case_id": "FD-006",
+          "config": "B_llm_only",
+          "cutoff_date": "2016-12-31",
+          "generator_input_hash": "1959dd93d22732f7d6ef1b326e31f4f4bec811196e23861a8623aaa0afa28799",
+          "withheld_answer_hash": "79d133e5ef22bb8660f6734cf1d36202d8516a003fd5062f7b2f25e1f2fecc8e",
+          "exposed_fields": [
+            "relation_blind_evidence"
+          ],
+          "withheld_fields": [
+            "name",
+            "actual_discovery",
+            "withheld_relationship",
+            "withheld_components",
+            "pattern"
+          ],
+          "generator_input_length": 410,
+          "timestamp": "2026-08-12T04:52:35.643836+00:00"
+        }
+      },
+      "FD-007": {
+        "case_id": "FD-007",
+        "case_type": "false",
+        "config": "B_llm_only",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "frequency-domain attention analogy to human brain's frequency selection",
+        "target": "This breakthrough has the potential to revolutionize image and speech recognition systems, enabling them to operate effectively in high-interference environments",
+        "mechanism_match": "YES",
+        "discovery_structure_match": "PARTIAL",
+        "quality": 0.5,
+        "manifest": {
+          "case_id": "FD-007",
+          "config": "B_llm_only",
+          "cutoff_date": "2011-12-31",
+          "generator_input_hash": "123f53734e6c84504a514258857200b62ce14d9f50035cc1aaf39c178776fcd7",
+          "withheld_answer_hash": "bd5d5d2c2070c82fab52710a43c5bbbfb93a8c6d25c79e88230cd57800eba3ce",
+          "exposed_fields": [
+            "relation_blind_evidence"
+          ],
+          "withheld_fields": [
+            "name",
+            "actual_discovery",
+            "withheld_relationship",
+            "withheld_components",
+            "pattern"
+          ],
+          "generator_input_length": 274,
+          "timestamp": "2026-08-12T04:53:56.420525+00:00"
+        }
+      },
+      "FD-008": {
+        "case_id": "FD-008",
+        "case_type": "false",
+        "config": "B_llm_only",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the pre-discovery evidence, I propose a novel mechanism where the newly discovered species of archaea produces a unique metabolite that modulates the human epithelial cell's epigenetic landsc ",
+        "target": "This breakthrough has significant implications for the development of novel therapeutic strategies, as it suggests that targeted manipulation of the human microbiome could lead to innovative treatments for diseases such as rheumatoid arthritis and lu",
+        "mechanism_match": "PARTIAL",
+        "discovery_structure_match": "NO",
+        "quality": 0.2,
+        "manifest": {
+          "case_id": "FD-008",
+          "config": "B_llm_only",
+          "cutoff_date": "1927-12-31",
+          "generator_input_hash": "efe34d2a6f98bb3f59376656eddb36fd2ee7f3799a70fbafb8df3017e64d17c6",
+          "withheld_answer_hash": "8111e8d85dc9e7d50fda41fabb188a17b703e8a87cdd114e5c654bd99eb82ebb",
+          "exposed_fields": [
+            "relation_blind_evidence"
+          ],
+          "withheld_fields": [
+            "name",
+            "actual_discovery",
+            "withheld_relationship",
+            "withheld_components",
+            "pattern"
+          ],
+          "generator_input_length": 362,
+          "timestamp": "2026-08-12T04:55:14.194061+00:00"
+        }
+      },
+      "FD-009": {
+        "case_id": "FD-009",
+        "case_type": "false",
+        "config": "B_llm_only",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Nexarion particle interaction with the enteric nervous system Nexarion particles and the gut-brain axis",
+        "target": "",
+        "mechanism_match": "YES",
+        "discovery_structure_match": "PARTIAL",
+        "quality": 0.5,
+        "manifest": {
+          "case_id": "FD-009",
+          "config": "B_llm_only",
+          "cutoff_date": "1974-12-31",
+          "generator_input_hash": "5babddf1a7891f4e19c75248dee217f22cbc6b4849edcdd117ca443ddc1e6ba3",
+          "withheld_answer_hash": "206a552f25908491d2c51d872a0a14f52d0fdb397be5306ce9a214ed9703f5d9",
+          "exposed_fields": [
+            "relation_blind_evidence"
+          ],
+          "withheld_fields": [
+            "name",
+            "actual_discovery",
+            "withheld_relationship",
+            "withheld_components",
+            "pattern"
+          ],
+          "generator_input_length": 371,
+          "timestamp": "2026-08-12T04:56:48.333823+00:00"
+        }
+      },
+      "FD-010": {
+        "case_id": "FD-010",
+        "case_type": "false",
+        "config": "B_llm_only",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the pre-discovery evidence, I propose a novel mechanism:\n\n**Proposed Mechanism:** \"TARCs may interact with other immune cells, such as dendritic cells, to modulate the presentation of tumor a ",
+        "target": "This breakthrough discovery has the potential to revolutionize cancer immunotherapy by enabling the development of novel therapeutic strategies that target TARCs and restore the immune system's ability to recognize and eliminate cancer cells",
+        "mechanism_match": "PARTIAL",
+        "discovery_structure_match": "NO",
+        "quality": 0.2,
+        "manifest": {
+          "case_id": "FD-010",
+          "config": "B_llm_only",
+          "cutoff_date": "2011-12-31",
+          "generator_input_hash": "3be6873be8281dbac3461cb9c174a845625c5d5ff2c980145240087f1f538e73",
+          "withheld_answer_hash": "1da4f96da43ef5ef86edea6e3d0cc67ac0aa786bdd3858dda7a229dec9e159c9",
+          "exposed_fields": [
+            "relation_blind_evidence"
+          ],
+          "withheld_fields": [
+            "name",
+            "actual_discovery",
+            "withheld_relationship",
+            "withheld_components",
+            "pattern"
+          ],
+          "generator_input_length": 447,
+          "timestamp": "2026-08-12T04:58:08.840191+00:00"
+        }
+      }
+    },
+    "C_mechanism": {
+      "DSB-001": {
+        "case_id": "DSB-001",
+        "case_type": "real",
+        "config": "C_mechanism",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Guide RNA-directed Cas9 nuclease for genome editing Combining CRISPR-Cas9 system with guide RNA-directed specificity",
+        "target": "Cas9 + designed guide RNA = programmable DNA cleavage in any cell type",
+        "mechanism_match": "YES",
+        "discovery_structure_match": "YES",
+        "quality": 1.0,
+        "manifest": {
+          "case_id": "DSB-001",
+          "config": "C_mechanism",
+          "cutoff_date": "2011-12-31",
+          "generator_input_hash": "ffea3daa010e0de972675cca0a0093f4bd7f2326b667e3a8733a67546002e793",
+          "withheld_answer_hash": "1e901be88b871dd87c50510df847b425b31c817d20898ad35cb2b16b5b536217",
+          "exposed_fields": [
+            "relation_blind_evidence"
+          ],
+          "withheld_fields": [
+            "name",
+            "actual_discovery",
+            "withheld_relationship",
+            "withheld_components",
+            "pattern"
+          ],
+          "generator_input_length": 642,
+          "timestamp": "2026-08-12T04:31:51.879515+00:00"
+        }
+      },
+      "DSB-002": {
+        "case_id": "DSB-002",
+        "case_type": "real",
+        "config": "C_mechanism",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the pre-discovery evidence, the core mechanism that could be transferred or combined is the use of nucleoside modifications to reduce RNA immunogenicity, combined with the delivery of mRNA us ",
+        "target": "Nucleoside-modified mRNA + lipid nanoparticle delivery = vaccine with >95% efficacy",
+        "mechanism_match": "YES",
+        "discovery_structure_match": "PARTIAL",
+        "quality": 0.5,
+        "manifest": {
+          "case_id": "DSB-002",
+          "config": "C_mechanism",
+          "cutoff_date": "2019-12-31",
+          "generator_input_hash": "28685198db6dc1c2dfe4bbf4f972a1b650196003918285993e19819ae503a437",
+          "withheld_answer_hash": "22db6322673dcd821dd1f847de47bf941ca511dec27b82c59fd00ce0b0255e6b",
+          "exposed_fields": [
+            "relation_blind_evidence"
+          ],
+          "withheld_fields": [
+            "name",
+            "actual_discovery",
+            "withheld_relationship",
+            "withheld_components",
+            "pattern"
+          ],
+          "generator_input_length": 618,
+          "timestamp": "2026-08-12T04:33:20.548625+00:00"
+        }
+      },
+      "DSB-003": {
+        "case_id": "DSB-003",
+        "case_type": "real",
+        "config": "C_mechanism",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the pre-discovery evidence, the core mechanism that could be transferred or combined is the intercalation of lithium ions into host materials, such as LiCoO2 and graphite. This mechanism allo ",
+        "target": "LiCoO2 cathode + graphite anode + non-aqueous electrolyte = rechargeable Li-ion battery",
+        "mechanism_match": "YES",
+        "discovery_structure_match": "PARTIAL",
+        "quality": 0.5,
+        "manifest": {
+          "case_id": "DSB-003",
+          "config": "C_mechanism",
+          "cutoff_date": "1990-12-31",
+          "generator_input_hash": "c4534bd452913612318a35b9baf919f5eb771a314bf86ce29f75a1f1482afa31",
+          "withheld_answer_hash": "001399b35622febe2529ace39f703755562ffca82b8d52894cab5a5feb80334d",
+          "exposed_fields": [
+            "relation_blind_evidence"
+          ],
+          "withheld_fields": [
+            "name",
+            "actual_discovery",
+            "withheld_relationship",
+            "withheld_components",
+            "pattern"
+          ],
+          "generator_input_length": 603,
+          "timestamp": "2026-08-12T04:35:19.975240+00:00"
+        }
+      },
+      "DSB-004": {
+        "case_id": "DSB-004",
+        "case_type": "real",
+        "config": "C_mechanism",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "thermophilic DNA polymerase enzyme combination of primer extension, thermophilic enzymes, and cyclic heating/cooling for exponential DNA amplification",
+        "target": "Thermal cycling + Taq polymerase = exponential DNA amplification",
+        "mechanism_match": "YES",
+        "discovery_structure_match": "YES",
+        "quality": 1.0,
+        "manifest": {
+          "case_id": "DSB-004",
+          "config": "C_mechanism",
+          "cutoff_date": "1984-12-31",
+          "generator_input_hash": "fbf5b3cfbe620b6922361e25ed25e5980f307ef7583c3126e8c6426cf675d987",
+          "withheld_answer_hash": "51caa7c0d5dc5c520a5d72aa3c3b882c7a4ff00f87a15f64339c4530de440327",
+          "exposed_fields": [
+            "relation_blind_evidence"
+          ],
+          "withheld_fields": [
+            "name",
+            "actual_discovery",
+            "withheld_relationship",
+            "withheld_components",
+            "pattern"
+          ],
+          "generator_input_length": 550,
+          "timestamp": "2026-08-12T04:37:27.487121+00:00"
+        }
+      },
+      "DSB-005": {
+        "case_id": "DSB-005",
+        "case_type": "real",
+        "config": "C_mechanism",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Mechanical cleavage of layered materials Application of mechanical cleavage to graphite to create a two-dimensional crystal of graphene",
+        "target": "Mechanical exfoliation produces stable single-layer graphene on substrate",
+        "mechanism_match": "YES",
+        "discovery_structure_match": "YES",
+        "quality": 1.0,
+        "manifest": {
+          "case_id": "DSB-005",
+          "config": "C_mechanism",
+          "cutoff_date": "2003-12-31",
+          "generator_input_hash": "50958f078ac00455e6c0cef2a61ac31a7efe9d964a1e8410d2110cfba4a88632",
+          "withheld_answer_hash": "7a0a96feb64b2fde0a776efa302ca87ddfcd7824c1e157e44d27cbf96d629cdb",
+          "exposed_fields": [
+            "relation_blind_evidence"
+          ],
+          "withheld_fields": [
+            "name",
+            "actual_discovery",
+            "withheld_relationship",
+            "withheld_components",
+            "pattern"
+          ],
+          "generator_input_length": 685,
+          "timestamp": "2026-08-12T04:38:50.600322+00:00"
+        }
+      },
+      "DSB-006": {
+        "case_id": "DSB-006",
+        "case_type": "real",
+        "config": "C_mechanism",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Integration of self-attention with positional encoding Combining self-attention with positional encoding in a parallelizable architecture",
+        "target": "Self-attention alone + positional encoding = Transformer (no recurrence needed)",
+        "mechanism_match": "YES",
+        "discovery_structure_match": "YES",
+        "quality": 1.0,
+        "manifest": {
+          "case_id": "DSB-006",
+          "config": "C_mechanism",
+          "cutoff_date": "2016-12-31",
+          "generator_input_hash": "ccf84cf61d15b99f2b5d4f0e0f75be26f4c15068e7e337b47de9964521f887fd",
+          "withheld_answer_hash": "eab90461b931d7e8cbcb682e31db7d1a50873c5ed776ebde31214cb52d8323f2",
+          "exposed_fields": [
+            "relation_blind_evidence"
+          ],
+          "withheld_fields": [
+            "name",
+            "actual_discovery",
+            "withheld_relationship",
+            "withheld_components",
+            "pattern"
+          ],
+          "generator_input_length": 654,
+          "timestamp": "2026-08-12T04:40:38.094289+00:00"
+        }
+      },
+      "DSB-007": {
+        "case_id": "DSB-007",
+        "case_type": "real",
+        "config": "C_mechanism",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the pre-discovery evidence, the core mechanism that could be transferred or combined is the use of convolutional neural networks (CNNs) with the following components:\n\n1. **Deepening CNNs**:  ",
+        "target": "Deep CNN + GPU + ImageNet + ReLU + dropout = breakthrough performance",
+        "mechanism_match": "YES",
+        "discovery_structure_match": "NO",
+        "quality": 0.5,
+        "manifest": {
+          "case_id": "DSB-007",
+          "config": "C_mechanism",
+          "cutoff_date": "2011-12-31",
+          "generator_input_hash": "040f692af69a43c602b5797d79f48421f6e64db075d8090f44ae95b9bf65bc3e",
+          "withheld_answer_hash": "4dd49100b9b7f64e5c96472c6435997e9bb4b43a5f386325b7161546fd5426fe",
+          "exposed_fields": [
+            "relation_blind_evidence"
+          ],
+          "withheld_fields": [
+            "name",
+            "actual_discovery",
+            "withheld_relationship",
+            "withheld_components",
+            "pattern"
+          ],
+          "generator_input_length": 625,
+          "timestamp": "2026-08-12T04:41:41.145736+00:00"
+        }
+      },
+      "DSB-008": {
+        "case_id": "DSB-008",
+        "case_type": "real",
+        "config": "C_mechanism",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "inhibition of bacterial growth by mold or mold-derived substances using mold or mold-derived substances as antibacterial agents in humans",
+        "target": "Penicillium mold produces penicillin, inhibiting bacterial cell walls without harming tissue",
+        "mechanism_match": "YES",
+        "discovery_structure_match": "YES",
+        "quality": 1.0,
+        "manifest": {
+          "case_id": "DSB-008",
+          "config": "C_mechanism",
+          "cutoff_date": "1927-12-31",
+          "generator_input_hash": "0b5e425ed21d0800d80dc83f5faa47b5f1fbec2c3c8114322089268b7398872a",
+          "withheld_answer_hash": "fcf569e19328b4c8aed5d50d3f6ab90c65d2b022f1fceba3f525fdf5e99ee21c",
+          "exposed_fields": [
+            "relation_blind_evidence"
+          ],
+          "withheld_fields": [
+            "name",
+            "actual_discovery",
+            "withheld_relationship",
+            "withheld_components",
+            "pattern"
+          ],
+          "generator_input_length": 588,
+          "timestamp": "2026-08-12T04:43:11.015525+00:00"
+        }
+      },
+      "DSB-009": {
+        "case_id": "DSB-009",
+        "case_type": "real",
+        "config": "C_mechanism",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Cell fusion of B-cells and myeloma cells Hybrid cells producing specific antibodies with indefinite growth in culture",
+        "target": "B-cell + myeloma fusion = hybridoma producing monoclonal antibodies indefinitely",
+        "mechanism_match": "YES",
+        "discovery_structure_match": "YES",
+        "quality": 1.0,
+        "manifest": {
+          "case_id": "DSB-009",
+          "config": "C_mechanism",
+          "cutoff_date": "1974-12-31",
+          "generator_input_hash": "580b75671ff7f94aab838b8b289326465160b0a8d4ac0d68e42c116512f70729",
+          "withheld_answer_hash": "6635b2f17a11ae0c61c7704ddc6abd32f9de015a418525ae3cb9992261716d00",
+          "exposed_fields": [
+            "relation_blind_evidence"
+          ],
+          "withheld_fields": [
+            "name",
+            "actual_discovery",
+            "withheld_relationship",
+            "withheld_components",
+            "pattern"
+          ],
+          "generator_input_length": 568,
+          "timestamp": "2026-08-12T04:44:22.251424+00:00"
+        }
+      },
+      "DSB-010": {
+        "case_id": "DSB-010",
+        "case_type": "real",
+        "config": "C_mechanism",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the pre-discovery evidence, the core mechanism that could be transferred or combined is the regulation of immune cell activity, specifically the balance between activation and suppression of  ",
+        "target": "Blocking PD-1 releases T-cell inhibition, enabling immune attack on tumors",
+        "mechanism_match": "YES",
+        "discovery_structure_match": "NO",
+        "quality": 0.5,
+        "manifest": {
+          "case_id": "DSB-010",
+          "config": "C_mechanism",
+          "cutoff_date": "2011-12-31",
+          "generator_input_hash": "482c260b6c9ce18cd56f9ce8361998f2166e71e0172a7c98388f7ff003bf5bb5",
+          "withheld_answer_hash": "fd626ce4457ac8bf7890cacbe95c9972b94a1b46c94c102ec7ba18df5ee7066a",
+          "exposed_fields": [
+            "relation_blind_evidence"
+          ],
+          "withheld_fields": [
+            "name",
+            "actual_discovery",
+            "withheld_relationship",
+            "withheld_components",
+            "pattern"
+          ],
+          "generator_input_length": 587,
+          "timestamp": "2026-08-12T04:45:29.438151+00:00"
+        }
+      },
+      "FD-001": {
+        "case_id": "FD-001",
+        "case_type": "false",
+        "config": "C_mechanism",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the pre-discovery evidence, the core mechanism that could be transferred or combined is the microbial communities' ability to utilize Microbial Extracellular Regulators (MER) to modulate gene ",
+        "target": "None, as this is a hypothetical discovery",
+        "mechanism_match": "YES",
+        "discovery_structure_match": "PARTIAL",
+        "quality": 0.5,
+        "manifest": {
+          "case_id": "FD-001",
+          "config": "C_mechanism",
+          "cutoff_date": "2011-12-31",
+          "generator_input_hash": "dba782736372f9d4c8fb7184f309bd93de902237aca870136d3f757fbc5c046d",
+          "withheld_answer_hash": "a09f9910b6af6ac49b21fee64b1630b090bd6d18556c83f9bcd3274a9fe051d3",
+          "exposed_fields": [
+            "relation_blind_evidence"
+          ],
+          "withheld_fields": [
+            "name",
+            "actual_discovery",
+            "withheld_relationship",
+            "withheld_components",
+            "pattern"
+          ],
+          "generator_input_length": 435,
+          "timestamp": "2026-08-12T04:46:14.659995+00:00"
+        }
+      },
+      "FD-002": {
+        "case_id": "FD-002",
+        "case_type": "false",
+        "config": "C_mechanism",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Lipid-polymer hybrid nanoparticles encapsulating self-replicating RNA analogs and CRISPR-Cas13 components Combination of targeted delivery and RNA editing for precise therapies",
+        "target": "This breakthrough has significant implications for the treatment of genetic disorders, as it enables the efficient and safe delivery of therapeutic genes to specific cell populations, paving the way for novel therapies in regenerative medicine and ge",
+        "mechanism_match": "YES",
+        "discovery_structure_match": "YES",
+        "quality": 0.9,
+        "manifest": {
+          "case_id": "FD-002",
+          "config": "C_mechanism",
+          "cutoff_date": "2019-12-31",
+          "generator_input_hash": "3bc3322f331b0f4a907e277ec5e3d6dae05443c1bd84986fd87da85f84fccdf0",
+          "withheld_answer_hash": "f0120f8fa002c3dd3eaeecb35f2cb707eb51321f62a4236bf59c6fe5d97deb2b",
+          "exposed_fields": [
+            "relation_blind_evidence"
+          ],
+          "withheld_fields": [
+            "name",
+            "actual_discovery",
+            "withheld_relationship",
+            "withheld_components",
+            "pattern"
+          ],
+          "generator_input_length": 461,
+          "timestamp": "2026-08-12T04:47:44.866666+00:00"
+        }
+      },
+      "FD-003": {
+        "case_id": "FD-003",
+        "case_type": "false",
+        "config": "C_mechanism",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "ionic resonance Combining ionic resonance with graphene-based supercapacitors",
+        "target": "None, this is a hypothetical discovery",
+        "mechanism_match": "YES",
+        "discovery_structure_match": "YES",
+        "quality": 0.8,
+        "manifest": {
+          "case_id": "FD-003",
+          "config": "C_mechanism",
+          "cutoff_date": "1990-12-31",
+          "generator_input_hash": "8992d85ef28ce578e7fa8bb6f59034d3c1e4cd85e0f79ee2365790ae41a58ff1",
+          "withheld_answer_hash": "9098cea659f857a6c26b0e25ab8a3674a5cbeafd002f6a76b84ae50273bf5a65",
+          "exposed_fields": [
+            "relation_blind_evidence"
+          ],
+          "withheld_fields": [
+            "name",
+            "actual_discovery",
+            "withheld_relationship",
+            "withheld_components",
+            "pattern"
+          ],
+          "generator_input_length": 623,
+          "timestamp": "2026-08-12T04:49:04.204116+00:00"
+        }
+      },
+      "FD-004": {
+        "case_id": "FD-004",
+        "case_type": "false",
+        "config": "C_mechanism",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the pre-discovery evidence, the core mechanism that could be transferred or combined is the interaction between the novel protein complex and DNA helicases to enhance DNA unwinding.\n\nA new re ",
+        "target": "This breakthrough has significant implications for our understanding of DNA replication and may lead to the development of new therapeutic strategies for diseases related to DNA replication errors",
+        "mechanism_match": "PARTIAL",
+        "discovery_structure_match": "NO",
+        "quality": 0.2,
+        "manifest": {
+          "case_id": "FD-004",
+          "config": "C_mechanism",
+          "cutoff_date": "1984-12-31",
+          "generator_input_hash": "72853226f7b312df2f7c6ed3e82d18d53525d5bb1d6eb85aa9831206383c3488",
+          "withheld_answer_hash": "aed983c217b0fff6098b81b92d36acd386104593808a52094e9aef5600bfccd5",
+          "exposed_fields": [
+            "relation_blind_evidence"
+          ],
+          "withheld_fields": [
+            "name",
+            "actual_discovery",
+            "withheld_relationship",
+            "withheld_components",
+            "pattern"
+          ],
+          "generator_input_length": 380,
+          "timestamp": "2026-08-12T04:50:10.352776+00:00"
+        }
+      },
+      "FD-005": {
+        "case_id": "FD-005",
+        "case_type": "false",
+        "config": "C_mechanism",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the pre-discovery evidence, the core mechanism that could be transferred or combined is the application of specific thermal gradients to induce a paradoxical state in crystalline structures.  ",
+        "target": "None, as this is a hypothetical discovery",
+        "mechanism_match": "NO",
+        "discovery_structure_match": "PARTIAL",
+        "quality": 0.5,
+        "manifest": {
+          "case_id": "FD-005",
+          "config": "C_mechanism",
+          "cutoff_date": "2003-12-31",
+          "generator_input_hash": "d37108cafb2415d9e21017ba0fb59554b7bc836765ac09017a8bb9ac0043d48b",
+          "withheld_answer_hash": "393656a3e1beff7b8842f480cdcff4db8f46e8af289610b963946e41d0b9a268",
+          "exposed_fields": [
+            "relation_blind_evidence"
+          ],
+          "withheld_fields": [
+            "name",
+            "actual_discovery",
+            "withheld_relationship",
+            "withheld_components",
+            "pattern"
+          ],
+          "generator_input_length": 475,
+          "timestamp": "2026-08-12T04:51:32.450896+00:00"
+        }
+      },
+      "FD-006": {
+        "case_id": "FD-006",
+        "case_type": "false",
+        "config": "C_mechanism",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Parallel Attention Mechanism (PAM) Inverted sequential processing + Attention-based architectures",
+        "target": "The Temporal Inversion Theorem has the potential to revolutionize the field of natural language processing and time-series forecasting, enabling the development of faster and more accurate models that can handle complex sequential data",
+        "mechanism_match": "PARTIAL",
+        "discovery_structure_match": "NO",
+        "quality": 0.2,
+        "manifest": {
+          "case_id": "FD-006",
+          "config": "C_mechanism",
+          "cutoff_date": "2016-12-31",
+          "generator_input_hash": "d8cc61e13d356004ee368a6992bb0a863b14c9da380c7bd4858f3a4e0e1c665b",
+          "withheld_answer_hash": "79d133e5ef22bb8660f6734cf1d36202d8516a003fd5062f7b2f25e1f2fecc8e",
+          "exposed_fields": [
+            "relation_blind_evidence"
+          ],
+          "withheld_fields": [
+            "name",
+            "actual_discovery",
+            "withheld_relationship",
+            "withheld_components",
+            "pattern"
+          ],
+          "generator_input_length": 459,
+          "timestamp": "2026-08-12T04:52:47.858952+00:00"
+        }
+      },
+      "FD-007": {
+        "case_id": "FD-007",
+        "case_type": "false",
+        "config": "C_mechanism",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the pre-discovery evidence, the core mechanism that could be transferred or combined is the application of recursive Fourier transforms to enhance pattern recognition in deep neural networks. ",
+        "target": "This breakthrough has the potential to revolutionize image and speech recognition systems, enabling them to operate effectively in high-interference environments",
+        "mechanism_match": "YES",
+        "discovery_structure_match": "NO",
+        "quality": 0.5,
+        "manifest": {
+          "case_id": "FD-007",
+          "config": "C_mechanism",
+          "cutoff_date": "2011-12-31",
+          "generator_input_hash": "9a1ecf93977ea42832ffc5bce29a7bedd4118e72873ae9fe39de460fb0705bdc",
+          "withheld_answer_hash": "bd5d5d2c2070c82fab52710a43c5bbbfb93a8c6d25c79e88230cd57800eba3ce",
+          "exposed_fields": [
+            "relation_blind_evidence"
+          ],
+          "withheld_fields": [
+            "name",
+            "actual_discovery",
+            "withheld_relationship",
+            "withheld_components",
+            "pattern"
+          ],
+          "generator_input_length": 323,
+          "timestamp": "2026-08-12T04:54:11.041185+00:00"
+        }
+      },
+      "FD-008": {
+        "case_id": "FD-008",
+        "case_type": "false",
+        "config": "C_mechanism",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Modulation of the human microbiome through targeted introduction of the newly discovered archaea species Combining the archaea species with other beneficial microorganisms",
+        "target": "This breakthrough has significant implications for the development of novel therapeutic strategies, as it suggests that targeted manipulation of the human microbiome could lead to innovative treatments for diseases such as rheumatoid arthritis and lu",
+        "mechanism_match": "YES",
+        "discovery_structure_match": "PARTIAL",
+        "quality": 0.5,
+        "manifest": {
+          "case_id": "FD-008",
+          "config": "C_mechanism",
+          "cutoff_date": "1927-12-31",
+          "generator_input_hash": "255f12f8c0c9e628864837ef8746b55f26be65eafe0241272deabe7e972f3fab",
+          "withheld_answer_hash": "8111e8d85dc9e7d50fda41fabb188a17b703e8a87cdd114e5c654bd99eb82ebb",
+          "exposed_fields": [
+            "relation_blind_evidence"
+          ],
+          "withheld_fields": [
+            "name",
+            "actual_discovery",
+            "withheld_relationship",
+            "withheld_components",
+            "pattern"
+          ],
+          "generator_input_length": 411,
+          "timestamp": "2026-08-12T04:55:34.232589+00:00"
+        }
+      },
+      "FD-009": {
+        "case_id": "FD-009",
+        "case_type": "false",
+        "config": "C_mechanism",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Nexarion particle-mediated intercellular communication Nexarion particles + Immunotherapeutic approaches → Enhanced anti-tumor immune response",
+        "target": "",
+        "mechanism_match": "YES",
+        "discovery_structure_match": "YES",
+        "quality": 0.9,
+        "manifest": {
+          "case_id": "FD-009",
+          "config": "C_mechanism",
+          "cutoff_date": "1974-12-31",
+          "generator_input_hash": "154b55bd0ec126d72c10fe1b4d68b4262dbe1db2250ae95348b7314909831c48",
+          "withheld_answer_hash": "206a552f25908491d2c51d872a0a14f52d0fdb397be5306ce9a214ed9703f5d9",
+          "exposed_fields": [
+            "relation_blind_evidence"
+          ],
+          "withheld_fields": [
+            "name",
+            "actual_discovery",
+            "withheld_relationship",
+            "withheld_components",
+            "pattern"
+          ],
+          "generator_input_length": 420,
+          "timestamp": "2026-08-12T04:57:02.392849+00:00"
+        }
+      },
+      "FD-010": {
+        "case_id": "FD-010",
+        "case_type": "false",
+        "config": "C_mechanism",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Epigenetic reprogramming of TARCs to enhance immunotherapy efficacy Combination of immunotherapy with epigenetic modifiers to target TARCs",
+        "target": "This breakthrough discovery has the potential to revolutionize cancer immunotherapy by enabling the development of novel therapeutic strategies that target TARCs and restore the immune system's ability to recognize and eliminate cancer cells",
+        "mechanism_match": "YES",
+        "discovery_structure_match": "PARTIAL",
+        "quality": 0.5,
+        "manifest": {
+          "case_id": "FD-010",
+          "config": "C_mechanism",
+          "cutoff_date": "2011-12-31",
+          "generator_input_hash": "ee3496445bfc7892924097e5654e62db2cfb6196db096d50bd59092827788271",
+          "withheld_answer_hash": "1da4f96da43ef5ef86edea6e3d0cc67ac0aa786bdd3858dda7a229dec9e159c9",
+          "exposed_fields": [
+            "relation_blind_evidence"
+          ],
+          "withheld_fields": [
+            "name",
+            "actual_discovery",
+            "withheld_relationship",
+            "withheld_components",
+            "pattern"
+          ],
+          "generator_input_length": 496,
+          "timestamp": "2026-08-12T04:58:21.520583+00:00"
+        }
+      }
+    },
+    "D_mech_constraints": {
+      "DSB-001": {
+        "case_id": "DSB-001",
+        "case_type": "real",
+        "config": "D_mech_constraints",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "guide RNA-Cas9 complex for programmable DNA cutting combination of CRISPR guide RNA and Cas9 nuclease",
+        "target": "Cas9 + designed guide RNA = programmable DNA cleavage in any cell type",
+        "mechanism_match": "YES",
+        "discovery_structure_match": "YES",
+        "quality": 1.0,
+        "manifest": {
+          "case_id": "DSB-001",
+          "config": "D_mech_constraints",
+          "cutoff_date": "2011-12-31",
+          "generator_input_hash": "11f1e5e615fdb7fa00b9bee44246d5e5a60dce147868cc7183bfcbb8363145d0",
+          "withheld_answer_hash": "1e901be88b871dd87c50510df847b425b31c817d20898ad35cb2b16b5b536217",
+          "exposed_fields": [
+            "relation_blind_evidence"
+          ],
+          "withheld_fields": [
+            "name",
+            "actual_discovery",
+            "withheld_relationship",
+            "withheld_components",
+            "pattern"
+          ],
+          "generator_input_length": 650,
+          "timestamp": "2026-08-12T04:32:09.881884+00:00"
+        }
+      },
+      "DSB-002": {
+        "case_id": "DSB-002",
+        "case_type": "real",
+        "config": "D_mech_constraints",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the pre-discovery evidence, I identify:\n\n1. Constraints that limit progress:\n\t* Severe immune reactions triggered by unmodified mRNA\n\t* Limitations in speed of development and scalability of  ",
+        "target": "Nucleoside-modified mRNA + lipid nanoparticle delivery = vaccine with >95% efficacy",
+        "mechanism_match": "YES",
+        "discovery_structure_match": "PARTIAL",
+        "quality": 0.5,
+        "manifest": {
+          "case_id": "DSB-002",
+          "config": "D_mech_constraints",
+          "cutoff_date": "2019-12-31",
+          "generator_input_hash": "2f067b0a886502d9bfa926d8b845f533d0c43eb85aefbd907adf45a94d9f452b",
+          "withheld_answer_hash": "22db6322673dcd821dd1f847de47bf941ca511dec27b82c59fd00ce0b0255e6b",
+          "exposed_fields": [
+            "relation_blind_evidence"
+          ],
+          "withheld_fields": [
+            "name",
+            "actual_discovery",
+            "withheld_relationship",
+            "withheld_components",
+            "pattern"
+          ],
+          "generator_input_length": 626,
+          "timestamp": "2026-08-12T04:33:36.548345+00:00"
+        }
+      },
+      "DSB-003": {
+        "case_id": "DSB-003",
+        "case_type": "real",
+        "config": "D_mech_constraints",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the pre-discovery evidence, I identify:\n\n1. Constraints that limit progress:\n\t* Safety concerns due to dendrite formation in lithium metal batteries\n\t* Difficulty in creating a battery that i ",
+        "target": "LiCoO2 cathode + graphite anode + non-aqueous electrolyte = rechargeable Li-ion battery",
+        "mechanism_match": "PARTIAL",
+        "discovery_structure_match": "NO",
+        "quality": 0.2,
+        "manifest": {
+          "case_id": "DSB-003",
+          "config": "D_mech_constraints",
+          "cutoff_date": "1990-12-31",
+          "generator_input_hash": "8c79829ddc9f571631aff88528dc2404196366ef5c6c411343326cab50e0e7c1",
+          "withheld_answer_hash": "001399b35622febe2529ace39f703755562ffca82b8d52894cab5a5feb80334d",
+          "exposed_fields": [
+            "relation_blind_evidence"
+          ],
+          "withheld_fields": [
+            "name",
+            "actual_discovery",
+            "withheld_relationship",
+            "withheld_components",
+            "pattern"
+          ],
+          "generator_input_length": 611,
+          "timestamp": "2026-08-12T04:35:33.368995+00:00"
+        }
+      },
+      "DSB-004": {
+        "case_id": "DSB-004",
+        "case_type": "real",
+        "config": "D_mech_constraints",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the pre-discovery evidence, I identify:\n\n1. Constraints that limit progress:\n\t* The need for a temperature-stable enzyme to facilitate primer extension at high temperatures, as most enzymes a ",
+        "target": "Thermal cycling + Taq polymerase = exponential DNA amplification",
+        "mechanism_match": "YES",
+        "discovery_structure_match": "PARTIAL",
+        "quality": 0.5,
+        "manifest": {
+          "case_id": "DSB-004",
+          "config": "D_mech_constraints",
+          "cutoff_date": "1984-12-31",
+          "generator_input_hash": "8e5c9a768096d223ca8deee1871bd3a9d476bb7ad21743d4200f04737ed3a069",
+          "withheld_answer_hash": "51caa7c0d5dc5c520a5d72aa3c3b882c7a4ff00f87a15f64339c4530de440327",
+          "exposed_fields": [
+            "relation_blind_evidence"
+          ],
+          "withheld_fields": [
+            "name",
+            "actual_discovery",
+            "withheld_relationship",
+            "withheld_components",
+            "pattern"
+          ],
+          "generator_input_length": 558,
+          "timestamp": "2026-08-12T04:37:37.484524+00:00"
+        }
+      },
+      "DSB-005": {
+        "case_id": "DSB-005",
+        "case_type": "real",
+        "config": "D_mech_constraints",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "substrate with specially designed surface energy profile combination of mechanical cleavage and substrate stabilization",
+        "target": "Mechanical exfoliation produces stable single-layer graphene on substrate",
+        "mechanism_match": "YES",
+        "discovery_structure_match": "PARTIAL",
+        "quality": 0.5,
+        "manifest": {
+          "case_id": "DSB-005",
+          "config": "D_mech_constraints",
+          "cutoff_date": "2003-12-31",
+          "generator_input_hash": "5adef670c3510f6b7edcbcf150c24ce08dad66551e232ac1d726dcb68dad5d83",
+          "withheld_answer_hash": "7a0a96feb64b2fde0a776efa302ca87ddfcd7824c1e157e44d27cbf96d629cdb",
+          "exposed_fields": [
+            "relation_blind_evidence"
+          ],
+          "withheld_fields": [
+            "name",
+            "actual_discovery",
+            "withheld_relationship",
+            "withheld_components",
+            "pattern"
+          ],
+          "generator_input_length": 693,
+          "timestamp": "2026-08-12T04:39:09.248910+00:00"
+        }
+      },
+      "DSB-006": {
+        "case_id": "DSB-006",
+        "case_type": "real",
+        "config": "D_mech_constraints",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Graph Attention with Positional Encoding (GAPE) Combination of attention mechanisms and graph-based neural networks",
+        "target": "Self-attention alone + positional encoding = Transformer (no recurrence needed)",
+        "mechanism_match": "YES",
+        "discovery_structure_match": "NO",
+        "quality": 0.5,
+        "manifest": {
+          "case_id": "DSB-006",
+          "config": "D_mech_constraints",
+          "cutoff_date": "2016-12-31",
+          "generator_input_hash": "8a82b087bfac1dcfaf822c348488ddc4d26b0c364ceb35085ab4580e6c9985a7",
+          "withheld_answer_hash": "eab90461b931d7e8cbcb682e31db7d1a50873c5ed776ebde31214cb52d8323f2",
+          "exposed_fields": [
+            "relation_blind_evidence"
+          ],
+          "withheld_fields": [
+            "name",
+            "actual_discovery",
+            "withheld_relationship",
+            "withheld_components",
+            "pattern"
+          ],
+          "generator_input_length": 662,
+          "timestamp": "2026-08-12T04:40:50.705689+00:00"
+        }
+      },
+      "DSB-007": {
+        "case_id": "DSB-007",
+        "case_type": "real",
+        "config": "D_mech_constraints",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the pre-discovery evidence, I identify:\n\n1. **Constraints that limit progress**: The shallow architecture of convolutional neural networks (1-2 layers) and the dominance of support vector mac ",
+        "target": "Deep CNN + GPU + ImageNet + ReLU + dropout = breakthrough performance",
+        "mechanism_match": "PARTIAL",
+        "discovery_structure_match": "NO",
+        "quality": 0.2,
+        "manifest": {
+          "case_id": "DSB-007",
+          "config": "D_mech_constraints",
+          "cutoff_date": "2011-12-31",
+          "generator_input_hash": "a512351ed162cec779e3d73ea9c8aa6b6b25422b05d91fe02b0153ede2fa79a5",
+          "withheld_answer_hash": "4dd49100b9b7f64e5c96472c6435997e9bb4b43a5f386325b7161546fd5426fe",
+          "exposed_fields": [
+            "relation_blind_evidence"
+          ],
+          "withheld_fields": [
+            "name",
+            "actual_discovery",
+            "withheld_relationship",
+            "withheld_components",
+            "pattern"
+          ],
+          "generator_input_length": 633,
+          "timestamp": "2026-08-12T04:42:09.240027+00:00"
+        }
+      },
+      "DSB-008": {
+        "case_id": "DSB-008",
+        "case_type": "real",
+        "config": "D_mech_constraints",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Mold-derived compound induces production of antibacterial enzymes in human cells Combination of mold's antibacterial properties and lysozyme's enzyme activity",
+        "target": "Penicillium mold produces penicillin, inhibiting bacterial cell walls without harming tissue",
+        "mechanism_match": "YES",
+        "discovery_structure_match": "PARTIAL",
+        "quality": 0.5,
+        "manifest": {
+          "case_id": "DSB-008",
+          "config": "D_mech_constraints",
+          "cutoff_date": "1927-12-31",
+          "generator_input_hash": "03dbfaf89a7c496495fabe9b4cfeee5feeeda54974885a001feb98421eb56a4b",
+          "withheld_answer_hash": "fcf569e19328b4c8aed5d50d3f6ab90c65d2b022f1fceba3f525fdf5e99ee21c",
+          "exposed_fields": [
+            "relation_blind_evidence"
+          ],
+          "withheld_fields": [
+            "name",
+            "actual_discovery",
+            "withheld_relationship",
+            "withheld_components",
+            "pattern"
+          ],
+          "generator_input_length": 596,
+          "timestamp": "2026-08-12T04:43:25.761523+00:00"
+        }
+      },
+      "DSB-009": {
+        "case_id": "DSB-009",
+        "case_type": "real",
+        "config": "D_mech_constraints",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the pre-discovery evidence, I identify:\n\n1. **Constraints that limit progress:**\n\t* B-cells have a limited lifespan in culture, which restricts the production of specific antibodies.\n\t* Myelo ",
+        "target": "B-cell + myeloma fusion = hybridoma producing monoclonal antibodies indefinitely",
+        "mechanism_match": "YES",
+        "discovery_structure_match": "PARTIAL",
+        "quality": 0.5,
+        "manifest": {
+          "case_id": "DSB-009",
+          "config": "D_mech_constraints",
+          "cutoff_date": "1974-12-31",
+          "generator_input_hash": "fd854215d39ff2e8c63221ca09490d050a324af92b5d843e08763f7df27887f7",
+          "withheld_answer_hash": "6635b2f17a11ae0c61c7704ddc6abd32f9de015a418525ae3cb9992261716d00",
+          "exposed_fields": [
+            "relation_blind_evidence"
+          ],
+          "withheld_fields": [
+            "name",
+            "actual_discovery",
+            "withheld_relationship",
+            "withheld_components",
+            "pattern"
+          ],
+          "generator_input_length": 576,
+          "timestamp": "2026-08-12T04:44:47.154444+00:00"
+        }
+      },
+      "DSB-010": {
+        "case_id": "DSB-010",
+        "case_type": "real",
+        "config": "D_mech_constraints",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "tumor-associated antigen-specific regulatory T-cell (Treg) modulation combination of targeting PD-1 receptor and modulating tumor microenvironment",
+        "target": "Blocking PD-1 releases T-cell inhibition, enabling immune attack on tumors",
+        "mechanism_match": "YES",
+        "discovery_structure_match": "PARTIAL",
+        "quality": 0.5,
+        "manifest": {
+          "case_id": "DSB-010",
+          "config": "D_mech_constraints",
+          "cutoff_date": "2011-12-31",
+          "generator_input_hash": "073fd812f00cff8d62e2faa22b3dddd02571869721a6dde50f1d54dcbfebe9a5",
+          "withheld_answer_hash": "fd626ce4457ac8bf7890cacbe95c9972b94a1b46c94c102ec7ba18df5ee7066a",
+          "exposed_fields": [
+            "relation_blind_evidence"
+          ],
+          "withheld_fields": [
+            "name",
+            "actual_discovery",
+            "withheld_relationship",
+            "withheld_components",
+            "pattern"
+          ],
+          "generator_input_length": 595,
+          "timestamp": "2026-08-12T04:45:38.384201+00:00"
+        }
+      },
+      "FD-001": {
+        "case_id": "FD-001",
+        "case_type": "false",
+        "config": "D_mech_constraints",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the pre-discovery evidence, I'll attempt to identify the constraints and propose a novel mechanism.\n\n**Constraints limiting progress:**\n1. Limited understanding of the molecular mechanisms un ",
+        "target": "None, as this is a hypothetical discovery",
+        "mechanism_match": "NO",
+        "discovery_structure_match": "NO",
+        "quality": 0.0,
+        "manifest": {
+          "case_id": "FD-001",
+          "config": "D_mech_constraints",
+          "cutoff_date": "2011-12-31",
+          "generator_input_hash": "0ae8d72712f4fae86feac8248c7bf7be7299a6b12788a46135cd050a3762737d",
+          "withheld_answer_hash": "a09f9910b6af6ac49b21fee64b1630b090bd6d18556c83f9bcd3274a9fe051d3",
+          "exposed_fields": [
+            "relation_blind_evidence"
+          ],
+          "withheld_fields": [
+            "name",
+            "actual_discovery",
+            "withheld_relationship",
+            "withheld_components",
+            "pattern"
+          ],
+          "generator_input_length": 443,
+          "timestamp": "2026-08-12T04:46:23.343869+00:00"
+        }
+      },
+      "FD-002": {
+        "case_id": "FD-002",
+        "case_type": "false",
+        "config": "D_mech_constraints",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "microRNA-mediated regulation combination of self-replicating RNA analogs with immune-evasive delivery and targeting",
+        "target": "This breakthrough has significant implications for the treatment of genetic disorders, as it enables the efficient and safe delivery of therapeutic genes to specific cell populations, paving the way for novel therapies in regenerative medicine and ge",
+        "mechanism_match": "YES",
+        "discovery_structure_match": "PARTIAL",
+        "quality": 0.5,
+        "manifest": {
+          "case_id": "FD-002",
+          "config": "D_mech_constraints",
+          "cutoff_date": "2019-12-31",
+          "generator_input_hash": "1a9e2e0e269956bd9e1ea3c3cb802e6ca3eb7b099f04fb92bcbc68213b48e3bf",
+          "withheld_answer_hash": "f0120f8fa002c3dd3eaeecb35f2cb707eb51321f62a4236bf59c6fe5d97deb2b",
+          "exposed_fields": [
+            "relation_blind_evidence"
+          ],
+          "withheld_fields": [
+            "name",
+            "actual_discovery",
+            "withheld_relationship",
+            "withheld_components",
+            "pattern"
+          ],
+          "generator_input_length": 469,
+          "timestamp": "2026-08-12T04:47:58.639666+00:00"
+        }
+      },
+      "FD-003": {
+        "case_id": "FD-003",
+        "case_type": "false",
+        "config": "D_mech_constraints",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the pre-discovery evidence, I'll attempt to identify the constraints and propose a mechanism to overcome them.\n\n**Constraints limiting progress:**\n1. The unique crystal structure of LiNiMnO4  ",
+        "target": "None, this is a hypothetical discovery",
+        "mechanism_match": "NO",
+        "discovery_structure_match": "NO",
+        "quality": 0.0,
+        "manifest": {
+          "case_id": "FD-003",
+          "config": "D_mech_constraints",
+          "cutoff_date": "1990-12-31",
+          "generator_input_hash": "06e0c14dbe107ab865cd868ec0e6242d0a37001e26aca174637f859dc6dd3ffd",
+          "withheld_answer_hash": "9098cea659f857a6c26b0e25ab8a3674a5cbeafd002f6a76b84ae50273bf5a65",
+          "exposed_fields": [
+            "relation_blind_evidence"
+          ],
+          "withheld_fields": [
+            "name",
+            "actual_discovery",
+            "withheld_relationship",
+            "withheld_components",
+            "pattern"
+          ],
+          "generator_input_length": 631,
+          "timestamp": "2026-08-12T04:49:15.033608+00:00"
+        }
+      },
+      "FD-004": {
+        "case_id": "FD-004",
+        "case_type": "false",
+        "config": "D_mech_constraints",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "The novel protein complex recruits and activates a histone-modifying enzyme to modify chromatin structure, creating a more open conformation for DNA replication Interaction between the novel protein complex and chromatin-remodeling enzymes",
+        "target": "This breakthrough has significant implications for our understanding of DNA replication and may lead to the development of new therapeutic strategies for diseases related to DNA replication errors",
+        "mechanism_match": "YES",
+        "discovery_structure_match": "NO",
+        "quality": 0.5,
+        "manifest": {
+          "case_id": "FD-004",
+          "config": "D_mech_constraints",
+          "cutoff_date": "1984-12-31",
+          "generator_input_hash": "d5f3460256e4bca84c68ad47301c9a4ac7b46087d9cd811992069e7ff6b2975c",
+          "withheld_answer_hash": "aed983c217b0fff6098b81b92d36acd386104593808a52094e9aef5600bfccd5",
+          "exposed_fields": [
+            "relation_blind_evidence"
+          ],
+          "withheld_fields": [
+            "name",
+            "actual_discovery",
+            "withheld_relationship",
+            "withheld_components",
+            "pattern"
+          ],
+          "generator_input_length": 388,
+          "timestamp": "2026-08-12T04:50:26.272737+00:00"
+        }
+      },
+      "FD-005": {
+        "case_id": "FD-005",
+        "case_type": "false",
+        "config": "D_mech_constraints",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "topological defects and localized states advanced computational modeling and experimental techniques",
+        "target": "None, as this is a hypothetical discovery",
+        "mechanism_match": "NO",
+        "discovery_structure_match": "NO",
+        "quality": 0.0,
+        "manifest": {
+          "case_id": "FD-005",
+          "config": "D_mech_constraints",
+          "cutoff_date": "2003-12-31",
+          "generator_input_hash": "9b8258d53c1c93eade254055c9b78202ccd59e56024de5c5b45b3182e948c82c",
+          "withheld_answer_hash": "393656a3e1beff7b8842f480cdcff4db8f46e8af289610b963946e41d0b9a268",
+          "exposed_fields": [
+            "relation_blind_evidence"
+          ],
+          "withheld_fields": [
+            "name",
+            "actual_discovery",
+            "withheld_relationship",
+            "withheld_components",
+            "pattern"
+          ],
+          "generator_input_length": 483,
+          "timestamp": "2026-08-12T04:51:45.302456+00:00"
+        }
+      },
+      "FD-006": {
+        "case_id": "FD-006",
+        "case_type": "false",
+        "config": "D_mech_constraints",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the pre-discovery evidence, I identify:\n\n1. **Constraints that limit progress**: The constraint of sequential processing in neural networks, which leads to vanishing gradients and limits the  ",
+        "target": "The Temporal Inversion Theorem has the potential to revolutionize the field of natural language processing and time-series forecasting, enabling the development of faster and more accurate models that can handle complex sequential data",
+        "mechanism_match": "PARTIAL",
+        "discovery_structure_match": "NO",
+        "quality": 0.2,
+        "manifest": {
+          "case_id": "FD-006",
+          "config": "D_mech_constraints",
+          "cutoff_date": "2016-12-31",
+          "generator_input_hash": "709bef7f53fb7d48e4fd36e59dcd5c32d8b6af9fb79c03035d1919056e365108",
+          "withheld_answer_hash": "79d133e5ef22bb8660f6734cf1d36202d8516a003fd5062f7b2f25e1f2fecc8e",
+          "exposed_fields": [
+            "relation_blind_evidence"
+          ],
+          "withheld_fields": [
+            "name",
+            "actual_discovery",
+            "withheld_relationship",
+            "withheld_components",
+            "pattern"
+          ],
+          "generator_input_length": 467,
+          "timestamp": "2026-08-12T04:53:01.445763+00:00"
+        }
+      },
+      "FD-007": {
+        "case_id": "FD-007",
+        "case_type": "false",
+        "config": "D_mech_constraints",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the pre-discovery evidence, I'll attempt to identify the constraints and propose a mechanism to overcome them.\n\n**Constraints limiting progress:**\n1. **Noise in datasets**: The presence of no ",
+        "target": "This breakthrough has the potential to revolutionize image and speech recognition systems, enabling them to operate effectively in high-interference environments",
+        "mechanism_match": "PARTIAL",
+        "discovery_structure_match": "NO",
+        "quality": 0.2,
+        "manifest": {
+          "case_id": "FD-007",
+          "config": "D_mech_constraints",
+          "cutoff_date": "2011-12-31",
+          "generator_input_hash": "a512601efbd0db4111603ed91e8344822db72dceb84b16bf978348ed60472075",
+          "withheld_answer_hash": "bd5d5d2c2070c82fab52710a43c5bbbfb93a8c6d25c79e88230cd57800eba3ce",
+          "exposed_fields": [
+            "relation_blind_evidence"
+          ],
+          "withheld_fields": [
+            "name",
+            "actual_discovery",
+            "withheld_relationship",
+            "withheld_components",
+            "pattern"
+          ],
+          "generator_input_length": 331,
+          "timestamp": "2026-08-12T04:54:30.439511+00:00"
+        }
+      },
+      "FD-008": {
+        "case_id": "FD-008",
+        "case_type": "false",
+        "config": "D_mech_constraints",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Production of anti-inflammatory metabolites by the archaeal species Interaction between the archaeal species and the human microbiome",
+        "target": "This breakthrough has significant implications for the development of novel therapeutic strategies, as it suggests that targeted manipulation of the human microbiome could lead to innovative treatments for diseases such as rheumatoid arthritis and lu",
+        "mechanism_match": "YES",
+        "discovery_structure_match": "PARTIAL",
+        "quality": 0.5,
+        "manifest": {
+          "case_id": "FD-008",
+          "config": "D_mech_constraints",
+          "cutoff_date": "1927-12-31",
+          "generator_input_hash": "5eb1159aa2a4c5171797d9912e92d7dfe62c5b1edc1500319b2cab4999fe201b",
+          "withheld_answer_hash": "8111e8d85dc9e7d50fda41fabb188a17b703e8a87cdd114e5c654bd99eb82ebb",
+          "exposed_fields": [
+            "relation_blind_evidence"
+          ],
+          "withheld_fields": [
+            "name",
+            "actual_discovery",
+            "withheld_relationship",
+            "withheld_components",
+            "pattern"
+          ],
+          "generator_input_length": 419,
+          "timestamp": "2026-08-12T04:55:49.236508+00:00"
+        }
+      },
+      "FD-009": {
+        "case_id": "FD-009",
+        "case_type": "false",
+        "config": "D_mech_constraints",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Mechanical signaling via Nexarion particle-mediated mechanical forces or vibrations Integration of single-cell RNA sequencing, machine learning algorithms, and CRISPR-Cas9 gene editing",
+        "target": "",
+        "mechanism_match": "PARTIAL",
+        "discovery_structure_match": "NO",
+        "quality": 0.2,
+        "manifest": {
+          "case_id": "FD-009",
+          "config": "D_mech_constraints",
+          "cutoff_date": "1974-12-31",
+          "generator_input_hash": "b1cfea32c2ed1648c0cc291bacdaa5a35e457e9aeed36c32a41a8253fe018cec",
+          "withheld_answer_hash": "206a552f25908491d2c51d872a0a14f52d0fdb397be5306ce9a214ed9703f5d9",
+          "exposed_fields": [
+            "relation_blind_evidence"
+          ],
+          "withheld_fields": [
+            "name",
+            "actual_discovery",
+            "withheld_relationship",
+            "withheld_components",
+            "pattern"
+          ],
+          "generator_input_length": 428,
+          "timestamp": "2026-08-12T04:57:31.719131+00:00"
+        }
+      },
+      "FD-010": {
+        "case_id": "FD-010",
+        "case_type": "false",
+        "config": "D_mech_constraints",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the pre-discovery evidence, I'll attempt to identify the constraints and propose a mechanism that is not already stated.\n\n**Constraints that limit progress:**\n1. The presence of Tumor-Associa ",
+        "target": "This breakthrough discovery has the potential to revolutionize cancer immunotherapy by enabling the development of novel therapeutic strategies that target TARCs and restore the immune system's ability to recognize and eliminate cancer cells",
+        "mechanism_match": "PARTIAL",
+        "discovery_structure_match": "NO",
+        "quality": 0.2,
+        "manifest": {
+          "case_id": "FD-010",
+          "config": "D_mech_constraints",
+          "cutoff_date": "2011-12-31",
+          "generator_input_hash": "37d1ac4c293f202cf8a9957e2f8bc347f39afc992740353e3c65c157c744bd30",
+          "withheld_answer_hash": "1da4f96da43ef5ef86edea6e3d0cc67ac0aa786bdd3858dda7a229dec9e159c9",
+          "exposed_fields": [
+            "relation_blind_evidence"
+          ],
+          "withheld_fields": [
+            "name",
+            "actual_discovery",
+            "withheld_relationship",
+            "withheld_components",
+            "pattern"
+          ],
+          "generator_input_length": 504,
+          "timestamp": "2026-08-12T04:58:53.794261+00:00"
+        }
+      }
+    },
+    "E_combination": {
+      "DSB-001": {
+        "case_id": "DSB-001",
+        "case_type": "real",
+        "config": "E_combination",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Programmable genome editing using CRISPR-Cas9 and guide RNA Combination of CRISPR-Cas9 and guide RNA-directed specificity",
+        "target": "Cas9 + designed guide RNA = programmable DNA cleavage in any cell type",
+        "mechanism_match": "YES",
+        "discovery_structure_match": "YES",
+        "quality": 1.0,
+        "manifest": {
+          "case_id": "DSB-001",
+          "config": "E_combination",
+          "cutoff_date": "2011-12-31",
+          "generator_input_hash": "ddf576f44fcdf4dbefb109895e48b76015d17c5429c67027989f30576c79fd1d",
+          "withheld_answer_hash": "1e901be88b871dd87c50510df847b425b31c817d20898ad35cb2b16b5b536217",
+          "exposed_fields": [
+            "relation_blind_evidence"
+          ],
+          "withheld_fields": [
+            "name",
+            "actual_discovery",
+            "withheld_relationship",
+            "withheld_components",
+            "pattern"
+          ],
+          "generator_input_length": 650,
+          "timestamp": "2026-08-12T04:32:23.999071+00:00"
+        }
+      },
+      "DSB-002": {
+        "case_id": "DSB-002",
+        "case_type": "real",
+        "config": "E_combination",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Combination of nucleoside-modified mRNA and lipid nanoparticles for targeted delivery Emergent capability for rapid and scalable vaccine development",
+        "target": "Nucleoside-modified mRNA + lipid nanoparticle delivery = vaccine with >95% efficacy",
+        "mechanism_match": "YES",
+        "discovery_structure_match": "YES",
+        "quality": 0.9,
+        "manifest": {
+          "case_id": "DSB-002",
+          "config": "E_combination",
+          "cutoff_date": "2019-12-31",
+          "generator_input_hash": "4742d12cf6ffd7c911a3e1baf3310cba2d726611e700cc47606526e7909330e8",
+          "withheld_answer_hash": "22db6322673dcd821dd1f847de47bf941ca511dec27b82c59fd00ce0b0255e6b",
+          "exposed_fields": [
+            "relation_blind_evidence"
+          ],
+          "withheld_fields": [
+            "name",
+            "actual_discovery",
+            "withheld_relationship",
+            "withheld_components",
+            "pattern"
+          ],
+          "generator_input_length": 626,
+          "timestamp": "2026-08-12T04:33:51.678486+00:00"
+        }
+      },
+      "DSB-003": {
+        "case_id": "DSB-003",
+        "case_type": "real",
+        "config": "E_combination",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the pre-discovery evidence, I propose the following two independently validated mechanisms that could combine to create an emergent capability:\n\n**Mechanism 1: Lithium intercalation in graphi ",
+        "target": "LiCoO2 cathode + graphite anode + non-aqueous electrolyte = rechargeable Li-ion battery",
+        "mechanism_match": "YES",
+        "discovery_structure_match": "PARTIAL",
+        "quality": 0.5,
+        "manifest": {
+          "case_id": "DSB-003",
+          "config": "E_combination",
+          "cutoff_date": "1990-12-31",
+          "generator_input_hash": "bd626ac49708975989e7a0f22c7fe77c1510d2bfe1b2b1b9142bd47184c064cc",
+          "withheld_answer_hash": "001399b35622febe2529ace39f703755562ffca82b8d52894cab5a5feb80334d",
+          "exposed_fields": [
+            "relation_blind_evidence"
+          ],
+          "withheld_fields": [
+            "name",
+            "actual_discovery",
+            "withheld_relationship",
+            "withheld_components",
+            "pattern"
+          ],
+          "generator_input_length": 611,
+          "timestamp": "2026-08-12T04:36:35.869289+00:00"
+        }
+      },
+      "DSB-004": {
+        "case_id": "DSB-004",
+        "case_type": "real",
+        "config": "E_combination",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the pre-discovery evidence, I propose the following two independently validated mechanisms that could combine to create an emergent capability:\n\n**Mechanism 1: Thermocycling with thermostable ",
+        "target": "Thermal cycling + Taq polymerase = exponential DNA amplification",
+        "mechanism_match": "YES",
+        "discovery_structure_match": "YES",
+        "quality": 1.0,
+        "manifest": {
+          "case_id": "DSB-004",
+          "config": "E_combination",
+          "cutoff_date": "1984-12-31",
+          "generator_input_hash": "28f15e58e2aa5df4217a4c003bddcbf0a5b392f4d01f65f24bce0eb59e58a7d3",
+          "withheld_answer_hash": "51caa7c0d5dc5c520a5d72aa3c3b882c7a4ff00f87a15f64339c4530de440327",
+          "exposed_fields": [
+            "relation_blind_evidence"
+          ],
+          "withheld_fields": [
+            "name",
+            "actual_discovery",
+            "withheld_relationship",
+            "withheld_components",
+            "pattern"
+          ],
+          "generator_input_length": 558,
+          "timestamp": "2026-08-12T04:37:57.173780+00:00"
+        }
+      },
+      "DSB-005": {
+        "case_id": "DSB-005",
+        "case_type": "real",
+        "config": "E_combination",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Mechanical cleavage of layered materials combined with rolling and stabilization of graphene sheets Combination of mechanical cleavage and stabilization of graphene sheets",
+        "target": "Mechanical exfoliation produces stable single-layer graphene on substrate",
+        "mechanism_match": "YES",
+        "discovery_structure_match": "YES",
+        "quality": 0.9,
+        "manifest": {
+          "case_id": "DSB-005",
+          "config": "E_combination",
+          "cutoff_date": "2003-12-31",
+          "generator_input_hash": "a5438d81719afb2467d271e3e30136197c287f882e6e5a1d1e5166048ec9583a",
+          "withheld_answer_hash": "7a0a96feb64b2fde0a776efa302ca87ddfcd7824c1e157e44d27cbf96d629cdb",
+          "exposed_fields": [
+            "relation_blind_evidence"
+          ],
+          "withheld_fields": [
+            "name",
+            "actual_discovery",
+            "withheld_relationship",
+            "withheld_components",
+            "pattern"
+          ],
+          "generator_input_length": 693,
+          "timestamp": "2026-08-12T04:39:45.337128+00:00"
+        }
+      },
+      "DSB-006": {
+        "case_id": "DSB-006",
+        "case_type": "real",
+        "config": "E_combination",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the provided evidence, I propose the following two independently validated mechanisms that could combine to create an emergent capability:\n\n**Mechanism 1: Graph-based Neural Networks**\nGraph- ",
+        "target": "Self-attention alone + positional encoding = Transformer (no recurrence needed)",
+        "mechanism_match": "PARTIAL",
+        "discovery_structure_match": "NO",
+        "quality": 0.2,
+        "manifest": {
+          "case_id": "DSB-006",
+          "config": "E_combination",
+          "cutoff_date": "2016-12-31",
+          "generator_input_hash": "b40e38668b3a85622f1a36bf8a2110508816f9cc8e3435cc5e70aa7904a14fb6",
+          "withheld_answer_hash": "eab90461b931d7e8cbcb682e31db7d1a50873c5ed776ebde31214cb52d8323f2",
+          "exposed_fields": [
+            "relation_blind_evidence"
+          ],
+          "withheld_fields": [
+            "name",
+            "actual_discovery",
+            "withheld_relationship",
+            "withheld_components",
+            "pattern"
+          ],
+          "generator_input_length": 662,
+          "timestamp": "2026-08-12T04:41:07.937777+00:00"
+        }
+      },
+      "DSB-007": {
+        "case_id": "DSB-007",
+        "case_type": "real",
+        "config": "E_combination",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Deep Convolutional Neural Networks + GPU-Accelerated Training with Regularization Combination of deep neural networks and efficient training with regularization",
+        "target": "Deep CNN + GPU + ImageNet + ReLU + dropout = breakthrough performance",
+        "mechanism_match": "YES",
+        "discovery_structure_match": "PARTIAL",
+        "quality": 0.5,
+        "manifest": {
+          "case_id": "DSB-007",
+          "config": "E_combination",
+          "cutoff_date": "2011-12-31",
+          "generator_input_hash": "ab297f95b5a61d7350f86e119b43cc2501b1ba7838d995d6007550a647e3b29b",
+          "withheld_answer_hash": "4dd49100b9b7f64e5c96472c6435997e9bb4b43a5f386325b7161546fd5426fe",
+          "exposed_fields": [
+            "relation_blind_evidence"
+          ],
+          "withheld_fields": [
+            "name",
+            "actual_discovery",
+            "withheld_relationship",
+            "withheld_components",
+            "pattern"
+          ],
+          "generator_input_length": 633,
+          "timestamp": "2026-08-12T04:42:26.951385+00:00"
+        }
+      },
+      "DSB-008": {
+        "case_id": "DSB-008",
+        "case_type": "real",
+        "config": "E_combination",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Enzyme-enhanced mold-derived antibacterial therapy Combination of enzyme-mediated bacterial lysis and mold-derived antibacterial compounds",
+        "target": "Penicillium mold produces penicillin, inhibiting bacterial cell walls without harming tissue",
+        "mechanism_match": "YES",
+        "discovery_structure_match": "PARTIAL",
+        "quality": 0.5,
+        "manifest": {
+          "case_id": "DSB-008",
+          "config": "E_combination",
+          "cutoff_date": "1927-12-31",
+          "generator_input_hash": "c7acedf022e423bc019167a765aa16e1bbe74ab20a82bf91cd6898956133851d",
+          "withheld_answer_hash": "fcf569e19328b4c8aed5d50d3f6ab90c65d2b022f1fceba3f525fdf5e99ee21c",
+          "exposed_fields": [
+            "relation_blind_evidence"
+          ],
+          "withheld_fields": [
+            "name",
+            "actual_discovery",
+            "withheld_relationship",
+            "withheld_components",
+            "pattern"
+          ],
+          "generator_input_length": 596,
+          "timestamp": "2026-08-12T04:43:48.501056+00:00"
+        }
+      },
+      "DSB-009": {
+        "case_id": "DSB-009",
+        "case_type": "real",
+        "config": "E_combination",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Cell Fusion and Immune System Stimulation Hybrid cells with indefinite culture lifespan and specific antibody production",
+        "target": "B-cell + myeloma fusion = hybridoma producing monoclonal antibodies indefinitely",
+        "mechanism_match": "YES",
+        "discovery_structure_match": "YES",
+        "quality": 1.0,
+        "manifest": {
+          "case_id": "DSB-009",
+          "config": "E_combination",
+          "cutoff_date": "1974-12-31",
+          "generator_input_hash": "adc9c709f228799231d400983159c8ba732abc5a119150952ecd6cb7f28caf36",
+          "withheld_answer_hash": "6635b2f17a11ae0c61c7704ddc6abd32f9de015a418525ae3cb9992261716d00",
+          "exposed_fields": [
+            "relation_blind_evidence"
+          ],
+          "withheld_fields": [
+            "name",
+            "actual_discovery",
+            "withheld_relationship",
+            "withheld_components",
+            "pattern"
+          ],
+          "generator_input_length": 576,
+          "timestamp": "2026-08-12T04:44:59.645329+00:00"
+        }
+      },
+      "DSB-010": {
+        "case_id": "DSB-010",
+        "case_type": "real",
+        "config": "E_combination",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "PD-1 blockade + CTLA-4 blockade Combination of dual blockade",
+        "target": "Blocking PD-1 releases T-cell inhibition, enabling immune attack on tumors",
+        "mechanism_match": "YES",
+        "discovery_structure_match": "NO",
+        "quality": 0.5,
+        "manifest": {
+          "case_id": "DSB-010",
+          "config": "E_combination",
+          "cutoff_date": "2011-12-31",
+          "generator_input_hash": "8a42fe1f1e98dbaad86a6eb8020b9b1f1237a7b30f556b9679912687f7e17393",
+          "withheld_answer_hash": "fd626ce4457ac8bf7890cacbe95c9972b94a1b46c94c102ec7ba18df5ee7066a",
+          "exposed_fields": [
+            "relation_blind_evidence"
+          ],
+          "withheld_fields": [
+            "name",
+            "actual_discovery",
+            "withheld_relationship",
+            "withheld_components",
+            "pattern"
+          ],
+          "generator_input_length": 595,
+          "timestamp": "2026-08-12T04:45:47.708485+00:00"
+        }
+      },
+      "FD-001": {
+        "case_id": "FD-001",
+        "case_type": "false",
+        "config": "E_combination",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the provided evidence, I propose the following two independently validated mechanisms that could combine to create an emergent capability:\n\n**Mechanism 1: Quorum Sensing**\nQuorum sensing is a ",
+        "target": "None, as this is a hypothetical discovery",
+        "mechanism_match": "NO",
+        "discovery_structure_match": "PARTIAL",
+        "quality": 0.5,
+        "manifest": {
+          "case_id": "FD-001",
+          "config": "E_combination",
+          "cutoff_date": "2011-12-31",
+          "generator_input_hash": "2052359b7581e20a356e9eba03d8a625cc215692d8906a65e1d8cc8a32de448b",
+          "withheld_answer_hash": "a09f9910b6af6ac49b21fee64b1630b090bd6d18556c83f9bcd3274a9fe051d3",
+          "exposed_fields": [
+            "relation_blind_evidence"
+          ],
+          "withheld_fields": [
+            "name",
+            "actual_discovery",
+            "withheld_relationship",
+            "withheld_components",
+            "pattern"
+          ],
+          "generator_input_length": 443,
+          "timestamp": "2026-08-12T04:46:36.858727+00:00"
+        }
+      },
+      "FD-002": {
+        "case_id": "FD-002",
+        "case_type": "false",
+        "config": "E_combination",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "CRISPR-Cas13-mediated RNA targeting and microRNA-mediated gene regulation Combination of precise RNA degradation and dynamic gene regulation",
+        "target": "This breakthrough has significant implications for the treatment of genetic disorders, as it enables the efficient and safe delivery of therapeutic genes to specific cell populations, paving the way for novel therapies in regenerative medicine and ge",
+        "mechanism_match": "YES",
+        "discovery_structure_match": "PARTIAL",
+        "quality": 0.5,
+        "manifest": {
+          "case_id": "FD-002",
+          "config": "E_combination",
+          "cutoff_date": "2019-12-31",
+          "generator_input_hash": "221ed83f723f65c8e7d6f05953e42e67ce10cdb133e62baf989bf6c753e0c376",
+          "withheld_answer_hash": "f0120f8fa002c3dd3eaeecb35f2cb707eb51321f62a4236bf59c6fe5d97deb2b",
+          "exposed_fields": [
+            "relation_blind_evidence"
+          ],
+          "withheld_fields": [
+            "name",
+            "actual_discovery",
+            "withheld_relationship",
+            "withheld_components",
+            "pattern"
+          ],
+          "generator_input_length": 469,
+          "timestamp": "2026-08-12T04:48:04.941314+00:00"
+        }
+      },
+      "FD-003": {
+        "case_id": "FD-003",
+        "case_type": "false",
+        "config": "E_combination",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the pre-discovery evidence, I propose two independently validated mechanisms that could combine to create an emergent capability not described in the evidence:\n\n**Mechanism 1: Piezoelectricit ",
+        "target": "None, this is a hypothetical discovery",
+        "mechanism_match": "NO",
+        "discovery_structure_match": "PARTIAL",
+        "quality": 0.5,
+        "manifest": {
+          "case_id": "FD-003",
+          "config": "E_combination",
+          "cutoff_date": "1990-12-31",
+          "generator_input_hash": "01c9849381089d43ab0e188a03cee41d66d796808ad5973e1b969471a2b6b882",
+          "withheld_answer_hash": "9098cea659f857a6c26b0e25ab8a3674a5cbeafd002f6a76b84ae50273bf5a65",
+          "exposed_fields": [
+            "relation_blind_evidence"
+          ],
+          "withheld_fields": [
+            "name",
+            "actual_discovery",
+            "withheld_relationship",
+            "withheld_components",
+            "pattern"
+          ],
+          "generator_input_length": 631,
+          "timestamp": "2026-08-12T04:49:38.889884+00:00"
+        }
+      },
+      "FD-004": {
+        "case_id": "FD-004",
+        "case_type": "false",
+        "config": "E_combination",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the pre-discovery evidence, I propose two independently validated mechanisms that could combine to create an emergent capability:\n\n**Mechanism 1: Enhanced DNA Repair**\nThe novel protein compl ",
+        "target": "This breakthrough has significant implications for our understanding of DNA replication and may lead to the development of new therapeutic strategies for diseases related to DNA replication errors",
+        "mechanism_match": "PARTIAL",
+        "discovery_structure_match": "NO",
+        "quality": 0.2,
+        "manifest": {
+          "case_id": "FD-004",
+          "config": "E_combination",
+          "cutoff_date": "1984-12-31",
+          "generator_input_hash": "62c18d0f1344bf948e8a0e447f25e87cb5f78bfe6699cbea1d888e736a29890a",
+          "withheld_answer_hash": "aed983c217b0fff6098b81b92d36acd386104593808a52094e9aef5600bfccd5",
+          "exposed_fields": [
+            "relation_blind_evidence"
+          ],
+          "withheld_fields": [
+            "name",
+            "actual_discovery",
+            "withheld_relationship",
+            "withheld_components",
+            "pattern"
+          ],
+          "generator_input_length": 388,
+          "timestamp": "2026-08-12T04:50:33.464513+00:00"
+        }
+      },
+      "FD-005": {
+        "case_id": "FD-005",
+        "case_type": "false",
+        "config": "E_combination",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the pre-discovery evidence, I propose two independently validated mechanisms that could combine to create an emergent capability not described in the evidence:\n\n**Mechanism 1: Quantum Tunneli ",
+        "target": "None, as this is a hypothetical discovery",
+        "mechanism_match": "NO",
+        "discovery_structure_match": "YES",
+        "quality": 0.8,
+        "manifest": {
+          "case_id": "FD-005",
+          "config": "E_combination",
+          "cutoff_date": "2003-12-31",
+          "generator_input_hash": "08f7dad5982553fdacf6681aa251d92c6b8786c7a409b48494c0753dbd80153b",
+          "withheld_answer_hash": "393656a3e1beff7b8842f480cdcff4db8f46e8af289610b963946e41d0b9a268",
+          "exposed_fields": [
+            "relation_blind_evidence"
+          ],
+          "withheld_fields": [
+            "name",
+            "actual_discovery",
+            "withheld_relationship",
+            "withheld_components",
+            "pattern"
+          ],
+          "generator_input_length": 483,
+          "timestamp": "2026-08-12T04:51:52.606431+00:00"
+        }
+      },
+      "FD-006": {
+        "case_id": "FD-006",
+        "case_type": "false",
+        "config": "E_combination",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the pre-discovery evidence, I propose the following two independently validated mechanisms that could combine to create an emergent capability:\n\n**Mechanism 1: Hierarchical Representation Lea ",
+        "target": "The Temporal Inversion Theorem has the potential to revolutionize the field of natural language processing and time-series forecasting, enabling the development of faster and more accurate models that can handle complex sequential data",
+        "mechanism_match": "PARTIAL",
+        "discovery_structure_match": "NO",
+        "quality": 0.2,
+        "manifest": {
+          "case_id": "FD-006",
+          "config": "E_combination",
+          "cutoff_date": "2016-12-31",
+          "generator_input_hash": "7a750bd26a3fe87f46a066d25bc1e737e3740f6470187c4421a25bf2e6f55492",
+          "withheld_answer_hash": "79d133e5ef22bb8660f6734cf1d36202d8516a003fd5062f7b2f25e1f2fecc8e",
+          "exposed_fields": [
+            "relation_blind_evidence"
+          ],
+          "withheld_fields": [
+            "name",
+            "actual_discovery",
+            "withheld_relationship",
+            "withheld_components",
+            "pattern"
+          ],
+          "generator_input_length": 467,
+          "timestamp": "2026-08-12T04:53:11.247441+00:00"
+        }
+      },
+      "FD-007": {
+        "case_id": "FD-007",
+        "case_type": "false",
+        "config": "E_combination",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the pre-discovery evidence, I propose the following two independently validated mechanisms that could combine to create an emergent capability:\n\n**Mechanism 1: Hierarchical Representation Lea ",
+        "target": "This breakthrough has the potential to revolutionize image and speech recognition systems, enabling them to operate effectively in high-interference environments",
+        "mechanism_match": "PARTIAL",
+        "discovery_structure_match": "NO",
+        "quality": 0.2,
+        "manifest": {
+          "case_id": "FD-007",
+          "config": "E_combination",
+          "cutoff_date": "2011-12-31",
+          "generator_input_hash": "ff54124ceedec21d06a6bc4057a8143e2045c22b9d1de47f9369fb10787873e6",
+          "withheld_answer_hash": "bd5d5d2c2070c82fab52710a43c5bbbfb93a8c6d25c79e88230cd57800eba3ce",
+          "exposed_fields": [
+            "relation_blind_evidence"
+          ],
+          "withheld_fields": [
+            "name",
+            "actual_discovery",
+            "withheld_relationship",
+            "withheld_components",
+            "pattern"
+          ],
+          "generator_input_length": 331,
+          "timestamp": "2026-08-12T04:54:38.744245+00:00"
+        }
+      },
+      "FD-008": {
+        "case_id": "FD-008",
+        "case_type": "false",
+        "config": "E_combination",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the pre-discovery evidence, I propose two independently validated mechanisms that could combine to create an emergent capability:\n\n**Mechanism 1: Modulation of the Gut-Brain Axis**\nThe archae ",
+        "target": "This breakthrough has significant implications for the development of novel therapeutic strategies, as it suggests that targeted manipulation of the human microbiome could lead to innovative treatments for diseases such as rheumatoid arthritis and lu",
+        "mechanism_match": "YES",
+        "discovery_structure_match": "PARTIAL",
+        "quality": 0.5,
+        "manifest": {
+          "case_id": "FD-008",
+          "config": "E_combination",
+          "cutoff_date": "1927-12-31",
+          "generator_input_hash": "576a5a2ec0410a10f3e5423fe9e9c1054d24818da8f9e08541fe52df2747c31b",
+          "withheld_answer_hash": "8111e8d85dc9e7d50fda41fabb188a17b703e8a87cdd114e5c654bd99eb82ebb",
+          "exposed_fields": [
+            "relation_blind_evidence"
+          ],
+          "withheld_fields": [
+            "name",
+            "actual_discovery",
+            "withheld_relationship",
+            "withheld_components",
+            "pattern"
+          ],
+          "generator_input_length": 419,
+          "timestamp": "2026-08-12T04:56:00.723184+00:00"
+        }
+      },
+      "FD-009": {
+        "case_id": "FD-009",
+        "case_type": "false",
+        "config": "E_combination",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the given evidence, I propose two independently validated mechanisms that could combine to create an emergent capability not described in the evidence:\n\n**Mechanism 1: Epigenetic Regulation** ",
+        "target": "",
+        "mechanism_match": "PARTIAL",
+        "discovery_structure_match": "NO",
+        "quality": 0.0,
+        "manifest": {
+          "case_id": "FD-009",
+          "config": "E_combination",
+          "cutoff_date": "1974-12-31",
+          "generator_input_hash": "df65b13fb07b9ffbf7218f872590d828c140474c3a65263f3581dbd8f0011949",
+          "withheld_answer_hash": "206a552f25908491d2c51d872a0a14f52d0fdb397be5306ce9a214ed9703f5d9",
+          "exposed_fields": [
+            "relation_blind_evidence"
+          ],
+          "withheld_fields": [
+            "name",
+            "actual_discovery",
+            "withheld_relationship",
+            "withheld_components",
+            "pattern"
+          ],
+          "generator_input_length": 428,
+          "timestamp": "2026-08-12T04:57:47.903606+00:00"
+        }
+      },
+      "FD-010": {
+        "case_id": "FD-010",
+        "case_type": "false",
+        "config": "E_combination",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Based on the pre-discovery evidence, I propose the following two independently validated mechanisms that could combine to create an emergent capability:\n\n**Mechanism 1: Reprogramming of Tumor-Associat ",
+        "target": "This breakthrough discovery has the potential to revolutionize cancer immunotherapy by enabling the development of novel therapeutic strategies that target TARCs and restore the immune system's ability to recognize and eliminate cancer cells",
+        "mechanism_match": "PARTIAL",
+        "discovery_structure_match": "NO",
+        "quality": 0.2,
+        "manifest": {
+          "case_id": "FD-010",
+          "config": "E_combination",
+          "cutoff_date": "2011-12-31",
+          "generator_input_hash": "82977c2dbe6d27812ce8338cc7f1b996a0193448b009dccc84a94d2b9de0aa0e",
+          "withheld_answer_hash": "1da4f96da43ef5ef86edea6e3d0cc67ac0aa786bdd3858dda7a229dec9e159c9",
+          "exposed_fields": [
+            "relation_blind_evidence"
+          ],
+          "withheld_fields": [
+            "name",
+            "actual_discovery",
+            "withheld_relationship",
+            "withheld_components",
+            "pattern"
+          ],
+          "generator_input_length": 504,
+          "timestamp": "2026-08-12T04:59:20.765611+00:00"
+        }
+      }
+    },
+    "F_full": {
+      "DSB-001": {
+        "case_id": "DSB-001",
+        "case_type": "real",
+        "config": "F_full",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Analysis:\n\nInvariant principles:\n\n1. The use of nucleases to cut DNA at specific sequences is a common approach in various biological systems, including bacterial adaptive immunity and engineered syst ",
+        "target": "Cas9 + designed guide RNA = programmable DNA cleavage in any cell type",
+        "mechanism_match": "YES",
+        "discovery_structure_match": "PARTIAL",
+        "quality": 0.5,
+        "manifest": {
+          "case_id": "DSB-001",
+          "config": "F_full",
+          "cutoff_date": "2011-12-31",
+          "generator_input_hash": "fd5a02357162a3381f1e6e5409967eea4cb08af38e43c99d0be41e7f67b48cca",
+          "withheld_answer_hash": "1e901be88b871dd87c50510df847b425b31c817d20898ad35cb2b16b5b536217",
+          "exposed_fields": [
+            "relation_blind_evidence"
+          ],
+          "withheld_fields": [
+            "name",
+            "actual_discovery",
+            "withheld_relationship",
+            "withheld_components",
+            "pattern"
+          ],
+          "generator_input_length": 750,
+          "timestamp": "2026-08-12T04:32:40.157941+00:00"
+        }
+      },
+      "DSB-002": {
+        "case_id": "DSB-002",
+        "case_type": "real",
+        "config": "F_full",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "**Invariant Principles:**\n\n1. The immune system recognizes and responds to foreign substances, including mRNA and viral proteins.\n2. Nucleic acid delivery into cells is crucial for therapeutic applica ",
+        "target": "Nucleoside-modified mRNA + lipid nanoparticle delivery = vaccine with >95% efficacy",
+        "mechanism_match": "YES",
+        "discovery_structure_match": "NO",
+        "quality": 0.5,
+        "manifest": {
+          "case_id": "DSB-002",
+          "config": "F_full",
+          "cutoff_date": "2019-12-31",
+          "generator_input_hash": "88d5c10764c48b4d5c54a39e4c85febdfd498e470ce7399a4a09cdd2bdeae061",
+          "withheld_answer_hash": "22db6322673dcd821dd1f847de47bf941ca511dec27b82c59fd00ce0b0255e6b",
+          "exposed_fields": [
+            "relation_blind_evidence"
+          ],
+          "withheld_fields": [
+            "name",
+            "actual_discovery",
+            "withheld_relationship",
+            "withheld_components",
+            "pattern"
+          ],
+          "generator_input_length": 726,
+          "timestamp": "2026-08-12T04:34:22.672879+00:00"
+        }
+      },
+      "DSB-003": {
+        "case_id": "DSB-003",
+        "case_type": "real",
+        "config": "F_full",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Analysis:\n\nInvariant principles:\n\n1. Intercalation compounds can reversibly insert and remove lithium ions.\n2. Lithium ions can intercalate into certain materials, such as LiCoO2 and graphite.\n3. Non- ",
+        "target": "LiCoO2 cathode + graphite anode + non-aqueous electrolyte = rechargeable Li-ion battery",
+        "mechanism_match": "YES",
+        "discovery_structure_match": "YES",
+        "quality": 1.0,
+        "manifest": {
+          "case_id": "DSB-003",
+          "config": "F_full",
+          "cutoff_date": "1990-12-31",
+          "generator_input_hash": "e79f426b47036bbcb37c8966a2885155e3a534256792d3fafafd46d16fb29b0f",
+          "withheld_answer_hash": "001399b35622febe2529ace39f703755562ffca82b8d52894cab5a5feb80334d",
+          "exposed_fields": [
+            "relation_blind_evidence"
+          ],
+          "withheld_fields": [
+            "name",
+            "actual_discovery",
+            "withheld_relationship",
+            "withheld_components",
+            "pattern"
+          ],
+          "generator_input_length": 711,
+          "timestamp": "2026-08-12T04:36:53.178363+00:00"
+        }
+      },
+      "DSB-004": {
+        "case_id": "DSB-004",
+        "case_type": "real",
+        "config": "F_full",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Analysis:\n\nInvariant principles:\n\n1. DNA polymerase enzymes extend primers along template DNA.\n2. Heating denatures double-stranded DNA into single strands.\n3. Cooling allows primers to anneal.\n4. DNA ",
+        "target": "Thermal cycling + Taq polymerase = exponential DNA amplification",
+        "mechanism_match": "YES",
+        "discovery_structure_match": "YES",
+        "quality": 1.0,
+        "manifest": {
+          "case_id": "DSB-004",
+          "config": "F_full",
+          "cutoff_date": "1984-12-31",
+          "generator_input_hash": "3567115162b0da2313280721bcad1f2de9bf4c6505169e0defc5f40f176d4e25",
+          "withheld_answer_hash": "51caa7c0d5dc5c520a5d72aa3c3b882c7a4ff00f87a15f64339c4530de440327",
+          "exposed_fields": [
+            "relation_blind_evidence"
+          ],
+          "withheld_fields": [
+            "name",
+            "actual_discovery",
+            "withheld_relationship",
+            "withheld_components",
+            "pattern"
+          ],
+          "generator_input_length": 658,
+          "timestamp": "2026-08-12T04:38:18.863215+00:00"
+        }
+      },
+      "DSB-005": {
+        "case_id": "DSB-005",
+        "case_type": "real",
+        "config": "F_full",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Analysis:\n\nInvariant principles:\n\n1. Thermodynamic principles: The Landau-Peierls arguments suggest that two-dimensional crystals are thermodynamically unstable.\n2. Material properties: Graphite is a  ",
+        "target": "Mechanical exfoliation produces stable single-layer graphene on substrate",
+        "mechanism_match": "PARTIAL",
+        "discovery_structure_match": "NO",
+        "quality": 0.2,
+        "manifest": {
+          "case_id": "DSB-005",
+          "config": "F_full",
+          "cutoff_date": "2003-12-31",
+          "generator_input_hash": "15cd68c6c2d25a7186ef36b26aadd0e040637ea07c4325b63e319f5c9e07647b",
+          "withheld_answer_hash": "7a0a96feb64b2fde0a776efa302ca87ddfcd7824c1e157e44d27cbf96d629cdb",
+          "exposed_fields": [
+            "relation_blind_evidence"
+          ],
+          "withheld_fields": [
+            "name",
+            "actual_discovery",
+            "withheld_relationship",
+            "withheld_components",
+            "pattern"
+          ],
+          "generator_input_length": 793,
+          "timestamp": "2026-08-12T04:39:55.310537+00:00"
+        }
+      },
+      "DSB-006": {
+        "case_id": "DSB-006",
+        "case_type": "real",
+        "config": "F_full",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Analysis:\n\nInvariant principles:\n1. The importance of positional information in sequences.\n2. The need for efficient processing of long sequences.\n3. The limitations of sequential processing in terms  ",
+        "target": "Self-attention alone + positional encoding = Transformer (no recurrence needed)",
+        "mechanism_match": "YES",
+        "discovery_structure_match": "YES",
+        "quality": 0.9,
+        "manifest": {
+          "case_id": "DSB-006",
+          "config": "F_full",
+          "cutoff_date": "2016-12-31",
+          "generator_input_hash": "4d99e3e171fe7658487cc36af7da352d1c88fd79681d2490cfef736a41a0be85",
+          "withheld_answer_hash": "eab90461b931d7e8cbcb682e31db7d1a50873c5ed776ebde31214cb52d8323f2",
+          "exposed_fields": [
+            "relation_blind_evidence"
+          ],
+          "withheld_fields": [
+            "name",
+            "actual_discovery",
+            "withheld_relationship",
+            "withheld_components",
+            "pattern"
+          ],
+          "generator_input_length": 762,
+          "timestamp": "2026-08-12T04:41:19.601583+00:00"
+        }
+      },
+      "DSB-007": {
+        "case_id": "DSB-007",
+        "case_type": "real",
+        "config": "F_full",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Analysis:\n\nInvariant principles:\n\n1. The need for powerful computing platforms to process large amounts of data.\n2. The importance of regularization techniques to prevent overfitting.\n3. The use of ac ",
+        "target": "Deep CNN + GPU + ImageNet + ReLU + dropout = breakthrough performance",
+        "mechanism_match": "PARTIAL",
+        "discovery_structure_match": "NO",
+        "quality": 0.2,
+        "manifest": {
+          "case_id": "DSB-007",
+          "config": "F_full",
+          "cutoff_date": "2011-12-31",
+          "generator_input_hash": "8db9f2f7e844d7042fa32919cbc754bd3a9bce8c8e1119e954204777a1846e15",
+          "withheld_answer_hash": "4dd49100b9b7f64e5c96472c6435997e9bb4b43a5f386325b7161546fd5426fe",
+          "exposed_fields": [
+            "relation_blind_evidence"
+          ],
+          "withheld_fields": [
+            "name",
+            "actual_discovery",
+            "withheld_relationship",
+            "withheld_components",
+            "pattern"
+          ],
+          "generator_input_length": 733,
+          "timestamp": "2026-08-12T04:42:39.350484+00:00"
+        }
+      },
+      "DSB-008": {
+        "case_id": "DSB-008",
+        "case_type": "real",
+        "config": "F_full",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Analysis:\n\nInvariant principles:\n\n1. Bacteria can cause infectious diseases.\n2. Chemical antiseptics are toxic to human tissue when used systemically.\n3. Enzymes (like lysozyme) can have antibacterial ",
+        "target": "Penicillium mold produces penicillin, inhibiting bacterial cell walls without harming tissue",
+        "mechanism_match": "PARTIAL",
+        "discovery_structure_match": "NO",
+        "quality": 0.5,
+        "manifest": {
+          "case_id": "DSB-008",
+          "config": "F_full",
+          "cutoff_date": "1927-12-31",
+          "generator_input_hash": "0f884c09866f70efc3bd725633c4abc2ede58012e6b664b625d7044313747e97",
+          "withheld_answer_hash": "fcf569e19328b4c8aed5d50d3f6ab90c65d2b022f1fceba3f525fdf5e99ee21c",
+          "exposed_fields": [
+            "relation_blind_evidence"
+          ],
+          "withheld_fields": [
+            "name",
+            "actual_discovery",
+            "withheld_relationship",
+            "withheld_components",
+            "pattern"
+          ],
+          "generator_input_length": 696,
+          "timestamp": "2026-08-12T04:44:00.656925+00:00"
+        }
+      },
+      "DSB-009": {
+        "case_id": "DSB-009",
+        "case_type": "real",
+        "config": "F_full",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Analysis:\n\nInvariant principles:\n1. Antibodies are highly specific to their targets.\n2. The immune system can produce antibodies against virtually any foreign molecule.\n3. Cell fusion techniques can m ",
+        "target": "B-cell + myeloma fusion = hybridoma producing monoclonal antibodies indefinitely",
+        "mechanism_match": "YES",
+        "discovery_structure_match": "PARTIAL",
+        "quality": 0.5,
+        "manifest": {
+          "case_id": "DSB-009",
+          "config": "F_full",
+          "cutoff_date": "1974-12-31",
+          "generator_input_hash": "9a0626e8a5634499f1ca09b22d621ef8f2ad4dfe789799a4dd68e433605bf867",
+          "withheld_answer_hash": "6635b2f17a11ae0c61c7704ddc6abd32f9de015a418525ae3cb9992261716d00",
+          "exposed_fields": [
+            "relation_blind_evidence"
+          ],
+          "withheld_fields": [
+            "name",
+            "actual_discovery",
+            "withheld_relationship",
+            "withheld_components",
+            "pattern"
+          ],
+          "generator_input_length": 676,
+          "timestamp": "2026-08-12T04:45:11.718042+00:00"
+        }
+      },
+      "DSB-010": {
+        "case_id": "DSB-010",
+        "case_type": "real",
+        "config": "F_full",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Analysis:\n\nInvariant principles:\n\n1. The immune system has the ability to recognize cancer cells.\n2. The tumor microenvironment can suppress the immune system.\n3. PD-1 engagement suppresses T-cell act ",
+        "target": "Blocking PD-1 releases T-cell inhibition, enabling immune attack on tumors",
+        "mechanism_match": "YES",
+        "discovery_structure_match": "YES",
+        "quality": 1.0,
+        "manifest": {
+          "case_id": "DSB-010",
+          "config": "F_full",
+          "cutoff_date": "2011-12-31",
+          "generator_input_hash": "75430bb6d9b6ef001066e4996aa4ca9edb27d8738575b99fc70b90cc2ceaf2d5",
+          "withheld_answer_hash": "fd626ce4457ac8bf7890cacbe95c9972b94a1b46c94c102ec7ba18df5ee7066a",
+          "exposed_fields": [
+            "relation_blind_evidence"
+          ],
+          "withheld_fields": [
+            "name",
+            "actual_discovery",
+            "withheld_relationship",
+            "withheld_components",
+            "pattern"
+          ],
+          "generator_input_length": 695,
+          "timestamp": "2026-08-12T04:45:56.910004+00:00"
+        }
+      },
+      "FD-001": {
+        "case_id": "FD-001",
+        "case_type": "false",
+        "config": "F_full",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Analysis:\n\n**Invariant principles:**\n\n1. Microbial communities have the ability to modulate gene expression in response to environmental stimuli.\n2. Intercellular cooperation and adaptive plasticity a ",
+        "target": "None, as this is a hypothetical discovery",
+        "mechanism_match": "NO",
+        "discovery_structure_match": "NO",
+        "quality": 0.0,
+        "manifest": {
+          "case_id": "FD-001",
+          "config": "F_full",
+          "cutoff_date": "2011-12-31",
+          "generator_input_hash": "74b951cdbf640803e80156e701682bf823a5069f0425dafe97b28b99c199039b",
+          "withheld_answer_hash": "a09f9910b6af6ac49b21fee64b1630b090bd6d18556c83f9bcd3274a9fe051d3",
+          "exposed_fields": [
+            "relation_blind_evidence"
+          ],
+          "withheld_fields": [
+            "name",
+            "actual_discovery",
+            "withheld_relationship",
+            "withheld_components",
+            "pattern"
+          ],
+          "generator_input_length": 543,
+          "timestamp": "2026-08-12T04:46:54.438095+00:00"
+        }
+      },
+      "FD-002": {
+        "case_id": "FD-002",
+        "case_type": "false",
+        "config": "F_full",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Analysis:\n\n**Invariant principles:**\n\n1. The need for targeted expression of therapeutic proteins to avoid off-target effects and minimize toxicity.\n2. The importance of evading innate immune surveill ",
+        "target": "This breakthrough has significant implications for the treatment of genetic disorders, as it enables the efficient and safe delivery of therapeutic genes to specific cell populations, paving the way for novel therapies in regenerative medicine and ge",
+        "mechanism_match": "YES",
+        "discovery_structure_match": "PARTIAL",
+        "quality": 0.5,
+        "manifest": {
+          "case_id": "FD-002",
+          "config": "F_full",
+          "cutoff_date": "2019-12-31",
+          "generator_input_hash": "422182f98c6b445ca4ab0ab0439a249220f4a5e80b7d1e56bb755eb8d4bf0296",
+          "withheld_answer_hash": "f0120f8fa002c3dd3eaeecb35f2cb707eb51321f62a4236bf59c6fe5d97deb2b",
+          "exposed_fields": [
+            "relation_blind_evidence"
+          ],
+          "withheld_fields": [
+            "name",
+            "actual_discovery",
+            "withheld_relationship",
+            "withheld_components",
+            "pattern"
+          ],
+          "generator_input_length": 569,
+          "timestamp": "2026-08-12T04:48:34.080223+00:00"
+        }
+      },
+      "FD-003": {
+        "case_id": "FD-003",
+        "case_type": "false",
+        "config": "F_full",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Analysis:\n\nInvariant principles:\n\n1. The conservation of charge: The simultaneous storage and release of lithium ions and electrons implies that the total charge is conserved.\n2. Crystal structure: Th ",
+        "target": "None, this is a hypothetical discovery",
+        "mechanism_match": "NO",
+        "discovery_structure_match": "NO",
+        "quality": 0.0,
+        "manifest": {
+          "case_id": "FD-003",
+          "config": "F_full",
+          "cutoff_date": "1990-12-31",
+          "generator_input_hash": "371cf77df326af227a7f1cfca325c810389e69ec306fdf11d5c819543cf9d442",
+          "withheld_answer_hash": "9098cea659f857a6c26b0e25ab8a3674a5cbeafd002f6a76b84ae50273bf5a65",
+          "exposed_fields": [
+            "relation_blind_evidence"
+          ],
+          "withheld_fields": [
+            "name",
+            "actual_discovery",
+            "withheld_relationship",
+            "withheld_components",
+            "pattern"
+          ],
+          "generator_input_length": 731,
+          "timestamp": "2026-08-12T04:49:52.377843+00:00"
+        }
+      },
+      "FD-004": {
+        "case_id": "FD-004",
+        "case_type": "false",
+        "config": "F_full",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Analysis:\n\n**Invariant Principles:**\n\n1. The interaction between proteins and DNA is crucial for DNA replication and repair.\n2. DNA helicases play a key role in unwinding double-stranded DNA, allowing ",
+        "target": "This breakthrough has significant implications for our understanding of DNA replication and may lead to the development of new therapeutic strategies for diseases related to DNA replication errors",
+        "mechanism_match": "YES",
+        "discovery_structure_match": "NO",
+        "quality": 0.5,
+        "manifest": {
+          "case_id": "FD-004",
+          "config": "F_full",
+          "cutoff_date": "1984-12-31",
+          "generator_input_hash": "112ac27b20bdb354090af2185d296a6baa36391ebb557d4a26b62cd0431ea20d",
+          "withheld_answer_hash": "aed983c217b0fff6098b81b92d36acd386104593808a52094e9aef5600bfccd5",
+          "exposed_fields": [
+            "relation_blind_evidence"
+          ],
+          "withheld_fields": [
+            "name",
+            "actual_discovery",
+            "withheld_relationship",
+            "withheld_components",
+            "pattern"
+          ],
+          "generator_input_length": 488,
+          "timestamp": "2026-08-12T04:50:49.124519+00:00"
+        }
+      },
+      "FD-005": {
+        "case_id": "FD-005",
+        "case_type": "false",
+        "config": "F_full",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Analysis:\n\nInvariant principles:\n1. Conservation of energy: The total energy of the system remains constant, with the thermal gradient potentially converting one form of energy into another.\n2. Symmet ",
+        "target": "None, as this is a hypothetical discovery",
+        "mechanism_match": "NO",
+        "discovery_structure_match": "NO",
+        "quality": 0.0,
+        "manifest": {
+          "case_id": "FD-005",
+          "config": "F_full",
+          "cutoff_date": "2003-12-31",
+          "generator_input_hash": "6bc8bfede9ef2a0509a24b84c5d340fc44258f1960042350866ebcbfa9696405",
+          "withheld_answer_hash": "393656a3e1beff7b8842f480cdcff4db8f46e8af289610b963946e41d0b9a268",
+          "exposed_fields": [
+            "relation_blind_evidence"
+          ],
+          "withheld_fields": [
+            "name",
+            "actual_discovery",
+            "withheld_relationship",
+            "withheld_components",
+            "pattern"
+          ],
+          "generator_input_length": 583,
+          "timestamp": "2026-08-12T04:52:24.390376+00:00"
+        }
+      },
+      "FD-006": {
+        "case_id": "FD-006",
+        "case_type": "false",
+        "config": "F_full",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Analysis:\n\n**Invariant principles:**\n\n1. The need for efficient processing of temporal dependencies in neural networks.\n2. The importance of robustness against vanishing gradients in deep learning mod ",
+        "target": "The Temporal Inversion Theorem has the potential to revolutionize the field of natural language processing and time-series forecasting, enabling the development of faster and more accurate models that can handle complex sequential data",
+        "mechanism_match": "PARTIAL",
+        "discovery_structure_match": "NO",
+        "quality": 0.2,
+        "manifest": {
+          "case_id": "FD-006",
+          "config": "F_full",
+          "cutoff_date": "2016-12-31",
+          "generator_input_hash": "e0c0f24c7cfd93389c300267956f7f1aabf52f39139365869065d518e3da1d8d",
+          "withheld_answer_hash": "79d133e5ef22bb8660f6734cf1d36202d8516a003fd5062f7b2f25e1f2fecc8e",
+          "exposed_fields": [
+            "relation_blind_evidence"
+          ],
+          "withheld_fields": [
+            "name",
+            "actual_discovery",
+            "withheld_relationship",
+            "withheld_components",
+            "pattern"
+          ],
+          "generator_input_length": 567,
+          "timestamp": "2026-08-12T04:53:34.357513+00:00"
+        }
+      },
+      "FD-007": {
+        "case_id": "FD-007",
+        "case_type": "false",
+        "config": "F_full",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Analysis:\n\n**Invariant principles:**\n\n1. The Fourier transform is a powerful tool for analyzing patterns in data.\n2. Deep neural networks are effective for pattern recognition in complex datasets.\n3.  ",
+        "target": "This breakthrough has the potential to revolutionize image and speech recognition systems, enabling them to operate effectively in high-interference environments",
+        "mechanism_match": "PARTIAL",
+        "discovery_structure_match": "NO",
+        "quality": 0.2,
+        "manifest": {
+          "case_id": "FD-007",
+          "config": "F_full",
+          "cutoff_date": "2011-12-31",
+          "generator_input_hash": "d2d3cfc3602f7121efb0a43fdc7975229d4ce4f87b7ae1aed82cc1dfb8700b4a",
+          "withheld_answer_hash": "bd5d5d2c2070c82fab52710a43c5bbbfb93a8c6d25c79e88230cd57800eba3ce",
+          "exposed_fields": [
+            "relation_blind_evidence"
+          ],
+          "withheld_fields": [
+            "name",
+            "actual_discovery",
+            "withheld_relationship",
+            "withheld_components",
+            "pattern"
+          ],
+          "generator_input_length": 431,
+          "timestamp": "2026-08-12T04:54:48.051453+00:00"
+        }
+      },
+      "FD-008": {
+        "case_id": "FD-008",
+        "case_type": "false",
+        "config": "F_full",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Analysis:\n\n**Invariant principles:**\n\n1. Symbiotic relationships can confer benefits to both parties involved.\n2. The human microbiome plays a crucial role in maintaining immune system homeostasis.\n3. ",
+        "target": "This breakthrough has significant implications for the development of novel therapeutic strategies, as it suggests that targeted manipulation of the human microbiome could lead to innovative treatments for diseases such as rheumatoid arthritis and lu",
+        "mechanism_match": "YES",
+        "discovery_structure_match": "PARTIAL",
+        "quality": 0.5,
+        "manifest": {
+          "case_id": "FD-008",
+          "config": "F_full",
+          "cutoff_date": "1927-12-31",
+          "generator_input_hash": "d5bbd06da734337504dff866cb807095d9e1c90545f210e711f99f7e2a4c094d",
+          "withheld_answer_hash": "8111e8d85dc9e7d50fda41fabb188a17b703e8a87cdd114e5c654bd99eb82ebb",
+          "exposed_fields": [
+            "relation_blind_evidence"
+          ],
+          "withheld_fields": [
+            "name",
+            "actual_discovery",
+            "withheld_relationship",
+            "withheld_components",
+            "pattern"
+          ],
+          "generator_input_length": 519,
+          "timestamp": "2026-08-12T04:56:36.541854+00:00"
+        }
+      },
+      "FD-009": {
+        "case_id": "FD-009",
+        "case_type": "false",
+        "config": "F_full",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Analysis:\n\nInvariant principles:\n1. Intercellular communication is crucial for coordinating immune responses.\n2. The immune system requires coordination across disparate tissue types.\n\nConstraints blo ",
+        "target": "",
+        "mechanism_match": "PARTIAL",
+        "discovery_structure_match": "NO",
+        "quality": 0.0,
+        "manifest": {
+          "case_id": "FD-009",
+          "config": "F_full",
+          "cutoff_date": "1974-12-31",
+          "generator_input_hash": "d39ab450b4efda39862c1b9e17f6672379252bd1c6b4601ddef61edae1c02a48",
+          "withheld_answer_hash": "206a552f25908491d2c51d872a0a14f52d0fdb397be5306ce9a214ed9703f5d9",
+          "exposed_fields": [
+            "relation_blind_evidence"
+          ],
+          "withheld_fields": [
+            "name",
+            "actual_discovery",
+            "withheld_relationship",
+            "withheld_components",
+            "pattern"
+          ],
+          "generator_input_length": 528,
+          "timestamp": "2026-08-12T04:57:59.083703+00:00"
+        }
+      },
+      "FD-010": {
+        "case_id": "FD-010",
+        "case_type": "false",
+        "config": "F_full",
+        "gen_success": true,
+        "score_success": true,
+        "proposed": "Analysis:\n\n**Invariant principles:**\n\n1. The tumor microenvironment plays a crucial role in shaping anti-tumor immune responses.\n2. Immune suppressive cells, such as TARCs, can inhibit the immune syst ",
+        "target": "This breakthrough discovery has the potential to revolutionize cancer immunotherapy by enabling the development of novel therapeutic strategies that target TARCs and restore the immune system's ability to recognize and eliminate cancer cells",
+        "mechanism_match": "YES",
+        "discovery_structure_match": "PARTIAL",
+        "quality": 0.5,
+        "manifest": {
+          "case_id": "FD-010",
+          "config": "F_full",
+          "cutoff_date": "2011-12-31",
+          "generator_input_hash": "666ca39dbda07a7d6e0d1e4d8a734ca80dbb7603ba92e8beea8d4a767a930e30",
+          "withheld_answer_hash": "1da4f96da43ef5ef86edea6e3d0cc67ac0aa786bdd3858dda7a229dec9e159c9",
+          "exposed_fields": [
+            "relation_blind_evidence"
+          ],
+          "withheld_fields": [
+            "name",
+            "actual_discovery",
+            "withheld_relationship",
+            "withheld_components",
+            "pattern"
+          ],
+          "generator_input_length": 604,
+          "timestamp": "2026-08-12T04:59:52.580496+00:00"
+        }
+      }
+    }
+  },
+  "calls_this_run": 0
+}
