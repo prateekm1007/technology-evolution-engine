@@ -4,13 +4,13 @@
   "generated_at": "2026-08-12T18:30:00Z",
   "generated_from_commit": "3f89e0f5",
   "classification_legend": {
-    "VALIDATED_MACHINE": "Validated by deterministic/machine test (reproducibility, hash verification, forensic re-computation). Authoritative as machine-validated. Does NOT constitute human validation.",
-    "VALIDATED_HUMAN": "Validated by independent human expert review. Authoritative as human-validated. (Currently: 0 claims — no human adjudication has been performed.)",
-    "RECONSTRUCTION_ONLY": "Describes reconstruction from known data, NOT a genuine discovery. Authoritative as a reconstruction claim; NOT authoritative as a discovery claim.",
+    "VALIDATED_MACHINE": "Validated by deterministic/machine test (reproducibility, hash verification, forensic re-computation). Authoritative as machine-validated. Does NOT constitute human validation. Authoritative: YES (full scope).",
+    "VALIDATED_HUMAN": "Validated by independent human expert review. Authoritative as human-validated. (Currently: 0 claims — no human adjudication has been performed.) Authoritative: YES (full scope).",
+    "RECONSTRUCTION_ONLY": "Describes reconstruction from known data, NOT a genuine discovery. Authoritative as a reconstruction claim; NOT authoritative as a discovery claim. Authoritative: YES (full scope, reconstruction only).",
     "INVALIDATED": "Tested and refuted by later evidence. NOT authoritative.",
     "PROVISIONAL": "Claim made but not yet rigorously tested. NOT authoritative.",
     "UNTESTED": "Claim made but never tested. NOT authoritative.",
-    "MACHINE_SCORED_RESULT_HUMAN_VALIDATION_PENDING": "Machine scorer produced a result; human validation has NOT been performed. Provisional — authoritative only as 'machine scorer produced this number', NOT as 'this number reflects reality'."
+    "MACHINE_SCORED_RESULT_HUMAN_VALIDATION_PENDING": "Machine scorer produced a result; human validation has NOT been performed. NOT authoritative (provisional). The authoritative_scope field is 'machine_result_only' — the claim documents what the machine produced, but the number is NOT validated as ground truth."
   },
   "commits": {
     "4a1bfdfd": {
@@ -590,7 +590,7 @@
       "claim": "DSB V1: 13/80 discovery-structure recoveries (10 fabricated + 3 real)",
       "source_commit": "9a259842",
       "status": "MACHINE_SCORED_RESULT_HUMAN_VALIDATION_PENDING",
-      "authoritative": true,
+      "authoritative": false,
       "evidence": "Forensic recomputation (3f89e0f5): 13 recoveries independently regenerated. 10 fabricated + 3 real = 13. Verified from raw records.",
       "proxy_evidence": false,
       "correction_notes": [
@@ -605,7 +605,7 @@
       "claim": "DSB V1: fabricated cases score higher than real (10 fab vs 3 real recoveries)",
       "source_commit": "9a259842",
       "status": "MACHINE_SCORED_RESULT_HUMAN_VALIDATION_PENDING",
-      "authoritative": true,
+      "authoritative": false,
       "evidence": "Deterministic scorer shows fabricated > real inversion. Human adjudication required to determine whether this is (a) scorer too lenient, (b) LLM better at inventing, or (c) case design flaw.",
       "proxy_evidence": false,
       "correction_notes": [
@@ -619,7 +619,7 @@
       "claim": "DSB V1: no architecture advantage (full_system does not outperform other arms)",
       "source_commit": "a0a316f6",
       "status": "MACHINE_SCORED_RESULT_HUMAN_VALIDATION_PENDING",
-      "authoritative": true,
+      "authoritative": false,
       "evidence": "Deterministic scorer shows no arm advantage. Human adjudication required to confirm under human gold standard.",
       "proxy_evidence": false,
       "correction_notes": [
@@ -633,7 +633,7 @@
       "claim": "DSB V1: 0/80 mechanism reconstructions at ≥0.50 threshold",
       "source_commit": "a0a316f6",
       "status": "MACHINE_SCORED_RESULT_HUMAN_VALIDATION_PENDING",
-      "authoritative": true,
+      "authoritative": false,
       "evidence": "Deterministic scorer shows 0 reconstructions. Human adjudication required to validate the threshold.",
       "proxy_evidence": false,
       "correction_notes": [
@@ -1072,7 +1072,7 @@
     "v2_correction_note": "Quarantine remains active. The V1.12 ablation result is 'no incremental value demonstrated' (McNemar p=0.50 non-significant), NOT 'architecture does not add value'. This is a failure to demonstrate an effect, not proof of absence of effect."
   },
   "v1_source": "RESEARCH_TRUTH_INVENTORY.json",
-  "v2_generated_at": "2026-08-12T18:23:05.582618+00:00",
+  "v2_generated_at": "2026-08-12T18:31:20.169186+00:00",
   "summary_counts": {
     "VALIDATED_MACHINE": 22,
     "VALIDATED_HUMAN": 0,
@@ -1082,8 +1082,8 @@
     "UNTESTED": 0,
     "MACHINE_SCORED_RESULT_HUMAN_VALIDATION_PENDING": 4,
     "TOTAL": 42,
-    "AUTHORITATIVE": 27,
-    "NON_AUTHORITATIVE": 15
+    "AUTHORITATIVE": 23,
+    "NON_AUTHORITATIVE": 19
   },
-  "inventory_hash": "27b05cc200b2998ad9c8980c7a469847bc5a4b1d8534e5996def696a7ab1104b"
+  "inventory_hash": "53db3231e8fcedb2f4915e20148e047c73f9db9d0bcde7740bc45ebdb8e4421a"
 }

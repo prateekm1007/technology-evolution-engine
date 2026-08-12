@@ -1,9 +1,9 @@
 # RESEARCH_TRUTH V2 — FORENSIC CORRECTION REPORT
 
-**Date:** 2026-08-12T18:23:05.584805+00:00
+**Date:** 2026-08-12T18:31:20.171294+00:00
 **V1 source:** `RESEARCH_TRUTH_INVENTORY.json`
 **V2 output:** `RESEARCH_TRUTH_INVENTORY_V2.json`
-**V2 hash:** `27b05cc200b2998ad9c8980c7a469847...`
+**V2 hash:** `53db3231e8fcedb2f4915e20148e047c...`
 **Directive:** Forensic correction only. No new discovery code. No scorer changes. No benchmark changes.
 
 ---
@@ -14,13 +14,13 @@ V1 used a single `VALIDATED` category that conflated machine-validated claims wi
 
 | Status | Meaning | Authoritative? |
 |---|---|---|
-| **VALIDATED_MACHINE** | Validated by deterministic/machine test (reproducibility, hash verification, forensic re-computation). Authoritative as machine-validated. Does NOT constitute human validation. | YES |
-| **VALIDATED_HUMAN** | Validated by independent human expert review. Authoritative as human-validated. (Currently: 0 claims — no human adjudication has been performed.) | YES |
-| **RECONSTRUCTION_ONLY** | Describes reconstruction from known data, NOT a genuine discovery. Authoritative as a reconstruction claim; NOT authoritative as a discovery claim. | YES |
+| **VALIDATED_MACHINE** | Validated by deterministic/machine test (reproducibility, hash verification, forensic re-computation). Authoritative as machine-validated. Does NOT constitute human validation. Authoritative: YES (full scope). | YES (full) |
+| **VALIDATED_HUMAN** | Validated by independent human expert review. Authoritative as human-validated. (Currently: 0 claims — no human adjudication has been performed.) Authoritative: YES (full scope). | YES (full) |
+| **RECONSTRUCTION_ONLY** | Describes reconstruction from known data, NOT a genuine discovery. Authoritative as a reconstruction claim; NOT authoritative as a discovery claim. Authoritative: YES (full scope, reconstruction only). | YES (full) |
 | **INVALIDATED** | Tested and refuted by later evidence. NOT authoritative. | NO |
 | **PROVISIONAL** | Claim made but not yet rigorously tested. NOT authoritative. | NO |
 | **UNTESTED** | Claim made but never tested. NOT authoritative. | NO |
-| **MACHINE_SCORED_RESULT_HUMAN_VALIDATION_PENDING** | Machine scorer produced a result; human validation has NOT been performed. Provisional — authoritative only as 'machine scorer produced this number', NOT as 'this number reflects reality'. | PROVISIONAL |
+| **MACHINE_SCORED_RESULT_HUMAN_VALIDATION_PENDING** | Machine scorer produced a result; human validation has NOT been performed. NOT authoritative (provisional). The authoritative_scope field is 'machine_result_only' — the claim documents what the machine produced, but the number is NOT validated as ground truth. | NO (provisional, machine-result-only scope) |
 
 ## 2. Summary Counts (Generated Directly from V2 Inventory)
 
@@ -34,8 +34,8 @@ V1 used a single `VALIDATED` category that conflated machine-validated claims wi
 | UNTESTED | 0 |
 | MACHINE_SCORED_RESULT_HUMAN_VALIDATION_PENDING | 4 |
 | **TOTAL** | **42** |
-| AUTHORITATIVE | 27 |
-| NON_AUTHORITATIVE | 15 |
+| AUTHORITATIVE | 23 |
+| NON_AUTHORITATIVE | 19 |
 
 **VALIDATED_HUMAN count: 0** — No claim has been validated by independent human expert review. All 'validation' to date is machine-only or LLM-proxy.
 
@@ -180,10 +180,10 @@ V1.12 ablation: no incremental value demonstrated (McNemar p=0.50 non-significan
 | C-DSB-002 | DSB V1 (new) | DSB V1 leakage audit: 80/80 payloads PASS, 0 leakage... | VALIDATED_MACHINE | True | `a0a316f6` |
 | C-DSB-003 | DSB V1 (new) | DSB V1 receipt integrity: 80/80 hash-sealed and verified... | VALIDATED_MACHINE | True | `a0a316f6` |
 | C-DSB-004 | DSB V1 (new) | DSB V1 scorer is reproducible (byte-identical modulo timestamps)... | VALIDATED_MACHINE | True | `a0a316f6` |
-| C-DSB-005 | DSB V1 (new) | DSB V1: 13/80 discovery-structure recoveries (10 fabricated + 3 real)... | MACHINE_SCORED_RESULT_HUMAN_VALIDATION_PENDING | True | `9a259842` |
-| C-DSB-006 | DSB V1 (new) | DSB V1: fabricated cases score higher than real (10 fab vs 3 real reco... | MACHINE_SCORED_RESULT_HUMAN_VALIDATION_PENDING | True | `9a259842` |
-| C-DSB-007 | DSB V1 (new) | DSB V1: no architecture advantage (full_system does not outperform oth... | MACHINE_SCORED_RESULT_HUMAN_VALIDATION_PENDING | True | `a0a316f6` |
-| C-DSB-008 | DSB V1 (new) | DSB V1: 0/80 mechanism reconstructions at ≥0.50 threshold... | MACHINE_SCORED_RESULT_HUMAN_VALIDATION_PENDING | True | `a0a316f6` |
+| C-DSB-005 | DSB V1 (new) | DSB V1: 13/80 discovery-structure recoveries (10 fabricated + 3 real)... | MACHINE_SCORED_RESULT_HUMAN_VALIDATION_PENDING | False | `9a259842` |
+| C-DSB-006 | DSB V1 (new) | DSB V1: fabricated cases score higher than real (10 fab vs 3 real reco... | MACHINE_SCORED_RESULT_HUMAN_VALIDATION_PENDING | False | `9a259842` |
+| C-DSB-007 | DSB V1 (new) | DSB V1: no architecture advantage (full_system does not outperform oth... | MACHINE_SCORED_RESULT_HUMAN_VALIDATION_PENDING | False | `a0a316f6` |
+| C-DSB-008 | DSB V1 (new) | DSB V1: 0/80 mechanism reconstructions at ≥0.50 threshold... | MACHINE_SCORED_RESULT_HUMAN_VALIDATION_PENDING | False | `a0a316f6` |
 | C-DSB-009 | DSB V1 (new) | DSB V1: 14 focused-review packets selected without human outcomes... | VALIDATED_MACHINE | True | `9a259842` |
 | C-DSB-010 | DSB V1 (new) | DSB V1 freeze manifest: 111 artifacts unchanged after freeze... | VALIDATED_MACHINE | True | `9a259842` |
 | C-DSB-011 | DSB V1 (new) | DSB V1 E5 (human adjudication): PENDING — not yet performed by indepen... | PROVISIONAL | False | `9a259842` |
@@ -205,12 +205,13 @@ The true numbers, generated directly from the V2 inventory:
 
 - **TOTAL claims: 42**
 - **Authoritative (full scope): 23**
-- **Authoritative (machine-result-only scope): 4**
-- **Non-authoritative: 15**
+- **Non-authoritative (machine-result-only scope, provisional): 4**
+- **Non-authoritative (other): 15**
+- **Total non-authoritative: 19**
 
-**The true discovery rate of the engine, validated by independent human expert review: 0/0.**
+**The true discovery rate of the engine, validated by independent human expert review: NOT APPLICABLE.**
 
-No human-validated discovery has been performed. The engine has not been shown, by human review, to discover anything.
+No human-validated discovery experiment has been conducted. The human-validated discovery rate has no denominator — it is not 0/0 (which is mathematically undefined); it is undefined because no human validation has been performed. Per MEASUREMENT_CONSTITUTION MC-7 (No naked numbers), reporting 0/0 would be a bare scalar. The honest statement is: no human-validated discovery rate exists.
 
 **The true machine-scored discovery rate (DSB V1, human validation pending): 13/80 (16.25%), of which 10/13 are fabricated counterfactuals and 3/13 are real discoveries.**
 
@@ -241,6 +242,22 @@ This correction complies with:
 
 ---
 
+## 11. Freeze Status
+
+**RESEARCH_TRUTH V2 is FROZEN as of 2026-08-12T18:31:20.171392+00:00.**
+
+Frozen artifacts (do NOT modify):
+- `RESEARCH_TRUTH_INVENTORY_V2.json` (hash-sealed)
+- `RESEARCH_TRUTH_FORENSIC_REPORT_V2.md` (this file)
+- `research_truth_v2_forensic_correction.py` (the correction script)
+
+Freeze policy:
+- No further corrections to V2 without a new directive.
+- If new evidence requires reclassification, create V3 (do NOT modify V2).
+- V1 (`RESEARCH_TRUTH_INVENTORY.json`) remains preserved unchanged per CONSTITUTION Law 7.
+
 **End of RESEARCH_TRUTH V2 Forensic Correction Report.**
 
 **The true number is reported above. No new discovery code was built. No scorer was changed. No benchmark was changed.**
+
+**FROZEN.**

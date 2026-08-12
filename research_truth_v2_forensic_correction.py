@@ -51,13 +51,13 @@ REPORT_V2 = REPO / "RESEARCH_TRUTH_FORENSIC_REPORT_V2.md"
 # =============================================================================
 
 V2_STATUS_LEGEND = {
-    "VALIDATED_MACHINE": "Validated by deterministic/machine test (reproducibility, hash verification, forensic re-computation). Authoritative as machine-validated. Does NOT constitute human validation.",
-    "VALIDATED_HUMAN": "Validated by independent human expert review. Authoritative as human-validated. (Currently: 0 claims — no human adjudication has been performed.)",
-    "RECONSTRUCTION_ONLY": "Describes reconstruction from known data, NOT a genuine discovery. Authoritative as a reconstruction claim; NOT authoritative as a discovery claim.",
+    "VALIDATED_MACHINE": "Validated by deterministic/machine test (reproducibility, hash verification, forensic re-computation). Authoritative as machine-validated. Does NOT constitute human validation. Authoritative: YES (full scope).",
+    "VALIDATED_HUMAN": "Validated by independent human expert review. Authoritative as human-validated. (Currently: 0 claims — no human adjudication has been performed.) Authoritative: YES (full scope).",
+    "RECONSTRUCTION_ONLY": "Describes reconstruction from known data, NOT a genuine discovery. Authoritative as a reconstruction claim; NOT authoritative as a discovery claim. Authoritative: YES (full scope, reconstruction only).",
     "INVALIDATED": "Tested and refuted by later evidence. NOT authoritative.",
     "PROVISIONAL": "Claim made but not yet rigorously tested. NOT authoritative.",
     "UNTESTED": "Claim made but never tested. NOT authoritative.",
-    "MACHINE_SCORED_RESULT_HUMAN_VALIDATION_PENDING": "Machine scorer produced a result; human validation has NOT been performed. Provisional — authoritative only as 'machine scorer produced this number', NOT as 'this number reflects reality'.",
+    "MACHINE_SCORED_RESULT_HUMAN_VALIDATION_PENDING": "Machine scorer produced a result; human validation has NOT been performed. NOT authoritative (provisional). The authoritative_scope field is 'machine_result_only' — the claim documents what the machine produced, but the number is NOT validated as ground truth.",
 }
 
 
@@ -227,13 +227,16 @@ def apply_all_corrections(inventory_v1: dict) -> dict:
     inventory_v2["claims"] = corrected_claims
 
     # Recompute authoritative flags based on new status
+    # FIX 1 (taxonomy): MACHINE_SCORED_RESULT_HUMAN_VALIDATION_PENDING is
+    # PROVISIONAL (per V2 legend) — NOT authoritative. The legend says
+    # "PROVISIONAL" and the code must match. The machine_result_only scope
+    # field still documents that the claim IS a machine result, but the
+    # authoritative flag is False because the result has not been validated.
     for claim in inventory_v2["claims"]:
         s = claim["status"]
-        # Authoritative statuses
         claim["authoritative"] = s in ("VALIDATED_MACHINE", "VALIDATED_HUMAN", "RECONSTRUCTION_ONLY")
-        # MACHINE_SCORED_RESULT is provisional — authoritative only as "machine produced this number"
         if s == "MACHINE_SCORED_RESULT_HUMAN_VALIDATION_PENDING":
-            claim["authoritative"] = True  # authoritative as a machine result, NOT as ground truth
+            claim["authoritative"] = False  # FIX: was True — provisional, not authoritative
             claim["authoritative_scope"] = "machine_result_only"
         else:
             claim["authoritative_scope"] = "full"
@@ -365,9 +368,10 @@ def consistency_test(inventory_v2: dict) -> dict:
     })
 
     # Check 4: authoritative flag matches status rules
-    auth_statuses = {"VALIDATED_MACHINE", "VALIDATED_HUMAN", "RECONSTRUCTION_ONLY",
-                     "MACHINE_SCORED_RESULT_HUMAN_VALIDATION_PENDING"}
-    non_auth_statuses = {"INVALIDATED", "PROVISIONAL", "UNTESTED"}
+    # FIX 1: MACHINE_SCORED_RESULT is now non-authoritative (PROVISIONAL per legend)
+    auth_statuses = {"VALIDATED_MACHINE", "VALIDATED_HUMAN", "RECONSTRUCTION_ONLY"}
+    non_auth_statuses = {"INVALIDATED", "PROVISIONAL", "UNTESTED",
+                         "MACHINE_SCORED_RESULT_HUMAN_VALIDATION_PENDING"}
     auth_mismatches = []
     for c in inventory_v2["claims"]:
         if c["status"] in auth_statuses and not c["authoritative"]:
@@ -394,11 +398,14 @@ def consistency_test(inventory_v2: dict) -> dict:
     })
 
     # Check 6: MACHINE_SCORED_RESULT claims have authoritative_scope='machine_result_only'
+    # and authoritative=False (FIX 1: provisional, not authoritative)
     scope_mismatches = []
     for c in inventory_v2["claims"]:
         if c["status"] == "MACHINE_SCORED_RESULT_HUMAN_VALIDATION_PENDING":
             if c.get("authoritative_scope") != "machine_result_only":
-                scope_mismatches.append(c["id"])
+                scope_mismatches.append({"id": c["id"], "issue": "wrong scope"})
+            if c.get("authoritative") != False:
+                scope_mismatches.append({"id": c["id"], "issue": "should be non-authoritative (PROVISIONAL)"})
     checks.append({
         "check": "MACHINE_SCORED_SCOPE",
         "passed": len(scope_mismatches) == 0,
@@ -507,7 +514,7 @@ def produce_report(inventory_v2: dict, consistency: dict):
     report.append("| Status | Meaning | Authoritative? |")
     report.append("|---|---|---|")
     for status, desc in V2_STATUS_LEGEND.items():
-        auth = "YES" if status in ("VALIDATED_MACHINE", "VALIDATED_HUMAN", "RECONSTRUCTION_ONLY") else "PROVISIONAL" if status == "MACHINE_SCORED_RESULT_HUMAN_VALIDATION_PENDING" else "NO"
+        auth = "YES (full)" if status in ("VALIDATED_MACHINE", "VALIDATED_HUMAN", "RECONSTRUCTION_ONLY") else "NO (provisional, machine-result-only scope)" if status == "MACHINE_SCORED_RESULT_HUMAN_VALIDATION_PENDING" else "NO"
         report.append(f"| **{status}** | {desc} | {auth} |")
     report.append("")
 
@@ -652,12 +659,13 @@ def produce_report(inventory_v2: dict, consistency: dict):
     report.append("")
     report.append(f"- **TOTAL claims: {sc['TOTAL']}**")
     report.append(f"- **Authoritative (full scope): {sum(1 for c in inventory_v2['claims'] if c['authoritative'] and c.get('authoritative_scope') == 'full')}**")
-    report.append(f"- **Authoritative (machine-result-only scope): {sum(1 for c in inventory_v2['claims'] if c['authoritative'] and c.get('authoritative_scope') == 'machine_result_only')}**")
-    report.append(f"- **Non-authoritative: {sc['NON_AUTHORITATIVE']}**")
+    report.append(f"- **Non-authoritative (machine-result-only scope, provisional): {sum(1 for c in inventory_v2['claims'] if not c['authoritative'] and c.get('authoritative_scope') == 'machine_result_only')}**")
+    report.append(f"- **Non-authoritative (other): {sum(1 for c in inventory_v2['claims'] if not c['authoritative'] and c.get('authoritative_scope') != 'machine_result_only')}**")
+    report.append(f"- **Total non-authoritative: {sc['NON_AUTHORITATIVE']}**")
     report.append("")
-    report.append("**The true discovery rate of the engine, validated by independent human expert review: 0/0.**")
+    report.append("**The true discovery rate of the engine, validated by independent human expert review: NOT APPLICABLE.**")
     report.append("")
-    report.append("No human-validated discovery has been performed. The engine has not been shown, by human review, to discover anything.")
+    report.append("No human-validated discovery experiment has been conducted. The human-validated discovery rate has no denominator — it is not 0/0 (which is mathematically undefined); it is undefined because no human validation has been performed. Per MEASUREMENT_CONSTITUTION MC-7 (No naked numbers), reporting 0/0 would be a bare scalar. The honest statement is: no human-validated discovery rate exists.")
     report.append("")
     report.append("**The true machine-scored discovery rate (DSB V1, human validation pending): 13/80 (16.25%), of which 10/13 are fabricated counterfactuals and 3/13 are real discoveries.**")
     report.append("")
@@ -693,9 +701,27 @@ def produce_report(inventory_v2: dict, consistency: dict):
 
     report.append("---")
     report.append("")
+
+    # Section 11: Freeze
+    report.append("## 11. Freeze Status")
+    report.append("")
+    report.append(f"**RESEARCH_TRUTH V2 is FROZEN as of {datetime.now(timezone.utc).isoformat()}.**")
+    report.append("")
+    report.append("Frozen artifacts (do NOT modify):")
+    report.append("- `RESEARCH_TRUTH_INVENTORY_V2.json` (hash-sealed)")
+    report.append("- `RESEARCH_TRUTH_FORENSIC_REPORT_V2.md` (this file)")
+    report.append("- `research_truth_v2_forensic_correction.py` (the correction script)")
+    report.append("")
+    report.append("Freeze policy:")
+    report.append("- No further corrections to V2 without a new directive.")
+    report.append("- If new evidence requires reclassification, create V3 (do NOT modify V2).")
+    report.append("- V1 (`RESEARCH_TRUTH_INVENTORY.json`) remains preserved unchanged per CONSTITUTION Law 7.")
+    report.append("")
     report.append("**End of RESEARCH_TRUTH V2 Forensic Correction Report.**")
     report.append("")
     report.append("**The true number is reported above. No new discovery code was built. No scorer was changed. No benchmark was changed.**")
+    report.append("")
+    report.append("**FROZEN.**")
 
     with open(REPORT_V2, "w") as f:
         f.write("\n".join(report))
