@@ -1,0 +1,136 @@
+{
+  "schema_version": "8.1.0",
+  "forensic_type": "V81_FINAL_BUNDLE_IDENTITY_CORRECTION",
+  "generated_at": "2026-08-12T20:24:25.487608+00:00",
+  "bundle_manifest": {
+    "schema_version": "2.1.0",
+    "bundle_type": "DSB_V1_ADJUDICATOR_BUNDLE_V81",
+    "build_id": "ecc65ee8-878f-4fe5-be77-6c2588720156",
+    "build_timestamp": "2026-08-12T20:24:25.478750+00:00",
+    "description": "Minimal adjudicator bundle. Canonical identity is the bundle_hash (cryptographic), NOT a filesystem path. Contains ONLY blinded packets, instructions, empty template, and bundle-internal integrity hashes.",
+    "allowed_contents": [
+      "cto_packets_BLIND.json",
+      "CTO_ADJUDICATION_INSTRUCTIONS.md",
+      "cto_adjudication_template.json",
+      "BUNDLE_MANIFEST.json"
+    ],
+    "forbidden_contents": [
+      "case files",
+      "real/fabricated labels",
+      "breakthrough_relationship text",
+      "withheld_facts text",
+      "answer_mechanism text",
+      "machine receipts",
+      "machine scores",
+      "full packets",
+      "evaluator secrets",
+      "Git metadata",
+      "research repository code",
+      "host filesystem paths"
+    ],
+    "files": {
+      "cto_packets_BLIND.json": {
+        "sha256": "0eb79566718b5a68c3ac994686861ebf4e93a5689bb83a3e135a325c1e7bd882",
+        "size_bytes": 127780
+      },
+      "CTO_ADJUDICATION_INSTRUCTIONS.md": {
+        "sha256": "89c8d58e41bbf97c9365b435cf90e9e4c3d9575224e234f558d4940df8f9cec2",
+        "size_bytes": 1960
+      },
+      "cto_adjudication_template.json": {
+        "sha256": "813fedc6129a3db68676357bfe5a6c4e30e29f3bee4b0b3f5b231eac8b458a90",
+        "size_bytes": 33643
+      }
+    },
+    "ledger_binding": {
+      "description": "The final adjudication ledger MUST bind build_id + bundle_hash + manifest_hash. This proves the adjudicator operated on this exact bundle and prevents substitution.",
+      "required_fields": [
+        "build_id",
+        "bundle_hash",
+        "manifest_hash"
+      ],
+      "evaluator_access": "strictly_one_way_after_ledger_sealing",
+      "evaluator_access_note": "The evaluator can read the adjudicator's sealed ledger ONLY after the ledger_hash is computed and committed. The evaluator cannot write to the adjudicator's workspace. The adjudicator cannot read the evaluator's namespace. Access is strictly one-way: adjudicator produces → evaluator consumes (after sealing)."
+    },
+    "bundle_hash": "031491c2e1b09e7b2df3f6c97a2b9e8d9135bd053efbc80b948aa8e58d6d1081",
+    "manifest_hash": "33196ad72e27a9f13a9b4939dca167c708179b81a8c003763456ef712bd76383"
+  },
+  "bundle_self_integrity": {
+    "n_checks": 10,
+    "n_passed": 10,
+    "all_pass": true,
+    "checks": [
+      {
+        "check": "FILE_HASH_cto_packets_BLIND.json",
+        "passed": true,
+        "expected": "0eb79566718b5a68",
+        "actual": "0eb79566718b5a68"
+      },
+      {
+        "check": "FILE_HASH_CTO_ADJUDICATION_INSTRUCTIONS.md",
+        "passed": true,
+        "expected": "89c8d58e41bbf97c",
+        "actual": "89c8d58e41bbf97c"
+      },
+      {
+        "check": "FILE_HASH_cto_adjudication_template.json",
+        "passed": true,
+        "expected": "813fedc6129a3db6",
+        "actual": "813fedc6129a3db6"
+      },
+      {
+        "check": "BUNDLE_HASH_MATCHES",
+        "passed": true
+      },
+      {
+        "check": "MANIFEST_HASH_MATCHES",
+        "passed": true
+      },
+      {
+        "check": "NO_HOST_PATH_IN_MANIFEST",
+        "passed": true,
+        "host_path_indicators_found": []
+      },
+      {
+        "check": "NO_FORBIDDEN_CONTENT_IN_BUNDLE",
+        "passed": true,
+        "found": []
+      },
+      {
+        "check": "NO_GIT_METADATA_IN_BUNDLE",
+        "passed": true
+      },
+      {
+        "check": "NO_EXTERNAL_SYMLINKS",
+        "passed": true
+      },
+      {
+        "check": "BUNDLE_HAS_EXACTLY_4_FILES",
+        "passed": true,
+        "expected": [
+          "BUNDLE_MANIFEST.json",
+          "CTO_ADJUDICATION_INSTRUCTIONS.md",
+          "cto_adjudication_template.json",
+          "cto_packets_BLIND.json"
+        ],
+        "actual": [
+          "BUNDLE_MANIFEST.json",
+          "CTO_ADJUDICATION_INSTRUCTIONS.md",
+          "cto_adjudication_template.json",
+          "cto_packets_BLIND.json"
+        ]
+      }
+    ]
+  },
+  "v8_hard_invariant_holds": true,
+  "canonical_identity": {
+    "build_id": "ecc65ee8-878f-4fe5-be77-6c2588720156",
+    "bundle_hash": "031491c2e1b09e7b2df3f6c97a2b9e8d9135bd053efbc80b948aa8e58d6d1081",
+    "manifest_hash": "33196ad72e27a9f13a9b4939dca167c708179b81a8c003763456ef712bd76383",
+    "description": "These three values form the canonical artifact identity. The adjudication ledger MUST bind all three."
+  },
+  "evaluator_access": "strictly_one_way_after_ledger_sealing",
+  "v81_is_green": true,
+  "adjudication_permitted": false,
+  "hash": "2d808859b904eb9a85b8ee5cf650834e4ab61780935f236fa603b84b4905e67e"
+}
