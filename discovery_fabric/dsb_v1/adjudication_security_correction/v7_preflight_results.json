@@ -1,0 +1,365 @@
+{
+  "schema_version": "7.0.0",
+  "forensic_type": "SECURITY_FORENSIC_V7_FINAL_BOUNDARY",
+  "generated_at": "2026-08-12T20:07:40.010103+00:00",
+  "bundle_manifest": {
+    "schema_version": "1.0.0",
+    "bundle_type": "DSB_V1_ADJUDICATOR_BUNDLE",
+    "created_at": "2026-08-12T20:07:15.610574+00:00",
+    "description": "Minimal adjudicator bundle. Contains ONLY blinded packets, instructions, empty template, and public integrity metadata. NO ground truth, NO machine scores, NO evaluator secrets, NO Git metadata.",
+    "allowed_contents": [
+      "cto_packets_BLIND.json — 80 blinded adjudication packets",
+      "CTO_ADJUDICATION_INSTRUCTIONS.md — adjudication rubric",
+      "cto_adjudication_template.json — empty ledger template",
+      "BUNDLE_MANIFEST.json — this file (public integrity metadata)"
+    ],
+    "forbidden_contents": [
+      "case files (cases/real/, cases/fabricated/)",
+      "real/fabricated labels (case_type field)",
+      "breakthrough_relationship text",
+      "withheld_facts text",
+      "answer_mechanism text",
+      "machine receipts (receipts/)",
+      "machine scores (scores/)",
+      "full packets (cto_packets_FULL.json)",
+      "evaluator secrets (vault_key*, machine_score_vault*)",
+      "Git metadata (.git/)",
+      "research repository code (discovery_fabric/)"
+    ],
+    "files": {
+      "cto_packets_BLIND.json": {
+        "source": "discovery_fabric/dsb_v1/adjudication_engine_v3/adjudicator_workspace/cto_packets_BLIND.json",
+        "sha256": "0eb79566718b5a68c3ac994686861ebf4e93a5689bb83a3e135a325c1e7bd882",
+        "size_bytes": 127780,
+        "description": "80 blinded adjudication packets (no ground truth)"
+      },
+      "CTO_ADJUDICATION_INSTRUCTIONS.md": {
+        "sha256": "261d648d6f7006b79dc7920912a0a7cfc2f32d78c047b372e12d2186c54369c3",
+        "size_bytes": 2869,
+        "description": "Adjudication rubric and instructions"
+      },
+      "cto_adjudication_template.json": {
+        "sha256": "813fedc6129a3db68676357bfe5a6c4e30e29f3bee4b0b3f5b231eac8b458a90",
+        "size_bytes": 33643,
+        "description": "Empty adjudication ledger template (80 slots)"
+      }
+    },
+    "forbidden_files_check": {
+      "passed": true,
+      "found": []
+    },
+    "manifest_hash": "51b3b3acd881ea27a71be760fa451302d69d35f9f4bc70b49b092606a2c11ee2"
+  },
+  "q_check": {
+    "check": "Q_RESEARCH_REPO_INACCESSIBLE_TO_ADJUDICATOR",
+    "passed": false,
+    "blocking": true,
+    "executable_test": false,
+    "status": "ENVIRONMENT_BLOCKED",
+    "n_subchecks": 10,
+    "n_passed": 7,
+    "n_environment_blocked": 3,
+    "n_failed": 0,
+    "subchecks": [
+      {
+        "subcheck": "Q1_BUNDLE_NO_EXTERNAL_SYMLINKS",
+        "passed": true,
+        "symlinks": []
+      },
+      {
+        "subcheck": "Q2_BUNDLE_NO_GIT_METADATA",
+        "passed": true,
+        "found": []
+      },
+      {
+        "subcheck": "Q3_BUNDLE_NO_CASE_FILES",
+        "passed": true,
+        "found": []
+      },
+      {
+        "subcheck": "Q4_BUNDLE_NO_RECEIPTS_OR_SCORES",
+        "passed": true,
+        "found": []
+      },
+      {
+        "subcheck": "Q5_BUNDLE_NO_VAULT_KEYS",
+        "passed": true,
+        "found": []
+      },
+      {
+        "subcheck": "Q6_BUNDLE_NO_FULL_PACKETS",
+        "passed": true,
+        "found": []
+      },
+      {
+        "subcheck": "Q7_ADJUDICATOR_CANNOT_READ_RESEARCH_REPO",
+        "passed": false,
+        "status": "ENVIRONMENT_BLOCKED",
+        "reason": "Single-user container — adjudicator has same UID as repository owner. Cannot enforce OS-level read restriction."
+      },
+      {
+        "subcheck": "Q8_ADJUDICATOR_CANNOT_READ_GIT_OBJECTS",
+        "passed": false,
+        "status": "ENVIRONMENT_BLOCKED",
+        "reason": "Single-user container — .git/ is readable by same UID."
+      },
+      {
+        "subcheck": "Q9_ADJUDICATOR_CANNOT_READ_CASE_FILES",
+        "passed": false,
+        "status": "ENVIRONMENT_BLOCKED",
+        "reason": "Single-user container — case files readable by same UID."
+      },
+      {
+        "subcheck": "Q10_ADJUDICATOR_CANNOT_READ_EVALUATOR_BOUNDARY",
+        "passed": true,
+        "status": "PASS",
+        "reason": ""
+      }
+    ],
+    "description": "Proves the adjudicator process cannot read the research repo, Git objects, case files, or evaluator namespace. Requires separate OS identity/container."
+  },
+  "preflight": {
+    "checks": [
+      {
+        "check": "H1_NO_VAULT_KEYS_IN_WORKING_TREE",
+        "passed": true,
+        "blocking": true,
+        "executable_test": true,
+        "found": []
+      },
+      {
+        "check": "H2_TRUE_FORBIDDEN_ARTIFACT_AUDIT",
+        "passed": true,
+        "blocking": true,
+        "executable_test": true,
+        "n_classes_audited": 11,
+        "classes_audited": [
+          "vault_key files (vault_key.bin, vault_key.json, vault_key_META.json)",
+          "plaintext machine-score vaults (machine_score_vault.json)",
+          "encrypted machine-score vaults (machine_score_vault_ENCRYPTED.bin)",
+          "full-packet artifacts (cto_packets_FULL.json)",
+          "adjudication packets with internal bookkeeping (adjudication_packets.json)",
+          "any file containing case_id + case_type + arm in the same JSON object",
+          "any file containing breakthrough_relationship text",
+          "any file containing withheld_facts text",
+          "any file containing answer_mechanism text",
+          "any file containing machine scorer verdicts (RECOVERED/NOT_RECOVERED/RECONSTRUCTED)",
+          "any blob in git history matching the above"
+        ],
+        "n_findings": 0,
+        "findings": [],
+        "description": "Audits ALL 11 forbidden artifact classes across working tree, all Git blobs, and all refs"
+      },
+      {
+        "check": "F_RECURSIVE_NAMESPACE_INSPECTION",
+        "passed": true,
+        "blocking": true,
+        "executable_test": true,
+        "n_findings": 0,
+        "findings": [],
+        "description": "Recursively inspects entire adjudicator namespace for full-packet artifacts, ground truth, symlinks, bytecode, content"
+      },
+      {
+        "check": "H4_OLD_KEYS_TREATED_AS_COMPROMISED",
+        "passed": true,
+        "blocking": true,
+        "executable_test": true,
+        "note": "All previously committed vault keys purged. New key material required."
+      },
+      {
+        "check": "B_ADJUDICATOR_CANNOT_READ_KEY",
+        "passed": false,
+        "blocking": true,
+        "executable_test": false,
+        "status": "ENVIRONMENT_BLOCKED",
+        "reason": "Single-user container (UID 1001, no root). Cannot create separate OS identity. This check requires a real multi-identity deployment.",
+        "description": "NOT a failed attacker test — a check that cannot be executed in this environment. Must be executed in a multi-identity deployment."
+      },
+      {
+        "check": "C_ADJUDICATOR_CANNOT_WRITE_EVAL_BOUNDARY",
+        "passed": false,
+        "blocking": true,
+        "executable_test": false,
+        "status": "ENVIRONMENT_BLOCKED",
+        "reason": "Single-user container (UID 1001, no root). Cannot create separate OS identity.",
+        "description": "NOT a failed attacker test — a check that cannot be executed in this environment."
+      },
+      {
+        "check": "D_ENCRYPTED_VAULT_EXISTS",
+        "passed": false,
+        "blocking": true,
+        "executable_test": true,
+        "reason": "Vault was purged in V4 (old key compromised). Must be regenerated with new key in isolated deployment."
+      },
+      {
+        "check": "E_RECURSIVE_BLIND_INSPECTION",
+        "passed": true,
+        "blocking": true,
+        "executable_test": true,
+        "n_findings": 0,
+        "findings": [],
+        "description": "Recursively inspects blind packets for ground truth: nested fields, strings, base64, hashes, breakthrough text"
+      },
+      {
+        "check": "F_RECURSIVE_NAMESPACE_INSPECTION",
+        "passed": true,
+        "blocking": true,
+        "executable_test": true,
+        "n_findings": 0,
+        "findings": [],
+        "description": "Recursively inspects entire adjudicator namespace for full-packet artifacts, ground truth, symlinks, bytecode, content"
+      },
+      {
+        "check": "I_NO_OPEN_FD_TO_KEY",
+        "passed": true,
+        "blocking": true,
+        "executable_test": true
+      },
+      {
+        "check": "J_NO_ENV_VAR_WITH_KEY",
+        "passed": true,
+        "blocking": true,
+        "executable_test": true
+      },
+      {
+        "check": "K_NO_INHERITED_FDS",
+        "passed": true,
+        "blocking": true,
+        "executable_test": true,
+        "open_fds": []
+      },
+      {
+        "check": "L_SYMLINK_TRAVERSAL_PROTECTION",
+        "passed": true,
+        "blocking": true,
+        "executable_test": true,
+        "note": "O_NOFOLLOW available on Linux"
+      },
+      {
+        "check": "M_DETERMINISTIC_FORBIDDEN_MANIFEST",
+        "passed": true,
+        "blocking": true,
+        "executable_test": true,
+        "n_findings": 0,
+        "findings": [],
+        "description": "Deterministic forbidden-artifact manifest: SHA-256 + filename + content checks (no heuristics)"
+      },
+      {
+        "check": "N_NO_BACKUP_FILES",
+        "passed": true,
+        "blocking": true,
+        "executable_test": true,
+        "found": []
+      },
+      {
+        "check": "O_NO_ACCESS_TO_EVALUATOR_PROCESS",
+        "passed": false,
+        "blocking": true,
+        "executable_test": false,
+        "status": "ENVIRONMENT_BLOCKED",
+        "reason": "Single-user container. /proc is visible to same-UID processes. Cannot enforce ptrace access checks without separate users.",
+        "description": "NOT a failed attacker test — a check that cannot be executed in this environment."
+      },
+      {
+        "check": "P_VAULT_IS_ENCRYPTED",
+        "passed": false,
+        "blocking": true,
+        "executable_test": true,
+        "reason": "No vault exists (purged in V4). Must be regenerated in isolated deployment."
+      },
+      {
+        "check": "Q_RESEARCH_REPO_INACCESSIBLE_TO_ADJUDICATOR",
+        "passed": false,
+        "blocking": true,
+        "executable_test": false,
+        "status": "ENVIRONMENT_BLOCKED",
+        "n_subchecks": 10,
+        "n_passed": 7,
+        "n_environment_blocked": 3,
+        "n_failed": 0,
+        "subchecks": [
+          {
+            "subcheck": "Q1_BUNDLE_NO_EXTERNAL_SYMLINKS",
+            "passed": true,
+            "symlinks": []
+          },
+          {
+            "subcheck": "Q2_BUNDLE_NO_GIT_METADATA",
+            "passed": true,
+            "found": []
+          },
+          {
+            "subcheck": "Q3_BUNDLE_NO_CASE_FILES",
+            "passed": true,
+            "found": []
+          },
+          {
+            "subcheck": "Q4_BUNDLE_NO_RECEIPTS_OR_SCORES",
+            "passed": true,
+            "found": []
+          },
+          {
+            "subcheck": "Q5_BUNDLE_NO_VAULT_KEYS",
+            "passed": true,
+            "found": []
+          },
+          {
+            "subcheck": "Q6_BUNDLE_NO_FULL_PACKETS",
+            "passed": true,
+            "found": []
+          },
+          {
+            "subcheck": "Q7_ADJUDICATOR_CANNOT_READ_RESEARCH_REPO",
+            "passed": false,
+            "status": "ENVIRONMENT_BLOCKED",
+            "reason": "Single-user container — adjudicator has same UID as repository owner. Cannot enforce OS-level read restriction."
+          },
+          {
+            "subcheck": "Q8_ADJUDICATOR_CANNOT_READ_GIT_OBJECTS",
+            "passed": false,
+            "status": "ENVIRONMENT_BLOCKED",
+            "reason": "Single-user container — .git/ is readable by same UID."
+          },
+          {
+            "subcheck": "Q9_ADJUDICATOR_CANNOT_READ_CASE_FILES",
+            "passed": false,
+            "status": "ENVIRONMENT_BLOCKED",
+            "reason": "Single-user container — case files readable by same UID."
+          },
+          {
+            "subcheck": "Q10_ADJUDICATOR_CANNOT_READ_EVALUATOR_BOUNDARY",
+            "passed": true,
+            "status": "PASS",
+            "reason": ""
+          }
+        ],
+        "description": "Proves the adjudicator process cannot read the research repo, Git objects, case files, or evaluator namespace. Requires separate OS identity/container."
+      }
+    ],
+    "hard_invariant": {
+      "n_required_checks": 18,
+      "n_executable": 14,
+      "n_passed": 12,
+      "n_environment_blocked": 4,
+      "n_failed_executable": 2,
+      "adjudication_permitted": false,
+      "invariant": "adjudication_permitted == TRUE ONLY IF every required check has executable_test==true AND passed==true",
+      "invariant_satisfied": true,
+      "verdict": "BLOCKED",
+      "block_reasons": [
+        "B_ADJUDICATOR_CANNOT_READ_KEY: ENVIRONMENT_BLOCKED",
+        "C_ADJUDICATOR_CANNOT_WRITE_EVAL_BOUNDARY: ENVIRONMENT_BLOCKED",
+        "D_ENCRYPTED_VAULT_EXISTS: FAILED",
+        "O_NO_ACCESS_TO_EVALUATOR_PROCESS: ENVIRONMENT_BLOCKED",
+        "P_VAULT_IS_ENCRYPTED: FAILED",
+        "Q_RESEARCH_REPO_INACCESSIBLE_TO_ADJUDICATOR: ENVIRONMENT_BLOCKED"
+      ]
+    }
+  },
+  "adjudication_permitted": false,
+  "verdict": "BLOCKED",
+  "v7_is_green": false,
+  "environment": "single-user container (UID 1001, no root, no Docker)",
+  "note": "V7 adds Q_RESEARCH_REPO_INACCESSIBLE_TO_ADJUDICATOR. Adjudicator bundle is minimal and self-contained. Environment remains BLOCKED. B/C/D/P/O/Q all required to pass in multi-identity deployment.",
+  "hash": "6bea84ad9fc4c2f6eb8ab5e37f2e59d01c118c459a19d01bef3e8896860a5441"
+}

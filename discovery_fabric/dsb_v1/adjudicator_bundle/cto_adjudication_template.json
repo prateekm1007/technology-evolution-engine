@@ -1,0 +1,811 @@
+{
+  "schema_version": "3.0.0",
+  "adjudicator_id": "AI_CTO",
+  "evidence_tier": "AI_CTO_ADJUDICATION",
+  "tier_note": "NOT HUMAN_VALIDATED. CTO is not independent (per MC-1).",
+  "independence_statement": "I am the CTO who directed this system. I am NOT an independent expert. My adjudication is in the AI_CTO_ADJUDICATION tier, NOT HUMAN_VALIDATED. Per MC-1 (No self-validation), my adjudication cannot validate the system. I adjudicated each case based solely on the scientific content visible in the blinded packet. I did NOT have access to: machine scores (encrypted with AES-GCM; key in evaluator boundary; OS permission boundary NOT enforced in this environment — adjudication CANNOT start here), case_type, arm, breakthrough_relationship, or withheld_facts. I judged PLAUSIBILITY (Q6), NOT ground-truth REAL/FABRICATED.",
+  "submitted_at": "[FILL IN ISO-8601]",
+  "time_spent_minutes": 0,
+  "adjudications": [
+    {
+      "packet_id": "CTO3-ce7257999e1b",
+      "Q1_MECHANISTIC_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q2_DISCOVERY_STRUCTURE_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q3_NOVELTY": "[YES|PARTIAL|NO]",
+      "Q4_FALSIFIABILITY": "[YES|NO]",
+      "Q5_EXPERIMENTAL_COHERENCE": "[YES|PARTIAL|NO]",
+      "Q6_PLAUSIBILITY": "[PLAUSIBLE|IMPLAUSIBLE|UNCERTAIN]",
+      "comments": "[optional, max 200 chars]"
+    },
+    {
+      "packet_id": "CTO3-468cd7a18409",
+      "Q1_MECHANISTIC_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q2_DISCOVERY_STRUCTURE_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q3_NOVELTY": "[YES|PARTIAL|NO]",
+      "Q4_FALSIFIABILITY": "[YES|NO]",
+      "Q5_EXPERIMENTAL_COHERENCE": "[YES|PARTIAL|NO]",
+      "Q6_PLAUSIBILITY": "[PLAUSIBLE|IMPLAUSIBLE|UNCERTAIN]",
+      "comments": "[optional, max 200 chars]"
+    },
+    {
+      "packet_id": "CTO3-78f5834a4b8e",
+      "Q1_MECHANISTIC_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q2_DISCOVERY_STRUCTURE_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q3_NOVELTY": "[YES|PARTIAL|NO]",
+      "Q4_FALSIFIABILITY": "[YES|NO]",
+      "Q5_EXPERIMENTAL_COHERENCE": "[YES|PARTIAL|NO]",
+      "Q6_PLAUSIBILITY": "[PLAUSIBLE|IMPLAUSIBLE|UNCERTAIN]",
+      "comments": "[optional, max 200 chars]"
+    },
+    {
+      "packet_id": "CTO3-3920e0321894",
+      "Q1_MECHANISTIC_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q2_DISCOVERY_STRUCTURE_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q3_NOVELTY": "[YES|PARTIAL|NO]",
+      "Q4_FALSIFIABILITY": "[YES|NO]",
+      "Q5_EXPERIMENTAL_COHERENCE": "[YES|PARTIAL|NO]",
+      "Q6_PLAUSIBILITY": "[PLAUSIBLE|IMPLAUSIBLE|UNCERTAIN]",
+      "comments": "[optional, max 200 chars]"
+    },
+    {
+      "packet_id": "CTO3-bfc15d5dcae2",
+      "Q1_MECHANISTIC_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q2_DISCOVERY_STRUCTURE_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q3_NOVELTY": "[YES|PARTIAL|NO]",
+      "Q4_FALSIFIABILITY": "[YES|NO]",
+      "Q5_EXPERIMENTAL_COHERENCE": "[YES|PARTIAL|NO]",
+      "Q6_PLAUSIBILITY": "[PLAUSIBLE|IMPLAUSIBLE|UNCERTAIN]",
+      "comments": "[optional, max 200 chars]"
+    },
+    {
+      "packet_id": "CTO3-4a619148f66c",
+      "Q1_MECHANISTIC_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q2_DISCOVERY_STRUCTURE_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q3_NOVELTY": "[YES|PARTIAL|NO]",
+      "Q4_FALSIFIABILITY": "[YES|NO]",
+      "Q5_EXPERIMENTAL_COHERENCE": "[YES|PARTIAL|NO]",
+      "Q6_PLAUSIBILITY": "[PLAUSIBLE|IMPLAUSIBLE|UNCERTAIN]",
+      "comments": "[optional, max 200 chars]"
+    },
+    {
+      "packet_id": "CTO3-7cfa1cec9425",
+      "Q1_MECHANISTIC_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q2_DISCOVERY_STRUCTURE_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q3_NOVELTY": "[YES|PARTIAL|NO]",
+      "Q4_FALSIFIABILITY": "[YES|NO]",
+      "Q5_EXPERIMENTAL_COHERENCE": "[YES|PARTIAL|NO]",
+      "Q6_PLAUSIBILITY": "[PLAUSIBLE|IMPLAUSIBLE|UNCERTAIN]",
+      "comments": "[optional, max 200 chars]"
+    },
+    {
+      "packet_id": "CTO3-315bf90b06a8",
+      "Q1_MECHANISTIC_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q2_DISCOVERY_STRUCTURE_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q3_NOVELTY": "[YES|PARTIAL|NO]",
+      "Q4_FALSIFIABILITY": "[YES|NO]",
+      "Q5_EXPERIMENTAL_COHERENCE": "[YES|PARTIAL|NO]",
+      "Q6_PLAUSIBILITY": "[PLAUSIBLE|IMPLAUSIBLE|UNCERTAIN]",
+      "comments": "[optional, max 200 chars]"
+    },
+    {
+      "packet_id": "CTO3-4c5be96a263d",
+      "Q1_MECHANISTIC_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q2_DISCOVERY_STRUCTURE_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q3_NOVELTY": "[YES|PARTIAL|NO]",
+      "Q4_FALSIFIABILITY": "[YES|NO]",
+      "Q5_EXPERIMENTAL_COHERENCE": "[YES|PARTIAL|NO]",
+      "Q6_PLAUSIBILITY": "[PLAUSIBLE|IMPLAUSIBLE|UNCERTAIN]",
+      "comments": "[optional, max 200 chars]"
+    },
+    {
+      "packet_id": "CTO3-3b1c0e979720",
+      "Q1_MECHANISTIC_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q2_DISCOVERY_STRUCTURE_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q3_NOVELTY": "[YES|PARTIAL|NO]",
+      "Q4_FALSIFIABILITY": "[YES|NO]",
+      "Q5_EXPERIMENTAL_COHERENCE": "[YES|PARTIAL|NO]",
+      "Q6_PLAUSIBILITY": "[PLAUSIBLE|IMPLAUSIBLE|UNCERTAIN]",
+      "comments": "[optional, max 200 chars]"
+    },
+    {
+      "packet_id": "CTO3-45ce3c2f6ae7",
+      "Q1_MECHANISTIC_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q2_DISCOVERY_STRUCTURE_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q3_NOVELTY": "[YES|PARTIAL|NO]",
+      "Q4_FALSIFIABILITY": "[YES|NO]",
+      "Q5_EXPERIMENTAL_COHERENCE": "[YES|PARTIAL|NO]",
+      "Q6_PLAUSIBILITY": "[PLAUSIBLE|IMPLAUSIBLE|UNCERTAIN]",
+      "comments": "[optional, max 200 chars]"
+    },
+    {
+      "packet_id": "CTO3-49615d5ff03e",
+      "Q1_MECHANISTIC_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q2_DISCOVERY_STRUCTURE_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q3_NOVELTY": "[YES|PARTIAL|NO]",
+      "Q4_FALSIFIABILITY": "[YES|NO]",
+      "Q5_EXPERIMENTAL_COHERENCE": "[YES|PARTIAL|NO]",
+      "Q6_PLAUSIBILITY": "[PLAUSIBLE|IMPLAUSIBLE|UNCERTAIN]",
+      "comments": "[optional, max 200 chars]"
+    },
+    {
+      "packet_id": "CTO3-8b0e0b770d01",
+      "Q1_MECHANISTIC_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q2_DISCOVERY_STRUCTURE_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q3_NOVELTY": "[YES|PARTIAL|NO]",
+      "Q4_FALSIFIABILITY": "[YES|NO]",
+      "Q5_EXPERIMENTAL_COHERENCE": "[YES|PARTIAL|NO]",
+      "Q6_PLAUSIBILITY": "[PLAUSIBLE|IMPLAUSIBLE|UNCERTAIN]",
+      "comments": "[optional, max 200 chars]"
+    },
+    {
+      "packet_id": "CTO3-c5f1548a260f",
+      "Q1_MECHANISTIC_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q2_DISCOVERY_STRUCTURE_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q3_NOVELTY": "[YES|PARTIAL|NO]",
+      "Q4_FALSIFIABILITY": "[YES|NO]",
+      "Q5_EXPERIMENTAL_COHERENCE": "[YES|PARTIAL|NO]",
+      "Q6_PLAUSIBILITY": "[PLAUSIBLE|IMPLAUSIBLE|UNCERTAIN]",
+      "comments": "[optional, max 200 chars]"
+    },
+    {
+      "packet_id": "CTO3-59194f77a99a",
+      "Q1_MECHANISTIC_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q2_DISCOVERY_STRUCTURE_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q3_NOVELTY": "[YES|PARTIAL|NO]",
+      "Q4_FALSIFIABILITY": "[YES|NO]",
+      "Q5_EXPERIMENTAL_COHERENCE": "[YES|PARTIAL|NO]",
+      "Q6_PLAUSIBILITY": "[PLAUSIBLE|IMPLAUSIBLE|UNCERTAIN]",
+      "comments": "[optional, max 200 chars]"
+    },
+    {
+      "packet_id": "CTO3-af76bcebeb30",
+      "Q1_MECHANISTIC_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q2_DISCOVERY_STRUCTURE_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q3_NOVELTY": "[YES|PARTIAL|NO]",
+      "Q4_FALSIFIABILITY": "[YES|NO]",
+      "Q5_EXPERIMENTAL_COHERENCE": "[YES|PARTIAL|NO]",
+      "Q6_PLAUSIBILITY": "[PLAUSIBLE|IMPLAUSIBLE|UNCERTAIN]",
+      "comments": "[optional, max 200 chars]"
+    },
+    {
+      "packet_id": "CTO3-14c575431919",
+      "Q1_MECHANISTIC_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q2_DISCOVERY_STRUCTURE_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q3_NOVELTY": "[YES|PARTIAL|NO]",
+      "Q4_FALSIFIABILITY": "[YES|NO]",
+      "Q5_EXPERIMENTAL_COHERENCE": "[YES|PARTIAL|NO]",
+      "Q6_PLAUSIBILITY": "[PLAUSIBLE|IMPLAUSIBLE|UNCERTAIN]",
+      "comments": "[optional, max 200 chars]"
+    },
+    {
+      "packet_id": "CTO3-6cbd765bedab",
+      "Q1_MECHANISTIC_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q2_DISCOVERY_STRUCTURE_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q3_NOVELTY": "[YES|PARTIAL|NO]",
+      "Q4_FALSIFIABILITY": "[YES|NO]",
+      "Q5_EXPERIMENTAL_COHERENCE": "[YES|PARTIAL|NO]",
+      "Q6_PLAUSIBILITY": "[PLAUSIBLE|IMPLAUSIBLE|UNCERTAIN]",
+      "comments": "[optional, max 200 chars]"
+    },
+    {
+      "packet_id": "CTO3-bf469e26b83d",
+      "Q1_MECHANISTIC_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q2_DISCOVERY_STRUCTURE_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q3_NOVELTY": "[YES|PARTIAL|NO]",
+      "Q4_FALSIFIABILITY": "[YES|NO]",
+      "Q5_EXPERIMENTAL_COHERENCE": "[YES|PARTIAL|NO]",
+      "Q6_PLAUSIBILITY": "[PLAUSIBLE|IMPLAUSIBLE|UNCERTAIN]",
+      "comments": "[optional, max 200 chars]"
+    },
+    {
+      "packet_id": "CTO3-93b17759bd1c",
+      "Q1_MECHANISTIC_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q2_DISCOVERY_STRUCTURE_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q3_NOVELTY": "[YES|PARTIAL|NO]",
+      "Q4_FALSIFIABILITY": "[YES|NO]",
+      "Q5_EXPERIMENTAL_COHERENCE": "[YES|PARTIAL|NO]",
+      "Q6_PLAUSIBILITY": "[PLAUSIBLE|IMPLAUSIBLE|UNCERTAIN]",
+      "comments": "[optional, max 200 chars]"
+    },
+    {
+      "packet_id": "CTO3-6929d8048064",
+      "Q1_MECHANISTIC_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q2_DISCOVERY_STRUCTURE_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q3_NOVELTY": "[YES|PARTIAL|NO]",
+      "Q4_FALSIFIABILITY": "[YES|NO]",
+      "Q5_EXPERIMENTAL_COHERENCE": "[YES|PARTIAL|NO]",
+      "Q6_PLAUSIBILITY": "[PLAUSIBLE|IMPLAUSIBLE|UNCERTAIN]",
+      "comments": "[optional, max 200 chars]"
+    },
+    {
+      "packet_id": "CTO3-a47da0123180",
+      "Q1_MECHANISTIC_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q2_DISCOVERY_STRUCTURE_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q3_NOVELTY": "[YES|PARTIAL|NO]",
+      "Q4_FALSIFIABILITY": "[YES|NO]",
+      "Q5_EXPERIMENTAL_COHERENCE": "[YES|PARTIAL|NO]",
+      "Q6_PLAUSIBILITY": "[PLAUSIBLE|IMPLAUSIBLE|UNCERTAIN]",
+      "comments": "[optional, max 200 chars]"
+    },
+    {
+      "packet_id": "CTO3-5837b708b0af",
+      "Q1_MECHANISTIC_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q2_DISCOVERY_STRUCTURE_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q3_NOVELTY": "[YES|PARTIAL|NO]",
+      "Q4_FALSIFIABILITY": "[YES|NO]",
+      "Q5_EXPERIMENTAL_COHERENCE": "[YES|PARTIAL|NO]",
+      "Q6_PLAUSIBILITY": "[PLAUSIBLE|IMPLAUSIBLE|UNCERTAIN]",
+      "comments": "[optional, max 200 chars]"
+    },
+    {
+      "packet_id": "CTO3-f8171e1ff471",
+      "Q1_MECHANISTIC_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q2_DISCOVERY_STRUCTURE_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q3_NOVELTY": "[YES|PARTIAL|NO]",
+      "Q4_FALSIFIABILITY": "[YES|NO]",
+      "Q5_EXPERIMENTAL_COHERENCE": "[YES|PARTIAL|NO]",
+      "Q6_PLAUSIBILITY": "[PLAUSIBLE|IMPLAUSIBLE|UNCERTAIN]",
+      "comments": "[optional, max 200 chars]"
+    },
+    {
+      "packet_id": "CTO3-d1168318ec76",
+      "Q1_MECHANISTIC_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q2_DISCOVERY_STRUCTURE_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q3_NOVELTY": "[YES|PARTIAL|NO]",
+      "Q4_FALSIFIABILITY": "[YES|NO]",
+      "Q5_EXPERIMENTAL_COHERENCE": "[YES|PARTIAL|NO]",
+      "Q6_PLAUSIBILITY": "[PLAUSIBLE|IMPLAUSIBLE|UNCERTAIN]",
+      "comments": "[optional, max 200 chars]"
+    },
+    {
+      "packet_id": "CTO3-70b907f34a6b",
+      "Q1_MECHANISTIC_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q2_DISCOVERY_STRUCTURE_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q3_NOVELTY": "[YES|PARTIAL|NO]",
+      "Q4_FALSIFIABILITY": "[YES|NO]",
+      "Q5_EXPERIMENTAL_COHERENCE": "[YES|PARTIAL|NO]",
+      "Q6_PLAUSIBILITY": "[PLAUSIBLE|IMPLAUSIBLE|UNCERTAIN]",
+      "comments": "[optional, max 200 chars]"
+    },
+    {
+      "packet_id": "CTO3-078c7ecc6262",
+      "Q1_MECHANISTIC_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q2_DISCOVERY_STRUCTURE_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q3_NOVELTY": "[YES|PARTIAL|NO]",
+      "Q4_FALSIFIABILITY": "[YES|NO]",
+      "Q5_EXPERIMENTAL_COHERENCE": "[YES|PARTIAL|NO]",
+      "Q6_PLAUSIBILITY": "[PLAUSIBLE|IMPLAUSIBLE|UNCERTAIN]",
+      "comments": "[optional, max 200 chars]"
+    },
+    {
+      "packet_id": "CTO3-a3b0a2dfcdb4",
+      "Q1_MECHANISTIC_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q2_DISCOVERY_STRUCTURE_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q3_NOVELTY": "[YES|PARTIAL|NO]",
+      "Q4_FALSIFIABILITY": "[YES|NO]",
+      "Q5_EXPERIMENTAL_COHERENCE": "[YES|PARTIAL|NO]",
+      "Q6_PLAUSIBILITY": "[PLAUSIBLE|IMPLAUSIBLE|UNCERTAIN]",
+      "comments": "[optional, max 200 chars]"
+    },
+    {
+      "packet_id": "CTO3-1d6a17b30ffb",
+      "Q1_MECHANISTIC_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q2_DISCOVERY_STRUCTURE_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q3_NOVELTY": "[YES|PARTIAL|NO]",
+      "Q4_FALSIFIABILITY": "[YES|NO]",
+      "Q5_EXPERIMENTAL_COHERENCE": "[YES|PARTIAL|NO]",
+      "Q6_PLAUSIBILITY": "[PLAUSIBLE|IMPLAUSIBLE|UNCERTAIN]",
+      "comments": "[optional, max 200 chars]"
+    },
+    {
+      "packet_id": "CTO3-4eb0ce7df740",
+      "Q1_MECHANISTIC_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q2_DISCOVERY_STRUCTURE_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q3_NOVELTY": "[YES|PARTIAL|NO]",
+      "Q4_FALSIFIABILITY": "[YES|NO]",
+      "Q5_EXPERIMENTAL_COHERENCE": "[YES|PARTIAL|NO]",
+      "Q6_PLAUSIBILITY": "[PLAUSIBLE|IMPLAUSIBLE|UNCERTAIN]",
+      "comments": "[optional, max 200 chars]"
+    },
+    {
+      "packet_id": "CTO3-2749b2efe3e9",
+      "Q1_MECHANISTIC_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q2_DISCOVERY_STRUCTURE_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q3_NOVELTY": "[YES|PARTIAL|NO]",
+      "Q4_FALSIFIABILITY": "[YES|NO]",
+      "Q5_EXPERIMENTAL_COHERENCE": "[YES|PARTIAL|NO]",
+      "Q6_PLAUSIBILITY": "[PLAUSIBLE|IMPLAUSIBLE|UNCERTAIN]",
+      "comments": "[optional, max 200 chars]"
+    },
+    {
+      "packet_id": "CTO3-61da7534ce03",
+      "Q1_MECHANISTIC_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q2_DISCOVERY_STRUCTURE_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q3_NOVELTY": "[YES|PARTIAL|NO]",
+      "Q4_FALSIFIABILITY": "[YES|NO]",
+      "Q5_EXPERIMENTAL_COHERENCE": "[YES|PARTIAL|NO]",
+      "Q6_PLAUSIBILITY": "[PLAUSIBLE|IMPLAUSIBLE|UNCERTAIN]",
+      "comments": "[optional, max 200 chars]"
+    },
+    {
+      "packet_id": "CTO3-2148e55714f8",
+      "Q1_MECHANISTIC_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q2_DISCOVERY_STRUCTURE_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q3_NOVELTY": "[YES|PARTIAL|NO]",
+      "Q4_FALSIFIABILITY": "[YES|NO]",
+      "Q5_EXPERIMENTAL_COHERENCE": "[YES|PARTIAL|NO]",
+      "Q6_PLAUSIBILITY": "[PLAUSIBLE|IMPLAUSIBLE|UNCERTAIN]",
+      "comments": "[optional, max 200 chars]"
+    },
+    {
+      "packet_id": "CTO3-b656eb68be39",
+      "Q1_MECHANISTIC_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q2_DISCOVERY_STRUCTURE_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q3_NOVELTY": "[YES|PARTIAL|NO]",
+      "Q4_FALSIFIABILITY": "[YES|NO]",
+      "Q5_EXPERIMENTAL_COHERENCE": "[YES|PARTIAL|NO]",
+      "Q6_PLAUSIBILITY": "[PLAUSIBLE|IMPLAUSIBLE|UNCERTAIN]",
+      "comments": "[optional, max 200 chars]"
+    },
+    {
+      "packet_id": "CTO3-23c3ea2dc14e",
+      "Q1_MECHANISTIC_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q2_DISCOVERY_STRUCTURE_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q3_NOVELTY": "[YES|PARTIAL|NO]",
+      "Q4_FALSIFIABILITY": "[YES|NO]",
+      "Q5_EXPERIMENTAL_COHERENCE": "[YES|PARTIAL|NO]",
+      "Q6_PLAUSIBILITY": "[PLAUSIBLE|IMPLAUSIBLE|UNCERTAIN]",
+      "comments": "[optional, max 200 chars]"
+    },
+    {
+      "packet_id": "CTO3-89db6a6f036d",
+      "Q1_MECHANISTIC_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q2_DISCOVERY_STRUCTURE_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q3_NOVELTY": "[YES|PARTIAL|NO]",
+      "Q4_FALSIFIABILITY": "[YES|NO]",
+      "Q5_EXPERIMENTAL_COHERENCE": "[YES|PARTIAL|NO]",
+      "Q6_PLAUSIBILITY": "[PLAUSIBLE|IMPLAUSIBLE|UNCERTAIN]",
+      "comments": "[optional, max 200 chars]"
+    },
+    {
+      "packet_id": "CTO3-002b8c183630",
+      "Q1_MECHANISTIC_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q2_DISCOVERY_STRUCTURE_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q3_NOVELTY": "[YES|PARTIAL|NO]",
+      "Q4_FALSIFIABILITY": "[YES|NO]",
+      "Q5_EXPERIMENTAL_COHERENCE": "[YES|PARTIAL|NO]",
+      "Q6_PLAUSIBILITY": "[PLAUSIBLE|IMPLAUSIBLE|UNCERTAIN]",
+      "comments": "[optional, max 200 chars]"
+    },
+    {
+      "packet_id": "CTO3-aeec447de82b",
+      "Q1_MECHANISTIC_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q2_DISCOVERY_STRUCTURE_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q3_NOVELTY": "[YES|PARTIAL|NO]",
+      "Q4_FALSIFIABILITY": "[YES|NO]",
+      "Q5_EXPERIMENTAL_COHERENCE": "[YES|PARTIAL|NO]",
+      "Q6_PLAUSIBILITY": "[PLAUSIBLE|IMPLAUSIBLE|UNCERTAIN]",
+      "comments": "[optional, max 200 chars]"
+    },
+    {
+      "packet_id": "CTO3-9639681e0f8b",
+      "Q1_MECHANISTIC_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q2_DISCOVERY_STRUCTURE_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q3_NOVELTY": "[YES|PARTIAL|NO]",
+      "Q4_FALSIFIABILITY": "[YES|NO]",
+      "Q5_EXPERIMENTAL_COHERENCE": "[YES|PARTIAL|NO]",
+      "Q6_PLAUSIBILITY": "[PLAUSIBLE|IMPLAUSIBLE|UNCERTAIN]",
+      "comments": "[optional, max 200 chars]"
+    },
+    {
+      "packet_id": "CTO3-7ccaad53c60b",
+      "Q1_MECHANISTIC_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q2_DISCOVERY_STRUCTURE_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q3_NOVELTY": "[YES|PARTIAL|NO]",
+      "Q4_FALSIFIABILITY": "[YES|NO]",
+      "Q5_EXPERIMENTAL_COHERENCE": "[YES|PARTIAL|NO]",
+      "Q6_PLAUSIBILITY": "[PLAUSIBLE|IMPLAUSIBLE|UNCERTAIN]",
+      "comments": "[optional, max 200 chars]"
+    },
+    {
+      "packet_id": "CTO3-e55ccacb398b",
+      "Q1_MECHANISTIC_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q2_DISCOVERY_STRUCTURE_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q3_NOVELTY": "[YES|PARTIAL|NO]",
+      "Q4_FALSIFIABILITY": "[YES|NO]",
+      "Q5_EXPERIMENTAL_COHERENCE": "[YES|PARTIAL|NO]",
+      "Q6_PLAUSIBILITY": "[PLAUSIBLE|IMPLAUSIBLE|UNCERTAIN]",
+      "comments": "[optional, max 200 chars]"
+    },
+    {
+      "packet_id": "CTO3-86b6ffe2d7e7",
+      "Q1_MECHANISTIC_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q2_DISCOVERY_STRUCTURE_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q3_NOVELTY": "[YES|PARTIAL|NO]",
+      "Q4_FALSIFIABILITY": "[YES|NO]",
+      "Q5_EXPERIMENTAL_COHERENCE": "[YES|PARTIAL|NO]",
+      "Q6_PLAUSIBILITY": "[PLAUSIBLE|IMPLAUSIBLE|UNCERTAIN]",
+      "comments": "[optional, max 200 chars]"
+    },
+    {
+      "packet_id": "CTO3-74831a43153f",
+      "Q1_MECHANISTIC_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q2_DISCOVERY_STRUCTURE_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q3_NOVELTY": "[YES|PARTIAL|NO]",
+      "Q4_FALSIFIABILITY": "[YES|NO]",
+      "Q5_EXPERIMENTAL_COHERENCE": "[YES|PARTIAL|NO]",
+      "Q6_PLAUSIBILITY": "[PLAUSIBLE|IMPLAUSIBLE|UNCERTAIN]",
+      "comments": "[optional, max 200 chars]"
+    },
+    {
+      "packet_id": "CTO3-a063d4ad0d3b",
+      "Q1_MECHANISTIC_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q2_DISCOVERY_STRUCTURE_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q3_NOVELTY": "[YES|PARTIAL|NO]",
+      "Q4_FALSIFIABILITY": "[YES|NO]",
+      "Q5_EXPERIMENTAL_COHERENCE": "[YES|PARTIAL|NO]",
+      "Q6_PLAUSIBILITY": "[PLAUSIBLE|IMPLAUSIBLE|UNCERTAIN]",
+      "comments": "[optional, max 200 chars]"
+    },
+    {
+      "packet_id": "CTO3-ec1fc1703a90",
+      "Q1_MECHANISTIC_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q2_DISCOVERY_STRUCTURE_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q3_NOVELTY": "[YES|PARTIAL|NO]",
+      "Q4_FALSIFIABILITY": "[YES|NO]",
+      "Q5_EXPERIMENTAL_COHERENCE": "[YES|PARTIAL|NO]",
+      "Q6_PLAUSIBILITY": "[PLAUSIBLE|IMPLAUSIBLE|UNCERTAIN]",
+      "comments": "[optional, max 200 chars]"
+    },
+    {
+      "packet_id": "CTO3-8d37c9c28229",
+      "Q1_MECHANISTIC_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q2_DISCOVERY_STRUCTURE_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q3_NOVELTY": "[YES|PARTIAL|NO]",
+      "Q4_FALSIFIABILITY": "[YES|NO]",
+      "Q5_EXPERIMENTAL_COHERENCE": "[YES|PARTIAL|NO]",
+      "Q6_PLAUSIBILITY": "[PLAUSIBLE|IMPLAUSIBLE|UNCERTAIN]",
+      "comments": "[optional, max 200 chars]"
+    },
+    {
+      "packet_id": "CTO3-1360d818ab69",
+      "Q1_MECHANISTIC_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q2_DISCOVERY_STRUCTURE_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q3_NOVELTY": "[YES|PARTIAL|NO]",
+      "Q4_FALSIFIABILITY": "[YES|NO]",
+      "Q5_EXPERIMENTAL_COHERENCE": "[YES|PARTIAL|NO]",
+      "Q6_PLAUSIBILITY": "[PLAUSIBLE|IMPLAUSIBLE|UNCERTAIN]",
+      "comments": "[optional, max 200 chars]"
+    },
+    {
+      "packet_id": "CTO3-7dee9fe8f37a",
+      "Q1_MECHANISTIC_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q2_DISCOVERY_STRUCTURE_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q3_NOVELTY": "[YES|PARTIAL|NO]",
+      "Q4_FALSIFIABILITY": "[YES|NO]",
+      "Q5_EXPERIMENTAL_COHERENCE": "[YES|PARTIAL|NO]",
+      "Q6_PLAUSIBILITY": "[PLAUSIBLE|IMPLAUSIBLE|UNCERTAIN]",
+      "comments": "[optional, max 200 chars]"
+    },
+    {
+      "packet_id": "CTO3-b38f32021d78",
+      "Q1_MECHANISTIC_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q2_DISCOVERY_STRUCTURE_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q3_NOVELTY": "[YES|PARTIAL|NO]",
+      "Q4_FALSIFIABILITY": "[YES|NO]",
+      "Q5_EXPERIMENTAL_COHERENCE": "[YES|PARTIAL|NO]",
+      "Q6_PLAUSIBILITY": "[PLAUSIBLE|IMPLAUSIBLE|UNCERTAIN]",
+      "comments": "[optional, max 200 chars]"
+    },
+    {
+      "packet_id": "CTO3-40a11ed4146c",
+      "Q1_MECHANISTIC_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q2_DISCOVERY_STRUCTURE_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q3_NOVELTY": "[YES|PARTIAL|NO]",
+      "Q4_FALSIFIABILITY": "[YES|NO]",
+      "Q5_EXPERIMENTAL_COHERENCE": "[YES|PARTIAL|NO]",
+      "Q6_PLAUSIBILITY": "[PLAUSIBLE|IMPLAUSIBLE|UNCERTAIN]",
+      "comments": "[optional, max 200 chars]"
+    },
+    {
+      "packet_id": "CTO3-c0f65fa0c204",
+      "Q1_MECHANISTIC_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q2_DISCOVERY_STRUCTURE_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q3_NOVELTY": "[YES|PARTIAL|NO]",
+      "Q4_FALSIFIABILITY": "[YES|NO]",
+      "Q5_EXPERIMENTAL_COHERENCE": "[YES|PARTIAL|NO]",
+      "Q6_PLAUSIBILITY": "[PLAUSIBLE|IMPLAUSIBLE|UNCERTAIN]",
+      "comments": "[optional, max 200 chars]"
+    },
+    {
+      "packet_id": "CTO3-8331b69f07a4",
+      "Q1_MECHANISTIC_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q2_DISCOVERY_STRUCTURE_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q3_NOVELTY": "[YES|PARTIAL|NO]",
+      "Q4_FALSIFIABILITY": "[YES|NO]",
+      "Q5_EXPERIMENTAL_COHERENCE": "[YES|PARTIAL|NO]",
+      "Q6_PLAUSIBILITY": "[PLAUSIBLE|IMPLAUSIBLE|UNCERTAIN]",
+      "comments": "[optional, max 200 chars]"
+    },
+    {
+      "packet_id": "CTO3-603360bd22ca",
+      "Q1_MECHANISTIC_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q2_DISCOVERY_STRUCTURE_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q3_NOVELTY": "[YES|PARTIAL|NO]",
+      "Q4_FALSIFIABILITY": "[YES|NO]",
+      "Q5_EXPERIMENTAL_COHERENCE": "[YES|PARTIAL|NO]",
+      "Q6_PLAUSIBILITY": "[PLAUSIBLE|IMPLAUSIBLE|UNCERTAIN]",
+      "comments": "[optional, max 200 chars]"
+    },
+    {
+      "packet_id": "CTO3-03e78c89c93c",
+      "Q1_MECHANISTIC_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q2_DISCOVERY_STRUCTURE_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q3_NOVELTY": "[YES|PARTIAL|NO]",
+      "Q4_FALSIFIABILITY": "[YES|NO]",
+      "Q5_EXPERIMENTAL_COHERENCE": "[YES|PARTIAL|NO]",
+      "Q6_PLAUSIBILITY": "[PLAUSIBLE|IMPLAUSIBLE|UNCERTAIN]",
+      "comments": "[optional, max 200 chars]"
+    },
+    {
+      "packet_id": "CTO3-66494f4e12d8",
+      "Q1_MECHANISTIC_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q2_DISCOVERY_STRUCTURE_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q3_NOVELTY": "[YES|PARTIAL|NO]",
+      "Q4_FALSIFIABILITY": "[YES|NO]",
+      "Q5_EXPERIMENTAL_COHERENCE": "[YES|PARTIAL|NO]",
+      "Q6_PLAUSIBILITY": "[PLAUSIBLE|IMPLAUSIBLE|UNCERTAIN]",
+      "comments": "[optional, max 200 chars]"
+    },
+    {
+      "packet_id": "CTO3-ff8140d8a539",
+      "Q1_MECHANISTIC_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q2_DISCOVERY_STRUCTURE_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q3_NOVELTY": "[YES|PARTIAL|NO]",
+      "Q4_FALSIFIABILITY": "[YES|NO]",
+      "Q5_EXPERIMENTAL_COHERENCE": "[YES|PARTIAL|NO]",
+      "Q6_PLAUSIBILITY": "[PLAUSIBLE|IMPLAUSIBLE|UNCERTAIN]",
+      "comments": "[optional, max 200 chars]"
+    },
+    {
+      "packet_id": "CTO3-026b9ea15442",
+      "Q1_MECHANISTIC_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q2_DISCOVERY_STRUCTURE_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q3_NOVELTY": "[YES|PARTIAL|NO]",
+      "Q4_FALSIFIABILITY": "[YES|NO]",
+      "Q5_EXPERIMENTAL_COHERENCE": "[YES|PARTIAL|NO]",
+      "Q6_PLAUSIBILITY": "[PLAUSIBLE|IMPLAUSIBLE|UNCERTAIN]",
+      "comments": "[optional, max 200 chars]"
+    },
+    {
+      "packet_id": "CTO3-6207c934c477",
+      "Q1_MECHANISTIC_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q2_DISCOVERY_STRUCTURE_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q3_NOVELTY": "[YES|PARTIAL|NO]",
+      "Q4_FALSIFIABILITY": "[YES|NO]",
+      "Q5_EXPERIMENTAL_COHERENCE": "[YES|PARTIAL|NO]",
+      "Q6_PLAUSIBILITY": "[PLAUSIBLE|IMPLAUSIBLE|UNCERTAIN]",
+      "comments": "[optional, max 200 chars]"
+    },
+    {
+      "packet_id": "CTO3-b4a6237ad5b5",
+      "Q1_MECHANISTIC_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q2_DISCOVERY_STRUCTURE_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q3_NOVELTY": "[YES|PARTIAL|NO]",
+      "Q4_FALSIFIABILITY": "[YES|NO]",
+      "Q5_EXPERIMENTAL_COHERENCE": "[YES|PARTIAL|NO]",
+      "Q6_PLAUSIBILITY": "[PLAUSIBLE|IMPLAUSIBLE|UNCERTAIN]",
+      "comments": "[optional, max 200 chars]"
+    },
+    {
+      "packet_id": "CTO3-c7fbcfac5a30",
+      "Q1_MECHANISTIC_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q2_DISCOVERY_STRUCTURE_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q3_NOVELTY": "[YES|PARTIAL|NO]",
+      "Q4_FALSIFIABILITY": "[YES|NO]",
+      "Q5_EXPERIMENTAL_COHERENCE": "[YES|PARTIAL|NO]",
+      "Q6_PLAUSIBILITY": "[PLAUSIBLE|IMPLAUSIBLE|UNCERTAIN]",
+      "comments": "[optional, max 200 chars]"
+    },
+    {
+      "packet_id": "CTO3-1b0a8c1a6842",
+      "Q1_MECHANISTIC_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q2_DISCOVERY_STRUCTURE_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q3_NOVELTY": "[YES|PARTIAL|NO]",
+      "Q4_FALSIFIABILITY": "[YES|NO]",
+      "Q5_EXPERIMENTAL_COHERENCE": "[YES|PARTIAL|NO]",
+      "Q6_PLAUSIBILITY": "[PLAUSIBLE|IMPLAUSIBLE|UNCERTAIN]",
+      "comments": "[optional, max 200 chars]"
+    },
+    {
+      "packet_id": "CTO3-660eec380ee8",
+      "Q1_MECHANISTIC_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q2_DISCOVERY_STRUCTURE_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q3_NOVELTY": "[YES|PARTIAL|NO]",
+      "Q4_FALSIFIABILITY": "[YES|NO]",
+      "Q5_EXPERIMENTAL_COHERENCE": "[YES|PARTIAL|NO]",
+      "Q6_PLAUSIBILITY": "[PLAUSIBLE|IMPLAUSIBLE|UNCERTAIN]",
+      "comments": "[optional, max 200 chars]"
+    },
+    {
+      "packet_id": "CTO3-bf6b50f7c7cd",
+      "Q1_MECHANISTIC_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q2_DISCOVERY_STRUCTURE_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q3_NOVELTY": "[YES|PARTIAL|NO]",
+      "Q4_FALSIFIABILITY": "[YES|NO]",
+      "Q5_EXPERIMENTAL_COHERENCE": "[YES|PARTIAL|NO]",
+      "Q6_PLAUSIBILITY": "[PLAUSIBLE|IMPLAUSIBLE|UNCERTAIN]",
+      "comments": "[optional, max 200 chars]"
+    },
+    {
+      "packet_id": "CTO3-85a2e079a032",
+      "Q1_MECHANISTIC_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q2_DISCOVERY_STRUCTURE_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q3_NOVELTY": "[YES|PARTIAL|NO]",
+      "Q4_FALSIFIABILITY": "[YES|NO]",
+      "Q5_EXPERIMENTAL_COHERENCE": "[YES|PARTIAL|NO]",
+      "Q6_PLAUSIBILITY": "[PLAUSIBLE|IMPLAUSIBLE|UNCERTAIN]",
+      "comments": "[optional, max 200 chars]"
+    },
+    {
+      "packet_id": "CTO3-6402f8157601",
+      "Q1_MECHANISTIC_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q2_DISCOVERY_STRUCTURE_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q3_NOVELTY": "[YES|PARTIAL|NO]",
+      "Q4_FALSIFIABILITY": "[YES|NO]",
+      "Q5_EXPERIMENTAL_COHERENCE": "[YES|PARTIAL|NO]",
+      "Q6_PLAUSIBILITY": "[PLAUSIBLE|IMPLAUSIBLE|UNCERTAIN]",
+      "comments": "[optional, max 200 chars]"
+    },
+    {
+      "packet_id": "CTO3-4b11123c3a05",
+      "Q1_MECHANISTIC_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q2_DISCOVERY_STRUCTURE_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q3_NOVELTY": "[YES|PARTIAL|NO]",
+      "Q4_FALSIFIABILITY": "[YES|NO]",
+      "Q5_EXPERIMENTAL_COHERENCE": "[YES|PARTIAL|NO]",
+      "Q6_PLAUSIBILITY": "[PLAUSIBLE|IMPLAUSIBLE|UNCERTAIN]",
+      "comments": "[optional, max 200 chars]"
+    },
+    {
+      "packet_id": "CTO3-3509257198d5",
+      "Q1_MECHANISTIC_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q2_DISCOVERY_STRUCTURE_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q3_NOVELTY": "[YES|PARTIAL|NO]",
+      "Q4_FALSIFIABILITY": "[YES|NO]",
+      "Q5_EXPERIMENTAL_COHERENCE": "[YES|PARTIAL|NO]",
+      "Q6_PLAUSIBILITY": "[PLAUSIBLE|IMPLAUSIBLE|UNCERTAIN]",
+      "comments": "[optional, max 200 chars]"
+    },
+    {
+      "packet_id": "CTO3-2e76e1b7ae11",
+      "Q1_MECHANISTIC_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q2_DISCOVERY_STRUCTURE_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q3_NOVELTY": "[YES|PARTIAL|NO]",
+      "Q4_FALSIFIABILITY": "[YES|NO]",
+      "Q5_EXPERIMENTAL_COHERENCE": "[YES|PARTIAL|NO]",
+      "Q6_PLAUSIBILITY": "[PLAUSIBLE|IMPLAUSIBLE|UNCERTAIN]",
+      "comments": "[optional, max 200 chars]"
+    },
+    {
+      "packet_id": "CTO3-b22a0d315a13",
+      "Q1_MECHANISTIC_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q2_DISCOVERY_STRUCTURE_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q3_NOVELTY": "[YES|PARTIAL|NO]",
+      "Q4_FALSIFIABILITY": "[YES|NO]",
+      "Q5_EXPERIMENTAL_COHERENCE": "[YES|PARTIAL|NO]",
+      "Q6_PLAUSIBILITY": "[PLAUSIBLE|IMPLAUSIBLE|UNCERTAIN]",
+      "comments": "[optional, max 200 chars]"
+    },
+    {
+      "packet_id": "CTO3-e3b8565514dc",
+      "Q1_MECHANISTIC_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q2_DISCOVERY_STRUCTURE_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q3_NOVELTY": "[YES|PARTIAL|NO]",
+      "Q4_FALSIFIABILITY": "[YES|NO]",
+      "Q5_EXPERIMENTAL_COHERENCE": "[YES|PARTIAL|NO]",
+      "Q6_PLAUSIBILITY": "[PLAUSIBLE|IMPLAUSIBLE|UNCERTAIN]",
+      "comments": "[optional, max 200 chars]"
+    },
+    {
+      "packet_id": "CTO3-820ec7912e88",
+      "Q1_MECHANISTIC_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q2_DISCOVERY_STRUCTURE_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q3_NOVELTY": "[YES|PARTIAL|NO]",
+      "Q4_FALSIFIABILITY": "[YES|NO]",
+      "Q5_EXPERIMENTAL_COHERENCE": "[YES|PARTIAL|NO]",
+      "Q6_PLAUSIBILITY": "[PLAUSIBLE|IMPLAUSIBLE|UNCERTAIN]",
+      "comments": "[optional, max 200 chars]"
+    },
+    {
+      "packet_id": "CTO3-39060d7acef9",
+      "Q1_MECHANISTIC_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q2_DISCOVERY_STRUCTURE_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q3_NOVELTY": "[YES|PARTIAL|NO]",
+      "Q4_FALSIFIABILITY": "[YES|NO]",
+      "Q5_EXPERIMENTAL_COHERENCE": "[YES|PARTIAL|NO]",
+      "Q6_PLAUSIBILITY": "[PLAUSIBLE|IMPLAUSIBLE|UNCERTAIN]",
+      "comments": "[optional, max 200 chars]"
+    },
+    {
+      "packet_id": "CTO3-1310240e6033",
+      "Q1_MECHANISTIC_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q2_DISCOVERY_STRUCTURE_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q3_NOVELTY": "[YES|PARTIAL|NO]",
+      "Q4_FALSIFIABILITY": "[YES|NO]",
+      "Q5_EXPERIMENTAL_COHERENCE": "[YES|PARTIAL|NO]",
+      "Q6_PLAUSIBILITY": "[PLAUSIBLE|IMPLAUSIBLE|UNCERTAIN]",
+      "comments": "[optional, max 200 chars]"
+    },
+    {
+      "packet_id": "CTO3-34854fc7e2b8",
+      "Q1_MECHANISTIC_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q2_DISCOVERY_STRUCTURE_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q3_NOVELTY": "[YES|PARTIAL|NO]",
+      "Q4_FALSIFIABILITY": "[YES|NO]",
+      "Q5_EXPERIMENTAL_COHERENCE": "[YES|PARTIAL|NO]",
+      "Q6_PLAUSIBILITY": "[PLAUSIBLE|IMPLAUSIBLE|UNCERTAIN]",
+      "comments": "[optional, max 200 chars]"
+    },
+    {
+      "packet_id": "CTO3-1472671191c2",
+      "Q1_MECHANISTIC_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q2_DISCOVERY_STRUCTURE_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q3_NOVELTY": "[YES|PARTIAL|NO]",
+      "Q4_FALSIFIABILITY": "[YES|NO]",
+      "Q5_EXPERIMENTAL_COHERENCE": "[YES|PARTIAL|NO]",
+      "Q6_PLAUSIBILITY": "[PLAUSIBLE|IMPLAUSIBLE|UNCERTAIN]",
+      "comments": "[optional, max 200 chars]"
+    },
+    {
+      "packet_id": "CTO3-3f85573ba77c",
+      "Q1_MECHANISTIC_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q2_DISCOVERY_STRUCTURE_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q3_NOVELTY": "[YES|PARTIAL|NO]",
+      "Q4_FALSIFIABILITY": "[YES|NO]",
+      "Q5_EXPERIMENTAL_COHERENCE": "[YES|PARTIAL|NO]",
+      "Q6_PLAUSIBILITY": "[PLAUSIBLE|IMPLAUSIBLE|UNCERTAIN]",
+      "comments": "[optional, max 200 chars]"
+    },
+    {
+      "packet_id": "CTO3-e4c8919b9b23",
+      "Q1_MECHANISTIC_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q2_DISCOVERY_STRUCTURE_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q3_NOVELTY": "[YES|PARTIAL|NO]",
+      "Q4_FALSIFIABILITY": "[YES|NO]",
+      "Q5_EXPERIMENTAL_COHERENCE": "[YES|PARTIAL|NO]",
+      "Q6_PLAUSIBILITY": "[PLAUSIBLE|IMPLAUSIBLE|UNCERTAIN]",
+      "comments": "[optional, max 200 chars]"
+    },
+    {
+      "packet_id": "CTO3-43e6ba8e285e",
+      "Q1_MECHANISTIC_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q2_DISCOVERY_STRUCTURE_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q3_NOVELTY": "[YES|PARTIAL|NO]",
+      "Q4_FALSIFIABILITY": "[YES|NO]",
+      "Q5_EXPERIMENTAL_COHERENCE": "[YES|PARTIAL|NO]",
+      "Q6_PLAUSIBILITY": "[PLAUSIBLE|IMPLAUSIBLE|UNCERTAIN]",
+      "comments": "[optional, max 200 chars]"
+    },
+    {
+      "packet_id": "CTO3-5765aa0bb4df",
+      "Q1_MECHANISTIC_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q2_DISCOVERY_STRUCTURE_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q3_NOVELTY": "[YES|PARTIAL|NO]",
+      "Q4_FALSIFIABILITY": "[YES|NO]",
+      "Q5_EXPERIMENTAL_COHERENCE": "[YES|PARTIAL|NO]",
+      "Q6_PLAUSIBILITY": "[PLAUSIBLE|IMPLAUSIBLE|UNCERTAIN]",
+      "comments": "[optional, max 200 chars]"
+    },
+    {
+      "packet_id": "CTO3-00536124ac82",
+      "Q1_MECHANISTIC_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q2_DISCOVERY_STRUCTURE_VALIDITY": "[YES|PARTIAL|NO]",
+      "Q3_NOVELTY": "[YES|PARTIAL|NO]",
+      "Q4_FALSIFIABILITY": "[YES|NO]",
+      "Q5_EXPERIMENTAL_COHERENCE": "[YES|PARTIAL|NO]",
+      "Q6_PLAUSIBILITY": "[PLAUSIBLE|IMPLAUSIBLE|UNCERTAIN]",
+      "comments": "[optional, max 200 chars]"
+    }
+  ]
+}
