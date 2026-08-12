@@ -1,3 +1,5 @@
+> ⚠️ **WARNING: OS isolation is NOT enforced in this environment.** Adjudication CANNOT start here. See ADJUDICATION_SECURITY_CORRECTION_REPORT.md.
+
 # CTO ADJUDICATION INSTRUCTIONS V2 — DSB V1
 
 **Engine:** ADJUDICATION_ENGINE_V2 (forensic correction of V1)

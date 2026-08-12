@@ -1,0 +1,110 @@
+{
+  "generated_at": "2026-08-12T19:18:38.849604+00:00",
+  "fixes_applied": [],
+  "preflight": {
+    "n_checks": 16,
+    "n_passed": 12,
+    "n_blocking_failures": 4,
+    "adjudication_permitted": false,
+    "checks": [
+      {
+        "check": "A_NO_VAULT_KEYS_IN_REPO",
+        "passed": true,
+        "blocking": true,
+        "found": []
+      },
+      {
+        "check": "B_ADJUDICATOR_CANNOT_READ_KEY",
+        "passed": false,
+        "blocking": true,
+        "reason": "Single-user container — no separate OS identity"
+      },
+      {
+        "check": "C_ADJUDICATOR_CANNOT_WRITE_EVAL_BOUNDARY",
+        "passed": false,
+        "blocking": true,
+        "reason": "Single-user container — no separate OS identity"
+      },
+      {
+        "check": "D_ENCRYPTED_VAULT_EXISTS",
+        "passed": true,
+        "blocking": true
+      },
+      {
+        "check": "E_BLIND_NO_GROUND_TRUTH",
+        "passed": true,
+        "blocking": true,
+        "leaked": []
+      },
+      {
+        "check": "F_FULL_NOT_IN_WS",
+        "passed": true,
+        "blocking": true
+      },
+      {
+        "check": "G_NO_HIDDEN_COPIES",
+        "passed": true,
+        "blocking": true,
+        "found": []
+      },
+      {
+        "check": "H_GIT_NO_VAULT_KEYS",
+        "passed": false,
+        "blocking": true,
+        "key_files_in_git": [
+          "discovery_fabric/dsb_v1/adjudication_engine_v3/evaluator_boundary/vault_key.bin",
+          "discovery_fabric/dsb_v1/adjudication_engine_v3/evaluator_boundary/vault_key_META.json",
+          "discovery_fabric/dsb_v1/adjudication_engine_v2/evaluator_boundary/vault_key.json"
+        ]
+      },
+      {
+        "check": "I_NO_OPEN_FD_TO_KEY",
+        "passed": true,
+        "blocking": true
+      },
+      {
+        "check": "J_NO_ENV_VAR_WITH_KEY",
+        "passed": true,
+        "blocking": true
+      },
+      {
+        "check": "K_NO_INHERITED_FDS",
+        "passed": true,
+        "blocking": true,
+        "open_fds": []
+      },
+      {
+        "check": "L_SYMLINK_TRAVERSAL_PROTECTION",
+        "passed": true,
+        "blocking": true,
+        "note": "O_NOFOLLOW available on Linux"
+      },
+      {
+        "check": "M_NO_TEMP_KEY_FILES",
+        "passed": true,
+        "blocking": true,
+        "found": []
+      },
+      {
+        "check": "N_NO_BACKUP_FILES",
+        "passed": true,
+        "blocking": true,
+        "found": []
+      },
+      {
+        "check": "O_NO_ACCESS_TO_EVALUATOR_PROCESS",
+        "passed": false,
+        "blocking": true,
+        "reason": "Single-user container — /proc visible to same user"
+      },
+      {
+        "check": "P_VAULT_IS_ENCRYPTED",
+        "passed": true,
+        "blocking": true
+      }
+    ]
+  },
+  "adjudication_permitted": false,
+  "verdict": "ADJUDICATION CANNOT START — requires real multi-identity deployment with 16/16 PASS",
+  "hash": "abd88e3727fa0b21dd5d9fbf5a4af96c48b9563ba988b67cf6f6277606bb7f4e"
+}

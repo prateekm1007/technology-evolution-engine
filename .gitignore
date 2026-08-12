@@ -25,3 +25,7 @@ Thumbs.db
 *.swp
 experiments/measurement_discrimination/b2_adversarial_v2/implementation/node_modules/
 .git-rewrite/
+
+# Adjudication vault keys — NEVER commit
+discovery_fabric/dsb_v1/adjudication_engine_v*/evaluator_boundary/vault_key*
+discovery_fabric/dsb_v1/adjudication_engine_v*/vault/machine_score_vault*

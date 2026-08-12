@@ -21,7 +21,7 @@ V2 declared isolation but did not enforce it. V3 enforces it per the
 ### V2 → V3 changes:
 - **Custom crypto fallback REMOVED.** V3 requires AES-GCM (authenticated encryption). Missing `cryptography` library = hard failure.
 - **AES-GCM with authentication tag.** Tampered ciphertext is rejected with InvalidTag.
-- **OS-enforced permission boundary.** Vault key file is 0600, evaluator_boundary/ is 0700.
+- **OS permission boundary: NOT ENFORCED in this environment.** Single-user container — adjudicator has same UID. ATTACK_A and ATTACK_H FAIL. Adjudication CANNOT start here.
 - **Comprehensive attacker test.** 12 attack vectors tested.
 - **Workspace hygiene scan.** Adjudicator workspace verified free of hidden copies, backups, bytecode, temp plaintext, shell history, logs, env secrets.
 

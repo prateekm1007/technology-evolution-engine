@@ -3,7 +3,7 @@
   "adjudicator_id": "AI_CTO",
   "evidence_tier": "AI_CTO_ADJUDICATION",
   "tier_note": "NOT HUMAN_VALIDATED. CTO is not independent (per MC-1).",
-  "independence_statement": "I am the CTO who directed this system. I am NOT an independent expert. My adjudication is in the AI_CTO_ADJUDICATION tier, NOT HUMAN_VALIDATED. Per MC-1 (No self-validation), my adjudication cannot validate the system. I adjudicated each case based solely on the scientific content visible in the blinded packet. I did NOT have access to: machine scores (encrypted with AES-GCM; key in evaluator boundary; OS permission boundary enforced), case_type, arm, breakthrough_relationship, or withheld_facts. I judged PLAUSIBILITY (Q6), NOT ground-truth REAL/FABRICATED.",
+  "independence_statement": "I am the CTO who directed this system. I am NOT an independent expert. My adjudication is in the AI_CTO_ADJUDICATION tier, NOT HUMAN_VALIDATED. Per MC-1 (No self-validation), my adjudication cannot validate the system. I adjudicated each case based solely on the scientific content visible in the blinded packet. I did NOT have access to: machine scores (encrypted with AES-GCM; key in evaluator boundary; OS permission boundary NOT enforced in this environment — adjudication CANNOT start here), case_type, arm, breakthrough_relationship, or withheld_facts. I judged PLAUSIBILITY (Q6), NOT ground-truth REAL/FABRICATED.",
   "submitted_at": "[FILL IN ISO-8601]",
   "time_spent_minutes": 0,
   "adjudications": [
