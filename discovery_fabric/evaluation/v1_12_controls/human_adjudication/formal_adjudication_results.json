@@ -1,0 +1,850 @@
+{
+  "timestamp": "2026-08-12T12:36:59.822308+00:00",
+  "disclosure": "LLM-proxy adjudication (NOT human experts). R1=glm-4-plus, R2=llama-3.3-70b@0.7, R3=deepseek-v4-flash@0.5. V3=llama-3.3-70b@0.3.",
+  "rubric_version": "V1_FROZEN",
+  "total_cases": 30,
+  "ds_pairwise_agreement": {
+    "r1_r2": "53%",
+    "r1_r3": "7%",
+    "r2_r3": "13%",
+    "average": "24%",
+    "threshold": "≥70%"
+  },
+  "mr_pairwise_agreement": {
+    "r1_r2": "50%",
+    "r1_r3": "27%",
+    "r2_r3": "10%",
+    "average": "29%",
+    "threshold": "≥80%"
+  },
+  "hr_pairwise_agreement": {
+    "r1_r2": "57%",
+    "r1_r3": "27%",
+    "r2_r3": "17%",
+    "average": "33%",
+    "threshold": "≥70%"
+  },
+  "v3_vs_consensus_ds": "13/30 (43%)",
+  "raw_results": [
+    {
+      "adjudication_id": "ADJ-001",
+      "reviewer_1_glm4": {
+        "MR": "YES",
+        "DS": 2,
+        "SS": "YES",
+        "HR": "REAL",
+        "confidence": 1.0,
+        "reasoning": "MR: Yes, the proposal explicitly states 'Mechanical exfoliation' and 'substrate stabilization', which are the same mechanisms as the target. DS: Full (2), because the proposal details the exact combination of the mechanism (mechanical exfoliation) and the constraint release (substrate stabilization). SS: Yes, the proposal motivates the historical experiment by addressing the theoretical instability of 2D materials and proposing a method (mechanical exfoliation on a substrate) to achieve it. HR: Real, as this describes the actual discovery of graphene by Geim and Novoselov using mechanical exfoliation (the 'Scotch tape' method). Confidence: 1.0, as the proposal perfectly aligns with the historical discovery of graphene."
+      },
+      "reviewer_2_llama": {
+        "MR": "YES",
+        "DS": 2,
+        "SS": "YES",
+        "HR": "REAL",
+        "confidence": 0.9,
+        "reasoning": "The proposal identifies the same mechanisms/components as the target, including mechanical exfoliation and substrate stabilization, which matches the target mechanism. The relationship between mechanical cleavage and substrate stabilization is also fully identified, suggesting a clear understanding of the necessary conditions for producing stable single-layer graphene. The historical experiment of producing graphene through mechanical exfoliation is well-documented, and this proposal would indeed motivate such an experiment. Given the accuracy of the mechanisms and relationships described, and the real nature of the target, the confidence in this assessment is high."
+      },
+      "reviewer_3_deepseek": {
+        "error": "failed"
+      },
+      "_hidden": {
+        "config": "D_mech_constraints",
+        "case_type": "real",
+        "v3_dsm": "PARTIAL",
+        "v3_mm": "YES"
+      }
+    },
+    {
+      "adjudication_id": "ADJ-002",
+      "reviewer_1_glm4": {
+        "MR": "YES",
+        "DS": 2,
+        "SS": "YES",
+        "HR": "REAL",
+        "confidence": 1.0,
+        "reasoning": "The proposal accurately identifies the core components (Cas9 protein and guide RNA) and their proposed combination (CRISPR-Cas9 with guide RNA) to achieve the target mechanism of programmable DNA cleavage. This directly mirrors the established, real-world CRISPR-Cas9 system, which was a revolutionary development in genome editing. The proposal describes the exact mechanism that led to the historical experiments and subsequent Nobel Prize-winning work."
+      },
+      "reviewer_2_llama": {
+        "MR": "YES",
+        "DS": 2,
+        "SS": "YES",
+        "HR": "REAL",
+        "confidence": 0.9,
+        "reasoning": "The proposal directly identifies the combination of CRISPR-Cas9 and guide RNA as the mechanism for programmable genome editing, which matches the target mechanism. This suggests a full understanding of the relationship between these components, motivating the historical experiment that led to the development of CRISPR-Cas9 as a tool for genome editing."
+      },
+      "reviewer_3_deepseek": {
+        "error": "failed"
+      },
+      "_hidden": {
+        "config": "E_combination",
+        "case_type": "real",
+        "v3_dsm": "YES",
+        "v3_mm": "YES"
+      }
+    },
+    {
+      "adjudication_id": "ADJ-003",
+      "reviewer_1_glm4": {
+        "MR": "NO",
+        "DS": 1,
+        "SS": "YES",
+        "HR": "REAL",
+        "confidence": 0.9,
+        "reasoning": "The proposal correctly identifies the core relationship: a microbial product (mold) inhibiting bacterial growth. However, the proposed mechanism is vague ('a naturally occurring, non-toxic substance produced by certain microorganisms') and does not specify the exact mechanism of action (inhibition of cell wall synthesis), which the target mechanism details. Thus, the relationship is partially identified (DS=1). The proposal would motivate the historical experiment of testing mold extracts on bacteria, making it sufficient for discovery (SS=YES). The target mechanism describes the real discovery of penicillin by Alexander Fleming."
+      },
+      "reviewer_2_llama": {
+        "MR": "NO",
+        "DS": 1,
+        "SS": "YES",
+        "HR": "REAL",
+        "confidence": 0.8,
+        "reasoning": "The proposal mentions a naturally occurring, non-toxic substance produced by microorganisms, which is similar to the target mechanism of penicillin produced by Penicillium mold. However, it does not specifically identify penicillin or Penicillium mold, so it only partially identifies the same relationship. The proposal would still motivate the historical experiment to investigate the antibacterial properties of mold. The target mechanism is real, as penicillin is a well-known antibiotic. The confidence level is 0.8 due to the partial identification of the relationship."
+      },
+      "reviewer_3_deepseek": {
+        "error": "failed"
+      },
+      "_hidden": {
+        "config": "B_llm_only",
+        "case_type": "real",
+        "v3_dsm": "YES",
+        "v3_mm": "YES"
+      }
+    },
+    {
+      "adjudication_id": "ADJ-004",
+      "reviewer_1_glm4": {
+        "MR": "YES",
+        "DS": 2,
+        "SS": "YES",
+        "HR": "REAL",
+        "confidence": 1.0,
+        "reasoning": "The proposal correctly identifies the core components of a Li-ion battery (LiCoO2 cathode, graphite anode, non-aqueous electrolyte) and the key problem (dendrite formation in Li-metal batteries) that this configuration solves. The proposed mechanism directly leads to the target mechanism, which is the actual invention of the commercial Li-ion battery by John Goodenough, Stanley Whittingham, and Akira Yoshino. The confidence is high (1.0) because the proposal is a perfect description of the foundational breakthrough."
+      },
+      "reviewer_2_llama": {
+        "MR": "YES",
+        "DS": 2,
+        "SS": "YES",
+        "HR": "REAL",
+        "confidence": 0.9,
+        "reasoning": "The proposal directly identifies the key components of the target mechanism, including the LiCoO2 cathode, graphite anode, and non-aqueous electrolyte, and recognizes the relationship between these components as a rechargeable Li-ion battery. This combination addresses the constraints of safety and rechargeability, motivating the historical experiment that led to the development of Li-ion batteries."
+      },
+      "reviewer_3_deepseek": {
+        "MR": "YES",
+        "DS": 2,
+        "SS": "YES",
+        "HR": "REAL",
+        "confidence": 0.95,
+        "reasoning": "The proposal explicitly identifies LiCoO2 as cathode, graphite as anode, and non-aqueous electrolyte, which matches the target mechanism. It correctly identifies the constraint (dendrite formation from lithium metal) and proposes the combination that releases that constraint (using intercalation compounds instead of lithium metal). This would clearly motivate the historical experiment demonstrating a safe, rechargeable lithium-ion battery."
+      },
+      "_hidden": {
+        "config": "D_mech_constraints",
+        "case_type": "real",
+        "v3_dsm": "NO",
+        "v3_mm": "PARTIAL"
+      }
+    },
+    {
+      "adjudication_id": "ADJ-005",
+      "reviewer_1_glm4": {
+        "MR": "NO",
+        "DS": 0,
+        "SS": "NO",
+        "HR": "FABRICATED",
+        "confidence": 0.0,
+        "reasoning": "The proposal is severely incomplete. The 'Proposed Mechanism' section cuts off mid-sentence ('The archae...'), making it impossible to evaluate its relationship to the target. The 'Target Mechanism' section is also incomplete, ending mid-sentence ('...treatment...'). Without the full text of the proposal, no meaningful assessment can be made on whether it identifies the same mechanisms, relationships, or would motivate the historical experiment. The target itself appears to be a plausible scientific concept, but its reality cannot be confirmed from the provided text."
+      },
+      "reviewer_2_llama": {
+        "MR": "NO",
+        "DS": 1,
+        "SS": "YES",
+        "HR": "REAL",
+        "confidence": 0.8,
+        "reasoning": "The proposal identifies a mechanism related to the modulation of the gut-brain axis, which is relevant to the target mechanism of manipulating the human microbiome for therapeutic strategies, but it does not fully align with the target mechanism. The relationship between the components is partially identified, and the proposal would motivate further investigation into the historical experiment. The target appears to be real, based on the context provided."
+      },
+      "reviewer_3_deepseek": {
+        "error": "failed"
+      },
+      "_hidden": {
+        "config": "E_combination",
+        "case_type": "false",
+        "v3_dsm": "PARTIAL",
+        "v3_mm": "YES"
+      }
+    },
+    {
+      "adjudication_id": "ADJ-006",
+      "reviewer_1_glm4": {
+        "MR": "YES",
+        "DS": 2,
+        "SS": "YES",
+        "HR": "REAL",
+        "confidence": 0.9,
+        "reasoning": "The proposal correctly identifies the core components (mechanical cleavage, graphene sheets) and the target mechanism (producing stable single-layer graphene via mechanical exfoliation). The relationship between cleavage and stabilization is fully described, matching the target. This would directly motivate the Novoselov/Geim Scotch tape experiment, which was a real and Nobel Prize-winning breakthrough."
+      },
+      "reviewer_2_llama": {
+        "MR": "YES",
+        "DS": 2,
+        "SS": "YES",
+        "HR": "REAL",
+        "confidence": 0.9,
+        "reasoning": "The proposal identifies mechanical cleavage and stabilization of graphene sheets, which matches the target mechanism of mechanical exfoliation producing stable single-layer graphene on a substrate. The relationship between the mechanisms is fully identified, and the proposal would motivate the historical experiment. The target is real, as graphene has been successfully synthesized and studied."
+      },
+      "reviewer_3_deepseek": {
+        "error": "failed"
+      },
+      "_hidden": {
+        "config": "E_combination",
+        "case_type": "real",
+        "v3_dsm": "YES",
+        "v3_mm": "YES"
+      }
+    },
+    {
+      "adjudication_id": "ADJ-007",
+      "reviewer_1_glm4": {
+        "MR": "NO",
+        "DS": 0,
+        "SS": "NO",
+        "HR": "FABRICATED",
+        "confidence": 0.0,
+        "reasoning": "The target mechanism is explicitly stated as 'None, as this is a hypothetical discovery.' This means there are no actual mechanisms, components, relationships, or historical experiments associated with it. Since the proposal describes a hypothetical mechanism and the target is defined as non-existent, they cannot share any real components (MR=NO), relationships (DS=0), or motivation for a historical experiment (SS=NO). The target is therefore fabricated by definition."
+      },
+      "reviewer_2_llama": {
+        "MR": "NO",
+        "DS": 1,
+        "SS": "YES",
+        "HR": "REAL",
+        "confidence": 0.8,
+        "reasoning": "The proposal identifies a novel mechanism of MER-mediated epigenetic regulation of gene expression, which is related to the pre-discovery evidence. However, it does not identify the same mechanisms/components as the target, as there is no target mechanism specified. The proposal does partially identify the relationship between MER, epigenetic markers, and intercellular cooperation, which is a key aspect of the pre-discovery evidence. The proposal would motivate the historical experiment, as it provides a plausible explanation for the observed phenomena. The target is real, as it is based on actual scientific discoveries. The confidence level is 0.8, as the proposal provides a well-supported and plausible explanation, but lacks direct evidence to fully confirm the target mechanism."
+      },
+      "reviewer_3_deepseek": {
+        "error": "failed"
+      },
+      "_hidden": {
+        "config": "B_llm_only",
+        "case_type": "false",
+        "v3_dsm": "PARTIAL",
+        "v3_mm": "YES"
+      }
+    },
+    {
+      "adjudication_id": "ADJ-008",
+      "reviewer_1_glm4": {
+        "MR": "YES",
+        "DS": 2,
+        "SS": "YES",
+        "HR": "REAL",
+        "confidence": 1.0,
+        "reasoning": "The proposal correctly identifies nucleoside-modified mRNA and lipid nanoparticles (LNP) as the core components. The relationship is fully established as the combination of these two technologies is the key mechanism that overcomes the constraint of severe immune reactions from unmodified mRNA, leading to the high-efficacy target. This combination was the basis for the historical development of successful COVID-19 mRNA vaccines."
+      },
+      "reviewer_2_llama": {
+        "MR": "YES",
+        "DS": 2,
+        "SS": "YES",
+        "HR": "REAL",
+        "confidence": 0.9,
+        "reasoning": "The proposal identifies the same mechanisms/components as the target, including nucleoside-modified mRNA and lipid nanoparticle delivery, and correctly combines them to achieve high vaccine efficacy. The proposal also recognizes the constraints that limit progress, such as severe immune reactions triggered by unmodified mRNA, and addresses them through the use of nucleoside modifications. This suggests a thorough understanding of the pre-discovery evidence and a well-reasoned proposal."
+      },
+      "reviewer_3_deepseek": {
+        "error": "failed"
+      },
+      "_hidden": {
+        "config": "D_mech_constraints",
+        "case_type": "real",
+        "v3_dsm": "PARTIAL",
+        "v3_mm": "YES"
+      }
+    },
+    {
+      "adjudication_id": "ADJ-009",
+      "reviewer_1_glm4": {
+        "MR": "YES",
+        "DS": 2,
+        "SS": "YES",
+        "HR": "REAL",
+        "confidence": 1.0,
+        "reasoning": "The proposal directly identifies the same components (Cas9 nuclease and guide RNA) and the exact mechanism (combining them for programmable DNA cleavage) as the target. This relationship is fully described. The proposal clearly outlines the core concept of CRISPR-Cas9 genome editing, which motivated the foundational experiments in the field. The target is a real and fundamental description of the CRISPR-Cas9 system."
+      },
+      "reviewer_2_llama": {
+        "MR": "YES",
+        "DS": 2,
+        "SS": "YES",
+        "HR": "REAL",
+        "confidence": 0.9,
+        "reasoning": "The proposal directly combines the CRISPR-Cas9 system with guide RNA-directed specificity, which matches the target mechanism of programmable DNA cleavage in any cell type using Cas9 and designed guide RNA. This suggests a full understanding of the relationship between the components, making the proposal highly plausible and motivating for the historical experiment."
+      },
+      "reviewer_3_deepseek": {
+        "error": "failed"
+      },
+      "_hidden": {
+        "config": "C_mechanism",
+        "case_type": "real",
+        "v3_dsm": "YES",
+        "v3_mm": "YES"
+      }
+    },
+    {
+      "adjudication_id": "ADJ-010",
+      "reviewer_1_glm4": {
+        "MR": "NO",
+        "DS": 0,
+        "SS": "NO",
+        "HR": "FABRICATED",
+        "confidence": 0.0,
+        "reasoning": "The target mechanism is explicitly stated as 'None, as this is a hypothetical discovery.' Therefore, it is fabricated. Since there is no target mechanism, the proposal cannot identify the same mechanism (MR=NO), the same relationship (DS=0), or motivate a historical experiment for a non-existent target (SS=NO). Confidence is 0.0 because the target does not exist."
+      },
+      "reviewer_2_llama": {
+        "MR": "NO",
+        "DS": 0,
+        "SS": "NO",
+        "HR": "FABRICATED",
+        "confidence": 0.5,
+        "reasoning": "The proposal is based on pre-discovery evidence and does not identify the same mechanisms/components as the target, which is non-existent. The relationship between the proposed mechanism and the target is also non-existent. The proposal does not motivate a historical experiment as it is hypothetical. The target is fabricated, and the confidence is moderate due to the novelty of the proposed mechanism."
+      },
+      "reviewer_3_deepseek": {
+        "error": "failed"
+      },
+      "_hidden": {
+        "config": "C_mechanism",
+        "case_type": "false",
+        "v3_dsm": "PARTIAL",
+        "v3_mm": "YES"
+      }
+    },
+    {
+      "adjudication_id": "ADJ-011",
+      "reviewer_1_glm4": {
+        "MR": "NO",
+        "DS": 0,
+        "SS": "NO",
+        "HR": "REAL",
+        "confidence": 0.0,
+        "reasoning": "The proposal identifies a different mechanism (mold inhibiting bacterial growth) than the target (Penicillium mold producing penicillin to inhibit bacterial cell walls). The proposal is too vague to specify a relationship or combination. It would not motivate the specific experiment of isolating and purifying penicillin. The target mechanism is real."
+      },
+      "reviewer_2_llama": {
+        "MR": "NO",
+        "DS": 1,
+        "SS": "YES",
+        "HR": "REAL",
+        "confidence": 0.8,
+        "reasoning": "The proposal does not explicitly identify penicillin or its mechanism, but it sets the stage for exploring alternative antibacterial agents like enzymes or molds, which could motivate the historical experiment. The relationship between mold and bacterial inhibition is noted, but the specific connection to penicillin is not made. The target mechanism is real, as penicillin does indeed inhibit bacterial cell walls without harming tissue."
+      },
+      "reviewer_3_deepseek": {
+        "error": "failed"
+      },
+      "_hidden": {
+        "config": "F_full",
+        "case_type": "real",
+        "v3_dsm": "NO",
+        "v3_mm": "PARTIAL"
+      }
+    },
+    {
+      "adjudication_id": "ADJ-012",
+      "reviewer_1_glm4": {
+        "MR": "NO",
+        "DS": 0,
+        "SS": "NO",
+        "HR": "REAL",
+        "confidence": 0.0,
+        "reasoning": "The proposed mechanism describes a solid-state electrolyte, while the target mechanism specifies a non-aqueous electrolyte. These are fundamentally different components, so the mechanisms are not the same (MR=NO). The relationship/constraint release is not met because the proposal does not combine the same components as the target (DS=0). The proposal would not motivate the historical experiment because the experiment uses a non-aqueous electrolyte, which is different from the proposed solid-state electrolyte (SS=NO). The target mechanism describes the real-world invention of the commercial rechargeable lithium-ion battery (HR=REAL). The confidence is 0.0 because the proposal does not match the target mechanism in any significant way."
+      },
+      "reviewer_2_llama": {
+        "MR": "YES",
+        "DS": 2,
+        "SS": "YES",
+        "HR": "REAL",
+        "confidence": 0.9,
+        "reasoning": "The proposal identifies the same mechanisms/components as the target, including the LiCoO2 cathode, graphite anode, and non-aqueous electrolyte, which are combined to form a rechargeable Li-ion battery. The proposal also releases the same constraint, which is creating a battery that is both safe and rechargeable. This would have motivated the historical experiment, and the target is a real-world example of a Li-ion battery."
+      },
+      "reviewer_3_deepseek": {
+        "error": "failed"
+      },
+      "_hidden": {
+        "config": "B_llm_only",
+        "case_type": "real",
+        "v3_dsm": "NO",
+        "v3_mm": "YES"
+      }
+    },
+    {
+      "adjudication_id": "ADJ-013",
+      "reviewer_1_glm4": {
+        "MR": "NO",
+        "DS": 0,
+        "SS": "NO",
+        "HR": "FABRICATED",
+        "confidence": 0.9,
+        "reasoning": "The prompt provides a pre-discovery description of 'Nexarion particles' and their function but does not specify a 'target mechanism' for comparison. Without a defined target, it's impossible to assess if the proposal identifies the same mechanisms (MR), relationships, or combinations (DS), or if it would motivate a specific historical experiment (SS). The target is therefore considered fabricated due to its absence from the provided information. Confidence is high (0.9) because the conclusion is based directly on the lack of a required element in the prompt."
+      },
+      "reviewer_2_llama": {
+        "MR": "YES",
+        "DS": 2,
+        "SS": "YES",
+        "HR": "REAL",
+        "confidence": 0.9,
+        "reasoning": "The proposal identifies Nexarion particles as a novel class of molecules that enable intercellular communication and coordination of immune responses, which aligns with the target mechanism. The relationship between Nexarion particles and immune response coordination is fully identified, and the proposal motivates the historical experiment. The target mechanism appears to be real, based on the provided pre-discovery evidence."
+      },
+      "reviewer_3_deepseek": {
+        "error": "failed"
+      },
+      "_hidden": {
+        "config": "F_full",
+        "case_type": "false",
+        "v3_dsm": "NO",
+        "v3_mm": "PARTIAL"
+      }
+    },
+    {
+      "adjudication_id": "ADJ-014",
+      "reviewer_1_glm4": {
+        "MR": "NO",
+        "DS": 0,
+        "SS": "NO",
+        "HR": "REAL",
+        "confidence": 0.8,
+        "reasoning": "The proposal identifies 'Graph-based Neural Networks' as Mechanism 1, which is not a component of the Transformer. The target mechanism is 'Self-attention alone + positional encoding'. The proposal fails to identify the core components (self-attention, positional encoding) or the key relationship (replacing recurrence with these two components). Therefore, it does not match the target mechanism or its relationship. The proposal would not motivate the Transformer's historical development, which was specifically about solving the limitations of recurrence. The target is real, as the Transformer is a foundational architecture in modern AI."
+      },
+      "reviewer_2_llama": {
+        "MR": "YES",
+        "DS": 2,
+        "SS": "YES",
+        "HR": "REAL",
+        "confidence": 0.9,
+        "reasoning": "The proposal identifies the same mechanisms/components as the target, including self-attention and positional encoding, and combines them to create the Transformer model, which is a real and well-established concept in the field of natural language processing. The relationship between these components is also correctly identified, with self-attention and positional encoding working together to eliminate the need for recurrence in sequence-to-sequence models."
+      },
+      "reviewer_3_deepseek": {
+        "error": "failed"
+      },
+      "_hidden": {
+        "config": "E_combination",
+        "case_type": "real",
+        "v3_dsm": "NO",
+        "v3_mm": "PARTIAL"
+      }
+    },
+    {
+      "adjudication_id": "ADJ-015",
+      "reviewer_1_glm4": {
+        "MR": "NO",
+        "DS": 0,
+        "SS": "NO",
+        "HR": "REAL",
+        "confidence": 0.0,
+        "reasoning": "The pre-discovery evidence describes the theoretical instability of 2D crystals (Landau-Peierls argument) and the existence of related materials like graphite and nanotubes. The proposed mechanism is incomplete but seems to be an analysis of this instability. The target mechanism is the experimental process of mechanical exfoliation to produce stable graphene. The proposal does not identify the mechanism of mechanical exfoliation; it only identifies the problem it solves (instability). Therefore, the mechanisms are not the same (MR=NO). The relationship/constraint release is the core of the discovery: overcoming the theoretical instability to create a stable material. The proposal does not identify this relationship, only the initial constraint (DS=0). The proposal, being a discussion of theoretical instability, would not motivate the historical experiment of mechanical exfoliation, which was a practical solution to this very problem (SS=NO). The target mechanism is a real and Nobel Prize-winning discovery (HR=REAL)."
+      },
+      "reviewer_2_llama": {
+        "MR": "NO",
+        "DS": 1,
+        "SS": "NO",
+        "HR": "REAL",
+        "confidence": 0.8,
+        "reasoning": "The proposal discusses the theoretical instability of 2D crystals and the properties of graphite, but does not directly address the mechanism of mechanical exfoliation producing stable single-layer graphene on a substrate. However, it provides some relevant background information, which is why the DS score is partial. The historical experiment of producing graphene through mechanical exfoliation is well-documented, making the target real. The proposal does not fully motivate the historical experiment, as it lacks specific details about the exfoliation process."
+      },
+      "reviewer_3_deepseek": {
+        "MR": "NO",
+        "DS": 0,
+        "SS": "NO",
+        "HR": "REAL",
+        "confidence": 0.2,
+        "reasoning": "The proposal text is incomplete and does not clearly articulate the mechanism of mechanical exfoliation to produce stable single-layer graphene. It mentions theoretical instability and graphite structure but fails to identify the key components or relationships (e.g., use of adhesive tape, cleavage, substrate stabilization). The proposed mechanism section is fragmented and lacks the specific causal chain that would motivate the historical experiment."
+      },
+      "_hidden": {
+        "config": "F_full",
+        "case_type": "real",
+        "v3_dsm": "NO",
+        "v3_mm": "PARTIAL"
+      }
+    },
+    {
+      "adjudication_id": "ADJ-016",
+      "reviewer_1_glm4": {
+        "MR": "NO",
+        "DS": 0,
+        "SS": "NO",
+        "HR": "REAL",
+        "confidence": 0.5,
+        "reasoning": "The proposal is a fragmented list of pre-discovery evidence and a partially completed invariant principle. It does not clearly articulate a proposed mechanism. The target mechanism is a well-known recipe for the deep learning breakthrough (AlexNet, 2012). The proposal lacks the specific combination (e.g., very deep CNNs, specific GPU architecture, large-scale dataset) and the causal link between these components that defines the target. Therefore, it fails to identify the same mechanism, relationship, or motivate the specific historical experiment. The target is real, referring to the deep learning revolution in computer vision."
+      },
+      "reviewer_2_llama": {
+        "MR": "YES",
+        "DS": 2,
+        "SS": "YES",
+        "HR": "REAL",
+        "confidence": 0.9,
+        "reasoning": "The proposal identifies the same mechanisms/components as the target, including deep CNNs, GPUs, large labeled image datasets (ImageNet), ReLU activation function, and dropout regularization. The combination of these components led to a breakthrough in performance, which is consistent with the target mechanism. The historical context and the identification of invariant principles also support the proposal, making it likely to motivate the historical experiment. The target mechanism is real, as evidenced by the success of deep CNNs in image recognition tasks."
+      },
+      "reviewer_3_deepseek": {
+        "error": "failed"
+      },
+      "_hidden": {
+        "config": "F_full",
+        "case_type": "real",
+        "v3_dsm": "NO",
+        "v3_mm": "PARTIAL"
+      }
+    },
+    {
+      "adjudication_id": "ADJ-017",
+      "reviewer_1_glm4": {
+        "MR": "NO",
+        "DS": 2,
+        "SS": "YES",
+        "HR": "REAL",
+        "confidence": 1.0,
+        "reasoning": "The proposal correctly identifies the core components (self-attention and positional encoding) and their relationship (combination) as the key innovation, which defines the Transformer architecture. While the proposal's phrasing is slightly different from the target's concise equation, it captures the exact same mechanistic insight. This insight directly motivated the historical 'Attention is All You Need' paper, which demonstrated that recurrence was unnecessary."
+      },
+      "reviewer_2_llama": {
+        "MR": "YES",
+        "DS": 2,
+        "SS": "YES",
+        "HR": "REAL",
+        "confidence": 0.9,
+        "reasoning": "The proposal combines self-attention and positional encoding, which is the core mechanism of the Transformer model, indicating a strong understanding of the target mechanism. The relationship between these components is also correctly identified, suggesting a full understanding of the combination. This would have motivated the historical experiment that led to the development of the Transformer model."
+      },
+      "reviewer_3_deepseek": {
+        "error": "failed"
+      },
+      "_hidden": {
+        "config": "B_llm_only",
+        "case_type": "real",
+        "v3_dsm": "YES",
+        "v3_mm": "YES"
+      }
+    },
+    {
+      "adjudication_id": "ADJ-018",
+      "reviewer_1_glm4": {
+        "MR": "NO",
+        "DS": 0,
+        "SS": "NO",
+        "HR": "FABRICATED",
+        "confidence": 0.8,
+        "reasoning": "The target mechanism is explicitly stated as 'None, as this is a hypothetical discovery.' Therefore, the proposal cannot identify the same mechanisms (MR=NO) or any relationship (DS=0). Since the target is fabricated, the proposal, which describes a real-sounding but ultimately hypothetical phenomenon, would not motivate a historical experiment that led to a non-existent target (SS=NO). The confidence is high (0.8) because the prompt's description of the target is unambiguous."
+      },
+      "reviewer_2_llama": {
+        "MR": "NO",
+        "DS": 0,
+        "SS": "NO",
+        "HR": "FABRICATED",
+        "confidence": 0.5,
+        "reasoning": "The proposal does not identify a target mechanism and the pre-discovery evidence is based on a hypothetical discovery, indicating a lack of real-world context. The relationship between the thermal gradient and the material's conductivity and resistivity is not fully understood, and the proposal does not provide a clear explanation for this phenomenon."
+      },
+      "reviewer_3_deepseek": {
+        "error": "failed"
+      },
+      "_hidden": {
+        "config": "F_full",
+        "case_type": "false",
+        "v3_dsm": "NO",
+        "v3_mm": "NO"
+      }
+    },
+    {
+      "adjudication_id": "ADJ-019",
+      "reviewer_1_glm4": {
+        "MR": "YES",
+        "DS": 2,
+        "SS": "YES",
+        "HR": "REAL",
+        "confidence": 0.9,
+        "reasoning": "The proposal directly identifies the same mechanisms (PD-1 and CTLA-4 blockade) and the same relationship (combination/dual inhibition) as the target mechanism. It would directly motivate the historical experiment of combining these two checkpoint inhibitors, which was a landmark study in the field. The target mechanism is a real and well-established therapeutic approach in oncology."
+      },
+      "reviewer_2_llama": {
+        "MR": "YES",
+        "DS": 2,
+        "SS": "YES",
+        "HR": "REAL",
+        "confidence": 0.9,
+        "reasoning": "The proposal combines PD-1 blockade and CTLA-4 blockade, which directly relates to the target mechanism of releasing T-cell inhibition and enabling immune attack on tumors, consistent with the prevailing approach of boosting immune activation."
+      },
+      "reviewer_3_deepseek": {
+        "error": "failed"
+      },
+      "_hidden": {
+        "config": "E_combination",
+        "case_type": "real",
+        "v3_dsm": "NO",
+        "v3_mm": "YES"
+      }
+    },
+    {
+      "adjudication_id": "ADJ-020",
+      "reviewer_1_glm4": {
+        "MR": "YES",
+        "DS": 2,
+        "SS": "YES",
+        "HR": "REAL",
+        "confidence": 1.0,
+        "reasoning": "The proposal correctly identifies the core components (nucleoside-modified mRNA and lipid nanoparticles) that constitute the target mechanism. It also correctly identifies their combined purpose: to create a highly effective vaccine. The relationship is fully described as a synergistic combination where nucleoside modification reduces immunogenicity and lipid nanoparticles enable cellular delivery, leading to the desired >95% efficacy. This combination motivated the historical development of successful mRNA vaccines (e.g., Pfizer-BioNTech and Moderna COVID-19 vaccines), which are a real-world application of this mechanism."
+      },
+      "reviewer_2_llama": {
+        "MR": "YES",
+        "DS": 2,
+        "SS": "YES",
+        "HR": "REAL",
+        "confidence": 0.9,
+        "reasoning": "The proposal directly identifies the same mechanisms and components as the target, including nucleoside-modified mRNA, lipid nanoparticle delivery, and the immune system's recognition of viral proteins. The combination of these components to achieve a vaccine with >95% efficacy is also consistent with the target mechanism. This alignment suggests that the proposal would indeed motivate the historical experiment, as it presents a clear and plausible pathway to achieving high vaccine efficacy. Given the known limitations of conventional vaccine platforms and the established science on mRNA immunogenicity and lipid nanoparticle delivery, the target mechanism appears to be real and grounded in scientific evidence."
+      },
+      "reviewer_3_deepseek": {
+        "error": "failed"
+      },
+      "_hidden": {
+        "config": "F_full",
+        "case_type": "real",
+        "v3_dsm": "NO",
+        "v3_mm": "YES"
+      }
+    },
+    {
+      "adjudication_id": "ADJ-021",
+      "reviewer_1_glm4": {
+        "error": "failed"
+      },
+      "reviewer_2_llama": {
+        "MR": "YES",
+        "DS": 2,
+        "SS": "YES",
+        "HR": "REAL",
+        "confidence": 0.9,
+        "reasoning": "The proposal correctly identifies the mechanisms and components involved in producing monoclonal antibodies, including the fusion of B-cells and myeloma cells to create hybridomas that can produce specific antibodies indefinitely. This aligns with the target mechanism and the historical experiment that led to the development of monoclonal antibody technology."
+      },
+      "reviewer_3_deepseek": {
+        "MR": "NO",
+        "DS": 0,
+        "SS": "NO",
+        "HR": "REAL",
+        "confidence": 0.0,
+        "reasoning": "The proposal is incomplete and does not specify the fusion of B-cells with myeloma cells to create hybridomas that produce monoclonal antibodies indefinitely. It only lists general principles and cuts off before describing the target mechanism."
+      },
+      "_hidden": {
+        "config": "F_full",
+        "case_type": "real",
+        "v3_dsm": "PARTIAL",
+        "v3_mm": "YES"
+      }
+    },
+    {
+      "adjudication_id": "ADJ-022",
+      "reviewer_1_glm4": {
+        "error": "failed"
+      },
+      "reviewer_2_llama": {
+        "MR": "YES",
+        "DS": 2,
+        "SS": "YES",
+        "HR": "REAL",
+        "confidence": 0.9,
+        "reasoning": "The proposal identifies the same mechanisms/components as the target, including deep CNN, GPU, ImageNet, ReLU, and dropout. The proposal also identifies the relationship between these components, including the release of constraints that limited progress, such as the shallow architecture of convolutional neural networks and the dominance of support vector machines. This combination of mechanisms and relationship release led to breakthrough performance, which is consistent with the target mechanism. The proposal is well-supported by the pre-discovery evidence and would have motivated the historical experiment. The target mechanism is real, as evidenced by the success of deep CNNs in image recognition tasks."
+      },
+      "reviewer_3_deepseek": {
+        "error": "failed"
+      },
+      "_hidden": {
+        "config": "D_mech_constraints",
+        "case_type": "real",
+        "v3_dsm": "NO",
+        "v3_mm": "PARTIAL"
+      }
+    },
+    {
+      "adjudication_id": "ADJ-023",
+      "reviewer_1_glm4": {
+        "error": "failed"
+      },
+      "reviewer_2_llama": {
+        "MR": "YES",
+        "DS": 2,
+        "SS": "YES",
+        "HR": "REAL",
+        "confidence": 0.9,
+        "reasoning": "The proposal directly identifies the CRISPR-associated protein Cas9 and its potential to be programmed with a designed guide RNA to achieve programmable DNA cleavage, which matches the target mechanism. This suggests a full understanding of the relationship between Cas9, guide RNA, and DNA cleavage, motivating the historical experiment that led to the development of CRISPR-Cas9 genome editing technology."
+      },
+      "reviewer_3_deepseek": {
+        "error": "failed"
+      },
+      "_hidden": {
+        "config": "B_llm_only",
+        "case_type": "real",
+        "v3_dsm": "YES",
+        "v3_mm": "YES"
+      }
+    },
+    {
+      "adjudication_id": "ADJ-024",
+      "reviewer_1_glm4": {
+        "error": "failed"
+      },
+      "reviewer_2_llama": {
+        "MR": "YES",
+        "DS": 2,
+        "SS": "YES",
+        "HR": "REAL",
+        "confidence": 1.0,
+        "reasoning": "The proposal directly identifies the key components of the target mechanism, including LiCoO2 cathode, graphite anode, and non-aqueous electrolyte, and combines them in the same way to achieve a rechargeable Li-ion battery, which is a well-established historical fact."
+      },
+      "reviewer_3_deepseek": {
+        "error": "failed"
+      },
+      "_hidden": {
+        "config": "F_full",
+        "case_type": "real",
+        "v3_dsm": "YES",
+        "v3_mm": "YES"
+      }
+    },
+    {
+      "adjudication_id": "ADJ-025",
+      "reviewer_1_glm4": {
+        "error": "failed"
+      },
+      "reviewer_2_llama": {
+        "MR": "YES",
+        "DS": 2,
+        "SS": "YES",
+        "HR": "REAL",
+        "confidence": 0.9,
+        "reasoning": "The proposal directly identifies the interaction between the archaeal species and the human microbiome as a key mechanism, which aligns with the target mechanism of manipulating the human microbiome for therapeutic strategies. The relationship between the archaeal species and human epithelial cells, including the production of anti-inflammatory metabolites, is also central to both the proposal and the target. This alignment suggests a strong connection between the proposed mechanism and the target, motivating the historical experiment and indicating a real target."
+      },
+      "reviewer_3_deepseek": {
+        "MR": "NO",
+        "DS": 0,
+        "SS": "NO",
+        "HR": "FABRICATED",
+        "confidence": 0.95,
+        "reasoning": "The proposal describes a vague, unspecified symbiotic relationship between a newly discovered archaea and human epithelial cells, with a proposed mechanism of anti-inflammatory metabolite production and microbiome interaction. This does not match any known, validated scientific discovery. The target mechanism is a generic claim about microbiome manipulation for autoimmune therapy, lacking specific details (e.g., species name, metabolite identity, experimental evidence). The high-level language and lack of concrete references indicate fabrication."
+      },
+      "_hidden": {
+        "config": "D_mech_constraints",
+        "case_type": "false",
+        "v3_dsm": "PARTIAL",
+        "v3_mm": "YES"
+      }
+    },
+    {
+      "adjudication_id": "ADJ-026",
+      "reviewer_1_glm4": {
+        "error": "failed"
+      },
+      "reviewer_2_llama": {
+        "MR": "YES",
+        "DS": 2,
+        "SS": "YES",
+        "HR": "REAL",
+        "confidence": 0.9,
+        "reasoning": "The proposal identifies the same mechanisms/components as the target, including the PD-1 receptor and its role in suppressing T-cell activity. The proposal also identifies the same relationship between targeting PD-1 and modulating the tumor microenvironment, which is consistent with the prevailing approach of boosting immune activation. The historical experiment of CTLA-4 blockade showing success in melanoma also supports the proposal's mechanism. Therefore, the proposal is likely to be based on real and established scientific concepts."
+      },
+      "reviewer_3_deepseek": {
+        "MR": "NO",
+        "DS": 1,
+        "SS": "NO",
+        "HR": "REAL",
+        "confidence": 0.7,
+        "reasoning": "The proposal mentions PD-1 and Treg modulation but does not specifically identify the same mechanism as the target (blocking PD-1 alone). The relationship is partial because it combines PD-1 blockade with Treg modulation, which is not exactly the same as the target's single constraint release. The proposal would not motivate the historical experiment of testing PD-1 blockade alone, as it adds complexity."
+      },
+      "_hidden": {
+        "config": "D_mech_constraints",
+        "case_type": "real",
+        "v3_dsm": "PARTIAL",
+        "v3_mm": "YES"
+      }
+    },
+    {
+      "adjudication_id": "ADJ-027",
+      "reviewer_1_glm4": {
+        "error": "failed"
+      },
+      "reviewer_2_llama": {
+        "MR": "YES",
+        "DS": 2,
+        "SS": "YES",
+        "HR": "REAL",
+        "confidence": 0.9,
+        "reasoning": "The proposal directly identifies the mechanisms of cell fusion and immune system stimulation to produce hybrid cells with indefinite culture lifespan and specific antibody production, matching the target mechanism of B-cell + myeloma fusion to produce monoclonal antibodies indefinitely."
+      },
+      "reviewer_3_deepseek": {
+        "error": "failed"
+      },
+      "_hidden": {
+        "config": "E_combination",
+        "case_type": "real",
+        "v3_dsm": "YES",
+        "v3_mm": "YES"
+      }
+    },
+    {
+      "adjudication_id": "ADJ-028",
+      "reviewer_1_glm4": {
+        "error": "failed"
+      },
+      "reviewer_2_llama": {
+        "MR": "YES",
+        "DS": 2,
+        "SS": "YES",
+        "HR": "REAL",
+        "confidence": 0.9,
+        "reasoning": "The proposal combines primer extension, thermophilic enzymes, and cyclic heating/cooling, which are the same mechanisms/components as the target mechanism of thermal cycling with Taq polymerase for exponential DNA amplification, suggesting a strong understanding of the underlying processes."
+      },
+      "reviewer_3_deepseek": {
+        "MR": "YES",
+        "DS": 2,
+        "SS": "YES",
+        "HR": "REAL",
+        "confidence": 1.0,
+        "reasoning": "The proposal clearly identifies the same core components (thermophilic DNA polymerase, primer extension, cyclic heating/cooling) and their combination for exponential DNA amplification, which directly matches the target mechanism of thermal cycling with Taq polymerase for PCR. The pre-discovery evidence includes all necessary elements, and the proposed mechanism would without doubt motivate the historical experiment (the development of PCR)."
+      },
+      "_hidden": {
+        "config": "C_mechanism",
+        "case_type": "real",
+        "v3_dsm": "YES",
+        "v3_mm": "YES"
+      }
+    },
+    {
+      "adjudication_id": "ADJ-029",
+      "reviewer_1_glm4": {
+        "error": "failed"
+      },
+      "reviewer_2_llama": {
+        "MR": "YES",
+        "DS": 2,
+        "SS": "YES",
+        "HR": "REAL",
+        "confidence": 0.9,
+        "reasoning": "The proposal identifies the limitations of sequential processing and the importance of positional information, which are key components of the Transformer model. The combination of self-attention and positional encoding is also correctly identified as the target mechanism, which motivates the historical experiment that led to the development of the Transformer model."
+      },
+      "reviewer_3_deepseek": {
+        "error": "failed"
+      },
+      "_hidden": {
+        "config": "F_full",
+        "case_type": "real",
+        "v3_dsm": "YES",
+        "v3_mm": "YES"
+      }
+    },
+    {
+      "adjudication_id": "ADJ-030",
+      "reviewer_1_glm4": {
+        "error": "failed"
+      },
+      "reviewer_2_llama": {
+        "MR": "NO",
+        "DS": 1,
+        "SS": "YES",
+        "HR": "REAL",
+        "confidence": 0.8,
+        "reasoning": "The proposal mentions the interplay between van der Waals forces and thermal fluctuations, which is related to the target mechanism of mechanical exfoliation producing stable single-layer graphene on a substrate. However, it does not explicitly identify the same mechanisms/components as the target. The relationship between the components is partially identified, as the proposal discusses the critical thickness below which graphite films become unstable, which is relevant to the target mechanism. The proposal would motivate the historical experiment, as it provides a theoretical background for the existence of graphene. The target is real, as graphene has been experimentally produced and studied. The confidence level is 0.8, as the proposal provides a relevant theoretical background, but does not fully identify the target mechanism."
+      },
+      "reviewer_3_deepseek": {
+        "error": "failed"
+      },
+      "_hidden": {
+        "config": "B_llm_only",
+        "case_type": "real",
+        "v3_dsm": "NO",
+        "v3_mm": "YES"
+      }
+    }
+  ]
+}
