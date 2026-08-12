@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "CTO_ADJUDICATION_SUMMARY_RECORDING",
+  "recorded_at": "2026-08-12T21:20:43.028078+00:00",
+  "evidence_tier": "AI_CTO_ADJUDICATION",
+  "tier_note": "NOT HUMAN_VALIDATED. CTO is not independent (per MC-1).",
+  "cto_results": {
+    "Q1_mechanistic_validity": {
+      "YES": 39,
+      "PARTIAL": 39,
+      "NO": 2
+    },
+    "Q2_discovery_structure_validity": {
+      "YES": 28,
+      "PARTIAL": 45,
+      "NO": 7
+    },
+    "Q3_novelty": {
+      "YES": 0,
+      "PARTIAL": 22,
+      "NO": 58
+    },
+    "Q4_falsifiability": {
+      "YES": 70,
+      "PARTIAL": 10,
+      "NO": 0
+    },
+    "Q5_experimental_coherence": {
+      "YES": 50,
+      "PARTIAL": 30,
+      "NO": 0
+    },
+    "Q6_plausibility": {
+      "PLAUSIBLE": 55,
+      "UNCERTAIN": 25,
+      "IMPLAUSIBLE": 0
+    }
+  },
+  "ledger_hash_cto_sealed": "5076699973a98629c923a838086bab4c1953f56ff48452442cfb72f3c0c9f711",
+  "ledger_file_location": "sandbox:/mnt/data/DSB_V1_AI_CTO_ADJUDICATION_V1.json (INACCESSIBLE from this env)",
+  "v81_bundle_identity": {
+    "build_id": "ecc65ee8-878f-4fe5-be77-6c2588720156",
+    "bundle_hash": "031491c2e1b09e7b2df3f6c97a2b9e8d9135bd053efbc80b948aa8e58d6d1081",
+    "manifest_hash": "33196ad72e27a9f13a9b4939dca167c708179b81a8c003763456ef712bd76383"
+  },
+  "machine_scorer_results_recomputed": {
+    "total": 80,
+    "recovered": 13,
+    "not_recovered": 67,
+    "real_recovered": 3,
+    "fabricated_recovered": 10,
+    "mechanism_reconstructed": 0
+  },
+  "key_finding": "Q3 Novelty = 0 YES / 22 PARTIAL / 58 NO. 58/80 (72.5%) of proposals are non-novel from the blinded evidence. The engine is mostly recombining/restating supplied knowledge, not discovering.",
+  "cto_interpretation": "This is not evidence that the discovery engine has achieved the North Star. The blinded proposals are often scientifically plausible, but the overwhelming Q3 result says the current system is mostly recombining or restating supplied scientific knowledge.",
+  "next_step": "Per-packet comparison BLOCKED on CTO file access. CTO must provide the 80-entry JSON.",
+  "per_packet_comparison_status": "PENDING — CTO file inaccessible from this environment",
+  "recording_hash": "8ea3def5bcca467a3cd609541d36b0dc5f96c135e3358aee9c43d95732bb243d"
+}
