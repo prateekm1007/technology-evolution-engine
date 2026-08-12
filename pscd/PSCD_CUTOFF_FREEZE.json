@@ -1,0 +1,10 @@
+{
+  "schema_version": "1.0.0",
+  "freeze_type": "PSCD_TEMPORAL_CUTOFF",
+  "frozen_at": "2026-08-12T22:21:52.010951+00:00",
+  "PSCD_CUTOFF_DATE": "2026-08-13T00:00:00Z",
+  "PSCD_CUTOFF_RULE": "No evidence with publication_date after PSCD_CUTOFF_DATE may enter any arm's retrieval payload. This rule is frozen BEFORE any PSCD generation. Violation = experiment invalidated.",
+  "EVIDENCE_AS_OF_TIMESTAMP": "2026-08-12T22:21:52.010961+00:00",
+  "enforcement": "The retrieval snapshot is built ONLY from sources with publication_date <= PSCD_CUTOFF_DATE. The snapshot hash includes this cutoff, so any post-cutoff evidence would change the hash and be detected.",
+  "freeze_hash": "1ba0ea72e1e268504554ed85d79b6ce521f03b3b471885e55bb4cf06c7ddfa85"
+}

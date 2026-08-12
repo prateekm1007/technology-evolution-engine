@@ -1,0 +1,29 @@
+{
+  "CORPUS_READY": {
+    "status": "TRUE",
+    "included": 106,
+    "excluded_pre_registered": 6,
+    "snapshot_hash": "3ee4d04085111f1a2fae643ee0a26f0b...",
+    "exclusion_rule_frozen": true
+  },
+  "A0_READY": {
+    "status": "PARITY_PROVEN",
+    "parity_test": "PASS (from real receipts)",
+    "method": "Ran identical task through A0 and A1. Compared execution receipts."
+  },
+  "A1_READY": {
+    "status": "PARITY_PROVEN",
+    "parity_with_A0": "IDENTICAL (only retrieval differs)"
+  },
+  "SEAL_READY": {
+    "status": "DRY_RUN_ONLY",
+    "production_ready": false,
+    "note": "Production seal must contain real outcomes, not fabricated. Builder must have no key access."
+  },
+  "DRY_RUN_READY": {
+    "DRY_RUN_PIPELINE_INTEGRITY": "PASS",
+    "PSCD_SCIENTIFIC_READINESS": "FALSE"
+  },
+  "SCIENTIFIC_EXECUTION_PERMITTED": false,
+  "A2_AUTHORIZATION_REQUESTED": false
+}
