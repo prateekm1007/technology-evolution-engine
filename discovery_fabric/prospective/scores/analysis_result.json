@@ -1,0 +1,114 @@
+{
+  "schema_version": "1.0.0",
+  "result_type": "PRE_REGISTERED_ANALYSIS",
+  "analysis_plan_applied": {
+    "primary_endpoint": "DPS_1_rate",
+    "comparison": "treatment_vs_random",
+    "alpha": 0.05,
+    "mde": 0.15,
+    "sample_size_per_arm": 50,
+    "indeterminate_handling": "excluded",
+    "calibration_threshold": 0.5,
+    "ic_threshold": 0.67,
+    "num_comparisons": 3,
+    "meaningful_min_novel": 3,
+    "material_advantage_pp": 15.0
+  },
+  "alpha_corrected": 0.016666666666666666,
+  "arm_metrics": {
+    "B_llm_only": {
+      "n_total": 2,
+      "n_indeterminate": 0,
+      "n_effective": 2,
+      "n_DPS_1": 0,
+      "DPS_1_rate": 0.0,
+      "n_correct": 2,
+      "n_genuine_novel": 0,
+      "n_reconstruction": 0,
+      "n_incorrect": 0,
+      "n_cal_accurate": 2
+    },
+    "C_mechanism": {
+      "n_total": 2,
+      "n_indeterminate": 0,
+      "n_effective": 2,
+      "n_DPS_1": 0,
+      "DPS_1_rate": 0.0,
+      "n_correct": 2,
+      "n_genuine_novel": 0,
+      "n_reconstruction": 0,
+      "n_incorrect": 0,
+      "n_cal_accurate": 2
+    },
+    "D_random": {
+      "n_total": 2,
+      "n_indeterminate": 0,
+      "n_effective": 2,
+      "n_DPS_1": 0,
+      "DPS_1_rate": 0.0,
+      "n_correct": 2,
+      "n_genuine_novel": 0,
+      "n_reconstruction": 0,
+      "n_incorrect": 0,
+      "n_cal_accurate": 2
+    },
+    "F_full": {
+      "n_total": 2,
+      "n_indeterminate": 0,
+      "n_effective": 2,
+      "n_DPS_1": 0,
+      "DPS_1_rate": 0.0,
+      "n_correct": 2,
+      "n_genuine_novel": 0,
+      "n_reconstruction": 0,
+      "n_incorrect": 0,
+      "n_cal_accurate": 2
+    }
+  },
+  "comparisons": {
+    "B_llm_only": {
+      "treatment_arm": "B_llm_only",
+      "control_arm": "D_random",
+      "treatment_DPS_1_rate": 0.0,
+      "control_DPS_1_rate": 0.0,
+      "advantage_pp": 0.0,
+      "z_test": {
+        "z_statistic": null,
+        "p_value": null,
+        "reason": "zero standard error (both proportions identical or both 0/1)"
+      },
+      "significant_at_corrected_alpha": false
+    },
+    "C_mechanism": {
+      "treatment_arm": "C_mechanism",
+      "control_arm": "D_random",
+      "treatment_DPS_1_rate": 0.0,
+      "control_DPS_1_rate": 0.0,
+      "advantage_pp": 0.0,
+      "z_test": {
+        "z_statistic": null,
+        "p_value": null,
+        "reason": "zero standard error (both proportions identical or both 0/1)"
+      },
+      "significant_at_corrected_alpha": false
+    },
+    "F_full": {
+      "treatment_arm": "F_full",
+      "control_arm": "D_random",
+      "treatment_DPS_1_rate": 0.0,
+      "control_DPS_1_rate": 0.0,
+      "advantage_pp": 0.0,
+      "z_test": {
+        "z_statistic": null,
+        "p_value": null,
+        "reason": "zero standard error (both proportions identical or both 0/1)"
+      },
+      "significant_at_corrected_alpha": false
+    }
+  },
+  "best_treatment_arm": "B_llm_only",
+  "decision": "NEGATIVE_RESULT",
+  "decision_reason": "best_treatment=B_llm_only gate_novel=False (n_genuine_novel=0 >= 3) gate_advantage=False (advantage_pp=0.0 >= 15.0) gate_significance=False (p=None < 0.016666666666666666) gate_cal_accurate=True (n_cal_accurate=2 >= 1)",
+  "computed_at": "2026-08-12T16:24:46.924663+00:00",
+  "result_hash": "68565db92b8fed3e6b310ff86291ddd8c1b717027976ae1114d2bc81f8bd0a17"
+}

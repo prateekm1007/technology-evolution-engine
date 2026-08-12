@@ -1,0 +1,111 @@
+{
+  "schema_version": "1.0.0",
+  "audit_type": "PROSPECTIVE_PIPELINE_INVARIANTS",
+  "audited_at": "2026-08-12T16:22:15.850417+00:00",
+  "checks": [
+    {
+      "invariant": "I1",
+      "name": "manifest_sealed",
+      "passed": true,
+      "reason": ""
+    },
+    {
+      "invariant": "I2",
+      "name": "manifest_timestamp_real",
+      "passed": true,
+      "reason": ""
+    },
+    {
+      "invariant": "I3",
+      "name": "problem_set_no_outcomes",
+      "passed": true,
+      "reason": ""
+    },
+    {
+      "invariant": "I4",
+      "name": "all_arms_registered_together",
+      "passed": true,
+      "reason": ""
+    },
+    {
+      "invariant": "I5",
+      "name": "analysis_plan_sealed",
+      "passed": true,
+      "reason": ""
+    },
+    {
+      "invariant": "I12",
+      "name": "receipts_sealed",
+      "passed": true,
+      "reason": ""
+    },
+    {
+      "invariant": "I10",
+      "name": "arms_same_timestamp",
+      "passed": true,
+      "reason": ""
+    },
+    {
+      "invariant": "I14",
+      "name": "no_obs_before_window",
+      "passed": true,
+      "reason": ""
+    },
+    {
+      "invariant": "I17",
+      "name": "observations_sealed",
+      "passed": true,
+      "reason": ""
+    },
+    {
+      "invariant": "I18",
+      "name": "obs_in_window",
+      "passed": true,
+      "reason": ""
+    },
+    {
+      "invariant": "I15",
+      "name": "obs_source_matches",
+      "passed": true,
+      "reason": ""
+    },
+    {
+      "invariant": "I16",
+      "name": "curator_independence",
+      "passed": true,
+      "reason": ""
+    },
+    {
+      "invariant": "I23",
+      "name": "scores_sealed",
+      "passed": true,
+      "reason": ""
+    },
+    {
+      "invariant": "I24",
+      "name": "analysis_uses_manifest_plan",
+      "passed": true,
+      "reason": ""
+    },
+    {
+      "invariant": "I27",
+      "name": "analysis_sealed",
+      "passed": true,
+      "reason": ""
+    },
+    {
+      "invariant": "LOG",
+      "name": "log_append_only",
+      "passed": true,
+      "reason": ""
+    }
+  ],
+  "summary": {
+    "n_applicable": 16,
+    "n_passed": 16,
+    "n_failed": 0,
+    "n_skipped": 0,
+    "overall_pass": true
+  },
+  "audit_hash": "179335a34763ecab30acd55022a47bc01085e13468aeee74ead5087621bf5c68"
+}

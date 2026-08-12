@@ -1,0 +1,27 @@
+{
+  "candidate_id": "PROS-SYN-001-C_mechanism",
+  "manifest_hash": "92483189f5369f7cd8221bffa7d8b14da34960a09543c43a72492842f5e9b5ba",
+  "arm": "C_mechanism",
+  "problem_id": "SYN-001",
+  "hypothesis": "Synthetic hypothesis: combination X achieves the target.",
+  "prediction": "Synthetic prediction: value will be 1500 units.",
+  "predicted_value": 1500,
+  "tolerance_lower": 0.5,
+  "tolerance_upper": 2.0,
+  "expected_direction": "INCREASE",
+  "units_range": "750 to 3000",
+  "measurement_method": "Standard measurement protocol.",
+  "falsification_condition": "Falsified if observed value < 750 or > 3000 units.",
+  "manifest_timestamp": "2026-08-12T16:24:44.420621+00:00",
+  "generation_timestamp": "2026-08-12T16:24:44.421058+00:00",
+  "generation_success": true,
+  "model_snapshot": {
+    "model_name": "synthetic-test-model",
+    "model_version": "v1.0.0-test",
+    "weights_hash": "033c13123c7514c061a16ba985ebe6c508e5ac01416c65edaf1ee2a396d7e45a",
+    "endpoint_url": null,
+    "api_version": null
+  },
+  "retrieval_corpus_hash": "367070f493ae5cf682e1367b467929d30dd40620b7be388e5cbfa23bad266104",
+  "receipt_hash": "4286a5c63d40ec68c6989c98307228aaf43a1fe785eab98d6bf0eff8d10d647a"
+}

@@ -147,6 +147,20 @@ def verify_observation_window(
     window_start = window.get("window_start")
     window_end = window.get("window_end")
 
+    # NEW (Forensic Gate): check observation window starts AFTER commitment
+    registration_ts = manifest.get("registration_timestamp") or manifest.get("created_at")
+    if registration_ts and window_start:
+        try:
+            rt = datetime.fromisoformat(registration_ts.replace("Z", "+00:00"))
+            ws_dt = datetime.fromisoformat(window_start.replace("Z", "+00:00"))
+            if ws_dt <= rt:
+                failures.append(
+                    f"observation_window.window_start ({ws_dt}) MUST be strictly after "
+                    f"registration_timestamp ({rt}) — window cannot begin before commitment exists"
+                )
+        except (ValueError, TypeError) as e:
+            failures.append(f"cannot parse registration/window timestamps: {e}")
+
     if not window_start or not window_end:
         failures.append("manifest has no observation_window or window bounds missing")
         return (False, failures)
@@ -174,6 +188,31 @@ def verify_observation_window(
     if expected_source_name and actual_source_name and expected_source_name != actual_source_name:
         failures.append(f"source_name mismatch: expected '{expected_source_name}', got '{actual_source_name}'")
 
+    # NEW (Forensic Gate): reality-source allowlist check
+    # The observation's source MUST be in the manifest's reality_source_allowlist.
+    # The allowlist sources MUST have an independent timestamp_authority
+    # (publisher, registry, or blockchain — NOT the engine itself).
+    allowlist = manifest.get("reality_source_allowlist", [])
+    if not allowlist:
+        failures.append("manifest has no reality_source_allowlist — cannot verify source independence")
+    else:
+        allowlist_names = {entry.get("source_name") for entry in allowlist}
+        if actual_source_name and actual_source_name not in allowlist_names:
+            failures.append(
+                f"observation source '{actual_source_name}' is NOT in the reality_source_allowlist "
+                f"({sorted(allowlist_names)}) — outcome must come from an independently timestamped "
+                f"external source that was not used to construct the prediction"
+            )
+        # Verify the matching allowlist entry has a valid timestamp_authority
+        matching_entry = next((e for e in allowlist if e.get("source_name") == actual_source_name), None)
+        if matching_entry:
+            ts_authority = matching_entry.get("timestamp_authority", "")
+            if ts_authority in ("", "engine", "experimenter", "self"):
+                failures.append(
+                    f"allowlist entry for '{actual_source_name}' has invalid timestamp_authority "
+                    f"'{ts_authority}' — must be an independent authority (publisher, registry, blockchain)"
+                )
+
     # Check curator independence
     curator_statement = observation.get("curator_statement", "")
     if "independent" not in curator_statement.lower():
@@ -181,14 +220,14 @@ def verify_observation_window(
 
     # Check that the observation's collected_at is after the manifest's created_at
     # (cannot observe before registration)
-    manifest_ts = manifest.get("created_at")
+    manifest_ts = manifest.get("registration_timestamp") or manifest.get("created_at")
     collected_at = observation.get("collected_at")
     if manifest_ts and collected_at:
         try:
             mt = datetime.fromisoformat(manifest_ts.replace("Z", "+00:00"))
             ct = datetime.fromisoformat(collected_at.replace("Z", "+00:00"))
             if ct < mt:
-                failures.append(f"observation collected_at {ct} is BEFORE manifest created_at {mt}")
+                failures.append(f"observation collected_at {ct} is BEFORE registration_timestamp {mt}")
         except (ValueError, TypeError) as e:
             failures.append(f"cannot parse timestamps: {e}")
 
@@ -260,13 +299,14 @@ def verify_wait_stage(
 # =============================================================================
 
 def save_observation(observation: dict) -> Path:
-    """Save a sealed observation to the observations directory and append to log."""
+    """Save a sealed observation to the observations directory, append to log,
+    and append to the tamper-evident audit chain."""
     if "observation_hash" not in observation:
         raise ValueError("observation must be sealed before saving")
     path = OBSERVATIONS_DIR / f"obs_{observation['problem_id']}.json"
     with open(path, "w") as f:
         json.dump(observation, f, indent=2, ensure_ascii=False)
-    # Append to log
+    # Append to legacy log
     entry = {
         "log_entry_type": "EXTERNAL_OBSERVATION",
         "observation_hash": observation["observation_hash"],
@@ -277,7 +317,100 @@ def save_observation(observation: dict) -> Path:
     }
     with open(LOG_FILE, "a") as f:
         f.write(json.dumps(entry, ensure_ascii=False) + "\n")
+    # Append to tamper-evident audit chain
+    from discovery_fabric.prospective.tamper_evident_chain import append_chain_entry
+    append_chain_entry(
+        entry_type="OBSERVATION",
+        payload_hash=observation["observation_hash"],
+        metadata={
+            "problem_id": observation["problem_id"],
+            "source_name": observation["source_name"],
+            "collected_at": observation["collected_at"],
+        },
+    )
     return path
+
+
+# =============================================================================
+# NEW (Forensic Gate): Evaluation timestamp-constraint refusal
+# =============================================================================
+
+def verify_evaluation_timestamp_constraints(
+    receipt: dict,
+    observation: dict,
+    manifest: dict,
+) -> tuple[bool, list[str]]:
+    """Verify that the evaluation does not violate timestamp constraints.
+
+    The system REFUSES evaluation if:
+      (a) prediction generation_timestamp > observation measurement_date
+          (prediction made AFTER the outcome was measured — impossible in
+          a real prospective experiment)
+      (b) prediction generation_timestamp > observation window_end
+          (prediction made after the observation window closed)
+      (c) observation collected_at < manifest registration_timestamp
+          (observation collected before commitment existed)
+      (d) observation measurement_date < manifest registration_timestamp
+          (outcome measured before commitment — could have been used to
+          construct the prediction)
+
+    Returns (all_ok, list_of_failure_reasons).
+    """
+    failures = []
+
+    gen_ts = receipt.get("generation_timestamp")
+    meas_date = observation.get("measurement_date")
+    collected_at = observation.get("collected_at")
+    reg_ts = manifest.get("registration_timestamp") or manifest.get("created_at")
+    window_end = manifest.get("observation_window", {}).get("window_end")
+
+    def _parse(s):
+        if not s:
+            return None
+        try:
+            return datetime.fromisoformat(s.replace("Z", "+00:00"))
+        except (ValueError, TypeError):
+            return None
+
+    gen_dt = _parse(gen_ts)
+    meas_dt = _parse(meas_date)
+    coll_dt = _parse(collected_at)
+    reg_dt = _parse(reg_ts)
+    we_dt = _parse(window_end)
+
+    # (a) prediction after outcome measurement
+    if gen_dt and meas_dt and gen_dt > meas_dt:
+        failures.append(
+            f"REFUSING EVALUATION: receipt generation_timestamp {gen_dt} is AFTER "
+            f"observation measurement_date {meas_dt} — prediction cannot be made "
+            f"after the outcome was measured"
+        )
+
+    # (b) prediction after observation window closed
+    if gen_dt and we_dt and gen_dt > we_dt:
+        failures.append(
+            f"REFUSING EVALUATION: receipt generation_timestamp {gen_dt} is AFTER "
+            f"observation window_end {we_dt} — prediction cannot be made after "
+            f"the observation window closed"
+        )
+
+    # (c) observation collected before commitment
+    if coll_dt and reg_dt and coll_dt < reg_dt:
+        failures.append(
+            f"REFUSING EVALUATION: observation collected_at {coll_dt} is BEFORE "
+            f"registration_timestamp {reg_dt} — observation cannot be collected "
+            f"before the commitment exists"
+        )
+
+    # (d) outcome measured before commitment
+    if meas_dt and reg_dt and meas_dt < reg_dt:
+        failures.append(
+            f"REFUSING EVALUATION: observation measurement_date {meas_dt} is BEFORE "
+            f"registration_timestamp {reg_dt} — outcome measured before commitment "
+            f"could have been used to construct the prediction"
+        )
+
+    return (len(failures) == 0, failures)
 
 
 # =============================================================================

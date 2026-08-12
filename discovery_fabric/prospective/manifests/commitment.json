@@ -1,0 +1,93 @@
+{
+  "schema_version": "1.0.0",
+  "manifest_type": "PRE_REGISTRATION_WITH_COMMITMENT",
+  "registration_timestamp": "2026-08-12T16:24:44.420621+00:00",
+  "created_at": "2026-08-12T16:24:44.420621+00:00",
+  "problem_set": [
+    {
+      "problem_id": "SYN-001",
+      "description": "Identify a materials combination achieving > 1500 Wh/kg specific energy in a rechargeable battery. Falsified if no combination achieves > 1000 Wh/kg.",
+      "corpus_query": "battery materials specific energy cathode anode",
+      "domain": "materials_science",
+      "expected_outcome_type": "NUMERIC",
+      "measurement_unit": "Wh/kg"
+    },
+    {
+      "problem_id": "SYN-002",
+      "description": "Identify a compound achieving >10x selective killing of mutant cells. Falsified if selectivity < 3x in vitro.",
+      "corpus_query": "selective cancer compound mutant",
+      "domain": "oncology",
+      "expected_outcome_type": "NUMERIC",
+      "measurement_unit": "selectivity_ratio"
+    }
+  ],
+  "model_snapshot": {
+    "model_name": "synthetic-test-model",
+    "model_version": "v1.0.0-test",
+    "weights_hash": "033c13123c7514c061a16ba985ebe6c508e5ac01416c65edaf1ee2a396d7e45a",
+    "endpoint_url": null,
+    "api_version": null
+  },
+  "retrieval_corpus": {
+    "corpus_name": "synthetic-test-corpus",
+    "corpus_version": "v1.0.0-test",
+    "corpus_hash": "367070f493ae5cf682e1367b467929d30dd40620b7be388e5cbfa23bad266104",
+    "document_count": 100,
+    "date_filter_upper_bound": "2026-08-12T00:00:00Z",
+    "date_filter_verified": true
+  },
+  "prompt_templates": {
+    "B_llm_only": "PROBLEM: {description}\nQuery: {corpus_query}\nPredict.",
+    "C_mechanism": "PROBLEM: {description}\nQuery: {corpus_query}\nIdentify mechanism. Predict.",
+    "F_full": "PROBLEM: {description}\nQuery: {corpus_query}\nFull analysis. Predict.",
+    "D_random": "PROBLEM: {description}\nQuery: {corpus_query}\nAny plausible prediction."
+  },
+  "analysis_plan": {
+    "primary_endpoint": "DPS_1_rate",
+    "comparison": "treatment_vs_random",
+    "alpha": 0.05,
+    "mde": 0.15,
+    "sample_size_per_arm": 50,
+    "indeterminate_handling": "excluded",
+    "calibration_threshold": 0.5,
+    "ic_threshold": 0.67,
+    "num_comparisons": 3,
+    "meaningful_min_novel": 3,
+    "material_advantage_pp": 15.0
+  },
+  "observation_window": {
+    "window_start": "2026-08-12T16:24:46.420570+00:00",
+    "window_end": "2026-08-12T17:24:44.420570+00:00",
+    "min_observations_per_problem": 1
+  },
+  "outcome_source_spec": {
+    "source_type": "peer_reviewed",
+    "source_name": "Nature",
+    "source_url": "https://example.com/nature",
+    "independence_verification": "Publisher-independent."
+  },
+  "reality_source_allowlist": [
+    {
+      "source_name": "Nature",
+      "source_type": "peer_reviewed",
+      "independence_verification": "Publisher-independent; engine cannot influence publication.",
+      "timestamp_authority": "publisher"
+    },
+    {
+      "source_name": "arXiv",
+      "source_type": "preprint_server",
+      "independence_verification": "Preprint server; submission timestamp assigned by arXiv.",
+      "timestamp_authority": "registry"
+    }
+  ],
+  "arms": [
+    "B_llm_only",
+    "C_mechanism",
+    "D_random",
+    "F_full"
+  ],
+  "commitment_hash": "781c185ccd63d3bb05759b53efd0524f1a4172d5ba0ae1dc2cc77630a9d1f60a",
+  "chain_entry_hash": "6adf9776b5fab651c0e6a9b82cd4b36351f48a6abb4d392ad7c8e4782679c657",
+  "chain_entry_prev_hash": "GENESIS",
+  "manifest_hash": "92483189f5369f7cd8221bffa7d8b14da34960a09543c43a72492842f5e9b5ba"
+}

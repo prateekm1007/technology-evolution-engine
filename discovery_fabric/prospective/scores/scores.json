@@ -1,0 +1,226 @@
+[
+  {
+    "schema_version": "1.0.0",
+    "score_type": "DETERMINISTIC",
+    "candidate_id": "PROS-SYN-001-B_llm_only",
+    "problem_id": "SYN-001",
+    "arm": "B_llm_only",
+    "receipt_hash": "aa3400a502c3dc9cf35e3ed530fe3699114454ead6b3afe93cb462ee22f9d5c5",
+    "observation_hash": "d2d2a66a7099b9663db105767e3f2571865756be53798fac24788b827ae63413",
+    "manifest_hash": "92483189f5369f7cd8221bffa7d8b14da34960a09543c43a72492842f5e9b5ba",
+    "final_classification": "CORRECT",
+    "DISCOVERY_PREDICTION_SCORE": 0.0,
+    "information_content": {
+      "classification": "NO_EVIDENCE_OBJECT",
+      "information_content_score": 1.0
+    },
+    "quantitative_accuracy": {
+      "verdict": "CORRECT",
+      "calibration_error": 0.0625,
+      "predicted": 1500,
+      "observed": 1600,
+      "tolerance_bounds": [
+        750.0,
+        3000.0
+      ]
+    },
+    "scored_at": "2026-08-12T16:24:46.922242+00:00",
+    "score_hash": "dbf3997dfb64d2ba28f42498159976ecfe0648eadc9269740757a83dba9429e2"
+  },
+  {
+    "schema_version": "1.0.0",
+    "score_type": "DETERMINISTIC",
+    "candidate_id": "PROS-SYN-001-C_mechanism",
+    "problem_id": "SYN-001",
+    "arm": "C_mechanism",
+    "receipt_hash": "4286a5c63d40ec68c6989c98307228aaf43a1fe785eab98d6bf0eff8d10d647a",
+    "observation_hash": "d2d2a66a7099b9663db105767e3f2571865756be53798fac24788b827ae63413",
+    "manifest_hash": "92483189f5369f7cd8221bffa7d8b14da34960a09543c43a72492842f5e9b5ba",
+    "final_classification": "CORRECT",
+    "DISCOVERY_PREDICTION_SCORE": 0.0,
+    "information_content": {
+      "classification": "NO_EVIDENCE_OBJECT",
+      "information_content_score": 1.0
+    },
+    "quantitative_accuracy": {
+      "verdict": "CORRECT",
+      "calibration_error": 0.0625,
+      "predicted": 1500,
+      "observed": 1600,
+      "tolerance_bounds": [
+        750.0,
+        3000.0
+      ]
+    },
+    "scored_at": "2026-08-12T16:24:46.922300+00:00",
+    "score_hash": "789e32837790cb904622218341c2a98a518d8f4ebf54c508cfa5115765f2e486"
+  },
+  {
+    "schema_version": "1.0.0",
+    "score_type": "DETERMINISTIC",
+    "candidate_id": "PROS-SYN-001-D_random",
+    "problem_id": "SYN-001",
+    "arm": "D_random",
+    "receipt_hash": "a2f6c2d32cddf45ed94c4c328e1a971d9175fc8697af938db41bbfce95a3c0e7",
+    "observation_hash": "d2d2a66a7099b9663db105767e3f2571865756be53798fac24788b827ae63413",
+    "manifest_hash": "92483189f5369f7cd8221bffa7d8b14da34960a09543c43a72492842f5e9b5ba",
+    "final_classification": "CORRECT",
+    "DISCOVERY_PREDICTION_SCORE": 0.0,
+    "information_content": {
+      "classification": "NO_EVIDENCE_OBJECT",
+      "information_content_score": 1.0
+    },
+    "quantitative_accuracy": {
+      "verdict": "CORRECT",
+      "calibration_error": 0.0625,
+      "predicted": 1500,
+      "observed": 1600,
+      "tolerance_bounds": [
+        750.0,
+        3000.0
+      ]
+    },
+    "scored_at": "2026-08-12T16:24:46.922334+00:00",
+    "score_hash": "9aeb99149db2fb337907337583daa54df679909226823c72aad8619f2289c786"
+  },
+  {
+    "schema_version": "1.0.0",
+    "score_type": "DETERMINISTIC",
+    "candidate_id": "PROS-SYN-001-F_full",
+    "problem_id": "SYN-001",
+    "arm": "F_full",
+    "receipt_hash": "98cc56a54fd6ea1a2b2580109c30011f30755d78dea82f1e41b1003bdc3a56a1",
+    "observation_hash": "d2d2a66a7099b9663db105767e3f2571865756be53798fac24788b827ae63413",
+    "manifest_hash": "92483189f5369f7cd8221bffa7d8b14da34960a09543c43a72492842f5e9b5ba",
+    "final_classification": "CORRECT",
+    "DISCOVERY_PREDICTION_SCORE": 0.0,
+    "information_content": {
+      "classification": "NO_EVIDENCE_OBJECT",
+      "information_content_score": 1.0
+    },
+    "quantitative_accuracy": {
+      "verdict": "CORRECT",
+      "calibration_error": 0.0625,
+      "predicted": 1500,
+      "observed": 1600,
+      "tolerance_bounds": [
+        750.0,
+        3000.0
+      ]
+    },
+    "scored_at": "2026-08-12T16:24:46.922364+00:00",
+    "score_hash": "584efafe80a3f5e0187823cf5f5617ba8476de9c40afce587f8154698601ff26"
+  },
+  {
+    "schema_version": "1.0.0",
+    "score_type": "DETERMINISTIC",
+    "candidate_id": "PROS-SYN-002-B_llm_only",
+    "problem_id": "SYN-002",
+    "arm": "B_llm_only",
+    "receipt_hash": "bf7798fdc20f48bbffce274c5b65d68b982fe8f16a05da5b0cdd85619e26d93e",
+    "observation_hash": "a409a4742d6854327224ef681aa2af1b85e2c07bfe8ffc9c3e9aafc8327bf5ee",
+    "manifest_hash": "92483189f5369f7cd8221bffa7d8b14da34960a09543c43a72492842f5e9b5ba",
+    "final_classification": "CORRECT",
+    "DISCOVERY_PREDICTION_SCORE": 0.0,
+    "information_content": {
+      "classification": "NO_EVIDENCE_OBJECT",
+      "information_content_score": 1.0
+    },
+    "quantitative_accuracy": {
+      "verdict": "CORRECT",
+      "calibration_error": 0.0625,
+      "predicted": 1500,
+      "observed": 1600,
+      "tolerance_bounds": [
+        750.0,
+        3000.0
+      ]
+    },
+    "scored_at": "2026-08-12T16:24:46.922390+00:00",
+    "score_hash": "94bd4af7cf40e77f96062903ba2e08294c5f3d4a16dc8dd1bed6345b60e908cc"
+  },
+  {
+    "schema_version": "1.0.0",
+    "score_type": "DETERMINISTIC",
+    "candidate_id": "PROS-SYN-002-C_mechanism",
+    "problem_id": "SYN-002",
+    "arm": "C_mechanism",
+    "receipt_hash": "904ee95ed6b907eee484ab6549b66582525663bca9ba4a8b874d02b23739f0e4",
+    "observation_hash": "a409a4742d6854327224ef681aa2af1b85e2c07bfe8ffc9c3e9aafc8327bf5ee",
+    "manifest_hash": "92483189f5369f7cd8221bffa7d8b14da34960a09543c43a72492842f5e9b5ba",
+    "final_classification": "CORRECT",
+    "DISCOVERY_PREDICTION_SCORE": 0.0,
+    "information_content": {
+      "classification": "NO_EVIDENCE_OBJECT",
+      "information_content_score": 1.0
+    },
+    "quantitative_accuracy": {
+      "verdict": "CORRECT",
+      "calibration_error": 0.0625,
+      "predicted": 1500,
+      "observed": 1600,
+      "tolerance_bounds": [
+        750.0,
+        3000.0
+      ]
+    },
+    "scored_at": "2026-08-12T16:24:46.922418+00:00",
+    "score_hash": "c1b4e156f74ac8004ee4ac0aae3f48b12c579dc9e2ba12b0225e10260adf9d93"
+  },
+  {
+    "schema_version": "1.0.0",
+    "score_type": "DETERMINISTIC",
+    "candidate_id": "PROS-SYN-002-D_random",
+    "problem_id": "SYN-002",
+    "arm": "D_random",
+    "receipt_hash": "cd92ac70c21dbd1433e72c6251923dcef4c843e9a0096d9a2252ee6b0127790f",
+    "observation_hash": "a409a4742d6854327224ef681aa2af1b85e2c07bfe8ffc9c3e9aafc8327bf5ee",
+    "manifest_hash": "92483189f5369f7cd8221bffa7d8b14da34960a09543c43a72492842f5e9b5ba",
+    "final_classification": "CORRECT",
+    "DISCOVERY_PREDICTION_SCORE": 0.0,
+    "information_content": {
+      "classification": "NO_EVIDENCE_OBJECT",
+      "information_content_score": 1.0
+    },
+    "quantitative_accuracy": {
+      "verdict": "CORRECT",
+      "calibration_error": 0.0625,
+      "predicted": 1500,
+      "observed": 1600,
+      "tolerance_bounds": [
+        750.0,
+        3000.0
+      ]
+    },
+    "scored_at": "2026-08-12T16:24:46.922441+00:00",
+    "score_hash": "fc8f212f50564ac7e89f33336ed2d866e7a4b83f3304780b963113e9806f2c90"
+  },
+  {
+    "schema_version": "1.0.0",
+    "score_type": "DETERMINISTIC",
+    "candidate_id": "PROS-SYN-002-F_full",
+    "problem_id": "SYN-002",
+    "arm": "F_full",
+    "receipt_hash": "665a0c9e5e81fd974a4d0ab29ae6153c4ab36b022836c436b8d0c69ae124d379",
+    "observation_hash": "a409a4742d6854327224ef681aa2af1b85e2c07bfe8ffc9c3e9aafc8327bf5ee",
+    "manifest_hash": "92483189f5369f7cd8221bffa7d8b14da34960a09543c43a72492842f5e9b5ba",
+    "final_classification": "CORRECT",
+    "DISCOVERY_PREDICTION_SCORE": 0.0,
+    "information_content": {
+      "classification": "NO_EVIDENCE_OBJECT",
+      "information_content_score": 1.0
+    },
+    "quantitative_accuracy": {
+      "verdict": "CORRECT",
+      "calibration_error": 0.0625,
+      "predicted": 1500,
+      "observed": 1600,
+      "tolerance_bounds": [
+        750.0,
+        3000.0
+      ]
+    },
+    "scored_at": "2026-08-12T16:24:46.922468+00:00",
+    "score_hash": "f1dafa88f5bc53922088066335969f5ebc6fa31dd3ce360b02221918d516962c"
+  }
+]

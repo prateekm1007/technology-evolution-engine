@@ -60,6 +60,7 @@ def score_receipt(
     observation: dict,
     evidence_object: dict | None,
     analysis_plan: dict,
+    manifest: dict | None = None,
 ) -> dict:
     """Score a single receipt against a single observation.
 
@@ -70,10 +71,43 @@ def score_receipt(
             (used for the information-content test). May be None if the
             problem has no associated evidence.
         analysis_plan: the pre-registered analysis plan
+        manifest: the pre-registration manifest (for timestamp-constraint checks).
+            If provided, the scorer REFUSES to score if timestamp constraints
+            are violated.
 
     Returns:
         Score record (sealed).
     """
+    # NEW (Forensic Gate): refuse evaluation if timestamp constraints violated
+    if manifest is not None:
+        from discovery_fabric.prospective.observation_window import verify_evaluation_timestamp_constraints
+        ts_ok, ts_failures = verify_evaluation_timestamp_constraints(receipt, observation, manifest)
+        if not ts_ok:
+            score = {
+                "schema_version": "1.0.0",
+                "score_type": "DETERMINISTIC_REFUSED",
+                "candidate_id": receipt.get("candidate_id"),
+                "problem_id": receipt.get("problem_id"),
+                "arm": receipt.get("arm"),
+                "receipt_hash": receipt.get("receipt_hash"),
+                "observation_hash": observation.get("observation_hash"),
+                "manifest_hash": receipt.get("manifest_hash"),
+                "final_classification": "EVALUATION_REFUSED",
+                "DISCOVERY_PREDICTION_SCORE": 0.0,
+                "information_content": {"classification": "EVALUATION_REFUSED",
+                                        "information_content_score": None},
+                "quantitative_accuracy": {"verdict": "EVALUATION_REFUSED",
+                                          "calibration_error": None,
+                                          "predicted": receipt.get("predicted_value"),
+                                          "observed": observation.get("outcome_value"),
+                                          "tolerance_bounds": None},
+                "refusal_reasons": ts_failures,
+                "scored_at": datetime.now(timezone.utc).isoformat(),
+            }
+            canonical = json.dumps(score, sort_keys=True, separators=(",", ":"), ensure_ascii=False)
+            score["score_hash"] = hashlib.sha256(canonical.encode()).hexdigest()
+            return score
+
     cal_threshold = analysis_plan.get("calibration_threshold", STRICT_CALIBRATION_THRESHOLD)
     ic_threshold = analysis_plan.get("ic_threshold", 0.67)
 
@@ -180,6 +214,7 @@ def score_all(
     observations: list[dict],
     evidence_objects: dict[str, dict] | None,
     analysis_plan: dict,
+    manifest: dict | None = None,
 ) -> list[dict]:
     """Score all receipts against their matching observations.
 
@@ -189,6 +224,7 @@ def score_all(
         evidence_objects: dict mapping problem_id -> structured evidence object
             (or None if no evidence available)
         analysis_plan: pre-registered analysis plan
+        manifest: pre-registration manifest (for timestamp-constraint checks)
 
     Returns:
         List of sealed score records.
@@ -228,17 +264,19 @@ def score_all(
         ev_obj = None
         if evidence_objects is not None:
             ev_obj = evidence_objects.get(problem_id)
-        score = score_receipt(receipt, obs, ev_obj, analysis_plan)
+        score = score_receipt(receipt, obs, ev_obj, analysis_plan, manifest)
         scores.append(score)
     return scores
 
 
 def save_scores(scores: list[dict]) -> Path:
-    """Save all scores to a single file and append to the log."""
+    """Save all scores to a single file, append to log, and append each to
+    the tamper-evident audit chain."""
     out_path = SCORES_DIR / "scores.json"
     with open(out_path, "w") as f:
         json.dump(scores, f, indent=2, ensure_ascii=False)
-    # Append summary to log
+    # Append summary to log + audit chain
+    from discovery_fabric.prospective.tamper_evident_chain import append_chain_entry
     for s in scores:
         entry = {
             "log_entry_type": "DETERMINISTIC_SCORE",
@@ -250,6 +288,16 @@ def save_scores(scores: list[dict]) -> Path:
         }
         with open(LOG_FILE, "a") as f:
             f.write(json.dumps(entry, ensure_ascii=False) + "\n")
+        # Append to tamper-evident audit chain
+        append_chain_entry(
+            entry_type="EVALUATION",
+            payload_hash=s["score_hash"],
+            metadata={
+                "candidate_id": s["candidate_id"],
+                "final_classification": s["final_classification"],
+                "DPS": s["DISCOVERY_PREDICTION_SCORE"],
+            },
+        )
     return out_path
 
 

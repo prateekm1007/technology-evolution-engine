@@ -252,7 +252,8 @@ def apply_analysis(
 
 
 def save_result(result: dict) -> Path:
-    """Save the analysis result and append to log."""
+    """Save the analysis result, append to log, and append to the tamper-evident
+    audit chain as the FINAL ANALYSIS entry."""
     out_path = SCORES_DIR / "analysis_result.json"
     with open(out_path, "w") as f:
         json.dump(result, f, indent=2, ensure_ascii=False)
@@ -265,7 +266,80 @@ def save_result(result: dict) -> Path:
     }
     with open(LOG_FILE, "a") as f:
         f.write(json.dumps(entry, ensure_ascii=False) + "\n")
+    # Append to tamper-evident audit chain (FINAL ANALYSIS entry)
+    from discovery_fabric.prospective.tamper_evident_chain import append_chain_entry
+    append_chain_entry(
+        entry_type="ANALYSIS",
+        payload_hash=result["result_hash"],
+        metadata={
+            "decision": result["decision"],
+            "best_treatment": result["best_treatment_arm"],
+            "computed_at": result["computed_at"],
+        },
+    )
     return out_path
+
+
+# =============================================================================
+# NEW (Forensic Gate): Analysis plan immutability enforcement
+# =============================================================================
+
+def verify_analysis_plan_immutability(
+    applied_plan: dict,
+    manifest_plan: dict,
+    observations: list[dict],
+) -> tuple[bool, list[str]]:
+    """Verify that the analysis plan was not modified after the first outcome
+    was ingested.
+
+    The analysis plan is sealed in the manifest at registration time (I5).
+    This function additionally checks that the applied plan MATCHES the
+    manifest plan exactly (I24), and that no observation was collected
+    before the plan was sealed.
+
+    Returns (all_ok, list_of_failures).
+    """
+    failures = []
+
+    # Check that applied plan matches manifest plan on all key fields
+    key_fields = ["alpha", "mde", "indeterminate_handling", "calibration_threshold",
+                  "num_comparisons", "sample_size_per_arm", "primary_endpoint",
+                  "comparison", "ic_threshold"]
+    for k in key_fields:
+        if applied_plan.get(k) != manifest_plan.get(k):
+            failures.append(
+                f"analysis_plan.{k}: applied={applied_plan.get(k)} vs "
+                f"manifest={manifest_plan.get(k)} — plan was modified after sealing"
+            )
+
+    # Check that no observation was collected before the manifest's registration_timestamp
+    # (the plan was sealed at registration, so any observation before that would
+    # suggest the plan was modified to fit pre-known outcomes)
+    manifest_ts = (
+        applied_plan.get("registration_timestamp")
+        or applied_plan.get("created_at")
+    )
+    if manifest_ts:
+        try:
+            mt = datetime.fromisoformat(manifest_ts.replace("Z", "+00:00"))
+        except (ValueError, TypeError):
+            mt = None
+        if mt:
+            for obs in observations:
+                coll = obs.get("collected_at")
+                if coll:
+                    try:
+                        ct = datetime.fromisoformat(coll.replace("Z", "+00:00"))
+                        if ct < mt:
+                            failures.append(
+                                f"observation {obs.get('problem_id')} collected_at {ct} "
+                                f"is BEFORE plan-sealing timestamp {mt} — plan may have "
+                                f"been modified after observing outcomes"
+                            )
+                    except (ValueError, TypeError):
+                        failures.append(f"cannot parse collected_at: {coll}")
+
+    return (len(failures) == 0, failures)
 
 
 # =============================================================================

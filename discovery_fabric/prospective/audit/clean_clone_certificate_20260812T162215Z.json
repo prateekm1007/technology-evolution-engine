@@ -1,0 +1,84 @@
+{
+  "schema_version": "1.0.0",
+  "certificate_type": "CLEAN_CLONE_AUDIT",
+  "audited_at": "2026-08-12T16:22:15.850707+00:00",
+  "checks": [
+    {
+      "check": "CHAIN_INTEGRITY",
+      "passed": true,
+      "chain_length": 20,
+      "failures": []
+    },
+    {
+      "check": "NO_BACKDATE_CAPABILITY",
+      "passed": true,
+      "params": [
+        "problem_set",
+        "model_snapshot",
+        "retrieval_corpus",
+        "prompt_templates",
+        "analysis_plan",
+        "observation_window",
+        "outcome_source_spec",
+        "reality_source_allowlist"
+      ],
+      "forbidden_params_found": []
+    },
+    {
+      "check": "COMMITMENT_COVERS_5_ELEMENTS",
+      "passed": true,
+      "tamper_detection_by_element": {
+        "model_snapshot": true,
+        "retrieval_corpus": true,
+        "prompt_templates": true,
+        "problem_set": true,
+        "arms": true
+      }
+    },
+    {
+      "check": "RECEIPT_IMMUTABILITY",
+      "passed": true,
+      "n_receipts_tested": 8
+    },
+    {
+      "check": "WINDOW_ENFORCEMENT",
+      "passed": true,
+      "failures": [
+        "measurement_date 2026-08-12 15:21:16.217462+00:00 is BEFORE window_start 2026-08-12 16:21:16.217462+00:00"
+      ]
+    },
+    {
+      "check": "REALITY_SOURCE_ALLOWLIST",
+      "passed": true,
+      "failures": [
+        "source_name mismatch: expected 'Nature', got 'DISALLOWED_SOURCE'",
+        "observation source 'DISALLOWED_SOURCE' is NOT in the reality_source_allowlist (['Nature', 'arXiv']) — outcome must come from an independently timestamped external source that was not used to construct the prediction"
+      ]
+    }
+  ],
+  "standard_audit_summary": {
+    "n_applicable": 16,
+    "n_passed": 16,
+    "n_failed": 0,
+    "n_skipped": 0,
+    "overall_pass": true
+  },
+  "summary": {
+    "n_checks": 6,
+    "n_passed": 6,
+    "n_failed": 0,
+    "overall_pass": true
+  },
+  "exit_criterion": {
+    "description": "The system physically cannot backdate registration, alter the evidence universe, substitute a model, modify a prediction, or read future observations before the observation window closes.",
+    "verified": true,
+    "sub_checks": {
+      "cannot_backdate_registration": true,
+      "cannot_alter_evidence_universe": true,
+      "cannot_substitute_model": true,
+      "cannot_modify_prediction": true,
+      "cannot_read_future_observations": true
+    }
+  },
+  "certificate_hash": "1d64b9b50ec8db65e63ec62c8cfecba813138a27d9dd97a9326987dd42f5a1c1"
+}

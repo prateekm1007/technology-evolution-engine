@@ -115,9 +115,30 @@ def verify_prerequisites(manifest: dict) -> tuple[bool, list[str]]:
     """
     failures = []
 
+    # NEW (Forensic Gate): manifest must be a COMMITMENT manifest (built via
+    # commitment.build_commitment, not pre_registration.build_manifest).
+    # This enforces registration_timestamp = actual UTC now() at commitment time.
+    if manifest.get("manifest_type") != "PRE_REGISTRATION_WITH_COMMITMENT":
+        failures.append(
+            "manifest is not a COMMITMENT manifest — must be built via "
+            "commitment.build_commitment() to enforce registration_timestamp = actual UTC now()"
+        )
+    if not manifest.get("commitment_hash"):
+        failures.append("manifest has no commitment_hash — cryptographic commitment to model/evidence/prompt/universe/arms is required")
+    if not manifest.get("registration_timestamp"):
+        failures.append("manifest has no registration_timestamp — cannot verify commitment was made before predictions generated")
+
     # Manifest must be sealed (hash verified)
     if not verify_manifest(manifest):
         failures.append("manifest hash verification failed — manifest may have been modified")
+
+    # NEW (Forensic Gate): verify the commitment hash covers all 5 elements
+    if manifest.get("commitment_hash"):
+        from discovery_fabric.prospective.commitment import verify_commitment
+        commit_ok, commit_failures = verify_commitment(manifest)
+        if not commit_ok:
+            for cf in commit_failures:
+                failures.append(f"commitment verification failed: {cf}")
 
     # Manifest must not contain TO_BE_* placeholders
     def find_placeholders(obj, path=""):
@@ -377,6 +398,19 @@ def save_receipts(receipts: list[dict]) -> list[Path]:
     with open(LOG_FILE, "a") as f:
         for entry in log_entries:
             f.write(json.dumps(entry, ensure_ascii=False) + "\n")
+    # Append each receipt to the tamper-evident audit chain
+    from discovery_fabric.prospective.tamper_evident_chain import append_chain_entry
+    for receipt in receipts:
+        append_chain_entry(
+            entry_type="PREDICTION",
+            payload_hash=receipt["receipt_hash"],
+            metadata={
+                "candidate_id": receipt["candidate_id"],
+                "arm": receipt["arm"],
+                "problem_id": receipt["problem_id"],
+                "generation_success": receipt["generation_success"],
+            },
+        )
     return paths
 
 

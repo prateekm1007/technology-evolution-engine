@@ -1,0 +1,16 @@
+{
+  "schema_version": "1.0.0",
+  "observation_type": "EXTERNAL_OUTCOME",
+  "problem_id": "SYN-002",
+  "manifest_hash": "92483189f5369f7cd8221bffa7d8b14da34960a09543c43a72492842f5e9b5ba",
+  "outcome_value": 1600,
+  "outcome_direction": "INCREASE",
+  "measurement_date": "2026-08-12T16:29:46.420570+00:00",
+  "source_name": "Nature",
+  "source_url": "https://example.com/nature",
+  "curator_id": "independent_curator_001",
+  "curator_statement": "I, the undersigned, certify I am independent of the experimenter and engine.",
+  "raw_evidence_excerpt": "Result: 1600 Wh/kg achieved.",
+  "collected_at": "2026-08-12T16:24:46.921708+00:00",
+  "observation_hash": "a409a4742d6854327224ef681aa2af1b85e2c07bfe8ffc9c3e9aafc8327bf5ee"
+}
