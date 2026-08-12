@@ -1,0 +1,21 @@
+{
+  "schema_version": "1.0.0",
+  "manifest_type": "DSB_V1_ADJUDICATION_FREEZE_EXTENSION",
+  "created_at": "2026-08-12T18:40:21.713852+00:00",
+  "frozen_artifacts": {
+    "scorer.py (DSB V1 scorer)": "5574e10b83c6efb6ac1e8f223ba2df6f4411825bfdb141e281d316411700f8ee",
+    "case_schema.py": "77878dff720aa3f8e697fba2dbb6ca07f523518e2ddf2d4222a0ecc0ee687df6",
+    "10 real cases": "2d357e4bc1cff7443ef131dc1d1d34dc0603e22fd89911880a6c7652a672f87e",
+    "10 fabricated cases": "f5835d1a9981bc7beaff2fd9b0a2504cf5a02d1d88eb62b46882fc91cab3082f",
+    "80 receipts": "b2702e855d8e57d2a341ce031f3a7727f51d21db14d949dca9f730eb467faba2"
+  },
+  "policy": [
+    "The DSB V1 scorer is FROZEN. No tuning during adjudication.",
+    "The 80 cases and prompts are FROZEN. No modification.",
+    "The 80 receipts are FROZEN. No modification.",
+    "Machine scores are sealed in a vault. CTO must NOT read the vault before submitting adjudications.",
+    "AI_CTO_ADJUDICATION is a separate evidence tier. NEVER call it HUMAN_VALIDATED.",
+    "No architecture change is permitted based on CTO adjudication alone."
+  ],
+  "manifest_hash": "088ef5c0c622c58ad73138f23a5797a117dcd046d9da9a9694cb0f701d38df28"
+}
