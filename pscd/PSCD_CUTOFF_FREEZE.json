@@ -1,14 +1,14 @@
 {
-  "schema_version": "1.1.0",
+  "schema_version": "1.2.0",
   "freeze_type": "PSCD_TEMPORAL_CUTOFF",
-  "frozen_at": "2026-08-12T22:44:45.279308+00:00",
-  "PSCD_CUTOFF_DATE": "2026-08-12T22:44:45.279308+00:00",
-  "PSCD_REGISTRATION_TIMESTAMP": "2026-08-12T22:44:45.279308+00:00",
+  "frozen_at": "2026-08-12T23:05:32.244341+00:00",
+  "PSCD_CUTOFF_DATE": "2026-08-11T23:59:59+00:00",
+  "PSCD_REGISTRATION_TIMESTAMP": "2026-08-12T23:05:32.244341+00:00",
+  "PSCD_REGISTRATION_DATE": "2026-08-12",
   "cutoff_le_registration": true,
-  "PSCD_CUTOFF_RULE": "No evidence with publication_date after PSCD_CUTOFF_DATE may enter any arm. Cutoff ≤ registration timestamp.",
-  "EVIDENCE_AS_OF_TIMESTAMP": "2026-08-12T22:44:45.279308+00:00",
+  "PSCD_CUTOFF_RULE": "Conservative: publication_date < registration_date (strict <). Cutoff = previous complete UTC day. No source with publication_date >= registration_date included.",
   "authoritative_snapshot": "pscd/retrieval_snapshot_v1.json",
   "authoritative_snapshot_hash": "426cd91bdfe51090528cbdccb67214dfc375a58a2e3030de116601089df1081d",
-  "reconciliation_note": "One authoritative cutoff state. Snapshot is the authoritative artifact.",
-  "freeze_hash": "37ddbdc851f239f6a6cd095ae8c1af0a417d9ab35edf6a10adbcb3fba0d3fda6"
+  "cutoff_violations": 0,
+  "freeze_hash": "a2413e0f3290d0cef4f158c79127c2e7189ebb5e2d985f986bc543f8b9145d7f"
 }

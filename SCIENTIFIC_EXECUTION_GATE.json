@@ -14,9 +14,13 @@
   "FULL_SNAPSHOT_INTEGRITY": true,
   "OBSERVED_SCHEMA_HASHING": true,
   "OBSERVED_TOOL_CALL_COUNT": true,
+  "OBSERVED_RESPONSE_MODEL_PARITY": true,
+  "OBSERVED_RETRY_PARITY": true,
+  "OBSERVED_RESPONSE_STATUS_PARITY": true,
+  "TEMPORAL_AVAILABILITY": true,
   "blocking_items": [
     "REAL_SEAL_READY"
   ],
-  "generated_at": "2026-08-12T22:59:31.585472+00:00",
-  "gate_hash": "9d1113f6c44a91bba4669952775bd1edea2c565ae09ae79cbc78fe845357a4ec"
+  "generated_at": "2026-08-12T23:05:52.620139+00:00",
+  "gate_hash": "8945069cd718154bdb91c7e1e614fb75cdfa501327fe94b9a81518c5dca12a24"
 }
