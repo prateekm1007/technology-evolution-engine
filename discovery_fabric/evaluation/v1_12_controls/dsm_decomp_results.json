@@ -1,0 +1,2071 @@
+{
+  "timestamp": "2026-08-12T14:26:31.285026+00:00",
+  "disclosure": "LLM-proxy judges (NOT human). R1=glm-4-plus, R2=llama@0.7, R3=deepseek@0.5. Plus deterministic check for subclaim 6.",
+  "total_cases": 30,
+  "subclaims": [
+    "component_overlap",
+    "causal_relation_overlap",
+    "combination_interaction_overlap",
+    "constraint_release_overlap",
+    "testable_consequence",
+    "relation_explicit_in_evidence"
+  ],
+  "per_subclaim_agreement": {
+    "component_overlap": {
+      "r1_r2": "10/16 (62%)",
+      "r1_r3": "6/10 (60%)",
+      "r2_r3": "7/12 (58%)",
+      "average": "60%",
+      "threshold": "≥70%",
+      "passed": false
+    },
+    "causal_relation_overlap": {
+      "r1_r2": "5/16 (31%)",
+      "r1_r3": "7/10 (70%)",
+      "r2_r3": "5/12 (42%)",
+      "average": "48%",
+      "threshold": "≥70%",
+      "passed": false
+    },
+    "combination_interaction_overlap": {
+      "r1_r2": "8/16 (50%)",
+      "r1_r3": "7/10 (70%)",
+      "r2_r3": "8/12 (67%)",
+      "average": "62%",
+      "threshold": "≥70%",
+      "passed": false
+    },
+    "constraint_release_overlap": {
+      "r1_r2": "7/16 (44%)",
+      "r1_r3": "5/10 (50%)",
+      "r2_r3": "8/12 (67%)",
+      "average": "53%",
+      "threshold": "≥70%",
+      "passed": false
+    },
+    "testable_consequence": {
+      "r1_r2": "4/16 (25%)",
+      "r1_r3": "7/10 (70%)",
+      "r2_r3": "6/12 (50%)",
+      "average": "48%",
+      "threshold": "≥70%",
+      "passed": false
+    },
+    "relation_explicit_in_evidence": {
+      "r1_r2": "11/16 (69%)",
+      "r1_r3": "6/10 (60%)",
+      "r2_r3": "8/12 (67%)",
+      "average": "65%",
+      "threshold": "≥70%",
+      "passed": false
+    }
+  },
+  "raw_results": [
+    {
+      "adjudication_id": "ADJ-001",
+      "judge_1_glm4": {
+        "component_overlap": {
+          "verdict": "UNSCORABLE",
+          "evidence_span": ""
+        },
+        "causal_relation_overlap": {
+          "verdict": "UNSCORABLE",
+          "evidence_span": ""
+        },
+        "combination_interaction_overlap": {
+          "verdict": "YES",
+          "evidence_span": "combination of mechanical cleavage and substrate stabilization"
+        },
+        "constraint_release_overlap": {
+          "verdict": "UNSCORABLE",
+          "evidence_span": ""
+        },
+        "testable_consequence": {
+          "verdict": "UNSCORABLE",
+          "evidence_span": ""
+        },
+        "relation_explicit_in_evidence": {
+          "verdict": "UNSCORABLE",
+          "evidence_span": ""
+        }
+      },
+      "judge_2_llama": {
+        "component_overlap": {
+          "verdict": "YES",
+          "evidence_span": "graphite"
+        },
+        "causal_relation_overlap": {
+          "verdict": "YES",
+          "evidence_span": "Mechanical exfoliation produces stable single-layer graphene on substrate"
+        },
+        "combination_interaction_overlap": {
+          "verdict": "YES",
+          "evidence_span": "combination of mechanical cleavage and substrate stabilization"
+        },
+        "constraint_release_overlap": {
+          "verdict": "YES",
+          "evidence_span": "thermodynamically unstable and cannot exist freely, based on Landau-Peierls arguments about thermal fluctuations"
+        },
+        "testable_consequence": {
+          "verdict": "YES",
+          "evidence_span": "Mechanical exfoliation produces stable single-layer graphene on substrate"
+        },
+        "relation_explicit_in_evidence": {
+          "verdict": "NO",
+          "evidence_span": "NOT_FOUND"
+        }
+      },
+      "judge_3_deepseek": {
+        "error": "failed"
+      },
+      "deterministic_check_6": {
+        "verdict": "NO",
+        "evidence_span": "DETERMINISTIC: 20% term overlap",
+        "overlap_ratio": 0.2
+      },
+      "_hidden": {
+        "config": "D_mech_constraints",
+        "case_type": "real",
+        "v3_dsm": "PARTIAL",
+        "v3_mm": "YES"
+      }
+    },
+    {
+      "adjudication_id": "ADJ-002",
+      "judge_1_glm4": {
+        "component_overlap": {
+          "verdict": "YES",
+          "evidence_span": "Programmable genome editing using CRISPR-Cas9 and guide RNA"
+        },
+        "causal_relation_overlap": {
+          "verdict": "NO",
+          "evidence_span": "Cas9 has been characterized as a nuclease that cuts DNA"
+        },
+        "combination_interaction_overlap": {
+          "verdict": "YES",
+          "evidence_span": "Combination of CRISPR-Cas9 and guide RNA-directed specificity"
+        },
+        "constraint_release_overlap": {
+          "verdict": "UNSCORABLE",
+          "evidence_span": ""
+        },
+        "testable_consequence": {
+          "verdict": "UNSCORABLE",
+          "evidence_span": ""
+        },
+        "relation_explicit_in_evidence": {
+          "verdict": "NO",
+          "evidence_span": "NOT_FOUND"
+        }
+      },
+      "judge_2_llama": {
+        "component_overlap": {
+          "verdict": "YES",
+          "evidence_span": "CRISPR-Cas9 and guide RNA"
+        },
+        "causal_relation_overlap": {
+          "verdict": "YES",
+          "evidence_span": "Guide RNAs are known to direct proteins to spec"
+        },
+        "combination_interaction_overlap": {
+          "verdict": "YES",
+          "evidence_span": "Combination of CRISPR-Cas9 and guide RNA-directed specificity"
+        },
+        "constraint_release_overlap": {
+          "verdict": "YES",
+          "evidence_span": "but these are difficult to redesign for each target"
+        },
+        "testable_consequence": {
+          "verdict": "YES",
+          "evidence_span": "Programmable genome editing using CRISPR-Cas9 and guide RNA"
+        },
+        "relation_explicit_in_evidence": {
+          "verdict": "NO",
+          "evidence_span": "NOT_FOUND"
+        }
+      },
+      "judge_3_deepseek": {
+        "error": "failed"
+      },
+      "deterministic_check_6": {
+        "verdict": "NO",
+        "evidence_span": "DETERMINISTIC: 22% term overlap",
+        "overlap_ratio": 0.22
+      },
+      "_hidden": {
+        "config": "E_combination",
+        "case_type": "real",
+        "v3_dsm": "YES",
+        "v3_mm": "YES"
+      }
+    },
+    {
+      "adjudication_id": "ADJ-003",
+      "judge_1_glm4": {
+        "component_overlap": {
+          "verdict": "YES",
+          "evidence_span": "Based on the pre-discovery evidence, I propose the following novel mechanism or relationship: **Proposed Mechanism:** A naturally occurring, non-toxic substance produced by certain microorganisms (e."
+        },
+        "causal_relation_overlap": {
+          "verdict": "NO",
+          "evidence_span": "Based on the pre-discovery evidence, I propose the following novel mechanism or relationship: **Proposed Mechanism:** A naturally occurring, non-toxic substance produced by certain microorganisms (e."
+        },
+        "combination_interaction_overlap": {
+          "verdict": "UNSCORABLE",
+          "evidence_span": "Based on the pre-discovery evidence, I propose the following novel mechanism or relationship: **Proposed Mechanism:** A naturally occurring, non-toxic substance produced by certain microorganisms (e."
+        },
+        "constraint_release_overlap": {
+          "verdict": "UNSCORABLE",
+          "evidence_span": "Based on the pre-discovery evidence, I propose the following novel mechanism or relationship: **Proposed Mechanism:** A naturally occurring, non-toxic substance produced by certain microorganisms (e."
+        },
+        "testable_consequence": {
+          "verdict": "NO",
+          "evidence_span": "Based on the pre-discovery evidence, I propose the following novel mechanism or relationship: **Proposed Mechanism:** A naturally occurring, non-toxic substance produced by certain microorganisms (e."
+        },
+        "relation_explicit_in_evidence": {
+          "verdict": "NO",
+          "evidence_span": "NOT_FOUND"
+        }
+      },
+      "judge_2_llama": {
+        "component_overlap": {
+          "verdict": "YES",
+          "evidence_span": "Bacteria are known to cause infectious diseases. ... Some observations of mold inhibiting bacterial growth on contaminated plates have been noted"
+        },
+        "causal_relation_overlap": {
+          "verdict": "YES",
+          "evidence_span": "Some observations of mold inhibiting bacterial growth on contaminated plates have been noted"
+        },
+        "combination_interaction_overlap": {
+          "verdict": "NO",
+          "evidence_span": ""
+        },
+        "constraint_release_overlap": {
+          "verdict": "YES",
+          "evidence_span": "Chemical antiseptics exist but are toxic to human tissue when used systemically"
+        },
+        "testable_consequence": {
+          "verdict": "YES",
+          "evidence_span": "A naturally occurring, non-toxic substance produced by certain microorganisms"
+        },
+        "relation_explicit_in_evidence": {
+          "verdict": "NO",
+          "evidence_span": "NOT_FOUND"
+        }
+      },
+      "judge_3_deepseek": {
+        "component_overlap": {
+          "verdict": "NO",
+          "evidence_span": "A naturally occurring, non-toxic substance produced by certain microorganisms"
+        },
+        "causal_relation_overlap": {
+          "verdict": "NO",
+          "evidence_span": "A naturally occurring, non-toxic substance produced by certain microorganisms"
+        },
+        "combination_interaction_overlap": {
+          "verdict": "NO",
+          "evidence_span": "A naturally occurring, non-toxic substance produced by certain microorganisms"
+        },
+        "constraint_release_overlap": {
+          "verdict": "NO",
+          "evidence_span": "A naturally occurring, non-toxic substance produced by certain microorganisms"
+        },
+        "testable_consequence": {
+          "verdict": "NO",
+          "evidence_span": "A naturally occurring, non-toxic substance produced by certain microorganisms"
+        },
+        "relation_explicit_in_evidence": {
+          "verdict": "YES",
+          "evidence_span": "Some observations of mold inhibiting bacterial growth on contaminated plates have been noted but dismissed as contamination."
+        }
+      },
+      "deterministic_check_6": {
+        "verdict": "NO",
+        "evidence_span": "DETERMINISTIC: 6% term overlap",
+        "overlap_ratio": 0.06
+      },
+      "_hidden": {
+        "config": "B_llm_only",
+        "case_type": "real",
+        "v3_dsm": "YES",
+        "v3_mm": "YES"
+      }
+    },
+    {
+      "adjudication_id": "ADJ-004",
+      "judge_1_glm4": {
+        "component_overlap": {
+          "verdict": "YES",
+          "evidence_span": "LiCoO2 has been shown to intercalate lithium at its cathode. Graphite has been shown to intercalate lithium. Non-aqueous electrolytes have been explored for electrochemical cells."
+        },
+        "causal_relation_overlap": {
+          "verdict": "UNSCORABLE",
+          "evidence_span": ""
+        },
+        "combination_interaction_overlap": {
+          "verdict": "UNSCORABLE",
+          "evidence_span": ""
+        },
+        "constraint_release_overlap": {
+          "verdict": "YES",
+          "evidence_span": "Safety concerns due to dendrite formation in lithium metal batteries"
+        },
+        "testable_consequence": {
+          "verdict": "UNSCORABLE",
+          "evidence_span": ""
+        },
+        "relation_explicit_in_evidence": {
+          "verdict": "NO",
+          "evidence_span": "NOT_FOUND"
+        }
+      },
+      "judge_2_llama": {
+        "component_overlap": {
+          "verdict": "YES",
+          "evidence_span": "LiCoO2 has been shown to intercalate lithium at its cathode. Graphite has been shown to intercalate lithium. Non-aqueous electrolytes have been explored for electrochemical cells."
+        },
+        "causal_relation_overlap": {
+          "verdict": "NO",
+          "evidence_span": "NOT_FOUND"
+        },
+        "combination_interaction_overlap": {
+          "verdict": "YES",
+          "evidence_span": "LiCoO2 cathode + graphite anode + non-aqueous electrolyte = rechargeable Li-ion battery"
+        },
+        "constraint_release_overlap": {
+          "verdict": "YES",
+          "evidence_span": "Safety concerns due to dendrite formation in lithium metal batteries"
+        },
+        "testable_consequence": {
+          "verdict": "YES",
+          "evidence_span": "LiCoO2 cathode + graphite anode + non-aqueous electrolyte = rechargeable Li-ion battery"
+        },
+        "relation_explicit_in_evidence": {
+          "verdict": "NO",
+          "evidence_span": "NOT_FOUND"
+        }
+      },
+      "judge_3_deepseek": {
+        "component_overlap": {
+          "verdict": "UNSCORABLE",
+          "evidence_span": "The proposal text is cut off and does not name any components."
+        },
+        "causal_relation_overlap": {
+          "verdict": "UNSCORABLE",
+          "evidence_span": "The proposal text is cut off and does not state a causal chain."
+        },
+        "combination_interaction_overlap": {
+          "verdict": "UNSCORABLE",
+          "evidence_span": "The proposal text is cut off and does not describe a combination of mechanisms."
+        },
+        "constraint_release_overlap": {
+          "verdict": "UNSCORABLE",
+          "evidence_span": "The proposal text is cut off and does not specify a constraint being removed."
+        },
+        "testable_consequence": {
+          "verdict": "UNSCORABLE",
+          "evidence_span": "The proposal text is cut off and does not make a prediction."
+        },
+        "relation_explicit_in_evidence": {
+          "verdict": "NO",
+          "evidence_span": "NOT_FOUND"
+        }
+      },
+      "deterministic_check_6": {
+        "verdict": "NO",
+        "evidence_span": "DETERMINISTIC: 41% term overlap",
+        "overlap_ratio": 0.41
+      },
+      "_hidden": {
+        "config": "D_mech_constraints",
+        "case_type": "real",
+        "v3_dsm": "NO",
+        "v3_mm": "PARTIAL"
+      }
+    },
+    {
+      "adjudication_id": "ADJ-005",
+      "judge_1_glm4": {
+        "component_overlap": {
+          "verdict": "UNSCORABLE",
+          "evidence_span": ""
+        },
+        "causal_relation_overlap": {
+          "verdict": "UNSCORABLE",
+          "evidence_span": ""
+        },
+        "combination_interaction_overlap": {
+          "verdict": "UNSCORABLE",
+          "evidence_span": ""
+        },
+        "constraint_release_overlap": {
+          "verdict": "UNSCORABLE",
+          "evidence_span": ""
+        },
+        "testable_consequence": {
+          "verdict": "UNSCORABLE",
+          "evidence_span": ""
+        },
+        "relation_explicit_in_evidence": {
+          "verdict": "UNSCORABLE",
+          "evidence_span": ""
+        }
+      },
+      "judge_2_llama": {
+        "component_overlap": {
+          "verdict": "YES",
+          "evidence_span": "human epithelial cells"
+        },
+        "causal_relation_overlap": {
+          "verdict": "NO",
+          "evidence_span": "Not explicitly stated in the proposal"
+        },
+        "combination_interaction_overlap": {
+          "verdict": "NO",
+          "evidence_span": "No explicit mention of combining mechanisms in the target"
+        },
+        "constraint_release_overlap": {
+          "verdict": "UNSCORABLE",
+          "evidence_span": "No explicit mention of constraints in the proposal or target"
+        },
+        "testable_consequence": {
+          "verdict": "NO",
+          "evidence_span": "No explicit prediction in the proposal"
+        },
+        "relation_explicit_in_evidence": {
+          "verdict": "NOT_FOUND",
+          "evidence_span": "No explicit statement of the proposed relationship in the pre-discovery evidence"
+        }
+      },
+      "judge_3_deepseek": {
+        "component_overlap": {
+          "verdict": "UNSCORABLE",
+          "evidence_span": "The proposal is cut off and does not name specific components."
+        },
+        "causal_relation_overlap": {
+          "verdict": "UNSCORABLE",
+          "evidence_span": "The proposal is cut off and does not complete a causal claim."
+        },
+        "combination_interaction_overlap": {
+          "verdict": "UNSCORABLE",
+          "evidence_span": "The proposal is cut off and does not describe a combination."
+        },
+        "constraint_release_overlap": {
+          "verdict": "UNSCORABLE",
+          "evidence_span": "The proposal is cut off and does not identify a constraint."
+        },
+        "testable_consequence": {
+          "verdict": "UNSCORABLE",
+          "evidence_span": "The proposal is cut off and does not make a testable prediction."
+        },
+        "relation_explicit_in_evidence": {
+          "verdict": "NO",
+          "evidence_span": "NOT_FOUND"
+        }
+      },
+      "deterministic_check_6": {
+        "verdict": "NO",
+        "evidence_span": "DETERMINISTIC: 0% term overlap",
+        "overlap_ratio": 0.0
+      },
+      "_hidden": {
+        "config": "E_combination",
+        "case_type": "false",
+        "v3_dsm": "PARTIAL",
+        "v3_mm": "YES"
+      }
+    },
+    {
+      "adjudication_id": "ADJ-006",
+      "judge_1_glm4": {
+        "component_overlap": {
+          "verdict": "YES",
+          "evidence_span": "Mechanical cleavage of layered materials combined with rolling and stabilization of graphene sheets"
+        },
+        "causal_relation_overlap": {
+          "verdict": "NO",
+          "evidence_span": "Theoretical physics has long argued that two-dimensional crystals are thermodynamically unstable and cannot exist freely, based on Landau-Peierls arguments about thermal fluctuations."
+        },
+        "combination_interaction_overlap": {
+          "verdict": "YES",
+          "evidence_span": "Mechanical cleavage of layered materials combined with rolling and stabilization of graphene sheets"
+        },
+        "constraint_release_overlap": {
+          "verdict": "NO",
+          "evidence_span": "Theoretical physics has long argued that two-dimensional crystals are thermodynamically unstable and cannot exist freely, based on Landau-Peierls arguments about thermal fluctuations."
+        },
+        "testable_consequence": {
+          "verdict": "YES",
+          "evidence_span": "Mechanical cleavage of layered materials combined with rolling and stabilization of graphene sheets"
+        },
+        "relation_explicit_in_evidence": {
+          "verdict": "NO",
+          "evidence_span": "Theoretical physics has long argued that two-dimensional crystals are thermodynamically unstable and cannot exist freely, based on Landau-Peierls arguments about thermal fluctuations."
+        }
+      },
+      "judge_2_llama": {
+        "component_overlap": {
+          "verdict": "YES",
+          "evidence_span": "graphene sheets"
+        },
+        "causal_relation_overlap": {
+          "verdict": "YES",
+          "evidence_span": "Mechanical cleavage of layered materials combined with rolling and stabilization of graphene sheets"
+        },
+        "combination_interaction_overlap": {
+          "verdict": "YES",
+          "evidence_span": "Combination of mechanical cleavage and stabilization of graphene sheets"
+        },
+        "constraint_release_overlap": {
+          "verdict": "YES",
+          "evidence_span": "stabilization of graphene sheets"
+        },
+        "testable_consequence": {
+          "verdict": "YES",
+          "evidence_span": "Mechanical exfoliation produces stable single-layer graphene on substrate"
+        },
+        "relation_explicit_in_evidence": {
+          "verdict": "NO",
+          "evidence_span": "NOT_FOUND"
+        }
+      },
+      "judge_3_deepseek": {
+        "component_overlap": {
+          "verdict": "YES",
+          "evidence_span": "Mechanical cleavage of layered materials combined with rolling and stabilization of graphene sheets"
+        },
+        "causal_relation_overlap": {
+          "verdict": "YES",
+          "evidence_span": "Mechanical cleavage of layered materials combined with rolling and stabilization of graphene sheets"
+        },
+        "combination_interaction_overlap": {
+          "verdict": "YES",
+          "evidence_span": "Mechanical cleavage of layered materials combined with rolling and stabilization of graphene sheets"
+        },
+        "constraint_release_overlap": {
+          "verdict": "YES",
+          "evidence_span": "stabilization of graphene sheets"
+        },
+        "testable_consequence": {
+          "verdict": "YES",
+          "evidence_span": "Mechanical cleavage of layered materials combined with rolling and stabilization of graphene sheets"
+        },
+        "relation_explicit_in_evidence": {
+          "verdict": "NO",
+          "evidence_span": "NOT_FOUND"
+        }
+      },
+      "deterministic_check_6": {
+        "verdict": "NO",
+        "evidence_span": "DETERMINISTIC: 60% term overlap",
+        "overlap_ratio": 0.6
+      },
+      "_hidden": {
+        "config": "E_combination",
+        "case_type": "real",
+        "v3_dsm": "YES",
+        "v3_mm": "YES"
+      }
+    },
+    {
+      "adjudication_id": "ADJ-007",
+      "judge_1_glm4": {
+        "component_overlap": {
+          "verdict": "UNSCORABLE",
+          "evidence_span": ""
+        },
+        "causal_relation_overlap": {
+          "verdict": "UNSCORABLE",
+          "evidence_span": ""
+        },
+        "combination_interaction_overlap": {
+          "verdict": "UNSCORABLE",
+          "evidence_span": ""
+        },
+        "constraint_release_overlap": {
+          "verdict": "UNSCORABLE",
+          "evidence_span": ""
+        },
+        "testable_consequence": {
+          "verdict": "UNSCORABLE",
+          "evidence_span": ""
+        },
+        "relation_explicit_in_evidence": {
+          "verdict": "UNSCORABLE",
+          "evidence_span": ""
+        }
+      },
+      "judge_2_llama": {
+        "component_overlap": {
+          "verdict": "YES",
+          "evidence_span": "MER, epigenetic markers"
+        },
+        "causal_relation_overlap": {
+          "verdict": "UNSCORABLE",
+          "evidence_span": ""
+        },
+        "combination_interaction_overlap": {
+          "verdict": "YES",
+          "evidence_span": "link between MER, epigenetic markers, and intercellular cooperation"
+        },
+        "constraint_release_overlap": {
+          "verdict": "UNSCORABLE",
+          "evidence_span": ""
+        },
+        "testable_consequence": {
+          "verdict": "UNSCORABLE",
+          "evidence_span": ""
+        },
+        "relation_explicit_in_evidence": {
+          "verdict": "NO",
+          "evidence_span": "NOT_FOUND"
+        }
+      },
+      "judge_3_deepseek": {
+        "component_overlap": {
+          "verdict": "YES",
+          "evidence_span": "MER-mediated epigenetic regulation of gene expression"
+        },
+        "causal_relation_overlap": {
+          "verdict": "YES",
+          "evidence_span": "MER-mediated epigenetic regulation of gene expression link between MER, epigenetic markers, and intercellular cooperation"
+        },
+        "combination_interaction_overlap": {
+          "verdict": "YES",
+          "evidence_span": "MER-mediated epigenetic regulation of gene expression link between MER, epigenetic markers, and intercellular cooperation"
+        },
+        "constraint_release_overlap": {
+          "verdict": "UNSCORABLE",
+          "evidence_span": "No constraint release identified in proposal"
+        },
+        "testable_consequence": {
+          "verdict": "UNSCORABLE",
+          "evidence_span": "No testable prediction in proposal"
+        },
+        "relation_explicit_in_evidence": {
+          "verdict": "YES",
+          "evidence_span": "microbial communities utilize MER to modulate gene expression in response to environmental stimuli, facilitating a previously unknown level of intercellular cooperation and adaptive plasticity"
+        }
+      },
+      "deterministic_check_6": {
+        "verdict": "NO",
+        "evidence_span": "DETERMINISTIC: 40% term overlap",
+        "overlap_ratio": 0.4
+      },
+      "_hidden": {
+        "config": "B_llm_only",
+        "case_type": "false",
+        "v3_dsm": "PARTIAL",
+        "v3_mm": "YES"
+      }
+    },
+    {
+      "adjudication_id": "ADJ-008",
+      "judge_1_glm4": {
+        "component_overlap": {
+          "verdict": "YES",
+          "evidence_span": "Nucleoside modifications can reduce RNA immunogenicity. Lipid nanoparticles have been developed for nucleic acid delivery into cells."
+        },
+        "causal_relation_overlap": {
+          "verdict": "NO",
+          "evidence_span": "The proposal does not explicitly state the causal chain from 'Nucleoside-modified mRNA + lipid nanoparticle delivery' to '>95% efficacy'."
+        },
+        "combination_interaction_overlap": {
+          "verdict": "YES",
+          "evidence_span": "Nucleoside modifications can reduce RNA immunogenicity. Lipid nanoparticles have been developed for nucleic acid delivery into cells."
+        },
+        "constraint_release_overlap": {
+          "verdict": "YES",
+          "evidence_span": "Constraints that limit progress: * Severe immune reactions triggered by unmodified mRNA"
+        },
+        "testable_consequence": {
+          "verdict": "NO",
+          "evidence_span": "The proposal does not make a specific, testable prediction that would confirm '>95% efficacy'."
+        },
+        "relation_explicit_in_evidence": {
+          "verdict": "NO",
+          "evidence_span": "NOT_FOUND"
+        }
+      },
+      "judge_2_llama": {
+        "component_overlap": {
+          "verdict": "YES",
+          "evidence_span": "nucleoside modifications, lipid nanoparticles, mRNA"
+        },
+        "causal_relation_overlap": {
+          "verdict": "YES",
+          "evidence_span": "nucleoside modifications can reduce RNA immunogenicity"
+        },
+        "combination_interaction_overlap": {
+          "verdict": "YES",
+          "evidence_span": "nucleoside-modified mRNA + lipid nanoparticle delivery"
+        },
+        "constraint_release_overlap": {
+          "verdict": "YES",
+          "evidence_span": "severe immune reactions triggered by unmodified mRNA"
+        },
+        "testable_consequence": {
+          "verdict": "YES",
+          "evidence_span": "vaccine with >95% efficacy"
+        },
+        "relation_explicit_in_evidence": {
+          "verdict": "NO",
+          "evidence_span": "NOT_FOUND"
+        }
+      },
+      "judge_3_deepseek": {
+        "component_overlap": {
+          "verdict": "YES",
+          "evidence_span": "Nucleoside-modified mRNA + lipid nanoparticle delivery"
+        },
+        "causal_relation_overlap": {
+          "verdict": "NO",
+          "evidence_span": "Severe immune reactions triggered by unmodified mRNA"
+        },
+        "combination_interaction_overlap": {
+          "verdict": "YES",
+          "evidence_span": "Nucleoside-modified mRNA + lipid nanoparticle delivery"
+        },
+        "constraint_release_overlap": {
+          "verdict": "YES",
+          "evidence_span": "Severe immune reactions triggered by unmodified mRNA"
+        },
+        "testable_consequence": {
+          "verdict": "NO",
+          "evidence_span": "NOT_FOUND"
+        },
+        "relation_explicit_in_evidence": {
+          "verdict": "NO",
+          "evidence_span": "NOT_FOUND"
+        }
+      },
+      "deterministic_check_6": {
+        "verdict": "NO",
+        "evidence_span": "DETERMINISTIC: 52% term overlap",
+        "overlap_ratio": 0.53
+      },
+      "_hidden": {
+        "config": "D_mech_constraints",
+        "case_type": "real",
+        "v3_dsm": "PARTIAL",
+        "v3_mm": "YES"
+      }
+    },
+    {
+      "adjudication_id": "ADJ-009",
+      "judge_1_glm4": {
+        "component_overlap": {
+          "verdict": "YES",
+          "evidence_span": "Guide RNA-directed Cas9 nuclease for genome editing Combining CRISPR-Cas9 system with guide RNA-directed specificity"
+        },
+        "causal_relation_overlap": {
+          "verdict": "YES",
+          "evidence_span": "Guide RNA-directed Cas9 nuclease for genome editing Combining CRISPR-Cas9 system with guide RNA-directed specificity"
+        },
+        "combination_interaction_overlap": {
+          "verdict": "YES",
+          "evidence_span": "Combining CRISPR-Cas9 system with guide RNA-directed specificity"
+        },
+        "constraint_release_overlap": {
+          "verdict": "UNSCORABLE",
+          "evidence_span": ""
+        },
+        "testable_consequence": {
+          "verdict": "UNSCORABLE",
+          "evidence_span": ""
+        },
+        "relation_explicit_in_evidence": {
+          "verdict": "NO",
+          "evidence_span": "NOT_FOUND"
+        }
+      },
+      "judge_2_llama": {
+        "component_overlap": {
+          "verdict": "YES",
+          "evidence_span": "Guide RNA-directed Cas9 nuclease"
+        },
+        "causal_relation_overlap": {
+          "verdict": "YES",
+          "evidence_span": "Guide RNA-directed Cas9 nuclease for genome editing"
+        },
+        "combination_interaction_overlap": {
+          "verdict": "YES",
+          "evidence_span": "Combining CRISPR-Cas9 system with guide RNA-directed specificity"
+        },
+        "constraint_release_overlap": {
+          "verdict": "YES",
+          "evidence_span": "but these are difficult to redesign for each target"
+        },
+        "testable_consequence": {
+          "verdict": "YES",
+          "evidence_span": "programmable DNA cleavage in any cell type"
+        },
+        "relation_explicit_in_evidence": {
+          "verdict": "NO",
+          "evidence_span": "NOT_FOUND"
+        }
+      },
+      "judge_3_deepseek": {
+        "component_overlap": {
+          "verdict": "YES",
+          "evidence_span": "Guide RNA-directed Cas9 nuclease for genome editing Combining CRISPR-Cas9 system with guide RNA-directed specificity"
+        },
+        "causal_relation_overlap": {
+          "verdict": "YES",
+          "evidence_span": "Guide RNA-directed Cas9 nuclease for genome editing"
+        },
+        "combination_interaction_overlap": {
+          "verdict": "YES",
+          "evidence_span": "Combining CRISPR-Cas9 system with guide RNA-directed specificity"
+        },
+        "constraint_release_overlap": {
+          "verdict": "YES",
+          "evidence_span": "Guide RNA-directed Cas9 nuclease for genome editing"
+        },
+        "testable_consequence": {
+          "verdict": "YES",
+          "evidence_span": "Guide RNA-directed Cas9 nuclease for genome editing"
+        },
+        "relation_explicit_in_evidence": {
+          "verdict": "NO",
+          "evidence_span": "NOT_FOUND"
+        }
+      },
+      "deterministic_check_6": {
+        "verdict": "NO",
+        "evidence_span": "DETERMINISTIC: 33% term overlap",
+        "overlap_ratio": 0.33
+      },
+      "_hidden": {
+        "config": "C_mechanism",
+        "case_type": "real",
+        "v3_dsm": "YES",
+        "v3_mm": "YES"
+      }
+    },
+    {
+      "adjudication_id": "ADJ-010",
+      "judge_1_glm4": {
+        "component_overlap": {
+          "verdict": "UNSCORABLE",
+          "evidence_span": ""
+        },
+        "causal_relation_overlap": {
+          "verdict": "UNSCORABLE",
+          "evidence_span": ""
+        },
+        "combination_interaction_overlap": {
+          "verdict": "UNSCORABLE",
+          "evidence_span": ""
+        },
+        "constraint_release_overlap": {
+          "verdict": "UNSCORABLE",
+          "evidence_span": ""
+        },
+        "testable_consequence": {
+          "verdict": "UNSCORABLE",
+          "evidence_span": ""
+        },
+        "relation_explicit_in_evidence": {
+          "verdict": "UNSCORABLE",
+          "evidence_span": ""
+        }
+      },
+      "judge_2_llama": {
+        "component_overlap": {
+          "verdict": "YES",
+          "evidence_span": "microbial communities utilize MER"
+        },
+        "causal_relation_overlap": {
+          "verdict": "UNSCORABLE",
+          "evidence_span": ""
+        },
+        "combination_interaction_overlap": {
+          "verdict": "UNSCORABLE",
+          "evidence_span": ""
+        },
+        "constraint_release_overlap": {
+          "verdict": "UNSCORABLE",
+          "evidence_span": ""
+        },
+        "testable_consequence": {
+          "verdict": "UNSCORABLE",
+          "evidence_span": ""
+        },
+        "relation_explicit_in_evidence": {
+          "verdict": "YES",
+          "evidence_span": "microbial communities utilize MER to modulate gene expression"
+        }
+      },
+      "judge_3_deepseek": {
+        "component_overlap": {
+          "verdict": "UNSCORABLE",
+          "evidence_span": "The target mechanism is 'None, as this is a hypothetical discovery', so no components are specified for comparison."
+        },
+        "causal_relation_overlap": {
+          "verdict": "UNSCORABLE",
+          "evidence_span": "The target mechanism is 'None', so no causal chain can be compared."
+        },
+        "combination_interaction_overlap": {
+          "verdict": "UNSCORABLE",
+          "evidence_span": "The target mechanism is 'None', so no combination or interaction can be compared."
+        },
+        "constraint_release_overlap": {
+          "verdict": "UNSCORABLE",
+          "evidence_span": "The target mechanism is 'None', so no constraint release can be compared."
+        },
+        "testable_consequence": {
+          "verdict": "UNSCORABLE",
+          "evidence_span": "The target mechanism is 'None', so no testable consequence can be matched."
+        },
+        "relation_explicit_in_evidence": {
+          "verdict": "YES",
+          "evidence_span": "Recent studies have identified a novel mechanism by which microbial communities utilize MER to modulate gene expression in response to environmental stimuli"
+        }
+      },
+      "deterministic_check_6": {
+        "verdict": "NO",
+        "evidence_span": "DETERMINISTIC: 40% term overlap",
+        "overlap_ratio": 0.4
+      },
+      "_hidden": {
+        "config": "C_mechanism",
+        "case_type": "false",
+        "v3_dsm": "PARTIAL",
+        "v3_mm": "YES"
+      }
+    },
+    {
+      "adjudication_id": "ADJ-011",
+      "judge_1_glm4": {
+        "component_overlap": {
+          "verdict": "NO",
+          "evidence_span": "Staphylococcus bacteria are commonly cultured in laborator"
+        },
+        "causal_relation_overlap": {
+          "verdict": "NO",
+          "evidence_span": "Lysozyme, an enzyme with antibacterial properties, has been discovered in human tears."
+        },
+        "combination_interaction_overlap": {
+          "verdict": "UNSCORABLE",
+          "evidence_span": ""
+        },
+        "constraint_release_overlap": {
+          "verdict": "UNSCORABLE",
+          "evidence_span": ""
+        },
+        "testable_consequence": {
+          "verdict": "UNSCORABLE",
+          "evidence_span": ""
+        },
+        "relation_explicit_in_evidence": {
+          "verdict": "NO",
+          "evidence_span": "NOT_FOUND"
+        }
+      },
+      "judge_2_llama": {
+        "component_overlap": {
+          "verdict": "NO",
+          "evidence_span": "Penicillium mold vs. lysozyme, an enzyme with antibacterial properties"
+        },
+        "causal_relation_overlap": {
+          "verdict": "NO",
+          "evidence_span": "No mention of mold or penicillin in the proposed mechanism"
+        },
+        "combination_interaction_overlap": {
+          "verdict": "NO",
+          "evidence_span": "No combination of mechanisms proposed in the target and proposal"
+        },
+        "constraint_release_overlap": {
+          "verdict": "YES",
+          "evidence_span": "Chemical antiseptics are toxic to human tissue when used systemically, vs. penicillin inhibiting bacterial cell walls without harming tissue"
+        },
+        "testable_consequence": {
+          "verdict": "NO",
+          "evidence_span": "No prediction of a testable consequence that matches the target"
+        },
+        "relation_explicit_in_evidence": {
+          "verdict": "NO",
+          "evidence_span": "NOT_FOUND, relationship between Penicillium mold and bacterial inhibition not explicitly stated in the evidence"
+        }
+      },
+      "judge_3_deepseek": {
+        "error": "failed"
+      },
+      "deterministic_check_6": {
+        "verdict": "YES",
+        "evidence_span": "DETERMINISTIC: 72% term overlap",
+        "overlap_ratio": 0.72
+      },
+      "_hidden": {
+        "config": "F_full",
+        "case_type": "real",
+        "v3_dsm": "NO",
+        "v3_mm": "PARTIAL"
+      }
+    },
+    {
+      "adjudication_id": "ADJ-012",
+      "judge_1_glm4": {
+        "component_overlap": {
+          "verdict": "YES",
+          "evidence_span": "LiCoO2 has been shown to intercalate lithium at its cathode. Graphite has been shown to intercalate lithium."
+        },
+        "causal_relation_overlap": {
+          "verdict": "UNSCORABLE",
+          "evidence_span": ""
+        },
+        "combination_interaction_overlap": {
+          "verdict": "NO",
+          "evidence_span": "A solid-state electrolyte that incorporates a lithium-ion conducting material, such as a lithium-rich metal o"
+        },
+        "constraint_release_overlap": {
+          "verdict": "UNSCORABLE",
+          "evidence_span": ""
+        },
+        "testable_consequence": {
+          "verdict": "UNSCORABLE",
+          "evidence_span": ""
+        },
+        "relation_explicit_in_evidence": {
+          "verdict": "NO",
+          "evidence_span": "NOT_FOUND"
+        }
+      },
+      "judge_2_llama": {
+        "component_overlap": {
+          "verdict": "YES",
+          "evidence_span": "LiCoO2 has been shown to intercalate lithium at its cathode. Graphite has been shown to intercalate lithium."
+        },
+        "causal_relation_overlap": {
+          "verdict": "YES",
+          "evidence_span": "LiCoO2 has been shown to intercalate lithium at its cathode. Graphite has been shown to intercalate lithium."
+        },
+        "combination_interaction_overlap": {
+          "verdict": "YES",
+          "evidence_span": "LiCoO2 cathode + graphite anode + non-aqueous electrolyte = rechargeable Li-ion battery"
+        },
+        "constraint_release_overlap": {
+          "verdict": "NO",
+          "evidence_span": "Lithium metal batteries exist but are unsafe due to dendrite formation."
+        },
+        "testable_consequence": {
+          "verdict": "YES",
+          "evidence_span": "rechargeable Li-ion battery"
+        },
+        "relation_explicit_in_evidence": {
+          "verdict": "NO",
+          "evidence_span": "NOT_FOUND"
+        }
+      },
+      "judge_3_deepseek": {
+        "component_overlap": {
+          "verdict": "YES",
+          "evidence_span": "lithium-ion conducting material, such as a lithium-rich metal o"
+        },
+        "causal_relation_overlap": {
+          "verdict": "NO",
+          "evidence_span": "solid-state electrolyte that incorporates a lithium-ion conducting material"
+        },
+        "combination_interaction_overlap": {
+          "verdict": "NO",
+          "evidence_span": "solid-state electrolyte that incorporates a lithium-ion conducting material"
+        },
+        "constraint_release_overlap": {
+          "verdict": "NO",
+          "evidence_span": "The challenge is creating a battery that is both safe and rechargeable"
+        },
+        "testable_consequence": {
+          "verdict": "NO",
+          "evidence_span": "Based on the pre-discovery evidence, I propose a novel mechanism"
+        },
+        "relation_explicit_in_evidence": {
+          "verdict": "NO",
+          "evidence_span": "NOT_FOUND"
+        }
+      },
+      "deterministic_check_6": {
+        "verdict": "NO",
+        "evidence_span": "DETERMINISTIC: 11% term overlap",
+        "overlap_ratio": 0.12
+      },
+      "_hidden": {
+        "config": "B_llm_only",
+        "case_type": "real",
+        "v3_dsm": "NO",
+        "v3_mm": "YES"
+      }
+    },
+    {
+      "adjudication_id": "ADJ-013",
+      "judge_1_glm4": {
+        "component_overlap": {
+          "verdict": "UNSCORABLE",
+          "evidence_span": ""
+        },
+        "causal_relation_overlap": {
+          "verdict": "UNSCORABLE",
+          "evidence_span": ""
+        },
+        "combination_interaction_overlap": {
+          "verdict": "UNSCORABLE",
+          "evidence_span": ""
+        },
+        "constraint_release_overlap": {
+          "verdict": "UNSCORABLE",
+          "evidence_span": ""
+        },
+        "testable_consequence": {
+          "verdict": "UNSCORABLE",
+          "evidence_span": ""
+        },
+        "relation_explicit_in_evidence": {
+          "verdict": "UNSCORABLE",
+          "evidence_span": ""
+        }
+      },
+      "judge_2_llama": {
+        "component_overlap": {
+          "verdict": "YES",
+          "evidence_span": "Nexarion particles"
+        },
+        "causal_relation_overlap": {
+          "verdict": "YES",
+          "evidence_span": "enabling the coordination of immune responses across disparate tissue types"
+        },
+        "combination_interaction_overlap": {
+          "verdict": "UNSCORABLE",
+          "evidence_span": ""
+        },
+        "constraint_release_overlap": {
+          "verdict": "UNSCORABLE",
+          "evidence_span": ""
+        },
+        "testable_consequence": {
+          "verdict": "UNSCORABLE",
+          "evidence_span": ""
+        },
+        "relation_explicit_in_evidence": {
+          "verdict": "YES",
+          "evidence_span": "enabling the coordination of immune responses across disparate tissue types"
+        }
+      },
+      "judge_3_deepseek": {
+        "error": "failed"
+      },
+      "deterministic_check_6": {
+        "verdict": "NO",
+        "evidence_span": "DETERMINISTIC: 52% term overlap",
+        "overlap_ratio": 0.53
+      },
+      "_hidden": {
+        "config": "F_full",
+        "case_type": "false",
+        "v3_dsm": "NO",
+        "v3_mm": "PARTIAL"
+      }
+    },
+    {
+      "adjudication_id": "ADJ-014",
+      "judge_1_glm4": {
+        "component_overlap": {
+          "verdict": "UNSCORABLE",
+          "evidence_span": "The proposal text is incomplete and does not specify the components of the Graph-based Neural Networks mechanism, making it impossible to compare components with the target."
+        },
+        "causal_relation_overlap": {
+          "verdict": "NO",
+          "evidence_span": "The proposal suggests combining 'Graph-based Neural Networks' with 'Self-attention' to create an emergent capability. The target identifies a direct causal chain: 'Self-attention alone + positional encoding = Transformer'. The proposal's causal chain is different as it includes an unspecified graph-based mechanism and does not mention positional encoding as a direct cause."
+        },
+        "combination_interaction_overlap": {
+          "verdict": "UNSCORABLE",
+          "evidence_span": "The proposal text is incomplete. It mentions combining 'Graph-based Neural Networks' with 'Self-attention' but does not specify how they interact, making it impossible to determine if the combination matches the target."
+        },
+        "constraint_release_overlap": {
+          "verdict": "NO",
+          "evidence_span": "The proposal does not identify any constraint being overcome. The target mechanism overcomes the constraints of 'slow' and 'prone to vanishing gradients' by eliminating recurrence, which is not addressed in the proposal."
+        },
+        "testable_consequence": {
+          "verdict": "UNSCORABLE",
+          "evidence_span": "The proposal text is incomplete and does not make any testable predictions, making it impossible to compare with the target's implied testable consequences."
+        },
+        "relation_explicit_in_evidence": {
+          "verdict": "NO",
+          "evidence_span": "The evidence states that 'Attention mechanisms have been added to sequence-to-sequence models' and that 'Self-attention (attending to one's own sequence) has been used in some models'. It does not state that combining self-attention with positional encoding eliminates the need for recurrence, which is the core of the target relationship."
+        }
+      },
+      "judge_2_llama": {
+        "component_overlap": {
+          "verdict": "YES",
+          "evidence_span": "Attention mechanisms have been added to sequence-to-sequence models"
+        },
+        "causal_relation_overlap": {
+          "verdict": "NO",
+          "evidence_span": "Recurrent neural networks process sequences step-by-step, making them slow and prone to vanishing gradients over long sequences"
+        },
+        "combination_interaction_overlap": {
+          "verdict": "NO",
+          "evidence_span": "Self-attention (attending to one's own sequence) has been used in some models"
+        },
+        "constraint_release_overlap": {
+          "verdict": "YES",
+          "evidence_span": "Recurrent neural networks process sequences step-by-step, making them slow and prone to vanishing gradients over long sequences"
+        },
+        "testable_consequence": {
+          "verdict": "NO",
+          "evidence_span": "NOT_FOUND"
+        },
+        "relation_explicit_in_evidence": {
+          "verdict": "NO",
+          "evidence_span": "NOT_FOUND"
+        }
+      },
+      "judge_3_deepseek": {
+        "component_overlap": {
+          "verdict": "NO",
+          "evidence_span": "Self-attention (attending to one's own sequence) has been used in some models"
+        },
+        "causal_relation_overlap": {
+          "verdict": "NO",
+          "evidence_span": "Recurrent neural networks process sequences step-by-step, making them slow and prone to vanishing gradients over long sequences"
+        },
+        "combination_interaction_overlap": {
+          "verdict": "NO",
+          "evidence_span": "Self-attention (attending to one's own sequence) has been used in some models"
+        },
+        "constraint_release_overlap": {
+          "verdict": "NO",
+          "evidence_span": "Recurrent neural networks process sequences step-by-step, making them slow and prone to vanishing gradients over long sequences"
+        },
+        "testable_consequence": {
+          "verdict": "NO",
+          "evidence_span": "NOT_FOUND"
+        },
+        "relation_explicit_in_evidence": {
+          "verdict": "NO",
+          "evidence_span": "NOT_FOUND"
+        }
+      },
+      "deterministic_check_6": {
+        "verdict": "NO",
+        "evidence_span": "DETERMINISTIC: 18% term overlap",
+        "overlap_ratio": 0.19
+      },
+      "_hidden": {
+        "config": "E_combination",
+        "case_type": "real",
+        "v3_dsm": "NO",
+        "v3_mm": "PARTIAL"
+      }
+    },
+    {
+      "adjudication_id": "ADJ-015",
+      "judge_1_glm4": {
+        "component_overlap": {
+          "verdict": "YES",
+          "evidence_span": "Graphite is a layered carbon material where individual layers are held by weak van der Waals forces."
+        },
+        "causal_relation_overlap": {
+          "verdict": "UNSCORABLE",
+          "evidence_span": "Theoretical physics has long argued that two-dimensional crystals are thermodynamically unstable and cannot exist freely, based on Landau-Peierls arguments about thermal fluctuations."
+        },
+        "combination_interaction_overlap": {
+          "verdict": "UNSCORABLE",
+          "evidence_span": ""
+        },
+        "constraint_release_overlap": {
+          "verdict": "NO",
+          "evidence_span": "Theoretical physics has long argued that two-dimensional crystals are thermodynamically unstable and cannot exist freely, based on Landau-Peierls arguments about thermal fluctuations."
+        },
+        "testable_consequence": {
+          "verdict": "UNSCORABLE",
+          "evidence_span": ""
+        },
+        "relation_explicit_in_evidence": {
+          "verdict": "NO",
+          "evidence_span": "NOT_FOUND"
+        }
+      },
+      "judge_2_llama": {
+        "component_overlap": {
+          "verdict": "YES",
+          "evidence_span": "Graphite is a layered carbon material"
+        },
+        "causal_relation_overlap": {
+          "verdict": "NO",
+          "evidence_span": "Theoretical physics has long argued that two-dimensional crystals are thermodynamically unstable and cannot exist freely"
+        },
+        "combination_interaction_overlap": {
+          "verdict": "UNSCORABLE",
+          "evidence_span": ""
+        },
+        "constraint_release_overlap": {
+          "verdict": "NO",
+          "evidence_span": "The Landau-Peierls arguments suggest that two-dimensional crystals are thermodynamically unstable"
+        },
+        "testable_consequence": {
+          "verdict": "NO",
+          "evidence_span": ""
+        },
+        "relation_explicit_in_evidence": {
+          "verdict": "NO",
+          "evidence_span": "NOT_FOUND"
+        }
+      },
+      "judge_3_deepseek": {
+        "error": "failed"
+      },
+      "deterministic_check_6": {
+        "verdict": "NO",
+        "evidence_span": "DETERMINISTIC: 60% term overlap",
+        "overlap_ratio": 0.6
+      },
+      "_hidden": {
+        "config": "F_full",
+        "case_type": "real",
+        "v3_dsm": "NO",
+        "v3_mm": "PARTIAL"
+      }
+    },
+    {
+      "adjudication_id": "ADJ-016",
+      "judge_1_glm4": {
+        "component_overlap": {
+          "verdict": "YES",
+          "evidence_span": "Convolutional neural networks...Graphics processing units (GPUs)...The ReLU activation function...Dropout regularization"
+        },
+        "causal_relation_overlap": {
+          "verdict": "UNSCORABLE",
+          "evidence_span": "NOT_FOUND"
+        },
+        "combination_interaction_overlap": {
+          "verdict": "UNSCORABLE",
+          "evidence_span": "NOT_FOUND"
+        },
+        "constraint_release_overlap": {
+          "verdict": "UNSCORABLE",
+          "evidence_span": "NOT_FOUND"
+        },
+        "testable_consequence": {
+          "verdict": "UNSCORABLE",
+          "evidence_span": "NOT_FOUND"
+        },
+        "relation_explicit_in_evidence": {
+          "verdict": "NO",
+          "evidence_span": "NOT_FOUND"
+        }
+      },
+      "judge_2_llama": {
+        "component_overlap": {
+          "verdict": "YES",
+          "evidence_span": "GPUs, ReLU activation function, Dropout regularization"
+        },
+        "causal_relation_overlap": {
+          "verdict": "YES",
+          "evidence_span": "The need for powerful computing platforms to process large amounts of data"
+        },
+        "combination_interaction_overlap": {
+          "verdict": "YES",
+          "evidence_span": "Deep CNN + GPU + ImageNet + ReLU + dropout = breakthrough performance"
+        },
+        "constraint_release_overlap": {
+          "verdict": "YES",
+          "evidence_span": "powerful computing platforms to process large amounts of data"
+        },
+        "testable_consequence": {
+          "verdict": "YES",
+          "evidence_span": "breakthrough performance"
+        },
+        "relation_explicit_in_evidence": {
+          "verdict": "NO",
+          "evidence_span": "NOT_FOUND"
+        }
+      },
+      "judge_3_deepseek": {
+        "error": "failed"
+      },
+      "deterministic_check_6": {
+        "verdict": "NO",
+        "evidence_span": "DETERMINISTIC: 37% term overlap",
+        "overlap_ratio": 0.38
+      },
+      "_hidden": {
+        "config": "F_full",
+        "case_type": "real",
+        "v3_dsm": "NO",
+        "v3_mm": "PARTIAL"
+      }
+    },
+    {
+      "adjudication_id": "ADJ-017",
+      "judge_1_glm4": {
+        "component_overlap": {
+          "verdict": "YES",
+          "evidence_span": "combines the strengths of self-attention and positional encoding"
+        },
+        "causal_relation_overlap": {
+          "verdict": "UNSCORABLE",
+          "evidence_span": "The proposal does not state a complete causal chain (A causes B which causes C)."
+        },
+        "combination_interaction_overlap": {
+          "verdict": "YES",
+          "evidence_span": "combines the strengths of self-attention and positional encoding"
+        },
+        "constraint_release_overlap": {
+          "verdict": "UNSCORABLE",
+          "evidence_span": "The proposal does not explicitly identify a constraint being removed or overcome."
+        },
+        "testable_consequence": {
+          "verdict": "UNSCORABLE",
+          "evidence_span": "The proposal does not state a specific, testable prediction."
+        },
+        "relation_explicit_in_evidence": {
+          "verdict": "NO",
+          "evidence_span": "NOT_FOUND"
+        }
+      },
+      "judge_2_llama": {
+        "error": "failed"
+      },
+      "judge_3_deepseek": {
+        "error": "failed"
+      },
+      "deterministic_check_6": {
+        "verdict": "NO",
+        "evidence_span": "DETERMINISTIC: 37% term overlap",
+        "overlap_ratio": 0.38
+      },
+      "_hidden": {
+        "config": "B_llm_only",
+        "case_type": "real",
+        "v3_dsm": "YES",
+        "v3_mm": "YES"
+      }
+    },
+    {
+      "adjudication_id": "ADJ-018",
+      "judge_1_glm4": {
+        "error": "failed"
+      },
+      "judge_2_llama": {
+        "component_overlap": {
+          "verdict": "UNSCORABLE",
+          "evidence_span": ""
+        },
+        "causal_relation_overlap": {
+          "verdict": "UNSCORABLE",
+          "evidence_span": ""
+        },
+        "combination_interaction_overlap": {
+          "verdict": "UNSCORABLE",
+          "evidence_span": ""
+        },
+        "constraint_release_overlap": {
+          "verdict": "UNSCORABLE",
+          "evidence_span": ""
+        },
+        "testable_consequence": {
+          "verdict": "UNSCORABLE",
+          "evidence_span": ""
+        },
+        "relation_explicit_in_evidence": {
+          "verdict": "NOT_FOUND",
+          "evidence_span": "NOT_FOUND"
+        }
+      },
+      "judge_3_deepseek": {
+        "error": "failed"
+      },
+      "deterministic_check_6": {
+        "verdict": "NO",
+        "evidence_span": "DETERMINISTIC: 6% term overlap",
+        "overlap_ratio": 0.06
+      },
+      "_hidden": {
+        "config": "F_full",
+        "case_type": "false",
+        "v3_dsm": "NO",
+        "v3_mm": "NO"
+      }
+    },
+    {
+      "adjudication_id": "ADJ-019",
+      "judge_1_glm4": {
+        "error": "failed"
+      },
+      "judge_2_llama": {
+        "component_overlap": {
+          "verdict": "YES",
+          "evidence_span": "PD-1"
+        },
+        "causal_relation_overlap": {
+          "verdict": "YES",
+          "evidence_span": "PD-1 is a receptor on T-cells that, when engaged, suppresses T-cell activity"
+        },
+        "combination_interaction_overlap": {
+          "verdict": "NO",
+          "evidence_span": "The prevailing approach is to boost immune activation"
+        },
+        "constraint_release_overlap": {
+          "verdict": "YES",
+          "evidence_span": "Blocking PD-1 releases T-cell inhibition, enabling immune attack on tumors"
+        },
+        "testable_consequence": {
+          "verdict": "YES",
+          "evidence_span": "enabling immune attack on tumors"
+        },
+        "relation_explicit_in_evidence": {
+          "verdict": "YES",
+          "evidence_span": "PD-1 is a receptor on T-cells that, when engaged, suppresses T-cell activity"
+        }
+      },
+      "judge_3_deepseek": {
+        "error": "failed"
+      },
+      "deterministic_check_6": {
+        "verdict": "NO",
+        "evidence_span": "DETERMINISTIC: 50% term overlap",
+        "overlap_ratio": 0.5
+      },
+      "_hidden": {
+        "config": "E_combination",
+        "case_type": "real",
+        "v3_dsm": "NO",
+        "v3_mm": "YES"
+      }
+    },
+    {
+      "adjudication_id": "ADJ-020",
+      "judge_1_glm4": {
+        "error": "failed"
+      },
+      "judge_2_llama": {
+        "error": "failed"
+      },
+      "judge_3_deepseek": {
+        "error": "failed"
+      },
+      "deterministic_check_6": {
+        "verdict": "NO",
+        "evidence_span": "DETERMINISTIC: 47% term overlap",
+        "overlap_ratio": 0.47
+      },
+      "_hidden": {
+        "config": "F_full",
+        "case_type": "real",
+        "v3_dsm": "NO",
+        "v3_mm": "YES"
+      }
+    },
+    {
+      "adjudication_id": "ADJ-021",
+      "judge_1_glm4": {
+        "error": "failed"
+      },
+      "judge_2_llama": {
+        "component_overlap": {
+          "verdict": "YES",
+          "evidence_span": "B-cells (lymphocytes) produce antibodies... Myeloma cells (cancer of B-cells)"
+        },
+        "causal_relation_overlap": {
+          "verdict": "YES",
+          "evidence_span": "B-cell + myeloma fusion = hybridoma producing monoclonal antibodies indefinitely"
+        },
+        "combination_interaction_overlap": {
+          "verdict": "YES",
+          "evidence_span": "Cell fusion techniques can merge different cell types... B-cell + myeloma fusion"
+        },
+        "constraint_release_overlap": {
+          "verdict": "YES",
+          "evidence_span": "B-cells... have limited lifespan in culture... Myeloma cells... grow indefinitely in culture"
+        },
+        "testable_consequence": {
+          "verdict": "YES",
+          "evidence_span": "B-cell + myeloma fusion = hybridoma producing monoclonal antibodies indefinitely"
+        },
+        "relation_explicit_in_evidence": {
+          "verdict": "NO",
+          "evidence_span": "NOT_FOUND"
+        }
+      },
+      "judge_3_deepseek": {
+        "error": "failed"
+      },
+      "deterministic_check_6": {
+        "verdict": "YES",
+        "evidence_span": "DETERMINISTIC: 82% term overlap",
+        "overlap_ratio": 0.82
+      },
+      "_hidden": {
+        "config": "F_full",
+        "case_type": "real",
+        "v3_dsm": "PARTIAL",
+        "v3_mm": "YES"
+      }
+    },
+    {
+      "adjudication_id": "ADJ-022",
+      "judge_1_glm4": {
+        "error": "failed"
+      },
+      "judge_2_llama": {
+        "component_overlap": {
+          "verdict": "YES",
+          "evidence_span": "convolutional neural networks, GPUs, ReLU activation function, dropout regularization"
+        },
+        "causal_relation_overlap": {
+          "verdict": "YES",
+          "evidence_span": "Deep CNN + GPU + ImageNet + ReLU + dropout = breakthrough performance"
+        },
+        "combination_interaction_overlap": {
+          "verdict": "YES",
+          "evidence_span": "Deep CNN + GPU + ImageNet + ReLU + dropout"
+        },
+        "constraint_release_overlap": {
+          "verdict": "YES",
+          "evidence_span": "The shallow architecture of convolutional neural networks (1-2 layers)"
+        },
+        "testable_consequence": {
+          "verdict": "YES",
+          "evidence_span": "breakthrough performance"
+        },
+        "relation_explicit_in_evidence": {
+          "verdict": "NO",
+          "evidence_span": "NOT_FOUND"
+        }
+      },
+      "judge_3_deepseek": {
+        "error": "failed"
+      },
+      "deterministic_check_6": {
+        "verdict": "NO",
+        "evidence_span": "DETERMINISTIC: 43% term overlap",
+        "overlap_ratio": 0.44
+      },
+      "_hidden": {
+        "config": "D_mech_constraints",
+        "case_type": "real",
+        "v3_dsm": "NO",
+        "v3_mm": "PARTIAL"
+      }
+    },
+    {
+      "adjudication_id": "ADJ-023",
+      "judge_1_glm4": {
+        "error": "failed"
+      },
+      "judge_2_llama": {
+        "component_overlap": {
+          "verdict": "YES",
+          "evidence_span": "Cas9, guide RNAs"
+        },
+        "causal_relation_overlap": {
+          "verdict": "YES",
+          "evidence_span": "The CRISPR-associated protein Cas9 can be programmed to cut DNA at specific sequences"
+        },
+        "combination_interaction_overlap": {
+          "verdict": "YES",
+          "evidence_span": "Cas9 + designed guide RNA = programmable DNA cleavage in any cell type"
+        },
+        "constraint_release_overlap": {
+          "verdict": "YES",
+          "evidence_span": "these are difficult to redesign for each target"
+        },
+        "testable_consequence": {
+          "verdict": "YES",
+          "evidence_span": "programmable DNA cleavage in any cell type"
+        },
+        "relation_explicit_in_evidence": {
+          "verdict": "NO",
+          "evidence_span": "NOT_FOUND"
+        }
+      },
+      "judge_3_deepseek": {
+        "error": "failed"
+      },
+      "deterministic_check_6": {
+        "verdict": "NO",
+        "evidence_span": "DETERMINISTIC: 33% term overlap",
+        "overlap_ratio": 0.33
+      },
+      "_hidden": {
+        "config": "B_llm_only",
+        "case_type": "real",
+        "v3_dsm": "YES",
+        "v3_mm": "YES"
+      }
+    },
+    {
+      "adjudication_id": "ADJ-024",
+      "judge_1_glm4": {
+        "error": "failed"
+      },
+      "judge_2_llama": {
+        "component_overlap": {
+          "verdict": "YES",
+          "evidence_span": "LiCoO2 and graphite"
+        },
+        "causal_relation_overlap": {
+          "verdict": "YES",
+          "evidence_span": "Intercalation compounds can reversibly insert and remove lithium ions"
+        },
+        "combination_interaction_overlap": {
+          "verdict": "YES",
+          "evidence_span": "LiCoO2 cathode + graphite anode + non-aqueous electrolyte"
+        },
+        "constraint_release_overlap": {
+          "verdict": "YES",
+          "evidence_span": "Lithium metal batteries exist but are unsafe due to dendrite formation"
+        },
+        "testable_consequence": {
+          "verdict": "YES",
+          "evidence_span": "rechargeable Li-ion battery"
+        },
+        "relation_explicit_in_evidence": {
+          "verdict": "NO",
+          "evidence_span": "NOT_FOUND"
+        }
+      },
+      "judge_3_deepseek": {
+        "component_overlap": {
+          "verdict": "YES",
+          "evidence_span": "Intercalation compounds can reversibly insert and remove lithium ions. LiCoO2 has been shown to intercalate lithium at its cathode. Graphite has been shown to intercalate lithium. Non-aqueous electrolytes have been explored for electrochemical cells."
+        },
+        "causal_relation_overlap": {
+          "verdict": "NO",
+          "evidence_span": "Intercalation compounds can reversibly insert and remove lithium ions."
+        },
+        "combination_interaction_overlap": {
+          "verdict": "NO",
+          "evidence_span": "The challenge is creating a battery that is both safe and rechargeable with h"
+        },
+        "constraint_release_overlap": {
+          "verdict": "NO",
+          "evidence_span": "Lithium metal batteries exist but are unsafe due to dendrite formation."
+        },
+        "testable_consequence": {
+          "verdict": "NO",
+          "evidence_span": "NOT_FOUND"
+        },
+        "relation_explicit_in_evidence": {
+          "verdict": "NO",
+          "evidence_span": "NOT_FOUND"
+        }
+      },
+      "deterministic_check_6": {
+        "verdict": "NO",
+        "evidence_span": "DETERMINISTIC: 60% term overlap",
+        "overlap_ratio": 0.6
+      },
+      "_hidden": {
+        "config": "F_full",
+        "case_type": "real",
+        "v3_dsm": "YES",
+        "v3_mm": "YES"
+      }
+    },
+    {
+      "adjudication_id": "ADJ-025",
+      "judge_1_glm4": {
+        "error": "failed"
+      },
+      "judge_2_llama": {
+        "component_overlap": {
+          "verdict": "YES",
+          "evidence_span": "a newly discovered species of archaea and human epithelial cells"
+        },
+        "causal_relation_overlap": {
+          "verdict": "NO",
+          "evidence_span": "Production of anti-inflammatory metabolites by the archaeal species"
+        },
+        "combination_interaction_overlap": {
+          "verdict": "YES",
+          "evidence_span": "Interaction between the archaeal species and the human microbiome"
+        },
+        "constraint_release_overlap": {
+          "verdict": "UNSCORABLE",
+          "evidence_span": ""
+        },
+        "testable_consequence": {
+          "verdict": "NO",
+          "evidence_span": ""
+        },
+        "relation_explicit_in_evidence": {
+          "verdict": "NO",
+          "evidence_span": "NOT_FOUND"
+        }
+      },
+      "judge_3_deepseek": {
+        "error": "failed"
+      },
+      "deterministic_check_6": {
+        "verdict": "NO",
+        "evidence_span": "DETERMINISTIC: 30% term overlap",
+        "overlap_ratio": 0.3
+      },
+      "_hidden": {
+        "config": "D_mech_constraints",
+        "case_type": "false",
+        "v3_dsm": "PARTIAL",
+        "v3_mm": "YES"
+      }
+    },
+    {
+      "adjudication_id": "ADJ-026",
+      "judge_1_glm4": {
+        "error": "failed"
+      },
+      "judge_2_llama": {
+        "component_overlap": {
+          "verdict": "YES",
+          "evidence_span": "PD-1 is a receptor on T-cells"
+        },
+        "causal_relation_overlap": {
+          "verdict": "YES",
+          "evidence_span": "PD-1 is a receptor on T-cells that, when engaged, suppresses T-cell activity"
+        },
+        "combination_interaction_overlap": {
+          "verdict": "NO",
+          "evidence_span": "combination of targeting PD-1 receptor and modulating tumor microenvironment"
+        },
+        "constraint_release_overlap": {
+          "verdict": "YES",
+          "evidence_span": "Blocking PD-1 releases T-cell inhibition"
+        },
+        "testable_consequence": {
+          "verdict": "YES",
+          "evidence_span": "enabling immune attack on tumors"
+        },
+        "relation_explicit_in_evidence": {
+          "verdict": "YES",
+          "evidence_span": "PD-1 is a receptor on T-cells that, when engaged, suppresses T-cell activity"
+        }
+      },
+      "judge_3_deepseek": {
+        "error": "failed"
+      },
+      "deterministic_check_6": {
+        "verdict": "NO",
+        "evidence_span": "DETERMINISTIC: 30% term overlap",
+        "overlap_ratio": 0.31
+      },
+      "_hidden": {
+        "config": "D_mech_constraints",
+        "case_type": "real",
+        "v3_dsm": "PARTIAL",
+        "v3_mm": "YES"
+      }
+    },
+    {
+      "adjudication_id": "ADJ-027",
+      "judge_1_glm4": {
+        "error": "failed"
+      },
+      "judge_2_llama": {
+        "component_overlap": {
+          "verdict": "YES",
+          "evidence_span": "B-cells (lymphocytes) produce antibodies... Myeloma cells (cancer of B-cells) grow indefinitely in culture"
+        },
+        "causal_relation_overlap": {
+          "verdict": "YES",
+          "evidence_span": "Cell fusion techniques have been developed to merge different cell types... B-cells (lymphocytes) produce antibodies"
+        },
+        "combination_interaction_overlap": {
+          "verdict": "YES",
+          "evidence_span": "Hybrid cells with indefinite culture lifespan and specific antibody production"
+        },
+        "constraint_release_overlap": {
+          "verdict": "YES",
+          "evidence_span": "B-cells... have limited lifespan in culture... Myeloma cells... grow indefinitely in culture"
+        },
+        "testable_consequence": {
+          "verdict": "YES",
+          "evidence_span": "Hybrid cells with indefinite culture lifespan and specific antibody production"
+        },
+        "relation_explicit_in_evidence": {
+          "verdict": "NO",
+          "evidence_span": "NOT_FOUND"
+        }
+      },
+      "judge_3_deepseek": {
+        "error": "failed"
+      },
+      "deterministic_check_6": {
+        "verdict": "YES",
+        "evidence_span": "DETERMINISTIC: 61% term overlap",
+        "overlap_ratio": 0.62
+      },
+      "_hidden": {
+        "config": "E_combination",
+        "case_type": "real",
+        "v3_dsm": "YES",
+        "v3_mm": "YES"
+      }
+    },
+    {
+      "adjudication_id": "ADJ-028",
+      "judge_1_glm4": {
+        "error": "failed"
+      },
+      "judge_2_llama": {
+        "component_overlap": {
+          "verdict": "YES",
+          "evidence_span": "thermophilic DNA polymerase enzyme"
+        },
+        "causal_relation_overlap": {
+          "verdict": "YES",
+          "evidence_span": "combination of primer extension, thermophilic enzymes, and cyclic heating/cooling for exponential DNA amplification"
+        },
+        "combination_interaction_overlap": {
+          "verdict": "YES",
+          "evidence_span": "combination of primer extension, thermophilic enzymes, and cyclic heating/cooling"
+        },
+        "constraint_release_overlap": {
+          "verdict": "YES",
+          "evidence_span": "thermophilic enzymes that function at high temperatures"
+        },
+        "testable_consequence": {
+          "verdict": "YES",
+          "evidence_span": "exponential DNA amplification"
+        },
+        "relation_explicit_in_evidence": {
+          "verdict": "NO",
+          "evidence_span": "NOT_FOUND"
+        }
+      },
+      "judge_3_deepseek": {
+        "error": "failed"
+      },
+      "deterministic_check_6": {
+        "verdict": "NO",
+        "evidence_span": "DETERMINISTIC: 58% term overlap",
+        "overlap_ratio": 0.58
+      },
+      "_hidden": {
+        "config": "C_mechanism",
+        "case_type": "real",
+        "v3_dsm": "YES",
+        "v3_mm": "YES"
+      }
+    },
+    {
+      "adjudication_id": "ADJ-029",
+      "judge_1_glm4": {
+        "error": "failed"
+      },
+      "judge_2_llama": {
+        "component_overlap": {
+          "verdict": "YES",
+          "evidence_span": "sequences"
+        },
+        "causal_relation_overlap": {
+          "verdict": "NO",
+          "evidence_span": "The limitations of sequential processing in terms"
+        },
+        "combination_interaction_overlap": {
+          "verdict": "YES",
+          "evidence_span": "Self-attention (attending to one's own sequence) has been used in some models. Positional information in sequences is important"
+        },
+        "constraint_release_overlap": {
+          "verdict": "YES",
+          "evidence_span": "The limitations of sequential processing in terms"
+        },
+        "testable_consequence": {
+          "verdict": "UNSCORABLE",
+          "evidence_span": ""
+        },
+        "relation_explicit_in_evidence": {
+          "verdict": "NO",
+          "evidence_span": "NOT_FOUND"
+        }
+      },
+      "judge_3_deepseek": {
+        "error": "failed"
+      },
+      "deterministic_check_6": {
+        "verdict": "NO",
+        "evidence_span": "DETERMINISTIC: 42% term overlap",
+        "overlap_ratio": 0.43
+      },
+      "_hidden": {
+        "config": "F_full",
+        "case_type": "real",
+        "v3_dsm": "YES",
+        "v3_mm": "YES"
+      }
+    },
+    {
+      "adjudication_id": "ADJ-030",
+      "judge_1_glm4": {
+        "error": "failed"
+      },
+      "judge_2_llama": {
+        "component_overlap": {
+          "verdict": "YES",
+          "evidence_span": "graphite"
+        },
+        "causal_relation_overlap": {
+          "verdict": "NO",
+          "evidence_span": "NOT_FOUND"
+        },
+        "combination_interaction_overlap": {
+          "verdict": "NO",
+          "evidence_span": "NOT_FOUND"
+        },
+        "constraint_release_overlap": {
+          "verdict": "NO",
+          "evidence_span": "NOT_FOUND"
+        },
+        "testable_consequence": {
+          "verdict": "NO",
+          "evidence_span": "NOT_FOUND"
+        },
+        "relation_explicit_in_evidence": {
+          "verdict": "NO",
+          "evidence_span": "NOT_FOUND"
+        }
+      },
+      "judge_3_deepseek": {
+        "component_overlap": {
+          "verdict": "YES",
+          "evidence_span": "Graphite is a layered carbon material where individual layers are held by weak van der Waals forces"
+        },
+        "causal_relation_overlap": {
+          "verdict": "NO",
+          "evidence_span": "Interplay between van der Waals forces and thermal fluctuations Critical thickness below which graphite films become unstable"
+        },
+        "combination_interaction_overlap": {
+          "verdict": "NO",
+          "evidence_span": "Interplay between van der Waals forces and thermal fluctuations"
+        },
+        "constraint_release_overlap": {
+          "verdict": "NO",
+          "evidence_span": "Critical thickness below which graphite films become unstable"
+        },
+        "testable_consequence": {
+          "verdict": "NO",
+          "evidence_span": "Interplay between van der Waals forces and thermal fluctuations Critical thickness below which graphite films become unstable"
+        },
+        "relation_explicit_in_evidence": {
+          "verdict": "YES",
+          "evidence_span": "Theoretical physics has long argued that two-dimensional crystals are thermodynamically unstable and cannot exist freely, based on Landau-Peierls arguments about thermal fluctuations."
+        }
+      },
+      "deterministic_check_6": {
+        "verdict": "NO",
+        "evidence_span": "DETERMINISTIC: 53% term overlap",
+        "overlap_ratio": 0.54
+      },
+      "_hidden": {
+        "config": "B_llm_only",
+        "case_type": "real",
+        "v3_dsm": "NO",
+        "v3_mm": "YES"
+      }
+    }
+  ],
+  "deterministic_check_6": {
+    "yes": 3,
+    "no": 27,
+    "reproducible": true
+  }
+}
