@@ -1,0 +1,122 @@
+{
+  "schema_version": "4.0.0",
+  "forensic_type": "SECURITY_FORENSIC_V4_GIT_PURGE",
+  "generated_at": "2026-08-12T19:29:45.064247+00:00",
+  "contaminated_files_found": [],
+  "purge_result": {
+    "purged": false,
+    "reason": "no contaminated files found"
+  },
+  "git_object_verification": {
+    "checks": [
+      {
+        "check": "V1_NO_CONTAMINATED_PATHS_IN_COMMITS",
+        "passed": true,
+        "found": []
+      },
+      {
+        "check": "V2_NO_VAULT_KEY_BLOBS",
+        "passed": true,
+        "suspicious_blobs": [],
+        "n_blobs_scanned": 17504
+      },
+      {
+        "check": "V3_REFLOG_CLEAN",
+        "passed": true,
+        "reflog_entries": 0
+      }
+    ],
+    "all_pass": true
+  },
+  "preflight": {
+    "n_checks": 14,
+    "n_passed": 9,
+    "n_blocking_failures": 3,
+    "adjudication_permitted": false,
+    "checks": [
+      {
+        "check": "H1_NO_VAULT_KEYS_IN_WORKING_TREE",
+        "passed": true,
+        "blocking": true,
+        "found": []
+      },
+      {
+        "check": "H2_NO_VAULT_KEYS_IN_GIT_HISTORY",
+        "passed": true,
+        "blocking": true
+      },
+      {
+        "check": "H3_NO_GROUND_TRUTH_IN_ADJUDICATOR_SPACE",
+        "passed": true,
+        "blocking": true,
+        "found": []
+      },
+      {
+        "check": "H4_OLD_KEYS_TREATED_AS_COMPROMISED",
+        "passed": true,
+        "blocking": true,
+        "note": "All previously committed vault keys have been purged from git history. New key material must be generated in the real multi-identity deployment. Old keys are treated as compromised."
+      },
+      {
+        "check": "B_ADJUDICATOR_CANNOT_READ_KEY",
+        "passed": false,
+        "blocking": true,
+        "reason": "Single-user container — no separate OS identity"
+      },
+      {
+        "check": "C_ADJUDICATOR_CANNOT_WRITE_EVAL_BOUNDARY",
+        "passed": false,
+        "blocking": true,
+        "reason": "Single-user container — no separate OS identity"
+      },
+      {
+        "check": "D_ENCRYPTED_VAULT_EXISTS",
+        "passed": false,
+        "blocking": false,
+        "note": "Encrypted vault was purged because old key is compromised. Must be regenerated with new key in real multi-identity deployment."
+      },
+      {
+        "check": "E_BLIND_NO_GROUND_TRUTH",
+        "passed": true,
+        "blocking": true,
+        "leaked": []
+      },
+      {
+        "check": "F_FULL_NOT_IN_WS",
+        "passed": true,
+        "blocking": true
+      },
+      {
+        "check": "I_NO_OPEN_FD_TO_KEY",
+        "passed": true,
+        "blocking": true
+      },
+      {
+        "check": "J_NO_ENV_VAR_WITH_KEY",
+        "passed": true,
+        "blocking": true
+      },
+      {
+        "check": "L_SYMLINK_TRAVERSAL_PROTECTION",
+        "passed": true,
+        "blocking": true
+      },
+      {
+        "check": "O_NO_ACCESS_TO_EVALUATOR_PROCESS",
+        "passed": false,
+        "blocking": true,
+        "reason": "Single-user container — /proc visible"
+      },
+      {
+        "check": "P_VAULT_IS_ENCRYPTED",
+        "passed": false,
+        "blocking": false,
+        "note": "Vault was purged (old key compromised). Must be regenerated in real deployment."
+      }
+    ]
+  },
+  "adjudication_permitted": false,
+  "verdict": "ADJUDICATION CANNOT START — requires multi-identity deployment with 16+ checks PASS",
+  "compromised_keys_note": "All previously committed vault keys are treated as COMPROMISED. New key material must be generated in the real multi-identity deployment. Old keys are purged from git history.",
+  "hash": "6c64c9e776f4bd0d9900b7d6738d9af7e7741facf077fc807947e07acb61f516"
+}
