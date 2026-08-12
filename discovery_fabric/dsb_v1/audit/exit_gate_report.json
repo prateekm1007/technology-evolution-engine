@@ -37,10 +37,11 @@
     },
     {
       "gate": "E5_HUMAN_ADJUDICATION",
-      "passed": true,
+      "passed": false,
       "n_packets": 80,
       "adjudication_performed": false,
-      "note": "Packets built and ready. Human adjudication is PENDING — must be performed by independent human adjudicators."
+      "note": "Human adjudication has NOT been performed. E5 is NOT_PERFORMED, not PASS. AI_CTO_ADJUDICATION is a separate evidence tier and does not count as human validation.",
+      "status": "NOT_PERFORMED"
     },
     {
       "gate": "E6_REPRODUCIBLE_RECOMPUTATION",
@@ -56,7 +57,7 @@
       ]
     }
   ],
-  "overall_pass": true,
+  "overall_pass": false,
   "n_gates_passed": 6,
   "n_gates_total": 6,
   "scorer_summary": {

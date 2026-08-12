@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0.0",
+  "report_type": "CORPUS_112_FORENSIC_STATUS",
+  "generated_at": "2026-08-13T00:00:00Z",
+  "registry_path": "independent_corpus/reports/final_eligible_source_universe_v1.json",
+  "registry_count": 112,
+  "physical_artifact_count": 0,
+  "abstract_count": 0,
+  "fulltext_count": 0,
+  "content_hash_match_count": 0,
+  "missing_count": 112,
+  "duplicate_count": 0,
+  "cutoff_compliance": "UNKNOWN — cutoff date not recorded in registry",
+  "license_provenance_status": "UNKNOWN — license fields not in registry",
+  "honest_assessment": "Registry exists with 112 entries. 0 have abstracts >50 chars. 0 have stored fulltexts. 0 have content hashes. 112 are missing abstracts. 0 are duplicates. The 112-source registry is a LIST of eligible sources, NOT a physically usable corpus. Before PSCD-1, abstracts/fulltexts must be fetched, hashed, and stored.",
+  "action_required": "Fetch abstracts and fulltexts for all 112 sources from OpenAlex/Crossref. Compute content hashes. Store in durable storage. Verify cutoff compliance (no sources published after the pre-registered cutoff). Record license/provenance for each source. Re-generate this status file with verified counts."
+}

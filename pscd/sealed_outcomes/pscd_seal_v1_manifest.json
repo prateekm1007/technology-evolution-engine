@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0.0",
+  "seal_type": "PSCD_SEAL_V1",
+  "created_at": "2026-08-12T22:02:23.602670+00:00",
+  "ciphertext_path": "pscd/sealed_outcomes/pscd_seal_v1_ciphertext.bin",
+  "ciphertext_sha256": "6c9840696776b26db16d37b4cd4bba36a9c0473e2cded8778f1006065cb90b89",
+  "ciphertext_size_bytes": 10111,
+  "ciphertext_physically_exists": true,
+  "plaintext_sha256": "3f14a36c0eadda939e05bf5d7d941925be7d017e8e422bdf682c604b26998aec",
+  "manifest_sha256": "09c390f5d029aacd4be343c56aeeceddc04cd3e4f4bf1b7808eae2b9b8224226",
+  "encryption": "AES-256-GCM (authenticated)",
+  "key_held_by": "CUSTODIAN (outside builder environment)",
+  "key_path": "NOT IN REPOSITORY — held by custodian",
+  "custodian_identity": "CTO (separate from builder)",
+  "timestamp": "2026-08-12T22:02:23.602680+00:00",
+  "outcome_count": 50,
+  "foil_count": 10,
+  "outcome_type": "DRY_RUN_FABRICATED",
+  "note": "This is a DRY RUN seal with fabricated outcomes. Real PSCD-1 seal will replace this."
+}

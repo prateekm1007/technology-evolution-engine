@@ -32,3 +32,6 @@ discovery_fabric/dsb_v1/adjudication_engine_v*/vault/machine_score_vault*
 
 # V8: adjudicator bundle is an EXTERNAL build artifact, never committed
 discovery_fabric/dsb_v1/adjudicator_bundle/
+
+# PSCD seal key — NEVER commit
+pscd/sealed_outcomes/pscd_seal_v1_KEY*
